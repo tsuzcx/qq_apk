@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class cell_comment_essence
   extends JceStruct
 {
-  static ArrayList cache_commments = new ArrayList();
-  public ArrayList commments;
+  static ArrayList<s_commment> cache_commments = new ArrayList();
+  public ArrayList<s_commment> commments;
   public int displayflag;
   public int num;
   
@@ -21,7 +21,7 @@ public final class cell_comment_essence
   
   public cell_comment_essence() {}
   
-  public cell_comment_essence(int paramInt1, ArrayList paramArrayList, int paramInt2)
+  public cell_comment_essence(int paramInt1, ArrayList<s_commment> paramArrayList, int paramInt2)
   {
     this.num = paramInt1;
     this.commments = paramArrayList;
@@ -46,7 +46,7 @@ public final class cell_comment_essence
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_comment_essence
  * JD-Core Version:    0.7.0.1
  */

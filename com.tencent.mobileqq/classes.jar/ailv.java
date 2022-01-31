@@ -1,15 +1,24 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
 
 public class ailv
-  implements Runnable
+  implements aimo
 {
-  public ailv(VideoSprite paramVideoSprite) {}
+  public ailv(BindVerifyActivity paramBindVerifyActivity) {}
   
-  public void run()
+  public void a(Context paramContext, boolean paramBoolean)
   {
-    if ((this.a.g) && (this.a.a != null) && (!this.a.a.isPlaying())) {
-      this.a.a.start();
+    if (paramBoolean) {}
+    for (paramContext = "permission_denied_by_user";; paramContext = "permission_denied")
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("bind_mobile", this.a.a());
+      localIntent.putExtra("check_permission_result", paramContext);
+      localIntent.putExtra("kSrouce", BindVerifyActivity.a(this.a));
+      this.a.setResult(-1, localIntent);
+      this.a.finish();
+      return;
     }
   }
 }

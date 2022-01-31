@@ -39,7 +39,6 @@ public class GenerateClassTask
   }
   
   private String getFileContent(File paramFile)
-    throws Exception
   {
     paramFile = new BufferedReader(new FileReader(paramFile));
     AtomicReference localAtomicReference = new AtomicReference(new StringBuilder());
@@ -107,7 +106,7 @@ public class GenerateClassTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.TMG.internal.anttask.GenerateClassTask
  * JD-Core Version:    0.7.0.1
  */

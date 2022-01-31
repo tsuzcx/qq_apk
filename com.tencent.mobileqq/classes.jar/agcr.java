@@ -1,36 +1,40 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.OcrResultCache;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
-class agcr
-  implements Runnable
+public class agcr
+  implements amev
 {
-  agcr(agcq paramagcq, String paramString, int paramInt, OcrRecogResult paramOcrRecogResult, long paramLong) {}
+  public agcr(StructingMsgItemBuilder paramStructingMsgItemBuilder, MessageForStructing paramMessageForStructing, BaseChatItemLayout paramBaseChatItemLayout) {}
   
-  public void run()
+  public void a(View paramView, long paramLong, int paramInt1, int paramInt2)
   {
-    if ((!ScanOcrActivity.a(this.jdField_a_of_type_Agcq.a)) || (TextUtils.isEmpty(ScanOcrActivity.b(this.jdField_a_of_type_Agcq.a))) || (!ScanOcrActivity.b(this.jdField_a_of_type_Agcq.a).equals(this.jdField_a_of_type_JavaLangString)))
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq != paramLong) {}
+    do
     {
-      QLog.d("Q.ocr.ScanOcrActivity", 1, "OcrCallback onResult is not In recog, mRecogPicPath:" + ScanOcrActivity.b(this.jdField_a_of_type_Agcq.a) + " ,imagePath:" + this.jdField_a_of_type_JavaLangString);
+      return;
+      paramView = (StructMsgForGeneralShare)this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg;
+      if (paramInt1 != 1001) {
+        paramInt2 = 100;
+      }
+      paramView.setProgress(paramInt2);
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.findViewById(2131377118);
+    } while (!(paramView instanceof ProgressBar));
+    ((ProgressBar)paramView).setProgress(paramInt2);
+    if (paramInt2 == 100) {}
+    for (paramInt1 = 8;; paramInt1 = 0)
+    {
+      paramView.setVisibility(paramInt1);
       return;
     }
-    if (!ScanOcrActivity.b(this.jdField_a_of_type_Agcq.a))
-    {
-      ScanOcrActivity.a(this.jdField_a_of_type_Agcq.a, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
-      return;
-    }
-    ScanOcrActivity.a(this.jdField_a_of_type_Agcq.a, new ScanOcrActivity.OcrResultCache());
-    ScanOcrActivity.a(this.jdField_a_of_type_Agcq.a).jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    ScanOcrActivity.a(this.jdField_a_of_type_Agcq.a).jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult = this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult;
-    ScanOcrActivity.a(this.jdField_a_of_type_Agcq.a).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    ScanOcrActivity.a(this.jdField_a_of_type_Agcq.a).jdField_a_of_type_Long = this.jdField_a_of_type_Long;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agcr
  * JD-Core Version:    0.7.0.1
  */

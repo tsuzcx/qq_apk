@@ -1,24 +1,30 @@
-import android.content.Intent;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
-import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
+import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class ypv
-  implements Runnable
+  implements URLDrawable.URLDrawableListener
 {
-  public ypv(ApolloWebGameActivity paramApolloWebGameActivity, int paramInt1, int paramInt2, Intent paramIntent) {}
+  public ypv(AsyncRichTextView paramAsyncRichTextView) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (ApolloWebGameActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloWebGameActivity).a().getRender() != null) {
-      ApolloRender.selectPhotoFromSystem(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("AsyncRichTextView", 4, "onLoadSuccessed ");
     }
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ypv
  * JD-Core Version:    0.7.0.1
  */

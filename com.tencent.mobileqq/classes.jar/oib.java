@@ -1,30 +1,28 @@
-import com.tencent.biz.qqstory.takevideo.dancemachine.VideoSharer;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 
-class oib
-  implements Runnable
+public class oib
+  implements View.OnClickListener
 {
-  oib(oia paramoia, int paramInt) {}
+  public oib(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str = "";
-    if (this.jdField_a_of_type_Int == -1) {
-      str = "分享失败";
-    }
-    for (;;)
+    if ((ReadInJoyDeliverBiuActivity.e(this.a)) && ((!ReadInJoyDeliverBiuActivity.f(this.a)) || (ReadInJoyDeliverBiuActivity.m(this.a) != -1)))
     {
-      QQToast.a(this.jdField_a_of_type_Oia.a.a, 1, str, 0).a();
+      this.a.d(ReadInJoyDeliverBiuActivity.n(this.a));
       return;
-      if (this.jdField_a_of_type_Int == -2) {
-        str = "你未安装微博客户端，无法分享。";
-      }
     }
+    this.a.finish();
+    nrt.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.n(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
+    ReadInJoyDeliverBiuActivity.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oib
  * JD-Core Version:    0.7.0.1
  */

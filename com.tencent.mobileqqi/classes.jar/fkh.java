@@ -1,12 +1,18 @@
-import AvatarInfo.QQHeadInfo;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.dataline.util.WaitEvent;
+import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
-class fkh
+public class fkh
+  implements Runnable
 {
-  QQHeadInfo jdField_a_of_type_AvatarInfoQQHeadInfo;
-  ToServiceMsg jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg;
+  public fkh(DataLineMsgProxy paramDataLineMsgProxy, DataLineMsgRecord paramDataLineMsgRecord, WaitEvent paramWaitEvent) {}
   
-  private fkh(fkf paramfkf) {}
+  public void run()
+  {
+    DataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, null);
+    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
+  }
 }
 
 

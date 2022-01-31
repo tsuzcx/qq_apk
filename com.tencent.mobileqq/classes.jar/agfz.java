@@ -1,18 +1,32 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
 public class agfz
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public agfz(ScanTorchActivity paramScanTorchActivity) {}
+  public agfz(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.l();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (ViewGroup.MarginLayoutParams)UnlimitedBladeWorks.a(this.a).getLayoutParams();
+    if (UnlimitedBladeWorks.a(this.a)) {
+      paramValueAnimator.leftMargin = 0;
+    }
+    for (paramValueAnimator.rightMargin = i;; paramValueAnimator.rightMargin = 0)
+    {
+      UnlimitedBladeWorks.a(this.a).setLayoutParams(paramValueAnimator);
+      return;
+      paramValueAnimator.leftMargin = i;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agfz
  * JD-Core Version:    0.7.0.1
  */

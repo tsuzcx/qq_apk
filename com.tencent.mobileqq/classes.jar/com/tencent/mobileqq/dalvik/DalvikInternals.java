@@ -9,9 +9,11 @@ import java.util.Locale;
 
 public class DalvikInternals
 {
-  public static boolean a(Context paramContext)
+  public static native long find(long[] paramArrayOfLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong1, long paramLong2, int paramInt7, int paramInt8, int paramInt9, long paramLong3);
+  
+  public static boolean loadLib(Context paramContext)
   {
-    if ((Build.CPU_ABI.toLowerCase(Locale.US).contains("x86")) || (SoLoadUtil.a()))
+    if ((Build.CPU_ABI.toLowerCase(Locale.US).contains("x86")) || (SoLoadUtil.b()))
     {
       Log.d("qq_la", "x86");
       return SoLoadUtil.a(paramContext, "qq_la", 0, false, false);
@@ -20,7 +22,9 @@ public class DalvikInternals
     return SoLoadUtilNew.loadSoByName(paramContext, "qq_la");
   }
   
-  public static native long find(long[] paramArrayOfLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong1, long paramLong2, int paramInt7, int paramInt8, int paramInt9, long paramLong3);
+  public static native int modArtHeap(long[] paramArrayOfLong, int paramInt1, int paramInt2, int paramInt3);
+  
+  public static native int modheap(long[] paramArrayOfLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
   public static native int preverify(long[] paramArrayOfLong);
   

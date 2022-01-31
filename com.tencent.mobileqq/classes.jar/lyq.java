@@ -1,23 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.AVRedPacketConfig;
 
-class lyq
-  implements DialogInterface.OnClickListener
+public final class lyq
+  implements Parcelable.Creator<AVRedPacketConfig>
 {
-  lyq(lyp paramlyp) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public AVRedPacketConfig a(Parcel paramParcel)
   {
-    ForwardSdkShareOption.a(this.a.a, true, "shareToQQ", ReadInJoyDeliverVideoActivity.b(this.a.a));
-    this.a.a.moveTaskToBack(true);
-    this.a.a.finish();
+    return new AVRedPacketConfig(paramParcel);
+  }
+  
+  public AVRedPacketConfig[] a(int paramInt)
+  {
+    return new AVRedPacketConfig[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lyq
  * JD-Core Version:    0.7.0.1
  */

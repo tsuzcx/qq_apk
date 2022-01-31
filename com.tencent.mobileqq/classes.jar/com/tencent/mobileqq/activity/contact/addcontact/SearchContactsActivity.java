@@ -1,5 +1,9 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
+import ahie;
+import ahif;
+import ahig;
+import alud;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -12,15 +16,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import com.tencent.biz.pubaccount.util.PublicAccountConfigUtil;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.WebView;
-import wix;
-import wiy;
-import wiz;
+import swy;
 
 public class SearchContactsActivity
   extends SearchBaseActivity
@@ -29,7 +30,7 @@ public class SearchContactsActivity
   
   public SearchContactsActivity()
   {
-    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new wiz(this);
+    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new ahig(this);
   }
   
   private void a(String paramString)
@@ -71,7 +72,7 @@ public class SearchContactsActivity
     {
       if (this.i == 12)
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint("搜索" + PublicAccountConfigUtil.a(this.app, getApplicationContext()) + "/文章");
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(alud.a(2131714004) + swy.a(this.app, getApplicationContext()) + alud.a(2131714003));
         this.jdField_a_of_type_AndroidWidgetEditText.setText(str1);
         this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
         this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
@@ -79,35 +80,38 @@ public class SearchContactsActivity
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new wix(this, bool));
-      String str2 = getResources().getString(2131433015);
+      if (this.h == 1) {
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(alud.a(2131714011));
+      }
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new ahie(this, bool));
+      String str2 = getResources().getString(2131690648);
       this.jdField_a_of_type_AndroidWidgetButton.setText(str2);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new wiy(this));
-      if (AppSetting.b)
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ahif(this));
+      if (AppSetting.c)
       {
         this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(str2);
         if (this.i != 12) {
-          break label218;
+          break label263;
         }
-        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription("搜索栏、订阅号、文章、正在编辑");
+        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(alud.a(2131714013));
       }
     }
     for (;;)
     {
-      if (TextUtils.isEmpty(str1)) {
-        break label230;
+      if ((TextUtils.isEmpty(str1)) || (getIntent().getBooleanExtra("auto_add_and_prohibit_auto_search", false))) {
+        break label278;
       }
       return;
-      this.jdField_a_of_type_AndroidWidgetEditText.setHint("搜索人/群/公众号/文章");
+      this.jdField_a_of_type_AndroidWidgetEditText.setHint(alud.a(2131714010));
       break;
-      label218:
-      this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription("搜索栏、QQ号、手机号、邮箱、群、公共号、正在编辑");
+      label263:
+      this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(alud.a(2131714009));
     }
-    label230:
+    label278:
     Looper.myQueue().addIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
     Looper.myQueue().removeIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
@@ -124,7 +128,7 @@ public class SearchContactsActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity
  * JD-Core Version:    0.7.0.1
  */

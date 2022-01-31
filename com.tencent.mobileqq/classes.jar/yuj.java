@@ -1,57 +1,81 @@
-import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import tencent.im.cs.group_file_common.group_file_common.FeedsResult;
+import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.FeedsRspBody;
+import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.RspBody;
 
-public class yuj
-  implements Runnable
+public abstract class yuj
+  extends nac
 {
-  public yuj(ApolloCardWindow paramApolloCardWindow) {}
-  
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    int i = 0;
-    for (;;)
+    int j = 102;
+    if (paramInt != 0)
     {
-      try
+      a(false, paramInt, "", 102, 0, paramBundle);
+      return;
+    }
+    Object localObject = new oidb_0x6d9.RspBody();
+    int k;
+    try
+    {
+      ((oidb_0x6d9.RspBody)localObject).mergeFrom(paramArrayOfByte);
+      if (!((oidb_0x6d9.RspBody)localObject).feeds_info_rsp.has())
       {
-        Object localObject1 = new File(ApolloConstant.g);
-        if (((File)localObject1).exists())
-        {
-          if (!((File)localObject1).isDirectory()) {
-            return;
-          }
-          localObject1 = ((File)localObject1).listFiles();
-          int j = localObject1.length;
-          if (i < j)
-          {
-            Object localObject3 = localObject1[i];
-            if ((localObject3 == null) || (!localObject3.getPath().endsWith(".cache"))) {
-              break label143;
-            }
-            ??? = localObject3.getName();
-            String str = ((String)???).substring(0, ((String)???).indexOf("."));
-            synchronized (ApolloCardWindow.a)
-            {
-              ApolloCardWindow.a.put(str, this.a.a(localObject3.getPath()));
-            }
-          }
-        }
+        a(false, paramInt, "", 102, 0, paramBundle);
         return;
       }
-      catch (Exception localException)
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
       {
-        QLog.e("ApolloCardWindow", 1, "mPreloadRunnable error:", localException);
+        a(false, paramInt, "", 102, 0, paramBundle);
       }
-      label143:
-      i += 1;
+      localObject = (oidb_0x6d9.FeedsRspBody)((oidb_0x6d9.RspBody)localObject).feeds_info_rsp.get();
+      if (!((oidb_0x6d9.FeedsRspBody)localObject).int32_ret_code.has())
+      {
+        a(false, paramInt, "", 102, 0, paramBundle);
+        return;
+      }
+      k = ((oidb_0x6d9.FeedsRspBody)localObject).int32_ret_code.get();
+      paramArrayOfByte = ((oidb_0x6d9.FeedsRspBody)localObject).str_client_wording.get();
+      i = j;
+      if (!((oidb_0x6d9.FeedsRspBody)localObject).rpt_feeds_result_list.has()) {
+        break label236;
+      }
+    }
+    localObject = (group_file_common.FeedsResult)((oidb_0x6d9.FeedsRspBody)localObject).rpt_feeds_result_list.get().get(0);
+    int i = j;
+    if (localObject != null)
+    {
+      paramInt = j;
+      if (((group_file_common.FeedsResult)localObject).uint32_bus_id.has()) {
+        paramInt = ((group_file_common.FeedsResult)localObject).uint32_bus_id.get();
+      }
+      i = paramInt;
+      if (!((group_file_common.FeedsResult)localObject).uint32_dead_time.has()) {}
+    }
+    for (i = ((group_file_common.FeedsResult)localObject).uint32_dead_time.get();; i = j)
+    {
+      a(true, k, paramArrayOfByte, paramInt, i, paramBundle);
+      return;
+      label236:
+      j = 0;
+      paramInt = i;
     }
   }
+  
+  public abstract void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yuj
  * JD-Core Version:    0.7.0.1
  */

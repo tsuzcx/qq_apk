@@ -1,48 +1,36 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.channelCover.ChannelCoverSimpleAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.av.app.VideoAppInterface;
+import java.util.Observable;
 
 public class lii
-  implements Runnable
+  extends Observable
 {
-  public lii(ChannelCoverSimpleAdapter paramChannelCoverSimpleAdapter, ChannelCoverInfo paramChannelCoverInfo) {}
+  VideoAppInterface a = null;
   
-  public void run()
+  public lii(VideoAppInterface paramVideoAppInterface)
   {
-    for (;;)
+    if (paramVideoAppInterface != null) {
+      this.a = paramVideoAppInterface;
+    }
+  }
+  
+  public void a(Object[] paramArrayOfObject)
+  {
+    try
     {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("is_followed", "1");
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mIsTopic)
-        {
-          String str1 = "0X80088BB";
-          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mIsTopic)
-          {
-            str3 = "0X80088BB";
-            PublicAccountReportUtils.a(null, "", str1, str3, 0, 0, "1", "", "", VideoReporter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId, localJSONObject), false);
-            return;
-          }
-          String str3 = "0X8007BE6";
-          continue;
-        }
-        String str2 = "0X8007BE6";
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-        return;
-      }
+      super.setChanged();
+      super.notifyObservers(paramArrayOfObject);
+      return;
+    }
+    finally
+    {
+      paramArrayOfObject = finally;
+      throw paramArrayOfObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lii
  * JD-Core Version:    0.7.0.1
  */

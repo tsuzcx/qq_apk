@@ -1,24 +1,21 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View.OnClickListener;
 
-final class ho
-  implements Animation.AnimationListener
+class ho
+  implements View.OnClickListener
 {
-  ho(hn paramhn, FaceRecognitionCameraActivityOld paramFaceRecognitionCameraActivityOld) {}
+  ho(FaceRecognitionDefaultActivity paramFaceRecognitionDefaultActivity) {}
   
-  public final void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    hn.a(this.b).setVisibility(0);
-  }
-  
-  public final void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public final void onAnimationStart(Animation paramAnimation)
-  {
-    hn.a(this.b).setVisibility(0);
+    paramView = new Intent(this.a, FaceRecognitionCameraActivity.class);
+    paramView.putExtra("flag", 2);
+    paramView.putExtra("istry", 1);
+    paramView.putExtra("scene", 6);
+    this.a.startActivity(paramView);
   }
 }
 

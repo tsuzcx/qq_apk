@@ -1,6 +1,5 @@
 package okio;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class ForwardingTimeout
@@ -56,7 +55,6 @@ public class ForwardingTimeout
   }
   
   public void throwIfReached()
-    throws IOException
   {
     this.delegate.throwIfReached();
   }
@@ -73,7 +71,7 @@ public class ForwardingTimeout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okio.ForwardingTimeout
  * JD-Core Version:    0.7.0.1
  */

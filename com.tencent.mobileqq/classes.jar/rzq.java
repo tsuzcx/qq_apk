@@ -1,30 +1,31 @@
-import android.view.View;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
-import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.RecommendAndAdCallback.1;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
-class rzq
-  implements Runnable
+public class rzq
+  implements scu
 {
-  rzq(rzp paramrzp, Object paramObject, View paramView) {}
+  private WeakReference<FastWebActivity> a;
   
-  public void run()
+  public rzq(FastWebActivity paramFastWebActivity)
   {
-    if ((this.jdField_a_of_type_Rzp.jdField_a_of_type_Int == 0) && ((this.jdField_a_of_type_Rzp.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) || (!this.jdField_a_of_type_Rzp.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_JavaLangObject))))
-    {
-      Toast.makeText(this.jdField_a_of_type_Rzp.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Rzp.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131434491), 0).show();
+    this.a = new WeakReference(paramFastWebActivity);
+  }
+  
+  public void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2)
+  {
+    FastWebActivity localFastWebActivity = (FastWebActivity)this.a.get();
+    if (localFastWebActivity == null) {
       return;
     }
-    if (this.jdField_a_of_type_Rzp.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) {
-      this.jdField_a_of_type_Rzp.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a = new ChatHistory.PlayingPttHistoryInfo(this.jdField_a_of_type_Rzp.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory);
-    }
-    this.jdField_a_of_type_Rzp.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Rzp.jdField_a_of_type_JavaLangString);
+    localFastWebActivity.runOnUiThread(new FastWebActivity.RecommendAndAdCallback.1(this, paramList1, paramList2, localFastWebActivity, paramBoolean, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rzq
  * JD-Core Version:    0.7.0.1
  */

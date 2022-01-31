@@ -1,91 +1,66 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.open.downloadnew.DownloadApi;
-import com.tencent.open.downloadnew.DownloadConstants;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-public class uzx
-  extends ClickableSpan
+class uzx
+  extends SimpleObserver<List<vlp>>
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference b;
+  uzx(uzw paramuzw, vaa paramvaa, uyg paramuyg) {}
   
-  public uzx(GrayTipsItemBuilder paramGrayTipsItemBuilder, QQAppInterface paramQQAppInterface, Context paramContext)
+  public void a(List<vlp> paramList)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramContext);
-  }
-  
-  public void onClick(View paramView)
-  {
-    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject = (Context)this.b.get();
-    if ((paramView == null) || (localObject == null)) {}
-    long l;
-    do
+    super.onNext(paramList);
+    ArrayList localArrayList;
+    int i;
+    vlp localvlp;
+    if (this.jdField_a_of_type_Vaa != null)
     {
-      do
+      localArrayList = new ArrayList();
+      if ((paramList != null) && (!paramList.isEmpty()))
       {
-        return;
-      } while (!(localObject instanceof Activity));
-      if (!NetworkUtil.d((Context)localObject))
-      {
-        QQToast.a((Context)localObject, 2131433009, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131558448));
-        return;
+        Collections.sort(paramList, new uzy(this));
+        paramList = paramList.iterator();
+        i = 0;
+        if (paramList.hasNext())
+        {
+          localvlp = (vlp)paramList.next();
+          if (i < uzw.a(this.jdField_a_of_type_Uzw)) {
+            break label100;
+          }
+        }
       }
-      l = System.currentTimeMillis();
-      if ((GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder) == 0L) || (l <= GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder)) || (l - GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder) > 800L)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("GrayTipsItemBuilder", 2, "click too often...ignore click envent");
-    return;
-    GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder, l);
-    if (NetworkUtil.h((Context)localObject))
+      this.jdField_a_of_type_Vaa.a(this.jdField_a_of_type_Uyg, localArrayList);
+    }
+    else
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString(DownloadConstants.a, "100868074");
-      localBundle.putString(DownloadConstants.i, "http://shouji.sogou.com/proxy/linkto.php?site=20141110sogouinputapk");
-      localBundle.putString(DownloadConstants.e, "com.sohu.inputmethod.sogou");
-      localBundle.putInt(DownloadConstants.j, 2);
-      localBundle.putString(DownloadConstants.h, "ANDROIDQQ.MSG.SOUGOU");
-      localBundle.putString(DownloadConstants.k, "搜狗输入法");
-      localBundle.putBoolean(DownloadConstants.w, false);
-      DownloadApi.a((Activity)localObject, localBundle, 0, null, 0);
+      return;
+    }
+    label100:
+    if ((localvlp != null) && (!localvlp.jdField_a_of_type_Boolean) && (localvlp.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null))
+    {
+      localArrayList.add(localvlp.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      i += 1;
     }
     for (;;)
     {
-      ReportController.b(paramView, "CliOper", "", "", "0X80047CF", "0X80047CF", 0, 0, "", "", "", "");
-      return;
-      localObject = JumpParser.a(paramView, (Context)localObject, "qapp://detail?param=" + GrayTipsItemBuilder.a("id=100868074&channelId=2800&packageName=com.sohu.inputmethod.sogou&via=MSG.SOUGOU"));
-      if (localObject != null) {
-        ((JumpAction)localObject).b();
-      }
+      break;
     }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onError(@NonNull Error paramError)
   {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    super.onError(paramError);
+    if (this.jdField_a_of_type_Vaa != null) {
+      this.jdField_a_of_type_Vaa.a(this.jdField_a_of_type_Uyg, paramError);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uzx
  * JD-Core Version:    0.7.0.1
  */

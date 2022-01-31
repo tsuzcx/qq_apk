@@ -1,60 +1,53 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.RoundAngleFrameLayout;
 
 public class osa
-  extends ValueAnimator
 {
-  private ValueAnimator.AnimatorUpdateListener a;
-  
-  private osa(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  public static int a(BaseArticleInfo paramBaseArticleInfo)
   {
-    setObjectValues(new Object[] { new osd(paramFloat1, paramFloat2, paramFloat3), new osd(paramFloat4, paramFloat5, paramFloat6) });
-    setEvaluator(new ose(null));
-    this.a = new osb(this, a(paramView));
-    addUpdateListener(this.a);
-  }
-  
-  private CircularRevealCompatLayout a(View paramView)
-  {
-    if ((paramView instanceof CircularRevealCompatLayout)) {
-      return (CircularRevealCompatLayout)paramView;
+    int j = 0;
+    int i = j;
+    if (b(paramBaseArticleInfo))
+    {
+      i = j;
+      if (paramBaseArticleInfo.mSocialFeedInfo.a.b != null) {
+        i = paramBaseArticleInfo.mSocialFeedInfo.a.b.intValue();
+      }
     }
-    ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
-    if ((localViewGroup instanceof CircularRevealCompatLayout)) {
-      return (CircularRevealCompatLayout)localViewGroup;
+    return i;
+  }
+  
+  public static void a(Context paramContext, View paramView, RoundAngleFrameLayout paramRoundAngleFrameLayout)
+  {
+    int j = paramView.getPaddingTop();
+    int k = paramView.getPaddingBottom();
+    if (ors.s()) {
+      paramRoundAngleFrameLayout.setRaduis(bdaq.a(paramContext, 8.0F));
     }
-    CircularRevealCompatLayout localCircularRevealCompatLayout = new CircularRevealCompatLayout(paramView.getContext());
-    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    int i = localViewGroup.indexOfChild(paramView);
-    localViewGroup.removeView(paramView);
-    localCircularRevealCompatLayout.addView(paramView, new ViewGroup.LayoutParams(-1, -1));
-    localViewGroup.addView(localCircularRevealCompatLayout, i, localLayoutParams);
-    return localCircularRevealCompatLayout;
+    for (int i = bdaq.a(paramContext, 14.0F);; i = bdaq.a(paramContext, 6.0F))
+    {
+      paramView.setPadding(i, j, i, k);
+      return;
+      paramRoundAngleFrameLayout.setRaduis(bdaq.a(paramContext, 0.0F));
+    }
   }
   
-  public static osa a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
   {
-    return new osa(paramView, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6);
+    return (paramBaseArticleInfo.mFeedType == 25) || ((paramBaseArticleInfo.mFeedType == 1) && (a(paramBaseArticleInfo) == 25));
   }
   
-  public static osa a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  public static boolean b(BaseArticleInfo paramBaseArticleInfo)
   {
-    return new osa(paramView, paramInt1, paramInt2, paramFloat1, paramInt1, paramInt2, paramFloat2);
-  }
-  
-  public void removeAllUpdateListeners()
-  {
-    super.removeAllUpdateListeners();
-    addUpdateListener(this.a);
+    return (paramBaseArticleInfo.mSocialFeedInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo.a != null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     osa
  * JD-Core Version:    0.7.0.1
  */

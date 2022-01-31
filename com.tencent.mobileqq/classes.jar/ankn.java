@@ -1,24 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.widget.RedDotImageView;
-import dov.com.qq.im.capture.QIMCaptureController;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ.7;
 
-class ankn
-  implements View.OnClickListener
+public class ankn
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  ankn(ankm paramankm) {}
+  public ankn(ArkAppModuleReg.ModuleQQ.7 param7, bdjz parambdjz) {}
   
-  public void onClick(View paramView)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView.setScaleX(0.8F);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView.setScaleY(0.8F);
-    QIMCaptureController.a(this.a.jdField_a_of_type_DovComQqImCaptureQIMCaptureController);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView.a(false);
+    if (paramBitmap != null) {
+      ((ImageView)this.jdField_a_of_type_Bdjz.findViewById(2131365192)).setImageBitmap(paramBitmap);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankn
  * JD-Core Version:    0.7.0.1
  */

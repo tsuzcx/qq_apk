@@ -1,62 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import java.util.ArrayList;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.2.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiyr
-  implements DialogInterface.OnClickListener
+  implements aivb
 {
-  public aiyr(TroopBarReplyActivity paramTroopBarReplyActivity, int paramInt) {}
+  public aiyr(ThemeHbFragment paramThemeHbFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      paramDialogInterface.dismiss();
-      return;
+    ThemeHbFragment.a(this.a, null);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (ThemeHbFragment.a(this.a) == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back context is null");
+      }
     }
-    switch (this.jdField_a_of_type_Int)
+    do
     {
-    case 4: 
-    case 6: 
-    default: 
       return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-      paramDialogInterface.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.h();
-      return;
-    case 2: 
-      paramDialogInterface.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_AndroidOsHandler.postDelayed(new aiys(this), 200L);
-      return;
-    case 3: 
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-      paramDialogInterface.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.b(4);
-      return;
-    case 1: 
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-      paramDialogInterface.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.g();
-      return;
-    case 7: 
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-      paramDialogInterface.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.b(3);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back drawable = " + paramObject);
+      }
+    } while (!(paramObject instanceof Drawable));
+    if (QLog.isColorLevel()) {
+      QLog.i("ThemeHbFragment", 2, "setImageBgProcess image set...");
     }
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_AndroidOsHandler.postDelayed(new aiyt(this), 200L);
+    ThemeHbFragment.a(this.a).post(new ThemeHbFragment.2.1(this, paramObject));
   }
 }
 

@@ -1,147 +1,65 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.dataline.activities.LiteActivity;
-import com.tencent.biz.thridappshare.ThridAppShareHelper;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.structmsg.StructMsgFactory;
-import com.tencent.mobileqq.utils.ForwardSendPicUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.utils.ShareMsgHelper;
+import android.view.View;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.widget.XListView;
+import mqq.app.permission.PermissionManager;
 
 public class csc
-  implements DialogInterface.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
-  public csc(ForwardOperations paramForwardOperations, String paramString1, String paramString2, int paramInt, String paramString3) {}
+  public csc(Leba paramLeba) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidContentIntent.getAction();
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.z = ForwardOperations.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations).getInputValue();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.u == 11) {
-      ForwardOperations.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.c);
-    }
-    for (;;)
-    {
-      ThridAppShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.A, "app_share_send", "", "", "");
-      return;
-      if ("com.tencent.intent.QQI_FORWARD".equals(paramDialogInterface))
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.u == 2)
+    if (Leba.b(this.a)) {
+      if (paramInt == 1) {
+        if ((!this.a.a().permissionManager.checkPermission("android.permission.CAMERA")) || (!this.a.a().permissionManager.checkPermission("android.permission.WRITE_EXTERNAL_STORAGE")) || (!this.a.a().permissionManager.checkPermission("android.permission.ACCESS_FINE_LOCATION")))
         {
-          ForwardOperations.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.c);
+          paramAdapterView = new PermissionsDialog();
+          localBaseActivity = this.a.a();
+          paramView = new csd(this, paramView, paramInt);
+          paramAdapterView.a(localBaseActivity, new String[] { "android.permission.CAMERA", "android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.ACCESS_FINE_LOCATION" }, paramView);
+        }
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      BaseActivity localBaseActivity;
+      return;
+      Leba.b(this.a, false);
+      this.a.a(paramView, paramInt, null);
+      this.a.a.postDelayed(new csh(this), 500L);
+      return;
+      if ((paramInt == 2) || (paramInt == 7) || (paramInt == 8))
+      {
+        if (!this.a.a().permissionManager.checkPermission("android.permission.WRITE_EXTERNAL_STORAGE"))
+        {
+          paramAdapterView = new PermissionsDialog();
+          localBaseActivity = this.a.a();
+          paramView = new csi(this, paramView, paramInt);
+          paramAdapterView.a(localBaseActivity, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" }, paramView);
           return;
         }
-        Bundle localBundle;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.u == 1001)
-        {
-          paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity, ChatActivity.class);
-          paramDialogInterface.setFlags(67108864);
-          localBundle = ForwardOperations.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations).getExtras();
-          localBundle.putString("uin", this.b);
-          localBundle.putInt("uintype", this.jdField_a_of_type_Int);
-          localBundle.putString("uinname", this.c);
-          localBundle.putString("share_comment_message", "");
-          paramDialogInterface.putExtras(localBundle);
-          ForwardOperations.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations, paramDialogInterface, localBundle);
-          if (paramDialogInterface.getBooleanExtra("k_back", false))
-          {
-            paramDialogInterface = StructMsgFactory.a(paramDialogInterface.getByteArrayExtra("stuctmsg_bytes"));
-            ShareMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, this.jdField_a_of_type_Int, paramDialogInterface, null);
-            label279:
-            this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity.setResult(-1);
-            if (!"public_account".equals(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.w)) {
-              break label352;
-            }
-            PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, "Pb_account_lifeservice", "mp_msg_sys_11", "pbshare_success");
-          }
-        }
-        label560:
-        for (;;)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity.finish();
-          break;
-          this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
-          break label279;
-          label352:
-          if ("struct_msg_from_h5".equals(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.w))
-          {
-            paramDialogInterface = "";
-            if (localBundle != null) {
-              paramDialogInterface = localBundle.getString("pubUin");
-            }
-            if (!TextUtils.isEmpty(paramDialogInterface)) {
-              PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDialogInterface, "Pb_account_lifeservice", "mp_msg_sys_31", "share_succ");
-            }
-          }
-          else if ("Music_gene_aio".equals(ForwardOperations.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations).getStringExtra("report")))
-          {
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.b, "Music_gene", "Music_gene_send", 0, 1, 0, "", "", "", "");
-            continue;
-            if (AppConstants.P.equals(this.b)) {
-              LiteActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.q, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity);
-            }
-            for (;;)
-            {
-              if (!bool1) {
-                break label560;
-              }
-              this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity.setResult(-1);
-              break;
-              bool1 = ForwardSendPicUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.q, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity);
-            }
-          }
-        }
+        Leba.b(this.a, false);
+        this.a.a(paramView, paramInt, null);
+        this.a.a.postDelayed(new csm(this), 500L);
+        return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.b)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.u == 1)
-        {
-          if (AppConstants.P.equals(this.b)) {
-            LiteActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.q, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity);
-          }
-          for (bool1 = bool2;; bool1 = ForwardSendPicUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.q, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity))
-          {
-            if (bool1) {
-              this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity.setResult(-1);
-            }
-            this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity.finish();
-            break;
-          }
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.u == 0) {
-          if (AppConstants.P.equals(this.b))
-          {
-            ForwardOperations.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations);
-          }
-          else
-          {
-            paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity, ChatActivity.class);
-            paramDialogInterface.putExtra("isFromShare", true);
-            this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
-            this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity.finish();
-          }
-        }
-      }
-      else
-      {
-        ForwardOperations.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.c);
-      }
+      Leba.b(this.a, false);
+      this.a.a(paramView, paramInt, null);
+      this.a.a.postDelayed(new csn(this), 500L);
+      return;
     }
+    QLog.d("Q.lebatab.leba", 2, "clickAction is dismiss,click too frequently.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     csc
  * JD-Core Version:    0.7.0.1
  */

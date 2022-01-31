@@ -1,22 +1,14 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-
-public class myr
-  implements Runnable
+public abstract interface myr
 {
-  public myr(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public abstract void a();
   
-  public void run()
-  {
-    if (PublicAccountImageCollectionMainActivity.a(this.a) != null)
-    {
-      PublicAccountImageCollectionMainActivity.a(this.a).a(PublicAccountImageCollectionMainActivity.a(this.a));
-      PublicAccountImageCollectionMainActivity.a(this.a).notifyDataSetChanged();
-    }
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     myr
  * JD-Core Version:    0.7.0.1
  */

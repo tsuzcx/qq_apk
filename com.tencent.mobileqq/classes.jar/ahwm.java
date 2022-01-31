@@ -1,24 +1,34 @@
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
-import java.util.List;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahwm
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahwm(PublicAccountSearchEngine paramPublicAccountSearchEngine, SearchRequest paramSearchRequest, ISearchListener paramISearchListener) {}
+  public ahwm(ImgPreviewAdapter paramImgPreviewAdapter) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqSearchSearchenginePublicAccountSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest);
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localList, 1);
+    EmoticonFromGroupEntity localEmoticonFromGroupEntity = this.a.a(ImgPreviewAdapter.a(this.a).getCurrentItem());
+    if (localEmoticonFromGroupEntity != null)
+    {
+      if (localEmoticonFromGroupEntity.msg != null)
+      {
+        ImgPreviewAdapter.a(this.a).a(ImgPreviewAdapter.a(this.a), localEmoticonFromGroupEntity.msg, paramView);
+        return;
+      }
+      QLog.e("ImgPreviewAdapter.msgnull", 1, "img click msg is null.");
+      return;
     }
+    QLog.e("ImgPreviewAdapter.emonull", 1, "img click emo is null.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahwm
  * JD-Core Version:    0.7.0.1
  */

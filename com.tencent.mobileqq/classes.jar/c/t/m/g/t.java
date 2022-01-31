@@ -7,7 +7,8 @@ final class t
   {
     try
     {
-      o.e();
+      p.d();
+      x.a(p.e(), p.f());
       return;
     }
     catch (Throwable localThrowable) {}
@@ -15,7 +16,7 @@ final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.t
  * JD-Core Version:    0.7.0.1
  */

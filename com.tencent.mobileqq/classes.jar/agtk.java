@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.ptt.LSRecordPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 
-public class agtk
-  implements Runnable
+class agtk
+  implements DialogInterface.OnClickListener
 {
-  public agtk(LSRecordPanel paramLSRecordPanel) {}
+  agtk(agtj paramagtj, int paramInt) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LSRecordPanel.b(this.a);
+    this.jdField_a_of_type_Agtj.a.a.a(4, 0, 0, this.jdField_a_of_type_Int);
   }
 }
 

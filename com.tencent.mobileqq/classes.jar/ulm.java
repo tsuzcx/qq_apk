@@ -1,24 +1,7 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.photo.StatisticConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public final class ulm
-  implements Runnable
-{
-  public ulm(String paramString, SessionInfo paramSessionInfo, int paramInt, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
-  {
-    String str = this.jdField_a_of_type_JavaLangString;
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-    int j = this.jdField_a_of_type_Int;
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    StatisticConstants.a(new String[] { str }, i, false, true, j, localQQAppInterface);
-  }
-}
+public class ulm {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ulm
  * JD-Core Version:    0.7.0.1
  */

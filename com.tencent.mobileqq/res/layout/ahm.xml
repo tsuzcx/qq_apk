@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/root" android:background="@drawable/b4w" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.XListView android:id="@id/elt" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" />
+    <include android:id="@id/bwb" android:visibility="gone" layout="@layout/ahn" />
+</FrameLayout>

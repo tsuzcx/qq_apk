@@ -1,33 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.widget.CircleProgress;
-
 public class xrc
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public xrc(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt1, int paramInt2) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static String a(String paramString, int paramInt)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    paramValueAnimator.width = ((int)(this.jdField_a_of_type_Int * f));
-    paramValueAnimator.height = ((int)(this.jdField_a_of_type_Int * f));
-    paramValueAnimator.addRule(13);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.getLayoutParams();
-    paramValueAnimator.width = ((int)(this.b * f));
-    paramValueAnimator.height = ((int)(f * this.b));
-    paramValueAnimator.addRule(13);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setLayoutParams(paramValueAnimator);
+    if (paramString.getBytes().length <= paramInt) {
+      return paramString;
+    }
+    int k = paramString.length();
+    int j = 0;
+    for (int i = 0;; i = j) {
+      if (j < k)
+      {
+        j += Character.charCount(paramString.codePointAt(j));
+        if (paramString.substring(0, j).getBytes().length <= paramInt) {}
+      }
+      else
+      {
+        return paramString.substring(0, i);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xrc
  * JD-Core Version:    0.7.0.1
  */

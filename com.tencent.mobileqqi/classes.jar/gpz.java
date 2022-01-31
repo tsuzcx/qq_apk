@@ -1,25 +1,19 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
 
 public class gpz
-  implements Runnable
 {
-  public gpz(FriendSystemMsgController paramFriendSystemMsgController, QQAppInterface paramQQAppInterface, int paramInt) {}
+  public int a;
+  public Object a;
   
-  public void run()
+  public gpz(NearbyTroopsActivity paramNearbyTroopsActivity, int paramInt, Object paramObject)
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putInt("unread_friend_system_msg", this.jdField_a_of_type_Int).commit();
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     gpz
  * JD-Core Version:    0.7.0.1
  */

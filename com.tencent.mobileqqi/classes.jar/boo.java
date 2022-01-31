@@ -1,68 +1,85 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.biz.eqq.EnterpriseDetailActivity;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import org.json.JSONArray;
+import android.app.Activity;
+import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.biz.common.util.LoadedCallBack;
+import com.tencent.biz.webviewplugin.OfflinePlugin;
+import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 public class boo
-  extends BaseAdapter
+  implements LoadedCallBack
 {
-  public boo(EnterpriseDetailActivity paramEnterpriseDetailActivity, int paramInt1, JSONArray paramJSONArray, int paramInt2) {}
+  public boo(OfflinePlugin paramOfflinePlugin, String paramString, long paramLong) {}
   
-  public String a(int paramInt)
+  public void a(String paramString)
   {
+    if (!TextUtils.isEmpty(paramString)) {}
+    int i;
+    Object localObject;
     try
     {
-      String str = this.jdField_a_of_type_OrgJsonJSONArray.getString(paramInt);
-      return str;
+      paramString = new JSONObject(paramString);
+    }
+    catch (JSONException paramString)
+    {
+      int j;
+      label67:
+      paramString.printStackTrace();
+      return;
+    }
+    try
+    {
+      i = paramString.getInt("r");
+      if (i != 0) {}
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+      return;
+    }
+    try
+    {
+      if (paramString.getInt("type") > 0)
+      {
+        localObject = paramString.getString("url");
+        boolean bool = TextUtils.isEmpty((CharSequence)localObject);
+        if (!bool) {
+          i = 0;
+        }
+      }
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+      return;
+    }
+    try
+    {
+      j = paramString.getInt("filesize");
+      i = j;
     }
     catch (JSONException localJSONException)
     {
-      localJSONException.printStackTrace();
+      break label67;
     }
-    return "";
-  }
-  
-  public int getCount()
-  {
-    int i = 9;
-    if (this.jdField_a_of_type_Int < 9) {
-      i = this.jdField_a_of_type_Int;
-    }
-    return i;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    AsyncImageView localAsyncImageView = new AsyncImageView(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity);
-    localAsyncImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    paramView = null;
-    try
+    String str = Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter("_bid");
+    if ((paramString.optInt("updateNotification") == 1) && (this.jdField_a_of_type_Long != 0L))
     {
-      paramViewGroup = URLDrawable.getDrawable(this.jdField_a_of_type_OrgJsonJSONArray.getString(paramInt));
-      paramView = paramViewGroup;
+      localObject = this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.a.obtainMessage();
+      ((Message)localObject).arg1 = 3;
+      ((Message)localObject).obj = paramString;
+      this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.a.sendMessage((Message)localObject);
     }
-    catch (JSONException paramViewGroup)
+    do
     {
-      for (;;)
-      {
-        paramViewGroup.printStackTrace();
-      }
-    }
-    localAsyncImageView.setImageDrawable(paramView);
-    localAsyncImageView.setLayoutParams(new AbsListView.LayoutParams(this.b, this.b));
-    return localAsyncImageView;
+      return;
+      paramString = this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.mRuntime.a();
+    } while (paramString == null);
+    HtmlOffline.a(paramString.getApplicationContext(), str, (String)localObject, i, new bop(this));
   }
 }
 

@@ -1,70 +1,27 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.biz.ProtoUtils.StoryProtocolObserver;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupDynamicEntrancePicture;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
 
 public class twr
-  extends ProtoUtils.StoryProtocolObserver
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public twr(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public twr(QCircleBaseTabFragment paramQCircleBaseTabFragment, RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
   
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public boolean onPreDraw()
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildCount() > 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopAssistantActivity", 2, TroopAssistantActivity.jdField_a_of_type_JavaLangString + " get error:" + paramInt);
-      }
-      paramArrayOfByte = null;
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getViewTreeObserver().removeOnPreDrawListener(this);
+      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsQCircleBaseTabFragment.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, this.jdField_a_of_type_Int, this.b);
+      return true;
     }
-    for (;;)
-    {
-      return paramArrayOfByte;
-      try
-      {
-        qqstory_group.RspGetGroupDynamicEntrancePicture localRspGetGroupDynamicEntrancePicture = new qqstory_group.RspGetGroupDynamicEntrancePicture();
-        localRspGetGroupDynamicEntrancePicture.mergeFrom(paramArrayOfByte);
-        paramBundle = (qqstory_struct.ErrorInfo)localRspGetGroupDynamicEntrancePicture.result.get();
-        paramArrayOfByte = paramBundle;
-        if (localRspGetGroupDynamicEntrancePicture.cover_url.has())
-        {
-          paramArrayOfByte = localRspGetGroupDynamicEntrancePicture.cover_url.get().toStringUtf8();
-          if (TextUtils.isEmpty(paramArrayOfByte))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("TroopAssistantActivity", 2, TroopAssistantActivity.jdField_a_of_type_JavaLangString + ": picUrl is Empty");
-            }
-          }
-          else
-          {
-            this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-            UIUtils.a(this.a.jdField_a_of_type_AndroidWidgetImageView, paramArrayOfByte, 68, 68, 4, UIUtils.b, "TroopStorySnap");
-            return paramBundle;
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopAssistantActivity", 2, TroopAssistantActivity.jdField_a_of_type_JavaLangString + " get exception:" + paramArrayOfByte.getMessage());
-        }
-        return null;
-      }
-    }
-    return null;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     twr
  * JD-Core Version:    0.7.0.1
  */

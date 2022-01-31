@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.message.remote.MessageRecordInfo;
+import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
 
-public final class gnl
-  implements Parcelable.Creator
+public class gnl
+  implements Runnable
 {
-  public MessageRecordInfo a(Parcel paramParcel)
-  {
-    return new MessageRecordInfo(paramParcel);
-  }
+  public gnl(GroupPicUploadProcessor paramGroupPicUploadProcessor) {}
   
-  public MessageRecordInfo[] a(int paramInt)
+  public void run()
   {
-    return new MessageRecordInfo[paramInt];
+    this.a.a();
   }
 }
 

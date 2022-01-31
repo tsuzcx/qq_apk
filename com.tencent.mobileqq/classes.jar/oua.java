@@ -1,61 +1,61 @@
-import android.view.View;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class oua
-  implements ActionSheet.OnButtonClickListener
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  public oua(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (this.a.d) {
-      return;
-    }
-    this.a.d = true;
-    switch (paramInt)
-    {
-    }
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoDynamicBufferConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = osq.a(paramString);
+    Object localObject = paramString.keySet();
     for (;;)
     {
-      this.a.b.dismiss();
-      return;
-      if (!this.a.jdField_a_of_type_Boolean)
+      String str1;
+      String str2;
+      try
       {
-        this.a.e();
-        if ((this.a.g & 0x1) != 0)
+        localObject = ((Set)localObject).iterator();
+        if (((Iterator)localObject).hasNext())
         {
-          ReportController.b(this.a.app, "P_CliOper", "flag1", "", "0X800416E", "0X800416E", 0, 0, "", "", "", "");
-          continue;
-          if (!this.a.jdField_a_of_type_Boolean)
-          {
-            this.a.f();
-            if ((this.a.g & 0x1) != 0)
-            {
-              ReportController.b(this.a.app, "P_CliOper", "flag1", "", "0X8004170", "0X8004170", 0, 0, "", "", "", "");
-              continue;
-              if (!this.a.jdField_a_of_type_Boolean)
-              {
-                this.a.d();
-                if ((this.a.g & 0x1) != 0) {
-                  ReportController.b(this.a.app, "P_CliOper", "flag1", "", "0X8004171", "0X8004171", 0, 0, "", "", "", "");
-                }
-                if (this.a.jdField_c_of_type_Int == 2) {
-                  ReportController.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_save", 0, 0, this.a.jdField_c_of_type_JavaLangString, "", "", String.valueOf(this.a.jdField_a_of_type_Int));
-                }
-              }
-            }
+          str1 = (String)((Iterator)localObject).next();
+          str2 = (String)paramString.get(str1);
+          if (TextUtils.equals(str1, "dynamic_buffer_switch")) {
+            bkbq.l(Integer.parseInt(str2));
           }
         }
+        else
+        {
+          return true;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+      }
+      if (TextUtils.equals(str1, "dynamic_buffer_config_json")) {
+        bkbq.g(str2);
       }
     }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bkbq.l(0);
+    bkbq.g("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oua
  * JD-Core Version:    0.7.0.1
  */

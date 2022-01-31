@@ -1,20 +1,61 @@
-import com.tencent.biz.qqstory.newshare.callback.OnPrepareShareListener;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareData;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLImageView;
+import com.tencent.qphone.base.util.QLog;
 
-public class nha
-  implements Runnable
+class nha
+  extends URLDrawableDownListener.Adapter
 {
-  public nha(ShareModeBase paramShareModeBase, ShareData paramShareData) {}
+  nha(ngw paramngw) {}
   
-  public void run()
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase.a.c(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareData);
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseAdapter", 2, "onLoadCancelled");
+    }
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (!this.a.f) {
+      this.a.l();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseAdapter", 2, "onLoadFailed ,cause = " + paramThrowable);
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseAdapter", 2, "onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (paramView == null) {}
+    do
+    {
+      return;
+      this.a.k();
+      if ((paramView instanceof ImageView))
+      {
+        ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
+        paramView.requestLayout();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountDetailBaseAdapter", 2, "onLoadSuccessed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nha
  * JD-Core Version:    0.7.0.1
  */

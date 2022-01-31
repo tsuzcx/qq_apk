@@ -1,29 +1,12 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class wio
-  implements View.OnClickListener
+public abstract interface wio
 {
-  public wio(SearchBaseActivity paramSearchBaseActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    if (TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText()))
-    {
-      this.a.setResult(0);
-      this.a.finish();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), false);
-  }
+  public abstract void a(wiq paramwiq, boolean paramBoolean, ErrorMessage paramErrorMessage);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wio
  * JD-Core Version:    0.7.0.1
  */

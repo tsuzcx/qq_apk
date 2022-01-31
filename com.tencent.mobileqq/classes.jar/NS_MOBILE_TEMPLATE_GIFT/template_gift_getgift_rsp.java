@@ -48,7 +48,7 @@ public final class template_gift_getgift_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_TEMPLATE_GIFT.template_gift_getgift_rsp
  * JD-Core Version:    0.7.0.1
  */

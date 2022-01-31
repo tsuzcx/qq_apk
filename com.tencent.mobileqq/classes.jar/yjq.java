@@ -1,29 +1,24 @@
-import com.tencent.ark.ark;
-import com.tencent.mobileqq.apollo.ApolloGameArkHandler;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class yjq
-  implements Runnable
+  implements View.OnClickListener
 {
-  public yjq(ApolloGameArkHandler paramApolloGameArkHandler, MessageForApollo paramMessageForApollo, String paramString1, String paramString2) {}
+  public yjq(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, yiz paramyiz) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      ark.arkNotify(ApolloGameArkHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloGameArkHandler, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo), this.jdField_a_of_type_JavaLangString, this.b, "json");
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QQ_CmGame", 1, localThrowable, new Object[0]);
-    }
+    ybt.a("https://h5.qzone.qq.com/subscription/syncFeeds/{uin}?_proxy=1&_wv=3".replace("{uin}", this.jdField_a_of_type_Yiz.a.poster.id.get()));
+    zaj.b(this.jdField_a_of_type_Yiz.a.poster.id.get(), "auth_person", "sync_qzone", 0, 0, new String[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yjq
  * JD-Core Version:    0.7.0.1
  */

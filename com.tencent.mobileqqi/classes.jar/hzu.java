@@ -1,33 +1,20 @@
-import android.annotation.TargetApi;
-import android.view.VelocityTracker;
-import com.tencent.util.VersionUtils;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.OverScroller;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.OnPluginReadyListener;
+import cooperation.plugin.IPluginManager.PluginParams;
 
-class hzu
-  implements Runnable
+public final class hzu
+  implements IPluginManager.OnPluginReadyListener
 {
-  hzu(hzt paramhzt) {}
-  
-  @TargetApi(8)
-  public void run()
+  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
   {
-    int i = AbsListView.c(this.a.a);
-    VelocityTracker localVelocityTracker = AbsListView.a(this.a.a);
-    OverScroller localOverScroller = hzt.a(this.a);
-    if ((localVelocityTracker == null) || (i == -1)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
     }
-    localVelocityTracker.computeCurrentVelocity(1000, AbsListView.d(this.a.a));
-    if (VersionUtils.b()) {}
-    for (float f = -localVelocityTracker.getYVelocity(i); (Math.abs(f) >= AbsListView.e(this.a.a)) && (localOverScroller.a(0.0F, f)); f = -localVelocityTracker.getYVelocity())
-    {
-      this.a.a.postDelayed(this, 40L);
-      return;
+    if (paramBoolean) {
+      IPluginManager.d(paramContext, paramPluginParams);
     }
-    this.a.a();
-    this.a.a.ab = 3;
-    this.a.a.a(1);
   }
 }
 

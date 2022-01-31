@@ -6,14 +6,18 @@
         <com.tencent.token.ui.base.FaceView android:id="@id/iv_face" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     </FrameLayout>
     <RelativeLayout android:id="@id/title_bar_v" android:background="@color/common_list_item_background" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="53.0dip">
-        <TextView android:textSize="18.0sp" android:textColor="@color/title_text_color" android:gravity="center" android:id="@id/bar_title_v" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxWidth="185.0dip" android:text="@string/face_pk" android:singleLine="true" android:layout_centerInParent="true" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/title_text_color" android:gravity="center" android:id="@id/bar_title_v" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxWidth="185.0dip" android:text="@string/face" android:singleLine="true" android:layout_centerInParent="true" />
         <RelativeLayout android:id="@id/bar_back_button_v" android:visibility="visible" android:layout_width="50.0dip" android:layout_height="fill_parent" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
             <ImageView android:id="@id/bar_back_img" android:layout_width="@dimen/title_bar_icon_size" android:layout_height="@dimen/title_bar_icon_size" android:src="@drawable/arrow_back" android:layout_centerInParent="true" />
         </RelativeLayout>
-        <RelativeLayout android:id="@id/bar_right_layout_v" android:visibility="invisible" android:layout_width="50.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-            <ImageView android:id="@id/bar_right_image" android:layout_width="@dimen/title_bar_icon_size" android:layout_height="@dimen/title_bar_icon_size" android:src="@drawable/title_button_help" android:layout_centerInParent="true" />
+        <RelativeLayout android:id="@id/bar_right_layout_v" android:visibility="visible" android:layout_width="50.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <ImageView android:id="@id/bar_right_image" android:layout_width="@dimen/title_bar_icon_size" android:layout_height="@dimen/title_bar_icon_size" android:src="@drawable/face_light_1" android:layout_centerInParent="true" />
         </RelativeLayout>
         <LinearLayout android:orientation="horizontal" android:id="@id/title_bar_divider" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/bright_layout" android:visibility="gone" android:layout_width="136.0dip" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:layout_marginRight="4.0dip" android:layout_alignParentRight="true">
+        <ImageView android:layout_width="136.0dip" android:layout_height="71.0dip" android:src="@drawable/face_light_alert_bg" android:scaleType="fitXY" />
+        <TextView android:textSize="@dimen/text_size_17" android:textColor="#ffffffff" android:gravity="center" android:layout_width="136.0dip" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/facedetect_bright" />
     </RelativeLayout>
     <RelativeLayout android:id="@id/tip_area" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
         <ImageView android:id="@id/livedetect_img" android:layout_width="66.0dip" android:layout_height="76.0dip" android:src="@drawable/livedetect_standard" android:scaleType="fitXY" android:layout_centerHorizontal="true" />

@@ -1,22 +1,19 @@
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.profile.view.ShakeImageView;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class agsf
-  implements Runnable
+class agsf
+  implements Comparator<MessageRecord>
 {
-  public agsf(ShakeImageView paramShakeImageView) {}
+  agsf(agse paramagse) {}
   
-  public void run()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    ShakeImageView.a(this.a, ShakeImageView.a(this.a).getDefaultSensor(9));
-    if (ShakeImageView.a(this.a) != null) {
-      ShakeImageView.a(this.a).registerListener(this.a, ShakeImageView.a(this.a), 1);
-    }
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agsf
  * JD-Core Version:    0.7.0.1
  */

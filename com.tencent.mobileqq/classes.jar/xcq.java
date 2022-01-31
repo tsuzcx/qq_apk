@@ -1,27 +1,24 @@
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class xcq
-  implements Runnable
+final class xcq
+  implements Animation.AnimationListener
 {
-  public xcq(QWalletConfigManager paramQWalletConfigManager, WeakReference paramWeakReference) {}
+  xcq(View paramView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QWalletConfigManager localQWalletConfigManager = (QWalletConfigManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQWalletConfigManager != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletConfigManager", 2, "getAllConfigAgain");
-      }
-      localQWalletConfigManager.a(QWalletConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager));
-    }
+    this.a.setAnimation(null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xcq
  * JD-Core Version:    0.7.0.1
  */

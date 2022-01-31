@@ -1,14 +1,32 @@
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-import java.util.ArrayList;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 
-public class akjv
-  implements Runnable
+class akjv
+  implements View.OnTouchListener
 {
-  public akjv(PathTraceManager paramPathTraceManager, ArrayList paramArrayList) {}
+  akjv(akjt paramakjt) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    PathTraceManager.a(this.jdField_a_of_type_JavaUtilArrayList);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramView instanceof ImageView))
+      {
+        ((ImageView)paramView).getDrawable().setColorFilter(855638016, PorterDuff.Mode.SRC_ATOP);
+        continue;
+        if ((paramView instanceof ImageView)) {
+          ((ImageView)paramView).getDrawable().clearColorFilter();
+        }
+      }
+    }
   }
 }
 

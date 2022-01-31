@@ -1,79 +1,64 @@
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.profilecard.ProfileQiqiLiveController;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.qphone.base.util.QLog;
 
-public class afjm
-  extends AsyncTask
+class afjm
+  implements DialogInterface.OnClickListener
 {
-  public afjm(ProfileQiqiLiveController paramProfileQiqiLiveController) {}
+  afjm(afjl paramafjl, MessageForArkApp paramMessageForArkApp) {}
   
-  protected Bundle a(Integer... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("downloadcode", paramVarArgs[0].intValue());
-    try
-    {
-      paramVarArgs = (HttpURLConnection)new URL("http://tiantian.qq.com/qiqimanage/qunpack/android/58.json").openConnection();
-      paramVarArgs.setConnectTimeout(5000);
-      paramVarArgs.setReadTimeout(30000);
-      paramVarArgs.setRequestMethod("GET");
-      paramVarArgs.setRequestProperty("Connection", "Keep-Alive");
-      paramVarArgs.connect();
-      paramVarArgs = new BufferedReader(new InputStreamReader(paramVarArgs.getInputStream()));
-      Object localObject = new StringBuffer();
-      for (;;)
-      {
-        String str = paramVarArgs.readLine();
-        if (str == null) {
-          break;
-        }
-        ((StringBuffer)localObject).append(str).append("\n");
+    paramDialogInterface = (MessageForArkApp)azaf.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+    if (paramDialogInterface.msgData == null) {
+      if (paramDialogInterface.ark_app_message == null) {
+        ArkAppCenter.c("ArkApp", String.format("resendMessage, msgData and ark_app_message are null", new Object[0]));
       }
-      localObject = ((StringBuffer)localObject).toString();
-      paramVarArgs.close();
-      paramVarArgs = new JSONObject((String)localObject);
-      if (paramVarArgs.optInt("errCode", -1) == 0)
+    }
+    Object localObject;
+    do
+    {
+      do
       {
-        paramVarArgs = paramVarArgs.optJSONObject("data");
-        if (paramVarArgs != null)
+        do
         {
-          paramVarArgs = paramVarArgs.optJSONObject("package");
-          if (paramVarArgs != null)
+          do
           {
-            localBundle.putString("DownPackage", paramVarArgs.optString("package"));
-            localBundle.putString("DownUrl", paramVarArgs.optString("url"));
-            localBundle.putString("DownAppId", paramVarArgs.optString("appid"));
+            return;
+            paramDialogInterface.msgData = paramDialogInterface.ark_app_message.toBytes();
+          } while (this.jdField_a_of_type_Afjl.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null);
+          if ((paramDialogInterface.ark_app_message.containStructMsg == null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.containStructMsg != null)) {
+            paramDialogInterface.ark_app_message.containStructMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.containStructMsg;
           }
-        }
-      }
-      return localBundle;
-    }
-    catch (Exception paramVarArgs) {}
-    return null;
-  }
-  
-  protected void a(Bundle paramBundle)
-  {
-    if (paramBundle != null)
-    {
-      this.a.b = paramBundle.getString("DownPackage");
-      this.a.d = paramBundle.getString("DownUrl");
-      this.a.c = paramBundle.getString("DownAppId");
-      if ((!TextUtils.isEmpty(this.a.b)) && (!TextUtils.isEmpty(this.a.c)) && (!TextUtils.isEmpty(this.a.d))) {
-        this.a.a(paramBundle.getInt("downloadcode"));
-      }
-    }
+          paramInt = paramDialogInterface.getProcessState();
+          if (QLog.isColorLevel()) {
+            QLog.d("ArkAppShareMultiItemBuilder", 2, new Object[] { "AAShare.get multiItem resend msg stat=", Integer.valueOf(paramInt), ", old.uniseq=", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq), ", new uniseq=", Long.valueOf(paramDialogInterface.uniseq) });
+          }
+          this.jdField_a_of_type_Afjl.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Afjl.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Afjl.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq);
+          if ((paramInt == 1002) || (paramInt == 0)) {
+            break;
+          }
+          localObject = BaseApplicationImpl.getApplication().getRuntime();
+        } while (!(localObject instanceof QQAppInterface));
+        localObject = (ArkAppCenter)((QQAppInterface)localObject).getManager(121);
+      } while (localObject == null);
+      localObject = ((ArkAppCenter)localObject).a();
+    } while (localObject == null);
+    ((anru)localObject).a(paramDialogInterface);
+    return;
+    this.jdField_a_of_type_Afjl.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramDialogInterface, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afjm
  * JD-Core Version:    0.7.0.1
  */

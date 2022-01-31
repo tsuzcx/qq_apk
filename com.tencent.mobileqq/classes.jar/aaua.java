@@ -1,23 +1,18 @@
-import com.tencent.ark.ArkEnvironmentManager.LibraryLoader;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.ad.tangram.net.AdHttp.Params;
 
-public final class aaua
-  implements ArkEnvironmentManager.LibraryLoader
+class aaua
+  extends AdHttp.Params
 {
-  public boolean Load()
-  {
-    ArkAppCenter.e();
-    return ArkAppCenter.b;
-  }
+  public int a = -2147483648;
   
-  public boolean isLibraryLoad()
+  public boolean isSuccess()
   {
-    return ArkAppCenter.b;
+    return (super.isSuccess()) && (this.responseData != null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaua
  * JD-Core Version:    0.7.0.1
  */

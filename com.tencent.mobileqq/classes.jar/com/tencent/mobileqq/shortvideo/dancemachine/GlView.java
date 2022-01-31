@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.shortvideo.dancemachine;
 
-import aian;
 import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.graphics.Rect;
@@ -22,117 +21,75 @@ import java.util.List;
 
 public abstract class GlView
 {
-  private static final float[] jdField_a_of_type_ArrayOfFloat = { 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F };
-  public static boolean h;
-  protected float a;
-  private int jdField_a_of_type_Int = 1;
-  protected aian a;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private Transformation jdField_a_of_type_AndroidViewAnimationTransformation;
-  protected Color4f a;
-  protected GLViewContext a;
-  private String jdField_a_of_type_JavaLangString;
-  protected FloatBuffer a;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[1];
-  protected PointF[] a;
-  private int jdField_b_of_type_Int = 0;
-  protected RectF b;
-  private float[] jdField_b_of_type_ArrayOfFloat = new float[8];
-  protected RectF c;
-  private float[] c;
-  private float[] d = new float[2];
-  protected int f;
-  protected int g;
-  protected int h;
-  protected int i;
-  protected boolean i;
-  protected boolean j;
-  protected boolean k;
-  protected boolean l = false;
-  protected boolean m = false;
-  protected boolean n = false;
-  
-  static
-  {
-    jdField_h_of_type_Boolean = false;
-  }
+  public static final int BLEND_ADDITIVE = 2;
+  public static final int BLEND_ALPHA = 1;
+  private static final int BLEND_MASK = 7;
+  public static final int BLEND_MULTIPLIED = 4;
+  public static boolean ENABLE_X_INVERSE = false;
+  static final int FLOAT_BYTE = 4;
+  private static final int PFLAG_ANIMATION_STARTED = 65536;
+  static final int POINTS = 3;
+  private static final float[] TEXTURE_COORD = { 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F };
+  static final int TRIANGLES = 1;
+  static final int TRIANGLE_FAN = 2;
+  static final int TRIANGLE_STRIP = 0;
+  private float[] adjustTextureCoord = new float[8];
+  private int[] bufferId = new int[1];
+  protected GLViewContext context;
+  private float[] dstPoint = new float[2];
+  private int mBlendMode = 1;
+  private Transformation mChildTransformation;
+  protected RectF mClipRegion = new RectF();
+  protected Color4f mColor = new Color4f(1.0F, 1.0F, 1.0F, 1.0F);
+  private Animation mCurrentAnimation;
+  private RectF mCurrentDrawRegion = new RectF();
+  protected int mCurrentTexture;
+  protected int mDrawMode = 2;
+  protected boolean mEnableClip = false;
+  protected boolean mEnableNegativeVertexAdjust = false;
+  protected boolean mHaveMappedClipSize = false;
+  protected boolean mHaveMappedSize = false;
+  private int mPrivateFlags = 0;
+  protected GLShaderManager.GLProgram mProgramObject;
+  protected boolean mRequestUpdate;
+  private String mShaderKey;
+  protected RectF mSizeRegion = new RectF();
+  private boolean mUseAdjustTextureCoord = false;
+  protected FloatBuffer mVertexBuffer;
+  protected int mVertexNum;
+  protected PointF[] mVertexPointCache;
+  protected int mVertexPointCount = 4;
+  protected boolean mVisible;
+  protected float mZOrderValue = -0.5F;
+  private Matrix matrix = new Matrix();
+  private float[] srcPoint = new float[2];
   
   public GlView(GLViewContext paramGLViewContext, String paramString)
   {
-    this.jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_i_of_type_Boolean = false;
-    this.jdField_c_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineColor4f = new Color4f(1.0F, 1.0F, 1.0F, 1.0F);
-    this.jdField_h_of_type_Int = 2;
-    this.jdField_i_of_type_Int = 4;
-    this.jdField_a_of_type_Float = -0.5F;
-    this.jdField_c_of_type_ArrayOfFloat = new float[2];
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext = paramGLViewContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Aian = GLShaderManager.a(paramString);
-    this.k = false;
-    this.l = false;
-    this.jdField_a_of_type_Boolean = false;
+    this.context = paramGLViewContext;
+    this.mShaderKey = paramString;
+    this.mProgramObject = GLShaderManager.createProgram(paramString);
+    this.mRequestUpdate = false;
+    this.mEnableNegativeVertexAdjust = false;
+    this.mUseAdjustTextureCoord = false;
   }
   
-  private void a(int paramInt)
+  private void allocateFloatBuffer(int paramInt)
   {
-    this.jdField_a_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(paramInt * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
+    this.mVertexBuffer = ByteBuffer.allocateDirect(paramInt * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.mVertexBuffer.position(0);
   }
   
-  private void a(int paramInt1, int paramInt2)
+  private boolean animationHasTranslateAnimation()
   {
-    int i1 = 0;
-    while (i1 < paramInt2)
+    if (this.mCurrentAnimation != null)
     {
-      this.jdField_c_of_type_ArrayOfFloat[0] = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(paramInt1 + i1)].x;
-      this.jdField_c_of_type_ArrayOfFloat[1] = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(paramInt1 + i1)].y;
-      this.jdField_a_of_type_AndroidGraphicsMatrix.mapPoints(this.d, this.jdField_c_of_type_ArrayOfFloat);
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(paramInt1 + i1)].x = this.d[0];
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(paramInt1 + i1)].y = this.d[1];
-      i1 += 1;
-    }
-  }
-  
-  private void a(RectF paramRectF)
-  {
-    paramRectF.left = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].x;
-    paramRectF.top = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].y;
-    paramRectF.right = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[2].x;
-    paramRectF.bottom = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[2].y;
-  }
-  
-  private void b(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_AndroidViewAnimationAnimation = paramAnimation;
-    if (paramAnimation != null)
-    {
-      if (paramAnimation.getStartTime() == -1L) {
-        paramAnimation.setStartTime(AnimationUtils.currentAnimationTimeMillis());
-      }
-      paramAnimation.reset();
-    }
-  }
-  
-  private boolean b()
-  {
-    return (this.jdField_b_of_type_Int & 0x10000) == 65536;
-  }
-  
-  private boolean c()
-  {
-    if (this.jdField_a_of_type_AndroidViewAnimationAnimation != null)
-    {
-      if ((this.jdField_a_of_type_AndroidViewAnimationAnimation instanceof TranslateAnimation)) {
+      if ((this.mCurrentAnimation instanceof TranslateAnimation)) {
         return true;
       }
-      if ((this.jdField_a_of_type_AndroidViewAnimationAnimation instanceof AnimationSet))
+      if ((this.mCurrentAnimation instanceof AnimationSet))
       {
-        Iterator localIterator = ((AnimationSet)this.jdField_a_of_type_AndroidViewAnimationAnimation).getAnimations().iterator();
+        Iterator localIterator = ((AnimationSet)this.mCurrentAnimation).getAnimations().iterator();
         while (localIterator.hasNext()) {
           if (((Animation)localIterator.next() instanceof TranslateAnimation)) {
             return true;
@@ -143,15 +100,42 @@ public abstract class GlView
     return false;
   }
   
-  private void f()
+  private void disableBlend()
   {
-    if ((this.jdField_a_of_type_Int & 0x2) == 2)
+    GLES20.glDisable(3042);
+  }
+  
+  private void drawRegion()
+  {
+    if (this.mDrawMode == 0) {
+      GLES20.glDrawArrays(5, 0, this.mVertexNum);
+    }
+    do
+    {
+      return;
+      if (this.mDrawMode == 1)
+      {
+        GLES20.glDrawArrays(4, 0, this.mVertexNum);
+        return;
+      }
+      if (this.mDrawMode == 2)
+      {
+        GLES20.glDrawArrays(6, 0, this.mVertexNum);
+        return;
+      }
+    } while (this.mDrawMode != 3);
+    GLES20.glDrawArrays(0, 0, this.mVertexNum);
+  }
+  
+  private void enableBlend()
+  {
+    if ((this.mBlendMode & 0x2) == 2)
     {
       GLES20.glEnable(3042);
       GLES20.glBlendFunc(770, 1);
       return;
     }
-    if ((this.jdField_a_of_type_Int & 0x4) == 4)
+    if ((this.mBlendMode & 0x4) == 4)
     {
       GLES20.glEnable(3042);
       GLES20.glBlendFunc(0, 768);
@@ -161,273 +145,138 @@ public abstract class GlView
     GLES20.glBlendFunc(770, 771);
   }
   
-  private void g()
+  private boolean isAnimationStarted()
   {
-    GLES20.glDisable(3042);
+    return (this.mPrivateFlags & 0x10000) == 65536;
   }
   
-  private void h()
+  private void mapPointData(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[1].y <= 0.0F)
+    int i = 0;
+    while (i < paramInt2)
     {
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].set(0.0F, 0.0F);
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[1].set(0.0F, 0.0F);
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[2].set(0.0F, 0.0F);
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[3].set(0.0F, 0.0F);
-      int i1 = 0;
-      while (i1 < this.jdField_b_of_type_ArrayOfFloat.length)
+      this.srcPoint[0] = this.mVertexPointCache[(paramInt1 + i)].x;
+      this.srcPoint[1] = this.mVertexPointCache[(paramInt1 + i)].y;
+      this.matrix.mapPoints(this.dstPoint, this.srcPoint);
+      this.mVertexPointCache[(paramInt1 + i)].x = this.dstPoint[0];
+      this.mVertexPointCache[(paramInt1 + i)].y = this.dstPoint[1];
+      i += 1;
+    }
+  }
+  
+  private void negativeVertexAdjust()
+  {
+    if (this.mVertexPointCache[1].y <= 0.0F)
+    {
+      this.mVertexPointCache[0].set(0.0F, 0.0F);
+      this.mVertexPointCache[1].set(0.0F, 0.0F);
+      this.mVertexPointCache[2].set(0.0F, 0.0F);
+      this.mVertexPointCache[3].set(0.0F, 0.0F);
+      int i = 0;
+      while (i < this.adjustTextureCoord.length)
       {
-        this.jdField_b_of_type_ArrayOfFloat[0] = 0.0F;
-        i1 += 1;
+        this.adjustTextureCoord[0] = 0.0F;
+        i += 1;
       }
     }
-    if (this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].y < 0.0F)
+    if (this.mVertexPointCache[0].y < 0.0F)
     {
-      float f1 = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[1].y - this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].y;
-      f1 = (f1 - this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[1].y) / f1;
-      this.jdField_b_of_type_ArrayOfFloat[0] = 0.0F;
-      this.jdField_b_of_type_ArrayOfFloat[1] = f1;
-      this.jdField_b_of_type_ArrayOfFloat[2] = 0.0F;
-      this.jdField_b_of_type_ArrayOfFloat[3] = 1.0F;
-      this.jdField_b_of_type_ArrayOfFloat[4] = 1.0F;
-      this.jdField_b_of_type_ArrayOfFloat[5] = 1.0F;
-      this.jdField_b_of_type_ArrayOfFloat[6] = 1.0F;
-      this.jdField_b_of_type_ArrayOfFloat[7] = f1;
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].y = 0.0F;
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[3].y = 0.0F;
+      float f = this.mVertexPointCache[1].y - this.mVertexPointCache[0].y;
+      f = (f - this.mVertexPointCache[1].y) / f;
+      this.adjustTextureCoord[0] = 0.0F;
+      this.adjustTextureCoord[1] = f;
+      this.adjustTextureCoord[2] = 0.0F;
+      this.adjustTextureCoord[3] = 1.0F;
+      this.adjustTextureCoord[4] = 1.0F;
+      this.adjustTextureCoord[5] = 1.0F;
+      this.adjustTextureCoord[6] = 1.0F;
+      this.adjustTextureCoord[7] = f;
+      this.mVertexPointCache[0].y = 0.0F;
+      this.mVertexPointCache[3].y = 0.0F;
     }
   }
   
-  private void i()
+  private void setAnimation(Animation paramAnimation)
   {
-    if (this.jdField_h_of_type_Int == 0) {
-      GLES20.glDrawArrays(5, 0, this.g);
-    }
-    do
+    this.mCurrentAnimation = paramAnimation;
+    if (paramAnimation != null)
     {
+      if (paramAnimation.getStartTime() == -1L) {
+        paramAnimation.setStartTime(AnimationUtils.currentAnimationTimeMillis());
+      }
+      paramAnimation.reset();
+    }
+  }
+  
+  private void setMapDataToRegion(RectF paramRectF)
+  {
+    paramRectF.left = this.mVertexPointCache[0].x;
+    paramRectF.top = this.mVertexPointCache[0].y;
+    paramRectF.right = this.mVertexPointCache[2].x;
+    paramRectF.bottom = this.mVertexPointCache[2].y;
+  }
+  
+  public void clearAnimation()
+  {
+    this.mCurrentAnimation = null;
+    setAlpha(1.0F);
+  }
+  
+  public void clearStatus() {}
+  
+  public void draw()
+  {
+    if (this.mVisible) {
+      drawInternal();
+    }
+  }
+  
+  public final void drawInternal()
+  {
+    if (this.mProgramObject == null)
+    {
+      DanceLog.print("GlView", "GlView: drawInternal mProgramObject=null");
       return;
-      if (this.jdField_h_of_type_Int == 1)
-      {
-        GLES20.glDrawArrays(4, 0, this.g);
-        return;
-      }
-      if (this.jdField_h_of_type_Int == 2)
-      {
-        GLES20.glDrawArrays(6, 0, this.g);
-        return;
-      }
-    } while (this.jdField_h_of_type_Int != 3);
-    GLES20.glDrawArrays(0, 0, this.g);
-  }
-  
-  public Animation a()
-  {
-    return this.jdField_a_of_type_AndroidViewAnimationAnimation;
-  }
-  
-  public void a()
-  {
-    if (this.j) {
-      r();
     }
-  }
-  
-  public void a(Animation paramAnimation)
-  {
-    if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null)
+    enableBlend();
+    GLES20.glViewport(this.context.getViewPort().left, this.context.getViewPort().top, this.context.getViewPort().width(), this.context.getViewPort().height());
+    GLES20.glUseProgram(this.mProgramObject.programId);
+    GLES20.glUniformMatrix4fv(((Integer)this.mProgramObject.uniform.get("u_projectionMatrix")).intValue(), 1, false, this.context.getProjectMatrix(), 0);
+    GLES20.glBindBuffer(34962, this.bufferId[0]);
+    GlUtil.checkGlError("glBindBuffer");
+    if (updateParam())
     {
-      paramAnimation.setStartTime(-1L);
-      b(paramAnimation);
+      transferVertexData();
+      this.mVertexBuffer.position(0);
+      GLES20.glBufferData(34962, this.mVertexBuffer.capacity() * 4, this.mVertexBuffer, 35044);
     }
+    updateAttribute();
+    drawRegion();
+    GLES20.glBindBuffer(34962, 0);
+    disableBlend();
   }
   
-  protected boolean a()
+  void generateAnimationVertexData()
   {
-    boolean bool1 = false;
-    boolean bool2 = this.k;
-    this.k = false;
-    if ((this.jdField_a_of_type_AndroidViewAnimationAnimation != null) || (bool2)) {
-      bool1 = true;
-    }
-    return bool1;
-  }
-  
-  protected void al_()
-  {
-    int i1 = ((Integer)this.jdField_a_of_type_Aian.jdField_a_of_type_JavaUtilHashMap.get("a_position")).intValue();
-    GLES20.glVertexAttribPointer(i1, 3, 5126, false, 0, 0);
-    GLES20.glEnableVertexAttribArray(i1);
-    i1 = ((Integer)this.jdField_a_of_type_Aian.jdField_a_of_type_JavaUtilHashMap.get("a_texCoord")).intValue();
-    GLES20.glVertexAttribPointer(i1, 2, 5126, false, 0, this.jdField_a_of_type_Aian.b() * this.jdField_i_of_type_Int * 4);
-    GLES20.glEnableVertexAttribArray(i1);
-    i1 = ((Integer)this.jdField_a_of_type_Aian.jdField_a_of_type_JavaUtilHashMap.get("a_color")).intValue();
-    GLES20.glVertexAttribPointer(i1, 4, 5126, false, 0, this.jdField_a_of_type_Aian.c() * this.jdField_i_of_type_Int * 4);
-    GLES20.glEnableVertexAttribArray(i1);
-    i1 = ((Integer)this.jdField_a_of_type_Aian.b.get("u_texture")).intValue();
-    GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(3553, this.f);
-    GLES20.glUniform1i(i1, 0);
-  }
-  
-  protected void am_()
-  {
-    k();
-    n();
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
-    c(this.jdField_a_of_type_Float);
-    if ((this.jdField_i_of_type_Boolean) && (this.jdField_b_of_type_AndroidGraphicsRectF.contains(this.jdField_c_of_type_AndroidGraphicsRectF)))
-    {
-      float f1 = (this.jdField_c_of_type_AndroidGraphicsRectF.left - this.jdField_b_of_type_AndroidGraphicsRectF.left) / this.jdField_b_of_type_AndroidGraphicsRectF.width();
-      float f2 = (this.jdField_b_of_type_AndroidGraphicsRectF.right - this.jdField_c_of_type_AndroidGraphicsRectF.right) / this.jdField_b_of_type_AndroidGraphicsRectF.width();
-      float f3 = (this.jdField_c_of_type_AndroidGraphicsRectF.top - this.jdField_b_of_type_AndroidGraphicsRectF.top) / this.jdField_b_of_type_AndroidGraphicsRectF.height();
-      float f4 = (this.jdField_b_of_type_AndroidGraphicsRectF.bottom - this.jdField_c_of_type_AndroidGraphicsRectF.bottom) / this.jdField_b_of_type_AndroidGraphicsRectF.height();
-      this.jdField_a_of_type_JavaNioFloatBuffer.put(f1);
-      this.jdField_a_of_type_JavaNioFloatBuffer.put(f3);
-      this.jdField_a_of_type_JavaNioFloatBuffer.put(f1);
-      this.jdField_a_of_type_JavaNioFloatBuffer.put(1.0F - f4);
-      this.jdField_a_of_type_JavaNioFloatBuffer.put(1.0F - f2);
-      this.jdField_a_of_type_JavaNioFloatBuffer.put(1.0F - f4);
-      this.jdField_a_of_type_JavaNioFloatBuffer.put(1.0F - f2);
-      this.jdField_a_of_type_JavaNioFloatBuffer.put(f3);
-    }
-    for (;;)
-    {
-      o();
-      this.g = 4;
-      this.jdField_h_of_type_Int = 2;
-      return;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_b_of_type_ArrayOfFloat);
-        this.jdField_a_of_type_Boolean = false;
-      }
-      else
-      {
-        this.jdField_a_of_type_JavaNioFloatBuffer.put(jdField_a_of_type_ArrayOfFloat);
-      }
-    }
-  }
-  
-  public RectF b()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsRectF;
-  }
-  
-  final void c(float paramFloat)
-  {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.b().equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a());
-    int i1 = 0;
-    if (i1 < this.jdField_i_of_type_Int)
-    {
-      if (bool) {
-        this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[i1].x);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[i1].y);
-        this.jdField_a_of_type_JavaNioFloatBuffer.put(paramFloat);
-        i1 += 1;
-        break;
-        if (jdField_h_of_type_Boolean) {
-          this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a().width() - this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[i1].x);
-        } else {
-          this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[i1].x);
-        }
-      }
-    }
-  }
-  
-  public void d() {}
-  
-  public void d(float paramFloat)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineColor4f.a(1.0F, 1.0F, 1.0F, paramFloat);
-    this.k = true;
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_AndroidViewAnimationAnimation = null;
-    d(1.0F);
-  }
-  
-  public void f(int paramInt)
-  {
-    int i1 = 0;
-    if (this.jdField_a_of_type_Aian == null) {
-      DanceLog.a("GlView", "GlView: initView mProgramObject=null");
-    }
-    for (;;)
-    {
-      return;
-      this.jdField_i_of_type_Int = paramInt;
-      a(this.jdField_a_of_type_Aian.a() * this.jdField_i_of_type_Int);
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = new PointF[this.jdField_i_of_type_Int];
-      GLES20.glGenBuffers(1, this.jdField_a_of_type_ArrayOfInt, 0);
-      paramInt = i1;
-      while (paramInt < this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF.length)
-      {
-        this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[paramInt] = new PointF();
-        paramInt += 1;
-      }
-    }
-  }
-  
-  public final void g(int paramInt)
-  {
-    this.jdField_a_of_type_Int = (paramInt & 0x7);
-  }
-  
-  public void h_(boolean paramBoolean)
-  {
-    this.j = paramBoolean;
-  }
-  
-  final void k()
-  {
-    l();
-    m();
-  }
-  
-  final void l()
-  {
-    if (!this.m)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a(this.jdField_b_of_type_AndroidGraphicsRectF);
-      this.m = true;
-    }
-  }
-  
-  final void m()
-  {
-    if (!this.n)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a(this.jdField_c_of_type_AndroidGraphicsRectF);
-      this.n = true;
-    }
-  }
-  
-  void n()
-  {
-    Rect localRect = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a();
-    Animation localAnimation = a();
-    int i1;
-    int i2;
+    Rect localRect = this.context.getViewPort();
+    Animation localAnimation = getAnimation();
+    int i;
+    int j;
     if (localAnimation != null)
     {
       if (!localAnimation.isInitialized())
       {
-        localAnimation.initialize((int)this.jdField_c_of_type_AndroidGraphicsRectF.width(), (int)this.jdField_c_of_type_AndroidGraphicsRectF.height(), localRect.width(), localRect.height());
-        p();
+        localAnimation.initialize((int)this.mClipRegion.width(), (int)this.mClipRegion.height(), localRect.width(), localRect.height());
+        onAnimationStart();
       }
-      if (this.jdField_a_of_type_AndroidViewAnimationTransformation == null) {
-        this.jdField_a_of_type_AndroidViewAnimationTransformation = new Transformation();
+      if (this.mChildTransformation == null) {
+        this.mChildTransformation = new Transformation();
       }
-      this.jdField_a_of_type_AndroidViewAnimationTransformation.getMatrix().reset();
-      this.jdField_a_of_type_AndroidViewAnimationTransformation.setAlpha(1.0F);
-      boolean bool2 = localAnimation.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
-      if ((b()) && (localAnimation.hasEnded())) {
-        q();
+      this.mChildTransformation.getMatrix().reset();
+      this.mChildTransformation.setAlpha(1.0F);
+      boolean bool2 = localAnimation.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.mChildTransformation);
+      if ((isAnimationStarted()) && (localAnimation.hasEnded())) {
+        onAnimationEnd();
       }
       boolean bool1 = bool2;
       if (!bool2)
@@ -439,100 +288,257 @@ public abstract class GlView
       }
       if (bool1)
       {
-        d(this.jdField_a_of_type_AndroidViewAnimationTransformation.getAlpha());
-        if (!this.jdField_a_of_type_AndroidViewAnimationTransformation.getMatrix().isIdentity())
+        setAlpha(this.mChildTransformation.getAlpha());
+        if (!this.mChildTransformation.getMatrix().isIdentity())
         {
-          this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-          this.jdField_a_of_type_AndroidGraphicsMatrix.set(this.jdField_a_of_type_AndroidViewAnimationTransformation.getMatrix());
-          if (!c()) {
-            this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_c_of_type_AndroidGraphicsRectF.left, this.jdField_c_of_type_AndroidGraphicsRectF.top);
+          this.matrix.reset();
+          this.matrix.set(this.mChildTransformation.getMatrix());
+          if (!animationHasTranslateAnimation()) {
+            this.matrix.postTranslate(this.mClipRegion.left, this.mClipRegion.top);
           }
-          this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].set(0.0F, 0.0F);
-          this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[1].set(0.0F, this.jdField_c_of_type_AndroidGraphicsRectF.height());
-          this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[2].set(this.jdField_c_of_type_AndroidGraphicsRectF.width(), this.jdField_c_of_type_AndroidGraphicsRectF.height());
-          this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[3].set(this.jdField_c_of_type_AndroidGraphicsRectF.width(), 0.0F);
-          a(0, 4);
-          a(this.jdField_a_of_type_AndroidGraphicsRectF);
-          i1 = 1;
-          i2 = 1;
+          this.mVertexPointCache[0].set(0.0F, 0.0F);
+          this.mVertexPointCache[1].set(0.0F, this.mClipRegion.height());
+          this.mVertexPointCache[2].set(this.mClipRegion.width(), this.mClipRegion.height());
+          this.mVertexPointCache[3].set(this.mClipRegion.width(), 0.0F);
+          mapPointData(0, 4);
+          setMapDataToRegion(this.mCurrentDrawRegion);
+          i = 1;
+          j = 1;
         }
       }
     }
     for (;;)
     {
-      if (i1 == 0) {
-        d(1.0F);
+      if (i == 0) {
+        setAlpha(1.0F);
       }
-      if (i2 == 0)
+      if (j == 0)
       {
-        this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].set(this.jdField_c_of_type_AndroidGraphicsRectF.left, this.jdField_c_of_type_AndroidGraphicsRectF.top);
-        this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[1].set(this.jdField_c_of_type_AndroidGraphicsRectF.left, this.jdField_c_of_type_AndroidGraphicsRectF.bottom);
-        this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[2].set(this.jdField_c_of_type_AndroidGraphicsRectF.right, this.jdField_c_of_type_AndroidGraphicsRectF.bottom);
-        this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[3].set(this.jdField_c_of_type_AndroidGraphicsRectF.right, this.jdField_c_of_type_AndroidGraphicsRectF.top);
-        this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_AndroidGraphicsRectF);
+        this.mVertexPointCache[0].set(this.mClipRegion.left, this.mClipRegion.top);
+        this.mVertexPointCache[1].set(this.mClipRegion.left, this.mClipRegion.bottom);
+        this.mVertexPointCache[2].set(this.mClipRegion.right, this.mClipRegion.bottom);
+        this.mVertexPointCache[3].set(this.mClipRegion.right, this.mClipRegion.top);
+        this.mCurrentDrawRegion.set(this.mClipRegion);
       }
-      if (this.l)
+      if (this.mEnableNegativeVertexAdjust)
       {
-        h();
-        this.jdField_a_of_type_Boolean = true;
+        negativeVertexAdjust();
+        this.mUseAdjustTextureCoord = true;
       }
       return;
-      i1 = 1;
-      i2 = 0;
+      i = 1;
+      j = 0;
       continue;
-      i1 = 0;
-      i2 = 0;
+      i = 0;
+      j = 0;
     }
   }
   
-  final void o()
+  public Animation getAnimation()
   {
-    int i1 = 0;
-    while (i1 < this.jdField_i_of_type_Int)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineColor4f.a(this.jdField_a_of_type_JavaNioFloatBuffer);
-      i1 += 1;
+    return this.mCurrentAnimation;
+  }
+  
+  public RectF getCurrentDrawRegionSize()
+  {
+    return this.mCurrentDrawRegion;
+  }
+  
+  public void initView(int paramInt)
+  {
+    int i = 0;
+    if (this.mProgramObject == null) {
+      DanceLog.print("GlView", "GlView: initView mProgramObject=null");
     }
-  }
-  
-  protected void p()
-  {
-    this.jdField_b_of_type_Int |= 0x10000;
-  }
-  
-  protected void q()
-  {
-    this.jdField_b_of_type_Int &= 0xFFFEFFFF;
-  }
-  
-  public final void r()
-  {
-    if (this.jdField_a_of_type_Aian == null)
+    for (;;)
     {
-      DanceLog.a("GlView", "GlView: drawInternal mProgramObject=null");
       return;
+      this.mVertexPointCount = paramInt;
+      allocateFloatBuffer(this.mProgramObject.getVertexAttributeSize() * this.mVertexPointCount);
+      this.mVertexPointCache = new PointF[this.mVertexPointCount];
+      GLES20.glGenBuffers(1, this.bufferId, 0);
+      paramInt = i;
+      while (paramInt < this.mVertexPointCache.length)
+      {
+        this.mVertexPointCache[paramInt] = new PointF();
+        paramInt += 1;
+      }
     }
-    f();
-    GLES20.glViewport(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a().left, this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a().top, this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a().width(), this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a().height());
-    GLES20.glUseProgram(this.jdField_a_of_type_Aian.jdField_a_of_type_Int);
-    GLES20.glUniformMatrix4fv(((Integer)this.jdField_a_of_type_Aian.b.get("u_projectionMatrix")).intValue(), 1, false, this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a(), 0);
-    GLES20.glBindBuffer(34962, this.jdField_a_of_type_ArrayOfInt[0]);
-    GlUtil.a("glBindBuffer");
-    if (a())
+  }
+  
+  final void mapClipRegion()
+  {
+    if (!this.mHaveMappedClipSize)
     {
-      am_();
-      this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
-      GLES20.glBufferData(34962, this.jdField_a_of_type_JavaNioFloatBuffer.capacity() * 4, this.jdField_a_of_type_JavaNioFloatBuffer, 35044);
+      this.context.mapNormalRegion(this.mClipRegion);
+      this.mHaveMappedClipSize = true;
     }
-    al_();
-    i();
-    GLES20.glBindBuffer(34962, 0);
-    g();
+  }
+  
+  final void mapSizeRegion()
+  {
+    if (!this.mHaveMappedSize)
+    {
+      this.context.mapNormalRegion(this.mSizeRegion);
+      this.mHaveMappedSize = true;
+    }
+  }
+  
+  protected void onAnimationEnd()
+  {
+    this.mPrivateFlags &= 0xFFFEFFFF;
+  }
+  
+  protected void onAnimationStart()
+  {
+    this.mPrivateFlags |= 0x10000;
+  }
+  
+  public void release()
+  {
+    clearStatus();
+  }
+  
+  public void setAlpha(float paramFloat)
+  {
+    this.mColor.setValue(1.0F, 1.0F, 1.0F, paramFloat);
+    this.mRequestUpdate = true;
+  }
+  
+  public final void setBlendMode(int paramInt)
+  {
+    this.mBlendMode = (paramInt & 0x7);
+  }
+  
+  final void setColorAttributeValue()
+  {
+    int i = 0;
+    while (i < this.mVertexPointCount)
+    {
+      this.mColor.putValue(this.mVertexBuffer);
+      i += 1;
+    }
+  }
+  
+  final void setVertexCoordinateData(float paramFloat)
+  {
+    boolean bool = this.context.getSurfaceViewSize().equals(this.context.getViewPort());
+    int i = 0;
+    if (i < this.mVertexPointCount)
+    {
+      if (bool) {
+        this.mVertexBuffer.put(this.mVertexPointCache[i].x);
+      }
+      for (;;)
+      {
+        this.mVertexBuffer.put(this.mVertexPointCache[i].y);
+        this.mVertexBuffer.put(paramFloat);
+        i += 1;
+        break;
+        if (ENABLE_X_INVERSE) {
+          this.mVertexBuffer.put(this.context.getViewPort().width() - this.mVertexPointCache[i].x);
+        } else {
+          this.mVertexBuffer.put(this.mVertexPointCache[i].x);
+        }
+      }
+    }
+  }
+  
+  public void setVisibility(boolean paramBoolean)
+  {
+    this.mVisible = paramBoolean;
+  }
+  
+  protected void setZOrderValue(float paramFloat)
+  {
+    this.mZOrderValue = paramFloat;
+  }
+  
+  public void startAnimation(Animation paramAnimation)
+  {
+    if (this.mCurrentAnimation == null)
+    {
+      paramAnimation.setStartTime(-1L);
+      setAnimation(paramAnimation);
+    }
+  }
+  
+  final void surfaceCoordinateMapToViewPortSize()
+  {
+    mapSizeRegion();
+    mapClipRegion();
+  }
+  
+  protected void transferVertexData()
+  {
+    surfaceCoordinateMapToViewPortSize();
+    generateAnimationVertexData();
+    this.mVertexBuffer.position(0);
+    setVertexCoordinateData(this.mZOrderValue);
+    if ((this.mEnableClip) && (this.mSizeRegion.contains(this.mClipRegion)))
+    {
+      float f1 = (this.mClipRegion.left - this.mSizeRegion.left) / this.mSizeRegion.width();
+      float f2 = (this.mSizeRegion.right - this.mClipRegion.right) / this.mSizeRegion.width();
+      float f3 = (this.mClipRegion.top - this.mSizeRegion.top) / this.mSizeRegion.height();
+      float f4 = (this.mSizeRegion.bottom - this.mClipRegion.bottom) / this.mSizeRegion.height();
+      this.mVertexBuffer.put(f1);
+      this.mVertexBuffer.put(f3);
+      this.mVertexBuffer.put(f1);
+      this.mVertexBuffer.put(1.0F - f4);
+      this.mVertexBuffer.put(1.0F - f2);
+      this.mVertexBuffer.put(1.0F - f4);
+      this.mVertexBuffer.put(1.0F - f2);
+      this.mVertexBuffer.put(f3);
+    }
+    for (;;)
+    {
+      setColorAttributeValue();
+      this.mVertexNum = 4;
+      this.mDrawMode = 2;
+      return;
+      if (this.mUseAdjustTextureCoord)
+      {
+        this.mVertexBuffer.put(this.adjustTextureCoord);
+        this.mUseAdjustTextureCoord = false;
+      }
+      else
+      {
+        this.mVertexBuffer.put(TEXTURE_COORD);
+      }
+    }
+  }
+  
+  protected void updateAttribute()
+  {
+    int i = ((Integer)this.mProgramObject.attribute.get("a_position")).intValue();
+    GLES20.glVertexAttribPointer(i, 3, 5126, false, 0, 0);
+    GLES20.glEnableVertexAttribArray(i);
+    i = ((Integer)this.mProgramObject.attribute.get("a_texCoord")).intValue();
+    GLES20.glVertexAttribPointer(i, 2, 5126, false, 0, this.mProgramObject.getTextureOffset() * this.mVertexPointCount * 4);
+    GLES20.glEnableVertexAttribArray(i);
+    i = ((Integer)this.mProgramObject.attribute.get("a_color")).intValue();
+    GLES20.glVertexAttribPointer(i, 4, 5126, false, 0, this.mProgramObject.getColorOffset() * this.mVertexPointCount * 4);
+    GLES20.glEnableVertexAttribArray(i);
+    i = ((Integer)this.mProgramObject.uniform.get("u_texture")).intValue();
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(3553, this.mCurrentTexture);
+    GLES20.glUniform1i(i, 0);
+  }
+  
+  protected boolean updateParam()
+  {
+    boolean bool1 = false;
+    boolean bool2 = this.mRequestUpdate;
+    this.mRequestUpdate = false;
+    if ((this.mCurrentAnimation != null) || (bool2)) {
+      bool1 = true;
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GlView
  * JD-Core Version:    0.7.0.1
  */

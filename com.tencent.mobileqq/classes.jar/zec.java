@@ -1,50 +1,45 @@
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQProfileItem;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
+import org.json.JSONObject;
 
 public class zec
-  extends AccountObserver
+  implements aoil
 {
-  public zec(FriendsManager paramFriendsManager) {}
+  public zec(NewerGuidePlugin paramNewerGuidePlugin, bhuf parambhuf) {}
   
-  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
-  {
-    ThreadManager.executeOnSubThread(new zed(this, paramString2, paramString1));
-  }
-  
-  public void onlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, long paramLong, boolean paramBoolean3)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.friend", 2, "onlineStatusChanged isSuccess=" + paramBoolean1 + ",curStatus=" + paramStatus.toString() + ",isFriendListChang=" + paramBoolean2 + ",timeStamp=" + paramLong + ",isGatherListChange=" + paramBoolean3);
+      QLog.d("NewerGuidePlugin", 2, String.format("onConfirmBtClicked mSelectedIndex=%s", new Object[] { Integer.valueOf(NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin)) }));
     }
-    if (paramStatus == AppRuntime.Status.online) {
-      FriendsManager.a(this.a).a(11L, false);
+    if ((this.jdField_a_of_type_Bhuf != null) && (this.jdField_a_of_type_Bhuf.isShowing())) {
+      this.jdField_a_of_type_Bhuf.dismiss();
     }
-    for (;;)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      FriendsManager.a(this.a).a.a(paramBoolean2, paramLong, paramBoolean3);
-      if (!paramBoolean2)
-      {
-        paramStatus = new QQProfileItem(FriendsManager.a(this.a));
-        FriendsManager.a(this.a).a.a(101, paramStatus);
-      }
+      localJSONObject.put("result", 1);
+      localJSONObject.put("index", NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin));
+      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respSelector", new String[] { localJSONObject.toString() });
       return;
-      if (paramStatus == AppRuntime.Status.away) {
-        FriendsManager.a(this.a).a(31L, false);
-      } else if (paramStatus == AppRuntime.Status.invisiable) {
-        FriendsManager.a(this.a).a(41L, false);
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("NewerGuidePlugin", 1, "sendSelectorResp fail", localException);
       }
     }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zec
  * JD-Core Version:    0.7.0.1
  */

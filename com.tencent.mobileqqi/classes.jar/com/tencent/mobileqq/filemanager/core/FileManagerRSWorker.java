@@ -31,11 +31,11 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.wstt.SSCM.SSCM;
 import com.tencent.wstt.SSCM.Utils;
 import com.weiyun.sdk.IWyTaskManager.Task;
-import fyu;
-import fyw;
-import fyx;
-import fyy;
-import fyz;
+import fui;
+import fuk;
+import ful;
+import fum;
+import fun;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -60,7 +60,7 @@ public class FileManagerRSWorker
   public int a;
   public long a;
   public QQAppInterface a;
-  private FileTransferObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new fyu(this);
+  private FileTransferObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new fui(this);
   public FileManagerEntity a;
   HttpMsg jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg;
   SSCM jdField_a_of_type_ComTencentWsttSSCMSSCM;
@@ -732,11 +732,11 @@ public class FileManagerRSWorker
     //   570: new 678	android/os/Handler
     //   573: dup
     //   574: invokespecial 679	android/os/Handler:<init>	()V
-    //   577: new 681	fyv
+    //   577: new 681	fuj
     //   580: dup
     //   581: aload_0
     //   582: lload 5
-    //   584: invokespecial 684	fyv:<init>	(Lcom/tencent/mobileqq/filemanager/core/FileManagerRSWorker;J)V
+    //   584: invokespecial 684	fuj:<init>	(Lcom/tencent/mobileqq/filemanager/core/FileManagerRSWorker;J)V
     //   587: ldc2_w 685
     //   590: invokevirtual 690	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   593: pop
@@ -2164,7 +2164,7 @@ public class FileManagerRSWorker
     label1217:
     for (n = 0;; n = 6000)
     {
-      new Handler().postDelayed(new fyw(this), n);
+      new Handler().postDelayed(new fuk(this), n);
       QLog.w("FileManagerRSWorker<FileAssistant>", 1, "nSessionId[" + this.jdField_c_of_type_Long + "] after [" + n + "] time retry!");
       if (9048 == i1) {
         i1 = 11202;
@@ -2408,7 +2408,7 @@ public class FileManagerRSWorker
   public void f()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangThread = new Thread(new fyx(this));
+    this.jdField_a_of_type_JavaLangThread = new Thread(new ful(this));
     this.jdField_a_of_type_JavaLangThread.start();
   }
   
@@ -2458,7 +2458,7 @@ public class FileManagerRSWorker
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_b_of_type_Long, this.jdField_c_of_type_Long, this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_Int, 36, null, 11, null);
       return;
     }
-    this.jdField_a_of_type_ComWeiyunSdkIWyTaskManager$Task.addListener(new fyy(this));
+    this.jdField_a_of_type_ComWeiyunSdkIWyTaskManager$Task.addListener(new fum(this));
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(this.jdField_a_of_type_ComWeiyunSdkIWyTaskManager$Task);
   }
   
@@ -2485,7 +2485,7 @@ public class FileManagerRSWorker
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_b_of_type_Long, this.jdField_c_of_type_Long, this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_Int, 38, null, 11, null);
       return;
     }
-    this.jdField_a_of_type_ComWeiyunSdkIWyTaskManager$Task.addListener(new fyz(this));
+    this.jdField_a_of_type_ComWeiyunSdkIWyTaskManager$Task.addListener(new fun(this));
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(this.jdField_a_of_type_ComWeiyunSdkIWyTaskManager$Task);
   }
   

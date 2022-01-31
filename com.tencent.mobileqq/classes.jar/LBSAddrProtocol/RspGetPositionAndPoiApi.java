@@ -9,7 +9,7 @@ public final class RspGetPositionAndPoiApi
   extends JceStruct
 {
   static GPS cache_stUsrLoc;
-  static ArrayList cache_vPoiList;
+  static ArrayList<PoiInfo> cache_vPoiList;
   public int iDistrictCode;
   public int iRange = -1;
   public int iTotalNum;
@@ -20,11 +20,11 @@ public final class RspGetPositionAndPoiApi
   public String strProvince = "";
   public String strRoad = "";
   public String strTown = "";
-  public ArrayList vPoiList;
+  public ArrayList<PoiInfo> vPoiList;
   
   public RspGetPositionAndPoiApi() {}
   
-  public RspGetPositionAndPoiApi(GPS paramGPS, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt2, int paramInt3, ArrayList paramArrayList)
+  public RspGetPositionAndPoiApi(GPS paramGPS, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt2, int paramInt3, ArrayList<PoiInfo> paramArrayList)
   {
     this.stUsrLoc = paramGPS;
     this.iRange = paramInt1;

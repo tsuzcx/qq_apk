@@ -1,49 +1,43 @@
-import android.content.IntentFilter;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import UserGrowth.stSimpleGetFeedListRsp;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import java.util.ArrayList;
 
-public class tir
-  implements Runnable
+class tir
+  implements tcm
 {
-  public tir(QQLSActivity paramQQLSActivity) {}
+  tir(tip paramtip, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void run()
+  public void a(JceStruct paramJceStruct)
   {
-    try
-    {
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      localIntentFilter.addAction("android.intent.action.USER_PRESENT");
-      if (QQLSActivity.a(this.a) == 0)
-      {
-        BaseApplicationImpl.getContext().registerReceiver(this.a.a, localIntentFilter);
-        QQLSActivity.a(this.a, 1);
-      }
-      QQLSActivity.a(this.a, AnimationUtils.loadAnimation(this.a, 2131034321));
-      QQLSActivity.a(this.a).setFillAfter(true);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSActivity", 2, "registerScreenListener");
-      }
-      return;
-    }
-    catch (Exception localException)
+    tlo.d("WSRecommendFragmentPresenter", "onReadCacheCompleted");
+    if (!(paramJceStruct instanceof stSimpleGetFeedListRsp)) {}
+    WSRecommendFragment localWSRecommendFragment;
+    do
     {
       do
       {
-        localException.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.e("QQLSActivity", 2, "registerScreenListener:" + localException.toString());
-    }
+        do
+        {
+          do
+          {
+            return;
+            paramJceStruct = (stSimpleGetFeedListRsp)paramJceStruct;
+          } while ((paramJceStruct.feeds == null) || (paramJceStruct.feeds.size() <= 0));
+          tip.a(this.jdField_a_of_type_Tip, true);
+        } while (tip.a(this.jdField_a_of_type_Tip));
+        paramJceStruct = paramJceStruct.feeds;
+        localWSRecommendFragment = (WSRecommendFragment)this.jdField_a_of_type_Tip.a();
+      } while (localWSRecommendFragment == null);
+      localWSRecommendFragment.a(paramJceStruct, this.jdField_a_of_type_Boolean, this.b);
+    } while ((this.jdField_a_of_type_Boolean) || (tip.a(this.jdField_a_of_type_Tip)));
+    tlo.d("WSRecommendFragmentPresenter", "showTopLoading");
+    localWSRecommendFragment.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tir
  * JD-Core Version:    0.7.0.1
  */

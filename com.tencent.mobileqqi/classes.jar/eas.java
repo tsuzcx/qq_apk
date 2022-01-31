@@ -1,51 +1,41 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler.Callback;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class eas
-  extends ContactBindObserver
+  implements TroopQZoneUploadAlbumHandler.Callback
 {
-  public eas(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public eas(StructingMsgItemBuilder paramStructingMsgItemBuilder, MessageForStructing paramMessageForStructing, BaseChatItemLayout paramBaseChatItemLayout) {}
   
-  protected void b(boolean paramBoolean)
+  public void a(View paramView, long paramLong, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VerifyPhoneNumActivity", 2, "onUploadContact  isSuccess = " + paramBoolean);
-    }
-    VerifyPhoneNumActivity.b(this.a);
-    if (paramBoolean)
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq != paramLong) {}
+    do
     {
-      VerifyPhoneNumActivity.e(this.a);
-      VerifyPhoneNumActivity.b(this.a);
       return;
-    }
-    VerifyPhoneNumActivity.f(this.a);
-    VerifyPhoneNumActivity.b(this.a);
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
-    }
-    this.a.d();
-    if (paramBoolean1)
-    {
-      if (paramBoolean2)
-      {
-        VerifyPhoneNumActivity.a(this.a, true);
-        VerifyPhoneNumActivity.d(this.a);
-        return;
+      paramView = (StructMsgForGeneralShare)this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg;
+      if (paramInt1 != 1001) {
+        paramInt2 = 100;
       }
-      VerifyPhoneNumActivity.d(this.a);
+      paramView.setProgress(paramInt2);
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.findViewById(2131230801);
+    } while (!(paramView instanceof ProgressBar));
+    ((ProgressBar)paramView).setProgress(paramInt2);
+    if (paramInt2 == 100) {}
+    for (paramInt1 = 8;; paramInt1 = 0)
+    {
+      paramView.setVisibility(paramInt1);
       return;
     }
-    VerifyPhoneNumActivity.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eas
  * JD-Core Version:    0.7.0.1
  */

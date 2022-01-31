@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class flower_info$SFlowerInfoReq
-  extends MessageMicro
+  extends MessageMicro<SFlowerInfoReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 50 }, new String[] { "uin", "queryuin", "version", "platform", "type", "key" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), "5.4.0", Integer.valueOf(0), Integer.valueOf(0), "" }, SFlowerInfoReq.class);
   public final PBStringField key = PBField.initString("");
@@ -21,7 +21,7 @@ public final class flower_info$SFlowerInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.sso.accretion.flower_info.SFlowerInfoReq
  * JD-Core Version:    0.7.0.1
  */

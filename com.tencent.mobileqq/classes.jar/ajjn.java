@@ -1,20 +1,17 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.troop.homework.recite.ui.VolumeVisualizerView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
 
 public class ajjn
-  implements Runnable
+  extends ajjw
 {
-  public ajjn(ReciteRecordLayout paramReciteRecordLayout, int paramInt) {}
-  
-  public void run()
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.jdField_a_of_type_AndroidWidgetTextView.setText(2131431556);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiVolumeVisualizerView.a(AudioPanel.a(this.jdField_a_of_type_Int) / 1180);
-  }
+  public ImageView a;
+  public DragTextView a;
+  public RecentDynamicAvatarView a;
+  public SingleLineTextView a;
+  public ImageView b;
+  public SingleLineTextView b;
 }
 
 

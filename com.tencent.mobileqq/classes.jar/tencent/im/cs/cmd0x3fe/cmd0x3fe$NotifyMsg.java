@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x3fe$NotifyMsg
-  extends MessageMicro
+  extends MessageMicro<NotifyMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40 }, new String[] { "uint32_subcmd", "uint64_from_uin", "uint64_to_uin", "uint64_guin", "uint32_count" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0) }, NotifyMsg.class);
   public final PBUInt32Field uint32_count = PBField.initUInt32(0);
@@ -18,7 +18,7 @@ public final class cmd0x3fe$NotifyMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x3fe.cmd0x3fe.NotifyMsg
  * JD-Core Version:    0.7.0.1
  */

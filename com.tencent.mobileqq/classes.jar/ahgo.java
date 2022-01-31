@@ -1,42 +1,30 @@
-import android.os.Bundle;
-import android.os.RemoteException;
-import com.tencent.mobileqq.richmedia.ICallBack;
-import com.tencent.mobileqq.richmedia.LOG;
-import com.tencent.mobileqq.richmedia.RichmediaService;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.15.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-public final class ahgo
-  implements Runnable
+public class ahgo
+  implements DialogInterface.OnClickListener
 {
-  public ahgo(int paramInt, Bundle paramBundle) {}
+  public ahgo(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (RichmediaService.jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService != null)
+    switch (paramInt)
     {
-      ICallBack localICallBack = RichmediaService.jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService.jdField_a_of_type_ComTencentMobileqqRichmediaICallBack;
-      if (localICallBack != null) {
-        try
-        {
-          LOG.a("RichmediaService", "sendICallBackRequest cb.sendRequest start . ");
-          localICallBack.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
-          LOG.a("RichmediaService", "sendICallBackRequest cb.sendRequest finish. ");
-          return;
-        }
-        catch (RemoteException localRemoteException)
-        {
-          LOG.a("RichmediaService", "sendICallBackRequest cb.sendRequest ipc fail, RemoteException : " + localRemoteException.getMessage());
-          return;
-        }
-      }
-      LOG.a("RichmediaService", "sendICallBackRequest service.mClientCallBack is null");
+    default: 
+      return;
+    case 1: 
+      ThreadManager.post(new ClassificationSearchActivity.15.1(this), 10, null, true);
       return;
     }
-    LOG.a("RichmediaService", "sendICallBackRequest Richmedia Service is null");
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahgo
  * JD-Core Version:    0.7.0.1
  */

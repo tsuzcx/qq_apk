@@ -1,51 +1,45 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CardProfile;
-import com.tencent.mobileqq.nearby.NearbyLikeLimitManager;
-import com.tencent.mobileqq.profile.like.PraiseInfo;
-import com.tencent.mobileqq.statistics.ReportController;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class uij
-  implements View.OnClickListener
 {
-  public uij(VisitorsActivity paramVisitorsActivity, CardProfile paramCardProfile, PraiseInfo paramPraiseInfo, int paramInt) {}
+  public List<String> a;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public int g;
   
-  public void onClick(View paramView)
+  public uij(int paramInt)
   {
-    int i = 1;
-    int j;
-    int k;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3)
+    this.jdField_e_of_type_Int = paramInt;
+  }
+  
+  public uij a(JSONObject paramJSONObject, int paramInt)
+  {
+    this.d = paramJSONObject.optString("transId", "");
+    this.g = paramJSONObject.optInt("min_limit", paramInt);
+    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("wording");
+    this.f = paramJSONObject.optInt("text_id", -1);
+    paramJSONObject = paramJSONObject.optJSONArray("transList");
+    if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
     {
-      j = 1;
-      k = this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bIsLastVoteCharged;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type != 3) {
-        break label136;
-      }
-      if (!((NearbyLikeLimitManager)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app.getManager(206)).c(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID)) {
-        break label131;
+      this.a = new ArrayList();
+      paramInt = 0;
+      while (paramInt < paramJSONObject.length())
+      {
+        this.a.add(paramJSONObject.getString(paramInt));
+        paramInt += 1;
       }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bVoteCnt, i);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app, "CliOper", "", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID), "like_mall", "like_list_view", j, 0, "", "", "", "");
-      return;
-      j = 0;
-      break;
-      label131:
-      i = 0;
-      continue;
-      label136:
-      i = k;
-    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uij
  * JD-Core Version:    0.7.0.1
  */

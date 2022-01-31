@@ -1,38 +1,36 @@
-import android.os.SystemClock;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.ImgDownloadListener;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.profile.view.SingleTouchLayout;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class aelj
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aelj(ImgDownloadListener paramImgDownloadListener, long paramLong) {}
+  public aelj(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l = SystemClock.elapsedRealtime() - ImgDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyImgDownloadListener);
-    Object localObject2 = NetworkUtil.a(ImgDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyImgDownloadListener));
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = "wifi";
+    this.a.n();
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_Boolean = false;
+      this.a.e();
+      this.a.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.setVisibility(0);
+      this.a.f();
     }
-    localObject2 = new HashMap();
-    ((HashMap)localObject2).put("fileSize", String.valueOf(this.jdField_a_of_type_Long));
-    ((HashMap)localObject2).put("costTime", String.valueOf(l));
-    ((HashMap)localObject2).put("apn", localObject1);
-    ((HashMap)localObject2).put("param_NetType", NetworkUtil.a(null) + "");
-    StatisticCollector.a(ImgDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyImgDownloadListener)).a("", ImgDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyImgDownloadListener), true, l, 0L, (HashMap)localObject2, "", true);
-    if (QLog.isColorLevel()) {
-      QLog.d("ImgDownloadListener", 2, "onFileDownloadSucceed, fileSize=" + this.jdField_a_of_type_Long);
+    if (!TextUtils.isEmpty(this.a.a())) {}
+    for (paramDialogInterface = "1";; paramDialogInterface = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, ndd.a(), paramDialogInterface, "1");
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aelj
  * JD-Core Version:    0.7.0.1
  */

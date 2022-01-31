@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.activity.TroopMemberGagActivity.TroopGagListAdapter;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagItem;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
 
-public class dwi
+class dwi
+  implements PermissionDialogCallback
 {
-  public TroopGagMgr.GagItem a;
-  public boolean a;
+  dwi(dwh paramdwh) {}
   
-  public dwi(TroopMemberGagActivity.TroopGagListAdapter paramTroopGagListAdapter, TroopGagMgr.GagItem paramGagItem, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$GagItem = paramGagItem;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public void a() {}
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dwi
  * JD-Core Version:    0.7.0.1
  */

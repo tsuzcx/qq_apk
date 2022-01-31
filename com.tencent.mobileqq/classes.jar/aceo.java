@@ -1,41 +1,26 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class aceo
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aceo(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public aceo(AssistantSettingActivity paramAssistantSettingActivity, apjy paramapjy) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int i;
-    EmotionPanelInfo localEmotionPanelInfo;
-    if (this.a.jdField_a_of_type_JavaUtilList != null)
+    this.jdField_a_of_type_Apjy.a(paramBoolean);
+    if (!paramBoolean)
     {
-      i = 0;
-      if (i < this.a.jdField_a_of_type_JavaUtilList.size())
-      {
-        localEmotionPanelInfo = (EmotionPanelInfo)this.a.jdField_a_of_type_JavaUtilList.get(i);
-        if ((localEmotionPanelInfo == null) || (localEmotionPanelInfo.a != 4)) {}
-      }
-    }
-    for (;;)
-    {
-      if ((localEmotionPanelInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.a(localEmotionPanelInfo);
-      }
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081DD", "0X80081DD", 0, 0, "", "", "", "");
       return;
-      i += 1;
-      break;
-      localEmotionPanelInfo = null;
     }
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081F1", "0X80081F1", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aceo
  * JD-Core Version:    0.7.0.1
  */

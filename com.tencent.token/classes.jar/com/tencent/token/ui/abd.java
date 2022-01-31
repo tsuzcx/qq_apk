@@ -1,12 +1,22 @@
 package com.tencent.token.ui;
 
-final class abd
-  implements Runnable
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class abd
+  implements View.OnClickListener
 {
-  abd(StartPwdGestureDeleteActivity paramStartPwdGestureDeleteActivity) {}
+  abd(UnbindUinActivity paramUnbindUinActivity) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
+    paramView = new Intent(this.a, UtilsModSetMobileStep1Activity.class);
+    paramView.putExtra("op_type", 1);
+    paramView.putExtra("title", this.a.getResources().getString(2131230788));
+    paramView.putExtra("page_id", 14);
+    this.a.startActivity(paramView);
     this.a.finish();
   }
 }

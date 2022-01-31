@@ -1,54 +1,29 @@
-import android.media.AudioRecord;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.biz.webviewplugin.Share;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.sdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
 public class bpe
-  implements Runnable
+  implements WXShareHelper.WXShareListener
 {
-  public bpe(SensorAPIJavaScript paramSensorAPIJavaScript, int paramInt, String paramString) {}
+  public bpe(Share paramShare) {}
   
-  public void run()
+  public void a(BaseResp paramBaseResp)
   {
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_AndroidMediaAudioRecord.startRecording();
-    short[] arrayOfShort = new short[this.jdField_a_of_type_Int];
-    if (this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_Boolean)
-    {
-      int j = this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_AndroidMediaAudioRecord.read(arrayOfShort, 0, this.jdField_a_of_type_Int);
-      long l = 0L;
-      int i = 0;
-      while (i < arrayOfShort.length)
-      {
-        l += arrayOfShort[i] * arrayOfShort[i];
-        i += 1;
-      }
-      double d = Math.log10(Math.sqrt(l / j));
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        ??? = new Message();
-        ((Message)???).what = 0;
-        ((Message)???).obj = ("javascript: " + this.jdField_a_of_type_JavaLangString + "(" + true + "," + d * 20.0D + ")");
-        this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)???);
-      }
-      try
-      {
-        synchronized (this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_JavaLangObject)
-        {
-          this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_JavaLangObject.wait(100L);
-        }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          localInterruptedException.printStackTrace();
-        }
-      }
+    if ((this.a.l == null) || (!this.a.l.equals(paramBaseResp.transaction))) {
+      return;
     }
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_AndroidMediaAudioRecord.stop();
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_AndroidMediaAudioRecord.release();
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_AndroidMediaAudioRecord = null;
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      QRUtils.a(1, 2131562035);
+      return;
+    }
+    QRUtils.a(2, 2131562917);
   }
 }
 

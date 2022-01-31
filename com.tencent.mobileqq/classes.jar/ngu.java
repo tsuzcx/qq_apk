@@ -1,21 +1,21 @@
-import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
 
 public class ngu
-  extends UploadImageJob
+  implements View.OnClickListener
 {
-  public ngu(ShareModeBase paramShareModeBase, ShareSinaData paramShareSinaData) {}
+  public ngu(EqqAccountDetailActivity paramEqqAccountDetailActivity, boolean paramBoolean1, String paramString, boolean paramBoolean2, npo paramnpo) {}
   
-  public boolean b()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.e = ((String)a("UploadImageJob_out_image_url"));
-    return true;
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.b);
+    EqqAccountDetailActivity.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_Npo.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ngu
  * JD-Core Version:    0.7.0.1
  */

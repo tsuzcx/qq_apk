@@ -9,13 +9,13 @@ public final class ReqGetSwitches
   extends JceStruct
 {
   static ReqHeader cache_stHeader;
-  static ArrayList cache_types;
+  static ArrayList<Integer> cache_types;
   public ReqHeader stHeader;
-  public ArrayList types;
+  public ArrayList<Integer> types;
   
   public ReqGetSwitches() {}
   
-  public ReqGetSwitches(ReqHeader paramReqHeader, ArrayList paramArrayList)
+  public ReqGetSwitches(ReqHeader paramReqHeader, ArrayList<Integer> paramArrayList)
   {
     this.stHeader = paramReqHeader;
     this.types = paramArrayList;
@@ -43,7 +43,7 @@ public final class ReqGetSwitches
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NeighborSvc.ReqGetSwitches
  * JD-Core Version:    0.7.0.1
  */

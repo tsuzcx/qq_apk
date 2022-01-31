@@ -1,33 +1,12 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.FormEditItem;
+import android.view.MotionEvent;
 
-public class xei
-  implements DialogInterface.OnClickListener
+public abstract interface xei<T extends xeh>
 {
-  public xei(GoldMsgAioState paramGoldMsgAioState, Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    QQCustomDialog localQQCustomDialog = (QQCustomDialog)paramDialogInterface;
-    FormEditItem localFormEditItem1 = (FormEditItem)localQQCustomDialog.findViewById(2131364083);
-    FormEditItem localFormEditItem2 = (FormEditItem)localQQCustomDialog.findViewById(2131364085);
-    if (GoldMsgChatHelper.a().a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localFormEditItem1.a(), localFormEditItem2.a()))
-    {
-      GoldMsgAioState.a(localQQCustomDialog.getWindow(), this.jdField_a_of_type_AndroidContentContext, null);
-      paramDialogInterface.dismiss();
-    }
-  }
+  public abstract boolean a(T paramT, MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xei
  * JD-Core Version:    0.7.0.1
  */

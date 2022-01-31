@@ -1,31 +1,46 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class dvb
-  extends BizTroopObserver
+  extends ContactBindObserver
 {
-  public dvb(TroopInfoActivity paramTroopInfoActivity) {}
+  public dvb(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong)
+  protected void b(boolean paramBoolean)
   {
-    this.a.n();
-    int i;
-    if (!paramBoolean) {
-      i = 2131562078;
+    if (QLog.isColorLevel()) {
+      QLog.d("VerifyPhoneNumActivity", 2, "onUploadContact  isSuccess = " + paramBoolean);
     }
-    for (;;)
+    VerifyPhoneNumActivity.b(this.a);
+    if (paramBoolean)
     {
-      QQToast.a(this.a, i, 1).b(this.a.d());
-      this.a.finish();
+      VerifyPhoneNumActivity.e(this.a);
+      VerifyPhoneNumActivity.b(this.a);
       return;
-      if ((this.a.a.q == 3) || (this.a.a.q == 2)) {
-        i = 2131562983;
-      } else {
-        i = 2131562984;
-      }
     }
+    VerifyPhoneNumActivity.f(this.a);
+    VerifyPhoneNumActivity.b(this.a);
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
+    }
+    this.a.d();
+    if (paramBoolean1)
+    {
+      if (paramBoolean2)
+      {
+        VerifyPhoneNumActivity.a(this.a, true);
+        VerifyPhoneNumActivity.d(this.a);
+        return;
+      }
+      VerifyPhoneNumActivity.d(this.a);
+      return;
+    }
+    VerifyPhoneNumActivity.d(this.a);
   }
 }
 

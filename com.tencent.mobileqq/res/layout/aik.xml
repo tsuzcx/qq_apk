@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/d6y" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView android:id="@id/d70" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.widget.MessageProgressView android:id="@id/d72" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/d6z" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/a6v" android:layout_alignTop="@id/d70" android:layout_alignRight="@id/d70" />
+    <ImageView android:id="@id/d73" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gni" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/d71" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a6w" android:layout_centerInParent="true" />
+</RelativeLayout>

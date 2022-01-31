@@ -9,11 +9,11 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x82a$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_reserved = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField msg_info = PBField.initRepeatMessage(cmd0x82a.MsgInfo.class);
+  public final PBRepeatMessageField<cmd0x82a.MsgInfo> msg_info = PBField.initRepeatMessage(cmd0x82a.MsgInfo.class);
   public final PBUInt32Field uint32_app_id = PBField.initUInt32(0);
   public final PBUInt32Field uint32_inst_id = PBField.initUInt32(0);
   public final PBUInt32Field uint32_long_message_flag = PBField.initUInt32(0);
@@ -26,7 +26,7 @@ public final class cmd0x82a$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x82a.cmd0x82a.ReqBody
  * JD-Core Version:    0.7.0.1
  */

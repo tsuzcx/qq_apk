@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="120.0dip" android:layout_height="115.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.cover.ui.QzoneAvatarDecorator android:id="@id/hf1" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
+    <com.qzone.cover.ui.QzoneFacadeDecorator android:id="@id/hex" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
+    <com.qzone.cover.ui.QzoneVipDecorator android:id="@id/hez" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <com.qzone.cover.ui.QzoneVipAnimateDecorator android:id="@id/hf0" android:layout_width="58.0dip" android:layout_height="32.0dip" android:scaleType="centerCrop" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

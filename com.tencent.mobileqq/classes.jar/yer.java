@@ -1,54 +1,26 @@
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.video.IMediaPlayer;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.mobileqq.pb.PBStringField;
 
-public class yer
-  implements SeekBar.OnSeekBarChangeListener
+class yer
+  implements ylr
 {
-  public yer(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  yer(yep paramyep) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public void a(boolean paramBoolean)
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    }
-    this.a.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onStartTrackingTouch: progress = " + i);
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onStopTrackingTouch: 当前位置为 = " + i);
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer != null)
+    String str2 = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
+    if (paramBoolean) {}
+    for (String str1 = "cancel";; str1 = "dislike")
     {
-      if (this.a.a() == 2) {
-        this.a.b();
-      }
-      this.a.c.setImageResource(2130843336);
-      this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.a(i);
-      this.a.jdField_a_of_type_MqqOsMqqHandler.post(this.a.jdField_a_of_type_JavaLangRunnable);
-      this.a.b.setEnabled(false);
-      this.a.b.setTextColor(-2130706433);
+      zaj.a(str2, "auth_feeds", str1, 0, 0, new String[] { "", this.a.jdField_a_of_type_Yen.getAdapterPosition() + "", this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yer
  * JD-Core Version:    0.7.0.1
  */

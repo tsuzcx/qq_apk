@@ -1,15 +1,23 @@
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.mobileqq.troop.browser.TroopWebviewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajar
-  implements Runnable
+  implements nbs
 {
-  public ajar(TroopWebviewPlugin paramTroopWebviewPlugin, String paramString) {}
+  public ajar(PreloadModule paramPreloadModule) {}
   
-  public void run()
+  public void loaded(String paramString, int paramInt)
   {
-    SensorAPIJavaScript.returnToAio(this.jdField_a_of_type_ComTencentMobileqqTroopBrowserTroopWebviewPlugin.a, this.jdField_a_of_type_ComTencentMobileqqTroopBrowserTroopWebviewPlugin.mRuntime.a(), this.jdField_a_of_type_JavaLangString, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadModule", 2, "checkUpByBusinessId loaded, code:" + paramInt);
+    }
+  }
+  
+  public void progress(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadModule", 2, "checkUpByBusinessId progress:" + paramInt);
+    }
   }
 }
 

@@ -1,50 +1,61 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoLabel;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.label.QQStoryAddVideoLabelViewPart;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x74b.oidb_0x74b.OneUinHeadInfo;
 
 public class anub
-  implements View.OnClickListener
 {
-  public anub(EditVideoLabel paramEditVideoLabel) {}
+  public int a;
+  public long a;
+  public ArrayList<anuc> a;
+  public long b;
   
-  public void onClick(View paramView)
+  public static anub a(oidb_0x74b.OneUinHeadInfo paramOneUinHeadInfo)
   {
-    if (!TextUtils.isEmpty(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.jdField_a_of_type_JavaLangString))
+    Object localObject;
+    if (paramOneUinHeadInfo == null) {
+      localObject = null;
+    }
+    anub localanub;
+    do
     {
-      this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.jdField_a_of_type_JavaLangString;
-      paramView = this.a.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
-      if ((paramView.equals("##")) || (TextUtils.isEmpty(paramView)) || (!paramView.equals("# " + this.a.jdField_a_of_type_JavaLangString)))
-      {
-        EditVideoPartManager localEditVideoPartManager = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager;
-        if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a())
-        {
-          paramView = "2";
-          localEditVideoPartManager.a("use_custom_tag", 0, 0, new String[] { paramView });
-        }
+      return localObject;
+      localanub = new anub();
+      if (paramOneUinHeadInfo.uint64_uin.has()) {
+        localanub.jdField_a_of_type_Long = paramOneUinHeadInfo.uint64_uin.get();
       }
-      else
-      {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("# " + this.a.jdField_a_of_type_JavaLangString);
+      if (paramOneUinHeadInfo.uint64_tinyid.has()) {
+        localanub.b = paramOneUinHeadInfo.uint64_tinyid.get();
+      }
+      localanub.jdField_a_of_type_Int = ((int)(System.currentTimeMillis() / 1000L));
+      localObject = localanub;
+    } while (!paramOneUinHeadInfo.rpt_msg_head_list.has());
+    localanub.jdField_a_of_type_JavaUtilArrayList = anuc.a(paramOneUinHeadInfo.rpt_msg_head_list.get());
+    return localanub;
+  }
+  
+  public static ArrayList<anub> a(List<oidb_0x74b.OneUinHeadInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      anub localanub = a((oidb_0x74b.OneUinHeadInfo)paramList.next());
+      if (localanub != null) {
+        localArrayList.add(localanub);
       }
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-      return;
-      paramView = "1";
-      break;
-      this.a.jdField_a_of_type_JavaLangString = "";
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    }
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anub
  * JD-Core Version:    0.7.0.1
  */

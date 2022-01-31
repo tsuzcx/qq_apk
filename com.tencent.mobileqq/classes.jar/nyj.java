@@ -1,26 +1,20 @@
-import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader;
-import com.tencent.biz.qqstory.storyHome.model.FeedCommentSync;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class nyj
-  extends JobSegment
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private CommentListPageLoader jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader;
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  public nyj(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  protected void a(JobContext paramJobContext, FeedCommentSync paramFeedCommentSync)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader = new CommentListPageLoader(paramFeedCommentSync, new nyk(this, paramJobContext, paramFeedCommentSync));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader.c();
+    ReadInJoyBaseDeliverActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nyj
  * JD-Core Version:    0.7.0.1
  */

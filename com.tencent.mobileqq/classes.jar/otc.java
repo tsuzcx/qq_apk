@@ -1,52 +1,62 @@
 import android.text.TextUtils;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.mobileqq.utils.ContactUtils;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class otc
-  implements Runnable
+public class otc
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  otc(ota paramota, String paramString) {}
+  public static String a = "CommentFamilyConfigHandler";
   
-  public void run()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (this.jdField_a_of_type_Ota.a.isFinishing()) {
-      return;
-    }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      if (this.jdField_a_of_type_Ota.a.jdField_c_of_type_Int == 2) {
-        TroopReportor.a("Grp_share", "grpData_admin", "qr_qzone", 0, 0, new String[] { this.jdField_a_of_type_Ota.a.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Ota.a.jdField_a_of_type_Int), "1" });
-      }
-      QRUtils.a(1, 2131430004);
-      return;
-    }
-    String str;
-    if (this.jdField_a_of_type_Ota.a.jdField_c_of_type_Int == 2) {
-      str = this.jdField_a_of_type_Ota.a.getString(2131429971, new Object[] { this.jdField_a_of_type_Ota.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ota.a.jdField_c_of_type_JavaLangString });
-    }
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = osq.a(paramString);
+    Object localObject = paramString.keySet();
     for (;;)
     {
-      QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.a();
-      localUserInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Ota.a.app.getAccount();
-      localUserInfo.b = ContactUtils.j(this.jdField_a_of_type_Ota.a.app, this.jdField_a_of_type_Ota.a.app.getAccount());
-      QZoneHelper.a(this.jdField_a_of_type_Ota.a, localUserInfo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ota.a.getString(2131429969), str, 1);
-      return;
-      if (this.jdField_a_of_type_Ota.a.jdField_c_of_type_Int == 5) {
-        str = this.jdField_a_of_type_Ota.a.getString(2131429970, new Object[] { this.jdField_a_of_type_Ota.a.jdField_a_of_type_JavaLangString });
-      } else {
-        str = this.jdField_a_of_type_Ota.a.getString(2131429972);
+      String str1;
+      String str2;
+      try
+      {
+        localObject = ((Set)localObject).iterator();
+        if (((Iterator)localObject).hasNext())
+        {
+          str1 = (String)((Iterator)localObject).next();
+          str2 = (String)paramString.get(str1);
+          if (TextUtils.equals(str1, "rij_comment_family_entrance_switch")) {
+            bkbq.n(Integer.parseInt(str2));
+          }
+        }
+        else
+        {
+          return true;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+      }
+      if (TextUtils.equals(str1, "rij_small_zhitiao_entrance_switch")) {
+        bkbq.a("readinjjoy_notes_config", Integer.valueOf(Integer.parseInt(str2)));
       }
     }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bkbq.n(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     otc
  * JD-Core Version:    0.7.0.1
  */

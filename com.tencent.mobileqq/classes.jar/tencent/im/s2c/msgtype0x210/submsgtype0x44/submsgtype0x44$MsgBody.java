@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class submsgtype0x44$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42 }, new String[] { "msg_friend_msg_sync", "msg_group_msg_sync", "msg_clean_count_msg", "msg_modify_msg_sync", "msg_waiting_msg_sync" }, new Object[] { null, null, null, null, null }, MsgBody.class);
   public submsgtype0x44.ClearCountMsg msg_clean_count_msg = new submsgtype0x44.ClearCountMsg();

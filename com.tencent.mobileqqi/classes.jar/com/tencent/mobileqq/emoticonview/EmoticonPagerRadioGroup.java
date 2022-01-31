@@ -9,7 +9,7 @@ import android.util.TypedValue;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.LayoutParams;
-import ftf;
+import fot;
 
 public class EmoticonPagerRadioGroup
   extends RadioGroup
@@ -42,12 +42,12 @@ public class EmoticonPagerRadioGroup
   {
     float f1 = 15.0F;
     float f2 = 10.0F;
-    ftf localftf = new ftf(this, getContext());
+    fot localfot = new fot(this, getContext());
     Resources localResources;
     if (paramInt == 2)
     {
-      localftf.setButtonDrawable(2130839150);
-      localftf.setGravity(17);
+      localfot.setButtonDrawable(2130839152);
+      localfot.setGravity(17);
       localResources = getContext().getResources();
       if (paramInt != 2) {
         break label185;
@@ -61,20 +61,20 @@ public class EmoticonPagerRadioGroup
       int i = (int)TypedValue.applyDimension(1, 3.0F, localResources.getDisplayMetrics());
       localLayoutParams.leftMargin = i;
       localLayoutParams.rightMargin = i;
-      localftf.setLayoutParams(localLayoutParams);
-      localftf.setClickable(true);
+      localfot.setLayoutParams(localLayoutParams);
+      localfot.setClickable(true);
       if ((paramInt != 3) && (paramInt != 2))
       {
-        localftf.setClickable(false);
-        localftf.setFocusable(false);
+        localfot.setClickable(false);
+        localfot.setFocusable(false);
       }
-      return localftf;
+      return localfot;
       if (paramInt == 3)
       {
-        localftf.setButtonDrawable(2130839153);
+        localfot.setButtonDrawable(2130839155);
         break;
       }
-      localftf.setButtonDrawable(2130837973);
+      localfot.setButtonDrawable(2130837975);
       break;
       label185:
       if (paramInt == 3)
@@ -160,7 +160,7 @@ public class EmoticonPagerRadioGroup
         if (!this.jdField_a_of_type_Boolean) {
           break label278;
         }
-        localRadioButton.setButtonDrawable(2130837974);
+        localRadioButton.setButtonDrawable(2130837976);
       }
       for (;;)
       {
@@ -172,7 +172,7 @@ public class EmoticonPagerRadioGroup
           paramInt += 1;
         }
         label278:
-        localRadioButton.setButtonDrawable(2130837973);
+        localRadioButton.setButtonDrawable(2130837975);
       }
     }
     this.jdField_b_of_type_Boolean = paramBoolean;

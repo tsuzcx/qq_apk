@@ -1,32 +1,38 @@
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.os.Build.VERSION;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnVideoSizeChangedListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class npa
-  implements IMediaPlayer.OnVideoSizeChangedListener
+final class npa
+  implements BusinessObserver
 {
-  public npa(TextureVideoView paramTextureVideoView) {}
-  
-  @TargetApi(15)
-  public void a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.d = paramIMediaPlayer.c();
-    this.a.e = paramIMediaPlayer.d();
-    if ((this.a.d != 0) && (this.a.e != 0))
+    if (paramBoolean) {}
+    try
     {
-      if (Build.VERSION.SDK_INT >= 15) {
-        this.a.getSurfaceTexture().setDefaultBufferSize(this.a.d, this.a.e);
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        if ((localWebSsoResponseBody.ret.has()) && (localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
+          QLog.d("NativeAdUtils", 2, "nativeEngineAdReport success!" + localWebSsoResponseBody.data.get());
+        }
       }
-      this.a.requestLayout();
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      paramBundle.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     npa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,85 @@
-import com.tencent.mobileqq.worldcup.ARWorldCupBackConfirmDialog;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class akxs
-  implements Runnable
+class akxs
+  implements abwu
 {
-  public akxs(ARWorldCupGameLogicManager paramARWorldCupGameLogicManager) {}
+  akxs(akxp paramakxp, CmGameInitParams paramCmGameInitParams, long paramLong) {}
   
-  public void run()
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    boolean bool = true;
-    if ((ARWorldCupGameLogicManager.a(this.a) != null) && (ARWorldCupGameLogicManager.a(this.a).isShowing()))
+    QLog.w("cmgame_process.CmGameSubProcessHandler", 1, "[onFailure], code:" + paramInt + ",msg:" + paramString);
+    try
     {
-      QLog.d(ARWorldCupGameLogicManager.a, 2, "TryDismissDialog success");
-      ARWorldCupGameLogicManager.a(this.a).dismiss();
+      paramString = akwd.a();
+      if (paramString != null)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("ret", paramInt);
+        localJSONObject.put("type", "failure");
+        paramString.callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.xy_login.local", localJSONObject.toString());
+      }
       return;
     }
-    String str = ARWorldCupGameLogicManager.a;
-    if ("TryDismissDialog failed " + ARWorldCupGameLogicManager.a(this.a) != null) {}
-    for (;;)
+    catch (Throwable paramString)
     {
-      QLog.d(str, 2, new Object[] { Boolean.valueOf(bool) });
-      return;
-      bool = false;
+      QLog.e("cmgame_process.CmGameSubProcessHandler", 1, paramString, new Object[0]);
     }
   }
+  
+  public void onPermission(int paramInt)
+  {
+    QLog.w("cmgame_process.CmGameSubProcessHandler", 1, "[onPermission], code:" + paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessTokenRet = 2;
+    }
+    try
+    {
+      ApolloCmdChannel localApolloCmdChannel = akwd.a();
+      if (localApolloCmdChannel != null)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("ret", paramInt);
+        localJSONObject.put("type", "unauthorized");
+        localApolloCmdChannel.callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.xy_login.local", localJSONObject.toString());
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmgame_process.CmGameSubProcessHandler", 1, localThrowable, new Object[0]);
+    }
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    try
+    {
+      ApolloCmdChannel localApolloCmdChannel = akwd.a();
+      if (localApolloCmdChannel != null)
+      {
+        paramJSONObject.put("ret", 0);
+        paramJSONObject.put("type", "success");
+        akxp.a(this.jdField_a_of_type_Akxp, paramJSONObject.optString("access_token"));
+        localApolloCmdChannel.callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.xy_login.local", paramJSONObject.toString());
+      }
+      return;
+    }
+    catch (Throwable paramJSONObject)
+    {
+      QLog.e("cmgame_process.CmGameSubProcessHandler", 1, paramJSONObject, new Object[0]);
+    }
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akxs
  * JD-Core Version:    0.7.0.1
  */

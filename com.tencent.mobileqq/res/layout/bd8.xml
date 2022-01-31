@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/h70" android:background="#fff8f9fa" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <View android:id="@id/j1w" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+    <include android:id="@id/rlCommenTitle" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" layout="@layout/bct" />
+    <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:id="@id/adr" android:focusable="true" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:paddingTop="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/h57" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="@string/g_7" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/h56" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="iwf" formItem:leftText="@string/bi9" formItem:showArrow="true" />
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</LinearLayout>

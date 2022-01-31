@@ -1,25 +1,23 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.forward.ForwardFileBaseOption;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class adks
-  implements DialogInterface.OnDismissListener
+  extends BroadcastReceiver
 {
-  public adks(ForwardFileBaseOption paramForwardFileBaseOption) {}
+  public adks(NotificationActivity paramNotificationActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (ForwardFileBaseOption.a(this.a))
-    {
-      ForwardFileBaseOption.a(this.a, false);
-      this.a.a.finish();
+    if ((paramIntent.getAction().equals("com.tencent.mobileqq.closeNotification")) && (NotificationActivity.a(this.a) == 5)) {
+      this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adks
  * JD-Core Version:    0.7.0.1
  */

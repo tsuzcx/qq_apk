@@ -1,27 +1,31 @@
-import com.tencent.mobileqq.ark.ArkHorizontalListView;
-import com.tencent.mobileqq.ark.ArkHorizontalListView.RefreshUiCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxData;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxView;
 
 public class aauh
-  implements Runnable
+  implements TextWatcher
 {
-  public aauh(ArkHorizontalListView paramArkHorizontalListView) {}
+  public aauh(GdtFormItemTextBoxView paramGdtFormItemTextBoxView) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((ArkHorizontalListView.a(this.a) != null) && (ArkHorizontalListView.a(this.a).get() != null))
+    if ((this.a.a() == null) || (!this.a.a().isValid()) || (paramEditable == null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArkHorizontalListView", 2, "checkScrollToChild updateHeadBorder");
-      }
-      ((ArkHorizontalListView.RefreshUiCallback)ArkHorizontalListView.a(this.a).get()).a(this.a);
+      aase.d("GdtFormItemTextBoxView", "afterTextChanged error");
+      return;
     }
+    aase.b("GdtFormItemTextBoxView", "afterTextChanged " + paramEditable.toString());
+    this.a.a().content.text = paramEditable.toString();
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aauh
  * JD-Core Version:    0.7.0.1
  */

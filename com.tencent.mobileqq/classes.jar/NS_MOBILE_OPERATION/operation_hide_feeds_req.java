@@ -38,7 +38,7 @@ public final class operation_hide_feeds_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_hide_feeds_req
  * JD-Core Version:    0.7.0.1
  */

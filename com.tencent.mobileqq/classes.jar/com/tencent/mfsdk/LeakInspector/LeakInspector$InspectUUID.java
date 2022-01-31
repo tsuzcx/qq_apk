@@ -10,8 +10,8 @@ public class LeakInspector$InspectUUID
   public String classname = "";
   public String digest = "";
   String toString = "";
-  char[] uuid = null;
-  public WeakReference weakObj;
+  public char[] uuid;
+  public WeakReference<Object> weakObj;
   
   public void recycle()
   {
@@ -44,7 +44,7 @@ public class LeakInspector$InspectUUID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID
  * JD-Core Version:    0.7.0.1
  */

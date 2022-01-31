@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.IActionListener;
-
-public class tlh
-  implements IActionListener
+final class tlh
+  implements bhum
 {
-  public tlh(QQSettingMe paramQQSettingMe) {}
+  tlh(bhum parambhum) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onDismiss()
   {
-    if ((this.a.c) && (paramInt1 == 102) && (paramInt2 == 300)) {
-      this.a.B();
+    tlo.b("WSFeedUtils", "onDismiss entered");
+    if (this.a != null) {
+      this.a.onDismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tlh
  * JD-Core Version:    0.7.0.1
  */

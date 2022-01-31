@@ -1,17 +1,28 @@
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class aebz
-  implements Runnable
+  implements ThreadExcutor.IThreadListener
 {
-  public aebz(LightReplyMenuManager paramLightReplyMenuManager) {}
+  public aebz(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void run()
+  public void onAdded()
   {
-    if (this.a.a != null)
-    {
-      LightReplyMenuManager.b(this.a, this.a.a);
-      this.a.e();
-    }
+    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onAdded:" + TroopAssistantActivity.a(this.a));
+    TroopAssistantActivity.a(this.a, true);
+  }
+  
+  public void onPostRun()
+  {
+    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPostRun:" + TroopAssistantActivity.a(this.a));
+    TroopAssistantActivity.a(this.a, false);
+  }
+  
+  public void onPreRun()
+  {
+    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPreRun:" + TroopAssistantActivity.a(this.a));
+    TroopAssistantActivity.a(this.a, true);
   }
 }
 

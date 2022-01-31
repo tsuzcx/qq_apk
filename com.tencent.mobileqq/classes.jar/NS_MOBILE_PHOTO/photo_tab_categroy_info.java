@@ -10,11 +10,11 @@ public final class photo_tab_categroy_info
 {
   static int cache_status = 0;
   static int cache_type = 0;
-  static ArrayList cache_url = new ArrayList();
+  static ArrayList<String> cache_url = new ArrayList();
   public long count;
   public int status = 1;
   public int type;
-  public ArrayList url;
+  public ArrayList<String> url;
   
   static
   {
@@ -23,7 +23,7 @@ public final class photo_tab_categroy_info
   
   public photo_tab_categroy_info() {}
   
-  public photo_tab_categroy_info(int paramInt1, ArrayList paramArrayList, long paramLong, int paramInt2)
+  public photo_tab_categroy_info(int paramInt1, ArrayList<String> paramArrayList, long paramLong, int paramInt2)
   {
     this.type = paramInt1;
     this.url = paramArrayList;

@@ -1,32 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 
-class ajpg
-  implements Runnable
+public class ajpg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ajpg(ajpf paramajpf, String paramString, TroopFileInfo paramTroopFileInfo) {}
+  public ajpg(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b)) {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b;
-    }
-    localObject = (MessageForTroopFile)this.jdField_a_of_type_Ajpf.a.a.a().a(String.valueOf(this.jdField_a_of_type_Ajpf.a.f), 1, (String)localObject);
-    if (localObject != null) {
-      ((AIOMessageSpreadManager)this.jdField_a_of_type_Ajpf.a.a.getManager(271)).a((MessageRecord)localObject);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("AIOMessageSpreadManager", 1, "can't find troopFile Msg, troop[" + this.jdField_a_of_type_Ajpf.a.f + "], id:" + this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b);
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.g.setPadding(0, 0, 0, paramValueAnimator.intValue());
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.e.setPadding(0, this.jdField_a_of_type_Int - paramValueAnimator.intValue(), 0, 0);
   }
 }
 

@@ -9,8 +9,8 @@ import java.util.Map;
 public final class stMetaReportDataItem
   extends JceStruct
 {
-  static Map cache_strData = new HashMap();
-  public Map strData;
+  static Map<String, String> cache_strData = new HashMap();
+  public Map<String, String> strData;
   
   static
   {
@@ -19,7 +19,7 @@ public final class stMetaReportDataItem
   
   public stMetaReportDataItem() {}
   
-  public stMetaReportDataItem(Map paramMap)
+  public stMetaReportDataItem(Map<String, String> paramMap)
   {
     this.strData = paramMap;
   }
@@ -36,7 +36,7 @@ public final class stMetaReportDataItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_VIDEO.stMetaReportDataItem
  * JD-Core Version:    0.7.0.1
  */

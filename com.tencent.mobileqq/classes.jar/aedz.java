@@ -1,33 +1,56 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager.MagicfaceSensorOperation;
-import com.tencent.mobileqq.statistics.ReportController;
-import mqq.app.AppRuntime;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.TroopInviteStatusFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class aedz
-  implements MagicfaceActionManager.MagicfaceSensorOperation
+  extends alwx
 {
-  public aedz(MagicfaceActionManager paramMagicfaceActionManager) {}
+  public aedz(TroopInviteStatusFragment paramTroopInviteStatusFragment) {}
   
-  public void a()
+  protected void a(String paramString)
   {
-    AppRuntime localAppRuntime;
-    if (this.a.jdField_a_of_type_Int == 1)
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopInviteStatusFragment", 2, "onSendSystemMsgActionError logStr:" + paramString);
+    }
+    if ((this.a.jdField_a_of_type_Bety != null) && (this.a.jdField_a_of_type_Bety.isShowing()))
     {
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-        ReportController.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbJieshou", "MbWanchengXiaochu", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
+      this.a.jdField_a_of_type_Bety.dismiss();
+      paramString = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131720551);
+      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, paramString, 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight()).show();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  {
+    if ((this.a.jdField_a_of_type_Bety != null) && (this.a.jdField_a_of_type_Bety.isShowing())) {
+      this.a.jdField_a_of_type_Bety.dismiss();
+    }
+    if (!paramBoolean)
+    {
+      paramString1 = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131719755);
+      if (TextUtils.isEmpty(paramString3)) {
+        break label175;
       }
     }
-    do
+    for (;;)
     {
+      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, paramString3, 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
       return;
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    } while ((localAppRuntime == null) || (!(localAppRuntime instanceof QQAppInterface)));
-    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-    ReportController.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbFasong", "MbZhudongChaozuo", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
+      paramString1 = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131692866);
+      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 2, paramString1, 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+      this.a.c = -1;
+      TroopInviteStatusFragment.a(this.a);
+      this.a.jdField_b_of_type_Boolean = true;
+      this.a.jdField_a_of_type_AndroidOsHandler.post(this.a.jdField_b_of_type_JavaLangRunnable);
+      return;
+      label175:
+      paramString3 = paramString1;
+    }
   }
 }
 

@@ -1,27 +1,27 @@
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.activity.FriendProfileImageModel;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import java.util.List;
 
 public class sry
-  implements Runnable
+  extends Handler
 {
-  public sry(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public sry(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    ExtensionInfo localExtensionInfo = ((FriendsManager)this.a.app.getManager(50)).a(this.a.a.b);
-    if (localExtensionInfo != null) {
-      ThreadManager.getUIHandler().post(new srz(this, localExtensionInfo));
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
+    paramMessage = (List)paramMessage.obj;
+    ReadInJoyNewSearchActivity.a(this.a, paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sry
  * JD-Core Version:    0.7.0.1
  */

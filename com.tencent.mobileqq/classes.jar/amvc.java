@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiOperationInfo;
-
-public final class amvc
-  implements Parcelable.Creator
+public abstract interface amvc
 {
-  public WeishiOperationInfo a(Parcel paramParcel)
-  {
-    return new WeishiOperationInfo(paramParcel);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public WeishiOperationInfo[] a(int paramInt)
-  {
-    return new WeishiOperationInfo[paramInt];
-  }
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void h();
 }
 
 

@@ -1,35 +1,26 @@
 package com.tencent.token;
 
-import java.util.Map;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
+import com.tencent.halley.common.b.f;
 
-final class br
-  implements Runnable
+public abstract interface br
 {
-  br(bq parambq, fs paramfs) {}
+  public abstract f a();
   
-  public final void run()
-  {
-    Object localObject = null;
-    switch (this.a.b)
-    {
-    }
-    for (;;)
-    {
-      if (localObject != null)
-      {
-        localObject = bn.b(this.b.a).submit((Callable)localObject);
-        bq.a(this.b).put(this.a, localObject);
-      }
-      return;
-      localObject = new bz(this.a);
-      continue;
-      localObject = new bx(this.a);
-      continue;
-      localObject = bj.a(this.a);
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract int b();
+  
+  public abstract String c();
+  
+  public abstract bg d();
+  
+  public abstract int e();
+  
+  public abstract int f();
+  
+  public abstract int g();
+  
+  public abstract int h();
 }
 
 

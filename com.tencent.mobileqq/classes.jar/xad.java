@@ -1,21 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
 
 public class xad
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public xad(PayCodeEntryActivity paramPayCodeEntryActivity) {}
+  public xad(EditVideoGuide paramEditVideoGuide) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a("payCodeEntry.payCode", "actQQWlxclick", "0001");
-    PayCodeEntryActivity.b(this.a);
+    this.a.g();
+    this.a.a.a(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xad
  * JD-Core Version:    0.7.0.1
  */

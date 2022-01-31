@@ -1,66 +1,18 @@
-import QQService.EVIPSPEC;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.Comparator;
+import android.os.Bundle;
+import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
+import eipc.EIPCResult;
 
-public class ajbf
-  implements Comparator
+class ajbf
+  implements aznf
 {
-  public int a(ajbd paramajbd)
-  {
-    if (paramajbd.jdField_a_of_type_Int != -1) {
-      return paramajbd.jdField_a_of_type_Int;
-    }
-    Friends localFriends = paramajbd.jdField_a_of_type_ComTencentMobileqqDataFriends;
-    int k = ContactUtils.a(localFriends.detalStatusFlag, localFriends.iTermType);
-    int j;
-    int i;
-    if ((k != 6) && (k != 0))
-    {
-      j = 65536;
-      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-        break label132;
-      }
-      i = 4096;
-      switch (k)
-      {
-      case 5: 
-      case 6: 
-      default: 
-        label64:
-        i = j | i | (int)localFriends.getLastLoginType();
-      }
-    }
-    for (;;)
-    {
-      paramajbd.jdField_a_of_type_Int = i;
-      return i;
-      j = 131072;
-      break;
-      label132:
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
-      {
-        i = 8192;
-        break label64;
-      }
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
-      {
-        i = 12288;
-        break label64;
-      }
-      i = 16384;
-      break label64;
-      i = j | i | 0x1;
-      continue;
-      i = j | i | 0x2;
-      continue;
-      i = j | i | 0x3;
-    }
-  }
+  ajbf(ajaz paramajaz, int paramInt) {}
   
-  public int a(ajbd paramajbd1, ajbd paramajbd2)
+  public void a(int paramInt, SoConfig.SoInfo paramSoInfo)
   {
-    return a(paramajbd1) - a(paramajbd2);
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("res", paramSoInfo);
+    localBundle.putInt("code", paramInt);
+    this.jdField_a_of_type_Ajaz.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
 }
 

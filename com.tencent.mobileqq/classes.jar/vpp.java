@@ -1,21 +1,38 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.widget.HorizontalListView;
+import android.support.annotation.Nullable;
 
-class vpp
-  implements Runnable
+public class vpp
 {
-  vpp(vpo paramvpo) {}
+  @Nullable
+  public String a;
+  public vpm a;
+  @Nullable
+  public vpn a;
+  @Nullable
+  public String b;
   
-  public void run()
+  public vpp(@Nullable vpm paramvpm, @Nullable String paramString1, @Nullable String paramString2)
   {
-    this.a.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.a.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
+    this.jdField_a_of_type_Vpm = paramvpm;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
+  
+  public vpp(vpp paramvpp)
+  {
+    this.jdField_a_of_type_Vpm = paramvpp.jdField_a_of_type_Vpm;
+    this.jdField_a_of_type_JavaLangString = paramvpp.jdField_a_of_type_JavaLangString;
+    this.b = paramvpp.b;
+    this.jdField_a_of_type_Vpn = paramvpp.jdField_a_of_type_Vpn;
+  }
+  
+  public String toString()
+  {
+    return "StartInfo{mGroupId=" + this.jdField_a_of_type_Vpm + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", feedId='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vpp
  * JD-Core Version:    0.7.0.1
  */

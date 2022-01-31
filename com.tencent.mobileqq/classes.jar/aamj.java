@@ -1,46 +1,27 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.arcard.ARCardShareHelper;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
+import android.content.Context;
+import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import java.lang.ref.WeakReference;
 
-class aamj
-  implements Runnable
+public class aamj
+  implements AdQQMINIProgramAdapter
 {
-  aamj(aami paramaami, boolean paramBoolean, String paramString) {}
-  
-  public void run()
+  public AdError show(AdQQMINIProgramAdapter.Params paramParams)
   {
-    if (this.jdField_a_of_type_Aami.a.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      return;
-    }
-    if (!this.jdField_a_of_type_Boolean)
+    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
     {
-      QRUtils.a(1, 2131433135);
-      return;
+      aase.d("GdtQQMINIProgramAdapter", "show error");
+      return new AdError(4);
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      QRUtils.a(1, 2131430004);
-      return;
-    }
-    String str = ARCardShareHelper.a(this.jdField_a_of_type_Aami.a.a);
-    QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.a();
-    localUserInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Aami.a.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
-    localUserInfo.b = ((ScanTorchActivity)this.jdField_a_of_type_Aami.a.a.jdField_a_of_type_AndroidAppActivity).e();
-    if (this.jdField_a_of_type_Aami.a.a.jdField_a_of_type_Boolean) {
-      ReportController.b(null, "dc00898", "", "", "0X8008F1B", "0X8008F1B", 3, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      QZoneHelper.a(this.jdField_a_of_type_Aami.a.a.jdField_a_of_type_AndroidAppActivity, localUserInfo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aami.a.a.jdField_a_of_type_AndroidAppActivity.getString(2131429969), str, 1);
-      return;
-      ReportController.b(null, "dc00898", "", "", "0X8008F27", "0X8008F27", 3, 0, "", "", "", "");
-    }
+    GdtAd localGdtAd = (GdtAd)GdtAd.class.cast(paramParams.ad);
+    aase.b("GdtQQMINIProgramAdapter", String.format("show %s", new Object[] { localGdtAd.getUrlForLandingPage() }));
+    AdReporterForAnalysis.reportForLaunchQQMINIProgramStart((Context)paramParams.context.get(), localGdtAd);
+    MiniAppLauncher.startMiniApp((Context)paramParams.context.get(), localGdtAd.getUrlForLandingPage(), 2054, new aamk(this, paramParams, localGdtAd));
+    return new AdError(0);
   }
 }
 

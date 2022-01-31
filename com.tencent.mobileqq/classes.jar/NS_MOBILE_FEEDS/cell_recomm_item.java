@@ -9,7 +9,7 @@ import java.util.Map;
 public final class cell_recomm_item
   extends JceStruct
 {
-  static Map cache_extendinfo;
+  static Map<String, String> cache_extendinfo;
   static s_picurl cache_icon_after_click;
   static s_picurl cache_icon_before_click;
   static s_user cache_userinfo = new s_user();
@@ -17,7 +17,7 @@ public final class cell_recomm_item
   public String content = "";
   public String desc_after_click = "";
   public String desc_before_click = "";
-  public Map extendinfo;
+  public Map<String, String> extendinfo;
   public s_picurl icon_after_click;
   public s_picurl icon_before_click;
   public s_user userinfo;
@@ -32,7 +32,7 @@ public final class cell_recomm_item
   
   public cell_recomm_item() {}
   
-  public cell_recomm_item(s_user params_user, s_picurl params_picurl1, s_picurl params_picurl2, String paramString1, String paramString2, String paramString3, Map paramMap, int paramInt)
+  public cell_recomm_item(s_user params_user, s_picurl params_picurl1, s_picurl params_picurl2, String paramString1, String paramString2, String paramString3, Map<String, String> paramMap, int paramInt)
   {
     this.userinfo = params_user;
     this.icon_before_click = params_picurl1;
@@ -84,7 +84,7 @@ public final class cell_recomm_item
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_recomm_item
  * JD-Core Version:    0.7.0.1
  */

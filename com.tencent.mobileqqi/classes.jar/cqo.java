@@ -1,11 +1,17 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.HornPublishActivity;
+import com.tencent.mobileqq.app.NearHornHandler;
 
 class cqo
+  implements Runnable
 {
-  public int a;
-  public TextView a;
+  cqo(cqn paramcqn) {}
   
-  private cqo(cqm paramcqm) {}
+  public void run()
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.jdField_a_of_type_JavaLangString);
+    }
+  }
 }
 
 

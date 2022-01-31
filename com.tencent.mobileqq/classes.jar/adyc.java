@@ -1,15 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.util.ScreenShotUtil.ScreenshotCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SigCommentListActivity;
 
-class adyc
-  implements ScreenShotUtil.ScreenshotCallback
+public class adyc
+  implements View.OnClickListener
 {
-  adyc(adyb paramadyb) {}
+  public adyc(SigCommentListActivity paramSigCommentListActivity) {}
   
-  public void a(Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    ThreadManager.post(new adyd(this, paramBitmap), 8, null, true);
+    this.a.a(true, true);
   }
 }
 

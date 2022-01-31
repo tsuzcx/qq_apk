@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.redtouch;
 
-import ahfl;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import axlt;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RedAppInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ahfl();
+  public static final Parcelable.Creator<RedAppInfo> CREATOR = new axlt();
   private int jdField_a_of_type_Int;
   private RedDisplayInfo jdField_a_of_type_ComTencentMobileqqRedtouchRedDisplayInfo;
   private String jdField_a_of_type_JavaLangString;
-  public ArrayList a;
+  public ArrayList<String> a;
   private int jdField_b_of_type_Int;
   private String jdField_b_of_type_JavaLangString;
   private int jdField_c_of_type_Int;
@@ -26,6 +26,7 @@ public class RedAppInfo
   private int h;
   private int i;
   private int j;
+  private int k;
   
   public int a()
   {
@@ -42,7 +43,7 @@ public class RedAppInfo
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  public List a()
+  public List<String> a()
   {
     return this.jdField_a_of_type_JavaUtilArrayList;
   }
@@ -62,7 +63,7 @@ public class RedAppInfo
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(ArrayList paramArrayList)
+  public void a(ArrayList<String> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
@@ -182,6 +183,16 @@ public class RedAppInfo
     this.j = paramInt;
   }
   
+  public int k()
+  {
+    return this.k;
+  }
+  
+  public void k(int paramInt)
+  {
+    this.k = paramInt;
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeInt(this.jdField_a_of_type_Int);
@@ -199,11 +210,12 @@ public class RedAppInfo
     paramParcel.writeInt(this.i);
     paramParcel.writeInt(this.j);
     paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedDisplayInfo, paramInt);
+    paramParcel.writeInt(this.k);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedAppInfo
  * JD-Core Version:    0.7.0.1
  */

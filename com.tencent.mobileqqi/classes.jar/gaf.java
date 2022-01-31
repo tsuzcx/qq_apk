@@ -1,35 +1,21 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
-import com.tencent.qphone.base.util.QLog;
+import android.app.ProgressDialog;
+import com.tencent.util.DumpMemInfoHandler;
+import java.util.TimerTask;
 
-public class gaf
-  extends fzn
+class gaf
+  extends TimerTask
 {
-  public gaf(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  gaf(gae paramgae, ProgressDialog paramProgressDialog) {}
   
-  protected String a()
+  public void run()
   {
-    return "StateRefuseByPCWhenToOffFailed";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.a == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "]. recvOnLineFile entity is null");
-      return;
-    }
-    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 6);
-    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 6);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateRefuseByPC)");
-    this.jdField_a_of_type_Fzn = new gad(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+    DumpMemInfoHandler.a(this.jdField_a_of_type_Gae.a.a);
+    this.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gaf
  * JD-Core Version:    0.7.0.1
  */

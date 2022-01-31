@@ -9,44 +9,45 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
 import android.util.DisplayMetrics;
-import pid;
 
 public class SliceBitmapDrawable
   extends Drawable
 {
-  private int jdField_a_of_type_Int;
-  private pid jdField_a_of_type_Pid;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  private int c;
+  private static final int DEFAULT_PAINT_FLAGS = 6;
+  private static final int SLICE_SIZE = 2048;
+  private SliceBitmapDrawable.BitmapState mBitmapState;
+  private int mHeight;
+  private boolean mMutated;
+  private int mTargetDensity;
+  private int mWidth;
   
   public SliceBitmapDrawable(Resources paramResources, Bitmap paramBitmap)
   {
-    this(new pid(paramBitmap), paramResources);
-    this.jdField_a_of_type_Pid.b = this.jdField_a_of_type_Int;
+    this(new SliceBitmapDrawable.BitmapState(paramBitmap), paramResources);
+    this.mBitmapState.mTargetDensity = this.mTargetDensity;
   }
   
   public SliceBitmapDrawable(Resources paramResources, SliceBitmapDrawable.SliceBitmap paramSliceBitmap)
   {
-    this(new pid(paramSliceBitmap), paramResources);
-    this.jdField_a_of_type_Pid.b = this.jdField_a_of_type_Int;
+    this(new SliceBitmapDrawable.BitmapState(paramSliceBitmap), paramResources);
+    this.mBitmapState.mTargetDensity = this.mTargetDensity;
   }
   
-  private SliceBitmapDrawable(pid parampid, Resources paramResources)
+  private SliceBitmapDrawable(SliceBitmapDrawable.BitmapState paramBitmapState, Resources paramResources)
   {
-    this.jdField_a_of_type_Pid = parampid;
+    this.mBitmapState = paramBitmapState;
     if (paramResources != null) {}
-    for (this.jdField_a_of_type_Int = paramResources.getDisplayMetrics().densityDpi;; this.jdField_a_of_type_Int = parampid.b)
+    for (this.mTargetDensity = paramResources.getDisplayMetrics().densityDpi;; this.mTargetDensity = paramBitmapState.mTargetDensity)
     {
-      a();
+      computeBitmapSize();
       return;
     }
   }
   
-  private void a()
+  private void computeBitmapSize()
   {
-    this.b = this.jdField_a_of_type_Pid.jdField_a_of_type_ComTencentComponentMediaImageDrawableSliceBitmapDrawable$SliceBitmap.getScaledWidth(this.jdField_a_of_type_Int);
-    this.c = this.jdField_a_of_type_Pid.jdField_a_of_type_ComTencentComponentMediaImageDrawableSliceBitmapDrawable$SliceBitmap.getScaledHeight(this.jdField_a_of_type_Int);
+    this.mWidth = this.mBitmapState.mSliceBitmap.getScaledWidth(this.mTargetDensity);
+    this.mHeight = this.mBitmapState.mSliceBitmap.getScaledHeight(this.mTargetDensity);
   }
   
   public static boolean needSlice(Bitmap paramBitmap)
@@ -57,48 +58,48 @@ public class SliceBitmapDrawable
   public void draw(Canvas paramCanvas)
   {
     Rect localRect = getBounds();
-    this.jdField_a_of_type_Pid.jdField_a_of_type_ComTencentComponentMediaImageDrawableSliceBitmapDrawable$SliceBitmap.a(paramCanvas, localRect, this.jdField_a_of_type_Pid.jdField_a_of_type_AndroidGraphicsPaint);
+    this.mBitmapState.mSliceBitmap.draw(paramCanvas, localRect, this.mBitmapState.mPaint);
   }
   
   public Bitmap getBitmap(int paramInt)
   {
-    return this.jdField_a_of_type_Pid.jdField_a_of_type_ComTencentComponentMediaImageDrawableSliceBitmapDrawable$SliceBitmap.getBitmap(paramInt);
+    return this.mBitmapState.mSliceBitmap.getBitmap(paramInt);
   }
   
   public int getByteCount()
   {
-    return this.jdField_a_of_type_Pid.jdField_a_of_type_ComTencentComponentMediaImageDrawableSliceBitmapDrawable$SliceBitmap.getByteCount();
+    return this.mBitmapState.mSliceBitmap.getByteCount();
   }
   
   public int getChangingConfigurations()
   {
-    return super.getChangingConfigurations() | this.jdField_a_of_type_Pid.jdField_a_of_type_Int;
+    return super.getChangingConfigurations() | this.mBitmapState.mChangingConfigurations;
   }
   
   public int getColumnCount()
   {
-    return this.jdField_a_of_type_Pid.jdField_a_of_type_ComTencentComponentMediaImageDrawableSliceBitmapDrawable$SliceBitmap.getColumnCount();
+    return this.mBitmapState.mSliceBitmap.getColumnCount();
   }
   
   public final Drawable.ConstantState getConstantState()
   {
-    this.jdField_a_of_type_Pid.jdField_a_of_type_Int = getChangingConfigurations();
-    return this.jdField_a_of_type_Pid;
+    this.mBitmapState.mChangingConfigurations = getChangingConfigurations();
+    return this.mBitmapState;
   }
   
   public int getIntrinsicHeight()
   {
-    return this.c;
+    return this.mHeight;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.b;
+    return this.mWidth;
   }
   
   public int getOpacity()
   {
-    if ((this.jdField_a_of_type_Pid.jdField_a_of_type_ComTencentComponentMediaImageDrawableSliceBitmapDrawable$SliceBitmap.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Pid.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() < 255)) {
+    if ((this.mBitmapState.mSliceBitmap.hasAlpha) || (this.mBitmapState.mPaint.getAlpha() < 255)) {
       return -3;
     }
     return -1;
@@ -106,67 +107,67 @@ public class SliceBitmapDrawable
   
   public final Paint getPaint()
   {
-    return this.jdField_a_of_type_Pid.jdField_a_of_type_AndroidGraphicsPaint;
+    return this.mBitmapState.mPaint;
   }
   
   public int getRowCount()
   {
-    return this.jdField_a_of_type_Pid.jdField_a_of_type_ComTencentComponentMediaImageDrawableSliceBitmapDrawable$SliceBitmap.getRowCount();
+    return this.mBitmapState.mSliceBitmap.getRowCount();
   }
   
   public Drawable mutate()
   {
-    if ((!this.jdField_a_of_type_Boolean) && (super.mutate() == this))
+    if ((!this.mMutated) && (super.mutate() == this))
     {
-      this.jdField_a_of_type_Pid = new pid(this.jdField_a_of_type_Pid);
-      this.jdField_a_of_type_Boolean = true;
+      this.mBitmapState = new SliceBitmapDrawable.BitmapState(this.mBitmapState);
+      this.mMutated = true;
     }
     return this;
   }
   
   public void setAlpha(int paramInt)
   {
-    if (paramInt != this.jdField_a_of_type_Pid.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    if (paramInt != this.mBitmapState.mPaint.getAlpha())
     {
-      this.jdField_a_of_type_Pid.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      this.mBitmapState.mPaint.setAlpha(paramInt);
       invalidateSelf();
     }
   }
   
   public void setAntiAlias(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Pid.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(paramBoolean);
+    this.mBitmapState.mPaint.setAntiAlias(paramBoolean);
     invalidateSelf();
   }
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.jdField_a_of_type_Pid.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    this.mBitmapState.mPaint.setColorFilter(paramColorFilter);
     invalidateSelf();
   }
   
   public void setDither(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Pid.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
+    this.mBitmapState.mPaint.setDither(paramBoolean);
     invalidateSelf();
   }
   
   public void setFilterBitmap(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Pid.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(paramBoolean);
+    this.mBitmapState.mPaint.setFilterBitmap(paramBoolean);
     invalidateSelf();
   }
   
   public void setTargetDensity(int paramInt)
   {
-    if (this.jdField_a_of_type_Int != paramInt)
+    if (this.mTargetDensity != paramInt)
     {
       int i = paramInt;
       if (paramInt == 0) {
         i = 160;
       }
-      this.jdField_a_of_type_Int = i;
-      a();
+      this.mTargetDensity = i;
+      computeBitmapSize();
       invalidateSelf();
     }
   }
@@ -183,7 +184,7 @@ public class SliceBitmapDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.drawable.SliceBitmapDrawable
  * JD-Core Version:    0.7.0.1
  */

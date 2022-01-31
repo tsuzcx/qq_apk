@@ -1,24 +1,14 @@
-import com.dataline.mpfile.LiteMpFileDownloadActivity;
-import com.dataline.mpfile.LiteMpFileDownloadActivity.SortComparator;
-import com.dataline.mpfile.MpfileDataCenter;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Collections;
-import java.util.Comparator;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.dataline.activities.LiteVideoActivity.ImageAdapter;
 
 public class cs
-  implements Runnable
 {
-  public cs(LiteMpFileDownloadActivity paramLiteMpFileDownloadActivity) {}
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
   
-  public void run()
-  {
-    Object localObject = (DataLineHandler)this.a.b.a(8);
-    LiteMpFileDownloadActivity.a(this.a, ((DataLineHandler)localObject).a().a());
-    localObject = new LiteMpFileDownloadActivity.SortComparator(this.a);
-    Collections.sort(LiteMpFileDownloadActivity.a(this.a), (Comparator)localObject);
-    this.a.runOnUiThread(new ct(this));
-  }
+  public cs(LiteVideoActivity.ImageAdapter paramImageAdapter) {}
 }
 
 

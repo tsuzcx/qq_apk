@@ -1,42 +1,42 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-
 public class aogb
-  extends SosoInterface.OnLocationListener
 {
-  public aogb(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  boolean jdField_a_of_type_Boolean;
+  long b;
+  long c;
+  long d;
+  
+  public aogb(long paramLong1, long paramLong2, int paramInt, boolean paramBoolean)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.b = paramLong1;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public boolean equals(Object paramObject)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof aogb))
     {
-      this.a.a = paramSosoLbsInfo.a.a;
-      this.a.b = paramSosoLbsInfo.a.b;
-      if (QLog.isColorLevel()) {
-        QLog.d("FlowCameraActivity", 2, "onLocationUpdate() latitude=" + this.a.a + " longitude=" + this.a.b);
-      }
-      if (FlowCameraActivity2.a(this.a) != null) {
-        FlowCameraActivity2.a(this.a);
+      paramObject = (aogb)paramObject;
+      bool1 = bool2;
+      if (paramObject.jdField_a_of_type_Long == this.jdField_a_of_type_Long)
+      {
+        bool1 = bool2;
+        if (paramObject.b == this.b) {
+          bool1 = true;
+        }
       }
     }
-    do
-    {
-      return;
-      this.a.a = 0.0D;
-      this.a.b = 0.0D;
-    } while (!QLog.isColorLevel());
-    QLog.d("FlowCameraActivity", 2, "onLocationUpdate() error");
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aogb
  * JD-Core Version:    0.7.0.1
  */

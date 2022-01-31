@@ -1,26 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.HomeworkInfo;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajhs
-  implements DialogInterface.OnClickListener
+class ajhs
+  implements View.OnClickListener
 {
-  public ajhs(SubmitHomeWorkFragment paramSubmitHomeWorkFragment, HomeworkInfo paramHomeworkInfo) {}
+  ajhs(ajgb paramajgb, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (BaseActivity.sTopActivity != null) {
+      augo.a().a(BaseActivity.sTopActivity, this.jdField_a_of_type_Int);
     }
-    if (SubmitHomeWorkFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment) > 0L)
+    for (;;)
     {
-      SubmitHomeWorkFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkHomeworkInfo);
+      augo.m();
       return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
+      }
     }
-    SubmitHomeWorkFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment, 3, null, null, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkHomeworkInfo);
   }
 }
 

@@ -1,18 +1,20 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.res.Resources;
 
-final class gd
-  implements DialogInterface.OnClickListener
+class gd
+  implements Runnable
 {
-  gd(fz paramfz) {}
+  gd(fj paramfj) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = new Intent(this.a.a, FaceRecognitionDefaultActivity.class);
-    this.a.a.startActivity(paramDialogInterface);
+    Intent localIntent = new Intent(this.a.a, UtilsModSetMobileStep1Activity.class);
+    localIntent.putExtra("title", this.a.a.getResources().getString(2131230997));
+    localIntent.putExtra("op_type", 3);
+    localIntent.putExtra("page_id", 15);
+    this.a.a.startActivity(localIntent);
     this.a.a.finish();
   }
 }

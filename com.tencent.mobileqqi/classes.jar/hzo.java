@@ -1,44 +1,20 @@
-import android.content.Context;
-import android.view.KeyEvent;
-import android.view.inputmethod.InputConnection;
-import android.view.inputmethod.InputConnectionWrapper;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.widget.AbsListView;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.WeakReference;
 
 public class hzo
-  extends InputConnectionWrapper
+  extends WeakReference
 {
-  public hzo(AbsListView paramAbsListView, InputConnection paramInputConnection, boolean paramBoolean)
-  {
-    super(paramInputConnection, paramBoolean);
-  }
+  public Object a;
   
-  public boolean performEditorAction(int paramInt)
+  public hzo(Object paramObject1, Object paramObject2, ReferenceQueue paramReferenceQueue)
   {
-    if (paramInt == 6)
-    {
-      InputMethodManager localInputMethodManager = (InputMethodManager)this.a.getContext().getSystemService("input_method");
-      if (localInputMethodManager != null) {
-        localInputMethodManager.hideSoftInputFromWindow(this.a.getWindowToken(), 0);
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean reportFullscreenMode(boolean paramBoolean)
-  {
-    return AbsListView.a(this.a).reportFullscreenMode(paramBoolean);
-  }
-  
-  public boolean sendKeyEvent(KeyEvent paramKeyEvent)
-  {
-    return AbsListView.a(this.a).sendKeyEvent(paramKeyEvent);
+    super(paramObject2, paramReferenceQueue);
+    this.a = paramObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hzo
  * JD-Core Version:    0.7.0.1
  */

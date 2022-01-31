@@ -1,21 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.Button;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import android.text.TextUtils;
+import cooperation.qzone.util.QZLog;
 
 public class ajio
-  implements Animation.AnimationListener
 {
-  public ajio(ReciteFragment paramReciteFragment, Button paramButton) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+    if (QZLog.isColorLevel()) {
+      QZLog.i("QbossADBannerConfigInfo", 2, " qboss resources down response resUrl = " + this.a + " isSuccess = " + paramBoolean);
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.c)) {
+      return false;
+    }
+    return arso.a(this.c);
+  }
 }
 
 

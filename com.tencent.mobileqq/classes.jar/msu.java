@@ -1,37 +1,34 @@
-import android.widget.PopupWindow;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import android.content.res.Resources;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class msu
-  implements Runnable
+class msu
+  implements View.OnTouchListener
 {
-  public msu(SubscriptFeedsActivity paramSubscriptFeedsActivity, int paramInt1, int paramInt2) {}
+  msu(msr parammsr) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     try
     {
-      int[] arrayOfInt = new int[2];
-      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.rightViewText.getLocationInWindow(arrayOfInt);
-      int i = this.jdField_a_of_type_Int;
-      int j = arrayOfInt[0];
-      int k = this.b;
-      int m = AIOUtils.a(2.0F, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.getResources());
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity).showAsDropDown(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.rightViewText, i - j - k - m, -AIOUtils.a(5.0F, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.getResources()));
-      return;
+      QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getResources().getResourceName(paramView.getId()) + "]");
+      this.a.a("result_root OnTouch");
+      return true;
     }
-    catch (Exception localException)
+    catch (Exception paramMotionEvent)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("SubscriptFeedsActivity", 2, "showSubscriptCenterGuideWindow, " + localException);
+      for (;;)
+      {
+        QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getId() + "]");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msu
  * JD-Core Version:    0.7.0.1
  */

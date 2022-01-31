@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class s_rec_photo_list
   extends JceStruct
 {
-  static ArrayList cache_rec_photo_list;
-  public ArrayList rec_photo_list;
+  static ArrayList<s_recent_photo> cache_rec_photo_list;
+  public ArrayList<s_recent_photo> rec_photo_list;
   
   public s_rec_photo_list() {}
   
-  public s_rec_photo_list(ArrayList paramArrayList)
+  public s_rec_photo_list(ArrayList<s_recent_photo> paramArrayList)
   {
     this.rec_photo_list = paramArrayList;
   }

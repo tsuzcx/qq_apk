@@ -1,22 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController;
-import java.util.List;
+import android.util.LruCache;
 
-public class mqa
-  extends ReadInJoyObserver
+class mqa
+  extends LruCache<String, mqb>
 {
-  public mqa(ReadInJoyFeedsHeaderViewController paramReadInJoyFeedsHeaderViewController) {}
-  
-  public void a(boolean paramBoolean, List paramList)
+  mqa(mpz parammpz, int paramInt)
   {
-    if (paramBoolean) {
-      ReadInJoyFeedsHeaderViewController.a(this.a, ReadInJoyFeedsHeaderViewController.a(this.a, paramList));
+    super(paramInt);
+  }
+  
+  protected int a(String paramString, mqb parammqb)
+  {
+    if (parammqb == null) {
+      return 0;
     }
+    return parammqb.a.length;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mqa
  * JD-Core Version:    0.7.0.1
  */

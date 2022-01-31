@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.language.SelectLanguageActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 
 public class emk
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  public emk(SelectLanguageActivity paramSelectLanguageActivity) {}
+  public emk(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    SelectLanguageActivity.a(this.a, 1);
+    this.a.a = null;
   }
 }
 

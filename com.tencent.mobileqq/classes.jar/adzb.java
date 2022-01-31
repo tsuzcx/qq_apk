@@ -1,28 +1,32 @@
-import com.tencent.mobileqq.leba.LebaFeedsVideoSdkInstaller;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class adzb
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adzb(LebaFeedsVideoSdkInstaller paramLebaFeedsVideoSdkInstaller) {}
+  public adzb(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LebaFeedsVideoSdkInstaller", 2, "start install video sdk in subThread");
-    }
-    try
+    int i = 1;
+    if (paramBoolean)
     {
-      if (LebaFeedsVideoSdkInstaller.a(this.a) != null) {
-        TVK_SDKMgr.installPlugin(LebaFeedsVideoSdkInstaller.a(this.a), new adzd(LebaFeedsVideoSdkInstaller.a(this.a)));
+      this.a.app.c(1);
+      paramCompoundButton = this.a.app;
+      if (!paramBoolean) {
+        break label68;
       }
-      return;
     }
-    catch (Exception localException)
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("LebaFeedsVideoSdkInstaller", 2, "TVK_SDKMgr.installPlugin ERROR e=" + localException.getMessage());
+      azqs.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_gupsound", 0, i, "", "", "", "");
+      return;
+      this.a.app.c(0);
+      break;
+      label68:
+      i = 0;
     }
   }
 }

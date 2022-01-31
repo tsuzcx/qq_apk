@@ -1,51 +1,48 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask2;
+import android.os.RemoteException;
+import com.tencent.av.service.LBSInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
-import mqq.manager.TicketManager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public final class lzz
-  implements Runnable
+public class lzz
+  extends alvn
 {
-  public lzz(AppRuntime paramAppRuntime, String paramString) {}
+  private List<lzj> a = new ArrayList();
   
-  public void run()
+  public int a()
   {
-    try
+    return this.a.size();
+  }
+  
+  public void a(lzj paramlzj)
+  {
+    if (paramlzj != null) {
+      this.a.add(paramlzj);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      Object localObject1 = new Bundle();
-      Object localObject2 = (TicketManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(2);
-      Object localObject3 = this.jdField_a_of_type_MqqAppAppRuntime.getAccount();
-      localObject2 = ((TicketManager)localObject2).getSkey(this.jdField_a_of_type_MqqAppAppRuntime.getAccount());
-      ((Bundle)localObject1).putString("Cookie", "uin=o" + (String)localObject3 + "; skey=" + (String)localObject2);
-      ((Bundle)localObject1).putString("User-Agent", ReadInJoyWebDataManager.d());
-      ((Bundle)localObject1).putString("qq", this.jdField_a_of_type_MqqAppAppRuntime.getAccount());
-      ((Bundle)localObject1).putString("bid", "2");
-      ((Bundle)localObject1).putString("logArray", this.jdField_a_of_type_JavaLangString);
-      localObject3 = new HashMap();
-      ((HashMap)localObject3).put("BUNDLE", localObject1);
-      ((HashMap)localObject3).put("CONTEXT", BaseApplicationImpl.getApplication());
-      if (QLog.isColorLevel()) {
-        QLog.w("ReadInJoyWebDataManager", 2, "sendLog :content :" + this.jdField_a_of_type_JavaLangString);
+      lzj locallzj = (lzj)localIterator.next();
+      try
+      {
+        locallzj.a(paramBoolean, paramLBSInfo);
       }
-      localObject1 = new maa(this);
-      new HttpWebCgiAsyncTask2("http://node.kandian.qq.com/cgi/stats/multy?g_tk=" + ReadInJoyWebDataManager.a((String)localObject2), "POST", (HttpWebCgiAsyncTask.Callback)localObject1, 0, null).execute(new HashMap[] { localObject3 });
-      return;
+      catch (RemoteException localRemoteException) {}
+      if (QLog.isColorLevel()) {
+        QLog.e("QQServiceForAV", 2, "Call onGetUserLocation fail", localRemoteException);
+      }
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.w("ReadInJoyWebDataManager", 2, "sendLog:request err " + localException);
-    }
+    this.a.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lzz
  * JD-Core Version:    0.7.0.1
  */

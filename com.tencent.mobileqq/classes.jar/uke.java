@@ -1,96 +1,60 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.io.UnsupportedEncodingException;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.PBInt32Field;
 
 public class uke
-  implements Runnable
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
-  BaseChatItemLayout jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  private double a;
+  private double b;
   
-  public uke(QQAppInterface paramQQAppInterface, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, String paramString1, String paramString2, int paramInt, View.OnLongClickListener paramOnLongClickListener)
+  public uke(double paramDouble1, double paramDouble2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout = paramBaseChatItemLayout;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
+    this.a = paramDouble1;
+    this.b = paramDouble2;
   }
   
-  public void run()
+  public double a()
   {
-    String str1 = null;
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout == null) || (this.jdField_a_of_type_AndroidViewView$OnLongClickListener == null)) {}
-    for (;;)
-    {
-      return;
-      label55:
-      Object localObject;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        str1 = ContactUtils.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
-        localObject = str1;
-        if (str1 != null)
-        {
-          localObject = str1;
-          if (str1.getBytes().length > 3)
-          {
-            byte[] arrayOfByte = str1.getBytes();
-            localObject = str1;
-            if (arrayOfByte[0] == -17)
-            {
-              localObject = str1;
-              if (arrayOfByte[1] == -69)
-              {
-                localObject = str1;
-                if (arrayOfByte[2] == -65)
-                {
-                  localObject = new byte[arrayOfByte.length - 3];
-                  System.arraycopy(arrayOfByte, 3, localObject, 0, localObject.length);
-                }
-              }
-            }
-          }
-        }
-      }
-      try
-      {
-        localObject = new String((byte[])localObject, "UTF-8");
-        if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-          continue;
-        }
-        ((Activity)this.jdField_a_of_type_AndroidContentContext).runOnUiThread(new ukf(this, (String)localObject));
-        return;
-        if (this.jdField_a_of_type_Int != 3000) {
-          break label55;
-        }
-        str1 = ContactUtils.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        for (;;)
-        {
-          localUnsupportedEncodingException.printStackTrace();
-          String str2 = str1;
-        }
-      }
+    return this.a;
+  }
+  
+  public qqstory_struct.GpsMsg a()
+  {
+    qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
+    localGpsMsg.setHasFlag(true);
+    localGpsMsg.lat.set((int)(a() * 1000000.0D));
+    localGpsMsg.lng.set((int)(b() * 1000000.0D));
+    return localGpsMsg;
+  }
+  
+  public double b()
+  {
+    return this.b;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
     }
+    if (!(paramObject instanceof uke)) {
+      return false;
+    }
+    return (((uke)paramObject).a == this.a) && (((uke)paramObject).b == this.b);
+  }
+  
+  public int hashCode()
+  {
+    return "Gps".hashCode() + (int)(this.a * 1000000.0D) + (int)(this.b * 1000000.0D);
+  }
+  
+  public String toString()
+  {
+    return "Gps{lat=" + this.a + ", lng=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uke
  * JD-Core Version:    0.7.0.1
  */

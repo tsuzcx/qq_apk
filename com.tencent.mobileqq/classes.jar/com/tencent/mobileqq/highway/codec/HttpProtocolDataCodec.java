@@ -5,9 +5,7 @@ import com.tencent.mobileqq.highway.utils.EndPoint;
 import com.tencent.mobileqq.msf.core.net.MsfHttpResp;
 import com.tencent.mobileqq.msf.core.net.MsfHttpRespParse;
 import com.tencent.qphone.base.util.MsfSocketInputBuffer;
-import java.io.IOException;
 import java.io.InputStream;
-import org.apache.http.HttpException;
 import org.apache.http.StatusLine;
 import org.apache.http.impl.io.ChunkedInputStream;
 import org.apache.http.impl.io.ContentLengthInputStream;
@@ -33,7 +31,6 @@ public class HttpProtocolDataCodec
   }
   
   public void onRecvData(MsfSocketInputBuffer paramMsfSocketInputBuffer)
-    throws IOException, HttpException
   {
     MsfHttpResp localMsfHttpResp = new MsfHttpRespParse(paramMsfSocketInputBuffer).parse();
     label49:
@@ -87,7 +84,7 @@ public class HttpProtocolDataCodec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.codec.HttpProtocolDataCodec
  * JD-Core Version:    0.7.0.1
  */

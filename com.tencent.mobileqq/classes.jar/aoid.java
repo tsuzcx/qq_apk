@@ -1,89 +1,24 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.ExtendEditText.LengthConvertor;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.widget.InterestLabelTextView;
 
-public final class aoid
-  implements ExtendEditText.LengthConvertor
+public class aoid
 {
-  private boolean a(char paramChar)
-  {
-    Character.UnicodeBlock localUnicodeBlock = Character.UnicodeBlock.of(paramChar);
-    return (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A) || (localUnicodeBlock == Character.UnicodeBlock.GENERAL_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS);
-  }
-  
-  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    int i;
-    if (paramInt1 <= paramInt2)
-    {
-      i = paramInt1;
-      if (paramInt1 > paramInt2) {
-        break label75;
-      }
-    }
-    int j;
-    for (;;)
-    {
-      j = 0;
-      paramInt1 = i;
-      while ((paramInt1 < paramInt2) && (paramInt1 < paramCharSequence.length()))
-      {
-        int k = j;
-        if (a(paramCharSequence.charAt(paramInt1))) {
-          k = j + 1;
-        }
-        paramInt1 += 1;
-        j = k;
-      }
-      i = paramInt2;
-      break;
-      label75:
-      paramInt2 = paramInt1;
-    }
-    return j + (paramInt2 - i);
-  }
-  
-  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    int m = 0;
-    int i;
-    if (paramInt1 <= paramInt2)
-    {
-      i = paramInt1;
-      if (paramInt1 > paramInt2) {
-        break label83;
-      }
-      label16:
-      paramInt1 = i;
-    }
-    int k;
-    for (int j = 0;; j = k)
-    {
-      k = m;
-      if (paramInt1 < paramCharSequence.length())
-      {
-        k = j;
-        if (a(paramCharSequence.charAt(paramInt1))) {
-          k = j + 1;
-        }
-        if (paramInt1 + k >= paramInt2) {
-          k = paramInt1 - i;
-        }
-      }
-      else
-      {
-        return k;
-        i = paramInt2;
-        break;
-        label83:
-        paramInt2 = paramInt1;
-        break label16;
-      }
-      paramInt1 += 1;
-    }
-  }
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public RichStatus a;
+  public InterestLabelTextView a;
+  public String a;
+  public TextView b;
+  public InterestLabelTextView b;
+  public InterestLabelTextView c;
+  public InterestLabelTextView d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoid
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,23 @@
-import android.media.MediaPlayer;
-import android.os.Handler;
-import com.tencent.mobileqq.vas.ColorRingPlayer;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.AvatarPendantAdapter.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class akhh
-  implements Runnable
+  implements View.OnLayoutChangeListener
 {
-  public akhh(ColorRingPlayer paramColorRingPlayer) {}
+  akhh(akhf paramakhf) {}
   
-  public void run()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    for (;;)
-    {
-      Object localObject1 = this.a.jdField_a_of_type_JavaLangObject;
-      boolean bool = false;
-      try
-      {
-        if (this.a.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
-          bool = this.a.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying();
-        }
-        if ((this.a.jdField_a_of_type_AndroidMediaMediaPlayer == null) || (!bool)) {
-          break;
-        }
-        int i = this.a.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
-        int j = this.a.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition();
-        this.a.jdField_a_of_type_AndroidOsHandler.post(new akhi(this, j, i));
-      }
-      catch (IllegalStateException localIllegalStateException)
-      {
-        for (;;)
-        {
-          this.a.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-          this.a.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-        }
-      }
-      finally {}
-      try
-      {
-        Thread.sleep(50L);
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-      }
+    View localView = paramView.findViewById(2131365376);
+    TextView localTextView = (TextView)paramView.findViewById(2131365375);
+    paramInt1 = ((ImageView)paramView.findViewById(2131377301)).getRight() - localView.getWidth();
+    if (paramInt1 > 0) {
+      ThreadManager.getUIHandler().post(new AvatarPendantAdapter.2.1(this, localTextView, paramInt1));
     }
   }
 }

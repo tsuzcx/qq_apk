@@ -1,21 +1,37 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.now.location.LocationDataManager;
-import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class aesp
-  extends Handler
+class aesp
+  implements bdbc
 {
-  public aesp(SelectLocationFragment paramSelectLocationFragment) {}
+  aesp(aesk paramaesk) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    SelectLocationFragment.a(this.a).a(SelectLocationFragment.a(this.a));
+    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
+    for (;;)
+    {
+      return;
+      if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
+        aesk.b(this.a).setImageBitmap(paramBitmap);
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.d("intimate_relationship", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
+        return;
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+          aesk.a(this.a).setImageBitmap(paramBitmap);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aesp
  * JD-Core Version:    0.7.0.1
  */

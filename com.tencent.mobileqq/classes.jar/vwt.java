@@ -1,19 +1,22 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.annotation.TargetApi;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView.1.1;
 
 public class vwt
-  implements Runnable
+  implements vyq
 {
-  public vwt(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vwt(TextureVideoView paramTextureVideoView) {}
   
-  public void run()
+  @TargetApi(15)
+  public void a(vyi paramvyi, int paramInt1, int paramInt2)
   {
-    PublicAccountChatPie.a(this.a).removeView(this.a.o);
+    this.a.getHandler().post(new TextureVideoView.1.1(this, paramvyi));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vwt
  * JD-Core Version:    0.7.0.1
  */

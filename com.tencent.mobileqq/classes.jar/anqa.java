@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.view.QIMSlidingTabView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class anqa
-  implements View.OnClickListener
+class anqa
+  implements DialogInterface.OnDismissListener
 {
-  public anqa(QIMSlidingTabView paramQIMSlidingTabView, int paramInt) {}
+  anqa(anpz paramanpz, bhuf parambhuf) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bhuf.dismiss();
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ClearApp actionsheet is closed", new Object[0]));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anqa
  * JD-Core Version:    0.7.0.1
  */

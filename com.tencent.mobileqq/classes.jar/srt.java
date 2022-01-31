@@ -1,34 +1,24 @@
-import android.os.AsyncTask;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class srt
-  implements Animation.AnimationListener
 {
-  public srt(FriendProfileImageActivity paramFriendProfileImageActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public static Toast a(Context paramContext, CharSequence paramCharSequence, int paramInt)
   {
-    this.a.a.execute(new Void[0]);
-    this.a.f = false;
-    if (this.a.d) {
-      this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-    }
-    while (this.a.jdField_c_of_type_Boolean) {
-      return;
-    }
-    this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+    Toast localToast = new Toast(paramContext);
+    localToast.setDuration(paramInt);
+    paramContext = (TextView)LayoutInflater.from(paramContext).inflate(2131562534, null);
+    localToast.setView(paramContext);
+    paramContext.setText(paramCharSequence);
+    localToast.setGravity(17, 0, 0);
+    return localToast;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     srt
  * JD-Core Version:    0.7.0.1
  */

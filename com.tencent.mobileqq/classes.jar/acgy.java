@@ -1,17 +1,64 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
+import java.lang.ref.WeakReference;
+import tencent.im.oidb.oidb_0x87a.RspBody;
+import tencent.im.oidb.oidb_0x87c.RspBody;
 
 public class acgy
-  implements DialogInterface.OnClickListener
+  extends avvc
 {
-  public acgy(StickerGestureDetector paramStickerGestureDetector) {}
+  private WeakReference<avvc> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public acgy(avvc paramavvc)
+  {
+    this.a = new WeakReference(paramavvc);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    avvc localavvc = (avvc)this.a.get();
+    if (localavvc != null)
+    {
+      localavvc.a(paramString1, paramInt, paramString2);
+      return;
+    }
+    super.a(paramString1, paramInt, paramString2);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    avvc localavvc = (avvc)this.a.get();
+    if (localavvc != null)
+    {
+      localavvc.a(paramString1, paramString2);
+      return;
+    }
+    super.a(paramString1, paramString2);
+  }
+  
+  public void a(oidb_0x87a.RspBody paramRspBody)
+  {
+    avvc localavvc = (avvc)this.a.get();
+    if (localavvc != null)
+    {
+      localavvc.a(paramRspBody);
+      return;
+    }
+    super.a(paramRspBody);
+  }
+  
+  public void a(oidb_0x87c.RspBody paramRspBody)
+  {
+    avvc localavvc = (avvc)this.a.get();
+    if (localavvc != null)
+    {
+      localavvc.a(paramRspBody);
+      return;
+    }
+    super.a(paramRspBody);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acgy
  * JD-Core Version:    0.7.0.1
  */

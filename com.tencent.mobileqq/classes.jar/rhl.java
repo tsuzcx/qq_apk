@@ -1,66 +1,26 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.AutoCompleteTextView;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.Locale;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
-public class rhl
-  implements ActionSheet.OnButtonClickListener
+class rhl
+  implements DialogInterface.OnCancelListener
 {
-  public rhl(AddAccountActivity paramAddAccountActivity) {}
+  rhl(rhf paramrhf) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (AddAccountActivity.a(this.a)) {
-      return;
+    rhf.a(this.a, "mShareActionSheet cancle button OnClick");
+    if (rhf.a(this.a) != null) {
+      rhf.a(this.a).c();
     }
-    if (paramInt == 0)
-    {
-      ReportController.a(this.a.app, "dc00898", "", "", "0X8007353", "0X8007353", 0, 0, "", "", "", "");
-      paramView = null;
-      if (this.a.a != null) {
-        paramView = this.a.a.getText().toString();
-      }
-      if (TextUtils.isEmpty(paramView)) {
-        break label292;
-      }
-    }
-    label292:
-    for (paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://aq.qq.com/cn2/findpsw/mobile_web_find_input_account?source_id=2756", paramView });; paramView = "https://aq.qq.com/cn2/findpsw/mobile_web_find_input_account?source_id=2756")
-    {
-      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-      localIntent.putExtra("uin", this.a.app.getCurrentAccountUin());
-      localIntent.putExtra("reqType", 3);
-      localIntent.putExtra("url", paramView);
-      this.a.startActivity(localIntent);
-      for (;;)
-      {
-        AddAccountActivity.b(this.a, true);
-        AddAccountActivity.a(this.a).dismiss();
-        return;
-        if (paramInt == 1)
-        {
-          ReportController.a(this.a.app, "dc00898", "", "", "0X8007354", "0X8007354", 0, 0, "", "", "", "");
-          ReportController.b(this.a.app, "CliOper", "", "", "Mobile_signup", "Clk_ems_login", 0, 0, "", "", "", "");
-          boolean bool = this.a.getIntent().getBooleanExtra("login_from_account_change", false);
-          paramView = new Intent(this.a, LoginPhoneNumActivity.class);
-          paramView.putExtra("login_from_account_change", bool);
-          this.a.startActivity(paramView);
-        }
-      }
-    }
+    paramDialogInterface = rhf.a(this.a);
+    rhf.a(this.a, paramDialogInterface, paramDialogInterface.j, paramDialogInterface.g, paramDialogInterface.a, paramDialogInterface.f, -1, -1, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rhl
  * JD-Core Version:    0.7.0.1
  */

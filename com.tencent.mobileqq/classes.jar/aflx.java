@@ -1,54 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.Callback;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.ReportCallback;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_report.ReportRsp;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.data.MessageForFile;
 
-public final class aflx
-  implements CsTask.Callback
+class aflx
+  implements bezx
 {
-  public aflx(NearbyMomentProtocol.ReportCallback paramReportCallback) {}
+  aflx(aflw paramaflw, MessageForFile paramMessageForFile, Context paramContext) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    boolean bool = true;
-    paramBundle = new ilive_report.ReportRsp();
-    for (;;)
-    {
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (paramBundle.ret_code.has())
-        {
-          paramInt = paramBundle.ret_code.get();
-          if (paramInt == 0)
-          {
-            if (this.a != null) {
-              this.a.a(bool);
-            }
-            return;
-          }
-          QLog.i("NearbyMomentProtocol", 1, "report, retCode=" + paramBundle.ret_code.get() + ",errMsg=" + paramBundle.err_msg.get());
-          bool = false;
-          continue;
-        }
-        QLog.i("NearbyMomentProtocol", 1, "report, has no retCode , errMsg=" + paramBundle.err_msg.get());
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.i("NearbyMomentProtocol", 1, "report, e=" + paramArrayOfByte.toString());
-        continue;
-      }
-      bool = false;
-    }
+    arrr.a(this.jdField_a_of_type_Aflw.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aflx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import amhw;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
+import apmq;
+import beae;
+import beag;
+import beaj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.mobileqq.vip.DownloaderInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
-import zqn;
+import ntw;
 
 public class EcShopFirstRunMsgConfigs
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "EcShopFirstRunMsgConfigs start in addEcShopAssistToRUFirstTime...");
     }
-    ((EcShopAssistantManager)this.a.b.getManager(87)).c();
-    zqn localzqn = new zqn(this);
+    ((ntw)this.a.app.getManager(88)).c();
+    amhw localamhw = new amhw(this);
     List localList1 = Arrays.asList(new String[] { "http://imgcache.qq.com/zzapp/qqshop/stat/qqshp_client_log_wl_conf.json", "http://imgcache.qq.com/zzapp/qqshop/stat/qqshp_client_log_jd_conf.json" });
-    List localList2 = Arrays.asList(new String[] { EcShopAssistantManager.e, EcShopAssistantManager.f });
+    List localList2 = Arrays.asList(new String[] { ntw.e, ntw.f });
     List localList3 = Arrays.asList(new String[] { "last_modified_report_json", "last_modified_behaviors_json" });
     int i = 0;
     if (i < localList1.size())
@@ -42,27 +42,27 @@ public class EcShopFirstRunMsgConfigs
       {
         i += 1;
         break;
-        DownloaderInterface localDownloaderInterface = ((DownloaderFactory)this.a.b.getManager(46)).a(1);
-        if (localDownloaderInterface != null)
+        beaj localbeaj = ((beag)this.a.app.getManager(47)).a(1);
+        if (localbeaj != null)
         {
-          Object localObject3 = EmosmUtils.a("VIP_shop_assit_cfg", (String)localObject2);
-          if (localDownloaderInterface.a((String)localObject3) == null)
+          Object localObject3 = apmq.a("VIP_shop_assit_cfg", (String)localObject2);
+          if (localbeaj.a((String)localObject3) == null)
           {
             localObject2 = new File(str);
-            localObject3 = new DownloadTask((String)localObject3, (File)localObject2);
+            localObject3 = new beae((String)localObject3, (File)localObject2);
             if (((File)localObject2).exists())
             {
               long l = ((File)localObject2).lastModified();
-              ((DownloadTask)localObject3).i = this.a.b.getApp().getSharedPreferences("ecshop_sp", 0).getLong((String)localObject1, 0L);
-              if (Long.valueOf(l).longValue() != ((DownloadTask)localObject3).i) {
-                ((DownloadTask)localObject3).k = true;
+              ((beae)localObject3).i = this.a.app.getApp().getSharedPreferences("ecshop_sp", 0).getLong((String)localObject1, 0L);
+              if (Long.valueOf(l).longValue() != ((beae)localObject3).i) {
+                ((beae)localObject3).m = true;
               }
             }
-            ((DownloadTask)localObject3).h = true;
-            ((DownloadTask)localObject3).n = false;
+            ((beae)localObject3).j = true;
+            ((beae)localObject3).p = false;
             localObject1 = new Bundle();
             ((Bundle)localObject1).putString("path", str);
-            localDownloaderInterface.a((DownloadTask)localObject3, localzqn, (Bundle)localObject1);
+            localbeaj.a((beae)localObject3, localamhw, (Bundle)localObject1);
           }
         }
       }

@@ -1,21 +1,19 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.now.NowProxy;
-import com.tencent.mobileqq.nearby.NearbyProxy;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aemr
-  implements Runnable
+class aemr
+  implements View.OnClickListener
 {
-  public aemr(NearbyProxy paramNearbyProxy, Context paramContext) {}
+  aemr(aemq paramaemq) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ((NowProxy)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy.a.getManager(181)).a(this.jdField_a_of_type_AndroidContentContext);
+    this.a.a.b(paramView.getTag());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemr
  * JD-Core Version:    0.7.0.1
  */

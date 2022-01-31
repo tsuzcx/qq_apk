@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import org.json.JSONObject;
 
-class spj
-  implements Runnable
+public abstract interface spj
 {
-  spj(spi paramspi) {}
-  
-  public void run()
-  {
-    this.a.a.n();
-  }
+  public abstract void a(String paramString, JSONObject paramJSONObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     spj
  * JD-Core Version:    0.7.0.1
  */

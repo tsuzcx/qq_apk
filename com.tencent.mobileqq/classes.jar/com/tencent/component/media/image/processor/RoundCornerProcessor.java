@@ -21,8 +21,9 @@ import com.tencent.component.media.utils.ImageManagerLog;
 public class RoundCornerProcessor
   extends ImageProcessor
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  private float[] jdField_a_of_type_ArrayOfFloat;
+  private static final String TAG = "RoundCornerProcessor";
+  private float mRadius = -1.0F;
+  private float[] mRadiusArray;
   
   @Public
   public RoundCornerProcessor(float paramFloat)
@@ -66,8 +67,8 @@ public class RoundCornerProcessor
   public float getRadius()
   {
     float f = 0.0F;
-    if (this.jdField_a_of_type_Float > 0.0F) {
-      f = this.jdField_a_of_type_Float;
+    if (this.mRadius > 0.0F) {
+      f = this.mRadius;
     }
     return f;
   }
@@ -75,7 +76,7 @@ public class RoundCornerProcessor
   @Public
   public float[] getRadiusArray()
   {
-    return this.jdField_a_of_type_ArrayOfFloat;
+    return this.mRadiusArray;
   }
   
   public int getType()
@@ -89,13 +90,13 @@ public class RoundCornerProcessor
     if (this.mPreProcessor != null) {
       localDrawable = this.mPreProcessor.process(paramDrawable);
     }
-    if (this.jdField_a_of_type_ArrayOfFloat == null) {}
+    if (this.mRadiusArray == null) {}
     do
     {
       return localDrawable;
       paramDrawable = ImageManagerEnv.g().drawableToBitmap(localDrawable);
     } while (paramDrawable == null);
-    paramDrawable = getRoundedCornerBitmap(paramDrawable, this.jdField_a_of_type_ArrayOfFloat);
+    paramDrawable = getRoundedCornerBitmap(paramDrawable, this.mRadiusArray);
     if (paramDrawable == null) {
       return null;
     }
@@ -105,12 +106,12 @@ public class RoundCornerProcessor
   @Public
   public void setRadius(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_ArrayOfFloat = new float[8];
+    this.mRadius = paramFloat;
+    this.mRadiusArray = new float[8];
     int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfFloat.length)
+    while (i < this.mRadiusArray.length)
     {
-      this.jdField_a_of_type_ArrayOfFloat[i] = paramFloat;
+      this.mRadiusArray[i] = paramFloat;
       i += 1;
     }
   }
@@ -118,12 +119,12 @@ public class RoundCornerProcessor
   @Public
   public void setRadiusArray(float[] paramArrayOfFloat)
   {
-    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
+    this.mRadiusArray = paramArrayOfFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.processor.RoundCornerProcessor
  * JD-Core Version:    0.7.0.1
  */

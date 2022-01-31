@@ -1,23 +1,15 @@
-import com.tencent.widget.ListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class ibc
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public ibc(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  private ibc(ListView paramListView) {}
-  
-  public ibc a(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    return this;
-  }
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentWidgetListView.setSelectionFromTop(this.jdField_a_of_type_Int, this.b);
+    this.a.finish();
   }
 }
 

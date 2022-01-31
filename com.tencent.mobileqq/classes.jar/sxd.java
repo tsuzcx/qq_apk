@@ -1,25 +1,24 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
-public class sxd
-  implements Runnable
+class sxd
+  implements benw
 {
-  public sxd(Leba paramLeba) {}
+  sxd(sxb paramsxb) {}
   
-  public void run()
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    LocalRedTouchManager localLocalRedTouchManager = (LocalRedTouchManager)this.a.a.getManager(159);
-    if (localLocalRedTouchManager.a(localLocalRedTouchManager.a(10013))) {
-      localLocalRedTouchManager.a(10013);
-    }
-    ReportController.b(this.a.a, "dc00898", "", "", "0X8008823", "0X8008823", 0, 0, "", "", "", "");
+    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sxd
  * JD-Core Version:    0.7.0.1
  */

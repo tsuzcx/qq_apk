@@ -1,95 +1,49 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView.ITroopContext;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.RedDotTextView;
-import com.tencent.mobileqq.widget.TabBarView;
-import com.tencent.util.MqqWeakReferenceHandler;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.CardVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.NearbyCardInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.NormalCardInfo;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public class wlk
-  implements BaseTroopView.ITroopContext
 {
-  public wlk(TroopActivity paramTroopActivity) {}
+  private qqstory_struct.NearbyCardInfo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo;
+  private CardItem.CardVideoInfo jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
   
-  public Activity a()
+  public wlk(qqstory_struct.NearbyCardInfo paramNearbyCardInfo)
   {
-    return this.a;
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo = paramNearbyCardInfo;
   }
   
-  public View a()
+  public wlk(byte[] paramArrayOfByte)
   {
-    return this.a.findViewById(2131362840);
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.app;
-  }
-  
-  public ForwardBaseOption a()
-  {
-    return TroopActivity.a(this.a);
-  }
-  
-  public MqqWeakReferenceHandler a()
-  {
-    return this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (this.a.b != 2) {
-      return;
-    }
-    switch (paramInt)
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo = new qqstory_struct.NearbyCardInfo();
+    try
     {
-    default: 
-      return;
-    case 0: 
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).a(paramBoolean);
+      this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.mergeFrom(paramArrayOfByte);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a(paramBoolean);
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    this.a.runOnUiThread(paramRunnable);
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.a.isResume()) {
-      QQToast.a(a(), paramString, 0).b(this.a.getTitleBarHeight());
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wxe.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
     }
   }
   
-  public boolean a()
+  public CardItem.CardVideoInfo a()
   {
-    return TroopActivity.a(this.a);
-  }
-  
-  public View b()
-  {
-    return this.a.findViewById(2131362862);
-  }
-  
-  public View c()
-  {
-    return this.a.findViewById(2131366486);
-  }
-  
-  public View d()
-  {
-    return this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo == null)
+    {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.card_info.story_video_info.size() == 0) {
+        return null;
+      }
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.card_info.story_video_info.get(0));
+    }
+    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wlk
  * JD-Core Version:    0.7.0.1
  */

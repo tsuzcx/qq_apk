@@ -1,19 +1,24 @@
-import java.util.Arrays;
-import java.util.List;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.widget.XPanelContainer;
+import mqq.app.QQPermissionCallback;
 
 public class acjc
+  implements QQPermissionCallback
 {
-  public int a;
-  public long a;
-  public List a;
-  public boolean a;
-  public byte[] a;
-  public boolean b;
-  public boolean c;
+  public acjc(BaseChatPie paramBaseChatPie) {}
   
-  public String toString()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return "CacheData{mList.size()=" + this.jdField_a_of_type_JavaUtilList.size() + ", mLoadOver=" + this.jdField_a_of_type_Boolean + ", mRequestCookies=" + Arrays.toString(this.jdField_a_of_type_ArrayOfByte) + ", mProfileComplete=" + this.b + ", mShowCard=" + this.c + ", mMaxLikeCount=" + this.jdField_a_of_type_Int + ", mUpdateTime=" + this.jdField_a_of_type_Long + '}';
+    bdgm.b(this.a.a());
+    ((afgb)this.a.a(29)).b(2);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    aexq.a().a(this.a.jdField_a_of_type_AndroidContentContext);
+    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(2);
+    aggx.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8005CAC", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
   }
 }
 

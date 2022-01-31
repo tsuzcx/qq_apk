@@ -15,6 +15,7 @@ public class QQWalletTransferBubbleView
   int jdField_a_of_type_Int;
   LightingColorFilter jdField_a_of_type_AndroidGraphicsLightingColorFilter;
   boolean jdField_a_of_type_Boolean;
+  int b = 255;
   
   public QQWalletTransferBubbleView(Context paramContext)
   {
@@ -43,7 +44,7 @@ public class QQWalletTransferBubbleView
     Drawable localDrawable = getResources().getDrawable(this.jdField_a_of_type_Int);
     localDrawable.setBounds(0, 0, getWidth(), getHeight());
     localDrawable.setColorFilter(this.jdField_a_of_type_AndroidGraphicsLightingColorFilter);
-    localDrawable.setAlpha(255);
+    localDrawable.setAlpha(this.b);
     if (this.jdField_a_of_type_Boolean)
     {
       localDrawable.draw(paramCanvas);
@@ -60,11 +61,20 @@ public class QQWalletTransferBubbleView
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_AndroidGraphicsLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), paramInt2);
+    this.b = 255;
+  }
+  
+  public void setBubbleNightBackground(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidGraphicsLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), paramInt2);
+    this.b = 178;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.QQWalletTransferBubbleView
  * JD-Core Version:    0.7.0.1
  */

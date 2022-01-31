@@ -14,23 +14,24 @@ public class RecordTextView
   private boolean a;
   private Paint b = new Paint();
   private int c;
-  private ct d;
-  private boolean e;
-  private int f = 20;
-  private int g;
+  private ck d;
+  private int e;
+  private boolean f;
+  private int g = 20;
   private int h;
   private int i;
-  private boolean j;
-  private int k;
-  private Handler l = new cs(this);
+  private int j;
+  private boolean k;
+  private int l;
+  private Handler m = new cj(this);
   
   public RecordTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     this.b.setAntiAlias(true);
-    this.g = paramContext.getResources().getColor(2131165317);
-    this.h = paramContext.getResources().getColor(2131165318);
-    this.i = paramContext.getResources().getColor(2131165319);
+    this.h = paramContext.getResources().getColor(2131493009);
+    this.i = paramContext.getResources().getColor(2131493010);
+    this.j = paramContext.getResources().getColor(2131493011);
   }
   
   public void onDraw(Canvas paramCanvas)
@@ -38,19 +39,19 @@ public class RecordTextView
     super.onDraw(paramCanvas);
     if (this.a)
     {
-      this.b.setColor(this.g);
+      this.b.setColor(this.h);
       paramCanvas.drawRect(0.0F, getTop(), this.c, getTop() + getHeight(), this.b);
-      if (!this.j) {
+      if (!this.k) {
         break label109;
       }
-      this.b.setColor(this.h);
+      this.b.setColor(this.i);
     }
     for (;;)
     {
-      paramCanvas.drawRect(this.c, getTop(), this.c + this.f, getTop() + getHeight(), this.b);
+      paramCanvas.drawRect(this.c, getTop(), this.c + this.g, getTop() + getHeight(), this.b);
       return;
       label109:
-      this.b.setColor(this.i);
+      this.b.setColor(this.j);
     }
   }
 }

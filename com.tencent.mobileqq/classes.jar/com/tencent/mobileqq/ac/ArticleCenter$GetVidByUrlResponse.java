@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class ArticleCenter$GetVidByUrlResponse
-  extends MessageMicro
+  extends MessageMicro<GetVidByUrlResponse>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public ArticleCenter.RetInfo ret_info = new ArticleCenter.RetInfo();
@@ -23,7 +23,7 @@ public final class ArticleCenter$GetVidByUrlResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ac.ArticleCenter.GetVidByUrlResponse
  * JD-Core Version:    0.7.0.1
  */

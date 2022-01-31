@@ -5,48 +5,39 @@ import android.graphics.RectF;
 
 public class GestureKeyInfo
 {
-  int a;
-  public long a;
-  public RectF a;
-  public String a;
-  public boolean a;
-  public PointF[] a;
-  int b = 0;
-  int c = 0;
-  int d = 0;
+  int dataHeight = 0;
+  int dataWidth = 0;
+  public RectF hotArea = null;
+  public PointF[] hotPoints = null;
+  int originHeight = 0;
+  int originWidth = 0;
+  public long timeStamp = 0L;
+  public String type;
+  public boolean vaild = false;
   
-  public GestureKeyInfo()
+  public void copyTo(GestureKeyInfo paramGestureKeyInfo)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = null;
-    this.jdField_a_of_type_AndroidGraphicsRectF = null;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
+    paramGestureKeyInfo.vaild = this.vaild;
+    paramGestureKeyInfo.type = this.type;
+    paramGestureKeyInfo.timeStamp = this.timeStamp;
+    paramGestureKeyInfo.hotPoints = this.hotPoints;
+    paramGestureKeyInfo.hotArea = this.hotArea;
+    paramGestureKeyInfo.dataWidth = this.dataWidth;
+    paramGestureKeyInfo.dataHeight = this.dataHeight;
+    paramGestureKeyInfo.originWidth = this.originWidth;
+    paramGestureKeyInfo.originHeight = this.originHeight;
   }
   
-  public void a()
+  public void reset()
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  public void a(GestureKeyInfo paramGestureKeyInfo)
-  {
-    paramGestureKeyInfo.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    paramGestureKeyInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramGestureKeyInfo.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    paramGestureKeyInfo.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF;
-    paramGestureKeyInfo.jdField_a_of_type_AndroidGraphicsRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-    paramGestureKeyInfo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    paramGestureKeyInfo.b = this.b;
-    paramGestureKeyInfo.c = this.c;
-    paramGestureKeyInfo.d = this.d;
+    this.type = null;
+    this.vaild = false;
+    this.timeStamp = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.gesture.GestureKeyInfo
  * JD-Core Version:    0.7.0.1
  */

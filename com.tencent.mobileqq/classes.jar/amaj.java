@@ -1,25 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.widget.ActionSheet;
+import com.tencent.av.gaudio.AVNotifyCenter;
 
 class amaj
-  implements Animation.AnimationListener
+  implements muf
 {
-  amaj(amai paramamai) {}
+  amaj(amai paramamai, long paramLong, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt1, muh parammuh, int paramInt2)
   {
-    this.a.a.d();
-    ActionSheet.a(this.a.a, true);
+    if (paramInt1 == 0)
+    {
+      this.jdField_a_of_type_Amai.a.a(10, 1, this.jdField_a_of_type_Long, null, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Amai.a.a(7, this.jdField_a_of_type_Long, 2, 0, 0, 21, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Amai.a.a(21, 1, this.jdField_a_of_type_Long, 0L);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amaj
  * JD-Core Version:    0.7.0.1
  */

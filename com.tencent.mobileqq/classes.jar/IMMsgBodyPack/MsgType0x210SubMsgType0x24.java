@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class MsgType0x210SubMsgType0x24
   extends JceStruct
 {
-  static ArrayList cache_vPluginNumList;
-  public ArrayList vPluginNumList;
+  static ArrayList<PluginNum> cache_vPluginNumList;
+  public ArrayList<PluginNum> vPluginNumList;
   
   public MsgType0x210SubMsgType0x24() {}
   
-  public MsgType0x210SubMsgType0x24(ArrayList paramArrayList)
+  public MsgType0x210SubMsgType0x24(ArrayList<PluginNum> paramArrayList)
   {
     this.vPluginNumList = paramArrayList;
   }
@@ -38,7 +38,7 @@ public final class MsgType0x210SubMsgType0x24
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     IMMsgBodyPack.MsgType0x210SubMsgType0x24
  * JD-Core Version:    0.7.0.1
  */

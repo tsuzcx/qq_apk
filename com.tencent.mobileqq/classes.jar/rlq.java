@@ -1,21 +1,27 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.now.enter.NowEnterManager;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
-public class rlq
-  implements CompoundButton.OnCheckedChangeListener
+class rlq
+  implements Animation.AnimationListener
 {
-  public rlq(AssistantSettingActivity paramAssistantSettingActivity, NowEnterManager paramNowEnterManager) {}
+  rlq(rlo paramrlo) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager.a(paramBoolean);
+    paramAnimation = (ImageView)rlo.a(this.a).findViewById(2131379431);
+    ImageView localImageView = (ImageView)rlo.a(this.a).findViewById(2131379432);
+    rlo.a(this.a, localImageView, paramAnimation, 100L, 240L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rlq
  * JD-Core Version:    0.7.0.1
  */

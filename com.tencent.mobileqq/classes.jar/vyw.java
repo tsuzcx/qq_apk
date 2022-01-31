@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnSeekCompleteListener;
 
-public class vyw
-  implements DialogInterface.OnCancelListener
+class vyw
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  public vyw(PublicAccountChatPie paramPublicAccountChatPie) {}
+  vyw(vys paramvys, vyo paramvyo) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    this.a.A();
+    this.jdField_a_of_type_Vyo.a(this.jdField_a_of_type_Vys);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vyw
  * JD-Core Version:    0.7.0.1
  */

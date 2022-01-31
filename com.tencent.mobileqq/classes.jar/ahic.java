@@ -1,21 +1,22 @@
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.PhotoCaptureResult;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ahic
-  implements Runnable
 {
-  public ahic(CameraCaptureFragment paramCameraCaptureFragment, CameraCaptureView.PhotoCaptureResult paramPhotoCaptureResult) {}
-  
-  public void run()
-  {
-    Toast.makeText(BaseApplicationImpl.getContext(), "onPhotoCaptured : " + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$PhotoCaptureResult.a, 1).show();
-  }
+  public int a;
+  public long a;
+  public ImageView a;
+  public TextView a;
+  public String a;
+  public TextView b;
+  public String b;
+  public TextView c;
+  public String c;
+  public TextView d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahic
  * JD-Core Version:    0.7.0.1
  */

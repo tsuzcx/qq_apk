@@ -11,7 +11,7 @@ class Offset
   static Offset ART_ACCESS_FLAG_OFFSET;
   static Offset ART_JNI_ENTRY_OFFSET;
   static Offset ART_QUICK_CODE_OFFSET;
-  private BitWidth length;
+  private Offset.BitWidth length;
   private long offset;
   
   static {}
@@ -21,15 +21,15 @@ class Offset
     ART_QUICK_CODE_OFFSET = new Offset();
     ART_ACCESS_FLAG_OFFSET = new Offset();
     ART_JNI_ENTRY_OFFSET = new Offset();
-    ART_ACCESS_FLAG_OFFSET.setLength(BitWidth.DWORD);
+    ART_ACCESS_FLAG_OFFSET.setLength(Offset.BitWidth.DWORD);
     int i = Build.VERSION.SDK_INT;
     if (i > 27) {
       throw new RuntimeException("API LEVEL: " + i + " is not supported now : (");
     }
     if (Runtime.is64Bit())
     {
-      ART_QUICK_CODE_OFFSET.setLength(BitWidth.QWORD);
-      ART_JNI_ENTRY_OFFSET.setLength(BitWidth.QWORD);
+      ART_QUICK_CODE_OFFSET.setLength(Offset.BitWidth.QWORD);
+      ART_JNI_ENTRY_OFFSET.setLength(Offset.BitWidth.QWORD);
       switch (i)
       {
       case 20: 
@@ -59,9 +59,9 @@ class Offset
         return;
       case 21: 
         ART_QUICK_CODE_OFFSET.setOffset(40L);
-        ART_QUICK_CODE_OFFSET.setLength(BitWidth.QWORD);
+        ART_QUICK_CODE_OFFSET.setLength(Offset.BitWidth.QWORD);
         ART_JNI_ENTRY_OFFSET.setOffset(32L);
-        ART_JNI_ENTRY_OFFSET.setLength(BitWidth.QWORD);
+        ART_JNI_ENTRY_OFFSET.setLength(Offset.BitWidth.QWORD);
         ART_ACCESS_FLAG_OFFSET.setOffset(56L);
         return;
       }
@@ -69,8 +69,8 @@ class Offset
       ART_ACCESS_FLAG_OFFSET.setOffset(28L);
       return;
     }
-    ART_QUICK_CODE_OFFSET.setLength(BitWidth.DWORD);
-    ART_JNI_ENTRY_OFFSET.setLength(BitWidth.DWORD);
+    ART_QUICK_CODE_OFFSET.setLength(Offset.BitWidth.DWORD);
+    ART_JNI_ENTRY_OFFSET.setLength(Offset.BitWidth.DWORD);
     switch (i)
     {
     case 20: 
@@ -100,9 +100,9 @@ class Offset
       return;
     case 21: 
       ART_QUICK_CODE_OFFSET.setOffset(40L);
-      ART_QUICK_CODE_OFFSET.setLength(BitWidth.QWORD);
+      ART_QUICK_CODE_OFFSET.setLength(Offset.BitWidth.QWORD);
       ART_JNI_ENTRY_OFFSET.setOffset(32L);
-      ART_JNI_ENTRY_OFFSET.setLength(BitWidth.QWORD);
+      ART_JNI_ENTRY_OFFSET.setLength(Offset.BitWidth.QWORD);
       ART_ACCESS_FLAG_OFFSET.setOffset(56L);
       return;
     }
@@ -112,8 +112,8 @@ class Offset
   
   public static long read(long paramLong, Offset paramOffset)
   {
-    byte[] arrayOfByte = EpicNative.get(paramLong + paramOffset.offset, paramOffset.length.width);
-    if (paramOffset.length == BitWidth.DWORD) {
+    byte[] arrayOfByte = EpicNative.get(paramOffset.offset + paramLong, paramOffset.length.width);
+    if (paramOffset.length == Offset.BitWidth.DWORD) {
       return ByteBuffer.wrap(arrayOfByte).order(ByteOrder.LITTLE_ENDIAN).getInt() & 0xFFFFFFFF;
     }
     return ByteBuffer.wrap(arrayOfByte).order(ByteOrder.LITTLE_ENDIAN).getLong();
@@ -122,7 +122,7 @@ class Offset
   public static void write(long paramLong1, Offset paramOffset, long paramLong2)
   {
     long l = paramOffset.offset;
-    if (paramOffset.length == BitWidth.DWORD) {
+    if (paramOffset.length == Offset.BitWidth.DWORD) {
       if (paramLong2 > 4294967295L) {
         throw new IllegalStateException("overflow may occur");
       }
@@ -134,7 +134,7 @@ class Offset
     }
   }
   
-  public BitWidth getLength()
+  public Offset.BitWidth getLength()
   {
     return this.length;
   }
@@ -144,7 +144,7 @@ class Offset
     return this.offset;
   }
   
-  public void setLength(BitWidth paramBitWidth)
+  public void setLength(Offset.BitWidth paramBitWidth)
   {
     this.length = paramBitWidth;
   }
@@ -153,22 +153,10 @@ class Offset
   {
     this.offset = paramLong;
   }
-  
-  private static enum BitWidth
-  {
-    DWORD(4),  QWORD(8);
-    
-    int width;
-    
-    private BitWidth(int paramInt)
-    {
-      this.width = paramInt;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     me.weishu.epic.art.method.Offset
  * JD-Core Version:    0.7.0.1
  */

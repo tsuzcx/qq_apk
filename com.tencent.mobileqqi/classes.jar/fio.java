@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.app.MessageHandler;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.UpdateFriend;
 
 public class fio
+  extends FriendListObserver
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  private int c;
+  private fio(UpdateFriend paramUpdateFriend) {}
   
-  public fio(MessageHandler paramMessageHandler) {}
-  
-  public fio(MessageHandler paramMessageHandler, int paramInt1, int paramInt2, int paramInt3)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    if (!paramBoolean1) {
+      this.a.a(6);
+    }
+    while ((!paramBoolean1) || (!paramBoolean2)) {
+      return;
+    }
+    UpdateFriend.a(this.a).a.edit().putBoolean("isFriendlistok", true).commit();
+    UpdateFriend.b(this.a).a(3, true, Integer.valueOf(1));
+    this.a.a(7);
   }
 }
 

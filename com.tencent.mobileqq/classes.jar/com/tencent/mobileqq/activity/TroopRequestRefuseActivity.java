@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity;
 
+import amlp;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
@@ -14,19 +15,18 @@ import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import azqs;
+import bafj;
+import bdin;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.List;
 import oicq.wlogin_sdk.tools.MD5;
@@ -34,7 +34,6 @@ import tencent.mobileim.structmsg.structmsg.StructMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsgAction;
 import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
-import udm;
 
 public class TroopRequestRefuseActivity
   extends IphoneTitleBarActivity
@@ -43,7 +42,7 @@ public class TroopRequestRefuseActivity
   Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   protected CheckBox a;
   protected EditText a;
-  public TextView a;
+  protected TextView a;
   private String jdField_a_of_type_JavaLangString = "";
   private structmsg.StructMsg jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg;
   
@@ -112,41 +111,41 @@ public class TroopRequestRefuseActivity
       enableRightHighlight(true);
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new udm(this, paramEditable));
+    this.jdField_a_of_type_AndroidOsHandler.post(new TroopRequestRefuseActivity.1(this, paramEditable));
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130971689);
-    setTitle(2131430610);
-    setLeftButton(2131433015, this);
-    setRightHighlightButton(2131434756, this);
+    super.setContentView(2131562790);
+    setTitle(2131698211);
+    setLeftButton(2131690648, this);
+    setRightHighlightButton(2131719773, this);
     enableRightHighlight(true);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131375365));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365848));
     this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundColor(-1);
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375366));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379094));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(25));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131375367));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364243));
     paramBundle = a();
     if (!TextUtils.isEmpty(paramBundle))
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setText(paramBundle);
       this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.length());
     }
-    long l = GroupSystemMsgController.a().b();
-    this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = GroupSystemMsgController.a().a(Long.valueOf(l));
+    long l = bafj.a().b();
+    this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = bafj.a().a(Long.valueOf(l));
     if (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null) {
       this.jdField_a_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get());
     }
-    ReportController.b(this.app, "P_CliOper", "Grp_sysmsg", "", "Grp_ask", "exp_reject", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
+    azqs.b(this.app, "P_CliOper", "Grp_sysmsg", "", "Grp_ask", "exp_reject", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     if (this.jdField_a_of_type_AndroidWidgetEditText != null)
     {
@@ -161,8 +160,8 @@ public class TroopRequestRefuseActivity
   public void onClick(View paramView)
   {
     if (paramView == this.rightHighLView) {
-      if (!NetworkUtil.d(this)) {
-        QQToast.a(this, getString(2131433213), 0).b(getTitleBarHeight());
+      if (!bdin.d(this)) {
+        QQToast.a(this, getString(2131694766), 0).b(getTitleBarHeight());
       }
     }
     label137:
@@ -185,7 +184,7 @@ public class TroopRequestRefuseActivity
       }
       for (String str1 = "0";; str1 = "1")
       {
-        ReportController.b(localQQAppInterface, "P_CliOper", "Grp_sysmsg", "", "Grp_ask", "Clk_send_reject", 0, 0, str2, paramView, str1, "");
+        azqs.b(localQQAppInterface, "P_CliOper", "Grp_sysmsg", "", "Grp_ask", "Clk_send_reject", 0, 0, str2, paramView, str1, "");
         return;
         paramView = "1";
         break;
@@ -198,7 +197,7 @@ public class TroopRequestRefuseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopRequestRefuseActivity
  * JD-Core Version:    0.7.0.1
  */

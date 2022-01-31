@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x388$DelImgRsp
-  extends MessageMicro
+  extends MessageMicro<DelImgRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_fail_msg = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -24,7 +24,7 @@ public final class cmd0x388$DelImgRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x388.cmd0x388.DelImgRsp
  * JD-Core Version:    0.7.0.1
  */

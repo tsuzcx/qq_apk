@@ -1,19 +1,43 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.mobileqq.scribble.ScribbleBaseOperator;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class ahpy
-  implements Runnable
+  extends bcmj
 {
-  public ahpy(ScribbleBaseOperator paramScribbleBaseOperator, MessageForScribble paramMessageForScribble) {}
+  public ahpy(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleBaseOperator.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble, this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleBaseOperator.a.getCurrentAccountUin());
-    this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleBaseOperator.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble, this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.localFildPath, null);
-    QLog.i("SCRIBBLEMSG", 2, "!!!addMessage uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.uniseq);
+    if ((paramBoolean) && (paramBundle != null)) {}
+    while (this.a.jdField_a_of_type_Bety == null) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("structMsg");
+        structmsg.StructMsg localStructMsg = new structmsg.StructMsg();
+        localStructMsg.mergeFrom(paramBundle);
+        TroopNotifyAndRecommendView.a(this.a, 1, localStructMsg);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        do
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("TroopNotifyAndRecommendView", 2, "structMsg merge error");
+          }
+        } while (this.a.jdField_a_of_type_Bety == null);
+        this.a.jdField_a_of_type_Bety.dismiss();
+        QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131697811), 0).b(this.a.a());
+        return;
+      }
+    }
+    this.a.jdField_a_of_type_Bety.dismiss();
+    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131697811), 0).b(this.a.a());
   }
 }
 

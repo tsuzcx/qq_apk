@@ -6,15 +6,15 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class qqstory_service$RspSimpleInfoList
-  extends MessageMicro
+  extends MessageMicro<RspSimpleInfoList>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "result", "video_list" }, new Object[] { null, null }, RspSimpleInfoList.class);
   public qqstory_struct.ErrorInfo result = new qqstory_struct.ErrorInfo();
-  public final PBRepeatMessageField video_list = PBField.initRepeatMessage(qqstory_struct.StoryVideoSimpleInfo.class);
+  public final PBRepeatMessageField<qqstory_struct.StoryVideoSimpleInfo> video_list = PBField.initRepeatMessage(qqstory_struct.StoryVideoSimpleInfo.class);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspSimpleInfoList
  * JD-Core Version:    0.7.0.1
  */

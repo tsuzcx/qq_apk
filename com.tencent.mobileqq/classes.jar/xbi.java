@@ -1,26 +1,58 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.view.View;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import java.util.ArrayList;
+import java.util.List;
 
-public class xbi
-  implements ClickableColorSpanTextView.SpanClickListener
+class xbi
+  implements uxy
 {
-  public xbi(RedPacketRecordFragment paramRedPacketRecordFragment, Context paramContext) {}
+  xbi(xbg paramxbg, String paramString) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void a(int paramInt, uxz paramuxz, List<TroopBarPOI> paramList)
   {
-    paramClickableColorSpanTextView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramClickableColorSpanTextView);
+    this.jdField_a_of_type_Xbg.jdField_a_of_type_Uxz = paramuxz;
+    if (!this.jdField_a_of_type_Xbg.isValidate()) {
+      return;
+    }
+    if (paramInt == 0) {
+      if (paramuxz.a()) {
+        break label210;
+      }
+    }
+    label210:
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Xbg.d.setVisibility(0);
+      this.jdField_a_of_type_Xbg.a(bool);
+      if (this.jdField_a_of_type_Xbg.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_Xbg.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      if (this.jdField_a_of_type_Xbg.jdField_a_of_type_Uxz.b()) {
+        this.jdField_a_of_type_Xbg.jdField_a_of_type_JavaUtilArrayList.clear();
+      }
+      this.jdField_a_of_type_Xbg.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+      if (this.jdField_a_of_type_Xbg.jdField_a_of_type_Xky != null)
+      {
+        this.jdField_a_of_type_Xbg.jdField_a_of_type_Xky.a(this.jdField_a_of_type_Xbg.jdField_a_of_type_JavaUtilArrayList, null);
+        this.jdField_a_of_type_Xbg.jdField_a_of_type_Xky.notifyDataSetChanged();
+        if (this.jdField_a_of_type_Xbg.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+        {
+          this.jdField_a_of_type_Xbg.a(this.jdField_a_of_type_JavaLangString);
+          this.jdField_a_of_type_Xbg.d.setVisibility(4);
+        }
+      }
+      int i = paramInt;
+      if (paramInt == 0) {
+        i = 0;
+      }
+      wxj.b("edit_video", "poi_list_success", 0, i, new String[0]);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xbi
  * JD-Core Version:    0.7.0.1
  */

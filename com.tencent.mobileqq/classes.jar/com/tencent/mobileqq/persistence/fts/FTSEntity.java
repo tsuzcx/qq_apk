@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.persistence.fts;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.utils.fts.SQLiteFTSUtils;
+import bdpr;
 
 public abstract class FTSEntity
 {
@@ -37,6 +37,7 @@ public abstract class FTSEntity
   public int mProximityEnd = -1;
   public int mProximityStart = -1;
   public int mSearchScene;
+  public int mSegmentCount;
   public int mType = -1;
   
   public FTSEntity() {}
@@ -97,9 +98,9 @@ public abstract class FTSEntity
     this.mOpt = 16;
   }
   
-  public abstract void doDeserialize();
+  protected abstract void doDeserialize();
   
-  public abstract void doSerialize();
+  protected abstract void doSerialize();
   
   public abstract String getTableName();
   
@@ -119,11 +120,15 @@ public abstract class FTSEntity
   
   public void preWrite()
   {
-    if ((this.mContent == null) || (TextUtils.isEmpty(this.mContent))) {}
-    for (this.mContentIndex = null;; this.mContentIndex = SQLiteFTSUtils.a(this.mContent))
+    if ((this.mContent == null) || (TextUtils.isEmpty(this.mContent))) {
+      this.mContentIndex = null;
+    }
+    for (;;)
     {
       doSerialize();
       return;
+      this.mContentIndex = bdpr.a(this.mContent);
+      this.mSegmentCount += bdpr.a(this.mContentIndex);
     }
   }
   
@@ -134,7 +139,8 @@ public abstract class FTSEntity
       this.mContentIndex = null;
       return;
     }
-    this.mContentIndex = SQLiteFTSUtils.a(this.mContent);
+    this.mContentIndex = bdpr.a(this.mContent);
+    this.mSegmentCount += bdpr.a(this.mContentIndex);
   }
   
   public void preWriteTwo()
@@ -151,7 +157,7 @@ public abstract class FTSEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.fts.FTSEntity
  * JD-Core Version:    0.7.0.1
  */

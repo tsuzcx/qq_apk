@@ -1,36 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.moment.BaseMomentItemBuilder;
-import com.tencent.mobileqq.nearby.profilecard.moment.BaseMomentItemBuilder.MomentViewHolder;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.MomentFeedInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Bundle;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.ark.ArkViewModelBase.AppInfo;
+import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper;
+import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper.2.1;
 
 public class afjv
-  implements ActionSheet.OnButtonClickListener
+  extends arwe
 {
-  public afjv(BaseMomentItemBuilder paramBaseMomentItemBuilder, BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder, String[] paramArrayOfString, String paramString, ActionSheet paramActionSheet) {}
+  public afjv(ArkFlashChatContainerWrapper paramArkFlashChatContainerWrapper) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (!NetworkUtil.g(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_AndroidContentContext)) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_AndroidContentContext, 1, "网络异常，无法操作", 0).a();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      paramView = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder.a.c;
-      ((NearbyMomentManager)this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(262)).a(paramView, this.jdField_a_of_type_ArrayOfJavaLangString[paramInt], this.jdField_a_of_type_JavaLangString, new afjw(this, paramView));
-    }
+    ArkDispatchTask.getInstance().postDelayed(ArkFlashChatContainerWrapper.a(this.a).name, new ArkFlashChatContainerWrapper.2.1(this, paramBoolean, paramBundle), 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afjv
  * JD-Core Version:    0.7.0.1
  */

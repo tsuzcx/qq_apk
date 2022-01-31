@@ -1,24 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import java.util.Comparator;
 
 public class erz
-  implements AdapterView.OnItemClickListener
+  implements Comparator
 {
-  public erz(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  private erz(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
   {
-    if (PhotoPreviewActivity.a(this.a))
-    {
-      PhotoPreviewActivity.a(this.a, false);
-      this.a.a.setVisibility(4);
-      this.a.b.setVisibility(4);
-      return;
-    }
-    PhotoPreviewActivity.a(this.a, true);
-    this.a.b.setVisibility(0);
+    return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
   }
 }
 

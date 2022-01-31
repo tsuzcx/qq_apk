@@ -1,28 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.ConfigObserver;
+import com.tencent.mobileqq.richstatus.IActionListener;
+import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class gib
-  implements DialogInterface.OnClickListener
+  extends ConfigObserver
 {
-  public gib(PhoneNumLoginImpl paramPhoneNumLoginImpl) {}
+  public gib(StatusManager paramStatusManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "onUpdateStatusActions " + paramBoolean + ", " + paramInt);
     }
-    catch (Exception paramDialogInterface)
+    StatusManager.a(this.a, 0L);
+    if (paramBoolean)
     {
-      paramDialogInterface.printStackTrace();
+      if (paramInt == 100)
+      {
+        StatusManager.b(this.a, System.currentTimeMillis());
+        StatusManager.a(this.a).edit().putLong("k_update_time", StatusManager.a(this.a)).commit();
+      }
+      this.a.a(true);
+    }
+    if (StatusManager.a(this.a) != null)
+    {
+      Iterator localIterator = StatusManager.a(this.a).iterator();
+      if (localIterator.hasNext())
+      {
+        IActionListener localIActionListener = (IActionListener)localIterator.next();
+        if (paramBoolean) {}
+        for (int i = 300;; i = 301)
+        {
+          localIActionListener.a(paramInt, i);
+          break;
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gib
  * JD-Core Version:    0.7.0.1
  */

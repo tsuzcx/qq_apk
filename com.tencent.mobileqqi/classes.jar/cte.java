@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.LoginActivity;
 
 public class cte
-  extends FriendListObserver
+  implements DialogInterface.OnClickListener
 {
-  public cte(ForwardRecentActivity paramForwardRecentActivity) {}
+  public cte(LoginActivity paramLoginActivity) {}
   
-  protected void a(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      ForwardRecentActivity.b(this.a);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     cte
  * JD-Core Version:    0.7.0.1
  */

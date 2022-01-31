@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:id="@id/e8w" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="@dimen/j2" android:layout_marginTop="@dimen/acq" android:baselineAligned="false">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/dcz" android:layout_width="@dimen/j6" android:layout_height="@dimen/j6" android:layout_marginLeft="@dimen/is" />
+        <TextView android:textSize="@dimen/j1" android:textColor="@color/skin_black" android:layout_gravity="center_vertical" android:id="@id/jjq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/is" android:text="@null" />
+    </LinearLayout>
+    <com.tencent.biz.widgets.ListViewForListview android:orientation="vertical" android:id="@id/ec5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@null" android:dividerHeight="0.0px" android:layout_below="@id/e8w" />
+    <com.tencent.mobileqq.widget.RightArrowTextView android:textSize="14.0dip" android:textColor="#ff777777" android:gravity="center" android:id="@id/jnp" android:background="@drawable/jj" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/j2" android:text="@null" android:layout_below="@id/ec5" />
+</merge>

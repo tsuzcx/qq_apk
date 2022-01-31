@@ -8,10 +8,10 @@ import java.util.ArrayList;
 public final class cell_red_bonus
   extends JceStruct
 {
-  static ArrayList cache_payMans = new ArrayList();
+  static ArrayList<s_redbonus_man> cache_payMans = new ArrayList();
   public String actionUrl = "";
   public int isPayed;
-  public ArrayList payMans;
+  public ArrayList<s_redbonus_man> payMans;
   public long payMenNum;
   public long payMoney;
   public long payNum;
@@ -25,7 +25,7 @@ public final class cell_red_bonus
   
   public cell_red_bonus() {}
   
-  public cell_red_bonus(long paramLong1, long paramLong2, int paramInt, long paramLong3, ArrayList paramArrayList, String paramString, long paramLong4)
+  public cell_red_bonus(long paramLong1, long paramLong2, int paramInt, long paramLong3, ArrayList<s_redbonus_man> paramArrayList, String paramString, long paramLong4)
   {
     this.payNum = paramLong1;
     this.payTotalAccount = paramLong2;
@@ -64,7 +64,7 @@ public final class cell_red_bonus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_red_bonus
  * JD-Core Version:    0.7.0.1
  */

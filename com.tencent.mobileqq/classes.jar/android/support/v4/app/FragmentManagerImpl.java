@@ -54,16 +54,16 @@ final class FragmentManagerImpl
   static final String TARGET_STATE_TAG = "android:target_state";
   static final String USER_VISIBLE_HINT_TAG = "android:user_visible_hint";
   static final String VIEW_STATE_TAG = "android:view_state";
-  ArrayList mActive;
+  ArrayList<Fragment> mActive;
   FragmentActivity mActivity;
-  ArrayList mAdded;
-  ArrayList mAvailBackStackIndices;
-  ArrayList mAvailIndices;
-  ArrayList mBackStack;
-  ArrayList mBackStackChangeListeners;
-  ArrayList mBackStackIndices;
+  ArrayList<Fragment> mAdded;
+  ArrayList<Integer> mAvailBackStackIndices;
+  ArrayList<Integer> mAvailIndices;
+  ArrayList<BackStackRecord> mBackStack;
+  ArrayList<FragmentManager.OnBackStackChangedListener> mBackStackChangeListeners;
+  ArrayList<BackStackRecord> mBackStackIndices;
   FragmentContainer mContainer;
-  ArrayList mCreatedMenus;
+  ArrayList<Fragment> mCreatedMenus;
   int mCurState = 0;
   boolean mDestroyed;
   Runnable mExecCommit = new FragmentManagerImpl.1(this);
@@ -72,8 +72,8 @@ final class FragmentManagerImpl
   boolean mNeedMenuInvalidate;
   String mNoTransactionsBecause;
   Fragment mParent;
-  ArrayList mPendingActions;
-  SparseArray mStateArray = null;
+  ArrayList<Runnable> mPendingActions;
+  SparseArray<Parcelable> mStateArray = null;
   Bundle mStateBundle = null;
   boolean mStateSaved;
   Runnable[] mTmpActions;
@@ -743,19 +743,19 @@ final class FragmentManagerImpl
     //   0: iload_2
     //   1: ifne +7 -> 8
     //   4: aload_0
-    //   5: invokespecial 481	android/support/v4/app/FragmentManagerImpl:checkStateLoss	()V
+    //   5: invokespecial 487	android/support/v4/app/FragmentManagerImpl:checkStateLoss	()V
     //   8: aload_0
     //   9: monitorenter
     //   10: aload_0
-    //   11: getfield 361	android/support/v4/app/FragmentManagerImpl:mDestroyed	Z
+    //   11: getfield 367	android/support/v4/app/FragmentManagerImpl:mDestroyed	Z
     //   14: ifne +10 -> 24
     //   17: aload_0
-    //   18: getfield 213	android/support/v4/app/FragmentManagerImpl:mActivity	Landroid/support/v4/app/FragmentActivity;
+    //   18: getfield 219	android/support/v4/app/FragmentManagerImpl:mActivity	Landroid/support/v4/app/FragmentActivity;
     //   21: ifnonnull +19 -> 40
-    //   24: new 124	java/lang/IllegalStateException
+    //   24: new 130	java/lang/IllegalStateException
     //   27: dup
-    //   28: ldc_w 483
-    //   31: invokespecial 129	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   28: ldc_w 489
+    //   31: invokespecial 135	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
     //   34: athrow
     //   35: astore_1
     //   36: aload_0
@@ -763,35 +763,35 @@ final class FragmentManagerImpl
     //   38: aload_1
     //   39: athrow
     //   40: aload_0
-    //   41: getfield 447	android/support/v4/app/FragmentManagerImpl:mPendingActions	Ljava/util/ArrayList;
+    //   41: getfield 453	android/support/v4/app/FragmentManagerImpl:mPendingActions	Ljava/util/ArrayList;
     //   44: ifnonnull +14 -> 58
     //   47: aload_0
-    //   48: new 237	java/util/ArrayList
+    //   48: new 243	java/util/ArrayList
     //   51: dup
-    //   52: invokespecial 238	java/util/ArrayList:<init>	()V
-    //   55: putfield 447	android/support/v4/app/FragmentManagerImpl:mPendingActions	Ljava/util/ArrayList;
+    //   52: invokespecial 244	java/util/ArrayList:<init>	()V
+    //   55: putfield 453	android/support/v4/app/FragmentManagerImpl:mPendingActions	Ljava/util/ArrayList;
     //   58: aload_0
-    //   59: getfield 447	android/support/v4/app/FragmentManagerImpl:mPendingActions	Ljava/util/ArrayList;
+    //   59: getfield 453	android/support/v4/app/FragmentManagerImpl:mPendingActions	Ljava/util/ArrayList;
     //   62: aload_1
-    //   63: invokevirtual 242	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   63: invokevirtual 248	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   66: pop
     //   67: aload_0
-    //   68: getfield 447	android/support/v4/app/FragmentManagerImpl:mPendingActions	Ljava/util/ArrayList;
-    //   71: invokevirtual 294	java/util/ArrayList:size	()I
+    //   68: getfield 453	android/support/v4/app/FragmentManagerImpl:mPendingActions	Ljava/util/ArrayList;
+    //   71: invokevirtual 300	java/util/ArrayList:size	()I
     //   74: iconst_1
     //   75: if_icmpne +32 -> 107
     //   78: aload_0
-    //   79: getfield 213	android/support/v4/app/FragmentManagerImpl:mActivity	Landroid/support/v4/app/FragmentActivity;
-    //   82: getfield 487	android/support/v4/app/FragmentActivity:mHandler	Landroid/os/Handler;
+    //   79: getfield 219	android/support/v4/app/FragmentManagerImpl:mActivity	Landroid/support/v4/app/FragmentActivity;
+    //   82: getfield 493	android/support/v4/app/FragmentActivity:mHandler	Landroid/os/Handler;
     //   85: aload_0
-    //   86: getfield 119	android/support/v4/app/FragmentManagerImpl:mExecCommit	Ljava/lang/Runnable;
-    //   89: invokevirtual 493	android/os/Handler:removeCallbacks	(Ljava/lang/Runnable;)V
+    //   86: getfield 125	android/support/v4/app/FragmentManagerImpl:mExecCommit	Ljava/lang/Runnable;
+    //   89: invokevirtual 499	android/os/Handler:removeCallbacks	(Ljava/lang/Runnable;)V
     //   92: aload_0
-    //   93: getfield 213	android/support/v4/app/FragmentManagerImpl:mActivity	Landroid/support/v4/app/FragmentActivity;
-    //   96: getfield 487	android/support/v4/app/FragmentActivity:mHandler	Landroid/os/Handler;
+    //   93: getfield 219	android/support/v4/app/FragmentManagerImpl:mActivity	Landroid/support/v4/app/FragmentActivity;
+    //   96: getfield 493	android/support/v4/app/FragmentActivity:mHandler	Landroid/os/Handler;
     //   99: aload_0
-    //   100: getfield 119	android/support/v4/app/FragmentManagerImpl:mExecCommit	Ljava/lang/Runnable;
-    //   103: invokevirtual 497	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   100: getfield 125	android/support/v4/app/FragmentManagerImpl:mExecCommit	Ljava/lang/Runnable;
+    //   103: invokevirtual 503	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   106: pop
     //   107: aload_0
     //   108: monitorexit
@@ -1023,7 +1023,7 @@ final class FragmentManagerImpl
     return localFragment;
   }
   
-  public List getFragments()
+  public List<Fragment> getFragments()
   {
     return this.mActive;
   }
@@ -1685,7 +1685,7 @@ final class FragmentManagerImpl
     }
   }
   
-  void restoreAllState(Parcelable paramParcelable, ArrayList paramArrayList)
+  void restoreAllState(Parcelable paramParcelable, ArrayList<Fragment> paramArrayList)
   {
     int j = 0;
     if (paramParcelable == null) {}
@@ -1820,7 +1820,7 @@ final class FragmentManagerImpl
     this.mBackStack = null;
   }
   
-  ArrayList retainNonConfig()
+  ArrayList<Fragment> retainNonConfig()
   {
     Object localObject2 = null;
     Object localObject1 = null;
@@ -2057,16 +2057,16 @@ final class FragmentManagerImpl
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 296	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
+    //   3: getfield 302	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
     //   6: ifnonnull +14 -> 20
     //   9: aload_0
-    //   10: new 237	java/util/ArrayList
+    //   10: new 243	java/util/ArrayList
     //   13: dup
-    //   14: invokespecial 238	java/util/ArrayList:<init>	()V
-    //   17: putfield 296	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
+    //   14: invokespecial 244	java/util/ArrayList:<init>	()V
+    //   17: putfield 302	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
     //   20: aload_0
-    //   21: getfield 296	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
-    //   24: invokevirtual 294	java/util/ArrayList:size	()I
+    //   21: getfield 302	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
+    //   24: invokevirtual 300	java/util/ArrayList:size	()I
     //   27: istore 4
     //   29: iload 4
     //   31: istore_3
@@ -2074,10 +2074,10 @@ final class FragmentManagerImpl
     //   33: iload 4
     //   35: if_icmpge +16 -> 51
     //   38: aload_0
-    //   39: getfield 296	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
+    //   39: getfield 302	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
     //   42: iload_1
     //   43: aload_2
-    //   44: invokevirtual 309	java/util/ArrayList:set	(ILjava/lang/Object;)Ljava/lang/Object;
+    //   44: invokevirtual 315	java/util/ArrayList:set	(ILjava/lang/Object;)Ljava/lang/Object;
     //   47: pop
     //   48: aload_0
     //   49: monitorexit
@@ -2086,23 +2086,23 @@ final class FragmentManagerImpl
     //   52: iload_1
     //   53: if_icmpge +49 -> 102
     //   56: aload_0
-    //   57: getfield 296	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
+    //   57: getfield 302	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
     //   60: aconst_null
-    //   61: invokevirtual 242	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   61: invokevirtual 248	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   64: pop
     //   65: aload_0
-    //   66: getfield 290	android/support/v4/app/FragmentManagerImpl:mAvailBackStackIndices	Ljava/util/ArrayList;
+    //   66: getfield 296	android/support/v4/app/FragmentManagerImpl:mAvailBackStackIndices	Ljava/util/ArrayList;
     //   69: ifnonnull +14 -> 83
     //   72: aload_0
-    //   73: new 237	java/util/ArrayList
+    //   73: new 243	java/util/ArrayList
     //   76: dup
-    //   77: invokespecial 238	java/util/ArrayList:<init>	()V
-    //   80: putfield 290	android/support/v4/app/FragmentManagerImpl:mAvailBackStackIndices	Ljava/util/ArrayList;
+    //   77: invokespecial 244	java/util/ArrayList:<init>	()V
+    //   80: putfield 296	android/support/v4/app/FragmentManagerImpl:mAvailBackStackIndices	Ljava/util/ArrayList;
     //   83: aload_0
-    //   84: getfield 290	android/support/v4/app/FragmentManagerImpl:mAvailBackStackIndices	Ljava/util/ArrayList;
+    //   84: getfield 296	android/support/v4/app/FragmentManagerImpl:mAvailBackStackIndices	Ljava/util/ArrayList;
     //   87: iload_3
-    //   88: invokestatic 559	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   91: invokevirtual 242	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   88: invokestatic 565	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   91: invokevirtual 248	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   94: pop
     //   95: iload_3
     //   96: iconst_1
@@ -2110,9 +2110,9 @@ final class FragmentManagerImpl
     //   98: istore_3
     //   99: goto -48 -> 51
     //   102: aload_0
-    //   103: getfield 296	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
+    //   103: getfield 302	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
     //   106: aload_2
-    //   107: invokevirtual 242	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   107: invokevirtual 248	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   110: pop
     //   111: goto -63 -> 48
     //   114: astore_2

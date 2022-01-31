@@ -3,7 +3,6 @@ package com.tencent.mobileqq.utils;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
@@ -42,7 +41,7 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.ImageTestUtil;
-import hgd;
+import hbw;
 import java.io.File;
 import java.io.FileDescriptor;
 import java.io.FileInputStream;
@@ -349,7 +348,7 @@ public class ImageUtil
   {
     if (jdField_a_of_type_AndroidGraphicsBitmap == null)
     {
-      jdField_a_of_type_AndroidGraphicsBitmap = BitmapManager.a(BaseApplicationImpl.a().getResources(), 2130838008);
+      jdField_a_of_type_AndroidGraphicsBitmap = BitmapManager.a(BaseApplicationImpl.a().getResources(), 2130838010);
       if (QLog.isColorLevel()) {
         QLog.d(p, 2, "getDefaultFaceBitmap, bitmap=" + jdField_a_of_type_AndroidGraphicsBitmap);
       }
@@ -851,18 +850,18 @@ public class ImageUtil
     //   59: astore 10
     //   61: aload 11
     //   63: invokevirtual 325	android/graphics/Bitmap:getWidth	()I
-    //   66: istore 9
+    //   66: istore 8
     //   68: aload 11
     //   70: invokevirtual 397	android/graphics/Bitmap:getHeight	()I
-    //   73: istore 8
+    //   73: istore 9
     //   75: fconst_1
     //   76: fstore 4
-    //   78: iload 8
-    //   80: iload 9
+    //   78: iload 9
+    //   80: iload 8
     //   82: if_icmple +144 -> 226
     //   85: iload_1
     //   86: i2f
-    //   87: iload 9
+    //   87: iload 8
     //   89: i2f
     //   90: fconst_1
     //   91: fmul
@@ -870,7 +869,7 @@ public class ImageUtil
     //   93: fstore 5
     //   95: fload 5
     //   97: fstore 4
-    //   99: iload 8
+    //   99: iload 9
     //   101: i2f
     //   102: fload 5
     //   104: fmul
@@ -879,7 +878,7 @@ public class ImageUtil
     //   107: fcmpl
     //   108: ifle +302 -> 410
     //   111: iconst_0
-    //   112: iload 8
+    //   112: iload 9
     //   114: i2f
     //   115: fload 5
     //   117: fmul
@@ -903,8 +902,8 @@ public class ImageUtil
     //   146: aload 11
     //   148: iconst_0
     //   149: iconst_0
-    //   150: iload 9
-    //   152: iload 8
+    //   150: iload 8
+    //   152: iload 9
     //   154: aload 10
     //   156: iconst_1
     //   157: invokestatic 568	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
@@ -941,12 +940,12 @@ public class ImageUtil
     //   222: astore_0
     //   223: aload 10
     //   225: areturn
-    //   226: iload 8
-    //   228: iload 9
+    //   226: iload 9
+    //   228: iload 8
     //   230: if_icmpge +180 -> 410
     //   233: iload_2
     //   234: i2f
-    //   235: iload 8
+    //   235: iload 9
     //   237: i2f
     //   238: fconst_1
     //   239: fmul
@@ -954,7 +953,7 @@ public class ImageUtil
     //   241: fstore 5
     //   243: fload 5
     //   245: fstore 4
-    //   247: iload 9
+    //   247: iload 8
     //   249: i2f
     //   250: fload 5
     //   252: fmul
@@ -962,7 +961,7 @@ public class ImageUtil
     //   254: i2f
     //   255: fcmpl
     //   256: ifle +154 -> 410
-    //   259: iload 9
+    //   259: iload 8
     //   261: i2f
     //   262: fload 5
     //   264: fmul
@@ -1060,8 +1059,8 @@ public class ImageUtil
     //   93	192	5	f2	float
     //   127	285	6	i1	int
     //   130	285	7	i2	int
-    //   73	163	8	i3	int
-    //   66	194	9	i4	int
+    //   66	194	8	i3	int
+    //   73	163	9	i4	int
     //   16	277	10	localObject1	Object
     //   344	25	10	localObject2	Object
     //   395	1	10	localObject3	Object
@@ -2647,16 +2646,16 @@ public class ImageUtil
     //   160: ifne +102 -> 262
     //   163: aload_1
     //   164: invokevirtual 325	android/graphics/Bitmap:getWidth	()I
-    //   167: istore 10
-    //   169: aload_1
-    //   170: invokevirtual 397	android/graphics/Bitmap:getHeight	()I
-    //   173: istore_0
-    //   174: iload 10
-    //   176: iload 7
-    //   178: if_icmpgt +12 -> 190
-    //   181: aload_1
-    //   182: astore 13
-    //   184: iload_0
+    //   167: istore_0
+    //   168: aload_1
+    //   169: invokevirtual 397	android/graphics/Bitmap:getHeight	()I
+    //   172: istore 10
+    //   174: iload_0
+    //   175: iload 7
+    //   177: if_icmpgt +13 -> 190
+    //   180: aload_1
+    //   181: astore 13
+    //   183: iload 10
     //   185: iload 7
     //   187: if_icmple +11 -> 198
     //   190: aload_1
@@ -2776,7 +2775,7 @@ public class ImageUtil
     //   431: astore 20
     //   433: iload 5
     //   435: sipush 3000
-    //   438: if_icmpne +830 -> 1268
+    //   438: if_icmpne +831 -> 1269
     //   441: iload 5
     //   443: sipush 1001
     //   446: if_icmpne +583 -> 1029
@@ -2838,14 +2837,14 @@ public class ImageUtil
     //   563: iload 10
     //   565: i2l
     //   566: lcmp
-    //   567: ifle +601 -> 1168
+    //   567: ifle +602 -> 1169
     //   570: aload 13
     //   572: astore 17
     //   574: aload_1
     //   575: astore 16
     //   577: aload_2
     //   578: invokestatic 990	com/tencent/image/GifDrawable:isGifFile	(Ljava/io/File;)Z
-    //   581: ifne +587 -> 1168
+    //   581: ifne +588 -> 1169
     //   584: aload 4
     //   586: ldc_w 941
     //   589: ldc_w 992
@@ -2856,7 +2855,7 @@ public class ImageUtil
     //   600: astore 16
     //   602: aload_3
     //   603: invokevirtual 688	java/io/File:delete	()Z
-    //   606: ifeq +562 -> 1168
+    //   606: ifeq +563 -> 1169
     //   609: aload_3
     //   610: invokevirtual 685	java/io/File:createNewFile	()Z
     //   613: istore 8
@@ -2865,7 +2864,7 @@ public class ImageUtil
     //   619: aload_1
     //   620: astore 16
     //   622: iload 8
-    //   624: ifeq +544 -> 1168
+    //   624: ifeq +545 -> 1169
     //   627: iconst_1
     //   628: istore 5
     //   630: iload 7
@@ -2876,7 +2875,7 @@ public class ImageUtil
     //   637: istore 7
     //   639: iload 5
     //   641: iconst_4
-    //   642: if_icmpge +496 -> 1138
+    //   642: if_icmpge +497 -> 1139
     //   645: aload_1
     //   646: astore 14
     //   648: aload_1
@@ -2886,7 +2885,7 @@ public class ImageUtil
     //   655: iload 10
     //   657: i2l
     //   658: lcmp
-    //   659: ifle +479 -> 1138
+    //   659: ifle +480 -> 1139
     //   662: aload_1
     //   663: astore 14
     //   665: aload_1
@@ -2916,7 +2915,7 @@ public class ImageUtil
     //   716: idiv
     //   717: istore_0
     //   718: iload_0
-    //   719: ifne +1040 -> 1759
+    //   719: ifne +1041 -> 1760
     //   722: iconst_1
     //   723: istore_0
     //   724: aload_1
@@ -2928,7 +2927,7 @@ public class ImageUtil
     //   732: invokestatic 956	com/tencent/mobileqq/utils/ImageUtil:b	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
     //   735: astore_1
     //   736: aload_1
-    //   737: ifnonnull +349 -> 1086
+    //   737: ifnonnull +350 -> 1087
     //   740: aload_1
     //   741: astore 14
     //   743: aload_1
@@ -2939,11 +2938,11 @@ public class ImageUtil
     //   752: aload 13
     //   754: ifnull +21 -> 775
     //   757: aload_1
-    //   758: astore_3
-    //   759: aload 13
-    //   761: astore 15
-    //   763: aload_1
-    //   764: astore 16
+    //   758: astore 16
+    //   760: aload 13
+    //   762: astore 15
+    //   764: aload_1
+    //   765: astore_3
     //   766: aload 13
     //   768: astore 14
     //   770: aload 13
@@ -2951,22 +2950,22 @@ public class ImageUtil
     //   775: aload_1
     //   776: ifnull +40 -> 816
     //   779: aload_1
-    //   780: astore_3
-    //   781: aload 13
-    //   783: astore 15
-    //   785: aload_1
-    //   786: astore 16
+    //   780: astore 16
+    //   782: aload 13
+    //   784: astore 15
+    //   786: aload_1
+    //   787: astore_3
     //   788: aload 13
     //   790: astore 14
     //   792: aload_1
     //   793: invokevirtual 571	android/graphics/Bitmap:isRecycled	()Z
     //   796: ifne +20 -> 816
     //   799: aload_1
-    //   800: astore_3
-    //   801: aload 13
-    //   803: astore 15
-    //   805: aload_1
-    //   806: astore 16
+    //   800: astore 16
+    //   802: aload 13
+    //   804: astore 15
+    //   806: aload_1
+    //   807: astore_3
     //   808: aload 13
     //   810: astore 14
     //   812: aload_1
@@ -3086,11 +3085,11 @@ public class ImageUtil
     //   1034: goto -565 -> 469
     //   1037: astore_2
     //   1038: aload_1
-    //   1039: astore_3
-    //   1040: aload 13
-    //   1042: astore 15
-    //   1044: aload_1
-    //   1045: astore 16
+    //   1039: astore 16
+    //   1041: aload 13
+    //   1043: astore 15
+    //   1045: aload_1
+    //   1046: astore_3
     //   1047: aload 13
     //   1049: astore 14
     //   1051: new 214	java/lang/StringBuilder
@@ -3105,359 +3104,359 @@ public class ImageUtil
     //   1074: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   1077: goto -302 -> 775
     //   1080: astore_1
-    //   1081: aload_3
-    //   1082: astore_1
-    //   1083: goto -119 -> 964
-    //   1086: aload_1
-    //   1087: astore 14
-    //   1089: aload_1
-    //   1090: astore 15
-    //   1092: new 755	java/io/FileOutputStream
-    //   1095: dup
-    //   1096: aload_3
-    //   1097: invokespecial 756	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   1100: astore_2
-    //   1101: aload 4
-    //   1103: aload_1
-    //   1104: getstatic 762	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   1107: iload 6
-    //   1109: aload_2
-    //   1110: invokevirtual 766	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   1113: putfield 964	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Boolean	Z
-    //   1116: aload 4
-    //   1118: getfield 964	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Boolean	Z
-    //   1121: ifeq +628 -> 1749
-    //   1124: aload_2
-    //   1125: invokestatic 969	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/io/FileOutputStream;)V
-    //   1128: iload 7
-    //   1130: istore 5
-    //   1132: aload_2
-    //   1133: astore 13
-    //   1135: goto -502 -> 633
-    //   1138: iload 7
-    //   1140: iconst_4
-    //   1141: if_icmplt +20 -> 1161
-    //   1144: aload_1
-    //   1145: astore 14
-    //   1147: aload_1
-    //   1148: astore 15
-    //   1150: aload 4
-    //   1152: ldc_w 941
-    //   1155: ldc_w 1011
-    //   1158: invokestatic 948	com/tencent/mobileqq/utils/ImageUtil:a	(Lcom/tencent/mobileqq/activity/photo/ImageInfo;Ljava/lang/String;Ljava/lang/String;)V
-    //   1161: aload_1
-    //   1162: astore 16
-    //   1164: aload 13
-    //   1166: astore 17
-    //   1168: aload 17
-    //   1170: ifnull +24 -> 1194
-    //   1173: aload 17
-    //   1175: astore 15
-    //   1177: aload 16
-    //   1179: astore 21
-    //   1181: aload 17
-    //   1183: astore 14
-    //   1185: aload 16
-    //   1187: astore 18
-    //   1189: aload 17
-    //   1191: invokevirtual 977	java/io/FileOutputStream:close	()V
-    //   1194: aload 17
-    //   1196: astore 19
-    //   1198: aload 16
-    //   1200: astore 20
-    //   1202: aload 16
-    //   1204: ifnull +64 -> 1268
-    //   1207: aload 17
-    //   1209: astore 15
-    //   1211: aload 16
-    //   1213: astore 21
-    //   1215: aload 17
-    //   1217: astore 19
-    //   1219: aload 16
-    //   1221: astore 20
-    //   1223: aload 17
-    //   1225: astore 14
-    //   1227: aload 16
-    //   1229: astore 18
-    //   1231: aload 16
-    //   1233: invokevirtual 571	android/graphics/Bitmap:isRecycled	()Z
-    //   1236: ifne +32 -> 1268
-    //   1239: aload 17
-    //   1241: astore 15
-    //   1243: aload 16
-    //   1245: astore 21
-    //   1247: aload 17
-    //   1249: astore 14
-    //   1251: aload 16
-    //   1253: astore 18
-    //   1255: aload 16
-    //   1257: invokevirtual 529	android/graphics/Bitmap:recycle	()V
-    //   1260: aload 16
-    //   1262: astore 20
-    //   1264: aload 17
-    //   1266: astore 19
-    //   1268: aload 19
-    //   1270: ifnull +8 -> 1278
-    //   1273: aload 19
-    //   1275: invokevirtual 977	java/io/FileOutputStream:close	()V
-    //   1278: aload 20
-    //   1280: ifnull -1143 -> 137
-    //   1283: aload 20
-    //   1285: invokevirtual 571	android/graphics/Bitmap:isRecycled	()Z
-    //   1288: ifne -1151 -> 137
-    //   1291: aload 20
-    //   1293: invokevirtual 529	android/graphics/Bitmap:recycle	()V
-    //   1296: return
-    //   1297: astore_1
-    //   1298: aload 17
-    //   1300: astore 15
-    //   1302: aload 16
-    //   1304: astore 21
-    //   1306: aload 17
-    //   1308: astore 14
-    //   1310: aload 16
-    //   1312: astore 18
-    //   1314: new 214	java/lang/StringBuilder
-    //   1317: dup
-    //   1318: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   1321: ldc_w 1008
-    //   1324: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1327: aload_1
-    //   1328: invokevirtual 1009	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   1331: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1334: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1337: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
-    //   1340: goto -146 -> 1194
-    //   1343: astore_1
-    //   1344: aload 18
-    //   1346: astore_2
-    //   1347: aload 14
-    //   1349: ifnull +8 -> 1357
-    //   1352: aload 14
-    //   1354: invokevirtual 977	java/io/FileOutputStream:close	()V
-    //   1357: aload_2
-    //   1358: ifnull +14 -> 1372
-    //   1361: aload_2
-    //   1362: invokevirtual 571	android/graphics/Bitmap:isRecycled	()Z
-    //   1365: ifne +7 -> 1372
-    //   1368: aload_2
-    //   1369: invokevirtual 529	android/graphics/Bitmap:recycle	()V
-    //   1372: aload_1
-    //   1373: athrow
-    //   1374: astore_2
-    //   1375: aload_1
-    //   1376: astore_2
-    //   1377: aload 13
-    //   1379: astore_1
-    //   1380: aload 4
-    //   1382: iconst_0
-    //   1383: putfield 966	com/tencent/mobileqq/activity/photo/ImageInfo:o	Z
-    //   1386: aload 4
-    //   1388: invokestatic 998	com/tencent/mobileqq/utils/ImageUtil:a	()Z
-    //   1391: putfield 1000	com/tencent/mobileqq/activity/photo/ImageInfo:m	Z
-    //   1394: ldc_w 1013
-    //   1397: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
-    //   1400: aload_1
-    //   1401: ifnull +7 -> 1408
-    //   1404: aload_1
-    //   1405: invokevirtual 977	java/io/FileOutputStream:close	()V
-    //   1408: aload_2
-    //   1409: ifnull +331 -> 1740
-    //   1412: aload_2
-    //   1413: invokevirtual 571	android/graphics/Bitmap:isRecycled	()Z
-    //   1416: ifne +324 -> 1740
-    //   1419: aload_2
-    //   1420: invokevirtual 529	android/graphics/Bitmap:recycle	()V
-    //   1423: aload_1
-    //   1424: astore 19
-    //   1426: aload_2
-    //   1427: astore 20
-    //   1429: goto -161 -> 1268
-    //   1432: astore_3
-    //   1433: new 214	java/lang/StringBuilder
-    //   1436: dup
-    //   1437: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   1440: ldc_w 1008
-    //   1443: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1446: aload_3
-    //   1447: invokevirtual 1009	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   1450: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1453: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1456: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
-    //   1459: goto -51 -> 1408
-    //   1462: astore_3
-    //   1463: aload_1
-    //   1464: astore 15
-    //   1466: aload_2
-    //   1467: astore_1
-    //   1468: goto -504 -> 964
-    //   1471: astore_2
-    //   1472: aload 13
-    //   1474: ifnull +21 -> 1495
-    //   1477: aload_1
-    //   1478: astore_3
-    //   1479: aload 13
-    //   1481: astore 15
-    //   1483: aload_1
-    //   1484: astore 16
-    //   1486: aload 13
-    //   1488: astore 14
-    //   1490: aload 13
-    //   1492: invokevirtual 977	java/io/FileOutputStream:close	()V
-    //   1495: aload_1
-    //   1496: ifnull +40 -> 1536
-    //   1499: aload_1
-    //   1500: astore_3
-    //   1501: aload 13
-    //   1503: astore 15
-    //   1505: aload_1
-    //   1506: astore 16
-    //   1508: aload 13
-    //   1510: astore 14
-    //   1512: aload_1
-    //   1513: invokevirtual 571	android/graphics/Bitmap:isRecycled	()Z
-    //   1516: ifne +20 -> 1536
-    //   1519: aload_1
-    //   1520: astore_3
-    //   1521: aload 13
-    //   1523: astore 15
-    //   1525: aload_1
-    //   1526: astore 16
-    //   1528: aload 13
-    //   1530: astore 14
-    //   1532: aload_1
-    //   1533: invokevirtual 529	android/graphics/Bitmap:recycle	()V
-    //   1536: aload_1
-    //   1537: astore_3
-    //   1538: aload 13
-    //   1540: astore 15
-    //   1542: aload_1
-    //   1543: astore 16
-    //   1545: aload 13
-    //   1547: astore 14
-    //   1549: aload_2
-    //   1550: athrow
-    //   1551: astore 17
-    //   1553: aload_1
-    //   1554: astore_3
-    //   1555: aload 13
-    //   1557: astore 15
-    //   1559: aload_1
-    //   1560: astore 16
-    //   1562: aload 13
-    //   1564: astore 14
-    //   1566: new 214	java/lang/StringBuilder
-    //   1569: dup
-    //   1570: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   1573: ldc_w 1008
-    //   1576: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1579: aload 17
-    //   1581: invokevirtual 1009	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   1584: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1587: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1590: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
-    //   1593: goto -98 -> 1495
-    //   1596: astore_2
-    //   1597: goto -1475 -> 122
-    //   1600: astore_2
-    //   1601: goto -1355 -> 246
-    //   1604: astore 13
-    //   1606: aload 16
-    //   1608: astore 13
-    //   1610: goto -1198 -> 412
-    //   1613: astore 13
-    //   1615: goto -669 -> 946
-    //   1618: astore_2
-    //   1619: goto -793 -> 826
-    //   1622: astore_1
-    //   1623: goto -345 -> 1278
-    //   1626: astore_2
-    //   1627: goto -614 -> 1013
-    //   1630: astore_3
-    //   1631: goto -274 -> 1357
-    //   1634: astore_1
-    //   1635: aconst_null
-    //   1636: astore 14
-    //   1638: aload 13
-    //   1640: astore_2
-    //   1641: goto -294 -> 1347
-    //   1644: astore_3
-    //   1645: aload_1
-    //   1646: astore_2
-    //   1647: aconst_null
-    //   1648: astore 14
-    //   1650: aload_3
-    //   1651: astore_1
-    //   1652: goto -305 -> 1347
-    //   1655: astore_3
-    //   1656: aload_1
-    //   1657: astore 14
-    //   1659: aload_3
-    //   1660: astore_1
-    //   1661: goto -314 -> 1347
-    //   1664: astore_1
-    //   1665: aconst_null
-    //   1666: astore 15
-    //   1668: aload 14
-    //   1670: astore_1
-    //   1671: goto -707 -> 964
-    //   1674: astore_2
-    //   1675: aconst_null
-    //   1676: astore 15
-    //   1678: goto -714 -> 964
-    //   1681: astore_2
-    //   1682: aload 14
-    //   1684: astore_1
-    //   1685: goto -213 -> 1472
-    //   1688: astore_3
-    //   1689: aload_2
-    //   1690: astore 13
-    //   1692: aload_3
-    //   1693: astore_2
-    //   1694: goto -222 -> 1472
-    //   1697: astore_3
-    //   1698: aload_1
-    //   1699: astore 13
-    //   1701: aload_2
-    //   1702: astore_1
-    //   1703: aload_3
-    //   1704: astore_2
-    //   1705: goto -233 -> 1472
-    //   1708: astore_1
-    //   1709: aload 15
-    //   1711: astore_2
-    //   1712: aload 13
-    //   1714: astore_1
-    //   1715: goto -335 -> 1380
-    //   1718: astore_3
-    //   1719: aload_1
-    //   1720: astore_3
-    //   1721: aload_2
-    //   1722: astore_1
-    //   1723: aload_3
-    //   1724: astore_2
-    //   1725: goto -345 -> 1380
-    //   1728: astore_3
-    //   1729: aload 13
-    //   1731: astore_2
-    //   1732: goto -806 -> 926
-    //   1735: astore 13
-    //   1737: goto -890 -> 847
-    //   1740: aload_1
-    //   1741: astore 19
-    //   1743: aload_2
-    //   1744: astore 20
-    //   1746: goto -478 -> 1268
-    //   1749: iload 7
-    //   1751: istore 5
-    //   1753: aload_2
-    //   1754: astore 13
-    //   1756: goto -1123 -> 633
-    //   1759: goto -1035 -> 724
-    //   1762: astore_1
-    //   1763: aload 16
+    //   1081: aload 16
+    //   1083: astore_1
+    //   1084: goto -120 -> 964
+    //   1087: aload_1
+    //   1088: astore 14
+    //   1090: aload_1
+    //   1091: astore 15
+    //   1093: new 755	java/io/FileOutputStream
+    //   1096: dup
+    //   1097: aload_3
+    //   1098: invokespecial 756	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   1101: astore_2
+    //   1102: aload 4
+    //   1104: aload_1
+    //   1105: getstatic 762	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   1108: iload 6
+    //   1110: aload_2
+    //   1111: invokevirtual 766	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   1114: putfield 964	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Boolean	Z
+    //   1117: aload 4
+    //   1119: getfield 964	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Boolean	Z
+    //   1122: ifeq +628 -> 1750
+    //   1125: aload_2
+    //   1126: invokestatic 969	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/io/FileOutputStream;)V
+    //   1129: iload 7
+    //   1131: istore 5
+    //   1133: aload_2
+    //   1134: astore 13
+    //   1136: goto -503 -> 633
+    //   1139: iload 7
+    //   1141: iconst_4
+    //   1142: if_icmplt +20 -> 1162
+    //   1145: aload_1
+    //   1146: astore 14
+    //   1148: aload_1
+    //   1149: astore 15
+    //   1151: aload 4
+    //   1153: ldc_w 941
+    //   1156: ldc_w 1011
+    //   1159: invokestatic 948	com/tencent/mobileqq/utils/ImageUtil:a	(Lcom/tencent/mobileqq/activity/photo/ImageInfo;Ljava/lang/String;Ljava/lang/String;)V
+    //   1162: aload_1
+    //   1163: astore 16
+    //   1165: aload 13
+    //   1167: astore 17
+    //   1169: aload 17
+    //   1171: ifnull +24 -> 1195
+    //   1174: aload 17
+    //   1176: astore 15
+    //   1178: aload 16
+    //   1180: astore 21
+    //   1182: aload 17
+    //   1184: astore 14
+    //   1186: aload 16
+    //   1188: astore 18
+    //   1190: aload 17
+    //   1192: invokevirtual 977	java/io/FileOutputStream:close	()V
+    //   1195: aload 17
+    //   1197: astore 19
+    //   1199: aload 16
+    //   1201: astore 20
+    //   1203: aload 16
+    //   1205: ifnull +64 -> 1269
+    //   1208: aload 17
+    //   1210: astore 15
+    //   1212: aload 16
+    //   1214: astore 21
+    //   1216: aload 17
+    //   1218: astore 19
+    //   1220: aload 16
+    //   1222: astore 20
+    //   1224: aload 17
+    //   1226: astore 14
+    //   1228: aload 16
+    //   1230: astore 18
+    //   1232: aload 16
+    //   1234: invokevirtual 571	android/graphics/Bitmap:isRecycled	()Z
+    //   1237: ifne +32 -> 1269
+    //   1240: aload 17
+    //   1242: astore 15
+    //   1244: aload 16
+    //   1246: astore 21
+    //   1248: aload 17
+    //   1250: astore 14
+    //   1252: aload 16
+    //   1254: astore 18
+    //   1256: aload 16
+    //   1258: invokevirtual 529	android/graphics/Bitmap:recycle	()V
+    //   1261: aload 16
+    //   1263: astore 20
+    //   1265: aload 17
+    //   1267: astore 19
+    //   1269: aload 19
+    //   1271: ifnull +8 -> 1279
+    //   1274: aload 19
+    //   1276: invokevirtual 977	java/io/FileOutputStream:close	()V
+    //   1279: aload 20
+    //   1281: ifnull -1144 -> 137
+    //   1284: aload 20
+    //   1286: invokevirtual 571	android/graphics/Bitmap:isRecycled	()Z
+    //   1289: ifne -1152 -> 137
+    //   1292: aload 20
+    //   1294: invokevirtual 529	android/graphics/Bitmap:recycle	()V
+    //   1297: return
+    //   1298: astore_1
+    //   1299: aload 17
+    //   1301: astore 15
+    //   1303: aload 16
+    //   1305: astore 21
+    //   1307: aload 17
+    //   1309: astore 14
+    //   1311: aload 16
+    //   1313: astore 18
+    //   1315: new 214	java/lang/StringBuilder
+    //   1318: dup
+    //   1319: invokespecial 215	java/lang/StringBuilder:<init>	()V
+    //   1322: ldc_w 1008
+    //   1325: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1328: aload_1
+    //   1329: invokevirtual 1009	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   1332: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1335: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1338: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
+    //   1341: goto -146 -> 1195
+    //   1344: astore_1
+    //   1345: aload 18
+    //   1347: astore_2
+    //   1348: aload 14
+    //   1350: ifnull +8 -> 1358
+    //   1353: aload 14
+    //   1355: invokevirtual 977	java/io/FileOutputStream:close	()V
+    //   1358: aload_2
+    //   1359: ifnull +14 -> 1373
+    //   1362: aload_2
+    //   1363: invokevirtual 571	android/graphics/Bitmap:isRecycled	()Z
+    //   1366: ifne +7 -> 1373
+    //   1369: aload_2
+    //   1370: invokevirtual 529	android/graphics/Bitmap:recycle	()V
+    //   1373: aload_1
+    //   1374: athrow
+    //   1375: astore_2
+    //   1376: aload_1
+    //   1377: astore_2
+    //   1378: aload 13
+    //   1380: astore_1
+    //   1381: aload 4
+    //   1383: iconst_0
+    //   1384: putfield 966	com/tencent/mobileqq/activity/photo/ImageInfo:o	Z
+    //   1387: aload 4
+    //   1389: invokestatic 998	com/tencent/mobileqq/utils/ImageUtil:a	()Z
+    //   1392: putfield 1000	com/tencent/mobileqq/activity/photo/ImageInfo:m	Z
+    //   1395: ldc_w 1013
+    //   1398: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
+    //   1401: aload_1
+    //   1402: ifnull +7 -> 1409
+    //   1405: aload_1
+    //   1406: invokevirtual 977	java/io/FileOutputStream:close	()V
+    //   1409: aload_2
+    //   1410: ifnull +331 -> 1741
+    //   1413: aload_2
+    //   1414: invokevirtual 571	android/graphics/Bitmap:isRecycled	()Z
+    //   1417: ifne +324 -> 1741
+    //   1420: aload_2
+    //   1421: invokevirtual 529	android/graphics/Bitmap:recycle	()V
+    //   1424: aload_1
+    //   1425: astore 19
+    //   1427: aload_2
+    //   1428: astore 20
+    //   1430: goto -161 -> 1269
+    //   1433: astore_3
+    //   1434: new 214	java/lang/StringBuilder
+    //   1437: dup
+    //   1438: invokespecial 215	java/lang/StringBuilder:<init>	()V
+    //   1441: ldc_w 1008
+    //   1444: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1447: aload_3
+    //   1448: invokevirtual 1009	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   1451: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1454: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1457: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
+    //   1460: goto -51 -> 1409
+    //   1463: astore_3
+    //   1464: aload_1
+    //   1465: astore 15
+    //   1467: aload_2
+    //   1468: astore_1
+    //   1469: goto -505 -> 964
+    //   1472: astore_2
+    //   1473: aload 13
+    //   1475: ifnull +21 -> 1496
+    //   1478: aload_1
+    //   1479: astore 16
+    //   1481: aload 13
+    //   1483: astore 15
+    //   1485: aload_1
+    //   1486: astore_3
+    //   1487: aload 13
+    //   1489: astore 14
+    //   1491: aload 13
+    //   1493: invokevirtual 977	java/io/FileOutputStream:close	()V
+    //   1496: aload_1
+    //   1497: ifnull +40 -> 1537
+    //   1500: aload_1
+    //   1501: astore 16
+    //   1503: aload 13
+    //   1505: astore 15
+    //   1507: aload_1
+    //   1508: astore_3
+    //   1509: aload 13
+    //   1511: astore 14
+    //   1513: aload_1
+    //   1514: invokevirtual 571	android/graphics/Bitmap:isRecycled	()Z
+    //   1517: ifne +20 -> 1537
+    //   1520: aload_1
+    //   1521: astore 16
+    //   1523: aload 13
+    //   1525: astore 15
+    //   1527: aload_1
+    //   1528: astore_3
+    //   1529: aload 13
+    //   1531: astore 14
+    //   1533: aload_1
+    //   1534: invokevirtual 529	android/graphics/Bitmap:recycle	()V
+    //   1537: aload_1
+    //   1538: astore 16
+    //   1540: aload 13
+    //   1542: astore 15
+    //   1544: aload_1
+    //   1545: astore_3
+    //   1546: aload 13
+    //   1548: astore 14
+    //   1550: aload_2
+    //   1551: athrow
+    //   1552: astore 17
+    //   1554: aload_1
+    //   1555: astore 16
+    //   1557: aload 13
+    //   1559: astore 15
+    //   1561: aload_1
+    //   1562: astore_3
+    //   1563: aload 13
+    //   1565: astore 14
+    //   1567: new 214	java/lang/StringBuilder
+    //   1570: dup
+    //   1571: invokespecial 215	java/lang/StringBuilder:<init>	()V
+    //   1574: ldc_w 1008
+    //   1577: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1580: aload 17
+    //   1582: invokevirtual 1009	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   1585: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1588: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1591: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
+    //   1594: goto -98 -> 1496
+    //   1597: astore_2
+    //   1598: goto -1476 -> 122
+    //   1601: astore_2
+    //   1602: goto -1356 -> 246
+    //   1605: astore 13
+    //   1607: aload 16
+    //   1609: astore 13
+    //   1611: goto -1199 -> 412
+    //   1614: astore 13
+    //   1616: goto -670 -> 946
+    //   1619: astore_2
+    //   1620: goto -794 -> 826
+    //   1623: astore_1
+    //   1624: goto -345 -> 1279
+    //   1627: astore_2
+    //   1628: goto -615 -> 1013
+    //   1631: astore_3
+    //   1632: goto -274 -> 1358
+    //   1635: astore_1
+    //   1636: aconst_null
+    //   1637: astore 14
+    //   1639: aload 13
+    //   1641: astore_2
+    //   1642: goto -294 -> 1348
+    //   1645: astore_3
+    //   1646: aload_1
+    //   1647: astore_2
+    //   1648: aconst_null
+    //   1649: astore 14
+    //   1651: aload_3
+    //   1652: astore_1
+    //   1653: goto -305 -> 1348
+    //   1656: astore_3
+    //   1657: aload_1
+    //   1658: astore 14
+    //   1660: aload_3
+    //   1661: astore_1
+    //   1662: goto -314 -> 1348
+    //   1665: astore_1
+    //   1666: aconst_null
+    //   1667: astore 15
+    //   1669: aload 14
+    //   1671: astore_1
+    //   1672: goto -708 -> 964
+    //   1675: astore_2
+    //   1676: aconst_null
+    //   1677: astore 15
+    //   1679: goto -715 -> 964
+    //   1682: astore_2
+    //   1683: aload 14
+    //   1685: astore_1
+    //   1686: goto -213 -> 1473
+    //   1689: astore_3
+    //   1690: aload_2
+    //   1691: astore 13
+    //   1693: aload_3
+    //   1694: astore_2
+    //   1695: goto -222 -> 1473
+    //   1698: astore_3
+    //   1699: aload_1
+    //   1700: astore 13
+    //   1702: aload_2
+    //   1703: astore_1
+    //   1704: aload_3
+    //   1705: astore_2
+    //   1706: goto -233 -> 1473
+    //   1709: astore_1
+    //   1710: aload 15
+    //   1712: astore_2
+    //   1713: aload 13
+    //   1715: astore_1
+    //   1716: goto -335 -> 1381
+    //   1719: astore_3
+    //   1720: aload_1
+    //   1721: astore_3
+    //   1722: aload_2
+    //   1723: astore_1
+    //   1724: aload_3
+    //   1725: astore_2
+    //   1726: goto -345 -> 1381
+    //   1729: astore_3
+    //   1730: aload 13
+    //   1732: astore_2
+    //   1733: goto -807 -> 926
+    //   1736: astore 13
+    //   1738: goto -891 -> 847
+    //   1741: aload_1
+    //   1742: astore 19
+    //   1744: aload_2
+    //   1745: astore 20
+    //   1747: goto -478 -> 1269
+    //   1750: iload 7
+    //   1752: istore 5
+    //   1754: aload_2
+    //   1755: astore 13
+    //   1757: goto -1124 -> 633
+    //   1760: goto -1036 -> 724
+    //   1763: astore_1
+    //   1764: aload_3
     //   1765: astore_2
-    //   1766: goto -419 -> 1347
+    //   1766: goto -418 -> 1348
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	1769	0	paramInt1	int
@@ -3470,28 +3469,28 @@ public class ImageUtil
     //   0	1769	7	paramInt4	int
     //   0	1769	8	paramBoolean1	boolean
     //   0	1769	9	paramBoolean2	boolean
-    //   167	489	10	i1	int
+    //   172	484	10	i1	int
     //   467	566	11	l1	long
     //   76	746	13	localObject1	Object
     //   842	1	13	localIOException1	IOException
     //   849	61	13	localObject2	Object
     //   914	1	13	localIOException2	IOException
-    //   918	645	13	localObject3	Object
-    //   1604	1	13	localIOException3	IOException
-    //   1608	1	13	localObject4	Object
-    //   1613	26	13	localIOException4	IOException
-    //   1690	40	13	localObject5	Object
-    //   1735	1	13	localIOException5	IOException
-    //   1754	1	13	localFile	File
-    //   73	1610	14	localObject6	Object
-    //   391	1319	15	localObject7	Object
-    //   283	1481	16	localObject8	Object
-    //   554	753	17	localObject9	Object
-    //   1551	29	17	localIOException6	IOException
-    //   401	944	18	localObject10	Object
-    //   428	1314	19	localObject11	Object
-    //   431	1314	20	localObject12	Object
-    //   394	911	21	localObject13	Object
+    //   918	646	13	localObject3	Object
+    //   1605	1	13	localIOException3	IOException
+    //   1609	1	13	localObject4	Object
+    //   1614	26	13	localIOException4	IOException
+    //   1691	40	13	localObject5	Object
+    //   1736	1	13	localIOException5	IOException
+    //   1755	1	13	localFile	File
+    //   73	1611	14	localObject6	Object
+    //   391	1320	15	localObject7	Object
+    //   283	1325	16	localObject8	Object
+    //   554	754	17	localObject9	Object
+    //   1552	29	17	localIOException6	IOException
+    //   401	945	18	localObject10	Object
+    //   428	1315	19	localObject11	Object
+    //   431	1315	20	localObject12	Object
+    //   394	912	21	localObject13	Object
     // Exception table:
     //   from	to	target	type
     //   275	285	842	java/io/IOException
@@ -3504,112 +3503,112 @@ public class ImageUtil
     //   902	907	960	java/lang/OutOfMemoryError
     //   942	946	960	java/lang/OutOfMemoryError
     //   958	960	960	java/lang/OutOfMemoryError
-    //   1189	1194	960	java/lang/OutOfMemoryError
-    //   1231	1239	960	java/lang/OutOfMemoryError
-    //   1255	1260	960	java/lang/OutOfMemoryError
-    //   1314	1340	960	java/lang/OutOfMemoryError
+    //   1190	1195	960	java/lang/OutOfMemoryError
+    //   1232	1240	960	java/lang/OutOfMemoryError
+    //   1256	1261	960	java/lang/OutOfMemoryError
+    //   1315	1341	960	java/lang/OutOfMemoryError
     //   770	775	1037	java/io/IOException
     //   770	775	1080	java/lang/OutOfMemoryError
     //   792	799	1080	java/lang/OutOfMemoryError
     //   812	816	1080	java/lang/OutOfMemoryError
     //   1051	1077	1080	java/lang/OutOfMemoryError
-    //   1490	1495	1080	java/lang/OutOfMemoryError
-    //   1512	1519	1080	java/lang/OutOfMemoryError
-    //   1532	1536	1080	java/lang/OutOfMemoryError
-    //   1549	1551	1080	java/lang/OutOfMemoryError
-    //   1566	1593	1080	java/lang/OutOfMemoryError
-    //   1189	1194	1297	java/io/IOException
-    //   403	408	1343	finally
-    //   463	469	1343	finally
-    //   488	512	1343	finally
-    //   526	552	1343	finally
-    //   902	907	1343	finally
-    //   942	946	1343	finally
-    //   958	960	1343	finally
-    //   971	977	1343	finally
-    //   984	990	1343	finally
-    //   997	1003	1343	finally
-    //   1189	1194	1343	finally
-    //   1231	1239	1343	finally
-    //   1255	1260	1343	finally
-    //   1314	1340	1343	finally
-    //   559	570	1374	java/io/IOException
-    //   577	595	1374	java/io/IOException
-    //   602	615	1374	java/io/IOException
-    //   1404	1408	1432	java/io/IOException
-    //   1404	1408	1462	java/lang/OutOfMemoryError
-    //   1412	1423	1462	java/lang/OutOfMemoryError
-    //   1433	1459	1462	java/lang/OutOfMemoryError
-    //   559	570	1471	finally
-    //   577	595	1471	finally
-    //   602	615	1471	finally
-    //   1490	1495	1551	java/io/IOException
-    //   114	122	1596	java/io/IOException
-    //   238	246	1600	java/io/IOException
-    //   403	408	1604	java/io/IOException
-    //   942	946	1613	java/io/IOException
-    //   821	826	1618	java/io/IOException
-    //   1273	1278	1622	java/io/IOException
-    //   1008	1013	1626	java/io/IOException
-    //   1352	1357	1630	java/io/IOException
-    //   78	89	1634	finally
-    //   211	222	1634	finally
-    //   228	234	1634	finally
-    //   93	110	1644	finally
-    //   152	158	1644	finally
-    //   163	174	1644	finally
-    //   190	198	1644	finally
-    //   262	269	1644	finally
-    //   1404	1408	1655	finally
-    //   1412	1423	1655	finally
-    //   1433	1459	1655	finally
-    //   78	89	1664	java/lang/OutOfMemoryError
-    //   211	222	1664	java/lang/OutOfMemoryError
-    //   228	234	1664	java/lang/OutOfMemoryError
-    //   93	110	1674	java/lang/OutOfMemoryError
-    //   152	158	1674	java/lang/OutOfMemoryError
-    //   163	174	1674	java/lang/OutOfMemoryError
-    //   190	198	1674	java/lang/OutOfMemoryError
-    //   262	269	1674	java/lang/OutOfMemoryError
-    //   651	662	1681	finally
-    //   668	705	1681	finally
-    //   711	718	1681	finally
-    //   730	736	1681	finally
-    //   746	752	1681	finally
-    //   1092	1101	1681	finally
-    //   1150	1161	1681	finally
-    //   1101	1128	1688	finally
-    //   1380	1400	1697	finally
-    //   651	662	1708	java/io/IOException
-    //   668	705	1708	java/io/IOException
-    //   711	718	1708	java/io/IOException
-    //   730	736	1708	java/io/IOException
-    //   746	752	1708	java/io/IOException
-    //   1092	1101	1708	java/io/IOException
-    //   1150	1161	1708	java/io/IOException
-    //   1101	1128	1718	java/io/IOException
-    //   289	305	1728	finally
-    //   309	315	1728	finally
-    //   319	327	1728	finally
-    //   331	336	1728	finally
-    //   340	380	1728	finally
-    //   851	857	1728	finally
-    //   861	869	1728	finally
-    //   873	879	1728	finally
-    //   289	305	1735	java/io/IOException
-    //   309	315	1735	java/io/IOException
-    //   319	327	1735	java/io/IOException
-    //   331	336	1735	java/io/IOException
-    //   340	380	1735	java/io/IOException
-    //   770	775	1762	finally
-    //   792	799	1762	finally
-    //   812	816	1762	finally
-    //   1051	1077	1762	finally
-    //   1490	1495	1762	finally
-    //   1512	1519	1762	finally
-    //   1532	1536	1762	finally
-    //   1549	1551	1762	finally
-    //   1566	1593	1762	finally
+    //   1491	1496	1080	java/lang/OutOfMemoryError
+    //   1513	1520	1080	java/lang/OutOfMemoryError
+    //   1533	1537	1080	java/lang/OutOfMemoryError
+    //   1550	1552	1080	java/lang/OutOfMemoryError
+    //   1567	1594	1080	java/lang/OutOfMemoryError
+    //   1190	1195	1298	java/io/IOException
+    //   403	408	1344	finally
+    //   463	469	1344	finally
+    //   488	512	1344	finally
+    //   526	552	1344	finally
+    //   902	907	1344	finally
+    //   942	946	1344	finally
+    //   958	960	1344	finally
+    //   971	977	1344	finally
+    //   984	990	1344	finally
+    //   997	1003	1344	finally
+    //   1190	1195	1344	finally
+    //   1232	1240	1344	finally
+    //   1256	1261	1344	finally
+    //   1315	1341	1344	finally
+    //   559	570	1375	java/io/IOException
+    //   577	595	1375	java/io/IOException
+    //   602	615	1375	java/io/IOException
+    //   1405	1409	1433	java/io/IOException
+    //   1405	1409	1463	java/lang/OutOfMemoryError
+    //   1413	1424	1463	java/lang/OutOfMemoryError
+    //   1434	1460	1463	java/lang/OutOfMemoryError
+    //   559	570	1472	finally
+    //   577	595	1472	finally
+    //   602	615	1472	finally
+    //   1491	1496	1552	java/io/IOException
+    //   114	122	1597	java/io/IOException
+    //   238	246	1601	java/io/IOException
+    //   403	408	1605	java/io/IOException
+    //   942	946	1614	java/io/IOException
+    //   821	826	1619	java/io/IOException
+    //   1274	1279	1623	java/io/IOException
+    //   1008	1013	1627	java/io/IOException
+    //   1353	1358	1631	java/io/IOException
+    //   78	89	1635	finally
+    //   211	222	1635	finally
+    //   228	234	1635	finally
+    //   93	110	1645	finally
+    //   152	158	1645	finally
+    //   163	174	1645	finally
+    //   190	198	1645	finally
+    //   262	269	1645	finally
+    //   1405	1409	1656	finally
+    //   1413	1424	1656	finally
+    //   1434	1460	1656	finally
+    //   78	89	1665	java/lang/OutOfMemoryError
+    //   211	222	1665	java/lang/OutOfMemoryError
+    //   228	234	1665	java/lang/OutOfMemoryError
+    //   93	110	1675	java/lang/OutOfMemoryError
+    //   152	158	1675	java/lang/OutOfMemoryError
+    //   163	174	1675	java/lang/OutOfMemoryError
+    //   190	198	1675	java/lang/OutOfMemoryError
+    //   262	269	1675	java/lang/OutOfMemoryError
+    //   651	662	1682	finally
+    //   668	705	1682	finally
+    //   711	718	1682	finally
+    //   730	736	1682	finally
+    //   746	752	1682	finally
+    //   1093	1102	1682	finally
+    //   1151	1162	1682	finally
+    //   1102	1129	1689	finally
+    //   1381	1401	1698	finally
+    //   651	662	1709	java/io/IOException
+    //   668	705	1709	java/io/IOException
+    //   711	718	1709	java/io/IOException
+    //   730	736	1709	java/io/IOException
+    //   746	752	1709	java/io/IOException
+    //   1093	1102	1709	java/io/IOException
+    //   1151	1162	1709	java/io/IOException
+    //   1102	1129	1719	java/io/IOException
+    //   289	305	1729	finally
+    //   309	315	1729	finally
+    //   319	327	1729	finally
+    //   331	336	1729	finally
+    //   340	380	1729	finally
+    //   851	857	1729	finally
+    //   861	869	1729	finally
+    //   873	879	1729	finally
+    //   289	305	1736	java/io/IOException
+    //   309	315	1736	java/io/IOException
+    //   319	327	1736	java/io/IOException
+    //   331	336	1736	java/io/IOException
+    //   340	380	1736	java/io/IOException
+    //   770	775	1763	finally
+    //   792	799	1763	finally
+    //   812	816	1763	finally
+    //   1051	1077	1763	finally
+    //   1491	1496	1763	finally
+    //   1513	1520	1763	finally
+    //   1533	1537	1763	finally
+    //   1550	1552	1763	finally
+    //   1567	1594	1763	finally
   }
   
   public static void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean, String paramString1, String paramString2)
@@ -3649,9 +3648,7 @@ public class ImageUtil
   
   public static void a(Context paramContext, String paramString)
   {
-    Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-    localIntent.setData(Uri.fromFile(new File(paramString)));
-    paramContext.sendBroadcast(localIntent);
+    FileProvider7Helper.savePhotoToSysAlbum(paramContext, paramString);
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2)
@@ -3683,7 +3680,7 @@ public class ImageUtil
     //   29: aload_1
     //   30: aload 5
     //   32: aload_2
-    //   33: invokestatic 1058	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/io/InputStream;Landroid/graphics/BitmapFactory$Options;Ljava/lang/String;)Ljava/lang/String;
+    //   33: invokestatic 1043	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/io/InputStream;Landroid/graphics/BitmapFactory$Options;Ljava/lang/String;)Ljava/lang/String;
     //   36: pop
     //   37: aload_1
     //   38: ifnull +7 -> 45
@@ -3698,7 +3695,7 @@ public class ImageUtil
     //   51: new 214	java/lang/StringBuilder
     //   54: dup
     //   55: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   58: ldc_w 1060
+    //   58: ldc_w 1045
     //   61: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   64: aload_2
     //   65: invokevirtual 578	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -3774,7 +3771,7 @@ public class ImageUtil
     //   31: aload_1
     //   32: aload_2
     //   33: iload_3
-    //   34: invokestatic 1063	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/io/InputStream;Landroid/graphics/BitmapFactory$Options;Ljava/lang/String;I)Ljava/lang/String;
+    //   34: invokestatic 1048	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/io/InputStream;Landroid/graphics/BitmapFactory$Options;Ljava/lang/String;I)Ljava/lang/String;
     //   37: pop
     //   38: aload_0
     //   39: ifnull +7 -> 46
@@ -4124,14 +4121,14 @@ public class ImageUtil
     //   0: new 333	java/io/File
     //   3: dup
     //   4: aload_1
-    //   5: invokevirtual 1127	java/io/File:getParent	()Ljava/lang/String;
+    //   5: invokevirtual 1114	java/io/File:getParent	()Ljava/lang/String;
     //   8: invokespecial 669	java/io/File:<init>	(Ljava/lang/String;)V
     //   11: astore_2
     //   12: aload_2
     //   13: invokevirtual 602	java/io/File:exists	()Z
     //   16: ifeq +10 -> 26
     //   19: aload_2
-    //   20: invokevirtual 1130	java/io/File:isDirectory	()Z
+    //   20: invokevirtual 1117	java/io/File:isDirectory	()Z
     //   23: ifne +8 -> 31
     //   26: aload_2
     //   27: invokevirtual 682	java/io/File:mkdirs	()Z
@@ -4140,7 +4137,7 @@ public class ImageUtil
     //   32: invokevirtual 602	java/io/File:exists	()Z
     //   35: ifeq +10 -> 45
     //   38: aload_1
-    //   39: invokevirtual 1133	java/io/File:isFile	()Z
+    //   39: invokevirtual 1120	java/io/File:isFile	()Z
     //   42: ifne +8 -> 50
     //   45: aload_1
     //   46: invokevirtual 685	java/io/File:createNewFile	()Z
@@ -4159,7 +4156,7 @@ public class ImageUtil
     //   68: invokevirtual 766	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   71: pop
     //   72: aload_1
-    //   73: invokevirtual 1136	java/io/FileOutputStream:flush	()V
+    //   73: invokevirtual 1123	java/io/FileOutputStream:flush	()V
     //   76: aload_1
     //   77: ifnull +7 -> 84
     //   80: aload_1
@@ -4244,7 +4241,7 @@ public class ImageUtil
   private static void a(String paramString, Context paramContext, boolean paramBoolean)
   {
     if ((paramContext != null) && ((paramContext instanceof BaseActivity))) {
-      new Thread(new hgd((QQAppInterface)((BaseActivity)paramContext).getAppRuntime(), paramString, paramBoolean), "report_send_photo_performance").start();
+      new Thread(new hbw((QQAppInterface)((BaseActivity)paramContext).getAppRuntime(), paramString, paramBoolean), "report_send_photo_performance").start();
     }
   }
   
@@ -4281,7 +4278,7 @@ public class ImageUtil
     //   46: lstore_3
     //   47: aload_0
     //   48: aload_1
-    //   49: invokevirtual 1183	java/io/InputStream:read	([B)I
+    //   49: invokevirtual 1170	java/io/InputStream:read	([B)I
     //   52: istore_2
     //   53: iload_2
     //   54: iflt +42 -> 96
@@ -4294,7 +4291,7 @@ public class ImageUtil
     //   64: aload_1
     //   65: iconst_0
     //   66: iload_2
-    //   67: invokevirtual 1187	java/io/OutputStream:write	([BII)V
+    //   67: invokevirtual 1174	java/io/OutputStream:write	([BII)V
     //   70: goto -23 -> 47
     //   73: astore_1
     //   74: aload_0
@@ -4439,7 +4436,7 @@ public class ImageUtil
     //   0: aconst_null
     //   1: astore 9
     //   3: aload_0
-    //   4: invokestatic 1201	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   4: invokestatic 1188	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
     //   7: astore 10
     //   9: aload 10
     //   11: ifnonnull +16 -> 27
@@ -4452,36 +4449,36 @@ public class ImageUtil
     //   26: return
     //   27: aload 10
     //   29: invokevirtual 325	android/graphics/Bitmap:getWidth	()I
-    //   32: istore 7
+    //   32: istore 8
     //   34: aload 10
     //   36: invokevirtual 397	android/graphics/Bitmap:getHeight	()I
-    //   39: istore 8
+    //   39: istore 7
     //   41: iload_2
     //   42: i2f
-    //   43: iload 7
+    //   43: iload 8
     //   45: i2f
     //   46: fdiv
-    //   47: fstore 6
+    //   47: fstore 5
     //   49: iload_3
     //   50: i2f
-    //   51: iload 8
+    //   51: iload 7
     //   53: i2f
     //   54: fdiv
-    //   55: fstore 5
+    //   55: fstore 6
     //   57: new 479	android/graphics/Matrix
     //   60: dup
     //   61: invokespecial 480	android/graphics/Matrix:<init>	()V
     //   64: astore_0
     //   65: aload_0
-    //   66: fload 6
-    //   68: fload 5
+    //   66: fload 5
+    //   68: fload 6
     //   70: invokevirtual 484	android/graphics/Matrix:postScale	(FF)Z
     //   73: pop
     //   74: aload 10
     //   76: iconst_0
     //   77: iconst_0
-    //   78: iload 7
-    //   80: iload 8
+    //   78: iload 8
+    //   80: iload 7
     //   82: aload_0
     //   83: iconst_0
     //   84: invokestatic 568	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
@@ -4505,7 +4502,7 @@ public class ImageUtil
     //   121: aload_1
     //   122: astore_0
     //   123: aload_1
-    //   124: invokevirtual 1136	java/io/FileOutputStream:flush	()V
+    //   124: invokevirtual 1123	java/io/FileOutputStream:flush	()V
     //   127: aload_1
     //   128: astore_0
     //   129: aload_1
@@ -4559,10 +4556,10 @@ public class ImageUtil
     //   0	201	2	paramInt1	int
     //   0	201	3	paramInt2	int
     //   0	201	4	paramInt3	int
-    //   55	14	5	f1	float
-    //   47	20	6	f2	float
-    //   32	47	7	i1	int
-    //   39	42	8	i2	int
+    //   47	20	5	f1	float
+    //   55	14	6	f2	float
+    //   39	42	7	i1	int
+    //   32	47	8	i2	int
     //   1	1	9	localObject1	Object
     //   144	24	9	localException1	Exception
     //   186	5	9	localObject2	Object
@@ -4664,7 +4661,7 @@ public class ImageUtil
   private static boolean a(int paramInt1, Context paramContext, String paramString1, String paramString2, boolean paramBoolean1, ImageInfo paramImageInfo, int paramInt2, boolean paramBoolean2)
   {
     // Byte code:
-    //   0: ldc_w 1244
+    //   0: ldc_w 1231
     //   3: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   6: aload_3
     //   7: ifnull +16 -> 23
@@ -4691,12 +4688,12 @@ public class ImageUtil
     //   55: aload 14
     //   57: invokevirtual 602	java/io/File:exists	()Z
     //   60: ifne +23 -> 83
-    //   63: ldc_w 1246
+    //   63: ldc_w 1233
     //   66: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   69: aload 14
     //   71: invokevirtual 682	java/io/File:mkdirs	()Z
     //   74: ifne +9 -> 83
-    //   77: ldc_w 1248
+    //   77: ldc_w 1235
     //   80: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   83: new 333	java/io/File
     //   86: dup
@@ -4709,16 +4706,16 @@ public class ImageUtil
     //   98: invokespecial 669	java/io/File:<init>	(Ljava/lang/String;)V
     //   101: astore 16
     //   103: aload 5
-    //   105: ldc_w 1250
+    //   105: ldc_w 1237
     //   108: new 214	java/lang/StringBuilder
     //   111: dup
     //   112: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   115: ldc_w 1252
+    //   115: ldc_w 1239
     //   118: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   121: aload 5
-    //   123: getfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   123: getfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   126: invokevirtual 354	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   129: ldc_w 1254
+    //   129: ldc_w 1241
     //   132: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   135: aload 5
     //   137: getfield 389	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_j_of_type_Int	I
@@ -4726,67 +4723,67 @@ public class ImageUtil
     //   143: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   146: invokestatic 948	com/tencent/mobileqq/utils/ImageUtil:a	(Lcom/tencent/mobileqq/activity/photo/ImageInfo;Ljava/lang/String;Ljava/lang/String;)V
     //   149: aload_2
-    //   150: invokestatic 1224	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
+    //   150: invokestatic 1211	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
     //   153: ifne +13 -> 166
     //   156: iload_0
     //   157: iconst_1
     //   158: aload_1
     //   159: iconst_0
     //   160: aconst_null
-    //   161: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   161: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   164: iconst_0
     //   165: ireturn
     //   166: aload_2
-    //   167: invokestatic 1255	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/lang/String;)Z
+    //   167: invokestatic 1242	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/lang/String;)Z
     //   170: ifne +13 -> 183
     //   173: iload_0
     //   174: iconst_2
     //   175: aload_1
     //   176: iconst_0
     //   177: aconst_null
-    //   178: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   178: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   181: iconst_0
     //   182: ireturn
     //   183: aload_2
-    //   184: invokestatic 1225	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)Z
+    //   184: invokestatic 1212	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)Z
     //   187: ifne +13 -> 200
     //   190: iload_0
     //   191: iconst_4
     //   192: aload_1
     //   193: iconst_0
     //   194: aconst_null
-    //   195: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   195: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   198: iconst_0
     //   199: ireturn
     //   200: aload 5
     //   202: aload 16
     //   204: invokevirtual 336	java/io/File:getPath	()Ljava/lang/String;
-    //   207: putfield 1100	com/tencent/mobileqq/activity/photo/ImageInfo:b	Ljava/lang/String;
+    //   207: putfield 1085	com/tencent/mobileqq/activity/photo/ImageInfo:b	Ljava/lang/String;
     //   210: aload 5
     //   212: aload 16
     //   214: invokevirtual 771	java/io/File:length	()J
-    //   217: putfield 1233	com/tencent/mobileqq/activity/photo/ImageInfo:a	J
+    //   217: putfield 1220	com/tencent/mobileqq/activity/photo/ImageInfo:a	J
     //   220: aload 16
-    //   222: invokestatic 1257	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/io/File;)Landroid/graphics/BitmapFactory$Options;
+    //   222: invokestatic 1244	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/io/File;)Landroid/graphics/BitmapFactory$Options;
     //   225: astore 14
     //   227: new 214	java/lang/StringBuilder
     //   230: dup
     //   231: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   234: ldc_w 1259
+    //   234: ldc_w 1246
     //   237: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   240: aload 16
     //   242: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   245: ldc_w 1261
+    //   245: ldc_w 1248
     //   248: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   251: aload 16
     //   253: invokevirtual 771	java/io/File:length	()J
     //   256: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   259: ldc_w 1263
+    //   259: ldc_w 1250
     //   262: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   265: aload 14
     //   267: getfield 121	android/graphics/BitmapFactory$Options:outWidth	I
     //   270: invokevirtual 354	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   273: ldc_w 1265
+    //   273: ldc_w 1252
     //   276: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   279: aload 14
     //   281: getfield 124	android/graphics/BitmapFactory$Options:outHeight	I
@@ -4794,10 +4791,10 @@ public class ImageUtil
     //   287: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   290: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   293: aload_3
-    //   294: invokestatic 1224	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
+    //   294: invokestatic 1211	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
     //   297: ifeq +16 -> 313
     //   300: aload_3
-    //   301: invokestatic 1225	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)Z
+    //   301: invokestatic 1212	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)Z
     //   304: ifne +460 -> 764
     //   307: aload 15
     //   309: invokevirtual 688	java/io/File:delete	()Z
@@ -4807,13 +4804,13 @@ public class ImageUtil
     //   318: istore 11
     //   320: aload 5
     //   322: iload 11
-    //   324: putfield 1102	com/tencent/mobileqq/activity/photo/ImageInfo:q	Z
+    //   324: putfield 1087	com/tencent/mobileqq/activity/photo/ImageInfo:q	Z
     //   327: iload 11
     //   329: ifne +125 -> 454
     //   332: aload 15
     //   334: invokevirtual 685	java/io/File:createNewFile	()Z
     //   337: ifeq +117 -> 454
-    //   340: ldc_w 1267
+    //   340: ldc_w 1254
     //   343: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   346: new 107	android/graphics/BitmapFactory$Options
     //   349: dup
@@ -4863,7 +4860,7 @@ public class ImageUtil
     //   438: iload 9
     //   440: iload 4
     //   442: iload 7
-    //   444: invokestatic 1269	com/tencent/mobileqq/utils/ImageUtil:b	(ILandroid/content/Context;Ljava/io/File;Ljava/io/File;Lcom/tencent/mobileqq/activity/photo/ImageInfo;IIIZZ)V
+    //   444: invokestatic 1256	com/tencent/mobileqq/utils/ImageUtil:b	(ILandroid/content/Context;Ljava/io/File;Ljava/io/File;Lcom/tencent/mobileqq/activity/photo/ImageInfo;IIIZZ)V
     //   447: ldc 64
     //   449: aload_1
     //   450: iconst_1
@@ -4879,42 +4876,42 @@ public class ImageUtil
     //   472: iconst_1
     //   473: istore 10
     //   475: aload_3
-    //   476: invokestatic 1255	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/lang/String;)Z
+    //   476: invokestatic 1242	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/lang/String;)Z
     //   479: istore 12
     //   481: aload 5
-    //   483: ldc_w 1271
+    //   483: ldc_w 1258
     //   486: new 214	java/lang/StringBuilder
     //   489: dup
     //   490: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   493: ldc_w 1273
+    //   493: ldc_w 1260
     //   496: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   499: aload 5
     //   501: getfield 952	com/tencent/mobileqq/activity/photo/ImageInfo:h	Z
     //   504: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   507: ldc_w 1275
+    //   507: ldc_w 1262
     //   510: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   513: aload 5
     //   515: getfield 385	com/tencent/mobileqq/activity/photo/ImageInfo:g	Z
     //   518: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   521: ldc_w 1277
+    //   521: ldc_w 1264
     //   524: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   527: iload 12
     //   529: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   532: ldc_w 1279
+    //   532: ldc_w 1266
     //   535: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   538: iload 10
     //   540: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   543: ldc_w 1281
+    //   543: ldc_w 1268
     //   546: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   549: aload 5
     //   551: getfield 964	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Boolean	Z
     //   554: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   557: ldc_w 1283
+    //   557: ldc_w 1270
     //   560: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   563: aload 5
     //   565: getfield 1000	com/tencent/mobileqq/activity/photo/ImageInfo:m	Z
     //   568: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   571: ldc_w 1285
+    //   571: ldc_w 1272
     //   574: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   577: invokestatic 916	com/tencent/mobileqq/util/Utils:b	()J
     //   580: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
@@ -4931,7 +4928,7 @@ public class ImageUtil
     //   607: aload_1
     //   608: iconst_0
     //   609: aconst_null
-    //   610: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   610: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   613: iload 12
     //   615: ifeq +27 -> 642
     //   618: aload 15
@@ -4947,11 +4944,11 @@ public class ImageUtil
     //   642: aload 5
     //   644: aload 16
     //   646: invokevirtual 336	java/io/File:getPath	()Ljava/lang/String;
-    //   649: putfield 1100	com/tencent/mobileqq/activity/photo/ImageInfo:b	Ljava/lang/String;
+    //   649: putfield 1085	com/tencent/mobileqq/activity/photo/ImageInfo:b	Ljava/lang/String;
     //   652: aload 5
     //   654: aload 16
     //   656: invokevirtual 771	java/io/File:length	()J
-    //   659: putfield 1233	com/tencent/mobileqq/activity/photo/ImageInfo:a	J
+    //   659: putfield 1220	com/tencent/mobileqq/activity/photo/ImageInfo:a	J
     //   662: aload 5
     //   664: iconst_0
     //   665: putfield 966	com/tencent/mobileqq/activity/photo/ImageInfo:o	Z
@@ -4973,30 +4970,30 @@ public class ImageUtil
     //   703: new 214	java/lang/StringBuilder
     //   706: dup
     //   707: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   710: ldc_w 1287
+    //   710: ldc_w 1274
     //   713: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   716: aload 16
     //   718: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   721: ldc_w 1261
+    //   721: ldc_w 1248
     //   724: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   727: aload 16
     //   729: invokevirtual 771	java/io/File:length	()J
     //   732: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   735: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   738: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
-    //   741: ldc_w 1210
+    //   741: ldc_w 1197
     //   744: iconst_0
-    //   745: ldc_w 1210
-    //   748: invokestatic 1242	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
+    //   745: ldc_w 1197
+    //   748: invokestatic 1229	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
     //   751: aload 5
-    //   753: ldc_w 1289
-    //   756: ldc_w 1291
+    //   753: ldc_w 1276
+    //   756: ldc_w 1278
     //   759: invokestatic 948	com/tencent/mobileqq/utils/ImageUtil:a	(Lcom/tencent/mobileqq/activity/photo/ImageInfo;Ljava/lang/String;Ljava/lang/String;)V
     //   762: iconst_0
     //   763: ireturn
     //   764: aload 5
     //   766: ldc_w 941
-    //   769: ldc_w 1293
+    //   769: ldc_w 1280
     //   772: invokestatic 948	com/tencent/mobileqq/utils/ImageUtil:a	(Lcom/tencent/mobileqq/activity/photo/ImageInfo;Ljava/lang/String;Ljava/lang/String;)V
     //   775: aload 5
     //   777: getfield 383	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_k_of_type_Int	I
@@ -5009,42 +5006,42 @@ public class ImageUtil
     //   793: iconst_1
     //   794: istore 10
     //   796: aload_3
-    //   797: invokestatic 1255	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/lang/String;)Z
+    //   797: invokestatic 1242	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/lang/String;)Z
     //   800: istore 11
     //   802: aload 5
-    //   804: ldc_w 1271
+    //   804: ldc_w 1258
     //   807: new 214	java/lang/StringBuilder
     //   810: dup
     //   811: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   814: ldc_w 1273
+    //   814: ldc_w 1260
     //   817: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   820: aload 5
     //   822: getfield 952	com/tencent/mobileqq/activity/photo/ImageInfo:h	Z
     //   825: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   828: ldc_w 1275
+    //   828: ldc_w 1262
     //   831: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   834: aload 5
     //   836: getfield 385	com/tencent/mobileqq/activity/photo/ImageInfo:g	Z
     //   839: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   842: ldc_w 1277
+    //   842: ldc_w 1264
     //   845: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   848: iload 11
     //   850: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   853: ldc_w 1279
+    //   853: ldc_w 1266
     //   856: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   859: iload 10
     //   861: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   864: ldc_w 1281
+    //   864: ldc_w 1268
     //   867: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   870: aload 5
     //   872: getfield 964	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Boolean	Z
     //   875: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   878: ldc_w 1283
+    //   878: ldc_w 1270
     //   881: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   884: aload 5
     //   886: getfield 1000	com/tencent/mobileqq/activity/photo/ImageInfo:m	Z
     //   889: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   892: ldc_w 1285
+    //   892: ldc_w 1272
     //   895: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   898: invokestatic 916	com/tencent/mobileqq/util/Utils:b	()J
     //   901: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
@@ -5061,7 +5058,7 @@ public class ImageUtil
     //   928: aload_1
     //   929: iconst_0
     //   930: aconst_null
-    //   931: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   931: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   934: iload 11
     //   936: ifeq +409 -> 1345
     //   939: aload 15
@@ -5075,11 +5072,11 @@ public class ImageUtil
     //   958: aload 5
     //   960: aload 15
     //   962: invokevirtual 336	java/io/File:getPath	()Ljava/lang/String;
-    //   965: putfield 1100	com/tencent/mobileqq/activity/photo/ImageInfo:b	Ljava/lang/String;
+    //   965: putfield 1085	com/tencent/mobileqq/activity/photo/ImageInfo:b	Ljava/lang/String;
     //   968: aload 5
     //   970: aload 15
     //   972: invokevirtual 771	java/io/File:length	()J
-    //   975: putfield 1233	com/tencent/mobileqq/activity/photo/ImageInfo:a	J
+    //   975: putfield 1220	com/tencent/mobileqq/activity/photo/ImageInfo:a	J
     //   978: aload 5
     //   980: iconst_1
     //   981: putfield 966	com/tencent/mobileqq/activity/photo/ImageInfo:o	Z
@@ -5087,30 +5084,30 @@ public class ImageUtil
     //   986: iconst_1
     //   987: putfield 952	com/tencent/mobileqq/activity/photo/ImageInfo:h	Z
     //   990: aload 15
-    //   992: invokestatic 1257	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/io/File;)Landroid/graphics/BitmapFactory$Options;
+    //   992: invokestatic 1244	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/io/File;)Landroid/graphics/BitmapFactory$Options;
     //   995: astore_2
     //   996: new 214	java/lang/StringBuilder
     //   999: dup
     //   1000: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   1003: ldc_w 1295
+    //   1003: ldc_w 1282
     //   1006: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1009: aload 16
     //   1011: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1014: ldc_w 1297
+    //   1014: ldc_w 1284
     //   1017: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1020: aload_3
     //   1021: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1024: ldc_w 1261
+    //   1024: ldc_w 1248
     //   1027: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1030: aload 15
     //   1032: invokevirtual 771	java/io/File:length	()J
     //   1035: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1038: ldc_w 1263
+    //   1038: ldc_w 1250
     //   1041: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1044: aload_2
     //   1045: getfield 121	android/graphics/BitmapFactory$Options:outWidth	I
     //   1048: invokevirtual 354	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1051: ldc_w 1265
+    //   1051: ldc_w 1252
     //   1054: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1057: aload_2
     //   1058: getfield 124	android/graphics/BitmapFactory$Options:outHeight	I
@@ -5118,15 +5115,15 @@ public class ImageUtil
     //   1064: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1067: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   1070: aload 5
-    //   1072: getfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   1072: getfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   1075: ifle +548 -> 1623
     //   1078: new 214	java/lang/StringBuilder
     //   1081: dup
     //   1082: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   1085: ldc_w 1237
+    //   1085: ldc_w 1224
     //   1088: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1091: aload 5
-    //   1093: getfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   1093: getfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   1096: invokevirtual 354	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1099: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1102: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
@@ -5135,25 +5132,25 @@ public class ImageUtil
     //   1108: aload_1
     //   1109: iconst_0
     //   1110: aconst_null
-    //   1111: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   1111: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   1114: aload 5
-    //   1116: getfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   1116: getfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   1119: ifle +515 -> 1634
     //   1122: iconst_1
     //   1123: istore 4
-    //   1125: ldc_w 1210
+    //   1125: ldc_w 1197
     //   1128: iload 4
-    //   1130: ldc_w 1210
-    //   1133: invokestatic 1242	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
+    //   1130: ldc_w 1197
+    //   1133: invokestatic 1229	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
     //   1136: aload 5
-    //   1138: ldc_w 1289
+    //   1138: ldc_w 1276
     //   1141: new 214	java/lang/StringBuilder
     //   1144: dup
     //   1145: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   1148: ldc_w 1299
+    //   1148: ldc_w 1286
     //   1151: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1154: aload 5
-    //   1156: getfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   1156: getfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   1159: invokevirtual 354	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1162: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1165: invokestatic 948	com/tencent/mobileqq/utils/ImageUtil:a	(Lcom/tencent/mobileqq/activity/photo/ImageInfo;Ljava/lang/String;Ljava/lang/String;)V
@@ -5167,27 +5164,27 @@ public class ImageUtil
     //   1178: aload_1
     //   1179: iconst_0
     //   1180: aconst_null
-    //   1181: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   1181: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   1184: goto -250 -> 934
     //   1187: iload 11
     //   1189: ifne -255 -> 934
     //   1192: iload 10
     //   1194: ifne -260 -> 934
     //   1197: aload 5
-    //   1199: getfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   1199: getfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   1202: istore 8
     //   1204: aload 5
     //   1206: iload 8
     //   1208: iconst_1
     //   1209: iadd
-    //   1210: putfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   1210: putfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   1213: iload 8
     //   1215: iconst_2
     //   1216: if_icmpge +33 -> 1249
     //   1219: aload 5
     //   1221: iconst_1
     //   1222: putfield 964	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Boolean	Z
-    //   1225: ldc_w 1301
+    //   1225: ldc_w 1288
     //   1228: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   1231: iload_0
     //   1232: aload_1
@@ -5197,7 +5194,7 @@ public class ImageUtil
     //   1237: aload 5
     //   1239: iload 6
     //   1241: iload 7
-    //   1243: invokestatic 1228	com/tencent/mobileqq/utils/ImageUtil:a	(ILandroid/content/Context;Ljava/lang/String;Ljava/lang/String;ZLcom/tencent/mobileqq/activity/photo/ImageInfo;IZ)Z
+    //   1243: invokestatic 1215	com/tencent/mobileqq/utils/ImageUtil:a	(ILandroid/content/Context;Ljava/lang/String;Ljava/lang/String;ZLcom/tencent/mobileqq/activity/photo/ImageInfo;IZ)Z
     //   1246: pop
     //   1247: iconst_0
     //   1248: ireturn
@@ -5209,17 +5206,17 @@ public class ImageUtil
     //   1260: aload_1
     //   1261: iconst_0
     //   1262: aconst_null
-    //   1263: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   1263: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   1266: goto -332 -> 934
     //   1269: aload 5
-    //   1271: getfield 1303	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_j_of_type_Boolean	Z
+    //   1271: getfield 1290	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_j_of_type_Boolean	Z
     //   1274: ifeq +15 -> 1289
     //   1277: iload_0
     //   1278: bipush 7
     //   1280: aload_1
     //   1281: iconst_0
     //   1282: aconst_null
-    //   1283: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   1283: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   1286: goto -352 -> 934
     //   1289: aload 5
     //   1291: getfield 964	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Boolean	Z
@@ -5229,7 +5226,7 @@ public class ImageUtil
     //   1300: aload_1
     //   1301: iconst_0
     //   1302: aconst_null
-    //   1303: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   1303: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   1306: goto -372 -> 934
     //   1309: aload 5
     //   1311: getfield 1000	com/tencent/mobileqq/activity/photo/ImageInfo:m	Z
@@ -5239,25 +5236,25 @@ public class ImageUtil
     //   1319: aload_1
     //   1320: iconst_0
     //   1321: aconst_null
-    //   1322: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   1322: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   1325: goto -391 -> 934
-    //   1328: ldc_w 1305
+    //   1328: ldc_w 1292
     //   1331: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   1334: iload_0
     //   1335: iconst_5
     //   1336: aload_1
     //   1337: iconst_0
     //   1338: aconst_null
-    //   1339: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   1339: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   1342: goto -408 -> 934
     //   1345: aload 5
     //   1347: aload 16
     //   1349: invokevirtual 336	java/io/File:getPath	()Ljava/lang/String;
-    //   1352: putfield 1100	com/tencent/mobileqq/activity/photo/ImageInfo:b	Ljava/lang/String;
+    //   1352: putfield 1085	com/tencent/mobileqq/activity/photo/ImageInfo:b	Ljava/lang/String;
     //   1355: aload 5
     //   1357: aload 16
     //   1359: invokevirtual 771	java/io/File:length	()J
-    //   1362: putfield 1233	com/tencent/mobileqq/activity/photo/ImageInfo:a	J
+    //   1362: putfield 1220	com/tencent/mobileqq/activity/photo/ImageInfo:a	J
     //   1365: aload 5
     //   1367: iconst_0
     //   1368: putfield 966	com/tencent/mobileqq/activity/photo/ImageInfo:o	Z
@@ -5277,21 +5274,21 @@ public class ImageUtil
     //   1401: new 214	java/lang/StringBuilder
     //   1404: dup
     //   1405: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   1408: ldc_w 1307
+    //   1408: ldc_w 1294
     //   1411: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1414: aload_3
     //   1415: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1418: ldc_w 1261
+    //   1418: ldc_w 1248
     //   1421: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1424: aload 15
     //   1426: invokevirtual 771	java/io/File:length	()J
     //   1429: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1432: ldc_w 1309
+    //   1432: ldc_w 1296
     //   1435: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1438: aload 16
     //   1440: invokevirtual 771	java/io/File:length	()J
     //   1443: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1446: ldc_w 1311
+    //   1446: ldc_w 1298
     //   1449: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1452: iload 10
     //   1454: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
@@ -5300,16 +5297,16 @@ public class ImageUtil
     //   1463: new 214	java/lang/StringBuilder
     //   1466: dup
     //   1467: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   1470: ldc_w 1313
+    //   1470: ldc_w 1300
     //   1473: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1476: iconst_0
     //   1477: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1480: ldc_w 1315
+    //   1480: ldc_w 1302
     //   1483: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1486: aload_3
-    //   1487: invokestatic 1224	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
+    //   1487: invokestatic 1211	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
     //   1490: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1493: ldc_w 1317
+    //   1493: ldc_w 1304
     //   1496: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1499: astore_1
     //   1500: aload 15
@@ -5326,49 +5323,49 @@ public class ImageUtil
     //   1522: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   1525: iload 11
     //   1527: ifne +83 -> 1610
-    //   1530: ldc_w 1210
+    //   1530: ldc_w 1197
     //   1533: iconst_1
-    //   1534: ldc_w 1210
-    //   1537: invokestatic 1242	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
+    //   1534: ldc_w 1197
+    //   1537: invokestatic 1229	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
     //   1540: aload 5
-    //   1542: ldc_w 1289
-    //   1545: ldc_w 1291
+    //   1542: ldc_w 1276
+    //   1545: ldc_w 1278
     //   1548: invokestatic 948	com/tencent/mobileqq/utils/ImageUtil:a	(Lcom/tencent/mobileqq/activity/photo/ImageInfo;Ljava/lang/String;Ljava/lang/String;)V
     //   1551: iconst_1
     //   1552: ireturn
     //   1553: new 214	java/lang/StringBuilder
     //   1556: dup
     //   1557: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   1560: ldc_w 1287
+    //   1560: ldc_w 1274
     //   1563: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1566: aload 16
     //   1568: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1571: ldc_w 1261
+    //   1571: ldc_w 1248
     //   1574: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1577: aload 16
     //   1579: invokevirtual 771	java/io/File:length	()J
     //   1582: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   1585: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1588: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
-    //   1591: ldc_w 1210
+    //   1591: ldc_w 1197
     //   1594: iconst_0
-    //   1595: ldc_w 1210
-    //   1598: invokestatic 1242	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
+    //   1595: ldc_w 1197
+    //   1598: invokestatic 1229	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
     //   1601: goto -61 -> 1540
     //   1604: iconst_0
     //   1605: istore 4
     //   1607: goto -94 -> 1513
-    //   1610: ldc_w 1210
+    //   1610: ldc_w 1197
     //   1613: iconst_0
-    //   1614: ldc_w 1210
-    //   1617: invokestatic 1242	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
+    //   1614: ldc_w 1197
+    //   1617: invokestatic 1229	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
     //   1620: goto -80 -> 1540
     //   1623: iload_0
     //   1624: iconst_0
     //   1625: aload_1
     //   1626: iconst_1
     //   1627: aconst_null
-    //   1628: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   1628: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   1631: goto -517 -> 1114
     //   1634: iconst_0
     //   1635: istore 4
@@ -5383,7 +5380,7 @@ public class ImageUtil
     //   1652: iload 9
     //   1654: iload 4
     //   1656: iload 7
-    //   1658: invokestatic 1319	com/tencent/mobileqq/utils/ImageUtil:a	(ILandroid/content/Context;Ljava/io/File;Ljava/io/File;Lcom/tencent/mobileqq/activity/photo/ImageInfo;IIIZZ)V
+    //   1658: invokestatic 1306	com/tencent/mobileqq/utils/ImageUtil:a	(ILandroid/content/Context;Ljava/io/File;Ljava/io/File;Lcom/tencent/mobileqq/activity/photo/ImageInfo;IIIZZ)V
     //   1661: ldc 64
     //   1663: aload_1
     //   1664: iconst_0
@@ -5394,7 +5391,7 @@ public class ImageUtil
     //   1675: istore 10
     //   1677: iconst_1
     //   1678: istore 12
-    //   1680: ldc_w 1321
+    //   1680: ldc_w 1308
     //   1683: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   1686: aload 5
     //   1688: getfield 383	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_k_of_type_Int	I
@@ -5407,42 +5404,42 @@ public class ImageUtil
     //   1704: iconst_1
     //   1705: istore 11
     //   1707: aload_3
-    //   1708: invokestatic 1255	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/lang/String;)Z
+    //   1708: invokestatic 1242	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/lang/String;)Z
     //   1711: istore 12
     //   1713: aload 5
-    //   1715: ldc_w 1271
+    //   1715: ldc_w 1258
     //   1718: new 214	java/lang/StringBuilder
     //   1721: dup
     //   1722: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   1725: ldc_w 1273
+    //   1725: ldc_w 1260
     //   1728: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1731: aload 5
     //   1733: getfield 952	com/tencent/mobileqq/activity/photo/ImageInfo:h	Z
     //   1736: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1739: ldc_w 1275
+    //   1739: ldc_w 1262
     //   1742: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1745: aload 5
     //   1747: getfield 385	com/tencent/mobileqq/activity/photo/ImageInfo:g	Z
     //   1750: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1753: ldc_w 1277
+    //   1753: ldc_w 1264
     //   1756: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1759: iload 12
     //   1761: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1764: ldc_w 1279
+    //   1764: ldc_w 1266
     //   1767: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1770: iload 11
     //   1772: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1775: ldc_w 1281
+    //   1775: ldc_w 1268
     //   1778: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1781: aload 5
     //   1783: getfield 964	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Boolean	Z
     //   1786: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1789: ldc_w 1283
+    //   1789: ldc_w 1270
     //   1792: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1795: aload 5
     //   1797: getfield 1000	com/tencent/mobileqq/activity/photo/ImageInfo:m	Z
     //   1800: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1803: ldc_w 1285
+    //   1803: ldc_w 1272
     //   1806: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1809: invokestatic 916	com/tencent/mobileqq/util/Utils:b	()J
     //   1812: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
@@ -5459,15 +5456,15 @@ public class ImageUtil
     //   1839: aload_1
     //   1840: iconst_0
     //   1841: aconst_null
-    //   1842: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   1842: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   1845: aload 5
     //   1847: aload 16
     //   1849: invokevirtual 336	java/io/File:getPath	()Ljava/lang/String;
-    //   1852: putfield 1100	com/tencent/mobileqq/activity/photo/ImageInfo:b	Ljava/lang/String;
+    //   1852: putfield 1085	com/tencent/mobileqq/activity/photo/ImageInfo:b	Ljava/lang/String;
     //   1855: aload 5
     //   1857: aload 16
     //   1859: invokevirtual 771	java/io/File:length	()J
-    //   1862: putfield 1233	com/tencent/mobileqq/activity/photo/ImageInfo:a	J
+    //   1862: putfield 1220	com/tencent/mobileqq/activity/photo/ImageInfo:a	J
     //   1865: aload 5
     //   1867: iconst_0
     //   1868: putfield 966	com/tencent/mobileqq/activity/photo/ImageInfo:o	Z
@@ -5489,24 +5486,24 @@ public class ImageUtil
     //   1906: new 214	java/lang/StringBuilder
     //   1909: dup
     //   1910: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   1913: ldc_w 1287
+    //   1913: ldc_w 1274
     //   1916: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1919: aload 16
     //   1921: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1924: ldc_w 1261
+    //   1924: ldc_w 1248
     //   1927: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1930: aload 16
     //   1932: invokevirtual 771	java/io/File:length	()J
     //   1935: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   1938: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1941: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
-    //   1944: ldc_w 1210
+    //   1944: ldc_w 1197
     //   1947: iconst_0
-    //   1948: ldc_w 1210
-    //   1951: invokestatic 1242	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
+    //   1948: ldc_w 1197
+    //   1951: invokestatic 1229	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
     //   1954: aload 5
-    //   1956: ldc_w 1289
-    //   1959: ldc_w 1291
+    //   1956: ldc_w 1276
+    //   1959: ldc_w 1278
     //   1962: invokestatic 948	com/tencent/mobileqq/utils/ImageUtil:a	(Lcom/tencent/mobileqq/activity/photo/ImageInfo;Ljava/lang/String;Ljava/lang/String;)V
     //   1965: goto -1203 -> 762
     //   1968: iconst_0
@@ -5517,7 +5514,7 @@ public class ImageUtil
     //   1976: aload_1
     //   1977: iconst_0
     //   1978: aconst_null
-    //   1979: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   1979: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   1982: goto -1369 -> 613
     //   1985: iload 12
     //   1987: ifne -1374 -> 613
@@ -5526,20 +5523,20 @@ public class ImageUtil
     //   1995: iload 11
     //   1997: ifne -1384 -> 613
     //   2000: aload 5
-    //   2002: getfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   2002: getfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   2005: istore 8
     //   2007: aload 5
     //   2009: iload 8
     //   2011: iconst_1
     //   2012: iadd
-    //   2013: putfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   2013: putfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   2016: iload 8
     //   2018: iconst_2
     //   2019: if_icmpge +33 -> 2052
     //   2022: aload 5
     //   2024: iconst_1
     //   2025: putfield 964	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Boolean	Z
-    //   2028: ldc_w 1301
+    //   2028: ldc_w 1288
     //   2031: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   2034: iload_0
     //   2035: aload_1
@@ -5549,7 +5546,7 @@ public class ImageUtil
     //   2040: aload 5
     //   2042: iload 6
     //   2044: iload 7
-    //   2046: invokestatic 1228	com/tencent/mobileqq/utils/ImageUtil:a	(ILandroid/content/Context;Ljava/lang/String;Ljava/lang/String;ZLcom/tencent/mobileqq/activity/photo/ImageInfo;IZ)Z
+    //   2046: invokestatic 1215	com/tencent/mobileqq/utils/ImageUtil:a	(ILandroid/content/Context;Ljava/lang/String;Ljava/lang/String;ZLcom/tencent/mobileqq/activity/photo/ImageInfo;IZ)Z
     //   2049: pop
     //   2050: iconst_0
     //   2051: ireturn
@@ -5561,17 +5558,17 @@ public class ImageUtil
     //   2063: aload_1
     //   2064: iconst_0
     //   2065: aconst_null
-    //   2066: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   2066: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   2069: goto -1456 -> 613
     //   2072: aload 5
-    //   2074: getfield 1303	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_j_of_type_Boolean	Z
+    //   2074: getfield 1290	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_j_of_type_Boolean	Z
     //   2077: ifeq +15 -> 2092
     //   2080: iload_0
     //   2081: bipush 7
     //   2083: aload_1
     //   2084: iconst_0
     //   2085: aconst_null
-    //   2086: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   2086: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   2089: goto -1476 -> 613
     //   2092: aload 5
     //   2094: getfield 964	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Boolean	Z
@@ -5581,7 +5578,7 @@ public class ImageUtil
     //   2103: aload_1
     //   2104: iconst_0
     //   2105: aconst_null
-    //   2106: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   2106: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   2109: goto -1496 -> 613
     //   2112: aload 5
     //   2114: getfield 1000	com/tencent/mobileqq/activity/photo/ImageInfo:m	Z
@@ -5591,35 +5588,35 @@ public class ImageUtil
     //   2122: aload_1
     //   2123: iconst_0
     //   2124: aconst_null
-    //   2125: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   2125: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   2128: goto -1515 -> 613
-    //   2131: ldc_w 1305
+    //   2131: ldc_w 1292
     //   2134: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   2137: iload_0
     //   2138: iconst_5
     //   2139: aload_1
     //   2140: iconst_0
     //   2141: aconst_null
-    //   2142: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   2142: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   2145: goto -1532 -> 613
     //   2148: new 214	java/lang/StringBuilder
     //   2151: dup
     //   2152: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   2155: ldc_w 1307
+    //   2155: ldc_w 1294
     //   2158: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2161: aload_3
     //   2162: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2165: ldc_w 1261
+    //   2165: ldc_w 1248
     //   2168: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2171: aload 15
     //   2173: invokevirtual 771	java/io/File:length	()J
     //   2176: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2179: ldc_w 1309
+    //   2179: ldc_w 1296
     //   2182: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2185: aload 16
     //   2187: invokevirtual 771	java/io/File:length	()J
     //   2190: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2193: ldc_w 1311
+    //   2193: ldc_w 1298
     //   2196: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2199: iload 10
     //   2201: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
@@ -5628,16 +5625,16 @@ public class ImageUtil
     //   2210: new 214	java/lang/StringBuilder
     //   2213: dup
     //   2214: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   2217: ldc_w 1313
+    //   2217: ldc_w 1300
     //   2220: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2223: iconst_0
     //   2224: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   2227: ldc_w 1315
+    //   2227: ldc_w 1302
     //   2230: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2233: aload_3
-    //   2234: invokestatic 1224	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
+    //   2234: invokestatic 1211	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
     //   2237: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   2240: ldc_w 1317
+    //   2240: ldc_w 1304
     //   2243: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2246: astore_1
     //   2247: aload 15
@@ -5654,27 +5651,27 @@ public class ImageUtil
     //   2269: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   2272: iload 12
     //   2274: ifne +22 -> 2296
-    //   2277: ldc_w 1210
+    //   2277: ldc_w 1197
     //   2280: iconst_1
-    //   2281: ldc_w 1210
-    //   2284: invokestatic 1242	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
+    //   2281: ldc_w 1197
+    //   2284: invokestatic 1229	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
     //   2287: goto -1536 -> 751
     //   2290: iconst_0
     //   2291: istore 4
     //   2293: goto -33 -> 2260
-    //   2296: ldc_w 1210
+    //   2296: ldc_w 1197
     //   2299: iconst_0
-    //   2300: ldc_w 1210
-    //   2303: invokestatic 1242	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
+    //   2300: ldc_w 1197
+    //   2303: invokestatic 1229	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
     //   2306: goto -1555 -> 751
     //   2309: aload 5
     //   2311: aload 15
     //   2313: invokevirtual 336	java/io/File:getPath	()Ljava/lang/String;
-    //   2316: putfield 1100	com/tencent/mobileqq/activity/photo/ImageInfo:b	Ljava/lang/String;
+    //   2316: putfield 1085	com/tencent/mobileqq/activity/photo/ImageInfo:b	Ljava/lang/String;
     //   2319: aload 5
     //   2321: aload 15
     //   2323: invokevirtual 771	java/io/File:length	()J
-    //   2326: putfield 1233	com/tencent/mobileqq/activity/photo/ImageInfo:a	J
+    //   2326: putfield 1220	com/tencent/mobileqq/activity/photo/ImageInfo:a	J
     //   2329: aload 5
     //   2331: iconst_1
     //   2332: putfield 966	com/tencent/mobileqq/activity/photo/ImageInfo:o	Z
@@ -5682,30 +5679,30 @@ public class ImageUtil
     //   2337: iconst_1
     //   2338: putfield 952	com/tencent/mobileqq/activity/photo/ImageInfo:h	Z
     //   2341: aload 15
-    //   2343: invokestatic 1257	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/io/File;)Landroid/graphics/BitmapFactory$Options;
+    //   2343: invokestatic 1244	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/io/File;)Landroid/graphics/BitmapFactory$Options;
     //   2346: astore_2
     //   2347: new 214	java/lang/StringBuilder
     //   2350: dup
     //   2351: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   2354: ldc_w 1295
+    //   2354: ldc_w 1282
     //   2357: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2360: aload 16
     //   2362: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   2365: ldc_w 1297
+    //   2365: ldc_w 1284
     //   2368: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2371: aload_3
     //   2372: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2375: ldc_w 1261
+    //   2375: ldc_w 1248
     //   2378: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2381: aload 15
     //   2383: invokevirtual 771	java/io/File:length	()J
     //   2386: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2389: ldc_w 1263
+    //   2389: ldc_w 1250
     //   2392: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2395: aload_2
     //   2396: getfield 121	android/graphics/BitmapFactory$Options:outWidth	I
     //   2399: invokevirtual 354	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2402: ldc_w 1265
+    //   2402: ldc_w 1252
     //   2405: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2408: aload_2
     //   2409: getfield 124	android/graphics/BitmapFactory$Options:outHeight	I
@@ -5713,15 +5710,15 @@ public class ImageUtil
     //   2415: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2418: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   2421: aload 5
-    //   2423: getfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   2423: getfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   2426: ifle +95 -> 2521
     //   2429: new 214	java/lang/StringBuilder
     //   2432: dup
     //   2433: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   2436: ldc_w 1237
+    //   2436: ldc_w 1224
     //   2439: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2442: aload 5
-    //   2444: getfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   2444: getfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   2447: invokevirtual 354	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   2450: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2453: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
@@ -5730,25 +5727,25 @@ public class ImageUtil
     //   2459: aload_1
     //   2460: iconst_0
     //   2461: aconst_null
-    //   2462: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   2462: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   2465: aload 5
-    //   2467: getfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   2467: getfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   2470: ifle +62 -> 2532
     //   2473: iconst_1
     //   2474: istore 4
-    //   2476: ldc_w 1210
+    //   2476: ldc_w 1197
     //   2479: iload 4
-    //   2481: ldc_w 1210
-    //   2484: invokestatic 1242	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
+    //   2481: ldc_w 1197
+    //   2484: invokestatic 1229	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
     //   2487: aload 5
-    //   2489: ldc_w 1289
+    //   2489: ldc_w 1276
     //   2492: new 214	java/lang/StringBuilder
     //   2495: dup
     //   2496: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   2499: ldc_w 1299
+    //   2499: ldc_w 1286
     //   2502: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2505: aload 5
-    //   2507: getfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   2507: getfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   2510: invokevirtual 354	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   2513: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2516: invokestatic 948	com/tencent/mobileqq/utils/ImageUtil:a	(Lcom/tencent/mobileqq/activity/photo/ImageInfo;Ljava/lang/String;Ljava/lang/String;)V
@@ -5759,7 +5756,7 @@ public class ImageUtil
     //   2523: aload_1
     //   2524: iconst_1
     //   2525: aconst_null
-    //   2526: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   2526: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   2529: goto -64 -> 2465
     //   2532: iconst_0
     //   2533: istore 4
@@ -5772,7 +5769,7 @@ public class ImageUtil
     //   2546: aload_1
     //   2547: iconst_0
     //   2548: aconst_null
-    //   2549: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   2549: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   2552: goto -707 -> 1845
     //   2555: iload 12
     //   2557: ifne -712 -> 1845
@@ -5781,20 +5778,20 @@ public class ImageUtil
     //   2565: iload 10
     //   2567: ifne -722 -> 1845
     //   2570: aload 5
-    //   2572: getfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   2572: getfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   2575: istore 8
     //   2577: aload 5
     //   2579: iload 8
     //   2581: iconst_1
     //   2582: iadd
-    //   2583: putfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   2583: putfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   2586: iload 8
     //   2588: iconst_2
     //   2589: if_icmpge +33 -> 2622
     //   2592: aload 5
     //   2594: iconst_1
     //   2595: putfield 964	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Boolean	Z
-    //   2598: ldc_w 1301
+    //   2598: ldc_w 1288
     //   2601: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   2604: iload_0
     //   2605: aload_1
@@ -5804,7 +5801,7 @@ public class ImageUtil
     //   2610: aload 5
     //   2612: iload 6
     //   2614: iload 7
-    //   2616: invokestatic 1228	com/tencent/mobileqq/utils/ImageUtil:a	(ILandroid/content/Context;Ljava/lang/String;Ljava/lang/String;ZLcom/tencent/mobileqq/activity/photo/ImageInfo;IZ)Z
+    //   2616: invokestatic 1215	com/tencent/mobileqq/utils/ImageUtil:a	(ILandroid/content/Context;Ljava/lang/String;Ljava/lang/String;ZLcom/tencent/mobileqq/activity/photo/ImageInfo;IZ)Z
     //   2619: pop
     //   2620: iconst_0
     //   2621: ireturn
@@ -5816,17 +5813,17 @@ public class ImageUtil
     //   2633: aload_1
     //   2634: iconst_0
     //   2635: aconst_null
-    //   2636: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   2636: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   2639: goto -794 -> 1845
     //   2642: aload 5
-    //   2644: getfield 1303	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_j_of_type_Boolean	Z
+    //   2644: getfield 1290	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_j_of_type_Boolean	Z
     //   2647: ifeq +15 -> 2662
     //   2650: iload_0
     //   2651: bipush 7
     //   2653: aload_1
     //   2654: iconst_0
     //   2655: aconst_null
-    //   2656: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   2656: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   2659: goto -814 -> 1845
     //   2662: aload 5
     //   2664: getfield 964	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Boolean	Z
@@ -5836,7 +5833,7 @@ public class ImageUtil
     //   2673: aload_1
     //   2674: iconst_0
     //   2675: aconst_null
-    //   2676: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   2676: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   2679: goto -834 -> 1845
     //   2682: aload 5
     //   2684: getfield 1000	com/tencent/mobileqq/activity/photo/ImageInfo:m	Z
@@ -5846,35 +5843,35 @@ public class ImageUtil
     //   2692: aload_1
     //   2693: iconst_0
     //   2694: aconst_null
-    //   2695: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   2695: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   2698: goto -853 -> 1845
-    //   2701: ldc_w 1305
+    //   2701: ldc_w 1292
     //   2704: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   2707: iload_0
     //   2708: iconst_5
     //   2709: aload_1
     //   2710: iconst_0
     //   2711: aconst_null
-    //   2712: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   2712: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   2715: goto -870 -> 1845
     //   2718: new 214	java/lang/StringBuilder
     //   2721: dup
     //   2722: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   2725: ldc_w 1307
+    //   2725: ldc_w 1294
     //   2728: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2731: aload_3
     //   2732: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2735: ldc_w 1261
+    //   2735: ldc_w 1248
     //   2738: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2741: aload 15
     //   2743: invokevirtual 771	java/io/File:length	()J
     //   2746: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2749: ldc_w 1309
+    //   2749: ldc_w 1296
     //   2752: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2755: aload 16
     //   2757: invokevirtual 771	java/io/File:length	()J
     //   2760: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2763: ldc_w 1311
+    //   2763: ldc_w 1298
     //   2766: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2769: iload 11
     //   2771: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
@@ -5883,16 +5880,16 @@ public class ImageUtil
     //   2780: new 214	java/lang/StringBuilder
     //   2783: dup
     //   2784: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   2787: ldc_w 1313
+    //   2787: ldc_w 1300
     //   2790: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2793: iconst_1
     //   2794: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   2797: ldc_w 1315
+    //   2797: ldc_w 1302
     //   2800: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2803: aload_3
-    //   2804: invokestatic 1224	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
+    //   2804: invokestatic 1211	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
     //   2807: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   2810: ldc_w 1317
+    //   2810: ldc_w 1304
     //   2813: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2816: astore_1
     //   2817: aload 15
@@ -5907,10 +5904,10 @@ public class ImageUtil
     //   2833: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   2836: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2839: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
-    //   2842: ldc_w 1210
+    //   2842: ldc_w 1197
     //   2845: iconst_1
-    //   2846: ldc_w 1210
-    //   2849: invokestatic 1242	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
+    //   2846: ldc_w 1197
+    //   2849: invokestatic 1229	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
     //   2852: goto -898 -> 1954
     //   2855: iconst_0
     //   2856: istore 4
@@ -5931,42 +5928,42 @@ public class ImageUtil
     //   2887: iconst_1
     //   2888: istore 12
     //   2890: aload_3
-    //   2891: invokestatic 1255	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/lang/String;)Z
+    //   2891: invokestatic 1242	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/lang/String;)Z
     //   2894: istore 13
     //   2896: aload 5
-    //   2898: ldc_w 1271
+    //   2898: ldc_w 1258
     //   2901: new 214	java/lang/StringBuilder
     //   2904: dup
     //   2905: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   2908: ldc_w 1273
+    //   2908: ldc_w 1260
     //   2911: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2914: aload 5
     //   2916: getfield 952	com/tencent/mobileqq/activity/photo/ImageInfo:h	Z
     //   2919: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   2922: ldc_w 1275
+    //   2922: ldc_w 1262
     //   2925: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2928: aload 5
     //   2930: getfield 385	com/tencent/mobileqq/activity/photo/ImageInfo:g	Z
     //   2933: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   2936: ldc_w 1277
+    //   2936: ldc_w 1264
     //   2939: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2942: iload 13
     //   2944: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   2947: ldc_w 1279
+    //   2947: ldc_w 1266
     //   2950: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2953: iload 12
     //   2955: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   2958: ldc_w 1281
+    //   2958: ldc_w 1268
     //   2961: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2964: aload 5
     //   2966: getfield 964	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Boolean	Z
     //   2969: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   2972: ldc_w 1283
+    //   2972: ldc_w 1270
     //   2975: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2978: aload 5
     //   2980: getfield 1000	com/tencent/mobileqq/activity/photo/ImageInfo:m	Z
     //   2983: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   2986: ldc_w 1285
+    //   2986: ldc_w 1272
     //   2989: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2992: invokestatic 916	com/tencent/mobileqq/util/Utils:b	()J
     //   2995: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
@@ -5983,7 +5980,7 @@ public class ImageUtil
     //   3022: aload_1
     //   3023: iconst_0
     //   3024: aconst_null
-    //   3025: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   3025: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   3028: iload 10
     //   3030: ifne +32 -> 3062
     //   3033: iload 13
@@ -6001,11 +5998,11 @@ public class ImageUtil
     //   3062: aload 5
     //   3064: aload 16
     //   3066: invokevirtual 336	java/io/File:getPath	()Ljava/lang/String;
-    //   3069: putfield 1100	com/tencent/mobileqq/activity/photo/ImageInfo:b	Ljava/lang/String;
+    //   3069: putfield 1085	com/tencent/mobileqq/activity/photo/ImageInfo:b	Ljava/lang/String;
     //   3072: aload 5
     //   3074: aload 16
     //   3076: invokevirtual 771	java/io/File:length	()J
-    //   3079: putfield 1233	com/tencent/mobileqq/activity/photo/ImageInfo:a	J
+    //   3079: putfield 1220	com/tencent/mobileqq/activity/photo/ImageInfo:a	J
     //   3082: aload 5
     //   3084: iconst_0
     //   3085: putfield 966	com/tencent/mobileqq/activity/photo/ImageInfo:o	Z
@@ -6027,24 +6024,24 @@ public class ImageUtil
     //   3123: new 214	java/lang/StringBuilder
     //   3126: dup
     //   3127: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   3130: ldc_w 1287
+    //   3130: ldc_w 1274
     //   3133: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3136: aload 16
     //   3138: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   3141: ldc_w 1261
+    //   3141: ldc_w 1248
     //   3144: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3147: aload 16
     //   3149: invokevirtual 771	java/io/File:length	()J
     //   3152: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   3155: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   3158: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
-    //   3161: ldc_w 1210
+    //   3161: ldc_w 1197
     //   3164: iconst_0
-    //   3165: ldc_w 1210
-    //   3168: invokestatic 1242	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
+    //   3165: ldc_w 1197
+    //   3168: invokestatic 1229	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
     //   3171: aload 5
-    //   3173: ldc_w 1289
-    //   3176: ldc_w 1291
+    //   3173: ldc_w 1276
+    //   3176: ldc_w 1278
     //   3179: invokestatic 948	com/tencent/mobileqq/utils/ImageUtil:a	(Lcom/tencent/mobileqq/activity/photo/ImageInfo;Ljava/lang/String;Ljava/lang/String;)V
     //   3182: aload 14
     //   3184: athrow
@@ -6056,7 +6053,7 @@ public class ImageUtil
     //   3193: aload_1
     //   3194: iconst_0
     //   3195: aconst_null
-    //   3196: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   3196: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   3199: goto -171 -> 3028
     //   3202: iload 13
     //   3204: ifne -176 -> 3028
@@ -6065,20 +6062,20 @@ public class ImageUtil
     //   3212: iload 11
     //   3214: ifne -186 -> 3028
     //   3217: aload 5
-    //   3219: getfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   3219: getfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   3222: istore 8
     //   3224: aload 5
     //   3226: iload 8
     //   3228: iconst_1
     //   3229: iadd
-    //   3230: putfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   3230: putfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   3233: iload 8
     //   3235: iconst_2
     //   3236: if_icmpge +33 -> 3269
     //   3239: aload 5
     //   3241: iconst_1
     //   3242: putfield 964	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Boolean	Z
-    //   3245: ldc_w 1301
+    //   3245: ldc_w 1288
     //   3248: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   3251: iload_0
     //   3252: aload_1
@@ -6088,7 +6085,7 @@ public class ImageUtil
     //   3257: aload 5
     //   3259: iload 6
     //   3261: iload 7
-    //   3263: invokestatic 1228	com/tencent/mobileqq/utils/ImageUtil:a	(ILandroid/content/Context;Ljava/lang/String;Ljava/lang/String;ZLcom/tencent/mobileqq/activity/photo/ImageInfo;IZ)Z
+    //   3263: invokestatic 1215	com/tencent/mobileqq/utils/ImageUtil:a	(ILandroid/content/Context;Ljava/lang/String;Ljava/lang/String;ZLcom/tencent/mobileqq/activity/photo/ImageInfo;IZ)Z
     //   3266: pop
     //   3267: iconst_0
     //   3268: ireturn
@@ -6100,17 +6097,17 @@ public class ImageUtil
     //   3280: aload_1
     //   3281: iconst_0
     //   3282: aconst_null
-    //   3283: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   3283: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   3286: goto -258 -> 3028
     //   3289: aload 5
-    //   3291: getfield 1303	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_j_of_type_Boolean	Z
+    //   3291: getfield 1290	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_j_of_type_Boolean	Z
     //   3294: ifeq +15 -> 3309
     //   3297: iload_0
     //   3298: bipush 7
     //   3300: aload_1
     //   3301: iconst_0
     //   3302: aconst_null
-    //   3303: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   3303: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   3306: goto -278 -> 3028
     //   3309: aload 5
     //   3311: getfield 964	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Boolean	Z
@@ -6120,7 +6117,7 @@ public class ImageUtil
     //   3320: aload_1
     //   3321: iconst_0
     //   3322: aconst_null
-    //   3323: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   3323: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   3326: goto -298 -> 3028
     //   3329: aload 5
     //   3331: getfield 1000	com/tencent/mobileqq/activity/photo/ImageInfo:m	Z
@@ -6130,35 +6127,35 @@ public class ImageUtil
     //   3339: aload_1
     //   3340: iconst_0
     //   3341: aconst_null
-    //   3342: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   3342: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   3345: goto -317 -> 3028
-    //   3348: ldc_w 1305
+    //   3348: ldc_w 1292
     //   3351: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   3354: iload_0
     //   3355: iconst_5
     //   3356: aload_1
     //   3357: iconst_0
     //   3358: aconst_null
-    //   3359: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   3359: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   3362: goto -334 -> 3028
     //   3365: new 214	java/lang/StringBuilder
     //   3368: dup
     //   3369: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   3372: ldc_w 1307
+    //   3372: ldc_w 1294
     //   3375: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3378: aload_3
     //   3379: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3382: ldc_w 1261
+    //   3382: ldc_w 1248
     //   3385: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3388: aload 15
     //   3390: invokevirtual 771	java/io/File:length	()J
     //   3393: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3396: ldc_w 1309
+    //   3396: ldc_w 1296
     //   3399: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3402: aload 16
     //   3404: invokevirtual 771	java/io/File:length	()J
     //   3407: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3410: ldc_w 1311
+    //   3410: ldc_w 1298
     //   3413: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3416: iload 12
     //   3418: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
@@ -6167,16 +6164,16 @@ public class ImageUtil
     //   3427: new 214	java/lang/StringBuilder
     //   3430: dup
     //   3431: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   3434: ldc_w 1313
+    //   3434: ldc_w 1300
     //   3437: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3440: iload 10
     //   3442: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   3445: ldc_w 1315
+    //   3445: ldc_w 1302
     //   3448: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3451: aload_3
-    //   3452: invokestatic 1224	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
+    //   3452: invokestatic 1211	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
     //   3455: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   3458: ldc_w 1317
+    //   3458: ldc_w 1304
     //   3461: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3464: astore_1
     //   3465: aload 15
@@ -6195,27 +6192,27 @@ public class ImageUtil
     //   3492: ifne +8 -> 3500
     //   3495: iload 13
     //   3497: ifne +22 -> 3519
-    //   3500: ldc_w 1210
+    //   3500: ldc_w 1197
     //   3503: iconst_1
-    //   3504: ldc_w 1210
-    //   3507: invokestatic 1242	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
+    //   3504: ldc_w 1197
+    //   3507: invokestatic 1229	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
     //   3510: goto -339 -> 3171
     //   3513: iconst_0
     //   3514: istore 4
     //   3516: goto -38 -> 3478
-    //   3519: ldc_w 1210
+    //   3519: ldc_w 1197
     //   3522: iconst_0
-    //   3523: ldc_w 1210
-    //   3526: invokestatic 1242	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
+    //   3523: ldc_w 1197
+    //   3526: invokestatic 1229	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
     //   3529: goto -358 -> 3171
     //   3532: aload 5
     //   3534: aload 15
     //   3536: invokevirtual 336	java/io/File:getPath	()Ljava/lang/String;
-    //   3539: putfield 1100	com/tencent/mobileqq/activity/photo/ImageInfo:b	Ljava/lang/String;
+    //   3539: putfield 1085	com/tencent/mobileqq/activity/photo/ImageInfo:b	Ljava/lang/String;
     //   3542: aload 5
     //   3544: aload 15
     //   3546: invokevirtual 771	java/io/File:length	()J
-    //   3549: putfield 1233	com/tencent/mobileqq/activity/photo/ImageInfo:a	J
+    //   3549: putfield 1220	com/tencent/mobileqq/activity/photo/ImageInfo:a	J
     //   3552: aload 5
     //   3554: iconst_1
     //   3555: putfield 966	com/tencent/mobileqq/activity/photo/ImageInfo:o	Z
@@ -6223,30 +6220,30 @@ public class ImageUtil
     //   3560: iconst_1
     //   3561: putfield 952	com/tencent/mobileqq/activity/photo/ImageInfo:h	Z
     //   3564: aload 15
-    //   3566: invokestatic 1257	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/io/File;)Landroid/graphics/BitmapFactory$Options;
+    //   3566: invokestatic 1244	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/io/File;)Landroid/graphics/BitmapFactory$Options;
     //   3569: astore_2
     //   3570: new 214	java/lang/StringBuilder
     //   3573: dup
     //   3574: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   3577: ldc_w 1295
+    //   3577: ldc_w 1282
     //   3580: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3583: aload 16
     //   3585: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   3588: ldc_w 1297
+    //   3588: ldc_w 1284
     //   3591: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3594: aload_3
     //   3595: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3598: ldc_w 1261
+    //   3598: ldc_w 1248
     //   3601: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3604: aload 15
     //   3606: invokevirtual 771	java/io/File:length	()J
     //   3609: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3612: ldc_w 1263
+    //   3612: ldc_w 1250
     //   3615: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3618: aload_2
     //   3619: getfield 121	android/graphics/BitmapFactory$Options:outWidth	I
     //   3622: invokevirtual 354	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3625: ldc_w 1265
+    //   3625: ldc_w 1252
     //   3628: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3631: aload_2
     //   3632: getfield 124	android/graphics/BitmapFactory$Options:outHeight	I
@@ -6254,15 +6251,15 @@ public class ImageUtil
     //   3638: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   3641: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   3644: aload 5
-    //   3646: getfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   3646: getfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   3649: ifle +95 -> 3744
     //   3652: new 214	java/lang/StringBuilder
     //   3655: dup
     //   3656: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   3659: ldc_w 1237
+    //   3659: ldc_w 1224
     //   3662: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3665: aload 5
-    //   3667: getfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   3667: getfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   3670: invokevirtual 354	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   3673: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   3676: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
@@ -6271,25 +6268,25 @@ public class ImageUtil
     //   3682: aload_1
     //   3683: iconst_0
     //   3684: aconst_null
-    //   3685: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   3685: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   3688: aload 5
-    //   3690: getfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   3690: getfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   3693: ifle +62 -> 3755
     //   3696: iconst_1
     //   3697: istore 4
-    //   3699: ldc_w 1210
+    //   3699: ldc_w 1197
     //   3702: iload 4
-    //   3704: ldc_w 1210
-    //   3707: invokestatic 1242	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
+    //   3704: ldc_w 1197
+    //   3707: invokestatic 1229	com/tencent/mobileqq/transfile/RichMediaUtil:a	(Ljava/lang/String;ZLjava/lang/String;)V
     //   3710: aload 5
-    //   3712: ldc_w 1289
+    //   3712: ldc_w 1276
     //   3715: new 214	java/lang/StringBuilder
     //   3718: dup
     //   3719: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   3722: ldc_w 1299
+    //   3722: ldc_w 1286
     //   3725: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3728: aload 5
-    //   3730: getfield 1235	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
+    //   3730: getfield 1222	com/tencent/mobileqq/activity/photo/ImageInfo:jdField_l_of_type_Int	I
     //   3733: invokevirtual 354	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   3736: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   3739: invokestatic 948	com/tencent/mobileqq/utils/ImageUtil:a	(Lcom/tencent/mobileqq/activity/photo/ImageInfo;Ljava/lang/String;Ljava/lang/String;)V
@@ -6300,7 +6297,7 @@ public class ImageUtil
     //   3746: aload_1
     //   3747: iconst_1
     //   3748: aconst_null
-    //   3749: invokestatic 1239	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
+    //   3749: invokestatic 1226	com/tencent/mobileqq/utils/ImageUtil:a	(IILandroid/content/Context;ZLjava/lang/String;)V
     //   3752: goto -64 -> 3688
     //   3755: iconst_0
     //   3756: istore 4
@@ -6421,7 +6418,7 @@ public class ImageUtil
     //   23: ifeq +11 -> 34
     //   26: aload_1
     //   27: aload 6
-    //   29: invokestatic 1334	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/io/File;Ljava/io/File;)V
+    //   29: invokestatic 1321	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/io/File;Ljava/io/File;)V
     //   32: iconst_1
     //   33: ireturn
     //   34: new 107	android/graphics/BitmapFactory$Options
@@ -6461,7 +6458,7 @@ public class ImageUtil
     //   99: istore 4
     //   101: goto -44 -> 57
     //   104: astore_0
-    //   105: ldc_w 1336
+    //   105: ldc_w 1323
     //   108: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   111: iconst_0
     //   112: istore 4
@@ -6506,7 +6503,7 @@ public class ImageUtil
     //   175: aload_3
     //   176: aload 6
     //   178: invokevirtual 336	java/io/File:getPath	()Ljava/lang/String;
-    //   181: putfield 1100	com/tencent/mobileqq/activity/photo/ImageInfo:b	Ljava/lang/String;
+    //   181: putfield 1085	com/tencent/mobileqq/activity/photo/ImageInfo:b	Ljava/lang/String;
     //   184: aload_1
     //   185: astore_2
     //   186: aload_0
@@ -6514,7 +6511,7 @@ public class ImageUtil
     //   189: aload_3
     //   190: aload 6
     //   192: invokevirtual 771	java/io/File:length	()J
-    //   195: putfield 1233	com/tencent/mobileqq/activity/photo/ImageInfo:a	J
+    //   195: putfield 1220	com/tencent/mobileqq/activity/photo/ImageInfo:a	J
     //   198: aload_1
     //   199: ifnull +7 -> 206
     //   202: aload_1
@@ -6595,7 +6592,7 @@ public class ImageUtil
     //   341: astore_2
     //   342: aload_0
     //   343: astore 5
-    //   345: ldc_w 1336
+    //   345: ldc_w 1323
     //   348: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   351: aload_1
     //   352: ifnull +7 -> 359
@@ -7095,7 +7092,7 @@ public class ImageUtil
   {
     if (jdField_b_of_type_AndroidGraphicsBitmap == null)
     {
-      jdField_b_of_type_AndroidGraphicsBitmap = BitmapManager.a(BaseApplicationImpl.a().getResources(), 2130840367);
+      jdField_b_of_type_AndroidGraphicsBitmap = BitmapManager.a(BaseApplicationImpl.a().getResources(), 2130840369);
       if (QLog.isColorLevel()) {
         QLog.d(p, 2, "getDefaultFaceBitmapVoip, bitmap=" + jdField_b_of_type_AndroidGraphicsBitmap);
       }
@@ -7314,7 +7311,7 @@ public class ImageUtil
     //   33: invokespecial 622	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   36: astore_3
     //   37: aload_3
-    //   38: invokevirtual 1435	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
+    //   38: invokevirtual 1422	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
     //   41: astore 4
     //   43: new 107	android/graphics/BitmapFactory$Options
     //   46: dup
@@ -7326,13 +7323,13 @@ public class ImageUtil
     //   58: aload 4
     //   60: aconst_null
     //   61: aload 7
-    //   63: invokestatic 1439	android/graphics/BitmapFactory:decodeFileDescriptor	(Ljava/io/FileDescriptor;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   63: invokestatic 1426	android/graphics/BitmapFactory:decodeFileDescriptor	(Ljava/io/FileDescriptor;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   66: pop
     //   67: aload 7
     //   69: aload 7
     //   71: iload_1
     //   72: iload_2
-    //   73: invokestatic 1441	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/graphics/BitmapFactory$Options;II)I
+    //   73: invokestatic 1428	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/graphics/BitmapFactory$Options;II)I
     //   76: putfield 345	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   79: aload 7
     //   81: iconst_0
@@ -7353,7 +7350,7 @@ public class ImageUtil
     //   110: aload_3
     //   111: ifnull -86 -> 25
     //   114: aload_3
-    //   115: invokevirtual 1442	java/io/FileInputStream:close	()V
+    //   115: invokevirtual 1429	java/io/FileInputStream:close	()V
     //   118: aload_0
     //   119: areturn
     //   120: astore_3
@@ -7368,7 +7365,7 @@ public class ImageUtil
     //   135: aload_3
     //   136: ifnull -111 -> 25
     //   139: aload_3
-    //   140: invokevirtual 1442	java/io/FileInputStream:close	()V
+    //   140: invokevirtual 1429	java/io/FileInputStream:close	()V
     //   143: aconst_null
     //   144: areturn
     //   145: astore_0
@@ -7384,7 +7381,7 @@ public class ImageUtil
     //   159: aload_0
     //   160: ifnull -135 -> 25
     //   163: aload_0
-    //   164: invokevirtual 1442	java/io/FileInputStream:close	()V
+    //   164: invokevirtual 1429	java/io/FileInputStream:close	()V
     //   167: aconst_null
     //   168: areturn
     //   169: astore_0
@@ -7398,7 +7395,7 @@ public class ImageUtil
     //   179: aload_3
     //   180: ifnull +7 -> 187
     //   183: aload_3
-    //   184: invokevirtual 1442	java/io/FileInputStream:close	()V
+    //   184: invokevirtual 1429	java/io/FileInputStream:close	()V
     //   187: aload_0
     //   188: athrow
     //   189: astore_3
@@ -7624,7 +7621,7 @@ public class ImageUtil
     //   5: new 214	java/lang/StringBuilder
     //   8: dup
     //   9: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   12: ldc_w 1469
+    //   12: ldc_w 1458
     //   15: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   18: iload 7
     //   20: invokevirtual 354	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -7636,10 +7633,10 @@ public class ImageUtil
     //   37: invokestatic 948	com/tencent/mobileqq/utils/ImageUtil:a	(Lcom/tencent/mobileqq/activity/photo/ImageInfo;Ljava/lang/String;Ljava/lang/String;)V
     //   40: aload 4
     //   42: iconst_1
-    //   43: putfield 1471	com/tencent/mobileqq/activity/photo/ImageInfo:i	Z
+    //   43: putfield 1460	com/tencent/mobileqq/activity/photo/ImageInfo:i	Z
     //   46: aload_2
     //   47: invokevirtual 336	java/io/File:getPath	()Ljava/lang/String;
-    //   50: invokestatic 1193	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   50: invokestatic 1180	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
     //   53: astore 20
     //   55: getstatic 980	com/tencent/common/config/AppSetting:d	I
     //   58: i2l
@@ -7651,7 +7648,7 @@ public class ImageUtil
     //   71: ifnonnull +379 -> 450
     //   74: aload 4
     //   76: ldc_w 941
-    //   79: ldc_w 1473
+    //   79: ldc_w 1462
     //   82: invokestatic 948	com/tencent/mobileqq/utils/ImageUtil:a	(Lcom/tencent/mobileqq/activity/photo/ImageInfo;Ljava/lang/String;Ljava/lang/String;)V
     //   85: lload 14
     //   87: lstore 16
@@ -7674,8 +7671,8 @@ public class ImageUtil
     //   124: invokevirtual 367	com/tencent/mobileqq/app/BaseActivity:getAppRuntime	()Lmqq/app/AppRuntime;
     //   127: checkcast 369	com/tencent/mobileqq/app/QQAppInterface
     //   130: aload 4
-    //   132: getfield 1104	com/tencent/mobileqq/activity/photo/ImageInfo:c	Ljava/lang/String;
-    //   135: invokevirtual 1106	com/tencent/mobileqq/app/QQAppInterface:b	(Ljava/lang/String;)Z
+    //   132: getfield 1089	com/tencent/mobileqq/activity/photo/ImageInfo:c	Ljava/lang/String;
+    //   135: invokevirtual 1091	com/tencent/mobileqq/app/QQAppInterface:b	(Ljava/lang/String;)Z
     //   138: ifeq +8 -> 146
     //   141: ldc2_w 1005
     //   144: lstore 16
@@ -7722,19 +7719,19 @@ public class ImageUtil
     //   234: new 214	java/lang/StringBuilder
     //   237: dup
     //   238: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   241: ldc_w 1475
+    //   241: ldc_w 1464
     //   244: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   247: aload_2
     //   248: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   251: ldc_w 1477
+    //   251: ldc_w 1466
     //   254: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   257: iload 11
     //   259: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   262: ldc_w 1479
+    //   262: ldc_w 1468
     //   265: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   268: iload 12
     //   270: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   273: ldc_w 1481
+    //   273: ldc_w 1470
     //   276: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   279: iload 13
     //   281: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
@@ -7750,13 +7747,13 @@ public class ImageUtil
     //   300: iload 7
     //   302: iload 8
     //   304: iload 9
-    //   306: invokestatic 1319	com/tencent/mobileqq/utils/ImageUtil:a	(ILandroid/content/Context;Ljava/io/File;Ljava/io/File;Lcom/tencent/mobileqq/activity/photo/ImageInfo;IIIZZ)V
+    //   306: invokestatic 1306	com/tencent/mobileqq/utils/ImageUtil:a	(ILandroid/content/Context;Ljava/io/File;Ljava/io/File;Lcom/tencent/mobileqq/activity/photo/ImageInfo;IIIZZ)V
     //   309: return
     //   310: astore 18
     //   312: new 214	java/lang/StringBuilder
     //   315: dup
     //   316: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   319: ldc_w 1483
+    //   319: ldc_w 1472
     //   322: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   325: aload_2
     //   326: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -7784,7 +7781,7 @@ public class ImageUtil
     //   370: iload 7
     //   372: iload 8
     //   374: iload 9
-    //   376: invokestatic 1319	com/tencent/mobileqq/utils/ImageUtil:a	(ILandroid/content/Context;Ljava/io/File;Ljava/io/File;Lcom/tencent/mobileqq/activity/photo/ImageInfo;IIIZZ)V
+    //   376: invokestatic 1306	com/tencent/mobileqq/utils/ImageUtil:a	(ILandroid/content/Context;Ljava/io/File;Ljava/io/File;Lcom/tencent/mobileqq/activity/photo/ImageInfo;IIIZZ)V
     //   379: return
     //   380: iconst_0
     //   381: istore 11
@@ -7811,7 +7808,7 @@ public class ImageUtil
     //   426: new 214	java/lang/StringBuilder
     //   429: dup
     //   430: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   433: ldc_w 1485
+    //   433: ldc_w 1474
     //   436: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   439: aload_2
     //   440: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -7859,7 +7856,7 @@ public class ImageUtil
     //   532: istore 10
     //   534: aload 18
     //   536: astore 19
-    //   538: ldc_w 1487
+    //   538: ldc_w 1476
     //   541: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   544: aload 18
     //   546: astore 19
@@ -7907,12 +7904,12 @@ public class ImageUtil
     //   639: new 214	java/lang/StringBuilder
     //   642: dup
     //   643: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   646: ldc_w 1489
+    //   646: ldc_w 1478
     //   649: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   652: aload_3
     //   653: invokevirtual 771	java/io/File:length	()J
     //   656: invokevirtual 738	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   659: ldc_w 1491
+    //   659: ldc_w 1480
     //   662: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   665: iload 11
     //   667: invokevirtual 974	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
@@ -7939,10 +7936,10 @@ public class ImageUtil
     //   709: iload 7
     //   711: iload 8
     //   713: iload 9
-    //   715: invokestatic 1319	com/tencent/mobileqq/utils/ImageUtil:a	(ILandroid/content/Context;Ljava/io/File;Ljava/io/File;Lcom/tencent/mobileqq/activity/photo/ImageInfo;IIIZZ)V
+    //   715: invokestatic 1306	com/tencent/mobileqq/utils/ImageUtil:a	(ILandroid/content/Context;Ljava/io/File;Ljava/io/File;Lcom/tencent/mobileqq/activity/photo/ImageInfo;IIIZZ)V
     //   718: return
     //   719: astore_1
-    //   720: ldc_w 1493
+    //   720: ldc_w 1482
     //   723: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   726: aload 4
     //   728: iconst_0
@@ -7958,7 +7955,7 @@ public class ImageUtil
     //   750: new 214	java/lang/StringBuilder
     //   753: dup
     //   754: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   757: ldc_w 1495
+    //   757: ldc_w 1484
     //   760: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   763: aload 18
     //   765: invokevirtual 1009	java/io/IOException:getMessage	()Ljava/lang/String;
@@ -7969,7 +7966,7 @@ public class ImageUtil
     //   780: astore 18
     //   782: aconst_null
     //   783: astore 18
-    //   785: ldc_w 1497
+    //   785: ldc_w 1486
     //   788: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   791: aload 4
     //   793: iconst_0
@@ -8000,7 +7997,7 @@ public class ImageUtil
     //   850: new 214	java/lang/StringBuilder
     //   853: dup
     //   854: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   857: ldc_w 1495
+    //   857: ldc_w 1484
     //   860: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   863: aload 18
     //   865: invokevirtual 1009	java/io/IOException:getMessage	()Ljava/lang/String;
@@ -8013,7 +8010,7 @@ public class ImageUtil
     //   883: astore 18
     //   885: aload 18
     //   887: astore 19
-    //   889: ldc_w 1499
+    //   889: ldc_w 1488
     //   892: invokestatic 357	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   895: aload 4
     //   897: iconst_1
@@ -8044,7 +8041,7 @@ public class ImageUtil
     //   952: new 214	java/lang/StringBuilder
     //   955: dup
     //   956: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   959: ldc_w 1495
+    //   959: ldc_w 1484
     //   962: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   965: aload 18
     //   967: invokevirtual 1009	java/io/IOException:getMessage	()Ljava/lang/String;
@@ -8081,7 +8078,7 @@ public class ImageUtil
     //   1030: new 214	java/lang/StringBuilder
     //   1033: dup
     //   1034: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   1037: ldc_w 1495
+    //   1037: ldc_w 1484
     //   1040: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1043: aload_2
     //   1044: invokevirtual 1009	java/io/IOException:getMessage	()Ljava/lang/String;
@@ -8211,14 +8208,14 @@ public class ImageUtil
     //   0: new 333	java/io/File
     //   3: dup
     //   4: aload_1
-    //   5: invokevirtual 1127	java/io/File:getParent	()Ljava/lang/String;
+    //   5: invokevirtual 1114	java/io/File:getParent	()Ljava/lang/String;
     //   8: invokespecial 669	java/io/File:<init>	(Ljava/lang/String;)V
     //   11: astore_2
     //   12: aload_2
     //   13: invokevirtual 602	java/io/File:exists	()Z
     //   16: ifeq +10 -> 26
     //   19: aload_2
-    //   20: invokevirtual 1130	java/io/File:isDirectory	()Z
+    //   20: invokevirtual 1117	java/io/File:isDirectory	()Z
     //   23: ifne +8 -> 31
     //   26: aload_2
     //   27: invokevirtual 682	java/io/File:mkdirs	()Z
@@ -8227,7 +8224,7 @@ public class ImageUtil
     //   32: invokevirtual 602	java/io/File:exists	()Z
     //   35: ifeq +10 -> 45
     //   38: aload_1
-    //   39: invokevirtual 1133	java/io/File:isFile	()Z
+    //   39: invokevirtual 1120	java/io/File:isFile	()Z
     //   42: ifne +8 -> 50
     //   45: aload_1
     //   46: invokevirtual 685	java/io/File:createNewFile	()Z
@@ -8246,7 +8243,7 @@ public class ImageUtil
     //   68: invokevirtual 766	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   71: pop
     //   72: aload_1
-    //   73: invokevirtual 1136	java/io/FileOutputStream:flush	()V
+    //   73: invokevirtual 1123	java/io/FileOutputStream:flush	()V
     //   76: aload_1
     //   77: ifnull +7 -> 84
     //   80: aload_1
@@ -8414,7 +8411,7 @@ public class ImageUtil
   {
     if (jdField_c_of_type_AndroidGraphicsBitmap == null)
     {
-      jdField_c_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838088);
+      jdField_c_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838090);
       jdField_c_of_type_AndroidGraphicsBitmap = a(jdField_c_of_type_AndroidGraphicsBitmap, 50, 50);
     }
     return jdField_c_of_type_AndroidGraphicsBitmap;
@@ -8428,128 +8425,15 @@ public class ImageUtil
     return jdField_c_of_type_AndroidGraphicsDrawableDrawable;
   }
   
-  /* Error */
   public static String c(Context paramContext, Uri paramUri)
   {
-    // Byte code:
-    //   0: ldc_w 696
-    //   3: astore 4
-    //   5: aload 4
-    //   7: astore_3
-    //   8: aload_1
-    //   9: ifnull +39 -> 48
-    //   12: aload 4
-    //   14: astore_3
-    //   15: ldc_w 696
-    //   18: aload_1
-    //   19: invokevirtual 1534	android/net/Uri:toString	()Ljava/lang/String;
-    //   22: invokevirtual 1502	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   25: ifne +23 -> 48
-    //   28: aload_1
-    //   29: invokevirtual 1537	android/net/Uri:getScheme	()Ljava/lang/String;
-    //   32: astore_3
-    //   33: ldc_w 1539
-    //   36: aload_3
-    //   37: invokevirtual 1502	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   40: ifeq +10 -> 50
-    //   43: aload_1
-    //   44: invokevirtual 1540	android/net/Uri:getPath	()Ljava/lang/String;
-    //   47: astore_3
-    //   48: aload_3
-    //   49: areturn
-    //   50: ldc_w 1542
-    //   53: aload_3
-    //   54: invokevirtual 1502	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   57: ifeq +117 -> 174
-    //   60: aload_0
-    //   61: invokevirtual 1546	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   64: aload_1
-    //   65: iconst_1
-    //   66: anewarray 162	java/lang/String
-    //   69: dup
-    //   70: iconst_0
-    //   71: ldc_w 1548
-    //   74: aastore
-    //   75: aconst_null
-    //   76: aconst_null
-    //   77: aconst_null
-    //   78: invokevirtual 1554	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   81: astore_0
-    //   82: aload_0
-    //   83: ldc_w 1548
-    //   86: invokeinterface 1559 2 0
-    //   91: istore_2
-    //   92: aload_0
-    //   93: invokeinterface 1562 1 0
-    //   98: ifle +34 -> 132
-    //   101: aload_0
-    //   102: invokeinterface 1565 1 0
-    //   107: pop
-    //   108: aload_0
-    //   109: iload_2
-    //   110: invokeinterface 1566 2 0
-    //   115: astore_1
-    //   116: aload_1
-    //   117: astore_3
-    //   118: aload_0
-    //   119: ifnull +11 -> 130
-    //   122: aload_0
-    //   123: invokeinterface 1567 1 0
-    //   128: aload_1
-    //   129: astore_3
-    //   130: aload_3
-    //   131: areturn
-    //   132: ldc_w 696
-    //   135: astore_1
-    //   136: goto -20 -> 116
-    //   139: astore_0
-    //   140: aconst_null
-    //   141: astore_0
-    //   142: aload_0
-    //   143: ifnull +44 -> 187
-    //   146: aload_0
-    //   147: invokeinterface 1567 1 0
-    //   152: ldc_w 696
-    //   155: astore_3
-    //   156: goto -26 -> 130
-    //   159: astore_1
-    //   160: aconst_null
-    //   161: astore_0
-    //   162: aload_0
-    //   163: ifnull +9 -> 172
-    //   166: aload_0
-    //   167: invokeinterface 1567 1 0
-    //   172: aload_1
-    //   173: athrow
-    //   174: aload_1
-    //   175: invokevirtual 1534	android/net/Uri:toString	()Ljava/lang/String;
-    //   178: areturn
-    //   179: astore_1
-    //   180: goto -18 -> 162
-    //   183: astore_1
-    //   184: goto -42 -> 142
-    //   187: ldc_w 696
-    //   190: astore_3
-    //   191: goto -61 -> 130
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	194	0	paramContext	Context
-    //   0	194	1	paramUri	Uri
-    //   91	19	2	i1	int
-    //   7	184	3	localObject	Object
-    //   3	10	4	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   60	82	139	java/lang/Exception
-    //   60	82	159	finally
-    //   82	116	179	finally
-    //   82	116	183	java/lang/Exception
+    return FileProvider7Helper.getRealPathFromContentURI(paramContext, paramUri);
   }
   
   public static Bitmap d()
   {
     if (jdField_d_of_type_AndroidGraphicsBitmap == null) {
-      jdField_d_of_type_AndroidGraphicsBitmap = BitmapManager.a(BaseApplicationImpl.a().getResources(), 2130837829);
+      jdField_d_of_type_AndroidGraphicsBitmap = BitmapManager.a(BaseApplicationImpl.a().getResources(), 2130837831);
     }
     return jdField_d_of_type_AndroidGraphicsBitmap;
   }
@@ -8565,7 +8449,7 @@ public class ImageUtil
   public static Bitmap e()
   {
     if (e == null) {
-      e = BitmapManager.a(BaseApplicationImpl.a().getResources(), 2130840256);
+      e = BitmapManager.a(BaseApplicationImpl.a().getResources(), 2130840258);
     }
     return e;
   }
@@ -8573,7 +8457,7 @@ public class ImageUtil
   public static Bitmap f()
   {
     if (f == null) {
-      f = BitmapManager.a(BaseApplicationImpl.a().getResources(), 2130838588);
+      f = BitmapManager.a(BaseApplicationImpl.a().getResources(), 2130838590);
     }
     return f;
   }

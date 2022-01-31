@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class SubMsgType0x6f$GPS
-  extends MessageMicro
+  extends MessageMicro<GPS>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "int32_lat", "int32_lon", "int32_alt", "int32_type" }, new Object[] { Integer.valueOf(900000000), Integer.valueOf(900000000), Integer.valueOf(-10000000), Integer.valueOf(0) }, GPS.class);
   public final PBInt32Field int32_alt = PBField.initInt32(-10000000);

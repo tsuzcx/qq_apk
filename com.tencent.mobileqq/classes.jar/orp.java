@@ -1,18 +1,19 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.qqstory.view.xrecyclerview.RecyclerViewHeaderViewAdapter;
+import java.util.List;
 
 public class orp
-  extends RecyclerView.ViewHolder
 {
-  public orp(RecyclerViewHeaderViewAdapter paramRecyclerViewHeaderViewAdapter, View paramView)
-  {
-    super(paramView);
-  }
+  public int a;
+  public String a;
+  public List<Integer> a;
+  public String b;
+  public List<Integer> b;
+  public String c;
+  
+  public orp(oro paramoro) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     orp
  * JD-Core Version:    0.7.0.1
  */

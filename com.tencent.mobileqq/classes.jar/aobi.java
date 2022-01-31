@@ -1,18 +1,29 @@
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
+import android.content.res.Resources;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.campuscircle.CampusCircleReplyActivity;
 
-class aobi
-  implements Runnable
+public class aobi
+  implements CompoundButton.OnCheckedChangeListener
 {
-  aobi(aobh paramaobh, aobe paramaobe) {}
+  public aobi(CampusCircleReplyActivity paramCampusCircleReplyActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Aobe.a(this.jdField_a_of_type_Aobe.a.getProgress());
+    paramCompoundButton = this.a.getResources();
+    TextView localTextView = CampusCircleReplyActivity.a(this.a);
+    if (paramBoolean) {}
+    for (paramCompoundButton = paramCompoundButton.getColorStateList(2131166256);; paramCompoundButton = paramCompoundButton.getColorStateList(2131166258))
+    {
+      localTextView.setTextColor(paramCompoundButton);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aobi
  * JD-Core Version:    0.7.0.1
  */

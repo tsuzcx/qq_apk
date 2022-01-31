@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class appoint_define$ADFeed
-  extends MessageMicro
+  extends MessageMicro<ADFeed>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_content = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -23,7 +23,7 @@ public final class appoint_define$ADFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     appoint.define.appoint_define.ADFeed
  * JD-Core Version:    0.7.0.1
  */

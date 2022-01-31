@@ -45,8 +45,8 @@ public class GalleryProgressView
   
   public void a(Activity paramActivity, AbstractGalleryScene paramAbstractGalleryScene)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((RelativeLayout)paramAbstractGalleryScene.a()).findViewById(2131232442));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable = new PhotoProgressDrawable(BitmapFactory.decodeResource(paramActivity.getResources(), 2130839498), (int)(paramActivity.getResources().getDisplayMetrics().density * 12.0F));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((RelativeLayout)paramAbstractGalleryScene.a()).findViewById(2131232445));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable = new PhotoProgressDrawable(BitmapFactory.decodeResource(paramActivity.getResources(), 2130839500), (int)(paramActivity.getResources().getDisplayMetrics().density * 12.0F));
     this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable.setLevel(0);
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
   }

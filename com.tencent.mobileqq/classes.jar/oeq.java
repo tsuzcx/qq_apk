@@ -1,34 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
-import com.tencent.biz.qqstory.network.request.GetLocationRequest;
-import com.tencent.biz.qqstory.network.response.GetLocationResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
 
-public class oeq
-  implements CmdTaskManger.CommandCallback
+class oeq
+  extends AnimatorListenerAdapter
 {
-  public oeq(EditVideoFilterNeo paramEditVideoFilterNeo) {}
+  oeq(oeo paramoeo, ReadInjoyCutImageView paramReadInjoyCutImageView) {}
   
-  public void a(@NonNull GetLocationRequest paramGetLocationRequest, @Nullable GetLocationResponse paramGetLocationResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    SLog.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress Cmd Respond.");
-    if ((paramErrorMessage.isSuccess()) && (paramGetLocationResponse != null))
-    {
-      SLog.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond success : %s .", paramGetLocationResponse.toString());
-      paramGetLocationRequest = new AddressDataProvider.AddressInfo(paramGetLocationResponse.a, paramGetLocationResponse.c, paramGetLocationResponse.d, paramGetLocationResponse.e, paramGetLocationResponse.f, paramGetLocationRequest.d, paramGetLocationRequest.e);
-      this.a.a(0, paramGetLocationRequest);
-      return;
-    }
-    SLog.e("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond failed : %s .", new Object[] { paramErrorMessage.toString() });
+    super.onAnimationEnd(paramAnimator);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.setVisibility(4);
+    oeo.a(this.jdField_a_of_type_Oeo).a();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oeq
  * JD-Core Version:    0.7.0.1
  */

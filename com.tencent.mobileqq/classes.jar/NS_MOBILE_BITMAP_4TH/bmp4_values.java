@@ -9,8 +9,8 @@ import java.util.Map;
 public final class bmp4_values
   extends JceStruct
 {
-  static Map cache_map_kv = new HashMap();
-  public Map map_kv;
+  static Map<String, Long> cache_map_kv = new HashMap();
+  public Map<String, Long> map_kv;
   
   static
   {
@@ -19,7 +19,7 @@ public final class bmp4_values
   
   public bmp4_values() {}
   
-  public bmp4_values(Map paramMap)
+  public bmp4_values(Map<String, Long> paramMap)
   {
     this.map_kv = paramMap;
   }

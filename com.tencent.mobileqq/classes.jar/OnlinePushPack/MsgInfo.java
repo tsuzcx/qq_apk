@@ -13,10 +13,10 @@ public final class MsgInfo
   static TempMsgHead cache_stC2CTmpMsgHead;
   static shareData cache_stShareData;
   static byte[] cache_vAppShareCookie;
-  static ArrayList cache_vCPicInfo;
+  static ArrayList<CPicInfo> cache_vCPicInfo;
   static byte[] cache_vMsg;
   static byte[] cache_vMsgCookies;
-  static ArrayList cache_vNickName;
+  static ArrayList<String> cache_vNickName;
   static byte[] cache_vRemarkOfSender;
   public long lFromInstId;
   public long lFromUin;
@@ -33,15 +33,15 @@ public final class MsgInfo
   public long uMsgTime;
   public int uRealMsgTime;
   public byte[] vAppShareCookie;
-  public ArrayList vCPicInfo;
+  public ArrayList<CPicInfo> vCPicInfo;
   public byte[] vMsg;
   public byte[] vMsgCookies;
-  public ArrayList vNickName;
+  public ArrayList<String> vNickName;
   public byte[] vRemarkOfSender;
   
   public MsgInfo() {}
   
-  public MsgInfo(long paramLong1, long paramLong2, short paramShort1, short paramShort2, String paramString1, int paramInt, byte[] paramArrayOfByte1, long paramLong3, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, long paramLong4, long paramLong5, ArrayList paramArrayList1, shareData paramshareData, long paramLong6, byte[] paramArrayOfByte4, String paramString2, String paramString3, ArrayList paramArrayList2, TempMsgHead paramTempMsgHead)
+  public MsgInfo(long paramLong1, long paramLong2, short paramShort1, short paramShort2, String paramString1, int paramInt, byte[] paramArrayOfByte1, long paramLong3, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, long paramLong4, long paramLong5, ArrayList<CPicInfo> paramArrayList, shareData paramshareData, long paramLong6, byte[] paramArrayOfByte4, String paramString2, String paramString3, ArrayList<String> paramArrayList1, TempMsgHead paramTempMsgHead)
   {
     this.lFromUin = paramLong1;
     this.uMsgTime = paramLong2;
@@ -55,13 +55,13 @@ public final class MsgInfo
     this.vAppShareCookie = paramArrayOfByte3;
     this.lMsgUid = paramLong4;
     this.lLastChangeTime = paramLong5;
-    this.vCPicInfo = paramArrayList1;
+    this.vCPicInfo = paramArrayList;
     this.stShareData = paramshareData;
     this.lFromInstId = paramLong6;
     this.vRemarkOfSender = paramArrayOfByte4;
     this.strFromMobile = paramString2;
     this.strFromName = paramString3;
-    this.vNickName = paramArrayList2;
+    this.vNickName = paramArrayList1;
     this.stC2CTmpMsgHead = paramTempMsgHead;
   }
   
@@ -145,7 +145,7 @@ public final class MsgInfo
     return this.vAppShareCookie;
   }
   
-  public ArrayList getVCPicInfo()
+  public ArrayList<CPicInfo> getVCPicInfo()
   {
     return this.vCPicInfo;
   }
@@ -160,7 +160,7 @@ public final class MsgInfo
     return this.vMsgCookies;
   }
   
-  public ArrayList getVNickName()
+  public ArrayList<String> getVNickName()
   {
     return this.vNickName;
   }
@@ -301,7 +301,7 @@ public final class MsgInfo
     this.vAppShareCookie = paramArrayOfByte;
   }
   
-  public void setVCPicInfo(ArrayList paramArrayList)
+  public void setVCPicInfo(ArrayList<CPicInfo> paramArrayList)
   {
     this.vCPicInfo = paramArrayList;
   }
@@ -316,7 +316,7 @@ public final class MsgInfo
     this.vMsgCookies = paramArrayOfByte;
   }
   
-  public void setVNickName(ArrayList paramArrayList)
+  public void setVNickName(ArrayList<String> paramArrayList)
   {
     this.vNickName = paramArrayList;
   }
@@ -372,7 +372,7 @@ public final class MsgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     OnlinePushPack.MsgInfo
  * JD-Core Version:    0.7.0.1
  */

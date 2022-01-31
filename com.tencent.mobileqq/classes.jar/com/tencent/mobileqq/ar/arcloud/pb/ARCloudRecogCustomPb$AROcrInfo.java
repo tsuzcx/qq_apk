@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ARCloudRecogCustomPb$AROcrInfo
-  extends MessageMicro
+  extends MessageMicro<AROcrInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50 }, new String[] { "uin64_ocr_recog_type", "youtu_ocr_req", "sougou_req", "jd_pic_search_req", "jd_hot_search_req", "jd_search_req" }, new Object[] { Long.valueOf(0L), null, null, null, null, null }, AROcrInfo.class);
   public JDSearch.JdHotSearchReq jd_hot_search_req = new JDSearch.JdHotSearchReq();
@@ -18,7 +18,7 @@ public final class ARCloudRecogCustomPb$AROcrInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.AROcrInfo
  * JD-Core Version:    0.7.0.1
  */

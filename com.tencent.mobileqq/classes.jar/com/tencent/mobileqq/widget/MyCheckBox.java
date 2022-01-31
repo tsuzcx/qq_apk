@@ -70,17 +70,17 @@ public class MyCheckBox
       localDrawable.setBounds(getWidth() - localDrawable.getIntrinsicWidth(), i, getWidth(), i + j);
       localDrawable.draw(paramCanvas);
       if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130846114);
+        this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130849889);
       }
       if (!isChecked()) {
         break;
       }
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
       f = getResources().getDisplayMetrics().density;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(getResources().getDimension(2131558440));
+      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(getResources().getDimension(2131296986));
       this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.CENTER);
-      paramCanvas.drawText(getResources().getString(2131435143), getWidth() - localDrawable.getIntrinsicWidth() * 2 / 3 - 2.0F * f, f * 4.0F + (j / 2 + i), this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawText(getResources().getString(2131719891), getWidth() - localDrawable.getIntrinsicWidth() * 2 / 3 - 2.0F * f, f * 4.0F + (j / 2 + i), this.jdField_a_of_type_AndroidGraphicsPaint);
       paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, getWidth() - this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), i, null);
       return;
       i = getHeight() - j;
@@ -89,10 +89,10 @@ public class MyCheckBox
     }
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-8814455);
     float f = getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(getResources().getDimension(2131558440));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(getResources().getDimension(2131296986));
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.CENTER);
-    paramCanvas.drawText(getResources().getString(2131435144), getWidth() - localDrawable.getIntrinsicWidth() / 3 + 2.0F * f, f * 4.0F + (j / 2 + i), this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawText(getResources().getString(2131719871), getWidth() - localDrawable.getIntrinsicWidth() / 3 + 2.0F * f, f * 4.0F + (j / 2 + i), this.jdField_a_of_type_AndroidGraphicsPaint);
     paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, getWidth() - localDrawable.getIntrinsicWidth(), i, null);
   }
   
@@ -108,15 +108,14 @@ public class MyCheckBox
       paramDrawable.setCallback(this);
       paramDrawable.setState(getDrawableState());
       if (getVisibility() != 0) {
-        break label87;
+        break label78;
       }
     }
-    label87:
+    label78:
     for (boolean bool = true;; bool = false)
     {
       paramDrawable.setVisible(bool, false);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(null);
       setMinHeight(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
       refreshDrawableState();
       return;
@@ -140,7 +139,7 @@ public class MyCheckBox
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MyCheckBox
  * JD-Core Version:    0.7.0.1
  */

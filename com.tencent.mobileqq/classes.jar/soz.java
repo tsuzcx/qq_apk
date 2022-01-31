@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 class soz
-  implements Runnable
+  implements quv
 {
-  soz(soy paramsoy) {}
+  soz(sox paramsox, UgcVideo paramUgcVideo, String paramString) {}
   
-  public void run()
+  public void a(@NotNull List<UgcVideo> paramList)
   {
-    this.a.a.c();
-    this.a.a.O();
+    BridgeModule.access$1000(this.jdField_a_of_type_Sox.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.columnId, paramList, this.jdField_a_of_type_JavaLangString, 0, "", true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     soz
  * JD-Core Version:    0.7.0.1
  */

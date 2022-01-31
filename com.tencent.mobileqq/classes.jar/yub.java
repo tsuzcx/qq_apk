@@ -1,91 +1,84 @@
-import android.os.Message;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloRenderInterfaceImpl;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.IRenderCallback;
-import com.tencent.mobileqq.apollo.barrage.BarrageView;
-import com.tencent.mobileqq.apollo.store.ApolloViewController;
-import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
-import java.util.HashMap;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFilePreviewRspBody;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
 
-public class yub
-  implements IRenderCallback
+public abstract class yub
+  extends nac
 {
-  public yub(ApolloViewController paramApolloViewController) {}
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloViewController", 2, new Object[] { "[onCompleteRender] taskId=", Integer.valueOf(paramInt1), ", roleName=", paramString, ", errCode=", Integer.valueOf(paramInt2) });
-    }
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("ApolloViewController", 1, "[onCompleteRender] roleName null");
-    }
-    do
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      do
+      a(false, paramInt, null, null, 0, 0, null, null, null, null, paramBundle);
+      return;
+    }
+    Object localObject = new oidb_0x6d8.RspBody();
+    try
+    {
+      ((oidb_0x6d8.RspBody)localObject).mergeFrom(paramArrayOfByte);
+      localObject.toString();
+      if (((oidb_0x6d8.RspBody)localObject).file_preview_rsp.has()) {
+        break label106;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopFileProtocol", 2, "no file_preview rsp.");
+      }
+      a(false, paramInt, null, null, 0, 0, null, null, null, null, paramBundle);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte = paramBundle;
+    }
+    a(false, paramInt, null, null, 0, 0, null, null, null, null, paramArrayOfByte);
+    return;
+    label106:
+    paramArrayOfByte = (oidb_0x6d8.GetFilePreviewRspBody)((oidb_0x6d8.RspBody)localObject).file_preview_rsp.get();
+    if (!paramArrayOfByte.bytes_download_url.has())
+    {
+      a(false, paramInt, null, null, 0, 0, null, null, null, null, paramBundle);
+      return;
+    }
+    int i = paramArrayOfByte.int32_ret_code.get();
+    localObject = paramArrayOfByte.str_ret_msg.get();
+    String str1 = paramArrayOfByte.str_client_wording.get();
+    int j = paramArrayOfByte.int32_server_ip.get();
+    int k = paramArrayOfByte.int32_server_port.get();
+    String str2 = paramArrayOfByte.str_download_dns.get();
+    ByteStringMicro localByteStringMicro1 = paramArrayOfByte.bytes_download_url.get();
+    ByteStringMicro localByteStringMicro2 = paramArrayOfByte.bytes_reserved_field.get();
+    String str3 = paramArrayOfByte.str_cookie_val.get();
+    if (paramBundle == null) {}
+    for (paramArrayOfByte = new Bundle();; paramArrayOfByte = paramBundle)
+    {
+      try
       {
-        do
+        if (!TextUtils.isEmpty(str2))
         {
-          return;
-          if (!ApolloViewController.a(this.a).containsKey(paramString))
-          {
-            QLog.e("ApolloViewController", 1, "[onCompleteRender] roleName not showing");
-            return;
-          }
-          if ((ApolloViewController.a(this.a) == null) || (TextUtils.isEmpty(ApolloViewController.a(this.a).apolloId)) || (!ApolloViewController.a(this.a).apolloId.equals(paramString))) {
-            break;
-          }
-          ApolloViewController.b(this.a);
-          if (this.a.c != 5) {
-            this.a.jdField_a_of_type_Int = 1;
-          }
-          paramString = ApolloViewController.a(this.a).obtainMessage(18, 1, 0);
-          ApolloViewController.a(this.a).sendMessage(paramString);
-          this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.stopLoopDelayed(15000L);
-        } while (TextUtils.isEmpty(ApolloViewController.a(this.a)));
-        if (!ApolloViewController.a(this.a)) {
-          break;
+          paramArrayOfByte.putString("strHttpsDomain", str2);
+          paramArrayOfByte.putInt("httpsPort", 443);
         }
-      } while ((ApolloViewController.a(this.a) != 1) || (this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView == null));
-      this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.b();
-      return;
-      if (ApolloViewController.a(this.a) != 1) {
-        break;
+        a(true, i, (String)localObject, str1, j, k, str2, localByteStringMicro1, str3, localByteStringMicro2, paramArrayOfByte);
+        return;
       }
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.a(true);
-    return;
-    this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a(1, ApolloViewController.a(this.a).apolloId, "Bubble");
-    return;
-    synchronized (ApolloViewController.a(this.a))
-    {
-      if (ApolloViewController.a(this.a).containsKey(paramString))
-      {
-        Message localMessage = ApolloViewController.a(this.a).obtainMessage(28);
-        localMessage.obj = paramString;
-        ApolloViewController.a(this.a).sendMessage(localMessage);
-        this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.stopLoopDelayed(15000L);
-      }
-      return;
+      catch (InvalidProtocolBufferMicroException paramBundle) {}
+      break;
     }
   }
   
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloViewController", 2, new Object[] { "[onStartRender] taskId=", Integer.valueOf(paramInt), ", roleName=", paramString });
-    }
-    if ((ApolloViewController.a(this.a) != null) && (!TextUtils.isEmpty(ApolloViewController.a(this.a).apolloId)) && (ApolloViewController.a(this.a).apolloId.equals(paramString))) {
-      ApolloViewController.a(this.a);
-    }
-  }
+  public abstract void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, ByteStringMicro paramByteStringMicro1, String paramString4, ByteStringMicro paramByteStringMicro2, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yub
  * JD-Core Version:    0.7.0.1
  */

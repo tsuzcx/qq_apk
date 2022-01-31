@@ -1,57 +1,27 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCleanPlayView;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import java.util.HashMap;
 
-public class tqe
-  extends AccountObserver
+class tqe
+  implements vwf
 {
-  public tqe(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  tqe(tqc paramtqc, String paramString1, QCircleFeedCleanPlayView paramQCircleFeedCleanPlayView, String paramString2) {}
   
-  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt, byte[] paramArrayOfByte)
+  public void a(vwa paramvwa)
   {
-    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt, paramArrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onLoginFailed ");
+    Long localLong = (Long)tqc.a(this.jdField_a_of_type_Tqc).get(this.jdField_a_of_type_JavaLangString);
+    if ((localLong != null) && (localLong.longValue() > 0L))
+    {
+      paramvwa.a(localLong.longValue());
+      QLog.d("QCircleFeedPlayerHelper", 4, "playInner seekTo: " + localLong);
     }
-    RegisterQQNumberActivity.a(this.a);
-    paramString1 = new Intent(this.a, LoginActivity.class);
-    paramString1.putExtra("uin", RegisterQQNumberActivity.a(this.a));
-    paramString1.putExtra("tab_index", MainFragment.a);
-    paramString1.addFlags(131072);
-    this.a.startActivity(paramString1);
-    this.a.finish();
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2)
-  {
-    super.onLoginSuccess(paramString1, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onLoginSuccess ");
-    }
-  }
-  
-  protected void onLoginTimeout(String paramString)
-  {
-    super.onLoginTimeout(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onLoginTimeout ");
-    }
-  }
-  
-  protected void onUserCancel(String paramString)
-  {
-    super.onUserCancel(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onUserCancel ");
-    }
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCleanPlayView.c();
+    tzs.a(8, 4, tqc.a(this.jdField_a_of_type_Tqc, this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tqe
  * JD-Core Version:    0.7.0.1
  */

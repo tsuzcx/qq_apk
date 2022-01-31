@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditActivity;
 
 public class acvj
-  implements Runnable
+  implements View.OnClickListener
 {
-  public acvj(FileManagerRSWorker paramFileManagerRSWorker, long paramLong) {}
+  public acvj(EditActivity paramEditActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerRSWorker.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerRSWorker.f, this.jdField_a_of_type_Long);
+    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
+      EditActivity.a(this.a).dismiss();
+    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acvj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,36 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.PushReportController;
-import com.tencent.mobileqq.utils.QQUtils;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
+import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
 
-public class akpz
-  implements Runnable
+class akpz
+  implements alkp
 {
-  public akpz(SwiftBrowserStatistics paramSwiftBrowserStatistics, AppRuntime paramAppRuntime) {}
+  akpz(akpy paramakpy) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (!PushReportController.a)
+    QLog.d("sava_ChatPieApolloViewController", 1, "sava_native_log preLoadApolloEngine onSoLoadComplete ret:" + paramInt);
+    if (paramInt == 0)
     {
-      boolean bool = QQUtils.a(BaseApplicationImpl.getApplication());
       if (QLog.isColorLevel()) {
-        QLog.d("SwiftBrowserStatistics", 1, new Object[] { "reportPushEvent isScreenLock=", Boolean.valueOf(bool), ",isBackground=", Boolean.valueOf(this.jdField_a_of_type_MqqAppAppRuntime.isBackground_Stop) });
+        QLog.d("sava_ChatPieApolloViewController", 2, "sava_native_log preLoadApolloEngine onSoLoadComplete");
       }
-      if ((bool) || (this.jdField_a_of_type_MqqAppAppRuntime.isBackground_Stop)) {
-        SwiftBrowserStatistics.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics);
+      if (akpy.a(this.a))
+      {
+        QLog.i("sava_ChatPieApolloViewController", 1, "onSoLoadComplete but AIO destroy!");
+        return;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloRender != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.preLoadDirector();
+        akpy.a(this.a);
       }
     }
+    alko.b(this.a.jdField_a_of_type_Alkp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akpz
  * JD-Core Version:    0.7.0.1
  */

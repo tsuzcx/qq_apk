@@ -1,29 +1,77 @@
-import com.tencent.biz.qqstory.base.preload.PlayingListPreloader;
-import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.ToolAppRuntime;
 
-class nli
-  implements Runnable
+public class nli
+  implements nmo
 {
-  nli(nlh paramnlh) {}
+  public nli(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void run()
+  public void a(VerticalPagerView paramVerticalPagerView, View paramView, int paramInt)
   {
-    this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.setCurrentItem(this.a.a.a.b, false);
-    if ((this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a != null) && (this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size() > 0))
+    paramVerticalPagerView = this.a;
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader.a(this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a);
-      this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.a(this.a.a.a.b());
+      PublicAccountAdvertisementActivity.c(paramVerticalPagerView, bool);
+      if (!PublicAccountAdvertisementActivity.c(this.a)) {
+        break;
+      }
+      PublicAccountAdvertisementActivity.a(this.a).b(true);
+      PublicAccountAdvertisementActivity.a(this.a).onResume();
+      PublicAccountAdvertisementActivity.e(this.a);
+      PublicAccountAdvertisementActivity.a(this.a, System.currentTimeMillis());
+      if (PublicAccountAdvertisementActivity.a(this.a) > PublicAccountAdvertisementActivity.b(this.a)) {
+        PublicAccountAdvertisementActivity.b(this.a, PublicAccountAdvertisementActivity.c(this.a) + (PublicAccountAdvertisementActivity.a(this.a) - PublicAccountAdvertisementActivity.b(this.a)));
+      }
+      paramVerticalPagerView = PublicAccountAdvertisementActivity.a(this.a);
+      PublicAccountAdvertisementActivity.a(this.a);
+      paramVerticalPagerView.setMode(1);
+      if (!PublicAccountAdvertisementActivity.a(this.a).a())
+      {
+        PublicAccountAdvertisementActivity.a(this.a).setVisibility(8);
+        PublicAccountAdvertisementActivity.a(this.a).a(false);
+      }
+      return;
     }
-    this.a.a.a.jdField_a_of_type_Boolean = true;
+    if (PublicAccountAdvertisementActivity.d(this.a))
+    {
+      PublicAccountAdvertisementActivity.d(this.a, false);
+      if (this.a.a()) {
+        this.a.a.sendEmptyMessage(5);
+      }
+    }
+    PublicAccountAdvertisementActivity.c(this.a);
+    PublicAccountAdvertisementActivity.a(this.a).b(false);
+    PublicAccountAdvertisementActivity.a(this.a).onPause();
+    PublicAccountAdvertisementActivity.a(this.a).b();
+    paramVerticalPagerView = PublicAccountAdvertisementActivity.a(this.a);
+    PublicAccountAdvertisementActivity.a(this.a);
+    paramVerticalPagerView.setMode(2);
+    PublicAccountAdvertisementActivity.a(this.a).setVisibility(0);
+    PublicAccountAdvertisementActivity.c(this.a, System.currentTimeMillis());
+    azqs.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X8008F68", "0X8008F68", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, PublicAccountAdvertisementActivity.a(this.a) + "", "" + PublicAccountAdvertisementActivity.a(this.a).a.d, PublicAccountAdvertisementActivity.a(this.a).a.b);
+    paramVerticalPagerView = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramVerticalPagerView instanceof ToolAppRuntime)) {
+      asya.a().a(PublicAccountAdvertisementActivity.a(this.a), this.a, (AppInterface)((ToolAppRuntime)paramVerticalPagerView).onGetSubRuntime("imax"));
+    }
+    PublicAccountAdvertisementActivity.b(this.a, 0);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    PublicAccountAdvertisementActivity.b(this.a, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nli
  * JD-Core Version:    0.7.0.1
  */

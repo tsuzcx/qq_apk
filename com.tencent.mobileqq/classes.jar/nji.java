@@ -1,34 +1,43 @@
-import com.tencent.biz.qqstory.playmode.IPlayVideoStatusChangeListener;
-import com.tencent.biz.qqstory.playmode.child.DiscoverPlayMode;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.widget.Switch;
 
-public class nji
-  extends IPlayVideoStatusChangeListener
+class nji
+  implements DialogInterface.OnClickListener
 {
-  public nji(DiscoverPlayMode paramDiscoverPlayMode) {}
+  nji(nin paramnin, npo paramnpo, boolean paramBoolean, Switch paramSwitch) {}
   
-  public void c(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt < this.a.a.a.size() - 1) {
-      StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { DiscoverPlayMode.a(this.a), "", "", "" });
+    boolean bool = true;
+    if (paramInt == 0) {
+      if ((3 == this.jdField_a_of_type_Npo.e) && (this.jdField_a_of_type_Npo.d == 0))
+      {
+        paramDialogInterface = this.jdField_a_of_type_Nin;
+        localnpo = this.jdField_a_of_type_Npo;
+        if (!this.jdField_a_of_type_Boolean) {
+          paramDialogInterface.a(localnpo, bool);
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_Nin.a(this.jdField_a_of_type_Npo, this.jdField_a_of_type_ComTencentWidgetSwitch);
+      }
     }
-  }
-  
-  public void d(int paramInt)
-  {
-    StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { DiscoverPlayMode.a(this.a), "", "", "" });
-  }
-  
-  public void e(int paramInt)
-  {
-    StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { DiscoverPlayMode.a(this.a), "", "", "" });
+    while (paramInt != 1) {
+      for (;;)
+      {
+        npo localnpo;
+        return;
+        bool = false;
+      }
+    }
+    this.jdField_a_of_type_Nin.a(this.jdField_a_of_type_Npo, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nji
  * JD-Core Version:    0.7.0.1
  */

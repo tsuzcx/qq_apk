@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class Oidb_0x43c$RequestDel
-  extends MessageMicro
+  extends MessageMicro<RequestDel>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField card_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,7 +20,7 @@ public final class Oidb_0x43c$RequestDel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x43c.Oidb_0x43c.RequestDel
  * JD-Core Version:    0.7.0.1
  */

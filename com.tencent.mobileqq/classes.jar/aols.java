@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-
-public final class aols
-  implements Parcelable.Creator
+public class aols
+  extends aolr
 {
-  public FilterCategoryItem a(Parcel paramParcel)
+  private aomj a;
+  
+  aols(String paramString, aomj paramaomj)
   {
-    return new FilterCategoryItem(paramParcel);
+    super(paramString);
+    this.a = paramaomj;
   }
   
-  public FilterCategoryItem[] a(int paramInt)
+  public aomj a()
   {
-    return new FilterCategoryItem[paramInt];
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aols
  * JD-Core Version:    0.7.0.1
  */

@@ -1,89 +1,95 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.arengine.ARCloudMarkerRecogResult;
-import com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager;
-import com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager.ARMarkerResourceCallback;
-import com.tencent.mobileqq.ar.arengine.ARResourceManagerTools.ARResourceCallback;
-import com.tencent.mobileqq.ar.model.ArFeatureInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class aahq
-  implements ARResourceManagerTools.ARResourceCallback
+  extends BroadcastReceiver
 {
-  public aahq(ARMarkerResourceManager paramARMarkerResourceManager, ARMarkerResourceManager.ARMarkerResourceCallback paramARMarkerResourceCallback, ArCloudConfigInfo paramArCloudConfigInfo, ARCloudMarkerRecogResult paramARCloudMarkerRecogResult) {}
+  private aahq(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback.o();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback.a(paramInt);
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    int j = 0;
-    int i = 0;
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback.a(paramBoolean, paramInt, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
-    }
-    if (paramInt == 2)
+    paramContext = null;
+    String str = paramIntent.getAction();
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager.jdField_d_of_type_Long = (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager.jdField_a_of_type_Long);
-      localARMarkerResourceManager = this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager;
-      if (paramBoolean)
-      {
-        paramInt = i;
-        localARMarkerResourceManager.jdField_a_of_type_Int = paramInt;
+      if ("[onRecevier] action:" + str + ",data:" + paramIntent.getExtras() != null) {
+        paramContext = paramIntent.getExtras().toString();
       }
+      QLog.d("GCApi", 2, paramContext);
     }
-    while (paramInt != 3) {
-      for (;;)
-      {
-        return;
-        paramInt = 1;
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager.g = (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager.jdField_a_of_type_Long);
-    ARMarkerResourceManager localARMarkerResourceManager = this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager;
-    if (paramBoolean) {}
-    for (paramInt = j;; paramInt = 1)
+    if (str == null) {}
+    do
     {
-      localARMarkerResourceManager.jdField_b_of_type_Int = paramInt;
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback.a(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager.jdField_b_of_type_Long = System.currentTimeMillis();
-    ARMarkerResourceManager localARMarkerResourceManager = this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1)
-    {
-      localARMarkerResourceManager.jdField_d_of_type_Int = i;
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager.d();
-      if (paramBoolean)
+      do
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_b_of_type_Int != 1) {
-          ARMarkerResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.a.a, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult);
+        for (;;)
+        {
+          return;
+          if ("action_qgame_messgae_change".equals(str))
+          {
+            paramIntent = paramIntent.getExtras();
+            if (paramIntent == null) {
+              continue;
+            }
+            paramContext = (GameCenterSessionInfo)paramIntent.getParcelable("key_game_msg");
+            i = paramIntent.getInt("key_msg_change_type");
+            if (QLog.isColorLevel()) {
+              QLog.d("GCApi", 0, "[onReceive] type:" + i + ",info:" + paramContext);
+            }
+            paramIntent = new JSONArray();
+            if (paramContext != null) {
+              paramIntent.put(paramContext.a());
+            }
+            try
+            {
+              paramContext = new JSONObject();
+              paramContext.put("session", paramIntent);
+              paramContext.put("eventType", i);
+              paramContext.put("ret", 0);
+              this.a.dispatchJsEvent(GameCenterAPIJavaScript.EVENT_UPDATE_SESSION_INFO, paramContext, null);
+              if (QLog.isColorLevel())
+              {
+                QLog.d("GCApi", 2, "[onReceive] gameCenterMsg: " + paramContext.toString());
+                return;
+              }
+            }
+            catch (Exception paramContext)
+            {
+              return;
+            }
+          }
         }
-        ARMarkerResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
-      }
+      } while (!"action_qgame_unread_change".equals(str));
+      paramContext = paramIntent.getExtras();
+    } while (paramContext == null);
+    int i = paramContext.getInt("key_msg_unread_cnt");
+    if (QLog.isColorLevel()) {
+      QLog.d("GCApi", 2, "[onReceive] cnt:" + i);
+    }
+    try
+    {
+      paramContext = new JSONObject();
+      paramContext.put("newMsgCount", i);
+      paramContext.put("ret", 0);
+      this.a.dispatchJsEvent(GameCenterAPIJavaScript.EVENT_UPDATE_UNREAD_CNT, paramContext, null);
       return;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("GCApi", 1, paramContext, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aahq
  * JD-Core Version:    0.7.0.1
  */

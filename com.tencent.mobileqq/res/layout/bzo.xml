@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:background="@drawable/bg_texture" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="0.0px" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/aw5" android:textColor="@color/skin_gray2_item" android:id="@id/j6d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/f4" android:layout_marginTop="18.0dip" android:layout_marginBottom="10.0dip" android:text="@string/hr9" android:includeFontPadding="true" />
+        <LinearLayout android:orientation="vertical" android:id="@id/j5p" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <TextView android:textSize="@dimen/aw5" android:textColor="@color/skin_gray2_item" android:id="@id/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/f4" android:layout_marginTop="18.0dip" android:layout_marginBottom="10.0dip" android:text="@string/hrb" android:includeFontPadding="true" />
+        <LinearLayout android:orientation="vertical" android:id="@id/accountLinearlayout" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/bmk" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" formItem:bgType="iwf" formItem:switchChecked="true" formItem:switchText="@string/hs6" />
+        <TextView android:id="@id/bml" android:paddingLeft="@dimen/f4" android:paddingRight="@dimen/f5" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al0" android:layout_marginBottom="@dimen/akz" android:text="@string/hs9" android:contentDescription="@string/hs9" style="@style/w4" />
+    </LinearLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

@@ -9,6 +9,11 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
+import azqs;
+import befl;
+import begz;
+import biqn;
+import biqw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -16,23 +21,17 @@ import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.JsWebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebBackForwardList;
-import com.tencent.smtt.sdk.WebHistoryItem;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.PluginParams;
 import cooperation.qwallet.plugin.QWalletHelper;
 import cooperation.qwallet.plugin.QWalletPayBridge;
+import java.net.URL;
 import java.net.URLEncoder;
 import mqq.manager.TicketManager;
 import org.json.JSONObject;
 
 public class PayJsPlugin
-  extends JsWebViewPlugin
+  extends befl
 {
   protected long a;
   Activity jdField_a_of_type_AndroidAppActivity;
@@ -76,7 +75,7 @@ public class PayJsPlugin
           localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
           this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
           if (QWalletHelper.sFullWindowActivitySource == 1) {
-            ReportController.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "index.layila.intopage", 0, 0, "", "", "", "");
+            azqs.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "index.layila.intopage", 0, 0, "", "", "", "");
           }
           if (QWalletHelper.sFullWndCurType != QWalletHelper.FULL_WND_TYPE_NORMAL) {
             break label183;
@@ -123,7 +122,7 @@ public class PayJsPlugin
         paramString.recycle();
         localBundle.putParcelable("_qwallet_payresult_receiver", (Parcelable)localObject);
       }
-      QWalletPayBridge.getWalletDataByService(BaseApplicationImpl.sApplication, this.jdField_a_of_type_ComTencentCommonAppAppInterface, localBundle);
+      QWalletPayBridge.launchBackground(BaseApplicationImpl.sApplication, this.jdField_a_of_type_ComTencentCommonAppAppInterface, localBundle);
       return;
     }
   }
@@ -179,12 +178,12 @@ public class PayJsPlugin
     {
       localIntent.putExtra("uin", localQQAppInterface.getCurrentAccountUin());
       localIntent.putExtra("qqskey", (String)localObject);
-      localObject = new IPluginManager.PluginParams(0);
-      ((IPluginManager.PluginParams)localObject).jdField_b_of_type_JavaLangString = "qwallet_plugin.apk";
-      ((IPluginManager.PluginParams)localObject).d = "Wallet";
-      ((IPluginManager.PluginParams)localObject).e = "com.qwallet.receiver.QWallPreloadReceiver";
-      ((IPluginManager.PluginParams)localObject).a = localIntent;
-      IPluginManager.a(this.mRuntime.a(), (IPluginManager.PluginParams)localObject);
+      localObject = new biqw(0);
+      ((biqw)localObject).jdField_b_of_type_JavaLangString = "qwallet_plugin.apk";
+      ((biqw)localObject).d = "Wallet";
+      ((biqw)localObject).e = "com.qwallet.receiver.QWallPreloadReceiver";
+      ((biqw)localObject).a = localIntent;
+      biqn.b(this.mRuntime.a(), (biqw)localObject);
       return;
     }
   }
@@ -240,12 +239,34 @@ public class PayJsPlugin
     if (QLog.isColorLevel()) {
       QLog.i("JsBridge.JsHandle.PayJsHandler", 2, "openTenpayView requet params json=" + paramString);
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("json", paramString);
-    localBundle.putString("callbackSn", String.valueOf(paramJsBridgeListener.a()));
-    localBundle.putInt("payparmas_paytype", 1);
-    localBundle.putLong("payparmas_h5_start", this.jdField_a_of_type_Long);
-    PayBridgeActivity.a(this.jdField_a_of_type_AndroidAppActivity, 5, localBundle);
+    CustomWebView localCustomWebView = this.mRuntime.a();
+    Object localObject2 = "";
+    Object localObject1 = localObject2;
+    if (localCustomWebView != null) {}
+    try
+    {
+      localObject1 = new URL(localCustomWebView.getUrl()).getHost();
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putString("json", paramString);
+      ((Bundle)localObject2).putString("callbackSn", String.valueOf(paramJsBridgeListener.a()));
+      ((Bundle)localObject2).putInt("payparmas_paytype", 1);
+      ((Bundle)localObject2).putLong("payparmas_h5_start", this.jdField_a_of_type_Long);
+      ((Bundle)localObject2).putString("h5_common_redpacket_domain", (String)localObject1);
+      PayBridgeActivity.a(this.jdField_a_of_type_AndroidAppActivity, 5, (Bundle)localObject2);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localObject1 = localObject2;
+        if (QLog.isDevelopLevel())
+        {
+          localException.printStackTrace();
+          localObject1 = localObject2;
+        }
+      }
+    }
   }
   
   protected void a(String paramString1, String paramString2)
@@ -258,16 +279,15 @@ public class PayJsPlugin
     if (QLog.isColorLevel()) {
       QLog.i("JsBridge.JsHandle.PayJsHandler", 2, "pay requet params json=" + paramString);
     }
-    Object localObject3;
-    Object localObject1;
     Object localObject2;
+    Object localObject1;
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = true;
-      localObject3 = this.mRuntime.a();
+      localObject2 = this.mRuntime.a();
       localObject1 = "";
-      if (localObject3 != null) {
-        localObject1 = ((CustomWebView)localObject3).getUrl();
+      if (localObject2 != null) {
+        localObject1 = ((CustomWebView)localObject2).getUrl();
       }
       localObject2 = localObject1;
     }
@@ -276,33 +296,8 @@ public class PayJsPlugin
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         localObject2 = URLEncoder.encode((String)localObject1, "utf-8");
       }
-      String str = "";
-      localObject1 = str;
-      if (localObject3 != null)
-      {
-        localObject3 = ((CustomWebView)localObject3).copyBackForwardList();
-        localObject1 = str;
-        if (((WebBackForwardList)localObject3).getSize() >= 1)
-        {
-          localObject3 = ((WebBackForwardList)localObject3).getItemAtIndex(0).getOriginalUrl();
-          localObject1 = str;
-          if (!TextUtils.isEmpty((CharSequence)localObject3))
-          {
-            int i1 = ((String)localObject3).indexOf("qqwallet_appinfo=");
-            localObject1 = str;
-            if (i1 != -1)
-            {
-              int n = ((String)localObject3).indexOf('&', "qqwallet_appinfo=".length() + i1);
-              int m = n;
-              if (n == -1) {
-                m = ((String)localObject3).length();
-              }
-              localObject1 = ((String)localObject3).substring(i1 + "qqwallet_appinfo=".length(), m);
-            }
-          }
-        }
-      }
-      str = String.valueOf(paramJsBridgeListener.a());
+      localObject1 = QWalletHelper.getAppInfoFromHistory();
+      String str = String.valueOf(paramJsBridgeListener.a());
       try
       {
         paramJsBridgeListener = new Bundle();
@@ -353,60 +348,34 @@ public class PayJsPlugin
     if (QLog.isColorLevel()) {
       QLog.i("JsBridge.JsHandle.PayJsHandler", 2, "pay requet params json=" + paramString);
     }
-    Object localObject4;
-    Object localObject1;
-    Object localObject2;
+    Object localObject;
+    String str;
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = true;
-      localObject4 = this.mRuntime.a();
-      localObject1 = "";
-      if (localObject4 != null) {
-        localObject1 = ((CustomWebView)localObject4).getUrl();
+      localObject = this.mRuntime.a();
+      str = "";
+      if (localObject != null) {
+        str = ((CustomWebView)localObject).getUrl();
       }
-      localObject2 = localObject1;
+      localObject = str;
     }
     try
     {
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = URLEncoder.encode((String)localObject1, "utf-8");
+      if (!TextUtils.isEmpty(str)) {
+        localObject = URLEncoder.encode(str, "utf-8");
       }
-      Object localObject3 = "";
-      localObject1 = localObject3;
-      if (localObject4 != null)
-      {
-        localObject4 = ((CustomWebView)localObject4).copyBackForwardList();
-        localObject1 = localObject3;
-        if (((WebBackForwardList)localObject4).getSize() >= 1)
-        {
-          localObject4 = ((WebBackForwardList)localObject4).getItemAtIndex(0).getOriginalUrl();
-          localObject1 = localObject3;
-          if (!TextUtils.isEmpty((CharSequence)localObject4))
-          {
-            int i1 = ((String)localObject4).indexOf("qqwallet_appinfo=");
-            localObject1 = localObject3;
-            if (i1 != -1)
-            {
-              int n = ((String)localObject4).indexOf('&', "qqwallet_appinfo=".length() + i1);
-              int m = n;
-              if (n == -1) {
-                m = ((String)localObject4).length();
-              }
-              localObject1 = ((String)localObject4).substring(i1 + "qqwallet_appinfo=".length(), m);
-            }
-          }
-        }
-      }
+      str = QWalletHelper.getAppInfoFromHistory();
       paramJsBridgeListener = String.valueOf(paramJsBridgeListener.a());
-      localObject3 = new Bundle();
-      ((Bundle)localObject3).putString("payparmas_callback_sn", paramJsBridgeListener);
-      ((Bundle)localObject3).putString("payparmas_json", paramString);
-      ((Bundle)localObject3).putInt("payparmas_paytype", 1);
-      ((Bundle)localObject3).putLong("payparmas_h5_start", this.jdField_a_of_type_Long);
-      ((Bundle)localObject3).putString("payparmas_url_appinfo", (String)localObject1);
-      ((Bundle)localObject3).putLong("vacreport_key_seq", this.jdField_b_of_type_Long);
-      ((Bundle)localObject3).putString("payparmas_h5_url", (String)localObject2);
-      this.jdField_a_of_type_AndroidOsBundle = PayBridgeActivity.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizWebviewpluginPayJsPlugin$MyResultRecevicer, 9, (Bundle)localObject3);
+      Bundle localBundle = new Bundle();
+      localBundle.putString("payparmas_callback_sn", paramJsBridgeListener);
+      localBundle.putString("payparmas_json", paramString);
+      localBundle.putInt("payparmas_paytype", 1);
+      localBundle.putLong("payparmas_h5_start", this.jdField_a_of_type_Long);
+      localBundle.putString("payparmas_url_appinfo", str);
+      localBundle.putLong("vacreport_key_seq", this.jdField_b_of_type_Long);
+      localBundle.putString("payparmas_h5_url", (String)localObject);
+      this.jdField_a_of_type_AndroidOsBundle = PayBridgeActivity.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizWebviewpluginPayJsPlugin$MyResultRecevicer, 9, localBundle);
       if (this.jdField_a_of_type_AndroidOsBundle.getInt("retCode", -1) != 0)
       {
         paramString = this.jdField_a_of_type_AndroidOsBundle.getString("retJson");
@@ -422,22 +391,22 @@ public class PayJsPlugin
     {
       for (;;)
       {
-        localObject2 = localObject1;
+        localObject = str;
         if (QLog.isDevelopLevel())
         {
           localException.printStackTrace();
-          localObject2 = localObject1;
+          localObject = str;
         }
       }
     }
   }
   
-  protected String getNameSpace()
+  public String getNameSpace()
   {
     return "pay";
   }
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (!getNameSpace().equals(paramString2)) {
       return false;
@@ -528,7 +497,7 @@ public class PayJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.PayJsPlugin
  * JD-Core Version:    0.7.0.1
  */

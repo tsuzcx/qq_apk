@@ -1,26 +1,24 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Comparator;
+import android.content.Context;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
 
 public class tje
-  implements Comparator
+  extends tjd<tiw, WSPushStrategyInfo>
 {
-  public tje(QQLSActivity paramQQLSActivity) {}
-  
-  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
+  public tje(tiw paramtiw)
   {
-    if (paramChatMessage1.shmsgseq == paramChatMessage2.shmsgseq) {
-      return 0;
-    }
-    if (paramChatMessage1.shmsgseq > paramChatMessage2.shmsgseq) {
-      return 1;
-    }
-    return -1;
+    super(paramtiw);
+  }
+  
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  {
+    WSHomeFragment.a(paramContext, 0, false);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tje
  * JD-Core Version:    0.7.0.1
  */

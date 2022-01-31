@@ -1,19 +1,44 @@
-import com.tencent.widget.XListView;
-import dov.com.tencent.biz.qqstory.takevideo.poilist.PoiListLayout;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import cooperation.qqreader.QRBridgeActivity;
 
 public class aodd
-  implements Runnable
+  implements aocw
 {
-  public aodd(PoiListLayout paramPoiListLayout) {}
+  private Bundle a;
   
-  public void run()
+  public aodd() {}
+  
+  public aodd(Bundle paramBundle)
   {
-    PoiListLayout.a(this.a).springBackOverScrollHeaderView();
+    this.a = paramBundle;
+  }
+  
+  public void a(Context paramContext, ColorNote paramColorNote)
+  {
+    Intent localIntent = new Intent(paramContext, QRBridgeActivity.class);
+    localIntent.putExtra("readtype", "16");
+    localIntent.putExtra("stay", "1");
+    if (this.a != null) {
+      localIntent.putExtras(this.a);
+    }
+    paramColorNote = paramColorNote.getSubType().split("_");
+    if (paramColorNote.length > 1)
+    {
+      localIntent.putExtra("nbid", paramColorNote[0]);
+      if (paramColorNote[0].startsWith("-")) {
+        localIntent.putExtra("isLocal", true);
+      }
+    }
+    localIntent.addFlags(268435456);
+    paramContext.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aodd
  * JD-Core Version:    0.7.0.1
  */

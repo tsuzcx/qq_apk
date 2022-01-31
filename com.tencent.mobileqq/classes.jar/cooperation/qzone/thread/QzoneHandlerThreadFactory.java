@@ -1,5 +1,6 @@
 package cooperation.qzone.thread;
 
+import android.os.Handler;
 import android.os.Looper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -11,14 +12,19 @@ public class QzoneHandlerThreadFactory
   public static final String BusinessThread = "Business_HandlerThread";
   public static final String FeedDeleteOnTimeThread = "FeedDeleteOnTime_HandlerThread";
   public static final String FloatItemThread = "FloatItem_HandlerThread";
-  public static final String MachineLearningThread = "QZone_MachineLearningThread";
+  public static final String IpcProxyThread = "QZone_IpcProxyThread";
+  public static final String LocalPhotoThread = "QZone_LocalPhotoThread";
   public static final String NormalThread = "Normal_HandlerThread";
+  public static final String ParticleThread = "Particle_HandlerThread";
   public static final String PreLoadThread = "Preload_HandlerThread";
   public static final String RealTimeThread = "RealTime_HandlerThread";
   public static final String ReportThread = "Report_HandlerThread";
   public static final String TAG = "QzoneThread";
   public static final String VideoThread = "Video_HandlerThread";
-  static Map mHandlerThreadMap = new HashMap();
+  public static final String YellowVipThread = "YellowVip_HandlerThread";
+  static final Map<String, QzoneBaseThread> mHandlerThreadMap = new HashMap();
+  public static volatile Handler mMainHandler;
+  public static final Object mMainHandlerLock = new Object();
   
   public static QzoneBaseThread getHandlerThread(String paramString)
   {
@@ -65,6 +71,18 @@ public class QzoneHandlerThreadFactory
     return getHandlerThread(paramString).getLooper();
   }
   
+  public static Handler getMainHandler()
+  {
+    synchronized (mMainHandlerLock)
+    {
+      if (mMainHandler == null) {
+        mMainHandler = new Handler(Looper.getMainLooper());
+      }
+      Handler localHandler = mMainHandler;
+      return localHandler;
+    }
+  }
+  
   private static int getPriority(String paramString)
   {
     if ("BackGround_HandlerThread".equalsIgnoreCase(paramString)) {}
@@ -83,13 +101,16 @@ public class QzoneHandlerThreadFactory
       if ("Preload_HandlerThread".equalsIgnoreCase(paramString)) {
         return 1;
       }
-    } while ("QZone_MachineLearningThread".equalsIgnoreCase(paramString));
+      if ("QZone_LocalPhotoThread".equalsIgnoreCase(paramString)) {
+        return 0;
+      }
+    } while ("QZone_IpcProxyThread".equalsIgnoreCase(paramString));
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.thread.QzoneHandlerThreadFactory
  * JD-Core Version:    0.7.0.1
  */

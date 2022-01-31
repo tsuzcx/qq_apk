@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class AIOQQStoryFeedPB$AIOQQStoryFeed
-  extends MessageMicro
+  extends MessageMicro<AIOQQStoryFeed>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 42, 50 }, new String[] { "str_feed_id", "uint64_time", "msg_covers_info", "uint32_video_num", "str_union_id", "str_location" }, new Object[] { "", Long.valueOf(0L), null, Integer.valueOf(0), "", "" }, AIOQQStoryFeed.class);
   public AIOQQStoryFeedPB.CoverItem msg_covers_info = new AIOQQStoryFeedPB.CoverItem();

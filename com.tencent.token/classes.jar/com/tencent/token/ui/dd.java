@@ -1,30 +1,20 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.global.e;
-import com.tencent.token.ui.base.TitleOptionMenu;
+import android.app.DatePickerDialog.OnDateSetListener;
+import android.widget.DatePicker;
 
-final class dd
-  implements View.OnClickListener
+class dd
+  implements DatePickerDialog.OnDateSetListener
 {
-  dd(EmbedWebBaseActivity paramEmbedWebBaseActivity) {}
+  dd(CorrectTokenActivity paramCorrectTokenActivity) {}
   
-  public final void onClick(View paramView)
+  public void onDateSet(DatePicker paramDatePicker, int paramInt1, int paramInt2, int paramInt3)
   {
-    e.a("BaseActivityonItemClicked");
-    if (this.a.mTitleMenu.getVisibility() == 0)
-    {
-      this.a.mTitleMenu.a();
-      return;
-    }
-    this.a.mTitleMenu.a(new de(this));
-    paramView = this.a.mTitleMenu;
-    Object localObject = paramView.getTag();
-    if (localObject != null) {
-      ((View)localObject).setSelected(true);
-    }
-    paramView.setVisibility(0);
+    CorrectTokenActivity.mYear = paramInt1;
+    CorrectTokenActivity.mMonth = paramInt2;
+    CorrectTokenActivity.mDay = paramInt3;
+    CorrectTokenActivity.access$600(this.a);
+    CorrectTokenActivity.access$000(this.a);
   }
 }
 

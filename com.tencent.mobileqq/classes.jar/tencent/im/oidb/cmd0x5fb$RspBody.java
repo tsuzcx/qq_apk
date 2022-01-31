@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class cmd0x5fb$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int MSG_HEAD_FIELD_NUMBER = 1;
   public static final int MSG_USER_LIST_FIELD_NUMBER = 2;
@@ -23,7 +23,7 @@ public final class cmd0x5fb$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5fb.RspBody
  * JD-Core Version:    0.7.0.1
  */

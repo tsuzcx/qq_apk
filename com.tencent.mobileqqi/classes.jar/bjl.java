@@ -1,14 +1,15 @@
-import com.tencent.av.ui.ControlUIObserver;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class bjl
   implements Runnable
 {
-  public bjl(MultiVideoCtrlLayerUI paramMultiVideoCtrlLayerUI) {}
+  public bjl(AccountDetailActivity paramAccountDetailActivity, int paramInt) {}
   
   public void run()
   {
-    this.a.a.update(null, new Object[] { Integer.valueOf(104) });
+    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.b > 0) {
+      AccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity, this.jdField_a_of_type_Int);
+    }
   }
 }
 

@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.app.DataLineHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class zcf
-  implements Runnable
+class zcf
+  extends BroadcastReceiver
 {
-  public zcf(DataLineHandler paramDataLineHandler, long paramLong1, long paramLong2, long paramLong3) {}
+  zcf(zby paramzby) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler, this.jdField_a_of_type_Long, this.b, this.c);
+    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
+    {
+      zby.a(this.a, paramIntent);
+      zby.d(this.a);
+      zby.c(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zcf
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class hd_video_voip_2$SpeedTestInfo
-  extends MessageMicro
+  extends MessageMicro<SpeedTestInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48 }, new String[] { "uint32_total_pkg", "uint32_real_recv_pkg", "uint32_delay", "uint32_jitter", "uint32_loss_continue", "uint32_estimate_bandwidth" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, SpeedTestInfo.class);
   public final PBUInt32Field uint32_delay = PBField.initUInt32(0);
@@ -18,7 +18,7 @@ public final class hd_video_voip_2$SpeedTestInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.longconn.voip.hd_video_voip_2.SpeedTestInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
 
-class fuq
+public class fuq
   implements Runnable
 {
-  fuq(fuo paramfuo, long paramLong) {}
+  public fuq(OnlineFileSessionCenter paramOnlineFileSessionCenter, int paramInt) {}
   
   public void run()
   {
-    FMActivity.a(this.jdField_a_of_type_Fuo.a);
-    this.jdField_a_of_type_Fuo.a.b.a().a(this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionCenter.a(this.jdField_a_of_type_Int);
   }
 }
 

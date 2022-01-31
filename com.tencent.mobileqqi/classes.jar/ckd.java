@@ -1,43 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.app.EmosmHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.view.DragSortListView.RemoveListener;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
 public class ckd
-  implements DialogInterface.OnClickListener
+  implements DragSortListView.RemoveListener
 {
-  public ckd(ChatSettingForTroop paramChatSettingForTroop, QQCustomDialog paramQQCustomDialog) {}
+  public ckd(EmosmActivity paramEmosmActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
-    }
-    paramDialogInterface = (TroopHandler)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.b.a(19);
-    if ((NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a())) && (paramDialogInterface != null))
+    Object localObject = (EmoticonPackage)EmosmActivity.a(this.a).get(paramInt);
+    if (!NetworkUtil.e(this.a))
     {
-      paramDialogInterface.h(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, 2131562648, 0);
-    }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
-      }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.b, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
+      localObject = new QQToast(this.a);
+      ((QQToast)localObject).a(2130837933);
+      ((QQToast)localObject).c(1500);
+      ((QQToast)localObject).a(this.a.getString(2131559056));
+      ((QQToast)localObject).b(0);
       return;
-      if (paramDialogInterface != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131562488, 1500);
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131562571, 1500);
-      }
     }
+    EmosmActivity.a(this.a, 0);
+    EmosmActivity.b(this.a, 1);
+    this.a.a.a(this.a.getString(2131561933));
+    this.a.a.show();
+    ((EmosmHandler)this.a.b.a(11)).a(Integer.parseInt(((EmoticonPackage)localObject).epId));
   }
 }
 

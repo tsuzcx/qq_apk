@@ -7,17 +7,21 @@ import com.qq.taf.jce.JceStruct;
 public final class material_report_req
   extends JceStruct
 {
+  public int iBannerType;
   public int iOperType;
   public int iSource;
   public long lUin;
+  public String strQbossTraceinfo = "";
   
   public material_report_req() {}
   
-  public material_report_req(long paramLong, int paramInt1, int paramInt2)
+  public material_report_req(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
     this.lUin = paramLong;
     this.iOperType = paramInt1;
     this.iSource = paramInt2;
+    this.iBannerType = paramInt3;
+    this.strQbossTraceinfo = paramString;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -25,6 +29,8 @@ public final class material_report_req
     this.lUin = paramJceInputStream.read(this.lUin, 0, true);
     this.iOperType = paramJceInputStream.read(this.iOperType, 1, true);
     this.iSource = paramJceInputStream.read(this.iSource, 2, false);
+    this.iBannerType = paramJceInputStream.read(this.iBannerType, 3, false);
+    this.strQbossTraceinfo = paramJceInputStream.readString(4, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -32,6 +38,10 @@ public final class material_report_req
     paramJceOutputStream.write(this.lUin, 0);
     paramJceOutputStream.write(this.iOperType, 1);
     paramJceOutputStream.write(this.iSource, 2);
+    paramJceOutputStream.write(this.iBannerType, 3);
+    if (this.strQbossTraceinfo != null) {
+      paramJceOutputStream.write(this.strQbossTraceinfo, 4);
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.antiphing;
 
 import com.tencent.qphone.base.util.QLog;
-import fdo;
+import eza;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,13 +28,13 @@ public class UinFraudInfo
     long l = System.currentTimeMillis();
     if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
     {
-      fdo localfdo = (fdo)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
-      if (l - localfdo.jdField_a_of_type_Long < 3600000L)
+      eza localeza = (eza)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+      if (l - localeza.jdField_a_of_type_Long < 3600000L)
       {
         if (QLog.isDevelopLevel()) {
           QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is true");
         }
-        return localfdo.jdField_a_of_type_Int;
+        return localeza.jdField_a_of_type_Int;
       }
       if (QLog.isDevelopLevel()) {
         QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
@@ -78,13 +78,13 @@ public class UinFraudInfo
   public void a(long paramLong, int paramInt)
   {
     long l = System.currentTimeMillis();
-    fdo localfdo = new fdo(this);
-    localfdo.jdField_a_of_type_Int = paramInt;
-    localfdo.jdField_a_of_type_Long = l;
+    eza localeza = new eza(this);
+    localeza.jdField_a_of_type_Int = paramInt;
+    localeza.jdField_a_of_type_Long = l;
     if (this.jdField_a_of_type_JavaUtilMap.size() > 500) {
       this.jdField_a_of_type_JavaUtilMap.clear();
     }
-    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localfdo);
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localeza);
     if (this.b.containsKey(Long.valueOf(paramLong))) {
       this.b.remove(Long.valueOf(paramLong));
     }
@@ -95,7 +95,7 @@ public class UinFraudInfo
     long l = System.currentTimeMillis();
     if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
     {
-      if (l - ((fdo)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Long > 3600000L)
+      if (l - ((eza)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Long > 3600000L)
       {
         if (QLog.isDevelopLevel()) {
           QLog.d("AntiFraud", 4, "FraudUin, Found from local cache, timestamp is out of data");

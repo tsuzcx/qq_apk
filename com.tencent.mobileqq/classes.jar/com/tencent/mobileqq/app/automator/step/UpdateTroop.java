@@ -1,50 +1,50 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import amdu;
+import ameq;
+import amix;
 import android.content.SharedPreferences;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopObserver;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import zrv;
 
 public class UpdateTroop
   extends AsyncStep
 {
-  private TroopObserver a;
+  private ameq a;
   
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver == null)
+    if (this.jdField_a_of_type_Ameq == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new zrv(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
+      this.jdField_a_of_type_Ameq = new amix(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Ameq);
     }
-    ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(20)).b();
+    ((amdu)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(20)).b();
   }
   
-  protected int a()
+  public int a()
   {
     if (this.b == 4)
     {
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("isTrooplistok", false);
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.getEntityManagerFactory();
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getEntityManagerFactory();
       if (((localObject instanceof QQEntityManagerFactory)) && (((QQEntityManagerFactory)localObject).isUpdated())) {
         this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_Boolean = false;
       }
-      localObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.getManager(51);
+      localObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(52);
       if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_Boolean)
       {
         if (QLog.isColorLevel()) {
           QLog.d("QQInitHandler", 2, "onCheckTroopList:Done");
         }
-        TroopHandler localTroopHandler = (TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(20);
+        amdu localamdu = (amdu)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(20);
         ((TroopManager)localObject).b();
-        localTroopHandler.a(2, true, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(3, true, Integer.valueOf(2));
+        localamdu.notifyUI(2, true, null);
+        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.notifyUI(3, true, Integer.valueOf(2));
         return 7;
       }
       ((TroopManager)localObject).b();
@@ -62,12 +62,12 @@ public class UpdateTroop
     this.c = 2;
   }
   
-  public void c()
+  public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver != null)
+    if (this.jdField_a_of_type_Ameq != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Ameq);
+      this.jdField_a_of_type_Ameq = null;
     }
   }
 }

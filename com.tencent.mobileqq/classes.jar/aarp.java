@@ -1,23 +1,36 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.ark.ArkAiAppPanel;
-import com.tencent.widget.HorizontalListView;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
+import java.lang.ref.WeakReference;
 
 public class aarp
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aarp(ArkAiAppPanel paramArkAiAppPanel) {}
+  public aarp(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    View localView = ArkAiAppPanel.a(this.a).getSelectedView();
-    if (localView != null) {
-      localView.setSelected(true);
+    if (GdtInterstitialFragmentForJS.a(this.a) == null)
+    {
+      paramView = "loading ad data";
+      aamv localaamv = new aamv();
+      localaamv.a = GdtInterstitialFragmentForJS.a(this.a);
+      GdtInterstitialFragmentForJS.a(this.a, new aamt(localaamv, new WeakReference(GdtInterstitialFragmentForJS.a(this.a))));
+      GdtInterstitialFragmentForJS.a(this.a).a(new WeakReference(this.a.getActivity()));
+    }
+    for (;;)
+    {
+      Toast.makeText(this.a.getActivity().getApplicationContext(), paramView, 0).show();
+      return;
+      paramView = "load ad data error";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aarp
  * JD-Core Version:    0.7.0.1
  */

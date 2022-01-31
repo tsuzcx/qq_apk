@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.app.DataLineHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
 
-public class zci
-  implements Runnable
+class zci
+  implements View.OnClickListener
 {
-  public zci(DataLineHandler paramDataLineHandler, int paramInt, long paramLong, String paramString) {}
+  zci(zch paramzch, int paramInt, VsMusicItemInfo paramVsMusicItemInfo) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+    if (zch.a(this.jdField_a_of_type_Zch) != null) {
+      zch.a(this.jdField_a_of_type_Zch).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zci
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,75 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.OCRRecognitionResultActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
 
 public class agba
-  implements TextWatcher
 {
-  public agba(OCRRecognitionResultActivity paramOCRRecognitionResultActivity) {}
+  public static int a;
+  public static boolean a;
+  public static int b;
+  public static boolean b;
   
-  public void afterTextChanged(Editable paramEditable)
+  static
   {
-    int i = 3400;
-    if (paramEditable.toString().trim().length() == 0)
-    {
-      OCRRecognitionResultActivity.a(this.a);
-      return;
-    }
-    int j;
-    if (paramEditable.length() > 3400)
-    {
-      j = OCRRecognitionResultActivity.a(this.a).getSelectionStart();
-      OCRRecognitionResultActivity.a(this.a).setText(paramEditable.subSequence(0, 3400));
-      if (j <= 3400) {
-        break label131;
-      }
-    }
-    for (;;)
-    {
-      OCRRecognitionResultActivity.a(this.a).setSelection(i);
-      if (OCRRecognitionResultActivity.b(this.a)) {
-        QQToast.a(this.a, 1, "字数超过上限", 0).a();
-      }
-      for (;;)
-      {
-        OCRRecognitionResultActivity.b(this.a);
-        return;
-        OCRRecognitionResultActivity.a(this.a, true);
-      }
-      label131:
-      i = j;
-    }
+    jdField_b_of_type_Boolean = true;
+    jdField_a_of_type_Int = 15;
+    jdField_b_of_type_Int = 20;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public static void a()
+  {
+    Object localObject;
+    if (!jdField_a_of_type_Boolean)
+    {
+      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.PtvConfig.name(), null);
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideo.PtvPlayConfig", 2, "initConfig(), ptvConfig=" + (String)localObject);
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break label211;
+      }
+      localObject = ((String)localObject).split("\\|");
+      if ((localObject != null) && (localObject.length >= 3) && (TextUtils.isEmpty(localObject[0]))) {}
+    }
+    try
+    {
+      jdField_b_of_type_Int = Integer.parseInt(localObject[0]);
+      label93:
+      if (!TextUtils.isEmpty(localObject[1])) {
+        jdField_b_of_type_Boolean = localObject[1].equals("1");
+      }
+      if (!TextUtils.isEmpty(localObject[2])) {}
+      for (;;)
+      {
+        try
+        {
+          jdField_a_of_type_Int = Integer.parseInt(localObject[2]);
+          jdField_a_of_type_Boolean = true;
+          if (QLog.isColorLevel()) {
+            QLog.d("ShortVideo.PtvPlayConfig", 2, "initConfig(), sReadFromDPC=" + jdField_a_of_type_Boolean + ", sAutoPlayInAIO:" + jdField_b_of_type_Boolean + ", sRequestedFPS:" + jdField_a_of_type_Int + ",sPtvMaxTime:" + jdField_b_of_type_Int);
+          }
+          return;
+        }
+        catch (Exception localException1)
+        {
+          jdField_a_of_type_Int = 15;
+          continue;
+        }
+        label211:
+        jdField_b_of_type_Boolean = true;
+        jdField_a_of_type_Int = 15;
+      }
+    }
+    catch (Exception localException2)
+    {
+      break label93;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agba
  * JD-Core Version:    0.7.0.1
  */

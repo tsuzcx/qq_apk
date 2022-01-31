@@ -1,47 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.FaceScoreUtils;
-import com.tencent.mobileqq.nearby.NearbyCardManager;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
-import java.util.ArrayList;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class aiuh
-  implements Runnable
+class aiuh
+  extends AsyncTask<String, Void, AnimationView.AnimationInfo>
 {
-  public aiuh(MediaPreviewActivity paramMediaPreviewActivity) {}
+  private aiuh(aiuf paramaiuf) {}
   
-  public void run()
+  protected AnimationView.AnimationInfo a(String... paramVarArgs)
   {
-    int i;
-    String str1;
-    if (this.a.app != null)
-    {
-      int j = ((NearbyCardManager)this.a.app.getManager(105)).b();
-      if ((this.a.b <= 0) || (((MediaPreviewInfo)this.a.a.get(0)).a != 2)) {
-        break label108;
-      }
-      i = 1;
-      if (j != 0) {
-        break label113;
-      }
-      str1 = "1";
-      label69:
-      if (i == 0) {
-        break label119;
-      }
+    if ("1".equals(paramVarArgs[1])) {
+      return AnimationView.AnimationInfo.loadFromZip(paramVarArgs[0]);
     }
-    label108:
-    label113:
-    label119:
-    for (String str2 = "2";; str2 = "1")
-    {
-      FaceScoreUtils.a("clk_detail", "", new String[] { "", str1, "", str2 });
-      return;
-      i = 0;
-      break;
-      str1 = "2";
-      break label69;
+    return AnimationView.AnimationInfo.loadFromFolder(paramVarArgs[0]);
+  }
+  
+  protected void a(AnimationView.AnimationInfo paramAnimationInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FrameAnimHelper", 2, "task over info = " + paramAnimationInfo);
     }
+    this.a.a(paramAnimationInfo);
   }
 }
 

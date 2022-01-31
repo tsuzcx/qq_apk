@@ -1,30 +1,36 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.takevideo.EditVideoFragment;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class oet
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public oet(EditVideoFragment paramEditVideoFragment, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView) {}
+  public static ConcurrentHashMap<Integer, Object> a = new ConcurrentHashMap();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static Object a(int paramInt)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int i = (int)((this.jdField_a_of_type_Int - this.b) * f);
-    int j = this.b;
-    int k = (int)(f * (this.c - this.d));
-    int m = this.d;
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramValueAnimator.leftMargin = (i + j);
-    paramValueAnimator.bottomMargin = (m + k);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+    if (a.containsKey(Integer.valueOf(paramInt))) {
+      return a.get(Integer.valueOf(paramInt));
+    }
+    return null;
+  }
+  
+  public static void a(int paramInt)
+  {
+    a.remove(Integer.valueOf(paramInt));
+  }
+  
+  public static void a(int paramInt, Object paramObject)
+  {
+    if (paramObject == null) {
+      return;
+    }
+    if (a.containsKey(Integer.valueOf(paramInt))) {
+      a.remove(Integer.valueOf(paramInt));
+    }
+    a.put(Integer.valueOf(paramInt), paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oet
  * JD-Core Version:    0.7.0.1
  */

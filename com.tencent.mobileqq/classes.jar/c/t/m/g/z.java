@@ -1,32 +1,21 @@
 package c.t.m.g;
 
-import java.util.concurrent.CountDownLatch;
-
 final class z
   implements Runnable
 {
-  z(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
-  
   public final void run()
   {
     try
     {
-      this.a[0] = y.c();
-      this.b.countDown();
+      x.e();
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        this.a[0] = y.b();
-      }
-    }
+    catch (Throwable localThrowable) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.z
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:orientation="vertical" android:id="@id/cjl" android:background="@color/a6q" android:paddingTop="5.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/cjm" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/nh" android:textColor="@color/a6q" android:ellipsize="end" android:gravity="left" android:id="@id/a3g" android:background="@drawable/a58" android:paddingLeft="@dimen/m1" android:paddingTop="@dimen/m1" android:paddingRight="@dimen/m1" android:paddingBottom="@dimen/m1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:maxLines="2" />
+            <RelativeLayout android:id="@id/cjn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="7.0dip" android:layout_marginRight="7.0dip">
+                <LinearLayout android:orientation="vertical" android:id="@id/cjo" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+                    <ImageView android:layout_gravity="center_horizontal" android:id="@id/cjp" android:layout_width="104.0dip" android:layout_height="104.0dip" android:layout_marginTop="34.0dip" android:src="@raw/honey_pay_main_logo" android:adjustViewBounds="true" />
+                    <TextView android:textSize="22.0dip" android:textColor="@color/h6" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:text="@string/cfa" />
+                    <TextView android:textSize="17.0dip" android:textColor="#ff303030" android:layout_gravity="center_horizontal" android:id="@id/cjq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:text="@string/cf7" />
+                    <TextView android:textSize="17.0dip" android:textColor="#ff303030" android:layout_gravity="center_horizontal" android:id="@id/cjr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="@string/cf8" />
+                    <TextView android:textSize="17.0dip" android:textColor="#ff303030" android:layout_gravity="center_horizontal" android:id="@id/cjs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="@string/cf9" />
+                    <Button android:layout_gravity="center_horizontal" android:id="@id/cjt" android:background="@drawable/rk" android:layout_width="204.0dip" android:layout_height="47.0dip" android:layout_marginTop="39.0dip" android:text="@string/cf2" style="@style/nq" />
+                </LinearLayout>
+                <TextView android:textSize="13.0dip" android:gravity="bottom" android:id="@id/cju" android:paddingBottom="30.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:text="@string/cf6" android:layout_below="@id/cjo" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/cjv" android:background="@drawable/r_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="133.0dip" android:layout_marginLeft="7.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="7.0dip" android:layout_marginBottom="10.0dip" android:layerType="software">
+                <ImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/honey_pay_add_friend" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/tc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/cep" />
+            </LinearLayout>
+        </LinearLayout>
+        <View android:id="@id/cjw" android:background="@color/a6q" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+</ScrollView>

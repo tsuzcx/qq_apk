@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.content.Context;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import java.util.List;
 
 class std
-  implements Runnable
+  extends bdmw
 {
-  std(stc paramstc) {}
-  
-  public void run()
+  std(Context paramContext, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
   {
-    this.a.a.a.a();
+    super(paramContext, paramList);
+  }
+  
+  protected int a()
+  {
+    return 2131562527;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     std
  * JD-Core Version:    0.7.0.1
  */

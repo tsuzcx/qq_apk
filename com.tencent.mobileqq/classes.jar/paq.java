@@ -1,25 +1,28 @@
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.widget.AdapterView;
+import java.util.List;
 
 public class paq
-  implements Runnable
+  implements bhuw
 {
-  public paq(AbsBaseWebViewActivity paramAbsBaseWebViewActivity, boolean paramBoolean) {}
+  public paq(ReadInJoySelectPositionFragment paramReadInJoySelectPositionFragment) {}
   
-  public void run()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewBase", 2, "start request: " + this.jdField_a_of_type_Boolean);
-    }
-    WebProcessManager.a(true);
-    SwiftWebViewUtils.a();
+    if (paramInt <= 0) {}
+    do
+    {
+      return;
+      paramAdapterView = (pio)ReadInJoySelectPositionFragment.a(this.a).get(paramInt - 1);
+    } while (paramAdapterView.a != 2);
+    this.a.a(new SelectPositionModule.PositionData(paramAdapterView.d, paramAdapterView.c, paramAdapterView.b, paramAdapterView.e));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     paq
  * JD-Core Version:    0.7.0.1
  */

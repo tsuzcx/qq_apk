@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.recent;
 
+import ajmr;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -8,29 +9,38 @@ import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
-import com.tencent.mobileqq.text.QQText;
+import bamp;
 import com.tencent.qphone.base.util.QLog;
 
+@ajmr
 public class MsgSummary
 {
-  public int a;
-  public CharSequence a;
-  public boolean a;
-  public int b;
-  public CharSequence b;
-  public CharSequence c;
-  public CharSequence d;
+  public static final int EMOJI_DEFAULT = 0;
+  public static final int EMOJI_HAS = 1;
+  public static final int STATE_DEFAULT = 0;
+  public static final int STATE_FAILED = 2;
+  public static final int STATE_SENDING = 1;
+  public static final String STR_COLON = ": ";
+  public static final String STR_FAILED = "F ";
+  public static final String STR_SENDING = "S ";
+  public boolean bShowDraft;
+  public CharSequence mDraft;
+  public int mEmojiFlag;
+  public int nState;
+  public CharSequence strContent;
+  public CharSequence strPrefix;
+  public CharSequence suffix;
   
   public CharSequence a(Context paramContext)
   {
     Object localObject2 = null;
     StringBuffer localStringBuffer = null;
     int i = 0;
-    if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.d))) {
-      return this.d;
+    if ((this.bShowDraft) && (!TextUtils.isEmpty(this.mDraft))) {
+      return this.mDraft;
     }
     Object localObject1;
-    if ((this.jdField_b_of_type_JavaLangCharSequence instanceof Spannable)) {
+    if ((this.strContent instanceof Spannable)) {
       if (paramContext == null)
       {
         localObject1 = null;
@@ -42,19 +52,19 @@ public class MsgSummary
       int j;
       try
       {
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
+        if (TextUtils.isEmpty(this.strPrefix)) {
           break label504;
         }
-        j = this.jdField_a_of_type_JavaLangCharSequence.length() + ": ".length();
-        if (this.jdField_a_of_type_Int != 2) {
+        j = this.strPrefix.length() + ": ".length();
+        if (this.nState != 2) {
           continue;
         }
-        paramContext = ((Resources)localObject1).getDrawable(2130845435);
+        paramContext = ((Resources)localObject1).getDrawable(2130849015);
         i = j + "F ".length();
         if (paramContext != null)
         {
           paramContext.setBounds(0, 0, paramContext.getIntrinsicWidth() * 2 / 3, paramContext.getIntrinsicHeight() * 2 / 3);
-          ((Spannable)this.jdField_b_of_type_JavaLangCharSequence).setSpan(new ImageSpan(paramContext), j, i, 33);
+          ((Spannable)this.strContent).setSpan(new ImageSpan(paramContext), j, i, 33);
         }
       }
       catch (Exception paramContext)
@@ -65,34 +75,34 @@ public class MsgSummary
         QLog.i("Q.recent", 2, paramContext.toString());
         continue;
       }
-      return this.jdField_b_of_type_JavaLangCharSequence;
+      return this.strContent;
       localObject1 = paramContext.getResources();
       break;
       paramContext = localStringBuffer;
-      if (this.jdField_a_of_type_Int == 1)
+      if (this.nState == 1)
       {
-        paramContext = ((Resources)localObject1).getDrawable(2130845436);
+        paramContext = ((Resources)localObject1).getDrawable(2130849016);
         i = "S ".length();
         i = j + i;
         continue;
         localStringBuffer = new StringBuffer(40);
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
-          localStringBuffer.append(this.jdField_a_of_type_JavaLangCharSequence).append(": ");
+        if (!TextUtils.isEmpty(this.strPrefix)) {
+          localStringBuffer.append(this.strPrefix).append(": ");
         }
         for (j = localStringBuffer.length();; j = 0)
         {
-          if (this.jdField_a_of_type_Int == 2)
+          if (this.nState == 2)
           {
             localStringBuffer.append("F ");
             i = localStringBuffer.length();
           }
           for (;;)
           {
-            if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangCharSequence)) {
-              localStringBuffer.append(this.jdField_b_of_type_JavaLangCharSequence);
+            if (!TextUtils.isEmpty(this.strContent)) {
+              localStringBuffer.append(this.strContent);
             }
-            if (this.c != null) {
-              localStringBuffer.append(this.c);
+            if (this.suffix != null) {
+              localStringBuffer.append(this.suffix);
             }
             if (paramContext == null)
             {
@@ -103,8 +113,8 @@ public class MsgSummary
             }
             try
             {
-              if (this.jdField_a_of_type_Int == 2) {
-                paramContext = ((Resources)localObject1).getDrawable(2130845435);
+              if (this.nState == 2) {
+                paramContext = ((Resources)localObject1).getDrawable(2130849015);
               }
               for (;;)
               {
@@ -115,7 +125,7 @@ public class MsgSummary
                   ((SpannableStringBuilder)localObject1).setSpan(new ImageSpan(paramContext), j, i, 33);
                 }
                 return localObject1;
-                if (this.jdField_a_of_type_Int != 1) {
+                if (this.nState != 1) {
                   break label494;
                 }
                 localStringBuffer.append("S ");
@@ -124,8 +134,8 @@ public class MsgSummary
                 localObject1 = paramContext.getResources();
                 break label326;
                 paramContext = localObject2;
-                if (this.jdField_a_of_type_Int == 1) {
-                  paramContext = ((Resources)localObject1).getDrawable(2130845436);
+                if (this.nState == 1) {
+                  paramContext = ((Resources)localObject1).getDrawable(2130849016);
                 }
               }
             }
@@ -157,8 +167,8 @@ public class MsgSummary
     Object localObject1 = null;
     int j = 2;
     int k = 1;
-    if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.d))) {
-      localObject1 = this.d;
+    if ((this.bShowDraft) && (!TextUtils.isEmpty(this.mDraft))) {
+      localObject1 = this.mDraft;
     }
     while (paramContext == null) {
       return localObject1;
@@ -170,30 +180,30 @@ public class MsgSummary
       int i;
       try
       {
-        if (this.jdField_a_of_type_Int == 2)
+        if (this.nState == 2)
         {
-          localObject1 = localResources.getDrawable(2130845435);
+          localObject1 = localResources.getDrawable(2130849015);
           if (paramInt <= 0) {
             break label618;
           }
-          paramInt = paramContext.getResources().getColor(2131494288);
-          if (!(this.jdField_b_of_type_JavaLangCharSequence instanceof QQText)) {
+          paramInt = paramContext.getResources().getColor(2131167008);
+          if (!(this.strContent instanceof bamp)) {
             break label369;
           }
-          paramContext = (QQText)this.jdField_b_of_type_JavaLangCharSequence;
+          paramContext = (bamp)this.strContent;
           localObject3 = (ImageSpan[])paramContext.getSpans(0, 1, ImageSpan.class);
           if (localObject3.length > 0) {
             paramContext.removeSpan(localObject3[0]);
           }
           localObject3 = paramContext.a(paramString, true, new int[0]);
-          if (this.jdField_a_of_type_Int != 2) {
+          if (this.nState != 2) {
             break label332;
           }
-          paramContext = ((QQText)localObject3).a("F ", true, new int[0]);
-          if (this.c == null) {
+          paramContext = ((bamp)localObject3).a("F ", true, new int[0]);
+          if (this.suffix == null) {
             break label615;
           }
-          paramContext = paramContext.a(this.c.toString(), false, new int[0]);
+          paramContext = paramContext.a(this.suffix.toString(), false, new int[0]);
           if (localObject1 == null) {
             break label609;
           }
@@ -216,10 +226,10 @@ public class MsgSummary
           return paramContext;
         }
         localObject1 = localObject3;
-        if (this.jdField_a_of_type_Int != 1) {
+        if (this.nState != 1) {
           continue;
         }
-        localObject1 = localResources.getDrawable(2130845436);
+        localObject1 = localResources.getDrawable(2130849016);
         continue;
         localObject2 = null;
       }
@@ -233,9 +243,9 @@ public class MsgSummary
       continue;
       label332:
       paramContext = (Context)localObject3;
-      if (this.jdField_a_of_type_Int == 1)
+      if (this.nState == 1)
       {
-        paramContext = ((QQText)localObject3).a("S ", true, new int[0]);
+        paramContext = ((bamp)localObject3).a("S ", true, new int[0]);
         continue;
         label358:
         paramInt = 0;
@@ -245,20 +255,20 @@ public class MsgSummary
         continue;
         label369:
         paramContext = new StringBuffer(40);
-        if (this.jdField_a_of_type_Int == 2)
+        if (this.nState == 2)
         {
           paramContext.append("F ");
           paramContext.append(paramString);
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence))
+          if (!TextUtils.isEmpty(this.strPrefix))
           {
-            paramContext.append(this.jdField_a_of_type_JavaLangCharSequence);
+            paramContext.append(this.strPrefix);
             paramContext.append("：");
           }
-          if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangCharSequence)) {
-            paramContext.append(this.jdField_b_of_type_JavaLangCharSequence);
+          if (!TextUtils.isEmpty(this.strContent)) {
+            paramContext.append(this.strContent);
           }
-          if (this.c != null) {
-            paramContext.append(this.c);
+          if (this.suffix != null) {
+            paramContext.append(this.suffix);
           }
           paramContext = new SpannableStringBuilder(paramContext.toString());
           if (localObject2 == null) {
@@ -288,7 +298,7 @@ public class MsgSummary
           {
             paramContext.setSpan(localObject2, paramInt, paramString.length() + i, 33);
             return paramContext;
-            if (this.jdField_a_of_type_Int != 1) {
+            if (this.nState != 1) {
               break;
             }
             paramContext.append("S ");
@@ -310,18 +320,31 @@ public class MsgSummary
   
   public void a()
   {
-    this.jdField_a_of_type_JavaLangCharSequence = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangCharSequence = null;
-    this.c = null;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.d = null;
+    this.strPrefix = null;
+    this.nState = 0;
+    this.strContent = null;
+    this.suffix = null;
+    this.mEmojiFlag = 0;
+    this.bShowDraft = false;
+    this.mDraft = null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(128);
+    localStringBuilder.append(this.strPrefix).append(";");
+    localStringBuilder.append(this.nState).append(";");
+    localStringBuilder.append(this.strContent).append(";");
+    localStringBuilder.append(this.suffix).append(";");
+    localStringBuilder.append(this.mEmojiFlag).append(";");
+    localStringBuilder.append(this.bShowDraft).append(";");
+    localStringBuilder.append(this.mDraft);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.MsgSummary
  * JD-Core Version:    0.7.0.1
  */

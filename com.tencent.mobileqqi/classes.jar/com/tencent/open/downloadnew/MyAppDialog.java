@@ -12,8 +12,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.open.base.LogUtility;
-import hso;
-import hsp;
+import hok;
+import hol;
 import java.lang.ref.WeakReference;
 
 public class MyAppDialog
@@ -36,7 +36,7 @@ public class MyAppDialog
     paramActivity = new ColorDrawable();
     paramActivity.setAlpha(0);
     getWindow().setBackgroundDrawable(paramActivity);
-    setContentView(2130903336);
+    setContentView(2130903338);
   }
   
   public Activity a()
@@ -58,7 +58,7 @@ public class MyAppDialog
     }
     this.c.setText(paramInt);
     this.c.setVisibility(0);
-    this.c.setOnClickListener(new hso(this, paramOnClickListener, paramInt, paramBoolean));
+    this.c.setOnClickListener(new hok(this, paramOnClickListener, paramInt, paramBoolean));
     return this;
   }
   
@@ -131,7 +131,7 @@ public class MyAppDialog
     }
     this.d.setText(paramInt);
     this.d.setVisibility(0);
-    this.d.setOnClickListener(new hsp(this, paramOnClickListener, paramInt, paramBoolean));
+    this.d.setOnClickListener(new hol(this, paramOnClickListener, paramInt, paramBoolean));
     return this;
   }
   
@@ -161,8 +161,8 @@ public class MyAppDialog
     this.c = ((TextView)findViewById(2131231472));
     this.c.getPaint().setFakeBoldText(true);
     this.d = ((TextView)findViewById(2131231473));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131232131));
-    this.e = ((TextView)findViewById(2131232132));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131232134));
+    this.e = ((TextView)findViewById(2131232135));
   }
   
   public void setTitle(int paramInt)

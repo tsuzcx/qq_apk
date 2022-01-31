@@ -1,44 +1,39 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fpsreport.FPSSwipListView;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.theme.diy.ThemeBackground;
-import com.tencent.mobileqq.vas.VasApngUtil;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
-public class sip
-  implements Runnable
+class sip
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public sip(Conversation paramConversation) {}
+  private final int jdField_a_of_type_Int;
+  private final int b;
   
-  public void run()
+  sip(sio paramsio, int paramInt1, int paramInt2)
   {
-    this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1051);
-    ThemeBackground localThemeBackground = new ThemeBackground();
-    if (ThemeUtil.isNowThemeIsDIY())
-    {
-      localThemeBackground.pageIndex = 100;
-      ThemeBackground.getThemeBackground(this.a.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.getContext(), "theme_bg_message_path_png", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localThemeBackground);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public boolean onPreDraw()
+  {
+    this.jdField_a_of_type_Sio.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sio.a, ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sio.a) + sio.a(this.jdField_a_of_type_Sio));
+    ReadInJoyDynamicGridView.b(this.jdField_a_of_type_Sio.a, ReadInJoyDynamicGridView.b(this.jdField_a_of_type_Sio.a) + sio.b(this.jdField_a_of_type_Sio));
+    if (ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sio.a) != null) {
+      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sio.a).setVisibility(0);
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1051, localThemeBackground));
-      return;
-      if (ThemeUtil.isNowThemeIsAnimate())
-      {
-        localThemeBackground.path = ThemeUtil.getAnimatePathByTag(2);
-        Drawable localDrawable = this.a.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.getContext().getResources().getDrawable(2130845807);
-        localThemeBackground.img = VasApngUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localThemeBackground.path, "-conversation-", localDrawable, VasApngUtil.a, "-conversation-", null);
-      }
+    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sio.a, this.jdField_a_of_type_Sio.a.a(ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sio.a)));
+    if (ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sio.a) != null) {
+      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sio.a).setVisibility(4);
     }
+    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sio.a, this.jdField_a_of_type_Int, this.b);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sip
  * JD-Core Version:    0.7.0.1
  */

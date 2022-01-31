@@ -1,7 +1,7 @@
 package com.tencent.tmassistantsdk.internal.logreport;
 
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
 import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
 import com.tencent.tmassistantsdk.internal.protocol.jce.StatStdReport;
 
@@ -16,11 +16,11 @@ public class b
     if (paramTMAssistantCallYYBParamStruct != null) {
       localStringBuffer.append(GlobalUtil.getAppPackageName(GlobalUtil.getInstance().getContext())).append("_").append(String.valueOf(GlobalUtil.getAppVersionCode(GlobalUtil.getInstance().getContext()))).append("_").append(paramTMAssistantCallYYBParamStruct.channelId).append("_").append(paramTMAssistantCallYYBParamStruct.via).append("_").append(paramTMAssistantCallYYBParamStruct.uin).append("_").append(paramTMAssistantCallYYBParamStruct.taskAppId).append("_").append(paramTMAssistantCallYYBParamStruct.taskPackageName).append("_").append(paramTMAssistantCallYYBParamStruct.taskVersion);
     }
-    r.c("BusinessReportManager", "logStr=" + localStringBuffer);
+    ab.c("BusinessReportManager", "logStr=" + localStringBuffer);
     return localStringBuffer.toString();
   }
   
-  public static b h()
+  public static b g()
   {
     try
     {
@@ -35,7 +35,7 @@ public class b
   
   public StatStdReport a(String paramString1, String paramString2, String paramString3)
   {
-    r.c("BusinessReportManager", "createTipsInfoLog");
+    ab.c("BusinessReportManager", "createTipsInfoLog");
     StatStdReport localStatStdReport = new StatStdReport();
     localStatStdReport.name = paramString3;
     localStatStdReport.time = System.currentTimeMillis();
@@ -45,24 +45,24 @@ public class b
     return localStatStdReport;
   }
   
-  protected com.tencent.tmassistant.common.a.a e()
+  protected com.tencent.tmassistant.common.a.a d()
   {
     return com.tencent.tmassistantsdk.internal.c.a.a.e();
   }
   
-  protected byte f()
+  protected byte e()
   {
     return 3;
   }
   
-  protected boolean g()
+  protected boolean f()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.logreport.b
  * JD-Core Version:    0.7.0.1
  */

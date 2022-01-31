@@ -1,37 +1,33 @@
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.UploadSoDownloader;
-import java.io.File;
 
-public class amtr
-  implements Runnable
+class amtr
+  implements ServiceConnection
 {
-  public amtr(UploadSoDownloader paramUploadSoDownloader) {}
+  amtr(amtp paramamtp) {}
   
-  public void run()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    boolean bool = UploadSoDownloader.a(this.a, UploadSoDownloader.a().getAbsolutePath());
-    QLog.d("UploadEnv", 1, "check so md5 result: " + bool);
-    if (bool)
-    {
-      UploadSoDownloader.a(true);
-      return;
-    }
+    QLog.w(amuc.a, 1, "onServiceConnected, name[" + paramComponentName + "]");
     try
     {
-      if (UploadSoDownloader.a().exists()) {
-        UploadSoDownloader.a().delete();
-      }
-      UploadSoDownloader.a(this.a, false);
-      UploadSoDownloader.a(false);
+      this.a.a = amzh.a(paramIBinder);
+      this.a.a.a(amtp.a(this.a));
+      this.a.a.c();
       return;
     }
-    catch (Throwable localThrowable)
+    catch (Exception paramComponentName)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      QLog.w(amuc.a, 1, "onServiceConnected, Exception", paramComponentName);
     }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    QLog.w(amuc.a, 1, "onServiceDisconnected, name[" + paramComponentName + "]");
+    this.a.a();
   }
 }
 

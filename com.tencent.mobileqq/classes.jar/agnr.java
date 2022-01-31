@@ -1,21 +1,27 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog.Callback;
+import java.util.List;
 
-public class agnr
-  implements QQProgressDialog.Callback
+class agnr
+  extends alrs
 {
-  public agnr(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  agnr(agnn paramagnn) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if (!this.a.e) {
-      this.a.e = true;
+    if (paramBoolean)
+    {
+      this.a.b = aqau.a(this.a.a).a(this.a.a, this.a.a());
+      this.a.b(this.a.b);
+      if ((this.a.b != null) && (!this.a.b.isEmpty())) {
+        this.a.t(false);
+      }
     }
   }
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agnr
  * JD-Core Version:    0.7.0.1
  */

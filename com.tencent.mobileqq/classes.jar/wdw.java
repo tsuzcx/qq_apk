@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.Stream;
+import java.util.List;
 
-public class wdw
-  implements Runnable
+class wdw
+  implements wdq<Bitmap>
 {
-  public wdw(ZhituManager paramZhituManager, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2) {}
+  wdw(wdt paramwdt, List paramList, String paramString) {}
   
-  public void run()
+  @NonNull
+  public Stream<Bitmap> a(wdm paramwdm)
   {
-    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager, this.jdField_a_of_type_Int);
-    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager, ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager));
-    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager).clear();
-    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b.trim(), null, 0);
+    return wdt.a(this.jdField_a_of_type_Wdt, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wdw
  * JD-Core Version:    0.7.0.1
  */

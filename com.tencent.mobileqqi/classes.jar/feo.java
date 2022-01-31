@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.RecommendContact;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import java.util.Vector;
 
 public class feo
-  implements Comparator
+  implements Runnable
 {
-  public feo(ConditionSearchManager paramConditionSearchManager) {}
+  public feo(PhoneContactManagerImp paramPhoneContactManagerImp, String paramString) {}
   
-  public int a(BaseAddress paramBaseAddress1, BaseAddress paramBaseAddress2)
+  public void run()
   {
-    int j = paramBaseAddress1.d.compareTo(paramBaseAddress2.d);
-    int i = j;
-    if (j == 0) {
-      i = paramBaseAddress1.c.compareTo(paramBaseAddress2.c);
+    Entity localEntity = PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).a(RecommendContact.class, this.jdField_a_of_type_JavaLangString);
+    if (localEntity != null)
+    {
+      PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).b(localEntity);
+      this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a.remove(localEntity);
     }
-    return i;
+    this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.i();
   }
 }
 

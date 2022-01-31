@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-
-public class sqc
-  implements Runnable
+public abstract interface sqc
 {
-  public sqc(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public abstract void M_();
   
-  public void run()
-  {
-    this.a.y();
-  }
+  public abstract void N_();
+  
+  public abstract void O_();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sqc
  * JD-Core Version:    0.7.0.1
  */

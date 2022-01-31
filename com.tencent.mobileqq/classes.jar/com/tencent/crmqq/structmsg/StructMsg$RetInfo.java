@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class StructMsg$RetInfo
-  extends MessageMicro
+  extends MessageMicro<RetInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "ret_code", "err_info" }, new Object[] { Integer.valueOf(0), "" }, RetInfo.class);
   public final PBStringField err_info = PBField.initString("");
@@ -15,7 +15,7 @@ public final class StructMsg$RetInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.crmqq.structmsg.StructMsg.RetInfo
  * JD-Core Version:    0.7.0.1
  */

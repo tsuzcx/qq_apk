@@ -1,28 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-
 public class akco
-  implements Runnable
 {
-  public akco(JumpAction paramJumpAction) {}
+  public int a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public String b;
   
-  public void run()
+  public akco() {}
+  
+  public akco(String paramString1, String paramString2, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (JumpAction.a(this.a) == null) {}
-    String str;
-    do
-    {
-      return;
-      str = JumpAction.a(this.a).getCurrentAccountUin();
-    } while (TextUtils.isEmpty(str));
-    WebProcessManager.a(str, System.currentTimeMillis());
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akco
  * JD-Core Version:    0.7.0.1
  */

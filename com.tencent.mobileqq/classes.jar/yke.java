@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.concurrent.ThreadFactory;
 
 public final class yke
-  implements Runnable
+  implements ThreadFactory
 {
-  public yke(ApolloManager paramApolloManager, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public Thread newThread(Runnable paramRunnable)
   {
-    if (ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager) == null) {
-      ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager, this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()));
-    }
+    paramRunnable = new Thread(paramRunnable);
+    paramRunnable.setName("pre-loader-pool-" + paramRunnable.getId());
+    return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yke
  * JD-Core Version:    0.7.0.1
  */

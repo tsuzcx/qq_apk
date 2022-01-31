@@ -1,29 +1,33 @@
 package dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
-import aohy;
+import bnib;
+import bnif;
+import bnih;
+import bnil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class VideoFramesFetcher
-  implements OnFetchFrameListener
+  implements bnih
 {
   private static long jdField_a_of_type_Long;
-  private volatile int jdField_a_of_type_Int = 1;
-  private FrameAdapter jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter;
-  private BlockingQueue jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
-  private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private int b = 1000;
+  private volatile int jdField_a_of_type_Int;
+  private bnib jdField_a_of_type_Bnib;
+  private BlockingQueue<bnil> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
+  private ConcurrentHashMap<Integer, bnil> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private int b;
   private int c;
   
-  private FramesProcessor.Frame b(int paramInt)
+  private bnif b(int paramInt)
   {
     if (!a()) {
       if (QLog.isColorLevel()) {
         QLog.d("VideoFramesFetcher", 2, "FetchFrameAtTime fail, status=" + this.jdField_a_of_type_Int);
       }
     }
-    aohy localaohy2;
+    bnil localbnil2;
     do
     {
       return null;
@@ -31,10 +35,10 @@ public class VideoFramesFetcher
       {
         if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt)))
         {
-          aohy localaohy1 = (aohy)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+          bnil localbnil1 = (bnil)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
           l = jdField_a_of_type_Long;
           jdField_a_of_type_Long = 1L + l;
-          localaohy1.jdField_a_of_type_Long = l;
+          localbnil1.jdField_a_of_type_Long = l;
           return null;
         }
       }
@@ -45,13 +49,13 @@ public class VideoFramesFetcher
       }
       long l = jdField_a_of_type_Long;
       jdField_a_of_type_Long = 1L + l;
-      localaohy2 = new aohy(this, l, paramInt, paramInt + this.b);
+      localbnil2 = new bnil(this, l, paramInt, paramInt + this.b);
     } while (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null);
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localaohy2);
+    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localbnil2);
     return null;
   }
   
-  public FramesProcessor.Frame a(int paramInt)
+  public bnif a(int paramInt)
   {
     if ((!a()) || (paramInt < 0))
     {
@@ -60,8 +64,8 @@ public class VideoFramesFetcher
       }
       return null;
     }
-    if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter.a(paramInt)) {
-      return this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter.a(paramInt);
+    if (this.jdField_a_of_type_Bnib.a(paramInt)) {
+      return this.jdField_a_of_type_Bnib.a(paramInt);
     }
     return b(this.b * paramInt);
   }
@@ -92,7 +96,7 @@ public class VideoFramesFetcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher
  * JD-Core Version:    0.7.0.1
  */

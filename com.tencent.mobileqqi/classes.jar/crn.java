@@ -1,23 +1,20 @@
-import android.content.Context;
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EmosmDetailActivity;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class crn
   implements View.OnClickListener
 {
-  public crn(EmosmDetailActivity paramEmosmDetailActivity, Context paramContext) {}
+  public crn(LbsBaseActivity paramLbsBaseActivity) {}
   
   public void onClick(View paramView)
   {
-    EmosmDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, MarketFaceItemBuilder.a.frienduin, "ep_mall", "Clk_collect", 0);
-    paramView = new QQProgressDialog(this.jdField_a_of_type_AndroidContentContext);
-    paramView.a(this.jdField_a_of_type_AndroidContentContext.getString(2131561618));
-    paramView.show();
-    EmosmDetailActivity.a(6, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.jdField_b_of_type_AndroidWidgetImageView, paramView, null);
+    this.a.b.d(true);
+    if ((LbsBaseActivity.c(this.a) != null) && (LbsBaseActivity.c(this.a).isShowing())) {
+      LbsBaseActivity.c(this.a).dismiss();
+    }
   }
 }
 

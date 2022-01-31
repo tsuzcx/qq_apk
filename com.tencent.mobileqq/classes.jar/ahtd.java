@@ -1,26 +1,31 @@
-import android.os.Handler;
-import com.tencent.mobileqq.search.fragment.GroupSearchFragment;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import java.util.ArrayList;
 
 public class ahtd
-  implements Runnable
+  extends zto
 {
-  public ahtd(GroupSearchFragment paramGroupSearchFragment) {}
+  public ahtd(DeviceFragment paramDeviceFragment) {}
   
-  public void run()
+  protected void a(ArrayList<DeviceInfo> paramArrayList)
   {
-    if (!this.a.c)
+    if (this.a.e)
     {
-      this.a.a.a();
-      this.a.c = true;
+      this.a.e = false;
+      if (this.a.jdField_a_of_type_Ahsy != null) {
+        this.a.jdField_a_of_type_Ahsy.a(this.a.b(), true, null);
+      }
     }
-    this.a.b.removeMessages(100);
-    this.a.b.sendEmptyMessage(100);
+    if (this.a.jdField_a_of_type_Ahrp == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_Ahrp.a = ((ArrayList)paramArrayList.clone());
+    this.a.jdField_a_of_type_Ahrp.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahtd
  * JD-Core Version:    0.7.0.1
  */

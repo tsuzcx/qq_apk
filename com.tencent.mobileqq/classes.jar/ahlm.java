@@ -1,20 +1,38 @@
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import java.lang.ref.WeakReference;
 
 public class ahlm
-  implements Runnable
+  extends Handler
 {
-  public ahlm(CameraCaptureView paramCameraCaptureView) {}
+  private WeakReference<NewFriendActivity> a;
   
-  public void run()
+  public ahlm(NewFriendActivity paramNewFriendActivity)
   {
-    this.a.a = new RenderBuffer(this.a.f, this.a.g, 33984);
-    this.a.k = this.a.a.a();
+    this.a = new WeakReference(paramNewFriendActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    NewFriendActivity localNewFriendActivity = (NewFriendActivity)this.a.get();
+    if (localNewFriendActivity == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      localNewFriendActivity.a(paramMessage.arg1);
+      return;
+    }
+    localNewFriendActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahlm
  * JD-Core Version:    0.7.0.1
  */

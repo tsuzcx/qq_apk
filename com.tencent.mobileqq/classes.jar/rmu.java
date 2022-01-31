@@ -1,57 +1,88 @@
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class rmu
-  extends MqqHandler
 {
-  public rmu(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  private static final String jdField_a_of_type_JavaLangString = rmu.class.getSimpleName();
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private rmn jdField_a_of_type_Rmn;
+  private rng jdField_a_of_type_Rng;
   
-  public void handleMessage(Message paramMessage)
+  rmu(Activity paramActivity, rmn paramrmn, rng paramrng)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Rmn = paramrmn;
+    this.jdField_a_of_type_Rng = paramrng;
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    switch (paramInt1)
     {
     }
+    label20:
+    String str;
+    VideoInfo localVideoInfo;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          break label20;
+          while (paramInt2 != -1) {}
+          str = paramIntent.getStringExtra("ARG_VIDEO_ARTICLE_ID");
+        } while ((!paramIntent.getBooleanExtra("KEY_VIDEO_BIU_SUCCESS", false)) || (str == null) || (this.jdField_a_of_type_Rmn == null));
+        paramIntent = this.jdField_a_of_type_Rng.a().iterator();
+      } while (!paramIntent.hasNext());
+      localVideoInfo = (VideoInfo)paramIntent.next();
+    } while (!str.equals(localVideoInfo.g));
+    localVideoInfo.f += 1;
+    this.jdField_a_of_type_Rmn.b(localVideoInfo);
+  }
+  
+  public void a(VideoInfo paramVideoInfo)
+  {
+    boolean bool = true;
+    if (ohq.a() == 1) {}
     for (;;)
     {
-      super.handleMessage(paramMessage);
-      return;
-      if (AssociatedAccountManageActivity.a(this.a) == null) {
-        AssociatedAccountManageActivity.a(this.a, new QQProgressDialog(this.a, this.a.getTitleBarHeight()));
-      }
-      if ((!this.a.isFinishing()) && (!AssociatedAccountManageActivity.a(this.a).isShowing()))
+      try
       {
-        try
-        {
-          AssociatedAccountManageActivity.a(this.a).show();
+        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, ReadInJoyDeliverBiuActivity.class);
+        if ((paramVideoInfo.jdField_a_of_type_Int == 6) && (paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)) {
+          localIntent.putExtra("feedsType", paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedType);
         }
-        catch (Exception localException) {}
-        if (QLog.isColorLevel())
-        {
-          QLog.e("AssociatedAccountManage", 2, "QQProgressDialog show exception.", localException);
-          continue;
-          if ((AssociatedAccountManageActivity.a(this.a) != null) && (AssociatedAccountManageActivity.a(this.a).isShowing()))
-          {
-            AssociatedAccountManageActivity.a(this.a).dismiss();
-            AssociatedAccountManageActivity.a(this.a, null);
-            continue;
-            if (AssociatedAccountManageActivity.a(this.a) != null) {
-              AssociatedAccountManageActivity.a(this.a).cancel();
-            }
-            AssociatedAccountManageActivity.a(this.a, QQToast.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
-          }
-        }
+        localIntent.putExtra("ARG_VIDEO_ARTICLE_ID", paramVideoInfo.g);
+        localIntent.putExtra("biu_src", 2);
+        localIntent.putExtra("arg_from_type", 8);
+        localIntent.putExtra("arg_article_info", paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+        localIntent.putExtra("fast_biu_type", bool);
+        this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 102);
+        this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
+        return;
       }
+      catch (Exception paramVideoInfo)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "innerOpenReadInJoyBiuActivity error exception = " + paramVideoInfo.getMessage());
+      }
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rmu
  * JD-Core Version:    0.7.0.1
  */

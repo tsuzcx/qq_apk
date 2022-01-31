@@ -1,93 +1,121 @@
-import android.text.TextUtils;
-import com.tencent.TMG.sdk.AVCustomSpearEngineCtrl;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqavopensdk.AVEngineEventHandler;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONTokener;
+import android.graphics.Color;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.minigame.utils.DpUtil;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-class yvg
-  implements Runnable
+public class yvg
+  extends BaseAdapter
 {
-  yvg(yvf paramyvf, byte[] paramArrayOfByte) {}
+  private List<yvh> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Map<Integer, yvi> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public void run()
+  public void a(int paramInt)
   {
-    Object localObject1 = new JSONTokener(new String(this.jdField_a_of_type_ArrayOfByte));
-    if ((this.jdField_a_of_type_Yvf.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper.jdField_a_of_type_AndroidContentContext == null) || (AVManager.a(this.jdField_a_of_type_Yvf.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper.jdField_a_of_type_AndroidContentContext) == null) || (AVManager.a(this.jdField_a_of_type_Yvf.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper.jdField_a_of_type_AndroidContentContext).a() == null)) {
-      if (this.jdField_a_of_type_Yvf.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler != null) {
-        this.jdField_a_of_type_Yvf.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler.b(1, "context is null !!!!");
+    int i = 0;
+    if (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      yvh localyvh = (yvh)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (i == paramInt) {}
+      for (boolean bool = true;; bool = false)
+      {
+        localyvh.jdField_a_of_type_Boolean = bool;
+        i += 1;
+        break;
       }
     }
-    AVCustomSpearEngineCtrl localAVCustomSpearEngineCtrl;
-    do
+    notifyDataSetChanged();
+  }
+  
+  public void a(List<yvh> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    yvh localyvh = (yvh)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt)))
     {
-      return;
-      localAVCustomSpearEngineCtrl = AVManager.a(this.jdField_a_of_type_Yvf.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper.jdField_a_of_type_AndroidContentContext).a();
-      if (localAVCustomSpearEngineCtrl != null) {
-        break;
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560430, paramViewGroup, false);
+      paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, DpUtil.dip2px(paramViewGroup.getContext(), 50.0F)));
+      paramViewGroup = new yvi();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378821));
+      paramViewGroup.b = paramView.findViewById(2131379929);
+      if ((localyvh != null) && (Build.VERSION.SDK_INT >= 4)) {
+        paramView.setContentDescription(localyvh.jdField_a_of_type_JavaLangString);
       }
-    } while (this.jdField_a_of_type_Yvf.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler == null);
-    this.jdField_a_of_type_Yvf.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler.b(1, "get spearEngineCtrl failed!!!!");
-    return;
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView;
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramViewGroup);
+    }
+    label260:
+    label266:
     for (;;)
     {
-      int i;
-      try
+      if ((localyvh != null) && (paramViewGroup != null) && (paramView != null))
       {
-        localObject1 = (JSONObject)((JSONTokener)localObject1).nextValue();
-        if ((localObject1 == null) || (TextUtils.isEmpty(((JSONObject)localObject1).toString()))) {
-          QLog.e("AVEngineWalper", 1, "Json is invalid!!");
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localyvh.jdField_a_of_type_JavaLangString);
+        TextView localTextView = paramViewGroup.jdField_a_of_type_AndroidWidgetTextView;
+        if (!localyvh.jdField_a_of_type_Boolean) {
+          break label251;
         }
-        localObject1 = (JSONObject)((JSONObject)localObject1).get("data");
-        if (localObject1 != null)
-        {
-          JSONArray localJSONArray = ((JSONObject)localObject1).getJSONArray("conf");
-          if (localJSONArray != null)
-          {
-            int j = localJSONArray.length();
-            i = 0;
-            if (i < j)
-            {
-              Object localObject2 = (JSONObject)localJSONArray.get(i);
-              String str = localJSONArray.getString(i);
-              if ((localObject2 == null) || (str == null)) {
-                break label414;
-              }
-              localObject2 = ((JSONObject)localObject2).getString("role");
-              if (localObject2 == null) {
-                break label414;
-              }
-              localAVCustomSpearEngineCtrl.addParamByRole((String)localObject2, str);
-              QLog.e("AVEngineWalper", 1, "Add Role mAppID=" + this.jdField_a_of_type_Yvf.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper.jdField_a_of_type_JavaLangString + ", roleName=" + (String)localObject2 + ", strRoleConf=" + str);
-              break label414;
-            }
-          }
-          localAVCustomSpearEngineCtrl.setSpearEngineScence(((JSONObject)localObject1).getInt("scheme"));
+        paramInt = Color.parseColor("#ffff5b84");
+        label185:
+        localTextView.setTextColor(paramInt);
+        paramViewGroup = paramViewGroup.b;
+        if (!localyvh.jdField_a_of_type_Boolean) {
+          break label260;
         }
-        this.jdField_a_of_type_Yvf.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper.a(this.jdField_a_of_type_Yvf.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Yvf.jdField_a_of_type_Boolean, this.jdField_a_of_type_Yvf.b);
-        return;
       }
-      catch (JSONException localJSONException)
+      for (paramInt = 0;; paramInt = 8)
       {
-        localJSONException.printStackTrace();
-      }
-      if (this.jdField_a_of_type_Yvf.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler == null) {
+        paramViewGroup.setVisibility(paramInt);
+        paramView.setSelected(localyvh.jdField_a_of_type_Boolean);
+        return paramView;
+        paramViewGroup = (yvi)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+        if (paramViewGroup == null) {
+          break label266;
+        }
+        paramView = paramViewGroup.jdField_a_of_type_AndroidViewView;
         break;
+        label251:
+        paramInt = Color.parseColor("#ff878b99");
+        break label185;
       }
-      this.jdField_a_of_type_Yvf.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler.b(1, "spearEngineCtrl addParamByRole failed!!!!");
-      return;
-      label414:
-      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yvg
  * JD-Core Version:    0.7.0.1
  */

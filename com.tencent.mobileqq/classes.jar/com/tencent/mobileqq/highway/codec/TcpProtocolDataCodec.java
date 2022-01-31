@@ -4,6 +4,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.SystemClock;
+import com.tencent.mobileqq.highway.config.ConfigManager;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.DataHighwayHead;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.LoginSigHead;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.ReqDataHighwayHead;
@@ -21,11 +22,9 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MsfSocketInputBuffer;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.http.HttpException;
 
 public class TcpProtocolDataCodec
 {
@@ -41,6 +40,7 @@ public class TcpProtocolDataCodec
   
   private CSDataHighwayHead.DataHighwayHead buildHWHead(HwRequest paramHwRequest)
   {
+    Object localObject2 = null;
     CSDataHighwayHead.DataHighwayHead localDataHighwayHead = new CSDataHighwayHead.DataHighwayHead();
     if (paramHwRequest.isOpenUpEnable) {
       localDataHighwayHead.uint32_version.set(2);
@@ -52,180 +52,208 @@ public class TcpProtocolDataCodec
       localDataHighwayHead.uint32_dataflag.set(paramHwRequest.dataFlag);
       localDataHighwayHead.uint32_retry_times.set(paramHwRequest.retryCount);
       localDataHighwayHead.uint32_command_id.set(paramHwRequest.mBuCmdId);
-      Object localObject1 = null;
-      Object localObject2 = null;
       try
       {
-        arrayOfByte = paramHwRequest.account.getBytes("utf-8");
-        localObject1 = arrayOfByte;
+        byte[] arrayOfByte1 = paramHwRequest.account.getBytes("utf-8");
+        try
+        {
+          byte[] arrayOfByte2 = paramHwRequest.hwCmd.getBytes("utf-8");
+          localObject2 = arrayOfByte2;
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException3)
+        {
+          for (;;)
+          {
+            localUnsupportedEncodingException3.printStackTrace();
+          }
+        }
+        localDataHighwayHead.bytes_uin.set(ByteStringMicro.copyFrom(arrayOfByte1));
+        localDataHighwayHead.bytes_command.set(ByteStringMicro.copyFrom(localObject2));
+        if (paramHwRequest.isOpenUpEnable) {}
+        try
+        {
+          arrayOfByte1 = getVersionCode().getBytes("utf-8");
+          if (arrayOfByte1 != null) {
+            localDataHighwayHead.bytes_build_ver.set(ByteStringMicro.copyFrom(arrayOfByte1));
+          }
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException2)
+        {
+          for (;;)
+          {
+            int i;
+            Object localObject1;
+            localUnsupportedEncodingException2.printStackTrace();
+          }
+        }
+        if (paramHwRequest.localeId > 0)
+        {
+          localDataHighwayHead.locale_id.set(paramHwRequest.localeId);
+          BdhLogUtil.LogEvent("R", "buildHWHead,locale_id = " + paramHwRequest.localeId);
+        }
+        i = ConfigManager.getCustomEnvId();
+        if (i > 0) {
+          localDataHighwayHead.env_id.set(i);
+        }
+        return localDataHighwayHead;
+        localDataHighwayHead.uint32_version.set(1);
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException1)
       {
         for (;;)
         {
-          byte[] arrayOfByte;
-          label117:
           localUnsupportedEncodingException1.printStackTrace();
+          localObject1 = null;
         }
       }
-      try
-      {
-        arrayOfByte = paramHwRequest.hwCmd.getBytes("utf-8");
-        localObject2 = arrayOfByte;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException2)
-      {
-        localUnsupportedEncodingException2.printStackTrace();
-        break label117;
-      }
-      localDataHighwayHead.bytes_uin.set(ByteStringMicro.copyFrom(localObject1));
-      localDataHighwayHead.bytes_command.set(ByteStringMicro.copyFrom(localObject2));
-      if (paramHwRequest.isOpenUpEnable) {}
-      try
-      {
-        paramHwRequest = getVersionCode().getBytes("utf-8");
-        if (paramHwRequest != null) {
-          localDataHighwayHead.bytes_build_ver.set(ByteStringMicro.copyFrom(paramHwRequest));
-        }
-        return localDataHighwayHead;
-      }
-      catch (UnsupportedEncodingException paramHwRequest)
-      {
-        paramHwRequest.printStackTrace();
-      }
-      localDataHighwayHead.uint32_version.set(1);
     }
-    return localDataHighwayHead;
   }
   
   private int decodePackage(byte[] paramArrayOfByte, List<HwResponse> paramList)
   {
+    boolean bool2 = true;
     int i = paramArrayOfByte.length;
-    if ((i == 0) || (i < 10)) {
-      return 0;
-    }
-    if (i > 1048576)
+    if ((i == 0) || (i < 10)) {}
+    int j;
+    Object localObject;
+    byte[] arrayOfByte;
+    CSDataHighwayHead.RspDataHighwayHead localRspDataHighwayHead;
+    do
     {
-      BdhLogUtil.LogEvent("N", "Decode Error : BufLen > MAX_PKG_SIZE");
-      if (this.codecListener != null) {
-        this.codecListener.onDecodeInvalidData(1);
-      }
-      return 0;
-    }
-    if (paramArrayOfByte[0] != 40)
-    {
-      BdhLogUtil.LogEvent("N", "Decode Error : revData[0] != STX_C");
-      if (this.codecListener != null) {
-        this.codecListener.onDecodeInvalidData(2);
-      }
-      return 0;
-    }
-    int k = (int)BdhUtils.getLongData(paramArrayOfByte, 1);
-    int m = 1 + 4;
-    i = (int)BdhUtils.getLongData(paramArrayOfByte, m);
-    int j = k + 10 + i;
-    if (paramArrayOfByte.length < j) {
-      return 0;
-    }
-    Object localObject2 = new byte[k];
-    Object localObject1 = new byte[i];
-    BdhUtils.copyData((byte[])localObject2, 0, paramArrayOfByte, m + 4, k);
-    k += 9;
-    BdhUtils.copyData((byte[])localObject1, 0, paramArrayOfByte, k, i);
-    i = k + i;
-    if (paramArrayOfByte[i] != 41)
-    {
-      if (this.codecListener != null) {
-        this.codecListener.onDecodeInvalidData(2);
-      }
-      return 0;
-    }
-    i = 1;
-    CSDataHighwayHead.RspDataHighwayHead localRspDataHighwayHead = new CSDataHighwayHead.RspDataHighwayHead();
-    try
-    {
-      localRspDataHighwayHead.mergeFrom((byte[])localObject2);
-      if (i == 0)
+      do
       {
-        if (this.codecListener != null) {
+        int k;
+        do
+        {
+          do
+          {
+            do
+            {
+              return 0;
+              if (i <= 1048576) {
+                break;
+              }
+              BdhLogUtil.LogEvent("N", "Decode Error : BufLen > MAX_PKG_SIZE");
+            } while (this.codecListener == null);
+            this.codecListener.onDecodeInvalidData(1);
+            return 0;
+            if (paramArrayOfByte[0] == 40) {
+              break;
+            }
+            BdhLogUtil.LogEvent("N", "Decode Error : revData[0] != STX_C");
+          } while (this.codecListener == null);
           this.codecListener.onDecodeInvalidData(2);
+          return 0;
+          k = (int)BdhUtils.getLongData(paramArrayOfByte, 1);
+          i = (int)BdhUtils.getLongData(paramArrayOfByte, 5);
+          j = k + 10 + i;
+        } while (paramArrayOfByte.length < j);
+        localObject = new byte[k];
+        arrayOfByte = new byte[i];
+        BdhUtils.copyData((byte[])localObject, 0, paramArrayOfByte, 9, k);
+        k += 9;
+        BdhUtils.copyData(arrayOfByte, 0, paramArrayOfByte, k, i);
+        i = k + i;
+        if (paramArrayOfByte[i] == 41) {
+          break;
         }
-        return 0;
-      }
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        i = 0;
-      }
-      paramArrayOfByte = (CSDataHighwayHead.DataHighwayHead)localRspDataHighwayHead.msg_basehead.get();
-      localObject2 = new HwResponse();
-      ((HwResponse)localObject2).hwSeq = paramArrayOfByte.uint32_seq.get();
-      ((HwResponse)localObject2).retCode = localRspDataHighwayHead.uint32_error_code.get();
-      ((HwResponse)localObject2).mRespData = ((byte[])localObject1);
-      ((HwResponse)localObject2).mBuExtendinfo = localRspDataHighwayHead.bytes_rsp_extendinfo.get().toByteArray();
-      ((HwResponse)localObject2).recvTime = SystemClock.uptimeMillis();
-      if (localRspDataHighwayHead.uint64_range.has()) {
-        ((HwResponse)localObject2).range = ((int)localRspDataHighwayHead.uint64_range.get());
-      }
-      if (!localRspDataHighwayHead.uint32_is_reset.has()) {
-        break label380;
-      }
-    }
-    if (localRspDataHighwayHead.uint32_is_reset.get() == 1) {}
-    for (bool = true;; bool = false)
-    {
-      ((HwResponse)localObject2).needReUpload = bool;
-      label380:
-      localObject1 = paramArrayOfByte.bytes_command.get().toByteArray();
-      paramArrayOfByte = null;
+      } while (this.codecListener == null);
+      this.codecListener.onDecodeInvalidData(2);
+      return 0;
+      localRspDataHighwayHead = new CSDataHighwayHead.RspDataHighwayHead();
       try
       {
-        localObject1 = new String((byte[])localObject1, "utf-8");
-        paramArrayOfByte = (byte[])localObject1;
+        localRspDataHighwayHead.mergeFrom((byte[])localObject);
+        i = 1;
       }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      catch (Exception paramArrayOfByte)
       {
         for (;;)
         {
-          localUnsupportedEncodingException.printStackTrace();
-          continue;
-          bool = false;
-          continue;
-          bool = false;
+          paramArrayOfByte.printStackTrace();
+          i = 0;
+        }
+        paramArrayOfByte = (CSDataHighwayHead.DataHighwayHead)localRspDataHighwayHead.msg_basehead.get();
+        localObject = new HwResponse();
+        ((HwResponse)localObject).hwSeq = paramArrayOfByte.uint32_seq.get();
+        ((HwResponse)localObject).retCode = localRspDataHighwayHead.uint32_error_code.get();
+        ((HwResponse)localObject).mRespData = arrayOfByte;
+        ((HwResponse)localObject).mBuExtendinfo = localRspDataHighwayHead.bytes_rsp_extendinfo.get().toByteArray();
+        ((HwResponse)localObject).recvTime = SystemClock.uptimeMillis();
+        if (!localRspDataHighwayHead.uint64_range.has()) {
+          break label340;
+        }
+        ((HwResponse)localObject).range = ((int)localRspDataHighwayHead.uint64_range.get());
+        if (!localRspDataHighwayHead.uint32_is_reset.has()) {
+          break label373;
         }
       }
-      ((HwResponse)localObject2).cmd = paramArrayOfByte;
-      if (localRspDataHighwayHead.uint32_htcost.has()) {
-        ((HwResponse)localObject2).htCost = localRspDataHighwayHead.uint32_htcost.get();
+      if (i != 0) {
+        break;
       }
-      if (localRspDataHighwayHead.uint32_cachecost.has()) {
-        ((HwResponse)localObject2).cacheCost = localRspDataHighwayHead.uint32_cachecost.get();
-      }
-      if (localRspDataHighwayHead.uint32_allow_retry.has())
+    } while (this.codecListener == null);
+    this.codecListener.onDecodeInvalidData(2);
+    return 0;
+    label340:
+    boolean bool1;
+    if (localRspDataHighwayHead.uint32_is_reset.get() == 1) {
+      bool1 = true;
+    }
+    for (;;)
+    {
+      ((HwResponse)localObject).needReUpload = bool1;
+      label373:
+      paramArrayOfByte = paramArrayOfByte.bytes_command.get().toByteArray();
+      try
       {
-        if (localRspDataHighwayHead.uint32_allow_retry.get() != 1) {
-          break;
+        paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
+        ((HwResponse)localObject).cmd = paramArrayOfByte;
+        if (localRspDataHighwayHead.uint32_htcost.has()) {
+          ((HwResponse)localObject).htCost = localRspDataHighwayHead.uint32_htcost.get();
         }
-        bool = true;
-        ((HwResponse)localObject2).shouldRetry = bool;
+        if (localRspDataHighwayHead.uint32_cachecost.has()) {
+          ((HwResponse)localObject).cacheCost = localRspDataHighwayHead.uint32_cachecost.get();
+        }
+        if (localRspDataHighwayHead.uint32_allow_retry.has())
+        {
+          if (localRspDataHighwayHead.uint32_allow_retry.get() == 1)
+          {
+            bool1 = true;
+            ((HwResponse)localObject).shouldRetry = bool1;
+          }
+        }
+        else
+        {
+          if (localRspDataHighwayHead.msg_seghead.has())
+          {
+            paramArrayOfByte = (CSDataHighwayHead.SegHead)localRspDataHighwayHead.msg_seghead.get();
+            ((HwResponse)localObject).segmentResp = paramArrayOfByte;
+            ((HwResponse)localObject).buzRetCode = paramArrayOfByte.uint32_rtcode.get();
+            if ((paramArrayOfByte.uint32_flag.get() & 0x1) != 1) {
+              break label590;
+            }
+            bool1 = bool2;
+            ((HwResponse)localObject).isFinish = bool1;
+          }
+          ((HwResponse)localObject).respLength = j;
+          paramList.add(localObject);
+          return j;
+          bool1 = false;
+        }
       }
-      if (localRspDataHighwayHead.msg_seghead.has())
+      catch (UnsupportedEncodingException paramArrayOfByte)
       {
-        paramArrayOfByte = (CSDataHighwayHead.SegHead)localRspDataHighwayHead.msg_seghead.get();
-        ((HwResponse)localObject2).segmentResp = paramArrayOfByte;
-        ((HwResponse)localObject2).buzRetCode = paramArrayOfByte.uint32_rtcode.get();
-        if ((paramArrayOfByte.uint32_flag.get() & 0x1) != 1) {
-          break label604;
+        for (;;)
+        {
+          paramArrayOfByte.printStackTrace();
+          paramArrayOfByte = null;
+          continue;
+          bool1 = false;
+          continue;
+          label590:
+          bool1 = false;
         }
-        bool = true;
-        ((HwResponse)localObject2).isFinish = bool;
       }
-      ((HwResponse)localObject2).respLength = j;
-      paramList.add(localObject2);
-      return j;
     }
   }
   
@@ -284,26 +312,24 @@ public class TcpProtocolDataCodec
     if (localObject != null) {
       paramEndPoint.msg_login_sig_head.set((MessageMicro)localObject);
     }
-    int i = 0;
-    if (paramArrayOfByte != null) {
-      i = paramArrayOfByte.length;
+    if (paramArrayOfByte != null) {}
+    for (int i = paramArrayOfByte.length;; i = 0)
+    {
+      paramEndPoint = paramEndPoint.toByteArray();
+      localObject = new byte[paramEndPoint.length + 10 + i];
+      paramHwRequest.bodyLength = i;
+      paramHwRequest.headLength = (paramEndPoint.length + 10);
+      localObject[0] = 40;
+      BdhUtils.DWord2Byte((byte[])localObject, 1, paramEndPoint.length);
+      BdhUtils.DWord2Byte((byte[])localObject, 5, i);
+      BdhUtils.copyData((byte[])localObject, 9, paramEndPoint, 0, paramEndPoint.length);
+      int j = paramEndPoint.length + 9;
+      if (i != 0) {
+        BdhUtils.copyData((byte[])localObject, j, paramArrayOfByte, 0, i);
+      }
+      localObject[(localObject.length - 1)] = 41;
+      return localObject;
     }
-    paramEndPoint = paramEndPoint.toByteArray();
-    localObject = new byte[paramEndPoint.length + 10 + i];
-    paramHwRequest.bodyLength = i;
-    paramHwRequest.headLength = (paramEndPoint.length + 10);
-    localObject[0] = 40;
-    int j = 0 + 1;
-    BdhUtils.DWord2Byte((byte[])localObject, j, paramEndPoint.length);
-    j += 4;
-    BdhUtils.DWord2Byte((byte[])localObject, j, i);
-    BdhUtils.copyData((byte[])localObject, j + 4, paramEndPoint, 0, paramEndPoint.length);
-    j = paramEndPoint.length + 9;
-    if (i != 0) {
-      BdhUtils.copyData((byte[])localObject, j, paramArrayOfByte, 0, i);
-    }
-    localObject[(localObject.length - 1)] = 41;
-    return localObject;
   }
   
   public String getVersionCode()
@@ -329,7 +355,6 @@ public class TcpProtocolDataCodec
   }
   
   public void onRecvData(MsfSocketInputBuffer paramMsfSocketInputBuffer)
-    throws IOException, HttpException
   {
     byte[] arrayOfByte = new byte[paramMsfSocketInputBuffer.getBufferlen()];
     System.arraycopy(paramMsfSocketInputBuffer.getBuffer(), 0, arrayOfByte, 0, arrayOfByte.length);
@@ -340,15 +365,10 @@ public class TcpProtocolDataCodec
   {
     this.codecListener = paramIProtocolCodecListener;
   }
-  
-  public static abstract interface DataFlag
-  {
-    public static final int FLAG_NORMAL = 4096;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.codec.TcpProtocolDataCodec
  * JD-Core Version:    0.7.0.1
  */

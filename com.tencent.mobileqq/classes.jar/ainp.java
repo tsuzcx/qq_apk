@@ -1,21 +1,24 @@
-import android.text.Spannable;
-import android.text.Spannable.Factory;
-import com.tencent.mobileqq.text.QQText;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import java.util.ArrayList;
 
-public final class ainp
-  extends Spannable.Factory
+public class ainp
+  implements View.OnClickListener
 {
-  public Spannable newSpannable(CharSequence paramCharSequence)
+  public ainp(CameraPreviewActivity paramCameraPreviewActivity) {}
+  
+  public void onClick(View paramView)
   {
-    if ((!QQText.b) && ((paramCharSequence instanceof QQText))) {
-      try
-      {
-        QQText localQQText = (QQText)((QQText)paramCharSequence).clone();
-        return localQQText;
-      }
-      catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    if (CameraPreviewActivity.a(this.a, (String)CameraPreviewActivity.a(this.a).get(0))) {
+      return;
     }
-    return super.newSpannable(paramCharSequence);
+    if (this.a.b) {
+      azqs.b(this.a.app, "CliOper", "", "", "0X8004D96", "0X8004D96", 0, 0, "", "", "", "");
+    }
+    PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 2, true);
+    paramView.setClickable(false);
   }
 }
 

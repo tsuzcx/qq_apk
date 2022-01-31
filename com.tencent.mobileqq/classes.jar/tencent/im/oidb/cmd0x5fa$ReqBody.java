@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x5fa$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int RPT_APPOINT_IDS_FIELD_NUMBER = 1;
   public static final int UINT32_GET_REFER_REC_FIELD_NUMBER = 3;
@@ -23,7 +23,7 @@ public final class cmd0x5fa$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5fa.ReqBody
  * JD-Core Version:    0.7.0.1
  */

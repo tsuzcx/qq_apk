@@ -1,17 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vashealth.SportManager;
-import mqq.observer.BusinessObserver;
-
-public class akkf
-  implements BusinessObserver
+class akkf
+  extends bibk
 {
-  public akkf(SportManager paramSportManager) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  akkf(akkd paramakkd, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    if (paramBoolean) {
-      ThreadManager.post(new akkg(this, paramBundle.getString("StepInfoJSON")), 5, null, true);
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public void a(int paramInt, Object paramObject, bibj[] paramArrayOfbibj)
+  {
+    paramInt = 0;
+    if ((paramArrayOfbibj == null) || (paramArrayOfbibj.length <= 0)) {}
+    for (;;)
+    {
+      return;
+      if (paramArrayOfbibj.length < 0)
+      {
+        paramArrayOfbibj[0].b = 0;
+        paramArrayOfbibj[0].a = 0;
+        paramInt = 1;
+      }
+      while (paramInt < paramArrayOfbibj.length)
+      {
+        paramArrayOfbibj[paramInt].b = -1;
+        paramArrayOfbibj[paramInt].a = -1;
+        paramInt += 1;
+      }
     }
   }
 }

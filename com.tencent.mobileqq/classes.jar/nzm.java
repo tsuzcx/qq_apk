@@ -1,22 +1,23 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserGuideInfoStep;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserGuideInfoStep.CompletedListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserGuideInfoStep.Response;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class nzm
-  implements Runnable
+  implements nbs
 {
-  public nzm(GetUserGuideInfoStep paramGetUserGuideInfoStep, GetUserGuideInfoStep.Response paramResponse) {}
+  public nzm(ReadInJoyNewFeedsActivity.2 param2) {}
   
-  public void run()
+  public void loaded(String paramString, int paramInt)
   {
-    if (GetUserGuideInfoStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserGuideInfoStep) != null) {
-      GetUserGuideInfoStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserGuideInfoStep).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserGuideInfoStep$Response);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
     }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nzm
  * JD-Core Version:    0.7.0.1
  */

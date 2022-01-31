@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.app.MessageRoamManager;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class zhg
-  implements Runnable
+class zhg
+  implements View.OnClickListener
 {
-  public zhg(MessageRoamManager paramMessageRoamManager) {}
+  zhg(zhe paramzhe, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.n();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Zhe, 1);
+    }
+    this.jdField_a_of_type_Zhe.dismiss();
   }
 }
 

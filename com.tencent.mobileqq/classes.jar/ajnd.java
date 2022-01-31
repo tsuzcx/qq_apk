@@ -1,83 +1,64 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
+import android.content.Context;
+import android.graphics.Rect;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView.2;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collections;
-import java.util.List;
-import tencent.im.oidb.cmd0x962.oidb_0x962.FinishInfo;
-import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
 
 public class ajnd
-  extends TroopGiftCallback
+  implements OnCompositionLoadedListener
 {
-  public ajnd(AIOAnimationControlManager paramAIOAnimationControlManager, MessageForDeliverGiftTips paramMessageForDeliverGiftTips, List paramList1, boolean paramBoolean, List paramList2, String paramString) {}
+  public ajnd(LoginAnimBtnView.2 param2) {}
   
-  public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
+  public void onCompositionLoaded(LottieComposition arg1)
   {
-    if (paramInt == 0)
+    if ((??? == null) || (LoginAnimBtnView.a(this.a.this$0)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState = paramRspBody.uint32_play_state.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOAnimationControlManager", 2, "checkInteract interactId: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId + ", interactState: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.alreadyPlayMicroseconds = paramRspBody.uint64_already_pay_microseconds.get();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.playTotalMicroseconds = paramRspBody.uint64_play_total_microseconds.get();
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState == 2) && (paramRspBody.msg_finish_info.has()))
-      {
-        paramRspBody = (oidb_0x962.FinishInfo)paramRspBody.msg_finish_info.get();
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactText = paramRspBody.bytes_text.get().toStringUtf8();
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.participateNum = paramRspBody.uint32_participate_num.get();
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactFirstUin = paramRspBody.uint64_first_uin.get();
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactFirstNickname = paramRspBody.bytes_first_nick_name.get().toStringUtf8();
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interacEndtUrl = paramRspBody.bytes_url.get().toStringUtf8();
-        this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, false);
-          if ((this.jdField_a_of_type_JavaUtilList.isEmpty()) && (this.b != null)) {
-            Collections.sort(this.b, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_JavaUtilComparator);
-          }
-        }
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_Int = 1;
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.jdField_a_of_type_Boolean);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.h();
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_Int = 2;
-        if ((this.jdField_a_of_type_Boolean) && (this.b != null)) {
-          this.b.clear();
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
-        {
-          this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.jdField_a_of_type_JavaLangString, true, new ajne(this));
-        }
-      }
+      QLog.e("LoginAnimBtnView", 1, "onCompositionLoaded lottieComposition is null or mIsDestroyed:" + LoginAnimBtnView.a(this.a.this$0));
+      return;
     }
+    int i = aepi.a(70.0F, this.a.this$0.getResources());
+    int j = aepi.a(70.0F, this.a.this$0.getResources());
+    Object localObject1 = ???.getBounds();
+    float f1 = i / ((Rect)localObject1).width();
+    float f2 = j / ((Rect)localObject1).height();
     if (QLog.isColorLevel()) {
-      QLog.e("AIOAnimationControlManager", 2, "checkInteract errorCode: " + paramInt);
+      QLog.i("LoginAnimBtnView", 2, "onCompositionLoaded iw:" + i + ", ih:" + j + ": : rw:" + ((Rect)localObject1).width() + ", rh:" + ((Rect)localObject1).height());
     }
-    this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
-    if (!this.jdField_a_of_type_Boolean)
+    localObject1 = new LottieDrawable();
+    ((LottieDrawable)localObject1).setImageAssetDelegate(new ajne(this.a.this$0.getContext().getApplicationContext()));
+    ((LottieDrawable)localObject1).setComposition(???);
+    ((LottieDrawable)localObject1).setScale(f1, f2);
+    ((LottieDrawable)localObject1).loop(true);
+    ??? = ((LottieDrawable)localObject1).getBounds();
+    if (QLog.isColorLevel()) {
+      QLog.i("LoginAnimBtnView", 2, "onCompositionLoaded rw:" + ???.width() + ", rh:" + ???.height() + " mIsDestroyed:" + LoginAnimBtnView.a(this.a.this$0));
+    }
+    LoginAnimBtnView.a(this.a.this$0, (LottieDrawable)localObject1);
+    if (LoginAnimBtnView.a(this.a.this$0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, false);
-      if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-        Collections.sort(this.b, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_JavaUtilComparator);
+      ((LottieDrawable)localObject1).cancelAnimation();
+      ((LottieDrawable)localObject1).recycleBitmaps();
+      ((LottieDrawable)localObject1).clearComposition();
+      ((LottieDrawable)localObject1).setImageAssetDelegate(null);
+      LoginAnimBtnView.a(this.a.this$0, null);
+    }
+    for (;;)
+    {
+      synchronized (LoginAnimBtnView.a(this.a.this$0))
+      {
+        LoginAnimBtnView.a(this.a.this$0, null);
+        LoginAnimBtnView.a(this.a.this$0, null);
+        return;
+      }
+      if (this.a.this$0.isEnabled())
+      {
+        this.a.this$0.removeCallbacks(LoginAnimBtnView.a(this.a.this$0));
+        this.a.this$0.post(LoginAnimBtnView.a(this.a.this$0));
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.jdField_a_of_type_Boolean);
   }
 }
 

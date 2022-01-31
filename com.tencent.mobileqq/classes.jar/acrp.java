@@ -1,37 +1,36 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import android.opengl.GLSurfaceView.Renderer;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.Conversation.18.1;
+import com.tencent.mobileqq.activity.Conversation.18.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
-class acrp
-  implements Runnable
+public class acrp
+  implements GLSurfaceView.Renderer
 {
-  acrp(acro paramacro) {}
+  public acrp(Conversation paramConversation) {}
   
-  public void run()
+  public void onDrawFrame(GL10 paramGL10) {}
+  
+  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2) {}
+  
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    if (this.a.a.b != null)
-    {
-      Iterator localIterator = this.a.a.b.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if (((List)this.a.a.b.get(str)).size() == 0) {
-          localIterator.remove();
-        }
-      }
+    this.a.a = paramGL10.glGetString(7937);
+    if (this.a.a != null) {
+      ThreadManager.post(new Conversation.18.1(this), 5, null, true);
     }
-    this.a.a.a.putAll(this.a.a.b);
-    this.a.a.i();
-    this.a.a.setSelect(0);
-    this.a.a.b.clear();
-    this.a.a.a(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_GPU", 2, "onSurfaceCreated|GL_RENDERER= " + this.a.a);
+    }
+    this.a.a(new Conversation.18.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acrp
  * JD-Core Version:    0.7.0.1
  */

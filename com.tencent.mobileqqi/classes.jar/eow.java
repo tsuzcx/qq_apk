@@ -1,46 +1,27 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.phone.BindNumberBusinessActivity;
-import com.tencent.mobileqq.activity.phone.MyBusinessActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.recent.RecentOptionBar;
 
 public class eow
-  extends ContactBindObserver
+  implements Animation.AnimationListener
 {
-  public eow(BindNumberBusinessActivity paramBindNumberBusinessActivity) {}
+  public eow(RecentOptionBar paramRecentOptionBar) {}
   
-  protected void c(boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super.c(paramBoolean);
-    BindNumberBusinessActivity localBindNumberBusinessActivity = this.a;
-    if (paramBoolean)
-    {
-      ((PhoneContactManager)this.a.b.getManager(10)).b();
-      this.a.a.sendEmptyMessage(4);
-      MyBusinessActivity.c(true);
-      if (QLog.isColorLevel()) {
-        QLog.d("BindNumberBusinessActivity", 2, "rebind successed");
-      }
-    }
-    for (;;)
-    {
-      this.a.d();
-      this.a.b.unRegistObserver(BindNumberBusinessActivity.a(this.a));
-      BindNumberBusinessActivity.a(this.a, null);
-      return;
-      QQToast.a(localBindNumberBusinessActivity, this.a.getString(2131558956), 2000).b(localBindNumberBusinessActivity.d());
-      if (QLog.isColorLevel()) {
-        QLog.d("BindNumberBusinessActivity", 2, "rebind failed");
-      }
-    }
+    RecentOptionBar.a(this.a).setVisibility(8);
+    RecentOptionBar.b(this.a).setVisibility(8);
+    RecentOptionBar.b(this.a).setOnClickListener(null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eow
  * JD-Core Version:    0.7.0.1
  */

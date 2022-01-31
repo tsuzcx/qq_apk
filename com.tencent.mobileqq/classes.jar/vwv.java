@@ -1,28 +1,26 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.widget.MediaController;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
 public class vwv
-  implements Animation.AnimationListener
+  implements vyk
 {
-  public vwv(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vwv(TextureVideoView paramTextureVideoView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(vyi paramvyi)
   {
-    this.a.p = 5;
-    PublicAccountChatPie.c(this.a).post(new vww(this));
-    this.a.a.sendEmptyMessage(1);
+    this.a.jdField_a_of_type_Int = 5;
+    this.a.b = 5;
+    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
+      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
+    }
+    if (this.a.jdField_a_of_type_Vyk != null) {
+      this.a.jdField_a_of_type_Vyk.a(this.a.jdField_a_of_type_Vyi);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vwv
  * JD-Core Version:    0.7.0.1
  */

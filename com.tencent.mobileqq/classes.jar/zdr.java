@@ -1,48 +1,29 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
-public class zdr
-  implements View.OnTouchListener
+class zdr
 {
-  public zdr(FrameHelperActivity paramFrameHelperActivity) {}
+  zdr(zdq paramzdq, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    switch (paramMotionEvent.getAction())
-    {
+    this.jdField_a_of_type_Zdq.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant()
+  {
+    ampk.a(new zds(this, "webview"));
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationPlugin", 2, "SosoInterface.startLocation");
     }
-    do
-    {
-      do
-      {
-        return false;
-      } while (!SubAccountControll.c(this.a.getActivity().app, false));
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(13, 200L);
-      return false;
-      if (!this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(13)) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(13);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.clearAnimation();
-      }
-    } while (this.a.jdField_a_of_type_AndroidWidgetImageView == null);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    return false;
-    FrameHelperActivity.a(this.a);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zdr
  * JD-Core Version:    0.7.0.1
  */

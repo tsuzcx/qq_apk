@@ -1,46 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qidian.QidianProfileCardActivity.QidianCompoundProfileItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
 
-public final class alne
-  implements Parcelable.Creator
+class alne
+  implements DialogInterface.OnClickListener
 {
-  public QidianProfileCardActivity.QidianCompoundProfileItem a(Parcel paramParcel)
-  {
-    boolean bool2 = true;
-    QidianProfileCardActivity.QidianCompoundProfileItem localQidianCompoundProfileItem = new QidianProfileCardActivity.QidianCompoundProfileItem();
-    localQidianCompoundProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQidianCompoundProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localQidianCompoundProfileItem.c = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localQidianCompoundProfileItem.jdField_a_of_type_Boolean = bool1;
-      localQidianCompoundProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label103;
-      }
-    }
-    label103:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localQidianCompoundProfileItem.jdField_b_of_type_Boolean = bool1;
-      localQidianCompoundProfileItem.d = paramParcel.readString();
-      localQidianCompoundProfileItem.e = paramParcel.readString();
-      return localQidianCompoundProfileItem;
-      bool1 = false;
-      break;
-    }
-  }
+  alne(alnc paramalnc) {}
   
-  public QidianProfileCardActivity.QidianCompoundProfileItem[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new QidianProfileCardActivity.QidianCompoundProfileItem[paramInt];
+    paramDialogInterface.dismiss();
+    if (alnc.a(this.a))
+    {
+      alnc.a(this.a, 1);
+      alnc.a(this.a);
+      this.a.a.r();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alne
  * JD-Core Version:    0.7.0.1
  */

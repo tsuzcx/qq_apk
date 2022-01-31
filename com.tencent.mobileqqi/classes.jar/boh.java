@@ -1,17 +1,26 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.eqq.EnterpriseDetailActivity;
-import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.webviewplugin.Ad;
 
 public class boh
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public boh(EnterpriseDetailActivity paramEnterpriseDetailActivity, mobileqq_mp.ConfigInfo paramConfigInfo) {}
+  public boh(Ad paramAd) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    EnterpriseDetailActivity.a(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo.content.get());
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838314);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
 }
 

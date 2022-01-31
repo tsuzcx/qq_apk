@@ -1,38 +1,25 @@
-import com.tencent.mobileqq.hiboom.HiBoomFontDrawer;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.Window;
+import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class adpb
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public adpb(HiBoomFontDrawer paramHiBoomFontDrawer) {}
+  public adpb(PublicAccountListActivity paramPublicAccountListActivity, int paramInt, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    int i = 0;
-    label13:
-    HiBoomTextView localHiBoomTextView;
-    if (i < this.a.a.size())
-    {
-      localHiBoomTextView = (HiBoomTextView)((WeakReference)this.a.a.get(i)).get();
-      if ((localHiBoomTextView != null) && (localHiBoomTextView.a == this.a.b)) {
-        break label89;
-      }
-      this.a.a.remove(i);
-      i -= 1;
-    }
-    for (;;)
-    {
-      i += 1;
-      break label13;
-      break;
-      label89:
-      localHiBoomTextView.a();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.d.setTag("");
+    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.getWindow().peekDecorView().getWindowToken(), 0);
   }
 }
 

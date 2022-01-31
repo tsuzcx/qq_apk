@@ -1,37 +1,26 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.view.SurfaceHolder;
 
 public class akpu
-  implements TroopMemberApiClient.Callback
 {
-  public akpu(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler) {}
+  public int a;
+  public SurfaceHolder a;
+  public int b;
+  public int c;
   
-  public void a(Bundle paramBundle)
+  public String toString()
   {
-    int i = paramBundle.getInt("readinjoy_to_wx_config");
-    if (QLog.isColorLevel()) {
-      QLog.d("SwiftBrowserScreenShotHandler", 2, "config = " + i);
-    }
-    if (i == 0) {
-      WxShareHelperFromReadInjoy.a().a(this.a.g, this.a.b, 1, false);
-    }
-    for (;;)
-    {
-      this.a.b.recycle();
-      this.a.b = null;
-      return;
-      WXShareHelper.a().a(this.a.g, this.a.b, 1, false);
-    }
+    StringBuffer localStringBuffer = new StringBuffer("SurfaceCallBackData{");
+    localStringBuffer.append("holder=").append(this.jdField_a_of_type_AndroidViewSurfaceHolder);
+    localStringBuffer.append(", format=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", w=").append(this.b);
+    localStringBuffer.append(", h=").append(this.c);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akpu
  * JD-Core Version:    0.7.0.1
  */

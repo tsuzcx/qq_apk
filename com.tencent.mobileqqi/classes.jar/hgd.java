@@ -1,16 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.app.Dialog;
+import android.content.Context;
+import android.text.ClipboardManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ContextMenuTextView;
 
-public final class hgd
-  implements Runnable
+public class hgd
+  implements View.OnClickListener
 {
-  public hgd(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean) {}
+  public hgd(ContextMenuTextView paramContextMenuTextView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, 0L, 0L, new HashMap(), "");
+    if ((ContextMenuTextView.a(this.a) != null) && (ContextMenuTextView.a(this.a).isShowing())) {
+      ContextMenuTextView.a(this.a).dismiss();
+    }
+    if (paramView.getId() == 2131234879)
+    {
+      paramView = ContextMenuTextView.a(this.a);
+      ContextMenuTextView.a(this.a);
+      ((ClipboardManager)paramView.getSystemService("clipboard")).setText(this.a.getText().toString());
+    }
   }
 }
 

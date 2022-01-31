@@ -1,18 +1,31 @@
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
 
-class ades
-  implements Runnable
+public class ades
+  implements TextWatcher
 {
-  ades(ader paramader) {}
+  public ades(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.a.c();
+    paramEditable = paramEditable.toString();
+    if ((paramEditable != null) && (paramEditable.trim().length() > 0))
+    {
+      this.a.b.setEnabled(true);
+      return;
+    }
+    this.a.b.setEnabled(false);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ades
  * JD-Core Version:    0.7.0.1
  */

@@ -3,17 +3,18 @@ package dov.com.tencent.mobileqq.richmedia.capture.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aols;
+import bnkr;
+import bnky;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import java.util.ArrayList;
 
 public class FilterCategoryItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new aols();
+  public static final Parcelable.Creator<FilterCategoryItem> CREATOR = new bnky();
   public int a;
   public String a;
-  public ArrayList a;
+  public ArrayList<String> a;
   public boolean a;
   public int b;
   public String b;
@@ -84,7 +85,7 @@ public class FilterCategoryItem
   public FilterDesc a()
   {
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      return CaptureVideoFilterManager.a().a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0));
+      return bnkr.a().a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0));
     }
     return null;
   }
@@ -175,7 +176,7 @@ public class FilterCategoryItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem
  * JD-Core Version:    0.7.0.1
  */

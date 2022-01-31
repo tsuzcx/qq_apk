@@ -12,6 +12,7 @@ import android.view.ViewConfiguration;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import mqq.app.permission.PermissionManager;
 import mqq.util.WeakReference;
 
 public class AppActivity
@@ -32,6 +33,7 @@ public class AppActivity
   private Intent mResultData;
   protected AppRuntime mRuntime = null;
   private int mWindowFocusState = -1;
+  public PermissionManager permissionManager = PermissionManager.init(this);
   
   private void forceShowOverflowMenu()
   {
@@ -333,6 +335,12 @@ public class AppActivity
       return;
     }
     this.mPostCreateBundle = paramBundle;
+  }
+  
+  public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    this.permissionManager.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
   }
   
   protected void onRestoreInstanceState(Bundle paramBundle)

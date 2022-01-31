@@ -1,25 +1,11 @@
-import android.os.Bundle;
-import cooperation.qzone.remote.logic.WebEventListener;
-import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin;
-
 public class ancx
-  implements WebEventListener
 {
-  public ancx(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin) {}
-  
-  public void onWebEvent(String paramString, Bundle paramBundle)
-  {
-    if ("cmd.troop.download.photo".equals(paramString))
-    {
-      paramString = paramBundle.getBundle("data");
-      paramString.getInt("totalNum");
-      int i = paramString.getInt("successNum");
-      int j = paramString.getInt("failNum");
-      boolean bool = paramString.getBoolean("isDownloadCanceled");
-      paramString = paramString.getString("path");
-      QzoneQunFeedJsPlugin.a(this.a, i, j, paramString, bool);
-    }
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 

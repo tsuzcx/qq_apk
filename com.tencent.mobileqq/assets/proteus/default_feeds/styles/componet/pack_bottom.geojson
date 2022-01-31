@@ -1,0 +1,75 @@
+{
+  "view_type": "UIView",
+  "view_id": "id_pack_bottom",
+  "layout_type": "layout_relative",
+  "event_type":"cmd_pack_bottom_click",
+  "align_parent_left":"YES",
+  "height": {
+      "type":"relative",
+      "value":"46"
+  },
+  "width": {
+    "type": "relative",
+    "value": "375"
+  },
+  "attributes":{
+    "setAttatchInfo:":"-1"
+  },
+  "subviews": [
+    {
+        "view_type": "UIView",
+        "view_id": "id_pack_bottom_separator_line",
+        "margin_left": "12",
+        "height": {
+            "type": "absolutely",
+            "value": "0.5"
+        },
+        "width": {
+            "type": "relative",
+            "value": "351"
+        },
+        "attributes": {
+            "setFrameString:": "-1",
+            "setBackgroundColorString:": "#ebebeb"
+        }
+    },
+    {
+      "view_type": "UILabel",
+      "view_id": "id_pack_bottom_label",
+      "margin_left": "12",
+      "margin_right": "42",
+      "align_parent_center_vertical": "YES",
+      "height": {
+        "type": "wrap_content"
+      },
+      "width": {
+        "type": "wrap_content"
+      },
+      "attributes": {
+        "setFrameString": "-1",
+        "setText:": "-1",
+        "setTextColorString:": "#4799DF",
+        "setFontSizeString:": "14",
+        "setNumberOfLinesString:": "1"
+      }
+    },
+    {
+      "view_type": "UIImageView",
+      "view_id": "id_pack_bottom_imageview",
+      "margin_right": "12",
+      "align_parent_right": "YES",
+      "align_parent_center_vertical": "YES",
+      "height": {
+            "type":"relative",
+            "value":"18"
+      },
+      "width": {
+            "type":"relative",
+            "value":"18"
+      },
+      "attributes": {
+               "loadImageWithPath:": "-1"
+      }
+    }
+  ]
+}

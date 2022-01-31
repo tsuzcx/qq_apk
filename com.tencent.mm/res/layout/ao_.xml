@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_weight="1.0" style="@style/qe"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/dzx" style="@style/qg" />
+    <TextView android:id="@id/dzy" style="@style/qf" />
+</LinearLayout>

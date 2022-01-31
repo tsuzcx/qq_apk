@@ -1,26 +1,30 @@
-import Wallet.SetSelectedSkinRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.Arrays;
+import java.util.List;
 
 public class xgw
-  implements BusinessObserver
+  implements xek
 {
-  public xgw(RedPacketManager paramRedPacketManager, BusinessObserver paramBusinessObserver) {}
+  @NonNull
+  private final xeh[] a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public xgw(xeh... paramVarArgs)
   {
-    SetSelectedSkinRsp localSetSelectedSkinRsp = (SetSelectedSkinRsp)paramBundle.getSerializable("rsp");
-    this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(paramInt, paramBoolean, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("RedPacketManager", 2, "setSelectedSkin onReceive isSuccess:" + paramBoolean);
+    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+      throw new IllegalArgumentException("layers should not be null or empty");
     }
+    this.a = paramVarArgs;
+  }
+  
+  public void a(List<xeh> paramList, DoodleView paramDoodleView)
+  {
+    paramList.addAll(Arrays.asList(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgw
  * JD-Core Version:    0.7.0.1
  */

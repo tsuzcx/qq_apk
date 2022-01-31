@@ -1,29 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.dataline.activities.LiteActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
 
 public class bm
-  implements View.OnTouchListener
+  implements DialogInterface.OnDismissListener
 {
   public bm(LiteActivity paramLiteActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(LiteActivity.jdField_a_of_type_JavaLangString, 2, "ontouch--fcc----: " + paramMotionEvent.getAction());
+    if (LiteActivity.b(this.a))
+    {
+      LiteActivity.a(this.a, false);
+      this.a.finish();
     }
-    this.a.p();
-    LiteActivity.a(this.a, false);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.postDelayed(new bn(this), 200L);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bm
  * JD-Core Version:    0.7.0.1
  */

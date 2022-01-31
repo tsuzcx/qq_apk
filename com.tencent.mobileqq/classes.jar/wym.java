@@ -1,103 +1,145 @@
-import android.content.Intent;
-import android.text.TextUtils;
+import android.annotation.TargetApi;
+import android.app.Dialog;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.activity.photo.ProGallery;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.utils.TribeUtils;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.EditPicSave.3;
+import com.tencent.biz.qqstory.takevideo.EditPicSave.4;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
+import com.tribe.async.reactive.UIThreadOffFunction;
+import java.util.Iterator;
+import java.util.List;
 
 public class wym
-  implements View.OnClickListener
+  extends xal
 {
-  public wym(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public int a;
+  private Dialog jdField_a_of_type_AndroidAppDialog;
+  betn jdField_a_of_type_Betn;
+  ThreadExcutor.IThreadListener jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener = new wyn(this);
+  public boolean a;
+  public int b = 20;
   
-  public void onClick(View paramView)
+  public wym(@NonNull xan paramxan)
   {
-    if (this.a.jdField_b_of_type_JavaUtilArrayList.size() > 0)
-    {
-      this.a.f = ((String)this.a.jdField_b_of_type_JavaUtilArrayList.get(0));
-      if (this.a.f != null)
-      {
-        ReportController.b(null, "CliOper", "", "", "0x8004B39", "0x8004B39", 0, 0, "", "", "", "");
-        if (this.a.x) {
-          ReportController.b(null, "CliOper", "", "", "0X8004D95", "0X8004D95", 0, 0, "", "", "", "");
-        }
-        new Intent();
-        if (!this.a.h) {
-          break label463;
-        }
-        if (!this.a.jdField_b_of_type_Boolean) {
-          break label372;
-        }
-        paramView = EditPicActivity.a(this.a, this.a.f, true, true, true, true, true, 8);
-        label152:
-        paramView.putExtra("PhotoConst.CURRENT_QUALITY_TYPE", this.a.e);
-        if (!PhotoPreviewActivity.a(this.a)) {
-          break label490;
-        }
-        paramView.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1040);
-        label186:
-        this.a.startActivity(paramView);
-        this.a.overridePendingTransition(2131034165, 2131034167);
-        this.a.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
-        paramView = this.a.getIntent();
-        if ((paramView != null) && (paramView.hasExtra("custom_photopreview_editbtn_reportActionName")))
-        {
-          paramView = paramView.getStringExtra("custom_photopreview_editbtn_reportActionName");
-          if (paramView != null) {
-            ReportController.b(null, "CliOper", "", "", paramView, paramView, 0, 0, "", "", "", "");
-          }
-        }
-        if (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))
-        {
-          if (!TroopBarPublishActivity.class.getSimpleName().equals(this.a.jdField_a_of_type_JavaLangString)) {
-            break label507;
-          }
-          TribeUtils.a("pub_page_new", "clk_photo_edit", 0, 0, new String[0]);
-        }
-      }
+    super(paramxan);
+  }
+  
+  private betn a()
+  {
+    betn localbetn = new betn(a());
+    localbetn.a(aepi.a(50.0F, a()));
+    localbetn.a(true);
+    localbetn.c(false);
+    localbetn.f(-1);
+    localbetn.e(0);
+    localbetn.d(-15550475);
+    localbetn.g(3);
+    localbetn.jdField_f_of_type_Boolean = true;
+    localbetn.jdField_f_of_type_Int = 2;
+    localbetn.e(true);
+    localbetn.a(new wyp(this));
+    return localbetn;
+  }
+  
+  private void i()
+  {
+    xlb localxlb = new xlb(this.jdField_a_of_type_Xan.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams);
+    localxlb.b = xlr.a(2);
+    localxlb.a = new xlf(this.jdField_a_of_type_Xan.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a.a());
+    Iterator localIterator = this.jdField_a_of_type_Xan.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((xal)localIterator.next()).a(0, localxlb);
     }
-    for (;;)
-    {
-      LpReportInfo_pf00064.allReport(603, 4, 1);
+    wxe.d("EditPicSave", "PUBLISH start ...");
+    a(alud.a(2131704080), false, 0);
+    a(20);
+    Stream.of(localxlb).map(new xld((wxs)a(wxs.class), null)).map(new ThreadOffFunction("EditPicSave", 2)).map(new xlp(wyi.a + "qq_pic_merged_" + System.currentTimeMillis() + ".jpg")).map(new UIThreadOffFunction(this)).subscribe(new wyo(this));
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Betn == null) {
       return;
-      int i = this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.getFirstVisiblePosition();
-      if (i >= this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
-        break;
+    }
+    this.jdField_a_of_type_Betn.a();
+    this.jdField_a_of_type_Betn.c(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.w("EditPicSave", 2, "[setProgress] current:" + this.jdField_a_of_type_Betn.a() + ", progress:" + paramInt);
+    }
+    this.jdField_a_of_type_Betn.b(true);
+    this.jdField_a_of_type_Betn.d(false);
+    this.jdField_a_of_type_Betn.a(String.valueOf(paramInt) + "%");
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    wxk.b("0X80080E1", wxk.a);
+    i();
+  }
+  
+  @TargetApi(14)
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidAppDialog == null)
+    {
+      this.jdField_a_of_type_AndroidAppDialog = new Dialog(a());
+      Object localObject = this.jdField_a_of_type_AndroidAppDialog.getWindow();
+      if (localObject != null)
+      {
+        ((Window)localObject).setBackgroundDrawable(new ColorDrawable());
+        if (Build.VERSION.SDK_INT >= 14) {
+          ((Window)localObject).setDimAmount(0.0F);
+        }
       }
-      this.a.f = ((String)this.a.jdField_a_of_type_JavaUtilArrayList.get(i));
-      break;
-      label372:
-      paramView = new HashMap(1);
-      if ((this.a.jdField_b_of_type_JavaUtilHashMap != null) && (this.a.jdField_b_of_type_JavaUtilHashMap.get(this.a.f) != null)) {
-        paramView.put("param_localmediainfo", this.a.jdField_b_of_type_JavaUtilHashMap.get(this.a.f));
-      }
-      paramView = EditPicActivity.a(this.a, this.a.f, true, true, true, true, true, 3, 99, 4, paramView);
-      break label152;
-      label463:
-      paramView = EditPicActivity.a(this.a, this.a.f, true, true, true, true, true, 2, 99, 4);
-      break label152;
-      label490:
-      paramView.putExtra("PhotoConst.SEND_BUSINESS_TYPE", PhotoPreviewActivity.b(this.a));
-      break label186;
-      label507:
-      if (TroopBarReplyActivity.class.getSimpleName().equals(this.a.jdField_a_of_type_JavaLangString)) {
-        TribeUtils.a("reply", "clk_photo_edit", 0, 0, new String[0]);
-      }
+      this.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
+      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131561642);
+      localObject = (ImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372332);
+      this.jdField_a_of_type_Betn = a();
+      ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_Betn);
+    }
+    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131370777)).setText(paramString);
+    this.jdField_a_of_type_AndroidAppDialog.setCancelable(paramBoolean);
+    this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(paramBoolean);
+    this.jdField_a_of_type_Betn.c(0);
+    a().a().postDelayed(new EditPicSave.3(this), paramInt);
+  }
+  
+  public void d()
+  {
+    g();
+    super.d();
+  }
+  
+  public void f()
+  {
+    this.jdField_a_of_type_Xby.a().postDelayed(new EditPicSave.4(this), 1000L);
+  }
+  
+  public void g()
+  {
+    if (this.jdField_a_of_type_AndroidAppDialog != null) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wym
  * JD-Core Version:    0.7.0.1
  */

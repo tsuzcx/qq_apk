@@ -1,63 +1,44 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import org.apache.http.Header;
+import org.apache.http.HeaderElement;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpResponseInterceptor;
+import org.apache.http.protocol.HttpContext;
 
-public class lch
-  implements INetInfoHandler
+class lch
+  implements HttpResponseInterceptor
 {
-  private lch(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  lch(lce paramlce) {}
   
-  public void onNetMobile2None()
+  public void process(HttpResponse paramHttpResponse, HttpContext paramHttpContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetMobile2None");
+    paramHttpContext = paramHttpResponse.getEntity();
+    if (paramHttpContext == null) {}
+    for (;;)
+    {
+      return;
+      paramHttpContext = paramHttpContext.getContentEncoding();
+      if (paramHttpContext != null)
+      {
+        paramHttpContext = paramHttpContext.getElements();
+        int j = paramHttpContext.length;
+        int i = 0;
+        while (i < j)
+        {
+          if (paramHttpContext[i].getName().equalsIgnoreCase("gzip"))
+          {
+            paramHttpResponse.setEntity(new lcj(paramHttpResponse.getEntity()));
+            return;
+          }
+          i += 1;
+        }
+      }
     }
-    this.a.b(false);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetMobile2Wifi");
-    }
-    this.a.d(true);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetNone2Mobile");
-    }
-    this.a.c(false);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetNone2Wifi");
-    }
-    this.a.d(false);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetWifi2Mobile");
-    }
-    this.a.c(true);
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetWifi2None");
-    }
-    this.a.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lch
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,58 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.LBSObserver;
+import com.tencent.mobileqq.app.QQMapActivityProxy;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class ffy
-  implements Runnable
+  extends LBSObserver
 {
-  public ffy(DataLineHandler paramDataLineHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  public ffy(QQMapActivityProxy paramQQMapActivityProxy) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.b(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg, this.jdField_a_of_type_JavaLangObject);
+    if ((paramBoolean) && (paramArrayOfByte != null)) {
+      QQMapActivityProxy.a(this.a).sendBroadcast(new Intent().setAction("com.tencent.mobileqq.onGetStreetViewUrl").putExtra("streetViewUrl", new String(paramArrayOfByte)));
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (paramArrayOfObject == null) {
+      return;
+    }
+    ToServiceMsg localToServiceMsg = (ToServiceMsg)paramArrayOfObject[0];
+    paramArrayOfObject = (byte[])paramArrayOfObject[1];
+    Intent localIntent = new Intent();
+    localIntent.setAction("com.tencent.mobileqq.onGetLbsShareSearch");
+    localIntent.putExtra("data", paramArrayOfObject);
+    localIntent.putExtra("req", localToServiceMsg.extraData.getBundle("req"));
+    QQMapActivityProxy.a(this.a).sendBroadcast(localIntent);
+  }
+  
+  protected void b(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (paramArrayOfObject == null) {
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.setAction("com.tencent.mobileqq.onGetLbsShareShop");
+    localIntent.putExtra("data", (byte[])paramArrayOfObject[1]);
+    localIntent.putExtra("req", ((ToServiceMsg)paramArrayOfObject[0]).extraData.getBundle("req"));
+    QQMapActivityProxy.a(this.a).sendBroadcast(localIntent);
+  }
+  
+  protected void c(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (paramArrayOfObject == null) {
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.setAction("com.tencent.mobileqq.onGetShareShopDetail");
+    localIntent.putExtra("data", (byte[])paramArrayOfObject[1]);
+    localIntent.putExtra("req", ((ToServiceMsg)paramArrayOfObject[0]).extraData.getBundle("req"));
+    QQMapActivityProxy.a(this.a).sendBroadcast(localIntent);
   }
 }
 

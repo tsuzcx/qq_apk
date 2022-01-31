@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <EditText android:id="@id/bry" android:layout_width="200.0dip" android:layout_height="fill_parent" android:hint="@string/h5n" />
+        <Button android:id="@id/b7m" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/ok" />
+        <Button android:id="@id/bfl" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/ak3" />
+    </LinearLayout>
+    <ImageView android:id="@id/image" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" />
+</LinearLayout>

@@ -1,22 +1,10 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
-
-public class lxa
-  extends CommonSkinRes
+public abstract interface lxa
 {
-  public lxa(ReadInJoySkinManager paramReadInJoySkinManager, AppInterface paramAppInterface) {}
-  
-  public Drawable a()
-  {
-    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_mine_selected");
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lxa
  * JD-Core Version:    0.7.0.1
  */

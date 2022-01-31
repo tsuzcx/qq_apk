@@ -1,112 +1,89 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.DrawerPushItem;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class yza
-  implements Runnable
+  extends aokh<yyz>
 {
-  public yza(ApolloPanel paramApolloPanel, BusinessInfoCheckUpdate.AppInfo paramAppInfo, boolean paramBoolean, String paramString) {}
-  
-  public void run()
+  private void a(String paramString1, String paramString2)
   {
-    boolean bool4 = false;
-    boolean bool3 = false;
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a == null)) {
-      return;
-    }
-    bool1 = bool3;
-    boolean bool2;
-    label54:
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo != null)
+    QLog.d("Q.videostory.config.VSEntranceStyleProcessor", 2, "onUpdate() apply new style config");
+    if (!TextUtils.isEmpty(paramString2))
     {
-      if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.iNewFlag.get() != 1) {
-        break label385;
-      }
-      bool2 = true;
-      localObject = this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.buffer.get();
-      bool1 = bool3;
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloPanel", 2, new Object[] { "parseShopRedTouchManager:", localObject, ", isNewRed：", Boolean.valueOf(bool2), ",refreshByGetUserAction:", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-        }
-      }
+      yyw.a().a("KEY_BOOLEAN_APPLY_STYLE_CONFIG", Boolean.valueOf(true));
+      yyw.a().a("KEY_VS_ENTRANCE_STYLE_MD5", paramString1);
+      yyw.a().a("KEY_VS_ENTRANCE_STYLE_CONTENT", paramString2);
     }
-    for (;;)
+  }
+  
+  public int a()
+  {
+    return 473;
+  }
+  
+  public Class<yyz> a()
+  {
+    return yyz.class;
+  }
+  
+  @NonNull
+  public yyz a(int paramInt)
+  {
+    return new yyz();
+  }
+  
+  @Nullable
+  public yyz a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      for (;;)
+      QLog.i("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
+      yyz localyyz = yyz.a(paramArrayOfaoko[0].a);
+      if (localyyz == null)
       {
-        try
-        {
-          JSONObject localJSONObject = new JSONObject((String)localObject);
-          localObject = localJSONObject.optString("_show_mission");
-          localJSONObject = localJSONObject.optJSONObject("msg");
-          bool1 = bool3;
-          if (localJSONObject != null)
-          {
-            localJSONObject = localJSONObject.optJSONObject((String)localObject);
-            bool1 = bool3;
-            if (localJSONObject != null)
-            {
-              ApolloManager localApolloManager = (ApolloManager)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a.getManager(152);
-              ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel, localApolloManager.a(this.jdField_a_of_type_JavaLangString, (String)localObject, localJSONObject, bool2, 6));
-              localObject = ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
-              bool1 = bool3;
-              if (localObject == null) {}
-            }
-          }
-        }
-        catch (Exception localException1)
-        {
-          label385:
-          bool1 = bool4;
-        }
-        try
-        {
-          if (!this.jdField_a_of_type_Boolean)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloPanel", 2, new Object[] { "parseShopRedTouchManager pushItem:", ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).toString() });
-            }
-            ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).icon_url);
-            ApolloPanel.d(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
-            VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a, "cmshow", "Apollo", "house_new_view", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.b()), 0, new String[] { ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).msg_id });
-          }
-          bool1 = true;
-          ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel, bool1);
-          if (bool1) {
-            break;
-          }
-          ApolloPanel.e(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
-          return;
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            bool1 = true;
-          }
-        }
+        QLog.e("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed error!");
+        return null;
       }
-      bool2 = false;
-      break label54;
-      QLog.e("ApolloPanel", 1, "parseShopRedTouchManager error :", localException1);
+      String str = (String)yyw.a().a("KEY_VS_ENTRANCE_STYLE_MD5", "");
+      if ((!TextUtils.isEmpty(localyyz.b())) && (!localyyz.b().equals(str)))
+      {
+        yzo.a().a(localyyz);
+        a(localyyz.b(), paramArrayOfaoko[0].a);
+      }
+      return localyyz;
     }
+    QLog.e("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed conf content is null!");
+    return null;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(yyz paramyyz)
+  {
+    if (paramyyz != null) {
+      QLog.i("Q.videostory.config.VSEntranceStyleProcessor", 2, "onUpdate:" + paramyyz.toString());
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yza
  * JD-Core Version:    0.7.0.1
  */

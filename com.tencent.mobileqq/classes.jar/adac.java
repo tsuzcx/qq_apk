@@ -1,44 +1,53 @@
-import android.text.TextUtils;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.PwdVerifyMsgRsp;
-import cooperation.weiyun.sdk.api.IWeiyunCallback;
-import cooperation.weiyun.sdk.api.WeiyunApi;
-import cooperation.weiyun.utils.StringUtils;
-import mqq.app.MobileQQ;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class adac
-  implements IWeiyunCallback
+  implements bdvr
 {
-  public adac(WeiYunLogicCenter paramWeiYunLogicCenter) {}
+  public adac(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.PwdVerifyMsgRsp paramPwdVerifyMsgRsp)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onFailed. errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
+      QLog.d("FriendProfileCardActivity", 2, "ZanDoubleDialog: onLeftClick: ");
     }
-    WeiYunLogicCenter.a(this.a).a().a(false, 45, new Object[] { Integer.valueOf(paramInt), paramString, null });
+    if (this.a.getIntent().hasExtra("troopUin")) {}
+    for (Object localObject = "1";; localObject = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "thumbup", "click_getit", "", 1, 0, 0, "", (String)localObject, "");
+      localObject = new Intent(this.a, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("fragmentStyle", 3);
+      ((Intent)localObject).putExtra("url", "https://m.vip.qq.com/freedom/dbzan.html?_nav_alpha=0");
+      ((Intent)localObject).putExtra("isTransparentTitle", true);
+      ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+      this.a.startActivity((Intent)localObject);
+      return;
+    }
   }
   
-  public void a(WeiyunPB.PwdVerifyMsgRsp paramPwdVerifyMsgRsp)
+  public void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onSucceed");
+      QLog.d("FriendProfileCardActivity", 2, "ZanDoubleDialog: onRightClick: ");
     }
-    String str = StringUtils.a(paramPwdVerifyMsgRsp.cs_sig.get());
-    if (!TextUtils.isEmpty(str)) {
-      WeiyunApi.a(WeiYunLogicCenter.a(this.a).getApplication().getApplicationContext(), str);
+    if (this.a.getIntent().hasExtra("troopUin")) {}
+    for (String str = "1";; str = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "thumbup", "click_pay", "", 1, 0, 0, "", str, "");
+      bdun.a(this.a, "mvip.n.a.dbzan_dbzan", "CJCLUBT", 3, false, true);
+      FriendProfileCardActivity.a(this.a).set(true);
+      return;
     }
-    WeiyunApi.c(WeiYunLogicCenter.a(this.a).getApplication().getApplicationContext(), true);
-    WeiYunLogicCenter.a(this.a).a().a(true, 45, new Object[] { Integer.valueOf(0), null, paramPwdVerifyMsgRsp.cs_sig.get() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adac
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,49 @@
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adlt
-  implements Runnable
+  implements Handler.Callback
 {
-  public adlt(ForwardSdkShareOption paramForwardSdkShareOption, AbsStructMsg paramAbsStructMsg, String paramString, int paramInt) {}
+  public adlt(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    StructMsgForImageShare.sendAndUploadImageShare(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkShareOption.a, (StructMsgForImageShare)this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, null, 0);
+    for (;;)
+    {
+      try
+      {
+        int i = paramMessage.what;
+        switch (i)
+        {
+        default: 
+          bool = false;
+          return bool;
+        }
+      }
+      finally {}
+      boolean bool = ((Boolean)paramMessage.obj).booleanValue();
+      NotifyPushSettingActivity.g(this.a).setChecked(bool);
+      break label163;
+      paramMessage = (String)paramMessage.obj;
+      NotifyPushSettingActivity.a(this.a, paramMessage);
+      break label163;
+      paramMessage = (String)paramMessage.obj;
+      NotifyPushSettingActivity.b(this.a, paramMessage);
+      break label163;
+      bool = ((Boolean)paramMessage.obj).booleanValue();
+      NotifyPushSettingActivity.h(this.a).setChecked(bool);
+      break label163;
+      NotifyPushSettingActivity.i(this.a).setChecked(((Boolean)paramMessage.obj).booleanValue());
+      label163:
+      bool = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adlt
  * JD-Core Version:    0.7.0.1
  */

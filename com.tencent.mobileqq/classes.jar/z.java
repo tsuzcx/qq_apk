@@ -1,20 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.dataline.activities.LiteActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.android.internal.telephony.SmsRawData;
 
-public class z
-  implements DialogInterface.OnClickListener
+public final class z
+  implements Parcelable.Creator<SmsRawData>
 {
-  public z(LiteActivity paramLiteActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public SmsRawData a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
+    byte[] arrayOfByte = new byte[paramParcel.readInt()];
+    paramParcel.readByteArray(arrayOfByte);
+    return new SmsRawData(arrayOfByte);
+  }
+  
+  public SmsRawData[] a(int paramInt)
+  {
+    return new SmsRawData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     z
  * JD-Core Version:    0.7.0.1
  */

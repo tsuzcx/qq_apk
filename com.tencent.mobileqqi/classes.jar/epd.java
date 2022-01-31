@@ -1,18 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
 
 public class epd
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public epd(ContactListView paramContactListView) {}
+  public epd(ContactsInnerFrame paramContactsInnerFrame) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.a(new epe(this));
-    this.a.h();
-    this.a.m();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.a.setPadding(0, 0, 40, 0);
+      return;
+    case 2: 
+      this.a.a.setPadding(0, 0, 0, 0);
+      return;
+    }
+    ContactsInnerFrame.a(this.a);
   }
 }
 

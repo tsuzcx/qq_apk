@@ -1,32 +1,27 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class aodt
-  extends Property
+class aodt
+  implements Animator.AnimatorListener
 {
-  public aodt(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  aodt(aodl paramaodl) {}
   
-  public Float a(GroundDrawable paramGroundDrawable)
-  {
-    if (paramGroundDrawable != null) {
-      return Float.valueOf(GroundDrawable.a(paramGroundDrawable));
-    }
-    return Float.valueOf(0.0F);
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void a(GroundDrawable paramGroundDrawable, Float paramFloat)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramGroundDrawable != null) {
-      GroundDrawable.a(paramGroundDrawable, paramFloat.floatValue());
+    if (aodl.a(this.a) != null) {
+      aodl.a(this.a).a();
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aodt
  * JD-Core Version:    0.7.0.1
  */

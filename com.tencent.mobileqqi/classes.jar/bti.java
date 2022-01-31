@@ -1,22 +1,26 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.biz.qrcode.activity.ScannerActivity.QQDialogCancelListener;
-import com.tencent.biz.qrcode.activity.ScannerActivity.ScannerActivityHandler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.AddFriendActivity;
 
 public class bti
-  extends ScannerActivity.QQDialogCancelListener
+  implements View.OnTouchListener
 {
-  public bti(ScannerActivity.ScannerActivityHandler paramScannerActivityHandler, ScannerActivity paramScannerActivity) {}
+  public bti(AddFriendActivity paramAddFriendActivity) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.h) {
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.a(null);
+    if ((AddFriendActivity.a(this.a) != null) && (paramMotionEvent.getAction() == 0)) {
+      AddFriendActivity.a(this.a).hideSoftInputFromWindow(this.a.getWindow().peekDecorView().getWindowToken(), 0);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bti
  * JD-Core Version:    0.7.0.1
  */

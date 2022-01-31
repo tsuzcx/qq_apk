@@ -1,26 +1,23 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
 
-public class xqf
-  implements Runnable
+class xqf
+  implements View.OnClickListener
 {
-  public xqf(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  xqf(xqe paramxqe, TroopStoryItemInfo paramTroopStoryItemInfo) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (VideoFilterTools.a(this.a.getApplicationContext()))
-    {
-      VideoFilterTools localVideoFilterTools = VideoFilterTools.a();
-      localVideoFilterTools.a(this.a.getApplicationContext(), new xqg(this, localVideoFilterTools));
-      return;
+    paramView = ((uvx)uwa.a(5)).a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryItemInfo.storyId);
+    if (paramView != null) {
+      ((uom)uwa.a().b(3)).a(paramView);
     }
-    QLog.w("PTV.NewFlowCameraActivity", 2, "your device don't support video filter!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xqf
  * JD-Core Version:    0.7.0.1
  */

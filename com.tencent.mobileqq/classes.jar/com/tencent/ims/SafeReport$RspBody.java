@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SafeReport$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "uint32_result", "string_errmsg" }, new Object[] { Integer.valueOf(0), "" }, RspBody.class);
   public final PBStringField string_errmsg = PBField.initString("");
@@ -15,7 +15,7 @@ public final class SafeReport$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.SafeReport.RspBody
  * JD-Core Version:    0.7.0.1
  */

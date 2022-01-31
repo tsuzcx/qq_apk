@@ -8,10 +8,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 
 public final class qqstory_service$ReqBatchGetVideoInfo
-  extends MessageMicro
+  extends MessageMicro<ReqBatchGetVideoInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatField story_id_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> story_id_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
   
   static
   {
@@ -21,7 +21,7 @@ public final class qqstory_service$ReqBatchGetVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetVideoInfo
  * JD-Core Version:    0.7.0.1
  */

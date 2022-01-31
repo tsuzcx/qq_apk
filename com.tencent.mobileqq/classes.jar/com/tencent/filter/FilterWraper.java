@@ -4,13 +4,13 @@ public class FilterWraper
   extends BaseFilter
 {
   private boolean available = false;
-  protected String filter_model = "";
+  protected String filterModel = "";
   protected long nativeObj = 0L;
   
   public FilterWraper(String paramString)
   {
-    super(GLSLRender.FILTER_SHADER_NONE);
-    this.filter_model = paramString;
+    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+    this.filterModel = paramString;
   }
   
   private void checkavailable()
@@ -28,16 +28,6 @@ public class FilterWraper
   
   private static native void nativeRenderContext(long paramLong, int paramInt1, int paramInt2, int paramInt3);
   
-  public void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
-  {
-    if (this.available) {
-      nativeDispose(this.nativeObj);
-    }
-    this.nativeObj = nativeInitialWithString(this.filter_model);
-    this.available = true;
-    super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
-  }
-  
   public void ClearGLSL()
   {
     if (this.available)
@@ -46,6 +36,16 @@ public class FilterWraper
       this.available = false;
     }
     super.ClearGLSL();
+  }
+  
+  public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
+  {
+    if (this.available) {
+      nativeDispose(this.nativeObj);
+    }
+    this.nativeObj = nativeInitialWithString(this.filterModel);
+    this.available = true;
+    super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
   }
   
   public void beforeRender(int paramInt1, int paramInt2, int paramInt3)
@@ -66,7 +66,7 @@ public class FilterWraper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.filter.FilterWraper
  * JD-Core Version:    0.7.0.1
  */

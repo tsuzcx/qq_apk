@@ -1,57 +1,72 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileOtherTabView;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.Conversation.35.1;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class acry
-  implements Runnable
+  extends alrl
 {
-  public acry(QfileLocalFileOtherTabView paramQfileLocalFileOtherTabView) {}
+  public acry(Conversation paramConversation) {}
   
-  public void run()
+  protected void a()
   {
-    Object localObject2 = FMSettings.a().b();
-    Object localObject1 = new HashMap();
-    if (this.a.a.d() != 8) {}
-    for (boolean bool = true;; bool = false)
+    this.a.a(9, null, -2147483648);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "refresh recent, from_onDelDiscussion");
+    }
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  {
+    this.a.a(8, Long.toString(paramLong), 3000);
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
     {
-      FileCategoryUtil.a(bool, (String)localObject2, "", ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|.swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|.mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|.apk|.jpg|.bmp|.jpeg|.gif|.png|.ico|", (HashMap)localObject1, null);
-      localObject2 = FMSettings.a().a();
-      if (localObject2 != null) {
-        FileCategoryUtil.a(bool, (String)localObject2, "", ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|.swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|.mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|.apk|.jpg|.bmp|.jpeg|.gif|.png|.ico|", (HashMap)localObject1, null);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_updateDiscussionInfo");
       }
-      FileCategoryUtil.a((Map)localObject1);
-      localObject2 = new LinkedHashMap();
-      ((LinkedHashMap)localObject2).put("压缩文件", new ArrayList());
-      ((LinkedHashMap)localObject2).put("电子书", new ArrayList());
-      ((LinkedHashMap)localObject2).put("更多", new ArrayList());
-      Iterator localIterator = ((HashMap)localObject1).keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        ((List)((LinkedHashMap)localObject2).get(this.a.a(str))).addAll((Collection)((HashMap)localObject1).get(str));
-      }
+      this.a.a(0L);
     }
-    localObject1 = ((LinkedHashMap)localObject2).keySet().iterator();
-    while (((Iterator)localObject1).hasNext()) {
-      if (((List)((LinkedHashMap)localObject2).get((String)((Iterator)localObject1).next())).size() == 0) {
-        ((Iterator)localObject1).remove();
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_onChangeDiscussionName");
       }
+      this.a.a(8, paramString, 3000);
     }
-    QfileLocalFileOtherTabView.a(this.a, new acrz(this, (LinkedHashMap)localObject2));
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "conversation onUpdateDiscussionFaceIcon|[" + paramBoolean1 + ", " + paramBoolean2 + ", " + paramString + "]");
+    }
+    if (paramBoolean1) {
+      this.a.a(new Conversation.35.1(this, paramString));
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_onQuitDiscussion");
+      }
+      this.a.a(8, paramString, 3000);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acry
  * JD-Core Version:    0.7.0.1
  */

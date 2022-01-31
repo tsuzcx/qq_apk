@@ -66,7 +66,7 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import fea;
+import ezm;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -2949,7 +2949,7 @@ public class CardHandler
     localMessageRecord.senderuin = String.valueOf(localVisitor.lUIN);
     localMessageRecord.extraflag = paramPushVoteIncreaseInfo.iIncrement;
     localMessageRecord.time = (System.currentTimeMillis() / 1000L);
-    new fea(this, paramPushVoteIncreaseInfo.iIncrement, paramPushVoteIncreaseInfo.vVoterList).start();
+    new ezm(this, paramPushVoteIncreaseInfo.iIncrement, paramPushVoteIncreaseInfo.vVoterList).start();
     try
     {
       Object localObject1 = new String(localVisitor.vecNick, "UTF8");

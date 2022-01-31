@@ -1,18 +1,26 @@
 package com.tencent.token.ui.base;
 
+import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
 
-final class t
-  implements Animation.AnimationListener
+class t
+  implements Runnable
 {
-  t(s params, DualMsgView paramDualMsgView) {}
+  private View b;
+  private Animation c;
   
-  public final void onAnimationEnd(Animation paramAnimation) {}
+  public t(DualMsgView paramDualMsgView, View paramView)
+  {
+    this.b = paramView;
+    this.c = AnimationUtils.loadAnimation(DualMsgView.g(paramDualMsgView), 2131034137);
+    this.c.setAnimationListener(new u(this, paramDualMsgView));
+  }
   
-  public final void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public final void onAnimationStart(Animation paramAnimation) {}
+  public void run()
+  {
+    this.b.startAnimation(this.c);
+  }
 }
 
 

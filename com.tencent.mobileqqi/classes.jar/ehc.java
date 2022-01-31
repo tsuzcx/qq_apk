@@ -1,91 +1,98 @@
-import android.app.Activity;
+import android.content.Context;
 import android.content.res.Resources;
-import android.os.RemoteException;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageInfo;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import cooperation.qqfav.QfavBuilder;
-import java.io.File;
+import android.util.TypedValue;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.widget.Scroller;
+import com.tencent.mobileqq.activity.fling.TopContentLayout;
+import com.tencent.mobileqq.activity.fling.TopContentLayout.OnOutScreenListener;
 
 public class ehc
-  implements ActionSheet.OnButtonClickListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public ehc(AIOGalleryScene paramAIOGalleryScene, ActionSheet paramActionSheet, AIOImageInfo paramAIOImageInfo, File paramFile) {}
+  private static final int jdField_a_of_type_Int = 50;
+  private float jdField_a_of_type_Float;
   
-  public void OnClick(View paramView, int paramInt)
+  public ehc(TopContentLayout paramTopContentLayout, Context paramContext)
   {
-    if (paramView != null)
+    this.jdField_a_of_type_Float = TypedValue.applyDimension(1, 50.0F, paramContext.getResources().getDisplayMetrics());
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    int i;
+    int j;
+    if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
     {
-      paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramInt);
-      if (paramView == null) {
-        return;
+      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, false);
+      i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getWidth();
+      j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
+      if (paramFloat1 <= 0.0F) {
+        break label96;
       }
-      if (!TextUtils.isEmpty(paramView))
+      i -= j;
+    }
+    for (;;)
+    {
+      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startScroll((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, i, 0, 350);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.invalidate();
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      label96:
+      i = -j;
+    }
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    float f1;
+    if (!TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
+    {
+      f1 = Math.abs(paramFloat2 / paramFloat1);
+      float f2 = Math.abs(paramMotionEvent1.getX() - paramMotionEvent2.getX());
+      if ((paramFloat1 < 0.0F) && (f1 < 0.5F) && (f2 > this.jdField_a_of_type_Float))
       {
-        if (!paramView.equals(AIOGalleryScene.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).getResources().getString(2131562128))) {
-          break label162;
+        TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, true);
+        if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) != null) {
+          TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startDrag();
         }
-        AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene, "Pic_Forward_Contacts", 0);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageInfo);
-        if (!paramView.equals(AIOGalleryScene.j(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).getResources().getString(2131561606))) {
-          break label478;
-        }
+        return true;
+      }
+      f1 = paramFloat1;
+      return super.onScroll(paramMotionEvent1, paramMotionEvent2, f1, paramFloat2);
+    }
+    int i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewWidth();
+    int j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
+    if ((paramFloat1 < 0.0F) && (j < i)) {
+      if (Math.abs(paramFloat1) > i - j) {
+        paramFloat1 = i - j;
       }
     }
     for (;;)
     {
-      try
-      {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageInfo.a.a, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageInfo.a.jdField_d_of_type_Int);
-        if (paramView != null) {
-          continue;
-        }
-        QfavBuilder.c(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()).a(AIOGalleryScene.k(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.b);
-      }
-      catch (RemoteException paramView)
-      {
-        label162:
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("AIOGalleryScene", 2, "", paramView);
-        QQToast.a(AIOGalleryScene.m(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).getApplicationContext(), AIOGalleryScene.n(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).getString(2131562064), 0).a();
-        continue;
-      }
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (paramView.equals(AIOGalleryScene.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).getResources().getString(2131562777)))
-      {
-        AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene, "Pic_Forward_Qzone", 0);
-        AIOGalleryUtils.a(AIOGalleryScene.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.b, AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageInfo, AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), AIOGalleryScene.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene));
+      f1 = paramFloat1;
+      if (Math.abs(paramFloat1) <= 0.0F) {
         break;
       }
-      if (paramView.equals(AIOGalleryScene.f(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).getResources().getString(2131562778)))
-      {
-        AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene, "Pic_Forward_Grpalbum", 0);
-        AIOGalleryUtils.a(AIOGalleryScene.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.b, AIOGalleryScene.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageInfo.a.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageInfo.a.g, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageInfo.a.b, -1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.movingViewTransBy((int)paramFloat1, 0.0F);
+      f1 = paramFloat1;
+      if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) == null) {
         break;
       }
-      if (!paramView.equals(AIOGalleryScene.h(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).getResources().getString(2131562803))) {
-        break;
-      }
-      AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene, "Pic_Save", 0);
-      AIOGalleryUtils.a(AIOGalleryScene.i(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), this.jdField_a_of_type_JavaIoFile, Utils.Crc64String(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()));
+      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).outing((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout);
+      f1 = paramFloat1;
       break;
-      new QfavBuilder(paramView).a(AIOGalleryScene.l(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.b);
+      paramFloat1 = -paramFloat1;
       continue;
-      label478:
-      if (paramView.equals(AIOGalleryScene.o(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).getResources().getString(2131563176))) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.q();
+      if ((paramFloat1 > 0.0F) && (j > 0))
+      {
+        if (Math.abs(paramFloat1) > j) {
+          paramFloat1 = -j;
+        } else {
+          paramFloat1 = -paramFloat1;
+        }
+      }
+      else {
+        paramFloat1 = 0.0F;
       }
     }
   }

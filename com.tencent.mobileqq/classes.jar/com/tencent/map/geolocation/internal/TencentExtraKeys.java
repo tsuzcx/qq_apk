@@ -2,11 +2,8 @@ package com.tencent.map.geolocation.internal;
 
 import android.location.Location;
 import android.os.Bundle;
-import android.util.Log;
-import c.t.m.g.cl;
-import c.t.m.g.cm;
-import c.t.m.g.cu;
-import c.t.m.g.f.a;
+import androidx.annotation.Nullable;
+import c.t.m.g.dh;
 import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationRequest;
 import com.tencent.map.geolocation.TencentLocationUtils;
@@ -14,30 +11,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 
 public class TencentExtraKeys
 {
   public static boolean COMPHTTPIO = false;
-  public static final TencentLog DEFAULT_TENCENT_LOG = new TencentLog()
-  {
-    public final String getDirString()
-    {
-      return null;
-    }
-    
-    public final void println(String paramAnonymousString1, int paramAnonymousInt, @NonNull String paramAnonymousString2)
-    {
-      if (paramAnonymousInt == 4)
-      {
-        Log.i(paramAnonymousString1, paramAnonymousString2);
-        return;
-      }
-      Log.e(paramAnonymousString1, paramAnonymousString2);
-    }
-  };
-  public static final boolean DIDI_INTERNAL = false;
+  public static final TencentLog DEFAULT_TENCENT_LOG = new TencentExtraKeys.1();
   public static final String LOCATION_KEY_ADMIN_LEVEL1 = "admin_level_1";
   public static final String LOCATION_KEY_ADMIN_LEVEL2 = "admin_level_2";
   public static final String LOCATION_KEY_ADMIN_LEVEL3 = "admin_level_3";
@@ -78,15 +56,14 @@ public class TencentExtraKeys
               if (paramTencentLog == null)
               {
                 paramTencentLog = null;
-                cu.a(paramTencentLog);
-                cl.a(paramTencentLog);
+                dh.a(paramTencentLog);
               }
             }
             else
             {
               return;
             }
-            paramTencentLog = new LogCallback(null);
+            paramTencentLog = new TencentExtraKeys.a((byte)0);
           }
         }
         else
@@ -193,7 +170,7 @@ public class TencentExtraKeys
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 192	com/tencent/map/geolocation/internal/TencentExtraKeys:sTencentLog	Lcom/tencent/map/geolocation/internal/TencentLog;
+    //   3: getstatic 187	com/tencent/map/geolocation/internal/TencentExtraKeys:sTencentLog	Lcom/tencent/map/geolocation/internal/TencentLog;
     //   6: astore_1
     //   7: aload_1
     //   8: ifnull +10 -> 18
@@ -238,8 +215,7 @@ public class TencentExtraKeys
   {
     try
     {
-      cu.a(null);
-      cl.a(null);
+      dh.a(null);
       boolean bool = sTencentLogs.remove(paramTencentLog);
       return bool;
     }
@@ -293,40 +269,10 @@ public class TencentExtraKeys
     }
     return paramTencentLocationRequest;
   }
-  
-  static class LogCallback
-    implements cm
-  {
-    private void onLogImpl(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
-    {
-      if (paramThrowable == null)
-      {
-        if (paramInt == 3) {
-          f.a.a(paramString1, paramString2);
-        }
-        while (paramInt != 6) {
-          return;
-        }
-        f.a.b(paramString1, paramString2);
-        return;
-      }
-      f.a.a(paramString1, paramString2, paramThrowable);
-    }
-    
-    public void onLog(int paramInt, String paramString1, String paramString2)
-    {
-      onLogImpl(paramInt, paramString1, paramString2, null);
-    }
-    
-    public void onLog(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
-    {
-      onLogImpl(paramInt, paramString1, paramString2, paramThrowable);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.geolocation.internal.TencentExtraKeys
  * JD-Core Version:    0.7.0.1
  */

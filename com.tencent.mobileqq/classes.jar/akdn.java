@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
-import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class akdn
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public akdn(NewUpgradeDialog.YYBDownloadListener paramYYBDownloadListener) {}
+  public akdn(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NewUpgradeDialog.d(this.a.a);
+    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      if (this.a.jdField_a_of_type_Int == 2) {
+        this.a.a();
+      }
+      this.a.a(this.a.c);
+    }
+    azdd.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akdn
  * JD-Core Version:    0.7.0.1
  */

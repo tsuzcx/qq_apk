@@ -1,24 +1,38 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import cooperation.comic.ui.QQComicTitleBarView;
+import AccostSvc.MsgItem;
+import java.util.ArrayList;
 
-public class amkk
-  implements View.OnClickListener
+class amkk
 {
-  public amkk(QQComicTitleBarView paramQQComicTitleBarView) {}
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<MsgItem> a;
+  public byte[] a;
+  public long b;
+  public String b;
+  public long c;
+  public long d;
+  public long e;
   
-  public void onClick(View paramView)
+  public amkk(long paramLong1, int paramInt, long paramLong2, long paramLong3, ArrayList<MsgItem> paramArrayList, String paramString)
   {
-    if ((this.a.a.a != null) && (!this.a.a.a.isFinishing())) {
-      this.a.a.a.finish();
-    }
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramLong2;
+    this.c = paramLong3;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public amkk(long paramLong, ArrayList<MsgItem> paramArrayList)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amkk
  * JD-Core Version:    0.7.0.1
  */

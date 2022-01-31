@@ -9,16 +9,16 @@ import java.util.Map;
 public final class mobile_main_page_req
   extends JceStruct
 {
-  static Map cache_mapTimeStamp;
+  static Map<Integer, Long> cache_mapTimeStamp;
   public String attach_info = "";
   public byte force;
-  public Map mapTimeStamp;
+  public Map<Integer, Long> mapTimeStamp;
   public long uin;
   public long visituin;
   
   public mobile_main_page_req() {}
   
-  public mobile_main_page_req(long paramLong1, long paramLong2, byte paramByte, String paramString, Map paramMap)
+  public mobile_main_page_req(long paramLong1, long paramLong2, byte paramByte, String paramString, Map<Integer, Long> paramMap)
   {
     this.uin = paramLong1;
     this.visituin = paramLong2;

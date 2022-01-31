@@ -13,14 +13,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.qq.taf.jce.JceInputStream;
-import com.tencent.av.VideoController;
-import com.tencent.av.core.AbstractNetChannel;
-import com.tencent.av.gaudio.GAudioNotifyCenter;
-import com.tencent.av.utils.VideoMsgTools;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.recent.RecentUtil;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
@@ -112,11 +107,11 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import fnw;
-import fnx;
-import fny;
-import fnz;
-import foa;
+import fjk;
+import fjl;
+import fjm;
+import fjn;
+import fjo;
 import friendlist.AddGroupResp;
 import friendlist.DelGroupResp;
 import friendlist.RenameGroupResp;
@@ -191,7 +186,7 @@ public class OnLinePushMessageProcessor
   public static final byte i = 7;
   public static final byte j = 22;
   private QvipSpecialCareManager jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialCareManager = null;
-  public fnz a;
+  public fjn a;
   private final Timer jdField_a_of_type_JavaUtilTimer = ThreadManager.a();
   public final ConcurrentHashMap a;
   
@@ -199,7 +194,7 @@ public class OnLinePushMessageProcessor
   {
     super(paramQQAppInterface, paramMessageHandler);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_Fnz = new fnz(this, null);
+    this.jdField_a_of_type_Fjn = new fjn(this, null);
   }
   
   private MessageRecord a(MsgInfo paramMsgInfo, long paramLong)
@@ -231,18 +226,6 @@ public class OnLinePushMessageProcessor
   private void a(byte paramByte, long paramLong1, long paramLong2)
   {
     if (paramLong2 != Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()).longValue()) {}
-    Handler localHandler;
-    do
-    {
-      do
-      {
-        return;
-      } while (paramByte != 2);
-      localHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(GAudioNotifyCenter.class);
-    } while (localHandler == null);
-    Message localMessage = localHandler.obtainMessage(10003);
-    localMessage.obj = Long.valueOf(paramLong1);
-    localHandler.sendMessage(localMessage);
   }
   
   private void a(int paramInt)
@@ -461,12 +444,12 @@ public class OnLinePushMessageProcessor
         if (l == paramLong1)
         {
           k = 1;
-          label600:
+          label596:
           if (k == 0) {
-            break label677;
+            break label673;
           }
           if (!QLog.isColorLevel()) {
-            break label771;
+            break label767;
           }
           paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131563269);
         }
@@ -475,8 +458,8 @@ public class OnLinePushMessageProcessor
           paramPair = paramPair + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131561529, new Object[] { localStringBuffer.toString() });
           break;
           k = 0;
-          break label600;
-          label677:
+          break label596;
+          label673:
           paramPair = str1;
           if (TextUtils.isEmpty(str1))
           {
@@ -487,7 +470,7 @@ public class OnLinePushMessageProcessor
           }
           paramPair = paramPair + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131561408);
           continue;
-          label771:
+          label767:
           paramPair = "";
         }
       }
@@ -590,44 +573,45 @@ public class OnLinePushMessageProcessor
         }
       }
     }
-    label2304:
+    label780:
+    label798:
+    label2099:
+    label2110:
+    label2245:
+    label2260:
     for (;;)
     {
       label742:
-      boolean bool1;
       if (localMsgInfo.uAppShareID > 0L)
       {
         localArrayList4.add(AppShareIDUtil.a(localMsgInfo.uAppShareID));
         break;
         paramToServiceMsg = Long.valueOf(paramFromServiceMsg.getUin());
         break label260;
-        label780:
         if (!QLog.isColorLevel()) {
           break;
         }
         QLog.d("Q.msg.BaseMessageProcessor", 2, "rcv a repeated offline file push msg");
         break;
-        label798:
         if (193 == s)
         {
           a(l3, localMsgInfo.vMsg, localMsgInfo.lFromUin, (int)localMsgInfo.uMsgTime);
           break;
         }
         if (s != 734) {
-          break label2154;
+          break label2110;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("simonchwang", 2, "===========handleSharpVideoMessageResp 2========");
+        if (!QLog.isColorLevel()) {
+          break;
         }
-        bool1 = AbstractNetChannel.a(localMsgInfo.vMsg);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l3, localMsgInfo.vMsg, localMsgInfo.lFromUin, (int)localMsgInfo.uMsgTime, bool1);
+        QLog.d("simonchwang", 2, "===========handleSharpVideoMessageResp 2========");
         break;
       }
       for (;;)
       {
-        label898:
+        label858:
         if (paramToServiceMsg == null) {
-          break label2304;
+          break label2260;
         }
         MessageRecord localMessageRecord = MessageRecordFactory.a(n);
         localMessageRecord.init(l3, l1, l2, paramToServiceMsg, localMsgInfo.uRealMsgTime, n, k, localMsgInfo.uMsgTime);
@@ -647,7 +631,6 @@ public class OnLinePushMessageProcessor
         QLog.d("Q.msg.BaseMessageProcessor", 2, "----------handleC2COnlinePushMsgResp after analysis friendUin: " + l1 + " msgType: " + n + " friendType: " + k + " shMsgSeq: " + localMsgInfo.shMsgSeq + " msgContent: " + Utils.a(paramToServiceMsg));
         break label742;
         break;
-        label1088:
         if (8 == s)
         {
           paramToServiceMsg = new byte[4];
@@ -660,7 +643,7 @@ public class OnLinePushMessageProcessor
             paramToServiceMsg = new byte[localMsgInfo.vMsg.length - 9];
             PkgTools.a(paramToServiceMsg, 0, localMsgInfo.vMsg, 8, paramToServiceMsg.length);
             paramToServiceMsg = new String(MessageUtils.b(paramToServiceMsg), "utf-8");
-            break label2179;
+            break label2135;
           }
         }
         else
@@ -674,12 +657,12 @@ public class OnLinePushMessageProcessor
             l2 = PkgTools.a(paramToServiceMsg, 0);
             paramToServiceMsg = (ToServiceMsg)localObject;
             if (localMsgInfo.vMsg.length < 9) {
-              break label2201;
+              break label2157;
             }
             paramToServiceMsg = new byte[localMsgInfo.vMsg.length - 9];
             PkgTools.a(paramToServiceMsg, 0, localMsgInfo.vMsg, 8, paramToServiceMsg.length);
             paramToServiceMsg = new String(MessageUtils.b(paramToServiceMsg), "utf-8");
-            break label2201;
+            break label2157;
           }
           if (732 == s)
           {
@@ -689,19 +672,19 @@ public class OnLinePushMessageProcessor
               return;
             }
             if ((localMsgInfo.vMsg == null) || (localMsgInfo.vMsg.length <= 7)) {
-              break label2224;
+              break label2180;
             }
             paramToServiceMsg = new byte[localMsgInfo.vMsg.length - 7];
             PkgTools.a(paramToServiceMsg, 0, localMsgInfo.vMsg, 7, paramToServiceMsg.length);
             c(paramToServiceMsg);
-            break label2224;
+            break label2180;
           }
           if (230 == s)
           {
             paramToServiceMsg = new String(MessageUtils.b(localMsgInfo.vMsg), "utf-8");
             localObject = ((FriendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).c(l1 + "");
             if ((localObject == null) || (!((Friends)localObject).isFriend())) {
-              break label2241;
+              break label2197;
             }
             k = 0;
             localObject = new SafeMsg.SafeMoreInfo();
@@ -735,23 +718,22 @@ public class OnLinePushMessageProcessor
             {
               paramToServiceMsg = a(localMsgInfo, l3);
               if ((paramToServiceMsg == null) || (MessageHandlerUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramToServiceMsg, true))) {
-                break label2249;
+                break label2205;
               }
               localArrayList1.add(paramToServiceMsg);
-              break label2249;
+              break label2205;
             }
           }
         }
         for (;;)
         {
-          label1459:
           GroupSystemMsgController.a().a(l2, localMsgInfo.uMsgTime, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
           localObject = null;
           paramToServiceMsg = null;
           bool1 = false;
           m = k;
           k = 0;
-          break label898;
+          break label858;
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(l3, s, localMsgInfo.vMsg, localMsgInfo.lFromUin, localMsgInfo.uMsgTime, localMsgInfo.shMsgSeq);
           l1 = 9998L;
           k = 32769;
@@ -761,10 +743,10 @@ public class OnLinePushMessageProcessor
           {
             paramToServiceMsg = b(localMsgInfo, l3);
             if ((paramToServiceMsg == null) || (MessageHandlerUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramToServiceMsg, true))) {
-              break label2255;
+              break label2211;
             }
             localArrayList1.add(paramToServiceMsg);
-            break label2255;
+            break label2211;
           }
           if (736 == s)
           {
@@ -774,16 +756,16 @@ public class OnLinePushMessageProcessor
             localObject = null;
             bool1 = false;
             k = 0;
-            break label898;
+            break label858;
           }
           if (528 == s)
           {
             paramToServiceMsg = c(localMsgInfo, l4);
             if ((paramToServiceMsg == null) || (MessageHandlerUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramToServiceMsg, true))) {
-              break label2272;
+              break label2228;
             }
             localArrayList1.add(paramToServiceMsg);
-            break label2272;
+            break label2228;
           }
           if (526 == s)
           {
@@ -791,7 +773,7 @@ public class OnLinePushMessageProcessor
             localObject = new SlaveMasterMsg();
             ((SlaveMasterMsg)localObject).readFrom(paramToServiceMsg);
             if (((int)((SlaveMasterMsg)localObject).uMsgType != 529) || (4L != ((SlaveMasterMsg)localObject).uCmd)) {
-              break label2289;
+              break label2245;
             }
             MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), localMsgInfo, (SlaveMasterMsg)localObject);
             break;
@@ -814,10 +796,9 @@ public class OnLinePushMessageProcessor
             bool3 = MessageHandlerUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList1);
             paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
             if ((!bool2) || (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause)) {
-              break label2143;
+              break label2099;
             }
           }
-          label2143:
           for (bool1 = true;; bool1 = false)
           {
             paramToServiceMsg.a(localArrayList1, String.valueOf(l3), bool1);
@@ -827,60 +808,53 @@ public class OnLinePushMessageProcessor
             return;
           }
           paramToServiceMsg = null;
-          break label2179;
-          label2154:
+          break label2135;
           if (208 != s) {
-            break label1088;
+            break label1044;
           }
           paramToServiceMsg = null;
           m = -1;
           localObject = null;
           bool1 = false;
           k = 0;
-          break label898;
-          label2179:
+          break label858;
+          label2135:
           k = 1000;
           n = -1000;
           m = -1;
           localObject = null;
           bool1 = false;
-          break label898;
-          label2201:
+          break label858;
+          label2157:
           n = -1000;
           m = -1;
           localObject = null;
           bool1 = false;
           k = 1020;
-          break label898;
+          break label858;
           return;
-          label2224:
           paramToServiceMsg = null;
           m = -1;
           localObject = null;
           bool1 = false;
           k = 0;
-          break label898;
-          label2241:
+          break label858;
           k = 1000;
-          break label1459;
-          label2249:
+          break label1415;
           k = -1;
         }
-        label2255:
         paramToServiceMsg = null;
         int m = -1;
         localObject = null;
-        bool1 = false;
+        boolean bool1 = false;
         int k = 0;
         continue;
-        label2272:
         paramToServiceMsg = null;
         m = -1;
         localObject = null;
         bool1 = false;
         k = 0;
         continue;
-        label2289:
         paramToServiceMsg = null;
         m = -1;
         localObject = null;
@@ -945,41 +919,41 @@ public class OnLinePushMessageProcessor
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: new 252	java/lang/StringBuilder
+    //   2: new 228	java/lang/StringBuilder
     //   5: dup
-    //   6: invokespecial 253	java/lang/StringBuilder:<init>	()V
+    //   6: invokespecial 229	java/lang/StringBuilder:<init>	()V
     //   9: lload_1
-    //   10: invokevirtual 262	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   13: ldc_w 774
-    //   16: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10: invokevirtual 238	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   13: ldc_w 743
+    //   16: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   19: lload_3
-    //   20: invokevirtual 262	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   23: ldc_w 774
-    //   26: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   20: invokevirtual 238	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   23: ldc_w 743
+    //   26: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: iload 5
-    //   31: invokevirtual 267	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   34: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   31: invokevirtual 243	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   34: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   37: astore 7
     //   39: aload_0
     //   40: getfield 101	com/tencent/mobileqq/app/message/OnLinePushMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   43: invokevirtual 718	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
-    //   46: invokevirtual 777	com/tencent/mobileqq/service/message/MessageCache:a	()Ljava/util/ArrayList;
+    //   43: invokevirtual 687	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
+    //   46: invokevirtual 746	com/tencent/mobileqq/service/message/MessageCache:a	()Ljava/util/ArrayList;
     //   49: aload 7
-    //   51: invokevirtual 780	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
+    //   51: invokevirtual 749	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
     //   54: ifeq +44 -> 98
-    //   57: invokestatic 161	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   57: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   60: ifeq +30 -> 90
-    //   63: ldc 163
+    //   63: ldc 139
     //   65: iconst_2
-    //   66: new 252	java/lang/StringBuilder
+    //   66: new 228	java/lang/StringBuilder
     //   69: dup
-    //   70: invokespecial 253	java/lang/StringBuilder:<init>	()V
-    //   73: ldc_w 782
-    //   76: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   70: invokespecial 229	java/lang/StringBuilder:<init>	()V
+    //   73: ldc_w 751
+    //   76: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   79: aload 7
-    //   81: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   84: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   87: invokestatic 544	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   81: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   87: invokestatic 521	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   90: iconst_1
     //   91: istore 6
     //   93: aload_0
@@ -988,9 +962,9 @@ public class OnLinePushMessageProcessor
     //   97: ireturn
     //   98: aload_0
     //   99: getfield 101	com/tencent/mobileqq/app/message/OnLinePushMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   102: invokevirtual 718	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
+    //   102: invokevirtual 687	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   105: aload 7
-    //   107: invokevirtual 783	com/tencent/mobileqq/service/message/MessageCache:a	(Ljava/lang/String;)V
+    //   107: invokevirtual 752	com/tencent/mobileqq/service/message/MessageCache:a	(Ljava/lang/String;)V
     //   110: iconst_0
     //   111: istore 6
     //   113: goto -20 -> 93
@@ -1044,11 +1018,11 @@ public class OnLinePushMessageProcessor
   
   private MessageRecord b(MsgInfo paramMsgInfo, long paramLong)
   {
-    Object localObject5 = paramMsgInfo.vMsg;
+    Object localObject4 = paramMsgInfo.vMsg;
     long l2 = paramMsgInfo.lFromUin;
-    long l1 = PkgTools.a((byte[])localObject5, 0);
-    byte b1 = localObject5[4];
-    Object localObject4 = new ArrayList();
+    long l1 = PkgTools.a((byte[])localObject4, 0);
+    byte b1 = localObject4[4];
+    Object localObject5 = new ArrayList();
     Object localObject3 = (DiscussionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(6);
     Object localObject6 = (FriendsManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8);
     Object localObject1 = (ContactFacade)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(49);
@@ -1075,8 +1049,8 @@ public class OnLinePushMessageProcessor
         do
         {
           return null;
-          paramLong = PkgTools.a((byte[])localObject5, 5);
-          l2 = PkgTools.a((byte[])localObject5, 9);
+          paramLong = PkgTools.a((byte[])localObject4, 5);
+          l2 = PkgTools.a((byte[])localObject4, 9);
           new StringBuilder().append(String.valueOf(l1)).append("_").append(String.valueOf(paramLong)).toString();
           if ((paramMsgInfo.vNickName != null) && (paramMsgInfo.vNickName.size() > 0)) {
             localObject1 = (String)paramMsgInfo.vNickName.get(0);
@@ -1116,11 +1090,11 @@ public class OnLinePushMessageProcessor
           QLog.d("Q.msg.BaseMessageProcessor.discuss", 2, "handleDiscussionMemchangeMsg setDiscussionMemberNum memnum" + k);
         }
         return null;
-        l3 = PkgTools.a((byte[])localObject5, 5);
+        l3 = PkgTools.a((byte[])localObject4, 5);
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.BaseMessageProcessor.discuss", 2, "handleDiscussionMemchangeMsg discussionUin: " + l1 + " memberUin: " + l3);
         }
-        localObject5 = String.valueOf(l3);
+        localObject4 = String.valueOf(l3);
         if (a(l3, l1, paramMsgInfo.shMsgSeq)) {
           return null;
         }
@@ -1139,12 +1113,11 @@ public class OnLinePushMessageProcessor
           if (QLog.isColorLevel()) {
             QLog.d("Q.msg.BaseMessageProcessor.discuss", 2, "coptype 2 server memberName empty");
           }
-          localObject2 = ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l1), (String)localObject5);
+          localObject2 = ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l1), (String)localObject4);
         }
         localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131561524, new Object[] { localObject2 });
-        ((List)localObject4).add(localObject5);
-        ((DiscussionHandler)localObject3).a(l1, (String)localObject5, (List)localObject4, 10009);
-        if (((String)localObject5).equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()))
+        ((List)localObject5).add(localObject4);
+        if (((String)localObject4).equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()))
         {
           a(b1, l1, l3);
           ((DiscussionHandler)localObject3).a(String.valueOf(l1));
@@ -1155,20 +1128,19 @@ public class OnLinePushMessageProcessor
         a(paramMsgInfo, paramLong, l2, l2, (String)localObject1);
         return null;
         localObject1 = paramMsgInfo.getVNickName();
-        l2 = PkgTools.a((byte[])localObject5, 5);
-        n = PkgTools.a((byte[])localObject5, 13);
+        l2 = PkgTools.a((byte[])localObject4, 5);
+        n = PkgTools.a((byte[])localObject4, 13);
         localObject2 = new ArrayList();
         m = 15;
         for (k = 1; k < n + 1; k = (short)(k + 1))
         {
           localObject6 = (String)((ArrayList)localObject1).get(k);
-          l3 = PkgTools.a((byte[])localObject5, m);
+          l3 = PkgTools.a((byte[])localObject4, m);
           m += 4;
-          ((List)localObject4).add(String.valueOf(l3));
+          ((List)localObject5).add(String.valueOf(l3));
           ((ArrayList)localObject2).add(new Pair(String.valueOf(l3), localObject6));
           ((DiscussionHandler)localObject3).a(String.valueOf(l3), l1);
         }
-        ((DiscussionHandler)localObject3).a(l1, String.valueOf(l2), (List)localObject4, 10004);
         localObject4 = new Pair(Long.valueOf(l2), ((ArrayList)localObject1).get(0));
         localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
         if (((RecentUserProxy)localObject3).b(Long.toString(l1), 3000) != null)
@@ -1201,12 +1173,12 @@ public class OnLinePushMessageProcessor
             ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Multi_call", "Show_discuss_tips", 0, 0, "", "", "", "");
           }
         }
-        l2 = PkgTools.a((byte[])localObject5, 5);
-        l3 = PkgTools.a((byte[])localObject5, 9);
-        PkgTools.a((byte[])localObject5, 13);
-        k = PkgTools.a((byte[])localObject5, 17);
+        l2 = PkgTools.a((byte[])localObject4, 5);
+        l3 = PkgTools.a((byte[])localObject4, 9);
+        PkgTools.a((byte[])localObject4, 13);
+        k = PkgTools.a((byte[])localObject4, 17);
         localObject1 = new byte[k];
-        PkgTools.b((byte[])localObject5, 19, (byte[])localObject1, k);
+        PkgTools.b((byte[])localObject4, 19, (byte[])localObject1, k);
         localObject4 = new String((byte[])localObject1);
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.BaseMessageProcessor.discuss", 2, "cOptye:" + b1 + "dwCmdUin =" + l2 + " dwCmdTime=" + l3 + " strName=" + (String)localObject4);
@@ -1235,14 +1207,14 @@ public class OnLinePushMessageProcessor
             localObject2 = ((FriendsManagerImp)localObject6).d(String.valueOf(l1), String.valueOf(l2));
           }
         }
-      } while (PkgTools.a((byte[])localObject5, 5) == 0);
-      n = PkgTools.a((byte[])localObject5, 7);
+      } while (PkgTools.a((byte[])localObject4, 5) == 0);
+      n = PkgTools.a((byte[])localObject4, 7);
       localObject3 = new ArrayList();
       k = 9;
       m = 0;
       while (m < n)
       {
-        l3 = PkgTools.a((byte[])localObject5, k);
+        l3 = PkgTools.a((byte[])localObject4, k);
         localObject2 = "";
         localObject1 = localObject2;
         if (paramMsgInfo.vNickName != null)
@@ -1256,9 +1228,9 @@ public class OnLinePushMessageProcessor
         k += 4;
         m += 1;
       }
-      m = PkgTools.a((byte[])localObject5, k);
+      m = PkgTools.a((byte[])localObject4, k);
       localObject1 = new byte[m];
-      PkgTools.b((byte[])localObject5, k + 2, (byte[])localObject1, m);
+      PkgTools.b((byte[])localObject4, k + 2, (byte[])localObject1, m);
       localObject1 = new String((byte[])localObject1);
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.BaseMessageProcessor.discuss", 2, "cOptye:9 +uinList.size()=" + ((ArrayList)localObject3).size());
@@ -1274,13 +1246,13 @@ public class OnLinePushMessageProcessor
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.BaseMessageProcessor.discuss", 2, "cOptye:9 +sTips=" + (String)localObject1 + "+lUin=" + paramLong);
       }
-      this.jdField_a_of_type_JavaUtilTimer.schedule(new fnw(this, (ArrayList)localObject3, paramLong, l1, (String)localObject1, paramMsgInfo, l2), 2000L);
+      this.jdField_a_of_type_JavaUtilTimer.schedule(new fjk(this, (ArrayList)localObject3, paramLong, l1, (String)localObject1, paramMsgInfo, l2), 2000L);
       return null;
     case 22: 
-      l3 = PkgTools.a((byte[])localObject5, 5);
-      PkgTools.a((byte[])localObject5, 9);
-      l4 = PkgTools.a((byte[])localObject5, 13);
-      l5 = PkgTools.a((byte[])localObject5, 17);
+      l3 = PkgTools.a((byte[])localObject4, 5);
+      PkgTools.a((byte[])localObject4, 9);
+      l4 = PkgTools.a((byte[])localObject4, 13);
+      l5 = PkgTools.a((byte[])localObject4, 17);
       if (l5 == 0L) {
         break;
       }
@@ -1297,19 +1269,17 @@ public class OnLinePushMessageProcessor
         }
       }
       localObject6 = new Pair(Long.valueOf(l3), localObject1);
-      Object localObject8;
       switch ((int)l4)
       {
-      default: 
+      }
+      for (;;)
+      {
         localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-        if (((RecentUserProxy)localObject1).b(Long.toString(l1), 3000) != null) {
-          return null;
+        if (((RecentUserProxy)localObject1).b(Long.toString(l1), 3000) == null) {
+          break;
         }
-        break;
-      case 0: 
-      case 1: 
-      case 2: 
-        n = PkgTools.a((byte[])localObject5, 25);
+        return null;
+        n = PkgTools.a((byte[])localObject4, 25);
         m = 27;
         localObject2 = "";
         localObject1 = localObject2;
@@ -1326,7 +1296,7 @@ public class OnLinePushMessageProcessor
         }
         localObject7 = new Pair(Long.valueOf(l5), localObject1);
         ((DiscussionHandler)localObject3).a(l1);
-        localObject8 = new ArrayList();
+        ArrayList localArrayList = new ArrayList();
         if (k != 0) {}
         for (k = 1;; k = 0)
         {
@@ -1334,7 +1304,7 @@ public class OnLinePushMessageProcessor
           k = 0;
           while (k < n)
           {
-            String str = String.valueOf(PkgTools.a((byte[])localObject5, m));
+            String str = String.valueOf(PkgTools.a((byte[])localObject4, m));
             localObject2 = "";
             localObject1 = localObject2;
             if (paramMsgInfo.vNickName != null)
@@ -1344,28 +1314,15 @@ public class OnLinePushMessageProcessor
                 localObject1 = (String)paramMsgInfo.vNickName.get(k + i1);
               }
             }
-            ((ArrayList)localObject8).add(new Pair(str, localObject1));
-            ((List)localObject4).add(str);
+            localArrayList.add(new Pair(str, localObject1));
+            ((List)localObject5).add(str);
             ((DiscussionHandler)localObject3).a(str, l1);
             m += 4;
             k += 1;
           }
         }
-        k = 0;
-        if (l4 == 0L) {
-          k = 10007;
-        }
-        for (;;)
-        {
-          ((DiscussionHandler)localObject3).a(l1, String.valueOf(l3), (List)localObject4, k);
-          this.jdField_a_of_type_JavaUtilTimer.schedule(new fnx(this, l3, paramLong, (Pair)localObject6, paramMsgInfo, l1, l2, b1, l4, (Pair)localObject7, (ArrayList)localObject8), 2000L);
-          break;
-          if (l4 == 1L) {
-            k = 10006;
-          } else if (l4 == 2L) {
-            k = 10008;
-          }
-        }
+        ((DiscussionHandler)localObject3).a(l1, String.valueOf(l3), (List)localObject5, 0);
+        this.jdField_a_of_type_JavaUtilTimer.schedule(new fjl(this, l3, paramLong, (Pair)localObject6, paramMsgInfo, l1, l2, b1, l4, (Pair)localObject7, localArrayList), 2000L);
       }
       localObject2 = ((RecentUserProxy)localObject1).a(Long.toString(l1), 3000);
       ((RecentUser)localObject2).uin = Long.toString(l1);
@@ -1373,39 +1330,39 @@ public class OnLinePushMessageProcessor
       ((RecentUser)localObject2).type = 3000;
       ((RecentUserProxy)localObject1).a((RecentUser)localObject2);
       return null;
-      PkgTools.a((byte[])localObject5, 5);
-      l2 = PkgTools.a((byte[])localObject5, 9);
-      switch (localObject5[13])
+      PkgTools.a((byte[])localObject4, 5);
+      l2 = PkgTools.a((byte[])localObject4, 9);
+      switch (localObject4[13])
       {
       default: 
         return null;
       }
-      k = localObject5[14];
-      PkgTools.a((byte[])localObject5, 15);
-      PkgTools.a((byte[])localObject5, 17);
-      k = PkgTools.a((byte[])localObject5, 21);
+      k = localObject4[14];
+      PkgTools.a((byte[])localObject4, 15);
+      PkgTools.a((byte[])localObject4, 17);
+      k = PkgTools.a((byte[])localObject4, 21);
       localObject1 = new byte[k];
-      PkgTools.b((byte[])localObject5, 23, (byte[])localObject1, k);
+      PkgTools.b((byte[])localObject4, 23, (byte[])localObject1, k);
       l3 = paramMsgInfo.lFromUin;
       localObject2 = MessageRecordFactory.a(-1038);
       ((MessageRecord)localObject2).init(paramLong, l1, l1, paramMsgInfo.strMsg, l2, -1038, 3000, paramMsgInfo.uMsgTime);
       ((MessageRecord)localObject2).issend = 1;
       return MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageRecord)localObject2, (byte[])localObject1, false);
-      l3 = PkgTools.a((byte[])localObject5, 5);
-      PkgTools.a((byte[])localObject5, 9);
-      k = PkgTools.a(localObject5[13]);
-      PkgTools.a((byte[])localObject5, 14, k);
+      PkgTools.a((byte[])localObject4, 5);
+      PkgTools.a((byte[])localObject4, 9);
+      k = PkgTools.a(localObject4[13]);
+      PkgTools.a((byte[])localObject4, 14, k);
       k += 14;
-      n = PkgTools.a((byte[])localObject5, k);
+      n = PkgTools.a((byte[])localObject4, k);
       m = k + 2;
       localObject1 = new HashSet();
       k = 0;
       while (k < n)
       {
-        l4 = PkgTools.a((byte[])localObject5, m);
+        l3 = PkgTools.a((byte[])localObject4, m);
         m += 4;
-        ((HashSet)localObject1).add(String.valueOf(l4));
-        ((List)localObject4).add(String.valueOf(l4));
+        ((HashSet)localObject1).add(String.valueOf(l3));
+        ((List)localObject5).add(String.valueOf(l3));
         k += 1;
       }
       if (((HashSet)localObject1).size() <= 0) {
@@ -1420,12 +1377,11 @@ public class OnLinePushMessageProcessor
       }
       for (;;)
       {
-        ((DiscussionHandler)localObject2).a(l1, String.valueOf(l3), (List)localObject4, 10005);
         return null;
         ((DiscussionHandler)localObject2).a((String)localObject3, (HashSet)localObject1);
       }
-      l3 = PkgTools.a((byte[])localObject5, 5);
-      PkgTools.a((byte[])localObject5, 9);
+      l3 = PkgTools.a((byte[])localObject4, 5);
+      PkgTools.a((byte[])localObject4, 9);
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.BaseMessageProcessor.discuss", 2, "handleDiscussionMemchangeMsg discussionUin: " + l1 + " memberUin: " + l3);
       }
@@ -1454,52 +1410,51 @@ public class OnLinePushMessageProcessor
       }
       for (;;)
       {
-        n = PkgTools.a((byte[])localObject5, 13);
+        n = PkgTools.a((byte[])localObject4, 13);
         m = 15;
-        localObject8 = new HashSet();
+        localObject7 = new HashSet();
         k = 0;
         while (k < n)
         {
-          l3 = PkgTools.a((byte[])localObject5, m);
+          l3 = PkgTools.a((byte[])localObject4, m);
           if (QLog.isColorLevel()) {
             QLog.d("Q.msg.BaseMessageProcessor.discuss", 2, "handleDiscussionMemchangeMsg MSG_DISCUSSION_TYPE_KICKOUT_MEMBER uin=" + l3);
           }
           m += 4;
-          ((HashSet)localObject8).add(String.valueOf(l3));
-          ((List)localObject4).add(String.valueOf(l3));
+          ((HashSet)localObject7).add(String.valueOf(l3));
+          ((List)localObject5).add(String.valueOf(l3));
           k += 1;
         }
-        localObject2 = new StringBuffer();
-        if (((HashSet)localObject8).size() > 0)
+        localObject4 = new StringBuffer();
+        localObject2 = "";
+        if (((HashSet)localObject7).size() > 0)
         {
-          localObject5 = ((HashSet)localObject8).iterator();
+          localObject5 = ((HashSet)localObject7).iterator();
           while (((Iterator)localObject5).hasNext()) {
-            ((StringBuffer)localObject2).append(((FriendsManagerImp)localObject6).d(String.valueOf(l1), (String)((Iterator)localObject5).next())).append("、");
+            ((StringBuffer)localObject4).append(((FriendsManagerImp)localObject6).d(String.valueOf(l1), (String)((Iterator)localObject5).next())).append("、");
           }
         }
-        if (((StringBuffer)localObject2).length() > 0) {}
-        for (localObject2 = ((StringBuffer)localObject2).deleteCharAt(((StringBuffer)localObject2).toString().length() - 1).toString();; localObject2 = "")
+        if (((StringBuffer)localObject4).length() > 0) {
+          localObject2 = ((StringBuffer)localObject4).deleteCharAt(((StringBuffer)localObject4).toString().length() - 1).toString();
+        }
+        localObject4 = (DiscussionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(6);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131561526, new Object[] { localObject2 });
+        if (((HashSet)localObject7).contains(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()))
         {
-          localObject5 = (DiscussionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(6);
-          ((DiscussionHandler)localObject5).a(l1, (String)localObject7, (List)localObject4, 10005);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131561526, new Object[] { localObject2 });
-          if (((HashSet)localObject8).contains(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()))
-          {
-            ((DiscussionHandler)localObject5).a(String.valueOf(l1));
-            a(paramMsgInfo, paramLong, l2, l2, BaseApplication.getContext().getString(2131559195));
-            return null;
-          }
-          localObject1 = BaseApplication.getContext().getString(2131559196, new Object[] { localObject1, localObject2 });
-          ((DiscussionHandler)localObject5).a(String.valueOf(l1), (HashSet)localObject8);
-          ((DiscussionHandler)localObject3).a(l1);
-          a(paramMsgInfo, paramLong, l2, l2, (String)localObject1);
+          ((DiscussionHandler)localObject4).a(String.valueOf(l1));
+          a(paramMsgInfo, paramLong, l2, l2, BaseApplication.getContext().getString(2131559195));
           return null;
         }
+        localObject1 = BaseApplication.getContext().getString(2131559196, new Object[] { localObject1, localObject2 });
+        ((DiscussionHandler)localObject4).a(String.valueOf(l1), (HashSet)localObject7);
+        ((DiscussionHandler)localObject3).a(l1);
+        a(paramMsgInfo, paramLong, l2, l2, (String)localObject1);
+        return null;
       }
     }
   }
   
-  private foa b(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  private fjo b(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
     return this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(OnLinePushMsgTypeProcessorDispatcher.a(paramInt)).a(OnLinePushMsgTypeProcessorDispatcher.a(String.valueOf(paramInt)), paramMsgInfo, paramSvcReqPushMsg);
   }
@@ -1601,7 +1556,7 @@ public class OnLinePushMessageProcessor
       DBUtils.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
       SubAccountAssistantImpl.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l1));
       if (SubAccountAssistantImpl.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l1))) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getSubAccountKey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), String.valueOf(l1), new fny(this));
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getSubAccountKey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), String.valueOf(l1), new fjm(this));
       }
       ((SubAccountBackProtocData)localObject).p = 0;
       a(8004, true, localObject);
@@ -2180,37 +2135,19 @@ public class OnLinePushMessageProcessor
   
   public void a(long paramLong1, byte[] paramArrayOfByte, long paramLong2, int paramInt)
   {
-    if (VideoController.b() == 2)
-    {
-      if (paramArrayOfByte[2] == 1) {
-        VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, 8, true, String.valueOf(paramLong2), String.valueOf(paramLong1), false, null, false);
-      }
-      return;
-    }
     if (paramArrayOfByte != null) {}
-    for (String str = String.valueOf(paramArrayOfByte[2]);; str = "null")
+    for (paramArrayOfByte = String.valueOf(paramArrayOfByte[2]);; paramArrayOfByte = "null")
     {
       if (QLog.isColorLevel()) {
-        QLog.d("svenxu", 2, "Decode video message: selfUin = " + paramLong1 + " " + "fromUin = " + paramLong2 + " " + "buffer[2] = " + str);
+        QLog.d("svenxu", 2, "Decode video message: selfUin = " + paramLong1 + " " + "fromUin = " + paramLong2 + " " + "buffer[2] = " + paramArrayOfByte);
       }
       Friends localFriends = ((FriendsManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).c(String.valueOf(paramLong2));
       boolean bool = false;
-      Object localObject2;
-      Object localObject1;
-      short s;
       if (localFriends != null)
       {
-        localObject2 = localFriends.name;
-        if (localObject2 != null)
-        {
-          localObject1 = localObject2;
-          if (((String)localObject2).trim().length() != 0) {}
-        }
-        else
-        {
-          localObject1 = String.valueOf(paramLong2);
-        }
-        s = localFriends.faceid;
+        String str = localFriends.name;
+        if ((str != null) && (str.trim().length() == 0)) {}
+        paramInt = localFriends.faceid;
         bool = localFriends.isFriend();
       }
       for (;;)
@@ -2218,25 +2155,10 @@ public class OnLinePushMessageProcessor
         if (QLog.isColorLevel()) {
           QLog.d("svenxu", 2, "isFriend: " + bool);
         }
-        localObject2 = new Intent("tencent.video.q2v.RecvVideoCall");
-        ((Intent)localObject2).setClassName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getPackageName(), "com.tencent.av.VideoMsgBroadcastReceiver");
-        ((Intent)localObject2).putExtra("m2m", false);
-        ((Intent)localObject2).putExtra("uin", String.valueOf(paramLong1));
-        ((Intent)localObject2).putExtra("fromUin", String.valueOf(paramLong2));
-        ((Intent)localObject2).putExtra("faceID", s);
-        ((Intent)localObject2).putExtra("buffer", paramArrayOfByte);
-        ((Intent)localObject2).putExtra("time", paramInt);
-        ((Intent)localObject2).putExtra("name", (String)localObject1);
-        ((Intent)localObject2).putExtra("isFriend", bool);
-        ((Intent)localObject2).putExtra("isPttRecordingOrPlaying", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.s());
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().sendBroadcast((Intent)localObject2);
-        if (!QLog.isColorLevel()) {
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.d("svenxu", 2, "Send video recv broadcast: selfUin = " + paramLong1 + " " + "fromUin = " + paramLong2 + " " + "buffer[2] = " + paramArrayOfByte);
         }
-        QLog.d("svenxu", 2, "Send video recv broadcast: selfUin = " + paramLong1 + " " + "fromUin = " + paramLong2 + " " + "buffer[2] = " + str);
         return;
-        localObject1 = String.valueOf(paramLong2);
-        s = 0;
       }
     }
   }

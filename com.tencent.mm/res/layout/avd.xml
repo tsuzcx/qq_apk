@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/na" android:textColor="?t" android:gravity="center_vertical" android:id="@id/ekh" android:layout_width="fill_parent" android:layout_height="26.0dip" android:layout_marginTop="4.0dip" android:text="@string/emx" android:layout_marginStart="16.0dip" />
+    <com.tencent.mm.view.SmileySubGrid android:id="@id/a01" android:fadingEdgeLength="0.0dip" android:layout_width="300.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a9s" android:listSelector="@drawable/w6" android:cacheColorHint="#00000000" android:fastScrollEnabled="false" android:fadeScrollbars="false" android:fastScrollAlwaysVisible="false" />
+    <View android:id="@id/eki" android:background="@color/re" android:layout_width="1.0px" android:layout_height="fill_parent" android:layout_alignTop="@id/a01" android:layout_alignBottom="@id/a01" android:foregroundGravity="center" android:layout_toEndOf="@id/a01" />
+</RelativeLayout>

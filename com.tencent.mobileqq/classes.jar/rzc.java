@@ -1,41 +1,32 @@
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import com.tencent.mobileqq.activity.aio.AudioPlayer.AudioPlayerListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.38.1;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class rzc
-  implements AudioPlayer.AudioPlayerListener
+  implements pfr
 {
-  public rzc(ChatHistory paramChatHistory) {}
+  public rzc(FastWebActivity paramFastWebActivity) {}
   
-  public void a(AudioPlayer paramAudioPlayer)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, FastWebArticleInfo paramFastWebArticleInfo)
   {
-    this.a.p();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$PlayingPttHistoryInfo != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$PlayingPttHistoryInfo.d();
+    QLog.d(FastWebActivity.a(this.a), 2, " isSucc " + paramBoolean1 + "  useWebView :" + paramBoolean2 + "  data : " + paramFastWebArticleInfo);
+    if ((paramBoolean1) && (!paramBoolean2) && (paramFastWebArticleInfo != null))
+    {
+      paramBoolean1 = true;
+      sds.b("fast_web_show_light_house_2");
     }
-    this.a.setVolumeControlStream(3);
-    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
+    for (;;)
+    {
+      this.a.runOnUiThread(new FastWebActivity.38.1(this, paramBoolean1, paramFastWebArticleInfo));
+      return;
+      paramBoolean1 = false;
+    }
   }
-  
-  public void a(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    this.a.b(2131433883);
-    this.a.setVolumeControlStream(3);
-    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
-  }
-  
-  public void b(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    this.a.setVolumeControlStream(paramInt);
-  }
-  
-  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rzc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.QQStoryFeedItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.QQStoryFeedItemBuilder.FeedViewHolder;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import java.util.List;
 
 public class vdl
-  implements View.OnTouchListener
+  extends uli
 {
-  public vdl(QQStoryFeedItemBuilder paramQQStoryFeedItemBuilder) {}
+  public QQUserUIItem a;
+  public String a;
+  public List<QQUserUIItem> a;
+  public String b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public String toString()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    case 2: 
-    default: 
-      return true;
-    case 0: 
-      QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(true);
-      return true;
-    case 3: 
-      QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
-      return true;
+    if (this.a == null) {
+      return "UpdateUserInfoEvent " + super.toString();
     }
-    QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
-    paramView.performClick();
-    QQStoryFeedItemBuilder.a(this.a);
-    return true;
+    return "UpdateUserInfoEvent " + this.a.toString() + super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vdl
  * JD-Core Version:    0.7.0.1
  */

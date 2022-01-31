@@ -1,18 +1,29 @@
-import com.tencent.mobileqq.data.CommonlyUsedTroop;
-import java.util.Comparator;
+import android.os.Process;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
+import mqq.app.AppRuntime;
 
 public class fdg
-  implements Comparator
+  extends fcu
 {
-  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
+  protected void a(String paramString)
   {
-    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
-      return 1;
-    }
-    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
-      return -1;
-    }
-    return 0;
+    this.a.a(3, paramString);
+  }
+  
+  protected void b()
+  {
+    this.a.a(6, "fake_p_msg");
+  }
+  
+  public void b(String paramString)
+  {
+    CoreService.b();
+    this.a.e();
+    this.a.b(true);
+    long l = this.a.a(Process.myPid());
+    BaseApplicationImpl.a.a().onAppGuardModeChange(false, 2, (int)l);
   }
 }
 

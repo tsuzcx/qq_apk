@@ -10,11 +10,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ARRelationShipListPb$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_req_page_cookies = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField rpt_uint64_peer_uin = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> rpt_uint64_peer_uin = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt32Field uint32_req_count = PBField.initUInt32(0);
   public final PBUInt32Field uint32_req_list_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_send_recv_flag = PBField.initUInt32(0);
@@ -31,7 +31,7 @@ public final class ARRelationShipListPb$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipListPb.ReqBody
  * JD-Core Version:    0.7.0.1
  */

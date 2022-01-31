@@ -1,53 +1,25 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.os.Bundle;
 
-public class vrx
-  extends MessageObserver
+public abstract interface vrx
 {
-  public vrx(ConfessChatPie paramConfessChatPie) {}
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2, int paramInt3)
-  {
-    if ((paramString1 == null) || (!paramString1.equals(this.a.a.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.a.jdField_a_of_type_Int) || (paramInt3 != this.a.a.e))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.ConfessChatPie", 2, "onUpdateSendMsgError_confess err uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2 + " topicId " + paramInt3);
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.ConfessChatPie", 2, "onUpdateSendMsgError_confess uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2 + " errorCode " + paramInt2 + " topicId " + paramInt3);
-    }
-    this.a.b(196608);
-  }
+  public abstract void a(Bundle paramBundle1, Bundle paramBundle2);
   
-  protected void a(boolean paramBoolean, String paramString, int paramInt1, long paramLong, int paramInt2)
-  {
-    if ((paramString == null) || (!paramString.equals(this.a.a.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.a.jdField_a_of_type_Int) || (paramInt2 != this.a.a.e))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.ConfessChatPie", 2, "onSendResult_confess err uin " + paramString + " type " + paramInt1 + " uniseq " + paramLong + " topicId " + paramInt2);
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.ConfessChatPie", 2, "onSendResult_confess uin " + paramString + " type " + paramInt1 + " uniseq " + paramLong + " topicId " + paramInt2);
-    }
-    this.a.q = true;
-    this.a.a(262144, null, paramLong);
-  }
+  public abstract void c();
   
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    this.a.b(65536);
-  }
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vrx
  * JD-Core Version:    0.7.0.1
  */

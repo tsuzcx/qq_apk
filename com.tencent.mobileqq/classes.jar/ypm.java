@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
+import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
 
 public class ypm
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ypm(ApolloGameStateMachine paramApolloGameStateMachine) {}
+  public ypm(SubScribeDraftItemView paramSubScribeDraftItemView, SubscribeDraftBean paramSubscribeDraftBean) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((!ApolloGameStateMachine.a.get()) && (ApolloGameStateMachine.a(this.a) != null))
-    {
-      ThreadManager.remove(ApolloGameStateMachine.a(this.a));
-      ThreadManager.post(ApolloGameStateMachine.a(this.a), 5, null, false);
-    }
+    zaj.b(SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "clk_delete_draft", 0, 0, new String[0]);
+    ymb.a().a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), String.valueOf(this.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()), 2131720491, new ypn(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ypm
  * JD-Core Version:    0.7.0.1
  */

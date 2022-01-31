@@ -1,76 +1,26 @@
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
 public class neo
-  extends QQStoryObserver
+  extends Handler
 {
-  public neo(MsgTabStoryNodeConfigManager paramMsgTabStoryNodeConfigManager) {}
+  public neo(SensorAPIJavaScript paramSensorAPIJavaScript) {}
   
-  public void a(byte paramByte)
+  public void handleMessage(Message paramMessage)
   {
-    boolean bool = true;
-    this.a.a = paramByte;
-    MsgTabStoryNodeConfigManager.c(this.a, true);
-    MsgTabStoryNodeConfigManager localMsgTabStoryNodeConfigManager;
-    if (paramByte != -1)
-    {
-      if (paramByte == 0) {
-        MsgTabStoryNodeConfigManager.b(this.a);
-      }
-      localMsgTabStoryNodeConfigManager = this.a;
-      if (paramByte != 2) {
-        break label88;
-      }
+    if (paramMessage.what == 5) {
+      this.a.a((String)paramMessage.obj);
     }
-    for (;;)
-    {
-      localMsgTabStoryNodeConfigManager.a(bool);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryOIDBReceived:" + this.a.c);
-      }
+    while (paramMessage.what != 291) {
       return;
-      label88:
-      bool = false;
     }
-  }
-  
-  public void b()
-  {
-    StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
-    this.a.b = ((Boolean)localStoryConfigManager.b("key_story_msg_tab_show", Boolean.valueOf(false))).booleanValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "commonConfigReceived:" + this.a.b);
-    }
-    MsgTabStoryNodeConfigManager.a(this.a);
-    MsgTabStoryNodeConfigManager.a(this.a, true);
-    MsgTabStoryNodeConfigManager.a(this.a, true);
-    MsgTabStoryNodeConfigManager.b(this.a);
-  }
-  
-  public void f(boolean paramBoolean)
-  {
-    if (!MsgTabStoryNodeConfigManager.a(this.a))
-    {
-      if (paramBoolean)
-      {
-        this.a.c = this.a.a();
-        MsgTabStoryNodeConfigManager.a(this.a);
-        MsgTabStoryNodeConfigManager.a(this.a, true);
-      }
-      MsgTabStoryNodeConfigManager.b(this.a, true);
-      MsgTabStoryNodeConfigManager.b(this.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryDPCCfgHasContentReceived:" + this.a.c);
-    }
+    this.a.updateMicStatus((String)paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     neo
  * JD-Core Version:    0.7.0.1
  */

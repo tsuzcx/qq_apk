@@ -1,27 +1,29 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.DeviceFileItemBuilder;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-
 public class uvv
-  extends BaseBubbleBuilder.ViewHolder
 {
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public TextView b;
-  public TextView c;
-  
-  public uvv(DeviceFileItemBuilder paramDeviceFileItemBuilder) {}
+  @xrk(a="story_home_preload_count")
+  public int a;
+  @xrk(a="story_global_log_level")
+  public String a;
+  @xrk(a="disable_revert")
+  public uvw[] a;
+  @xrk(a="story_video_preload_duration")
+  public int b;
+  @xrk(a="story_auto_play_report_control")
+  public String b;
+  @xrk(a="disable_fast")
+  public uvw[] b;
+  @xrk(a="disable_slow")
+  public uvw[] c;
+  @xrk(a="disable_hw_encode")
+  public uvw[] d;
+  @xrk(a="disable_flow_decode")
+  public uvw[] e;
+  @xrk(a="use_flow_decode_first")
+  public uvw[] f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uvv
  * JD-Core Version:    0.7.0.1
  */

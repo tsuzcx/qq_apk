@@ -1,31 +1,22 @@
-import android.graphics.Bitmap;
-import android.opengl.GLES20;
-import com.tencent.mobileqq.surfaceviewaction.gl.Texture;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.qphone.base.util.QLog;
 
 public class ailo
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ailo(Texture paramTexture) {}
+  public ailo(BindNumberActivity paramBindNumberActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Int != 0)
-    {
-      int[] arrayOfInt = new int[1];
-      arrayOfInt[0] = this.a.jdField_a_of_type_Int;
-      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
-      GLES20.glFlush();
-      if (QLog.isColorLevel()) {
-        QLog.d("Texture", 2, "Texture->release real: textureId = " + this.a.jdField_a_of_type_Int + ", filePath = " + Texture.a(this.a));
-      }
-      this.a.jdField_a_of_type_Int = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("BindNumberActivity", 2, "new user guild confirm unbind");
     }
-    if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-    {
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    }
+    this.a.a("dc00898", "0X8009F16", 0);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b(this.a.jdField_a_of_type_JavaLangString, this.a.c, 0, this.a.jdField_a_of_type_Boolean, this.a.b);
+    this.a.a(2131719785, 1000L, true);
   }
 }
 

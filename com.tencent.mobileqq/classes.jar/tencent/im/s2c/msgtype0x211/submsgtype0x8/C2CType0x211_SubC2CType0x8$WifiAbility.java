@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class C2CType0x211_SubC2CType0x8$WifiAbility
-  extends MessageMicro
+  extends MessageMicro<WifiAbility>
 {
   public static final int BOOL_AUTO_CONNECT_ABI_FIELD_NUMBER = 2;
   public static final int BOOL_ESTABLISH_ABI_FIELD_NUMBER = 1;

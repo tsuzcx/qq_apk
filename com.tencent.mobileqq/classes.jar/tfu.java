@@ -1,20 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-
-public class tfu
-  implements DialogInterface.OnCancelListener
+abstract interface tfu
 {
-  public tfu(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public abstract tby a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tfu
  * JD-Core Version:    0.7.0.1
  */

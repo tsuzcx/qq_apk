@@ -1,21 +1,24 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
 
-public class rlp
-  implements CompoundButton.OnCheckedChangeListener
+class rlp
+  implements Animation.AnimationListener
 {
-  public rlp(AssistantSettingActivity paramAssistantSettingActivity) {}
+  rlp(rlo paramrlo) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ZhituManager.a(this.a.app).a(paramBoolean);
+    rlo.a(this.a).startAnimation(rlo.a(this.a));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rlp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,36 @@
 package com.tencent.mobileqq.data;
 
+import abti;
 import android.text.TextUtils;
-import com.tencent.biz.anonymous.AnonymousChatHelper;
-import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
+import aojt;
+import awge;
+import awhp;
+import ayzl;
+import bbpd;
+import bdeu;
+import bdil;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.troop.data.MessageInfo;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.MsgUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Random;
+import nav;
+import nlo;
 import org.json.JSONObject;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="time,senderuin,msgData,istroop,shmsgseq,msgseq")
 public class MessageRecord
-  extends Entity
+  extends awge
 {
   public static final int EXTRA_STREAM_PTT_FLAG = 10001;
   public static final int MIN_VERSION_CODE_SUPPORT_IMAGE_MD5_TRANS = 2;
   public static final int MSG_TYPE_0x7F = -2006;
   public static final int MSG_TYPE_ACTIVATE_FRIENDS = -5003;
   public static final int MSG_TYPE_ACTIVITY = -4002;
+  public static final int MSG_TYPE_AIO_FOR_LOCATION_SHARE = -2076;
+  public static final int MSG_TYPE_AIO_FOR_STORY_VIDEO = -2074;
   public static final int MSG_TYPE_AI_SPECIAL_GUIDE = -1052;
   public static final int MSG_TYPE_APPROVAL_GRAY_TIPS = -2041;
   public static final int MSG_TYPE_APPROVAL_MSG = -2040;
@@ -37,16 +40,19 @@ public class MessageRecord
   public static final int MSG_TYPE_AUTHORIZE_FAILED = -4005;
   public static final int MSG_TYPE_AUTOREPLY = -10000;
   public static final int MSG_TYPE_BAT_PROCESS_FILE = -3013;
+  public static final int MSG_TYPE_BIRTHDAY_NOTICE = -7007;
   public static final int MSG_TYPE_BIZ_DATA = -2023;
   public static final int MSG_TYPE_C2C_CHAT_FREQ_CALL_TIP = -1014;
   public static final int MSG_TYPE_C2C_KEYWORD_CALL_TIP = -1015;
   public static final int MSG_TYPE_C2C_MIXED = -30002;
+  public static final int MSG_TYPE_CMGAME_TIPS = -7004;
   public static final int MSG_TYPE_COLOR_RING_TIPS = -3012;
   public static final int MSG_TYPE_COMMON_HOBBY_FOR_AIO_SHOW = -2023;
   public static final int MSG_TYPE_CONFESS_CARD = -2066;
   public static final int MSG_TYPE_CONFESS_NEWS = -2065;
   public static final int MSG_TYPE_CONFIGURABLE_GRAY_TIPS = 2024;
   public static final int MSG_TYPE_CONFIGURABLE_TAB_VISIBLE_GRAY_TIPS = -2042;
+  public static final int MSG_TYPE_DAREN_ASSISTANT = -2068;
   public static final int MSG_TYPE_DATE_FEED = -1042;
   public static final int MSG_TYPE_DEVICE_CLOSEGROUPCHAT = -4506;
   public static final int MSG_TYPE_DEVICE_DISMISSBIND = -4507;
@@ -70,9 +76,11 @@ public class MessageRecord
   public static final int MSG_TYPE_FOLD_MSG_GRAY_TIPS = -5011;
   public static final int MSG_TYPE_FORWARD_IMAGE = -20000;
   public static final int MSG_TYPE_FRIEND_SYSTEM_STRUCT_MSG = -2050;
+  public static final int MSG_TYPE_FU_DAI = -2072;
   public static final int MSG_TYPE_GAME_INVITE = -3004;
   public static final int MSG_TYPE_GAME_PARTY_GRAY_TIPS = -2049;
   public static final int MSG_TYPE_GAME_SHARE = -3005;
+  public static final int MSG_TYPE_GRAY_DATALINE_TIM_TIPS = -5041;
   public static final int MSG_TYPE_GRAY_TIPS = -5000;
   public static final int MSG_TYPE_GRAY_TIPS_TAB_VISIBLE = -5001;
   public static final int MSG_TYPE_GROUPDISC_FILE = -2014;
@@ -85,6 +93,9 @@ public class MessageRecord
   public static final int MSG_TYPE_INTERACT_AND_FOLLOW = -2055;
   public static final int MSG_TYPE_LIFEONLINEACCOUNT = -5004;
   public static final int MSG_TYPE_LIGHTALK_MSG = -2026;
+  public static final int MSG_TYPE_LIMIT_CHAT_CONFIRM = -7005;
+  public static final int MSG_TYPE_LIMIT_CHAT_TOPIC = -4023;
+  public static final int MSG_TYPE_LIMIT_CHAT_TOPIC_RECEIVER = -4024;
   public static final int MSG_TYPE_LOCAL_COMMON = -4000;
   public static final int MSG_TYPE_LOCAL_URL = -4001;
   public static final int MSG_TYPE_LONG_MIX = -1036;
@@ -94,6 +105,7 @@ public class MessageRecord
   public static final int MSG_TYPE_MEDIA_EMO = -2001;
   public static final int MSG_TYPE_MEDIA_FILE = -2005;
   public static final int MSG_TYPE_MEDIA_FUNNY_FACE = -2010;
+  public static final int MSG_TYPE_MEDIA_LIGHTVIDEO = -2071;
   public static final int MSG_TYPE_MEDIA_MARKFACE = -2007;
   public static final int MSG_TYPE_MEDIA_MULTI09 = -2003;
   public static final int MSG_TYPE_MEDIA_MULTI513 = -2004;
@@ -149,6 +161,7 @@ public class MessageRecord
   public static final int MSG_TYPE_SHARE_HOT_CHAT_GRAY_TIPS = -2033;
   public static final int MSG_TYPE_SHARE_LBS_PUSH = -4010;
   public static final int MSG_TYPE_SHIELD_MSG = -2012;
+  public static final int MSG_TYPE_SINGLE_WAY_FRIEND_ADD_ALLOW_ALL_MSG = -7006;
   public static final int MSG_TYPE_SINGLE_WAY_FRIEND_MSG = -2019;
   public static final int MSG_TYPE_SOUGOU_INPUT_TIPS = -1043;
   public static final int MSG_TYPE_SPECIALCARE_TIPS = -5005;
@@ -159,6 +172,7 @@ public class MessageRecord
   public static final int MSG_TYPE_STRUCT_TROOP_NOTIFICATION = -2021;
   public static final int MSG_TYPE_SYSTEM_STRUCT_MSG = -2018;
   public static final int MSG_TYPE_TEAM_WORK_FILE_IMPORT_SUCCESS_TIPS = -2063;
+  public static final int MSG_TYPE_TEAM_WORK_FILE_IMPORT_SUCCESS_TIPS_DL = -2073;
   public static final int MSG_TYPE_TEXT = -1000;
   public static final int MSG_TYPE_TEXT_FRIEND_FEED = -1034;
   public static final int MSG_TYPE_TEXT_GROUPMAN_ACCEPT = -1021;
@@ -183,6 +197,7 @@ public class MessageRecord
   public static final int MSG_TYPE_TIM_DOUFU_GUIDE = -3015;
   public static final int MSG_TYPE_TIM_GUIDE = -3014;
   public static final int MSG_TYPE_TRIBE_SHORT_VIDEO = -7002;
+  public static final int MSG_TYPE_TROOP_CONFESS = -2067;
   public static final int MSG_TYPE_TROOP_DELIVER_GIFT = -2035;
   public static final int MSG_TYPE_TROOP_DELIVER_GIFT_OBJ = -2038;
   public static final int MSG_TYPE_TROOP_EFFECT_PIC = -5015;
@@ -193,10 +208,9 @@ public class MessageRecord
   public static final int MSG_TYPE_TROOP_OBJ_MSG = -2017;
   public static final int MSG_TYPE_TROOP_REWARD = -2048;
   public static final int MSG_TYPE_TROOP_SIGN = -2054;
+  public static final int MSG_TYPE_TROOP_STAR_LEAGUE = -2069;
   public static final int MSG_TYPE_TROOP_STORY = -2057;
   public static final int MSG_TYPE_TROOP_TIPS_ADD_MEMBER = -1012;
-  public static final int MSG_TYPE_TROOP_TOPIC = -2044;
-  public static final int MSG_TYPE_TROOP_TOPIC_OPEN_TIPS = -2032;
   public static final int MSG_TYPE_TROOP_UNREAD_TIPS = -4009;
   public static final int MSG_TYPE_TROOP_WANT_GIFT_MSG = -2056;
   public static final int MSG_TYPE_UNCOMMONLY_USED_CONTACTS = -1026;
@@ -211,6 +225,7 @@ public class MessageRecord
   public static final int MSG_TYPE_VIP_DONATE = -2047;
   public static final int MSG_TYPE_VIP_KEYWORD = -4021;
   public static final int MSG_TYPE_VIP_VIDEO = -2045;
+  public static final int MSG_TYPE_YANZHI = -2070;
   public static final int MSG_VERSION_CODE = 3;
   public static final int MSG_VERSION_CODE_FOR_PICPTT = 3;
   public static final String QUERY_NEW_TABLE_FIELDS = "_id, extraflag, frienduin, isread, issend, istroop, NULL as msg, msgData, msgId, msgseq, msgtype, selfuin, senderuin, shmsgseq, time, versionCode, longMsgIndex, longMsgId, longMsgCount, isValid, msgUid, vipBubbleID, uniseq, sendFailCode, extStr, extInt, extLong ";
@@ -218,25 +233,29 @@ public class MessageRecord
   public static final String[] QUERY_OLD_TABLE_FIELDS_ARRAY = { "_id", "extraflag", "frienduin", "isread", "issend", "istroop", "msg", "msgId", "msgseq", "msgtype", "selfuin", "senderuin", "shmsgseq", "time" };
   public static final int SEND_FAIL_CODE_DEFAULT = 0;
   public static final int SEND_FAIL_CODE_GOLDMSG_ERROR = -900;
-  @notColumn
-  public AdvertisementItem advertisementItem;
-  @notColumn
-  public ArrayList atInfoList;
-  @notColumn
-  public ArrayList atInfoTempList;
+  @awhp
+  public nlo advertisementItem;
+  @awhp
+  public ArrayList<MessageForText.AtTroopMemberInfo> atInfoList;
+  @awhp
+  public ArrayList<MessageForText.AtTroopMemberInfo> atInfoTempList;
   public int extInt;
   public int extLong;
   public String extStr;
   public int extraflag;
   public String frienduin;
-  @notColumn
+  @awhp
   public boolean isBlessMsg;
-  @notColumn
+  @awhp
+  public boolean isCheckNeedShowInListTypeMsg;
+  @awhp
   public boolean isMultiMsg;
-  @notColumn
+  @awhp
   public boolean isOpenTroopMessage;
-  @notColumn
+  @awhp
   public boolean isReMultiMsg;
+  @awhp
+  public boolean isReplySource;
   public boolean isValid = true;
   public boolean isread;
   public int issend;
@@ -244,46 +263,52 @@ public class MessageRecord
   public int longMsgCount;
   public int longMsgId;
   public int longMsgIndex;
-  private JSONObject mExJsonObject;
-  @notColumn
+  public JSONObject mExJsonObject;
+  @awhp
   public int mIsShowQidianTips;
-  @notColumn
-  public MessageInfo mMessageInfo;
-  @notColumn
+  @awhp
+  public bbpd mMessageInfo;
+  @awhp
   public long mQidianMasterUin;
-  @notColumn
+  @awhp
   public int mQidianTaskId;
-  @notColumn
+  @awhp
   public String mQidianTipText;
-  @notColumn
+  @awhp
   public int mRobotFlag;
-  @notColumn
+  @awhp
   public String msg;
-  @notColumn
+  @awhp
   public String msg2;
+  @awhp
+  public long msgBackupMsgRandom;
+  @awhp
+  public long msgBackupMsgSeq;
   public byte[] msgData;
   @Deprecated
   public long msgId;
   public long msgUid;
   public long msgseq;
   public int msgtype;
-  @notColumn
+  @awhp
+  public boolean needNeedShowInList;
+  @awhp
   public boolean needUpdateMsgTag = true;
   public String selfuin;
   public int sendFailCode;
   public String senderuin;
   public long shmsgseq;
-  @notColumn
+  @awhp
   public boolean stickerHidden;
-  @notColumn
+  @awhp
   public EmojiStickerManager.StickerInfo stickerInfo;
   public long time;
   public long uniseq;
   public int versionCode = 3;
-  @notColumn
+  @awhp
   public int vipBubbleDiyTextId;
   public long vipBubbleID;
-  @notColumn
+  @awhp
   public int vipSubBubbleId;
   
   public MessageRecord()
@@ -372,7 +397,7 @@ public class MessageRecord
     }
     for (;;)
     {
-      return "mr_" + str + "_" + MsgProxyUtils.a(paramString);
+      return "mr_" + str + "_" + abti.a(paramString);
       str = "troop";
       continue;
       str = "discusssion";
@@ -389,7 +414,9 @@ public class MessageRecord
     }
     while (!TextUtils.isEmpty(paramString))
     {
-      return "mr_" + str + "_" + MsgProxyUtils.a(paramString) + "_New";
+      return "mr_" + str + "_" + abti.a(paramString) + "_New";
+      str = "temp_game_msg";
+      continue;
       str = "troop_hctopic";
       continue;
       str = "troop";
@@ -403,6 +430,8 @@ public class MessageRecord
       str = "confess_a";
       continue;
       str = "confess_b";
+      continue;
+      str = "cmgame_temp";
     }
     return "MessageRecord_frienduin_null";
   }
@@ -459,7 +488,7 @@ public class MessageRecord
     for (int i = 69;; i = 0)
     {
       StringBuilder localStringBuilder = new StringBuilder(i + 256);
-      localStringBuilder.append("MessageRecord BaseInfo=friendUin:").append(this.frienduin).append(",_id:").append(getId()).append(",shmsgseq:").append(this.shmsgseq).append(",uid:").append(this.msgUid).append(",uniseq:").append(this.uniseq).append(",time:").append(this.time).append(",extraFlag:").append(this.extraflag).append(",istroop:").append(this.istroop).append(",msgType:").append(this.msgtype).append(",msg:").append(Utils.a(this.msg));
+      localStringBuilder.append("MessageRecord BaseInfo=friendUin:").append(this.frienduin).append(",_id:").append(getId()).append(",shmsgseq:").append(this.shmsgseq).append(",uid:").append(this.msgUid).append(",uniseq:").append(this.uniseq).append(",time:").append(this.time).append(",extraFlag:").append(this.extraflag).append(",istroop:").append(this.istroop).append(",msgType:").append(this.msgtype).append(",msg:").append(bdeu.a(this.msg));
       if (isLongMsg()) {
         localStringBuilder.append(",longMsgId:").append(this.longMsgId).append(",longMsgCount:").append(this.longMsgCount).append(",longMsgIndex:").append(this.longMsgIndex);
       }
@@ -467,7 +496,7 @@ public class MessageRecord
     }
   }
   
-  public Class getClassForTable()
+  public Class<? extends awge> getClassForTable()
   {
     return MessageRecord.class;
   }
@@ -527,7 +556,7 @@ public class MessageRecord
   
   public String getLogColorContent()
   {
-    return Utils.a(this.msg);
+    return bdeu.a(this.msg);
   }
   
   public String getLongMsgInfoString()
@@ -536,7 +565,7 @@ public class MessageRecord
     for (int i = 69;; i = 0)
     {
       StringBuilder localStringBuilder = new StringBuilder(i + 129);
-      localStringBuilder.append("MessageRecord LongMsgInfo=friendUin:").append(this.frienduin).append(",istroop:").append(this.istroop).append(",msgType:").append(this.msgtype).append(",msg:").append(Utils.a(this.msg)).append(",time:").append(this.time);
+      localStringBuilder.append("MessageRecord LongMsgInfo=friendUin:").append(this.frienduin).append(",istroop:").append(this.istroop).append(",msgType:").append(this.msgtype).append(",msg:").append(bdeu.a(this.msg)).append(",time:").append(this.time);
       if (isLongMsg()) {
         localStringBuilder.append(",longMsgId:").append(this.longMsgId).append(",longMsgCount:").append(this.longMsgCount).append(",longMsgIndex:").append(this.longMsgIndex);
       }
@@ -584,7 +613,7 @@ public class MessageRecord
     this.msg = paramString;
     paramLong1 = paramLong4;
     if (paramLong4 <= 0L) {
-      paramLong1 = (int)MessageCache.a();
+      paramLong1 = (int)ayzl.a();
     }
     this.time = paramLong1;
     this.msgtype = paramInt1;
@@ -600,7 +629,7 @@ public class MessageRecord
     this.msg = paramString4;
     long l = paramLong1;
     if (paramLong1 <= 0L) {
-      l = (int)MessageCache.a();
+      l = (int)ayzl.a();
     }
     this.time = l;
     this.msgtype = paramInt1;
@@ -620,20 +649,21 @@ public class MessageRecord
   
   public boolean isSend()
   {
-    if ((AnonymousChatHelper.a(this)) && (AnonymousChatHelper.b(this))) {
+    if ((nav.a(this)) && (nav.b(this))) {}
+    while ((aojt.a(this)) && (aojt.b(this))) {
       return true;
     }
-    return MsgUtils.a(this.issend);
+    return bdil.a(this.issend);
   }
   
   public boolean isSendFromLocal()
   {
-    return MsgUtils.b(this.issend);
+    return bdil.b(this.issend);
   }
   
   public boolean isSendFromOtherTerminal()
   {
-    return MsgUtils.c(this.issend);
+    return bdil.c(this.issend);
   }
   
   public boolean isSupportFTS()
@@ -643,21 +673,21 @@ public class MessageRecord
   
   public boolean needVipBubble()
   {
-    return (this.istroop == 0) || (this.istroop == 1) || (this.istroop == 3000) || (this.istroop == 1000) || (this.istroop == 1004) || (this.istroop == 1006) || (this.istroop == 1001) || (this.istroop == 10002) || (this.istroop == 10004) || (this.istroop == 1010) || (this.istroop == 1020);
+    return (this.istroop == 0) || (this.istroop == 1) || (this.istroop == 3000) || (this.istroop == 1000) || (this.istroop == 1004) || (this.istroop == 1006) || (this.istroop == 1001) || (this.istroop == 10002) || (this.istroop == 10004) || (this.istroop == 1010) || (this.istroop == 1020) || (this.istroop == 10008);
   }
   
   public void postRead()
   {
     try
     {
-      if (this.versionCode > 0) {
+      if ((this.versionCode > 0) && (this.msgData != null)) {
         this.msg = new String(this.msgData, "UTF-8");
       }
       return;
     }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    catch (Exception localException)
     {
-      localUnsupportedEncodingException.printStackTrace();
+      localException.printStackTrace();
     }
   }
   
@@ -668,7 +698,7 @@ public class MessageRecord
     if (this.msg != null) {}
     try
     {
-      if (this.versionCode > 0) {
+      if ((this.versionCode > 0) && (this.msg != null)) {
         this.msgData = this.msg.getBytes("UTF-8");
       }
       return;
@@ -771,7 +801,7 @@ public class MessageRecord
     for (int i = 69;; i = 0)
     {
       StringBuilder localStringBuilder = new StringBuilder(i + (j + 39 + 9 + 10 + 11 + 10 + 11 + 10 + 10 + 10 + 5 + 19 + 6 + 19 + 8 + 5 + 8 + 5 + 11 + 10 + 14 + 10 + 9 + 5 + 9 + 10 + 5 + 14 + 10 + 19 + 8 + 19 + 12 + 5 + 8 + 19));
-      localStringBuilder.append("-----Dump MessageRecord-----,classname:").append(getClass().getSimpleName()).append(",selfUin:").append(this.selfuin).append(",friendUin:").append(this.frienduin).append(",senderUin:").append(this.senderuin).append(",shmsgseq:").append(this.shmsgseq).append(",uid:").append(this.msgUid).append(",time:").append(this.time).append(",isRead:").append(this.isread).append(",isSend:").append(this.issend).append(",extraFlag:").append(this.extraflag).append(",sendFailCode:").append(this.sendFailCode).append(",istroop:").append(this.istroop).append(",msgType:").append(this.msgtype).append(",msg:").append(Utils.a(this.msg)).append(",bubbleid:").append(this.vipBubbleID).append(",subBubbleId:").append(this.vipSubBubbleId).append(",uniseq:").append(this.uniseq).append(",isMultiMsg:").append(this.isMultiMsg).append(",msgseq:").append(this.msgseq);
+      localStringBuilder.append("-----Dump MessageRecord-----,classname:").append(getClass().getSimpleName()).append(",selfUin:").append(this.selfuin).append(",friendUin:").append(this.frienduin).append(",senderUin:").append(this.senderuin).append(",shmsgseq:").append(this.shmsgseq).append(",uid:").append(this.msgUid).append(",time:").append(this.time).append(",isRead:").append(this.isread).append(",isSend:").append(this.issend).append(",extraFlag:").append(this.extraflag).append(",sendFailCode:").append(this.sendFailCode).append(",istroop:").append(this.istroop).append(",msgType:").append(this.msgtype).append(",msg:").append(bdeu.a(this.msg)).append(",bubbleid:").append(this.vipBubbleID).append(",subBubbleId:").append(this.vipSubBubbleId).append(",uniseq:").append(this.uniseq).append(",isMultiMsg:").append(this.isMultiMsg).append(",msgseq:").append(this.msgseq);
       if (isLongMsg()) {
         localStringBuilder.append(",longMsgId:").append(this.longMsgId).append(",longMsgCount:").append(this.longMsgCount).append(",longMsgIndex:").append(this.longMsgIndex);
       }

@@ -1,18 +1,15 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.qquserguide.UserguideVideoFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareActivity;
 
 public class esg
-  implements MediaPlayer.OnCompletionListener
+  implements DialogInterface.OnClickListener
 {
-  public esg(UserguideVideoFragment paramUserguideVideoFragment) {}
+  public esg(QvipSpecialCareActivity paramQvipSpecialCareActivity) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.getVisibility() == 8) {
-      this.a.a.setVisibility(0);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

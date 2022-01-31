@@ -5,7 +5,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import anny;
+import blxm;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -13,12 +13,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import org.json.JSONArray;
 
 public class DynamicTextItem$TextMap
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new anny();
-  private Map a = new HashMap();
+  public static final Parcelable.Creator<TextMap> CREATOR = new blxm();
+  private Map<Integer, String> a = new HashMap();
   
   public DynamicTextItem$TextMap() {}
   
@@ -34,14 +35,17 @@ public class DynamicTextItem$TextMap
     }
   }
   
-  public DynamicTextItem$TextMap(@NonNull List paramList)
+  public DynamicTextItem$TextMap(@NonNull List<String> paramList)
   {
     this();
-    int i = 0;
-    while (i < paramList.size())
+    if (paramList != null)
     {
-      this.a.put(Integer.valueOf(i), paramList.get(i));
-      i += 1;
+      int i = 0;
+      while (i < paramList.size())
+      {
+        this.a.put(Integer.valueOf(i), paramList.get(i));
+        i += 1;
+      }
     }
   }
   
@@ -81,7 +85,7 @@ public class DynamicTextItem$TextMap
   }
   
   @NonNull
-  public List a()
+  public List<String> a()
   {
     ArrayList localArrayList = new ArrayList();
     int j = a();
@@ -92,6 +96,27 @@ public class DynamicTextItem$TextMap
       i += 1;
     }
     return localArrayList;
+  }
+  
+  public JSONArray a()
+  {
+    try
+    {
+      JSONArray localJSONArray = new JSONArray();
+      localJSONArray.put(a());
+      Iterator localIterator = this.a.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        localJSONArray.put(localEntry.getKey());
+        localJSONArray.put(localEntry.getValue());
+      }
+      return localException;
+    }
+    catch (Exception localException)
+    {
+      return null;
+    }
   }
   
   public void a(int paramInt, @NonNull String paramString)
@@ -179,7 +204,7 @@ public class DynamicTextItem$TextMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.text.DynamicTextItem.TextMap
  * JD-Core Version:    0.7.0.1
  */

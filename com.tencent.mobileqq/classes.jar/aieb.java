@@ -1,38 +1,48 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.shortvideo.util.storage.StorageManager;
-import com.tencent.mobileqq.shortvideo.util.storage.StorageManager.OnSdCardChangedListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
+import java.util.List;
 
-public class aieb
-  extends BroadcastReceiver
+class aieb
+  implements View.OnClickListener
 {
-  public aieb(StorageManager paramStorageManager) {}
+  aieb(aidz paramaidz, TroopLinkElement paramTroopLinkElement, aied paramaied) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (paramIntent.getAction() == null) {}
-    do
+    if (!aidz.a(this.jdField_a_of_type_Aidz))
     {
-      do
-      {
-        return;
-        paramContext = this.a.jdField_a_of_type_JavaLangString;
-        this.a.c();
-      } while ((this.a.jdField_a_of_type_ComTencentMobileqqShortvideoUtilStorageStorageManager$OnSdCardChangedListener == null) || (paramContext.equals(this.a.jdField_a_of_type_JavaLangString)));
-      if (paramIntent.getAction().equals("android.intent.action.MEDIA_UNMOUNTED"))
-      {
-        this.a.b();
-        this.a.jdField_a_of_type_ComTencentMobileqqShortvideoUtilStorageStorageManager$OnSdCardChangedListener.a(0, this.a.jdField_a_of_type_JavaLangString);
-        return;
+      paramView = new Intent(aidz.a(this.jdField_a_of_type_Aidz), QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement.url);
+      aidz.a(this.jdField_a_of_type_Aidz).startActivity(paramView);
+      return;
+    }
+    boolean bool = aied.a(this.jdField_a_of_type_Aied).isChecked();
+    if (bool)
+    {
+      aidz.a(this.jdField_a_of_type_Aidz).remove(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
+      paramView = aied.a(this.jdField_a_of_type_Aied);
+      if (bool) {
+        break label125;
       }
-    } while (!paramIntent.getAction().equals("android.intent.action.MEDIA_MOUNTED"));
-    this.a.jdField_a_of_type_ComTencentMobileqqShortvideoUtilStorageStorageManager$OnSdCardChangedListener.a(1, this.a.jdField_a_of_type_JavaLangString);
+    }
+    label125:
+    for (bool = true;; bool = false)
+    {
+      paramView.setChecked(bool);
+      return;
+      aidz.a(this.jdField_a_of_type_Aidz).add(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aieb
  * JD-Core Version:    0.7.0.1
  */

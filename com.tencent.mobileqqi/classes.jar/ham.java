@@ -1,29 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.util.FetchInfoListManager;
+import java.util.LinkedList;
 
 public class ham
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public ham(TroopFileItemOperation paramTroopFileItemOperation, TroopFileInfo paramTroopFileInfo) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ham(FetchInfoListManager paramFetchInfoListManager, Looper paramLooper)
   {
-    switch (paramInt)
-    {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      FetchInfoListManager.a(this.a);
     }
-    do
-    {
+    while ((paramMessage.what != 2) || (FetchInfoListManager.a(this.a) == null)) {
       return;
-    } while (TroopFileItemOperation.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation) == 0);
-    TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_Long).f(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a);
+    }
+    FetchInfoListManager.a(this.a).remove(paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ham
  * JD-Core Version:    0.7.0.1
  */

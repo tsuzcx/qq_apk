@@ -1,39 +1,42 @@
-import com.tencent.biz.ProtoServlet;
-import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import mqq.app.MobileQQ;
-import mqq.app.NewIntent;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
 
-public final class aenc
-  implements Runnable
+public class aenc
+  implements View.OnClickListener
 {
-  public aenc(String paramString, int paramInt, QQAppInterface paramQQAppInterface) {}
+  public aenc(ActivateFriendGrid paramActivateFriendGrid) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = new JSONObject();
-    try
+    paramView = (ActivateFriendGridItem)paramView;
+    if (paramView.jdField_a_of_type_Boolean)
     {
-      ((JSONObject)localObject).put("targetuin", Long.parseLong(this.jdField_a_of_type_JavaLangString));
-      ((JSONObject)localObject).put("type", this.jdField_a_of_type_Int);
-      NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), ProtoServlet.class);
-      localNewIntent.putExtra("cmd", "NearbySvr.get_chat_signature");
-      WebSsoBody.WebSsoRequestBody localWebSsoRequestBody = new WebSsoBody.WebSsoRequestBody();
-      localObject = ((JSONObject)localObject).toString();
-      localWebSsoRequestBody.data.set((String)localObject);
-      localNewIntent.putExtra("data", localWebSsoRequestBody.toByteArray());
-      localNewIntent.setObserver(new aend(this));
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
-      return;
+      ActivateFriendGrid.a(this.a);
+      if (paramView.jdField_a_of_type_Boolean) {
+        break label101;
+      }
     }
-    catch (Exception localException) {}
+    label101:
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.setChecked(bool);
+      if (ActivateFriendGrid.a(this.a) != null) {
+        ActivateFriendGrid.a(this.a).a(ActivateFriendGrid.c(this.a));
+      }
+      if (ActivateFriendGrid.a(this.a) != null) {
+        ActivateFriendGrid.a(this.a).a(paramView.jdField_a_of_type_Int);
+      }
+      return;
+      ActivateFriendGrid.b(this.a);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aenc
  * JD-Core Version:    0.7.0.1
  */

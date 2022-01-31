@@ -11,19 +11,23 @@ public final class s_picurl
   public int focus_x;
   public int focus_y;
   public int height;
+  public String md5 = "";
+  public long size;
   public String url = "";
   public int width;
   
   public s_picurl() {}
   
-  public s_picurl(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  public s_picurl(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, String paramString2)
   {
-    this.url = paramString;
+    this.url = paramString1;
     this.width = paramInt1;
     this.height = paramInt2;
     this.focus_x = paramInt3;
     this.focus_y = paramInt4;
     this.enlarge_rate = paramInt5;
+    this.size = paramLong;
+    this.md5 = paramString2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -34,6 +38,8 @@ public final class s_picurl
     this.focus_x = paramJceInputStream.read(this.focus_x, 3, false);
     this.focus_y = paramJceInputStream.read(this.focus_y, 4, false);
     this.enlarge_rate = paramJceInputStream.read(this.enlarge_rate, 5, false);
+    this.size = paramJceInputStream.read(this.size, 6, false);
+    this.md5 = paramJceInputStream.readString(7, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -46,11 +52,15 @@ public final class s_picurl
     paramJceOutputStream.write(this.focus_x, 3);
     paramJceOutputStream.write(this.focus_y, 4);
     paramJceOutputStream.write(this.enlarge_rate, 5);
+    paramJceOutputStream.write(this.size, 6);
+    if (this.md5 != null) {
+      paramJceOutputStream.write(this.md5, 7);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_picurl
  * JD-Core Version:    0.7.0.1
  */

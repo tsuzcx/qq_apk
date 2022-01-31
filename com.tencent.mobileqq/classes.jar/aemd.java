@@ -1,19 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
-class aemd
-  implements DialogInterface.OnClickListener
+public class aemd
+  extends bhry
 {
-  aemd(aemc paramaemc) {}
+  public aemd(VisitorsActivity paramVisitorsActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    paramDialogInterface.dismiss();
+    this.a.e.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemd
  * JD-Core Version:    0.7.0.1
  */

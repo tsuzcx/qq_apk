@@ -16,13 +16,13 @@ import com.tencent.mobileqq.structmsg.AbsShareMsg.Builder;
 import com.tencent.mobileqq.structmsg.AbsStructMsgItem;
 import com.tencent.mobileqq.structmsg.StructMsgElementFactory;
 import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
-import ghl;
+import gcz;
 
 public class MusicGeneQQBrowserActivity
   extends QQBrowserActivity
 {
   private static final String jdField_a_of_type_JavaLangString = MusicGeneQQBrowserActivity.class.getSimpleName();
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ghl(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new gcz(this);
   private TextView jdField_a_of_type_AndroidWidgetTextView = null;
   private boolean jdField_a_of_type_Boolean = false;
   private View jdField_b_of_type_AndroidViewView = null;

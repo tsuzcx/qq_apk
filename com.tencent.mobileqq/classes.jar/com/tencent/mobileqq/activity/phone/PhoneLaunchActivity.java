@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.activity.phone;
 
+import ainf;
+import alud;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import aozx;
+import awhw;
+import azqs;
+import bdgc;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import wvc;
-import wvd;
 
 public class PhoneLaunchActivity
   extends DialogBaseActivity
   implements View.OnClickListener
 {
   private Button jdField_a_of_type_AndroidWidgetButton;
-  public ContactBindObserver a;
+  public awhw a;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   private boolean c;
@@ -28,7 +27,7 @@ public class PhoneLaunchActivity
   
   private void b()
   {
-    ContactUtils.a(2);
+    bdgc.a(2);
     Intent localIntent = new Intent(this, BindNumberActivity.class);
     if (getIntent().getIntExtra("kSrouce", -1) == 8) {
       localIntent.putExtra("kSrouce", 8);
@@ -38,28 +37,12 @@ public class PhoneLaunchActivity
   
   public void a()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.f())
-    {
-      startActivity(new Intent(this, GuideBindPhoneActivity.class));
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      return;
-    }
-    if (!NetworkUtil.d(this))
-    {
-      b(2131434613);
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wvc(this);
-      this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
-    }
-    this.app.a(new wvd(this));
-    a(2131434453, 1000L, true);
+    PhoneLaunchActivity.1 local1 = new PhoneLaunchActivity.1(this);
+    DenyRunnable localDenyRunnable = new DenyRunnable(this, new ainf(this));
+    aozx.a(this, this.app, local1, localDenyRunnable);
   }
   
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if (paramInt1 == 1) {
       if (paramInt2 != 0)
@@ -74,7 +57,7 @@ public class PhoneLaunchActivity
     finish();
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     getIntent().putExtra("fling_action_key", 0);
     super.doOnCreate(paramBundle);
@@ -91,20 +74,20 @@ public class PhoneLaunchActivity
     }
     if (!this.jdField_a_of_type_Boolean) {
       if (getIntent().getStringExtra("leftViewText") == null) {
-        getIntent().putExtra("leftViewText", "联系人");
+        getIntent().putExtra("leftViewText", alud.a(2131708400));
       }
     }
     for (;;)
     {
-      setContentView(2130969167);
-      setTitle("启用通讯录");
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365481));
+      setContentView(2131559425);
+      setTitle(alud.a(2131708396));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371761));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       if (getIntent().getBooleanExtra("k_start_number", false)) {
         b();
       }
       return true;
-      getIntent().putExtra("leftViewText", "关闭");
+      getIntent().putExtra("leftViewText", alud.a(2131708402));
     }
   }
   
@@ -112,7 +95,7 @@ public class PhoneLaunchActivity
   {
     super.finish();
     if (!this.jdField_a_of_type_Boolean) {
-      overridePendingTransition(2131034131, 2131034382);
+      overridePendingTransition(2130771990, 2130772295);
     }
   }
   
@@ -120,14 +103,14 @@ public class PhoneLaunchActivity
   {
     if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.c();
+      int i = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.d();
       if ((i == 1) || (i == 2) || (i == 3) || (i == 4)) {
         b();
       }
       for (;;)
       {
         if (this.d) {
-          ReportController.b(this.app, "CliOper", "", "", "0X8005D10", "0X8005D10", 0, 0, "", "", "", "");
+          azqs.b(this.app, "CliOper", "", "", "0X8005D10", "0X8005D10", 0, 0, "", "", "", "");
         }
         return;
         if (i == 5)
@@ -143,7 +126,7 @@ public class PhoneLaunchActivity
         }
         else
         {
-          a("请求出错", "请稍后重试");
+          a(alud.a(2131708398), alud.a(2131708397));
         }
       }
     }
@@ -152,7 +135,7 @@ public class PhoneLaunchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneLaunchActivity
  * JD-Core Version:    0.7.0.1
  */

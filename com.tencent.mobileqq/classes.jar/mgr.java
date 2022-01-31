@@ -1,85 +1,58 @@
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager;
-import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager.AtlasCallbackImpl;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAllInOneBar;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
 
-public class mgr
-  extends ReadInJoyAtlasManager.AtlasCallbackImpl
+class mgr
 {
-  public mgr(ReadInJoyAllInOneBar paramReadInJoyAllInOneBar) {}
+  int jdField_a_of_type_Int = 0;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = 0;
+  boolean jdField_b_of_type_Boolean = false;
+  int jdField_c_of_type_Int = 0;
+  boolean jdField_c_of_type_Boolean = false;
+  int jdField_d_of_type_Int = 0;
+  boolean jdField_d_of_type_Boolean = false;
+  int e = 0;
+  int f = 0;
+  int g = 0;
+  int h = 0;
+  int i = 0;
+  int j = 0;
+  int k;
+  int l;
+  int m = 0;
+  int n = 0;
+  int o = 0;
   
-  public void a(boolean paramBoolean, long paramLong, int paramInt)
+  void a(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, float paramFloat1, float paramFloat2, int paramInt11, int paramInt12, int paramInt13, int paramInt14, int paramInt15)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ReadInJoyAllInOneBar.a, 2, "onGetCommentCount, isSucc = " + paramBoolean + ", commentCount = " + paramLong + ", retCode = " + paramInt);
-    }
-    if (paramBoolean) {
-      this.a.a(paramLong);
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
-  {
-    boolean bool1 = false;
-    boolean bool2 = true;
-    if (!ReadInJoyAllInOneBar.a(this.a).equals(paramString1)) {
+    if (!QLog.isColorLevel()) {}
+    while ((this.jdField_c_of_type_Boolean == paramBoolean3) && (this.jdField_d_of_type_Boolean == paramBoolean4) && (this.jdField_a_of_type_Boolean == paramBoolean1) && (this.jdField_b_of_type_Boolean == paramBoolean2) && (this.jdField_a_of_type_Int == paramInt1) && (this.jdField_b_of_type_Int == paramInt2) && (this.jdField_c_of_type_Int == paramInt3) && (this.jdField_d_of_type_Int == paramInt4) && (this.e == paramInt5) && (this.f == paramInt6) && (this.g == paramInt7) && (this.h == paramInt8) && (this.i == paramInt9) && (this.j == paramInt10) && (this.k == paramInt11) && (this.l == paramInt12) && (this.m == paramInt13) && (this.n == paramInt14)) {
       return;
     }
-    ReadInJoyAllInOneBar.b(this.a, false);
-    if (paramBoolean)
-    {
-      paramString1 = this.a;
-      if (paramInt == 1) {
-        bool1 = true;
-      }
-      paramString1.setFavorite(bool1);
-      if (paramInt == 1)
-      {
-        ArrayList localArrayList = (ArrayList)ReadInJoyAllInOneBar.a(this.a).get(ReadInJoyAllInOneBar.a(this.a));
-        paramString1 = localArrayList;
-        if (localArrayList == null) {
-          paramString1 = new ArrayList();
-        }
-        paramString1.add(paramString2);
-        ReadInJoyAllInOneBar.a(this.a).put(ReadInJoyAllInOneBar.a(this.a), paramString1);
-      }
-      for (;;)
-      {
-        ReadInJoyAtlasManager.a().a(this.a.getContext(), paramBoolean, paramInt);
-        return;
-        if (paramInt == 2) {
-          ReadInJoyAllInOneBar.a(this.a).remove(ReadInJoyAllInOneBar.a(this.a));
-        }
-      }
-    }
-    paramString1 = this.a;
-    if (paramInt != 1) {}
-    for (bool1 = bool2;; bool1 = false)
-    {
-      paramString1.setFavorite(bool1);
-      break;
-    }
-  }
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, ArrayList paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(ReadInJoyAllInOneBar.a, 2, "handleFavoriteStatus, isSucc = " + paramBoolean1 + "rowkey " + paramString + ", isFavorite = " + paramBoolean2 + ", cidList=" + paramArrayList);
-    }
-    if ((paramBoolean1) && (ReadInJoyAllInOneBar.a(this.a).equals(paramString)))
-    {
-      ReadInJoyAllInOneBar.a(this.a).put(ReadInJoyAllInOneBar.a(this.a), paramArrayList);
-      this.a.b.setSelected(paramBoolean2);
-      ReadInJoyAllInOneBar.a(this.a, paramBoolean2);
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.jdField_c_of_type_Boolean = paramBoolean3;
+    this.jdField_d_of_type_Boolean = paramBoolean4;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_d_of_type_Int = paramInt4;
+    this.e = paramInt5;
+    this.f = paramInt6;
+    this.g = paramInt7;
+    this.h = paramInt8;
+    this.i = paramInt9;
+    this.j = paramInt10;
+    this.k = paramInt11;
+    this.l = paramInt12;
+    this.m = paramInt13;
+    this.n = paramInt14;
+    this.o = paramInt15;
+    QLog.w(paramString, 1, "rendView, self[" + paramBoolean1 + "], mirror[" + paramBoolean2 + "], bForceGround[" + paramBoolean3 + "], pt[" + paramInt1 + ", " + paramInt2 + "], dst[" + paramInt3 + ", " + paramInt4 + "], src[" + paramInt5 + ", " + paramInt6 + "], t1[" + paramInt7 + ", " + paramInt8 + "], t2[" + paramInt9 + ", " + paramInt10 + "], sR[" + paramFloat1 + "], tR[" + paramFloat2 + "], border[" + paramBoolean4 + "], sAngle[" + paramInt11 + "], yuvAngle[" + paramInt12 + "], mRotation[" + paramInt13 + "], rotation[" + paramInt14 + "], scaleType[" + paramInt15 + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mgr
  * JD-Core Version:    0.7.0.1
  */

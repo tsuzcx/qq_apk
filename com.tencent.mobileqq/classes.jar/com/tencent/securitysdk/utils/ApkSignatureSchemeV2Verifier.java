@@ -1,7 +1,7 @@
 package com.tencent.securitysdk.utils;
 
-import alyn;
 import android.util.Pair;
+import bhql;
 import java.io.RandomAccessFile;
 import java.nio.BufferUnderflowException;
 import java.nio.ByteBuffer;
@@ -9,28 +9,28 @@ import java.nio.ByteOrder;
 
 public class ApkSignatureSchemeV2Verifier
 {
-  static long a(ByteBuffer paramByteBuffer, long paramLong)
+  public static long a(ByteBuffer paramByteBuffer, long paramLong)
   {
-    long l = alyn.a(paramByteBuffer);
+    long l = bhql.a(paramByteBuffer);
     if (l >= paramLong) {
       throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException("ZIP Central Directory offset out of range: " + l + ". ZIP End of Central Directory offset: " + paramLong);
     }
-    if (alyn.b(paramByteBuffer) + l != paramLong) {
+    if (bhql.b(paramByteBuffer) + l != paramLong) {
       throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException("ZIP Central Directory is not immediately followed by End of Central Directory");
     }
     return l;
   }
   
-  static Pair a(RandomAccessFile paramRandomAccessFile)
+  public static Pair<ByteBuffer, Long> a(RandomAccessFile paramRandomAccessFile)
   {
-    paramRandomAccessFile = alyn.a(paramRandomAccessFile);
+    paramRandomAccessFile = bhql.a(paramRandomAccessFile);
     if (paramRandomAccessFile == null) {
       throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException("Not an APK file: ZIP End of Central Directory record not found");
     }
     return paramRandomAccessFile;
   }
   
-  static Pair a(RandomAccessFile paramRandomAccessFile, long paramLong)
+  public static Pair<ByteBuffer, Long> a(RandomAccessFile paramRandomAccessFile, long paramLong)
   {
     if (paramLong < 32L) {
       throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException("APK too small for APK Signing Block. ZIP Central Directory offset: " + paramLong);
@@ -90,7 +90,7 @@ public class ApkSignatureSchemeV2Verifier
     throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException("No APK Signature Scheme v2 block in APK Signing Block");
   }
   
-  static ByteBuffer a(ByteBuffer paramByteBuffer, int paramInt)
+  public static ByteBuffer a(ByteBuffer paramByteBuffer, int paramInt)
   {
     if (paramInt < 0) {
       throw new IllegalArgumentException("size: " + paramInt);
@@ -115,7 +115,7 @@ public class ApkSignatureSchemeV2Verifier
     }
   }
   
-  static ByteBuffer a(ByteBuffer paramByteBuffer, int paramInt1, int paramInt2)
+  public static ByteBuffer a(ByteBuffer paramByteBuffer, int paramInt1, int paramInt2)
   {
     if (paramInt1 < 0) {
       throw new IllegalArgumentException("start: " + paramInt1);
@@ -146,7 +146,7 @@ public class ApkSignatureSchemeV2Verifier
     }
   }
   
-  static void a(ByteBuffer paramByteBuffer)
+  public static void a(ByteBuffer paramByteBuffer)
   {
     if (paramByteBuffer.order() != ByteOrder.LITTLE_ENDIAN) {
       throw new IllegalArgumentException("ByteBuffer byte order must be little endian");
@@ -161,7 +161,7 @@ public class ApkSignatureSchemeV2Verifier
       Pair localPair = a(paramString);
       ByteBuffer localByteBuffer = (ByteBuffer)localPair.first;
       long l = ((Long)localPair.second).longValue();
-      if (alyn.a(paramString, l)) {
+      if (bhql.a(paramString, l)) {
         throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException("ZIP64 APK not supported");
       }
       a((ByteBuffer)a(paramString, a(localByteBuffer, l)).first);
@@ -176,7 +176,7 @@ public class ApkSignatureSchemeV2Verifier
     return false;
   }
   
-  static ByteBuffer b(ByteBuffer paramByteBuffer, int paramInt)
+  public static ByteBuffer b(ByteBuffer paramByteBuffer, int paramInt)
   {
     a(paramByteBuffer);
     paramByteBuffer = a(paramByteBuffer, 8, paramByteBuffer.capacity() - 24);
@@ -206,7 +206,7 @@ public class ApkSignatureSchemeV2Verifier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.securitysdk.utils.ApkSignatureSchemeV2Verifier
  * JD-Core Version:    0.7.0.1
  */

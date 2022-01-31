@@ -1,21 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.activities.LiteVideoActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.dataline.activities.LiteMutiPicViewerActivity;
 
-public class cg
-  implements View.OnClickListener
+class cg
+  implements Runnable
 {
-  public cg(LiteVideoActivity paramLiteVideoActivity) {}
+  cg(cf paramcf) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.a.a) && (NetworkUtil.f(this.a)) && (!NetworkUtil.g(this.a)) && (LiteVideoActivity.a(this.a) > LiteVideoActivity.a()))
-    {
-      LiteVideoActivity.a(this.a);
-      return;
-    }
-    LiteVideoActivity.b(this.a);
+    LiteMutiPicViewerActivity.a(this.a.a);
   }
 }
 

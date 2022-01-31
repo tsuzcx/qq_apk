@@ -1,31 +1,17 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.core.bean.MbInfoResult.MbInfoItem;
-import com.tencent.token.core.bean.MbInfoResult.MbInfoItemDetail;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class ph
-  implements View.OnClickListener
+class ph
+  implements DialogInterface.OnClickListener
 {
-  ph(pg parampg, MbInfoResult.MbInfoItem paramMbInfoItem, int paramInt1, int paramInt2) {}
+  ph(pg parampg, Activity paramActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.mId == 51) && (this.a.mDetail.mBtnType == 1))
-    {
-      paramView = new Intent(pg.a(this.d), UtilsModSetMobileStep1Activity.class);
-      paramView.putExtra("title", pg.a(this.d).getResources().getString(2131361814) + this.a.mName);
-      paramView.putExtra("op_type", 1);
-      paramView.putExtra("position", this.b);
-      pg.a(this.d).startActivity(paramView);
-      return;
-    }
-    paramView = new Intent(pg.a(this.d), UtilsMbInfoItemActivity.class);
-    paramView.putExtra("position", this.c);
-    pg.a(this.d).startActivity(paramView);
+    ((BaseActivity)this.a).dismissDialog();
   }
 }
 

@@ -8,20 +8,20 @@ import java.util.ArrayList;
 public final class MediaInfo
   extends JceStruct
 {
-  static ArrayList cache_audioinfo;
-  static ArrayList cache_picinfolist;
+  static ArrayList<AudioInfo> cache_audioinfo;
+  static ArrayList<PicInfo> cache_picinfolist;
   static VedioInfo cache_vedioinfo;
-  public ArrayList audioinfo;
-  public ArrayList picinfolist;
+  public ArrayList<AudioInfo> audioinfo;
+  public ArrayList<PicInfo> picinfolist;
   public VedioInfo vedioinfo;
   
   public MediaInfo() {}
   
-  public MediaInfo(ArrayList paramArrayList1, VedioInfo paramVedioInfo, ArrayList paramArrayList2)
+  public MediaInfo(ArrayList<PicInfo> paramArrayList, VedioInfo paramVedioInfo, ArrayList<AudioInfo> paramArrayList1)
   {
-    this.picinfolist = paramArrayList1;
+    this.picinfolist = paramArrayList;
     this.vedioinfo = paramVedioInfo;
-    this.audioinfo = paramArrayList2;
+    this.audioinfo = paramArrayList1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -62,7 +62,7 @@ public final class MediaInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_OPERATION.MediaInfo
  * JD-Core Version:    0.7.0.1
  */

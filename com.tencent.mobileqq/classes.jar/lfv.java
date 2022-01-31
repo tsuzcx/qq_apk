@@ -1,34 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkCache;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.qphone.base.util.QLog;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.av.VideoController;
 
-public class lfv
-  implements View.OnTouchListener
+public abstract class lfv
+  implements MediaPlayer.OnCompletionListener
 {
-  public lfv(ReadInJoyArkCache paramReadInJoyArkCache, BaseArticleInfo paramBaseArticleInfo, ArkAppContainer paramArkAppContainer) {}
+  public long a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public lfv(VideoController paramVideoController) {}
+  
+  public String toString()
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyArkCache", 2, "click ArkAppView.");
-      }
-      ReadInJoyArkCache.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyArkReadInJoyArkCache, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.onTouch(paramView, paramMotionEvent);
-    }
-    return false;
+    return "Custom." + this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lfv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,42 @@
-import android.text.TextUtils;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.ClipboardManager;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-public class aihp
-  implements View.OnLongClickListener
+class aihp
+  implements View.OnClickListener
 {
-  public aihp(StructMsgForGeneralShare paramStructMsgForGeneralShare, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
+  aihp(aihl paramaihl) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    StructMsgForGeneralShare.clickedItemIndex = 0;
-    AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)paramView.getTag();
-    if (!TextUtils.isEmpty(localAbsStructMsgElement.s)) {
-      StructMsgForGeneralShare.clickedItemIndex = Integer.valueOf(localAbsStructMsgElement.s).intValue();
+    int i = paramView.getId();
+    if (QLog.isColorLevel()) {
+      QLog.i(aihl.jdField_a_of_type_JavaLangString, 2, "onClick, id = " + i);
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onLongClick(paramView);
+    Object localObject = this.a.jdField_a_of_type_Aihj;
+    if (this.a.jdField_a_of_type_Aihj == null) {
+      return;
+    }
+    switch (i)
+    {
+    default: 
+      return;
+    case 2131364912: 
+      ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(((aihj)localObject).a.msg);
+      return;
+    }
+    paramView = new Bundle();
+    paramView.putInt("forward_type", -1);
+    paramView.putString("forward_text", ((aihj)localObject).a.msg);
+    localObject = new Intent();
+    ((Intent)localObject).putExtras(paramView);
+    aryv.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (Intent)localObject, 21);
   }
 }
 

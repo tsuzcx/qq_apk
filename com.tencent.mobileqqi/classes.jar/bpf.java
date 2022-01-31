@@ -1,66 +1,25 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.google.zxing.client.android.wifi.BizWifiConfigManager;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.biz.webviewplugin.Share;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import java.util.HashMap;
 
 public class bpf
   extends Thread
 {
-  public bpf(SensorAPIJavaScript paramSensorAPIJavaScript, Context paramContext, String paramString) {}
+  public bpf(Share paramShare, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
   
   public void run()
   {
-    int k = 2;
-    int i = 15;
-    int j = k;
-    if (i > 0)
-    {
-      j = k;
-      if (this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_JavaLangRefWeakReference != null)
-      {
-        if (this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-          break label157;
-        }
-        j = k;
-      }
+    Object localObject = new HashMap();
+    if (this.jdField_a_of_type_Boolean) {
+      ((HashMap)localObject).put("url", this.jdField_a_of_type_JavaLangString);
     }
-    for (;;)
+    localObject = HttpUtil.a((HashMap)localObject);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (localObject = (String)((HashMap)localObject).get("url");; localObject = this.jdField_a_of_type_JavaLangString)
     {
-      for (;;)
-      {
-        if (this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_JavaLangRefWeakReference != null)
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.d("SensorApi", 4, "run check end: " + j);
-          }
-          Message localMessage = new Message();
-          localMessage.what = 0;
-          localMessage.obj = ("javascript: " + this.jdField_a_of_type_JavaLangString + "('" + j + "')");
-          this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-        }
-        this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.b = false;
-        return;
-        label157:
-        if (QLog.isDevelopLevel()) {
-          QLog.d("SensorApi", 4, "run check: " + i);
-        }
-        if (BizWifiConfigManager.a(this.jdField_a_of_type_AndroidContentContext)) {
-          j = 0;
-        } else {
-          try
-          {
-            Thread.sleep(2000L);
-            i -= 1;
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            j = k;
-          }
-        }
-      }
+      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a.runOnUiThread(new bpg(this, (String)localObject));
+      return;
     }
   }
 }

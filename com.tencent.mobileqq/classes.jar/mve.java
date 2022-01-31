@@ -1,25 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.ResultReceiver;
+import com.tencent.av.utils.PopupDialogQQSide;
 
 public class mve
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public mve(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin) {}
+  public mve(PopupDialogQQSide paramPopupDialogQQSide, ResultReceiver paramResultReceiver) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null) {
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, this.jdField_a_of_type_ComTencentAvUtilsPopupDialogQQSide.getArguments());
     }
-    this.a.a = false;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mve
  * JD-Core Version:    0.7.0.1
  */

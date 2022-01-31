@@ -1,40 +1,41 @@
+import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
 
-public class rsc
-  implements Runnable
+final class rsc
+  implements DialogInterface.OnClickListener
 {
-  public rsc(BaseChatPie paramBaseChatPie) {}
+  rsc(Context paramContext) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ChatActivityFacade.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
-    BaseChatPie.b(this.a);
-    try
+    if (paramInt == 1)
     {
-      this.a.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843959);
-      this.a.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843960);
-      this.a.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837580);
-      return;
+      bkbq.e(1);
+      bkbq.a(true);
+      nxu.b(this.a, 9);
     }
-    catch (Exception localException)
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.aio.BaseChatPie", 2, "emo qvip_emoji_aio_face_new_default_fail, e=" + localException.getMessage());
+      if ((this.a instanceof Activity)) {
+        ((Activity)this.a).finish();
+      }
       return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      QLog.e("Q.aio.BaseChatPie", 1, "emo qvip_emoji_aio_face oom, e= " + localOutOfMemoryError);
+      paramDialogInterface = new Intent(this.a, SplashActivity.class);
+      paramDialogInterface.putExtra("fragment_id", 1);
+      paramDialogInterface.putExtra("open_kandian_tab_fragment", true);
+      paramDialogInterface.putExtra("arg_channel_cover_id", 0);
+      paramDialogInterface.setFlags(335544320);
+      this.a.startActivity(paramDialogInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rsc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.biz.qqcircle.widgets.BaseVideoView;
+import com.tencent.image.URLImageView;
 
 public class uca
-  implements View.OnClickListener
+  implements ymw
 {
-  public uca(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public uca(BaseVideoView paramBaseVideoView) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
+    if (this.a.a != null) {
+      this.a.a.setVisibility(8);
+    }
+    this.a.d();
+    if (BaseVideoView.a(this.a) != null) {
+      BaseVideoView.a(this.a).a(paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uca
  * JD-Core Version:    0.7.0.1
  */

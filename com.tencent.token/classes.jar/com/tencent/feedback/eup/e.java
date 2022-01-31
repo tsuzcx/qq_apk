@@ -1,6 +1,5 @@
 package com.tencent.feedback.eup;
 
-import com.tencent.feedback.common.PlugInInfo;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +14,7 @@ public class e
   private long D = -1L;
   private String E;
   private byte[] F;
-  private Map<String, PlugInInfo> G;
+  private Map G;
   private String H;
   private boolean I;
   private String J;
@@ -25,12 +24,12 @@ public class e
   private String N = "";
   private String O = "";
   private String P = "";
-  private final Map<String, String> Q = new HashMap();
+  private final Map Q = new HashMap();
   private long R = -1L;
   public int a = -1;
   public int b = -1;
-  public Map<String, String> c = null;
-  public Map<String, String> d = null;
+  public Map c = null;
+  public Map d = null;
   private long e = -1L;
   private byte f = 0;
   private boolean g = false;
@@ -80,7 +79,7 @@ public class e
     return this.M;
   }
   
-  public final Map<String, String> C()
+  public final Map C()
   {
     return this.Q;
   }
@@ -165,12 +164,12 @@ public class e
     return this.b;
   }
   
-  public final Map<String, String> T()
+  public final Map T()
   {
     return this.c;
   }
   
-  public final Map<String, String> U()
+  public final Map U()
   {
     return this.d;
   }
@@ -202,7 +201,7 @@ public class e
     this.k = paramString;
   }
   
-  public final void a(Map<String, PlugInInfo> paramMap)
+  public final void a(Map paramMap)
   {
     this.G = paramMap;
   }
@@ -232,7 +231,7 @@ public class e
     this.l = paramString;
   }
   
-  public final void b(Map<String, String> paramMap)
+  public final void b(Map paramMap)
   {
     this.c = paramMap;
   }
@@ -267,7 +266,7 @@ public class e
     this.m = paramString;
   }
   
-  public final void c(Map<String, String> paramMap)
+  public final void c(Map paramMap)
   {
     this.d = paramMap;
   }
@@ -492,7 +491,7 @@ public class e
     return this.F;
   }
   
-  public final Map<String, PlugInInfo> u()
+  public final Map u()
   {
     return this.G;
   }

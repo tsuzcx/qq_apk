@@ -1,18 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
-
-public class lng
-  implements Runnable
+class lng
 {
-  public lng(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
+  byte jdField_a_of_type_Byte = 0;
+  byte b = 0;
+  byte c = 0;
+  byte d = 0;
+  byte e = 0;
+  byte f = 0;
+  byte g = 0;
+  byte h = 0;
+  byte i = 0;
+  byte j = 0;
+  byte k = 0;
+  byte l = 0;
   
-  public void run()
-  {
-    this.a.a(3, "当前网络不可用，请价差你的网络设置\n点击屏幕刷新");
-  }
+  lng(lnf paramlnf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lng
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,17 @@
 package com.tencent.token.ui;
 
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class yh
-  implements Animation.AnimationListener
+class yh
+  implements View.OnClickListener
 {
-  yh(RealNameTakeIDPhotoActivity paramRealNameTakeIDPhotoActivity) {}
+  yh(yg paramyg) {}
   
-  public final void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    RealNameTakeIDPhotoActivity.access$300(this.a).sendEmptyMessage(4);
+    this.a.a.addUser();
   }
-  
-  public final void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public final void onAnimationStart(Animation paramAnimation) {}
 }
 
 

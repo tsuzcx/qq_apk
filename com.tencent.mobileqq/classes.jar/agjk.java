@@ -1,38 +1,21 @@
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agjk
-  implements Runnable
+class agjk
+  implements DialogInterface.OnClickListener
 {
-  public agjk(ScanTorchActivity paramScanTorchActivity, boolean paramBoolean1, boolean paramBoolean2) {}
+  agjk(agjj paramagjj) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ScanTorchActivity.c(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(0);
-    ScanTorchActivity.b(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(0);
-    ScanTorchActivity.b(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-    ScanTorchActivity.b(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(0);
-    ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-    ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-    if (this.jdField_a_of_type_Boolean) {
-      ScanTorchActivity.z(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, this.b);
-    }
-    for (;;)
-    {
-      ScanTorchActivity.c(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, true);
-      ScanTorchActivity.k(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
-      return;
-      ScanTorchActivity.z(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.a.b(false));
-    }
+    paramDialogInterface.dismiss();
+    agji.j(this.a.a).setResult(8001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agjk
  * JD-Core Version:    0.7.0.1
  */

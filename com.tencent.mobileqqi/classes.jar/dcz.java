@@ -1,43 +1,74 @@
-import com.tencent.mobileqq.activity.NearPeopleActivity;
-import com.tencent.mobileqq.app.NearHornHandler;
-import com.tencent.mobileqq.app.NearHornObserver;
-import com.tencent.mobileqq.data.HornDetail;
-import com.tencent.mobileqq.widget.HornAnimationView;
-import java.util.Iterator;
-import java.util.List;
+import android.os.AsyncTask;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.utils.ReverseGeocode;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.map.GeoPoint;
 
 public class dcz
-  extends NearHornObserver
+  extends AsyncTask
 {
-  public dcz(NearPeopleActivity paramNearPeopleActivity) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  GeoPoint jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint;
   
-  protected void a(boolean paramBoolean, List paramList, Boolean paramBoolean1, Boolean paramBoolean2, int paramInt, String paramString)
+  public dcz(QQMapActivity paramQQMapActivity, GeoPoint paramGeoPoint, TextView paramTextView)
   {
-    if ((paramBoolean) && (NearPeopleActivity.a(this.a) != null) && (!paramBoolean2.booleanValue()) && (NearPeopleActivity.a(this.a) != null))
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint = paramGeoPoint;
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+    this.jdField_a_of_type_AndroidWidgetTextView.setTag(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint);
+  }
+  
+  protected String a(GeoPoint... paramVarArgs)
+  {
+    int i = 0;
+    while (i < 3)
     {
-      this.a.jdField_a_of_type_JavaLangBoolean = NearPeopleActivity.a(this.a).jdField_a_of_type_JavaLangBoolean;
-      NearPeopleActivity.a(this.a, paramString);
-      if (NearPeopleActivity.a(this.a) != null)
+      String str = ReverseGeocode.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLatitudeE6() / 1000000.0D, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLongitudeE6() / 1000000.0D, 3);
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
       {
-        NearPeopleActivity.a(this.a).clear();
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          paramBoolean1 = (HornDetail)paramList.next();
-          NearPeopleActivity.a(this.a).add(paramBoolean1);
+        localStringBuilder = new StringBuilder().append(i).append(" time: ReverseGeocode.getFromLocation, address: ");
+        if (str != null) {
+          break label102;
         }
-        if (NearPeopleActivity.a(this.a).size() <= 0) {
+      }
+      label102:
+      for (paramVarArgs = "";; paramVarArgs = str)
+      {
+        QLog.i("fetch_address", 2, paramVarArgs);
+        if ((str == null) || (str.length() <= 0)) {
+          break;
+        }
+        return str;
+      }
+      i += 1;
+    }
+    return "";
+  }
+  
+  protected void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("fetch_address", 2, "get address finish, onPostExecute, result:" + paramString);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    {
+      GeoPoint localGeoPoint = (GeoPoint)this.jdField_a_of_type_AndroidWidgetTextView.getTag();
+      if ((localGeoPoint.getLatitudeE6() == this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLatitudeE6()) && (localGeoPoint.getLongitudeE6() == this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLongitudeE6()) && (paramString != null) && (paramString.length() > 0))
+      {
+        if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.jdField_h_of_type_Boolean) {
           break label147;
         }
-        this.a.e();
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.jdField_h_of_type_AndroidViewView.findViewById(2131231874).setVisibility(0);
+        this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.jdField_h_of_type_AndroidViewView.findViewById(2131231875).setVisibility(0);
       }
     }
+    return;
     label147:
-    while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetHornAnimationView == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetHornAnimationView.c();
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetHornAnimationView = null;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.j = paramString;
   }
 }
 

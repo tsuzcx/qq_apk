@@ -1,25 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class ajok
-  implements DialogInterface.OnClickListener
+public class ajok
+  implements ajpf
 {
-  public ajok(long paramLong) {}
+  public ajok(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      TroopFileTransferManager.e();
-      continue;
-      TroopFileTransferManager.a(this.a);
-    }
+    EditLocalVideoActivity.a(this.a, paramString);
+    EditLocalVideoActivity.g(this.a);
+  }
+  
+  public void b()
+  {
+    QQToast.a(this.a, 2131695264, 1).a();
   }
 }
 

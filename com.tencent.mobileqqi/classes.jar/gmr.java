@@ -1,69 +1,35 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.service.HttpNotify;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.ClipboardManager;
+import android.view.View;
+import com.tencent.mobileqq.activity.AddFriendActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class gmr
-  implements HttpNotify
+public final class gmr
+  implements ActionSheet.OnButtonClickListener
 {
-  private long jdField_a_of_type_Long = 0L;
-  private HttpNotify jdField_a_of_type_ComTencentMobileqqServiceHttpNotify;
+  public gmr(String paramString, Context paramContext, ActionSheet paramActionSheet) {}
   
-  public gmr(HttpNotify paramHttpNotify)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqServiceHttpNotify = paramHttpNotify;
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
+    switch (paramInt)
     {
-      new Handler(localLooper).post(new gms(this, paramLong1, paramLong2));
-      return;
     }
-    b(paramLong1, paramLong2);
-  }
-  
-  public void a(long paramLong1, long paramLong2, long paramLong3)
-  {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 200L) {
-      return;
-    }
-    this.jdField_a_of_type_Long = l;
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
+    for (;;)
     {
-      new Handler(localLooper).post(new gmt(this, paramLong1, paramLong2, paramLong3));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
+      paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      continue;
+      ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
+      continue;
+      AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, false, this.jdField_a_of_type_JavaLangString, true);
+      continue;
+      AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, true, this.jdField_a_of_type_JavaLangString, true);
     }
-    b(paramLong1, paramLong2, paramLong3);
-  }
-  
-  public void a(long paramLong1, boolean paramBoolean, long paramLong2)
-  {
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      new Handler(localLooper).post(new gmu(this, paramLong1, paramBoolean, paramLong2));
-      return;
-    }
-    b(paramLong1, paramBoolean, paramLong2);
-  }
-  
-  public void b(long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqServiceHttpNotify.a(paramLong1, paramLong2);
-  }
-  
-  public void b(long paramLong1, long paramLong2, long paramLong3)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqServiceHttpNotify.a(paramLong1, paramLong2, paramLong3);
-  }
-  
-  public void b(long paramLong1, boolean paramBoolean, long paramLong2)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqServiceHttpNotify.a(paramLong1, paramBoolean, paramLong2);
   }
 }
 

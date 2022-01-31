@@ -8,10 +8,10 @@ import java.util.ArrayList;
 public final class CoverRecommend
   extends JceStruct
 {
-  static ArrayList cache_imageUrls;
+  static ArrayList<String> cache_imageUrls;
   static CoverItem cache_item;
   static CoverCate cache_zhuanti;
-  public ArrayList imageUrls;
+  public ArrayList<String> imageUrls;
   public CoverItem item;
   public String jumpUrl = "";
   public int type;
@@ -19,7 +19,7 @@ public final class CoverRecommend
   
   public CoverRecommend() {}
   
-  public CoverRecommend(ArrayList paramArrayList, CoverItem paramCoverItem, CoverCate paramCoverCate, int paramInt, String paramString)
+  public CoverRecommend(ArrayList<String> paramArrayList, CoverItem paramCoverItem, CoverCate paramCoverCate, int paramInt, String paramString)
   {
     this.imageUrls = paramArrayList;
     this.item = paramCoverItem;

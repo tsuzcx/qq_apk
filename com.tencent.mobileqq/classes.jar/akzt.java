@@ -1,20 +1,21 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity;
 
-public class akzt
+class akzt
   implements DialogInterface.OnClickListener
 {
-  public akzt(AuthorityActivity paramAuthorityActivity) {}
+  akzt(akzr paramakzr, akzz paramakzz) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Akzz != null) {
+      this.jdField_a_of_type_Akzz.a(this.jdField_a_of_type_Akzr.a(), "sc.xy_alert_show_success.local", "{\"confirm\":1}");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akzt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.UnLikeCallback;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
-public class afle
-  implements NearbyMomentProtocol.UnLikeCallback
+class afle
+  implements bhuk
 {
-  public afle(NearbyMomentManager paramNearbyMomentManager, String paramString) {}
+  afle(aflc paramaflc, MessageForDeviceFile paramMessageForDeviceFile, bhuf parambhuf) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager.b(this.jdField_a_of_type_JavaLangString, paramInt);
-    }
+    this.jdField_a_of_type_Aflc.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    this.jdField_a_of_type_Aflc.b();
+    this.jdField_a_of_type_Bhuf.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afle
  * JD-Core Version:    0.7.0.1
  */

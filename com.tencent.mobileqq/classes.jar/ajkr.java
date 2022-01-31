@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem;
-
 class ajkr
-  implements Runnable
 {
-  ajkr(ajkq paramajkq) {}
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void run()
+  public ajkr(String paramString1, String paramString2, long paramLong)
   {
-    AudioItem.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem, this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

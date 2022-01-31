@@ -1,22 +1,41 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint.FontMetrics;
+import android.text.TextPaint;
+import android.view.View;
+import com.tencent.av.widget.stageview.StageMemberView;
 
-class myk
-  implements Runnable
+public class myk
+  extends View
 {
-  myk(mye parammye) {}
-  
-  public void run()
+  public myk(StageMemberView paramStageMemberView, Context paramContext)
   {
-    if ((PublicAccountImageCollectionMainActivity.a(this.a.a) != null) && (PublicAccountImageCollectionMainActivity.a(this.a.a) != null))
+    super(paramContext);
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    float f;
+    if (StageMemberView.a(this.a) != null)
     {
-      PublicAccountImageCollectionMainActivity.a(this.a.a).a(true);
-      PublicAccountImageCollectionMainActivity.a(this.a.a).notifyDataSetChanged();
+      f = -StageMemberView.a(this.a).getFontMetrics().ascent;
+      if (this.a.a == null) {
+        break label76;
+      }
+      StageMemberView.a(this.a).setColor(this.a.a.a);
+    }
+    for (;;)
+    {
+      paramCanvas.drawText(StageMemberView.a(this.a), 0.0F, f, StageMemberView.a(this.a));
+      return;
+      label76:
+      StageMemberView.a(this.a).setColor(-1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     myk
  * JD-Core Version:    0.7.0.1
  */

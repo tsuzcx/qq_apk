@@ -1,146 +1,223 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import java.util.ArrayList;
-import mqq.app.MobileQQ;
+import java.util.HashSet;
+import java.util.Set;
 
 public class slr
-  implements View.OnClickListener
 {
-  public slr(EditInfoActivity paramEditInfoActivity) {}
+  final ArrayList<slq> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private Set<Character> jdField_a_of_type_JavaUtilSet;
+  private final sls jdField_a_of_type_Sls;
+  boolean jdField_a_of_type_Boolean = false;
+  private slo[] jdField_a_of_type_ArrayOfSlo;
+  boolean b = false;
   
-  public void onClick(View paramView)
+  public slr(sls paramsls)
   {
-    paramView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText();
-    if (paramView == null) {
-      paramView = "";
+    this.jdField_a_of_type_Sls = paramsls;
+  }
+  
+  public float a()
+  {
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    float f = 0.0F;
+    int i = 0;
+    while (i < j)
+    {
+      f += ((slq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b();
+      i += 1;
     }
-    while (!this.a.g) {
-      if (this.a.jdField_e_of_type_Int == 0)
+    return f;
+  }
+  
+  public void a()
+  {
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    while (i < j)
+    {
+      ((slq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a();
+      i += 1;
+    }
+  }
+  
+  public void a(float paramFloat)
+  {
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    while (i < j)
+    {
+      ((slq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramFloat, this.b);
+      i += 1;
+    }
+  }
+  
+  public void a(Canvas paramCanvas, Paint paramPaint)
+  {
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    while (i < j)
+    {
+      slq localslq = (slq)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      localslq.a(paramCanvas, paramPaint);
+      paramCanvas.translate(localslq.a(), 0.0F);
+      i += 1;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(char[] paramArrayOfChar)
+  {
+    if (this.jdField_a_of_type_ArrayOfSlo == null) {
+      throw new IllegalStateException("Need to call #setCharacterLists first.");
+    }
+    int i = 0;
+    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (((slq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a() > 0.0F) {
+        i += 1;
+      }
+      for (;;)
       {
-        Intent localIntent = new Intent();
-        localIntent.putExtra("type", this.a.jdField_a_of_type_Int);
-        localIntent.putExtra("subtype", this.a.jdField_b_of_type_Int);
-        this.a.d();
-        if ((this.a.jdField_b_of_type_JavaLangString == null) || (this.a.jdField_b_of_type_JavaLangString.length() == 0))
-        {
-          if ((paramView == null) || (paramView.length() == 0))
+        break;
+        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+      }
+    }
+    int[] arrayOfInt = sln.a(a(), paramArrayOfChar, this.jdField_a_of_type_JavaUtilSet);
+    int m = 0;
+    int i1 = 1;
+    int i2 = 1;
+    int n = 0;
+    i = 0;
+    if (m < arrayOfInt.length)
+    {
+      int i4;
+      int j;
+      int k;
+      int i3;
+      switch (arrayOfInt[m])
+      {
+      default: 
+        throw new IllegalArgumentException("Unknown action: " + arrayOfInt[m]);
+      case 1: 
+        this.jdField_a_of_type_JavaUtilArrayList.add(i, new slq(this.jdField_a_of_type_ArrayOfSlo, this.jdField_a_of_type_Sls));
+      case 0: 
+        slq localslq = (slq)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        localslq.a(i2, paramArrayOfChar[n], this.b);
+        i4 = i + 1;
+        n += 1;
+        j = i1;
+        k = i2;
+        i3 = n;
+        i = i4;
+        if (this.jdField_a_of_type_Boolean) {
+          if (localslq.a() == localslq.b())
           {
-            EditInfoActivity.a(this.a);
-            return;
-            paramView = paramView.toString().trim();
-          }
-        }
-        else {
-          if ((paramView != null) && (paramView.length() != 0)) {
-            break label227;
-          }
-        }
-        label227:
-        while (!this.a.jdField_b_of_type_JavaLangString.equals(paramView))
-        {
-          localObject1 = paramView;
-          if (this.a.d != 3) {
-            break;
-          }
-          if (!TextUtils.isEmpty(paramView))
-          {
-            localObject2 = paramView;
-            if (paramView.length() >= 1) {}
+            j = i1;
+            k = i2;
+            i3 = n;
+            i = i4;
+            if (i2 <= 1) {
+              break;
+            }
           }
           else
           {
-            localObject2 = "";
+            k = i2 + i1;
+            j = i1 + 1;
+            i = i4;
+            i3 = n;
           }
-          localObject1 = localObject2;
-          if (!this.a.a((String)localObject2)) {
-            break;
-          }
-          QQToast.a(this.a, this.a.getString(2131433676), 0).b(this.a.getTitleBarHeight());
-          return;
         }
-        EditInfoActivity.b(this.a);
-        return;
-        paramView = (View)localObject1;
-        if (localObject1 == null) {
-          paramView = "";
-        }
-        localIntent.putExtra("result", paramView);
-        this.a.a(localIntent);
-        this.a.setResult(-1, localIntent);
-        EditInfoActivity.c(this.a);
+        break;
       }
-      else
+      for (;;)
       {
-        this.a.k();
-        return;
-      }
-    }
-    if (!NetworkUtil.d(this.a.app.getApplication().getApplicationContext()))
-    {
-      QQToast.a(this.a, 1, 2131434811, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    if (((TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) && (TextUtils.isEmpty(paramView))) || ((!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) && (this.a.jdField_b_of_type_JavaLangString.equals(paramView))))
-    {
-      EditInfoActivity.d(this.a);
-      return;
-    }
-    Object localObject1 = new TroopMemberCardInfo();
-    ((TroopMemberCardInfo)localObject1).name = paramView;
-    ((TroopMemberCardInfo)localObject1).memberuin = this.a.f;
-    ((TroopMemberCardInfo)localObject1).troopuin = this.a.jdField_e_of_type_JavaLangString;
-    ((TroopMemberCardInfo)localObject1).email = "";
-    ((TroopMemberCardInfo)localObject1).memo = "";
-    ((TroopMemberCardInfo)localObject1).sex = -1;
-    ((TroopMemberCardInfo)localObject1).tel = "";
-    paramView = new ArrayList();
-    paramView.add(localObject1);
-    localObject1 = new ArrayList();
-    ((ArrayList)localObject1).add(Integer.valueOf(1));
-    Object localObject2 = (TroopHandler)this.a.app.a(20);
-    if ((localObject2 != null) && (!TextUtils.isEmpty(this.a.jdField_e_of_type_JavaLangString)))
-    {
-      this.a.b(true);
-      ((TroopHandler)localObject2).a(this.a.jdField_e_of_type_JavaLangString, paramView, (ArrayList)localObject1);
-    }
-    paramView = (TroopManager)this.a.app.getManager(51);
-    int i;
-    if (paramView != null)
-    {
-      paramView = paramView.a(this.a.jdField_e_of_type_JavaLangString);
-      if (paramView != null) {
-        if ((!TextUtils.isEmpty(paramView.troopowneruin)) && (paramView.troopowneruin.equalsIgnoreCase(this.a.app.getAccount()))) {
-          i = 0;
+        m += 1;
+        i1 = j;
+        i2 = k;
+        n = i3;
+        break;
+        ((slq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(i2, '\000', this.b);
+        i4 = i + 1;
+        j = i1;
+        k = i2;
+        i3 = n;
+        i = i4;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          k = i2 + i1;
+          j = i1 + 1;
+          i3 = n;
+          i = i4;
         }
       }
     }
-    for (;;)
+  }
+  
+  public void a(String... paramVarArgs)
+  {
+    int j = 0;
+    this.jdField_a_of_type_ArrayOfSlo = new slo[paramVarArgs.length];
+    int i = 0;
+    while (i < paramVarArgs.length)
     {
-      ReportController.b(this.a.app, "P_CliOper", "Grp_manage", "", "modify_name", "complete", 0, 0, this.a.jdField_e_of_type_JavaLangString, i + "", "" + this.a.d, "");
-      return;
-      if ((!TextUtils.isEmpty(paramView.Administrator)) && (paramView.Administrator.contains(this.a.app.getAccount()))) {
-        i = 1;
-      } else {
-        i = 2;
-      }
+      this.jdField_a_of_type_ArrayOfSlo[i] = new slo(paramVarArgs[i]);
+      i += 1;
     }
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    i = j;
+    while (i < paramVarArgs.length)
+    {
+      this.jdField_a_of_type_JavaUtilSet.addAll(this.jdField_a_of_type_ArrayOfSlo[i].a());
+      i += 1;
+    }
+  }
+  
+  char[] a()
+  {
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    char[] arrayOfChar = new char[j];
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfChar[i] = ((slq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a();
+      i += 1;
+    }
+    return arrayOfChar;
+  }
+  
+  public slo[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfSlo;
+  }
+  
+  public float b()
+  {
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    float f = 0.0F;
+    int i = 0;
+    while (i < j)
+    {
+      f += ((slq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a();
+      i += 1;
+    }
+    return f;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     slr
  * JD-Core Version:    0.7.0.1
  */

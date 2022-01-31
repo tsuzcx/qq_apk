@@ -1,24 +1,20 @@
-import com.tencent.mobileqq.data.FlowMusic;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager.GetSingleMusicInfoCallback;
-import dov.com.qq.im.capture.music.humrecognition.recognize.RecognitionManager;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class anmp
-  implements QIMMusicConfigManager.GetSingleMusicInfoCallback
+class anmp
+  implements anmy
 {
-  public anmp(RecognitionManager paramRecognitionManager, String paramString) {}
+  anmp(anmm paramanmm, anmw paramanmw, anmy paramanmy) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void a(boolean paramBoolean)
   {
-    paramObject = (FlowMusic)paramObject;
-    RecognitionManager.a(this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager, RecognitionManager.a(this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager, paramObject, this.jdField_a_of_type_JavaLangString));
-    if (RecognitionManager.a(this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager).equals(RecognitionManager.a(this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager).getClass())) {
-      this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager.d();
-    }
+    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, local not exists, full update, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.jdField_a_of_type_Anmw.a }));
+    if (paramBoolean) {}
+    this.jdField_a_of_type_Anmy.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmp
  * JD-Core Version:    0.7.0.1
  */

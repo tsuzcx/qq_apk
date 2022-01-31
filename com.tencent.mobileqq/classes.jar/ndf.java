@@ -1,18 +1,21 @@
-import com.tencent.biz.qqstory.model.TroopNickNameManager;
+import com.tencent.qphone.base.util.QLog;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
-public class ndf
-  implements Runnable
+final class ndf
+  implements HostnameVerifier
 {
-  public ndf(TroopNickNameManager paramTroopNickNameManager) {}
-  
-  public void run()
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    this.a.c();
+    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify("cgi.connect.qq.com", paramSSLSession);
+    QLog.d("Q.share.sdk", 1, new Object[] { "queryImageByIP|verify hostname=", paramString, ", host=", "cgi.connect.qq.com", ", verify=", Boolean.valueOf(bool) });
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ndf
  * JD-Core Version:    0.7.0.1
  */

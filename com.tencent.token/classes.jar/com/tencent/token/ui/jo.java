@@ -1,20 +1,39 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.token.ch;
+import com.tencent.token.cw;
 
-final class jo
-  implements DialogInterface.OnCancelListener
+class jo
+  implements View.OnClickListener
 {
-  jo(jl paramjl) {}
+  jo(FindPasswdActivity paramFindPasswdActivity) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    FaceStartVryCameraActivity.access$700(this.b.a).a(true);
-    FaceStartVryCameraActivity.access$700(this.b.a).a();
-    FaceStartVryCameraActivity.access$202(this.b.a, false);
-    if (!this.a) {
-      this.b.a.finish();
+    if (FindPasswdActivity.access$400(this.a) != null) {
+      FindPasswdActivity.access$400(this.a).clearFocus();
+    }
+    paramView = FindPasswdActivity.access$400(this.a).getText().toString();
+    if ((paramView == null) || (paramView.length() == 0))
+    {
+      this.a.showToast(2131231655);
+      return;
+    }
+    ch.a().a(System.currentTimeMillis(), 88);
+    try
+    {
+      FindPasswdActivity.access$102(this.a, Long.parseLong(paramView));
+      cw.a().d(FindPasswdActivity.access$100(this.a), 5, FindPasswdActivity.access$200(this.a));
+      this.a.showProDialog(this.a, 2131230843, 2131231298, null);
+      return;
+    }
+    catch (Exception paramView)
+    {
+      this.a.showUserDialog(this.a.getResources().getString(2131231503));
     }
   }
 }

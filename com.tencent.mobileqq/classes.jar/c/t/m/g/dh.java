@@ -1,22 +1,28 @@
 package c.t.m.g;
 
-import java.util.LinkedList;
-
 public final class dh
 {
-  LinkedList<dy> a = null;
-  dz b = null;
-  dz c = null;
-  float d = 0.0F;
-  float e = 0.0F;
-  long f = 0L;
-  boolean g = true;
-  float h = 0.0F;
-  di i;
+  private static volatile di a = null;
+  private static volatile boolean b = false;
+  
+  public static di a()
+  {
+    return a;
+  }
+  
+  public static final void a(di paramdi)
+  {
+    a = paramdi;
+  }
+  
+  public static boolean b()
+  {
+    return b;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.dh
  * JD-Core Version:    0.7.0.1
  */

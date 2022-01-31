@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public final class AuthCodeRsp
   extends JceStruct
 {
-  static ArrayList cache_items = new ArrayList();
+  static ArrayList<AuthCodeItem> cache_items = new ArrayList();
   public long iNextReqTime;
-  public ArrayList items;
+  public ArrayList<AuthCodeItem> items;
   
   static
   {

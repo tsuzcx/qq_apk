@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class oidb_0x8f8$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106 }, new String[] { "msg_source_id", "msg_add_feeds", "msg_add_cmmnt", "msg_add_face", "msg_del_feeds", "msg_del_cmmnt", "msg_set_feeds_flag", "msg_add_visit", "msg_attend_vote", "msg_del_apic", "msg_set_theme", "msg_set_async_state", "msg_del_litemail_index" }, new Object[] { null, null, null, null, null, null, null, null, null, null, null, null, null }, ReqBody.class);
   public oidb_0x8f8.SubCmd02AddCmmntReq msg_add_cmmnt = new oidb_0x8f8.SubCmd02AddCmmntReq();
@@ -23,7 +23,7 @@ public final class oidb_0x8f8$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8f8.oidb_0x8f8.ReqBody
  * JD-Core Version:    0.7.0.1
  */

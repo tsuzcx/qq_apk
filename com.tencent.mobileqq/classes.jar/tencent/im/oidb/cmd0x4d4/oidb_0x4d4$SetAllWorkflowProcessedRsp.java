@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0x4d4$SetAllWorkflowProcessedRsp
-  extends MessageMicro
+  extends MessageMicro<SetAllWorkflowProcessedRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_error_msg = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -23,7 +23,7 @@ public final class oidb_0x4d4$SetAllWorkflowProcessedRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x4d4.oidb_0x4d4.SetAllWorkflowProcessedRsp
  * JD-Core Version:    0.7.0.1
  */

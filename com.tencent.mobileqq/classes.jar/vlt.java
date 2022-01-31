@@ -1,62 +1,40 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import com.tencent.mobileqq.activity.aio.item.ZanCombolEffectView;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class vlt
-  implements Runnable
+final class vlt
+  implements URLDrawable.URLDrawableListener
 {
-  public vlt(ZanCombolEffectView paramZanCombolEffectView, Integer[] paramArrayOfInteger) {}
+  vlt(long paramLong, vme paramvme) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    ZanCombolEffectView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView).clear();
-    Integer[] arrayOfInteger = this.jdField_a_of_type_ArrayOfJavaLangInteger;
-    int j = arrayOfInteger.length;
-    int i = 0;
-    while (i < j)
-    {
-      int k = arrayOfInteger[i].intValue();
-      try
-      {
-        Bitmap localBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView.getResources(), k);
-        if (localBitmap != null) {
-          ZanCombolEffectView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView).add(localBitmap);
-        }
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        for (;;)
-        {
-          localOutOfMemoryError.printStackTrace();
-        }
-        if (ZanCombolEffectView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView).size() <= 0) {
-          break label153;
-        }
-        ZanCombolEffectView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView, System.currentTimeMillis());
-        ZanCombolEffectView.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView, ZanCombolEffectView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView));
-        ZanCombolEffectView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView, true);
-        ZanCombolEffectView.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView, false);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView.postInvalidate();
-        if (!ZanCombolEffectView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView)) {
-          break label176;
-        }
-        ThreadManager.postImmediately(new vlu(this), null, true);
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        label70:
-        break label70;
-      }
-      i += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
+    }
+    if (this.jdField_a_of_type_Vme != null) {
+      this.jdField_a_of_type_Vme.b();
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadSuccessed");
+    }
+    wxj.b("storypic", "load_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
+    if (this.jdField_a_of_type_Vme != null) {
+      this.jdField_a_of_type_Vme.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vlt
  * JD-Core Version:    0.7.0.1
  */

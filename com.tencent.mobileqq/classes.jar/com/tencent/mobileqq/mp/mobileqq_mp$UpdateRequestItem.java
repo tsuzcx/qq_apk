@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class mobileqq_mp$UpdateRequestItem
-  extends MessageMicro
+  extends MessageMicro<UpdateRequestItem>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "module_id", "module_version" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, UpdateRequestItem.class);
   public final PBUInt32Field module_id = PBField.initUInt32(0);
@@ -14,7 +14,7 @@ public final class mobileqq_mp$UpdateRequestItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mp.mobileqq_mp.UpdateRequestItem
  * JD-Core Version:    0.7.0.1
  */

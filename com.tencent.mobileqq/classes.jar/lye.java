@@ -1,30 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
-public class lye
-  implements Runnable
+final class lye
+  extends mul
 {
-  public lye(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
-  
-  public void run()
+  lye(String paramString1, String paramString2, String paramString3)
   {
-    if ((!TextUtils.isEmpty(ReadInJoyDeliverUGCActivity.a(this.a))) && (!TextUtils.isEmpty(ReadInJoyDeliverUGCActivity.b(this.a))) && (!ReadInJoyDeliverUGCActivity.a(this.a).equals(ReadInJoyDeliverUGCActivity.b(this.a))))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverUGCActivity", 2, "clearTempFile(image), origin:" + ReadInJoyDeliverUGCActivity.a(this.a) + ", compress:" + ReadInJoyDeliverUGCActivity.b(this.a));
-      }
-      File localFile = new File(ReadInJoyDeliverUGCActivity.b(this.a));
-      if (localFile.exists()) {
-        localFile.delete();
-      }
+    super(paramString1, paramString2, paramString3);
+  }
+  
+  protected void a(String paramString)
+  {
+    lyd.a(null);
+    if (QLog.isColorLevel()) {
+      QLog.d("AVPushReport", 2, "onAvReportPush SimpleHttpPostTask rsp = " + paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lye
  * JD-Core Version:    0.7.0.1
  */

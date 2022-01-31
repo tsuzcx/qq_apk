@@ -1,66 +1,170 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.webview.swift.SwiftWebViewFragmentSupporter;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AnimationSet;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.ListView;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class pdc
-  implements WXShareHelper.WXShareListener
+public abstract class pdc
 {
-  public pdc(Share paramShare, String paramString) {}
+  private ReadInJoyBaseListViewGroup jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
+  private rqj jdField_a_of_type_Rqj;
   
-  public void a(BaseResp paramBaseResp)
+  public abstract int a();
+  
+  public final Activity a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizWebviewpluginShare.k == null) || (!this.jdField_a_of_type_ComTencentBizWebviewpluginShare.k.equals(paramBaseResp.transaction))) {}
-    int i;
-    String str1;
-    String str2;
-    String str3;
-    for (;;)
-    {
-      return;
-      BaseApplicationImpl.getContext();
-      switch (paramBaseResp.errCode)
-      {
-      case -2: 
-      case -1: 
-      default: 
-        QRUtils.a(1, 2131435303);
-        return;
-      }
-      QRUtils.a(2, 2131435302);
-      if ((this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a instanceof SwiftWebViewFragmentSupporter))
-      {
-        paramBaseResp = ((SwiftWebViewFragmentSupporter)this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a).b();
-        if (this.jdField_a_of_type_ComTencentBizWebviewpluginShare.e == 1) {}
-        for (i = 1009; paramBaseResp != null; i = 1004)
-        {
-          str1 = paramBaseResp.j;
-          str2 = paramBaseResp.i;
-          str3 = AccountDetailActivity.a(paramBaseResp.g);
-          String str4 = paramBaseResp.k;
-          if ((str4 == null) || ("".equals(str4))) {
-            break label200;
-          }
-          PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, str1, paramBaseResp.g, str3, false);
-          return;
-        }
-      }
-    }
-    label200:
-    if (this.jdField_a_of_type_ComTencentBizWebviewpluginShare.e == 1) {
-      i = 1003;
-    }
-    PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str2, str1, this.jdField_a_of_type_JavaLangString, str3, false);
+    return this.jdField_a_of_type_Rqj.a();
   }
+  
+  public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    return null;
+  }
+  
+  public AnimationSet a()
+  {
+    return this.jdField_a_of_type_Rqj.a();
+  }
+  
+  public final bdbb a()
+  {
+    return this.jdField_a_of_type_Rqj.a();
+  }
+  
+  public ReadInJoyBaseListViewGroup a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
+  }
+  
+  public AbsListView a()
+  {
+    if (this.jdField_a_of_type_Rqj != null) {
+      return this.jdField_a_of_type_Rqj.a();
+    }
+    return null;
+  }
+  
+  public Boolean a()
+  {
+    return null;
+  }
+  
+  public Integer a(int paramInt)
+  {
+    return Integer.valueOf(this.jdField_a_of_type_Rqj.getItemViewType(paramInt));
+  }
+  
+  public final Object a(int paramInt)
+  {
+    return this.jdField_a_of_type_Rqj.getItem(paramInt);
+  }
+  
+  public final rqj a()
+  {
+    return this.jdField_a_of_type_Rqj;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(View paramView, ArticleInfo paramArticleInfo, int paramInt) {}
+  
+  public void a(View paramView, ListView paramListView) {}
+  
+  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt) {}
+  
+  public final void a(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup = paramReadInJoyBaseListViewGroup;
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {}
+  
+  public void a(List<BaseArticleInfo> paramList) {}
+  
+  public void a(Map<Integer, qkk> paramMap) {}
+  
+  public void a(Map<Long, qkk> paramMap, boolean paramBoolean) {}
+  
+  public void a(Set<Long> paramSet, Map<Long, qkk> paramMap) {}
+  
+  public final void a(rqj paramrqj)
+  {
+    this.jdField_a_of_type_Rqj = paramrqj;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramBoolean);
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2) {}
+  
+  public final boolean a()
+  {
+    return this.jdField_a_of_type_Rqj.c;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Rqj.a();
+  }
+  
+  public void b() {}
+  
+  public void b(View paramView, ListView paramListView) {}
+  
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2) {}
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Rqj.b();
+  }
+  
+  public void c() {}
+  
+  public final int d()
+  {
+    return this.jdField_a_of_type_Rqj.getCount();
+  }
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void h() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pdc
  * JD-Core Version:    0.7.0.1
  */

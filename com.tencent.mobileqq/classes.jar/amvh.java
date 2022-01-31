@@ -1,19 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastUrl;
-
-public final class amvh
-  implements Parcelable.Creator
+public abstract interface amvh
 {
-  public BroadcastUrl a(Parcel paramParcel)
-  {
-    return new BroadcastUrl(paramParcel);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public BroadcastUrl[] a(int paramInt)
-  {
-    return new BroadcastUrl[paramInt];
-  }
+  public abstract void a(amvp paramamvp);
+  
+  public abstract int b();
+  
+  public abstract int c();
+  
+  public abstract String c();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract boolean d();
+  
+  public abstract void e();
+  
+  public abstract boolean e();
+  
+  public abstract void f();
 }
 
 

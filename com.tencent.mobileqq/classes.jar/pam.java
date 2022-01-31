@@ -1,25 +1,20 @@
-import android.net.Uri;
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
 
 public class pam
-  extends pav
+  implements biab
 {
-  public pam(AbsBaseWebViewActivity paramAbsBaseWebViewActivity)
-  {
-    super(paramAbsBaseWebViewActivity, null);
-  }
+  public pam(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment) {}
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  public void a(biaa parambiaa)
   {
-    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
+    switch (parambiaa.a)
+    {
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pam
  * JD-Core Version:    0.7.0.1
  */

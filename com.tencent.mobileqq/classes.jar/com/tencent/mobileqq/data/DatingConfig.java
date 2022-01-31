@@ -24,11 +24,11 @@ public class DatingConfig
   public String aioTravelApplyTip;
   public String aioTravelProfileSendMsgTip;
   public String aioTravelSendMsgTip;
-  public List cancelReasons;
+  public List<DatingConfigItem> cancelReasons;
   public int defaultSubject;
-  public List hotLocales;
-  public HashMap othersConfigs;
-  public List subjects;
+  public List<byte[]> hotLocales;
+  public HashMap<Integer, List<DatingConfigItem>> othersConfigs;
+  public List<DatingSubjectItem> subjects;
   public int timeGap;
   public DatingConfigItem timeRequestConfig;
   public int timeStamp;
@@ -94,7 +94,7 @@ public class DatingConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.DatingConfig
  * JD-Core Version:    0.7.0.1
  */

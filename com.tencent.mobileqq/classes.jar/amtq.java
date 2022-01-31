@@ -1,20 +1,31 @@
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.upload.common.UploadConfiguration.NetworkStateObserver;
-import cooperation.qzone.UploadEnv;
-import cooperation.qzone.util.NetworkState.NetworkStateListener;
 
-public class amtq
-  implements NetworkState.NetworkStateListener
+class amtq
+  extends amzw
 {
-  public amtq(UploadEnv paramUploadEnv, UploadConfiguration.NetworkStateObserver paramNetworkStateObserver) {}
+  amtq(amtp paramamtp) {}
   
-  public void onNetworkConnect(boolean paramBoolean)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("UploadEnv", 2, "upload2: onNetworkConnect registerNetworkStateObserver|onNetworkConnect：" + paramBoolean);
+      QLog.d(amuc.a, 2, "onArSoDownloadSuccess");
     }
-    UploadEnv.a(this.jdField_a_of_type_CooperationQzoneUploadEnv, paramBoolean);
-    this.jdField_a_of_type_ComTencentUploadCommonUploadConfiguration$NetworkStateObserver.onStateChanged(paramBoolean);
+    this.a.a();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(amuc.a, 2, "onArSoDownloadProcess process=" + paramInt);
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(amuc.a, 2, "onArSoDownloadFail");
+    }
+    this.a.a();
   }
 }
 

@@ -1,29 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class dta
+public class dta
   implements DialogInterface.OnClickListener
 {
-  dta(dsz paramdsz) {}
+  public dta(TroopTransferActivity paramTroopTransferActivity, QQCustomDialog paramQQCustomDialog) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 1)
-    {
-      this.a.a.d();
-      SubLoginActivity.a(this.a.a, true);
-      SubAccountAssistantManager.a().a(this.a.a.b);
-      this.a.a.f();
-    }
-    for (;;)
-    {
-      SubAccountAssistantForward.a(this.a.a.b, 0L);
-      return;
-      this.a.a.f();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
   }
 }
 

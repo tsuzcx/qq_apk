@@ -1,46 +1,126 @@
-import android.content.Context;
-import android.text.Selection;
-import android.text.Spannable;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
-import com.tencent.mobileqq.widget.ContainerView.SelectableTextView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class aktj
-  implements View.OnLongClickListener
 {
-  public aktj(ContainerView.SelectableTextView paramSelectableTextView) {}
-  
-  public boolean onLongClick(View paramView)
+  public static int a(int paramInt)
   {
-    if (this.a.getSelectionEnd() - this.a.getSelectionStart() > 0)
+    if (a(paramInt)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public static int a(int paramInt, long paramLong)
+  {
+    int i = paramInt * 400 / 540;
+    if (i <= paramLong * 0.7D)
     {
-      this.a.onTextContextMenuItem(16908321);
-      Toast.makeText(this.a.getContext(), "已经复制到剪贴板", 0).show();
+      paramInt = i;
+      if (i > 0) {}
+    }
+    else
+    {
+      paramInt = (int)(paramLong * 0.7D);
+    }
+    return paramInt;
+  }
+  
+  public static akom a(QQAppInterface paramQQAppInterface, String paramString, ApolloBaseInfo paramApolloBaseInfo, int paramInt)
+  {
+    if ((paramQQAppInterface == null) || (paramApolloBaseInfo == null) || (TextUtils.isEmpty(paramString)))
+    {
+      QLog.e("ApolloDrawerInfoManager", 1, "checkDrawerRoleDressInfo param err");
+      return null;
+    }
+    int i = 0;
+    int[] arrayOfInt = null;
+    int j = 0;
+    akom localakom = null;
+    int k = aknx.a(paramQQAppInterface, paramString);
+    int m = paramApolloBaseInfo.apolloStatus;
+    aksm localaksm = paramApolloBaseInfo.getApolloDress();
+    if (localaksm != null)
+    {
+      i = localaksm.jdField_a_of_type_Int;
+      arrayOfInt = localaksm.a();
+    }
+    localaksm = paramApolloBaseInfo.getApolloDress3D();
+    paramApolloBaseInfo = localakom;
+    if (localaksm != null)
+    {
+      j = localaksm.jdField_a_of_type_Int;
+      paramApolloBaseInfo = localaksm.a();
+    }
+    localakom = new akom();
+    localakom.jdField_a_of_type_Int = i;
+    localakom.jdField_a_of_type_ArrayOfInt = arrayOfInt;
+    localakom.jdField_b_of_type_Int = j;
+    localakom.jdField_b_of_type_ArrayOfInt = paramApolloBaseInfo;
+    localakom.c = m;
+    localakom.d = k;
+    localakom.e = albi.b(paramInt);
+    boolean bool;
+    if (m != 1)
+    {
+      bool = true;
+      QLog.e("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo apollo not open from:", Integer.valueOf(paramInt), ",apolloFeatureFlag:", Integer.valueOf(m) });
+      alhp.a(localakom.e, 10, 101, new Object[] { "apollo not open, flag:", Integer.valueOf(m) });
     }
     for (;;)
     {
-      return true;
-      try
-      {
-        Selection.setSelection((Spannable)this.a.getText(), Math.max(ContainerView.SelectableTextView.a(this.a) - 50, 0), Math.min(ContainerView.SelectableTextView.a(this.a) + 50, this.a.getText().length()));
-        this.a.onTextContextMenuItem(16908328);
-        ((InputMethodManager)this.a.getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.a.getWindowToken(), 0);
+      localakom.jdField_a_of_type_Boolean = bool;
+      if ((!bool) && (QLog.isColorLevel())) {
+        QLog.d("ApolloDrawerInfoManager", 2, new Object[] { "checkDrawerRoleDressInfo from:", Integer.valueOf(paramInt), ",result:", localakom.toString() });
       }
-      catch (Exception paramView)
+      alhp.a(localakom.e, 10, new Object[] { localakom.toString() });
+      return localakom;
+      if ((k == 1) && ((i <= 0) || (arrayOfInt == null) || (arrayOfInt.length <= 0) || ((i > 0) && (!algj.a(paramString, i, arrayOfInt, paramQQAppInterface)))))
       {
-        for (;;)
+        bool = true;
+        QLog.e("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo basic not ready, from:", Integer.valueOf(paramInt), ",result:", localakom.toString() });
+        alhp.a(localakom.e, 10, 111, new Object[] { "basic not ready:" + localakom.toString() });
+      }
+      else
+      {
+        if ((k == 2) && ((j <= 0) || (paramApolloBaseInfo == null) || (paramApolloBaseInfo.length <= 0) || ((j > aliu.jdField_a_of_type_Int) && (!algj.a(paramString, j, paramApolloBaseInfo, paramQQAppInterface)))))
         {
-          Selection.setSelection((Spannable)this.a.getText(), ContainerView.SelectableTextView.a(this.a), ContainerView.SelectableTextView.a(this.a));
+          QLog.d("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo 3D not ready, from:", Integer.valueOf(paramInt), ",result:", localakom.toString() });
+          alhp.a(localakom.e, 10, new Object[] { "3D role/dress not ready but show basic" });
+        }
+        if (!ApolloEngine.a())
+        {
+          QLog.d("ApolloDrawerInfoManager", 1, "so is not ready");
+          alhp.a(localakom.e, 10, 102, new Object[] { "so not ready" });
+          bool = true;
+        }
+        else
+        {
+          bool = false;
         }
       }
     }
   }
+  
+  public static boolean a(int paramInt)
+  {
+    return paramInt == 6;
+  }
+  
+  public static int b(int paramInt)
+  {
+    if (a(paramInt)) {
+      return 3;
+    }
+    return 2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aktj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 class akat
-  implements Runnable
+  implements View.OnClickListener
 {
-  akat(akar paramakar, Exception paramException) {}
+  akat(akar paramakar) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Akar.a.dismiss();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "safetyReport exception1" + this.jdField_a_of_type_JavaLangException.getMessage());
-    }
+    GroupManagerActivity.a((Activity)akar.a(this.a));
+    azqs.b(akar.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,14 +1,33 @@
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopSearchResultDialog;
+import android.graphics.Color;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class ajdl
-  implements Runnable
+public class ajdl
+  implements ajcq
 {
-  ajdl(ajdk paramajdk) {}
+  public ajdl(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public void run()
+  public void a()
   {
-    new NewTroopSearchResultDialog(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback).show();
+    if (QLog.isColorLevel()) {
+      QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineBegin---");
+    }
+    DrawRedpacketPannelPreviewFragment.a(this.a, false);
+    DrawRedpacketPannelPreviewFragment.a(this.a);
+    DrawRedpacketPannelPreviewFragment.c(this.a).setTextColor(Color.parseColor("#878B99"));
+    DrawRedpacketPannelPreviewFragment.c(this.a).setText(alud.a(2131703927));
   }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineFinish---");
+    }
+    DrawRedpacketPannelPreviewFragment.c(this.a);
+  }
+  
+  public void a(int paramInt1, int paramInt2) {}
 }
 
 

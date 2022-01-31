@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.activity.recent.data;
 
+import abta;
+import alqo;
+import amkn;
 import android.content.Context;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import arrr;
+import bamp;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
-import com.tencent.mobileqq.app.DataLineHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ConversationFacade;
-import com.tencent.mobileqq.app.message.DatalineMessageManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.data.DataLineMsgSet;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.text.QQText;
 
 public class RecentItemPcDataLine
   extends RecentUserBaseData
 {
-  String a;
-  CharSequence e;
-  int j;
+  CharSequence MsgDescreption;
+  int dev_type;
+  String mTitle;
   
   public RecentItemPcDataLine(RecentUser paramRecentUser)
   {
@@ -39,12 +39,12 @@ public class RecentItemPcDataLine
         paramCharSequence.append(paramString);
       }
     }
-    for (paramMsgSummary.jdField_b_of_type_Int = 0;; paramMsgSummary.jdField_b_of_type_Int = 1)
+    for (paramMsgSummary.mEmojiFlag = 0;; paramMsgSummary.mEmojiFlag = 1)
     {
       if (!paramBoolean1) {
         break label76;
       }
-      paramMsgSummary.a = 2;
+      paramMsgSummary.nState = 2;
       return paramCharSequence;
       if (!paramBoolean2) {
         break;
@@ -55,100 +55,28 @@ public class RecentItemPcDataLine
     label76:
     if (paramBoolean2)
     {
-      paramMsgSummary.a = 1;
+      paramMsgSummary.nState = 1;
       return paramCharSequence;
     }
-    paramMsgSummary.a = 0;
+    paramMsgSummary.nState = 0;
     return paramCharSequence;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    if ((paramQQAppInterface == null) || (paramContext == null)) {}
-    label126:
-    do
-    {
-      return;
-      super.a(paramQQAppInterface, paramContext);
-      if (this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type != 6000) {
-        break;
-      }
-      this.jdField_a_of_type_JavaLangString = paramContext.getString(2131427485);
-      this.e = paramContext.getString(2131427572);
-      this.j = 0;
-      QQMessageFacade.Message localMessage = null;
-      Object localObject = paramQQAppInterface.a();
-      if (localObject != null) {
-        localMessage = ((QQMessageFacade)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type);
-      }
-      if (localMessage == null) {
-        break label334;
-      }
-      this.jdField_a_of_type_Long = localMessage.time;
-      localObject = paramQQAppInterface.a();
-      if (localObject == null) {
-        break label326;
-      }
-      this.jdField_c_of_type_Int = ((ConversationFacade)localObject).a(localMessage.frienduin, localMessage.istroop);
-      if (TextUtils.isEmpty(this.b)) {
-        this.b = this.jdField_a_of_type_JavaLangString;
-      }
-      localObject = a();
-      a(localMessage, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type, paramQQAppInterface, paramContext, (MsgSummary)localObject);
-      a(paramQQAppInterface);
-      a(paramQQAppInterface, (MsgSummary)localObject);
-      a(paramQQAppInterface, paramContext, (MsgSummary)localObject);
-    } while (!AppSetting.b);
-    paramQQAppInterface = new StringBuilder();
-    paramQQAppInterface.append(this.b).append(",");
-    if (this.jdField_c_of_type_Int == 0) {}
-    for (;;)
-    {
-      if (this.jdField_d_of_type_JavaLangCharSequence != null) {
-        paramQQAppInterface.append(this.jdField_d_of_type_JavaLangCharSequence + ",");
-      }
-      paramQQAppInterface.append(this.jdField_c_of_type_JavaLangCharSequence).append(",").append(this.jdField_c_of_type_JavaLangString);
-      this.jdField_d_of_type_JavaLangString = paramQQAppInterface.toString();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type != 6003) {
-        break;
-      }
-      this.jdField_a_of_type_JavaLangString = paramContext.getString(2131427486);
-      this.e = paramContext.getString(2131427573);
-      this.j = 1;
-      break;
-      label326:
-      this.jdField_c_of_type_Int = 0;
-      break label126;
-      label334:
-      this.jdField_c_of_type_Int = 0;
-      this.jdField_a_of_type_Long = 0L;
-      break label126;
-      if (this.jdField_c_of_type_Int == 1) {
-        paramQQAppInterface.append("有一条未读");
-      } else if (this.jdField_c_of_type_Int == 2) {
-        paramQQAppInterface.append("有两条未读");
-      } else if (this.jdField_c_of_type_Int > 0) {
-        paramQQAppInterface.append("有").append(this.jdField_c_of_type_Int).append("条未读,");
-      }
-    }
-  }
-  
-  protected void a(QQMessageFacade.Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
+  public void a(QQMessageFacade.Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
     boolean bool3 = false;
-    paramContext = (DataLineHandler)paramQQAppInterface.a(8);
-    if ((paramContext != null) && (paramContext.a(this.j)))
+    paramContext = (alqo)paramQQAppInterface.a(8);
+    if ((paramContext != null) && (paramContext.a(this.dev_type)))
     {
-      this.jdField_a_of_type_Long = paramContext.a(this.j);
-      paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = this.e;
+      this.mDisplayTime = paramContext.a(this.dev_type);
+      paramMsgSummary.strContent = this.MsgDescreption;
       return;
     }
     boolean bool1;
     boolean bool2;
     if ((paramMessage != null) && (paramMessage.msg != null))
     {
-      paramContext = paramQQAppInterface.a().a(this.j).a(paramMessage.msgId);
+      paramContext = paramQQAppInterface.a().a(this.dev_type).a(paramMessage.msgId);
       if (paramContext == null)
       {
         bool1 = false;
@@ -177,7 +105,7 @@ public class RecentItemPcDataLine
       case -2000: 
         if (paramContext == null)
         {
-          paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = "";
+          paramMsgSummary.strContent = "";
           return;
           if ((paramContext.hasFailed()) && (!paramContext.hasSendingOrRecving()) && (!paramContext.hasWaiting()))
           {
@@ -203,7 +131,7 @@ public class RecentItemPcDataLine
           }
           for (;;)
           {
-            paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = a(null, bool1, bool2, new QQText(paramMessage, 1, 16), paramMsgSummary);
+            paramMsgSummary.strContent = a(null, bool1, bool2, new bamp(paramMessage, 1, 16), paramMsgSummary);
             return;
             paramMessage = paramQQAppInterface;
             if (bool2) {
@@ -224,7 +152,7 @@ public class RecentItemPcDataLine
           paramContext.append(paramMessage);
           try
           {
-            paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = a(null, bool1, bool2, new QQText(paramContext, 1, 16), paramMsgSummary);
+            paramMsgSummary.strContent = a(null, bool1, bool2, new bamp(paramContext, 1, 16), paramMsgSummary);
             return;
           }
           catch (Exception paramMessage)
@@ -238,20 +166,92 @@ public class RecentItemPcDataLine
           paramContext.append("S ");
           break;
         }
-        paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = a(FileManagerUtil.a(paramQQAppInterface, paramContext.getFirstItem()), bool1, bool2, null, paramMsgSummary);
+        paramMsgSummary.strContent = a(arrr.a(paramQQAppInterface, paramContext.getFirstItem()), bool1, bool2, null, paramMsgSummary);
         return;
       case -2015: 
-        paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = "";
+        paramMsgSummary.strContent = "";
         return;
-        paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = "";
+        paramMsgSummary.strContent = "";
         return;
+      }
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    if ((paramQQAppInterface == null) || (paramContext == null)) {}
+    label126:
+    do
+    {
+      return;
+      super.a(paramQQAppInterface, paramContext);
+      if (this.mUser.getType() != 6000) {
+        break;
+      }
+      this.mTitle = paramContext.getString(2131694083);
+      this.MsgDescreption = paramContext.getString(2131694067);
+      this.dev_type = 0;
+      QQMessageFacade.Message localMessage = null;
+      Object localObject = paramQQAppInterface.a();
+      if (localObject != null) {
+        localMessage = ((QQMessageFacade)localObject).a(this.mUser.uin, this.mUser.getType());
+      }
+      if (localMessage == null) {
+        break label335;
+      }
+      this.mDisplayTime = localMessage.time;
+      localObject = paramQQAppInterface.a();
+      if (localObject == null) {
+        break label327;
+      }
+      this.mUnreadNum = ((abta)localObject).a(localMessage.frienduin, localMessage.istroop);
+      if (TextUtils.isEmpty(this.mTitleName)) {
+        this.mTitleName = this.mTitle;
+      }
+      localObject = a();
+      a(localMessage, this.mUser.getType(), paramQQAppInterface, paramContext, (MsgSummary)localObject);
+      a(paramQQAppInterface);
+      a(paramQQAppInterface, (MsgSummary)localObject);
+      a(paramQQAppInterface, paramContext, (MsgSummary)localObject);
+    } while (!AppSetting.c);
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append(this.mTitleName).append(",");
+    if (this.mUnreadNum == 0) {}
+    for (;;)
+    {
+      if (this.mMsgExtroInfo != null) {
+        paramQQAppInterface.append(this.mMsgExtroInfo + ",");
+      }
+      paramQQAppInterface.append(this.mLastMsg).append(",").append(this.mShowTime);
+      this.mContentDesc = paramQQAppInterface.toString();
+      return;
+      if (this.mUser.getType() != 6003) {
+        break;
+      }
+      this.mTitle = paramContext.getString(2131694084);
+      this.MsgDescreption = paramContext.getString(2131694066);
+      this.dev_type = 1;
+      break;
+      label327:
+      this.mUnreadNum = 0;
+      break label126;
+      label335:
+      this.mUnreadNum = 0;
+      this.mDisplayTime = 0L;
+      break label126;
+      if (this.mUnreadNum == 1) {
+        paramQQAppInterface.append("有一条未读");
+      } else if (this.mUnreadNum == 2) {
+        paramQQAppInterface.append("有两条未读");
+      } else if (this.mUnreadNum > 0) {
+        paramQQAppInterface.append("有").append(this.mUnreadNum).append("条未读,");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemPcDataLine
  * JD-Core Version:    0.7.0.1
  */

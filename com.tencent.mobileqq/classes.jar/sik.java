@@ -1,77 +1,110 @@
-import android.annotation.TargetApi;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.activity.recent.DrawerFrame.IDrawerCallbacks;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
-import com.tencent.mobileqq.portal.ConversationHongBao;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 
-public class sik
-  implements DrawerFrame.IDrawerCallbacks
+public abstract class sik<T>
+  extends sij<T>
 {
-  public sik(Conversation paramConversation) {}
+  protected Context a;
+  protected List<T> a;
+  protected int b;
   
-  public void a(int paramInt)
+  protected sik(Context paramContext, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.d();
-    }
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.e();
-    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramInt;
   }
   
-  @TargetApi(11)
-  public void a(int paramInt, float paramFloat)
+  private void c(List<T> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("drawerScale", 2, "scale:" + paramFloat);
-    }
+    a(paramList);
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public int a()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.l();
-    if (this.a.jdField_a_of_type_JavaUtilArrayList != null)
+    return this.b;
+  }
+  
+  protected Context a()
+  {
+    return this.jdField_a_of_type_AndroidContentContext;
+  }
+  
+  public List<T> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(int paramInt, T paramT)
+  {
+    a(paramT);
+    this.jdField_a_of_type_JavaUtilList.add(paramInt, paramT);
+    notifyDataSetChanged();
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return true;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (paramInt < getCount())
     {
-      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        ConversationPullDownActiveBase localConversationPullDownActiveBase = (ConversationPullDownActiveBase)localIterator.next();
-        if (localConversationPullDownActiveBase != null) {
-          localConversationPullDownActiveBase.m();
-        }
-      }
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.N();
-    }
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.f();
+      this.jdField_a_of_type_JavaUtilList.remove(paramInt);
+      notifyDataSetChanged();
     }
   }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
   
   public void b(int paramInt1, int paramInt2)
   {
-    Conversation.d(this.a);
-    this.a.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.m();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.M();
+    if (paramInt2 < getCount())
+    {
+      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_JavaUtilList, paramInt1, paramInt2);
+      notifyDataSetChanged();
     }
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.g();
+  }
+  
+  public void b(T paramT)
+  {
+    a(paramT);
+    this.jdField_a_of_type_JavaUtilList.add(paramT);
+    notifyDataSetChanged();
+  }
+  
+  public void b(List<T> paramList)
+  {
+    c();
+    c(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public void c()
+  {
+    b();
+    this.jdField_a_of_type_JavaUtilList.clear();
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public T getItem(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+      return null;
     }
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sik
  * JD-Core Version:    0.7.0.1
  */

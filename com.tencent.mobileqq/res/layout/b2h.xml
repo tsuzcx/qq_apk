@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/g3"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/dq9" android:src="@drawable/qq_setting_xiangce" style="@style/g2" />
+    <com.tencent.mobileqq.redtouch.RedTouchTextView android:id="@id/item_txt" android:text="@string/qq_setting_xiangce" style="@style/g6" />
+    <LinearLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/akj">
+        <TextView android:id="@id/dqu" android:visibility="gone" style="@style/cg" />
+        <ImageView android:id="@id/dqv" android:visibility="gone" android:layout_width="@dimen/ake" android:layout_height="@dimen/ake" android:layout_marginLeft="15.0dip" />
+    </LinearLayout>
+    <ImageView android:id="@id/dqt" android:visibility="visible" android:src="@drawable/common_arrow_right_selector" style="@style/g5" />
+</LinearLayout>

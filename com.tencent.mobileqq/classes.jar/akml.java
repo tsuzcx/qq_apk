@@ -1,17 +1,25 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.webview.build.WebViewBaseBuilder;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.contact.SimpleTextView;
+import com.tencent.mobileqq.mutualmark.view.MutualMarkIconsView;
+import com.tencent.mobileqq.onlinestatus.OnlineStatusView;
 
 public class akml
-  implements View.OnClickListener
+  extends akmp
 {
-  public akml(WebViewBaseBuilder paramWebViewBaseBuilder) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.h.finish();
-  }
+  public LinearLayout a;
+  public URLImageView a;
+  public SimpleTextView a;
+  public MutualMarkIconsView a;
+  public OnlineStatusView a;
+  public StringBuilder a;
+  public boolean a;
+  public ImageView b;
+  public URLImageView b;
+  public boolean b;
+  public ImageView c;
+  public ImageView d;
 }
 
 

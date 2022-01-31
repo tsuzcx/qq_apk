@@ -1,20 +1,30 @@
-import com.tencent.mobileqq.data.TroopAssistantData;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.persistence.EntityManager;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aefi
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aefi(TroopAssistantManager paramTroopAssistantManager, TroopAssistantData paramTroopAssistantData, EntityManager paramEntityManager) {}
+  public aefi(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData.getStatus() == 1000)
+    xqq.a(this.a.a);
+    xqq.a(this.a.a.a);
+    paramView = new ArrayList();
+    int i = 0;
+    while (i < this.a.a.a.size())
     {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData);
-      return;
+      paramView.add(((aegt)this.a.a.a.get(i)).a);
+      i += 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData);
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
+    this.a.setResult(-1, localIntent);
+    this.a.finish();
   }
 }
 

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0394"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d038b" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0549" android:id="@id/title" android:paddingBottom="0.0dip" android:layout_marginTop="0.0dip" android:layout_alignParentTop="false" android:layout_centerVertical="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b3" />
-    <TextView android:ellipsize="end" android:gravity="right" android:id="@id/info" android:layout_marginRight="12.0dip" android:singleLine="true" android:drawableRight="@drawable/common_arrow_right_selector" android:drawablePadding="5.0dip" android:layout_toRightOf="@id/title" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02be" />
-    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bb7" android:visibility="gone" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="5.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e4e" android:indeterminateBehavior="repeat" android:layout_toRightOf="@id/title" android:layout_centerVertical="true" />
-</RelativeLayout>

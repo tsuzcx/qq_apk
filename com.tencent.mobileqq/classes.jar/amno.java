@@ -1,18 +1,24 @@
-import cooperation.qlink.QlinkBridgeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
-public class amno
-  implements Runnable
+public abstract class amno
 {
-  public amno(QlinkBridgeActivity paramQlinkBridgeActivity) {}
+  public QQAppInterface a;
+  public ProxyManager a;
   
-  public void run()
+  public amno(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    this.a.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = paramProxyManager;
   }
+  
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amno
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class check_video_illegal_req
   extends JceStruct
 {
-  static ArrayList cache_video_urls = new ArrayList();
-  public ArrayList video_urls;
+  static ArrayList<UrlInput> cache_video_urls = new ArrayList();
+  public ArrayList<UrlInput> video_urls;
   
   static
   {
@@ -19,7 +19,7 @@ public final class check_video_illegal_req
   
   public check_video_illegal_req() {}
   
-  public check_video_illegal_req(ArrayList paramArrayList)
+  public check_video_illegal_req(ArrayList<UrlInput> paramArrayList)
   {
     this.video_urls = paramArrayList;
   }
@@ -38,7 +38,7 @@ public final class check_video_illegal_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_VIDEO.check_video_illegal_req
  * JD-Core Version:    0.7.0.1
  */

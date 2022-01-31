@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import fmb;
+import fhp;
 
 public class CheckPublicAccount
   extends AsyncStep
@@ -59,7 +59,7 @@ public class CheckPublicAccount
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = new fmb(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = new fhp(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver);
     }
   }

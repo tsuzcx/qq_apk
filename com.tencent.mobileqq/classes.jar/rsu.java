@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.AbsListView;
 
 class rsu
-  implements Runnable
+  extends pdi
 {
-  rsu(rst paramrst) {}
-  
-  public void run()
+  rsu(rss paramrss, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.a.j();
+    super(paramString);
+  }
+  
+  public void a(pdc parampdc)
+  {
+    parampdc.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rsu
  * JD-Core Version:    0.7.0.1
  */

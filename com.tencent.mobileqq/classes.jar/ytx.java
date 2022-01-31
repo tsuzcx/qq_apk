@@ -1,39 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.apollo.store.ApolloStoreActivity;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DeleteFileRspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
 
-public class ytx
-  implements DialogInterface.OnClickListener
+public abstract class ytx
+  extends nac
 {
-  public ytx(ApolloStoreActivity paramApolloStoreActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (!TextUtils.isEmpty(ApolloConstant.X)) {}
-    for (String str = ApolloConstant.X;; str = ApolloConstant.M)
+    if (paramInt != 0)
     {
-      long l1 = DeviceInfoUtil.k();
-      long l2 = DeviceInfoUtil.j();
-      str = str + "&screenWidth=" + (int)((float)l2 / ApolloStoreActivity.a(this.a)) + "&screenHeight=" + (int)((float)l1 / ApolloStoreActivity.a(this.a)) + "&tab=mall&view=role";
-      WebViewFragment localWebViewFragment = this.a.b();
-      if ((localWebViewFragment != null) && (localWebViewFragment.a != null)) {
-        localWebViewFragment.a.loadUrl(str);
-      }
-      paramDialogInterface.dismiss();
-      VipUtils.a(null, "cmshow", "Apollo", "AI_alert_mall", 0, 0, new String[0]);
+      a(false, paramInt, paramBundle, "", alud.a(2131715765));
       return;
     }
+    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
+    try
+    {
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.DeleteFileRspBody)localRspBody.delete_file_rsp.get();
+      if (!paramArrayOfByte.int32_ret_code.has()) {
+        break label133;
+      }
+      if (paramArrayOfByte.int32_ret_code.get() == 0)
+      {
+        a(true, 0, paramBundle, paramArrayOfByte.str_ret_msg.get(), paramArrayOfByte.str_client_wording.get());
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, paramBundle, "", alud.a(2131715761));
+      return;
+    }
+    a(false, paramArrayOfByte.int32_ret_code.get(), paramBundle, paramArrayOfByte.str_ret_msg.get(), paramArrayOfByte.str_client_wording.get());
+    return;
+    label133:
+    a(false, -1, paramBundle, "", alud.a(2131715769));
   }
+  
+  protected abstract void a(boolean paramBoolean, int paramInt, Bundle paramBundle, String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ytx
  * JD-Core Version:    0.7.0.1
  */

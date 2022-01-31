@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.item.MixedMsgItemBuilder;
+import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
 
 public class dzv
-  implements DialogInterface.OnClickListener
+  implements AnimationTextView.OnDoubleClick
 {
-  public dzv(UpgradeActivity paramUpgradeActivity) {}
+  public dzv(MixedMsgItemBuilder paramMixedMsgItemBuilder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView)
   {
-    UpgradeActivity.a(this.a, false);
+    ChatActivityUtils.a(MixedMsgItemBuilder.a(this.a), paramView, (ChatActivity)MixedMsgItemBuilder.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dzv
  * JD-Core Version:    0.7.0.1
  */

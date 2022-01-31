@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.qphone.base.util.QLog;
-import jmw;
+import lzm;
 
 public class LBSInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new jmw();
+  public static final Parcelable.Creator<LBSInfo> CREATOR = new lzm();
   static String jdField_a_of_type_JavaLangString = "LBSInfo";
   double jdField_a_of_type_Double = 0.0D;
   String[] jdField_a_of_type_ArrayOfJavaLangString = null;
@@ -47,11 +47,6 @@ public class LBSInfo
     this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
   }
   
-  public double a()
-  {
-    return this.jdField_a_of_type_Double;
-  }
-  
   public void a(Parcel paramParcel)
   {
     try
@@ -80,11 +75,6 @@ public class LBSInfo
   public String[] a()
   {
     return this.jdField_a_of_type_ArrayOfJavaLangString;
-  }
-  
-  public double b()
-  {
-    return this.jdField_b_of_type_Double;
   }
   
   public int describeContents()

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_width="fill_parent" android:layout_height="24.0dip" />
+    <com.tencent.widget.ListView android:id="@id/b5v" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:divider="@null" />
+</LinearLayout>

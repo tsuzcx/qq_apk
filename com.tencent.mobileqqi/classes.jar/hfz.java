@@ -1,13 +1,18 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.ContainerView;
 
 public class hfz
-  implements FileFilter
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public boolean accept(File paramFile)
+  public hfz(ContainerView paramContainerView) {}
+  
+  public void onGlobalLayout()
   {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
+    if (!ContainerView.a(this.a))
+    {
+      ContainerView.a(this.a, ContainerView.a);
+      ContainerView.a(this.a, true);
+    }
   }
 }
 

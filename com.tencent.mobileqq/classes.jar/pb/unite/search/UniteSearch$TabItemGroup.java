@@ -9,10 +9,10 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class UniteSearch$TabItemGroup
-  extends MessageMicro
+  extends MessageMicro<TabItemGroup>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatField rpt_group_mask = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> rpt_group_mask = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBBytesField tab_name = PBField.initBytes(ByteStringMicro.EMPTY);
   
   static
@@ -23,7 +23,7 @@ public final class UniteSearch$TabItemGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pb.unite.search.UniteSearch.TabItemGroup
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,11 @@
 package com.tencent.mobileqq.msf.service;
 
+import android.os.IBinder;
+import android.os.IBinder.DeathRecipient;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.j;
-import com.tencent.mobileqq.msf.core.push.f;
+import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.push.g;
 import com.tencent.mobileqq.msf.sdk.MsfMessagePair;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.IMsfServiceCallbacker;
@@ -15,7 +17,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class c
 {
-  private static final String k = "MSF.S.AppProcessInfo";
+  private static final String l = "MSF.S.AppProcessInfo";
   volatile boolean a = true;
   volatile long b = 0L;
   volatile boolean c = false;
@@ -25,8 +27,44 @@ public class c
   String g;
   String h;
   ConcurrentLinkedQueue i = new ConcurrentLinkedQueue();
-  public m j;
-  private IMsfServiceCallbacker l;
+  public u j = null;
+  volatile boolean k = false;
+  private IMsfServiceCallbacker m;
+  private IBinder.DeathRecipient n;
+  
+  private void e()
+  {
+    try
+    {
+      if (this.m != null)
+      {
+        if (this.n == null) {
+          this.n = new d(this);
+        }
+        this.m.asBinder().linkToDeath(this.n, 0);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("MSF.S.AppProcessInfo", 1, "registerCallbackDeathRecipient fail.", localThrowable);
+    }
+  }
+  
+  private void f()
+  {
+    try
+    {
+      if ((this.m != null) && (this.n != null)) {
+        this.m.asBinder().unlinkToDeath(this.n, 0);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("MSF.S.AppProcessInfo", 1, "unregisterCallbackDeathRecipient fail.", localThrowable);
+    }
+  }
   
   public String a()
   {
@@ -49,20 +87,22 @@ public class c
     while ((paramInt != 0) || (TextUtils.isEmpty(this.h))) {
       return;
     }
-    paramInt = d.e.getUinPushStatus(str);
-    l.a(BaseApplication.getContext(), this.g, str, this.h, paramInt, paramFromServiceMsg);
-    MsfService.getCore().pushManager.i.a();
+    paramInt = e.e.getUinPushStatus(str);
+    t.a(BaseApplication.getContext(), this.g, str, this.h, paramInt, paramFromServiceMsg);
+    MsfService.getCore().pushManager.j.a();
   }
   
   public void a(IMsfServiceCallbacker paramIMsfServiceCallbacker)
   {
-    this.l = paramIMsfServiceCallbacker;
+    f();
+    this.m = paramIMsfServiceCallbacker;
+    e();
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     this.i.add(new MsfMessagePair(paramToServiceMsg, paramFromServiceMsg));
-    d.d.a();
+    e.d.a();
   }
   
   public void a(Exception paramException, boolean paramBoolean) {}
@@ -86,7 +126,7 @@ public class c
       this.d = 0L;
       this.c = false;
       if (QLog.isColorLevel()) {
-        QLog.d("MSF.S.AppProcessInfo", 2, paramString1 + " onAppBind, isAppConnected " + this.a);
+        QLog.d("MSF.S.AppProcessInfo", 2, String.format("onAppBind appProcessName=%s isAppConnected=%s halfCloseStatus=%s keepProcessAlive=%s", new Object[] { paramString1, Boolean.valueOf(this.a), Boolean.valueOf(this.c), Boolean.valueOf(this.k) }));
       }
       if ((MsfService.getCore() != null) && (MsfService.getCore().getStatReporter() != null))
       {
@@ -115,7 +155,7 @@ public class c
   
   public IMsfServiceCallbacker c()
   {
-    return this.l;
+    return this.m;
   }
   
   public void d()
@@ -123,8 +163,9 @@ public class c
     a(null);
     this.a = false;
     this.c = false;
+    this.k = false;
     if (QLog.isColorLevel()) {
-      QLog.d("MSF.S.AppProcessInfo", 2, this.g + " setAppDisConnected, isAppConnected " + this.a);
+      QLog.d("MSF.S.AppProcessInfo", 2, String.format("setAppDisConnected appProcessName=%s isAppConnected=%s halfCloseStatus=%s keepProcessAlive=%s", new Object[] { this.g, Boolean.valueOf(this.a), Boolean.valueOf(this.c), Boolean.valueOf(this.k) }));
     }
   }
 }

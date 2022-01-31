@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.open.widget.KeyboardDetectorRelativeLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080586" android:background="#66000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/dialogRoot" android:background="@drawable/common_alert_bg" android:layout_width="367.0dip" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="20.0dip"
-      xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqqi">
-        <ScrollView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080587" android:scrollbars="none" android:fadingEdge="none" android:layout_width="wrap_content" android:layout_height="90.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip">
-            <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080588" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080589" android:layout_width="90.0dip" android:layout_height="90.0dip" />
-                <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0036" android:textStyle="bold" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0008" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08058a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="向  炫耀一下？" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f080589" />
-            </RelativeLayout>
-        </ScrollView>
-        <com.tencent.mobileqq.widget.ClearableEditText android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a013a" android:textColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0a0139" android:gravity="center|left|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08058b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201f6" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b004c" android:layout_marginTop="18.0dip" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b004d" android:layout_marginBottom="15.0dip" android:hint="输入炫耀消息后点击发送" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f080587" android:inputType="textMultiLine" android:imeOptions="actionDone" tencent:clearBtnDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201a0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e008d" />
-        <View android:id="@id/dialogDivider" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a004f" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0047" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f08058b" />
-        <LinearLayout android:orientation="horizontal" android:id="@id/btnLayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/dialogDivider">
-            <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b002d" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a004d" android:gravity="center" android:id="@id/dialogLeftBtn" android:background="@drawable/common_dialog_btn_left" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0044" android:text="取消" android:singleLine="true" android:layout_weight="1.0" />
-            <View android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a004f" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0047" android:layout_height="fill_parent" />
-            <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b002d" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a004d" android:gravity="center" android:id="@id/dialogRightBtn" android:background="@drawable/common_dialog_btn_right" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0044" android:text="炫耀一下" android:singleLine="true" android:layout_weight="1.0" />
-        </LinearLayout>
-    </RelativeLayout>
-</com.tencent.open.widget.KeyboardDetectorRelativeLayout>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqqi">
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080583" android:background="@drawable/top_button_right_selector" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" android:maxWidth="100.0dip" android:minWidth="52.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" tencent:skintype="title_right_view">
+        <com.tencent.widget.FadeIconImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080584" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </FrameLayout>
+</RelativeLayout>

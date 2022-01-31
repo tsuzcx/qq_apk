@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/m0m" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.HorizontalListView android:id="@id/m0n" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <android.support.v7.widget.RecyclerView android:id="@id/liy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

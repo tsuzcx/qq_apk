@@ -1,19 +1,23 @@
-import com.tencent.component.media.image.ImageManager;
-import java.util.HashSet;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem.ReadInJoyDraftboxContent;
 
-public class pgn
-  extends ThreadLocal
+public final class pgn
+  implements Parcelable.Creator<ReadInJoyDraftboxItem.ReadInJoyDraftboxContent>
 {
-  public pgn(ImageManager paramImageManager) {}
-  
-  protected HashSet a()
+  public ReadInJoyDraftboxItem.ReadInJoyDraftboxContent a(Parcel paramParcel)
   {
-    return new HashSet();
+    return new ReadInJoyDraftboxItem.ReadInJoyDraftboxContent(paramParcel);
+  }
+  
+  public ReadInJoyDraftboxItem.ReadInJoyDraftboxContent[] a(int paramInt)
+  {
+    return new ReadInJoyDraftboxItem.ReadInJoyDraftboxContent[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pgn
  * JD-Core Version:    0.7.0.1
  */

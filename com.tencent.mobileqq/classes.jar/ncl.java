@@ -1,46 +1,31 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
-import com.tencent.mobileqq.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class ncl
-  implements EmoticonCallback
+  implements nci
 {
-  public ncl(StoryInputBarView paramStoryInputBarView) {}
-  
-  public void a(EmoticonInfo paramEmoticonInfo)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    if (((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)) {
-      ((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).a(QQStoryContext.a(), this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, null);
-    }
+    QLog.i(paramString1, paramInt, paramString2);
   }
   
-  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
-  
-  public boolean a(EmoticonInfo paramEmoticonInfo)
+  public boolean a()
   {
-    return false;
+    return QLog.isColorLevel();
   }
   
-  public void b()
+  public void b(String paramString1, int paramInt, String paramString2)
   {
-    if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
-      TextUtils.a(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx);
-    }
+    QLog.d(paramString1, paramInt, paramString2);
   }
   
-  public void b(EmoticonInfo paramEmoticonInfo) {}
-  
-  public void c() {}
-  
-  public void setting() {}
+  public boolean b()
+  {
+    return QLog.isDevelopLevel();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ncl
  * JD-Core Version:    0.7.0.1
  */

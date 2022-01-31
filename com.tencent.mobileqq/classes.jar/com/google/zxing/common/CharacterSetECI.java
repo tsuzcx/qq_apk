@@ -5,8 +5,8 @@ import java.util.Map;
 
 public enum CharacterSetECI
 {
-  private static final Map NAME_TO_ECI;
-  private static final Map VALUE_TO_ECI;
+  private static final Map<String, CharacterSetECI> NAME_TO_ECI;
+  private static final Map<Integer, CharacterSetECI> VALUE_TO_ECI;
   private final String[] otherEncodingNames;
   private final int[] values;
   

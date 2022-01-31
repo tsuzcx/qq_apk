@@ -1,20 +1,10 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-
-class slz
-  implements Runnable
+public abstract interface slz<T>
 {
-  slz(sly paramsly) {}
-  
-  public void run()
-  {
-    this.a.a.a.clearFocus();
-    this.a.a.onBackEvent();
-  }
+  public abstract void a(sly<T> paramsly);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     slz
  * JD-Core Version:    0.7.0.1
  */

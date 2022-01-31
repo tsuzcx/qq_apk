@@ -1,37 +1,17 @@
-import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.QQStoryMsgHolder;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.StoryChatVideoView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidPollInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidRateInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-public class vdn
-  implements Runnable
+public final class vdn
+  extends uli
 {
-  public vdn(QQStoryItemBuilder paramQQStoryItemBuilder, QQStoryItemBuilder.QQStoryMsgHolder paramQQStoryMsgHolder, long paramLong) {}
-  
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.share", 2, "showPlayIcon");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.qqstory.share", 2, "showPlayIcon: holder == null");
-      }
-    }
-    Long localLong;
-    do
-    {
-      return;
-      localLong = (Long)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$StoryChatVideoView.getTag();
-    } while ((localLong == null) || (localLong.longValue() != this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setDrawStatus(2);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(0);
-  }
+  public List<qqstory_struct.VidPollInfo> a = new ArrayList();
+  public List<qqstory_struct.VidRateInfo> b = new ArrayList();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vdn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,36 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController;
-import cooperation.qqfav.ipc.FavoritesRemoteCommand.IRemoteCommandHandler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
 
 public class acyu
-  implements FavoritesRemoteCommand.IRemoteCommandHandler
+  extends VasQuickUpdateManager.CallBacker
 {
-  public acyu(QfavFilePreviewController paramQfavFilePreviewController) {}
+  public acyu(FriendProfileCardActivity paramFriendProfileCardActivity, awra paramawra, Card paramCard) {}
   
-  public boolean a(int paramInt, Bundle paramBundle)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    new Handler(Looper.getMainLooper()).post(new acyv(this, paramBundle));
-    return true;
+    if ((paramLong == 15L) && ("cardWZ.zip".equals(paramString1)))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b != null)
+      {
+        if (this.jdField_a_of_type_Awra.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId)) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_Awra = this.jdField_a_of_type_Awra;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b.obtainMessage(5, 0, 18, this.jdField_a_of_type_ComTencentMobileqqDataCard).sendToTarget();
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.profilecard.FrdProfileCard", 2, "send msg of UI_MSG_UPDATE_CARD");
+        }
+      }
+      paramVasQuickUpdateManager.removeCallBacker(this);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acyu
  * JD-Core Version:    0.7.0.1
  */

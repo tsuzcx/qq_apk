@@ -1,20 +1,42 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.apollo.GLTextureView;
+import android.os.Handler;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView.19.1;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView.19.2;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
 
 public class ynh
-  implements View.OnLayoutChangeListener
+  implements yoj
 {
-  public ynh(GLTextureView paramGLTextureView) {}
+  public ynh(VideoPlayerView paramVideoPlayerView) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void a(boolean paramBoolean)
   {
-    this.a.surfaceChanged(this.a.getSurfaceTexture(), 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
+    VideoPlayerView.f(this.a, paramBoolean);
+    if (VideoPlayerView.j(this.a)) {
+      this.a.a().post(new VideoPlayerView.19.1(this));
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (VideoPlayerView.c(this.a))
+        {
+          this.a.a().post(new VideoPlayerView.19.2(this));
+          return;
+        }
+      } while (!VideoPlayerView.i(this.a));
+      if (VideoPlayerView.a(this.a) != null) {
+        VideoPlayerView.a(this.a).a(true);
+      }
+      this.a.f();
+    } while (VideoPlayerView.a(this.a) == null);
+    VideoPlayerView.a(this.a).onVideoStart((int)VideoPlayerView.a(this.a).b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ynh
  * JD-Core Version:    0.7.0.1
  */

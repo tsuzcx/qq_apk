@@ -8,20 +8,20 @@ import java.util.ArrayList;
 public final class BigDataIpList
   extends JceStruct
 {
-  static ArrayList cache_netSegConfs;
-  static ArrayList cache_vIplist;
-  public ArrayList netSegConfs;
+  static ArrayList<NetSegConf> cache_netSegConfs;
+  static ArrayList<BigDataIpInfo> cache_vIplist;
+  public ArrayList<NetSegConf> netSegConfs;
   public long uService_type;
   public long ufragment_size;
-  public ArrayList vIplist;
+  public ArrayList<BigDataIpInfo> vIplist;
   
   public BigDataIpList() {}
   
-  public BigDataIpList(long paramLong1, ArrayList paramArrayList1, ArrayList paramArrayList2, long paramLong2)
+  public BigDataIpList(long paramLong1, ArrayList<BigDataIpInfo> paramArrayList, ArrayList<NetSegConf> paramArrayList1, long paramLong2)
   {
     this.uService_type = paramLong1;
-    this.vIplist = paramArrayList1;
-    this.netSegConfs = paramArrayList2;
+    this.vIplist = paramArrayList;
+    this.netSegConfs = paramArrayList1;
     this.ufragment_size = paramLong2;
   }
   

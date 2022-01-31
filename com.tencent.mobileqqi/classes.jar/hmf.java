@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.widget.Workspace.SavedState;
+import com.tencent.open.component.cache.database.DbCacheManager;
+import com.tencent.open.component.cache.database.DbCacheService;
+import java.util.HashMap;
 
-public final class hmf
-  implements Parcelable.Creator
+public class hmf
+  implements hme
 {
-  public Workspace.SavedState a(Parcel paramParcel)
-  {
-    return new Workspace.SavedState(paramParcel, null);
-  }
+  public hmf(DbCacheService paramDbCacheService) {}
   
-  public Workspace.SavedState[] a(int paramInt)
+  public void a(DbCacheManager paramDbCacheManager)
   {
-    return new Workspace.SavedState[paramInt];
+    synchronized (this.a.a)
+    {
+      this.a.a.remove(paramDbCacheManager.a());
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hmf
  * JD-Core Version:    0.7.0.1
  */

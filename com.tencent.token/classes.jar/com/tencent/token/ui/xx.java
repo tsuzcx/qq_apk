@@ -1,26 +1,22 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-final class xx
-  implements DialogInterface.OnClickListener
+class xx
+  implements Animation.AnimationListener
 {
-  xx(RealNameStep1InputNameIdActivity paramRealNameStep1InputNameIdActivity, boolean paramBoolean) {}
+  xx(RealNameTakeIDPhotoActivity paramRealNameTakeIDPhotoActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a)
-    {
-      paramDialogInterface = new Intent(this.b, IndexActivity.class);
-      paramDialogInterface.addFlags(67108864);
-      this.b.startActivity(paramDialogInterface);
-      this.b.finish();
-      return;
-    }
-    this.b.dismissDialog();
+    RealNameTakeIDPhotoActivity.access$300(this.a).sendEmptyMessage(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,16 +1,21 @@
-import android.view.View;
-import android.widget.ImageView;
-
-class odx
+public class odx
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  
-  odx(odw paramodw) {}
+  public static boolean a(int paramInt)
+  {
+    if (!opx.a()) {
+      return false;
+    }
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     odx
  * JD-Core Version:    0.7.0.1
  */

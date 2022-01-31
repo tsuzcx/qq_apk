@@ -5,60 +5,73 @@ import com.tencent.mobileqq.shortvideo.resource.Resources;
 
 public class SdkContext
 {
-  private static SdkContext jdField_a_of_type_ComTencentSveffectsSdkContext = new SdkContext();
-  private Application jdField_a_of_type_AndroidAppApplication;
-  private Resources jdField_a_of_type_ComTencentMobileqqShortvideoResourceResources;
-  private DpcSwitcher jdField_a_of_type_ComTencentSveffectsDpcSwitcher;
-  private Logger jdField_a_of_type_ComTencentSveffectsLogger;
-  private Reporter jdField_a_of_type_ComTencentSveffectsReporter;
-  private String jdField_a_of_type_JavaLangString;
+  public static final String APP_DOV = "DOV";
+  public static final String APP_QQ = "QQ";
+  public static final String APP_UNKNOWN = "UNKNOWN";
+  private static SdkContext instance = new SdkContext();
+  private String appName;
+  private Application application;
+  private DpcSwitcher dpcSwitcher;
+  private Logger logger;
+  private Reporter reporter;
+  private Resources resources;
   
-  public static SdkContext a()
+  public static SdkContext getInstance()
   {
-    return jdField_a_of_type_ComTencentSveffectsSdkContext;
+    return instance;
   }
   
-  public Application a()
+  public String getAppName()
   {
-    return this.jdField_a_of_type_AndroidAppApplication;
+    return this.appName;
   }
   
-  public Resources a()
+  public Application getApplication()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqShortvideoResourceResources;
+    return this.application;
   }
   
-  public DpcSwitcher a()
+  public DpcSwitcher getDpcSwitcher()
   {
-    return this.jdField_a_of_type_ComTencentSveffectsDpcSwitcher;
+    return this.dpcSwitcher;
   }
   
-  public Logger a()
+  public Logger getLogger()
   {
-    if (this.jdField_a_of_type_ComTencentSveffectsLogger == null) {
-      this.jdField_a_of_type_ComTencentSveffectsLogger = new DefaultLogger();
+    if (this.logger == null) {
+      this.logger = new DefaultLogger();
     }
-    return this.jdField_a_of_type_ComTencentSveffectsLogger;
+    return this.logger;
   }
   
-  public Reporter a()
+  public Reporter getReporter()
   {
-    return this.jdField_a_of_type_ComTencentSveffectsReporter;
+    return this.reporter;
   }
   
-  public void a(String paramString, Application paramApplication, DpcSwitcher paramDpcSwitcher, Resources paramResources, Logger paramLogger, Reporter paramReporter)
+  public Resources getResources()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidAppApplication = paramApplication;
-    this.jdField_a_of_type_ComTencentSveffectsDpcSwitcher = paramDpcSwitcher;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoResourceResources = paramResources;
-    this.jdField_a_of_type_ComTencentSveffectsLogger = paramLogger;
-    this.jdField_a_of_type_ComTencentSveffectsReporter = paramReporter;
+    return this.resources;
+  }
+  
+  public void init(Application paramApplication, DpcSwitcher paramDpcSwitcher, Resources paramResources, Logger paramLogger, Reporter paramReporter)
+  {
+    init("UNKNOWN", paramApplication, paramDpcSwitcher, paramResources, paramLogger, paramReporter);
+  }
+  
+  public void init(String paramString, Application paramApplication, DpcSwitcher paramDpcSwitcher, Resources paramResources, Logger paramLogger, Reporter paramReporter)
+  {
+    this.appName = paramString;
+    this.application = paramApplication;
+    this.dpcSwitcher = paramDpcSwitcher;
+    this.resources = paramResources;
+    this.logger = paramLogger;
+    this.reporter = paramReporter;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.sveffects.SdkContext
  * JD-Core Version:    0.7.0.1
  */

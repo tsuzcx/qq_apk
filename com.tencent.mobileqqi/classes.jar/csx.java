@@ -1,24 +1,46 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
+import com.tencent.mobileqq.adapter.LebaListMgrAdapter.ViewHolder;
+import com.tencent.mobileqq.config.struct.LebaViewItem;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.widget.XListView;
 
-public class csx
-  implements View.OnClickListener
+class csx
+  implements Runnable
 {
-  public csx(ForwardRecentActivity paramForwardRecentActivity) {}
+  csx(csw paramcsw, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ForwardRecentActivity.a(this.a).a(String.valueOf(AppConstants.P), -1, "", this.a.getString(2131559075));
-    ReportController.b(this.a.b, "CliOper", "", "", "0X8004051", "0X8004051", 0, 0, "", "", "", "");
+    int j;
+    int i;
+    if ((LebaListMgrActivity.a(this.jdField_a_of_type_Csw.a) != null) && (LebaListMgrActivity.a(this.jdField_a_of_type_Csw.a) != null))
+    {
+      j = LebaListMgrActivity.a(this.jdField_a_of_type_Csw.a).getChildCount();
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i < j)
+      {
+        LebaListMgrAdapter.ViewHolder localViewHolder = (LebaListMgrAdapter.ViewHolder)LebaListMgrActivity.a(this.jdField_a_of_type_Csw.a).getChildAt(i).getTag();
+        if ((localViewHolder != null) && (localViewHolder.a != null) && (localViewHolder.a.a != null) && (Utils.a(localViewHolder.a.a.strPkgName, this.jdField_a_of_type_JavaLangString))) {
+          LebaListMgrActivity.a(this.jdField_a_of_type_Csw.a).a(localViewHolder);
+        }
+      }
+      else
+      {
+        return;
+      }
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     csx
  * JD-Core Version:    0.7.0.1
  */

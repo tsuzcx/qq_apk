@@ -7,7 +7,7 @@ import java.lang.reflect.Array;
 public class ObjectPool<T>
 {
   private static final String TAG = "async.ObjectPool";
-  private final Allocator<T> mAllocator;
+  private final ObjectPool.Allocator<T> mAllocator;
   private final Class<T> mClazz;
   private final MonotonicClock mClock;
   private final long mCompactionDelayMs;
@@ -18,7 +18,7 @@ public class ObjectPool<T>
   private T[] mPool;
   private int mSize;
   
-  public ObjectPool(Class<T> paramClass, int paramInt1, int paramInt2, int paramInt3, long paramLong, Allocator<T> paramAllocator, MonotonicClock paramMonotonicClock)
+  public ObjectPool(Class<T> paramClass, int paramInt1, int paramInt2, int paramInt3, long paramLong, ObjectPool.Allocator<T> paramAllocator, MonotonicClock paramMonotonicClock)
   {
     this.mClazz = paramClass;
     this.mMinSize = Math.max(paramInt1, 0);
@@ -45,37 +45,37 @@ public class ObjectPool<T>
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 84	com/tribe/async/objectpool/ObjectPool:mSize	I
+    //   3: getfield 78	com/tribe/async/objectpool/ObjectPool:mSize	I
     //   6: ifle +47 -> 53
     //   9: aload_0
     //   10: aload_0
-    //   11: getfield 84	com/tribe/async/objectpool/ObjectPool:mSize	I
+    //   11: getfield 78	com/tribe/async/objectpool/ObjectPool:mSize	I
     //   14: iconst_1
     //   15: isub
-    //   16: putfield 84	com/tribe/async/objectpool/ObjectPool:mSize	I
+    //   16: putfield 78	com/tribe/async/objectpool/ObjectPool:mSize	I
     //   19: aload_0
-    //   20: getfield 68	com/tribe/async/objectpool/ObjectPool:mPool	[Ljava/lang/Object;
+    //   20: getfield 62	com/tribe/async/objectpool/ObjectPool:mPool	[Ljava/lang/Object;
     //   23: aload_0
-    //   24: getfield 84	com/tribe/async/objectpool/ObjectPool:mSize	I
+    //   24: getfield 78	com/tribe/async/objectpool/ObjectPool:mSize	I
     //   27: aaload
     //   28: astore_1
     //   29: aload_0
-    //   30: getfield 68	com/tribe/async/objectpool/ObjectPool:mPool	[Ljava/lang/Object;
+    //   30: getfield 62	com/tribe/async/objectpool/ObjectPool:mPool	[Ljava/lang/Object;
     //   33: aload_0
-    //   34: getfield 84	com/tribe/async/objectpool/ObjectPool:mSize	I
+    //   34: getfield 78	com/tribe/async/objectpool/ObjectPool:mSize	I
     //   37: aconst_null
     //   38: aastore
     //   39: aload_0
-    //   40: getfield 57	com/tribe/async/objectpool/ObjectPool:mAllocator	Lcom/tribe/async/objectpool/ObjectPool$Allocator;
+    //   40: getfield 51	com/tribe/async/objectpool/ObjectPool:mAllocator	Lcom/tribe/async/objectpool/ObjectPool$Allocator;
     //   43: aload_1
-    //   44: invokeinterface 90 2 0
+    //   44: invokeinterface 86 2 0
     //   49: aload_0
     //   50: monitorexit
     //   51: aload_1
     //   52: areturn
     //   53: aload_0
-    //   54: getfield 57	com/tribe/async/objectpool/ObjectPool:mAllocator	Lcom/tribe/async/objectpool/ObjectPool$Allocator;
-    //   57: invokeinterface 93 1 0
+    //   54: getfield 51	com/tribe/async/objectpool/ObjectPool:mAllocator	Lcom/tribe/async/objectpool/ObjectPool$Allocator;
+    //   57: invokeinterface 89 1 0
     //   62: astore_1
     //   63: goto -24 -> 39
     //   66: astore_1
@@ -180,55 +180,10 @@ public class ObjectPool<T>
     }
     finally {}
   }
-  
-  public static abstract interface Allocator<T>
-  {
-    public abstract T create();
-    
-    public abstract void onAllocate(T paramT);
-    
-    public abstract void onRelease(T paramT);
-  }
-  
-  public static class BasicAllocator<T>
-    implements ObjectPool.Allocator<T>
-  {
-    Class<T> mClazz;
-    
-    public BasicAllocator(Class<T> paramClass)
-    {
-      this.mClazz = paramClass;
-    }
-    
-    public T create()
-    {
-      try
-      {
-        Object localObject = this.mClazz.newInstance();
-        return localObject;
-      }
-      catch (InstantiationException localInstantiationException)
-      {
-        SLog.e("async.ObjectPool", "Couldn't instantiate object", localInstantiationException);
-        return null;
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        for (;;)
-        {
-          SLog.e("async.ObjectPool", "Couldn't instantiate object", localIllegalAccessException);
-        }
-      }
-    }
-    
-    public void onAllocate(T paramT) {}
-    
-    public void onRelease(T paramT) {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tribe.async.objectpool.ObjectPool
  * JD-Core Version:    0.7.0.1
  */

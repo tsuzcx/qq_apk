@@ -94,10 +94,10 @@ public class InnerHttp
         if (!this.b)
         {
           if (InfoRecognizer.g) {
-            paramString.voiceRecordPCMData = InfoRecognizer.j.toByteArray();
+            paramString.voiceRecordPCMData = InfoRecognizer.l.toByteArray();
           }
           if (InfoRecognizer.g) {
-            paramString.voiceSpeexData = InfoRecognizer.k.toByteArray();
+            paramString.voiceSpeexData = InfoRecognizer.m.toByteArray();
           }
           paramString.startTime = ((this.l / 32.0D - InfoRecorder.f) / 1000.0D);
           if (this.j == 1) {
@@ -241,7 +241,7 @@ public class InnerHttp
       try
       {
         localVoiceRecognizerResult.httpRes = paramJSONObject.toString().getBytes("UTF-8");
-        if (InfoRecognizer.n)
+        if (InfoRecognizer.p)
         {
           localVoiceRecognizerResult.type = 1;
           return localVoiceRecognizerResult;
@@ -306,7 +306,7 @@ public class InnerHttp
   private String c(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if (!InfoRecognizer.l) {
+    if (!InfoRecognizer.n) {
       localStringBuilder.append("http://" + InfoSender.Domain + InfoSender.Uri + "?");
     }
     if (paramInt == 1)
@@ -327,8 +327,8 @@ public class InnerHttp
       localStringBuilder.append("&sdk_ver=1.17");
       localStringBuilder.append("&voice_end=").append(this.j);
       localStringBuilder.append("&encrypt_aes_mode=CBC");
-      if (InfoRecognizer.m != null) {
-        localStringBuilder.append(InfoRecognizer.m);
+      if (InfoRecognizer.o != null) {
+        localStringBuilder.append(InfoRecognizer.o);
       }
     }
     return localStringBuilder.toString();
@@ -344,39 +344,55 @@ public class InnerHttp
   
   private byte[] f()
   {
+    int i2 = 6;
     try
     {
       ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("&appid=").append(InfoRecognizer.a).append("&timestamp=").append(System.currentTimeMillis() / 1000L - mDeltaTime).append("&seq=").append(this.h).append("&len=").append(this.e).append("&samples_per_sec=").append(InfoRecorder.a).append("&bits_per_sample=16&result_type=").append(InfoHttp.c).append("&max_result_count=").append(InfoHttp.b).append("&end=").append(String.valueOf(this.j)).append("&device_info=").append(InfoRecognizer.c.getDeviceInfo()).append("&guid=").append(InfoRecognizer.c.getGuid()).append("&android_signature=").append(InfoRecognizer.c.getAndroid_signature()).append("&android_package_name=").append(InfoRecognizer.c.getAndroid_package_name()).append("&vr_domain=").append(InfoHttp.e).append("&cont_res=").append(InfoHttp.f).append("&language_type=0&voice_file_type=6&voice_encode_type=6");
-      if ((InfoHttp.c & 0x4) > 0) {
-        ((StringBuilder)localObject).append("&semantic_category=").append(InfoHttp.d);
-      }
-      if ((InfoRecognizer.e.isNeedUpdate()) && (this.j == 1) && (InfoHttp.g))
+      Object localObject1 = new StringBuilder();
+      Object localObject2 = ((StringBuilder)localObject1).append("&appid=").append(InfoRecognizer.a).append("&timestamp=").append(System.currentTimeMillis() / 1000L - mDeltaTime).append("&seq=").append(this.h).append("&len=").append(this.e).append("&samples_per_sec=").append(InfoRecorder.a).append("&bits_per_sample=16&result_type=").append(InfoHttp.c).append("&max_result_count=").append(InfoHttp.b).append("&end=").append(String.valueOf(this.j)).append("&device_info=").append(InfoRecognizer.c.getDeviceInfo()).append("&guid=").append(InfoRecognizer.c.getGuid()).append("&android_signature=").append(InfoRecognizer.c.getAndroid_signature()).append("&android_package_name=").append(InfoRecognizer.c.getAndroid_package_name()).append("&vr_domain=").append(InfoHttp.e).append("&cont_res=").append(InfoHttp.f).append("&language_type=0&voice_file_type=");
+      if (InfoRecognizer.k)
       {
-        ((StringBuilder)localObject).append(InfoRecognizer.e.getRecordStr());
-        this.c = true;
+        i1 = 6;
+        localObject2 = ((StringBuilder)localObject2).append(i1).append("&voice_encode_type=");
+        if (!InfoRecognizer.k) {
+          break label420;
+        }
       }
-      LogTool.d(((StringBuilder)localObject).toString());
-      localByteArrayOutputStream.write(((StringBuilder)localObject).toString().getBytes());
-      localByteArrayOutputStream.write(0);
-      localByteArrayOutputStream.write(this.d);
-      localByteArrayOutputStream.flush();
-      localObject = new ByteArrayOutputStream();
-      ((ByteArrayOutputStream)localObject).write(InfoHttp.a);
-      ((ByteArrayOutputStream)localObject).write(Common.AES(localByteArrayOutputStream.toByteArray()));
-      ((ByteArrayOutputStream)localObject).flush();
-      byte[] arrayOfByte = ((ByteArrayOutputStream)localObject).toByteArray();
-      ((ByteArrayOutputStream)localObject).close();
-      localByteArrayOutputStream.close();
-      return arrayOfByte;
+      label420:
+      for (int i1 = i2;; i1 = 1)
+      {
+        ((StringBuilder)localObject2).append(i1);
+        if ((InfoHttp.c & 0x4) > 0) {
+          ((StringBuilder)localObject1).append("&semantic_category=").append(InfoHttp.d);
+        }
+        if ((InfoRecognizer.e.isNeedUpdate()) && (this.j == 1) && (InfoHttp.g))
+        {
+          ((StringBuilder)localObject1).append(InfoRecognizer.e.getRecordStr());
+          this.c = true;
+        }
+        LogTool.d(((StringBuilder)localObject1).toString());
+        localByteArrayOutputStream.write(((StringBuilder)localObject1).toString().getBytes());
+        localByteArrayOutputStream.write(0);
+        localByteArrayOutputStream.write(this.d);
+        localByteArrayOutputStream.flush();
+        localObject1 = new ByteArrayOutputStream();
+        ((ByteArrayOutputStream)localObject1).write(InfoHttp.a);
+        ((ByteArrayOutputStream)localObject1).write(Common.AES(localByteArrayOutputStream.toByteArray()));
+        ((ByteArrayOutputStream)localObject1).flush();
+        localObject2 = ((ByteArrayOutputStream)localObject1).toByteArray();
+        ((ByteArrayOutputStream)localObject1).close();
+        localByteArrayOutputStream.close();
+        return localObject2;
+        i1 = 1;
+        break;
+      }
+      return null;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
       d(-204);
     }
-    return null;
   }
   
   protected final void a()
@@ -621,7 +637,7 @@ public class InnerHttp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.qq.wx.voice.recognizer.InnerHttp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class coh
-  extends FriendListObserver
+  implements DialogInterface.OnClickListener
 {
-  public coh(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public coh(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

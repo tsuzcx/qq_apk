@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class nearby$FansInfo
-  extends MessageMicro
+  extends MessageMicro<FansInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_fans_url = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -25,7 +25,7 @@ public final class nearby$FansInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.jungle.nearby.nio.proto.nearby.FansInfo
  * JD-Core Version:    0.7.0.1
  */

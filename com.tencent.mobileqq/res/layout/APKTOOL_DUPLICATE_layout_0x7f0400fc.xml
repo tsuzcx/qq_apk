@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057d" android:gravity="center_horizontal" android:layout_gravity="center" android:id="@id/no_chat" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/no_chat" android:drawableTop="@drawable/no_chat" android:drawablePadding="20.0dip" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a088d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d019e" android:layout_marginRight="20.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b22cb" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01e6" />
-</LinearLayout>

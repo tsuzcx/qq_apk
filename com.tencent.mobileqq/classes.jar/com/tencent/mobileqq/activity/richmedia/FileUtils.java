@@ -7,65 +7,71 @@ import java.io.File;
 
 public class FileUtils
 {
-  public static Context a;
-  private static String a;
+  private static String RootBasePath = "/";
+  private static final String TAG = "FileUtils";
+  public static Context sContextObj = SdkContext.getInstance().getApplication();
   
-  static
+  public static boolean fileExists(String paramString)
   {
-    jdField_a_of_type_AndroidContentContext = SdkContext.a().a();
-    jdField_a_of_type_JavaLangString = "/";
+    if (paramString == null) {}
+    do
+    {
+      return false;
+      paramString = new File(paramString);
+    } while ((paramString == null) || (!paramString.exists()));
+    return true;
   }
   
-  public static Bitmap a(String paramString, boolean paramBoolean)
+  public static Bitmap loadBitmapFromNative(String paramString, boolean paramBoolean)
   {
-    return a(paramString, paramBoolean, null);
+    return loadBitmapFromNative(paramString, paramBoolean, null);
   }
   
   /* Error */
-  public static Bitmap a(String paramString, boolean paramBoolean, Bitmap paramBitmap)
+  public static Bitmap loadBitmapFromNative(String paramString, boolean paramBoolean, Bitmap paramBitmap)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore 4
-    //   3: new 41	android/graphics/BitmapFactory$Options
+    //   3: new 59	android/graphics/BitmapFactory$Options
     //   6: dup
-    //   7: invokespecial 42	android/graphics/BitmapFactory$Options:<init>	()V
+    //   7: invokespecial 60	android/graphics/BitmapFactory$Options:<init>	()V
     //   10: astore 5
     //   12: aload 5
-    //   14: getstatic 48	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   17: putfield 51	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
+    //   14: getstatic 66	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   17: putfield 69	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
     //   20: aload_2
     //   21: ifnull +9 -> 30
     //   24: aload 5
     //   26: aload_2
-    //   27: putfield 55	android/graphics/BitmapFactory$Options:inBitmap	Landroid/graphics/Bitmap;
+    //   27: putfield 73	android/graphics/BitmapFactory$Options:inBitmap	Landroid/graphics/Bitmap;
     //   30: aload_0
-    //   31: getstatic 60	java/io/File:separator	Ljava/lang/String;
-    //   34: invokevirtual 66	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   31: getstatic 76	java/io/File:separator	Ljava/lang/String;
+    //   34: invokevirtual 81	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   37: istore_3
     //   38: iload_3
     //   39: ifne +165 -> 204
-    //   42: getstatic 19	com/tencent/mobileqq/activity/richmedia/FileUtils:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   45: invokevirtual 72	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   48: invokevirtual 78	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
-    //   51: new 80	java/lang/StringBuilder
+    //   42: getstatic 25	com/tencent/mobileqq/activity/richmedia/FileUtils:sContextObj	Landroid/content/Context;
+    //   45: invokevirtual 87	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   48: invokevirtual 93	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
+    //   51: new 95	java/lang/StringBuilder
     //   54: dup
-    //   55: invokespecial 81	java/lang/StringBuilder:<init>	()V
-    //   58: ldc 83
-    //   60: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   63: getstatic 60	java/io/File:separator	Ljava/lang/String;
-    //   66: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: invokespecial 96	java/lang/StringBuilder:<init>	()V
+    //   58: ldc 98
+    //   60: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: getstatic 76	java/io/File:separator	Ljava/lang/String;
+    //   66: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   69: aload_0
-    //   70: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   76: invokevirtual 97	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   70: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   76: invokevirtual 112	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   79: astore_2
     //   80: aload_2
     //   81: astore_0
     //   82: aload_0
     //   83: aconst_null
     //   84: aload 5
-    //   86: invokestatic 103	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   86: invokestatic 118	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   89: astore_2
     //   90: aload_2
     //   91: astore 4
@@ -75,79 +81,79 @@ public class FileUtils
     //   98: astore 4
     //   100: iload_1
     //   101: ifeq +40 -> 141
-    //   104: new 105	android/graphics/Matrix
+    //   104: new 120	android/graphics/Matrix
     //   107: dup
-    //   108: invokespecial 106	android/graphics/Matrix:<init>	()V
+    //   108: invokespecial 121	android/graphics/Matrix:<init>	()V
     //   111: astore 4
     //   113: aload 4
     //   115: fconst_1
-    //   116: ldc 107
-    //   118: invokevirtual 111	android/graphics/Matrix:preScale	(FF)Z
+    //   116: ldc 122
+    //   118: invokevirtual 126	android/graphics/Matrix:preScale	(FF)Z
     //   121: pop
     //   122: aload_2
     //   123: iconst_0
     //   124: iconst_0
     //   125: aload_2
-    //   126: invokevirtual 117	android/graphics/Bitmap:getWidth	()I
+    //   126: invokevirtual 132	android/graphics/Bitmap:getWidth	()I
     //   129: aload_2
-    //   130: invokevirtual 120	android/graphics/Bitmap:getHeight	()I
+    //   130: invokevirtual 135	android/graphics/Bitmap:getHeight	()I
     //   133: aload 4
     //   135: iconst_1
-    //   136: invokestatic 124	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
+    //   136: invokestatic 139	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
     //   139: astore 4
     //   141: aload 4
     //   143: astore 5
     //   145: aload_0
     //   146: ifnull +11 -> 157
     //   149: aload_0
-    //   150: invokevirtual 129	java/io/InputStream:close	()V
+    //   150: invokevirtual 144	java/io/InputStream:close	()V
     //   153: aload 4
     //   155: astore 5
     //   157: aload 5
     //   159: areturn
     //   160: astore_2
-    //   161: new 80	java/lang/StringBuilder
+    //   161: new 95	java/lang/StringBuilder
     //   164: dup
-    //   165: invokespecial 81	java/lang/StringBuilder:<init>	()V
-    //   168: getstatic 23	com/tencent/mobileqq/activity/richmedia/FileUtils:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   171: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   165: invokespecial 96	java/lang/StringBuilder:<init>	()V
+    //   168: getstatic 29	com/tencent/mobileqq/activity/richmedia/FileUtils:RootBasePath	Ljava/lang/String;
+    //   171: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   174: aload_0
-    //   175: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   178: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   175: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   178: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   181: astore_0
-    //   182: new 131	java/io/FileInputStream
+    //   182: new 146	java/io/FileInputStream
     //   185: dup
     //   186: aload_0
-    //   187: invokespecial 134	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   187: invokespecial 147	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   190: astore_0
     //   191: goto -109 -> 82
     //   194: astore_0
     //   195: aload_0
-    //   196: invokevirtual 137	java/io/FileNotFoundException:printStackTrace	()V
+    //   196: invokevirtual 150	java/io/FileNotFoundException:printStackTrace	()V
     //   199: aconst_null
     //   200: astore_0
     //   201: goto -10 -> 191
-    //   204: new 131	java/io/FileInputStream
+    //   204: new 146	java/io/FileInputStream
     //   207: dup
     //   208: aload_0
-    //   209: invokespecial 134	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   209: invokespecial 147	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   212: astore_0
     //   213: goto -131 -> 82
     //   216: astore_0
     //   217: aload_0
-    //   218: invokevirtual 137	java/io/FileNotFoundException:printStackTrace	()V
+    //   218: invokevirtual 150	java/io/FileNotFoundException:printStackTrace	()V
     //   221: aconst_null
     //   222: astore_0
     //   223: goto -141 -> 82
     //   226: astore_2
     //   227: aload_2
-    //   228: invokevirtual 138	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   228: invokevirtual 151	java/lang/OutOfMemoryError:printStackTrace	()V
     //   231: aconst_null
     //   232: astore_2
     //   233: goto -143 -> 90
     //   236: astore_0
     //   237: aload_0
-    //   238: invokevirtual 139	java/io/IOException:printStackTrace	()V
+    //   238: invokevirtual 152	java/io/IOException:printStackTrace	()V
     //   241: aload 4
     //   243: areturn
     //   244: astore 4
@@ -156,18 +162,18 @@ public class FileUtils
     //   248: aconst_null
     //   249: astore_0
     //   250: aload 4
-    //   252: invokevirtual 140	java/lang/Exception:printStackTrace	()V
+    //   252: invokevirtual 153	java/lang/Exception:printStackTrace	()V
     //   255: aload_0
     //   256: astore 5
     //   258: aload_2
     //   259: ifnull -102 -> 157
     //   262: aload_2
-    //   263: invokevirtual 129	java/io/InputStream:close	()V
+    //   263: invokevirtual 144	java/io/InputStream:close	()V
     //   266: aload_0
     //   267: areturn
     //   268: astore_2
     //   269: aload_2
-    //   270: invokevirtual 139	java/io/IOException:printStackTrace	()V
+    //   270: invokevirtual 152	java/io/IOException:printStackTrace	()V
     //   273: aload_0
     //   274: areturn
     //   275: astore_0
@@ -176,12 +182,12 @@ public class FileUtils
     //   279: aload_2
     //   280: ifnull +7 -> 287
     //   283: aload_2
-    //   284: invokevirtual 129	java/io/InputStream:close	()V
+    //   284: invokevirtual 144	java/io/InputStream:close	()V
     //   287: aload_0
     //   288: athrow
     //   289: astore_2
     //   290: aload_2
-    //   291: invokevirtual 139	java/io/IOException:printStackTrace	()V
+    //   291: invokevirtual 152	java/io/IOException:printStackTrace	()V
     //   294: goto -7 -> 287
     //   297: astore 4
     //   299: aload_0
@@ -249,7 +255,7 @@ public class FileUtils
   }
   
   /* Error */
-  public static String a(File paramFile)
+  public static String readFileContent(File paramFile)
   {
     // Byte code:
     //   0: iconst_0
@@ -257,18 +263,18 @@ public class FileUtils
     //   2: aconst_null
     //   3: astore 8
     //   5: aload_0
-    //   6: invokevirtual 147	java/io/File:length	()J
+    //   6: invokevirtual 161	java/io/File:length	()J
     //   9: l2i
     //   10: istore_2
-    //   11: new 149	java/io/ByteArrayOutputStream
+    //   11: new 163	java/io/ByteArrayOutputStream
     //   14: dup
     //   15: iload_2
-    //   16: invokespecial 152	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   16: invokespecial 166	java/io/ByteArrayOutputStream:<init>	(I)V
     //   19: astore 4
-    //   21: new 131	java/io/FileInputStream
+    //   21: new 146	java/io/FileInputStream
     //   24: dup
     //   25: aload_0
-    //   26: invokespecial 155	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   26: invokespecial 169	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   29: astore_0
     //   30: aload 4
     //   32: astore 6
@@ -286,7 +292,7 @@ public class FileUtils
     //   54: astore 5
     //   56: aload_0
     //   57: aload 7
-    //   59: invokevirtual 159	java/io/FileInputStream:read	([B)I
+    //   59: invokevirtual 173	java/io/FileInputStream:read	([B)I
     //   62: istore_3
     //   63: aload 4
     //   65: astore 6
@@ -296,7 +302,7 @@ public class FileUtils
     //   72: aload 7
     //   74: iconst_0
     //   75: iload_3
-    //   76: invokevirtual 163	java/io/ByteArrayOutputStream:write	([BII)V
+    //   76: invokevirtual 177	java/io/ByteArrayOutputStream:write	([BII)V
     //   79: iload_1
     //   80: iload_3
     //   81: iadd
@@ -316,21 +322,21 @@ public class FileUtils
     //   109: aload_0
     //   110: astore 5
     //   112: aload 4
-    //   114: ldc 165
-    //   116: invokevirtual 168	java/io/ByteArrayOutputStream:toString	(Ljava/lang/String;)Ljava/lang/String;
+    //   114: ldc 179
+    //   116: invokevirtual 182	java/io/ByteArrayOutputStream:toString	(Ljava/lang/String;)Ljava/lang/String;
     //   119: astore 7
     //   121: aload 7
     //   123: astore 5
     //   125: aload 4
     //   127: ifnull +8 -> 135
     //   130: aload 4
-    //   132: invokevirtual 169	java/io/ByteArrayOutputStream:close	()V
+    //   132: invokevirtual 183	java/io/ByteArrayOutputStream:close	()V
     //   135: aload 5
     //   137: astore 4
     //   139: aload_0
     //   140: ifnull +11 -> 151
     //   143: aload_0
-    //   144: invokevirtual 170	java/io/FileInputStream:close	()V
+    //   144: invokevirtual 184	java/io/FileInputStream:close	()V
     //   147: aload 5
     //   149: astore 4
     //   151: aload 4
@@ -338,12 +344,12 @@ public class FileUtils
     //   154: astore_0
     //   155: aload 5
     //   157: astore 4
-    //   159: invokestatic 175	com/tencent/sveffects/SLog:a	()Z
+    //   159: invokestatic 189	com/tencent/sveffects/SLog:isEnable	()Z
     //   162: ifeq -11 -> 151
-    //   165: ldc 177
-    //   167: ldc 179
+    //   165: ldc 9
+    //   167: ldc 190
     //   169: aload_0
-    //   170: invokestatic 182	com/tencent/sveffects/SLog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   170: invokestatic 194	com/tencent/sveffects/SLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   173: aload 5
     //   175: areturn
     //   176: astore 7
@@ -355,37 +361,37 @@ public class FileUtils
     //   185: astore 6
     //   187: aload_0
     //   188: astore 5
-    //   190: invokestatic 175	com/tencent/sveffects/SLog:a	()Z
+    //   190: invokestatic 189	com/tencent/sveffects/SLog:isEnable	()Z
     //   193: ifeq +19 -> 212
     //   196: aload 4
     //   198: astore 6
     //   200: aload_0
     //   201: astore 5
-    //   203: ldc 177
-    //   205: ldc 179
+    //   203: ldc 9
+    //   205: ldc 190
     //   207: aload 7
-    //   209: invokestatic 182	com/tencent/sveffects/SLog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   209: invokestatic 194	com/tencent/sveffects/SLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   212: aload 4
     //   214: ifnull +8 -> 222
     //   217: aload 4
-    //   219: invokevirtual 169	java/io/ByteArrayOutputStream:close	()V
+    //   219: invokevirtual 183	java/io/ByteArrayOutputStream:close	()V
     //   222: aload 8
     //   224: astore 4
     //   226: aload_0
     //   227: ifnull -76 -> 151
     //   230: aload_0
-    //   231: invokevirtual 170	java/io/FileInputStream:close	()V
+    //   231: invokevirtual 184	java/io/FileInputStream:close	()V
     //   234: aconst_null
     //   235: areturn
     //   236: astore_0
     //   237: aload 8
     //   239: astore 4
-    //   241: invokestatic 175	com/tencent/sveffects/SLog:a	()Z
+    //   241: invokestatic 189	com/tencent/sveffects/SLog:isEnable	()Z
     //   244: ifeq -93 -> 151
-    //   247: ldc 177
-    //   249: ldc 179
+    //   247: ldc 9
+    //   249: ldc 190
     //   251: aload_0
-    //   252: invokestatic 182	com/tencent/sveffects/SLog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   252: invokestatic 194	com/tencent/sveffects/SLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   255: aconst_null
     //   256: areturn
     //   257: astore_0
@@ -396,20 +402,20 @@ public class FileUtils
     //   264: aload 4
     //   266: ifnull +8 -> 274
     //   269: aload 4
-    //   271: invokevirtual 169	java/io/ByteArrayOutputStream:close	()V
+    //   271: invokevirtual 183	java/io/ByteArrayOutputStream:close	()V
     //   274: aload 5
     //   276: ifnull +8 -> 284
     //   279: aload 5
-    //   281: invokevirtual 170	java/io/FileInputStream:close	()V
+    //   281: invokevirtual 184	java/io/FileInputStream:close	()V
     //   284: aload_0
     //   285: athrow
     //   286: astore 4
-    //   288: invokestatic 175	com/tencent/sveffects/SLog:a	()Z
+    //   288: invokestatic 189	com/tencent/sveffects/SLog:isEnable	()Z
     //   291: ifeq -7 -> 284
-    //   294: ldc 177
-    //   296: ldc 179
+    //   294: ldc 9
+    //   296: ldc 190
     //   298: aload 4
-    //   300: invokestatic 182	com/tencent/sveffects/SLog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   300: invokestatic 194	com/tencent/sveffects/SLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   303: goto -19 -> 284
     //   306: astore_0
     //   307: aconst_null
@@ -469,21 +475,10 @@ public class FileUtils
     //   95	102	328	java/lang/Throwable
     //   112	121	328	java/lang/Throwable
   }
-  
-  public static boolean a(String paramString)
-  {
-    if (paramString == null) {}
-    do
-    {
-      return false;
-      paramString = new File(paramString);
-    } while ((paramString == null) || (!paramString.exists()));
-    return true;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.FileUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,19 @@
 package com.tencent.token.ui;
 
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
 
-final class km
-  implements Animation.AnimationListener
+class km
+  implements View.OnClickListener
 {
-  km(kk paramkk, FaceStartVryCameraActivity paramFaceStartVryCameraActivity) {}
+  km(GeneralVerifyMobileUpActivity paramGeneralVerifyMobileUpActivity) {}
   
-  public final void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    FaceStartVryCameraActivity.access$2100(this.b.a).setVisibility(4);
-    FaceStartVryCameraActivity.access$3200(this.b.a).setVisibility(4);
-    this.b.a.finish();
+    this.a.sendUpSmsBySMSAPP(GeneralVerifyMobileUpActivity.access$500(this.a).e(), GeneralVerifyMobileUpActivity.access$500(this.a).d());
+    this.a.showProgressDialog();
   }
-  
-  public final void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public final void onAnimationStart(Animation paramAnimation) {}
 }
 
 

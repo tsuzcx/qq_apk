@@ -1,22 +1,17 @@
 import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class owq
-  extends DownloadListener
+public abstract interface owq
 {
-  owq(owi paramowi, Bundle paramBundle) {}
+  public abstract void a(MessageRecord paramMessageRecord);
   
-  public void onDone(DownloadTask paramDownloadTask)
-  {
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("down", true);
-    this.jdField_a_of_type_Owi.a.a(87, this.jdField_a_of_type_AndroidOsBundle);
-  }
+  public abstract void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle);
+  
+  public abstract void b(MessageRecord paramMessageRecord);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     owq
  * JD-Core Version:    0.7.0.1
  */

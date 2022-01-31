@@ -1,0 +1,141 @@
+{
+    "ReadInjoy_topsection_cell": {
+        "view_type": "container",
+        "layout_type":"layout_linear",
+        "direction": "horizontal",
+        "height": {
+            "type": "relative",
+            "value": "60"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+            {
+                "view_type": "container",
+                "layout_type":"layout_relative",
+                
+                "default_visible":"YES",
+                "height": {
+                    "type": "relative",
+                    "value": "60"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "125"
+                },
+                "attributes": {
+                    "setAttatchInfo:":"http://post.mp.qq.com/kan/video/200553568-5975c46de28767bk-m0830dhfl86.html?_wv=2281701505&sig=e1e69600f03bf07b4c898f08d56e454b&time=1548148265&iid=MTg0MTM2OTc4NQ==&sourcefrom=0"
+                },
+                "subviews":[
+                    {
+                        "view_type": "UILabel",
+                        "event_type": "cmd_topsection_click",
+                        "view_id" : "id_label_one",
+                        "default_visible":"YES",
+                        "align_parent_center_vertical": "YES",
+                        "align_parent_center_horizontal": "YES",
+                        "height": {
+                                    "type": "wrap_content"
+                        },
+                        "width": {
+                                      "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setFrameString:": "-1",
+                            "setText:": "赛程",
+                            "setTextColorString:": "#737373",
+                            "setFontSizeString:": "16",
+                            "setNumberOfLinesString:": "1",
+                            "setAttatchInfo:":"http://post.mp.qq.com/kan/video/200553568-5975c46de28767bk-m0830dhfl86.html?_wv=2281701505&sig=e1e69600f03bf07b4c898f08d56e454b&time=1548148265&iid=MTg0MTM2OTc4NQ==&sourcefrom=0"
+                        }
+                    }
+                ]
+            },
+            {
+                "view_type": "container",
+                "layout_type":"layout_relative",
+                
+                "default_visible":"YES",
+                "height": {
+                    "type": "relative",
+                    "value": "60"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "125"
+                },
+                "attributes": {
+                    "setAttatchInfo:":"http://post.mp.qq.com/kan/video/200553568-5975c46de28767bk-m0830dhfl86.html?_wv=2281701505&sig=e1e69600f03bf07b4c898f08d56e454b&time=1548148265&iid=MTg0MTM2OTc4NQ==&sourcefrom=0"
+                },
+                "subviews":[
+                    {
+                        "view_type": "UILabel",
+                        "view_id" : "id_label_two",
+                        "event_type": "cmd_topsection_click",
+                        "default_visible":"YES",
+                        "align_parent_center_vertical": "YES",
+                        "align_parent_center_horizontal": "YES",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setFrameString:": "-1",
+                            "setText:": "数据",
+                            "setTextColorString:": "#737373",
+                            "setFontSizeString:": "16",
+                            "setNumberOfLinesString:": "1",
+                            "setAttatchInfo:":"http://post.mp.qq.com/kan/video/200553568-5975c46de28767bk-m0830dhfl86.html?_wv=2281701505&sig=e1e69600f03bf07b4c898f08d56e454b&time=1548148265&iid=MTg0MTM2OTc4NQ==&sourcefrom=0"
+                        }
+                    }
+                ]
+            },
+            {
+                "view_type": "container",
+                "layout_type":"layout_relative",
+                
+                "default_visible":"YES",
+                "height": {
+                    "type": "relative",
+                    "value": "60"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "125"
+                },
+                "attributes": {
+                    "setAttatchInfo:":"http://post.mp.qq.com/kan/video/200553568-5975c46de28767bk-m0830dhfl86.html?_wv=2281701505&sig=e1e69600f03bf07b4c898f08d56e454b&time=1548148265&iid=MTg0MTM2OTc4NQ==&sourcefrom=0"
+                },
+                "subviews":[
+                    {
+                        "view_type": "UILabel",
+                        "view_id" : "id_label_three",
+                        "event_type": "cmd_topsection_click",
+                        "default_visible":"YES",
+                        "align_parent_center_vertical": "YES",
+                        "align_parent_center_horizontal": "YES",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setFrameString:": "-1",
+                            "setText:": "集锦",
+                            "setTextColorString:": "#737373",
+                            "setFontSizeString:": "16",
+                            "setNumberOfLinesString:": "1",
+                            "setAttatchInfo:":"http://post.mp.qq.com/kan/video/200553568-5975c46de28767bk-m0830dhfl86.html?_wv=2281701505&sig=e1e69600f03bf07b4c898f08d56e454b&time=1548148265&iid=MTg0MTM2OTc4NQ==&sourcefrom=0"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
+

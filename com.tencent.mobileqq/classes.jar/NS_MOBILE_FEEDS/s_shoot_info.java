@@ -9,9 +9,9 @@ import java.util.Map;
 public final class s_shoot_info
   extends JceStruct
 {
-  static Map cache_extendinfo;
+  static Map<String, String> cache_extendinfo;
   static s_gps cache_shoot_gps = new s_gps();
-  public Map extendinfo;
+  public Map<String, String> extendinfo;
   public s_gps shoot_gps;
   public String shoot_location = "";
   public long shoot_time;
@@ -24,7 +24,7 @@ public final class s_shoot_info
   
   public s_shoot_info() {}
   
-  public s_shoot_info(s_gps params_gps, String paramString, long paramLong, Map paramMap)
+  public s_shoot_info(s_gps params_gps, String paramString, long paramLong, Map<String, String> paramMap)
   {
     this.shoot_gps = params_gps;
     this.shoot_location = paramString;
@@ -56,7 +56,7 @@ public final class s_shoot_info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_shoot_info
  * JD-Core Version:    0.7.0.1
  */

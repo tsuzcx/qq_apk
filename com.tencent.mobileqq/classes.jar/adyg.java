@@ -1,51 +1,106 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.jsp.WebRecordApiPlugin;
-import com.tencent.mobileqq.utils.AudioUtil;
-import com.tencent.mobileqq.utils.QQRecorder;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.graphics.drawable.Animatable;
+import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import java.util.List;
 
-class adyg
-  extends Handler
+public class adyg
+  extends RecyclerView.Adapter<adye>
 {
-  adyg(adyf paramadyf, Looper paramLooper)
+  private int jdField_a_of_type_Int;
+  List<adyf> jdField_a_of_type_JavaUtilList;
+  
+  public adyg(List<adyf> paramList)
   {
-    super(paramLooper);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+    this.jdField_a_of_type_Int = azmk.c();
   }
   
-  public void handleMessage(Message paramMessage)
+  private void a(int paramInt)
   {
-    switch (paramMessage.what)
+    adyf localadyf = a(paramInt);
+    if (!localadyf.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
     {
-    default: 
-      return;
-    case 16711687: 
-      this.a.b(0);
-      return;
-    case 16711686: 
-      if (QLog.isColorLevel()) {
-        QLog.d("QQRecorder", 2, "QQRecorder stop() is called,time is:" + System.currentTimeMillis());
+      if (a(localadyf, paramInt, bool)) {
+        adyd.a(this.jdField_a_of_type_Adyd).a(localadyf.jdField_a_of_type_Int);
       }
-      adyf.a(this.a).c();
-      AudioUtil.b(2131230743, false);
-      AudioUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false);
-      return;
-    case 1: 
-      this.a.b(1);
-      return;
-    case 16711689: 
-      localObject = (JSONObject)paramMessage.obj;
-      paramMessage = ((JSONObject)localObject).optString("msg", "");
-      localObject = ((JSONObject)localObject).optString("path", "");
-      this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.a(this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':0,'recordID':'" + (String)localObject + "','result':" + paramMessage + "}" });
       return;
     }
-    Object localObject = (JSONObject)paramMessage.obj;
-    paramMessage = ((JSONObject)localObject).optString("msg", "");
-    localObject = ((JSONObject)localObject).optString("path", "");
-    this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.a(this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':1,'recordID':'" + (String)localObject + "','msg':'" + paramMessage + "'}" });
+  }
+  
+  public adye a(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup = adyd.a(this.jdField_a_of_type_Adyd).getLayoutInflater().inflate(2131562651, paramViewGroup, false);
+    return new adye(this.jdField_a_of_type_Adyd, paramViewGroup);
+  }
+  
+  public adyf a(int paramInt)
+  {
+    return (adyf)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(adye paramadye, int paramInt)
+  {
+    adyf localadyf = a(paramInt);
+    if (localadyf.jdField_a_of_type_Boolean)
+    {
+      paramadye.b.setVisibility(0);
+      ViewCompat.setAccessibilityDelegate(paramadye.jdField_a_of_type_ComTencentImageURLImageView, new adyh(this));
+      paramadye.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(azmf.c[paramInt]);
+      adyd.a(this.jdField_a_of_type_Adyd, paramadye.jdField_a_of_type_ComTencentImageURLImageView, localadyf);
+      if (!localadyf.b) {
+        break label134;
+      }
+      paramadye.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      ((Animatable)paramadye.jdField_a_of_type_AndroidViewView.getBackground()).start();
+    }
+    for (;;)
+    {
+      paramadye.itemView.setOnClickListener(new adyj(this, paramInt));
+      return;
+      paramadye.b.setVisibility(8);
+      ViewCompat.setAccessibilityDelegate(paramadye.jdField_a_of_type_ComTencentImageURLImageView, new adyi(this));
+      break;
+      label134:
+      paramadye.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      ((Animatable)paramadye.jdField_a_of_type_AndroidViewView.getBackground()).stop();
+    }
+  }
+  
+  public boolean a(adyf paramadyf, int paramInt, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Int == paramInt)
+    {
+      notifyItemChanged(paramInt);
+      return false;
+    }
+    paramadyf.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramadyf.jdField_a_of_type_Boolean) {
+      if (this.jdField_a_of_type_Int >= 0) {
+        break label46;
+      }
+    }
+    for (this.jdField_a_of_type_Int = paramInt;; this.jdField_a_of_type_Int = paramInt)
+    {
+      notifyItemChanged(paramInt);
+      return true;
+      label46:
+      paramadyf = a(this.jdField_a_of_type_Int);
+      paramadyf.jdField_a_of_type_Boolean = false;
+      paramadyf.b = false;
+      notifyItemChanged(this.jdField_a_of_type_Int);
+    }
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

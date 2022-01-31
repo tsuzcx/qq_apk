@@ -1,7 +1,7 @@
 package com.tencent.tmassistant.common;
 
-import com.tencent.tmassistantbase.util.m;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.s;
 
 class a
   implements Runnable
@@ -10,9 +10,7 @@ class a
   
   public void run()
   {
-    if (m.b()) {
-      return;
-    }
+    if (s.b()) {}
     try
     {
       this.b.a(this.a);
@@ -20,13 +18,13 @@ class a
     }
     catch (Exception localException)
     {
-      r.c("PackageInstallReceiver", "halleytest installReport packageName = " + this.a, localException);
+      ab.c("DLSDK_PackageInstallReceiver", "halleytest installReport packageName = " + this.a, localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistant.common.a
  * JD-Core Version:    0.7.0.1
  */

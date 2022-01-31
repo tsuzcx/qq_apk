@@ -1,53 +1,41 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.DownloadCallback;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Map;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class xft
-  extends DownloadListener
+class xft
+  implements View.OnTouchListener
 {
-  public xft(PreloadManager paramPreloadManager, PreloadManager.DownloadCallback paramDownloadCallback) {}
+  private final int jdField_a_of_type_Int = 10;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public void onDoneFile(DownloadTask paramDownloadTask)
+  xft(xfr paramxfr) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = -5;
-    super.onDoneFile(paramDownloadTask);
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadManager", 2, "downloadRes|done" + paramDownloadTask.jdField_a_of_type_JavaLangString + "|" + paramDownloadTask.jdField_a_of_type_Int);
-    }
-    Object localObject = paramDownloadTask.a();
-    PreloadModule localPreloadModule = (PreloadModule)((Bundle)localObject).getSerializable("module");
-    localObject = (PreloadResource)((Bundle)localObject).getSerializable("resource");
-    if (paramDownloadTask.jdField_a_of_type_Int == 0)
+    paramMotionEvent.getX();
+    float f = paramMotionEvent.getY();
+    switch (paramMotionEvent.getAction())
     {
-      i = 0;
-      if (localObject != null) {
-        break label146;
-      }
+    default: 
+    case 0: 
+    case 2: 
+      do
+      {
+        return false;
+        this.b = ((int)f);
+        this.jdField_a_of_type_Boolean = false;
+        return false;
+      } while (Math.abs(f - this.b) <= 10.0F);
+      this.jdField_a_of_type_Boolean = true;
+      return false;
     }
-    label146:
-    for (localObject = null;; localObject = ((PreloadResource)localObject).getResInfo(localPreloadModule, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$DownloadCallback.onDownloadResFinished(localPreloadModule.mid, i, ((File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.jdField_a_of_type_JavaLangString)).getAbsolutePath(), (ResourceInfo)localObject);
-      return;
-      if (paramDownloadTask.jdField_a_of_type_Int == -5) {
-        break;
-      }
-      i = -6;
-      break;
-    }
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xft
  * JD-Core Version:    0.7.0.1
  */

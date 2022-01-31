@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import android.app.Activity;
+import android.os.Bundle;
 
-public class uqw
-  implements Runnable
+public abstract interface uqw<T extends Activity>
 {
-  public uqw(RecordSoundPanel paramRecordSoundPanel) {}
+  public abstract void a(T paramT);
   
-  public void run()
-  {
-    this.a.f();
-  }
+  public abstract void a(T paramT, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uqw
  * JD-Core Version:    0.7.0.1
  */

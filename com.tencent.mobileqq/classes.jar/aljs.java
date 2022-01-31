@@ -1,32 +1,31 @@
-import com.tencent.open.wadl.WLog;
-import com.tencent.open.wadl.WadlJsBridgeCallBack;
+import android.content.Context;
+import android.os.SystemClock;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
+import java.util.HashMap;
 
-public class aljs
-  implements Runnable
+public final class aljs
+  implements akoh
 {
-  public aljs(WadlJsBridgeCallBack paramWadlJsBridgeCallBack, WebView paramWebView, String paramString) {}
+  public aljs(Context paramContext, AppInterface paramAppInterface, CmGameStartChecker.StartCheckParam paramStartCheckParam, long paramLong) {}
   
-  public void run()
+  public void a()
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        WLog.b(WadlJsBridgeCallBack.jdField_a_of_type_JavaLangString, "doJsCallback call:" + this.jdField_a_of_type_JavaLangString);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      WLog.a(WadlJsBridgeCallBack.jdField_a_of_type_JavaLangString, "doJsCallback exception ", localException);
-    }
+    ApolloGameUtil.a(this.jdField_a_of_type_AndroidContentContext, (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+    long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_gameId", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId));
+    localHashMap.put("param_src", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.src));
+    azri.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "cmgame_data_init_duration", true, l, 0L, localHashMap, "", false);
+    QLog.d("CmGameStat", 1, new Object[] { "cmgame_data_init_duration=", Long.valueOf(l) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aljs
  * JD-Core Version:    0.7.0.1
  */

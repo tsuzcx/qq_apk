@@ -1,28 +1,39 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class adnz
-  extends SosoInterface.OnLocationListener
+  extends asim
 {
-  public adnz(NowLiveFragment paramNowLiveFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public adnz(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  
+  protected void a(boolean paramBoolean, String paramString)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "onBandIntimateRelationship");
+    }
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
+      QLog.d("intimate_relationship", 1, String.format("onBandIntimateRelationship return, friendUin: %s", new Object[] { paramString }));
+    }
+    while (!paramBoolean) {
+      return;
+    }
+    ProfileCardMoreActivity.a(this.a);
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    if (paramInt != 0)
-    {
-      QQToast.a(this.a.a, 1, "获取地理位置失败。", 1).a();
-      this.a.e();
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("NowLiveFragment", 2, "startLocation finish" + System.currentTimeMillis());
+      QLog.d("intimate_relationship", 2, "ProfileCard onDisbandIntimateRelationship");
     }
-    this.a.a(paramSosoLbsInfo);
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
+      QLog.d("intimate_relationship", 1, String.format("ProfileCard onDisbandIntimateRelationship, friendUin: %s", new Object[] { paramString }));
+    }
+    while (!paramBoolean1) {
+      return;
+    }
+    ProfileCardMoreActivity.a(this.a);
   }
 }
 

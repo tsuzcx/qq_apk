@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class Unisso$UniSsoServerReq
-  extends MessageMicro
+  extends MessageMicro<UniSsoServerReq>
 {
   public static final int COMM_FIELD_NUMBER = 1;
   public static final int REQDATA_FIELD_NUMBER = 2;
@@ -23,7 +23,7 @@ public final class Unisso$UniSsoServerReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.new_year_2014.Unisso.UniSsoServerReq
  * JD-Core Version:    0.7.0.1
  */

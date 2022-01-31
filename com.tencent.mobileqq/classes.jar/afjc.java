@@ -1,61 +1,42 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.config.NearbyDataManager;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
-import com.tencent.mobileqq.nearby.widget.NearbyFacePowerDialog;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import tencent.im.oidb.cmd0xac5.cmd0xac5.MasterState;
-import tencent.im.oidb.cmd0xac5.cmd0xac5.NearbyNowData;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.1.1;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class afjc
-  implements View.OnClickListener
+  extends ampt
 {
-  public afjc(NearbyProfileFragment paramNearbyProfileFragment) {}
-  
-  public void onClick(View paramView)
+  afjc(afjb paramafjb, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    int i;
-    if ((NearbyProfileFragment.a(this.a).nearbyNowData.get() != null) && (((cmd0xac5.NearbyNowData)NearbyProfileFragment.a(this.a).nearbyNowData.get()).master_state.get() != null))
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  protected void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {}
+    for (boolean bool = true;; bool = false)
     {
-      i = ((cmd0xac5.MasterState)((cmd0xac5.NearbyNowData)NearbyProfileFragment.a(this.a).nearbyNowData.get()).master_state.get()).uint32_state.get();
-      paramView = ((cmd0xac5.MasterState)((cmd0xac5.NearbyNowData)NearbyProfileFragment.a(this.a).nearbyNowData.get()).master_state.get()).bytes_jump_url.get().toStringUtf8();
+      ArkAppCenter.a().post(this.a.a, new ArkAppLocationManager.1.1(this, bool, paramSosoLbsInfo));
+      return;
     }
-    for (;;)
-    {
-      if ((i == 1) || (!NearbyDataManager.a(this.a.a.app)))
-      {
-        paramView = new Intent(this.a.a, NearbyVisitorListActivity.class);
-        paramView.putExtra("charmlevel", NearbyProfileFragment.a(this.a).charmLevel);
-        paramView.putExtra("download_tribe_app_url", NearbyProfileFragment.a(this.a).tribeAppDownloadPageUrl);
-        paramView.putExtra("is_show_tribeapp_download_layout", NearbyProfileFragment.a(this.a).isAddPicBtnDownloadAppOpen());
-        this.a.a.startActivity(paramView);
-        NearbyProfileFragment.a(this.a, null);
-        ThreadManager.post(new afjd(this), 5, null, false);
-      }
-      for (;;)
-      {
-        ReportController.b(this.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_visit", 0, 0, "", "", "", "");
-        return;
-        NearbyFacePowerDialog localNearbyFacePowerDialog = new NearbyFacePowerDialog(this.a.a);
-        localNearbyFacePowerDialog.a(new afje(this, paramView, localNearbyFacePowerDialog));
-        localNearbyFacePowerDialog.show();
-      }
-      paramView = "";
-      i = 0;
+  }
+  
+  public void onConsecutiveFailure(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 < 3) {
+      return;
     }
+    a(paramInt1, null);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    a(paramInt, paramSosoLbsInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afjc
  * JD-Core Version:    0.7.0.1
  */

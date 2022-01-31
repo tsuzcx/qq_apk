@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
 public class uqh
-  implements Runnable
+  implements upz
 {
-  public uqh(PressToSpeakPanel paramPressToSpeakPanel, String paramString) {}
+  public uqh(StoryVideoUploadTask paramStoryVideoUploadTask, uqf paramuqf) {}
   
-  public void run()
+  public void a(upy paramupy)
   {
-    PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).b(this.jdField_a_of_type_JavaLangString, null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel.b();
+    this.jdField_a_of_type_Uqf.l = ((upt)paramupy).b;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uqh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,17 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-
 public class uwr
-  extends BaseBubbleBuilder.ViewHolder
 {
-  public ProgressBar a;
-  public TextView a;
-  public AsyncImageView a;
-  public TextView b;
-  public TextView c;
-  public int e;
+  public final int a;
+  public final String a;
   
-  public uwr(FileItemBuilder paramFileItemBuilder) {}
+  public uwr(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uwr
  * JD-Core Version:    0.7.0.1
  */

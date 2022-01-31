@@ -1,22 +1,38 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberCardActivity;
+import com.tencent.mobileqq.data.TroopMemberCard;
 import com.tencent.qphone.base.util.QLog;
 
-class dqf
-  implements MediaPlayer.OnPreparedListener
+public class dqf
+  implements View.OnClickListener
 {
-  dqf(dqc paramdqc) {}
+  public dqf(TroopMemberCardActivity paramTroopMemberCardActivity) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Splash.testCanPlayMp4", 4, "onPrepare");
+    if (this.a.a == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "mOnTroopBarItemClickListener, mTroopMemberCard == null");
+      }
     }
+    do
+    {
+      return;
+      if (!TextUtils.isEmpty(this.a.a.gbarLinkUrl)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "mOnTroopBarItemClickListener, gbarLinkUrl is empty");
+    return;
+    this.a.d(this.a.a.gbarLinkUrl);
+    this.a.f("Clk_tribe");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dqf
  * JD-Core Version:    0.7.0.1
  */

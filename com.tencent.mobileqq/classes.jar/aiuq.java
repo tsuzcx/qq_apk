@@ -1,28 +1,39 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.troop.activity.QLifeCommentActivity;
-import com.tencent.qphone.base.util.QLog;
+import Wallet.IdiomRedPackMatchReq;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aiuq
-  extends SosoInterface.OnLocationListener
+class aiuq
+  implements ajfp
 {
-  public aiuq(QLifeCommentActivity paramQLifeCommentActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  aiuq(aiul paramaiul, aiuk paramaiuk, String paramString, SessionInfo paramSessionInfo, long paramLong, int paramInt) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QLifeCommentActivity", 2, "onLocationFinish() errCode=" + paramInt);
-    }
-    if (paramSosoLbsInfo != null)
+    int i = 1;
+    IdiomRedPackMatchReq localIdiomRedPackMatchReq = new IdiomRedPackMatchReq();
+    localIdiomRedPackMatchReq.grabUin = aiul.a(this.jdField_a_of_type_Aiul).getLongAccountUin();
+    localIdiomRedPackMatchReq.billno = this.jdField_a_of_type_Aiuk.jdField_a_of_type_JavaLangString;
+    localIdiomRedPackMatchReq.inputIdiom = this.jdField_a_of_type_JavaLangString;
+    localIdiomRedPackMatchReq.hbIdiom = aiul.a(this.jdField_a_of_type_Aiul, this.jdField_a_of_type_Aiuk);
+    localIdiomRedPackMatchReq.makeUin = Long.parseLong(this.jdField_a_of_type_Aiuk.c);
+    localIdiomRedPackMatchReq.sKey = paramString;
+    localIdiomRedPackMatchReq.appid = AppSetting.a();
+    localIdiomRedPackMatchReq.subchannel = this.jdField_a_of_type_Aiuk.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) {}
+    for (;;)
     {
-      this.a.a = paramSosoLbsInfo.a.a;
-      this.a.b = paramSosoLbsInfo.a.b;
+      localIdiomRedPackMatchReq.fromType = i;
+      localIdiomRedPackMatchReq.platform = 0;
+      localIdiomRedPackMatchReq.qqVersion = "8.3.5";
+      aivh.a(localIdiomRedPackMatchReq, new aiur(this));
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000) {
+        i = 2;
+      } else {
+        i = 0;
+      }
     }
-    QLifeCommentActivity.a(this.a, this.a.a, this.a.b);
   }
 }
 

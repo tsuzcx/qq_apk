@@ -1,38 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
-import com.tencent.mobileqq.activity.TroopClassChoiceActivity.GetClassChoiceCallBack;
-import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
-import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
-import java.util.ArrayList;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.fragments.QCircleFolderFollowTabFragment;
+import qqcircle.QQCircleFeedBase.StFollowPageData;
 
 public class twv
-  implements Runnable
+  implements Observer<QQCircleFeedBase.StFollowPageData>
 {
-  public twv(TroopClassChoiceActivity.GetClassChoiceCallBack paramGetClassChoiceCallBack) {}
+  public twv(QCircleFolderFollowTabFragment paramQCircleFolderFollowTabFragment) {}
   
-  public void run()
+  public void a(@Nullable QQCircleFeedBase.StFollowPageData paramStFollowPageData)
   {
-    if (TextUtils.isEmpty(this.a.a.jdField_a_of_type_JavaLangString)) {
-      this.a.a.jdField_a_of_type_JavaUtilArrayList = GroupCatalogTool.a(this.a.a).a();
-    }
-    for (;;)
-    {
-      TroopClassChoiceActivity.a(this.a.a).notifyDataSetChanged();
-      return;
-      this.a.a.jdField_a_of_type_JavaUtilArrayList = GroupCatalogTool.a(this.a.a).a(this.a.a.jdField_a_of_type_JavaLangString);
-      if ((this.a.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.a.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-      {
-        GroupCatalogBean localGroupCatalogBean = (GroupCatalogBean)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(0);
-        if (localGroupCatalogBean.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean != null) {
-          this.a.a.setTitle(localGroupCatalogBean.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean.jdField_a_of_type_JavaLangString);
-        }
-      }
+    QCircleFolderFollowTabFragment.a(this.a).a(paramStFollowPageData);
+    if (QCircleFolderFollowTabFragment.a(this.a) != null) {
+      QCircleFolderFollowTabFragment.a(this.a).a(paramStFollowPageData);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     twv
  * JD-Core Version:    0.7.0.1
  */

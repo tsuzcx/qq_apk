@@ -1,38 +1,47 @@
 import android.os.Handler;
-import com.tencent.mobileqq.app.MessageObserver;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.qphone.base.util.QLog;
 
 public class ahea
-  extends MessageObserver
+  extends BaseAdapter
 {
-  public ahea(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
+  public Handler a;
+  public QQAppInterface a;
+  public String[] a;
   
-  public void a(long paramLong, int paramInt)
+  public String a(int paramInt)
   {
-    if (ReceiptMessageDetailFragment.b(this.a) == paramLong)
-    {
-      if (paramInt != 0) {
-        break label78;
-      }
-      QLog.d("ReceiptMessageDetailFragment", 4, "send read report in c2c succ");
-      ReceiptMessageDetailFragment.a(this.a, 0, 0, false);
-      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
-      if (this.a.isAdded())
-      {
-        ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(4);
-        ReceiptMessageDetailFragment.a(this.a, 1, true);
-      }
+    return this.a[paramInt];
+  }
+  
+  public int getCount()
+  {
+    if (this.a == null) {
+      return 0;
     }
-    label78:
-    do
+    return this.a.length;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    String str = a(paramInt);
+    if (paramView == null) {
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559256, paramViewGroup, false);
+    }
+    for (paramViewGroup = new aheb(paramView);; paramViewGroup = (aheb)paramView.getTag())
     {
-      return;
-      QLog.d("ReceiptMessageDetailFragment", 4, "send read report in c2c fail with reply codes: " + paramInt);
-      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
-    } while (!this.a.isAdded());
-    ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(5);
+      paramViewGroup.a.setText(str);
+      return paramView;
+    }
   }
 }
 

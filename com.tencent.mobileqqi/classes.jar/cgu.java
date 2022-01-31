@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.TransFileController;
 
-class cgu
-  implements Runnable
+public class cgu
+  implements DialogInterface.OnClickListener
 {
-  cgu(cgt paramcgt, List paramList) {}
+  public cgu(DialogActivity paramDialogActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ChatBackgroundSettingActivity.a(this.jdField_a_of_type_Cgt.a).clear();
-    ChatBackgroundSettingActivity.a(this.jdField_a_of_type_Cgt.a).addAll(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Cgt.a.e();
-    this.jdField_a_of_type_Cgt.a.a.notifyDataSetChanged();
+    this.a.b.a().e();
+    this.a.finish();
   }
 }
 

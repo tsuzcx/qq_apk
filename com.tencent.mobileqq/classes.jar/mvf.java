@@ -1,23 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.widget.ActionSheet;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.av.utils.PopupDialogQQSide;
 
 public class mvf
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public mvf(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin, String paramString) {}
+  public mvf(PopupDialogQQSide paramPopupDialogQQSide) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.j();
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.n = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.a.dismiss();
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().doOnBackPressed();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mvf
  * JD-Core Version:    0.7.0.1
  */

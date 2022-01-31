@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.widget;
 
+import ajeu;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.mobileqq.utils.FileUtils;
+import bdhb;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
@@ -23,12 +23,12 @@ public class AnimationView$AnimationInfo
   public static final int ZIP_STATE_VALID = 1;
   public int mCycle;
   public int mDelay;
-  public SparseArray mFrames = new SparseArray();
+  public SparseArray<Drawable> mFrames = new SparseArray();
   public int mInfiniteFromInOnCycle = -1;
   public int mInfiniteToInOnCycle = -1;
   public int mInterval;
-  public ArrayList mOneCycleFrames = new ArrayList();
-  public ArrayList mPlay = new ArrayList();
+  public ArrayList<Integer> mOneCycleFrames = new ArrayList();
+  public ArrayList<AnimationView.PlayItem> mPlay = new ArrayList();
   
   public AnimationView$AnimationInfo()
   {
@@ -62,13 +62,13 @@ public class AnimationView$AnimationInfo
     }
     String str = paramString + "Folder";
     File localFile = new File(str);
-    if ((!localFile.exists()) && (!QWalletTools.a(paramString, str))) {
+    if ((!localFile.exists()) && (!ajeu.a(paramString, str))) {
       return 3;
     }
     paramString = localFile.listFiles();
     if ((paramString == null) || (paramString.length <= 0))
     {
-      FileUtils.a(str, false);
+      bdhb.a(str, false);
       return 4;
     }
     do
@@ -77,7 +77,7 @@ public class AnimationView$AnimationInfo
       if (i >= paramString.length) {
         break;
       }
-    } while ((paramString[i] == null) || (!paramString[i].isFile()) || (!FileUtils.e(paramString[i].getAbsolutePath())));
+    } while ((paramString[i] == null) || (!paramString[i].isFile()) || (!bdhb.e(paramString[i].getAbsolutePath())));
     return 1;
     return 5;
   }
@@ -90,7 +90,7 @@ public class AnimationView$AnimationInfo
       return null;
       try
       {
-        paramFile = FileUtils.b(paramFile);
+        paramFile = bdhb.b(paramFile);
         if (paramFile == null) {
           break;
         }
@@ -120,8 +120,8 @@ public class AnimationView$AnimationInfo
       {
         Object localObject = new JSONObject(paramString);
         int j = ((JSONObject)localObject).optInt("cycle", 0);
-        int k = ((JSONObject)localObject).optInt("interval", 50);
-        int m = ((JSONObject)localObject).optInt("delay", 50);
+        int k = ((JSONObject)localObject).optInt("interval", 100);
+        int m = ((JSONObject)localObject).optInt("delay", 100);
         paramString = new ArrayList();
         localObject = ((JSONObject)localObject).optJSONArray("play");
         if ((localObject != null) && (i < ((JSONArray)localObject).length()))
@@ -147,6 +147,11 @@ public class AnimationView$AnimationInfo
         paramString.printStackTrace();
         return null;
       }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+        return null;
+      }
       i += 1;
     }
   }
@@ -167,7 +172,7 @@ public class AnimationView$AnimationInfo
       {
         if ((localObject == null) || (localArrayList1 == null) || (localArrayList1.size() <= 0))
         {
-          paramString = QWalletTools.a(paramString);
+          paramString = ajeu.a(paramString);
           if ((paramString == null) || (paramString.length <= 0)) {
             return null;
           }
@@ -188,12 +193,12 @@ public class AnimationView$AnimationInfo
           }
           return null;
         }
-        QWalletTools.a(paramString);
+        ajeu.a(paramString);
         ArrayList localArrayList2 = new ArrayList();
         int i = 0;
         while (i < paramString.length)
         {
-          if ((paramString[i] != null) && (paramString[i].isFile()) && (FileUtils.e(paramString[i].getAbsolutePath()))) {
+          if ((paramString[i] != null) && (paramString[i].isFile()) && (bdhb.e(paramString[i].getAbsolutePath()))) {
             localArrayList2.add(paramString[i]);
           }
           i += 1;
@@ -222,7 +227,7 @@ public class AnimationView$AnimationInfo
               }
               while (i < localSparseArray.size())
               {
-                QWalletTools.a((Drawable)localSparseArray.valueAt(i));
+                ajeu.a((Drawable)localSparseArray.valueAt(i));
                 i += 1;
               }
             }
@@ -247,7 +252,7 @@ public class AnimationView$AnimationInfo
           i = m;
           while (i < localSparseArray.size())
           {
-            QWalletTools.a((Drawable)localSparseArray.valueAt(i));
+            ajeu.a((Drawable)localSparseArray.valueAt(i));
             i += 1;
           }
           return null;
@@ -258,7 +263,7 @@ public class AnimationView$AnimationInfo
     }
   }
   
-  public static AnimationInfo loadFromFrames(ArrayList paramArrayList, int paramInt1, int paramInt2)
+  public static AnimationInfo loadFromFrames(ArrayList<Drawable> paramArrayList, int paramInt1, int paramInt2)
   {
     if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
       return null;
@@ -284,7 +289,7 @@ public class AnimationView$AnimationInfo
     return loadFromFolder(paramString + "Folder");
   }
   
-  protected ArrayList a()
+  protected ArrayList<Integer> a()
   {
     ArrayList localArrayList = new ArrayList();
     if ((this.mPlay != null) && (this.mPlay.size() > 0))
@@ -362,7 +367,7 @@ public class AnimationView$AnimationInfo
     int i = 0;
     while (i < this.mFrames.size())
     {
-      QWalletTools.a((Drawable)this.mFrames.valueAt(i));
+      ajeu.a((Drawable)this.mFrames.valueAt(i));
       i += 1;
     }
     this.mFrames.clear();
@@ -370,7 +375,7 @@ public class AnimationView$AnimationInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AnimationView.AnimationInfo
  * JD-Core Version:    0.7.0.1
  */

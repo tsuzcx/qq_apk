@@ -8,15 +8,15 @@ import java.util.ArrayList;
 public final class SvcResponsePullGroupMsgSeq
   extends JceStruct
 {
-  static ArrayList cache_vGroupInfo;
+  static ArrayList<GroupInfo> cache_vGroupInfo;
   public byte cReplyCode;
   public String strResult = "";
-  public ArrayList vGroupInfo;
+  public ArrayList<GroupInfo> vGroupInfo;
   public short wGroupNum;
   
   public SvcResponsePullGroupMsgSeq() {}
   
-  public SvcResponsePullGroupMsgSeq(byte paramByte, String paramString, short paramShort, ArrayList paramArrayList)
+  public SvcResponsePullGroupMsgSeq(byte paramByte, String paramString, short paramShort, ArrayList<GroupInfo> paramArrayList)
   {
     this.cReplyCode = paramByte;
     this.strResult = paramString;

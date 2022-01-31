@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.qqstory.troop.activity.TroopStoryListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a162a" android:paddingBottom="10.0dip" android:focusable="false" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a2715" />
-    <com.tencent.biz.qqstory.comment.StoryInputBarView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2715" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-</RelativeLayout>

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class nearby_date$ReqGetList
-  extends MessageMicro
+  extends MessageMicro<ReqGetList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -29,7 +29,7 @@ public final class nearby_date$ReqGetList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.nearfield_date.nearby_date.ReqGetList
  * JD-Core Version:    0.7.0.1
  */

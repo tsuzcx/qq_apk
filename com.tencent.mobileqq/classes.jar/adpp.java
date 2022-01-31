@@ -1,30 +1,22 @@
-import com.tencent.mobileqq.hotpic.DiskStorageManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
 
 public class adpp
-  implements Runnable
+  extends Handler
 {
-  private final File jdField_a_of_type_JavaIoFile;
+  public adpp(QQBroadcastActivity paramQQBroadcastActivity) {}
   
-  public adpp(DiskStorageManager paramDiskStorageManager, File paramFile)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-  }
-  
-  public void run()
-  {
-    try
+    switch (paramMessage.what)
     {
-      DiskStorageManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicDiskStorageManager, this.jdField_a_of_type_JavaIoFile);
+    }
+    do
+    {
       return;
-    }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
-      QLog.d("DiskStorageManager", 2, "IO exception run error in background", localIOException);
-    }
+    } while (this.a.a == null);
+    this.a.a.changeCursor(this.a.a());
   }
 }
 

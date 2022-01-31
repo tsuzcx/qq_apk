@@ -2,10 +2,10 @@ package com.tencent.mobileqq.transfile.predownload.schedule;
 
 import java.util.HashMap;
 
-final class PreDownloadConstants$2
-  extends HashMap
+public final class PreDownloadConstants$2
+  extends HashMap<Integer, String>
 {
-  PreDownloadConstants$2()
+  public PreDownloadConstants$2()
   {
     put(Integer.valueOf(10001), "emoji");
     put(Integer.valueOf(10002), "face_yellow");
@@ -69,23 +69,41 @@ final class PreDownloadConstants$2
     put(Integer.valueOf(10058), "plugin_unapply");
     put(Integer.valueOf(10061), "face_scan_so");
     put(Integer.valueOf(10061), "face_scan_model");
-    put(Integer.valueOf(10062), "jtcode");
     put(Integer.valueOf(10063), "qav_gesture");
     put(Integer.valueOf(10064), "res_precover");
     put(Integer.valueOf(10065), "ar_local");
+    put(Integer.valueOf(10074), "ar_promotion");
     put(Integer.valueOf(10066), "offline");
     put(Integer.valueOf(10067), "ar_87");
     put(Integer.valueOf(10068), "doodle_msg");
     put(Integer.valueOf(10069), "qwallet_res");
     put(Integer.valueOf(10070), "av_redpacket");
-    put(Integer.valueOf(10074), "ar_worldcup");
     put(Integer.valueOf(10071), "readinjoy_viola");
     put(Integer.valueOf(10073), "extend_friend");
+    put(Integer.valueOf(10075), "text_filter_so");
+    put(Integer.valueOf(10076), "splash_ad_png");
+    put(Integer.valueOf(10077), "splash_ad_video");
+    put(Integer.valueOf(10079), "readinjoy_viola_biz");
+    put(Integer.valueOf(10080), "ark_app_predownload");
+    put(Integer.valueOf(10081), "qboss_splash_ad_png");
+    put(Integer.valueOf(10082), "qboss_splash_ad_video");
+    put(Integer.valueOf(10083), "mini_scan_decode");
+    put(Integer.valueOf(10084), "mini_scan_detect");
+    put(Integer.valueOf(10085), "mini_scan_detect_model");
+    put(Integer.valueOf(10086), "minigame_splash_png");
+    put(Integer.valueOf(10087), "minigame_splash_video");
+    put(Integer.valueOf(10088), "qboss_predownload_res");
+    put(Integer.valueOf(10089), "intimate_friendship");
+    put(Integer.valueOf(10090), "qbar_ai_model");
+    put(Integer.valueOf(10091), "ae_res_a_package_download");
+    put(Integer.valueOf(10092), "flutter_engine_res");
+    put(Integer.valueOf(10093), "flutter_app_res");
+    put(Integer.valueOf(10094), "ptt_transition_anim_zip");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadConstants.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,113 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendAdapter;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendAdapter.RecommendItem;
+import java.util.List;
 
 public class mtj
-  implements View.OnTouchListener
 {
-  public mtj(SubscriptRecommendAdapter.RecommendItem paramRecommendItem, SubscriptRecommendAdapter paramSubscriptRecommendAdapter, boolean paramBoolean) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static int a(int[] paramArrayOfInt, int paramInt)
   {
-    switch (paramMotionEvent.getAction())
+    return a(paramArrayOfInt, paramInt, 0);
+  }
+  
+  public static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  {
+    if (paramArrayOfInt == null)
     {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.a.getResources().getColor(2131493607));
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.c.setBackgroundResource(2130840906);
-        return false;
+      paramInt2 = -1;
+      return paramInt2;
+    }
+    int i = paramInt2;
+    if (paramInt2 < 0) {
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i >= paramArrayOfInt.length) {
+        break label38;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.c.setBackgroundResource(2130840907);
+      paramInt2 = i;
+      if (paramInt1 == paramArrayOfInt[i]) {
+        break;
+      }
+      i += 1;
+    }
+    label38:
+    return -1;
+  }
+  
+  public static int a(Object[] paramArrayOfObject, Object paramObject)
+  {
+    return a(paramArrayOfObject, paramObject, 0);
+  }
+  
+  public static int a(Object[] paramArrayOfObject, Object paramObject, int paramInt)
+  {
+    if (paramArrayOfObject == null)
+    {
+      paramInt = -1;
+      return paramInt;
+    }
+    if (paramInt < 0) {
+      paramInt = 0;
+    }
+    for (;;)
+    {
+      int i;
+      if (paramObject == null)
+      {
+        i = paramInt;
+        for (;;)
+        {
+          if (i >= paramArrayOfObject.length) {
+            break label82;
+          }
+          paramInt = i;
+          if (paramArrayOfObject[i] == null) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      if (paramArrayOfObject.getClass().getComponentType().isInstance(paramObject))
+      {
+        i = paramInt;
+        for (;;)
+        {
+          if (i >= paramArrayOfObject.length) {
+            break label82;
+          }
+          paramInt = i;
+          if (paramObject.equals(paramArrayOfObject[i])) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      label82:
+      return -1;
+    }
+  }
+  
+  public static <T> boolean a(List<T> paramList, T paramT)
+  {
+    if (paramList == null) {}
+    while (paramList.indexOf(paramT) < 0) {
       return false;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.a.getResources().getColor(2131493605));
-    this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.c.setBackgroundResource(2130840915);
-    return false;
+    return true;
+  }
+  
+  public static boolean a(int[] paramArrayOfInt, int paramInt)
+  {
+    return a(paramArrayOfInt, paramInt) != -1;
+  }
+  
+  public static boolean a(Object[] paramArrayOfObject, Object paramObject)
+  {
+    return a(paramArrayOfObject, paramObject) != -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mtj
  * JD-Core Version:    0.7.0.1
  */

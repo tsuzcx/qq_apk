@@ -7,56 +7,51 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.ImageCommon;
-import com.tencent.biz.pubaccount.util.PubAccountHttpDownloader;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class DrawableUtil
 {
-  public static Drawable a(Context paramContext, String paramString, Drawable paramDrawable1, Drawable paramDrawable2)
+  private static final String TAG = "DrawableUtil";
+  private static DrawableUtil.DrawableHelper drawableHelper;
+  
+  public static Drawable getDrawable(Context paramContext, String paramString, Drawable paramDrawable1, Drawable paramDrawable2)
   {
     if (paramString == null) {
       return null;
     }
-    if (paramString.startsWith("http"))
+    if (drawableHelper != null) {}
+    for (paramDrawable1 = drawableHelper.getDrawable(paramContext, paramString, paramDrawable1, paramDrawable2);; paramDrawable1 = null)
     {
-      paramContext = URLDrawable.URLDrawableOptions.obtain();
-      paramContext.mLoadingDrawable = paramDrawable1;
-      paramContext.mFailedDrawable = paramDrawable2;
-      return URLDrawable.getDrawable(PubAccountHttpDownloader.a(paramString, 3), paramContext);
-    }
-    Integer localInteger = ImageCommon.a(paramString);
-    String str = OfflineUtils.a(paramString);
-    if (str != null)
-    {
-      paramContext = URLDrawable.URLDrawableOptions.obtain();
-      paramContext.mLoadingDrawable = paramDrawable1;
-      paramContext.mFailedDrawable = paramDrawable2;
-      return URLDrawable.getDrawable(new File(str), paramContext);
-    }
-    if (localInteger != null) {
-      try
-      {
-        paramContext = paramContext.getResources().getDrawable(localInteger.intValue());
-        return paramContext;
+      if (paramDrawable1 != null) {
+        return paramDrawable1;
       }
-      catch (Resources.NotFoundException paramContext)
-      {
-        QLog.d("Q.readinjoy.proteus", 2, "getDrawable: cant find in resources dir, do nothing");
+      paramDrawable1 = ImageCommon.getDrawableResourceId(paramString);
+      if (paramDrawable1 != null) {
+        try
+        {
+          paramContext = paramContext.getResources().getDrawable(paramDrawable1.intValue());
+          return paramContext;
+        }
+        catch (Resources.NotFoundException paramContext)
+        {
+          LogUtil.QLog.d("readinjoy.proteus", 2, "getDrawable: cant find in resources dir, do nothing");
+        }
       }
+      LogUtil.QLog.e("readinjoy.proteus", 2, "getDrawable: cant find path :" + paramString);
+      return null;
     }
-    QLog.e("Q.readinjoy.proteus", 2, "getDrawable: cant find path :" + paramString);
-    return null;
   }
   
-  public static Drawable a(String paramString)
+  public static Drawable getDrawable(String paramString)
   {
-    return new ColorDrawable(Utils.a(paramString));
+    return new ColorDrawable(Utils.parseColor(paramString));
   }
   
-  public static StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3)
+  public static Drawable getDrawableFromNet(Context paramContext, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, int paramInt1, int paramInt2, DrawableUtil.DrawableCallBack paramDrawableCallBack)
+  {
+    return drawableHelper.getDrawableFromNet(paramContext, paramString, paramDrawable1, paramDrawable2, paramInt1, paramInt2, paramDrawableCallBack);
+  }
+  
+  public static StateListDrawable getSelector(Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3)
   {
     StateListDrawable localStateListDrawable = new StateListDrawable();
     if (paramDrawable2 != null) {
@@ -71,30 +66,38 @@ public class DrawableUtil
     return localStateListDrawable;
   }
   
-  public static StateListDrawable a(String paramString1, String paramString2, String paramString3)
+  public static StateListDrawable getSelector(String paramString1, String paramString2, String paramString3)
   {
     StateListDrawable localStateListDrawable = new StateListDrawable();
     if (paramString2 != null)
     {
-      paramString2 = a(paramString2);
+      paramString2 = getDrawable(paramString2);
       localStateListDrawable.addState(new int[] { 16842919 }, paramString2);
     }
     if (paramString3 != null)
     {
-      paramString2 = a(paramString3);
+      paramString2 = getDrawable(paramString3);
       localStateListDrawable.addState(new int[] { 16842913 }, paramString2);
     }
     if (paramString1 != null)
     {
-      paramString1 = a(paramString1);
+      paramString1 = getDrawable(paramString1);
       localStateListDrawable.addState(new int[0], paramString1);
     }
     return localStateListDrawable;
   }
+  
+  public static void setDrawableHelper(DrawableUtil.DrawableHelper paramDrawableHelper)
+  {
+    if (paramDrawableHelper == null) {
+      return;
+    }
+    drawableHelper = paramDrawableHelper;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil
  * JD-Core Version:    0.7.0.1
  */

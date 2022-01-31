@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import com.tencent.mobileqq.earlydownload.handler.QavSoDownloadHandler;
+import apls;
 
 public class QavSoData
   extends QavSoDataBase
 {
   public String getSharedPreferencesName()
   {
-    return "early_qq.android.qav.so";
+    return "preload_" + apls.e();
   }
   
   public String getStrResName()
   {
-    return QavSoDownloadHandler.e();
+    return apls.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.QavSoData
  * JD-Core Version:    0.7.0.1
  */

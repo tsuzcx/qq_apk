@@ -1,27 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-
 public class xog
-  implements DialogInterface.OnClickListener
 {
-  public xog(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  protected int a = 48000;
+  protected int b = 1;
+  protected int c = 1;
+  protected int d = 48000;
+  protected int e = 1;
+  protected int f = 1;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a() {}
+  
+  public byte[] a(int paramInt1, int paramInt2)
   {
-    if (EditLocalVideoActivity.c(this.a)) {}
-    for (paramInt = -1;; paramInt = 0)
-    {
-      EditLocalVideoActivity.a(this.a).dismiss();
-      EditLocalVideoActivity.a(this.a, paramInt);
-      return;
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xog
  * JD-Core Version:    0.7.0.1
  */

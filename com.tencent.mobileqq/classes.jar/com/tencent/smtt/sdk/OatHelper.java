@@ -2,7 +2,6 @@ package com.tencent.smtt.sdk;
 
 import android.content.Context;
 import com.tencent.smtt.utils.DataReader;
-import java.io.IOException;
 import java.util.UnknownFormatConversionException;
 
 public class OatHelper
@@ -14,7 +13,6 @@ public class OatHelper
   static char[] e_ident = new char[EI_NIDENT];
   
   public static char[] getKeyValueStore(DataReader paramDataReader)
-    throws IOException
   {
     char[] arrayOfChar1 = new char[4];
     char[] arrayOfChar2 = new char[4];
@@ -50,7 +48,6 @@ public class OatHelper
   }
   
   public static String getOatCommand(Context paramContext, String paramString)
-    throws Exception
   {
     boolean bool = true;
     paramContext = new DataReader(paramString);
@@ -84,7 +81,7 @@ public class OatHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.sdk.OatHelper
  * JD-Core Version:    0.7.0.1
  */

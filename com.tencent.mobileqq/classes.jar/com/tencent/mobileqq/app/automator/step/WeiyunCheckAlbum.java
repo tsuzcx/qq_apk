@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.automator.AsyncStep;
 public class WeiyunCheckAlbum
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
     return 7;
   }

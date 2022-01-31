@@ -6,6 +6,7 @@ import android.content.IntentFilter;
 import android.net.TrafficStats;
 import android.os.Build;
 import android.os.Build.VERSION;
+import com.tencent.mobileqq.msf.core.a.a;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.n;
 import com.tencent.qphone.base.BaseConstants;
@@ -22,6 +23,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -132,7 +134,7 @@ public class e
       if (i <= BaseConstants.REPORTLOGMAXPACKAGECOUNT) {
         break label141;
       }
-      a(paramInt, d(), "report size is too big " + paramFile.length(), e, 1, i);
+      a(paramInt, f(), "report size is too big " + paramFile.length(), e, 1, i);
     }
     for (;;)
     {
@@ -147,7 +149,7 @@ public class e
         if (l3 > BaseConstants.REPORTLOGONCEMAXSIZE) {
           l2 = BaseConstants.REPORTLOGONCEMAXSIZE;
         }
-        a(paramInt, d(), paramFile, e, j, i, l1, l2, false, "", "", paramLong);
+        a(paramInt, f(), paramFile, e, j, i, l1, l2, false, "", "", paramLong);
         l1 += l2;
         j += 1;
       }
@@ -398,7 +400,7 @@ public class e
             if (i <= BaseConstants.REPORTLOGMAXPACKAGECOUNT) {
               break label205;
             }
-            a(paramInt, d(), "report size is too big " + paramString1.length(), f, 1, i);
+            a(paramInt, f(), "report size is too big " + paramString1.length(), f, 1, i);
             return;
           }
           catch (Exception paramString1) {}
@@ -416,7 +418,7 @@ public class e
           if (l3 > BaseConstants.REPORTLOGONCEMAXSIZE) {
             l2 = BaseConstants.REPORTLOGONCEMAXSIZE;
           }
-          a(paramInt, d(), paramString1, f, j, i, l1, l2, true, paramString2, paramString3, 0L);
+          a(paramInt, f(), paramString1, f, j, i, l1, l2, true, paramString2, paramString3, 0L);
           l1 += l2;
           j += 1;
         }
@@ -587,14 +589,88 @@ public class e
     }
   }
   
-  private static void c()
+  private static boolean b(File paramFile)
   {
-    g localg = new g();
-    localg.setName("delLogThread");
-    localg.start();
+    int k = 3;
+    Calendar localCalendar;
+    int i;
+    if (paramFile.exists())
+    {
+      paramFile = paramFile.listFiles();
+      if ((paramFile == null) || (paramFile.length == 0)) {
+        return true;
+      }
+      Arrays.sort(paramFile, new g());
+      localCalendar = Calendar.getInstance();
+      try
+      {
+        String str = a.c();
+        if ((str == null) || (str.length() <= 0)) {
+          break label219;
+        }
+        i = Integer.parseInt(str);
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          localException.printStackTrace();
+          i = 3;
+        }
+      }
+      j = k;
+      if (i >= 1) {
+        if (i <= 14) {
+          break label226;
+        }
+      }
+    }
+    label219:
+    label226:
+    for (int j = k;; j = i)
+    {
+      localCalendar.add(6, j - j * 2);
+      long l = localCalendar.getTimeInMillis();
+      j = paramFile.length;
+      i = 0;
+      while (i < j)
+      {
+        localCalendar = paramFile[i];
+        if (QLog.isColorLevel()) {
+          QLog.d(a, 2, "found log file " + localCalendar.getName());
+        }
+        if (l > localCalendar.lastModified())
+        {
+          localCalendar.delete();
+          if (QLog.isColorLevel()) {
+            QLog.d(a, 2, "del expires log " + localCalendar.getName());
+          }
+        }
+        i += 1;
+      }
+      return false;
+    }
   }
   
-  private static String d()
+  private static void d()
+  {
+    if (QLog.isHasStoragePermission(BaseApplication.context))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 2, "delPrivateExpiresLogIfNeed: invoked. ");
+      }
+      b(new File(BaseApplication.context.getExternalFilesDir(null) + "/tencent/msflogs/com/tencent/qqlite/"));
+    }
+  }
+  
+  private static void e()
+  {
+    h localh = new h();
+    localh.setName("delLogThread");
+    localh.start();
+  }
+  
+  private static String f()
   {
     Random localRandom = new Random(System.currentTimeMillis());
     String str = "---------";

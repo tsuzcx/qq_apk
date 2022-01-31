@@ -1,19 +1,32 @@
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView.MPFileVerifyPswEvent;
-import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
+import android.view.View;
+import com.tencent.mobileqq.activity.GeneralSettingActivity.ThemeCallback.1;
+import mqq.util.WeakReference;
 
 public class addh
-  implements MPFileVerifyPwdView.MPFileVerifyPswEvent
+  extends baot
 {
-  public addh(MPcFileModel paramMPcFileModel) {}
+  WeakReference<adyd> a;
+  WeakReference<View> b;
   
-  public void a(long paramLong)
+  addh(adyd paramadyd, View paramView)
   {
-    MPcFileModel.b(this.a, paramLong);
+    this.a = new WeakReference(paramadyd);
+    this.b = new WeakReference(paramView);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    adyd localadyd = (adyd)this.a.get();
+    View localView = (View)this.b.get();
+    if ((localadyd != null) && (localView != null)) {
+      localView.post(new GeneralSettingActivity.ThemeCallback.1(this, localadyd, localView));
+    }
+    return super.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     addh
  * JD-Core Version:    0.7.0.1
  */

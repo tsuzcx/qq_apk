@@ -1,31 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.phone.ContactListView;
 
 public class eku
-  extends Handler
+  implements DialogInterface.OnDismissListener
 {
-  public eku(NotificationView paramNotificationView) {}
+  public eku(ContactListView paramContactListView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramMessage.what)
-    {
-    case 1013: 
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (NotificationView.a(this.a) == null);
-      this.a.k();
-      NotificationView.a(this.a).a = GroupSystemMsgController.a().a(this.a.a);
-      NotificationView.a(this.a).notifyDataSetChanged();
-      return;
-    }
-    this.a.l();
+    ContactListView.a(this.a, null);
   }
 }
 

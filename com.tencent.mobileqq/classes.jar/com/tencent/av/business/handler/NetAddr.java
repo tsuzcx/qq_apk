@@ -2,10 +2,10 @@ package com.tencent.av.business.handler;
 
 public class NetAddr
 {
-  int enum_proto_type;
-  int fixed32_IP;
-  int fixed32_inner_IP;
-  int uint32_port;
+  public int enum_proto_type;
+  public int fixed32_IP;
+  public int fixed32_inner_IP;
+  public int uint32_port;
 }
 
 

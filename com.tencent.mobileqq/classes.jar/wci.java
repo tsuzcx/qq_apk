@@ -1,36 +1,34 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.theme.SkinEngine;
-import com.tencent.widget.PatchedButton;
-import com.tencent.widget.XEditTextEx;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-public final class wci
-  implements Runnable
+public class wci
+  extends umf<wcg, vcz>
 {
-  public wci(LinearLayout paramLinearLayout, XEditTextEx paramXEditTextEx, PanelIconLinearLayout paramPanelIconLinearLayout, PatchedButton paramPatchedButton) {}
-  
-  public void run()
+  public wci(wcg paramwcg)
   {
-    Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845635);
-    Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845636);
-    Drawable localDrawable3 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845677);
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    Drawable localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845778);
-    localStateListDrawable.addState(new int[] { -16842910 }, localDrawable4);
-    localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845781);
-    localStateListDrawable.addState(new int[] { 16842910 }, localDrawable4);
-    localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845782);
-    localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable4);
-    ThreadManager.getUIHandler().post(new wcj(this, localDrawable1, localDrawable2, localDrawable3, localStateListDrawable));
+    super(paramwcg);
   }
+  
+  public void a(@NonNull wcg paramwcg, @NonNull vcz paramvcz)
+  {
+    if ((wcg.a(paramwcg) != null) && (paramvcz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvcz.jdField_a_of_type_JavaUtilList.contains(wcg.a(paramwcg).a)))
+    {
+      wxe.a("WeiShiFlowBannerVideoInfoController", "GetStoryTagInfoReceiver receive tag info change event. %s", paramvcz.b.toString());
+      paramwcg.a.i();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vcz.class;
+  }
+  
+  public void b(@NonNull wcg paramwcg, @NonNull vcz paramvcz) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wci
  * JD-Core Version:    0.7.0.1
  */

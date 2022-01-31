@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.activity.aio.doodle.MyParcel;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class usu
+class usu
+  extends uss
 {
-  public int a;
-  public byte[] a;
+  usu(ust paramust) {}
   
-  public usu(MyParcel paramMyParcel)
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    this.jdField_a_of_type_Int = 0;
+    this.a.e();
+    if (paramBoolean) {
+      this.a.a(true, paramCommentEntry);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     usu
  * JD-Core Version:    0.7.0.1
  */

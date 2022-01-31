@@ -1,110 +1,125 @@
 package c.t.m.g;
 
-import android.os.Handler;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.os.Build.VERSION;
 
 public final class ay
-  extends ax
-  implements r
 {
-  bl a = new bl("HttpSchedulerClient");
-  p b;
+  public static String a = "";
+  public static String b = "";
+  public static String c = "";
+  public static String d = "";
   
-  static void a(p paramp, JSONArray paramJSONArray)
+  private static String a()
   {
-    int i = 0;
+    try
+    {
+      String str = Build.MODEL;
+      return str;
+    }
+    catch (Throwable localThrowable) {}
+    return "null";
+  }
+  
+  public static void a(Context paramContext)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(a());
+    localStringBuffer.append(";Android ");
+    localStringBuffer.append(b());
+    localStringBuffer.append(",level ");
+    localStringBuffer.append(c());
+    a = localStringBuffer.toString();
+    b = b(paramContext);
+    paramContext.getPackageName();
+    c = d();
+    d = a();
+  }
+  
+  private static String b()
+  {
+    try
+    {
+      String str = Build.VERSION.RELEASE;
+      return str;
+    }
+    catch (Throwable localThrowable) {}
+    return "null";
+  }
+  
+  private static String b(Context paramContext)
+  {
+    int j = 0;
+    Object localObject = paramContext.getPackageName();
     for (;;)
     {
+      int i;
+      int k;
       try
       {
-        if (i < paramJSONArray.length())
+        paramContext = paramContext.getPackageManager().getPackageInfo((String)localObject, 0);
+        localObject = paramContext.versionName;
+        int m = paramContext.versionCode;
+        if ((localObject == null) || (((String)localObject).trim().length() <= 0)) {
+          return String.valueOf(m);
+        }
+        paramContext = ((String)localObject).trim().replace('\n', ' ').replace('\r', ' ').replace("|", "%7C");
+        localObject = paramContext.toCharArray();
+        i = 0;
+        if (i < localObject.length)
         {
-          localObject = paramJSONArray.getJSONObject(i);
-          JSONArray localJSONArray1 = ((JSONObject)localObject).optJSONArray("domains");
-          localJSONArray2 = ((JSONObject)localObject).optJSONArray("resultlist");
-          String str1 = ((JSONObject)localObject).optString("schedulecode");
-          localObject = ((JSONObject)localObject).optString("httpsport");
-          if ((localJSONArray1 != null) && (localJSONArray2 != null))
-          {
-            j = 0;
-            if (j < localJSONArray1.length()) {
-              localq = new q(localJSONArray1.getString(j), str1);
-            }
+          k = j;
+          if (localObject[i] != '.') {
+            break label151;
           }
+          k = j + 1;
+          break label151;
+        }
+        if (j < 3)
+        {
+          paramContext = paramContext + "." + m;
+          return paramContext;
         }
       }
-      catch (Exception paramp)
+      catch (Throwable paramContext)
       {
-        Object localObject;
-        JSONArray localJSONArray2;
-        int j;
-        q localq;
-        String str2;
-        m localm;
-        paramp.printStackTrace();
+        return "";
       }
-      try
-      {
-        localq.d = Integer.parseInt((String)localObject);
-        k = 0;
-      }
-      catch (Throwable localThrowable)
-      {
-        continue;
-        k += 1;
-        continue;
-      }
-      if (k < localJSONArray2.length())
-      {
-        str2 = localJSONArray2.getString(k);
-        localm = new m();
-        if (!localm.a(str2)) {
-          break label200;
-        }
-        localq.c.add(localm);
-        break label200;
-      }
-      paramp.b.put(localq.a, localq);
-      j += 1;
-      continue;
+      return paramContext;
+      label151:
       i += 1;
+      j = k;
     }
   }
   
-  public final q a(String paramString)
+  private static String c()
   {
-    if (this.b != null)
+    try
     {
-      if (this.b.a.equals(o.b())) {
-        return (q)this.b.b.get(paramString);
-      }
-      l.j().post(new az(this));
+      String str = Build.VERSION.SDK;
+      return str;
     }
+    catch (Throwable localThrowable) {}
+    return "null";
+  }
+  
+  private static String d()
+  {
+    try
+    {
+      String str = Build.BRAND;
+      return str;
+    }
+    catch (Throwable localThrowable) {}
     return null;
-  }
-  
-  public final String a()
-  {
-    return "accessscheduler";
-  }
-  
-  public final void a(String paramString1, byte[] paramArrayOfByte, String paramString2)
-  {
-    this.a.a(paramString1, paramArrayOfByte);
-    l.j().post(new az(this));
-  }
-  
-  public final void a_()
-  {
-    by.c().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.ay
  * JD-Core Version:    0.7.0.1
  */

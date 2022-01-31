@@ -1,26 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Color;
-import android.view.View;
-
-public final class ahkq
-  implements ValueAnimator.AnimatorUpdateListener
+class ahkq
+  implements ahkr<T>
 {
-  final int jdField_a_of_type_Int = Color.red(this.d);
-  final int b = Color.green(this.d);
-  final int c = Color.blue(this.d);
+  ahkq(ahkp paramahkp, int paramInt) {}
   
-  public ahkq(int paramInt, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int a()
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(i, this.jdField_a_of_type_Int, this.b, this.c));
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(ahkz paramahkz, T paramT, int paramInt)
+  {
+    this.jdField_a_of_type_Ahkp.a(paramahkz, paramT, paramInt);
+  }
+  
+  public boolean a(T paramT, int paramInt)
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahkq
  * JD-Core Version:    0.7.0.1
  */

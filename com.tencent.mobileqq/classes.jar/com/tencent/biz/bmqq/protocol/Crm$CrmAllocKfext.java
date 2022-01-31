@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Crm$CrmAllocKfext
-  extends MessageMicro
+  extends MessageMicro<CrmAllocKfext>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField crm_msg = PBField.initBytes(ByteStringMicro.EMPTY);

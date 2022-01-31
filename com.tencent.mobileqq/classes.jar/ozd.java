@@ -1,47 +1,29 @@
-import com.tencent.av.utils.TroopMemberUtil;
-import com.tencent.biz.troopgift.TroopGiftAioItemData;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.NearbyFlowerManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class ozd
-  extends TroopGiftCallback
+  implements View.OnClickListener
 {
-  public ozd(TroopGiftPanel paramTroopGiftPanel, TroopGiftAioItemData paramTroopGiftAioItemData) {}
+  public ozd(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, String paramString) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
+    paramView = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment.getActivity(), QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment.getActivity().startActivity(paramView);
     if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
+      QLog.d("ReadInJoyChannelPanelFragment", 2, "info.mChannelJumpUrl:" + this.jdField_a_of_type_JavaLangString);
     }
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.e >= 4)
-    {
-      NearbyFlowerManager.a("gift_store", "fail_all", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b() + "", "", "");
-      return;
-    }
-    ReportController.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forall_fail", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioItemData.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b, "" + TroopMemberUtil.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
-  }
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "onGetThrowGiftResult productId = " + paramInt);
-    }
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.e >= 4)
-    {
-      NearbyFlowerManager.a("gift_store", "suc_all", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b() + "", "", "");
-      return;
-    }
-    ReportController.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forall_suc", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioItemData.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b, "" + TroopMemberUtil.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ozd
  * JD-Core Version:    0.7.0.1
  */

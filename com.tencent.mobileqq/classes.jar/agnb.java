@@ -1,13 +1,26 @@
-import com.tencent.mobileqq.precover.PrecoverManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
 public class agnb
-  implements Runnable
+  extends agmy
 {
-  public agnb(PrecoverManager paramPrecoverManager) {}
+  public String b;
   
-  public void run()
+  public agnb(String paramString)
   {
-    PrecoverManager.a(this.a);
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null) {
+      this.b = paramRedPacketInfo.resPath;
+    }
+  }
+  
+  public boolean a()
+  {
+    return !TextUtils.isEmpty(this.b);
   }
 }
 

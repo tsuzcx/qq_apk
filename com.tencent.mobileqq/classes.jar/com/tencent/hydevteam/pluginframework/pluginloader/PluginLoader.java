@@ -9,15 +9,14 @@ import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
 public abstract interface PluginLoader
 {
   @API
-  public abstract ProgressFuture<RunningPlugin> loadPlugin(Context paramContext, InstalledPlugin paramInstalledPlugin)
-    throws LoadPluginException;
+  public abstract ProgressFuture<RunningPlugin> loadPlugin(Context paramContext, InstalledPlugin paramInstalledPlugin);
   
   @API
   public abstract boolean setPluginDisabled(InstalledPlugin paramInstalledPlugin);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.hydevteam.pluginframework.pluginloader.PluginLoader
  * JD-Core Version:    0.7.0.1
  */

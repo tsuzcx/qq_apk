@@ -1,33 +1,25 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.PeakService;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import MWIFI.SCGet3rdCloudCheck;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public final class ajho
-  implements Runnable
+class ajho
+  implements View.OnClickListener
 {
-  public ajho(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
+  ajho(ajgb paramajgb, SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SubmitHomeWorkFragment", 2, "start preload peak process");
+      QLog.d("Q.recent.banner", 2, "updateWiFiSecurityBanner, onClick");
     }
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, PeakService.class);
-    if (VideoEnvironment.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      localIntent.putExtra("ServiceAction", 2);
-    }
-    try
-    {
-      this.jdField_a_of_type_AndroidAppActivity.startService(localIntent);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("SubmitHomeWorkFragment", 1, "onShow_otherThings startService ", localException);
-    }
+    bezm.a(ajgb.a(this.jdField_a_of_type_Ajgb), this.jdField_a_of_type_MWIFISCGet3rdCloudCheck);
+    ajgb.a(this.jdField_a_of_type_Ajgb).removeMessages(202);
+    ajgb.a(this.jdField_a_of_type_Ajgb).obtainMessage(202).sendToTarget();
+    azqs.a(ajgb.a(this.jdField_a_of_type_Ajgb).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 6, 0, "", "", "", "");
   }
 }
 

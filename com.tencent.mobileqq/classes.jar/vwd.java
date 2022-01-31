@@ -1,32 +1,10 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
-import com.tencent.mobileqq.nearby.NearbyRelevantObserver;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
-
-public class vwd
-  extends NearbyRelevantObserver
+public abstract interface vwd
 {
-  public vwd(NearbyChatPie paramNearbyChatPie) {}
-  
-  public void a(String paramString1, String paramString2, Object paramObject)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(this.a.f, 4, "onAutoInput, [" + paramString1 + "," + paramString2 + "," + paramObject + "," + System.currentTimeMillis() + "]");
-    }
-    if (!"tag_nearby_chat".equals(paramString1)) {}
-    while ((TextUtils.isEmpty(paramString2)) || (this.a.a == null)) {
-      return;
-    }
-    this.a.ar();
-    this.a.a.setText(paramString2);
-    this.a.a.selectAll();
-    this.a.g = paramString2;
-  }
+  public abstract boolean a(vwa paramvwa, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vwd
  * JD-Core Version:    0.7.0.1
  */

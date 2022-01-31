@@ -1,6 +1,9 @@
 package com.tencent.token;
 
-public final class l {}
+public abstract interface l
+{
+  public abstract boolean a(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

@@ -1,62 +1,55 @@
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.activity.ChatHistoryViewBase;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class rzz
-  implements TabBarView.OnTabChangeListener
+  implements phj
 {
-  public rzz(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
+  public rzz(AuthorData paramAuthorData) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (paramInt1 == paramInt2) {
-      return;
-    }
-    ChatHistoryViewBase localChatHistoryViewBase = null;
-    switch (paramInt2)
-    {
+    this.a.a(true);
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    ArticleInfo localArticleInfo = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.c()) {
+      paramString = "2";
     }
     for (;;)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase != null)
+      paramString = ors.a(localBaseApplication, localArticleInfo, 0, paramString);
+      if (paramBoolean) {
+        paramInt = 1;
+      }
+      try
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase.c();
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase.a());
+        for (;;)
+        {
+          paramString.put("is_done", paramInt);
+          sdn.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X800898B", paramString.toString());
+          return;
+          paramString = "1";
+          break;
+          paramInt = 2;
+        }
       }
-      if (localChatHistoryViewBase == null) {
-        break;
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
       }
-      localChatHistoryViewBase.a(ChatHistoryFileActivity.a(this.a));
-      localChatHistoryViewBase.d();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase = localChatHistoryViewBase;
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase.a = this.a;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase.a(), 0, new ViewGroup.LayoutParams(-1, -1));
-      if (!this.a.jdField_a_of_type_Boolean) {
-        break label310;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase.a();
-      return;
-      localChatHistoryViewBase = ChatHistoryFileActivity.a(this.a, 0);
-      continue;
-      localChatHistoryViewBase = ChatHistoryFileActivity.a(this.a, 1);
-      ReportController.b(this.a.app, "dc00898", "", "", "0X8007126", "0X8007126", 0, 0, "", "", "", "");
-      continue;
-      localChatHistoryViewBase = ChatHistoryFileActivity.a(this.a, 2);
-      ReportController.b(this.a.app, "dc00898", "", "", "0X8007127", "0X8007127", 0, 0, "", "", "", "");
-      continue;
-      localChatHistoryViewBase = ChatHistoryFileActivity.a(this.a, 3);
-      ReportController.b(this.a.app, "dc00898", "", "", "0X8007128", "0X8007128", 0, 0, "", "", "", "");
     }
-    label310:
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rzz
  * JD-Core Version:    0.7.0.1
  */

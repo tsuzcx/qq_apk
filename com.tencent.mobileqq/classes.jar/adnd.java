@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-class adnd
-  implements Runnable
+public class adnd
+  implements View.OnClickListener
 {
-  adnd(adna paramadna) {}
+  public adnd(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void run()
-  {
-    this.a.a.j();
-  }
+  public void onClick(View paramView) {}
 }
 
 

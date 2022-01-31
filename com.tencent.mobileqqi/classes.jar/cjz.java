@@ -1,33 +1,64 @@
+import QQService.TagInfo;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.biz.webviewplugin.ReportPlugin;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.EditTagActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import java.util.ArrayList;
 
 public class cjz
-  implements ActionSheet.OnButtonClickListener
+  extends BaseAdapter
 {
-  public cjz(ChatSettingForTroop paramChatSettingForTroop, ActionSheet paramActionSheet) {}
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new cka(this);
+  ArrayList jdField_a_of_type_JavaUtilArrayList;
   
-  public void OnClick(View paramView, int paramInt)
+  public cjz(EditTagActivity paramEditTagActivity, ArrayList paramArrayList)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.getLayoutInflater().inflate(2130904011, null);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(32.0F * this.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.a)));
+      paramViewGroup = new ckb(this, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131234584));
+      paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.isFinishing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.b != null))
-      {
-        ReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, 301, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.c, "", this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.b.getAccount());
-        continue;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.ao == 1) {
-          ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.b);
-        }
-      }
+      paramViewGroup.jdField_a_of_type_Int = paramInt;
+      Resources localResources = this.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.getResources();
+      int i = paramInt % ProfileActivity.a.length;
+      paramView.setBackgroundDrawable(localResources.getDrawable(ProfileActivity.a[i][0]));
+      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      i = ProfileActivity.a[i][1];
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(localResources.getColor(i));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((TagInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).strContent);
+      return paramView;
+      paramViewGroup = (ckb)paramView.getTag();
     }
   }
 }

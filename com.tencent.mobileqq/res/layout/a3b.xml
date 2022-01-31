@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingBottom="12.5dip" android:descendantFocusability="beforeDescendants" android:layout_width="fill_parent" android:layout_height="47.5dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textColor="@color/air" android:id="@id/f_i" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ptd" android:includeFontPadding="false" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+</RelativeLayout>

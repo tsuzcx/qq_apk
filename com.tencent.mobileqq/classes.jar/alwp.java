@@ -1,34 +1,53 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.CSProcessorImpl;
-import com.tencent.qqprotect.qsec.QSecFramework.IGoingUpHandler;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.msf.service.protocol.security.CustomSigContent;
+import com.tencent.msf.service.protocol.security.RespondCustomSig;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.observer.AccountObserver;
 
 public class alwp
-  implements QSecFramework.IGoingUpHandler
+  extends AccountObserver
 {
-  public alwp(CSProcessorImpl paramCSProcessorImpl) {}
+  public alwp(MessageHandler paramMessageHandler, String paramString) {}
   
-  public int a(int paramInt1, int paramInt2, int paramInt3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  public void onChangeToken(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    if ((paramObject1 != null) && ((paramObject1 instanceof String)) && (paramObject2 != null) && ((paramObject2 instanceof byte[])))
+    if ((paramBoolean) && (paramHashMap != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.CSP", 2, String.format("Cookie: %08X, cmd: %s", new Object[] { Integer.valueOf(paramInt1), paramObject1 }));
+      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
+      if ((paramHashMap == null) || (paramHashMap.SigList == null)) {
+        return;
       }
-      if (paramInt1 != 0) {
-        this.a.a((String)paramObject1, (byte[])paramObject2, new alws(this.a, paramInt1));
+      int i = 0;
+      while (i < paramHashMap.SigList.size())
+      {
+        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
+        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
+        {
+          localObject = new String(((CustomSigContent)localObject).SigContent);
+          OpenID localOpenID = new OpenID();
+          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
+          localOpenID.openID = ((String)localObject);
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a().b(localOpenID);
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.a(this.jdField_a_of_type_JavaLangString, localOpenID);
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.notifyUI(1, true, localOpenID);
+        }
+        i += 1;
       }
     }
-    else
+    if (paramBoolean) {}
+    for (paramHashMap = "0";; paramHashMap = "1")
     {
-      return 0;
+      bfhz.a().a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.getAccount(), "", this.jdField_a_of_type_JavaLangString, "41", "19", paramHashMap, "", "", "4", false);
+      return;
     }
-    this.a.a((String)paramObject1, (byte[])paramObject2, null);
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alwp
  * JD-Core Version:    0.7.0.1
  */

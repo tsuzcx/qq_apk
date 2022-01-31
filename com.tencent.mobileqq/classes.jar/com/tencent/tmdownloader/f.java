@@ -5,7 +5,8 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.RemoteException;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.s;
 import com.tencent.tmdownloader.internal.remote.b;
 
 public class f
@@ -34,7 +35,7 @@ public class f
   
   public void a(int paramInt, String paramString)
   {
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.a).post(new g(this, paramInt, paramString));
+    com.tencent.tmassistantbase.util.k.a().post(new g(this, paramInt, paramString));
   }
   
   public void a(String paramString, int paramInt)
@@ -42,18 +43,18 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        r.c("RemoteOpProxy", "<setInt> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", "<setInt> process:" + s.e() + ", mServiceInterface is ok");
         ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).a(paramString, paramInt);
         return;
       }
-      catch (RemoteException paramString)
+      catch (Exception paramString)
       {
         paramString.printStackTrace();
         return;
       }
     }
-    r.c("RemoteOpProxy", "<setInt> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is null, post the operation");
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new n(this, paramString, paramInt));
+    ab.c("RemoteOpProxy", "<setInt> process:" + s.e() + ", mServiceInterface is null, post the operation");
+    com.tencent.tmassistantbase.util.k.a().post(new p(this, paramString, paramInt));
   }
   
   public void a(String paramString, long paramLong)
@@ -61,18 +62,18 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        r.c("RemoteOpProxy", "<setLong> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", "<setLong> process:" + s.e() + ", mServiceInterface is ok");
         ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).a(paramString, paramLong);
         return;
       }
-      catch (RemoteException paramString)
+      catch (Exception paramString)
       {
         paramString.printStackTrace();
         return;
       }
     }
-    r.c("RemoteOpProxy", "<setLong> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is null, post the operation");
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new m(this, paramString, paramLong));
+    ab.c("RemoteOpProxy", "<setLong> process:" + s.e() + ", mServiceInterface is null, post the operation");
+    com.tencent.tmassistantbase.util.k.a().post(new o(this, paramString, paramLong));
   }
   
   public void a(String paramString1, String paramString2)
@@ -80,18 +81,18 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        r.c("RemoteOpProxy", "<setString> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", "<setString> process:" + s.e() + ", mServiceInterface is ok");
         ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).a(paramString1, paramString2);
         return;
       }
-      catch (RemoteException paramString1)
+      catch (Exception paramString1)
       {
         paramString1.printStackTrace();
         return;
       }
     }
-    r.c("RemoteOpProxy", "<setString> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is null, post the operation");
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new l(this, paramString1, paramString2));
+    ab.c("RemoteOpProxy", "<setString> process:" + s.e() + ", mServiceInterface is null, post the operation");
+    com.tencent.tmassistantbase.util.k.a().post(new n(this, paramString1, paramString2));
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -99,18 +100,18 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        r.c("RemoteOpProxy", "<setBoolean> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", "<setBoolean> process:" + s.e() + ", mServiceInterface is ok");
         ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).a(paramString, paramBoolean);
         return;
       }
-      catch (RemoteException paramString)
+      catch (Exception paramString)
       {
         paramString.printStackTrace();
         return;
       }
     }
-    r.c("RemoteOpProxy", "<setBoolean> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is null, post the operation");
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new o(this, paramString, paramBoolean));
+    ab.c("RemoteOpProxy", "<setBoolean> process:" + s.e() + ", mServiceInterface is null, post the operation");
+    com.tencent.tmassistantbase.util.k.a().post(new q(this, paramString, paramBoolean));
   }
   
   public void a(String paramString, byte[] paramArrayOfByte)
@@ -118,18 +119,18 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        r.c("RemoteOpProxy", "<setBlob> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", "<setBlob> process:" + s.e() + ", mServiceInterface is ok");
         ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).a(paramString, paramArrayOfByte);
         return;
       }
-      catch (RemoteException paramString)
+      catch (Exception paramString)
       {
         paramString.printStackTrace();
         return;
       }
     }
-    r.c("RemoteOpProxy", "<setBlob> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is null, post the operation");
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new k(this, paramString, paramArrayOfByte));
+    ab.c("RemoteOpProxy", "<setBlob> process:" + s.e() + ", mServiceInterface is null, post the operation");
+    com.tencent.tmassistantbase.util.k.a().post(new m(this, paramString, paramArrayOfByte));
   }
   
   public byte[] a(String paramString)
@@ -137,17 +138,17 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        r.c("RemoteOpProxy", "<getBlob> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", "<getBlob> process:" + s.e() + ", mServiceInterface is ok");
         paramString = ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).a(paramString);
         return paramString;
       }
-      catch (RemoteException paramString)
+      catch (Exception paramString)
       {
         paramString.printStackTrace();
       }
     }
-    r.c("RemoteOpProxy", "<getBlob> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is null");
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new p(this));
+    ab.c("RemoteOpProxy", "<getBlob> process:" + s.e() + ", mServiceInterface is null");
+    com.tencent.tmassistantbase.util.k.a().post(new h(this));
     return new byte[0];
   }
   
@@ -156,16 +157,16 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        r.c("RemoteOpProxy", "<getString> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", "<getString> process:" + s.e() + ", mServiceInterface is ok");
         paramString = ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).d(paramString);
         return paramString;
       }
-      catch (RemoteException paramString)
+      catch (Exception paramString)
       {
         paramString.printStackTrace();
       }
     }
-    r.c("RemoteOpProxy", "<getString> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is null");
+    ab.c("RemoteOpProxy", "<getString> process:" + s.e() + ", mServiceInterface is null");
     return "";
   }
   
@@ -174,18 +175,18 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        r.c("RemoteOpProxy", "<requestAllConfig> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", "<requestAllConfig> process:" + s.e() + ", mServiceInterface is ok");
         ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).b();
         return;
       }
-      catch (RemoteException localRemoteException)
+      catch (Exception localException)
       {
-        localRemoteException.printStackTrace();
+        localException.printStackTrace();
         return;
       }
     }
-    r.c("RemoteOpProxy", "<requestAllConfig> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is null, post the operation");
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new i(this));
+    ab.c("RemoteOpProxy", "<requestAllConfig> process:" + s.e() + ", mServiceInterface is null, post the operation");
+    com.tencent.tmassistantbase.util.k.a().post(new j(this));
   }
   
   public long c(String paramString)
@@ -193,16 +194,16 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        r.c("RemoteOpProxy", "<getLong> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", "<getLong> process:" + s.e() + ", mServiceInterface is ok");
         long l = ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).c(paramString);
         return l;
       }
-      catch (RemoteException paramString)
+      catch (Exception paramString)
       {
         paramString.printStackTrace();
       }
     }
-    r.c("RemoteOpProxy", "<getLong> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is null");
+    ab.c("RemoteOpProxy", "<getLong> process:" + s.e() + ", mServiceInterface is null");
     return 0L;
   }
   
@@ -211,8 +212,45 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        r.c("RemoteOpProxy", "<requestShareUrl> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", "<requestShareUrl> process:" + s.e() + ", mServiceInterface is ok");
         ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).c();
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
+      }
+    }
+    ab.c("RemoteOpProxy", "<requestShareUrl> process:" + s.e() + ", mServiceInterface is null, post the operation");
+    com.tencent.tmassistantbase.util.k.a().post(new k(this));
+  }
+  
+  public int d(String paramString)
+  {
+    if (this.mServiceInterface != null) {
+      try
+      {
+        ab.c("RemoteOpProxy", "<getInt> process:" + s.e() + ", mServiceInterface is ok");
+        int i = ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).b(paramString);
+        return i;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+    ab.c("RemoteOpProxy", "<getInt> process:" + s.e() + ", mServiceInterface is null");
+    return 0;
+  }
+  
+  public void d()
+  {
+    if (this.mServiceInterface != null) {
+      try
+      {
+        ab.c("RemoteOpProxy", "<requestNewAppCenterConfig> process:" + s.e() + ", mServiceInterface is ok");
+        ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).d();
         return;
       }
       catch (RemoteException localRemoteException)
@@ -221,31 +259,13 @@ public class f
         return;
       }
     }
-    r.c("RemoteOpProxy", "<requestShareUrl> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is null, post the operation");
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new j(this));
+    ab.c("RemoteOpProxy", "<requestNewAppCenterConfig> process:" + s.e() + ", mServiceInterface is null, post the operation");
+    com.tencent.tmassistantbase.util.k.a().post(new l(this));
   }
   
-  public int d(String paramString)
+  public void e()
   {
-    if (this.mServiceInterface != null) {
-      try
-      {
-        r.c("RemoteOpProxy", "<getInt> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is ok");
-        int i = ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).b(paramString);
-        return i;
-      }
-      catch (RemoteException paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-    r.c("RemoteOpProxy", "<getInt> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is null");
-    return 0;
-  }
-  
-  public void d()
-  {
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new h(this));
+    com.tencent.tmassistantbase.util.k.a().post(new i(this));
   }
   
   public boolean e(String paramString)
@@ -253,16 +273,16 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        r.c("RemoteOpProxy", "<getBoolean> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", "<getBoolean> process:" + s.e() + ", mServiceInterface is ok");
         boolean bool = ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).e(paramString);
         return bool;
       }
-      catch (RemoteException paramString)
+      catch (Exception paramString)
       {
         paramString.printStackTrace();
       }
     }
-    r.c("RemoteOpProxy", "<getBoolean> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is null");
+    ab.c("RemoteOpProxy", "<getBoolean> process:" + s.e() + ", mServiceInterface is null");
     return false;
   }
   
@@ -284,7 +304,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmdownloader.f
  * JD-Core Version:    0.7.0.1
  */

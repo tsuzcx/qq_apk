@@ -1,23 +1,38 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.DraggableGridView;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aktv
-  extends ListView
+  extends akzo
 {
-  public aktv(DraggableGridView paramDraggableGridView, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public aktv(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
   
-  public void setOverScrollMode(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    super.setOverScrollMode(2);
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+    } while (paramObject == null);
+    try
+    {
+      paramObject = new JSONObject(paramObject.toString());
+      paramInt = paramObject.optInt("errCode");
+      paramObject.remove("errCode");
+      ApolloGameInterfaceProxy.a(this.a, paramInt, "cs.ssoMessage.local", paramObject.toString());
+      return;
+    }
+    catch (Throwable paramObject)
+    {
+      QLog.e("cmgame_process.CmGameObserver", 1, paramObject, new Object[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aktv
  * JD-Core Version:    0.7.0.1
  */

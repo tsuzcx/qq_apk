@@ -1,23 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.paster.PasterParcelData;
-
-public final class anmy
-  implements Parcelable.Creator
+public abstract interface anmy
 {
-  public PasterParcelData a(Parcel paramParcel)
-  {
-    return new PasterParcelData(paramParcel);
-  }
-  
-  public PasterParcelData[] a(int paramInt)
-  {
-    return new PasterParcelData[paramInt];
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,26 @@
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class acvc
-  implements FileVideoManager.FileVideoManagerInitCallback
+  implements TextWatcher
 {
-  public acvc(FileManagerRSCenter paramFileManagerRSCenter, FileManagerEntity paramFileManagerEntity) {}
+  private acvc(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void a() {}
-  
-  public void b()
+  public void afterTextChanged(Editable paramEditable)
   {
-    FileVideoManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.b(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acvc
  * JD-Core Version:    0.7.0.1
  */

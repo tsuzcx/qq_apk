@@ -1,27 +1,21 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
 
 public class anzu
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public anzu(DoodleTextureView paramDoodleTextureView) {}
+  public anzu(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PersonalityOperator localPersonalityOperator = (PersonalityOperator)this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.a(102);
-    if (localPersonalityOperator != null)
-    {
-      localPersonalityOperator.a();
-      localPersonalityOperator.a(this.a.jdField_a_of_type_Int, this.a.b);
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.h();
-      this.a.a();
-    }
+    CardPicGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anzu
  * JD-Core Version:    0.7.0.1
  */

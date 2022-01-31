@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/ir" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/ex6" android:background="#eff5f5f5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView android:textSize="11.0sp" android:textColor="#ff777777" android:gravity="center" android:id="@id/m8o" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginTop="5.0dip" android:text="分享到" android:layout_centerHorizontal="true" />
+        <HorizontalScrollView android:id="@id/iig" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/m8o" android:layout_alignParentLeft="true">
+            <LinearLayout android:orientation="horizontal" android:id="@id/guu" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </HorizontalScrollView>
+        <TextView android:textSize="18.0sp" android:textColor="#ff000000" android:gravity="center" android:id="@id/ex_" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginTop="10.0dip" android:text="取消" android:layout_below="@id/iig" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

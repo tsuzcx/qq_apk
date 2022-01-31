@@ -1,5 +1,7 @@
 package cooperation.weiyun.upload;
 
+import bklw;
+import bkly;
 import com.tencent.weiyun.uploader.IReporter;
 import com.tencent.weiyun.uploader.IUploader;
 import com.tencent.weiyun.uploader.IUploader.IUploadListener;
@@ -24,17 +26,17 @@ public class WyUploadJob
     return this.jdField_a_of_type_Int;
   }
   
+  bklw a(UploadRequest paramUploadRequest)
+  {
+    return new bkly(paramUploadRequest, this);
+  }
+  
   UploadResponse a(int paramInt)
   {
     UploadResponse.Builder localBuilder = new UploadResponse.Builder();
     localBuilder.request(this.jdField_a_of_type_ComTencentWeiyunUploaderUploadRequest);
     localBuilder.code(paramInt);
     return localBuilder.build();
-  }
-  
-  Transfer a(UploadRequest paramUploadRequest)
-  {
-    return new UploadTransfer(paramUploadRequest, this);
   }
   
   void a()
@@ -161,7 +163,7 @@ public class WyUploadJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.weiyun.upload.WyUploadJob
  * JD-Core Version:    0.7.0.1
  */

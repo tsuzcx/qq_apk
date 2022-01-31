@@ -1,57 +1,29 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.script.SpriteContext;
-import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
 
-public class ysg
-  implements Runnable
+class ysg
+  extends ysw
 {
-  public ysg(SpriteUIHandler paramSpriteUIHandler, int paramInt) {}
-  
-  public void run()
+  ysg(ysb paramysb, ysj paramysj, String paramString)
   {
-    try
+    super(paramysb);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
     {
-      if (SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a() == null) {
-        return;
-      }
-      XPanelContainer localXPanelContainer = (XPanelContainer)SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a().a().findViewById(2131362840);
-      if (1 == this.jdField_a_of_type_Int)
-      {
-        if (localXPanelContainer.a() != 21) {
-          return;
-        }
-        SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a().ai();
-        return;
-      }
+      QLog.d(".troop.VideoCombineHelper", 2, "splitVideoUnit end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "splitVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Ysb.a));
+      this.jdField_a_of_type_Ysb.a = System.currentTimeMillis();
     }
-    catch (Exception localException)
-    {
-      QLog.e("cmshow_scripted_SpriteUIHandler", 1, localException, new Object[0]);
-      return;
-    }
-    if (2 == this.jdField_a_of_type_Int)
-    {
-      BaseChatPie localBaseChatPie = SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a();
-      if (localBaseChatPie != null)
-      {
-        ApolloPanel localApolloPanel = localBaseChatPie.a;
-        if ((localApolloPanel != null) && (localApolloPanel.a() == 7))
-        {
-          localBaseChatPie.o(0);
-          return;
-        }
-      }
-      localException.a(21);
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Ysj.a(this.jdField_a_of_type_JavaLangString, false, "splitVideo done.");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ysg
  * JD-Core Version:    0.7.0.1
  */

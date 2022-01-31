@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class ProxyIpInfo
   extends JceStruct
 {
-  public int uIp;
-  public int uPort;
-  public int uType;
+  public int uIp = 0;
+  public int uPort = 0;
+  public int uType = 0;
   
   public ProxyIpInfo() {}
   

@@ -1,29 +1,28 @@
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-import com.tencent.biz.qqstory.view.segment.SegmentManager;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class oqn
-  extends SimpleJob
+class oqn
+  implements ViewBase.OnClickListener
 {
-  public oqn(SegmentList paramSegmentList) {}
+  oqn(oqd paramoqd) {}
   
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  public void onClick(ViewBase paramViewBase)
   {
-    this.a.a.f();
-    if (SegmentList.a(this.a)) {
-      return null;
+    paramViewBase = owy.a().a();
+    if ((paramViewBase != null) && (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null))
+    {
+      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.isShowFreeNetFlow = false;
+      ors.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), paramViewBase.a());
+      orc.a(false, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), null);
+      pga.a("0X8009661");
     }
-    SegmentList.a(this.a).sendMessage(SegmentList.a(this.a).obtainMessage(2));
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oqn
  * JD-Core Version:    0.7.0.1
  */

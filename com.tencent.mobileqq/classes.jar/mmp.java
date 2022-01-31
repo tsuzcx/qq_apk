@@ -1,31 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule.FastWebContentGetCallback;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.TimeUtil;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
 
-public class mmp
-  implements FastWebModule.FastWebContentGetCallback
+class mmp
+  implements mkg
 {
-  public mmp(FastWebActivity paramFastWebActivity) {}
+  mmp(mmo parammmo) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, FastWebArticleInfo paramFastWebArticleInfo)
+  public void a()
   {
-    if ((paramBoolean1) && (!paramBoolean2) && (paramFastWebArticleInfo != null))
+    if (this.a.a.a != null)
     {
-      paramBoolean1 = true;
-      TimeUtil.b("fast_web_show_light_house_2");
+      this.a.a.a.setViewEnable(2131372756, false);
+      this.a.a.a.setViewEnable(2131362956, false);
+      this.a.a.a.setViewEnable(2131362968, false);
+      this.a.a.a.setViewEnable(2131362967, false);
     }
-    for (;;)
-    {
-      this.a.runOnUiThread(new mmq(this, paramBoolean1, paramFastWebArticleInfo));
-      return;
-      paramBoolean1 = false;
-    }
+  }
+  
+  public void b()
+  {
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 2130772165);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mmp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,40 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import android.content.res.Resources;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
 
 public class ader
-  implements FileVideoManager.FileVideoManagerInitCallback
+  implements TextWatcher
 {
-  public ader(VideoFilePresenter paramVideoFilePresenter) {}
+  public ader(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
   
-  public void a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.a.finish();
+    paramEditable = paramEditable.toString();
+    int i = 0;
+    if (!TextUtils.isEmpty(paramEditable)) {
+      i = paramEditable.getBytes().length / 3;
+    }
+    if (i <= 40) {
+      this.a.a.setTextColor(this.a.getResources().getColor(2131166977));
+    }
+    for (;;)
+    {
+      this.a.a.setText("" + (40 - i));
+      return;
+      this.a.a.setTextColor(-65536);
+    }
   }
   
-  public void b()
-  {
-    this.a.a.runOnUiThread(new ades(this));
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ader
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ public class LpReport_ImgPreload_dc02506
   implements LpReportInfo
 {
   private static String TAG = "LpReport_ImgPreload_dc02506";
-  private ConcurrentHashMap reportMap;
+  private ConcurrentHashMap<String, String> reportMap;
   
-  public LpReport_ImgPreload_dc02506(ConcurrentHashMap paramConcurrentHashMap)
+  public LpReport_ImgPreload_dc02506(ConcurrentHashMap<String, String> paramConcurrentHashMap)
   {
     this.reportMap = paramConcurrentHashMap;
   }
@@ -21,7 +21,7 @@ public class LpReport_ImgPreload_dc02506
     return null;
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     return this.reportMap;
   }
@@ -61,7 +61,7 @@ public class LpReport_ImgPreload_dc02506
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_ImgPreload_dc02506
  * JD-Core Version:    0.7.0.1
  */

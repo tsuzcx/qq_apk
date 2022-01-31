@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
+import android.content.Context;
 
 public class mui
-  implements DialogInterface.OnClickListener
 {
-  public mui(GalleryShareHelper paramGalleryShareHelper) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public static void a(Context paramContext, String paramString, int paramInt, muj parammuj)
+  {
+    parammuj.a(paramContext, paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mui
  * JD-Core Version:    0.7.0.1
  */

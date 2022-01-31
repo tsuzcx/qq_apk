@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Handler;
+import com.tencent.token.cj;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.e;
-import com.tencent.token.r;
+import com.tencent.token.global.h;
 
 public class GameLoginSndConfirmDialog
   extends Dialog
@@ -17,9 +17,9 @@ public class GameLoginSndConfirmDialog
   private ProDialog d;
   private Handler e = new af(this);
   
-  public GameLoginSndConfirmDialog(Activity paramActivity)
+  public GameLoginSndConfirmDialog(Activity paramActivity, int paramInt)
   {
-    super(paramActivity, 2131427401);
+    super(paramActivity, paramInt);
     this.a = paramActivity;
   }
   
@@ -27,14 +27,14 @@ public class GameLoginSndConfirmDialog
   {
     super.onCreate(paramBundle);
     this.b = new GameLoginSndConfirmView(this.a);
-    this.b.a(new aj(this));
+    this.b.setListener(new aj(this));
     if (!this.b.a(this.a))
     {
       dismiss();
-      e.a("Dual initView failed!");
+      h.a("Dual initView failed!");
       return;
     }
-    this.b.a(r.a(RqdApplication.i()).d());
+    this.b.a(cj.a(RqdApplication.l()).d());
     setContentView(this.b);
     setOnDismissListener(new an(this));
   }

@@ -7,18 +7,7 @@ import android.os.Parcelable.Creator;
 public class ImageProcessData
   implements Parcelable
 {
-  public static final Parcelable.Creator<ImageProcessData> CREATOR = new Parcelable.Creator()
-  {
-    public ImageProcessData a(Parcel paramAnonymousParcel)
-    {
-      return new ImageProcessData(paramAnonymousParcel, null);
-    }
-    
-    public ImageProcessData[] a(int paramAnonymousInt)
-    {
-      return new ImageProcessData[paramAnonymousInt];
-    }
-  };
+  public static final Parcelable.Creator<ImageProcessData> CREATOR = new ImageProcessData.1();
   public boolean autoRotate;
   public boolean compressToWebp;
   public int id;
@@ -109,7 +98,7 @@ public class ImageProcessData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.upload.image.ImageProcessData
  * JD-Core Version:    0.7.0.1
  */

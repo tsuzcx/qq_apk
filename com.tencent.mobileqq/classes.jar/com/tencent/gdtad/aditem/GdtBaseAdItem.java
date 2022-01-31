@@ -1,42 +1,65 @@
 package com.tencent.gdtad.aditem;
 
+import aamx;
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import cooperation.qzone.util.QZLog;
-import java.io.Serializable;
 import org.json.JSONObject;
 
 public class GdtBaseAdItem
-  implements Serializable
+  implements Parcelable
 {
-  public boolean autoDownLoad;
-  public Class clz;
-  public String deepLinkUrl;
-  public String downloadScheme;
-  public boolean openmain;
-  public String packageName;
-  public String productId;
-  public String traceId;
-  public String urlForClick;
+  public static final Parcelable.Creator<GdtBaseAdItem> CREATOR = new aamx();
+  public Bundle a;
+  public Class a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
   private GdtBaseAdItem() {}
   
-  public GdtBaseAdItem(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean1, Class paramClass, boolean paramBoolean2)
+  public GdtBaseAdItem(Parcel paramParcel)
   {
-    this.packageName = paramString1;
-    this.downloadScheme = paramString2;
-    this.deepLinkUrl = paramString3;
-    this.traceId = paramString4;
-    this.productId = paramString5;
-    this.autoDownLoad = paramBoolean1;
-    this.clz = paramClass;
+    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.c = paramParcel.readString();
+    this.d = paramParcel.readString();
+    this.e = paramParcel.readString();
+    if (paramParcel.readByte() != 0)
+    {
+      bool1 = true;
+      this.jdField_a_of_type_Boolean = bool1;
+      this.jdField_a_of_type_JavaLangClass = ((Class)paramParcel.readSerializable());
+      if (paramParcel.readByte() == 0) {
+        break label114;
+      }
+    }
+    label114:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      this.jdField_b_of_type_Boolean = bool1;
+      this.f = paramParcel.readString();
+      this.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle(getClass().getClassLoader());
+      return;
+      bool1 = false;
+      break;
+    }
   }
   
-  public static GdtBaseAdItem obtain()
+  public static GdtBaseAdItem a()
   {
     return new GdtBaseAdItem();
   }
   
-  public static GdtBaseAdItem obtain(String paramString)
+  public static GdtBaseAdItem a(String paramString)
   {
     localGdtBaseAdItem = new GdtBaseAdItem();
     try
@@ -45,11 +68,11 @@ public class GdtBaseAdItem
       try
       {
         paramString = Class.forName(localJSONObject.optString("class"));
-        localGdtBaseAdItem.setPackageName(localJSONObject.optString("packageName")).setTraceId(localJSONObject.optString("traceId")).setDeepLinkUrl(localJSONObject.optString("invokeUrl")).setDownloadScheme(localJSONObject.optString("appDownloadSchema")).setProductId(localJSONObject.optString("productId")).setClz(paramString).setUrlForClick(localJSONObject.optString("urlForClick")).setAutoDownLoad("1".equals(localJSONObject.optString("autoDownload")));
+        localGdtBaseAdItem.d(localJSONObject.optString("packageName")).b(localJSONObject.optString("traceId")).f(localJSONObject.optString("invokeUrl")).e(localJSONObject.optString("appDownloadSchema")).c(localJSONObject.optString("productId")).a(paramString).g(localJSONObject.optString("urlForClick")).a("1".equals(localJSONObject.optString("autoDownload")));
         paramString = localJSONObject.optString("pkg_name");
         if (!TextUtils.isEmpty(paramString))
         {
-          localGdtBaseAdItem.setPackageName(paramString);
+          localGdtBaseAdItem.d(paramString);
           return localGdtBaseAdItem;
         }
       }
@@ -66,62 +89,102 @@ public class GdtBaseAdItem
     catch (Exception paramString) {}
   }
   
-  public GdtBaseAdItem setAutoDownLoad(boolean paramBoolean)
+  public GdtBaseAdItem a(Bundle paramBundle)
   {
-    this.autoDownLoad = paramBoolean;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
     return this;
   }
   
-  public GdtBaseAdItem setClz(Class paramClass)
+  public GdtBaseAdItem a(Class paramClass)
   {
-    this.clz = paramClass;
+    this.jdField_a_of_type_JavaLangClass = paramClass;
     return this;
   }
   
-  public GdtBaseAdItem setDeepLinkUrl(String paramString)
+  public GdtBaseAdItem a(boolean paramBoolean)
   {
-    this.deepLinkUrl = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
     return this;
   }
   
-  public GdtBaseAdItem setDownloadScheme(String paramString)
+  public GdtBaseAdItem b(String paramString)
   {
-    this.downloadScheme = paramString;
+    this.d = paramString;
     return this;
   }
   
-  public GdtBaseAdItem setPackageName(String paramString)
+  public GdtBaseAdItem c(String paramString)
   {
-    this.packageName = paramString;
+    this.e = paramString;
     return this;
   }
   
-  public GdtBaseAdItem setProductId(String paramString)
+  public GdtBaseAdItem d(String paramString)
   {
-    this.productId = paramString;
+    this.jdField_a_of_type_JavaLangString = paramString;
     return this;
   }
   
-  public GdtBaseAdItem setTraceId(String paramString)
+  public int describeContents()
   {
-    this.traceId = paramString;
+    return 0;
+  }
+  
+  public GdtBaseAdItem e(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
     return this;
   }
   
-  public GdtBaseAdItem setUrlForClick(String paramString)
+  public GdtBaseAdItem f(String paramString)
   {
-    this.urlForClick = paramString;
+    this.c = paramString;
+    return this;
+  }
+  
+  public GdtBaseAdItem g(String paramString)
+  {
+    this.f = paramString;
     return this;
   }
   
   public String toString()
   {
-    return "GdtBaseAdItem|" + this.packageName + "\n" + this.downloadScheme + "\n" + this.deepLinkUrl + "\n" + this.traceId + "\n" + this.productId;
+    return "GdtBaseAdItem|" + this.jdField_a_of_type_JavaLangString + "\n" + this.jdField_b_of_type_JavaLangString + "\n" + this.c + "\n" + this.d + "\n" + this.e;
+  }
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    int i = 1;
+    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeString(this.c);
+    paramParcel.writeString(this.d);
+    paramParcel.writeString(this.e);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      paramInt = 1;
+      paramParcel.writeByte((byte)paramInt);
+      paramParcel.writeSerializable(this.jdField_a_of_type_JavaLangClass);
+      if (!this.jdField_b_of_type_Boolean) {
+        break label102;
+      }
+    }
+    label102:
+    for (paramInt = i;; paramInt = 0)
+    {
+      paramParcel.writeByte((byte)paramInt);
+      paramParcel.writeString(this.f);
+      paramParcel.writeBundle(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      paramInt = 0;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtBaseAdItem
  * JD-Core Version:    0.7.0.1
  */

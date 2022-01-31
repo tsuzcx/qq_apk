@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.view;
 
-import ahwx;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -20,6 +20,8 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
+import ayxu;
+import ayxv;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableBitmapDrawable;
@@ -45,8 +47,8 @@ public class SearchVoiceView
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private SweepGradient jdField_a_of_type_AndroidGraphicsSweepGradient;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new ahwx(this));
-  private SearchVoiceView.OnStateEndListener jdField_a_of_type_ComTencentMobileqqSearchViewSearchVoiceView$OnStateEndListener;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new ayxu(this));
+  private ayxv jdField_a_of_type_Ayxv;
   private float jdField_b_of_type_Float;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
   private Path jdField_b_of_type_AndroidGraphicsPath;
@@ -97,10 +99,10 @@ public class SearchVoiceView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = 140;
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.SearchVoiceView);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(0);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(1);
     int i1 = TypedValue.complexToDimensionPixelSize(140, paramContext.getResources().getDisplayMetrics());
-    this.jdField_j_of_type_Int = paramAttributeSet.getDimensionPixelSize(1, i1);
-    this.jdField_i_of_type_Int = paramAttributeSet.getDimensionPixelSize(2, i1);
+    this.jdField_j_of_type_Int = paramAttributeSet.getDimensionPixelSize(2, i1);
+    this.jdField_i_of_type_Int = paramAttributeSet.getDimensionPixelSize(0, i1);
     paramAttributeSet.recycle();
     b();
   }
@@ -168,9 +170,10 @@ public class SearchVoiceView
     }
   }
   
+  @TargetApi(21)
   private void b(Canvas paramCanvas)
   {
-    int i1 = paramCanvas.saveLayer(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_d_of_type_AndroidGraphicsPaint, 4);
+    int i1 = paramCanvas.saveLayer(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_d_of_type_AndroidGraphicsPaint);
     paramCanvas.drawColor(-1);
     this.jdField_c_of_type_AndroidGraphicsPaint.setColor(this.y);
     this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
@@ -199,9 +202,10 @@ public class SearchVoiceView
     this.jdField_a_of_type_AndroidGraphicsPath.close();
   }
   
+  @TargetApi(21)
   private void c(Canvas paramCanvas)
   {
-    int i1 = paramCanvas.saveLayer(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_d_of_type_AndroidGraphicsPaint, 4);
+    int i1 = paramCanvas.saveLayer(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_d_of_type_AndroidGraphicsPaint);
     paramCanvas.drawColor(-1);
     this.jdField_c_of_type_AndroidGraphicsPaint.setColor(this.y);
     this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
@@ -345,14 +349,14 @@ public class SearchVoiceView
     }
   }
   
-  public void setOnStateEndListener(SearchVoiceView.OnStateEndListener paramOnStateEndListener)
+  public void setOnStateEndListener(ayxv paramayxv)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchViewSearchVoiceView$OnStateEndListener = paramOnStateEndListener;
+    this.jdField_a_of_type_Ayxv = paramayxv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.SearchVoiceView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,32 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class tqk
-  implements Runnable
+class tqk
+  extends ampn
 {
-  public tqk(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
-  
-  public void run()
+  tqk(tqj paramtqj, String paramString, boolean paramBoolean)
   {
-    if (RegisterVerifyCodeActivity.a(this.a) == 1)
+    super(paramString, paramBoolean);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramInt == 0)
     {
-      RegisterVerifyCodeActivity.a(this.a).setText(2131434277);
-      RegisterVerifyCodeActivity.a(this.a).setEnabled(true);
-      RegisterVerifyCodeActivity.a(this.a).setClickable(true);
+      if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+      {
+        tqj.a(this.a, paramSosoLbsInfo);
+        return;
+      }
+      QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from request: location is null");
       return;
     }
-    RegisterVerifyCodeActivity.b(this.a);
-    RegisterVerifyCodeActivity.a(this.a).setText(this.a.getString(2131434277) + "(" + RegisterVerifyCodeActivity.a(this.a) + "s)");
-    this.a.a.postDelayed(this, 1000L);
+    QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from request: failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tqk
  * JD-Core Version:    0.7.0.1
  */

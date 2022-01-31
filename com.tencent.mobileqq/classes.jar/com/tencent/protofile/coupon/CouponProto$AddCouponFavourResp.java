@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class CouponProto$AddCouponFavourResp
-  extends MessageMicro
+  extends MessageMicro<AddCouponFavourResp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34 }, new String[] { "retcode", "coupon", "ts", "jump_url" }, new Object[] { Integer.valueOf(0), null, Long.valueOf(0L), "" }, AddCouponFavourResp.class);
   public CouponProto.Coupon coupon = new CouponProto.Coupon();
@@ -18,7 +18,7 @@ public final class CouponProto$AddCouponFavourResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.protofile.coupon.CouponProto.AddCouponFavourResp
  * JD-Core Version:    0.7.0.1
  */

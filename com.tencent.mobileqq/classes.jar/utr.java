@@ -1,20 +1,41 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder.Holder;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
-class utr
-  implements Runnable
+public class utr
+  implements View.OnTouchListener
 {
-  utr(utq paramutq) {}
+  public utr(StoryInputBarView paramStoryInputBarView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a.d.setVisibility(8);
-    this.a.a.c.setVisibility(8);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      StoryInputBarView.a(this.a);
+      if (this.a.jdField_a_of_type_Boolean) {
+        break label94;
+      }
+      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_Whs.jdField_a_of_type_Boolean);
+      paramView = this.a;
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
+        break label89;
+      }
+    }
+    label89:
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.jdField_a_of_type_Boolean = bool;
+      return false;
+    }
+    label94:
+    this.a.a();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     utr
  * JD-Core Version:    0.7.0.1
  */

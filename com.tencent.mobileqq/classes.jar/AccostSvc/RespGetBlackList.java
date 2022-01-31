@@ -9,24 +9,24 @@ public final class RespGetBlackList
   extends JceStruct
 {
   static RespHeader cache_stHeader;
-  static ArrayList cache_vBlackList;
-  static ArrayList cache_vBlackListUin;
-  static ArrayList cache_vMobileBlackListUin;
+  static ArrayList<BlackSimpleInfo> cache_vBlackList;
+  static ArrayList<Long> cache_vBlackListUin;
+  static ArrayList<Long> cache_vMobileBlackListUin;
   public long lNextMid = -1L;
   public RespHeader stHeader;
-  public ArrayList vBlackList;
-  public ArrayList vBlackListUin;
-  public ArrayList vMobileBlackListUin;
+  public ArrayList<BlackSimpleInfo> vBlackList;
+  public ArrayList<Long> vBlackListUin;
+  public ArrayList<Long> vMobileBlackListUin;
   
   public RespGetBlackList() {}
   
-  public RespGetBlackList(RespHeader paramRespHeader, long paramLong, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3)
+  public RespGetBlackList(RespHeader paramRespHeader, long paramLong, ArrayList<BlackSimpleInfo> paramArrayList, ArrayList<Long> paramArrayList1, ArrayList<Long> paramArrayList2)
   {
     this.stHeader = paramRespHeader;
     this.lNextMid = paramLong;
-    this.vBlackList = paramArrayList1;
-    this.vBlackListUin = paramArrayList2;
-    this.vMobileBlackListUin = paramArrayList3;
+    this.vBlackList = paramArrayList;
+    this.vBlackListUin = paramArrayList1;
+    this.vMobileBlackListUin = paramArrayList2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

@@ -1,30 +1,20 @@
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
 
-public class njn
-  implements ActionSheet.OnButtonClickListener
+class njn
+  implements View.OnClickListener
 {
-  public njn(FeedsPlayModeBase paramFeedsPlayModeBase, Boolean[] paramArrayOfBoolean, StoryVideoItem paramStoryVideoItem) {}
+  njn(nin paramnin, npo paramnpo) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.a.dismiss();
-    if (paramView != null)
-    {
-      String str = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.a.a(paramInt);
-      if (!TextUtils.isEmpty(str)) {
-        this.jdField_a_of_type_ArrayOfJavaLangBoolean[0] = Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.a(paramView, str, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem));
-      }
-    }
+    nin.a(this.jdField_a_of_type_Nin);
+    nin.a(this.jdField_a_of_type_Nin, this.jdField_a_of_type_Npo.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     njn
  * JD-Core Version:    0.7.0.1
  */

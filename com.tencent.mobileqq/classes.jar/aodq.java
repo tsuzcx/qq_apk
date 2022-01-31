@@ -1,32 +1,16 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.ContainerDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aodq
-  extends Property
+class aodq
+  implements View.OnClickListener
 {
-  public aodq(ContainerDrawable paramContainerDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  aodq(aodp paramaodp) {}
   
-  public Integer a(ContainerDrawable paramContainerDrawable)
-  {
-    if (paramContainerDrawable != null) {
-      return Integer.valueOf(ContainerDrawable.a(paramContainerDrawable));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(ContainerDrawable paramContainerDrawable, Integer paramInteger)
-  {
-    if (paramContainerDrawable != null) {
-      ContainerDrawable.a(paramContainerDrawable, paramInteger.intValue());
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aodq
  * JD-Core Version:    0.7.0.1
  */

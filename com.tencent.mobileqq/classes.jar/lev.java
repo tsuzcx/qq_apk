@@ -1,28 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity;
-
-class lev
-  implements DialogInterface.OnCancelListener
+public class lev
 {
-  lev(leu paramleu) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    paramDialogInterface = new Intent();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("retCode", 1);
-    localBundle.putString("msg", "用户取消");
-    paramDialogInterface.putExtra("Bundle", localBundle);
-    this.a.a.setResult(-1, paramDialogInterface);
-    this.a.a.finish();
-  }
+  @atgw(a="w")
+  public int a;
+  @atgw(a="exp")
+  public String a;
+  @atgw(a="h")
+  public int b;
+  @atgw(a="url")
+  public String b;
+  @atgw(a="md5")
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lev
  * JD-Core Version:    0.7.0.1
  */

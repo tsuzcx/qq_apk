@@ -1,114 +1,128 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.widgets.HotWordTipsContainer.OnTipClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.HotWordSearchEntryModel;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.mobileqq.search.report.UniteSearchReportController;
-import com.tencent.mobileqq.search.util.SearchConfigUtils;
-import com.tencent.mobileqq.search.util.SearchUtils;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
 public class ahrc
-  implements HotWordTipsContainer.OnTipClickListener
 {
-  public ahrc(HotWordSearchEntryModel paramHotWordSearchEntryModel) {}
+  public ArrayList<ahrh> a;
+  private boolean a;
+  public int[] a;
+  public String[] a;
   
-  public void a(HotWordSearchEntryDataModel.HotSearchItem paramHotSearchItem)
+  public ahrc(boolean paramBoolean)
   {
-    Object localObject2;
-    Object localObject1;
-    if (paramHotSearchItem != null)
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if ((paramBoolean) && (!babd.a())) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      localObject2 = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      do
-      {
-        if (!((Iterator)localObject2).hasNext()) {
-          break;
-        }
-        localObject1 = (HotWordSearchEntryDataModel.HotSearchItem)((Iterator)localObject2).next();
-      } while (!TextUtils.equals(paramHotSearchItem.title, ((HotWordSearchEntryDataModel.HotSearchItem)localObject1).title));
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      a();
+      return;
     }
-    for (paramHotSearchItem = (HotWordSearchEntryDataModel.HotSearchItem)localObject1;; paramHotSearchItem = null)
+  }
+  
+  public int a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return ((ahrh)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).c;
+    }
+    return 1;
+  }
+  
+  protected void a()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(new ahrh(0, 2131364733, alud.a(2131702956)));
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(new ahrh(6, 2131364730, alud.a(2131702942)));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new ahrh(1, 2131364729, alud.a(2131702913)));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new ahrh(2, 2131364734, alud.a(2131702955)));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new ahrh(3, 2131364727, alud.a(2131702939)));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new ahrh(4, 2131364731, alud.a(2131702935)));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new ahrh(5, 2131364732, swy.a()));
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
+    this.jdField_a_of_type_ArrayOfInt = new int[j];
+    int i = 0;
+    while (i < j)
     {
-      if (paramHotSearchItem == null) {
-        return;
-      }
-      localObject2 = paramHotSearchItem.jumpUrl;
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = SearchConfigUtils.a(paramHotSearchItem.title, 5, "hotword");
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        localObject2 = JumpParser.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, (String)localObject1);
-        if (localObject2 != null)
-        {
-          ((JumpAction)localObject2).b();
-          com.tencent.mobileqq.search.SearchUtil.a = true;
-        }
-      }
-      while (paramHotSearchItem.showType == 2)
-      {
-        SearchUtils.a("hot_list", "clk_index", new String[] { "", String.valueOf(this.a.jdField_a_of_type_Int) });
-        return;
-        if ((((String)localObject1).startsWith("http://")) || (((String)localObject1).startsWith("https://")))
-        {
-          localObject2 = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-          ((Intent)localObject2).putExtra("url", (String)localObject1);
-          ((Intent)localObject2).putExtra("search_title", paramHotSearchItem.title);
-          this.a.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
-          com.tencent.mobileqq.search.SearchUtil.a = true;
-        }
-        else if (QLog.isColorLevel())
-        {
-          QLog.d("Q.uniteSearch.HotWordSearchEntryModel", 2, "OnTipClickListener jumpUrl is illegal");
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.uniteSearch.HotWordSearchEntryModel", 2, "OnTipClickListener jumpUrl is empty");
-          }
-        }
-      }
-      SearchUtils.a("hot_list", "clk_hot_list", new String[] { paramHotSearchItem.title, String.valueOf(this.a.jdField_a_of_type_Int), String.valueOf(this.a.jdField_a_of_type_JavaUtilList.indexOf(paramHotSearchItem) + 1) });
-      localObject1 = new JSONObject();
-      try
-      {
-        ((JSONObject)localObject1).put("project", UniteSearchReportController.a());
-        ((JSONObject)localObject1).put("event_src", "client");
-        localObject2 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("hot_list").action("clk_hot_list");
-        if (this.a.jdField_a_of_type_Int == 3)
-        {
-          i = 21;
-          UniteSearchReportController.a(null, localReportModelDC02528.ver2(UniteSearchReportController.a(i)).ver4(paramHotSearchItem.title).ver7(((JSONObject)localObject1).toString()).session_id(((QQAppInterface)localObject2).getCurrentAccountUin() + this.a.jdField_a_of_type_Long));
-          return;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          QLog.e("Q.uniteSearch.HotWordSearchEntryModel", 2, "e = " + localJSONException);
-          continue;
-          int i = this.a.jdField_a_of_type_Int;
-        }
-      }
+      this.jdField_a_of_type_ArrayOfInt[i] = ((ahrh)this.jdField_a_of_type_JavaUtilArrayList.get(i)).d;
+      this.jdField_a_of_type_ArrayOfJavaLangString[i] = ((ahrh)this.jdField_a_of_type_JavaUtilArrayList.get(i)).f;
+      i += 1;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactsTabs", 2, "buildData showRecommend:" + this.jdField_a_of_type_Boolean + " tabSize:" + j);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (!babd.a()))
+    {
+      paramBoolean = true;
+      if (paramBoolean == this.jdField_a_of_type_Boolean) {
+        break label200;
+      }
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      if (!paramBoolean) {
+        break label146;
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.add(0, new ahrh(0, 2131364733, alud.a(2131702910)));
+    }
+    int j;
+    for (;;)
+    {
+      j = this.jdField_a_of_type_JavaUtilArrayList.size();
+      this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
+      this.jdField_a_of_type_ArrayOfInt = new int[j];
+      int i = 0;
+      while (i < j)
+      {
+        ahrh localahrh = (ahrh)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        if (localahrh.c == 5) {
+          localahrh.f = swy.a();
+        }
+        this.jdField_a_of_type_ArrayOfInt[i] = localahrh.d;
+        this.jdField_a_of_type_ArrayOfJavaLangString[i] = localahrh.f;
+        i += 1;
+      }
+      paramBoolean = false;
+      break;
+      label146:
+      this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactsTabs", 2, "update showRecommend1:" + paramBoolean + " tabSize:" + j);
+    }
+    return true;
+    label200:
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactsTabs", 2, "update showRecommend2:" + paramBoolean + " tabSize:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+    }
+    return false;
+  }
+  
+  public int b(int paramInt)
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (((ahrh)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c == paramInt) {
+        return i;
+      }
+      i += 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahrc
  * JD-Core Version:    0.7.0.1
  */

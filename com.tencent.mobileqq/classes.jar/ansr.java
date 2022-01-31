@@ -1,21 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.graphics.Bitmap;
 
-public class ansr
-  implements View.OnClickListener
+public abstract interface ansr
 {
-  public ansr(EditVideoButton paramEditVideoButton) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.a(22);
-  }
+  public abstract void a(String paramString1, String paramString2, Bitmap paramBitmap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ansr
  * JD-Core Version:    0.7.0.1
  */

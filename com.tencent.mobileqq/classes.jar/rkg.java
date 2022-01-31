@@ -1,28 +1,22 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMessageHelper;
-import com.tencent.mobileqq.statistics.ReportController;
-
-public class rkg
-  implements View.OnClickListener
+class rkg
+  implements bhun
 {
-  public rkg(AddRequestActivity paramAddRequestActivity) {}
+  rkg(rkd paramrkd) {}
   
-  public void onClick(View paramView)
+  public void ap_()
   {
-    paramView = this.a.getIntent();
-    paramView.putExtra("param_wzry_data", AddRequestActivity.a(this.a));
-    SystemMessageHelper.a(this.a.app, this.a, this.a.jdField_a_of_type_JavaLangString, AddRequestActivity.a(this.a), this.a.jdField_a_of_type_Int, AddRequestActivity.a(this.a), paramView);
-    if (AddRequestActivity.a(this.a) != null) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X800843E", "0X800843E", 0, 0, "", "", "", "");
+    if (rkd.c(this.a))
+    {
+      rkd.c(this.a, false);
+      rkd.a(this.a).a(rkd.a(this.a), rkd.b(this.a), true, false);
+      return;
     }
+    rkd.a(this.a).a(rkd.a(this.a), rkd.b(this.a), true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rkg
  * JD-Core Version:    0.7.0.1
  */

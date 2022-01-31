@@ -8,7 +8,7 @@ public class AVRedPacketManager$GameStateInfo
   implements Serializable
 {
   String authKey;
-  public List configEmojiInfos;
+  public List<AVRedPacketManager.LocalEmojiInfo> configEmojiInfos;
   public int count_OnFrameDataSend = 0;
   int curCommCnt;
   int curScore;
@@ -26,7 +26,7 @@ public class AVRedPacketManager$GameStateInfo
   String money;
   String receiveRedPacketUin;
   String sendRedPacketUin;
-  HashSet syncSuccEmojiId = new HashSet();
+  HashSet<Integer> syncSuccEmojiId = new HashSet();
   
   AVRedPacketManager$GameStateInfo(GameStateInfo paramGameStateInfo)
   {

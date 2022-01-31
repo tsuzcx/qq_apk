@@ -1,43 +1,87 @@
-import android.annotation.TargetApi;
-import android.content.ClipData;
-import android.content.ClipData.Item;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class afha
-  implements View.OnLongClickListener
+class afha
+  implements View.OnClickListener
 {
-  public afha(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  afha(afgz paramafgz) {}
   
-  @TargetApi(11)
-  public boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    if (this.a.a.getChildCount() <= 1) {
-      return true;
-    }
-    Object localObject = new ClipData.Item("");
-    paramView.startDrag(new ClipData("", new String[] { "text/plain" }, (ClipData.Item)localObject), new afhn(this.a, paramView), paramView, 0);
-    localObject = NearbyProfileEditPanel.a(this.a, (PicInfo)paramView.getTag(), null);
-    ((RelativeLayout)localObject).setVisibility(4);
-    NearbyProfileEditPanel.a(this.a, (RelativeLayout)localObject);
-    int i = this.a.a.indexOfChild(paramView);
-    if (i != -1)
+    Object localObject;
+    if (afgz.a(this.a) != null)
     {
-      this.a.a.removeView(paramView);
-      this.a.a.addView(NearbyProfileEditPanel.a(this.a), i);
-      return true;
+      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      long l1;
+      switch (afgz.a(this.a).jumpType)
+      {
+      default: 
+        if (localObject != null)
+        {
+          localObject = (asig)((QQAppInterface)localObject).a(153);
+          l1 = 0L;
+        }
+        break;
+      }
+      try
+      {
+        long l2 = Long.valueOf(afgx.a(this.a.a)).longValue();
+        l1 = l2;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        for (;;)
+        {
+          QLog.e("intimate_relationship", 2, "valueOf string err");
+        }
+      }
+      ((asig)localObject).a(l1, afgz.a(this.a).dateType);
     }
-    paramView.setVisibility(4);
-    return true;
+    for (;;)
+    {
+      if (afgz.a(this.a) != null) {
+        afgz.a(this.a).a(paramView, afgz.a(this.a));
+      }
+      return;
+      if ((afgz.a(this.a).linkUrl != null) && (this.a.a.a != null))
+      {
+        azqs.b(null, "dc00898", "", "", "0X800A208 ", "0X800A208 ", afgz.a(this.a).dateType, 0, "", "", "", "");
+        QLog.d("Intimate report test", 2, "REPORT_TAG_0X800A208");
+        bdhk localbdhk = bdib.a((QQAppInterface)localObject, this.a.a.a, afgz.a(this.a).linkUrl);
+        if (localbdhk != null) {
+          localbdhk.c();
+        }
+        while (QLog.isColorLevel())
+        {
+          QLog.d("intimate_relationship", 2, "click  scheme: " + afgz.a(this.a).linkUrl);
+          break;
+          if (afgz.a(this.a).linkUrl.toLowerCase().startsWith("mqzone://")) {
+            bjdt.c(this.a.a.a, afgz.a(this.a).linkUrl);
+          } else {
+            afgx.a(this.a.a.a, afgz.a(this.a).linkUrl);
+          }
+        }
+      }
+      QLog.e("intimate_relationship", 2, "click  scheme: linkUrl or context is null");
+      break;
+      azqs.b(null, "dc00898", "", "", "0X800A208 ", "0X800A208 ", afgz.a(this.a).dateType, 0, "", "", "", "");
+      QLog.d("Intimate report test", 2, "REPORT_TAG_0X800A208");
+      if (afgx.a(this.a.a) == null) {
+        break;
+      }
+      afgx.a(this.a.a).a(afgz.a(this.a));
+      break;
+      QLog.e("intimate_relationship", 2, "click  mInfo is null");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afha
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.voip.VoipDialInterface;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class evf
-  extends TroopObserver
+  implements View.OnClickListener
 {
-  public evf(SelectMemberActivity paramSelectMemberActivity) {}
+  public evf(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  protected void a(int paramInt, byte paramByte)
+  public void onClick(View paramView)
   {
-    if (paramInt == 8)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "add troop member fail");
-      }
-      this.a.a.sendEmptyMessage(1);
+    this.a.a.a("5");
+    VoipDialInterfaceActivity.a(this.a, '5');
+    if (VoipDialInterfaceActivity.b(this.a)) {
+      new Thread(new evg(this)).start();
     }
-  }
-  
-  protected void a(int paramInt, byte paramByte, String paramString)
-  {
-    if (paramInt == 8)
-    {
-      if (paramByte != 0) {
-        break label95;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "add troop member success");
-      }
-      this.a.a.sendEmptyMessage(0);
-      if (!SelectMemberActivity.a(this.a))
-      {
-        paramInt = this.a.a();
-        this.a.a(paramInt + 1);
-        ReportController.b(this.a.b, "CliOper", "", "", "Grp", "Send_invite", 0, 0, "", "", "", "");
-      }
-    }
-    return;
-    label95:
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "add troop member fail, troopUin: " + paramString + " result: " + paramByte);
-    }
-    paramString = null;
-    if (paramByte == 7) {
-      paramString = this.a.getString(2131561460);
-    }
-    this.a.a.obtainMessage(1, paramString).sendToTarget();
   }
 }
 

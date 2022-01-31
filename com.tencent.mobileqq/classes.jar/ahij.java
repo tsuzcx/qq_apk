@@ -1,23 +1,25 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragment;
-import com.tencent.mobileqq.widget.CircleProgress;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
 
 public class ahij
-  implements Runnable
+  implements ahkc
 {
-  public ahij(CaptureSoDownloadFragment paramCaptureSoDownloadFragment, String paramString) {}
+  public ahij(SearchContactsFragment paramSearchContactsFragment) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    CaptureSoDownloadFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragment).setProgress(CaptureSoDownloadFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragment));
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureSoDownloadFragment", 2, "" + this.jdField_a_of_type_JavaLangString + " setProgress=" + CaptureSoDownloadFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragment));
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Int = 80000001;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_history", 0, 0, "", "", paramString, "");
+      this.a.a(paramString, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahij
  * JD-Core Version:    0.7.0.1
  */

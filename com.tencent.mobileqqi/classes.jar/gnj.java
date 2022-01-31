@@ -1,138 +1,45 @@
-import android.annotation.TargetApi;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Set;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.ForwardImageProcessor;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class gnj
-  implements SharedPreferences.Editor
+  extends TransProcessorHandler
 {
-  private SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
-  private boolean jdField_a_of_type_Boolean = false;
+  public gnj(ForwardImageProcessor paramForwardImageProcessor) {}
   
-  public gnj(MessageCache paramMessageCache, SharedPreferences.Editor paramEditor)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = paramEditor;
-  }
-  
-  @TargetApi(9)
-  public void apply()
-  {
-    if (this.jdField_a_of_type_Boolean)
+    int i = paramMessage.what;
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if ((i == 2002) || ((ForwardImageProcessor.a(this.a).equals(localFileMsg.m)) && (localFileMsg.e == 1) && (i != 2002)))
     {
-      this.jdField_a_of_type_Boolean = false;
-      if (Build.VERSION.SDK_INT >= 9) {}
-    }
-    else
-    {
-      try
-      {
-        this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+      if ((localFileMsg.o == null) || (!localFileMsg.o.equals(ForwardImageProcessor.b(this.a)))) {
         return;
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
+      switch (i)
       {
-        if (QLog.isColorLevel()) {
-          QLog.w(MessageCache.c(), 2, "commit OutOfMemoryError ! ", localOutOfMemoryError);
-        }
-        this.jdField_a_of_type_Boolean = true;
-        return;
       }
-      catch (Exception localException)
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      ForwardImageProcessor.a(this.a);
+      continue;
+      if (FileUtils.b(ForwardImageProcessor.c(this.a)))
       {
-        if (QLog.isColorLevel()) {
-          QLog.w(MessageCache.c(), 2, "commit Exception ! ", localException);
-        }
-        this.jdField_a_of_type_Boolean = true;
-        return;
+        ForwardImageProcessor.a(this.a).a().b(this);
+        ForwardImageProcessor.b(this.a);
+      }
+      else
+      {
+        ForwardImageProcessor.a(this.a);
       }
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
-  }
-  
-  public SharedPreferences.Editor clear()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.clear();
-    return this;
-  }
-  
-  public boolean commit()
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = false;
-    }
-    try
-    {
-      bool = this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
-      return bool;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w(MessageCache.c(), 2, "commit OutOfMemoryError ! ", localOutOfMemoryError);
-      }
-      this.jdField_a_of_type_Boolean = true;
-      return false;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w(MessageCache.c(), 2, "commit Exception ! ", localException);
-      }
-      this.jdField_a_of_type_Boolean = true;
-    }
-    return false;
-  }
-  
-  public SharedPreferences.Editor putBoolean(String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putBoolean(paramString, paramBoolean);
-    return this;
-  }
-  
-  public SharedPreferences.Editor putFloat(String paramString, float paramFloat)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putFloat(paramString, paramFloat);
-    return this;
-  }
-  
-  public SharedPreferences.Editor putInt(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt(paramString, paramInt);
-    return this;
-  }
-  
-  public SharedPreferences.Editor putLong(String paramString, long paramLong)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(paramString, paramLong);
-    return this;
-  }
-  
-  public SharedPreferences.Editor putString(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putString(paramString1, paramString2);
-    return this;
-  }
-  
-  @Deprecated
-  public SharedPreferences.Editor putStringSet(String paramString, Set paramSet)
-  {
-    return this;
-  }
-  
-  public SharedPreferences.Editor remove(String paramString)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.remove(paramString);
-    return this;
   }
 }
 

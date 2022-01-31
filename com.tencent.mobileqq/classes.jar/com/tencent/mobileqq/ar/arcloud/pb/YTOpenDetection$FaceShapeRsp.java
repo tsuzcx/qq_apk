@@ -10,12 +10,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class YTOpenDetection$FaceShapeRsp
-  extends MessageMicro
+  extends MessageMicro<FaceShapeRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field errorcode = PBField.initInt32(0);
   public final PBStringField errormsg = PBField.initString("");
-  public final PBRepeatMessageField face_shape = PBField.initRepeatMessage(YTOpenBase.FaceShapeItem.class);
+  public final PBRepeatMessageField<YTOpenBase.FaceShapeItem> face_shape = PBField.initRepeatMessage(YTOpenBase.FaceShapeItem.class);
   public final PBBytesField image = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBInt32Field image_height = PBField.initInt32(0);
   public final PBInt32Field image_width = PBField.initInt32(0);
@@ -29,7 +29,7 @@ public final class YTOpenDetection$FaceShapeRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.YTOpenDetection.FaceShapeRsp
  * JD-Core Version:    0.7.0.1
  */

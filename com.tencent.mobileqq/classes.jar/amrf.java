@@ -1,18 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.CrashGuard;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 public class amrf
-  implements Runnable
 {
-  public amrf(CrashGuard paramCrashGuard, long paramLong) {}
-  
-  public void run()
+  public static Object a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_CooperationQzoneCrashGuard.isTimeOvered.set(true);
-    QLog.i("QZLog", 1, "clear crash count with no crash");
-    LocalMultiProcConfig.putInt4Uin("key_crash_count", 0, this.jdField_a_of_type_Long);
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return null;
+    }
+    return new ObjectInputStream(new ByteArrayInputStream(paramArrayOfByte)).readObject();
+  }
+  
+  public static byte[] a(Serializable paramSerializable)
+  {
+    if (paramSerializable == null) {
+      return null;
+    }
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    new ObjectOutputStream(localByteArrayOutputStream).writeObject(paramSerializable);
+    return localByteArrayOutputStream.toByteArray();
   }
 }
 

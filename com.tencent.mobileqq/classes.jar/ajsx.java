@@ -1,17 +1,40 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
 
-public class ajsx
-  implements ValueAnimator.AnimatorUpdateListener
+class ajsx
+  implements baug
 {
-  public ajsx(RedDotAnimateView paramRedDotAnimateView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onResp(bavf parambavf)
   {
-    this.a.jdField_a_of_type_Float = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * this.a.jdField_a_of_type_Int / 2.0F);
-    this.a.invalidate();
+    Object localObject = (ajta)parambavf.jdField_a_of_type_Bave.a();
+    lek.c("VideoFilterTools", "download file call back. file = " + ((ajta)localObject).a);
+    if (parambavf.jdField_a_of_type_Int != 0)
+    {
+      lek.c("VideoFilterTools", "download file faild. errcode = " + parambavf.b);
+      return;
+    }
+    if (!((ajta)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(parambavf.jdField_a_of_type_Bave.c)))
+    {
+      lek.c("VideoFilterTools", "download file faild : md5 is not match.");
+      bdhb.d(parambavf.jdField_a_of_type_Bave.c);
+      return;
+    }
+    lek.c("VideoFilterTools", "download file successed.");
+    try
+    {
+      localObject = ajsv.a();
+      bdhb.a(parambavf.jdField_a_of_type_Bave.c, (String)localObject, false);
+      bdhb.d(parambavf.jdField_a_of_type_Bave.c);
+      return;
+    }
+    catch (IOException parambavf)
+    {
+      parambavf.printStackTrace();
+      lek.c("VideoFilterTools", "BEAUTY_ZIP unzip file faild.");
+    }
   }
+  
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

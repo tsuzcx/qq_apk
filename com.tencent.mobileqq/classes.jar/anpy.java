@@ -1,31 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
-import dov.com.qq.im.capture.view.QIMPtvTemplateProviderView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
 public class anpy
-  extends CaptureConfigUpdateObserver
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public anpy(QIMPtvTemplateProviderView paramQIMPtvTemplateProviderView) {}
+  public anpy(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void d()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PtvTemplateProviderView", 2, "onFaceUUpdate!");
+    if (paramBoolean)
+    {
+      this.a.b();
+      this.a.a("");
+      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("IDEDebug is open", new Object[0]));
+      return;
     }
-    this.a.d();
-  }
-  
-  public void g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PtvTemplateProviderView", 2, "onSegmentModeUpdate!");
-    }
-    this.a.a(false);
+    this.a.c();
+    this.a.a("close");
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("IDEDebug is close", new Object[0]));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpy
  * JD-Core Version:    0.7.0.1
  */

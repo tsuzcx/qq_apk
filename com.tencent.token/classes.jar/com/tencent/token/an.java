@@ -1,12 +1,14 @@
 package com.tencent.token;
 
-public class an
-  extends ao
+public abstract interface an
 {
-  public int b;
-  public String c;
-  public int d;
-  public short e;
+  public abstract am a(Runnable paramRunnable);
+  
+  public abstract am b(Runnable paramRunnable);
+  
+  public abstract am c(Runnable paramRunnable);
+  
+  public abstract am d(Runnable paramRunnable);
 }
 
 

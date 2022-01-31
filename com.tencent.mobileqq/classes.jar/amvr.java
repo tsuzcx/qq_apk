@@ -1,15 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.1.1;
 
 public class amvr
-  implements View.OnClickListener
+  extends ante
 {
-  public amvr(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  amvr(amvq paramamvq) {}
   
-  public void onClick(View paramView)
+  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
   {
-    QzoneWebMusicJsPlugin.access$300(this.a, "buttonclick");
+    amvq.a(this.a).a(new ARTransferPromotionRenderable.1.1(this, paramArrayOfFloat));
   }
 }
 

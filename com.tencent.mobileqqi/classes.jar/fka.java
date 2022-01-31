@@ -1,31 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.transfile.ProtoReqManager.IProtoRespBack;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.RspHead;
+import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
 
 public class fka
-  implements SosoInterface.OnLocationListener
+  implements ProtoReqManager.IProtoRespBack
 {
-  public fka(QQAppInterface paramQQAppInterface) {}
+  public fka(SystemMessageProcessor paramSystemMessageProcessor, long paramLong1, long paramLong2, long paramLong3) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo, byte[] paramArrayOfByte, SosoInterface paramSosoInterface)
+  public void a(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBS", 2, "onLocationFinish result:" + paramInt);
-    }
-    com.tencent.mobileqq.app.LBSHandler.v = paramInt;
-    paramSosoInterface = QQAppInterface.a(this.a);
-    if (paramInt == 0) {}
     try
     {
-      QQAppInterface.a(this.a, paramArrayOfByte);
-      QQAppInterface.a(this.a, paramSosoLbsInfo);
-      QQAppInterface.a(this.a, QQAppInterface.a(paramSosoLbsInfo));
-      QQAppInterface.a(this.a).notifyAll();
+      paramProtoResp = paramProtoResp.a.getWupBuffer();
+      paramProtoReq = new structmsg.RspSystemMsgRead();
+      paramProtoReq.mergeFrom(paramProtoResp);
+      int i = paramProtoReq.head.result.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.", 2, "clearGroupSystemMsgResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
+      }
       return;
     }
-    finally {}
+    catch (Exception paramProtoResp)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.systemmsg.", 2, "clearGroupSystemMsgResp exception", paramProtoResp);
+    }
   }
 }
 

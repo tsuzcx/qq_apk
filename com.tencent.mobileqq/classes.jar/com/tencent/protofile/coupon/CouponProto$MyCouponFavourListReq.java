@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class CouponProto$MyCouponFavourListReq
-  extends MessageMicro
+  extends MessageMicro<MyCouponFavourListReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "ts", "stype" }, new Object[] { Long.valueOf(0L), "" }, MyCouponFavourListReq.class);
   public final PBStringField stype = PBField.initString("");
@@ -15,7 +15,7 @@ public final class CouponProto$MyCouponFavourListReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.protofile.coupon.CouponProto.MyCouponFavourListReq
  * JD-Core Version:    0.7.0.1
  */

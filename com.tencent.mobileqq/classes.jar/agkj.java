@@ -1,53 +1,244 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.net.URLEncoder;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IBinder.DeathRecipient;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.RemoteException;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
 
-public class agkj
-  implements DialogInterface.OnClickListener
+public abstract class agkj
+  extends Binder
+  implements agki, IBinder.DeathRecipient
 {
-  public agkj(PhoneNumLoginImpl paramPhoneNumLoginImpl, String paramString, Activity paramActivity, QQAppInterface paramQQAppInterface) {}
+  public agkl a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected agkj()
+  {
+    attachInterface(this, "com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+  }
+  
+  public static agki a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+    if ((localIInterface != null) && ((localIInterface instanceof agki))) {
+      return (agki)localIInterface;
+    }
+    return new agkk(paramIBinder);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PEAK", 2, "binder destoryed");
+    }
+    this.a = null;
+  }
+  
+  public void a(agkl paramagkl)
   {
     try
     {
-      paramDialogInterface.dismiss();
-      paramDialogInterface = new StringBuilder("http://aq.qq.com/cn2/change_psw/mobile/mobile_change_psw_reg_input_psw");
-      paramDialogInterface.append("?");
-      paramDialogInterface.append("uin=");
-      paramDialogInterface.append(this.jdField_a_of_type_JavaLangString);
-      paramDialogInterface.append("&plat=1");
-      paramDialogInterface.append("&app=1");
-      paramDialogInterface.append("&version=7.6.3.3560");
-      paramDialogInterface.append("&device=" + URLEncoder.encode(Build.DEVICE));
-      paramDialogInterface.append("&system=" + Build.VERSION.RELEASE);
-      paramDialogInterface.append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
-      paramDialogInterface = paramDialogInterface.toString();
-      Intent localIntent = new Intent();
-      localIntent.putExtra("portraitOnly", true);
-      localIntent.putExtra("url", paramDialogInterface);
-      localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("hide_operation_bar", true);
-      localIntent.putExtra("hide_more_button", true);
-      VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_AndroidAppActivity, paramDialogInterface, 32768L, localIntent, false, -1);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Mobile_signup", "Setiing_pw_tips", 0, 0, "", "", "", "");
+      paramagkl.asBinder().linkToDeath(this, 0);
+      this.a = paramagkl;
       return;
     }
-    catch (Exception paramDialogInterface)
+    catch (RemoteException paramagkl)
     {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
+      binderDied();
     }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public void binderDied()
+  {
+    a();
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    boolean bool = false;
+    switch (paramInt1)
+    {
+    default: 
+    case 1598968902: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 17: 
+    case 18: 
+    case 4: 
+    case 5: 
+      try
+      {
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      }
+      catch (RuntimeException paramParcel1)
+      {
+        paramParcel1.printStackTrace();
+        throw paramParcel1;
+      }
+      paramParcel2.writeString("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      b(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a((MessageForShortVideo)paramParcel1.readParcelable(MessageForShortVideo.class.getClassLoader()));
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(agkm.a(paramParcel1.readStrongBinder()));
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      paramParcel1 = a(paramParcel1.readLong(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+      }
+      else
+      {
+        paramParcel2.writeInt(0);
+      }
+      break;
+    case 6: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 7: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(paramParcel1.readLong(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 8: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(paramParcel1.readString(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 9: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      paramParcel1 = a(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+      }
+      else
+      {
+        paramParcel2.writeInt(0);
+      }
+      break;
+    case 10: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      b(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+    case 11: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      c(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+    case 20: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      localObject = new long[paramParcel1.readInt()];
+      paramParcel1.readLongArray((long[])localObject);
+      a((long[])localObject);
+      paramParcel2.writeNoException();
+      return true;
+    case 24: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      d(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+    case 13: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      e(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+    case 14: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      paramParcel1 = a(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+      }
+      else
+      {
+        paramParcel2.writeInt(0);
+      }
+      break;
+    case 15: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      c();
+      paramParcel2.writeNoException();
+      return true;
+    case 16: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      a(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readBundle());
+      paramParcel2.writeNoException();
+      return true;
+    case 19: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      paramInt1 = a(paramParcel1.readLong(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 21: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      b(paramParcel1.readString(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 22: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+      paramParcel1 = a(paramParcel1.readString(), paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramParcel2.writeString(paramParcel1);
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider");
+    paramInt1 = paramParcel1.readInt();
+    paramInt2 = paramParcel1.readInt();
+    Object localObject = paramParcel1.readString();
+    String str1 = paramParcel1.readString();
+    String str2 = paramParcel1.readString();
+    paramParcel1 = paramParcel1.readString();
+    if (paramInt2 == 1) {
+      bool = true;
+    }
+    a(paramInt1, bool, (String)localObject, str1, str2, paramParcel1);
+    paramParcel2.writeNoException();
+    return true;
+    return true;
+    return true;
+    return true;
   }
 }
 

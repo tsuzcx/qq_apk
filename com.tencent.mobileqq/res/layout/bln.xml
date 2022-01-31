@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="15.0sp" android:textColor="@color/qzone_skin_font_panel_tab_btn_text_color" android:gravity="center" android:id="@id/hif" android:background="@drawable/ayn" android:padding="8.0dip" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/rwf" android:layout_weight="1.0" />
+    <RelativeLayout android:id="@id/hsa" android:background="@drawable/ayn" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <TextView android:textSize="15.0sp" android:textColor="@color/qzone_skin_font_panel_tab_btn_text_color" android:gravity="center" android:id="@id/hs9" android:padding="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rwe" android:layout_centerInParent="true" />
+        <ImageView android:layout_gravity="center|right|top" android:id="@id/hs_" android:paddingTop="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/skin_tips_dot" android:layout_alignTop="@id/hs9" android:layout_alignRight="@id/hs9" />
+    </RelativeLayout>
+    <TextView android:textSize="15.0sp" android:textColor="@color/qzone_skin_font_panel_tab_btn_text_color" android:gravity="center" android:id="@id/hjh" android:background="@drawable/ayn" android:padding="8.0dip" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/rwb" android:layout_weight="1.0" />
+</LinearLayout>

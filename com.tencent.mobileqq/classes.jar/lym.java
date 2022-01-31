@@ -1,30 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoCompositeManager.OnVideoCompositeListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.graphics.Point;
+import com.tencent.av.screenshare.floatingwindow.ScreenShareFloatingRelativeLayout;
 
-public class lym
-  implements ReadInJoyVideoCompositeManager.OnVideoCompositeListener
+public abstract interface lym
 {
-  public lym(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  public abstract Point a();
   
-  public void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString)
-  {
-    QLog.d("ReadInJoyDeliverVideoActivity", 2, "onError: code - " + paramInt + " msg - " + paramString);
-    ReadInJoyDeliverVideoActivity.a(this.a).post(new lyo(this));
-  }
+  public abstract void a(ScreenShareFloatingRelativeLayout paramScreenShareFloatingRelativeLayout, int paramInt1, int paramInt2);
   
-  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
-    QLog.d("ReadInJoyDeliverVideoActivity", 2, "onSuccess: outputPath - " + paramString);
-    ReadInJoyDeliverVideoActivity.b(this.a, paramString);
-    ReadInJoyDeliverVideoActivity.a(this.a).post(new lyn(this));
-  }
+  public abstract boolean a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lym
  * JD-Core Version:    0.7.0.1
  */

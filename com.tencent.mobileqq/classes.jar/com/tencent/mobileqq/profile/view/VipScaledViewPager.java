@@ -24,7 +24,7 @@ public class VipScaledViewPager
   private int jdField_a_of_type_Int;
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private HashMap<Integer, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
@@ -233,7 +233,7 @@ public class VipScaledViewPager
     return false;
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     Point localPoint = new Point(View.MeasureSpec.getSize(paramInt1), View.MeasureSpec.getSize(paramInt2));
     if ((this.jdField_c_of_type_Int >= 0) || (this.d >= 0))
@@ -246,7 +246,7 @@ public class VipScaledViewPager
     a(paramInt1, paramInt2);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.jdField_a_of_type_Int = a();
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
@@ -300,7 +300,7 @@ public class VipScaledViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.VipScaledViewPager
  * JD-Core Version:    0.7.0.1
  */

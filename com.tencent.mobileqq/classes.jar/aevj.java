@@ -1,21 +1,12 @@
-import com.tencent.mobileqq.nearby.now.send.EditVideoUi;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader;
-
-class aevj
-  implements Runnable
+public abstract interface aevj
 {
-  aevj(aevi paramaevi) {}
+  public abstract void a();
   
-  public void run()
-  {
-    if ((ImageFeedsUploader.a(this.a.a) != null) && (ImageFeedsUploader.a(this.a.a).a() != null)) {
-      ImageFeedsUploader.a(this.a.a).a(0, null, 0, 0);
-    }
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aevj
  * JD-Core Version:    0.7.0.1
  */

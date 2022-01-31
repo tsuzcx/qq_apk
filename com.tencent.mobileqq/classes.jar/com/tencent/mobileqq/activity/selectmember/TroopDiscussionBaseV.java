@@ -10,7 +10,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public abstract class TroopDiscussionBaseV
   extends FrameLayout
 {
-  public Context a;
+  protected Context a;
   public LayoutInflater a;
   public InnerFrameManager a;
   public SelectMemberActivity a;
@@ -45,7 +45,7 @@ public abstract class TroopDiscussionBaseV
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.TroopDiscussionBaseV
  * JD-Core Version:    0.7.0.1
  */

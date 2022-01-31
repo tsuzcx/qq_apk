@@ -1,22 +1,32 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.BaseSearchActivity;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.widget.SimpleTextView;
 
-public class ahrt
-  implements View.OnClickListener
+class ahrt
+  extends bibk
 {
-  public ahrt(BaseSearchActivity paramBaseSearchActivity) {}
-  
-  public void onClick(View paramView)
+  ahrt(ahrs paramahrs, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    BaseSearchActivity.b = 1;
-    this.a.a.setText("");
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public View a(int paramInt, Object paramObject, bibj parambibj, View.OnClickListener paramOnClickListener)
+  {
+    parambibj = super.a(paramInt, paramObject, parambibj, paramOnClickListener);
+    if ((parambibj instanceof SimpleTextView)) {
+      parambibj.setTag(paramObject);
+    }
+    return parambibj;
+  }
+  
+  public void a(int paramInt, Object paramObject, bibj[] paramArrayOfbibj)
+  {
+    this.a.a(paramInt, paramArrayOfbibj, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahrt
  * JD-Core Version:    0.7.0.1
  */

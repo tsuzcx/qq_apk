@@ -1,26 +1,83 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
 public class wev
-  implements MediaPlayer.OnCompletionListener
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, vdl>
 {
-  public wev(BlessActivity paramBlessActivity) {}
-  
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public wev(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onCompletion");
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vdl paramvdl)
+  {
+    if ((paramvdl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvdl.jdField_a_of_type_JavaUtilList != null) && (!paramvdl.jdField_a_of_type_JavaUtilList.isEmpty()) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
+    {
+      if (!paramQQStoryShareGroupProfileActivity.g) {
+        break label54;
+      }
+      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView.a.notifyDataSetChanged();
     }
-    BlessActivity.a(this.a, true);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800632E", "0X800632E", 0, 0, "", "", "", "");
+    label54:
+    int j;
+    do
+    {
+      return;
+      j = 0;
+      int i = j;
+      Object localObject;
+      if (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList != null)
+      {
+        i = j;
+        if (!paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList.isEmpty())
+        {
+          localObject = paramvdl.jdField_a_of_type_JavaUtilList.iterator();
+          QQUserUIItem localQQUserUIItem;
+          do
+          {
+            i = j;
+            if (!((Iterator)localObject).hasNext()) {
+              break;
+            }
+            localQQUserUIItem = (QQUserUIItem)((Iterator)localObject).next();
+          } while (!paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList.contains(localQQUserUIItem.uid));
+          i = 1;
+        }
+      }
+      j = i;
+      if (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.d))
+      {
+        paramvdl = paramvdl.jdField_a_of_type_JavaUtilList.iterator();
+        do
+        {
+          j = i;
+          if (!paramvdl.hasNext()) {
+            break;
+          }
+          localObject = (QQUserUIItem)paramvdl.next();
+        } while (!paramQQStoryShareGroupProfileActivity.d.equals(((QQUserUIItem)localObject).uid));
+        j = 1;
+      }
+    } while (j == 0);
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vdl.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wev
  * JD-Core Version:    0.7.0.1
  */

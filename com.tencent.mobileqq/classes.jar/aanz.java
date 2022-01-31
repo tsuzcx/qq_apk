@@ -1,46 +1,46 @@
-import android.content.res.Resources;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.Context;
+import android.view.View;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import java.lang.ref.WeakReference;
 
-class aanz
-  implements Runnable
+public class aanz
 {
-  aanz(aanw paramaanw, String paramString1, String paramString2, long paramLong, String paramString3) {}
-  
-  public void run()
+  public static int a(int paramInt1, int paramInt2)
   {
-    QQCustomDialog localQQCustomDialog = new QQCustomDialog(BaseActivity.sTopActivity, 2131624516);
-    localQQCustomDialog.setContentView(2130968843);
-    localQQCustomDialog.setTitle(BaseActivity.sTopActivity.getString(2131438244, new Object[] { this.jdField_a_of_type_JavaLangString }));
-    ((ImageView)localQQCustomDialog.findViewById(2131364041)).setImageDrawable(BaseActivity.sTopActivity.getResources().getDrawable(2130838200));
-    ((TextView)localQQCustomDialog.findViewById(2131364042)).setText(this.jdField_a_of_type_JavaLangString);
-    ((TextView)localQQCustomDialog.findViewById(2131362776)).setText(BaseActivity.sTopActivity.getString(2131438826));
-    localQQCustomDialog.setCanceledOnTouchOutside(false);
-    ArkAppCenter.a(this.b, new aaoa(this, localQQCustomDialog));
-    localQQCustomDialog.setNegativeButton(2131434674, new aaob(this, localQQCustomDialog));
-    localQQCustomDialog.setPositiveButton(2131434672, new aaod(this, localQQCustomDialog));
-    try
-    {
-      localQQCustomDialog.show();
-      label159:
-      if (ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, "ark_authority_api_location", this.c) == 0) {
-        ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, "ark_authority_api_location", this.c, 2);
-      }
-      return;
+    if (paramInt1 == 0) {
+      return Double.valueOf(1.0D * paramInt2 / 1026.0D * 249.0D).intValue();
     }
-    catch (Exception localException)
+    aase.d("GdtBannerViewBuilder", "getHeight error");
+    return -2147483648;
+  }
+  
+  public static aany a(aanx paramaanx)
+  {
+    if ((paramaanx == null) || (!paramaanx.a()) || (!paramaanx.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a()))
     {
-      break label159;
+      aase.d("GdtBannerViewBuilder", "build error");
+      return null;
+    }
+    if (paramaanx.jdField_a_of_type_Int == 0) {}
+    for (aaoc localaaoc = new aaoc((Context)paramaanx.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_JavaLangRefWeakReference.get(), paramaanx.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd);; localaaoc = null)
+    {
+      if ((localaaoc != null) && (localaaoc.a() != null) && (aany.a != null))
+      {
+        localaaoc.a().setOnTouchListener(new aaoa(localaaoc));
+        localaaoc.a().setOnClickListener(new aaob(localaaoc, paramaanx));
+      }
+      if (localaaoc != null) {
+        localaaoc.a(paramaanx.b, paramaanx.c);
+      }
+      AdReporterForAnalysis.reportForBanner((Context)paramaanx.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_JavaLangRefWeakReference.get(), paramaanx.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+      return localaaoc;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aanz
  * JD-Core Version:    0.7.0.1
  */

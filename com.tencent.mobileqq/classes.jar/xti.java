@@ -1,40 +1,45 @@
-import com.tencent.biz.qqstory.takevideo.music.QQStoryMusicInfo;
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.main.P2VEffectConvertor;
+import android.text.TextUtils;
 import java.util.ArrayList;
 
 public class xti
-  implements Runnable
 {
-  public xti(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity, ArrayList paramArrayList) {}
+  public int a;
+  public String a;
+  public ArrayList<Object> a;
+  public xtk a;
+  public String[] a;
   
-  public void run()
+  public xti() {}
+  
+  public xti(String[] paramArrayOfString, String paramString, xtk paramxtk)
   {
-    QQStoryMusicInfo localQQStoryMusicInfo;
-    if (!QzDynamicVideoPreviewActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity))
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_Xtk = paramxtk;
+  }
+  
+  public String toString()
+  {
+    String str1;
+    if (this.jdField_a_of_type_ArrayOfJavaLangString == null)
     {
-      QzDynamicVideoPreviewActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity, true);
-      localQQStoryMusicInfo = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity.a(QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity));
-      if (localQQStoryMusicInfo != null) {
-        break label82;
+      str1 = "null";
+      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+        break label86;
       }
-      QzDynamicVideoPreviewActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity, false);
     }
-    for (;;)
+    label86:
+    for (String str2 = "null";; str2 = TextUtils.join(",", this.jdField_a_of_type_JavaUtilArrayList.toArray()))
     {
-      QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity).setMediaItems(this.jdField_a_of_type_JavaUtilArrayList);
-      QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity).resetVideoIndex();
-      QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity).prepare();
-      return;
-      label82:
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity.a(localQQStoryMusicInfo);
-      QzDynamicVideoPreviewActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity, true);
+      return "FFmpegCommandUnit{ cmdType :" + this.jdField_a_of_type_Int + "\n cmd: " + str1 + "\n output: " + this.jdField_a_of_type_JavaLangString + "\n arguments: " + str2;
+      str1 = TextUtils.join(" ", this.jdField_a_of_type_ArrayOfJavaLangString);
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xti
  * JD-Core Version:    0.7.0.1
  */

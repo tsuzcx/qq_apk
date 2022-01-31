@@ -1,20 +1,31 @@
-import com.tencent.mobileqq.Doraemon.APICallback;
-import com.tencent.mobileqq.Doraemon.APIParam;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 
-public final class rfj
-  implements Runnable
+public class rfj
+  implements TopGestureLayout.OnGestureListener
 {
-  public rfj(APICallback paramAPICallback, APIParam paramAPIParam) {}
+  public rfj(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public void run()
+  public void flingLToR()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPIParam);
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback.a();
+    if ((VideoFeedsPlayActivity.a(this.a) != null) && (VideoFeedsPlayActivity.a(this.a).a())) {
+      return;
+    }
+    VideoFeedsPlayActivity.a(this.a, true);
+    this.a.e();
+  }
+  
+  public void flingRToL()
+  {
+    if (VideoFeedsPlayActivity.a(this.a) != null) {
+      VideoFeedsPlayActivity.a(this.a).b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rfj
  * JD-Core Version:    0.7.0.1
  */

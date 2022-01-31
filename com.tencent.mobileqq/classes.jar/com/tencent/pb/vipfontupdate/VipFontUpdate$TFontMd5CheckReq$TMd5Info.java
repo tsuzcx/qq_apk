@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class VipFontUpdate$TFontMd5CheckReq$TMd5Info
-  extends MessageMicro
+  extends MessageMicro<TMd5Info>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_md5 = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class VipFontUpdate$TFontMd5CheckReq$TMd5Info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.vipfontupdate.VipFontUpdate.TFontMd5CheckReq.TMd5Info
  * JD-Core Version:    0.7.0.1
  */

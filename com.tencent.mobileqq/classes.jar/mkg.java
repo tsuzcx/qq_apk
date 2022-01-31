@@ -1,19 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
-
-public class mkg
-  implements Runnable
+public abstract interface mkg
 {
-  public mkg(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public abstract void a();
   
-  public void run()
-  {
-    ReadInJoyGlobalReporter.a().b(this.a.a);
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mkg
  * JD-Core Version:    0.7.0.1
  */

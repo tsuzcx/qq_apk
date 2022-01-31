@@ -1,42 +1,25 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
-import com.tencent.mobileqq.statistics.ReportController;
+import java.util.ArrayList;
+import java.util.List;
 
 public class vem
-  implements View.OnClickListener
+  extends uli
 {
-  public vem(ReplyTextItemBuilder paramReplyTextItemBuilder) {}
+  public String a;
+  public List<wnd> a;
   
-  public void onClick(View paramView)
+  public vem()
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    paramView = (String)paramView.getTag();
-    if (!TextUtils.isEmpty(paramView))
-    {
-      Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("hide_more_button", true);
-      localIntent.putExtra("hide_operation_bar", true);
-      localIntent.putExtra("url", paramView);
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).overridePendingTransition(2131034134, 0);
-    }
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_talk", "", "obj", "link_msg", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String toString()
+  {
+    return super.toString() + " collectionId=" + this.jdField_a_of_type_JavaLangString + "mSimpleInfoList.size=" + this.jdField_a_of_type_JavaUtilList.size() + "mSimpleInfoList=" + this.jdField_a_of_type_JavaUtilList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vem
  * JD-Core Version:    0.7.0.1
  */

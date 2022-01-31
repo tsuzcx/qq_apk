@@ -1,28 +1,21 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import mqq.os.MqqHandler;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import feedcloud.FeedCloudMeta.StFeed;
+import java.util.List;
 
-public class ttt
-  extends MqqHandler
+class ttt
+  implements Observer<ubz<List<FeedCloudMeta.StFeed>>>
 {
-  public ttt(SubAccountBindActivity paramSubAccountBindActivity) {}
+  ttt(ttr paramttr) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(@Nullable ubz<List<FeedCloudMeta.StFeed>> paramubz)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1981: 
-      this.a.finish();
-      return;
-    }
-    this.a.d();
+    ttr.b(this.a, paramubz);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ttt
  * JD-Core Version:    0.7.0.1
  */

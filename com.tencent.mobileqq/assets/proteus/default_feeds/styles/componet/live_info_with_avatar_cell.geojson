@@ -1,0 +1,116 @@
+{
+    "view_type": "UIView",
+    "view_id": "id_live_info_with_avatar_cell",
+    "layout_type": "layout_relative",
+    "height": {
+        "type": "wrap_content"
+    },
+    "width": {
+        "type": "relative",
+        "value": "375"
+    },
+    "attributes": {
+        "setAttatchInfo:": "$avatar_info_visibility"
+    },
+    "subviews": [
+        {
+            "view_id": "id_user_container",
+            "view_type": "UIView",
+            "layout_type": "layout_relative",
+            "height": {
+                "type": "relative",
+                "value": "52"
+            },
+            "width": {
+                "type": "relative",
+                "value": "375"
+            },
+            "default_visible": "YES",
+            "subviews": [
+                {
+                    "view_type": "PTSAvatarView",
+                    "view_id": "id_avatar_view",
+                    "align_parent_left": "YES",
+                    "align_parent_center_vertical": "YES",
+                    "margin_left": "12",
+                    "height": {
+                        "type": "absolutely",
+                        "value": "28"
+                    },
+                    "width": {
+                        "type": "absolutely",
+                        "value": "28"
+                    },
+                    "attributes": {
+                        "loadAvatarByUin:": "$avatar_uin",
+                        "setFrameString:": "-1"
+                    }
+                },
+                {
+                    "view_id": "id_dislike_button_2",
+                    "view_type": "UIButton",
+                    "margin_top": "12",
+                    "event_type": "cmd_dislike_click",
+                    "align_parent_right": "YES",
+                    "default_visible": "YES",
+                    "height": {
+                        "type": "absolutely",
+                        "value": "30"
+                    },
+                    "width": {
+                        "type": "absolutely",
+                        "value": "41"
+                    },
+                    "attributes": {
+                        "setImage:": "feeds_dislike"
+                    }
+                },
+                {
+                    "view_id": "id_user_name",
+                    "view_type": "UILabel",
+                    "right_of_view": "id_avatar_view",
+                    "left_of_view": "id_dislike_button_2",
+                    "align_parent_center_vertical": "YES",
+                    "margin_left": "8",
+                    "margin_right": "12",
+                    "default_visible": "YES",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width": {
+                        "type": "relative",
+                        "value": "289"
+                    },
+                    "attributes": {
+                        "setText:": "$user_name_text",
+                        "setTextColorString:": "#262626",
+                        "setFontSizeString:": "14",
+                        "setNumberOfLinesString:": "1"
+                    }
+                }
+            ]
+        },
+        {
+            "view_id": "id_user_info",
+            "view_type": "UILabel",
+            "align_parent_top": "YES",
+            "align_parent_left": "YES",
+            "margin_left": "8",
+            "margin_top": "52",
+            "default_visible": "YES",
+            "height": {
+                "type": "wrap_content"
+            },
+            "width": {
+                "type": "relative",
+                "value": "359"
+            },
+            "attributes": {
+                "setText:": "$user_info_text",
+                "setTextColorString:": "#262626",
+                "setFontSizeString:": "16",
+                "setNumberOfLinesString:": "2"
+            }
+        }
+    ]
+}

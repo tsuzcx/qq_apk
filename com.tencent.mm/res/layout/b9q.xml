@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/ftt" android:layout_width="@dimen/l4" android:layout_height="@dimen/l4" android:layout_marginTop="@dimen/ku" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
+    <TextView android:ellipsize="end" android:id="@id/ftu" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l5" android:layout_marginTop="@dimen/m1" android:layout_marginRight="@dimen/l5" android:layout_marginBottom="@dimen/lb" android:maxLines="1" android:layout_below="@id/ftt" android:layout_centerHorizontal="true" style="@style/o2" />
+    <TextView android:id="@id/ftv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/ftu" android:layout_centerHorizontal="true" style="@style/l1" />
+    <Button android:id="@id/ftw" android:layout_marginLeft="@dimen/l5" android:layout_marginTop="@dimen/l6" android:layout_marginRight="@dimen/l5" android:layout_marginBottom="@dimen/dp" android:minWidth="220.0dip" android:text="@string/g5x" android:layout_below="@id/ftv" android:layout_centerHorizontal="true" style="@style/nq" />
+    <TextView android:id="@id/ftx" android:visibility="gone" android:layout_width="wrap_content" android:layout_marginTop="@dimen/l6" android:text="@string/g65" android:layout_below="@id/ftv" android:layout_centerHorizontal="true" style="@style/l1" />
+    <TextView android:textSize="@dimen/m2" android:textColor="@color/a83" android:id="@id/fty" android:paddingLeft="@dimen/ne" android:paddingRight="@dimen/ne" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m1" android:text="@string/g5v" android:layout_below="@id/ftx" android:layout_centerHorizontal="true" />
+</RelativeLayout>

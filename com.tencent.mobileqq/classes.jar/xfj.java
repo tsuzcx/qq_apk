@@ -1,25 +1,41 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadComDownloader;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
-import com.tencent.mobileqq.vip.DownloadListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class xfj
-  extends AbsPreDownloadTask
+class xfj
+  implements View.OnTouchListener
 {
-  public xfj(PreloadComDownloader paramPreloadComDownloader, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, Bundle paramBundle, DownloadListener paramDownloadListener)
-  {
-    super(paramQQAppInterface, paramString1);
-  }
+  private final int jdField_a_of_type_Int = 10;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  protected void a()
+  xfj(xfh paramxfh) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    PreloadComDownloader.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadComDownloader, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
+    paramMotionEvent.getX();
+    float f = paramMotionEvent.getY();
+    switch (paramMotionEvent.getAction())
+    {
+    default: 
+    case 0: 
+    case 2: 
+      do
+      {
+        return false;
+        this.b = ((int)f);
+        this.jdField_a_of_type_Boolean = false;
+        return false;
+      } while (Math.abs(f - this.b) <= 10.0F);
+      this.jdField_a_of_type_Boolean = true;
+      return false;
+    }
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xfj
  * JD-Core Version:    0.7.0.1
  */

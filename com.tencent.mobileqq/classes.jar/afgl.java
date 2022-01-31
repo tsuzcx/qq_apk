@@ -1,52 +1,32 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import java.util.Calendar;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class afgl
-  implements IphonePickerView.PickerViewAdapter
+  implements affa
 {
-  public afgl(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  private BaseChatPie a;
   
-  public int getColumnCount()
+  public afgl(BaseChatPie paramBaseChatPie)
   {
-    return 3;
+    this.a = paramBaseChatPie;
   }
   
-  public int getRowCount(int paramInt)
+  public void a(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return this.a.b - 1896 + 1;
-    case 1: 
-      return 12;
+    String str = this.a.c();
+    if (!TextUtils.isEmpty(str)) {
+      bdww.a(this.a.a).a(str);
     }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, this.a.e + 1896);
-    localCalendar.set(2, this.a.f);
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
   }
   
-  public String getText(int paramInt1, int paramInt2)
+  public int[] a()
   {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1896 + "年";
-    case 1: 
-      return paramInt2 + 1 + "月";
-    }
-    return paramInt2 + 1 + "日";
+    return new int[6];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afgl
  * JD-Core Version:    0.7.0.1
  */

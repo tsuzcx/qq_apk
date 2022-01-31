@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.activity.book.ResizeLayout;
-import com.tencent.mobileqq.activity.book.ResizeLayout.OnResizeListener;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class wfy
-  implements Runnable
+  implements wgn
 {
-  public wfy(ResizeLayout paramResizeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public wfy(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    ResizeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout).a(this.jdField_a_of_type_Int, this.b, this.c, this.d);
+    if (this.a.a != null) {
+      this.a.a.a(paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wfy
  * JD-Core Version:    0.7.0.1
  */

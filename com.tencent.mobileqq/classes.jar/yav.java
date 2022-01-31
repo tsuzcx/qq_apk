@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qrcode.ipc.ScannerParams;
 
-public class yav
-  implements Runnable
+public final class yav
+  implements Parcelable.Creator<ScannerParams>
 {
-  public yav(SelectMemberActivity paramSelectMemberActivity, String paramString) {}
-  
-  public void run()
+  public ScannerParams a(Parcel paramParcel)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app, "dc00899", "Grp_addFrd", "", "frd_select", "multiMode_add", 0, 0, this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a().size()), "", "");
+    return new ScannerParams(paramParcel);
+  }
+  
+  public ScannerParams[] a(int paramInt)
+  {
+    return new ScannerParams[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yav
  * JD-Core Version:    0.7.0.1
  */

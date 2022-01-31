@@ -1,40 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
-public class aihi
-  implements Runnable
+class aihi
+  implements bhux
 {
-  public aihi(AbsStructMsgElement paramAbsStructMsgElement1, AbsStructMsgElement paramAbsStructMsgElement2, QQAppInterface paramQQAppInterface) {}
+  aihi(aiha paramaiha) {}
   
-  public void run()
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    long l = NetConnInfoCenter.getServerTime();
-    int j = -1;
-    int i = j;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsgElement.s)) {}
-    try
-    {
-      i = Integer.parseInt(this.b.s);
-      if (PublicAccountChatPie.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsgElement.t, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
-      {
-        j = 1;
-        PublicAccountReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsgElement.t, "0X80055C7", "0X80055C7", i, 0, Long.toString(l), Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsgElement.a), this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsgElement.c, Integer.toString(j), false);
-        return;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
     }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        i = j;
-        continue;
-        j = 0;
-      }
-    }
+    return true;
   }
 }
 

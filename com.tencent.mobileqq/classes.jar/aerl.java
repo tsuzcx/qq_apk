@@ -1,100 +1,43 @@
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.ThemeAnimStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class aerl
-  implements NearbyProcessInterface
+  implements aerd
 {
-  private IBinder a;
+  private PreloadManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public aerl(IBinder paramIBinder)
+  public aerl(QQAppInterface paramQQAppInterface)
   {
-    this.a = paramIBinder;
-  }
-  
-  public Message a(Message paramMessage)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    for (;;)
-    {
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-        if (paramMessage != null)
-        {
-          localParcel1.writeInt(1);
-          paramMessage.writeToParcel(localParcel1, 0);
-          this.a.transact(2, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          if (localParcel2.readInt() != 0)
-          {
-            paramMessage = (Message)Message.CREATOR.createFromParcel(localParcel2);
-            return paramMessage;
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        paramMessage = null;
-      }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
-      }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
     }
   }
   
-  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
+  public void a() {}
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    for (;;)
-    {
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-        if (paramBasicTypeDataParcel != null)
-        {
-          localParcel1.writeInt(1);
-          paramBasicTypeDataParcel.writeToParcel(localParcel1, 0);
-          this.a.transact(1, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          if (localParcel2.readInt() != 0)
-          {
-            paramBasicTypeDataParcel = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(localParcel2);
-            return paramBasicTypeDataParcel;
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        paramBasicTypeDataParcel = null;
-      }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
-      }
+    if (paramRedPacketInfo == null) {
+      return;
     }
+    ThreadManager.post(new CustomizeStrategyFactory.ThemeAnimStrategy.1(this, paramRedPacketInfo), 5, null, true);
   }
   
-  public IBinder asBinder()
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, agmy paramagmy)
   {
-    return this.a;
+    if ((paramRedPacketInfo != null) && ((paramagmy instanceof agnd))) {
+      paramRedPacketInfo.animInfo = ((agnd)paramagmy).a;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerl
  * JD-Core Version:    0.7.0.1
  */

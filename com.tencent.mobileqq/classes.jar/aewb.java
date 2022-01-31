@@ -1,25 +1,20 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsManager;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
-import com.tencent.mobileqq.nearby.now.utils.CommentsUtil;
-import com.tencent.mobileqq.nearby.now.utils.IOUtils;
-import java.io.File;
-import mqq.os.MqqHandler;
+import android.support.annotation.IntRange;
 
-public class aewb
-  implements Runnable
+public abstract interface aewb
 {
-  public aewb(VideoFeedsManager paramVideoFeedsManager, VideoFeedsUploader.UploadInfo paramUploadInfo) {}
+  public abstract void a();
   
-  public void run()
-  {
-    String str = CommentsUtil.a(IOUtils.a(new File(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo.d)));
-    ThreadManager.getUIHandler().post(new aewc(this, str));
-  }
+  public abstract boolean a(@IntRange(from=0L, to=3L) int paramInt);
+  
+  public abstract boolean a(@IntRange(from=0L, to=3L) int paramInt, String paramString1, String paramString2);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aewb
  * JD-Core Version:    0.7.0.1
  */

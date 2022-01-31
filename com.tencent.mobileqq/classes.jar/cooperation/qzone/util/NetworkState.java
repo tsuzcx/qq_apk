@@ -1,33 +1,45 @@
 package cooperation.qzone.util;
 
-import anar;
 import android.net.NetworkInfo;
-import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import bjdl;
+import bjuk;
+import bjul;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.LocalMultiProcConfig;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import mqq.app.AppRuntime;
 
 public class NetworkState
 {
-  public static final int NET_TYPE_2G = 3;
-  public static final int NET_TYPE_3G = 2;
+  public static final int NET_TYPE_2G = 2;
+  public static final int NET_TYPE_3G = 3;
   public static final int NET_TYPE_4G = 4;
+  public static final int NET_TYPE_5G = 5;
   public static final int NET_TYPE_UNKNOWN = 0;
   public static final int NET_TYPE_WIFI = 1;
+  public static final String SP_KEY_FLAG_FORCE_WIFI_TO_4G = "key_force_wifi_to_4g";
   private static final String TAG = "NetworkState";
-  private static Map mApnMap = new HashMap();
+  public static final int VALUE_FLAG_FORCE_WIFI_TO_4G_DEFAULT = 0;
+  public static final int VALUE_FLAG_FORCE_WIFI_TO_4G_NO = 0;
+  public static final int VALUE_FLAG_FORCE_WIFI_TO_4G_YES = 1;
+  private static Map<String, Integer> mApnMap = new HashMap();
+  private static Map<Long, Boolean> map = new HashMap();
   private static INetEventHandler netEventHandler;
-  private static List observers = new ArrayList();
+  private static List<bjul> observers;
   private static String providerName;
+  public static long uin = -1L;
   
   static
   {
-    netEventHandler = new anar();
+    observers = new ArrayList();
+    netEventHandler = new bjuk();
     mApnMap.put("unknown", Integer.valueOf(0));
     mApnMap.put("cmnet", Integer.valueOf(1));
     mApnMap.put("cmwap", Integer.valueOf(2));
@@ -51,19 +63,29 @@ public class NetworkState
     return localStringBuffer.toString();
   }
   
-  public static void addListener(NetworkState.NetworkStateListener paramNetworkStateListener)
+  public static void addListener(bjul parambjul)
   {
-    if (paramNetworkStateListener == null) {
+    if (parambjul == null) {
       return;
     }
     synchronized (observers)
     {
-      if (!observers.contains(paramNetworkStateListener)) {
-        observers.add(paramNetworkStateListener);
+      if (!observers.contains(parambjul)) {
+        observers.add(parambjul);
       }
       return;
     }
   }
+  
+  public static void clearConfigCache()
+  {
+    if (map != null) {
+      map.clear();
+    }
+  }
+  
+  @Deprecated
+  public static void forceNotifyNetworkChangeForDebugVersion() {}
   
   public static String getAPN()
   {
@@ -115,11 +137,60 @@ public class NetworkState
     }
   }
   
+  public static boolean getConfigIsForceWifiTo4g()
+  {
+    boolean bool = true;
+    uin = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
+    if (map.get(Long.valueOf(uin)) != null) {
+      return ((Boolean)map.get(Long.valueOf(uin))).booleanValue();
+    }
+    if (1 == LocalMultiProcConfig.getInt4Uin("key_force_wifi_to_4g", 0, uin)) {}
+    for (;;)
+    {
+      map.put(Long.valueOf(uin), Boolean.valueOf(bool));
+      return bool;
+      bool = false;
+    }
+  }
+  
+  private static boolean getIsMobileForDebugVersion()
+  {
+    boolean bool1 = false;
+    try
+    {
+      if (!isNetSupport()) {
+        return false;
+      }
+      if (!AppNetConnInfo.isWifiConn()) {
+        return true;
+      }
+      boolean bool2 = getConfigIsForceWifiTo4g();
+      if (bool2) {
+        return true;
+      }
+    }
+    catch (Exception localException)
+    {
+      QZLog.e("NetworkState", "getIsMobileForDebugVersion error", localException);
+      bool1 = AppNetConnInfo.isMobileConn();
+    }
+    return bool1;
+  }
+  
   public static boolean getIsUnicomNetWork()
   {
     String str = getAPN();
     if (TextUtils.isEmpty(str)) {}
     while ((!str.equalsIgnoreCase("UNIWAP")) && (!str.equalsIgnoreCase("UNINET")) && (!str.equalsIgnoreCase("3GWAP")) && (!str.equalsIgnoreCase("3GNET")) && (!str.equalsIgnoreCase("WONET"))) {
+      return false;
+    }
+    return true;
+  }
+  
+  private static boolean getIsWifiForDebugVersion()
+  {
+    if (!isNetSupport()) {}
+    while (getIsMobileForDebugVersion()) {
       return false;
     }
     return true;
@@ -139,11 +210,13 @@ public class NetworkState
     default: 
       return 0;
     case 1: 
-      return 3;
-    case 2: 
       return 2;
+    case 2: 
+      return 3;
+    case 3: 
+      return 4;
     }
-    return 4;
+    return 5;
   }
   
   public static String getProviderName()
@@ -151,16 +224,16 @@ public class NetworkState
     String str;
     if (TextUtils.isEmpty(providerName))
     {
-      str = ((TelephonyManager)BaseApplication.getContext().getSystemService("phone")).getSubscriberId();
+      str = bjdl.a().b();
       if ((str != null) && (!"".equals(str))) {
-        break label46;
+        break label39;
       }
       providerName = "unknown";
     }
     for (;;)
     {
       return providerName;
-      label46:
+      label39:
       if ((str.startsWith("46000")) || (str.startsWith("46002"))) {
         providerName = "ChinaMobile";
       } else if (str.startsWith("46001")) {
@@ -219,15 +292,15 @@ public class NetworkState
   {
     synchronized (observers)
     {
-      NetworkState.NetworkStateListener[] arrayOfNetworkStateListener = new NetworkState.NetworkStateListener[observers.size()];
-      observers.toArray(arrayOfNetworkStateListener);
-      if (arrayOfNetworkStateListener != null)
+      bjul[] arrayOfbjul = new bjul[observers.size()];
+      observers.toArray(arrayOfbjul);
+      if (arrayOfbjul != null)
       {
-        int j = arrayOfNetworkStateListener.length;
+        int j = arrayOfbjul.length;
         int i = 0;
         if (i < j)
         {
-          arrayOfNetworkStateListener[i].onNetworkConnect(paramBoolean);
+          arrayOfbjul[i].onNetworkConnect(paramBoolean);
           i += 1;
         }
       }
@@ -247,11 +320,11 @@ public class NetworkState
     }
   }
   
-  public static void removeListener(NetworkState.NetworkStateListener paramNetworkStateListener)
+  public static void removeListener(bjul parambjul)
   {
     synchronized (observers)
     {
-      observers.remove(paramNetworkStateListener);
+      observers.remove(parambjul);
       return;
     }
   }

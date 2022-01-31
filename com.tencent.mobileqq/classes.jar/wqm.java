@@ -1,32 +1,66 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wqm
-  implements DialogInterface.OnClickListener
+  extends wqp<ShareGroupFeedItem>
 {
-  public wqm(MainAssistObserver paramMainAssistObserver) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public wqm(@NonNull ShareGroupFeedItem paramShareGroupFeedItem)
   {
-    paramDialogInterface = new Intent(this.a.a, LoginActivity.class);
-    paramDialogInterface.putExtra("is_change_account", true);
-    if (this.a.a.getIntent().getExtras() != null) {
-      paramDialogInterface.putExtras(this.a.a.getIntent().getExtras());
+    super(paramShareGroupFeedItem);
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem)
+  {
+    super.a(paramStoryVideoItem);
+    paramStoryVideoItem = (ShareGroupFeedItem)a();
+    paramStoryVideoItem.videoCount -= 1;
+    if (((ShareGroupFeedItem)a()).videoCount < 0) {
+      ((ShareGroupFeedItem)a()).videoCount = 0;
     }
-    paramDialogInterface.addFlags(268435456);
-    paramDialogInterface.addFlags(67108864);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.b.dismiss();
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem, boolean paramBoolean)
+  {
+    super.a(paramStoryVideoItem, paramBoolean);
+    paramStoryVideoItem = (ShareGroupFeedItem)a();
+    paramStoryVideoItem.videoCount += 1;
+    if (((ShareGroupFeedItem)a()).videoCount < 0) {
+      ((ShareGroupFeedItem)a()).videoCount = 0;
+    }
+  }
+  
+  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
+  {
+    ((ShareGroupFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), paramStoryFeed);
+    ((ShareGroupFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    Object localObject = (qqstory_struct.ShareGroupFeed)paramStoryFeed.share_group_feed.get();
+    paramStoryFeed = new ArrayList();
+    localObject = ((qqstory_struct.ShareGroupFeed)localObject).video_list.get().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      qqstory_struct.ShareGroupVideoInfo localShareGroupVideoInfo = (qqstory_struct.ShareGroupVideoInfo)((Iterator)localObject).next();
+      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+      localStoryVideoItem.convertFrom("Q.qqstory.home.data.VideoListHomeFeed", localShareGroupVideoInfo);
+      paramStoryFeed.add(localStoryVideoItem);
+    }
+    c(paramStoryFeed, true);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wqm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,22 @@
-import android.graphics.Rect;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class acjz
-  implements OnCompositionLoadedListener
+public final class acjz
+  implements DialogInterface.OnClickListener
 {
-  public acjz(ExtendFriendVoiceView paramExtendFriendVoiceView) {}
+  public acjz(aclo paramaclo, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, acln paramacln) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int m = AIOUtils.a(19.0F, this.a.getResources());
-    int k = AIOUtils.a(19.0F, this.a.getResources());
-    int j = k;
-    int i = m;
-    if (ExtendFriendVoiceView.a(this.a) == 2)
-    {
-      i = (int)(m * 0.8F);
-      j = (int)(k * 0.8F);
+    this.jdField_a_of_type_Aclo.d = false;
+    this.jdField_a_of_type_Aclo.e = false;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acln, this.jdField_a_of_type_Aclo);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    if (paramLottieComposition == null)
-    {
-      QLog.e("ExtendFriendVoiceView", 1, "onCompositionLoaded lottieComposition is null");
-      return;
-    }
-    Object localObject = paramLottieComposition.getBounds();
-    float f1 = i / ((Rect)localObject).width();
-    float f2 = j / ((Rect)localObject).height();
-    localObject = new LottieDrawable();
-    ((LottieDrawable)localObject).setComposition(paramLottieComposition);
-    ((LottieDrawable)localObject).setScale(f1, f2);
-    ((LottieDrawable)localObject).loop(true);
-    ExtendFriendVoiceView.a(this.a, (LottieDrawable)localObject);
-    ThreadManager.getUIHandler().post(new acka(this));
   }
 }
 

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <CheckBoxPreference android:persistent="false" android:title="@string/axu" android:key="star_contact" android:defaultValue="false" />
+    <PreferenceCategory />
+    <CheckBoxPreference android:persistent="false" android:title="@string/eru" android:key="sns_outside_permiss" android:defaultValue="false" />
+    <CheckBoxPreference android:persistent="false" android:title="@string/eo7" android:key="sns_black_permiss" android:defaultValue="false" />
+</PreferenceScreen>

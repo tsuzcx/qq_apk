@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/avw" android:background="@drawable/a53" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/n9">
+        <ImageView android:gravity="center_vertical" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="4.0dip" android:src="@raw/monitor_banner_icon" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/ko" android:textColor="@color/a3h" android:ellipsize="marquee" android:gravity="left" android:id="@id/avx" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:maxLines="1" android:marqueeRepeatLimit="marquee_forever" style="@style/lg" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/avy" android:padding="10.0dip" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/g8" android:adjustViewBounds="true" />
+    </LinearLayout>
+</LinearLayout>

@@ -312,7 +312,7 @@ public class k
         }
         boolean bool = paramFromServiceMsg.getServiceCmd().equals("login.chguin");
         long l2 = ((Long)paramFromServiceMsg.getAttribute("__timestamp_net2msf")).longValue() - ((Long)paramToServiceMsg.getAttribute("__timestamp_addSendQueue")).longValue();
-        long l3 = com.tencent.mobileqq.msf.core.c.j.a(paramToServiceMsg, paramFromServiceMsg);
+        long l3 = com.tencent.mobileqq.msf.core.c.k.a(paramToServiceMsg, paramFromServiceMsg);
         localObject1 = "0";
         localObject2 = "0";
         if (paramToServiceMsg.getAttributes().containsKey("_tag_socket")) {

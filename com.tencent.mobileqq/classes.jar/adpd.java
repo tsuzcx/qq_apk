@@ -1,24 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hiboom.HiBoomFont.HiBoomFontDownloader;
-import com.tencent.mobileqq.profile.diy.VipDiyCardConstants;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import mqq.app.AppRuntime;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
-public final class adpd
-  implements HiBoomFont.HiBoomFontDownloader
+public class adpd
+  implements View.OnTouchListener
 {
-  public String a()
-  {
-    return VipDiyCardConstants.a;
-  }
+  public adpd(PublicAccountListActivity paramPublicAccountListActivity, InputMethodManager paramInputMethodManager) {}
   
-  public void a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      ((VasQuickUpdateManager)localAppRuntime.getManager(183)).a(5L, "font.diycard.android." + paramInt, "HiBoomDownloader");
-    }
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

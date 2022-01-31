@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import tencent.im.msg.im_msg_head.InstCtrl;
 
 public final class msg_svc$Trans0x211
-  extends MessageMicro
+  extends MessageMicro<Trans0x211>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field c2c_type = PBField.initUInt32(0);
@@ -28,7 +28,7 @@ public final class msg_svc$Trans0x211
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msf.msgsvc.msg_svc.Trans0x211
  * JD-Core Version:    0.7.0.1
  */

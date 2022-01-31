@@ -1,22 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
 
 public class tbh
-  implements Runnable
+  implements View.OnClickListener
 {
-  public tbh(MainFragment paramMainFragment) {}
+  public tbh(WSHomeFragment paramWSHomeFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (BaseApplicationImpl.getContext() != null) {
-      SharedPreUtils.a(BaseApplicationImpl.getContext(), "");
-    }
+    WSHomeFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tbh
  * JD-Core Version:    0.7.0.1
  */

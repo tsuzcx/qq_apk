@@ -1,24 +1,28 @@
-import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareWeChatData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.data.AccountDetail;
 
-public class nhc
-  extends EncryptUrlJob
+class nhc
+  implements View.OnClickListener
 {
-  public nhc(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareWeChatData paramShareWeChatData)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  nhc(ngw paramngw) {}
   
-  public boolean b()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData.d = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    ((AccountDetailActivity)this.a.jdField_a_of_type_AndroidAppActivity).D();
+    String str = this.a.jdField_a_of_type_JavaLangString;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType == 1) {}
+    for (paramView = "02";; paramView = "01")
+    {
+      nrt.a(null, str, "0X8007CA4", "0X8007CA4", 0, 0, paramView, String.valueOf(ngw.a(this.a)), "", "", false);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nhc
  * JD-Core Version:    0.7.0.1
  */

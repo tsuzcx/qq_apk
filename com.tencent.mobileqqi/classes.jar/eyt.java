@@ -1,22 +1,17 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.voip.EditTextAutoResizeFont;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListItemWithMask;
+import java.util.Comparator;
 
 public class eyt
-  implements View.OnLongClickListener
+  implements Comparator
 {
-  public eyt(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
-  
-  public boolean onLongClick(View paramView)
+  public int a(TroopListAdapter2.TroopListItemWithMask paramTroopListItemWithMask1, TroopListAdapter2.TroopListItemWithMask paramTroopListItemWithMask2)
   {
-    VoipDialInterfaceActivity.a(this.a).setText("");
-    return false;
+    return paramTroopListItemWithMask1.a - paramTroopListItemWithMask2.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eyt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment.3;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment.3.1;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class lyb
-  implements DialogInterface.OnDismissListener
+  implements bfah
 {
-  public lyb(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  public lyb(RedPacketShareFragment.3.1 param1) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(BaseResp paramBaseResp)
   {
-    ReadInJoyDeliverUGCActivity.a(this.a, false);
-    ThreadManager.getUIHandler().postDelayed(new lyc(this), 300L);
+    if ((RedPacketShareFragment.d(this.a.a.this$0) == null) || (!RedPacketShareFragment.d(this.a.a.this$0).equals(paramBaseResp.transaction))) {
+      return;
+    }
+    QLog.d("RedPacketShareFragment", 1, "WL_DEBUG ActionSheetAdapter.CHANNEL_WX_FRIEND_CIRCLE onWXShareResp resp.errCode = " + paramBaseResp.errCode);
+    switch (paramBaseResp.errCode)
+    {
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      RedPacketShareFragment.a("0X8008CF8", 4);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lyb
  * JD-Core Version:    0.7.0.1
  */

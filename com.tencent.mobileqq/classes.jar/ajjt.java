@@ -1,23 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter.OnItemClickListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
-public class ajjt
-  implements View.OnClickListener
+class ajjt
+  extends ajjn
 {
-  public int a;
-  public TextView a;
-  
-  private ajjt(SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter paramFlowLayoutKeywordsListAdapter) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment$FlowLayoutKeywordsListAdapter.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment$FlowLayoutKeywordsListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
-    }
-  }
+  public RelativeLayout a;
+  public ImageView c;
 }
 
 

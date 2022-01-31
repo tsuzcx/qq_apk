@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.skin;
 
+import awge;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="id,uin")
-public abstract class BaseResData
-  extends Entity
+public abstract class BaseResData<T extends MessageMicro>
+  extends awge
 {
   public int beginTime;
   public String business = "";
@@ -26,7 +26,7 @@ public abstract class BaseResData
   
   public BaseResData() {}
   
-  public BaseResData(MessageMicro paramMessageMicro)
+  public BaseResData(T paramT)
   {
     this.uin = (BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin() + "");
   }
@@ -36,11 +36,11 @@ public abstract class BaseResData
     this.uin = (BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin() + "");
   }
   
-  protected void postRead() {}
+  public void postRead() {}
   
-  protected void postwrite() {}
+  public void postwrite() {}
   
-  public abstract MessageMicro toBody();
+  public abstract T toBody();
   
   public JSONObject toJson()
   {
@@ -54,7 +54,7 @@ public abstract class BaseResData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.skin.BaseResData
  * JD-Core Version:    0.7.0.1
  */

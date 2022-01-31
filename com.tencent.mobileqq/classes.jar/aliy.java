@@ -1,26 +1,25 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.downloadnew.MyAppDialog;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-public class aliy
-  implements View.OnClickListener
+class aliy
+  implements Comparator<ApolloActionData>
 {
-  public aliy(MyAppDialog paramMyAppDialog, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
+  aliy(aliw paramaliw) {}
   
-  public void onClick(View paramView)
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog, this.jdField_a_of_type_Int);
+    if (paramApolloActionData2.limitStart == paramApolloActionData1.limitStart) {
+      return 0;
     }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.dismiss();
+    if (paramApolloActionData2.limitStart > paramApolloActionData1.limitStart) {
+      return 1;
     }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aliy
  * JD-Core Version:    0.7.0.1
  */

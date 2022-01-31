@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/skin_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="请先在电脑端登录QQ，文件会传到电脑打印机打印。"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="130.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204be" />
-    <TextView android:textSize="14.0sp" android:textColor="#ff999999" android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="23.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0164" />
-    <TextView android:textSize="14.0sp" android:textColor="#ff999999" android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0165" />
-</LinearLayout>

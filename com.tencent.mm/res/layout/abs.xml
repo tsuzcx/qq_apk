@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="#fff1f1f1" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyEnvelopeTouchRecyclerView android:id="@id/d3e" android:visibility="visible" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never" />
+    <TextView android:textSize="@dimen/ff" android:textColor="@color/rv" android:layout_gravity="center_horizontal" android:id="@id/d3f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="" />
+    <LinearLayout android:orientation="vertical" android:id="@id/d3g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="15.0dip" android:textColor="@color/h7" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="108.0dip" android:text="@string/cv9" />
+    </LinearLayout>
+</LinearLayout>

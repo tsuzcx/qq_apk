@@ -1,17 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.ILabelTextHandle;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.TroopEnterEffectData;
-import com.tencent.mobileqq.utils.ContactUtils;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 class ajfo
-  implements SceneBuilder.ILabelTextHandle
+  implements WtTicketPromise
 {
-  ajfo(ajfh paramajfh, QQAppInterface paramQQAppInterface) {}
+  ajfo(ajfi paramajfi, ajfp paramajfp) {}
   
-  public String a(Sprite paramSprite, String paramString)
+  public void Done(Ticket paramTicket)
   {
-    return paramString.replace("$NICK$", ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ajfh.a.a, this.jdField_a_of_type_Ajfh.a.b, 1, 0));
+    if ((paramTicket != null) && (paramTicket._sig != null) && (paramTicket._sig.length != 0))
+    {
+      paramTicket = new String(paramTicket._sig);
+      this.jdField_a_of_type_Ajfp.a(paramTicket);
+      return;
+    }
+    this.jdField_a_of_type_Ajfi.c("get skey is null");
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    this.jdField_a_of_type_Ajfi.c("get skey failed");
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    this.jdField_a_of_type_Ajfi.c("get skey time out");
   }
 }
 

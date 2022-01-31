@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="right" android:id="@id/ds8" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="32.0dip" android:layout_above="@id/ds9" android:layout_alignParentRight="true" />
+    <GridView android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/ds9" android:layout_width="fill_parent" android:layout_height="25.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:numColumns="9" />
+</LinearLayout>

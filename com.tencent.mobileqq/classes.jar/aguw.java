@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class aguw
-  implements Runnable
+class aguw
+  implements DialogInterface.OnCancelListener
 {
-  public aguw(QCallDetailActivity paramQCallDetailActivity) {}
+  aguw(agti paramagti) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    QCallDetailActivity.a(this.a);
-    this.a.runOnUiThread(new agux(this));
+    this.a.I();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aguw
  * JD-Core Version:    0.7.0.1
  */

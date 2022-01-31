@@ -2,14 +2,14 @@ package com.tencent.mobileqq.qmcf;
 
 public class QmcfModelItem
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
+  public String modelDeployString;
+  public String modelDlcPath;
+  public int modelEncrypt;
+  public String modelParamPath;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qmcf.QmcfModelItem
  * JD-Core Version:    0.7.0.1
  */

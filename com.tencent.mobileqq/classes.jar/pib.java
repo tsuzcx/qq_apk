@@ -1,33 +1,25 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.component.media.image.drawable.ScaleDrawable;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class pib
-  extends phv
+class pib
+  implements php<BEAN>
 {
-  public pib(Drawable paramDrawable, ScaleDrawable paramScaleDrawable)
-  {
-    super(paramDrawable, paramScaleDrawable);
-  }
+  pib(pia parampia) {}
   
-  public pib(pib parampib, ScaleDrawable paramScaleDrawable, Resources paramResources)
+  public void a(boolean paramBoolean, List<BEAN> paramList, int paramInt1, Boolean paramBoolean1, int paramInt2, String paramString)
   {
-    super(parampib, paramScaleDrawable, paramResources);
-  }
-  
-  public Drawable newDrawable()
-  {
-    return new ScaleDrawable(this, null, null);
-  }
-  
-  public Drawable newDrawable(Resources paramResources)
-  {
-    return new ScaleDrawable(this, paramResources, null);
+    if (paramBoolean)
+    {
+      pia.a(this.a, paramBoolean1.booleanValue(), paramInt1, paramList);
+      return;
+    }
+    QLog.i("ListPresenter", 2, "loadFirstPage error, errorCode=" + paramInt2 + ", errorMsg= " + paramString);
+    pia.a(this.a, paramBoolean1.booleanValue(), paramList, paramInt2, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pib
  * JD-Core Version:    0.7.0.1
  */

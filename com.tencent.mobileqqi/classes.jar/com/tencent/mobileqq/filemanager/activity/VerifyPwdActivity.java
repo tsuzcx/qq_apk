@@ -13,7 +13,7 @@ import com.tencent.mobileqq.filemanager.app.FMObserver;
 import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
 import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
 import com.tencent.mobileqq.widget.ClearableEditText;
-import fxb;
+import fsp;
 
 public class VerifyPwdActivity
   extends BaseFileAssistantActivity
@@ -27,7 +27,7 @@ public class VerifyPwdActivity
   
   public VerifyPwdActivity()
   {
-    this.jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new fxb(this);
+    this.jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new fsp(this);
   }
   
   private void g()
@@ -93,19 +93,19 @@ public class VerifyPwdActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130903514);
-    paramBundle = findViewById(2131232784);
+    super.setContentView(2130903516);
+    paramBundle = findViewById(2131232787);
     ViewGroup.LayoutParams localLayoutParams = paramBundle.getLayoutParams();
     localLayoutParams.width = -1;
     paramBundle.setLayoutParams(localLayoutParams);
-    paramBundle = findViewById(2131232752);
+    paramBundle = findViewById(2131232755);
     if (paramBundle != null) {
       paramBundle.setVisibility(8);
     }
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131232785);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131232788);
     this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131231066));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131232787));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232789));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131232790));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232792));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     if (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface == null) {
       return;

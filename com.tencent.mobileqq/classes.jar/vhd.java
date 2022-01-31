@@ -1,48 +1,59 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView.ISixAnimationListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBannerVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoTarget;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class vhd
-  extends AnimatorListenerAdapter
+  extends uro
 {
-  public vhd(SixCombolEffectView paramSixCombolEffectView) {}
+  public String a;
+  public List<String> a;
+  public boolean a;
+  public int b;
+  public List<String> b;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public vhd(qqstory_service.RspBannerVideoList paramRspBannerVideoList)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {}
-    do
+    super(paramRspBannerVideoList.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    if ((paramRspBannerVideoList.video_list.has()) && (!paramRspBannerVideoList.video_list.isEmpty()))
     {
-      do
+      Iterator localIterator = paramRspBannerVideoList.video_list.get().iterator();
+      while (localIterator.hasNext())
       {
-        return;
-        SixCombolEffectView.jdField_a_of_type_Int = 4;
-        if (QLog.isColorLevel()) {
-          QLog.w("SixCombolEffectView", 2, "Animation 4 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
-        }
-      } while (SixCombolEffectView.a(this.a) == null);
-      paramAnimator = SixCombolEffectView.a(this.a);
-    } while (paramAnimator == null);
-    SixCombolEffectView.a(this.a).a(paramAnimator);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-    if (SixCombolEffectView.a(this.a)) {}
-    do
+        qqstory_struct.VideoTarget localVideoTarget = (qqstory_struct.VideoTarget)localIterator.next();
+        this.jdField_a_of_type_JavaUtilList.add(localVideoTarget.vid.get().toStringUtf8());
+        this.jdField_b_of_type_JavaUtilList.add(localVideoTarget.feed_id.get().toStringUtf8());
+      }
+    }
+    if (paramRspBannerVideoList.is_end.has()) {
+      if (paramRspBannerVideoList.is_end.get() != 1) {
+        break label202;
+      }
+    }
+    label202:
+    for (boolean bool = true;; bool = false)
     {
+      this.jdField_a_of_type_Boolean = bool;
+      if (paramRspBannerVideoList.next_cookie.has()) {
+        this.jdField_a_of_type_JavaLangString = paramRspBannerVideoList.next_cookie.get().toStringUtf8();
+      }
+      if (paramRspBannerVideoList.total_count.has()) {
+        this.jdField_b_of_type_Int = paramRspBannerVideoList.total_count.get();
+      }
       return;
-      SixCombolEffectView.jdField_a_of_type_Int = 3;
-    } while (!QLog.isColorLevel());
-    QLog.w("SixCombolEffectView", 2, "Animation 3 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vhd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,26 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.TextView;
+import com.tencent.biz.PoiMapActivity;
 
 public class bgk
-  implements Runnable
+  implements View.OnKeyListener
 {
-  public bgk(VideoController paramVideoController) {}
+  public bgk(PoiMapActivity paramPoiMapActivity) {}
   
-  public void run()
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "connectingRunnable");
-    }
-    if (!this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.e())
+    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0))
     {
-      this.a.a(this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_a_of_type_JavaLangString, 0);
-      this.a.c(this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_a_of_type_JavaLangString, 5);
+      paramView = ((TextView)paramView).getText().toString();
+      if (!TextUtils.isEmpty(paramView)) {
+        this.a.a(paramView);
+      }
+      return true;
     }
+    return false;
   }
 }
 

@@ -1,28 +1,41 @@
-import android.content.Context;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenPanel;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class upy
-  extends AccessibilityDelegateCompat
+public abstract class upy
+  extends JobSegment<ErrorMessage, ErrorMessage>
 {
-  public upy(ListenPanel paramListenPanel) {}
+  protected AtomicInteger a;
+  public upz a;
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public upy()
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (ListenPanel.a(this.a) < 1000.0D) {}
-    for (int i = 0;; i = (int)(ListenPanel.a(this.a) / 1000.0D + 0.5D))
-    {
-      paramAccessibilityNodeInfoCompat.setContentDescription(i + this.a.getContext().getString(2131427473));
-      return;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  }
+  
+  protected abstract void a();
+  
+  protected void a(JobContext paramJobContext, ErrorMessage paramErrorMessage)
+  {
+    a();
+  }
+  
+  public void a(upz paramupz)
+  {
+    this.jdField_a_of_type_Upz = paramupz;
+  }
+  
+  protected void b()
+  {
+    if (this.jdField_a_of_type_Upz != null) {
+      this.jdField_a_of_type_Upz.a(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     upy
  * JD-Core Version:    0.7.0.1
  */

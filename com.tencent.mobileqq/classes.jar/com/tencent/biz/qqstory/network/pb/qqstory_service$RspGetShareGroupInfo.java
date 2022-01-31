@@ -6,15 +6,15 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class qqstory_service$RspGetShareGroupInfo
-  extends MessageMicro
+  extends MessageMicro<RspGetShareGroupInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "result", "share_group_info_list" }, new Object[] { null, null }, RspGetShareGroupInfo.class);
   public qqstory_struct.ErrorInfo result = new qqstory_struct.ErrorInfo();
-  public final PBRepeatMessageField share_group_info_list = PBField.initRepeatMessage(qqstory_struct.ShareGroupInfo.class);
+  public final PBRepeatMessageField<qqstory_struct.ShareGroupInfo> share_group_info_list = PBField.initRepeatMessage(qqstory_struct.ShareGroupInfo.class);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetShareGroupInfo
  * JD-Core Version:    0.7.0.1
  */

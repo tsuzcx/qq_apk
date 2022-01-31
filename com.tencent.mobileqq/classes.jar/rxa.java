@@ -1,22 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 
-public final class rxa
-  implements DialogInterface.OnClickListener
+public class rxa
+  implements View.OnClickListener
 {
-  public rxa(ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
+  public rxa(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a != null) {
-      this.a.a();
-    }
+    ReadinjoyTabFrame.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rxa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,17 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.core.bean.EvalAccountResult.RecommendItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.token.cw;
 
-final class ah
-  implements View.OnClickListener
+class ah
+  implements DialogInterface.OnCancelListener
 {
-  ah(AccountPageActivity paramAccountPageActivity, EvalAccountResult.RecommendItem paramRecommendItem) {}
+  ah(ad paramad) {}
   
-  public final void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramView = new Intent(this.b, MyPswSubPageActivity.class);
-    paramView.putExtra("detailItems", this.a.mDetails);
-    this.b.startActivity(paramView);
+    cw.a().b(this.a.a.mHandler);
   }
 }
 

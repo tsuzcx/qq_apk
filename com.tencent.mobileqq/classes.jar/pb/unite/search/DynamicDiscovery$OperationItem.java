@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class DynamicDiscovery$OperationItem
-  extends MessageMicro
+  extends MessageMicro<OperationItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField detail_text = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -28,7 +28,7 @@ public final class DynamicDiscovery$OperationItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pb.unite.search.DynamicDiscovery.OperationItem
  * JD-Core Version:    0.7.0.1
  */

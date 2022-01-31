@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.activity.NearPeopleActivity;
+import com.tencent.mobileqq.app.NearHornHandler;
 
 public class cxf
-  implements View.OnClickListener
+  implements Runnable
 {
-  public cxf(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  public cxf(NearPeopleActivity paramNearPeopleActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a();
+    if (NearPeopleActivity.a(this.a) != null) {
+      NearPeopleActivity.a(this.a).a("", Long.valueOf(0L), "1", NearPeopleActivity.c(this.a), Boolean.valueOf(false));
+    }
   }
 }
 

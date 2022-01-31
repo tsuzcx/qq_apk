@@ -2,10 +2,11 @@ package com.tencent.ttpic.model;
 
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
+import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.filter.BaseFilter;
-import com.tencent.ttpic.gles.GlUtil;
-import com.tencent.ttpic.util.VideoBitmapUtil;
-import com.tencent.ttpic.util.VideoGlobalContext;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import com.tencent.ttpic.openapi.model.ExpressionItem;
 import java.io.File;
 import java.util.List;
 
@@ -52,13 +53,13 @@ public class StarActItem
   
   public void init()
   {
-    GLES20.glGenTextures(this.texId.length, this.texId, 0);
     int i = 0;
+    GLES20.glGenTextures(this.texId.length, this.texId, 0);
     while (i < this.filePaths.length)
     {
       Object localObject = this.filePaths[i];
-      localObject = VideoBitmapUtil.decodeSampleBitmap(VideoGlobalContext.getContext(), (String)localObject, 720, 1280);
-      if (VideoBitmapUtil.isLegal((Bitmap)localObject))
+      localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, 720, 1280);
+      if (BitmapUtils.isLegal((Bitmap)localObject))
       {
         this.width = ((Bitmap)localObject).getWidth();
         this.height = ((Bitmap)localObject).getHeight();
@@ -73,7 +74,7 @@ public class StarActItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.model.StarActItem
  * JD-Core Version:    0.7.0.1
  */

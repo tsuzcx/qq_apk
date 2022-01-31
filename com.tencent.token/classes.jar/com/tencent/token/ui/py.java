@@ -2,17 +2,15 @@ package com.tencent.token.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.global.e;
 
-final class py
+class py
   implements View.OnClickListener
 {
-  py(pv parampv) {}
+  py(MyMbSubPageActivity paramMyMbSubPageActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    e.a("onClickrelease");
-    this.a.b();
+    this.a.onBackPressed();
   }
 }
 

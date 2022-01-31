@@ -5,24 +5,14 @@ import android.graphics.Rect;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.util.LogUtil;
+import android.util.Log;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 import java.lang.reflect.Array;
 
 public class FaceParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<FaceParam> CREATOR = new Parcelable.Creator()
-  {
-    public FaceParam createFromParcel(Parcel paramAnonymousParcel)
-    {
-      return new FaceParam(paramAnonymousParcel, null);
-    }
-    
-    public FaceParam[] newArray(int paramAnonymousInt)
-    {
-      return new FaceParam[paramAnonymousInt];
-    }
-  };
+  public static final Parcelable.Creator<FaceParam> CREATOR = new FaceParam.1();
   private static final String TAG = FaceParam.class.getSimpleName();
   public int height = 0;
   public Rect mEye = null;
@@ -72,6 +62,17 @@ public class FaceParam
     return 0;
   }
   
+  public NormalizedFaceParam normalizeFace()
+  {
+    NormalizedFaceParam localNormalizedFaceParam = new NormalizedFaceParam();
+    localNormalizedFaceParam.setX(this.mFace.left * 1.0D / this.width);
+    localNormalizedFaceParam.setY(this.mFace.top * 1.0D / this.height);
+    localNormalizedFaceParam.setW(this.mFace.right * 1.0D / this.width - localNormalizedFaceParam.getX());
+    localNormalizedFaceParam.setH(this.mFace.bottom * 1.0D / this.height - localNormalizedFaceParam.getY());
+    Log.d("NewEnhance_Batch", "Face normalized(" + localNormalizedFaceParam.getX() + ", " + localNormalizedFaceParam.getY() + ", " + localNormalizedFaceParam.getW() + ", " + localNormalizedFaceParam.getH() + ")");
+    return localNormalizedFaceParam;
+  }
+  
   public void printFaceDes()
   {
     Object localObject1 = "\n****************FaceFeature******************:\n" + String.format("ImageSize:(%d, %d)\n", new Object[] { Integer.valueOf(this.width), Integer.valueOf(this.height) });
@@ -90,7 +91,7 @@ public class FaceParam
       localObject1 = (String)localObject1 + "\n";
     }
     localObject1 = (String)localObject1 + "*********************************************\n";
-    LogUtil.e(TAG, (String)localObject1);
+    LogUtils.e(TAG, (String)localObject1);
   }
   
   public void resetSize(int paramInt1, int paramInt2)
@@ -183,7 +184,7 @@ public class FaceParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.faceBeauty.FaceParam
  * JD-Core Version:    0.7.0.1
  */

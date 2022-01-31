@@ -1,29 +1,29 @@
-import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.shortvideo.dancemachine.utils.DanceLog;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
 
 public class ahiz
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ahiz(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public ahiz(TroopView paramTroopView) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    DanceLog.a("EffectsFragment", "playSceneEndEvent  begin exe...");
-    EffectsCameraCaptureFragment.a(this.a).setVisibility(8);
-    EffectsCameraCaptureFragment.a(this.a).setEnabled(false);
-    EffectsCameraCaptureFragment.a(this.a, 0);
-    EffectsCameraCaptureFragment.a(this.a, EffectsCameraCaptureFragment.a(this.a));
-    EffectsCameraCaptureFragment.e(this.a).setVisibility(0);
-    this.a.a.postDelayed(EffectsCameraCaptureFragment.a(this.a), 500L);
-    DanceLog.a("EffectsFragment", "playSceneEndEvent  end exe...");
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+    for (;;)
+    {
+      TroopView.a(this.a);
+      return;
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahiz
  * JD-Core Version:    0.7.0.1
  */

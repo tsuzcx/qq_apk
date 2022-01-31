@@ -1,19 +1,29 @@
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.transfile.NetResp;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ahzp
-  implements Runnable
+  implements bhuk
 {
-  public ahzp(ShortVideoResourceManager paramShortVideoResourceManager, NetResp paramNetResp) {}
+  public ahzp(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment, bhuf parambhuf) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager, this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp);
+    paramView = new ArrayList();
+    paramView.addAll(ChatHistoryC2CFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment));
+    ChatHistoryC2CFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment).a(paramView, 3, new ahzq(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment.h();
+    ChatHistoryC2CFileFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment, false);
+    ChatHistoryC2CFileFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CFileFragment);
+    if (this.jdField_a_of_type_Bhuf.isShowing()) {
+      this.jdField_a_of_type_Bhuf.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahzp
  * JD-Core Version:    0.7.0.1
  */

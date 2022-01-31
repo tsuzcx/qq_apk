@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class FeedsProtocol$FeedsInfo
-  extends MessageMicro
+  extends MessageMicro<FeedsInfo>
 {
   public static final int LIVE_AGGREGATE = 1;
   public static final int LIVE_ANCHOR = 4;
@@ -46,7 +46,7 @@ public final class FeedsProtocol$FeedsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.FeedsProtocol.FeedsInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -5,8 +5,9 @@ import java.io.Serializable;
 public final class enum_mood_modify_define
   implements Serializable
 {
+  private static enum_mood_modify_define[] __values;
   public static final int _enum_modify_content = 1;
-  private static enum_mood_modify_define[] a;
+  public static final int _enum_modify_ugcright = 2;
   public static final enum_mood_modify_define enum_modify_content;
   private String __T = new String();
   private int __value;
@@ -17,7 +18,7 @@ public final class enum_mood_modify_define
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      a = new enum_mood_modify_define[1];
+      __values = new enum_mood_modify_define[1];
       enum_modify_content = new enum_mood_modify_define(0, 1, "enum_modify_content");
       return;
     }
@@ -27,16 +28,16 @@ public final class enum_mood_modify_define
   {
     this.__T = paramString;
     this.__value = paramInt2;
-    a[paramInt1] = this;
+    __values[paramInt1] = this;
   }
   
   public static enum_mood_modify_define convert(int paramInt)
   {
     int i = 0;
-    while (i < a.length)
+    while (i < __values.length)
     {
-      if (a[i].value() == paramInt) {
-        return a[i];
+      if (__values[i].value() == paramInt) {
+        return __values[i];
       }
       i += 1;
     }
@@ -49,10 +50,10 @@ public final class enum_mood_modify_define
   public static enum_mood_modify_define convert(String paramString)
   {
     int i = 0;
-    while (i < a.length)
+    while (i < __values.length)
     {
-      if (a[i].toString().equals(paramString)) {
-        return a[i];
+      if (__values[i].toString().equals(paramString)) {
+        return __values[i];
       }
       i += 1;
     }
@@ -74,7 +75,7 @@ public final class enum_mood_modify_define
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_OPERATION.enum_mood_modify_define
  * JD-Core Version:    0.7.0.1
  */

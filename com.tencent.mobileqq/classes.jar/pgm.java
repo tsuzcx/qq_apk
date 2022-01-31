@@ -1,21 +1,23 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.component.media.image.ImageLoader;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.ImageLoader.Options;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem.PicData;
 
-public class pgm
-  implements Runnable
+public final class pgm
+  implements Parcelable.Creator<ReadInJoyDraftboxItem.PicData>
 {
-  public pgm(ImageLoader paramImageLoader, ImageLoader.ImageLoadListener paramImageLoadListener, String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions) {}
-  
-  public void run()
+  public ReadInJoyDraftboxItem.PicData a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener.onImageLoaded(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options);
+    return new ReadInJoyDraftboxItem.PicData(paramParcel);
+  }
+  
+  public ReadInJoyDraftboxItem.PicData[] a(int paramInt)
+  {
+    return new ReadInJoyDraftboxItem.PicData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pgm
  * JD-Core Version:    0.7.0.1
  */

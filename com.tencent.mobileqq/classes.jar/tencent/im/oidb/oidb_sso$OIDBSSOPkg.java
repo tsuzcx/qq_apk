@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_sso$OIDBSSOPkg
-  extends MessageMicro
+  extends MessageMicro<OIDBSSOPkg>
 {
   public static final int BYTES_BODYBUFFER_FIELD_NUMBER = 4;
   public static final int STR_CLIENT_VERSION_FIELD_NUMBER = 6;
@@ -33,7 +33,7 @@ public final class oidb_sso$OIDBSSOPkg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.oidb_sso.OIDBSSOPkg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,27 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class yot
-  implements Runnable
+  implements yqb
 {
-  public yot(ApolloCmdChannel paramApolloCmdChannel, long paramLong, int paramInt) {}
+  public yot(BlankRecommendItemView paramBlankRecommendItemView, CertifiedAccountMeta.StUser paramStUser) {}
   
-  public void run()
+  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    ApolloCmdChannel.access$400(this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    String str = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get();
+    if (paramBoolean) {}
+    for (paramStFeed = "blank_content_follow";; paramStFeed = "blank_content_unfollow")
+    {
+      zaj.b(str, "auth_follow", paramStFeed, 0, 0, new String[] { "", BlankRecommendItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoBlankRecommendItemView) + "", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.nick.get(), "" });
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yot
  * JD-Core Version:    0.7.0.1
  */

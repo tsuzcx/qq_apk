@@ -9,8 +9,8 @@ import java.util.Map;
 public final class mobile_detail_mqq_req
   extends JceStruct
 {
-  static Map cache_mqqinfo = new HashMap();
-  public Map mqqinfo;
+  static Map<String, String> cache_mqqinfo = new HashMap();
+  public Map<String, String> mqqinfo;
   
   static
   {
@@ -19,7 +19,7 @@ public final class mobile_detail_mqq_req
   
   public mobile_detail_mqq_req() {}
   
-  public mobile_detail_mqq_req(Map paramMap)
+  public mobile_detail_mqq_req(Map<String, String> paramMap)
   {
     this.mqqinfo = paramMap;
   }
@@ -36,7 +36,7 @@ public final class mobile_detail_mqq_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_detail_mqq_req
  * JD-Core Version:    0.7.0.1
  */

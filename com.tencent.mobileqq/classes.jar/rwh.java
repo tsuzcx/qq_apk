@@ -1,27 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.annotation.SuppressLint;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
 
-public final class rwh
-  implements DialogInterface.OnCancelListener
+public class rwh
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public rwh(boolean paramBoolean, ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
+  public rwh(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  @SuppressLint({"NewApi"})
+  public void onGlobalLayout()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
+    for (;;)
+    {
+      ReadinjoySlidingIndicator.a(this.a, ReadinjoySlidingIndicator.a(this.a));
+      View localView = ReadinjoySlidingIndicator.a(this.a).getChildAt(ReadinjoySlidingIndicator.a(this.a));
+      ReadinjoySlidingIndicator.a(this.a, localView.getLeft());
+      this.a.invalidate();
+      return;
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
-    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rwh
  * JD-Core Version:    0.7.0.1
  */

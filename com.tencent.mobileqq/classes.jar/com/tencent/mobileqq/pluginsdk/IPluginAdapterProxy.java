@@ -5,28 +5,28 @@ import com.tencent.qphone.base.util.QLog;
 
 public class IPluginAdapterProxy
 {
-  static IPluginAdapterProxy a;
-  private IPluginAdapter b;
+  static IPluginAdapterProxy sProxy;
   public String currentUin;
+  private IPluginAdapter mPluginAdapter;
   
   private IPluginAdapterProxy(IPluginAdapter paramIPluginAdapter)
   {
-    this.b = paramIPluginAdapter;
+    this.mPluginAdapter = paramIPluginAdapter;
   }
   
   public static IPluginAdapterProxy getProxy()
   {
-    return a;
+    return sProxy;
   }
   
   public static void setProxy(IPluginAdapter paramIPluginAdapter)
   {
-    a = new IPluginAdapterProxy(paramIPluginAdapter);
+    sProxy = new IPluginAdapterProxy(paramIPluginAdapter);
   }
   
   public Looper getSubThreadLooper()
   {
-    IPluginAdapter localIPluginAdapter = this.b;
+    IPluginAdapter localIPluginAdapter = this.mPluginAdapter;
     if (localIPluginAdapter == null)
     {
       QLog.d("plugin_tag", 1, "IPluginAdapter null");
@@ -37,7 +37,7 @@ public class IPluginAdapterProxy
   
   public boolean isDefaultMode()
   {
-    IPluginAdapter localIPluginAdapter = this.b;
+    IPluginAdapter localIPluginAdapter = this.mPluginAdapter;
     boolean bool1;
     if (localIPluginAdapter == null)
     {
@@ -57,7 +57,7 @@ public class IPluginAdapterProxy
   
   public boolean isNightMode()
   {
-    IPluginAdapter localIPluginAdapter = this.b;
+    IPluginAdapter localIPluginAdapter = this.mPluginAdapter;
     if (localIPluginAdapter == null)
     {
       QLog.d("plugin_tag", 1, "IPluginAdapter null");
@@ -70,7 +70,7 @@ public class IPluginAdapterProxy
   {
     try
     {
-      IPluginAdapter localIPluginAdapter = this.b;
+      IPluginAdapter localIPluginAdapter = this.mPluginAdapter;
       if (localIPluginAdapter == null)
       {
         QLog.d("plugin_tag", 1, "IPluginAdapter null");
@@ -85,7 +85,7 @@ public class IPluginAdapterProxy
   
   public boolean isSupportMultiDex(String paramString)
   {
-    IPluginAdapter localIPluginAdapter = this.b;
+    IPluginAdapter localIPluginAdapter = this.mPluginAdapter;
     if (localIPluginAdapter == null)
     {
       QLog.d("plugin_tag", 1, "IPluginAdapter null");

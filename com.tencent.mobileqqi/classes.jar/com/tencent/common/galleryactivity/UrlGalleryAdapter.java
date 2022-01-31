@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable.ConstantState;
 import android.view.View;
 import android.view.ViewGroup;
-import bwi;
+import bqk;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.transfile.AbsDownloader;
@@ -121,7 +121,7 @@ public class UrlGalleryAdapter
       if ((paramView.getStatus() != 1) && (paramView.getStatus() != 4) && (paramView.getStatus() != 2))
       {
         int i = paramView.getProgress();
-        localURLImageView.setURLDrawableDownListener(new bwi(this, paramInt, paramViewGroup));
+        localURLImageView.setURLDrawableDownListener(new bqk(this, paramInt, paramViewGroup));
         a(paramInt, i / 100);
         return localURLImageView;
       }

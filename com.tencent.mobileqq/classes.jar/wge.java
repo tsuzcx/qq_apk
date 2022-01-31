@@ -1,38 +1,55 @@
+import android.support.annotation.NonNull;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListAdapter;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 
-class wge
-  implements Runnable
+public class wge
+  extends QQUIEventReceiver<StoryPickerFragment, vte>
 {
-  wge(wgd paramwgd, List paramList) {}
-  
-  public void run()
+  public wge(@NonNull StoryPickerFragment paramStoryPickerFragment)
   {
-    ChatHistoryBubbleListAdapter localChatHistoryBubbleListAdapter = this.jdField_a_of_type_Wgd.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter;
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if (this.jdField_a_of_type_JavaUtilList.size() < 21) {}
-    for (boolean bool = true;; bool = false)
+    super(paramStoryPickerFragment);
+  }
+  
+  public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull vte paramvte)
+  {
+    paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.clear();
+    paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.addAll(paramvte.jdField_a_of_type_JavaUtilArrayList);
+    List localList = paramStoryPickerFragment.jdField_a_of_type_Wgo.a();
+    int i = 0;
+    while (i < localList.size())
     {
-      localChatHistoryBubbleListAdapter.b(localList, bool);
-      if (this.jdField_a_of_type_Wgd.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() > 0)
+      Iterator localIterator = ((VideoCollectionItem)localList.get(i)).collectionVideoUIItemList.iterator();
+      while (localIterator.hasNext())
       {
-        this.jdField_a_of_type_Wgd.a.jdField_a_of_type_Long = ((MessageRecord)this.jdField_a_of_type_Wgd.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getItem(0)).shmsgseq;
-        this.jdField_a_of_type_Wgd.a.b = ((MessageRecord)this.jdField_a_of_type_Wgd.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getItem(this.jdField_a_of_type_Wgd.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() - 1)).shmsgseq;
+        wnd localwnd = (wnd)localIterator.next();
+        if (paramvte.jdField_a_of_type_JavaUtilArrayList.contains(localwnd.jdField_a_of_type_JavaLangString)) {
+          localwnd.jdField_a_of_type_Boolean = true;
+        } else {
+          localwnd.jdField_a_of_type_Boolean = false;
+        }
       }
-      this.jdField_a_of_type_Wgd.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.a = true;
-      this.jdField_a_of_type_Wgd.a.jdField_a_of_type_AndroidWidgetTextView.setText("点击加载更多");
-      this.jdField_a_of_type_Wgd.a.a(this.jdField_a_of_type_Wgd.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.a, this.jdField_a_of_type_Wgd.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.b);
-      this.jdField_a_of_type_Wgd.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.notifyDataSetChanged();
-      return;
+      i += 1;
     }
+    paramStoryPickerFragment.c();
+    if (paramvte.jdField_a_of_type_Boolean) {
+      paramStoryPickerFragment.rightViewText.performClick();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vte.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wge
  * JD-Core Version:    0.7.0.1
  */

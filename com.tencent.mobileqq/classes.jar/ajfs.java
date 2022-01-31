@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.TroopEnterEffectData;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ajfs
-  implements Runnable
+public class ajfs
 {
-  ajfs(ajfr paramajfr, int paramInt, TroopEnterEffectController.TroopEnterEffectData paramTroopEnterEffectData) {}
+  public long a;
+  public MessageRecord a;
+  public String a;
+  public byte[] a;
   
-  public void run()
+  public ajfs(MessageRecord paramMessageRecord, long paramLong, byte[] paramArrayOfByte, String paramString)
   {
-    QLog.d("TroopEnterEffect.Controller", 2, "download Res isAIO = " + this.jdField_a_of_type_Ajfr.a.a);
-    if (this.jdField_a_of_type_Ajfr.a.a)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopEnterEffect.Controller", 2, "download Res callback success id = " + this.jdField_a_of_type_Int + " showAnimation");
-      }
-      this.jdField_a_of_type_Ajfr.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$TroopEnterEffectData);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

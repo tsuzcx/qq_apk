@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17a7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="30.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0907" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020df0" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="20.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0358" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="专享红包" android:layout_centerHorizontal="true" />
-</RelativeLayout>

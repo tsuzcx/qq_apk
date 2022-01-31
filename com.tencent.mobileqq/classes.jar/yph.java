@@ -1,29 +1,32 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
-import com.tencent.mobileqq.apollo.process.data.CmGameOpenIdFinder.OpenIdListener;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
+import com.tencent.qphone.base.util.QLog;
 
 public class yph
-  implements CmGameOpenIdFinder.OpenIdListener
+  implements View.OnClickListener
 {
-  public yph(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy, int paramInt, String paramString) {}
+  public yph(ServiceFolderFollowPBHeadView paramServiceFolderFollowPBHeadView) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(paramString2))
+    if (!TextUtils.isEmpty(ServiceFolderFollowPBHeadView.a(this.a))) {
+      ybt.a(ServiceFolderFollowPBHeadView.a(this.a));
+    }
+    for (;;)
     {
-      paramString1 = new Bundle();
-      paramString1.putInt("type", this.jdField_a_of_type_Int);
-      paramString1.putString("uin", paramString2);
-      paramString2 = new ypi(this);
-      QIPCClientHelper.getInstance().callServer("cm_game_module", "action_get_accountInfo", paramString1, paramString2);
+      ServiceFolderFollowPBHeadView.a(this.a).setVisibility(8);
+      azqs.b(null, "dc00898", "", "", "auth_page", "msg_exp", 0, 0, "", "", "", "");
+      return;
+      QLog.e(ServiceFolderFollowPBHeadView.a(), 2, "jump error mJumpWebMessageListUrl is null");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yph
  * JD-Core Version:    0.7.0.1
  */

@@ -30,12 +30,12 @@ import com.tencent.mobileqq.webviewplugin.JsBridgeListener;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
-import ghm;
-import ghn;
-import gho;
-import ghp;
-import ghq;
-import ghr;
+import gda;
+import gdb;
+import gdc;
+import gdd;
+import gde;
+import gdf;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -133,11 +133,11 @@ public class MusicGeneWebViewPlugin
   private static final String y = "data";
   private static final String z = "list";
   private int jdField_a_of_type_Int = 0;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new gho(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new gdc(this);
   private Context jdField_a_of_type_AndroidContentContext = null;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new ghm(this);
-  private Handler jdField_a_of_type_AndroidOsHandler = new ghp(this, Looper.getMainLooper());
-  private IQQPlayerCallback.Stub jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerCallback$Stub = new ghn(this);
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new gda(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new gdd(this, Looper.getMainLooper());
+  private IQQPlayerCallback.Stub jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerCallback$Stub = new gdb(this);
   private IQQPlayerService jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService = null;
   private SongInfo jdField_a_of_type_ComTencentMobileqqMusicSongInfo = null;
   private JsBridgeListener jdField_a_of_type_ComTencentMobileqqWebviewpluginJsBridgeListener = null;
@@ -264,8 +264,8 @@ public class MusicGeneWebViewPlugin
   
   private void a()
   {
-    ghr localghr = new ghr(this);
-    this.jdField_a_of_type_JavaUtilTimer.schedule(localghr, 1000L, 1000L);
+    gdf localgdf = new gdf(this);
+    this.jdField_a_of_type_JavaUtilTimer.schedule(localgdf, 1000L, 1000L);
   }
   
   private void a(Bitmap paramBitmap)
@@ -1051,7 +1051,7 @@ public class MusicGeneWebViewPlugin
                 paramString2 = new File(new File(AppConstants.an + File.separator + "diskcache"), paramString2);
                 if ((paramString2 == null) || (!paramString2.exists()))
                 {
-                  ThreadManager.a(new ghq(this, paramString1, paramString2));
+                  ThreadManager.a(new gde(this, paramString1, paramString2));
                   paramString1 = new JSONObject();
                   paramString1.put("code", "0");
                   paramJsBridgeListener.a(paramString1);

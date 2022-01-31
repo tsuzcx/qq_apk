@@ -3,15 +3,15 @@ package oicq.wlogin_sdk.request;
 import android.os.Build.VERSION;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import oicq.wlogin_sdk.b.at;
+import oicq.wlogin_sdk.report.Reporter;
 import oicq.wlogin_sdk.report.report_t;
-import oicq.wlogin_sdk.report.report_t1;
+import oicq.wlogin_sdk.tlv_type.tlv_t150;
 import oicq.wlogin_sdk.tools.cryptor;
 import oicq.wlogin_sdk.tools.util;
 import org.json.JSONObject;
 
 public class u
-  extends i
+  extends k
 {
   public final int b = 1737040709;
   public final int c = 33;
@@ -77,10 +77,10 @@ public class u
   public int b(long paramLong1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, long paramLong2)
   {
     long l = System.currentTimeMillis();
-    t.ag.commit(Build.VERSION.RELEASE, new String(t.E), "", util.buf_to_string(util.get_ksid(t.r)), new String(t.C), new String(t.O), new String(t.G), new String(t.F), util.get_release_time(), "5.4.0.7");
+    t.an.commit(Build.VERSION.RELEASE, new String(t.G), "", util.buf_to_string(util.get_ksid(t.t)), new String(t.E), new String(t.Q), new String(t.I), new String(t.H), util.get_release_time(), "6.0.0.2202");
     try
     {
-      paramArrayOfByte1 = t.ag.toJasonObj().toString().getBytes();
+      paramArrayOfByte1 = t.an.toJasonObj().toString().getBytes();
       if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length == 0)) {
         return 0;
       }
@@ -101,15 +101,15 @@ public class u
       util.int16_to_buf(arrayOfByte, 2, paramArrayOfByte1.length);
       System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 4, paramArrayOfByte1.length);
       paramArrayOfByte1 = a(arrayOfByte, paramLong1, paramLong2, l, 0);
-      report_t.delete_file(t.r);
+      report_t.delete_file(t.t);
       int i = b(a(a(paramLong1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramLong2)));
       util.LOGI("request_report_error(0) rsp: ret=" + i);
       if (i != 0)
       {
-        report_t.write_tofile(t.ag, t.r);
+        report_t.write_tofile(t.an, t.t);
         return i;
       }
-      t.ag.clear_t2();
+      t.an.clear_t2();
       return i;
     }
   }
@@ -125,14 +125,14 @@ public class u
       long l3 = System.currentTimeMillis();
       SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
       Calendar localCalendar = Calendar.getInstance();
-      int j = this.a.d.f();
-      int k = this.a.d.g();
-      util.LOGI("bitmap:" + j + " network:" + k + " local network:" + util.get_network_type(t.r));
+      int j = this.a.d.get_bitmap();
+      int k = this.a.d.get_network();
+      util.LOGI("bitmap:" + j + " network:" + k + " local network:" + util.get_network_type(t.t));
       int i = 0;
       if (i < 32)
       {
         if ((1 << i & j) == 0) {}
-        while ((k != 0) && ((k != 1) || (util.get_network_type(t.r) != 2)))
+        while ((k != 0) && ((k != 1) || (util.get_network_type(t.t) != 2)))
         {
           i += 1;
           break;
@@ -140,7 +140,7 @@ public class u
         l1 = l3 - 86400000 * i;
         localCalendar.setTimeInMillis(l1);
         str = localSimpleDateFormat.format(localCalendar.getTime());
-        l2 = util.getLogModifyTime(t.r, str);
+        l2 = util.getLogModifyTime(t.t, str);
         if (l2 != 0L) {
           break label339;
         }
@@ -148,7 +148,7 @@ public class u
     }
     for (;;)
     {
-      paramArrayOfByte1 = util.readLog(t.r, str);
+      paramArrayOfByte1 = util.readLog(t.t, str);
       if (paramArrayOfByte1 == null) {}
       for (paramArrayOfByte1 = new byte[0];; paramArrayOfByte1 = a(paramArrayOfByte1, paramLong1, paramLong2, l1, 1))
       {

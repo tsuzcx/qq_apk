@@ -1,20 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qqdataline.DatalineBridgeActivity;
-
-public class amoi
-  implements DialogInterface.OnDismissListener
+public abstract interface amoi
 {
-  public amoi(DatalineBridgeActivity paramDatalineBridgeActivity) {}
+  public abstract void a();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public abstract boolean a();
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amoi
  * JD-Core Version:    0.7.0.1
  */

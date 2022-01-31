@@ -1,15 +1,19 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhs;
 
 public class ApolloActionPackage
-  extends Entity
+  extends awge
 {
+  public static final int PACKAGE_ID_3D_SEGMENT = 300;
   public static final int PACKAGE_ID_COLLECT = 4;
+  public static final int PACKAGE_ID_DOUBLE_3D = 301;
   public static final int PACKAGE_ID_ENHANCE = 7;
   public static final int PACKAGE_ID_GAME = 100;
+  public static final int PACKAGE_ID_GUIDE = 400;
   public static final int PACKAGE_ID_SINGLE = 0;
+  public static final int PACKAGE_ID_SINGLE_3D = 300;
   public static final int PACKAGE_ID_SLAVE = 6;
   public static final int PACKAGE_ID_WORLD = 5;
   public String endVersion;
@@ -17,7 +21,7 @@ public class ApolloActionPackage
   public String mIconSelectedUrl;
   public String mIconUnselectedUrl;
   public String name;
-  @unique
+  @awhs
   public int packageId;
   public int redFlowId;
   public long redInterval;
@@ -26,6 +30,11 @@ public class ApolloActionPackage
   public String startVersion;
   public int type;
   public long version;
+  
+  public static boolean is3DPackage(int paramInt)
+  {
+    return paramInt >= 300;
+  }
   
   public ApolloActionPackage getCopy()
   {
@@ -45,7 +54,7 @@ public class ApolloActionPackage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.ApolloActionPackage
  * JD-Core Version:    0.7.0.1
  */

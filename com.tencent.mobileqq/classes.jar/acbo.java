@@ -1,34 +1,45 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.store.ApolloResDownloader.OnApolloDownLoadListener;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
 
-class acbo
-  implements ApolloResDownloader.OnApolloDownLoadListener
+public class acbo
+  implements View.OnFocusChangeListener
 {
-  acbo(acbg paramacbg, int paramInt, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public acbo(AddAccountActivity paramAddAccountActivity) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    paramString = new Bundle();
-    if (paramBoolean)
+    if (paramView == this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView) {
+      if (true == paramBoolean)
+      {
+        if (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.isPopupShowing()) {
+          this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.dismissDropDown();
+        }
+        if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length() > 0)) {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        }
+        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length());
+      }
+    }
+    while ((paramView != this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText) || (true != paramBoolean))
     {
-      paramString.putInt("apollo_result", 0);
-      paramString.putInt("apollo_roleId", paramInt1);
-      paramString.putInt("apollo_fromSelf", this.jdField_a_of_type_Int);
-      paramString.putIntArray("apollo_dressIds", paramArrayOfInt);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      do
+      {
+        return;
+      } while ((this.a.jdField_a_of_type_AndroidWidgetImageView == null) || (!this.a.jdField_a_of_type_AndroidWidgetImageView.isShown()));
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       return;
     }
-    paramString.putInt("apollo_result", 1);
-    paramString.putInt("apollo_fromSelf", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.getText().length());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acbo
  * JD-Core Version:    0.7.0.1
  */

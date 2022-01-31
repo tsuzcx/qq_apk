@@ -1,30 +1,24 @@
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.TextView;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
 
 public class zbm
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public zbm(ConditionSearchManager paramConditionSearchManager) {}
+  public zbm(SingleLyricView paramSingleLyricView) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    int i = -1;
-    int j = this.a.a();
-    if (j != 0) {
-      i = this.a.a(j);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "pendCardParseRequest | check reuslt = " + j + " | update result = " + i);
-    }
-    if (j == 0) {
-      ConditionSearchManager.a(this.a).a(new zbn(this));
+    super.onAnimationCancel(paramAnimator);
+    if (SingleLyricView.a(this.a) != null) {
+      SingleLyricView.a(this.a).setAlpha(1.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zbm
  * JD-Core Version:    0.7.0.1
  */

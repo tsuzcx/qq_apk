@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class PendantMarket$TipsInfo
-  extends MessageMicro
+  extends MessageMicro<TipsInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 66, 72, 82 }, new String[] { "valid", "ret", "type", "title_wording", "wording", "right_btn_wording", "left_btn_wording", "vip_type", "vip_month", "url" }, new Object[] { Boolean.valueOf(false), Integer.valueOf(0), Integer.valueOf(0), "", "", "", "", "", Integer.valueOf(0), "" }, TipsInfo.class);
   public final PBStringField left_btn_wording = PBField.initString("");
@@ -25,7 +25,7 @@ public final class PendantMarket$TipsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.pendantMarket.PendantMarket.TipsInfo
  * JD-Core Version:    0.7.0.1
  */

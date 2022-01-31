@@ -1,24 +1,42 @@
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.aio.panel.PEPanel;
-import com.tencent.widget.ListView;
-import com.tencent.widget.XPanelContainer;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 
-class vly
-  implements Runnable
+final class vly
+  implements bhuk
 {
-  vly(vlx paramvlx) {}
+  vly(CommentEntry paramCommentEntry, bhuf parambhuf) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    PEPanel.a(this.a.a).setVisibility(0);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, XPanelContainer.a, 0.0F);
-    localTranslateAnimation.setDuration(200L);
-    PEPanel.a(this.a.a).startAnimation(localTranslateAnimation);
+    switch (paramInt)
+    {
+    default: 
+      paramView = "16384";
+      QQUserUIItem localQQUserUIItem = ((uwm)uwa.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUnionId);
+      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
+        new vdw().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), paramView, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.content);
+      }
+      break;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      paramView = "2";
+      break;
+      paramView = "1";
+      break;
+      paramView = "4";
+      break;
+      wxe.d("Q.qqstory.player.PlayModeUtils", "report comment error because evil uin is empty.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vly
  * JD-Core Version:    0.7.0.1
  */

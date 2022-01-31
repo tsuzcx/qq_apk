@@ -3,6 +3,8 @@ package com.tencent.qphone.base.util;
 import android.content.Context;
 import android.os.Build;
 import android.text.TextUtils;
+import com.tencent.commonsdk.soload.SoLoadCore;
+import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import java.io.File;
 
 public class StringUtils
@@ -10,6 +12,7 @@ public class StringUtils
   public static final String MSF_LIB_BOOTV2 = "msfbootV2";
   public static final String MSF_LIB_CODEC_V2 = "codecwrapperV2";
   public static final String MSF_LIB_QUIC = "quic";
+  private static final String TAG_LOAD_MSF = "LoadMSFSo";
   
   public static String getIpAddrFromInt(int paramInt)
   {
@@ -140,99 +143,50 @@ public class StringUtils
     return false;
   }
   
-  /* Error */
   public static int msfLoadSo(String paramString1, String paramString2)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: ldc 2
-    //   4: monitorenter
-    //   5: ldc 66
-    //   7: invokestatic 144	com/tencent/qphone/base/util/StringUtils:getPlatformString	()Ljava/lang/String;
-    //   10: invokevirtual 148	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   13: ifeq +76 -> 89
-    //   16: getstatic 153	com/tencent/qphone/base/util/BaseApplication:processName	Ljava/lang/String;
-    //   19: ifnull +20 -> 39
-    //   22: getstatic 153	com/tencent/qphone/base/util/BaseApplication:processName	Ljava/lang/String;
-    //   25: ifnull +18 -> 43
-    //   28: getstatic 153	com/tencent/qphone/base/util/BaseApplication:processName	Ljava/lang/String;
-    //   31: ldc 155
-    //   33: invokevirtual 158	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   36: ifeq +7 -> 43
-    //   39: aconst_null
-    //   40: invokestatic 164	com/tencent/commonsdk/soload/SoLoadUtilNew:setReport	(Lcom/tencent/commonsdk/soload/SoLoadReport;)V
-    //   43: invokestatic 168	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   46: aload_1
-    //   47: invokestatic 174	com/tencent/commonsdk/soload/SoLoadCore:loadSo	(Landroid/content/Context;Ljava/lang/String;)I
-    //   50: istore_2
-    //   51: aload_0
-    //   52: iconst_1
-    //   53: new 70	java/lang/StringBuilder
-    //   56: dup
-    //   57: invokespecial 71	java/lang/StringBuilder:<init>	()V
-    //   60: ldc 176
-    //   62: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   65: aload_1
-    //   66: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   69: ldc 178
-    //   71: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   74: iload_2
-    //   75: invokevirtual 181	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   78: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   81: invokestatic 183	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   84: ldc 2
-    //   86: monitorexit
-    //   87: iload_2
-    //   88: ireturn
-    //   89: aload_0
-    //   90: aload_1
-    //   91: invokestatic 168	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   94: invokestatic 185	com/tencent/qphone/base/util/StringUtils:loadLibrary	(Ljava/lang/String;Ljava/lang/String;Landroid/content/Context;)Z
-    //   97: istore_3
-    //   98: aload_0
-    //   99: iconst_1
-    //   100: new 70	java/lang/StringBuilder
-    //   103: dup
-    //   104: invokespecial 71	java/lang/StringBuilder:<init>	()V
-    //   107: ldc 187
-    //   109: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   112: aload_1
-    //   113: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   116: ldc 189
-    //   118: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   121: iload_3
-    //   122: invokevirtual 192	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   125: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   128: invokestatic 140	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   131: goto -47 -> 84
-    //   134: astore_0
-    //   135: ldc 2
-    //   137: monitorexit
-    //   138: aload_0
-    //   139: athrow
-    //   140: astore 4
-    //   142: aload 4
-    //   144: invokevirtual 195	java/lang/Throwable:printStackTrace	()V
-    //   147: iconst_0
-    //   148: istore_3
-    //   149: goto -51 -> 98
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	152	0	paramString1	String
-    //   0	152	1	paramString2	String
-    //   1	87	2	i	int
-    //   97	52	3	bool	boolean
-    //   140	3	4	localThrowable	Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   5	39	134	finally
-    //   39	43	134	finally
-    //   43	84	134	finally
-    //   89	98	134	finally
-    //   98	131	134	finally
-    //   142	147	134	finally
-    //   89	98	140	java/lang/Throwable
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        System.loadLibrary(paramString2);
+        if (QLog.isColorLevel()) {
+          QLog.d("LoadMSFSo", 2, "System.loadLibrary, libname = " + paramString2 + " suc");
+        }
+        i = 262144;
+      }
+      catch (Throwable localThrowable1)
+      {
+        QLog.e("LoadMSFSo", 1, localThrowable1, new Object[0]);
+        if (!"armeabi".equalsIgnoreCase(getPlatformString())) {
+          break label155;
+        }
+        if ((BaseApplication.processName != null) && ((BaseApplication.processName == null) || (!BaseApplication.processName.endsWith(":MSF")))) {
+          continue;
+        }
+        SoLoadUtilNew.setReport(null);
+        i = SoLoadCore.loadSo(BaseApplication.getContext(), paramString2);
+        QLog.e(paramString1, 1, "loadso arm " + paramString2 + " resultCode=" + i);
+        continue;
+      }
+      finally {}
+      return i;
+      try
+      {
+        label155:
+        bool = loadLibrary(paramString1, paramString2, BaseApplication.getContext());
+        QLog.d(paramString1, 1, "loadso x86 " + paramString2 + " " + bool);
+      }
+      catch (Throwable localThrowable2)
+      {
+        for (;;)
+        {
+          localThrowable2.printStackTrace();
+          boolean bool = false;
+        }
+      }
+    }
   }
 }
 

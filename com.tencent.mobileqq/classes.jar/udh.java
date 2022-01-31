@@ -1,29 +1,16 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class udh
-  implements View.OnClickListener
+class udh
+  implements DialogInterface.OnClickListener
 {
-  public udh(TroopRequestActivity paramTroopRequestActivity) {}
+  udh(udb paramudb) {}
   
-  public void onClick(View paramView)
-  {
-    paramView = new Intent(this.a, AccountDetailActivity.class);
-    paramView.putExtra("uin", this.a.a.req_uin.get() + "");
-    paramView.putExtra("source", 112);
-    this.a.startActivity(paramView);
-    ReportController.b(this.a.app, "P_CliOper", "Grp_public", "", "oper", "Clk_invite", 0, 0, "", "", "", this.a.a.req_uin.get() + "");
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     udh
  * JD-Core Version:    0.7.0.1
  */

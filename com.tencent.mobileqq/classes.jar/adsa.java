@@ -1,18 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity.ScanSpaceTask;
+import com.tencent.mobileqq.widget.CircleProgressBar;
 
 public class adsa
-  implements DialogInterface.OnClickListener
+  implements adry
 {
-  public adsa(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
+  public adsa(QQSettingCleanActivity.ScanSpaceTask paramScanSpaceTask) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    paramDialogInterface.dismiss();
-    PresenceInterfaceImpl.a(this.a);
-    QLog.d("PresenceInterfaceImpl", 2, "User allowed downd");
+    this.a.this$0.a.setPercent(paramInt);
   }
 }
 

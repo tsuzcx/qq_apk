@@ -1,22 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
 
 public class ypu
-  implements DialogInterface.OnClickListener
+  implements ypt
 {
-  public ypu(ApolloWebGameActivity paramApolloWebGameActivity) {}
+  public ypu(AsyncRichTextView paramAsyncRichTextView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(String paramString)
   {
-    ApolloWebGameActivity.a(this.a).dismiss();
-    ApolloWebGameActivity.b(this.a);
+    if ((this.a.b != null) && (this.a.b.a(paramString))) {}
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ypu
  * JD-Core Version:    0.7.0.1
  */

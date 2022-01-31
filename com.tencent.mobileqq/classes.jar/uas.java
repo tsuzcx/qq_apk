@@ -1,21 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.graphics.RectF;
+import com.tencent.biz.qqcircle.transition.QCircleTransitionImageView;
 
 public class uas
-  implements View.OnClickListener
+  implements uao
 {
-  public uas(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public uas(QCircleTransitionImageView paramQCircleTransitionImageView) {}
   
-  public void onClick(View paramView)
+  public float a()
   {
-    this.a.a.setText("");
+    return (QCircleTransitionImageView.b(this.a).top + QCircleTransitionImageView.b(this.a).bottom) / 2.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uas
  * JD-Core Version:    0.7.0.1
  */

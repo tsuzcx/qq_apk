@@ -6,15 +6,15 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class C2CType0x211_SubC2CType0x8$LBSInfo
-  extends MessageMicro
+  extends MessageMicro<LBSInfo>
 {
   public static final int MSG_GPS_FIELD_NUMBER = 1;
   public static final int RPT_MSG_CELLS_FIELD_NUMBER = 3;
   public static final int RPT_MSG_WIFIS_FIELD_NUMBER = 2;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26 }, new String[] { "msg_gps", "rpt_msg_wifis", "rpt_msg_cells" }, new Object[] { null, null, null }, LBSInfo.class);
   public C2CType0x211_SubC2CType0x8.GPS msg_gps = new C2CType0x211_SubC2CType0x8.GPS();
-  public final PBRepeatMessageField rpt_msg_cells = PBField.initRepeatMessage(C2CType0x211_SubC2CType0x8.Cell.class);
-  public final PBRepeatMessageField rpt_msg_wifis = PBField.initRepeatMessage(C2CType0x211_SubC2CType0x8.Wifi.class);
+  public final PBRepeatMessageField<C2CType0x211_SubC2CType0x8.Cell> rpt_msg_cells = PBField.initRepeatMessage(C2CType0x211_SubC2CType0x8.Cell.class);
+  public final PBRepeatMessageField<C2CType0x211_SubC2CType0x8.Wifi> rpt_msg_wifis = PBField.initRepeatMessage(C2CType0x211_SubC2CType0x8.Wifi.class);
 }
 
 

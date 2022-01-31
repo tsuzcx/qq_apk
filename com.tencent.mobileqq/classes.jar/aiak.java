@@ -1,24 +1,29 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoyManager;
+import android.support.v4.app.FragmentActivity;
 
 public class aiak
-  implements Animation.AnimationListener
+  extends aiac
 {
-  public aiak(GLLittleBoyManager paramGLLittleBoyManager) {}
+  public static final int[] a = { 2131690787 };
+  public static final int[] b = { 2131364158 };
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public aiak(FragmentActivity paramFragmentActivity)
   {
-    GLLittleBoyManager.b(this.a, paramAnimation);
+    super(paramFragmentActivity);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  protected int[] a()
+  {
+    return b;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected int[] b()
+  {
+    return a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiak
  * JD-Core Version:    0.7.0.1
  */

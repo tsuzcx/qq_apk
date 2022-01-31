@@ -1,43 +1,28 @@
-import android.net.Uri;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyScreenShotReporter;
-import com.tencent.biz.pubaccount.util.ScreenshotContentObserver.Listener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
+import java.util.Comparator;
 
-public final class mje
-  implements ScreenshotContentObserver.Listener
+public class mje
+  implements Comparator<lfu>
 {
-  public void a(Uri paramUri, String paramString, int paramInt)
+  public mje(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
+  
+  public int a(lfu paramlfu1, lfu paramlfu2)
   {
-    if (QLog.isColorLevel())
-    {
-      paramString = new StringBuilder().append("onDetectScreenshot() path=").append(paramString).append(", channelID=");
-      if (ReadInJoyScreenShotReporter.a(ReadInJoyScreenShotReporter.a()) != null) {
-        break label129;
-      }
-      paramUri = "null";
-      paramString = paramString.append(paramUri).append(", channelType=");
-      if (ReadInJoyScreenShotReporter.b(ReadInJoyScreenShotReporter.a()) != null) {
-        break label139;
-      }
+    if ((paramlfu2.b) && (paramlfu1.b)) {
+      return paramlfu2.e - paramlfu1.e;
     }
-    label129:
-    label139:
-    for (paramUri = "null";; paramUri = ReadInJoyScreenShotReporter.b(ReadInJoyScreenShotReporter.a()))
-    {
-      QLog.d("ReadInJoyScreenShotReporter", 2, paramUri);
-      if (ReadInJoyScreenShotReporter.a(ReadInJoyScreenShotReporter.a()) != null) {
-        PublicAccountReportUtils.b(null, "", "0X8008100", "0X8008100", 0, 0, String.valueOf(System.currentTimeMillis() / 1000L), String.valueOf(ReadInJoyScreenShotReporter.b(ReadInJoyScreenShotReporter.a())), String.valueOf(ReadInJoyScreenShotReporter.a(ReadInJoyScreenShotReporter.a())), null, false);
-      }
-      return;
-      paramUri = ReadInJoyScreenShotReporter.a(ReadInJoyScreenShotReporter.a());
-      break;
+    if ((!paramlfu2.b) && (!paramlfu1.b)) {
+      return paramlfu2.e - paramlfu1.e;
     }
+    if ((paramlfu2.b) && (!paramlfu1.b)) {
+      return 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mje
  * JD-Core Version:    0.7.0.1
  */

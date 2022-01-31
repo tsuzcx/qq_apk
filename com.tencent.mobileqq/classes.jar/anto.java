@@ -1,38 +1,22 @@
-import android.os.Bundle;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import java.util.Random;
 
 public class anto
-  implements Runnable
 {
-  public anto(EditVideoFilterNeo paramEditVideoFilterNeo, AddressDataProvider.AddressInfo paramAddressInfo) {}
+  public static Random a = new Random();
   
-  public void run()
+  public static final float a(float paramFloat)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilterNeo.a.a(Message.obtain(null, 5, 0, 0, this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo));
-    String str;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo.c)) {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo.b)) {
-        str = this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo.a;
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilterNeo.a.a.a.putString("extra_local_address_city_name", str);
-      return;
-      str = this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo.b;
-      continue;
-      str = this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo.c;
-    }
+    return antq.a[((int)(1303.7972F * paramFloat) & 0x1FFF)];
+  }
+  
+  public static final float b(float paramFloat)
+  {
+    return antp.a[((int)(1303.7972F * paramFloat) & 0x1FFF)];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anto
  * JD-Core Version:    0.7.0.1
  */

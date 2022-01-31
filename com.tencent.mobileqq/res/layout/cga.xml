@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/mvw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/mvx" android:padding="13.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:layout_gravity="center_vertical" android:id="@id/mw0" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" android:layout_toRightOf="@id/mvx" />
+    </LinearLayout>
+    <RelativeLayout android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="12.0dip" android:layout_centerInParent="true">
+        <View android:background="#4cffffff" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_centerVertical="true" />
+        <com.tencent.biz.pubaccount.weishi_new.view.RotationSeekBar android:id="@id/mvy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:max="1000" android:progressDrawable="@drawable/bid" android:thumb="@drawable/dn3" android:thumbOffset="0.0dip" android:layout_centerVertical="true" style="@style/ft" />
+        <ImageView android:id="@id/mvz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.5dip" android:scaleType="fitXY" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

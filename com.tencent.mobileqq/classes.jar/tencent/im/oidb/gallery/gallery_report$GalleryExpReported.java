@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class gallery_report$GalleryExpReported
-  extends MessageMicro
+  extends MessageMicro<GalleryExpReported>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField city = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -34,7 +34,7 @@ public final class gallery_report$GalleryExpReported
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.gallery.gallery_report.GalleryExpReported
  * JD-Core Version:    0.7.0.1
  */

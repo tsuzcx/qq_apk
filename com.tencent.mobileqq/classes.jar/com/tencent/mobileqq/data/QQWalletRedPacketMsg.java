@@ -17,6 +17,7 @@ import tencent.im.msg.im_msg_body.QQWalletAioBody;
 public class QQWalletRedPacketMsg
 {
   public String authkey;
+  public QQWalletAioBodyReserve body;
   private int channelId;
   public int conftype;
   public QQWalletTransferMsgElem elem;
@@ -29,17 +30,23 @@ public class QQWalletRedPacketMsg
   public String redPacketIndex;
   public int redtype;
   private int resend;
-  public List specifyUinList = new ArrayList();
+  public List<Long> specifyUinList = new ArrayList();
   public int templateId;
   
-  public QQWalletRedPacketMsg() {}
+  public QQWalletRedPacketMsg()
+  {
+    this.body = new QQWalletAioBodyReserve();
+  }
   
   public QQWalletRedPacketMsg(im_msg_body.QQWalletAioBody paramQQWalletAioBody, String paramString)
   {
-    if ((paramQQWalletAioBody == null) || (TextUtils.isEmpty(paramString))) {
+    if ((paramQQWalletAioBody == null) || (TextUtils.isEmpty(paramString)))
+    {
+      this.body = new QQWalletAioBodyReserve();
       return;
     }
     this.elem = new QQWalletTransferMsgElem(paramQQWalletAioBody.receiver);
+    this.body = new QQWalletAioBodyReserve(paramQQWalletAioBody);
     this.channelId = paramQQWalletAioBody.sint32_channelid.get();
     this.templateId = paramQQWalletAioBody.sint32_templateid.get();
     this.resend = paramQQWalletAioBody.uint32_resend.get();
@@ -69,7 +76,7 @@ public class QQWalletRedPacketMsg
       this.elem.aioImageRight = paramObjectInput.readUTF();
       this.elem.cftImage = paramObjectInput.readUTF();
     }
-    catch (IOException localException2)
+    catch (IOException localThrowable)
     {
       try
       {
@@ -77,85 +84,137 @@ public class QQWalletRedPacketMsg
         this.envelopeName = paramObjectInput.readUTF();
         this.conftype = paramObjectInput.readInt();
       }
-      catch (IOException localException2)
+      catch (IOException localThrowable)
       {
         try
         {
           this.msgFrom = paramObjectInput.readInt();
         }
-        catch (IOException localException2)
+        catch (IOException localThrowable)
         {
           try
           {
             this.redPacketIndex = paramObjectInput.readUTF();
           }
-          catch (IOException localException2)
+          catch (IOException localThrowable)
           {
             try
             {
               this.redChannel = paramObjectInput.readInt();
               this.specifyUinList = ((List)paramObjectInput.readObject());
             }
-            catch (Exception localException2)
+            catch (Exception localThrowable)
             {
               try
               {
                 this.elem.soundRecordDuration = paramObjectInput.readInt();
               }
-              catch (Exception localException2)
+              catch (Exception localThrowable)
               {
                 try
                 {
-                  for (;;)
+                  this.elem.resourceType = paramObjectInput.readInt();
+                  this.elem.skinId = paramObjectInput.readInt();
+                  this.elem.effectsId = paramObjectInput.readInt();
+                  this.elem.special_pop_id = paramObjectInput.readInt();
+                }
+                catch (Exception localThrowable)
+                {
+                  try
                   {
-                    this.elem.resourceType = paramObjectInput.readInt();
-                    this.elem.skinId = paramObjectInput.readInt();
-                    this.elem.effectsId = paramObjectInput.readInt();
-                    this.elem.special_pop_id = paramObjectInput.readInt();
+                    this.elem.themeId = paramObjectInput.readInt();
+                  }
+                  catch (Exception localThrowable)
+                  {
                     try
                     {
-                      this.elem.themeId = paramObjectInput.readInt();
-                      return;
+                      this.elem.hbFrom = paramObjectInput.readInt();
                     }
-                    catch (Exception paramObjectInput)
+                    catch (Exception localThrowable)
                     {
-                      this.elem.themeId = 0;
+                      try
+                      {
+                        this.elem.songId = paramObjectInput.readInt();
+                        this.elem.songFlag = paramObjectInput.readInt();
+                      }
+                      catch (Exception localThrowable)
+                      {
+                        try
+                        {
+                          this.body.feedId = paramObjectInput.readUTF();
+                        }
+                        catch (Throwable localThrowable)
+                        {
+                          try
+                          {
+                            for (;;)
+                            {
+                              this.elem.lastPinyin = paramObjectInput.readUTF();
+                              try
+                              {
+                                this.body.subChannel = paramObjectInput.readInt();
+                                return;
+                              }
+                              catch (IOException paramObjectInput)
+                              {
+                                this.body.subChannel = 0;
+                              }
+                              localIOException1 = localIOException1;
+                              this.elem.iconUrl = "";
+                              this.elem.contentColor = 13487565;
+                              this.elem.contentBgColor = -1;
+                              this.elem.aioImageLeft = "";
+                              this.elem.aioImageRight = "";
+                              this.elem.cftImage = "";
+                              continue;
+                              localIOException2 = localIOException2;
+                              this.envelopeid = -1;
+                              this.envelopeName = "";
+                              this.conftype = -1;
+                              continue;
+                              localIOException3 = localIOException3;
+                              this.msgFrom = -1;
+                              continue;
+                              localIOException4 = localIOException4;
+                              this.redPacketIndex = "";
+                              continue;
+                              localException1 = localException1;
+                              this.redChannel = 0;
+                              this.specifyUinList = new ArrayList();
+                              continue;
+                              localException2 = localException2;
+                              this.elem.soundRecordDuration = 12000;
+                              continue;
+                              localException3 = localException3;
+                              this.elem.resourceType = 0;
+                              this.elem.skinId = 0;
+                              this.elem.effectsId = 0;
+                              this.elem.special_pop_id = 0;
+                              continue;
+                              localException4 = localException4;
+                              this.elem.themeId = 0;
+                              continue;
+                              localException5 = localException5;
+                              this.elem.hbFrom = 0;
+                              continue;
+                              localException6 = localException6;
+                              this.elem.songId = 0;
+                              this.elem.songFlag = 0;
+                              continue;
+                              localThrowable = localThrowable;
+                              this.body.feedId = "";
+                            }
+                          }
+                          catch (IOException localIOException5)
+                          {
+                            for (;;)
+                            {
+                              this.elem.lastPinyin = "";
+                            }
+                          }
+                        }
+                      }
                     }
-                    localIOException1 = localIOException1;
-                    this.elem.iconUrl = "";
-                    this.elem.contentColor = 13487565;
-                    this.elem.contentBgColor = -1;
-                    this.elem.aioImageLeft = "";
-                    this.elem.aioImageRight = "";
-                    this.elem.cftImage = "";
-                    continue;
-                    localIOException2 = localIOException2;
-                    this.envelopeid = -1;
-                    this.envelopeName = "";
-                    this.conftype = -1;
-                    continue;
-                    localIOException3 = localIOException3;
-                    this.msgFrom = -1;
-                    continue;
-                    localIOException4 = localIOException4;
-                    this.redPacketIndex = "";
-                    continue;
-                    localException1 = localException1;
-                    this.redChannel = 0;
-                    this.specifyUinList = new ArrayList();
-                    continue;
-                    localException2 = localException2;
-                    this.elem.soundRecordDuration = 12000;
-                  }
-                }
-                catch (Exception localException3)
-                {
-                  for (;;)
-                  {
-                    this.elem.resourceType = 0;
-                    this.elem.skinId = 0;
-                    this.elem.effectsId = 0;
-                    this.elem.special_pop_id = 0;
                   }
                 }
               }
@@ -236,11 +295,17 @@ public class QQWalletRedPacketMsg
     paramObjectOutput.writeInt(this.elem.effectsId);
     paramObjectOutput.writeInt(this.elem.special_pop_id);
     paramObjectOutput.writeInt(this.elem.themeId);
+    paramObjectOutput.writeInt(this.elem.hbFrom);
+    paramObjectOutput.writeInt(this.elem.songId);
+    paramObjectOutput.writeInt(this.elem.songFlag);
+    paramObjectOutput.writeUTF(this.body.feedId);
+    paramObjectOutput.writeUTF(this.elem.lastPinyin);
+    paramObjectOutput.writeInt(this.body.subChannel);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.QQWalletRedPacketMsg
  * JD-Core Version:    0.7.0.1
  */

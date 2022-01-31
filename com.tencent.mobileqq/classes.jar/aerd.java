@@ -1,24 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.interestTag.ShowTagNamePopupWindow;
-import com.tencent.mobileqq.nearby.interestTag.ShowTagNamePopupWindow.IShowTagNamePopupWindowCallback;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
-public class aerd
-  implements View.OnClickListener
+public abstract interface aerd
 {
-  public aerd(ShowTagNamePopupWindow paramShowTagNamePopupWindow) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    if (ShowTagNamePopupWindow.a(this.a) != null) {
-      ShowTagNamePopupWindow.a(this.a).a(ShowTagNamePopupWindow.a(this.a));
-    }
-    this.a.dismiss();
-  }
+  public abstract void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo);
+  
+  public abstract void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, agmy paramagmy);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerd
  * JD-Core Version:    0.7.0.1
  */

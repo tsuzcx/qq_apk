@@ -1,24 +1,24 @@
-import com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
-import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.CodecHandler;
-import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailArgs;
-import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailResult;
-import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailTaskContext;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment.8.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.HotPicData;
+import mqq.os.MqqHandler;
 
 public class oks
-  implements Runnable
+  implements aswh
 {
-  public oks(MediaCodecThumbnailGenerator.CodecHandler paramCodecHandler, MediaCodecThumbnailGenerator.ThumbnailTaskContext paramThumbnailTaskContext, boolean paramBoolean, MediaCodecThumbnailGenerator.ThumbnailResult paramThumbnailResult) {}
+  public oks(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public void run()
+  public void a(HotPicData paramHotPicData)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailTaskContext.a.b != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailTaskContext.a.b.a(Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailResult);
-    }
+    this.a.a = paramHotPicData;
+    ReadInJoyCommentComponentFragment.a(this.a, null);
+    ThreadManager.getUIHandler().post(new ReadInJoyCommentComponentFragment.8.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oks
  * JD-Core Version:    0.7.0.1
  */

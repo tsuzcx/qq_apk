@@ -1,14 +1,21 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 
-public class amvi
-  implements amwl
+public abstract interface amvi
 {
-  public amvi(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
+  public abstract void a();
   
-  public void a()
-  {
-    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playMusic(this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject);
+  
+  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, amvj paramamvj);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void b(String paramString, int paramInt);
+  
+  public abstract void c(String paramString, int paramInt);
+  
+  public abstract void d(String paramString, int paramInt);
 }
 
 

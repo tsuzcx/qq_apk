@@ -1,37 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hitrate.PreloadProcHitPluginSession;
-import cooperation.plugin.IPluginManager.PluginParams;
-import cooperation.qzone.QZoneHelper.StartActivity;
-import cooperation.qzone.QzonePluginProxyActivity;
-import mqq.os.MqqHandler;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class amsx
-  implements QZoneHelper.StartActivity
+class amsx
+  implements MediaPlayer.OnErrorListener
 {
-  public amsx(Intent paramIntent, String paramString, PreloadProcHitPluginSession paramPreloadProcHitPluginSession, int paramInt, Activity paramActivity, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  amsx(amsu paramamsu) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    String str = QzonePluginProxyActivity.a(this.jdField_a_of_type_AndroidContentIntent);
-    Class localClass = amta.a(str);
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("userQqResources", 2);
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("click_time", System.currentTimeMillis());
-    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.jdField_b_of_type_JavaLangString = "qzone_plugin.apk";
-    localPluginParams.d = "QZone";
-    localPluginParams.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession = this.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession;
-    localPluginParams.e = str;
-    localPluginParams.jdField_a_of_type_JavaLangClass = localClass;
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = this.jdField_a_of_type_AndroidContentIntent;
-    localPluginParams.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-    localPluginParams.c = 60000;
-    localPluginParams.f = null;
-    localPluginParams.jdField_a_of_type_Boolean = false;
-    ThreadManager.getUIHandler().post(new amsy(this, str, paramBoolean1, paramBoolean2, localPluginParams));
+    if (QLog.isColorLevel()) {
+      QLog.e("ARMusicController", 2, "ARMusicController, onError, what=" + paramInt1 + ", extra=" + paramInt2);
+    }
+    return false;
   }
 }
 

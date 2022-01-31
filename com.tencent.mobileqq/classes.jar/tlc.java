@@ -1,22 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.dingdong.data.OfficeCenterSharedPref;
-
-public class tlc
-  implements Runnable
+public abstract interface tlc
 {
-  public tlc(QQSettingMe paramQQSettingMe) {}
+  public abstract void a();
   
-  public void run()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    OfficeCenterSharedPref.a().b("officecenter_red_point_flag_" + localQQAppInterface.getLongAccountUin(), false);
-  }
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tlc
  * JD-Core Version:    0.7.0.1
  */

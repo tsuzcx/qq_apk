@@ -1,23 +1,19 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.GetApkNameCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class adid
-  implements UniformDownloadUtil.GetApkNameCallback
+class adid
+  implements DialogInterface.OnClickListener
 {
-  public adid(String paramString) {}
+  adid(adic paramadic) {}
   
-  public void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramString == null) {
-      return;
-    }
-    new Handler(Looper.getMainLooper()).post(new adie(this));
+    if ((paramInt == 1) && (this.a.a(adic.a(this.a)))) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adid
  * JD-Core Version:    0.7.0.1
  */

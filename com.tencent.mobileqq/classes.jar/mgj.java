@@ -1,53 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
 public class mgj
-  extends Handler
+  implements View.OnTouchListener
 {
-  public mgj(BaseTabbar paramBaseTabbar) {}
+  public mgj(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
+    switch (paramMotionEvent.getAction())
     {
-    default: 
-    case 0: 
-      int i;
-      do
-      {
-        return;
-        BaseTabbar.a(this.a, 0.0F);
-        BaseTabbar.a(this.a, (float)(BaseTabbar.a(this.a) + 0.05D));
-        this.a.invalidate();
-        i = paramMessage.arg1;
-        sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(1), 10L);
-      } while (i == 1);
-      BaseTabbar.a(this.a, BaseTabbar.a(this.a), BaseTabbar.b(this.a));
-      return;
-    case 1: 
-      if (BaseTabbar.a(this.a) < 1.0F)
-      {
-        BaseTabbar.a(this.a, (float)(BaseTabbar.a(this.a) + 0.05D));
-        this.a.invalidate();
-        sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(1), 10L);
-        return;
-      }
-      sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(2), 10L);
-      return;
     }
-    BaseTabbar.a(this.a);
-    this.a.a(BaseTabbar.a(this.a), BaseTabbar.b(this.a));
-    BaseTabbar.a(this.a, 1.0F);
-    BaseTabbar.a(this.a, BaseTabbar.b(this.a));
-    this.a.invalidate();
-    BaseTabbar.a(this.a).set(false);
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mgj
  * JD-Core Version:    0.7.0.1
  */

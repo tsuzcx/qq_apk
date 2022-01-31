@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_cmd0x8c8$UGCPicInfo
-  extends MessageMicro
+  extends MessageMicro<UGCPicInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_pic_md5 = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -29,7 +29,7 @@ public final class oidb_cmd0x8c8$UGCPicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.UGCPicInfo
  * JD-Core Version:    0.7.0.1
  */

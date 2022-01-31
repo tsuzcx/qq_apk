@@ -1,35 +1,20 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
-import com.tencent.mobileqq.emoticonview.EmotionNeedDownloadAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
 
 public class acfs
-  extends EmoticonPackageDownloadListener
+  implements View.OnClickListener
 {
-  public acfs(EmotionNeedDownloadAdapter paramEmotionNeedDownloadAdapter) {}
+  public acfs(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void onClick(View paramView)
   {
-    this.a.b(paramEmoticonPackage);
-  }
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
-  {
-    this.a.a(paramEmoticonPackage, paramInt);
-  }
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
-  {
-    this.a.a(paramEmoticonPackage);
-  }
-  
-  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
-  {
-    this.a.a(paramEmoticonPackage, paramInt1, paramInt2);
+    this.a.onBackEvent();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acfs
  * JD-Core Version:    0.7.0.1
  */

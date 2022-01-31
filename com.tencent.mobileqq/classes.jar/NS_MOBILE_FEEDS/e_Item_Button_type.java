@@ -7,6 +7,7 @@ public final class e_Item_Button_type
 {
   public static final int _enum_Func_AddFollow = 1;
   public static final int _enum_Func_AddFriend = 0;
+  public static final int _enum_Func_click_AddSpecialFollow = 13;
   public static final int _enum_Func_click_avatar = 8;
   public static final int _enum_Func_click_commentnum = 6;
   public static final int _enum_Func_click_forwardnum = 7;
@@ -21,7 +22,7 @@ public final class e_Item_Button_type
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.e_Item_Button_type
  * JD-Core Version:    0.7.0.1
  */

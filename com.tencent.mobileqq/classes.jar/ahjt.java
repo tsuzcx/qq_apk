@@ -1,38 +1,35 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr.DItemInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactPresenter.3;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class ahjt
-  implements View.OnTouchListener
+public class ahjt
+  extends ampt
 {
-  ahjt(ahjs paramahjs) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ahjt(Face2FaceAddContactPresenter.3 param3, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.jdField_a_of_type_AndroidWidgetImageView == null) {}
-    do
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
-        this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.a(102, this.a.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.categoryID, this.a.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.itemID);
-        CaptureReportUtil.k();
-        return false;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Face2FaceAddContactPresenter", 2, "onLocationFinish errCode = " + paramInt + " info = " + paramSosoLbsInfo);
+    }
+    if ((paramInt != 0) || (paramSosoLbsInfo == null)) {
+      if (ahjr.a(this.a.this$0) != null) {
+        ahjr.a(this.a.this$0).b();
       }
-    } while (paramMotionEvent.getAction() != 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.jdField_a_of_type_AndroidWidgetImageView.setAlpha(100);
-    return false;
+    }
+    while ((TextUtils.isEmpty(this.a.a)) || (this.a.a.length() != 4)) {
+      return;
+    }
+    ahjr.a(this.a.this$0, paramSosoLbsInfo, this.a.a, this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahjt
  * JD-Core Version:    0.7.0.1
  */

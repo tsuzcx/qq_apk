@@ -7,8 +7,8 @@ import android.widget.EditText;
 public class LengthInputFilter
   implements InputFilter
 {
-  protected int a;
-  protected EditText a;
+  public int a;
+  public EditText a;
   
   public LengthInputFilter(EditText paramEditText, int paramInt)
   {

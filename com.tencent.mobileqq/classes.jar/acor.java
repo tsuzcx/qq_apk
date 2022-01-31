@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class acor
-  implements ActionSheet.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public acor(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public acor(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onDismiss()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
+      ChatSettingActivity.a(this.a).dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acor
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,72 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import dov.com.tencent.mobileqq.shortvideo.util.storage.StorageManager;
-import dov.com.tencent.mobileqq.shortvideo.util.storage.StorageManager.OnSdCardChangedListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoqq
-  extends BroadcastReceiver
+  extends aokh<aoqo>
 {
-  public aoqq(StorageManager paramStorageManager) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a()
   {
-    if (paramIntent.getAction() == null) {}
-    do
+    return 534;
+  }
+  
+  @NonNull
+  public aoqo a(int paramInt)
+  {
+    return new aoqo();
+  }
+  
+  @Nullable
+  public aoqo a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null))
     {
-      do
-      {
-        return;
-        paramContext = this.a.jdField_a_of_type_JavaLangString;
-        this.a.c();
-      } while ((this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoUtilStorageStorageManager$OnSdCardChangedListener == null) || (paramContext.equals(this.a.jdField_a_of_type_JavaLangString)));
-      if (paramIntent.getAction().equals("android.intent.action.MEDIA_UNMOUNTED"))
-      {
-        this.a.b();
-        this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoUtilStorageStorageManager$OnSdCardChangedListener.a(0, this.a.jdField_a_of_type_JavaLangString);
-        return;
+      aoqo localaoqo = aoqo.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQComicConfProcessor", 2, "onParsed  " + paramArrayOfaoko[0].a);
       }
-    } while (!paramIntent.getAction().equals("android.intent.action.MEDIA_MOUNTED"));
-    this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoUtilStorageStorageManager$OnSdCardChangedListener.a(1, this.a.jdField_a_of_type_JavaLangString);
+      return localaoqo;
+    }
+    return null;
+  }
+  
+  public Class<aoqo> a()
+  {
+    return aoqo.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aoqo paramaoqo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQComicConfProcessor", 2, "onUpdate " + paramaoqo.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoqq
  * JD-Core Version:    0.7.0.1
  */

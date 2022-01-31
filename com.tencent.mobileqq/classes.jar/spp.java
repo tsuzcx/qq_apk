@@ -1,1436 +1,774 @@
-import android.app.Dialog;
+import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
-import android.os.Parcelable;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.av.app.PstnSessionInfo;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.av.utils.VideoActionSheet;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.QShareUtils.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.QShareUtils.2;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
-import com.tencent.mobileqq.businessCard.utilities.BusinessCardUtils;
-import com.tencent.mobileqq.campuscircle.CampusCircleHandler;
-import com.tencent.mobileqq.campuscircle.CampusCircleHelper;
-import com.tencent.mobileqq.campuscircle.CampusConfig;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.ContactCard;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.TroopMemberCard;
-import com.tencent.mobileqq.data.TroopMemberCard.MemberGameInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileBusiEntry;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
-import com.tencent.mobileqq.profile.ProfileSummaryHobbiesEntry;
-import com.tencent.mobileqq.profile.ProfileSummaryHobbiesItem;
-import com.tencent.mobileqq.profile.TroopMemberCardUtils;
-import com.tencent.mobileqq.profile.view.ProfileBaseView;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.mobileqq.profile.view.ProfileShoppingView;
-import com.tencent.mobileqq.qcall.PstnCardInfo;
-import com.tencent.mobileqq.qcall.PstnManager;
-import com.tencent.mobileqq.qcall.PstnSwitchConfig;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.statistics.ReportTask;
-import com.tencent.mobileqq.troop.utils.TroopGiftUtil;
-import com.tencent.mobileqq.troop.utils.TroopLinkManager;
-import com.tencent.mobileqq.troop.utils.TroopLinkManager.LinkParams;
-import com.tencent.mobileqq.troop.utils.TroopMemberGlobalLevelUtils;
-import com.tencent.mobileqq.unifiedname.MQQName;
-import com.tencent.mobileqq.unifiedname.MQQProfileName;
-import com.tencent.mobileqq.util.DynamicFaceDrawable;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vas.IndividuationUrlHelper;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qidian.QidianManager;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
-import com.tencent.util.WeakReferenceHandler;
-import com.tencent.widget.ActionSheet;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
-import cooperation.qqindividuality.QQIndividualityUtils;
-import cooperation.troop.TroopBaseProxyActivity;
-import cooperation.troop.TroopMemberCardProxyActivity;
-import java.io.Serializable;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import mqq.app.MobileQQ;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class spp
-  implements View.OnClickListener
 {
-  long jdField_a_of_type_Long = 0L;
+  public static String a;
+  private bety jdField_a_of_type_Bety;
+  private bfah jdField_a_of_type_Bfah;
+  private Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private String b;
   
-  public spp(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public void onClick(View paramView)
+  static
   {
-    if (paramView == null) {
-      break label4;
+    jdField_a_of_type_JavaLangString = "QShareUtils";
+  }
+  
+  public spp()
+  {
+    this.jdField_a_of_type_JavaUtilMap.put("kandian", Integer.valueOf(1));
+    this.jdField_a_of_type_JavaUtilMap.put("qq_friend", Integer.valueOf(2));
+    this.jdField_a_of_type_JavaUtilMap.put("qzone", Integer.valueOf(3));
+    this.jdField_a_of_type_JavaUtilMap.put("we_chat", Integer.valueOf(4));
+    this.jdField_a_of_type_JavaUtilMap.put("we_chat_circle", Integer.valueOf(5));
+    this.jdField_a_of_type_JavaUtilMap.put("we_bo", Integer.valueOf(6));
+    this.jdField_a_of_type_JavaUtilMap.put("qq_browser", Integer.valueOf(7));
+    this.jdField_a_of_type_JavaUtilMap.put("sys_browser", Integer.valueOf(8));
+    this.jdField_a_of_type_JavaUtilMap.put("screen_shot", Integer.valueOf(9));
+    this.jdField_a_of_type_JavaUtilMap.put("set_font", Integer.valueOf(10));
+    this.jdField_a_of_type_JavaUtilMap.put("add_favourite", Integer.valueOf(12));
+    this.jdField_a_of_type_JavaUtilMap.put("send_pc", Integer.valueOf(13));
+    this.jdField_a_of_type_JavaUtilMap.put("copy_link", Integer.valueOf(14));
+    this.jdField_a_of_type_JavaUtilMap.put("report", Integer.valueOf(20));
+    this.jdField_a_of_type_JavaUtilMap.put("dis_like", Integer.valueOf(15));
+    this.jdField_a_of_type_JavaUtilMap.put("not_care", Integer.valueOf(19));
+    this.jdField_a_of_type_JavaUtilMap.put("add_friend", Integer.valueOf(17));
+    this.jdField_a_of_type_JavaUtilMap.put("open_aio", Integer.valueOf(16));
+    this.jdField_a_of_type_JavaUtilMap.put("open_more_info", Integer.valueOf(21));
+    this.jdField_a_of_type_JavaUtilMap.put("remove_fans", Integer.valueOf(18));
+    this.jdField_a_of_type_JavaUtilMap.put("personal_c2c", Integer.valueOf(22));
+    this.jdField_a_of_type_JavaUtilMap.put("unfollow", Integer.valueOf(23));
+    this.jdField_a_of_type_JavaUtilMap.put("save_picture", Integer.valueOf(11));
+    this.jdField_a_of_type_JavaUtilMap.put("delete_column", Integer.valueOf(36));
+    this.jdField_a_of_type_JavaUtilMap.put("add_to_column", Integer.valueOf(37));
+    this.jdField_a_of_type_JavaUtilMap.put("remove_from_column", Integer.valueOf(38));
+  }
+  
+  private void a(Activity paramActivity)
+  {
+    if (this.jdField_a_of_type_Bety == null) {
+      this.jdField_a_of_type_Bety = new bety(paramActivity);
+    }
+  }
+  
+  private void a(JSONObject paramJSONObject, int paramInt)
+  {
+    if (this.jdField_a_of_type_Bfah != null) {
+      return;
+    }
+    this.jdField_a_of_type_Bfah = new spq(this);
+    WXShareHelper.a().a(this.jdField_a_of_type_Bfah);
+  }
+  
+  private void a(JSONObject paramJSONObject, int paramInt, AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    HashMap localHashMap = new HashMap(1);
+    int i = -1;
+    int j;
+    if (paramInt == 4)
+    {
+      j = 3;
+      if (WXShareHelper.a().a()) {
+        break label53;
+      }
+      i = 2131721491;
     }
     for (;;)
     {
-      label4:
+      if (i == -1) {
+        break label69;
+      }
+      ybk.a(0, i);
       return;
-      if (!(paramView.getTag() instanceof DataTag)) {
-        continue;
+      j = 4;
+      break;
+      label53:
+      if (!WXShareHelper.a().b()) {
+        i = 2131721492;
       }
-      Object localObject1 = (DataTag)paramView.getTag();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.FrdProfileCard", 2, "onClickListener and DataTag type=" + ((DataTag)localObject1).jdField_a_of_type_Int);
+    }
+    label69:
+    boolean bool;
+    String str2;
+    if ((paramJSONObject.optInt("WXShareToMiniProgram") == 1) && (paramInt == 4))
+    {
+      bool = true;
+      str2 = paramJSONObject.optString("WXSharePath");
+      if (!TextUtils.isEmpty(paramJSONObject.optString("WXShareMiniProgramSourceID"))) {
+        break label167;
       }
-      long l = System.currentTimeMillis();
-      if ((((DataTag)localObject1).jdField_a_of_type_Int != 10) && (Math.abs(l - this.jdField_a_of_type_Long) < 1000L)) {
-        break;
+    }
+    label167:
+    for (String str1 = "gh_eaa1f0b1626b";; str1 = paramJSONObject.optString("WXShareMiniProgramSourceID"))
+    {
+      a(paramJSONObject, j);
+      paramJSONObject = new QShareUtils.1(this, localHashMap, bool, paramString1, paramString2, paramString3, str2, str1, paramInt, paramString6, paramString5);
+      if (!TextUtils.isEmpty(paramString4)) {
+        break label178;
       }
-      this.jdField_a_of_type_Long = l;
-      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.e) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a(((DataTag)localObject1).jdField_a_of_type_Int))) {
-        break;
-      }
-      int i;
-      label1502:
-      label1760:
-      Object localObject2;
-      label2082:
-      label3167:
-      label4071:
-      int j;
-      switch (((DataTag)localObject1).jdField_a_of_type_Int)
+      paramJSONObject.run();
+      return;
+      bool = false;
+      break;
+    }
+    label178:
+    ThreadManager.post(new QShareUtils.2(this, paramString4, localHashMap, paramAppInterface, paramJSONObject), 8, null, false);
+  }
+  
+  public static List<Integer>[] a(boolean paramBoolean, Set<String> paramSet)
+  {
+    if (BaseApplicationImpl.getApplication().getRuntime() == null) {
+      return null;
+    }
+    ArrayList localArrayList1 = new ArrayList();
+    if ((!paramSet.contains("menuItem:share:kandian")) && (!paramSet.contains("menuItem:share:diandian")) && (paramBoolean)) {
+      localArrayList1.add(Integer.valueOf(1));
+    }
+    if (!paramSet.contains("menuItem:share:qq")) {
+      localArrayList1.add(Integer.valueOf(2));
+    }
+    if (!paramSet.contains("menuItem:share:QZone")) {
+      localArrayList1.add(Integer.valueOf(3));
+    }
+    if (!paramSet.contains("menuItem:share:appMessage")) {
+      localArrayList1.add(Integer.valueOf(4));
+    }
+    if (!paramSet.contains("menuItem:share:timeline")) {
+      localArrayList1.add(Integer.valueOf(5));
+    }
+    if (!paramSet.contains("menuItem:share:sinaWeibo")) {
+      localArrayList1.add(Integer.valueOf(6));
+    }
+    if (!paramSet.contains("menuItem:openWithQQBrowser")) {
+      localArrayList1.add(Integer.valueOf(7));
+    }
+    if (!paramSet.contains("menuItem:openWithSafari")) {
+      localArrayList1.add(Integer.valueOf(8));
+    }
+    ArrayList localArrayList2 = new ArrayList();
+    if (!paramSet.contains("menuItem:screenShotShare")) {
+      localArrayList2.add(Integer.valueOf(9));
+    }
+    if (!paramSet.contains("menuItem:copyUrl")) {
+      localArrayList2.add(Integer.valueOf(14));
+    }
+    if (!paramSet.contains("menuItem:exposeArticle")) {
+      localArrayList2.add(Integer.valueOf(20));
+    }
+    Collections.sort(localArrayList2);
+    return new List[] { localArrayList1, localArrayList2 };
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 7: 
+    case 8: 
+    case 9: 
+    case 10: 
+    case 11: 
+    case 12: 
+    case 13: 
+    default: 
+      return -1;
+    case 2: 
+      return 0;
+    case 3: 
+      return 1;
+    case 4: 
+      return 2;
+    case 5: 
+      return 3;
+    case 6: 
+      return 4;
+    case 1: 
+      return 7;
+    }
+    return 8;
+  }
+  
+  public String a(int paramInt)
+  {
+    Object localObject1 = "other";
+    Object localObject2 = localObject1;
+    if (this.jdField_a_of_type_JavaUtilMap.containsValue(Integer.valueOf(paramInt)))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      localObject2 = localObject1;
+      if (localIterator.hasNext())
       {
-      case 9: 
-      case 2: 
-      case 12: 
-      case 14: 
-      case 15: 
-      case 18: 
-      case 25: 
-      case 36: 
-      case 37: 
-      case 38: 
-      case 40: 
-      case 43: 
-      case 48: 
-      case 49: 
-      case 50: 
-      case 51: 
-      case 52: 
-      case 53: 
-      case 54: 
-      case 55: 
-      case 56: 
-      case 60: 
-      case 67: 
-      case 75: 
-      case 76: 
-      case 82: 
-      default: 
-      case 1: 
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
-        {
-          paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, AvatarPendantActivity.class);
-          paramView.putExtra("AllInOne", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(paramView);
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null)
-          {
-            paramView = (View)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_JavaUtilHashMap.get("map_key_avatar_pendant");
-            l = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Long;
-            if ((ProfileActivity.AllInOne.f(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) && (paramView != null) && (paramView.getVisibility() == 0) && (l != 0L)) {
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "AvatarClick", "ZhurenInfoHeadClick", 0, 0, "", "", "", "");
-            }
-          }
+        localObject2 = (String)localIterator.next();
+        if (paramInt != ((Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject2)).intValue()) {
+          break label87;
         }
-      case 17: 
-        for (;;)
+        localObject1 = localObject2;
+      }
+    }
+    label87:
+    for (;;)
+    {
+      break;
+      return localObject2;
+    }
+  }
+  
+  public List<sps> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new sps("kandian", 1, false));
+    localArrayList.add(new sps("qq_friend", 2, false));
+    localArrayList.add(new sps("qzone", 3, false));
+    localArrayList.add(new sps("we_chat", 4, false));
+    localArrayList.add(new sps("we_chat_circle", 5, false));
+    localArrayList.add(new sps("we_bo", 6, false));
+    localArrayList.add(new sps("qq_browser", 7, false));
+    localArrayList.add(new sps("sys_browser", 8, false));
+    return localArrayList;
+  }
+  
+  public List<sps> a(JSONArray paramJSONArray, JSONObject paramJSONObject)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (localArrayList != null) {}
+    for (;;)
+    {
+      int i;
+      Object localObject2;
+      int k;
+      try
+      {
+        int j = paramJSONArray.length();
+        i = 0;
+        if (i < j)
         {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8004173", "0X8004173", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) {
-            break label1760;
-          }
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A77", "0X8006A77", 0, 0, "", "", "", "");
-          return;
-          if ((!ProfileActivity.AllInOne.f(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) || (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 80) || (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView == null)) {
-            break;
-          }
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
+          Object localObject1 = paramJSONArray.get(i);
+          if ((localObject1 instanceof String))
           {
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.e();
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X8007EC1", "0X8007EC1", 0, 0, "", "", "", "");
-            return;
-          }
-          paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, CardPicGalleryActivity.class);
-          localObject1 = new ArrayList();
-          if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.b)) {
-            paramView.putExtra("extra_default", 2130843018);
-          }
-          ((ArrayList)localObject1).add(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.b);
-          paramView.putExtra("extra_mode", 2);
-          paramView.putStringArrayListExtra("business_card_pics", (ArrayList)localObject1);
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(paramView);
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.overridePendingTransition(2131034389, 0);
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A97", "0X8006A97", 0, 0, "", "", "", "");
-          return;
-          if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 33) || (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 80)) {
-            break;
-          }
-          if (!ProfileActivity.AllInOne.f(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))
-          {
-            paramView = FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-            if (((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 53) || (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_b_of_type_Boolean)) && (paramView != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null))
-            {
-              localObject1 = (View)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_JavaUtilHashMap.get("map_key_face");
-              if (localObject1 != null) {
-                ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, (View)localObject1, paramView);
-              }
+            localObject2 = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject1);
+            if (localObject2 != null) {
+              localArrayList.add(new sps((String)localObject1, ((Integer)localObject2).intValue(), false));
             }
           }
-          else if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null)
+          else if ((localObject1 instanceof JSONObject))
           {
-            paramView = (View)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_JavaUtilHashMap.get("map_key_face");
-            localObject1 = (View)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_JavaUtilHashMap.get("map_key_avatar_pendant");
-            l = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Long;
-            if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) && (ProfileActivity.AllInOne.f(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) && (localObject1 != null) && (paramView != null) && (((View)localObject1).getVisibility() == 0) && (l != 0L))
+            localObject1 = (JSONObject)localObject1;
+            localObject2 = ((JSONObject)localObject1).optString("name");
+            if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (this.jdField_a_of_type_JavaUtilMap.get(localObject2) != null))
             {
-              i = 0;
-              if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 1) {
-                i = 1;
-              }
-              for (;;)
+              k = ((JSONObject)localObject1).optInt("webHandle", 0);
+              if ("save_picture".equals(localObject2))
               {
-                ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "AvatarClick", "KerenInfoHeadClick", i, 0, "", "", "", "");
-                if (!(paramView instanceof DynamicAvatarView)) {
-                  break;
-                }
-                localObject1 = (DynamicAvatarView)paramView;
-                if (((DynamicAvatarView)localObject1).a == null) {
-                  break;
-                }
-                localObject1 = ((DynamicAvatarView)localObject1).a;
-                if ((!((DynamicFaceDrawable)localObject1).jdField_a_of_type_Boolean) || (((DynamicFaceDrawable)localObject1).jdField_a_of_type_ComTencentImageURLDrawable == null) || (TextUtils.isEmpty(((DynamicFaceDrawable)localObject1).c))) {
-                  break label1502;
-                }
-                ProfileCardUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, paramView, ((DynamicFaceDrawable)localObject1).c);
-                break;
-                if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 20) {
-                  i = 2;
-                } else if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 21) {
-                  i = 3;
-                } else if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 45) {
-                  i = 4;
-                } else if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 46) {
-                  i = 5;
-                } else if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 41) {
-                  i = 6;
-                } else if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 42) {
-                  i = 7;
-                }
-              }
-              localObject1 = new ProfileActivity.AllInOne(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getAccount(), 1);
-              ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, paramView, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, l, i, (ProfileActivity.AllInOne)localObject1);
-            }
-            else if ((paramView != null) && ((paramView instanceof DynamicAvatarView)))
-            {
-              localObject1 = (DynamicAvatarView)paramView;
-              if (((DynamicAvatarView)localObject1).a != null)
-              {
-                localObject1 = ((DynamicAvatarView)localObject1).a;
-                if ((((DynamicFaceDrawable)localObject1).jdField_a_of_type_Boolean) && (((DynamicFaceDrawable)localObject1).jdField_a_of_type_ComTencentImageURLDrawable != null) && (!TextUtils.isEmpty(((DynamicFaceDrawable)localObject1).c)))
+                m = ((Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject2)).intValue();
+                if (k == 1)
                 {
-                  ProfileCardUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, paramView, ((DynamicFaceDrawable)localObject1).c);
-                }
-                else if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 41) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString.equals("0")))
-                {
-                  ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, paramView, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.p, false, false, null);
-                }
-                else
-                {
-                  localObject1 = new ProfileActivity.AllInOne(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getAccount(), 1);
-                  ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, paramView, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, false, false, (ProfileActivity.AllInOne)localObject1);
+                  bool = true;
+                  localArrayList.add(new spt((String)localObject2, m, bool, paramJSONObject.optString("saveImageUrl")));
                 }
               }
             }
           }
         }
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A8B", "0X8006A8B", 0, 0, "", "", "", "");
-        return;
-      case 31: 
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.q();
-        return;
-      case 4: 
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo = ((ProfileActivity.CardContactInfo)((DataTag)localObject1).jdField_a_of_type_JavaLangObject);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt == null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt = new int[5];
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo = new PstnSessionInfo();
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo = PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne));
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.b != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.c != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqQcallPstnManager.a() == 1) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqQcallPstnManager.a().jdField_b_of_type_Int == 1))
+      }
+      catch (JSONException paramJSONArray)
+      {
+        paramJSONArray.printStackTrace();
+      }
+      return localArrayList;
+      boolean bool = false;
+      continue;
+      int m = ((Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject2)).intValue();
+      if (k == 1) {}
+      for (bool = true;; bool = false)
+      {
+        localArrayList.add(new sps((String)localObject2, m, bool));
+        break;
+      }
+      i += 1;
+    }
+  }
+  
+  public sps a(List<sps> paramList1, List<sps> paramList2, int paramInt)
+  {
+    paramList1 = paramList1.iterator();
+    while (paramList1.hasNext())
+    {
+      sps localsps = (sps)paramList1.next();
+      if (localsps.a == paramInt) {
+        return localsps;
+      }
+    }
+    paramList1 = paramList2.iterator();
+    while (paramList1.hasNext())
+    {
+      paramList2 = (sps)paramList1.next();
+      if (paramList2.a == paramInt) {
+        return paramList2;
+      }
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    WXShareHelper.a().b(this.jdField_a_of_type_Bfah);
+  }
+  
+  void a(Activity paramActivity, JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt, boolean paramBoolean)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("isWebCompShare", true);
+    localIntent.setClass(paramActivity.getApplicationContext(), ForwardRecentActivity.class);
+    localIntent.putExtra("key_flag_from_plugin", true);
+    String str = paramString1;
+    if (paramString1 != null)
+    {
+      str = paramString1;
+      if (paramString1.length() > 45) {
+        str = paramString1.substring(0, 45) + "…";
+      }
+    }
+    paramString1 = paramString2;
+    if (paramString2 != null)
+    {
+      paramString1 = paramString2;
+      if (paramString2.length() > 60) {
+        paramString1 = paramString2.substring(0, 60) + "…";
+      }
+    }
+    int i = paramInt;
+    if (paramInt <= 0) {
+      i = 13;
+    }
+    localIntent.putExtra("pluginName", "web_share");
+    localIntent.putExtra("title", str);
+    localIntent.putExtra("desc", paramString1);
+    localIntent.putExtra("detail_url", paramString3);
+    localIntent.putExtra("shareQQType", i);
+    localIntent.putExtra("forward_type", 1001);
+    localIntent.putExtra("req_share_id", paramJSONObject.optLong("app_id", -1L));
+    localIntent.putExtra("pkg_name", "com.tencent.mobileqq");
+    localIntent.putExtra("image_url_remote", paramString4);
+    localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131696875, new Object[] { str }));
+    localIntent.putExtra("flag", paramJSONObject.optInt("flag", 0));
+    localIntent.putExtra("is_need_show_toast", paramBoolean);
+    if (paramJSONObject.has("contentAction")) {
+      localIntent.putExtra("struct_share_key_content_action", paramJSONObject.getString("contentAction"));
+    }
+    if (paramJSONObject.has("actionData")) {
+      localIntent.putExtra("struct_share_key_content_action_DATA", paramJSONObject.getString("actionData"));
+    }
+    if (paramJSONObject.has("sourceAction")) {
+      localIntent.putExtra("struct_share_key_source_action", paramJSONObject.getString("sourceAction"));
+    }
+    if (paramJSONObject.has("isShareFlag")) {
+      localIntent.putExtra("is_share_flag", Integer.parseInt(paramJSONObject.getString("isShareFlag")));
+    }
+    if (paramJSONObject.has("srcActionData")) {
+      localIntent.putExtra("struct_share_key_source_action_data", paramJSONObject.getString("srcActionData"));
+    }
+    if (paramJSONObject.has("appName")) {
+      localIntent.putExtra("app_name", paramJSONObject.getString("appName"));
+    }
+    if (paramJSONObject.has("source_name")) {
+      localIntent.putExtra("app_name", paramJSONObject.getString("source_name"));
+    }
+    if (paramJSONObject.has("sourceName")) {
+      localIntent.putExtra("app_name", paramJSONObject.getString("sourceName"));
+    }
+    if ("audio".equals(paramString5))
+    {
+      paramInt = 2;
+      localIntent.putExtra("audio_url", paramString6);
+    }
+    long l;
+    for (;;)
+    {
+      localIntent.putExtra("req_type", paramInt);
+      localIntent.putExtra("openerProc", MobileQQ.getMobileQQ().getQQProcessName());
+      paramBoolean = paramJSONObject.optBoolean("back", true);
+      if (paramJSONObject.has("k_back")) {
+        paramBoolean = paramJSONObject.getBoolean("k_back");
+      }
+      localIntent.putExtra("k_back", paramBoolean);
+      if (paramJSONObject.has("serviceID")) {
+        localIntent.putExtra("new_share_service_id", paramJSONObject.getString("serviceID"));
+      }
+      l = paramJSONObject.optLong("appid", 0L);
+      if (l <= 0L) {
+        break;
+      }
+      paramJSONObject = (AppInterface)ors.a();
+      if (paramJSONObject != null)
+      {
+        a(paramActivity);
+        if (!this.jdField_a_of_type_Bety.isShowing())
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_d_of_type_JavaLangString = FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app);
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[0] = 19;
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[1] = 8;
-          if (!ProfileActivity.AllInOne.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) {
-            break label2082;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[2] = 9;
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[3] = 16;
+          this.jdField_a_of_type_Bety.c(2131694219);
+          this.jdField_a_of_type_Bety.show();
         }
-        for (;;)
+        localIntent.putExtra("struct_share_key_source_name", Long.toString(l));
+        zfy.a(paramJSONObject, paramActivity, paramJSONObject.getAccount(), l, 3000L, new spr(this, localIntent, paramActivity));
+      }
+      return;
+      i = paramJSONObject.optInt("req_type", 1);
+      paramInt = i;
+      if (i == 2)
+      {
+        localIntent.putExtra("audio_url", paramJSONObject.getString("audio_url"));
+        paramInt = i;
+      }
+    }
+    a(paramActivity);
+    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing()))
+    {
+      l = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "dialog dimiss time :" + l);
+      }
+      this.jdField_a_of_type_Bety.dismiss();
+    }
+    paramString1 = paramJSONObject.optString("puin", null);
+    if (paramString1 == null) {
+      paramString1 = paramJSONObject.optString("oaUin");
+    }
+    label1048:
+    label1058:
+    label1068:
+    label1638:
+    label1771:
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(paramString1))
+      {
+        paramString2 = (AppInterface)ors.a();
+        paramString2 = paramString2.getEntityManagerFactory(paramString2.getAccount()).createEntityManager();
+        paramString5 = (AccountDetail)paramString2.a(AccountDetail.class, paramString1);
+        paramString2.a();
+        paramString4 = paramJSONObject.optString("src_action", "");
+        paramString2 = null;
+        if (TextUtils.isEmpty(paramString4)) {
+          if (paramString5 == null) {
+            break label1778;
+          }
+        }
+      }
+      label1009:
+      label1778:
+      for (paramString2 = paramString5.name;; paramString2 = null)
+      {
+        paramString3 = paramString2;
+        if (TextUtils.isEmpty(paramString2))
         {
-          i = 4;
-          while (i < 5)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[i] = -1;
-            i += 1;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[0] = 7;
-          break;
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[2] = 16;
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[3] = -1;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8005AFD", "0X8005AFD", 0, 0, "", "", "", "");
-        return;
-      case 35: 
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.r();
-        return;
-      case 6: 
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.u();
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "P_prof", "Prof_new_photo", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
-        return;
-      case 72: 
-        paramView = ((CampusCircleHandler)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.a(108)).a();
-        paramView = String.format(Locale.getDefault(), "%s&uin=%s", new Object[] { paramView.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString });
-        localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, QQBrowserActivity.class);
-        ((Intent)localObject1).putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getCurrentAccountUin());
-        ((Intent)localObject1).putExtra("url", paramView);
-        ((Intent)localObject1).putExtra("hide_more_button", true);
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity((Intent)localObject1);
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {}
-        for (i = 1;; i = 2)
-        {
-          ReportController.b((QQAppInterface)localObject1, "dc00898", "", "", "0X80081EF", "0X80081EF", i, 0, "", "", "", "");
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("CampusCircle", 2, String.format(Locale.getDefault(), "forward campus feed url: %s", new Object[] { paramView }));
-          return;
-        }
-      case 5: 
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.v();
-        ThreadManager.post(new spq(this), 8, null, true);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "P_prof", "Pp_clk_qzone", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A7C", "0X8006A7C", 0, 0, "", "", "", "");
-        }
-        while (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_b_of_type_Boolean)
-        {
-          new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app).a("dc00899").b("Grp_mem_card").c("page").d("zone_clk").a(new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString }).a();
-          return;
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A90", "0X8006A90", 0, 0, "", "", "", "");
-        }
-      case 63: 
-        QQStoryMemoriesActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, 7, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
-        StoryReportor.a("person_data", "clk_entry", 0, 0, new String[] { "", "", "", "" });
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X8007EB7", "0X8007EB7", 0, 0, "", "", "", "");
-        }
-        while (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_b_of_type_Boolean)
-        {
-          new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app).a("dc00899").b("Grp_mem_card").c("page").d("diary_clk").a(new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString }).a();
-          return;
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X8007EB8", "0X8007EB8", 0, 0, "", "", "", "");
-        }
-      case 7: 
-        if (QSecFramework.a().a(1001).booleanValue()) {
-          QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(1), Integer.valueOf(1), Integer.valueOf(6), "addfriend", null }, null);
-        }
-        FriendProfileCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "P_prof", "Pp_add_frd", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), Integer.toString(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_k_of_type_Int), "", "");
-        if (Utils.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X8008274", "0X8008274", 0, 0, "", "", "", "");
-        }
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null))
-        {
-          if (87 == this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int) {
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006F0D", "0X8006F0D", 0, 0, "", "", "", "");
+          paramString3 = paramString2;
+          if (paramJSONObject.has("sourceName")) {
+            paramString3 = paramJSONObject.optString("sourceName");
           }
         }
-        else if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 53)
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.o != 1) {
-            break label3619;
-          }
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8007162", "0X8007162", 0, 0, "", "", "", "");
-        }
-        while (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_b_of_type_Boolean)
-        {
-          new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app).a("dc00899").b("Grp_mem_card").c("page").d("addfri_clk").a(new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString }).a();
-          return;
-          if ((101 == this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int) || (102 == this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int) || (103 == this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int))
-          {
-            if (((PhoneContactManager)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getManager(10)).g()) {}
-            for (paramView = "0X80077D4";; paramView = "0X80077CE")
-            {
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", paramView, paramView, 0, 0, "", "", "", "");
-              if (101 != this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int) {
-                break label3468;
-              }
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", paramView, paramView, 1, 0, "", "", "", "");
-              break;
-            }
-            if (102 == this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int)
-            {
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", paramView, paramView, 2, 0, "", "", "", "");
-              break label3167;
-            }
-            if (103 != this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int) {
-              break label3167;
-            }
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", paramView, paramView, 3, 0, "", "", "", "");
-            break label3167;
-          }
-          if (104 != this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int) {
-            break label3167;
-          }
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X80077D1", "0X80077D1", 0, 0, "", "", "", "");
-          break label3167;
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.o == 2) {
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8007163", "0X8007163", 0, 0, "", "", "", "");
-          }
-        }
-      case 8: 
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.t();
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "P_prof", "Pp_send_msg", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), Integer.toString(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_k_of_type_Int), "", "");
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_b_of_type_Boolean) {
-          continue;
-        }
-        new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app).a("dc00899").b("Grp_mem_card").c("page").d("msg_clk").a(new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString }).a();
-        return;
-      case 23: 
-        localObject1 = paramView.findViewById(2131371310);
-        localObject2 = paramView.getParent();
-        paramView = (View)localObject1;
-        if ((localObject2 instanceof View)) {
-          paramView = ((View)localObject2).findViewById(2131371310);
-        }
-        i = 1;
-        if (paramView != null) {
-          if (paramView.getVisibility() != 0) {
-            break label4071;
-          }
-        }
-        for (i = 0;; i = 1)
-        {
-          paramView.setVisibility(8);
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.i();
-          ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getCurrentAccountUin(), "inside.myCardButton", i, 3, 1, "", true);
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "card_mall", "0X8006681", 0, 0, "", "", "", "");
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X8007EB5", "0X8007EB5", 0, 0, "", "", "", "");
-          if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != ProfileCardTemplate.j) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != ProfileCardTemplate.i)) {
-            break;
-          }
-          VasWebviewUtil.reportCommercialDrainage("", "card_gameking", "clkcard_owner", "0", 1, 0, 0, HttpUtil.a(), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId));
-          return;
-        }
-      case 24: 
-        j = ((Integer)((DataTag)localObject1).jdField_a_of_type_JavaLangObject).intValue();
-        if ((j == 101107) || (j == 101108))
-        {
-          if (j != 101108) {
-            break label4194;
-          }
-          i = 5;
-          if (j != 101108) {
-            break label4199;
-          }
-          VipUtils.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, 3, ProfileCardUtil.a(i));
+        paramString2 = paramString3;
+        if (TextUtils.isEmpty(paramString3)) {
+          paramString2 = paramString1;
         }
         for (;;)
         {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "P_CliOper", "Vip_SummaryCard", "", "SummaryCard", "CLICK_TOPBARVIPINVALID", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
-          return;
-          i = 2;
-          break;
-          VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, 3, ProfileCardUtil.a(i));
-        }
-      case 10: 
-        if ((((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof Card))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a((Card)((DataTag)localObject1).jdField_a_of_type_JavaLangObject);
-          return;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a(null);
-        return;
-      case 71: 
-        if ((!(((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof Card)) || (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentUtilWeakReferenceHandler == null)) {
-          continue;
-        }
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage();
-        paramView.what = 14;
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(paramView);
-        return;
-      case 74: 
-        if ((!(((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof Card)) || (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentUtilWeakReferenceHandler == null)) {
-          continue;
-        }
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage();
-        paramView.what = 19;
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(paramView);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X8008641", "0X8008641", 1, 0, "", "", "", "");
-        return;
-      case 13: 
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.s();
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "P_prof", "Pp_clk_myQR", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
-        return;
-      case 81: 
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) {
-          continue;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.e(false);
-        if (FriendProfileCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity)) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X80081C1", "0X80081C1", 0, 0, "", "", "", "");
-        }
-        new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app).a("dc00899").b("Grp_mem_card").c("page").d("edit_clk").a(new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString }).a();
-        return;
-      case 16: 
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_b_of_type_Boolean)
-        {
-          new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app).a("dc00899").b("Grp_mem_card").c("page").d("more_clk").a(new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString }).a();
-          localObject1 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getManager(51);
-          localObject2 = ((TroopManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString);
-          if (localObject2 == null) {
-            continue;
-          }
-          paramView = new Intent();
-          paramView.putExtra("troopUin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString);
-          paramView.putExtra("memberUin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.uin);
-          paramView.putExtra("fromFlag", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_b_of_type_Int);
-          paramView.putExtra("troopMemberCard", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard);
-          paramView.putExtra("troopCode", ((TroopInfo)localObject2).troopcode);
-          paramView.putExtra("troopName", ((TroopInfo)localObject2).getTroopName());
-          paramView.putExtra("hwCard", ((TroopManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.uin));
-          paramView.putExtra("qidian_private_troop", TroopInfo.isQidianPrivateTroop(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString));
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null) {
-            continue;
-          }
-          if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_JavaLangString)) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_JavaLangString = ContactUtils.j(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-          }
-          paramView.putExtra("AllInOne", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-          paramView.putExtra("detailProfileUrl", ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity));
-          paramView.putExtra("qidianshowUin", QidianManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
-          paramView.putExtra("circleRealName", ContactUtils.f(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
-          localObject1 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getManager(50);
-          paramView.putExtra("isFriend", ((FriendsManager)localObject1).b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
-          paramView.putExtra("isQidianMaster", ((QidianManager)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getManager(164)).f(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
-          localObject1 = ((FriendsManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-          if (localObject1 != null) {
-            paramView.putExtra("specialFlag", ((Friends)localObject1).cSpecialFlag);
-          }
-          paramView.putExtra("businessCard", BusinessCardUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo));
-          if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName.jdField_a_of_type_JavaUtilList.size() > 0)) {
-            paramView.putExtra("SHARE_NICK_NAME", ((MQQName)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString);
-          }
-          if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.addSrcName))) {
-            paramView.putExtra("cur_add_source", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.addSrcName);
-          }
-          if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null)) {
-            paramView.putExtra("key_nick_name", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.strNick);
-          }
-          if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null) && (ProfileActivity.AllInOne.i(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)))
+          if (paramString2.equalsIgnoreCase(paramActivity.getString(2131700034)))
           {
-            paramView.putExtra("recommend_campus_name", CampusCircleHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard));
-            paramView.putExtra("recommend_campus_info", CampusCircleHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard));
-          }
-          paramView.putExtra("isMsgShielded", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.c());
-          localObject1 = TroopBaseProxyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity);
-          TroopMemberCardProxyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "troop_member_card_plugin.apk", "群名片", TroopMemberCardProxyActivity.class, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, paramView, (Dialog)localObject1, "com.tencent.mobileqq.memcard.plugin.TroopMemberCardMoreInfoActivity", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getCurrentAccountUin(), 8);
-          return;
-        }
-        paramView = BusinessCardUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-        paramView = ProfileCardUtil.a(new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, ProfileCardMoreActivity.class), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne, paramView);
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName.jdField_a_of_type_JavaUtilList.size() > 0)) {
-          paramView.putExtra("SHARE_NICK_NAME", ((MQQName)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString);
-        }
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.addSrcName))) {
-          paramView.putExtra("cur_add_source", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.addSrcName);
-        }
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null)) {
-          paramView.putExtra("key_nick_name", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.strNick);
-        }
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null) && (ProfileActivity.AllInOne.i(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)))
-        {
-          paramView.putExtra("recommend_campus_name", CampusCircleHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard));
-          paramView.putExtra("recommend_campus_info", CampusCircleHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard));
-        }
-        paramView.addFlags(536870912);
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivityForResult(paramView, 1012);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A8A", "0X8006A8A", 0, 0, "", "", "", "");
-        return;
-      case 21: 
-        if ((((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof ProfileBusiEntry))
-        {
-          paramView = (ProfileBusiEntry)((DataTag)localObject1).jdField_a_of_type_JavaLangObject;
-          localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, QQBrowserActivity.class);
-          ((Intent)localObject1).putExtra("portraitOnly", true);
-          ((Intent)localObject1).putExtra("url", paramView.jdField_d_of_type_JavaLangString);
-        }
-      case 19: 
-      case 3: 
-      case 20: 
-      case 59: 
-      case 26: 
-      case 22: 
-      case 27: 
-      case 28: 
-      case 61: 
-      case 62: 
-      case 29: 
-      case 30: 
-      case 47: 
-      case 32: 
-      case 33: 
-      case 34: 
-      case 39: 
-      case 42: 
-      case 64: 
-      case 70: 
-      case 58: 
-      case 41: 
-      case 44: 
-      case 46: 
-      case 45: 
-      case 57: 
-      case 11: 
-      case 65: 
-      case 66: 
-      case 68: 
-      case 69: 
-      case 73: 
-      case 78: 
-      case 79: 
-      case 80: 
-      case 77: 
-      case 83: 
-      case 84: 
-        try
-        {
-          label3468:
-          label3619:
-          label4194:
-          label4199:
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity((Intent)localObject1);
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8004184", "0X8004184", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
-          return;
-          if ((((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof Object[]))
-          {
-            bool = ((Boolean)((Object[])(Object[])localObject1.jdField_a_of_type_JavaLangObject)[0]).booleanValue();
-            paramView = IndividuationUrlHelper.a("vipPersonalCardMyGame");
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a(bool, paramView);
-          }
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8004183", "0X8004183 ", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
-          return;
-          if ((((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof String)) {
-            paramView = (String)((DataTag)localObject1).jdField_a_of_type_JavaLangObject;
-          }
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
-          {
-            paramView = IndividuationUrlHelper.a("signatureH5Url");
-            if ((!TextUtils.isEmpty(paramView)) && (paramView.startsWith("http"))) {
-              VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, paramView, -1L, null, true, 1026);
-            }
-          }
-          while (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
-          {
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A79", "0X8006A79", 0, 0, "", "", "", "");
-            return;
-            paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, QQIndividualityBridgeActivity.class);
-            paramView.putExtra("k_source", 4);
-            paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
-            paramView.putExtra(QQIndividualityUtils.l, 1);
-            paramView.putExtra(QQIndividualityUtils.e, "path");
-            paramView.putExtra(QQIndividualityUtils.f, "name");
-            paramView.putExtra(QQIndividualityUtils.i, 1026);
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivityForResult(paramView, 1026);
-            continue;
-            localObject1 = IndividuationUrlHelper.a("signatureHistoryH5Url");
-            if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).startsWith("http")))
+            paramBoolean = paramString2.equalsIgnoreCase(paramActivity.getString(2131700034));
+            if (paramBoolean)
             {
-              paramView = (View)localObject1;
-              if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getCurrentAccountUin())) {
-                paramView = (String)localObject1 + "&fuin=" + this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
+              paramString3 = "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=cooperation.readinjoy.ReadInJoyProxyActivity";
+              if (!paramBoolean) {
+                break label1274;
               }
-              VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, paramView, -1L, null, true, 1026);
-            }
-            else
-            {
-              paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, QQIndividualityBridgeActivity.class);
-              paramView.putExtra("key_uin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-              paramView.putExtra("key__entry_type", 1);
-              paramView.putExtra("key_uin_name", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQName.jdField_a_of_type_JavaLangString);
-              paramView.putExtra(QQIndividualityUtils.l, 2);
-              paramView.putExtra(QQIndividualityUtils.e, "path");
-              paramView.putExtra(QQIndividualityUtils.f, "name");
-              paramView.putExtra(QQIndividualityUtils.i, 1026);
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivityForResult(paramView, 1026);
-            }
-          }
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A8D", "0X8006A8D", 0, 0, "", "", "", "");
-          return;
-          paramView = new int[5];
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo = new PstnSessionInfo();
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo = PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne));
-          localObject1 = VideoActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity);
-          ((VideoActionSheet)localObject1).a(2131438345);
-          ((VideoActionSheet)localObject1).b(2131433828);
-          j = 0;
-          paramView[0] = 1;
-          i = j;
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.b != null)
-          {
-            i = j;
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.c != null)
-            {
-              i = j;
-              if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqQcallPstnManager.a() == 1)
-              {
-                i = j;
-                if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqQcallPstnManager.a().jdField_b_of_type_Int == 1)
-                {
-                  this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_d_of_type_JavaLangString = FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app);
-                  if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqQcallPstnCardInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqQcallPstnCardInfo.pstn_c2c_call_time <= 0)) {
-                    break label7051;
-                  }
-                  this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_k_of_type_Int = 1;
-                  ((VideoActionSheet)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getResources().getString(2131438343), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getResources().getDrawable(2130840359), 0);
-                  ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X80063FD", "0X80063FD", 1, 0, "", "", "", "");
-                }
+              paramString4 = "mqqapi://readinjoy/open?src_type=internal&version=1";
+              if (!paramBoolean) {
+                break label1282;
               }
+              paramString5 = "http://sqimg.qq.com/qq_product_operations/ydqpush/message_icon/kandian.png";
+              localIntent.putExtra("source_puin", paramString1);
+              localIntent.putExtra("struct_share_key_source_action", "plugin");
+              localIntent.putExtra("struct_share_key_source_a_action_data", paramString3);
+              localIntent.putExtra("struct_share_key_source_i_action_data", paramString4);
+              localIntent.putExtra("struct_share_key_content_a_action_DATA", paramString3);
+              localIntent.putExtra("struct_share_key_source_icon", paramString5);
+              localIntent.putExtra("app_name", paramString2);
+              label1145:
+              paramJSONObject = paramJSONObject.optString("src_iconUrl", "");
+              if (!TextUtils.isEmpty(paramJSONObject)) {
+                break label1737;
+              }
+              localIntent.putExtra("struct_share_key_source_icon", "http://url.cn/JS8oE7");
             }
           }
           for (;;)
           {
-            i = 1;
-            paramView[1] = 4;
-            paramView[(i + 1)] = 2;
-            ((VideoActionSheet)localObject1).b(2131433825);
-            ((VideoActionSheet)localObject1).c(2131433015);
-            ((VideoActionSheet)localObject1).a(new spr(this));
-            ((VideoActionSheet)localObject1).a(new sps(this, paramView, (VideoActionSheet)localObject1));
-            ((VideoActionSheet)localObject1).show();
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8008404", "0X8008404", 0, 0, "", "", "", "");
-            return;
-            label7051:
-            if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqQcallPstnCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqQcallPstnManager.b() == 1) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqQcallPstnCardInfo.pstn_c2c_try_status == 0))
-            {
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_k_of_type_Int = 2;
-              ((VideoActionSheet)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getResources().getString(2131438343), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getResources().getDrawable(2130840358), 0);
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X80063FD", "0X80063FD", 3, 0, "", "", "", "");
+            paramJSONObject = azvd.a(localIntent.getExtras());
+            if (paramJSONObject != null) {
+              break label1750;
             }
-            else
-            {
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_k_of_type_Int = 5;
-              ((VideoActionSheet)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getResources().getString(2131438343), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getResources().getDrawable(2130840357), 0);
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X80063FD", "0X80063FD", 2, 0, "", "", "", "");
+            if (!QLog.isColorLevel()) {
+              break;
             }
-          }
-          paramView = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getManager(10);
-          if (!paramView.f())
-          {
-            paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, GuideBindPhoneActivity.class);
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(paramView);
-          }
-          while (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.o == 2)
-          {
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8007164", "0X8007164", 0, 0, "", "", "", "");
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "build struct msg fail");
             return;
-            if (!paramView.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_k_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
+            if (paramJSONObject.has("sourceName")) {
+              paramString2 = paramJSONObject.optString("sourceName");
+            }
+            paramString3 = paramString2;
+            if (TextUtils.isEmpty(paramString2))
             {
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_k_of_type_Boolean = true;
-              if (paramView.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_k_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
+              paramString3 = paramString2;
+              if (paramString5 != null) {
+                paramString3 = paramString5.name;
+              }
+            }
+            if (!TextUtils.isEmpty(paramString3)) {
+              break label1771;
+            }
+            paramString2 = paramString1;
+            break label1009;
+            paramString3 = "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=cooperation.readinjoy.ReadInJoyProxyActivity&from=recent";
+            break label1048;
+            label1274:
+            paramString4 = "mqqapi://readinjoy/open?src_type=internal&version=1&from=recent";
+            break label1058;
+            paramString5 = "http://sqimg.qq.com/qq_product_operations/ydqpush/message_icon/dingyuehao.png";
+            break label1068;
+            paramString3 = paramJSONObject.optString("src_iconUrl", "");
+            paramString5 = paramJSONObject.optString("src_actionData", "");
+            paramString6 = paramJSONObject.optString("src_a_actionData", "");
+            str = paramJSONObject.optString("src_i_actionData", "");
+            if ((TextUtils.isEmpty(paramString4)) || (("web".equals(paramString4)) && ((TextUtils.isEmpty(paramString3)) || (paramString3.contains("webcard.mp.qq.com")))) || ((!"web".equals(paramString4)) && (TextUtils.isEmpty(paramString5)) && ((TextUtils.isEmpty(paramString6)) || (TextUtils.isEmpty(str)))))
+            {
+              paramString3 = String.format("mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.pubaccount.AccountDetailActivity&uin=%s", new Object[] { paramString1 });
+              paramString4 = String.format("mqqapi://card/show_pslcard?src_type=internal&card_type=public_account&uin=%s&version=1", new Object[] { paramString1 });
+              localIntent.putExtra("struct_share_key_source_action", "plugin");
+              localIntent.putExtra("struct_share_key_source_a_action_data", paramString3);
+              localIntent.putExtra("struct_share_key_source_i_action_data", paramString4);
+            }
+            for (;;)
+            {
+              localIntent.putExtra("source_puin", paramString1);
+              localIntent.putExtra("app_name", paramString2);
+              paramString1 = paramJSONObject.optString("src_iconUrl", "");
+              if (!TextUtils.isEmpty(paramString1)) {
+                break label1638;
+              }
+              localIntent.putExtra("struct_share_key_source_icon", "http://url.cn/JS8oE7");
+              break;
+              localIntent.putExtra("struct_share_key_source_action", paramString4);
+              if ("web".equals(paramString4))
               {
-                QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getApplicationContext(), "保存成功", 0).a();
+                localIntent.putExtra("struct_share_key_source_url", paramString3);
+                localIntent.putExtra("source_url", paramString3);
               }
               else
               {
-                paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, GuideBindPhoneActivity.class);
-                paramView.putExtra("req_write", true);
-                this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(paramView);
-              }
-            }
-            else
-            {
-              QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getApplicationContext(), "名片已保存", 0).a();
-            }
-          }
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.o != 3) {
-            continue;
-          }
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8007165", "0X8007165", 0, 0, "", "", "", "");
-          return;
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.privilegeJumpUrl;
-          paramView = (View)localObject1;
-          if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) {
-              break label7720;
-            }
-          }
-          label7720:
-          for (paramView = "http://mc.vip.qq.com/privilegelist/index";; paramView = "http://mc.vip.qq.com/privilegelist/other?friend=" + this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)
-          {
-            localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, QQBrowserActivity.class);
-            ((Intent)localObject1).putExtra("url", paramView);
-            ((Intent)localObject1).putExtra("hide_operation_bar", true);
-            ((Intent)localObject1).putExtra("hide_more_button", true);
-            ((Intent)localObject1).putExtra("startOpenPageTime", System.currentTimeMillis());
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity((Intent)localObject1);
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "P_CliOper", "Pb_account_lifeservice", "", "ziliaoka_qqtequan", "tab-click", 0, 1, 0, "", "", "", "");
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) {
-              break;
-            }
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A7B", "0X8006A7B", 0, 0, "", "", "", "");
-            return;
-          }
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A8F", "0X8006A8F", 0, 0, "", "", "", "");
-          return;
-          if (!(((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof ProfileBusiEntry)) {
-            continue;
-          }
-          paramView = (ProfileBusiEntry)((DataTag)localObject1).jdField_a_of_type_JavaLangObject;
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a(paramView.jdField_d_of_type_JavaLangString);
-          return;
-          if ((((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof ProfileBusiEntry))
-          {
-            paramView = (ProfileBusiEntry)((DataTag)localObject1).jdField_a_of_type_JavaLangObject;
-            localObject2 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, QQBrowserActivity.class);
-            ((Intent)localObject2).putExtra("url", paramView.jdField_d_of_type_JavaLangString);
-            ((Intent)localObject2).putExtra("hide_operation_bar", true);
-            ((Intent)localObject2).putExtra("hide_more_button", true);
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity((Intent)localObject2);
-          }
-          if (28 != ((DataTag)localObject1).jdField_a_of_type_Int) {
-            continue;
-          }
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8004181", "0X8004181", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
-          return;
-          if (!(((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof ProfileSummaryHobbiesEntry)) {
-            continue;
-          }
-          paramView = (ProfileSummaryHobbiesEntry)((DataTag)localObject1).jdField_a_of_type_JavaLangObject;
-          if (paramView.jdField_a_of_type_Int == 5)
-          {
-            paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, ShowExternalTroopListActivity.class);
-            if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_d_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_d_of_type_AndroidWidgetTextView.getText()))) {
-              paramView.putExtra("leftViewText", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_d_of_type_AndroidWidgetTextView.getText().toString().trim());
-            }
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {}
-            for (bool = true;; bool = false)
-            {
-              paramView.putExtra("isHost", bool);
-              paramView.putExtra("dest_uin_str", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-              paramView.putExtra("from", 0);
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivityForResult(paramView, 1015);
-              if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_b_of_type_Boolean) {
-                break;
-              }
-              new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app).a("dc00899").b("Grp_mem_card").c("page").d("grp_clk").a(new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString }).a();
-              return;
-            }
-          }
-          localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, QQBrowserActivity.class);
-          ((Intent)localObject1).putExtra("url", paramView.b);
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity((Intent)localObject1);
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("remilelei", 2, "hobby go to :" + paramView.b);
-          return;
-          if (!(((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof ProfileSummaryHobbiesItem)) {
-            continue;
-          }
-          paramView = (ProfileSummaryHobbiesItem)((DataTag)localObject1).jdField_a_of_type_JavaLangObject;
-          switch (paramView.jdField_a_of_type_Int)
-          {
-          case 3: 
-          default: 
-            if (paramView.jdField_a_of_type_Int != 5) {
-              break label8647;
-            }
-            paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, ShowExternalTroopListActivity.class);
-            if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_d_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_d_of_type_AndroidWidgetTextView.getText()))) {
-              paramView.putExtra("leftViewText", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_d_of_type_AndroidWidgetTextView.getText().toString().trim());
-            }
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) {
-              break;
-            }
-          }
-          for (boolean bool = true;; bool = false)
-          {
-            paramView.putExtra("isHost", bool);
-            paramView.putExtra("dest_uin_str", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-            paramView.putExtra("from", 0);
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivityForResult(paramView, 1015);
-            return;
-            if (paramView.jdField_b_of_type_Int == 0)
-            {
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X80070B2", "0X80070B2", 0, 0, "", "", "", "");
-              break;
-            }
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X80070AE", "0X80070AE", 0, 0, "", "", "", "");
-            break;
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X80070B6", "0X80070B6", 0, 0, "", "", "", "");
-            break;
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X80070AA", "0X80070AA", 0, 0, "", "", "", "");
-            break;
-          }
-          label8647:
-          localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, QQBrowserActivity.class);
-          ((Intent)localObject1).putExtra("url", paramView.c);
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity((Intent)localObject1);
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("remilelei", 2, "hobby go to :" + paramView.c);
-          return;
-          if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView == null) || ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileBaseView))) {
-            continue;
-          }
-          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getCurrentAccountUin();
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString.equals(paramView))
-          {
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "card_mall", "0X8004435", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId), "", "", VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getCurrentAccountUin()));
-            if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId == ProfileCardTemplate.j) || (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId == ProfileCardTemplate.i)) {
-              VasWebviewUtil.reportCommercialDrainage("", "card_gameking", "clkbkgd_owner", "0", 1, 0, 0, HttpUtil.a(), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId));
-            }
-            ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getCurrentAccountUin(), "inside.myCardBackground", 1, 0, 1, "", true);
-            return;
-          }
-          if ((((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof String))
-          {
-            paramView = (String)((DataTag)localObject1).jdField_a_of_type_JavaLangObject;
-            if ("CLICK_HEADER_BG".equals(paramView))
-            {
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "card_mall", "0X80047F1", 0, 0, "1", "", "", VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getCurrentAccountUin()));
-              if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId == ProfileCardTemplate.j) || (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId == ProfileCardTemplate.i)) {
-                VasWebviewUtil.reportCommercialDrainage("", "card_gameking", "clkbkgd_visitor", "0", 1, 0, 0, HttpUtil.a(), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId));
-              }
-            }
-            for (;;)
-            {
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "card_mall", "0X80047F0", 0, 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), Long.toString(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId), "", VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getCurrentAccountUin()));
-              if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
-                break;
-              }
-              localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getString(2131437490);
-              localObject1 = ActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity);
-              ((ActionSheet)localObject1).a(2131437489, 1);
-              ((ActionSheet)localObject1).a((CharSequence)localObject2, 1);
-              ((ActionSheet)localObject1).a(2131433015, 1);
-              ((ActionSheet)localObject1).a(new spt(this, paramView, (ActionSheet)localObject1));
-              try
-              {
-                ((ActionSheet)localObject1).show();
-                this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)localObject1);
-                return;
-                if ("CLICK_BANNER".equals(paramView)) {
-                  ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "card_mall", "0X80047F1", 0, 0, "2", "", "", VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getCurrentAccountUin()));
+                if (!TextUtils.isEmpty(paramString5)) {
+                  localIntent.putExtra("struct_share_key_source_action_data", paramString5);
                 }
-              }
-              catch (Exception paramView)
-              {
-                for (;;)
-                {
-                  paramView.printStackTrace();
+                if (!TextUtils.isEmpty(paramString6)) {
+                  localIntent.putExtra("struct_share_key_source_a_action_data", paramString6);
+                }
+                if (!TextUtils.isEmpty(str)) {
+                  localIntent.putExtra("struct_share_key_source_i_action_data", str);
                 }
               }
             }
-            if (!(((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof ProfileBusiEntry)) {
-              continue;
-            }
-            paramView = (ProfileBusiEntry)((DataTag)localObject1).jdField_a_of_type_JavaLangObject;
-            paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, ShowExternalTroopListActivity.class);
-            if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_d_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_d_of_type_AndroidWidgetTextView.getText()))) {
-              paramView.putExtra("leftViewText", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_d_of_type_AndroidWidgetTextView.getText().toString().trim());
-            }
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {}
-            for (bool = true;; bool = false)
+            localIntent.putExtra("struct_share_key_source_icon", paramString1);
+            break label1145;
+            if (paramJSONObject.has("source_name"))
             {
-              paramView.putExtra("isHost", bool);
-              paramView.putExtra("dest_uin_str", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-              paramView.putExtra("from", 0);
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivityForResult(paramView, 1015);
-              if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) {
-                break;
+              paramString1 = paramJSONObject.optString("source_name");
+              localIntent.putExtra("app_name", paramString1);
+              if ((!"手Q阅读".equals(paramString1)) || (!paramJSONObject.has("srcIconUrl"))) {
+                break label1145;
               }
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "P_CliOper", "Grp_join", "", "person_data", "Clk", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.i, "1", "", "");
-              return;
+              localIntent.putExtra("struct_share_key_source_icon", paramJSONObject.optString("srcIconUrl"));
+              break label1145;
             }
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "P_CliOper", "Grp_join", "", "person_data", "Clk", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.i, "0", "", "");
-            return;
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "card_mall", "0X80066C6", 0, 0, "2", "", "", "");
-            paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, ProfileLabelEditorActivity.class);
-            paramView.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-            try
-            {
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivityForResult(paramView, 1004);
-              return;
-            }
-            catch (Exception paramView)
-            {
-              paramView.printStackTrace();
-              return;
-            }
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "card_mall", "0X80066C6", 0, 0, "1", "", "", "");
-            paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, ProfileLabelEditorActivity.class);
-            paramView.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-            try
-            {
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivityForResult(paramView, 1004);
-              return;
-            }
-            catch (Exception paramView)
-            {
-              paramView.printStackTrace();
-              return;
-            }
-            if (!(((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof ProfileBusiEntry)) {
-              continue;
-            }
-            paramView = (ProfileBusiEntry)((DataTag)localObject1).jdField_a_of_type_JavaLangObject;
-            localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, QQBrowserActivity.class);
-            ((Intent)localObject1).putExtra("url", paramView.jdField_d_of_type_JavaLangString + "&_webviewtype=1");
-            ((Intent)localObject1).putExtra("hide_operation_bar", true);
-            ((Intent)localObject1).putExtra("hide_more_button", true);
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity((Intent)localObject1);
-            return;
-            if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard == null)) {
-              continue;
-            }
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "card_mall", "0X8007A48", 0, 0, "0", "", "", "");
-            }
-            for (;;)
-            {
-              ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.strActiveUrl);
-              return;
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "card_mall", "0X8007A48", 0, 0, "1", "", "", "");
-            }
-            if (!(((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof ProfileBusiEntry)) {
-              continue;
-            }
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X80055C9", "0X80055C9", 0, 0, "", "", "", "");
-            paramView = (ProfileBusiEntry)((DataTag)localObject1).jdField_a_of_type_JavaLangObject;
-            localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, QQBrowserActivity.class);
-            ((Intent)localObject1).putExtra("url", paramView.jdField_d_of_type_JavaLangString);
-            ((Intent)localObject1).putExtra("hide_operation_bar", true);
-            ((Intent)localObject1).putExtra("hide_more_button", true);
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity((Intent)localObject1);
-            return;
-            if (!(((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof ProfileBusiEntry)) {
-              continue;
-            }
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8005D14", "0X8005D14", 0, 0, "", "", "", "");
-            paramView = (ProfileBusiEntry)((DataTag)localObject1).jdField_a_of_type_JavaLangObject;
-            localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, QQBrowserActivity.class);
-            ((Intent)localObject1).putExtra("url", paramView.jdField_d_of_type_JavaLangString);
-            ((Intent)localObject1).putExtra("hide_operation_bar", true);
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity((Intent)localObject1);
-            return;
-            if (!(((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof ProfileBusiEntry)) {
-              continue;
-            }
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8007DBD", "0X8007DBD", 0, 0, "", "", "", "");
-            paramView = (ProfileBusiEntry)((DataTag)localObject1).jdField_a_of_type_JavaLangObject;
-            localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, QQBrowserActivity.class);
-            ((Intent)localObject1).putExtra("url", paramView.jdField_d_of_type_JavaLangString);
-            ((Intent)localObject1).putExtra("hide_operation_bar", true);
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity((Intent)localObject1);
-            return;
-            if (!(((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof ProfileBusiEntry)) {
-              continue;
-            }
-            paramView = (ProfileBusiEntry)((DataTag)localObject1).jdField_a_of_type_JavaLangObject;
-            localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, QQBrowserActivity.class);
-            ((Intent)localObject1).putExtra("url", paramView.jdField_d_of_type_JavaLangString);
-            ((Intent)localObject1).putExtra("hide_operation_bar", true);
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity((Intent)localObject1);
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X8007FA4", "0X8007FA4", 0, 0, "", "", "", "");
-            return;
-            if (!(((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof ProfileBusiEntry)) {
-              continue;
-            }
-            VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "0X8006E05", "0X8006E05", 0, 0, new String[0]);
-            paramView = (ProfileBusiEntry)((DataTag)localObject1).jdField_a_of_type_JavaLangObject;
-            localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, QQBrowserActivity.class);
-            ((Intent)localObject1).putExtra("url", paramView.jdField_d_of_type_JavaLangString);
-            ((Intent)localObject1).putExtra("hide_operation_bar", true);
-            ((Intent)localObject1).putExtra("hide_more_button", true);
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity((Intent)localObject1);
-            return;
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.c == null) {
-              continue;
-            }
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "P_CliOper", "Shop_lifeservice", "", "Shop_Ftemplateinto", "0X8005B97", 0, 0, "", "", "", "");
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_h_of_type_Int == 1)
-            {
-              paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, ChatActivity.class);
-              if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.c))
-              {
-                if (!QLog.isColorLevel()) {
-                  continue;
-                }
-                QLog.w("FriendProfileCardActivity", 2, "onItemClick - uin = null");
-                return;
-              }
-              paramView.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.c);
-              paramView.putExtra("uintype", 1008);
-              paramView.putExtra("uinname", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_d_of_type_JavaLangString);
-              paramView.putExtra("selfSet_leftViewText", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getString(2131437771));
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(paramView);
-              return;
-            }
-            paramView = null;
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null)
-            {
-              paramView = new Intent();
-              paramView.putExtra("report_src_param_type", "gouwu_follow");
-              if (!(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileShoppingView)) {
-                break label10828;
-              }
-              paramView.putExtra("report_src_param_name", "0X8005D5A");
-            }
-            for (;;)
-            {
-              PublicAccountUtil.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.g);
-              return;
-              label10828:
-              paramView.putExtra("report_src_param_name", "0X8005D59");
-            }
-            if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 32) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 31) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 50) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 51) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 34) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 53)) {
-              continue;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.f();
-            return;
-            if (!(((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof BusinessCard)) {
-              continue;
-            }
-            localObject1 = (BusinessCard)((DataTag)localObject1).jdField_a_of_type_JavaLangObject;
-            paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, BusinessCardEditActivity.class);
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {
-              paramView.putExtra("mode_type", 3);
-            }
-            for (;;)
-            {
-              paramView.putExtra("cur_card_body", (Parcelable)localObject1);
-              paramView.putExtra("is_edit_mode", true);
-              paramView.putExtra("finish_immedia", true);
-              localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaUtilArrayList;
-              localObject1 = new ArrayList();
-              localObject2 = ((ArrayList)localObject2).iterator();
-              while (((Iterator)localObject2).hasNext()) {
-                ((ArrayList)localObject1).add(((ProfileActivity.CardContactInfo)((Iterator)localObject2).next()).c);
-              }
-              paramView.putExtra("mode_type", 2);
-              paramView.putExtra("source_activity", 1);
-              ((BusinessCard)localObject1).bindUin = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
-            }
-            paramView.putExtra("bind_phone_num", (Serializable)localObject1);
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(paramView);
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
-            {
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A7F", "0X8006A7F", 0, 0, "", "", "", "");
-              return;
-            }
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A93", "0X8006A93", 0, 0, "", "", "", "");
-            return;
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo = ((ProfileActivity.CardContactInfo)((DataTag)localObject1).jdField_a_of_type_JavaLangObject);
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt == null) {
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt = new int[5];
-            }
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo = new PstnSessionInfo();
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo = PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne));
-            if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.b != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.c != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqQcallPstnManager.a() == 1) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqQcallPstnManager.a().jdField_b_of_type_Int == 1))
-            {
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_d_of_type_JavaLangString = FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app);
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[0] = 19;
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[1] = 8;
-              if ((!ProfileActivity.AllInOne.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo.jdField_a_of_type_JavaLangString))) {
-                break label11546;
-              }
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[2] = 9;
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[3] = 16;
-            }
-            for (;;)
-            {
-              i = 4;
-              while (i < 5)
-              {
-                this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[i] = -1;
-                i += 1;
-              }
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[0] = 7;
-              break;
-              label11546:
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[2] = 16;
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[3] = -1;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt);
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
-            {
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A7E", "0X8006A7E", 0, 0, "", "", "", "");
-              return;
-            }
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A92", "0X8006A92", 0, 0, "", "", "", "");
-            return;
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
-            {
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getCurrentAccountUin(), 0).edit().putBoolean("svip_profile_show_newer_guide_flag", true).commit();
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo = ((ProfileActivity.CardContactInfo)((DataTag)localObject1).jdField_a_of_type_JavaLangObject);
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt == null) {
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt = new int[5];
-            }
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[0] = 20;
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[1] = 21;
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[2] = 16;
-            i = 3;
-            while (i < 5)
-            {
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[i] = -1;
-              i += 1;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt);
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A84", "0X8006A84", 0, 0, "", "", "", "");
-            return;
-            paramView = new ProfileActivity.AllInOne(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataContactCard.uin, 1);
-            ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, paramView);
-            return;
-            paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, QRDisplayActivity.class);
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getResources().getString(2131430000);
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getCurrentAccountUin();
-            Object localObject3 = ContactUtils.j(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, (String)localObject2);
-            paramView.putExtra("title", (String)localObject1);
-            paramView.putExtra("uin", (String)localObject2);
-            paramView.putExtra("nick", (String)localObject3);
-            paramView.putExtra("type", 1);
-            paramView.putExtra("reportFlag", 1);
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(paramView);
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X8007EBB", "0X8007EBB", 0, 0, "", "", "", "");
-            return;
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
-            {
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.e(true);
-              new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app).a("dc00899").b("Grp_mem_card").c("page").d("profile_clk").a(new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString }).a();
-              FriendProfileCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity);
-              return;
-            }
-            ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity);
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X8007EBA", "0X8007EBA", 0, 0, "", "", "", "");
-            return;
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo = ((ProfileActivity.CardContactInfo)((DataTag)localObject1).jdField_a_of_type_JavaLangObject);
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt == null) {
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt = new int[5];
-            }
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo = new PstnSessionInfo();
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo = PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne));
-            if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.b != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.c != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqQcallPstnManager.a() == 1) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqQcallPstnManager.a().jdField_b_of_type_Int == 1))
-            {
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_d_of_type_JavaLangString = FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app);
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[0] = 19;
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[1] = 8;
-              if ((!ProfileActivity.AllInOne.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo.jdField_a_of_type_JavaLangString))) {
-                break label12503;
-              }
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[2] = 9;
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[3] = 16;
-            }
-            for (;;)
-            {
-              i = 4;
-              while (i < 5)
-              {
-                this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[i] = -1;
-                i += 1;
-              }
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[0] = 7;
-              break;
-              label12503:
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[2] = 16;
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[3] = -1;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt);
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
-            {
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A7E", "0X8006A7E", 0, 0, "", "", "", "");
-              return;
-            }
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A92", "0X8006A92", 0, 0, "", "", "", "");
-            return;
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.p();
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
-            {
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A7A", "0X8006A7A", 0, 0, "", "", "", "");
-              return;
-            }
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A8E", "0X8006A8E", 0, 0, "", "", "", "");
-            return;
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.o();
-            if ((((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof View)) {
-              ((View)((DataTag)localObject1).jdField_a_of_type_JavaLangObject).setVisibility(8);
-            }
-            VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X8008119", "", 1, 0, 0, HttpUtil.a(), "", "");
-            return;
-            paramView = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getManager(51)).b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.uin);
-            localObject1 = new Intent();
-            ((Intent)localObject1).putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString);
-            ((Intent)localObject1).putExtra("member_uin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.uin);
-            if ((paramView != null) && (paramView.mIsShielded)) {}
-            for (bool = true;; bool = false)
-            {
-              ((Intent)localObject1).putExtra("member_is_shield", bool);
-              TroopMemberCardProxyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, (Intent)localObject1, "com.tencent.mobileqq.memcard.plugin.RecentSaidActivity", 0);
-              new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app).a("dc00899").b("Grp_mem_card").c("page").d("recent_clk").a(new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString }).a();
-              return;
-            }
-            paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, QQBrowserActivity.class);
-            paramView.putExtra("url", "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=0");
-            paramView.putExtra("url", "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=0");
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(paramView);
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00899", "Grp_flower", "", "gift_exch", "entry_clk", 0, 0, "", "", "", "");
-            new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app).a("dc00899").b("Grp_mem_card").c("page").d("point_clk").a(new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString }).a();
-            return;
-            paramView = TroopLinkManager.a();
-            localObject1 = paramView.a("troop_rank");
-            if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-            for (paramView = TroopMemberGlobalLevelUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.uin, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString);; paramView = paramView.a((String)localObject1, (TroopLinkManager.LinkParams)localObject2))
-            {
-              localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, QQBrowserActivity.class);
-              ((Intent)localObject1).putExtra("url", paramView);
-              ((Intent)localObject1).putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.c());
-              ((Intent)localObject1).putExtra("portraitOnly", true);
-              ((Intent)localObject1).putExtra("hide_more_button", true);
-              ((Intent)localObject1).putExtra("hide_operation_bar", true);
-              ((Intent)localObject1).putExtra("isShowAd", false);
-              this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity((Intent)localObject1);
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00899", "Grp_grade", "", "mber_card", "clk_grade", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString, "", "", "");
-              new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app).a("dc00899").b("Grp_mem_card").c("page").d("grade_clk").a(new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString }).a();
-              return;
-              localObject2 = new TroopLinkManager.LinkParams();
-              ((TroopLinkManager.LinkParams)localObject2).c = "31";
-              ((TroopLinkManager.LinkParams)localObject2).b = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.uin;
-              ((TroopLinkManager.LinkParams)localObject2).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString;
-            }
-            paramView = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.uin, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString, 1, 0);
-            TroopGiftUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.uin, paramView, "profilecard", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app);
-            paramView = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getManager(51)).a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString);
-            if (paramView == null) {
-              continue;
-            }
-            if (paramView.isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getCurrentAccountUin())) {
-              i = 0;
-            }
-            for (;;)
-            {
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "P_CliOper", "Grp_flower", "", "mber_data", "Clk_send", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString, i + "", "", "");
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "P_CliOper", "Grp_mber", "", "mber_card", "Clk_btn", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString, "4", TroopMemberCardUtils.a(TroopMemberCardUtils.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.uin)), "");
-              new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app).a("dc00899").b("Grp_mem_card").c("page").d("flower_clk").a(new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString }).a();
-              return;
-              if (paramView.isAdmin()) {
-                i = 1;
-              } else {
-                i = 2;
-              }
-            }
-            if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard != null))
-            {
-              paramView = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.mMemberGameInfo;
-              if (paramView != null)
-              {
-                localObject2 = paramView.gameUrl;
-                localObject3 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, QQBrowserActivity.class);
-                ((Intent)localObject3).putExtra("url", (String)localObject2);
-                this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity((Intent)localObject3);
-                TroopReportor.a("Grp_game", "Mber_data", "game_clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString, paramView.gameName });
-              }
-            }
-            if ((((DataTag)localObject1).jdField_a_of_type_JavaLangObject instanceof ProfileBusiEntry))
-            {
-              paramView = (ProfileBusiEntry)((DataTag)localObject1).jdField_a_of_type_JavaLangObject;
-              if (!StringUtil.a(paramView.jdField_d_of_type_JavaLangString))
-              {
-                localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, QQBrowserActivity.class);
-                ((Intent)localObject1).putExtra("url", paramView.jdField_d_of_type_JavaLangString);
-                ((Intent)localObject1).putExtra("hide_operation_bar", true);
-                ((Intent)localObject1).putExtra("hide_more_button", true);
-                this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity((Intent)localObject1);
-              }
-            }
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {}
-            for (i = 1;; i = 2)
-            {
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X8009300", "0X8009300", i, 0, "", "", "", "");
-              return;
-            }
+            localIntent.putExtra("app_name", paramActivity.getString(2131696891));
+            break label1145;
+            localIntent.putExtra("struct_share_key_source_icon", paramJSONObject);
           }
-        }
-        catch (SecurityException paramView)
-        {
-          for (;;)
-          {
-            continue;
-            paramView = "CLICK_HEADER_BG";
-          }
+          localIntent.putExtra("stuctmsg_bytes", paramJSONObject.getBytes());
+          paramActivity.startActivityForResult(localIntent, 1);
+          return;
+          paramString2 = paramString3;
         }
       }
     }
   }
+  
+  public void a(JSONObject paramJSONObject, int paramInt, Activity paramActivity)
+  {
+    AppInterface localAppInterface = (AppInterface)ors.a();
+    for (;;)
+    {
+      String str2;
+      String str3;
+      String str1;
+      Object localObject1;
+      String str4;
+      String str5;
+      try
+      {
+        paramJSONObject.optString("source_name", "QQ浏览器");
+        str2 = paramJSONObject.optString("title");
+        str3 = paramJSONObject.optString("desc");
+        str1 = paramJSONObject.optString("share_url");
+        localObject1 = paramJSONObject.optString("image_url");
+        Object localObject2 = paramJSONObject.optString("flash_url");
+        str4 = paramJSONObject.optString("shareText");
+        str5 = paramJSONObject.optString("shouldSharePlainTextChannel");
+        if (paramJSONObject.optInt("hideSuccessToast") != 1) {
+          break label658;
+        }
+        i = 1;
+        int j = paramJSONObject.optInt("shareQQType", 13);
+        if (paramInt == 2)
+        {
+          if (i != 0) {
+            break label664;
+          }
+          bool = true;
+          a(paramActivity, paramJSONObject, str2, str3, str1, (String)localObject1, "news", (String)localObject2, j, bool);
+          return;
+        }
+        if (paramInt == 3)
+        {
+          localObject2 = new Bundle();
+          ((Bundle)localObject2).putString("title", str2);
+          ((Bundle)localObject2).putString("desc", str3);
+          ((Bundle)localObject2).putString("detail_url", str1);
+          ((Bundle)localObject2).putString("from", "qq");
+          ((Bundle)localObject2).putString("default_text", paramJSONObject.optString("default_text"));
+          paramJSONObject = new ArrayList(1);
+          paramJSONObject.add(localObject1);
+          ((Bundle)localObject2).putStringArrayList("image_url", paramJSONObject);
+          ((Bundle)localObject2).putLong("req_share_id", 0L);
+          ((Bundle)localObject2).putInt("iUrlInfoFrm", 1);
+          ((Bundle)localObject2).putLong("share_begin_time", beir.b);
+          if (bjev.a((QQAppInterface)localAppInterface, paramActivity, (Bundle)localObject2, null, 125)) {
+            break label657;
+          }
+          ybk.a(1, 2131689512);
+          return;
+        }
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return;
+      }
+      if ((paramInt == 4) || (paramInt == 5))
+      {
+        a(paramJSONObject, paramInt, localAppInterface, str2, str3, str1, (String)localObject1, str4, str5);
+        return;
+      }
+      if (paramInt == 6)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina start!");
+        }
+        if ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str1)))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina empty title or share_url");
+          }
+          QQToast.a(BaseActivity.sTopActivity, 0, 2131720031, 0).b(BaseActivity.sTopActivity.getResources().getDimensionPixelSize(2131298914));
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina installSinaWeibo:false");
+        }
+        try
+        {
+          paramJSONObject = URLEncoder.encode(str2, "UTF-8");
+          paramJSONObject = "http://v.t.sina.com.cn/share/share.php?" + "title=" + paramJSONObject;
+          str1 = URLEncoder.encode(str1, "UTF-8");
+          paramJSONObject = paramJSONObject + "&url=" + str1;
+          localObject1 = URLEncoder.encode((String)localObject1, "UTF-8");
+          paramJSONObject = paramJSONObject + "&pic=" + (String)localObject1;
+          paramJSONObject = paramJSONObject + "&_wv=3";
+          localObject1 = new Intent(paramActivity, QQBrowserActivity.class);
+          ((Intent)localObject1).putExtra("url", paramJSONObject);
+          paramActivity.startActivity((Intent)localObject1);
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina start webview!");
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina end!");
+            return;
+          }
+        }
+        catch (Exception paramJSONObject)
+        {
+          for (;;)
+          {
+            paramJSONObject = paramJSONObject;
+            QQToast.a(BaseApplication.getContext(), 0, 2131720031, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
+            paramJSONObject.printStackTrace();
+          }
+        }
+        finally {}
+      }
+      label657:
+      return;
+      label658:
+      int i = 0;
+      continue;
+      label664:
+      boolean bool = false;
+    }
+  }
+  
+  public List<sps> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new sps("screen_shot", 9, false));
+    localArrayList.add(new sps("set_font", 10, false));
+    localArrayList.add(new sps("add_favourite", 12, false));
+    localArrayList.add(new sps("send_pc", 13, false));
+    localArrayList.add(new sps("copy_link", 14, false));
+    localArrayList.add(new sps("report", 20, false));
+    return localArrayList;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     spp
  * JD-Core Version:    0.7.0.1
  */

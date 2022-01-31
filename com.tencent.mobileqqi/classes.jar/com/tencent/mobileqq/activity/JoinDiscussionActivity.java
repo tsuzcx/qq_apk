@@ -15,9 +15,9 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
-import cxf;
-import cxg;
-import cxi;
+import cqz;
+import cra;
+import crc;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,8 +33,8 @@ public class JoinDiscussionActivity
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   public TextView a;
   public DiscussionHandler a;
-  private cxg jdField_a_of_type_Cxg;
-  private cxi jdField_a_of_type_Cxi;
+  private cra jdField_a_of_type_Cra;
+  private crc jdField_a_of_type_Crc;
   public String a;
   public ArrayList a;
   public List a;
@@ -58,12 +58,12 @@ public class JoinDiscussionActivity
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231829));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231830));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231831));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231832));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131231833));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231835));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231831));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231832));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231833));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231834));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131231835));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231837));
   }
   
   private void e()
@@ -71,7 +71,7 @@ public class JoinDiscussionActivity
     setTitle(getString(2131559077));
     c(2131561746, this);
     this.k.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new cxf(this));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new cqz(this));
   }
   
   private void f()
@@ -149,12 +149,12 @@ public class JoinDiscussionActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903252);
+    setContentView(2130903254);
     paramBundle = getIntent().getExtras();
-    this.jdField_a_of_type_Cxi = new cxi(this, null);
-    this.jdField_a_of_type_Cxg = new cxg(this, null);
-    a(this.jdField_a_of_type_Cxi);
-    a(this.jdField_a_of_type_Cxg);
+    this.jdField_a_of_type_Crc = new crc(this, null);
+    this.jdField_a_of_type_Cra = new cra(this, null);
+    a(this.jdField_a_of_type_Crc);
+    a(this.jdField_a_of_type_Cra);
     this.jdField_b_of_type_Int = paramBundle.getInt(ScannerActivity.t);
     this.jdField_a_of_type_JavaLangString = paramBundle.getString("sig");
     this.jdField_b_of_type_JavaLangString = paramBundle.getString("innerSig");
@@ -177,8 +177,8 @@ public class JoinDiscussionActivity
   protected void onDestroy()
   {
     super.onDestroy();
-    b(this.jdField_a_of_type_Cxi);
-    b(this.jdField_a_of_type_Cxg);
+    b(this.jdField_a_of_type_Crc);
+    b(this.jdField_a_of_type_Cra);
   }
   
   protected void onPause()

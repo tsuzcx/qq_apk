@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class SwiftBrowserCookieMonster$CookiesMap
-  extends Hashtable
+  extends Hashtable<String, ArrayList<String>>
 {
   public void addCookie(String paramString1, String paramString2)
   {
@@ -20,7 +20,7 @@ public class SwiftBrowserCookieMonster$CookiesMap
     }
   }
   
-  public ArrayList getCookies(String paramString)
+  public ArrayList<String> getCookies(String paramString)
   {
     try
     {
@@ -38,7 +38,7 @@ public class SwiftBrowserCookieMonster$CookiesMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster.CookiesMap
  * JD-Core Version:    0.7.0.1
  */

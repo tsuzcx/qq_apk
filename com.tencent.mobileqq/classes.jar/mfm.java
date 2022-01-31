@@ -1,27 +1,24 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
 
 public class mfm
   implements View.OnClickListener
 {
-  public mfm(VideoShareHelper paramVideoShareHelper) {}
+  public mfm(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "mShareActionSheet cancle button OnClick");
-    }
-    if (VideoShareHelper.a(this.a).isShowing()) {
-      VideoShareHelper.a(this.a).dismiss();
-    }
+    QLog.d(this.a.d, 1, "onClick R.id.qav_btn_accept_video");
+    this.a.e();
+    this.a.a.a().ap = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfm
  * JD-Core Version:    0.7.0.1
  */

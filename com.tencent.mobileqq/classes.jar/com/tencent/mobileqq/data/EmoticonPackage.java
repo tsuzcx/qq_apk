@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.defaultzero;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhm;
+import awhs;
 import java.io.Serializable;
 
 public class EmoticonPackage
-  extends Entity
+  extends awge
   implements Serializable
 {
   public static final int BUSINESS_GUIDE_FLAG = 4;
@@ -54,7 +54,7 @@ public class EmoticonPackage
   public String diversionName;
   public int downloadCount;
   public long endTime;
-  @unique
+  @awhs
   public String epId;
   public long expiretime;
   public int extraFlags;
@@ -76,7 +76,7 @@ public class EmoticonPackage
   public boolean isMagicFaceDownloading;
   public boolean isRecommendation;
   public int jobType;
-  @defaultzero
+  @awhm
   public int jsonVersion;
   public String jumpUrl;
   public boolean kandian;
@@ -87,6 +87,7 @@ public class EmoticonPackage
   public String minQQVersion;
   public int mobileFeetype;
   public String name;
+  public boolean newSoundEp;
   public long richIPLastReqTime;
   public long richIPReqTime;
   public int rscType = 0;
@@ -100,6 +101,11 @@ public class EmoticonPackage
   public boolean valid;
   public long wordingId;
   
+  public boolean isNewVoiceType()
+  {
+    return this.newSoundEp;
+  }
+  
   public String toString()
   {
     return "EmoticonPackage [epId=" + this.epId + ", wordingId=" + this.wordingId + ", childEpId=" + this.childEpId + ", minQQVersion=" + this.minQQVersion + ", name=" + this.name + ", mark=" + this.mark + ", type=" + this.type + ", author=" + this.author + ", expiretime=" + this.expiretime + ", status=" + this.status + ", hasSound=" + this.hasSound + ", jobType=" + this.jobType + ", kinId=" + this.kinId + ", valid=" + this.valid + ", downloadCount=" + this.downloadCount + ", mobileFeetype=" + this.mobileFeetype + ", isRecommendation=" + this.isRecommendation + ", isMagicFaceDownloading=" + this.isMagicFaceDownloading + ", firstEmotionId=" + this.firstEmotionId + ", upperLeftLable=" + this.upperLeftLable + ", localVersion=" + this.localVersion + ", latestVersion=" + this.latestVersion + ", jsonVersion=" + this.jsonVersion + ", updateFlag=" + this.updateFlag + ", updateTip=" + this.updateTip + ", hasReadUpdatePage=" + this.hasReadUpdatePage + ", rscType=" + this.rscType + ", supportSize=" + this.supportSize + ", isAPNG = " + this.isAPNG + "， aio =" + this.aio + ", kandian = " + this.kandian + "]";
@@ -107,7 +113,7 @@ public class EmoticonPackage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.EmoticonPackage
  * JD-Core Version:    0.7.0.1
  */

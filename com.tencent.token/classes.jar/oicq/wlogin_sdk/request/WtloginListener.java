@@ -48,7 +48,11 @@ public class WtloginListener
   
   public void OnInit(int paramInt) {}
   
-  public void OnQueryCodeResult(long paramLong1, List<byte[]> paramList, long paramLong2, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte, int paramInt) {}
+  public void OnQueryCodeResult(long paramLong1, List paramList, long paramLong2, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte, int paramInt) {}
+  
+  public void OnQuickRegisterCheckAccount(WUserSigInfo paramWUserSigInfo, int paramInt, byte[] paramArrayOfByte) {}
+  
+  public void OnQuickRegisterGetAccount(WUserSigInfo paramWUserSigInfo, int paramInt, byte[] paramArrayOfByte) {}
   
   public void OnRefreshPictureData(String paramString, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte, int paramInt, ErrMsg paramErrMsg) {}
   
@@ -58,7 +62,7 @@ public class WtloginListener
   
   public void OnRegCheckDownloadMsg(WUserSigInfo paramWUserSigInfo, int paramInt, byte[] paramArrayOfByte) {}
   
-  public void OnRegCheckUploadMsg(WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2) {}
+  public void OnRegCheckUploadMsg(WUserSigInfo paramWUserSigInfo, String paramString) {}
   
   public void OnRegCheckValidUrl(WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte) {}
   
@@ -72,7 +76,7 @@ public class WtloginListener
   
   public void OnRegQueryAccount(WUserSigInfo paramWUserSigInfo, int paramInt, byte[] paramArrayOfByte) {}
   
-  public void OnRegQueryClientSendedMsgStatus(WUserSigInfo paramWUserSigInfo, int paramInt1, int paramInt2, int paramInt3) {}
+  public void OnRegQueryClientSentMsgStatus(WUserSigInfo paramWUserSigInfo, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
   
   public void OnRegRequestServerResendMsg(WUserSigInfo paramWUserSigInfo, int paramInt1, int paramInt2, int paramInt3) {}
   
@@ -82,11 +86,15 @@ public class WtloginListener
   
   public void OnRequestTransport(String paramString, long paramLong1, long paramLong2, TransReqContext paramTransReqContext, WUserSigInfo paramWUserSigInfo, int paramInt) {}
   
-  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, List<byte[]> paramList, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt) {}
+  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, List paramList, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt) {}
   
   public void OnVerifySMSVerifyLoginCode(String paramString1, String paramString2, WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg) {}
   
   public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg) {}
+  
+  public void onGetStWithQrSig(String paramString, long paramLong1, int paramInt1, long paramLong2, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg) {}
+  
+  public void onQuickLogin(String paramString, WtloginHelper.QuickLoginParam paramQuickLoginParam, int paramInt, ErrMsg paramErrMsg) {}
 }
 
 

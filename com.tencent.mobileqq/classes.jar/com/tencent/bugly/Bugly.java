@@ -32,7 +32,7 @@ public class Bugly
     //   16: aload_0
     //   17: areturn
     //   18: aload_1
-    //   19: getfield 50	com/tencent/bugly/crashreport/common/info/a:n	Ljava/lang/String;
+    //   19: getfield 50	com/tencent/bugly/crashreport/common/info/a:o	Ljava/lang/String;
     //   22: invokestatic 56	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   25: ifeq +61 -> 86
     //   28: invokestatic 61	com/tencent/bugly/proguard/p:a	()Lcom/tencent/bugly/proguard/p;
@@ -40,7 +40,7 @@ public class Bugly
     //   32: aload_0
     //   33: ifnonnull +11 -> 44
     //   36: aload_1
-    //   37: getfield 50	com/tencent/bugly/crashreport/common/info/a:n	Ljava/lang/String;
+    //   37: getfield 50	com/tencent/bugly/crashreport/common/info/a:o	Ljava/lang/String;
     //   40: astore_0
     //   41: goto -28 -> 13
     //   44: aload_0
@@ -65,7 +65,7 @@ public class Bugly
     //   82: astore_0
     //   83: goto -70 -> 13
     //   86: aload_1
-    //   87: getfield 50	com/tencent/bugly/crashreport/common/info/a:n	Ljava/lang/String;
+    //   87: getfield 50	com/tencent/bugly/crashreport/common/info/a:o	Ljava/lang/String;
     //   90: astore_0
     //   91: goto -78 -> 13
     //   94: astore_0

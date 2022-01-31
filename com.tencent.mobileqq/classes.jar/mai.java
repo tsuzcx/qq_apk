@@ -1,45 +1,23 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.ImageUtil;
-import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.RecvGVideoLevelInfo;
 
-public class mai
-  implements Runnable
+public final class mai
+  implements Parcelable.Creator<RecvGVideoLevelInfo>
 {
-  public mai(TopicShareHelper paramTopicShareHelper, String paramString1, String paramString2, String paramString3, ApplicationInfo paramApplicationInfo, Activity paramActivity) {}
-  
-  public void run()
+  public RecvGVideoLevelInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "shareMsgToSina download image:" + this.jdField_a_of_type_JavaLangString);
-    }
-    String str = ImageUtil.a(TopicShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoTopicShareHelper), this.jdField_a_of_type_JavaLangString, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "shareMsgToSina path:" + str);
-    }
-    Intent localIntent = new Intent("android.intent.action.SEND");
-    localIntent.setFlags(268435456);
-    localIntent.setType("image/*");
-    localIntent.putExtra("android.intent.extra.TEXT", this.b + this.c);
-    if (!TextUtils.isEmpty(str)) {
-      localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(str)));
-    }
-    localIntent.setPackage(this.jdField_a_of_type_AndroidContentPmApplicationInfo.packageName);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new maj(this));
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "shareMsgToSina start weibo!");
-    }
+    return new RecvGVideoLevelInfo(paramParcel);
+  }
+  
+  public RecvGVideoLevelInfo[] a(int paramInt)
+  {
+    return new RecvGVideoLevelInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mai
  * JD-Core Version:    0.7.0.1
  */

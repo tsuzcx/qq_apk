@@ -3,12 +3,12 @@ package com.tencent.mobileqq.service.message.remote;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import gnl;
+import gjc;
 
 public class MessageRecordInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new gnl();
+  public static final Parcelable.Creator CREATOR = new gjc();
   public static final int d = 32772;
   public static final int e = 32770;
   public static final int f = 32768;

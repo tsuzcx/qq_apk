@@ -1,35 +1,35 @@
 package com.tencent.tmdownloader;
 
-import com.tencent.tmassistantbase.util.m;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.s;
 import com.tencent.tmdownloader.internal.remote.a;
 
 class k
   implements Runnable
 {
-  k(f paramf, String paramString, byte[] paramArrayOfByte) {}
+  k(f paramf) {}
   
   public void run()
   {
     try
     {
-      r.c("RemoteOpProxy", "<setBlob> process:" + m.e() + ", getServiceInterface()");
-      a locala = (a)this.c.getServiceInterface();
+      ab.c("RemoteOpProxy", "<requestShareUrl> process:" + s.e() + ", getServiceInterface()");
+      a locala = (a)this.a.getServiceInterface();
       if (locala != null) {
-        locala.a(this.a, this.b);
+        locala.c();
       }
       return;
     }
     catch (Exception localException)
     {
-      r.c("RemoteOpProxy", "<setBlob> process:" + m.e() + ", getServiceInterface() error, error msg = " + localException.getMessage());
+      ab.c("RemoteOpProxy", "<requestShareUrl> process:" + s.e() + ", getServiceInterface() error, error msg = " + localException.getMessage());
       localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmdownloader.k
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,53 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCommentManager.CommentEventListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import android.content.res.Resources;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class mcz
-  implements VideoFeedsCommentManager.CommentEventListener
+class mcz
+  extends mcx
 {
-  public mcz(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void a(boolean paramBoolean)
+  mcz(LinearLayout paramLinearLayout)
   {
-    if ((!paramBoolean) && (VideoFeedsPlayActivity.h(this.a)))
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131372884));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLinearLayout.findViewById(2131372602));
+  }
+  
+  Resources a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView.getResources();
+  }
+  
+  void a()
+  {
+    if (!a()) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+  }
+  
+  boolean a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView != null;
+  }
+  
+  boolean a(mda parammda)
+  {
+    a();
+    if ((parammda.a != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null))
     {
-      VideoFeedsPlayActivity.a(this.a).postDelayed(new mda(this), 1000L);
-      VideoFeedsPlayActivity.d(this.a, false);
+      mcv.a(this.jdField_a_of_type_AndroidWidgetTextView, parammda);
+      return true;
     }
-    if (!paramBoolean) {
-      this.a.d();
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mcz
  * JD-Core Version:    0.7.0.1
  */

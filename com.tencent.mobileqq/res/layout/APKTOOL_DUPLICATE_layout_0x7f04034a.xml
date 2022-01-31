@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1219" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0220a6" android:paddingTop="5.0dip" android:layout_width="fill_parent" android:layout_height="37.0dip">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a121a" android:layout_width="17.0dip" android:layout_height="17.0dip" android:layout_marginLeft="15.0dip" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0546" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a121b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@null" />
-    </LinearLayout>
-    <com.tencent.biz.widgets.GridViewForScrollView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a121c" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0220a6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@null" android:numColumns="4" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1219" />
-</merge>

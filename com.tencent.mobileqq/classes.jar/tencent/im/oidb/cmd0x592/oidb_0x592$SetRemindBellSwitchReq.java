@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0x592$SetRemindBellSwitchReq
-  extends MessageMicro
+  extends MessageMicro<SetRemindBellSwitchReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_workflow_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class oidb_0x592$SetRemindBellSwitchReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x592.oidb_0x592.SetRemindBellSwitchReq
  * JD-Core Version:    0.7.0.1
  */

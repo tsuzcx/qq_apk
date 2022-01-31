@@ -3,10 +3,10 @@ package com.tencent.mobileqq.filemanager.activity.fileviewer.qfile;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import fxx;
+import ftl;
 
 public final class QfileC2COfflineFileController
-  extends fxx
+  extends ftl
 {
   static final String c = "<FileAssistant>QfileC2COfflineFileController";
   

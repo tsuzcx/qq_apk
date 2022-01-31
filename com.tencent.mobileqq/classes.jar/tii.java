@@ -1,19 +1,46 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
+import UserGrowth.stFeed;
+import UserGrowth.stFollowFeedsRsp;
+import java.util.List;
 
-public class tii
-  implements Runnable
+class tii
+  implements teo<stFeed>
 {
-  public tii(QQBrowserActivity paramQQBrowserActivity) {}
+  tii(tih paramtih) {}
   
-  public void run()
+  public void a(boolean paramBoolean1, List<stFeed> paramList, boolean paramBoolean2)
   {
-    InnerDns.a();
+    if (!paramBoolean1)
+    {
+      ((tit)this.a.a()).a(paramList);
+      return;
+    }
+    ((tit)this.a.a()).a(paramList, paramBoolean2);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
+  {
+    ((tit)this.a.a()).d();
+    if (paramBoolean1) {
+      ((tit)this.a.a()).b(paramBoolean2);
+    }
+    if (!paramBoolean2) {
+      ((tit)this.a.a()).a(false, true);
+    }
+    for (;;)
+    {
+      return;
+      if ((!(paramObject instanceof stFollowFeedsRsp)) || (tlf.a(((stFollowFeedsRsp)paramObject).feeds))) {}
+      for (int i = 1; i != 0; i = 0)
+      {
+        ((tit)this.a.a()).a(true, true);
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tii
  * JD-Core Version:    0.7.0.1
  */

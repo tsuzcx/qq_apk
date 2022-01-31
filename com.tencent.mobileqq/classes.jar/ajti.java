@@ -1,20 +1,26 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.TroopFeedViewFactory.ViewHolder;
-
-class ajti
-  extends TroopFeedViewFactory.ViewHolder
+public abstract interface ajti
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public abstract xkl a();
   
-  ajti(ajth paramajth)
-  {
-    super(paramajth.a);
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(xkl paramxkl);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract boolean c();
+  
+  public abstract void d();
 }
 
 

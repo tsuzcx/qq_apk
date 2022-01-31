@@ -1,53 +1,24 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmoticonViewBinder;
-import com.tencent.mobileqq.emoticonview.MagicFaceViewBinder;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.activity.fileviewer.base.BaseFileViewerActivity;
+import com.tencent.mobileqq.filemanager.activity.fileviewer.base.BaseFileViewerController;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
 public class fta
-  implements Runnable
+  implements AdapterView.OnItemSelectedListener
 {
-  public fta(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public fta(BaseFileViewerController paramBaseFileViewerController) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView) {}
+  
+  public void a_(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i;
-    Object localObject;
-    if (EmoticonMainPanel.a(this.a) != null)
-    {
-      i = 0;
-      int j = EmoticonMainPanel.a(this.a).size();
-      if (i >= j) {
-        break label107;
-      }
-      localObject = (EmoticonViewBinder)EmoticonMainPanel.a(this.a).get(i);
-      if ((localObject == null) || (!(localObject instanceof MagicFaceViewBinder))) {
-        break label73;
-      }
-      localObject = (MagicFaceViewBinder)localObject;
-    }
-    for (;;)
-    {
-      if ((i == -1) || (localObject == null))
-      {
-        return;
-        label73:
-        i += 1;
-        break;
-      }
-      if (localObject != null) {
-        ((MagicFaceViewBinder)localObject).c();
-      }
-      this.a.post(new ftb(this, i, (MagicFaceViewBinder)localObject));
-      return;
-      label107:
-      localObject = null;
-      i = -1;
-    }
+    this.a.a.a(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fta
  * JD-Core Version:    0.7.0.1
  */

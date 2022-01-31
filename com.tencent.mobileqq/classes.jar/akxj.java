@@ -1,36 +1,36 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.struct.PushBanner;
-import com.tencent.mobileqq.widget.WorkSpaceView;
+import com.tencent.TMG.sdk.AVVideoCtrl.SwitchCameraCompleteCallback;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.9;
+import org.json.JSONObject;
 
 public class akxj
-  extends Handler
+  extends AVVideoCtrl.SwitchCameraCompleteCallback
 {
-  public akxj(WorkSpaceView paramWorkSpaceView) {}
+  public akxj(CmGameAvHandler.9 param9) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onComplete(int paramInt1, int paramInt2)
   {
-    switch (paramMessage.what)
-    {
-    }
+    int i = 0;
+    if (paramInt2 == 0) {}
     for (;;)
     {
-      super.handleMessage(paramMessage);
-      return;
-      int i = ((PushBanner)this.a.getChildAt(this.a.a).getTag()).a;
-      if ((this.a.getChildCount() > 1) && (this.a.getWidth() > 0)) {
-        this.a.a(this.a.a() + 1);
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("ret", i);
+        localJSONObject.put("cameraPos", paramInt1);
+        localJSONObject.put("errCode", paramInt2);
+        akwd.a().callbackFromRequest(this.a.a, 0, "cs.audioRoom_camera_switch.local", localJSONObject.toString());
+        return;
       }
-      WorkSpaceView.a(this.a).sendEmptyMessageDelayed(0, i * 1000);
-      continue;
-      WorkSpaceView.a(this.a).removeMessages(0);
+      catch (Exception localException) {}
+      i = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akxj
  * JD-Core Version:    0.7.0.1
  */

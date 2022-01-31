@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBFloatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class DoodleMsgProto$DoodleHeader
-  extends MessageMicro
+  extends MessageMicro<DoodleHeader>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBFloatField float_comp_factor_max = PBField.initFloat(0.0F);
@@ -31,7 +31,7 @@ public final class DoodleMsgProto$DoodleHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msg.aio_doodle.DoodleMsgProto.DoodleHeader
  * JD-Core Version:    0.7.0.1
  */

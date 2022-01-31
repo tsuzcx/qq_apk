@@ -1,31 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
 
-public class agnq
-  extends FriendListObserver
+class agnq
+  implements View.OnClickListener
 {
-  public agnq(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  agnq(agnn paramagnn) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelGalleryActivity", 2, "onUpdateFriendInfo refresh UI uin:" + paramString + " suc:" + paramBoolean);
-    }
-    if ((paramBoolean) && (TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), paramString)) && (!PersonalityLabelGalleryActivity.a(this.a)))
-    {
-      PersonalityLabelGalleryActivity.a(this.a, ContactUtils.a(this.a.app, PersonalityLabelGalleryActivity.a(this.a)));
-      if (!TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), PersonalityLabelGalleryActivity.b(this.a))) {
-        PersonalityLabelGalleryActivity.d(this.a);
-      }
-    }
+    aepi.n = true;
+    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agnq
  * JD-Core Version:    0.7.0.1
  */

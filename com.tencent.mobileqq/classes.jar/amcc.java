@@ -1,61 +1,53 @@
-import android.view.View;
-import android.view.ViewConfiguration;
-import com.tencent.widget.HorizontalListView;
+import com.tencent.mobileqq.addon.DiyPendantEntity;
+import com.tencent.mobileqq.addon.DiyPendantSticker;
+import com.tencent.mobileqq.app.SVIPHandler.2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-public final class amcc
-  implements Runnable
+public class amcc
+  implements alpg
 {
-  public amcc(HorizontalListView paramHorizontalListView) {}
+  public amcc(SVIPHandler.2 param2, akmx paramakmx) {}
   
-  public void run()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    View localView;
-    int i;
-    if (this.a.p == 0)
+    try
     {
-      this.a.p = 1;
-      if (!this.a.c()) {
-        break label169;
-      }
-      localView = (View)this.a.getParent();
-      if ((this.a.c()) || ((localView != null) && (!localView.hasFocusable())))
+      if ((paramObject instanceof List))
       {
-        if ((this.a.b) && (!this.a.c())) {
-          break label215;
+        paramObject = (List)paramObject;
+        if (paramObject.size() > 0)
+        {
+          paramObject = paramObject.iterator();
+          while (paramObject.hasNext())
+          {
+            Iterator localIterator = ((DiyPendantEntity)paramObject.next()).getStickerInfoList().iterator();
+            while (localIterator.hasNext())
+            {
+              Object localObject = (DiyPendantSticker)localIterator.next();
+              localObject = this.jdField_a_of_type_Akmx.a((DiyPendantSticker)localObject);
+              this.jdField_a_of_type_Akmx.b.add(localObject);
+            }
+          }
         }
-        HorizontalListView.a(this.a, localView);
-        i = ViewConfiguration.getLongPressTimeout();
-        if (!this.a.c()) {
-          break label195;
-        }
       }
-    }
-    label169:
-    label195:
-    for (boolean bool = localView.isLongClickable();; bool = this.a.isLongClickable())
-    {
-      if (!bool) {
-        break label206;
-      }
-      if (HorizontalListView.a(this.a) == null) {
-        HorizontalListView.a(this.a, new amcb(this.a, null));
-      }
-      HorizontalListView.a(this.a).a();
-      this.a.postDelayed(HorizontalListView.a(this.a), i);
       return;
-      localView = this.a.getChildAt(HorizontalListView.b(this.a) - this.a.getFirstVisiblePosition());
-      break;
     }
-    label206:
-    this.a.p = 2;
-    return;
-    label215:
-    this.a.p = 2;
+    catch (Exception paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SVIPHandler", 2, paramObject.getMessage());
+      }
+    }
+    this.jdField_a_of_type_Akmx.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amcc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qqfav.widget.LocationDetailActivity;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-public class ampp
-  implements View.OnClickListener
+public final class ampp
+  extends ampn
 {
-  public ampp(LocationDetailActivity paramLocationDetailActivity) {}
-  
-  public void onClick(View paramView)
+  public ampp(String paramString, boolean paramBoolean)
   {
-    this.a.b(false);
+    super(paramString, paramBoolean);
   }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
+  
+  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampp
  * JD-Core Version:    0.7.0.1
  */

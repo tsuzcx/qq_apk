@@ -1,6 +1,6 @@
 package com.tencent.token.utils;
 
-import com.tencent.token.global.e;
+import com.tencent.token.global.h;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -11,10 +11,10 @@ import java.util.concurrent.TimeUnit;
 public abstract class UserTask
 {
   private static final BlockingQueue a = new LinkedBlockingQueue(10);
-  private static final ThreadFactory b = new v();
+  private static final ThreadFactory b = new z();
   private static final ThreadPoolExecutor c = new ThreadPoolExecutor(1, 10, 2L, TimeUnit.SECONDS, a, b);
-  private static z d;
-  private final ab e;
+  private static ad d;
+  private final af e;
   private final FutureTask f;
   private volatile UserTask.Status g = UserTask.Status.PENDING;
   
@@ -23,26 +23,51 @@ public abstract class UserTask
     try
     {
       if (d == null) {
-        d = new z();
+        d = new ad(null);
       }
-      label27:
-      this.e = new w(this);
-      this.f = new x(this, this.e);
+      label28:
+      this.e = new aa(this);
+      this.f = new ab(this, this.e);
       return;
     }
     catch (Exception localException)
     {
-      break label27;
+      break label28;
     }
   }
   
-  public final UserTask a(Object... paramVarArgs)
+  private void b(Object paramObject)
+  {
+    a(paramObject);
+    this.g = UserTask.Status.FINISHED;
+  }
+  
+  public abstract Object a(Object... paramVarArgs);
+  
+  public void a() {}
+  
+  public void a(Object paramObject) {}
+  
+  public final boolean a(boolean paramBoolean)
+  {
+    return this.f.cancel(paramBoolean);
+  }
+  
+  public final UserTask.Status b()
+  {
+    return this.g;
+  }
+  
+  public void b(Object... paramVarArgs) {}
+  
+  public final UserTask c(Object... paramVarArgs)
   {
     if (this.g != UserTask.Status.PENDING) {}
-    switch (y.a[this.g.ordinal()])
+    switch (ac.a[this.g.ordinal()])
     {
     default: 
       this.g = UserTask.Status.RUNNING;
+      c();
       this.e.b = paramVarArgs;
     }
     try
@@ -52,7 +77,7 @@ public abstract class UserTask
     }
     catch (Exception paramVarArgs)
     {
-      e.c("exception: " + paramVarArgs.getMessage());
+      h.c("exception: " + paramVarArgs.getMessage());
       a();
       this.g = UserTask.Status.FINISHED;
     }
@@ -61,21 +86,7 @@ public abstract class UserTask
     return this;
   }
   
-  public void a() {}
-  
-  public void a(Object paramObject) {}
-  
-  public abstract Object b();
-  
-  public final UserTask.Status c()
-  {
-    return this.g;
-  }
-  
-  public final boolean d()
-  {
-    return this.f.cancel(true);
-  }
+  public void c() {}
 }
 
 

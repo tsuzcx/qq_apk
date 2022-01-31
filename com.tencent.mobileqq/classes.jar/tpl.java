@@ -1,31 +1,40 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
 
-public class tpl
-  extends Handler
+class tpl
+  implements bhuw
 {
-  public tpl(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
+  tpl(tpk paramtpk) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramMessage.what)
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "onItemClick!");
+    }
+    paramAdapterView = (tpu)tpk.a.get(paramInt);
+    paramView = new Intent(paramView.getContext(), PublicAccountImageCollectionMainActivity.class);
+    paramView.putExtra("recommend_source", paramAdapterView.c);
+    paramView.putExtra("recommend_position", paramInt + 1);
+    paramView.putExtra("click_source", 2);
+    paramView.putExtra("source_for_report", 15);
+    tpp.a(tpk.a(this.a), paramView, String.valueOf(paramAdapterView.d));
+    if ((tpk.a(this.a) instanceof PublicAccountImageCollectionMainActivity))
     {
-    default: 
-      return;
+      paramView = (PublicAccountImageCollectionMainActivity)tpk.a(this.a);
+      paramInt += 1;
+      paramView.a(2, paramInt, paramAdapterView.c);
+      nrt.a(null, paramView.a, "0X8007B94", "0X8007B94", 0, 0, paramView.b, paramView.c, paramAdapterView.d, "" + paramInt, false);
     }
-    this.a.c();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131434841);
-    }
-    this.a.a(paramMessage, 1);
+    sff.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tpl
  * JD-Core Version:    0.7.0.1
  */

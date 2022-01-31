@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.widget;
 
+import asia;
 import com.tencent.mobileqq.fragment.BaseFragment;
-import com.tencent.mobileqq.freshnews.QQInputView.IQQInputCallback;
 
 public class TroopPublishFragment
   extends BaseFragment
-  implements QQInputView.IQQInputCallback
+  implements asia
 {
   public String a()
   {
@@ -16,7 +16,7 @@ public class TroopPublishFragment
   
   public void a(String paramString) {}
   
-  public void aq_() {}
+  public void aQ_() {}
   
   public String b()
   {
@@ -29,7 +29,7 @@ public class TroopPublishFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopPublishFragment
  * JD-Core Version:    0.7.0.1
  */

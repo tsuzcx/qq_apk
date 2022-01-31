@@ -1,49 +1,65 @@
 import android.content.Context;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.DownloadInfo;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.mobileqq.utils.HttpDownloadUtil.HttpDownloadListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
 
-public final class syl
-  implements Runnable
+final class syl
+  extends amrx
 {
-  public syl(Context paramContext, String paramString, QQAppInterface paramQQAppInterface, HttpDownloadUtil.HttpDownloadListener paramHttpDownloadListener) {}
+  syl(Object paramObject, QQAppInterface paramQQAppInterface, String paramString, alzr paramalzr, boolean paramBoolean, Context paramContext) {}
   
-  public void run()
+  public int a()
   {
-    boolean bool = false;
-    try
+    return 5;
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (this.jdField_a_of_type_JavaLangObject != null)
     {
-      Object localObject = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), this.jdField_a_of_type_JavaLangString);
-      localObject = new DownloadInfo(this.jdField_a_of_type_JavaLangString, (File)localObject, 0);
-      if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (DownloadInfo)localObject, this.jdField_a_of_type_ComTencentMobileqqUtilsHttpDownloadUtil$HttpDownloadListener) == 0) {
-        bool = true;
-      }
-      if (bool)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("LebaIconDownloader", 2, "download ok");
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.i("LebaIconDownloader", 2, "download error,error code:" + bool);
-        return;
+      paramObject = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
+      if (paramObject != null) {
+        paramObject.a(this.jdField_a_of_type_JavaLangObject);
       }
     }
-    catch (Exception localException)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("LebaIconDownloader", 2, localException.toString());
+      if (this.jdField_a_of_type_Alzr != null) {
+        this.jdField_a_of_type_Alzr.onUpdate(102, true, this.jdField_a_of_type_JavaLangString);
+      }
+      return;
+      paramObject = (alzl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
+      paramObject.b(this.jdField_a_of_type_JavaLangString);
+      paramObject.a(this.jdField_a_of_type_JavaLangString);
+      StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, 1008);
+      suv.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject.a());
+      ssp.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+      paramObject = (ntw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(88);
+      if (paramObject != null) {
+        paramObject.a(this.jdField_a_of_type_JavaLangString, "unfollow");
       }
     }
   }
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Alzr != null) {
+      this.jdField_a_of_type_Alzr.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      syb.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
+    }
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     syl
  * JD-Core Version:    0.7.0.1
  */

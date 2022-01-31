@@ -1,21 +1,26 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.mobileqq.activity.Leba;
 
 public class adfy
-  implements View.OnClickListener
+  implements ViewSwitcher.ViewFactory
 {
-  public adfy(VideoFileViewer paramVideoFileViewer, String paramString) {}
+  public adfy(Leba paramLeba) {}
   
-  public void onClick(View paramView)
+  public View makeView()
   {
-    FileManagerUtil.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a, this.jdField_a_of_type_JavaLangString);
+    ImageView localImageView = new ImageView(this.a.a());
+    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    return localImageView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adfy
  * JD-Core Version:    0.7.0.1
  */

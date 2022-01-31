@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class VipFunCallAndRing$TSsoCmd0x2Req
-  extends MessageMicro
+  extends MessageMicro<TSsoCmd0x2Req>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "u64_friend_uin", "str_friend_phone" }, new Object[] { Long.valueOf(0L), "" }, TSsoCmd0x2Req.class);
   public final PBStringField str_friend_phone = PBField.initString("");
@@ -15,7 +15,7 @@ public final class VipFunCallAndRing$TSsoCmd0x2Req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.funcall.VipFunCallAndRing.TSsoCmd0x2Req
  * JD-Core Version:    0.7.0.1
  */

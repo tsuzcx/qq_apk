@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class single_feeds_req_info
   extends JceStruct
 {
-  static ArrayList cache_all_commont_list = new ArrayList();
-  public ArrayList all_commont_list;
+  static ArrayList<SimpleComment> cache_all_commont_list = new ArrayList();
+  public ArrayList<SimpleComment> all_commont_list;
   public int appId;
   public long feeds_time;
   public boolean pullAll = true;
@@ -24,7 +24,7 @@ public final class single_feeds_req_info
   
   public single_feeds_req_info() {}
   
-  public single_feeds_req_info(long paramLong1, int paramInt, long paramLong2, String paramString, ArrayList paramArrayList, boolean paramBoolean)
+  public single_feeds_req_info(long paramLong1, int paramInt, long paramLong2, String paramString, ArrayList<SimpleComment> paramArrayList, boolean paramBoolean)
   {
     this.uin = paramLong1;
     this.appId = paramInt;
@@ -60,7 +60,7 @@ public final class single_feeds_req_info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.single_feeds_req_info
  * JD-Core Version:    0.7.0.1
  */

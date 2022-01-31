@@ -1,20 +1,21 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class abc
-  implements DialogInterface.OnClickListener
+class abc
+  implements View.OnClickListener
 {
-  abc(aba paramaba) {}
+  abc(UnbindUinActivity paramUnbindUinActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = new Intent(this.a.a, StartPwdGestureForgetActivity.class);
-    paramDialogInterface.putExtra("startpwd_forget_source", 3);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    paramView = new Intent(this.a, CheckMobileAvailableActivity.class);
+    paramView.putExtra("real_uin", UnbindUinActivity.access$200(this.a));
+    paramView.putExtra("user_to_unbind", UnbindUinActivity.access$600(this.a));
+    paramView.putExtra("up_sms_scene_id", 6);
+    this.a.startActivity(paramView);
   }
 }
 

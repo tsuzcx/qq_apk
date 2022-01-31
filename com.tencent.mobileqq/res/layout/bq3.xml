@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/avv" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/hpr" android:background="@drawable/gd5" android:layout_width="fill_parent" android:layout_height="24.0dip">
+        <View android:layout_gravity="center_horizontal" android:background="@drawable/awb" android:layout_width="55.0dip" android:layout_height="@dimen/avw" android:layout_marginTop="4.0dip" />
+    </FrameLayout>
+    <android.support.v7.widget.RecyclerView android:id="@id/hpm" android:background="@color/al3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hpn" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <android.support.v7.widget.RecyclerView android:id="@id/hpo" android:layout_width="200.0dip" android:layout_height="fill_parent" />
+        <TextView android:textSize="@dimen/ayo" android:textColor="@color/a6j" android:gravity="center|right" android:layout_gravity="right" android:id="@id/hps" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="20.0dip" android:text="@string/s6a" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

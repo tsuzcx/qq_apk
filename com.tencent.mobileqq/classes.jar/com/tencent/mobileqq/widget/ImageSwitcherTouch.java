@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageSwitcher;
+import beus;
 
 public class ImageSwitcherTouch
   extends ImageSwitcher
@@ -62,12 +63,12 @@ public class ImageSwitcherTouch
   {
     ImageViewTouche localImageViewTouche = (ImageViewTouche)getCurrentView();
     localImageViewTouche.setImageBitmap(paramBitmap);
-    localImageViewTouche.setImageRotateBitmapResetBase(new RotateBitmap(paramBitmap, 0), true);
+    localImageViewTouche.setImageRotateBitmapResetBase(new beus(paramBitmap, 0), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ImageSwitcherTouch
  * JD-Core Version:    0.7.0.1
  */

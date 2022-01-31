@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/d8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:id="@id/be6" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:id="@id/be7" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/vf">
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/dr4" android:minHeight="45.0dip" app:titleText="@string/fnj" app:contentHint="@string/fni" app:encryptType="hl" style="@style/vd" />
+            <TextView android:id="@id/dr5" android:visibility="invisible" android:text="@string/fhm" style="@style/vv" />
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/dr6" android:imeOptions="actionNext" app:titleText="@string/fho" app:contentHint="@string/fhn" app:encryptType="hm" style="@style/vp" />
+            <TextView android:id="@id/dr7" android:visibility="invisible" android:text="@string/fhm" style="@style/vv" />
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/dr8" app:titleText="@string/fhv" app:contentHint="@string/fhq" app:encryptType="hn" style="@style/vq" />
+            <TextView android:textColor="@color/s4" android:gravity="center" android:id="@id/dr9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l2" android:text="@string/fwy" />
+            <Button android:enabled="false" android:id="@id/b02" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l2" android:layout_marginBottom="38.0dip" android:text="@string/so" style="@style/w5" />
+            <TextView android:layout_gravity="bottom" android:id="@id/dr_" android:paddingTop="5.0dip" android:layout_height="fill_parent" android:layout_margin="0.0dip" style="@style/wc" />
+        </LinearLayout>
+    </ScrollView>
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/b1e" />
+</LinearLayout>

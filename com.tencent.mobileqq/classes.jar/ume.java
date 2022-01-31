@@ -1,82 +1,35 @@
-import Wallet.GoldMsgSetReq;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.qwallet.QWalletCommonServlet;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.FormEditItem;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
-import mqq.manager.TicketManager;
+import java.util.ArrayList;
 
-public class ume
-  implements DialogInterface.OnClickListener
+class ume
+  extends altm
 {
-  public ume(PlusPanel paramPlusPanel, Context paramContext, String paramString1, long paramLong, String paramString2) {}
+  ume(umd paramumd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onAddFriend(String paramString)
   {
-    Object localObject1 = (QQCustomDialog)paramDialogInterface;
-    long l1 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    String str = "";
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    TicketManager localTicketManager = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
-    if (localTicketManager != null) {
-      str = localTicketManager.getSkey((String)localObject2);
+    if (QLog.isColorLevel()) {
+      QLog.i("StoryHaloManager", 2, "onAddFriend: invoked.  addUin: " + paramString);
     }
-    boolean bool = ((FormSwitchItem)((QQCustomDialog)localObject1).findViewById(2131364084)).a().isChecked();
-    if (bool) {}
-    for (paramInt = 1; !bool; paramInt = 0)
+    try
     {
-      QWalletCommonServlet.a(new GoldMsgSetReq(l1, paramInt, 1L, str), null);
+      paramString = Long.valueOf(paramString);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(paramString);
+      this.a.a(3, localArrayList);
+      this.a.a();
       return;
     }
-    localObject2 = (FormEditItem)((QQCustomDialog)localObject1).findViewById(2131364085);
-    localObject1 = ((FormEditItem)localObject2).a().toString();
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject1 = ((FormEditItem)localObject2).a().getHint() + "";
-    }
-    for (;;)
+    catch (NumberFormatException paramString)
     {
-      long l2;
-      try
-      {
-        l2 = (Double.valueOf((String)localObject1).doubleValue() * 100.0D);
-        if (l2 < 1L)
-        {
-          QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 0).a();
-          return;
-        }
-      }
-      catch (NumberFormatException paramDialogInterface)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("View", 2, "invalid value:", paramDialogInterface);
-        }
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131432288, 0).a();
-        return;
-      }
-      if (l2 > this.jdField_a_of_type_Long)
-      {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.b, 0).a();
-        return;
-      }
-      QWalletCommonServlet.a(new GoldMsgSetReq(l1, paramInt, l2, str), null);
-      paramDialogInterface.dismiss();
-      return;
+      while (!QLog.isColorLevel()) {}
+      QLog.e("StoryHaloManager", 2, "onAddFriend: failed.  exception: " + paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ume
  * JD-Core Version:    0.7.0.1
  */

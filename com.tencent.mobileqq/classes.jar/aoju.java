@@ -1,67 +1,90 @@
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import mqq.os.MqqHandler;
+import com.tencent.common.config.AppSetting;
 
 public class aoju
-  implements Runnable
 {
-  public aoju(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void run()
+  public static int a(String paramString)
   {
-    if (this.a.b())
+    if ((paramString == null) || (paramString.length() <= 0)) {}
+    String str;
+    do
     {
-      if (this.a.b <= 0L) {
-        this.a.h();
+      return -1;
+      paramString = b(paramString);
+      str = bdqa.a("RESPCONDITION", paramString);
+      if (bdqa.a("RESPCONTENTTYPES", paramString).equals("PRELOAD")) {
+        return 3;
       }
-      ShortVideoPlayActivity.a(this.a, this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion());
-      if (ShortVideoPlayActivity.a(this.a) != 0L)
+      if (str.equals("MANUAL")) {
+        return 0;
+      }
+      if (str.equals("AUTO")) {
+        return 1;
+      }
+    } while (!str.equals("SEMIAUTO"));
+    return 2;
+  }
+  
+  public static aozp a(String paramString)
+  {
+    aozp localaozp = new aozp();
+    paramString = b(paramString);
+    localaozp.a = bdqa.a(bdqa.a("DESC", paramString));
+    localaozp.b = bdqa.a(bdqa.a("SUBJECT", paramString));
+    localaozp.c = bdqa.a("RESPCONDITION", paramString);
+    if ((!localaozp.c.equals("MANUAL")) && (!localaozp.c.equals("AUTO")) && (!localaozp.c.equals("SEMIAUTO"))) {
+      return null;
+    }
+    localaozp.d = bdqa.a("RESPDESC", paramString);
+    localaozp.e = bdqa.a("RESPCONTENTTYPES", paramString);
+    localaozp.f = bdqa.a("RESPDEST", paramString);
+    localaozp.g = bdqa.a("RESPCONTENTS", paramString);
+    localaozp.d = bdqa.a(localaozp.d);
+    localaozp.f = bdqa.a(localaozp.f).trim();
+    localaozp.g = bdqa.a(localaozp.g);
+    return localaozp;
+  }
+  
+  public static String a(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() <= 0)) {
+      return null;
+    }
+    return bdqa.a("RESPCONTENTTYPES", paramString);
+  }
+  
+  public static aozp b(String paramString)
+  {
+    paramString = a(paramString);
+    if (paramString == null) {}
+    do
+    {
+      return paramString;
+      if (paramString.c.equals("MANUAL"))
       {
-        ShortVideoPlayActivity.a(this.a, (int)(ShortVideoPlayActivity.a(this.a) * 10000L / this.a.b + 0.5D));
-        if (!ShortVideoPlayActivity.a(this.a))
-        {
-          this.a.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(ShortVideoPlayActivity.a(this.a));
-          this.a.b(ShortVideoPlayActivity.a(this.a));
-        }
+        paramString.a(false);
+        return paramString;
       }
-    }
-    if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.a.g != 0L))
-    {
-      if (!this.a.jdField_f_of_type_Boolean) {
-        break label352;
-      }
-      ShortVideoPlayActivity.b(this.a, (int)(this.a.jdField_f_of_type_Long * 10000L / this.a.g));
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_AndroidWidgetSeekBar.getSecondaryProgress() != ShortVideoPlayActivity.b(this.a)) {
-        this.a.jdField_a_of_type_AndroidWidgetSeekBar.setSecondaryProgress(ShortVideoPlayActivity.b(this.a));
-      }
-      if ((this.a.c()) && (ShortVideoPlayActivity.c(this.a) > 0) && (ShortVideoPlayActivity.a(this.a) != null) && (ShortVideoPlayActivity.a(this.a).getVisibility() == 0))
+      if (paramString.c.equals("AUTO"))
       {
-        String str = ShortVideoUtils.a(this.a.jdField_a_of_type_AndroidContentContext, ShortVideoPlayActivity.c(this.a) * 1024);
-        ShortVideoPlayActivity.a(this.a).setText(str + "/s");
+        paramString.a();
+        return paramString;
       }
-      if (!this.a.isFinishing()) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPlayActivity", 2, "check progress, while finishing");
-      }
-      return;
-      label352:
-      ShortVideoPlayActivity.b(this.a, 10000);
+    } while (!paramString.c.equals("SEMIAUTO"));
+    paramString.a();
+    return paramString;
+  }
+  
+  private static String b(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() <= 0)) {
+      return "";
     }
-    this.a.jdField_a_of_type_MqqOsMqqHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 50L);
+    return bdqa.a(bdqa.a(paramString, 0, "||QQNO||", aokb.a()), 0, "||LICENCE||", AppSetting.d());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoju
  * JD-Core Version:    0.7.0.1
  */

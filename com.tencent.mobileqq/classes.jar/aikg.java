@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.AssociatedAccountOptPopBar;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
 public class aikg
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aikg(AssociatedAccountOptPopBar paramAssociatedAccountOptPopBar) {}
+  public aikg(AvatarPendantActivity paramAvatarPendantActivity, int paramInt, String paramString1, String paramString2) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.a.app != null) && (this.a.a()))
+    bdun.a(null, this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, "mvip.gxh.android.faceaddon_nati_dft", this.jdField_a_of_type_Int, "1450000515", this.jdField_a_of_type_JavaLangString, this.b, "");
+    paramView = "0";
+    if (!TextUtils.isEmpty(this.b)) {
+      if (!"QQ会员".equals(this.b)) {
+        break label84;
+      }
+    }
+    label84:
+    for (paramView = "0";; paramView = "1")
     {
-      this.a.a.app.f(false);
-      SubAccountControll.a(this.a.a.app, false);
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8005FD2", "0X8005FD2", 0, 0, paramView, "", "", "");
+      return;
     }
   }
 }

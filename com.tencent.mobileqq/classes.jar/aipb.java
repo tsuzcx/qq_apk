@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.transfile.C2CPttUploadProcessor;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aipb
-  extends MessageObserver
+class aipb
+  implements DialogInterface.OnClickListener
 {
-  public aipb(C2CPttUploadProcessor paramC2CPttUploadProcessor) {}
+  aipb(aipa paramaipa) {}
   
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
-    if (paramBoolean)
+    if (paramInt == 0)
     {
-      this.a.e();
-      return;
+      this.a.b();
+      aipa.a(this.a).moveTaskToBack(true);
     }
-    this.a.d();
   }
 }
 

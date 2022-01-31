@@ -1,31 +1,56 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.TroopAssistantHomeFeedPlayInfo;
+import java.util.Iterator;
+import java.util.List;
 
-class vqp
-  implements Runnable
+public class vqp
+  extends vpa<TroopAssistantHomeFeedPlayInfo>
 {
-  vqp(vqn paramvqn, int paramInt) {}
-  
-  public void run()
+  public vqp(TroopAssistantHomeFeedPlayInfo paramTroopAssistantHomeFeedPlayInfo)
   {
-    ArkDebugChatPie.a(this.jdField_a_of_type_Vqn.a.a);
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (String str = "(监听超时)";; str = "")
-    {
-      ((ArkAppCenter)this.jdField_a_of_type_Vqn.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(120)).a().f();
-      QQToast.a(this.jdField_a_of_type_Vqn.a.a.jdField_a_of_type_AndroidContentContext, String.format("连接已经关闭%s...", new Object[] { str }), 0).a();
-      ArkDispatchTask.getInstance().postToMainThreadDelayed(new vqq(this), 60L);
-      return;
+    super(paramTroopAssistantHomeFeedPlayInfo);
+    paramTroopAssistantHomeFeedPlayInfo = (woy)uwa.a(11);
+    if (paramTroopAssistantHomeFeedPlayInfo.b != null) {
+      this.a = paramTroopAssistantHomeFeedPlayInfo.b;
     }
   }
+  
+  public woq a(String paramString)
+  {
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      woq localwoq = (woq)localIterator.next();
+      if (localwoq.a.equals(paramString)) {
+        return localwoq;
+      }
+    }
+    return null;
+  }
+  
+  public void a() {}
+  
+  public void a(boolean paramBoolean, int paramInt, vps paramvps)
+  {
+    Object localObject = this.a.jdField_a_of_type_JavaUtilList;
+    if ((paramBoolean) && (((List)localObject).size() > 0))
+    {
+      List localList = b((List)localObject);
+      paramvps.a(new ErrorMessage(), localList, this.a.jdField_a_of_type_Boolean);
+      wxe.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject).size()));
+      return;
+    }
+    localObject = new vgf();
+    ((vgf)localObject).a = this.a.a();
+    wxe.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request next feed id list with cookie %s", ((vgf)localObject).a);
+    urp.a().a((urt)localObject, new vqq(this, paramvps));
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vqp
  * JD-Core Version:    0.7.0.1
  */

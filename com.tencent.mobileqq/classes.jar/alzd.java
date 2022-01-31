@@ -1,29 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeMediaPlayer;
-import com.tencent.sharp.jni.TraeMediaPlayer.OnCompletionListener;
-import java.util.TimerTask;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class alzd
-  extends TimerTask
+final class alzd
+  implements DialogInterface.OnClickListener
 {
-  public alzd(TraeMediaPlayer paramTraeMediaPlayer, long paramLong) {}
+  alzd(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (TraeMediaPlayer.a(this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer) != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("TraeMediaPlay", 1, "playRing, onCompletion, seq[" + this.jdField_a_of_type_Long + "]");
-      }
-      if (TraeMediaPlayer.a(this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer) != null) {
-        TraeMediaPlayer.a(this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer).a();
-      }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    if (this.a != null) {
+      this.a.onClick(paramDialogInterface, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alzd
  * JD-Core Version:    0.7.0.1
  */

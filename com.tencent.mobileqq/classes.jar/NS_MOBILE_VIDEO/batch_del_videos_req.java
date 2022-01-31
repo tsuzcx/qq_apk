@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class batch_del_videos_req
   extends JceStruct
 {
-  static ArrayList cache_vids;
+  static ArrayList<String> cache_vids;
   public long uin;
-  public ArrayList vids;
+  public ArrayList<String> vids;
   
   public batch_del_videos_req() {}
   
-  public batch_del_videos_req(long paramLong, ArrayList paramArrayList)
+  public batch_del_videos_req(long paramLong, ArrayList<String> paramArrayList)
   {
     this.uin = paramLong;
     this.vids = paramArrayList;
@@ -41,7 +41,7 @@ public final class batch_del_videos_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_VIDEO.batch_del_videos_req
  * JD-Core Version:    0.7.0.1
  */

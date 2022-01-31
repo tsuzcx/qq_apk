@@ -1,52 +1,21 @@
-import com.tencent.mobileqq.ar.arengine.ARCloudReqFileInfo;
-import com.tencent.mobileqq.ocr.OcrControl;
-import com.tencent.mobileqq.ocr.OcrControl.OcrCallback;
-import com.tencent.mobileqq.ocr.OcrImageUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class agbp
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public agbp(OcrControl paramOcrControl, String paramString, boolean paramBoolean) {}
+  public agbp(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (OcrImageUtil.a(this.jdField_a_of_type_JavaLangString))
-    {
-      localObject = OcrImageUtil.a(new File(this.jdField_a_of_type_JavaLangString).getName(), false);
-      if ((!this.jdField_a_of_type_Boolean) && (OcrImageUtil.a(this.jdField_a_of_type_JavaLangString, (String)localObject)))
-      {
-        localARCloudReqFileInfo = new ARCloudReqFileInfo();
-        localARCloudReqFileInfo.jdField_a_of_type_JavaLangString = ((String)localObject);
-        localARCloudReqFileInfo.jdField_a_of_type_Int = 0;
-        localARCloudReqFileInfo.b = this.jdField_a_of_type_JavaLangString;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.ocr.control", 2, "upload pic size:" + new File((String)localObject).length() / 1024L + "KB");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl.a(localARCloudReqFileInfo);
-      }
-    }
-    while (OcrControl.a(this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl) == null)
-    {
-      ARCloudReqFileInfo localARCloudReqFileInfo;
-      return;
-      Object localObject = new ARCloudReqFileInfo();
-      ((ARCloudReqFileInfo)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      ((ARCloudReqFileInfo)localObject).jdField_a_of_type_Int = 0;
-      ((ARCloudReqFileInfo)localObject).b = this.jdField_a_of_type_JavaLangString;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.ocr.control", 2, "upload pic size:" + new File(this.jdField_a_of_type_JavaLangString).length() / 1024L + "KB");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl.a((ARCloudReqFileInfo)localObject);
-      return;
-    }
-    OcrControl.a(this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl).a(1, null, this.jdField_a_of_type_JavaLangString, 0L);
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agbp
  * JD-Core Version:    0.7.0.1
  */

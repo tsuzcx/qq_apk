@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import android.os.Bundle;
 
-public class agpt
-  implements DialogInterface.OnClickListener
+class agpt
+  extends azcg
 {
-  public agpt(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  agpt(agps paramagps) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.f();
+    if ((paramBoolean) && (this.a.a != null)) {
+      this.a.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agpt
  * JD-Core Version:    0.7.0.1
  */

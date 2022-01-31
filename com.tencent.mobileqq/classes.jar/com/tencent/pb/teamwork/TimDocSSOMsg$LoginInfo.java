@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class TimDocSSOMsg$LoginInfo
-  extends MessageMicro
+  extends MessageMicro<LoginInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_pskey = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class TimDocSSOMsg$LoginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.teamwork.TimDocSSOMsg.LoginInfo
  * JD-Core Version:    0.7.0.1
  */

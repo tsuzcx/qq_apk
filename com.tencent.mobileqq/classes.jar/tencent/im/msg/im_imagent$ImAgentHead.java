@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_imagent$ImAgentHead
-  extends MessageMicro
+  extends MessageMicro<ImAgentHead>
 {
   public static final int COMMAND_FIELD_NUMBER = 1;
   public static final int ECHO_BUF_FIELD_NUMBER = 5;

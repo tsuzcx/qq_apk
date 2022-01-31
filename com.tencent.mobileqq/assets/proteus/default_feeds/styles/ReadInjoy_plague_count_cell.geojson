@@ -1,0 +1,350 @@
+{
+    "ReadInjoy_plague_count_cell": {
+        "view_type": "UIView",
+        "view_id": "id_plague_count_container",
+        "layout_type": "layout_linear",
+        "direction": "vertical",
+        "event_type": "cmd_url_click_card_report",
+        "default_visible": "YES",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "attributes": {
+            "setAttatchInfo:": "$jump_url"
+        },
+        "data_attributes": {
+            "setLocalInfo:": {
+                "feeds_type": "2009",
+                "jump_page": "6",
+                "jump_src": "1"
+            }
+        },
+        "subviews": [
+            {
+                "view_type": "container",
+                "layout_type": "layout_linear",
+                "direction": "horizontal",
+                "height": {
+                    "type": "relative",
+                    "value": "58.5"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "subviews": [
+                    {
+                        "view_type": "container",
+                        "layout_type": "layout_relative",
+                        "margin_left": "8.5",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "89.5"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_patients_count",
+                                "margin_top": "8.5",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "24"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "$patients_count",
+                                    "setTextColorString:" :"#242424",
+                                    "setBoldFontSizeString:": "17",
+                                    "setTextAlignmentString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_patients_label",
+                                "default_visible": "YES",
+                                "margin_top": "29",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "24"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "全国确诊",
+                                    "setTextColorString:" :"#000000",
+                                    "setFontSizeString:": "12",
+                                    "setTextAlignmentString:": "1"
+                                }
+                            }
+                            
+                        ]
+                    },
+                    {
+                        "view_type": "container",
+                        "layout_type": "layout_relative",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "89.5"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_suspect_patients_count",
+                                "margin_top": "8.5",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "24"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "$suspect_patients_count",
+                                    "setTextColorString:" :"#242424",
+                                    "setBoldFontSizeString:": "17",
+                                    "setTextAlignmentString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_suspect_patients_label",
+                                "default_visible": "YES",
+                                "margin_top": "29",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "24"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "疑似病例",
+                                    "setTextColorString:" :"#000000",
+                                    "setFontSizeString:": "12",
+                                    "setTextAlignmentString:": "1"
+                                }
+                            }
+                            
+                        ]
+                    },
+                    {
+                        "view_type": "container",
+                        "layout_type": "layout_relative",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "89.5"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_cure_count",
+                                "margin_top": "8.5",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "24"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "$cure_count",
+                                    "setTextColorString:" :"#242424",
+                                    "setBoldFontSizeString:": "17",
+                                    "setTextAlignmentString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_cure_label",
+                                "default_visible": "YES",
+                                "margin_top": "29",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "24"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "治愈人数",
+                                    "setTextColorString:" :"#000000",
+                                    "setFontSizeString:": "12",
+                                    "setTextAlignmentString:": "1"
+                                }
+                            }
+                            
+                        ]
+                    },
+                    {
+                        "view_type": "container",
+                        "layout_type": "layout_relative",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "89.5"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_death_count",
+                                "margin_top": "8.5",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "24"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "$death_count",
+                                    "setTextColorString:" :"#7F000000",
+                                    "setBoldFontSizeString:": "17",
+                                    "setTextAlignmentString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_death_label",
+                                "default_visible": "YES",
+                                "margin_top": "29",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "24"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setText:": "死亡人数",
+                                    "setTextColorString:" :"#000000",
+                                    "setFontSizeString:": "12",
+                                    "setTextAlignmentString:": "1"
+                                }
+                            }
+                            
+                        ]
+                    }
+                ]
+            },
+            {
+                "view_type": "container",
+                "layout_type": "layout_relative",
+                "margin_bottom": "11.5",
+                "height": {
+                    "type": "absolutely",
+                    "value": "16"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "subviews": [
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_source",
+                        "margin_left": "8",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setText:": "$source",
+                            "setTextColorString:" :"#AAAAAA",
+                            "setFontSizeString:": "12"
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_time",
+                        "margin_left": "6",
+                        "right_of_view": "id_source",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setText:": "$time",
+                            "setTextColorString:" :"#AAAAAA",
+                            "setFontSizeString:": "12"
+                        }
+                    },
+                    {
+                        "view_type": "ReadInjoyAsynImageView",
+                        "view_id": "id_more_icon",
+                        "align_parent_right": "YES",
+                        "align_parent_center_vertical": "YES",
+                        "default_visible": "YES",
+                        "margin_right":"8",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "12"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "7"
+                        },
+                        "attributes": {
+                            "setImageWithURLString:lineup:": [
+                                "http://pub.idqqimg.com/pc/misc/files/20200130/52329a1d9d6f4979bfdb0b109c098713.png",
+                                "0"
+                            ]
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_more_label",
+                        "margin_right": "6",
+                        "left_of_view": "id_more_icon",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setText:": "$jump_text",
+                            "setTextColorString:" :"#AAAAAA",
+                            "setBoldFontSizeString:": "12"
+                        }
+                    }
+                ]
+            },
+            {
+                "view_type":"UIView",
+                "view_id":"id_separator",
+                "default_visible": "YES",
+                "margin_left":"6",
+                "height":{
+                    "type":"absolutely","value":"0.5"
+                },
+                "width":{
+                    "type":"relative",
+                    "value":"359"
+                },
+                "attributes":{
+                    "setBackgroundColorString:":"#E5E5E5"
+                }
+            }
+        ]
+    }
+}

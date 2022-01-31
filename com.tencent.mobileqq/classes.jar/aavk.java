@@ -1,38 +1,24 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import java.io.File;
-import java.io.FileFilter;
+import android.view.View;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
 
-public final class aavk
-  implements FileFilter
+public class aavk
+  implements aavb
 {
-  public aavk(String paramString, boolean paramBoolean) {}
+  public aavk(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
   
-  public boolean accept(File paramFile)
+  public void a(View paramView)
   {
-    String str = paramFile.getName();
-    int i = str.lastIndexOf('.');
-    if (i <= 0) {}
-    do
+    switch (paramView.getId())
     {
-      do
-      {
-        return false;
-      } while (!str.substring(i).equalsIgnoreCase(".app"));
-      str = str.substring(0, i);
-    } while ((!ArkLocalAppMgr.b(str)) || (ArkLocalAppMgr.a(str, this.jdField_a_of_type_JavaLangString) >= 0));
-    if (this.jdField_a_of_type_Boolean) {
-      paramFile.deleteOnExit();
+    default: 
+      return;
     }
-    for (;;)
-    {
-      return true;
-      paramFile.delete();
-    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aavk
  * JD-Core Version:    0.7.0.1
  */

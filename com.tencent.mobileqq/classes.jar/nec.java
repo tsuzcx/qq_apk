@@ -1,96 +1,96 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryManager;
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeListRequest;
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeListRequest.MsgTabNodeListResponse;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.CharBuffer;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CoderResult;
 
 public class nec
-  implements CmdTaskManger.CommandCallback
 {
-  public nec(MsgTabNodeListLoader paramMsgTabNodeListLoader) {}
+  public static final ThreadLocal<Charset> a;
+  private static final ThreadLocal<CharsetDecoder> b = new ned();
+  private static final ThreadLocal<CharBuffer> c = new ThreadLocal();
+  protected ByteBuffer a;
+  protected int c;
   
-  public void a(@NonNull MsgTabNodeListRequest arg1, @Nullable MsgTabNodeListRequest.MsgTabNodeListResponse paramMsgTabNodeListResponse, @NonNull ErrorMessage paramErrorMessage)
+  static
   {
-    if ((paramErrorMessage.isFail()) || (paramMsgTabNodeListResponse == null))
+    jdField_a_of_type_JavaLangThreadLocal = new nee();
+  }
+  
+  protected int a(int paramInt)
+  {
+    if (a(paramInt, 4)) {
+      return this.jdField_a_of_type_JavaNioByteBuffer.getInt(paramInt) + paramInt;
+    }
+    return -1;
+  }
+  
+  protected String a(int paramInt, boolean paramBoolean)
+  {
+    CharsetDecoder localCharsetDecoder = (CharsetDecoder)b.get();
+    localCharsetDecoder.reset();
+    int i = paramInt;
+    if (!paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqstory.msgTab.nodeList", 2, "get next failed:" + paramErrorMessage.getErrorMessage());
+      if (!a(paramInt, 4)) {
+        return null;
       }
-      this.a.b(false);
-      if (this.a.a()) {
-        this.a.a(new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList), true, this.a.jdField_a_of_type_Boolean, true);
-      }
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      return;
+      i = paramInt + this.jdField_a_of_type_JavaNioByteBuffer.getInt(paramInt);
     }
-    this.a.b(true);
-    paramErrorMessage = new ArrayList();
-    for (;;)
+    if (!a(i, 4)) {
+      return null;
+    }
+    ByteBuffer localByteBuffer = this.jdField_a_of_type_JavaNioByteBuffer.duplicate().order(ByteOrder.LITTLE_ENDIAN);
+    paramInt = localByteBuffer.getInt(i);
+    if (!a(i, paramInt + 4)) {
+      return null;
+    }
+    localByteBuffer.position(i + 4);
+    localByteBuffer.limit(i + 4 + paramInt);
+    paramInt = (int)(paramInt * localCharsetDecoder.maxCharsPerByte());
+    Object localObject2 = (CharBuffer)c.get();
+    Object localObject1;
+    if (localObject2 != null)
     {
-      MsgTabNodeInfo localMsgTabNodeInfo1;
-      synchronized (this.a.jdField_a_of_type_JavaLangObject)
-      {
-        this.a.jdField_a_of_type_JavaLangString = paramMsgTabNodeListResponse.c;
-        int i = 0;
-        if (i < paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList.size())
-        {
-          MsgTabNodeListLoader.a(this.a, (MsgTabNodeInfo)paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList.get(i));
-          i += 1;
-          continue;
-        }
-        Iterator localIterator = paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localMsgTabNodeInfo1 = (MsgTabNodeInfo)localIterator.next();
-        if (this.a.jdField_a_of_type_JavaUtilArrayList.contains(localMsgTabNodeInfo1))
-        {
-          if (localMsgTabNodeInfo1.a != 5) {
-            continue;
-          }
-          i = this.a.jdField_a_of_type_JavaUtilArrayList.indexOf(localMsgTabNodeInfo1);
-          MsgTabNodeInfo localMsgTabNodeInfo2 = (MsgTabNodeInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(i);
-          this.a.jdField_a_of_type_JavaUtilArrayList.remove(i);
-          if (localMsgTabNodeInfo2.c > 0) {
-            localMsgTabNodeInfo1.a(localMsgTabNodeInfo2);
-          }
-          this.a.jdField_a_of_type_JavaUtilArrayList.add(i, localMsgTabNodeInfo1);
-          this.a.a(localMsgTabNodeInfo1, false, 2);
-        }
-      }
-      this.a.jdField_a_of_type_JavaUtilArrayList.add(localMsgTabNodeInfo1);
-      paramErrorMessage.add(localMsgTabNodeInfo1);
+      localObject1 = localObject2;
+      if (((CharBuffer)localObject2).capacity() >= paramInt) {}
     }
-    this.a.jdField_a_of_type_Boolean = paramMsgTabNodeListResponse.jdField_a_of_type_Boolean;
-    this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager.a(paramErrorMessage, false);
-    if (this.a.a()) {
-      this.a.a(new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList), true, this.a.jdField_a_of_type_Boolean, true);
-    }
-    for (;;)
+    else
     {
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("Q.qqstory.msgTab.nodeList", 2, "get next data size=" + this.a.jdField_a_of_type_JavaUtilArrayList.size() + ", rsp size=" + paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList.size());
-      return;
-      if (paramErrorMessage.size() > 0) {
-        this.a.a(paramErrorMessage, false, this.a.jdField_a_of_type_Boolean, false);
-      }
+      localObject1 = CharBuffer.allocate(paramInt);
+      c.set(localObject1);
     }
+    ((CharBuffer)localObject1).clear();
+    try
+    {
+      localObject2 = localCharsetDecoder.decode(localByteBuffer, (CharBuffer)localObject1, true);
+      if (!((CoderResult)localObject2).isUnderflow()) {
+        ((CoderResult)localObject2).throwException();
+      }
+      return ((CharBuffer)localObject1).flip().toString();
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("FlatBuffersParser", 1, "convertString error", localThrowable);
+    }
+    return null;
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    return (paramInt1 >= 0) && (paramInt1 + paramInt2 <= this.jdField_a_of_type_JavaNioByteBuffer.capacity());
+  }
+  
+  protected String b(int paramInt)
+  {
+    return a(paramInt, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nec
  * JD-Core Version:    0.7.0.1
  */

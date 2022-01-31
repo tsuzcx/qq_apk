@@ -1,39 +1,67 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.util.FaceDecoderImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.data.PhoneContact;
 
-public class ajzs
-  extends FriendListObserver
+class ajzs
+  implements View.OnClickListener
 {
-  private ajzs(FaceDecoderImpl paramFaceDecoderImpl) {}
+  ajzs(ajzr paramajzr) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    this.a.a(paramBoolean, 1, paramString, 0);
-  }
-  
-  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(paramBoolean, 11, paramString, 0);
-  }
-  
-  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(paramBoolean1, 16, paramString, paramInt);
-  }
-  
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(paramBoolean1, 32, paramString, paramInt);
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(paramBoolean, 4, paramString, 0);
+    if (paramView.getId() == 2131365304) {}
+    ajzy localajzy;
+    PhoneContact localPhoneContact;
+    do
+    {
+      do
+      {
+        return;
+        localajzy = (ajzy)paramView.getTag();
+      } while ((localajzy == null) || (localajzy.jdField_a_of_type_AndroidWidgetCheckBox == null) || (localajzy.jdField_a_of_type_ComTencentMobileqqDataPhoneContact == null));
+      localPhoneContact = localajzy.jdField_a_of_type_ComTencentMobileqqDataPhoneContact;
+    } while (!localajzy.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled());
+    if (localajzy.jdField_a_of_type_JavaLangString.startsWith("+")) {}
+    for (boolean bool = this.a.a.a.a(localajzy.jdField_a_of_type_JavaLangString, localPhoneContact.name, 4, "-1", localPhoneContact.mobileNo);; bool = this.a.a.a.a(localajzy.jdField_a_of_type_JavaLangString, localPhoneContact.name, 0, "-1", localPhoneContact.mobileNo))
+    {
+      localajzy.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+      if (!AppSetting.c) {
+        break;
+      }
+      if (!localajzy.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break label255;
+      }
+      if (!localajzy.jdField_a_of_type_Boolean) {
+        break label216;
+      }
+      paramView.setContentDescription(localajzy.b.getText() + this.a.a.a.getString(2131719729));
+      return;
+    }
+    label216:
+    paramView.setContentDescription(localajzy.b.getText().toString() + alud.a(2131708390));
+    return;
+    label255:
+    if (localajzy.jdField_a_of_type_Boolean) {}
+    for (int i = this.a.a.a.a(localajzy.jdField_a_of_type_JavaLangString);; i = 0)
+    {
+      if ((localajzy.jdField_a_of_type_Boolean) && (i != 0))
+      {
+        paramView.setContentDescription(localajzy.b.getText() + this.a.a.a.getString(i));
+        return;
+      }
+      paramView.setContentDescription(localajzy.b.getText().toString() + alud.a(2131708387));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajzs
  * JD-Core Version:    0.7.0.1
  */

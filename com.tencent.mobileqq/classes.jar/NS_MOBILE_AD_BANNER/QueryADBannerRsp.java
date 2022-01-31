@@ -9,12 +9,12 @@ public final class QueryADBannerRsp
   extends JceStruct
 {
   private static volatile boolean cacheInited;
-  static volatile ArrayList cache_vecAdBanner;
-  public ArrayList vecAdBanner;
+  static volatile ArrayList<QueryADBannerUnit> cache_vecAdBanner;
+  public ArrayList<QueryADBannerUnit> vecAdBanner;
   
   public QueryADBannerRsp() {}
   
-  public QueryADBannerRsp(ArrayList paramArrayList)
+  public QueryADBannerRsp(ArrayList<QueryADBannerUnit> paramArrayList)
   {
     this.vecAdBanner = paramArrayList;
   }
@@ -44,7 +44,7 @@ public final class QueryADBannerRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_AD_BANNER.QueryADBannerRsp
  * JD-Core Version:    0.7.0.1
  */

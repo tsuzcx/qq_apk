@@ -1,98 +1,186 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.PGCFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.PGCPicInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView.PicInfo;
+import android.graphics.Matrix;
+import android.graphics.RectF;
+import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import java.util.ArrayList;
+import com.tencent.ttpic.baseutils.io.FileUtils;
+import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
+import com.tencent.ttpic.model.SizeI;
+import com.tencent.util.Pair;
+import java.io.File;
 import java.util.List;
 
 public class lte
 {
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List b = new ArrayList();
+  private final int jdField_a_of_type_Int;
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+  private final String jdField_a_of_type_JavaLangString = "MultipleTextureProcessor-" + Integer.toHexString(hashCode());
+  private ltb jdField_a_of_type_Ltb;
+  private ltg jdField_a_of_type_Ltg;
+  private ltj jdField_a_of_type_Ltj;
+  private final int jdField_b_of_type_Int;
+  private ltj jdField_b_of_type_Ltj;
   
-  public lte(NativeGridImageView paramNativeGridImageView, ArticleInfo paramArticleInfo)
+  public lte(int paramInt1, int paramInt2)
   {
-    int i;
-    if ((paramArticleInfo != null) && (paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.a != null) && (paramArticleInfo.mSocialFeedInfo.a.a != null) && (paramArticleInfo.mSocialFeedInfo.a.a.size() > 0))
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "MultipleTextureProcessor: " + paramInt1 + ", " + paramInt2);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Ltg = new ltg();
+    this.jdField_a_of_type_Ltg.a(new ltf(this));
+    this.jdField_a_of_type_Ltg.d();
+    this.jdField_a_of_type_Ltb = new ltb(paramInt1, paramInt2);
+    this.jdField_a_of_type_Ltg.a(this.jdField_a_of_type_Ltb);
+  }
+  
+  private ltj a(String paramString)
+  {
+    if (!FileUtils.exists(paramString))
     {
-      paramArticleInfo = paramArticleInfo.mSocialFeedInfo.a.a;
-      i = 0;
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "createCompositeFilter: " + paramString + " not exists");
+      return null;
+    }
+    lti locallti = new lti(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "createCompositeFilter: create filter#" + Integer.toHexString(locallti.hashCode()));
+    locallti.a(paramString);
+    return locallti;
+  }
+  
+  private void a(List<lth> paramList)
+  {
+    if ((this.jdField_a_of_type_Ltj == null) || (!(this.jdField_a_of_type_Ltj instanceof lti))) {}
+    Object localObject;
+    float f1;
+    do
+    {
+      return;
+      localObject = ((lti)this.jdField_a_of_type_Ltj).a();
+      f1 = this.jdField_a_of_type_Int / ((SizeI)localObject).width;
+      localObject = ((lti)this.jdField_a_of_type_Ltj).a();
+    } while (((List)localObject).size() != paramList.size());
+    int i = 0;
+    label74:
+    Pair localPair;
+    lth locallth;
+    if (i < paramList.size())
+    {
+      localPair = (Pair)((List)localObject).get(i);
+      locallth = (lth)paramList.get(i);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MultipleTextureProcessor", 1, "convertFaceDataModel #" + i + " (" + locallth.jdField_b_of_type_Int + ", " + locallth.c + "), (" + locallth.d + ", " + locallth.e + ")");
+      }
+      if ((locallth.jdField_a_of_type_JavaUtilList != null) && (locallth.e != 0) && (locallth.d != 0)) {
+        break label234;
+      }
     }
     for (;;)
     {
-      if (i < paramArticleInfo.size()) {}
-      try
+      i += 1;
+      break label74;
+      break;
+      label234:
+      int j = 0;
+      while (j < locallth.jdField_a_of_type_JavaUtilList.size())
       {
-        int j = this.jdField_a_of_type_JavaUtilList.size();
-        if (j >= 9)
-        {
-          if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-            ((SquareCornerTextImageView.PicInfo)this.jdField_a_of_type_JavaUtilList.get(0)).a(true);
-          }
-          return;
-        }
-        if ((((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString != null) || (((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString != null))
-        {
-          Object localObject;
-          label255:
-          int k;
-          if (((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString != null)
-          {
-            paramNativeGridImageView = ((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString;
-            localObject = new URL(paramNativeGridImageView);
-            if (((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString == null) {
-              break label374;
-            }
-            paramNativeGridImageView = ((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString;
-            paramNativeGridImageView = new URL(paramNativeGridImageView);
-            this.b.add(localObject);
-            localObject = this.jdField_a_of_type_JavaUtilList;
-            j = ((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).a;
-            k = ((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).jdField_b_of_type_Int;
-            if (((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).jdField_c_of_type_Int != 1) {
-              break label391;
-            }
-          }
-          label391:
-          for (boolean bool = true;; bool = false)
-          {
-            ((List)localObject).add(new SquareCornerTextImageView.PicInfo(j, k, paramNativeGridImageView, bool));
-            break label410;
-            paramNativeGridImageView = ((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString;
-            break;
-            label374:
-            paramNativeGridImageView = ((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString;
-            break label255;
-          }
-        }
+        float f2 = Math.max(((RectF)localPair.first).width() / locallth.d, ((RectF)localPair.first).height() / locallth.e);
+        locallth.jdField_a_of_type_JavaUtilList.set(j, ltd.a((TTFaceOriginDataModel)locallth.jdField_a_of_type_JavaUtilList.get(j), new RectF(0.0F, 0.0F, locallth.d, locallth.e), (RectF)localPair.first, (Matrix)localPair.second, f1, locallth.jdField_a_of_type_Boolean));
+        locallth.d = ((int)(locallth.d * f2));
+        locallth.e = ((int)(locallth.e * f2));
+        j += 1;
       }
-      catch (Exception paramNativeGridImageView)
+      if (locallth.jdField_a_of_type_Boolean)
       {
-        paramNativeGridImageView.printStackTrace();
-        QLog.d("Proteus.NativeGridImageView", 1, "GridImageModel exception.");
-        label410:
-        i += 1;
+        j = 0;
+        while (j < locallth.jdField_a_of_type_JavaUtilList.size())
+        {
+          ltd.a((TTFaceOriginDataModel)locallth.jdField_a_of_type_JavaUtilList.get(j));
+          j += 1;
+        }
       }
     }
   }
   
-  public List a()
+  private ltj b(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    if (!FileUtils.exists(paramString))
+    {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "createDecorateFilter: " + paramString + " not exists");
+      return null;
+    }
+    lta locallta = new lta();
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "createDecorateFilter: create filter#" + Integer.toHexString(locallta.hashCode()));
+    locallta.a(paramString);
+    return locallta;
   }
   
-  public List b()
+  public Frame a(List<lth> paramList, long paramLong)
   {
-    return this.b;
+    a(paramList);
+    this.jdField_a_of_type_Ltg.a(paramList, paramLong);
+    paramList = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = null;
+    return paramList;
+  }
+  
+  public void a()
+  {
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "destroy: ");
+    if (this.jdField_a_of_type_Ltg != null)
+    {
+      this.jdField_a_of_type_Ltg.e();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "destroy: source#" + Integer.toHexString(this.jdField_a_of_type_Ltg.hashCode()));
+      this.jdField_a_of_type_Ltg = null;
+    }
+    if (this.jdField_a_of_type_Ltb != null)
+    {
+      this.jdField_a_of_type_Ltb.c();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "destroy: filter#" + Integer.toHexString(this.jdField_a_of_type_Ltb.hashCode()));
+      this.jdField_a_of_type_Ltb = null;
+    }
+    if (this.jdField_a_of_type_Ltj != null)
+    {
+      this.jdField_a_of_type_Ltj.c();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "destroy: filter#" + Integer.toHexString(this.jdField_a_of_type_Ltj.hashCode()));
+      this.jdField_a_of_type_Ltj = null;
+    }
+    if (this.jdField_b_of_type_Ltj != null)
+    {
+      this.jdField_b_of_type_Ltj.c();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "destroy: filter#" + Integer.toHexString(this.jdField_b_of_type_Ltj.hashCode()));
+      this.jdField_b_of_type_Ltj = null;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyMaterial: " + paramString);
+    ltj localltj = a(paramString + File.separator + "pag" + File.separator + "pag");
+    Object localObject = localltj;
+    if (localltj == null) {
+      localObject = this.jdField_a_of_type_Ltb;
+    }
+    paramString = b(paramString + File.separator + "ae");
+    this.jdField_a_of_type_Ltg.c();
+    if ((this.jdField_a_of_type_Ltj != null) && (this.jdField_a_of_type_Ltj != this.jdField_a_of_type_Ltb))
+    {
+      this.jdField_a_of_type_Ltj.a().c();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyMaterial: destroy filter#" + Integer.toHexString(this.jdField_a_of_type_Ltj.hashCode()));
+    }
+    this.jdField_a_of_type_Ltg.a((ltj)localObject);
+    this.jdField_a_of_type_Ltj = ((ltj)localObject);
+    if (this.jdField_b_of_type_Ltj != null)
+    {
+      this.jdField_b_of_type_Ltj.a().c();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyMaterial: destroy filter#" + Integer.toHexString(this.jdField_b_of_type_Ltj.hashCode()));
+    }
+    if (paramString != null) {
+      ((ltj)localObject).a(paramString, 0);
+    }
+    this.jdField_b_of_type_Ltj = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lte
  * JD-Core Version:    0.7.0.1
  */

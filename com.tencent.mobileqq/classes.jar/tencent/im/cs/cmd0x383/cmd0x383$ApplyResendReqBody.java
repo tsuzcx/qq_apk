@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x383$ApplyResendReqBody
-  extends MessageMicro
+  extends MessageMicro<ApplyResendReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_sha = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -24,7 +24,7 @@ public final class cmd0x383$ApplyResendReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x383.cmd0x383.ApplyResendReqBody
  * JD-Core Version:    0.7.0.1
  */

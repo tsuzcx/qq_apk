@@ -1,20 +1,21 @@
-import android.content.ContentValues;
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.emoticonview.EmotionPreviewLayout;
 
 public class fov
-  implements Runnable
+  extends Handler
 {
-  public fov(DataLineMsgProxy paramDataLineMsgProxy, long paramLong, String paramString) {}
+  public fov(EmotionPreviewLayout paramEmotionPreviewLayout) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_Long);
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("path", this.jdField_a_of_type_JavaLangString);
-    if (localDataLineMsgRecord != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(DataLineMsgRecord.tableName(), localContentValues, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
+    EmotionPreviewLayout.a(this.a);
+    this.a.setVisibility(8);
   }
 }
 

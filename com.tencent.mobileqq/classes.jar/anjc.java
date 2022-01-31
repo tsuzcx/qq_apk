@@ -1,19 +1,24 @@
-import dov.com.qq.im.QIMCameraCaptureUnit;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.10;
+import cooperation.wadl.ipc.WadlParams;
 
 public class anjc
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public anjc(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
+  public anjc(ArkAppDownloadModule.10 param10) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setVisibility(8);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    azqs.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "8", "", this.a.a.a, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anjc
  * JD-Core Version:    0.7.0.1
  */

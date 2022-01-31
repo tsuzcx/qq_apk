@@ -1,29 +1,31 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.biz.qrcode.ipc.ScannerParams;
+import mqq.app.AppActivity;
 
-public class yan
-  implements View.OnClickListener
+class yan
+  extends yaj
 {
-  public yan(SelectMemberActivity paramSelectMemberActivity) {}
+  yan(yam paramyam) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.f == 27)
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.i)
     {
-      this.a.a.putParcelableArrayListExtra("result_set", this.a.i);
-      ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.getWindow().peekDecorView().getWindowToken(), 0);
-      this.a.setResult(-1, this.a.a);
+      this.a.jdField_a_of_type_Yas.a();
+      return;
     }
-    this.a.finish();
+    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e)
+    {
+      this.a.jdField_a_of_type_MqqAppAppActivity.finish();
+      return;
+    }
+    this.a.jdField_a_of_type_Yas.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yan
  * JD-Core Version:    0.7.0.1
  */

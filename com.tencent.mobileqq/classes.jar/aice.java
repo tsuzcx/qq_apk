@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraExceptionHandler;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraExceptionHandler.Callback;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class aice
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public aice(CameraExceptionHandler paramCameraExceptionHandler, RuntimeException paramRuntimeException) {}
+  public aice(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, InputMethodManager paramInputMethodManager) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraExceptionHandler.a.a(this.jdField_a_of_type_JavaLangRuntimeException);
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aice
  * JD-Core Version:    0.7.0.1
  */

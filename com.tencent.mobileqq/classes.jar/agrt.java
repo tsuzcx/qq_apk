@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agrt
-  implements Runnable
+class agrt
+  implements DialogInterface.OnClickListener
 {
-  public agrt(ProfileTagView paramProfileTagView, ProfileCardInfo paramProfileCardInfo) {}
+  agrt(agrr paramagrr) {}
   
-  public void run()
-  {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.getLabelList();
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.runOnUiThread(new agru(this, localList));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrt
  * JD-Core Version:    0.7.0.1
  */

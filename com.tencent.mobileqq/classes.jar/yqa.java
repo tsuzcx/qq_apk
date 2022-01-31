@@ -1,26 +1,31 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureSoManager.Callback;
-import com.tencent.mobileqq.apollo.process.CmGameServerQIPCModule;
-import eipc.EIPCResult;
+import android.view.View;
+import com.tencent.biz.subscribe.widget.textview.FollowTextView;
 
 public class yqa
-  implements ReadInJoyCameraCaptureSoManager.Callback
+  implements bhuk
 {
-  public yqa(CmGameServerQIPCModule paramCmGameServerQIPCModule, int paramInt) {}
+  public yqa(FollowTextView paramFollowTextView, bhuf parambhuf) {}
   
-  public void a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    CmGameServerQIPCModule.b = false;
-    if (paramInt == 1)
+    if (!FollowTextView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView)) {
+      return;
+    }
+    FollowTextView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView, false);
+    switch (paramInt)
     {
-      EIPCResult localEIPCResult = EIPCResult.createResult(0, new Bundle());
-      this.jdField_a_of_type_ComTencentMobileqqApolloProcessCmGameServerQIPCModule.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.a(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yqa
  * JD-Core Version:    0.7.0.1
  */

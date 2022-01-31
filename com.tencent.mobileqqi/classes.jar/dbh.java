@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.activity.MayKnowManActivity;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class dbh
-  implements Runnable
+class dbh
+  implements View.OnLongClickListener
 {
-  public dbh(MayKnowManActivity paramMayKnowManActivity) {}
+  dbh(dbg paramdbg, long paramLong) {}
   
-  public void run()
+  public boolean onLongClick(View paramView)
   {
-    if (MayKnowManActivity.a(this.a, 10, this.a.c)) {
-      MayKnowManActivity.a(this.a);
-    }
+    DialogUtil.a(this.jdField_a_of_type_Dbg.a, 230).setTitle(this.jdField_a_of_type_Dbg.a.getString(2131562677)).setItems(2131689484, new dbi(this)).show();
+    return true;
   }
 }
 

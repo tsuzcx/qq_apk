@@ -11,7 +11,7 @@ public final class SET_BG_MUSIC_SETTING
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_MUSIC.SET_BG_MUSIC_SETTING
  * JD-Core Version:    0.7.0.1
  */

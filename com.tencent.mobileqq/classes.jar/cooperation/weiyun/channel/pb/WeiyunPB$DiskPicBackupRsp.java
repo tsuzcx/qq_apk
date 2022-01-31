@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class WeiyunPB$DiskPicBackupRsp
-  extends MessageMicro
+  extends MessageMicro<DiskPicBackupRsp>
 {
   public static final int BACKUP_PATH_FIELD_NUMBER = 17;
   public static final int CHANNEL_COUNT_FIELD_NUMBER = 30;
@@ -66,7 +66,7 @@ public final class WeiyunPB$DiskPicBackupRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.DiskPicBackupRsp
  * JD-Core Version:    0.7.0.1
  */

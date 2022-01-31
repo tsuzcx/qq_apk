@@ -1,425 +1,199 @@
 package com.tencent.tmdownloader;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.l;
 import com.tencent.tmassistantbase.util.r;
-import com.tencent.tmassistantsdk.internal.openSDK.param.jce.BatchSDKDownloadActionResponse;
-import com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCSDKDownloadInfo;
-import com.tencent.tmassistantsdk.internal.openSDK.param.jce.SubScribeSDKDownloadTaskByViaResponse;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
+import com.tencent.tmassistantsdk.internal.b.a;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 
 public class t
-  implements ITMAssistantDownloadClientListener
+  extends Handler
 {
-  protected ReferenceQueue<e> a;
-  protected ArrayList<WeakReference<e>> b;
-  private List<TMAssistantDownloadTaskInfo> c = new ArrayList();
-  private List<String> d = new ArrayList();
-  private TMAssistantDownloadClient e;
-  private Context f;
-  private String g;
+  protected static t a = null;
+  protected static HandlerThread b = null;
+  protected static boolean c = true;
+  private static long d = 0L;
   
-  public t(Context paramContext, String paramString)
+  private t(Looper paramLooper)
   {
-    r.c("TMAssistantDownloadQQGameClient", "TMAssistantDownloadQQGameClient init.......");
-    this.f = paramContext;
-    this.g = paramString;
-    if (paramContext != null) {
-      b();
-    }
-    this.a = new ReferenceQueue();
-    this.b = new ArrayList();
+    super(paramLooper);
   }
   
-  private TMAssistantDownloadTaskInfo a(String paramString)
-  {
-    if ((paramString == null) || (this.c.size() == 0)) {
-      return null;
-    }
-    Iterator localIterator = this.c.iterator();
-    while (localIterator.hasNext())
-    {
-      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = (TMAssistantDownloadTaskInfo)localIterator.next();
-      if (paramString.equals(localTMAssistantDownloadTaskInfo.mUrl)) {
-        return localTMAssistantDownloadTaskInfo;
-      }
-    }
-    return null;
-  }
-  
-  private void a(TMAssistantDownloadTaskInfo paramTMAssistantDownloadTaskInfo)
-  {
-    r.c("TMAssistantDownloadQQGameClient", "syncDownloadTaskInfo......");
-    if (paramTMAssistantDownloadTaskInfo == null) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.b.iterator();
-      while (localIterator.hasNext())
-      {
-        e locale = (e)((WeakReference)localIterator.next()).get();
-        if (locale != null) {
-          locale.a(paramTMAssistantDownloadTaskInfo);
-        }
-      }
-    }
-  }
-  
-  private void b()
-  {
-    if (this.e != null) {
-      return;
-    }
-    this.e = new TMAssistantDownloadClient(this.f, this.g);
-    if (this.e.initTMAssistantDownloadSDK())
-    {
-      r.c("TMAssistantDownloadQQGameClient", "TMAssistantDownloadQQGameClient registerDownloadTaskListener......." + this.e);
-      this.e.registerDownloadTaskListener(this);
-      return;
-    }
-    this.e = null;
-  }
-  
-  private void b(TMAssistantDownloadTaskInfo paramTMAssistantDownloadTaskInfo)
-  {
-    if (paramTMAssistantDownloadTaskInfo == null) {}
-    while ((paramTMAssistantDownloadTaskInfo.mState != 4) || (TextUtils.isEmpty(paramTMAssistantDownloadTaskInfo.mSavePath))) {
-      return;
-    }
-    Intent localIntent = new Intent("android.intent.action.VIEW");
-    localIntent.setDataAndType(Uri.parse("file://" + paramTMAssistantDownloadTaskInfo.mSavePath), "application/vnd.android.package-archive");
-    localIntent.setFlags(268435456);
-    this.f.startActivity(localIntent);
-  }
-  
-  private boolean b(String paramString)
+  public static t a()
   {
     try
     {
-      Intent localIntent2 = this.f.getPackageManager().getLaunchIntentForPackage(paramString);
-      Intent localIntent1 = localIntent2;
-      if (localIntent2 == null)
+      if ((a == null) || (!c))
       {
-        localIntent1 = localIntent2;
-        if (this.f.getPackageManager().getPackageInfo(paramString, 1) != null) {
-          localIntent1 = new Intent(paramString);
-        }
+        ab.c("TMAssistantDownloadMessageThread", "recreate mMessagehandlerThread!");
+        b = new HandlerThread(l.b.name());
+        b.start();
+        c = true;
+        a = new t(b.getLooper());
+        a.sendEmptyMessageDelayed(5, 30000L);
       }
-      if (localIntent1 != null)
-      {
-        localIntent1.setFlags(268435456);
-        this.f.startActivity(localIntent1);
-        return true;
-      }
+      d = System.currentTimeMillis();
+      t localt = a;
+      return localt;
     }
-    catch (Exception paramString) {}
-    return false;
+    finally {}
   }
   
-  private void c(List<TMAssistantDownloadTaskInfo> paramList)
+  public void a(TMAssistantDownloadClient paramTMAssistantDownloadClient, ITMAssistantDownloadClientListener paramITMAssistantDownloadClientListener)
   {
-    if (paramList == null) {}
-    for (;;)
-    {
+    if ((paramITMAssistantDownloadClientListener == null) || (paramTMAssistantDownloadClient == null)) {
       return;
-      Iterator localIterator = this.b.iterator();
-      while (localIterator.hasNext())
-      {
-        e locale = (e)((WeakReference)localIterator.next()).get();
-        if (locale != null) {
-          locale.a(this.d, paramList);
-        }
-      }
+    }
+    Message localMessage = a().obtainMessage();
+    localMessage.what = 3;
+    localMessage.obj = new r(paramTMAssistantDownloadClient, paramITMAssistantDownloadClientListener);
+    localMessage.sendToTarget();
+  }
+  
+  public void a(TMAssistantDownloadClient paramTMAssistantDownloadClient, ITMAssistantDownloadClientListener paramITMAssistantDownloadClientListener, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if ((paramITMAssistantDownloadClientListener == null) || (paramTMAssistantDownloadClient == null)) {
+      return;
+    }
+    Message localMessage = a().obtainMessage();
+    localMessage.what = 1;
+    localMessage.obj = new r(paramTMAssistantDownloadClient, paramITMAssistantDownloadClientListener);
+    paramTMAssistantDownloadClient = new Bundle();
+    paramTMAssistantDownloadClient.putString("url", paramString1);
+    paramTMAssistantDownloadClient.putInt("state", paramInt1);
+    paramTMAssistantDownloadClient.putInt("errorCode", paramInt2);
+    paramTMAssistantDownloadClient.putString("errorMsg", paramString2);
+    localMessage.setData(paramTMAssistantDownloadClient);
+    localMessage.sendToTarget();
+  }
+  
+  public void a(TMAssistantDownloadClient paramTMAssistantDownloadClient, ITMAssistantDownloadClientListener paramITMAssistantDownloadClientListener, String paramString, long paramLong1, long paramLong2)
+  {
+    if ((paramITMAssistantDownloadClientListener == null) || (paramTMAssistantDownloadClient == null))
+    {
+      ab.c("TMAssistantDownloadSDKMessageThread", "listenr:" + paramITMAssistantDownloadClientListener + " === sdkClient" + paramTMAssistantDownloadClient);
+      return;
+    }
+    Message localMessage = a().obtainMessage();
+    localMessage.what = 2;
+    localMessage.obj = new r(paramTMAssistantDownloadClient, paramITMAssistantDownloadClientListener);
+    paramTMAssistantDownloadClient = new Bundle();
+    paramTMAssistantDownloadClient.putString("url", paramString);
+    paramTMAssistantDownloadClient.putLong("receiveDataLen", paramLong1);
+    paramTMAssistantDownloadClient.putLong("totalDataLen", paramLong2);
+    localMessage.setData(paramTMAssistantDownloadClient);
+    localMessage.sendToTarget();
+  }
+  
+  public void a(byte[] paramArrayOfByte, ArrayList<a> paramArrayList)
+  {
+    if ((paramArrayOfByte != null) && (paramArrayList != null))
+    {
+      Message localMessage = a().obtainMessage();
+      localMessage.what = 4;
+      localMessage.obj = new r(paramArrayOfByte, paramArrayList);
+      localMessage.sendToTarget();
     }
   }
   
-  public List<TMAssistantDownloadTaskInfo> a(List<String> paramList)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramList == null) {}
-    for (;;)
-    {
-      try
-      {
-        paramList = this.c;
-        return paramList;
-      }
-      finally {}
-      this.d.clear();
-      this.d.addAll(paramList);
-      this.c.clear();
-      paramList = this.d.iterator();
-      if (paramList.hasNext())
-      {
-        Object localObject = (String)paramList.next();
-        localObject = this.e.getDownloadTaskInfosByVia((String)localObject);
-        if (localObject != null) {
-          this.c.addAll((Collection)localObject);
-        }
-      }
-      else
-      {
-        c(this.c);
-        paramList = this.c;
-      }
+    super.handleMessage(paramMessage);
+    if (paramMessage.what != 5) {
+      removeMessages(5);
     }
-  }
-  
-  public void a()
-  {
-    if (this.e != null)
+    switch (paramMessage.what)
     {
-      this.e.unInitTMAssistantDownloadSDK();
-      this.e = null;
-    }
-  }
-  
-  public void a(BatchSDKDownloadActionResponse paramBatchSDKDownloadActionResponse)
-  {
-    for (;;)
-    {
-      try
+    default: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+      Object localObject2;
+      do
       {
-        if (this.e == null) {
-          b();
-        }
-        r.c("TMAssistantDownloadQQGameClient", "batchDownloadTaskAction downloadClient:" + this.e);
-        if (paramBatchSDKDownloadActionResponse == null) {
+        for (;;)
+        {
+          sendEmptyMessageDelayed(5, 30000L);
           return;
-        }
-        switch (paramBatchSDKDownloadActionResponse.batchRequestType)
-        {
-        case 2: 
-          r.c("TMAssistantDownloadQQGameClient", "batchDownloadTaskAction undo anythings......");
-          continue;
-          paramBatchSDKDownloadActionResponse = paramBatchSDKDownloadActionResponse.batchData.iterator();
-        }
-      }
-      finally {}
-      IPCSDKDownloadInfo localIPCSDKDownloadInfo;
-      while (paramBatchSDKDownloadActionResponse.hasNext())
-      {
-        localIPCSDKDownloadInfo = (IPCSDKDownloadInfo)paramBatchSDKDownloadActionResponse.next();
-        r.c("TMAssistantDownloadQQGameClient", "batchDownloadTaskAction PAUSE url:" + localIPCSDKDownloadInfo.url);
-        this.e.pauseDownloadTask(localIPCSDKDownloadInfo.url);
-      }
-      continue;
-      paramBatchSDKDownloadActionResponse = paramBatchSDKDownloadActionResponse.batchData.iterator();
-      while (paramBatchSDKDownloadActionResponse.hasNext())
-      {
-        localIPCSDKDownloadInfo = (IPCSDKDownloadInfo)paramBatchSDKDownloadActionResponse.next();
-        r.c("TMAssistantDownloadQQGameClient", "batchDownloadTaskAction start url:" + localIPCSDKDownloadInfo.url);
-        HashMap localHashMap = new HashMap();
-        this.e.startDownloadTask(localIPCSDKDownloadInfo.url, "application/vnd.android.package-archive", localHashMap);
-      }
-      continue;
-      paramBatchSDKDownloadActionResponse = paramBatchSDKDownloadActionResponse.batchData.iterator();
-      while (paramBatchSDKDownloadActionResponse.hasNext())
-      {
-        localIPCSDKDownloadInfo = (IPCSDKDownloadInfo)paramBatchSDKDownloadActionResponse.next();
-        r.c("TMAssistantDownloadQQGameClient", "batchDownloadTaskAction cancel url:" + localIPCSDKDownloadInfo.url);
-        this.e.cancelDownloadTask(localIPCSDKDownloadInfo.url);
-      }
-      continue;
-      paramBatchSDKDownloadActionResponse = paramBatchSDKDownloadActionResponse.batchData.iterator();
-      while (paramBatchSDKDownloadActionResponse.hasNext())
-      {
-        localIPCSDKDownloadInfo = (IPCSDKDownloadInfo)paramBatchSDKDownloadActionResponse.next();
-        r.c("TMAssistantDownloadQQGameClient", "batchDownloadTaskAction delete url:" + localIPCSDKDownloadInfo.url);
-        this.e.deleteDownloadTask(localIPCSDKDownloadInfo.url);
-      }
-      continue;
-      paramBatchSDKDownloadActionResponse = paramBatchSDKDownloadActionResponse.batchData.iterator();
-      while (paramBatchSDKDownloadActionResponse.hasNext())
-      {
-        localIPCSDKDownloadInfo = (IPCSDKDownloadInfo)paramBatchSDKDownloadActionResponse.next();
-        r.c("TMAssistantDownloadQQGameClient", "batchDownloadTaskAction install package:" + localIPCSDKDownloadInfo.packageName);
-        b(this.e.getDownloadTaskState(localIPCSDKDownloadInfo.url));
-      }
-      continue;
-      paramBatchSDKDownloadActionResponse = paramBatchSDKDownloadActionResponse.batchData.iterator();
-      while (paramBatchSDKDownloadActionResponse.hasNext())
-      {
-        localIPCSDKDownloadInfo = (IPCSDKDownloadInfo)paramBatchSDKDownloadActionResponse.next();
-        r.c("TMAssistantDownloadQQGameClient", "batchDownloadTaskAction open package:" + localIPCSDKDownloadInfo.packageName);
-        if (!TextUtils.isEmpty(localIPCSDKDownloadInfo.packageName)) {
-          b(localIPCSDKDownloadInfo.packageName);
-        }
-      }
-    }
-  }
-  
-  public void a(SubScribeSDKDownloadTaskByViaResponse paramSubScribeSDKDownloadTaskByViaResponse)
-  {
-    if (this.e == null) {
-      b();
-    }
-    if (paramSubScribeSDKDownloadTaskByViaResponse.subscribeType == 1)
-    {
-      a(paramSubScribeSDKDownloadTaskByViaResponse.viaList);
-      return;
-    }
-    b(paramSubScribeSDKDownloadTaskByViaResponse.viaList);
-  }
-  
-  public boolean a(e parame)
-  {
-    for (;;)
-    {
-      Object localObject;
-      try
-      {
-        r.c("TMAssistantDownloadQQGameClient", "enter");
-        if (parame == null)
-        {
-          r.c("TMAssistantDownloadQQGameClient", "listener == null");
-          r.c("TMAssistantDownloadQQGameClient", "returnValue: false");
-          r.c("TMAssistantDownloadQQGameClient", "exit");
-          bool = false;
-          return bool;
-        }
-        localObject = this.a.poll();
-        if (localObject != null)
-        {
-          r.c("TMAssistantDownloadQQGameClient", "registerDownloadTaskListener removed listener!!!!");
-          this.b.remove(localObject);
-          continue;
-        }
-        localObject = this.b.iterator();
-      }
-      finally {}
-      for (;;)
-      {
-        if (((Iterator)localObject).hasNext()) {
-          if ((e)((WeakReference)((Iterator)localObject).next()).get() == parame)
+          ab.c("TMAssistantDownloadMessageThread", "<handleMessage> received postTaskStateChangedMessage signal");
+          localObject2 = (r)paramMessage.obj;
+          localObject1 = (TMAssistantDownloadClient)((r)localObject2).a;
+          localObject2 = (ITMAssistantDownloadClientListener)((r)localObject2).b;
+          Object localObject3 = paramMessage.getData();
+          paramMessage = ((Bundle)localObject3).getString("url");
+          int i = ((Bundle)localObject3).getInt("state");
+          int j = ((Bundle)localObject3).getInt("errorCode");
+          localObject3 = ((Bundle)localObject3).getString("errorMsg");
+          if (localObject2 != null)
           {
-            r.c("TMAssistantDownloadQQGameClient", "returnValue: true");
-            r.c("TMAssistantDownloadQQGameClient", "exit");
-            bool = true;
-            break;
+            ((ITMAssistantDownloadClientListener)localObject2).onDownloadSDKTaskStateChanged((TMAssistantDownloadClient)localObject1, paramMessage, i, j, (String)localObject3);
+            continue;
+            ab.c("TMAssistantDownloadMessageThread", "<handleMessage> received postTaskProgressChangedMessage signal");
+            localObject2 = (r)paramMessage.obj;
+            localObject1 = (TMAssistantDownloadClient)((r)localObject2).a;
+            localObject2 = (ITMAssistantDownloadClientListener)((r)localObject2).b;
+            paramMessage = paramMessage.getData();
+            localObject3 = paramMessage.getString("url");
+            l1 = paramMessage.getLong("receiveDataLen");
+            long l2 = paramMessage.getLong("totalDataLen");
+            if (localObject2 != null)
+            {
+              ((ITMAssistantDownloadClientListener)localObject2).onDownloadSDKTaskProgressChanged((TMAssistantDownloadClient)localObject1, (String)localObject3, l1, l2);
+              continue;
+              ab.c("TMAssistantDownloadMessageThread", "<handleMessage> received postSDKServiceInvalidMessage signal");
+              localObject1 = (r)paramMessage.obj;
+              paramMessage = (TMAssistantDownloadClient)((r)localObject1).a;
+              localObject1 = (ITMAssistantDownloadClientListener)((r)localObject1).b;
+              if (localObject1 != null) {
+                ((ITMAssistantDownloadClientListener)localObject1).onDwonloadSDKServiceInvalid(paramMessage);
+              }
+            }
           }
         }
+        ab.c("TMAssistantDownloadMessageThread", "<handleMessage> received postActionResult signal");
+        localObject1 = (r)paramMessage.obj;
+        paramMessage = (byte[])((r)localObject1).a;
+        localObject1 = (ArrayList)((r)localObject1).b;
+      } while (localObject1 == null);
+      Object localObject1 = ((ArrayList)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (a)((Iterator)localObject1).next();
+        if (localObject2 != null) {
+          ((a)localObject2).a(paramMessage);
+        }
       }
-      parame = new WeakReference(parame, this.a);
-      this.b.add(parame);
-      r.c("TMAssistantDownloadQQGameClient", "returnValue: true");
-      r.c("TMAssistantDownloadQQGameClient", "exit");
-      boolean bool = true;
     }
-  }
-  
-  public void b(List<String> paramList)
-  {
-    if (paramList != null) {}
+    ab.c("TMAssistantDownloadMessageThread", "<handleMessage> dealing exit signal");
+    long l1 = System.currentTimeMillis();
     for (;;)
     {
       try
       {
-        int i = paramList.size();
-        if (i == 0) {
+        if (l1 - d < 15000.0D)
+        {
+          ab.c("TMAssistantDownloadMessageThread", "<handleMessage> exe THREAD_EXIT signal time is too close with sGetInstanceTimeStamp, continue wait 0.5 * DELAY_TIME");
+          sendEmptyMessageDelayed(5, 15000L);
           return;
-        }
-        this.d.removeAll(paramList);
-        ArrayList localArrayList = new ArrayList();
-        Iterator localIterator = this.c.iterator();
-        if (localIterator.hasNext())
-        {
-          TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = (TMAssistantDownloadTaskInfo)localIterator.next();
-          if (paramList.contains(localTMAssistantDownloadTaskInfo.mVia)) {
-            localArrayList.add(localTMAssistantDownloadTaskInfo);
-          }
-        }
-        else
-        {
-          this.c.removeAll(localArrayList);
         }
       }
       finally {}
-    }
-  }
-  
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
-  {
-    r.c("jimluo", "OnDownloadSDKTaskProgressChanged......");
-    paramTMAssistantDownloadClient = a(paramString);
-    if (paramTMAssistantDownloadClient != null)
-    {
-      r.c("jimluo", "OnDownloadSDKTaskProgressChanged taskInfo is null......");
-      paramTMAssistantDownloadClient.mReceiveDataLen = paramLong1;
-      paramTMAssistantDownloadClient.mTotalDataLen = paramLong2;
-      a(paramTMAssistantDownloadClient);
-    }
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramTMAssistantDownloadClient = this.e.getDownloadTaskState(paramString);
-        if (paramTMAssistantDownloadClient != null)
-        {
-          a(paramTMAssistantDownloadClient);
-          return;
-        }
-      }
-      catch (Exception paramTMAssistantDownloadClient)
-      {
-        paramTMAssistantDownloadClient.printStackTrace();
-      }
-    }
-  }
-  
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    r.c("TMAssistantDownloadQQGameClient", "OnDownloadSDKTaskStateChanged......");
-    paramTMAssistantDownloadClient = a(paramString1);
-    if (paramTMAssistantDownloadClient != null)
-    {
-      paramTMAssistantDownloadClient.mState = paramInt1;
-      a(paramTMAssistantDownloadClient);
-    }
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramTMAssistantDownloadClient = this.e.getDownloadTaskState(paramString1);
-        if (paramTMAssistantDownloadClient != null)
-        {
-          a(paramTMAssistantDownloadClient);
-          return;
-        }
-      }
-      catch (Exception paramTMAssistantDownloadClient)
-      {
-        paramTMAssistantDownloadClient.printStackTrace();
-      }
-    }
-  }
-  
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
-  {
-    paramTMAssistantDownloadClient = this.b.iterator();
-    while (paramTMAssistantDownloadClient.hasNext())
-    {
-      e locale = (e)((WeakReference)paramTMAssistantDownloadClient.next()).get();
-      if (locale != null) {
-        locale.a();
-      }
+      c = false;
+      b.quit();
+      ab.c("TMAssistantDownloadMessageThread", "<handleMessage> Message Thread exited!!");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmdownloader.t
  * JD-Core Version:    0.7.0.1
  */

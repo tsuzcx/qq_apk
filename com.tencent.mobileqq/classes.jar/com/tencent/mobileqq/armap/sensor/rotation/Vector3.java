@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.armap.sensor.rotation;
 
+import antr;
 import java.io.Serializable;
 
 public class Vector3
@@ -102,19 +103,19 @@ public class Vector3
         return false;
       }
       paramObject = (Vector3)paramObject;
-      if (NumberUtils.a(this.x) != NumberUtils.a(paramObject.x)) {
+      if (antr.a(this.x) != antr.a(paramObject.x)) {
         return false;
       }
-      if (NumberUtils.a(this.y) != NumberUtils.a(paramObject.y)) {
+      if (antr.a(this.y) != antr.a(paramObject.y)) {
         return false;
       }
-    } while (NumberUtils.a(this.z) == NumberUtils.a(paramObject.z));
+    } while (antr.a(this.z) == antr.a(paramObject.z));
     return false;
   }
   
   public int hashCode()
   {
-    return ((NumberUtils.a(this.x) + 31) * 31 + NumberUtils.a(this.y)) * 31 + NumberUtils.a(this.z);
+    return ((antr.a(this.x) + 31) * 31 + antr.a(this.y)) * 31 + antr.a(this.z);
   }
   
   public boolean isUnit()
@@ -276,7 +277,7 @@ public class Vector3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.rotation.Vector3
  * JD-Core Version:    0.7.0.1
  */

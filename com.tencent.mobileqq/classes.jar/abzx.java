@@ -1,35 +1,33 @@
-import com.tencent.mobileqq.app.FavEmoRoamingObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
-import java.util.List;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class abzx
-  extends FavEmoRoamingObserver
+class abzx
+  implements View.OnClickListener
 {
-  public abzx(FavroamingManager paramFavroamingManager) {}
+  abzx(abzw paramabzw, View.OnClickListener paramOnClickListener) {}
   
-  public void a(List paramList)
+  public void onClick(View paramView)
   {
-    if (this.a.a == null) {
+    if (!bdin.d(abzw.a(this.jdField_a_of_type_Abzw)))
+    {
+      QQToast.a(abzw.a(this.jdField_a_of_type_Abzw), abzw.a(this.jdField_a_of_type_Abzw).getString(2131694766), 0).a();
       return;
     }
-    this.a.a.removeObserver(FavroamingManager.a(this.a));
-    ThreadManager.post(new abzy(this, paramList), 5, null, true);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.a.a == null) {}
-    while (!paramBoolean) {
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null)
+    {
+      QLog.e("SdkAuthDialog", 1, "positiveListener is null");
       return;
     }
-    this.a.a();
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    azqs.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "0", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzx
  * JD-Core Version:    0.7.0.1
  */

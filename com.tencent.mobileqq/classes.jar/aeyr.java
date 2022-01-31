@@ -1,26 +1,39 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-import mqq.os.MqqHandler;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class aeyr
-  implements TVK_IMediaPlayer.OnCompletionListener
+  implements TextWatcher
 {
-  public aeyr(VideoViewTVKImpl paramVideoViewTVKImpl) {}
+  public aeyr(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoViewTVKImpl", 2, "onCompletion() called with: tvk_iMediaPlayer = [" + paramTVK_IMediaPlayer + "]");
+    if (VoiceTextEditPanel.a(this.a).get() == 5)
+    {
+      VoiceTextEditPanel.a(this.a, paramEditable.toString());
+      if (!bdnn.a(VoiceTextEditPanel.a(this.a))) {
+        break label55;
+      }
+      this.a.setSendEnable(false);
     }
-    ThreadManager.getUIHandler().post(new aeys(this));
+    for (;;)
+    {
+      this.a.c();
+      return;
+      label55:
+      this.a.setSendEnable(true);
+    }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeyr
  * JD-Core Version:    0.7.0.1
  */

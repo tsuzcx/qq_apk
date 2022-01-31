@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class RecommendDeviceLock
-  extends MessageMicro
+  extends MessageMicro<RecommendDeviceLock>
 {
   public static final int CANCANCEL_FIELD_NUMBER = 1;
   public static final int STR_SECOND_TITLE_FIELD_NUMBER = 4;
@@ -21,7 +21,7 @@ public final class RecommendDeviceLock
   public final PBStringField str_second_title = PBField.initString("");
   public final PBStringField str_third_title = PBField.initString("");
   public final PBStringField str_title = PBField.initString("");
-  public final PBRepeatField str_wording_list = PBField.initRepeat(PBStringField.__repeatHelper__);
+  public final PBRepeatField<String> str_wording_list = PBField.initRepeat(PBStringField.__repeatHelper__);
   public final PBStringField wording = PBField.initString("");
 }
 

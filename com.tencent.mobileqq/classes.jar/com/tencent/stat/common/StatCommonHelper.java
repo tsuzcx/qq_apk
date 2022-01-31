@@ -16,9 +16,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.content.pm.Signature;
-import android.hardware.Camera;
-import android.hardware.Camera.Parameters;
-import android.hardware.Camera.Size;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.net.ConnectivityManager;
@@ -44,7 +41,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
@@ -226,7 +222,6 @@ public class StatCommonHelper
   }
   
   public static byte[] deocdeGZipContent(byte[] paramArrayOfByte)
-    throws IOException
   {
     ByteArrayInputStream localByteArrayInputStream = new ByteArrayInputStream(paramArrayOfByte);
     GZIPInputStream localGZIPInputStream = new GZIPInputStream(localByteArrayInputStream);
@@ -404,49 +399,6 @@ public class StatCommonHelper
   {
     if (isStringValid(x)) {
       return x;
-    }
-    Object localObject4 = null;
-    Object localObject5 = null;
-    Object localObject3 = null;
-    localObject2 = localObject4;
-    localObject1 = localObject5;
-    try
-    {
-      if (Util.checkPermission(paramContext, "android.permission.CAMERA"))
-      {
-        localObject2 = localObject4;
-        localObject1 = localObject5;
-        paramContext = Camera.open();
-        localObject3 = paramContext;
-        if (paramContext != null)
-        {
-          localObject2 = paramContext;
-          localObject1 = paramContext;
-          localObject3 = (Camera.Size)paramContext.getParameters().getSupportedPictureSizes().get(0);
-          localObject2 = paramContext;
-          localObject1 = paramContext;
-          x = ((Camera.Size)localObject3).width + "*" + ((Camera.Size)localObject3).height;
-          localObject3 = paramContext;
-        }
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
-      {
-        localObject1 = localObject2;
-        k.w("getCameras failed, " + paramContext.toString());
-        if (localObject2 != null) {
-          ((Camera)localObject2).release();
-        }
-      }
-    }
-    finally
-    {
-      if (localObject1 == null) {
-        break label177;
-      }
-      ((Camera)localObject1).release();
     }
     return x;
   }
@@ -669,35 +621,35 @@ public class StatCommonHelper
   {
     // Byte code:
     //   0: aload_0
-    //   1: ldc_w 718
-    //   4: invokestatic 456	com/tencent/stat/common/Util:checkPermission	(Landroid/content/Context;Ljava/lang/String;)Z
+    //   1: ldc_w 680
+    //   4: invokestatic 633	com/tencent/stat/common/Util:checkPermission	(Landroid/content/Context;Ljava/lang/String;)Z
     //   7: ifeq +85 -> 92
     //   10: getstatic 62	com/tencent/stat/common/StatCommonHelper:k	Lcom/tencent/stat/common/StatLogger;
-    //   13: ldc_w 719
-    //   16: invokevirtual 721	com/tencent/stat/common/StatLogger:e	(Ljava/lang/Object;)V
+    //   13: ldc_w 681
+    //   16: invokevirtual 683	com/tencent/stat/common/StatLogger:e	(Ljava/lang/Object;)V
     //   19: aload_0
-    //   20: ldc_w 723
+    //   20: ldc_w 685
     //   23: invokevirtual 116	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   26: checkcast 725	android/location/LocationManager
+    //   26: checkcast 687	android/location/LocationManager
     //   29: astore_0
     //   30: aload_0
-    //   31: ldc_w 727
-    //   34: invokevirtual 730	android/location/LocationManager:isProviderEnabled	(Ljava/lang/String;)Z
+    //   31: ldc_w 689
+    //   34: invokevirtual 692	android/location/LocationManager:isProviderEnabled	(Ljava/lang/String;)Z
     //   37: ifeq +55 -> 92
     //   40: aload_0
-    //   41: ldc_w 727
-    //   44: invokevirtual 734	android/location/LocationManager:getLastKnownLocation	(Ljava/lang/String;)Landroid/location/Location;
+    //   41: ldc_w 689
+    //   44: invokevirtual 696	android/location/LocationManager:getLastKnownLocation	(Ljava/lang/String;)Landroid/location/Location;
     //   47: astore_0
     //   48: getstatic 62	com/tencent/stat/common/StatCommonHelper:k	Lcom/tencent/stat/common/StatLogger;
     //   51: new 259	java/lang/StringBuilder
     //   54: dup
     //   55: invokespecial 260	java/lang/StringBuilder:<init>	()V
-    //   58: ldc_w 736
+    //   58: ldc_w 698
     //   61: invokevirtual 266	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   64: aload_0
-    //   65: invokevirtual 739	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   65: invokevirtual 701	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   68: invokevirtual 269	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   71: invokevirtual 721	com/tencent/stat/common/StatLogger:e	(Ljava/lang/Object;)V
+    //   71: invokevirtual 683	com/tencent/stat/common/StatLogger:e	(Ljava/lang/Object;)V
     //   74: aload_0
     //   75: areturn
     //   76: astore_1
@@ -705,7 +657,7 @@ public class StatCommonHelper
     //   78: astore_0
     //   79: getstatic 62	com/tencent/stat/common/StatCommonHelper:k	Lcom/tencent/stat/common/StatLogger;
     //   82: aload_1
-    //   83: invokevirtual 360	com/tencent/stat/common/StatLogger:e	(Ljava/lang/Throwable;)V
+    //   83: invokevirtual 357	com/tencent/stat/common/StatLogger:e	(Ljava/lang/Throwable;)V
     //   86: aload_0
     //   87: areturn
     //   88: astore_1
@@ -893,39 +845,39 @@ public class StatCommonHelper
   {
     // Byte code:
     //   0: aload_0
-    //   1: ldc_w 849
-    //   4: invokestatic 456	com/tencent/stat/common/Util:checkPermission	(Landroid/content/Context;Ljava/lang/String;)Z
+    //   1: ldc_w 813
+    //   4: invokestatic 633	com/tencent/stat/common/Util:checkPermission	(Landroid/content/Context;Ljava/lang/String;)Z
     //   7: ifne +13 -> 20
     //   10: aload_0
-    //   11: ldc_w 718
-    //   14: invokestatic 456	com/tencent/stat/common/Util:checkPermission	(Landroid/content/Context;Ljava/lang/String;)Z
+    //   11: ldc_w 680
+    //   14: invokestatic 633	com/tencent/stat/common/Util:checkPermission	(Landroid/content/Context;Ljava/lang/String;)Z
     //   17: ifeq +90 -> 107
     //   20: getstatic 62	com/tencent/stat/common/StatCommonHelper:k	Lcom/tencent/stat/common/StatLogger;
-    //   23: ldc_w 850
-    //   26: invokevirtual 721	com/tencent/stat/common/StatLogger:e	(Ljava/lang/Object;)V
+    //   23: ldc_w 814
+    //   26: invokevirtual 683	com/tencent/stat/common/StatLogger:e	(Ljava/lang/Object;)V
     //   29: aload_0
-    //   30: ldc_w 723
+    //   30: ldc_w 685
     //   33: invokevirtual 116	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   36: checkcast 725	android/location/LocationManager
+    //   36: checkcast 687	android/location/LocationManager
     //   39: astore_0
     //   40: aload_0
-    //   41: ldc_w 852
-    //   44: invokevirtual 730	android/location/LocationManager:isProviderEnabled	(Ljava/lang/String;)Z
+    //   41: ldc_w 816
+    //   44: invokevirtual 692	android/location/LocationManager:isProviderEnabled	(Ljava/lang/String;)Z
     //   47: ifeq +55 -> 102
     //   50: aload_0
-    //   51: ldc_w 852
-    //   54: invokevirtual 734	android/location/LocationManager:getLastKnownLocation	(Ljava/lang/String;)Landroid/location/Location;
+    //   51: ldc_w 816
+    //   54: invokevirtual 696	android/location/LocationManager:getLastKnownLocation	(Ljava/lang/String;)Landroid/location/Location;
     //   57: astore_0
     //   58: getstatic 62	com/tencent/stat/common/StatCommonHelper:k	Lcom/tencent/stat/common/StatLogger;
     //   61: new 259	java/lang/StringBuilder
     //   64: dup
     //   65: invokespecial 260	java/lang/StringBuilder:<init>	()V
-    //   68: ldc_w 854
+    //   68: ldc_w 818
     //   71: invokevirtual 266	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   74: aload_0
-    //   75: invokevirtual 739	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   75: invokevirtual 701	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   78: invokevirtual 269	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   81: invokevirtual 721	com/tencent/stat/common/StatLogger:e	(Ljava/lang/Object;)V
+    //   81: invokevirtual 683	com/tencent/stat/common/StatLogger:e	(Ljava/lang/Object;)V
     //   84: aload_0
     //   85: areturn
     //   86: astore_1
@@ -933,7 +885,7 @@ public class StatCommonHelper
     //   88: astore_0
     //   89: getstatic 62	com/tencent/stat/common/StatCommonHelper:k	Lcom/tencent/stat/common/StatLogger;
     //   92: aload_1
-    //   93: invokevirtual 360	com/tencent/stat/common/StatLogger:e	(Ljava/lang/Throwable;)V
+    //   93: invokevirtual 357	com/tencent/stat/common/StatLogger:e	(Ljava/lang/Throwable;)V
     //   96: aload_0
     //   97: areturn
     //   98: astore_1
@@ -1163,8 +1115,8 @@ public class StatCommonHelper
     //   3: getstatic 40	com/tencent/stat/common/StatCommonHelper:a	Ljava/lang/String;
     //   6: ifnull +24 -> 30
     //   9: getstatic 40	com/tencent/stat/common/StatCommonHelper:a	Ljava/lang/String;
-    //   12: invokevirtual 786	java/lang/String:trim	()Ljava/lang/String;
-    //   15: invokevirtual 430	java/lang/String:length	()I
+    //   12: invokevirtual 748	java/lang/String:trim	()Ljava/lang/String;
+    //   15: invokevirtual 427	java/lang/String:length	()I
     //   18: ifeq +12 -> 30
     //   21: getstatic 40	com/tencent/stat/common/StatCommonHelper:a	Ljava/lang/String;
     //   24: astore_0
@@ -1173,18 +1125,18 @@ public class StatCommonHelper
     //   28: aload_0
     //   29: areturn
     //   30: aload_0
-    //   31: invokestatic 949	com/tencent/stat/common/Util:getDeviceID	(Landroid/content/Context;)Ljava/lang/String;
+    //   31: invokestatic 913	com/tencent/stat/common/Util:getDeviceID	(Landroid/content/Context;)Ljava/lang/String;
     //   34: putstatic 40	com/tencent/stat/common/StatCommonHelper:a	Ljava/lang/String;
     //   37: getstatic 40	com/tencent/stat/common/StatCommonHelper:a	Ljava/lang/String;
     //   40: ifnull +15 -> 55
     //   43: getstatic 40	com/tencent/stat/common/StatCommonHelper:a	Ljava/lang/String;
-    //   46: invokevirtual 786	java/lang/String:trim	()Ljava/lang/String;
-    //   49: invokevirtual 430	java/lang/String:length	()I
+    //   46: invokevirtual 748	java/lang/String:trim	()Ljava/lang/String;
+    //   49: invokevirtual 427	java/lang/String:length	()I
     //   52: ifne +18 -> 70
-    //   55: invokestatic 865	com/tencent/stat/common/StatCommonHelper:b	()Ljava/util/Random;
-    //   58: ldc_w 866
-    //   61: invokevirtual 869	java/util/Random:nextInt	(I)I
-    //   64: invokestatic 951	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   55: invokestatic 829	com/tencent/stat/common/StatCommonHelper:b	()Ljava/util/Random;
+    //   58: ldc_w 830
+    //   61: invokevirtual 833	java/util/Random:nextInt	(I)I
+    //   64: invokestatic 915	java/lang/Integer:toString	(I)Ljava/lang/String;
     //   67: putstatic 40	com/tencent/stat/common/StatCommonHelper:a	Ljava/lang/String;
     //   70: getstatic 40	com/tencent/stat/common/StatCommonHelper:a	Ljava/lang/String;
     //   73: astore_0
@@ -1322,7 +1274,7 @@ public class StatCommonHelper
     //   17: iload_1
     //   18: ireturn
     //   19: aload_0
-    //   20: invokestatic 991	com/tencent/stat/common/StatCommonHelper:checkFirstTimeActivate	(Landroid/content/Context;)V
+    //   20: invokestatic 955	com/tencent/stat/common/StatCommonHelper:checkFirstTimeActivate	(Landroid/content/Context;)V
     //   23: getstatic 86	com/tencent/stat/common/StatCommonHelper:u	I
     //   26: istore_1
     //   27: goto -13 -> 14

@@ -1,28 +1,32 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class vjx
-  extends Handler
+class vjx
+  extends vik
 {
-  boolean jdField_a_of_type_Boolean = true;
-  
-  public vjx(TroopGiftMsgItemBuilder paramTroopGiftMsgItemBuilder) {}
-  
-  public void handleMessage(Message paramMessage)
+  vjx(vji paramvji, StoryVideoItem paramStoryVideoItem, vkq paramvkq)
   {
-    if (paramMessage.what == TroopGiftMsgItemBuilder.a()) {}
-    for (;;)
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    String str = (String)a("result");
+    xqq.a(str);
+    xqq.a(this.jdField_a_of_type_Vkq.d);
+    if (this.jdField_a_of_type_Vkq.d == null)
     {
-      super.handleMessage(paramMessage);
-      return;
-      if (paramMessage.what != TroopGiftMsgItemBuilder.b()) {}
+      this.jdField_a_of_type_Vkq.d = "";
+      wxe.c(this.b, "imageLocalPath is null", new Throwable());
     }
+    a("DownloadPic2FileJob_iiu", str);
+    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_Vkq.d);
+    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_Vkq.a));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vjx
  * JD-Core Version:    0.7.0.1
  */

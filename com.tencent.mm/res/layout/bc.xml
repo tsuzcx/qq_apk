@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@drawable/pc" android:layout_width="fill_parent" android:layout_height="@dimen/m0" android:baselineAligned="false" android:minHeight="@dimen/m0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center_vertical" android:layout_width="@dimen/lv" android:layout_height="@dimen/lv" android:layout_marginLeft="@dimen/n_" android:layout_marginRight="@dimen/ne">
+        <com.tencent.mm.ui.MMImageView android:id="@id/oz" android:layout_width="@dimen/lt" android:layout_height="@dimen/lt" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="@dimen/n_">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-1.5dip">
+            <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:ellipsize="end" android:id="@id/p0" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ln" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/ko" android:textColor="@color/t9" android:ellipsize="end" android:gravity="center|right" android:id="@id/p1" android:layout_width="110.0dip" android:layout_height="wrap_content" style="@style/ll" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.5dip">
+            <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:ellipsize="end" android:gravity="center|left" android:id="@id/p2" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/lm" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

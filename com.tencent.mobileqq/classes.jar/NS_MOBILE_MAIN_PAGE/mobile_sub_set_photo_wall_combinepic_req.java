@@ -9,14 +9,14 @@ import java.util.Map;
 public final class mobile_sub_set_photo_wall_combinepic_req
   extends JceStruct
 {
-  static Map cache_extinfo;
-  public Map extinfo;
+  static Map<String, String> cache_extinfo;
+  public Map<String, String> extinfo;
   public int photoWallCombinePic;
   public long uin;
   
   public mobile_sub_set_photo_wall_combinepic_req() {}
   
-  public mobile_sub_set_photo_wall_combinepic_req(long paramLong, int paramInt, Map paramMap)
+  public mobile_sub_set_photo_wall_combinepic_req(long paramLong, int paramInt, Map<String, String> paramMap)
   {
     this.uin = paramLong;
     this.photoWallCombinePic = paramInt;

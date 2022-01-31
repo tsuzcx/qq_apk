@@ -1,29 +1,16 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.av.ui.VideoLayerUI;
+import android.media.SoundPool;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
 
 public class bje
   implements Runnable
 {
-  public bje(AVActivity paramAVActivity) {}
+  public bje(SensorAPIJavaScript paramSensorAPIJavaScript, int paramInt, String paramString) {}
   
   public void run()
   {
-    int i = 0;
-    int j;
-    if (this.a.jdField_a_of_type_ComTencentAvUiVideoControlUI != null)
-    {
-      j = this.a.jdField_a_of_type_ComTencentAvUiVideoControlUI.a();
-      i = this.a.jdField_a_of_type_ComTencentAvUiVideoControlUI.b();
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(j, i);
-      this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(this.a.jdField_a_of_type_ComTencentAvVideoController.a().e, null);
-      return;
-      j = 0;
+    if ((this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a != null) && (this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.play(this.jdField_a_of_type_Int, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
+      QLog.d("SensorApi", 2, "play failure url=" + this.jdField_a_of_type_JavaLangString);
     }
   }
 }

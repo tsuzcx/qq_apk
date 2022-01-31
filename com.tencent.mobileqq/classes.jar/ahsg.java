@@ -1,35 +1,27 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.search.activity.VADActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.Comparator;
 
-public final class ahsg
-  extends MqqHandler
+class ahsg
+  implements Comparator<MayKnowRecommend>
 {
-  public ahsg(Looper paramLooper, BaseActivity paramBaseActivity, int paramInt)
-  {
-    super(paramLooper);
-  }
+  ahsg(ahse paramahse) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(MayKnowRecommend paramMayKnowRecommend1, MayKnowRecommend paramMayKnowRecommend2)
   {
-    switch (paramMessage.what)
-    {
+    long l1 = paramMayKnowRecommend1.cardDisplayTimestamp;
+    long l2 = paramMayKnowRecommend2.cardDisplayTimestamp;
+    if (l1 < l2) {
+      return 1;
     }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      VADActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int);
-      continue;
-      VADActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    if (l1 == l2) {
+      return 0;
     }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahsg
  * JD-Core Version:    0.7.0.1
  */

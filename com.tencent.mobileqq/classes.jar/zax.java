@@ -1,27 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.media.MediaPlayer;
+import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
 
-public class zax
-  implements Runnable
+public abstract interface zax
 {
-  String jdField_a_of_type_JavaLangString = null;
+  public abstract void a(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2);
   
-  zax(BrowserAppInterface paramBrowserAppInterface, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void run()
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getApp(), this.jdField_a_of_type_JavaLangString, 1).a();
-    }
-  }
+  public abstract void a(MediaPlayer paramMediaPlayer, VsMusicItemInfo paramVsMusicItemInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zax
  * JD-Core Version:    0.7.0.1
  */

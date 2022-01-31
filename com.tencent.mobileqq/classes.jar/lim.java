@@ -1,51 +1,113 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import com.tencent.av.config.ConfigInfo;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-public final class lim
-  implements Runnable
+public class lim
 {
-  public lim(ChannelCoverInfo paramChannelCoverInfo, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  private static lim jdField_a_of_type_Lim;
+  int jdField_a_of_type_Int = 0;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new lin(this);
+  lnc jdField_a_of_type_Lnc = null;
   
-  public void run()
+  public lim(Context paramContext)
   {
-    str = "";
+    if (QLog.isDevelopLevel()) {
+      QLog.w("AVConfigManager", 1, "构造", new Throwable("打印调用栈"));
+    }
+  }
+  
+  public static lim a(Context paramContext)
+  {
+    if (jdField_a_of_type_Lim == null) {}
     try
     {
-      localObject = new JSONObject();
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo != null) {
-        ((JSONObject)localObject).put("channel_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId);
-      }
-      ((JSONObject)localObject).put("network_type", VideoReporter.a());
-      ((JSONObject)localObject).put("version", VideoReporter.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("os", "1");
-      ((JSONObject)localObject).put("imei", ReadInJoyUtils.f());
-      ((JSONObject)localObject).put("imsi", ReadInJoyUtils.g());
-      ((JSONObject)localObject).put("kandian_mode_new", VideoReporter.a());
-      ((JSONObject)localObject).put("kandian_mode", ReadInJoyUtils.e());
-      localObject = ((JSONObject)localObject).toString();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      if (jdField_a_of_type_Lim == null)
       {
-        Object localObject = str;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ChannelCoverView", 2, "ERROR Exception=" + localException.getMessage());
-          localObject = str;
-        }
+        jdField_a_of_type_Lim = new lim(paramContext);
+        jdField_a_of_type_Lim.b(paramContext);
       }
+      return jdField_a_of_type_Lim;
     }
-    PublicAccountReportUtils.a(null, "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, this.d, (String)localObject, false);
+    finally {}
+  }
+  
+  public static lnc a(Context paramContext)
+  {
+    return a(paramContext).b(paramContext);
+  }
+  
+  public static void a(Context paramContext)
+  {
+    try
+    {
+      if (jdField_a_of_type_Lim != null)
+      {
+        jdField_a_of_type_Lim.c(paramContext);
+        jdField_a_of_type_Lim = null;
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  lnc b(Context paramContext)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Lnc == null)
+      {
+        String str = ConfigInfo.getSharpConfigPayloadFromFile(paramContext);
+        this.jdField_a_of_type_Int = ConfigInfo.getSharpConfigVersionFromFile(paramContext);
+        this.jdField_a_of_type_Lnc = new lnc(str);
+        QLog.w("AVConfigManager", 1, "getParser, Version[" + this.jdField_a_of_type_Int + "], data[\n" + str + "\n]");
+      }
+      paramContext = this.jdField_a_of_type_Lnc;
+      return paramContext;
+    }
+    finally {}
+  }
+  
+  public void b(Context paramContext)
+  {
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE");
+    localIntentFilter.addAction("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD");
+    paramContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+  }
+  
+  void c(Context paramContext)
+  {
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
+    {
+      paramContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+    }
+  }
+  
+  public void d(Context paramContext)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Lnc == null) {
+        return;
+      }
+      int i = ConfigInfo.getSharpConfigVersionFromFile(paramContext);
+      if ((this.jdField_a_of_type_Int != i) || (this.jdField_a_of_type_Lnc.a()))
+      {
+        QLog.w("AVConfigManager", 1, "reload, Version[" + this.jdField_a_of_type_Int + "->" + i + "]");
+        this.jdField_a_of_type_Lnc = null;
+        this.jdField_a_of_type_Int = 0;
+      }
+      return;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lim
  * JD-Core Version:    0.7.0.1
  */

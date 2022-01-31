@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0xb40$GetFavoriteListReqBody
-  extends MessageMicro
+  extends MessageMicro<GetFavoriteListReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_sync_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class oidb_0xb40$GetFavoriteListReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb40.oidb_0xb40.GetFavoriteListReqBody
  * JD-Core Version:    0.7.0.1
  */

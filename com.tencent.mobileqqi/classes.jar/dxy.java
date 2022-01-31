@@ -1,30 +1,18 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
 
-class dxy
-  implements DialogInterface.OnClickListener
+public class dxy
+  implements Runnable
 {
-  dxy(dxw paramdxw) {}
+  public dxy(PressToSpeakPanel paramPressToSpeakPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = new ArrayList();
-    paramDialogInterface.add(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ATroopMember.a);
-    this.a.jdField_a_of_type_Dxu.a.i = this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ATroopMember.a;
-    ((TroopHandler)this.a.jdField_a_of_type_Dxu.a.b.a(19)).a(TroopMemberListActivity.a(this.a.jdField_a_of_type_Dxu.a), paramDialogInterface);
-    this.a.jdField_a_of_type_Dxu.a.e();
-    this.a.jdField_a_of_type_Dxu.a.a.show();
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dxy
  * JD-Core Version:    0.7.0.1
  */

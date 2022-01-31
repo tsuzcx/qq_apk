@@ -1,6 +1,5 @@
 package com.tencent.commonsdk.soload;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteOrder;
 
@@ -33,7 +32,6 @@ class MyZipEntry
   int versionMinimum = -1;
   
   MyZipEntry(byte[] paramArrayOfByte, InputStream paramInputStream)
-    throws IOException
   {
     Streams.readFully(paramInputStream, paramArrayOfByte, 0, paramArrayOfByte.length);
     paramArrayOfByte = HeapBufferIterator.iterator(paramArrayOfByte, 0, paramArrayOfByte.length, ByteOrder.LITTLE_ENDIAN);

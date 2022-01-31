@@ -1,21 +1,18 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.troop.data.TroopBarPostAbsLayout.AbsItemViewHolder;
-import com.tencent.mobileqq.troop.data.TroopBarPostLayoutTab;
-import java.util.ArrayList;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnBufferingUpdateListener;
+import com.tencent.mobileqq.troop.widget.VideoViewX;
 
 public class gzv
-  extends TroopBarPostAbsLayout.AbsItemViewHolder
+  implements MediaPlayer.OnBufferingUpdateListener
 {
-  public View a;
-  public LinearLayout a;
-  protected ArrayList a;
+  public gzv(VideoViewX paramVideoViewX) {}
   
-  public gzv(TroopBarPostLayoutTab paramTroopBarPostLayoutTab, View paramView)
+  public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232621));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131232622);
+    VideoViewX.e(this.a, paramInt);
+    if (VideoViewX.a(this.a) != null) {
+      VideoViewX.a(this.a).onBufferingUpdate(VideoViewX.a(this.a), paramInt);
+    }
   }
 }
 

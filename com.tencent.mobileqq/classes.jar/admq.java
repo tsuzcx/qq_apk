@@ -1,29 +1,44 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.fragment.CommonTabFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class admq
-  extends SosoInterface.OnLocationListener
+  implements URLDrawable.URLDrawableListener
 {
-  public admq(CommonTabFragment paramCommonTabFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public admq(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, 0, 0);
+    }
+    if (PermisionPrivacyActivity.b(this.a) != null) {
+      PermisionPrivacyActivity.b(this.a).postInvalidate();
+    }
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonTabFragment", 2, "startLocation finish" + System.currentTimeMillis());
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, 0, 0);
     }
-    if (paramInt != 0)
-    {
-      QQToast.a(this.a.a, 1, "获取地理位置失败。", 1).a();
-      this.a.d();
-      return;
+    if (PermisionPrivacyActivity.b(this.a) != null) {
+      PermisionPrivacyActivity.b(this.a).postInvalidate();
     }
-    this.a.a(paramSosoLbsInfo);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, xsm.a(this.a.app.getApp(), 47.0F), xsm.a(this.a.app.getApp(), 14.0F));
+    }
+    if (PermisionPrivacyActivity.b(this.a) != null) {
+      PermisionPrivacyActivity.b(this.a).postInvalidate();
+    }
   }
 }
 

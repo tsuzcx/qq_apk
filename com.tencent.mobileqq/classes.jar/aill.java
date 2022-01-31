@@ -1,22 +1,16 @@
-import android.content.Context;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
 public class aill
-  extends VideoSprite
+  implements DialogInterface.OnClickListener
 {
-  public aill(SpriteVideoView paramSpriteVideoView, SpriteGLView paramSpriteGLView, Context paramContext, boolean paramBoolean)
-  {
-    super(paramSpriteGLView, paramContext, paramBoolean);
-  }
+  public aill(BindNumberActivity paramBindNumberActivity) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a == 0) {
-      this.a.a = paramInt2;
-    }
-    super.a(paramInt1, this.a.a);
+    paramDialogInterface.dismiss();
+    BindNumberActivity.b(this.a);
   }
 }
 

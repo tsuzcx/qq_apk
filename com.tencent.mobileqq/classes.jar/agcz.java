@@ -1,23 +1,38 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ocr.ui.BaseOCRTextSearchFragment;
-import com.tencent.mobileqq.ocr.ui.BaseOCRTextSearchFragment.SearchActivityInterface;
+import android.view.ViewGroup;
+import java.lang.ref.SoftReference;
 
 public class agcz
-  implements View.OnTouchListener
 {
-  public agcz(BaseOCRTextSearchFragment paramBaseOCRTextSearchFragment) {}
+  public String a;
+  SoftReference<View> a;
+  SoftReference<ViewGroup> b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public agcz(String paramString, View paramView, ViewGroup paramViewGroup)
   {
-    this.a.a.a(paramView);
-    return false;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView);
+    this.b = new SoftReference(paramViewGroup);
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+  }
+  
+  public ViewGroup a()
+  {
+    return (ViewGroup)this.b.get();
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    this.b = new SoftReference(paramViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agcz
  * JD-Core Version:    0.7.0.1
  */

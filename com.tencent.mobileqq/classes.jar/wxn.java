@@ -1,24 +1,27 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.nearby.now.send.capturepart.QQNowVideoFlowCallback;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
 
-class wxn
-  implements MediaScanner.OnMediaInfoScannerListener
+public class wxn
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  wxn(wxk paramwxk, int paramInt) {}
+  public wxn(DanceMachineQQBrowserActivity paramDanceMachineQQBrowserActivity) {}
   
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    this.jdField_a_of_type_Wxk.a.d();
-    if (QQNowVideoFlowCallback.a(this.jdField_a_of_type_Wxk.a, paramLocalMediaInfo)) {
-      this.jdField_a_of_type_Wxk.a.a(paramLocalMediaInfo, this.jdField_a_of_type_Int);
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 4870;; paramInt = 775)
+    {
+      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wxn
  * JD-Core Version:    0.7.0.1
  */

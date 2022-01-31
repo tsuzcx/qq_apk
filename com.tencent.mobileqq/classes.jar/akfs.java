@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-public final class akfs
-  implements Runnable
+public class akfs
+  implements Animation.AnimationListener
 {
-  public akfs(QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
+  public akfs(SpecailCareListActivity paramSpecailCareListActivity, akfw paramakfw) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Akfw.c.setVisibility(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akfs
  * JD-Core Version:    0.7.0.1
  */

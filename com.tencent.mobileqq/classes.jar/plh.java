@@ -1,25 +1,19 @@
-import com.tencent.component.network.utils.http.pool.AbstractConnPool;
-import com.tencent.component.network.utils.http.pool.FutureCallback;
-import com.tencent.component.network.utils.http.pool.PoolEntry;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Lock;
-
-public class plh
-  extends pli
+class plh
+  implements qci
 {
-  public plh(AbstractConnPool paramAbstractConnPool, Lock paramLock, FutureCallback paramFutureCallback, Object paramObject1, Object paramObject2)
-  {
-    super(paramLock, paramFutureCallback);
-  }
+  plh(ple parample, pgd parampgd) {}
   
-  public PoolEntry a(long paramLong, TimeUnit paramTimeUnit)
+  public void a()
   {
-    return AbstractConnPool.a(this.jdField_a_of_type_ComTencentComponentNetworkUtilsHttpPoolAbstractConnPool, this.jdField_a_of_type_JavaLangObject, this.b, paramLong, paramTimeUnit, this);
+    rro localrro = this.jdField_a_of_type_Pgd.a().a();
+    if (localrro != null) {
+      localrro.a(null, this.jdField_a_of_type_Pgd.a(), 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     plh
  * JD-Core Version:    0.7.0.1
  */

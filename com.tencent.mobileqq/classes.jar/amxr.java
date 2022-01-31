@@ -1,14 +1,8 @@
-import cooperation.qzone.plugin.PluginRecord;
-import cooperation.qzone.plugin.QZonePluginInstaller;
-
-public class amxr
+public abstract interface amxr
 {
-  public amxs a;
-  public amxt a;
-  public PluginRecord a;
-  public String a;
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public amxr(QZonePluginInstaller paramQZonePluginInstaller) {}
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 

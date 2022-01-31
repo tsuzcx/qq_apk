@@ -1,21 +1,30 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
 
 public class anuu
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public anuu(EditVideoPlayer paramEditVideoPlayer, int paramInt, byte[] paramArrayOfByte) {}
+  public anuu(SelectCoverActivity paramSelectCoverActivity, View paramView1, View paramView2) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    SLog.a("Q.qqstory.record.EditVideoPlayer", "setMosaic %d", Integer.valueOf(this.jdField_a_of_type_Int));
-    VideoSourceHelper.nativeSetMosaic(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    this.b.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.a = null;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    this.b.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anuu
  * JD-Core Version:    0.7.0.1
  */

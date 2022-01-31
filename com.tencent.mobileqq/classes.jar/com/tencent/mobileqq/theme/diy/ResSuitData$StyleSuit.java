@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class ResSuitData$StyleSuit
   extends ResSuitData
 {
-  public ArrayList bgSuits;
+  public ArrayList<ResSuitData> bgSuits;
   public String chatFrontImg;
   public boolean isInShop;
   public String msgFrontImg;
@@ -18,7 +18,7 @@ public class ResSuitData$StyleSuit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ResSuitData.StyleSuit
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="27" android:drawable="@drawable/aio_panel_hotpic_nor" />
+    <item android:duration="27" android:drawable="@drawable/c1r" />
+    <item android:duration="27" android:drawable="@drawable/c1y" />
+    <item android:duration="27" android:drawable="@drawable/c1z" />
+    <item android:duration="27" android:drawable="@drawable/c20" />
+    <item android:duration="27" android:drawable="@drawable/c21" />
+    <item android:duration="27" android:drawable="@drawable/c22" />
+    <item android:duration="27" android:drawable="@drawable/c23" />
+    <item android:duration="27" android:drawable="@drawable/c24" />
+    <item android:duration="27" android:drawable="@drawable/c25" />
+    <item android:duration="27" android:drawable="@drawable/c1s" />
+    <item android:duration="27" android:drawable="@drawable/c1t" />
+    <item android:duration="27" android:drawable="@drawable/c1u" />
+    <item android:duration="27" android:drawable="@drawable/c1v" />
+    <item android:duration="27" android:drawable="@drawable/c1w" />
+    <item android:duration="27" android:drawable="@drawable/c1x" />
+    <item android:duration="27" android:drawable="@drawable/aio_panel_hotpic_press" />
+</animation-list>

@@ -1,0 +1,82 @@
+{
+    "ReadInjoy_article_relocated_header_cell": {
+        "view_type": "container",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+            {
+                "view_type": "container",
+                "direction": "horizontal",
+                "margin_left": "20",
+                "margin_top": "12",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "wrap_content"
+                },
+                "subviews": [
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_timestamp",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setFrameString:": "-1",
+                            "setText:": "$timestamp_text",
+                            "setTextColorString:": "#8C000000",
+                            "setFontSizeString:": "13",
+                            "setNumberOfLinesString:": "1"
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_nickname",
+                        "margin_left": "12",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setFrameString:": "-1",
+                            "setText:": "$nickname_text",
+                            "setTextColorString:": "#8C000000",
+                            "setFontSizeString:": "13",
+                            "setNumberOfLinesString:": "1"
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_read_amount",
+                        "margin_left": "12",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setFrameString:": "-1",
+                            "setText:": "$read_amount_text",
+                            "setTextColorString:": "#8C000000",
+                            "setFontSizeString:": "13",
+                            "setNumberOfLinesString:": "1"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

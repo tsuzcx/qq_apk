@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.base.MMTextureView android:layout_gravity="center" android:id="@id/e_k" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/e_l" android:background="@color/a3x" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/e_m" android:background="#99000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:layout_gravity="center" android:id="@id/e_n" android:visibility="gone" android:text="@string/e24" style="@style/r_" />
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/e_o" android:background="@drawable/ao7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.scanner.ui.ScannerFlashSwitcher android:layout_gravity="center_horizontal" android:id="@id/e_p" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.tencent.mm.plugin.scanner.ui.SelectScanModePanel android:id="@id/e_q" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/e_r" android:background="@color/z7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:id="@id/e_s" android:layout_marginLeft="6.0dip" android:layout_marginTop="3.0dip" android:layout_marginBottom="3.0dip" android:text="@string/dk9" android:textScaleX="1.0" style="@style/ns" />
+            <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+            <ImageView android:id="@id/e_t" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="6.0dip" android:src="@drawable/aix" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

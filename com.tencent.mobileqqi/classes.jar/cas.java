@@ -1,15 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
+import java.util.ArrayList;
+import java.util.List;
 
 public class cas
-  implements View.OnClickListener
+  implements Runnable
 {
-  public cas(AddRequestActivity paramAddRequestActivity) {}
+  public cas(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity, List paramList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.d();
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      ChatBackgroundSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity).clear();
+      ChatBackgroundSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity).addAll(this.jdField_a_of_type_JavaUtilList);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity.e();
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatBackgroundSettingActivity.a.notifyDataSetChanged();
   }
 }
 

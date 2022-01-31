@@ -1,23 +1,14 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopGiftProtocolObserver;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aeuc
-  extends ProtoUtils.TroopGiftProtocolObserver
+final class aeuc
+  implements DialogInterface.OnClickListener
 {
-  public aeuc(NowShortVideoProtoManager paramNowShortVideoProtoManager, NowShortVideoProtoManager.Callback paramCallback) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager$Callback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager$Callback.a(paramInt, paramArrayOfByte, paramBundle);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeuc
  * JD-Core Version:    0.7.0.1
  */

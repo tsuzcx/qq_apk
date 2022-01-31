@@ -1,91 +1,93 @@
-import android.content.Intent;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.activity.phone.MyBusinessActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.widget.AbsListView;
 
 public class wts
-  extends ContactBindObserver
+  implements bhtv
 {
-  public wts(BindVerifyActivity paramBindVerifyActivity) {}
+  public wts(MystoryListView paramMystoryListView) {}
   
-  protected void c(boolean paramBoolean, int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.b();
-    if (!paramBoolean)
+    int j;
+    int k;
+    int m;
+    int i;
+    if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (MystoryListView.a(this.a) != 1) && (paramAbsListView.getCount() != 0))
     {
-      this.a.b(2131434455);
+      if (-MystoryListView.b(this.a) > xsm.d(this.a.jdField_a_of_type_AndroidAppActivity) * 3) {
+        this.a.jdField_a_of_type_Wtr.b(true);
+      }
+      if ((paramInt3 == 0) || (!MystoryListView.a(this.a))) {
+        return;
+      }
+      View localView = paramAbsListView.getChildAt(0);
+      j = localView.getTop();
+      k = localView.getBottom();
+      m = localView.getHeight();
+      if (paramInt1 <= MystoryListView.c(this.a)) {
+        break label257;
+      }
+      MystoryListView.b(this.a, MystoryListView.d(this.a) + MystoryListView.e(this.a));
+      i = j - MystoryListView.d(this.a);
+    }
+    for (;;)
+    {
+      MystoryListView.e(this.a, MystoryListView.g(this.a) + i);
+      MystoryListView.f(this.a, i + MystoryListView.b(this.a));
+      MystoryListView.b(this.a, j);
+      MystoryListView.c(this.a, k);
+      MystoryListView.d(this.a, m);
+      MystoryListView.a(this.a, paramInt1);
+      if (MystoryListView.a(this.a) == null) {
+        break;
+      }
+      MystoryListView.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
       return;
-    }
-    if ((paramInt == 0) || (paramInt == 106))
-    {
-      if (1 == this.a.a) {
-        MyBusinessActivity.a(true);
-      }
-      if (this.a.getIntent().getBooleanExtra("k_is_block", false)) {
-        ReportController.b(this.a.app, "CliOper", "", "", "0X80053D5", "0X80053D5", 0, 0, "", "", "", "");
-      }
-      if (this.a.getIntent().getBooleanExtra("key_is_from_qqhotspot", false))
+      label257:
+      if (paramInt1 < MystoryListView.c(this.a))
       {
-        localObject = new Intent();
-        ((Intent)localObject).putExtra("bind_mobile", BindVerifyActivity.a(this.a).getText().toString().trim());
-        this.a.setResult(-1, (Intent)localObject);
-        this.a.finish();
-        return;
+        MystoryListView.c(this.a, MystoryListView.f(this.a) - MystoryListView.e(this.a));
+        i = k - MystoryListView.f(this.a);
       }
-      if (this.a.b == 10)
+      else
       {
-        localObject = new Intent(this.a, SplashActivity.class);
-        ((Intent)localObject).putExtra("main_tab_id", 1);
-        ((Intent)localObject).setFlags(603979776);
-        this.a.startActivity((Intent)localObject);
-        this.a.setResult(-1, null);
-        this.a.finish();
-        return;
-      }
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("bind_mobile", BindVerifyActivity.a(this.a).getText().toString().trim());
-      this.a.app.a(new wtt(this));
-      if ((this.a.b == 15) || (this.a.b == 17) || (this.a.b == 0) || (this.a.b == 1) || (this.a.b == 6) || (this.a.b == 14) || (this.a.b == 9) || (this.a.b == 12))
-      {
-        QQToast.a(BaseApplicationImpl.sApplication, "寻找通讯录联系人中。", 0).a();
-        if (this.a.b == 15) {
-          ReportController.b(this.a.app, "dc00898", "", "", "0X80077C7", "0X80077C7", 0, 0, "", "", "", "");
-        }
-      }
-      for (;;)
-      {
-        this.a.setResult(-1, (Intent)localObject);
-        this.a.finish();
-        return;
-        if (this.a.b == 17)
-        {
-          ReportController.b(this.a.app, "dc00898", "", "", "0X80077CB", "0X80077CB", 0, 0, "", "", "", "");
-          continue;
-          QQToast.a(BaseApplicationImpl.sApplication, "特征码匹配中。", 0).a();
-        }
+        i = k - MystoryListView.f(this.a);
       }
     }
-    if (paramInt == 213)
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((MystoryListView.a(this.a) != 1) && (paramAbsListView.getCount() != 0)) {
+      switch (paramInt)
+      {
+      }
+    }
+    for (;;)
     {
-      this.a.b("验证码错误，请重新输入。");
+      if (MystoryListView.a(this.a) != null) {
+        MystoryListView.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
+      }
       return;
+      MystoryListView.a(this.a, false);
+      continue;
+      View localView = paramAbsListView.getChildAt(0);
+      MystoryListView.a(this.a, paramAbsListView.getFirstVisiblePosition());
+      if (localView != null)
+      {
+        MystoryListView.b(this.a, localView.getTop());
+        MystoryListView.c(this.a, localView.getBottom());
+        MystoryListView.d(this.a, localView.getHeight());
+      }
+      MystoryListView.a(this.a, true);
+      MystoryListView.e(this.a, 0);
     }
-    Object localObject = "请稍后重试。";
-    if (paramInt == 107) {
-      localObject = "此手机号已与其他帐号绑定，请返回重试。";
-    }
-    this.a.a("请求失败", (String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wts
  * JD-Core Version:    0.7.0.1
  */

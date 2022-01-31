@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_cmd0x983$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16 }, new String[] { "msg_lbs_info", "uint32_network" }, new Object[] { null, Integer.valueOf(0) }, ReqBody.class);
   public appoint_define.LBSInfo msg_lbs_info = new appoint_define.LBSInfo();
@@ -15,7 +15,7 @@ public final class oidb_cmd0x983$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x983.oidb_cmd0x983.ReqBody
  * JD-Core Version:    0.7.0.1
  */

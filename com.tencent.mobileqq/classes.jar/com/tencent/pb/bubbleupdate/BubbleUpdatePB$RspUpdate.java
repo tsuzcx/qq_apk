@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class BubbleUpdatePB$RspUpdate
-  extends MessageMicro
+  extends MessageMicro<RspUpdate>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "int32_ret", "uint64_uin", "uint32_used_item_id", "msg_rsp_data" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), null }, RspUpdate.class);
   public final PBInt32Field int32_ret = PBField.initInt32(0);
@@ -18,7 +18,7 @@ public final class BubbleUpdatePB$RspUpdate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.bubbleupdate.BubbleUpdatePB.RspUpdate
  * JD-Core Version:    0.7.0.1
  */

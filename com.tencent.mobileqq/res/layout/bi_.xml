@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.AsyncImageView android:layout_gravity="center_horizontal" android:id="@id/bwf" android:layout_width="375.0dip" android:layout_height="375.0dip" android:layout_centerInParent="true" />
+    <TextView android:textSize="18.0dip" android:textColor="@android:color/black" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/k7p" android:background="@drawable/aq4" android:layout_width="160.0dip" android:layout_height="40.0dip" android:layout_marginLeft="23.0dip" android:layout_marginTop="32.0dip" android:layout_marginRight="23.0dip" android:text="@string/gco" android:layout_below="@id/bwf" android:layout_centerHorizontal="true" />
+</RelativeLayout>

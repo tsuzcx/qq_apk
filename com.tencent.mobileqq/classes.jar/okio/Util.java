@@ -9,16 +9,14 @@ final class Util
   public static boolean arrayRangeEquals(byte[] paramArrayOfByte1, int paramInt1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3)
   {
     int i = 0;
-    for (;;)
+    while (i < paramInt3)
     {
-      if (i >= paramInt3) {
-        return true;
-      }
       if (paramArrayOfByte1[(i + paramInt1)] != paramArrayOfByte2[(i + paramInt2)]) {
         return false;
       }
       i += 1;
     }
+    return true;
   }
   
   public static void checkOffsetAndCount(long paramLong1, long paramLong2, long paramLong3)
@@ -40,8 +38,8 @@ final class Util
   
   public static short reverseBytesShort(short paramShort)
   {
-    paramShort &= 0xFFFF;
-    return (short)((0xFF00 & paramShort) >>> 8 | (paramShort & 0xFF) << 8);
+    paramShort = 0xFFFF & paramShort;
+    return (short)((paramShort & 0xFF) << 8 | (0xFF00 & paramShort) >>> 8);
   }
   
   public static void sneakyRethrow(Throwable paramThrowable)
@@ -50,14 +48,13 @@ final class Util
   }
   
   private static <T extends Throwable> void sneakyThrow2(Throwable paramThrowable)
-    throws Throwable
   {
     throw paramThrowable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okio.Util
  * JD-Core Version:    0.7.0.1
  */

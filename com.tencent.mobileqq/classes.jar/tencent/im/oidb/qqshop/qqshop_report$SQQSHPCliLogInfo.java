@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqshop_report$SQQSHPCliLogInfo
-  extends MessageMicro
+  extends MessageMicro<SQQSHPCliLogInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58, 66, 72, 80, 88, 96, 106, 114 }, new String[] { "puin", "tvalue", "cnt", "network", "strp1", "strp2", "strp3", "strp4", "uintp1", "uintp2", "uintp3", "uintp4", "wifimac", "ifda" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", "", "", Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), "", "" }, SQQSHPCliLogInfo.class);
   public final PBUInt32Field cnt = PBField.initUInt32(0);
@@ -28,7 +28,7 @@ public final class qqshop_report$SQQSHPCliLogInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.qqshop.qqshop_report.SQQSHPCliLogInfo
  * JD-Core Version:    0.7.0.1
  */

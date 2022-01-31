@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.AsyncMarkImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a310c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021b58" android:scaleType="centerCrop" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3049" android:layout_alignLeft="@id/APKTOOL_DUPLICATE_id_0x7f0a310c" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a310c" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a310c" style="@style/APKTOOL_DUPLICATE_style_0x7f0e019e" />
-    <TextView android:textSize="12.0dip" android:layout_gravity="bottom|center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a304a" android:visibility="gone" android:layout_marginRight="7.0dip" android:layout_marginBottom="2.0dip" android:text="00:00" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a310c" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a310c" style="@style/APKTOOL_DUPLICATE_style_0x7f0e019c" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a310d" android:background="#6f000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a310e" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="更多" android:layout_centerInParent="true" />
-</RelativeLayout>

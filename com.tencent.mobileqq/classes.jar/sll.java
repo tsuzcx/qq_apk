@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.activity.EditActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
 
 public class sll
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public sll(EditActivity paramEditActivity) {}
+  public sll(ReadInJoyColorBandEntranceButton paramReadInJoyColorBandEntranceButton) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    this.a.a();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
     this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sll
  * JD-Core Version:    0.7.0.1
  */

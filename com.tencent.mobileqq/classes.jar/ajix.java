@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.OnReciteListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ajix
-  implements Runnable
+class ajix
+  implements DialogInterface.OnClickListener
 {
-  public ajix(ReciteRecordLayout paramReciteRecordLayout, String paramString, double paramDouble) {}
+  ajix(ajit paramajit) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ReciteRecordLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout) != null) {
-      ReciteRecordLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Double);
-    }
+    ((alpk)this.a.a.a(2)).m(false);
   }
 }
 

@@ -1,34 +1,59 @@
-import android.content.Context;
-import android.view.View.MeasureSpec;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.aio.photo.AIOPhotoListAdapter;
-import com.tencent.widget.GridView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import java.util.List;
 
 public class vos
-  extends FrameLayout
+  extends BaseAdapter
 {
-  public vos(AIOPhotoListAdapter paramAIOPhotoListAdapter, Context paramContext)
+  private vos(VideoCoverListBar paramVideoCoverListBar) {}
+  
+  public String a(int paramInt)
   {
-    super(paramContext);
+    return (String)VideoCoverListBar.a(this.a).get(paramInt);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public int getCount()
   {
-    int i = AIOPhotoListAdapter.a(this.a).getPaddingLeft() + getPaddingLeft();
-    if (i != paramInt1) {
-      offsetLeftAndRight(i - paramInt1);
+    return VideoCoverListBar.a(this.a).size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return 0;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131561537, null);
+      paramViewGroup = new vot(this, paramView);
+      paramView.setTag(paramViewGroup);
     }
-    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    for (;;)
+    {
+      paramViewGroup.a(paramInt);
+      return paramView;
+      paramViewGroup = (vot)paramView.getTag();
+    }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public int getViewTypeCount()
   {
-    super.onMeasure(View.MeasureSpec.makeMeasureSpec(AIOPhotoListAdapter.a(this.a).getMeasuredWidth() - AIOPhotoListAdapter.a(this.a).getPaddingLeft() - AIOPhotoListAdapter.a(this.a).getPaddingRight(), View.MeasureSpec.getMode(paramInt1)), paramInt2);
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vos
  * JD-Core Version:    0.7.0.1
  */

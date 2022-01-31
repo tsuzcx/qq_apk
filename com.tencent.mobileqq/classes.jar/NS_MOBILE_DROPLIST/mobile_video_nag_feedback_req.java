@@ -8,10 +8,10 @@ import java.util.ArrayList;
 public final class mobile_video_nag_feedback_req
   extends JceStruct
 {
-  static ArrayList cache_vecNagFbInfo = new ArrayList();
+  static ArrayList<nagative_fb_info> cache_vecNagFbInfo = new ArrayList();
   public long feedsUin;
   public long loginUin;
-  public ArrayList vecNagFbInfo;
+  public ArrayList<nagative_fb_info> vecNagFbInfo;
   
   static
   {
@@ -21,7 +21,7 @@ public final class mobile_video_nag_feedback_req
   
   public mobile_video_nag_feedback_req() {}
   
-  public mobile_video_nag_feedback_req(long paramLong1, long paramLong2, ArrayList paramArrayList)
+  public mobile_video_nag_feedback_req(long paramLong1, long paramLong2, ArrayList<nagative_fb_info> paramArrayList)
   {
     this.loginUin = paramLong1;
     this.feedsUin = paramLong2;

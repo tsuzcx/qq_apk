@@ -1,20 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-
-public class rgw
-  implements View.OnClickListener
+public abstract interface rgw
 {
-  public rgw(AccountManageActivity paramAccountManageActivity) {}
+  public abstract void a(String paramString, long paramLong);
   
-  public void onClick(View paramView)
-  {
-    this.a.i();
-  }
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rgw
  * JD-Core Version:    0.7.0.1
  */

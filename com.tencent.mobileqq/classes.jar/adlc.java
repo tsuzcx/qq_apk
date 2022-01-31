@@ -1,19 +1,23 @@
-import android.widget.ScrollView;
-import com.tencent.mobileqq.forward.ForwardQQStoryMsgOption;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
 
 public class adlc
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public adlc(ForwardQQStoryMsgOption paramForwardQQStoryMsgOption) {}
+  public adlc(NotifyPCActiveActivity paramNotifyPCActiveActivity, alpk paramalpk) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.fullScroll(130);
+    this.jdField_a_of_type_Alpk.b(true);
+    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adlc
  * JD-Core Version:    0.7.0.1
  */

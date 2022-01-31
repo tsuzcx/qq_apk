@@ -1,38 +1,8 @@
-import android.util.Pair;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.freshnews.feed.NearbyImgLoader;
-import com.tencent.mobileqq.troop.widget.HotChatPostItemView;
-import java.util.HashMap;
-import java.util.Queue;
-import mqq.os.MqqHandler;
-
-class ajsj
-  implements Runnable
+public abstract interface ajsj
 {
-  ajsj(ajsi paramajsi) {}
+  public abstract void a();
   
-  public void run()
-  {
-    if (((this.a.jdField_a_of_type_AndroidWidgetImageView.getTag() instanceof String)) && (!((String)this.a.jdField_a_of_type_AndroidWidgetImageView.getTag()).endsWith(this.a.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    try
-    {
-      Pair localPair1 = NearbyImgLoader.a().a(null, HotChatPostItemView.a(this.a.jdField_a_of_type_ComTencentImageURLDrawable), 1);
-      ThreadManager.getUIHandler().post(new ajsk(this, localPair1));
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        HotChatPostItemView.jdField_a_of_type_JavaUtilQueue.clear();
-        HotChatPostItemView.jdField_a_of_type_JavaUtilHashMap.clear();
-        Pair localPair2 = NearbyImgLoader.a().a(null, HotChatPostItemView.a(this.a.jdField_a_of_type_ComTencentImageURLDrawable), 1);
-      }
-    }
-  }
+  public abstract void b();
 }
 
 

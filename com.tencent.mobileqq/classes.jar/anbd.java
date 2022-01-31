@@ -1,25 +1,42 @@
-import cooperation.qzone.plugin.IQZonePluginManager;
-import cooperation.qzone.plugin.PluginRecord;
-import cooperation.qzone.plugin.QZonePluginMangerHelper;
-import cooperation.qzone.plugin.QZonePluginMangerHelper.OnQzonePluginClientReadyListner;
-import cooperation.qzone.video.QzoneLiveVideoInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public final class anbd
-  implements QZonePluginMangerHelper.OnQzonePluginClientReadyListner
+public class anbd
 {
-  public anbd(String paramString) {}
+  public float a;
+  public int a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public int c = -1;
   
-  public void a(IQZonePluginManager paramIQZonePluginManager)
+  public anbd()
   {
-    if (paramIQZonePluginManager == null) {
-      QZonePluginMangerHelper.a(QzoneLiveVideoInterface.getContext(), this);
-    }
-    do
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
+  }
+  
+  public String toString()
+  {
+    try
     {
-      return;
-      paramIQZonePluginManager = paramIQZonePluginManager.a(this.a);
-    } while (paramIQZonePluginManager == null);
-    QzoneLiveVideoInterface.access$002(paramIQZonePluginManager.c);
+      String str1 = new String(this.jdField_a_of_type_ArrayOfByte, "utf-8");
+      return "ImageTag{imageId = " + this.jdField_a_of_type_JavaLangString + ", tagName = " + this.jdField_b_of_type_JavaLangString + ", tagConfidence = " + this.jdField_a_of_type_Int + ", tagConfidence_f = " + this.jdField_a_of_type_Float + ", need_check_lbs = " + this.jdField_b_of_type_Int + ", cdbRetCode = " + this.c + ", cdbRes = " + str1 + '}';
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ARCloudObjectClassifyResult", 2, "toString error, msg:" + localException.getMessage());
+        }
+        String str2 = "";
+      }
+    }
   }
 }
 

@@ -1,87 +1,46 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qqprotect.singleupdate.MD5FileUtil;
-import java.io.File;
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CSettingFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aiaa
+  implements acpa
 {
-  public static aiab a(String paramString)
+  public aiaa(ChatHistoryC2CSettingFragment paramChatHistoryC2CSettingFragment) {}
+  
+  public void a(Activity paramActivity)
   {
-    return new aiab(paramString);
+    QQToast.a(paramActivity, 2, 2131691566, 0).b(this.a.getActivity().getTitleBarHeight());
+    paramActivity.setResult(-1);
+    paramActivity.finish();
   }
   
-  public static String a()
+  public void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("short_video_mgr_sp", 4).getString("sv_md5_version_soname_key", "d000_1");
-  }
-  
-  public static String a(File paramFile)
-  {
-    return FileUtils.a(paramFile);
-  }
-  
-  public static String a(String paramString)
-  {
-    String str = b(paramString);
-    Object localObject;
-    if (str != null)
-    {
-      localObject = str;
-      if (!"".equals(str)) {
-        break label53;
-      }
+    if (paramInt == 0) {
+      azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A17D", "0X800A17D", 2, 0, "", "", "", "");
     }
-    try
-    {
-      localObject = MD5.getFileMd5(paramString);
-      VideoEnvironment.a("ShortVideoSoManager:computeMd5[MD5.getFileMd5]md5Data=" + localObject, null);
-      localObject = HexUtil.bytes2HexStr((byte[])localObject);
-      label53:
-      return localObject;
+    while (paramInt != 1) {
+      return;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      VideoEnvironment.a("ShortVideoSoManager:computeMd5[MD5.getFileMd5] ", localUnsatisfiedLinkError);
-    }
-    return b(paramString);
+    azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A17F", "0X800A17F", 2, 0, "", "", "", "");
   }
   
-  public static final String a(String paramString1, String paramString2)
+  public void b(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    return paramString1 + '_' + paramString2;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_mgr_sp", 4).edit();
-    localEditor.putString("sv_md5_version_soname_key", paramString);
-    boolean bool = localEditor.commit();
-    VideoEnvironment.a("ShortVideoSoManager.storeSoNewVersion saveAVCodecOK=" + bool, null);
-    return bool;
-  }
-  
-  static String b(String paramString)
-  {
-    try
-    {
-      paramString = MD5FileUtil.a(new File(paramString));
-      return paramString;
+    if (paramInt == 0) {
+      azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A17E", "0X800A17E", 2, 0, "", "", "", "");
     }
-    catch (Exception paramString)
-    {
-      VideoEnvironment.a("ShortVideoSoManager:computeMd5[getFileMD5String]", paramString);
+    while (paramInt != 1) {
+      return;
     }
-    return null;
+    azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A180", "0X800A180", 2, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiaa
  * JD-Core Version:    0.7.0.1
  */

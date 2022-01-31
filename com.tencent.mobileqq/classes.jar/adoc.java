@@ -1,48 +1,52 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import com.tencent.mobileqq.intervideo.now.NowProxy;
-import com.tencent.widget.PopupMenuDialog.MenuItem;
-import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class adoc
-  implements PopupMenuDialog.OnClickActionListener
+  extends MqqHandler
 {
-  public adoc(NowLiveFragment paramNowLiveFragment) {}
+  public adoc(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void a(PopupMenuDialog.MenuItem paramMenuItem)
+  public void handleMessage(Message paramMessage)
   {
-    switch (paramMenuItem.a)
+    boolean bool2 = true;
+    switch (paramMessage.what)
     {
     default: 
-      return;
-    case 0: 
-      paramMenuItem = new NowProxy();
-      if (paramMenuItem.a())
-      {
-        paramMenuItem.a(null);
-        return;
-      }
-      paramMenuItem = "" + this.a.c;
-      localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-      localIntent.putExtra("url", paramMenuItem);
-      localIntent.putExtra("reqType", 1);
-      this.a.startActivity(localIntent);
-      return;
-    case 1: 
-      paramMenuItem = "" + this.a.d;
-      localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-      localIntent.putExtra("url", paramMenuItem);
-      localIntent.putExtra("reqType", 1);
-      this.a.startActivity(localIntent);
-      return;
+      QLog.d("IphoneTitleBarActivity", 2, "TEST more info message handler: " + paramMessage.what);
     }
-    paramMenuItem = "" + this.a.e;
-    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    localIntent.putExtra("url", paramMenuItem);
-    localIntent.putExtra("reqType", 1);
-    localIntent.putExtra("title", "帮助");
-    this.a.startActivity(localIntent);
+    do
+    {
+      return;
+    } while (!((String)paramMessage.obj).equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a));
+    label86:
+    FormSwitchItem localFormSwitchItem;
+    if (paramMessage.arg1 == 1)
+    {
+      bool1 = true;
+      if (bool1 == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()) {
+        break label154;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
+      localFormSwitchItem = this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+      if (paramMessage.arg1 != 1) {
+        break label156;
+      }
+    }
+    label154:
+    label156:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localFormSwitchItem.setChecked(bool1);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.a);
+      return;
+      bool1 = false;
+      break label86;
+      break;
+    }
   }
 }
 

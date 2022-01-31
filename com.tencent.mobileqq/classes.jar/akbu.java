@@ -1,31 +1,25 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.utils.AudioUtil;
+import com.tencent.mobileqq.data.CommonlyUsedTroop;
+import java.util.Comparator;
 
-public final class akbu
-  implements MediaPlayer.OnCompletionListener
+public class akbu
+  implements Comparator<CommonlyUsedTroop>
 {
-  public akbu(MediaPlayer.OnCompletionListener paramOnCompletionListener) {}
+  protected akbu(akbr paramakbr) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
   {
-    if (AudioUtil.b() == 0)
-    {
-      if (this.a != null)
-      {
-        this.a.onCompletion(AudioUtil.a);
-        return;
-      }
-      AudioUtil.a();
-      return;
+    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
+      return 1;
     }
-    AudioUtil.c();
-    AudioUtil.a.start();
+    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbu
  * JD-Core Version:    0.7.0.1
  */

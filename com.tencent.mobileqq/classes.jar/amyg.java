@@ -1,79 +1,132 @@
-import android.os.IBinder;
-import cooperation.qzone.remote.IServiceHandler;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.NeonControl.1;
+import com.tencent.mobileqq.ar.NeonControl.2;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class amyg
-  implements IServiceHandler
 {
-  private IBinder a;
+  private static amyg jdField_a_of_type_Amyg;
+  public static boolean a;
+  amyh jdField_a_of_type_Amyh;
+  public final Object a;
+  private boolean b;
   
-  public amyg(IBinder paramIBinder)
+  static
   {
-    this.a = paramIBinder;
+    jdField_a_of_type_Boolean = true;
   }
   
-  public IBinder asBinder()
+  private amyg()
   {
-    return this.a;
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    Object localObject1 = BaseApplication.getContext().getSharedPreferences("sp_cpu_neon_support", 4);
+    if (!((SharedPreferences)localObject1).contains("sp_cpu_neon_support")) {
+      ThreadManager.post(new NeonControl.1(this, (SharedPreferences)localObject1, false), 5, null, true);
+    }
+    boolean bool2 = ((SharedPreferences)localObject1).getBoolean("sp_cpu_neon_support", false);
+    boolean bool3 = amyr.a().e;
+    int i;
+    int j;
+    if (QLog.isColorLevel())
+    {
+      if (bool3)
+      {
+        i = 1;
+        if (!bool2) {
+          break label174;
+        }
+        j = 1;
+        label97:
+        QLog.i("NeonControl", 2, String.format("dpcNeonCfgSwitch:%d isNeonSupport:%d forceOpenNeon:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(0) }));
+      }
+    }
+    else
+    {
+      localObject1 = this.jdField_a_of_type_JavaLangObject;
+      if ((!bool3) || (!bool2)) {
+        break label179;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        this.b = bool1;
+        return;
+      }
+      finally {}
+      i = 0;
+      break;
+      label174:
+      j = 0;
+      break label97;
+      label179:
+      bool1 = false;
+    }
   }
   
-  /* Error */
-  public void sendMsg(cooperation.qzone.remote.SendMsg paramSendMsg)
+  public static amyg a()
   {
-    // Byte code:
-    //   0: invokestatic 26	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: invokestatic 26	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore_3
-    //   8: aload_2
-    //   9: ldc 28
-    //   11: invokevirtual 32	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: aload_1
-    //   15: ifnull +41 -> 56
-    //   18: aload_2
-    //   19: iconst_1
-    //   20: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   23: aload_1
-    //   24: aload_2
-    //   25: iconst_0
-    //   26: invokevirtual 42	cooperation/qzone/remote/SendMsg:writeToParcel	(Landroid/os/Parcel;I)V
-    //   29: aload_0
-    //   30: getfield 15	amyg:a	Landroid/os/IBinder;
-    //   33: iconst_1
-    //   34: aload_2
-    //   35: aload_3
-    //   36: iconst_0
-    //   37: invokeinterface 48 5 0
-    //   42: pop
-    //   43: aload_3
-    //   44: invokevirtual 51	android/os/Parcel:readException	()V
-    //   47: aload_3
-    //   48: invokevirtual 54	android/os/Parcel:recycle	()V
-    //   51: aload_2
-    //   52: invokevirtual 54	android/os/Parcel:recycle	()V
-    //   55: return
-    //   56: aload_2
-    //   57: iconst_0
-    //   58: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   61: goto -32 -> 29
-    //   64: astore_1
-    //   65: aload_3
-    //   66: invokevirtual 54	android/os/Parcel:recycle	()V
-    //   69: aload_2
-    //   70: invokevirtual 54	android/os/Parcel:recycle	()V
-    //   73: aload_1
-    //   74: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	75	0	this	amyg
-    //   0	75	1	paramSendMsg	cooperation.qzone.remote.SendMsg
-    //   3	67	2	localParcel1	android.os.Parcel
-    //   7	59	3	localParcel2	android.os.Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   8	14	64	finally
-    //   18	29	64	finally
-    //   29	47	64	finally
-    //   56	61	64	finally
+    if (jdField_a_of_type_Amyg == null) {
+      jdField_a_of_type_Amyg = new amyg();
+    }
+    return jdField_a_of_type_Amyg;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Amyh == null) {}
+    amyh localamyh;
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        localamyh = new amyh(this);
+        localamyh.jdField_a_of_type_Long = this.jdField_a_of_type_Amyh.jdField_a_of_type_Long;
+        localamyh.jdField_a_of_type_Int = this.jdField_a_of_type_Amyh.jdField_a_of_type_Int;
+        localamyh.b = this.jdField_a_of_type_Amyh.b;
+        this.jdField_a_of_type_Amyh.b = -2147483648;
+        this.jdField_a_of_type_Amyh.jdField_a_of_type_Long = 0L;
+        this.jdField_a_of_type_Amyh.jdField_a_of_type_Int = 0;
+      } while ((localamyh.jdField_a_of_type_Long <= 0L) || (localamyh.jdField_a_of_type_Int <= 0) || (localamyh.b == -2147483648));
+      i = (int)(localamyh.jdField_a_of_type_Long / localamyh.jdField_a_of_type_Int);
+    } while ((i < 0) || (i >= 600000));
+    ThreadManager.post(new NeonControl.2(this, localamyh, i), 5, null, false);
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    if (this.jdField_a_of_type_Amyh == null)
+    {
+      this.jdField_a_of_type_Amyh = new amyh(this);
+      this.jdField_a_of_type_Amyh.b = paramInt;
+    }
+    if (this.jdField_a_of_type_Amyh.b != paramInt)
+    {
+      if ((this.jdField_a_of_type_Amyh.jdField_a_of_type_Long > 0L) || (this.jdField_a_of_type_Amyh.jdField_a_of_type_Int > 0)) {
+        a();
+      }
+      this.jdField_a_of_type_Amyh.b = paramInt;
+      this.jdField_a_of_type_Amyh.jdField_a_of_type_Long = 0L;
+      this.jdField_a_of_type_Amyh.jdField_a_of_type_Int = 0;
+    }
+    amyh localamyh = this.jdField_a_of_type_Amyh;
+    localamyh.jdField_a_of_type_Long += paramLong;
+    localamyh = this.jdField_a_of_type_Amyh;
+    localamyh.jdField_a_of_type_Int += 1;
+  }
+  
+  public boolean a()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      boolean bool = this.b;
+      return bool;
+    }
   }
 }
 

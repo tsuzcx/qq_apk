@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/cz" android:layout_width="@dimen/i5" android:layout_height="wrap_content" android:layout_marginRight="@dimen/lb" android:text="@string/b29" android:singleLine="false" style="@style/lg" />
+    <ImageView android:id="@id/dea" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/lb" android:src="@raw/profile_social_mobile" android:contentDescription="@null" />
+    <ImageView android:id="@id/deb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/lb" android:src="@raw/profile_social_qq" android:contentDescription="@null" />
+    <ImageView android:id="@id/dec" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/lb" android:src="@raw/profile_social_linkedin" android:contentDescription="@null" />
+    <ImageView android:id="@id/ded" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/lb" android:src="@raw/profile_social_facebook" android:contentDescription="@null" />
+    <ImageView android:id="@id/dee" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/lb" android:src="@raw/profile_social_google_contacts" android:contentDescription="@null" />
+    <ImageView android:id="@id/def" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/lb" android:src="@raw/profile_social_weishop" android:contentDescription="@null" />
+</LinearLayout>

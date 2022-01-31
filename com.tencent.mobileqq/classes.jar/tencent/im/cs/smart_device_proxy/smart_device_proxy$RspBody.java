@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class smart_device_proxy$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int BYTES_INFO_FIELD_NUMBER = 3;
   public static final int INT32_CMD_FIELD_NUMBER = 1;
@@ -26,7 +26,7 @@ public final class smart_device_proxy$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.smart_device_proxy.smart_device_proxy.RspBody
  * JD-Core Version:    0.7.0.1
  */

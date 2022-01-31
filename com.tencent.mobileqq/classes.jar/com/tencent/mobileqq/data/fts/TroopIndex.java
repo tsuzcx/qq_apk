@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data.fts;
 
 import android.text.TextUtils;
+import asja;
+import asjn;
 import com.tencent.mobileqq.fts.entity.FTSEntity;
-import com.tencent.mobileqq.fts.entity.notColumn;
-import com.tencent.mobileqq.fts.utils.SegmentUtils;
 
 public class TroopIndex
   extends FTSEntity
@@ -16,15 +16,15 @@ public class TroopIndex
   public String ext7;
   public String ext8;
   public String ext9;
-  @notColumn
+  @asja
   public String mMemberCard;
-  @notColumn
+  @asja
   public String mMemberName;
-  @notColumn
+  @asja
   public String mMemberNick;
-  @notColumn
+  @asja
   public String mMemberUin;
-  @notColumn
+  @asja
   public String mTroopUin;
   public long oId = -1L;
   public int type = -1;
@@ -41,7 +41,7 @@ public class TroopIndex
     this.mMemberNick = paramString5;
   }
   
-  protected void doDeserialize()
+  public void doDeserialize()
   {
     this.mTroopUin = this.ext1;
     this.mMemberName = this.ext2;
@@ -50,7 +50,7 @@ public class TroopIndex
     this.mMemberNick = this.ext7;
   }
   
-  protected void doSerialize()
+  public void doSerialize()
   {
     this.type = 2;
     this.ext1 = this.mTroopUin;
@@ -79,7 +79,7 @@ public class TroopIndex
     label139:
     label154:
     label168:
-    for (this.ext5 = "";; this.ext5 = SegmentUtils.a(this.ext4))
+    for (this.ext5 = "";; this.ext5 = asjn.a(this.ext4))
     {
       this.ext6 = this.mMemberUin;
       this.ext7 = this.mMemberNick;
@@ -92,11 +92,11 @@ public class TroopIndex
       break;
       str = this.mMemberCard.replace("'", "''");
       break label38;
-      this.ext3 = SegmentUtils.a(this.ext2);
+      this.ext3 = asjn.a(this.ext2);
       break label67;
     }
     label182:
-    this.ext8 = SegmentUtils.a(this.ext7);
+    this.ext8 = asjn.a(this.ext7);
   }
   
   public boolean needCompress()
@@ -127,7 +127,7 @@ public class TroopIndex
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.fts.TroopIndex
  * JD-Core Version:    0.7.0.1
  */

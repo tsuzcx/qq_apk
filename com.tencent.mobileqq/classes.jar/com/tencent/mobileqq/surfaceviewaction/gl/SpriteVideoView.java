@@ -1,13 +1,15 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import aill;
 import android.content.Context;
 import android.util.AttributeSet;
+import baej;
+import baez;
+import bafa;
 
 public class SpriteVideoView
   extends SpriteGLView
 {
-  public int a;
+  protected int a;
   protected VideoSprite a;
   
   public SpriteVideoView(Context paramContext, AttributeSet paramAttributeSet)
@@ -27,22 +29,22 @@ public class SpriteVideoView
     this.a.j();
   }
   
-  public void a(String paramString, int paramInt, FrameSprite.OnFrameEndListener paramOnFrameEndListener)
+  public void a(String paramString, int paramInt, baej parambaej)
   {
     this.a.a(paramString, paramInt);
-    this.a.a(paramOnFrameEndListener);
+    this.a.a(parambaej);
   }
   
-  public void a(String paramString, FrameSprite.OnFrameEndListener paramOnFrameEndListener)
+  public void a(String paramString, baej parambaej)
   {
-    this.a.b(paramString);
-    this.a.a(paramOnFrameEndListener);
+    this.a.c(paramString);
+    this.a.a(parambaej);
   }
   
   protected void a(boolean paramBoolean)
   {
-    this.a = new aill(this, this, getContext(), paramBoolean);
-    this.a.a = true;
+    this.a = new SpriteVideoView.1(this, this, getContext(), paramBoolean);
+    this.a.b = true;
     this.a.c = true;
     a(this.a);
   }
@@ -54,7 +56,7 @@ public class SpriteVideoView
   
   public void setFilePath(String paramString)
   {
-    this.a.a(paramString);
+    this.a.b(paramString);
   }
   
   public void setLooping(boolean paramBoolean)
@@ -62,19 +64,19 @@ public class SpriteVideoView
     this.a.a(paramBoolean);
   }
   
-  public void setOnPlayedListener(VideoSprite.OnOnPlayedListener paramOnOnPlayedListener)
+  public void setOnPlayedListener(baez parambaez)
   {
-    this.a.a(paramOnOnPlayedListener);
+    this.a.a(parambaez);
   }
   
-  public void setOnProgressChangedListener(VideoSprite.OnProgressChangedListener paramOnProgressChangedListener)
+  public void setOnProgressChangedListener(bafa parambafa)
   {
-    this.a.a(paramOnProgressChangedListener);
+    this.a.a(parambafa);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView
  * JD-Core Version:    0.7.0.1
  */

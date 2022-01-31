@@ -1,37 +1,23 @@
-import android.view.WindowManager.BadTokenException;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
 
 public class aofv
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aofv(FlowCameraActivity2 paramFlowCameraActivity2, String paramString, int paramInt) {}
+  public aofv(SwipePostTableLayout paramSwipePostTableLayout) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Int == 2002) {
-      str = this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.getString(2131428347);
+    if (SwipePostTableLayout.a(this.a).isShowing()) {
+      SwipePostTableLayout.a(this.a).dismiss();
     }
-    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a = DialogUtil.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2, 230).setMessage(str).setPositiveButton(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.getString(2131428346), new aofw(this));
-    try
-    {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a.setCancelable(false);
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a.show();
-      return;
-    }
-    catch (WindowManager.BadTokenException localBadTokenException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("FlowCameraActivity", 2, "", localBadTokenException);
-    }
+    aofm.a(this.a.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aofv
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,8 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import kdg;
+import mqe;
+import mqf;
 
 public class QavRecordButtonView
   extends View
@@ -24,9 +25,7 @@ public class QavRecordButtonView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private QavRecordButtonView.ShowStateChangeListener jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView$ShowStateChangeListener;
-  private Bitmap b;
-  private Bitmap c;
+  private mqf jdField_a_of_type_Mqf;
   
   public QavRecordButtonView(Context paramContext)
   {
@@ -74,10 +73,8 @@ public class QavRecordButtonView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130840302);
-    this.b = a(2130840304);
-    this.c = a(2130840305);
-    super.setOnTouchListener(new kdg(this));
+    this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130841887);
+    super.setOnTouchListener(new mqe(this));
   }
   
   public int a()
@@ -92,30 +89,16 @@ public class QavRecordButtonView
     int j = getHeight();
     switch (this.jdField_a_of_type_Int)
     {
-    default: 
     case 1: 
     case 2: 
-      do
-      {
-        do
-        {
-          return;
-        } while (this.jdField_a_of_type_AndroidGraphicsBitmap == null);
-        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-        this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, i, j);
-        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-        return;
-      } while (this.b == null);
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.b.getWidth(), this.b.getHeight());
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, i, j);
-      paramCanvas.drawBitmap(this.b, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+    default: 
       return;
     }
-    if (this.c != null)
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.c.getWidth(), this.c.getHeight());
+      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
       this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, i, j);
-      paramCanvas.drawBitmap(this.c, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
     float f1 = 0.08571429F * i;
     float f2 = Math.min(i, j) / 2 - f1 - 0.002857143F * i;
@@ -133,9 +116,9 @@ public class QavRecordButtonView
     super.drawableStateChanged();
   }
   
-  public void setListener(QavRecordButtonView.ShowStateChangeListener paramShowStateChangeListener)
+  public void setListener(mqf parammqf)
   {
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView$ShowStateChangeListener = paramShowStateChangeListener;
+    this.jdField_a_of_type_Mqf = parammqf;
   }
   
   public void setProgress(long paramLong1, long paramLong2)
@@ -161,10 +144,10 @@ public class QavRecordButtonView
     for (;;)
     {
       invalidate();
-      if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView$ShowStateChangeListener == null) {
+      if (this.jdField_a_of_type_Mqf == null) {
         break;
       }
-      this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView$ShowStateChangeListener.e(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Mqf.e(this.jdField_a_of_type_Int);
       return;
       super.setAlpha(1.0F);
       if (paramBoolean)
@@ -173,10 +156,10 @@ public class QavRecordButtonView
         continue;
         if (paramBoolean)
         {
-          super.setContentDescription(getResources().getString(2131429655));
+          super.setContentDescription(getResources().getString(2131696244));
           continue;
           if (paramBoolean) {
-            super.setContentDescription(getResources().getString(2131429656));
+            super.setContentDescription(getResources().getString(2131696245));
           }
           this.jdField_a_of_type_Float = 0.0F;
         }

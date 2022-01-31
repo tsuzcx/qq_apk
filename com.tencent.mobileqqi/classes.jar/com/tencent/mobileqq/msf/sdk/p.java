@@ -18,19 +18,18 @@ class p
   public void run()
   {
     int i = 0;
-    if ((n.c) && (n.i().compareAndSet(false, true))) {
+    if ((n.c) && (n.j().compareAndSet(false, true))) {
       try
       {
-        n.b(MsfSdkUtils.getProcessName(n.h()));
+        n.b(MsfSdkUtils.getProcessName(n.i()));
         try
         {
-          n.c(n.h().getPackageName());
+          n.c(n.i().getPackageName());
           n.c(Process.myPid());
-          Log.d("appMemory", "QLog init retry ");
           n.a(System.currentTimeMillis());
           n.m.setName("logWriteThread");
           n.m.start();
-          n.j().removeCallbacks(n.j);
+          n.k().removeCallbacks(n.j);
           return;
         }
         catch (Exception localException1)
@@ -45,17 +44,17 @@ class p
       }
       catch (Exception localException2)
       {
-        n.i().set(false);
+        n.j().set(false);
         localException2.printStackTrace();
-        j = n.k().get();
-        Log.d("appMemory", "QLog init post retry " + j + " times, interval " + n.l()[j]);
-        n.j().removeCallbacks(n.j);
-        n.j().postDelayed(n.j, n.l()[j] * 60000);
+        j = n.l().get();
+        Log.d("appMemory", "QLog init post retry " + j + " times, interval " + n.m()[j]);
+        n.k().removeCallbacks(n.j);
+        n.k().postDelayed(n.j, n.m()[j] * 60000);
         j += 1;
-        if (j >= n.l().length) {}
+        if (j >= n.m().length) {}
         for (;;)
         {
-          n.k().set(i);
+          n.l().set(i);
           return;
           i = j;
         }

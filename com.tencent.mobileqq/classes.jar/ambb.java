@@ -1,27 +1,41 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.widget.DynamicGridView;
+import android.os.Handler;
+import android.os.Message;
 
 public class ambb
-  extends AnimatorListenerAdapter
+  implements alpg
 {
-  public ambb(DynamicGridView paramDynamicGridView) {}
+  private Handler a;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public ambb(Handler paramHandler)
   {
-    DynamicGridView.b(this.a, false);
-    DynamicGridView.a(this.a);
+    this.a = paramHandler;
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a()
   {
-    DynamicGridView.b(this.a, true);
-    DynamicGridView.a(this.a);
+    this.a = null;
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    int i = 1;
+    if (this.a == null) {}
+    while ((paramInt != 1) && (paramInt != 0)) {
+      return;
+    }
+    Handler localHandler = this.a;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      localHandler.obtainMessage(paramInt, i, 0, paramObject).sendToTarget();
+      return;
+      i = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ambb
  * JD-Core Version:    0.7.0.1
  */

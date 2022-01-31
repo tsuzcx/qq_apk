@@ -1,21 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class vha
-  implements ValueAnimator.AnimatorUpdateListener
+  extends uro
 {
-  public vha(SixCombolEffectView paramSixCombolEffectView) {}
+  public int b;
+  public int c;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public vha(qqstory_service.RspGetBlackList paramRspGetBlackList)
   {
-    this.a.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    super(paramRspGetBlackList.result);
+    this.b = paramRspGetBlackList.black_status.get();
+    this.c = paramRspGetBlackList.update_interval.get();
+  }
+  
+  public String toString()
+  {
+    return "GetBlackListStatusResponse{blackStatus=" + this.b + ", updateInterval=" + this.c + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vha
  * JD-Core Version:    0.7.0.1
  */

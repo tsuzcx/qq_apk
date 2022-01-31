@@ -1,31 +1,37 @@
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import tencent.mobileim.structmsg.structmsg.RspHead;
+import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
 
-public final class amlw
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+class amlw
+  implements bavp
 {
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  amlw(amlp paramamlp, long paramLong1, long paramLong2, long paramLong3) {}
+  
+  public void a(bavr parambavr, bavq parambavq)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("plugin_tag", 2, "handleOtherProcess onPluginManagerLoaded");
-    }
-    IPluginManager.a(paramPluginManagerClient);
-    IPluginManager.a(null);
-    while (!IPluginManager.a().isEmpty())
+    try
     {
-      paramPluginManagerClient = (ammb)IPluginManager.a().poll();
-      if (paramPluginManagerClient != null) {
-        IPluginManager.b(paramPluginManagerClient.jdField_a_of_type_AndroidContentContext, paramPluginManagerClient.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams, paramPluginManagerClient.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener);
+      parambavr = parambavr.a.getWupBuffer();
+      parambavq = new structmsg.RspSystemMsgRead();
+      parambavq.mergeFrom(parambavr);
+      int i = parambavq.head.result.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.", 2, "sendGroupSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
       }
+      return;
+    }
+    catch (Exception parambavr)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", parambavr);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amlw
  * JD-Core Version:    0.7.0.1
  */

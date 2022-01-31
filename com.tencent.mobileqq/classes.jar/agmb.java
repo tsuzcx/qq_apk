@@ -1,27 +1,52 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.portal.ConversationHongBao;
+import android.graphics.Color;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
 
 public class agmb
-  implements ValueAnimator.AnimatorUpdateListener
+  extends aglx
 {
-  public agmb(ConversationHongBao paramConversationHongBao, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  aiul a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public agmb(QQAppInterface paramQQAppInterface, agmp paramagmp, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, aere paramaere)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {}
-    float f;
-    do
+    super(paramQQAppInterface, paramagmp, paramQQWalletTransferMsgElem, paramInt, paramaere);
+    this.jdField_a_of_type_Aiul = ((aiul)paramQQAppInterface.getManager(125));
+    if (a(this.jdField_a_of_type_Aiul.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId)))
     {
+      this.i = 0;
       return;
-      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-      int i = (int)(-ConversationHongBao.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao) * (1.0F - f));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    } while (!this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.f);
-    this.b.setAlpha(f);
+    }
+    this.i = paramQQWalletTransferMsgElem.effectsId;
+  }
+  
+  public boolean b()
+  {
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
+    }
+    this.jdField_a_of_type_Agmp.b.setVisibility(0);
+    this.jdField_a_of_type_Agmp.b.setTextColor(-8947849);
+    this.jdField_a_of_type_Agmp.b.setText(agmc.d);
+    return true;
+  }
+  
+  public void f()
+  {
+    super.f();
+    try
+    {
+      this.jdField_a_of_type_Agmp.a.setTextColor(Color.parseColor("#604121"));
+      this.jdField_a_of_type_Agmp.a.setText(ajeu.a(this.jdField_a_of_type_Agmp.a.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, 330, this.jdField_a_of_type_Agmp.a.getPaint()));
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
 }
 

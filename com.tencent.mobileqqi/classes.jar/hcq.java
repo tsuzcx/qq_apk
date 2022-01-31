@@ -1,43 +1,24 @@
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread.UploadState;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 
-class hcq
-  implements Runnable
+public class hcq
+  implements View.OnClickListener
 {
-  hcq(hcp paramhcp, Object paramObject) {}
+  public hcq(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    AvatarWallAdapter.m = 0;
-    this.jdField_a_of_type_Hcp.a.n = 0;
-    int i = this.jdField_a_of_type_Hcp.a.b - this.jdField_a_of_type_Hcp.a.j;
-    if (i >= 8) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localObject = (TroopUploadingThread.UploadState)this.jdField_a_of_type_JavaLangObject;
-          if (((TroopUploadingThread.UploadState)localObject).a != 1) {
-            break;
-          }
-          this.jdField_a_of_type_Hcp.a.a(i, ((TroopUploadingThread.UploadState)localObject).b, ((TroopUploadingThread.UploadState)localObject).c);
-        } while (this.jdField_a_of_type_Hcp.a.a(this.jdField_a_of_type_Hcp.a.g));
-        this.jdField_a_of_type_Hcp.a.d = false;
-        this.jdField_a_of_type_Hcp.a.b();
-        return;
-      } while (((TroopUploadingThread.UploadState)localObject).a != 2);
-      localObject = this.jdField_a_of_type_Hcp.a.a(((TroopUploadingThread.UploadState)localObject).b);
-    } while (localObject == null);
-    this.jdField_a_of_type_Hcp.a.a((String)localObject, i);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hcq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import java.util.ArrayList;
+import com.tencent.av.VideoController;
+import java.util.Comparator;
 
-class lfm
-  implements Runnable
+public class lfm
+  implements Comparator<lfu>
 {
-  lfm(lfl paramlfl, ArrayList paramArrayList) {}
+  public lfm(VideoController paramVideoController) {}
   
-  public void run()
+  public int a(lfu paramlfu1, lfu paramlfu2)
   {
-    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Lfl.a, this.jdField_a_of_type_JavaUtilArrayList);
+    return (int)(paramlfu1.d - paramlfu2.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lfm
  * JD-Core Version:    0.7.0.1
  */

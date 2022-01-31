@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class qq_ad$QQAdReportRsp
-  extends MessageMicro
+  extends MessageMicro<QQAdReportRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "ret_code", "click_id" }, new Object[] { Integer.valueOf(0), "" }, QQAdReportRsp.class);
   public final PBStringField click_id = PBField.initString("");
@@ -15,7 +15,7 @@ public final class qq_ad$QQAdReportRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.qqshop.qq_ad.QQAdReportRsp
  * JD-Core Version:    0.7.0.1
  */

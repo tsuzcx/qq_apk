@@ -1,22 +1,22 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
+import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter;
+import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter.Params;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.views.videoimax.TransitionContext;
 
-class aamr
-  implements View.OnTouchListener
+public class aamr
+  implements AdVideoSpliceAdapter
 {
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new aams(this));
-  
-  aamr(aamq paramaamq) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public AdError show(AdVideoSpliceAdapter.Params paramParams)
   {
-    if (ARGreetingCardListManager.a(this.jdField_a_of_type_Aamq.a)) {
-      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
+    {
+      aase.d("GdtVideoSpliceAdapter", "show error");
+      return new AdError(4);
     }
-    return true;
+    aase.b("GdtVideoSpliceAdapter", "show");
+    new TransitionContext(paramParams).b();
+    return new AdError(0);
   }
 }
 

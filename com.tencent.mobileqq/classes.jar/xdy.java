@@ -1,22 +1,14 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import android.graphics.Bitmap;
 
-public class xdy
-  implements Runnable
+public abstract interface xdy
 {
-  public xdy(ThemeHbFragment paramThemeHbFragment) {}
+  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
   
-  public void run()
-  {
-    ThemeHbFragment.a(this.a).startAnimation(ThemeHbFragment.a(this.a));
-    ThemeHbFragment.a(this.a).setVisibility(0);
-    this.a.a.a("theme.pack.show", 2);
-  }
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xdy
  * JD-Core Version:    0.7.0.1
  */

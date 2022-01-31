@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/edw" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/a7v" android:paddingLeft="20.5dip" android:paddingTop="16.5dip" android:paddingRight="20.5dip" android:paddingBottom="16.5dip" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="55.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="55.0dip" android:layout_marginBottom="20.0dip" android:layout_centerHorizontal="true">
+        <com.tencent.mobileqq.limitchat.TopicTextView android:textSize="17.5sp" android:textColor="@color/skin_black" android:ellipsize="end" android:gravity="left" android:id="@id/kbs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:maxLines="3" android:singleLine="false" android:layout_centerHorizontal="true" android:lineSpacingExtra="2.5dip" android:lineSpacingMultiplier="1.0" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/gsi" android:paddingLeft="@dimen/b9v" android:paddingRight="@dimen/b9v" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/b9u" android:layout_marginTop="@dimen/b9u" android:layout_marginRight="@dimen/b9u" android:layout_marginBottom="15.0dip">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="72.0dip">
+            <ImageView android:id="@id/aag" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="16.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/aag" android:layout_centerVertical="true">
+                <TextView android:textSize="14.0dip" android:textColor="#ff878b99" android:ellipsize="end" android:id="@id/gm8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:singleLine="true" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip">
+                    <ImageView android:layout_gravity="center_vertical" android:id="@id/mgd" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginRight="3.0dip" />
+                    <TextView android:textSize="14.0dip" android:textColor="#ff878b99" android:ellipsize="end" android:id="@id/mtl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/gfz" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/gg0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
+        <com.etrump.mixlayout.ETTextView android:textSize="15.0dip" android:textColor="#ff777777" android:ellipsize="end" android:id="@id/kdi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:maxLines="4" android:includeFontPadding="false" android:lineSpacingExtra="2.0dip" />
+        <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView android:id="@id/jn0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" app:VoiceWaveType="1" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/gsj" android:padding="@dimen/b9v" android:layout_width="fill_parent" android:layout_height="72.0dip" android:layout_marginLeft="@dimen/b9u" android:layout_marginRight="@dimen/b9u" android:layout_marginBottom="@dimen/b9u" android:layout_below="@id/gsi">
+        <ImageView android:id="@id/foy" android:background="@drawable/cke" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginTop="3.0dip" android:layout_alignTop="@id/j5a" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff878b99" android:ellipsize="end" android:id="@id/j5a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="8.0dip" android:maxLines="2" android:layout_weight="1.0" android:layout_toLeftOf="@id/j22" android:layout_toRightOf="@id/foy" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0dip" android:id="@id/j22" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/w4c" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/i9" />
+    </RelativeLayout>
+</RelativeLayout>

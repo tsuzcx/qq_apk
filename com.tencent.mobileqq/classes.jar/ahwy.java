@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.secspy.SecSpyFileManager;
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class ahwy
-  implements Runnable
+class ahwy
+  implements DialogInterface.OnKeyListener
 {
-  public ahwy(SecSpyFileManager paramSecSpyFileManager) {}
+  ahwy(ahww paramahww) {}
   
-  public void run()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    UnifiedDebugManager.a(this.a.a.getApplication());
+    if (paramInt == 4)
+    {
+      ahww.a(this.a, ahww.a(this.a), Long.valueOf(ahww.a(this.a)).longValue());
+      ahww.a(this.a);
+    }
+    return true;
   }
 }
 

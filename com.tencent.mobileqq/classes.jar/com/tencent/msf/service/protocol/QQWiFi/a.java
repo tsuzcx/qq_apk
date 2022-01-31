@@ -9,10 +9,10 @@ public final class a
   extends JceStruct
 {
   static ArrayList e;
-  public ArrayList a;
+  public ArrayList a = null;
   public String b = "";
   public String c = "";
-  public int d;
+  public int d = 0;
   
   public a() {}
   

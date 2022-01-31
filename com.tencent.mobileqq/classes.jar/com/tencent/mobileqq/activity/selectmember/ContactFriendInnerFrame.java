@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.selectmember;
 
+import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
+import bevu;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 import com.tencent.mobileqq.widget.RedDotTextView;
 import com.tencent.mobileqq.widget.TabBarView;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
 
 public class ContactFriendInnerFrame
   extends SelectMemberInnerFrame
-  implements TabBarView.OnTabChangeListener
+  implements bevu
 {
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private PhoneContactSelectActivity jdField_a_of_type_ComTencentMobileqqActivitySelectmemberPhoneContactSelectActivity;
   public TroopDiscussionBaseV a;
   private TabBarView jdField_a_of_type_ComTencentMobileqqWidgetTabBarView;
   private TroopDiscussionBaseV b;
@@ -63,7 +63,7 @@ public class ContactFriendInnerFrame
     }
   }
   
-  private void h()
+  private void g()
   {
     if (this.b == null)
     {
@@ -73,7 +73,7 @@ public class ContactFriendInnerFrame
     a(this.b);
   }
   
-  private void i()
+  private void h()
   {
     if (this.c == null)
     {
@@ -85,30 +85,6 @@ public class ContactFriendInnerFrame
   
   public ContactSearchFragment a()
   {
-    int j = 1;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberPhoneContactSelectActivity != null)
-    {
-      int i;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberPhoneContactSelectActivity.a == 0) {
-        i = 32769;
-      }
-      for (;;)
-      {
-        return ContactSearchFragment.a(-1, i, null, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.h, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberPhoneContactSelectActivity);
-        i = j;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberPhoneContactSelectActivity.a != 2)
-        {
-          i = j;
-          if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberPhoneContactSelectActivity.a == 1) {
-            if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberPhoneContactSelectActivity.b) {
-              i = 32768;
-            } else {
-              i = 16384;
-            }
-          }
-        }
-      }
-    }
     return null;
   }
   
@@ -129,42 +105,20 @@ public class ContactFriendInnerFrame
   {
     super.a(paramBundle);
     paramBundle = a();
-    setContentView(2130969724);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131363113));
+    setContentView(2131560253);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131377363));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setOnTabChangeListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0, paramBundle.getString(2131438377));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).setContentDescription("已选定" + paramBundle.getString(2131438377));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1, paramBundle.getString(2131438378));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).setContentDescription(paramBundle.getString(2131438378));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131366488));
-    int i;
-    if ((paramBundle instanceof PhoneContactSelectActivity))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberPhoneContactSelectActivity = ((PhoneContactSelectActivity)paramBundle);
-      i = ((PhoneContactSelectActivity)paramBundle).a;
-      if (i == 2)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setVisibility(8);
-        i();
-      }
-    }
-    else
-    {
-      return;
-    }
-    if (i == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setVisibility(8);
-      h();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(0, false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0, paramBundle.getString(2131691130));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).setContentDescription(alud.a(2131702864) + paramBundle.getString(2131691130));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1, paramBundle.getString(2131691131));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).setContentDescription(paramBundle.getString(2131691131));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131368336));
   }
   
   public void b(Bundle paramBundle)
   {
     super.b(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(false, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131435990), this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(false, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131719711), this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d);
   }
   
   public void d()
@@ -189,12 +143,6 @@ public class ContactFriendInnerFrame
     ((PhoneContactTabView)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopDiscussionBaseV).c();
   }
   
-  public void g()
-  {
-    i();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(1, true);
-  }
-  
   public void onTabSelected(int paramInt1, int paramInt2)
   {
     switch (paramInt2)
@@ -202,15 +150,15 @@ public class ContactFriendInnerFrame
     default: 
       return;
     case 0: 
-      h();
+      g();
       return;
     }
-    i();
+    h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.ContactFriendInnerFrame
  * JD-Core Version:    0.7.0.1
  */

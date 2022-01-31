@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.fts.entity;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.fts.utils.SQLUtils;
-import com.tencent.mobileqq.fts.utils.SegmentUtils;
+import asja;
+import asjb;
+import asjm;
+import asjn;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,14 +16,14 @@ public abstract class FTSEntity
   public String ext1;
   public String ext2;
   public String ext3;
-  @notIndex
+  @asjb
   public byte[] exts;
-  @notColumn
-  public Map indexContentMap = new HashMap();
+  @asja
+  public Map<String, String> indexContentMap = new HashMap();
   
-  public void doDeserialize() {}
+  protected void doDeserialize() {}
   
-  public void doSerialize() {}
+  protected void doSerialize() {}
   
   public String getIndexColumnName(String paramString)
   {
@@ -44,7 +46,7 @@ public abstract class FTSEntity
   {
     try
     {
-      Iterator localIterator = SQLUtils.a(getClass()).iterator();
+      Iterator localIterator = asjm.a(getClass()).iterator();
       while (localIterator.hasNext())
       {
         Field localField = (Field)localIterator.next();
@@ -53,7 +55,7 @@ public abstract class FTSEntity
           String str = (String)localField.get(this);
           if (!TextUtils.isEmpty(str))
           {
-            str = SegmentUtils.a(str);
+            str = asjn.a(str);
             this.indexContentMap.put(localField.getName(), str);
           }
         }
@@ -68,7 +70,7 @@ public abstract class FTSEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fts.entity.FTSEntity
  * JD-Core Version:    0.7.0.1
  */

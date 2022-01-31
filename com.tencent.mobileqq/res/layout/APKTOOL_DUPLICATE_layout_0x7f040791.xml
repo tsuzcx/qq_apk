@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a23cf" android:layout_width="120.0dip" android:layout_height="120.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d5c" android:duplicateParentState="true" android:layout_width="120.0dip" android:layout_height="120.0dip" android:scaleType="centerCrop" android:contentDescription="查看大图" />
-    <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a23d0" android:background="#80000000" android:visibility="gone" android:duplicateParentState="true" android:layout_width="120.0dip" android:layout_height="120.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021559" android:scaleType="center" android:contentDescription="上传失败" />
-</RelativeLayout>

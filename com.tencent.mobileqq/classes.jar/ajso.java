@@ -1,16 +1,18 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter;
-import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter.ViewHolder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class ajso
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ajso(MediaPreviewAdapter paramMediaPreviewAdapter, MediaPreviewAdapter.ViewHolder paramViewHolder) {}
+  public ajso(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter$ViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter$ViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter.a);
+    LpReportInfo_pf00064.allReport(680, 1, 2);
+    QzoneSlideShowPreparingFragment.a(this.a).dismiss();
+    this.a.a();
   }
 }
 

@@ -1,21 +1,37 @@
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnCompletionListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
-class aeys
-  implements Runnable
+public class aeys
+  implements View.OnClickListener
 {
-  aeys(aeyr paramaeyr) {}
+  public aeys(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a(this.a.a);
+    VoiceTextEditPanel.a(this.a).a.setVisibility(0);
+    if (!this.a.a())
+    {
+      VoiceTextEditPanel.a(this.a).h(false);
+      VoiceTextEditPanel.a(this.a).a();
+      VoiceTextEditPanel.b(this.a);
+      azqs.b(null, "dc00898", "", "", "0X800A1DB", "0X800A1DB", 1, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      VoiceTextEditPanel.c(this.a);
+      return;
+      VoiceTextEditPanel.a(this.a).a(1);
+      VoiceTextEditPanel.a(this.a).aM();
+      azqs.b(null, "dc00898", "", "", "0X800A1DB", "0X800A1DB", 2, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeys
  * JD-Core Version:    0.7.0.1
  */

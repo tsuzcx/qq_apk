@@ -1,19 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemLongClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
-class aiwo
-  implements AdapterView.OnItemLongClickListener
+public class aiwo
+  extends BroadcastReceiver
 {
-  aiwo(aiwl paramaiwl) {}
+  public aiwo(SendHbActivity paramSendHbActivity) {}
   
-  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.a.a.a.e) || (this.a.a.a.d)) {
-      TroopAvatarWallPreviewActivity.c(this.a.a.a);
+    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (SendHbActivity.a(this.a)) && ((this.a.a & 0x40) > 0)) {
+      this.a.finish();
     }
-    return true;
   }
 }
 

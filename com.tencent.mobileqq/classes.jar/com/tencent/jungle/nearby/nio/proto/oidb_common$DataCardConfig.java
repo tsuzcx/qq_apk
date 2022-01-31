@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_common$DataCardConfig
-  extends MessageMicro
+  extends MessageMicro<DataCardConfig>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_card_wording = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -28,7 +28,7 @@ public final class oidb_common$DataCardConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.jungle.nearby.nio.proto.oidb_common.DataCardConfig
  * JD-Core Version:    0.7.0.1
  */

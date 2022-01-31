@@ -1,23 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qqpim.QQPimTipsInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class amqs
-  implements Parcelable.Creator
+final class amqs
+  implements DialogInterface.OnClickListener
 {
-  public QQPimTipsInfo a(Parcel paramParcel)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new QQPimTipsInfo(paramParcel, null);
-  }
-  
-  public QQPimTipsInfo[] a(int paramInt)
-  {
-    return new QQPimTipsInfo[paramInt];
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amqs
  * JD-Core Version:    0.7.0.1
  */

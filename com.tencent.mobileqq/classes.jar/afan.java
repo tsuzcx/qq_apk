@@ -1,20 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleView;
 
 public class afan
-  implements View.OnClickListener
+  implements afap
 {
-  public afan(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public afan(DoodleView paramDoodleView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.e(paramView);
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a(paramInt1, paramInt2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afan
  * JD-Core Version:    0.7.0.1
  */

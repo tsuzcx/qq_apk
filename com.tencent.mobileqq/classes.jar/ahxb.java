@@ -1,43 +1,29 @@
-import com.tencent.common.app.BaseProtocolCoder;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.compatible.ActionListener;
-import com.tencent.mobileqq.service.MobileQQService;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.ArrayList;
 
-public class ahxb
-  extends ActionListener
+class ahxb
+  implements DialogInterface.OnClickListener
 {
-  public ahxb(MobileQQService paramMobileQQService) {}
+  ahxb(ahww paramahww, ArrayList paramArrayList, int paramInt) {}
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramFromServiceMsg != null) && ("VideoSvc.Send".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())))
+    ahww.a(this.jdField_a_of_type_Ahww, true);
+    ahww.a(this.jdField_a_of_type_Ahww).a(1);
+    ahww.a(this.jdField_a_of_type_Ahww, this.jdField_a_of_type_JavaUtilArrayList.size(), 0.0F);
+    if (bdin.d(BaseApplicationImpl.getContext()))
     {
-      localObject = this.a.a("VideoSvc.Send");
-      if (localObject != null)
-      {
-        localObject = ((BaseProtocolCoder)localObject).a(paramToServiceMsg, paramFromServiceMsg);
-        localMessageHandler = MobileQQService.a(this.a).a();
-        if ((localMessageHandler != null) && (localObject != null)) {
-          localMessageHandler.a(paramToServiceMsg, paramFromServiceMsg, localObject);
-        }
-      }
+      paramInt = (int)(90.0F / this.jdField_a_of_type_Int);
+      ahww.a(this.jdField_a_of_type_Ahww).b(paramInt);
     }
-    while (paramFromServiceMsg == null)
-    {
-      Object localObject;
-      MessageHandler localMessageHandler;
-      return;
-    }
-    this.a.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    ahww.a(this.jdField_a_of_type_Ahww, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxb
  * JD-Core Version:    0.7.0.1
  */

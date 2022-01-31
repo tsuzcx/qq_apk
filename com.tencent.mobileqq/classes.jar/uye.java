@@ -1,27 +1,24 @@
-import android.graphics.drawable.StateListDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder;
-
 public class uye
-  implements URLDrawable.URLDrawableListener
 {
-  public uye(GivingHeartItemBuilder paramGivingHeartItemBuilder, StateListDrawable paramStateListDrawable) {}
+  public final long a;
+  public final uyc a;
+  public final long b;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public uye(uyc paramuyc, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable.invalidateSelf();
+    this.jdField_a_of_type_Uyc = paramuyc;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+  }
+  
+  public String toString()
+  {
+    return "Progress{intput=" + this.jdField_a_of_type_Uyc + ", downloadBytes=" + this.jdField_a_of_type_Long + ", totalBytes=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uye
  * JD-Core Version:    0.7.0.1
  */

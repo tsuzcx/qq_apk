@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantActivity;
+import com.tencent.mobileqq.transfile.FMTSrvAddrProvider;
+import com.tencent.mobileqq.transfile.ServerAddr;
 
 public class gnt
-  implements View.OnClickListener
+  extends ServerAddr
 {
-  public gnt(QZoneShareAlbumAssistantActivity paramQZoneShareAlbumAssistantActivity) {}
+  public int a;
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void b()
   {
-    QZoneShareAlbumAssistantActivity.b(this.a);
-    QZoneShareAlbumAssistantActivity.c(this.a);
+    FMTSrvAddrProvider.a().a(this.jdField_a_of_type_Int, "http://" + this.jdField_a_of_type_JavaLangString + ":" + this.b);
   }
 }
 

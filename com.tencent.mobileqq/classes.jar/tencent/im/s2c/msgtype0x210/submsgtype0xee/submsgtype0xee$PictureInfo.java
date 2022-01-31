@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class submsgtype0xee$PictureInfo
-  extends MessageMicro
+  extends MessageMicro<PictureInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_url = PBField.initBytes(ByteStringMicro.EMPTY);

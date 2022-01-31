@@ -1,32 +1,16 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.pgc.QQStoryDiscoverSearchDialog;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-public class nie
-  implements BusinessObserver
+class nie
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public nie(QQStoryDiscoverSearchDialog paramQQStoryDiscoverSearchDialog) {}
+  nie(nic paramnic) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramBoolean) {}
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      this.a.a(paramBundle);
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.qqstory.search", 2, QLog.getStackTraceString(paramBundle));
-    }
-  }
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nie
  * JD-Core Version:    0.7.0.1
  */

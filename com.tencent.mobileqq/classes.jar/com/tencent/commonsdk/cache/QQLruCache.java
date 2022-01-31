@@ -40,33 +40,7 @@ public class QQLruCache<K, V>
   
   private void init(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.mCache = new LruCache(paramInt2, false)
-    {
-      protected void entryRemoved(boolean paramAnonymousBoolean, K paramAnonymousK, V paramAnonymousV1, V paramAnonymousV2)
-      {
-        QQLruCache.this.entryRemoved(paramAnonymousBoolean, paramAnonymousK, paramAnonymousV1, paramAnonymousV2);
-        if (paramAnonymousBoolean)
-        {
-          if (paramAnonymousV1 != null) {}
-          try
-          {
-            if ((paramAnonymousV1 instanceof List)) {
-              QQLruCache.access$002(QQLruCache.this, QQLruCache.this.subNum - ((List)paramAnonymousV1).size());
-            }
-            if ((paramAnonymousV2 != null) && ((paramAnonymousV2 instanceof List))) {
-              QQLruCache.access$002(QQLruCache.this, QQLruCache.this.subNum + ((List)paramAnonymousV2).size());
-            }
-            return;
-          }
-          finally {}
-        }
-      }
-      
-      protected int sizeOf(K paramAnonymousK, V paramAnonymousV)
-      {
-        return QQLruCache.this.sizeOf(paramAnonymousK, paramAnonymousV);
-      }
-    };
+    this.mCache = new QQLruCache.1(this, paramInt2, false);
     init(paramInt1, paramInt3);
   }
   
@@ -84,10 +58,10 @@ public class QQLruCache<K, V>
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 38	com/tencent/commonsdk/cache/QQLruCache:subNum	I
+    //   3: getfield 36	com/tencent/commonsdk/cache/QQLruCache:subNum	I
     //   6: ifle +38 -> 44
     //   9: aload_0
-    //   10: getfield 38	com/tencent/commonsdk/cache/QQLruCache:subNum	I
+    //   10: getfield 36	com/tencent/commonsdk/cache/QQLruCache:subNum	I
     //   13: istore_2
     //   14: aload_0
     //   15: getfield 65	com/tencent/commonsdk/cache/QQLruCache:mCache	Landroid/support/v4/util/LruCache;
@@ -96,10 +70,10 @@ public class QQLruCache<K, V>
     //   22: aload_0
     //   23: iload_2
     //   24: aload_0
-    //   25: getfield 38	com/tencent/commonsdk/cache/QQLruCache:subNum	I
+    //   25: getfield 36	com/tencent/commonsdk/cache/QQLruCache:subNum	I
     //   28: isub
     //   29: aload_0
-    //   30: getfield 44	com/tencent/commonsdk/cache/QQLruCache:mItemSize	I
+    //   30: getfield 42	com/tencent/commonsdk/cache/QQLruCache:mItemSize	I
     //   33: imul
     //   34: putfield 78	com/tencent/commonsdk/cache/QQLruCache:mClearSize	I
     //   37: aload_0
@@ -122,7 +96,7 @@ public class QQLruCache<K, V>
     //   66: invokevirtual 85	android/support/v4/util/LruCache:size	()I
     //   69: isub
     //   70: aload_0
-    //   71: getfield 44	com/tencent/commonsdk/cache/QQLruCache:mItemSize	I
+    //   71: getfield 42	com/tencent/commonsdk/cache/QQLruCache:mItemSize	I
     //   74: imul
     //   75: putfield 78	com/tencent/commonsdk/cache/QQLruCache:mClearSize	I
     //   78: goto -41 -> 37
@@ -176,7 +150,7 @@ public class QQLruCache<K, V>
     //   2: new 108	com/tencent/commonsdk/cache/LruCacheInfo
     //   5: dup
     //   6: aload_0
-    //   7: getfield 42	com/tencent/commonsdk/cache/QQLruCache:tagId	I
+    //   7: getfield 40	com/tencent/commonsdk/cache/QQLruCache:tagId	I
     //   10: aload_0
     //   11: getfield 65	com/tencent/commonsdk/cache/QQLruCache:mCache	Landroid/support/v4/util/LruCache;
     //   14: invokevirtual 111	android/support/v4/util/LruCache:maxSize	()I
@@ -189,16 +163,16 @@ public class QQLruCache<K, V>
     //   29: putfield 115	com/tencent/commonsdk/cache/LruCacheInfo:size	I
     //   32: aload_1
     //   33: aload_0
-    //   34: getfield 44	com/tencent/commonsdk/cache/QQLruCache:mItemSize	I
+    //   34: getfield 42	com/tencent/commonsdk/cache/QQLruCache:mItemSize	I
     //   37: putfield 116	com/tencent/commonsdk/cache/LruCacheInfo:mItemSize	I
     //   40: aload_0
-    //   41: getfield 38	com/tencent/commonsdk/cache/QQLruCache:subNum	I
+    //   41: getfield 36	com/tencent/commonsdk/cache/QQLruCache:subNum	I
     //   44: ifle +121 -> 165
     //   47: aload_1
     //   48: aload_0
-    //   49: getfield 38	com/tencent/commonsdk/cache/QQLruCache:subNum	I
+    //   49: getfield 36	com/tencent/commonsdk/cache/QQLruCache:subNum	I
     //   52: aload_0
-    //   53: getfield 44	com/tencent/commonsdk/cache/QQLruCache:mItemSize	I
+    //   53: getfield 42	com/tencent/commonsdk/cache/QQLruCache:mItemSize	I
     //   56: imul
     //   57: putfield 119	com/tencent/commonsdk/cache/LruCacheInfo:mMemorySize	I
     //   60: aload_1
@@ -234,9 +208,9 @@ public class QQLruCache<K, V>
     //   122: invokevirtual 142	android/support/v4/util/LruCache:missCount	()I
     //   125: putfield 144	com/tencent/commonsdk/cache/LruCacheInfo:missCount	I
     //   128: aload_1
-    //   129: invokestatic 50	java/lang/System:currentTimeMillis	()J
+    //   129: invokestatic 48	java/lang/System:currentTimeMillis	()J
     //   132: aload_0
-    //   133: getfield 52	com/tencent/commonsdk/cache/QQLruCache:createTime	J
+    //   133: getfield 50	com/tencent/commonsdk/cache/QQLruCache:createTime	J
     //   136: lsub
     //   137: putfield 147	com/tencent/commonsdk/cache/LruCacheInfo:lifeTime	J
     //   140: aload_0
@@ -245,9 +219,9 @@ public class QQLruCache<K, V>
     //   145: lcmp
     //   146: ifeq +15 -> 161
     //   149: aload_1
-    //   150: invokestatic 50	java/lang/System:currentTimeMillis	()J
+    //   150: invokestatic 48	java/lang/System:currentTimeMillis	()J
     //   153: aload_0
-    //   154: getfield 52	com/tencent/commonsdk/cache/QQLruCache:createTime	J
+    //   154: getfield 50	com/tencent/commonsdk/cache/QQLruCache:createTime	J
     //   157: lsub
     //   158: putfield 150	com/tencent/commonsdk/cache/LruCacheInfo:gapTime	J
     //   161: aload_0
@@ -258,7 +232,7 @@ public class QQLruCache<K, V>
     //   166: aload_1
     //   167: getfield 115	com/tencent/commonsdk/cache/LruCacheInfo:size	I
     //   170: aload_0
-    //   171: getfield 44	com/tencent/commonsdk/cache/QQLruCache:mItemSize	I
+    //   171: getfield 42	com/tencent/commonsdk/cache/QQLruCache:mItemSize	I
     //   174: imul
     //   175: putfield 119	com/tencent/commonsdk/cache/LruCacheInfo:mMemorySize	I
     //   178: goto -118 -> 60

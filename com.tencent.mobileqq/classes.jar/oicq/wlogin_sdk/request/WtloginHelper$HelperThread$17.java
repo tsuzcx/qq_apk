@@ -1,12 +1,13 @@
 package oicq.wlogin_sdk.request;
 
+import oicq.wlogin_sdk.tlv_type.tlv_t;
 import oicq.wlogin_sdk.tools.ErrMsg;
 import oicq.wlogin_sdk.tools.util;
 
 class WtloginHelper$HelperThread$17
   implements Runnable
 {
-  WtloginHelper$HelperThread$17(WtloginHelper.HelperThread paramHelperThread, int paramInt) {}
+  WtloginHelper$HelperThread$17(WtloginHelper.HelperThread paramHelperThread, int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -19,7 +20,14 @@ class WtloginHelper$HelperThread$17
       util.LOGW("login helper listener is null", this.this$1.mUserAccount);
       return;
     }
-    WtloginHelper.access$100(this.this$1.mHelper).OnException(new ErrMsg(), this.this$1.mReqType, this.this$1.mUserSigInfo);
+    async_context localasync_context = t.b(this.this$1.mUserSigInfo._seqence);
+    ErrMsg localErrMsg = localasync_context._last_err_msg;
+    WtloginHelper.HelperThread.access$600(this.this$1, localasync_context, this.val$ret);
+    byte[] arrayOfByte = null;
+    if (localasync_context.tlv540 != null) {
+      arrayOfByte = localasync_context.tlv540.get_data();
+    }
+    WtloginHelper.access$100(this.this$1.mHelper).onLoginByWeChat(localasync_context._uin, arrayOfByte, this.this$1.quickLoginParam, localasync_context._weixinUserFlags, this.val$ret, localErrMsg);
   }
 }
 

@@ -1,49 +1,27 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.VideoPlayCountObserver;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-
 public class mdi
-  extends VideoPlayCountObserver
+  extends mdf
 {
-  public mdi(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  boolean a = false;
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public mdi(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayActivity", 2, "onGetVideoPlayCount isSuccess: " + paramBoolean);
-    }
-    if (!paramBoolean) {}
-    label35:
-    String str;
-    VideoInfo localVideoInfo;
-    do
-    {
-      Iterator localIterator;
-      do
-      {
-        do
-        {
-          return;
-          break label35;
-          while (paramBundle == null) {}
-          str = paramBundle.getString("VALUE_VIDEO_VID");
-        } while (str == null);
-        localIterator = VideoFeedsPlayActivity.a(this.a).iterator();
-      } while (!localIterator.hasNext());
-      localVideoInfo = (VideoInfo)localIterator.next();
-    } while ((localVideoInfo.a == null) || (!localVideoInfo.a.equals(str)));
-    localVideoInfo.k = paramBundle.getInt("VALUE_VIDEO_PLAY_COUNT");
-    VideoFeedsPlayActivity.a(this.a).a(localVideoInfo.a, localVideoInfo.k);
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
+    this.a = paramBoolean;
+  }
+  
+  public int a()
+  {
+    return 2;
+  }
+  
+  public boolean b()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mdi
  * JD-Core Version:    0.7.0.1
  */

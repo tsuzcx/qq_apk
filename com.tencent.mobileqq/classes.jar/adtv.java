@@ -1,58 +1,30 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQGAudioMsgHandler;
-import com.tencent.mobileqq.intervideo.groupvideo.GVideoStateGetListener;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
-import com.tencent.mobileqq.intervideo.groupvideo.VideoStateInfo;
-import com.tencent.mobileqq.troop.utils.TroopVideoManager;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
 public class adtv
-  implements GVideoStateGetListener
+  extends MqqHandler
 {
-  public adtv(GroupVideoManager paramGroupVideoManager) {}
+  public adtv(RegisterActivity paramRegisterActivity) {}
   
-  public void a(List paramList)
+  public void handleMessage(Message paramMessage)
   {
-    if (GroupVideoManager.a(this.a) == null) {}
+    switch (paramMessage.what)
+    {
+    }
     do
     {
       return;
-      Object localObject = new HashMap(GroupVideoManager.a(this.a).a().d);
-      QQGAudioMsgHandler localQQGAudioMsgHandler = GroupVideoManager.a(this.a).a();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      paramMessage = (String)paramMessage.obj;
+      if (!TextUtils.isEmpty(paramMessage))
       {
-        VideoStateInfo localVideoStateInfo = (VideoStateInfo)paramList.next();
-        long[] arrayOfLong = new long[localVideoStateInfo.jdField_a_of_type_JavaUtilList.size()];
-        int i = 0;
-        while (i < arrayOfLong.length)
-        {
-          arrayOfLong[i] = ((Long)localVideoStateInfo.jdField_a_of_type_JavaUtilList.get(i)).longValue();
-          i += 1;
-        }
-        ((TroopVideoManager)GroupVideoManager.a(this.a).getManager(163)).a(localVideoStateInfo.jdField_a_of_type_Long);
-        localQQGAudioMsgHandler.a(1, String.valueOf(localVideoStateInfo.jdField_a_of_type_Long), localVideoStateInfo.jdField_a_of_type_Int, arrayOfLong, 14);
-        ((Map)localObject).remove(String.valueOf(localVideoStateInfo.jdField_a_of_type_Long));
+        RegisterActivity.b(this.a, paramMessage);
+        return;
       }
-      paramList = ((Map)localObject).entrySet().iterator();
-      while (paramList.hasNext())
-      {
-        localObject = (Map.Entry)paramList.next();
-        if (((Integer)((Map.Entry)localObject).getValue()).intValue() == 14) {
-          localQQGAudioMsgHandler.a(1, (String)((Map.Entry)localObject).getKey(), 0, null, 14);
-        }
-      }
-      paramList = GroupVideoManager.a(this.a).getHandler(Conversation.class);
-    } while (paramList == null);
-    paramList.sendEmptyMessage(1009);
+    } while (!QLog.isColorLevel());
+    QLog.d("IphoneTitleBarActivity", 2, "captcha sig is empty");
   }
 }
 

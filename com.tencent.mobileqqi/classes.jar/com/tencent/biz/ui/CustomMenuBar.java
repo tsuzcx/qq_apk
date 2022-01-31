@@ -17,11 +17,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import btz;
-import bua;
-import bub;
-import buc;
-import bud;
+import bny;
+import bnz;
+import boa;
+import bob;
+import boc;
 import com.tencent.biz.common.util.SubString;
 import com.tencent.mobileqq.international.LocaleString;
 import java.util.ArrayList;
@@ -54,12 +54,12 @@ public class CustomMenuBar
     this.jdField_a_of_type_ComTencentBizUiPopupMenu = null;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_JavaLangRunnable = new bud(this);
+    this.jdField_a_of_type_JavaLangRunnable = new boc(this);
     super.setFocusable(true);
     super.setOrientation(0);
     super.setGravity(16);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838051);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838053);
     this.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
     this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramContext.getText(2131560552));
     paramAttributeSet = new LinearLayout.LayoutParams(-2, -2);
@@ -67,13 +67,13 @@ public class CustomMenuBar
     paramAttributeSet.gravity = 16;
     this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramAttributeSet);
     super.addView(this.jdField_a_of_type_AndroidWidgetImageView);
-    paramContext = (HorizontalScrollView)((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903220, null);
+    paramContext = (HorizontalScrollView)((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903222, null);
     if (Build.VERSION.SDK_INT >= 9) {
       paramContext.setOverScrollMode(2);
     }
     paramContext.setLayoutParams(new LinearLayout.LayoutParams(-1, -1, 1.0F));
     super.addView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131231666));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131231668));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(16);
   }
   
@@ -93,10 +93,10 @@ public class CustomMenuBar
     this.jdField_a_of_type_JavaUtilList.add(paramMenuItem);
     Object localObject = paramMenuItem.a();
     Drawable localDrawable = paramMenuItem.a();
-    View localView = ((LayoutInflater)super.getContext().getSystemService("layout_inflater")).inflate(2130903221, null);
-    ImageView localImageView2 = (ImageView)localView.findViewById(2131231667);
-    TextView localTextView = (TextView)localView.findViewById(2131231668);
-    ImageView localImageView1 = (ImageView)localView.findViewById(2131231669);
+    View localView = ((LayoutInflater)super.getContext().getSystemService("layout_inflater")).inflate(2130903223, null);
+    ImageView localImageView2 = (ImageView)localView.findViewById(2131231669);
+    TextView localTextView = (TextView)localView.findViewById(2131231670);
+    ImageView localImageView1 = (ImageView)localView.findViewById(2131231671);
     if (localDrawable != null)
     {
       localImageView2.setImageDrawable(localDrawable);
@@ -118,8 +118,8 @@ public class CustomMenuBar
         break label343;
       }
       localImageView1.setVisibility(0);
-      localImageView1.setImageResource(2130838491);
-      localTextView.setTextColor(getResources().getColor(2131362033));
+      localImageView1.setImageResource(2130838493);
+      localTextView.setTextColor(getResources().getColor(2131362043));
       localObject = new PopupMenu(super.getContext());
       i = 0;
       while (i < paramMenuItem.b())
@@ -135,10 +135,10 @@ public class CustomMenuBar
       label232:
       localTextView.setVisibility(8);
     }
-    ((PopupMenu)localObject).a(new btz(this, localImageView1, localTextView));
+    ((PopupMenu)localObject).a(new bny(this, localImageView1, localTextView));
     ((PopupMenu)localObject).a(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar$OnMenuItemClickListener);
-    localView.setOnTouchListener(new bua(this, localImageView1, localTextView));
-    localView.setOnClickListener(new bub(this, localImageView1, localTextView, (PopupMenu)localObject));
+    localView.setOnTouchListener(new bnz(this, localImageView1, localTextView));
+    localView.setOnClickListener(new boa(this, localImageView1, localTextView, (PopupMenu)localObject));
     for (;;)
     {
       localView.setFocusable(true);
@@ -149,7 +149,7 @@ public class CustomMenuBar
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
       return;
       label343:
-      localView.setOnClickListener(new buc(this, (String)localObject, i));
+      localView.setOnClickListener(new bob(this, (String)localObject, i));
     }
   }
   

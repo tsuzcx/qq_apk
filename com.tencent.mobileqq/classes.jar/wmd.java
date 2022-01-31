@@ -1,21 +1,31 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class wmd
-  implements Runnable
+class wmd
+  extends QQUIEventReceiver<wmb, vem>
 {
-  public wmd(ContactsTroopAdapter paramContactsTroopAdapter) {}
-  
-  public void run()
+  public wmd(@NonNull wmb paramwmb)
   {
-    ((TroopManager)this.a.a.getManager(51)).a();
-    this.a.a.runOnUiThread(new wme(this));
+    super(paramwmb);
+  }
+  
+  public void a(@NonNull wmb paramwmb, @NonNull vem paramvem)
+  {
+    wxe.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video info list. %s.", paramvem.toString());
+    if (paramvem.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+      wmb.a(paramwmb).a(paramvem.jdField_a_of_type_JavaLangString, paramvem.jdField_a_of_type_JavaUtilList);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vem.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wmd
  * JD-Core Version:    0.7.0.1
  */

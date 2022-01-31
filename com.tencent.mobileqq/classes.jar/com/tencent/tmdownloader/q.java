@@ -1,61 +1,35 @@
 package com.tencent.tmdownloader;
 
-import com.tencent.tmassistant.aidl.b;
-import com.tencent.tmassistantbase.util.r;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.s;
+import com.tencent.tmdownloader.internal.remote.a;
 
 class q
-  extends b
+  implements Runnable
 {
-  q(TMAssistantDownloadClient paramTMAssistantDownloadClient) {}
+  q(f paramf, String paramString, boolean paramBoolean) {}
   
-  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
+  public void run()
   {
-    r.c("TMAssistantDownloadSDKClient", "clientKey:" + paramString1 + ",state:" + paramInt1 + ", errorcode:" + paramInt2 + ",url:" + paramString2);
-    paramString1 = this.a.mWeakListenerArrayList.iterator();
-    while (paramString1.hasNext())
+    try
     {
-      WeakReference localWeakReference = (WeakReference)paramString1.next();
-      ITMAssistantDownloadClientListener localITMAssistantDownloadClientListener = (ITMAssistantDownloadClientListener)localWeakReference.get();
-      if (localITMAssistantDownloadClientListener != null) {
-        r.c("TMAssistantDownloadSDKClient", " listener : " + localITMAssistantDownloadClientListener + "   linstenerWeakReference :" + localWeakReference);
+      ab.c("RemoteOpProxy", "<setBoolean> process:" + s.e() + ", getServiceInterface()");
+      a locala = (a)this.c.getServiceInterface();
+      if (locala != null) {
+        locala.a(this.a, this.b);
       }
-      s.a().a(this.a, localITMAssistantDownloadClientListener, paramString2, paramInt1, paramInt2, paramString3);
+      return;
     }
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong1, long paramLong2)
-  {
-    paramString1 = this.a.mWeakListenerArrayList.iterator();
-    while (paramString1.hasNext())
+    catch (Exception localException)
     {
-      ITMAssistantDownloadClientListener localITMAssistantDownloadClientListener = (ITMAssistantDownloadClientListener)((WeakReference)paramString1.next()).get();
-      if (localITMAssistantDownloadClientListener != null) {}
-      s.a().a(this.a, localITMAssistantDownloadClientListener, paramString2, paramLong1, paramLong2);
-    }
-  }
-  
-  public void a(List<String> paramList)
-  {
-    if (this.a.mWeakLogListenerArrayList != null)
-    {
-      Iterator localIterator = this.a.mWeakLogListenerArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        ITMAssistantDownloadLogListener localITMAssistantDownloadLogListener = (ITMAssistantDownloadLogListener)((WeakReference)localIterator.next()).get();
-        if (localITMAssistantDownloadLogListener != null) {
-          localITMAssistantDownloadLogListener.onLog(TMAssistantDownloadClient.access$000(this.a, paramList));
-        }
-      }
+      ab.c("RemoteOpProxy", "<setInt> process:" + s.e() + ", getServiceInterface() error, error msg = " + localException.getMessage());
+      localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmdownloader.q
  * JD-Core Version:    0.7.0.1
  */

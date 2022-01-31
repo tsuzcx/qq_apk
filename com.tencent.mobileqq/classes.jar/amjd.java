@@ -1,41 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.buscard.BuscardPluginRemoteCommand;
-
 public class amjd
-  extends PublicAccountObserver
 {
-  public amjd(BuscardPluginRemoteCommand paramBuscardPluginRemoteCommand, Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
+  public int a;
+  public long a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void a(boolean paramBoolean, String paramString)
+  public String toString()
   {
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putBoolean("isSuccess", paramBoolean);
-    ((Bundle)localObject).putString("uin", paramString);
-    this.jdField_a_of_type_AndroidOsBundle.putAll((Bundle)localObject);
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("publicAccount.followUin, isSuccess=").append(paramBoolean).append("; result=");
-      if (this.jdField_a_of_type_AndroidOsBundle == null) {
-        break label108;
-      }
-    }
-    label108:
-    for (paramString = this.jdField_a_of_type_AndroidOsBundle.toString();; paramString = "null")
-    {
-      QLog.d("BuscardPluginRemoteCommand", 2, paramString);
-      if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(this.jdField_a_of_type_AndroidOsBundle);
-      }
-      return;
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("M_size=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",C_size=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",R_size=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",K_len=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",time=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjd
  * JD-Core Version:    0.7.0.1
  */

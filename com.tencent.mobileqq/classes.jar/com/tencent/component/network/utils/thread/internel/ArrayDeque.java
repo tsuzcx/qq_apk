@@ -10,17 +10,16 @@ import java.util.Collection;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import plw;
-import plx;
 
-public class ArrayDeque
-  extends AbstractCollection
-  implements Deque, Serializable, Cloneable
+public class ArrayDeque<E>
+  extends AbstractCollection<E>
+  implements Deque<E>, Serializable, Cloneable
 {
+  private static final int MIN_INITIAL_CAPACITY = 8;
   private static final long serialVersionUID = 2340985798034038923L;
-  private transient int jdField_a_of_type_Int;
-  private transient Object[] jdField_a_of_type_ArrayOfJavaLangObject;
-  private transient int b;
+  private transient Object[] elements;
+  private transient int head;
+  private transient int tail;
   
   static
   {
@@ -34,39 +33,21 @@ public class ArrayDeque
   
   public ArrayDeque()
   {
-    this.jdField_a_of_type_ArrayOfJavaLangObject = new Object[16];
+    this.elements = new Object[16];
   }
   
   public ArrayDeque(int paramInt)
   {
-    a(paramInt);
+    allocateElements(paramInt);
   }
   
-  public ArrayDeque(Collection paramCollection)
+  public ArrayDeque(Collection<? extends E> paramCollection)
   {
-    a(paramCollection.size());
+    allocateElements(paramCollection.size());
     addAll(paramCollection);
   }
   
-  private void a()
-  {
-    assert (this.jdField_a_of_type_Int == this.b);
-    int i = this.jdField_a_of_type_Int;
-    int j = this.jdField_a_of_type_ArrayOfJavaLangObject.length;
-    int k = j - i;
-    int m = j << 1;
-    if (m < 0) {
-      throw new IllegalStateException("Sorry, deque too big");
-    }
-    Object[] arrayOfObject = new Object[m];
-    System.arraycopy(this.jdField_a_of_type_ArrayOfJavaLangObject, i, arrayOfObject, 0, k);
-    System.arraycopy(this.jdField_a_of_type_ArrayOfJavaLangObject, 0, arrayOfObject, k, i);
-    this.jdField_a_of_type_ArrayOfJavaLangObject = arrayOfObject;
-    this.jdField_a_of_type_Int = 0;
-    this.b = j;
-  }
-  
-  private void a(int paramInt)
+  private void allocateElements(int paramInt)
   {
     int i = 8;
     if (paramInt >= 8)
@@ -81,16 +62,54 @@ public class ArrayDeque
         i = paramInt >>> 1;
       }
     }
-    this.jdField_a_of_type_ArrayOfJavaLangObject = new Object[i];
+    this.elements = new Object[i];
   }
   
-  private boolean a(int paramInt)
+  private void checkInvariants()
   {
-    b();
-    Object[] arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
+    assert (this.elements[this.tail] == null);
+    if (!$assertionsDisabled)
+    {
+      if (this.head != this.tail) {
+        break label91;
+      }
+      if (this.elements[this.head] != null) {
+        break label125;
+      }
+    }
+    label91:
+    while ((this.elements[this.head] != null) && (this.elements[(this.tail - 1 & this.elements.length - 1)] != null))
+    {
+      if (($assertionsDisabled) || (this.elements[(this.head - 1 & this.elements.length - 1)] == null)) {
+        break;
+      }
+      throw new AssertionError();
+    }
+    label125:
+    throw new AssertionError();
+  }
+  
+  private <T> T[] copyElements(T[] paramArrayOfT)
+  {
+    if (this.head < this.tail) {
+      System.arraycopy(this.elements, this.head, paramArrayOfT, 0, size());
+    }
+    while (this.head <= this.tail) {
+      return paramArrayOfT;
+    }
+    int i = this.elements.length - this.head;
+    System.arraycopy(this.elements, this.head, paramArrayOfT, 0, i);
+    System.arraycopy(this.elements, 0, paramArrayOfT, i, this.tail);
+    return paramArrayOfT;
+  }
+  
+  private boolean delete(int paramInt)
+  {
+    checkInvariants();
+    Object[] arrayOfObject = this.elements;
     int i = arrayOfObject.length - 1;
-    int j = this.jdField_a_of_type_Int;
-    int k = this.b;
+    int j = this.head;
+    int k = this.tail;
     int m = paramInt - j & i;
     int n = k - paramInt & i;
     if (m >= (k - j & i)) {
@@ -104,7 +123,7 @@ public class ArrayDeque
       for (;;)
       {
         arrayOfObject[j] = null;
-        this.jdField_a_of_type_Int = (j + 1 & i);
+        this.head = (j + 1 & i);
         return false;
         System.arraycopy(arrayOfObject, 0, arrayOfObject, 1, paramInt);
         arrayOfObject[0] = arrayOfObject[i];
@@ -114,7 +133,7 @@ public class ArrayDeque
     if (paramInt < k) {
       System.arraycopy(arrayOfObject, paramInt + 1, arrayOfObject, paramInt, n);
     }
-    for (this.b = (k - 1);; this.b = (k - 1 & i))
+    for (this.tail = (k - 1);; this.tail = (k - 1 & i))
     {
       return true;
       System.arraycopy(arrayOfObject, paramInt + 1, arrayOfObject, paramInt, i - paramInt);
@@ -123,42 +142,22 @@ public class ArrayDeque
     }
   }
   
-  private Object[] a(Object[] paramArrayOfObject)
+  private void doubleCapacity()
   {
-    if (this.jdField_a_of_type_Int < this.b) {
-      System.arraycopy(this.jdField_a_of_type_ArrayOfJavaLangObject, this.jdField_a_of_type_Int, paramArrayOfObject, 0, size());
+    assert (this.head == this.tail);
+    int i = this.head;
+    int j = this.elements.length;
+    int k = j - i;
+    int m = j << 1;
+    if (m < 0) {
+      throw new IllegalStateException("Sorry, deque too big");
     }
-    while (this.jdField_a_of_type_Int <= this.b) {
-      return paramArrayOfObject;
-    }
-    int i = this.jdField_a_of_type_ArrayOfJavaLangObject.length - this.jdField_a_of_type_Int;
-    System.arraycopy(this.jdField_a_of_type_ArrayOfJavaLangObject, this.jdField_a_of_type_Int, paramArrayOfObject, 0, i);
-    System.arraycopy(this.jdField_a_of_type_ArrayOfJavaLangObject, 0, paramArrayOfObject, i, this.b);
-    return paramArrayOfObject;
-  }
-  
-  private void b()
-  {
-    assert (this.jdField_a_of_type_ArrayOfJavaLangObject[this.b] == null);
-    if (!$assertionsDisabled)
-    {
-      if (this.jdField_a_of_type_Int != this.b) {
-        break label91;
-      }
-      if (this.jdField_a_of_type_ArrayOfJavaLangObject[this.jdField_a_of_type_Int] != null) {
-        break label125;
-      }
-    }
-    label91:
-    while ((this.jdField_a_of_type_ArrayOfJavaLangObject[this.jdField_a_of_type_Int] != null) && (this.jdField_a_of_type_ArrayOfJavaLangObject[(this.b - 1 & this.jdField_a_of_type_ArrayOfJavaLangObject.length - 1)] != null))
-    {
-      if (($assertionsDisabled) || (this.jdField_a_of_type_ArrayOfJavaLangObject[(this.jdField_a_of_type_Int - 1 & this.jdField_a_of_type_ArrayOfJavaLangObject.length - 1)] == null)) {
-        break;
-      }
-      throw new AssertionError();
-    }
-    label125:
-    throw new AssertionError();
+    Object[] arrayOfObject = new Object[m];
+    System.arraycopy(this.elements, i, arrayOfObject, 0, k);
+    System.arraycopy(this.elements, 0, arrayOfObject, k, i);
+    this.elements = arrayOfObject;
+    this.head = 0;
+    this.tail = j;
   }
   
   private void readObject(ObjectInputStream paramObjectInputStream)
@@ -166,12 +165,12 @@ public class ArrayDeque
     int i = 0;
     paramObjectInputStream.defaultReadObject();
     int j = paramObjectInputStream.readInt();
-    a(j);
-    this.jdField_a_of_type_Int = 0;
-    this.b = j;
+    allocateElements(j);
+    this.head = 0;
+    this.tail = j;
     while (i < j)
     {
-      this.jdField_a_of_type_ArrayOfJavaLangObject[i] = paramObjectInputStream.readObject();
+      this.elements[i] = paramObjectInputStream.readObject();
       i += 1;
     }
   }
@@ -180,70 +179,70 @@ public class ArrayDeque
   {
     paramObjectOutputStream.defaultWriteObject();
     paramObjectOutputStream.writeInt(size());
-    int j = this.jdField_a_of_type_ArrayOfJavaLangObject.length;
-    for (int i = this.jdField_a_of_type_Int; i != this.b; i = i + 1 & j - 1) {
-      paramObjectOutputStream.writeObject(this.jdField_a_of_type_ArrayOfJavaLangObject[i]);
+    int j = this.elements.length;
+    for (int i = this.head; i != this.tail; i = i + 1 & j - 1) {
+      paramObjectOutputStream.writeObject(this.elements[i]);
     }
   }
   
-  public boolean add(Object paramObject)
+  public boolean add(E paramE)
   {
-    addLast(paramObject);
+    addLast(paramE);
     return true;
   }
   
-  public void addFirst(Object paramObject)
+  public void addFirst(E paramE)
   {
-    if (paramObject == null) {
+    if (paramE == null) {
       throw new NullPointerException("e == null");
     }
-    Object[] arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
-    int i = this.jdField_a_of_type_Int - 1 & this.jdField_a_of_type_ArrayOfJavaLangObject.length - 1;
-    this.jdField_a_of_type_Int = i;
-    arrayOfObject[i] = paramObject;
-    if (this.jdField_a_of_type_Int == this.b) {
-      a();
+    Object[] arrayOfObject = this.elements;
+    int i = this.head - 1 & this.elements.length - 1;
+    this.head = i;
+    arrayOfObject[i] = paramE;
+    if (this.head == this.tail) {
+      doubleCapacity();
     }
   }
   
-  public void addLast(Object paramObject)
+  public void addLast(E paramE)
   {
-    if (paramObject == null) {
+    if (paramE == null) {
       throw new NullPointerException("e == null");
     }
-    this.jdField_a_of_type_ArrayOfJavaLangObject[this.b] = paramObject;
-    int i = this.b + 1 & this.jdField_a_of_type_ArrayOfJavaLangObject.length - 1;
-    this.b = i;
-    if (i == this.jdField_a_of_type_Int) {
-      a();
+    this.elements[this.tail] = paramE;
+    int i = this.tail + 1 & this.elements.length - 1;
+    this.tail = i;
+    if (i == this.head) {
+      doubleCapacity();
     }
   }
   
   public void clear()
   {
-    int i = this.jdField_a_of_type_Int;
-    int k = this.b;
+    int i = this.head;
+    int k = this.tail;
     if (i != k)
     {
-      this.b = 0;
-      this.jdField_a_of_type_Int = 0;
-      int m = this.jdField_a_of_type_ArrayOfJavaLangObject.length;
+      this.tail = 0;
+      this.head = 0;
+      int m = this.elements.length;
       int j;
       do
       {
-        this.jdField_a_of_type_ArrayOfJavaLangObject[i] = null;
+        this.elements[i] = null;
         j = i + 1 & m - 1;
         i = j;
       } while (j != k);
     }
   }
   
-  public ArrayDeque clone()
+  public ArrayDeque<E> clone()
   {
     try
     {
       ArrayDeque localArrayDeque = (ArrayDeque)super.clone();
-      localArrayDeque.jdField_a_of_type_ArrayOfJavaLangObject = Arrays.copyOf(this.jdField_a_of_type_ArrayOfJavaLangObject, this.jdField_a_of_type_ArrayOfJavaLangObject.length);
+      localArrayDeque.elements = Arrays.copyOf(this.elements, this.elements.length);
       return localArrayDeque;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
@@ -257,10 +256,10 @@ public class ArrayDeque
     if (paramObject == null) {
       return false;
     }
-    int j = this.jdField_a_of_type_ArrayOfJavaLangObject.length;
-    for (int i = this.jdField_a_of_type_Int;; i = i + 1 & j - 1)
+    int j = this.elements.length;
+    for (int i = this.head;; i = i + 1 & j - 1)
     {
-      Object localObject = this.jdField_a_of_type_ArrayOfJavaLangObject[i];
+      Object localObject = this.elements[i];
       if (localObject == null) {
         break;
       }
@@ -271,28 +270,28 @@ public class ArrayDeque
     return false;
   }
   
-  public Iterator descendingIterator()
+  public Iterator<E> descendingIterator()
   {
-    return new plx(this, null);
+    return new ArrayDeque.DescendingIterator(this, null);
   }
   
-  public Object element()
+  public E element()
   {
     return getFirst();
   }
   
-  public Object getFirst()
+  public E getFirst()
   {
-    Object localObject = this.jdField_a_of_type_ArrayOfJavaLangObject[this.jdField_a_of_type_Int];
+    Object localObject = this.elements[this.head];
     if (localObject == null) {
       throw new NoSuchElementException();
     }
     return localObject;
   }
   
-  public Object getLast()
+  public E getLast()
   {
-    Object localObject = this.jdField_a_of_type_ArrayOfJavaLangObject[(this.b - 1 & this.jdField_a_of_type_ArrayOfJavaLangObject.length - 1)];
+    Object localObject = this.elements[(this.tail - 1 & this.elements.length - 1)];
     if (localObject == null) {
       throw new NoSuchElementException();
     }
@@ -301,87 +300,87 @@ public class ArrayDeque
   
   public boolean isEmpty()
   {
-    return this.jdField_a_of_type_Int == this.b;
+    return this.head == this.tail;
   }
   
-  public Iterator iterator()
+  public Iterator<E> iterator()
   {
-    return new plw(this, null);
+    return new ArrayDeque.DeqIterator(this, null);
   }
   
-  public boolean offer(Object paramObject)
+  public boolean offer(E paramE)
   {
-    return offerLast(paramObject);
+    return offerLast(paramE);
   }
   
-  public boolean offerFirst(Object paramObject)
+  public boolean offerFirst(E paramE)
   {
-    addFirst(paramObject);
+    addFirst(paramE);
     return true;
   }
   
-  public boolean offerLast(Object paramObject)
+  public boolean offerLast(E paramE)
   {
-    addLast(paramObject);
+    addLast(paramE);
     return true;
   }
   
-  public Object peek()
+  public E peek()
   {
     return peekFirst();
   }
   
-  public Object peekFirst()
+  public E peekFirst()
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangObject[this.jdField_a_of_type_Int];
+    return this.elements[this.head];
   }
   
-  public Object peekLast()
+  public E peekLast()
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangObject[(this.b - 1 & this.jdField_a_of_type_ArrayOfJavaLangObject.length - 1)];
+    return this.elements[(this.tail - 1 & this.elements.length - 1)];
   }
   
-  public Object poll()
+  public E poll()
   {
     return pollFirst();
   }
   
-  public Object pollFirst()
+  public E pollFirst()
   {
-    int i = this.jdField_a_of_type_Int;
-    Object localObject = this.jdField_a_of_type_ArrayOfJavaLangObject[i];
+    int i = this.head;
+    Object localObject = this.elements[i];
     if (localObject == null) {
       return null;
     }
-    this.jdField_a_of_type_ArrayOfJavaLangObject[i] = null;
-    this.jdField_a_of_type_Int = (i + 1 & this.jdField_a_of_type_ArrayOfJavaLangObject.length - 1);
+    this.elements[i] = null;
+    this.head = (i + 1 & this.elements.length - 1);
     return localObject;
   }
   
-  public Object pollLast()
+  public E pollLast()
   {
-    int i = this.b;
-    i = this.jdField_a_of_type_ArrayOfJavaLangObject.length - 1 & i - 1;
-    Object localObject = this.jdField_a_of_type_ArrayOfJavaLangObject[i];
+    int i = this.tail;
+    i = this.elements.length - 1 & i - 1;
+    Object localObject = this.elements[i];
     if (localObject == null) {
       return null;
     }
-    this.jdField_a_of_type_ArrayOfJavaLangObject[i] = null;
-    this.b = i;
+    this.elements[i] = null;
+    this.tail = i;
     return localObject;
   }
   
-  public Object pop()
+  public E pop()
   {
     return removeFirst();
   }
   
-  public void push(Object paramObject)
+  public void push(E paramE)
   {
-    addFirst(paramObject);
+    addFirst(paramE);
   }
   
-  public Object remove()
+  public E remove()
   {
     return removeFirst();
   }
@@ -391,7 +390,7 @@ public class ArrayDeque
     return removeFirstOccurrence(paramObject);
   }
   
-  public Object removeFirst()
+  public E removeFirst()
   {
     Object localObject = pollFirst();
     if (localObject == null) {
@@ -405,23 +404,23 @@ public class ArrayDeque
     if (paramObject == null) {
       return false;
     }
-    int j = this.jdField_a_of_type_ArrayOfJavaLangObject.length;
-    for (int i = this.jdField_a_of_type_Int;; i = i + 1 & j - 1)
+    int j = this.elements.length;
+    for (int i = this.head;; i = i + 1 & j - 1)
     {
-      Object localObject = this.jdField_a_of_type_ArrayOfJavaLangObject[i];
+      Object localObject = this.elements[i];
       if (localObject == null) {
         break;
       }
       if (paramObject.equals(localObject))
       {
-        a(i);
+        delete(i);
         return true;
       }
     }
     return false;
   }
   
-  public Object removeLast()
+  public E removeLast()
   {
     Object localObject = pollLast();
     if (localObject == null) {
@@ -435,16 +434,16 @@ public class ArrayDeque
     if (paramObject == null) {
       return false;
     }
-    int j = this.jdField_a_of_type_ArrayOfJavaLangObject.length - 1;
-    for (int i = this.b - 1 & j;; i = i - 1 & j)
+    int j = this.elements.length - 1;
+    for (int i = this.tail - 1 & j;; i = i - 1 & j)
     {
-      Object localObject = this.jdField_a_of_type_ArrayOfJavaLangObject[i];
+      Object localObject = this.elements[i];
       if (localObject == null) {
         break;
       }
       if (paramObject.equals(localObject))
       {
-        a(i);
+        delete(i);
         return true;
       }
     }
@@ -453,33 +452,33 @@ public class ArrayDeque
   
   public int size()
   {
-    return this.b - this.jdField_a_of_type_Int & this.jdField_a_of_type_ArrayOfJavaLangObject.length - 1;
+    return this.tail - this.head & this.elements.length - 1;
   }
   
   public Object[] toArray()
   {
-    return a(new Object[size()]);
+    return copyElements(new Object[size()]);
   }
   
-  public Object[] toArray(Object[] paramArrayOfObject)
+  public <T> T[] toArray(T[] paramArrayOfT)
   {
     int i = size();
-    if (paramArrayOfObject.length < i) {
-      paramArrayOfObject = (Object[])Array.newInstance(paramArrayOfObject.getClass().getComponentType(), i);
+    if (paramArrayOfT.length < i) {
+      paramArrayOfT = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), i);
     }
     for (;;)
     {
-      a(paramArrayOfObject);
-      if (paramArrayOfObject.length > i) {
-        paramArrayOfObject[i] = null;
+      copyElements(paramArrayOfT);
+      if (paramArrayOfT.length > i) {
+        paramArrayOfT[i] = null;
       }
-      return paramArrayOfObject;
+      return paramArrayOfT;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.utils.thread.internel.ArrayDeque
  * JD-Core Version:    0.7.0.1
  */

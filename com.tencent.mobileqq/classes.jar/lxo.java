@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-
-public final class lxo
-  implements Parcelable.Creator
+public class lxo
+  extends lwt
 {
-  public DislikeInfo a(Parcel paramParcel)
-  {
-    return new DislikeInfo(paramParcel);
-  }
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public DislikeInfo[] a(int paramInt)
+  public void a(long paramLong) {}
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return new DislikeInfo[paramInt];
+    paramInt2 = this.b * paramInt1 / 750;
+    paramInt3 = this.c * paramInt1 / 750;
+    a(paramInt2, paramInt3, this.d * paramInt1 / 750 + paramInt2, this.e * paramInt1 / 750 + paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lxo
  * JD-Core Version:    0.7.0.1
  */

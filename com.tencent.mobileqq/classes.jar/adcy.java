@@ -1,38 +1,40 @@
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerCallback;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnVideoDataEventListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
 public class adcy
-  implements FileVideoManager.FileVideoManagerCallback
+  extends Handler
 {
-  public adcy(DefaultFileModel paramDefaultFileModel, FileBrowserModelBase.OnVideoDataEventListener paramOnVideoDataEventListener) {}
+  public adcy(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void a(int paramInt, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener.a(paramInt, paramString);
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
     }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener.a(paramString1, paramString2);
-    }
-  }
-  
-  public void ae_() {}
-  
-  public void af_()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener.a();
-    }
+    do
+    {
+      return;
+      if (!this.a.isFinishing())
+      {
+        this.a.jdField_a_of_type_Bety.a(this.a.getString(2131690862));
+        this.a.jdField_a_of_type_Bety.d(2130849126);
+        this.a.jdField_a_of_type_Bety.b(false);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+      return;
+    } while ((this.a.jdField_a_of_type_Bety == null) || (!this.a.jdField_a_of_type_Bety.isShowing()));
+    this.a.jdField_a_of_type_Bety.cancel();
+    this.a.jdField_a_of_type_Bety.a(this.a.getString(2131690864));
+    this.a.jdField_a_of_type_Bety.c(true);
+    this.a.jdField_a_of_type_Bety.a(false);
+    this.a.jdField_a_of_type_Bety.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adcy
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import gnj;
+import gja;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -63,7 +63,7 @@ public class MessageCache
   private long jdField_a_of_type_Long = 0L;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private gnj jdField_a_of_type_Gnj;
+  private gja jdField_a_of_type_Gja;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
@@ -109,7 +109,7 @@ public class MessageCache
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
-    this.jdField_a_of_type_Gnj = new gnj(this, this.jdField_a_of_type_AndroidContentSharedPreferences.edit());
+    this.jdField_a_of_type_Gja = new gja(this, this.jdField_a_of_type_AndroidContentSharedPreferences.edit());
   }
   
   public static long a()
@@ -192,7 +192,7 @@ public class MessageCache
       this.jdField_e_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("DS_SEND_KEY", 0);
     }
     this.jdField_e_of_type_Int += 1;
-    this.jdField_a_of_type_Gnj.putInt("DS_SEND_KEY", this.jdField_e_of_type_Int);
+    this.jdField_a_of_type_Gja.putInt("DS_SEND_KEY", this.jdField_e_of_type_Int);
     return this.jdField_e_of_type_Int;
   }
   
@@ -552,7 +552,7 @@ public class MessageCache
     this.jdField_d_of_type_Int = paramInt;
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null)
     {
-      this.jdField_a_of_type_Gnj.putInt("getlastMessageTime", paramInt);
+      this.jdField_a_of_type_Gja.putInt("getlastMessageTime", paramInt);
       if (QLog.isColorLevel()) {
         QLog.d(jdField_b_of_type_JavaLangString, 2, "--->>setBuddyMsgLastSeq lastseq = " + paramInt);
       }
@@ -571,8 +571,8 @@ public class MessageCache
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
     if (str != null)
     {
-      this.jdField_a_of_type_Gnj.putLong("last_friend_seq_47" + str, paramLong1).commit();
-      this.jdField_a_of_type_Gnj.putLong("last_group_seq" + str, paramLong2).commit();
+      this.jdField_a_of_type_Gja.putLong("last_friend_seq_47" + str, paramLong1).commit();
+      this.jdField_a_of_type_Gja.putLong("last_group_seq" + str, paramLong2).commit();
     }
   }
   
@@ -722,7 +722,7 @@ public class MessageCache
         paramInt2 += 1;
       }
     }
-    this.jdField_a_of_type_Gnj.putString("getLongMsgIdArray" + MsgProxyUtils.a(paramString, paramInt1), a(a(paramString, paramInt1))).commit();
+    this.jdField_a_of_type_Gja.putString("getLongMsgIdArray" + MsgProxyUtils.a(paramString, paramInt1), a(a(paramString, paramInt1))).commit();
   }
   
   public void a(String paramString, int paramInt, long paramLong)
@@ -738,7 +738,7 @@ public class MessageCache
       }
       this.B.put(MsgProxyUtils.a(paramString, paramInt), Long.valueOf(Math.max(l1, a(paramString, paramInt))));
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-        this.jdField_a_of_type_Gnj.putLong("getDelMsgLastSeq" + MsgProxyUtils.a(paramString, paramInt), l1).commit();
+        this.jdField_a_of_type_Gja.putLong("getDelMsgLastSeq" + MsgProxyUtils.a(paramString, paramInt), l1).commit();
       }
       return;
       if (paramInt == 3000)
@@ -779,7 +779,7 @@ public class MessageCache
     }
     this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(paramLong));
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-      this.jdField_a_of_type_Gnj.putLong("getTroopLastMessageTime" + paramString, paramLong);
+      this.jdField_a_of_type_Gja.putLong("getTroopLastMessageTime" + paramString, paramLong);
     }
   }
   
@@ -788,8 +788,8 @@ public class MessageCache
     this.l.put(paramString, new Pair(Long.valueOf(paramLong1), Long.valueOf(paramLong2)));
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null)
     {
-      this.jdField_a_of_type_Gnj.putLong("getDisscussionInfoSeq" + paramString, paramLong1);
-      this.jdField_a_of_type_Gnj.putLong("getDisscussionInfoLastTime" + paramString, paramLong2);
+      this.jdField_a_of_type_Gja.putLong("getDisscussionInfoSeq" + paramString, paramLong1);
+      this.jdField_a_of_type_Gja.putLong("getDisscussionInfoLastTime" + paramString, paramLong2);
     }
   }
   
@@ -821,7 +821,7 @@ public class MessageCache
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null)
       {
         paramArrayOfByte = HexUtil.a(paramArrayOfByte);
-        this.jdField_a_of_type_Gnj.putString(paramString, paramArrayOfByte);
+        this.jdField_a_of_type_Gja.putString(paramString, paramArrayOfByte);
       }
     }
   }
@@ -919,7 +919,7 @@ public class MessageCache
       if (QLog.isColorLevel()) {
         QLog.d(jdField_b_of_type_JavaLangString, 2, "--->>setBuddyMsgLastSeq cookie = " + HexUtil.a(paramArrayOfByte));
       }
-      this.jdField_a_of_type_Gnj.putString("getMsgV4_vSyncCookie", str);
+      this.jdField_a_of_type_Gja.putString("getMsgV4_vSyncCookie", str);
     }
   }
   
@@ -1217,7 +1217,7 @@ public class MessageCache
         {
           this.jdField_a_of_type_OrgJsonJSONObject.put(String.valueOf(paramInt), this.jdField_a_of_type_OrgJsonJSONObject.getInt(String.valueOf(paramInt)) + 1);
           if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-            this.jdField_a_of_type_Gnj.putString("sendMessageType", this.jdField_a_of_type_OrgJsonJSONObject.toString());
+            this.jdField_a_of_type_Gja.putString("sendMessageType", this.jdField_a_of_type_OrgJsonJSONObject.toString());
           }
           if (QLog.isDevelopLevel()) {
             QLog.d("SendMessageStatistic", 4, "SendMessageStatistic=" + this.jdField_a_of_type_OrgJsonJSONObject.toString());
@@ -1241,8 +1241,8 @@ public class MessageCache
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
     if (str != null)
     {
-      this.jdField_a_of_type_Gnj.putLong("following_friend_seq_47" + str, paramLong1).commit();
-      this.jdField_a_of_type_Gnj.putLong("following_group_seq" + str, paramLong2).commit();
+      this.jdField_a_of_type_Gja.putLong("following_friend_seq_47" + str, paramLong1).commit();
+      this.jdField_a_of_type_Gja.putLong("following_group_seq" + str, paramLong2).commit();
     }
   }
   
@@ -1295,7 +1295,7 @@ public class MessageCache
   {
     this.F.put(new Pair(paramString, Integer.valueOf(paramInt)), Long.valueOf(paramLong));
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-      this.jdField_a_of_type_Gnj.putLong("getAIOLastSeq" + paramString + "_" + paramInt, paramLong);
+      this.jdField_a_of_type_Gja.putLong("getAIOLastSeq" + paramString + "_" + paramInt, paramLong);
     }
   }
   
@@ -1307,7 +1307,7 @@ public class MessageCache
     }
     this.h.put(paramString, Long.valueOf(paramLong));
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-      this.jdField_a_of_type_Gnj.putLong("getTroopExpiredSeq" + paramString, paramLong);
+      this.jdField_a_of_type_Gja.putLong("getTroopExpiredSeq" + paramString, paramLong);
     }
   }
   
@@ -1317,8 +1317,8 @@ public class MessageCache
     this.m.put(paramString, new Pair(Long.valueOf(paramLong1), Long.valueOf(paramLong2)));
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null)
     {
-      this.jdField_a_of_type_Gnj.putLong("getC2CLastMessageTime" + paramString, paramLong1);
-      this.jdField_a_of_type_Gnj.putLong("getC2CLastMessageTimeRand" + paramString, paramLong2);
+      this.jdField_a_of_type_Gja.putLong("getC2CLastMessageTime" + paramString, paramLong1);
+      this.jdField_a_of_type_Gja.putLong("getC2CLastMessageTimeRand" + paramString, paramLong2);
     }
   }
   
@@ -1334,7 +1334,7 @@ public class MessageCache
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null)
       {
         paramArrayOfByte = HexUtil.a(paramArrayOfByte);
-        this.jdField_a_of_type_Gnj.putString(paramString, paramArrayOfByte);
+        this.jdField_a_of_type_Gja.putString(paramString, paramArrayOfByte);
       }
     }
   }
@@ -1346,8 +1346,8 @@ public class MessageCache
       this.jdField_e_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramArrayOfObject);
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null)
       {
-        this.jdField_a_of_type_Gnj.putLong("getDiscussionMemberSeq" + paramString, ((Long)paramArrayOfObject[0]).longValue());
-        this.jdField_a_of_type_Gnj.putLong("getDiscussionConfigSeq" + paramString, ((Long)paramArrayOfObject[1]).longValue());
+        this.jdField_a_of_type_Gja.putLong("getDiscussionMemberSeq" + paramString, ((Long)paramArrayOfObject[0]).longValue());
+        this.jdField_a_of_type_Gja.putLong("getDiscussionConfigSeq" + paramString, ((Long)paramArrayOfObject[1]).longValue());
       }
     }
   }
@@ -1683,7 +1683,7 @@ public class MessageCache
   {
     this.E.put(new Pair(paramString, Integer.valueOf(paramInt)), Long.valueOf(paramLong));
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-      this.jdField_a_of_type_Gnj.putLong("getBreakPointSeq" + paramString + "_" + paramInt, paramLong);
+      this.jdField_a_of_type_Gja.putLong("getBreakPointSeq" + paramString + "_" + paramInt, paramLong);
     }
   }
   
@@ -1695,7 +1695,7 @@ public class MessageCache
     }
     this.i.put(paramString, Long.valueOf(paramLong));
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-      this.jdField_a_of_type_Gnj.putLong("getDiscussionExpiredSeq" + paramString, paramLong);
+      this.jdField_a_of_type_Gja.putLong("getDiscussionExpiredSeq" + paramString, paramLong);
     }
   }
   
@@ -1711,7 +1711,7 @@ public class MessageCache
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null)
       {
         paramArrayOfByte = HexUtil.a(paramArrayOfByte);
-        this.jdField_a_of_type_Gnj.putString(paramString, paramArrayOfByte);
+        this.jdField_a_of_type_Gja.putString(paramString, paramArrayOfByte);
       }
     }
   }
@@ -1723,8 +1723,8 @@ public class MessageCache
       this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramArrayOfObject);
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null)
       {
-        this.jdField_a_of_type_Gnj.putLong("getTroopMemberSeq" + paramString, ((Long)paramArrayOfObject[0]).longValue());
-        this.jdField_a_of_type_Gnj.putLong("getTroopConfigSeq" + paramString, ((Long)paramArrayOfObject[1]).longValue());
+        this.jdField_a_of_type_Gja.putLong("getTroopMemberSeq" + paramString, ((Long)paramArrayOfObject[0]).longValue());
+        this.jdField_a_of_type_Gja.putLong("getTroopConfigSeq" + paramString, ((Long)paramArrayOfObject[1]).longValue());
       }
     }
   }
@@ -1812,7 +1812,7 @@ public class MessageCache
       }
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null)
       {
-        this.jdField_a_of_type_Gnj.putString("msgSending", localJSONArray.toString());
+        this.jdField_a_of_type_Gja.putString("msgSending", localJSONArray.toString());
         if (QLog.isColorLevel()) {
           QLog.d(jdField_b_of_type_JavaLangString, 2, "msgSending:write msgSending file before exit," + localJSONArray.toString());
         }
@@ -1911,7 +1911,7 @@ public class MessageCache
     this.D.put(paramString, Long.valueOf(paramLong));
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
     if (str != null) {
-      this.jdField_a_of_type_Gnj.putLong(paramString + str, paramLong).commit();
+      this.jdField_a_of_type_Gja.putLong(paramString + str, paramLong).commit();
     }
   }
   
@@ -1992,12 +1992,12 @@ public class MessageCache
   
   public void e()
   {
-    if (this.jdField_a_of_type_Gnj != null)
+    if (this.jdField_a_of_type_Gja != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d(jdField_b_of_type_JavaLangString, 2, "msgCache commit.");
       }
-      this.jdField_a_of_type_Gnj.commit();
+      this.jdField_a_of_type_Gja.commit();
     }
   }
   
@@ -2038,7 +2038,7 @@ public class MessageCache
   {
     this.C.put(paramString, Long.valueOf(paramLong));
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-      this.jdField_a_of_type_Gnj.putLong("getFriendFeedLastTime" + paramString, paramLong);
+      this.jdField_a_of_type_Gja.putLong("getFriendFeedLastTime" + paramString, paramLong);
     }
   }
   
@@ -2054,7 +2054,7 @@ public class MessageCache
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null)
       {
         paramArrayOfByte = HexUtil.a(paramArrayOfByte);
-        this.jdField_a_of_type_Gnj.putString(paramString, paramArrayOfByte);
+        this.jdField_a_of_type_Gja.putString(paramString, paramArrayOfByte);
       }
     }
   }
@@ -2192,7 +2192,7 @@ public class MessageCache
     }
     this.k.put(paramString, Long.valueOf(paramLong));
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-      this.jdField_a_of_type_Gnj.putLong("getDiscussionLastMessageTime" + paramString, paramLong);
+      this.jdField_a_of_type_Gja.putLong("getDiscussionLastMessageTime" + paramString, paramLong);
     }
   }
   
@@ -2243,7 +2243,7 @@ public class MessageCache
     {
       this.jdField_a_of_type_OrgJsonJSONObject = null;
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-        this.jdField_a_of_type_Gnj.remove("sendMessageType").commit();
+        this.jdField_a_of_type_Gja.remove("sendMessageType").commit();
       }
       if (QLog.isColorLevel()) {
         QLog.d("SendMessageStatistic", 2, "clear");

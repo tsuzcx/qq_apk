@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.BigEmoticonViewBinder;
-import com.tencent.mobileqq.emoticonview.HorizonEmoticonTabs;
-import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.filemanager.activity.fileviewer.qfile.QfileBaseLocalFileController;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
 public class ftk
-  implements Runnable
+  implements FMDialogUtil.FMDialogInterface
 {
-  public ftk(HorizonEmoticonTabs paramHorizonEmoticonTabs, QQAppInterface paramQQAppInterface, BigEmoticonViewBinder paramBigEmoticonViewBinder) {}
+  public ftk(QfileBaseLocalFileController paramQfileBaseLocalFileController) {}
   
-  public void run()
+  public void a()
   {
-    ((EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(12)).a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmoticonViewBinder.a);
+    this.a.e();
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ftk
  * JD-Core Version:    0.7.0.1
  */

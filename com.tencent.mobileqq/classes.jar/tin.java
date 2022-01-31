@@ -1,34 +1,31 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.utils.QQLSSensor;
-import com.tencent.qphone.base.util.QLog;
+import UserGrowth.stPublisherRsp;
 
-public class tin
-  implements Runnable
+class tin
+  implements tgt
 {
-  public tin(QQLSActivity paramQQLSActivity) {}
+  tin(tij paramtij) {}
   
-  public void run()
+  public void a(the paramthe)
   {
-    if (this.a.a == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSSensor", 2, "====openSensor===" + Thread.currentThread().getId());
-      }
-      this.a.a = new QQLSSensor(this.a.getApplicationContext(), this.a);
-      this.a.a.a();
-      if (QQLSActivity.a(this.a).hasMessages(8)) {
-        QQLSActivity.a(this.a).removeMessages(8);
-      }
-      Message localMessage = QQLSActivity.a(this.a).obtainMessage(8);
-      QQLSActivity.a(this.a).sendMessageDelayed(localMessage, 1500L);
+    if (!paramthe.a()) {
+      tlo.d("WSHomeFragmentPresenter", "GetFeedDetailRequest onTaskResponse failed code:" + paramthe.jdField_a_of_type_Int + ", msg:" + paramthe.jdField_a_of_type_JavaLangString);
     }
+    do
+    {
+      return;
+      if (!(paramthe.jdField_a_of_type_JavaLangObject instanceof stPublisherRsp)) {
+        break;
+      }
+      paramthe = (stPublisherRsp)paramthe.jdField_a_of_type_JavaLangObject;
+    } while (this.a.a() == null);
+    ((tiu)this.a.a()).a(paramthe);
+    return;
+    tlo.d("WSHomeFragmentPresenter", "GetPublisherRequest onTaskResponse failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tin
  * JD-Core Version:    0.7.0.1
  */

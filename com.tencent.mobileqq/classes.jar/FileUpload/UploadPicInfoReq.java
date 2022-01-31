@@ -12,6 +12,7 @@ public final class UploadPicInfoReq
   static Map<String, byte[]> cache_ExternalData;
   static Map<String, String> cache_mapExt;
   static MultiPicInfo cache_mutliPicInfo = new MultiPicInfo();
+  static int cache_resource_type = 0;
   static PicExtendInfo cache_stExtendInfo = new PicExtendInfo();
   static Map<String, String> cache_stExternalMapExt;
   static stPoi cache_uploadPoi;
@@ -33,6 +34,7 @@ public final class UploadPicInfoReq
   public Map<String, String> mapExt = null;
   public MultiPicInfo mutliPicInfo = null;
   public String otherParams = "";
+  public int resource_type = 0;
   public String sAlbumID = "";
   public String sAlbumName = "";
   public String sExif_CameraMaker = "";
@@ -69,7 +71,7 @@ public final class UploadPicInfoReq
   
   public UploadPicInfoReq() {}
   
-  public UploadPicInfoReq(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, MultiPicInfo paramMultiPicInfo, PicExtendInfo paramPicExtendInfo, String paramString5, int paramInt5, int paramInt6, int paramInt7, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, int paramInt8, long paramLong2, Map<String, String> paramMap1, int paramInt9, stPoi paramstPoi, stWaterTemplate paramstWaterTemplate, String paramString13, int paramInt10, byte[] paramArrayOfByte, Map<String, String> paramMap2, Map<String, byte[]> paramMap)
+  public UploadPicInfoReq(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, MultiPicInfo paramMultiPicInfo, PicExtendInfo paramPicExtendInfo, String paramString5, int paramInt5, int paramInt6, int paramInt7, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, int paramInt8, long paramLong2, Map<String, String> paramMap1, int paramInt9, stPoi paramstPoi, stWaterTemplate paramstWaterTemplate, String paramString13, int paramInt10, byte[] paramArrayOfByte, Map<String, String> paramMap2, Map<String, byte[]> paramMap, int paramInt11)
   {
     this.sPicTitle = paramString1;
     this.sPicDesc = paramString2;
@@ -104,6 +106,7 @@ public final class UploadPicInfoReq
     this.vBusiNessData = paramArrayOfByte;
     this.stExternalMapExt = paramMap2;
     this.ExternalData = paramMap;
+    this.resource_type = paramInt11;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -141,6 +144,7 @@ public final class UploadPicInfoReq
     this.vBusiNessData = ((byte[])paramJceInputStream.read(cache_vBusiNessData, 30, false));
     this.stExternalMapExt = ((Map)paramJceInputStream.read(cache_stExternalMapExt, 31, false));
     this.ExternalData = ((Map)paramJceInputStream.read(cache_ExternalData, 32, false));
+    this.resource_type = paramJceInputStream.read(this.resource_type, 33, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -220,11 +224,12 @@ public final class UploadPicInfoReq
     if (this.ExternalData != null) {
       paramJceOutputStream.write(this.ExternalData, 32);
     }
+    paramJceOutputStream.write(this.resource_type, 33);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     FileUpload.UploadPicInfoReq
  * JD-Core Version:    0.7.0.1
  */

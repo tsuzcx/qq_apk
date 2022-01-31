@@ -1,24 +1,12 @@
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class ejl
-  implements Runnable
+public class ejl
 {
-  ejl(ejj paramejj) {}
-  
-  public void run()
-  {
-    if (NewFriendActivity.a(this.a.a) != null) {
-      NewFriendActivity.a(this.a.a).k();
-    }
-    for (;;)
-    {
-      ReportController.b(this.a.a.b, "CliOper", "", "", "frd_recommend", "clean_apply", 0, 0, "", "", "", "");
-      return;
-      SystemMsgListView.a(this.a.a.b);
-    }
-  }
+  public ImageView a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
 }
 
 

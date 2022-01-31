@@ -1,44 +1,26 @@
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
 
 public class adue
   extends Handler
 {
-  public adue(HuayangJsPlugin paramHuayangJsPlugin, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public adue(RegisterBaseActivity paramRegisterBaseActivity) {}
   
   public void handleMessage(Message paramMessage)
   {
-    int i = paramMessage.arg1;
-    if (i > 90) {
+    switch (paramMessage.what)
+    {
+    default: 
       return;
     }
-    HuayangJsPlugin.a(this.a, "STATE_Loading:" + i);
-    paramMessage = new JSONObject();
-    try
-    {
-      paramMessage.putOpt("state", Integer.valueOf(4));
-      paramMessage.putOpt("totalSize", Integer.valueOf(100));
-      paramMessage.putOpt("pro", Integer.valueOf(i));
-      this.a.callJs(this.a.a, new String[] { paramMessage.toString() });
-      paramMessage = Message.obtain();
-      paramMessage.arg1 = (i + 5);
-      sendMessageDelayed(paramMessage, 500L);
-      return;
+    this.a.c();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131721212);
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    this.a.a(paramMessage, 1);
   }
 }
 

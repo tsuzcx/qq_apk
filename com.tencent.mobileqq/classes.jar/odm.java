@@ -1,56 +1,76 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditPicSave;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
-import com.tencent.biz.qqstory.takevideo.publish.GeneratePicArgs;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import java.net.URL;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class odm
-  extends SimpleObserver
 {
-  public odm(EditPicSave paramEditPicSave) {}
-  
-  public void a(GenerateContext paramGenerateContext)
+  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
   {
-    super.onNext(paramGenerateContext);
-    this.a.a(40);
-    paramGenerateContext = paramGenerateContext.a.b;
-    SLog.b("EditPicSave", "picPath = " + paramGenerateContext);
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity() != null)
+    try
     {
-      ThreadManager.post(new odn(this, paramGenerateContext), 5, this.a.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener, true);
-      this.a.jdField_a_of_type_Int = 40;
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.b = 10;
-      this.a.e();
+      if (paramAdData.jdField_a_of_type_Obd == null) {
+        return paramJSONObject;
+      }
+      paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_triple_pic_game_cell");
+      if (!TextUtils.isEmpty(paramAdData.J)) {
+        paramJSONObject.put("id_game_small_img", new JSONObject());
+      }
+      if (!TextUtils.isEmpty(paramAdData.q))
+      {
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("text", paramAdData.q);
+        paramJSONObject.put("id_tv_author", localObject1);
+      }
+      if (!TextUtils.isEmpty(paramAdData.k))
+      {
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("text", paramAdData.k);
+        paramJSONObject.put("id_tv_title", localObject1);
+      }
+      if ((paramAdData.jdField_a_of_type_JavaUtilArrayList != null) && (paramAdData.jdField_a_of_type_JavaUtilArrayList.size() > 2))
+      {
+        Object localObject3 = swu.a((String)paramAdData.jdField_a_of_type_JavaUtilArrayList.get(0), 4);
+        Object localObject2 = swu.a((String)paramAdData.jdField_a_of_type_JavaUtilArrayList.get(1), 4);
+        localObject1 = swu.a((String)paramAdData.jdField_a_of_type_JavaUtilArrayList.get(2), 4);
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("multi_img_url1", ((URL)localObject3).toString());
+        paramJSONObject.put("id_multi_img_1", localJSONObject);
+        localObject3 = new JSONObject();
+        ((JSONObject)localObject3).put("multi_img_url2", ((URL)localObject2).toString());
+        paramJSONObject.put("id_multi_img_2", localObject3);
+        localObject2 = new JSONObject();
+        ((JSONObject)localObject2).put("multi_img_url3", ((URL)localObject1).toString());
+        paramJSONObject.put("id_multi_img_3", localObject2);
+      }
+      paramJSONObject.put("id_ad_triple_imge_container", new JSONObject());
+      Object localObject1 = new JSONObject();
+      if (!TextUtils.isEmpty(paramAdData.L))
+      {
+        ((JSONObject)localObject1).put("text", paramAdData.L);
+        paramJSONObject.put("id_ad_dislike_button", localObject1);
+      }
+      paramJSONObject.put("id_game_operate_area", new JSONObject());
+      paramJSONObject.put("id_separator", new JSONObject());
+      paramJSONObject.put("id_ad_title", new JSONObject());
+      paramJSONObject.put("id_ad_title_rl", new JSONObject());
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("innerGameModel", paramAdData);
+      paramJSONObject.put("id_view_AdDownloadView", localObject1);
+      return paramJSONObject;
     }
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    SLog.d("EditPicSave", "saveVideo cancel !");
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-    this.a.h();
-    QQToast.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), "取消保存", 0).a();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    SLog.e("EditPicSave", "saveVideo error ：" + paramError);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-    QQToast.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), 1, "保存失败，请重试 : " + paramError, 0).a();
-    this.a.h();
+    catch (JSONException paramAdData)
+    {
+      paramAdData.printStackTrace();
+    }
+    return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     odm
  * JD-Core Version:    0.7.0.1
  */

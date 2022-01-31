@@ -1,78 +1,74 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 
 public class acaq
-  implements Runnable
+  implements View.OnClickListener
 {
-  private float jdField_a_of_type_Float;
-  protected long a;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private float c;
-  private float d;
-  private float e;
-  private float f;
+  public acaq(AccountManageActivity paramAccountManageActivity) {}
   
-  public acaq(DragSortListView paramDragSortListView, float paramFloat, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_b_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Float = paramInt;
-    paramFloat = 1.0F / (this.jdField_b_of_type_Float * 2.0F * (1.0F - this.jdField_b_of_type_Float));
-    this.f = paramFloat;
-    this.c = paramFloat;
-    this.d = (this.jdField_b_of_type_Float / ((this.jdField_b_of_type_Float - 1.0F) * 2.0F));
-    this.e = (1.0F / (1.0F - this.jdField_b_of_type_Float));
-  }
-  
-  public float a(float paramFloat)
-  {
-    if (paramFloat < this.jdField_b_of_type_Float) {
-      return this.c * paramFloat * paramFloat;
-    }
-    if (paramFloat < 1.0F - this.jdField_b_of_type_Float) {
-      return this.d + this.e * paramFloat;
-    }
-    return 1.0F - this.f * (paramFloat - 1.0F) * (paramFloat - 1.0F);
-  }
-  
-  public void a() {}
-  
-  public void a(float paramFloat1, float paramFloat2) {}
-  
-  public void b() {}
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_Boolean = false;
-    a();
-    this.jdField_b_of_type_ComTencentMobileqqEmosmViewDragSortListView.post(this);
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    float f1 = (float)(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) / this.jdField_a_of_type_Float;
-    if (f1 >= 1.0F)
+    if (!(paramView instanceof RotateSwitchImageView)) {}
+    View localView2;
+    do
     {
-      a(1.0F, 1.0F);
-      b();
+      do
+      {
+        return;
+        localView1 = AccountManageActivity.a(this.a, paramView);
+        localView2 = AccountManageActivity.b(this.a, paramView);
+        if (AccountManageActivity.a(this.a) != null) {
+          break;
+        }
+        AccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
+        ((RotateSwitchImageView)paramView).b();
+        localLayoutParams = localView2.getLayoutParams();
+        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.g(this.a) * 75.0F));
+        localView2.setLayoutParams(localLayoutParams);
+        if ((localView1 instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)localView1).b();
+        }
+      } while (!AppSetting.c);
+      paramView.setContentDescription(this.a.getString(2131691160));
       return;
+      if (AccountManageActivity.a(this.a) != paramView) {
+        break;
+      }
+      AccountManageActivity.a(this.a).a();
+      localLayoutParams = localView2.getLayoutParams();
+      localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.h(this.a) * 40.0F));
+      localView2.setLayoutParams(localLayoutParams);
+      if ((localView1 instanceof ShaderAnimLayout)) {
+        ((ShaderAnimLayout)localView1).f();
+      }
+      AccountManageActivity.a(this.a, null);
+    } while (!AppSetting.c);
+    paramView.setContentDescription(this.a.getString(2131691172));
+    return;
+    AccountManageActivity.a(this.a).a();
+    ((RotateSwitchImageView)paramView).b();
+    AccountManageActivity.b(this.a, AccountManageActivity.a(this.a)).getLayoutParams().width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.i(this.a) * 40.0F));
+    ViewGroup.LayoutParams localLayoutParams = localView2.getLayoutParams();
+    localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.j(this.a) * 75.0F));
+    localView2.setLayoutParams(localLayoutParams);
+    if ((localView1 instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)localView1).b();
     }
-    a(f1, a(f1));
-    this.jdField_b_of_type_ComTencentMobileqqEmosmViewDragSortListView.post(this);
+    View localView1 = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+    if ((localView1 instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)localView1).f();
+    }
+    AccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acaq
  * JD-Core Version:    0.7.0.1
  */

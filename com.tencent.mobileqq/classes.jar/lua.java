@@ -1,25 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeNoImageSocial;
-
 public class lua
-  implements View.OnTouchListener
 {
-  public lua(FeedItemCellTypeNoImageSocial paramFeedItemCellTypeNoImageSocial, RelativeLayout paramRelativeLayout) {}
+  private final int a;
+  private int b;
+  private int c;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public lua(int paramInt)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(false);
-    }
-    return false;
+    this.a = paramInt;
+    this.b = 1;
+    this.c = 1;
+  }
+  
+  public void a(lsv paramlsv, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    paramlsv.a(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lua
  * JD-Core Version:    0.7.0.1
  */

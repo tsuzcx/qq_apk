@@ -91,14 +91,14 @@ public abstract class BaseFacePreloadExpandableListAdapter
   
   public void a(View paramView, int paramInt) {}
   
-  protected void a(FacePreloadBaseAdapter.ViewHolder paramViewHolder, Bitmap paramBitmap)
+  public void a(FacePreloadBaseAdapter.ViewHolder paramViewHolder, Bitmap paramBitmap)
   {
     if (paramViewHolder.c == null) {
       return;
     }
     if (AppConstants.P.equals(paramViewHolder.a))
     {
-      paramViewHolder.c.setBackgroundResource(2130838588);
+      paramViewHolder.c.setBackgroundResource(2130838590);
       return;
     }
     if (paramBitmap == null) {

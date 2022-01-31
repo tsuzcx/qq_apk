@@ -1,19 +1,25 @@
-import android.widget.TextView;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 class myn
-  implements Runnable
+  implements WtTicketPromise
 {
-  myn(mye parammye) {}
+  myn(myl parammyl) {}
   
-  public void run()
+  public void Done(Ticket paramTicket)
   {
-    this.a.a.a.setText("" + PublicAccountImageCollectionMainActivity.c(this.a.a));
+    myl.a(this.a, false);
+    this.a.h();
   }
+  
+  public void Failed(ErrMsg paramErrMsg) {}
+  
+  public void Timeout(ErrMsg paramErrMsg) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     myn
  * JD-Core Version:    0.7.0.1
  */

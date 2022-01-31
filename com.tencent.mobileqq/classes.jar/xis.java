@@ -1,48 +1,35 @@
-import android.content.ComponentName;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 
-public class xis
-  implements View.OnClickListener
+public abstract class xis
 {
-  public xis(BannerManager paramBannerManager) {}
+  public final int a;
+  public final String a;
+  public final int b;
+  public String b;
   
-  public void onClick(View paramView)
+  public xis(int paramInt1, String paramString, int paramInt2)
   {
-    paramView = QQPlayerService.a();
-    int i;
-    if (paramView != null)
-    {
-      BannerManager.a(this.a).startActivity(paramView);
-      paramView = paramView.getComponent().getClassName();
-      if (!paramView.equals(MusicPlayerActivity.class.getName())) {
-        break label92;
-      }
-      i = 0;
-    }
-    for (;;)
-    {
-      ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "Msg_tab", "Mt_music_tips", 0, 0, "" + i, "", "", "");
-      return;
-      label92:
-      if (paramView.equals(MusicGeneQQBrowserActivity.class.getName())) {
-        i = 1;
-      } else {
-        i = -1;
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+  }
+  
+  @NonNull
+  public abstract Class<? extends xit> a();
+  
+  @NonNull
+  public abstract xit a(@NonNull Context paramContext, ViewGroup paramViewGroup);
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xis
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.util.FaceManager;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class akaa
-  extends TroopObserver
+  implements acln
 {
-  private akaa(FaceManager paramFaceManager) {}
+  public akaa(SelectMemberActivity paramSelectMemberActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void a() {}
+  
+  public void b() {}
+  
+  public void c()
   {
-    this.a.c(103, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), paramString });
+    this.a.e = 2;
+    this.a.finish();
   }
 }
 

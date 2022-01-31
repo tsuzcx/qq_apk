@@ -22,12 +22,12 @@ final class QWalletHelper$1
     localBundle.putString("skey_type", "2");
     localBundle.putString("preload_from", this.val$from);
     localBundle.putInt("PayInvokerId", 21);
-    QWalletHelper.launchPayBridgeService(BaseApplicationImpl.sApplication, localAppInterface, localBundle);
+    QWalletPayBridge.launchBackground(BaseApplicationImpl.sApplication, localAppInterface, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletHelper.1
  * JD-Core Version:    0.7.0.1
  */

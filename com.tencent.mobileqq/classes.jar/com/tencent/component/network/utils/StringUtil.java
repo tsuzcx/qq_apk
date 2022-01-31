@@ -2,7 +2,7 @@ package com.tencent.component.network.utils;
 
 public class StringUtil
 {
-  public static boolean a(String paramString1, String paramString2)
+  public static boolean startsWithIgnoreCase(String paramString1, String paramString2)
   {
     if (paramString1 == paramString2) {
       return true;
@@ -15,7 +15,7 @@ public class StringUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.utils.StringUtil
  * JD-Core Version:    0.7.0.1
  */

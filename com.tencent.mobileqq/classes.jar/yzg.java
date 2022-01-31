@@ -1,37 +1,78 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.apollo.view.ApolloRecentViewBinder;
-import com.tencent.mobileqq.apollo.view.ApolloViewBinder;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class yzg
-  implements Runnable
+  extends aokh<yzf>
 {
-  public yzg(ApolloPanel paramApolloPanel) {}
-  
-  public void run()
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, "func updateLastApolloPanel begins. Thread id = " + Thread.currentThread().getId());
-    }
-    if (this.a.jdField_a_of_type_JavaUtilList == null) {}
-    ApolloViewBinder localApolloViewBinder;
-    do
+    return 463;
+  }
+  
+  public Class<yzf> a()
+  {
+    return yzf.class;
+  }
+  
+  @NonNull
+  public yzf a(int paramInt)
+  {
+    return new yzf();
+  }
+  
+  @Nullable
+  public yzf a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      return;
-      localApolloViewBinder = (ApolloViewBinder)this.a.jdField_a_of_type_JavaUtilList.get(0);
-    } while ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (!(localApolloViewBinder instanceof ApolloRecentViewBinder)));
-    if (localApolloViewBinder.c == 2) {
-      localApolloViewBinder.c = 0;
+      yzf localyzf = yzf.a(paramArrayOfaoko[0].a);
+      a(localyzf);
+      QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
+      return localyzf;
     }
-    ((ApolloRecentViewBinder)localApolloViewBinder).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.a.j();
+    return null;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(yzf paramyzf)
+  {
+    QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onUpdate ");
+    if (paramyzf != null)
+    {
+      QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onUpdate " + paramyzf.toString());
+      yyw.a().a("subscribe_entrance_enable", paramyzf.a());
+      yyw.a().a("is_open_sharing", paramyzf.b());
+      yyw.a().a("subscribe_account_title", paramyzf.c());
+      yyw.a().a("newfollowlist", paramyzf.d());
+      yyw.a().a("subscribe_publish_entrance_enable", paramyzf.e());
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yzg
  * JD-Core Version:    0.7.0.1
  */

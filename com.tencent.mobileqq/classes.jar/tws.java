@@ -1,29 +1,26 @@
-import com.tencent.av.gaudio.AVObserver;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.qqcircle.fragments.QCircleFolderFollowTabFragment;
 
 public class tws
-  extends AVObserver
+  extends RecyclerView.OnScrollListener
 {
-  public tws(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public tws(QCircleFolderFollowTabFragment paramQCircleFolderFollowTabFragment) {}
   
-  protected void a(int paramInt, long paramLong)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.a.c();
-  }
-  
-  protected void a(int paramInt, long paramLong1, long paramLong2)
-  {
-    this.a.c();
-  }
-  
-  protected void b(int paramInt, long paramLong)
-  {
-    this.a.c();
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0)
+    {
+      abvl.a().a("qcircle_follow_tab_page", false);
+      return;
+    }
+    abvl.a().a("qcircle_follow_tab_page");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tws
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
-import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
+import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
 
-public class egb
-  implements AnimationTextView.OnDoubleClick
+class egb
+  implements Runnable
 {
-  public egb(TextItemBuilder paramTextItemBuilder) {}
+  egb(ega paramega) {}
   
-  public void a(View paramView)
+  public void run()
   {
-    ChatActivityUtils.a(TextItemBuilder.b(this.a), paramView, (ChatActivity)TextItemBuilder.a(this.a));
+    RecommendTroopView.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView, this.a.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     egb
  * JD-Core Version:    0.7.0.1
  */

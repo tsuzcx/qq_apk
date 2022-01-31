@@ -1,21 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
-import java.util.List;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public final class ahzv
-  implements Runnable
+public class ahzv
 {
-  public ahzv(QQAppInterface paramQQAppInterface, List paramList, ShortVideoResourceManager.INet_ShortVideoResource paramINet_ShortVideoResource) {}
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLImageView a;
+  public Object a;
+  public String a;
+  public TextView b;
+  public TextView c;
   
-  public void run()
-  {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager$INet_ShortVideoResource, "new_qq_android_native_art_filter_");
-  }
+  public ahzv(ahzr paramahzr) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahzv
  * JD-Core Version:    0.7.0.1
  */

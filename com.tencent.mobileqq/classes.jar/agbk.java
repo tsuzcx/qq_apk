@@ -1,20 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ocr.OcrCamera;
-import com.tencent.mobileqq.widget.QQToast;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class agbk
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public agbk(OcrCamera paramOcrCamera) {}
+  public agbk(SixCombolEffectView paramSixCombolEffectView, agbz paramagbz) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    QQToast.a(BaseApplicationImpl.getContext(), "开始选图", 0).a();
+    this.jdField_a_of_type_Agbz.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if ((!this.jdField_a_of_type_Agbz.b) && (this.jdField_a_of_type_Agbz.a < 0.52F)) {
+      this.jdField_a_of_type_Agbz.b = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agbk
  * JD-Core Version:    0.7.0.1
  */

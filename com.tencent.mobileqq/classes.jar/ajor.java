@@ -1,52 +1,36 @@
-import com.tencent.mobileqq.app.AppConstants;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
-public final class ajor
-  implements Runnable
+public class ajor
+  implements View.OnTouchListener
 {
-  public void run()
+  public ajor(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    File[] arrayOfFile;
-    do
+    if (paramMotionEvent.getAction() == 0)
     {
-      try
-      {
-        Thread.sleep(3000L);
-        File localFile = new File(AppConstants.ba);
-        if (!localFile.isDirectory()) {
-          return;
+      if (EditLocalVideoActivity.a(this.a).isPlaying()) {
+        if (EditLocalVideoActivity.b(this.a))
+        {
+          EditLocalVideoActivity.b(this.a, false);
+          EditLocalVideoActivity.a(this.a).pause();
+          EditLocalVideoActivity.a(this.a).setVisibility(0);
         }
       }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-        return;
+      while (!EditLocalVideoActivity.b(this.a)) {
+        return true;
       }
-      arrayOfFile = localInterruptedException.listFiles(new ajos(this));
-    } while ((arrayOfFile == null) || (arrayOfFile.length < 100));
-    Object localObject = new ArrayList(arrayOfFile.length);
-    int j = arrayOfFile.length;
-    int i = 0;
-    while (i < j)
-    {
-      ((List)localObject).add(Long.valueOf(arrayOfFile[i].lastModified()));
-      i += 1;
+      EditLocalVideoActivity.a(this.a).start();
+      EditLocalVideoActivity.b(this.a, true);
+      EditLocalVideoActivity.a(this.a).setVisibility(4);
+      return true;
     }
-    Collections.sort((List)localObject);
-    long l = ((Long)((List)localObject).get(((List)localObject).size() - 100)).longValue();
-    j = arrayOfFile.length;
-    i = 0;
-    while (i < j)
-    {
-      localObject = arrayOfFile[i];
-      if (((File)localObject).lastModified() < l) {
-        ((File)localObject).deleteOnExit();
-      }
-      i += 1;
-    }
+    return false;
   }
 }
 

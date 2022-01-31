@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class MultiMsg$MultiMsgApplyUpReq
-  extends MessageMicro
+  extends MessageMicro<MultiMsgApplyUpReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_msg_md5 = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -26,7 +26,7 @@ public final class MultiMsg$MultiMsgApplyUpReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.longconn.multimsg.MultiMsg.MultiMsgApplyUpReq
  * JD-Core Version:    0.7.0.1
  */

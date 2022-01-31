@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x6b$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   public static final int BYTES_NO_TEXT_FIELD_NUMBER = 4;
   public static final int BYTES_TIPS_CONTENT_FIELD_NUMBER = 2;

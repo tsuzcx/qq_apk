@@ -10,7 +10,7 @@ public class PeakActivity
   extends BaseActivity2
 {
   public static final HashSet a;
-  protected PeakAppInterface a;
+  public PeakAppInterface a;
   
   static
   {

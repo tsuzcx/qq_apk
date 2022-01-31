@@ -1,32 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedVideoPreloader;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedVideoPreloader.CurrentVid;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
 
 public class oar
-  extends SimpleJob
+  extends rko
 {
-  public oar(FeedVideoPreloader paramFeedVideoPreloader, StoryVideoItem paramStoryVideoItem, List paramList) {}
+  public oar(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
   
-  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    synchronized (FeedVideoPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader))
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$CurrentVid = new FeedVideoPreloader.CurrentVid(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.b();
-      return null;
+    if (!paramBoolean1) {
+      ReadInJoyVideoSubChannelActivity.a(this.a, false);
     }
+    while (!ReadInJoyVideoSubChannelActivity.a(this.a)) {
+      return;
+    }
+    ReadInJoyVideoSubChannelActivity.a(this.a).c();
+    ReadInJoyVideoSubChannelActivity.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oar
  * JD-Core Version:    0.7.0.1
  */

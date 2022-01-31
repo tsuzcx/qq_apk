@@ -108,7 +108,7 @@ public class a
         localObject = ((RegTLV)localObject).getBuf();
         continue;
         localObject = new RegTLV(37);
-        ((RegTLV)localObject).setShort(t.au);
+        ((RegTLV)localObject).setShort(t.az);
         localObject = ((RegTLV)localObject).getBuf();
       }
     }

@@ -1,42 +1,23 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.video.IMediaPlayer;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
 
-public class wyf
-  implements SurfaceHolder.Callback
+public final class wyf
+  implements Parcelable.Creator<EditLocalVideoSource>
 {
-  public wyf(PhotoPreviewActivity paramPhotoPreviewActivity) {}
-  
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public EditLocalVideoSource a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewActivity", 2, "surfaceCreated ");
-    }
-    if ((this.a.q == 1) && (this.a.p > 0))
-    {
-      this.a.a(this.a.p);
-      this.a.p = 0;
-      this.a.q = 0;
-    }
+    return new EditLocalVideoSource(paramParcel);
   }
   
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  public EditLocalVideoSource[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewActivity", 2, "surfaceDestroyed ");
-    }
-    if (this.a.a != null) {
-      this.a.a.c();
-    }
+    return new EditLocalVideoSource[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wyf
  * JD-Core Version:    0.7.0.1
  */

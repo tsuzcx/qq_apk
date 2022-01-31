@@ -1,16 +1,12 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.recent.RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder;
-
-public class xkq
-  extends RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder
+class xkq
 {
-  public RelativeLayout a;
-  public ImageView c;
+  int jdField_a_of_type_Int;
+  xko jdField_a_of_type_Xko;
+  xkp jdField_a_of_type_Xkp;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xkq
  * JD-Core Version:    0.7.0.1
  */

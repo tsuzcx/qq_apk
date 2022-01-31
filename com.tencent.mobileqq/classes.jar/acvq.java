@@ -1,45 +1,75 @@
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity.14.3;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.settings.FMSettingInterface.MoveFileCallback;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class acvq
-  implements FMSettingInterface.MoveFileCallback
+  extends bdul
 {
-  public acvq(FileManagerRSWorker paramFileManagerRSWorker) {}
+  public acvq(EditInfoActivity paramEditInfoActivity) {}
   
-  public void a()
+  protected void onSetColorNick(boolean paramBoolean, int paramInt, String paramString)
   {
-    this.a.a();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a.a(2005);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 12, null, paramInt, null);
-    FileManagerUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.a.jdField_i_of_type_JavaLangString, this.a.jdField_g_of_type_Long, FileManagerRSWorker.a(this.a), this.a.e, this.a.jdField_g_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9040L, "", this.a.jdField_i_of_type_Long, this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Long, FileManagerRSWorker.a(this.a), "", FileManagerRSWorker.a(this.a), "sdcard full", null);
-    FileManagerUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.a.j, this.a.jdField_g_of_type_Long, FileManagerRSWorker.a(this.a), this.a.e, this.a.jdField_g_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9040L, "", this.a.jdField_i_of_type_Long, this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Long, FileManagerRSWorker.a(this.a), "", FileManagerRSWorker.b(this.a), "sdcard full", null);
-  }
-  
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (this.a.jdField_d_of_type_JavaLangString.equalsIgnoreCase(paramString1)) {
-      this.a.jdField_d_of_type_JavaLangString = paramString2;
+    if (paramBoolean)
+    {
+      VasWebviewUtil.reportCommercialDrainage(this.a.app.c(), "group_nickname", "set", "", 1, 0, 0, "", "", "");
+      this.a.c(true);
+      paramString = (amdu)this.a.app.a(20);
+      try
+      {
+        paramString.a(Long.parseLong(this.a.e), Long.parseLong(this.a.f));
+        return;
+      }
+      catch (Exception paramString)
+      {
+        this.a.b(false);
+        return;
+      }
     }
-    while (!this.a.jdField_b_of_type_JavaLangString.equalsIgnoreCase(paramString1)) {
+    this.a.b(false);
+    String str;
+    if (paramInt == 1282)
+    {
+      VasWebviewUtil.reportCommercialDrainage(this.a.app.c(), "group_nickname", "group_nickname_9", "", 1, 0, 0, "", "", "");
+      paramString = alud.a(2131704028);
+      str = alud.a(2131704022);
+      try
+      {
+        bdgm.a(this.a, 230, paramString, str, alud.a(2131704015), alud.a(2131704019), new acvr(this), new acvs(this)).show();
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("EditInfoActivity", 1, "onSetColorNick", paramString);
+        return;
+      }
+    }
+    if (1283 == paramInt)
+    {
+      QQToast.a(this.a, 1, alud.a(2131704018), 0).b(this.a.getTitleBarHeight());
       return;
     }
-    this.a.jdField_b_of_type_JavaLangString = paramString2;
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setFilePath(paramString2);
+    if (1793 == paramInt)
+    {
+      EditInfoActivity localEditInfoActivity = this.a;
+      str = paramString;
+      if (TextUtils.isEmpty(paramString)) {
+        str = this.a.getString(2131693619);
+      }
+      QQToast.a(localEditInfoActivity, 1, str, 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    QQToast.a(this.a, 1, 2131694456, 0).b(this.a.getTitleBarHeight());
+    this.a.a.postDelayed(new EditInfoActivity.14.3(this), 1500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acvq
  * JD-Core Version:    0.7.0.1
  */

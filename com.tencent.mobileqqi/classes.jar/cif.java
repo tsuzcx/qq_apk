@@ -1,34 +1,14 @@
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import com.tencent.mobileqq.activity.aio.AudioPlayer.AudioPlayerListener;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import java.util.Comparator;
 
 public class cif
-  implements AudioPlayer.AudioPlayerListener
+  implements Comparator
 {
-  public cif(ChatHistory paramChatHistory) {}
+  private cif(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void a(AudioPlayer paramAudioPlayer)
+  public int a(cid paramcid1, cid paramcid2)
   {
-    this.a.l();
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
-    this.a.setVolumeControlStream(3);
-    ChatHistory.a(this.a).unregisterListener(this.a);
-  }
-  
-  public void a(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    this.a.a(2131563199);
-    this.a.setVolumeControlStream(3);
-    ChatHistory.a(this.a).unregisterListener(this.a);
-  }
-  
-  public void b(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    this.a.setVolumeControlStream(paramInt);
+    return paramcid1.c.compareToIgnoreCase(paramcid2.c);
   }
 }
 

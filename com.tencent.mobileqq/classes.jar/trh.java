@@ -1,27 +1,36 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SecurityPickproofActivity;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.biz.qqcircle.events.QCircleCloseBannerEvent;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import qqcircle.QQCircleDitto.StSinglePicBanner;
 
-public class trh
-  implements Runnable
+class trh
+  implements uec
 {
-  public trh(SecurityPickproofActivity paramSecurityPickproofActivity) {}
+  trh(trg paramtrg) {}
   
-  public void run()
+  public void a()
   {
-    SecurityPickproofActivity.a(this.a, false);
-    FMToastUtil.a(2131434613);
-    SecurityPickproofActivity.a(this.a).setText(SecurityPickproofActivity.a(this.a));
-    SecurityPickproofActivity.b(this.a).setVisibility(0);
-    SecurityPickproofActivity.a(this.a).setVisibility(0);
-    SecurityPickproofActivity.a(this.a).setVisibility(8);
+    QLog.d("QCircleInviteBannerAdapter", 1, "clickBanner actionType" + trg.a(this.a).actionType.get() + "   actionUrl" + trg.a(this.a).actionUrl.get());
+    if (trg.a(this.a).actionType.get() == 1)
+    {
+      tqs.a(trg.a(this.a), trg.a(this.a).actionUrl.get());
+      return;
+    }
+    QLog.d("QCircleInviteBannerAdapter", 1, "unDefined banner jump action:" + trg.a(this.a).actionType.get());
+  }
+  
+  public void b()
+  {
+    tpz.a().f();
+    yiw.a().a(new QCircleCloseBannerEvent());
+    this.a.a(false);
+    QLog.d("QCircleInviteBannerAdapter", 1, "clickClose");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trh
  * JD-Core Version:    0.7.0.1
  */

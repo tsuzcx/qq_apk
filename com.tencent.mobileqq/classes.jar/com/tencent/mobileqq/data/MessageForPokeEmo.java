@@ -34,17 +34,22 @@ public class MessageForPokeEmo
     this.msg = String.format("[%s]x%d", new Object[] { this.summary, Integer.valueOf(this.pokeemoPressCount) });
   }
   
+  public boolean isSupportReply()
+  {
+    return true;
+  }
+  
   public boolean needVipBubble()
   {
     return false;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     parse();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     try
     {
@@ -69,7 +74,7 @@ public class MessageForPokeEmo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForPokeEmo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,16 @@
-import com.tencent.mobileqq.activity.ContactBindedActivity;
-import com.tencent.mobileqq.activity.phone.PhoneMatchActivity;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class wvf
-  extends ContactBindObserver
+public abstract interface wvf
 {
-  public wvf(PhoneMatchActivity paramPhoneMatchActivity) {}
+  public abstract void a(String paramString1, String paramString2);
   
-  protected void b(boolean paramBoolean, int paramInt)
-  {
-    this.a.b();
-    if (paramBoolean)
-    {
-      this.a.finish();
-      return;
-    }
-    this.a.b("更新失败，请稍后重试。");
-  }
+  public abstract void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage);
   
-  protected void e(boolean paramBoolean, int paramInt)
-  {
-    this.a.b();
-    if (paramBoolean)
-    {
-      ContactBindedActivity.a(this.a.app, 222);
-      this.a.finish();
-      return;
-    }
-    this.a.b("更新失败，请稍后重试。");
-  }
+  public abstract void b(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wvf
  * JD-Core Version:    0.7.0.1
  */

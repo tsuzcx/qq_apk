@@ -9,10 +9,10 @@ public final class GetBatchPoiReq_V2
   extends JceStruct
 {
   static ReqCommon_V2 cache_stCommon = new ReqCommon_V2();
-  static ArrayList cache_vecGpsInfo = new ArrayList();
+  static ArrayList<GPS_V2> cache_vecGpsInfo = new ArrayList();
   public int opMask;
   public ReqCommon_V2 stCommon;
-  public ArrayList vecGpsInfo;
+  public ArrayList<GPS_V2> vecGpsInfo;
   
   static
   {
@@ -22,7 +22,7 @@ public final class GetBatchPoiReq_V2
   
   public GetBatchPoiReq_V2() {}
   
-  public GetBatchPoiReq_V2(ReqCommon_V2 paramReqCommon_V2, ArrayList paramArrayList, int paramInt)
+  public GetBatchPoiReq_V2(ReqCommon_V2 paramReqCommon_V2, ArrayList<GPS_V2> paramArrayList, int paramInt)
   {
     this.stCommon = paramReqCommon_V2;
     this.vecGpsInfo = paramArrayList;

@@ -7,8 +7,8 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.AudioUtil;
 import com.tencent.qphone.base.util.QLog;
-import gfb;
-import gfc;
+import gap;
+import gaq;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Timer;
@@ -93,7 +93,7 @@ public class SoundPoolUtil
         }
       } while (!a(paramString));
       if (Build.VERSION.SDK_INT >= 8) {
-        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new gfb(this, paramInt, paramString));
+        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new gap(this, paramInt, paramString));
       }
       do
       {
@@ -101,7 +101,7 @@ public class SoundPoolUtil
         {
           return true;
           paramInt = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
-          ThreadManager.a().schedule(new gfc(this, paramInt, paramString), 200L);
+          ThreadManager.a().schedule(new gaq(this, paramInt, paramString), 200L);
         }
         paramInt = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
       } while (this.jdField_a_of_type_AndroidMediaSoundPool.play(paramInt, 1.0F, 1.0F, 0, 0, 1.0F) != 0);

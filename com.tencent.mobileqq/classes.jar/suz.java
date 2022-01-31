@@ -1,23 +1,40 @@
-import android.media.SoundPool;
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.TimerTask;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.Adapter;
 
-public class suz
-  extends TimerTask
+public final class suz
+  implements svy
 {
-  public suz(H5MagicPlayerActivity paramH5MagicPlayerActivity, String paramString) {}
+  @NonNull
+  private final RecyclerView.Adapter a;
   
-  public void run()
+  public suz(@NonNull RecyclerView.Adapter paramAdapter)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_AndroidMediaSoundPool != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_AndroidMediaSoundPool.play(this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.b, 1.0F, 1.0F, 0, this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_Int - 1, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.jdField_a_of_type_JavaLangString);
-    }
+    this.a = paramAdapter;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Object paramObject)
+  {
+    this.a.notifyItemRangeChanged(paramInt1, paramInt2, paramObject);
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
+  }
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemMoved(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     suz
  * JD-Core Version:    0.7.0.1
  */

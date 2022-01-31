@@ -1,43 +1,66 @@
-import android.content.Context;
-import android.content.IntentFilter;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListReq;
+import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListRsp;
+import NS_QQ_STORY_CLIENT.CLIENT.StUinTime;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.mini.servlet.ProtoBufRequest;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 
 public class zad
-  implements Runnable
+  extends ProtoBufRequest
 {
-  public zad(BaseActivity paramBaseActivity) {}
+  private final CLIENT.StGetStoryFeedListReq a = new CLIENT.StGetStoryFeedListReq();
   
-  public void run()
+  public zad(int paramInt, CLIENT.StUinTime paramStUinTime)
   {
-    int i = 0;
-    if (!SettingCloneUtil.readValue(this.a, null, this.a.getString(2131433581), "qqsetting_screenshot_key", false)) {}
-    for (;;)
+    this.a.listType.set(paramInt);
+    this.a.uinTime.set(paramStUinTime);
+    this.a.listNum.set(10);
+  }
+  
+  @Nullable
+  public static CLIENT.StGetStoryFeedListRsp a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null)
     {
-      if (i != 0) {
-        this.a.turnOnShake();
-      }
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-      BaseActivity.access$102(new zak(null));
-      try
-      {
-        this.a.getApplicationContext().registerReceiver(BaseActivity.access$100(), localIntentFilter);
-        return;
-      }
-      catch (Exception localException)
-      {
-        QLog.e("qqBaseActivity", 1, "", localException);
-      }
-      i = 1;
+      a("data is null");
+      return null;
     }
+    paramArrayOfByte = decode(paramArrayOfByte);
+    if (paramArrayOfByte == null)
+    {
+      a("storyData is null");
+      return null;
+    }
+    CLIENT.StGetStoryFeedListRsp localStGetStoryFeedListRsp = new CLIENT.StGetStoryFeedListRsp();
+    try
+    {
+      localStGetStoryFeedListRsp.mergeFrom(paramArrayOfByte);
+      return localStGetStoryFeedListRsp;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      a("onResponse fail." + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  private static void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("GetMineStoryFeedListRequest", 2, paramString);
+    }
+  }
+  
+  public byte[] getBusiBuf()
+  {
+    return this.a.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zad
  * JD-Core Version:    0.7.0.1
  */

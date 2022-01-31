@@ -8,8 +8,8 @@ import android.widget.TextView;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.model.FriendManager;
-import fbn;
-import fbo;
+import ewz;
+import exa;
 
 public class VoipQCallTimeOutActivity
   extends BaseActivity
@@ -19,7 +19,7 @@ public class VoipQCallTimeOutActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130904061);
+    setContentView(2130904063);
     Intent localIntent = getIntent();
     String str = localIntent.getStringExtra("friendUin");
     paramBundle = ((FriendManager)this.b.getManager(8)).c(str);
@@ -28,10 +28,10 @@ public class VoipQCallTimeOutActivity
     }
     for (;;)
     {
-      ((Button)findViewById(2131234709)).setOnClickListener(new fbn(this, localIntent, paramBundle));
-      ((TextView)findViewById(2131234707)).setText(paramBundle);
-      ((Button)findViewById(2131234710)).setOnClickListener(new fbo(this, str));
-      ((ImageView)findViewById(2131234706)).setImageDrawable(this.b.c(str));
+      ((Button)findViewById(2131234711)).setOnClickListener(new ewz(this, localIntent, paramBundle));
+      ((TextView)findViewById(2131234709)).setText(paramBundle);
+      ((Button)findViewById(2131234712)).setOnClickListener(new exa(this, str));
+      ((ImageView)findViewById(2131234708)).setImageDrawable(this.b.c(str));
       return;
     }
   }

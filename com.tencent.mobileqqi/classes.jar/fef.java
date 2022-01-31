@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.app.CircleManager;
-import com.tencent.mobileqq.data.CircleGroup;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.NearHornHandler;
 
 public class fef
-  implements Comparator
+  implements Runnable
 {
-  public fef(CircleManager paramCircleManager) {}
+  public fef(NearHornHandler paramNearHornHandler) {}
   
-  public int a(CircleGroup paramCircleGroup1, CircleGroup paramCircleGroup2)
+  public void run()
   {
-    return paramCircleGroup1.showIndex - paramCircleGroup2.showIndex;
+    NearHornHandler.a(this.a, this.a.c, this.a.b);
   }
 }
 

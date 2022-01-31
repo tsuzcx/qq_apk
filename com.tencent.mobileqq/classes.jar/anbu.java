@@ -1,13 +1,81 @@
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
-
 public class anbu
-  implements Runnable
+  extends anbn
 {
-  public anbu(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, String[] paramArrayOfString) {}
+  public int a;
+  public String a;
+  public anbv[] a;
+  public int b = -1;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e = 0;
   
-  public void run()
+  public anbu()
   {
-    QZoneSharePictureJsPlugin.b(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfAnbv = null;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
+  }
+  
+  public static boolean a(anbu paramanbu)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramanbu != null)
+    {
+      bool1 = bool2;
+      if (paramanbu.jdField_a_of_type_Int == 0)
+      {
+        bool1 = bool2;
+        if (paramanbu.b == 0)
+        {
+          bool1 = bool2;
+          if (paramanbu.jdField_a_of_type_ArrayOfAnbv != null)
+          {
+            bool1 = bool2;
+            if (paramanbu.jdField_a_of_type_ArrayOfAnbv[0].jdField_c_of_type_Int == 0)
+            {
+              bool1 = bool2;
+              if (paramanbu.jdField_a_of_type_ArrayOfAnbv[0].a != null) {
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public byte[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfAnbv[0].a;
+  }
+  
+  public String toString()
+  {
+    if (this.jdField_a_of_type_ArrayOfAnbv != null)
+    {
+      String str1 = "ImageTags{";
+      int i = 0;
+      for (;;)
+      {
+        str2 = str1;
+        if (i >= this.jdField_a_of_type_ArrayOfAnbv.length) {
+          break;
+        }
+        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfAnbv[i];
+        i += 1;
+      }
+    }
+    String str2 = "null";
+    return "ARCloudSceneRecogResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
   }
 }
 

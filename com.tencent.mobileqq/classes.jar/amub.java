@@ -1,13 +1,8 @@
-import com.tencent.mobileqq.lyric.util.Singleton;
-import cooperation.qzone.font.FontManager;
-
-public final class amub
-  extends Singleton
+public abstract interface amub
 {
-  protected FontManager a(Void paramVoid)
-  {
-    return new FontManager();
-  }
+  public abstract void a();
+  
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
 }
 
 

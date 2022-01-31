@@ -1,16 +1,64 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.res.AssetManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.HashMap;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
+@SuppressLint({"UseSparseArrays"})
 public class aheq
-  implements Comparator
 {
-  public aheq(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  private static aheq jdField_a_of_type_Aheq;
+  HashMap<Integer, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public int a(ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo1, ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo2)
+  private aheq(Context paramContext)
   {
-    return ChnToSpell.a(paramMemberInfo1.b, 1).compareTo(ChnToSpell.a(paramMemberInfo2.b, 1));
+    a(paramContext);
+  }
+  
+  public static aheq a()
+  {
+    try
+    {
+      if (jdField_a_of_type_Aheq == null) {
+        jdField_a_of_type_Aheq = new aheq(BaseApplicationImpl.getContext());
+      }
+      return jdField_a_of_type_Aheq;
+    }
+    finally {}
+  }
+  
+  private void a(Context paramContext)
+  {
+    try
+    {
+      SAXParser localSAXParser = SAXParserFactory.newInstance().newSAXParser();
+      aher localaher = new aher(this);
+      localSAXParser.parse(paramContext.getAssets().open("online_status_icon_config.xml"), localaher);
+      return;
+    }
+    catch (Exception paramContext) {}
+  }
+  
+  public int a(int paramInt)
+  {
+    return a(paramInt, 1);
+  }
+  
+  public int a(int paramInt1, int paramInt2)
+  {
+    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+    if (localInteger == null) {
+      return paramInt2;
+    }
+    return localInteger.intValue();
+  }
+  
+  public boolean a(int paramInt)
+  {
+    paramInt = a(paramInt);
+    return (paramInt == 3) || (paramInt == 2);
   }
 }
 

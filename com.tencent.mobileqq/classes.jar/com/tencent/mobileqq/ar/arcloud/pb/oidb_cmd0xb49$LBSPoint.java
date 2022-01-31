@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_cmd0xb49$LBSPoint
-  extends MessageMicro
+  extends MessageMicro<LBSPoint>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40 }, new String[] { "int32_lat", "int32_lon", "str_name", "str_addr", "uint32_dist" }, new Object[] { Integer.valueOf(900000000), Integer.valueOf(900000000), "", "", Integer.valueOf(0) }, LBSPoint.class);
   public final PBInt32Field int32_lat = PBField.initInt32(900000000);
@@ -19,7 +19,7 @@ public final class oidb_cmd0xb49$LBSPoint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.oidb_cmd0xb49.LBSPoint
  * JD-Core Version:    0.7.0.1
  */

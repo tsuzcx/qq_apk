@@ -19,19 +19,19 @@ public class PluginBaseActivity2
     this.jdField_a_of_type_Boolean = true;
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     if ((this.jdField_a_of_type_Boolean) && (ImmersiveUtils.isSupporImmersive() == 1))
     {
       getWindow().addFlags(67108864);
       if (this.b) {
-        this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(this, true, getResources().getColor(2131494254));
+        this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(this, true, getResources().getColor(2131166959));
       }
     }
   }
   
-  protected void onResume()
+  public void onResume()
   {
     super.onResume();
     if (this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact != null) {
@@ -41,7 +41,7 @@ public class PluginBaseActivity2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.plugin.PluginBaseActivity2
  * JD-Core Version:    0.7.0.1
  */

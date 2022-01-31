@@ -1,39 +1,36 @@
 package com.tencent.mobileqq.activity;
 
+import adue;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Handler;
 import android.view.ViewGroup;
+import beuj;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.widget.QQToastNotifier;
-import toz;
-import tpa;
-import tpc;
-import tpd;
 
 public class RegisterBaseActivity
   extends IphoneTitleBarActivity
   implements DialogInterface.OnClickListener
 {
-  public Dialog a;
+  protected Dialog a;
   protected ViewGroup a;
   protected String a;
   protected boolean a = true;
-  public Handler b;
-  protected String b;
+  protected Handler b;
+  public String b;
   
   public RegisterBaseActivity()
   {
     this.jdField_b_of_type_JavaLangString = "86";
-    this.jdField_b_of_type_AndroidOsHandler = new toz(this);
+    this.jdField_b_of_type_AndroidOsHandler = new adue(this);
   }
   
   protected void a(int paramInt)
   {
     try
     {
-      this.jdField_b_of_type_AndroidOsHandler.post(new tpd(this, paramInt));
+      this.jdField_b_of_type_AndroidOsHandler.post(new RegisterBaseActivity.4(this, paramInt));
       return;
     }
     catch (Exception localException)
@@ -44,7 +41,7 @@ public class RegisterBaseActivity
   
   public void a(int paramInt1, int paramInt2)
   {
-    new QQToastNotifier(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
+    new beuj(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
   }
   
   public void a(String paramString, int paramInt)
@@ -56,14 +53,14 @@ public class RegisterBaseActivity
     if (paramString.endsWith("\n")) {
       str = paramString.substring(0, paramString.length() - 1);
     }
-    new QQToastNotifier(this).a(str, getTitleBarHeight(), 0, paramInt);
+    new beuj(this).a(str, getTitleBarHeight(), 0, paramInt);
   }
   
   public void a(String paramString1, String paramString2)
   {
     try
     {
-      this.jdField_b_of_type_AndroidOsHandler.post(new tpa(this, paramString1, paramString2));
+      this.jdField_b_of_type_AndroidOsHandler.post(new RegisterBaseActivity.2(this, paramString1, paramString2));
       return;
     }
     catch (Exception paramString1)
@@ -74,7 +71,7 @@ public class RegisterBaseActivity
   
   public void c()
   {
-    this.jdField_b_of_type_AndroidOsHandler.post(new tpc(this));
+    this.jdField_b_of_type_AndroidOsHandler.post(new RegisterBaseActivity.3(this));
   }
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
@@ -92,7 +89,7 @@ public class RegisterBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterBaseActivity
  * JD-Core Version:    0.7.0.1
  */

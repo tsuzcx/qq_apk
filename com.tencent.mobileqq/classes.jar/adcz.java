@@ -1,68 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.device.file.DeviceFileObserver;
-import com.tencent.litetransfersdk.Session;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DeviceFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnThumbEventListener;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
 
 public class adcz
-  extends DeviceFileObserver
+  implements View.OnClickListener
 {
-  public adcz(DeviceFileModel paramDeviceFileModel) {}
+  public adcz(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void a(Session paramSession, float paramFloat)
+  public void onClick(View paramView)
   {
-    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-    if (localFileManagerEntity == null) {}
-    while ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener == null) || (paramSession.uSessionID != DeviceFileModel.a(this.a))) {
-      return;
-    }
-    localFileManagerEntity.fProgress = paramFloat;
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.a(paramFloat);
-  }
-  
-  public void a(Session paramSession, boolean paramBoolean)
-  {
-    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-    if (localFileManagerEntity == null) {}
-    do
-    {
-      return;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener != null) && (paramSession.uSessionID == DeviceFileModel.b(this.a)) && (paramBoolean))
-      {
-        localFileManagerEntity.strThumbPath = paramSession.strFilePathSrc;
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener.a(String.valueOf(localFileManagerEntity.nSessionId), paramSession.strFilePathSrc);
-      }
-    } while ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener == null) || (paramSession.uSessionID != DeviceFileModel.a(this.a)));
-    if (paramBoolean)
-    {
-      localFileManagerEntity.fProgress = 1.0F;
-      localFileManagerEntity.setFilePath(paramSession.strFilePathSrc);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.f();
-      if (this.a.e() == 2)
-      {
-        new Handler(Looper.getMainLooper()).postDelayed(new adda(this), 1000L);
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.f();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.g();
-  }
-  
-  public void b(Session paramSession)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener != null) && (paramSession.uSessionID == DeviceFileModel.a(this.a))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.d();
-    }
+    paramView = new Intent();
+    paramView.putExtra("set_display_type", 1);
+    PublicFragmentActivity.a(this.a.getActivity(), paramView, QQSettingChatOperationFragment.class);
+    azqs.b(null, "CliOper", "", "", "0X800A22C", "0X800A22C", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adcz
  * JD-Core Version:    0.7.0.1
  */

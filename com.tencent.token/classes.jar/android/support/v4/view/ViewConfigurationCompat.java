@@ -1,47 +1,80 @@
 package android.support.v4.view;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.Resources.Theme;
 import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.util.Log;
+import android.util.TypedValue;
 import android.view.ViewConfiguration;
+import java.lang.reflect.Method;
 
-public class ViewConfigurationCompat
+public final class ViewConfigurationCompat
 {
-  static final ViewConfigurationVersionImpl IMPL = new BaseViewConfigurationVersionImpl();
+  private static final String TAG = "ViewConfigCompat";
+  private static Method sGetScaledScrollFactorMethod;
   
   static
   {
-    if (Build.VERSION.SDK_INT >= 11)
+    if (Build.VERSION.SDK_INT == 25) {}
+    try
     {
-      IMPL = new FroyoViewConfigurationVersionImpl();
+      sGetScaledScrollFactorMethod = ViewConfiguration.class.getDeclaredMethod("getScaledScrollFactor", new Class[0]);
       return;
     }
+    catch (Exception localException)
+    {
+      Log.i("ViewConfigCompat", "Could not find method getScaledScrollFactor() on ViewConfiguration");
+    }
   }
   
+  private static float getLegacyScrollFactor(ViewConfiguration paramViewConfiguration, Context paramContext)
+  {
+    if ((Build.VERSION.SDK_INT >= 25) && (sGetScaledScrollFactorMethod != null)) {
+      try
+      {
+        int i = ((Integer)sGetScaledScrollFactorMethod.invoke(paramViewConfiguration, new Object[0])).intValue();
+        return i;
+      }
+      catch (Exception paramViewConfiguration)
+      {
+        Log.i("ViewConfigCompat", "Could not find method getScaledScrollFactor() on ViewConfiguration");
+      }
+    }
+    paramViewConfiguration = new TypedValue();
+    if (paramContext.getTheme().resolveAttribute(16842829, paramViewConfiguration, true)) {
+      return paramViewConfiguration.getDimension(paramContext.getResources().getDisplayMetrics());
+    }
+    return 0.0F;
+  }
+  
+  public static float getScaledHorizontalScrollFactor(@NonNull ViewConfiguration paramViewConfiguration, @NonNull Context paramContext)
+  {
+    if (Build.VERSION.SDK_INT >= 26) {
+      return paramViewConfiguration.getScaledHorizontalScrollFactor();
+    }
+    return getLegacyScrollFactor(paramViewConfiguration, paramContext);
+  }
+  
+  @Deprecated
   public static int getScaledPagingTouchSlop(ViewConfiguration paramViewConfiguration)
   {
-    return IMPL.getScaledPagingTouchSlop(paramViewConfiguration);
+    return paramViewConfiguration.getScaledPagingTouchSlop();
   }
   
-  static class BaseViewConfigurationVersionImpl
-    implements ViewConfigurationCompat.ViewConfigurationVersionImpl
+  public static float getScaledVerticalScrollFactor(@NonNull ViewConfiguration paramViewConfiguration, @NonNull Context paramContext)
   {
-    public int getScaledPagingTouchSlop(ViewConfiguration paramViewConfiguration)
-    {
-      return paramViewConfiguration.getScaledTouchSlop();
+    if (Build.VERSION.SDK_INT >= 26) {
+      return paramViewConfiguration.getScaledVerticalScrollFactor();
     }
+    return getLegacyScrollFactor(paramViewConfiguration, paramContext);
   }
   
-  static class FroyoViewConfigurationVersionImpl
-    implements ViewConfigurationCompat.ViewConfigurationVersionImpl
+  @Deprecated
+  public static boolean hasPermanentMenuKey(ViewConfiguration paramViewConfiguration)
   {
-    public int getScaledPagingTouchSlop(ViewConfiguration paramViewConfiguration)
-    {
-      return ViewConfigurationCompatFroyo.getScaledPagingTouchSlop(paramViewConfiguration);
-    }
-  }
-  
-  static abstract interface ViewConfigurationVersionImpl
-  {
-    public abstract int getScaledPagingTouchSlop(ViewConfiguration paramViewConfiguration);
+    return paramViewConfiguration.hasPermanentMenuKey();
   }
 }
 

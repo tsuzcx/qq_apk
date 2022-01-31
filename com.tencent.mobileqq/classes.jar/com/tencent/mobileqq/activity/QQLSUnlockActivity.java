@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity;
 
+import aivm;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Intent;
@@ -14,11 +15,10 @@ import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.provider.Settings.System;
 import android.view.Window;
+import azri;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.QWalletPushManager;
+import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.QNotificationManager;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -112,10 +112,10 @@ public class QQLSUnlockActivity
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 1500L);
       if (getIntent().getBooleanExtra("key_wallet_unlock", false))
       {
-        new QNotificationManager(this).cancel("QQLSActivity", 128);
+        QQNotificationManager.getInstance().cancel("QQLSActivity", 238);
         paramBundle = BaseApplicationImpl.getApplication().getRuntime();
         if ((paramBundle instanceof QQAppInterface)) {
-          QWalletPushManager.a((QQAppInterface)paramBundle, false);
+          aivm.a((QQAppInterface)paramBundle, false);
         }
       }
       return;
@@ -136,13 +136,13 @@ public class QQLSUnlockActivity
   protected void onPause()
   {
     super.onPause();
-    StatisticCollector.a(this).c(this);
+    azri.a(this).c(this);
   }
   
   protected void onResume()
   {
     super.onResume();
-    StatisticCollector.a(this).b(this);
+    azri.a(this).b(this);
   }
   
   protected void onSaveInstanceState(Bundle paramBundle)
@@ -154,7 +154,7 @@ public class QQLSUnlockActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSUnlockActivity
  * JD-Core Version:    0.7.0.1
  */

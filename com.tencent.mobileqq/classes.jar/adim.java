@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.MainFragment;
 
-class adim
-  implements Runnable
+public class adim
+  implements View.OnClickListener
 {
-  adim(adil paramadil, String paramString, long paramLong1, long paramLong2) {}
+  public adim(MainFragment paramMainFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Adil.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adim
  * JD-Core Version:    0.7.0.1
  */

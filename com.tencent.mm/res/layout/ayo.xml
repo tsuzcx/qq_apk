@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.ui.widget.RoundedCornerRelativeLayout android:id="@id/etl" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/etm" android:layout_width="200.0dip" android:layout_height="200.0dip" />
+    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/etn" android:layout_width="200.0dip" android:layout_height="200.0dip" />
+    <include android:id="@id/eto" layout="@layout/auw" />
+    <LinearLayout android:orientation="vertical" android:id="@id/etp" android:background="@drawable/au" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <TextView android:textSize="23.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/etq" android:paddingLeft="18.0dip" android:paddingTop="24.0dip" android:paddingRight="12.0dip" android:paddingBottom="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:shadowColor="#80000000" android:shadowDx="0.0" android:shadowDy="2.0" android:shadowRadius="2.0" />
+        <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/etr" android:paddingLeft="18.0dip" android:paddingTop="2.0dip" android:paddingRight="2.0dip" android:paddingBottom="26.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:shadowColor="#80000000" android:shadowDx="0.0" android:shadowDy="2.0" android:shadowRadius="2.0" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/ets" android:background="@drawable/at" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <TextView android:textSize="23.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/ett" android:paddingLeft="18.0dip" android:paddingTop="26.0dip" android:paddingRight="12.0dip" android:paddingBottom="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:shadowColor="#80000000" android:shadowDx="0.0" android:shadowDy="2.0" android:shadowRadius="2.0" />
+        <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/etu" android:paddingLeft="18.0dip" android:paddingTop="2.0dip" android:paddingRight="2.0dip" android:paddingBottom="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:shadowColor="#80000000" android:shadowDx="0.0" android:shadowDy="2.0" android:shadowRadius="2.0" />
+    </LinearLayout>
+</com.tencent.mm.ui.widget.RoundedCornerRelativeLayout>

@@ -1,20 +1,22 @@
-import android.os.Message;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 
 public class anwh
-  implements Runnable
 {
-  public anwh(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer, int paramInt) {}
-  
-  public void run()
+  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer.a.a(Message.obtain(null, 8, 1, this.jdField_a_of_type_Int));
+    Intent localIntent = new Intent();
+    localIntent.setAction("android.intent.action.VIEW");
+    localIntent.putExtra("big_brother_source_key", paramString2);
+    localIntent.putExtra("key_callback_id", paramInt);
+    localIntent.setData(Uri.parse(paramString1));
+    paramActivity.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anwh
  * JD-Core Version:    0.7.0.1
  */

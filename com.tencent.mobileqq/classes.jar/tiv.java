@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
+import android.support.annotation.UiThread;
 
-public class tiv
-  implements Runnable
+public abstract interface tiv<M>
+  extends tat
 {
-  public tiv(QQLSActivity paramQQLSActivity) {}
+  @UiThread
+  public abstract void a(M paramM);
   
-  public void run()
-  {
-    this.a.b();
-  }
+  @UiThread
+  public abstract void a(boolean paramBoolean);
+  
+  @UiThread
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tiv
  * JD-Core Version:    0.7.0.1
  */

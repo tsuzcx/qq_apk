@@ -1,64 +1,19 @@
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import cooperation.troop_homework.jsp.TroopHWFileDownloadManager;
-import cooperation.troop_homework.jsp.TroopHWFileDownloadManager.OnDownloadStateListener;
-import java.io.File;
-import java.util.HashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArLBSActivity;
 
-public class anfp
-  implements ITMAssistantDownloadClientListener
+public final class anfp
+  implements Parcelable.Creator<ArLBSActivity>
 {
-  public anfp(TroopHWFileDownloadManager paramTroopHWFileDownloadManager) {}
-  
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public ArLBSActivity a(Parcel paramParcel)
   {
-    paramTMAssistantDownloadClient = (TroopHWFileDownloadManager.OnDownloadStateListener)TroopHWFileDownloadManager.a(this.a).get(paramString);
-    if (paramTMAssistantDownloadClient != null) {
-      paramTMAssistantDownloadClient.a(paramString, paramLong1, paramLong2);
-    }
+    return new ArLBSActivity(paramParcel);
   }
   
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public ArLBSActivity[] a(int paramInt)
   {
-    int i = 4;
-    paramTMAssistantDownloadClient = "";
-    if (paramInt1 == 4)
-    {
-      paramTMAssistantDownloadClient = (String)TroopHWFileDownloadManager.b(this.a).get(paramString1);
-      localObject = paramTMAssistantDownloadClient.substring(paramTMAssistantDownloadClient.lastIndexOf("/") + 1);
-      localObject = new File(TroopHWFileDownloadManager.a(this.a) + (String)localObject);
-      if (((File)localObject).exists()) {
-        ((File)localObject).renameTo(new File(paramTMAssistantDownloadClient));
-      }
-      TroopHWFileDownloadManager.b(this.a).remove(paramString1);
-    }
-    Object localObject = (TroopHWFileDownloadManager.OnDownloadStateListener)TroopHWFileDownloadManager.a(this.a).get(paramString1);
-    if (localObject != null) {
-      switch (paramInt1)
-      {
-      default: 
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      ((TroopHWFileDownloadManager.OnDownloadStateListener)localObject).a(paramString1, i, paramInt2, paramString2, paramTMAssistantDownloadClient);
-      return;
-      i = 2;
-      continue;
-      i = 6;
-      continue;
-      i = 3;
-      TroopHWFileDownloadManager.a(this.a).remove(paramString1);
-      continue;
-      i = 1;
-      continue;
-      i = 5;
-      TroopHWFileDownloadManager.a(this.a).remove(paramString1);
-    }
+    return new ArLBSActivity[paramInt];
   }
-  
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient) {}
 }
 
 

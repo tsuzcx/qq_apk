@@ -1,47 +1,42 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.WindowManager.BadTokenException;
-import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.widget.XListView;
 
 public class ahia
-  implements Runnable
+  implements aybr
 {
-  public ahia(CameraCaptureFragment paramCameraCaptureFragment, String paramString) {}
+  public ahia(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.getActivity();
-    if (localObject == null) {}
-    do
+    if ((paramBitmap == null) || (paramInt2 == 201)) {}
+    for (;;)
     {
-      for (;;)
+      return;
+      if ((this.a.e == 0) && (this.a.a != null))
       {
-        return;
-        QLog.e("CameraCaptureFragment", 2, "onCameraStarted error = " + this.jdField_a_of_type_JavaLangString);
-        String str = ((Activity)localObject).getString(2131428347);
-        localObject = DialogUtil.a((Context)localObject, 230).setMessage(str).setPositiveButton(((Activity)localObject).getString(2131428346), new ahib(this, (Activity)localObject));
-        try
+        int i = this.a.a.getChildCount();
+        paramInt2 = 0;
+        while (paramInt2 < i)
         {
-          ((QQCustomDialog)localObject).setCancelable(false);
-          if (!CameraCaptureFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment))
+          paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
+          if ((paramBitmap != null) && ((paramBitmap instanceof ahid)))
           {
-            ((QQCustomDialog)localObject).show();
-            CameraCaptureFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment, true);
-            return;
+            paramBitmap = (ahid)paramBitmap;
+            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
+              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+            }
           }
+          paramInt2 += 1;
         }
-        catch (WindowManager.BadTokenException localBadTokenException) {}
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("CameraCaptureFragment", 2, "", localBadTokenException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahia
  * JD-Core Version:    0.7.0.1
  */

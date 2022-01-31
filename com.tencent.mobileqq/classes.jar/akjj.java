@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.vashealth.HealthStepCounterPlugin;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class akjj
-  implements Runnable
+class akjj
+  implements View.OnClickListener
 {
-  public akjj(HealthStepCounterPlugin paramHealthStepCounterPlugin, String paramString) {}
+  akjj(akjh paramakjh, String paramString1, String paramString2) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    HealthStepCounterPlugin.a(this.jdField_a_of_type_ComTencentMobileqqVashealthHealthStepCounterPlugin, this.jdField_a_of_type_JavaLangString);
+    paramView = new Intent(this.jdField_a_of_type_Akjh.a, QQBrowserActivity.class).putExtra("url", String.format("https://buluo.qq.com/mobile/detail.html?bid=%s&pid=%s&_wv=1027&webview=1&from=reliao", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
+    this.jdField_a_of_type_Akjh.a.startActivity(paramView);
+    azqs.b(null, "dc00899", "grp_lbs", "", "hot_room", "clk_tribe_post", 0, 0, "", "", "", "");
   }
 }
 

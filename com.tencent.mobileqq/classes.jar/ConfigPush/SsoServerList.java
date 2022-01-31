@@ -8,22 +8,22 @@ import java.util.ArrayList;
 public final class SsoServerList
   extends JceStruct
 {
-  static ArrayList cache_v2G3GList;
-  static ArrayList cache_vHttp_2G3GList;
-  static ArrayList cache_vHttp_WifiList;
-  static ArrayList cache_vWifiList;
+  static ArrayList<SsoServerListInfo> cache_v2G3GList;
+  static ArrayList<SsoServerListInfo> cache_vHttp_2G3GList;
+  static ArrayList<SsoServerListInfo> cache_vHttp_WifiList;
+  static ArrayList<SsoServerListInfo> cache_vWifiList;
   public byte bTestSpeed;
   public byte bUseNewList;
   public int iMultiConn = 1;
   public int iReconnect;
-  public ArrayList v2G3GList;
-  public ArrayList vHttp_2G3GList;
-  public ArrayList vHttp_WifiList;
-  public ArrayList vWifiList;
+  public ArrayList<SsoServerListInfo> v2G3GList;
+  public ArrayList<SsoServerListInfo> vHttp_2G3GList;
+  public ArrayList<SsoServerListInfo> vHttp_WifiList;
+  public ArrayList<SsoServerListInfo> vWifiList;
   
   public SsoServerList() {}
   
-  public SsoServerList(ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt1, byte paramByte1, byte paramByte2, int paramInt2, ArrayList paramArrayList3, ArrayList paramArrayList4)
+  public SsoServerList(ArrayList<SsoServerListInfo> paramArrayList1, ArrayList<SsoServerListInfo> paramArrayList2, int paramInt1, byte paramByte1, byte paramByte2, int paramInt2, ArrayList<SsoServerListInfo> paramArrayList3, ArrayList<SsoServerListInfo> paramArrayList4)
   {
     this.v2G3GList = paramArrayList1;
     this.vWifiList = paramArrayList2;

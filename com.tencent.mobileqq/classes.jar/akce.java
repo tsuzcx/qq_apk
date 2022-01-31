@@ -1,22 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import java.util.List;
 
-public final class akce
-  implements View.OnClickListener
+public class akce
+  extends ameq
 {
-  public akce(QQCustomDialog paramQQCustomDialog) {}
+  public akce(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public void onClick(View paramView)
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    if (this.a != null) {
-      this.a.dismiss();
+    if ((!TextUtils.isEmpty(this.a.b)) && (!this.a.b.equals(paramString))) {
+      return;
     }
+    ThreadManager.post(new TroopMemberListInnerFrame.7.1(this, paramList), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akce
  * JD-Core Version:    0.7.0.1
  */

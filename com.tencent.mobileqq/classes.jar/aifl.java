@@ -1,25 +1,30 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.startup.step.NewRuntime;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
 
-public class aifl
-  implements Runnable
+class aifl
+  implements DialogInterface.OnClickListener
 {
-  public aifl(NewRuntime paramNewRuntime) {}
+  aifl(aiez paramaiez) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sp_hack_dvm", 4);
-    if (NewRuntime.b == 15) {
-      localSharedPreferences.edit().putInt("key_continuous_crash_count", 0);
+    paramDialogInterface = new Intent(this.a.a, LoginActivity.class);
+    paramDialogInterface.putExtra("is_change_account", true);
+    if (this.a.a.getIntent().getExtras() != null) {
+      paramDialogInterface.putExtras(this.a.a.getIntent().getExtras());
     }
-    localSharedPreferences.edit().putLong("key_last_hack_verify_time", 0L).commit();
+    paramDialogInterface.addFlags(268435456);
+    paramDialogInterface.addFlags(67108864);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aifl
  * JD-Core Version:    0.7.0.1
  */

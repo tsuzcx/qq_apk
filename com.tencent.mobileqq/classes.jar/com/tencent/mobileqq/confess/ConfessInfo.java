@@ -1,18 +1,21 @@
 package com.tencent.mobileqq.confess;
 
-import com.tencent.mobileqq.util.Utils;
+import bdeu;
 import java.io.Serializable;
 import org.json.JSONObject;
 
 public class ConfessInfo
   implements Serializable
 {
+  public static final String KEY_CONFESSOR_FRIEND_SEX = "key_confessor_friend_sex";
   public static final String KEY_CONFESSOR_NICK = "key_confessor_nick";
+  public static final String KEY_CONFESSOR_NUM = "key_confessor_num";
   public static final String KEY_CONFESSOR_SEX = "key_confessor_sex";
   public static final String KEY_CONFESSOR_UIN = "key_confessor_uin";
   public static final String KEY_CONFESS_BG_TYPE = "key_confess_bg_type";
   public static final String KEY_CONFESS_DESC = "key_confess_desc";
   public static final String KEY_CONFESS_REC_NICK_NAME = "key_confess_rec_nick_name";
+  public static final String KEY_CONFESS_REC_NICK_TYPE = "key_confess_rec_nick_type";
   public static final String KEY_CONFESS_REC_UIN = "key_confess_rec_uin";
   public static final String KEY_CONFESS_SYSMSG = "key_confess_sysmsg";
   public static final String KEY_CONFESS_TIME = "key_confess_time";
@@ -56,7 +59,7 @@ public class ConfessInfo
     {
       return false;
       paramObject = (ConfessInfo)paramObject;
-    } while ((this.topicId != paramObject.topicId) || (this.confessorSex != paramObject.confessorSex) || (this.confessorUin != paramObject.confessorUin) || (!Utils.a(this.confessorNick, paramObject.confessorNick)) || (!Utils.a(this.topic, paramObject.topic)));
+    } while ((this.topicId != paramObject.topicId) || (this.confessorSex != paramObject.confessorSex) || (this.confessorUin != paramObject.confessorUin) || (!bdeu.a(this.confessorNick, paramObject.confessorNick)) || (!bdeu.a(this.topic, paramObject.topic)));
     return true;
   }
   
@@ -126,7 +129,7 @@ public class ConfessInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessInfo
  * JD-Core Version:    0.7.0.1
  */

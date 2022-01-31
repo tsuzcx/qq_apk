@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class PttCenter$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int MSG_PTTINTRODAPPLYUPLOAD_REQ_FIELD_NUMBER = 3;
   public static final int UINT32_CMD_FIELD_NUMBER = 1;
@@ -18,7 +18,7 @@ public final class PttCenter$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pttcenterservice.PttCenter.ReqBody
  * JD-Core Version:    0.7.0.1
  */

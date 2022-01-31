@@ -1,18 +1,8 @@
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.OnReciteListener;
-
-public class ajja
-  implements Runnable
+public abstract interface ajja
 {
-  public ajja(ReciteRecordLayout paramReciteRecordLayout) {}
+  public abstract void l();
   
-  public void run()
-  {
-    ReciteRecordLayout.b(this.a);
-    if (ReciteRecordLayout.a(this.a) != null) {
-      ReciteRecordLayout.a(this.a).c();
-    }
-  }
+  public abstract void n();
 }
 
 

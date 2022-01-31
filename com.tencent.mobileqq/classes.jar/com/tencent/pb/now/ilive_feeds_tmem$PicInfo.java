@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ilive_feeds_tmem$PicInfo
-  extends MessageMicro
+  extends MessageMicro<PicInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField city = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -33,7 +33,7 @@ public final class ilive_feeds_tmem$PicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_tmem.PicInfo
  * JD-Core Version:    0.7.0.1
  */

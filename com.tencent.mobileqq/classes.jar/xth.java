@@ -1,36 +1,51 @@
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 class xth
-  implements Runnable
+  extends BroadcastReceiver
 {
-  xth(xtf paramxtf, int paramInt) {}
+  xth(xtc paramxtc) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QzDynamicVideoPreviewActivity.d(this.jdField_a_of_type_Xtf.a)) {
-      QzDynamicVideoPreviewActivity.b(this.jdField_a_of_type_Xtf.a);
-    }
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      if (this.jdField_a_of_type_Int != -1)
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.SCREEN_OFF")) {
+      if ((this.a.jdField_a_of_type_Xtj != null) && (!this.a.jdField_a_of_type_Xtj.a()))
       {
-        QQToast.a(this.jdField_a_of_type_Xtf.a, "合成错误(" + this.jdField_a_of_type_Int + ")，请稍后重试", 0).a();
-        return;
+        this.a.b = true;
+        wxe.d("Q.qqstory.ffmpeg.FFmpegCmd", "屏幕灭屏了，FFmpeg还在执行当中");
       }
-      break;
-    case 4: 
-    case 5: 
-      QQToast.a(this.jdField_a_of_type_Xtf.a, "存在不支持格式的素材，合成错误(" + this.jdField_a_of_type_Int + ")", 0).a();
-      return;
     }
-    QQToast.a(this.jdField_a_of_type_Xtf.a, "合成错误，请稍后重试", 0).a();
+    do
+    {
+      do
+      {
+        return;
+      } while ((!paramContext.equals("android.intent.action.SCREEN_ON")) || (!this.a.b));
+      this.a.b = false;
+    } while ((this.a.jdField_a_of_type_Xti == null) || (this.a.jdField_a_of_type_Int == -9999) || (this.a.jdField_a_of_type_Xti.a == null));
+    if (this.a.jdField_a_of_type_Int == 1)
+    {
+      paramContext = alud.a(2131704876);
+      this.a.jdField_a_of_type_Xti.a.onSuccess(paramContext);
+      this.a.jdField_a_of_type_Xti.a.onFinish(true);
+      wxe.d("Q.qqstory.ffmpeg.FFmpegCmd", paramContext);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Int = -9999;
+      return;
+      paramContext = alud.a(2131704875);
+      this.a.jdField_a_of_type_Xti.a.onFailure(paramContext);
+      this.a.jdField_a_of_type_Xti.a.onFinish(false);
+      wxe.d("Q.qqstory.ffmpeg.FFmpegCmd", paramContext);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xth
  * JD-Core Version:    0.7.0.1
  */

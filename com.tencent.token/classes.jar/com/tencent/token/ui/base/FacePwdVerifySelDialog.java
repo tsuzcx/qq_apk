@@ -12,12 +12,12 @@ public class FacePwdVerifySelDialog
 {
   private FacePwdIndexActivity a;
   private ListView b;
-  private ab c;
+  private y c;
   private List d;
   
-  public FacePwdVerifySelDialog(FacePwdIndexActivity paramFacePwdIndexActivity, List paramList)
+  public FacePwdVerifySelDialog(FacePwdIndexActivity paramFacePwdIndexActivity, int paramInt, List paramList)
   {
-    super(paramFacePwdIndexActivity, 2131427400);
+    super(paramFacePwdIndexActivity, paramInt);
     this.a = paramFacePwdIndexActivity;
     this.d = paramList;
   }
@@ -30,10 +30,10 @@ public class FacePwdVerifySelDialog
       return;
     }
     super.onCreate(paramBundle);
-    setContentView(2130903085);
-    getWindow().setBackgroundDrawableResource(2130837639);
-    this.b = ((ListView)findViewById(2131296564));
-    this.c = new ab(this.a, this, this.d);
+    setContentView(2130968651);
+    getWindow().setBackgroundDrawableResource(2130837730);
+    this.b = ((ListView)findViewById(2131558851));
+    this.c = new y(this.a, this, this.d);
     this.b.setAdapter(this.c);
   }
 }

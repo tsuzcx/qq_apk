@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.troop.widget;
 
+import aepi;
+import alud;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
@@ -10,16 +12,15 @@ import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import bcpg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.troop.org.pb.oidb_0x496.RobotSubscribeCategory;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager;
 
 public class TroopRobotNextTipsView
   extends RelativeLayout
@@ -43,12 +44,12 @@ public class TroopRobotNextTipsView
   private TroopRobotNextTipsView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    int i = AIOUtils.a(6.0F, getResources());
+    int i = aepi.a(6.0F, getResources());
     if (this.jdField_a_of_type_AndroidWidgetTextView == null)
     {
       this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131361879);
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130839641);
+      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131364197);
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130841256);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 13.0F);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
       this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
@@ -61,8 +62,8 @@ public class TroopRobotNextTipsView
     if (this.b == null)
     {
       this.b = new TextView(getContext());
-      this.b.setId(2131361880);
-      this.b.setBackgroundResource(2130840547);
+      this.b.setId(2131364198);
+      this.b.setBackgroundResource(2130842145);
       this.b.setTextSize(2, 14.0F);
       this.b.setTextColor(jdField_a_of_type_Int);
       this.b.setGravity(17);
@@ -72,17 +73,17 @@ public class TroopRobotNextTipsView
       this.b.setPadding(i, 0, i, 0);
       addView(this.b, paramContext);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("每日一笑");
-    this.b.setText("下一条");
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131716150));
+    this.b.setText(alud.a(2131716137));
     this.b.setOnClickListener(this);
   }
   
   public void a(ChatMessage paramChatMessage)
   {
     this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    Object localObject = (TroopRobotManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(202);
-    boolean bool = ((TroopRobotManager)localObject).c(paramChatMessage);
-    this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$RobotSubscribeCategory = ((TroopRobotManager)localObject).a(((TroopRobotManager)localObject).a(paramChatMessage));
+    Object localObject = (bcpg)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(203);
+    boolean bool = ((bcpg)localObject).c(paramChatMessage);
+    this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$RobotSubscribeCategory = ((bcpg)localObject).a(((bcpg)localObject).a(paramChatMessage));
     if (this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$RobotSubscribeCategory != null)
     {
       localObject = this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$RobotSubscribeCategory.name.get();
@@ -106,7 +107,7 @@ public class TroopRobotNextTipsView
           j = BaseChatItemLayout.o;
           i = BaseChatItemLayout.n;
         }
-        setPadding(j, 0, i, AIOUtils.a(10.0F, getContext().getResources()));
+        setPadding(j, 0, i, aepi.a(10.0F, getContext().getResources()));
         return;
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
         break;
@@ -126,7 +127,7 @@ public class TroopRobotNextTipsView
     do
     {
       return;
-      paramView = (TroopRobotManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(202);
+      paramView = (bcpg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(203);
       localObject = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
     } while ((localObject == null) || (((ChatFragment)localObject).a() == null));
     Object localObject = ((ChatFragment)localObject).a();
@@ -140,7 +141,7 @@ public class TroopRobotNextTipsView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopRobotNextTipsView
  * JD-Core Version:    0.7.0.1
  */

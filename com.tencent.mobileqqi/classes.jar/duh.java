@@ -1,11 +1,21 @@
-class duh
-  implements Runnable
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+
+public class duh
+  implements DialogInterface.OnKeyListener
 {
-  duh(duf paramduf, String paramString) {}
+  public duh(UpgradeActivity paramUpgradeActivity) {}
   
-  public void run()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_Duf.b(this.jdField_a_of_type_JavaLangString);
+    if (paramInt == 4)
+    {
+      this.a.finish();
+      this.a.e();
+    }
+    return false;
   }
 }
 

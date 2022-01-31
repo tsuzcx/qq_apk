@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Parent id="0" value="根目录" version="1.0">
+
+<L1 id="23" value="同事.朋友">
+<L2 id="10011" value="同学">
+</L2>
+<L2 id="10009" value="同事">
+</L2>
+<L2 id="10010" value="亲友">
+</L2>
+<L2 id="10012" value="办公">
+</L2>
+</L1>
+<L1 id="32" value="家校.师生">
+</L1>
+<L1 id="25" value="游戏">
+</L1>
+<L1 id="27" value="粉丝">
+</L1>
+<L1 id="28" value="兴趣爱好">
+<L2 id="10018" value="影视"></L2>
+<L2 id="10019" value="音乐"></L2>
+<L2 id="10020" value="星座"></L2>
+<L2 id="10021" value="动漫"></L2>
+<L2 id="10022" value="运动"></L2>
+<L2 id="10023" value="读书"></L2>
+<L2 id="10024" value="摄影"></L2>
+<L2 id="30000" value="舞蹈"></L2>
+<L2 id="30001" value="电子产品"></L2>
+<L2 id="30002" value="汽车"></L2>
+<L2 id="10026" value="其他"></L2>
+</L1>
+<L1 id="29" value="生活休闲">
+<L2 id="10029" value="美食"></L2>
+<L2 id="10028" value="旅游"></L2>
+<L2 id="30003" value="交友"></L2>
+<L2 id="10027" value="购物"></L2>
+<L2 id="10031" value="宠物"></L2>
+<L2 id="10032" value="健康"></L2>
+<L2 id="30004" value="兼职"></L2>
+<L2 id="10033" value="母婴"></L2>
+<L2 id="30005" value="二手闲置"></L2>
+<L2 id="30006" value="公益"></L2>
+<L2 id="10014" value="同乡"></L2>
+<L2 id="10034" value="其他"></L2>
+</L1>
+<L1 id="31" value="行业交流">
+<L2 id="10047" value="投资">
+</L2>
+<L2 id="10048" value="IT/互联网">
+</L2>
+<L2 id="10049" value="建筑工程">
+</L2>
+<L2 id="10050" value="服务">
+</L2>
+<L2 id="10051" value="传媒">
+</L2>
+<L2 id="10052" value="营销与广告">
+</L2>
+<L2 id="10053" value="教师">
+</L2>
+<L2 id="10054" value="律师">
+</L2>
+<L2 id="10055" value="公务员">
+</L2>
+<L2 id="10056" value="银行">
+</L2>
+<L2 id="10057" value="咨询">
+</L2>
+<L2 id="10058" value="其他">
+</L2>
+</L1>
+<L1 id="30" value="学习.考试">
+<L2 id="10035" value="托福">
+</L2>
+<L2 id="10036" value="雅思">
+</L2>
+<L2 id="10037" value="CET 4/6">
+</L2>
+<L2 id="10038" value="GRE">
+</L2>
+<L2 id="10039" value="GMAT">
+</L2>
+<L2 id="10040" value="MBA">
+</L2>
+<L2 id="10041" value="考研">
+</L2>
+<L2 id="10042" value="高考">
+</L2>
+<L2 id="10043" value="中考">
+</L2>
+<L2 id="10044" value="职业认证">
+</L2>
+<L2 id="10045" value="公务员">
+</L2>
+<L2 id="10046" value="其他">
+</L2>
+</L1>
+<L1 id="24" value="置业安家">
+<L2 id="10015" value="业主">
+</L2>
+<L2 id="10017" value="装修">
+</L2>
+<L2 id="30007" value="房屋租赁">
+</L2>
+<L2 id="30008" value="房屋出售">
+</L2>
+</L1>
+<L1 id="26" value="品牌.产品">
+</L1>
+
+</Parent>

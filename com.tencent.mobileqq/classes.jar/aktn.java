@@ -1,42 +1,37 @@
-import android.os.Handler;
-import com.tencent.mobileqq.widget.CustomHorizontalScrollView;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aktn
-  implements Runnable
+  extends aktk
 {
-  public aktn(CustomHorizontalScrollView paramCustomHorizontalScrollView) {}
-  
-  public void run()
+  public aktn(QQAppInterface paramQQAppInterface)
   {
-    int i = this.a.getScrollX();
-    if (i == this.a.jdField_a_of_type_Int)
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(albr paramalbr, Context paramContext, QQAppInterface paramQQAppInterface) {}
+  
+  public void a(albr paramalbr, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if ((this.jdField_a_of_type_Boolean) || (!this.c)) {}
+    SharedPreferences localSharedPreferences;
+    do
     {
-      int j = i % (this.a.b + this.a.c);
-      if (this.a.e + i >= this.a.d) {
-        return;
-      }
-      if (j < this.a.b / 2) {
-        this.a.smoothScrollBy(-j, 0);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_Int = i;
-        return;
-        if (j >= this.a.b / 2)
-        {
-          int k = this.a.b;
-          int m = this.a.c;
-          this.a.smoothScrollBy(k + m - j, 0);
-        }
-      }
-    }
-    this.a.jdField_a_of_type_Int = i;
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 5L);
+      return;
+      this.b = true;
+      localSharedPreferences = paramContext.getSharedPreferences("apollo_sp", 0);
+    } while (!localSharedPreferences.getBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", true));
+    albi.a(paramalbr, alud.a(2131704999), 7, 0);
+    localSharedPreferences.edit().putBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", false).commit();
+    a(paramContext, paramQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aktn
  * JD-Core Version:    0.7.0.1
  */

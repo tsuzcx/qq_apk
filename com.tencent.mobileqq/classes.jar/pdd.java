@@ -1,45 +1,59 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.ImageUtil;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.handlers.DailyHandler.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.ListView;
+import java.util.Map;
 
 public class pdd
-  implements Runnable
+  extends pdc
 {
-  public pdd(Share paramShare, String paramString1, String paramString2, String paramString3, ApplicationInfo paramApplicationInfo) {}
-  
-  public void run()
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(Share.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina download image:" + this.jdField_a_of_type_JavaLangString);
+    return 3;
+  }
+  
+  public void a(View paramView, ListView paramListView) {}
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramAdapterView = (ArticleInfo)a((int)paramLong);
+    if (otf.c(b())) {
+      if (!ors.a(paramAdapterView)) {
+        break label35;
+      }
     }
-    String str = ImageUtil.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, null);
-    if (QLog.isColorLevel()) {
-      QLog.d(Share.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina path:" + str);
+    label35:
+    for (paramInt = 4;; paramInt = 2)
+    {
+      opt.a(paramInt);
+      return;
     }
-    Intent localIntent = new Intent("android.intent.action.SEND");
-    localIntent.setFlags(268435456);
-    localIntent.setType("image/*");
-    localIntent.putExtra("android.intent.extra.TEXT", this.b + this.c);
-    if (!TextUtils.isEmpty(str)) {
-      localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(str)));
+  }
+  
+  public void a(Map<Long, qkk> paramMap, boolean paramBoolean)
+  {
+    super.a(paramMap, paramBoolean);
+    if (otf.c(b()))
+    {
+      paramMap = a();
+      if (bkbq.w()) {
+        break label36;
+      }
+      QLog.d("DailyHandler", 1, "detachFromViewGroup,now cmd is 0x68b");
     }
-    localIntent.setPackage(this.jdField_a_of_type_AndroidContentPmApplicationInfo.packageName);
-    this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d(Share.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina start weibo!");
+    label36:
+    while (paramMap == null) {
+      return;
     }
+    ThreadManager.executeOnSubThread(new DailyHandler.1(this, paramMap.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pdd
  * JD-Core Version:    0.7.0.1
  */

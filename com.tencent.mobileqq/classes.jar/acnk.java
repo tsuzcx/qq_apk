@@ -1,22 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
 public class acnk
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public acnk(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public acnk(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a.a(null);
-    LocalFileBrowserActivity.a(this.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acnk
  * JD-Core Version:    0.7.0.1
  */

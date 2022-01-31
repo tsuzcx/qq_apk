@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.filemanager.core.DiscPicThumbDownloader;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FilePicURLDrawlableHelper;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class acup
-  implements Runnable
 {
-  public acup(DiscPicThumbDownloader paramDiscPicThumbDownloader, FileManagerEntity paramFileManagerEntity) {}
-  
-  public void run()
-  {
-    FilePicURLDrawlableHelper.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-  }
+  public int a = 1;
+  public ImageView a;
+  TextView a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acup
  * JD-Core Version:    0.7.0.1
  */

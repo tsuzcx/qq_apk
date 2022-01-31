@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.AnimationView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2aad" android:layout_width="320.0dip" android:layout_height="320.0dip" android:scaleType="fitCenter" android:layout_centerInParent="true" android:contentDescription="@null" />
-</RelativeLayout>

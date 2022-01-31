@@ -3,12 +3,12 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.mobileqq.statistics.DcReportUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.vas.ClubContentJsonTask;
-import com.tencent.mobileqq.vas.ClubContentJsonTask.TaskInfo;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import azps;
+import bdhb;
+import bdin;
+import bdrh;
+import bdrl;
+import begz;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.net.URLEncoder;
@@ -35,10 +35,10 @@ class HealthUiPlugin$1
         if (!bool) {
           try
           {
-            Object localObject1 = new File(this.this$0.mRuntime.a().getApplicationContext().getFilesDir(), ClubContentJsonTask.c.a);
+            Object localObject1 = new File(this.this$0.mRuntime.a().getApplicationContext().getFilesDir(), bdrh.c.a);
             if ((localObject1 != null) && (((File)localObject1).exists()))
             {
-              localObject1 = new JSONObject(FileUtils.a((File)localObject1)).getJSONObject("data").getJSONArray("jdUploadLog");
+              localObject1 = new JSONObject(bdhb.a((File)localObject1)).getJSONObject("data").getJSONArray("jdUploadLog");
               if (localObject1 != null)
               {
                 int j = ((JSONArray)localObject1).length();
@@ -69,7 +69,7 @@ class HealthUiPlugin$1
       }
       try
       {
-        i = NetworkUtil.a(this.this$0.mRuntime.a().getApplicationContext());
+        i = bdin.a(this.this$0.mRuntime.a().getApplicationContext());
         if (i == 0) {
           continue;
         }
@@ -90,8 +90,8 @@ class HealthUiPlugin$1
       {
         try
         {
-          ((StringBuilder)localObject2).append("jd").append("|").append(URLEncoder.encode(this.val$url, "UTF-8")).append("|").append(???).append("|").append("android").append("|").append("7.6.3").append("|").append("|").append("|").append("|").append("|").append("|").append("|");
-          DcReportUtil.a(null, "dc00454", ((StringBuilder)localObject2).toString(), false);
+          ((StringBuilder)localObject2).append("jd").append("|").append(URLEncoder.encode(this.val$url, "UTF-8")).append("|").append(???).append("|").append("android").append("|").append("8.3.5").append("|").append("|").append("|").append("|").append("|").append("|").append("|");
+          azps.a(null, "dc00454", ((StringBuilder)localObject2).toString(), false);
           if ((!this.val$url.contains("91160.com")) && (!this.val$url.contains("guahao.com"))) {
             continue;
           }
@@ -115,8 +115,8 @@ class HealthUiPlugin$1
                 QLog.d("HealthUiPlugin", 2, "report guahao url \n" + (String)localObject5);
               }
               Object localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append("jiankang").append("|").append((String)localObject5).append("|").append(???).append("|").append("android").append("|").append("7.6.3").append("|").append("|").append("|").append("|").append("|").append("|").append("|");
-              DcReportUtil.a(null, "dc00454", ((StringBuilder)localObject2).toString(), false);
+              ((StringBuilder)localObject2).append("jiankang").append("|").append((String)localObject5).append("|").append(???).append("|").append("android").append("|").append("8.3.5").append("|").append("|").append("|").append("|").append("|").append("|").append("|");
+              azps.a(null, "dc00454", ((StringBuilder)localObject2).toString(), false);
               return;
               localObject3 = finally;
               throw localObject3;
@@ -152,7 +152,7 @@ class HealthUiPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.HealthUiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

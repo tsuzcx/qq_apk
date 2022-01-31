@@ -1,24 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import mqq.app.QQPermissionCallback;
 
-public class tti
-  implements DialogInterface.OnKeyListener
+class tti
+  implements QQPermissionCallback
 {
-  public tti(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  tti(ttg paramttg) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramInt == 4) {
-      this.a.finish();
-    }
-    return false;
+    ttg.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tti
  * JD-Core Version:    0.7.0.1
  */

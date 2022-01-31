@@ -1,34 +1,25 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.ApolloPanelManager;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.support.annotation.FloatRange;
 
 public class yys
-  implements Runnable
 {
-  public yys(ApolloPanel paramApolloPanel) {}
+  private float jdField_a_of_type_Float = 1.0F;
+  private yyr jdField_a_of_type_Yyr = new yyr();
   
-  public void run()
+  public yyr a()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a == null)) {}
-    for (;;)
-    {
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      if (ApolloPanel.a(this.a) != null) {}
-      for (int i = ApolloPanel.a(this.a).a.get(); i > 0; i = 0)
-      {
-        this.a.b.setVisibility(0);
-        return;
-      }
-    }
+    yyr.b(this.jdField_a_of_type_Yyr, this.jdField_a_of_type_Float - yyr.a(this.jdField_a_of_type_Yyr));
+    return this.jdField_a_of_type_Yyr;
+  }
+  
+  public yys a(@FloatRange(from=0.01D) float paramFloat)
+  {
+    yyr.a(this.jdField_a_of_type_Yyr, paramFloat);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yys
  * JD-Core Version:    0.7.0.1
  */

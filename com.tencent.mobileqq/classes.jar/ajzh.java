@@ -1,20 +1,21 @@
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.mobileqq.activity.selectmember.FriendTabView;
 
 public class ajzh
-  extends WeakReference
+  implements View.OnClickListener
 {
-  private final String a;
+  public ajzh(FriendTabView paramFriendTabView) {}
   
-  public ajzh(String paramString, Object paramObject, ReferenceQueue paramReferenceQueue)
+  public void onClick(View paramView)
   {
-    super(paramObject, paramReferenceQueue);
-    this.a = paramString;
+    this.a.a.a(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajzh
  * JD-Core Version:    0.7.0.1
  */

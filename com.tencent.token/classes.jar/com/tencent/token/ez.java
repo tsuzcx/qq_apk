@@ -1,73 +1,50 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.b;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
-import org.json.JSONObject;
-
-public final class ez
-  extends bm
+class ez
+  extends ey
 {
-  public static String c = "";
-  public static String d = "";
-  public static long e;
-  public static long f;
-  public static int g;
-  private static int h;
+  int d = 1;
   
-  protected final String a()
+  ez() {}
+  
+  ez(int paramInt)
   {
-    return b.c() + "/cn/mbtoken3/mbtoken3_realname_check";
+    super(paramInt);
   }
   
-  protected final void a(fs paramfs) {}
-  
-  protected final void a(JSONObject paramJSONObject)
+  void a(ez paramez)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i == 0)
+    if (this.d == paramez.d)
     {
-      paramJSONObject = s.d(paramJSONObject.getString("data"));
-      if (paramJSONObject != null)
-      {
-        paramJSONObject = new JSONObject(new String(paramJSONObject));
-        e.c("parseJSON  decodeData=" + paramJSONObject.toString());
-        if (h == 1) {
-          if (paramJSONObject.getInt("live_result") == 0) {
-            a(i, paramJSONObject.getString("info"));
-          }
-        }
-      }
-      for (;;)
-      {
-        e.a("ProtoUploadRealNameFile upload success");
-        return;
-        this.a.a = 0;
-        continue;
-        if (h == 2)
-        {
-          c = paramJSONObject.getString("ocr_name");
-          d = paramJSONObject.getString("ocr_card");
-        }
-        for (;;)
-        {
-          this.a.a = 0;
-          break;
-          if (h == 5)
-          {
-            e = paramJSONObject.getLong("submit_time");
-            f = paramJSONObject.getLong("complete_time");
-            g = paramJSONObject.getInt("time_left");
-          }
-        }
-        e.c("parseJSON error decodeData=" + paramJSONObject);
-        a(10022, RqdApplication.i().getString(2131361799));
-      }
+      c(paramez);
+      return;
     }
-    a(i, paramJSONObject.getString("info"));
-    e.a("ProtoUploadRealNameFile upload fail errCode=" + i);
+    this.d *= d(paramez);
+  }
+  
+  void b(ez paramez)
+  {
+    if (this.d == paramez.d)
+    {
+      this.d *= d(paramez);
+      return;
+    }
+    c(paramez);
+  }
+  
+  void f(ey paramey)
+  {
+    if (this.d == 1)
+    {
+      c(paramey);
+      return;
+    }
+    this.d *= d(paramey);
+  }
+  
+  public String toString()
+  {
+    return new ex(this, this.d).toString();
   }
 }
 

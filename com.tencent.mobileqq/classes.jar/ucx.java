@@ -1,22 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
+import com.tencent.biz.qqcircle.events.QCircleFeedCommentEllipseEvent;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
 
 public class ucx
-  implements View.OnClickListener
+  implements ypw
 {
-  public ucx(TroopRequestActivity paramTroopRequestActivity) {}
+  public ucx(QCircleFeedCommentWidget paramQCircleFeedCommentWidget) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = this.a.d;
-    TroopNoticeJsHandler.a(this.a, paramView);
+    if (QCircleFeedCommentWidget.a(this.a) != null) {
+      yiw.a().a(new QCircleFeedCommentEllipseEvent(QCircleFeedCommentWidget.a(this.a)));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ucx
  * JD-Core Version:    0.7.0.1
  */

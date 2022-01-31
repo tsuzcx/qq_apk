@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Crm$CrmCCNotify
-  extends MessageMicro
+  extends MessageMicro<CrmCCNotify>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_video_uuid = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,8 +22,10 @@ public final class Crm$CrmCCNotify
   public Crm.GrayMsg msg_gray_msg = new Crm.GrayMsg();
   public Crm.LinkTextWithOpenAIOAction msg_linktext_withOepenAIO = new Crm.LinkTextWithOpenAIOAction();
   public Crm.QidianGroupMsg qidian_group_msg = new Crm.QidianGroupMsg();
+  public final PBStringField str_check_id = PBField.initString("");
   public final PBStringField str_client_headurl = PBField.initString("");
   public final PBStringField str_client_nickname = PBField.initString("");
+  public final PBStringField str_ext_nick_name = PBField.initString("");
   public final PBStringField str_publicacc_name = PBField.initString("");
   public final PBStringField str_visitId = PBField.initString("");
   public final PBStringField str_wx_openid = PBField.initString("");
@@ -35,7 +37,7 @@ public final class Crm$CrmCCNotify
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 58, 66, 72, 82, 90, 98, 106, 112, 122, 130, 138, 226 }, new String[] { "crm_flag", "crm_alloc_kfext", "str_wx_openid", "bytes_video_uuid", "crm_user_type", "uint64_real_uin", "str_client_headurl", "str_client_nickname", "uint64_pubacc_id", "str_publicacc_name", "light_talk_msg", "msg_linktext_withOepenAIO", "msg_c2c_action_report", "uint32_IsTipsMode", "svr_cc_msg_flag", "qidian_group_msg", "str_visitId", "msg_gray_msg" }, new Object[] { Integer.valueOf(0), null, "", localByteStringMicro, Integer.valueOf(0), Long.valueOf(0L), "", "", Long.valueOf(0L), "", null, null, null, Integer.valueOf(0), null, null, "", null }, CrmCCNotify.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 58, 66, 72, 82, 90, 98, 106, 112, 122, 130, 138, 226, 338, 354 }, new String[] { "crm_flag", "crm_alloc_kfext", "str_wx_openid", "bytes_video_uuid", "crm_user_type", "uint64_real_uin", "str_client_headurl", "str_client_nickname", "uint64_pubacc_id", "str_publicacc_name", "light_talk_msg", "msg_linktext_withOepenAIO", "msg_c2c_action_report", "uint32_IsTipsMode", "svr_cc_msg_flag", "qidian_group_msg", "str_visitId", "msg_gray_msg", "str_check_id", "str_ext_nick_name" }, new Object[] { Integer.valueOf(0), null, "", localByteStringMicro, Integer.valueOf(0), Long.valueOf(0L), "", "", Long.valueOf(0L), "", null, null, null, Integer.valueOf(0), null, null, "", null, "", "" }, CrmCCNotify.class);
   }
 }
 

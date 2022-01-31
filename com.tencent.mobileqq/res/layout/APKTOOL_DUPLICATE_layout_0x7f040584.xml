@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1afc" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:layout_alignParentTop="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040100" />
-    <com.qqfav.widget.QfavSwipListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1afd" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:layout_below="@id/rlCommenTitle" />
-</RelativeLayout>

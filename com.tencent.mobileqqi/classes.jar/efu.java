@@ -1,41 +1,48 @@
+import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler.Callback;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
 
 public class efu
-  implements TroopQZoneUploadAlbumHandler.Callback
+  implements View.OnTouchListener
 {
-  public efu(StructingMsgItemBuilder paramStructingMsgItemBuilder, MessageForStructing paramMessageForStructing, BaseChatItemLayout paramBaseChatItemLayout) {}
+  private float jdField_a_of_type_Float;
+  private float b;
   
-  public void a(View paramView, long paramLong, int paramInt1, int paramInt2)
+  public efu(NotificationView paramNotificationView) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq != paramLong) {}
-    do
-    {
-      return;
-      paramView = (StructMsgForGeneralShare)this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg;
-      if (paramInt1 != 1001) {
-        paramInt2 = 100;
+    if (paramMotionEvent.getAction() == 0) {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a(paramMotionEvent.getRawY()))
+      {
+        this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+        this.b = paramMotionEvent.getRawY();
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.sendEmptyMessageDelayed(1013, 500L);
       }
-      paramView.setProgress(paramInt2);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.findViewById(2131230801);
-    } while (!(paramView instanceof ProgressBar));
-    ((ProgressBar)paramView).setProgress(paramInt2);
-    if (paramInt2 == 100) {}
-    for (paramInt1 = 8;; paramInt1 = 0)
+    }
+    for (;;)
     {
-      paramView.setVisibility(paramInt1);
-      return;
+      return false;
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
+      continue;
+      if (paramMotionEvent.getAction() == 2)
+      {
+        if ((Math.abs(paramMotionEvent.getRawX() - this.jdField_a_of_type_Float) > 60.0F) || (Math.abs(paramMotionEvent.getRawY() - this.b) > 60.0F)) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
+        }
+      }
+      else {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     efu
  * JD-Core Version:    0.7.0.1
  */

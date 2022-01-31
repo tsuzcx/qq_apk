@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.mobileqq.nearpeople.NearbyRecommender.ChatPushCarrierHelper;
-import java.util.List;
+import android.os.Bundle;
 
-class abxb
-  implements Runnable
+public abstract class abxb
+  implements yrb
 {
-  abxb(abxa paramabxa, List paramList) {}
+  protected abstract void a(boolean paramBoolean, Bundle paramBundle);
   
-  public void run()
+  public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Abxa.a.a.a(this.jdField_a_of_type_JavaUtilList);
+    paramBundle = paramBundle.getBundle("key_result");
+    if (paramBundle != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a(bool, paramBundle);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxb
  * JD-Core Version:    0.7.0.1
  */

@@ -124,15 +124,15 @@ public class BizTroopObserver
     }
   }
   
-  protected void a(TroopGagMgr.GagStatus paramGagStatus) {}
+  public void a(TroopGagMgr.GagStatus paramGagStatus) {}
   
-  protected void a(Object paramObject) {}
+  public void a(Object paramObject) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2) {}
+  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2) {}
   
   public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3) {}
   
-  protected void a(String paramString, List paramList, int paramInt) {}
+  public void a(String paramString, List paramList, int paramInt) {}
   
   public void a(String paramString, boolean paramBoolean, Object paramObject) {}
   
@@ -142,11 +142,11 @@ public class BizTroopObserver
   
   public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, ArrayList paramArrayList, int paramInt4) {}
   
-  protected void a(boolean paramBoolean, int paramInt, List paramList) {}
+  public void a(boolean paramBoolean, int paramInt, List paramList) {}
   
-  protected void a(boolean paramBoolean, long paramLong) {}
+  public void a(boolean paramBoolean, long paramLong) {}
   
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  public void a(boolean paramBoolean, Object paramObject) {}
   
   protected void a(boolean paramBoolean, String paramString, List paramList) {}
   
@@ -156,15 +156,15 @@ public class BizTroopObserver
   
   protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected void b(Object paramObject) {}
+  public void b(Object paramObject) {}
   
-  protected void b(boolean paramBoolean, Object paramObject) {}
+  public void b(boolean paramBoolean, Object paramObject) {}
   
   protected void c(Object paramObject) {}
   
-  protected void c(boolean paramBoolean, Object paramObject) {}
+  public void c(boolean paramBoolean, Object paramObject) {}
   
-  protected void d(boolean paramBoolean, Object paramObject) {}
+  public void d(boolean paramBoolean, Object paramObject) {}
   
   protected void e(boolean paramBoolean, Object paramObject) {}
   
@@ -176,7 +176,7 @@ public class BizTroopObserver
   
   protected void i(boolean paramBoolean, Object paramObject) {}
   
-  protected void j(boolean paramBoolean, Object paramObject) {}
+  public void j(boolean paramBoolean, Object paramObject) {}
 }
 
 

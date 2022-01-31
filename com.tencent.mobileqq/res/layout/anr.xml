@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqstory.view.PressDarkImageButton android:layout_gravity="bottom|center|right" android:id="@id/apl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="27.0dip" android:layout_marginBottom="60.0dip" android:src="@drawable/ebu" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom|center" android:id="@id/apk" android:padding="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip">
+        <com.tencent.biz.qqstory.view.PressDarkImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ebt" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/if" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="@string/qcl" android:shadowColor="@color/by" android:shadowRadius="3.0" />
+    </LinearLayout>
+</FrameLayout>

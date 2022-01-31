@@ -1,26 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.intervideo.now.NowWebViewPlugin;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
 
 public class advf
-  implements TroopMemberApiClient.Callback
+  implements Handler.Callback
 {
-  public advf(NowWebViewPlugin paramNowWebViewPlugin) {}
+  public advf(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  public void a(Bundle paramBundle)
+  public boolean handleMessage(Message paramMessage)
   {
-    int i = paramBundle.getInt("msg");
-    if (i == 91)
+    switch (paramMessage.what)
     {
-      NowWebViewPlugin.a(this.a, paramBundle.getInt("state"));
-      NowWebViewPlugin.a(this.a, NowWebViewPlugin.a(this.a), NowWebViewPlugin.b(this.a));
     }
-    while (i != 92) {
-      return;
+    for (;;)
+    {
+      return true;
+      paramMessage = new advg(this);
+      this.a.a(this.a.a, paramMessage, 4.0F, 500L, 4);
     }
-    i = paramBundle.getInt("errCode");
-    paramBundle = paramBundle.getString("desc");
-    NowWebViewPlugin.a(this.a, i, paramBundle);
   }
 }
 

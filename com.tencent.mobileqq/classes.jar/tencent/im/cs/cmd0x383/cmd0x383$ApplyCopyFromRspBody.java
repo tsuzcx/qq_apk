@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x383$ApplyCopyFromRspBody
-  extends MessageMicro
+  extends MessageMicro<ApplyCopyFromRspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_safe_check_flag = PBField.initBool(false);
@@ -24,7 +24,7 @@ public final class cmd0x383$ApplyCopyFromRspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x383.cmd0x383.ApplyCopyFromRspBody
  * JD-Core Version:    0.7.0.1
  */

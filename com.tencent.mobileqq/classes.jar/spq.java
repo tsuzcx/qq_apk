@@ -1,40 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.report.lp.LpReportManager;
-import cooperation.qzone.util.QZLog;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
 class spq
-  implements Runnable
+  implements bfah
 {
   spq(spp paramspp) {}
   
-  public void run()
+  public void a(BaseResp paramBaseResp)
   {
-    try
-    {
-      if (!TextUtils.isEmpty(this.a.a.a.a.a))
-      {
-        Object localObject = this.a.a.a.a.a;
-        if (this.a.a.a.a.a.startsWith("+")) {
-          localObject = this.a.a.a.a.a.substring(1);
-        }
-        localObject = new LpReportInfo_pf00064(699, 3, Long.valueOf((String)localObject).longValue());
-        LpReportManager.getInstance().reportToPF00064((LpReportInfo_pf00064)localObject, false, false);
-      }
+    if ((spp.a(this.a) == null) || (!spp.a(this.a).equals(paramBaseResp.transaction))) {
       return;
     }
-    catch (Exception localException)
+    switch (paramBaseResp.errCode)
     {
-      QZLog.e("QzoneReport", "makeOrRefreshQZone", localException);
+    case -2: 
+    case -1: 
+    default: 
+      ybk.a(1, 2131720031);
+      return;
     }
+    ybk.a(2, 2131720050);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     spq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,12 @@
-import android.widget.BaseAdapter;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.AnimationScrollListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class wsy
-  implements Runnable
+public abstract interface wsy
 {
-  public wsy(AvatarPendantActivity.AnimationScrollListener paramAnimationScrollListener) {}
-  
-  public void run()
-  {
-    if (this.a.b.r == 0)
-    {
-      URLDrawable.resume();
-      this.a.b.a.a = false;
-      this.a.b.a.notifyDataSetChanged();
-    }
-  }
+  public abstract void a(ErrorMessage paramErrorMessage);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wsy
  * JD-Core Version:    0.7.0.1
  */

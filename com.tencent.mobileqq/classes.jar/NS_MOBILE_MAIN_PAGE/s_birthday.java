@@ -8,14 +8,14 @@ import java.util.ArrayList;
 public final class s_birthday
   extends JceStruct
 {
-  static ArrayList cache_datalist;
+  static ArrayList<s_user> cache_datalist;
   public int allnum;
-  public ArrayList datalist;
+  public ArrayList<s_user> datalist;
   public int undealnum;
   
   public s_birthday() {}
   
-  public s_birthday(int paramInt1, ArrayList paramArrayList, int paramInt2)
+  public s_birthday(int paramInt1, ArrayList<s_user> paramArrayList, int paramInt2)
   {
     this.allnum = paramInt1;
     this.datalist = paramArrayList;

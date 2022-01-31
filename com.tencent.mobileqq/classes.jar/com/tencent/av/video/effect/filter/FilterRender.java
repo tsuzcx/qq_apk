@@ -70,24 +70,15 @@ public class FilterRender
     return new EffectTexture(this.mOutTextureId, this.mOutFbo, this.mWidth, this.mHeight);
   }
   
-  public void setFilterPath(final String paramString)
+  public void setFilterPath(String paramString)
   {
     Log.d("FilterRender", "setFilterPath filterPath = " + paramString);
-    addTaskBeforeProcess(new Runnable()
-    {
-      public void run()
-      {
-        FilterRender.access$002(FilterRender.this, FilterRender.this.mFilterFactory.getFilter(paramString));
-        if (FilterRender.this.mFilter != null) {
-          FilterRender.this.mFilter.init();
-        }
-      }
-    });
+    addTaskBeforeProcess(new FilterRender.1(this, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.video.effect.filter.FilterRender
  * JD-Core Version:    0.7.0.1
  */

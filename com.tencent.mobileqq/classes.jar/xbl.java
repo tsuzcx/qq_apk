@@ -1,21 +1,72 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import android.app.Activity;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.reactive.SimpleObserver;
+import dov.com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
 
-public class xbl
-  implements DialogInterface.OnClickListener
+class xbl
+  extends SimpleObserver<xlb>
 {
-  public xbl(SendHbActivity paramSendHbActivity) {}
+  xbl(xbk paramxbk, xlb paramxlb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(xlb paramxlb)
   {
-    paramDialogInterface.dismiss();
-    SendHbActivity.a(this.a);
+    super.onNext(paramxlb);
+    this.jdField_a_of_type_Xbk.a(5);
+    paramxlb = this.jdField_a_of_type_Xlb.a;
+    wxe.b("EditVideoSave", "publishParam = " + paramxlb);
+    Intent localIntent;
+    int j;
+    int i;
+    if (this.jdField_a_of_type_Xbk.jdField_a_of_type_Xby.getActivity() != null)
+    {
+      localIntent = this.jdField_a_of_type_Xbk.jdField_a_of_type_Xby.getActivity().getIntent();
+      if (localIntent == null) {
+        break label212;
+      }
+      j = localIntent.getIntExtra("sv_total_frame_count", 0);
+      i = localIntent.getIntExtra("sv_total_record_time", 0);
+    }
+    for (;;)
+    {
+      localIntent = SaveVideoActivity.a(this.jdField_a_of_type_Xbk.jdField_a_of_type_Xby.a(), paramxlb.b, i, j, this.jdField_a_of_type_Xbk.jdField_a_of_type_Xan.a.a());
+      xbk.a(this.jdField_a_of_type_Xbk, paramxlb.b);
+      this.jdField_a_of_type_Xbk.jdField_a_of_type_Xby.getActivity().startActivityForResult(localIntent, 111);
+      this.jdField_a_of_type_Xbk.jdField_a_of_type_Int = 5;
+      this.jdField_a_of_type_Xbk.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Xbk.b = ((int)(7000.0D / paramxlb.a * 4.0D));
+      this.jdField_a_of_type_Xbk.f();
+      return;
+      label212:
+      i = 0;
+      j = 0;
+    }
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    wxe.d("EditVideoSave", "saveVideo cancel !");
+    this.jdField_a_of_type_Xbk.jdField_a_of_type_Xan.a(0);
+    this.jdField_a_of_type_Xbk.g();
+    QQToast.a(this.jdField_a_of_type_Xbk.jdField_a_of_type_Xby.a(), alud.a(2131704224), 0).a();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    wxe.e("EditVideoSave", "saveVideo error ：" + paramError);
+    this.jdField_a_of_type_Xbk.jdField_a_of_type_Xan.a(0);
+    QQToast.a(this.jdField_a_of_type_Xbk.jdField_a_of_type_Xby.a(), 1, alud.a(2131704159) + paramError, 0).a();
+    this.jdField_a_of_type_Xbk.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xbl
  * JD-Core Version:    0.7.0.1
  */

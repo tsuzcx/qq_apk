@@ -118,7 +118,7 @@ public abstract class a
     //   239: ldc 104
     //   241: ldc 106
     //   243: aload 7
-    //   245: invokestatic 112	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   245: invokestatic 112	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   248: aload 6
     //   250: astore 5
     //   252: aload 7
@@ -226,7 +226,7 @@ public abstract class a
     //   68: ldc 104
     //   70: ldc 106
     //   72: aload_1
-    //   73: invokestatic 112	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   73: invokestatic 112	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   76: aload_2
     //   77: invokevirtual 161	android/database/sqlite/SQLiteDatabase:endTransaction	()V
     //   80: iconst_0
@@ -314,7 +314,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistant.common.a.a
  * JD-Core Version:    0.7.0.1
  */

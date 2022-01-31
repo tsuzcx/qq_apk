@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class PersonInfoChange
   extends JceStruct
 {
-  static ArrayList cache_vChgField;
+  static ArrayList<PersonInfoField> cache_vChgField;
   public byte cType;
-  public ArrayList vChgField;
+  public ArrayList<PersonInfoField> vChgField;
   
   public PersonInfoChange() {}
   
-  public PersonInfoChange(byte paramByte, ArrayList paramArrayList)
+  public PersonInfoChange(byte paramByte, ArrayList<PersonInfoField> paramArrayList)
   {
     this.cType = paramByte;
     this.vChgField = paramArrayList;
@@ -42,7 +42,7 @@ public final class PersonInfoChange
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     IMMsgBodyPack.PersonInfoChange
  * JD-Core Version:    0.7.0.1
  */

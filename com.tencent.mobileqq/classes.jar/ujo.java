@@ -1,34 +1,61 @@
-import android.graphics.Rect;
-import android.view.TouchDelegate;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import java.util.List;
 
-public final class ujo
-  implements Runnable
+public abstract class ujo<Config extends ujw>
 {
-  public ujo(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  protected uiz a;
+  private Config a;
   
-  public void run()
+  protected List<uja> a()
   {
-    Object localObject = new Rect();
-    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
-    this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
-    ((Rect)localObject).top -= this.jdField_a_of_type_Int;
-    ((Rect)localObject).bottom += this.b;
-    ((Rect)localObject).left -= this.c;
-    ((Rect)localObject).right += this.d;
-    if (QLog.isColorLevel()) {
-      QLog.d("TouchDelegate", 2, " bounds.top=" + ((Rect)localObject).top + "bounds.bottom=" + ((Rect)localObject).bottom);
+    if (this.jdField_a_of_type_Uiz != null) {
+      return this.jdField_a_of_type_Uiz.a();
     }
-    localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
-    if (View.class.isInstance(this.jdField_a_of_type_AndroidViewView.getParent())) {
-      ((View)this.jdField_a_of_type_AndroidViewView.getParent()).setTouchDelegate((TouchDelegate)localObject);
+    return null;
+  }
+  
+  protected abstract List<uiz> a(@NonNull List<uja> paramList);
+  
+  public Config a()
+  {
+    return this.jdField_a_of_type_Ujw;
+  }
+  
+  public void a(uiz paramuiz)
+  {
+    if (paramuiz.b() > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      xqq.a(bool);
+      this.jdField_a_of_type_Uiz = paramuiz;
+      return;
     }
+  }
+  
+  public void a(Config paramConfig)
+  {
+    this.jdField_a_of_type_Ujw = paramConfig;
+  }
+  
+  public List<uiz> b()
+  {
+    List localList = a();
+    if ((localList == null) || (localList.size() == 0))
+    {
+      wxe.d("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "data is null");
+      return null;
+    }
+    if ((a() != null) && (localList.size() < a().b))
+    {
+      wxe.d("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "too little data");
+      return null;
+    }
+    return a(a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ujo
  * JD-Core Version:    0.7.0.1
  */

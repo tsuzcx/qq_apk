@@ -1,53 +1,24 @@
-import com.tencent.mobileqq.leba.QZoneEntryController;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
 
 public class aeas
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aeas(QZoneEntryController paramQZoneEntryController) {}
+  public aeas(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QZoneEntryController.a(this.a))
+    if (this.a.jdField_a_of_type_Beft != null)
     {
-      QZoneEntryController.a(this.a, 1);
-      if (QLog.isColorLevel()) {
-        QLog.i("UndealCount.QZoneEntryController", 2, "显示被动");
+      this.a.jdField_a_of_type_Beft.jdField_a_of_type_Bejk.d = false;
+      this.a.jdField_a_of_type_Beft.jdField_a_of_type_Bejk.a = Boolean.valueOf(true);
+      if (this.a.jdField_a_of_type_Bejh != null) {
+        this.a.jdField_a_of_type_Bejh.l();
       }
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (!QZoneEntryController.b(this.a)) {
-            break;
-          }
-          QZoneEntryController.a(this.a, 2);
-        } while (!QLog.isColorLevel());
-        QLog.i("UndealCount.QZoneEntryController", 2, "显示主动");
-        return;
-        if (!QZoneEntryController.c(this.a)) {
-          break;
-        }
-        QZoneEntryController.a(this.a, 3);
-      } while (!QLog.isColorLevel());
-      QLog.i("UndealCount.QZoneEntryController", 2, "显示访客");
-      return;
-      if (!QZoneEntryController.d(this.a)) {
-        break;
-      }
-      QZoneEntryController.a(this.a, 4);
-    } while (!QLog.isColorLevel());
-    QLog.i("UndealCount.QZoneEntryController", 2, "显示运营内容");
-    return;
-    QZoneEntryController.a(this.a, 0);
-    if (QLog.isColorLevel()) {
-      QLog.i("UndealCount.QZoneEntryController", 2, "显示默认布局");
-    }
-    QZoneEntryController.b(this.a);
+    this.a.onClick(this.a.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetImageView);
+    this.a.a(0);
   }
 }
 

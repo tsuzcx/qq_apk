@@ -1,29 +1,22 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 class waj
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  waj(wai paramwai) {}
+  waj(wah paramwah, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (TroopChatPie.d(this.a.a)) {
-      return;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
     }
-    TroopNotificationHelper.c(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    TroopNotificationHelper.c(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    Message localMessage = TroopChatPie.h(this.a.a).obtainMessage(29);
-    localMessage.arg1 = 2;
-    TroopChatPie.i(this.a.a).sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     waj
  * JD-Core Version:    0.7.0.1
  */

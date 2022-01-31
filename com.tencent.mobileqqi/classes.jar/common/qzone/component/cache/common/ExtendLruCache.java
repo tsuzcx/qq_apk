@@ -1,8 +1,8 @@
 package common.qzone.component.cache.common;
 
 import android.support.v4.util.LruCache;
-import idw;
-import idx;
+import hzc;
+import hzd;
 import java.lang.ref.ReferenceQueue;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,13 +20,13 @@ public class ExtendLruCache
   
   public ExtendLruCache(int paramInt)
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new idw(this, paramInt);
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new hzc(this, paramInt);
   }
   
   private void b()
   {
-    for (idx localidx = (idx)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll(); localidx != null; localidx = (idx)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll()) {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(localidx.a);
+    for (hzd localhzd = (hzd)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll(); localhzd != null; localhzd = (hzd)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll()) {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(localhzd.a);
     }
   }
   
@@ -63,7 +63,7 @@ public class ExtendLruCache
           paramObject = localObject;
           return paramObject;
         }
-        paramObject = (idx)this.jdField_a_of_type_JavaUtilHashMap.get(paramObject);
+        paramObject = (hzd)this.jdField_a_of_type_JavaUtilHashMap.get(paramObject);
         if (paramObject != null)
         {
           paramObject = paramObject.get();
@@ -133,15 +133,15 @@ public class ExtendLruCache
     //   16: aload_0
     //   17: getfield 20	common/qzone/component/cache/common/ExtendLruCache:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   20: aload_1
-    //   21: new 39	idx
+    //   21: new 39	hzd
     //   24: dup
     //   25: aload_1
     //   26: aload_2
     //   27: aload_0
     //   28: getfield 25	common/qzone/component/cache/common/ExtendLruCache:jdField_a_of_type_JavaLangRefReferenceQueue	Ljava/lang/ref/ReferenceQueue;
-    //   31: invokespecial 112	idx:<init>	(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
+    //   31: invokespecial 112	hzd:<init>	(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
     //   34: invokevirtual 113	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   37: checkcast 39	idx
+    //   37: checkcast 39	hzd
     //   40: astore_1
     //   41: aload_1
     //   42: ifnonnull +9 -> 51
@@ -152,7 +152,7 @@ public class ExtendLruCache
     //   49: aload_1
     //   50: areturn
     //   51: aload_1
-    //   52: invokevirtual 64	idx:get	()Ljava/lang/Object;
+    //   52: invokevirtual 64	hzd:get	()Ljava/lang/Object;
     //   55: astore_1
     //   56: goto -9 -> 47
     //   59: astore_1
@@ -206,7 +206,7 @@ public class ExtendLruCache
     //   16: getfield 20	common/qzone/component/cache/common/ExtendLruCache:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   19: aload_1
     //   20: invokevirtual 46	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   23: checkcast 39	idx
+    //   23: checkcast 39	hzd
     //   26: astore_1
     //   27: aload_2
     //   28: ifnull +9 -> 37
@@ -222,7 +222,7 @@ public class ExtendLruCache
     //   42: astore_1
     //   43: goto -10 -> 33
     //   46: aload_1
-    //   47: invokevirtual 64	idx:get	()Ljava/lang/Object;
+    //   47: invokevirtual 64	hzd:get	()Ljava/lang/Object;
     //   50: astore_1
     //   51: goto -18 -> 33
     //   54: astore_1
@@ -281,12 +281,12 @@ public class ExtendLruCache
       {
         paramMatcher = ((Iterator)localObject2).next();
         paramObject = this.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(paramMatcher);
-        localObject1 = (idx)this.jdField_a_of_type_JavaUtilHashMap.remove(paramMatcher);
+        localObject1 = (hzd)this.jdField_a_of_type_JavaUtilHashMap.remove(paramMatcher);
         if (paramObject == null) {
           if (localObject1 == null) {
             paramObject = null;
           } else {
-            paramObject = ((idx)localObject1).get();
+            paramObject = ((hzd)localObject1).get();
           }
         }
       }

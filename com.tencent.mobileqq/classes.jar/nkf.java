@@ -1,33 +1,35 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.callback.OnPlayModeShareListener;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.playmode.child.NewDiscoverBannerPlayMode;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class nkf
-  extends OnPlayModeShareListener
+  implements bhuk
 {
-  public nkf(NewDiscoverBannerPlayMode paramNewDiscoverBannerPlayMode, VideoPlayModeBase paramVideoPlayModeBase, VideoListFeedItem paramVideoListFeedItem, String paramString, StoryVideoItem paramStoryVideoItem)
-  {
-    super(paramVideoPlayModeBase);
-  }
+  public nkf(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    super.a(paramInt);
-    StoryReportor.a("host_share", "suc_share", 1, paramInt, new String[] { String.valueOf(StoryReportor.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem)), "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-  }
-  
-  public void b(int paramInt)
-  {
-    super.b(paramInt);
-    StoryReportor.a("host_share", "share_chanel", 1, paramInt, new String[] { String.valueOf(StoryReportor.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem)), "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    if (this.a.o) {
+      return;
+    }
+    this.a.o = true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.a.dismiss();
+      return;
+      this.a.q();
+      continue;
+      this.a.E();
+      continue;
+      AccountDetailActivity.a(this.a, this.a.d);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nkf
  * JD-Core Version:    0.7.0.1
  */

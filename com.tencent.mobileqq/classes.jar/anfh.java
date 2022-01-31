@@ -1,32 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.troop.TroopPluginManager.TroopPluginCallback;
-
-class anfh
-  extends Handler
+public class anfh
+  extends anfc
 {
-  anfh(anfg paramanfg, Looper paramLooper)
+  public anfh(int paramInt)
   {
-    super(paramLooper);
+    super(paramInt);
   }
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.a == null);
-      this.a.a.a(0);
-      return;
-    } while (this.a.a == null);
-    this.a.a.a(2);
-  }
+  protected void a() {}
+  
+  protected void a(anff paramanff) {}
 }
 
 

@@ -1,21 +1,32 @@
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForPic;
-
 public class vcq
-  implements Runnable
 {
-  public vcq(PicItemBuilder paramPicItemBuilder, MessageForPic paramMessageForPic) {}
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  private String b;
   
-  public void run()
+  public vcq(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.a.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq);
+    this.b = paramString;
+  }
+  
+  public void a()
+  {
+    vcr localvcr = new vcr(this, false);
+    vcs localvcs = new vcs(this, false);
+    utz.a().a(localvcr, localvcs);
+  }
+  
+  public void b()
+  {
+    vcr localvcr = new vcr(this, true);
+    vcs localvcs = new vcs(this, true);
+    utz.a().a(localvcr, localvcs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vcq
  * JD-Core Version:    0.7.0.1
  */

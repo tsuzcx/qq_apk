@@ -1,14 +1,10 @@
-import com.tencent.mobileqq.hotpic.HotPicTab;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class adrb
-  implements Runnable
 {
-  public adrb(HotPicTab paramHotPicTab) {}
-  
-  public void run()
-  {
-    this.a.requestLayout();
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
 }
 
 

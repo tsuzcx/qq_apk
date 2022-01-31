@@ -1,20 +1,23 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.biz.qrcode.activity.LoginManagerActivity;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.app.ConfigObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
-class brp
-  implements Runnable
+public class brp
+  extends ConfigObserver
 {
-  brp(bro parambro, Drawable paramDrawable) {}
+  public brp(AboutActivity paramAboutActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    this.jdField_a_of_type_Bro.a.a.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
+    paramUpgradeDetailWrapper = this.a.b.a();
+    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     brp
  * JD-Core Version:    0.7.0.1
  */

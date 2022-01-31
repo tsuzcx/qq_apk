@@ -1,17 +1,31 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin;
+import com.tencent.qphone.base.util.QLog;
 
 public class ancj
-  implements Runnable
+  extends ancs
 {
-  public ancj(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin) {}
+  public long a;
+  public ancl a;
+  public ancm a;
   
-  public void run()
+  public ancj()
   {
-    QzoneDynamicAlbumPlugin.a(QzoneDynamicAlbumPlugin.a());
-    RemoteHandleManager.a().a().a("0");
-    RemoteHandleManager.a().a().c("0");
+    this.jdField_a_of_type_Ancm = new ancm();
+    this.jdField_a_of_type_Ancl = new ancl();
+    a();
+  }
+  
+  public void a()
+  {
+    QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "ARLocalGestureCircleRecogResult.reset");
+    this.b = 4096L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Ancm.a();
+    this.jdField_a_of_type_Ancl.a();
+  }
+  
+  public String toString()
+  {
+    return "ARLocalGestureCircleRecogResult{recogType = " + this.b + ", frameIdx = " + this.jdField_a_of_type_Long + ", gestureResult = " + this.jdField_a_of_type_Ancm + ", circleResult = " + this.jdField_a_of_type_Ancl + '}';
   }
 }
 

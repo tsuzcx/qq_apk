@@ -1,13 +1,37 @@
-import com.dataline.activities.LiteMutiPicViewerActivity;
+import android.content.Intent;
+import android.view.View;
+import com.dataline.activities.LiteAdvanceActivity;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.statistics.StatisticAssist;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import mqq.app.MobileQQ;
 
-class cc
-  implements Runnable
+public class cc
+  implements ActionSheet.OnButtonClickListener
 {
-  cc(bx parambx) {}
+  public cc(LiteAdvanceActivity paramLiteAdvanceActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    LiteMutiPicViewerActivity.b(this.a.a);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+      return;
+      StatisticAssist.a(this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.b.getApplication().getApplicationContext(), this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.b.a(), "dl_ckclearmsg");
+      paramView = (DataLineHandler)this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.b.a(8);
+      paramView.d(32);
+      paramView.e();
+      this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.b.a().b();
+      this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.getIntent().putExtra("clear_flag", true);
+      this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.setResult(-1, this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.getIntent());
+      this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.finish();
+    }
   }
 }
 

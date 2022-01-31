@@ -1,7 +1,6 @@
 package com.tencent.TMG.sdk;
 
 import android.content.Context;
-import android.util.Log;
 
 public class AVAudioEffectCtrl
 {
@@ -52,7 +51,7 @@ public class AVAudioEffectCtrl
   
   public native int setEffectsVolume(int paramInt);
   
-  public native int startAccompany(String paramString, boolean paramBoolean, int paramInt1, int paramInt2, AccompanyCompleteCallback paramAccompanyCompleteCallback);
+  public native int startAccompany(String paramString, boolean paramBoolean, int paramInt1, int paramInt2, AVAudioEffectCtrl.AccompanyCompleteCallback paramAccompanyCompleteCallback);
   
   public native int stopAccompany(int paramInt);
   
@@ -68,20 +67,10 @@ public class AVAudioEffectCtrl
   native boolean uninitNative();
   
   public native int unloadEffect(int paramInt);
-  
-  public static class AccompanyCompleteCallback
-  {
-    static final String TAG = "SdkJni";
-    
-    protected void onComplete(int paramInt, String paramString)
-    {
-      Log.d("SdkJni", "AccompanyCompleteCallback.OnComplete. result = " + paramInt);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.TMG.sdk.AVAudioEffectCtrl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,34 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader.VideoFrameLoaderListener;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.view.View;
 
 public class aock
-  implements Runnable
 {
-  public aock(VideoFrameLoader paramVideoFrameLoader, int paramInt, Bitmap paramBitmap) {}
-  
-  public void run()
+  public static void a(View paramView, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    if ((this.jdField_a_of_type_Int != VideoFrameLoader.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader).size()) && (QLog.isColorLevel())) {
-      QLog.d("VideoFrameLoader", 2, "onloadframe index error!");
-    }
-    VideoFrameLoader.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader).add(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    VideoFrameLoader.VideoFrameLoaderListener localVideoFrameLoaderListener = null;
-    if (VideoFrameLoader.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader) != null) {
-      localVideoFrameLoaderListener = (VideoFrameLoader.VideoFrameLoaderListener)VideoFrameLoader.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader).get();
-    }
-    if (localVideoFrameLoaderListener != null) {
-      localVideoFrameLoaderListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
+    paramView.setPivotX(paramView.getWidth());
+    paramView.setPivotY(paramView.getHeight() / 2);
+    AnimatorSet localAnimatorSet = new AnimatorSet();
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat1, paramFloat2 });
+    paramView = ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat3, paramFloat4 });
+    localAnimatorSet.setDuration(paramInt);
+    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator, paramView });
+    localAnimatorSet.start();
+  }
+  
+  public static void a(View paramView, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  {
+    AnimatorSet localAnimatorSet = new AnimatorSet();
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { paramFloat1, paramFloat2 });
+    localAnimatorSet.setDuration(paramInt);
+    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator, ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat3, paramFloat4 }), ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat5, paramFloat6 }) });
+    localAnimatorSet.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aock
  * JD-Core Version:    0.7.0.1
  */

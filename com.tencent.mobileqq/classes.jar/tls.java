@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-class tls
-  implements Runnable
+final class tls
+  implements bfah
 {
-  tls(tlo paramtlo) {}
-  
-  public void run()
+  public void a(BaseResp paramBaseResp)
   {
-    this.a.a.E();
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      bflz.a().a(2131720031);
+    }
+    WXShareHelper.a().b(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tls
  * JD-Core Version:    0.7.0.1
  */

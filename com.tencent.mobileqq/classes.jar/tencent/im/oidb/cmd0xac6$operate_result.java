@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0xac6$operate_result
-  extends MessageMicro
+  extends MessageMicro<operate_result>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint32_id", "int32_result", "str_errmsg" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "" }, operate_result.class);
   public final PBInt32Field int32_result = PBField.initInt32(0);
@@ -17,7 +17,7 @@ public final class cmd0xac6$operate_result
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xac6.operate_result
  * JD-Core Version:    0.7.0.1
  */

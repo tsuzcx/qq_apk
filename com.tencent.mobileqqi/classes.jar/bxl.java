@@ -1,25 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.activity.ChatActivity;
 
 public class bxl
-  implements View.OnClickListener
+  implements Runnable
 {
-  public bxl(AboutActivity paramAboutActivity) {}
+  public bxl(ChatActivity paramChatActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((AboutActivity.a(this.a) != null) && (AboutActivity.a(this.a).a != null)) {
-      UpgradeDetailActivity.a(this.a, UpgradeController.a().a(), false, false, true);
-    }
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bxl
  * JD-Core Version:    0.7.0.1
  */

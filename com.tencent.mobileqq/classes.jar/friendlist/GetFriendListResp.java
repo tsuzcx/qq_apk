@@ -8,12 +8,13 @@ import java.util.ArrayList;
 public final class GetFriendListResp
   extends JceStruct
 {
-  static int cache_reqtype;
+  static int cache_reqtype = 0;
   static int cache_result;
-  static FriendInfo cache_stSelfInfo;
-  static ArrayList cache_vecFriendInfo;
-  static ArrayList cache_vecGroupInfo;
-  static ArrayList cache_vecMSFGroupInfo;
+  static FriendInfo cache_stSelfInfo = new FriendInfo();
+  static FriendListSubSrvRspCode cache_stSubSrvRspCode = new FriendListSubSrvRspCode();
+  static ArrayList<FriendInfo> cache_vecFriendInfo = new ArrayList();
+  static ArrayList<GroupInfo> cache_vecGroupInfo;
+  static ArrayList<GroupInfo> cache_vecMSFGroupInfo;
   public byte cHasOtherRespFlag;
   public byte cRespType;
   public byte cShowPcIcon;
@@ -32,17 +33,32 @@ public final class GetFriendListResp
   public long serverTime;
   public short sqqOnLine_count;
   public FriendInfo stSelfInfo;
+  public FriendListSubSrvRspCode stSubSrvRspCode;
   public short startIndex;
   public short totoal_friend_count;
   public short totoal_group_count;
   public long uin;
-  public ArrayList vecFriendInfo;
-  public ArrayList vecGroupInfo;
-  public ArrayList vecMSFGroupInfo;
+  public ArrayList<FriendInfo> vecFriendInfo;
+  public ArrayList<GroupInfo> vecGroupInfo;
+  public ArrayList<GroupInfo> vecMSFGroupInfo;
+  public short wGetExtSnsRspCode;
+  
+  static
+  {
+    Object localObject = new FriendInfo();
+    cache_vecFriendInfo.add(localObject);
+    cache_vecGroupInfo = new ArrayList();
+    localObject = new GroupInfo();
+    cache_vecGroupInfo.add(localObject);
+    cache_result = 0;
+    cache_vecMSFGroupInfo = new ArrayList();
+    localObject = new GroupInfo();
+    cache_vecMSFGroupInfo.add(localObject);
+  }
   
   public GetFriendListResp() {}
   
-  public GetFriendListResp(int paramInt1, byte paramByte1, long paramLong1, short paramShort1, short paramShort2, short paramShort3, short paramShort4, ArrayList paramArrayList1, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, short paramShort5, byte paramByte6, ArrayList paramArrayList2, int paramInt2, short paramShort6, short paramShort7, long paramLong2, short paramShort8, ArrayList paramArrayList3, byte paramByte7, byte paramByte8, FriendInfo paramFriendInfo, byte paramByte9)
+  public GetFriendListResp(int paramInt1, byte paramByte1, long paramLong1, short paramShort1, short paramShort2, short paramShort3, short paramShort4, ArrayList<FriendInfo> paramArrayList, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, short paramShort5, byte paramByte6, ArrayList<GroupInfo> paramArrayList1, int paramInt2, short paramShort6, short paramShort7, long paramLong2, short paramShort8, ArrayList<GroupInfo> paramArrayList2, byte paramByte7, byte paramByte8, FriendInfo paramFriendInfo, byte paramByte9, short paramShort9, FriendListSubSrvRspCode paramFriendListSubSrvRspCode)
   {
     this.reqtype = paramInt1;
     this.ifReflush = paramByte1;
@@ -51,24 +67,26 @@ public final class GetFriendListResp
     this.getfriendCount = paramShort2;
     this.totoal_friend_count = paramShort3;
     this.friend_count = paramShort4;
-    this.vecFriendInfo = paramArrayList1;
+    this.vecFriendInfo = paramArrayList;
     this.groupid = paramByte2;
     this.ifGetGroupInfo = paramByte3;
     this.groupstartIndex = paramByte4;
     this.getgroupCount = paramByte5;
     this.totoal_group_count = paramShort5;
     this.group_count = paramByte6;
-    this.vecGroupInfo = paramArrayList2;
+    this.vecGroupInfo = paramArrayList1;
     this.result = paramInt2;
     this.errorCode = paramShort6;
     this.online_friend_count = paramShort7;
     this.serverTime = paramLong2;
     this.sqqOnLine_count = paramShort8;
-    this.vecMSFGroupInfo = paramArrayList3;
+    this.vecMSFGroupInfo = paramArrayList2;
     this.cRespType = paramByte7;
     this.cHasOtherRespFlag = paramByte8;
     this.stSelfInfo = paramFriendInfo;
     this.cShowPcIcon = paramByte9;
+    this.wGetExtSnsRspCode = paramShort9;
+    this.stSubSrvRspCode = paramFriendListSubSrvRspCode;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -80,13 +98,6 @@ public final class GetFriendListResp
     this.getfriendCount = paramJceInputStream.read(this.getfriendCount, 4, true);
     this.totoal_friend_count = paramJceInputStream.read(this.totoal_friend_count, 5, true);
     this.friend_count = paramJceInputStream.read(this.friend_count, 6, true);
-    Object localObject;
-    if (cache_vecFriendInfo == null)
-    {
-      cache_vecFriendInfo = new ArrayList();
-      localObject = new FriendInfo();
-      cache_vecFriendInfo.add(localObject);
-    }
     this.vecFriendInfo = ((ArrayList)paramJceInputStream.read(cache_vecFriendInfo, 7, true));
     this.groupid = paramJceInputStream.read(this.groupid, 8, false);
     this.ifGetGroupInfo = paramJceInputStream.read(this.ifGetGroupInfo, 9, true);
@@ -94,32 +105,19 @@ public final class GetFriendListResp
     this.getgroupCount = paramJceInputStream.read(this.getgroupCount, 11, false);
     this.totoal_group_count = paramJceInputStream.read(this.totoal_group_count, 12, false);
     this.group_count = paramJceInputStream.read(this.group_count, 13, false);
-    if (cache_vecGroupInfo == null)
-    {
-      cache_vecGroupInfo = new ArrayList();
-      localObject = new GroupInfo();
-      cache_vecGroupInfo.add(localObject);
-    }
     this.vecGroupInfo = ((ArrayList)paramJceInputStream.read(cache_vecGroupInfo, 14, false));
     this.result = paramJceInputStream.read(this.result, 15, true);
     this.errorCode = paramJceInputStream.read(this.errorCode, 16, false);
     this.online_friend_count = paramJceInputStream.read(this.online_friend_count, 17, false);
     this.serverTime = paramJceInputStream.read(this.serverTime, 18, false);
     this.sqqOnLine_count = paramJceInputStream.read(this.sqqOnLine_count, 19, false);
-    if (cache_vecMSFGroupInfo == null)
-    {
-      cache_vecMSFGroupInfo = new ArrayList();
-      localObject = new GroupInfo();
-      cache_vecMSFGroupInfo.add(localObject);
-    }
     this.vecMSFGroupInfo = ((ArrayList)paramJceInputStream.read(cache_vecMSFGroupInfo, 20, false));
     this.cRespType = paramJceInputStream.read(this.cRespType, 21, false);
     this.cHasOtherRespFlag = paramJceInputStream.read(this.cHasOtherRespFlag, 22, false);
-    if (cache_stSelfInfo == null) {
-      cache_stSelfInfo = new FriendInfo();
-    }
     this.stSelfInfo = ((FriendInfo)paramJceInputStream.read(cache_stSelfInfo, 23, false));
     this.cShowPcIcon = paramJceInputStream.read(this.cShowPcIcon, 24, false);
+    this.wGetExtSnsRspCode = paramJceInputStream.read(this.wGetExtSnsRspCode, 25, false);
+    this.stSubSrvRspCode = ((FriendListSubSrvRspCode)paramJceInputStream.read(cache_stSubSrvRspCode, 26, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -155,11 +153,15 @@ public final class GetFriendListResp
       paramJceOutputStream.write(this.stSelfInfo, 23);
     }
     paramJceOutputStream.write(this.cShowPcIcon, 24);
+    paramJceOutputStream.write(this.wGetExtSnsRspCode, 25);
+    if (this.stSubSrvRspCode != null) {
+      paramJceOutputStream.write(this.stSubSrvRspCode, 26);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     friendlist.GetFriendListResp
  * JD-Core Version:    0.7.0.1
  */

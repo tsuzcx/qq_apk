@@ -1,81 +1,82 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SetTroopAdminsActivity;
-import com.tencent.mobileqq.activity.SetTroopAdminsActivity.TroopAdmin;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.FaceInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.SubaccountUgActivity;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.SubAccountBindObserver;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 
 public class dns
-  extends FacePreloadBaseAdapter
+  extends SubAccountBindObserver
 {
-  public dns(SetTroopAdminsActivity paramSetTroopAdminsActivity, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView)
-  {
-    super(paramContext, paramQQAppInterface, paramXListView, 1, true);
-  }
+  public dns(SubaccountUgActivity paramSubaccountUgActivity) {}
   
-  protected Object a(int paramInt)
+  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    FacePreloadBaseAdapter.FaceInfo localFaceInfo = new FacePreloadBaseAdapter.FaceInfo(this);
-    localFaceInfo.jdField_a_of_type_JavaLangString = ((SetTroopAdminsActivity.TroopAdmin)getItem(paramInt)).jdField_a_of_type_JavaLangString;
-    localFaceInfo.jdField_a_of_type_Int = 1;
-    return localFaceInfo;
-  }
-  
-  public int getCount()
-  {
-    if (SetTroopAdminsActivity.a(this.a) == null) {
-      return 0;
-    }
-    return SetTroopAdminsActivity.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return SetTroopAdminsActivity.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return super.getItemId(paramInt);
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null)
+    int i = 0;
+    if (this.a.f)
     {
-      paramViewGroup = this.a.getLayoutInflater().inflate(2130904013, SetTroopAdminsActivity.a(this.a), false);
-      paramView = new dnw(null);
-      paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131234587));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131231411));
-      paramView.b = ((TextView)paramViewGroup.findViewById(2131234588));
-      paramView.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131234589));
-      paramViewGroup.setTag(paramView);
+      this.a.f = false;
+      this.a.e();
     }
-    paramView = (dnw)paramViewGroup.getTag();
-    SetTroopAdminsActivity.TroopAdmin localTroopAdmin = (SetTroopAdminsActivity.TroopAdmin)SetTroopAdminsActivity.a(this.a).get(paramInt);
-    paramView.jdField_a_of_type_JavaLangString = localTroopAdmin.jdField_a_of_type_JavaLangString;
-    paramView.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(1, localTroopAdmin.jdField_a_of_type_JavaLangString));
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopAdmin.b);
-    paramView.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-    paramView.b.setVisibility(4);
-    if (paramInt == 0)
+    if (paramBoolean)
     {
-      paramView.jdField_c_of_type_AndroidWidgetTextView.setText(2131562580);
-      paramView.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      return paramViewGroup;
+      paramSubAccountBackProtocData = this.a.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountAssistantManager.a(this.a.b);
+      if ((!TextUtils.isEmpty(paramSubAccountBackProtocData)) || (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
+        break label70;
+      }
     }
-    paramView.b.setText(2131561758);
-    paramView.b.setVisibility(0);
-    paramView.b.setOnClickListener(new dnt(this, localTroopAdmin));
-    return paramViewGroup;
+    label70:
+    do
+    {
+      return;
+      if (((this.a.c) && (this.a.jdField_a_of_type_JavaLangString != null) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramSubAccountBackProtocData))) || (!this.a.c)) {
+        i = 1;
+      }
+    } while (i == 0);
+    this.a.a(this.a.getString(2131562520), this.a.getString(2131563026), this.a.getString(2131562540), new dnv(this));
+  }
+  
+  protected void c(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  {
+    this.a.e();
+    if (this.a.e)
+    {
+      this.a.e = false;
+      if (paramBoolean)
+      {
+        this.a.b.a().c(AppConstants.O, 7000);
+        this.a.h();
+        this.a.b(this.a.getString(2131563119));
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          switch (paramSubAccountBackProtocData.p)
+          {
+          default: 
+            this.a.a(this.a.getString(2131561771));
+            return;
+          case 1008: 
+            this.a.a(this.a.getString(2131563297));
+          }
+        } while (!this.a.c);
+        this.a.h();
+        return;
+        paramSubAccountBackProtocData = this.a.getString(2131562520);
+        String str = this.a.getString(2131563286);
+        this.a.a(paramSubAccountBackProtocData, str, new dnt(this));
+        return;
+      } while (!paramBoolean);
+      this.a.b.a().c(AppConstants.O, 7000);
+    } while (!this.a.c);
+    this.a.a(this.a.getString(2131562520), this.a.getString(2131563026), this.a.getString(2131562540), new dnu(this));
   }
 }
 

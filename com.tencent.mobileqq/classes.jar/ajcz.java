@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.troop.data.TroopAioMsgNavigateBar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
 public class ajcz
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ajcz(TroopAioMsgNavigateBar paramTroopAioMsgNavigateBar, int paramInt) {}
+  public ajcz(DrawHbFragment paramDrawHbFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    TroopAioMsgNavigateBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioMsgNavigateBar, this.jdField_a_of_type_Int);
+    if (this.a.a != null) {
+      this.a.a.a(DrawHbFragment.a(this.a).getText().toString());
+    }
   }
 }
 

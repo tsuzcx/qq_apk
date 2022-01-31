@@ -1,22 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.biz.pubaccount.weishi_new.WSBaseHomeFragment;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
 public class tba
-  implements DialogInterface.OnDismissListener
+  implements bifk
 {
-  public tba(MainFragment paramMainFragment) {}
+  public tba(WSBaseHomeFragment paramWSBaseHomeFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
-    }
+    this.a.a();
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, int paramInt)
+  {
+    this.a.a(paramXRecyclerView, paramInt);
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  {
+    this.a.a(paramXRecyclerView, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tba
  * JD-Core Version:    0.7.0.1
  */

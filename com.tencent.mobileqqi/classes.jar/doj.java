@@ -1,39 +1,38 @@
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import android.os.SystemClock;
-import android.preference.PreferenceManager;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.SnapScreenActivity;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.troop.activity.TroopAssistantFeedsActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class doj
-  implements Runnable
+public class doj
+  implements View.OnClickListener
 {
-  doj(doi paramdoi, File paramFile) {}
+  public doj(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Doi.jdField_a_of_type_Boolean)
+    if (System.currentTimeMillis() - this.a.a >= 1500L) {}
+    try
     {
-      this.jdField_a_of_type_Doi.jdField_a_of_type_Dog.k = this.jdField_a_of_type_Doi.jdField_a_of_type_Dog.f;
-      this.jdField_a_of_type_Doi.jdField_a_of_type_Dog.a.a(false);
-      this.jdField_a_of_type_Doi.jdField_a_of_type_Dog.invalidate();
-      this.jdField_a_of_type_Doi.jdField_a_of_type_Dog.scheduleDrawable(null, new dok(this), SystemClock.uptimeMillis() + 1000L);
-      String str = this.jdField_a_of_type_Doi.jdField_a_of_type_Dog.a.jdField_a_of_type_AndroidContentContext.getString(2131562807).replace("${path}", SnapScreenActivity.jdField_a_of_type_JavaLangString);
-      SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_Doi.jdField_a_of_type_Dog.a.jdField_a_of_type_AndroidContentContext).edit();
-      localEditor.putString("LastScreenShotUri", Uri.fromFile(this.jdField_a_of_type_JavaIoFile).toString());
-      localEditor.commit();
-      this.jdField_a_of_type_Doi.jdField_a_of_type_Dog.a.jdField_a_of_type_AndroidContentContext.sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.fromFile(this.jdField_a_of_type_JavaIoFile)));
-      Toast.makeText(this.jdField_a_of_type_Doi.jdField_a_of_type_Dog.a.jdField_a_of_type_AndroidContentContext, str, 1).show();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Doi.jdField_a_of_type_Dog.a.a();
+      this.a.e();
+      paramView = new Intent(this.a, TroopAssistantFeedsActivity.class);
+      paramView.putExtra("url", "http://qqweb.qq.com/m/qunfeeds/index.html?_wv=1031&_bid=200");
+      paramView.putExtra("webStyle", "noBottomBar");
+      paramView.putExtra("hide_more_button", true);
+      paramView.putExtra("hide_operation_bar", true);
+      paramView.putExtra("isShowAd", false);
+      this.a.startActivity(paramView);
+      this.a.a = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick, url:http://qqweb.qq.com/m/qunfeeds/index.html?_wv=1031&_bid=200");
+      }
       return;
-      Toast.makeText(this.jdField_a_of_type_Doi.jdField_a_of_type_Dog.a.jdField_a_of_type_AndroidContentContext, 2131562817, 1).show();
+    }
+    catch (Exception paramView)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick:" + paramView.toString());
     }
   }
 }

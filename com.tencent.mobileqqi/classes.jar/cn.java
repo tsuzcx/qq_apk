@@ -1,13 +1,15 @@
-import com.dataline.activities.LiteWifiphotoActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.dataline.activities.LiteVideoActivity;
 
 public class cn
-  implements Runnable
+  implements View.OnClickListener
 {
-  public cn(LiteWifiphotoActivity paramLiteWifiphotoActivity) {}
+  public cn(LiteVideoActivity paramLiteVideoActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    LiteWifiphotoActivity.a(this.a);
+    LiteVideoActivity.a(this.a);
   }
 }
 

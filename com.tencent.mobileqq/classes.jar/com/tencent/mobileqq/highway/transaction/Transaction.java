@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.highway.transaction;
 
-import android.os.SystemClock;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
 import com.tencent.mobileqq.highway.api.ITransactionCallback;
@@ -13,8 +12,11 @@ import com.tencent.mobileqq.highway.netprobe.ProbeResponse;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.DataHole;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.LoginSigHead;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.QueryHoleRsp;
+import com.tencent.mobileqq.highway.segment.HwRequest;
 import com.tencent.mobileqq.highway.segment.HwResponse;
 import com.tencent.mobileqq.highway.segment.RequestDataTrans;
+import com.tencent.mobileqq.highway.segment.RequestFinishQuery;
+import com.tencent.mobileqq.highway.segment.RequestInfoQuery;
 import com.tencent.mobileqq.highway.segment.RequestWorker;
 import com.tencent.mobileqq.highway.utils.BaseConstants.BdhBusinessType;
 import com.tencent.mobileqq.highway.utils.BdhLogUtil;
@@ -34,19 +36,18 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Transaction
   implements ProbeCallback
 {
-  public static final long C2C_FileSize_Limit = 29360128L;
-  public static final int COMMAND_ID_READINJOY_VIDEO = 54;
   public static final int HOLE_MASK_FIN = 3;
   public static final int HOLE_MASK_HOLD = 4;
   public static final int HOLE_MASK_INIT = 0;
   public static final int HOLE_MASK_SENT = 2;
   public static final int HOLE_MASK_WAIT = 1;
-  public static final int HOLE_SIZE_PER_HOLE = 4096;
+  public static final int HOLE_SIZE_PER_HOLE = 8192;
   private static final int MAX_QUERY_HOLE_RSP_SIZE = 5;
   public static final long waitForSessionkeyTimeout = 30000L;
   public byte[] MD5;
@@ -66,27 +67,29 @@ public class Transaction
   public CSDataHighwayHead.LoginSigHead loginSigHead;
   public byte[] mBuExtendinfo;
   public int mBuzCmdId;
-  private int mErrorCode = -1;
+  public int mCurrentQueryFinishCount;
+  public int mErrorCode = -1;
   private AtomicBoolean mIsPause = new AtomicBoolean(false);
+  public String mMD5Str;
+  boolean mNeedSegmentLikeVideo = false;
   private HashMap<String, String> mReport = new HashMap();
-  public TransTimeOutMonitor mTimeOutMonitor;
+  public Transaction.TransTimeOutMonitor mTimeOutMonitor;
   public TransReport mTransReport = new TransReport();
   private TransactionWorker mTransWorker;
   boolean needCryptExtendInfo = false;
-  private int offset;
+  public int offset;
   public String peerUin;
   public int preSendDots;
-  boolean queryErrorHasResend = false;
   private RandomAccessFile raf;
   public int reUploadHwSeq;
   public boolean reUploadTransaction;
+  private ConcurrentHashMap<Integer, HwRequest> sentRequestsRetry = new ConcurrentHashMap();
   public long startTime;
   public byte[] ticket;
   public int totalLength;
   int transationId = -1;
   private int transferedSize;
   public int transferedSizeBDH;
-  long waitForSessionkeyStartTime;
   
   /* Error */
   public Transaction(String paramString1, int paramInt1, String paramString2, int paramInt2, byte[] paramArrayOfByte1, ITransactionCallback paramITransactionCallback, byte[] paramArrayOfByte2, boolean paramBoolean)
@@ -100,103 +103,101 @@ public class Transaction
     //   6: aconst_null
     //   7: aload 5
     //   9: aload 6
-    //   11: invokespecial 93	com/tencent/mobileqq/highway/transaction/Transaction:<init>	(Ljava/lang/String;ILjava/lang/String;I[B[BLcom/tencent/mobileqq/highway/api/ITransactionCallback;)V
+    //   11: invokespecial 86	com/tencent/mobileqq/highway/transaction/Transaction:<init>	(Ljava/lang/String;ILjava/lang/String;I[B[BLcom/tencent/mobileqq/highway/api/ITransactionCallback;)V
     //   14: aload_0
     //   15: aload 7
-    //   17: putfield 95	com/tencent/mobileqq/highway/transaction/Transaction:extendInfo	[B
+    //   17: putfield 88	com/tencent/mobileqq/highway/transaction/Transaction:extendInfo	[B
     //   20: aload_0
     //   21: iload 8
-    //   23: putfield 97	com/tencent/mobileqq/highway/transaction/Transaction:needCryptExtendInfo	Z
-    //   26: ldc 99
+    //   23: putfield 90	com/tencent/mobileqq/highway/transaction/Transaction:needCryptExtendInfo	Z
+    //   26: ldc 92
     //   28: monitorenter
     //   29: aload_1
-    //   30: invokestatic 103	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
-    //   33: invokevirtual 107	com/tencent/mobileqq/highway/openup/SessionInfo:getHttpconn_sig_session	()[B
+    //   30: invokestatic 96	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
+    //   33: invokevirtual 100	com/tencent/mobileqq/highway/openup/SessionInfo:getHttpconn_sig_session	()[B
     //   36: astore_3
     //   37: aload_3
-    //   38: ifnull +89 -> 127
+    //   38: ifnull +83 -> 121
     //   41: aload_3
     //   42: arraylength
-    //   43: ifeq +84 -> 127
+    //   43: ifeq +78 -> 121
     //   46: aload_3
     //   47: arraylength
     //   48: istore_2
     //   49: aload_0
     //   50: iload_2
     //   51: newarray byte
-    //   53: putfield 109	com/tencent/mobileqq/highway/transaction/Transaction:ticket	[B
+    //   53: putfield 102	com/tencent/mobileqq/highway/transaction/Transaction:ticket	[B
     //   56: aload_3
     //   57: iconst_0
     //   58: aload_0
-    //   59: getfield 109	com/tencent/mobileqq/highway/transaction/Transaction:ticket	[B
+    //   59: getfield 102	com/tencent/mobileqq/highway/transaction/Transaction:ticket	[B
     //   62: iconst_0
     //   63: iload_2
-    //   64: invokestatic 115	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   64: invokestatic 108	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
     //   67: iload 8
-    //   69: ifeq +58 -> 127
+    //   69: ifeq +52 -> 121
     //   72: aload_1
-    //   73: invokestatic 103	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
-    //   76: invokevirtual 118	com/tencent/mobileqq/highway/openup/SessionInfo:getSessionKey	()[B
-    //   79: astore_3
-    //   80: aload_3
-    //   81: ifnull +50 -> 131
-    //   84: aload_3
+    //   73: invokestatic 96	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
+    //   76: invokevirtual 111	com/tencent/mobileqq/highway/openup/SessionInfo:getSessionKey	()[B
+    //   79: astore_1
+    //   80: aload_1
+    //   81: ifnull +44 -> 125
+    //   84: aload_1
     //   85: arraylength
-    //   86: ifeq +45 -> 131
+    //   86: ifeq +39 -> 125
     //   89: aload_1
-    //   90: invokestatic 103	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
-    //   93: invokevirtual 118	com/tencent/mobileqq/highway/openup/SessionInfo:getSessionKey	()[B
-    //   96: arraylength
-    //   97: istore_2
-    //   98: iload_2
-    //   99: newarray byte
-    //   101: astore_1
-    //   102: aload_3
-    //   103: iconst_0
-    //   104: aload_1
-    //   105: iconst_0
-    //   106: iload_2
-    //   107: invokestatic 115	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   110: aload_0
-    //   111: new 120	com/tencent/qphone/base/util/Cryptor
-    //   114: dup
-    //   115: invokespecial 123	com/tencent/qphone/base/util/Cryptor:<init>	()V
-    //   118: aload 7
-    //   120: aload_1
-    //   121: invokevirtual 127	com/tencent/qphone/base/util/Cryptor:encrypt	([B[B)[B
-    //   124: putfield 95	com/tencent/mobileqq/highway/transaction/Transaction:extendInfo	[B
-    //   127: ldc 99
-    //   129: monitorexit
-    //   130: return
-    //   131: aload_0
-    //   132: aconst_null
-    //   133: putfield 109	com/tencent/mobileqq/highway/transaction/Transaction:ticket	[B
-    //   136: goto -9 -> 127
-    //   139: astore_1
-    //   140: ldc 99
-    //   142: monitorexit
-    //   143: aload_1
-    //   144: athrow
+    //   90: arraylength
+    //   91: istore_2
+    //   92: iload_2
+    //   93: newarray byte
+    //   95: astore_3
+    //   96: aload_1
+    //   97: iconst_0
+    //   98: aload_3
+    //   99: iconst_0
+    //   100: iload_2
+    //   101: invokestatic 108	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   104: aload_0
+    //   105: new 113	com/tencent/qphone/base/util/Cryptor
+    //   108: dup
+    //   109: invokespecial 116	com/tencent/qphone/base/util/Cryptor:<init>	()V
+    //   112: aload 7
+    //   114: aload_3
+    //   115: invokevirtual 120	com/tencent/qphone/base/util/Cryptor:encrypt	([B[B)[B
+    //   118: putfield 88	com/tencent/mobileqq/highway/transaction/Transaction:extendInfo	[B
+    //   121: ldc 92
+    //   123: monitorexit
+    //   124: return
+    //   125: aload_0
+    //   126: aconst_null
+    //   127: putfield 102	com/tencent/mobileqq/highway/transaction/Transaction:ticket	[B
+    //   130: goto -9 -> 121
+    //   133: astore_1
+    //   134: ldc 92
+    //   136: monitorexit
+    //   137: aload_1
+    //   138: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	145	0	this	Transaction
-    //   0	145	1	paramString1	String
-    //   0	145	2	paramInt1	int
-    //   0	145	3	paramString2	String
-    //   0	145	4	paramInt2	int
-    //   0	145	5	paramArrayOfByte1	byte[]
-    //   0	145	6	paramITransactionCallback	ITransactionCallback
-    //   0	145	7	paramArrayOfByte2	byte[]
-    //   0	145	8	paramBoolean	boolean
+    //   0	139	0	this	Transaction
+    //   0	139	1	paramString1	String
+    //   0	139	2	paramInt1	int
+    //   0	139	3	paramString2	String
+    //   0	139	4	paramInt2	int
+    //   0	139	5	paramArrayOfByte1	byte[]
+    //   0	139	6	paramITransactionCallback	ITransactionCallback
+    //   0	139	7	paramArrayOfByte2	byte[]
+    //   0	139	8	paramBoolean	boolean
     // Exception table:
     //   from	to	target	type
-    //   29	37	139	finally
-    //   41	67	139	finally
-    //   72	80	139	finally
-    //   84	127	139	finally
-    //   127	130	139	finally
-    //   131	136	139	finally
-    //   140	143	139	finally
+    //   29	37	133	finally
+    //   41	67	133	finally
+    //   72	80	133	finally
+    //   84	121	133	finally
+    //   121	124	133	finally
+    //   125	130	133	finally
+    //   134	137	133	finally
   }
   
   public Transaction(String paramString1, int paramInt1, String paramString2, int paramInt2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, ITransactionCallback paramITransactionCallback)
@@ -212,6 +213,7 @@ public class Transaction
       this.offset = 0;
     }
     this.isOpenUpEnable = false;
+    this.mMD5Str = BdhUtils.bytes2HexStr(paramArrayOfByte2);
   }
   
   public Transaction(String paramString1, int paramInt1, String paramString2, int paramInt2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, ITransactionCallback paramITransactionCallback, int paramInt3, byte[] paramArrayOfByte3, CSDataHighwayHead.LoginSigHead paramLoginSigHead)
@@ -231,14 +233,14 @@ public class Transaction
   
   private void extendTimeExceedLimit()
   {
-    TransTimeOutMonitor localTransTimeOutMonitor = this.mTimeOutMonitor;
+    Transaction.TransTimeOutMonitor localTransTimeOutMonitor = this.mTimeOutMonitor;
     if (localTransTimeOutMonitor.needExtendTimeExceedLimit())
     {
       BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + " ExtendTimeExceedLimit.");
       localTransTimeOutMonitor.isKilled = true;
       if (this.mTransWorker != null)
       {
-        this.mTimeOutMonitor = new TransTimeOutMonitor();
+        this.mTimeOutMonitor = new Transaction.TransTimeOutMonitor(this);
         this.mTransWorker.startTransRunnable(localTransTimeOutMonitor, this.mTimeOutMonitor);
       }
     }
@@ -270,22 +272,6 @@ public class Transaction
   private boolean isPause()
   {
     return this.mIsPause.get();
-  }
-  
-  private void startTimeoutTimer()
-  {
-    BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + "startTimeoutTimer.");
-    Object localObject = this.cb;
-    if (localObject != null) {
-      ((ITransactionCallback)localObject).onTransStart();
-    }
-    if (this.mTransWorker != null)
-    {
-      localObject = this.mTimeOutMonitor;
-      ((TransTimeOutMonitor)localObject).isKilled = true;
-      this.mTimeOutMonitor = new TransTimeOutMonitor();
-      this.mTransWorker.startTransRunnable((Runnable)localObject, this.mTimeOutMonitor);
-    }
   }
   
   private void stopTimeoutTimer()
@@ -327,9 +313,9 @@ public class Transaction
     if (this.isFinish.get()) {
       return;
     }
-    int j = this.totalLength / 4096;
+    int j = this.totalLength / 8192;
     int i = j;
-    if (this.totalLength % 4096 != 0) {
+    if (this.totalLength % 8192 != 0) {
       i = j + 1;
     }
     j = this.preSendDots;
@@ -345,141 +331,68 @@ public class Transaction
   
   public int getBuzType()
   {
-    int j = 0;
-    int i;
-    if ((this.mBuzCmdId == 12) || (this.mBuzCmdId == 25)) {
-      i = 1;
+    if (this.mNeedSegmentLikeVideo) {}
+    while ((this.mBuzCmdId == 12) || (this.mBuzCmdId == 25)) {
+      return 1;
     }
-    do
-    {
-      do
-      {
-        return i;
-        i = j;
-      } while (this.mBuzCmdId == 1);
-      i = j;
-    } while (this.mBuzCmdId != 4);
+    if ((this.mBuzCmdId == 1) || (this.mBuzCmdId == 4)) {
+      return 0;
+    }
     return 0;
   }
   
-  /* Error */
   public byte[] getData(DataTransInfo paramDataTransInfo)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 138	com/tencent/mobileqq/highway/transaction/Transaction:isFinish	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   6: invokevirtual 262	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   9: ifeq +16 -> 25
-    //   12: aload_1
-    //   13: iconst_0
-    //   14: putfield 367	com/tencent/mobileqq/highway/transaction/DataTransInfo:errno	I
-    //   17: aconst_null
-    //   18: astore 5
-    //   20: aload_0
-    //   21: monitorexit
-    //   22: aload 5
-    //   24: areturn
-    //   25: iconst_0
-    //   26: istore_3
-    //   27: aload_1
-    //   28: getfield 370	com/tencent/mobileqq/highway/transaction/DataTransInfo:length	I
-    //   31: istore_2
-    //   32: aload_1
-    //   33: getfield 370	com/tencent/mobileqq/highway/transaction/DataTransInfo:length	I
-    //   36: newarray byte
-    //   38: astore 6
-    //   40: aload_0
-    //   41: getfield 247	com/tencent/mobileqq/highway/transaction/Transaction:raf	Ljava/io/RandomAccessFile;
-    //   44: aload_1
-    //   45: getfield 371	com/tencent/mobileqq/highway/transaction/DataTransInfo:offset	I
-    //   48: i2l
-    //   49: invokevirtual 375	java/io/RandomAccessFile:seek	(J)V
-    //   52: aload 6
-    //   54: astore 5
-    //   56: iload_3
-    //   57: aload_1
-    //   58: getfield 370	com/tencent/mobileqq/highway/transaction/DataTransInfo:length	I
-    //   61: if_icmpge -41 -> 20
-    //   64: aload_0
-    //   65: getfield 247	com/tencent/mobileqq/highway/transaction/Transaction:raf	Ljava/io/RandomAccessFile;
-    //   68: aload 6
-    //   70: iload_3
-    //   71: iload_2
-    //   72: invokevirtual 379	java/io/RandomAccessFile:read	([BII)I
-    //   75: istore 4
-    //   77: iload 4
-    //   79: iconst_m1
-    //   80: if_icmpne +16 -> 96
-    //   83: aload_1
-    //   84: sipush 9303
-    //   87: putfield 367	com/tencent/mobileqq/highway/transaction/DataTransInfo:errno	I
-    //   90: aconst_null
-    //   91: astore 5
-    //   93: goto -73 -> 20
-    //   96: iload_3
-    //   97: iload 4
-    //   99: iadd
-    //   100: istore_3
-    //   101: iload_2
-    //   102: iload 4
-    //   104: isub
-    //   105: istore_2
-    //   106: goto -54 -> 52
-    //   109: astore 5
-    //   111: ldc 189
-    //   113: new 191	java/lang/StringBuilder
-    //   116: dup
-    //   117: invokespecial 192	java/lang/StringBuilder:<init>	()V
-    //   120: ldc 194
-    //   122: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   125: aload_0
-    //   126: getfield 168	com/tencent/mobileqq/highway/transaction/Transaction:mBuzCmdId	I
-    //   129: invokevirtual 201	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   132: ldc 203
-    //   134: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   137: aload_0
-    //   138: invokevirtual 207	com/tencent/mobileqq/highway/transaction/Transaction:getTransationId	()I
-    //   141: invokevirtual 201	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   144: ldc_w 381
-    //   147: invokevirtual 198	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   150: invokevirtual 213	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   153: aload 5
-    //   155: invokestatic 258	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   158: aload_1
-    //   159: aload 5
-    //   161: invokestatic 387	com/tencent/mobileqq/highway/utils/BdhUtils:analysisIOProblem	(Ljava/io/IOException;)I
-    //   164: putfield 367	com/tencent/mobileqq/highway/transaction/DataTransInfo:errno	I
-    //   167: aconst_null
-    //   168: astore 5
-    //   170: goto -150 -> 20
-    //   173: astore_1
-    //   174: aload_0
-    //   175: monitorexit
-    //   176: aload_1
-    //   177: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	178	0	this	Transaction
-    //   0	178	1	paramDataTransInfo	DataTransInfo
-    //   31	75	2	i	int
-    //   26	75	3	j	int
-    //   75	30	4	k	int
-    //   18	74	5	localObject1	Object
-    //   109	51	5	localIOException	IOException
-    //   168	1	5	localObject2	Object
-    //   38	31	6	arrayOfByte	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   27	52	109	java/io/IOException
-    //   56	77	109	java/io/IOException
-    //   83	90	109	java/io/IOException
-    //   2	17	173	finally
-    //   27	52	173	finally
-    //   56	77	173	finally
-    //   83	90	173	finally
-    //   111	167	173	finally
+    int j = 0;
+    Object localObject = null;
+    for (;;)
+    {
+      int i;
+      int k;
+      try
+      {
+        if (this.isFinish.get())
+        {
+          paramDataTransInfo.errno = 0;
+          paramDataTransInfo = localObject;
+          return paramDataTransInfo;
+        }
+        try
+        {
+          i = paramDataTransInfo.length;
+          byte[] arrayOfByte = new byte[paramDataTransInfo.length];
+          this.raf.seek(paramDataTransInfo.offset);
+          if (j >= paramDataTransInfo.length) {
+            break label176;
+          }
+          k = this.raf.read(arrayOfByte, j, i);
+          if (k != -1) {
+            break label163;
+          }
+          paramDataTransInfo.errno = 9303;
+          paramDataTransInfo = localObject;
+        }
+        catch (IOException localIOException)
+        {
+          BdhLogUtil.LogException("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + "GetData Error.", localIOException);
+          paramDataTransInfo.errno = BdhUtils.analysisIOProblem(localIOException);
+          paramDataTransInfo = localObject;
+        }
+        continue;
+        j += k;
+      }
+      finally {}
+      label163:
+      i -= k;
+      continue;
+      label176:
+      paramDataTransInfo = localIOException;
+    }
+  }
+  
+  public ConcurrentHashMap<Integer, HwRequest> getRetryRequests()
+  {
+    return this.sentRequestsRetry;
   }
   
   public int getTransationId()
@@ -489,6 +402,7 @@ public class Transaction
   
   int initSegmentList(TransactionWorker paramTransactionWorker, boolean paramBoolean)
   {
+    int i = 9042;
     QLog.d("BDH_LOG", 1, "T T_ID:" + getTransationId() + "\tinitSegmentList : \tisOpenUpEnable : " + this.isOpenUpEnable);
     this.mTransReport.mIsPreConnExist = paramBoolean;
     File localFile = new File(this.filePath);
@@ -496,100 +410,91 @@ public class Transaction
     if (localFile.exists())
     {
       if (!localFile.canRead()) {
-        return 9070;
+        i = 9070;
       }
-      this.totalLength = ((int)localFile.length());
-      if ((this.totalLength > 29360128L) && (this.mBuzCmdId != 54)) {
-        return 9063;
+    }
+    else {
+      return i;
+    }
+    this.totalLength = ((int)localFile.length());
+    if (this.totalLength <= 0) {
+      return 9071;
+    }
+    try
+    {
+      this.raf = new RandomAccessFile(localFile, "r");
+      int j = this.totalLength / 8192;
+      i = j;
+      if (this.totalLength % 8192 != 0) {
+        i = j + 1;
       }
-      if (this.totalLength <= 0) {
-        return 9071;
-      }
-      int i;
-      int k;
-      for (;;)
+      int k = this.offset / 8192;
+      this.bitmap = new byte[i];
+      if (this.isOpenUpEnable)
       {
-        try
+        j = 0;
+        if (j < i)
         {
-          this.raf = new RandomAccessFile(localFile, "r");
-          j = this.totalLength / 4096;
-          i = j;
-          if (this.totalLength % 4096 != 0) {
-            i = j + 1;
-          }
-          k = this.offset / 4096;
-          this.bitmap = new byte[i];
-          if (!this.isOpenUpEnable) {
-            break;
-          }
-          j = 0;
-          if (j >= i) {
-            break label299;
-          }
-          if (j < this.preSendDots)
-          {
+          if (j < this.preSendDots) {
             this.bitmap[j] = 0;
-            j += 1;
           }
-          else
+          for (;;)
           {
+            j += 1;
+            break;
             this.bitmap[j] = 4;
           }
         }
-        catch (FileNotFoundException paramTransactionWorker)
-        {
-          return 9042;
-        }
       }
-      int j = 0;
-      if (j < i)
+      else
       {
-        if (j < k) {
-          this.bitmap[j] = 3;
-        }
-        for (;;)
+        j = 0;
+        if (j < i)
         {
-          j += 1;
-          break;
-          this.bitmap[j] = 0;
+          if (j < k) {
+            this.bitmap[j] = 3;
+          }
+          for (;;)
+          {
+            j += 1;
+            break;
+            this.bitmap[j] = 0;
+          }
         }
       }
-      label299:
       this.TRACKER = new Tracker(this.transationId, this.totalLength);
-      this.mTimeOutMonitor = new TransTimeOutMonitor();
+      this.mTimeOutMonitor = new Transaction.TransTimeOutMonitor(this);
       this.TRACKER.logStep("INITI", "DotsNum:" + i + " StartHole:" + k);
       return 0;
     }
+    catch (FileNotFoundException paramTransactionWorker) {}
     return 9042;
   }
   
   void needBDHReport(HashMap<String, String> paramHashMap)
   {
-    int k = 1;
+    int j = 0;
+    if (this.mCurrentQueryFinishCount > 0) {
+      TransactionReport.reportQueryFinishQuality(this, this.mCurrentQueryFinishCount);
+    }
     paramHashMap = BaseConstants.BdhBusinessType.reportBDHExcept;
-    int m = paramHashMap.length;
+    int k = paramHashMap.length;
     int i = 0;
-    int j = k;
-    if (i < m)
-    {
-      if (paramHashMap[i] == this.mBuzCmdId) {
-        j = 0;
-      }
+    if (i < k) {
+      if (paramHashMap[i] != this.mBuzCmdId) {}
     }
-    else {
-      if (j != 0) {
-        break label46;
-      }
-    }
-    label46:
-    while ((this.startTime == 0L) || (this.totalLength == 0) || (this.mTransWorker == null))
+    for (i = j;; i = 1)
     {
+      if (i == 0) {}
+      while ((this.startTime == 0L) || (this.totalLength == 0) || (this.mTransWorker == null))
+      {
+        return;
+        i += 1;
+        break;
+      }
+      TransactionReport.reportFunction("actBDHTask", this, null);
       return;
-      i += 1;
-      break;
     }
-    this.mTransWorker.getHwEngine();
-    TransactionReport.report(HwEngine.appId, this.mErrorCode, SystemClock.uptimeMillis() - this.startTime, this.totalLength, this.mBuzCmdId);
   }
   
   public void onProbeFinish(ProbeResponse paramProbeResponse)
@@ -656,12 +561,12 @@ public class Transaction
     this.mTransWorker.notifyToSend();
   }
   
-  public void onQueryHoleResp(CSDataHighwayHead.QueryHoleRsp paramQueryHoleRsp, byte[] paramArrayOfByte, boolean paramBoolean)
+  public void onQueryHoleResp(CSDataHighwayHead.QueryHoleRsp paramQueryHoleRsp, byte[] paramArrayOfByte, boolean paramBoolean, HwResponse paramHwResponse, RequestInfoQuery paramRequestInfoQuery)
   {
     if (this.isFinish.get()) {
       return;
     }
-    BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + " \tT_ID:" + getTransationId() + "\tQueryHoleResp。");
+    BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + " \tT_ID:" + getTransationId() + "\tQueryHoleResp");
     int i = paramQueryHoleRsp.uint32_result.get();
     byte[] arrayOfByte = new byte[paramArrayOfByte.length];
     BdhUtils.copyData(arrayOfByte, 0, paramArrayOfByte, 0, paramArrayOfByte.length);
@@ -672,36 +577,41 @@ public class Transaction
     }
     StringBuilder localStringBuilder = new StringBuilder("Holes:");
     paramQueryHoleRsp = paramQueryHoleRsp.rpt_data_hole.get();
-    i = 0;
+    int m;
+    int n;
+    int j;
+    int k;
     if ((paramQueryHoleRsp != null) && (!paramQueryHoleRsp.isEmpty()))
     {
-      Iterator localIterator = paramQueryHoleRsp.iterator();
-      if (localIterator.hasNext())
+      paramHwResponse = paramQueryHoleRsp.iterator();
+      i = 0;
+      if (paramHwResponse.hasNext())
       {
-        CSDataHighwayHead.DataHole localDataHole = (CSDataHighwayHead.DataHole)localIterator.next();
-        int n = (int)localDataHole.uint64_begin.get();
-        int i1 = (int)localDataHole.uint64_end.get();
-        int k = n / 4096;
-        int m = (i1 - 1) / 4096;
-        j = i;
-        if (m > i) {
-          j = m;
+        paramRequestInfoQuery = (CSDataHighwayHead.DataHole)paramHwResponse.next();
+        m = (int)paramRequestInfoQuery.uint64_begin.get();
+        n = (int)paramRequestInfoQuery.uint64_end.get();
+        j = m / 8192;
+        k = (n - 1) / 8192;
+        if (k <= i) {
+          break label732;
         }
-        localStringBuilder.append("Holes Start:").append(k).append(" End:").append(m);
-        BdhLogUtil.LogEvent("R", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + " OnQueryHoleResp : holes :  HoleStart:" + n + " HoleEnd:" + i1 + " BitmapS:" + k + " BitmapE:" + m);
-        for (;;)
-        {
-          i = j;
-          if (k > m) {
-            break;
-          }
-          if (paramArrayOfByte[k] == 2) {
-            paramArrayOfByte[k] = 0;
-          }
-          k += 1;
-        }
+        i = k;
       }
-      int j = i;
+    }
+    label732:
+    for (;;)
+    {
+      localStringBuilder.append("Holes Start:").append(j).append(" End:").append(k);
+      BdhLogUtil.LogEvent("R", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + " OnQueryHoleResp : holes :  HoleStart:" + m + " HoleEnd:" + n + " BitmapS:" + j + " BitmapE:" + k);
+      while (j <= k)
+      {
+        if (paramArrayOfByte[j] == 2) {
+          paramArrayOfByte[j] = 0;
+        }
+        j += 1;
+      }
+      break;
+      j = i;
       if (i >= paramArrayOfByte.length) {
         j = paramArrayOfByte.length - 1;
       }
@@ -727,29 +637,25 @@ public class Transaction
           }
         }
       }
-    }
-    else
-    {
-      localStringBuilder.append("null");
-      BdhLogUtil.LogEvent("R", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + " finish flag is null and hole is null,response is Untrustworthy. queryErrorHasResend:" + this.queryErrorHasResend);
-      if (!this.queryErrorHasResend)
+      this.bQueryForFIN = false;
+      this.mCurrentQueryFinishCount = 0;
+      for (;;)
       {
-        i = 0;
-        while (i < this.bitmap.length)
-        {
-          if (this.bitmap[i] == 2)
-          {
-            this.bitmap[i] = 0;
-            BdhLogUtil.LogEvent("R", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + " resend hole:" + i);
+        this.TRACKER.logStep("QUERY", "QueryHoleResp " + localStringBuilder.toString());
+        BdhLogUtil.LogEvent("R", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + " OnQueryHoleResp : Merged : CopyBitmap:" + Arrays.toString(paramArrayOfByte) + " CurrentBitmap:" + Arrays.toString(this.bitmap));
+        this.mTransWorker.notifyToSend();
+        return;
+        localStringBuilder.append("null");
+        BdhLogUtil.LogEvent("R", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + " finish flag is null and hole is null mCurrentQueryFinishCount:" + this.mCurrentQueryFinishCount + " bQueryForFIN:" + this.bQueryForFIN);
+        if (this.bQueryForFIN) {
+          if (this.mCurrentQueryFinishCount < RequestFinishQuery.QUERY_HOLE_MAX_COUNT) {
+            queryTransactionFinish();
+          } else {
+            onTransFailed(9306, "QueryFinishFail", paramHwResponse.retCode, paramHwResponse.buzRetCode, paramRequestInfoQuery.retryCount, paramHwResponse.mBuExtendinfo);
           }
-          i += 1;
         }
-        this.queryErrorHasResend = true;
       }
     }
-    this.TRACKER.logStep("QUERY", "QueryHoleResp " + localStringBuilder.toString());
-    BdhLogUtil.LogEvent("R", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + " OnQueryHoleResp : Merged : CopyBitmap:" + Arrays.toString(paramArrayOfByte) + " CurrentBitmap:" + Arrays.toString(this.bitmap));
-    this.mTransWorker.notifyToSend();
   }
   
   public void onRequestFailed(int paramInt)
@@ -853,91 +759,74 @@ public class Transaction
     if (this.isFinish.get()) {}
     do
     {
+      int m;
+      int n;
       do
       {
-        int m;
-        int n;
-        do
+        return;
+        paramRequestDataTrans = paramRequestDataTrans.mInfo;
+        extendTimeExceedLimit();
+        this.mTransReport.updateRetryInfo(paramRequestDataTrans.retryTimes);
+        if (paramRequestDataTrans != null)
         {
-          return;
-          paramRequestDataTrans = paramRequestDataTrans.mInfo;
-          extendTimeExceedLimit();
-          this.mTransReport.updateRetryInfo(paramRequestDataTrans.retryTimes);
-          if (paramRequestDataTrans != null)
-          {
-            paramHwResponse = this.mTransReport;
-            paramHwResponse.timeCost_Send = ((int)(paramHwResponse.timeCost_Send + (paramRequestDataTrans.timeCost_req - paramRequestDataTrans.timeCost_hw - paramRequestDataTrans.timeCost_cache)));
-            paramHwResponse = this.mTransReport;
-            paramHwResponse.timeCost_Ht = ((int)(paramHwResponse.timeCost_Ht + paramRequestDataTrans.timeCost_hw));
-            paramHwResponse = this.mTransReport;
-            paramHwResponse.timeCost_Cache = ((int)(paramHwResponse.timeCost_Cache + paramRequestDataTrans.timeCost_cache));
-          }
-          m = paramRequestDataTrans.bitmapS;
-          n = paramRequestDataTrans.bitmapE;
-        } while (n >= this.bitmap.length);
-        i = m;
-        while (i <= n)
+          paramHwResponse = this.mTransReport;
+          paramHwResponse.timeCost_Send = ((int)(paramHwResponse.timeCost_Send + (paramRequestDataTrans.timeCost_req - paramRequestDataTrans.timeCost_hw - paramRequestDataTrans.timeCost_cache)));
+          paramHwResponse = this.mTransReport;
+          paramHwResponse.timeCost_Ht = ((int)(paramHwResponse.timeCost_Ht + paramRequestDataTrans.timeCost_hw));
+          paramHwResponse = this.mTransReport;
+          paramHwResponse.timeCost_Cache = ((int)(paramHwResponse.timeCost_Cache + paramRequestDataTrans.timeCost_cache));
+        }
+        m = paramRequestDataTrans.bitmapS;
+        n = paramRequestDataTrans.bitmapE;
+      } while (n >= this.bitmap.length);
+      int i = m;
+      while (i <= n)
+      {
+        this.bitmap[i] = 3;
+        i += 1;
+      }
+      i = 0;
+      int k;
+      for (int j = 0; i < this.bitmap.length; j = k)
+      {
+        k = j;
+        if (this.bitmap[i] == 3) {
+          k = j + 1;
+        }
+        i += 1;
+      }
+      this.transferedSize = (j * 8192);
+      if (this.bitmap[(this.bitmap.length - 1)] == 3) {
+        this.transferedSize -= this.bitmap.length * 8192 - this.totalLength;
+      }
+      if (this.transferedSizeBDH - this.transferedSize > this.totalLength / 10)
+      {
+        j = this.transferedSizeBDH / 8192;
+        i = 0;
+        while (i < j)
         {
           this.bitmap[i] = 3;
           i += 1;
         }
-        int j = 0;
-        i = 0;
-        while (i < this.bitmap.length)
-        {
-          int k = j;
-          if (this.bitmap[i] == 3) {
-            k = j + 1;
-          }
-          i += 1;
-          j = k;
-        }
-        this.transferedSize = (j * 4096);
-        if (this.bitmap[(this.bitmap.length - 1)] == 3) {
-          this.transferedSize -= this.bitmap.length * 4096 - this.totalLength;
-        }
-        if (this.transferedSizeBDH - this.transferedSize > this.totalLength / 10)
-        {
-          j = this.transferedSizeBDH / 4096;
-          i = 0;
-          while (i < j)
-          {
-            this.bitmap[i] = 3;
-            i += 1;
-          }
-          this.mTransWorker.getHwEngine().mRequestWorker.remove2SENDRequest(this.transationId, j);
-          BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + "UpdateTransferedSizeToServerRange,local size:" + this.transferedSize + " server size:" + this.transferedSizeBDH);
-        }
-        if (this.transferedSize >= this.totalLength)
-        {
-          BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + "NotifySegmentProgress Error : Finish flag is lost.");
-          this.mTransReport.bFINLost = true;
-        }
-        if (this.cb != null)
-        {
-          BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + " NotifySegmentProgress Total:" + this.totalLength + " TransSize:" + this.transferedSize + " allHoles:" + this.bitmap.length + " [" + m + ":" + n + "]");
-          this.cb.onUpdateProgress(this.transferedSize);
-        }
-        this.TRACKER.logStep("PRGRS", "TransProgress Start:" + m + " End:" + n);
-      } while (!this.mTransReport.bFINLost);
-      if (this.bQueryForFIN) {
-        break;
+        this.mTransWorker.getHwEngine().mRequestWorker.remove2SENDRequest(this.transationId, j);
+        BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + "UpdateTransferedSizeToServerRange,local size:" + this.transferedSize + " server size:" + this.transferedSizeBDH);
       }
-      this.bQueryForFIN = true;
-      this.mTransReport.bFINLost = false;
-      paramRequestDataTrans = this.mTransWorker;
-    } while (paramRequestDataTrans == null);
-    paramHwResponse = new byte[this.bitmap.length];
-    int i = 0;
-    while (i <= this.bitmap.length - 1)
-    {
-      paramHwResponse[i] = 2;
-      i += 1;
-    }
-    paramRequestDataTrans.queryTransaction(this, paramHwResponse);
+      if (this.transferedSize >= this.totalLength)
+      {
+        BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + "NotifySegmentProgress Error : Finish flag is lost.");
+        this.mTransReport.bFINLost = true;
+      }
+      if (this.cb != null)
+      {
+        BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + " NotifySegmentProgress Total:" + this.totalLength + " TransSize:" + this.transferedSize + " allHoles:" + this.bitmap.length + " [" + m + ":" + n + "]");
+        this.cb.onUpdateProgress(this.transferedSize);
+      }
+      this.TRACKER.logStep("PRGRS", "TransProgress Start:" + m + " End:" + n);
+    } while ((!this.mTransReport.bFINLost) || (this.bQueryForFIN));
+    this.bQueryForFIN = true;
+    this.mTransReport.bFINLost = false;
+    queryTransactionFinish();
     this.TRACKER.logStep("QUERY", "FinFlagLost  Bitmap:" + Arrays.toString(this.bitmap));
-    return;
-    this.TRACKER.logStep("QUERY", "FinFlagLost Twice Bitmap:" + Arrays.toString(this.bitmap));
   }
   
   public void onTransReUpload(int paramInt)
@@ -946,9 +835,9 @@ public class Transaction
     this.reUploadHwSeq = paramInt;
     this.transferedSizeBDH = 0;
     extendTimeExceedLimit();
-    int i = this.totalLength / 4096;
+    int i = this.totalLength / 8192;
     paramInt = i;
-    if (this.totalLength % 4096 != 0) {
+    if (this.totalLength % 8192 != 0) {
       paramInt = i + 1;
     }
     this.mTransWorker.getHwEngine().mRequestWorker.remove2SENDRequest(this.transationId, paramInt);
@@ -997,104 +886,110 @@ public class Transaction
   {
     int j = (int)paramHwNetSegConf.segSize;
     if ((this.isFinish.get()) || (isPause())) {
-      paramHwNetSegConf = null;
+      return null;
     }
-    DataTransInfo localDataTransInfo;
-    label183:
-    do
+    if ((this.mTransReport.confSegSize == 0L) && (paramHwNetSegConf != null))
     {
-      int i;
-      int i1;
-      int k;
-      int m;
-      do
+      this.mTransReport.confSegSize = ((int)paramHwNetSegConf.segSize);
+      this.mTransReport.confSegNum = ((int)paramHwNetSegConf.segNum);
+      this.mTransReport.confConnNum = ((int)paramHwNetSegConf.curConnNum);
+    }
+    int i = j / 8192;
+    int m = i;
+    if (j % 8192 > 0) {
+      m = i + 1;
+    }
+    i = 0;
+    j = -1;
+    int k;
+    int n;
+    if (i < this.bitmap.length) {
+      if (this.bitmap[i] == 0)
       {
-        do
+        k = j;
+        if (j == -1) {
+          k = i;
+        }
+        if (i != this.bitmap.length - 1)
         {
-          return paramHwNetSegConf;
-          if ((this.mTransReport.confSegSize == 0L) && (paramHwNetSegConf != null))
-          {
-            this.mTransReport.confSegSize = ((int)paramHwNetSegConf.segSize);
-            this.mTransReport.confSegNum = ((int)paramHwNetSegConf.segNum);
-            this.mTransReport.confConnNum = ((int)paramHwNetSegConf.curConnNum);
+          n = k;
+          if (m != i + 1 - k) {
+            break label334;
           }
-          i = j / 4096;
-          int n = i;
-          if (j % 4096 > 0) {
-            n = i + 1;
-          }
-          localDataTransInfo = null;
-          j = -1;
-          i1 = -1;
-          i = 0;
-          k = i1;
-          m = j;
-          if (i < this.bitmap.length)
+        }
+        j = k;
+      }
+    }
+    for (;;)
+    {
+      label164:
+      if ((j != -1) && (i != -1))
+      {
+        paramHwNetSegConf = this.mTransReport;
+        paramHwNetSegConf.sliceNum += 1;
+        paramHwNetSegConf = new DataTransInfo(this);
+        paramHwNetSegConf.fileSize = this.totalLength;
+        paramHwNetSegConf.offset = (j * 8192);
+        paramHwNetSegConf.bitmapS = j;
+        paramHwNetSegConf.bitmapE = i;
+        if (i == this.bitmap.length - 1)
+        {
+          paramHwNetSegConf.length = ((i - j) * 8192 + (this.totalLength - (this.bitmap.length - 1) * 8192));
+          k = j;
+          for (;;)
           {
-            if (this.bitmap[i] != 0) {
-              break;
-            }
-            k = j;
-            if (j == -1) {
-              k = i;
-            }
-            if (i != this.bitmap.length - 1)
+            if (k <= i)
             {
-              m = k;
-              if (n != i + 1 - k) {
-                break label384;
+              this.bitmap[k] = 1;
+              k += 1;
+              continue;
+              if ((this.isOpenUpEnable) && (this.bitmap[i] == 4))
+              {
+                if (j == -1) {
+                  break label421;
+                }
+                i -= 1;
               }
             }
-            m = k;
-            k = i;
           }
-          paramHwNetSegConf = localDataTransInfo;
-        } while (m == -1);
-        paramHwNetSegConf = localDataTransInfo;
-      } while (k == -1);
-      paramHwNetSegConf = this.mTransReport;
-      paramHwNetSegConf.sliceNum += 1;
-      localDataTransInfo = new DataTransInfo(this);
-      localDataTransInfo.fileSize = this.totalLength;
-      localDataTransInfo.offset = (m * 4096);
-      localDataTransInfo.bitmapS = m;
-      localDataTransInfo.bitmapE = k;
-      if (k == this.bitmap.length - 1) {}
-      for (localDataTransInfo.length = ((k - m) * 4096 + (this.totalLength - (this.bitmap.length - 1) * 4096));; localDataTransInfo.length = ((k - m + 1) * 4096))
-      {
-        i = m;
-        while (i <= k)
-        {
-          this.bitmap[i] = 1;
-          i += 1;
         }
-        if ((this.isOpenUpEnable) && (this.bitmap[i] == 4))
-        {
-          k = i1;
-          if (j != -1) {
-            k = i - 1;
-          }
-          stopTimeoutTimer();
-          m = j;
-          break label183;
-        }
-        m = j;
-        if (j != -1)
-        {
-          k = i;
-          m = j;
-          break label183;
-        }
-        i += 1;
-        j = m;
-        break;
       }
-      this.TRACKER.logStep("SLICE", "Start:" + m + " End:" + k + " Length:" + localDataTransInfo.length);
-      paramHwNetSegConf = localDataTransInfo;
-    } while (!this.TimerStarted.compareAndSet(false, true));
-    label384:
-    startTimeoutTimer();
-    return localDataTransInfo;
+      for (;;)
+      {
+        label264:
+        stopTimeoutTimer();
+        break label164;
+        n = j;
+        if (j != -1) {
+          break label164;
+        }
+        label334:
+        i += 1;
+        j = n;
+        break;
+        paramHwNetSegConf.length = ((i - j + 1) * 8192);
+        break label264;
+        this.TRACKER.logStep("SLICE", "Start:" + j + " End:" + i + " Length:" + paramHwNetSegConf.length);
+        startTimeoutTimer();
+        return paramHwNetSegConf;
+        return null;
+        label421:
+        i = -1;
+      }
+      i = -1;
+    }
+  }
+  
+  public void queryTransactionFinish()
+  {
+    byte[] arrayOfByte = new byte[this.bitmap.length];
+    int i = 0;
+    while (i <= this.bitmap.length - 1)
+    {
+      arrayOfByte[i] = 2;
+      i += 1;
+    }
+    this.mTransWorker.getHwEngine().mRequestWorker.sendInfoQueryFinish(this, arrayOfByte, this.mCurrentQueryFinishCount);
   }
   
   public void setPause(boolean paramBoolean)
@@ -1105,39 +1000,33 @@ public class Transaction
     }
   }
   
-  public static abstract interface HwBuzType
+  public void setVideoSegmentMode(boolean paramBoolean)
   {
-    public static final int COMMON = 0;
-    public static final int PIC = 0;
-    public static final int PIC_SUBBUZ_COMMON = 1;
-    public static final int PIC_SUBBUZ_OPENUP = 4;
-    public static final int SHORT_VIDEO = 1;
+    this.mNeedSegmentLikeVideo = paramBoolean;
   }
   
-  class TransTimeOutMonitor
-    implements Runnable
+  void startTimeoutTimer()
   {
-    public volatile boolean isKilled;
-    public long mStartTime = SystemClock.uptimeMillis();
-    
-    public TransTimeOutMonitor() {}
-    
-    public boolean needExtendTimeExceedLimit()
+    if (this.TimerStarted.compareAndSet(false, true))
     {
-      return SystemClock.uptimeMillis() - this.mStartTime >= 60000L;
-    }
-    
-    public void run()
-    {
-      if (!this.isKilled) {
-        Transaction.this.onTransFailed(-1002, "TransTimeOut", -1002, -1002, 0, null);
+      BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + "startTimeoutTimer.");
+      Object localObject = this.cb;
+      if (localObject != null) {
+        ((ITransactionCallback)localObject).onTransStart();
+      }
+      if (this.mTransWorker != null)
+      {
+        localObject = this.mTimeOutMonitor;
+        ((Transaction.TransTimeOutMonitor)localObject).isKilled = true;
+        this.mTimeOutMonitor = new Transaction.TransTimeOutMonitor(this);
+        this.mTransWorker.startTransRunnable((Runnable)localObject, this.mTimeOutMonitor);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.transaction.Transaction
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Build.VERSION;
+import com.tencent.av.gaudio.GaInviteActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
 public class lpw
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public lpw(ArticleInfoModule paramArticleInfoModule) {}
+  public lpw(GaInviteActivity paramGaInviteActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReadInJoyLogicEngineEventDispatcher.a().b();
-    if (QLog.isColorLevel()) {
-      QLog.d("ArticleInfoModule", 2, "8c8 response refresh ui ");
+    if (this.a.isFinishing()) {}
+    while (((Build.VERSION.SDK_INT >= 17) && (this.a.isDestroyed())) || (paramInt == 1)) {
+      return;
     }
+    ChatActivityUtils.a(this.a, true, new lpx(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lpw
  * JD-Core Version:    0.7.0.1
  */

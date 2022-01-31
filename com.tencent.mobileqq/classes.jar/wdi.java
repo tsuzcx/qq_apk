@@ -1,26 +1,71 @@
-import com.tencent.mobileqq.activity.aio.AIOTipsController;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import org.json.JSONArray;
 
 public class wdi
-  implements Runnable
+  extends wqt
 {
-  public wdi(TipsManager paramTipsManager) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (TipsManager.a(this.a) != null) {
-      TipsManager.a(this.a).a();
+    switch (paramInt1)
+    {
+    default: 
+      wxe.d("AddVideoMiddleCode", "unknown request code %d", new Object[] { Integer.valueOf(paramInt1) });
+      a(paramInt2, paramIntent);
+      e();
+      return;
     }
-    TipsManager.a(this.a, null);
-    if (this.a.a != null) {
-      this.a.a.clear();
+    if (paramInt2 == -1) {}
+    for (;;)
+    {
+      try
+      {
+        LinkedHashSet localLinkedHashSet = (LinkedHashSet)paramIntent.getSerializableExtra("extra_checked_vidset");
+        if ((localLinkedHashSet != null) && (localLinkedHashSet.size() > 0))
+        {
+          wxe.d("AddVideoMiddleCode", "let's add video to group, count = %d, collection = %s", new Object[] { Integer.valueOf(localLinkedHashSet.size()), new JSONArray(localLinkedHashSet).toString() });
+          ArrayList localArrayList = new ArrayList();
+          localArrayList.addAll(localLinkedHashSet);
+          uom.a(this.jdField_a_of_type_JavaLangString, localArrayList, this.jdField_a_of_type_Int);
+          paramIntent.putExtra("totalPublishVideoCount", localLinkedHashSet.size());
+          paramIntent.putExtra("isAddFromExist", true);
+          a(paramInt2, paramIntent);
+          e();
+          return;
+        }
+      }
+      catch (ClassCastException localClassCastException)
+      {
+        wxe.c("AddVideoMiddleCode", "StoryPickerFragment return illegal value", localClassCastException);
+        Object localObject = null;
+        continue;
+        wxe.d("AddVideoMiddleCode", "do not add video to group, exit ! result=%s, retValue=%s", new Object[] { Integer.valueOf(paramInt2), localObject });
+        paramInt2 = 0;
+        continue;
+      }
+      wxe.d("AddVideoMiddleCode", "add video to group cancel by user");
     }
+  }
+  
+  public void a(Bundle paramBundle1, Bundle paramBundle2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramBundle2.getString("shareGroupId");
+    this.b = paramBundle2.getString("shareGroupName");
+    this.jdField_a_of_type_Int = paramBundle2.getInt("add_video_source");
+    wxe.a("AddVideoMiddleCode", "shareGroupId = %s, shareGroupName = %s, source=%d", this.jdField_a_of_type_JavaLangString, this.b, Integer.valueOf(this.jdField_a_of_type_Int));
+    StoryPickerFragment.a(a(), null, this.b, 1000, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wdi
  * JD-Core Version:    0.7.0.1
  */

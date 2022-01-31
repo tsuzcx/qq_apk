@@ -3,170 +3,211 @@ package com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.butto
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
-import android.text.Html;
+import android.text.SpannableString;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView.ScaleType;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.drawable.RoundedDrawable;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ColorUtil;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
 
 public class NativeButton
   extends ButtonBase
 {
-  private NativeButtonImp a;
+  private static final String DRAWABLE_LEFT = "l";
+  private static final String TAG = "NativeButton";
+  private CharSequence mBtnText;
+  private NativeButtonImp mNative;
   
   NativeButton(VafContext paramVafContext)
   {
     super(paramVafContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp = new NativeButtonImp(paramVafContext.a());
+    this.mNative = new NativeButtonImp(paramVafContext.getContext());
   }
   
-  private void a(Drawable paramDrawable, int paramInt)
+  private Drawable radius(Drawable paramDrawable)
   {
-    switch (paramInt)
+    paramDrawable = RoundedDrawable.fromDrawable(paramDrawable);
+    if (paramDrawable != null)
     {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.setCompoundDrawablesWithIntrinsicBounds(paramDrawable, null, null, null);
-      return;
-    case 1: 
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.setCompoundDrawablesWithIntrinsicBounds(null, paramDrawable, null, null);
-      return;
-    case 2: 
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.setCompoundDrawablesWithIntrinsicBounds(null, null, paramDrawable, null);
-      return;
+      paramDrawable.setCornerRadius(this.mBorderRadius);
+      paramDrawable.setScaleType(ImageView.ScaleType.FIT_XY);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.setCompoundDrawablesWithIntrinsicBounds(null, null, null, paramDrawable);
+    return paramDrawable;
   }
   
-  private void d(String paramString)
+  private void setBackGroundForState(Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3)
   {
-    if (this.jdField_b_of_type_Boolean)
+    Drawable localDrawable3 = paramDrawable1;
+    Drawable localDrawable2 = paramDrawable2;
+    Drawable localDrawable1 = paramDrawable3;
+    if (this.mBorderRadius > 0)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.setText(Html.fromHtml(paramString));
-      return;
+      localDrawable3 = radius(paramDrawable1);
+      localDrawable2 = radius(paramDrawable2);
+      localDrawable1 = radius(paramDrawable3);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.setText(paramString);
+    paramDrawable1 = DrawableUtil.getSelector(localDrawable3, localDrawable2, localDrawable1);
+    this.mNative.setBackgroundDrawable(paramDrawable1);
   }
   
-  public int a()
+  private void setRealText(CharSequence paramCharSequence)
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.a();
+    if (this.mNative.getLayoutParams() == null)
+    {
+      Object localObject = getComLayoutParams();
+      localObject = new ViewGroup.LayoutParams(((Layout.Params)localObject).mLayoutWidth, ((Layout.Params)localObject).mLayoutHeight);
+      this.mNative.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    this.mNative.setText(paramCharSequence);
   }
   
-  public View a()
+  public int getComMeasuredHeight()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp;
+    return this.mNative.getComMeasuredHeight();
   }
   
-  public void a()
+  public int getComMeasuredWidth()
+  {
+    return this.mNative.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.mNative;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.mNative.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.mNative.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
   {
     int i = 1;
-    super.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.setClickable(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.setIncludeFontPadding(false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.setPadding(this.o, this.q, this.p, this.r);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.setTextSize(0, this.C);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.setCompoundDrawablePadding(this.A);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.setLineSpacing(0.0F, 1.0F);
-    if ((this.D & 0x1) != 0) {
+    super.onParseValueFinished();
+    this.mNative.setClickable(true);
+    this.mNative.setIncludeFontPadding(false);
+    this.mNative.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
+    this.mNative.setTextSize(0, this.mTextSize);
+    this.mNative.setLineSpacing(0.0F, 1.0F);
+    this.mNative.setBorderColor(this.mBorderColor);
+    this.mNative.setBorderWidth(this.mBorderWidth);
+    this.mNative.setBorderTopLeftRadius(this.mBorderTopLeftRadius);
+    this.mNative.setBorderTopRightRadius(this.mBorderTopRightRadius);
+    this.mNative.setBorderBottomLeftRadius(this.mBorderBottomLeftRadius);
+    this.mNative.setBorderBottomRightRadius(this.mBorderBottomRightRadius);
+    this.mNative.setBackgroundColor(this.mBackground);
+    if (this.mTypeface != null) {
+      this.mNative.setTypeface(this.mTypeface);
+    }
+    if ((this.mTextStyle & 0x1) != 0) {
       i = 33;
     }
     int j = i;
-    if ((this.D & 0x8) != 0) {
+    if ((this.mTextStyle & 0x8) != 0) {
       j = i | 0x10;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.setPaintFlags(j);
-    if ((this.D & 0x2) != 0) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.setTypeface(null, 3);
+    this.mNative.setPaintFlags(j);
+    if ((this.mTextStyle & 0x2) != 0) {
+      this.mNative.setTypeface(null, 3);
     }
-    if (!TextUtils.isEmpty(this.e)) {
-      d(this.e);
+    if (this.mMaxWidth > 0) {
+      this.mNative.setMaxWidth(this.mMaxWidth);
+    }
+    if (!TextUtils.isEmpty(this.mBtnText)) {
+      setRealText(this.mBtnText);
     }
     for (;;)
     {
-      f();
+      refresh();
       return;
-      d("");
+      if (!TextUtils.isEmpty(this.mText)) {
+        setRealText(this.mText);
+      } else {
+        setRealText("");
+      }
     }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void reset()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.b(paramInt1, paramInt2);
+    super.reset();
+    this.mSupportHtmlStyle = false;
+    this.mText = null;
   }
   
-  public void a(String paramString)
+  protected void setBackgroundColorForStates()
   {
-    if (!TextUtils.equals(paramString, this.e))
+    setBackGroundForState(DrawableUtil.getDrawable(getStatus(0).backgroundColor), DrawableUtil.getDrawable(getStatus(1).backgroundColor), DrawableUtil.getDrawable(getStatus(4).backgroundColor));
+  }
+  
+  protected void setBackgroundForStates()
+  {
+    Context localContext = this.mNative.getContext();
+    setBackGroundForState(DrawableUtil.getDrawable(localContext, getStatus(0).background, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER), DrawableUtil.getDrawable(localContext, getStatus(1).background, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER), DrawableUtil.getDrawable(localContext, getStatus(4).background, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER));
+  }
+  
+  protected void setCompoundDrawableForStates()
+  {
+    Object localObject = this.mNative.getContext();
+    if ((this.drawableLeftPath != null) && (getStatus(0).img != this.drawableLeftPath)) {
+      getStatus(0).img = this.drawableLeftPath;
+    }
+    localObject = DrawableUtil.getSelector(DrawableUtil.getDrawable((Context)localObject, getStatus(0).img, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER), DrawableUtil.getDrawable((Context)localObject, getStatus(1).img, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER), DrawableUtil.getDrawable((Context)localObject, getStatus(4).img, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER));
+    SpannableString localSpannableString = new SpannableString("l" + this.mText);
+    localSpannableString.setSpan(new NativeButton.CenterImageSpan(this, (Drawable)localObject), 0, 1, 33);
+    this.mBtnText = localSpannableString;
+    setText(localSpannableString);
+  }
+  
+  public void setDrawableLeft(String paramString)
+  {
+    this.drawableLeftPath = paramString;
+    setCompoundDrawableForStates();
+  }
+  
+  public void setSelected(boolean paramBoolean)
+  {
+    super.setSelected(paramBoolean);
+    this.mNative.setSelected(paramBoolean);
+  }
+  
+  public void setText(CharSequence paramCharSequence)
+  {
+    if (!TextUtils.equals(paramCharSequence, this.mBtnText))
     {
-      this.e = paramString;
-      d(this.e);
+      this.mBtnText = paramCharSequence;
+      setRealText(this.mBtnText);
     }
   }
   
-  public void a(boolean paramBoolean)
+  public void setTextColor(int paramInt)
   {
-    super.a(paramBoolean);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.setSelected(paramBoolean);
-  }
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.a(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.b();
-  }
-  
-  protected void b()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.getContext();
-    localObject = DrawableUtil.a(DrawableUtil.a((Context)localObject, a(0).b, this.jdField_b_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable), DrawableUtil.a((Context)localObject, a(1).b, this.jdField_b_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable), DrawableUtil.a((Context)localObject, a(4).b, this.jdField_b_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.setBackgroundDrawable((Drawable)localObject);
-  }
-  
-  protected void c()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.setBackgroundDrawable(DrawableUtil.a(a(0).c, a(1).c, a(4).c));
-  }
-  
-  public void c(int paramInt)
-  {
-    if (this.B != paramInt)
+    if (this.mTextColor != paramInt)
     {
-      this.B = paramInt;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.setTextColor(this.B);
+      this.mTextColor = paramInt;
+      this.mNative.setTextColor(this.mTextColor);
     }
   }
   
-  protected void c(String paramString)
+  protected void setTextColorForStates()
   {
-    this.f = paramString;
-    d();
-  }
-  
-  protected void d()
-  {
-    Context localContext = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.getContext();
-    if ((this.f != null) && (a(0).jdField_a_of_type_JavaLangString != this.f)) {
-      a(0).jdField_a_of_type_JavaLangString = this.f;
-    }
-    a(DrawableUtil.a(DrawableUtil.a(localContext, a(0).jdField_a_of_type_JavaLangString, this.jdField_b_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable), DrawableUtil.a(localContext, a(1).jdField_a_of_type_JavaLangString, this.jdField_b_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable), DrawableUtil.a(localContext, a(4).jdField_a_of_type_JavaLangString, this.jdField_b_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)), a(this.z).jdField_a_of_type_Int);
-  }
-  
-  protected void e()
-  {
-    ColorStateList localColorStateList = ColorUtil.a(a(0).d, a(1).d, a(4).d);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewViewButtonNativeButtonImp.setTextColor(localColorStateList);
+    ColorStateList localColorStateList = ColorUtil.getColorStateList(getStatus(0).textColor, getStatus(1).textColor, getStatus(4).textColor);
+    this.mNative.setTextColor(localColorStateList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton
  * JD-Core Version:    0.7.0.1
  */

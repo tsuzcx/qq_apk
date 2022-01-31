@@ -1,6 +1,6 @@
 package com.tencent.token.utils.encrypt.random;
 
-public final class b
+public class b
   implements e
 {
   private static long a = 10L;
@@ -13,109 +13,110 @@ public final class b
   public b(a parama)
   {
     this.d = parama;
-    this.f = new byte[20];
+    this.f = new byte[parama.a()];
     this.c = 1L;
-    this.e = new byte[20];
+    this.e = new byte[parama.a()];
     this.b = 1L;
   }
   
   private void a()
   {
-    int j = 0;
+    c(this.f);
+    long l = this.c;
+    this.c = (1L + l);
+    b(l);
+    d(this.f);
+  }
+  
+  private void b()
+  {
     long l = this.b;
-    this.b = (l + 1L);
+    this.b = (1L + l);
+    b(l);
+    c(this.e);
+    c(this.f);
+    d(this.e);
+    if (this.b % a == 0L) {
+      a();
+    }
+  }
+  
+  private void b(long paramLong)
+  {
     int i = 0;
     while (i != 8)
     {
-      this.d.a((byte)(int)l);
-      l >>>= 8;
+      this.d.a((byte)(int)paramLong);
+      paramLong >>>= 8;
       i += 1;
     }
-    byte[] arrayOfByte = this.e;
-    this.d.a(arrayOfByte, 0, arrayOfByte.length);
-    arrayOfByte = this.f;
-    this.d.a(arrayOfByte, 0, arrayOfByte.length);
-    arrayOfByte = this.e;
-    this.d.a(arrayOfByte);
-    if (this.b % a == 0L)
-    {
-      arrayOfByte = this.f;
-      this.d.a(arrayOfByte, 0, arrayOfByte.length);
-      l = this.c;
-      this.c = (l + 1L);
-      i = j;
-      while (i != 8)
-      {
-        this.d.a((byte)(int)l);
-        l >>>= 8;
-        i += 1;
-      }
-      arrayOfByte = this.f;
-      this.d.a(arrayOfByte);
-    }
   }
   
-  public final void a(long paramLong)
+  private void c(byte[] paramArrayOfByte)
   {
-    int i = 0;
-    for (;;)
-    {
-      if (i != 8) {}
-      byte[] arrayOfByte;
-      try
-      {
-        this.d.a((byte)(int)paramLong);
-        paramLong >>>= 8;
-        i += 1;
-      }
-      finally {}
-    }
-    arrayOfByte = this.f;
-    this.d.a(arrayOfByte, 0, arrayOfByte.length);
-    arrayOfByte = this.f;
-    this.d.a(arrayOfByte);
+    this.d.a(paramArrayOfByte, 0, paramArrayOfByte.length);
   }
   
-  public final void a(byte[] paramArrayOfByte)
+  private void d(byte[] paramArrayOfByte)
+  {
+    this.d.a(paramArrayOfByte, 0);
+  }
+  
+  public void a(long paramLong)
   {
     try
     {
-      this.d.a(paramArrayOfByte, 0, paramArrayOfByte.length);
-      paramArrayOfByte = this.f;
-      this.d.a(paramArrayOfByte, 0, paramArrayOfByte.length);
-      paramArrayOfByte = this.f;
-      this.d.a(paramArrayOfByte);
+      b(paramLong);
+      c(this.f);
+      d(this.f);
       return;
     }
-    finally
-    {
-      paramArrayOfByte = finally;
-      throw paramArrayOfByte;
-    }
+    finally {}
   }
   
-  public final void b(byte[] paramArrayOfByte)
+  public void a(byte[] paramArrayOfByte)
   {
-    int m = paramArrayOfByte.length;
     try
     {
-      a();
-      int j = 0;
+      c(paramArrayOfByte);
+      c(this.f);
+      d(this.f);
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    try
+    {
+      b();
+      int i = 0;
       int k;
-      for (int i = 0; j != m + 0; i = k + 1)
+      for (int j = paramInt1;; j = k)
       {
-        k = i;
+        k = j;
+        if (k == paramInt1 + paramInt2) {
+          break;
+        }
+        j = i;
         if (i == this.e.length)
         {
-          a();
-          k = 0;
+          b();
+          j = 0;
         }
-        paramArrayOfByte[j] = this.e[k];
-        j += 1;
+        paramArrayOfByte[k] = this.e[j];
+        k += 1;
+        i = j + 1;
       }
       return;
     }
     finally {}
+  }
+  
+  public void b(byte[] paramArrayOfByte)
+  {
+    a(paramArrayOfByte, 0, paramArrayOfByte.length);
   }
 }
 

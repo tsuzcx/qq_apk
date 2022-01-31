@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/q1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView style="@style/ni">
+        <LinearLayout style="@style/l0">
+            <LinearLayout android:orientation="vertical" android:id="@id/een" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <RelativeLayout android:paddingBottom="@dimen/m1" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <ImageView android:layout_gravity="center_horizontal" android:id="@id/ra" android:layout_width="@dimen/dm" android:layout_height="@dimen/dm" />
+                    <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:gravity="center|left|top" android:id="@id/b95" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/ra" />
+                    <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:gravity="left" android:id="@id/e1h" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_toRightOf="@id/ra" android:layout_below="@id/b95" />
+                </RelativeLayout>
+                <View style="@style/nz" />
+                <EditText android:textColor="@color/w_" android:layout_gravity="bottom" android:id="@id/eeo" android:layout_marginTop="@dimen/n_" android:minHeight="@dimen/kw" style="@style/ml" />
+                <View style="@style/nz" />
+                <TextView android:gravity="center|left|top" android:id="@id/eep" android:text="@string/d47" android:height="70.0dip" style="@style/mm" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

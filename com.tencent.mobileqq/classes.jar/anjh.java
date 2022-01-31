@@ -1,28 +1,23 @@
-import android.view.View;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.5;
 
 public class anjh
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public anjh(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit, boolean paramBoolean) {}
+  public anjh(ArkAppDownloadModule.5 param5) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setVisibility(8);
-      QIMEffectCameraCaptureUnit.c(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setVisibility(8);
-      QIMEffectCameraCaptureUnit.e(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit, false);
-      return;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit, QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit), QIMEffectCameraCaptureUnit.b(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit), QIMEffectCameraCaptureUnit.c(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit), QIMEffectCameraCaptureUnit.d(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit));
-    QIMEffectCameraCaptureUnit.e(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit, true);
+    azqs.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "8", "", this.a.b, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anjh
  * JD-Core Version:    0.7.0.1
  */

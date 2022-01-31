@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.data.OpenID;
-import cooperation.qzone.QZoneShareData;
-import cooperation.qzone.share.QZoneShareActivity;
-
 public class amzd
-  implements BusinessObserver
 {
-  public amzd(QZoneShareActivity paramQZoneShareActivity, String paramString, QZoneShareData paramQZoneShareData) {}
+  public float a;
+  public int a;
+  public float b;
+  public int b;
+  public float c = 0.0F;
+  public float d = 0.0F;
+  public float e = 0.0F;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public amzd()
   {
-    if ((paramInt == 1) && ((paramObject instanceof OpenID)))
-    {
-      paramObject = (OpenID)paramObject;
-      if ((paramObject.openID != null) && (!paramObject.openID.equals(this.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, this.jdField_a_of_type_CooperationQzoneQZoneShareData);
-      }
-    }
+    this.jdField_a_of_type_Float = 2.0F;
+    this.jdField_b_of_type_Float = 2.0F;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ARVideoLayout {width: ").append(this.jdField_a_of_type_Int).append(", height: ").append(this.jdField_b_of_type_Int).append(", scaleX: ").append(this.jdField_a_of_type_Float).append(", scaleY: ").append(this.jdField_b_of_type_Float).append(", transX: ").append(this.c).append(", transY: ").append(this.d).append(", transZ: ").append(this.e).append("}");
+    return localStringBuilder.toString();
   }
 }
 

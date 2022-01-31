@@ -5,15 +5,15 @@ import java.util.List;
 
 public class ResourceManager$Posture
 {
-  public FaceDanceTemplateConfig a;
-  public String a;
-  public List a;
-  public String b;
-  public List b;
+  public String blastPicture;
+  public List<String> danceCartoon;
+  public FaceDanceTemplateConfig faceDanceConfig;
+  public List<MatchTemplateConfig> gestureConfigs;
+  public String id;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.Posture
  * JD-Core Version:    0.7.0.1
  */

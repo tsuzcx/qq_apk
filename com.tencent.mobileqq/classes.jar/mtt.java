@@ -1,38 +1,23 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewStub;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
-import java.lang.ref.WeakReference;
+import com.tencent.av.VideoController;
 
 public class mtt
-  implements Animation.AnimationListener
 {
-  public mtt(SubscriptRecommendController paramSubscriptRecommendController) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public static void a()
   {
-    this.a.jdField_a_of_type_AndroidViewViewStub.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    ((ViewGroup)this.a.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.a.jdField_a_of_type_AndroidViewView);
+    mtq.a("0X800A3D9", VideoController.a().a().d);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public static void a(boolean paramBoolean)
   {
-    if ((this.a.b > 0) && (this.a.c > 0)) {
-      ((ImageView)((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131368316)).setLayoutParams(new LinearLayout.LayoutParams(this.a.c, this.a.b));
+    int i = VideoController.a().a().d;
+    if (paramBoolean) {
+      mtq.a("0X800A3DA", i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mtt
  * JD-Core Version:    0.7.0.1
  */

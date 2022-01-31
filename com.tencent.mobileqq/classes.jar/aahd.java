@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aahd
-  implements Runnable
+  implements aahz
 {
-  public aahd(AREngine paramAREngine) {}
+  public aahd(GameCenterActivity.GameCenterFragment paramGameCenterFragment) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    AREngine.a(this.a);
+    QLog.i("GameCenterFragment", 1, "removeShotMask code=" + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aahd
  * JD-Core Version:    0.7.0.1
  */

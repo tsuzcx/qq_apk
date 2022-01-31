@@ -9,11 +9,11 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class ConfigurationService$Config
-  extends MessageMicro
+  extends MessageMicro<Config>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42 }, new String[] { "type", "version", "content_list", "msg_content_list", "msg_rich_info" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "", null, null }, Config.class);
-  public final PBRepeatField content_list = PBField.initRepeat(PBStringField.__repeatHelper__);
-  public final PBRepeatMessageField msg_content_list = PBField.initRepeatMessage(ConfigurationService.Content.class);
+  public final PBRepeatField<String> content_list = PBField.initRepeat(PBStringField.__repeatHelper__);
+  public final PBRepeatMessageField<ConfigurationService.Content> msg_content_list = PBField.initRepeatMessage(ConfigurationService.Content.class);
   public ConfigurationService.RichInfo msg_rich_info = new ConfigurationService.RichInfo();
   public final PBInt32Field type = PBField.initInt32(0);
   public final PBInt32Field version = PBField.initInt32(0);

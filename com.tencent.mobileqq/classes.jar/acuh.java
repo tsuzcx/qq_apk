@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.data.FMTransC2CMsgInfo;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class acuh
-  implements Runnable
+public class acuh
+  extends alpa
 {
-  acuh(acuf paramacuf, byte[] paramArrayOfByte, FMTransC2CMsgInfo paramFMTransC2CMsgInfo) {}
+  public acuh(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
   {
-    this.jdField_a_of_type_Acuf.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a(this.jdField_a_of_type_Acuf.jdField_a_of_type_JavaLangString, 529, 4, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo);
+    this.a.h();
+    if (paramBoolean)
+    {
+      if (paramBoolean1.booleanValue()) {
+        DiscussionInfoCardActivity.e(this.a);
+      }
+      return;
+    }
+    QQToast.a(this.a, paramInt, 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acuh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-class adkb
-  implements Runnable
+public class adkb
+  implements DialogInterface.OnClickListener
 {
-  adkb(adka paramadka) {}
+  public adkb(NotificationActivity paramNotificationActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (NetworkUtil.a(BaseApplication.getContext()) != 0) {
-      QQToast.a(this.a.a.a.getApp(), 2, 2131435089, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
-    }
+    azqs.a(this.a.app, "dc00898", "", NotificationActivity.d(this.a), "0X800AA31", "0X800AA31", 0, 0, "", "", "", NotificationActivity.a(this.a));
+    paramDialogInterface = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    this.a.startActivity(paramDialogInterface.putExtra("url", "https://myun.tenpay.com/mqq/banneduser/index.shtml?_wv=1027"));
+    this.a.finish();
   }
 }
 

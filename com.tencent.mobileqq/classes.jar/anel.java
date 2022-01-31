@@ -1,17 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import cooperation.smartdevice.SmartDevicePluginLoader;
-
-public class anel
-  implements DialogInterface.OnShowListener
+public abstract interface anel
 {
-  public anel(SmartDevicePluginLoader paramSmartDevicePluginLoader, QQProgressDialog paramQQProgressDialog) {}
+  public abstract void b();
   
-  public void onShow(DialogInterface paramDialogInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.hide();
-  }
+  public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
 }
 
 

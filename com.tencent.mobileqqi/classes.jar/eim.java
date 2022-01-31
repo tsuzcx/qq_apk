@@ -1,21 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class eim
-  implements View.OnClickListener
+  extends FriendListObserver
 {
-  public eim(SearchResultDialog paramSearchResultDialog) {}
+  public eim(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onClick(View paramView)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    SearchResultDialog.a(this.a).setText("");
+    if ((paramBoolean) && (this.a.a != null) && (this.a.a.b == null)) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eim
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.filemanager.activity.MPFileFailedView.MPFileFailedEvent;
-import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
 public class addg
-  implements MPFileFailedView.MPFileFailedEvent
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public addg(MPcFileModel paramMPcFileModel) {}
+  public addg(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void a(long paramLong)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    MPcFileModel.b(this.a, paramLong);
+    banm.a(paramBoolean);
+    if (paramBoolean) {
+      banm.a(new addh(this.a.jdField_a_of_type_Adyd, this.a.jdField_a_of_type_AndroidViewView));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     addg
  * JD-Core Version:    0.7.0.1
  */

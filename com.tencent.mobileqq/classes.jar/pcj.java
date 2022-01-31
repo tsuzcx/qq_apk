@@ -1,26 +1,31 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.biz.webviewplugin.PubAccountUIPlugin;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
 public class pcj
-  implements Animation.AnimationListener
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public pcj(PubAccountUIPlugin paramPubAccountUIPlugin, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  public pcj(VideoView paramVideoView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    try
+    {
+      VideoView.a(this.a, 10);
+      if (VideoView.b(this.a)) {
+        VideoView.h(this.a);
+      }
+      if (VideoView.a(this.a) != null) {
+        VideoView.a(this.a).c();
+      }
+      return;
+    }
+    finally {}
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pcj
  * JD-Core Version:    0.7.0.1
  */

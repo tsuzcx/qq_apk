@@ -1,15 +1,14 @@
-import android.app.Dialog;
+import com.tencent.mobileqq.widget.ContainerView;
+import com.tencent.widget.ScrollView;
 
-public final class hga
+public class hga
   implements Runnable
 {
-  public hga(Dialog paramDialog) {}
+  public hga(ContainerView paramContainerView, int paramInt) {}
   
   public void run()
   {
-    if ((this.a != null) && (this.a.isShowing())) {
-      this.a.dismiss();
-    }
+    ContainerView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView).b(0, this.jdField_a_of_type_Int);
   }
 }
 

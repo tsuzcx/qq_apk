@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.util.ImageCreator;
-import com.tencent.mobileqq.util.ImageLoader;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AlbumImageProxy;
+import com.tencent.mobileqq.widget.RotateBitmap;
 
 public class hfa
+  extends Handler
 {
-  ImageCreator a;
-  public ImageLoader a;
-  public hex a;
+  public hfa(AlbumImageProxy paramAlbumImageProxy) {}
   
-  public hfa(ImageCreator paramImageCreator, ImageLoader paramImageLoader, hex paramhex)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilImageCreator = paramImageCreator;
-    this.jdField_a_of_type_ComTencentMobileqqUtilImageLoader = paramImageLoader;
-    this.jdField_a_of_type_Hex = paramhex;
+    paramMessage = (Bitmap)paramMessage.obj;
+    this.a.setImageRotateBitmapResetBase(new RotateBitmap(paramMessage, 0), true);
   }
 }
 

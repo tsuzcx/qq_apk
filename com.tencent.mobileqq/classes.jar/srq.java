@@ -1,30 +1,46 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import java.util.ArrayList;
+import java.util.List;
 
 public class srq
-  implements Animation.AnimationListener
 {
-  public srq(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
+  private static final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+    if ((jdField_a_of_type_JavaUtilList != null) && (jdField_a_of_type_JavaUtilList.size() <= 0)) {}
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public static void a(String paramString1, String paramString2, double paramDouble)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.f) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    if (!a(paramDouble)) {}
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, double paramDouble)
+  {
+    if (!a(paramDouble)) {}
+  }
+  
+  private static boolean a(double paramDouble)
+  {
+    return false;
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_JavaUtilList != null) {
+      jdField_a_of_type_JavaUtilList.clear();
     }
+  }
+  
+  private static void b(String paramString)
+  {
+    nrt.a(ors.a(), "", "0X800A064", "0X800A064", 0, 0, "", "", "", paramString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     srq
  * JD-Core Version:    0.7.0.1
  */

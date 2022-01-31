@@ -1,12 +1,36 @@
 package com.tencent.av.video.call;
 
+import bfvp;
+
 public class GAClientLogReport
 {
-  static {}
+  private static final String TAG = "GAClientLogReport";
+  private static GAClientLogReport instance;
   
-  public GAClientLogReport()
+  static
   {
-    init();
+    try
+    {
+      cacheMethodIds();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      bfvp.a("GAClientLogReport", "cacheMethodIds fail.", localThrowable);
+    }
+  }
+  
+  private GAClientLogReport()
+  {
+    try
+    {
+      init();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      bfvp.a("GAClientLogReport", "inti fail.", localThrowable);
+    }
   }
   
   private static native void cacheMethodIds();
@@ -17,6 +41,14 @@ public class GAClientLogReport
   }
   
   private native void init();
+  
+  public static GAClientLogReport instance()
+  {
+    if (instance == null) {
+      instance = new GAClientLogReport();
+    }
+    return instance;
+  }
 }
 
 

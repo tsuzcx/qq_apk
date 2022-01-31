@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqshop_report$SQQSHPCliAdfbReq
-  extends MessageMicro
+  extends MessageMicro<SQQSHPCliAdfbReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50 }, new String[] { "puin", "msgid", "uin", "msg_type", "adid", "viewid" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), "", "" }, SQQSHPCliAdfbReq.class);
   public final PBStringField adid = PBField.initString("");
@@ -20,7 +20,7 @@ public final class qqshop_report$SQQSHPCliAdfbReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.qqshop.qqshop_report.SQQSHPCliAdfbReq
  * JD-Core Version:    0.7.0.1
  */

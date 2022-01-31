@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agin
-  implements Runnable
+class agin
+  implements DialogInterface.OnClickListener
 {
-  public agin(ScanTorchActivity paramScanTorchActivity) {}
+  agin(aghx paramaghx) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ScanTorchActivity.z(this.a);
-    ScanTorchActivity.c(this.a, true, 0);
+    if ((this.a.a != null) && (!this.a.a.c())) {
+      this.a.a.f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agin
  * JD-Core Version:    0.7.0.1
  */

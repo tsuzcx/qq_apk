@@ -1,27 +1,23 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.InputMethodUtil;
-import org.json.JSONException;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ajhf
+class ajhf
   implements View.OnClickListener
 {
-  public ajhf(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  ajhf(ajgb paramajgb) {}
   
   public void onClick(View paramView)
   {
-    InputMethodUtil.b(paramView);
-    try
-    {
-      PublishHomeWorkFragment.c(this.a);
-      return;
+    if (amqe.a().a() == 4) {
+      azqs.b(ajgb.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, amqd.b(), amqe.b(), amqe.a(), "0");
     }
-    catch (JSONException paramView)
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("PublishHomeWorkFragment", 2, "on publish homework error, parse json error", paramView);
+      this.a.a(14, 0);
+      this.a.a(-1, null);
+      return;
+      azqs.b(ajgb.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, amqd.b(), amqe.b(), amqe.a(), "0");
     }
   }
 }

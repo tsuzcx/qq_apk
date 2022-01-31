@@ -1,27 +1,18 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
 
 public class afep
-  implements Handler.Callback
+  implements affa
 {
-  public afep(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public void a(int paramInt) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public int[] a()
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      NearbyProfileDisplayTribePanel.a(this.a);
-    }
+    return new int[6];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afep
  * JD-Core Version:    0.7.0.1
  */

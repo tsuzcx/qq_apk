@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 import mqq.app.Constants.Action;
 
 public abstract class SubAccountObserver
-  implements BusinessObserver, Constants.Action
+  implements Constants.Action, BusinessObserver
 {
   protected void onGetKeyBack(String paramString1, String paramString2, String paramString3) {}
   

@@ -1,27 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.LoginActivity;
 
 public class ctc
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public ctc(ForwardRecentActivity paramForwardRecentActivity, int paramInt) {}
+  public ctc(LoginActivity paramLoginActivity, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.a.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.a.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.a.requestLayout();
+    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.a(this.jdField_a_of_type_JavaLangString, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.runOnUiThread(new ctd(this, localBitmap));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ctc
  * JD-Core Version:    0.7.0.1
  */

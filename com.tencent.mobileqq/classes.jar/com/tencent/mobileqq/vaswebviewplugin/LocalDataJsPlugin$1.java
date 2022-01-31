@@ -2,28 +2,28 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.vas.SignatureTemplateConfig;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
+import bdtt;
+import bead;
+import beae;
+import beag;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import org.json.JSONObject;
 
 class LocalDataJsPlugin$1
-  extends DownloadListener
+  extends bead
 {
   LocalDataJsPlugin$1(LocalDataJsPlugin paramLocalDataJsPlugin) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onDone(beae parambeae)
   {
-    super.onDone(paramDownloadTask);
+    super.onDone(parambeae);
     if (QLog.isColorLevel()) {
-      QLog.d("LocalDataJsPlugin", 2, "sigTplResDownloadListener.onDone| task:" + paramDownloadTask);
+      QLog.d("LocalDataJsPlugin", 2, "sigTplResDownloadListener.onDone| task:" + parambeae);
     }
-    Object localObject1 = paramDownloadTask.a();
+    Object localObject1 = parambeae.a();
     if (localObject1 == null) {
-      QLog.e("LocalDataJsPlugin", 1, "sigTplResDownloadListener.onDone error no params: " + paramDownloadTask);
+      QLog.e("LocalDataJsPlugin", 1, "sigTplResDownloadListener.onDone error no params: " + parambeae);
     }
     String str1;
     String str2;
@@ -39,17 +39,17 @@ class LocalDataJsPlugin$1
         QLog.e("LocalDataJsPlugin", 1, "sigTplResDownloadListener.onDone error : callbackId = " + str1 + " itemId = " + str2);
         return;
       }
-      if ((3 != paramDownloadTask.a()) && (paramDownloadTask.a() != 0)) {
+      if ((3 != parambeae.a()) && (parambeae.a() != 0)) {
         break;
       }
-      localFile = new File(SignatureTemplateConfig.a(str2, "dynamic_aio"));
-    } while (!DownloaderFactory.a(new File(SignatureTemplateConfig.a(str2, "temp.zip")), localFile, true));
+      localFile = new File(bdtt.a(str2, "dynamic_aio"));
+    } while (!beag.a(new File(bdtt.a(str2, "temp.zip")), localFile, true));
     try
     {
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
         localObject1 = new JSONObject((String)localObject1);
-        LocalDataJsPlugin.access$000(this.this$0, str1, Integer.parseInt(str2), paramDownloadTask.c, (JSONObject)localObject1);
+        LocalDataJsPlugin.access$000(this.this$0, str1, Integer.parseInt(str2), parambeae.c, (JSONObject)localObject1);
         return;
       }
     }
@@ -61,12 +61,12 @@ class LocalDataJsPlugin$1
         Object localObject2 = null;
       }
     }
-    QLog.e("LocalDataJsPlugin", 1, "sigTpl download fail status = " + paramDownloadTask.a() + " itemId = " + str2);
+    QLog.e("LocalDataJsPlugin", 1, "sigTpl download fail status = " + parambeae.a() + " itemId = " + str2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.LocalDataJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,49 @@
-import com.tencent.component.media.image.ImageDefaultConfig;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.image.PoolParams;
-import com.tencent.component.media.image.PoolParams.BucketParams;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class pha
-  implements PoolParams
 {
-  public pha(ImageManager paramImageManager) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public PoolParams.BucketParams getBucketParams(int paramInt)
+  public JSONObject a()
   {
-    return ImageDefaultConfig.getArtBitmapBucketParams(ImageManager.a(this.a), paramInt);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("businessId", this.jdField_a_of_type_Int);
+      localJSONObject.put("businessType", this.jdField_b_of_type_Int);
+      localJSONObject.put("businessName", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("jumpUrl", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("businessIconUrl", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("fansCount", this.jdField_c_of_type_Int);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("SelfInfoModule", 1, "toJson error. " + localJSONException);
+    }
+    return localJSONObject;
   }
   
-  public int getBucketPoolSize()
+  public void a(JSONObject paramJSONObject)
   {
-    return ImageDefaultConfig.getArtBitmapPoolSize(ImageManager.a(this.a));
+    this.jdField_a_of_type_Int = paramJSONObject.getInt("businessId");
+    this.jdField_b_of_type_Int = paramJSONObject.getInt("businessType");
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("businessName");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("jumpUrl");
+    this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("businessIconUrl");
+    this.jdField_c_of_type_Int = paramJSONObject.getInt("fansCount");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pha
  * JD-Core Version:    0.7.0.1
  */

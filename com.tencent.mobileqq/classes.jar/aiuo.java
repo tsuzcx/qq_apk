@@ -1,21 +1,33 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
-import com.tencent.mobileqq.troop.activity.PublicCommentWindow;
+import Wallet.GetBroadCastHbIdiomReq;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.ArrayList;
 
-public class aiuo
-  implements Runnable
+class aiuo
+  implements ajfp
 {
-  public aiuo(PublicCommentWindow paramPublicCommentWindow) {}
+  aiuo(aiul paramaiul, ArrayList paramArrayList, SessionInfo paramSessionInfo) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    this.a.b = false;
-    if ((this.a.isShowing()) && (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel != null))
+    int i = 1;
+    GetBroadCastHbIdiomReq localGetBroadCastHbIdiomReq = new GetBroadCastHbIdiomReq();
+    localGetBroadCastHbIdiomReq.billnos = this.jdField_a_of_type_JavaUtilArrayList;
+    localGetBroadCastHbIdiomReq.sKey = paramString;
+    localGetBroadCastHbIdiomReq.appid = AppSetting.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1) {}
+    for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844546);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430342));
+      localGetBroadCastHbIdiomReq.fromType = i;
+      localGetBroadCastHbIdiomReq.platform = 0;
+      localGetBroadCastHbIdiomReq.qqVersion = "8.3.5";
+      aivh.a(localGetBroadCastHbIdiomReq, new aiup(this));
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 3000) {
+        i = 2;
+      } else {
+        i = 0;
+      }
     }
   }
 }

@@ -1,34 +1,23 @@
-import com.tencent.mobileqq.apollo.ai.ApolloAIPresenter;
-import com.tencent.mobileqq.apollo.ai.IApolloAIView;
-import com.tencent.mobileqq.vas.VasExtensionObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
 
-public class yom
-  extends VasExtensionObserver
+public final class yom
+  implements Parcelable.Creator<CommodityBean>
 {
-  public yom(ApolloAIPresenter paramApolloAIPresenter) {}
-  
-  protected void g(boolean paramBoolean, Object paramObject)
+  public CommodityBean a(Parcel paramParcel)
   {
-    if ((!paramBoolean) && (ApolloAIPresenter.a(this.a) != null))
-    {
-      ApolloAIPresenter.a(this.a).i();
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloAIPresenter", 2, "send msg to ai fail");
-      }
-    }
+    return new CommodityBean(paramParcel);
   }
   
-  protected void h(boolean paramBoolean, Object paramObject)
+  public CommodityBean[] a(int paramInt)
   {
-    if (ApolloAIPresenter.a(this.a) != null) {
-      ApolloAIPresenter.a(this.a).b(paramBoolean);
-    }
+    return new CommodityBean[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yom
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class PokeMsgExtPb$ResvAttr
-  extends MessageMicro
+  extends MessageMicro<ResvAttr>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField wording = PBField.initBytes(ByteStringMicro.EMPTY);

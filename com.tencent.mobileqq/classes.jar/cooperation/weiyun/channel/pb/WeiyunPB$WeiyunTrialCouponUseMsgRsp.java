@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class WeiyunPB$WeiyunTrialCouponUseMsgRsp
-  extends MessageMicro
+  extends MessageMicro<WeiyunTrialCouponUseMsgRsp>
 {
   public static final int USER_STATICS_LEVEL_FIELD_NUMBER = 20;
   public static final int WEIYUN_VIP_FLAG_FIELD_NUMBER = 10;
@@ -16,7 +16,7 @@ public final class WeiyunPB$WeiyunTrialCouponUseMsgRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.WeiyunTrialCouponUseMsgRsp
  * JD-Core Version:    0.7.0.1
  */

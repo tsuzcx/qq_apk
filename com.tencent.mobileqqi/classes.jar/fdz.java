@@ -1,16 +1,12 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.MessageHandler;
 
 public class fdz
-  implements Runnable
 {
-  public fdz(BusinessHandler paramBusinessHandler, BusinessObserver paramBusinessObserver, int paramInt, Handler paramHandler, boolean paramBoolean, Object paramObject) {}
+  public int a;
+  public long a;
+  public short a;
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
-  }
+  private fdz(MessageHandler paramMessageHandler) {}
 }
 
 

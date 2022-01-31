@@ -1,25 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.voip.VoipDialInterface;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import android.os.Process;
 
-public class ezk
-  implements View.OnClickListener
+class ezk
+  extends Thread
 {
-  public ezk(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  ezk(ezj paramezj) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.a("2");
-    VoipDialInterfaceActivity.a(this.a, '2');
-    if (VoipDialInterfaceActivity.b(this.a)) {
-      new Thread(new ezl(this)).start();
-    }
+    Process.killProcess(Process.myPid());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ezk
  * JD-Core Version:    0.7.0.1
  */

@@ -27,19 +27,10 @@ public abstract interface IUploader
   public abstract boolean upload(UploadRequest paramUploadRequest);
   
   public abstract void vipSpeedUp();
-  
-  public static abstract interface IUploadListener
-  {
-    public abstract void onUploadCanceled(UploadRequest paramUploadRequest);
-    
-    public abstract void onUploadFinished(UploadRequest paramUploadRequest, boolean paramBoolean, UploadResponse paramUploadResponse);
-    
-    public abstract void onUploadProgress(UploadRequest paramUploadRequest, long paramLong1, float paramFloat, long paramLong2, long paramLong3, long paramLong4);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.weiyun.uploader.IUploader
  * JD-Core Version:    0.7.0.1
  */

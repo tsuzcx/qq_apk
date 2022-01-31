@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.newshare.ui.ActionSheetShareUI;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class nho
-  implements DialogInterface.OnDismissListener
 {
-  public nho(ActionSheetShareUI paramActionSheetShareUI) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public ImageView b;
+  TextView b;
+  public ImageView c;
+  TextView c;
+  public ImageView d;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.e();
-  }
+  nho(ngw paramngw) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nho
  * JD-Core Version:    0.7.0.1
  */

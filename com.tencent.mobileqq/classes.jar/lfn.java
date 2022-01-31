@@ -1,28 +1,19 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.pubaccount.PublicAccountUnfollowTask.UnFollowPublicAccountListenner;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.av.VideoController;
+import java.util.Comparator;
 
 public class lfn
-  implements PublicAccountUnfollowTask.UnFollowPublicAccountListenner
+  implements Comparator<lfu>
 {
-  public lfn(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity, Context paramContext) {}
+  public lfn(VideoController paramVideoController) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public int a(lfu paramlfu1, lfu paramlfu2)
   {
-    if (paramBoolean)
-    {
-      new Handler(Looper.getMainLooper()).postDelayed(new lfo(this), 500L);
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, "取消关注失败，请检查网络设置！", 0).a();
+    return (int)(paramlfu1.d - paramlfu2.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lfn
  * JD-Core Version:    0.7.0.1
  */

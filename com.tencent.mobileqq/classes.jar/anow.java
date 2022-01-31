@@ -1,33 +1,17 @@
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GridView;
-import dov.com.qq.im.capture.adapter.ComboProviderPagerAdapter;
-import dov.com.qq.im.capture.view.ComboProviderView;
+import com.tencent.ark.ark.PlayerStub;
+import com.tencent.ark.ark.PlayerStubFactory;
 
-public class anow
-  implements Runnable
+final class anow
+  implements ark.PlayerStubFactory
 {
-  public anow(ComboProviderView paramComboProviderView, int paramInt) {}
-  
-  public void run()
+  public ark.PlayerStub CreateStub()
   {
-    GridView localGridView = (GridView)this.jdField_a_of_type_DovComQqImCaptureViewComboProviderView.a.a.get(this.jdField_a_of_type_DovComQqImCaptureViewComboProviderView.b());
-    if (localGridView != null)
-    {
-      localGridView.setSelection(this.jdField_a_of_type_Int);
-      if (QLog.isColorLevel()) {
-        QLog.d("ComboProviderView", 2, "positon= " + this.jdField_a_of_type_Int);
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("ComboProviderView", 2, "gridView is null");
+    return new anov();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anow
  * JD-Core Version:    0.7.0.1
  */

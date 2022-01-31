@@ -26,6 +26,7 @@ class QQReaderJsPlugin$1
     try
     {
       paramContext.put("id", paramIntent.getString("bookId"));
+      paramContext.put("nbid", paramIntent.getString("bookNewId"));
       this.this$0.dispatchJsEvent("qqReaderCenterSucceedAddingToShelf", paramContext, null);
       return;
     }
@@ -42,7 +43,7 @@ class QQReaderJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QQReaderJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

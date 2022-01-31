@@ -1,20 +1,30 @@
-import com.tencent.mobileqq.worldcup.TouchSliceView;
-import java.util.Deque;
+import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class akyb
-  implements Runnable
+  implements TVK_SDKMgr.InstallListener
 {
-  public akyb(TouchSliceView paramTouchSliceView) {}
+  public akyb(CmGameAppInterface paramCmGameAppInterface) {}
   
-  public void run()
+  public void onInstallProgress(float paramFloat)
   {
-    TouchSliceView.a(this.a).clear();
-    this.a.postInvalidate();
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstallProgress] v:" + paramFloat);
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstalledFailed], i:" + paramInt);
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstalledSuccessed]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akyb
  * JD-Core Version:    0.7.0.1
  */

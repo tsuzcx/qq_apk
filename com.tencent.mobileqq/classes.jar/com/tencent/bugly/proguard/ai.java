@@ -1,35 +1,43 @@
 package com.tencent.bugly.proguard;
 
-import java.util.ArrayList;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.DESKeySpec;
+import javax.crypto.spec.IvParameterSpec;
 
 public final class ai
-  extends k
-  implements Cloneable
+  implements aj
 {
-  private static ArrayList<String> c;
-  private String a = "";
-  private ArrayList<String> b = null;
+  private String a = null;
   
-  public final void a(i parami)
+  public final void a(String paramString)
   {
-    this.a = parami.b(0, true);
-    if (c == null)
-    {
-      c = new ArrayList();
-      c.add("");
-    }
-    this.b = ((ArrayList)parami.a(c, 1, false));
-  }
-  
-  public final void a(j paramj)
-  {
-    paramj.a(this.a, 0);
-    if (this.b != null) {
-      paramj.a(this.b, 1);
+    if (paramString != null) {
+      this.a = paramString;
     }
   }
   
-  public final void a(StringBuilder paramStringBuilder, int paramInt) {}
+  public final byte[] a(byte[] paramArrayOfByte)
+  {
+    if ((this.a == null) || (paramArrayOfByte == null)) {
+      return null;
+    }
+    Cipher localCipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
+    DESKeySpec localDESKeySpec = new DESKeySpec(this.a.getBytes("UTF-8"));
+    localCipher.init(2, SecretKeyFactory.getInstance("DES").generateSecret(localDESKeySpec), new IvParameterSpec(this.a.getBytes("UTF-8")));
+    return localCipher.doFinal(paramArrayOfByte);
+  }
+  
+  public final byte[] b(byte[] paramArrayOfByte)
+  {
+    if ((this.a == null) || (paramArrayOfByte == null)) {
+      return null;
+    }
+    Cipher localCipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
+    DESKeySpec localDESKeySpec = new DESKeySpec(this.a.getBytes("UTF-8"));
+    localCipher.init(1, SecretKeyFactory.getInstance("DES").generateSecret(localDESKeySpec), new IvParameterSpec(this.a.getBytes("UTF-8")));
+    return localCipher.doFinal(paramArrayOfByte);
+  }
 }
 
 

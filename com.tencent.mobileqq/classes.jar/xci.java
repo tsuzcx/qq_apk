@@ -1,23 +1,35 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.Bitmap;
 
 public class xci
-  implements PopupWindow.OnDismissListener
+  extends xcs
 {
-  public xci(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public final long a;
+  public final long b;
+  public final long c;
+  public final long d;
   
-  public void onDismiss()
+  public xci(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, Bitmap paramBitmap)
   {
-    if (!TroopUnAccalimedRedPacketList.a(this.a)) {
-      QWalletTools.a(TroopUnAccalimedRedPacketList.a(), TroopUnAccalimedRedPacketList.a().getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.keyback", "", "");
-    }
+    super(paramInt, paramBitmap);
+    this.a = paramLong1;
+    this.b = paramLong2;
+    this.jdField_c_of_type_Long = paramLong3;
+    this.d = paramLong4;
+  }
+  
+  public xci a(Bitmap paramBitmap)
+  {
+    return new xci(this.jdField_c_of_type_Int, this.a, this.b, this.jdField_c_of_type_Long, this.d, paramBitmap);
+  }
+  
+  public String toString()
+  {
+    return "RecordVideoBlockInfo{index:" + this.jdField_c_of_type_Int + ", vfFrame: " + this.a + " ~ " + this.b + ", afTime: " + this.jdField_c_of_type_Long + " ~ " + this.d + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xci
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,54 @@
-import android.media.MediaPlayer;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import mqq.os.MqqHandler;
 
-public class aokh
-  implements SeekBar.OnSeekBarChangeListener
+public abstract class aokh<T>
 {
-  public aokh(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public abstract int a();
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
+  public abstract Class<T> a();
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  @NonNull
+  public abstract T a(int paramInt);
+  
+  public void a()
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    }
-    this.a.jdField_a_of_type_AndroidMediaMediaPlayer.pause();
     if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onStartTrackingTouch: progress = " + i);
+      QLog.d("IQConfigProcessor", 2, "onReqNoReceive: type=" + a());
     }
   }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public abstract void a(int paramInt);
+  
+  public abstract void a(T paramT);
+  
+  public boolean a()
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onStopTrackingTouch: 当前位置为 = " + i);
-    }
-    if (this.a.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-    {
-      if (this.a.e == 2) {
-        this.a.d();
-      }
-      this.a.c.setImageResource(2130843336);
-      this.a.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-      this.a.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(i);
-      this.a.jdField_a_of_type_MqqOsMqqHandler.post(this.a.jdField_a_of_type_JavaLangRunnable);
-      this.a.b(1);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(2131439319);
-      this.a.b.setEnabled(false);
-      this.a.b.setTextColor(-2130706433);
-    }
+    return true;
+  }
+  
+  public abstract int b();
+  
+  public int b(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  @Nullable
+  public abstract T b(aoko[] paramArrayOfaoko);
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
+  
+  public boolean d()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aokh
  * JD-Core Version:    0.7.0.1
  */

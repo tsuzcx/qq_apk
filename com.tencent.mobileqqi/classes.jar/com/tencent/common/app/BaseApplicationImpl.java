@@ -14,7 +14,7 @@ import android.os.Handler;
 import android.provider.Settings.System;
 import android.support.v4.util.MQLruCache;
 import android.util.Pair;
-import bvo;
+import bpq;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -224,11 +224,11 @@ public class BaseApplicationImpl
     //   83: putfield 59	com/tencent/common/app/BaseApplicationImpl:jdField_b_of_type_Int	I
     //   86: aload_0
     //   87: getfield 250	com/tencent/common/app/BaseApplicationImpl:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   90: new 272	bvp
+    //   90: new 272	bpr
     //   93: dup
     //   94: aload_0
     //   95: aload_3
-    //   96: invokespecial 275	bvp:<init>	(Lcom/tencent/common/app/BaseApplicationImpl;Landroid/media/MediaPlayer$OnCompletionListener;)V
+    //   96: invokespecial 275	bpr:<init>	(Lcom/tencent/common/app/BaseApplicationImpl;Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   99: invokevirtual 279	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   102: aload_0
     //   103: getfield 250	com/tencent/common/app/BaseApplicationImpl:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
@@ -360,7 +360,7 @@ public class BaseApplicationImpl
         QLog.d("MediaPlayerStart", 2, "media palyer uri=" + Settings.System.DEFAULT_NOTIFICATION_URI);
         continue;
       }
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new bvo(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new bpq(this));
       this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(paramBoolean);
     }
@@ -441,10 +441,10 @@ public class BaseApplicationImpl
     //   135: goto -80 -> 55
     //   138: aload_0
     //   139: getfield 250	com/tencent/common/app/BaseApplicationImpl:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   142: new 334	bvq
+    //   142: new 334	bps
     //   145: dup
     //   146: aload_0
-    //   147: invokespecial 335	bvq:<init>	(Lcom/tencent/common/app/BaseApplicationImpl;)V
+    //   147: invokespecial 335	bps:<init>	(Lcom/tencent/common/app/BaseApplicationImpl;)V
     //   150: invokevirtual 279	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   153: goto -77 -> 76
     //   156: astore 4
@@ -531,10 +531,10 @@ public class BaseApplicationImpl
     //   85: invokevirtual 375	java/io/FileInputStream:close	()V
     //   88: aload_0
     //   89: getfield 250	com/tencent/common/app/BaseApplicationImpl:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   92: new 377	bvr
+    //   92: new 377	bpt
     //   95: dup
     //   96: aload_0
-    //   97: invokespecial 378	bvr:<init>	(Lcom/tencent/common/app/BaseApplicationImpl;)V
+    //   97: invokespecial 378	bpt:<init>	(Lcom/tencent/common/app/BaseApplicationImpl;)V
     //   100: invokevirtual 279	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   103: aload_0
     //   104: getfield 250	com/tencent/common/app/BaseApplicationImpl:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
@@ -651,10 +651,10 @@ public class BaseApplicationImpl
     //   83: invokevirtual 372	android/media/MediaPlayer:prepare	()V
     //   86: aload_0
     //   87: getfield 250	com/tencent/common/app/BaseApplicationImpl:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   90: new 385	bvn
+    //   90: new 385	bpp
     //   93: dup
     //   94: aload_0
-    //   95: invokespecial 386	bvn:<init>	(Lcom/tencent/common/app/BaseApplicationImpl;)V
+    //   95: invokespecial 386	bpp:<init>	(Lcom/tencent/common/app/BaseApplicationImpl;)V
     //   98: invokevirtual 279	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   101: aload_0
     //   102: getfield 250	com/tencent/common/app/BaseApplicationImpl:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
@@ -724,9 +724,6 @@ public class BaseApplicationImpl
   {
     if (paramString.equals("com.tencent.mobileqqi")) {
       return "com.tencent.mobileqqi.broadcast.qq";
-    }
-    if (paramString.equals("com.tencent.mobileqqi:video")) {
-      return "com.tencent.av.ui.qqi.VChatActivity";
     }
     return "";
   }

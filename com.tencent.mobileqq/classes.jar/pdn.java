@@ -1,18 +1,16 @@
-import com.tencent.biz.webviewplugin.UrlCheckPlugin;
+import android.view.View;
 
-public class pdn
-  implements Runnable
+public abstract interface pdn
 {
-  public pdn(UrlCheckPlugin paramUrlCheckPlugin) {}
+  public abstract int a();
   
-  public void run()
-  {
-    this.a.a();
-  }
+  public abstract rjk a();
+  
+  public abstract boolean a(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pdn
  * JD-Core Version:    0.7.0.1
  */

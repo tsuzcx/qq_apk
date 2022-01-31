@@ -1,16 +1,26 @@
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 class aeso
-  implements Runnable
+  extends altm
 {
-  aeso(aesn paramaesn, String paramString) {}
+  aeso(aesk paramaesk) {}
   
-  public void run()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Aesn.a.a(this.jdField_a_of_type_JavaLangString);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a != null) && (paramString.equals(this.a.a.getCurrentAccountUin())))
+    {
+      paramString = this.a.a.a(this.a.a.getCurrentAccountUin(), (byte)3, false);
+      if ((paramString != null) && (aesk.a(this.a) != null)) {
+        aesk.a(this.a).setImageBitmap(paramString);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeso
  * JD-Core Version:    0.7.0.1
  */

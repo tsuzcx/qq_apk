@@ -1,47 +1,34 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import android.view.View;
-import com.tencent.mobileqq.Doraemon.APICallback;
-import com.tencent.mobileqq.Doraemon.APIParam;
-import com.tencent.mobileqq.Doraemon.DoraemonAPIManager;
-import com.tencent.mobileqq.Doraemon.util.DoraemonUtil;
-import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.biz.subscribe.network.DoTipOffRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
 
-public final class yln
-  implements APICallback
+final class yln
+  implements bhuk
 {
-  public yln(View paramView, DoraemonAPIManager paramDoraemonAPIManager, long paramLong, int paramInt) {}
+  yln(CertifiedAccountMeta.StUser paramStUser, CertifiedAccountMeta.StFeed paramStFeed, yls paramyls, ylr paramylr, bhuf parambhuf) {}
   
-  public void a() {}
-  
-  public void a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location permision code");
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location failed," + paramString);
-  }
-  
-  public void a(APIParam paramAPIParam)
-  {
-    double d1 = ((Double)DoraemonUtil.a(paramAPIParam, "altitude", Double.valueOf(0.0D))).doubleValue();
-    double d2 = ((Double)DoraemonUtil.a(paramAPIParam, "latitude", Double.valueOf(0.0D))).doubleValue();
-    double d3 = ((Double)DoraemonUtil.a(paramAPIParam, "longitude", Double.valueOf(0.0D))).doubleValue();
-    double d4 = ((Double)DoraemonUtil.a(paramAPIParam, "horizontalAccuracy", Double.valueOf(0.0D))).doubleValue();
-    ((Double)DoraemonUtil.a(paramAPIParam, "verticalAccuracy", Double.valueOf(0.0D))).doubleValue();
-    ((Double)DoraemonUtil.a(paramAPIParam, "accuracy", Double.valueOf(0.0D))).doubleValue();
-    double d5 = ((Double)DoraemonUtil.a(paramAPIParam, "speed", Double.valueOf(0.0D))).doubleValue();
-    if (this.jdField_a_of_type_Int == 1)
+    switch (paramInt)
     {
-      ApolloRender.getLocationCity(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D);
-      return;
     }
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D, "", 0, "location success");
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      paramView = new DoTipOffRequest(0, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, 2);
+      VSNetworkHelper.a().a(paramView, new ylo(this));
+      if (this.jdField_a_of_type_Ylr != null) {
+        this.jdField_a_of_type_Ylr.a(false);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yln
  * JD-Core Version:    0.7.0.1
  */

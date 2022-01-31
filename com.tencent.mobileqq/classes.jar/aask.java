@@ -1,38 +1,37 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.aditem.GdtAd;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
-class aask
-  implements aasq
+public final class aask
 {
-  aask(aasc paramaasc, aasp paramaasp, String paramString, aasr paramaasr) {}
-  
-  public void a(byte[] paramArrayOfByte)
+  private static aasl a(int paramInt)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictFullUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Aasp.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aasp.b }));
+    aast localaast = null;
+    if ((paramInt == 0) || (1 == paramInt) || (2 == paramInt) || (3 == paramInt)) {
+      localaast = new aast();
     }
-    for (;;)
+    return localaast;
+  }
+  
+  public static void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
+  {
+    if ((paramInt1 < 0) || (paramInt1 >= 3)) {}
+    aasl localaasl;
+    do
     {
-      this.jdField_a_of_type_Aasr.a(false);
-      return;
-      if (!aasc.b(paramArrayOfByte, this.jdField_a_of_type_Aasp.d))
+      do
       {
-        ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictFullUpdate, check md5 fail, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Aasp.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aasp.b, this.jdField_a_of_type_Aasp.d }));
-      }
-      else
-      {
-        String str = String.format("%s/%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aasp.jdField_a_of_type_JavaLangString });
-        if (aasc.a(paramArrayOfByte, str)) {
-          break;
-        }
-        ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictFullUpdate, write to file fail, name=%s, url=%s, path=%s", new Object[] { this.jdField_a_of_type_Aasp.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aasp.b, str }));
-      }
-    }
-    this.jdField_a_of_type_Aasr.a(true);
+        aasr.a(BaseApplicationImpl.getApplication(), new GdtAd(paramAdInfo), paramInt1, paramInt2, false);
+        return;
+      } while ((paramInt2 < 0) || (paramInt2 >= 4));
+      localaasl = a(paramInt2);
+    } while (localaasl == null);
+    localaasl.a(paramInt1, paramInt2, paramAdInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aask
  * JD-Core Version:    0.7.0.1
  */

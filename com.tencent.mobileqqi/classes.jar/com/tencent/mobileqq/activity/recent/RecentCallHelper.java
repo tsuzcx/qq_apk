@@ -27,7 +27,7 @@ import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
-import etj;
+import eov;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -208,23 +208,23 @@ public class RecentCallHelper
   public void a(BaseActivity paramBaseActivity)
   {
     paramBaseActivity = View.inflate(paramBaseActivity, 2130903097, null);
-    paramBaseActivity.setOnClickListener(new etj(this));
+    paramBaseActivity.setOnClickListener(new eov(this));
     paramBaseActivity.findViewById(2131231163).setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.a(paramBaseActivity);
   }
   
   public void a(BaseActivity paramBaseActivity, ViewStub paramViewStub, View paramView1, QQAppInterface paramQQAppInterface, View paramView2, View paramView3, OverScrollViewListener paramOverScrollViewListener, OnRecentUserOpsListener paramOnRecentUserOpsListener, AbsListView.OnScrollListener paramOnScrollListener)
   {
-    if ((paramView1 != null) && (paramView1.getId() == 2131232933))
+    if ((paramView1 != null) && (paramView1.getId() == 2131232936))
     {
       this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView = ((FPSSwipListView)paramView1);
       this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setActTAG("actFPSRecent");
       this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setContentBackground(2130837729);
-      paramViewStub = paramBaseActivity.getLayoutInflater().inflate(2130903929, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, false);
+      paramViewStub = paramBaseActivity.getLayoutInflater().inflate(2130903931, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, false);
       this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.a(paramViewStub);
       a(paramBaseActivity);
       this.jdField_a_of_type_ComTencentMobileqqActivityRecentLocalSearchBar = new LocalSearchBar(this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, paramView2, paramView3, paramBaseActivity, paramOnRecentUserOpsListener);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(paramBaseActivity).inflate(2130903323, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, false));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(paramBaseActivity).inflate(2130903325, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, false));
       this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
       this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setOverScrollListener(paramOverScrollViewListener);
       this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter = new RecentAdapter(paramBaseActivity, paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, paramOnRecentUserOpsListener, 4);

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qzone="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/c5t" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="15.0dip">
+        <ImageView android:id="@id/c5u" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="8.0dip" android:src="#ffececec" android:layout_alignParentTop="true" />
+    </RelativeLayout>
+    <ViewStub android:id="@id/c90" android:layout="@layout/btz" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/c87" android:layout="@layout/btq" android:inflatedId="@id/c84" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" />
+    <com.qzone.module.feedcomponent.ui.VisitAndPraiseListView android:id="@id/c6r" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
+    <com.qzone.module.feedcomponent.ui.canvasui.CanvasTitleView android:id="@id/c4r" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:id="@id/c54" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.qzone.module.feedcomponent.ui.canvasui.CanvasFeedContentView android:id="@id/c53" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <com.qzone.module.feedcomponent.ui.FeedVideoView android:id="@id/c5d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <ViewStub android:id="@id/c81" android:visibility="gone" android:layout="@layout/btc" android:inflatedId="@id/c80" android:layout_width="fill_parent" android:layout_height="113.0dip" />
+    <ViewStub android:id="@id/c50" android:layout="@layout/bte" android:inflatedId="@id/c4z" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/c6j" android:layout="@layout/btl" android:inflatedId="@id/c6i" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.qzone.module.feedcomponent.ui.AudioFeedBubble android:id="@id/a0a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ps" android:layout_marginTop="-20.0dip" android:layout_marginRight="@dimen/pt" />
+    <com.qzone.module.feedcomponent.ui.canvasui.CanvasLeftThumbView android:id="@id/c58" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ps" android:layout_marginRight="@dimen/pt" />
+    <com.qzone.module.feedcomponent.ui.TouchFlipImageView android:id="@id/c55" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ps" android:layout_marginTop="@dimen/p6" android:layout_marginRight="@dimen/pt" />
+    <com.qzone.module.feedcomponent.ui.QbossPsvAdvView android:id="@id/c5_" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.qzone.module.feedcomponent.ui.FeedVideoView android:id="@id/c4k" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" />
+    <com.qzone.feed.panorama.widget.PanoramaLayout android:id="@id/c7t" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" />
+    <com.qzone.module.feedcomponent.ui.canvasui.CanvasTitleView android:id="@id/c4s" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" />
+    <RelativeLayout android:id="@id/c5b" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.qzone.module.feedcomponent.ui.canvasui.CanvasFeedContentView android:id="@id/ap6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <com.qzone.module.feedcomponent.ui.FeedVideoView android:id="@id/c5c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <ViewStub android:id="@id/c5m" android:layout="@layout/bth" android:inflatedId="@id/c5l" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.qzone.module.feedcomponent.ui.AudioFeedBubble android:id="@id/a0b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n7" android:layout_marginRight="@dimen/pt" />
+    <com.qzone.module.feedcomponent.ui.canvasui.CanvasLeftThumbView android:id="@id/c59" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ps" android:layout_marginRight="@dimen/pt" />
+    <com.qzone.module.feedcomponent.ui.FeedVideoView android:id="@id/c5a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.qzone.module.feedcomponent.ui.canvasui.CanvasMakeDynamicView android:id="@id/c78" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.qzone.feed.panorama.widget.PanoramaLayout android:id="@id/c7u" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.qzone.module.feedcomponent.ui.TouchFlipImageView android:id="@id/c56" android:paddingTop="@dimen/p6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ps" android:layout_marginRight="@dimen/pt" />
+    <ViewStub android:id="@id/c8v" android:layout="@layout/btk" android:inflatedId="@id/c4g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ps" android:layout_marginTop="@dimen/p6" android:layout_marginRight="@dimen/pt" />
+    <ViewStub android:id="@id/c7x" android:layout="@layout/btn" android:inflatedId="@id/c7w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mp" />
+    <ViewStub android:id="@id/c5w" android:layout="@layout/bti" android:inflatedId="@id/c5v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mp" />
+    <com.qzone.module.feedcomponent.ui.FeedPicTextCardView android:id="@id/c7v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/pr" android:layout_marginTop="@dimen/po" android:layout_marginRight="@dimen/pu" />
+    <include layout="@layout/bu_" />
+    <ViewStub android:id="@id/hic" android:layout="@layout/btr" android:inflatedId="@id/c88" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/c83" android:layout="@layout/btp" android:inflatedId="@id/c82" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/c4q" android:layout="@layout/btb" android:inflatedId="@id/c4p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/pi" android:layout_marginRight="@dimen/pj" />
+    <ViewStub android:id="@id/c6d" android:layout="@layout/btk" android:inflatedId="@id/c4m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/pr" android:layout_marginTop="@dimen/p6" android:layout_marginRight="@dimen/pu" />
+    <ViewStub android:id="@id/c8x" android:layout="@layout/bty" android:inflatedId="@id/c8w" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/c8i" android:layout="@layout/btx" android:inflatedId="@id/c8f" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/c8_" android:layout="@layout/btt" android:inflatedId="@id/c89" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/c6_" android:layout="@layout/btj" android:inflatedId="@id/c69" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <include layout="@layout/buy" />
+    <include layout="@layout/bv7" />
+    <ViewStub android:id="@id/c4y" android:layout="@layout/bu0" android:inflatedId="@id/c4x" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/pr" android:layout_marginTop="@dimen/p6" android:layout_marginRight="@dimen/pu" />
+    <ViewStub android:id="@id/c4u" android:layout="@layout/btd" android:inflatedId="@id/c4o" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/pr" android:layout_marginRight="@dimen/pu" />
+    <com.qzone.proxy.feedcomponent.text.CellTextView android:id="@id/c6h" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/pr" android:layout_marginRight="@dimen/pu" />
+    <com.qzone.module.feedcomponent.ui.CanvasPresentInfoView android:id="@id/c7z" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/pr" android:layout_marginRight="@dimen/pu" />
+    <com.qzone.module.feedcomponent.ui.GuideCommentBar android:id="@id/c6e" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/pr" android:layout_marginRight="@dimen/pu" />
+    <include layout="@layout/bum" />
+    <include layout="@layout/buw" />
+    <include layout="@layout/bux" />
+    <com.qzone.module.feedcomponent.ui.canvasui.CanvasFeedDrawerView android:id="@id/c5s" android:visibility="gone" android:layout_width="92.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/pr" android:layout_marginRight="@dimen/pu" />
+    <ImageView android:id="@id/hxs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/d9r" />
+</LinearLayout>

@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
 
-public class wup
-  implements DialogInterface.OnDismissListener
+class wup
+  implements beqw
 {
-  public wup(DialogBaseActivity paramDialogBaseActivity) {}
+  wup(wub paramwub, String paramString, QQStoryAutoPlayView paramQQStoryAutoPlayView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(String paramString)
   {
-    this.a.a = null;
+    wxe.a("Q.qqstory.home:FeedSegment", "vid:%s, animation end", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a().a(4);
+    uoy.a().a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wup
  * JD-Core Version:    0.7.0.1
  */

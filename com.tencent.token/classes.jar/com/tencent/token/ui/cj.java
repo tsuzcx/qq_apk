@@ -1,22 +1,34 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.token.ag;
-import com.tencent.token.aq;
-import com.tencent.token.as;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cw;
+import com.tencent.token.utils.w;
 
-final class cj
-  implements DialogInterface.OnClickListener
+class cj
+  implements View.OnClickListener
 {
-  cj(CorrectTokenActivity paramCorrectTokenActivity) {}
+  cj(CheckMobileAvailableActivity paramCheckMobileAvailableActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ag.c().a.b.a();
-    CorrectTokenActivity.access$502(this.a, false);
-    this.a.showUserDialog(6);
-    this.a.startTimeTask();
+    if ((CheckMobileAvailableActivity.access$200(this.a) == 0) || (CheckMobileAvailableActivity.access$200(this.a) == 7)) {
+      w.a(this.a, this.a.getResources().getString(2131230861), this.a.getResources().getString(2131231657));
+    }
+    do
+    {
+      return;
+      if (CheckMobileAvailableActivity.access$200(this.a) == 5)
+      {
+        cw.a().e(w.f(CheckMobileAvailableActivity.access$800(this.a)), CheckMobileAvailableActivity.access$900(this.a));
+        this.a.showUserDialog(12);
+        return;
+      }
+    } while (CheckMobileAvailableActivity.access$200(this.a) != 6);
+    cw.a().e(CheckMobileAvailableActivity.access$600(this.a).mUin, CheckMobileAvailableActivity.access$900(this.a));
+    this.a.showUserDialog(12);
   }
 }
 

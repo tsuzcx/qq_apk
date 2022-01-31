@@ -1,35 +1,18 @@
-import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
-import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine.FTSSearchResultItem;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
 
 public class ahty
-  implements Comparator
+  extends alwx
 {
-  public ahty(FTSMessageSearchEngine paramFTSMessageSearchEngine) {}
+  public ahty(TroopFragment paramTroopFragment) {}
   
-  public int a(FTSMessageSearchEngine.FTSSearchResultItem paramFTSSearchResultItem1, FTSMessageSearchEngine.FTSSearchResultItem paramFTSSearchResultItem2)
+  protected void a()
   {
-    int j = Long.signum(paramFTSSearchResultItem1.jdField_a_of_type_Int - paramFTSSearchResultItem2.jdField_a_of_type_Int);
-    int i = j;
-    if (j == 0)
-    {
-      j = Long.signum(paramFTSSearchResultItem1.b - paramFTSSearchResultItem2.b);
-      i = j;
-      if (j == 0)
-      {
-        j = Long.signum(paramFTSSearchResultItem1.c - paramFTSSearchResultItem2.c);
-        i = j;
-        if (j == 0) {
-          i = Long.signum(-paramFTSSearchResultItem1.jdField_a_of_type_Long + paramFTSSearchResultItem2.jdField_a_of_type_Long);
-        }
-      }
-    }
-    return i;
+    this.a.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahty
  * JD-Core Version:    0.7.0.1
  */

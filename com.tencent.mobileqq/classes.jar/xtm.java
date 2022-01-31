@@ -1,22 +1,35 @@
-import com.tencent.biz.qqstory.base.download.DownloadProgressListener;
-import com.tencent.biz.qqstory.base.download.DownloaderImp;
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
 
-public class xtm
-  implements Runnable
+final class xtm
+  extends xtb
 {
-  public xtm(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity, DownloadProgressListener paramDownloadProgressListener, String paramString1, String paramString2) {}
+  xtm(xtb paramxtb, PublishVideoEntry paramPublishVideoEntry) {}
   
-  public void run()
+  public void onFailure(String paramString)
   {
-    QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity, new DownloaderImp());
-    QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity).a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadProgressListener);
-    QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity).a(this.jdField_a_of_type_JavaLangString, this.b, 0L);
+    QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 1, paramString);
+    this.jdField_a_of_type_Xtb.onFailure(paramString);
+    wxj.a("music_composite", "music_clip", 0, 1, new String[0]);
+    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio failed  msg：" + paramString);
+  }
+  
+  public void onStart()
+  {
+    super.onStart();
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio start");
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    paramString = String.valueOf(System.currentTimeMillis() - this.b);
+    wxj.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " clip audio end cost：" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xtm
  * JD-Core Version:    0.7.0.1
  */

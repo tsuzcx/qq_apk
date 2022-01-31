@@ -1,84 +1,65 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.appcenter.QZoneAppWebViewActivity;
-import com.tencent.open.appcommon.AppClient;
-import com.tencent.open.appcommon.Common;
-import com.tencent.open.base.FileUtils;
 import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
 import com.tencent.open.downloadnew.MyAppApi;
-import java.io.File;
-import java.util.HashMap;
+import com.tencent.open.downloadnew.MyAppApi.QQDownloadListener;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
+import com.tencent.tmassistantsdk.openSDK.BaseQQDownloaderOpenSDK;
+import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDKParam;
 
-public final class hoh
+public class hoh
   implements Runnable
 {
-  public hoh(Bundle paramBundle1, Bundle paramBundle2, String paramString1, String paramString2, String paramString3) {}
+  public hoh(MyAppApi.QQDownloadListener paramQQDownloadListener, TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
-    boolean bool;
-    String str1;
-    Object localObject;
-    Intent localIntent;
-    Bundle localBundle;
-    if (Common.a(this.jdField_a_of_type_AndroidOsBundle.getString("schemaUrl")).get("auto_download") != null)
+    int i;
+    DownloadManager localDownloadManager;
+    DownloadInfo localDownloadInfo;
+    if (this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam != null)
     {
-      bool = true;
-      if (!MyAppApi.a().a(CommonDataAdapter.a().a(), this.jdField_b_of_type_AndroidOsBundle, bool, false))
-      {
-        str1 = Common.e() + File.separator + "qapp_center_detail.htm";
-        localObject = new File(str1);
-        if (!((File)localObject).exists())
+      LogUtility.a("State_Log", "OpenSDK OnDownloadTaskStateChanged state=" + this.jdField_a_of_type_Int + " errorCode=" + this.b + " param SNGAppId=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.SNGAppId + " apkId=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskApkId + " taskAppId=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskAppId + " packageName=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskPackageName + " version=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskVersion + " uin=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.uin + " via=" + this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.via);
+      i = DownloadManager.a(this.jdField_a_of_type_Int);
+      LogUtility.c("State_Log", "OnDownloadTaskStateChanged--localState = " + i + "state = " + this.jdField_a_of_type_Int + "errorCode = " + this.b);
+      localDownloadManager = DownloadManager.a();
+      localDownloadInfo = localDownloadManager.b(this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.SNGAppId, i);
+      if ((localDownloadInfo != null) || (this.jdField_a_of_type_Int == 6)) {
+        break label383;
+      }
+      localDownloadInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.a(this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam, null);
+      localDownloadManager.e(localDownloadInfo);
+      localDownloadManager.b(this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.SNGAppId, i);
+    }
+    while (localDownloadInfo != null)
+    {
+      LogUtility.c("State_Log", "OnDownloadTaskStateChanged notifyListener localState=" + i + " dlInfo=" + localDownloadInfo.toString());
+      localDownloadManager.a(i, localDownloadInfo, this.b, this.jdField_a_of_type_JavaLangString);
+      return;
+      LogUtility.a("State_Log", "OpenSDK OnDownloadTaskStateChanged state=" + this.jdField_a_of_type_Int + " errorCode=" + this.b + " param== null");
+      return;
+      label383:
+      if ((this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.a != null) && ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 3)) && (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.e())) {
+        try
         {
-          LogUtility.d(AppClient.jdField_a_of_type_JavaLangString, "file" + str1 + " not exist copyassets.");
-          FileUtils.a("Page/system", Common.f());
+          localDownloadManager.a(localDownloadInfo);
+          TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.a.getDownloadTaskState(this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam);
+          if (localTMAssistantDownloadTaskInfo != null)
+          {
+            long l1 = localTMAssistantDownloadTaskInfo.mReceiveDataLen;
+            long l2 = localTMAssistantDownloadTaskInfo.mTotalDataLen;
+            int j = (int)((float)l1 * 100.0F / (float)l2);
+            localDownloadInfo.k = j;
+            LogUtility.a("MyAppApi", "OnDownloadTaskStateChanged info progress = " + j);
+          }
         }
-        localIntent = new Intent();
-        localBundle = new Bundle();
-        if (!((File)localObject).exists()) {
-          break label380;
+        catch (Exception localException)
+        {
+          LogUtility.c("MyAppApi", "getDownloadTaskState>>>", localException);
         }
-        localObject = "file:///" + str1;
-        label170:
-        str1 = "&from=-10&id=" + this.jdField_a_of_type_JavaLangString + "&channelId=" + this.jdField_b_of_type_JavaLangString;
-        if (!bool) {
-          break label442;
-        }
-        str1 = str1 + "&auto_download=1";
       }
     }
-    label411:
-    label442:
-    for (;;)
-    {
-      String str2 = str1;
-      if (!TextUtils.isEmpty(this.c)) {
-        if (!this.c.equals(this.jdField_a_of_type_JavaLangString)) {
-          break label411;
-        }
-      }
-      for (str2 = str1;; str2 = str1 + "&" + this.c)
-      {
-        localIntent.setClass(CommonDataAdapter.a().a(), QZoneAppWebViewActivity.class);
-        localBundle.putString("APP_URL", (String)localObject);
-        localBundle.putBoolean("FROM_FEED", true);
-        localBundle.putString("APP_PARAMS", str2);
-        LogUtility.b("Jie", "APP_URL:" + (String)localObject + " |  PARAMS >>> " + localBundle.getString("APP_PARAMS"));
-        localIntent.putExtras(localBundle);
-        localIntent.putExtra("adapter_action", "action_app_detail");
-        localIntent.addFlags(872415232);
-        CommonDataAdapter.a().a().startActivity(localIntent);
-        return;
-        bool = false;
-        break;
-        label380:
-        localObject = Common.l() + File.separator + "qapp_center_detail.htm";
-        break label170;
-      }
-    }
+    LogUtility.c("MyAppApi", "OnDownloadTaskStateChanged notifyListener error dlInfo == null");
   }
 }
 

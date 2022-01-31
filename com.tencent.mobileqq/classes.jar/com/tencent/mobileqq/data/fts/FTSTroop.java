@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data.fts;
 
 import android.text.TextUtils;
+import bdeu;
+import bdpr;
 import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.fts.SQLiteFTSUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class FTSTroop
@@ -63,7 +63,7 @@ public class FTSTroop
   
   public String createInsertSQL()
   {
-    return String.format("FTSTroop type=%d, troopuin|memberuin=%s, troopnick|size=%s, nick|size=%s", new Object[] { Integer.valueOf(this.mType), this.mExt1 + "zzz" + this.mExt6, Utils.a(this.mExt4), Utils.a(this.mExt2) });
+    return String.format("FTSTroop type=%d, troopuin|memberuin=%s, troopnick|size=%s, nick|size=%s", new Object[] { Integer.valueOf(this.mType), this.mExt1 + "zzz" + this.mExt6, bdeu.a(this.mExt4), bdeu.a(this.mExt2) });
   }
   
   public String createUpdateSQL()
@@ -71,7 +71,7 @@ public class FTSTroop
     return String.format("UPDATE %s SET  EXT2 = '%s', EXT3 = '%s', EXT4 = '%s', EXT5 = '%s' WHERE %s MATCH 'ext1:%s ext6:%s';", new Object[] { getTableName(), this.mExt2, this.mExt3, this.mExt4, this.mExt5, getTableName(), this.mExt1, this.mExt6 });
   }
   
-  protected void doDeserialize()
+  public void doDeserialize()
   {
     this.mTroopUin = this.mExt1;
     this.mMemberName = this.mExt2;
@@ -79,7 +79,7 @@ public class FTSTroop
     this.mMemberUin = this.mExt6;
   }
   
-  protected void doSerialize()
+  public void doSerialize()
   {
     this.mType = 2;
     this.mExt1 = this.mTroopUin;
@@ -102,12 +102,11 @@ public class FTSTroop
       label67:
       this.mExt4 = this.mMemberCard;
       if (!TextUtils.isEmpty(this.mExt4)) {
-        break label144;
+        break label160;
       }
+      this.mExt5 = "";
     }
-    label130:
-    label144:
-    for (this.mExt5 = "";; this.mExt5 = SQLiteFTSUtils.a(this.mExt4))
+    for (;;)
     {
       this.mExt6 = this.mMemberUin;
       return;
@@ -116,8 +115,13 @@ public class FTSTroop
       label115:
       str = this.mMemberCard.replace("'", "''");
       break label38;
-      this.mExt3 = SQLiteFTSUtils.a(this.mExt2);
+      label130:
+      this.mExt3 = bdpr.a(this.mExt2);
+      this.mSegmentCount += bdpr.a(this.mExt3);
       break label67;
+      label160:
+      this.mExt5 = bdpr.a(this.mExt4);
+      this.mSegmentCount += bdpr.a(this.mExt5);
     }
   }
   
@@ -138,7 +142,7 @@ public class FTSTroop
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.fts.FTSTroop
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import ihg;
+import icm;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,7 +13,7 @@ import java.util.Date;
 public class LocalImageShootInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ihg();
+  public static final Parcelable.Creator CREATOR = new icm();
   private static final String b;
   public long a;
   public GpsInfo4LocalImage a;

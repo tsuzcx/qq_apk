@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class submsgtype0x78$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   public static final int UINT32_TYPE_FIELD_NUMBER = 1;
   public static final int UINT32_VERSION_FIELD_NUMBER = 2;

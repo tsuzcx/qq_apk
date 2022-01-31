@@ -1,49 +1,63 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.readinjoy.ReadInJoyTabObserver;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Comparator;
 
 public class wqs
-  extends ReadInJoyTabObserver
+  implements Comparator<StoryVideoItem>
 {
-  public wqs(MainAssistObserver paramMainAssistObserver) {}
+  private boolean a;
   
-  public void a()
+  public wqs(boolean paramBoolean)
   {
-    if (ReadInJoyHelper.g()) {
-      this.a.a(39, null);
-    }
+    this.a = paramBoolean;
   }
   
-  public void a(int paramInt, Object paramObject)
+  public int a(StoryVideoItem paramStoryVideoItem1, StoryVideoItem paramStoryVideoItem2)
   {
-    super.a(paramInt, paramObject);
-    if (!ReadInJoyHelper.f()) {}
-    while (this.a.a == null) {
-      return;
+    int j = 1;
+    int i = -1;
+    if (paramStoryVideoItem1.isUploadFail() == paramStoryVideoItem2.isUploadFail()) {
+      if (paramStoryVideoItem1.mCreateTime == paramStoryVideoItem2.mCreateTime) {
+        i = 0;
+      }
     }
-    this.a.a.runOnUiThread(new wqu(this, paramInt, paramObject));
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    a(1, paramView);
-  }
-  
-  public void d()
-  {
-    if (!ReadInJoyHelper.f()) {}
-    while (this.a.a == null) {
-      return;
+    do
+    {
+      do
+      {
+        return i;
+        if (paramStoryVideoItem1.mCreateTime <= paramStoryVideoItem2.mCreateTime) {
+          break;
+        }
+        i = j;
+      } while (this.a);
+      return -1;
+      if (this.a) {}
+      for (;;)
+      {
+        return i;
+        i = 1;
+      }
+      if (!paramStoryVideoItem1.isUploadFail()) {
+        break;
+      }
+      i = j;
+    } while (this.a);
+    return -1;
+    if (paramStoryVideoItem2.isUploadFail())
+    {
+      if (this.a) {}
+      for (;;)
+      {
+        return i;
+        i = 1;
+      }
     }
-    this.a.a.runOnUiThread(new wqt(this));
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wqs
  * JD-Core Version:    0.7.0.1
  */

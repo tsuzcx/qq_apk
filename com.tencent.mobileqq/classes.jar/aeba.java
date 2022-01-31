@@ -1,24 +1,37 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.leba.model.pluginactions.CampusCirclePluginAction;
-import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
 
 public class aeba
-  implements Runnable
+  extends Handler
 {
-  public aeba(CampusCirclePluginAction paramCampusCirclePluginAction, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public aeba(TextPreviewSettingActivity paramTextPreviewSettingActivity, Looper paramLooper)
   {
-    LocalRedTouchManager localLocalRedTouchManager = (LocalRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159);
-    RedTouchItem localRedTouchItem1 = localLocalRedTouchManager.a(10017);
-    RedTouchItem localRedTouchItem2 = localLocalRedTouchManager.a(103421);
-    if ((localLocalRedTouchManager.a(localRedTouchItem2)) && (localRedTouchItem2.redtouchType == 1)) {
-      localLocalRedTouchManager.a(103421);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ImageView localImageView = (ImageView)this.a.findViewById(2131366686);
+    switch (paramMessage.what)
+    {
     }
-    if (localLocalRedTouchManager.a(localRedTouchItem1)) {
-      localLocalRedTouchManager.a(10017);
-    }
+    do
+    {
+      do
+      {
+        return;
+        localImageView.setImageDrawable(TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a)));
+        return;
+      } while (!(paramMessage.obj instanceof Drawable));
+      localImageView.setImageDrawable((Drawable)paramMessage.obj);
+      return;
+    } while (!(paramMessage.obj instanceof Bitmap));
+    localImageView.setImageBitmap((Bitmap)paramMessage.obj);
   }
 }
 

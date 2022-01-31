@@ -1,27 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.redtouch.RedDisplayInfo;
-import com.tencent.mobileqq.redtouch.RedTypeInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
 
-public final class ahfm
-  implements Parcelable.Creator
+public class ahfm
+  implements View.OnTouchListener
 {
-  public RedDisplayInfo a(Parcel paramParcel)
-  {
-    RedDisplayInfo localRedDisplayInfo = new RedDisplayInfo();
-    localRedDisplayInfo.a = paramParcel.readArrayList(RedTypeInfo.class.getClassLoader());
-    RedDisplayInfo.a(localRedDisplayInfo, (RedTypeInfo)paramParcel.readSerializable());
-    return localRedDisplayInfo;
-  }
+  float jdField_a_of_type_Float = 0.0F;
   
-  public RedDisplayInfo[] a(int paramInt)
+  public ahfm(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new RedDisplayInfo[paramInt];
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_Float = paramView.getAlpha();
+      paramView.setAlpha(this.jdField_a_of_type_Float * 0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+        paramView.setAlpha(this.jdField_a_of_type_Float);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahfm
  * JD-Core Version:    0.7.0.1
  */

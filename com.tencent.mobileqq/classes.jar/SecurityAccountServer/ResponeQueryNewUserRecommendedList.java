@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class ResponeQueryNewUserRecommendedList
   extends JceStruct
 {
-  static ArrayList cache_RecommendedContacts = new ArrayList();
-  public ArrayList RecommendedContacts;
+  static ArrayList<RecommendedContactInfo> cache_RecommendedContacts = new ArrayList();
+  public ArrayList<RecommendedContactInfo> RecommendedContacts;
   public long lastUsedFlag = 1L;
   public String mobileNo = "";
   public String nationCode = "";
@@ -22,7 +22,7 @@ public final class ResponeQueryNewUserRecommendedList
   
   public ResponeQueryNewUserRecommendedList() {}
   
-  public ResponeQueryNewUserRecommendedList(ArrayList paramArrayList, String paramString1, String paramString2, long paramLong)
+  public ResponeQueryNewUserRecommendedList(ArrayList<RecommendedContactInfo> paramArrayList, String paramString1, String paramString2, long paramLong)
   {
     this.RecommendedContacts = paramArrayList;
     this.nationCode = paramString1;

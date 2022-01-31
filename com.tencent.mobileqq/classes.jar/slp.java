@@ -1,14 +1,17 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-
-public class slp
-  extends Handler
+class slp
 {
-  public slp(EditInfoActivity paramEditInfoActivity) {}
+  final int jdField_a_of_type_Int;
+  final int b;
+  
+  public slp(slo paramslo, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     slp
  * JD-Core Version:    0.7.0.1
  */

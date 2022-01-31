@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import com.tencent.widget.AdapterView;
 
-class sid
-  implements Runnable
+public class sid
+  implements bhuw
 {
-  sid(sic paramsic) {}
+  public sid(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
   
-  public void run()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a.a.a(16, 0);
-    this.a.a.a.a(-1, null);
+    if ((!this.a.a()) && (this.a.isEnabled()) && (ReadInJoyDynamicGridView.a(this.a) != null)) {
+      ReadInJoyDynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sid
  * JD-Core Version:    0.7.0.1
  */

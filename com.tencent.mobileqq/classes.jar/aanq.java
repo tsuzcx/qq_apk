@@ -1,11 +1,6 @@
-import com.tencent.mobileqq.arcard.ArCardSelectMemberActivity;
-
-public class aanq
-  implements Runnable
+public abstract interface aanq
 {
-  public aanq(ArCardSelectMemberActivity paramArCardSelectMemberActivity) {}
-  
-  public void run() {}
+  public abstract void onDismiss();
 }
 
 

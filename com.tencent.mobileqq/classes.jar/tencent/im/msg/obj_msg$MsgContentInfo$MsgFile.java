@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class obj_msg$MsgContentInfo$MsgFile
-  extends MessageMicro
+  extends MessageMicro<MsgFile>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_ext = PBField.initBytes(ByteStringMicro.EMPTY);

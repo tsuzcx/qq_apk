@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/am2" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/ayc" android:key="contact_info_go_to_sport" android:layout="@layout/afi" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/ayb" android:key="contact_info_go_to_my_profile" android:layout="@layout/afi" />
+    <Preference android:title="@string/ayj" android:key="contact_info_invite_friend" android:layout="@layout/afi" />
+    <Preference android:title="@string/ax7" android:key="contact_info_common_problem" android:layout="@layout/afi" />
+    <PreferenceSmallCategory />
+    <Preference android:persistent="false" android:title="@string/b14" android:key="contact_info_record_data" android:defaultValue="true" android:layout="@layout/afi" />
+    <Preference android:title="@string/b04" android:key="contact_info_privacy_and_notification" android:layout="@layout/afi" />
+    <CheckBoxPreference android:persistent="false" android:title="@string/b3o" android:key="contact_info_top_sport" android:layout="@layout/afi" />
+    <CheckBoxPreference android:persistent="false" android:title="@string/azz" android:key="contact_info_not_disturb" android:layout="@layout/afi" />
+    <Preference android:title="@string/awy" android:key="contact_info_clear_data" android:layout="@layout/afi" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:title_color="@color/rb" android:btn_title="@string/eda" android:key="contact_info_sport_install" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:title_color="@color/y7" android:btn_title="@string/edg" android:key="contact_info_sport_uninstall" android:layout="@layout/aap" />
+    <PreferenceCategory />
+</PreferenceScreen>

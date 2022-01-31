@@ -1,61 +1,64 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterMain;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0xb6f.Identity;
-import tencent.im.oidb.oidb_0xb6f.ReportFreqRspBody;
-import tencent.im.oidb.oidb_0xb6f.RspBody;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
 
 public class rfc
-  extends ProtoUtils.TroopProtocolObserver
+  extends OrientationEventListener
 {
-  public rfc(DoraemonAPIReporterMain paramDoraemonAPIReporterMain, String paramString1, String paramString2, int paramInt) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public rfc(VideoFeedsListView paramVideoFeedsListView, Context paramContext, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI.report", 2, "onResult key=" + this.jdField_a_of_type_JavaLangString + ", api=" + this.b + ", count=" + this.jdField_a_of_type_Int + ", code=" + paramInt);
-    }
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("DoraemonOpenAPI.report", 2, "req error");
-      }
-    }
+    super(paramContext, paramInt);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    if (VideoFeedsListView.a(this.a)) {}
+    label10:
     do
     {
-      for (;;)
+      do
       {
-        return;
-        paramBundle = new oidb_0xb6f.RspBody();
-        try
+        do
         {
-          paramBundle.mergeFrom(paramArrayOfByte);
-          if (paramBundle.report_freq_rsp.has()) {
-            break label146;
-          }
-          if (QLog.isColorLevel())
+          do
           {
-            QLog.i("DoraemonOpenAPI.report", 2, "rsp invalid");
+            do
+            {
+              do
+              {
+                break label10;
+                break label10;
+                break label10;
+                break label10;
+                do
+                {
+                  return;
+                } while ((!VideoFeedsListView.b(this.a)) || (!VideoFeedsListView.c(this.a)) || (VideoFeedsListView.a(this.a) == 1) || (VideoFeedsListView.d(this.a)) || (!VideoFeedsListView.a(this.a, paramInt)) || ((!VideoFeedsListView.e(this.a)) && (VideoFeedsListView.f(this.a))));
+                if ((paramInt < 0) || ((paramInt > 30) && (paramInt < 330))) {
+                  break;
+                }
+              } while ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 0));
+              VideoFeedsListView.a(this.a, -1);
+            } while (VideoFeedsListView.c(this.a) == 0);
+            this.a.a(true);
             return;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("DoraemonOpenAPI.report", 2, "parse rsp error", paramArrayOfByte);
-    return;
-    label146:
-    DoraemonAPIReporterMain.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonAPIReporterMain, this.jdField_a_of_type_JavaLangString, paramBundle.report_freq_rsp.identity.apptype.get(), String.valueOf(paramBundle.report_freq_rsp.identity.appid.get()), paramBundle.report_freq_rsp.identity.apiName.get(), paramBundle.report_freq_rsp.remain_times.get(), paramBundle.report_freq_rsp.expire_time.get() * 1000L);
+            if ((paramInt < 70) || (paramInt > 110)) {
+              break;
+            }
+          } while ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 2));
+          VideoFeedsListView.a(this.a, -1);
+        } while (VideoFeedsListView.c(this.a) == 2);
+        VideoFeedsListView.a(this.a, 2, true);
+        return;
+      } while ((paramInt < 250) || (paramInt > 290) || ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 1)));
+      VideoFeedsListView.a(this.a, -1);
+    } while (VideoFeedsListView.c(this.a) == 1);
+    VideoFeedsListView.a(this.a, 1, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rfc
  * JD-Core Version:    0.7.0.1
  */

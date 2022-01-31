@@ -9,16 +9,16 @@ public final class ReqCreateDiscuss
   extends JceStruct
 {
   static int cache_DiscussType;
-  static ArrayList cache_Members;
+  static ArrayList<AddDiscussMemberInfo> cache_Members;
   public int DiscussType = 0;
-  public ArrayList Members;
+  public ArrayList<AddDiscussMemberInfo> Members;
   public String Name = "";
   public String Nick = "";
   public int Refer;
   
   public ReqCreateDiscuss() {}
   
-  public ReqCreateDiscuss(String paramString1, ArrayList paramArrayList, int paramInt1, String paramString2, int paramInt2)
+  public ReqCreateDiscuss(String paramString1, ArrayList<AddDiscussMemberInfo> paramArrayList, int paramInt1, String paramString2, int paramInt2)
   {
     this.Name = paramString1;
     this.Members = paramArrayList;

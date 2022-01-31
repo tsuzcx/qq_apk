@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import com.tencent.ark.ark.VariantWrapper;
 
-public final class ankf
-  extends DialogUtil.DialogOnClickAdapter
+class ankf
+  implements afjf
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  ankf(anke paramanke, long paramLong) {}
+  
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Anke.a(this.jdField_a_of_type_Long);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    this.jdField_a_of_type_Anke.a(this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankf
  * JD-Core Version:    0.7.0.1
  */

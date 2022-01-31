@@ -1,22 +1,26 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusManager;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class tli
-  implements Runnable
+final class tli
+  extends ClickableSpan
 {
-  public tli(QQSettingMe paramQQSettingMe) {}
+  tli(String paramString) {}
   
-  public void run()
+  public void onClick(@NonNull View paramView)
   {
-    RichStatus localRichStatus = QQSettingMe.a(this.a).a(true);
-    this.a.a.runOnUiThread(new tlj(this, localRichStatus));
+    tlq.a(tlf.a(), "biz_src_jc_gzh_weishi", "weishi://profile?person_id=" + this.a);
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tli
  * JD-Core Version:    0.7.0.1
  */

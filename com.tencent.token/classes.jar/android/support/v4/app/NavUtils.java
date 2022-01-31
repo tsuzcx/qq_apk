@@ -9,31 +9,47 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v4.content.IntentCompat;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
-public class NavUtils
+public final class NavUtils
 {
-  private static final NavUtilsImpl IMPL = new NavUtilsImplBase();
   public static final String PARENT_ACTIVITY = "android.support.PARENT_ACTIVITY";
   private static final String TAG = "NavUtils";
   
-  static
+  @Nullable
+  public static Intent getParentActivityIntent(@NonNull Activity paramActivity)
   {
     if (Build.VERSION.SDK_INT >= 16)
     {
-      IMPL = new NavUtilsImplJB();
-      return;
+      localObject = paramActivity.getParentActivityIntent();
+      if (localObject != null) {
+        return localObject;
+      }
     }
+    Object localObject = getParentActivityName(paramActivity);
+    if (localObject == null) {
+      return null;
+    }
+    ComponentName localComponentName = new ComponentName(paramActivity, (String)localObject);
+    try
+    {
+      if (getParentActivityName(paramActivity, localComponentName) == null) {
+        return Intent.makeMainActivity(localComponentName);
+      }
+      paramActivity = new Intent().setComponent(localComponentName);
+      return paramActivity;
+    }
+    catch (PackageManager.NameNotFoundException paramActivity)
+    {
+      Log.e("NavUtils", "getParentActivityIntent: bad parentActivityName '" + (String)localObject + "' in manifest");
+    }
+    return null;
   }
   
-  public static Intent getParentActivityIntent(Activity paramActivity)
-  {
-    return IMPL.getParentActivityIntent(paramActivity);
-  }
-  
-  public static Intent getParentActivityIntent(Context paramContext, ComponentName paramComponentName)
-    throws PackageManager.NameNotFoundException
+  @Nullable
+  public static Intent getParentActivityIntent(@NonNull Context paramContext, @NonNull ComponentName paramComponentName)
   {
     String str = getParentActivityName(paramContext, paramComponentName);
     if (str == null) {
@@ -41,13 +57,13 @@ public class NavUtils
     }
     paramComponentName = new ComponentName(paramComponentName.getPackageName(), str);
     if (getParentActivityName(paramContext, paramComponentName) == null) {
-      return IntentCompat.makeMainActivity(paramComponentName);
+      return Intent.makeMainActivity(paramComponentName);
     }
     return new Intent().setComponent(paramComponentName);
   }
   
-  public static Intent getParentActivityIntent(Context paramContext, Class<?> paramClass)
-    throws PackageManager.NameNotFoundException
+  @Nullable
+  public static Intent getParentActivityIntent(@NonNull Context paramContext, @NonNull Class paramClass)
   {
     paramClass = getParentActivityName(paramContext, new ComponentName(paramContext, paramClass));
     if (paramClass == null) {
@@ -55,12 +71,13 @@ public class NavUtils
     }
     paramClass = new ComponentName(paramContext, paramClass);
     if (getParentActivityName(paramContext, paramClass) == null) {
-      return IntentCompat.makeMainActivity(paramClass);
+      return Intent.makeMainActivity(paramClass);
     }
     return new Intent().setComponent(paramClass);
   }
   
-  public static String getParentActivityName(Activity paramActivity)
+  @Nullable
+  public static String getParentActivityName(@NonNull Activity paramActivity)
   {
     try
     {
@@ -73,14 +90,31 @@ public class NavUtils
     }
   }
   
-  public static String getParentActivityName(Context paramContext, ComponentName paramComponentName)
-    throws PackageManager.NameNotFoundException
+  @Nullable
+  public static String getParentActivityName(@NonNull Context paramContext, @NonNull ComponentName paramComponentName)
   {
-    paramComponentName = paramContext.getPackageManager().getActivityInfo(paramComponentName, 128);
-    return IMPL.getParentActivityName(paramContext, paramComponentName);
+    Object localObject = paramContext.getPackageManager().getActivityInfo(paramComponentName, 128);
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      paramComponentName = ((ActivityInfo)localObject).parentActivityName;
+      if (paramComponentName == null) {}
+    }
+    do
+    {
+      return paramComponentName;
+      if (((ActivityInfo)localObject).metaData == null) {
+        return null;
+      }
+      localObject = ((ActivityInfo)localObject).metaData.getString("android.support.PARENT_ACTIVITY");
+      if (localObject == null) {
+        return null;
+      }
+      paramComponentName = (ComponentName)localObject;
+    } while (((String)localObject).charAt(0) != '.');
+    return paramContext.getPackageName() + (String)localObject;
   }
   
-  public static void navigateUpFromSameTask(Activity paramActivity)
+  public static void navigateUpFromSameTask(@NonNull Activity paramActivity)
   {
     Intent localIntent = getParentActivityIntent(paramActivity);
     if (localIntent == null) {
@@ -89,122 +123,25 @@ public class NavUtils
     navigateUpTo(paramActivity, localIntent);
   }
   
-  public static void navigateUpTo(Activity paramActivity, Intent paramIntent)
+  public static void navigateUpTo(@NonNull Activity paramActivity, @NonNull Intent paramIntent)
   {
-    IMPL.navigateUpTo(paramActivity, paramIntent);
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      paramActivity.navigateUpTo(paramIntent);
+      return;
+    }
+    paramIntent.addFlags(67108864);
+    paramActivity.startActivity(paramIntent);
+    paramActivity.finish();
   }
   
-  public static boolean shouldUpRecreateTask(Activity paramActivity, Intent paramIntent)
+  public static boolean shouldUpRecreateTask(@NonNull Activity paramActivity, @NonNull Intent paramIntent)
   {
-    return IMPL.shouldUpRecreateTask(paramActivity, paramIntent);
-  }
-  
-  static abstract interface NavUtilsImpl
-  {
-    public abstract Intent getParentActivityIntent(Activity paramActivity);
-    
-    public abstract String getParentActivityName(Context paramContext, ActivityInfo paramActivityInfo);
-    
-    public abstract void navigateUpTo(Activity paramActivity, Intent paramIntent);
-    
-    public abstract boolean shouldUpRecreateTask(Activity paramActivity, Intent paramIntent);
-  }
-  
-  static class NavUtilsImplBase
-    implements NavUtils.NavUtilsImpl
-  {
-    public Intent getParentActivityIntent(Activity paramActivity)
-    {
-      String str = NavUtils.getParentActivityName(paramActivity);
-      if (str == null) {
-        return null;
-      }
-      ComponentName localComponentName = new ComponentName(paramActivity, str);
-      try
-      {
-        if (NavUtils.getParentActivityName(paramActivity, localComponentName) == null) {
-          paramActivity = IntentCompat.makeMainActivity(localComponentName);
-        } else {
-          paramActivity = new Intent().setComponent(localComponentName);
-        }
-      }
-      catch (PackageManager.NameNotFoundException paramActivity)
-      {
-        Log.e("NavUtils", "getParentActivityIntent: bad parentActivityName '" + str + "' in manifest");
-        return null;
-      }
-      return paramActivity;
+    if (Build.VERSION.SDK_INT >= 16) {
+      return paramActivity.shouldUpRecreateTask(paramIntent);
     }
-    
-    public String getParentActivityName(Context paramContext, ActivityInfo paramActivityInfo)
-    {
-      if (paramActivityInfo.metaData == null) {
-        paramActivityInfo = null;
-      }
-      String str;
-      do
-      {
-        return paramActivityInfo;
-        str = paramActivityInfo.metaData.getString("android.support.PARENT_ACTIVITY");
-        if (str == null) {
-          return null;
-        }
-        paramActivityInfo = str;
-      } while (str.charAt(0) != '.');
-      return paramContext.getPackageName() + str;
-    }
-    
-    public void navigateUpTo(Activity paramActivity, Intent paramIntent)
-    {
-      paramIntent.addFlags(67108864);
-      paramActivity.startActivity(paramIntent);
-      paramActivity.finish();
-    }
-    
-    public boolean shouldUpRecreateTask(Activity paramActivity, Intent paramIntent)
-    {
-      paramActivity = paramActivity.getIntent().getAction();
-      return (paramActivity != null) && (!paramActivity.equals("android.intent.action.MAIN"));
-    }
-  }
-  
-  static class NavUtilsImplJB
-    extends NavUtils.NavUtilsImplBase
-  {
-    public Intent getParentActivityIntent(Activity paramActivity)
-    {
-      Intent localIntent2 = NavUtilsJB.getParentActivityIntent(paramActivity);
-      Intent localIntent1 = localIntent2;
-      if (localIntent2 == null) {
-        localIntent1 = superGetParentActivityIntent(paramActivity);
-      }
-      return localIntent1;
-    }
-    
-    public String getParentActivityName(Context paramContext, ActivityInfo paramActivityInfo)
-    {
-      String str2 = NavUtilsJB.getParentActivityName(paramActivityInfo);
-      String str1 = str2;
-      if (str2 == null) {
-        str1 = super.getParentActivityName(paramContext, paramActivityInfo);
-      }
-      return str1;
-    }
-    
-    public void navigateUpTo(Activity paramActivity, Intent paramIntent)
-    {
-      NavUtilsJB.navigateUpTo(paramActivity, paramIntent);
-    }
-    
-    public boolean shouldUpRecreateTask(Activity paramActivity, Intent paramIntent)
-    {
-      return NavUtilsJB.shouldUpRecreateTask(paramActivity, paramIntent);
-    }
-    
-    Intent superGetParentActivityIntent(Activity paramActivity)
-    {
-      return super.getParentActivityIntent(paramActivity);
-    }
+    paramActivity = paramActivity.getIntent().getAction();
+    return (paramActivity != null) && (!paramActivity.equals("android.intent.action.MAIN"));
   }
 }
 

@@ -1,14 +1,47 @@
-import com.tencent.av.ui.VideoLayerUI;
+import android.annotation.SuppressLint;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
+import com.tencent.mobileqq.utils.BubbleContextMenu;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 
 public class blw
+  implements View.OnLongClickListener
 {
-  static final int jdField_a_of_type_Int = 0;
-  static final int b = 1;
-  static final int c = 2;
-  static final int d = 3;
-  static final int e = 4;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new blx(this);
+  View jdField_a_of_type_AndroidViewView;
   
-  blw(VideoLayerUI paramVideoLayerUI) {}
+  public blw(QRCardActivity paramQRCardActivity) {}
+  
+  @SuppressLint({"ServiceCast", "NewApi"})
+  void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (Build.VERSION.SDK_INT < 11) {
+        ((android.text.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(paramString);
+      }
+    }
+    else {
+      return;
+    }
+    ((android.content.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(paramString);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    if (paramView == null) {
+      return false;
+    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localQQCustomMenu.a(2131234879, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getString(2131561879));
+    QRCardActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity, BubbleContextMenu.a(paramView, localQQCustomMenu, this.jdField_a_of_type_AndroidViewView$OnClickListener, null));
+    return true;
+  }
 }
 
 

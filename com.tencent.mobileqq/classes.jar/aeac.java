@@ -1,32 +1,23 @@
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.mobileqq.leba.header.LebaGridShowManager;
-import com.tencent.mobileqq.observer.GameCenterObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import mqq.os.MqqHandler;
 
 public class aeac
-  extends GameCenterObserver
+  extends MqqHandler
 {
-  public aeac(LebaWithFeeds paramLebaWithFeeds) {}
+  public aeac(SubLoginActivity paramSubLoginActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if ((!paramBoolean1) || (paramInt == 2)) {}
-    for (;;)
+    switch (paramMessage.what)
     {
+    default: 
       return;
-      if (LebaWithFeeds.b(this.a))
-      {
-        LebaGridShowManager.a().b(this.a.a);
-        this.a.a(new aead(this));
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.i("Q.lebatab.leba_with_feeds", 2, "onGameCenterMsgReceive, " + LebaWithFeeds.c(this.a));
-        return;
-        LebaShowListManager.a |= 0x2;
-      }
+    case 1982: 
+      this.a.finish();
+      return;
     }
+    this.a.e();
   }
 }
 

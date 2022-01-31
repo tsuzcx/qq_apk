@@ -1,14 +1,19 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.ExpandableTextView;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.5.1;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.5.2;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.widget.HorizontalListView;
 
 public class ajsd
-  implements Runnable
+  implements azcw
 {
-  public ajsd(ExpandableTextView paramExpandableTextView) {}
-  
-  public void run()
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    ExpandableTextView.a(this.a, this.a.getHeight() - this.a.a.getHeight());
+    this.a.a.post(new PtvTemplateAdapter.5.2(this, paramPtvTemplateInfo, paramInt));
+  }
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  {
+    this.a.a.post(new PtvTemplateAdapter.5.1(this, paramPtvTemplateInfo, paramBoolean));
   }
 }
 

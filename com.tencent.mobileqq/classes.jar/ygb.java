@@ -1,21 +1,12 @@
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.view.View;
 
-public class ygb
-  implements Runnable
+public abstract interface ygb
 {
-  public ygb(SpecailCareListActivity paramSpecailCareListActivity) {}
-  
-  public void run()
-  {
-    if (this.a.a(2)) {
-      this.a.runOnUiThread(new ygc(this));
-    }
-    this.a.a(2, true);
-  }
+  public abstract void a(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ygb
  * JD-Core Version:    0.7.0.1
  */

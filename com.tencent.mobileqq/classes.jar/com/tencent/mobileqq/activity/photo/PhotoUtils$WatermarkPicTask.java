@@ -3,11 +3,11 @@ package com.tencent.mobileqq.activity.photo;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
-import com.tencent.biz.qqstory.utils.BitmapUtils;
-import com.tencent.mobileqq.utils.ImageUtil;
+import bdhj;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
+import xqw;
 
 public class PhotoUtils$WatermarkPicTask
   implements Runnable
@@ -15,13 +15,6 @@ public class PhotoUtils$WatermarkPicTask
   private final String jdField_a_of_type_JavaLangString;
   private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   private final String b;
-  
-  public PhotoUtils$WatermarkPicTask(String paramString1, String paramString2, MqqHandler paramMqqHandler)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-  }
   
   private void a(int paramInt)
   {
@@ -38,7 +31,7 @@ public class PhotoUtils$WatermarkPicTask
     Bitmap localBitmap2;
     try
     {
-      localBitmap2 = ImageUtil.a(this.jdField_a_of_type_JavaLangString, null);
+      localBitmap2 = bdhj.a(this.jdField_a_of_type_JavaLangString, null);
       if (localBitmap2 == null)
       {
         if (QLog.isColorLevel()) {
@@ -58,11 +51,11 @@ public class PhotoUtils$WatermarkPicTask
     }
     int n = localBitmap2.getWidth();
     int m = localBitmap2.getHeight();
-    int k = ImageUtil.b(this.jdField_a_of_type_JavaLangString);
+    int k = bdhj.d(this.jdField_a_of_type_JavaLangString);
     if (QLog.isColorLevel()) {
       QLog.d("PhotoUtils", 2, "watermark pic task, w=" + n + ", h=" + m + ", r=" + k);
     }
-    Object localObject4 = ImageUtil.a(BaseApplication.getContext().getResources(), 2130843253);
+    Object localObject4 = bdhj.a(BaseApplication.getContext().getResources(), 2130845598);
     if (n != 576)
     {
       float f = n / 576.0F;
@@ -158,7 +151,7 @@ public class PhotoUtils$WatermarkPicTask
       }
       if (localObject1 != null)
       {
-        bool = BitmapUtils.a((Bitmap)localObject1, this.b);
+        bool = xqw.a((Bitmap)localObject1, this.b);
         ((Bitmap)localObject1).recycle();
       }
       localBitmap2.recycle();
@@ -183,7 +176,7 @@ public class PhotoUtils$WatermarkPicTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.PhotoUtils.WatermarkPicTask
  * JD-Core Version:    0.7.0.1
  */

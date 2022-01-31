@@ -28,7 +28,7 @@ public class LinkReport
     LpReportManager.getInstance().reportToDC02543(paramString);
   }
   
-  public static void reportQZoneLaunch(String paramString, long paramLong, HashMap paramHashMap)
+  public static void reportQZoneLaunch(String paramString, long paramLong, HashMap<String, String> paramHashMap)
   {
     paramString = new LpReportInfo_DC02543(paramString, "qzone_launch", "0", paramLong, paramHashMap);
     LpReportManager.getInstance().reportToDC02543(paramString);
@@ -48,7 +48,7 @@ public class LinkReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LinkReport
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,87 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.ark.ArkAiAppPanel;
-import com.tencent.mobileqq.ark.ArkAiInfo;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
-import com.tencent.widget.HorizontalListView;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.aditem.GdtHandler.Options;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialFragment;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
+import org.json.JSONObject;
 
-public class aart
-  implements AdapterView.OnItemClickListener
+class aart
+  implements aaru
 {
-  public aart(ArkAiAppPanel paramArkAiAppPanel) {}
-  
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  private int a(int paramInt)
   {
-    paramAdapterView = ArkAiAppPanel.a(this.a).getSelectedView();
-    if (paramAdapterView != null) {
-      paramAdapterView.setSelected(false);
+    if (paramInt == 0) {
+      return 1;
     }
-    ArkAiAppPanel.a(this.a).setSelection(paramInt);
-    paramAdapterView = ArkAiAppPanel.a(this.a).getSelectedView();
-    if (paramAdapterView != null) {
-      paramAdapterView.setSelected(true);
+    if (paramInt == 1) {
+      return 0;
     }
-    ArkAiAppPanel.a(this.a, paramInt);
-    ArkAiAppPanel.a(this.a, true);
-    if ((ArkAiAppPanel.a(this.a) != null) && (ArkAiAppPanel.a(this.a).size() > 0) && (ArkAiAppPanel.a(this.a).size() > ArkAiAppPanel.a(this.a)))
+    if (paramInt == 2) {
+      return 8;
+    }
+    return -2147483648;
+  }
+  
+  public boolean a(aarb paramaarb, String paramString, String... paramVarArgs)
+  {
+    Object localObject = null;
+    if (paramaarb != null) {}
+    GdtHandler.Options localOptions;
+    for (Activity localActivity = paramaarb.a();; localActivity = null)
     {
-      paramAdapterView = (ArkAiInfo)ArkAiAppPanel.a(this.a).get(ArkAiAppPanel.a(this.a));
-      if (paramAdapterView != null) {
-        ArkAppDataReport.b(null, paramAdapterView.a);
+      localOptions = new GdtHandler.Options();
+      boolean bool = GdtHandler.a(localOptions, paramVarArgs[0]);
+      if ((paramaarb != null) && (localActivity != null) && (bool)) {
+        break;
       }
+      aase.d("GdtInterstitialJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramVarArgs = new JSONObject(paramVarArgs[0]);
+        aase.b("GdtInterstitialJsCallHandler", paramVarArgs.toString());
+        int i = a(paramVarArgs.getJSONObject("options").optInt("orientation"));
+        paramVarArgs = paramaarb.a().getIntent();
+        if (TextUtils.isEmpty(paramVarArgs.getStringExtra("big_brother_ref_source_key")))
+        {
+          paramVarArgs = paramVarArgs.getStringExtra("big_brother_source_key");
+          localOptions.jdField_a_of_type_AndroidOsBundle = new Bundle();
+          localOptions.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", paramVarArgs);
+          aase.b("GdtInterstitialJsCallHandler", String.format("handleJsCallRequest Source.KEY_REF_ID:%s", new Object[] { paramVarArgs }));
+          paramVarArgs = new GdtInterstitialParams();
+          paramVarArgs.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options = localOptions;
+          paramVarArgs.jdField_a_of_type_Int = i;
+          paramVarArgs.jdField_a_of_type_Boolean = true;
+          i = GdtInterstitialFragment.a(localActivity, paramVarArgs);
+          paramaarb.callJs(paramString, null);
+          aasr.a(localActivity, paramVarArgs, i);
+          paramString = localObject;
+          if (paramaarb != null) {
+            paramString = paramaarb.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, true, "showInterstitial", paramString, localOptions.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+          return true;
+        }
+      }
+      catch (Throwable paramaarb)
+      {
+        aase.d("GdtInterstitialJsCallHandler", "handleJsCallRequest error", paramaarb);
+        return true;
+      }
+      paramVarArgs = paramVarArgs.getStringExtra("big_brother_ref_source_key");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aart
  * JD-Core Version:    0.7.0.1
  */

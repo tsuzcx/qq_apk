@@ -1,33 +1,33 @@
 package com.tencent.component.media.image;
 
 import java.util.LinkedList;
-import pge;
 
-public abstract class BucketPool
-  implements Releaser
+public abstract class BucketPool<T>
+  implements Releaser<T>
 {
-  private static int[] jdField_a_of_type_ArrayOfInt = new int[30];
-  private int jdField_a_of_type_Int = 0;
-  private pge[] jdField_a_of_type_ArrayOfPge;
+  private static final String TAG = "BucketPool";
+  private static int[] dat = new int[30];
+  private int bucketSize = 0;
+  private BucketPool.Bucket[] buckets;
   
   public BucketPool(PoolParams paramPoolParams)
   {
-    this.jdField_a_of_type_Int = paramPoolParams.getBucketPoolSize();
-    if (this.jdField_a_of_type_Int <= 0) {
+    this.bucketSize = paramPoolParams.getBucketPoolSize();
+    if (this.bucketSize <= 0) {
       throw new RuntimeException("bucket size <= 0 !!");
     }
-    this.jdField_a_of_type_ArrayOfPge = new pge[this.jdField_a_of_type_Int];
+    this.buckets = new BucketPool.Bucket[this.bucketSize];
     PoolParams.BucketParams localBucketParams;
-    for (Object localObject = null; i < this.jdField_a_of_type_Int; localObject = localBucketParams)
+    for (Object localObject = null; i < this.bucketSize; localObject = localBucketParams)
     {
       localBucketParams = paramPoolParams.getBucketParams(i);
-      a(localBucketParams, (PoolParams.BucketParams)localObject);
-      this.jdField_a_of_type_ArrayOfPge[i] = getBuck(localBucketParams);
+      checkByteArrayParams(localBucketParams, (PoolParams.BucketParams)localObject);
+      this.buckets[i] = getBuck(localBucketParams);
       i += 1;
     }
   }
   
-  private static void a(PoolParams.BucketParams paramBucketParams1, PoolParams.BucketParams paramBucketParams2)
+  private static void checkByteArrayParams(PoolParams.BucketParams paramBucketParams1, PoolParams.BucketParams paramBucketParams2)
   {
     if ((paramBucketParams1.arraysSize <= 0) || (paramBucketParams1.bucketMinSize <= 0)) {
       throw new RuntimeException("byteArrayParams is wrong ");
@@ -41,9 +41,9 @@ public abstract class BucketPool
     }
   }
   
-  protected abstract Object allocData(int paramInt);
+  protected abstract T allocData(int paramInt);
   
-  public Object get(int paramInt)
+  public T get(int paramInt)
   {
     Object localObject1 = null;
     int i = 0;
@@ -51,17 +51,17 @@ public abstract class BucketPool
     {
       try
       {
-        if (i >= this.jdField_a_of_type_Int) {
+        if (i >= this.bucketSize) {
           break label96;
         }
-        pge localpge = this.jdField_a_of_type_ArrayOfPge[i];
-        if (localpge.b >= paramInt)
+        BucketPool.Bucket localBucket = this.buckets[i];
+        if (localBucket.minSize >= paramInt)
         {
-          localObject1 = localpge.jdField_a_of_type_JavaUtilLinkedList.poll();
+          localObject1 = localBucket.dataList.poll();
           if (localObject1 != null) {
             break label91;
           }
-          i = handleBucketListEmpty(localpge);
+          i = handleBucketListEmpty(localBucket);
           if (localObject1 == null)
           {
             localObject1 = allocData(i);
@@ -86,35 +86,35 @@ public abstract class BucketPool
     }
   }
   
-  protected pge getBuck(PoolParams.BucketParams paramBucketParams)
+  protected BucketPool.Bucket getBuck(PoolParams.BucketParams paramBucketParams)
   {
-    pge localpge = new pge(this);
-    localpge.jdField_a_of_type_Int = paramBucketParams.arraysSize;
-    localpge.b = paramBucketParams.bucketMinSize;
-    localpge.c = localpge.jdField_a_of_type_Int;
-    localpge.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+    BucketPool.Bucket localBucket = new BucketPool.Bucket(this);
+    localBucket.itemSize = paramBucketParams.arraysSize;
+    localBucket.minSize = paramBucketParams.bucketMinSize;
+    localBucket.allocCount = localBucket.itemSize;
+    localBucket.dataList = new LinkedList();
     int i = 0;
-    while (i < localpge.jdField_a_of_type_Int)
+    while (i < localBucket.itemSize)
     {
-      localpge.jdField_a_of_type_JavaUtilLinkedList.add(allocData(localpge.b));
+      localBucket.dataList.add(allocData(localBucket.minSize));
       i += 1;
     }
-    return localpge;
+    return localBucket;
   }
   
-  protected abstract int getSizeForData(Object paramObject);
+  protected abstract int getSizeForData(T paramT);
   
-  protected abstract int handleBucketListEmpty(pge parampge);
+  protected abstract int handleBucketListEmpty(BucketPool<T>.Bucket<T> paramBucketPool);
   
-  protected abstract boolean handleRecyleData(pge parampge, Object paramObject);
+  protected abstract boolean handleRecyleData(BucketPool<T>.Bucket<T> paramBucketPool, T paramT);
   
-  protected void hit(int paramInt, Object paramObject) {}
+  protected void hit(int paramInt, T paramT) {}
   
   protected void miss(int paramInt) {}
   
-  public void release(Object paramObject)
+  public void release(T paramT)
   {
-    if (paramObject == null) {
+    if (paramT == null) {
       return;
     }
     for (;;)
@@ -122,43 +122,43 @@ public abstract class BucketPool
       int j;
       int i;
       boolean bool1;
-      pge localpge;
+      BucketPool.Bucket localBucket;
       try
       {
-        j = getSizeForData(paramObject);
+        j = getSizeForData(paramT);
         boolean bool2 = true;
-        i = this.jdField_a_of_type_Int - 1;
+        i = this.bucketSize - 1;
         bool1 = bool2;
         if (i < 0) {
           break label85;
         }
-        localpge = this.jdField_a_of_type_ArrayOfPge[i];
-        if (j > localpge.b + 2500)
+        localBucket = this.buckets[i];
+        if (j > localBucket.minSize + 2500)
         {
-          releaseData(paramObject);
+          releaseData(paramT);
           break;
         }
       }
       finally {}
-      if (j >= localpge.b)
+      if (j >= localBucket.minSize)
       {
-        bool1 = handleRecyleData(localpge, paramObject);
+        bool1 = handleRecyleData(localBucket, paramT);
         label85:
         if (!bool1) {
           break;
         }
-        releaseData(paramObject);
+        releaseData(paramT);
         break;
       }
       i -= 1;
     }
   }
   
-  protected abstract void releaseData(Object paramObject);
+  protected abstract void releaseData(T paramT);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.BucketPool
  * JD-Core Version:    0.7.0.1
  */

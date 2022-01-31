@@ -5,12 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.VideoInviteFull;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.ThemeSwitchDlgActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FrameActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -26,19 +23,14 @@ class ThemeSwitchManager$ThemeDownloadHandler$1
       QLog.d("ThemeSwitch", 2, "checkTopActivity is running");
     }
     ThemeSwitchManager.access$600(this.this$1.this$0).removeCallbacks(ThemeSwitchManager.access$700(this.this$1.this$0));
-    Object localObject1 = ThemeSwitchManager.access$300(this.this$1.this$0, ThemeSwitchManager.access$100(this.this$1.this$0));
-    if (localObject1 == null)
+    Object localObject = ThemeSwitchManager.access$300(this.this$1.this$0, ThemeSwitchManager.access$100(this.this$1.this$0));
+    if (localObject == null)
     {
       ThemeSwitchManager.access$602(this.this$1.this$0, null);
       return;
     }
-    Object localObject2 = localObject1[1];
-    if ((!localObject1[0].equals(ThemeSwitchManager.access$100(this.this$1.this$0).getPackageName())) || (localObject2.equals(AVActivity.class.getName())) || (localObject2.equals(VideoInviteFull.class.getName())) || (localObject2.equals(AIOGalleryActivity.class.getName())))
-    {
-      ThemeSwitchManager.access$600(this.this$1.this$0).postDelayed(ThemeSwitchManager.access$700(this.this$1.this$0), 3000L);
-      return;
-    }
-    if ((localObject2 != null) && (this.val$refActivity != null) && (localObject2.equals(SplashActivity.class.getName())) && ((this.val$refActivity instanceof SplashActivity)) && (((FrameActivity)this.val$refActivity).a() == 3))
+    localObject = localObject[1];
+    if ((localObject != null) && (this.val$refActivity != null) && (((String)localObject).equals(SplashActivity.class.getName())) && ((this.val$refActivity instanceof SplashActivity)) && (((FrameActivity)this.val$refActivity).a() == 3))
     {
       this.val$result.putSerializable("themeinfo", this.val$themeInfo);
       if (ThemeSwitchManager.access$500(this.this$1.this$0)) {
@@ -59,18 +51,18 @@ class ThemeSwitchManager$ThemeDownloadHandler$1
       return;
       if (ThemeSwitchManager.access$500(this.this$1.this$0))
       {
-        localObject1 = new Intent();
-        ((Intent)localObject1).putExtra("themedownloadalert", true);
-        ((Intent)localObject1).putExtra("themeID", this.val$themeInfo.themeId);
-        ((Intent)localObject1).setClass(ThemeSwitchManager.access$100(this.this$1.this$0), ThemeSwitchDlgActivity.class);
+        localObject = new Intent();
+        ((Intent)localObject).putExtra("themedownloadalert", true);
+        ((Intent)localObject).putExtra("themeID", this.val$themeInfo.themeId);
+        ((Intent)localObject).setClass(ThemeSwitchManager.access$100(this.this$1.this$0), ThemeSwitchDlgActivity.class);
         if (BaseActivity.a != null)
         {
-          BaseActivity.a.startActivity((Intent)localObject1);
+          BaseActivity.a.startActivity((Intent)localObject);
         }
         else
         {
-          ((Intent)localObject1).setFlags(268435456);
-          ThemeSwitchManager.access$100(this.this$1.this$0).startActivity((Intent)localObject1);
+          ((Intent)localObject).setFlags(268435456);
+          ThemeSwitchManager.access$100(this.this$1.this$0).startActivity((Intent)localObject);
         }
       }
     }

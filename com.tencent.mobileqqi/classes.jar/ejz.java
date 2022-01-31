@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
 
-class ejz
-  implements Runnable
+public class ejz
+  implements DialogInterface.OnDismissListener
 {
-  ejz(ejy paramejy) {}
+  public ejz(BaseActivityView paramBaseActivityView) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.h();
+    this.a.a = null;
   }
 }
 

@@ -1,39 +1,51 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.XListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class mmb
-  implements AbsListView.OnScrollListener
+  implements DialogInterface.OnClickListener
 {
-  public mmb(FastWebActivity paramFastWebActivity) {}
+  public mmb(VideoControlUI paramVideoControlUI, long paramLong) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onClick(DialogInterface arg1, int paramInt)
   {
-    if (paramInt == 0)
+    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g()) {}
+    long l;
+    do
     {
-      AbstractGifImage.resumeAll();
-      int i = FastWebActivity.a(this.a).getFirstVisiblePosition();
-      FastWebActivity.c(this.a);
-      FastWebActivity.a(this.a, i);
-    }
-    for (;;)
+      do
+      {
+        return;
+        QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "]");
+        if ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.n) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g != null)) {
+          azqs.b(null, "CliOper", "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g, this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g, 0, 0, "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h, "");
+        }
+        mww.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a());
+      } while ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.x != 2) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.x != 1));
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.b.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(this.jdField_a_of_type_Long) });
+      l = Long.valueOf(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin()).longValue();
+      paramInt = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().a(l, 1);
+    } while (paramInt == -1);
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().c.remove(paramInt);
+    synchronized (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().d)
     {
-      if (FastWebActivity.a(this.a) != null) {
-        FastWebActivity.a(this.a).a(paramAbsListView, paramInt);
+      paramInt = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().b(l, 1);
+      if (paramInt != -1)
+      {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().d.remove(paramInt);
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().c();
       }
       return;
-      AbstractGifImage.pauseAll();
     }
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mmb
  * JD-Core Version:    0.7.0.1
  */

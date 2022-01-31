@@ -1,6 +1,5 @@
 package com.tencent.open.agent;
 
-import alcm;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Handler;
@@ -13,27 +12,27 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import bfhr;
+import bfhv;
+import bfhx;
+import bfhy;
+import bflp;
 import com.tencent.open.agent.datamodel.Friend;
-import com.tencent.open.agent.datamodel.FriendDataManager;
-import com.tencent.open.agent.datamodel.ImageLoader;
-import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
-import com.tencent.open.agent.datamodel.QZonePortraitData;
-import com.tencent.open.base.LogUtility;
 import java.util.HashMap;
 
 public class RecommendListManager
   extends LinearLayout
-  implements View.OnClickListener, ViewStub.OnInflateListener, ImageLoader.ImageLoadListener
+  implements View.OnClickListener, ViewStub.OnInflateListener, bfhx
 {
   protected Handler a;
+  protected bfhr a;
   protected FriendChooser a;
-  protected FriendDataManager a;
-  public HashMap a;
+  protected HashMap<String, View> a;
   
   public RecommendListManager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager = FriendDataManager.a();
+    this.jdField_a_of_type_Bfhr = bfhr.a();
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
@@ -49,18 +48,18 @@ public class RecommendListManager
       localViewStub.setOnClickListener(this);
       i += 1;
     }
-    LogUtility.c("RecommendListManager", "-->onCreate()");
+    bflp.c("RecommendListManager", "-->onCreate()");
   }
   
   public void a(String paramString1, Bitmap paramBitmap, String paramString2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new alcm(this, paramString1, paramBitmap));
+    this.jdField_a_of_type_AndroidOsHandler.post(new RecommendListManager.1(this, paramString1, paramBitmap));
   }
   
   public void b()
   {
-    int j = this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a();
-    LogUtility.c("RecommendListManager", "-->notifyDataSetChanged() count = " + j);
+    int j = this.jdField_a_of_type_Bfhr.a();
+    bflp.c("RecommendListManager", "-->notifyDataSetChanged() count = " + j);
     int i = j;
     if (j > 5) {
       i = 5;
@@ -76,9 +75,9 @@ public class RecommendListManager
       {
         j += 1;
         break;
-        localObject = (CheckBox)((View)localObject).findViewById(2131363939);
-        Friend localFriend = this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(j);
-        if (this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(localFriend.a)) {
+        localObject = (CheckBox)((View)localObject).findViewById(2131364256);
+        Friend localFriend = this.jdField_a_of_type_Bfhr.a(j);
+        if (this.jdField_a_of_type_Bfhr.a(localFriend.a)) {
           ((CheckBox)localObject).setChecked(true);
         } else {
           ((CheckBox)localObject).setChecked(false);
@@ -97,13 +96,13 @@ public class RecommendListManager
     }
     for (;;)
     {
-      LogUtility.c("RecommendListManager", "-->onClick() position = " + i + " v.getId() = " + paramView.getId());
-      if ((i != -1) && (i < this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a()))
+      bflp.c("RecommendListManager", "-->onClick() position = " + i + " v.getId() = " + paramView.getId());
+      if ((i != -1) && (i < this.jdField_a_of_type_Bfhr.a()))
       {
-        paramView = (CheckBox)paramView.findViewById(2131363939);
-        Friend localFriend = this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(i);
+        paramView = (CheckBox)paramView.findViewById(2131364256);
+        Friend localFriend = this.jdField_a_of_type_Bfhr.a(i);
         this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(localFriend);
-        if (!this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(localFriend.a)) {
+        if (!this.jdField_a_of_type_Bfhr.a(localFriend.a)) {
           break;
         }
         paramView.setChecked(true);
@@ -130,26 +129,26 @@ public class RecommendListManager
     switch (paramView.getId())
     {
     default: 
-      LogUtility.c("RecommendListManager", "-->onInflate() position = " + i);
+      bflp.c("RecommendListManager", "-->onInflate() position = " + i);
       paramView.setOnClickListener(this);
-      paramViewStub = this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(i);
+      paramViewStub = this.jdField_a_of_type_Bfhr.a(i);
       if ((paramViewStub.d == null) || ("".equals(paramViewStub.d))) {
-        paramViewStub.d = QZonePortraitData.a(this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), paramViewStub.a);
+        paramViewStub.d = bfhy.a(this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), paramViewStub.a);
       }
       this.jdField_a_of_type_JavaUtilHashMap.put(paramViewStub.d, paramView);
-      localObject = (CheckBox)paramView.findViewById(2131363939);
-      localImageView = (ImageView)paramView.findViewById(2131362719);
-      paramView = (TextView)paramView.findViewById(2131362754);
-      if (this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramViewStub.a))
+      localObject = (CheckBox)paramView.findViewById(2131364256);
+      localImageView = (ImageView)paramView.findViewById(2131367819);
+      paramView = (TextView)paramView.findViewById(2131370977);
+      if (this.jdField_a_of_type_Bfhr.a(paramViewStub.a))
       {
         ((CheckBox)localObject).setChecked(true);
         label180:
-        localObject = ImageLoader.a().a(paramViewStub.d);
+        localObject = bfhv.a().a(paramViewStub.d);
         if (localObject != null) {
           break label277;
         }
-        localImageView.setImageResource(2130839132);
-        ImageLoader.a().a(paramViewStub.d, this);
+        localImageView.setImageResource(2130840085);
+        bfhv.a().a(paramViewStub.d, this);
       }
       break;
     }
@@ -186,7 +185,7 @@ public class RecommendListManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.RecommendListManager
  * JD-Core Version:    0.7.0.1
  */

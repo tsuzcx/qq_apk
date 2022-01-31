@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.vashealth.SSOHttpUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class akkg
-  implements Runnable
+  implements View.OnClickListener
 {
-  akkg(akkf paramakkf, String paramString) {}
+  akkg(akkd paramakkd, QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    SSOHttpUtils.a(this.jdField_a_of_type_JavaLangString);
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A327", "0X800A327", 0, 0, "", "", "", "");
+    akkd.a(this.jdField_a_of_type_Akkd);
   }
 }
 

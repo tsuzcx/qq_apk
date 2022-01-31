@@ -1,18 +1,28 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
 class tnl
-  implements Runnable
+  extends GestureDetector.SimpleOnGestureListener
 {
-  tnl(tnk paramtnk, String paramString) {}
+  tnl(tnk paramtnk) {}
   
-  public void run()
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    QQSettingSettingActivity.a(this.jdField_a_of_type_Tnk.a, this.jdField_a_of_type_JavaLangString);
+    tlo.b("WSVerticalVideoItemView", "itemView onDoubleTap");
+    tnk.a(this.a, paramMotionEvent);
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    tlo.b("WSVerticalVideoItemView", "itemView onSingleTapConfirmed");
+    tnk.a(this.a);
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tnl
  * JD-Core Version:    0.7.0.1
  */

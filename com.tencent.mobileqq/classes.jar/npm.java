@@ -1,22 +1,27 @@
-import android.util.SparseArray;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.VolumeChangedObserver.1;
 
-public final class npm
-  extends SparseArray
+public class npm
+  extends ContentObserver
 {
-  public npm()
+  public npm(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView, Handler paramHandler)
   {
-    put(31, "PLAYER_INFO_PLAYER_TYPE");
-    put(24, "PLAYER_INFO_SUCC_SET_DECODER_MODE");
-    put(33, "PLAYER_INFO_START_GET_VINFO");
-    put(21, "PLAYER_INFO_START_BUFFERING");
-    put(34, "PLAYER_INFO_END_GET_VINFO");
-    put(22, "PLAYER_INFO_ENDOF_BUFFERING");
-    put(23, "PLAYER_INFO_START_RENDERING");
+    super(paramHandler);
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    super.onChange(paramBoolean);
+    if (ReadInJoyNativeAdAppVideoView.a(this.a) != null) {
+      ReadInJoyNativeAdAppVideoView.a(this.a).post(new ReadInJoyNativeAdAppVideoView.VolumeChangedObserver.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     npm
  * JD-Core Version:    0.7.0.1
  */

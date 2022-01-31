@@ -1,147 +1,98 @@
-import android.content.Context;
-import android.os.SystemClock;
-import com.rookery.translate.model.TransDiskCache;
-import com.rookery.translate.model.TransMemCache;
-import com.rookery.translate.model.TranslateCache;
-import com.rookery.translate.type.Language;
-import com.rookery.translate.type.TranslateCallback;
-import com.rookery.translate.type.TranslateError;
-import com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder.Holder;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView.ITroopContext;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.RedDotTextView;
+import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.util.WeakReferenceHandler;
 
 public class egi
-  implements TranslateCallback
+  implements BaseTroopView.ITroopContext
 {
-  public egi(TextTranslationItemBuilder paramTextTranslationItemBuilder, TextTranslationItemBuilder.Holder paramHolder, Context paramContext, String paramString) {}
+  public egi(TroopActivity paramTroopActivity) {}
   
-  public void a(long paramLong, String paramString1, Language paramLanguage, String paramString2, TextTranslationItemBuilder.Holder paramHolder)
+  public Activity a()
   {
-    TextTranslationItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder);
-    if (paramHolder != null) {
-      TranslateCache.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, paramHolder.jdField_b_of_type_JavaLangString, paramHolder.jdField_a_of_type_Long, Boolean.valueOf(false));
-    }
-    String str;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Translator", 2, "[ChatAdapter]holder id:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.jdField_a_of_type_Long + "request id:" + paramLong);
-      }
-      if ((!paramString1.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.jdField_a_of_type_Long != paramLong) || (paramHolder == null) || (this.jdField_a_of_type_AndroidContentContext == null)) {
-        break label461;
-      }
-      if (!paramLanguage.toString().equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
-        break label305;
-      }
-      TextTranslationItemBuilder.a();
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.c != 0) {
-        break label369;
-      }
-      str = "0";
-      label168:
-      StatisticCollector.a(TextTranslationItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder)).a(TextTranslationItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder), TextTranslationItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder).a(), "", "Translate_external", "Translate_external", 0, 1, 0, String.valueOf(SystemClock.uptimeMillis() - paramHolder.jdField_b_of_type_Long), str, paramLanguage.toString(), this.jdField_a_of_type_JavaLangString);
-      if ((paramLanguage.toString().equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || (paramString2.equalsIgnoreCase(paramString1))) {
-        break label414;
-      }
-      paramLanguage = TranslateCache.a(TextTranslationItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder).getApplicationContext());
-      if (paramLanguage != null) {
-        paramLanguage.a(paramString1, paramString2, paramLong, Boolean.valueOf(true), this.jdField_a_of_type_JavaLangString);
-      }
-      paramHolder.d = 1;
-      TextTranslationItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder);
-    }
-    label305:
-    label369:
-    do
-    {
-      return;
-      if ((paramLanguage.toString().equalsIgnoreCase("zh-CHS")) && (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("zh-CN")))
-      {
-        TextTranslationItemBuilder.a();
-        break;
-      }
-      if ((!paramLanguage.toString().equalsIgnoreCase("zh-CHT")) || (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("zh-TW"))) {
-        break;
-      }
-      TextTranslationItemBuilder.a();
-      break;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.c == 1)
-      {
-        str = "1";
-        break label168;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.c == 3000)
-      {
-        str = "2";
-        break label168;
-      }
-      str = "";
-      break label168;
-      paramLanguage = TranslateCache.a(TextTranslationItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder).getApplicationContext());
-      if (paramLanguage != null) {
-        paramLanguage.a(paramString1, paramString2, paramLong, Boolean.valueOf(false), this.jdField_a_of_type_JavaLangString);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.a(2131563044);
-      return;
-      if ((!paramLanguage.toString().equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidContentContext != null))
-      {
-        TranslateCache.a(this.jdField_a_of_type_AndroidContentContext).a(paramString1, paramString2, paramLong, Boolean.valueOf(true), this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    } while (this.jdField_a_of_type_AndroidContentContext == null);
-    label414:
-    label461:
-    TranslateCache.a(this.jdField_a_of_type_AndroidContentContext).a(paramString1, paramString2, paramLong, Boolean.valueOf(false), this.jdField_a_of_type_JavaLangString);
+    return this.a;
   }
   
-  public void a(long paramLong, String paramString, TranslateError paramTranslateError, TextTranslationItemBuilder.Holder paramHolder)
+  public View a()
   {
-    TextTranslationItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder);
-    if (paramHolder != null) {
-      TranslateCache.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, paramHolder.jdField_b_of_type_JavaLangString, paramHolder.jdField_a_of_type_Long, Boolean.valueOf(false));
+    return this.a.findViewById(2131231116);
+  }
+  
+  public ForwardOperations a()
+  {
+    return TroopActivity.a(this.a);
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.b;
+  }
+  
+  public WeakReferenceHandler a()
+  {
+    return TroopActivity.a(this.a);
+  }
+  
+  public void a(int paramInt, View.OnClickListener paramOnClickListener) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (this.a.j != 2) {
+      return;
     }
-    if ((paramHolder != null) && (paramHolder.jdField_b_of_type_AndroidViewView != null) && (paramTranslateError != null)) {
-      if ((paramTranslateError.getMessage() != null) && (paramTranslateError.getMessage().length() > 0)) {
-        if ((paramTranslateError.getMessage().indexOf("Unable to resolve host") >= 0) || (paramTranslateError.getMessage().indexOf("can't resolve host") >= 0))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.a(2131561868);
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.c != 0) {
-            break label232;
-          }
-          paramString = "0";
-          StatisticCollector.a(TextTranslationItemBuilder.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder)).a(TextTranslationItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder), TextTranslationItemBuilder.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder).a(), "", "Translate_external", "Translate_external", 0, 1, 1, "", paramString, "", "");
-          if (QLog.isColorLevel()) {
-            QLog.e("Translator", 2, "onFailed:" + paramTranslateError);
-          }
-        }
-      }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      TroopActivity.a(this.a).a(0).a(paramBoolean);
+      return;
     }
-    label232:
-    while (!QLog.isColorLevel()) {
-      for (;;)
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.a(2131561866);
-        continue;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.a(2131563045);
-        continue;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.c == 1) {
-          paramString = "1";
-        } else if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.c == 3000) {
-          paramString = "2";
-        } else {
-          paramString = "";
-        }
-      }
+    TroopActivity.a(this.a).a(1).a(paramBoolean);
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    this.a.runOnUiThread(paramRunnable);
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.a.isResume()) {
+      QQToast.a(a(), paramString, 0).b(this.a.d());
     }
-    QLog.e("Translator", 2, "onFailed:e is null");
+  }
+  
+  public boolean a()
+  {
+    return TroopActivity.a(this.a);
+  }
+  
+  public View b()
+  {
+    return this.a.findViewById(2131231374);
+  }
+  
+  public View c()
+  {
+    return this.a.findViewById(2131232307);
+  }
+  
+  public View d()
+  {
+    return TroopActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     egi
  * JD-Core Version:    0.7.0.1
  */

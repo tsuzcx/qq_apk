@@ -9,14 +9,14 @@ import java.util.Map;
 public final class operat_data
   extends JceStruct
 {
-  static Map cache_mapExt;
+  static Map<String, String> cache_mapExt;
   public int cmd;
   public String desc = "";
-  public Map mapExt;
+  public Map<String, String> mapExt;
   
   public operat_data() {}
   
-  public operat_data(int paramInt, String paramString, Map paramMap)
+  public operat_data(int paramInt, String paramString, Map<String, String> paramMap)
   {
     this.cmd = paramInt;
     this.desc = paramString;
@@ -48,7 +48,7 @@ public final class operat_data
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_UNDEAL_COUNT.operat_data
  * JD-Core Version:    0.7.0.1
  */

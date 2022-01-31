@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/common_strip_setting_bg" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.ThemeImageView android:id="@id/head" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginBottom="12.0dip" android:src="@drawable/com" android:layout_centerVertical="true" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="76.0dip" android:layout_marginTop="14.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="14.0dip" android:layout_centerVertical="true">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="65.0dip">
+            <RelativeLayout android:id="@id/lx2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true">
+                <TextView android:textSize="16.0sp" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/f5e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                <ImageView android:id="@id/f8d" android:background="@drawable/skin_tips_new" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_toRightOf="@id/f5e" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2" android:ellipsize="end" android:id="@id/bgt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:layout_alignParentLeft="true" />
+        </LinearLayout>
+        <Button android:textColor="@color/skin_black" android:id="@id/gx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dd" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/i9" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,5 +1,6 @@
 package com.tencent.av.funchat;
 
+import aepi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -12,7 +13,7 @@ import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import mwj;
 
 public class AVListImageView
   extends ImageView
@@ -41,8 +42,8 @@ public class AVListImageView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    int m = AIOUtils.a(this.jdField_a_of_type_Int, getResources()) - 2;
-    int n = AIOUtils.a(this.jdField_b_of_type_Int, getResources());
+    int m = aepi.a(this.jdField_a_of_type_Int, getResources()) - 2;
+    int n = aepi.a(this.jdField_b_of_type_Int, getResources());
     int i = Math.min(getWidth(), getHeight()) / 2;
     int j = getWidth() / 2;
     int k = getHeight() / 2;
@@ -52,7 +53,9 @@ public class AVListImageView
     {
       if (this.jdField_b_of_type_Boolean)
       {
-        localDrawable.setColorFilter(-10591367, PorterDuff.Mode.MULTIPLY);
+        if (!(localDrawable instanceof mwj)) {
+          localDrawable.setColorFilter(-10591367, PorterDuff.Mode.MULTIPLY);
+        }
         localDrawable.setBounds(m, m, getWidth() - m, getHeight() - m);
         localDrawable.draw(paramCanvas);
       }
@@ -66,16 +69,21 @@ public class AVListImageView
       this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(n);
       m = (n + 1) / 2;
       if ((getParent() == null) || (!(getParent().getParent() instanceof LinearLayout))) {
-        break label271;
+        break label299;
       }
       i = Math.min(((LinearLayout)getParent().getParent()).getWidth() / 2, i);
     }
-    label271:
+    label299:
     for (;;)
     {
       paramCanvas.drawCircle(j, k, i - m, this.jdField_a_of_type_AndroidGraphicsPaint);
       return;
-      if (!(localDrawable instanceof URLDrawable)) {
+      if ((localDrawable instanceof URLDrawable))
+      {
+        localDrawable.setColorFilter(-1, PorterDuff.Mode.MULTIPLY);
+        break;
+      }
+      if ((localDrawable instanceof mwj)) {
         break;
       }
       localDrawable.clearColorFilter();

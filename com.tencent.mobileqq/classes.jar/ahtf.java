@@ -1,39 +1,18 @@
-import com.tencent.mobileqq.app.UniteSearchObserver;
-import com.tencent.mobileqq.search.HotWordSearchEntryModel;
-import com.tencent.mobileqq.search.fragment.HotWordsDetailFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
 
 public class ahtf
-  extends UniteSearchObserver
+  extends awhw
 {
-  public ahtf(HotWordsDetailFragment paramHotWordsDetailFragment) {}
+  private ahtf(FriendFragment paramFriendFragment) {}
   
-  public void b(int paramInt1, String paramString, int paramInt2)
+  protected void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(HotWordsDetailFragment.jdField_a_of_type_JavaLangString, 2, "handleSearchDiscoveryError resultCode =" + paramInt1 + "  errorMsg =" + paramString + ", fromType = " + paramInt2);
-    }
-  }
-  
-  public void b(List paramList, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(HotWordsDetailFragment.jdField_a_of_type_JavaLangString, 2, "handleSearchDiscoveryResult result =" + paramList + ", fromType = " + paramInt);
-    }
-    if (paramInt != 5)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(HotWordsDetailFragment.jdField_a_of_type_JavaLangString, 2, "handleSearchDiscoveryResult(), fromType is wrong, return");
-      }
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel.a();
+    FriendFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahtf
  * JD-Core Version:    0.7.0.1
  */

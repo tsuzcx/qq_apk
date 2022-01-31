@@ -1,38 +1,48 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.view.View;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class akef
+  implements SurfaceHolder.Callback
 {
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
+  public akef(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  private void a()
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Int != 0))
-    {
-      Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getBackground().mutate();
-      if ((localDrawable instanceof GradientDrawable)) {
-        ((GradientDrawable)localDrawable).setColor(this.jdField_a_of_type_Int);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "surfaceCreated: mSavedCurPosition:" + this.a.g + ",mSavedPlayState : " + this.a.a(this.a.h));
     }
-    else
+    if ((this.a.h == 1) && (this.a.g > 0))
     {
+      this.a.a(this.a.g);
+      this.a.g = 0;
+      this.a.h = 0;
       return;
     }
-    QLog.w("BrandColorManager", 4, "set band border-color fail");
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
   
-  public void a(View paramView)
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
+    }
+    if (this.a.jdField_a_of_type_Bdzk != null) {
+      this.a.jdField_a_of_type_Bdzk.c();
+    }
+    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akef
  * JD-Core Version:    0.7.0.1
  */

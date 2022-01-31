@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/du_" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="10.0dip" android:scaleType="fitXY" android:contentDescription="@string/hyg" />
+    <Space android:layout_width="8.0dip" android:layout_height="wrap_content" />
+    <TextView android:textSize="15.0sp" android:textColor="#ff12b7f5" android:ellipsize="marquee" android:id="@id/k5u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:text="@string/hyg" android:singleLine="true" />
+    <ImageView android:id="@id/khb" android:background="@drawable/skin_tips_dot" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="-5.0dip" android:layout_marginRight="10.0dip" android:contentDescription="@null" />
+</LinearLayout>

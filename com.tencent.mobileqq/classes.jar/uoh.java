@@ -1,32 +1,31 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
+import java.io.File;
 
-public class uoh
-  extends View
+class uoh
+  implements Comparable<uoh>
 {
-  public uoh(XBubbleAnimation paramXBubbleAnimation, Context paramContext)
+  public final long a;
+  public final File a;
+  
+  public uoh(uog paramuog, File paramFile)
   {
-    super(paramContext);
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.jdField_a_of_type_Long = paramFile.lastModified();
   }
   
-  protected boolean verifyDrawable(Drawable paramDrawable)
+  public int a(uoh paramuoh)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new uoi(this));
+    if (this.jdField_a_of_type_Long < paramuoh.jdField_a_of_type_Long) {
+      return -1;
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new uoj(this));
+    if (this.jdField_a_of_type_Long == paramuoh.jdField_a_of_type_Long) {
+      return 0;
     }
-    return true;
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uoh
  * JD-Core Version:    0.7.0.1
  */

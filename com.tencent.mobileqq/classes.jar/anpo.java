@@ -1,40 +1,33 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
+import android.app.Dialog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class anpo
-  extends AnimatorListenerAdapter
+class anpo
+  implements View.OnClickListener
 {
-  public anpo(QIMCircleProgress paramQIMCircleProgress) {}
+  anpo(anpn paramanpn) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.a.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator cancel");
+    if ((anpn.a(this.a) == 0) && (!TextUtils.isEmpty(anpn.a(this.a))))
+    {
+      anpn.a(this.a).put(anpn.b(this.a), Integer.valueOf(1));
+      paramView = this.a.mRuntime.a();
+      if (paramView != null) {
+        paramView.a.loadUrl(anpn.a(this.a));
+      }
+      anpn.a(this.a, null);
     }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator end");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.b = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator start");
-    }
+    anpn.a(this.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,21 @@
-import android.media.SoundPool;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import com.tencent.mobileqq.app.ContactSorter;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.Comparator;
 
-class far
-  implements Runnable
+public final class far
+  implements Comparator
 {
-  far(faq paramfaq) {}
-  
-  public void run()
+  public int a(Entity paramEntity1, Entity paramEntity2)
   {
-    VoipDialInterfaceActivity.a(this.a.a).play(VoipDialInterfaceActivity.l(this.a.a), 1.0F, 1.0F, 0, 0, 1.0F);
+    paramEntity1 = (Friends)paramEntity1;
+    paramEntity2 = (Friends)paramEntity2;
+    return ContactSorter.a(paramEntity1.mComparePartInt, paramEntity1.mCompareSpell, paramEntity2.mComparePartInt, paramEntity2.mCompareSpell);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     far
  * JD-Core Version:    0.7.0.1
  */

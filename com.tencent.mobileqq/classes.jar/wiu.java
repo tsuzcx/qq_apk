@@ -1,37 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import java.util.List;
 
 public class wiu
-  extends Handler
+  extends uli
 {
-  public wiu(SearchBaseFragment paramSearchBaseFragment) {}
+  public int a;
+  public String a;
+  public List<LikeEntry> a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public boolean c;
   
-  public void handleMessage(Message paramMessage)
+  public wiu(ErrorMessage paramErrorMessage, String paramString)
   {
-    if (SearchBaseFragment.a(this.a) != null) {
-      SearchBaseFragment.a(this.a).sendMessage(Message.obtain(paramMessage));
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.a();
-      return;
-    case 1: 
-      this.a.a((String)paramMessage.obj);
-      return;
-    case 2: 
-      this.a.g();
-      return;
-    }
-    this.a.c();
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String toString()
+  {
+    return "GetLikeListEvent{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isForDetail=" + this.jdField_a_of_type_Boolean + ", mType=" + this.jdField_a_of_type_Int + ", mLikeCount=" + this.b + ", mHasLike=" + this.c + ", mLikeEntryList=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wiu
  * JD-Core Version:    0.7.0.1
  */

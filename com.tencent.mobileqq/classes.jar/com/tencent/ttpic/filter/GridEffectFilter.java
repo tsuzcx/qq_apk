@@ -1,7 +1,7 @@
 package com.tencent.ttpic.filter;
 
+import com.tencent.aekit.openrender.UniformParam.IntParam;
 import com.tencent.filter.BaseFilter;
-import com.tencent.filter.Param.IntParam;
 
 public class GridEffectFilter
   extends BaseFilter
@@ -16,17 +16,17 @@ public class GridEffectFilter
   
   private void initParams()
   {
-    addParam(new Param.IntParam("gridType", 0));
+    addParam(new UniformParam.IntParam("gridType", 0));
   }
   
   public void setGridType(int paramInt)
   {
-    addParam(new Param.IntParam("gridType", paramInt));
+    addParam(new UniformParam.IntParam("gridType", paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.filter.GridEffectFilter
  * JD-Core Version:    0.7.0.1
  */

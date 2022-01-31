@@ -1,32 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareUtils;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.av.ui.VideoNetStateBar;
+import com.tencent.qphone.base.util.QLog;
 
 public class moc
-  implements WXShareHelper.WXShareListener
+  extends lhe
 {
-  public moc(FastWebShareUtils paramFastWebShareUtils) {}
+  public moc(VideoNetStateBar paramVideoNetStateBar) {}
   
-  public void a(BaseResp paramBaseResp)
+  protected void a(long paramLong1, long paramLong2)
   {
-    if ((FastWebShareUtils.a(this.a) == null) || (!FastWebShareUtils.a(this.a).equals(paramBaseResp.transaction))) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoNetStateBar", 2, "onCreateRoomSuc-->GroupID=" + paramLong2);
     }
-    switch (paramBaseResp.errCode)
-    {
-    case -2: 
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131435303);
-      return;
+    this.a.i();
+  }
+  
+  protected void b(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoNetStateBar", 2, "onEnterRoomSuc-->GroupID=" + paramLong2);
     }
-    QRUtils.a(2, 2131435302);
+    this.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     moc
  * JD-Core Version:    0.7.0.1
  */

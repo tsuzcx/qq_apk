@@ -1,25 +1,37 @@
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.vip.CUKingCardHelper.CUKingDialogListener;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.30.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class adgc
-  implements CUKingCardHelper.CUKingDialogListener
+  extends avva
 {
-  public adgc(FileModel paramFileModel, FMDialogUtil.FMDialogInterface paramFMDialogInterface) {}
+  public adgc(Leba paramLeba) {}
   
-  public void callback(int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if ((paramInt == 1) || (paramInt == 2))
+    if ((!paramBoolean1) || (paramInt == 2)) {}
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface.a();
       return;
+      if (Leba.b(this.a))
+      {
+        ArrayList localArrayList = new ArrayList();
+        alvr.a(localArrayList, aieq.a().a(this.a.a));
+        this.a.a(new Leba.30.1(this, localArrayList));
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.i("Q.lebatab.leba", 2, "onGameCenterMsgReceive, " + Leba.c(this.a));
+        return;
+        aieq.a |= 0x2;
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adgc
  * JD-Core Version:    0.7.0.1
  */

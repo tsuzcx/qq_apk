@@ -1,41 +1,78 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.emosm.Client;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class abyz
-  extends Handler
+  implements abwu
 {
-  public abyz(Client paramClient, Looper paramLooper)
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<CustomWebView> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public abyz(CustomWebView paramCustomWebView, JSONObject paramJSONObject)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramCustomWebView);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("__nativeAPICallID__");
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onComplete()
   {
-    switch (paramMessage.what)
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-    default: 
-      super.handleMessage(paramMessage);
+      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 4]);");
+      }
     }
-    do
+  }
+  
+  public void onFailure(int paramInt, String paramString)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      do
-      {
-        return;
-        this.a.onRespFromServer(paramMessage.getData());
-      } while (!QLog.isColorLevel());
-      QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_CLIENT_RESP");
-      return;
-      this.a.onPushMsgFromServer(paramMessage.getData());
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_SERVER_DOWNLOAD_STATE");
+      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 3, " + paramInt + ", '" + paramString + "']);");
+      }
+    }
+  }
+  
+  public void onPermission(int paramInt)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 1, " + paramInt + "]);");
+      }
+    }
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 2, " + paramJSONObject.toString() + "]);");
+      }
+    }
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      CustomWebView localCustomWebView = (CustomWebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localCustomWebView != null) {
+        localCustomWebView.callJs("(window.NativeApi && NativeApi.execNativeAPICallback).apply(window, ['" + this.jdField_a_of_type_JavaLangString + "', 5, " + paramJSONObject.toString() + "]);");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abyz
  * JD-Core Version:    0.7.0.1
  */

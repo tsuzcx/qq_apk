@@ -1,51 +1,48 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
-import com.tencent.mobileqq.werewolves.WerewolvesObserver;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.os.SystemClock;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 
-public class vtx
-  extends WerewolvesObserver
+class vtx
+  implements AbsListView.OnScrollListener
 {
-  public vtx(GameRoomChatPie paramGameRoomChatPie) {}
+  vtx(vtv paramvtv) {}
   
-  public void a(int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.werewolf.GameRoomChatPie", 2, "onDownLoadedPluginResult result = " + paramInt);
-    }
-    if (paramInt == 0) {
-      this.a.bf();
-    }
+    if (SystemClock.uptimeMillis() - vtv.a(this.a) < 500L) {}
+    int i;
     do
     {
-      return;
-      QQToast.a(this.a.a(), "游戏加载失败", 0).a();
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setProgress(0);
+      do
+      {
+        return;
+        vtv.a(this.a, SystemClock.uptimeMillis());
+      } while (!(this.a.jdField_a_of_type_Vpm instanceof vqa));
+      i = paramInt1 + paramInt2;
+      ((vqa)this.a.jdField_a_of_type_Vpm).a = i;
+    } while ((paramInt3 <= 0) || (paramInt3 - paramInt1 - paramInt2 >= 10));
+    this.a.jdField_a_of_type_Vsj.a();
+    wxe.a("VideoCoverListGroupHolder", "onScroll mStartRequestDataRunnable mShowPosition=%d totalItemCount=%d, groupId=%s", Integer.valueOf(i), Integer.valueOf(paramInt3), this.a.jdField_a_of_type_Vpm.toString());
   }
   
-  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.werewolf.GameRoomChatPie", 2, "onNotifyGameRoomSpeakerStatus uin = " + paramLong2 + " isSeaking = " + paramBoolean);
+    if (paramInt == 0) {
+      vtv.a(this.a, false);
     }
-    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(String.valueOf(paramLong1))) || (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager == null)) {}
-    WerewolvesPluginInterface localWerewolvesPluginInterface;
-    do
+    for (;;)
     {
+      if ((paramInt == 0) && (vtv.a(this.a))) {
+        this.a.d();
+      }
       return;
-      localWerewolvesPluginInterface = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
-    } while (localWerewolvesPluginInterface == null);
-    localWerewolvesPluginInterface.a(String.valueOf(paramLong2), paramBoolean);
+      vtv.a(this.a, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vtx
  * JD-Core Version:    0.7.0.1
  */

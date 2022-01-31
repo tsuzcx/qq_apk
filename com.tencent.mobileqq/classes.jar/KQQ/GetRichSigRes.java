@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class GetRichSigRes
   extends JceStruct
 {
-  static ArrayList cache_vstSigInfo;
+  static ArrayList<ResRichSigInfo> cache_vstSigInfo;
   public byte cResult = -1;
-  public ArrayList vstSigInfo;
+  public ArrayList<ResRichSigInfo> vstSigInfo;
   
   public GetRichSigRes() {}
   
-  public GetRichSigRes(byte paramByte, ArrayList paramArrayList)
+  public GetRichSigRes(byte paramByte, ArrayList<ResRichSigInfo> paramArrayList)
   {
     this.cResult = paramByte;
     this.vstSigInfo = paramArrayList;
@@ -42,7 +42,7 @@ public final class GetRichSigRes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     KQQ.GetRichSigRes
  * JD-Core Version:    0.7.0.1
  */

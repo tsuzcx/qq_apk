@@ -1,23 +1,26 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.widgets.InputDialog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
 
-public class pds
-  implements View.OnClickListener
+class pds
+  implements Animation.AnimationListener
 {
-  public pds(InputDialog paramInputDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  pds(pdr parampdr, ImageView paramImageView, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizWidgetsInputDialog, 0);
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(pdr.a(this.jdField_a_of_type_Pdr, this.jdField_a_of_type_Boolean));
+    paramAnimation.setInterpolator(new AnticipateInterpolator());
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pds
  * JD-Core Version:    0.7.0.1
  */

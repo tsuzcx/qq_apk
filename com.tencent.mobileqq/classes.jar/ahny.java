@@ -1,24 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.dc.DataCollector;
+import android.os.Bundle;
+import com.tencent.widget.AbsListView;
 
-public class ahny
-  extends Handler
+class ahny
+  implements bhtv
 {
-  public ahny(DataCollector paramDataCollector, Looper paramLooper)
+  ahny(ahns paramahns) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramLooper);
+    ahns.a(this.a, paramInt1 + paramInt2 - 1);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.a.a(paramMessage);
+    if (paramInt != 0) {
+      return;
+    }
+    if (ahns.b(this.a) >= this.a.getCount() - 2)
+    {
+      paramAbsListView = new Bundle();
+      paramAbsListView.putString("from", "4");
+      ahns.a(this.a).b(4, ahns.a(this.a), paramAbsListView);
+    }
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahny
  * JD-Core Version:    0.7.0.1
  */

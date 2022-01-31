@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.animation.AnimatorCompatHelper;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorCompat;
-import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.view.View;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,110 +16,52 @@ public class DefaultItemAnimator
   private ArrayList<RecyclerView.ViewHolder> mAddAnimations = new ArrayList();
   private ArrayList<ArrayList<RecyclerView.ViewHolder>> mAdditionsList = new ArrayList();
   private ArrayList<RecyclerView.ViewHolder> mChangeAnimations = new ArrayList();
-  private ArrayList<ArrayList<ChangeInfo>> mChangesList = new ArrayList();
+  private ArrayList<ArrayList<DefaultItemAnimator.ChangeInfo>> mChangesList = new ArrayList();
   private ArrayList<RecyclerView.ViewHolder> mMoveAnimations = new ArrayList();
-  private ArrayList<ArrayList<MoveInfo>> mMovesList = new ArrayList();
+  private ArrayList<ArrayList<DefaultItemAnimator.MoveInfo>> mMovesList = new ArrayList();
   private ArrayList<RecyclerView.ViewHolder> mPendingAdditions = new ArrayList();
-  private ArrayList<ChangeInfo> mPendingChanges = new ArrayList();
-  private ArrayList<MoveInfo> mPendingMoves = new ArrayList();
+  private ArrayList<DefaultItemAnimator.ChangeInfo> mPendingChanges = new ArrayList();
+  private ArrayList<DefaultItemAnimator.MoveInfo> mPendingMoves = new ArrayList();
   private ArrayList<RecyclerView.ViewHolder> mPendingRemovals = new ArrayList();
   private ArrayList<RecyclerView.ViewHolder> mRemoveAnimations = new ArrayList();
   
-  private void animateAddImpl(final RecyclerView.ViewHolder paramViewHolder)
+  private void animateAddImpl(RecyclerView.ViewHolder paramViewHolder)
   {
-    final ViewPropertyAnimatorCompat localViewPropertyAnimatorCompat = ViewCompat.animate(paramViewHolder.itemView);
+    ViewPropertyAnimatorCompat localViewPropertyAnimatorCompat = ViewCompat.animate(paramViewHolder.itemView);
     this.mAddAnimations.add(paramViewHolder);
-    localViewPropertyAnimatorCompat.alpha(1.0F).setDuration(getAddDuration()).setListener(new VpaListenerAdapter(paramViewHolder)
-    {
-      public void onAnimationCancel(View paramAnonymousView)
-      {
-        ViewCompat.setAlpha(paramAnonymousView, 1.0F);
-      }
-      
-      public void onAnimationEnd(View paramAnonymousView)
-      {
-        localViewPropertyAnimatorCompat.setListener(null);
-        DefaultItemAnimator.this.dispatchAddFinished(paramViewHolder);
-        DefaultItemAnimator.this.mAddAnimations.remove(paramViewHolder);
-        DefaultItemAnimator.this.dispatchFinishedWhenDone();
-      }
-      
-      public void onAnimationStart(View paramAnonymousView)
-      {
-        DefaultItemAnimator.this.dispatchAddStarting(paramViewHolder);
-      }
-    }).start();
+    localViewPropertyAnimatorCompat.alpha(1.0F).setDuration(getAddDuration()).setListener(new DefaultItemAnimator.5(this, paramViewHolder, localViewPropertyAnimatorCompat)).start();
   }
   
-  private void animateChangeImpl(final ChangeInfo paramChangeInfo)
+  private void animateChangeImpl(DefaultItemAnimator.ChangeInfo paramChangeInfo)
   {
-    Object localObject1 = paramChangeInfo.oldHolder;
-    if (localObject1 == null)
+    View localView = null;
+    Object localObject = paramChangeInfo.oldHolder;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((RecyclerView.ViewHolder)localObject).itemView)
     {
-      localObject1 = null;
-      localObject2 = paramChangeInfo.newHolder;
-      if (localObject2 == null) {
-        break label171;
+      RecyclerView.ViewHolder localViewHolder = paramChangeInfo.newHolder;
+      if (localViewHolder != null) {
+        localView = localViewHolder.itemView;
       }
-    }
-    label171:
-    for (Object localObject2 = ((RecyclerView.ViewHolder)localObject2).itemView;; localObject2 = null)
-    {
-      if (localObject1 != null)
+      if (localObject != null)
       {
-        localObject1 = ViewCompat.animate((View)localObject1).setDuration(getChangeDuration());
+        localObject = ViewCompat.animate((View)localObject).setDuration(getChangeDuration());
         this.mChangeAnimations.add(paramChangeInfo.oldHolder);
-        ((ViewPropertyAnimatorCompat)localObject1).translationX(paramChangeInfo.toX - paramChangeInfo.fromX);
-        ((ViewPropertyAnimatorCompat)localObject1).translationY(paramChangeInfo.toY - paramChangeInfo.fromY);
-        ((ViewPropertyAnimatorCompat)localObject1).alpha(0.0F).setListener(new VpaListenerAdapter(paramChangeInfo)
-        {
-          public void onAnimationEnd(View paramAnonymousView)
-          {
-            this.val$oldViewAnim.setListener(null);
-            ViewCompat.setAlpha(paramAnonymousView, 1.0F);
-            ViewCompat.setTranslationX(paramAnonymousView, 0.0F);
-            ViewCompat.setTranslationY(paramAnonymousView, 0.0F);
-            DefaultItemAnimator.this.dispatchChangeFinished(paramChangeInfo.oldHolder, true);
-            DefaultItemAnimator.this.mChangeAnimations.remove(paramChangeInfo.oldHolder);
-            DefaultItemAnimator.this.dispatchFinishedWhenDone();
-          }
-          
-          public void onAnimationStart(View paramAnonymousView)
-          {
-            DefaultItemAnimator.this.dispatchChangeStarting(paramChangeInfo.oldHolder, true);
-          }
-        }).start();
+        ((ViewPropertyAnimatorCompat)localObject).translationX(paramChangeInfo.toX - paramChangeInfo.fromX);
+        ((ViewPropertyAnimatorCompat)localObject).translationY(paramChangeInfo.toY - paramChangeInfo.fromY);
+        ((ViewPropertyAnimatorCompat)localObject).alpha(0.0F).setListener(new DefaultItemAnimator.7(this, paramChangeInfo, (ViewPropertyAnimatorCompat)localObject)).start();
       }
-      if (localObject2 != null)
+      if (localView != null)
       {
-        localObject1 = ViewCompat.animate((View)localObject2);
+        localObject = ViewCompat.animate(localView);
         this.mChangeAnimations.add(paramChangeInfo.newHolder);
-        ((ViewPropertyAnimatorCompat)localObject1).translationX(0.0F).translationY(0.0F).setDuration(getChangeDuration()).alpha(1.0F).setListener(new VpaListenerAdapter(paramChangeInfo)
-        {
-          public void onAnimationEnd(View paramAnonymousView)
-          {
-            this.val$newViewAnimation.setListener(null);
-            ViewCompat.setAlpha(this.val$newView, 1.0F);
-            ViewCompat.setTranslationX(this.val$newView, 0.0F);
-            ViewCompat.setTranslationY(this.val$newView, 0.0F);
-            DefaultItemAnimator.this.dispatchChangeFinished(paramChangeInfo.newHolder, false);
-            DefaultItemAnimator.this.mChangeAnimations.remove(paramChangeInfo.newHolder);
-            DefaultItemAnimator.this.dispatchFinishedWhenDone();
-          }
-          
-          public void onAnimationStart(View paramAnonymousView)
-          {
-            DefaultItemAnimator.this.dispatchChangeStarting(paramChangeInfo.newHolder, false);
-          }
-        }).start();
+        ((ViewPropertyAnimatorCompat)localObject).translationX(0.0F).translationY(0.0F).setDuration(getChangeDuration()).alpha(1.0F).setListener(new DefaultItemAnimator.8(this, paramChangeInfo, (ViewPropertyAnimatorCompat)localObject, localView)).start();
       }
       return;
-      localObject1 = ((RecyclerView.ViewHolder)localObject1).itemView;
-      break;
     }
   }
   
-  private void animateMoveImpl(final RecyclerView.ViewHolder paramViewHolder, final int paramInt1, final int paramInt2, int paramInt3, int paramInt4)
+  private void animateMoveImpl(RecyclerView.ViewHolder paramViewHolder, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     Object localObject = paramViewHolder.itemView;
     paramInt1 = paramInt3 - paramInt1;
@@ -133,53 +74,14 @@ public class DefaultItemAnimator
     }
     localObject = ViewCompat.animate((View)localObject);
     this.mMoveAnimations.add(paramViewHolder);
-    ((ViewPropertyAnimatorCompat)localObject).setDuration(getMoveDuration()).setListener(new VpaListenerAdapter(paramViewHolder)
-    {
-      public void onAnimationCancel(View paramAnonymousView)
-      {
-        if (paramInt1 != 0) {
-          ViewCompat.setTranslationX(paramAnonymousView, 0.0F);
-        }
-        if (paramInt2 != 0) {
-          ViewCompat.setTranslationY(paramAnonymousView, 0.0F);
-        }
-      }
-      
-      public void onAnimationEnd(View paramAnonymousView)
-      {
-        this.val$animation.setListener(null);
-        DefaultItemAnimator.this.dispatchMoveFinished(paramViewHolder);
-        DefaultItemAnimator.this.mMoveAnimations.remove(paramViewHolder);
-        DefaultItemAnimator.this.dispatchFinishedWhenDone();
-      }
-      
-      public void onAnimationStart(View paramAnonymousView)
-      {
-        DefaultItemAnimator.this.dispatchMoveStarting(paramViewHolder);
-      }
-    }).start();
+    ((ViewPropertyAnimatorCompat)localObject).setDuration(getMoveDuration()).setListener(new DefaultItemAnimator.6(this, paramViewHolder, paramInt1, paramInt2, (ViewPropertyAnimatorCompat)localObject)).start();
   }
   
-  private void animateRemoveImpl(final RecyclerView.ViewHolder paramViewHolder)
+  private void animateRemoveImpl(RecyclerView.ViewHolder paramViewHolder)
   {
-    final ViewPropertyAnimatorCompat localViewPropertyAnimatorCompat = ViewCompat.animate(paramViewHolder.itemView);
+    ViewPropertyAnimatorCompat localViewPropertyAnimatorCompat = ViewCompat.animate(paramViewHolder.itemView);
     this.mRemoveAnimations.add(paramViewHolder);
-    localViewPropertyAnimatorCompat.setDuration(getRemoveDuration()).alpha(0.0F).setListener(new VpaListenerAdapter(paramViewHolder)
-    {
-      public void onAnimationEnd(View paramAnonymousView)
-      {
-        localViewPropertyAnimatorCompat.setListener(null);
-        ViewCompat.setAlpha(paramAnonymousView, 1.0F);
-        DefaultItemAnimator.this.dispatchRemoveFinished(paramViewHolder);
-        DefaultItemAnimator.this.mRemoveAnimations.remove(paramViewHolder);
-        DefaultItemAnimator.this.dispatchFinishedWhenDone();
-      }
-      
-      public void onAnimationStart(View paramAnonymousView)
-      {
-        DefaultItemAnimator.this.dispatchRemoveStarting(paramViewHolder);
-      }
-    }).start();
+    localViewPropertyAnimatorCompat.setDuration(getRemoveDuration()).alpha(0.0F).setListener(new DefaultItemAnimator.4(this, paramViewHolder, localViewPropertyAnimatorCompat)).start();
   }
   
   private void dispatchFinishedWhenDone()
@@ -189,12 +91,12 @@ public class DefaultItemAnimator
     }
   }
   
-  private void endChangeAnimation(List<ChangeInfo> paramList, RecyclerView.ViewHolder paramViewHolder)
+  private void endChangeAnimation(List<DefaultItemAnimator.ChangeInfo> paramList, RecyclerView.ViewHolder paramViewHolder)
   {
     int i = paramList.size() - 1;
     while (i >= 0)
     {
-      ChangeInfo localChangeInfo = (ChangeInfo)paramList.get(i);
+      DefaultItemAnimator.ChangeInfo localChangeInfo = (DefaultItemAnimator.ChangeInfo)paramList.get(i);
       if ((endChangeAnimationIfNecessary(localChangeInfo, paramViewHolder)) && (localChangeInfo.oldHolder == null) && (localChangeInfo.newHolder == null)) {
         paramList.remove(localChangeInfo);
       }
@@ -202,7 +104,7 @@ public class DefaultItemAnimator
     }
   }
   
-  private void endChangeAnimationIfNecessary(ChangeInfo paramChangeInfo)
+  private void endChangeAnimationIfNecessary(DefaultItemAnimator.ChangeInfo paramChangeInfo)
   {
     if (paramChangeInfo.oldHolder != null) {
       endChangeAnimationIfNecessary(paramChangeInfo, paramChangeInfo.oldHolder);
@@ -212,9 +114,10 @@ public class DefaultItemAnimator
     }
   }
   
-  private boolean endChangeAnimationIfNecessary(ChangeInfo paramChangeInfo, RecyclerView.ViewHolder paramViewHolder)
+  private boolean endChangeAnimationIfNecessary(DefaultItemAnimator.ChangeInfo paramChangeInfo, RecyclerView.ViewHolder paramViewHolder)
   {
-    boolean bool = false;
+    boolean bool2 = false;
+    boolean bool1 = false;
     if (paramChangeInfo.newHolder == paramViewHolder) {
       paramChangeInfo.newHolder = null;
     }
@@ -223,15 +126,16 @@ public class DefaultItemAnimator
       ViewCompat.setAlpha(paramViewHolder.itemView, 1.0F);
       ViewCompat.setTranslationX(paramViewHolder.itemView, 0.0F);
       ViewCompat.setTranslationY(paramViewHolder.itemView, 0.0F);
-      dispatchChangeFinished(paramViewHolder, bool);
-      return true;
-      if (paramChangeInfo.oldHolder != paramViewHolder) {
-        break;
-      }
+      dispatchChangeFinished(paramViewHolder, bool1);
+      bool1 = true;
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (paramChangeInfo.oldHolder != paramViewHolder);
       paramChangeInfo.oldHolder = null;
-      bool = true;
+      bool1 = true;
     }
-    return false;
   }
   
   private void resetAnimation(RecyclerView.ViewHolder paramViewHolder)
@@ -269,7 +173,7 @@ public class DefaultItemAnimator
       ViewCompat.setTranslationY(paramViewHolder2.itemView, -j);
       ViewCompat.setAlpha(paramViewHolder2.itemView, 0.0F);
     }
-    this.mPendingChanges.add(new ChangeInfo(paramViewHolder1, paramViewHolder2, paramInt1, paramInt2, paramInt3, paramInt4, null));
+    this.mPendingChanges.add(new DefaultItemAnimator.ChangeInfo(paramViewHolder1, paramViewHolder2, paramInt1, paramInt2, paramInt3, paramInt4, null));
     return true;
   }
   
@@ -292,7 +196,7 @@ public class DefaultItemAnimator
     if (j != 0) {
       ViewCompat.setTranslationY(localView, -j);
     }
-    this.mPendingMoves.add(new MoveInfo(paramViewHolder, paramInt1, paramInt2, paramInt3, paramInt4, null));
+    this.mPendingMoves.add(new DefaultItemAnimator.MoveInfo(paramViewHolder, paramInt1, paramInt2, paramInt3, paramInt4, null));
     return true;
   }
   
@@ -325,7 +229,7 @@ public class DefaultItemAnimator
     int i = this.mPendingMoves.size() - 1;
     while (i >= 0)
     {
-      if (((MoveInfo)this.mPendingMoves.get(i)).holder == paramViewHolder)
+      if (((DefaultItemAnimator.MoveInfo)this.mPendingMoves.get(i)).holder == paramViewHolder)
       {
         ViewCompat.setTranslationY(localView, 0.0F);
         ViewCompat.setTranslationX(localView, 0.0F);
@@ -365,7 +269,7 @@ public class DefaultItemAnimator
       {
         if (j >= 0)
         {
-          if (((MoveInfo)localArrayList.get(j)).holder != paramViewHolder) {
+          if (((DefaultItemAnimator.MoveInfo)localArrayList.get(j)).holder != paramViewHolder) {
             break label293;
           }
           ViewCompat.setTranslationY(localView, 0.0F);
@@ -407,11 +311,11 @@ public class DefaultItemAnimator
     Object localObject2;
     while (i >= 0)
     {
-      localObject1 = (MoveInfo)this.mPendingMoves.get(i);
-      localObject2 = ((MoveInfo)localObject1).holder.itemView;
+      localObject1 = (DefaultItemAnimator.MoveInfo)this.mPendingMoves.get(i);
+      localObject2 = ((DefaultItemAnimator.MoveInfo)localObject1).holder.itemView;
       ViewCompat.setTranslationY((View)localObject2, 0.0F);
       ViewCompat.setTranslationX((View)localObject2, 0.0F);
-      dispatchMoveFinished(((MoveInfo)localObject1).holder);
+      dispatchMoveFinished(((DefaultItemAnimator.MoveInfo)localObject1).holder);
       this.mPendingMoves.remove(i);
       i -= 1;
     }
@@ -434,7 +338,7 @@ public class DefaultItemAnimator
     i = this.mPendingChanges.size() - 1;
     while (i >= 0)
     {
-      endChangeAnimationIfNecessary((ChangeInfo)this.mPendingChanges.get(i));
+      endChangeAnimationIfNecessary((DefaultItemAnimator.ChangeInfo)this.mPendingChanges.get(i));
       i -= 1;
     }
     this.mPendingChanges.clear();
@@ -449,11 +353,11 @@ public class DefaultItemAnimator
       j = ((ArrayList)localObject1).size() - 1;
       while (j >= 0)
       {
-        localObject2 = (MoveInfo)((ArrayList)localObject1).get(j);
-        View localView = ((MoveInfo)localObject2).holder.itemView;
+        localObject2 = (DefaultItemAnimator.MoveInfo)((ArrayList)localObject1).get(j);
+        View localView = ((DefaultItemAnimator.MoveInfo)localObject2).holder.itemView;
         ViewCompat.setTranslationY(localView, 0.0F);
         ViewCompat.setTranslationX(localView, 0.0F);
-        dispatchMoveFinished(((MoveInfo)localObject2).holder);
+        dispatchMoveFinished(((DefaultItemAnimator.MoveInfo)localObject2).holder);
         ((ArrayList)localObject1).remove(j);
         if (((ArrayList)localObject1).isEmpty()) {
           this.mMovesList.remove(localObject1);
@@ -487,7 +391,7 @@ public class DefaultItemAnimator
       j = ((ArrayList)localObject1).size() - 1;
       while (j >= 0)
       {
-        endChangeAnimationIfNecessary((ChangeInfo)((ArrayList)localObject1).get(j));
+        endChangeAnimationIfNecessary((DefaultItemAnimator.ChangeInfo)((ArrayList)localObject1).get(j));
         if (((ArrayList)localObject1).isEmpty()) {
           this.mChangesList.remove(localObject1);
         }
@@ -563,22 +467,9 @@ public class DefaultItemAnimator
       ((ArrayList)localObject1).addAll(this.mPendingMoves);
       this.mMovesList.add(localObject1);
       this.mPendingMoves.clear();
-      localObject2 = new Runnable()
-      {
-        public void run()
-        {
-          Iterator localIterator = this.val$moves.iterator();
-          while (localIterator.hasNext())
-          {
-            DefaultItemAnimator.MoveInfo localMoveInfo = (DefaultItemAnimator.MoveInfo)localIterator.next();
-            DefaultItemAnimator.this.animateMoveImpl(localMoveInfo.holder, localMoveInfo.fromX, localMoveInfo.fromY, localMoveInfo.toX, localMoveInfo.toY);
-          }
-          this.val$moves.clear();
-          DefaultItemAnimator.this.mMovesList.remove(this.val$moves);
-        }
-      };
+      localObject2 = new DefaultItemAnimator.1(this, (ArrayList)localObject1);
       if (i != 0) {
-        ViewCompat.postOnAnimationDelayed(((MoveInfo)((ArrayList)localObject1).get(0)).holder.itemView, (Runnable)localObject2, getRemoveDuration());
+        ViewCompat.postOnAnimationDelayed(((DefaultItemAnimator.MoveInfo)((ArrayList)localObject1).get(0)).holder.itemView, (Runnable)localObject2, getRemoveDuration());
       }
     }
     else
@@ -589,24 +480,11 @@ public class DefaultItemAnimator
         ((ArrayList)localObject1).addAll(this.mPendingChanges);
         this.mChangesList.add(localObject1);
         this.mPendingChanges.clear();
-        localObject2 = new Runnable()
-        {
-          public void run()
-          {
-            Iterator localIterator = this.val$changes.iterator();
-            while (localIterator.hasNext())
-            {
-              DefaultItemAnimator.ChangeInfo localChangeInfo = (DefaultItemAnimator.ChangeInfo)localIterator.next();
-              DefaultItemAnimator.this.animateChangeImpl(localChangeInfo);
-            }
-            this.val$changes.clear();
-            DefaultItemAnimator.this.mChangesList.remove(this.val$changes);
-          }
-        };
+        localObject2 = new DefaultItemAnimator.2(this, (ArrayList)localObject1);
         if (i == 0) {
           break label428;
         }
-        ViewCompat.postOnAnimationDelayed(((ChangeInfo)((ArrayList)localObject1).get(0)).oldHolder.itemView, (Runnable)localObject2, getRemoveDuration());
+        ViewCompat.postOnAnimationDelayed(((DefaultItemAnimator.ChangeInfo)((ArrayList)localObject1).get(0)).oldHolder.itemView, (Runnable)localObject2, getRemoveDuration());
       }
       if (m == 0) {
         break label436;
@@ -615,20 +493,7 @@ public class DefaultItemAnimator
       ((ArrayList)localObject1).addAll(this.mPendingAdditions);
       this.mAdditionsList.add(localObject1);
       this.mPendingAdditions.clear();
-      localObject2 = new Runnable()
-      {
-        public void run()
-        {
-          Iterator localIterator = this.val$additions.iterator();
-          while (localIterator.hasNext())
-          {
-            RecyclerView.ViewHolder localViewHolder = (RecyclerView.ViewHolder)localIterator.next();
-            DefaultItemAnimator.this.animateAddImpl(localViewHolder);
-          }
-          this.val$additions.clear();
-          DefaultItemAnimator.this.mAdditionsList.remove(this.val$additions);
-        }
-      };
+      localObject2 = new DefaultItemAnimator.3(this, (ArrayList)localObject1);
       if ((i == 0) && (j == 0) && (k == 0)) {
         break label456;
       }
@@ -667,64 +532,6 @@ public class DefaultItemAnimator
     }
     label456:
     ((Runnable)localObject2).run();
-  }
-  
-  private static class ChangeInfo
-  {
-    public int fromX;
-    public int fromY;
-    public RecyclerView.ViewHolder newHolder;
-    public RecyclerView.ViewHolder oldHolder;
-    public int toX;
-    public int toY;
-    
-    private ChangeInfo(RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2)
-    {
-      this.oldHolder = paramViewHolder1;
-      this.newHolder = paramViewHolder2;
-    }
-    
-    private ChangeInfo(RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-    {
-      this(paramViewHolder1, paramViewHolder2);
-      this.fromX = paramInt1;
-      this.fromY = paramInt2;
-      this.toX = paramInt3;
-      this.toY = paramInt4;
-    }
-    
-    public String toString()
-    {
-      return "ChangeInfo{oldHolder=" + this.oldHolder + ", newHolder=" + this.newHolder + ", fromX=" + this.fromX + ", fromY=" + this.fromY + ", toX=" + this.toX + ", toY=" + this.toY + '}';
-    }
-  }
-  
-  private static class MoveInfo
-  {
-    public int fromX;
-    public int fromY;
-    public RecyclerView.ViewHolder holder;
-    public int toX;
-    public int toY;
-    
-    private MoveInfo(RecyclerView.ViewHolder paramViewHolder, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-    {
-      this.holder = paramViewHolder;
-      this.fromX = paramInt1;
-      this.fromY = paramInt2;
-      this.toX = paramInt3;
-      this.toY = paramInt4;
-    }
-  }
-  
-  private static class VpaListenerAdapter
-    implements ViewPropertyAnimatorListener
-  {
-    public void onAnimationCancel(View paramView) {}
-    
-    public void onAnimationEnd(View paramView) {}
-    
-    public void onAnimationStart(View paramView) {}
   }
 }
 

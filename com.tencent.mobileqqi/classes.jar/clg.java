@@ -1,32 +1,29 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.DataLineObserver;
+import android.app.Dialog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
 public class clg
-  extends DataLineObserver
+  implements Animation.AnimationListener
 {
-  public clg(Conversation paramConversation) {}
+  public clg(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super.a(paramBoolean, paramLong, paramString);
-    this.a.a(8, AppConstants.P, 6000);
+    ForwardFriendListActivity.a(this.a).show();
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(null);
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
   }
   
-  protected void a(boolean paramBoolean, Long paramLong, String paramString)
-  {
-    this.a.a(9, AppConstants.P, 6000);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.b(paramBoolean, paramLong, paramString);
-    this.a.a(8, AppConstants.P, 6000);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     clg
  * JD-Core Version:    0.7.0.1
  */

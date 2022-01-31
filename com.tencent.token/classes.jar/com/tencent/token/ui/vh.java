@@ -1,32 +1,19 @@
 package com.tencent.token.ui;
 
 import android.content.Intent;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.WindowManager;
 
-final class vh
+class vh
   implements View.OnClickListener
 {
-  vh(RealNameFindActivity paramRealNameFindActivity) {}
+  vh(RealNameProtectActivity paramRealNameProtectActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.getWindowManager().getDefaultDisplay().getWidth();
-    this.a.getWindowManager().getDefaultDisplay().getHeight();
-    paramView = new DisplayMetrics();
-    this.a.getWindowManager().getDefaultDisplay().getMetrics(paramView);
-    if (RealNameFindActivity.access$100(this.a))
-    {
-      paramView = new Intent(this.a, DetectIDPhotoActivity.class);
-      this.a.startActivityForResult(paramView, 2);
-      return;
-    }
-    paramView = new Intent(this.a, RealNameTakeIDPhotoActivity.class);
-    paramView.putExtra("scene", 2);
-    this.a.startActivityForResult(paramView, 2);
+    paramView = new Intent(this.a, RealNameActivity.class);
+    paramView.putExtra("realname_result", RealNameProtectActivity.access$000(this.a));
+    this.a.startActivity(paramView);
   }
 }
 

@@ -10,8 +10,8 @@ public final class s_life_moment
 {
   static s_single_count cache_stCount = new s_single_count();
   static single_feed cache_stMomentFeed;
-  static ArrayList cache_vec_lifemoment = new ArrayList();
-  static ArrayList cache_vec_picurls;
+  static ArrayList<s_life_moment_info> cache_vec_lifemoment = new ArrayList();
+  static ArrayList<s_picurl> cache_vec_picurls;
   public String action_url = "";
   public String button_text = "";
   public String left_title = "";
@@ -20,8 +20,8 @@ public final class s_life_moment
   public s_single_count stCount;
   public single_feed stMomentFeed;
   public String summary = "";
-  public ArrayList vec_lifemoment;
-  public ArrayList vec_picurls;
+  public ArrayList<s_life_moment_info> vec_lifemoment;
+  public ArrayList<s_picurl> vec_picurls;
   
   static
   {
@@ -35,16 +35,16 @@ public final class s_life_moment
   
   public s_life_moment() {}
   
-  public s_life_moment(int paramInt, ArrayList paramArrayList1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, ArrayList paramArrayList2, single_feed paramsingle_feed, s_single_count params_single_count)
+  public s_life_moment(int paramInt, ArrayList<s_life_moment_info> paramArrayList, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, ArrayList<s_picurl> paramArrayList1, single_feed paramsingle_feed, s_single_count params_single_count)
   {
     this.show_type = paramInt;
-    this.vec_lifemoment = paramArrayList1;
+    this.vec_lifemoment = paramArrayList;
     this.left_title = paramString1;
     this.right_title = paramString2;
     this.action_url = paramString3;
     this.summary = paramString4;
     this.button_text = paramString5;
-    this.vec_picurls = paramArrayList2;
+    this.vec_picurls = paramArrayList1;
     this.stMomentFeed = paramsingle_feed;
     this.stCount = params_single_count;
   }
@@ -97,7 +97,7 @@ public final class s_life_moment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_life_moment
  * JD-Core Version:    0.7.0.1
  */

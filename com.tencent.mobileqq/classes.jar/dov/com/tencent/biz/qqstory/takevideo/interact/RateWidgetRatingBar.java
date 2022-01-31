@@ -8,9 +8,11 @@ import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import aoby;
+import bmzf;
+import bmzg;
 import com.tencent.mobileqq.R.styleable;
 import java.math.BigDecimal;
+import wxe;
 
 public class RateWidgetRatingBar
   extends LinearLayout
@@ -18,7 +20,7 @@ public class RateWidgetRatingBar
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private RateWidgetRatingBar.OnRatingChangeListener jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractRateWidgetRatingBar$OnRatingChangeListener;
+  private bmzg jdField_a_of_type_Bmzg;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -34,25 +36,35 @@ public class RateWidgetRatingBar
     super(paramContext, paramAttributeSet);
     setOrientation(0);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.RatingBar);
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(12);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(10);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(11);
-    this.jdField_a_of_type_Float = paramAttributeSet.getDimension(4, 60.0F);
-    this.jdField_b_of_type_Float = paramAttributeSet.getDimension(5, 120.0F);
-    this.jdField_c_of_type_Float = paramAttributeSet.getDimension(6, 0.0F);
-    this.d = paramAttributeSet.getDimension(7, 0.0F);
-    this.jdField_a_of_type_Int = paramAttributeSet.getInteger(8, 5);
-    this.jdField_b_of_type_Int = paramAttributeSet.getInteger(9, 0);
-    this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(13, true);
-    paramAttributeSet.recycle();
-    while (i < this.jdField_a_of_type_Int)
+    try
     {
-      paramAttributeSet = a(paramContext, this.jdField_b_of_type_Boolean);
-      paramAttributeSet.setOnClickListener(new aoby(this));
-      addView(paramAttributeSet);
-      i += 1;
+      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(7);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(4);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(6);
+      this.jdField_a_of_type_Float = paramAttributeSet.getDimension(12, 60.0F);
+      this.jdField_b_of_type_Float = paramAttributeSet.getDimension(8, 120.0F);
+      this.jdField_c_of_type_Float = paramAttributeSet.getDimension(10, 0.0F);
+      this.d = paramAttributeSet.getDimension(9, 0.0F);
+      this.jdField_a_of_type_Int = paramAttributeSet.getInteger(13, 5);
+      this.jdField_b_of_type_Int = paramAttributeSet.getInteger(1, 0);
+      this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(0, true);
+      paramAttributeSet.recycle();
+      while (i < this.jdField_a_of_type_Int)
+      {
+        paramAttributeSet = a(paramContext, this.jdField_b_of_type_Boolean);
+        paramAttributeSet.setOnClickListener(new bmzf(this));
+        addView(paramAttributeSet);
+        i += 1;
+      }
     }
-    setStar(this.jdField_b_of_type_Int);
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      for (;;)
+      {
+        wxe.c("RateWidgetRatingBar", "RateWidgetRatingBar load drawable failed : %s", localOutOfMemoryError);
+      }
+      setStar(this.jdField_b_of_type_Int);
+    }
   }
   
   private ImageView a(Context paramContext, boolean paramBoolean)
@@ -71,9 +83,9 @@ public class RateWidgetRatingBar
     return paramContext;
   }
   
-  public void setOnRatingChangeListener(RateWidgetRatingBar.OnRatingChangeListener paramOnRatingChangeListener)
+  public void setOnRatingChangeListener(bmzg parambmzg)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractRateWidgetRatingBar$OnRatingChangeListener = paramOnRatingChangeListener;
+    this.jdField_a_of_type_Bmzg = parambmzg;
   }
   
   public void setRatable(boolean paramBoolean)
@@ -142,7 +154,7 @@ public class RateWidgetRatingBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.interact.RateWidgetRatingBar
  * JD-Core Version:    0.7.0.1
  */

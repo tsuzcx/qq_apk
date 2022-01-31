@@ -1,23 +1,40 @@
+import com.tencent.mobileqq.config.QStorageInstantiateException;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragmentAllWaite;
 
 public class aomb
-  implements Runnable
+  extends aolx
 {
-  public aomb(CaptureQmcfSoDownloadFragmentAllWaite paramCaptureQmcfSoDownloadFragmentAllWaite, int paramInt) {}
-  
-  public void run()
+  public int a()
   {
-    CaptureQmcfSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite, this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "onDownloadProgress mGestureState=" + CaptureQmcfSoDownloadFragmentAllWaite.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite) + " mVideoState=" + CaptureQmcfSoDownloadFragmentAllWaite.c(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite) + ",mFilterSoState=" + CaptureQmcfSoDownloadFragmentAllWaite.d(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite));
+    return 159;
+  }
+  
+  public aolr a(String paramString)
+  {
+    QLog.d("ArkMsgAIDisableConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
+    try
+    {
+      aomp localaomp = (aomp)aolc.a(paramString, aomp.class);
+      return new aolv(paramString, localaomp);
     }
-    CaptureQmcfSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite, "GestureDownloadProgress");
+    catch (QStorageInstantiateException localQStorageInstantiateException)
+    {
+      for (;;)
+      {
+        QLog.i("ArkMsgAIDisableConfProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
+        Object localObject = null;
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomb
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class im_msg_body$ConferenceTipsInfo
-  extends MessageMicro
+  extends MessageMicro<ConferenceTipsInfo>
 {
   public static final int ECONFST_BUDDY_AV = 2;
   public static final int ECONFST_DISCUSS_AV = 1;

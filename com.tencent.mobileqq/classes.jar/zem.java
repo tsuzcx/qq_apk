@@ -1,80 +1,45 @@
-import com.tencent.mobileqq.app.GroupIconHelper;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class zem
+class zem
+  implements nbs
 {
-  public byte a;
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
+  zem(zej paramzej, JsBridgeListener paramJsBridgeListener) {}
   
-  private zem(GroupIconHelper paramGroupIconHelper)
+  public void loaded(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Byte = 1;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject();
+        paramString.put("retcode", -1);
+        paramString.put("msg", "error");
+        this.jdField_a_of_type_Zej.callJs(this.jdField_a_of_type_Zej.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d("OfflinePluginQQ", 2, "OfflinePlugin, batchCheckUpdate, JSONException :" + paramString);
+        return;
+      }
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 121;
+    localMessage.obj = new Object[] { this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener, paramString };
+    this.jdField_a_of_type_Zej.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   
-  public void a(byte paramByte)
-  {
-    if (paramByte == 3)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Byte = 1;
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangString = null;
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_b_of_type_JavaLangString = null;
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.c = false;
-      this.d = false;
-      this.e = false;
-    }
-    while (paramByte != 2) {
-      return;
-    }
-    this.jdField_b_of_type_Boolean = false;
-    this.e = true;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nGroupIconInfo");
-    localStringBuilder.append("\n |-").append("isChanged:").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("\n |-").append("state:").append(this.jdField_a_of_type_Byte);
-    localStringBuilder.append("\n |-").append("isSyncFace:").append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append("\n |-").append("startTime:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("\n |-").append("faceUinSet:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("faceCount:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("\n |-").append("crateIconCount:").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("\n |-").append("lastCreatedFaceUinSet:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("isPstnIcon:").append(this.c);
-    localStringBuilder.append("\n |-").append("hasRealPstnUser:").append(this.d);
-    localStringBuilder.append("\n |-").append("isFromCreate:").append(this.e);
-    try
-    {
-      localStringBuilder.append("\n |-").append("memberFaceList:").append(this.jdField_a_of_type_JavaUtilArrayList);
-      label243:
-      return localStringBuilder.toString();
-    }
-    catch (Exception localException)
-    {
-      break label243;
-    }
-  }
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ProgressBar;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.ICmGameConfirmListener;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 class ytf
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  ytf(yte paramyte) {}
+  ytf(ytb paramytb) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    ApolloGameActivity.c(this.a.jdField_a_of_type_Ytc.a).setVisibility(4);
-    ApolloGameActivity.a(this.a.jdField_a_of_type_Ytc.a).setVisibility(4);
-    ApolloGameActivity.a(this.a.jdField_a_of_type_Ytc.a).setVisibility(0);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$ICmGameConfirmListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$ICmGameConfirmListener.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
-    }
+    int i = this.a.d.getMeasuredWidth();
+    i = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth() - i - bdgz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 5.0F));
+    this.a.c.setMaxWidth(i);
+    this.a.c.setText(new bamb(this.a.jdField_a_of_type_Bbry.h, 16).a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ytf
  * JD-Core Version:    0.7.0.1
  */

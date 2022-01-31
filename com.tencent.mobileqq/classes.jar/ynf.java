@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.apollo.ChatPieApolloViewController;
-import com.tencent.mobileqq.apollo.process.data.CmGameMainManager;
-import com.tencent.mobileqq.apollo.view.ApolloGameWrapper.CheckGameListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
 public class ynf
-  implements ApolloGameWrapper.CheckGameListener
+  implements View.OnClickListener
 {
-  public ynf(ChatPieApolloViewController paramChatPieApolloViewController) {}
+  public ynf(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(boolean paramBoolean, CmGameMainManager paramCmGameMainManager)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramCmGameMainManager != null)) {
-      paramCmGameMainManager.d();
-    }
+    VideoPlayerView.h(this.a);
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ynf
  * JD-Core Version:    0.7.0.1
  */

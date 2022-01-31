@@ -9,7 +9,7 @@ public class QRDisplayActivity$GetNicknameObserver
 {
   public QRDisplayActivity$GetNicknameObserver(QRDisplayActivity paramQRDisplayActivity) {}
   
-  protected void a(boolean paramBoolean, List paramList1, List paramList2) {}
+  public void a(boolean paramBoolean, List paramList1, List paramList2) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {

@@ -1,43 +1,53 @@
-import android.os.Handler;
 import android.view.View;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.CommentHeaderData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendTitleData;
 
-public class sap
-  implements ActionSheet.OnButtonClickListener
+class sap
+  extends sah
 {
-  public sap(ChatHistoryForC2C paramChatHistoryForC2C, MessageRecord paramMessageRecord, ActionSheet paramActionSheet) {}
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private View b;
+  private View c;
   
-  public void OnClick(View paramView, int paramInt)
+  public sap(sal paramsal, View paramView, BaseData paramBaseData)
   {
-    switch (paramInt)
+    super(paramView, paramBaseData);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379043));
+    this.b = paramView.findViewById(2131365362);
+    this.c = paramView.findViewById(2131376913);
+  }
+  
+  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  {
+    paramBaseData1 = "";
+    if (paramBaseData2.s == 7)
     {
+      paramBaseData1 = ((RecommendTitleData)paramBaseData2).jdField_a_of_type_JavaLangString;
+      this.b.setVisibility(0);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_JavaUtilList = new ArrayList();
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      if ((paramBaseData2.s != 7) || (!((RecommendTitleData)paramBaseData2).jdField_a_of_type_Boolean)) {
+        break;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.b = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramView, 800L);
-      Utils.executeAsyncTaskOnThreadPool(new saq(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.app, "chat_history", "ChatHistory", "Clk_deleteOne", 1, 0, new String[0]);
+      this.c.setVisibility(8);
+      return;
+      if (paramBaseData2.s == 13)
+      {
+        paramBaseData1 = ((CommentHeaderData)paramBaseData2).jdField_a_of_type_JavaLangString;
+        this.b.setVisibility(8);
+      }
     }
+    this.c.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sap
  * JD-Core Version:    0.7.0.1
  */

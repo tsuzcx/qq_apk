@@ -1,53 +1,41 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadComDownloader;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource.DownloadListenerWrapper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import java.io.File;
-import java.util.Map;
+import android.graphics.Color;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.TextView;
 
-public class xfi
-  extends PreloadResource.DownloadListenerWrapper
+class xfi
+  implements TextWatcher
 {
-  public xfi(PreloadComDownloader paramPreloadComDownloader, DownloadListener paramDownloadListener)
-  {
-    super(paramDownloadListener);
-  }
+  xfi(xfh paramxfh) {}
   
-  public void onDoneFile(DownloadTask paramDownloadTask)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    long l2 = -1L;
-    super.onDoneFile(paramDownloadTask);
-    if ((paramDownloadTask != null) && (paramDownloadTask.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(paramDownloadTask.jdField_a_of_type_JavaLangString)))
+    if (this.a.jdField_a_of_type_Xfo == null) {}
+    do
     {
-      File localFile = (File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.jdField_a_of_type_JavaLangString);
-      if (localFile != null)
+      return;
+      paramInt2 = this.a.a(paramCharSequence.toString());
+      if (paramInt2 > 420)
       {
-        Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (localObject != null)
-        {
-          localObject = (PreDownloadController)((QQAppInterface)localObject).getManager(192);
-          String str = paramDownloadTask.jdField_a_of_type_JavaLangString;
-          long l1 = l2;
-          if (paramDownloadTask.jdField_a_of_type_Int == 0)
-          {
-            l1 = l2;
-            if (localFile.exists()) {
-              l1 = localFile.length();
-            }
-          }
-          ((PreDownloadController)localObject).a(str, l1);
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.subSequence(0, paramInt1));
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramInt1);
+        if (this.a.jdField_a_of_type_Xfo != null) {
+          this.a.jdField_a_of_type_Xfo.b(420);
         }
       }
-    }
+    } while (paramInt2 <= 0);
+    this.a.b.setTextColor(Color.parseColor("#12b7f5"));
+    this.a.b.setEnabled(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xfi
  * JD-Core Version:    0.7.0.1
  */

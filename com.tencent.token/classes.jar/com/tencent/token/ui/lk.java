@@ -1,16 +1,13 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class lk
-  implements DialogInterface.OnClickListener
+class lk
+  implements Runnable
 {
-  lk(GetBarcodeVerifyMsgActivity paramGetBarcodeVerifyMsgActivity) {}
+  lk(IndexActivity paramIndexActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.finish();
+    IndexActivity.access$2000(this.a);
   }
 }
 

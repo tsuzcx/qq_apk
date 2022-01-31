@@ -9,11 +9,11 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ArticleComment$CheckArticleLikeRequest
-  extends MessageMicro
+  extends MessageMicro<CheckArticleLikeRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField article_id = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField uins = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> uins = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   
   static
   {
@@ -23,7 +23,7 @@ public final class ArticleComment$CheckArticleLikeRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ac.ArticleComment.CheckArticleLikeRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,61 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View;
 
 public class aapt
-  implements Runnable
+  extends aapz
 {
-  public aapt(ArkAppModuleReg.ModuleQQ paramModuleQQ, ArkAppMessage paramArkAppMessage) {}
-  
-  public void run()
+  protected aapt(Context paramContext)
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((localBaseActivity instanceof FragmentActivity))
+    super(paramContext);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    aase.b("GdtMotiveVideoAd", "185V doAnimation " + this.jdField_a_of_type_Aapr + " targetMode " + paramInt);
+    aapp localaapp;
+    if (this.jdField_a_of_type_Aapr != null)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("forward_type", 27);
-      localBundle.putString("forward_ark_app_name", this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.appName);
-      localBundle.putString("forward_ark_app_view", this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.appView);
-      localBundle.putString("forward_ark_app_ver", this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.appMinVersion);
-      localBundle.putString("forward_ark_app_prompt", this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.promptText);
-      localBundle.putString("forward_ark_app_config", this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.config);
-      localBundle.putString("forward_ark_app_desc", this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.appDesc);
-      localBundle.putString("forward_ark_app_compat", this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.compatibleText);
-      localBundle.putString("forward_ark_app_meta", this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.metaList);
-      Intent localIntent = new Intent();
-      localIntent.putExtras(localBundle);
-      ForwardBaseOption.a(localBaseActivity, localIntent, 21);
-      if (QLog.isColorLevel()) {
-        QLog.i("ArkApp", 1, "QQ.SendMessage light success.");
+      localaapp = (aapp)this.jdField_a_of_type_Aapr;
+      a();
+      if (paramInt == 1)
+      {
+        a(localaapp.jdField_a_of_type_AndroidViewView, localaapp.jdField_a_of_type_Int, 0);
+        a(localaapp.f, localaapp.j, localaapp.k);
       }
     }
+    else
+    {
+      return;
+    }
+    a(localaapp.jdField_a_of_type_AndroidViewView, -localaapp.jdField_a_of_type_Int, 0);
+    a(localaapp.f, -localaapp.j, -localaapp.k);
+  }
+  
+  public void a(View paramView1, View paramView2, View paramView3, View paramView4)
+  {
+    aapp localaapp = new aapp();
+    localaapp.jdField_a_of_type_AndroidViewView = paramView1;
+    localaapp.f = paramView2;
+    localaapp.g = paramView3;
+    localaapp.jdField_a_of_type_Int = aatp.a(-306, 1334, aatp.e(this.jdField_a_of_type_AndroidContentContext));
+    localaapp.j = aatp.a(-406, 1334, aatp.e(this.jdField_a_of_type_AndroidContentContext));
+    localaapp.k = aatp.a(125, 750, aatp.f(this.jdField_a_of_type_AndroidContentContext));
+    float f = aatp.a(400, 750, aatp.f(this.jdField_a_of_type_AndroidContentContext));
+    if (f > 0.0F)
+    {
+      localaapp.jdField_a_of_type_Float = (Float.valueOf(f * 1.0F / aatp.f(this.jdField_a_of_type_AndroidContentContext)).floatValue() - 1.0F);
+      localaapp.b = localaapp.jdField_a_of_type_Float;
+    }
+    localaapp.l = aatp.a(50, 750, aatp.f(this.jdField_a_of_type_AndroidContentContext));
+    localaapp.m = aatp.a(-100, 1334, aatp.e(this.jdField_a_of_type_AndroidContentContext));
+    a(localaapp, paramView4);
+    this.jdField_a_of_type_Aapr = localaapp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aapt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,28 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnErrorListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTextureImpl;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeze
-  implements IMediaPlayer.OnErrorListener
+  extends BroadcastReceiver
 {
-  public aeze(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnErrorListener paramOnErrorListener, Object paramObject) {}
+  public aeze(ConfessHalfScreenActivity paramConfessHalfScreenActivity) {}
   
-  public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView$OnErrorListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTextureImpl, 0, paramInt1, this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTextureImpl.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
+    if ("com.tencent.mobileqq.action.ACTION_CONFESS_FINISH_EVENT".equals(paramIntent.getAction()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebLog_QQBrowserActivity", 2, "Confess finish action! ");
+      }
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeze
  * JD-Core Version:    0.7.0.1
  */

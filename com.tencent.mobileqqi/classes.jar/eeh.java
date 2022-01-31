@@ -1,25 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.item.LocationItemBuilder;
-import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class eeh
-  implements DialogInterface.OnClickListener
+class eeh
+  implements Runnable
 {
-  public eeh(LocationItemBuilder paramLocationItemBuilder, MessageForText paramMessageForText) {}
+  eeh(eeg parameeg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ChatActivityFacade.a(LocationItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLocationItemBuilder), this.jdField_a_of_type_ComTencentMobileqqDataMessageForText);
-    ChatActivityFacade.b(LocationItemBuilder.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLocationItemBuilder), LocationItemBuilder.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLocationItemBuilder), LocationItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLocationItemBuilder), this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg);
-    LocationItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLocationItemBuilder).notifyDataSetChanged();
+    ((PhoneContactManagerImp)this.a.a.b.getManager(10)).f();
+    ReportController.b(this.a.a.b, "CliOper", "", "", "frd_recommend", "clean_offer", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     eeh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,43 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.apollo.store.webview.ApolloSSOConfig;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.RspBody;
+import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.TransFileRspBody;
 
-public final class yul
-  extends DownloadListener
+public abstract class yul
+  extends nac
 {
-  public yul(SharedPreferences paramSharedPreferences, int paramInt, ApolloSSOConfig paramApolloSSOConfig) {}
-  
-  public void onDone(DownloadTask paramDownloadTask)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super.onDone(paramDownloadTask);
-    QLog.i("apollo_client_ApolloSSOConfig", 1, "checkUpdateApolloWebViewConfig download file task.getStatus()->" + paramDownloadTask.a() + ", httpCode: " + paramDownloadTask.e);
-    if (3 == paramDownloadTask.a())
+    if (paramInt != 0)
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("sp_key_apollo_webView_config_version", this.jdField_a_of_type_Int).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_client_ApolloSSOConfig", 2, "checkUpdateApolloWebViewConfig download version:" + this.jdField_a_of_type_Int);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloSSOConfig != null) {
-        ApolloSSOConfig.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloSSOConfig);
+      a(false, paramInt, null, paramBundle);
+      return;
+    }
+    oidb_0x6d9.RspBody localRspBody = new oidb_0x6d9.RspBody();
+    try
+    {
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d9.TransFileRspBody)localRspBody.trans_file_rsp.get();
+      if (paramArrayOfByte.int32_ret_code.has())
+      {
+        a(true, 0, paramArrayOfByte, paramBundle);
+        return;
       }
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, null, paramBundle);
+      return;
+    }
+    a(false, -1, null, paramBundle);
   }
+  
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d9.TransFileRspBody paramTransFileRspBody, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yul
  * JD-Core Version:    0.7.0.1
  */

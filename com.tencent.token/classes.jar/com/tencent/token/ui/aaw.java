@@ -1,31 +1,32 @@
 package com.tencent.token.ui;
 
+import android.content.Context;
 import android.content.res.Resources;
-import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ProgressBar;
+import android.view.View.OnTouchListener;
 import android.widget.TextView;
-import com.tencent.token.core.bean.QQUser;
 
-final class aaw
-  implements View.OnClickListener
+class aaw
+  implements View.OnTouchListener
 {
-  aaw(SmsContentTipActivity paramSmsContentTipActivity) {}
+  aaw(aau paramaau) {}
   
-  public final void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    SmsContentTipActivity.access$2200(this.a).setVisibility(0);
-    SmsContentTipActivity.access$2300(this.a).setText(this.a.getResources().getString(2131361882));
-    SmsContentTipActivity.access$2400(this.a).setClickable(false);
-    SmsContentTipActivity.access$1300(this.a).setVisibility(4);
-    if ((SmsContentTipActivity.access$1000(this.a) == 0) || (SmsContentTipActivity.access$1000(this.a) == 7))
+    paramView = (TextView)paramView.findViewById(2131559251);
+    int i = aau.a(this.a).getResources().getColor(2131492925);
+    int j = aau.a(this.a).getResources().getColor(2131492933);
+    switch (paramMotionEvent.getAction())
     {
-      SmsContentTipActivity.access$2502(this.a, false);
-      SmsContentTipActivity.access$202(this.a, SmsContentTipActivity.access$2600(this.a).mRealUin + "");
     }
-    this.a.startTimeTask(2);
-    this.a.mHandler.sendEmptyMessage(3);
+    for (;;)
+    {
+      return false;
+      paramView.setTextColor(j);
+      continue;
+      paramView.setTextColor(i);
+    }
   }
 }
 

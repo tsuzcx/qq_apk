@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.search.searchengine.ApproximateSearchEngine;
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
-import java.util.List;
-
 public class ahuz
-  implements Runnable
 {
-  public ahuz(ApproximateSearchEngine paramApproximateSearchEngine, SearchRequest paramSearchRequest) {}
+  public long a;
+  public boolean a;
   
-  public void run()
+  public ahuz()
   {
-    List localList = ApproximateSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineApproximateSearchEngine, this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest);
-    ISearchListener localISearchListener = ApproximateSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineApproximateSearchEngine);
-    if ((localISearchListener != null) && (localList != null)) {
-      localISearchListener.a(localList, 1);
-    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 300000L;
+  }
+  
+  public String toString()
+  {
+    return "{isEnable=" + this.jdField_a_of_type_Boolean + ",interval=" + this.jdField_a_of_type_Long + "}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahuz
  * JD-Core Version:    0.7.0.1
  */

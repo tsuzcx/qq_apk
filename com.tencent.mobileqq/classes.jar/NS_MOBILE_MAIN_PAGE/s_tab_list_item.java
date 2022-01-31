@@ -12,6 +12,7 @@ public final class s_tab_list_item
   public String icon_url = "";
   public boolean is_custom = true;
   public String jump_url = "";
+  public boolean need_clear_red = true;
   public int red_id_mainpage;
   public int red_id_undelcount;
   public int tab_id;
@@ -19,7 +20,7 @@ public final class s_tab_list_item
   
   public s_tab_list_item() {}
   
-  public s_tab_list_item(int paramInt1, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, int paramInt2, int paramInt3, boolean paramBoolean2)
+  public s_tab_list_item(int paramInt1, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, int paramInt2, int paramInt3, boolean paramBoolean2, boolean paramBoolean3)
   {
     this.tab_id = paramInt1;
     this.icon_url = paramString1;
@@ -29,6 +30,7 @@ public final class s_tab_list_item
     this.red_id_mainpage = paramInt2;
     this.red_id_undelcount = paramInt3;
     this.can_edit = paramBoolean2;
+    this.need_clear_red = paramBoolean3;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -41,6 +43,7 @@ public final class s_tab_list_item
     this.red_id_mainpage = paramJceInputStream.read(this.red_id_mainpage, 5, true);
     this.red_id_undelcount = paramJceInputStream.read(this.red_id_undelcount, 6, true);
     this.can_edit = paramJceInputStream.read(this.can_edit, 7, true);
+    this.need_clear_red = paramJceInputStream.read(this.need_clear_red, 8, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -53,6 +56,7 @@ public final class s_tab_list_item
     paramJceOutputStream.write(this.red_id_mainpage, 5);
     paramJceOutputStream.write(this.red_id_undelcount, 6);
     paramJceOutputStream.write(this.can_edit, 7);
+    paramJceOutputStream.write(this.need_clear_red, 8);
   }
 }
 

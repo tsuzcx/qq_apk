@@ -13,7 +13,7 @@ public class InstallActivity
   boolean a = false;
   
   /* Error */
-  protected boolean doOnCreate(android.os.Bundle paramBundle)
+  public boolean doOnCreate(android.os.Bundle paramBundle)
   {
     // Byte code:
     //   0: aload_0
@@ -77,7 +77,7 @@ public class InstallActivity
     //   37	44	75	java/lang/ClassNotFoundException
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
     try
@@ -93,7 +93,7 @@ public class InstallActivity
     }
   }
   
-  protected void onResume()
+  public void onResume()
   {
     super.onResume();
     if (!this.a) {
@@ -108,7 +108,7 @@ public class InstallActivity
     }
     this.a = true;
     BaseApplicationImpl.sApplication.getResources();
-    SetSplash.a(this, null);
+    SetSplash.a(this, null, true);
   }
   
   public boolean showPreview()

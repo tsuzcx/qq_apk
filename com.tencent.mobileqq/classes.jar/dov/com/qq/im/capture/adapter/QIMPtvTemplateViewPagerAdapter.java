@@ -1,5 +1,6 @@
 package dov.com.qq.im.capture.adapter;
 
+import aepi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -7,17 +8,18 @@ import android.support.v4.view.PagerAdapter;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
-import com.tencent.mobileqq.shortvideo.util.SoLoader;
+import azkt;
+import bhuw;
+import blqr;
+import blra;
+import blsw;
+import bmau;
+import bnpl;
+import com.tencent.aekit.api.standard.ai.AIManager;
+import com.tencent.aekit.plugin.core.AEDetectorType;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.GridView;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.data.TemplateGroupItem;
-import dov.com.qq.im.capture.view.ProviderView.ProviderViewListener;
 import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -28,89 +30,91 @@ public class QIMPtvTemplateViewPagerAdapter
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener;
-  ProviderView.ProviderViewListener jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList;
-  public HashMap a;
+  private bhuw jdField_a_of_type_Bhuw;
+  bmau jdField_a_of_type_Bmau;
+  private bnpl jdField_a_of_type_Bnpl;
+  public HashMap<Integer, GridView> a;
+  private List<blsw> jdField_a_of_type_JavaUtilList;
   
-  public QIMPtvTemplateViewPagerAdapter(Context paramContext, ProviderView.ProviderViewListener paramProviderViewListener, int paramInt)
+  public QIMPtvTemplateViewPagerAdapter(Context paramContext, bmau parambmau, int paramInt)
   {
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener = paramProviderViewListener;
+    this.jdField_a_of_type_Bmau = parambmau;
     this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bnpl = ((bnpl)blqr.a(3));
   }
   
-  public TemplateGroupItem a(int paramInt)
+  public blsw a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > paramInt) && (paramInt >= 0)) {
-      return (TemplateGroupItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt) && (paramInt >= 0)) {
+      return (blsw)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
   }
   
-  public TemplateGroupItem a(TemplateGroupItem paramTemplateGroupItem)
+  public blsw a(blsw paramblsw)
   {
-    if (paramTemplateGroupItem == null) {
-      return paramTemplateGroupItem;
+    if (paramblsw == null) {
+      return paramblsw;
     }
     int i;
-    label14:
+    label17:
     int j;
-    label22:
-    TemplateGroupItem localTemplateGroupItem;
-    if (!SoLoader.f())
+    label25:
+    blsw localblsw;
+    if (!AIManager.isDetectorReady(AEDetectorType.SEGMENT))
     {
       i = 1;
-      if (PtvFilterSoLoad.f()) {
-        break label184;
+      if (azkt.h()) {
+        break label187;
       }
       j = 1;
       if ((j == 0) && (i == 0)) {
-        break label187;
+        break label190;
       }
-      localTemplateGroupItem = new TemplateGroupItem();
-      localTemplateGroupItem.jdField_a_of_type_Int = paramTemplateGroupItem.jdField_a_of_type_Int;
-      localTemplateGroupItem.jdField_a_of_type_JavaLangString = paramTemplateGroupItem.jdField_a_of_type_JavaLangString;
-      localTemplateGroupItem.jdField_a_of_type_Boolean = paramTemplateGroupItem.jdField_a_of_type_Boolean;
-      localTemplateGroupItem.jdField_a_of_type_JavaUtilList = new ArrayList();
-      if ((paramTemplateGroupItem.jdField_a_of_type_JavaUtilList == null) || (paramTemplateGroupItem.jdField_a_of_type_JavaUtilList.size() <= 0)) {
-        break label195;
+      localblsw = new blsw();
+      localblsw.jdField_a_of_type_Int = paramblsw.jdField_a_of_type_Int;
+      localblsw.jdField_a_of_type_JavaLangString = paramblsw.jdField_a_of_type_JavaLangString;
+      localblsw.b = paramblsw.b;
+      localblsw.jdField_a_of_type_JavaUtilList = new ArrayList();
+      if ((paramblsw.jdField_a_of_type_JavaUtilList == null) || (paramblsw.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+        break label198;
       }
-      paramTemplateGroupItem = paramTemplateGroupItem.jdField_a_of_type_JavaUtilList.iterator();
+      paramblsw = paramblsw.jdField_a_of_type_JavaUtilList.iterator();
     }
-    label184:
     label187:
-    label193:
+    label190:
+    label196:
     for (;;)
     {
-      label107:
-      if (!paramTemplateGroupItem.hasNext()) {
-        break label195;
+      label110:
+      if (!paramblsw.hasNext()) {
+        break label198;
       }
-      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)paramTemplateGroupItem.next();
+      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)paramblsw.next();
       if (((i != 0) && (localPtvTemplateInfo.kind == 7)) || ((j != 0) && (localPtvTemplateInfo.kind == 11))) {}
       for (int k = 1;; k = 0)
       {
         if (k != 0) {
-          break label193;
+          break label196;
         }
-        localTemplateGroupItem.jdField_a_of_type_JavaUtilList.add(localPtvTemplateInfo);
-        break label107;
+        localblsw.jdField_a_of_type_JavaUtilList.add(localPtvTemplateInfo);
+        break label110;
         i = 0;
-        break label14;
+        break label17;
         j = 0;
-        break label22;
+        break label25;
         break;
       }
     }
-    label195:
-    return localTemplateGroupItem;
+    label198:
+    return localblsw;
   }
   
-  public void a(ArrayList paramArrayList)
+  public void a(List<blsw> paramList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
@@ -119,14 +123,14 @@ public class QIMPtvTemplateViewPagerAdapter
     paramViewGroup = (GridView)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
     if (paramViewGroup != null)
     {
-      paramViewGroup = (QIMPtvTemplateAdapter)paramViewGroup.a();
-      ((QIMPtvTemplateManager)QIMManager.a(3)).a(paramViewGroup);
+      paramViewGroup = (blra)paramViewGroup.a();
+      this.jdField_a_of_type_Bnpl.a(paramViewGroup);
     }
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
@@ -135,55 +139,58 @@ public class QIMPtvTemplateViewPagerAdapter
       QLog.d("PtvTemplateProviderView", 2, "instantiateItem position = " + paramInt);
     }
     GridView localGridView = (GridView)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    QIMPtvTemplateAdapter localQIMPtvTemplateAdapter;
-    QIMPtvTemplateManager localQIMPtvTemplateManager;
+    int j;
+    blra localblra;
     if (localGridView == null)
     {
       localGridView = new GridView(this.jdField_a_of_type_AndroidContentContext);
       localGridView.setNumColumns(-1);
-      int m = AIOUtils.a(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localGridView.setColumnWidth(m);
-      int i = AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      int j = AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      int n = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels - j * 2;
-      int k = n / m;
-      m = n - m * k;
-      if (m > 0)
+      int n = aepi.a(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      localGridView.setColumnWidth(n);
+      int i = aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      j = aepi.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      int k = aepi.a(18.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      int i1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels - k * 2;
+      int m = (i1 + j) / (n + j);
+      n = i1 - n * m;
+      if (n > j)
       {
-        localGridView.setHorizontalSpacing(m / (k - 1));
+        localGridView.setHorizontalSpacing(n / (m - 1));
         localGridView.setVerticalSpacing(i);
         localGridView.setVerticalScrollBarEnabled(false);
-        localGridView.setPadding(j, j, j, AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) * 4);
+        localGridView.setPadding(k, k, k, i * 4);
         localGridView.setClipToPadding(false);
         localGridView.setSelector(new ColorDrawable(0));
-        localQIMPtvTemplateAdapter = new QIMPtvTemplateAdapter(this.jdField_a_of_type_AndroidContentContext, localGridView, this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener, this.jdField_a_of_type_Int);
-        localQIMPtvTemplateManager = (QIMPtvTemplateManager)QIMManager.a(3);
-        localQIMPtvTemplateManager.a(localQIMPtvTemplateAdapter, 112);
-        localQIMPtvTemplateManager.a(localQIMPtvTemplateAdapter, 113);
+        localblra = new blra(this.jdField_a_of_type_AndroidContentContext, localGridView, this.jdField_a_of_type_Bmau, this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Bnpl.a(localblra, 112);
+        this.jdField_a_of_type_Bnpl.a(localblra, 113);
+        this.jdField_a_of_type_Bnpl.a(localblra, 114);
+        this.jdField_a_of_type_Bnpl.a(localblra, 115);
         if (paramInt == 0) {
-          localQIMPtvTemplateManager.a(localQIMPtvTemplateAdapter, 111);
+          this.jdField_a_of_type_Bnpl.a(localblra, 111);
         }
-        localGridView.setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
+        localGridView.setOnItemClickListener(this.jdField_a_of_type_Bhuw);
         this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localGridView);
       }
     }
     for (;;)
     {
-      localQIMPtvTemplateAdapter.a(a((TemplateGroupItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaUtilList);
-      localGridView.setAdapter(localQIMPtvTemplateAdapter);
+      localblra.a(a((blsw)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList);
+      localGridView.setAdapter(localblra);
       paramViewGroup.addView(localGridView);
       if (QLog.isColorLevel()) {
-        QLog.i("PtvTemplateViewPagerAdapter", 2, "instantiateItem: invoked. info: ptvTemplateAdapter = " + localQIMPtvTemplateAdapter);
+        QLog.i("PtvTemplateViewPagerAdapter", 2, "instantiateItem: invoked. info: ptvTemplateAdapter = " + localblra);
       }
       return localGridView;
-      localGridView.setHorizontalSpacing(0);
+      localGridView.setHorizontalSpacing(j);
       break;
-      localQIMPtvTemplateAdapter = (QIMPtvTemplateAdapter)localGridView.a();
-      localQIMPtvTemplateManager = (QIMPtvTemplateManager)QIMManager.a(3);
-      localQIMPtvTemplateManager.a(localQIMPtvTemplateAdapter, 112);
-      localQIMPtvTemplateManager.a(localQIMPtvTemplateAdapter, 113);
+      localblra = (blra)localGridView.a();
+      this.jdField_a_of_type_Bnpl.a(localblra, 112);
+      this.jdField_a_of_type_Bnpl.a(localblra, 113);
+      this.jdField_a_of_type_Bnpl.a(localblra, 114);
+      this.jdField_a_of_type_Bnpl.a(localblra, 115);
       if (paramInt == 0) {
-        localQIMPtvTemplateManager.a(localQIMPtvTemplateAdapter, 111);
+        this.jdField_a_of_type_Bnpl.a(localblra, 111);
       }
     }
   }
@@ -195,7 +202,7 @@ public class QIMPtvTemplateViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.adapter.QIMPtvTemplateViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

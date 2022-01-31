@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
 public class agfy
-  implements Runnable
+  implements afky
 {
-  public agfy(ScanTorchActivity paramScanTorchActivity) {}
+  public agfy(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void run()
+  public void onUpdate(int paramInt)
   {
-    ScanTorchActivity.i(this.a);
-    ScanTorchActivity.j(this.a);
-    ScanTorchActivity.k(this.a);
+    if (paramInt == 23) {
+      UnlimitedBladeWorks.a(this.a).start();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agfy
  * JD-Core Version:    0.7.0.1
  */

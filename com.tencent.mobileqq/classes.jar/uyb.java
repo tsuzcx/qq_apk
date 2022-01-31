@@ -1,32 +1,20 @@
-import com.tencent.mobileqq.activity.aio.PokePanel.PokeData;
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-
-public class uyb
-  implements Runnable
+class uyb
+  implements uml
 {
-  public uyb(GivingHeartItemBuilder paramGivingHeartItemBuilder) {}
+  uyb(uya paramuya, uyc paramuyc) {}
   
-  public void run()
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, long paramLong1, long paramLong2)
   {
-    Object localObject = PokeItemHelper.a(this.a.b, GivingHeartItemBuilder.a(this.a));
-    if (((ArrayList)localObject).size() > 0)
-    {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        PokePanel.PokeData localPokeData = (PokePanel.PokeData)((Iterator)localObject).next();
-        GivingHeartItemBuilder.a(this.a).put(Integer.valueOf(localPokeData.b), Integer.valueOf(localPokeData.c));
-      }
-    }
+    uya.a(this.jdField_a_of_type_Uya, new uye[] { new uye(this.jdField_a_of_type_Uyc, paramLong1, paramLong2) });
   }
+  
+  public void a(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uyb
  * JD-Core Version:    0.7.0.1
  */

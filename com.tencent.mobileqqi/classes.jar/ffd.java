@@ -1,21 +1,31 @@
-import com.tencent.mobileqq.app.ConfigHandler;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import java.io.File;
-import java.net.URL;
 
 public class ffd
   implements Runnable
 {
-  public ffd(ConfigHandler paramConfigHandler, String paramString, File paramFile) {}
+  public ffd(QQAppInterface paramQQAppInterface, String paramString, File paramFile) {}
   
   public void run()
   {
-    try
+    File localFile;
+    if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile))
     {
-      HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a, new URL(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_JavaIoFile);
+      localFile = new File(QQAppInterface.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).getApplicationContext().getFilesDir(), this.jdField_a_of_type_JavaLangString);
+      if (localFile == null) {
+        break label64;
+      }
+    }
+    label64:
+    for (long l = localFile.length();; l = 0L)
+    {
+      QQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(l);
       return;
     }
-    catch (Exception localException) {}
   }
 }
 

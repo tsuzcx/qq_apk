@@ -1,55 +1,39 @@
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 public class aigd
+  implements View.OnKeyListener, TextView.OnEditorActionListener
 {
-  public int a;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  protected aigd(aigc paramaigc) {}
   
-  public aigd(long paramLong, String paramString1, String paramString2)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    int i;
-    if (paramString1 == null)
+    if (paramInt == 3)
     {
-      i = 0;
-      if (paramString2 != null) {
-        break label67;
-      }
+      this.a.a();
+      return true;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = (j + (i + 19 + 1) + 1);
-      return;
-      i = paramString1.getBytes().length;
-      break;
-      label67:
-      j = paramString2.getBytes().length;
-    }
+    return false;
   }
   
-  public String toString()
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    StringBuilder localStringBuilder = new StringBuilder(128);
-    Date localDate = new Date(this.jdField_a_of_type_Long);
-    localStringBuilder.append(StatisticCollector.a().format(localDate));
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append("\n");
-    return localStringBuilder.toString();
+    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
+    {
+      if (paramKeyEvent.getAction() == 1) {
+        this.a.a();
+      }
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aigd
  * JD-Core Version:    0.7.0.1
  */

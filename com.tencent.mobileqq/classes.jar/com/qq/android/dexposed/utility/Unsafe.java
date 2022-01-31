@@ -116,7 +116,7 @@ public final class Unsafe
         return getLong(arrayOfObject, arrayBaseOffset([Ljava.lang.Object.class));
       }
       int i = getInt(arrayOfObject, arrayBaseOffset([Ljava.lang.Object.class));
-      return 0xFFFFFFFF & i;
+      return i & 0xFFFFFFFF;
     }
     catch (Exception paramObject)
     {
@@ -183,7 +183,7 @@ public final class Unsafe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.qq.android.dexposed.utility.Unsafe
  * JD-Core Version:    0.7.0.1
  */

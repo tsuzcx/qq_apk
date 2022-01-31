@@ -1,24 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agqt
-  implements Animation.AnimationListener
+class agqt
+  implements DialogInterface.OnClickListener
 {
-  public agqt(BreatheEffectView paramBreatheEffectView) {}
+  agqt(agqq paramagqq, boolean paramBoolean) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.c();
+    this.jdField_a_of_type_Agqq.aa = true;
+    agqq.c(this.jdField_a_of_type_Agqq, this.jdField_a_of_type_Boolean);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqt
  * JD-Core Version:    0.7.0.1
  */

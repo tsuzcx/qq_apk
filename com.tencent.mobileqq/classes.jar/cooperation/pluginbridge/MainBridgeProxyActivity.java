@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 public class MainBridgeProxyActivity
   extends PluginProxyActivity
 {
-  protected Class getProxyActivity(String paramString)
+  public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
     if (QLog.isColorLevel()) {
       QLog.w("MainBridgeProxyActivity", 2, "getProxyActivity:" + paramString);
@@ -16,7 +16,7 @@ public class MainBridgeProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.pluginbridge.MainBridgeProxyActivity
  * JD-Core Version:    0.7.0.1
  */

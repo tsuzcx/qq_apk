@@ -1,78 +1,16 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
-class aekr
-  implements ActionSheet.OnButtonClickListener
+public class aekr
+  implements DialogInterface.OnClickListener
 {
-  aekr(aeko paramaeko, View paramView, ActionSheet paramActionSheet) {}
+  public aekr(UpgradeActivity paramUpgradeActivity) {}
   
-  private void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReportController.b(this.jdField_a_of_type_Aeko.a.app, "CliOper", "", "", "0X800682D", "0X800682D", 0, 0, "", "", "", "");
-    long l = 0L;
-    for (;;)
-    {
-      try
-      {
-        localObject = new URL("http://misc.wcd.qq.com/app?packageName=com.tencent.qqmusic&channelId=10000435");
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        Object localObject;
-        QLog.e("MusicPlayerActivity", 1, "music player activity url io MalformedURLException ", localMalformedURLException);
-        continue;
-        int i = -1;
-        continue;
-      }
-      try
-      {
-        i = ((URL)localObject).openConnection().getContentLength();
-        l = i;
-      }
-      catch (IOException localIOException)
-      {
-        QLog.e("MusicPlayerActivity", 1, "music player activity url IOException ", localIOException);
-      }
-    }
-    localObject = new Bundle();
-    ((Bundle)localObject).putLong("_filesize_from_dlg", l);
-    ((Bundle)localObject).putString("_filename_from_dlg", this.jdField_a_of_type_Aeko.a.getResources().getString(2131435107));
-    UniformDownloadMgr.a().b("http://misc.wcd.qq.com/app?packageName=com.tencent.qqmusic&channelId=10000435", (Bundle)localObject);
-    localObject = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((localObject instanceof Integer))
-    {
-      i = ((Integer)localObject).intValue();
-      Message.obtain(MusicPlayerActivity.a(this.jdField_a_of_type_Aeko.a), 54, 2131438480, i, this.jdField_a_of_type_AndroidViewView).sendToTarget();
-      return;
-    }
-  }
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (!UniformDownloadMgr.a().a("http://misc.wcd.qq.com/app?packageName=com.tencent.qqmusic&channelId=10000435")) {
-        ThreadManager.post(new aeks(this), 5, null, true);
-      }
-    }
+    UpgradeActivity.a(this.a, false);
+    azqs.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, amqd.b(), String.valueOf(0), amqe.a(), "");
   }
 }
 

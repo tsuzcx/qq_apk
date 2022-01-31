@@ -1,21 +1,15 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.mobileqq.data.TroopAppInfo;
+import java.util.ArrayList;
 
-public class ney
-  implements Runnable
+public abstract interface ney
 {
-  public ney(MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate, boolean paramBoolean1, boolean paramBoolean2) {}
+  public abstract void a();
   
-  public void run()
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a.a())) {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a("exp_story", true, this.b);
-    }
-  }
+  public abstract void a(ArrayList<TroopAppInfo> paramArrayList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ney
  * JD-Core Version:    0.7.0.1
  */

@@ -70,14 +70,14 @@ public class PoiItem
   public int hashCode()
   {
     long l = Double.doubleToLongBits(this.longitude);
-    int i = (int)(l >>> 32 ^ l);
+    int i = (int)(l ^ l >>> 32);
     l = Double.doubleToLongBits(this.latitude);
-    return i * 31 + (int)(l >>> 32 ^ l);
+    return i * 31 + (int)(l ^ l >>> 32);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.weiyun.data.PoiItem
  * JD-Core Version:    0.7.0.1
  */

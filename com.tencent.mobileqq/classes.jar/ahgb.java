@@ -1,43 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Build;
-import com.tencent.mobileqq.remind.RemindHelper;
-import com.tencent.mobileqq.remind.TimeHelper;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Date;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
 
-public final class ahgb
-  implements DialogInterface.OnDismissListener
+public class ahgb
+  implements View.OnTouchListener
 {
-  public ahgb(IosTimepicker paramIosTimepicker, JsBridgeListener paramJsBridgeListener) {}
+  public ahgb(AddContactsView paramAddContactsView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    long l1;
-    if ((this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener != null))
+    switch (paramMotionEvent.getAction())
     {
-      l1 = this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker.a() / 1000L;
-      if (!Build.MODEL.equals("Coolpad 5890")) {
-        break label126;
-      }
-      long l2 = new Date().getTime() / 1000L;
-      if (l1 >= l2) {
-        break label126;
-      }
-      l1 = l2;
     }
-    label126:
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(RemindHelper.a(), 2, "onDismiss Time :" + TimeHelper.a(1000L * l1));
-      }
-      this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker.setOnTimePickerSelectListener(null);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener.a(Long.valueOf(l1));
-      RemindHelper.a = true;
-      return;
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }

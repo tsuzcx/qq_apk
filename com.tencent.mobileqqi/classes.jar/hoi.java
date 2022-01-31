@@ -1,15 +1,14 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.MyAppApi.QQDownloadListener;
 
-public final class hoi
+public class hoi
   implements Runnable
 {
-  public hoi(Activity paramActivity, Bundle paramBundle) {}
+  public hoi(MyAppApi.QQDownloadListener paramQQDownloadListener) {}
   
   public void run()
   {
-    MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.jdField_a_of_type_AndroidOsBundle, false, false);
+    DownloadManager.a().d();
   }
 }
 

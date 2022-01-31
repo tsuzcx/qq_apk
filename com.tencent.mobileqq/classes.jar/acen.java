@@ -1,50 +1,25 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
-import java.util.List;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
+import java.util.ArrayList;
 
 public class acen
-  implements Runnable
+  implements View.OnClickListener
 {
-  public acen(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public acen(AssistantSettingActivity paramAssistantSettingActivity, ArrayList paramArrayList) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    EmotionPanelInfo localEmotionPanelInfo;
-    int i;
-    if (this.a.jdField_a_of_type_JavaUtilList != null)
-    {
-      localEmotionPanelInfo = null;
-      i = 0;
-      int j = this.a.jdField_a_of_type_JavaUtilList.size();
-      if (i >= j) {
-        break label104;
-      }
-      localEmotionPanelInfo = (EmotionPanelInfo)this.a.jdField_a_of_type_JavaUtilList.get(i);
-      if ((localEmotionPanelInfo == null) || (localEmotionPanelInfo.a != 9)) {
-        break label68;
-      }
-    }
-    for (;;)
-    {
-      if (i == -1) {}
-      label68:
-      while ((EmoticonMainPanel.c != i) || (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter == null))
-      {
-        return;
-        i += 1;
-        break;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.a(localEmotionPanelInfo);
-      return;
-      label104:
-      i = -1;
-    }
+    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity, ArkAppListActivity.class);
+    paramView.putExtra("intent_extra_authority_app_list", (String[])this.jdField_a_of_type_JavaUtilArrayList.toArray(new String[this.jdField_a_of_type_JavaUtilArrayList.size()]));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acen
  * JD-Core Version:    0.7.0.1
  */

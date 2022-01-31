@@ -1,21 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
-
-public class ajhw
-  implements DialogInterface.OnClickListener
+public abstract interface ajhw
 {
-  public ajhw(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  public abstract boolean isNeedAutoCloseWhenAccountChange();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    SubmitHomeWorkFragment.a(this.a);
-  }
+  public abstract void onClose();
+  
+  public abstract void onEnter();
+  
+  public abstract void onOverride();
 }
 
 

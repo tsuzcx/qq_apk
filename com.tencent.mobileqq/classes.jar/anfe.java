@@ -1,41 +1,42 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.plugin.IPluginManager;
-import cooperation.troop.TroopPluginManager;
-import cooperation.troop.TroopPluginManager.TroopPluginCallback;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class anfe
-  implements Runnable
 {
-  public anfe(TroopPluginManager paramTroopPluginManager, String paramString, TroopPluginManager.TroopPluginCallback paramTroopPluginCallback) {}
-  
-  public void run()
+  public static anfc a(anff paramanff, int paramInt)
   {
-    Object localObject = (QQAppInterface)this.jdField_a_of_type_CooperationTroopTroopPluginManager.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject == null) {
-      return;
+    if (paramanff == null) {
+      throw new RuntimeException("params can not be null!");
     }
-    if (((IPluginManager)((QQAppInterface)localObject).getManager(26)).isPlugininstalled(this.jdField_a_of_type_JavaLangString))
+    Object localObject;
+    switch (paramanff.jdField_a_of_type_Int)
     {
-      localObject = this.jdField_a_of_type_CooperationTroopTroopPluginManager.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001);
-      ((Message)localObject).obj = this.jdField_a_of_type_CooperationTroopTroopPluginManager$TroopPluginCallback;
-      ((Message)localObject).arg1 = 0;
-      ((Message)localObject).sendToTarget();
-      return;
+    default: 
+      localObject = new anfh(paramInt);
     }
-    if (this.jdField_a_of_type_CooperationTroopTroopPluginManager.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(this.jdField_a_of_type_JavaLangString))
+    for (;;)
     {
-      localObject = this.jdField_a_of_type_CooperationTroopTroopPluginManager.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001);
-      ((Message)localObject).obj = this.jdField_a_of_type_CooperationTroopTroopPluginManager$TroopPluginCallback;
-      ((Message)localObject).arg1 = 1;
-      ((Message)localObject).sendToTarget();
+      QLog.i("KeyingManager", 1, "getKeying keying: " + localObject + "  params: " + paramanff.toString());
+      return localObject;
+      localObject = new anew(paramInt);
+      continue;
+      localObject = new anfj(paramInt);
+      continue;
+      localObject = new anfa(paramInt);
+      continue;
+      localObject = new anfb(paramInt);
+      continue;
+      if (TextUtils.isEmpty(paramanff.jdField_a_of_type_JavaLangString)) {
+        break;
+      }
+      localObject = new anex(paramInt, paramanff.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_CooperationTroopTroopPluginManager.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(this.jdField_a_of_type_JavaLangString);
-    ThreadManager.post(new anfg(this.jdField_a_of_type_CooperationTroopTroopPluginManager, this.jdField_a_of_type_CooperationTroopTroopPluginManager$TroopPluginCallback, this.jdField_a_of_type_JavaLangString), 8, null, true);
+    throw new RuntimeException("fragmentShader can not be empty!");
+  }
+  
+  public static anff a(int paramInt)
+  {
+    return new anff(paramInt);
   }
 }
 

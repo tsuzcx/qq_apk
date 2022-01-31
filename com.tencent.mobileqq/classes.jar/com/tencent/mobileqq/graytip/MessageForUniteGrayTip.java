@@ -1,12 +1,18 @@
 package com.tencent.mobileqq.graytip;
 
-import adou;
 import android.content.Context;
+import android.graphics.drawable.Drawable.Callback;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import aspp;
+import asps;
+import aspy;
+import aspz;
+import bamb;
+import bdeu;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForGrayTips;
 import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
@@ -29,8 +35,12 @@ public class MessageForUniteGrayTip
   extends ChatMessage
 {
   public String appGuideTipsOpKey;
-  public UniteGrayTipCallBack callback;
+  public String caidanAnimUrl;
+  public String caidanAnimUrlMd5;
+  public asps callback;
   public String contentDescription;
+  public boolean dkTipHasReport;
+  public boolean docTipHasReport;
   public String editMsgData;
   public int editState;
   public long editTime;
@@ -39,13 +49,13 @@ public class MessageForUniteGrayTip
   public String masterUin;
   public int subType;
   public String taskId;
-  public UniteGrayTipParam tipParam;
+  public aspy tipParam;
   
-  protected void doParse()
+  public void doParse()
   {
     UniteGrayTip.UniteGrayTipMsg localUniteGrayTipMsg = new UniteGrayTip.UniteGrayTipMsg();
-    label664:
-    label670:
+    label710:
+    label716:
     for (;;)
     {
       int k;
@@ -62,13 +72,13 @@ public class MessageForUniteGrayTip
         str1 = localUniteGrayTipMsg.content.get();
         m = localUniteGrayTipMsg.isLocalTroopMsg.get();
         if ((!localUniteGrayTipMsg.graytip_mutex_id.has()) || (localUniteGrayTipMsg.graytip_mutex_id.size() <= 0)) {
-          break label664;
+          break label710;
         }
         localObject2 = (ArrayList)localUniteGrayTipMsg.graytip_mutex_id.get();
         int[] arrayOfInt = new int[((ArrayList)localObject2).size()];
         int i = 0;
         if (i >= ((ArrayList)localObject2).size() - 1) {
-          break label670;
+          break label716;
         }
         arrayOfInt[i] = ((Integer)((ArrayList)localObject2).get(i)).intValue();
         i += 1;
@@ -97,12 +107,12 @@ public class MessageForUniteGrayTip
             }
           }
         }
-        this.tipParam = new UniteGrayTipParam(this.frienduin, this.senderuin, str1, this.istroop, this.msgtype, j, this.time);
+        this.tipParam = new aspy(this.frienduin, this.senderuin, str1, this.istroop, this.msgtype, j, this.time);
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
-        QLog.e(UniteGrayTipUtil.jdField_a_of_type_JavaLangString, 1, "MessageForUniteGrayTip, doParese failed, " + localException.getMessage());
+        QLog.e(aspz.jdField_a_of_type_JavaLangString, 1, "MessageForUniteGrayTip, doParese failed, " + localException.getMessage());
         return;
       }
       this.tipParam.jdField_d_of_type_JavaLangString = str2;
@@ -113,7 +123,7 @@ public class MessageForUniteGrayTip
       if (m == 1) {}
       for (boolean bool = true;; bool = false)
       {
-        ((UniteGrayTipParam)localObject1).f = bool;
+        ((aspy)localObject1).f = bool;
         this.msg = str1;
         localObject1 = (UniteGrayTip.BusinessData)localUniteGrayTipMsg.business_data.get();
         if (localObject1 == null) {
@@ -136,68 +146,79 @@ public class MessageForUniteGrayTip
         if (((UniteGrayTip.BusinessData)localObject1).editTime.has()) {
           this.editTime = ((UniteGrayTip.BusinessData)localObject1).editTime.get();
         }
-        if (!((UniteGrayTip.BusinessData)localObject1).editMsgData.has()) {
+        if (((UniteGrayTip.BusinessData)localObject1).editMsgData.has()) {
+          this.editMsgData = ((UniteGrayTip.BusinessData)localObject1).editMsgData.get();
+        }
+        if (((UniteGrayTip.BusinessData)localObject1).caidanAnimUrl.has()) {
+          this.caidanAnimUrl = ((UniteGrayTip.BusinessData)localObject1).caidanAnimUrl.get();
+        }
+        if (!((UniteGrayTip.BusinessData)localObject1).caidanAnimUrlMd5.has()) {
           break;
         }
-        this.editMsgData = ((UniteGrayTip.BusinessData)localObject1).editMsgData.get();
+        this.caidanAnimUrlMd5 = ((UniteGrayTip.BusinessData)localObject1).caidanAnimUrlMd5.get();
         return;
       }
       localObject1 = null;
     }
   }
   
-  public SpannableStringBuilder getHightlightMsgText(QQAppInterface paramQQAppInterface, Context paramContext)
+  public SpannableStringBuilder getHightlightMsgText(QQAppInterface paramQQAppInterface, Context paramContext, boolean paramBoolean, Drawable.Callback paramCallback)
   {
     if ((this.tipParam == null) || (this.tipParam.jdField_a_of_type_JavaUtilArrayList == null) || (this.tipParam.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
       return new SpannableStringBuilder(this.msg);
     }
-    Collections.sort(this.tipParam.jdField_a_of_type_JavaUtilArrayList, new adou(this));
+    Collections.sort(this.tipParam.jdField_a_of_type_JavaUtilArrayList, new aspp(this));
     StringBuilder localStringBuilder = new StringBuilder(256);
     localStringBuilder.append("revoke msg GrayTips -> msg=").append(this.msg);
     Object localObject3 = "";
     Object localObject1 = this.msg;
-    int k = 0;
-    int j = 0;
+    int n = 0;
+    int m = 0;
     Object localObject2;
     if (this.contentDescription == null) {
       localObject2 = new StringBuilder();
     }
-    for (int i = 1;; i = 0)
+    for (int k = 1;; k = 0)
     {
-      TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(51);
+      TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(52);
       Iterator localIterator = this.tipParam.jdField_a_of_type_JavaUtilArrayList.iterator();
       if (localIterator.hasNext())
       {
         Object localObject4 = (MessageForGrayTips.HightlightItem)localIterator.next();
-        int n = ((MessageForGrayTips.HightlightItem)localObject4).start - k;
-        int i1 = ((MessageForGrayTips.HightlightItem)localObject4).end - k;
-        int m = n;
-        if (n > ((String)localObject1).length()) {
-          m = ((String)localObject1).length();
-        }
-        n = i1;
-        if (i1 > ((String)localObject1).length()) {
-          n = ((String)localObject1).length();
-        }
-        localStringBuilder.append(" ;item.start=").append(((MessageForGrayTips.HightlightItem)localObject4).start).append(",end=").append(((MessageForGrayTips.HightlightItem)localObject4).end);
-        localStringBuilder.append("|index1=").append(m).append(",index2=").append(n).append("|lastEnd=").append(k);
-        String str1 = ((String)localObject1).substring(0, m);
-        String str2 = (String)localObject3 + str1;
-        String str3 = ((String)localObject1).substring(m, n);
-        if (i != 0)
+        int j = ((MessageForGrayTips.HightlightItem)localObject4).start - n;
+        int i1 = ((MessageForGrayTips.HightlightItem)localObject4).end - n;
+        int i;
+        label206:
+        label223:
+        String str2;
+        String str3;
+        if (j > ((String)localObject1).length())
         {
-          ((StringBuilder)localObject2).append(str1);
-          if (TextUtils.isEmpty(((MessageForGrayTips.HightlightItem)localObject4).icon)) {
-            ((StringBuilder)localObject2).append(str3);
+          i = ((String)localObject1).length();
+          if (i1 <= ((String)localObject1).length()) {
+            break label500;
           }
-        }
-        localObject3 = ((String)localObject1).substring(n, ((String)localObject1).length());
-        k = ((MessageForGrayTips.HightlightItem)localObject4).end;
-        ((MessageForGrayTips.HightlightItem)localObject4).start = str2.length();
-        if (((MessageForGrayTips.HightlightItem)localObject4).needUpdateNick)
-        {
+          j = ((String)localObject1).length();
+          localStringBuilder.append(" ;item.start=").append(((MessageForGrayTips.HightlightItem)localObject4).start).append(",end=").append(((MessageForGrayTips.HightlightItem)localObject4).end);
+          localStringBuilder.append("|index1=").append(i).append(",index2=").append(j).append("|lastEnd=").append(n);
+          String str1 = ((String)localObject1).substring(0, i);
+          str2 = (String)localObject3 + str1;
+          str3 = ((String)localObject1).substring(i, j);
+          if (k != 0)
+          {
+            ((StringBuilder)localObject2).append(str1);
+            if (TextUtils.isEmpty(((MessageForGrayTips.HightlightItem)localObject4).icon)) {
+              ((StringBuilder)localObject2).append(str3);
+            }
+          }
+          localObject3 = ((String)localObject1).substring(j, ((String)localObject1).length());
+          n = ((MessageForGrayTips.HightlightItem)localObject4).end;
+          ((MessageForGrayTips.HightlightItem)localObject4).start = str2.length();
+          if (!((MessageForGrayTips.HightlightItem)localObject4).needUpdateNick) {
+            break label515;
+          }
           localObject1 = str2 + localTroopManager.a(this.frienduin, new StringBuilder().append("").append(((MessageForGrayTips.HightlightItem)localObject4).uin).toString());
-          j = 1;
+          m = 1;
         }
         for (;;)
         {
@@ -206,25 +227,39 @@ public class MessageForUniteGrayTip
           localObject1 = localObject3;
           localObject3 = localObject4;
           break;
+          i = j;
+          if (j >= 0) {
+            break label206;
+          }
+          i = 0;
+          break label206;
+          label500:
+          j = i1;
+          if (i1 >= 0) {
+            break label223;
+          }
+          j = 0;
+          break label223;
+          label515:
           localObject1 = str2 + str3;
         }
       }
       if (QLog.isColorLevel()) {
         QLog.d("GrayTips", 2, localStringBuilder.toString());
       }
-      if (i != 0)
+      if (k != 0)
       {
         ((StringBuilder)localObject2).append((String)localObject1);
         this.contentDescription = ((StringBuilder)localObject2).toString();
         QLog.i("content", 1, this.contentDescription);
       }
       localObject1 = (String)localObject3 + (String)localObject1;
-      if (j != 0)
+      if (m != 0)
       {
         this.msg = ((String)localObject1);
         this.tipParam.jdField_c_of_type_JavaLangString = ((String)localObject1);
       }
-      localObject1 = new SpannableStringBuilder((CharSequence)localObject1);
+      localObject1 = new SpannableStringBuilder(new bamb((CharSequence)localObject1, 16));
       localObject2 = this.tipParam.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (((Iterator)localObject2).hasNext())
       {
@@ -233,7 +268,7 @@ public class MessageForUniteGrayTip
           if (TextUtils.isEmpty(((MessageForGrayTips.HightlightItem)localObject3).icon)) {
             ((SpannableStringBuilder)localObject1).setSpan(new MessageForGrayTips.HightlightClickableSpan(paramQQAppInterface, ((MessageForGrayTips.HightlightItem)localObject3).textColor, paramContext, (MessageForGrayTips.HightlightItem)localObject3, this), ((MessageForGrayTips.HightlightItem)localObject3).start, ((MessageForGrayTips.HightlightItem)localObject3).end, 33);
           } else {
-            MessageForGrayTips.decodeImageSpan(paramContext, (SpannableStringBuilder)localObject1, (MessageForGrayTips.HightlightItem)localObject3);
+            MessageForGrayTips.decodeImageSpan(paramContext, (SpannableStringBuilder)localObject1, (MessageForGrayTips.HightlightItem)localObject3, paramBoolean, paramCallback);
           }
         }
       }
@@ -242,35 +277,85 @@ public class MessageForUniteGrayTip
     }
   }
   
-  public void initGrayTipMsg(QQAppInterface paramQQAppInterface, UniteGrayTipParam paramUniteGrayTipParam)
+  public String getSummaryMsg()
   {
-    if ((paramUniteGrayTipParam == null) || (!paramUniteGrayTipParam.a()))
+    int j = 0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i;
+    int k;
+    if ((this.tipParam != null) && (this.tipParam.jdField_b_of_type_Int == 655397))
+    {
+      if ((this.tipParam.jdField_a_of_type_JavaUtilArrayList == null) || (this.tipParam.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
+        break label234;
+      }
+      Iterator localIterator = this.tipParam.jdField_a_of_type_JavaUtilArrayList.iterator();
+      j = 0;
+      for (i = 0; localIterator.hasNext(); i = k)
+      {
+        MessageForGrayTips.HightlightItem localHightlightItem = (MessageForGrayTips.HightlightItem)localIterator.next();
+        if ((localHightlightItem == null) || (TextUtils.isEmpty(localHightlightItem.icon))) {
+          break label225;
+        }
+        localStringBuilder.append(this.msg.substring(j, localHightlightItem.start));
+        i = localHightlightItem.end;
+        j = 1;
+        k = j;
+        j = i;
+      }
+    }
+    for (;;)
+    {
+      if (i == 0) {
+        localStringBuilder.append(this.msg);
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(aspz.jdField_a_of_type_JavaLangString, 2, "getSummary" + bdeu.a(this.msg));
+        }
+        return localStringBuilder.toString();
+        localStringBuilder.append(this.msg.substring(j));
+      }
+      return super.getSummaryMsg();
+      label225:
+      k = i;
+      i = j;
+      j = k;
+      break;
+      label234:
+      i = 0;
+    }
+  }
+  
+  public void initGrayTipMsg(QQAppInterface paramQQAppInterface, aspy paramaspy)
+  {
+    if ((paramaspy == null) || (!paramaspy.a()))
     {
       if (QLog.isColorLevel()) {
-        if (paramUniteGrayTipParam != null) {
+        if (paramaspy != null) {
           break label53;
         }
       }
       label53:
-      for (paramQQAppInterface = "null tipParam";; paramQQAppInterface = "msgtype: " + paramUniteGrayTipParam.jdField_c_of_type_Int + " id: " + paramUniteGrayTipParam.jdField_b_of_type_Int)
+      for (paramQQAppInterface = "null tipParam";; paramQQAppInterface = "msgtype: " + paramaspy.jdField_c_of_type_Int + " id: " + paramaspy.jdField_b_of_type_Int)
       {
-        QLog.e(UniteGrayTipUtil.jdField_a_of_type_JavaLangString, 2, "revoke msg createGrayTipMsg failed, error: " + paramQQAppInterface);
+        QLog.e(aspz.jdField_a_of_type_JavaLangString, 2, "revoke msg createGrayTipMsg failed, error: " + paramQQAppInterface);
         return;
       }
     }
-    init(paramQQAppInterface.getCurrentAccountUin(), paramUniteGrayTipParam.jdField_a_of_type_JavaLangString, paramUniteGrayTipParam.jdField_b_of_type_JavaLangString, paramUniteGrayTipParam.jdField_c_of_type_JavaLangString, paramUniteGrayTipParam.jdField_a_of_type_Long, paramUniteGrayTipParam.jdField_c_of_type_Int, paramUniteGrayTipParam.jdField_a_of_type_Int, paramUniteGrayTipParam.jdField_a_of_type_Long);
+    init(paramQQAppInterface.getCurrentAccountUin(), paramaspy.jdField_a_of_type_JavaLangString, paramaspy.jdField_b_of_type_JavaLangString, paramaspy.jdField_c_of_type_JavaLangString, paramaspy.jdField_a_of_type_Long, paramaspy.jdField_c_of_type_Int, paramaspy.jdField_a_of_type_Int, paramaspy.jdField_a_of_type_Long);
     this.mIsParsed = true;
     this.isread = true;
-    this.tipParam = paramUniteGrayTipParam;
+    this.tipParam = paramaspy;
     this.msgData = null;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     parse();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     int j = 1;
     UniteGrayTip.UniteGrayTipMsg localUniteGrayTipMsg = new UniteGrayTip.UniteGrayTipMsg();
@@ -347,6 +432,12 @@ public class MessageForUniteGrayTip
       if (!TextUtils.isEmpty(this.editMsgData)) {
         ((UniteGrayTip.BusinessData)localObject).editMsgData.set(this.editMsgData);
       }
+      if (!TextUtils.isEmpty(this.caidanAnimUrl)) {
+        ((UniteGrayTip.BusinessData)localObject).caidanAnimUrl.set(this.caidanAnimUrl);
+      }
+      if (!TextUtils.isEmpty(this.caidanAnimUrlMd5)) {
+        ((UniteGrayTip.BusinessData)localObject).caidanAnimUrlMd5.set(this.caidanAnimUrlMd5);
+      }
       localUniteGrayTipMsg.business_data.set((MessageMicro)localObject);
       this.msgData = localUniteGrayTipMsg.toByteArray();
       return;
@@ -356,7 +447,7 @@ public class MessageForUniteGrayTip
   public void updateUniteGrayTipMsg(QQAppInterface paramQQAppInterface, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(UniteGrayTipUtil.jdField_a_of_type_JavaLangString, 2, "updateUniteGrayTipMsg");
+      QLog.d(aspz.jdField_a_of_type_JavaLangString, 2, "updateUniteGrayTipMsg");
     }
     this.msg = paramString;
     if (this.tipParam != null)
@@ -375,7 +466,7 @@ public class MessageForUniteGrayTip
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.MessageForUniteGrayTip
  * JD-Core Version:    0.7.0.1
  */

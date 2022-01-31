@@ -1,27 +1,34 @@
-import android.view.View;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import dov.com.qq.im.capture.text.DynamicTextItem.Pair;
+import com.tencent.ark.ArkEnvironmentManager.Log;
+import com.tencent.qphone.base.util.QLog;
 
-public class annv
-  implements Runnable
+public final class annv
+  implements ArkEnvironmentManager.Log
 {
-  public annv(DynamicTextItem paramDynamicTextItem, View paramView) {}
-  
-  public void run()
+  public void d(String paramString1, String paramString2)
   {
-    DynamicTextItem.Pair localPair = DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem);
-    if (!((Boolean)DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem).b).booleanValue()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localPair.b = Boolean.valueOf(bool);
-      this.jdField_a_of_type_AndroidViewView.invalidate();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
     }
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     annv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.biz.qrcode.ipc.PreCallUpToolProc;
-import com.tencent.biz.qrcode.ipc.PreCallUpToolProc.Callback;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileFilter;
 
-public class ouv
-  extends BroadcastReceiver
+class ouv
+  implements FileFilter
 {
-  public ouv(PreCallUpToolProc paramPreCallUpToolProc) {}
+  ouv(out paramout) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean accept(File paramFile)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("PreCallUpToolProc", 2, String.format("onReceive action=%s", new Object[] { paramContext }));
-    }
-    if (("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED".equals(paramContext)) && (TextUtils.equals(paramIntent.getStringExtra("from"), PreCallUpToolProc.a(this.a))))
-    {
-      if (PreCallUpToolProc.a(this.a) != null) {
-        PreCallUpToolProc.a(this.a).removeMessages(108);
-      }
-      if (PreCallUpToolProc.a(this.a) != null) {
-        PreCallUpToolProc.a(this.a).a();
-      }
-    }
+    return (!paramFile.getName().endsWith(".json")) && (!paramFile.getName().equalsIgnoreCase("__MACOSX"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ouv
  * JD-Core Version:    0.7.0.1
  */

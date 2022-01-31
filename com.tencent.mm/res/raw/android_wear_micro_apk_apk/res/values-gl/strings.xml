@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Activar</string>
+    <string name="b">%1$s non funcionará a menos que actives os servizos de Google Play.</string>
+    <string name="c">Activar servizos de Google Play</string>
+    <string name="d">Instalar</string>
+    <string name="e">%1$s non se executará se o teu dispositivo non ten instalados os servizos de Google Play.</string>
+    <string name="f">Descargar servizos de Google Play</string>
+    <string name="g">Erro nos servizos de Google Play</string>
+    <string name="h">%1$s ten problemas cos servizos de Google Play. Téntao de novo.</string>
+    <string name="i">%1$s non se executará sen os servizos de Google Play, que non son compatibles co teu dispositivo.</string>
+    <string name="j">Actualizar</string>
+    <string name="k">%1$s non se executará a menos que actualices os servizos de Google Play.</string>
+    <string name="l">Actualizar os servizos de Google Play</string>
+    <string name="m">%1$s non se executará sen os servizos de Google Play, que se están actualizando neste momento.</string>
+    <string name="n">Necesítase a nova versión dos servizos de Google Play. Actualizarase en breve.</string>
+    <string name="o">Abrir no teléfono</string>
+    <string name="p">Iniciar sesión</string>
+    <string name="q">Iniciar sesión con Google</string>
+    <string name="r">>999</string>
+</resources>

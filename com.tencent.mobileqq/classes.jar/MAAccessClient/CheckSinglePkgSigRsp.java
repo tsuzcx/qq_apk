@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class CheckSinglePkgSigRsp
   extends JceStruct
 {
-  static ArrayList cache_vtMarket = new ArrayList();
+  static ArrayList<NoCheckMarket> cache_vtMarket = new ArrayList();
   public String pageUrl = "";
   public String pkgSig = "";
   public int ret;
   public int sigVersionCode;
   public String tmastUrl = "";
-  public ArrayList vtMarket;
+  public ArrayList<NoCheckMarket> vtMarket;
   
   static
   {
@@ -24,7 +24,7 @@ public final class CheckSinglePkgSigRsp
   
   public CheckSinglePkgSigRsp() {}
   
-  public CheckSinglePkgSigRsp(int paramInt1, ArrayList paramArrayList, String paramString1, int paramInt2, String paramString2, String paramString3)
+  public CheckSinglePkgSigRsp(int paramInt1, ArrayList<NoCheckMarket> paramArrayList, String paramString1, int paramInt2, String paramString2, String paramString3)
   {
     this.ret = paramInt1;
     this.vtMarket = paramArrayList;

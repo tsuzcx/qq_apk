@@ -1,24 +1,22 @@
-import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareQZoneData;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public class nhh
-  extends EncryptUrlJob
+class nhh
 {
-  public nhh(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareQZoneData paramShareQZoneData)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  boolean jdField_a_of_type_Boolean;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
   
-  public boolean b()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQZoneData.e = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
-  }
+  nhh(ngw paramngw) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nhh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,22 @@
-import com.tencent.ark.ark;
-import com.tencent.ark.ark.Container;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkTipsManager;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
 
 public class aapk
-  implements Runnable
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public aapk(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong) {}
+  public aapk(GdtMotiveVideoFragment paramGdtMotiveVideoFragment, View paramView) {}
   
-  public void run()
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    Object localObject = ark.arkGetContainer(this.jdField_a_of_type_Long);
-    if (localObject == null) {}
-    do
-    {
-      return;
-      localObject = ArkAppContainer.a((ark.Container)localObject);
-    } while ((localObject == null) || ((ArkAppContainer)((WeakReference)localObject).get() == null));
-    ArkTipsManager.a().b();
+    if ((paramInt & 0x4) == 0) {
+      this.jdField_a_of_type_AndroidViewView.setSystemUiVisibility(7942);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aapk
  * JD-Core Version:    0.7.0.1
  */

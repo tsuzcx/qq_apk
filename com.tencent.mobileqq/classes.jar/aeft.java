@@ -1,33 +1,38 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
-import com.tencent.util.WeakReferenceHandler;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeft
-  implements ValueAnimator.AnimatorUpdateListener
+  extends bcoc
 {
-  public aeft(MedalGuideView paramMedalGuideView) {}
+  public aeft(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, String paramString)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setAlpha(f);
-    f = ((Float)paramValueAnimator.getAnimatedValue("scale")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setScaleX(f);
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setScaleY(f);
-    f = ((Float)paramValueAnimator.getAnimatedValue("translationX")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationX(f);
-    f = ((Float)paramValueAnimator.getAnimatedValue("translationY")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationY(f);
-    f = paramValueAnimator.getAnimatedFraction();
-    if ((!this.a.jdField_a_of_type_Boolean) && (f >= 1.0F))
-    {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(3);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList error");
     }
-    if (f >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
+    TroopMemberListActivity.a(this.a, true);
+    if (TroopMemberListActivity.b(this.a))
+    {
+      paramString = this.a.a.obtainMessage(12, null);
+      this.a.a.sendMessage(paramString);
+    }
+  }
+  
+  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList");
+    }
+    TroopMemberListActivity.a(this.a, paramArrayOfLong1);
+    TroopMemberListActivity.b(this.a, paramArrayOfLong2);
+    TroopMemberListActivity.c(this.a, paramArrayOfLong3);
+    TroopMemberListActivity.a(this.a, true);
+    if (TroopMemberListActivity.b(this.a))
+    {
+      paramArrayOfLong1 = this.a.a.obtainMessage(12, null);
+      this.a.a.sendMessage(paramArrayOfLong1);
     }
   }
 }

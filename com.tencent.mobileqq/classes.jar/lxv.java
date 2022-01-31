@@ -1,26 +1,28 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.redpacket.ui.RedPacketGameView;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoControlUI;
 
 public class lxv
-  implements Runnable
+  implements View.OnClickListener
 {
-  public lxv(KandianOx210MsgInfo paramKandianOx210MsgInfo, QQAppInterface paramQQAppInterface) {}
+  public lxv(RedPacketGameView paramRedPacketGameView, long paramLong) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, false).edit();
-    localEditor.remove("kandian_push_ox210_msg");
-    localEditor.remove("kandian_push_ox210_c5_msg_count");
-    localEditor.remove("kandian_push_0x210_c5_msg_time");
-    ReadInJoyHelper.a(localEditor, true);
+    paramView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.a();
+    if (paramView != null)
+    {
+      paramView.a.i(this.jdField_a_of_type_Long);
+      ((VideoAppInterface)paramView.getAppRuntime()).a(new Object[] { Integer.valueOf(105), Boolean.valueOf(true), Long.valueOf(this.jdField_a_of_type_Long) });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lxv
  * JD-Core Version:    0.7.0.1
  */

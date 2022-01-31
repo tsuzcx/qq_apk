@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class oidb_0xa28$RoleInfo
-  extends MessageMicro
+  extends MessageMicro<RoleInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_role_name = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -24,7 +24,7 @@ public final class oidb_0xa28$RoleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xa28.oidb_0xa28.RoleInfo
  * JD-Core Version:    0.7.0.1
  */

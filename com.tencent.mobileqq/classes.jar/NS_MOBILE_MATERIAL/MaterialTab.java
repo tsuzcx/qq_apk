@@ -10,19 +10,19 @@ import java.util.Map;
 public final class MaterialTab
   extends JceStruct
 {
-  static Map cache_mapExtInfo;
+  static Map<String, String> cache_mapExtInfo;
   static byte[] cache_strExtFields;
-  static ArrayList cache_vecBanner = new ArrayList();
-  static ArrayList cache_vecCate;
+  static ArrayList<OperBanner> cache_vecBanner = new ArrayList();
+  static ArrayList<MaterialCate> cache_vecCate;
   public int iTabId;
-  public Map mapExtInfo;
+  public Map<String, String> mapExtInfo;
   public byte[] strExtFields;
   public String strTabKey = "";
   public String strTabName = "";
   public String strTraceInfo = "";
   public long uiSettleTime;
-  public ArrayList vecBanner;
-  public ArrayList vecCate;
+  public ArrayList<OperBanner> vecBanner;
+  public ArrayList<MaterialCate> vecCate;
   
   static
   {
@@ -39,13 +39,13 @@ public final class MaterialTab
   
   public MaterialTab() {}
   
-  public MaterialTab(int paramInt, String paramString1, String paramString2, ArrayList paramArrayList1, ArrayList paramArrayList2, long paramLong, String paramString3, byte[] paramArrayOfByte, Map paramMap)
+  public MaterialTab(int paramInt, String paramString1, String paramString2, ArrayList<OperBanner> paramArrayList, ArrayList<MaterialCate> paramArrayList1, long paramLong, String paramString3, byte[] paramArrayOfByte, Map<String, String> paramMap)
   {
     this.iTabId = paramInt;
     this.strTabKey = paramString1;
     this.strTabName = paramString2;
-    this.vecBanner = paramArrayList1;
-    this.vecCate = paramArrayList2;
+    this.vecBanner = paramArrayList;
+    this.vecCate = paramArrayList1;
     this.uiSettleTime = paramLong;
     this.strTraceInfo = paramString3;
     this.strExtFields = paramArrayOfByte;

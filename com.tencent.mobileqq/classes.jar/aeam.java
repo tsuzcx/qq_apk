@@ -1,51 +1,66 @@
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.mobileqq.leba.header.LebaGridMenuAdapter;
-import com.tencent.mobileqq.leba.model.LebaGridItemInfo;
-import com.tencent.mobileqq.leba.model.PluginInfo;
-import com.tencent.mobileqq.leba.view.LebaTopBarView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class aeam
-  implements Runnable
+public class aeam
+  implements Handler.Callback
 {
-  aeam(aeal paramaeal, List paramList) {}
+  public aeam(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Aeal.a.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_Aeal.a.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    int i = this.jdField_a_of_type_Aeal.a.jdField_a_of_type_JavaUtilList.size();
-    Iterator localIterator1 = this.jdField_a_of_type_Aeal.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator1.hasNext())
+    switch (paramMessage.what)
     {
-      LebaGridItemInfo localLebaGridItemInfo1 = (LebaGridItemInfo)localIterator1.next();
-      if ((localLebaGridItemInfo1 != null) && (localLebaGridItemInfo1.jdField_a_of_type_JavaLangString != null) && (localLebaGridItemInfo1.jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo != null))
+    default: 
+      return true;
+    case 2: 
+      if ((this.a.a.c != null) && (!this.a.a.c.isEnabled())) {
+        this.a.a.c.setEnabled(true);
+      }
+      Object localObject = (String)paramMessage.obj;
+      if (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a))
       {
-        Iterator localIterator2 = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator2.hasNext())
-        {
-          LebaGridItemInfo localLebaGridItemInfo2 = (LebaGridItemInfo)localIterator2.next();
-          if ((localLebaGridItemInfo2 != null) && (localLebaGridItemInfo2.jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo != null) && (localLebaGridItemInfo2.jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo.pkgName.equals(localLebaGridItemInfo1.jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo.pkgName))) {
-            localLebaGridItemInfo2.jdField_a_of_type_JavaLangString = localLebaGridItemInfo1.jdField_a_of_type_JavaLangString;
-          }
+        TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, 1);
+        this.a.getActivity().finish();
+        paramMessage = new Bundle();
+        paramMessage.putString("savedUrl", (String)localObject);
+        localObject = (TeamWorkFileImportInfo)this.a.a().getParcelableExtra("key_team_work_file_import_info");
+        if (((TeamWorkFileImportInfo)localObject).e != 3) {
+          break label226;
+        }
+        paramMessage.putInt("editType", 1);
+      }
+      for (;;)
+      {
+        if (this.a.a().getParcelableExtra("key_team_work_file_import_info") != null) {
+          paramMessage.putParcelable("key_team_work_file_import_info", this.a.a().getParcelableExtra("key_team_work_file_import_info"));
+        }
+        paramMessage = apml.a("ipc_save_team_work", "", -1, paramMessage);
+        aprh.a().a(paramMessage);
+        return true;
+        TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, 0);
+        TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, (String)localObject);
+        break;
+        label226:
+        if (((TeamWorkFileImportInfo)localObject).e == 6) {
+          paramMessage.putInt("editType", 2);
         }
       }
     }
-    this.jdField_a_of_type_Aeal.a.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Aeal.a.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    if (this.jdField_a_of_type_Aeal.a.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridMenuAdapter != null) {
-      this.jdField_a_of_type_Aeal.a.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridMenuAdapter.a();
+    if ((this.a.a.c != null) && (!this.a.a.c.isEnabled())) {
+      this.a.a.c.setEnabled(true);
     }
-    LebaWithFeeds.a(this.jdField_a_of_type_Aeal.a).a(this.jdField_a_of_type_JavaUtilList);
-    if ((this.jdField_a_of_type_Aeal.a.jdField_a_of_type_JavaUtilList.size() > 0) && (i == 0)) {
-      LebaWithFeeds.a(this.jdField_a_of_type_Aeal.a, 0);
-    }
-    this.jdField_a_of_type_Aeal.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1134007, 100L);
-    this.jdField_a_of_type_Aeal.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1134006, 200L);
+    QQToast.a(this.a.getActivity(), alud.a(2131715139), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298914));
+    return true;
   }
 }
 

@@ -1,31 +1,33 @@
-import com.tencent.mobileqq.app.PrinterHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Timer;
-import java.util.TimerTask;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.device.JNICallCenter.DataPoint;
 
-public class zjo
-  extends TimerTask
+public final class zjo
+  implements Parcelable.Creator<DataPoint>
 {
-  public zjo(PrinterHandler paramPrinterHandler, long paramLong, Timer paramTimer) {}
-  
-  public void run()
+  public DataPoint a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(this.jdField_a_of_type_Long)))
-    {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004021", "0X8004021", (int)this.jdField_a_of_type_Long, -1, "", "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a(Long.valueOf(this.jdField_a_of_type_Long), false);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("dataline.Printer", 4, "printID=" + this.jdField_a_of_type_Long + ", 超时到了");
-      }
-    }
-    this.jdField_a_of_type_JavaUtilTimer.cancel();
+    DataPoint localDataPoint = new DataPoint();
+    localDataPoint.mDin = paramParcel.readLong();
+    localDataPoint.mSendUinType = paramParcel.readInt();
+    localDataPoint.mApiName = paramParcel.readString();
+    localDataPoint.mProperityId = paramParcel.readInt();
+    localDataPoint.mValueType = paramParcel.readString();
+    localDataPoint.mValue = paramParcel.readString();
+    localDataPoint.mRetCode = paramParcel.readInt();
+    localDataPoint.mErrMsg = paramParcel.readString();
+    localDataPoint.mSeq = paramParcel.readString();
+    return localDataPoint;
+  }
+  
+  public DataPoint[] a(int paramInt)
+  {
+    return new DataPoint[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zjo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,23 @@
-import com.tencent.mobileqq.vip.AioVipKeywordHelper;
+import com.tencent.widget.AbsListView;
 
 class akkx
-  implements Runnable
+  implements bhtv
 {
-  akkx(akkw paramakkw, String paramString) {}
+  akkx(akkt paramakkt) {}
   
-  public void run()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.jdField_a_of_type_Akkw.jdField_a_of_type_ComTencentMobileqqVipAioVipKeywordHelper.a(this.jdField_a_of_type_Akkw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Akkw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString, false);
+    akkt.a(this.a, paramInt);
+    if (paramInt == 0)
+    {
+      akkt.a(this.a, null, null);
+      akkt.a(this.a).b();
+      return;
+    }
+    akkt.a(this.a).c();
+    akkt.a(this.a).a();
   }
 }
 

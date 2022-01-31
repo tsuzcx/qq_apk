@@ -1,16 +1,26 @@
 package com.tencent.token.ui;
 
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cp;
 
-final class yc
-  implements View.OnFocusChangeListener
+class yc
+  implements View.OnClickListener
 {
-  yc(RealNameStep1InputNameIdActivity paramRealNameStep1InputNameIdActivity) {}
+  yc(ScanLoginAccountListActivity paramScanLoginAccountListActivity) {}
   
-  public final void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    RealNameStep1InputNameIdActivity.access$2900(this.a);
+    paramView = (QQUser)paramView.getTag();
+    ScanLoginAccountListActivity.access$102(this.a, "" + paramView.mRealUin);
+    if (ScanLoginAccountListActivity.access$400(this.a).b(ScanLoginAccountListActivity.access$100(this.a), 523005419L))
+    {
+      ScanLoginAccountListActivity.access$500(this.a);
+      return;
+    }
+    ScanLoginAccountListActivity.access$400(this.a).a(ScanLoginAccountListActivity.access$100(this.a), ScanLoginAccountListActivity.access$300(this.a), 523005419L);
+    this.a.showUserDialog(11);
   }
 }
 

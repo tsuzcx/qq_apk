@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agih
-  implements Runnable
+class agih
+  implements DialogInterface.OnClickListener
 {
-  public agih(ScanTorchActivity paramScanTorchActivity) {}
+  agih(agig paramagig) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ScanTorchActivity.b(this.a, true, ScanTorchActivity.d(this.a));
-    ScanTorchActivity.w(this.a);
+    paramDialogInterface.dismiss();
+    aghx.W(this.a.a).setResult(8001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agih
  * JD-Core Version:    0.7.0.1
  */

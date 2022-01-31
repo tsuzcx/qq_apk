@@ -1,69 +1,27 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.OnRefreshListener;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.SwipeRefreshTrigger;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.SwipeTrigger;
+import java.util.Comparator;
 
 public class wor
-  extends wos
+  implements Comparator<woq>
 {
-  public wor(CommonRefreshLayout paramCommonRefreshLayout)
+  public int a(woq paramwoq1, woq paramwoq2)
   {
-    super(paramCommonRefreshLayout);
-  }
-  
-  public void a()
-  {
-    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof SwipeTrigger)) && (wot.a(CommonRefreshLayout.a(this.a))))
-    {
-      CommonRefreshLayout.a(this.a).setVisibility(0);
-      ((SwipeTrigger)CommonRefreshLayout.a(this.a)).a();
+    if (paramwoq1.a == paramwoq2.a) {
+      if (!paramwoq1.b) {}
     }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof SwipeTrigger)) && (wot.c(CommonRefreshLayout.a(this.a))))
+    while (paramwoq1.a > paramwoq2.a)
     {
-      if (CommonRefreshLayout.a(this.a).getVisibility() != 0) {
-        CommonRefreshLayout.a(this.a).setVisibility(0);
+      return -1;
+      if (paramwoq2.b) {
+        return 1;
       }
-      ((SwipeTrigger)CommonRefreshLayout.a(this.a)).a(paramInt, paramBoolean1, paramBoolean2);
+      return 0;
     }
-  }
-  
-  public void b()
-  {
-    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof SwipeTrigger)) && (wot.e(CommonRefreshLayout.a(this.a)))) {
-      ((SwipeTrigger)CommonRefreshLayout.a(this.a)).b();
-    }
-  }
-  
-  public void c()
-  {
-    if ((CommonRefreshLayout.a(this.a) != null) && (wot.b(CommonRefreshLayout.a(this.a))))
-    {
-      if ((CommonRefreshLayout.a(this.a) instanceof SwipeRefreshTrigger)) {
-        ((SwipeRefreshTrigger)CommonRefreshLayout.a(this.a)).c();
-      }
-      if (CommonRefreshLayout.a(this.a) != null) {
-        CommonRefreshLayout.a(this.a).g();
-      }
-    }
-  }
-  
-  public void d()
-  {
-    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof SwipeTrigger)) && (wot.a(CommonRefreshLayout.a(this.a))))
-    {
-      ((SwipeTrigger)CommonRefreshLayout.a(this.a)).d();
-      CommonRefreshLayout.a(this.a).setVisibility(8);
-    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wor
  * JD-Core Version:    0.7.0.1
  */

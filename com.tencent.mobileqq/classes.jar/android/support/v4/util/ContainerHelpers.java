@@ -16,21 +16,15 @@ class ContainerHelpers
     {
       j = paramInt1 + i >>> 1;
       int k = paramArrayOfInt[j];
-      if (k < paramInt2)
-      {
+      if (k < paramInt2) {
         paramInt1 = j + 1;
-      }
-      else
-      {
-        i = j;
-        if (k <= paramInt2) {
-          return i;
-        }
+      } else if (k > paramInt2) {
         i = j - 1;
+      } else {
+        return j;
       }
     }
-    i = paramInt1 ^ 0xFFFFFFFF;
-    return i;
+    return paramInt1 ^ 0xFFFFFFFF;
   }
   
   static int binarySearch(long[] paramArrayOfLong, int paramInt, long paramLong)
@@ -43,22 +37,15 @@ class ContainerHelpers
     {
       j = paramInt + i >>> 1;
       long l = paramArrayOfLong[j];
-      if (l < paramLong)
-      {
+      if (l < paramLong) {
         paramInt = j + 1;
-      }
-      else
-      {
-        i = j;
-        if (l <= paramLong) {
-          break label75;
-        }
+      } else if (l > paramLong) {
         i = j - 1;
+      } else {
+        return j;
       }
     }
-    i = paramInt ^ 0xFFFFFFFF;
-    label75:
-    return i;
+    return paramInt ^ 0xFFFFFFFF;
   }
   
   public static boolean equal(Object paramObject1, Object paramObject2)

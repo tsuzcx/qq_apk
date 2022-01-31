@@ -1,77 +1,43 @@
-import android.os.IBinder;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.utils.QQComicPluginBridge;
-import cooperation.comic.utils.QQComicPluginBridge.PluginInstallCallback;
-import cooperation.comic.utils.QQComicPluginBridge.PluginInstallObserver;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
-class amkm
-  implements OnPluginInstallListener
+public class amkm
+  extends amkn
 {
-  amkm(amkl paramamkl) {}
-  
-  public IBinder asBinder()
+  public amkm(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
   {
-    return null;
+    super(paramQQAppInterface, paramQQMessageFacade);
+    this.jdField_a_of_type_JavaLangString = alof.A;
+    this.jdField_a_of_type_Int = 6003;
   }
   
-  public void onInstallBegin(String paramString)
+  public long a(DataLineMsgRecord paramDataLineMsgRecord, boolean paramBoolean)
   {
-    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_CooperationComicUtilsQQComicPluginBridge$PluginInstallCallback != null)) {
-      this.a.a.jdField_a_of_type_CooperationComicUtilsQQComicPluginBridge$PluginInstallCallback.a(98, "载入中,（我会越来越快的>_<）");
-    }
-  }
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
-  {
-    if ((this.a.a != null) && (paramInt1 > 0) && (paramInt2 > 0))
+    if (paramDataLineMsgRecord != null)
     {
-      this.a.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (this.a.a.jdField_a_of_type_CooperationComicUtilsQQComicPluginBridge$PluginInstallCallback != null)
-      {
-        paramInt1 = (int)(paramInt1 / paramInt2 * 95.0F);
-        this.a.a.jdField_a_of_type_CooperationComicUtilsQQComicPluginBridge$PluginInstallCallback.a(paramInt1, "加载中,（别紧张啊我很小的>_<）");
-      }
+      paramDataLineMsgRecord.selfuin = this.jdField_a_of_type_JavaLangString;
+      paramDataLineMsgRecord.frienduin = paramDataLineMsgRecord.selfuin;
+      paramDataLineMsgRecord.senderuin = paramDataLineMsgRecord.selfuin;
+      paramDataLineMsgRecord.istroop = this.jdField_a_of_type_Int;
+      paramDataLineMsgRecord.dataline_type = 1;
     }
+    return super.a(paramDataLineMsgRecord, paramBoolean);
   }
   
-  public void onInstallError(String arg1, int paramInt)
+  protected amns a()
   {
-    synchronized ()
-    {
-      QQComicPluginBridge.a().notifyAll();
-      if (this.a.a != null) {
-        this.a.a.jdField_a_of_type_Int = paramInt;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicPluginBridge", 2, "QQComic install error");
-      }
-      return;
-    }
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
   }
   
-  public void onInstallFinish(String arg1)
+  protected void a()
   {
-    synchronized ()
-    {
-      QQComicPluginBridge.a().notifyAll();
-      if (this.a.a != null)
-      {
-        this.a.a.b = System.currentTimeMillis();
-        if (this.a.a.jdField_a_of_type_CooperationComicUtilsQQComicPluginBridge$PluginInstallCallback != null) {
-          this.a.a.jdField_a_of_type_CooperationComicUtilsQQComicPluginBridge$PluginInstallCallback.a(99, "载入中,（我会越来越快的>_<）");
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicPluginBridge", 2, "QQComic is installed");
-      }
-      return;
-    }
+    ((alqo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amkm
  * JD-Core Version:    0.7.0.1
  */

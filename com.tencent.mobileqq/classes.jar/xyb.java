@@ -1,36 +1,30 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.activity.richmedia.view.SensorFrameImageView;
+import android.animation.TypeEvaluator;
 
-public class xyb
-  implements SensorEventListener
+final class xyb
+  implements TypeEvaluator<xya>
 {
-  public xyb(SensorFrameImageView paramSensorFrameImageView) {}
+  private xya a;
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public xya a(float paramFloat, xya paramxya1, xya paramxya2)
   {
-    switch (paramSensorEvent.sensor.getType())
-    {
+    float f1 = paramxya1.a + (paramxya2.a - paramxya1.a) * paramFloat;
+    float f2 = paramxya1.b + (paramxya2.b - paramxya1.b) * paramFloat;
+    paramFloat = paramxya1.c + (paramxya2.c - paramxya1.c) * paramFloat;
+    if (this.a == null) {
+      this.a = new xya(f1, f2, paramFloat);
     }
     for (;;)
     {
-      SensorFrameImageView.a(this.a);
-      SensorFrameImageView.b(this.a);
-      return;
-      SensorFrameImageView.a(this.a, paramSensorEvent.values);
-      continue;
-      SensorFrameImageView.b(this.a, paramSensorEvent.values);
-      continue;
-      SensorFrameImageView.c(this.a, paramSensorEvent.values);
+      return this.a;
+      this.a.a = f1;
+      this.a.b = f2;
+      this.a.c = paramFloat;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xyb
  * JD-Core Version:    0.7.0.1
  */

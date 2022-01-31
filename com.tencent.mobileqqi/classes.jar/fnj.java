@@ -1,15 +1,32 @@
-import com.tencent.mobileqq.app.message.BaseMessageProcessorForTroopAndDisc;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.database.sqlite.SQLiteCursor;
+import android.database.sqlite.SQLiteCursorDriver;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQuery;
+import com.tencent.mobileqq.utils.SecurityUtile;
 
-public class fnj
-  implements Comparator
+class fnj
+  extends SQLiteCursor
 {
-  public fnj(BaseMessageProcessorForTroopAndDisc paramBaseMessageProcessorForTroopAndDisc) {}
-  
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  fnj(fni paramfni, SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
   {
-    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
+    super(paramSQLiteDatabase, paramSQLiteCursorDriver, paramString, paramSQLiteQuery);
+  }
+  
+  public byte[] getBlob(int paramInt)
+  {
+    return SecurityUtile.a(super.getBlob(paramInt));
+  }
+  
+  public String getString(int paramInt)
+  {
+    String str1 = super.getString(paramInt);
+    try
+    {
+      String str2 = SecurityUtile.a(str1);
+      return str2;
+    }
+    catch (Exception localException) {}
+    return str1;
   }
 }
 

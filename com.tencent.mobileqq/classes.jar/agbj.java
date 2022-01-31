@@ -1,28 +1,21 @@
-import android.hardware.Camera.Size;
-import com.tencent.mobileqq.ocr.OcrCamera;
-import java.util.Comparator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class agbj
-  implements Comparator
+  implements View.OnTouchListener
 {
-  public agbj(OcrCamera paramOcrCamera) {}
+  public agbj(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public int a(Camera.Size paramSize1, Camera.Size paramSize2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = paramSize1.height * paramSize1.width;
-    int j = paramSize2.height * paramSize2.width;
-    if (j < i) {
-      return 1;
-    }
-    if (j > i) {
-      return -1;
-    }
-    return 0;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agbj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,39 @@
-import java.util.List;
+import org.json.JSONObject;
 
 public class nug
 {
-  int jdField_a_of_type_Int;
-  List jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean;
-  int b;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
   
-  public nug(boolean paramBoolean, List paramList, int paramInt1, int paramInt2)
+  public String toString()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    return bdcs.a(this).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nug
  * JD-Core Version:    0.7.0.1
  */

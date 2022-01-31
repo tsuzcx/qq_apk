@@ -1,17 +1,24 @@
-import android.content.Context;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.TextViewHolder;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
 
-class ajkf
-  implements Runnable
+public class ajkf
+  extends ajjw
 {
-  ajkf(ajke paramajke) {}
-  
-  public void run()
-  {
-    ((InputMethodManager)this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getContext().getSystemService("input_method")).showSoftInput(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a, 2);
-  }
+  public Button a;
+  public RelativeLayout a;
+  public TextView a;
+  public TroopLabelLayout a;
+  public RecentDynamicAvatarView a;
+  public SingleLineTextView a;
+  public RelativeLayout b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

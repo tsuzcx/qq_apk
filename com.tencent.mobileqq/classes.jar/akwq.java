@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.widget.RectMaskView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public class akwq
-  implements Runnable
+class akwq
+  implements MediaPlayer.OnCompletionListener
 {
-  public akwq(RectMaskView paramRectMaskView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  akwq(akwn paramakwn) {}
   
-  public void run()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRectMaskView.invalidate(this.jdField_a_of_type_Int, this.b, this.c, this.d);
+    this.a.a(10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akwq
  * JD-Core Version:    0.7.0.1
  */

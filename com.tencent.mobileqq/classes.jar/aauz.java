@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkActionAppMgr.IGetAppNameByActionCallback;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
 
 public class aauz
-  implements ArkActionAppMgr.IGetAppNameByActionCallback
+  implements View.OnClickListener
 {
-  public aauz(ArkLocalAppMgr paramArkLocalAppMgr, aavw paramaavw) {}
+  public aauz(GdtVideoCeilingTitleBar paramGdtVideoCeilingTitleBar) {}
   
-  public void a(Object paramObject, Set paramSet)
+  public void onClick(View paramView)
   {
-    ThreadManager.post(new aava(this, paramSet), 5, null, true);
+    if (GdtVideoCeilingTitleBar.a(this.a) != null) {
+      GdtVideoCeilingTitleBar.a(this.a).a(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aauz
  * JD-Core Version:    0.7.0.1
  */

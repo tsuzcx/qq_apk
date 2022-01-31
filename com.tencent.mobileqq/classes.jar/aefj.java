@@ -1,23 +1,30 @@
-import com.tencent.mobileqq.data.TroopAssistantData;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import java.util.Comparator;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aefj
-  implements Comparator
+  implements View.OnClickListener
 {
-  public aefj(TroopAssistantManager paramTroopAssistantManager) {}
+  public aefj(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public int a(TroopAssistantData paramTroopAssistantData1, TroopAssistantData paramTroopAssistantData2)
+  public void onClick(View paramView)
   {
-    long l1 = Math.max(paramTroopAssistantData1.lastmsgtime, paramTroopAssistantData1.lastdrafttime);
-    long l2 = Math.max(paramTroopAssistantData2.lastmsgtime, paramTroopAssistantData2.lastdrafttime);
-    if (l1 < l2) {
-      return 1;
+    xqq.a(this.a.jdField_a_of_type_Aegv);
+    xqq.a(this.a.jdField_a_of_type_JavaUtilList);
+    paramView = new ArrayList();
+    int i = 0;
+    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+    {
+      paramView.add(((aegt)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
+      i += 1;
     }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
+    this.a.setResult(-1, localIntent);
+    this.a.finish();
   }
 }
 

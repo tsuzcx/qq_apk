@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.highway.iplearning;
 
 import android.os.SystemClock;
+import com.tencent.mobileqq.highway.utils.BdhLogUtil;
 import com.tencent.mobileqq.highway.utils.EndPoint;
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -39,18 +38,13 @@ public class IpLearningImpl
         break;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("IpLearning", 2, localStringBuilder.toString());
-    }
+    BdhLogUtil.LogEvent("C", localStringBuilder.toString());
     return localStringBuilder.toString();
   }
   
   private static String dumpIpList(ArrayList<EndPoint> paramArrayList, String paramString)
   {
-    paramArrayList = paramString + Arrays.toString(paramArrayList.toArray());
-    if (QLog.isColorLevel()) {
-      QLog.d("IpLearning", 2, paramArrayList);
-    }
+    BdhLogUtil.LogEvent("C", paramString + Arrays.toString(paramArrayList.toArray()));
     return "IS NOT DEBUG";
   }
   
@@ -62,40 +56,44 @@ public class IpLearningImpl
       return localArrayList1;
     }
     dumpIpLearningInfos();
-    int i = 0;
     Object localObject = this.mSuccIpInfo_Key;
     Iterator localIterator = paramArrayList.iterator();
+    int i = 0;
     while (localIterator.hasNext())
     {
       EndPoint localEndPoint = (EndPoint)localIterator.next();
       IpConnInfo localIpConnInfo = (IpConnInfo)this.mIpConnInfos.get(localEndPoint.host);
-      if (localIpConnInfo == null) {
-        localEndPoint.failCount = 0;
-      } else if (localIpConnInfo.isConnSucc)
+      if (localIpConnInfo == null)
       {
-        if ((localObject != null) && (localEndPoint.host.equalsIgnoreCase((String)localObject)))
-        {
-          i = 1;
-          if (SystemClock.uptimeMillis() - localIpConnInfo.lLastSuccTimeMills > sTimeToLiveMills)
-          {
-            this.mIpConnInfos.remove(localObject);
-            this.mSuccIpInfo_Key = null;
-          }
-          else
-          {
-            localEndPoint.failCount = -1;
+        localEndPoint.failCount = 0;
+      }
+      else
+      {
+        if (localIpConnInfo.isConnSucc) {
+          if ((localObject != null) && (localEndPoint.host.equalsIgnoreCase((String)localObject))) {
+            if (SystemClock.uptimeMillis() - localIpConnInfo.lLastSuccTimeMills > sTimeToLiveMills)
+            {
+              this.mIpConnInfos.remove(localObject);
+              this.mSuccIpInfo_Key = null;
+              label159:
+              i = 1;
+            }
           }
         }
-        else
+        for (;;)
         {
+          break;
+          localEndPoint.failCount = -1;
+          break label159;
           this.mIpConnInfos.remove(localIpConnInfo.mHost);
           this.mSuccIpInfo_Key = null;
+          continue;
+          if (localIpConnInfo.iFailCount > sMaxFailCount) {
+            localArrayList2.add(localEndPoint);
+          } else {
+            localEndPoint.failCount = localIpConnInfo.iFailCount;
+          }
         }
-      }
-      else if (localIpConnInfo.iFailCount > sMaxFailCount) {
-        localArrayList2.add(localEndPoint);
-      } else {
-        localEndPoint.failCount = localIpConnInfo.iFailCount;
       }
     }
     if ((localObject != null) && (i == 0))
@@ -121,7 +119,7 @@ public class IpLearningImpl
       this.mSuccIpInfo_Key = null;
     }
     localArrayList1.removeAll(localArrayList2);
-    Collections.sort(localArrayList1, new IpListCompartor());
+    Collections.sort(localArrayList1, new IpLearningImpl.IpListCompartor());
     dumpIpList(localArrayList1, " DUMP_IPLIST_OUT ");
     return localArrayList1;
   }
@@ -166,25 +164,10 @@ public class IpLearningImpl
     this.mSuccIpInfo_Key = null;
     this.mIpConnInfos.clear();
   }
-  
-  static class IpListCompartor
-    implements Comparator<EndPoint>
-  {
-    public int compare(EndPoint paramEndPoint1, EndPoint paramEndPoint2)
-    {
-      if ((paramEndPoint1.isSameIsp) && (!paramEndPoint2.isSameIsp)) {
-        return -1;
-      }
-      if ((!paramEndPoint1.isSameIsp) && (paramEndPoint2.isSameIsp)) {
-        return 1;
-      }
-      return paramEndPoint1.failCount - paramEndPoint2.failCount;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.iplearning.IpLearningImpl
  * JD-Core Version:    0.7.0.1
  */

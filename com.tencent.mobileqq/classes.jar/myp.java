@@ -1,21 +1,20 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class myp
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  myp(mye parammye, ArrayList paramArrayList) {}
+  myp(myo parammyo) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (PublicAccountImageCollectionMainActivity.a(this.jdField_a_of_type_Mye.a) != null) {
-      PublicAccountImageCollectionMainActivity.a(this.jdField_a_of_type_Mye.a).a(this.jdField_a_of_type_JavaUtilArrayList);
-    }
+    this.a.jdField_a_of_type_Myr.c();
+    this.a.jdField_a_of_type_Long = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     myp
  * JD-Core Version:    0.7.0.1
  */

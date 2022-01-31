@@ -1,52 +1,33 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
 import com.tencent.qphone.base.util.QLog;
 
-public class agrp
-  extends GestureDetector.SimpleOnGestureListener
+class agrp
+  implements aluz
 {
-  public agrp(ProfileTagView paramProfileTagView) {}
+  agrp(agrn paramagrn) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public boolean a(alve paramalve)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll invoked");
+    if (QLog.isDevelopLevel()) {
+      auwz.a(this.a.jdField_a_of_type_JavaLangString, "onShowHotchatNote", new Object[] { paramalve });
     }
-    this.a.f = true;
-    paramFloat1 = paramFloat2;
-    if (paramMotionEvent1 != null)
+    if (paramalve == null)
     {
-      paramFloat1 = paramFloat2;
-      if (paramMotionEvent2 != null) {
-        paramFloat1 = paramMotionEvent1.getY() - paramMotionEvent2.getY();
+      if ((this.a.jdField_a_of_type_Aluy.b) && (this.a.jdField_a_of_type_Bcgx != null)) {
+        this.a.jdField_a_of_type_Bcgx.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, null, null);
       }
+      return false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll distance = " + paramFloat1);
+    if (this.a.jdField_a_of_type_Bcgx == null) {
+      this.a.jdField_a_of_type_Bcgx = new bcgx(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, agrn.a(this.a), agrn.a(this.a), this.a.jdField_a_of_type_Bbqg, this.a.V, null);
     }
-    if (Math.abs(paramFloat1) > ProfileTagView.a(this.a))
-    {
-      if ((paramFloat1 > 0.0F) && (this.a.c)) {
-        if (this.a.a())
-        {
-          this.a.f();
-          this.a.a.b(null);
-        }
-      }
-      while ((paramFloat1 >= 0.0F) || (this.a.c)) {
-        return true;
-      }
-      this.a.a();
-      return true;
-    }
-    return false;
+    this.a.jdField_a_of_type_Bcgx.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramalve.jdField_a_of_type_JavaLangString, paramalve.b);
+    this.a.jdField_a_of_type_Aluy.b = true;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrp
  * JD-Core Version:    0.7.0.1
  */

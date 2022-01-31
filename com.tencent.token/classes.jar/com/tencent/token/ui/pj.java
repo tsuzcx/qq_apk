@@ -1,25 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.token.af;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.global.h;
 
-final class pj
-  implements DialogInterface.OnClickListener
+class pj
+  implements View.OnClickListener
 {
-  pj(pi parampi, String paramString) {}
+  pj(pg parampg) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = af.a();
-    String str = this.a;
-    if (this.b.a.vrypswSucc) {}
-    for (paramInt = 2;; paramInt = 0)
-    {
-      paramDialogInterface.a(0L, str, paramInt, this.b.a.mHandler);
-      this.b.a.showProDialog(this.b.a, 2131361808, 2131361931, new pk(this));
-      return;
-    }
+    h.a("onClickrelease");
+    this.a.b();
   }
 }
 

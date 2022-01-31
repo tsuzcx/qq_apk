@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import igm;
+import ibs;
 
 public class LbsData$GeoInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new igm();
+  public static final Parcelable.Creator CREATOR = new ibs();
   public int a;
   public LbsData.QzoneGpsInfo a;
   public String a;

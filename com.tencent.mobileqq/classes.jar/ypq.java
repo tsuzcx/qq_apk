@@ -1,42 +1,35 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.game.ApolloFragmentManager;
-import com.tencent.mobileqq.apollo.game.ApolloGameView;
-import com.tencent.mobileqq.apollo.game.ApolloGameView.Director;
-import com.tencent.mobileqq.apollo.game.ApolloWebViewFragment;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
 public class ypq
-  implements Runnable
+  extends ClickableSpan
 {
-  public ypq(ApolloGameView paramApolloGameView, Intent paramIntent) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private ypr jdField_a_of_type_Ypr;
+  private String b;
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidContentIntent != null)
-    {
-      ApolloGameView.Director localDirector = new ApolloGameView.Director();
-      String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra(ApolloGameView.Director.TITLE);
-      if (!TextUtils.isEmpty(str)) {
-        localDirector.title = str;
-      }
-      str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra(ApolloGameView.Director.FOREGROUND_COLOR);
-      if (!TextUtils.isEmpty(str)) {
-        localDirector.frontColor = str;
-      }
-      str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra(ApolloGameView.Director.BACKGROUND_COLOR);
-      if (!TextUtils.isEmpty(str)) {
-        localDirector.bgColor = str;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView.a = localDirector;
-      this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView.a();
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("Director", localDirector);
+    if (this.jdField_a_of_type_Ypr != null) {
+      this.jdField_a_of_type_Ypr.a(this.jdField_a_of_type_JavaLangString, this.b);
     }
-    ApolloFragmentManager.a().a(this.jdField_a_of_type_AndroidContentIntent, ApolloWebViewFragment.class);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    if (this.jdField_a_of_type_Int != -2147483648)
+    {
+      paramTextPaint.setColor(this.jdField_a_of_type_Int);
+      return;
+    }
+    super.updateDrawState(paramTextPaint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ypq
  * JD-Core Version:    0.7.0.1
  */

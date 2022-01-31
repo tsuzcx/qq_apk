@@ -1,21 +1,35 @@
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import android.app.Activity;
+import android.content.Context;
+import java.lang.ref.WeakReference;
 
 public class yhq
-  implements Runnable
+  extends yfg
 {
-  public yhq(LebaListViewAdapter paramLebaListViewAdapter, BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
+  protected WeakReference<Context> a;
   
-  public void run()
+  public yhq(Context paramContext, int paramInt)
   {
-    ((RedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter.a.getManager(35)).a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+    super(paramContext, paramInt);
+    this.a = new WeakReference(paramContext);
+  }
+  
+  public boolean a()
+  {
+    Context localContext = (Context)this.a.get();
+    return ((localContext instanceof Activity)) && (((Activity)localContext).isFinishing());
+  }
+  
+  public void show()
+  {
+    if (a()) {
+      return;
+    }
+    super.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yhq
  * JD-Core Version:    0.7.0.1
  */

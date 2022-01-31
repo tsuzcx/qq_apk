@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ymr
-  implements Runnable
+class ymr
+  implements View.OnClickListener
 {
-  public ymr(ApolloSurfaceView paramApolloSurfaceView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
+  ymr(ymq paramymq, afkf paramafkf) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ApolloSurfaceView.access$800(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
+    ymq.a(this.jdField_a_of_type_Ymq).removeCallbacks(ymq.a(this.jdField_a_of_type_Ymq));
+    ymq.a(this.jdField_a_of_type_Ymq, true);
+    ymq.a(this.jdField_a_of_type_Ymq, this.jdField_a_of_type_Afkf, this.jdField_a_of_type_Afkf.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ymr
  * JD-Core Version:    0.7.0.1
  */

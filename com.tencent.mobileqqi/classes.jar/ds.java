@@ -1,11 +1,14 @@
-import com.dataline.mpfile.LiteMpFileUploadActivity;
+import com.dataline.mpfile.LiteMpFileMainActivity;
 
 public class ds
   implements Runnable
 {
-  public ds(LiteMpFileUploadActivity paramLiteMpFileUploadActivity) {}
+  public ds(LiteMpFileMainActivity paramLiteMpFileMainActivity) {}
   
-  public void run() {}
+  public void run()
+  {
+    this.a.a(false);
+  }
 }
 
 

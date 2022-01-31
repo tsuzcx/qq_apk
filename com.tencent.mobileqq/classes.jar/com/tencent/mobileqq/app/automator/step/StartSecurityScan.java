@@ -7,10 +7,10 @@ import com.tencent.mobileqq.app.automator.Automator;
 public class StartSecurityScan
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
-    if (this.a.b.s()) {
-      this.a.b.w();
+    if (this.a.app.r()) {
+      this.a.app.y();
     }
     return 7;
   }

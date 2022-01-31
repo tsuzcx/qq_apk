@@ -1,23 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
-import dov.com.qq.im.capture.view.StaticStickerProviderView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class anqd
-  extends CaptureConfigUpdateObserver
+class anqd
+  implements DialogInterface.OnDismissListener
 {
-  public anqd(StaticStickerProviderView paramStaticStickerProviderView) {}
+  anqd(anqc paramanqc, bhuf parambhuf) {}
   
-  public void e()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("StaticStickerProviderView", 2, "paster config get notify");
-    }
-    this.a.d();
+    this.jdField_a_of_type_Bhuf.dismiss();
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ClearData actionsheet is closed", new Object[0]));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anqd
  * JD-Core Version:    0.7.0.1
  */

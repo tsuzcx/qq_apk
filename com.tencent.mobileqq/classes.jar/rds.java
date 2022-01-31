@@ -1,21 +1,23 @@
-import com.tencent.mfsdk.collector.DropFrameMonitor;
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
 
-public class rds
-  implements AbstractUnifiedMonitor.ThreadMonitorCallback
+final class rds
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public rds(DropFrameMonitor paramDropFrameMonitor) {}
+  rds(int paramInt1, ViewGroup.MarginLayoutParams paramMarginLayoutParams, int paramInt2, View paramView) {}
   
-  public void onThreadMonitorEnd(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt == 10) {
-      DropFrameMonitor.a(this.a);
-    }
+    int i = (int)(paramValueAnimator.getAnimatedFraction() * this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.bottomMargin = (i + this.b);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rds
  * JD-Core Version:    0.7.0.1
  */

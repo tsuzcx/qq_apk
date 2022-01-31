@@ -1,21 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-
-public class rkw
-  implements View.OnClickListener
+public abstract interface rkw
 {
-  public rkw(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  public abstract void a(rjk paramrjk1, rjk paramrjk2);
   
-  public void onClick(View paramView)
-  {
-    this.a.finish();
-    this.a.overridePendingTransition(2131034134, 2131034135);
-  }
+  public abstract void l();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rkw
  * JD-Core Version:    0.7.0.1
  */

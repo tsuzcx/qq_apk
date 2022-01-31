@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class interact_value$OneInteract
-  extends MessageMicro
+  extends MessageMicro<OneInteract>
 {
   public static final int STATE_TYPE_AWARD_POST = 3;
   public static final int STATE_TYPE_FOLLOW = 9;
@@ -32,7 +32,7 @@ public final class interact_value$OneInteract
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nearby_interact_state.interact_value.OneInteract
  * JD-Core Version:    0.7.0.1
  */

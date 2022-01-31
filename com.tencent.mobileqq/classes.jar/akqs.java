@@ -1,28 +1,14 @@
-import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
-import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-public class akqs
-  implements Runnable
+public abstract interface akqs
 {
-  public akqs(SwiftWebAccelerator paramSwiftWebAccelerator, SwiftReuseTouchWebView paramSwiftReuseTouchWebView) {}
-  
-  public void run()
-  {
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView.destroy();
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("WebLog_SwiftWebAccelerator", 1, "doMainStep_WarnUpWebView error:" + localException.toString());
-    }
-  }
+  public abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akqs
  * JD-Core Version:    0.7.0.1
  */

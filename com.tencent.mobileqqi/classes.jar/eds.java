@@ -1,25 +1,22 @@
-import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class eds
-  implements FileManagerUtil.TipsClickedInterface
+  implements View.OnClickListener
 {
-  public eds(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
+  public eds(SearchResultDialog paramSearchResultDialog) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    FileManagerUtil.a(GrayTipsItemBuilder.a(this.a).a(), 3);
-    FileManagerUtil.a((Activity)GrayTipsItemBuilder.a(this.a), GrayTipsItemBuilder.b(this.a).a(), GrayTipsItemBuilder.a(this.a).a, GrayTipsItemBuilder.b(this.a).d);
+    int i = ((Integer)paramView.getTag(-1)).intValue();
+    SearchResultDialog.a(this.a).a(SearchResultDialog.b(this.a), paramView, i, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     eds
  * JD-Core Version:    0.7.0.1
  */

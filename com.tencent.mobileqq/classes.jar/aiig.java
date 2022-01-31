@@ -1,19 +1,15 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
 class aiig
-  implements Runnable
+  implements View.OnClickListener
 {
-  aiig(aiif paramaiif, StructMsgForImageShare paramStructMsgForImageShare, QQAppInterface paramQQAppInterface) {}
+  aiig(aiie paramaiie) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    long l = NetConnInfoCenter.getServerTime();
-    if (PublicAccountChatPie.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
-    PublicAccountReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.uin, "0X80055C7", "0X80055C7", 0, 0, Long.toString(l), Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.msgId), this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.mMsgAction, Integer.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.mPromotionType), false);
+    this.a.a.setText("");
   }
 }
 

@@ -1,52 +1,34 @@
-import com.tencent.biz.qqstory.base.QQStoryHandler;
-import com.tencent.biz.qqstory.base.QQStoryManager;
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.settings.QQStoryShieldListActivity;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class nrh
-  extends QQStoryObserver
+class nrh
+  extends BroadcastReceiver
 {
-  public nrh(QQStoryShieldListActivity paramQQStoryShieldListActivity) {}
+  nrh(nrc paramnrc, String paramString, boolean paramBoolean) {}
   
-  public void a(boolean paramBoolean1, List paramList, byte[] paramArrayOfByte, boolean paramBoolean2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramBoolean1)
+    double d1 = Double.parseDouble(paramIntent.getStringExtra("latitude"));
+    double d2 = Double.parseDouble(paramIntent.getStringExtra("longitude"));
+    paramIntent = paramIntent.getStringExtra("name");
+    this.jdField_a_of_type_Nrc.a(d1, d2, paramIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    try
     {
-      if (!paramBoolean2)
-      {
-        paramList = this.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler;
-        if (this.a.jdField_a_of_type_Int == 2) {}
-        for (paramBoolean1 = true;; paramBoolean1 = false)
-        {
-          paramList.a(paramArrayOfByte, 10, paramBoolean1);
-          return;
-        }
-      }
-      QQStoryShieldListActivity.a(this.a);
-      this.a.a(paramList);
+      paramContext.unregisterReceiver(this.jdField_a_of_type_Nrc.c);
+      label58:
+      this.jdField_a_of_type_Nrc.c = null;
       return;
     }
-    QQStoryShieldListActivity.b(this.a);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a();
-    if (paramBoolean1)
+    catch (Exception paramContext)
     {
-      List localList = this.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a(paramBoolean3);
-      this.a.a(localList);
-      return;
+      break label58;
     }
-    QQToast.a(this.a, 2131437531, 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nrh
  * JD-Core Version:    0.7.0.1
  */

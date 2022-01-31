@@ -8,14 +8,14 @@ import java.util.ArrayList;
 public final class ProfFriendInfoReq
   extends JceStruct
 {
-  static ArrayList cache_vFieldIdList;
+  static ArrayList<Short> cache_vFieldIdList;
   public byte cDataCode;
   public long uFriendUin;
-  public ArrayList vFieldIdList;
+  public ArrayList<Short> vFieldIdList;
   
   public ProfFriendInfoReq() {}
   
-  public ProfFriendInfoReq(long paramLong, byte paramByte, ArrayList paramArrayList)
+  public ProfFriendInfoReq(long paramLong, byte paramByte, ArrayList<Short> paramArrayList)
   {
     this.uFriendUin = paramLong;
     this.cDataCode = paramByte;
@@ -43,7 +43,7 @@ public final class ProfFriendInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     KQQ.ProfFriendInfoReq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,23 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragmentAllWaite;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
 
-public class ahiq
-  implements Runnable
+public final class ahiq
+  implements Parcelable.Creator<SearchResultItem>
 {
-  public ahiq(CaptureSoDownloadFragmentAllWaite paramCaptureSoDownloadFragmentAllWaite, int paramInt) {}
-  
-  public void run()
+  public SearchResultItem a(Parcel paramParcel)
   {
-    CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite, this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "onDownloadProgress mGestureState=" + CaptureSoDownloadFragmentAllWaite.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite) + " mVideoState=" + CaptureSoDownloadFragmentAllWaite.c(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite) + ",mFilterSoState=" + CaptureSoDownloadFragmentAllWaite.d(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite) + ",mQmcfState=" + CaptureSoDownloadFragmentAllWaite.e(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite));
-    }
-    CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite, "GestureDownloadProgress");
+    return new SearchResultItem(paramParcel);
+  }
+  
+  public SearchResultItem[] a(int paramInt)
+  {
+    return new SearchResultItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahiq
  * JD-Core Version:    0.7.0.1
  */

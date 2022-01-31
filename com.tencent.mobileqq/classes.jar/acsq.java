@@ -1,34 +1,37 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collections;
-import java.util.List;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
 public class acsq
-  implements Runnable
+  extends AccountObserver
 {
-  public acsq(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public acsq(Conversation paramConversation) {}
   
-  public void run()
+  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
+  {
+    if (this.a.a != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, String.format("onOnlineStatusChanged, currentStatus = %s", new Object[] { paramStatus }));
+      }
+      this.a.a.a.sendEmptyMessage(18);
+    }
+  }
+  
+  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "queryFileEntitiesFromDB thread start");
+      QLog.d("Q.recent", 2, String.format("onOnlineStatusPush, currentStatus = %s , extOnlineStatus = %d", new Object[] { paramStatus, Long.valueOf(paramLong) }));
     }
-    if ((this.a.b != null) && (this.a.b.trim().length() != 0)) {}
-    for (List localList = QfileBaseRecentFileTabView.a(this.a).a().a(this.a.b);; localList = QfileBaseRecentFileTabView.b(this.a).a().a())
-    {
-      Collections.sort(localList, this.a.jdField_a_of_type_JavaUtilComparator);
-      if (localList != null) {
-        QfileBaseRecentFileTabView.a(this.a, new acsr(this, localList));
-      }
-      return;
-    }
+    this.a.a.a.sendEmptyMessage(18);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acsq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.widget.AntiphingToast;
-
 public class aksq
-  implements Animation.AnimationListener
 {
-  public aksq(AntiphingToast paramAntiphingToast) {}
+  public float a;
+  public float b;
+  public float c;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public aksq(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    AntiphingToast.a(this.a, true);
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ApolloRoleInfo:").append("scale:").append(this.a).append(",xPos:").append(this.b).append(",yPos:").append(this.c);
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aksq
  * JD-Core Version:    0.7.0.1
  */

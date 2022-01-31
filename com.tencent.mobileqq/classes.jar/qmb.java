@@ -1,36 +1,23 @@
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.views.canvas.components.picture.GdtCanvasPictureComponentView;
-import com.tencent.gdtad.views.image.GdtDrawableLoader;
-import com.tencent.gdtad.views.image.GdtDrawableLoader.Listener;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
 
-public class qmb
-  implements GdtDrawableLoader.Listener
+public final class qmb
+  implements Parcelable.Creator<SocializeFeedsInfo.BiuCommentInfo>
 {
-  public qmb(GdtCanvasPictureComponentView paramGdtCanvasPictureComponentView) {}
-  
-  public void a(URLDrawable paramURLDrawable)
+  public SocializeFeedsInfo.BiuCommentInfo a(Parcel paramParcel)
   {
-    GdtLog.b("GdtCanvasPictureComponentView", "onLoadSuccessful");
-    if ((GdtCanvasPictureComponentView.a(this.a) != null) && (GdtCanvasPictureComponentView.a(this.a) != null)) {
-      GdtCanvasPictureComponentView.a(this.a).setImageDrawable(GdtCanvasPictureComponentView.a(this.a).a());
-    }
-    GdtCanvasPictureComponentView.a(this.a, true);
+    return new SocializeFeedsInfo.BiuCommentInfo(paramParcel);
   }
   
-  public void b(URLDrawable paramURLDrawable)
+  public SocializeFeedsInfo.BiuCommentInfo[] a(int paramInt)
   {
-    GdtLog.b("GdtCanvasPictureComponentView", "onLoadFailed");
-    if ((GdtCanvasPictureComponentView.a(this.a) != null) && (GdtCanvasPictureComponentView.a(this.a) != null)) {
-      GdtCanvasPictureComponentView.a(this.a).setImageDrawable(GdtCanvasPictureComponentView.a(this.a).a());
-    }
-    GdtCanvasPictureComponentView.b(this.a, false);
+    return new SocializeFeedsInfo.BiuCommentInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qmb
  * JD-Core Version:    0.7.0.1
  */

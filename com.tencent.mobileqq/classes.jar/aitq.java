@@ -1,149 +1,47 @@
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
-import com.tencent.mobileqq.troop.activity.ExtendGridView;
-import com.tencent.mobileqq.troop.activity.TroopBarImagePreviewAdapter;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.data.TroopBarMyBar;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
-import com.tencent.mobileqq.troop.widget.PublishItemBar;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import com.tencent.mobileqq.troop.widget.TribeHotPicPanel;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.util.InputMethodUtil;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
-public class aitq
-  extends Handler
+class aitq
+  implements View.OnClickListener
 {
-  public aitq(AbsPublishActivity paramAbsPublishActivity) {}
+  aitq(aitp paramaitp) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    boolean bool = false;
-    if (this.a.isFinishing()) {}
-    do
-    {
-      do
+    paramView = new Intent();
+    int i = ((NewPhotoPreviewActivity)this.a.mActivity).getCurrentSelectedPostion();
+    if ((aitp.a(this.a).selectedPhotoList == null) || (aitp.b(this.a).selectedPhotoList.size() == 0)) {
+      if ((aitp.a(this.a).paths != null) && (i != -1))
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return;
-                    switch (paramMessage.what)
-                    {
-                    default: 
-                      return;
-                    }
-                  } while (this.a.a(1));
-                  if (this.a.jdField_a_of_type_JavaUtilArrayList.size() != 9) {
-                    break;
-                  }
-                  QQToast.a(this.a, "最多只能选择9张图片", 0).b(this.a.getTitleBarHeight());
-                  return;
-                  this.a.c(false);
-                  this.a.rightViewText.setEnabled(true);
-                  this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.setItemEnable(true);
-                  this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.setEnabled(true);
-                  QQToast.a(this.a, 2131430348, 1).b(this.a.getTitleBarHeight());
-                } while (!(paramMessage.obj instanceof String));
-                paramMessage = (String)paramMessage.obj;
-                this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramMessage);
-                return;
-                this.a.c(false);
-                this.a.k();
-                return;
-                if ((paramMessage.arg1 == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo != null)) {
-                  this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.url = ((String)paramMessage.obj);
-                }
-              } while ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()));
-              this.a.k();
-              return;
-              this.a.c(false);
-              if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-                this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-              }
-              this.a.rightViewText.setEnabled(true);
-              this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.setItemEnable(true);
-              this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.setEnabled(true);
-              QQToast.a(this.a, 2131430348, 1).b(this.a.getTitleBarHeight());
-              return;
-            } while (this.a.a(2));
-            paramMessage = new Intent();
-            paramMessage.putExtra("audio_max_length", this.a.h);
-            if (this.a.r != null)
-            {
-              paramMessage.putExtra("from", "publish");
-              paramMessage.putExtra("bid", this.a.r);
-              paramMessage.putExtra("fromflag", this.a.c);
-              TroopBarUtils.a(this.a.p, this.a.q, "Clk_record", this.a.r, this.a.c, "", "");
-            }
-            PublicFragmentActivity.Launcher.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramMessage, PublicTransFragmentActivity.class, AudioRecordFragment.class, 1003);
-            return;
-          } while (!this.a.a(4));
-          return;
-          this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getClass().getName());
-          return;
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTribeHotPicPanel != null) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTribeHotPicPanel.isShown()))
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemBar.a(5, 0);
-            this.a.h();
-            this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new aitr(this), 200L);
-            return;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemBar.a(5, 1);
-          this.a.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130841212);
-          this.a.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(this.a.getString(2131430341));
-          this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(8);
-          InputMethodUtil.b(this.a.b);
-          this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new aits(this), 200L);
-        } while (!(this.a.getActivity() instanceof TroopBarPublishActivity));
-        localObject = (TroopBarPublishActivity)this.a.getActivity();
-        paramMessage = new StringBuilder();
-      } while (((TroopBarPublishActivity)localObject).a == null);
-      Object localObject = ((TroopBarPublishActivity)localObject).a.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        paramMessage.append(((TroopBarMyBar)((Iterator)localObject).next()).c).append("|");
+        ArrayList localArrayList = new ArrayList();
+        String str = (String)aitp.b(this.a).paths.get(i);
+        if (TextUtils.isEmpty(str)) {
+          break label172;
+        }
+        localArrayList.add(str);
+        paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", localArrayList);
+        azqs.b(null, "CliOper", "", "", "0X800A6DB", "0X800A6DB", 0, 0, "1", "", "", "");
       }
-    } while (!this.a.a(8));
-    return;
-    if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarImagePreviewAdapter.a(this.a.jdField_a_of_type_JavaUtilArrayList);
-      paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarImagePreviewAdapter;
-      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() < 9) {
-        bool = true;
-      }
-      paramMessage.a(bool, true);
-      this.a.a(1);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.setCurType(1);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
-      return;
     }
-    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarImagePreviewAdapter.a(false, true);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
-    this.a.a(0);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.setCurType(0);
+    for (;;)
+    {
+      ((NewPhotoPreviewActivity)this.a.mActivity).setResult(-1, paramView);
+      ((NewPhotoPreviewActivity)this.a.mActivity).finish();
+      return;
+      label172:
+      if (QLog.isColorLevel())
+      {
+        QLog.d("PhotoPreviewActivity", 2, "sendBtn click currentPath is null");
+        continue;
+        paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", aitp.c(this.a).selectedPhotoList);
+        azqs.b(null, "CliOper", "", "", "0X800A6DB", "0X800A6DB", 0, 0, String.valueOf(aitp.d(this.a).selectedPhotoList.size()), "", "", "");
+      }
+    }
   }
 }
 

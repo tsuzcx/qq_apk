@@ -1,23 +1,20 @@
-import android.os.Process;
-import com.tencent.component.network.utils.thread.PriorityThreadFactory;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class plu
-  extends Thread
+class plu
+  implements ViewBase.OnClickListener
 {
-  public plu(PriorityThreadFactory paramPriorityThreadFactory, Runnable paramRunnable, String paramString)
-  {
-    super(paramRunnable, paramString);
-  }
+  plu(plq paramplq, pgd parampgd, Container paramContainer) {}
   
-  public void run()
+  public void onClick(ViewBase paramViewBase)
   {
-    Process.setThreadPriority(PriorityThreadFactory.a(this.a));
-    super.run();
+    this.jdField_a_of_type_Plq.a(this.jdField_a_of_type_Pgd, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     plu
  * JD-Core Version:    0.7.0.1
  */

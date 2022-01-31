@@ -26,17 +26,17 @@ public class PriorityThreadPool
     return PriorityThreadPool.InstanceHolder.INSTANCE;
   }
   
-  public Future submit(ThreadPool.Job paramJob)
+  public <T> Future<T> submit(ThreadPool.Job<T> paramJob)
   {
     return submit(paramJob, null, null);
   }
   
-  public Future submit(ThreadPool.Job paramJob, FutureListener paramFutureListener)
+  public <T> Future<T> submit(ThreadPool.Job<T> paramJob, FutureListener<T> paramFutureListener)
   {
     return submit(paramJob, paramFutureListener, null);
   }
   
-  public Future submit(ThreadPool.Job paramJob, FutureListener paramFutureListener, PriorityThreadPool.Priority paramPriority)
+  public <T> Future<T> submit(ThreadPool.Job<T> paramJob, FutureListener<T> paramFutureListener, PriorityThreadPool.Priority paramPriority)
   {
     PriorityThreadPool.Priority localPriority = paramPriority;
     if (paramPriority == null) {
@@ -45,14 +45,14 @@ public class PriorityThreadPool
     return super.submit(new PriorityThreadPool.PriorityJob(paramJob, localPriority.priority, localPriority.fifo), paramFutureListener);
   }
   
-  public Future submit(ThreadPool.Job paramJob, PriorityThreadPool.Priority paramPriority)
+  public <T> Future<T> submit(ThreadPool.Job<T> paramJob, PriorityThreadPool.Priority paramPriority)
   {
     return submit(paramJob, null, paramPriority);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.utils.thread.PriorityThreadPool
  * JD-Core Version:    0.7.0.1
  */

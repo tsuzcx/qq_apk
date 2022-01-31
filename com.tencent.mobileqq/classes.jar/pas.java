@@ -1,42 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
 
 public class pas
-  implements View.OnTouchListener
+  extends AnimatorListenerAdapter
 {
-  public pas(AbsBaseWebViewActivity paramAbsBaseWebViewActivity) {}
+  public pas(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-      bool1 = false;
-    }
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-    } while (paramView != AbsBaseWebViewActivity.a(this.a));
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewBase", 2, "vg onTouch");
-    }
-    paramView = new HashMap(2);
-    paramView.put("X", Integer.valueOf((int)paramMotionEvent.getX()));
-    paramView.put("Y", Integer.valueOf((int)paramMotionEvent.getY()));
-    this.a.a(8589934606L, paramView);
-    return true;
+    ReadInJoySelfFragment.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pas
  * JD-Core Version:    0.7.0.1
  */

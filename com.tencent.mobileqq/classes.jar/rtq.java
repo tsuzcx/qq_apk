@@ -1,27 +1,21 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class rtq
-  implements Runnable
+  extends pdi
 {
-  public rtq(BaseChatPie paramBaseChatPie, FrameLayout paramFrameLayout) {}
-  
-  public void run()
+  public rtq(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.delmsg", 2, "hor anim onAnimationEnd() is called,time is:" + System.currentTimeMillis());
-    }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.f != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.f.setVisibility(0);
-    }
+    super(paramString);
+  }
+  
+  public void a(pdc parampdc)
+  {
+    parampdc.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rtq
  * JD-Core Version:    0.7.0.1
  */

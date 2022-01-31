@@ -1,17 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.ipc.QrHandleResultCallBack;
-import cooperation.qlink.QQProxyForQlink;
+import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
+import com.tencent.qphone.base.util.QLog;
 
 public class amnj
-  implements DialogInterface.OnClickListener
+  extends Resources
 {
-  public amnj(QQProxyForQlink paramQQProxyForQlink, QrHandleResultCallBack paramQrHandleResultCallBack) {}
+  private amnn a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public amnj(amnn paramamnn)
   {
-    this.jdField_a_of_type_ComTencentBizQrcodeIpcQrHandleResultCallBack.a();
-    paramDialogInterface.dismiss();
+    super(paramamnn.b().getAssets(), paramamnn.b().getDisplayMetrics(), paramamnn.b().getConfiguration());
+    this.a = paramamnn;
+  }
+  
+  public CharSequence getText(int paramInt)
+  {
+    int i = this.a.a(paramInt);
+    try
+    {
+      CharSequence localCharSequence = this.a.a().getText(i);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MultiLanguageEngine", 4, new Object[] { "getText delegate:", Integer.valueOf(paramInt), " ,langId:", Integer.valueOf(i), " ,content:" + localCharSequence });
+      }
+      return localCharSequence;
+    }
+    catch (Resources.NotFoundException localNotFoundException) {}
+    return this.a.b().getText(i);
   }
 }
 

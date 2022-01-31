@@ -1,17 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.LongMsgItemBuilder;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class vaq
-  implements DialogInterface.OnClickListener
+public final class vaq
+  extends QQUIEventReceiver<vai, uyf>
 {
-  public vaq(LongMsgItemBuilder paramLongMsgItemBuilder) {}
+  public vaq(@NonNull vai paramvai)
+  {
+    super(paramvai);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(@NonNull vai paramvai, @NonNull uyf paramuyf)
+  {
+    paramvai.a.a(paramuyf.a);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uyf.class;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vaq
  * JD-Core Version:    0.7.0.1
  */

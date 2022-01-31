@@ -492,6 +492,44 @@ public class NotificationCompat
     }
   }
   
+  static class NotificationCompatImplOreo
+    implements NotificationCompat.NotificationCompatImpl
+  {
+    public Notification build(NotificationCompat.Builder paramBuilder)
+    {
+      NotificationCompatOreo localNotificationCompatOreo = new NotificationCompatOreo(paramBuilder.mContext, paramBuilder.mNotification, paramBuilder.mContentTitle, paramBuilder.mContentText, paramBuilder.mContentInfo, paramBuilder.mTickerView, paramBuilder.mNumber, paramBuilder.mContentIntent, paramBuilder.mFullScreenIntent, paramBuilder.mLargeIcon, paramBuilder.mProgressMax, paramBuilder.mProgress, paramBuilder.mProgressIndeterminate, paramBuilder.mUseChronometer, paramBuilder.mPriority, paramBuilder.mSubText, paramBuilder.mChannelId);
+      Iterator localIterator = paramBuilder.mActions.iterator();
+      while (localIterator.hasNext())
+      {
+        NotificationCompat.Action localAction = (NotificationCompat.Action)localIterator.next();
+        localNotificationCompatOreo.addAction(localAction.icon, localAction.title, localAction.actionIntent);
+      }
+      if (paramBuilder.mStyle != null)
+      {
+        if (!(paramBuilder.mStyle instanceof NotificationCompat.BigTextStyle)) {
+          break label176;
+        }
+        paramBuilder = (NotificationCompat.BigTextStyle)paramBuilder.mStyle;
+        localNotificationCompatOreo.addBigTextStyle(paramBuilder.mBigContentTitle, paramBuilder.mSummaryTextSet, paramBuilder.mSummaryText, paramBuilder.mBigText);
+      }
+      for (;;)
+      {
+        return localNotificationCompatOreo.build();
+        label176:
+        if ((paramBuilder.mStyle instanceof NotificationCompat.InboxStyle))
+        {
+          paramBuilder = (NotificationCompat.InboxStyle)paramBuilder.mStyle;
+          localNotificationCompatOreo.addInboxStyle(paramBuilder.mBigContentTitle, paramBuilder.mSummaryTextSet, paramBuilder.mSummaryText, paramBuilder.mTexts);
+        }
+        else if ((paramBuilder.mStyle instanceof NotificationCompat.BigPictureStyle))
+        {
+          paramBuilder = (NotificationCompat.BigPictureStyle)paramBuilder.mStyle;
+          localNotificationCompatOreo.addBigPictureStyle(paramBuilder.mBigContentTitle, paramBuilder.mSummaryTextSet, paramBuilder.mSummaryText, paramBuilder.mPicture, paramBuilder.mBigLargeIcon, paramBuilder.mBigLargeIconSet);
+        }
+      }
+    }
+  }
+  
   public static abstract class Style
   {
     CharSequence mBigContentTitle;

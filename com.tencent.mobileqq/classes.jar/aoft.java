@@ -1,51 +1,139 @@
-import android.animation.Animator;
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.Button;
+import android.app.Activity;
+import android.app.ActivityOptions;
+import android.os.Build.VERSION;
+import android.support.annotation.RequiresApi;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowPlusPanel;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 public class aoft
-  extends aofi
 {
-  public aoft(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  private static Class<?> jdField_a_of_type_JavaLangClass;
+  private static Method jdField_a_of_type_JavaLangReflectMethod;
+  private static boolean jdField_a_of_type_Boolean;
+  private static Method jdField_b_of_type_JavaLangReflectMethod;
+  private static boolean jdField_b_of_type_Boolean;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  @RequiresApi(api=16)
+  private static void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "enterPtvModeAnimation: onAnimationEnd <<===");
+    if (jdField_a_of_type_Boolean) {
+      return;
     }
-    this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.x();
-    this.a.m();
-    if (!this.a.g) {
-      this.a.e(false);
+    try
+    {
+      jdField_a_of_type_JavaLangReflectMethod = Activity.class.getDeclaredMethod("getActivityOptions", new Class[0]);
+      jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
+      arrayOfClass = Activity.class.getDeclaredClasses();
+      jdField_a_of_type_JavaLangClass = null;
+      j = arrayOfClass.length;
+      i = 0;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        Class[] arrayOfClass;
+        int j;
+        int i;
+        Class localClass;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("SwipeLayoutUtils", 2, localThrowable, new Object[0]);
+          continue;
+          i += 1;
+        }
+      }
+    }
+    if (i < j)
+    {
+      localClass = arrayOfClass[i];
+      if (localClass.getSimpleName().contains("TranslucentConversionListener")) {
+        jdField_a_of_type_JavaLangClass = localClass;
+      }
+    }
+    else
+    {
+      jdField_b_of_type_JavaLangReflectMethod = Activity.class.getDeclaredMethod("convertToTranslucent", new Class[] { jdField_a_of_type_JavaLangClass, ActivityOptions.class });
+      jdField_b_of_type_JavaLangReflectMethod.setAccessible(true);
+      jdField_b_of_type_Boolean = true;
+      jdField_a_of_type_Boolean = true;
+      return;
     }
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public static void a(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "enterPtvModeAnimation: onAnimationStart ===>>");
-    }
-    this.a.e.setVisibility(0);
-    this.a.f.setBackgroundColor(this.a.getResources().getColor(2131493275));
-    this.a.d = true;
-    if (this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowPlusPanel != null) {
-      this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowPlusPanel.b();
-    }
-    if (this.a.g)
+    Object localObject = null;
+    for (;;)
     {
-      this.a.b.setOnTouchListener(this.a.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.a.b.setLongClickable(false);
+      int i;
+      try
+      {
+        Class[] arrayOfClass = Activity.class.getDeclaredClasses();
+        int j = arrayOfClass.length;
+        i = 0;
+        if (i < j)
+        {
+          Class localClass = arrayOfClass[i];
+          if (localClass.getSimpleName().contains("TranslucentConversionListener")) {
+            localObject = localClass;
+          }
+        }
+        else
+        {
+          localObject = Activity.class.getDeclaredMethod("convertToTranslucent", new Class[] { localObject });
+          ((Method)localObject).setAccessible(true);
+          ((Method)localObject).invoke(paramActivity, new Object[] { null });
+          return;
+        }
+      }
+      catch (Throwable paramActivity)
+      {
+        return;
+      }
+      i += 1;
     }
+  }
+  
+  public static void a(Activity paramActivity, InvocationHandler paramInvocationHandler)
+  {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      b(paramActivity, paramInvocationHandler);
+      return;
+    }
+    a(paramActivity);
+  }
+  
+  public static boolean a()
+  {
+    if (Build.VERSION.SDK_INT < 21) {
+      return false;
+    }
+    a();
+    return jdField_b_of_type_Boolean;
+  }
+  
+  @RequiresApi(api=16)
+  private static void b(Activity paramActivity, InvocationHandler paramInvocationHandler)
+  {
+    
+    try
+    {
+      Object localObject = jdField_a_of_type_JavaLangReflectMethod.invoke(paramActivity, new Object[0]);
+      Class localClass = jdField_a_of_type_JavaLangClass;
+      paramInvocationHandler = Proxy.newProxyInstance(jdField_a_of_type_JavaLangClass.getClassLoader(), new Class[] { localClass }, paramInvocationHandler);
+      jdField_b_of_type_JavaLangReflectMethod.invoke(paramActivity, new Object[] { paramInvocationHandler, localObject });
+      return;
+    }
+    catch (Throwable paramActivity) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoft
  * JD-Core Version:    0.7.0.1
  */

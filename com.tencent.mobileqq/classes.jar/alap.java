@@ -1,39 +1,48 @@
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.AuthorityLoginView;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.common.app.AppInterface;
 
-public class alap
-  implements View.OnClickListener
+public abstract interface alap
 {
-  public alap(AuthorityLoginView paramAuthorityLoginView, String paramString) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    if ((AuthorityLoginView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView) instanceof AuthorityActivity)) {
-      ((AuthorityActivity)AuthorityLoginView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView)).a(this.jdField_a_of_type_JavaLangString, true);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.b);
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      paramView = this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.jdField_a_of_type_AndroidViewView.findViewById(2131365727);
-      if (paramView != null) {
-        paramView.setVisibility(0);
-      }
-      return;
-      if ((AuthorityLoginView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView) instanceof QuickLoginAuthorityActivity)) {
-        ((QuickLoginAuthorityActivity)AuthorityLoginView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView)).a(this.jdField_a_of_type_JavaLangString, true);
-      }
-    }
-  }
+  public abstract long a();
+  
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract void a(alao paramalao);
+  
+  public abstract void a(alao paramalao, long paramLong);
+  
+  public abstract void a(Context paramContext, AppInterface paramAppInterface);
+  
+  public abstract void a(String paramString1, String paramString2, int paramInt);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void b(alao paramalao);
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alap
  * JD-Core Version:    0.7.0.1
  */

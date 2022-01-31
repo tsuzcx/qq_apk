@@ -1,22 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.pay.googlewalletsdk.GoogleWalletPayHelper;
-import com.tencent.mobileqq.activity.voip.VoipPayActivity;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class fbl
-  implements View.OnClickListener
+  implements Runnable
 {
-  public fbl(VoipPayActivity paramVoipPayActivity) {}
+  public fbl(DataLineHandler paramDataLineHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = VoipPayActivity.a(this.a);
-    GoogleWalletPayHelper.getInstance().pay(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.handleSendFileReply(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg, this.jdField_a_of_type_JavaLangObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fbl
  * JD-Core Version:    0.7.0.1
  */

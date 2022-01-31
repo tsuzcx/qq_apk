@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StUser;
 
-public class ugb
-  implements DialogInterface.OnDismissListener
+class ugb
+  implements ucd
 {
-  public ugb(UpgradeActivity paramUpgradeActivity) {}
+  ugb(uga paramuga, FeedCloudMeta.StUser paramStUser) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    this.a.finish();
+    tqs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.id.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ugb
  * JD-Core Version:    0.7.0.1
  */

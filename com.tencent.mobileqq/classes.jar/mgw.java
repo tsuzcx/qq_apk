@@ -1,89 +1,55 @@
-import android.graphics.Rect;
-import android.view.View;
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiIncomingCallUICtr.1.1;
 
 public class mgw
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public mgw(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
+  mgw(mgv parammgv) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.h)
-    {
-      ReadInJoyLogicEngine.a().f(this.a.c);
-      this.a.h = false;
-      return;
-    }
-    int i = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getFirstVisiblePosition();
-    if (i < 1) {
-      i = 1;
-    }
-    for (;;)
-    {
-      int m = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getLastVisiblePosition();
-      int k = i;
-      label64:
-      BaseArticleInfo localBaseArticleInfo;
-      int j;
-      if (k <= m)
-      {
-        localBaseArticleInfo = this.a.b(k - 1);
-        if ((localBaseArticleInfo != null) && ((localBaseArticleInfo instanceof AdvertisementInfo)))
-        {
-          if ((k <= i) || (k >= m)) {
-            break label228;
-          }
-          j = 1;
-        }
+    paramContext = paramIntent.getAction();
+    long l = mwd.a(paramIntent);
+    if (paramContext.equals("tencent.av.EXIT_QZONE_LIVE_RSP_ACTION")) {
+      if (this.a.b == 1) {
+        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new MultiIncomingCallUICtr.1.1(this), 500L);
       }
-      for (;;)
+    }
+    do
+    {
+      do
       {
-        label108:
-        if (j == 1)
+        do
         {
-          if ((localBaseArticleInfo.mChannelID == 56L) && (ReadInJoyLogicEngine.a().a((AdvertisementInfo)localBaseArticleInfo))) {
-            NativeAdUtils.a(null, this.a.jdField_a_of_type_AndroidAppActivity, NativeAdUtils.b, NativeAdUtils.l, (AdvertisementInfo)localBaseArticleInfo, null, 0L);
-          }
-          if ((localBaseArticleInfo.mChannelID == 0L) && (ReadInJoyLogicEngine.a().a((AdvertisementInfo)localBaseArticleInfo))) {
-            if (!ReadInJoyUtils.a(localBaseArticleInfo)) {
-              break label282;
-            }
-          }
+          return;
+          paramContext = lfb.a().a();
+          this.a.a(l, paramContext);
+          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(3) });
+        } while (this.a.jdField_a_of_type_Mnc == null);
+        this.a.jdField_a_of_type_Mnc.a();
+        return;
+        if (paramContext.equals("tencent.video.invite.multiaccept"))
+        {
+          paramContext = lfb.a().a();
+          this.a.a(l, paramContext);
+          return;
         }
-        label282:
-        for (j = NativeAdUtils.o;; j = NativeAdUtils.k)
-        {
-          NativeAdUtils.a(null, this.a.jdField_a_of_type_AndroidAppActivity, NativeAdUtils.b, j, (AdvertisementInfo)localBaseArticleInfo, null, 0L);
-          k += 1;
-          break label64;
+        if (!paramContext.equals("tencent.video.invite.multirefuse")) {
           break;
-          label228:
-          View localView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(k - i);
-          j = localView.getHeight();
-          Rect localRect = new Rect();
-          localView.getGlobalVisibleRect(localRect);
-          if (localRect.height() < j / 2) {
-            break label289;
-          }
-          j = 1;
-          break label108;
         }
-        label289:
-        j = 0;
-      }
-    }
+      } while (this.a.b(0));
+      this.a.a(l, true, null);
+      return;
+    } while (!paramContext.equals("tencent.video.destroyService"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mgw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pic.PicPreDownloader;
-import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import mqq.util.WeakReference;
 
 class aglj
-  implements Runnable
+  implements View.OnClickListener
 {
-  aglj(agli paramagli) {}
+  aglj(agli paramagli, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      Object localObject1 = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.a.a);
-      if (localObject1 != null)
-      {
-        PicPreDownloader localPicPreDownloader = ((QQAppInterface)localObject1).a();
-        localObject1 = (ShortVideoPreDownloader)((QQAppInterface)localObject1).getManager(94);
-        if (localPicPreDownloader != null)
-        {
-          localPicPreDownloader.f();
-          localPicPreDownloader.e();
-        }
-        if (localObject1 != null) {
-          ((ShortVideoPreDownloader)localObject1).d();
-        }
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject2 = null;
-      }
-    }
+    ((PhotoListPanel)this.jdField_a_of_type_Agli.a.get()).a(paramView, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aglj
  * JD-Core Version:    0.7.0.1
  */

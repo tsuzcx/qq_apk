@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt64Field;
 
 public final class nearbybanner$UserInfo
-  extends MessageMicro
+  extends MessageMicro<UserInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_geocontent = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -23,7 +23,7 @@ public final class nearbybanner$UserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.group.nearbybanner.nearbybanner.UserInfo
  * JD-Core Version:    0.7.0.1
  */

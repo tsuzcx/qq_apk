@@ -8,7 +8,7 @@ public class Particle
   public int frameCount;
   public boolean musicPlayed = false;
   public Particle next = null;
-  int param_offset;
+  public int paramOffset;
   public String tex;
   public int total = 0;
   public double[] touchedPosition = new double[3];
@@ -21,8 +21,8 @@ public class Particle
     this.tex = paramParticle.tex;
     this.frameCount = paramParticle.frameCount;
     this.currFrame = paramParticle.currFrame;
-    int i = 0;
     int j = this.a.length;
+    int i = 0;
     while (i < j)
     {
       this.a[i] = paramParticle.a[i];
@@ -40,7 +40,7 @@ public class Particle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.oscarcamera.particlesystem.Particle
  * JD-Core Version:    0.7.0.1
  */

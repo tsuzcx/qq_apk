@@ -1,28 +1,30 @@
-import android.content.ComponentName;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ShortcutGuideDialogActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForVideo;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import com.tencent.open.adapter.OpenAppClient;
+import com.tencent.open.base.LogUtility;
+import java.util.HashMap;
 
-class hih
+public final class hih
   implements Runnable
 {
-  hih(hig paramhig, MessageForVideo paramMessageForVideo, String paramString) {}
+  public hih(Context paramContext, HashMap paramHashMap) {}
   
   public void run()
   {
-    Intent localIntent = new Intent();
-    localIntent.setComponent(new ComponentName("com.tencent.mobileqqi", ShortcutGuideDialogActivity.class.getName()));
-    localIntent.setFlags(268435456);
-    localIntent.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideo.frienduin);
-    localIntent.putExtra("nick", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Hig.a.a().startActivity(localIntent);
+    try
+    {
+      OpenAppClient.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
+      return;
+    }
+    catch (Exception localException)
+    {
+      String str = "onPushMsg exception: " + this.jdField_a_of_type_JavaUtilHashMap;
+      LogUtility.c(OpenAppClient.a, str, localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hih
  * JD-Core Version:    0.7.0.1
  */

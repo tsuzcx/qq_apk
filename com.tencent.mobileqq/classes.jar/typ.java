@@ -1,20 +1,20 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.view.View.OnTouchListener;
 
-public class typ
-  implements View.OnClickListener
+class typ
+  implements View.OnTouchListener
 {
-  public typ(TroopInfoActivity paramTroopInfoActivity) {}
+  typ(tyn paramtyn) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.d();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     typ
  * JD-Core Version:    0.7.0.1
  */

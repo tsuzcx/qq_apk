@@ -1,40 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.NewFlowEditVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.QzoneSyncQQStoryTool;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class xsl
-  implements View.OnClickListener
+class xsl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public xsl(NewFlowEditVideoActivity paramNewFlowEditVideoActivity) {}
+  xsl(xsk paramxsk) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    boolean bool = true;
-    if (NewFlowEditVideoActivity.d(this.a))
-    {
-      NewFlowEditVideoActivity.c(this.a).setSelected(false);
-      paramView = this.a;
-      if (NewFlowEditVideoActivity.d(this.a)) {
-        break label76;
-      }
-    }
-    for (;;)
-    {
-      NewFlowEditVideoActivity.c(paramView, bool);
-      QzoneSyncQQStoryTool.a(NewFlowEditVideoActivity.a(this.a), NewFlowEditVideoActivity.d(this.a));
-      return;
-      NewFlowEditVideoActivity.c(this.a).setSelected(true);
-      break;
-      label76:
-      bool = false;
-    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    xsk.a(this.a, f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xsl
  * JD-Core Version:    0.7.0.1
  */

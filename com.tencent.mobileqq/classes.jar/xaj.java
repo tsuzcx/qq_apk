@@ -1,30 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.mobileqq.vip.DownloadTask;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
 
-class xaj
-  implements Runnable
+public class xaj
+  extends Handler
 {
-  xaj(xai paramxai, DownloadTask paramDownloadTask) {}
+  public xaj(EditVideoMusic paramEditVideoMusic) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    int j = this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a.size();
-    Bundle localBundle = this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a();
-    int i = 0;
-    while (i < j)
+    switch (paramMessage.what)
     {
-      String str = (String)this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a.get(i);
-      PreloadImgManager.a(this.jdField_a_of_type_Xai.a, BaseApplication.getContext(), localBundle.getString(str), str);
-      i += 1;
+    default: 
+      return;
     }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xaj
  * JD-Core Version:    0.7.0.1
  */

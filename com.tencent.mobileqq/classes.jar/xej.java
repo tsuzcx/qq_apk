@@ -1,24 +1,22 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.List;
 
 public class xej
-  implements View.OnFocusChangeListener
+  implements xek
 {
-  public xej(GoldMsgAioState paramGoldMsgAioState, QQCustomDialog paramQQCustomDialog, Context paramContext) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void a(List<xeh> paramList, DoodleView paramDoodleView)
   {
-    if (!paramBoolean) {
-      GoldMsgAioState.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getWindow(), this.jdField_a_of_type_AndroidContentContext, paramView);
-    }
+    xdn localxdn = new xdn(paramDoodleView);
+    xdx localxdx = new xdx(paramDoodleView);
+    paramDoodleView = new xeb(paramDoodleView);
+    paramList.add(localxdn);
+    paramList.add(localxdx);
+    paramList.add(paramDoodleView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xej
  * JD-Core Version:    0.7.0.1
  */

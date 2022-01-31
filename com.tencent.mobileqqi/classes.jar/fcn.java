@@ -1,23 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.DiscussionView;
-import com.tencent.mobileqq.adapter.DiscussionListAdapter2;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.observer.AccountObserver;
 
 public class fcn
-  implements View.OnClickListener
+  extends AccountObserver
 {
-  public fcn(DiscussionListAdapter2 paramDiscussionListAdapter2) {}
+  public fcn(FriendsManager paramFriendsManager) {}
   
-  public void onClick(View paramView)
+  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
   {
-    paramView = paramView.getTag();
-    if (!(paramView instanceof fco)) {}
-    do
-    {
-      return;
-      paramView = (fco)paramView;
-    } while (paramView.a == null);
-    this.a.a.a(paramView.a);
+    ThreadManager.b(new fco(this, paramString2, paramString1));
   }
 }
 

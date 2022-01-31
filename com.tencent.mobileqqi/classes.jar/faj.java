@@ -1,25 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.voip.VoipDialInterface;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import com.tencent.mobileqq.app.ConfigHandler;
+import com.tencent.mobileqq.stt.SttManager;
+import protocol.KQQConfig.GetResourceRespInfo;
 
 public class faj
-  implements View.OnClickListener
+  implements Runnable
 {
-  public faj(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  public faj(ConfigHandler paramConfigHandler, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.a("*");
-    VoipDialInterfaceActivity.a(this.a, '*');
-    if (VoipDialInterfaceActivity.b(this.a)) {
-      new Thread(new fak(this)).start();
-    }
+    SttManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     faj
  * JD-Core Version:    0.7.0.1
  */

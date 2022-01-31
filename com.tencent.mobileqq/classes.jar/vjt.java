@@ -1,28 +1,32 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.MultiForwardActivity;
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
-import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class vjt
-  implements Runnable
+class vjt
+  extends vim
 {
-  public vjt(TroopFileItemBuilder paramTroopFileItemBuilder, Context paramContext, View paramView, MessageForTroopFile paramMessageForTroopFile) {}
-  
-  public void run()
+  vjt(vji paramvji, StoryVideoItem paramStoryVideoItem, vkq paramvkq)
   {
-    if (!(this.jdField_a_of_type_AndroidContentContext instanceof MultiForwardActivity)) {}
-    for (boolean bool = true;; bool = false)
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    String str = (String)a("result");
+    xqq.a(str);
+    xqq.a(this.jdField_a_of_type_Vkq.d);
+    if (this.jdField_a_of_type_Vkq.d == null)
     {
-      PicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, bool);
-      return;
+      this.jdField_a_of_type_Vkq.d = "";
+      wxe.c(this.b, "imageLocalPath is null", new Throwable());
     }
+    a("DownloadPic2FileJob_iiu", str);
+    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_Vkq.d);
+    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_Vkq.a));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vjt
  * JD-Core Version:    0.7.0.1
  */

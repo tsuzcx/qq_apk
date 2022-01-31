@@ -1,26 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.portal.PortalManager;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
 
 public class sgr
-  implements View.OnClickListener
 {
-  public sgr(Conversation paramConversation, PortalManager paramPortalManager) {}
-  
-  public void onClick(View paramView)
+  public static sgm a(Context paramContext, int paramInt)
   {
-    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation).removeView(Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation));
-    if (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), true);
+    switch (paramInt)
+    {
+    default: 
+      return new sgp(paramContext);
+    case 2: 
+      return new ReadInJoySkinAnimManager(paramContext);
     }
-    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation, null);
+    return new sgq(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sgr
  * JD-Core Version:    0.7.0.1
  */

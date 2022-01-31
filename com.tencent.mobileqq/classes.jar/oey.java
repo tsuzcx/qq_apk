@@ -1,23 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
 
-public class oey
-  implements DialogInterface.OnDismissListener
+class oey
+  implements ofd
 {
-  public oey(EditVideoGuide paramEditVideoGuide) {}
+  oey(oev paramoev) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(GiftServiceBean paramGiftServiceBean)
   {
-    this.a.jdField_a_of_type_Int = 3;
-    this.a.b = 3;
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(14);
+    String str = oev.c(this.a).getText().toString();
+    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!str.equals(paramGiftServiceBean.t)))
+    {
+      oev.c(this.a, paramGiftServiceBean);
+      oev.c(this.a).setText(paramGiftServiceBean.t);
+    }
+    oev.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oey
  * JD-Core Version:    0.7.0.1
  */

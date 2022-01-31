@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.ApolloManager.IDrawerGameBoxStatus;
-import com.tencent.mobileqq.apollo.script.SpriteActionScript;
-import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoManager;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import java.util.List;
 
-public class tmj
-  implements ApolloManager.IDrawerGameBoxStatus
+public abstract interface tmj
+  extends tiv<List<tmv>>
 {
-  public tmj(QQSettingMe paramQQSettingMe) {}
+  public abstract VideoFeedsRecyclerView a();
   
-  public void a(boolean paramBoolean)
-  {
-    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).a() != null)) {
-      QQSettingMe.a(this.a).a().a(paramBoolean);
-    }
-  }
+  public abstract WSPlayerManager a();
+  
+  public abstract tmf a();
+  
+  public abstract void a(int paramInt, Intent paramIntent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tmj
  * JD-Core Version:    0.7.0.1
  */

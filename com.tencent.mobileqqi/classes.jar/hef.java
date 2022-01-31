@@ -1,19 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.troopshare.TroopShareUtility;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy;
+import java.util.concurrent.TimeUnit;
 
 public class hef
-  implements DialogInterface.OnDismissListener
+  extends ThreadPoolExecutor
 {
-  public hef(TroopShareUtility paramTroopShareUtility) {}
+  private static int a = 0;
+  public static final String a = "InfiniteTaskThread_";
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public hef(int paramInt, long paramLong)
   {
-    TroopShareUtility.b(this.a, false);
-    if ((TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity)) {
-      ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
-    }
+    super(paramInt, 2147483647, paramLong, TimeUnit.SECONDS, new LinkedBlockingQueue(), new heg(), new ThreadPoolExecutor.CallerRunsPolicy());
   }
 }
 

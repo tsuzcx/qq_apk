@@ -1,36 +1,24 @@
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.store.ApolloBoxEnterView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import java.util.List;
 
-public class tmg
-  implements Runnable
+class tmg
+  implements thw
 {
-  public tmg(QQSettingMe paramQQSettingMe) {}
+  tmg(tmf paramtmf) {}
   
-  public void run()
+  public List<thx> a(int paramInt, boolean paramBoolean)
   {
-    QQSettingMe.a(this.a).setVisibility(8);
-    QQSettingMe.b(this.a).setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "drawer", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -1);
-    if (QQSettingMe.a(this.a) == null)
-    {
-      PropertyValuesHolder localPropertyValuesHolder1 = PropertyValuesHolder.ofFloat("alpha", new float[] { 1.0F, 0.0F });
-      PropertyValuesHolder localPropertyValuesHolder2 = PropertyValuesHolder.ofFloat("scaleX", new float[] { 1.0F, 0.0F });
-      PropertyValuesHolder localPropertyValuesHolder3 = PropertyValuesHolder.ofFloat("scaleY", new float[] { 1.0F, 0.0F });
-      QQSettingMe.a(this.a, ObjectAnimator.ofPropertyValuesHolder(QQSettingMe.a(this.a), new PropertyValuesHolder[] { localPropertyValuesHolder1, localPropertyValuesHolder2, localPropertyValuesHolder3 }));
-      QQSettingMe.a(this.a).setDuration(200L);
-      QQSettingMe.a(this.a).addListener(new tmh(this));
-    }
-    QQSettingMe.b(this.a, true);
-    QQSettingMe.a(this.a).start();
+    return tmo.a(this.a.a(), paramInt);
+  }
+  
+  public boolean a()
+  {
+    return AppNetConnInfo.isWifiConn();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tmg
  * JD-Core Version:    0.7.0.1
  */

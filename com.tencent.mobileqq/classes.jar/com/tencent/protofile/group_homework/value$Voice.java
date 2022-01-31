@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class value$Voice
-  extends MessageMicro
+  extends MessageMicro<Voice>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34 }, new String[] { "url", "time", "size", "url_mp3" }, new Object[] { "", Integer.valueOf(0), Integer.valueOf(0), "" }, Voice.class);
   public final PBUInt32Field size = PBField.initUInt32(0);
@@ -17,7 +17,7 @@ public final class value$Voice
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.protofile.group_homework.value.Voice
  * JD-Core Version:    0.7.0.1
  */

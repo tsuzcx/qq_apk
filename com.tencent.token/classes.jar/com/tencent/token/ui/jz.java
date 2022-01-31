@@ -1,22 +1,20 @@
 package com.tencent.token.ui;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.token.ah;
-import com.tencent.token.global.RqdApplication;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class jz
-  implements DialogInterface.OnCancelListener
+class jz
+  implements View.OnClickListener
 {
-  jz(FaceStartVryCameraActivity paramFaceStartVryCameraActivity, Context paramContext) {}
+  jz(jy paramjy) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    ah.a().f();
-    RqdApplication.f();
-    this.b.setResult(35);
-    this.b.finish();
+    jy.c(this.a).findViewById(2131559430).setVisibility(8);
+    jy.c(this.a).findViewById(2131559429).setVisibility(8);
+    jy.c(this.a).setVisibility(8);
+    this.a.a = false;
+    this.a.notifyDataSetChanged();
   }
 }
 

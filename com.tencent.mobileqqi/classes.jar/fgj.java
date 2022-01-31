@@ -1,15 +1,21 @@
+import android.os.Build.VERSION;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.DragBaseActivity;
+import com.tencent.mobileqq.app.ScreenShot;
+import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
+import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
 
 public class fgj
   implements View.OnClickListener
 {
-  public fgj(DragBaseActivity paramDragBaseActivity) {}
+  public fgj(ScreenShot paramScreenShot) {}
   
   public void onClick(View paramView)
   {
-    this.a.b();
+    this.a.jdField_a_of_type_Fgm.a(true);
+    if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
+      KapalaiAdapterUtil.a().b(this.a.jdField_a_of_type_AndroidViewWindow);
+    }
   }
 }
 

@@ -1,22 +1,33 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
 public class rju
-  implements Runnable
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public rju(AddRequestActivity paramAddRequestActivity) {}
+  public rju(VideoPreDownloadMgr paramVideoPreDownloadMgr) {}
   
-  public void run()
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    Card localCard = ((FriendsManager)this.a.app.getManager(50)).a(this.a.a);
-    this.a.runOnUiThread(new rjv(this, localCard));
+    if (QLog.isColorLevel()) {
+      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a) + " ERROR code: " + paramInt);
+    }
+    ThreadManager.post(new VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask(this.a, false), 5, null, true);
+  }
+  
+  public void onPreLoadSucess(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a) + " SUCCESS");
+    }
+    ThreadManager.post(new VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask(this.a, true), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rju
  * JD-Core Version:    0.7.0.1
  */

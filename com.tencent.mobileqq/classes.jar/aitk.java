@@ -1,16 +1,22 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import com.tencent.mobileqq.text.QQTextBuilder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aitk
-  extends Editable.Factory
+class aitk
+  implements DialogInterface.OnClickListener
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  aitk(aitg paramaitg) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramCharSequence instanceof QQTextBuilder)) {
-      return (Editable)paramCharSequence;
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoPreviewActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
     }
-    return new QQTextBuilder(paramCharSequence, 3, 20);
+    if (((NewPhotoPreviewActivity)this.a.mActivity).sendBtn != null) {
+      ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(true);
+    }
   }
 }
 

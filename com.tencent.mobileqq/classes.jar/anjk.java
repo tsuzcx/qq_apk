@@ -1,33 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.9;
 
 public class anjk
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public anjk(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public anjk(ArkAppDownloadModule.9 param9) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QIMEffectCameraCaptureUnit.d(this.a) != null)
-    {
-      QIMEffectCameraCaptureUnit.d(this.a).clearAnimation();
-      QIMEffectCameraCaptureUnit.d(this.a).setVisibility(8);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    this.a.i = false;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.i = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anjk
  * JD-Core Version:    0.7.0.1
  */

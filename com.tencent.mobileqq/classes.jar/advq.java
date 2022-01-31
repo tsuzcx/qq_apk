@@ -1,51 +1,49 @@
-import com.tencent.mobileqq.javahook.BitmapOOMHooker;
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class advq
-  implements HookMethodCallback
+  extends WtloginObserver
 {
-  private int a;
+  public advq(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public advq(int paramInt)
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    this.a = paramInt;
-  }
-  
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
-  {
-    if (paramMethodHookParam.throwable == null) {
-      return;
-    }
-    Throwable localThrowable;
-    if (paramMethodHookParam.throwable.getCause() != null) {
-      localThrowable = paramMethodHookParam.throwable.getCause();
-    }
-    while ((localThrowable instanceof OutOfMemoryError))
+    if ((this.a.getActivity() != null) && (!this.a.getActivity().isFinishing()))
     {
-      BitmapOOMHooker.b();
-      try
-      {
-        paramMethodHookParam.result = JavaHookBridge.invokeOriginMethod(paramMethodHookParam.method, paramMethodHookParam.thisObject, paramMethodHookParam.args);
-        paramMethodHookParam.throwable = null;
-        BitmapOOMHooker.a(true, this.a);
-        return;
+      if ((paramInt != 0) || (paramDevlockInfo == null)) {
+        break label305;
       }
-      catch (Exception paramMethodHookParam)
+      if (QLog.isColorLevel())
       {
-        BitmapOOMHooker.a(false, this.a);
-        return;
-        localThrowable = paramMethodHookParam.throwable;
+        QLog.d("RiskHintDlgFragment", 2, "OnCheckDevLockStatus ret = " + paramInt);
+        QLog.d("RiskHintDlgFragment", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
+        QLog.d("RiskHintDlgFragment", 2, "DevlockInfo.ProtectIntro:" + paramDevlockInfo.ProtectIntro + "  info.MbGuideType:" + paramDevlockInfo.MbGuideType);
+        QLog.d("RiskHintDlgFragment", 2, "DevlockInfo.MbGuideMsg:" + paramDevlockInfo.MbGuideMsg);
+        QLog.d("RiskHintDlgFragment", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
+        QLog.d("RiskHintDlgFragment", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
       }
-      catch (Error paramMethodHookParam)
-      {
-        BitmapOOMHooker.a(false, this.a);
-      }
+      aqax.a().a(paramDevlockInfo.TransferInfo);
+      this.a.a = paramDevlockInfo;
     }
+    label305:
+    do
+    {
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d("RiskHintDlgFragment", 2, "OnCheckDevLockStatus ret = " + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("RiskHintDlgFragment", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
+      }
+    } while (paramDevlockInfo != null);
+    QLog.d("RiskHintDlgFragment", 2, "OnCheckDevLockStatus DevlockInfo is null");
   }
-  
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 

@@ -1,26 +1,27 @@
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader.VideoFrameLoaderListener;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.colornote.anim.MusicDanceDrawable;
 
 public class aocj
-  implements Runnable
 {
-  public aocj(VideoFrameLoader paramVideoFrameLoader) {}
+  private int jdField_a_of_type_Int;
+  private int b;
+  private int c;
+  private int d;
   
-  public void run()
+  private aocj(MusicDanceDrawable paramMusicDanceDrawable, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    VideoFrameLoader.VideoFrameLoaderListener localVideoFrameLoaderListener = null;
-    if (VideoFrameLoader.a(this.a) != null) {
-      localVideoFrameLoaderListener = (VideoFrameLoader.VideoFrameLoaderListener)VideoFrameLoader.a(this.a).get();
-    }
-    if (localVideoFrameLoaderListener != null) {
-      localVideoFrameLoaderListener.b();
-    }
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aocj
  * JD-Core Version:    0.7.0.1
  */

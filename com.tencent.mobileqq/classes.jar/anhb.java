@@ -1,26 +1,20 @@
-import com.tencent.weiyun.transmission.upload.UploadJobContext.StatusInfo;
-import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
-import cooperation.weiyun.utils.WyReportUtils;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnCameraChangeListener;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 
-public final class anhb
-  implements UploadManager.IUploadStatusListener
+public class anhb
+  implements TencentMap.OnCameraChangeListener
 {
-  public void onUploadJobAdded(String paramString, long paramLong) {}
+  public anhb(ARScanEntryView paramARScanEntryView) {}
   
-  public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
+  public void onCameraChange(CameraPosition paramCameraPosition) {}
+  
+  public void onCameraChangeFinished(CameraPosition paramCameraPosition)
   {
-    if (paramBoolean)
-    {
-      if (paramStatusInfo.state != 6) {
-        break label26;
-      }
-      WyReportUtils.a(paramString, "actFileWyUp", paramStatusInfo, false, paramLong);
+    if ((ARScanEntryView.a(this.a) != null) && (QLog.isColorLevel())) {
+      QLog.d("AREngine_ARScanEntryView", 2, "ARLBSPOIDialog onCameraChangeFinish");
     }
-    label26:
-    while (paramStatusInfo.state != 5) {
-      return;
-    }
-    WyReportUtils.a(paramString, "actFileWyUp", paramStatusInfo, true, paramLong);
   }
 }
 

@@ -1,44 +1,46 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.TabBarView;
+import android.os.Bundle;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.viareport.BatchReportInfo;
+import com.tencent.open.business.viareport.ReportDbHelper;
+import com.tencent.open.business.viareport.ReportManager;
 
 public class hmb
-  extends Handler
+  implements Runnable
 {
-  public hmb(TabBarView paramTabBarView) {}
+  public hmb(ReportManager paramReportManager, boolean paramBoolean, BatchReportInfo paramBatchReportInfo, Bundle paramBundle, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    boolean bool = false;
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentOpenBusinessViareportBatchReportInfo == null)) {
+      if ((this.jdField_a_of_type_AndroidOsBundle != null) && (this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.b(this.jdField_a_of_type_AndroidOsBundle.getString("appid_for_getting_config")))) {
+        this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, false);
+      }
+    }
+    do
     {
-    default: 
       return;
-    case 0: 
-      TabBarView.a(this.a, 0.0F);
-      TabBarView.a(this.a, 0.1D);
-      this.a.invalidate();
-      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
-      return;
-    case 1: 
-      if (TabBarView.a(this.a) < 1.0F)
+      if ((this.jdField_a_of_type_ComTencentOpenBusinessViareportBatchReportInfo != null) && (this.jdField_a_of_type_ComTencentOpenBusinessViareportBatchReportInfo.a()) && (this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.b(null))) {
+        ReportDbHelper.a().a("table_new_data", this.jdField_a_of_type_ComTencentOpenBusinessViareportBatchReportInfo);
+      }
+      if (this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.jdField_a_of_type_Boolean)
       {
-        TabBarView.a(this.a, 0.1D);
-        this.a.invalidate();
-        sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
+        LogUtility.b("viareport", "isUploading ---return");
         return;
       }
-      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(2), 10L);
-      return;
+    } while ((!this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.a(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.a()));
+    ReportManager localReportManager = this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager;
+    String str = this.jdField_a_of_type_JavaLangString;
+    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
+    if (this.jdField_a_of_type_ComTencentOpenBusinessViareportBatchReportInfo != null) {
+      bool = true;
     }
-    TabBarView.a(this.a, 1.0F);
-    TabBarView.a(this.a, TabBarView.a(this.a), TabBarView.b(this.a));
-    TabBarView.a(this.a, TabBarView.b(this.a));
-    this.a.invalidate();
+    localReportManager.a(str, localBundle, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hmb
  * JD-Core Version:    0.7.0.1
  */

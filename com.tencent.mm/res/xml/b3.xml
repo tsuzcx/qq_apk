@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:title="启动耗时监控" android:key="startup_preference" android:defaultValue="true" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:title="卡顿监控" android:key="jank_preference" android:defaultValue="true" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:title="ANR 监控" android:key="anr_preference" android:defaultValue="true" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:title="FPS 监控" android:key="fps_preference" android:defaultValue="true" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:summary="（插桩前提下）是否记录每个方法耗时堆栈，关闭则直接return。" android:title="AppMethodBeat开关" android:key="methodBeat_preference" android:defaultValue="true" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:title="FPS 浮窗" android:key="fps_decorator_preference" android:defaultValue="false" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:title="卡顿监控开发者模式(日志)" android:key="trace_dev_preference" android:defaultValue="false" />
+</PreferenceScreen>

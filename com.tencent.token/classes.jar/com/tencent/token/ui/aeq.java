@@ -2,16 +2,21 @@ package com.tencent.token.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.core.bean.DeviceInfo;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.do;
 
-final class aeq
+class aeq
   implements View.OnClickListener
 {
-  aeq(UtilsMailProtectActivity paramUtilsMailProtectActivity, DeviceInfo paramDeviceInfo) {}
+  aeq(UtilsTokenLabActivity paramUtilsTokenLabActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    new aer(this.b, this.b, this.a).show();
+    paramView = do.a().e();
+    if (paramView == null) {
+      return;
+    }
+    this.a.getSKey("" + paramView.mRealUin, 523005419L, UtilsTokenLabActivity.access$500(this.a), true);
   }
 }
 

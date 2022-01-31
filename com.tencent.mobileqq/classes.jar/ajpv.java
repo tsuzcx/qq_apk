@@ -1,83 +1,45 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopGiftProtocolObserver;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.data.TroopGiftBagInfo;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
-import com.tencent.mobileqq.troop.utils.TroopGiftManager;
+import android.media.ExifInterface;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.GiftBagInfo;
-import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.Player;
-import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.RspBody;
+import java.io.File;
+import java.lang.reflect.Field;
+import java.util.HashMap;
 
 public class ajpv
-  extends ProtoUtils.TroopGiftProtocolObserver
+  implements ajwh
 {
-  public ajpv(TroopGiftManager paramTroopGiftManager, TroopGiftCallback paramTroopGiftCallback, String paramString1, String paramString2) {}
+  public ajpv(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a_(String paramString)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null) || (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "send_oidb_0x6c2. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramInt, "sso request error or callback is null.");
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("FlowCameraActivity", 2, "onPictureToken path " + paramString);
     }
-    oidb_0x6c2.RspBody localRspBody;
+    bdhj.a(paramString, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.a, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_Double);
+    if (QLog.isColorLevel()) {}
     try
     {
-      localRspBody = new oidb_0x6c2.RspBody();
-      localRspBody.mergeFrom(paramArrayOfByte);
-      paramInt = localRspBody.uint32_result.get();
-      if ((paramInt != 0) || (paramBundle == null)) {
-        break label357;
-      }
-      paramInt = paramBundle.getInt("subCmd");
-      if ((paramInt == 0) && (localRspBody.msg_gift_bag_info.has()))
+      Object localObject = Class.forName("android.media.ExifInterface").getDeclaredField("mAttributes");
+      ((Field)localObject).setAccessible(true);
+      localObject = (HashMap)((Field)localObject).get(new ExifInterface(paramString));
+      QLog.i("FlowCameraActivity", 2, "exif " + localObject);
+      if (paramString != null)
       {
-        paramBundle = (oidb_0x6c2.GiftBagInfo)localRspBody.msg_gift_bag_info.get();
-        paramArrayOfByte = null;
-        if (localRspBody.msg_winner.has()) {
-          paramArrayOfByte = (oidb_0x6c2.Player)localRspBody.msg_winner.get();
-        }
-        paramBundle = new TroopGiftBagInfo(paramBundle, paramArrayOfByte);
-        if (paramArrayOfByte != null)
-        {
-          paramArrayOfByte = this.jdField_a_of_type_JavaLangString + "_" + this.b;
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftManager.a.put(paramArrayOfByte, paramBundle);
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftManager.a(paramBundle);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramBundle);
+        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.a(this.jdField_a_of_type_JavaIoFile);
         return;
       }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "send_oidb_0x6c2. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
+      for (;;)
+      {
+        localException.printStackTrace();
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(-1, "InvalidProtocolBufferMicroException");
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_AndroidWidgetButton.setClickable(true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_AndroidWidgetButton.setOnLongClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.c.setEnabled(true);
     }
-    if ((paramInt == 1) && (localRspBody.int32_player.has()))
-    {
-      paramInt = localRspBody.int32_player.get();
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.c(paramInt);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(-1, "Invalid RspData. subCmd:" + paramInt);
-    return;
-    label357:
-    paramArrayOfByte = localRspBody.bytes_errmsg.get().toStringUtf8();
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramInt, paramArrayOfByte);
   }
 }
 

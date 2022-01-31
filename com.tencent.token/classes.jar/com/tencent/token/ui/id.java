@@ -3,14 +3,13 @@ package com.tencent.token.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class id
+class id
   implements View.OnClickListener
 {
-  id(FaceRecognitionComfirmActivity paramFaceRecognitionComfirmActivity) {}
+  id(FaceRegCameraActivity paramFaceRegCameraActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.setResult(20);
     this.a.finish();
   }
 }

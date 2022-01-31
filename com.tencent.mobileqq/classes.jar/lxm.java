@@ -1,31 +1,51 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.SkinGifImageDownloader;
-import com.tencent.image.NativeGifImage;
-import java.io.File;
-
 public class lxm
-  extends NativeGifImage
+  extends lwt
 {
-  public lxm(SkinGifImageDownloader paramSkinGifImageDownloader, File paramFile, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, float paramFloat)
-  {
-    super(paramFile, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramFloat);
-  }
+  public boolean a;
   
-  protected void executeNewTask()
+  public void a(long paramLong)
   {
-    if (this.mCurrentLoop == 1) {
-      return;
+    long l = paramLong - this.jdField_a_of_type_Long;
+    a((float)(paramLong - this.jdField_a_of_type_Long) / 50.0F);
+    int j = 0;
+    int i;
+    if (l < 500L) {
+      i = (int)(l * 255L / 500L);
     }
-    super.executeNewTask();
+    for (;;)
+    {
+      a(i);
+      return;
+      if (((l >= 500L) && (l <= 5397L)) || (!this.jdField_a_of_type_Boolean))
+      {
+        i = 255;
+      }
+      else
+      {
+        i = j;
+        if (l > 5397L)
+        {
+          i = j;
+          if (l < 5564L)
+          {
+            i = j;
+            if (this.jdField_a_of_type_Boolean) {
+              i = (int)((l - 5564L) * 255L / -167L);
+            }
+          }
+        }
+      }
+    }
   }
   
-  public void reset()
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super.reset();
+    a(paramInt1 * 5 / 1500, paramInt2 - paramInt1 * 752 / 750, paramInt1 * 1495 / 1500, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lxm
  * JD-Core Version:    0.7.0.1
  */

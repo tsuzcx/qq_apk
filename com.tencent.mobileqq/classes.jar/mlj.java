@@ -1,22 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.BubbleAppInPushNotification;
+import com.tencent.av.ui.RedbagToolbar;
 
 public class mlj
-  implements View.OnClickListener
+  implements msj
 {
-  public mlj(BubbleAppInPushNotification paramBubbleAppInPushNotification) {}
+  public mlj(RedbagToolbar paramRedbagToolbar, mrt parammrt) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    AppInPushNotification.a(1);
-    this.a.a(true, false);
+    if (paramBoolean) {}
+    for (paramBoolean = this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.startActivity_SendRedBag(true);; paramBoolean = false)
+    {
+      if (!paramBoolean)
+      {
+        this.jdField_a_of_type_Mrt.a(false);
+        this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.exitCurrentToolbar();
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mlj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,19 @@
-import android.view.View;
-import com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask;
-import com.tencent.mobileqq.activity.aio.item.TroopStoryItemBuilder;
-import com.tencent.mobileqq.data.MessageForTroopStory;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class vku
-  implements ActionSheet.OnButtonClickListener
+class vku
+  implements DialogInterface.OnDismissListener
 {
-  public vku(TroopStoryItemBuilder paramTroopStoryItemBuilder, MessageForTroopStory paramMessageForTroopStory, ActionSheet paramActionSheet) {}
+  vku(vks paramvks) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      TroopStoryForwardTask.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopStoryItemBuilder.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory).f();
-    }
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vku
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,31 @@
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.pic.BasePicOprerator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-public final class aehk
-  implements Runnable
+public class aehk
+  implements View.OnClickListener
 {
-  public aehk(MessageForPic paramMessageForPic) {}
+  public aehk(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    BasePicOprerator.a(this.a);
+    if (((alto)this.a.app.getManager(51)).b(TroopRequestActivity.a(this.a))) {
+      paramView = new ProfileActivity.AllInOne(TroopRequestActivity.a(this.a), 1);
+    }
+    for (;;)
+    {
+      azqs.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.a.a.msg.group_code.get() + "", "3", "", "");
+      ProfileActivity.b(this.a, paramView);
+      return;
+      paramView = new ProfileActivity.AllInOne(TroopRequestActivity.a(this.a), 24);
+      bcpx.a(this.a.a, paramView);
+    }
   }
 }
 

@@ -1,33 +1,29 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.forward.ForwardShortVideoOption;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-class admk
-  implements Runnable
+public class admk
+  extends altm
 {
-  admk(admj paramadmj) {}
+  public admk(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void run()
+  protected void onGetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.jdField_a_of_type_ComTencentImageURLDrawable.setBounds(0, 0, this.a.jdField_a_of_type_ComTencentImageURLDrawable.getIntrinsicWidth(), this.a.jdField_a_of_type_ComTencentImageURLDrawable.getIntrinsicHeight());
-    this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPreviewImage(this.a.jdField_a_of_type_ComTencentImageURLDrawable, true, 0, true);
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      if ((this.a.jdField_a_of_type_Int != 0) && (this.a.b != 0))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setVideoFormat(true, false, ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption.a, this.a.jdField_a_of_type_Int), ShortVideoUtils.a(this.a.b * 1000));
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setVideoFormat(true, false, null, null);
-      return;
+    if (paramBoolean1) {
+      PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setVideoFormat(true, false, null, null);
+  }
+  
+  protected void onSetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean1) {
+      this.a.a(2131719884, 1);
+    }
+    PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     admk
  * JD-Core Version:    0.7.0.1
  */

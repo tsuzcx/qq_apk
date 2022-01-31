@@ -1,23 +1,20 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class acff
-  extends RadioButton
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public acff(EmoticonPagerRadioGroup paramEmoticonPagerRadioGroup, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public acff(AssistantSettingActivity paramAssistantSettingActivity, alto paramalto) {}
   
-  public boolean performClick()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return true;
+    this.jdField_a_of_type_Alto.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acff
  * JD-Core Version:    0.7.0.1
  */

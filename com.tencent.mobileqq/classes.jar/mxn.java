@@ -1,21 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import com.tencent.av.video.effect.core.qqavimage.QQAVImageFilterGroup;
+import com.tencent.av.video.effect.core.qqavimage.QQAVImageGaussianBlurFilter;
 
 public class mxn
-  implements View.OnClickListener
+  extends QQAVImageFilterGroup
 {
-  public mxn(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
-  
-  public void onClick(View paramView)
+  public mxn()
   {
-    PublicAccountImageCollectionCommentActivity.a(this.a);
-    PublicAccountImageCollectionCommentActivity.a(this.a, 0);
+    super(null);
+    int i = 0;
+    while (i < 3)
+    {
+      addFilter(new QQAVImageGaussianBlurFilter());
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mxn
  * JD-Core Version:    0.7.0.1
  */

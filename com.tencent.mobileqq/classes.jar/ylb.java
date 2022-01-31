@@ -1,20 +1,12 @@
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloRender;
-
-public final class ylb
-  implements Runnable
+public abstract interface ylb
 {
-  public ylb(ApolloRender paramApolloRender, View paramView) {}
+  public abstract int a();
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mShowEditWindow = true;
-    ApolloRender.setVisiblePopEidtor(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender);
-  }
+  public abstract int[] a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ylb
  * JD-Core Version:    0.7.0.1
  */

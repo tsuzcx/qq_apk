@@ -1,47 +1,22 @@
-import NS_MOBILE_MAIN_PAGE.PhotoWall;
-import android.os.Handler;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QZonePhotoWall;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.profile.view.QzonePhotoView;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
-public class agsc
-  implements Runnable
+class agsc
+  implements View.OnClickListener
 {
-  public agsc(QzonePhotoView paramQzonePhotoView) {}
+  agsc(agrn paramagrn, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject1 = (QZonePhotoWall)this.a.a.getEntityManagerFactory().createEntityManager().a(QZonePhotoWall.class, QzonePhotoView.a(this.a));
-    if (localObject1 != null)
-    {
-      localObject1 = ((QZonePhotoWall)localObject1).unpackPhotoWallData();
-      Object localObject2 = new ArrayList();
-      int i = 0;
-      while (i < ((ArrayList)localObject1).size())
-      {
-        ((ArrayList)localObject2).add(((PhotoWall)((ArrayList)localObject1).get(i)).photoUrls);
-        i += 1;
-      }
-      new LinkedList();
-      localObject1 = QzonePhotoView.a(this.a, "", (List)localObject2);
-      localObject2 = Message.obtain();
-      ((Message)localObject2).what = 200;
-      ((Message)localObject2).obj = localObject1;
-      QzonePhotoView.a(this.a).sendMessage((Message)localObject2);
-      return;
-    }
-    QzonePhotoView.a(this.a).sendEmptyMessage(201);
+    paramView = ((HotChatManager)this.jdField_a_of_type_Agrn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60)).a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Agrn.jdField_a_of_type_Aluw.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agsc
  * JD-Core Version:    0.7.0.1
  */

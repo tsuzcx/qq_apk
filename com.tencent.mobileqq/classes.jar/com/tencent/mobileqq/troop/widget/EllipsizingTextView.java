@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajsc;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -8,13 +7,16 @@ import android.text.TextPaint;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.widget.TextView;
+import bcqt;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.theme.ISkinIgnoreTypeface;
 
 public class EllipsizingTextView
   extends TextView
+  implements ISkinIgnoreTypeface
 {
   private int jdField_a_of_type_Int = 1;
-  private ajsc jdField_a_of_type_Ajsc;
+  private bcqt jdField_a_of_type_Bcqt;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -47,14 +49,15 @@ public class EllipsizingTextView
       }
       paramContext.recycle();
     }
+    setTypeface(null);
   }
   
-  private ajsc a()
+  private bcqt a()
   {
-    if (this.jdField_a_of_type_Ajsc == null) {
-      this.jdField_a_of_type_Ajsc = new ajsc(this);
+    if (this.jdField_a_of_type_Bcqt == null) {
+      this.jdField_a_of_type_Bcqt = new bcqt(this);
     }
-    return this.jdField_a_of_type_Ajsc;
+    return this.jdField_a_of_type_Bcqt;
   }
   
   public void a()
@@ -73,15 +76,15 @@ public class EllipsizingTextView
     ((TextPaint)localObject).setColor(getCurrentTextColor());
     ((TextPaint)localObject).drawableState = getDrawableState();
     localObject = a();
-    ((ajsc)localObject).a(getText(), this, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
+    ((bcqt)localObject).a(getText(), this, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
     if (getEllipsize() == TextUtils.TruncateAt.END)
     {
-      ((ajsc)localObject).a(paramCanvas, TextUtils.TruncateAt.END);
+      ((bcqt)localObject).a(paramCanvas, TextUtils.TruncateAt.END);
       return;
     }
     if (getEllipsize() == TextUtils.TruncateAt.MIDDLE)
     {
-      ((ajsc)localObject).a(paramCanvas, TextUtils.TruncateAt.MIDDLE);
+      ((bcqt)localObject).a(paramCanvas, TextUtils.TruncateAt.MIDDLE);
       return;
     }
     super.onDraw(paramCanvas);
@@ -100,7 +103,7 @@ public class EllipsizingTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.EllipsizingTextView
  * JD-Core Version:    0.7.0.1
  */

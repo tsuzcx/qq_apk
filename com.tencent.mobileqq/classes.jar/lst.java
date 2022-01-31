@@ -1,22 +1,14 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnLastReadRefreshListener;
-import java.util.Map;
-
-public class lst
-  implements FeedItemCell.CellListener
+public abstract interface lst
 {
-  public lst(ProteusItemView paramProteusItemView, ReadInJoyBaseAdapter.OnLastReadRefreshListener paramOnLastReadRefreshListener) {}
+  public abstract void a(lss paramlss);
   
-  public void a(View paramView, Map paramMap)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$OnLastReadRefreshListener.a();
-  }
+  public abstract boolean a(lss paramlss);
+  
+  public abstract boolean b(lss paramlss);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lst
  * JD-Core Version:    0.7.0.1
  */

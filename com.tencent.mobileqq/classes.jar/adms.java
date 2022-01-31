@@ -1,19 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.fragment.HotChatFragment;
-import com.tencent.mobileqq.fragment.HotChatFragment.HotChatWebView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
 
 public class adms
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public adms(HotChatFragment paramHotChatFragment) {}
+  public adms(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((paramIntent != null) && ("com.tencent.mobileqq.refresh_hot_chat_list".equals(paramIntent.getAction())) && (this.a.a != null) && (this.a.a.a != null)) {
-      this.a.a.x();
-    }
+    bdsr.a(this.a, "settings");
   }
 }
 

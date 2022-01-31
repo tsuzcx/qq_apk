@@ -1,64 +1,30 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.TopayManager;
-import com.tencent.mobileqq.activity.qwallet.TopayManager.5;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.widget.AbsListView;
+import java.util.List;
 
-public class xbu
-  implements Runnable
+class xbu
+  implements bhtv
 {
-  public xbu(TopayManager.5 param5, int paramInt, Bundle paramBundle) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void run()
+  xbu(xbs paramxbs) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    SelectMemberActivity localSelectMemberActivity = (SelectMemberActivity)this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTopayManager$5.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localSelectMemberActivity == null) || (localSelectMemberActivity.isFinishing())) {
-      return;
-    }
-    TopayManager.a(localSelectMemberActivity, false);
-    if (this.jdField_a_of_type_Int == 0)
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (this.jdField_a_of_type_Int == xbs.a(this.jdField_a_of_type_Xbs, xbs.a(this.jdField_a_of_type_Xbs)).a().size()) && (!xbs.a(this.jdField_a_of_type_Xbs, xbs.a(this.jdField_a_of_type_Xbs)).a()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTopayManager$5.jdField_a_of_type_AndroidOsResultReceiver.send(1, null);
-      ReportController.b(QWalletTools.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.aio.send", 0, 0, "", "", "", "");
-      int i = localSelectMemberActivity.getIntent().getIntExtra("iPayFrom", -1);
-      if (QLog.isColorLevel()) {
-        QLog.e("TopayManager", 2, "iPayFrom : " + i);
-      }
-      if (i == 1)
-      {
-        TopayManager.a(localSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTopayManager$5.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTopayManager$5.b);
-        return;
-      }
-      TopayManager.b(localSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTopayManager$5.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTopayManager$5.b);
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidOsBundle != null) {}
-    for (String str = this.jdField_a_of_type_AndroidOsBundle.getString("retmsg");; str = null)
-    {
-      if (TextUtils.isEmpty(str)) {
-        str = localSelectMemberActivity.getResources().getString(2131435603);
-      }
-      for (;;)
-      {
-        DialogUtil.a(localSelectMemberActivity, 231, null, str, localSelectMemberActivity.getResources().getString(2131433016), null, null, new xbv(this)).show();
-        ReportController.b(QWalletTools.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.selectpage.errwinshow", 0, 0, "", "", "", "");
-        return;
-      }
+      paramAbsListView = xbs.a(this.jdField_a_of_type_Xbs);
+      xbs.a(this.jdField_a_of_type_Xbs, xbs.a(this.jdField_a_of_type_Xbs)).b(paramAbsListView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xbu
  * JD-Core Version:    0.7.0.1
  */

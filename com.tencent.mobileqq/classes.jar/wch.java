@@ -1,35 +1,22 @@
-import com.tencent.mobileqq.activity.aio.tim.TIMUserManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class wch
-  implements Runnable
+class wch
+  implements DialogInterface.OnDismissListener
 {
-  public wch(TIMUserManager paramTIMUserManager, String paramString1, String paramString2, boolean paramBoolean) {}
+  wch(wcg paramwcg, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, this.jdField_a_of_type_JavaLangString, this.b) == 0) {
-      if (TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, this.b))
-      {
-        TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager);
-        TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, 2);
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TIMUserManager", 2, this.jdField_a_of_type_Boolean + " startDownLoadTimTheme TimIconsState " + TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager));
-      }
-      return;
-      TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, 4);
-      continue;
-      TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, 3);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wch
  * JD-Core Version:    0.7.0.1
  */

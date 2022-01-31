@@ -11,16 +11,16 @@ public final class SvcRspGetDevLoginInfo
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList cache_vecAuthLoginDevInfo;
-  static ArrayList cache_vecCurrentLoginDevInfo;
-  static ArrayList cache_vecHistoryLoginDevInfo;
+  static ArrayList<SvcDevLoginInfo> cache_vecAuthLoginDevInfo;
+  static ArrayList<SvcDevLoginInfo> cache_vecCurrentLoginDevInfo;
+  static ArrayList<SvcDevLoginInfo> cache_vecHistoryLoginDevInfo;
   public long iNextItemIndex;
   public int iResult;
   public long iTotalItemCount;
   public String strResult = "";
-  public ArrayList vecAuthLoginDevInfo;
-  public ArrayList vecCurrentLoginDevInfo;
-  public ArrayList vecHistoryLoginDevInfo;
+  public ArrayList<SvcDevLoginInfo> vecAuthLoginDevInfo;
+  public ArrayList<SvcDevLoginInfo> vecCurrentLoginDevInfo;
+  public ArrayList<SvcDevLoginInfo> vecHistoryLoginDevInfo;
   
   static
   {
@@ -34,7 +34,7 @@ public final class SvcRspGetDevLoginInfo
   
   public SvcRspGetDevLoginInfo() {}
   
-  public SvcRspGetDevLoginInfo(int paramInt, String paramString, long paramLong1, long paramLong2, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3)
+  public SvcRspGetDevLoginInfo(int paramInt, String paramString, long paramLong1, long paramLong2, ArrayList<SvcDevLoginInfo> paramArrayList1, ArrayList<SvcDevLoginInfo> paramArrayList2, ArrayList<SvcDevLoginInfo> paramArrayList3)
   {
     this.iResult = paramInt;
     this.strResult = paramString;

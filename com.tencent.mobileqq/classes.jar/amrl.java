@@ -1,29 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.WifiInfo;
+import android.util.Log;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.utils.PokeBigResHandler.NetEngine.1;
 
-public final class amrl
-  implements Parcelable.Creator
+public class amrl
+  implements baug
 {
-  public LbsDataV2.WifiInfo a(Parcel paramParcel)
+  public void onResp(bavf parambavf)
   {
-    LbsDataV2.WifiInfo localWifiInfo = new LbsDataV2.WifiInfo();
-    if (paramParcel != null)
-    {
-      localWifiInfo.mac = paramParcel.readString();
-      localWifiInfo.rssi = paramParcel.readInt();
+    if (parambavf.jdField_a_of_type_Int == 0) {
+      ThreadManagerV2.excute(new PokeBigResHandler.NetEngine.1(this, parambavf.jdField_a_of_type_Bave.c), 64, null, true);
     }
-    return localWifiInfo;
   }
   
-  public LbsDataV2.WifiInfo[] a(int paramInt)
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2)
   {
-    return null;
+    Log.e("Ron", "req:[" + parambave.toString() + "\n curOffset" + paramLong1 + "\n totalLen" + paramLong2 + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amrl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,64 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.medalwall.ShareHelper;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.widget.ActionSheet;
+import android.content.res.Resources;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.PinnedDividerSwipListView;
 
 public class aefx
-  implements AdapterView.OnItemClickListener
+  implements biab
 {
-  public aefx(ShareHelper paramShareHelper) {}
+  public aefx(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(biaa parambiaa)
   {
-    if (this.a.a.a().isShowing()) {
-      this.a.a.a().dismiss();
+    if (parambiaa.a == this.a.jdField_m_of_type_Int) {
+      return;
     }
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        paramInt = 2131435319;
+    this.a.jdField_m_of_type_Int = parambiaa.a;
+    TroopMemberListActivity.a(this.a, parambiaa.a);
+    if ((this.a.jdField_m_of_type_Int >= 0) && (this.a.jdField_m_of_type_Int < TroopMemberListActivity.a(this.a).length)) {
+      this.a.c.setText(TroopMemberListActivity.a(this.a)[this.a.jdField_m_of_type_Int]);
+    }
+    if (this.a.jdField_m_of_type_Int == 0)
+    {
+      this.a.a("Clk_def", this.a.n, "");
+      this.a.h();
+      if (!this.a.jdField_m_of_type_Boolean) {
+        this.a.jdField_m_of_type_Boolean = true;
       }
+      if (this.a.jdField_a_of_type_Aegv != null) {
+        this.a.jdField_a_of_type_Aegv.a();
+      }
+      if (this.a.jdField_m_of_type_Int != 0) {
+        break label472;
+      }
+      this.a.jdField_a_of_type_ComTencentWidgetPinnedDividerSwipListView.setSelectionFromTop(0, 0);
     }
     for (;;)
     {
-      if (paramInt != -1)
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setContentDescription(this.a.jdField_b_of_type_AndroidWidgetTextView.getText().toString() + this.a.c.getText().toString());
+      return;
+      if (this.a.jdField_m_of_type_Int == 1)
       {
-        QRUtils.a(1, paramInt);
-        return;
-        if (!WXShareHelper.a().b()) {
-          paramInt = 2131435320;
-        }
+        ((amdu)this.a.app.a(20)).v(this.a.jdField_b_of_type_JavaLangString);
+        new azqx(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("exp_onlineList").a(0).a(new String[] { this.a.jdField_b_of_type_JavaLangString }).a();
+        new azqx(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_onlinefirst").a(new String[] { this.a.jdField_b_of_type_JavaLangString }).a();
+        break;
       }
-      else
+      if (this.a.jdField_m_of_type_Int == 5)
       {
-        switch ((int)paramLong)
-        {
-        default: 
-          return;
-        case 0: 
-          ShareHelper.a(this.a);
-          return;
-        case 1: 
-          ShareHelper.b(this.a);
-          return;
-        case 2: 
-          ShareHelper.c(this.a);
-          return;
-        }
-        ShareHelper.d(this.a);
-        return;
+        ((amdu)this.a.app.a(20)).w(this.a.jdField_b_of_type_JavaLangString);
+        break;
       }
-      paramInt = -1;
+      if (this.a.jdField_m_of_type_Int == 2) {}
+      for (parambiaa = "Clk_lastactivetime";; parambiaa = "Clk_jointime")
+      {
+        this.a.a(parambiaa, "1", this.a.n);
+        break;
+      }
+      label472:
+      this.a.jdField_a_of_type_ComTencentWidgetPinnedDividerSwipListView.setSelectionFromTop(0, -this.a.getResources().getDimensionPixelSize(2131298634));
     }
   }
 }

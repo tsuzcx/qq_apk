@@ -1,30 +1,57 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class akfa
-  implements View.OnClickListener
 {
-  public akfa(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  public void onClick(View paramView)
+  static akfa a(JSONObject paramJSONObject)
   {
-    if (paramView == this.a.a) {
-      return;
+    if (paramJSONObject == null) {
+      return new akfa();
     }
-    if (this.a.a != null) {
-      this.a.a.findViewById(2131364091).setVisibility(8);
+    akfa localakfa = new akfa();
+    try
+    {
+      localakfa.jdField_a_of_type_Int = paramJSONObject.getInt("id");
+      localakfa.jdField_a_of_type_JavaLangString = paramJSONObject.getString("name");
+      localakfa.jdField_b_of_type_Int = paramJSONObject.getInt("type");
+      localakfa.jdField_b_of_type_JavaLangString = paramJSONObject.optString("soundVersion", "0");
+      localakfa.jdField_c_of_type_JavaLangString = paramJSONObject.getString("soundUrl");
+      localakfa.jdField_d_of_type_JavaLangString = paramJSONObject.getString("whiteList");
+      localakfa.jdField_c_of_type_Int = paramJSONObject.getInt("isShow");
+      localakfa.jdField_e_of_type_Int = paramJSONObject.getInt("classify");
+      localakfa.g = paramJSONObject.getString("classifyName");
+      localakfa.jdField_e_of_type_JavaLangString = paramJSONObject.getString("backgroundUrl");
+      localakfa.f = String.valueOf(paramJSONObject.getInt("vip_type"));
+      localakfa.jdField_d_of_type_Int = paramJSONObject.getInt("useNum");
+      localakfa.h = paramJSONObject.getString("trialstartday");
+      localakfa.i = paramJSONObject.getString("trialendday");
+      return localakfa;
     }
-    TextView localTextView = (TextView)paramView.findViewById(2131364090);
-    this.a.a(localTextView.getText().toString());
-    paramView.findViewById(2131364091).setVisibility(0);
-    this.a.a = paramView;
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+    return localakfa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akfa
  * JD-Core Version:    0.7.0.1
  */

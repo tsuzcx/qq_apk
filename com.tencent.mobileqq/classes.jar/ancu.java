@@ -1,14 +1,27 @@
-import cooperation.qzone.webviewplugin.QzonePhotoWallPlugin;
-import java.util.ArrayList;
-
 public class ancu
-  implements Runnable
+  extends ancs
 {
-  public ancu(QzonePhotoWallPlugin paramQzonePhotoWallPlugin, ArrayList paramArrayList) {}
+  public static final ancu a;
+  public ancw a;
+  public ancy a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
   
-  public void run()
+  static
   {
-    QzonePhotoWallPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQzonePhotoWallPlugin, this.jdField_a_of_type_JavaUtilArrayList, false);
+    jdField_a_of_type_Ancu = new ancu(false);
+  }
+  
+  public ancu()
+  {
+    this.b = 128L;
+  }
+  
+  public ancu(boolean paramBoolean)
+  {
+    this.b = 128L;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

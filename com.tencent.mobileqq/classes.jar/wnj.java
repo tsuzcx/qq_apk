@@ -1,33 +1,28 @@
-import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class wnj
-  extends CardObserver
+  extends wwj
 {
-  private wnj(FriendFragment paramFriendFragment) {}
-  
-  protected void a(boolean paramBoolean, Object paramObject)
+  public wnj(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if ((paramBoolean) && (FriendFragment.b(this.a))) {
-      FriendFragment.a(this.a, 1400L, true);
-    }
+    super(paramContext, paramString1, paramString2, paramInt1, paramInt2);
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  protected void X_()
   {
-    if (paramBoolean1)
+    xvp localxvp = a().a("FeedSegment");
+    if ((localxvp != null) && (localxvp.a() == 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
-      }
-      FriendFragment.a(this.a, 1400L, false);
+      this.a = true;
+      return;
     }
+    this.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wnj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.RecvGVideoLevelInfo.Medal;
 
-class maj
-  implements Runnable
+public final class maj
+  implements Parcelable.Creator<RecvGVideoLevelInfo.Medal>
 {
-  maj(mai parammai) {}
-  
-  public void run()
+  public RecvGVideoLevelInfo.Medal a(Parcel paramParcel)
   {
-    if ((TopicShareHelper.a(this.a.a) != null) && (TopicShareHelper.a(this.a.a).isShowing())) {
-      TopicShareHelper.a(this.a.a).dismiss();
-    }
+    return new RecvGVideoLevelInfo.Medal(paramParcel);
+  }
+  
+  public RecvGVideoLevelInfo.Medal[] a(int paramInt)
+  {
+    return new RecvGVideoLevelInfo.Medal[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     maj
  * JD-Core Version:    0.7.0.1
  */

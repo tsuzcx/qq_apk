@@ -1,26 +1,90 @@
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
 public class xox
-  implements Runnable
+  extends BaseAdapter
 {
-  public xox(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private xoz jdField_a_of_type_Xoz;
+  private int b;
+  private int c;
   
-  public void run()
+  public xox(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!this.a.jdField_a_of_type_Boolean)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+  }
+  
+  public Bitmap a(int paramInt)
+  {
+    return null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Xoz = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+  }
+  
+  public void a(LocalMediaInfo paramLocalMediaInfo)
+  {
+    if (this.jdField_a_of_type_Xoz == null) {
+      return;
+    }
+    this.jdField_a_of_type_Xoz.a(paramLocalMediaInfo);
+  }
+  
+  public void a(xoz paramxoz)
+  {
+    this.jdField_a_of_type_Xoz = paramxoz;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a(2002, "抱歉，摄像头可能被禁止了", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("FlowCameraActivity", 2, "[@] ERR_CODE_CAMERA_CREATE  黑名单机型,2秒还没有获取到预览帧,可能没有权限");
-      }
+      paramView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      int i = (int)(xcp.a(this.jdField_a_of_type_AndroidContentContext.getResources()) * this.b);
+      paramViewGroup = new ViewGroup.LayoutParams(this.b, i);
+      paramView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      paramView.setLayoutParams(paramViewGroup);
+      paramViewGroup = new xoy();
+      paramViewGroup.a = paramView;
+      paramViewGroup.a.setImageDrawable(new ColorDrawable(-12303292));
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Xoz.a(paramViewGroup.a, Integer.valueOf(paramInt));
+      return paramView;
+      paramViewGroup = (xoy)paramView.getTag();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xox
  * JD-Core Version:    0.7.0.1
  */

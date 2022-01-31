@@ -1,30 +1,38 @@
-import android.content.Context;
-import cooperation.weiyun.sdk.download.WyDownloader;
-import cooperation.weiyun.sdk.download.WyDownloader.IDownloadListener;
-import cooperation.weiyun.utils.SoHelper.SoListener;
-import java.io.File;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
-public final class anig
-  implements WyDownloader.IDownloadListener
+public class anig
+  implements anih
 {
-  public anig(String paramString1, String paramString2, SoHelper.SoListener paramSoListener, Context paramContext, File paramFile1, File paramFile2) {}
+  private anig(anif paramanif) {}
   
-  public void a(String paramString, long paramLong, float paramFloat)
+  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    if (this.jdField_a_of_type_CooperationWeiyunUtilsSoHelper$SoListener != null) {
-      this.jdField_a_of_type_CooperationWeiyunUtilsSoHelper$SoListener.a(paramLong, paramFloat);
+    if (!anjy.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.CONNECTION_TYPE")) {
+      return false;
     }
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
-  {
-    if (paramBoolean) {
-      WyDownloader.a().a("http://dldir1.qq.com/weiyun/android/qq/librarySize1002.txt", this.jdField_a_of_type_JavaLangString, "SoHelper", new anih(this));
+    if (!AppNetConnInfo.isNetSupport()) {
+      paramVariantWrapper.SetString("none");
     }
-    while (this.jdField_a_of_type_CooperationWeiyunUtilsSoHelper$SoListener == null) {
-      return;
+    for (;;)
+    {
+      return true;
+      if (AppNetConnInfo.isWifiConn())
+      {
+        paramVariantWrapper.SetString("wifi");
+      }
+      else if (AppNetConnInfo.isMobileConn())
+      {
+        int i = AppNetConnInfo.getMobileInfo();
+        if (i == 0) {
+          paramVariantWrapper.SetString("none");
+        } else if (-1 == i) {
+          paramVariantWrapper.SetString("other");
+        } else {
+          paramVariantWrapper.SetString("cellular");
+        }
+      }
     }
-    this.jdField_a_of_type_CooperationWeiyunUtilsSoHelper$SoListener.a(paramString3);
   }
 }
 

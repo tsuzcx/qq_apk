@@ -1,58 +1,49 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.CustomAlertDialog;
-import com.tencent.mobileqq.widget.CustomAlertDialog.OnPrepareOptionMenuItem;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.appcommon.Common;
+import com.tencent.open.appcommon.ResourceUpdater;
+import com.tencent.open.appcommon.TaskThread;
+import com.tencent.open.base.FileUtils;
+import com.tencent.open.base.LogUtility;
 
 public class hkk
-  extends BaseAdapter
+  implements Runnable
 {
-  List jdField_a_of_type_JavaUtilList;
+  public hkk(TaskThread paramTaskThread, int paramInt) {}
   
-  public hkk(CustomAlertDialog paramCustomAlertDialog, List paramList)
+  public void run()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = ((LayoutInflater)this.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2130903125, null);
+    try
+    {
+      switch (this.jdField_a_of_type_Int)
+      {
+      case 1: 
+        if (!Common.a()) {
+          return;
+        }
+        LogUtility.c(TaskThread.a, "try check md5");
+        ResourceUpdater.a();
+        return;
+      }
     }
-    ((TextView)paramViewGroup.findViewById(2131231294)).setText((String)((HashMap)this.jdField_a_of_type_JavaUtilList.get(paramInt)).get("optionStr"));
-    paramViewGroup.setOnClickListener(new hkl(this, paramInt));
-    ((ImageView)paramViewGroup.findViewById(2131231293)).setImageResource(((Integer)((HashMap)this.jdField_a_of_type_JavaUtilList.get(paramInt)).get("imgId")).intValue());
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog$OnPrepareOptionMenuItem != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog$OnPrepareOptionMenuItem.a(paramInt, paramViewGroup);
+    catch (Exception localException)
+    {
+      LogUtility.c(TaskThread.a, "runTask exception", localException);
+      return;
     }
-    return paramViewGroup;
+    TaskThread.a(CommonDataAdapter.a().a());
+    return;
+    FileUtils.a("Page/system", Common.f());
+    return;
+    this.jdField_a_of_type_ComTencentOpenAppcommonTaskThread.a(true, null);
+    return;
+    LogUtility.b(TaskThread.a, ">>start reset js ,del local and copy from assets");
+    this.jdField_a_of_type_ComTencentOpenAppcommonTaskThread.a(false, null);
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hkk
  * JD-Core Version:    0.7.0.1
  */

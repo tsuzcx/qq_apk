@@ -1,30 +1,36 @@
-import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-public class uxa
-  implements FMDialogUtil.FMDialogInterface
+class uxa
+  implements urr<uxb, uxc>
 {
-  public uxa(FilePicItemBuilder paramFilePicItemBuilder, FileManagerEntity paramFileManagerEntity) {}
+  private uxa(uwy paramuwy) {}
   
-  public void a()
+  public void a(@NonNull uxb paramuxb, @Nullable uxc paramuxc, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
+    if ((paramuxc != null) && (paramuxc.jdField_a_of_type_Int == 0) && (paramErrorMessage.isSuccess()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      this.a.jdField_a_of_type_JavaUtilList.addAll(paramuxc.jdField_a_of_type_JavaUtilList);
+      wxe.d("VideoFilterManager", "new filter count %d, current total count %d, isEnd=%s, cookie=%s", new Object[] { Integer.valueOf(paramuxc.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), Boolean.valueOf(paramuxc.jdField_a_of_type_Boolean), paramuxc.jdField_a_of_type_JavaLangString });
+      if ((paramuxc.jdField_a_of_type_Boolean) || (paramuxc.jdField_a_of_type_JavaUtilList.isEmpty()))
+      {
+        wxe.d("VideoFilterManager", "get filter full list finish, frequency = %d s", new Object[] { Integer.valueOf(paramuxc.b) });
+        this.a.a(true, paramuxc.b);
+        return;
+      }
+      this.a.c = paramuxc.jdField_a_of_type_JavaLangString;
+      this.a.c();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    wxe.c("VideoFilterManager", "get filter failed %s", paramErrorMessage);
+    this.a.a(false, 0);
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uxa
  * JD-Core Version:    0.7.0.1
  */

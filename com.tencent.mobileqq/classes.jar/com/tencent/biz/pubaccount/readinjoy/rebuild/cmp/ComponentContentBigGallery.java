@@ -5,13 +5,13 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import pgd;
 
 public class ComponentContentBigGallery
   extends ComponentContentBig
 {
-  TextView a;
+  TextView b;
   
   public ComponentContentBigGallery(Context paramContext)
   {
@@ -30,22 +30,22 @@ public class ComponentContentBigGallery
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969566, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559944, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.a = ((TextView)paramView.findViewById(2131367010));
+    this.b = ((TextView)paramView.findViewById(2131367023));
   }
   
   public void a(Object paramObject)
   {
     super.a(paramObject);
-    if ((paramObject instanceof IReadInJoyModel))
+    if ((paramObject instanceof pgd))
     {
-      paramObject = ((IReadInJoyModel)paramObject).a();
-      this.a.setText(String.valueOf(paramObject.mGalleryPicNumber));
+      paramObject = ((pgd)paramObject).a();
+      this.b.setText(String.valueOf(paramObject.mGalleryPicNumber));
     }
   }
   
@@ -56,7 +56,7 @@ public class ComponentContentBigGallery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigGallery
  * JD-Core Version:    0.7.0.1
  */

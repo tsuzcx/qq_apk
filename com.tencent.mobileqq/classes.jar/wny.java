@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
 
 public class wny
-  implements Runnable
+  implements View.OnClickListener
 {
-  public wny(PublicAccountFragment paramPublicAccountFragment) {}
+  public wny(StoryMessageListActivity paramStoryMessageListActivity, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_Int);
+    wxj.a("play_video", "del_notice", 0, 0, new String[] { "", "", "", "" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wny
  * JD-Core Version:    0.7.0.1
  */

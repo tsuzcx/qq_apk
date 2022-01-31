@@ -1,32 +1,20 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
 
 public class txw
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public txw(TroopInfoActivity paramTroopInfoActivity, ActionSheet paramActionSheet) {}
+  public txw(QCircleContentOperationView paramQCircleContentOperationView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.a = ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity, 13);
-      return;
-    }
-    AvatarWallAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity, 8);
+    QCircleContentOperationView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txw
  * JD-Core Version:    0.7.0.1
  */

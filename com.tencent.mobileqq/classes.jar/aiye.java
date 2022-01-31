@@ -1,25 +1,19 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
 
 public class aiye
-  implements TextWatcher
+  implements ajcl
 {
-  public aiye(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public aiye(LingHbFragment paramLingHbFragment) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt)
   {
-    if ((!TextUtils.isEmpty(this.a.H)) && (paramInt1 > 0) && (paramInt1 < this.a.H.length() + 1) && (paramInt2 > paramInt3))
+    if (paramInt == 0)
     {
-      this.a.d(false);
+      this.a.a.findViewById(2131368213).setVisibility(8);
       return;
     }
-    TroopBarPublishActivity.a(this.a);
+    this.a.a.findViewById(2131368213).setVisibility(0);
   }
 }
 

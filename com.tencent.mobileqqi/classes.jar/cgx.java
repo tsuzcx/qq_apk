@@ -1,49 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.DirectForwardActivity;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import java.util.ArrayList;
 
 public class cgx
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public cgx(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity) {}
+  public cgx(DirectForwardActivity paramDirectForwardActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.b();
-    Object localObject = this.a.jdField_b_of_type_JavaLangString;
-    this.a.jdField_b_of_type_JavaLangString = "null";
-    paramView.findViewById(2131231327).setVisibility(0);
-    this.a.jdField_b_of_type_Int = -1;
-    if (localObject != null)
+    paramIntent = paramIntent.getExtras();
+    if (paramIntent != null)
     {
-      paramView = (View)localObject;
-      if (((String)localObject).trim().length() != 0) {}
-    }
-    else
-    {
-      paramView = "null";
-    }
-    String str = this.a.jdField_b_of_type_JavaLangString;
-    if (str != null)
-    {
-      localObject = str;
-      if (str.trim().length() != 0) {}
-    }
-    else
-    {
-      localObject = "null";
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(ChatBackgroundSettingActivity.c(), 2, "oldPicPath is:" + paramView + ",newPicPath is:" + (String)localObject);
-    }
-    if (!paramView.equals(localObject))
-    {
-      if ((ChatBackgroundSettingActivity.a(this.a) == null) || (ChatBackgroundSettingActivity.a(this.a).trim().length() == 0)) {
-        ChatBackgroundSettingActivity.a(this.a, this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a());
+      paramContext = paramIntent.getStringArrayList("procNameList");
+      paramIntent = paramIntent.getString("verify");
+      if ((paramContext != null) && (paramContext.size() != 0) && (this.a.d != null) && (BrowserAppInterface.a(paramIntent, paramContext))) {
+        break label53;
       }
-      this.a.v_();
+    }
+    for (;;)
+    {
+      return;
+      label53:
+      int i = 0;
+      while (i < paramContext.size())
+      {
+        if (this.a.d.equals(paramContext.get(i)))
+        {
+          this.a.finish();
+          return;
+        }
+        i += 1;
+      }
     }
   }
 }

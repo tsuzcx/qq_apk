@@ -1,26 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
 public class sof
-  extends BroadcastReceiver
+  implements DialogInterface.OnDismissListener
 {
-  public sof(ForwardRecentActivity paramForwardRecentActivity) {}
+  public sof(BridgeModule paramBridgeModule) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (!this.a.isFinishing())
-    {
-      this.a.finish();
-      QLog.i("ForwardOption.ForwardEntranceActivity", 1, "ForwardRecentActivity has finished by broadcastReceiver.");
-    }
+    if (!BridgeModule.access$300(this.a)) {}
+    BridgeModule.access$302(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sof
  * JD-Core Version:    0.7.0.1
  */

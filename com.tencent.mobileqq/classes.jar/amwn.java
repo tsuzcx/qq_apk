@@ -1,15 +1,19 @@
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.networkedmodule.QzoneModuleConfigManager.QzoneModuleRecord;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.ARScanAR;
 
-public class amwn
+public final class amwn
+  implements Parcelable.Creator<ARScanAR>
 {
-  public long a;
-  public ModuleDownloadListener a;
-  public QzoneModuleConfigManager.QzoneModuleRecord a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public boolean b;
+  public ARScanAR a(Parcel paramParcel)
+  {
+    return new ARScanAR(paramParcel);
+  }
+  
+  public ARScanAR[] a(int paramInt)
+  {
+    return new ARScanAR[paramInt];
+  }
 }
 
 

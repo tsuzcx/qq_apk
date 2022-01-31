@@ -1,41 +1,28 @@
-import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.MessageQueue.IdleHandler;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
-public class ahig
-  implements Runnable
+public final class ahig
+  implements MessageQueue.IdleHandler
 {
-  public ahig(CameraCaptureFragment paramCameraCaptureFragment, int paramInt) {}
+  final SearchContactsActivity a;
   
-  public void run()
+  public ahig(SearchContactsActivity paramSearchContactsActivity)
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-    case 101: 
-    case 104: 
-      FragmentActivity localFragmentActivity;
-      do
-      {
-        return;
-        QQToast.a(BaseApplicationImpl.getApplication(), "录制出现异常，请重试", 1).a();
-        localFragmentActivity = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.getActivity();
-      } while ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()));
-      localFragmentActivity.finish();
-      return;
-    case 102: 
-      QQToast.a(BaseApplicationImpl.getContext(), "拍摄时间过短，请重新拍摄。", 0).a();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.z_();
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), "拍照出现异常，请重试", 0).a();
+    this.a = paramSearchContactsActivity;
+  }
+  
+  public boolean queueIdle()
+  {
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahig
  * JD-Core Version:    0.7.0.1
  */

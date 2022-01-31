@@ -1,14 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter.ViewTag;
+import android.os.Bundle;
+import android.os.ResultReceiver;
 
-public class ajbg
-  extends ContactListAdapter.ViewTag
+class ajbg
+  implements aixw
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  ajbg(ajaz paramajaz, ResultReceiver paramResultReceiver) {}
+  
+  public void a(String paramString1, String paramString2, aixq paramaixq)
+  {
+    paramString1 = new Bundle();
+    paramString1.putString("res", paramString2);
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramString1);
+  }
 }
 
 

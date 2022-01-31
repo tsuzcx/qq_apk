@@ -1,48 +1,60 @@
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.annotation.TargetApi;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.view.VipProfileWZRYView;
+import android.os.Message;
+import android.widget.RelativeLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie.1.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadRegulator;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class agsp
-  implements Runnable
+  extends MqqHandler
 {
-  public agsp(VipProfileWZRYView paramVipProfileWZRYView) {}
+  agsp(agso paramagso) {}
   
-  @TargetApi(11)
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.setVisibility(0);
-    AnimatorSet localAnimatorSet1 = new AnimatorSet();
-    localAnimatorSet1.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.a.a, "scaleX", new float[] { 3.5F, 0.9F }), ObjectAnimator.ofFloat(this.a.a, "scaleY", new float[] { 3.5F, 0.9F }) });
-    localAnimatorSet1.setDuration(150L);
-    AnimatorSet localAnimatorSet2 = new AnimatorSet();
-    localAnimatorSet2.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.a.a, "scaleX", new float[] { 0.9F, 1.1F }), ObjectAnimator.ofFloat(this.a.a, "scaleY", new float[] { 0.9F, 1.1F }) });
-    localAnimatorSet2.setDuration(100L);
-    Object localObject = new AnimatorSet();
-    ((AnimatorSet)localObject).playTogether(new Animator[] { ObjectAnimator.ofFloat(this.a.a, "scaleX", new float[] { 1.1F, 1.0F }), ObjectAnimator.ofFloat(this.a.a, "scaleY", new float[] { 1.1F, 1.0F }) });
-    ((AnimatorSet)localObject).setDuration(50L);
-    AnimatorSet localAnimatorSet3 = new AnimatorSet();
-    localAnimatorSet3.playSequentially(new Animator[] { localAnimatorSet1, localAnimatorSet2, localObject });
-    localAnimatorSet3.start();
-    this.a.c.setVisibility(0);
-    localAnimatorSet1 = new AnimatorSet();
-    localAnimatorSet1.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.a.c, "scaleX", new float[] { 2.0F, 3.0F }), ObjectAnimator.ofFloat(this.a.c, "scaleY", new float[] { 2.0F, 3.0F }), ObjectAnimator.ofFloat(this.a.c, "alpha", new float[] { 0.0F, 1.0F }) });
-    localAnimatorSet1.setDuration(50L);
-    localAnimatorSet2 = new AnimatorSet();
-    localAnimatorSet2.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.a.c, "scaleX", new float[] { 3.0F, 0.5F }), ObjectAnimator.ofFloat(this.a.c, "scaleY", new float[] { 3.0F, 0.5F }) });
-    localAnimatorSet2.setDuration(100L);
-    localObject = ObjectAnimator.ofFloat(this.a.c, "alpha", new float[] { 1.0F, 0.0F });
-    ((Animator)localObject).setDuration(100L);
-    localAnimatorSet3 = new AnimatorSet();
-    localAnimatorSet3.playSequentially(new Animator[] { localAnimatorSet1, localAnimatorSet2, localObject });
-    localAnimatorSet3.start();
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof List)));
+      this.a.b((List)paramMessage.obj);
+      if ((agso.a(this.a) == null) || (agso.a(this.a).size() == 0))
+      {
+        agso.a(this.a, System.currentTimeMillis());
+        if (QLog.isColorLevel()) {
+          QLog.d("MultiMsg_TAG", 2, "MultiForwardActivity.doOnCreate, start requestReceiveMultiMsg");
+        }
+        this.a.E();
+        this.a.b = new MultiForwardChatPie.1.1(this);
+        agso.a(this.a).postDelayed(this.a.b, 60000L);
+        ThreadRegulator.a().b(1);
+        aupg.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_g_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_g_of_type_Long, 1035, this.a.a(agso.a(this.a)));
+        return;
+      }
+      paramMessage = ChatActivityUtils.a(agso.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramMessage = ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramMessage, -1L);
+      agso.a(this.a).setVisibility(8);
+      agso.a(this.a).setVisibility(0);
+      agso.a(this.a).setVisibility(0);
+      agso.a(this.a).a(agso.a(this.a), paramMessage);
+    } while (!QLog.isColorLevel());
+    QLog.d("MultiMsg_TAG", 2, "MultiForwardActivity.doOnCreate, MultiMsg has been downloaded");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agsp
  * JD-Core Version:    0.7.0.1
  */

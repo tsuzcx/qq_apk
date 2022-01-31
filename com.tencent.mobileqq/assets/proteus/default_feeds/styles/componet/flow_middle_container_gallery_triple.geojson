@@ -1,0 +1,169 @@
+{
+  "view_type": "container",
+  "view_id": "id_article_gallery_triple_container",
+  "layout_type": "layout_relative",
+  "margin_left": "6",
+  "height": {
+    "type": "relative",
+    "value": "174"
+  },
+  "width": {
+    "type": "relative",
+    "value": "363"
+  },
+  "subviews": [
+    {
+      "view_type": "ReadInjoyAsynImageView",
+      "view_id": "id_gallery_triple_img_1",
+      "height": {
+        "type": "relative",
+        "value": "174"
+      },
+      "width": {
+        "type": "relative",
+        "value": "241"
+      },
+      "attributes": {
+        "setFrameString:": "-1",
+        "setImageWithURLString:lineup:": [
+          "$gallery_triple_img_url_1",
+          "-1"
+        ]
+      }
+    },
+    {
+      "view_type": "ReadInjoyAsynImageView",
+      "view_id": "id_gallery_triple_img_2",
+      "align_parent_top": "YES",
+      "align_parent_right": "YES",
+      "margin_left": "2",
+      "height": {
+        "type": "relative",
+        "value": "86"
+      },
+      "width": {
+        "type": "relative",
+        "value": "120"
+      },
+      "attributes": {
+        "setFrameString:": "-1",
+        "setImageWithURLString:lineup:": [
+          "$gallery_triple_img_url_2",
+          "-1"
+        ]
+      }
+    },
+    {
+      "view_type": "ReadInjoyAsynImageView",
+      "view_id": "id_gallery_triple_img_3",
+      "align_parent_bottom": "YES",
+      "align_parent_right": "YES",
+      "margin_left": "2",
+      "margin_top": "2",
+      "height": {
+        "type": "relative",
+        "value": "86"
+      },
+      "width": {
+        "type": "relative",
+        "value": "120"
+      },
+      "attributes": {
+        "setFrameString:": "-1",
+        "setImageWithURLString:lineup:": [
+          "$gallery_triple_img_url_3",
+          "-1"
+        ]
+      }
+    },
+    {
+      "view_type": "UIView",
+      "view_id": "id_pic_num_wrapper",
+      "layout_type": "layout_relative",
+      "align_parent_right": "YES",
+      "align_parent_bottom": "YES",
+      "default_visible": "YES",
+      "margin_right": "4",
+      "margin_bottom": "4",
+      "height": {
+        "type": "relative",
+        "value": "17"
+      },
+      "width": {
+        "type": "wrap_content"
+      },
+      "attributes": {
+        "setCornerRadiusString:": "2.0",
+        "setBackgroundColorString:": "#68000000"
+      },
+      "subviews": [
+        {
+          "view_type": "UIImageView",
+          "view_id": "id_gallery_img",
+          "default_visible": "YES",
+          "align_parent_left": "YES",
+          "align_parent_center_vertical": "YES",
+          "margin_left": "2",
+          "height": {
+            "type": "relative",
+            "value": "11"
+          },
+          "width": {
+            "type": "relative",
+            "value": "12"
+          },
+          "attributes": {
+            "loadImageWithPath:": "ReadInJoy/qq_readinjoy_gallery_count.png"
+          }
+        },
+        {
+          "view_type": "UILabel",
+          "view_id": "id_gallery_cnt",
+          "right_of_view": "id_gallery_img",
+          "margin_left": "1",
+          "margin_right": "2",
+          "height": {
+            "type": "relative",
+            "value": "17"
+          },
+          "width": {
+            "type": "wrap_content"
+          },
+          "attributes": {
+            "setTextAlignmentString:": "2",
+            "setTextColorString:": "#FFFFFF",
+            "setText:": "$gallery_cnt",
+            "setFontSizeString:": "10"
+          }
+        }
+      ]
+    },
+    {
+      "view_type": "UIView",
+      "view_id": "id_article_gallery_triple_cover",
+      "event_type": "cmd_url_click_card_report",
+      "align_parent_top": "YES",
+      "align_parent_left": "YES",
+      "height": {
+        "type": "relative",
+        "value": "170"
+      },
+      "width": {
+        "type": "relative",
+        "value": "363"
+      },
+      "attributes": {
+        "setAttatchInfo:": "$url"
+      },
+      "data_attributes": {
+        "setLocalInfo:": {
+          "click_area": "2"
+        },
+        "setRemoteInfo:": {
+            "jump_src": "$jump_src_img",
+            "jump_page": "$jump_page_img"
+        }
+      }
+    }
+  ]
+}

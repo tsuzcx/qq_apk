@@ -1,0 +1,84 @@
+package com.tencent.xweb.util;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+import org.xwalk.core.Log;
+
+public final class a
+{
+  private static String TAG = "AESUtil";
+  
+  public static String a(String paramString, SecretKey paramSecretKey)
+  {
+    AppMethodBeat.i(3997);
+    paramString = a(aye(paramString), paramSecretKey);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(3997);
+      return "";
+    }
+    paramString = new String(paramString);
+    AppMethodBeat.o(3997);
+    return paramString;
+  }
+  
+  private static byte[] a(byte[] paramArrayOfByte, SecretKey paramSecretKey)
+  {
+    AppMethodBeat.i(3996);
+    try
+    {
+      paramSecretKey = new SecretKeySpec(paramSecretKey.getEncoded(), "AES");
+      Cipher localCipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+      localCipher.init(2, paramSecretKey);
+      paramArrayOfByte = localCipher.doFinal(paramArrayOfByte);
+      AppMethodBeat.o(3996);
+      return paramArrayOfByte;
+    }
+    catch (Throwable paramArrayOfByte)
+    {
+      Log.e(TAG, "decrypt exp:" + paramArrayOfByte.getMessage());
+      AppMethodBeat.o(3996);
+    }
+    return null;
+  }
+  
+  public static SecretKey ayd(String paramString)
+  {
+    AppMethodBeat.i(3995);
+    try
+    {
+      paramString = new SecretKeySpec(aye(paramString), "AES");
+      AppMethodBeat.o(3995);
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      Log.e(TAG, "makekey exp:" + paramString.getMessage());
+      AppMethodBeat.o(3995);
+    }
+    return null;
+  }
+  
+  private static byte[] aye(String paramString)
+  {
+    AppMethodBeat.i(3998);
+    int j = paramString.length();
+    byte[] arrayOfByte = new byte[j / 2];
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfByte[(i / 2)] = ((byte)((Character.digit(paramString.charAt(i), 16) << 4) + Character.digit(paramString.charAt(i + 1), 16)));
+      i += 2;
+    }
+    AppMethodBeat.o(3998);
+    return arrayOfByte;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+ * Qualified Name:     com.tencent.xweb.util.a
+ * JD-Core Version:    0.7.0.1
+ */

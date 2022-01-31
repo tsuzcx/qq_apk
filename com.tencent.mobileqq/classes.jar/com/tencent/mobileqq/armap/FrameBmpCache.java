@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.armap;
 
-import abcw;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -9,11 +8,10 @@ import android.graphics.BitmapFactory.Options;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import ansm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.MemoryManager;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.armap.wealthgod.ARMapDPC;
-import com.tencent.mobileqq.armap.wealthgod.SplashBitmapUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,14 +20,14 @@ public class FrameBmpCache
 {
   public int a;
   private long jdField_a_of_type_Long = 1000 / this.jdField_a_of_type_Int;
-  volatile abcw jdField_a_of_type_Abcw;
   Resources jdField_a_of_type_AndroidContentResResources;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  public MQLruCache a;
-  private FrameBmpCache.EndListener jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener;
-  public Object a;
-  LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  public List a;
+  public MQLruCache<String, Object> a;
+  private ansm jdField_a_of_type_Ansm;
+  volatile FrameBmpCache.CancelAbleRunnable jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable;
+  Object jdField_a_of_type_JavaLangObject = new Object();
+  LinkedList<FrameBmpCache.CancelAbleRunnable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  public List<String> a;
   public boolean a;
   public int b;
   private long b;
@@ -48,7 +46,6 @@ public class FrameBmpCache
     this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache = BaseApplicationImpl.sImageCache;
     this.jdField_a_of_type_Int = 10;
     this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Int / 2.0F));
-    this.jdField_a_of_type_JavaLangObject = new Object();
     this.jdField_a_of_type_AndroidContentResResources = paramResources;
   }
   
@@ -99,7 +96,7 @@ public class FrameBmpCache
           if (localLinkedList.size() > 0)
           {
             this.jdField_a_of_type_JavaUtilLinkedList.addAll(0, localLinkedList);
-            if (this.jdField_a_of_type_Abcw == null) {
+            if (this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable == null) {
               d();
             }
           }
@@ -113,12 +110,12 @@ public class FrameBmpCache
         if (j >= this.jdField_a_of_type_JavaUtilLinkedList.size()) {
           break label211;
         }
-        if (a(((abcw)this.jdField_a_of_type_JavaUtilLinkedList.get(j)).jdField_a_of_type_Int) == a(i))
+        if (a(((FrameBmpCache.CancelAbleRunnable)this.jdField_a_of_type_JavaUtilLinkedList.get(j)).jdField_a_of_type_Int) == a(i))
         {
-          localObject1 = (abcw)this.jdField_a_of_type_JavaUtilLinkedList.remove(j);
+          localObject1 = (FrameBmpCache.CancelAbleRunnable)this.jdField_a_of_type_JavaUtilLinkedList.remove(j);
           Object localObject4 = localObject1;
           if (localObject1 == null) {
-            localObject4 = new abcw(this, i);
+            localObject4 = new FrameBmpCache.CancelAbleRunnable(this, i);
           }
           localLinkedList.add(localObject4);
         }
@@ -138,13 +135,13 @@ public class FrameBmpCache
   
   private void d()
   {
-    this.jdField_a_of_type_Abcw = ((abcw)this.jdField_a_of_type_JavaUtilLinkedList.poll());
-    if (this.jdField_a_of_type_Abcw != null)
+    this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable = ((FrameBmpCache.CancelAbleRunnable)this.jdField_a_of_type_JavaUtilLinkedList.poll());
+    if (this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("FrameBmpCache", 2, "keepRunning " + this.jdField_a_of_type_Abcw);
+        QLog.i("FrameBmpCache", 2, "keepRunning " + this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable);
       }
-      ThreadManager.postImmediately(this.jdField_a_of_type_Abcw, null, true);
+      ThreadManager.postImmediately(this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable, null, true);
     }
   }
   
@@ -177,10 +174,10 @@ public class FrameBmpCache
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       this.jdField_a_of_type_JavaUtilLinkedList.clear();
-      if (this.jdField_a_of_type_Abcw != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable != null)
       {
-        this.jdField_a_of_type_Abcw.a();
-        this.jdField_a_of_type_Abcw = null;
+        this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable.a();
+        this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable = null;
       }
       return;
     }
@@ -217,8 +214,8 @@ public class FrameBmpCache
       }
       this.jdField_c_of_type_Int = (this.jdField_a_of_type_JavaUtilList.size() - 1);
       this.jdField_b_of_type_Boolean = true;
-      if (this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener.a(null);
+      if (this.jdField_a_of_type_Ansm != null) {
+        this.jdField_a_of_type_Ansm.a(null);
       }
     } while (!this.jdField_d_of_type_Boolean);
     return (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(this.jdField_a_of_type_JavaUtilList.get(a(this.jdField_c_of_type_Int)));
@@ -283,11 +280,11 @@ public class FrameBmpCache
     {
       while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        abcw localabcw = new abcw(this, i);
-        this.jdField_a_of_type_JavaUtilLinkedList.add(localabcw);
+        FrameBmpCache.CancelAbleRunnable localCancelAbleRunnable = new FrameBmpCache.CancelAbleRunnable(this, i);
+        this.jdField_a_of_type_JavaUtilLinkedList.add(localCancelAbleRunnable);
         i += 1;
       }
-      if (this.jdField_a_of_type_Abcw == null) {
+      if (this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable == null) {
         d();
       }
       return;
@@ -302,17 +299,17 @@ public class FrameBmpCache
     this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Int / 2.0F));
   }
   
-  public void a(FrameBmpCache.EndListener paramEndListener)
+  public void a(ansm paramansm)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener = paramEndListener;
+    this.jdField_a_of_type_Ansm = paramansm;
   }
   
-  public void a(List paramList)
+  public void a(List<String> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_f_of_type_Int = 0;
     this.jdField_c_of_type_Boolean = false;
-    if ((MemoryManager.a() <= 37748736L) || (SplashBitmapUtils.a().jdField_a_of_type_Boolean)) {
+    if (MemoryManager.a() <= 37748736L) {
       this.jdField_f_of_type_Boolean = false;
     }
     QLog.d("FrameBmpCache", 1, "mUseHighQuality=" + this.jdField_f_of_type_Boolean);
@@ -355,7 +352,7 @@ public class FrameBmpCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.armap.FrameBmpCache
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,32 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.PoiMapActivity.ShopListAdapter;
+import com.tencent.biz.PoiMapActivity.Shops;
+import com.tencent.biz.coupon.CouponActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class bgp
-  implements Runnable
+  implements AdapterView.OnItemClickListener
 {
-  public bgp(VideoController paramVideoController) {}
+  public bgp(PoiMapActivity paramPoiMapActivity) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.c(this.a.a().a, 2);
+    paramAdapterView = this.a.a.a(paramInt);
+    if (paramAdapterView == null) {}
+    do
+    {
+      return;
+      paramView = new Intent(this.a, CouponActivity.class);
+      paramView.putExtra("url", paramAdapterView.g);
+      this.a.startActivity(paramView);
+      if (paramAdapterView.b != 0) {
+        this.a.a("rec_locate", "view_share_tuan", paramAdapterView.h, "", "");
+      }
+    } while (paramAdapterView.c == 0);
+    this.a.a("rec_locate", "click_quan", paramAdapterView.h, "", "");
   }
 }
 

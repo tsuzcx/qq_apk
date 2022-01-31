@@ -1,32 +1,34 @@
-import com.tencent.biz.troop.file.TroopFileProtocol.GetOneFileInfoObserver;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import tencent.im.cs.group_file_common.group_file_common.FileInfo;
+import android.animation.Animator;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajph
-  extends TroopFileProtocol.GetOneFileInfoObserver
+  extends ajog
 {
-  public ajph(TroopFileTransferManager paramTroopFileTransferManager) {}
+  public ajph(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramBoolean) && (paramFileInfo != null))
-    {
-      String str = paramFileInfo.str_file_id.get();
-      Object localObject = str;
-      if (!str.startsWith("/")) {
-        localObject = "/" + str;
-      }
-      localObject = this.a.a().a((String)localObject);
-      if (localObject != null)
-      {
-        ((TroopFileInfo)localObject).a = paramFileInfo.uint32_bus_id.get();
-        ((TroopFileInfo)localObject).c = paramFileInfo.uint32_dead_time.get();
-      }
-      this.a.a().d((TroopFileInfo)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationEnd <<===");
+    }
+    if (this.a.jdField_a_of_type_Ajqc != null) {
+      this.a.jdField_a_of_type_Ajqc.a();
+    }
+    this.a.k();
+    this.a.e.setVisibility(4);
+    this.a.e.setPadding(0, 0, 0, 0);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.y();
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationStart ===>>");
     }
   }
 }

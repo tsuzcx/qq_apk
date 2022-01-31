@@ -1,49 +1,62 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyJumpActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyJumpActivity.2.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class oat
-  extends ChildViewClickListener
+  extends oxe
 {
-  public oat(LocalVideoPushSegment paramLocalVideoPushSegment) {}
+  public oat(ReadinjoyJumpActivity paramReadinjoyJumpActivity) {}
   
-  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
+  public void a(String paramString)
   {
-    if (paramView == paramBaseViewHolder.a())
-    {
-      StoryReportor.a("home_page", "clk_album", 0, 0, new String[0]);
-      this.a.a.b("last_click_time", Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-      LocalVideoPushSegment.a(this.a).a(NetConnInfoCenter.getServerTimeMillis());
-      LocalVideoPushSegment.a(this.a);
-      this.a.a_(null);
-    }
+    super.a(paramString);
+    QLog.d("ReadinjoyJumpActivity", 1, "webCallback : " + paramString);
+    ThreadManager.getUIHandler().post(new ReadinjoyJumpActivity.2.1(this));
+  }
+  
+  public void a(boolean paramBoolean, List<Long> paramList, List<ArticleInfo> paramList1)
+  {
+    QLog.d("ReadinjoyJumpActivity", 1, "68b resp, succ : " + paramBoolean + ", ids : " + paramList + ", articles : " + paramList1);
+    if ((paramList == null) || (!paramList.contains(Long.valueOf(ReadinjoyJumpActivity.a(this.a))))) {}
     do
     {
       return;
-      if (paramView == paramBaseViewHolder.a(2131371851))
+      ThreadManager.getUIHandler().removeCallbacks(ReadinjoyJumpActivity.a(this.a));
+    } while ((ReadinjoyJumpActivity.a(this.a)) || (ReadinjoyJumpActivity.b(this.a)));
+    if ((paramBoolean) && (paramList1 != null) && (!paramList1.isEmpty()))
+    {
+      int i = 0;
+      while (i < paramList1.size())
       {
-        StoryReportor.a("home_page", "close_album", 0, 0, new String[0]);
-        this.a.a.b("last_cancel_time", Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-        this.a.a_(null);
-        this.a.c(true);
-        return;
+        paramList = (ArticleInfo)paramList1.get(i);
+        if (paramList.mArticleID == ReadinjoyJumpActivity.a(this.a))
+        {
+          ReadinjoyJumpActivity.a(this.a, paramList);
+          if ((osb.a(ReadinjoyJumpActivity.a(this.a)) == 0) && (ors.a(ReadinjoyJumpActivity.a(this.a).mArticleContentUrl, 0L, ReadinjoyJumpActivity.a(this.a))))
+          {
+            paramList = owy.a().a();
+            if (paramList != null)
+            {
+              paramList.a(ReadinjoyJumpActivity.a(this.a).mArticleContentUrl, ReadinjoyJumpActivity.a(this.a).innerUniqueID, ReadinjoyJumpActivity.a(this.a).publishUin + "", 1, this.a);
+              return;
+            }
+          }
+          ReadinjoyJumpActivity.b(this.a);
+          return;
+        }
+        i += 1;
       }
-    } while (paramView != paramBaseViewHolder.a(2131371853));
-    StoryReportor.a("home_page", "clk_album", 0, 0, new String[0]);
-    this.a.a.b("last_click_time", Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-    LocalVideoPushSegment.a(this.a).a(NetConnInfoCenter.getServerTimeMillis());
-    LocalVideoPushSegment.a(this.a);
-    this.a.a_(null);
+    }
+    ReadinjoyJumpActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oat
  * JD-Core Version:    0.7.0.1
  */

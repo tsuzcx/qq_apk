@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.doutu.DoutuData;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import org.json.JSONObject;
 
-public final class abxy
-  implements Parcelable.Creator
+public class abxy
+  extends abwy
 {
-  public DoutuData a(Parcel paramParcel)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull abwu paramabwu)
   {
-    return new DoutuData(paramParcel);
-  }
-  
-  public DoutuData[] a(int paramInt)
-  {
-    return new DoutuData[paramInt];
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 7: 
+      SosoInterface.a(new abyb(paramabwu, paramJSONObject.optInt("allowCacheTime", 10) * 1000L));
+    }
+    for (;;)
+    {
+      return true;
+      SosoInterface.a(new abya(paramabwu, paramJSONObject.optInt("allowCacheTime", 10) * 1000L));
+    }
   }
 }
 

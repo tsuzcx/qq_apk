@@ -1,49 +1,18 @@
 package com.tencent.token.ui;
 
-import android.os.Message;
-import com.tencent.token.bd;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.utils.w;
 
-final class tp
-  extends bo
+class tp
+  implements View.OnClickListener
 {
-  tp(OpreateMsgActivity paramOpreateMsgActivity)
-  {
-    super(paramOpreateMsgActivity);
-  }
+  tp(RealNameActivity paramRealNameActivity, String paramString, View paramView) {}
   
-  public final void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if ((this.a.mAdapter == null) || (this.a == null) || ((this.a != null) && (this.a.isFinishing()))) {}
-    d locald;
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      }
-      if (paramMessage.arg1 == 0)
-      {
-        this.a.mAdapter.a(true);
-        this.a.mIsRefreshing = false;
-        return;
-      }
-      if (OpreateMsgActivity.access$000(this.a) < 5)
-      {
-        OpreateMsgActivity.access$008(this.a);
-        OpreateMsgActivity.access$100(this.a).a(this.a.mSource, this.a.mHandler);
-        return;
-      }
-      this.a.finishRefresh(true);
-      locald = (d)paramMessage.obj;
-      d.a(this.a.getResources(), (d)paramMessage.obj);
-      e.c("Op msg load failed:" + locald.a + "-" + locald.b);
-    } while ((103 != locald.a) && (110 != locald.a));
-    this.a.mAdapter.a(locald.c);
-    this.a.mAdapter.notifyDataSetChanged();
+    w.b(this.c, this.a);
+    this.b.setVisibility(8);
   }
 }
 

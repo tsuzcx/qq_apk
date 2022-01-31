@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class HotPicMsg$VideoInfo
-  extends MessageMicro
+  extends MessageMicro<VideoInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_certificated_icon = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -46,7 +46,7 @@ public final class HotPicMsg$VideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.hotpicmsg.HotPicMsg.VideoInfo
  * JD-Core Version:    0.7.0.1
  */

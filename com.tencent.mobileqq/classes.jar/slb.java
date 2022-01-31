@@ -1,23 +1,26 @@
-import android.app.Dialog;
-import android.view.View;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelBottomBanner;
 
 public class slb
-  implements AdapterView.OnItemClickListener
+  implements slg
 {
-  public slb(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
+  public slb(ChannelBottomBanner paramChannelBottomBanner) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a(paramView);
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.e();
+      return;
+    }
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     slb
  * JD-Core Version:    0.7.0.1
  */

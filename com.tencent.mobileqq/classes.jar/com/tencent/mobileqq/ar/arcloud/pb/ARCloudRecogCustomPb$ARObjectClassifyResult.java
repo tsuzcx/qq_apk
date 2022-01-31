@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class ARCloudRecogCustomPb$ARObjectClassifyResult
-  extends MessageMicro
+  extends MessageMicro<ARObjectClassifyResult>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26 }, new String[] { "ar_object_classify_errorcode", "ar_object_classify_errormsg", "image_ar_search_res" }, new Object[] { Integer.valueOf(0), "", null }, ARObjectClassifyResult.class);
   public final PBInt32Field ar_object_classify_errorcode = PBField.initInt32(0);
@@ -16,7 +16,7 @@ public final class ARCloudRecogCustomPb$ARObjectClassifyResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ARObjectClassifyResult
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic;
-
-public class ajdq
-  implements DialogInterface.OnDismissListener
+public abstract interface ajdq
 {
-  public ajdq(TroopCreateLogic paramTroopCreateLogic) {}
+  public abstract void a();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b();
 }
 
 

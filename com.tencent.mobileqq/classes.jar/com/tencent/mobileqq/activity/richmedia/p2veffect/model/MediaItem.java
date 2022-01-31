@@ -100,6 +100,12 @@ public class MediaItem
   public void setRotation(int paramInt)
   {
     this.rotation = paramInt;
+    if ((paramInt == 90) || (paramInt == 270))
+    {
+      paramInt = this.width;
+      this.width = this.height;
+      this.height = paramInt;
+    }
   }
   
   public void setStart(long paramLong)
@@ -114,7 +120,7 @@ public class MediaItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.p2veffect.model.MediaItem
  * JD-Core Version:    0.7.0.1
  */

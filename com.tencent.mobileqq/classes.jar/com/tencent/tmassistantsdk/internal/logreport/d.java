@@ -8,7 +8,7 @@ import com.tencent.tmassistant.common.jce.Request;
 import com.tencent.tmassistant.common.jce.Response;
 import com.tencent.tmassistantbase.network.PostHttpRequest;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
 
 public class d
   extends PostHttpRequest
@@ -22,7 +22,7 @@ public class d
   
   public boolean a(byte paramByte, b paramb)
   {
-    r.c("LogReportHttpRequest", "sendLogDataToServer logType:" + paramByte + " logDataWrapper:" + paramb);
+    ab.c("LogReportHttpRequest", "sendLogDataToServer logType:" + paramByte + " logDataWrapper:" + paramb);
     if (paramb == null) {
       return false;
     }
@@ -31,7 +31,7 @@ public class d
     return super.sendRequest(ProtocolPackage.buildPostData(ProtocolPackage.buildRequest((ReportLogRequest)ProtocolPackage.buildReportRequest(paramByte, paramb.b, str, i, ""))));
   }
   
-  protected void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
+  public void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
   {
     if (paramArrayOfByte2 == null) {
       if (this.a != null) {
@@ -60,20 +60,20 @@ public class d
         return;
       }
       this.a.a(this, false);
-      r.c("LogReportHttpRequest", "response ret:" + paramArrayOfByte1.ret);
+      ab.c("LogReportHttpRequest", "response ret:" + paramArrayOfByte1.ret);
       return;
     }
-    r.c("LogReportHttpRequest", "response isn't instanceof ReportLogResponse !");
+    ab.c("LogReportHttpRequest", "response isn't instanceof ReportLogResponse !");
     return;
     this.a.a(this, false);
     return;
     label177:
-    r.c("LogReportHttpRequest", "mListener is null !");
+    ab.c("LogReportHttpRequest", "mListener is null !");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.logreport.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,41 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.StructingMsgViewHolder;
-
-public class vid
-  implements Animation.AnimationListener
+class vid
+  implements vij
 {
-  public vid(StructingMsgItemBuilder paramStructingMsgItemBuilder, StructingMsgItemBuilder.StructingMsgViewHolder paramStructingMsgViewHolder) {}
+  vid(vic paramvic) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(vkn paramvkn)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.a.setVisibility(0);
+    if (vic.a(this.a) != null) {
+      vic.a(this.a).a(paramvkn.a);
+    }
+    if (vic.a(this.a) != null) {
+      vic.a(this.a).a();
+    }
+  }
+  
+  public void b(vkn paramvkn)
+  {
+    if (vic.a(this.a) != null) {
+      vic.a(this.a).c(paramvkn.a);
+    }
+    if (vic.a(this.a) != null) {
+      vic.a(this.a).a();
+    }
+  }
+  
+  public void c(vkn paramvkn)
+  {
+    if (vic.a(this.a) != null) {
+      vic.a(this.a).d(paramvkn.a);
+    }
+    if (vic.a(this.a) != null) {
+      vic.a(this.a).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vid
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,6 @@ package com.tencent.av.video.effect.core.qqavimage;
 
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
-import com.tencent.av.video.effect.core.qqavimage.util.OpenGlUtils;
 import com.tencent.av.video.effect.core.qqavimage.util.TextureRotationUtil;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -86,7 +85,7 @@ public class QQAVImageTwoInputFilter
     }
   }
   
-  public void setBitmap(final Bitmap paramBitmap)
+  public void setBitmap(Bitmap paramBitmap)
   {
     if ((paramBitmap != null) && (paramBitmap.isRecycled())) {}
     do
@@ -94,17 +93,7 @@ public class QQAVImageTwoInputFilter
       return;
       this.mBitmap = paramBitmap;
     } while (this.mBitmap == null);
-    runOnDraw(new Runnable()
-    {
-      public void run()
-      {
-        if ((QQAVImageTwoInputFilter.this.mFilterSourceTexture2 != -1) || (paramBitmap == null) || (paramBitmap.isRecycled())) {
-          return;
-        }
-        GLES20.glActiveTexture(33987);
-        QQAVImageTwoInputFilter.this.mFilterSourceTexture2 = OpenGlUtils.loadTexture(paramBitmap, -1, false);
-      }
-    });
+    runOnDraw(new QQAVImageTwoInputFilter.1(this, paramBitmap));
   }
   
   public void setRotation(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
@@ -119,7 +108,7 @@ public class QQAVImageTwoInputFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.QQAVImageTwoInputFilter
  * JD-Core Version:    0.7.0.1
  */

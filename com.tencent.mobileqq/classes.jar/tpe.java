@@ -1,34 +1,25 @@
-import android.text.Editable;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 public class tpe
-  implements View.OnFocusChangeListener
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public tpe(RegisterByNicknameAndPwdActivity paramRegisterByNicknameAndPwdActivity) {}
+  public tpe(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    if (paramView == RegisterByNicknameAndPwdActivity.a(this.a))
-    {
-      if (paramBoolean)
-      {
-        RegisterByNicknameAndPwdActivity.a(this.a).setSelection(RegisterByNicknameAndPwdActivity.a(this.a).getText().length());
-        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
-      }
-    }
-    else {
+    if (paramInt == 4102) {}
+    while (!bhtb.e()) {
       return;
     }
-    RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(8);
+    this.a.getWindow().getDecorView().setSystemUiVisibility(4102);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tpe
  * JD-Core Version:    0.7.0.1
  */

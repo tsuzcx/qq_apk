@@ -1,33 +1,44 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import java.util.HashMap;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
-class rgb
-  implements Runnable
+public class rgb
+  extends taq
 {
-  rgb(rga paramrga, boolean paramBoolean, String paramString, Bitmap paramBitmap, Drawable paramDrawable) {}
+  private rgb(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Boolean)
+    VideoFeedsPlayActivity.a("onGetDianZanState isSuccess: " + paramBoolean);
+    if ((!paramBoolean) || (paramBundle == null)) {}
+    int i;
+    do
     {
-      this.jdField_a_of_type_Rga.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-      AccountManageActivity.b(this.jdField_a_of_type_Rga.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).put(this.jdField_a_of_type_Rga.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+      String str;
+      do
+      {
+        return;
+        str = paramBundle.getString("VALUE_VIDEO_ARTICLE_ID");
+        i = paramBundle.getInt("VALUE_VIDEO_FAVORITE_STATE");
+      } while (str == null);
+      paramBundle = VideoFeedsRecommendFragment.a(this.a).a(str);
+    } while (paramBundle == null);
+    if (i == 1) {
+      paramBundle.p = true;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    for (;;)
     {
-      this.jdField_a_of_type_Rga.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      VideoFeedsRecommendFragment.a(this.a).b(paramBundle);
       return;
+      if (i == 0) {
+        paramBundle.p = false;
+      }
     }
-    this.jdField_a_of_type_Rga.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rgb
  * JD-Core Version:    0.7.0.1
  */

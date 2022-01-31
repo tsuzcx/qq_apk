@@ -1,24 +1,20 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.nearby.NearbyEnterUpdateObserver;
-import com.tencent.qphone.base.util.QLog;
 
-public class sxp
-  extends NearbyEnterUpdateObserver
+class sxp
+  implements yrb
 {
-  public sxp(Leba paramLeba) {}
+  sxp(sxe paramsxe) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void callback(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.redpoint", 2, "NearbyEnterUpdateObserver onReceive");
+    if (this.a.a != null) {
+      this.a.k();
     }
-    Leba.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sxp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,22 @@
-import com.tencent.mobileqq.activity.aio.HotReactiveHelper;
-import com.tencent.mobileqq.adapter.BuddyListAdapter;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.HashSet;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ygw
-  implements Runnable
+class ygw
+  implements View.OnClickListener
 {
-  public ygw(BuddyListAdapter paramBuddyListAdapter) {}
+  ygw(ygq paramygq, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((FriendsManager)BuddyListAdapter.a(this.a).getManager(50) != null)
-    {
-      HashSet localHashSet = HotReactiveHelper.a();
-      if ((localHashSet != null) && (localHashSet.size() > 0))
-      {
-        ArrayList localArrayList = new ArrayList(localHashSet);
-        BuddyListAdapter.a(this.a).b(localArrayList);
-        localHashSet.clear();
-      }
-    }
+    ygg.a(this.jdField_a_of_type_Ygq.a, ygg.a(this.jdField_a_of_type_Ygq.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply);
+    ygg.a(this.jdField_a_of_type_Ygq.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ygw
  * JD-Core Version:    0.7.0.1
  */

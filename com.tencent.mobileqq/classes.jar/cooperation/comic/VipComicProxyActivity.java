@@ -8,7 +8,7 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class VipComicProxyActivity
   extends PluginProxyActivity
 {
-  public static Class a(String paramString)
+  public static Class<? extends PluginProxyActivity> a(String paramString)
   {
     if (paramString.equals("com.qqcomic.activity.reader.VipComicLandReadingActivity")) {
       return VipComicLandReaderProxyActivity.class;
@@ -27,7 +27,7 @@ public class VipComicProxyActivity
     return "comic_plugin.apk";
   }
   
-  protected Class getProxyActivity(String paramString)
+  public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
     return a(paramString);
   }
@@ -47,7 +47,7 @@ public class VipComicProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.comic.VipComicProxyActivity
  * JD-Core Version:    0.7.0.1
  */

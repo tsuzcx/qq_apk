@@ -1,49 +1,26 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.video.IMediaPlayer;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
 
-public class yet
-  implements SurfaceHolder.Callback
+class yet
+  implements ymf
 {
-  public yet(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  yet(yes paramyes) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceCreated: mSavedCurPosition:" + this.a.g + ",mSavedPlayState : " + this.a.a(this.a.h));
-    }
-    if ((this.a.h == 1) && (this.a.g > 0))
+    if (paramBoolean)
     {
-      this.a.a(this.a.g);
-      this.a.g = 0;
-      this.a.h = 0;
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof ArrayList))) {
+        this.a.setDatas((ArrayList)paramVarArgs[0]);
+      }
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.c();
-    }
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    }
+    QLog.d(yes.a, 4, "get drafts failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yet
  * JD-Core Version:    0.7.0.1
  */

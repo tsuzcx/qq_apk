@@ -1,46 +1,66 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.util.LruCache;
-import com.tencent.mobileqq.troop.utils.NonMainAppListViewFaceLoader;
+import android.text.Editable;
+import android.text.SpannableString;
+import android.text.style.AbsoluteSizeSpan;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class ajnr
-  extends BroadcastReceiver
+  implements View.OnFocusChangeListener
 {
-  public ajnr(NonMainAppListViewFaceLoader paramNonMainAppListViewFaceLoader) {}
+  public ajnr(LoginView paramLoginView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_ComTencentWidgetListView == null) {}
-    do
-    {
-      do
+    if (paramView == this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView) {
+      if (true == paramBoolean)
       {
-        do
-        {
-          return;
-        } while ((paramIntent == null) || (!"com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("faceType", -1) != this.a.jdField_b_of_type_Int));
-        paramContext = paramIntent.getStringArrayListExtra("uinList");
-        paramIntent = paramIntent.getStringArrayListExtra("headPathList");
-      } while ((paramContext == null) || (paramIntent == null));
-      int j = paramContext.size();
-      if (QLog.isColorLevel()) {
-        QLog.d("NonMainAppListViewFaceLoader", 2, "onReceive, uinList:" + paramContext.toString() + " reqList:" + this.a.jdField_a_of_type_JavaUtilArrayList + ", headPathList = " + paramIntent.toString());
-      }
-      int i = 0;
-      while (i < j)
-      {
-        String str = (String)paramContext.get(i);
-        if (this.a.jdField_a_of_type_JavaUtilArrayList.contains(str)) {
-          this.a.jdField_a_of_type_JavaUtilArrayList.remove(str);
+        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.length());
+        if (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.isPopupShowing()) {
+          this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.dismissDropDown();
         }
-        this.a.jdField_b_of_type_AndroidSupportV4UtilLruCache.put(str, paramIntent.get(i));
-        i += 1;
+        if ((this.a.b != null) && (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length() > 0)) {
+          this.a.b.setVisibility(0);
+        }
+        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length());
+        if (!ajna.a(ajna.a)) {}
       }
-    } while (this.a.jdField_a_of_type_Int != 0);
-    this.a.a(false);
+    }
+    while (paramView != this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText)
+    {
+      return;
+      if ((LoginView.a(this.a).isActive(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView)) && (QLog.isColorLevel())) {
+        QLog.d("InputMethodRelativeLayout", 2, "isActive(mAutoTextAccount)");
+      }
+      this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setHint("");
+      return;
+      if ((this.a.b != null) && (this.a.b.isShown())) {
+        this.a.b.setVisibility(8);
+      }
+      paramView = new SpannableString(alud.a(2131707957));
+      paramView.setSpan(new AbsoluteSizeSpan(17, true), 0, paramView.length(), 33);
+      this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setHint(paramView);
+      return;
+    }
+    if (true == paramBoolean)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.getText().length());
+      this.a.c.setVisibility(0);
+      if (LoginView.a(this.a).isActive(this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText)) {
+        LoginView.a(this.a).showSoftInput(this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText, 2);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setHint("");
+      return;
+    }
+    this.a.c.setVisibility(8);
+    paramView = new SpannableString(alud.a(2131706749));
+    paramView.setSpan(new AbsoluteSizeSpan(17, true), 0, paramView.length(), 33);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setHint(paramView);
   }
 }
 

@@ -1,19 +1,30 @@
-import com.tencent.mobileqq.activity.SendMultiPictureHelper;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper.SendingFileInfo;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 
-public class trr
-  implements Runnable
+class trr
+  extends RecyclerView.ViewHolder
 {
-  public trr(SendMultiPictureHelper paramSendMultiPictureHelper, SendMultiPictureHelper.SendingFileInfo paramSendingFileInfo, int paramInt, String paramString1, String paramString2) {}
-  
-  public void run()
+  public trr(BaseWidgetView paramBaseWidgetView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySendMultiPictureHelper$SendingFileInfo.jdField_a_of_type_Long = SendMultiPictureHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivitySendMultiPictureHelper, this.jdField_a_of_type_ComTencentMobileqqActivitySendMultiPictureHelper$SendingFileInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+    super(paramBaseWidgetView);
+  }
+  
+  public void a(Object paramObject, int paramInt, ExtraTypeInfo paramExtraTypeInfo, trw paramtrw)
+  {
+    if ((this.itemView instanceof BaseWidgetView))
+    {
+      this.itemView.setTag(this);
+      ((BaseWidgetView)this.itemView).setInteractor(paramtrw);
+      ((BaseWidgetView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
+      ((BaseWidgetView)this.itemView).setData(paramObject, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trr
  * JD-Core Version:    0.7.0.1
  */

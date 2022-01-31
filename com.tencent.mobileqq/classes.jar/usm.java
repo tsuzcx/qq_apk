@@ -1,146 +1,92 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.aio.doodle.LineLayer;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCommentList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 public class usm
-  implements Runnable
+  extends uuc
 {
-  private int jdField_a_of_type_Int = -1;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  public final String a;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private int b = -1;
+  qqstory_service.RspGetCommentList jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList;
   
-  public usm(LineLayer paramLineLayer, int paramInt1, int paramInt2, Bitmap paramBitmap, utd paramutd)
+  public usm(usf paramusf) {}
+  
+  public usm(usf paramusf, qqstory_service.RspGetCommentList paramRspGetCommentList)
   {
-    this.jdField_a_of_type_JavaLangString = (AppConstants.bM + "temp" + File.separator);
-    QLog.d("SaveTempFileJob", 2, "SaveTempFileJob begin:");
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramutd);
-    if (paramBitmap == null) {
-      return;
-    }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-          continue;
-        }
-        this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-        paramLineLayer = new Paint();
-        paramLineLayer.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
-        new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap).drawBitmap(paramBitmap, 0.0F, 0.0F, paramLineLayer);
-      }
-      catch (Exception paramLineLayer)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("SaveTempFileJob", 2, "SaveTempFileJob exception:" + paramLineLayer);
-        continue;
-      }
-      catch (OutOfMemoryError paramLineLayer)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("SaveTempFileJob", 2, "SaveTempFileJob OOM:" + paramLineLayer.toString());
-        continue;
-      }
-      QLog.d("SaveTempFileJob", 2, "SaveTempFileJob end:");
-      return;
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() != paramBitmap.getHeight()) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() != paramBitmap.getWidth()))
-      {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-        this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-      }
-    }
+    super(paramRspGetCommentList.result);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList = paramRspGetCommentList;
   }
   
-  private String a(int paramInt, Bitmap paramBitmap)
+  public void a()
   {
-    if (paramBitmap == null) {}
-    do
+    boolean bool = false;
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.comment_list.get();
+    ArrayList localArrayList = new ArrayList();
+    usf.a(this.jdField_a_of_type_Usf, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.cookie.get().toStringUtf8());
+    uwm localuwm = (uwm)uwa.a(2);
+    int i = 0;
+    if (i < ((List)localObject).size())
     {
-      return null;
-      try
+      CommentEntry localCommentEntry = CommentEntry.convertFrom((qqstory_struct.StoryVideoCommentInfo)((List)localObject).get(i));
+      QQUserUIItem localQQUserUIItem = localuwm.c(localCommentEntry.authorUnionId);
+      if ((localQQUserUIItem == null) || (!localQQUserUIItem.isAvailable()))
       {
-        String str = this.jdField_a_of_type_JavaLangString + paramInt + ".tmp";
-        if (FileUtils.a(str)) {
-          FileUtils.d(str);
+        localCommentEntry.authorName = vls.b;
+        label114:
+        if (!TextUtils.isEmpty(localCommentEntry.replyUin))
+        {
+          localQQUserUIItem = localuwm.c(localCommentEntry.replierUnionId);
+          if ((localQQUserUIItem != null) && (localQQUserUIItem.isAvailable())) {
+            break label187;
+          }
         }
-        FileOutputStream localFileOutputStream = new FileOutputStream(str);
-        paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localFileOutputStream);
-        localFileOutputStream.flush();
-        localFileOutputStream.close();
-        return str;
       }
-      catch (Exception paramBitmap)
+      label187:
+      for (localCommentEntry.replierName = vls.b;; localCommentEntry.replierName = localQQUserUIItem.nickName)
       {
-        paramBitmap.printStackTrace();
+        localArrayList.add(localCommentEntry);
+        i += 1;
+        break;
+        localCommentEntry.authorName = localQQUserUIItem.nickName;
+        break label114;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("SaveTempFileJob", 2, "saveFileCache exception:" + paramBitmap);
-    return null;
+    }
+    localObject = this.jdField_a_of_type_Usf;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.is_end.get() == 1) {
+      bool = true;
+    }
+    ((usf)localObject).jdField_a_of_type_Boolean = bool;
+    this.jdField_a_of_type_Usf.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.total_comment_num.get();
+    this.jdField_a_of_type_Usf.jdField_a_of_type_Ust.a(localArrayList);
   }
   
-  private void a()
+  public void a(int paramInt, Bundle paramBundle)
   {
-    try
-    {
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
-      if (!localFile.exists()) {
-        localFile.mkdirs();
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("SaveTempFileJobdownloading", 2, "makedir execption: " + localException);
+    this.jdField_a_of_type_Usf.jdField_a_of_type_Ust.d();
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory:FeedCommentDataProvider", 2, new Object[] { "ReqGetCommentList NetWork ErrorCode:", Integer.valueOf(paramInt) });
     }
   }
   
-  private void a(String paramString)
+  public void a(int paramInt, String paramString)
   {
-    new Handler(Looper.getMainLooper()).post(new usn(this, paramString));
-  }
-  
-  public void run()
-  {
-    if (LineLayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer) == null) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
-      {
-        a(null);
-        return;
-      }
-      a();
-      a(a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsBitmap));
-    } while (this.jdField_a_of_type_AndroidGraphicsBitmap == null);
-    this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_a_of_type_Usf.jdField_a_of_type_Ust.d();
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory:FeedCommentDataProvider", 2, "ReqGetCommentList fails: " + paramInt + "|" + paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     usm
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public final class q
   extends SQLiteOpenHelper
 {
   private static String a = "bugly_db";
-  private static int b = 14;
+  private static int b = 15;
   private Context c;
   private List<a> d;
   

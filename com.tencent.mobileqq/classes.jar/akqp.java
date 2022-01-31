@@ -1,81 +1,65 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.webprocess.WebProcessReceiver;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
-import com.tencent.mobileqq.webview.swift.scheduler.SwiftBrowserStateMachineScheduler.StateMachine;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.apollo.GLTextureView;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class akqp
-  implements SwiftBrowserStateMachineScheduler.StateMachine
+  extends akqo
 {
-  public akqp(SwiftWebAccelerator paramSwiftWebAccelerator) {}
+  protected int a;
+  protected int b;
+  private int[] jdField_b_of_type_ArrayOfInt = new int[1];
+  protected int c;
+  protected int d;
+  protected int e;
+  protected int f;
   
-  public int a(Bundle paramBundle)
+  public akqp(GLTextureView paramGLTextureView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      QLog.i("WebLog_SwiftWebAccelerator", 1, "mScheduler.next:is in real world, stop the preload task.");
+    super(paramGLTextureView, new int[] { 12324, paramInt1, 12323, paramInt2, 12322, paramInt3, 12321, paramInt4, 12325, paramInt5, 12326, paramInt6, 12344 });
+    this.a = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.e = paramInt5;
+    this.f = paramInt6;
+  }
+  
+  private int a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt1, int paramInt2)
+  {
+    if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt1, this.jdField_b_of_type_ArrayOfInt)) {
+      paramInt2 = this.jdField_b_of_type_ArrayOfInt[0];
     }
-    do
+    return paramInt2;
+  }
+  
+  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig)
+  {
+    int j = paramArrayOfEGLConfig.length;
+    int i = 0;
+    while (i < j)
     {
-      do
+      EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
+      int k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12325, 0);
+      int m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12326, 0);
+      if ((k >= this.e) && (m >= this.f))
       {
-        return -1;
-        if ((this.a.b & 0x2) != 0)
-        {
-          if ((this.a.jdField_a_of_type_Int & 0x400) == 0) {
-            this.a.b(paramBundle);
-          }
-          if ((this.a.jdField_a_of_type_Int & 0x800) == 0) {
-            this.a.c(paramBundle);
-          }
-          if ((this.a.jdField_a_of_type_Int & 0x1000) == 0) {
-            this.a.d(paramBundle);
-          }
-          if ((this.a.jdField_a_of_type_Int & 0x1) == 0) {
-            return this.a.a(paramBundle);
-          }
-        }
-      } while ((this.a.b & 0x1) == 0);
-      if ((this.a.jdField_a_of_type_Int & 0x2) == 0) {
-        return this.a.b(paramBundle);
-      }
-      if (!SwiftBrowserStatistics.o)
-      {
-        SwiftBrowserStatistics.o = true;
-        if ((WebProcessReceiver.a > 0L) && (WebProcessReceiver.b > 0L))
-        {
-          SwiftBrowserStatistics.z = WebProcessReceiver.b - WebProcessReceiver.a;
-          SwiftBrowserStatistics.A = System.currentTimeMillis() - WebProcessReceiver.b;
-          int i = (int)SwiftBrowserStatistics.z;
-          int j = (int)SwiftBrowserStatistics.A;
-          QLog.i("WebLog_SwiftWebAccelerator", 2, "cross process cost: " + i + "ms, preload cost: " + j + "ms.");
-          VasWebviewUtil.reportVasStatus("Preload_Web_Process", "", "", i, j);
+        k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12324, 0);
+        m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323, 0);
+        int n = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322, 0);
+        int i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321, 0);
+        if ((k == this.a) && (m == this.jdField_b_of_type_Int) && (n == this.c) && (i1 == this.d)) {
+          return localEGLConfig;
         }
       }
-      if ((this.a.jdField_a_of_type_Int & 0x4) == 0) {
-        return this.a.c(paramBundle);
-      }
-      if ((this.a.jdField_a_of_type_Int & 0x8) == 0) {
-        return this.a.e(paramBundle);
-      }
-      if ((paramBundle.getBoolean("_should_set_cookie_", false)) && ((this.a.jdField_a_of_type_Int & 0x10) == 0)) {
-        return this.a.d(paramBundle);
-      }
-    } while (SwiftBrowserStatistics.p);
-    SwiftBrowserStatistics.p = true;
-    if ((WebProcessReceiver.a > 0L) && (WebProcessReceiver.b > 0L))
-    {
-      SwiftBrowserStatistics.B = System.currentTimeMillis() - WebProcessReceiver.b;
-      QLog.i("WebLog_SwiftWebAccelerator", 2, "WebProcessReceiver.onReceive cost: " + SwiftBrowserStatistics.z + "ms, complete preload cost: " + SwiftBrowserStatistics.B + "ms.");
+      i += 1;
     }
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "well done, all preload task execute success!");
-    return -1;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akqp
  * JD-Core Version:    0.7.0.1
  */

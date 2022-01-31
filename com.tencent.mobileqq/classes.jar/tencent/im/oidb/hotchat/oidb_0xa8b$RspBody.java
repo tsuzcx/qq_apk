@@ -9,12 +9,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0xa8b$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_msg_error_info = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_poid = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_msg_favor_lists = PBField.initRepeatMessage(Common.WifiPOIInfo.class);
+  public final PBRepeatMessageField<Common.WifiPOIInfo> rpt_msg_favor_lists = PBField.initRepeatMessage(Common.WifiPOIInfo.class);
   public final PBUInt32Field uint32_next_num = PBField.initUInt32(0);
   
   static
@@ -26,7 +26,7 @@ public final class oidb_0xa8b$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.hotchat.oidb_0xa8b.RspBody
  * JD-Core Version:    0.7.0.1
  */

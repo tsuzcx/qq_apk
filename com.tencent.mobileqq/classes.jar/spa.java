@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelHandler;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONObject;
 
 public class spa
-  implements Runnable
+  implements View.OnClickListener
 {
-  public spa(FriendProfileCardActivity paramFriendProfileCardActivity, PersonalityLabelHandler paramPersonalityLabelHandler) {}
+  public spa(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataCard == null)) {
-      return;
-    }
-    PersonalityLabelHandler localPersonalityLabelHandler = this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelHandler;
-    PersonalityLabelHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, new JSONObject());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     spa
  * JD-Core Version:    0.7.0.1
  */

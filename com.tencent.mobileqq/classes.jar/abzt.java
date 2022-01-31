@@ -1,29 +1,21 @@
-import com.tencent.mobileqq.app.FavEmoRoamingHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
-import java.util.List;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import org.json.JSONObject;
 
 public class abzt
-  implements Runnable
+  extends abzv
 {
-  public abzt(FavroamingManager paramFavroamingManager, FavEmoRoamingHandler paramFavEmoRoamingHandler) {}
+  public abzt(TestAppFragment paramTestAppFragment) {}
   
-  public void run()
+  public void onSuccess(JSONObject paramJSONObject)
   {
-    List localList = ((FavroamingDBManager)this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager.a.getManager(148)).a("needDel");
-    if (localList.size() > 0) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFavEmoRoamingHandler.a(localList, true);
-    }
-    while (localList.size() != 0) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager.a();
+    super.onSuccess(paramJSONObject);
+    paramJSONObject.optString("openid", "");
+    this.a.a.a("getAppFriends", null, new abzu(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzt
  * JD-Core Version:    0.7.0.1
  */

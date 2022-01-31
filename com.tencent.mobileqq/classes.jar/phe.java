@@ -1,16 +1,16 @@
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.utils.RapidNetUtils;
-
-public class phe
-  implements Runnable
+class phe
+  extends alzr
 {
-  public phe(ImageManager paramImageManager) {}
+  phe(phd paramphd) {}
   
-  public void run() {}
+  public void b(boolean paramBoolean, String paramString)
+  {
+    this.a.f();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     phe
  * JD-Core Version:    0.7.0.1
  */

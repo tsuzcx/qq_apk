@@ -1,86 +1,78 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.dataline.mpfile.LiteMpFileMainActivity;
+import com.dataline.mpfile.MpFileConstant;
+import com.dataline.mpfile.MpFileDataReportCenter;
+import com.dataline.mpfile.MpFileDataReportCenter.MPFWorkType;
 import com.dataline.mpfile.MpfileDataCenter;
-import com.dataline.mpfile.MpfileTaskInfo;
+import com.dataline.mpfile.MpfileDataReportInfo;
+import com.dataline.util.DBNetworkUtil;
 import com.dataline.util.DatalineMathUtil;
-import com.dataline.util.HttpDownload;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class dt
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public dt(MpfileDataCenter paramMpfileDataCenter, String paramString) {}
+  public dt(LiteMpFileMainActivity paramLiteMpFileMainActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    String str = this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.a(this.jdField_a_of_type_JavaLangString);
-    MpfileTaskInfo localMpfileTaskInfo = this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.a(this.jdField_a_of_type_JavaLangString);
-    if (str == null)
-    {
-      MpfileDataCenter.a("loadFileMd5FromServerBackground failed, content is null");
-      this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.a(localMpfileTaskInfo.jdField_d_of_type_Long, 0L, false, 251);
-    }
-    int i;
+    if (paramIntent == null) {}
     long l;
-    File localFile;
-    for (;;)
+    do
     {
-      return;
-      try
+      do
       {
-        localObject = new JSONObject(str);
-        i = 0;
-        if (((JSONObject)localObject).has("result")) {
-          i = ((JSONObject)localObject).getInt("result");
-        }
-        if (i != 0) {
-          break label352;
-        }
-        str = ((JSONObject)localObject).getString("md5");
-        l = localMpfileTaskInfo.jdField_b_of_type_Long;
-        if (((JSONObject)localObject).has("size")) {
-          l = ((JSONObject)localObject).getLong("size");
-        }
-        if (localMpfileTaskInfo != null)
-        {
-          if ((str == null) || (str.length() <= 0)) {
-            break label321;
-          }
-          localObject = localMpfileTaskInfo.jdField_e_of_type_JavaLangString;
-          localFile = new File((String)localObject);
-          if (!localFile.exists()) {
-            break label233;
-          }
-          if (str.equalsIgnoreCase(DatalineMathUtil.a(DatalineMathUtil.a((String)localObject))))
-          {
-            this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.a(localMpfileTaskInfo.jdField_d_of_type_Long, localMpfileTaskInfo.jdField_b_of_type_Long, true, 0);
-            return;
-          }
-        }
-      }
-      catch (JSONException localJSONException)
+        return;
+        paramContext = paramIntent.getAction();
+      } while ((paramContext == null) || (!paramContext.equals(MpFileConstant.d)));
+      paramContext = paramIntent.getExtras();
+      l = paramIntent.getLongExtra(MpFileConstant.f, 0L);
+    } while (LiteMpFileMainActivity.a(this.a) != l);
+    int i = paramContext.getInt(MpFileConstant.e);
+    if (i == 0)
+    {
+      paramIntent = DatalineMathUtil.a(paramContext.getLong("ip"));
+      i = paramContext.getInt("port");
+      int j = paramContext.getInt("result");
+      paramContext = new MpfileDataReportInfo();
+      paramContext.jdField_b_of_type_Int = j;
+      paramContext.jdField_a_of_type_Int = MpFileDataReportCenter.MPFWorkType.connection.ordinal();
+      paramContext.jdField_b_of_type_JavaLangString = DBNetworkUtil.a();
+      if (j == 0)
       {
-        localJSONException.printStackTrace();
-        this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.a(localMpfileTaskInfo.jdField_d_of_type_Long, 0L, false, 251);
+        MpfileDataCenter.k = paramIntent;
+        MpfileDataCenter.E = i;
+        paramContext.jdField_a_of_type_JavaLangString = paramIntent;
+        paramContext.d = i;
+        paramContext = String.format(LiteMpFileMainActivity.a(this.a), new Object[] { MpfileDataCenter.k, Integer.valueOf(MpfileDataCenter.E), Integer.valueOf(LiteMpFileMainActivity.a(this.a)), Integer.valueOf(LiteMpFileMainActivity.b(this.a)) });
+        LiteMpFileMainActivity.a(this.a, paramContext);
         return;
       }
+      if (j == 2)
+      {
+        paramContext.jdField_b_of_type_Int = MpfileDataCenter.x;
+        MpFileDataReportCenter.a(this.a.b, paramContext);
+        this.a.a(7);
+        return;
+      }
+      if (j == 3)
+      {
+        this.a.a(MpfileDataCenter.w);
+        return;
+      }
+      paramContext.jdField_b_of_type_Int = MpfileDataCenter.y;
+      MpFileDataReportCenter.a(this.a.b, paramContext);
+      this.a.a(MpfileDataCenter.r);
+      return;
     }
-    localFile.delete();
-    label233:
-    Object localObject = String.format("%s/%s.%s", new Object[] { MpfileDataCenter.b(), localMpfileTaskInfo.jdField_d_of_type_JavaLangString, localJSONException });
-    localMpfileTaskInfo.jdField_g_of_type_JavaLangString = localJSONException;
-    localMpfileTaskInfo.f = ((String)localObject);
-    localMpfileTaskInfo.jdField_b_of_type_Long = l;
-    this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.a.a(localMpfileTaskInfo.jdField_d_of_type_Long, localMpfileTaskInfo.c, localMpfileTaskInfo.jdField_b_of_type_JavaLangString, (String)localObject, localMpfileTaskInfo.jdField_b_of_type_Long, this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter);
-    return;
-    label321:
-    MpfileDataCenter.a("loadFileMd5FromServerBackground failed, task not exist or md5 is empty");
-    localMpfileTaskInfo.jdField_g_of_type_Int = MpfileTaskInfo.jdField_e_of_type_Int;
-    this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.a(localMpfileTaskInfo.jdField_d_of_type_Long, 0L, false, 249);
-    return;
-    label352:
-    MpfileDataCenter.a(String.format("loadFileMd5FromServerBackground failed, result is not ok result is %d", new Object[] { Integer.valueOf(i) }));
-    this.jdField_a_of_type_ComDatalineMpfileMpfileDataCenter.a(localMpfileTaskInfo.jdField_d_of_type_Long, 0L, false, i);
+    paramContext = new MpfileDataReportInfo();
+    paramContext.jdField_b_of_type_Int = i;
+    paramContext.jdField_b_of_type_JavaLangString = DBNetworkUtil.a();
+    paramContext.jdField_a_of_type_Int = MpFileDataReportCenter.MPFWorkType.connection.ordinal();
+    MpFileDataReportCenter.a(this.a.b, paramContext);
+    this.a.a(i);
   }
 }
 

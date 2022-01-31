@@ -1,0 +1,136 @@
+{
+    "view_type": "UIView",
+    "view_id": "id_fg_button",
+    "event_type": "cmd_url_click_no_card_report",
+    "layout_type": "layout_relative",
+    "margin_left": "9",
+    "height": {
+        "type": "relative",
+        "value": "44"
+    },
+    "width": {
+        "type": "relative",
+        "value": "331"
+    },
+    "attributes": {
+        "setBackgroundColorString:": "#F7F7F7",
+        "setAttatchInfo:":"-1"
+    },
+    "subviews": [
+        {
+            "view_type": "UIView",
+            "view_id": "id_fg_icon_view",
+            "default_visible":"YES",
+            "align_parent_center_vertical": "YES",
+            "layout_type": "layout_relative",
+            "height": {
+                "type": "relative",
+                "value": "21"
+            },
+            "width": {
+                "type": "wrap_content"
+            },
+            "attributes": {
+                "setFrameString:": "-1",
+                "setCornerRadiusString:": "2",
+                "setBackgroundColorString:": "#FF4222"
+            },
+            "subviews": [
+                {
+                    "view_type": "UILabel",
+                    "view_id": "id_fg_icon_title",
+                    "default_visible":"YES",
+                    "margin_left": "6",
+                    "padding_right": "6",
+                    "height": {
+                        "type": "relative",
+                        "value": "21"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "attributes": {
+                        "setFrameString:": "-1",
+                        "setText:": "-1",
+                        "setTextColorString:": "#FFFFFF",
+                        "setFontSizeString:": "12",
+                        "setNumberOfLinesString:": "1"
+                    }
+                }
+            ]
+        },
+        {
+            "view_type": "UIButton",
+            "view_id": "id_fg_enter_img",
+            "default_visible":"YES",
+            "align_parent_right": "YES",
+            "margin_right": "0",
+            "align_parent_center_vertical": "YES",
+            "height": {
+                "type": "relative",
+                "value": "18"
+            },
+            "width": {
+                "type": "relative",
+                "value": "18"
+            },
+            "attributes": {
+                "setFrameString:": "-1",
+                "setImages:forStates:": [
+                    [
+                        "rij_collection_arrow"
+                    ],
+                    [
+                        "0"
+                    ]
+                ]
+            }
+        },
+        {
+            "view_type": "UILabel",
+            "view_id": "id_fg_enter_title",
+            "default_visible":"YES",
+            "left_of_view": "id_fg_enter_img",
+            "margin_left": "12",
+            "margin_right": "0",
+            "align_parent_center_vertical": "YES",
+            "height": {
+                "type": "relative",
+                "value": "18"
+            },
+            "width": {
+                "type": "wrap_content"
+            },
+            "attributes": {
+                "setFrameString:": "-1",
+                "setText:": "更多",
+                "setTextColorString:": "#737373",
+                "setFontSizeString:": "14",
+                "setNumberOfLinesString:": "1"
+            }
+        },
+        {
+            "view_type": "UILabel",
+            "view_id": "id_fg_title",
+            "default_visible":"YES",
+            "right_of_view": "id_fg_icon_view",
+            "left_of_view": "id_fg_enter_title",
+            "margin_left": "6",
+            "align_parent_center_vertical": "YES",
+            "height": {
+                "type": "relative",
+                "value": "18"
+            },
+            "width": {
+                "type": "wrap_content"
+            },
+            "attributes": {
+                "setFrameString:": "-1",
+                "setText:": "-1",
+                "setTextColorString:": "#000000",
+                "setFontSizeString:": "14",
+                "setNumberOfLinesString:": "1"
+            }
+        }
+    ]
+}

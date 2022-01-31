@@ -1,41 +1,43 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.reactive.SimpleObserver;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.VideoDrawable;
+import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import com.tencent.qphone.base.util.QLog;
 
 public class anur
-  extends SimpleObserver
+  implements VideoDrawable.OnPlayRepeatListener
 {
-  public anur(EditVideoPlayer paramEditVideoPlayer) {}
+  public anur(DynamicAvatarView paramDynamicAvatarView) {}
   
-  public void a(Bitmap paramBitmap)
+  public void onPlayRepeat(int paramInt)
   {
-    super.onNext(paramBitmap);
-    if (paramBitmap != null)
-    {
-      if (this.a.b)
-      {
-        this.a.a.setImageBitmap(paramBitmap);
-        SLog.b("Q.qqstory.record.EditVideoPlayer", "blur current frame success");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.dynamicAvatar", 2, "onPlayRepeat: " + paramInt);
     }
-    else {
+    if ((this.a.b) || (paramInt < 1)) {}
+    while (this.a.a == null) {
       return;
     }
-    SLog.d("Q.qqstory.record.EditVideoPlayer", "finish blur current frame but play-cover-view is not visible");
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    SLog.d("Q.qqstory.record.EditVideoPlayer", "blur the current frame error : " + paramError);
+    Object localObject = this.a.a.jdField_a_of_type_ComTencentImageURLDrawable;
+    if ((localObject instanceof URLDrawable))
+    {
+      localObject = ((URLDrawable)localObject).getCurrDrawable();
+      if ((localObject instanceof VideoDrawable))
+      {
+        ((VideoDrawable)localObject).removeOnPlayRepeatListener(this);
+        this.a.a.jdField_a_of_type_Anug.a(this.a.a, true);
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.dynamicAvatar", 2, "removeOnPlayRepeatListener.03");
+        }
+      }
+    }
+    this.a.a.jdField_a_of_type_ComTencentImageURLDrawable = null;
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anur
  * JD-Core Version:    0.7.0.1
  */

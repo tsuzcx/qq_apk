@@ -1,43 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.troop.utils.TroopBindPubAccountProtocol.FollowPublicAccountObserver;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StReply;
+import feedcloud.FeedCloudMeta.StUser;
 
 public class ucz
-  extends TroopBindPubAccountProtocol.FollowPublicAccountObserver
+  implements ucd
 {
-  public ucz(TroopRequestActivity paramTroopRequestActivity) {}
+  public ucz(QCircleFeedCommentWidget paramQCircleFeedCommentWidget, FeedCloudMeta.StReply paramStReply) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
-    if ((paramBoolean) && (paramBundle != null)) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("structMsg");
-        new structmsg.StructMsg().mergeFrom(paramBundle);
-        TroopRequestActivity.a(this.a, 1);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.systemmsg.TroopRequestActivity", 2, "structMsg merge error");
-        }
-        this.a.i();
-        QQToast.a(this.a, this.a.getString(2131430303), 0).b(this.a.getTitleBarHeight());
-        return;
-      }
-    }
-    this.a.i();
-    QQToast.a(this.a, this.a.getString(2131430303), 0).b(this.a.getTitleBarHeight());
+    tzs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.postUser.id.get(), QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a, QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget), 44);
+    tqs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.postUser.id.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ucz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,48 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.Window;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.content.Context;
 
-public final class yll
-  implements Runnable
+public class yll
 {
-  public yll(View paramView, int paramInt) {}
-  
-  public void run()
+  public static void a(Context paramContext, int paramInt, yls paramyls)
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_AndroidViewView.getContext();
-    if (this.jdField_a_of_type_Int == 1) {
-      localActivity.getWindow().addFlags(128);
+    bhuf localbhuf = bhuf.a(paramContext);
+    localbhuf.a(String.format(paramContext.getString(2131720504), new Object[] { Integer.valueOf(paramInt) }));
+    localbhuf.b(2131720503);
+    localbhuf.c(2131690648);
+    localbhuf.a(new ylp(paramyls, localbhuf));
+    localbhuf.a(new ylq(paramyls, localbhuf));
+    if (!localbhuf.isShowing()) {
+      localbhuf.show();
     }
-    for (;;)
-    {
-      QLog.e("ApolloRender", 2, "SetKeepScreenOn :" + this.jdField_a_of_type_Int);
-      return;
-      localActivity.getWindow().clearFlags(128);
+  }
+  
+  public static void a(Context paramContext, CertifiedAccountMeta.StFeed paramStFeed, yls paramyls, ylr paramylr)
+  {
+    a(paramContext, null, paramStFeed, paramyls, paramylr);
+  }
+  
+  private static void a(Context paramContext, CertifiedAccountMeta.StUser paramStUser, CertifiedAccountMeta.StFeed paramStFeed, yls paramyls, ylr paramylr)
+  {
+    bhuf localbhuf = bhuf.a(paramContext);
+    localbhuf.a(paramContext.getString(2131720505));
+    localbhuf.a(2131720506, 3);
+    localbhuf.c(2131690648);
+    localbhuf.a(new ylm(localbhuf, paramylr));
+    localbhuf.a(new yln(paramStUser, paramStFeed, paramyls, paramylr, localbhuf));
+    if (!localbhuf.isShowing()) {
+      localbhuf.show();
     }
+  }
+  
+  public static void a(Context paramContext, CertifiedAccountMeta.StUser paramStUser, yls paramyls, ylr paramylr)
+  {
+    a(paramContext, paramStUser, null, paramyls, paramylr);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yll
  * JD-Core Version:    0.7.0.1
  */

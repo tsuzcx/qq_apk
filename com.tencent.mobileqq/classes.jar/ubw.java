@@ -1,31 +1,23 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasH5PayUtil;
+import com.tencent.biz.qqcircle.requests.QCircleGetTabListRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
 
-public class ubw
-  implements View.OnClickListener
+class ubw
+  implements zac<FeedCloudRead.StGetBusiInfoRsp>
 {
-  public ubw(TroopMemberListActivity paramTroopMemberListActivity) {}
+  ubw(ubv paramubv, QCircleGetTabListRequest paramQCircleGetTabListRequest) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetBusiInfoRsp paramStGetBusiInfoRsp)
   {
-    paramView = new Bundle();
-    paramView.putString(VasH5PayUtil.e, "超级会员");
-    paramView.putString(VasH5PayUtil.f, "CJCLUBT");
-    paramView.putString(VasH5PayUtil.d, "1450000516");
-    paramView.putInt(VasH5PayUtil.b, 3);
-    paramView.putString(VasH5PayUtil.i, "http://imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=" + "mvip.pt.vipsite.tqtips_chengyuan");
-    paramView.putString(VasH5PayUtil.g, "svip");
-    paramView.putString(VasH5PayUtil.a, this.a.app.getCurrentAccountUin());
-    VasH5PayUtil.a(this.a.app, this.a, paramView);
+    boolean bool = VSNetworkHelper.a(paramString);
+    QLog.d("QCircleTabViewModel", 1, "requestTabData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetTabListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isCache:" + bool);
+    this.jdField_a_of_type_Ubv.a(paramBoolean, paramLong, paramString, paramStGetBusiInfoRsp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ubw
  * JD-Core Version:    0.7.0.1
  */

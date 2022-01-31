@@ -1,21 +1,26 @@
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.mobileqq.leba.header.LebaGridShowManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
 
 public class aeal
-  implements Runnable
+  implements bhuk
 {
-  public aeal(LebaWithFeeds paramLebaWithFeeds) {}
+  public aeal(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment, bhuf parambhuf) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    List localList = LebaGridShowManager.a().a(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba_with_feeds", 2, "loadLebaFromDB :" + localList.size());
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment, true);
+      this.jdField_a_of_type_Bhuf.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.f());
+      return;
     }
-    this.a.jdField_a_of_type_MqqOsMqqHandler.post(new aeam(this, localList));
+    this.jdField_a_of_type_Bhuf.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.getActivity().finish();
   }
 }
 

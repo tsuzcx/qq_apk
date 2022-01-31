@@ -1,25 +1,36 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.eqq.EnterpriseDetailActivity;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.EqqDetail;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.AbsoluteLayout.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.webviewplugin.Ad;
 
 public class boi
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public boi(EnterpriseDetailActivity paramEnterpriseDetailActivity) {}
+  public boi(Ad paramAd) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramView = new Intent(this.a, ChatHistory.class);
-    paramView.putExtra("uin", this.a.b);
-    int i = 0;
-    if (this.a.a.followType != 1) {
-      i = 1024;
+    this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838315);
+      paramAnimation = (AbsoluteLayout.LayoutParams)this.a.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      paramAnimation.y = (this.a.b.getHeight() - this.a.e);
+      this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
+      paramAnimation.height = this.a.f;
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
     }
-    paramView.putExtra("uintype", i);
-    this.a.startActivity(paramView);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
 }
 

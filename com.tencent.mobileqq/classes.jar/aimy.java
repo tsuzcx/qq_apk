@@ -1,13 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class aimy
-  implements DialogInterface.OnClickListener
 {
-  public aimy(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public ImageView a;
+  public TextView a;
+  public bdjc a;
 }
 
 

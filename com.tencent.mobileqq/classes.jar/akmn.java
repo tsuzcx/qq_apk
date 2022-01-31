@@ -1,37 +1,27 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.sonic.SonicJsPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sonic.sdk.SonicDiffDataCallback;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.SimpleTextView;
 
-public class akmn
-  implements SonicDiffDataCallback
+class akmn
+  extends bibk
 {
-  public akmn(SonicJsPlugin paramSonicJsPlugin, boolean paramBoolean, CustomWebView paramCustomWebView, String paramString) {}
-  
-  public void callback(String paramString)
+  akmn(akmm paramakmm, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    str = "";
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if (!this.jdField_a_of_type_Boolean) {
-        paramString.remove("result");
-      }
-      paramString = paramString.toString();
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public View a(int paramInt, Object paramObject, bibj parambibj, View.OnClickListener paramOnClickListener)
+  {
+    parambibj = super.a(paramInt, paramObject, parambibj, paramOnClickListener);
+    if ((parambibj instanceof SimpleTextView)) {
+      parambibj.setTag(-10, paramObject);
     }
-    catch (Throwable paramString)
-    {
-      for (;;)
-      {
-        QLog.e("SonicSdkImpl_SonicJsPlugin", 1, "reloadHttpData error!", paramString);
-        paramString = str;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SonicSdkImpl_SonicJsPlugin", 2, "reloadHttpData , notify data: " + paramString);
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.a(this.jdField_a_of_type_JavaLangString, new String[] { paramString });
+    return parambibj;
+  }
+  
+  public void a(int paramInt, Object paramObject, bibj[] paramArrayOfbibj)
+  {
+    this.a.a(paramInt, paramArrayOfbibj);
   }
 }
 

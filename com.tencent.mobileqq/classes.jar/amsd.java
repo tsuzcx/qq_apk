@@ -1,46 +1,52 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.msf.service.protocol.security.CustomSigContent;
-import com.tencent.msf.service.protocol.security.RespondCustomSig;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.observer.AccountObserver;
+import com.tencent.mobileqq.applets.data.AppletItem;
 
-public final class amsd
-  extends AccountObserver
+public class amsd
 {
-  public amsd(String paramString, BusinessObserver paramBusinessObserver) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
   
-  public void onChangeToken(boolean paramBoolean, HashMap paramHashMap)
+  public amsd a(int paramInt)
   {
-    if ((paramBoolean) && (paramHashMap != null))
-    {
-      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
-      if ((paramHashMap != null) && (paramHashMap.SigList != null)) {
-        break label30;
-      }
-    }
-    for (;;)
-    {
-      return;
-      label30:
-      int i = 0;
-      while (i < paramHashMap.SigList.size())
-      {
-        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
-        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
-        {
-          localObject = new String(((CustomSigContent)localObject).SigContent);
-          OpenID localOpenID = new OpenID();
-          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
-          localOpenID.openID = ((String)localObject);
-          if (this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver != null) {
-            this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver.onUpdate(1, true, localOpenID);
-          }
-        }
-        i += 1;
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public amsd a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public amsd a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public AppletItem a()
+  {
+    return new AppletItem(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, null);
+  }
+  
+  public void a(String paramString)
+  {
+    this.c = paramString;
+  }
+  
+  public amsd b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public amsd b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
   }
 }
 

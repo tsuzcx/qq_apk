@@ -1,53 +1,22 @@
-import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
-import com.tencent.mobileqq.activity.aio.doodle.MyParcel;
-import com.tencent.mobileqq.activity.aio.doodle.MyParcelable.Creator;
-import com.tencent.mobileqq.activity.aio.doodle.PathDrawer;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class usr
-  implements Runnable
+class usr
+  extends uss
 {
-  private uss jdField_a_of_type_Uss;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  usr(usq paramusq) {}
   
-  public usr(LoadDataJob paramLoadDataJob, byte[] paramArrayOfByte, uss paramuss)
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Uss = paramuss;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_Uss == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_ArrayOfByte == null)
-    {
-      this.jdField_a_of_type_Uss.a(null);
-      return;
-    }
-    try
-    {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob.a(this.jdField_a_of_type_ArrayOfByte);
-      if (localObject != null)
-      {
-        localObject = (PathDrawer)PathDrawer.a.a((MyParcel)localObject);
-        this.jdField_a_of_type_Uss.a((PathDrawer)localObject);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("UnmarshallJob", 2, "unmarshall  exception:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob.a);
-      }
-      this.jdField_a_of_type_Uss.a(null);
+    this.a.a.a.e();
+    if (paramBoolean) {
+      this.a.a.a.a(true, paramCommentEntry);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     usr
  * JD-Core Version:    0.7.0.1
  */

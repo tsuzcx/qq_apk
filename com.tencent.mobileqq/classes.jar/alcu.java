@@ -1,30 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.agent.datamodel.Friend;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public final class alcu
-  implements Parcelable.Creator
+final class alcu
+  implements EIPCResultCallback
 {
-  public Friend a(Parcel paramParcel)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    Friend localFriend = new Friend();
-    localFriend.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localFriend.b = paramParcel.readString();
-    localFriend.c = paramParcel.readString();
-    localFriend.d = paramParcel.readString();
-    localFriend.jdField_a_of_type_Int = paramParcel.readInt();
-    localFriend.e = paramParcel.readString();
-    return localFriend;
-  }
-  
-  public Friend[] a(int paramInt)
-  {
-    return new Friend[paramInt];
+    if (paramEIPCResult.code == 0) {
+      ApolloUtil.b("测试版本tips:预下载动作成功");
+    }
+    for (;;)
+    {
+      QLog.i("CmShow_RenderViewController", 1, "CmShow_ preLoadRes result.code:" + paramEIPCResult.code);
+      return;
+      ApolloUtil.b("测试版本tips:预下载动作失败 ret:" + paramEIPCResult.code);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alcu
  * JD-Core Version:    0.7.0.1
  */

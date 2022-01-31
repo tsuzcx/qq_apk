@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/grq" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/title" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" layout="@layout/is" />
+    <include android:id="@id/iir" android:focusable="false" android:layout_width="fill_parent" android:layout_height="60.0dip" layout="@layout/search_box" />
+    <RelativeLayout android:id="@id/grp" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:id="@id/lru" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="250.0dip">
+                <com.tencent.mobileqq.widget.QQMapView android:enabled="true" android:id="@id/emb" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ImageView android:id="@id/cw4" android:background="@drawable/dkp" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="20.0dip" android:layout_marginLeft="1.0dip" android:layout_marginBottom="1.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+                <ImageView android:id="@id/fwd" android:background="@drawable/dgj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/x0" android:scaleType="center" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+                <ImageView android:id="@id/dz5" android:background="@drawable/dgj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/wz" android:scaleType="center" android:layout_above="@id/fwd" android:layout_alignParentRight="true" />
+                <ImageView android:id="@id/fua" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+            </RelativeLayout>
+            <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/fw9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <RelativeLayout android:id="@id/fwf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/zm">
+                    <ImageView android:id="@id/fw3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dgn" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+                </RelativeLayout>
+                <ImageView android:id="@id/cki" android:background="@drawable/dkq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fwh" android:background="@drawable/skin_list_item_normal" android:layout_width="fill_parent" android:layout_height="52.0dip" />
+                <FrameLayout android:id="@id/fwb" android:layout_width="fill_parent" android:layout_height="@dimen/zj">
+                    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                        <TextView android:textColor="@color/skin_gray2" android:id="@id/fwc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cx_" />
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </RelativeLayout>
+    <include android:id="@id/ifk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="80.0dip" layout="@layout/b4n" />
+</LinearLayout>

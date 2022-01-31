@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
 final class c
-  implements Parcelable.Creator<DevlockInfo>
+  implements Parcelable.Creator
 {
   public DevlockInfo a(Parcel paramParcel)
   {

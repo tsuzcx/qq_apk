@@ -3,14 +3,14 @@ package com.tencent.biz.common.offline;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.biz.common.util.NetworkUtil;
+import ndk;
 
 public class BidDownloader$WifiListener
   extends BroadcastReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (NetworkUtil.a(paramContext) == 1) {
+    if (ndk.a(paramContext) == 1) {
       BidDownloader.a();
     }
   }

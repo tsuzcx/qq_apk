@@ -1,80 +1,250 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshRes;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
 public class lwx
-  extends DownloadListener
+  extends lwt
 {
-  public lwx(ReadInJoyRefreshManager paramReadInJoyRefreshManager, String paramString, RefreshData paramRefreshData) {}
+  public Canvas a;
+  public Paint a;
+  public lxb a;
+  public boolean a;
+  public lxt[] a;
+  public int b;
+  public Paint b;
+  public Rect b;
+  public lxt b;
+  public lxt[] b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public void onCancel(DownloadTask paramDownloadTask)
+  public lwx(lxb paramlxb)
   {
-    String str = paramDownloadTask.a().getString("refreshId");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyRefreshManager.jdField_a_of_type_JavaUtilHashMap.remove("refresh_" + str);
-    super.onCancel(paramDownloadTask);
+    this.jdField_b_of_type_ArrayOfLxt = new lxt[4];
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
+    Bitmap localBitmap = Bitmap.createBitmap(252, 148, Bitmap.Config.ARGB_8888);
+    this.jdField_a_of_type_Lxb = paramlxb;
+    this.jdField_a_of_type_Lxt = new lxt(localBitmap);
+    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(localBitmap);
+    a(-10.0F);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
   }
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void a(int paramInt1, int paramInt2)
   {
-    String str1 = paramDownloadTask.a().getString("refreshId");
-    if (paramDownloadTask.a == 0)
+    this.jdField_a_of_type_AndroidGraphicsCanvas.drawPaint(this.jdField_b_of_type_AndroidGraphicsPaint);
+    if (paramInt1 > 2)
     {
-      paramDownloadTask = new File(this.jdField_a_of_type_JavaLangString);
-      if (!paramDownloadTask.exists()) {}
+      this.jdField_b_of_type_AndroidGraphicsRect.set(0, 13, 37, 59);
+      if (this.jdField_a_of_type_ArrayOfLxt != null)
+      {
+        if (paramInt1 < 10) {
+          break label239;
+        }
+        if (this.jdField_a_of_type_ArrayOfLxt[(paramInt1 / 10)] != null) {
+          this.jdField_a_of_type_ArrayOfLxt[(paramInt1 / 10)].a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+        }
+        this.jdField_b_of_type_AndroidGraphicsRect.set(37, 13, 74, 59);
+        if (this.jdField_a_of_type_ArrayOfLxt[(paramInt1 % 10)] != null) {
+          this.jdField_a_of_type_ArrayOfLxt[(paramInt1 % 10)].a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+        }
+        this.jdField_b_of_type_AndroidGraphicsRect.set(74, 0, 229, 59);
+      }
     }
     for (;;)
     {
-      try
-      {
-        FileUtils.a(paramDownloadTask.getAbsolutePath(), RefreshRes.a(), false);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.isShown = true;
-        SharedPreUtils.v(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyRefreshManager.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getBaseContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyRefreshManager.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.toJson().toString());
+      if (this.jdField_b_of_type_Lxt != null) {
+        this.jdField_b_of_type_Lxt.a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
       }
-      catch (Exception localException)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ReadInJoyRefreshManager", 2, "downloadSkinRes uncompressZip failed: id = " + str1 + ", " + QLog.getStackTraceString(localException));
-        paramDownloadTask.delete();
-        continue;
+      this.jdField_b_of_type_AndroidGraphicsRect.set(0, 59, 252, 148);
+      paramInt1 = (paramInt2 - 80) / 10;
+      if ((paramInt1 >= 0) && (paramInt1 < this.jdField_b_of_type_ArrayOfLxt.length) && (this.jdField_b_of_type_ArrayOfLxt[paramInt1] != null)) {
+        this.jdField_b_of_type_ArrayOfLxt[paramInt1].a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
       }
-      finally
-      {
-        paramDownloadTask.delete();
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyRefreshManager.jdField_a_of_type_JavaUtilHashMap.remove("refresh_" + str1);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyRefreshManager", 2, "downloadSkinRes failed: id = " + str2);
+      label239:
+      if (this.jdField_a_of_type_ArrayOfLxt[paramInt1] != null) {
+        this.jdField_a_of_type_ArrayOfLxt[paramInt1].a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+      }
+      this.jdField_b_of_type_AndroidGraphicsRect.set(37, 0, 192, 59);
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    paramLong -= this.jdField_a_of_type_Long;
+    int k = 0;
+    int j = 0;
+    int i;
+    float f1;
+    if (this.jdField_a_of_type_Boolean) {
+      if ((paramLong > 0L) && (paramLong < 100L))
+      {
+        i = (int)(255L * paramLong / 100L);
+        if (paramLong > 200L) {
+          break label141;
+        }
+        f1 = 0.0055F * (float)paramLong + 0.0F;
+      }
+    }
+    for (;;)
+    {
+      a(i);
+      b(f1);
+      return;
+      if ((paramLong >= 100L) && (paramLong <= 1250L))
+      {
+        i = 255;
+        break;
+      }
+      i = j;
+      if (paramLong <= 1250L) {
+        break;
+      }
+      i = j;
+      if (paramLong >= 1350L) {
+        break;
+      }
+      i = (int)(255L * (paramLong - 1350L) / -100L);
+      break;
+      label141:
+      if ((paramLong > 200L) && (paramLong <= 300L))
+      {
+        f1 = -0.001F * (float)paramLong + 1.3F;
+      }
+      else if ((paramLong > 300L) && (paramLong <= 1150L))
+      {
+        f1 = 1.0F;
+      }
+      else if ((paramLong > 1150L) && (paramLong <= 1250L))
+      {
+        f1 = 0.001F * (float)paramLong - 0.15F;
+      }
+      else if ((paramLong > 1250L) && (paramLong <= 1350L))
+      {
+        f1 = -0.011F * (float)paramLong + 14.85F;
+      }
+      else
+      {
+        f1 = 0.0F;
+        continue;
+        if (paramLong < 100L) {
+          i = (int)(255L * paramLong / 100L);
+        }
+        for (;;)
+        {
+          if (paramLong > 200L) {
+            break label357;
+          }
+          f1 = 0.0055F * (float)paramLong + 0.0F;
+          break;
+          if ((paramLong >= 100L) && (paramLong <= 650L))
+          {
+            i = 255;
+          }
+          else
+          {
+            i = k;
+            if (paramLong > 650L)
+            {
+              i = k;
+              if (paramLong < 750L) {
+                i = (int)(255L * (paramLong - 750L) / -100L);
+              }
+            }
+          }
+        }
+        label357:
+        if ((paramLong > 200L) && (paramLong <= 300L)) {
+          f1 = -0.001F * (float)paramLong + 1.3F;
+        } else if ((paramLong > 300L) && (paramLong <= 550L)) {
+          f1 = 1.0F;
+        } else if ((paramLong > 550L) && (paramLong <= 650L)) {
+          f1 = 0.001F * (float)paramLong + 0.45F;
+        } else if ((paramLong > 650L) && (paramLong <= 750L)) {
+          f1 = -0.011F * (float)paramLong + 8.25F;
+        } else {
+          f1 = 0.0F;
+        }
       }
     }
   }
   
-  public void onProgress(DownloadTask paramDownloadTask)
+  public void a(AVRedPacketManager paramAVRedPacketManager, lxt[] paramArrayOflxt)
   {
-    super.onProgress(paramDownloadTask);
+    this.jdField_b_of_type_ArrayOfLxt[0] = new lxt(paramAVRedPacketManager.a("qav_redpacket_score_80.png"));
+    this.jdField_b_of_type_ArrayOfLxt[1] = new lxt(paramAVRedPacketManager.a("qav_redpacket_score_90.png"));
+    this.jdField_b_of_type_ArrayOfLxt[2] = new lxt(paramAVRedPacketManager.a("qav_redpacket_score_100.png"));
+    this.jdField_b_of_type_ArrayOfLxt[3] = new lxt(paramAVRedPacketManager.a("qav_redpacket_score_110.png"));
+    this.jdField_b_of_type_Lxt = new lxt(paramAVRedPacketManager.a("qav_redpacket_score_combo.png"));
+    this.jdField_a_of_type_ArrayOfLxt = paramArrayOflxt;
   }
   
-  public boolean onStart(DownloadTask paramDownloadTask)
+  public void a(boolean paramBoolean)
   {
-    return super.onStart(paramDownloadTask);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b()
+  {
+    super.b();
+    lxt[] arrayOflxt = this.jdField_b_of_type_ArrayOfLxt;
+    int j = arrayOflxt.length;
+    int i = 0;
+    while (i < j)
+    {
+      lxt locallxt = arrayOflxt[i];
+      if (locallxt != null) {
+        locallxt.a();
+      }
+      i += 1;
+    }
+    if (this.jdField_b_of_type_Lxt != null) {
+      this.jdField_b_of_type_Lxt.a();
+    }
+    this.jdField_a_of_type_ArrayOfLxt = null;
+    this.jdField_a_of_type_Lxb = null;
+    this.jdField_b_of_type_ArrayOfLxt = null;
+    this.jdField_b_of_type_Lxt = null;
+    this.jdField_a_of_type_AndroidGraphicsCanvas = null;
+    this.jdField_a_of_type_AndroidGraphicsPaint = null;
+    this.jdField_b_of_type_AndroidGraphicsPaint = null;
+    this.jdField_b_of_type_AndroidGraphicsRect = null;
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_b_of_type_Int = (paramInt1 * 104 / 750);
+    this.c = (paramInt1 * 123 / 750);
+    this.d = (paramInt1 * 252 / 750);
+    this.e = (paramInt1 * 148 / 750);
+    this.f = (paramInt1 * 10 / 750);
+  }
+  
+  public void c()
+  {
+    Rect localRect = this.jdField_a_of_type_Lxb.a();
+    int j = localRect.left - this.jdField_b_of_type_Int;
+    int i = j;
+    if (j < this.f) {
+      i = this.f;
+    }
+    j = localRect.top - this.c;
+    a(i, j, this.d + i, this.e + j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lwx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,16 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class agew
-  implements Handler.Callback
+class agew
+  extends aget
 {
-  public agew(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public agew(QQAppInterface paramQQAppInterface)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.g();
-    }
+    super(paramQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agew
  * JD-Core Version:    0.7.0.1
  */

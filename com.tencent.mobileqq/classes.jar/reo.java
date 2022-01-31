@@ -1,87 +1,35 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.Doraemon.AppInfo;
-import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import tencent.im.oidb.oidb_0xb60.GetPrivilegeRsp;
-import tencent.im.oidb.oidb_0xb60.RspBody;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
+import com.tencent.mobileqq.app.QQAppInterface;
+import org.json.JSONObject;
 
 class reo
-  extends ProtoUtils.TroopProtocolObserver
+  implements View.OnClickListener
 {
-  reo(ren paramren, rem paramrem) {}
+  reo(rem paramrem) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "onResult type=" + this.jdField_a_of_type_Rem.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo.jdField_a_of_type_Int + ", appid=" + this.jdField_a_of_type_Rem.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo.jdField_a_of_type_JavaLangString + ", code=" + paramInt);
-    }
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    rdm.a(rem.a(this.a), rem.a(this.a).a);
+    paramView = new JSONObject();
+    try
     {
-      ren.a(this.jdField_a_of_type_Ren, new ErrorMessage(paramInt, "DoraemonOpenAPI.permissionHelper.jobApiPermission|req error"));
-      if (QLog.isColorLevel()) {
-        QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "req error");
-      }
+      paramView.put("uin", rem.a(this.a).getCurrentAccountUin());
+      label45:
+      nrt.a(null, null, "0X8009BF2", "0X8009BF2", 0, 0, "", "", "", ntd.a(null, null, rem.a(this.a).a.a.a, rem.a(this.a).a.a.g, paramView), false);
+      return;
     }
-    do
+    catch (Exception localException)
     {
-      for (;;)
-      {
-        return;
-        paramBundle = new oidb_0xb60.RspBody();
-        try
-        {
-          paramBundle.mergeFrom(paramArrayOfByte);
-          if ((paramBundle.get_privilege_rsp.api_groups.has()) && (paramBundle.get_privilege_rsp.next_req_duration.has())) {
-            break label213;
-          }
-          ren.b(this.jdField_a_of_type_Ren, new ErrorMessage(-1, "DoraemonOpenAPI.permissionHelper.jobApiPermission|rsp invalid"));
-          if (QLog.isColorLevel())
-          {
-            QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "rsp invalid");
-            return;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          ren.c(this.jdField_a_of_type_Ren, new ErrorMessage(-1, "DoraemonOpenAPI.permissionHelper.jobApiPermission|parse rsp error"));
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "parse rsp error", paramArrayOfByte);
-    return;
-    label213:
-    if (QLog.isColorLevel()) {
-      QLog.d("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "receive api_groups:" + paramBundle.get_privilege_rsp.api_groups.get() + ", api_names:" + paramBundle.get_privilege_rsp.api_names.get());
+      break label45;
     }
-    paramArrayOfByte = DefaultDoraemonAppInfoHelper.a();
-    paramArrayOfByte.a(paramBundle.get_privilege_rsp.api_groups.get(), this.jdField_a_of_type_Rem.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo.jdField_a_of_type_JavaUtilSet);
-    if (paramBundle.get_privilege_rsp.api_names.size() > 0)
-    {
-      Iterator localIterator = paramBundle.get_privilege_rsp.api_names.get().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if (DefaultDoraemonAppInfoHelper.a(paramArrayOfByte, str)) {
-          this.jdField_a_of_type_Rem.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo.jdField_a_of_type_JavaUtilSet.add(str);
-        }
-      }
-    }
-    this.jdField_a_of_type_Rem.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() + paramBundle.get_privilege_rsp.next_req_duration.get() * 1000L);
-    ren.a(this.jdField_a_of_type_Ren, this.jdField_a_of_type_Rem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     reo
  * JD-Core Version:    0.7.0.1
  */

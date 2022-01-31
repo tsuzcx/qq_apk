@@ -7,7 +7,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import mqq.os.MqqHandler;
-import zhu;
 
 public class NearbyGrayTipsManager$GreetWording
   implements Serializable
@@ -16,7 +15,7 @@ public class NearbyGrayTipsManager$GreetWording
   public long createTime;
   public int id;
   public int lastIndex;
-  public List list;
+  public List<String> list;
   
   public NearbyGrayTipsManager$GreetWording()
   {
@@ -61,7 +60,7 @@ public class NearbyGrayTipsManager$GreetWording
     }
   }
   
-  public void saveWording(long paramLong, List paramList, boolean paramBoolean)
+  public void saveWording(long paramLong, List<String> paramList, boolean paramBoolean)
   {
     if ((paramList == null) || (paramList.size() == 0)) {}
     for (;;)
@@ -93,7 +92,7 @@ public class NearbyGrayTipsManager$GreetWording
         if ((!paramBoolean) || (localObject1 == null)) {
           continue;
         }
-        ThreadManager.getFileThreadHandler().post(new zhu(this, (GreetWording)localObject1));
+        ThreadManager.getFileThreadHandler().post(new NearbyGrayTipsManager.GreetWording.1(this, (GreetWording)localObject1));
         return;
       }
     }

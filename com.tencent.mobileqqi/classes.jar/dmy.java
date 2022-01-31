@@ -1,15 +1,22 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SearchTroopListActivity;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class dmy
   implements View.OnClickListener
 {
-  public dmy(SearchTroopListActivity paramSearchTroopListActivity) {}
+  public dmy(SubLoginActivity paramSubLoginActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.d();
+    if ((SubLoginActivity.a(this.a) != null) && (SubLoginActivity.a(this.a).isShown())) {
+      SubLoginActivity.a(this.a).setVisibility(8);
+    }
+    SubLoginActivity.a(this.a).setText("");
+    SubLoginActivity.a(this.a).setText("");
   }
 }
 

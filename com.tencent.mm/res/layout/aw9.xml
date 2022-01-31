@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/bkn" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.sns.ui.widget.SnsAdStreamVideoView android:layout_gravity="center" android:id="@id/xe" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <include layout="@layout/auz" />
+</FrameLayout>

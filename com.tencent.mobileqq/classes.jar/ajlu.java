@@ -1,19 +1,109 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ajlu
-  extends BroadcastReceiver
 {
-  public ajlu(TroopNoticeJsHandler paramTroopNoticeJsHandler) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static Object a(int paramInt, byte[] paramArrayOfByte)
   {
-    paramContext = paramIntent.getStringExtra("callback");
-    QLog.d("TroopReceiver", 4, paramContext);
-    this.a.e(paramContext);
+    Object localObject = null;
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
+      return null;
+    }
+    String str;
+    switch (paramInt)
+    {
+    case 15: 
+    case 18: 
+    case 19: 
+    case 25: 
+    case 28: 
+    default: 
+      str = null;
+    }
+    while (localObject != null)
+    {
+      ((ajlt)localObject).a(paramArrayOfByte);
+      return localObject;
+      localObject = new ajmn(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ajmf(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ajlz(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ajmh(BaseApplication.getContext(), false);
+      str = null;
+      continue;
+      localObject = new ajlw(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ajlv(BaseApplication.getContext());
+      str = null;
+      continue;
+      str = new String(paramArrayOfByte);
+      continue;
+      localObject = new bkds(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ajmk(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ajmd(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ajml(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ajmg(BaseApplication.getContext(), 1);
+      str = null;
+      continue;
+      localObject = new ajmg(BaseApplication.getContext(), 0);
+      str = null;
+      continue;
+      localObject = new ajly(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ajmi(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ajmh(BaseApplication.getContext(), false);
+      str = null;
+      continue;
+      localObject = new ajme(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ajmo(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ajmj(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ajmb(BaseApplication.getContext());
+      str = null;
+      continue;
+      localObject = new ajls(BaseApplication.getContext(), "");
+      str = null;
+      continue;
+      localObject = new ajmm(BaseApplication.getContext());
+      str = null;
+    }
+    return str;
+  }
+  
+  public static byte[] a(int paramInt, Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
+    {
+      return null;
+      switch (paramInt)
+      {
+      }
+    } while (!(paramObject instanceof ajlt));
+    return ((ajlt)paramObject).a();
+    return ((String)paramObject).getBytes();
+    return ((ajml)paramObject).a();
   }
 }
 

@@ -1,42 +1,100 @@
-import android.content.DialogInterface.OnClickListener;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class akzn
-  implements Runnable
+  implements SensorEventListener
 {
-  public akzn(MSFIntChkStrike paramMSFIntChkStrike, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, String paramString3, String paramString4, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void run()
+  public akzn(Context paramContext, long paramLong, int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramContext.getSystemService("sensor"));
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null)
+    {
+      QLog.e("ApolloRender", 1, "SensorManager is null");
+      akwd.a().callbackFromRequest(this.jdField_a_of_type_Long, 1, "cs.xy_device_gyro_sensor_start.local", "{}");
+      return;
+    }
+    Object localObject = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(4);
+    if (localObject == null)
+    {
+      QLog.e("ApolloRender", 1, "Sensor gyro is null");
+      akwd.a().callbackFromRequest(this.jdField_a_of_type_Long, 2, "cs.xy_device_gyro_sensor_start.local", "{}");
+      return;
+    }
+    boolean bool = this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, (Sensor)localObject, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Boolean = true;
+    localObject = akwd.a();
+    long l = this.jdField_a_of_type_Long;
+    if (bool) {}
+    for (int i = 0;; i = 5)
+    {
+      ((ApolloCmdChannel)localObject).callbackFromRequest(l, i, "cs.xy_device_gyro_sensor_start.local", "{}");
+      return;
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void b()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null)
+    {
+      QLog.e("ApolloRender", 1, "SensorManager is null");
+      return;
+    }
+    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this);
+    this.jdField_a_of_type_Boolean = false;
+    QLog.e("ApolloRender", 1, "Sensor unRegister");
+  }
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
     try
     {
-      QQCustomDialog localQQCustomDialog = DialogUtil.a(BaseActivity.sTopActivity, 230, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
-      if (localQQCustomDialog == null) {
-        return;
-      }
-      localQQCustomDialog.setNegativeButton(this.c, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
-      localQQCustomDialog.setPositiveButton(this.d, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-      localQQCustomDialog.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
-      localQQCustomDialog.setCancelable(false);
-      localQQCustomDialog.show();
+      paramSensorEvent = paramSensorEvent.values;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("gyroX", paramSensorEvent[0]);
+      localJSONObject.put("gyroY", paramSensorEvent[1]);
+      localJSONObject.put("gyroZ", paramSensorEvent[2]);
+      akwd.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.xy_device_gyro_sensor_scope_update.local", localJSONObject.toString());
+      return;
     }
-    catch (Exception localException)
+    catch (Throwable paramSensorEvent)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      QLog.e("ApolloRender", 1, paramSensorEvent, new Object[0]);
     }
-    MSFIntChkStrike.a(this.jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFIntChkStrike, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akzn
  * JD-Core Version:    0.7.0.1
  */

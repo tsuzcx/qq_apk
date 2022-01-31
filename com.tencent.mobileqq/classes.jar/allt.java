@@ -1,21 +1,27 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qidian.QidianManager;
-import com.tencent.qidian.data.BmqqAccountType;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2;
+import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2.1.1;
 
 public class allt
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public allt(QidianManager paramQidianManager, String paramString) {}
+  public allt(ApolloGameViewBinder.GameListAdapter.2 param2) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentQidianQidianManager.b(this.jdField_a_of_type_ComTencentQidianQidianManager.a.getApp().getBaseContext(), new BmqqAccountType(this.jdField_a_of_type_JavaLangString, 1));
+    this.a.a.setVisibility(8);
+    this.a.a.postDelayed(new ApolloGameViewBinder.GameListAdapter.2.1.1(this), 300L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     allt
  * JD-Core Version:    0.7.0.1
  */

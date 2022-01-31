@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.app.PhoneUnityBannerData;
-import com.tencent.mobileqq.app.PhoneUnityManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SecSvcHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Drawable;
+import java.net.URL;
 
-public class zjk
-  implements Runnable
+public abstract class zjk
+  extends zjd
 {
-  public zjk(PhoneUnityManager paramPhoneUnityManager) {}
-  
-  public void run()
+  public Drawable a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("MobileUnityManager", 4, "load phone local data");
-    }
-    PhoneUnityBannerData localPhoneUnityBannerData = this.a.a();
-    ((SecSvcHandler)this.a.a.a(34)).a(9, true, localPhoneUnityBannerData);
+    return null;
   }
+  
+  public abstract URL a();
+  
+  public abstract Drawable b();
 }
 
 

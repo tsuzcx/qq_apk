@@ -1,58 +1,51 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.cmd0x985.oidb_0x985.GetReadListRsp;
-import tencent.im.oidb.cmd0x985.oidb_0x985.RspBody;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.util.WeakReference;
 
-public class ahee
-  extends ahfj
+class ahee
+  extends ameq
 {
-  public ahee(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
-  {
-    super(paramReceiptMessageDetailFragment);
-  }
+  ahee(ahec paramahec) {}
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    ahec.a(this.a).removeMessages(1);
+    if ((this.a.jdField_a_of_type_Bety == null) || (!this.a.jdField_a_of_type_Bety.isShowing()))
     {
-      QLog.d("ReceiptMessageDetailFragment", 1, "mDiscussionFetchReadStatusCallback request error on code: " + paramInt);
+      QLog.e("SeparateForward", 1, new Object[] { "onBatchTroopCardDefaultNick timeout, isSuccess:", Boolean.valueOf(paramBoolean) });
       return;
     }
-    try
+    if (this.a.jdField_a_of_type_Bety != null) {
+      this.a.jdField_a_of_type_Bety.dismiss();
+    }
+    aupg.a().b.clear();
+    if ((paramBoolean) && (paramObject != null))
     {
-      paramBundle = new oidb_0x985.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramInt = paramBundle.uint32_code.get();
-      if (paramInt == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ReceiptMessageDetailFragment", 2, "mDiscussionFetchReadStatusCallback succ");
-        }
-        paramBundle = (oidb_0x985.GetReadListRsp)paramBundle.msg_get_read_list_rsp.get();
-        paramArrayOfByte = paramBundle.rpt_msg_read_list.get();
-        paramBundle = paramBundle.rpt_msg_unread_list.get();
-        ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a;
-        paramInt = paramArrayOfByte.size();
-        int i = paramArrayOfByte.size();
-        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, paramInt, paramBundle.size() + i, true);
-        paramInt = paramArrayOfByte.size();
-        ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, true);
-        return;
+      aupg.a().b.putAll((Map)paramObject);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MultiMsg_TAG", 4, "onBatchTroopCardDefaultNick = " + paramObject);
       }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    for (;;)
     {
-      QLog.d("ReceiptMessageDetailFragment", 2, "fetch read member fail on invalid data");
+      if (aupg.a().b.size() != 0) {
+        break label201;
+      }
+      paramObject = (BaseActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
+      if (paramObject == null) {
+        break;
+      }
+      QQToast.a(paramObject, 2131698785, 0).b(paramObject.getTitleBarHeight());
       return;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MultiMsg_TAG", 4, "onBatchTroopCardDefaultNick failed");
+      }
     }
-    QLog.d("ReceiptMessageDetailFragment", 1, "mDiscussionFetchReadStatusCallback fail on code: " + paramInt);
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
+    label201:
+    this.a.a((Map)paramObject, aupg.a().a);
   }
 }
 

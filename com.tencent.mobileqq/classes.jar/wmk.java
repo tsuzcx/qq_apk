@@ -1,24 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
+import java.util.ArrayList;
+import java.util.List;
 
 public class wmk
-  extends TroopObserver
+  extends uli
 {
-  public wmk(ContactsTroopAdapter paramContactsTroopAdapter) {}
+  public String a;
+  public ArrayList<String> a;
+  public List<String> a;
+  public boolean a;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public wmk(String paramString)
   {
-    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
-    if (localBitmap != null) {
-      ContactsTroopAdapter.a(this.a, paramString, localBitmap);
-    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wmk
  * JD-Core Version:    0.7.0.1
  */

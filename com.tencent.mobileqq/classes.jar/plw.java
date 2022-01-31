@@ -1,52 +1,59 @@
-import com.tencent.component.network.utils.thread.internel.ArrayDeque;
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import java.util.List;
+import org.json.JSONObject;
 
-public class plw
-  implements Iterator
+class plw
+  implements ViewBase.OnClickListener
 {
-  private int jdField_a_of_type_Int = ArrayDeque.access$200(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque);
-  private int b = ArrayDeque.access$300(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque);
-  private int c = -1;
+  plw(plv paramplv, pgd parampgd, int paramInt, Container paramContainer) {}
   
-  private plw(ArrayDeque paramArrayDeque) {}
-  
-  public boolean hasNext()
+  public void onClick(ViewBase paramViewBase)
   {
-    return this.jdField_a_of_type_Int != this.b;
-  }
-  
-  public Object next()
-  {
-    if (this.jdField_a_of_type_Int == this.b) {
-      throw new NoSuchElementException();
-    }
-    Object localObject = ArrayDeque.access$400(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque)[this.jdField_a_of_type_Int];
-    if ((ArrayDeque.access$300(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque) != this.b) || (localObject == null)) {
-      throw new ConcurrentModificationException();
-    }
-    this.c = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (this.jdField_a_of_type_Int + 1 & ArrayDeque.access$400(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque).length - 1);
-    return localObject;
-  }
-  
-  public void remove()
-  {
-    if (this.c < 0) {
-      throw new IllegalStateException();
-    }
-    if (ArrayDeque.access$500(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque, this.c))
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Pgd.a();
+    if (localArticleInfo == null) {}
+    JSONObject localJSONObject;
+    do
     {
-      this.jdField_a_of_type_Int = (this.jdField_a_of_type_Int - 1 & ArrayDeque.access$400(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque).length - 1);
-      this.b = ArrayDeque.access$300(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque);
+      return;
+      localJSONObject = localArticleInfo.getProteusItemData();
+    } while (localJSONObject == null);
+    rqj localrqj = this.jdField_a_of_type_Pgd.a();
+    if (this.jdField_a_of_type_Int == 1120) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramViewBase = localArticleInfo;
+      if (!bool)
+      {
+        paramViewBase = localArticleInfo;
+        if (localArticleInfo.mSubArtilceList != null)
+        {
+          paramViewBase = localArticleInfo;
+          if (localArticleInfo.mSubArtilceList.size() > 0)
+          {
+            paramViewBase = localArticleInfo;
+            if (localArticleInfo.mSubArtilceList.get(0) != null) {
+              paramViewBase = (BaseArticleInfo)localArticleInfo.mSubArtilceList.get(0);
+            }
+          }
+        }
+      }
+      if (!rdm.a(paramViewBase, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext())) {
+        plv.a(this.jdField_a_of_type_Plv, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase, localrqj);
+      }
+      owy.a().a(paramViewBase.mArticleID, System.currentTimeMillis());
+      plv.a(this.jdField_a_of_type_Plv, paramViewBase, bool, localJSONObject);
+      localrqj.notifyDataSetChanged();
+      return;
     }
-    this.c = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     plw
  * JD-Core Version:    0.7.0.1
  */

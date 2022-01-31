@@ -1,64 +1,80 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.theme.NightModeLogic;
-import com.tencent.mobileqq.theme.ThemeDownloader;
-import com.tencent.mobileqq.theme.ThemeDownloader.ThemeDownloadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
-public class aioa
-  implements ThemeDownloader.ThemeDownloadListener
+public final class aioa
+  implements Parcelable.Creator<LocalMediaInfo>
 {
-  public aioa(NightModeLogic paramNightModeLogic) {}
-  
-  public void onDownloadCallback(Bundle paramBundle, int paramInt1, int paramInt2, int paramInt3, ThemeDownloader paramThemeDownloader)
+  public LocalMediaInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NightModeLogic", 2, "mThemeDownloadListener onDownloadCallback stateCode:" + paramInt1);
-    }
-    if (paramInt1 == 4) {}
-    for (;;)
+    boolean bool2 = true;
+    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+    localLocalMediaInfo._id = paramParcel.readLong();
+    localLocalMediaInfo.path = paramParcel.readString();
+    localLocalMediaInfo.fileSize = paramParcel.readLong();
+    localLocalMediaInfo.addedDate = paramParcel.readLong();
+    localLocalMediaInfo.modifiedDate = paramParcel.readLong();
+    localLocalMediaInfo.orientation = paramParcel.readInt();
+    localLocalMediaInfo.rotation = paramParcel.readInt();
+    localLocalMediaInfo.mDuration = paramParcel.readLong();
+    if (paramParcel.readByte() == 1)
     {
-      return;
-      this.a.jdField_a_of_type_Boolean = false;
-      if (paramInt1 >= 0)
-      {
-        paramBundle = new Bundle();
-        paramBundle.putInt("start_status", 4);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 4099, 1, 0, paramBundle));
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4098);
+      bool1 = true;
+      localLocalMediaInfo.mChecked = bool1;
+      localLocalMediaInfo.selectStatus = paramParcel.readInt();
+      localLocalMediaInfo.thumbWidth = paramParcel.readInt();
+      localLocalMediaInfo.thumbHeight = paramParcel.readInt();
+      localLocalMediaInfo.thumbnailPath = paramParcel.readString();
+      localLocalMediaInfo.index = paramParcel.readInt();
+      localLocalMediaInfo.position = Integer.valueOf(paramParcel.readInt());
+      localLocalMediaInfo.mMimeType = paramParcel.readString();
+      localLocalMediaInfo.mMediaType = paramParcel.readInt();
+      localLocalMediaInfo.mediaWidth = paramParcel.readInt();
+      localLocalMediaInfo.mediaHeight = paramParcel.readInt();
+      if (paramParcel.readByte() != 1) {
+        break label339;
       }
-      while (paramThemeDownloader != null)
-      {
-        paramThemeDownloader.a();
-        return;
-        paramBundle = new Bundle();
-        paramBundle.putInt("start_status", 4);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 4099, -2, 0, paramBundle));
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 4102, paramInt2, paramInt3));
-        QLog.e("NightModeLogic", 1, "mThemeDownloadListener onDownloadCallback download fail");
+      bool1 = true;
+      label202:
+      localLocalMediaInfo.isSystemMeidaStore = bool1;
+      if (paramParcel.readByte() != 1) {
+        break label344;
       }
+      bool1 = true;
+      label218:
+      localLocalMediaInfo.isRegionThumbUseNewDecoder = bool1;
+      localLocalMediaInfo.longitude = paramParcel.readInt();
+      localLocalMediaInfo.latitude = paramParcel.readInt();
+      localLocalMediaInfo.panoramaPhotoType = paramParcel.readInt();
+      localLocalMediaInfo.mCloudPhotoOwnerUin = paramParcel.readLong();
+      localLocalMediaInfo.mCloudPhotoOwnerAlbumId = paramParcel.readString();
+      localLocalMediaInfo.mCloudPhotoId = paramParcel.readString();
+      if (paramParcel.readByte() != 1) {
+        break label349;
+      }
+    }
+    label339:
+    label344:
+    label349:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localLocalMediaInfo.isVideoReady = bool1;
+      localLocalMediaInfo.missionID = paramParcel.readString();
+      localLocalMediaInfo.mTransferPosList = paramParcel.readArrayList(Long.class.getClassLoader());
+      localLocalMediaInfo.aiTextLabel = paramParcel.readArrayList(String.class.getClassLoader());
+      return localLocalMediaInfo;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label202;
+      bool1 = false;
+      break label218;
     }
   }
   
-  public void onDownloadProgress(Bundle paramBundle, int paramInt, long paramLong1, long paramLong2)
+  public LocalMediaInfo[] a(int paramInt)
   {
-    paramInt = 100;
-    if (paramLong2 <= 0L)
-    {
-      QLog.e("NightModeLogic", 1, "mThemeDownloadListener onDownloadProgress dwProgressMax <= 0");
-      paramInt = 4;
-    }
-    if (paramLong1 <= paramLong2) {
-      paramInt = (int)(Math.round(paramLong1 * 1.0D / paramLong2 * 100.0D) / 100.0D * 100.0D);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("NightModeLogic", 2, "mThemeDownloadListener onDownloadProgress readSize:" + paramLong1 + ", allSize:" + paramLong2 + ", percent:" + paramInt);
-    }
-    paramBundle = new Bundle();
-    paramBundle.putInt("percent", paramInt);
-    paramBundle.putInt("start_status", 3);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 4099, 1, 0, paramBundle));
+    return new LocalMediaInfo[0];
   }
 }
 

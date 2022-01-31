@@ -1,31 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterBaseActivity;
+import java.net.URL;
 
 public class toz
-  extends Handler
 {
-  public toz(RegisterBaseActivity paramRegisterBaseActivity) {}
+  public int a;
+  public URL a;
+  public int b;
   
-  public void handleMessage(Message paramMessage)
+  public static toz a(URL paramURL, int paramInt1, int paramInt2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.c();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131434841);
-    }
-    this.a.a(paramMessage, 1);
+    toz localtoz = new toz();
+    localtoz.jdField_a_of_type_JavaNetURL = paramURL;
+    localtoz.jdField_a_of_type_Int = paramInt1;
+    localtoz.b = paramInt2;
+    return localtoz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     toz
  * JD-Core Version:    0.7.0.1
  */

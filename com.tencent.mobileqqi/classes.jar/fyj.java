@@ -1,17 +1,19 @@
+import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import cooperation.qlink.QQProxyForQlink;
 
-public class fyj
-  implements Runnable
+public final class fyj
+  implements ActionSheet.OnButtonClickListener
 {
-  public fyj(FileTransferHandler paramFileTransferHandler, long paramLong, boolean paramBoolean, String paramString) {}
+  public fyj(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Long + "]  handle recv onlinefile resp. sucess =" + this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
   }
 }
 

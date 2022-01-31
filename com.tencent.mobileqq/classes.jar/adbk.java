@@ -1,22 +1,31 @@
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
-class adbk
-  implements FMDialogUtil.FMDialogInterface
+public class adbk
+  implements View.OnClickListener
 {
-  adbk(adbj paramadbj, Intent paramIntent) {}
+  public adbk(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    ForwardBaseOption.a(this.jdField_a_of_type_Adbj.a, this.jdField_a_of_type_AndroidContentIntent, 103);
+    if (paramView.getId() == 2131365065)
+    {
+      paramView = this.a.jdField_a_of_type_Adbv.a();
+      if ((!this.a.b) && (this.a.jdField_a_of_type_Boolean) && (paramView != null))
+      {
+        bhuf localbhuf = (bhuf)bhus.a(this.a, null);
+        localbhuf.a(2131693484, 3);
+        localbhuf.c(2131690648);
+        localbhuf.a(new adbl(this, paramView, localbhuf));
+        localbhuf.show();
+      }
+    }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adbk
  * JD-Core Version:    0.7.0.1
  */

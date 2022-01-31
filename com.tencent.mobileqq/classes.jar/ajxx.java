@@ -1,26 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.unifiedebug.SnapshotService;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class ajxx
-  extends BroadcastReceiver
+class ajxx
+  implements View.OnTouchListener
 {
-  public ajxx(SnapshotService paramSnapshotService) {}
+  ajxx(ajxw paramajxw) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    long l = paramIntent.getLongExtra("id", -1L);
-    int i = paramIntent.getIntExtra("action", -1);
-    if ((l == 0L) && (i == 1) && (SnapshotService.a(this.a) > 0L))
+    if (paramMotionEvent.getAction() == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(SnapshotService.a(), 2, "receive broadcast: destroy snapshot service");
-      }
-      SnapshotService.a(false);
-      this.a.finish();
+      ajxw.a(this.a).x = ((int)paramMotionEvent.getRawX());
+      ajxw.a(this.a).y = ((int)paramMotionEvent.getRawY());
     }
+    return false;
   }
 }
 

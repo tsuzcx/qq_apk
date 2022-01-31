@@ -1,21 +1,10 @@
-import com.tencent.biz.webviewplugin.QzoneWebViewOfflinePlugin;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
-
-public class pcr
-  implements QzoneZipCacheHelperCallBack
+public abstract interface pcr
 {
-  public pcr(QzoneWebViewOfflinePlugin paramQzoneWebViewOfflinePlugin, String paramString1, String paramString2, String paramString3) {}
-  
-  public void onResult(boolean paramBoolean)
-  {
-    QzoneWebViewOfflinePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginQzoneWebViewOfflinePlugin, paramBoolean, this.jdField_a_of_type_JavaLangString, this.b, this.c);
-  }
-  
-  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
+  public abstract void a(String[] paramArrayOfString1, String[] paramArrayOfString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pcr
  * JD-Core Version:    0.7.0.1
  */

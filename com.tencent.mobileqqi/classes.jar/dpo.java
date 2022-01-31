@@ -1,68 +1,38 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class dpo
-  implements BusinessObserver
+  implements DialogInterface.OnClickListener
 {
-  public dpo(SplashActivity paramSplashActivity) {}
+  public dpo(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("SplashActivity", 2, "success:" + String.valueOf(paramBoolean));
-    if (!paramBoolean) {}
-    for (;;)
+    paramDialogInterface = TroopInfoActivity.a(this.a).getInputValue();
+    if ((paramDialogInterface != null) && (!paramDialogInterface.equals("")) && (!paramDialogInterface.equals(this.a.c)))
     {
-      return;
-      if (paramBoolean) {}
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-          localGetPublicAccountDetailInfoResponse.mergeFrom(paramBundle);
-          if ((localGetPublicAccountDetailInfoResponse.ret_info.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0))
-          {
-            if ((this.a.a == null) || ((this.a.a != null) && (localGetPublicAccountDetailInfoResponse.seqno.has()) && (localGetPublicAccountDetailInfoResponse.seqno.get() != this.a.a.seqno)))
-            {
-              SplashActivity.a(this.a, localGetPublicAccountDetailInfoResponse);
-              new AccountDetail(SplashActivity.a(this.a));
-              paramBundle = this.a.getSharedPreferences(this.a.b.a(), 0);
-              if ((paramBundle != null) && (paramBundle.getBoolean("qqi_public_account_first_login", true)))
-              {
-                SplashActivity.d(this.a);
-                paramBundle.edit().putBoolean("qqi_public_account_first_login", false).commit();
-              }
-            }
-          }
-          else {
-            SplashActivity.e(this.a);
-          }
-        }
-        else
-        {
-          SplashActivity.e(this.a);
-          return;
-        }
+      if (!NetworkUtil.e(BaseApplication.getContext())) {
+        break label80;
       }
-      catch (Exception paramBundle) {}
+      if (!paramDialogInterface.equals(this.a.a.f))
+      {
+        this.a.p();
+        this.a.b(paramDialogInterface);
+      }
     }
-    SplashActivity.e(this.a);
     return;
+    label80:
+    this.a.a(2131562452, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dpo
  * JD-Core Version:    0.7.0.1
  */

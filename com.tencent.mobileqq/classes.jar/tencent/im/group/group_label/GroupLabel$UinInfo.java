@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt64Field;
 
 public final class GroupLabel$UinInfo
-  extends MessageMicro
+  extends MessageMicro<UinInfo>
 {
   public static final int INT64_LATITUDE_FIELD_NUMBER = 2;
   public static final int INT64_LONGITUDE_FIELD_NUMBER = 1;
@@ -16,7 +16,7 @@ public final class GroupLabel$UinInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.group.group_label.GroupLabel.UinInfo
  * JD-Core Version:    0.7.0.1
  */

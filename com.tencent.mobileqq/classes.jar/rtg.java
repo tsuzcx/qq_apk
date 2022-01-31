@@ -1,19 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
-class rtg
-  implements DialogInterface.OnClickListener
+public class rtg
+  extends pdi
 {
-  rtg(rtc paramrtc) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public rtg(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
-    paramDialogInterface.dismiss();
+    super(paramString);
+  }
+  
+  public void a(pdc parampdc)
+  {
+    parampdc.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rtg
  * JD-Core Version:    0.7.0.1
  */

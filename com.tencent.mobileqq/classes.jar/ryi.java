@@ -1,40 +1,29 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 public class ryi
-  implements View.OnClickListener
+  implements olb
 {
-  public ryi(ChatHistory paramChatHistory) {}
+  public ryi(FastWebActivity paramFastWebActivity) {}
   
-  public void onClick(View paramView)
+  public void a(long paramLong)
   {
-    if (this.a.d < this.a.c)
+    if (FastWebActivity.a(this.a) != null)
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838347);
-      paramView = this.a;
-      paramView.d += 1;
-      if (this.a.d >= this.a.c)
+      FastWebActivity.a(this.a).b = paramLong;
+      if (FastWebActivity.a(this.a).b <= 0L)
       {
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130845465);
+        FastWebActivity.a(this.a).b = 0L;
+        this.a.e();
       }
-      this.a.e = ((this.a.d - 1) * 8);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-      this.a.t();
+      FastWebActivity.a(this.a).a(this.a, FastWebActivity.a(this.a), FastWebActivity.a(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ryi
  * JD-Core Version:    0.7.0.1
  */

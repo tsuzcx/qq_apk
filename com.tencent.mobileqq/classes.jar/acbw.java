@@ -1,44 +1,56 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.ApolloGameManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
 
-class acbw
-  implements Runnable
+public class acbw
+  implements TextWatcher
 {
-  acbw(acbg paramacbg, String paramString, Bundle paramBundle, MessengerService paramMessengerService, QQAppInterface paramQQAppInterface) {}
+  public acbw(AddAccountActivity paramAddAccountActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    try
+    AddAccountActivity.a(this.a, null);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AddAccountActivity.a(this.a, paramCharSequence.toString());
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null)
     {
-      Object localObject = new JSONObject(this.jdField_a_of_type_JavaLangString).getJSONArray("gameList");
-      ArrayList localArrayList = new ArrayList();
-      if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-      {
-        int i = 0;
-        while (i < ((JSONArray)localObject).length())
-        {
-          localArrayList.add(Integer.valueOf(((JSONArray)localObject).getInt(i)));
-          i += 1;
-        }
-        localObject = new acbx(this);
-        ApolloGameManager localApolloGameManager = (ApolloGameManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(210);
-        localApolloGameManager.a = new WeakReference(localObject);
-        localApolloGameManager.a("android.web", "apollo_aio_game.add_games_to_user_gamepanel", localArrayList);
+      paramCharSequence = paramCharSequence.toString();
+      if ((paramCharSequence != null) && (AddAccountActivity.a(this.a) != null) && (AddAccountActivity.a(this.a).length() != paramCharSequence.length()) && (paramInt3 != 0)) {
+        BaseApplicationImpl.sApplication.refreAccountList();
       }
-      return;
+      AddAccountActivity.a(this.a, null);
+      if ((AddAccountActivity.a(this.a) == null) || (AddAccountActivity.a(this.a).length() == 0)) {}
+      do
+      {
+        return;
+        if ((paramCharSequence == null) || (paramCharSequence.length() == 0) || (paramCharSequence.length() != AddAccountActivity.a(this.a).length() + 1))
+        {
+          BaseApplicationImpl.sApplication.refreAccountList();
+          return;
+        }
+        if ((!paramCharSequence.substring(0, AddAccountActivity.a(this.a).length()).equals(AddAccountActivity.a(this.a))) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText == null)) {
+          break;
+        }
+        paramCharSequence = paramCharSequence.substring(AddAccountActivity.a(this.a).length());
+      } while ((paramCharSequence == null) || (paramCharSequence.length() != 1));
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText(paramCharSequence);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setSelection(1);
     }
-    catch (Exception localException) {}
+    AddAccountActivity.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acbw
  * JD-Core Version:    0.7.0.1
  */

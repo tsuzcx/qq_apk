@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
-import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class akdl
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public akdl(NewUpgradeDialog.YYBDownloadListener paramYYBDownloadListener, DownloadInfo paramDownloadInfo) {}
+  public akdl(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog$YYBDownloadListener.a.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a());
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akdl
  * JD-Core Version:    0.7.0.1
  */

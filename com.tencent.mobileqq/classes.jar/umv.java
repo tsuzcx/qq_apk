@@ -1,23 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-
-public final class umv
-  implements Parcelable.Creator
+abstract interface umv
 {
-  public SessionInfo a(Parcel paramParcel)
-  {
-    return new SessionInfo(paramParcel);
-  }
-  
-  public SessionInfo[] a(int paramInt)
-  {
-    return new SessionInfo[paramInt];
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     umv
  * JD-Core Version:    0.7.0.1
  */

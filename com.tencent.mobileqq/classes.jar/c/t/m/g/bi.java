@@ -1,14 +1,22 @@
 package c.t.m.g;
 
 public final class bi
+  extends bd
 {
-  public byte a = 1;
-  public String b = cc.a();
-  public String c = l.h();
+  public final String b()
+  {
+    return "state";
+  }
+  
+  public final void c()
+  {
+    cg.d();
+    String str = m.c;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.bi
  * JD-Core Version:    0.7.0.1
  */

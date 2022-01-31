@@ -1,17 +1,27 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.token.af;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class ve
-  implements DialogInterface.OnClickListener
+class ve
+  implements View.OnClickListener
 {
-  ve(ux paramux) {}
+  ve(RealNameFindFailActivity paramRealNameFindFailActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    af.a().a(RealNameFindActivity.access$400(this.a.a));
+    if (RealNameFindFailActivity.access$000(this.a) == 1)
+    {
+      paramView = new Intent(this.a, FindPasswdActivity.class);
+      paramView.addFlags(67108864);
+      paramView.putExtra("real_uin", RealNameFindFailActivity.access$100(this.a));
+      paramView.putExtra("not_showLockVerify", true);
+      paramView.putExtra("canchange_uin", RealNameFindFailActivity.access$200(this.a));
+      this.a.startActivity(paramView);
+      return;
+    }
+    this.a.finish();
   }
 }
 

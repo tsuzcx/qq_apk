@@ -1,87 +1,86 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoFilter.ItemViewGestureListener;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class antm
-  implements View.OnTouchListener
+  extends antj
 {
-  private int jdField_a_of_type_Int;
-  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  private EditVideoFilter.ItemViewGestureListener jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener;
-  private boolean jdField_a_of_type_Boolean;
-  private final int jdField_b_of_type_Int = 5;
-  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
-  private boolean jdField_b_of_type_Boolean;
+  private float[] d = new float[4];
   
-  public antm(EditVideoFilter.ItemViewGestureListener paramItemViewGestureListener)
+  public antm(Context paramContext, int paramInt, SensorManager paramSensorManager, antb paramantb)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener = paramItemViewGestureListener;
+    super(paramContext, paramInt, paramSensorManager, paramantb);
+    Sensor localSensor;
+    if (paramInt == 5)
+    {
+      paramInt = 15;
+      paramContext = paramSensorManager.getDefaultSensor(paramInt);
+      localSensor = paramSensorManager.getDefaultSensor(1);
+      paramSensorManager = paramSensorManager.getDefaultSensor(4);
+      if ((paramSensorManager == null) || (paramContext == null) || (Build.VERSION.SDK_INT < 9)) {
+        break label150;
+      }
+      paramantb.onSensorSupport(4, true);
+      this.jdField_a_of_type_JavaUtilList.add(paramContext);
+      QLog.i("OrientationProvider2", 2, "Gyroscope support,model:" + Build.MODEL + ", manufacture:" + Build.MANUFACTURER);
+    }
+    for (;;)
+    {
+      if (localSensor == null) {
+        break label298;
+      }
+      paramantb.onSensorSupport(1, true);
+      this.jdField_a_of_type_JavaUtilList.add(localSensor);
+      return;
+      paramInt = 11;
+      break;
+      label150:
+      paramantb.onSensorSupport(4, false);
+      if (paramSensorManager == null) {
+        QLog.i("OrientationProvider2", 2, "Gyroscope not support,model:" + Build.MODEL + ", manufacture:" + Build.MANUFACTURER);
+      } else if (paramContext == null) {
+        if (Build.VERSION.SDK_INT >= 9) {
+          QLog.i("OrientationProvider2", 2, "Gyroscope not support(rotationVectorSensor),model:" + Build.MODEL + ", manufacture:" + Build.MANUFACTURER);
+        } else {
+          QLog.i("OrientationProvider2", 2, "Gyroscope not support(sdk < 9),model:" + Build.MODEL + ", manufacture:" + Build.MANUFACTURER);
+        }
+      }
+    }
+    label298:
+    paramantb.onSensorSupport(1, false);
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener == null) {}
-    do
+    if (this.jdField_a_of_type_Antb == null) {
+      return;
+    }
+    this.jdField_a_of_type_Antb.updateAccelerometer(paramFloat1, paramFloat2, paramFloat3, paramLong);
+  }
+  
+  @TargetApi(9)
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    if ((paramSensorEvent.sensor.getType() == 11) || (paramSensorEvent.sensor.getType() == 15))
     {
-      do
-      {
-        float f;
-        do
-        {
-          do
-          {
-            return true;
-            f = paramMotionEvent.getY();
-            switch (paramMotionEvent.getAction() & 0xFF)
-            {
-            case 3: 
-            case 4: 
-            default: 
-              return true;
-            case 0: 
-              this.jdField_a_of_type_Int = ((int)f);
-              this.jdField_a_of_type_Boolean = false;
-              this.jdField_b_of_type_Boolean = false;
-              this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-              return true;
-            }
-          } while (paramMotionEvent.getPointerCount() > 2);
-          if (this.jdField_b_of_type_Boolean)
-          {
-            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(paramMotionEvent);
-            return true;
-          }
-          this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-          this.jdField_b_of_type_Boolean = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent);
-        } while ((!this.jdField_b_of_type_Boolean) || (!(paramView instanceof ViewParent)));
-        ((ViewParent)paramView).requestDisallowInterceptTouchEvent(true);
-        return true;
-        if (Math.abs((int)(f - this.jdField_a_of_type_Int)) > 5) {
-          this.jdField_a_of_type_Boolean = true;
-        }
-      } while (!this.jdField_b_of_type_Boolean);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(paramMotionEvent);
-      return true;
-    } while ((paramMotionEvent.getPointerCount() > 2) || (!this.jdField_b_of_type_Boolean));
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(paramMotionEvent);
-    return true;
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(paramView);
+      SensorManager.getQuaternionFromVector(this.d, paramSensorEvent.values);
+      this.jdField_a_of_type_Antb.onRotationUpdateQuaternion(this.d);
     }
-    if ((this.jdField_b_of_type_Boolean) && ((paramView instanceof ViewParent))) {
-      ((ViewParent)paramView).requestDisallowInterceptTouchEvent(false);
+    while (paramSensorEvent.sensor.getType() != 1) {
+      return;
     }
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(paramMotionEvent);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    return true;
+    a(paramSensorEvent.values[0], paramSensorEvent.values[1], paramSensorEvent.values[2], paramSensorEvent.timestamp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     antm
  * JD-Core Version:    0.7.0.1
  */

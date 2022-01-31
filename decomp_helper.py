@@ -118,3 +118,4 @@ def main(apk_from,path_to,pn_apktool,pn_dex2jar):
         for fn in t:
             if fn is None:continue
             decomp(fn,fn,pn_apktool,pn_dex2jar)
+    os.chdir(path_to)

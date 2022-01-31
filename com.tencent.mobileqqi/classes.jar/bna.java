@@ -1,16 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.biz.PoiMapActivity;
+import android.os.Message;
+import android.view.SurfaceHolder;
+import com.tencent.biz.qrcode.CameraManager;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import java.io.IOException;
 
 public class bna
-  implements View.OnClickListener
+  extends Thread
 {
-  public bna(PoiMapActivity paramPoiMapActivity) {}
+  public bna(ScannerActivity paramScannerActivity, SurfaceHolder paramSurfaceHolder) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.setText("");
+    if ((!this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.j) || (this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.e)) {
+      return;
+    }
+    try
+    {
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.jdField_a_of_type_ComTencentBizQrcodeCameraManager.a(this.jdField_a_of_type_AndroidViewSurfaceHolder, this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.b());
+      Message.obtain(this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity$ScannerActivityHandler, 111).sendToTarget();
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      Message.obtain(this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity$ScannerActivityHandler, 112).sendToTarget();
+      return;
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      Message.obtain(this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity$ScannerActivityHandler, 112).sendToTarget();
+      return;
+    }
+    catch (IllegalStateException localIllegalStateException) {}
   }
 }
 

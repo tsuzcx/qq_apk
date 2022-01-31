@@ -10,16 +10,18 @@ public class WordInfo
   implements Serializable
 {
   public static final int COLOR_DEFAULT = Color.parseColor("#424245");
+  public static final int COLOR_DEFAULT_PINYIN = Color.parseColor("#777777");
   public static final int COLOR_GRAY = -7829368;
   public static final int COLOR_REMIND = -7829368;
   public static final int COLOR_WRONG = Color.parseColor("#FF7474");
-  private static final String a = WordInfo.class.getSimpleName();
   public int color = this.colors[0];
+  public int colorPinyin = this.colorsPinyin[0];
   private int[] colors = { COLOR_DEFAULT, COLOR_WRONG, -7829368, -7829368 };
+  private int[] colorsPinyin = { COLOR_DEFAULT_PINYIN, COLOR_WRONG, -7829368, -7829368 };
   public boolean isDetected;
   public boolean isReminded;
   public int paragraphPos;
-  public ArrayList pinyin2Detect = new ArrayList();
+  public ArrayList<String> pinyin2Detect = new ArrayList();
   public String pinyin2Display;
   public String text;
   public int wordPos;
@@ -63,7 +65,7 @@ public class WordInfo
       if ((this.pinyin2Detect == null) || (this.pinyin2Detect.size() == 0))
       {
         if (QLog.isColorLevel()) {
-          QLog.d(a, 2, "pinyin2Detect is empty, text:" + this.text);
+          QLog.d("ReciteDetect.WordInfo", 2, "pinyin2Detect is empty, text:" + this.text + " targetPinyin = " + paramString);
         }
         return true;
       }
@@ -90,11 +92,12 @@ public class WordInfo
     if ((paramInt < 0) || (paramInt >= this.colors.length))
     {
       if (QLog.isColorLevel()) {
-        QLog.e(a, 2, "setColor status error:" + paramInt);
+        QLog.e("ReciteDetect.WordInfo", 2, "setColor status error:" + paramInt);
       }
       return;
     }
     this.color = this.colors[paramInt];
+    this.colorPinyin = this.colorsPinyin[paramInt];
   }
   
   public String toString()
@@ -104,7 +107,7 @@ public class WordInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.recite.data.WordInfo
  * JD-Core Version:    0.7.0.1
  */

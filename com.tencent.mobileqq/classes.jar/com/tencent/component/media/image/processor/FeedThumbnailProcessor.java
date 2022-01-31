@@ -16,14 +16,14 @@ public class FeedThumbnailProcessor
   extends CropByPivotProcessor
 {
   public static final float INFINITESCALE = -1.0F;
-  private float jdField_a_of_type_Float = -1.0F;
-  private final int jdField_a_of_type_Int;
-  private final int b;
+  private final int mMaxHeight;
+  private float mMaxScale = -1.0F;
+  private final int mMaxWidth;
   
   public FeedThumbnailProcessor(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.mMaxWidth = paramInt1;
+    this.mMaxHeight = paramInt2;
   }
   
   public FeedThumbnailProcessor(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
@@ -39,20 +39,20 @@ public class FeedThumbnailProcessor
   
   public Drawable process(Drawable paramDrawable)
   {
-    if ((this.jdField_a_of_type_Int <= 0) || (this.b <= 0)) {}
+    if ((this.mMaxWidth <= 0) || (this.mMaxHeight <= 0)) {}
     do
     {
       return paramDrawable;
       j = paramDrawable.getIntrinsicWidth();
       i = paramDrawable.getIntrinsicHeight();
-    } while ((j == this.jdField_a_of_type_Int) && (i == this.b) && (j * GOLDEN_CUDGEL_RATIO > i));
-    float f2 = Math.min(this.jdField_a_of_type_Int / j, this.b / i);
+    } while ((j == this.mMaxWidth) && (i == this.mMaxHeight) && (j * GOLDEN_CUDGEL_RATIO > i));
+    float f2 = Math.min(this.mMaxWidth / j, this.mMaxHeight / i);
     float f1 = f2;
-    if (this.jdField_a_of_type_Float != -1.0F)
+    if (this.mMaxScale != -1.0F)
     {
       f1 = f2;
-      if (f2 > this.jdField_a_of_type_Float) {
-        f1 = Math.min(f2, this.jdField_a_of_type_Float);
+      if (f2 > this.mMaxScale) {
+        f1 = Math.min(f2, this.mMaxScale);
       }
     }
     int j = (int)(j * f1);
@@ -91,12 +91,12 @@ public class FeedThumbnailProcessor
   
   public void setMaxScale(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.mMaxScale = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.processor.FeedThumbnailProcessor
  * JD-Core Version:    0.7.0.1
  */

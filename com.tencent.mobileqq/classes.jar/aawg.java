@@ -1,36 +1,30 @@
-import com.tencent.mobileqq.ark.ArkMediaPlayer;
+import java.util.Comparator;
 
-public class aawg
-  implements Runnable
+final class aawg
+  implements Comparator<aawe>
 {
-  public aawg(ArkMediaPlayer paramArkMediaPlayer) {}
-  
-  public void run()
+  public int a(aawe paramaawe1, aawe paramaawe2)
   {
-    if (ArkMediaPlayer.a(this.a)) {
-      return;
-    }
-    ArkMediaPlayer.a(this.a, true);
-    if (ArkMediaPlayer.a(this.a) == ArkMediaPlayer.b(this.a)) {
-      this.a.Play();
-    }
-    for (;;)
+    if ((paramaawe1 == null) && (paramaawe2 == null)) {}
+    do
     {
-      ArkMediaPlayer.a(this.a, ArkMediaPlayer.f(this.a));
-      return;
-      if (ArkMediaPlayer.a(this.a) == ArkMediaPlayer.c(this.a)) {
-        this.a.Stop();
-      } else if (ArkMediaPlayer.a(this.a) == ArkMediaPlayer.d(this.a)) {
-        this.a.Resume();
-      } else if (ArkMediaPlayer.a(this.a) == ArkMediaPlayer.e(this.a)) {
-        this.a.Pause();
+      return 0;
+      if ((paramaawe1 == null) && (paramaawe2 != null)) {
+        return 1;
       }
-    }
+      if ((paramaawe1 != null) && (paramaawe2 == null)) {
+        return -1;
+      }
+      if (paramaawe1.a() > paramaawe2.a()) {
+        return -1;
+      }
+    } while (paramaawe1.a() >= paramaawe2.a());
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aawg
  * JD-Core Version:    0.7.0.1
  */

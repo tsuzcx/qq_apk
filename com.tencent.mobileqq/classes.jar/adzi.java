@@ -1,21 +1,26 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.leba.LebaTitleBar;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.SplashActivity.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class adzi
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public adzi(LebaTitleBar paramLebaTitleBar, HotWordSearchEntryDataModel paramHotWordSearchEntryDataModel) {}
+  public adzi(SplashActivity.1 param1) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a();
-    LebaTitleBar.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaTitleBar).runOnUiThread(new adzj(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("SplashActivity", 2, "onReceive:before_account_change");
+    }
+    this.a.this$0.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adzi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,21 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import dov.com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback;
-import java.util.ArrayList;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment;
 
-class wxo
-  implements MediaScanner.OnMediaInfoScannerListener
+public class wxo
+  implements View.OnClickListener
 {
-  wxo(wxk paramwxk, Intent paramIntent, ArrayList paramArrayList) {}
+  public wxo(DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment paramDanceMachineQQBrowserFragment) {}
   
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Wxk.a.d();
-    if (QQStoryFlowCallback.a(this.jdField_a_of_type_Wxk.a, paramLocalMediaInfo))
-    {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-      PhotoUtils.a(this.jdField_a_of_type_Wxk.a, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, this.jdField_a_of_type_Wxk.a.d);
-    }
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wxo
  * JD-Core Version:    0.7.0.1
  */

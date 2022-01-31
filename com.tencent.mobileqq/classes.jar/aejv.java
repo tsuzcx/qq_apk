@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
-import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
 
 public class aejv
-  implements Runnable
+  extends awhw
 {
-  public aejv(QQPlayerService paramQQPlayerService, QQPlayerService.QQPlayerCallback paramQQPlayerCallback, SongInfo paramSongInfo) {}
+  public aejv(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback.onPlaySongChanged(this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo);
+    if (paramBoolean)
+    {
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

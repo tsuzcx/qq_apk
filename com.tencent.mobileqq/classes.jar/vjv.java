@@ -1,36 +1,17 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.TroopFilePicItemBuilder;
-import com.tencent.mobileqq.customviews.PicProgressView;
-import com.tencent.mobileqq.widget.BubbleImageView;
-
-public class vjv
-  extends BaseBubbleBuilder.ViewHolder
+class vjv
+  extends viw
 {
-  public long a;
-  public FrameLayout a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLDrawable a;
-  public PicProgressView a;
-  public BubbleImageView a;
-  public boolean a;
-  public int e;
-  public int f;
+  vjv(vji paramvji, vkq paramvkq) {}
   
-  public vjv(TroopFilePicItemBuilder paramTroopFilePicItemBuilder)
+  public boolean b()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Vkq.e = ((String)a("UploadImageJob_out_image_url"));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vjv
  * JD-Core Version:    0.7.0.1
  */

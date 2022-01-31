@@ -2,11 +2,14 @@ package com.tencent.oscarcamera.particlesystem;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import com.tencent.util.LogUtil;
+import com.google.gson.JsonObject;
+import com.tencent.ttpic.baseutils.log.LogUtils;
+import com.tencent.ttpic.util.GsonUtils;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -16,8 +19,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class ParticleSystemEx
 {
@@ -48,51 +49,53 @@ public class ParticleSystemEx
       this.mPositionIndex[paramInt2] = (paramInt2 % 6 + 0.5F);
       paramInt2 += 1;
     }
-    this.mParticleCenterBuffer = ByteBuffer.allocateDirect(paramInt1 * 6 * 3 * 32 / 8).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.mParticleSizeBuffer = ByteBuffer.allocateDirect(paramInt1 * 6 * 2 * 32 / 8).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.mParticleTexCoord = ByteBuffer.allocateDirect(paramInt1 * 6 * 2 * 32 / 8).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.mParticleColorBuffer = ByteBuffer.allocateDirect(paramInt1 * 6 * 4 * 32 / 8).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.mParticleCenterBuffer = ByteBuffer.allocateDirect(paramInt1 * 6 * 3 * 32).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.mParticleSizeBuffer = ByteBuffer.allocateDirect(paramInt1 * 6 * 2 * 32).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.mParticleTexCoord = ByteBuffer.allocateDirect(paramInt1 * 6 * 2 * 32).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.mParticleColorBuffer = ByteBuffer.allocateDirect(paramInt1 * 6 * 4 * 32).order(ByteOrder.nativeOrder()).asFloatBuffer();
   }
   
   private void loadFinish()
   {
     this.mAdvanceRes = new AdvanceRes[this.mClouds.size()];
-    int m = 0;
     int i = 0;
     int j = 0;
-    while (j < this.mClouds.size())
+    int m;
+    for (int k = 0; i < this.mClouds.size(); k = m)
     {
-      ParticleTemplate localParticleTemplate = (ParticleTemplate)this.mClouds.get(j);
-      m += localParticleTemplate.mMaxCount;
-      int k = i;
-      if (localParticleTemplate.mMaxCount > i) {
+      ParticleTemplate localParticleTemplate = (ParticleTemplate)this.mClouds.get(i);
+      m = k + localParticleTemplate.mMaxCount;
+      k = j;
+      if (localParticleTemplate.mMaxCount > j) {
         k = localParticleTemplate.mMaxCount;
       }
-      this.mAdvanceRes[j] = new AdvanceRes();
-      j += 1;
-      i = k;
+      this.mAdvanceRes[i] = new AdvanceRes();
+      i += 1;
+      j = k;
     }
     nativeRegisterTemplate(this.mNativeCtx, this.mClouds.toArray());
-    createCache(m, i);
+    createCache(k, j);
   }
   
   private void loadParticle(String paramString)
   {
-    Object localObject1;
     Object localObject3;
+    Object localObject1;
+    StringBuilder localStringBuilder;
     try
     {
       if (paramString.startsWith("/"))
       {
-        localObject1 = new BufferedReader(new InputStreamReader(new FileInputStream(paramString)), 1024);
-        localObject3 = new StringBuilder();
+        localObject3 = new InputStreamReader(new FileInputStream(paramString));
+        localObject1 = new BufferedReader((Reader)localObject3, 1024);
+        localStringBuilder = new StringBuilder();
         for (;;)
         {
           String str = ((BufferedReader)localObject1).readLine();
           if (str == null) {
             break;
           }
-          ((StringBuilder)localObject3).append(str);
+          localStringBuilder.append(str);
         }
         return;
       }
@@ -103,29 +106,33 @@ public class ParticleSystemEx
     }
     for (;;)
     {
-      localObject1 = ((StringBuilder)localObject3).toString();
-      localObject3 = null;
+      localObject1 = localStringBuilder.toString();
+      ((InputStreamReader)localObject3).close();
       try
-      {
-        localObject1 = new JSONObject((String)localObject1);
-        paramString = ParticleTemplate.fromJson(this, (JSONObject)localObject1, paramString.substring(0, paramString.lastIndexOf('/')));
-        if (paramString == null) {
-          continue;
-        }
-        this.mClouds.add(paramString);
-        this.mSpriteMap.put(paramString.mSprite, paramString);
-        return;
-        localObject1 = this.mContext.getAssets().open(paramString);
-        localObject3 = new byte[((InputStream)localObject1).available()];
-        ((InputStream)localObject1).read((byte[])localObject3);
-        localObject1 = new String((byte[])localObject3);
-      }
-      catch (JSONException localJSONException)
       {
         for (;;)
         {
-          LogUtil.e(TAG, localJSONException.getMessage());
-          Object localObject2 = localObject3;
+          localObject1 = GsonUtils.json2JsonObject((String)localObject1);
+          paramString = ParticleTemplate.fromJson(this, (JsonObject)localObject1, paramString.substring(0, paramString.lastIndexOf('/')));
+          if (paramString == null) {
+            break;
+          }
+          this.mClouds.add(paramString);
+          this.mSpriteMap.put(paramString.mSprite, paramString);
+          return;
+          localObject3 = this.mContext.getAssets().open(paramString);
+          localObject1 = new byte[((InputStream)localObject3).available()];
+          ((InputStream)localObject3).read((byte[])localObject1);
+          localObject1 = new String((byte[])localObject1);
+          ((InputStream)localObject3).close();
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          LogUtils.e(TAG, localException.getMessage());
+          Object localObject2 = null;
         }
       }
     }
@@ -143,65 +150,39 @@ public class ParticleSystemEx
   
   public List<FrameParticleData> advance()
   {
-    ArrayList localArrayList = null;
-    Object localObject;
-    if (this.mClouds.isEmpty()) {
-      localObject = localArrayList;
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return localObject;
-              localObject = localArrayList;
-            } while (this.mPositionIndex == null);
-            localObject = localArrayList;
-          } while (this.mParticleCenterBuffer == null);
-          localObject = localArrayList;
-        } while (this.mParticleSizeBuffer == null);
-        localObject = localArrayList;
-      } while (this.mParticleTexCoord == null);
-      localObject = localArrayList;
-    } while (this.mParticleColorBuffer == null);
     int j = 0;
+    if (this.mClouds.isEmpty()) {
+      return null;
+    }
     nativeAdvance(this.mNativeCtx, this.mParticleCenterBuffer, this.mParticleSizeBuffer, this.mParticleTexCoord, this.mParticleColorBuffer, this.mAdvanceRes);
-    localArrayList = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
     int i = 0;
-    for (;;)
+    while (i < this.mAdvanceRes.length)
     {
-      localObject = localArrayList;
-      if (i >= this.mAdvanceRes.length) {
-        break;
-      }
-      localObject = new FrameParticleData();
-      localArrayList.add(localObject);
+      FrameParticleData localFrameParticleData = new FrameParticleData();
+      localArrayList.add(localFrameParticleData);
       AdvanceRes localAdvanceRes = this.mAdvanceRes[i];
-      ((FrameParticleData)localObject).particleCount = localAdvanceRes.particleCount;
+      localFrameParticleData.particleCount = localAdvanceRes.particleCount;
       j += localAdvanceRes.particleCount;
-      ((FrameParticleData)localObject).positionIndex = Arrays.copyOf(this.mPositionIndex, localAdvanceRes.particleCount * 6);
-      ((FrameParticleData)localObject).particleCenter = new float[localAdvanceRes.particleCenterLen];
+      localFrameParticleData.positionIndex = Arrays.copyOf(this.mPositionIndex, localAdvanceRes.particleCount * 6);
+      localFrameParticleData.particleCenter = new float[localAdvanceRes.particleCenterLen];
       this.mParticleCenterBuffer.position(localAdvanceRes.particleCenterOffset);
-      this.mParticleCenterBuffer.get(((FrameParticleData)localObject).particleCenter);
-      ((FrameParticleData)localObject).particleSize = new float[localAdvanceRes.particleSizeLen];
+      this.mParticleCenterBuffer.get(localFrameParticleData.particleCenter);
+      localFrameParticleData.particleSize = new float[localAdvanceRes.particleSizeLen];
       this.mParticleSizeBuffer.position(localAdvanceRes.particleSizeOffset);
-      this.mParticleSizeBuffer.get(((FrameParticleData)localObject).particleSize);
-      ((FrameParticleData)localObject).texCoords = new float[localAdvanceRes.texCoordsLen];
+      this.mParticleSizeBuffer.get(localFrameParticleData.particleSize);
+      localFrameParticleData.texCoords = new float[localAdvanceRes.texCoordsLen];
       this.mParticleTexCoord.position(localAdvanceRes.texCoordsOffset);
-      this.mParticleTexCoord.get(((FrameParticleData)localObject).texCoords);
-      ((FrameParticleData)localObject).particleColor = new float[localAdvanceRes.particleColorLen];
+      this.mParticleTexCoord.get(localFrameParticleData.texCoords);
+      localFrameParticleData.particleColor = new float[localAdvanceRes.particleColorLen];
       this.mParticleColorBuffer.position(localAdvanceRes.particleColorOffset);
-      this.mParticleColorBuffer.get(((FrameParticleData)localObject).particleColor);
-      ((FrameParticleData)localObject).audioPath = ((ParticleTemplate)this.mClouds.get(i)).mSprite.audioPath;
-      ((FrameParticleData)localObject).playAudio = localAdvanceRes.playAudio;
-      ((FrameParticleData)localObject).blendMode = ((ParticleTemplate)this.mClouds.get(i)).mSprite.blendMode;
+      this.mParticleColorBuffer.get(localFrameParticleData.particleColor);
+      localFrameParticleData.audioPath = ((ParticleTemplate)this.mClouds.get(i)).mSprite.audioPath;
+      localFrameParticleData.playAudio = localAdvanceRes.playAudio;
+      localFrameParticleData.blendMode = ((ParticleTemplate)this.mClouds.get(i)).mSprite.blendMode;
       i += 1;
     }
+    return localArrayList;
   }
   
   public void emitImmediately(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -210,7 +191,6 @@ public class ParticleSystemEx
   }
   
   protected void finalize()
-    throws Throwable
   {
     release();
   }
@@ -259,23 +239,11 @@ public class ParticleSystemEx
       nativeRelease(this.mNativeCtx);
       this.mNativeCtx = -1L;
     }
-    this.mParticleCenterBuffer = null;
-    this.mParticleSizeBuffer = null;
-    this.mParticleTexCoord = null;
-    this.mParticleColorBuffer = null;
-    this.mPositionIndex = null;
-  }
-  
-  private class TexCoord
-  {
-    float[] texCoord = new float[12];
-    
-    private TexCoord() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.oscarcamera.particlesystem.ParticleSystemEx
  * JD-Core Version:    0.7.0.1
  */

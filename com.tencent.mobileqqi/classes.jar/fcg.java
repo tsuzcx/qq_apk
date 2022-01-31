@@ -1,12 +1,25 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.BuddyListAdapter.ViewTag;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.FriendListHandler;
 
 public class fcg
-  extends BuddyListAdapter.ViewTag
+  extends Handler
 {
-  public ImageView a;
-  public TextView a;
+  public fcg(FriendListHandler paramFriendListHandler, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    FriendListHandler.a(this.a);
+  }
 }
 
 

@@ -1,43 +1,31 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.OpenFrame;
-import com.tencent.open.agent.datamodel.Friend;
-import com.tencent.open.agent.datamodel.FriendDataManager;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class albv
-  implements AdapterView.OnItemClickListener
+public final class albv
+  implements EIPCResultCallback
 {
-  public albv(FriendChooser paramFriendChooser) {}
+  public albv(String paramString1, String paramString2, alca paramalca) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    paramAdapterView = (Friend)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if ((paramAdapterView == null) || (this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramAdapterView.a))) {
-      return;
+    CmShowRenderView.a(true);
+    paramEIPCResult = paramEIPCResult.data;
+    int i = paramEIPCResult.getInt("selfUinStatus");
+    int j = paramEIPCResult.getInt("friendUinStatus");
+    albt.a(this.jdField_a_of_type_JavaLangString, i);
+    albt.a(this.b, j);
+    if (this.jdField_a_of_type_Alca != null) {
+      this.jdField_a_of_type_Alca.a(true);
     }
-    if (this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.c() >= this.a.jdField_a_of_type_Int)
-    {
-      this.a.h();
-      return;
-    }
-    paramView = (OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView();
-    this.a.b.add(paramAdapterView);
-    this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramAdapterView.a);
-    this.a.e();
-    paramView.g();
-    this.a.b(false);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    QLog.i("CmShow_CmShowRenderView", 1, "initCmShowData selfUinStatus:" + i + " friendUinStatus:" + j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     albv
  * JD-Core Version:    0.7.0.1
  */

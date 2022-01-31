@@ -3,12 +3,21 @@ package com.tencent.token.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 
-final class dt
+class dt
   implements DialogInterface.OnClickListener
 {
-  dt(ds paramds) {}
+  dt(DetectIDPhotoActivity paramDetectIDPhotoActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    DetectIDPhotoActivity.access$100(this.a).setStop(false);
+    if (!DetectIDPhotoActivity.access$600(this.a))
+    {
+      DetectIDPhotoActivity.access$602(this.a, true);
+      DetectIDPhotoActivity.access$100(this.a).postDelayed(DetectIDPhotoActivity.access$1700(this.a), 30000L);
+    }
+    this.a.dismissDialog();
+  }
 }
 
 

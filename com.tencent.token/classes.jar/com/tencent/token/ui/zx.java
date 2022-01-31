@@ -1,18 +1,33 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.support.v4.content.LocalBroadcastManager;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.token.global.f;
 
-final class zx
-  implements View.OnClickListener
+class zx
+  extends Handler
 {
-  zx(SettingPageActivity paramSettingPageActivity) {}
+  zx(StartPwdGestureIndexActivity paramStartPwdGestureIndexActivity) {}
   
-  public final void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    LocalBroadcastManager.getInstance(this.a).sendBroadcast(new Intent("com.tencent.token.open_menu"));
+    if (this.a.isFinishing()) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    if (paramMessage.arg1 == 0)
+    {
+      StartPwdGestureIndexActivity.access$000(this.a);
+      return;
+    }
+    this.a.dismissDialog();
+    paramMessage = (f)paramMessage.obj;
+    f.a(this.a.getResources(), paramMessage);
+    this.a.showUserDialog(2131230767, paramMessage.c, 2131230897, null);
   }
 }
 

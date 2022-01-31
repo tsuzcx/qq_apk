@@ -1,37 +1,30 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.photo.PeakService;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class adnl
-  implements Runnable
+class adnl
+  implements DialogInterface.OnClickListener
 {
-  public adnl(NearbyHybridFragment paramNearbyHybridFragment) {}
+  adnl(adnj paramadnj) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyHybridFragment", 2, "start preload peak process");
-    }
-    Intent localIntent;
-    if (this.a.getActivity() != null)
+    paramDialogInterface.dismiss();
+    if (!bdin.d(this.a.a))
     {
-      localIntent = new Intent(this.a.getActivity(), PeakService.class);
-      if (VideoEnvironment.d(this.a.a)) {
-        localIntent.putExtra("ServiceAction", 2);
-      }
-    }
-    try
-    {
-      this.a.getActivity().startService(localIntent);
+      PhoneUnityChangeActivity.a(this.a.a, 2131694831);
       return;
     }
-    catch (Exception localException)
+    if (this.a.a.b == null)
     {
-      QLog.e("NearbyHybridFragment", 1, "preLoadPeak startService ", localException);
+      this.a.a.b = new adnm(this);
+      this.a.a.app.registObserver(this.a.a.b);
     }
+    PhoneUnityChangeActivity.a(this.a.a).a(true, false);
+    PhoneUnityChangeActivity.a(this.a.a, 2131719785, 0L, true);
+    azqs.b(this.a.a.app, "CliOper", "", "", "0X8005B81", "0X8005B81", 0, 0, "", "", "", "");
   }
 }
 

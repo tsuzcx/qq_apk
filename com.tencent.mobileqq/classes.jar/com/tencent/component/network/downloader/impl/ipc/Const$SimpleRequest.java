@@ -8,17 +8,16 @@ import com.tencent.component.network.downloader.Downloader.DownloadListener;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import java.util.ArrayList;
 import java.util.List;
-import pjw;
 
 public class Const$SimpleRequest
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new pjw();
-  public int a;
-  public Downloader.DownloadListener a;
-  public Downloader.DownloadMode a;
-  public String a;
-  public List a;
+  public static final Parcelable.Creator<SimpleRequest> CREATOR = new Const.SimpleRequest.1();
+  public int content_type;
+  public Downloader.DownloadListener listener;
+  public Downloader.DownloadMode mode;
+  public List<String> pathList;
+  public String url;
   
   public Const$SimpleRequest() {}
   
@@ -27,44 +26,29 @@ public class Const$SimpleRequest
     if (paramParcel == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramParcel.readStringList(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.url = paramParcel.readString();
+    this.pathList = new ArrayList();
+    paramParcel.readStringList(this.pathList);
+    this.content_type = paramParcel.readInt();
     if (paramParcel.readInt() == 0) {}
     for (paramParcel = Downloader.DownloadMode.FastMode;; paramParcel = Downloader.DownloadMode.StrictMode)
     {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadMode = paramParcel;
+      this.mode = paramParcel;
       return;
     }
   }
   
-  public void a(String paramString)
+  public void addDstPath(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
     do
     {
       return;
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      if (this.pathList == null) {
+        this.pathList = new ArrayList();
       }
-    } while (this.jdField_a_of_type_JavaUtilList.contains(paramString));
-    this.jdField_a_of_type_JavaUtilList.add(paramString);
-  }
-  
-  public String[] a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return null;
-    }
-    String[] arrayOfString = new String[this.jdField_a_of_type_JavaUtilList.size()];
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      arrayOfString[i] = ((String)this.jdField_a_of_type_JavaUtilList.get(i));
-      i += 1;
-    }
-    return arrayOfString;
+    } while (this.pathList.contains(paramString));
+    this.pathList.add(paramString);
   }
   
   public int describeContents()
@@ -82,28 +66,43 @@ public class Const$SimpleRequest
         return false;
       }
       paramObject = (SimpleRequest)paramObject;
-    } while ((this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramObject.jdField_a_of_type_JavaLangString)) && (Const.a(this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener, paramObject.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener)));
+    } while ((this.url.equalsIgnoreCase(paramObject.url)) && (Const.access$000(this.listener, paramObject.listener)));
     return false;
+  }
+  
+  public String[] getPaths()
+  {
+    if (this.pathList == null) {
+      return null;
+    }
+    String[] arrayOfString = new String[this.pathList.size()];
+    int i = 0;
+    while (i < this.pathList.size())
+    {
+      arrayOfString[i] = ((String)this.pathList.get(i));
+      i += 1;
+    }
+    return arrayOfString;
   }
   
   public String toString()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    if (this.pathList != null)
     {
       String str1 = "";
       int i = 0;
       for (;;)
       {
         str2 = str1;
-        if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
+        if (i >= this.pathList.size()) {
           break;
         }
-        str1 = str1 + (String)this.jdField_a_of_type_JavaUtilList.get(i) + ";";
+        str1 = str1 + (String)this.pathList.get(i) + ";";
         i += 1;
       }
     }
     String str2 = "";
-    return new String("Download SimpleRequest: " + this.jdField_a_of_type_JavaLangString + ", Path:" + str2 + ", content_type:" + this.jdField_a_of_type_Int);
+    return new String("Download SimpleRequest: " + this.url + ", Path:" + str2 + ", content_type:" + this.content_type);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -111,10 +110,10 @@ public class Const$SimpleRequest
     if (paramParcel == null) {
       return;
     }
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeStringList(this.jdField_a_of_type_JavaUtilList);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadMode == Downloader.DownloadMode.FastMode) {}
+    paramParcel.writeString(this.url);
+    paramParcel.writeStringList(this.pathList);
+    paramParcel.writeInt(this.content_type);
+    if (this.mode == Downloader.DownloadMode.FastMode) {}
     for (paramInt = 0;; paramInt = 1)
     {
       paramParcel.writeInt(paramInt);
@@ -124,7 +123,7 @@ public class Const$SimpleRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.ipc.Const.SimpleRequest
  * JD-Core Version:    0.7.0.1
  */

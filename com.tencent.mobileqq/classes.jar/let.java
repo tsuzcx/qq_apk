@@ -1,39 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.Switch;
+import java.util.List;
 
 public class let
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public let(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  @atgw(a="testInfos")
+  public List<leu> a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static let a(String paramString)
   {
-    paramCompoundButton = this.a;
-    if (!paramBoolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ReadInJoySettingActivity.a(paramCompoundButton, bool);
-      if ((!ReadInJoySettingActivity.a(this.a).isPressed()) || (this.a.c)) {
-        break label75;
-      }
-      if (paramBoolean) {
-        break;
-      }
-      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
-      return;
-    }
-    ReadInJoySettingActivity.a(this.a).show();
-    return;
-    label75:
-    this.a.c = false;
+    return (let)atgx.a(paramString, let.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     let
  * JD-Core Version:    0.7.0.1
  */

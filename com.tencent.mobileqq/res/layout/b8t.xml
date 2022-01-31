@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/a94" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <View android:background="@drawable/akw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/a97" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="12.0dip" android:scaleType="fitStart" android:layout_above="@id/a96" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/a96" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_marginBottom="12.0dip" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/a93" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="18.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/a98" android:layout_width="0.0dip" android:layout_height="wrap_content" android:lines="1" android:includeFontPadding="false" android:layout_weight="1.0" />
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="4.5dip" android:src="@drawable/btl" />
+            </LinearLayout>
+            <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/a95" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:lines="1" android:includeFontPadding="false" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

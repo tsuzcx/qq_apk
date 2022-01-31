@@ -1,38 +1,16 @@
-import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCConnector;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
+import android.graphics.Bitmap;
 
-public class xgd
-  implements EIPCOnGetConnectionListener
+public abstract interface xgd
 {
-  public xgd(QWalletIPCConnector paramQWalletIPCConnector) {}
+  public abstract void a(int paramInt);
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      QWalletIPCConnector.a(this.a, paramEIPCConnection.procName);
-    }
-    QWalletIPCConnector.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCConnector", 2, "onConnectBind");
-    }
-  }
+  public abstract void a(Bitmap paramBitmap);
   
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      QWalletIPCConnector.a(this.a, paramEIPCConnection.procName);
-    }
-    QWalletIPCConnector.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCConnector", 2, "onConnectUnbind");
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgd
  * JD-Core Version:    0.7.0.1
  */

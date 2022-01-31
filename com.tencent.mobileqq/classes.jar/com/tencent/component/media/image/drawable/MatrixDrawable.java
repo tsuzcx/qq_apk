@@ -4,13 +4,12 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
-import phz;
 
 public class MatrixDrawable
   extends DrawableContainer
 {
-  private final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private final phz jdField_a_of_type_Phz;
+  private final Matrix mMatrix = new Matrix();
+  private final MatrixDrawable.MatrixState mState;
   
   public MatrixDrawable(Drawable paramDrawable)
   {
@@ -19,34 +18,34 @@ public class MatrixDrawable
   
   public MatrixDrawable(Drawable paramDrawable, Matrix paramMatrix)
   {
-    this.jdField_a_of_type_Phz = new phz(paramDrawable, this);
-    setConstantState(this.jdField_a_of_type_Phz);
+    this.mState = new MatrixDrawable.MatrixState(paramDrawable, this);
+    setConstantState(this.mState);
     setMatrix(paramMatrix);
   }
   
-  private MatrixDrawable(phz paramphz, Resources paramResources)
+  private MatrixDrawable(MatrixDrawable.MatrixState paramMatrixState, Resources paramResources)
   {
-    this.jdField_a_of_type_Phz = new phz(paramphz, this, paramResources);
-    setConstantState(this.jdField_a_of_type_Phz);
+    this.mState = new MatrixDrawable.MatrixState(paramMatrixState, this, paramResources);
+    setConstantState(this.mState);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsMatrix.isIdentity())
+    if (this.mMatrix.isIdentity())
     {
       super.draw(paramCanvas);
       return;
     }
     int i = paramCanvas.getSaveCount();
     paramCanvas.save();
-    paramCanvas.concat(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    paramCanvas.concat(this.mMatrix);
     super.draw(paramCanvas);
     paramCanvas.restoreToCount(i);
   }
   
   public Matrix getMatrix()
   {
-    return this.jdField_a_of_type_AndroidGraphicsMatrix;
+    return this.mMatrix;
   }
   
   public void setMatrix(Matrix paramMatrix)
@@ -59,16 +58,16 @@ public class MatrixDrawable
         localMatrix = null;
       }
     }
-    if (((localMatrix == null) && (!this.jdField_a_of_type_AndroidGraphicsMatrix.isIdentity())) || ((localMatrix != null) && (!this.jdField_a_of_type_AndroidGraphicsMatrix.equals(localMatrix))))
+    if (((localMatrix == null) && (!this.mMatrix.isIdentity())) || ((localMatrix != null) && (!this.mMatrix.equals(localMatrix))))
     {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.set(localMatrix);
+      this.mMatrix.set(localMatrix);
       invalidateSelf();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.drawable.MatrixDrawable
  * JD-Core Version:    0.7.0.1
  */

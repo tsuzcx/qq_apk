@@ -1,0 +1,54 @@
+﻿{
+  "categoryId": 1,
+  "categoryName": "水印",
+  "content": [
+    {
+      "predownload": false,
+      "md5": "9711081bb21ceb476cd1124147d02bd2",
+      "id": "1",
+      "iconurl": "http://sqdd.myapp.com/myapp/qqteam/QIM/ShuiyinZiyuan/20190320/video_wonderfulday.png",
+      "resurl": "http://sqdd.myapp.com/myapp/qqteam/QIM/ShuiyinZiyuan/20190402tihuan/video_wonderfuldayAndroid2.zip",
+      "name": "video_wonderfuldayAndroid2"
+    },
+    {
+      "predownload": false,
+      "md5": "324a64b698cdcb3ea7045af16750be4e",
+      "id": "2",
+      "iconurl": "http://sqdd.myapp.com/myapp/qqteam/QIM/ShuiyinZiyuan/20190320/video_timeweather.png",
+      "resurl": "http://sqdd.myapp.com/myapp/qqteam/QIM/ShuiyinZiyuan/20190330/video_timeweatherAndroid.zip",
+      "name": "video_timeweatherAndroid"
+    },
+    {
+      "predownload": false,
+      "md5": "0874def3f3ae36c9cca9c2f71db551f5",
+      "id": "3",
+      "iconurl": "http://sqdd.myapp.com/myapp/qqteam/QIM/ShuiyinZiyuan/20190320/video_weatherlocation.png",
+      "resurl": "http://sqdd.myapp.com/myapp/qqteam/QIM/ShuiyinZiyuan/20190330/video_weatherlocationAndroid.zip",
+      "name": "video_weatherlocationAndroid"
+    },
+    {
+      "predownload": false,
+      "md5": "fcce932ce728ac1674985b17b395c228",
+      "id": "4",
+      "iconurl": "http://sqdd.myapp.com/myapp/qqteam/QIM/ShuiyinZiyuan/20190320/video_shenghuoriji.png",
+      "resurl": "http://sqdd.myapp.com/myapp/qqteam/QIM/ShuiyinZiyuan/20190330/video_shenghuorijiAndroid.zip",
+      "name": "video_shenghuorijiAndroid"
+    },
+    {
+      "predownload": false,
+      "md5": "1a30b02ea1b451211a0ab51fa7c72704",
+      "id": "5",
+      "iconurl": "http://sqdd.myapp.com/myapp/qqteam/QIM/ShuiyinZiyuan/20190321/guangchi190321.png",
+      "resurl": "http://sqdd.myapp.com/myapp/qqteam/QIM/ShuiyinZiyuan/20190402tihuan/video_guangchiAndroid.zip",
+      "name": "video_guangchiAndroid"
+    },
+    {
+      "predownload": false,
+      "md5": "cd04d04ff9aff0cf62da397da749dc6e",
+      "id": "6",
+      "iconurl": "http://sqdd.myapp.com/myapp/qqteam/QIM/ShuiyinZiyuan/20190322/hilocation190322.png",
+      "resurl": "http://sqdd.myapp.com/myapp/qqteam/QIM/ShuiyinZiyuan/20190326/video_hilocationAndroid.zip",
+      "name": "video_hilocationAndroid"
+    }
+  ]
+}

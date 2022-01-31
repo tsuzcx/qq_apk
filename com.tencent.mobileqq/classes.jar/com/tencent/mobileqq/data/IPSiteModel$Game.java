@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.data;
 
-import abty;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import aped;
 import java.util.List;
 
 public class IPSiteModel$Game
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abty();
+  public static final Parcelable.Creator<Game> CREATOR = new aped();
   public String cover;
   public String desc;
-  public List gameRiches;
+  public List<IPSiteModel.GameRich> gameRiches;
   public String id;
   public String jumpUrl;
   public String name;
@@ -20,7 +20,7 @@ public class IPSiteModel$Game
   
   public IPSiteModel$Game() {}
   
-  public IPSiteModel$Game(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, List paramList)
+  public IPSiteModel$Game(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, List<IPSiteModel.GameRich> paramList)
   {
     this.cover = paramString1;
     this.desc = paramString2;
@@ -54,7 +54,7 @@ public class IPSiteModel$Game
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.IPSiteModel.Game
  * JD-Core Version:    0.7.0.1
  */

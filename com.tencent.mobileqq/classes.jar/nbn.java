@@ -1,25 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.NetworkRequest;
-import com.tencent.biz.qqstory.channel.NetworkRequest.IProtocolListener;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
+import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
 
 public class nbn
-  extends Job
+  implements alpg
 {
-  public nbn(QQStoryCmdHandler paramQQStoryCmdHandler, NetworkRequest paramNetworkRequest) {}
+  protected void a(boolean paramBoolean, BmqqUserSimpleInfo paramBmqqUserSimpleInfo) {}
   
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a().a(880001, "no network", null);
-    return null;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramBoolean, (BmqqUserSimpleInfo)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nbn
  * JD-Core Version:    0.7.0.1
  */

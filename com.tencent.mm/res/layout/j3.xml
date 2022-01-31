@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/aez" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/af0" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/af1" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
+        <ProgressBar android:layout_gravity="center" android:id="@id/af2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a00" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,19 +1,10 @@
-import android.app.Dialog;
-import com.tencent.biz.qqstory.takevideo.EditPicSave;
-
-public class odo
-  implements Runnable
+public abstract interface odo
 {
-  public odo(EditPicSave paramEditPicSave) {}
-  
-  public void run()
-  {
-    EditPicSave.a(this.a).show();
-  }
+  public abstract void a(int paramInt1, String paramString, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     odo
  * JD-Core Version:    0.7.0.1
  */

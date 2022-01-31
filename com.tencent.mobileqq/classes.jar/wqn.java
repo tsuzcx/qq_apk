@@ -1,50 +1,81 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.OpenIdObserver;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import java.util.ArrayList;
+import java.util.List;
 
-public class wqn
-  extends OpenIdObserver
+public abstract class wqn<T extends FeedItem>
 {
-  public wqn(MainAssistObserver paramMainAssistObserver) {}
+  protected T a;
+  public boolean b;
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public wqn(@NonNull T paramT)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MainAssistObserver", 2, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID.toString() + " mOpenId = " + this.a.jdField_b_of_type_JavaLangString);
+    xqq.a(paramT);
+    this.a = paramT;
+  }
+  
+  public static wqn a(int paramInt)
+  {
+    FeedItem localFeedItem = FeedItem.createFeedItemByType(paramInt);
+    if (localFeedItem == null) {
+      return null;
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.isFinishing()) || (this.a.c)) {}
+    return localFeedItem.generateHomeFeed();
+  }
+  
+  public T a()
+  {
+    return this.a;
+  }
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt, vey paramvey, ves paramves, vev paramvev);
+  
+  public abstract boolean a(qqstory_struct.StoryFeed paramStoryFeed);
+  
+  public abstract void b();
+  
+  public List<StoryVideoItem> d()
+  {
+    return new ArrayList(0);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
     do
     {
-      do
-      {
-        return;
-        if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.hide();
-        }
-        if (this.a.jdField_b_of_type_AndroidOsHandler != null) {
-          this.a.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        }
-        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("MainAssistObserver", 2, "openIdObserver success");
-        }
-      } while ((TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) || (paramOpenID.openID.equals(this.a.jdField_b_of_type_JavaLangString)));
-      this.a.j();
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("MainAssistObserver", 2, "openIdObserver fail");
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (wqn)paramObject;
+      if (this.a != null) {
+        return this.a.equals(paramObject.a);
+      }
+    } while (paramObject.a == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.a != null) {
+      return this.a.hashCode();
+    }
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return this.a.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wqn
  * JD-Core Version:    0.7.0.1
  */

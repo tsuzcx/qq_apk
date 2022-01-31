@@ -1,28 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 
 public class sst
-  implements DialogInterface.OnClickListener
+  extends yiu
 {
-  public sst(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public sst(FolderFollowTabFragment paramFolderFollowTabFragment, Bundle paramBundle)
   {
-    paramDialogInterface.dismiss();
-    this.a.n = this.a.l;
-    FriendProfileMoreInfoActivity.a(this.a, this.a.l);
-    if (this.a.l)
-    {
-      this.a.a("0X80081E7", 4);
-      return;
-    }
-    this.a.a("0X80081E4", 3);
+    super(paramBundle);
   }
+  
+  protected BaseWidgetView a(ViewGroup paramViewGroup, yhy paramyhy)
+  {
+    return FolderFollowTabFragment.a(this.a);
+  }
+  
+  public void loadData(yii paramyii) {}
+  
+  public void onPrepareParams(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sst
  * JD-Core Version:    0.7.0.1
  */

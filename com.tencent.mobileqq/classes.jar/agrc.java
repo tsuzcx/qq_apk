@@ -1,51 +1,64 @@
-import android.os.Build.VERSION;
+import android.content.res.Resources;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
 
-public class agrc
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class agrc
+  implements bhuk
 {
-  public agrc(ProfileHeaderView paramProfileHeaderView, View paramView1, View paramView2, ProfileCardInfo paramProfileCardInfo) {}
+  agrc(agqq paramagqq, bhuf parambhuf) {}
   
-  public void onGlobalLayout()
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = this.jdField_a_of_type_AndroidViewView.getWidth() - AIOUtils.a(45.0F, this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.getResources());
-    int j = this.b.getWidth();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "updateJueban widthLike = " + i + ", widthJueban = " + j);
-    }
-    if ((i != 0) && (j != 0))
+    switch (paramInt)
     {
-      localObject = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).rightMargin -= (j - i) / 2;
-      this.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    Object localObject = new DataTag(34, null);
-    this.b.setTag(localObject);
-    this.b.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a(true);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(ProfileHeaderView.f, ProfileHeaderView.b);
-    if (Build.VERSION.SDK_INT < 16)
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      return;
+      try
+      {
+        this.jdField_a_of_type_Bhuf.dismiss();
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+      if (bdin.d(this.jdField_a_of_type_Agqq.a())) {
+        try
+        {
+          ((bema)this.jdField_a_of_type_Agqq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(107)).a(this.jdField_a_of_type_Agqq.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, new agrd(this));
+          this.jdField_a_of_type_Agqq.d = new bety(this.jdField_a_of_type_Agqq.a(), this.jdField_a_of_type_Agqq.a());
+          this.jdField_a_of_type_Agqq.d.setContentView(2131562577);
+          this.jdField_a_of_type_Agqq.d.a(this.jdField_a_of_type_Agqq.a().getString(2131692290));
+          this.jdField_a_of_type_Agqq.d.setCancelable(false);
+          this.jdField_a_of_type_Agqq.d.show();
+          paramView = this.jdField_a_of_type_Agqq.jdField_a_of_type_Bemq.a();
+          if ((paramView == null) || (!paramView.b())) {
+            continue;
+          }
+          azqs.b(this.jdField_a_of_type_Agqq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "run_away", 0, 0, "", "", "", "");
+        }
+        catch (Exception paramView)
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.e(this.jdField_a_of_type_Agqq.jdField_a_of_type_JavaLangString, 2, "the sessionInfo.curFriendUin is wrong: " + this.jdField_a_of_type_Agqq.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+          continue;
+        }
+      } else {
+        QQToast.a(this.jdField_a_of_type_Agqq.a(), 2130839392, this.jdField_a_of_type_Agqq.a().getResources().getString(2131694831), 0).b(this.jdField_a_of_type_Agqq.a());
+      }
     }
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrc
  * JD-Core Version:    0.7.0.1
  */

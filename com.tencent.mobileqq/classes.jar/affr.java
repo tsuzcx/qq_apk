@@ -1,57 +1,137 @@
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.galleryactivity.AnimationUtils;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.ArrayList;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.mobileqq.theme.effect.QEffectApngImageView;
+import com.tencent.qapmsdk.QAPM;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.effect.QEffectView;
 
 public class affr
-  implements View.OnClickListener
+  implements affa
 {
-  public affr(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  private long jdField_a_of_type_Long;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private QEffectView jdField_a_of_type_ComTencentQqEffectQEffectView;
   
-  public void onClick(View paramView)
+  public affr(BaseChatPie paramBaseChatPie)
   {
-    if (this.a.p)
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentQqEffectQEffectView != null) {
+      this.jdField_a_of_type_ComTencentQqEffectQEffectView.pause();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
     {
-      NearbyProfileDisplayTribePanel.b(this.a);
+    case 2: 
+    default: 
+    case 11: 
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_ComTencentQqEffectQEffectView == null);
+      StringBuilder localStringBuilder = new StringBuilder().append("destroy qeffect, duration:");
+      if (this.jdField_a_of_type_Long == 0L) {}
+      for (long l = this.jdField_a_of_type_Long;; l = System.currentTimeMillis() - this.jdField_a_of_type_Long)
+      {
+        QLog.i("QEffectBgProvider", 1, l);
+        if (this.jdField_a_of_type_ComTencentQqEffectQEffectView.getQEffectImpl() != null) {
+          ((View)this.jdField_a_of_type_ComTencentQqEffectQEffectView.getQEffectImpl()).destroyDrawingCache();
+        }
+        this.jdField_a_of_type_ComTencentQqEffectQEffectView.clear();
+        return;
+      }
+    case 12: 
+      a();
       return;
     }
-    PicInfo localPicInfo = (PicInfo)paramView.getTag();
-    paramView = AnimationUtils.a(paramView);
-    int i = 0;
-    label33:
-    if (i < this.a.a.jdField_a_of_type_JavaUtilArrayList.size()) {
-      if (localPicInfo.jdField_a_of_type_Int != ((PicInfo)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int) {}
+    b();
+  }
+  
+  public void a(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    String str1;
+    if ((paramSessionInfo != null) && (paramSessionInfo.jdField_a_of_type_Aeqq != null))
+    {
+      str1 = paramSessionInfo.jdField_a_of_type_JavaLangString;
+      if (this.jdField_a_of_type_ComTencentQqEffectQEffectView == null)
+      {
+        this.jdField_a_of_type_ComTencentQqEffectQEffectView = new QEffectView(paramContext);
+        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d.addView(this.jdField_a_of_type_ComTencentQqEffectQEffectView, 0, new ViewGroup.LayoutParams(-1, -1));
+      }
+      if (paramSessionInfo.jdField_a_of_type_Aeqq.a == null) {
+        break label335;
+      }
+      if ((paramSessionInfo.jdField_a_of_type_Aeqq.a instanceof apko)) {
+        paramSessionInfo = "aio-bg-static";
+      }
     }
     for (;;)
     {
-      this.a.a.a(i, paramView);
-      ReportController.b(this.a.a.app, "CliOper", "", "", "0X800482A", "0X800482A", 0, 0, "", "", "", "");
-      if (this.a.a.e == 3) {}
-      for (paramView = "2";; paramView = "1")
+      this.jdField_a_of_type_ComTencentQqEffectQEffectView.setExtOptions(2, QEffectApngImageView.a(new int[] { 0 }, "-chatBg-"));
+      String str2 = paramQQAppInterface.c();
+      int i = ChatBackgroundManager.a(paramContext, str2, str1);
+      if ((i > 0) && (ChatBackgroundManager.a()))
       {
-        ReportController.b(null, "dc00899", "grp_lbs", "", "data_card", "clk_pic", 0, 0, paramView, "", "", "");
-        if (!NearbyProxy.a(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h, this.a.a.e)) {
-          break;
-        }
-        this.a.a.app.a().b(localPicInfo.jdField_a_of_type_JavaLangString);
-        return;
-        i += 1;
-        break label33;
+        ((bduj)paramQQAppInterface.getManager(235)).a.a(i, new affs(this, i));
+        paramSessionInfo = paramSessionInfo + "-effect";
+        label181:
+        QAPM.setABFactor("AIO背景", paramSessionInfo, abvi.class);
       }
-      i = 0;
+      do
+      {
+        return;
+        if (!(paramSessionInfo.jdField_a_of_type_Aeqq.a instanceof URLDrawable)) {
+          break label335;
+        }
+        paramSessionInfo = "aio-bg-dynamic";
+        break;
+        if ((ChatBackgroundManager.a(paramContext, str2, str1)) && (ChatBackgroundManager.a()))
+        {
+          paramContext = aeqq.a(paramContext, str2, str1);
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          this.jdField_a_of_type_ComTencentQqEffectQEffectView.setSrc(paramContext.replace("aioImage", ""), "zip");
+          QLog.i("QEffectBgProvider", 1, "set qeffect for custom background aioImageID:" + ChatBackgroundManager.d(paramContext));
+          paramSessionInfo = paramSessionInfo + "-3d";
+          break label181;
+        }
+        this.jdField_a_of_type_ComTencentQqEffectQEffectView.clear();
+        break label181;
+      } while (this.jdField_a_of_type_ComTencentQqEffectQEffectView == null);
+      this.jdField_a_of_type_ComTencentQqEffectQEffectView.clear();
+      return;
+      label335:
+      paramSessionInfo = "aio-bg-default";
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 2, 11, 12, 13, 14 };
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentQqEffectQEffectView != null) {
+      this.jdField_a_of_type_ComTencentQqEffectQEffectView.resume();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     affr
  * JD-Core Version:    0.7.0.1
  */

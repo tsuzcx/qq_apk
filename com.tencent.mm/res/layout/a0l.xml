@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/bwe" android:background="#fff3f3f3" style="@style/q1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/ko" android:textColor="@color/w_" android:gravity="left" android:id="@id/bwc" android:paddingLeft="@dimen/l2" android:paddingTop="@dimen/l5" android:paddingRight="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/bww" android:layout_alignParentTop="true" />
+    <TextView android:textSize="@dimen/nh" android:gravity="left" android:paddingLeft="@dimen/l2" android:paddingTop="20.0dip" android:paddingRight="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/bwx" android:layout_below="@id/bwc" style="@style/l1" />
+    <TextView android:textSize="@dimen/nh" android:textColor="@color/a8_" android:gravity="center" android:id="@id/azb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m1" android:layout_marginRight="@dimen/m1" android:layout_marginBottom="@dimen/l6" android:text="@string/bwv" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <Button android:id="@id/b_e" android:layout_marginLeft="@dimen/m1" android:layout_marginRight="@dimen/m1" android:layout_marginBottom="@dimen/l6" android:text="@string/bwy" android:layout_above="@id/azb" style="@style/nq" />
+</RelativeLayout>

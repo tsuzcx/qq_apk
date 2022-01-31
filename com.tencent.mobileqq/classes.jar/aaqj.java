@@ -1,31 +1,42 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.content.IntentFilter;
 
 public class aaqj
-  implements Runnable
 {
-  public aaqj(ArkAppMusicModule paramArkAppMusicModule, SongInfo paramSongInfo) {}
+  private aaql jdField_a_of_type_Aaql;
+  private aaqm jdField_a_of_type_Aaqm;
+  private Context jdField_a_of_type_AndroidContentContext;
   
-  public void run()
+  public aaqj(Context paramContext)
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((localBaseActivity instanceof FragmentActivity))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Aaql = new aaql(this, null);
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("android.media.VOLUME_CHANGED_ACTION");
+    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Aaql, localIntentFilter);
+  }
+  
+  public void a(aaqm paramaaqm)
+  {
+    this.jdField_a_of_type_Aaqm = paramaaqm;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Aaql != null) && (this.jdField_a_of_type_AndroidContentContext != null))
     {
-      QQPlayerService.a(new Intent(BaseApplication.getContext(), MusicPlayerActivity.class));
-      QQPlayerService.a(101);
-      QQPlayerService.a(localBaseActivity, ArkAppMusicModule.a(), new SongInfo[] { this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo });
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Aaql);
+      this.jdField_a_of_type_Aaqm = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaqj
  * JD-Core Version:    0.7.0.1
  */

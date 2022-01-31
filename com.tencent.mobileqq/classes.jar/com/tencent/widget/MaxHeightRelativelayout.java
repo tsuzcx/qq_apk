@@ -5,6 +5,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.RelativeLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class MaxHeightRelativelayout
   extends RelativeLayout
@@ -38,7 +39,15 @@ public class MaxHeightRelativelayout
         i = View.MeasureSpec.makeMeasureSpec(this.a, j);
       }
     }
-    super.onMeasure(paramInt1, i);
+    try
+    {
+      super.onMeasure(paramInt1, i);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("MaxHeightRelativelayout", 1, "-->MaxHeightRelativelayout.onMeasure : ", localException);
+    }
   }
   
   public void setMaxHeight(int paramInt)
@@ -51,7 +60,7 @@ public class MaxHeightRelativelayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.MaxHeightRelativelayout
  * JD-Core Version:    0.7.0.1
  */

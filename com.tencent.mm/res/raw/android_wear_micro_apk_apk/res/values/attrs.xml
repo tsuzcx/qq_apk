@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="a" format="dimension" />
+    <attr name="b" format="dimension" />
+    <attr name="c">
+        <flag name="g" value="0x0000000f" />
+        <flag name="h" value="0x00000008" />
+        <flag name="i" value="0x00000001" />
+        <flag name="j" value="0x00000004" />
+        <flag name="k" value="0x00000002" />
+    </attr>
+    <attr name="d" format="color" />
+    <attr name="e" format="dimension" />
+    <attr name="f" format="dimension" />
+    <attr name="g" format="dimension" />
+    <attr name="h" format="color" />
+    <attr name="i" format="dimension" />
+    <attr name="j" format="dimension" />
+    <attr name="k" format="dimension" />
+    <attr name="l" format="dimension" />
+    <attr name="m" format="color" />
+    <attr name="n" format="fraction" />
+    <attr name="o" format="fraction" />
+    <attr name="p">
+        <enum name="l" value="1" />
+        <enum name="m" value="0" />
+        <enum name="n" value="2" />
+    </attr>
+    <attr name="q">
+        <enum name="o" value="1" />
+        <enum name="p" value="0" />
+    </attr>
+    <attr name="r" format="reference|color" />
+    <attr name="s" format="dimension" />
+    <attr name="t" format="integer" />
+    <attr name="u" format="dimension" />
+    <attr name="v" format="dimension" />
+    <attr name="w" format="dimension" />
+    <attr name="x" format="color" />
+    <attr name="y" format="color" />
+    <attr name="z" format="boolean" />
+    <attr name="a0" format="integer" />
+    <attr name="a1" format="integer" />
+    <attr name="a2" format="integer" />
+    <attr name="a3" format="color" />
+    <attr name="a4" format="dimension" />
+    <attr name="a5" format="dimension" />
+    <attr name="a6" format="dimension" />
+    <attr name="a7" format="string" />
+    <attr name="a8" format="string" />
+    <attr name="a9" format="string" />
+    <attr name="a_" format="reference" />
+    <attr name="aa">
+        <enum name="q" value="1" />
+        <enum name="r" value="0" />
+    </attr>
+    <attr name="ab" format="integer">
+        <enum name="s" value="-1" />
+    </attr>
+    <attr name="ac">
+        <enum name="t" value="1" />
+        <enum name="u" value="0" />
+    </attr>
+    <attr name="ad" format="reference" />
+    <attr name="ae" format="integer" />
+    <attr name="af">
+        <enum name="m" value="0" />
+        <enum name="v" value="2" />
+        <enum name="w" value="1" />
+    </attr>
+    <attr name="ag" format="float" />
+    <attr name="ah" format="boolean" />
+    <attr name="ai" format="reference|color" />
+    <attr name="aj" format="string" />
+    <attr name="ak" format="integer" />
+    <attr name="al" format="boolean" />
+    <attr name="am" format="boolean" />
+    <attr name="an" format="reference">
+        <enum name="x" value="2" />
+        <enum name="y" value="0" />
+        <enum name="z" value="1" />
+    </attr>
+    <attr name="ao" format="reference">
+        <enum name="a0" value="2" />
+        <enum name="a1" value="0" />
+        <enum name="a2" value="1" />
+    </attr>
+    <attr name="ap" format="reference|string" />
+    <attr name="aq" format="reference" />
+    <attr name="ar" format="reference" />
+    <attr name="as">
+        <flag name="h" value="0x00000050" />
+        <flag name="i" value="0x00000003" />
+        <flag name="j" value="0x00000005" />
+        <flag name="k" value="0x00000030" />
+        <flag name="o" value="0x00000011" />
+        <flag name="a3" value="0x00000001" />
+        <flag name="a4" value="0x00000010" />
+        <flag name="a5" value="0x00000008" />
+        <flag name="a6" value="0x00000080" />
+        <flag name="a7" value="0x00800005" />
+        <flag name="a8" value="0x00000077" />
+        <flag name="a9" value="0x00000007" />
+        <flag name="a_" value="0x00000070" />
+        <flag name="aa" value="0x00800003" />
+    </attr>
+    <attr name="at" format="dimension" />
+    <attr name="au" format="dimension" />
+    <attr name="av" format="dimension" />
+    <attr name="aw" format="dimension" />
+    <attr name="ax" format="dimension" />
+    <attr name="ay" format="dimension" />
+    <attr name="az" format="dimension" />
+    <attr name="b0">
+        <flag name="h" value="0x00000050" />
+        <flag name="i" value="0x00000003" />
+        <flag name="j" value="0x00000005" />
+        <flag name="k" value="0x00000030" />
+        <flag name="o" value="0x00000011" />
+        <flag name="a3" value="0x00000001" />
+        <flag name="a4" value="0x00000010" />
+    </attr>
+    <attr name="b1" format="dimension" />
+</resources>

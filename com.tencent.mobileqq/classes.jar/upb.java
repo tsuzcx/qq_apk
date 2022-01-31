@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgNumAnim;
+import android.support.annotation.Nullable;
+import java.lang.ref.WeakReference;
 
-public class upb
-  implements Runnable
+class upb
 {
-  public upb(GoldMsgNumAnim paramGoldMsgNumAnim) {}
+  private WeakReference<upa> a;
   
-  public void run()
+  public upb(upa paramupa)
   {
-    this.a.a();
+    this.a = new WeakReference(paramupa);
+  }
+  
+  @Nullable
+  public upa a()
+  {
+    return (upa)this.a.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     upb
  * JD-Core Version:    0.7.0.1
  */

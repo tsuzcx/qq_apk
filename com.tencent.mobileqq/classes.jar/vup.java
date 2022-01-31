@@ -1,21 +1,32 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.app.HotChatHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 public class vup
-  implements Runnable
+  extends vut<StoryVideoItem>
 {
-  public vup(HotChatPie paramHotChatPie) {}
-  
-  public void run()
+  public vup(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    ((HotChatHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    super(paramVideoViewVideoHolder, null);
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem)
+  {
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    wxe.d(this.a.a, "VideoStartSegment, error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vup
  * JD-Core Version:    0.7.0.1
  */

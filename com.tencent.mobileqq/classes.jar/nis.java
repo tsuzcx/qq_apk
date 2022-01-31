@@ -1,20 +1,19 @@
-import com.tencent.biz.qqstory.base.preload.FileCacheUtils;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class nis
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  nis(nir paramnir, String paramString) {}
+  nis(nin paramnin) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    FileCacheUtils.a(this.jdField_a_of_type_Nir.a, this.jdField_a_of_type_JavaLangString, 0, StoryReportor.a(BaseApplicationImpl.getContext()));
+    this.a.f = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nis
  * JD-Core Version:    0.7.0.1
  */

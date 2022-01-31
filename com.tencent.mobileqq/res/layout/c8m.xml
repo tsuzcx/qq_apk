@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/lj0" android:background="@drawable/intimate_relationship_card_item" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/lj2" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="20.0dip">
+        <TextView android:textSize="14.0sp" android:textColor="@color/intimate_relationship_text_color" android:layout_gravity="center_vertical" android:id="@id/lj1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="22" android:includeFontPadding="false" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/intimate_relationship_text_gray_color" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="@string/ir7" android:includeFontPadding="false" android:layout_weight="1.0" />
+        <ImageView android:id="@id/liz" android:layout_width="7.0dip" android:layout_height="11.0dip" android:layout_marginTop="2.0dip" android:src="@drawable/intimate_relationship_arrow" android:layout_alignTop="@id/lj1" android:layout_alignParentRight="true" android:contentDescription="@string/pb" />
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView android:id="@id/liy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="16.0dip" />
+</LinearLayout>

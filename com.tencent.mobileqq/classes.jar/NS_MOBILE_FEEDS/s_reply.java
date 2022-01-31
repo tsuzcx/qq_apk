@@ -11,19 +11,24 @@ public final class s_reply
   extends JceStruct
 {
   static s_audio cache_audio;
-  static Map cache_extendInfo;
-  static ArrayList cache_replypic;
+  static Map<String, String> cache_extendInfo;
+  static ArrayList<s_likeman> cache_likemans;
+  static ArrayList<s_picdata> cache_replypic;
   static s_user cache_target;
   static s_user cache_user = new s_user();
   public s_audio audio;
   public String content = "";
   public int date;
   public int displayflag;
-  public Map extendInfo;
+  public Map<String, String> extendInfo;
   public boolean isDeleted;
+  public int isliked;
+  public int likeNum;
+  public ArrayList<s_likeman> likemans;
   public String refer = "";
+  public String replyLikeKey = "";
   public String replyid = "";
-  public ArrayList replypic;
+  public ArrayList<s_picdata> replypic;
   public s_user target;
   public s_user user;
   
@@ -32,15 +37,18 @@ public final class s_reply
     cache_audio = new s_audio();
     cache_target = new s_user();
     cache_replypic = new ArrayList();
-    s_picdata locals_picdata = new s_picdata();
-    cache_replypic.add(locals_picdata);
+    Object localObject = new s_picdata();
+    cache_replypic.add(localObject);
     cache_extendInfo = new HashMap();
     cache_extendInfo.put("", "");
+    cache_likemans = new ArrayList();
+    localObject = new s_likeman();
+    cache_likemans.add(localObject);
   }
   
   public s_reply() {}
   
-  public s_reply(String paramString1, s_user params_user1, String paramString2, int paramInt1, String paramString3, s_audio params_audio, s_user params_user2, ArrayList paramArrayList, boolean paramBoolean, Map paramMap, int paramInt2)
+  public s_reply(String paramString1, s_user params_user1, String paramString2, int paramInt1, String paramString3, s_audio params_audio, s_user params_user2, ArrayList<s_picdata> paramArrayList, boolean paramBoolean, Map<String, String> paramMap, int paramInt2, int paramInt3, String paramString4, int paramInt4, ArrayList<s_likeman> paramArrayList1)
   {
     this.replyid = paramString1;
     this.user = params_user1;
@@ -53,6 +61,10 @@ public final class s_reply
     this.isDeleted = paramBoolean;
     this.extendInfo = paramMap;
     this.displayflag = paramInt2;
+    this.likeNum = paramInt3;
+    this.replyLikeKey = paramString4;
+    this.isliked = paramInt4;
+    this.likemans = paramArrayList1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -68,6 +80,10 @@ public final class s_reply
     this.isDeleted = paramJceInputStream.read(this.isDeleted, 8, false);
     this.extendInfo = ((Map)paramJceInputStream.read(cache_extendInfo, 9, false));
     this.displayflag = paramJceInputStream.read(this.displayflag, 10, false);
+    this.likeNum = paramJceInputStream.read(this.likeNum, 11, false);
+    this.replyLikeKey = paramJceInputStream.readString(12, false);
+    this.isliked = paramJceInputStream.read(this.isliked, 13, false);
+    this.likemans = ((ArrayList)paramJceInputStream.read(cache_likemans, 14, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -99,11 +115,19 @@ public final class s_reply
       paramJceOutputStream.write(this.extendInfo, 9);
     }
     paramJceOutputStream.write(this.displayflag, 10);
+    paramJceOutputStream.write(this.likeNum, 11);
+    if (this.replyLikeKey != null) {
+      paramJceOutputStream.write(this.replyLikeKey, 12);
+    }
+    paramJceOutputStream.write(this.isliked, 13);
+    if (this.likemans != null) {
+      paramJceOutputStream.write(this.likemans, 14);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_reply
  * JD-Core Version:    0.7.0.1
  */

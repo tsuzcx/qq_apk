@@ -1,28 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAtlasViewPager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAtlasViewPager.PageItemScrollListener;
-
 public class mgt
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public mgt(ReadInJoyAtlasViewPager paramReadInJoyAtlasViewPager) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.getChildAt(this.a.getCurrentItem()).setScrollY(((Float)paramValueAnimator.getAnimatedValue()).intValue());
-    if (ReadInJoyAtlasViewPager.a(this.a) != null) {
-      ReadInJoyAtlasViewPager.a(this.a).a(0.0F, this.a.getChildAt(this.a.getCurrentItem()).getScrollY(), null);
-    }
-    if ((paramValueAnimator.getAnimatedFraction() == 1.0F) && (ReadInJoyAtlasViewPager.a(this.a) != null)) {
-      ReadInJoyAtlasViewPager.a(this.a).a();
-    }
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mgt
  * JD-Core Version:    0.7.0.1
  */

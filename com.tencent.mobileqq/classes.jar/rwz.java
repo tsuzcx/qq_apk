@@ -1,23 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 
-public final class rwz
-  implements DialogInterface.OnClickListener
+public class rwz
+  implements biac
 {
-  public rwz(ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
+  public rwz(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.a != null) {
-      this.a.a();
-    }
-    paramDialogInterface.dismiss();
-  }
+  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rwz
  * JD-Core Version:    0.7.0.1
  */

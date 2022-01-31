@@ -1,34 +1,35 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class acck
-  extends VasQuickUpdateManager.CallBacker
+public class acck
+  implements URLDrawable.URLDrawableListener
 {
-  acck(acbg paramacbg, MessengerService paramMessengerService) {}
+  public acck(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((paramLong == 15L) && ("cardWZ.zip".equals(paramString1)))
+    if (paramURLDrawable != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a != null)
-      {
-        paramString1 = new Bundle();
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a.putString("cmd", "card_download_wzry_template");
-        paramString1.putInt("result", paramInt1);
-        paramString1.putString("message", paramString3);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a.putBundle("response", paramString1);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a = null;
-      }
-      paramVasQuickUpdateManager.b(this);
+      paramURLDrawable = bdhj.a(paramURLDrawable);
+      QQAppInterface localQQAppInterface = this.a.app;
+      paramURLDrawable = QQAppInterface.a(paramURLDrawable, 50, 50);
+      this.a.a.setImageDrawable(new BitmapDrawable(paramURLDrawable));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acck
  * JD-Core Version:    0.7.0.1
  */

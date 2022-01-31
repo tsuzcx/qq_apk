@@ -6,10 +6,10 @@ import java.util.ArrayList;
 final class FragmentActivity$NonConfigurationInstances
 {
   Object activity;
-  SimpleArrayMap children;
+  SimpleArrayMap<String, Object> children;
   Object custom;
-  ArrayList fragments;
-  SimpleArrayMap loaders;
+  ArrayList<Fragment> fragments;
+  SimpleArrayMap<String, LoaderManagerImpl> loaders;
 }
 
 

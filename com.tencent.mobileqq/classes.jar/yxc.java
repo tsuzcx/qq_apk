@@ -1,29 +1,35 @@
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
+import android.content.res.Resources;
+import android.os.Handler;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.view.ApolloFavViewBinder;
-import com.tencent.mobileqq.apollo.view.ApolloLinearLayout.ViewHolder;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.biz.ui.CustomMenuBar;
 
 public class yxc
-  implements Runnable
+  implements PopupWindow.OnDismissListener
 {
-  public yxc(ApolloFavViewBinder paramApolloFavViewBinder, ImageView paramImageView, RelativeLayout paramRelativeLayout1, RelativeLayout paramRelativeLayout2, ApolloLinearLayout.ViewHolder paramViewHolder) {}
+  public yxc(CustomMenuBar paramCustomMenuBar, ImageView paramImageView, TextView paramTextView) {}
   
-  public void run()
+  public void onDismiss()
   {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -0.5F, 1, 0.5F, 1, -0.5F, 1, 0.5F);
-    localTranslateAnimation.setDuration(400L);
-    localTranslateAnimation.setRepeatCount(1);
-    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    localTranslateAnimation.setAnimationListener(new yxd(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localTranslateAnimation);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842853);
+    if (CustomMenuBar.a()) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131165996));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = true;
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable, 50L);
+      return;
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131165995));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yxc
  * JD-Core Version:    0.7.0.1
  */

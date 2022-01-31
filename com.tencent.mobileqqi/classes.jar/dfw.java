@@ -1,82 +1,53 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.ShieldListObserver;
-import com.tencent.mobileqq.util.Utils;
-import java.util.List;
+import android.content.Intent;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.international.LocaleUtil;
 
 public class dfw
-  extends ShieldListObserver
+  implements View.OnClickListener
 {
-  public dfw(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public dfw(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  protected void a(boolean paramBoolean, List paramList)
+  public void onClick(View paramView)
   {
-    if (this.a.a == null) {
+    if (!RegisterPhoneNumActivity.a(this.a)) {
       return;
     }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.h(this.a.a)) {
-      str = ProfileCardMoreActivity.a(this.a);
+    RegisterPhoneNumActivity.a(this.a, false);
+    this.a.b.postDelayed(new dfx(this), 1000L);
+    paramView = new Intent(this.a, QQBrowserActivity.class);
+    if (LocaleUtil.a(this.a.getApplicationContext()) == 2) {
+      this.a.f = this.a.f.replace("{language}", "ch_simple");
     }
     for (;;)
     {
-      if (paramList == null) {}
-      int k;
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        k = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k == 0) {
-        break;
-      }
-      this.a.a(paramBoolean, false);
+      paramView.putExtra("url", this.a.f);
+      this.a.startActivity(paramView);
       return;
-    }
-  }
-  
-  protected void b(boolean paramBoolean, List paramList)
-  {
-    int k = 0;
-    if (this.a.a == null) {
-      return;
-    }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.h(this.a.a)) {
-      str = ProfileCardMoreActivity.a(this.a);
-    }
-    for (;;)
-    {
-      if (paramList == null) {}
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
+      if (LocaleUtil.a(this.a.getApplicationContext()) == 3) {
+        this.a.f = this.a.f.replace("{language}", "ch_chT");
+      } else if (LocaleUtil.a(this.a.getApplicationContext()) == 1) {
+        this.a.f = this.a.f.replace("{language}", "English");
+      } else if (LocaleUtil.a(this.a.getApplicationContext()) == 4) {
+        this.a.f = this.a.f.replace("{language}", "Japanese");
+      } else if (LocaleUtil.a(this.a.getApplicationContext()) == 5) {
+        this.a.f = this.a.f.replace("{language}", "Korean");
+      } else if (LocaleUtil.a(this.a.getApplicationContext()) == 6) {
+        this.a.f = this.a.f.replace("{language}", "Deutsch");
+      } else if (LocaleUtil.a(this.a.getApplicationContext()) == 7) {
+        this.a.f = this.a.f.replace("{language}", "Fran");
+      } else if (LocaleUtil.a(this.a.getApplicationContext()) == 8) {
+        this.a.f = this.a.f.replace("{language}", "Espa");
       }
-      if (k == 0) {
-        break;
-      }
-      this.a.a(paramBoolean, true);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dfw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,13 @@
 package com.tencent.mobileqq.msf.core;
 
-import com.tencent.qphone.base.util.QLog;
-
 class aa
-  extends Thread
+  implements Runnable
 {
-  aa(x paramx) {}
+  aa(y paramy, MsfCore paramMsfCore) {}
   
   public void run()
   {
-    x.b(this.a, true);
-    int i = 0;
-    while (i < x.b(this.a).h)
-    {
-      i += 1;
-      if (x.c(this.a))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQWiFiScanManager", 2, "accScan, launch count=" + i);
-        }
-        try
-        {
-          Thread.sleep(x.b(this.a).i);
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          localInterruptedException.printStackTrace();
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("QQWiFiScanManager", 2, "accScan, count=" + i + ", stopped");
-      }
-    }
-    x.b(this.a, false);
+    y.a(this.b, this.a);
   }
 }
 

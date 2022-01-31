@@ -1,102 +1,102 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.dating.DatingUtil;
-import com.tencent.mobileqq.dating.StrangerHdHeadUrlFetcher;
-import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.cmd0xb85.Oidb_0xb85.GetRankListRspBody;
+import tencent.im.oidb.cmd0xb85.Oidb_0xb85.RspBody;
+import tencent.im.oidb.ranklist_comm.ranklist_comm.RankItem;
 
-public class abxw
-  extends FriendListObserver
+class abxw
+  extends nac
 {
-  public abxw(StrangerHdHeadUrlFetcher paramStrangerHdHeadUrlFetcher) {}
+  abxw(abxv paramabxv, abyh paramabyh, JSONObject paramJSONObject, abwu paramabwu) {}
   
-  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    localObject3 = null;
-    String str1;
-    if ((paramBoolean) && (paramSetting != null))
-    {
-      str1 = paramSetting.uin;
-      if ((str1 != null) && (str1.startsWith("stranger_")) && (this.a.jdField_a_of_type_JavaUtilSet.contains(str1))) {
-        if (TextUtils.isEmpty(paramSetting.url)) {
-          break label186;
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i(abxv.a, 2, "onResult appid=" + abxv.a(this.jdField_a_of_type_Abxv).a + ", openid=" + this.jdField_a_of_type_Abyh.a + ", openkey=" + this.jdField_a_of_type_Abyh.b + ", code=" + paramInt + ", req param=" + this.jdField_a_of_type_OrgJsonJSONObject);
     }
-    for (paramSetting = StrangerHdHeadUrlFetcher.a(32, paramSetting.url, paramSetting.bHeadType, paramSetting.bFaceFlags);; paramSetting = null)
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      if (!TextUtils.isEmpty(paramSetting)) {
-        this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str1, paramSetting);
+      acab.a(this.jdField_a_of_type_Abwu, paramInt, "getRankingList result error, try again");
+      return;
+    }
+    paramBundle = new Oidb_0xb85.RspBody();
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = paramBundle;
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      for (;;)
+      {
+        label358:
+        paramArrayOfByte = null;
+        paramBundle.printStackTrace();
+        continue;
+        paramBundle.put("rankingList", localObject);
+        Object localObject = new JSONObject();
+        paramArrayOfByte = (ranklist_comm.RankItem)paramArrayOfByte.self_rank_item.get();
+        ((JSONObject)localObject).put("nickName", paramArrayOfByte.nick.get());
+        ((JSONObject)localObject).put("avatarUrl", paramArrayOfByte.figure.get());
+        ((JSONObject)localObject).put("score", paramArrayOfByte.value.get());
+        ((JSONObject)localObject).put("rank", paramArrayOfByte.rank.get());
+        paramBundle.put("selfRank", localObject);
       }
+      acab.a(this.jdField_a_of_type_Abwu, -1, "parse result error, try again");
+    }
+    if (paramArrayOfByte != null)
+    {
+      paramBundle = new JSONObject();
       try
       {
-        i = str1.indexOf('_');
-        j = str1.indexOf('_', i + 1);
-        i = Integer.parseInt(str1.substring(i + 1, j));
-      }
-      catch (NumberFormatException localNumberFormatException1)
-      {
-        for (;;)
+        localObject = new JSONArray();
+        paramArrayOfByte = (Oidb_0xb85.GetRankListRspBody)paramArrayOfByte.get_ranklist_rsp.get();
+        Iterator localIterator = paramArrayOfByte.rpt_rank_item.get().iterator();
+        while (localIterator.hasNext())
         {
-          int j;
-          String str2;
-          i = 0;
-          DatingUtil.b("StrangerHdHeadUrlFetcher", new Object[] { localNumberFormatException1.toString() });
-          Object localObject1 = localObject3;
+          ranklist_comm.RankItem localRankItem = (ranklist_comm.RankItem)localIterator.next();
+          JSONObject localJSONObject = new JSONObject();
+          try
+          {
+            localJSONObject.put("nickName", localRankItem.nick.get());
+            localJSONObject.put("avatarUrl", localRankItem.figure.get());
+            localJSONObject.put("score", localRankItem.value.get());
+            localJSONObject.put("rank", localRankItem.rank.get());
+            ((JSONArray)localObject).put(localJSONObject);
+          }
+          catch (JSONException localJSONException) {}
+          if (QLog.isColorLevel()) {
+            QLog.e(abxv.a, 2, localJSONException.getMessage(), localJSONException);
+          }
+        }
+        if (!QLog.isDevelopLevel()) {
+          break label358;
         }
       }
-      catch (Exception localException1)
+      catch (JSONException paramArrayOfByte)
       {
-        for (;;)
-        {
-          label186:
-          int i = 0;
-          DatingUtil.b("StrangerHdHeadUrlFetcher", new Object[] { localException1.toString() });
-          Object localObject2 = localObject3;
+        if (QLog.isColorLevel()) {
+          QLog.e(abxv.a, 2, paramArrayOfByte.getMessage(), paramArrayOfByte);
         }
       }
-      try
-      {
-        str2 = str1.substring(j + 1);
-        ConnectNearbyProcService.a(4106, new Object[] { str2, Integer.valueOf(i), paramSetting });
-        StrangerHdHeadUrlFetcher.a(this.a, str1);
-        return;
-      }
-      catch (Exception localException2)
-      {
-        break label237;
-      }
-      catch (NumberFormatException localNumberFormatException2)
-      {
-        break label209;
-      }
-      str1 = null;
-      break;
-      DatingUtil.b("StrangerHdHeadUrlFetcher", new Object[] { "setting.url is null" });
-    }
-  }
-  
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      String str1 = StrangerHdHeadUrlFetcher.a(32, paramInt, paramString);
-      if (this.a.jdField_a_of_type_JavaUtilSet.contains(str1))
-      {
-        String str2 = this.a.a(paramString, paramInt, false);
-        if (!TextUtils.isEmpty(str2)) {
-          ConnectNearbyProcService.a(4106, new Object[] { paramString, Integer.valueOf(paramInt), str2 });
-        }
-        StrangerHdHeadUrlFetcher.a(this.a, str1);
-      }
+      QLog.i(abxv.a, 2, "result is, " + paramBundle.toString());
+      acab.a(this.jdField_a_of_type_Abwu, paramBundle);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxw
  * JD-Core Version:    0.7.0.1
  */

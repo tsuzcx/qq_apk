@@ -1,24 +1,16 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.activity.IndividuationSetActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
 
 public class cxb
   implements Runnable
 {
-  public cxb(IndividuationSetActivity paramIndividuationSetActivity) {}
+  public cxb(MySelfTroopMemberCard paramMySelfTroopMemberCard, String paramString) {}
   
   public void run()
   {
-    int i = (int)(this.a.getResources().getDisplayMetrics().density * 35.0F);
-    if (QLog.isColorLevel()) {
-      QLog.d("ThemeDownloadTrace", 2, "reqWidth is:" + i + ",reqHeight is:" + i);
-    }
-    Bitmap localBitmap = IndividuationSetActivity.a(this.a, i, i);
-    if (localBitmap != null) {
-      this.a.runOnUiThread(new cxc(this, localBitmap));
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.b = true;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.d = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.a.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.d);
   }
 }
 

@@ -1,24 +1,20 @@
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.open.agent.AuthorityLoginView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class alav
-  implements Runnable
+  implements aleg
 {
-  alav(alat paramalat) {}
+  alav(alas paramalas, boolean paramBoolean, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2) {}
   
-  public void run()
+  public void a(boolean paramBoolean, int paramInt)
   {
-    this.a.a.a.a(true);
-    if (this.a.a.a.a != null)
-    {
-      this.a.a.a.a.dismiss();
-      this.a.a.a.a = null;
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Alas.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alav
  * JD-Core Version:    0.7.0.1
  */

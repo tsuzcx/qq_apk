@@ -1,31 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.ApolloPushManager;
-import com.tencent.mobileqq.apollo.ApolloPushManager.OnActionPushListener;
-import com.tencent.mobileqq.data.ApolloActionPush;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
 
-public class ykv
-  implements ApolloPushManager.OnActionPushListener
+class ykv
+  implements Animator.AnimatorListener
 {
-  public ykv(ApolloPushManager paramApolloPushManager) {}
+  ykv(ykt paramykt, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public void a(int paramInt, ApolloActionPush paramApolloActionPush)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((ApolloPushManager.a(this.a) != null) && (paramApolloActionPush != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloPushManager", 2, "[onActionPush], aioType:" + paramInt + ";pushData:" + paramApolloActionPush.toString());
-      }
-      if ((ApolloPushManager.a(this.a).jdField_a_of_type_Int == paramInt) && (paramInt == ApolloPushManager.a(this.a).jdField_a_of_type_Int) && (!TextUtils.isEmpty(ApolloPushManager.a(this.a).jdField_a_of_type_JavaLangString)) && (ApolloPushManager.a(this.a).jdField_a_of_type_JavaLangString.equals(String.valueOf(paramApolloActionPush.mSessionId)))) {
-        this.a.a(paramApolloActionPush);
-      }
-    }
+    paramAnimator = (FrameLayout.LayoutParams)ykt.b(this.jdField_a_of_type_Ykt).getLayoutParams();
+    paramAnimator.height = this.jdField_a_of_type_Int;
+    paramAnimator.width = this.b;
+    paramAnimator.setMargins(this.c, this.d, 0, 0);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ykv
  * JD-Core Version:    0.7.0.1
  */

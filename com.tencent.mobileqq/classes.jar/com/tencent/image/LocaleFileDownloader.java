@@ -12,32 +12,31 @@ public class LocaleFileDownloader
 {
   public File getFile(DownloadParams paramDownloadParams)
   {
-    URL localURL = paramDownloadParams.url;
-    paramDownloadParams = null;
+    paramDownloadParams = paramDownloadParams.url;
     try
     {
-      File localFile1 = new File(localURL.toURI().getPath());
-      paramDownloadParams = localFile1;
+      File localFile1 = new File(paramDownloadParams.toURI().getPath());
+      return localFile1;
     }
     catch (URISyntaxException localURISyntaxException)
     {
-      do
+      try
       {
-        try
-        {
-          File localFile2 = new File(localURL.toString().replaceFirst("file:", ""));
-          return localFile2;
+        File localFile2 = new File(paramDownloadParams.toString().replaceFirst("file:", ""));
+        return localFile2;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("URLDrawable_", 2, "LocaleFileDownloader getFile error url:" + paramDownloadParams, localException);
         }
-        catch (Exception localException) {}
-      } while (!QLog.isColorLevel());
-      QLog.e("URLDrawable_", 2, "LocaleFileDownloader getFile error url:" + localURL, localException);
-      return null;
+        return null;
+      }
     }
     catch (NullPointerException paramDownloadParams)
     {
       paramDownloadParams.printStackTrace();
     }
-    return paramDownloadParams;
     return null;
   }
   
@@ -48,7 +47,6 @@ public class LocaleFileDownloader
   }
   
   public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-    throws Exception
   {
     paramURLDrawableHandler = getFile(paramDownloadParams);
     if ((paramURLDrawableHandler != null) && (paramURLDrawableHandler.exists())) {

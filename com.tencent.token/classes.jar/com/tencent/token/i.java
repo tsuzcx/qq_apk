@@ -1,79 +1,978 @@
 package com.tencent.token;
 
-public class i
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.halley.common.c;
+import com.tencent.halley.common.e;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.ConnectException;
+import java.net.HttpURLConnection;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
+import java.net.URL;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+public abstract class i
+  implements m
 {
-  private String a = "";
+  private static String e = "CommReq";
+  private boolean A = false;
+  protected String a;
+  protected Map b = null;
+  public boolean c = false;
+  public u d;
+  private List f = null;
+  private String g;
+  private k h = new k();
+  private int i = 0;
+  private String j = "";
+  private int k = 4096;
+  private int l = 8;
+  private String m = "";
+  private URL n = null;
+  private HttpURLConnection o = null;
+  private InputStream p = null;
+  private String q = "";
+  private String r = "";
+  private String s = "";
+  private String t = "";
+  private String u = "";
+  private String v = "";
+  private long w = -1L;
+  private List x = null;
+  private long y = -1L;
+  private volatile boolean z = false;
   
-  public i()
+  private void a(String paramString)
   {
-    a();
-  }
-  
-  private void a()
-  {
-    try
+    Object localObject = "";
+    if (this.o != null) {
+      localObject = this.o.getHeaderField("X-Extra-Servers");
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject)) {}
+    for (;;)
     {
-      this.a = "";
       return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  protected final void a(Exception paramException)
-  {
-    try
-    {
-      this.a = (this.a + paramException.getMessage() + ":");
-      paramException = paramException.getStackTrace();
-      if (paramException.length != 0)
+      try
       {
-        paramException = paramException[0];
-        this.a = (this.a + paramException.getClassName() + "." + paramException.getMethodName() + "\n");
+        boolean bool = "http".equals(new URL(paramString).getProtocol());
+        if ((!bool) || (!paramString.startsWith("http://"))) {
+          continue;
+        }
+        int i1 = "http://".length();
+        int i2 = paramString.indexOf("/", i1);
+        if (i2 == -1) {
+          continue;
+        }
+        paramString.substring(i1, i2);
+        paramString = paramString.substring(i2);
+        localObject = ((String)localObject).split(";");
+        if ((localObject == null) || (localObject.length <= 0)) {
+          continue;
+        }
+        this.x = new ArrayList();
+        i2 = localObject.length;
+        i1 = 0;
+        while (i1 < i2)
+        {
+          String str = localObject[i1];
+          this.x.add("http://" + str + paramString);
+          i1 += 1;
+        }
+        return;
       }
-      return;
+      catch (Exception paramString) {}
     }
-    finally {}
   }
   
-  protected final void a(Throwable paramThrowable)
+  private void a(Throwable paramThrowable)
   {
+    paramThrowable.printStackTrace();
+    c.a(e, "handleException:", paramThrowable);
+    this.j = (paramThrowable.getClass().getName() + "|" + paramThrowable);
+    if (this.z)
+    {
+      this.i = -66;
+      return;
+    }
+    if (!o.f())
+    {
+      this.i = -15;
+      return;
+    }
+    if (o.h())
+    {
+      this.i = -52;
+      return;
+    }
+    if (!e.a())
+    {
+      this.i = -16;
+      return;
+    }
+    this.i = b(paramThrowable);
+  }
+  
+  private static int b(Throwable paramThrowable)
+  {
+    int i2 = -48;
     try
     {
-      this.a = (this.a + paramThrowable.getMessage() + ":");
-      paramThrowable = paramThrowable.getStackTrace();
-      if (paramThrowable.length != 0)
+      boolean bool = paramThrowable.getMessage().contains("Permission");
+      if (!bool) {
+        break label24;
+      }
+      i1 = -71;
+    }
+    catch (Throwable localThrowable)
+    {
+      label24:
+      do
       {
-        paramThrowable = paramThrowable[0];
-        this.a = (this.a + paramThrowable.getClassName() + "." + paramThrowable.getMethodName() + "\n");
+        do
+        {
+          if (!(paramThrowable instanceof Exception)) {
+            return -70;
+          }
+          i1 = i2;
+        } while (paramThrowable == null);
+        if ((paramThrowable instanceof SocketTimeoutException)) {
+          return -25;
+        }
+        if ((paramThrowable instanceof UnknownHostException)) {
+          return -29;
+        }
+        if ((paramThrowable instanceof ConnectException)) {
+          return -24;
+        }
+        if ((paramThrowable instanceof SocketException)) {
+          return -26;
+        }
+        int i1 = i2;
+      } while (!(paramThrowable instanceof IOException));
+    }
+    return i1;
+    return -27;
+  }
+  
+  private static long b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = paramString.split("/");
+      if ((paramString != null) && (paramString.length == 2)) {
+        try
+        {
+          long l1 = Long.valueOf(paramString[1]).longValue();
+          return l1;
+        }
+        catch (NumberFormatException paramString)
+        {
+          paramString.printStackTrace();
+        }
+      }
+    }
+    return -1L;
+  }
+  
+  private static long c(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        long l1 = Long.valueOf(paramString).longValue();
+        return l1;
+      }
+      catch (NumberFormatException paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+    return -1L;
+  }
+  
+  private void s()
+  {
+    if (k.a(this.h).size() > 0) {
+      this.o.addRequestProperty("Range", this.h.toString());
+    }
+    int i2;
+    if (this.b != null)
+    {
+      Iterator localIterator = this.b.keySet().iterator();
+      int i1 = 0;
+      i2 = i1;
+      if (!localIterator.hasNext()) {
+        break label123;
+      }
+      String str1 = (String)localIterator.next();
+      String str2 = (String)this.b.get(str1);
+      this.o.addRequestProperty(str1, str2);
+      if (!"User-Agent".equalsIgnoreCase(str1)) {
+        break label141;
+      }
+      i1 = 1;
+    }
+    label141:
+    for (;;)
+    {
+      break;
+      i2 = 0;
+      label123:
+      if (i2 == 0) {
+        this.o.addRequestProperty("User-Agent", "HalleyService/2.0");
       }
       return;
     }
-    finally {}
   }
   
-  protected final void e(String paramString)
+  public final int a()
   {
+    return this.i;
+  }
+  
+  public final String a(boolean paramBoolean)
+  {
+    if ((this.f == null) || (this.f.size() == 0)) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i2 = this.f.size();
+    int i1 = 0;
+    while (i1 < i2 - 1)
+    {
+      localStringBuilder.append(com.tencent.halley.common.j.a((String)this.f.get(i1), false)).append("-");
+      i1 += 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public final void a(j paramj)
+  {
+    this.h.a(paramj);
+  }
+  
+  public final void a(l paraml)
+  {
+    long l7 = 0L;
+    long l5 = 0L;
+    long l3 = l5;
+    long l1 = l7;
+    long l2 = l5;
+    long l4 = l7;
+    for (;;)
+    {
+      long l9;
+      long l6;
+      int i1;
+      try
+      {
+        this.p = this.o.getInputStream();
+        l3 = l5;
+        l1 = l7;
+        l2 = l5;
+        l4 = l7;
+        Object localObject = this.h.b();
+        if (localObject == null)
+        {
+          l3 = l5;
+          l1 = l7;
+          l2 = l5;
+          l4 = l7;
+          l8 = this.w;
+          l3 = l5;
+          l1 = l7;
+          l2 = l5;
+          l4 = l7;
+          localObject = new byte[this.k];
+          l9 = 0L;
+          bool2 = true;
+          bool1 = true;
+          if (l9 >= l8) {
+            continue;
+          }
+          l3 = l5;
+          l1 = l7;
+          l2 = l5;
+          l4 = l7;
+          bool3 = this.d.a();
+          if (bool3)
+          {
+            q();
+            this.y = Math.max(this.y, l5 - l7);
+          }
+        }
+        else
+        {
+          l3 = l5;
+          l1 = l7;
+          l2 = l5;
+          l4 = l7;
+          l6 = ((j)localObject).b;
+          l3 = l5;
+          l1 = l7;
+          l2 = l5;
+          l4 = l7;
+          l8 = ((j)localObject).a;
+          l3 = l5;
+          l1 = l7;
+          l2 = l5;
+          l4 = l7;
+          if (((j)localObject).b != -1L) {
+            break label712;
+          }
+          l3 = l5;
+          l1 = l7;
+          l2 = l5;
+          l4 = l7;
+          l8 = this.w;
+          continue;
+        }
+        if (!bool1)
+        {
+          q();
+          this.y = Math.max(this.y, l5 - l7);
+          return;
+        }
+        l3 = l5;
+        l1 = l7;
+        l2 = l5;
+        l4 = l7;
+        i1 = (int)Math.min(this.k, l8 - l9);
+        l6 = l7;
+        if (l9 == 0L)
+        {
+          l3 = l5;
+          l1 = l7;
+          l2 = l5;
+          l4 = l7;
+          l6 = SystemClock.elapsedRealtime();
+        }
+        l3 = l5;
+        l1 = l6;
+        l2 = l5;
+        l4 = l6;
+        i1 = this.p.read((byte[])localObject, 0, i1);
+        l7 = l5;
+        if (l9 == 0L)
+        {
+          l3 = l5;
+          l1 = l6;
+          l2 = l5;
+          l4 = l6;
+          l7 = SystemClock.elapsedRealtime();
+        }
+        if (i1 != -1)
+        {
+          if (paraml != null)
+          {
+            l3 = l7;
+            l1 = l6;
+            l2 = l7;
+            l4 = l6;
+            if (this.d.a()) {
+              break label722;
+            }
+            l3 = l7;
+            l1 = l6;
+            l2 = l7;
+            l4 = l6;
+            bool1 = paraml.a((byte[])localObject, i1, bool2);
+            break label722;
+          }
+          l3 = l7;
+          l1 = l6;
+          l2 = l7;
+          l4 = l6;
+          c.d(e, "dataReceiver is null");
+          bool4 = bool1;
+          bool3 = bool2;
+        }
+      }
+      catch (Throwable paraml)
+      {
+        try
+        {
+          a(paraml);
+          l2 = l3;
+          if (l1 != 0L)
+          {
+            l2 = l3;
+            if (l3 == 0L) {
+              l2 = SystemClock.elapsedRealtime();
+            }
+          }
+          q();
+          this.y = Math.max(this.y, l2 - l1);
+          return;
+        }
+        finally
+        {
+          l2 = l3;
+          continue;
+        }
+        l3 = l7;
+        l1 = l6;
+        l2 = l7;
+        l4 = l6;
+        this.i = -62;
+        l3 = l7;
+        l1 = l6;
+        l2 = l7;
+        l4 = l6;
+        this.j = ("readLen:" + l9 + ",dataLen:" + l8);
+        q();
+        this.y = Math.max(this.y, l7 - l6);
+        return;
+        q();
+        this.y = Math.max(this.y, l5 - l7);
+        return;
+      }
+      finally
+      {
+        l1 = l4;
+        q();
+        this.y = Math.max(this.y, l2 - l1);
+      }
+      label712:
+      long l8 = l6 - l8;
+      continue;
+      label722:
+      boolean bool4 = bool1;
+      boolean bool3 = bool2;
+      if (bool2)
+      {
+        bool3 = false;
+        bool4 = bool1;
+      }
+      l9 += i1;
+      boolean bool1 = bool4;
+      boolean bool2 = bool3;
+      l5 = l7;
+      l7 = l6;
+    }
+  }
+  
+  public final String b()
+  {
+    return this.j;
+  }
+  
+  public final long c()
+  {
+    return this.w;
+  }
+  
+  public final String d()
+  {
+    return com.tencent.halley.common.j.a(this.g, false);
+  }
+  
+  public final String e()
+  {
+    if ((this.f != null) && (this.f.size() > 0)) {
+      return (String)this.f.get(this.f.size() - 1);
+    }
+    return null;
+  }
+  
+  public final String f()
+  {
+    String str2 = "";
+    String str1 = str2;
+    if (this.f != null)
+    {
+      str1 = str2;
+      if (this.f.size() > 0) {
+        str1 = (String)this.f.get(this.f.size() - 1);
+      }
+    }
+    return com.tencent.halley.common.j.a(str1, false);
+  }
+  
+  public final String g()
+  {
+    return this.m;
+  }
+  
+  public final String h()
+  {
+    return this.q;
+  }
+  
+  public final String i()
+  {
+    return this.r;
+  }
+  
+  public final String j()
+  {
+    return this.s;
+  }
+  
+  public final String k()
+  {
+    return this.u;
+  }
+  
+  public final String l()
+  {
+    return this.v;
+  }
+  
+  public final String m()
+  {
+    return this.t;
+  }
+  
+  public final List n()
+  {
+    return this.x;
+  }
+  
+  public final boolean o()
+  {
+    return this.h.a() > 0;
+  }
+  
+  /* Error */
+  public final void p()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 381	com/tencent/token/i:g	Ljava/lang/String;
+    //   4: invokestatic 124	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   7: ifeq +11 -> 18
+    //   10: aload_0
+    //   11: aload_0
+    //   12: getfield 388	com/tencent/token/i:a	Ljava/lang/String;
+    //   15: putfield 381	com/tencent/token/i:g	Ljava/lang/String;
+    //   18: aload_0
+    //   19: invokevirtual 334	com/tencent/token/i:q	()V
+    //   22: iconst_0
+    //   23: istore_1
+    //   24: iload_1
+    //   25: aload_0
+    //   26: getfield 75	com/tencent/token/i:l	I
+    //   29: if_icmpge +824 -> 853
+    //   32: aload_0
+    //   33: getfield 329	com/tencent/token/i:d	Lcom/tencent/token/u;
+    //   36: invokeinterface 332 1 0
+    //   41: ifeq +4 -> 45
+    //   44: return
+    //   45: aload_0
+    //   46: iconst_0
+    //   47: putfield 65	com/tencent/token/i:i	I
+    //   50: aload_0
+    //   51: ldc 67
+    //   53: putfield 69	com/tencent/token/i:j	Ljava/lang/String;
+    //   56: aload_0
+    //   57: new 128	java/net/URL
+    //   60: dup
+    //   61: aload_0
+    //   62: getfield 381	com/tencent/token/i:g	Ljava/lang/String;
+    //   65: invokespecial 130	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   68: putfield 79	com/tencent/token/i:n	Ljava/net/URL;
+    //   71: invokestatic 391	com/tencent/token/o:c	()Ljava/net/Proxy;
+    //   74: astore 4
+    //   76: aload 4
+    //   78: ifnull +233 -> 311
+    //   81: aload_0
+    //   82: aload_0
+    //   83: getfield 79	com/tencent/token/i:n	Ljava/net/URL;
+    //   86: aload 4
+    //   88: invokevirtual 395	java/net/URL:openConnection	(Ljava/net/Proxy;)Ljava/net/URLConnection;
+    //   91: checkcast 114	java/net/HttpURLConnection
+    //   94: putfield 81	com/tencent/token/i:o	Ljava/net/HttpURLConnection;
+    //   97: aload_0
+    //   98: getfield 81	com/tencent/token/i:o	Ljava/net/HttpURLConnection;
+    //   101: invokestatic 399	com/tencent/token/h:c	()I
+    //   104: invokevirtual 403	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   107: aload_0
+    //   108: getfield 81	com/tencent/token/i:o	Ljava/net/HttpURLConnection;
+    //   111: invokestatic 405	com/tencent/token/h:d	()I
+    //   114: invokevirtual 408	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   117: aload_0
+    //   118: getfield 81	com/tencent/token/i:o	Ljava/net/HttpURLConnection;
+    //   121: iconst_0
+    //   122: invokevirtual 412	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   125: aload_0
+    //   126: getfield 81	com/tencent/token/i:o	Ljava/net/HttpURLConnection;
+    //   129: iconst_1
+    //   130: invokevirtual 415	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   133: aload_0
+    //   134: getfield 81	com/tencent/token/i:o	Ljava/net/HttpURLConnection;
+    //   137: iconst_0
+    //   138: invokevirtual 418	java/net/HttpURLConnection:setInstanceFollowRedirects	(Z)V
+    //   141: aload_0
+    //   142: invokespecial 420	com/tencent/token/i:s	()V
+    //   145: aload_0
+    //   146: getfield 81	com/tencent/token/i:o	Ljava/net/HttpURLConnection;
+    //   149: invokevirtual 423	java/net/HttpURLConnection:getResponseCode	()I
+    //   152: istore_3
+    //   153: aload_0
+    //   154: iconst_1
+    //   155: putfield 107	com/tencent/token/i:A	Z
+    //   158: iload_3
+    //   159: lookupswitch	default:+717->876, 200:+185->344, 206:+185->344, 301:+530->689, 302:+530->689, 303:+530->689, 307:+530->689, 413:+638->797, 500:+638->797
+    //   233: iload_3
+    //   234: putfield 65	com/tencent/token/i:i	I
+    //   237: aload_0
+    //   238: getfield 65	com/tencent/token/i:i	I
+    //   241: istore_2
+    //   242: iload_1
+    //   243: ifne +27 -> 270
+    //   246: aload_0
+    //   247: getfield 107	com/tencent/token/i:A	Z
+    //   250: ifeq +20 -> 270
+    //   253: aload_0
+    //   254: aload_0
+    //   255: getfield 79	com/tencent/token/i:n	Ljava/net/URL;
+    //   258: invokevirtual 426	java/net/URL:getHost	()Ljava/lang/String;
+    //   261: invokestatic 432	java/net/InetAddress:getByName	(Ljava/lang/String;)Ljava/net/InetAddress;
+    //   264: invokevirtual 435	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   267: putfield 77	com/tencent/token/i:m	Ljava/lang/String;
+    //   270: aload_0
+    //   271: getfield 65	com/tencent/token/i:i	I
+    //   274: bipush 199
+    //   276: if_icmpne +577 -> 853
+    //   279: iload_1
+    //   280: iconst_1
+    //   281: iadd
+    //   282: istore_1
+    //   283: goto -259 -> 24
+    //   286: astore 4
+    //   288: aload_0
+    //   289: bipush 205
+    //   291: putfield 65	com/tencent/token/i:i	I
+    //   294: aload_0
+    //   295: aload 4
+    //   297: invokevirtual 436	java/net/MalformedURLException:getMessage	()Ljava/lang/String;
+    //   300: putfield 69	com/tencent/token/i:j	Ljava/lang/String;
+    //   303: aload 4
+    //   305: invokevirtual 437	java/net/MalformedURLException:printStackTrace	()V
+    //   308: goto -66 -> 242
+    //   311: aload_0
+    //   312: aload_0
+    //   313: getfield 79	com/tencent/token/i:n	Ljava/net/URL;
+    //   316: invokevirtual 440	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   319: checkcast 114	java/net/HttpURLConnection
+    //   322: putfield 81	com/tencent/token/i:o	Ljava/net/HttpURLConnection;
+    //   325: goto -228 -> 97
+    //   328: astore 4
+    //   330: aload_0
+    //   331: aload 4
+    //   333: invokespecial 371	com/tencent/token/i:a	(Ljava/lang/Throwable;)V
+    //   336: aload 4
+    //   338: invokevirtual 441	java/io/IOException:printStackTrace	()V
+    //   341: goto -99 -> 242
+    //   344: aload_0
+    //   345: aload_0
+    //   346: getfield 81	com/tencent/token/i:o	Ljava/net/HttpURLConnection;
+    //   349: ldc_w 443
+    //   352: invokevirtual 118	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   355: putfield 85	com/tencent/token/i:q	Ljava/lang/String;
+    //   358: aload_0
+    //   359: getfield 85	com/tencent/token/i:q	Ljava/lang/String;
+    //   362: astore 4
+    //   364: aload 4
+    //   366: invokestatic 124	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   369: ifne +78 -> 447
+    //   372: aload 4
+    //   374: invokevirtual 446	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   377: astore 4
+    //   379: aload 4
+    //   381: ldc_w 448
+    //   384: invokevirtual 146	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   387: ifne +492 -> 879
+    //   390: aload 4
+    //   392: ldc_w 450
+    //   395: invokevirtual 146	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   398: ifne +481 -> 879
+    //   401: aload 4
+    //   403: ldc_w 452
+    //   406: invokevirtual 146	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   409: ifeq +38 -> 447
+    //   412: goto +467 -> 879
+    //   415: iload_2
+    //   416: ifeq +36 -> 452
+    //   419: aload_0
+    //   420: bipush 245
+    //   422: putfield 65	com/tencent/token/i:i	I
+    //   425: aload_0
+    //   426: aload_0
+    //   427: getfield 381	com/tencent/token/i:g	Ljava/lang/String;
+    //   430: putfield 69	com/tencent/token/i:j	Ljava/lang/String;
+    //   433: goto -196 -> 237
+    //   436: astore 4
+    //   438: aload_0
+    //   439: aload 4
+    //   441: invokespecial 371	com/tencent/token/i:a	(Ljava/lang/Throwable;)V
+    //   444: goto -207 -> 237
+    //   447: iconst_0
+    //   448: istore_2
+    //   449: goto -34 -> 415
+    //   452: aload_0
+    //   453: aload_0
+    //   454: getfield 81	com/tencent/token/i:o	Ljava/net/HttpURLConnection;
+    //   457: ldc_w 454
+    //   460: invokevirtual 118	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   463: putfield 87	com/tencent/token/i:r	Ljava/lang/String;
+    //   466: aload_0
+    //   467: aload_0
+    //   468: getfield 81	com/tencent/token/i:o	Ljava/net/HttpURLConnection;
+    //   471: ldc_w 456
+    //   474: invokevirtual 118	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   477: putfield 89	com/tencent/token/i:s	Ljava/lang/String;
+    //   480: aload_0
+    //   481: getfield 61	com/tencent/token/i:h	Lcom/tencent/token/k;
+    //   484: invokevirtual 384	com/tencent/token/k:a	()I
+    //   487: ifle +397 -> 884
+    //   490: iconst_1
+    //   491: istore_2
+    //   492: iload_2
+    //   493: ifeq +77 -> 570
+    //   496: aload_0
+    //   497: getfield 87	com/tencent/token/i:r	Ljava/lang/String;
+    //   500: invokestatic 124	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   503: ifne +58 -> 561
+    //   506: aload_0
+    //   507: aload_0
+    //   508: getfield 87	com/tencent/token/i:r	Ljava/lang/String;
+    //   511: invokestatic 458	com/tencent/token/i:b	(Ljava/lang/String;)J
+    //   514: putfield 99	com/tencent/token/i:w	J
+    //   517: aload_0
+    //   518: getfield 99	com/tencent/token/i:w	J
+    //   521: ldc2_w 96
+    //   524: lcmp
+    //   525: ifne +119 -> 644
+    //   528: aload_0
+    //   529: bipush 202
+    //   531: putfield 65	com/tencent/token/i:i	I
+    //   534: aload_0
+    //   535: new 174	java/lang/StringBuilder
+    //   538: dup
+    //   539: ldc_w 460
+    //   542: invokespecial 374	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   545: aload_0
+    //   546: getfield 87	com/tencent/token/i:r	Ljava/lang/String;
+    //   549: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   552: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   555: putfield 69	com/tencent/token/i:j	Ljava/lang/String;
+    //   558: goto -321 -> 237
+    //   561: aload_0
+    //   562: bipush 203
+    //   564: putfield 65	com/tencent/token/i:i	I
+    //   567: goto -330 -> 237
+    //   570: aload_0
+    //   571: getfield 89	com/tencent/token/i:s	Ljava/lang/String;
+    //   574: invokestatic 124	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   577: ifne +58 -> 635
+    //   580: aload_0
+    //   581: aload_0
+    //   582: getfield 89	com/tencent/token/i:s	Ljava/lang/String;
+    //   585: invokestatic 462	com/tencent/token/i:c	(Ljava/lang/String;)J
+    //   588: putfield 99	com/tencent/token/i:w	J
+    //   591: aload_0
+    //   592: getfield 99	com/tencent/token/i:w	J
+    //   595: ldc2_w 96
+    //   598: lcmp
+    //   599: ifne +45 -> 644
+    //   602: aload_0
+    //   603: bipush 200
+    //   605: putfield 65	com/tencent/token/i:i	I
+    //   608: aload_0
+    //   609: new 174	java/lang/StringBuilder
+    //   612: dup
+    //   613: ldc_w 460
+    //   616: invokespecial 374	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   619: aload_0
+    //   620: getfield 89	com/tencent/token/i:s	Ljava/lang/String;
+    //   623: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   626: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   629: putfield 69	com/tencent/token/i:j	Ljava/lang/String;
+    //   632: goto -395 -> 237
+    //   635: aload_0
+    //   636: bipush 201
+    //   638: putfield 65	com/tencent/token/i:i	I
+    //   641: goto -404 -> 237
+    //   644: aload_0
+    //   645: aload_0
+    //   646: getfield 81	com/tencent/token/i:o	Ljava/net/HttpURLConnection;
+    //   649: ldc_w 464
+    //   652: invokevirtual 118	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   655: putfield 93	com/tencent/token/i:u	Ljava/lang/String;
+    //   658: aload_0
+    //   659: aload_0
+    //   660: getfield 81	com/tencent/token/i:o	Ljava/net/HttpURLConnection;
+    //   663: ldc_w 466
+    //   666: invokevirtual 118	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   669: putfield 95	com/tencent/token/i:v	Ljava/lang/String;
+    //   672: aload_0
+    //   673: aload_0
+    //   674: getfield 81	com/tencent/token/i:o	Ljava/net/HttpURLConnection;
+    //   677: ldc_w 468
+    //   680: invokevirtual 118	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   683: putfield 91	com/tencent/token/i:t	Ljava/lang/String;
+    //   686: goto -449 -> 237
+    //   689: aload_0
+    //   690: getfield 81	com/tencent/token/i:o	Ljava/net/HttpURLConnection;
+    //   693: ldc_w 470
+    //   696: invokevirtual 118	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   699: astore 4
+    //   701: aload 4
+    //   703: invokestatic 124	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   706: ifeq +34 -> 740
+    //   709: aload_0
+    //   710: bipush 198
+    //   712: putfield 65	com/tencent/token/i:i	I
+    //   715: aload_0
+    //   716: new 174	java/lang/StringBuilder
+    //   719: dup
+    //   720: ldc_w 472
+    //   723: invokespecial 374	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   726: aload 4
+    //   728: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   731: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   734: putfield 69	com/tencent/token/i:j	Ljava/lang/String;
+    //   737: goto -500 -> 237
+    //   740: aload_0
+    //   741: aload 4
+    //   743: putfield 381	com/tencent/token/i:g	Ljava/lang/String;
+    //   746: aload_0
+    //   747: getfield 56	com/tencent/token/i:f	Ljava/util/List;
+    //   750: ifnonnull +14 -> 764
+    //   753: aload_0
+    //   754: new 171	java/util/ArrayList
+    //   757: dup
+    //   758: invokespecial 172	java/util/ArrayList:<init>	()V
+    //   761: putfield 56	com/tencent/token/i:f	Ljava/util/List;
+    //   764: aload_0
+    //   765: getfield 56	com/tencent/token/i:f	Ljava/util/List;
+    //   768: aload 4
+    //   770: invokeinterface 187 2 0
+    //   775: pop
+    //   776: aload_0
+    //   777: aload 4
+    //   779: putfield 381	com/tencent/token/i:g	Ljava/lang/String;
+    //   782: aload_0
+    //   783: aload 4
+    //   785: invokespecial 474	com/tencent/token/i:a	(Ljava/lang/String;)V
+    //   788: aload_0
+    //   789: bipush 199
+    //   791: putfield 65	com/tencent/token/i:i	I
+    //   794: goto -557 -> 237
+    //   797: invokestatic 476	com/tencent/token/o:d	()Z
+    //   800: ifeq +35 -> 835
+    //   803: aload_0
+    //   804: getfield 73	com/tencent/token/i:c	Z
+    //   807: ifne +28 -> 835
+    //   810: aload_0
+    //   811: getfield 61	com/tencent/token/i:h	Lcom/tencent/token/k;
+    //   814: invokevirtual 384	com/tencent/token/k:a	()I
+    //   817: ifle +72 -> 889
+    //   820: iconst_1
+    //   821: istore_2
+    //   822: iload_2
+    //   823: ifeq +12 -> 835
+    //   826: aload_0
+    //   827: bipush 197
+    //   829: putfield 65	com/tencent/token/i:i	I
+    //   832: goto -595 -> 237
+    //   835: aload_0
+    //   836: iload_3
+    //   837: putfield 65	com/tencent/token/i:i	I
+    //   840: goto -603 -> 237
+    //   843: astore 4
+    //   845: aload 4
+    //   847: invokevirtual 477	java/lang/Exception:printStackTrace	()V
+    //   850: goto -580 -> 270
+    //   853: iload_1
+    //   854: aload_0
+    //   855: getfield 75	com/tencent/token/i:l	I
+    //   858: if_icmplt -814 -> 44
+    //   861: aload_0
+    //   862: getfield 65	com/tencent/token/i:i	I
+    //   865: bipush 199
+    //   867: if_icmpne -823 -> 44
+    //   870: aload_0
+    //   871: iconst_m1
+    //   872: putfield 65	com/tencent/token/i:i	I
+    //   875: return
+    //   876: goto -644 -> 232
+    //   879: iconst_1
+    //   880: istore_2
+    //   881: goto -466 -> 415
+    //   884: iconst_0
+    //   885: istore_2
+    //   886: goto -394 -> 492
+    //   889: iconst_0
+    //   890: istore_2
+    //   891: goto -69 -> 822
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	894	0	this	i
+    //   23	836	1	i1	int
+    //   241	650	2	i2	int
+    //   152	685	3	i3	int
+    //   74	13	4	localProxy	java.net.Proxy
+    //   286	18	4	localMalformedURLException	java.net.MalformedURLException
+    //   328	9	4	localIOException	IOException
+    //   362	40	4	str1	String
+    //   436	4	4	localThrowable	Throwable
+    //   699	85	4	str2	String
+    //   843	3	4	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   56	71	286	java/net/MalformedURLException
+    //   81	97	328	java/io/IOException
+    //   311	325	328	java/io/IOException
+    //   145	158	436	java/lang/Throwable
+    //   232	237	436	java/lang/Throwable
+    //   344	412	436	java/lang/Throwable
+    //   419	433	436	java/lang/Throwable
+    //   452	490	436	java/lang/Throwable
+    //   496	558	436	java/lang/Throwable
+    //   561	567	436	java/lang/Throwable
+    //   570	632	436	java/lang/Throwable
+    //   635	641	436	java/lang/Throwable
+    //   644	686	436	java/lang/Throwable
+    //   689	737	436	java/lang/Throwable
+    //   740	764	436	java/lang/Throwable
+    //   764	794	436	java/lang/Throwable
+    //   797	820	436	java/lang/Throwable
+    //   826	832	436	java/lang/Throwable
+    //   835	840	436	java/lang/Throwable
+    //   253	270	843	java/lang/Exception
+  }
+  
+  public final void q()
+  {
+    if (this.o != null) {}
     try
     {
-      if (paramString.length() > 0) {
-        this.a = (this.a + paramString + "\n");
-      }
+      this.o.disconnect();
+      this.p.close();
+      label21:
+      this.o = null;
+      this.p = null;
       return;
     }
-    finally
+    catch (Throwable localThrowable)
     {
-      paramString = finally;
-      throw paramString;
+      break label21;
     }
   }
   
-  protected final String s()
+  public final void r()
   {
-    return this.a;
+    this.z = true;
   }
 }
 

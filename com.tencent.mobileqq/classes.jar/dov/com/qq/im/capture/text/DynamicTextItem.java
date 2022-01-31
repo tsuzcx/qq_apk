@@ -10,35 +10,43 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.InputFilter;
 import android.text.StaticLayout;
 import android.view.MotionEvent;
 import android.view.View;
-import annv;
-import annw;
-import annx;
+import blxf;
+import blxk;
+import blxl;
+import bmqz;
+import bmyi;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public abstract class DynamicTextItem
 {
   private static final String jdField_a_of_type_JavaLangString = DynamicTextItem.class.getSimpleName();
-  private int jdField_a_of_type_Int;
+  protected int a;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  StaticLayout jdField_a_of_type_AndroidTextStaticLayout;
-  private volatile DynamicTextItem.Pair jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$Pair = new DynamicTextItem.Pair(Integer.valueOf(-1), Boolean.valueOf(false));
+  private volatile blxk<Integer, Boolean> jdField_a_of_type_Blxk = new blxk(Integer.valueOf(-1), Boolean.valueOf(false));
   private DynamicTextItem.TextMap jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$TextMap;
+  public Stack<Integer> a;
   private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = 0;
+  private int jdField_b_of_type_Int;
+  protected StaticLayout b;
   private volatile boolean jdField_b_of_type_Boolean;
-  private volatile boolean c;
+  private int c;
+  protected boolean c;
+  public boolean d;
+  private volatile boolean e;
   
-  public DynamicTextItem(int paramInt, @NonNull List paramList)
+  public DynamicTextItem(int paramInt, @NonNull List<String> paramList)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilStack = new Stack();
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_b_of_type_Int = paramInt;
     this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$TextMap = new DynamicTextItem.TextMap(paramList);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
@@ -91,7 +99,7 @@ public abstract class DynamicTextItem
     return -1;
   }
   
-  public int a(@NonNull MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2, @Nullable TextLayer.TextItem paramTextItem, GestureHelper paramGestureHelper)
+  public int a(@NonNull MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2, @Nullable bmqz parambmqz, bmyi parambmyi)
   {
     if (QLog.isColorLevel())
     {
@@ -100,7 +108,7 @@ public abstract class DynamicTextItem
       QLog.d(jdField_a_of_type_JavaLangString, 2, "Touch Y: " + paramMotionEvent.getY());
       QLog.d(jdField_a_of_type_JavaLangString, 2, "Container W: " + paramFloat1);
       QLog.d(jdField_a_of_type_JavaLangString, 2, "Container H: " + paramFloat2);
-      if (paramTextItem != null) {
+      if (parambmqz != null) {
         break label208;
       }
       QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Zoom info is null, use default info");
@@ -112,15 +120,15 @@ public abstract class DynamicTextItem
       QLog.d(jdField_a_of_type_JavaLangString, 2, "=========================================");
       return -1;
       label208:
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text X: " + paramTextItem.jdField_a_of_type_AndroidGraphicsPointF.x);
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Y: " + paramTextItem.jdField_a_of_type_AndroidGraphicsPointF.y);
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text W: " + paramTextItem.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a());
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text H: " + paramTextItem.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b());
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Scale: " + paramGestureHelper.a(paramTextItem));
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Matrix: " + paramGestureHelper.a(paramTextItem));
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text translateX: " + paramTextItem.s);
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text translateY: " + paramTextItem.t);
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text rotate: " + paramTextItem.r);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text X: " + parambmqz.b.x);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Y: " + parambmqz.b.y);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text W: " + parambmqz.a.a());
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text H: " + parambmqz.a.b());
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Scale: " + parambmyi.a(parambmqz));
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text Matrix: " + parambmyi.a(parambmqz));
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text translateX: " + parambmqz.s);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text translateY: " + parambmqz.t);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "Text rotate: " + parambmqz.r);
     }
   }
   
@@ -128,6 +136,11 @@ public abstract class DynamicTextItem
   public Paint a()
   {
     return this.jdField_a_of_type_AndroidGraphicsPaint;
+  }
+  
+  public InputFilter a()
+  {
+    return null;
   }
   
   @NonNull
@@ -158,56 +171,15 @@ public abstract class DynamicTextItem
   }
   
   @NonNull
-  protected final String a(int paramInt, @Nullable annx paramannx)
+  protected final String a(int paramInt, @Nullable blxl paramblxl)
   {
     paramInt = a(paramInt);
     String str2 = a(paramInt);
     String str1 = str2;
-    if (paramannx != null) {
-      str1 = paramannx.a(paramInt, str2);
+    if (paramblxl != null) {
+      str1 = paramblxl.a(paramInt, str2);
     }
-    paramannx = str1;
-    int i;
-    if (this.jdField_a_of_type_Int != 0)
-    {
-      paramannx = str1;
-      if (str1.length() > 20)
-      {
-        paramannx = new StringBuilder();
-        paramInt = 0;
-        i = 0;
-        if ((paramInt < str1.length()) && (i < 20)) {
-          break label126;
-        }
-        paramannx = paramannx.toString();
-        if (paramannx.isEmpty()) {
-          return paramannx;
-        }
-        if (!Character.isHighSurrogate(paramannx.charAt(paramannx.length() - 1))) {
-          break label180;
-        }
-      }
-    }
-    label180:
-    for (paramInt = paramannx.length() - 1;; paramInt = paramannx.length())
-    {
-      paramannx = paramannx.substring(0, paramInt);
-      return paramannx;
-      label126:
-      paramannx.append(str1.charAt(paramInt));
-      int j = i;
-      if (str1.charAt(paramInt) != '\n')
-      {
-        j = i;
-        if (str1.charAt(paramInt) != '\r') {
-          j = i + 1;
-        }
-      }
-      paramInt += 1;
-      i = j;
-      break;
-    }
-    return paramannx;
+    return a(str1);
   }
   
   public String a(int paramInt, String paramString)
@@ -245,8 +217,53 @@ public abstract class DynamicTextItem
     return localStringBuilder.toString();
   }
   
+  public String a(String paramString)
+  {
+    Object localObject = paramString;
+    int j;
+    if (this.jdField_b_of_type_Int != 0)
+    {
+      localObject = paramString;
+      if (paramString.length() > 20)
+      {
+        localObject = new StringBuilder();
+        i = 0;
+        j = 0;
+        if ((i < paramString.length()) && (j < 20)) {
+          break label99;
+        }
+        paramString = ((StringBuilder)localObject).toString();
+        localObject = paramString;
+        if (!paramString.isEmpty()) {
+          if (!Character.isHighSurrogate(paramString.charAt(paramString.length() - 1))) {
+            break label151;
+          }
+        }
+      }
+    }
+    label151:
+    for (int i = paramString.length() - 1;; i = paramString.length())
+    {
+      localObject = paramString.substring(0, i);
+      return localObject;
+      label99:
+      ((StringBuilder)localObject).append(paramString.charAt(i));
+      int k = j;
+      if (paramString.charAt(i) != '\n')
+      {
+        k = j;
+        if (paramString.charAt(i) != '\r') {
+          k = j + 1;
+        }
+      }
+      i += 1;
+      j = k;
+      break;
+    }
+  }
+  
   @NonNull
-  public ArrayList a()
+  public ArrayList<String> a()
   {
     return new ArrayList(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$TextMap.a());
   }
@@ -259,43 +276,29 @@ public abstract class DynamicTextItem
     this.jdField_b_of_type_Boolean = false;
   }
   
-  public void a(int paramInt)
-  {
-    if (c())
-    {
-      int i = paramInt;
-      if (paramInt < 0) {
-        i = 0;
-      }
-      this.jdField_b_of_type_Int = i;
-      return;
-    }
-    this.jdField_b_of_type_Int = 0;
-  }
-  
   public void a(int paramInt1, View paramView, boolean paramBoolean, int paramInt2, int paramInt3, Runnable paramRunnable)
   {
     if ((this.jdField_b_of_type_Boolean) || (!a())) {
       return;
     }
     this.jdField_b_of_type_Boolean = true;
-    this.c = true;
+    this.e = true;
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     }
     for (;;)
     {
       int i = 0;
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$Pair.a = Integer.valueOf(paramInt1);
+      this.jdField_a_of_type_Blxk.a = Integer.valueOf(paramInt1);
       paramInt1 = i;
       while (paramInt1 < paramInt2 - paramInt3)
       {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new annv(this, paramView), paramInt1);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new DynamicTextItem.1(this, paramView), paramInt1);
         paramInt1 += paramInt3;
       }
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new annw(this, paramBoolean, paramView, paramRunnable), paramInt1);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new DynamicTextItem.2(this, paramBoolean, paramView, paramRunnable), paramInt1);
   }
   
   public void a(int paramInt, String paramString)
@@ -320,8 +323,8 @@ public abstract class DynamicTextItem
   public void a(int paramInt, boolean paramBoolean)
   {
     a();
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$Pair.a = Integer.valueOf(paramInt);
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$Pair.b = Boolean.valueOf(paramBoolean);
+    this.jdField_a_of_type_Blxk.a = Integer.valueOf(paramInt);
+    this.jdField_a_of_type_Blxk.b = Boolean.valueOf(paramBoolean);
   }
   
   protected abstract void a(Canvas paramCanvas);
@@ -335,20 +338,20 @@ public abstract class DynamicTextItem
   
   public boolean a(int paramInt)
   {
-    return a(paramInt).equals(DynamicTextBuilder.a(this.jdField_a_of_type_Int, paramInt));
+    return a(paramInt).equals(blxf.a(this.jdField_b_of_type_Int, paramInt));
   }
   
   public abstract float b();
   
   public int b()
   {
-    if (this.jdField_b_of_type_Int < 0) {
-      this.jdField_b_of_type_Int = 0;
+    if (this.jdField_c_of_type_Int < 0) {
+      this.jdField_c_of_type_Int = 0;
     }
-    if (this.jdField_b_of_type_Int >= this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$TextMap.a()) {
+    if (this.jdField_c_of_type_Int >= this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$TextMap.a()) {
       return 0;
     }
-    return this.jdField_b_of_type_Int;
+    return this.jdField_c_of_type_Int;
   }
   
   @NonNull
@@ -360,7 +363,21 @@ public abstract class DynamicTextItem
   public void b()
   {
     a();
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$Pair.b = Boolean.valueOf(false);
+    this.jdField_a_of_type_Blxk.b = Boolean.valueOf(false);
+  }
+  
+  public void b(int paramInt)
+  {
+    if (c())
+    {
+      int i = paramInt;
+      if (paramInt < 0) {
+        i = 0;
+      }
+      this.jdField_c_of_type_Int = i;
+      return;
+    }
+    this.jdField_c_of_type_Int = 0;
   }
   
   public final void b(Canvas paramCanvas)
@@ -378,20 +395,26 @@ public abstract class DynamicTextItem
   
   public boolean b(int paramInt)
   {
-    if ((((Integer)this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$Pair.a).intValue() == paramInt) || (((Integer)this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$Pair.a).intValue() == -1)) {
-      return ((Boolean)this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$Pair.b).booleanValue();
+    if ((((Integer)this.jdField_a_of_type_Blxk.a).intValue() == paramInt) || (((Integer)this.jdField_a_of_type_Blxk.a).intValue() == -1)) {
+      return ((Boolean)this.jdField_a_of_type_Blxk.b).booleanValue();
     }
     return false;
   }
   
   public int c()
   {
-    return this.jdField_a_of_type_Int;
+    return this.jdField_b_of_type_Int;
   }
   
   public void c()
   {
-    this.c = false;
+    this.e = false;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public final boolean c()
@@ -399,10 +422,15 @@ public abstract class DynamicTextItem
     return a() > 1;
   }
   
+  public int d()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
   public boolean d()
   {
     ArrayList localArrayList = a();
-    List localList = DynamicTextBuilder.a(this.jdField_a_of_type_Int);
+    List localList = blxf.a(this.jdField_b_of_type_Int);
     if (localList == null) {}
     int i;
     String str;
@@ -446,7 +474,7 @@ public abstract class DynamicTextItem
         return false;
       }
       paramObject = (DynamicTextItem)paramObject;
-      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
+      if (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int) {
         return false;
       }
       if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$TextMap != null) {
@@ -458,12 +486,12 @@ public abstract class DynamicTextItem
   
   public boolean f()
   {
-    return this.c;
+    return this.e;
   }
   
   public int hashCode()
   {
-    int j = this.jdField_a_of_type_Int;
+    int j = this.jdField_b_of_type_Int;
     if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$TextMap != null) {}
     for (int i = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem$TextMap.hashCode();; i = 0) {
       return i + j * 31;
@@ -472,7 +500,7 @@ public abstract class DynamicTextItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.text.DynamicTextItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,26 @@
-import com.tencent.biz.troop.file.ZipFilesListAdapter;
-import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-
-public class acoa
-  extends FMObserver
+class acoa
+  extends aqru
 {
-  public acoa(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity) {}
+  acoa(acnu paramacnu) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.notifyDataSetChanged();
-    }
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    this.a.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acoa
  * JD-Core Version:    0.7.0.1
  */

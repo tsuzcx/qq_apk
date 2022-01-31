@@ -1,23 +1,27 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopGiftProtocolObserver;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.QWalletHelper;
 
-public class aetw
-  extends ProtoUtils.TroopGiftProtocolObserver
+final class aetw
+  extends ameq
 {
-  public aetw(NowShortVideoProtoManager paramNowShortVideoProtoManager, NowShortVideoProtoManager.Callback paramCallback) {}
+  aetw(SessionInfo paramSessionInfo) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString, Object[] paramArrayOfObject)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager$Callback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager$Callback.a(paramInt, paramArrayOfByte, paramBundle);
+    if (paramBoolean)
+    {
+      QWalletHelper.saveLastUpdateToopMemberNumTime(this.a.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("PlusPanelUtils", 2, "onOIDB0X88D_0_Ret 群uin：" + this.a.a + " 群成员个数：" + paramTroopInfo.wMemberNum);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aetw
  * JD-Core Version:    0.7.0.1
  */

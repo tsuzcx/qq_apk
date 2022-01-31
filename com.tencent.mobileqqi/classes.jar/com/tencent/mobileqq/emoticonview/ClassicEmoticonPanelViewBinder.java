@@ -33,8 +33,8 @@ public class ClassicEmoticonPanelViewBinder
   
   public Drawable a(Context paramContext)
   {
-    Drawable localDrawable = paramContext.getResources().getDrawable(2130839151);
-    paramContext = paramContext.getResources().getDrawable(2130839152);
+    Drawable localDrawable = paramContext.getResources().getDrawable(2130839153);
+    paramContext = paramContext.getResources().getDrawable(2130839154);
     StateListDrawable localStateListDrawable = new StateListDrawable();
     localStateListDrawable.addState(new int[] { 16842913 }, paramContext);
     localStateListDrawable.addState(new int[0], localDrawable);

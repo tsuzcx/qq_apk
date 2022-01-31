@@ -1,16 +1,12 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class adqw
-  implements Runnable
+  extends adqz
 {
-  public adqw(HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, Drawable paramDrawable) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.b.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  TextView b;
 }
 
 

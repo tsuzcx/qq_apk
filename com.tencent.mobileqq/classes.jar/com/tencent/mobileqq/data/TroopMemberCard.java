@@ -13,13 +13,15 @@ public class TroopMemberCard
   private static final long serialVersionUID = 1L;
   public int age;
   public String card;
+  public String colorCard;
   public int credit;
-  public List customEntryList;
+  public List<TroopMemberCard.CustomEntry> customEntryList;
   public long distance = -1L;
   public int gbarCount;
   public String gbarLinkUrl;
-  public List gbarList;
+  public List<TroopMemberCard.GBarInfo> gbarList;
   public String gbarTitle;
+  public String honorList;
   public boolean isAllowModCard;
   public boolean isConcerned;
   public boolean isFriend;
@@ -31,17 +33,17 @@ public class TroopMemberCard
   public long lastSpeak;
   public String levelName;
   public String location;
-  public ArrayList mCurrAccountOrgIds = new ArrayList();
+  public ArrayList<String> mCurrAccountOrgIds = new ArrayList();
   public int mGroupType;
   public boolean mHasStory;
   public boolean mIsShield;
   public TroopMemberCard.MemberGameInfo mMemberGameInfo;
-  public ArrayList mOrgIds = new ArrayList();
+  public ArrayList<String> mOrgIds = new ArrayList();
   public String mPosition;
   public String mQzoneFeed;
   public String mRecentSaied;
   public RichStatus mRichSignStatus;
-  public ArrayList mStoryInfoList;
+  public ArrayList<TroopMemberCard.StoryInfo> mStoryInfoList;
   public String mUniqueTitle;
   public int mUniqueTitleExpire;
   public int memberRole;
@@ -57,7 +59,7 @@ public class TroopMemberCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopMemberCard
  * JD-Core Version:    0.7.0.1
  */

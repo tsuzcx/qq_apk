@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/d4s" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="-2.5dip" android:layout_marginRight="-2.5dip">
+        <ImageView android:id="@id/d4u" android:layout_width="fill_parent" android:layout_height="180.0dip" android:src="@color/a2z" android:scaleType="centerCrop" />
+        <View android:id="@id/d4y" android:background="@drawable/akf" android:layout_width="fill_parent" android:layout_height="180.0dip" android:alpha="0.6" />
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="40.0dip" android:layout_centerInParent="true">
+            <TextView android:textSize="22.0sp" android:textColor="@android:color/white" android:id="@id/d4z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/r6v" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0sp" android:textColor="@android:color/white" android:id="@id/d4x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="65人参与" android:drawableLeft="@drawable/fbo" android:drawableRight="@drawable/fbp" android:drawablePadding="10.0dip" android:layout_below="@id/d4z" android:layout_centerHorizontal="true" android:alpha="0.7" />
+            <TextView android:textSize="14.0sp" android:textColor="@android:color/white" android:gravity="center" android:id="@id/d4v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/r70" android:layout_below="@id/d4x" android:layout_centerHorizontal="true" android:lineSpacingExtra="7.0dip" />
+        </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>

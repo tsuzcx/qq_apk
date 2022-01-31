@@ -1,22 +1,17 @@
 package com.tencent.token.ui;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.token.ah;
-import com.tencent.token.global.RqdApplication;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.utils.w;
 
-final class abn
-  implements DialogInterface.OnClickListener
+class abn
+  implements View.OnClickListener
 {
-  abn(StartPwdGestureForgetActivity paramStartPwdGestureForgetActivity, Context paramContext) {}
+  abn(UtilsAccountLockActivity paramUtilsAccountLockActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ah.a().f();
-    RqdApplication.f();
-    this.b.setResult(35);
-    this.b.finish();
+    w.b(this.a, this.a.getString(2131231477));
   }
 }
 

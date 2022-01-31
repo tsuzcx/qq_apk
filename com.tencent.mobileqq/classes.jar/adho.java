@@ -1,30 +1,26 @@
-import android.content.Context;
-import android.os.AsyncTask;
-import com.dataline.core.DirectForwarder;
-import com.dataline.core.DirectForwarder.CallBack;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
-public final class adho
-  extends DirectForwarder.CallBack
+public class adho
+  implements Animation.AnimationListener
 {
-  public adho(Context paramContext) {}
+  public adho(LoginInfoActivity paramLoginInfoActivity) {}
   
-  protected void a(AsyncTask paramAsyncTask, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    try
-    {
-      DirectForwarder.a(this.a, paramAsyncTask, paramInt, new adhp(this));
-      super.a(paramAsyncTask, paramInt);
-      return;
-    }
-    catch (Exception paramAsyncTask)
-    {
-      paramAsyncTask.printStackTrace();
-    }
+    LoginInfoActivity.a(this.a).setVisibility(4);
+    LoginInfoActivity.a(this.a).clearAnimation();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adho
  * JD-Core Version:    0.7.0.1
  */

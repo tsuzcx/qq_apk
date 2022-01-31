@@ -18,6 +18,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import clf;
+import clg;
+import clh;
+import cli;
 import com.tencent.mobileqq.adapter.ForwardSelectionFriendListAdapter;
 import com.tencent.mobileqq.adapter.ForwardSelectionFriendListAdapter.ViewTag;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -31,10 +35,6 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.ExpandableListView;
 import com.tencent.widget.PinnedHeaderExpandableListView;
 import com.tencent.widget.PinnedHeaderExpandableListView.ExpandableListAdapter;
-import crs;
-import crt;
-import cru;
-import crv;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -84,7 +84,7 @@ public class ForwardFriendListActivity
       return;
     }
     Contacts.a += 1;
-    this.jdField_a_of_type_AndroidAppDialog = new crs(this, this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations);
+    this.jdField_a_of_type_AndroidAppDialog = new clf(this, this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations);
     this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(true);
     paramInt = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
     TranslateAnimation localTranslateAnimation1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -paramInt);
@@ -92,20 +92,20 @@ public class ForwardFriendListActivity
     localTranslateAnimation1.setFillAfter(true);
     TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, -paramInt, 0.0F);
     localTranslateAnimation2.setDuration(200L);
-    localTranslateAnimation1.setAnimationListener(new crt(this));
-    localTranslateAnimation2.setAnimationListener(new cru(this, paramInt));
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new crv(this, paramInt, localTranslateAnimation2));
+    localTranslateAnimation1.setAnimationListener(new clg(this));
+    localTranslateAnimation2.setAnimationListener(new clh(this, paramInt));
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new cli(this, paramInt, localTranslateAnimation2));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localTranslateAnimation1);
   }
   
   private void d()
   {
     e();
-    this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView = ((PinnedHeaderExpandableListView)findViewById(2131231722));
+    this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView = ((PinnedHeaderExpandableListView)findViewById(2131231724));
     this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.setContentBackground(2130837729);
-    Object localObject = LayoutInflater.from(a()).inflate(2130903942, this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView, false);
-    ((View)localObject).findViewById(2131233084).setVisibility(8);
-    localObject = (EditText)((View)localObject).findViewById(2131233085);
+    Object localObject = LayoutInflater.from(a()).inflate(2130903944, this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView, false);
+    ((View)localObject).findViewById(2131233086).setVisibility(8);
+    localObject = (EditText)((View)localObject).findViewById(2131233087);
     ((EditText)localObject).setFocusable(false);
     ((EditText)localObject).setOnClickListener(this);
     ((EditText)localObject).setCursorVisible(false);
@@ -206,7 +206,7 @@ public class ForwardFriendListActivity
   {
     super.doOnCreate(paramBundle);
     getWindow().setBackgroundDrawable(null);
-    setContentView(2130903236);
+    setContentView(2130903238);
     d();
     f();
     return true;
@@ -246,7 +246,7 @@ public class ForwardFriendListActivity
         }
       }
       return;
-    case 2131233085: 
+    case 2131233087: 
       if (this.jdField_b_of_type_Int == 1)
       {
         a(12);
@@ -318,7 +318,7 @@ public class ForwardFriendListActivity
   {
     paramMenu.clear();
     MenuItem localMenuItem = paramMenu.add(0, 0, 0, getString(2131562830));
-    localMenuItem.setIcon(2130839696);
+    localMenuItem.setIcon(2130839698);
     MenuItemCompat.setShowAsAction(localMenuItem, 1);
     return super.onPrepareOptionsMenu(paramMenu);
   }

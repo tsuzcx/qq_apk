@@ -8,10 +8,10 @@ public final class SpeedFilter
 {
   private static final long AVERAGE_SPEED_TIME_UNIT_LONG = 8000L;
   private static final long AVERAGE_SPEED_TIME_UNIT_SHORT = 3000L;
-  private final Deque<SpeedInfo> mCacheLong = new LinkedList();
-  private final Deque<SpeedInfo> mCacheShort = new LinkedList();
+  private final Deque<SpeedFilter.SpeedInfo> mCacheLong = new LinkedList();
+  private final Deque<SpeedFilter.SpeedInfo> mCacheShort = new LinkedList();
   
-  private long[] calAvg(SpeedInfo[] paramArrayOfSpeedInfo)
+  private long[] calAvg(SpeedFilter.SpeedInfo[] paramArrayOfSpeedInfo)
   {
     if ((paramArrayOfSpeedInfo == null) || (paramArrayOfSpeedInfo.length == 0)) {
       return new long[] { 0L, 0L, 0L };
@@ -23,7 +23,7 @@ public final class SpeedFilter
     int i = 0;
     while (i < j)
     {
-      SpeedInfo localSpeedInfo = paramArrayOfSpeedInfo[i];
+      SpeedFilter.SpeedInfo localSpeedInfo = paramArrayOfSpeedInfo[i];
       l2 += localSpeedInfo.speed;
       l3 += localSpeedInfo.exSpeed;
       l1 += localSpeedInfo.adSpeed;
@@ -76,7 +76,7 @@ public final class SpeedFilter
       l = System.currentTimeMillis();
       Iterator localIterator = this.mCacheLong.iterator();
       while (localIterator.hasNext()) {
-        if (l - ((SpeedInfo)localIterator.next()).curTime > 8000L) {
+        if (l - ((SpeedFilter.SpeedInfo)localIterator.next()).curTime > 8000L) {
           localIterator.remove();
         }
       }
@@ -84,23 +84,23 @@ public final class SpeedFilter
     }
     finally {}
     while (((Iterator)localObject2).hasNext()) {
-      if (l - ((SpeedInfo)((Iterator)localObject2).next()).curTime > 3000L) {
+      if (l - ((SpeedFilter.SpeedInfo)((Iterator)localObject2).next()).curTime > 3000L) {
         ((Iterator)localObject2).remove();
       }
     }
-    Object localObject2 = new SpeedInfo(null);
-    ((SpeedInfo)localObject2).curTime = l;
-    ((SpeedInfo)localObject2).speed = paramLong1;
-    ((SpeedInfo)localObject2).exSpeed = paramLong2;
-    ((SpeedInfo)localObject2).adSpeed = paramLong3;
+    Object localObject2 = new SpeedFilter.SpeedInfo(this, null);
+    ((SpeedFilter.SpeedInfo)localObject2).curTime = l;
+    ((SpeedFilter.SpeedInfo)localObject2).speed = paramLong1;
+    ((SpeedFilter.SpeedInfo)localObject2).exSpeed = paramLong2;
+    ((SpeedFilter.SpeedInfo)localObject2).adSpeed = paramLong3;
     this.mCacheLong.offerLast(localObject2);
     this.mCacheShort.offerLast(localObject2);
-    localObject2 = new SpeedInfo[this.mCacheLong.size()];
+    localObject2 = new SpeedFilter.SpeedInfo[this.mCacheLong.size()];
     this.mCacheLong.toArray((Object[])localObject2);
-    Object localObject3 = new SpeedInfo[this.mCacheShort.size()];
+    Object localObject3 = new SpeedFilter.SpeedInfo[this.mCacheShort.size()];
     this.mCacheShort.toArray((Object[])localObject3);
-    localObject2 = calAvg((SpeedInfo[])localObject2);
-    localObject3 = calAvg((SpeedInfo[])localObject3);
+    localObject2 = calAvg((SpeedFilter.SpeedInfo[])localObject2);
+    localObject3 = calAvg((SpeedFilter.SpeedInfo[])localObject3);
     paramLong1 = localObject2[0];
     paramLong2 = localObject3[0];
     if (paramLong1 > paramLong2) {}
@@ -110,20 +110,10 @@ public final class SpeedFilter
       localObject2 = localObject3;
     }
   }
-  
-  private class SpeedInfo
-  {
-    long adSpeed;
-    long curTime;
-    long exSpeed;
-    long speed;
-    
-    private SpeedInfo() {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.weiyun.uploader.module.SpeedFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import fhs;
+import fde;
 import java.lang.reflect.Method;
 
 public class IphoneTitleBarLocalAlbumsActivity
@@ -31,7 +31,7 @@ public class IphoneTitleBarLocalAlbumsActivity
   public IphoneTitleBarLocalAlbumsActivity()
   {
     this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fhs(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fde(this);
   }
   
   public static void a(View paramView)
@@ -78,7 +78,7 @@ public class IphoneTitleBarLocalAlbumsActivity
   
   protected void a(Intent paramIntent)
   {
-    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130840100));
+    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130840102));
     if (this.jdField_a_of_type_AndroidWidgetTextView == null)
     {
       this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131231448));

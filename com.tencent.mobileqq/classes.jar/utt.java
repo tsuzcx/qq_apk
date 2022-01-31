@@ -1,24 +1,20 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
 public final class utt
-  implements Runnable
+  implements View.OnClickListener
 {
-  public utt(Context paramContext, int paramInt, String paramString) {}
+  public utt(EditText paramEditText) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloItemBuilder", 2, "fav action number is 144");
-    }
+    this.a.append("@");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     utt
  * JD-Core Version:    0.7.0.1
  */

@@ -7,47 +7,47 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.token.af;
-import com.tencent.token.ax;
-import com.tencent.token.ba;
 import com.tencent.token.core.bean.NewConfigureCacheItem;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.g;
-import com.tencent.token.fp;
+import com.tencent.token.core.bean.h;
+import com.tencent.token.cw;
+import com.tencent.token.do;
+import com.tencent.token.dr;
+import com.tencent.token.es;
 import com.tencent.token.ui.base.ErrorView;
 import com.tencent.token.ui.base.SwitchButton;
-import com.tencent.token.ui.base.dk;
+import com.tencent.token.ui.base.dd;
 
 public class UtilsQbQdProtectActivity
   extends BaseActivity
 {
-  private View.OnClickListener mBindListener = new aft(this);
+  private View.OnClickListener mBindListener = new aeh(this);
   private View mContentView;
   private ErrorView mErrorView;
-  Handler mHandler = new afv(this);
-  private dk mNeedVerifyView;
+  Handler mHandler = new aej(this);
+  private dd mNeedVerifyView;
   private SwitchButton mQbQdProtectCB;
   private TextView mQbQdProtectName;
   private ProgressBar mQbQdProtectProgress;
-  private View.OnClickListener mRetryListener = new afu(this);
+  private View.OnClickListener mRetryListener = new aei(this);
   private String mTipBindQQBtnDesc;
   private String mTipBindQQDesc;
   
   private void init()
   {
-    this.mTipBindQQDesc = getResources().getString(2131362193);
-    this.mTipBindQQBtnDesc = getResources().getString(2131362297);
-    this.mContentView = findViewById(2131297292);
-    this.mQbQdProtectCB = ((SwitchButton)findViewById(2131297294));
-    this.mQbQdProtectName = ((TextView)findViewById(2131297293));
-    this.mQbQdProtectProgress = ((ProgressBar)findViewById(2131297295));
-    this.mQbQdProtectCB.setOnCheckedChangeListener(new afw(this));
+    this.mTipBindQQDesc = getResources().getString(2131231535);
+    this.mTipBindQQBtnDesc = getResources().getString(2131230778);
+    this.mContentView = findViewById(2131559444);
+    this.mQbQdProtectCB = ((SwitchButton)findViewById(2131559446));
+    this.mQbQdProtectName = ((TextView)findViewById(2131559445));
+    this.mQbQdProtectProgress = ((ProgressBar)findViewById(2131559447));
+    this.mQbQdProtectCB.setOnCheckedChangeListener(new aek(this));
   }
   
   private void queryQbQdProtectStatus()
   {
     refreshContentView();
-    af.a().c(0L, this.mHandler);
+    cw.a().c(0L, this.mHandler);
   }
   
   private void refreshContentView()
@@ -57,16 +57,16 @@ public class UtilsQbQdProtectActivity
       return;
     }
     this.mContentView.setVisibility(0);
-    Object localObject = ba.a();
-    g localg = ((ba)localObject).g();
-    if ((localg.e) || (!((ba)localObject).o()))
+    Object localObject = dr.a();
+    h localh = ((dr)localObject).g();
+    if ((localh.e) || (!((dr)localObject).p()))
     {
       this.mQbQdProtectProgress.setVisibility(0);
       this.mQbQdProtectCB.setVisibility(0);
       this.mQbQdProtectCB.setEnabled(false);
       label72:
-      if ((localg.b != null) && (localg.b.length() > 0)) {
-        this.mQbQdProtectName.setText(localg.b);
+      if ((localh.b != null) && (localh.b.length() > 0)) {
+        this.mQbQdProtectName.setText(localh.b);
       }
     }
     else
@@ -75,7 +75,7 @@ public class UtilsQbQdProtectActivity
       this.mQbQdProtectCB.setVisibility(0);
       this.mQbQdProtectCB.setEnabled(true);
       localObject = this.mQbQdProtectCB;
-      if (localg.c) {
+      if (localh.c) {
         break label146;
       }
     }
@@ -91,11 +91,11 @@ public class UtilsQbQdProtectActivity
   
   private void setQbQdProtectStatus()
   {
-    g localg = ba.a().g();
-    if (localg.e) {
+    h localh = dr.a().g();
+    if (localh.e) {
       return;
     }
-    localg.e = true;
+    localh.e = true;
     refreshContentView();
     handleQbQdProtect();
   }
@@ -108,64 +108,64 @@ public class UtilsQbQdProtectActivity
     showUserDialog(paramString);
   }
   
-  private void showTipView(int paramInt, String paramString1, String paramString2, boolean paramBoolean)
+  private void showTipView(int paramInt, boolean paramBoolean)
   {
     if (this.mErrorView == null)
     {
       this.mErrorView = new ErrorView(this);
       addContentView(this.mErrorView);
     }
-    this.mErrorView.a(paramInt);
+    this.mErrorView.setErrorType(paramInt);
     if (paramBoolean) {
-      this.mErrorView.a(this.mBindListener);
+      this.mErrorView.setAction(this.mBindListener);
     }
     for (;;)
     {
-      this.mErrorView.setVisibility(0);
+      this.mErrorView.a();
       bringChildToFront(this.mErrorView);
       return;
-      this.mErrorView.a(this.mRetryListener);
+      this.mErrorView.setAction(this.mRetryListener);
     }
   }
   
   public void handleQbQdProtect()
   {
     int i = 1;
-    Object localObject = ba.a().g();
-    int j = ((g)localObject).a;
-    if (((g)localObject).c) {
+    Object localObject = dr.a().g();
+    int j = ((h)localObject).a;
+    if (((h)localObject).c) {
       i = 0;
     }
-    localObject = af.a();
+    localObject = cw.a();
     Handler localHandler = this.mHandler;
-    ((af)localObject).a(0L, new int[] { j }, new int[] { i }, "", localHandler);
+    ((cw)localObject).a(0L, new int[] { j }, new int[] { i }, "", localHandler);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = ax.a().e();
+    paramBundle = do.a().e();
     if ((paramBundle != null) && (!paramBundle.mIsBinded))
     {
       if (this.mNeedVerifyView == null) {
-        this.mNeedVerifyView = new dk(this, 3);
+        this.mNeedVerifyView = new dd(this, 4);
       }
       setContentView(this.mNeedVerifyView);
     }
     for (;;)
     {
-      setRightTitleImage(2130837951, new afx(this));
+      setRightTitleImage(2130838011, new ael(this));
       return;
-      setContentView(2130903251);
+      setContentView(2130968814);
       init();
     }
   }
   
   protected void onDestroy()
   {
-    g localg = ba.a().g();
-    if (localg != null) {
-      localg.e = false;
+    h localh = dr.a().g();
+    if (localh != null) {
+      localh.e = false;
     }
     super.onDestroy();
   }
@@ -178,13 +178,11 @@ public class UtilsQbQdProtectActivity
   protected void onResume()
   {
     super.onResume();
-    QQUser localQQUser = ax.a().e();
-    if ((localQQUser != null) && (localQQUser.mIsBinded))
-    {
-      refreshContentView();
-      af.a().c(0L, this.mHandler);
+    QQUser localQQUser = do.a().e();
+    if ((localQQUser != null) && (localQQUser.mIsBinded)) {
+      queryQbQdProtectStatus();
     }
-    ba.a().h.a("qb_prot").a();
+    dr.a().h.a("qb_prot").a();
   }
   
   protected void onStop()

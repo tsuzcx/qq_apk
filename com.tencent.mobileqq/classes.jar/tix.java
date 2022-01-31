@@ -1,27 +1,35 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.utils.QQLSSensor;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import org.json.JSONObject;
 
 public class tix
-  implements Runnable
 {
-  public tix(QQLSActivity paramQQLSActivity) {}
+  public String mAbTest;
+  public int mType;
   
-  public void run()
+  protected tix(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSSensor", 2, "====shutSensor===" + Thread.currentThread().getId());
-    }
-    if (this.a.a != null)
-    {
-      this.a.a.b();
-      this.a.a = null;
-    }
+    this.mType = paramParcel.readInt();
+    this.mAbTest = paramParcel.readString();
+  }
+  
+  protected tix(JSONObject paramJSONObject)
+  {
+    this.mType = paramJSONObject.optInt("type");
+    this.mAbTest = paramJSONObject.optString("qq_abtest");
+    parseJson(paramJSONObject);
+  }
+  
+  protected void parseJson(JSONObject paramJSONObject) {}
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    paramParcel.writeInt(this.mType);
+    paramParcel.writeString(this.mAbTest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tix
  * JD-Core Version:    0.7.0.1
  */

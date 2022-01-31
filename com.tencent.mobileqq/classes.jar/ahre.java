@@ -1,21 +1,27 @@
-import com.tencent.mobileqq.search.HotWordSearchEntryModel;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.util.UiThreadUtil;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
 public class ahre
-  implements Runnable
+  extends RecyclerView.ItemDecoration
 {
-  public ahre(HotWordSearchEntryModel paramHotWordSearchEntryModel, HotWordSearchEntryDataModel paramHotWordSearchEntryDataModel) {}
+  private int a;
   
-  public void run()
+  public ahre(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a();
-    UiThreadUtil.a(new ahrf(this));
+    this.a = paramInt;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    paramRect.right = this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahre
  * JD-Core Version:    0.7.0.1
  */

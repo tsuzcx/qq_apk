@@ -1,24 +1,33 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.GalleryImageStruct;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import android.os.Message;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
 
 public class vml
-  implements TroopMemberApiClient.Callback
+  implements uoa
 {
-  public vml(AIOGalleryAdapter paramAIOGalleryAdapter, int paramInt, AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, AIOImageData paramAIOImageData) {}
+  public vml(FollowCaptureLauncher paramFollowCaptureLauncher) {}
   
-  public void a(Bundle paramBundle)
+  public void a(String paramString, int paramInt)
   {
-    paramBundle = paramBundle.getString("ThumbnailFile_Large");
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a.runOnUiThread(new vmm(this, paramBundle));
+    Message localMessage = Message.obtain();
+    localMessage.obj = paramString;
+    localMessage.what = 65543;
+    FollowCaptureLauncher.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
+  {
+    FollowCaptureLauncher.a(this.a).sendEmptyMessage(65544);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    FollowCaptureLauncher.a(this.a).sendEmptyMessage(65544);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vml
  * JD-Core Version:    0.7.0.1
  */

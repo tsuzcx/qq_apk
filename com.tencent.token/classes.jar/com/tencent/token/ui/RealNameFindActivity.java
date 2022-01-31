@@ -2,6 +2,9 @@ package com.tencent.token.ui;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,34 +12,58 @@ import android.os.HandlerThread;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
-import com.tencent.token.af;
+import android.widget.Toast;
+import com.tencent.captchasdk.TCaptchaPopupActivity;
+import com.tencent.token.ch;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult.VerifyTypeItem;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.core.bean.QueryCaptchaResult;
 import com.tencent.token.core.bean.RealNameQueryResult;
-import com.tencent.token.global.e;
-import com.tencent.token.p;
+import com.tencent.token.cw;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.i;
+import com.tencent.token.utils.w;
+import java.io.ByteArrayOutputStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.json.JSONObject;
 
 public class RealNameFindActivity
   extends BaseActivity
 {
+  private static final int VERIFYREQESTCODE = 1001;
   private Handler _handler;
   private byte[] backphotoinfo;
   private boolean canchange_uin;
+  private TextView changeTypeTv;
   private byte[] frontphotoinfo;
+  private boolean isFirstFactor = false;
+  private boolean isGetQryIdResult = false;
   private boolean isShowLockVerify = false;
+  private boolean isValidId = false;
   private boolean ish5zzb;
   private boolean mAutoIDCardDetect = true;
   private byte[] mBackData;
   private String mBackPath;
+  private String mCountryCode = "+86";
   private byte[] mFaceData;
   private byte[] mFrontData;
   private String mFrontPath;
-  private Handler mHandler = new ux(this);
+  private Handler mHandler = new ui(this);
   private HandlerThread mHandlerThread;
+  private EditText mIdEditText;
+  private ProgressBar mIdPb;
   private boolean mIsActiveSuccess = false;
+  private String mMobile = "";
+  private EditText mNameEditText;
   private Button mNext;
   private int mOpType = 2;
   private long mRealUin;
@@ -45,7 +72,15 @@ public class RealNameFindActivity
   private View mScanIdLayout;
   private ImageView mScanIdOk;
   private int mSourceId;
+  private TextView mTipText;
+  private QQUser mUser;
+  private int mVerifyFactorId;
+  private DeterminVerifyFactorsResult mVerifyResult;
+  private DeterminVerifyFactorsResult.VerifyTypeItem mVerifyType;
+  protected QueryCaptchaResult queryCaptchaResult;
   private RealNameQueryResult result;
+  private ScrollView scrollView;
+  private boolean verifyFaceAndID = false;
   
   private static int calculateInSampleSize(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
   {
@@ -67,114 +102,156 @@ public class RealNameFindActivity
   
   private boolean checkCanCommit()
   {
-    if ((this.mScanFaceOk.getVisibility() == 0) && (this.mScanIdOk.getVisibility() == 0)) {}
+    String str1 = this.mNameEditText.getText().toString();
+    String str2 = this.mIdEditText.getText().toString();
+    if ((str1 != null) && (str1.length() > 0) && (str2 != null) && (str2.length() > 0) && (this.mScanFaceOk.getVisibility() == 0) && (this.mScanIdOk.getVisibility() == 0) && (this.isValidId)) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        this.mNext.setTextAppearance(this, 2131427381);
-        this.mNext.setBackgroundResource(2130837549);
+        this.mNext.setTextAppearance(this, 2131362228);
+        this.mNext.setBackgroundResource(2130837632);
         this.mNext.setEnabled(true);
         return true;
       }
-      this.mNext.setTextAppearance(this, 2131427335);
-      this.mNext.setBackgroundResource(2130837636);
+      this.mNext.setTextAppearance(this, 2131362186);
+      this.mNext.setBackgroundResource(2130837728);
       this.mNext.setEnabled(false);
       return false;
     }
   }
   
-  /* Error */
+  private void checkIdCard()
+  {
+    String str = this.mIdEditText.getText().toString();
+    if (isVaildID(str))
+    {
+      this.mIdPb.setVisibility(0);
+      cw.a().a(w.f(this.mRealUin), this.mRealUin, str, this.mHandler, false);
+      return;
+    }
+    this.mTipText.setVisibility(0);
+    if (TextUtils.isEmpty(str))
+    {
+      this.mTipText.setText(getResources().getString(2131231652));
+      this.mTipText.setTextColor(-7829368);
+    }
+    for (;;)
+    {
+      this.isValidId = false;
+      checkCanCommit();
+      return;
+      this.mTipText.setText(getResources().getString(2131231651));
+      this.mTipText.setTextColor(-65536);
+    }
+  }
+  
   private byte[] compressPicData(byte[] paramArrayOfByte)
   {
-    // Byte code:
-    //   0: new 141	android/graphics/BitmapFactory$Options
-    //   3: dup
-    //   4: invokespecial 186	android/graphics/BitmapFactory$Options:<init>	()V
-    //   7: astore_2
-    //   8: aload_2
-    //   9: iconst_1
-    //   10: putfield 189	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   13: aload_1
-    //   14: iconst_0
-    //   15: aload_1
-    //   16: arraylength
-    //   17: aload_2
-    //   18: invokestatic 195	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   21: pop
-    //   22: aload_2
-    //   23: aload_2
-    //   24: sipush 640
-    //   27: sipush 640
-    //   30: invokestatic 197	com/tencent/token/ui/RealNameFindActivity:calculateInSampleSize	(Landroid/graphics/BitmapFactory$Options;II)I
-    //   33: putfield 200	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   36: aload_2
-    //   37: iconst_0
-    //   38: putfield 189	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   41: aload_1
-    //   42: iconst_0
-    //   43: aload_1
-    //   44: arraylength
-    //   45: aload_2
-    //   46: invokestatic 195	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   49: astore_2
-    //   50: new 202	java/io/ByteArrayOutputStream
-    //   53: dup
-    //   54: invokespecial 203	java/io/ByteArrayOutputStream:<init>	()V
-    //   57: astore_1
-    //   58: aload_2
-    //   59: getstatic 209	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   62: bipush 85
-    //   64: aload_1
-    //   65: invokevirtual 215	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   68: pop
-    //   69: aload_1
-    //   70: invokevirtual 218	java/io/ByteArrayOutputStream:close	()V
-    //   73: aload_1
-    //   74: invokevirtual 222	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   77: areturn
-    //   78: astore_2
-    //   79: aload_2
-    //   80: invokevirtual 225	java/io/IOException:printStackTrace	()V
-    //   83: goto -10 -> 73
-    //   86: astore_2
-    //   87: aload_1
-    //   88: invokevirtual 218	java/io/ByteArrayOutputStream:close	()V
-    //   91: aload_2
-    //   92: athrow
-    //   93: astore_1
-    //   94: aload_1
-    //   95: invokevirtual 225	java/io/IOException:printStackTrace	()V
-    //   98: goto -7 -> 91
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	101	0	this	RealNameFindActivity
-    //   0	101	1	paramArrayOfByte	byte[]
-    //   7	52	2	localObject1	java.lang.Object
-    //   78	2	2	localIOException	java.io.IOException
-    //   86	6	2	localObject2	java.lang.Object
-    // Exception table:
-    //   from	to	target	type
-    //   69	73	78	java/io/IOException
-    //   58	69	86	finally
-    //   87	91	93	java/io/IOException
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    if (paramArrayOfByte == null) {
+      return localByteArrayOutputStream.toByteArray();
+    }
+    for (;;)
+    {
+      try
+      {
+        BitmapFactory.Options localOptions = new BitmapFactory.Options();
+        localOptions.inJustDecodeBounds = true;
+        BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length, localOptions);
+        localOptions.inSampleSize = calculateInSampleSize(localOptions, 640, 640);
+        localOptions.inJustDecodeBounds = false;
+        BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length, localOptions).compress(Bitmap.CompressFormat.JPEG, 85, localByteArrayOutputStream);
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+        if (localByteArrayOutputStream == null) {
+          continue;
+        }
+        try
+        {
+          localByteArrayOutputStream.close();
+        }
+        catch (Exception paramArrayOfByte)
+        {
+          paramArrayOfByte.printStackTrace();
+        }
+        continue;
+      }
+      finally
+      {
+        if (localByteArrayOutputStream == null) {
+          break label130;
+        }
+      }
+      try
+      {
+        localByteArrayOutputStream.close();
+        return localByteArrayOutputStream.toByteArray();
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+    try
+    {
+      localByteArrayOutputStream.close();
+      label130:
+      throw paramArrayOfByte;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
   }
   
   private void initView()
   {
     if (this.ish5zzb)
     {
-      setTitle(2131362799);
-      ((TextView)findViewById(2131296962)).setText(2131362800);
+      setTitle(2131230786);
+      ((TextView)findViewById(2131559168)).setText(2131230785);
     }
-    this.mNext = ((Button)findViewById(2131296932));
-    this.mScanFaceOk = ((ImageView)findViewById(2131296939));
-    this.mScanIdOk = ((ImageView)findViewById(2131296942));
-    this.mScanFaceLayout = findViewById(2131296937);
-    this.mScanIdLayout = findViewById(2131296940);
-    this.mScanFaceLayout.setOnClickListener(new vg(this));
-    this.mScanIdLayout.setOnClickListener(new vh(this));
-    this.mNext.setOnClickListener(new vi(this));
+    this.mNext = ((Button)findViewById(2131559148));
+    this.mScanFaceOk = ((ImageView)findViewById(2131559157));
+    this.mScanIdOk = ((ImageView)findViewById(2131559160));
+    this.mScanFaceLayout = findViewById(2131559155);
+    this.mScanIdLayout = findViewById(2131559158);
+    this.mNameEditText = ((EditText)findViewById(2131559008));
+    this.mIdEditText = ((EditText)findViewById(2131559152));
+    if (this.mNameEditText != null) {
+      this.mNameEditText.clearFocus();
+    }
+    if (this.mIdEditText != null) {
+      this.mIdEditText.clearFocus();
+    }
+    this.mIdPb = ((ProgressBar)findViewById(2131559153));
+    this.mTipText = ((TextView)findViewById(2131559154));
+    this.mNameEditText.addTextChangedListener(new uw(this));
+    this.mIdEditText.addTextChangedListener(new ux(this));
+    this.mIdEditText.setOnFocusChangeListener(new uy(this));
+    this.mIdEditText.setOnEditorActionListener(new uz(this));
+    ScrollView localScrollView = (ScrollView)findViewById(2131558485);
+    localScrollView.getViewTreeObserver().addOnGlobalLayoutListener(new va(this, localScrollView));
+    this.changeTypeTv = ((TextView)findViewById(2131558740));
+    if (this.verifyFaceAndID)
+    {
+      this.changeTypeTv.setVisibility(0);
+      this.changeTypeTv.setOnClickListener(new vb(this));
+    }
+    for (;;)
+    {
+      this.mScanFaceLayout.setOnClickListener(new vc(this));
+      this.mScanIdLayout.setOnClickListener(new vd(this));
+      this.mNext.setOnClickListener(new ut(this));
+      return;
+      this.changeTypeTv.setVisibility(8);
+    }
   }
   
   private boolean isVaildID(String paramString)
@@ -187,7 +264,7 @@ public class RealNameFindActivity
   
   private void uploadData()
   {
-    showProDialogWithoutShutDown(this, getResources().getString(2131361817));
+    showProDialogWithoutShutDown(this, getResources().getString(2131231298));
     if (this.mHandlerThread == null)
     {
       this.mHandlerThread = new HandlerThread("uploadphoto", 1);
@@ -196,12 +273,11 @@ public class RealNameFindActivity
     if (this._handler == null) {
       this._handler = new Handler(this.mHandlerThread.getLooper());
     }
-    this._handler.post(new vj(this));
+    this._handler.post(new uu(this));
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    boolean bool = true;
     for (;;)
     {
       try
@@ -209,18 +285,58 @@ public class RealNameFindActivity
         if ((this.mIsActiveSuccess) && (paramKeyEvent.getAction() == 0)) {}
         switch (paramKeyEvent.getKeyCode())
         {
-        case 4: 
-          bool = super.dispatchKeyEvent(paramKeyEvent);
-          return bool;
+        default: 
+          if ((this.isFirstFactor) && (paramKeyEvent.getAction() == 0)) {}
+          switch (paramKeyEvent.getKeyCode())
+          {
+          case 4: 
+            return super.dispatchKeyEvent(paramKeyEvent);
+          }
+          break;
         }
       }
       catch (Exception paramKeyEvent)
       {
         paramKeyEvent.printStackTrace();
-        e.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
+        h.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
         return true;
       }
+      startActivity(abi.a().a(this));
+      return true;
     }
+    return true;
+  }
+  
+  protected void goNextVerify()
+  {
+    if (!this.mVerifyType.a(Integer.valueOf(this.mVerifyFactorId)))
+    {
+      dismissDialog();
+      abi.a().a(this, this.mVerifyResult, this.mVerifyType, this.mVerifyType.a(this.mVerifyFactorId), false, this.mHandler);
+      return;
+    }
+    if (this.mVerifyResult.b())
+    {
+      cw.a().b(this.mUser.mRealUin, this.mVerifyType.a(), this.mMobile, this.mCountryCode, this.mHandler);
+      return;
+    }
+    dismissDialog();
+    Intent localIntent = new Intent(this, NetActiveSetDirBySeqActivity.class);
+    localIntent.putExtra("intent.qquser", this.mUser);
+    localIntent.putExtra("intent.determin_factors_result", this.mVerifyResult);
+    localIntent.putExtra("intent.determin_verify_type", this.mVerifyType);
+    localIntent.putExtra("intent.determin_verify_factor_id", 6);
+    startActivity(localIntent);
+  }
+  
+  protected void gotoVerifyActivity(QueryCaptchaResult paramQueryCaptchaResult)
+  {
+    this.queryCaptchaResult = paramQueryCaptchaResult;
+    Intent localIntent = new Intent(this, TCaptchaPopupActivity.class);
+    if (paramQueryCaptchaResult != null) {
+      localIntent.putExtra("appid", paramQueryCaptchaResult.mAppid);
+    }
+    startActivityForResult(localIntent, 1001);
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -229,67 +345,131 @@ public class RealNameFindActivity
       if ((paramInt2 == 0) && (paramIntent != null) && (paramIntent.getByteArrayExtra("facedata") != null) && (paramIntent.getByteArrayExtra("facedata").length > 0))
       {
         this.mFaceData = paramIntent.getByteArrayExtra("facedata");
-        e.a("realname facedata len=" + this.mFaceData.length);
+        h.a("realname facedata len=" + this.mFaceData.length);
         this.mScanFaceOk.setVisibility(0);
-        p.a().a(System.currentTimeMillis(), 89);
+        ch.a().a(System.currentTimeMillis(), 89);
+        checkCanCommit();
       }
     }
-    do
-    {
-      checkCanCommit();
-      do
+    while ((paramInt1 != 1001) || (paramInt2 == -1)) {
+      try
       {
-        return;
-      } while (paramInt1 != 2);
-      if (paramInt2 == 1)
-      {
-        Intent localIntent = new Intent(this, RealNameTakeIDPhotoActivity.class);
-        if ((paramIntent.getStringExtra("frontdata") != null) && (paramIntent.getStringExtra("frontdata").length() > 0))
+        paramIntent = new JSONObject(paramIntent.getStringExtra("retJson"));
+        if (paramIntent.getInt("ret") == 0)
         {
-          this.mFrontPath = paramIntent.getStringExtra("frontdata");
-          this.frontphotoinfo = paramIntent.getByteArrayExtra("frontphotoinfo");
-          localIntent.putExtra("frontdata", this.mFrontPath);
+          if (this.queryCaptchaResult != null) {
+            cw.a().d(this.queryCaptchaResult.mRealUin, this.queryCaptchaResult.mSceneId, paramIntent.getString("ticket"), paramIntent.getString("randstr"), this.mHandler);
+          }
+          return;
+          if (paramInt1 == 2) {
+            if (paramInt2 == 1)
+            {
+              Intent localIntent = new Intent(this, RealNameTakeIDPhotoActivity.class);
+              if ((paramIntent.getStringExtra("frontdata") != null) && (paramIntent.getStringExtra("frontdata").length() > 0))
+              {
+                this.mFrontPath = paramIntent.getStringExtra("frontdata");
+                this.frontphotoinfo = paramIntent.getByteArrayExtra("frontphotoinfo");
+                localIntent.putExtra("frontdata", this.mFrontPath);
+              }
+              localIntent.putExtra("scene", 2);
+              startActivityForResult(localIntent, 2);
+            }
+            else if ((paramInt2 == 0) && (paramIntent != null) && (paramIntent.getStringExtra("frontdata") != null) && (paramIntent.getStringExtra("frontdata").length() > 0) && (paramIntent.getStringExtra("backdata") != null) && (paramIntent.getStringExtra("backdata").length() > 0))
+            {
+              this.mFrontPath = paramIntent.getStringExtra("frontdata");
+              this.mBackPath = paramIntent.getStringExtra("backdata");
+              this.frontphotoinfo = paramIntent.getByteArrayExtra("frontphotoinfo");
+              this.backphotoinfo = paramIntent.getByteArrayExtra("backphotoinfo");
+              h.a("realname id frontlen=" + this.mFrontPath.length() + ", backlen=" + this.mBackPath.length());
+              this.mScanIdOk.setVisibility(0);
+              ch.a().a(System.currentTimeMillis(), 90);
+              checkCanCommit();
+            }
+          }
         }
-        localIntent.putExtra("scene", 2);
-        startActivityForResult(localIntent, 2);
+        else
+        {
+          Toast.makeText(this, "未验证成功", 0).show();
+          return;
+        }
+      }
+      catch (Exception paramIntent)
+      {
+        paramIntent.printStackTrace();
         return;
       }
-    } while ((paramInt2 != 0) || (paramIntent == null) || (paramIntent.getStringExtra("frontdata") == null) || (paramIntent.getStringExtra("frontdata").length() <= 0) || (paramIntent.getStringExtra("backdata") == null) || (paramIntent.getStringExtra("backdata").length() <= 0));
-    this.mFrontPath = paramIntent.getStringExtra("frontdata");
-    this.mBackPath = paramIntent.getStringExtra("backdata");
-    this.frontphotoinfo = paramIntent.getByteArrayExtra("frontphotoinfo");
-    this.backphotoinfo = paramIntent.getByteArrayExtra("backphotoinfo");
-    e.a("realname id frontlen=" + this.mFrontPath.length() + ", backlen=" + this.mBackPath.length());
-    this.mScanIdOk.setVisibility(0);
-    p.a().a(System.currentTimeMillis(), 90);
-    checkCanCommit();
+    }
+    Toast.makeText(this, "未验证成功", 0).show();
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
+    if (getIntent().getBooleanExtra("intent.determin_from_list", false)) {
+      overridePendingTransition(0, 0);
+    }
     this.isShowLockVerify = getIntent().getBooleanExtra("not_showLockVerify", false);
     this.canchange_uin = getIntent().getBooleanExtra("canchange_uin", false);
     if (this.isShowLockVerify) {
       setNeverShowLockVerifyView();
     }
-    setContentView(2130903165);
     this.mSourceId = getIntent().getIntExtra("source_id", 0);
     this.ish5zzb = getIntent().getBooleanExtra("ish5zzb", false);
     this.result = ((RealNameQueryResult)getIntent().getSerializableExtra("result"));
     this.mRealUin = getIntent().getLongExtra("real_uin", 0L);
     this.mIsActiveSuccess = false;
+    this.mVerifyFactorId = getIntent().getIntExtra("intent.determin_verify_factor_id", -1);
+    if (this.mVerifyFactorId != -1)
+    {
+      this.verifyFaceAndID = true;
+      this.mUser = ((QQUser)getIntent().getSerializableExtra("intent.qquser"));
+      this.mVerifyResult = ((DeterminVerifyFactorsResult)getIntent().getSerializableExtra("intent.determin_factors_result"));
+      this.mVerifyType = ((DeterminVerifyFactorsResult.VerifyTypeItem)getIntent().getSerializableExtra("intent.determin_verify_type"));
+      this.isFirstFactor = getIntent().getBooleanExtra("intent.determin_first_verify_factor", false);
+      if ((this.mUser == null) || (this.mVerifyResult == null) || (this.mVerifyType == null))
+      {
+        finish();
+        return;
+      }
+      if ((this.mVerifyResult != null) && (this.mVerifyResult.c() == 2)) {
+        setNeverShowLockVerifyView();
+      }
+      this.mRealUin = this.mUser.mRealUin;
+      if ((this.mVerifyResult != null) && (this.mVerifyResult.c() == 2)) {
+        this.mSourceId = 1;
+      }
+    }
+    setContentView(2130968727);
     initView();
-    af.a().n(-1L, this.mHandler);
+    cw.a().l(this.mRealUin, this.mHandler);
+  }
+  
+  protected void onDestroy()
+  {
+    super.onDestroy();
+    i.b(this.mFrontPath);
+    i.b(this.mBackPath);
+    abi.c();
   }
   
   protected void onResume()
   {
     super.onResume();
-    Intent localIntent = getIntent();
-    if (localIntent == null) {}
-    while (!localIntent.getBooleanExtra("reupload", false)) {
+    Intent localIntent;
+    if (this.mVerifyFactorId != -1)
+    {
+      this.verifyFaceAndID = true;
+      localIntent = getIntent();
+      if (localIntent != null) {
+        break label35;
+      }
+    }
+    label35:
+    while (!localIntent.getBooleanExtra("reupload", false))
+    {
       return;
+      this.verifyFaceAndID = false;
+      break;
     }
     this.result = ((RealNameQueryResult)localIntent.getSerializableExtra("result"));
     this.mRealUin = localIntent.getLongExtra("real_uin", 0L);
@@ -307,6 +487,14 @@ public class RealNameFindActivity
       this.mScanIdOk.setVisibility(0);
     }
     checkCanCommit();
+  }
+  
+  protected void setDefaultBackArrow()
+  {
+    super.setDefaultBackArrow();
+    if (this.isFirstFactor) {
+      this.mBackArrow.setOnClickListener(new uv(this));
+    }
   }
 }
 

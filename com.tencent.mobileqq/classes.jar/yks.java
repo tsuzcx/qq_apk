@@ -1,25 +1,54 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.concurrent.atomic.AtomicLong;
-
 public class yks
-  implements Observer
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
+  private volatile int jdField_a_of_type_Int = 0;
+  private ylc jdField_a_of_type_Ylc;
   
-  public yks(QQAppInterface paramQQAppInterface)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    a(-1);
   }
   
-  public void update(Observable paramObservable, Object paramObject) {}
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Ylc != null) {}
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    case -1: 
+      this.jdField_a_of_type_Ylc.d();
+      return;
+    case 1: 
+      this.jdField_a_of_type_Ylc.b();
+      return;
+    case 2: 
+      this.jdField_a_of_type_Ylc.a();
+      return;
+    }
+    this.jdField_a_of_type_Ylc.c();
+  }
+  
+  public void a(ylc paramylc)
+  {
+    this.jdField_a_of_type_Ylc = paramylc;
+    a(this.jdField_a_of_type_Int);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == -1;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yks
  * JD-Core Version:    0.7.0.1
  */

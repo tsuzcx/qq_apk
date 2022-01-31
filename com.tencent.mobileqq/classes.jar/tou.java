@@ -1,26 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
 
 public class tou
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  public tou(RegisterActivity paramRegisterActivity) {}
+  public tou(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
-    {
-      RegisterActivity.b(this.a);
-      return true;
-    }
-    return false;
+    PublicAccountImageCollectionCommentActivity.a(this.a);
+    PublicAccountImageCollectionCommentActivity.a(this.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tou
  * JD-Core Version:    0.7.0.1
  */

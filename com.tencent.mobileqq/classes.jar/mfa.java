@@ -1,20 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-
 public class mfa
-  implements Runnable
+  extends mev
 {
-  public mfa(VideoPlayerWrapper paramVideoPlayerWrapper, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public int a;
+  public String b;
   
-  public void run()
+  public mfa(long paramLong, String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.release();
+    super(6005);
+    a(paramLong, paramString1);
+    this.a = paramInt;
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfa
  * JD-Core Version:    0.7.0.1
  */

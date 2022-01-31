@@ -1,14 +1,25 @@
-import com.tencent.mobileqq.app.AutomatorObserver;
-import com.tencent.mobileqq.app.automator.step.GetCheckUpdate;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
+import com.tencent.mobileqq.remind.widget.WheelView;
+import com.tencent.widget.VerticalGallery;
+import com.tencent.widget.VerticalGallery.OnEndMovementListener;
 
 public class fmh
-  extends AutomatorObserver
+  implements VerticalGallery.OnEndMovementListener
 {
-  private fmh(GetCheckUpdate paramGetCheckUpdate) {}
+  private int jdField_a_of_type_Int;
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public fmh(IphonePickerView paramIphonePickerView, int paramInt)
   {
-    this.a.a(7);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(VerticalGallery paramVerticalGallery)
+  {
+    int i = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView)[this.jdField_a_of_type_Int].p();
+    if (IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView) != null) {
+      IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.jdField_a_of_type_Int, i);
+    }
   }
 }
 

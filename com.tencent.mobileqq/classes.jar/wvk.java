@@ -1,19 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.util.List;
 
-class wvk
-  implements DialogInterface.OnClickListener
+public class wvk
 {
-  wvk(wvj paramwvj) {}
+  public final int a;
+  public final List<LocalMediaInfo> a;
+  public final uiz a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public wvk(List<LocalMediaInfo> paramList, int paramInt, uiz paramuiz)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Uiz = paramuiz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wvk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,69 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BabyQFriendStatusWebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import java.io.InputStream;
+import java.util.ArrayList;
 
-public class yzw
-  implements EIPCResultCallback
+public abstract class yzw
 {
-  public yzw(BabyQFriendStatusWebViewPlugin paramBabyQFriendStatusWebViewPlugin) {}
+  protected static int a;
+  protected static ArrayList<String[]> a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  static
   {
-    if ((paramEIPCResult == null) || (paramEIPCResult.data == null))
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public String a(String paramString)
+  {
+    return svi.b(paramString);
+  }
+  
+  public abstract yzx a(String paramString);
+  
+  public abstract void a();
+  
+  public abstract void a(String paramString);
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract boolean a(String paramString, InputStream paramInputStream);
+  
+  public abstract boolean a(String paramString1, String paramString2);
+  
+  public void b()
+  {
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb BabyQFriendStatusWebPlugin EIPCResultCallback : result == null or data == null");
+      try
+      {
+        int i = jdField_a_of_type_Int;
+        if (i >= 1) {
+          return;
+        }
+        jdField_a_of_type_Int += 1;
+        if (jdField_a_of_type_JavaUtilArrayList.size() > 0)
+        {
+          String[] arrayOfString = (String[])jdField_a_of_type_JavaUtilArrayList.remove(0);
+          a(arrayOfString[0], arrayOfString[1]);
+          try
+          {
+            Thread.sleep(100L);
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            localInterruptedException.printStackTrace();
+          }
+        }
+        else
+        {
+          jdField_a_of_type_Int -= 1;
+        }
       }
-      return;
+      finally {}
     }
-    boolean bool = paramEIPCResult.isSuccess();
-    String str2 = paramEIPCResult.data.getString("key_method_action");
-    String str3 = paramEIPCResult.data.getString("web_js_call_back_id");
-    if (QLog.isColorLevel()) {
-      QLog.d("BabyQFriendStatusWebViewPlugin", 2, new Object[] { "babyqWeb BabyQFriendStatusWebPlugin EIPCResultCallback : issuccess = ", Boolean.valueOf(bool), ",action = ", str2, ",jscallback = ", str3 });
-    }
-    String str1 = "";
-    if ("setFriendGrouping".equals(str2))
-    {
-      paramEIPCResult = paramEIPCResult.data.getString("key_handle_set_get_group");
-      str1 = "{ \"ret\": 0, \"group\": \"" + paramEIPCResult + "\"}";
-    }
-    BabyQFriendStatusWebViewPlugin.a(this.a, str3, str1, str2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yzw
  * JD-Core Version:    0.7.0.1
  */

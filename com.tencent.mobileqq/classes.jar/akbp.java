@@ -1,18 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
 
-public final class akbp
-  implements MediaPlayer.OnCompletionListener
+public class akbp
+  extends alwx
 {
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public akbp(TroopDiscussionTroop paramTroopDiscussionTroop) {}
+  
+  protected void a()
   {
-    paramMediaPlayer.release();
-    com.tencent.mobileqq.utils.AudioUtil.a = null;
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbp
  * JD-Core Version:    0.7.0.1
  */

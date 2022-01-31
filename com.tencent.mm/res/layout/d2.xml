@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.ThreeDotsLoadingView android:id="@id/uz" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/v0" android:paddingTop="25.0dip" android:paddingBottom="25.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:background="#ffd8d8d8" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="0.70000005dip" android:layout_marginLeft="42.0dip" android:layout_marginRight="20.0dip" android:layout_weight="1.0" />
+        <TextView android:textSize="13.0dip" android:textColor="#ffbababa" android:id="@id/v1" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/l1" android:includeFontPadding="false" />
+        <View android:background="#ffd8d8d8" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="0.70000005dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="42.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+    <View android:layout_gravity="top" android:id="@id/v2" android:background="#0a000000" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+</FrameLayout>

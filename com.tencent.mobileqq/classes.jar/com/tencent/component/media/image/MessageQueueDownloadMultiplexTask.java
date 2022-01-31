@@ -7,102 +7,124 @@ import com.tencent.component.media.ImageManagerEnv;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import phh;
-import phk;
 
 public class MessageQueueDownloadMultiplexTask
-  extends phh
+  extends ImageTask
 {
-  private static int jdField_a_of_type_Int;
-  private static Handler jdField_a_of_type_AndroidOsHandler;
-  private static MessageQueueDownloadMultiplexTask jdField_a_of_type_ComTencentComponentMediaImageMessageQueueDownloadMultiplexTask;
-  private static final Object jdField_a_of_type_JavaLangObject;
-  private static HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static boolean jdField_a_of_type_Boolean = false;
-  private MessageQueueDownloadMultiplexTask b = null;
+  private static final int MSG_CHECK_SAME_IMAGE_TASK = 1000;
+  private static Handler mDispatcher;
+  private static HashMap<String, LinkedList<MessageQueueDownloadMultiplexTask>> mDownloadImageTaskQueue = new HashMap();
+  private static int mObjectPoolSize;
+  private static boolean needRetry = false;
+  private static MessageQueueDownloadMultiplexTask sPool;
+  private static final Object sPoolSync;
+  private MessageQueueDownloadMultiplexTask next = null;
   
   static
   {
-    jdField_a_of_type_AndroidOsHandler = null;
+    mDispatcher = null;
     HandlerThread localHandlerThread;
     if (ImageManagerEnv.g().getDispatcher() == null)
     {
       localHandlerThread = new HandlerThread("ImageDownloadMultiplexThread");
       localHandlerThread.start();
     }
-    for (jdField_a_of_type_AndroidOsHandler = new phk(localHandlerThread.getLooper());; jdField_a_of_type_AndroidOsHandler = new phk(ImageManagerEnv.g().getDispatcher()))
+    for (mDispatcher = new MessageQueueDownloadMultiplexTask.ImageDownloadMultiplexHandler(localHandlerThread.getLooper());; mDispatcher = new MessageQueueDownloadMultiplexTask.ImageDownloadMultiplexHandler(ImageManagerEnv.g().getDispatcher()))
     {
-      jdField_a_of_type_ComTencentComponentMediaImageMessageQueueDownloadMultiplexTask = null;
-      jdField_a_of_type_JavaLangObject = new Object();
-      jdField_a_of_type_Int = 0;
+      sPool = null;
+      sPoolSync = new Object();
+      mObjectPoolSize = 0;
       clearAndInitSize();
       return;
     }
   }
   
-  private MessageQueueDownloadMultiplexTask(phh paramphh)
+  private MessageQueueDownloadMultiplexTask(ImageTask paramImageTask)
   {
-    super(paramphh);
-  }
-  
-  private static List b(String paramString)
-  {
-    return (List)jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-  }
-  
-  private static boolean b(MessageQueueDownloadMultiplexTask paramMessageQueueDownloadMultiplexTask)
-  {
-    String str = paramMessageQueueDownloadMultiplexTask.getImageKey().urlKey;
-    LinkedList localLinkedList = (LinkedList)jdField_a_of_type_JavaUtilHashMap.get(str);
-    if (localLinkedList == null)
-    {
-      paramMessageQueueDownloadMultiplexTask = new LinkedList();
-      jdField_a_of_type_JavaUtilHashMap.put(str, paramMessageQueueDownloadMultiplexTask);
-      return false;
-    }
-    localLinkedList.addLast(paramMessageQueueDownloadMultiplexTask);
-    return true;
+    super(paramImageTask);
   }
   
   public static void clearAndInitSize()
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      jdField_a_of_type_ComTencentComponentMediaImageMessageQueueDownloadMultiplexTask = null;
+      sPool = null;
       int i = 0;
       while (i < mInitAllocatedSize)
       {
         MessageQueueDownloadMultiplexTask localMessageQueueDownloadMultiplexTask = new MessageQueueDownloadMultiplexTask(null);
-        localMessageQueueDownloadMultiplexTask.b = jdField_a_of_type_ComTencentComponentMediaImageMessageQueueDownloadMultiplexTask;
-        jdField_a_of_type_ComTencentComponentMediaImageMessageQueueDownloadMultiplexTask = localMessageQueueDownloadMultiplexTask;
-        jdField_a_of_type_Int += 1;
+        localMessageQueueDownloadMultiplexTask.next = sPool;
+        sPool = localMessageQueueDownloadMultiplexTask;
+        mObjectPoolSize += 1;
         i += 1;
       }
       return;
     }
   }
   
-  public static MessageQueueDownloadMultiplexTask obtain(phh paramphh)
+  private static MessageQueueDownloadMultiplexTask getNextSameDownloadImageTask(String paramString)
+  {
+    Object localObject = null;
+    MessageQueueDownloadMultiplexTask localMessageQueueDownloadMultiplexTask = null;
+    LinkedList localLinkedList = (LinkedList)mDownloadImageTaskQueue.get(paramString);
+    if (localLinkedList != null)
+    {
+      localObject = localMessageQueueDownloadMultiplexTask;
+      while (localLinkedList.size() > 0)
+      {
+        localMessageQueueDownloadMultiplexTask = (MessageQueueDownloadMultiplexTask)localLinkedList.removeFirst();
+        localObject = localMessageQueueDownloadMultiplexTask;
+        if (localMessageQueueDownloadMultiplexTask != null) {
+          localObject = localMessageQueueDownloadMultiplexTask;
+        }
+      }
+    }
+    if (localObject == null) {
+      mDownloadImageTaskQueue.remove(paramString);
+    }
+    return localObject;
+  }
+  
+  private static boolean hasSameDownloadImageTask(MessageQueueDownloadMultiplexTask paramMessageQueueDownloadMultiplexTask)
+  {
+    String str = paramMessageQueueDownloadMultiplexTask.getImageKey().urlKey;
+    LinkedList localLinkedList = (LinkedList)mDownloadImageTaskQueue.get(str);
+    if (localLinkedList == null)
+    {
+      paramMessageQueueDownloadMultiplexTask = new LinkedList();
+      mDownloadImageTaskQueue.put(str, paramMessageQueueDownloadMultiplexTask);
+      return false;
+    }
+    localLinkedList.addLast(paramMessageQueueDownloadMultiplexTask);
+    return true;
+  }
+  
+  public static MessageQueueDownloadMultiplexTask obtain(ImageTask paramImageTask)
   {
     if (needRecycle) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      if (jdField_a_of_type_ComTencentComponentMediaImageMessageQueueDownloadMultiplexTask != null)
+      if (sPool != null)
       {
-        MessageQueueDownloadMultiplexTask localMessageQueueDownloadMultiplexTask = jdField_a_of_type_ComTencentComponentMediaImageMessageQueueDownloadMultiplexTask;
-        jdField_a_of_type_ComTencentComponentMediaImageMessageQueueDownloadMultiplexTask = jdField_a_of_type_ComTencentComponentMediaImageMessageQueueDownloadMultiplexTask.b;
-        localMessageQueueDownloadMultiplexTask.b = null;
-        jdField_a_of_type_Int -= 1;
-        localMessageQueueDownloadMultiplexTask.setImageTask(paramphh);
+        MessageQueueDownloadMultiplexTask localMessageQueueDownloadMultiplexTask = sPool;
+        sPool = sPool.next;
+        localMessageQueueDownloadMultiplexTask.next = null;
+        mObjectPoolSize -= 1;
+        localMessageQueueDownloadMultiplexTask.setImageTask(paramImageTask);
         return localMessageQueueDownloadMultiplexTask;
       }
-      return new MessageQueueDownloadMultiplexTask(paramphh);
+      return new MessageQueueDownloadMultiplexTask(paramImageTask);
     }
+  }
+  
+  private static List<MessageQueueDownloadMultiplexTask> removeSameDownloadImageTask(String paramString)
+  {
+    return (List)mDownloadImageTaskQueue.remove(paramString);
   }
   
   public void excuteTask()
   {
-    Message localMessage = jdField_a_of_type_AndroidOsHandler.obtainMessage();
+    Message localMessage = mDispatcher.obtainMessage();
     localMessage.what = 1000;
     localMessage.obj = this;
     localMessage.sendToTarget();
@@ -125,32 +147,32 @@ public class MessageQueueDownloadMultiplexTask
         do
         {
           return;
-        } while (jdField_a_of_type_Boolean);
-        localMessage = jdField_a_of_type_AndroidOsHandler.obtainMessage();
+        } while (needRetry);
+        localMessage = mDispatcher.obtainMessage();
         localMessage.what = 0;
         localMessage.obj = new Object[] { this, paramVarArgs[0] };
         localMessage.sendToTarget();
         return;
-      } while (jdField_a_of_type_Boolean);
-      localMessage = jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      } while (needRetry);
+      localMessage = mDispatcher.obtainMessage();
       localMessage.what = 1;
       localMessage.obj = new Object[] { this, paramVarArgs[0] };
       localMessage.sendToTarget();
       return;
     case 2: 
-      localMessage = jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      localMessage = mDispatcher.obtainMessage();
       localMessage.what = 2;
       localMessage.obj = new Object[] { this, paramVarArgs[0], paramVarArgs[1], paramVarArgs[2] };
       localMessage.sendToTarget();
       return;
     case 11: 
-      localMessage = jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      localMessage = mDispatcher.obtainMessage();
       localMessage.what = 11;
       localMessage.obj = new Object[] { this, paramVarArgs[0] };
       localMessage.sendToTarget();
       return;
     }
-    paramVarArgs = jdField_a_of_type_AndroidOsHandler.obtainMessage();
+    paramVarArgs = mDispatcher.obtainMessage();
     paramVarArgs.what = 12;
     paramVarArgs.obj = new Object[] { this };
     paramVarArgs.sendToTarget();
@@ -162,13 +184,13 @@ public class MessageQueueDownloadMultiplexTask
       return;
     }
     reset();
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      if (jdField_a_of_type_Int < 50)
+      if (mObjectPoolSize < 50)
       {
-        this.b = jdField_a_of_type_ComTencentComponentMediaImageMessageQueueDownloadMultiplexTask;
-        jdField_a_of_type_ComTencentComponentMediaImageMessageQueueDownloadMultiplexTask = this;
-        jdField_a_of_type_Int += 1;
+        this.next = sPool;
+        sPool = this;
+        mObjectPoolSize += 1;
       }
       return;
     }
@@ -176,7 +198,7 @@ public class MessageQueueDownloadMultiplexTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.MessageQueueDownloadMultiplexTask
  * JD-Core Version:    0.7.0.1
  */

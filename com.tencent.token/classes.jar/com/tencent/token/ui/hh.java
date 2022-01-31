@@ -1,25 +1,18 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.utils.i;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.utils.w;
 
-final class hh
-  implements Runnable
+class hh
+  implements View.OnClickListener
 {
-  hh(FaceRecognitionCameraActivityOld paramFaceRecognitionCameraActivityOld) {}
+  hh(FaceRecognitionCreateActivity paramFaceRecognitionCreateActivity) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    if (!i.a())
-    {
-      FaceRecognitionCameraActivityOld.access$902(this.a, false);
-      return;
-    }
-    if (i.b() < 2097152L)
-    {
-      FaceRecognitionCameraActivityOld.access$902(this.a, false);
-      return;
-    }
-    FaceRecognitionCameraActivityOld.access$902(this.a, true);
+    w.a(this.a, this.a.getResources().getString(2131231296), this.a.getResources().getString(2131231297));
   }
 }
 

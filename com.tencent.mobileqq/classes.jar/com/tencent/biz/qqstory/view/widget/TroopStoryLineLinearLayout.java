@@ -9,7 +9,7 @@ import android.os.Build.VERSION;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import com.tencent.mobileqq.util.DisplayUtil;
+import bdaq;
 import java.lang.reflect.Field;
 
 public class TroopStoryLineLinearLayout
@@ -30,13 +30,13 @@ public class TroopStoryLineLinearLayout
   @TargetApi(16)
   private void a()
   {
-    Drawable localDrawable = getResources().getDrawable(2130839292);
+    Drawable localDrawable = getResources().getDrawable(2130840326);
     Object localObject;
     float f;
     if ((localDrawable instanceof RotateDrawable))
     {
       localObject = (RotateDrawable)localDrawable;
-      f = DisplayUtil.a(getContext(), 66.5F);
+      f = bdaq.a(getContext(), 66.5F);
     }
     try
     {
@@ -78,7 +78,7 @@ public class TroopStoryLineLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.TroopStoryLineLinearLayout
  * JD-Core Version:    0.7.0.1
  */

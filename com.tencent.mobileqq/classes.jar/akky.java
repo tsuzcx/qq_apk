@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
-public final class akky
-  extends DownloadListener
+class akky
+  extends ameq
 {
-  public void onDone(DownloadTask paramDownloadTask)
-  {
-    super.onDone(paramDownloadTask);
-  }
+  akky(akkt paramakkt) {}
   
-  public boolean onStart(DownloadTask paramDownloadTask)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
   {
-    return true;
+    String str = String.valueOf(paramLong1);
+    if ((str != null) && (str.equals(akkt.a(this.a))))
+    {
+      akkt.a(this.a, String.valueOf(paramLong2), paramBoolean, paramInt);
+      QLog.d("RobotAdapter", 2, "onAddRobot  success" + paramBoolean + " resultCode " + paramInt);
+      return;
+    }
+    QLog.i("RobotAdapter", 2, "onAddRobot  troop" + paramLong1 + " cur " + akkt.a(this.a));
   }
 }
 

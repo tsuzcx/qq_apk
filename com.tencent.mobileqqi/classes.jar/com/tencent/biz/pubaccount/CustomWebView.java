@@ -28,8 +28,11 @@ public class CustomWebView
   {
     super(paramContext);
     this.jdField_a_of_type_Boolean = false;
-    if (Build.VERSION.SDK_INT >= 11) {
+    if (Build.VERSION.SDK_INT >= 11)
+    {
       removeJavascriptInterface("searchBoxJavaBridge_");
+      removeJavascriptInterface("accessibility");
+      removeJavascriptInterface("accessibilityTraversal");
     }
   }
   
@@ -37,8 +40,11 @@ public class CustomWebView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = false;
-    if (Build.VERSION.SDK_INT >= 11) {
+    if (Build.VERSION.SDK_INT >= 11)
+    {
       removeJavascriptInterface("searchBoxJavaBridge_");
+      removeJavascriptInterface("accessibility");
+      removeJavascriptInterface("accessibilityTraversal");
     }
   }
   
@@ -46,8 +52,11 @@ public class CustomWebView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Boolean = false;
-    if (Build.VERSION.SDK_INT >= 11) {
+    if (Build.VERSION.SDK_INT >= 11)
+    {
       removeJavascriptInterface("searchBoxJavaBridge_");
+      removeJavascriptInterface("accessibility");
+      removeJavascriptInterface("accessibilityTraversal");
     }
   }
   

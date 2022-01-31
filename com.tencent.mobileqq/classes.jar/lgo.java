@@ -1,22 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import java.util.ArrayList;
-
 public class lgo
-  extends PublicAccountObserver
 {
-  public lgo(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
-  
-  public void a(boolean paramBoolean, ArrayList paramArrayList)
+  @Deprecated
+  public static boolean a(int paramInt1, int paramInt2)
   {
-    if (paramBoolean) {
-      ReadInJoyDeliverBiuActivity.a(this.a, paramArrayList);
-    }
+    return (paramInt2 == 2) || (paramInt2 == 3) || (paramInt1 == 25) || (paramInt1 == 26);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lgo
  * JD-Core Version:    0.7.0.1
  */

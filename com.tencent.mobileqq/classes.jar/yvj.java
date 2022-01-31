@@ -1,54 +1,52 @@
-import com.tencent.TMG.sdk.AVCallback;
-import com.tencent.TMG.utils.SoUtil;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
-import com.tencent.mobileqq.apollo.tmg_opensdk.TMG_Downloader;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqavopensdk.AVEngineEventHandler;
+import org.json.JSONObject;
 
 public class yvj
-  implements AVCallback
 {
-  public yvj(AVEngineWalper paramAVEngineWalper) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
+  public int e;
+  public String e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
   
-  public void onComplete(int paramInt, String paramString)
+  public yvj(JSONObject paramJSONObject, int paramInt)
   {
-    if (paramInt == 0)
-    {
-      QLog.e("AVEngineWalper", 1, "AVCallback make connection successfully!!!");
-      if (!this.a.a())
-      {
-        FileUtils.d(TMG_Downloader.a() + "libqav_graphics.so", TMG_Downloader.a() + "libtmg_graphics.so");
-        boolean bool = SoUtil.loadSo("tmg_graphics");
-        QLog.e("AVEngineWalper", 1, "first check failed, rename bLoad = " + bool);
-        if (!this.a.a())
-        {
-          QLog.e("AVEngineWalper", 1, "Second check failed, stop engine~~~");
-          AVEngineWalper.a(this.a, false);
-          this.a.a();
-          paramInt = 1;
-        }
-      }
-    }
-    for (;;)
-    {
-      if (this.a.a != null) {
-        this.a.a.a(paramInt, paramString);
-      }
-      return;
-      AVEngineWalper.a(this.a, true);
-      QLog.e("AVEngineWalper", 1, "start successfully second try~~~~");
-      continue;
-      AVEngineWalper.a(this.a, true);
-      QLog.e("AVEngineWalper", 1, "start successfully~~~~");
-      continue;
-      QLog.e("AVEngineWalper", 1, "AVCallback result=" + paramInt + ", errorInfo=" + paramString);
-    }
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("goodsWord");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("gifUrl");
+    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("pngUrl");
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("packageID");
+    this.jdField_b_of_type_Int = paramJSONObject.optInt("quantity");
+    this.jdField_c_of_type_Int = paramJSONObject.optInt("playRule");
+    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("selectedWording");
+    this.jdField_d_of_type_Int = paramJSONObject.optInt("giftValue");
+    this.jdField_e_of_type_Int = paramJSONObject.optInt("giftID");
+    this.f = paramJSONObject.optInt("giftPrice");
+    this.jdField_c_of_type_Boolean = paramJSONObject.optBoolean("isFreeGift");
+    this.h = paramJSONObject.optInt("addTime");
+    this.i = paramJSONObject.optInt("freegiftlimit");
+    this.g = paramInt;
+    this.j = paramJSONObject.optInt("svip");
+    this.k = paramJSONObject.optInt("year_svip");
+    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("svip_logo");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yvj
  * JD-Core Version:    0.7.0.1
  */

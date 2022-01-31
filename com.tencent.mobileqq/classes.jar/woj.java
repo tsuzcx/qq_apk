@@ -1,31 +1,43 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
-import com.tencent.mobileqq.app.AutomatorObserver;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class woj
-  extends AutomatorObserver
 {
-  public woj(TroopFragment paramTroopFragment) {}
+  private ulq<wop> a;
   
-  protected void a(int paramInt)
+  public void a()
   {
-    switch (paramInt)
+    try
     {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
+      if (this.a != null)
+      {
+        this.a.a();
+        this.a = null;
       }
-    } while (this.a.a == null);
-    this.a.a.d();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(List<wop> paramList)
+  {
+    try
+    {
+      if (this.a == null) {
+        this.a = new ulq(new wol());
+      }
+      this.a.a(paramList);
+      return;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     woj
  * JD-Core Version:    0.7.0.1
  */

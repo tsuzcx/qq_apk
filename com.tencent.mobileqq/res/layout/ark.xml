@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:focusable="true" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/ak6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="jsv" formItem:leftTextColor="ab6" formItem:switchChecked="true" formItem:switchText="显示轻应用设置" />
+            <TextView android:textSize="@dimen/ayn" android:textColor="@color/fl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/aku" android:layout_marginTop="@dimen/avh" android:text="@string/qm6" android:includeFontPadding="false" android:lineSpacingExtra="3.0dip" android:lineSpacingMultiplier="1.0" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/ak8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="jsv" formItem:leftTextColor="ab6" formItem:switchChecked="true" formItem:switchText="显示调试入口" />
+            <TextView android:textSize="@dimen/ayn" android:textColor="@color/fl" android:id="@id/dzf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/aku" android:layout_marginTop="@dimen/avh" android:text="js debugger lib: no exists" android:includeFontPadding="false" android:lineSpacingExtra="3.0dip" android:lineSpacingMultiplier="1.0" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/ag7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="jsv" formItem:leftText="删除本地应用" formItem:leftTextColor="ab6" formItem:showArrow="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/ag6" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:leftText="删除所有数据" formItem:leftTextColor="ab6" formItem:showArrow="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/al0" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:leftText="更新jsc调试库" formItem:leftTextColor="ab6" formItem:showArrow="true" />
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</LinearLayout>

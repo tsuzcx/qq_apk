@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import org.json.JSONObject;
 
-class gxh
+public class gxh
   implements Runnable
 {
-  gxh(gxf paramgxf) {}
+  public gxh(HttpWebCgiAsyncTask paramHttpWebCgiAsyncTask, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    this.a.a.a(1);
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask.b, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask.jdField_a_of_type_AndroidOsBundle);
+    }
   }
 }
 

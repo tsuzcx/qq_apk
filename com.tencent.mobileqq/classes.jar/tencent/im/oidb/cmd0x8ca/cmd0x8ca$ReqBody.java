@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x8ca$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int OPT_BYTES_GROUP_SIG_FIELD_NUMBER = 3;
   public static final int OPT_INT32_OPR_NUM_ALBUM_FIELD_NUMBER = 11;
@@ -37,7 +37,7 @@ public final class cmd0x8ca$ReqBody
   public final PBUInt64Field opt_uint64_from_uin = PBField.initUInt64(0L);
   public final PBUInt64Field opt_uint64_ga_code = PBField.initUInt64(0L);
   public final PBUInt64Field opt_uint64_group_code = PBField.initUInt64(0L);
-  public final PBRepeatField rpt_uint64_opr_uin = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> rpt_uint64_opr_uin = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   
   static
   {
@@ -47,7 +47,7 @@ public final class cmd0x8ca$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8ca.cmd0x8ca.ReqBody
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,21 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
+import android.widget.TextView;
 
 public class oqx
-  implements View.OnClickListener
+  extends RecyclerView.ViewHolder
 {
-  public oqx(LeftTabBarView paramLeftTabBarView, int paramInt) {}
+  public TextView a;
   
-  public void onClick(View paramView)
+  public oqx(oqv paramoqv, View paramView)
   {
-    long l = System.currentTimeMillis();
-    if (l - LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView) < 500L) {
-      return;
-    }
-    LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView, l);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368577));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oqx
  * JD-Core Version:    0.7.0.1
  */

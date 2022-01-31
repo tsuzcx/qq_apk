@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.mobileqq.leba.header.LebaGridMenuAdapter;
-import com.tencent.mobileqq.observer.GetRedPointExObserver;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class aeaf
-  extends GetRedPointExObserver
+  implements View.OnFocusChangeListener
 {
-  public aeaf(LebaWithFeeds paramLebaWithFeeds) {}
+  public aeaf(SubLoginActivity paramSubLoginActivity) {}
   
-  protected void a(Object paramObject)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    if (true == paramBoolean) {
+      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
     }
   }
 }

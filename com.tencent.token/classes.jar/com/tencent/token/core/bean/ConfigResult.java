@@ -2,10 +2,10 @@ package com.tencent.token.core.bean;
 
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
-import com.tencent.token.gb;
-import com.tencent.token.global.e;
+import com.tencent.token.fe;
+import com.tencent.token.global.h;
 import com.tencent.token.utils.i;
-import com.tencent.token.utils.p;
+import com.tencent.token.utils.t;
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,29 +16,30 @@ public class ConfigResult
   implements Serializable
 {
   private static final long serialVersionUID = 5361472330572016694L;
-  public ArrayList bannerItemlist;
-  public JSONArray bannerlist;
-  public int displayAngle;
+  public int displayAngle = -1;
   public int face_algorithm;
-  public ArrayList fucntionItemlist;
-  public JSONArray fucntionlist;
-  public int headlineVersion;
-  public String headlinetip;
-  public String headlineurl;
-  public int imageAngle;
+  public int imageAngle = -1;
+  public int live_angle;
   public int logLevel;
-  public String mActivityName;
-  public String mActivityUrl;
-  public int mActivityVersion;
   public FaceRecognitionParamResult mFaceRecognitionParamResult;
   public Bitmap mStartUpImg;
   public long mStartUpImgEndTime;
   public long mStartUpImgStartTime;
   public String mStartUpImgUrl;
+  public JSONArray mToolsList;
+  public JSONArray mToolsTitleList;
   public String schemaKey;
   public int schemaTimeout;
+  public String so_param_ids;
+  public String so_param_values;
   public int uploadDate;
+  public int uploadDeviceInfoInt = 0;
+  public int useFaceChmobile = 0;
+  public int useFaceChpwd = 0;
+  public int useFaceStart = 0;
   public int utilsShowFlag;
+  public ArrayList zzbIntroItemlist;
+  public JSONArray zzbIntroList;
   
   public ConfigResult() {}
   
@@ -50,13 +51,9 @@ public class ConfigResult
     this.schemaKey = paramJSONObject.getString("schema_key");
     this.schemaTimeout = paramJSONObject.getInt("schema_timeout");
     this.utilsShowFlag = paramJSONObject.getInt("icon_show_flag");
-    e.b("ConfigResult mStartUpImgUrl=" + this.mStartUpImgUrl + "mStartUpImgStartTime=" + this.mStartUpImgStartTime + "mStartUpImgEndTime=" + "schemaKey=" + this.schemaKey + "schemaTimeout=" + this.schemaTimeout);
-    this.mActivityName = paramJSONObject.getString("my_activities_tip");
-    this.mActivityUrl = paramJSONObject.getString("my_activities_url");
-    this.mActivityVersion = paramJSONObject.getInt("my_activities_version");
-    this.headlinetip = paramJSONObject.optString("headline_tip");
-    this.headlineurl = paramJSONObject.optString("headline_url");
-    this.headlineVersion = paramJSONObject.optInt("headline_version");
+    h.b("ConfigResult mStartUpImgUrl=" + this.mStartUpImgUrl + "mStartUpImgStartTime=" + this.mStartUpImgStartTime + "mStartUpImgEndTime=schemaKey=" + this.schemaKey + "schemaTimeout=" + this.schemaTimeout);
+    this.so_param_ids = paramJSONObject.optString("so_param_ids");
+    this.so_param_values = paramJSONObject.optString("so_param_values");
     this.mFaceRecognitionParamResult = new FaceRecognitionParamResult(paramJSONObject);
     try
     {
@@ -65,74 +62,81 @@ public class ConfigResult
       {
         this.displayAngle = paramJSONObject.getInt("displayangle");
         this.imageAngle = paramJSONObject.getInt("imageangle");
-        label234:
-        this.fucntionlist = paramJSONObject.optJSONArray("function_list");
-        int i;
-        Object localObject;
-        if ((this.fucntionlist != null) && (this.fucntionlist.length() > 0))
+        label219:
+        this.live_angle = paramJSONObject.optInt("live_angle", 21);
+        try
         {
-          this.fucntionItemlist = new ArrayList();
-          i = 0;
-          while (i < this.fucntionlist.length())
+          this.mToolsTitleList = paramJSONObject.optJSONArray("tools_title");
+          this.mToolsList = paramJSONObject.optJSONArray("tools");
+          label251:
+          this.zzbIntroList = paramJSONObject.optJSONArray("zzb_intro_list");
+          if ((this.zzbIntroList != null) && (this.zzbIntroList.length() > 0))
           {
-            localObject = new UtilFucntionItem(this.fucntionlist.getJSONObject(i));
-            this.fucntionItemlist.add(localObject);
-            i += 1;
-          }
-        }
-        this.bannerlist = paramJSONObject.optJSONArray("banner");
-        if ((this.bannerlist != null) && (this.bannerlist.length() > 0))
-        {
-          this.bannerItemlist = new ArrayList();
-          i = j;
-          while (i < this.bannerlist.length())
-          {
-            localObject = new a(this.bannerlist.getJSONObject(i));
-            this.bannerItemlist.add(localObject);
-            i += 1;
-          }
-        }
-        for (;;)
-        {
-          try
-          {
-            this.logLevel = paramJSONObject.getInt("log_level");
-            switch (this.logLevel)
+            this.zzbIntroItemlist = new ArrayList();
+            while (i < this.zzbIntroList.length())
             {
-            case 0: 
-              gb.a(48);
-              this.uploadDate = paramJSONObject.getInt("upload_date");
-              if (this.uploadDate < 0) {
-                return;
-              }
-              p.b("debug.file.uploadfiledate", this.uploadDate).commit();
-              e.a("log file upload date=" + this.uploadDate);
-              paramJSONObject = new File(gb.b(), "upload.file");
-              if (!paramJSONObject.exists()) {
-                return;
-              }
-              i.a(paramJSONObject);
-              return;
+              ZzbIntroItem localZzbIntroItem = new ZzbIntroItem(this.zzbIntroList.getJSONObject(i));
+              this.zzbIntroItemlist.add(localZzbIntroItem);
+              i += 1;
             }
           }
-          catch (Exception paramJSONObject)
+          this.uploadDeviceInfoInt = paramJSONObject.optInt("collect_device_info");
+          this.useFaceStart = paramJSONObject.optInt("use_face_start");
+          this.useFaceChpwd = paramJSONObject.optInt("use_face_chpwd");
+          this.useFaceChmobile = paramJSONObject.optInt("use_face_chmobile");
+          for (;;)
           {
-            paramJSONObject.printStackTrace();
-            return;
+            try
+            {
+              this.logLevel = paramJSONObject.optInt("log_level");
+              switch (this.logLevel)
+              {
+              case 0: 
+                fe.a(48);
+              }
+            }
+            catch (Exception paramJSONObject)
+            {
+              paramJSONObject.printStackTrace();
+              return;
+            }
+            try
+            {
+              this.uploadDate = paramJSONObject.getInt("upload_date");
+              if (this.uploadDate >= 0)
+              {
+                t.b("debug.file.uploadfiledate", this.uploadDate).commit();
+                h.a("log file upload date=" + this.uploadDate);
+                paramJSONObject = new File(fe.b(), "upload.file");
+                if (paramJSONObject.exists()) {
+                  i.a(paramJSONObject);
+                }
+              }
+              return;
+            }
+            catch (Exception paramJSONObject)
+            {
+              paramJSONObject.printStackTrace();
+              return;
+            }
+            fe.a(63);
+            continue;
+            fe.a(60);
+            continue;
+            fe.a(48);
           }
-          gb.a(63);
-          continue;
-          gb.a(60);
-          continue;
-          gb.a(48);
+        }
+        catch (Exception localException1)
+        {
+          break label251;
         }
       }
-      catch (Exception localException1)
+      catch (Exception localException2)
       {
-        break label234;
+        break label219;
       }
     }
-    catch (Exception localException2)
+    catch (Exception localException3)
     {
       for (;;) {}
     }

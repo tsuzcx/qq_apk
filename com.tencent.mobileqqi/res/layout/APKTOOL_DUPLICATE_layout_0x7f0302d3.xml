@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.qzone.widget.EmoEditPanel android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bf1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207c0" android:layout_width="228.0dip" android:layout_height="90.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bf2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f080bf2" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0302f6" />
-</com.qzone.widget.EmoEditPanel>
+    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f080586" android:layout_width="32.0dip" android:layout_height="32.0dip" android:indeterminateDrawable="@anim/APKTOOL_DUPLICATE_anim_0x7f04005e" />
+    <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" />
+</LinearLayout>

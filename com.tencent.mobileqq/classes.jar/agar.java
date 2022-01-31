@@ -1,27 +1,66 @@
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.now.NowProxy;
-import com.tencent.open.business.base.AppUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public final class agar
-  implements Runnable
+class agar
+  implements bhuk
 {
-  public void run()
+  agar(agai paramagai, MessageForShortVideo paramMessageForShortVideo, agas paramagas, bhuf parambhuf) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if (AppUtil.a("com.tencent.now"))
+    switch (paramInt)
     {
-      QLog.i("NowAnswerPreloadManager", 3, "openAnswerRoom----NOW APP is Exist, will preload It!");
-      Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse("preload://xxx/xx"));
-      localIntent.setFlags(268435456);
-      BaseApplicationImpl.getContext().startActivity(localIntent);
-      return;
     }
-    QLog.i("NowAnswerPreloadManager", 3, "openAnswerRoom----NOW APP is not Exist, will preload Plugin!");
-    ((NowProxy)((QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null)).getManager(181)).a(BaseApplicationImpl.getContext());
+    do
+    {
+      for (;;)
+      {
+        this.jdField_a_of_type_Bhuf.dismiss();
+        return;
+        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag != 2) {
+          break;
+        }
+        this.jdField_a_of_type_Agai.a(this.jdField_a_of_type_Agas, 10, false);
+        this.jdField_a_of_type_Agai.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Agas);
+      }
+    } while (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag != 1);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1004) {
+      ShortVideoUtils.c("0X800A375", this.jdField_a_of_type_Agai.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    }
+    agai.a(this.jdField_a_of_type_Agai, this.jdField_a_of_type_Agas, true, this.jdField_a_of_type_Agai);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.isPause = false;
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.md5)) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1004) && (this.jdField_a_of_type_Agai.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq)))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus = 1002;
+      if (QLog.isColorLevel()) {
+        QLog.i("ShortVideoItemBuilder", 2, "onErrorIconClick resumeSending!");
+      }
+    }
+    for (;;)
+    {
+      agai.a(this.jdField_a_of_type_Agai);
+      break;
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.md5 == null) && ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1005) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1004)))
+      {
+        this.jdField_a_of_type_Agas.a.setVisibility(8);
+        this.jdField_a_of_type_Agas.d.setVisibility(8);
+        this.jdField_a_of_type_Agas.c.setVisibility(8);
+        paramView = new azey(this.jdField_a_of_type_Agai.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agai.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Agai);
+        azex.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq, paramView);
+      }
+      else
+      {
+        this.jdField_a_of_type_Agai.a(this.jdField_a_of_type_Agas, 10, false);
+        this.jdField_a_of_type_Agai.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Agas);
+      }
+    }
   }
 }
 

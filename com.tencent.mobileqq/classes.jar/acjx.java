@@ -1,29 +1,31 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.extendfriend.utils.ExtendFriendVoicePlayer;
-import com.tencent.mobileqq.extendfriend.utils.ExtendFriendVoicePlayer.ExtendFriendVoicePlayerListener;
-import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.qphone.base.util.MD5;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acjx
-  implements Runnable
+public final class acjx
+  implements DialogInterface.OnClickListener
 {
-  public acjx(ExtendFriendVoicePlayer paramExtendFriendVoicePlayer, String paramString) {}
+  public acjx(aclo paramaclo, int paramInt, acln paramacln) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str = BuddyTransfileProcessor.a(ExtendFriendVoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendUtilsExtendFriendVoicePlayer).app.getCurrentAccountUin(), MD5.toMD5(this.jdField_a_of_type_JavaLangString), 23, null);
-    File localFile = new File(str);
-    int i = HttpDownloadUtil.a(ExtendFriendVoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendUtilsExtendFriendVoicePlayer).app, this.jdField_a_of_type_JavaLangString, localFile);
-    if (i == 0)
+    if (this.jdField_a_of_type_Aclo.a)
     {
-      ExtendFriendVoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendUtilsExtendFriendVoicePlayer).a(localFile);
-      this.jdField_a_of_type_ComTencentMobileqqExtendfriendUtilsExtendFriendVoicePlayer.a(str);
-      return;
+      if (this.jdField_a_of_type_Int != 2) {
+        break label59;
+      }
+      azqs.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "2", "", "", "");
     }
-    ExtendFriendVoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendUtilsExtendFriendVoicePlayer).a(i);
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Acln != null) {
+        this.jdField_a_of_type_Acln.a();
+      }
+      return;
+      label59:
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+        azqs.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "2", "", "", "");
+      }
+    }
   }
 }
 

@@ -1,47 +1,32 @@
-import android.text.TextUtils;
-import android.util.Log;
-import cooperation.weiyun.sdk.download.DownloadJobContext.StatusInfo;
-import cooperation.weiyun.sdk.download.WyDownloader;
-import cooperation.weiyun.sdk.download.WyDownloader.IDownloadListener;
-import cooperation.weiyun.sdk.download.WyDownloader.IDownloadStatusListener;
-import java.io.File;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class anhv
-  implements WyDownloader.IDownloadListener
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public anhv(WyDownloader paramWyDownloader, WyDownloader.IDownloadStatusListener paramIDownloadStatusListener, int paramInt) {}
+  public anhv(QRScanEntryView paramQRScanEntryView, String paramString1, String paramString2) {}
   
-  public void a(String paramString, long paramLong, float paramFloat)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    DownloadJobContext.StatusInfo localStatusInfo = new DownloadJobContext.StatusInfo();
-    localStatusInfo.c = paramString;
-    localStatusInfo.jdField_a_of_type_Int = 2;
-    localStatusInfo.jdField_b_of_type_Long = (paramFloat);
-    localStatusInfo.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader$IDownloadStatusListener.a(paramString, this.jdField_a_of_type_Int, localStatusInfo, false);
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
-  {
-    Log.e("WyDownloader", "download finish:" + paramString1 + " successed:" + paramBoolean + "errorCode:" + paramInt);
-    if ((paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString2)) && (new File(paramString2).exists())) {}
-    DownloadJobContext.StatusInfo localStatusInfo;
-    for (int i = 1;; i = 0)
+    if (paramBoolean)
     {
-      localStatusInfo = new DownloadJobContext.StatusInfo();
-      localStatusInfo.jdField_b_of_type_JavaLangString = paramString2;
-      localStatusInfo.c = paramString1;
-      localStatusInfo.jdField_b_of_type_Int = paramInt;
-      localStatusInfo.jdField_a_of_type_JavaLangString = paramString3;
-      if (i == 0) {
-        break;
-      }
-      localStatusInfo.jdField_a_of_type_Int = 4;
-      this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader$IDownloadStatusListener.a(paramString1, this.jdField_a_of_type_Int, localStatusInfo, true);
+      paramBundle = new Intent();
+      paramBundle.putExtra("detectType", 2);
+      paramBundle.putExtra("scannerResult", this.jdField_a_of_type_JavaLangString.trim());
+      paramBundle.putExtra("filePath", this.b);
+      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).setResult(13, paramBundle);
+      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).finish();
+      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).overridePendingTransition(0, 0);
       return;
     }
-    localStatusInfo.jdField_a_of_type_Int = 5;
-    this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader$IDownloadStatusListener.a(paramString1, this.jdField_a_of_type_Int, localStatusInfo, true);
+    if (QLog.isColorLevel()) {
+      QLog.i("AREngine_QRScanEntryView", 2, "onLaunchResult 2 false");
+    }
+    ((anfy)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_Anfl).b(false);
   }
 }
 

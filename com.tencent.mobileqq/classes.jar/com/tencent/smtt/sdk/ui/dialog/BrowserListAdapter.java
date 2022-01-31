@@ -14,7 +14,6 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.graphics.drawable.shapes.Shape;
-import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -44,7 +43,7 @@ import java.util.Map;
 
 public class BrowserListAdapter
   extends ArrayAdapter<BrowsingActivityInfo>
-  implements ListAdapter, View.OnClickListener
+  implements View.OnClickListener, ListAdapter
 {
   private static final int ID_CHECK = 104;
   private static final int ID_CHECKED_BG = 106;
@@ -78,18 +77,7 @@ public class BrowserListAdapter
     for (this.mRecommend = null;; this.mRecommend = paramBrowsingActivityInfo1)
     {
       this.mCallback = paramValueCallback;
-      this.mHandler = new Handler()
-      {
-        public void handleMessage(Message paramAnonymousMessage)
-        {
-          switch (paramAnonymousMessage.what)
-          {
-          default: 
-            return;
-          }
-          BrowserListAdapter.this.refreshRecommend();
-        }
-      };
+      this.mHandler = new BrowserListAdapter.1(this);
       this.recommendStringToTrim = new String[2];
       this.recommendStringToTrim[0] = TBSResources.getString("x5_tbs_activity_picker_recommend_to_trim");
       this.recommendStringToTrim[1] = TBSResources.getString("x5_tbs_activity_picker_recommend_with_chinese_brace_to_trim");
@@ -259,20 +247,7 @@ public class BrowserListAdapter
         }
       }
     }
-    localView1.setOnClickListener(new View.OnClickListener()
-    {
-      public void onClick(View paramAnonymousView)
-      {
-        paramAnonymousView = paramAnonymousView.getParent();
-        if ((paramAnonymousView == null) || (!(paramAnonymousView instanceof View))) {}
-        do
-        {
-          return;
-          paramAnonymousView = (View)paramAnonymousView;
-        } while (paramAnonymousView.getTag() != BrowserListAdapter.this.mRecommend);
-        BrowserListAdapter.this.onClick(paramAnonymousView);
-      }
-    });
+    localView1.setOnClickListener(new BrowserListAdapter.2(this));
     if ("com.tencent.mtt".equals(paramBrowsingActivityInfo.getPackageName()))
     {
       localTextView1.setVisibility(0);
@@ -319,23 +294,7 @@ public class BrowserListAdapter
       localButton.setVisibility(0);
       localButton.setText(TBSResources.getString("x5_tbs_wechat_activity_picker_label_download"));
       localButton.setEnabled(true);
-      localButton.setOnClickListener(new View.OnClickListener()
-      {
-        public void onClick(View paramAnonymousView)
-        {
-          if ("com.tencent.mobileqq".equals(BrowserListAdapter.this.getContext().getApplicationContext().getPackageName()))
-          {
-            if (BrowserListAdapter.this.mCallback != null) {
-              BrowserListAdapter.this.mCallback.onReceiveValue("http://mdc.html5.qq.com/d/directdown.jsp?channel_id=11047");
-            }
-            ((TBSActivityPicker)BrowserListAdapter.this.mDialog.get()).dismiss();
-            return;
-          }
-          paramAnonymousView = new Intent("android.intent.action.VIEW", Uri.parse("http://mdc.html5.qq.com/d/directdown.jsp?channel_id=11041"));
-          paramAnonymousView.addFlags(268435456);
-          BrowserListAdapter.this.getContext().startActivity(paramAnonymousView);
-        }
-      });
+      localButton.setOnClickListener(new BrowserListAdapter.3(this));
     }
   }
   
@@ -489,7 +448,7 @@ public class BrowserListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.sdk.ui.dialog.BrowserListAdapter
  * JD-Core Version:    0.7.0.1
  */

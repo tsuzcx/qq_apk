@@ -10,21 +10,21 @@ public final class operation_get_eggskeyword_rsp
   extends JceStruct
 {
   static GuidePaster cache_guidePaster;
-  static Map cache_mapKeyWord;
-  static Map cache_mapKeyWordEggs;
+  static Map<String, String> cache_mapKeyWord;
+  static Map<String, ImageSummaryList> cache_mapKeyWordEggs;
   public GuidePaster guidePaster;
   public int ifOpenEntrance;
-  public Map mapKeyWord;
-  public Map mapKeyWordEggs;
+  public Map<String, String> mapKeyWord;
+  public Map<String, ImageSummaryList> mapKeyWordEggs;
   public long updatetime;
   
   public operation_get_eggskeyword_rsp() {}
   
-  public operation_get_eggskeyword_rsp(int paramInt, Map paramMap1, Map paramMap2, GuidePaster paramGuidePaster, long paramLong)
+  public operation_get_eggskeyword_rsp(int paramInt, Map<String, ImageSummaryList> paramMap, Map<String, String> paramMap1, GuidePaster paramGuidePaster, long paramLong)
   {
     this.ifOpenEntrance = paramInt;
-    this.mapKeyWordEggs = paramMap1;
-    this.mapKeyWord = paramMap2;
+    this.mapKeyWordEggs = paramMap;
+    this.mapKeyWord = paramMap1;
     this.guidePaster = paramGuidePaster;
     this.updatetime = paramLong;
   }
@@ -69,7 +69,7 @@ public final class operation_get_eggskeyword_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_get_eggskeyword_rsp
  * JD-Core Version:    0.7.0.1
  */

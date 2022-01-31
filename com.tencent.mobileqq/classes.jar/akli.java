@@ -1,25 +1,223 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.util.BitmapManager;
-import com.tencent.mobileqq.vipav.VipFunCallManager;
-import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SigCommentListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SignatureManager;
+import com.tencent.mobileqq.app.SignatureManager.SigCommentInfo;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.widget.XListView;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class akli
-  implements Runnable
+  extends BaseAdapter
+  implements View.OnClickListener
 {
-  public akli(VipFunCallPreviewActivity paramVipFunCallPreviewActivity, int paramInt) {}
+  public int a;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private View jdField_a_of_type_AndroidViewView;
+  private SigCommentListActivity jdField_a_of_type_ComTencentMobileqqActivitySigCommentListActivity;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private SignatureManager jdField_a_of_type_ComTencentMobileqqAppSignatureManager;
+  private XListView jdField_a_of_type_ComTencentWidgetXListView;
+  private ArrayList<SignatureManager.SigCommentInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private View b;
   
-  public void run()
+  public akli(SigCommentListActivity paramSigCommentListActivity, QQAppInterface paramQQAppInterface, XListView paramXListView, View paramView)
   {
-    BitmapDrawable localBitmapDrawable = null;
-    Bitmap localBitmap = BitmapManager.a(VipFunCallManager.a(this.jdField_a_of_type_ComTencentMobileqqVipavVipFunCallPreviewActivity.app, this.jdField_a_of_type_ComTencentMobileqqVipavVipFunCallPreviewActivity.jdField_a_of_type_Int, 9, null));
-    if (localBitmap != null) {
-      localBitmapDrawable = new BitmapDrawable(localBitmap);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_ComTencentMobileqqActivitySigCommentListActivity = paramSigCommentListActivity;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramSigCommentListActivity);
+    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppSignatureManager = ((SignatureManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(58));
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  private void a(String paramString, TextView paramTextView)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      do
+      {
+        return;
+        localObject = (SignatureManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(58);
+      } while (localObject == null);
+      paramString = ((SignatureManager)localObject).a(paramString);
+    } while (paramString == null);
+    Object localObject = new StringBuilder();
+    if (!TextUtils.isEmpty(paramString.actionText))
+    {
+      ((StringBuilder)localObject).append(paramString.actionText);
+      if (!TextUtils.isEmpty(paramString.dataText)) {
+        ((StringBuilder)localObject).append(paramString.dataText);
+      }
+      ((StringBuilder)localObject).append(' ');
     }
-    if (localBitmapDrawable != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVipavVipFunCallPreviewActivity.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.jdField_a_of_type_ComTencentMobileqqVipavVipFunCallPreviewActivity.jdField_a_of_type_AndroidOsHandler, 51, this.jdField_a_of_type_Int, 0, localBitmapDrawable));
+    if (!TextUtils.isEmpty(paramString.getPlainText())) {
+      ((StringBuilder)localObject).append(paramString.getPlainText());
+    }
+    paramTextView.setText(((StringBuilder)localObject).toString());
+  }
+  
+  public SignatureManager.SigCommentInfo a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return null;
+    }
+    return (SignatureManager.SigCommentInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public List<SignatureManager.SigCommentInfo> a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
+      return null;
+    }
+    return (ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.b != null) {
+      ((aklj)this.b.getTag()).jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
+    }
+  }
+  
+  public void a(List<SignatureManager.SigCommentInfo> paramList, boolean paramBoolean)
+  {
+    if (paramList != this.jdField_a_of_type_JavaUtilArrayList) {
+      this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)paramList);
+    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int getCount()
+  {
+    int j = 0;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {}
+    for (int i = this.jdField_a_of_type_JavaUtilArrayList.size(); i == 0; i = 0) {
+      return 1;
+    }
+    if (this.jdField_a_of_type_Boolean) {}
+    for (;;)
+    {
+      return i + j;
+      j = 1;
+    }
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
+      return 0;
+    }
+    if (paramInt == this.jdField_a_of_type_JavaUtilArrayList.size()) {
+      return 2;
+    }
+    return 1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int i = getItemViewType(paramInt);
+    if (i == 0)
+    {
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComTencentWidgetXListView.getWidth(), this.jdField_a_of_type_ComTencentWidgetXListView.getHeight()));
+      paramViewGroup = this.jdField_a_of_type_AndroidViewView;
+    }
+    label344:
+    do
+    {
+      return paramViewGroup;
+      if (1 == i)
+      {
+        SignatureManager.SigCommentInfo localSigCommentInfo;
+        if (paramView == null)
+        {
+          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562665, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+          paramViewGroup = new aklk();
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376747));
+          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376748));
+          paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376745));
+          paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376746));
+          paramViewGroup.c = ((TextView)paramView.findViewById(2131376749));
+          paramView.setTag(paramViewGroup);
+          localSigCommentInfo = a(paramInt);
+          localObject = String.valueOf(localSigCommentInfo.uin);
+          bdbk localbdbk = bdbk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, (String)localObject);
+          if (localbdbk != null) {
+            paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localbdbk);
+          }
+          localObject = bdgc.m(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+          paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130849472);
+          localObject = Calendar.getInstance();
+          ((Calendar)localObject).setTimeInMillis(localSigCommentInfo.time * 1000L);
+          paramInt = ((Calendar)localObject).get(9);
+          localObject = new SimpleDateFormat("hh:mm").format(new Date(localSigCommentInfo.time * 1000L));
+          if (paramInt != 0) {
+            break label344;
+          }
+        }
+        for (Object localObject = alud.a(2131714498) + (String)localObject;; localObject = alud.a(2131714495) + (String)localObject)
+        {
+          paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+          a(localSigCommentInfo.feedsid, paramViewGroup.c);
+          return paramView;
+          paramViewGroup = (aklk)paramView.getTag();
+          break;
+        }
+      }
+      paramViewGroup = paramView;
+    } while (2 != i);
+    if (paramView == null)
+    {
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561855, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+      paramView.setOnClickListener(this);
+      paramViewGroup = new aklj();
+      paramView.setTag(paramViewGroup);
+      paramView.findViewById(2131369761).setVisibility(8);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370767));
+      this.b = paramView;
+    }
+    for (;;)
+    {
+      return this.b;
+      paramView = (aklj)paramView.getTag();
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 3;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.b == paramView)
+    {
+      paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SigCommentListActivity.class);
+      if (paramView != null) {
+        paramView.sendMessageDelayed(paramView.obtainMessage(0, 1, 0), 200L);
+      }
     }
   }
 }

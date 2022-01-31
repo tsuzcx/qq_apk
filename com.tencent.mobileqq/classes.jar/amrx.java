@@ -1,27 +1,14 @@
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
-import cooperation.qzone.plugin.IQZonePluginManager;
-
-public class amrx
-  implements Runnable
+public abstract class amrx
 {
-  public amrx(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2, PluginBaseInfo paramPluginBaseInfo) {}
+  public abstract int a();
   
-  public void run()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_CooperationQzoneQZoneLiveVideoDownLoadActivtyV2.a != null) {
-        this.jdField_a_of_type_CooperationQzoneQZoneLiveVideoDownLoadActivtyV2.a.a(this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.mID, null, this.jdField_a_of_type_CooperationQzoneQZoneLiveVideoDownLoadActivtyV2.c);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QZoneLiveVideoDownLoadActivtyV2", 1, localException, new Object[0]);
-    }
-  }
+  public abstract void a(Object paramObject);
+  
+  public abstract void a(boolean paramBoolean, Object paramObject);
+  
+  public abstract void b(Object paramObject);
+  
+  public abstract void b(boolean paramBoolean, Object paramObject);
 }
 
 

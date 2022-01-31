@@ -1,32 +1,27 @@
-import android.app.Activity;
-import android.view.Choreographer;
-import com.tencent.mfsdk.LeakInspector.ActivityLeakSolution;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.widget.TextView;
 
-public final class rdo
-  implements Runnable
+final class rdo
+  extends ClickableSpan
 {
-  public rdo(Activity paramActivity) {}
+  rdo(TextView paramTextView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      Choreographer localChoreographer = Choreographer.getInstance();
-      ActivityLeakSolution.a.set(localChoreographer, this.a.getApplicationContext());
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("LeakInspector", 2, "", localThrowable);
-    }
+    this.a.performClick();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.parseColor("#FF00CAFC"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rdo
  * JD-Core Version:    0.7.0.1
  */

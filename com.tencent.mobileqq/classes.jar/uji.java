@@ -1,26 +1,22 @@
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckBlackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.List;
 
 public class uji
-  implements Runnable
+  extends uro
 {
-  public uji(SendBirthdayWishesActivity paramSendBirthdayWishesActivity, int paramInt) {}
+  public List<qqstory_struct.GpsMsg> a;
   
-  public void run()
+  public uji(qqstory_service.RspCheckBlackList paramRspCheckBlackList)
   {
-    if (this.jdField_a_of_type_Int == 2)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendSendBirthdayWishesActivity.a.setImageResource(2130837627);
-      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendSendBirthdayWishesActivity.a.setContentDescription("键盘");
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendSendBirthdayWishesActivity.a.setImageResource(2130844545);
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendSendBirthdayWishesActivity.a.setContentDescription("表情功能面板");
+    super(paramRspCheckBlackList.result);
+    this.a = paramRspCheckBlackList.black_gps_list.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uji
  * JD-Core Version:    0.7.0.1
  */

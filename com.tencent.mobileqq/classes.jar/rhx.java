@@ -1,57 +1,40 @@
-import SummaryCard.RespSearch;
-import SummaryCard.SearchInfo;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AddFriendActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade.ISearchListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.res.Resources;
+import android.os.Message;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
-public class rhx
-  implements ContactSearchFacade.ISearchListener
+class rhx
+  extends MqqHandler
 {
-  public rhx(AddFriendActivity paramAddFriendActivity) {}
+  private rhx(rhf paramrhf) {}
   
-  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    AddFriendActivity.a(this.a);
-    if ((!paramBoolean) || (paramInt2 != 0) || (paramInt1 != 87) || (!(paramObject instanceof RespSearch))) {
-      if (!TextUtils.isEmpty(paramString)) {
-        this.a.a(paramString);
-      }
+    switch (paramMessage.what)
+    {
     }
     do
     {
       return;
-      this.a.a(2131434449);
+      QQToast.a(rhf.a(this.a), 2131720109, 0).a();
       return;
-      try
-      {
-        paramString = (RespSearch)paramObject;
-        if ((paramString.vRecords != null) && (!paramString.vRecords.isEmpty())) {
-          break;
-        }
-        this.a.a(2131434751);
-        return;
-      }
-      catch (Exception paramString)
-      {
-        this.a.a(2131434449);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AddFriendActivity", 2, "onSearchResult | searchType = " + paramInt1 + " | isSuccess = " + paramBoolean + " | rsCode = " + paramInt2 + " | data = " + paramObject, paramString);
-    return;
-    if (paramString.vRecords.size() == 1)
-    {
-      AddFriendActivity.a(this.a, (SearchInfo)paramString.vRecords.get(0), this.a.app.getCurrentAccountUin(), paramString.vSecureSig, false, 0);
+      String str = rhf.a(this.a).getString(2131720110);
+      paramMessage = (String)paramMessage.obj;
+      QQToast.a(rhf.a(this.a), 2, str + paramMessage, 0).a();
+      bdhj.a(rhf.a(this.a), paramMessage);
       return;
-    }
-    this.a.a(paramString);
+    } while ((rhf.a(this.a) == null) || (rhf.a(this.a).jdField_a_of_type_Int != 0));
+    paramMessage = ShortVideoUtils.a(rhf.a(this.a).jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
+    bdgm.a(rhf.a(this.a), 232, rhf.a(this.a).getResources().getString(2131720142), rhf.a(this.a).getResources().getString(2131720141), 2131720124, 2131719209, new rhy(this, paramMessage), new rhz(this)).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rhx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,22 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.GalleryImageStruct;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 public class vmi
-  implements TroopMemberApiClient.Callback
+  extends uli
 {
-  public vmi(AIOGalleryAdapter paramAIOGalleryAdapter, int paramInt, AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, AIOImageData paramAIOImageData) {}
+  public StoryVideoItem a;
+  public String a;
+  public String b;
   
-  public void a(Bundle paramBundle)
+  public vmi(ErrorMessage paramErrorMessage, String paramString)
   {
-    paramBundle = paramBundle.getString("ThumbnailFile_Large");
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a.runOnUiThread(new vmj(this, paramBundle));
+    this.a = paramErrorMessage;
+    this.b = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmi
  * JD-Core Version:    0.7.0.1
  */

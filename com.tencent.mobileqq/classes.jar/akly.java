@@ -1,16 +1,30 @@
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mobileqq.webprocess.WebProcessReceiver;
-import com.tencent.sonic.sdk.SonicEngine;
-import java.util.Map;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
 
 public class akly
-  implements Runnable
 {
-  public akly(WebProcessReceiver paramWebProcessReceiver, Map paramMap) {}
+  public int a;
+  public DiscussionInfo a;
+  public TroopInfo a;
+  public int b;
   
-  public void run()
+  public akly(int paramInt, awge paramawge)
   {
-    WebAccelerateHelper.getSonicEngine().removeExpiredSessionCache(this.jdField_a_of_type_JavaUtilMap);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = ((TroopInfo)paramawge);
+  }
+  
+  public akly(int paramInt, DiscussionInfo paramDiscussionInfo)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
+  }
+  
+  public akly(int paramInt1, DiscussionInfo paramDiscussionInfo, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
+    this.b = paramInt2;
   }
 }
 

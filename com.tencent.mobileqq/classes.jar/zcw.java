@@ -1,24 +1,32 @@
+import android.os.Bundle;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.DownloadListener;
+
 public class zcw
+  implements DownloadListener
 {
-  public int a;
-  public String a;
-  public String b = "";
-  public String c = "0";
-  public String d = "";
+  public zcw(AbsBaseWebViewActivity paramAbsBaseWebViewActivity, TouchWebView paramTouchWebView) {}
   
-  zcw()
+  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public String toString()
-  {
-    return "DPCXMLParseInfo: key=" + this.jdField_a_of_type_JavaLangString + ",value=" + this.b + ",weight=" + this.jdField_a_of_type_Int + ",taskId=" + this.c + ",testType=" + this.d;
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewBase", 2, "start UniformDownloadActivity");
+    }
+    String str = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("_filesize", paramLong);
+    localBundle.putString("param_user_agent", paramString2);
+    localBundle.putString("param_content_des", paramString3);
+    localBundle.putString("param_mime_type", paramString4);
+    localBundle.putString("param_refer_url", str);
+    aqvk.a(this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity, paramString1, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zcw
  * JD-Core Version:    0.7.0.1
  */

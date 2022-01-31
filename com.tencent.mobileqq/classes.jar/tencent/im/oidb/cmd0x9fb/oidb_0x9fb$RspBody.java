@@ -9,12 +9,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0x9fb$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_errMsg = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field is_end = PBField.initUInt32(0);
-  public final PBRepeatMessageField msg_groups = PBField.initRepeatMessage(oidb_0x9fb.RgroupInfo.class);
+  public final PBRepeatMessageField<oidb_0x9fb.RgroupInfo> msg_groups = PBField.initRepeatMessage(oidb_0x9fb.RgroupInfo.class);
   public final PBUInt32Field uint32_cmdid = PBField.initUInt32(0);
   public final PBUInt32Field uint32_result = PBField.initUInt32(0);
   
@@ -26,7 +26,7 @@ public final class oidb_0x9fb$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x9fb.oidb_0x9fb.RspBody
  * JD-Core Version:    0.7.0.1
  */

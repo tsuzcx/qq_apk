@@ -1,46 +1,33 @@
-import android.app.Activity;
-import com.tencent.biz.troopplugin.PluginJumpManager;
-import com.tencent.biz.troopplugin.PluginJumpManager.BidInfo;
-import com.tencent.biz.troopplugin.PluginJumpManager.UrlMappingInfo;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import java.util.List;
 
-public class ozp
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+public abstract interface ozp<DataType>
 {
-  public ozp(PluginJumpManager paramPluginJumpManager, PluginJumpManager.BidInfo paramBidInfo, Activity paramActivity, String paramString1, String paramString2, String paramString3, long paramLong, PluginJumpManager.UrlMappingInfo paramUrlMappingInfo, String paramString4) {}
+  public abstract DataType a(int paramInt);
   
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
-  {
-    this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager = paramPluginManagerClient;
-    paramPluginManagerClient = this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.queryPlugin(this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.b);
-    int i;
-    if (paramPluginManagerClient != null) {
-      if (paramPluginManagerClient.mState == 4)
-      {
-        i = 1;
-        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.launchPlugin(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.b, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.c, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$UrlMappingInfo.b, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$UrlMappingInfo.a);
-      }
-    }
-    for (;;)
-    {
-      if (i == 0) {
-        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.openLinkInNewWebView(this.jdField_a_of_type_AndroidAppActivity, this.b, this.d);
-      }
-      return;
-      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 0, this.b, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$UrlMappingInfo.b, null, null);
-      this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.installPlugin(this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.b);
-      i = 0;
-      continue;
-      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 1, this.b, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$UrlMappingInfo.b, null, null);
-      i = 0;
-    }
-  }
+  public abstract List<DataType> a();
+  
+  public abstract void a();
+  
+  public abstract void a(DataType paramDataType, int paramInt);
+  
+  public abstract void a(List<DataType> paramList);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void b();
+  
+  public abstract void b(List<DataType> paramList);
+  
+  public abstract void c();
+  
+  public abstract void c(List<ChannelCoverInfo> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ozp
  * JD-Core Version:    0.7.0.1
  */

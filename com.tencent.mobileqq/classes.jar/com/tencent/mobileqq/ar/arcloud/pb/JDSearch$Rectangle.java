@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBFloatField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class JDSearch$Rectangle
-  extends MessageMicro
+  extends MessageMicro<Rectangle>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 13, 16, 29, 37, 45 }, new String[] { "bottom", "is_user_rectangle", "left", "right", "top" }, new Object[] { Float.valueOf(0.0F), Integer.valueOf(0), Float.valueOf(0.0F), Float.valueOf(0.0F), Float.valueOf(0.0F) }, Rectangle.class);
   public final PBFloatField bottom = PBField.initFloat(0.0F);
@@ -18,7 +18,7 @@ public final class JDSearch$Rectangle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.JDSearch.Rectangle
  * JD-Core Version:    0.7.0.1
  */

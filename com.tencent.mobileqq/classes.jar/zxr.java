@@ -1,38 +1,66 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.ar.ARMusicController;
+import android.annotation.TargetApi;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.device.JNICallCenter.DataPoint;
+import com.tencent.device.msg.activities.DeviceTipActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class zxr
-  implements MediaPlayer.OnPreparedListener
+  extends BroadcastReceiver
 {
-  public zxr(ARMusicController paramARMusicController) {}
+  public zxr(DeviceTipActivity paramDeviceTipActivity) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  @TargetApi(12)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    try
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMusicController", 2, "load bg music success. : " + ARMusicController.b(this.a));
+      paramContext = paramIntent.getStringExtra("reason");
+      if ((paramContext != null) && (paramContext.equals("homekey"))) {
+        this.a.finish();
       }
-      this.a.a.seekTo(0);
-      ARMusicController.b(this.a, true);
-      if (ARMusicController.b(this.a))
+    }
+    long l;
+    do
+    {
+      do
       {
-        this.a.a.start();
-        ARMusicController.c(this.a, false);
+        do
+        {
+          return;
+          if (paramContext.equals("android.intent.action.SCREEN_OFF"))
+          {
+            bdfi.a();
+            return;
+          }
+          if (paramContext.equals("android.intent.action.SCREEN_ON"))
+          {
+            bdfi.a(2131230742, -1, null);
+            return;
+          }
+          if (!paramContext.equals("SmartDevice_receiveDPMsg")) {
+            break;
+          }
+        } while ((DataPoint)paramIntent.getExtras().getParcelable("dataPoint") != null);
+        return;
+      } while (!paramContext.equals("On_OccupyMicrophoneNotify_Push"));
+      if (QLog.isColorLevel()) {
+        QLog.d(DeviceTipActivity.a, 2, "DeviceTipActivity intent.getExtras() : " + paramIntent.getExtras());
       }
-      return;
-    }
-    catch (Exception paramMediaPlayer)
-    {
-      paramMediaPlayer.printStackTrace();
-    }
+      paramContext = paramIntent.getExtras();
+      l = paramContext.getLong("din", 0L);
+      paramContext = paramContext.getString("uin", "");
+    } while ((!this.a.b.equals(String.valueOf(Long.valueOf(l)))) || (TextUtils.isEmpty(paramContext)));
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zxr
  * JD-Core Version:    0.7.0.1
  */

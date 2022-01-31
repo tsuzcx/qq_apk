@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dov.com.qq.im.capture.view.QIMSlidingTabView android:id="@id/g2v" android:background="@color/c2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_marginTop="8.0dip" android:layout_alignParentTop="true" app:tabIndicatorColor="#ff11befd" app:tabIndicatorHeight="3.0dip" app:tabIndicatorPadding="8.0dip" app:tabPadding="18.0dip" app:tabStartEndMargin="4.0dip" app:tabTextCheckedColor="@color/ye" app:tabTextNormalColor="@color/yd" app:tabTextSize="14.0dip" app:tabUnderlineColor="#00ffffff" app:tabUnderlineHeight="0.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res/com.tencent.mobileqq" />

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/q1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:scrollbars="none" style="@style/ni">
+        <LinearLayout style="@style/l0">
+            <TextView android:text="@string/a8l" style="@style/mm" />
+            <View style="@style/mh" />
+            <TextView android:text="@string/a8m" style="@style/mm" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/a7a" android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="-5.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="-5.0dip" android:minHeight="@dimen/n9">
+                <TextView android:id="@id/a7b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="5.0dip" android:text="@string/a8j" android:singleLine="true" android:layout_weight="1.0" style="@style/lg" />
+            </LinearLayout>
+            <Button android:layout_gravity="center_horizontal" android:id="@id/a7c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="5.0dip" android:text="@string/a8p" style="@style/nq" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

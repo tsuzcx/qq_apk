@@ -1,21 +1,22 @@
-import android.view.GestureDetector;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
 
 public class acfc
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public acfc(EmoticonMainPanel paramEmoticonMainPanel, TopGestureLayout paramTopGestureLayout, GestureDetector paramGestureDetector) {}
+  public acfc(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.removeView(((StickerGestureDetector)this.jdField_a_of_type_AndroidViewGestureDetector).a);
+    AssistantSettingActivity.a(this.a, this.a.f.a(), paramBoolean);
+    AssistantSettingActivity.a(this.a).a(paramBoolean, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acfc
  * JD-Core Version:    0.7.0.1
  */

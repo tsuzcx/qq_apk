@@ -2,9 +2,11 @@ package com.tencent.mobileqq.app;
 
 public abstract interface ThreadExcutor$IThreadListener
 {
-  public abstract void a();
+  public abstract void onAdded();
   
-  public abstract void b();
+  public abstract void onPostRun();
+  
+  public abstract void onPreRun();
 }
 
 

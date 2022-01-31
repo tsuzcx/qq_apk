@@ -1,11 +1,17 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.utils.UserTask;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class zb
-  extends UserTask
+class zb
+  implements View.OnClickListener
 {
   zb(za paramza) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.dismissDialog();
+  }
 }
 
 

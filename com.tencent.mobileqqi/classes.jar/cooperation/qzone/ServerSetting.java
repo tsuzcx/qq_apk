@@ -6,7 +6,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.widget.Toast;
 import cooperation.qzone.widget.RadioPreference;
-import igu;
+import ica;
 
 public class ServerSetting
   extends PreferenceActivity
@@ -108,7 +108,7 @@ public class ServerSetting
       RadioPreference localRadioPreference = new RadioPreference(this);
       localRadioPreference.setTitle(jdField_a_of_type_ArrayOfJavaLangString[i]);
       localRadioPreference.setKey(jdField_a_of_type_ArrayOfJavaLangString[i]);
-      localRadioPreference.setWidgetLayoutResource(2130903858);
+      localRadioPreference.setWidgetLayoutResource(2130903860);
       this.jdField_a_of_type_ArrayOfCooperationQzoneWidgetRadioPreference[i] = localRadioPreference;
       localPreferenceScreen.addPreference(localRadioPreference);
       i += 1;
@@ -118,8 +118,8 @@ public class ServerSetting
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    addPreferencesFromResource(2131099654);
-    paramBundle = new igu(this);
+    addPreferencesFromResource(2131099656);
+    paramBundle = new ica(this);
     c();
     a();
     a(paramBundle);

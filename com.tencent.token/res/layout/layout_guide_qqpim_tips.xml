@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/bantransparent" android:layout_width="fill_parent" android:layout_height="45.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/left_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/push_ico_sheild" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_toRightOf="@id/left_icon" android:layout_centerVertical="true">
+        <TextView android:textSize="14.0sp" android:textColor="@color/text_white" android:id="@id/tips_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="QQ安全中心核心功能已经搬家" android:singleLine="true" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/text_white" android:id="@id/tips_summary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="为正常使用建议下载腾讯手机管家体验更全面功能" android:singleLine="true" android:layout_centerHorizontal="true" />
+    </LinearLayout>
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/guide_qqpimsecure_tips_arrow" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

@@ -1,23 +1,22 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragmentAllWaite;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
 public class ahin
-  implements Runnable
 {
-  public ahin(CaptureSoDownloadFragmentAllWaite paramCaptureSoDownloadFragmentAllWaite, String paramString) {}
-  
-  public void run()
-  {
-    CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite).setText(this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "setTipsTextData: textData=" + this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public int a;
+  public AccountSearchPb.ResultItem a;
+  public AccountSearchPb.hotwordrecord a;
+  public AccountSearchPb.record a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahin
  * JD-Core Version:    0.7.0.1
  */

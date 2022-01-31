@@ -1,73 +1,88 @@
-import android.content.Context;
-import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.MultiForwardActivity;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayoutNew2;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
+import com.tencent.mobileqq.mini.mainpage.MainPageFragment;
+import com.tencent.mobileqq.mini.out.activity.PermissionSettingFragment;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class aijk
-  implements View.OnClickListener
+  implements ShareActionSheet.OnItemClickListener
 {
-  String jdField_a_of_type_JavaLangString = null;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference = null;
-  String b = null;
+  public aijk(MiniMsgTabFragment paramMiniMsgTabFragment) {}
   
-  public aijk(StructMsgItemLayoutNew2 paramStructMsgItemLayoutNew2, Context paramContext, String paramString1, String paramString2)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    if (paramContext != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    }
-    if (!TextUtils.isEmpty(paramString1)) {
-      this.jdField_a_of_type_JavaLangString = paramString1;
-    }
-    if (!TextUtils.isEmpty(paramString2)) {
-      this.b = paramString2;
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    BaseChatPie localBaseChatPie;
-    Object localObject;
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && ((this.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof FragmentActivity)) && (!MultiForwardActivity.class.isInstance(this.jdField_a_of_type_JavaLangRefWeakReference.get())))
+    int i = paramActionSheetItem.action;
+    int j = paramActionSheetItem.uinType;
+    paramActionSheetItem = paramActionSheetItem.uin;
+    switch (i)
     {
-      paramView = ((FragmentActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getChatFragment();
-      if (paramView != null)
+    default: 
+      QLog.e("MiniMsgTabFragment", 1, "handleShareChatItemClick with invalid case:" + i);
+    case 2: 
+    case 73: 
+    case 3: 
+    case 9: 
+    case 10: 
+    case 70: 
+    case 82: 
+    case 76: 
+    case 77: 
+    case 14: 
+    case 78: 
+      do
       {
-        localBaseChatPie = paramView.a();
-        ChatActivityFacade.b(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString + " +1");
-        localObject = "";
-        paramView = (View)localObject;
-        if (!TextUtils.isEmpty(this.b)) {
-          paramView = Uri.parse(this.b);
-        }
-      }
-    }
-    try
-    {
-      paramView = paramView.getQueryParameter("article_id");
-      localObject = paramView;
-    }
-    catch (Exception paramView)
-    {
-      for (;;)
+        return;
+        MiniMsgTabFragment.a(this.a, 1, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 5, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 6, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 7, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 13, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 8, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 10, null);
+        return;
+      } while (MiniMsgTabFragment.a(this.a) == -1);
+      if (MiniMsgTabFragment.a(this.a))
       {
-        paramView.printStackTrace();
+        MainPageFragment.launchForMiniGame(this.a.getActivity(), MiniMsgTabFragment.a(this.a), 1, true);
+        return;
       }
+      MainPageFragment.launch(this.a.getActivity(), MiniMsgTabFragment.a(this.a), MiniMsgTabFragment.a(this.a));
+      return;
+    case 11: 
+      MiniMsgTabFragment.a(this.a, 11, null);
+      return;
+    case 74: 
+    case 75: 
+      MiniMsgTabFragment.a(this.a, 2, null);
+      return;
+    case 79: 
+    case 80: 
+      MiniMsgTabFragment.a(this.a, 3, null);
+      return;
+    case 72: 
+      MiniMsgTabFragment.a(this.a, paramActionSheetItem, j);
+      return;
+    case 81: 
+      MiniMsgTabFragment.a(this.a, 9, null);
+      return;
+    case 83: 
+      if (this.a.getActivity() != null)
+      {
+        PermissionSettingFragment.launchForResult(this.a.getActivity(), MiniMsgTabFragment.a(this.a), MiniMsgTabFragment.b(this.a), 5);
+        return;
+      }
+      QLog.e("MiniMsgTabFragment", 1, "handleShareChatItemClick getActivity is null when ACTION_SETTING");
+      return;
     }
-    paramView = (View)localObject;
-    if (localObject == null) {
-      paramView = "";
-    }
-    PublicAccountReportUtils.a(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8007239", "0X8007239", 0, 0, paramView, "", "", "");
-    PublicAccountReportUtils.a("0X8007239", "", paramView, "", "", "");
+    MiniMsgTabFragment.a(this.a, 14, null);
   }
 }
 

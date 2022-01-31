@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class C2CType0x211_SubC2CType0x8$NearFieldFileStateSync
-  extends MessageMicro
+  extends MessageMicro<NearFieldFileStateSync>
 {
   public static final int ETYPE_FIELD_NUMBER = 1;
   public static final int INT32_ERROR_CODE_FIELD_NUMBER = 4;

@@ -1,22 +1,22 @@
-import android.graphics.drawable.AnimationDrawable;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 
-public class njl
-  implements Runnable
+class njl
+  implements View.OnClickListener
 {
-  public njl(FeedsPlayModeBase paramFeedsPlayModeBase, AnimationDrawable paramAnimationDrawable, VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder) {}
+  njl(nin paramnin, String paramString, npo paramnpo) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
-    this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.c.setVisibility(8);
+    nin.c(this.jdField_a_of_type_Nin, this.jdField_a_of_type_JavaLangString);
+    PublicAccountHandler.a(this.jdField_a_of_type_Nin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nin.jdField_a_of_type_JavaLangString, "Grp_tribe", "interest_data", "Clk_msg");
+    nin.a(this.jdField_a_of_type_Nin, this.jdField_a_of_type_Npo.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     njl
  * JD-Core Version:    0.7.0.1
  */

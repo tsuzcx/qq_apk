@@ -1,17 +1,17 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
 
 public class ajck
+  implements View.OnClickListener
 {
-  public ViewGroup a;
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
+  public ajck(ChooseItemView paramChooseItemView, View.OnClickListener paramOnClickListener) {}
   
-  public ajck(TroopAioKeywordTipBar paramTroopAioKeywordTipBar) {}
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a();
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+  }
 }
 
 

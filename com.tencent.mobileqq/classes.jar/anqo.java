@@ -1,27 +1,16 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.opengl.gesturedetectors.MoveGestureDetector;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
 
 public class anqo
-  implements View.OnTouchListener
+  extends aiqq
 {
-  public anqo(CropVideoActivity paramCropVideoActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public anqo(AlbumListFragment paramAlbumListFragment)
   {
-    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
-    CropVideoActivity.a(this.a).a(paramMotionEvent);
-    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
+    super(paramAlbumListFragment);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anqo
  * JD-Core Version:    0.7.0.1
  */

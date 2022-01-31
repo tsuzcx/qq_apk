@@ -6,9 +6,9 @@ import java.util.ArrayList;
 public abstract class Animator
   implements Cloneable
 {
-  ArrayList<AnimatorListener> mListeners = null;
+  ArrayList<Animator.AnimatorListener> mListeners = null;
   
-  public void addListener(AnimatorListener paramAnimatorListener)
+  public void addListener(Animator.AnimatorListener paramAnimatorListener)
   {
     if (this.mListeners == null) {
       this.mListeners = new ArrayList();
@@ -41,7 +41,7 @@ public abstract class Animator
         ArrayList localArrayList;
         throw new AssertionError();
       }
-      localAnimator.mListeners.add((AnimatorListener)localArrayList.get(i));
+      localAnimator.mListeners.add((Animator.AnimatorListener)localArrayList.get(i));
       i += 1;
     } while (i < j);
     return localCloneNotSupportedException;
@@ -51,7 +51,7 @@ public abstract class Animator
   
   public abstract long getDuration();
   
-  public ArrayList<AnimatorListener> getListeners()
+  public ArrayList<Animator.AnimatorListener> getListeners()
   {
     return this.mListeners;
   }
@@ -74,7 +74,7 @@ public abstract class Animator
     }
   }
   
-  public void removeListener(AnimatorListener paramAnimatorListener)
+  public void removeListener(Animator.AnimatorListener paramAnimatorListener)
   {
     if (this.mListeners == null) {}
     do
@@ -98,21 +98,10 @@ public abstract class Animator
   public void setupStartValues() {}
   
   public void start() {}
-  
-  public static abstract interface AnimatorListener
-  {
-    public abstract void onAnimationCancel(Animator paramAnimator);
-    
-    public abstract void onAnimationEnd(Animator paramAnimator);
-    
-    public abstract void onAnimationRepeat(Animator paramAnimator);
-    
-    public abstract void onAnimationStart(Animator paramAnimator);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.nineoldandroids.animation.Animator
  * JD-Core Version:    0.7.0.1
  */

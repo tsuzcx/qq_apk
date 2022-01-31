@@ -1,20 +1,17 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
 
 public class ailx
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ailx(FriendSystemMsgController paramFriendSystemMsgController, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
+  public ailx(BindVerifyActivity paramBindVerifyActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putBoolean("friend_system_msg_nomore_msg", this.jdField_a_of_type_Boolean).commit();
-    }
+    paramDialogInterface.dismiss();
+    this.a.setResult(0);
+    this.a.finish();
   }
 }
 

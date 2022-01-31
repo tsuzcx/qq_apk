@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.MainFragment;
 
-class adiu
-  implements Runnable
+public class adiu
+  implements DialogInterface.OnDismissListener
 {
-  adiu(adit paramadit) {}
+  public adiu(MainFragment paramMainFragment) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QfileEditBottomBar.a(this.a.a).a().a(false);
-    ThreadManager.getUIHandler().post(new adiv(this));
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adiu
  * JD-Core Version:    0.7.0.1
  */

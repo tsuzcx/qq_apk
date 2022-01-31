@@ -14,11 +14,11 @@ import com.tencent.mobileqq.data.voip.VoipHistoryData;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.voip.VoipSIPInterface;
-import eye;
-import eyf;
-import eyg;
-import eyh;
-import eyi;
+import etq;
+import etr;
+import ets;
+import ett;
+import etu;
 
 public class VoipDialInterface
 {
@@ -34,16 +34,16 @@ public class VoipDialInterface
   private long jdField_a_of_type_Long = 0L;
   private Notification jdField_a_of_type_AndroidAppNotification;
   private PendingIntent jdField_a_of_type_AndroidAppPendingIntent;
-  private Handler jdField_a_of_type_AndroidOsHandler = new eyf(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new etr(this);
   private VoipSSOInterface jdField_a_of_type_ComTencentMobileqqActivityVoipVoipSSOInterface;
   protected QQAppInterface a;
   private VoipHistoryData jdField_a_of_type_ComTencentMobileqqDataVoipVoipHistoryData;
   private VoipSIPInterface jdField_a_of_type_ComTencentVoipVoipSIPInterface = new VoipSIPInterface();
-  private eyi jdField_a_of_type_Eyi = new eyi(this, null);
-  private Runnable jdField_a_of_type_JavaLangRunnable = new eyg(this);
+  private etu jdField_a_of_type_Etu = new etu(this, null);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new ets(this);
   private boolean jdField_a_of_type_Boolean = false;
   private long jdField_b_of_type_Long = 0L;
-  private Handler jdField_b_of_type_AndroidOsHandler = new eyh(this);
+  private Handler jdField_b_of_type_AndroidOsHandler = new ett(this);
   private boolean jdField_b_of_type_Boolean = true;
   private long jdField_c_of_type_Long = 0L;
   private String jdField_c_of_type_JavaLangString = "";
@@ -122,7 +122,7 @@ public class VoipDialInterface
     if (!this.jdField_a_of_type_Boolean)
     {
       int i = this.jdField_a_of_type_ComTencentVoipVoipSIPInterface.Init(1);
-      this.jdField_a_of_type_ComTencentVoipVoipSIPInterface.SetCallBackObject(this.jdField_a_of_type_Eyi);
+      this.jdField_a_of_type_ComTencentVoipVoipSIPInterface.SetCallBackObject(this.jdField_a_of_type_Etu);
       if (i == 0)
       {
         this.jdField_a_of_type_Boolean = true;
@@ -214,7 +214,7 @@ public class VoipDialInterface
     this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipSSOInterface = new VoipSSOInterface(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_AndroidOsHandler);
     if (jdField_a_of_type_AndroidContentBroadcastReceiver == null)
     {
-      jdField_a_of_type_AndroidContentBroadcastReceiver = new eye(this);
+      jdField_a_of_type_AndroidContentBroadcastReceiver = new etq(this);
       paramQQAppInterface = new IntentFilter();
       paramQQAppInterface.addAction("android.net.conn.CONNECTIVITY_CHANGE");
       BaseApplication.getContext().registerReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver, paramQQAppInterface);

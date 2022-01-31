@@ -6,7 +6,6 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import com.tribe.async.dispatch.IEventReceiver;
 import com.tribe.async.log.SLog;
-import com.tribe.async.utils.AssertUtils;
 import java.lang.ref.WeakReference;
 
 public class UIThreadOffFunction<IN>
@@ -15,7 +14,7 @@ public class UIThreadOffFunction<IN>
   private static final int MSG_THREAD_OFF_ERROR = 2;
   private static final int MSG_THREAD_OFF_RESULT = 1;
   private static final String TAG = "async.UIThreadOffFunction";
-  private Handler mHandler = new InnerHandler(Looper.getMainLooper());
+  private Handler mHandler = new UIThreadOffFunction.InnerHandler(this, Looper.getMainLooper());
   private WeakReference<IEventReceiver> mRef;
   
   public UIThreadOffFunction(@Nullable IEventReceiver paramIEventReceiver)
@@ -54,38 +53,10 @@ public class UIThreadOffFunction<IN>
     }
     Message.obtain(this.mHandler, 2, paramError).sendToTarget();
   }
-  
-  private class InnerHandler
-    extends Handler
-  {
-    public InnerHandler(Looper paramLooper)
-    {
-      super();
-    }
-    
-    public void handleMessage(Message paramMessage)
-    {
-      if (!UIThreadOffFunction.this.isValidate()) {
-        return;
-      }
-      AssertUtils.checkNotNull(paramMessage.obj);
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 1: 
-        paramMessage = paramMessage.obj;
-        UIThreadOffFunction.this.notifyResult(paramMessage);
-        return;
-      }
-      paramMessage = (Error)paramMessage.obj;
-      UIThreadOffFunction.this.notifyError(paramMessage);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tribe.async.reactive.UIThreadOffFunction
  * JD-Core Version:    0.7.0.1
  */

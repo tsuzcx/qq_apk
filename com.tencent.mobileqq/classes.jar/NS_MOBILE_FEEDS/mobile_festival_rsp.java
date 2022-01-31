@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class mobile_festival_rsp
   extends JceStruct
 {
-  static ArrayList cache_play_url_list = new ArrayList();
+  static ArrayList<String> cache_play_url_list = new ArrayList();
   public String attach_info = "";
   public long end_time;
   public long interval;
   public int play_flag;
   public long play_time;
-  public ArrayList play_url_list;
+  public ArrayList<String> play_url_list;
   public long start_time;
   
   static
@@ -24,7 +24,7 @@ public final class mobile_festival_rsp
   
   public mobile_festival_rsp() {}
   
-  public mobile_festival_rsp(int paramInt, ArrayList paramArrayList, long paramLong1, long paramLong2, long paramLong3, long paramLong4, String paramString)
+  public mobile_festival_rsp(int paramInt, ArrayList<String> paramArrayList, long paramLong1, long paramLong2, long paramLong3, long paramLong4, String paramString)
   {
     this.play_flag = paramInt;
     this.play_url_list = paramArrayList;
@@ -63,7 +63,7 @@ public final class mobile_festival_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_festival_rsp
  * JD-Core Version:    0.7.0.1
  */

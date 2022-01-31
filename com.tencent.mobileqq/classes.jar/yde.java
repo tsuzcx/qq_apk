@@ -1,37 +1,29 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import com.tencent.biz.subscribe.animation.PopViewAnimationDrawableHelper;
 
 public class yde
-  implements TVK_SDKMgr.InstallListener
+  implements ydh
 {
-  public yde(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public yde(PopViewAnimationDrawableHelper paramPopViewAnimationDrawableHelper) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void a()
   {
-    ShortVideoPlayActivity.a(this.a, false);
-    ShortVideoPlayActivity.b(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.b(this.a));
-    this.a.a("腾讯视频插件加载失败");
-    ShortVideoPlayActivity.c(this.a, 3000);
-    ShortVideoPlayActivity.d(this.a, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onInstalledFailed:" + paramInt);
+    if (PopViewAnimationDrawableHelper.a(this.a) != null) {
+      PopViewAnimationDrawableHelper.a(this.a).b();
+    }
+    if ((PopViewAnimationDrawableHelper.a(this.a) != null) && (PopViewAnimationDrawableHelper.a(this.a) != null)) {
+      PopViewAnimationDrawableHelper.a(this.a).removeCallbacks(PopViewAnimationDrawableHelper.a(this.a));
     }
   }
   
-  public void onInstalledSuccessed()
+  public void b()
   {
-    ShortVideoPlayActivity.a(this.a, true);
-    ShortVideoPlayActivity.b(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.b(this.a));
-    this.a.a.post(new ydf(this));
+    PopViewAnimationDrawableHelper.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yde
  * JD-Core Version:    0.7.0.1
  */

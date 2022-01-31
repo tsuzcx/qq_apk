@@ -1,5 +1,5 @@
 {
-  "Area": "com.qzone.canvasui.widget.RelativeAreaLayout",
+  "class": "com.tencent.ditto.widget.RelativeAreaLayout",
   "shell": {
     "id": "feed_attach_root",
     "width": "match_parent",
@@ -7,7 +7,7 @@
   },
   "children": [
     {
-      "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+      "class": "com.tencent.ditto.widget.LinearAreaLayout",
       "shell": {
         "id": "logo_root",
         "width": "match_parent",
@@ -16,7 +16,7 @@
       },
       "children": [
         {
-          "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+          "class": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
           "shell": {
             "layout_gravity":"center_horizontal",
             "id": "logo_img",
@@ -25,7 +25,7 @@
           }
         },
         {
-          "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+          "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
           "shell": {
             "id": "logo_name",
             "width": "wrap_content",
@@ -37,7 +37,7 @@
           }
         },
         {
-          "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+          "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
           "shell": {
             "id": "logo_jump_button",
             "layout_gravity":"center_horizontal",

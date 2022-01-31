@@ -1,19 +1,31 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.qcall.QCallFacade;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class agvd
-  extends FriendListObserver
+class agvd
+  implements bcro
 {
-  public agvd(QCallFacade paramQCallFacade) {}
+  agvd(agvc paramagvc) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.a.a(String.valueOf(paramObject));
+    if ((paramBoolean) && (!TextUtils.isEmpty(this.a.a.a)) && (this.a.a.a.equals(paramString)))
+    {
+      paramString = (afgn)this.a.a(23);
+      if (paramString != null) {
+        paramString.a(true);
+      }
+    }
+    do
+    {
+      return;
+      paramString = (afgn)this.a.a(23);
+    } while (paramString == null);
+    paramString.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agvd
  * JD-Core Version:    0.7.0.1
  */

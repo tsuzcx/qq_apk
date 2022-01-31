@@ -1,44 +1,74 @@
 package com.tencent.token.ui;
 
-import android.os.Message;
-import android.widget.EditText;
-import com.tencent.token.ax;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
+import android.widget.Toast;
+import com.tencent.token.dm;
+import com.tencent.token.global.f;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.UserTask;
 
-final class ll
-  extends bo
+class ll
+  extends UserTask
 {
-  ll(GetOtherBarcodeActivity paramGetOtherBarcodeActivity)
+  ll(IndexActivity paramIndexActivity) {}
+  
+  public f a(String... paramVarArgs)
   {
-    super(paramGetOtherBarcodeActivity);
+    if (IndexActivity.s_FromPush) {
+      return dm.a().a(dm.e, IndexActivity.access$2100(this.a));
+    }
+    return dm.a().a(dm.a, IndexActivity.access$2100(this.a));
   }
   
-  public final void handleMessage(Message paramMessage)
+  public void a(f paramf)
   {
-    String str = GetOtherBarcodeActivity.access$000(this.a).getText().toString();
-    switch (paramMessage.what)
+    IndexActivity.access$2202(this.a, false);
+    if (this.a.isFinishing()) {}
+    do
     {
-    default: 
-      return;
-    }
-    QQUser localQQUser = ax.a().e();
-    if (localQQUser != null)
-    {
-      byte[] arrayOfByte = (byte[])paramMessage.obj;
-      if ((paramMessage.arg1 == 0) && (arrayOfByte != null))
+      do
       {
-        paramMessage = "https://ssl.ptlogin2.qq.com/jump?keyindex=19&clientuin=" + localQQUser.mRealUin + "&clientkey=" + s.a(arrayOfByte) + "&u1=" + str;
-        e.c("skey: url=" + paramMessage);
+        return;
+        this.a.dismissDialog();
+        h.c("other app: " + IndexActivity.s_FromOtherApp + ", retcode=" + paramf.a);
+        if (IndexActivity.s_FromOtherApp)
+        {
+          IndexActivity.s_FromOtherApp = false;
+          if (paramf.b())
+          {
+            if (dm.a().b() > 0)
+            {
+              IndexActivity.access$2300(this.a, true);
+              return;
+            }
+            IndexActivity.access$2400(this.a, 4);
+            return;
+          }
+          if (110 == paramf.a)
+          {
+            IndexActivity.access$2400(this.a, 2);
+            return;
+          }
+          if (10029 == paramf.a)
+          {
+            IndexActivity.access$2400(this.a, 1);
+            return;
+          }
+          f.a(this.a.getResources(), paramf);
+          this.a.dismissDialog();
+          IndexActivity.access$2502(this.a, new AlertDialog.Builder(this.a).setTitle(2131230843).setMessage(paramf.c).setPositiveButton(2131231388, new lm(this)).create());
+          IndexActivity.access$2500(this.a).show();
+          return;
+        }
+      } while (!paramf.b());
+      if (dm.a().b() > 0)
+      {
+        IndexActivity.access$2300(this.a, false);
+        return;
       }
-    }
-    for (;;)
-    {
-      s.a(this.a, paramMessage);
-      return;
-      paramMessage = str;
-    }
+    } while (!IndexActivity.s_FromPush);
+    Toast.makeText(this.a, 2131230949, 0).show();
   }
 }
 

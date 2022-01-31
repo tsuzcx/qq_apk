@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ahtl;
-import com.tencent.mobileqq.search.adapter.BaseMvpAdapter;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine;
+import ayjn;
+import aykx;
+import ayug;
+import ayui;
 
 public class MessageSearchFragment
   extends BaseSearchFragment
@@ -13,19 +13,19 @@ public class MessageSearchFragment
     return 40;
   }
   
-  protected BaseMvpAdapter a()
+  protected ayjn a()
   {
-    return new ahtl(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
+    return new aykx(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bdbb);
   }
   
-  protected ISearchEngine a()
+  protected ayug a()
   {
-    return new MessageSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return new ayui(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
   protected String a()
   {
-    return getString(2131438147);
+    return getString(2131719582);
   }
   
   public void a(String paramString)
@@ -36,18 +36,18 @@ public class MessageSearchFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine.c();
+    this.jdField_a_of_type_Ayug.c();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine.d();
+    this.jdField_a_of_type_Ayug.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.MessageSearchFragment
  * JD-Core Version:    0.7.0.1
  */

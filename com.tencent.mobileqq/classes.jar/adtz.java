@@ -1,57 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginLoader;
-import com.tencent.mobileqq.intervideo.groupvideo.PluginLoadListener;
-import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.net.Uri;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class adtz
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public adtz(IVPluginLoader paramIVPluginLoader) {}
+  public adtz(RegisterActivity paramRegisterActivity, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    int j = paramIntent.getIntExtra("key_state", -1);
-    if (IVPluginLoader.a(this.a)) {
-      IVPluginLoader.a(this.a, j);
-    }
-    if (paramContext.equals(HuayangJsPlugin.a(IVPluginLoader.a(this.a))))
-    {
-      paramContext = (PluginLoadListener)IVPluginLoader.a(this.a).get();
-      if (paramContext != null) {
-        paramContext.a(j, paramIntent.getExtras());
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GroupVideoManager.IVPluginLoader", 2, "state:" + j);
-        }
-        paramContext = IVPluginLoader.jdField_a_of_type_ArrayOfInt;
-        int k = paramContext.length;
-        int i = 0;
-        while (i < k)
-        {
-          if ((j == paramContext[i]) && (IVPluginLoader.b(this.a)))
-          {
-            IVPluginLoader.a(this.a).unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
-            IVPluginLoader.a(this.a, false);
-          }
-          i += 1;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("GroupVideoManager.IVPluginLoader", 2, "loadListener null");
-        }
-      }
-      if ((IVPluginLoader.c(this.a)) && (j == 4))
-      {
-        IVPluginLoader.a(this.a).unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        IVPluginLoader.a(this.a, false);
-      }
-    }
+    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.startActivity(localIntent);
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.a.sendEmptyMessage(1);
   }
 }
 

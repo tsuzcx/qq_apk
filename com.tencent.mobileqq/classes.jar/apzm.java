@@ -1,0 +1,21 @@
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionBaseFragment;
+
+public class apzm
+  implements View.OnClickListener
+{
+  public apzm(AIOEmotionBaseFragment paramAIOEmotionBaseFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.getActivity().finish();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     apzm
+ * JD-Core Version:    0.7.0.1
+ */

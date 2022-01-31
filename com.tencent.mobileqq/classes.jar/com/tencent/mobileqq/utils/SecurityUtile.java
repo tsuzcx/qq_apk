@@ -6,8 +6,8 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.SystemClock;
 import android.telephony.TelephonyManager;
+import azpo;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.QQCatchedExceptionReporter;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileInputStream;
@@ -75,6 +75,11 @@ public class SecurityUtile
   
   public static String a(String paramString)
   {
+    return a(paramString, true);
+  }
+  
+  public static String a(String paramString, boolean paramBoolean)
+  {
     if (paramString != null) {}
     String str;
     try
@@ -103,7 +108,9 @@ public class SecurityUtile
     }
     catch (UnsatisfiedLinkError paramString)
     {
-      QQCatchedExceptionReporter.reportQQCatchedException(paramString, "SecurityUtileEncodeCatchedException", "encode str error");
+      if (paramBoolean) {
+        azpo.a(paramString, "encode str error");
+      }
       QLog.e("SecurityUtile", 1, "encode str error", paramString);
       str = null;
     }
@@ -312,7 +319,7 @@ public class SecurityUtile
     }
     catch (UnsatisfiedLinkError paramArrayOfByte)
     {
-      QQCatchedExceptionReporter.reportQQCatchedException(paramArrayOfByte, "SecurityUtileEncodeError", "encode byte error");
+      azpo.a(paramArrayOfByte, "encode byte error");
       QLog.e("SecurityUtile", 1, "encode byte error", paramArrayOfByte);
       arrayOfByte = null;
     }
@@ -346,13 +353,18 @@ public class SecurityUtile
     return a(paramString);
   }
   
+  public static String b(String paramString, boolean paramBoolean)
+  {
+    return a(paramString, paramBoolean);
+  }
+  
   public static native char[] encrypt(char[] paramArrayOfChar1, char[] paramArrayOfChar2, int paramInt);
   
   public static native byte[] encryptByte(byte[] paramArrayOfByte, char[] paramArrayOfChar, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SecurityUtile
  * JD-Core Version:    0.7.0.1
  */

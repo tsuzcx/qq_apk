@@ -1,22 +1,17 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
-import java.util.Collections;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class oeb
-  implements Runnable
+final class oeb
+  implements DialogInterface.OnClickListener
 {
-  public oeb(EditVideoDoodle paramEditVideoDoodle) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiManager$POIPostersRequestCallback.a(1, Collections.EMPTY_LIST);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oeb
  * JD-Core Version:    0.7.0.1
  */

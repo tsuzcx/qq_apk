@@ -11,31 +11,32 @@ import java.io.PrintWriter;
 import java.lang.reflect.Modifier;
 
 final class LoaderManagerImpl$LoaderInfo
-  implements Loader.OnLoadCompleteListener
+  implements Loader.OnLoadCompleteListener<Object>
 {
   final Bundle mArgs;
-  LoaderManager.LoaderCallbacks mCallbacks;
+  LoaderManager.LoaderCallbacks<Object> mCallbacks;
   Object mData;
   boolean mDeliveredData;
   boolean mDestroyed;
   boolean mHaveData;
   final int mId;
   boolean mListenerRegistered;
-  Loader mLoader;
+  Loader<Object> mLoader;
   LoaderInfo mPendingLoader;
   boolean mReportNextStart;
   boolean mRetaining;
   boolean mRetainingStarted;
   boolean mStarted;
   
-  public LoaderManagerImpl$LoaderInfo(LoaderManagerImpl paramLoaderManagerImpl, int paramInt, Bundle paramBundle, LoaderManager.LoaderCallbacks paramLoaderCallbacks)
+  public LoaderManagerImpl$LoaderInfo(int paramInt, Bundle paramBundle, LoaderManager.LoaderCallbacks<Object> paramLoaderCallbacks)
   {
-    this.mId = paramInt;
-    this.mArgs = paramBundle;
-    this.mCallbacks = paramLoaderCallbacks;
+    this.mId = paramBundle;
+    this.mArgs = paramLoaderCallbacks;
+    Object localObject;
+    this.mCallbacks = localObject;
   }
   
-  void callOnLoadFinished(Loader paramLoader, Object paramObject)
+  void callOnLoadFinished(Loader<Object> paramLoader, Object paramObject)
   {
     String str;
     if (this.mCallbacks != null)
@@ -195,7 +196,7 @@ final class LoaderManagerImpl$LoaderInfo
     }
   }
   
-  public void onLoadComplete(Loader paramLoader, Object paramObject)
+  public void onLoadComplete(Loader<Object> paramLoader, Object paramObject)
   {
     if ((LoaderManagerImpl.DEBUG) && (QLog.isDevelopLevel())) {
       QLog.d("LoaderManager", 4, "onLoadComplete: " + this);

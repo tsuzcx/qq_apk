@@ -23,6 +23,12 @@ public class SwipConflictHorizontailListView
     return 2;
   }
   
+  protected void initView()
+  {
+    setOverScrollMode(2);
+    super.initView();
+  }
+  
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     if (paramMotionEvent.getAction() == 0) {
@@ -33,7 +39,7 @@ public class SwipConflictHorizontailListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.SwipConflictHorizontailListView
  * JD-Core Version:    0.7.0.1
  */

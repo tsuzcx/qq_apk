@@ -1,28 +1,42 @@
 package com.tencent.mobileqq.app.automator;
 
+import amhf;
+import amhg;
 import android.os.Process;
 import android.os.SystemClock;
+import aznp;
+import biby;
+import com.tencent.mobileqq.app.automator.step.ActiveAccount;
+import com.tencent.mobileqq.app.automator.step.CheckPublicAccount;
+import com.tencent.mobileqq.app.automator.step.GetSubAccount;
+import com.tencent.mobileqq.app.automator.step.LoginWelcomeRequest;
+import com.tencent.mobileqq.app.automator.step.RegisterPush;
+import com.tencent.mobileqq.app.automator.step.UpdateDiscuss;
+import com.tencent.mobileqq.app.automator.step.UpdateFriend;
+import com.tencent.mobileqq.app.automator.step.UpdateTroop;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.TraceUtils;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class AsyncStep
   implements Runnable
 {
-  public volatile int a;
+  protected volatile int a;
+  private long jdField_a_of_type_Long;
+  public amhf a;
   public Automator a;
-  protected IResultListener a;
-  private Object a;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  public String a;
+  public Object[] a;
   public int b;
   protected long b;
-  public String b;
-  public int c;
+  protected int c;
   
   public AsyncStep()
   {
     this.jdField_a_of_type_Int = 1;
     this.jdField_b_of_type_Long = 30000L;
     this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangObject = new Object();
   }
   
   private boolean a()
@@ -39,7 +53,7 @@ public class AsyncStep
       {
         this.jdField_a_of_type_JavaLangObject.wait(this.jdField_b_of_type_Long);
         if (QLog.isColorLevel()) {
-          QLog.d("QQInitHandler", 2, this.jdField_b_of_type_JavaLangString + " waitResult " + this.jdField_a_of_type_Int + " " + this.c);
+          QLog.d("QQInitHandler", 2, this.jdField_a_of_type_JavaLangString + " waitResult " + this.jdField_a_of_type_Int + " " + this.c);
         }
         if (this.jdField_a_of_type_Int == 3)
         {
@@ -49,11 +63,11 @@ public class AsyncStep
           throw localObject2;
         }
       }
-      catch (InterruptedException localInterruptedException)
+      catch (InterruptedException localInterruptedException2)
       {
         for (;;)
         {
-          localInterruptedException.printStackTrace();
+          localInterruptedException2.printStackTrace();
         }
         if (this.jdField_a_of_type_Int == 2)
         {
@@ -71,15 +85,30 @@ public class AsyncStep
             return true;
           }
         }
+        if ((aznp.f) && (!amhg.a.contains(Integer.valueOf(this.jdField_b_of_type_Int))))
+        {
+          long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
+          if (QLog.isColorLevel()) {
+            QLog.d("Perf", 2, new Object[] { "asyncstep runtime = ", Long.valueOf(l) });
+          }
+          if (l < 1500L) {
+            try
+            {
+              Thread.sleep(1500L - l);
+              return false;
+            }
+            catch (InterruptedException localInterruptedException1) {}
+          }
+        }
       }
     }
     return false;
   }
   
-  public int a()
+  protected int a()
   {
     if (QLog.isColorLevel()) {
-      QLog.e("QQInitHandler", 2, this.jdField_b_of_type_JavaLangString + " AsyncStep.doStep()");
+      QLog.e("QQInitHandler", 2, this.jdField_a_of_type_JavaLangString + " AsyncStep.doStep()");
     }
     return 7;
   }
@@ -89,7 +118,7 @@ public class AsyncStep
   public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, this.jdField_b_of_type_JavaLangString + " setResult " + paramInt + ", when " + this.jdField_a_of_type_Int);
+      QLog.d("QQInitHandler", 2, this.jdField_a_of_type_JavaLangString + " setResult " + paramInt + ", when " + this.jdField_a_of_type_Int);
     }
     if (paramInt == 6)
     {
@@ -111,7 +140,7 @@ public class AsyncStep
     if (QLog.isColorLevel())
     {
       ??? = new StringBuilder(64);
-      ((StringBuilder)???).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)???).append(this.jdField_a_of_type_JavaLangString);
       ((StringBuilder)???).append(" updateTimeout ");
       ((StringBuilder)???).append(paramLong);
       ((StringBuilder)???).append(", when ");
@@ -129,20 +158,17 @@ public class AsyncStep
     }
   }
   
-  public void c() {}
+  public void d() {}
   
   public final void run()
   {
-    long l;
     if (this.jdField_a_of_type_Int == 1)
     {
-      l = 0L;
-      TraceUtils.a(4096L, this.jdField_b_of_type_JavaLangString, Process.myTid());
-      if (QLog.isColorLevel())
-      {
-        l = SystemClock.uptimeMillis();
-        QLog.d("QQInitHandler", 2, this.jdField_b_of_type_JavaLangString + " begin with " + this.jdField_a_of_type_Int);
+      biby.a(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
+      if (QLog.isColorLevel()) {
+        QLog.d("QQInitHandler", 1, this.jdField_a_of_type_JavaLangString + " begin with " + this.jdField_a_of_type_Int);
       }
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
     }
     try
     {
@@ -151,24 +177,51 @@ public class AsyncStep
       {
         a(a());
       } while (a());
-      c();
-      return;
+      d();
+      if (QLog.isColorLevel()) {
+        QLog.d("QQInitHandler", 1, this.jdField_a_of_type_JavaLangString + " cost: " + (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long));
+      }
     }
-    catch (Throwable localThrowable)
+    catch (Throwable localThrowable1)
     {
-      QLog.e("QQInitHandler", 1, "", localThrowable);
+      label250:
+      QLog.e("QQInitHandler", 1, "", localThrowable1);
       a(8);
       return;
     }
     finally
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QQInitHandler", 2, this.jdField_b_of_type_JavaLangString + " cost: " + (SystemClock.uptimeMillis() - l));
+        QLog.d("QQInitHandler", 1, this.jdField_a_of_type_JavaLangString + " cost: " + (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long));
       }
-      TraceUtils.b(4096L, this.jdField_b_of_type_JavaLangString, Process.myTid());
-      if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorIResultListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorIResultListener.a(this, this.jdField_a_of_type_Int);
+      try
+      {
+        if (((this instanceof ActiveAccount)) || ((this instanceof LoginWelcomeRequest)) || ((this instanceof UpdateFriend)) || ((this instanceof UpdateTroop)) || ((this instanceof UpdateDiscuss)) || ((this instanceof CheckPublicAccount)) || ((this instanceof GetSubAccount)) || ((this instanceof InitBeforeSyncMsg)) || ((this instanceof RegisterPush)) || ("{4,3,5,6}".equals(this.jdField_a_of_type_JavaLangString)) || ("[11,12,14]".equals(this.jdField_a_of_type_JavaLangString))) {
+          this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.put(this.jdField_a_of_type_JavaLangString, Long.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long));
+        }
       }
+      catch (Throwable localThrowable4)
+      {
+        break label653;
+      }
+      biby.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
+      if (this.jdField_a_of_type_Amhf != null) {
+        this.jdField_a_of_type_Amhf.a(this, this.jdField_a_of_type_Int);
+      }
+    }
+    try
+    {
+      if (((this instanceof ActiveAccount)) || ((this instanceof LoginWelcomeRequest)) || ((this instanceof UpdateFriend)) || ((this instanceof UpdateTroop)) || ((this instanceof UpdateDiscuss)) || ((this instanceof CheckPublicAccount)) || ((this instanceof GetSubAccount)) || ((this instanceof InitBeforeSyncMsg)) || ((this instanceof RegisterPush)) || ("{4,3,5,6}".equals(this.jdField_a_of_type_JavaLangString)) || ("[11,12,14]".equals(this.jdField_a_of_type_JavaLangString))) {
+        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.put(this.jdField_a_of_type_JavaLangString, Long.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long));
+      }
+    }
+    catch (Throwable localThrowable3)
+    {
+      break label250;
+    }
+    biby.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
+    if (this.jdField_a_of_type_Amhf != null) {
+      this.jdField_a_of_type_Amhf.a(this, this.jdField_a_of_type_Int);
     }
   }
 }

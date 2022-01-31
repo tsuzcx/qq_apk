@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
-class dfb
-  extends ContactBindObserver
+public class dfb
+  implements DialogInterface.OnClickListener
 {
-  dfb(dfa paramdfa) {}
+  public dfb(RegisterActivity paramRegisterActivity) {}
   
-  protected void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramBoolean);
-    PermisionPrivacyActivity.c(this.a.a.a.a);
-    this.a.a.a.a.b.unRegistObserver(this);
-    if (paramBoolean)
-    {
-      this.a.a.a.a.setResult(-1);
-      this.a.a.a.a.finish();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.activity.BaseSystemActivity;
+import com.tencent.widget.AbsListView;
 
-public class rum
-  implements Runnable
+class rum
+  extends pdi
 {
-  public rum(BaseSystemActivity paramBaseSystemActivity) {}
-  
-  public void run()
+  rum(ruk paramruk, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.a();
+    super(paramString);
+  }
+  
+  public void a(pdc parampdc)
+  {
+    parampdc.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rum
  * JD-Core Version:    0.7.0.1
  */

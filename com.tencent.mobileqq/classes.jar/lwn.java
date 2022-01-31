@@ -1,25 +1,31 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 
-public class lwn
-  implements Animation.AnimationListener
+class lwn
+  implements SoundPool.OnLoadCompleteListener
 {
-  public lwn(ComponentSocialOperation paramComponentSocialOperation) {}
+  lwn(lwm paramlwm, lwo paramlwo) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    this.a.a.post(new lwo(this));
+    paramSoundPool = this.jdField_a_of_type_Lwm;
+    paramSoundPool.c += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("SoundPoolHelper", 2, "loadMusic onLoadComplete,sampleId = " + paramInt1 + ",status = " + paramInt2 + ",loadedCount = " + this.jdField_a_of_type_Lwm.c + ",musicCount = " + this.jdField_a_of_type_Lwm.b);
+    }
+    if (paramInt2 == 0) {
+      this.jdField_a_of_type_Lwm.a.add(Integer.valueOf(paramInt1));
+    }
+    if (this.jdField_a_of_type_Lwm.c == this.jdField_a_of_type_Lwm.b) {
+      this.jdField_a_of_type_Lwo.a();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lwn
  * JD-Core Version:    0.7.0.1
  */

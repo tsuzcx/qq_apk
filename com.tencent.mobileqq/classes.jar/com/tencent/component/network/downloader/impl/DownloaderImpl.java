@@ -2,8 +2,6 @@ package com.tencent.component.network.downloader.impl;
 
 import android.content.Context;
 import android.text.TextUtils;
-import com.squareup.okhttp.Request.Builder;
-import com.squareup.okhttp.Response;
 import com.tencent.component.network.downloader.DownloadReport;
 import com.tencent.component.network.downloader.DownloadRequest;
 import com.tencent.component.network.downloader.DownloadResult;
@@ -12,6 +10,7 @@ import com.tencent.component.network.downloader.Downloader;
 import com.tencent.component.network.downloader.Downloader.DownloadListener;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.component.network.downloader.Downloader.StreamDownloadListener;
+import com.tencent.component.network.downloader.PreConnectManager;
 import com.tencent.component.network.downloader.common.Utils;
 import com.tencent.component.network.downloader.handler.ContentHandler;
 import com.tencent.component.network.downloader.handler.FileHandler;
@@ -31,8 +30,8 @@ import com.tencent.component.network.utils.MultiHashMap;
 import com.tencent.component.network.utils.http.HttpUtil;
 import com.tencent.component.network.utils.http.HttpUtil.ClientOptions;
 import com.tencent.component.network.utils.http.HttpUtil.RequestOptions;
-import com.tencent.component.network.utils.http.base.QZoneHttp2Client;
 import com.tencent.component.network.utils.http.base.QZoneHttpClient;
+import com.tencent.component.network.utils.http.pool.CustomDnsResolve;
 import com.tencent.component.network.utils.thread.Future;
 import com.tencent.component.network.utils.thread.PriorityThreadPool;
 import java.io.File;
@@ -47,11 +46,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import okhttp3.OkHttpClient;
+import okhttp3.Request.Builder;
+import okhttp3.Response;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
-import pjq;
-import pjs;
-import pjt;
 
 public class DownloaderImpl
   extends Downloader
@@ -69,26 +68,26 @@ public class DownloaderImpl
   public static final long TIME_TO_LIVE_HTTP;
   public static final long TIME_TO_LIVE_HTTP2;
   public static final TimeUnit TIME_TO_LIVE_UNIT;
-  private static final pjt sThreadPoolCache = new pjt("download", THREAD_POOL_SIZE);
+  private static final DownloaderImpl.ThreadPoolCache sThreadPoolCache = new DownloaderImpl.ThreadPoolCache("download", THREAD_POOL_SIZE);
   private Object ExecutingTaskListRock = new Object();
-  private final FileCacheService mCacheFileCache = CacheManager.a(this.mContext, "download_cache", 100, 50, false);
-  private Map mExecutingTaskList = new HashMap();
-  private final HashMap mFutures = new HashMap();
+  private final FileCacheService mCacheFileCache = CacheManager.getFileCacheService(this.mContext, "download_cache", 100, 50, false);
+  private Map<String, List<WeakReference<DownloadTask>>> mExecutingTaskList = new HashMap();
+  private final HashMap<String, Future<DownloadResult>> mFutures = new HashMap();
   private QZoneHttpClient mHttpClient;
-  private pjs mLockManager = new pjs(this, null);
-  private QZoneHttp2Client mOkClient;
+  private DownloaderImpl.LockManager mLockManager = new DownloaderImpl.LockManager(this, null);
+  private OkHttpClient mOkClient;
   private boolean mPaused = false;
-  private final MultiHashMap mPendingRequests = new MultiHashMap();
-  private final pjt mThreadPoolCache = sThreadPoolCache;
+  private final MultiHashMap<String, DownloadRequest> mPendingRequests = new MultiHashMap();
+  private final DownloaderImpl.ThreadPoolCache mThreadPoolCache = sThreadPoolCache;
   
   static
   {
     DownloadingHttp2TaskCount = 0;
-    THREAD_POOL_SIZE = Config.e();
+    THREAD_POOL_SIZE = Config.getDefaultThreadPoolSize();
     MAX_CONNECTION = DownloadPreprocessStrategy.DownloadPool.size() * 3 * 5;
-    MAX_CONNECTION_PER_ROUTE = THREAD_POOL_SIZE;
-    TIME_TO_LIVE_HTTP = Config.b();
-    TIME_TO_LIVE_HTTP2 = Config.c();
+    MAX_CONNECTION_PER_ROUTE = THREAD_POOL_SIZE + 1;
+    TIME_TO_LIVE_HTTP = Config.getDefaultHttpLiveTime();
+    TIME_TO_LIVE_HTTP2 = Config.getDefaultHttp2LiveTime();
     TIME_TO_LIVE_UNIT = TimeUnit.SECONDS;
   }
   
@@ -114,8 +113,8 @@ public class DownloaderImpl
           while (((Iterator)localObject2).hasNext())
           {
             DownloadTask localDownloadTask = (DownloadTask)((WeakReference)((Iterator)localObject2).next()).get();
-            if ((localDownloadTask != null) && (paramString.equals(localDownloadTask.a()))) {
-              localDownloadTask.e();
+            if ((localDownloadTask != null) && (paramString.equals(localDownloadTask.getUrl()))) {
+              localDownloadTask.abort();
             }
           }
         }
@@ -221,7 +220,7 @@ public class DownloaderImpl
         }
         localHashMap.put("httpStatus", String.valueOf(paramDownloadReport.httpStatus));
       }
-      Config.a(str1, paramDownloadReport.isSucceed, localHashMap, paramDownloadReport.totaltime);
+      Config.reportToBeacon(str1, paramDownloadReport.isSucceed, localHashMap, paramDownloadReport.totaltime);
       return;
       label456:
       i = 1;
@@ -241,9 +240,9 @@ public class DownloaderImpl
     }
   }
   
-  private MultiHashMap collectAllPendingRequest(boolean paramBoolean, MultiHashMap paramMultiHashMap)
+  private MultiHashMap<String, DownloadRequest> collectAllPendingRequest(boolean paramBoolean, MultiHashMap<String, DownloadRequest> paramMultiHashMap)
   {
-    MultiHashMap localMultiHashMap2 = this.mPendingRequests;
+    MultiHashMap localMultiHashMap = this.mPendingRequests;
     if (paramMultiHashMap != null) {}
     try
     {
@@ -251,20 +250,20 @@ public class DownloaderImpl
       if (this.mPendingRequests.isEmpty()) {
         return paramMultiHashMap;
       }
-      MultiHashMap localMultiHashMap1 = paramMultiHashMap;
+      Object localObject = paramMultiHashMap;
       if (paramMultiHashMap == null) {
-        localMultiHashMap1 = new MultiHashMap();
+        localObject = new MultiHashMap();
       }
-      localMultiHashMap1.putAll(this.mPendingRequests);
+      ((MultiHashMap)localObject).putAll(this.mPendingRequests);
       if (paramBoolean) {
         this.mPendingRequests.clear();
       }
-      return localMultiHashMap1;
+      return localObject;
     }
     finally {}
   }
   
-  private Collection collectPendingRequest(String paramString, boolean paramBoolean, Collection paramCollection)
+  private Collection<DownloadRequest> collectPendingRequest(String paramString, boolean paramBoolean, Collection<DownloadRequest> paramCollection)
   {
     try
     {
@@ -294,12 +293,12 @@ public class DownloaderImpl
     while (this.mPaused) {
       return;
     }
-    ??? = getDownloadThreadPool(paramDownloadTask.a(), paramDownloadTask.b());
-    paramDownloadTask.b();
-    Future localFuture = ((PriorityThreadPool)???).submit(paramDownloadTask, new pjq(this, paramDownloadTask), paramDownloadTask.a());
+    ??? = getDownloadThreadPool(paramDownloadTask.getUrl(), paramDownloadTask.getDomain());
+    paramDownloadTask.onTaskEnqueue();
+    Future localFuture = ((PriorityThreadPool)???).submit(paramDownloadTask, new DownloaderImpl.1(this, paramDownloadTask), paramDownloadTask.getPriority());
     synchronized (this.mFutures)
     {
-      this.mFutures.put(paramDownloadTask.c(), localFuture);
+      this.mFutures.put(paramDownloadTask.getUrlKey(), localFuture);
       return;
     }
   }
@@ -309,7 +308,7 @@ public class DownloaderImpl
     if (paramString1 != null) {}
     for (boolean bool = true;; bool = false)
     {
-      AssertUtil.a(bool);
+      AssertUtil.assertTrue(bool);
       if (this.pExternalThreadPool == null) {
         break;
       }
@@ -317,13 +316,13 @@ public class DownloaderImpl
     }
     DownloadPreprocessStrategy localDownloadPreprocessStrategy = this.pProcessStrategy;
     if (localDownloadPreprocessStrategy != null) {}
-    for (paramString1 = localDownloadPreprocessStrategy.a(paramString1, paramString2);; paramString1 = null)
+    for (paramString1 = localDownloadPreprocessStrategy.downloadPool(paramString1, paramString2);; paramString1 = null)
     {
       paramString2 = paramString1;
       if (paramString1 == null) {
         paramString2 = DEFAULT_THREAD_POOL;
       }
-      return this.mThreadPoolCache.a(paramString2.getName());
+      return this.mThreadPoolCache.get(paramString2.getName());
     }
   }
   
@@ -341,7 +340,23 @@ public class DownloaderImpl
       return false;
       localFileHandler = this.pFileHandler;
     } while (localFileHandler == null);
-    return localFileHandler.a(paramDownloadResult.getPath(), paramDownloadRequest.getPath());
+    return localFileHandler.handleFile(paramDownloadResult.getPath(), paramDownloadRequest.getPath());
+  }
+  
+  private boolean handleRangeModeFail(DownloadTask paramDownloadTask)
+  {
+    if ((paramDownloadTask instanceof RangeDownloadTask))
+    {
+      paramDownloadTask = paramDownloadTask.getDownloadRequest();
+      if (paramDownloadTask != null)
+      {
+        QDLog.w("downloader_RANGE", "download fail, retry on  StrictMode, url:" + paramDownloadTask.getUrl());
+        paramDownloadTask.mode = Downloader.DownloadMode.StrictMode;
+        download(paramDownloadTask, true);
+        return true;
+      }
+    }
+    return false;
   }
   
   private boolean isDownloading(String paramString)
@@ -364,7 +379,7 @@ public class DownloaderImpl
     }
   }
   
-  private void notifyDownloadCanceled(Collection paramCollection)
+  private void notifyDownloadCanceled(Collection<DownloadRequest> paramCollection)
   {
     if (paramCollection == null) {}
     for (;;)
@@ -385,7 +400,7 @@ public class DownloaderImpl
     }
   }
   
-  private void notifyDownloadFailed(Collection paramCollection, DownloadResult paramDownloadResult)
+  private void notifyDownloadFailed(Collection<DownloadRequest> paramCollection, DownloadResult paramDownloadResult)
   {
     if (paramCollection == null) {}
     for (;;)
@@ -402,7 +417,7 @@ public class DownloaderImpl
     }
   }
   
-  private void notifyDownloadProgress(Collection paramCollection, long paramLong, float paramFloat)
+  private void notifyDownloadProgress(Collection<DownloadRequest> paramCollection, long paramLong, float paramFloat)
   {
     if (paramCollection == null) {}
     for (;;)
@@ -423,7 +438,7 @@ public class DownloaderImpl
     }
   }
   
-  private void notifyDownloadSucceed(Collection paramCollection, DownloadResult paramDownloadResult)
+  private void notifyDownloadSucceed(Collection<DownloadRequest> paramCollection, DownloadResult paramDownloadResult)
   {
     if (paramCollection == null) {}
     for (;;)
@@ -440,7 +455,7 @@ public class DownloaderImpl
     }
   }
   
-  private void notifyStreamDownloadProgress(Collection paramCollection, String paramString)
+  private void notifyStreamDownloadProgress(Collection<DownloadRequest> paramCollection, String paramString)
   {
     if (paramCollection == null) {}
     for (;;)
@@ -454,14 +469,14 @@ public class DownloaderImpl
         {
           Downloader.StreamDownloadListener localStreamDownloadListener = (Downloader.StreamDownloadListener)localDownloadRequest.getListener();
           if (localStreamDownloadListener != null) {
-            localStreamDownloadListener.a(localDownloadRequest.getUrl(), paramString);
+            localStreamDownloadListener.onStreamDownloadProgress(localDownloadRequest.getUrl(), paramString);
           }
         }
       }
     }
   }
   
-  private QZoneHttp2Client obtainHttp2Client()
+  private OkHttpClient obtainHttp2Client()
   {
     if (this.mOkClient != null) {
       return this.mOkClient;
@@ -470,17 +485,20 @@ public class DownloaderImpl
     {
       if (this.mOkClient != null)
       {
-        QZoneHttp2Client localQZoneHttp2Client = this.mOkClient;
-        return localQZoneHttp2Client;
+        OkHttpClient localOkHttpClient = this.mOkClient;
+        return localOkHttpClient;
       }
     }
     finally {}
     Object localObject2 = new HttpUtil.ClientOptions();
-    ((HttpUtil.ClientOptions)localObject2).jdField_a_of_type_Boolean = true;
-    ((HttpUtil.ClientOptions)localObject2).jdField_a_of_type_Int = MAX_CONNECTION;
-    ((HttpUtil.ClientOptions)localObject2).b = MAX_CONNECTION_PER_ROUTE;
-    ((HttpUtil.ClientOptions)localObject2).jdField_a_of_type_Long = TIME_TO_LIVE_HTTP2;
-    this.mOkClient = HttpUtil.a((HttpUtil.ClientOptions)localObject2);
+    ((HttpUtil.ClientOptions)localObject2).multiConnection = true;
+    ((HttpUtil.ClientOptions)localObject2).maxConnection = MAX_CONNECTION;
+    ((HttpUtil.ClientOptions)localObject2).maxConnectionPerRoute = MAX_CONNECTION_PER_ROUTE;
+    ((HttpUtil.ClientOptions)localObject2).timeToLive = TIME_TO_LIVE_HTTP2;
+    CustomDnsResolve localCustomDnsResolve = new CustomDnsResolve();
+    localCustomDnsResolve.addIpStrategy(this.pDirectIPConfig);
+    localCustomDnsResolve.addIpStrategy(this.pBackupIPConfig);
+    this.mOkClient = HttpUtil.createHttp2Client((HttpUtil.ClientOptions)localObject2, localCustomDnsResolve);
     localObject2 = this.mOkClient;
     return localObject2;
   }
@@ -494,17 +512,26 @@ public class DownloaderImpl
     {
       if (this.mHttpClient != null)
       {
-        QZoneHttpClient localQZoneHttpClient1 = this.mHttpClient;
-        return localQZoneHttpClient1;
+        QZoneHttpClient localQZoneHttpClient = this.mHttpClient;
+        return localQZoneHttpClient;
       }
     }
     finally {}
-    this.mHttpClient = HttpUtil.a();
-    QZoneHttpClient localQZoneHttpClient2 = this.mHttpClient;
-    return localQZoneHttpClient2;
+    Object localObject2;
+    if (this.pHttpsIpDirectEnable)
+    {
+      localObject2 = new CustomDnsResolve();
+      ((CustomDnsResolve)localObject2).addIpStrategy(this.pDirectIPConfig);
+      ((CustomDnsResolve)localObject2).addIpStrategy(this.pBackupIPConfig);
+    }
+    for (this.mHttpClient = HttpUtil.CreateDefaultHttpClient((CustomDnsResolve)localObject2);; this.mHttpClient = HttpUtil.CreateDefaultHttpClient())
+    {
+      localObject2 = this.mHttpClient;
+      return localObject2;
+    }
   }
   
-  private boolean removePendingRequest(String paramString, DownloadRequest paramDownloadRequest, Collection paramCollection)
+  private boolean removePendingRequest(String paramString, DownloadRequest paramDownloadRequest, Collection<DownloadRequest> paramCollection)
   {
     if (paramDownloadRequest == null) {
       return false;
@@ -560,8 +587,8 @@ public class DownloaderImpl
   
   public void abort(String paramString, Downloader.DownloadListener paramDownloadListener)
   {
-    if (QDLog.b()) {
-      QDLog.b("Downloader", "download abort url:" + paramString + " listener:" + paramDownloadListener);
+    if (QDLog.isInfoEnable()) {
+      QDLog.i("Downloader", "download abort url:" + paramString + " listener:" + paramDownloadListener);
     }
     paramDownloadListener = generateUrlKey(paramString);
     synchronized (this.mFutures)
@@ -583,7 +610,7 @@ public class DownloaderImpl
   public void addCacheEntry(String paramString, DownloadResult paramDownloadResult)
   {
     String str2 = generateStorageName(paramString);
-    String str1 = this.mCacheFileCache.a(str2);
+    String str1 = this.mCacheFileCache.getPath(str2);
     try
     {
       File localFile = new File(paramDownloadResult.getPath());
@@ -592,17 +619,17 @@ public class DownloaderImpl
       paramDownloadResult = str1;
       if (!bool2)
       {
-        paramDownloadResult = this.mCacheFileCache.a(str2, false);
+        paramDownloadResult = this.mCacheFileCache.getPath(str2, false);
         bool1 = FileUtils.copyFiles(localFile, new File(paramDownloadResult));
       }
-      if (QDLog.b()) {
-        QDLog.b("Downloader", "download cache entry to: " + paramDownloadResult + " " + paramString + " result:" + bool1);
+      if (QDLog.isInfoEnable()) {
+        QDLog.i("Downloader", "download cache entry to: " + paramDownloadResult + " " + paramString + " result:" + bool1);
       }
       return;
     }
     catch (Throwable paramDownloadResult)
     {
-      QDLog.c("Downloader", "download ------- copy exception!!! " + paramString, paramDownloadResult);
+      QDLog.w("Downloader", "download ------- copy exception!!! " + paramString, paramDownloadResult);
     }
   }
   
@@ -648,7 +675,7 @@ public class DownloaderImpl
     if (!Utils.checkUrl(paramString)) {
       return;
     }
-    QDLog.b("Downloader", "download cancel url:" + paramString + " listener:" + paramDownloadListener);
+    QDLog.i("Downloader", "download cancel url:" + paramString + " listener:" + paramDownloadListener);
     Object localObject1 = generateUrlKey(paramString);
     ??? = new DownloadRequest(paramString, new String[0], false, paramDownloadListener);
     paramDownloadListener = new ArrayList();
@@ -671,67 +698,103 @@ public class DownloaderImpl
   
   public void cleanCache()
   {
-    this.mCacheFileCache.a();
+    this.mCacheFileCache.clear();
     if (this.pResumeTransfer != null) {
-      this.pResumeTransfer.a();
+      this.pResumeTransfer.cleanCache();
     }
   }
   
   public void cleanCache(String paramString)
   {
-    this.mCacheFileCache.a(generateStorageFileName(paramString));
+    this.mCacheFileCache.deleteFile(generateStorageFileName(paramString));
     if (this.pResumeTransfer != null) {
-      this.pResumeTransfer.a(paramString);
+      this.pResumeTransfer.cleanCache(paramString);
     }
   }
   
   public boolean download(DownloadRequest paramDownloadRequest, boolean paramBoolean)
   {
+    boolean bool3 = true;
+    boolean bool2 = false;
     Object localObject = paramDownloadRequest.getUrl();
+    boolean bool1;
     if ((!Utils.checkUrl((String)localObject)) || (paramDownloadRequest.getPaths() == null)) {
-      return false;
+      bool1 = false;
     }
-    String str = generateUrlKey((String)localObject);
-    QDLog.b("downloader", "download :" + (String)localObject + " urlKey:" + str + " listener:" + paramDownloadRequest.getListener());
-    boolean bool;
-    if ((addPendingRequest((String)localObject, str, paramDownloadRequest)) && (!isDownloading((String)localObject)))
+    String str;
+    do
     {
-      if (paramDownloadRequest.range > 0L) {
-        paramDownloadRequest.addParam("Range", "bytes=" + paramDownloadRequest.range);
+      do
+      {
+        return bool1;
+        str = generateUrlKey((String)localObject);
+        QDLog.i("downloader", "download :" + (String)localObject + " urlKey:" + str + " listener:" + paramDownloadRequest.getListener());
+        bool1 = bool3;
+      } while (!addPendingRequest((String)localObject, str, paramDownloadRequest));
+      bool1 = bool3;
+    } while (isDownloading((String)localObject));
+    if (paramDownloadRequest.range > 0L) {
+      paramDownloadRequest.addParam("Range", "bytes=" + paramDownloadRequest.range);
+    }
+    bool3 = Config.shouldUseHttp2(Utils.getDomin((String)localObject));
+    int i;
+    if ((Config.getNetworkStackType() == 2) || (Config.getNetworkStackType() == 3))
+    {
+      i = 1;
+      bool1 = bool2;
+      if (bool3)
+      {
+        bool1 = bool2;
+        if (i == 0) {
+          bool1 = true;
+        }
       }
-      bool = Config.a(Utils.getDomin((String)localObject));
-      if (!bool) {
-        break label271;
+      if ((paramDownloadRequest.mode != Downloader.DownloadMode.RangeMode) && (!bool1)) {
+        break label359;
       }
       obtainHttp2Client();
+      label226:
       if (paramDownloadRequest.mode != Downloader.DownloadMode.StrictMode) {
-        break label279;
+        break label367;
       }
-      localObject = new StrictDownloadTask(this.mContext, this.mOkClient, this.mHttpClient, (String)localObject, str, paramBoolean, bool);
-      ((DownloadTask)localObject).a(12);
+      localObject = new StrictDownloadTask(this.mContext, this.mOkClient, this.mHttpClient, (String)localObject, str, paramBoolean, bool1);
+      ((DownloadTask)localObject).setAttemptCount(12);
     }
     for (;;)
     {
       if (paramDownloadRequest.needMd5) {
-        ((DownloadTask)localObject).d();
+        ((DownloadTask)localObject).setNeedMd5();
       }
-      ((DownloadTask)localObject).a(paramDownloadRequest.getParams());
-      ((DownloadTask)localObject).a(this, this.pDirectIPConfig, this.pBackupIPConfig, this.pPortConfigStrategy, this.pResumeTransfer, this.pReportHandler, this.pExternalReportHandler, this.pNetworkFlowStatistics, this.pTmpFileCache);
+      if (paramDownloadRequest.onResponseDataListener != null) {
+        ((DownloadTask)localObject).setResponseDataListener(paramDownloadRequest.onResponseDataListener);
+      }
+      ((DownloadTask)localObject).setHttpParams(paramDownloadRequest.getParams());
+      ((DownloadTask)localObject).setHandler(this, this.pDirectIPConfig, this.pBackupIPConfig, this.pPortConfigStrategy, this.pResumeTransfer, this.pReportHandler, this.pExternalReportHandler, this.pNetworkFlowStatistics, this.pTmpFileCache);
       enqueueTask((DownloadTask)localObject);
       return true;
-      label271:
-      obtainHttpClient();
+      i = 0;
       break;
-      label279:
-      localObject = new FastDownloadTask(this.mContext, this.mOkClient, this.mHttpClient, (String)localObject, str, paramBoolean, bool);
-      ((DownloadTask)localObject).a(8);
+      label359:
+      obtainHttpClient();
+      break label226;
+      label367:
+      if (paramDownloadRequest.mode == Downloader.DownloadMode.RangeMode)
+      {
+        localObject = new RangeDownloadTask(this.mContext, this.mOkClient, this.mHttpClient, (String)localObject, str, paramBoolean, paramDownloadRequest.rangeNumber, paramDownloadRequest.getFileSizeForRangeMode());
+        ((DownloadTask)localObject).setDownloadRequest(paramDownloadRequest);
+      }
+      else
+      {
+        localObject = new FastDownloadTask(this.mContext, this.mOkClient, this.mHttpClient, (String)localObject, str, paramBoolean, bool1);
+        ((DownloadTask)localObject).setAttemptCount(8);
+      }
     }
   }
   
   public String findCacheEntryPath(String paramString)
   {
     paramString = generateStorageName(paramString);
-    paramString = this.mCacheFileCache.a(paramString);
+    paramString = this.mCacheFileCache.getFile(paramString);
     if ((paramString != null) && (paramString.exists())) {
       return paramString.getAbsolutePath();
     }
@@ -762,7 +825,7 @@ public class DownloaderImpl
   {
     ContentHandler localContentHandler = this.pContentHandler;
     if (localContentHandler != null) {
-      return localContentHandler.a(paramDownloadResult, paramHttpResponse, paramResponse);
+      return localContentHandler.handleContentType(paramDownloadResult, paramHttpResponse, paramResponse);
     }
     return true;
   }
@@ -779,16 +842,16 @@ public class DownloaderImpl
     {
       bool = true;
       label20:
-      AssertUtil.a(bool);
+      AssertUtil.assertTrue(bool);
       paramString1 = this.pKeepAliveStrategy;
       if (paramString1 == null) {
         break label103;
       }
-      paramString1 = paramString1.a(paramString2, paramHttpRequest, paramRequestOptions);
+      paramString1 = paramString1.keepAlive(paramString2, paramHttpRequest, paramRequestOptions);
       label45:
       paramString2 = paramString1;
       if (paramString1 == null) {
-        if (!HttpUtil.a(paramHttpRequest, paramRequestOptions)) {
+        if (!HttpUtil.containsProxy(paramHttpRequest, paramRequestOptions)) {
           break label108;
         }
       }
@@ -796,7 +859,7 @@ public class DownloaderImpl
     label103:
     label108:
     for (paramString2 = DEFAULT_KEEP_ALIVE_PROXY;; paramString2 = DEFAULT_KEEP_ALIVE) {
-      switch (pjr.a[paramString2.ordinal()])
+      switch (DownloaderImpl.2.$SwitchMap$com$tencent$component$network$downloader$strategy$KeepAliveStrategy$KeepAlive[paramString2.ordinal()])
       {
       default: 
         return;
@@ -806,15 +869,15 @@ public class DownloaderImpl
         break label45;
       }
     }
-    HttpUtil.a(paramHttpRequest, paramBuilder, true);
+    HttpUtil.setKeepAliveEnabled(paramHttpRequest, paramBuilder, true);
     return;
-    HttpUtil.a(paramHttpRequest, paramBuilder, false);
+    HttpUtil.setKeepAliveEnabled(paramHttpRequest, paramBuilder, false);
   }
   
   public void handlePrepareRequest(String paramString1, String paramString2, HttpRequest paramHttpRequest, Request.Builder paramBuilder, int paramInt)
   {
     if (this.pProcessStrategy != null) {
-      this.pProcessStrategy.a(paramString1, paramString2, paramHttpRequest, paramBuilder, paramInt);
+      this.pProcessStrategy.prepareRequest(paramString1, paramString2, paramHttpRequest, paramBuilder, paramInt);
     }
   }
   
@@ -828,12 +891,17 @@ public class DownloaderImpl
     this.mPaused = true;
   }
   
+  public void preConnectHost(ArrayList<String> paramArrayList)
+  {
+    PreConnectManager.connectHost(obtainHttp2Client(), paramArrayList);
+  }
+  
   public String prepareRequestUrl(String paramString)
   {
     if (this.pProcessStrategy == null) {
       return null;
     }
-    return this.pProcessStrategy.a(paramString);
+    return this.pProcessStrategy.prepareUrl(paramString);
   }
   
   public void resume()
@@ -854,7 +922,7 @@ public class DownloaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.DownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

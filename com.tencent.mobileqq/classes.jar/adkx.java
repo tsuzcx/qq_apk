@@ -1,28 +1,55 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.forward.ForwardMarketFaceOption;
-import com.tencent.mobileqq.utils.ImageUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.MobileQQ;
 
-class adkx
-  implements URLDrawable.URLDrawableListener
+public class adkx
+  implements DialogInterface.OnClickListener
 {
-  adkx(adkw paramadkw) {}
+  public adkx(NotificationActivity paramNotificationActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramURLDrawable.setBounds(ImageUtil.a(paramURLDrawable, 36, 100, this.a.a.a));
-    this.a.a.a(paramURLDrawable, false, 0);
+    this.a.finish();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("password", null);
+    localBundle.putBoolean("is_from_account_another_login_exit", true);
+    if (!awia.a().a(this.a.app, this.a.app.getCurrentAccountUin()))
+    {
+      this.a.app.updateSubAccountLogin(this.a.app.getCurrentAccountUin(), false);
+      this.a.app.getApplication().refreAccountList();
+    }
+    paramDialogInterface = (badd)this.a.app.getManager(61);
+    if (paramDialogInterface != null) {}
+    for (paramDialogInterface = paramDialogInterface.a();; paramDialogInterface = null)
+    {
+      if ((paramDialogInterface != null) && (paramDialogInterface.size() > 0))
+      {
+        paramDialogInterface = paramDialogInterface.iterator();
+        while (paramDialogInterface.hasNext())
+        {
+          String str = (String)paramDialogInterface.next();
+          if (!awia.a().a(this.a.app, str))
+          {
+            this.a.app.updateSubAccountLogin(str, false);
+            this.a.app.getApplication().refreAccountList();
+          }
+        }
+      }
+      this.a.startActivity(new Intent(this.a, LoginActivity.class).putExtras(localBundle).addFlags(67108864));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adkx
  * JD-Core Version:    0.7.0.1
  */

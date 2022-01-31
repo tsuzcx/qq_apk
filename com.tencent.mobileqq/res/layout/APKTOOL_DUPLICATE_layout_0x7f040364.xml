@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c04bd" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a127a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:includeFontPadding="false"
-  xmlns:android="http://schemas.android.com/apk/res/android" />

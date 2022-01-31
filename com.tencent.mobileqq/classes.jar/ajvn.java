@@ -1,20 +1,74 @@
-import com.tencent.mobileqq.surfaceviewaction.action.Action;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.action.ScaleAction;
-import com.tencent.mobileqq.surfaceviewaction.action.SequenceAction;
-import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.cache.SDCardMountMonitorReceiver;
+import java.io.File;
 
 public class ajvn
-  implements Action.OnActionEndListener
+  implements bjii
 {
-  public ajvn(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
+  private static ajvn jdField_a_of_type_Ajvn;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private ajvo jdField_a_of_type_Ajvo;
+  private String jdField_a_of_type_JavaLangString = "";
   
-  public void a()
+  private ajvn()
   {
-    SequenceAction localSequenceAction = new SequenceAction(new Action[] { new ScaleAction(400, TroopGiftToAllSurfaceView.a(this.a), TroopGiftToAllSurfaceView.a(this.a) * 0.95F), new ScaleAction(400, TroopGiftToAllSurfaceView.a(this.a) * 0.95F, TroopGiftToAllSurfaceView.a(this.a)) });
-    localSequenceAction.a = true;
-    TroopGiftToAllSurfaceView.a(this.a).a(new Action[] { localSequenceAction });
+    a();
+    SDCardMountMonitorReceiver.a().a(this);
+  }
+  
+  public static ajvn a()
+  {
+    if (jdField_a_of_type_Ajvn == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Ajvn == null) {
+        jdField_a_of_type_Ajvn = new ajvn();
+      }
+      return jdField_a_of_type_Ajvn;
+    }
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_JavaLangString = bjhx.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("StorageManager", 2, "updateStorePath, storeVideoPath=" + this.jdField_a_of_type_JavaLangString);
+    }
+    try
+    {
+      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      if (!localFile.exists()) {
+        localFile.mkdirs();
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("StorageManager", 2, "create root path directory error", localException);
+    }
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StorageManager", 2, "sdcard mount receiver, isMount=" + paramBoolean);
+    }
+    String str = bjhx.b();
+    if ((this.jdField_a_of_type_Ajvo != null) && (!str.equals(this.jdField_a_of_type_JavaLangString)))
+    {
+      if (paramBoolean) {
+        this.jdField_a_of_type_Ajvo.a(1, this.jdField_a_of_type_JavaLangString);
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_Ajvo.a(0, this.jdField_a_of_type_JavaLangString);
   }
 }
 

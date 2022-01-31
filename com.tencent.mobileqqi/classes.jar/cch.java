@@ -1,35 +1,59 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseHornListActivity;
-import com.tencent.mobileqq.activity.MyPublishedHornActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
 
 public class cch
-  implements ActionSheet.OnButtonClickListener
+  implements TextWatcher
 {
-  public cch(BaseHornListActivity paramBaseHornListActivity) {}
+  public cch(ChatHistory paramChatHistory) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.d();
-    switch (paramInt)
+    if ((paramCharSequence != null) && (paramCharSequence.length() != 0)) {}
+    try
     {
-    case 2: 
-    default: 
-      return;
-    case 0: 
-      paramView = new Intent(this.a.a, QQBrowserActivity.class);
-      paramView.putExtra("uin", this.a.b.a());
-      paramView.putExtra("isShowAd", false);
-      paramView.putExtra("url", String.format("http://imgcache.qq.com/club/horn/rel/myComment.html?_bid=179&uin=%1$s&pvsrc=nearby&_wv=5123", new Object[] { this.a.b.a() }));
-      paramView.putExtra("business", 2147549184L);
-      this.a.startActivity(paramView);
-      return;
+      paramInt1 = Integer.valueOf(paramCharSequence.toString()).intValue();
+      paramCharSequence = this.a;
+      if (paramInt1 < this.a.jdField_b_of_type_Int)
+      {
+        paramCharSequence.c = paramInt1;
+        if (this.a.c < this.a.jdField_b_of_type_Int) {
+          break label195;
+        }
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839665);
+        if (this.a.c > 1) {
+          break label221;
+        }
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838078);
+        this.a.e = ((this.a.c - 1) * 8);
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
+      }
     }
-    paramView = new Intent(this.a.a, MyPublishedHornActivity.class);
-    this.a.startActivity(paramView);
+    catch (Exception paramCharSequence)
+    {
+      for (;;)
+      {
+        paramInt1 = this.a.jdField_b_of_type_Int;
+        continue;
+        paramInt1 = this.a.jdField_b_of_type_Int;
+        continue;
+        label195:
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(true);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130837762);
+        continue;
+        label221:
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837761);
+      }
+    }
   }
 }
 

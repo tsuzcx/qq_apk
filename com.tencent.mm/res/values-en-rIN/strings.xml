@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Navigate home</string>
+    <string name="b">Navigate up</string>
+    <string name="abc_action_menu_overflow_description">More options</string>
+    <string name="c">Done</string>
+    <string name="d">See all</string>
+    <string name="e">Choose an app</string>
+    <string name="f">OFF</string>
+    <string name="g">ON</string>
+    <string name="h">Alt+</string>
+    <string name="i">Ctrl+</string>
+    <string name="j">delete</string>
+    <string name="k">enter</string>
+    <string name="l">Function+</string>
+    <string name="m">Meta+</string>
+    <string name="n">Shift+</string>
+    <string name="o">space</string>
+    <string name="p">Sym+</string>
+    <string name="q">Menu+</string>
+    <string name="r">Search…</string>
+    <string name="s">Clear query</string>
+    <string name="u">Search</string>
+    <string name="v">Submit query</string>
+    <string name="w">Voice search</string>
+    <string name="z">Collapse</string>
+    <string name="t">Search query</string>
+    <string name="x">Share with</string>
+    <string name="y">Share with %s</string>
+    <string name="a1">Search</string>
+    <string name="a2">999+</string>
+</resources>

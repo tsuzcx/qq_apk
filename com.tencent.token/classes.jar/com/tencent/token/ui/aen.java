@@ -1,19 +1,19 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class aen
-  implements DialogInterface.OnClickListener
+class aen
+  implements View.OnClickListener
 {
-  aen(aem paramaem) {}
+  aen(UtilsTokenLabActivity paramUtilsTokenLabActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = new Intent(this.a.a, WtloginSigExpireActivity.class);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    paramView = new Intent(this.a, RealNameProtectActivity.class);
+    paramView.putExtra("realname_result", UtilsTokenLabActivity.access$100(this.a));
+    this.a.startActivity(paramView);
   }
 }
 

@@ -10,7 +10,7 @@ public final class CommonCard
 {
   static int cache_eUserIdentityType;
   static byte[] cache_vBackground;
-  static ArrayList cache_vTags;
+  static ArrayList<TagInfo> cache_vTags;
   public byte bSingle;
   public int eUserIdentityType = UserIdentityType.UserIdentityType_Nomal.value();
   public int iFaceNum;
@@ -27,11 +27,11 @@ public final class CommonCard
   public String strSign = "";
   public int uFaceTimeStamp;
   public byte[] vBackground;
-  public ArrayList vTags;
+  public ArrayList<TagInfo> vTags;
   
   public CommonCard() {}
   
-  public CommonCard(String paramString1, short paramShort1, short paramShort2, int paramInt1, String paramString2, String paramString3, String paramString4, int paramInt2, byte paramByte, long paramLong1, long paramLong2, ArrayList paramArrayList, int paramInt3, byte[] paramArrayOfByte, int paramInt4, long paramLong3, int paramInt5)
+  public CommonCard(String paramString1, short paramShort1, short paramShort2, int paramInt1, String paramString2, String paramString3, String paramString4, int paramInt2, byte paramByte, long paramLong1, long paramLong2, ArrayList<TagInfo> paramArrayList, int paramInt3, byte[] paramArrayOfByte, int paramInt4, long paramLong3, int paramInt5)
   {
     this.strNick = paramString1;
     this.shGender = paramShort1;

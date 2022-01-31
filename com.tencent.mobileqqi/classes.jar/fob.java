@@ -1,33 +1,15 @@
-import com.tencent.mobileqq.app.message.ConversationFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MsgAutoMonitorUtil;
-import com.tencent.widget.TraceUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.emoticonview.EmoticonGridViewAdapter;
 
 public class fob
-  implements Runnable
+  implements View.OnClickListener
 {
-  public fob(QQMessageFacade paramQQMessageFacade) {}
+  public fob(EmoticonGridViewAdapter paramEmoticonGridViewAdapter) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    TraceUtils.a("initMsgCache");
-    long l1 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.QQMessageFacade", 2, "before refreshCache");
-    }
-    this.a.a().a();
-    this.a.d();
-    QQMessageFacade.a(this.a);
-    this.a.notifyObservers(new RecentUser());
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.msg.QQMessageFacade", 2, "after refreshCache");
-      long l2 = System.currentTimeMillis();
-      MsgAutoMonitorUtil.a().a("MSG_InitCostTime", l2 - l1 + "");
-    }
-    TraceUtils.a();
+    EmoticonGridViewAdapter.a(this.a, paramView);
   }
 }
 

@@ -1,14 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.dataline.mpfile.MpfileTaskListAdapter;
 
-class eg
-  implements DialogInterface.OnClickListener
+public class eg
+  implements View.OnLongClickListener
 {
-  eg(ee paramee) {}
+  public eg(MpfileTaskListAdapter paramMpfileTaskListAdapter) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    return false;
   }
 }
 

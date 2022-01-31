@@ -1,35 +1,118 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
+import com.tencent.biz.qqstory.storyHome.model.TagFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class wun
-  implements DialogInterface.OnClickListener
+class wun
+  extends wrj
 {
-  public wun(DialogBaseActivity paramDialogBaseActivity, boolean paramBoolean) {}
+  wun(wub paramwub) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, View paramView, Object paramObject, wtq paramwtq)
   {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Boolean)
+    if (xsm.b()) {}
+    do
     {
-      paramDialogInterface = new Intent(BaseActivity.sTopActivity, SplashActivity.class);
-      paramDialogInterface.putExtra("main_tab_id", 1);
-      paramDialogInterface.setFlags(603979776);
-      BaseActivity.sTopActivity.startActivity(paramDialogInterface);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.app, "dc00898", "", "", "0X8006AA6", "0X8006AA6", 0, 0, "", "", "", "");
       return;
+      switch (paramView.getId())
+      {
+      default: 
+        return;
+      case 2131373754: 
+        if ((this.a.jdField_a_of_type_Wpr.a() == null) || (this.a.jdField_a_of_type_Wpr.a().size() <= paramInt) || (this.a.jdField_a_of_type_Wpr.a().get(paramInt) == null)) {
+          break label378;
+        }
+      }
+    } while (!(this.a.jdField_a_of_type_Wpr.a().get(paramInt) instanceof wqp));
+    paramView = (wqp)this.a.jdField_a_of_type_Wpr.a().get(paramInt);
+    paramObject = new ArrayList();
+    paramwtq = paramView.a().iterator();
+    paramInt = 0;
+    label175:
+    if (paramwtq.hasNext())
+    {
+      StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramwtq.next();
+      if (!localStoryVideoItem.isUploadFail()) {
+        break label645;
+      }
+      paramObject.add(localStoryVideoItem);
+      paramInt += 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
+    label645:
+    for (;;)
+    {
+      break label175;
+      paramView = ((wqn)this.a.jdField_a_of_type_Wpr.a().get(paramInt)).a();
+      if ((paramView != null) && ((paramView instanceof TagFeedItem)))
+      {
+        vmj.a(wub.a(this.a), ((TagFeedItem)paramView).tagItem.a);
+        return;
+      }
+      wxe.e("Q.qqstory.home:FeedSegment", "why tagFeedItem is null?");
+      return;
+      if (paramObject.size() > 0) {
+        uom.a(paramObject, wub.a(this.a));
+      }
+      if (this.a.jdField_a_of_type_Wpr.a().size() <= 0) {
+        break;
+      }
+      wxj.a("home_page", "clk_retry", wxj.a(paramView.a()), 0, new String[] { "1", wxj.a(this.a.jdField_a_of_type_Int), String.valueOf(paramInt), paramView.a().feedId });
+      return;
+      label378:
+      wxe.e("Q.qqstory.home:FeedSegment", "feed upload retry failed!!");
+      return;
+      paramView = ((wqn)this.a.jdField_a_of_type_Wpr.a().get(paramInt)).a();
+      if ((paramView == null) || (!(paramView instanceof TagFeedItem))) {
+        break;
+      }
+      paramView = (TagFeedItem)paramView;
+      if (!TextUtils.isEmpty(paramView.schema))
+      {
+        paramObject = new Intent(wub.b(this.a), QQBrowserActivity.class);
+        paramObject.putExtra("url", paramView.schema);
+        wub.c(this.a).startActivity(paramObject);
+      }
+      for (;;)
+      {
+        wxj.a("home_page", "clk_more_tag", 0, 0, new String[] { "", String.valueOf(paramView.tagItem.a.a) });
+        return;
+        wxe.e("Q.qqstory.home:FeedSegment", "tag schema is null.");
+      }
+      wub.a(this.a, paramInt);
+      return;
+      paramView = ((wqn)this.a.jdField_a_of_type_Wpr.a().get(paramInt)).a();
+      if ((paramView != null) && ((paramView instanceof TagFeedItem)))
+      {
+        paramView = ((TagFeedItem)paramView).tagItem.a();
+        if (paramView == null) {
+          break label635;
+        }
+        paramObject = new Intent(wub.d(this.a), StoryTransitionActivity.class);
+        paramObject.putExtra("jump_action", 1);
+        paramObject.putExtra("video_tag", paramView);
+        wub.e(this.a).startActivity(paramObject);
+      }
+      for (;;)
+      {
+        wxj.a("home_page", "tag_clk_join", 0, 0, new String[0]);
+        return;
+        label635:
+        wxe.e("Q.qqstory.home:FeedSegment", "click tag, tag is null");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wun
  * JD-Core Version:    0.7.0.1
  */

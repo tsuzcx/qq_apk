@@ -8,6 +8,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.text.TextUtils;
 import com.tencent.component.network.module.base.Config;
+import com.tencent.component.network.module.base.QDLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,7 +24,7 @@ public class NetworkManager
   public static final int Operator_Unknown = 0;
   public static final int Operator_WIFI = 4;
   private static Context mContext;
-  private static List mNetworkListener = Collections.synchronizedList(new ArrayList());
+  private static List<WeakReference<NetworkManager.NetStatusListener>> mNetworkListener = Collections.synchronizedList(new ArrayList());
   private static NetworkManager.NetworkChangeReceiver sNetworkChangeReceiver;
   
   public static String getApnValue()
@@ -75,7 +76,7 @@ public class NetworkManager
   
   private static int getOperator()
   {
-    return Config.c();
+    return Config.getOperator();
   }
   
   public static void init(Context paramContext)
@@ -84,9 +85,17 @@ public class NetworkManager
       return;
     }
     mContext = paramContext;
-    sNetworkChangeReceiver = new NetworkManager.NetworkChangeReceiver(paramContext);
-    IntentFilter localIntentFilter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
-    paramContext.registerReceiver(sNetworkChangeReceiver, localIntentFilter);
+    try
+    {
+      sNetworkChangeReceiver = new NetworkManager.NetworkChangeReceiver(paramContext);
+      IntentFilter localIntentFilter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
+      paramContext.registerReceiver(sNetworkChangeReceiver, localIntentFilter);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      QDLog.e("NetworkManager", "downloader register NetworkChangeReceiver failed!", paramContext);
+    }
   }
   
   public static boolean isMobile()
@@ -216,7 +225,7 @@ public class NetworkManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.NetworkManager
  * JD-Core Version:    0.7.0.1
  */

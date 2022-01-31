@@ -1,29 +1,25 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class aguy
-  implements View.OnTouchListener
+class aguy
+  implements View.OnClickListener
 {
-  public aguy(QCallDetailActivity paramQCallDetailActivity) {}
+  aguy(agti paramagti) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      QCallDetailActivity.a(this.a).setPressed(true);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "mQidianClickListener ... mQidianKefu = " + this.a.ap);
     }
-    while (1 != paramMotionEvent.getAction()) {
-      return false;
-    }
-    QCallDetailActivity.a(this.a).setPressed(false);
-    return false;
+    this.a.A(2131695780);
+    this.a.jdField_a_of_type_Nrc.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.k, this.a.l, this.a.m, new aguz(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aguy
  * JD-Core Version:    0.7.0.1
  */

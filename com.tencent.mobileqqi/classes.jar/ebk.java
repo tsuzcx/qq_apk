@@ -1,19 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Text;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
-public final class ebk
-  implements Parcelable.Creator
+public class ebk
+  extends BaseBubbleBuilder.ViewHolder
 {
-  public ForwardUtils.Section_Text a(Parcel paramParcel)
-  {
-    return new ForwardUtils.Section_Text(paramParcel);
-  }
+  public ImageView a;
+  public LinearLayout a;
+  public ProgressBar a;
+  public TextView a;
+  public AsyncImageView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  public ForwardUtils.Section_Text[] a(int paramInt)
-  {
-    return new ForwardUtils.Section_Text[paramInt];
-  }
+  public ebk(TroopFileItemBuilder paramTroopFileItemBuilder) {}
 }
 
 

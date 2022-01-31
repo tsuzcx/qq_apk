@@ -1,24 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hotpic.HotPicData;
-import com.tencent.mobileqq.hotpic.PublicAccountGifListener;
-import mqq.os.MqqHandler;
-
 public class ljf
-  implements PublicAccountGifListener
 {
-  public ljf(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  public int a;
+  public CharSequence a;
+  public String a;
+  public boolean a;
+  public CharSequence b;
   
-  public void a(HotPicData paramHotPicData)
+  public ljf(String paramString, CharSequence paramCharSequence1, CharSequence paramCharSequence2, int paramInt)
   {
-    this.a.a = paramHotPicData;
-    ReadInJoyCommentComponentFragment.a(this.a, null);
-    ThreadManager.getUIHandler().post(new ljg(this));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence1;
+    this.b = paramCharSequence2;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 2;
+  }
+  
+  public String toString()
+  {
+    return "SentenceInfo{uin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", src_text='" + this.jdField_a_of_type_JavaLangCharSequence + '\'' + ", tra_text='" + this.b + '\'' + ", status=" + this.jdField_a_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ljf
  * JD-Core Version:    0.7.0.1
  */

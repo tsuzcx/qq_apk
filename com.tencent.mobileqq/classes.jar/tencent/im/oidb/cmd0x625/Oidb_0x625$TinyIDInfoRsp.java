@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Oidb_0x625$TinyIDInfoRsp
-  extends MessageMicro
+  extends MessageMicro<TinyIDInfoRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_openid = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -25,7 +25,7 @@ public final class Oidb_0x625$TinyIDInfoRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x625.Oidb_0x625.TinyIDInfoRsp
  * JD-Core Version:    0.7.0.1
  */

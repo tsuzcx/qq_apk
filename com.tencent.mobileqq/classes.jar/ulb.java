@@ -1,40 +1,35 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.OnChildAttachStateChangeListener;
+import android.view.View;
+import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
 
 class ulb
-  implements PreloadManager.OnGetPathListener
+  implements RecyclerView.OnChildAttachStateChangeListener
 {
-  ulb(ula paramula) {}
+  ulb(ukt paramukt) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onChildViewAttachedToWindow(View paramView)
   {
-    paramPathResult = paramPathResult.folderPath;
-    if (paramInt == 0) {}
-    try
+    paramView = (ukl)ukt.a(this.a).getChildViewHolder(paramView);
+    if ((paramView != null) && (paramView == ukt.a(this.a)))
     {
-      this.a.a.animInfo = AnimationView.AnimationInfo.loadFromFolder(paramPathResult);
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "TYPE_AIO_REDPACKET background=" + this.a.a.background + ",animInfo=" + this.a.a.animInfo);
-      }
-      CustomizeStrategyFactory.a().a(this.a.a);
-      return;
+      paramView.b();
+      wxe.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "attach from window , start play!");
     }
-    catch (Throwable paramPathResult)
+  }
+  
+  public void onChildViewDetachedFromWindow(View paramView)
+  {
+    paramView = (ukl)ukt.a(this.a).getChildViewHolder(paramView);
+    if ((paramView != null) && (paramView == ukt.a(this.a)))
     {
-      for (;;)
-      {
-        paramPathResult.printStackTrace();
-      }
+      paramView.c();
+      wxe.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "detach from window , stop play!");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ulb
  * JD-Core Version:    0.7.0.1
  */

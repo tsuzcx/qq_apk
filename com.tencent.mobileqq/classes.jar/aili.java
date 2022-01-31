@@ -1,22 +1,43 @@
-import android.content.Context;
-import com.tencent.mobileqq.surfaceviewaction.gl.RobotSpriteVideoView;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import java.lang.ref.WeakReference;
 
 public class aili
-  extends VideoSprite
+  extends Handler
 {
-  public aili(RobotSpriteVideoView paramRobotSpriteVideoView, SpriteGLView paramSpriteGLView, Context paramContext, boolean paramBoolean)
+  private WeakReference<BaseActivityView> a;
+  
+  public aili(BaseActivityView paramBaseActivityView)
   {
-    super(paramSpriteGLView, paramContext, paramBoolean);
+    this.a = new WeakReference(paramBaseActivityView);
   }
   
-  protected void a(int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.a == 0) {
-      this.a.a = paramInt2;
+    boolean bool = true;
+    BaseActivityView localBaseActivityView = (BaseActivityView)this.a.get();
+    if (localBaseActivityView == null) {
+      return;
     }
-    super.a(paramInt1, this.a.a);
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (;;)
+      {
+        localBaseActivityView.b(i, bool);
+        return;
+        bool = false;
+      }
+    case 2: 
+      localBaseActivityView.f();
+      return;
+    }
+    localBaseActivityView.i();
   }
 }
 

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class group_member_info$ErrorInfo
-  extends MessageMicro
+  extends MessageMicro<ErrorInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field error_code = PBField.initUInt32(0);
@@ -22,7 +22,7 @@ public final class group_member_info$ErrorInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.group.group_member_info.ErrorInfo
  * JD-Core Version:    0.7.0.1
  */

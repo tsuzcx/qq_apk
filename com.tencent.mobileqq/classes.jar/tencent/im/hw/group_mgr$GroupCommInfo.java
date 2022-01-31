@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class group_mgr$GroupCommInfo
-  extends MessageMicro
+  extends MessageMicro<GroupCommInfo>
 {
   public static final int GROUP_CLASS_FIELD_NUMBER = 4;
   public static final int GROUP_NAME_FIELD_NUMBER = 2;
@@ -21,7 +21,7 @@ public final class group_mgr$GroupCommInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.hw.group_mgr.GroupCommInfo
  * JD-Core Version:    0.7.0.1
  */

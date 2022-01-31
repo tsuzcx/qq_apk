@@ -1,19 +1,18 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.troop.utils.TroopAvatarManger;
-import com.tencent.mobileqq.troop.utils.UploadingTask;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.annotation.TargetApi;
 
+@TargetApi(11)
 public class ajog
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public ajog(TroopAvatarManger paramTroopAvatarManger, AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, UploadingTask paramUploadingTask, Class paramClass, ArrayList paramArrayList, HashMap paramHashMap) {}
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void run()
-  {
-    String str = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAvatarManger.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "0", "0", this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsUploadingTask.a(this.jdField_a_of_type_JavaLangClass, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilHashMap, str);
-  }
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

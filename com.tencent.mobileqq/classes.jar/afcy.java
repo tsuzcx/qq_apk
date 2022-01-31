@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-
-public class afcy
-  implements Runnable
+public abstract interface afcy
 {
-  public afcy(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public abstract void a();
   
-  public void run()
-  {
-    this.a.a.a(1);
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afcy
  * JD-Core Version:    0.7.0.1
  */

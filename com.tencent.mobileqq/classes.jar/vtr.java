@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import android.support.annotation.Nullable;
+import java.io.File;
 
 public class vtr
-  implements DialogInterface.OnClickListener
+  extends uli
 {
-  public vtr(GameRoomChatPie paramGameRoomChatPie) {}
+  @Nullable
+  public final File a;
+  public final String a;
+  public final boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public vtr(String paramString, boolean paramBoolean, File paramFile)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vtr
  * JD-Core Version:    0.7.0.1
  */

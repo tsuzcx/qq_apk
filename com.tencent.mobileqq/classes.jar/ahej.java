@@ -1,67 +1,27 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MultiMsgProxy;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pic.DownCallBack;
-import com.tencent.mobileqq.pic.DownCallBack.DownResult;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.widget.AbsListView;
 
 public class ahej
-  implements DownCallBack
+  implements bhtv
 {
   private int jdField_a_of_type_Int;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private int b;
   
-  public ahej(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public ahej(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReceiptMessageDetailFragment);
+    this.b = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_Aheo.getCount();
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
   }
   
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(DownCallBack.DownResult paramDownResult)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localReceiptMessageDetailFragment == null) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.c) || (this.b <= 0)) {}
+    while ((paramInt != 0) || (this.b > this.jdField_a_of_type_Int)) {
       return;
     }
-    if ((paramDownResult.b == 0) && (paramDownResult.a != null))
-    {
-      MessageRecord localMessageRecord = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).jdField_a_of_type_JavaLangString, ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).jdField_a_of_type_Int, ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment));
-      Object localObject = localMessageRecord;
-      if (localMessageRecord == null)
-      {
-        localObject = new MessageForStructing();
-        ((MessageRecord)localObject).senderuin = "0";
-        ((MessageRecord)localObject).uniseq = ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment);
-      }
-      paramDownResult = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a().a(paramDownResult.a, null, (MessageRecord)localObject, null);
-      if ((paramDownResult != null) && (!paramDownResult.isEmpty()))
-      {
-        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(10);
-        return;
-      }
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "ReceiptMessageDownloadCallBack onDownload, download msg fail with code: " + paramDownResult.b);
-    }
-    int i = this.jdField_a_of_type_Int + 1;
-    this.jdField_a_of_type_Int = i;
-    if (i <= 3)
-    {
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(0);
-      return;
-    }
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
+    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.a(21);
   }
 }
 

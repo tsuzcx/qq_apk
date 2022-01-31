@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:mobileqq="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/drj" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" mobileqq:customPadding="@dimen/b10" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2" android:id="@id/dlo" android:focusable="true" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/al3" android:layout_marginTop="@dimen/al0" android:layout_marginRight="@dimen/al3" android:layout_marginBottom="@dimen/akz" android:layout_below="@id/drj" />
+</RelativeLayout>

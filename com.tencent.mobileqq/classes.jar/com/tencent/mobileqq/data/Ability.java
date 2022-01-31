@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.PrimaryKeyJoinColumn;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhs;
 
-@PrimaryKeyJoinColumn
 public class Ability
-  extends Entity
+  extends awge
 {
   public static final int ABILITY_PHOTO = 2;
   public static final int ABILITY_VIDEO = 1;
   public int flags;
-  @unique
+  @awhs
   public String uin;
   
   public static boolean hasAbility(int paramInt1, int paramInt2)
@@ -31,7 +29,7 @@ public class Ability
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.Ability
  * JD-Core Version:    0.7.0.1
  */

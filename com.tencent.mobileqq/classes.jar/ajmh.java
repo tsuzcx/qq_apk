@@ -1,27 +1,74 @@
-import android.view.WindowManager;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton.OnClickListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.RobotSpriteVideoView;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
-import com.tencent.mobileqq.troop.robot.RobotResourcesManager;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class ajmh
-  implements ImageButton.OnClickListener
+public class ajmh
+  extends ajlr
+  implements Cloneable
 {
-  ajmh(ajmg paramajmg) {}
+  public int c;
   
-  public void a(Sprite paramSprite)
+  public ajmh(Context paramContext, boolean paramBoolean)
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView != null)
-    {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView.n();
-      RobotResourcesManager.a(this.a.a).removeView(this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView);
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131720832);
+    if (paramBoolean) {
+      this.jdField_a_of_type_JavaLangString = paramContext.getString(2131720833);
     }
-    this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView = null;
-    this.a.a.jdField_a_of_type_JavaLangString = null;
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.notifyDataSetChanged();
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ajmh.class.getSimpleName(), 2, "deSerialize");
+    }
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
+    {
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("remindText");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      this.c = paramArrayOfByte.getInt("ctl_flag");
+      if (this.jdField_a_of_type_Bbpe == null) {
+        this.jdField_a_of_type_Bbpe = new bbpe();
+      }
+      this.jdField_a_of_type_Bbpe.a(paramArrayOfByte.getString("messageNavInfo"));
+      return;
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ajmh.class.getSimpleName(), 2, "serialize");
+    }
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("remindText", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      localJSONObject.put("ctl_flag", this.c);
+      if (this.jdField_a_of_type_Bbpe != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbpe.a());
+      }
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
     }
   }
 }

@@ -1,12 +1,24 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import ahbf;
+import alof;
+import alpk;
+import amhs;
+import amht;
+import amhu;
+import amhv;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
+import arrr;
+import awgf;
+import awgg;
+import awgh;
+import axxn;
+import azri;
+import bdhb;
+import bdzf;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -14,12 +26,6 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -29,30 +35,51 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import zqf;
-import zqk;
-import zql;
-import zqm;
 
 public class CleanCache
   extends AsyncStep
 {
+  public static final String[] a;
+  
+  static
+  {
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { alof.bl };
+  }
+  
+  public static final void a(String paramString)
+  {
+    paramString = new File(paramString + ".nomedia");
+    if (!paramString.exists()) {}
+    try
+    {
+      paramString.createNewFile();
+      if (QLog.isColorLevel()) {
+        QLog.d("QQInitHandler", 2, "create nomedia file:" + paramString.getAbsolutePath());
+      }
+      return;
+    }
+    catch (IOException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
   private void f()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ZhituManager", 2, "cleanZhituCache...");
     }
     long l1 = System.currentTimeMillis();
-    if (ZhituManager.d()) {
+    if (ahbf.f()) {
       return;
     }
-    ZhituManager.c(true);
-    Object localObject1 = AppConstants.aJ + "zhitu";
-    localObject1 = new File((String)localObject1 + "/" + "origin/");
+    ahbf.d(true);
+    Object localObject1 = alof.aX + "zhitu";
+    localObject1 = new File(bdzf.a((String)localObject1 + "/" + "origin/"));
     int n;
     int k;
     int j;
-    label150:
+    label153:
     int i;
     int m;
     if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
@@ -63,7 +90,7 @@ public class CleanCache
         n = localObject1.length;
         if (n > 200)
         {
-          Arrays.sort((Object[])localObject1, new zqm(this));
+          Arrays.sort((Object[])localObject1, new amhu(this));
           int i1 = localObject1.length;
           k = 0;
           j = 0;
@@ -75,10 +102,10 @@ public class CleanCache
             if (QLog.isColorLevel()) {
               QLog.d("QQInitHandler", 2, "cleanZhituCache ===> deleteCount=" + j + ", delete dir=" + localObject2.getAbsolutePath());
             }
-            FileUtils.a(localObject2.getAbsolutePath());
+            bdhb.a(localObject2.getAbsolutePath());
             i = j + 1;
             if (i < n - 50) {
-              break label319;
+              break label322;
             }
             m = n;
           }
@@ -88,16 +115,16 @@ public class CleanCache
     for (;;)
     {
       long l2 = System.currentTimeMillis();
-      ZhituManager.c(false);
+      ahbf.d(false);
       if (!QLog.isColorLevel()) {
         break;
       }
       QLog.d("QQInitHandler", 2, "delShortVideoCache(), totalCount=" + m + ", deleteCount= " + i + ", targetDeleteCount=" + (m - 50) + ", cost: " + (l2 - l1) + " ms");
       return;
-      label319:
+      label322:
       k += 1;
       j = i;
-      break label150;
+      break label153;
       i = 0;
       m = n;
       continue;
@@ -106,43 +133,89 @@ public class CleanCache
     }
   }
   
-  protected int a()
+  private void g()
   {
-    this.a.b.getApp().getSharedPreferences("HEAD", 0).edit().clear().commit();
-    b();
-    ThreadManager.post(new zqf(this), 2, null, false);
-    return 7;
+    int i = 0;
+    int j = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("ZhituManager", 2, "cleanLightVideoCache...");
+    }
+    long l1 = System.currentTimeMillis();
+    Object localObject1 = new File(axxn.a);
+    int n;
+    int k;
+    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
+    {
+      localObject1 = ((File)localObject1).listFiles();
+      if (localObject1 != null)
+      {
+        n = localObject1.length;
+        m = n;
+        if (n > 25)
+        {
+          Arrays.sort((Object[])localObject1, new amhv(this));
+          int i1 = localObject1.length;
+          k = 0;
+          i = j;
+          m = n;
+          if (k < i1)
+          {
+            Object localObject2 = localObject1[k];
+            if (QLog.isColorLevel()) {
+              QLog.d("QQInitHandler", 2, "cleanLightVideoCache ===> deleteCount=" + j + ", delete dir=" + localObject2.getAbsolutePath());
+            }
+            bdhb.a(localObject2.getAbsolutePath());
+            i = j + 1;
+            if (i < n - 10) {
+              break label264;
+            }
+          }
+        }
+      }
+    }
+    for (int m = n;; m = 0)
+    {
+      long l2 = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("QQInitHandler", 2, "cleanLightVideoCache(), totalCount=" + m + ", deleteCount= " + i + ", targetDeleteCount=" + (m - 10) + ", cost: " + (l2 - l1) + " ms");
+      }
+      return;
+      label264:
+      k += 1;
+      j = i;
+      break;
+    }
   }
   
-  public String a()
+  public int a()
   {
-    if ((this.a.b.getAccount() != null) && (this.a.b.isLogin())) {
-      return this.a.b.getAccount();
-    }
-    return "0";
+    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp().getSharedPreferences("HEAD", 0).edit().clear().commit();
+    b();
+    ThreadManager.post(new CleanCache.1(this), 2, null, false);
+    return 7;
   }
   
   void b()
   {
-    CardHandler.d();
-    File localFile = new File(AppConstants.aJ + ".nomedia");
-    if (!localFile.exists()) {}
-    try
-    {
-      localFile.createNewFile();
-      FileManagerUtil.a();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "initNoMediaFile");
     }
-    catch (IOException localIOException)
+    alpk.c();
+    arrr.a();
+    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
     {
-      for (;;)
-      {
-        localIOException.printStackTrace();
+      String str = arrayOfString[i];
+      if (bdhb.a(str)) {
+        a(str);
       }
+      i += 1;
     }
   }
   
-  public void d()
+  void c()
   {
     int i = 10;
     try
@@ -150,10 +223,10 @@ public class CleanCache
       Object localObject = new File("/data/data/com.tencent.mobileqq/files/crashinfo/");
       if ((localObject != null) && (((File)localObject).exists()))
       {
-        localObject = ((File)localObject).listFiles(new zqk(this));
+        localObject = ((File)localObject).listFiles(new amhs(this));
         if ((localObject != null) && (localObject.length > 10))
         {
-          Arrays.sort((Object[])localObject, new zql(this));
+          Arrays.sort((Object[])localObject, new amht(this));
           while (i < localObject.length)
           {
             localObject[i].delete();
@@ -169,10 +242,10 @@ public class CleanCache
     }
   }
   
-  public void e()
+  void e()
   {
-    Object localObject2 = this.a.b.getEntityManagerFactory().createEntityManager();
-    List localList = ((EntityManager)localObject2).a(Setting.class, new Setting().getTableName(), false, null, null, null, null, null, null);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getEntityManagerFactory().createEntityManager();
+    List localList = ((awgf)localObject2).a(Setting.class, new Setting().getTableName(), false, null, null, null, null, null, null);
     int i;
     if (localList != null) {
       i = localList.size();
@@ -184,7 +257,7 @@ public class CleanCache
     {
       localObject3 = new ArrayList();
       k = 3500;
-      Object localObject4 = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.headCfg.name(), "24|3500|1").split("\\|");
+      Object localObject4 = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.headCfg.name(), "24|3500|1|0").split("\\|");
       j = k;
       if (localObject4.length > 1) {}
       try
@@ -207,7 +280,7 @@ public class CleanCache
                 if (localSetting3.bUsrType == 32)
                 {
                   i = 202;
-                  String str = this.a.b.a(localSetting3, i);
+                  String str = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(localSetting3, i);
                   if ((TextUtils.isEmpty(str)) || (new File(str).exists())) {
                     continue;
                   }
@@ -215,7 +288,7 @@ public class CleanCache
                   if (!QLog.isColorLevel()) {
                     continue;
                   }
-                  QLog.d("QQInitHandler", 2, "cleanSetingData," + localSetting3.uin + "," + localSetting3.bUsrType + "," + this.a.b.a(localSetting3, i));
+                  QLog.d("QQInitHandler", 2, "cleanSetingData," + localSetting3.uin + "," + localSetting3.bUsrType + "," + this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(localSetting3, i));
                   continue;
                   i = 0;
                 }
@@ -241,14 +314,14 @@ public class CleanCache
           }
         }
         i = ((List)localObject3).size();
-        if ((localObject3 == null) || (i <= 0) || (!((EntityManager)localObject2).a())) {}
+        if ((localObject3 == null) || (i <= 0) || (!((awgf)localObject2).a())) {}
       }
     }
     for (;;)
     {
       try
       {
-        ((EntityManager)localObject2).a().a();
+        ((awgf)localObject2).a().a();
         localObject3 = ((List)localObject3).iterator();
         if (((Iterator)localObject3).hasNext())
         {
@@ -256,7 +329,7 @@ public class CleanCache
           if (localSetting2 == null) {
             continue;
           }
-          ((EntityManager)localObject2).b(localSetting2);
+          ((awgf)localObject2).b(localSetting2);
           continue;
         }
         Setting localSetting1;
@@ -267,22 +340,22 @@ public class CleanCache
         if (QLog.isColorLevel()) {
           QLog.e("QQInitHandler", 2, "cleanSetingData,", localException1);
         }
-        ((EntityManager)localObject2).a().b();
+        ((awgf)localObject2).a().b();
         if (localList == null) {
-          break label738;
+          break label739;
         }
         localObject2 = localList.iterator();
         j = 0;
         i = 0;
         if (!((Iterator)localObject2).hasNext()) {
-          break label648;
+          break label649;
         }
         localSetting1 = (Setting)((Iterator)localObject2).next();
         if ((localSetting1 == null) || (TextUtils.isEmpty(localSetting1.uin))) {
           continue;
         }
         if (localSetting1 == null) {
-          break label744;
+          break label745;
         }
         if ((localSetting1.bSourceType == 1) || (localSetting1.bUsrType == 32))
         {
@@ -293,19 +366,19 @@ public class CleanCache
           j = i;
           i = k;
           continue;
-          ((EntityManager)localObject2).a().c();
-          ((EntityManager)localObject2).a().b();
+          ((awgf)localObject2).a().c();
+          ((awgf)localObject2).a().b();
           continue;
         }
       }
       finally
       {
-        ((EntityManager)localObject2).a().b();
+        ((awgf)localObject2).a().b();
       }
       i = j;
       j = k;
       continue;
-      label648:
+      label649:
       localObject2 = new HashMap();
       if (localObject1 != null) {}
       for (k = localObject1.size();; k = 0)
@@ -313,11 +386,11 @@ public class CleanCache
         ((HashMap)localObject2).put("dataSize", String.valueOf(k));
         ((HashMap)localObject2).put("highSize", String.valueOf(i));
         ((HashMap)localObject2).put("lowSize", String.valueOf(j));
-        StatisticCollector.a(BaseApplication.getContext()).a(this.a.a.getCurrentAccountUin(), "qq_head_setting", false, 0L, 0L, (HashMap)localObject2, "");
-        label738:
+        azri.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.mApp.getCurrentAccountUin(), "qq_head_setting", false, 0L, 0L, (HashMap)localObject2, "");
+        label739:
         return;
       }
-      label744:
+      label745:
       k = i;
       i = j;
       j = k;

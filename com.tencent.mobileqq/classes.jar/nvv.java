@@ -1,40 +1,27 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.DiscoverManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader;
-import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader.GetDiscoverCardsEvent;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.List;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class nvv
-  implements Runnable
+class nvv
+  implements QQPermissionCallback
 {
-  public nvv(DiscoverPagerLoader paramDiscoverPagerLoader) {}
+  nvv(nvu paramnvu, BaseActivity paramBaseActivity) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    ??? = ((DiscoverManager)SuperManager.a(22)).a(DiscoverPagerLoader.a(this.a), DiscoverPagerLoader.a(this.a));
-    DiscoverPagerLoader.GetDiscoverCardsEvent localGetDiscoverCardsEvent = new DiscoverPagerLoader.GetDiscoverCardsEvent(new ErrorMessage(), DiscoverPagerLoader.a(this.a), DiscoverPagerLoader.a(this.a));
-    localGetDiscoverCardsEvent.b = true;
-    localGetDiscoverCardsEvent.jdField_a_of_type_JavaUtilList = ((List)???);
-    localGetDiscoverCardsEvent.jdField_a_of_type_Boolean = true;
-    synchronized (this.a)
-    {
-      if (!this.a.b)
-      {
-        Dispatchers.get().dispatch(localGetDiscoverCardsEvent);
-        SLog.a("Q.qqstory.discover:DiscoverPagerLoader", "dispatch video list return from cache: %s", localGetDiscoverCardsEvent);
-        return;
-      }
-      SLog.d("Q.qqstory.discover:DiscoverPagerLoader", "load cache data later than load from network");
-    }
+    QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
+    bdgm.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
+    nvp.a(this.jdField_a_of_type_Nvu.a, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvv
  * JD-Core Version:    0.7.0.1
  */

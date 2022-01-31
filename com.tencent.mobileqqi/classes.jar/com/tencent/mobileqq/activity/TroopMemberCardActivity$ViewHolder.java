@@ -13,9 +13,9 @@ public class TroopMemberCardActivity$ViewHolder
   
   public TroopMemberCardActivity$ViewHolder(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131234214));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131233117));
-    this.b = ((TextView)paramView.findViewById(2131234618));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131234216));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131233119));
+    this.b = ((TextView)paramView.findViewById(2131234620));
     this.jdField_a_of_type_Int = paramInt;
   }
 }

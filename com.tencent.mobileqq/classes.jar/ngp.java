@@ -1,24 +1,20 @@
-import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
 
 public class ngp
-  extends EncryptUrlJob
+  implements DialogInterface.OnDismissListener
 {
-  public ngp(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareSinaData paramShareSinaData)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  public ngp(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
-  public boolean b()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.c = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    this.a.b = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ngp
  * JD-Core Version:    0.7.0.1
  */

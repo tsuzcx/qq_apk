@@ -1,39 +1,29 @@
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
 
 public class dup
-  extends Thread
+  implements TextWatcher
 {
-  public dup(TroopDisbandActivity paramTroopDisbandActivity) {}
+  public dup(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    try
+    if (paramEditable.length() >= 4)
     {
-      TroopHandler localTroopHandler = (TroopHandler)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(19);
-      if (localTroopHandler != null)
-      {
-        long l = Long.parseLong(this.a.jdField_b_of_type_JavaLangString);
-        localTroopHandler.a(l, 0L, 5, null, 6, 1);
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(Long.valueOf(l));
-        localTroopHandler.a(localArrayList);
-      }
+      VerifyCodeActivity.c(this.a, true);
       return;
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("Q.troopdisband.disband", 2, localException.toString());
-    }
+    VerifyCodeActivity.d(this.a, false);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dup
  * JD-Core Version:    0.7.0.1
  */

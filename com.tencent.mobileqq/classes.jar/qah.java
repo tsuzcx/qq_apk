@@ -1,27 +1,24 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.device.msg.activities.DevLittleVideoItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.UploadTask;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
 
-public class qah
-  implements EncodeVideoTask.ResultListener
+class qah
+  implements View.OnTouchListener
 {
-  public qah(DevLittleVideoItemBuilder paramDevLittleVideoItemBuilder) {}
+  qah(qaf paramqaf, RelativeLayout paramRelativeLayout) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (DevLittleVideoItemBuilder.a(this.a) != null)
-    {
-      DevLittleVideoItemBuilder.a(this.a).md5 = HexUtil.bytes2HexStr(paramArrayOfByte1);
-      new ShortVideoRealItemBuilder.UploadTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, DevLittleVideoItemBuilder.a(this.a), paramString1, this.a).run();
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(false);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qah
  * JD-Core Version:    0.7.0.1
  */

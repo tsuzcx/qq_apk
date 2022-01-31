@@ -5,7 +5,7 @@ import com.tribe.async.utils.AssertUtils;
 public abstract class StreamFunction<IN, OUT>
   implements AsyncFunction<IN>
 {
-  private StreamFunctionListener<OUT> mDownListener;
+  private StreamFunction.StreamFunctionListener<OUT> mDownListener;
   private volatile boolean mIsCanceled;
   
   public final void apply(IN paramIN)
@@ -35,7 +35,7 @@ public abstract class StreamFunction<IN, OUT>
     return this.mIsCanceled;
   }
   
-  protected void notifyError(Error paramError)
+  public void notifyError(Error paramError)
   {
     AssertUtils.checkNotNull(paramError);
     if (this.mDownListener == null) {
@@ -44,7 +44,7 @@ public abstract class StreamFunction<IN, OUT>
     this.mDownListener.onError(paramError);
   }
   
-  protected void notifyResult(OUT paramOUT)
+  public void notifyResult(OUT paramOUT)
   {
     if (this.mDownListener == null) {
       AssertUtils.fail("Please call observe first.", new Object[0]);
@@ -52,25 +52,16 @@ public abstract class StreamFunction<IN, OUT>
     this.mDownListener.onResult(paramOUT);
   }
   
-  public final void observe(StreamFunctionListener<OUT> paramStreamFunctionListener)
+  public final void observe(StreamFunction.StreamFunctionListener<OUT> paramStreamFunctionListener)
   {
     this.mDownListener = paramStreamFunctionListener;
   }
   
   protected void onCancel() {}
-  
-  public static abstract interface StreamFunctionListener<OUT>
-  {
-    public abstract void onCancel();
-    
-    public abstract void onError(Error paramError);
-    
-    public abstract void onResult(OUT paramOUT);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tribe.async.reactive.StreamFunction
  * JD-Core Version:    0.7.0.1
  */

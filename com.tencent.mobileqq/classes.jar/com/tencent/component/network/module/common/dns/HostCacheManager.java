@@ -3,50 +3,64 @@ package com.tencent.component.network.module.common.dns;
 import com.tencent.component.network.NetworkManager;
 import com.tencent.component.network.module.base.QDLog;
 import java.net.InetAddress;
-import pkm;
 
 public class HostCacheManager
 {
-  private static HostCacheManager jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsHostCacheManager = null;
-  private final int jdField_a_of_type_Int = 128;
-  private HostCacheManager.Cache jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsHostCacheManager$Cache = new HostCacheManager.Cache(this, 128);
+  private static HostCacheManager manager = null;
+  private final int MAX_CACHE_SIZE = 128;
+  private HostCacheManager.Cache<String, HostCacheManager.HostEntity> data = new HostCacheManager.Cache(this, 128);
   
-  public static HostCacheManager a()
+  public static HostCacheManager getInstance()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsHostCacheManager == null) {
-        jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsHostCacheManager = new HostCacheManager();
+      if (manager == null) {
+        manager = new HostCacheManager();
       }
-      HostCacheManager localHostCacheManager = jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsHostCacheManager;
+      HostCacheManager localHostCacheManager = manager;
       return localHostCacheManager;
     }
     finally {}
   }
   
-  public void a(String paramString, InetAddress[] paramArrayOfInetAddress, long paramLong)
+  public void addCache(String paramString, InetAddress[] paramArrayOfInetAddress, long paramLong)
   {
-    if (QDLog.a()) {
-      QDLog.a("dnstest", "$$$addCache[" + paramString + "]");
+    if (QDLog.isDebugEnable()) {
+      QDLog.d("dnstest", "$$$addCache[" + paramString + "]");
     }
-    pkm localpkm = new pkm(this, null);
-    localpkm.jdField_a_of_type_Long = paramLong;
-    localpkm.jdField_a_of_type_ArrayOfJavaNetInetAddress = paramArrayOfInetAddress;
+    HostCacheManager.HostEntity localHostEntity = new HostCacheManager.HostEntity(this, null);
+    localHostEntity.expireTime = paramLong;
+    localHostEntity.address = paramArrayOfInetAddress;
     if (NetworkManager.isMobile()) {}
     for (paramArrayOfInetAddress = NetworkManager.getApnValue();; paramArrayOfInetAddress = NetworkManager.getBSSID())
     {
-      localpkm.jdField_a_of_type_JavaLangString = paramArrayOfInetAddress;
-      if (this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsHostCacheManager$Cache.containsKey(paramString)) {
-        this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsHostCacheManager$Cache.remove(paramString);
+      localHostEntity.networkType = paramArrayOfInetAddress;
+      if (this.data.containsKey(paramString)) {
+        this.data.remove(paramString);
       }
-      this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsHostCacheManager$Cache.put(paramString, localpkm);
+      this.data.put(paramString, localHostEntity);
       return;
     }
+  }
+  
+  public InetAddress[] getCacheItemByHost(String paramString)
+  {
+    HostCacheManager.HostEntity localHostEntity = (HostCacheManager.HostEntity)this.data.get(paramString);
+    if (localHostEntity != null)
+    {
+      if (!localHostEntity.isValid()) {
+        this.data.remove(paramString);
+      }
+    }
+    else {
+      return null;
+    }
+    return localHostEntity.address;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.module.common.dns.HostCacheManager
  * JD-Core Version:    0.7.0.1
  */

@@ -8,10 +8,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 
 public final class qqstory_struct$VideoSpreadShareGroupList
-  extends MessageMicro
+  extends MessageMicro<VideoSpreadShareGroupList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatField share_group_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> share_group_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
   
   static
   {
@@ -21,7 +21,7 @@ public final class qqstory_struct$VideoSpreadShareGroupList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoSpreadShareGroupList
  * JD-Core Version:    0.7.0.1
  */

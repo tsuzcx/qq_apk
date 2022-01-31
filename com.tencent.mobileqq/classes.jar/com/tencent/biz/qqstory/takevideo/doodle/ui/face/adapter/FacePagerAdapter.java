@@ -5,25 +5,27 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage.FacePackagePageEventListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePackage;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePanel.OnFaceSelectedListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager.PageChangedObserver;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import xhq;
+import xhr;
+import xht;
+import xib;
+import xic;
+import xim;
 
 public class FacePagerAdapter
   extends PagerAdapter
-  implements FaceViewPager.PageChangedObserver
+  implements xim
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private FaceListPage.FacePackagePageEventListener jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener;
-  private FacePanel.OnFaceSelectedListener jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePanel$OnFaceSelectedListener;
-  private FacePanelAdapter jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePanelAdapter;
-  private List jdField_a_of_type_JavaUtilList = new LinkedList();
-  private Queue jdField_a_of_type_JavaUtilQueue = new LinkedList();
+  private List<FaceListPage> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private Queue<FaceListPage> jdField_a_of_type_JavaUtilQueue = new LinkedList();
+  private xhq jdField_a_of_type_Xhq;
+  private xht jdField_a_of_type_Xht;
+  private xib jdField_a_of_type_Xib;
   
   public FacePagerAdapter(Context paramContext)
   {
@@ -37,33 +39,33 @@ public class FacePagerAdapter
   
   public void a(int paramInt)
   {
-    FacePackage localFacePackage = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePanelAdapter.a(paramInt);
-    if (localFacePackage != null)
+    xhr localxhr = this.jdField_a_of_type_Xib.a(paramInt);
+    if (localxhr != null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
         FaceListPage localFaceListPage = (FaceListPage)localIterator.next();
         if (localFaceListPage.a == paramInt) {
-          localFaceListPage.a(localFacePackage);
+          localFaceListPage.a(localxhr);
         }
       }
     }
   }
   
-  public void a(FaceListPage.FacePackagePageEventListener paramFacePackagePageEventListener)
+  public void a(xhq paramxhq)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener = paramFacePackagePageEventListener;
+    this.jdField_a_of_type_Xhq = paramxhq;
   }
   
-  public void a(FacePanel.OnFaceSelectedListener paramOnFaceSelectedListener)
+  public void a(xht paramxht)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePanel$OnFaceSelectedListener = paramOnFaceSelectedListener;
+    this.jdField_a_of_type_Xht = paramxht;
   }
   
-  public void a(FacePanelBaseAdapter paramFacePanelBaseAdapter)
+  public void a(xic paramxic)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePanelAdapter = paramFacePanelBaseAdapter;
+    this.jdField_a_of_type_Xib = paramxic;
     notifyDataSetChanged();
   }
   
@@ -91,10 +93,10 @@ public class FacePagerAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePanelAdapter == null) {
+    if (this.jdField_a_of_type_Xib == null) {
       return 0;
     }
-    return this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePanelAdapter.a();
+    return this.jdField_a_of_type_Xib.a();
   }
   
   public int getItemPosition(Object paramObject)
@@ -104,18 +106,18 @@ public class FacePagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePanelAdapter == null) {
+    if (this.jdField_a_of_type_Xib == null) {
       return null;
     }
-    FacePackage localFacePackage = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePanelAdapter.a(paramInt);
+    xhr localxhr = this.jdField_a_of_type_Xib.a(paramInt);
     FaceListPage localFaceListPage2 = (FaceListPage)this.jdField_a_of_type_JavaUtilQueue.poll();
     FaceListPage localFaceListPage1 = localFaceListPage2;
     if (localFaceListPage2 == null) {
-      localFaceListPage1 = new FaceListPage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePanel$OnFaceSelectedListener, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener);
+      localFaceListPage1 = new FaceListPage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Xht, this.jdField_a_of_type_Xhq);
     }
     paramViewGroup.addView(localFaceListPage1);
     localFaceListPage1.a = paramInt;
-    localFaceListPage1.a(localFacePackage);
+    localFaceListPage1.a(localxhr);
     this.jdField_a_of_type_JavaUtilList.add(localFaceListPage1);
     return localFaceListPage1;
   }
@@ -127,7 +129,7 @@ public class FacePagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.FacePagerAdapter
  * JD-Core Version:    0.7.0.1
  */

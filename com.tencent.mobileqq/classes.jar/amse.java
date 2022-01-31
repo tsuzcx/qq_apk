@@ -1,12 +1,22 @@
-import com.tencent.mobileqq.lyric.util.Singleton;
-import cooperation.qzone.QZoneStartupMonitor;
+import com.tencent.mobileqq.applets.data.AppletItem;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class amse
-  extends Singleton
+public class amse
 {
-  protected QZoneStartupMonitor a(Void paramVoid)
+  public String a;
+  public List<AppletItem> a;
+  
+  public amse()
   {
-    return new QZoneStartupMonitor(null);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AppletsSetting:[").append("des = ").append(this.jdField_a_of_type_JavaLangString).append(this.jdField_a_of_type_JavaUtilList);
+    return localStringBuilder.toString();
   }
 }
 

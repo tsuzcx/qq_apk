@@ -1,69 +1,57 @@
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.UploadSoDownloader;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import cooperation.qzone.util.FileUtils;
-import java.io.File;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.TreeMap;
 
 public class amts
-  implements ModuleDownloadListener
 {
-  public amts(UploadSoDownloader paramUploadSoDownloader) {}
+  public long a;
+  private ArCloudConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
+  public String a;
+  public HashMap<Integer, String> a;
+  private final TreeMap<Integer, amtt> jdField_a_of_type_JavaUtilTreeMap = new TreeMap();
+  public boolean a;
+  public long b;
+  public String b;
+  public long c = 0L;
   
-  public void onDownloadCanceled(String paramString)
+  public amts()
   {
-    UploadSoDownloader.b(false);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public void onDownloadFailed(String paramString)
+  public ArCloudConfigInfo a()
   {
-    UploadSoDownloader.b(false);
+    return this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
   }
   
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
+  public String a(int paramInt)
   {
-    if (!paramString.equals("upload.so")) {
-      return;
-    }
-    UploadSoDownloader.b(false);
-    String str = UploadSoDownloader.a().getAbsolutePath();
-    QLog.d("UploadEnv", 1, "upload so download success : " + str);
-    paramString = QzoneModuleManager.getInstance().getModuleFilePath(paramString);
-    File localFile = new File(str);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    if (!FileUtils.b(new File(paramString), localFile))
+    return (String)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+  }
+  
+  public TreeMap<Integer, amtt> a()
+  {
+    return this.jdField_a_of_type_JavaUtilTreeMap;
+  }
+  
+  public String toString()
+  {
+    String str = "id[" + this.jdField_a_of_type_JavaLangString + "], recoglizeMask[" + this.c + "]";
+    Object localObject = str;
+    if (QLog.isDevelopLevel())
     {
-      QLog.d("UploadEnv", 1, "upload so unzip fail");
-      UploadSoDownloader.b(false);
-      return;
-    }
-    if (UploadSoDownloader.a(this.a, str))
-    {
-      QLog.d("UploadEnv", 1, "upload so save success");
-      UploadSoDownloader.a(this.a, true);
-      UploadSoDownloader.a(true);
-    }
-    for (;;)
-    {
-      UploadSoDownloader.b(false);
-      return;
-      try
+      localObject = this.jdField_a_of_type_JavaUtilTreeMap.values().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localFile.delete();
-        UploadSoDownloader.a(this.a, false);
+        amtt localamtt = (amtt)((Iterator)localObject).next();
+        str = str + "\n" + localamtt;
       }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-        }
-      }
+      localObject = str + ", begin[" + this.jdField_a_of_type_Long + "], end[" + this.jdField_b_of_type_Long + "], title[" + this.jdField_b_of_type_JavaLangString + "], tips[" + this.jdField_a_of_type_JavaUtilHashMap.size() + "]";
     }
+    return localObject;
   }
 }
 

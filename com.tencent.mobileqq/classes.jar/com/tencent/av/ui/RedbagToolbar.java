@@ -2,21 +2,25 @@ package com.tencent.av.ui;
 
 import android.content.res.Resources;
 import android.text.TextUtils;
+import bdhb;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.redpacket.AVRedPacketDataCollector;
-import com.tencent.av.ui.redbag.AVRedBagConfig.Info;
-import com.tencent.av.ui.redbag.AVRedBagMgr;
-import com.tencent.av.ui.redbag.GuideTip2;
-import com.tencent.av.ui.redbag.RedBagReport;
-import com.tencent.av.ui.redbag.RedBagUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
+import com.tencent.av.opengl.GraphicRenderMgr;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import kab;
+import lid;
+import lsa;
+import lvz;
+import mdd;
+import mej;
+import mlj;
+import mlk;
+import mrs;
+import mrt;
+import mse;
+import mso;
+import msp;
 
 public class RedbagToolbar
   extends BaseToolbar
@@ -24,182 +28,154 @@ public class RedbagToolbar
   private static final String TAG = "RedbagToolbar";
   int mDisableType = 0;
   String mTips = null;
-  BaseToolbar.UIInfo mUIInfo = null;
+  mej mUIInfo = null;
   
   public RedbagToolbar(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
   {
     super(paramVideoAppInterface, paramAVActivity);
   }
   
-  public static boolean getRedBagBtnStatus(VideoAppInterface paramVideoAppInterface, RedbagToolbar.RedBagBtnStatus paramRedBagBtnStatus)
+  public static boolean getRedBagBtnStatus(VideoAppInterface paramVideoAppInterface, mlk parammlk)
   {
-    boolean bool3 = false;
+    boolean bool1 = false;
     Object localObject1 = null;
-    AVRedBagMgr localAVRedBagMgr = RedBagUtil.a(paramVideoAppInterface);
-    Object localObject2 = localAVRedBagMgr.a();
-    int i1 = localAVRedBagMgr.a();
+    mrt localmrt = msp.a(paramVideoAppInterface);
+    Object localObject2 = localmrt.a();
+    int n = localmrt.a();
     int i;
+    int k;
     int m;
-    int n;
-    int j;
     boolean bool2;
-    boolean bool1;
-    if ((localObject2 != null) && (((AVRedBagConfig.Info)localObject2).c))
+    if ((localObject2 != null) && (((mrs)localObject2).c))
     {
       i = 1;
-      m = paramVideoAppInterface.a().a().F;
-      n = paramVideoAppInterface.a().a().i;
-      j = paramVideoAppInterface.a().j();
-      if (j != VideoController.u) {
-        break label632;
+      k = paramVideoAppInterface.a().a().E;
+      m = paramVideoAppInterface.a().a().i;
+      bool2 = lsa.e();
+      if (i != 0) {
+        break label615;
       }
-      bool2 = PtvFilterSoLoad.a(BaseApplicationImpl.getContext(), false);
-      bool1 = PtvFilterSoLoad.a();
+      if (!TextUtils.isEmpty(null)) {
+        break label610;
+      }
+      localObject1 = paramVideoAppInterface.getApp().getString(2131696263);
+      i = 1;
     }
     for (;;)
     {
-      int k = j;
-      if (j == VideoController.u)
+      int j = i;
+      localObject2 = localObject1;
+      if (!bool2)
       {
-        k = j;
-        if (bool2)
-        {
-          k = j;
-          if (bool1) {
-            k = VideoController.v;
-          }
-        }
-      }
-      if (i == 0) {
-        if (TextUtils.isEmpty(null))
-        {
-          localObject1 = "正在下载资源，请稍后再试。";
-          i = 1;
-        }
-      }
-      for (;;)
-      {
+        i |= 0x2;
         j = i;
         localObject2 = localObject1;
-        if (k == VideoController.w)
+        if (TextUtils.isEmpty((CharSequence)localObject1))
         {
-          i |= 0x2;
+          localObject2 = paramVideoAppInterface.getApp().getString(2131696260);
+          j = i;
+        }
+      }
+      i = j;
+      localObject1 = localObject2;
+      label204:
+      boolean bool3;
+      switch (n)
+      {
+      default: 
+        j |= 0x10;
+        i = j;
+        localObject1 = localObject2;
+        if (TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          localObject1 = paramVideoAppInterface.getApp().getString(2131696261);
+          i = j;
+        }
+      case 1: 
+        j = i;
+        localObject2 = localObject1;
+        if (m != 0)
+        {
+          i |= 0x20;
           j = i;
           localObject2 = localObject1;
           if (TextUtils.isEmpty((CharSequence)localObject1))
           {
-            localObject2 = "正在下载游戏引擎，请稍后再试。";
+            localObject2 = paramVideoAppInterface.getApp().getString(2131696258);
             j = i;
           }
         }
+        if (j == 0) {
+          bool1 = true;
+        }
+        bool2 = localmrt.c();
+        bool3 = localmrt.a();
         i = j;
         localObject1 = localObject2;
-        if (i1 != 1)
+        if (bool2)
         {
-          i = j;
-          localObject1 = localObject2;
-        }
-        label253:
-        boolean bool4;
-        boolean bool5;
-        switch (i1)
-        {
-        default: 
-          j |= 0x10;
+          localmrt.e();
+          j |= 0x40;
           i = j;
           localObject1 = localObject2;
           if (TextUtils.isEmpty((CharSequence)localObject2))
           {
-            localObject1 = "对方QQ版本不支持抢红包。";
+            localObject1 = paramVideoAppInterface.getApp().getString(2131696264);
             i = j;
           }
-        case 1: 
-          j = i;
-          localObject2 = localObject1;
-          if (n != 0)
-          {
-            i |= 0x20;
-            j = i;
-            localObject2 = localObject1;
-            if (TextUtils.isEmpty((CharSequence)localObject1))
-            {
-              localObject2 = "请先添加对方好友，才能玩视频电话红包。";
-              j = i;
-            }
-          }
-          if (j == 0) {
-            bool3 = true;
-          }
-          bool4 = localAVRedBagMgr.c();
-          bool5 = localAVRedBagMgr.a();
-          i = j;
-          localObject1 = localObject2;
-          if (bool4)
-          {
-            localAVRedBagMgr.e();
-            j |= 0x40;
-            i = j;
-            localObject1 = localObject2;
-            if (TextUtils.isEmpty((CharSequence)localObject2))
-            {
-              localObject1 = "对方正在包红包，请稍后再发。";
-              i = j;
-            }
-          }
-          j = i;
-          localObject2 = localObject1;
-          if (bool5)
-          {
-            i |= 0x80;
-            j = i;
-            localObject2 = localObject1;
-            if (TextUtils.isEmpty((CharSequence)localObject1))
-            {
-              localObject2 = "正在游戏中，请稍后再发红包。";
-              j = i;
-            }
-          }
-          localObject1 = new StringBuilder().append("isEnable, relationType[").append(m).append("], uinType[").append(n).append("], loadPTuSoStatus[").append(paramVideoAppInterface.a().j()).append("], ptuSo[").append(bool2).append("], ptuSoVersion[").append(bool1).append("], tips[").append((String)localObject2).append("], diableType[");
-          if (paramRedBagBtnStatus == null) {}
-          break;
         }
-        for (paramVideoAppInterface = Integer.valueOf(paramRedBagBtnStatus.jdField_a_of_type_Int);; paramVideoAppInterface = "null")
+        j = i;
+        localObject2 = localObject1;
+        if (bool3)
         {
-          QLog.d("RedbagToolbar", 1, paramVideoAppInterface + "->" + j + "], bLight[" + bool3 + "], peerInSendMode[" + bool4 + "], selfInGameMode[" + bool5 + "]");
-          if (paramRedBagBtnStatus != null)
+          i |= 0x80;
+          j = i;
+          localObject2 = localObject1;
+          if (TextUtils.isEmpty((CharSequence)localObject1))
           {
-            paramRedBagBtnStatus.jdField_a_of_type_Int = j;
-            paramRedBagBtnStatus.jdField_a_of_type_JavaLangString = ((String)localObject2);
+            localObject2 = paramVideoAppInterface.getApp().getString(2131696256);
+            j = i;
           }
-          return bool3;
-          i = 0;
-          break;
-          j |= 0x4;
-          i = j;
-          localObject1 = localObject2;
-          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-            break label253;
-          }
-          localObject1 = "对方的设备型号不支持抢红包。";
-          i = j;
-          break label253;
-          j |= 0x8;
-          i = j;
-          localObject1 = localObject2;
-          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-            break label253;
-          }
-          localObject1 = "对方资源未下载完成，无法抢红包。";
-          i = j;
-          break label253;
         }
-        i = 1;
-        continue;
-        i = 0;
+        localObject1 = new StringBuilder().append("isEnable, relationType[").append(k).append("], uinType[").append(m).append("], loadPTuSoStatus[").append(paramVideoAppInterface.a().j()).append("], soloadedPTV[").append(GraphicRenderMgr.soloadedPTV).append("], ptuSoVersion[").append(GraphicRenderMgr.ptuSoVersion).append("], tips[").append((String)localObject2).append("], diableType[");
+        if (parammlk == null) {}
+        break;
       }
-      label632:
-      bool1 = false;
-      bool2 = false;
+      for (paramVideoAppInterface = Integer.valueOf(parammlk.jdField_a_of_type_Int);; paramVideoAppInterface = "null")
+      {
+        QLog.d("RedbagToolbar", 1, paramVideoAppInterface + "->" + j + "], bLight[" + bool1 + "], peerInSendMode[" + bool2 + "], selfInGameMode[" + bool3 + "]");
+        if (parammlk != null)
+        {
+          parammlk.jdField_a_of_type_Int = j;
+          parammlk.jdField_a_of_type_JavaLangString = ((String)localObject2);
+        }
+        return bool1;
+        i = 0;
+        break;
+        j |= 0x4;
+        i = j;
+        localObject1 = localObject2;
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          break label204;
+        }
+        localObject1 = paramVideoAppInterface.getApp().getString(2131696257);
+        i = j;
+        break label204;
+        j |= 0x8;
+        i = j;
+        localObject1 = localObject2;
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          break label204;
+        }
+        localObject1 = paramVideoAppInterface.getApp().getString(2131696259);
+        i = j;
+        break label204;
+      }
+      label610:
+      i = 1;
+      continue;
+      label615:
+      i = 0;
     }
   }
   
@@ -214,17 +190,16 @@ public class RedbagToolbar
     this.mApp.a(new Object[] { Integer.valueOf(8003), Integer.valueOf(getEffectBtnId()) });
   }
   
-  protected BaseToolbar.UIInfo getUIInfo()
+  protected mej getUIInfo()
   {
     if (this.mUIInfo == null)
     {
-      this.mUIInfo = new BaseToolbar.UIInfo();
+      this.mUIInfo = new mej();
       this.mUIInfo.d = 7;
-      this.mUIInfo.g = 2130969363;
-      this.mUIInfo.e = 103418;
-      this.mUIInfo.f = 2130840344;
-      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getResources().getString(2131428747);
-      this.mUIInfo.c = 2130840345;
+      this.mUIInfo.f = 2131559642;
+      this.mUIInfo.e = 2130841943;
+      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131696388);
+      this.mUIInfo.c = 2130841944;
       this.mUIInfo.jdField_a_of_type_Int = 0;
     }
     return this.mUIInfo;
@@ -237,14 +212,11 @@ public class RedbagToolbar
   
   public boolean isEffectBtnEnable()
   {
-    if (this.mApp == null) {
-      return false;
-    }
-    RedbagToolbar.RedBagBtnStatus localRedBagBtnStatus = new RedbagToolbar.RedBagBtnStatus();
-    localRedBagBtnStatus.jdField_a_of_type_Int = this.mDisableType;
-    boolean bool = getRedBagBtnStatus(this.mApp, localRedBagBtnStatus);
-    this.mTips = localRedBagBtnStatus.jdField_a_of_type_JavaLangString;
-    this.mDisableType = localRedBagBtnStatus.jdField_a_of_type_Int;
+    mlk localmlk = new mlk();
+    localmlk.jdField_a_of_type_Int = this.mDisableType;
+    boolean bool = getRedBagBtnStatus(this.mApp, localmlk);
+    this.mTips = localmlk.jdField_a_of_type_JavaLangString;
+    this.mDisableType = localmlk.jdField_a_of_type_Int;
     return bool;
   }
   
@@ -255,15 +227,15 @@ public class RedbagToolbar
     if (paramInt == getEffectBtnId()) {
       return;
     }
-    AVRedBagMgr localAVRedBagMgr = RedBagUtil.a(this.mApp);
-    if (localAVRedBagMgr != null) {
-      localAVRedBagMgr.d();
+    mrt localmrt = msp.a(this.mApp);
+    if (localmrt != null) {
+      localmrt.d();
     }
     if (this.mDisableType == 0)
     {
       paramBoolean1 = true;
       label47:
-      AVRedPacketDataCollector.b(paramBoolean1, String.valueOf(this.mDisableType));
+      lvz.b(paramBoolean1, String.valueOf(this.mDisableType));
       if (this.mDisableType != 0) {
         break label93;
       }
@@ -271,7 +243,7 @@ public class RedbagToolbar
     label93:
     for (paramBoolean1 = bool;; paramBoolean1 = false)
     {
-      RedBagReport.a(paramBoolean1, this.mDisableType);
+      mso.a(paramBoolean1, this.mDisableType);
       if (this.mDisableType == 0) {
         break;
       }
@@ -282,74 +254,58 @@ public class RedbagToolbar
     }
   }
   
-  protected void onCreate(AVActivity paramAVActivity) {}
-  
-  protected void onDestroy(VideoAppInterface paramVideoAppInterface) {}
-  
-  protected void onHide() {}
-  
-  protected void onShow(int paramInt, boolean paramBoolean)
+  protected void onShow(long paramLong, int paramInt, boolean paramBoolean)
   {
     if (paramInt == getEffectBtnId()) {}
-    AVActivity localAVActivity;
     do
     {
-      AVRedBagMgr localAVRedBagMgr;
+      mrt localmrt;
       do
       {
-        do
-        {
-          return;
-          localAVRedBagMgr = RedBagUtil.a(this.mApp);
-        } while (localAVRedBagMgr == null);
-        localAVActivity = (AVActivity)this.mActivity.get();
-      } while (localAVActivity == null);
+        return;
+        localmrt = msp.a(this.mApp);
+      } while ((localmrt == null) || ((AVActivity)this.mActivity.get() == null));
       if (this.mDisableType == 0)
       {
-        if (GuideTip2.a(this.mApp))
+        String str = msp.b();
+        paramBoolean = bdhb.b(str);
+        if ((paramBoolean) && (mse.a(this.mApp)))
         {
-          localAVRedBagMgr.a(true);
-          new GuideTip2(localAVRedBagMgr).a(new kab(this, localAVRedBagMgr));
+          localmrt.a(true);
+          new mse(localmrt).a(new mlj(this, localmrt));
           return;
         }
+        QLog.w("RedbagToolbar", 1, "startActivity_SendRedBag, guide_mp4[" + str + "], fileExistsAndNotEmpty[" + paramBoolean + "], seq[" + paramLong + "]");
         startActivity_SendRedBag(false);
         return;
       }
     } while (TextUtils.isEmpty(this.mTips));
-    localAVActivity.a(80, this.mTips, 3000L, 1);
+    mdd.a(this.mApp, 1042, this.mTips);
   }
   
   public boolean startActivity_SendRedBag(boolean paramBoolean)
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    AVRedBagMgr localAVRedBagMgr = RedBagUtil.a(this.mApp);
-    if (localAVRedBagMgr == null) {}
+    mrt localmrt = msp.a(this.mApp);
+    if (localmrt == null) {}
     AVActivity localAVActivity;
     do
     {
-      return bool1;
+      return false;
       localAVActivity = (AVActivity)this.mActivity.get();
     } while (localAVActivity == null);
     if (paramBoolean) {
       isEffectBtnEnable();
     }
-    paramBoolean = bool2;
     if (this.mDisableType == 0) {
-      if (!localAVRedBagMgr.a(localAVActivity, 1)) {
-        break label94;
-      }
+      if (!localmrt.a(localAVActivity, 1)) {}
     }
-    for (paramBoolean = true;; paramBoolean = bool2)
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      bool1 = paramBoolean;
-      if (this.mDisableType == 0) {
-        break;
+      if (this.mDisableType != 0) {
+        mdd.a(this.mApp, 1042, this.mTips);
       }
-      localAVActivity.a(80, this.mTips, 3000L, 1);
       return paramBoolean;
-      label94:
-      this.mTips = "操作失败。";
+      this.mTips = localAVActivity.getResources().getString(2131696262);
       this.mDisableType = 67108864;
     }
   }

@@ -1,34 +1,54 @@
-import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.HornListActivity;
-import com.tencent.mobileqq.activity.HornPublishActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.international.LocaleString;
+import java.util.List;
 
 public class cwk
-  implements View.OnClickListener
+  extends BaseAdapter
 {
-  public cwk(HornListActivity paramHornListActivity) {}
+  private cwk(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  public void onClick(View paramView)
+  public int getCount()
   {
-    QQAppInterface localQQAppInterface;
-    if (this.a.a != null)
-    {
-      localQQAppInterface = this.a.b;
-      if (!VipUtils.a(this.a.b)) {
-        break label81;
-      }
+    if (this.a.jdField_a_of_type_JavaUtilList != null) {
+      return this.a.jdField_a_of_type_JavaUtilList.size();
     }
-    label81:
-    for (paramView = "1";; paramView = "0")
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = this.a.getLayoutInflater().inflate(2130903285, null);
+    }
+    int i = (byte)((Groups)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).group_id;
+    paramView = (ImageView)paramViewGroup.findViewById(2131231938);
+    if (i == this.a.jdField_a_of_type_Byte) {
+      paramView.setVisibility(0);
+    }
+    for (;;)
     {
-      ReportController.b(localQQAppInterface, "P_CliOper", "Svip", "", "Vip_nearby", "Vip_nearby_enterHornCreate", 0, 0, "isSvip", paramView, "", "");
-      paramView = new Intent(this.a, HornPublishActivity.class);
-      this.a.startActivityForResult(paramView, 0);
-      return;
+      paramView = (TextView)paramViewGroup.findViewById(2131231937);
+      LocaleString.a(((Groups)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).group_name, paramView);
+      return paramViewGroup;
+      paramView.setVisibility(8);
     }
   }
 }

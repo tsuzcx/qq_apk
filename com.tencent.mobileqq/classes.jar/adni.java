@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adni
-  implements ActionSheet.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public adni(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public adni(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void onDismiss()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a = null;
-    this.a.o();
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "showRecommendDialog cancel clicked!");
+    }
+    azqs.b(this.a.app, "dc00898", "", "", "0X800A605", "0X800A605", 0, 0, "", "", "", "");
   }
 }
 

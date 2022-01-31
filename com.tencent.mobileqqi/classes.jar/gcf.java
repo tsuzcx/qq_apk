@@ -1,23 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
 
-public final class gcf
-  implements Parcelable.Creator
+public class gcf
+  implements TextWatcher
 {
-  public WeiYunFileInfo a(Parcel paramParcel)
+  public gcf(RoamSearchDialog paramRoamSearchDialog) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    return new WeiYunFileInfo(paramParcel);
+    if (this.a.a.getText().toString().trim().length() == 0)
+    {
+      this.a.findViewById(2131233088).setVisibility(8);
+      return;
+    }
+    this.a.findViewById(2131233088).setVisibility(0);
   }
   
-  public WeiYunFileInfo[] a(int paramInt)
-  {
-    return new WeiYunFileInfo[paramInt];
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gcf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/nw" android:paddingLeft="@dimen/g2" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/lx"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nx" android:layout_width="fill_parent" android:layout_height="@dimen/f1">
+        <com.tencent.mm.ui.base.MaskLayout android:id="@id/ny" android:layout_width="@dimen/ez" android:layout_height="@dimen/ez" android:layout_marginRight="@dimen/fx">
+            <ImageView android:id="@id/k6" android:layout_width="@dimen/ey" android:layout_height="@dimen/ey" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
+            <TextView android:id="@id/nz" android:visibility="gone" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/v9" />
+        </com.tencent.mm.ui.base.MaskLayout>
+        <LinearLayout android:gravity="center_vertical" android:background="@drawable/abk" android:paddingRight="@dimen/dj" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:gravity="center_vertical" android:id="@id/o0" android:layout_height="fill_parent" android:singleLine="true" style="@style/ln" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,17 +1,40 @@
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-class akaq
-  implements Runnable
+public class akaq
+  extends BroadcastReceiver
 {
-  akaq(akao paramakao, Exception paramException) {}
+  public akaq(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Akao.a.dismiss();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "safetyReport exception1" + this.jdField_a_of_type_JavaLangException.getMessage());
+    paramContext = paramIntent.getAction();
+    if ((TextUtils.isEmpty(paramIntent.getPackage())) || (!paramIntent.getPackage().equals(this.a.app.getApp().getPackageName()))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SelectMemberActivity", 2, "receive broadcast from wrong package:" + paramIntent.getPackage() + ",action:" + paramContext);
+      }
     }
+    int i;
+    int j;
+    do
+    {
+      do
+      {
+        return;
+      } while (!paramContext.equals("tencent.av.v2q.StopVideoChat"));
+      i = paramIntent.getIntExtra("stopReason", 0);
+      j = paramIntent.getIntExtra("stopReason3rd", -1);
+    } while (((i != 0) && (j != 1)) || ((this.a.d != 11) && (this.a.d != 36)));
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectMemberActivity", 2, "ACTION_STOP_VIDEO_CHAT");
+    }
+    this.a.finish();
   }
 }
 

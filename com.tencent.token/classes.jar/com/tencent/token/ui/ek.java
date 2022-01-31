@@ -1,26 +1,25 @@
 package com.tencent.token.ui;
 
-import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.n;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cw;
+import com.tencent.token.do;
 
-final class ek
+class ek
   implements View.OnClickListener
 {
-  ek(FacePKCameraActivity paramFacePKCameraActivity) {}
+  ek(FaceChangeMobileActivity paramFaceChangeMobileActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    e.c("onBackPressed");
-    FacePKCameraActivity.access$700(this.a).removeMessages(90);
-    if (n.a().c())
+    if (!do.a().e().mIsBinded)
     {
-      FacePKCameraActivity.access$700(this.a).postDelayed(new el(this), 300L);
+      this.a.showNoAccountTipDialog(this.a, 10, 1);
       return;
     }
-    this.a.finish();
+    cw.a().e(0L, FaceChangeMobileActivity.access$000(this.a));
+    this.a.showProDialog(this.a, 2131230843, 2131231299, null);
   }
 }
 

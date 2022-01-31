@@ -1,21 +1,14 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import android.widget.RelativeLayout;
 
-public class mkx
-  implements View.OnClickListener
+public abstract interface mkx
 {
-  public mkx(ReadinjoyTabFrame paramReadinjoyTabFrame, Context paramContext) {}
+  public abstract void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean);
   
-  public void onClick(View paramView)
-  {
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame, this.jdField_a_of_type_AndroidContentContext, paramView);
-  }
+  public abstract void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mkx
  * JD-Core Version:    0.7.0.1
  */

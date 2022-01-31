@@ -1,8 +1,27 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.StrangerHandler;
+import com.tencent.mobileqq.data.Stranger;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.ArrayList;
+import java.util.List;
+
 public class fgy
+  implements Runnable
 {
-  public long a = 0L;
-  public long b = 0L;
-  public long c = 0L;
+  public fgy(StrangerHandler paramStrangerHandler) {}
+  
+  public void run()
+  {
+    Object localObject = this.a.a.a().createEntityManager();
+    List localList = ((EntityManager)localObject).a(Stranger.class);
+    ((EntityManager)localObject).a();
+    localObject = localList;
+    if (localList == null) {
+      localObject = new ArrayList();
+    }
+    this.a.a(3, true, localObject);
+  }
 }
 
 

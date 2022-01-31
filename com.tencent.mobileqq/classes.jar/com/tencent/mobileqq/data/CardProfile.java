@@ -2,16 +2,16 @@ package com.tencent.mobileqq.data;
 
 import QQService.UserProfile;
 import QQService.VipBaseInfo;
+import awge;
+import awhp;
+import bdns;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.utils.TimeFormatterUtils;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="lEctID,type")
 public class CardProfile
-  extends Entity
+  extends awge
 {
   public static final int TYPE_FAVORITE = 3;
   public static final int TYPE_VISITOR = 1;
@@ -23,6 +23,7 @@ public class CardProfile
   public byte bFavorite;
   public byte bFavoritedMe;
   public short bIsLastVoteCharged;
+  public byte bMutualFriends;
   public byte bSex;
   public byte bSingle;
   public long bTodayVotedCnt;
@@ -38,7 +39,7 @@ public class CardProfile
   public short shIntroType;
   public VipBaseInfo stVipInfo;
   public String strNick;
-  @notColumn
+  @awhp
   public String strTime = "";
   public int type = 1;
   public long uSource;
@@ -80,11 +81,12 @@ public class CardProfile
     localCardProfile.bAvailableCnt = this.bAvailableCnt;
     localCardProfile.bTodayVotedCnt = this.bTodayVotedCnt;
     localCardProfile.bCloseNeighborVote = this.bCloseNeighborVote;
+    localCardProfile.bMutualFriends = this.bMutualFriends;
     localCardProfile.dwLikeCustomId = this.dwLikeCustomId;
     localCardProfile.bIsLastVoteCharged = this.bIsLastVoteCharged;
     localCardProfile.vRichSign = this.vRichSign;
     if (this.lTime > 0) {
-      localCardProfile.strTime = TimeFormatterUtils.a(this.lTime * 1000L, true, "yyyy-MM-dd");
+      localCardProfile.strTime = bdns.a(this.lTime * 1000L, true, "yyyy-MM-dd");
     }
     return localCardProfile;
   }
@@ -95,6 +97,22 @@ public class CardProfile
       this.rs = RichStatus.parseStatus(this.vRichSign);
     }
     return this.rs;
+  }
+  
+  public String getSimpleZanInfo()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("zanInfo:");
+    localStringBuilder.append(",").append("uin").append("=").append(this.lEctID);
+    localStringBuilder.append(",").append("t").append("=").append(this.type);
+    localStringBuilder.append(",").append("n").append("=").append(this.strNick);
+    localStringBuilder.append(",").append("bVC").append("=").append(this.bVoteCnt);
+    localStringBuilder.append(",").append("bAailC").append("=").append(this.bAvailableCnt);
+    localStringBuilder.append(",").append("bTVC").append("=").append(this.bTodayVotedCnt);
+    localStringBuilder.append(",").append("bClose").append("=").append(this.bCloseNeighborVote);
+    localStringBuilder.append(",").append("bCharged").append("=").append(this.bIsLastVoteCharged);
+    localStringBuilder.append(",").append("payVC").append("=").append(this.payVoteCount);
+    localStringBuilder.append(",").append("bMutual").append("=").append(this.bMutualFriends);
+    return localStringBuilder.toString();
   }
   
   public String getTableName()
@@ -127,13 +145,14 @@ public class CardProfile
     this.bAvailableCnt = paramUserProfile.bAvailableCnt;
     this.bTodayVotedCnt = paramUserProfile.bTodayVotedCnt;
     if (this.lTime > 0) {
-      this.strTime = TimeFormatterUtils.a(this.lTime * 1000L, true, "yyyy-MM-dd");
+      this.strTime = bdns.a(this.lTime * 1000L, true, "yyyy-MM-dd");
     }
     this.uSource = paramUserProfile.uSource;
     this.bCloseNeighborVote = ((byte)paramUserProfile.bCloseNeighborVote);
     this.dwLikeCustomId = paramUserProfile.dwLikeCustomId;
     this.bIsLastVoteCharged = paramUserProfile.bIsLastVoteCharged;
     this.payVoteCount = paramUserProfile.bTollVoteCnt;
+    this.bMutualFriends = ((byte)paramUserProfile.bMutualFriends);
   }
   
   public String toString()
@@ -141,24 +160,25 @@ public class CardProfile
     StringBuilder localStringBuilder = new StringBuilder("CardProfile");
     localStringBuilder.append(",").append("lEctID").append(":").append(this.lEctID);
     localStringBuilder.append(",").append("strNick").append(":").append(this.strNick);
-    localStringBuilder.append(",").append("bVoteCnt").append(":").append(this.bVoteCnt);
-    localStringBuilder.append(",").append("bAvailableCnt").append(":").append(this.bAvailableCnt);
-    localStringBuilder.append(",").append("bTodayVotedCnt").append(":").append(this.bTodayVotedCnt);
-    localStringBuilder.append(",").append("bCloseNeighborVote").append(":").append(this.bCloseNeighborVote);
+    localStringBuilder.append(",").append("bVC").append(":").append(this.bVoteCnt);
+    localStringBuilder.append(",").append("bAailC").append(":").append(this.bAvailableCnt);
+    localStringBuilder.append(",").append("bTVC").append(":").append(this.bTodayVotedCnt);
+    localStringBuilder.append(",").append("bClose").append(":").append(this.bCloseNeighborVote);
     localStringBuilder.append(",").append("strTime").append(":").append(this.strTime);
     localStringBuilder.append(",").append("type").append(":").append(this.type);
+    localStringBuilder.append(",").append("bMutual").append("=").append(this.bMutualFriends);
     return localStringBuilder.toString();
   }
   
   public void updateTime(long paramLong)
   {
     this.lTime = ((int)paramLong);
-    this.strTime = TimeFormatterUtils.a(1000L * paramLong, true, "yyyy-MM-dd");
+    this.strTime = bdns.a(1000L * paramLong, true, "yyyy-MM-dd");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.CardProfile
  * JD-Core Version:    0.7.0.1
  */

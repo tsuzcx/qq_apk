@@ -10,16 +10,16 @@ public final class UPDATE_INFO
   extends JceStruct
 {
   static int cache_actype = 0;
-  static Map cache_extra_info = new HashMap();
-  static Map cache_plugin_info;
+  static Map<String, String> cache_extra_info = new HashMap();
+  static Map<Integer, String> cache_plugin_info;
   public int actype;
   public String app = "";
-  public Map extra_info;
+  public Map<String, String> extra_info;
   public String id = "";
   public String mainVersion = "";
   public String md5 = "";
   public String name = "";
-  public Map plugin_info;
+  public Map<Integer, String> plugin_info;
   public String ver = "";
   
   static
@@ -31,16 +31,16 @@ public final class UPDATE_INFO
   
   public UPDATE_INFO() {}
   
-  public UPDATE_INFO(String paramString1, String paramString2, String paramString3, Map paramMap1, String paramString4, String paramString5, String paramString6, Map paramMap2, int paramInt)
+  public UPDATE_INFO(String paramString1, String paramString2, String paramString3, Map<String, String> paramMap, String paramString4, String paramString5, String paramString6, Map<Integer, String> paramMap1, int paramInt)
   {
     this.app = paramString1;
     this.ver = paramString2;
     this.name = paramString3;
-    this.extra_info = paramMap1;
+    this.extra_info = paramMap;
     this.id = paramString4;
     this.mainVersion = paramString5;
     this.md5 = paramString6;
-    this.plugin_info = paramMap2;
+    this.plugin_info = paramMap1;
     this.actype = paramInt;
   }
   
@@ -84,7 +84,7 @@ public final class UPDATE_INFO
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_CLIENT_UPDATE.UPDATE_INFO
  * JD-Core Version:    0.7.0.1
  */

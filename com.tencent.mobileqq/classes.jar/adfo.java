@@ -1,22 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.ZipFilePresenter;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.activity.KPLProfileCardActivity;
+import com.tencent.mobileqq.data.KplCard;
+import com.tencent.qphone.base.util.QLog;
 
 public class adfo
-  implements View.OnClickListener
+  extends alpq
 {
-  public adfo(ZipFilePresenter paramZipFilePresenter) {}
+  public adfo(KPLProfileCardActivity paramKPLProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  protected void onGetKplCard(boolean paramBoolean, Object paramObject)
   {
-    FileManagerUtil.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b());
+    if (QLog.isColorLevel()) {
+      QLog.i("KPLProfileCardActivity", 2, "onGetKplCard, isSuccess=" + paramBoolean);
+    }
+    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof KplCard)))
+    {
+      KPLProfileCardActivity.a(this.a, (KplCard)paramObject);
+      this.a.a = ((KplCard)paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adfo
  * JD-Core Version:    0.7.0.1
  */

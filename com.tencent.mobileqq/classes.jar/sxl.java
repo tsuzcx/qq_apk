@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.app.PublicAccountObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class sxl
-  extends PublicAccountObserver
+class sxl
+  implements View.OnClickListener
 {
-  public sxl(Leba paramLeba) {}
+  sxl(sxe paramsxe) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean1) && (paramBoolean2)) {
-      this.a.a.notifyDataSetChanged();
-    }
+    this.a.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sxl
  * JD-Core Version:    0.7.0.1
  */

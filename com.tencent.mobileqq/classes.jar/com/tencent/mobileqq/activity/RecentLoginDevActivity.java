@@ -1,6 +1,12 @@
 package com.tencent.mobileqq.activity;
 
+import QQService.DeviceItemDes;
 import QQService.SvcDevLoginInfo;
+import adtn;
+import adto;
+import adtp;
+import adtq;
+import altm;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -14,55 +20,48 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.app.FriendListObserver;
+import aqbd;
+import bdns;
+import bety;
+import bhuf;
+import bhus;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.mobileqq.utils.TimeFormatterUtils;
-import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
 import java.util.ArrayList;
 import java.util.List;
-import toc;
-import tod;
-import toe;
-import tof;
-import tog;
-import toh;
 
 public class RecentLoginDevActivity
   extends IphoneTitleBarActivity
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new toc(this);
+  private altm jdField_a_of_type_Altm = new adtq(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new adtn(this);
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new tof(this);
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
+  private bety jdField_a_of_type_Bety;
+  private bhuf jdField_a_of_type_Bhuf;
   private String jdField_a_of_type_JavaLangString = "";
-  private List jdField_a_of_type_JavaUtilList;
+  private List<SvcDevLoginInfo> jdField_a_of_type_JavaUtilList;
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new tog(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new RecentLoginDevActivity.5(this));
   }
   
-  private void a(String paramString1, ArrayList paramArrayList, String paramString2, int paramInt)
+  private void a(String paramString1, ArrayList<DeviceItemDes> paramArrayList, String paramString2, int paramInt)
   {
     String str = paramString1;
     if (TextUtils.isEmpty(paramString1)) {
-      str = getResources().getString(2131436507);
+      str = getResources().getString(2131694652);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
-    paramString1 = getString(2131436505, new Object[] { str });
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramString1);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131436506), 3);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new toe(this, paramString2, paramArrayList, paramInt));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
+    this.jdField_a_of_type_Bhuf = ((bhuf)bhus.a(this, null));
+    paramString1 = getString(2131694644, new Object[] { str });
+    this.jdField_a_of_type_Bhuf.a(paramString1);
+    this.jdField_a_of_type_Bhuf.a(getResources().getString(2131694642), 3);
+    this.jdField_a_of_type_Bhuf.c(2131690648);
+    this.jdField_a_of_type_Bhuf.a(new adtp(this, paramString2, paramArrayList, paramInt));
+    this.jdField_a_of_type_Bhuf.show();
   }
   
-  private void a(List paramList)
+  private void a(List<SvcDevLoginInfo> paramList)
   {
     if ((paramList == null) || (paramList.size() == 0)) {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
@@ -87,28 +86,28 @@ public class RecentLoginDevActivity
       }
     }
     label76:
-    View localView = getLayoutInflater().inflate(2130969060, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131362749);
-    ((ImageView)localView.findViewById(2131362767)).setVisibility(0);
+    View localView = getLayoutInflater().inflate(2131559243, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131368527);
+    ((ImageView)localView.findViewById(2131367944)).setVisibility(0);
     label130:
     Object localObject;
     TextView localTextView;
     if (j == 1)
     {
-      localRelativeLayout.setBackgroundResource(2130838623);
-      ((TextView)localView.findViewById(2131364921)).setVisibility(8);
-      localObject = (TextView)localView.findViewById(2131362754);
-      localTextView = (TextView)localView.findViewById(2131364119);
+      localRelativeLayout.setBackgroundResource(2130839254);
+      ((TextView)localView.findViewById(2131369092)).setVisibility(8);
+      localObject = (TextView)localView.findViewById(2131370977);
+      localTextView = (TextView)localView.findViewById(2131368235);
       if (!TextUtils.isEmpty(localSvcDevLoginInfo.strDeviceName)) {
         break label386;
       }
-      ((TextView)localObject).setText(2131436507);
+      ((TextView)localObject).setText(2131694652);
     }
     for (;;)
     {
       localObject = new StringBuffer();
       if (localSvcDevLoginInfo.iLoginTime > 0L) {
-        ((StringBuffer)localObject).append(TimeFormatterUtils.a(localSvcDevLoginInfo.iLoginTime * 1000L, "MM-dd  HH:mm"));
+        ((StringBuffer)localObject).append(bdns.a(localSvcDevLoginInfo.iLoginTime * 1000L, "MM-dd  HH:mm"));
       }
       if (!TextUtils.isEmpty(localSvcDevLoginInfo.strLoginLocation))
       {
@@ -125,20 +124,20 @@ public class RecentLoginDevActivity
       }
       localRelativeLayout.setClickable(true);
       localRelativeLayout.setTag(localSvcDevLoginInfo);
-      localRelativeLayout.setOnClickListener(new tod(this, localRelativeLayout, i));
+      localRelativeLayout.setOnClickListener(new adto(this, localRelativeLayout, i));
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
       break;
       if (i == 0)
       {
-        localRelativeLayout.setBackgroundResource(2130838635);
+        localRelativeLayout.setBackgroundResource(2130839270);
         break label130;
       }
       if (i == j - 1)
       {
-        localRelativeLayout.setBackgroundResource(2130838630);
+        localRelativeLayout.setBackgroundResource(2130839261);
         break label130;
       }
-      localRelativeLayout.setBackgroundResource(2130838633);
+      localRelativeLayout.setBackgroundResource(2130839264);
       break label130;
       label386:
       ((TextView)localObject).setText(localSvcDevLoginInfo.strDeviceName);
@@ -147,26 +146,26 @@ public class RecentLoginDevActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new toh(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new RecentLoginDevActivity.6(this));
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130970322);
-    setTitle(2131436510);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370063));
+    super.setContentView(2131560927);
+    setTitle(2131694651);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131367667));
     try
     {
       this.jdField_a_of_type_JavaLangString = getPackageManager().getPackageInfo(getPackageName(), 0).packageName;
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.RecentLoginDevActivity", 2, "packName = " + this.jdField_a_of_type_JavaLangString);
       }
-      addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+      addObserver(this.jdField_a_of_type_Altm);
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onCreate begin to getRecentLoginDevList");
       }
-      bool = EquipmentLockImpl.a().b(this.app, this.jdField_a_of_type_JavaLangString, 0L);
+      bool = aqbd.a().b(this.app, this.jdField_a_of_type_JavaLangString, 0L);
       if (bool)
       {
         a();
@@ -187,16 +186,16 @@ public class RecentLoginDevActivity
     }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     super.onDestroy();
     b();
-    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    removeObserver(this.jdField_a_of_type_Altm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RecentLoginDevActivity
  * JD-Core Version:    0.7.0.1
  */

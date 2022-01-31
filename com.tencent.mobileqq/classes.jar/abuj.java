@@ -1,20 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
-
-public class abuj
-  implements DialogInterface.OnClickListener
+public abstract class abuj
 {
-  public abuj(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public static int a;
+  public static String a = "http://zyjc.sec.qq.com/config?b=";
+  public static String b = "http://zyjc.sec.qq.com/reportFixer.php";
+  public static String c = "/sdcard/";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abuj
  * JD-Core Version:    0.7.0.1
  */

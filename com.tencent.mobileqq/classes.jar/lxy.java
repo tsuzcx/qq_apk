@@ -1,26 +1,14 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.Biu0x210Msg;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.graphics.Bitmap;
 
-public class lxy
-  implements Runnable
+public abstract interface lxy
 {
-  public lxy(KandianOx210MsgInfo.Biu0x210Msg paramBiu0x210Msg, QQAppInterface paramQQAppInterface) {}
+  public abstract void a(Bitmap paramBitmap);
   
-  public void run()
-  {
-    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, false).edit();
-    localEditor.remove("kandian_biu_0x210_seq");
-    localEditor.remove("kandian_biu_0x210_uin");
-    localEditor.remove("kandian_biu_0x210_status");
-    ReadInJoyHelper.a(localEditor, true);
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lxy
  * JD-Core Version:    0.7.0.1
  */

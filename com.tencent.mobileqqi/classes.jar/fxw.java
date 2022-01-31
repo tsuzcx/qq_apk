@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.filemanager.activity.fileviewer.qfile.QfileBaseLocalFileController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class fxw
-  implements FMDialogUtil.FMDialogInterface
+public final class fxw
+  implements DialogInterface.OnClickListener
 {
-  public fxw(QfileBaseLocalFileController paramQfileBaseLocalFileController) {}
+  public fxw(FMDialogUtil.FMDialogInterface paramFMDialogInterface) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.e();
+    this.a.b();
+    paramDialogInterface.dismiss();
   }
-  
-  public void b() {}
 }
 
 

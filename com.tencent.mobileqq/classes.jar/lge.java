@@ -1,91 +1,106 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import cooperation.qzone.LocalMultiProcConfig;
+import java.util.List;
 
 public class lge
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends lgo
 {
-  public lge(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  public static final String a = ;
   
-  public void onGlobalLayout()
+  public static void a(String paramString, long paramLong)
   {
-    Object localObject = new Rect();
-    ReadInJoyDeliverBiuActivity.a(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
-    int i = ReadInJoyDeliverBiuActivity.b(this.a).getRootView().getHeight();
-    int j = i - ((Rect)localObject).height();
-    boolean bool;
-    if (j > 100)
+    try
     {
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout screenHeight:" + i + ", ExternalPanelheight:" + j + ", isShowKeybroad:" + bool);
-      }
-      i = ReadInJoyDeliverBiuActivity.a(this.a).getHeight();
-      if (bool == ReadInJoyDeliverBiuActivity.a(this.a)) {
-        break label394;
-      }
-      if (j > ReadInJoyDeliverBiuActivity.a(this.a)) {
-        ReadInJoyDeliverBiuActivity.a(this.a, j);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout mMAXExternalPanelheight:" + ReadInJoyDeliverBiuActivity.b(this.a));
-      }
-      j = i - ReadInJoyDeliverBiuActivity.c(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout contentHeight:" + i + ", fixedHeight:" + ReadInJoyDeliverBiuActivity.d(this.a) + ", maxHeight:" + j);
-      }
-      ReadInJoyDeliverBiuActivity.a(this.a).setMaxHeight(j);
-      ReadInJoyDeliverBiuActivity.a(this.a, bool);
-      localObject = this.a;
-      if (i >= ReadInJoyDeliverBiuActivity.e(this.a)) {
-        break label372;
-      }
-      j = i;
-      label283:
-      ReadInJoyDeliverBiuActivity.b((ReadInJoyDeliverBiuActivity)localObject, j);
-      localObject = this.a;
-      if (i <= ReadInJoyDeliverBiuActivity.f(this.a)) {
-        break label383;
-      }
-      label307:
-      ReadInJoyDeliverBiuActivity.c((ReadInJoyDeliverBiuActivity)localObject, i);
-    }
-    for (;;)
-    {
-      ReadInJoyDeliverBiuActivity.d(this.a, ReadInJoyDeliverBiuActivity.h(this.a));
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout mExternalPanelheight:" + ReadInJoyDeliverBiuActivity.g(this.a));
+      QLog.d("VideoUtils", 1, String.format("requestPartialWakeLock tag=%s timeout=%s", new Object[] { paramString, Long.valueOf(paramLong) }));
+      PowerManager localPowerManager = (PowerManager)BaseApplication.getContext().getSystemService("power");
+      if (localPowerManager != null) {
+        localPowerManager.newWakeLock(1, paramString).acquire(paramLong);
       }
       return;
-      bool = false;
-      break;
-      label372:
-      j = ReadInJoyDeliverBiuActivity.e(this.a);
-      break label283;
-      label383:
-      i = ReadInJoyDeliverBiuActivity.f(this.a);
-      break label307;
-      label394:
-      if ((ReadInJoyDeliverBiuActivity.g(this.a) != ReadInJoyDeliverBiuActivity.h(this.a)) && (i == ReadInJoyDeliverBiuActivity.f(this.a)))
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.d(paramString, 1, "requestPartialWakeLock fail.", localThrowable);
+    }
+  }
+  
+  public static final boolean a()
+  {
+    for (;;)
+    {
+      int j;
+      try
       {
-        i -= ReadInJoyDeliverBiuActivity.h(this.a);
-        j = i - ReadInJoyDeliverBiuActivity.i(this.a);
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout contentHeight:" + i + ", fixedHeight:" + ReadInJoyDeliverBiuActivity.j(this.a) + ", maxHeight:" + j);
+        boolean bool = LocalMultiProcConfig.getBool("is_qzone_live_launch", false);
+        QLog.d("VideoUtils", 1, "isQzoneLiveExist, isRunning=" + bool);
+        if (!bool) {
+          return false;
         }
-        ReadInJoyDeliverBiuActivity.b(this.a).setMaxHeight(j);
+        int i = -2;
+        List localList = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
+        if (localList != null)
+        {
+          j = 0;
+          if (j < localList.size())
+          {
+            if ("com.tencent.mobileqq:qzonelive".equals(((ActivityManager.RunningAppProcessInfo)localList.get(j)).processName))
+            {
+              i = ((ActivityManager.RunningAppProcessInfo)localList.get(j)).pid;
+              break label184;
+            }
+          }
+          else
+          {
+            j = LocalMultiProcConfig.getInt("qzone_live_process_id", -1);
+            QLog.d("VideoUtils", 1, "isQzoneLiveExist, processId=" + i + ", id=" + j);
+            if (i == j)
+            {
+              bool = true;
+              return bool;
+            }
+            bool = false;
+            continue;
+          }
+        }
       }
+      catch (Exception localException)
+      {
+        QLog.e("VideoUtils", 1, localException, new Object[0]);
+        return false;
+      }
+      return false;
+      label184:
+      j += 1;
+    }
+  }
+  
+  public static void b(String paramString, long paramLong)
+  {
+    try
+    {
+      QLog.d("VideoUtils", 1, String.format("requestScreenBrightWakeLock tag=%s timeout=%s", new Object[] { paramString, Long.valueOf(paramLong) }));
+      PowerManager localPowerManager = (PowerManager)BaseApplication.getContext().getSystemService("power");
+      if (localPowerManager != null) {
+        localPowerManager.newWakeLock(805306378, paramString).acquire(paramLong);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.d(paramString, 1, "requestScreenBrightWakeLock fail.", localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lge
  * JD-Core Version:    0.7.0.1
  */

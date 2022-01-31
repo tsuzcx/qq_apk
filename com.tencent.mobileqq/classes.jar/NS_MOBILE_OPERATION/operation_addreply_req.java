@@ -9,12 +9,12 @@ import java.util.Map;
 public final class operation_addreply_req
   extends JceStruct
 {
-  static Map cache_busi_param = new HashMap();
-  static Map cache_bypass_param;
+  static Map<Integer, String> cache_busi_param = new HashMap();
+  static Map<String, String> cache_bypass_param;
   static MediaInfo cache_mediainfo;
   public int appid;
-  public Map busi_param;
-  public Map bypass_param;
+  public Map<Integer, String> busi_param;
+  public Map<String, String> bypass_param;
   public String commentid = "";
   public long commentuin;
   public String content = "";
@@ -35,7 +35,7 @@ public final class operation_addreply_req
   
   public operation_addreply_req() {}
   
-  public operation_addreply_req(int paramInt1, long paramLong1, long paramLong2, long paramLong3, String paramString1, String paramString2, String paramString3, int paramInt2, Map paramMap1, MediaInfo paramMediaInfo, int paramInt3, Map paramMap2)
+  public operation_addreply_req(int paramInt1, long paramLong1, long paramLong2, long paramLong3, String paramString1, String paramString2, String paramString3, int paramInt2, Map<Integer, String> paramMap, MediaInfo paramMediaInfo, int paramInt3, Map<String, String> paramMap1)
   {
     this.appid = paramInt1;
     this.uin = paramLong1;
@@ -45,10 +45,10 @@ public final class operation_addreply_req
     this.commentid = paramString2;
     this.content = paramString3;
     this.isverified = paramInt2;
-    this.busi_param = paramMap1;
+    this.busi_param = paramMap;
     this.mediainfo = paramMediaInfo;
     this.mediabittype = paramInt3;
-    this.bypass_param = paramMap2;
+    this.bypass_param = paramMap1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -97,7 +97,7 @@ public final class operation_addreply_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_addreply_req
  * JD-Core Version:    0.7.0.1
  */

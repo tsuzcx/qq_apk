@@ -1,26 +1,37 @@
-import android.graphics.Bitmap;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.mobileqq.theme.ThemeSwitchManager;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
 
 public class aioe
-  implements Runnable
 {
-  public aioe(ThemeSwitchManager paramThemeSwitchManager) {}
+  PhotoCropActivity jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity;
+  String[] jdField_a_of_type_ArrayOfJavaLangString;
   
-  public void run()
+  public aioe(PhotoCropActivity paramPhotoCropActivity)
   {
-    ViewGroup localViewGroup = (ViewGroup)this.a.jdField_a_of_type_AndroidWidgetImageView.getParent();
-    if (localViewGroup != null)
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity = paramPhotoCropActivity;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
     {
-      localViewGroup.removeView(this.a.jdField_a_of_type_AndroidWidgetImageView);
-      localViewGroup.clearDisappearingChildren();
+      bhuf localbhuf = (bhuf)bhus.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, null);
+      int i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+      {
+        localbhuf.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], 1);
+        i += 1;
+      }
+      localbhuf.c(2131690648);
+      localbhuf.a(new aiof(this, localbhuf));
+      localbhuf.show();
     }
-    this.a.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    this.a.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.a.b.set(false);
-    this.a.jdField_a_of_type_AndroidWidgetImageView = null;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(String[] paramArrayOfString)
+  {
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
   }
 }
 

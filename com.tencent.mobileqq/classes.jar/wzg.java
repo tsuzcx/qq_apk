@@ -1,25 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
-
-public class wzg
-  implements View.OnClickListener
+class wzg
+  implements xhq
 {
-  public wzg(GoldMsgSettingActivity paramGoldMsgSettingActivity) {}
+  wzg(wzb paramwzb) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((this.a.a != null) && (this.a.a.a()))
+    wxe.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击重新拉取地理贴纸");
+    wzb.a(this.a);
+  }
+  
+  public void a(String paramString)
+  {
+    wxe.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载：" + paramString);
+    xan localxan = this.a.a;
+    if (this.a.a.a()) {}
+    for (String str = "2";; str = "1")
     {
-      GoldMsgAioState.a(this.a.getWindow(), this.a, null);
-      this.a.finish();
+      localxan.a("download_face", 0, 0, new String[] { str, paramString });
+      wxk.b("0X80075DD");
+      if (!((xet)uwa.a(8)).a(paramString, true)) {
+        wxe.d("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载启动失败");
+      }
+      return;
     }
+  }
+  
+  public void b(String paramString)
+  {
+    wxe.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载取消：" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wzg
  * JD-Core Version:    0.7.0.1
  */

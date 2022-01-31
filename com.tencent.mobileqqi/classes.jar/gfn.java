@@ -1,32 +1,56 @@
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
-import com.tencent.mobileqq.magicface.view.MagicfaceView;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QCallRecord;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.mobileqq.qcall.QCallFacade;
+import java.util.ArrayList;
+import java.util.List;
 
-class gfn
+public class gfn
   implements Runnable
 {
-  gfn(gfl paramgfl, ActionGlobalData paramActionGlobalData) {}
+  public gfn(QCallDetailActivity paramQCallDetailActivity) {}
   
   public void run()
   {
-    
-    if (this.jdField_a_of_type_Gfl.jdField_a_of_type_Int == 1)
-    {
-      MagicfaceViewController.a(this.jdField_a_of_type_Gfl.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).setBackgroundColor(0);
-      this.jdField_a_of_type_Gfl.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a();
+    ArrayList localArrayList;
+    if (QCallDetailActivity.a(this.a) != null) {
+      localArrayList = new ArrayList();
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData != null) && ("gravity".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.h)) && (PreferenceManager.getDefaultSharedPreferences(MagicfaceViewController.a(this.jdField_a_of_type_Gfl.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController)).getBoolean(MagicfaceViewController.a(this.jdField_a_of_type_Gfl.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).getString(2131563409), false))) {
-      MagicfaceViewController.a(this.jdField_a_of_type_Gfl.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).y();
+    for (;;)
+    {
+      synchronized (QCallDetailActivity.a(this.a))
+      {
+        List localList = QCallDetailActivity.a(this.a).a(QCallDetailActivity.a(this.a), QCallDetailActivity.a(this.a));
+        if ((QCallDetailActivity.a(this.a) != null) && (localList != null) && (!localList.isEmpty()))
+        {
+          int i = 20;
+          int j = 0;
+          if ((j >= i) || (j >= localList.size())) {
+            break label191;
+          }
+          if (((QCallRecord)localList.get(j)).type == QCallRecord.TYPE_DATE)
+          {
+            i += 1;
+            localArrayList.add(localList.get(j));
+            j += 1;
+            continue;
+            this.a.b.runOnUiThread(new gfo(this, localArrayList, bool));
+          }
+        }
+        else
+        {
+          bool = true;
+        }
+      }
+      continue;
+      label191:
+      boolean bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gfn
  * JD-Core Version:    0.7.0.1
  */

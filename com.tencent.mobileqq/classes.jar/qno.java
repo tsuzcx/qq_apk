@@ -1,31 +1,16 @@
-import com.tencent.hotpatch.config.BasePatchConfig;
-import java.util.Comparator;
-
-public final class qno
-  implements Comparator
+public class qno
 {
-  public int a(BasePatchConfig paramBasePatchConfig1, BasePatchConfig paramBasePatchConfig2)
-  {
-    if ((paramBasePatchConfig1 == null) && (paramBasePatchConfig2 == null)) {}
-    do
-    {
-      return 0;
-      if ((paramBasePatchConfig1 == null) && (paramBasePatchConfig2 != null)) {
-        return 1;
-      }
-      if ((paramBasePatchConfig1 != null) && (paramBasePatchConfig2 == null)) {
-        return -1;
-      }
-      if (paramBasePatchConfig1.a > paramBasePatchConfig2.a) {
-        return -1;
-      }
-    } while (paramBasePatchConfig1.a >= paramBasePatchConfig2.a);
-    return 1;
-  }
+  public int a;
+  public String a = "";
+  public int b;
+  public String b = "";
+  public int c;
+  public String c = "";
+  public String d = "";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qno
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,44 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 
 public class uid
-  extends AnimateUtils.AnimationAdapter
 {
-  public uid(VisitorsActivity paramVisitorsActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  static int a(int paramInt)
   {
-    if (this.a.c > 0)
-    {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 200L);
-      return;
-    }
-    this.a.f.setVisibility(4);
+    return (0xFF00 & paramInt) >> 8;
   }
   
-  public void onAnimationStart(Animation paramAnimation)
+  public static void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    paramAnimation = this.a;
-    paramAnimation.c -= 1;
-    this.a.f.setVisibility(0);
+    if (paramFloat1 >= paramFloat2) {
+      throw new IllegalArgumentException("Minimum zoom has to be less than Medium zoom. Call setMinimumZoom() with a more appropriate value");
+    }
+    if (paramFloat2 >= paramFloat3) {
+      throw new IllegalArgumentException("Medium zoom has to be less than Maximum zoom. Call setMaximumZoom() with a more appropriate value");
+    }
+  }
+  
+  public static boolean a(ImageView.ScaleType paramScaleType)
+  {
+    if (paramScaleType == null) {
+      return false;
+    }
+    switch (uie.a[paramScaleType.ordinal()])
+    {
+    default: 
+      return true;
+    }
+    throw new IllegalStateException("Matrix scale type is not supported");
+  }
+  
+  public static boolean a(ImageView paramImageView)
+  {
+    return paramImageView.getDrawable() != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uid
  * JD-Core Version:    0.7.0.1
  */

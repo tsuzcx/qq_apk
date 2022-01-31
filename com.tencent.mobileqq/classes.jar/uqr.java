@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
 
 public class uqr
-  implements Runnable
 {
-  public uqr(PressToSpeakPanel paramPressToSpeakPanel) {}
-  
-  public void run()
+  public static boolean a(QQStoryAutoPlayView paramQQStoryAutoPlayView, MotionEvent paramMotionEvent)
   {
-    this.a.b();
+    return urk.a(paramQQStoryAutoPlayView, paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uqr
  * JD-Core Version:    0.7.0.1
  */

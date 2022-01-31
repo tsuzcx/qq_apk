@@ -2,20 +2,40 @@ package com.tencent.ark;
 
 import android.graphics.Rect;
 import android.graphics.RectF;
-import javax.microedition.khronos.egl.EGL10;
 
 public class ArkViewModel
   extends ArkViewModelBase
 {
   protected static final String TAG = "ArkApp.ArkViewModel";
-  protected static EGLContextHolder sOffscreenContext;
-  protected ArkTextureView mHardwareView;
-  protected final boolean mIsGpuRendering = ENV.isHardwareAcceleration();
+  protected IArkEGLContextManager mContextManager = null;
+  protected ArkTextureViewImpl mHardwareView;
   protected boolean mIsSurfaceInvalid = false;
   
   public ArkViewModel(ark.ApplicationCallback paramApplicationCallback)
   {
+    this(paramApplicationCallback, true);
+  }
+  
+  public ArkViewModel(ark.ApplicationCallback paramApplicationCallback, boolean paramBoolean)
+  {
     super(paramApplicationCallback);
+    if ((paramBoolean) && (ENV.isHardwareAcceleration()))
+    {
+      paramBoolean = true;
+      this.mIsGpuRendering = paramBoolean;
+      if (!ENV.isSingleThreadMode()) {
+        break label108;
+      }
+    }
+    label108:
+    for (int i = 1;; i = 2)
+    {
+      this.mContextManager = ArkEGLContextManager.getManager(i);
+      ENV.logI("ArkApp.ArkViewModel", String.format("ArkViewModel.create. single-thread-mode=%s, hardware-rendering=%s, virtual-context=%s", new Object[] { Boolean.toString(ENV.isSingleThreadMode()), Boolean.toString(this.mIsGpuRendering), Boolean.toString(EGLContextHolder.sIsVirtualContext) }));
+      return;
+      paramBoolean = false;
+      break;
+    }
   }
   
   public static EGLContextHolder getOffscreenContext()
@@ -23,37 +43,14 @@ public class ArkViewModel
     if (!ENV.isHardwareAcceleration()) {
       return null;
     }
-    if (sOffscreenContext == null)
-    {
-      sOffscreenContext = new EGLContextHolder();
-      if (!sOffscreenContext.create(EGL10.EGL_NO_CONTEXT, null, 1, 1))
-      {
-        ENV.logE("ArkApp.ArkViewModel", "sOffscreenContext.create.fail");
-        sOffscreenContext.release();
-        sOffscreenContext = null;
-        return null;
-      }
-    }
-    return sOffscreenContext;
+    return EGLContextHolder.getApplicationContext();
   }
   
   public static void precreateOfflineContext()
   {
-    if (ENV.mIsDebug) {
-      ENV.logI("ArkApp.ArkViewModel", "precreateOfflineContext");
+    if (ENV.isSingleThreadMode()) {
+      ArkDispatchTask.getInstance().postToArkThread(new ArkViewModel.1());
     }
-    if (ArkDispatchTask.getInstance().isTaskThread())
-    {
-      getOffscreenContext();
-      return;
-    }
-    ArkDispatchTask.getInstance().post(new Runnable()
-    {
-      public void run()
-      {
-        ArkViewModel.getOffscreenContext();
-      }
-    });
   }
   
   public void Update(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
@@ -64,17 +61,40 @@ public class ArkViewModel
   
   protected void applicationCreate(ark.Application paramApplication)
   {
-    if (!this.mIsGpuRendering) {
+    if (!ENV.isHardwareAcceleration())
+    {
+      ENV.logI("ArkApp.ArkViewModel", String.format("applicationCreate.app.no.hardware.rendering.this: %h", new Object[] { this }));
       super.applicationCreate(paramApplication);
-    }
-    while ((paramApplication == null) || (getOffscreenContext() != null)) {
       return;
     }
-    ENV.logE("ArkApp.ArkViewModel", String.format("getOffscreenContext.fail.this: %h", new Object[] { this }));
+    if (paramApplication == null)
+    {
+      ENV.logE("ArkApp.ArkViewModel", String.format("applicationCreate.app.is.null.this: %h", new Object[] { this }));
+      return;
+    }
+    paramApplication = this.mContextManager.createContext(this.mAppInfo.name);
+    if (paramApplication == null) {
+      ENV.logE("ArkApp.ArkViewModel", String.format("applicationCreate.createContext.fail.this: %h", new Object[] { this }));
+    }
+    EGLContextHolder.setApplicationContext(paramApplication);
+  }
+  
+  protected void applicationRelease(ark.Application paramApplication)
+  {
+    if (!ENV.isHardwareAcceleration()) {
+      super.applicationRelease(paramApplication);
+    }
+    do
+    {
+      return;
+      ENV.logE("ArkApp.ArkViewModel", String.format("applicationRelease.releaseContext.this: %h", new Object[] { this }));
+    } while (!this.mContextManager.releaseContext(this.mAppInfo.name));
+    EGLContextHolder.setApplicationContext(null);
   }
   
   public void createDrawTarget(ArkViewImplement paramArkViewImplement)
   {
+    ENV.logI("ArkApp.ArkViewModel", String.format("createDrawTarget.this.%h.app.%s.container.%h", new Object[] { this, this.mAppInfo.name, this.mContainer }));
     if (!this.mIsGpuRendering) {
       super.createDrawTarget(paramArkViewImplement);
     }
@@ -86,12 +106,12 @@ public class ArkViewModel
     } while ((paramArkViewImplement == null) || (this.mRectContainer.isEmpty()));
     if (this.mContainer != null)
     {
-      if (this.mContainer.CreateHardwareBitmap(this.mRectContainer.width(), this.mRectContainer.height())) {
-        this.mRectInvalidF.set(this.mRectContainerF);
+      if (!this.mContainer.CreateHardwareBitmap(this.mRectContainer.width(), this.mRectContainer.height())) {
+        ENV.logI("ArkApp.ArkViewModel", String.format("createDrawTarget.this.%h.app.%s.container.%h", new Object[] { this, this.mAppInfo.name, this.mContainer }));
       }
       this.mContainer.SetContextHolder(paramArkViewImplement.getContextHolder());
     }
-    this.mIsSurfaceInvalid = true;
+    invalidateRect();
     this.mTimeRecord.endOfCreateDrawTarget = System.currentTimeMillis();
   }
   
@@ -100,9 +120,11 @@ public class ArkViewModel
     if (!this.mIsGpuRendering) {
       super.destroyDrawTarget();
     }
-    while (this.mContainer == null) {
+    do
+    {
       return;
-    }
+      ENV.logI("ArkApp.ArkViewModel", String.format("destroyDrawTarget.this.%h.app.%s.container.%h", new Object[] { this, this.mAppInfo.name, this.mContainer }));
+    } while (this.mContainer == null);
     this.mContainer.SetContextHolder(null);
     this.mContainer.DestroyHardwareBitmap();
   }
@@ -139,27 +161,35 @@ public class ArkViewModel
       if ((!this.mRectInvalidF.isEmpty()) && (this.mContainer.Paint(this.mRectInvalidF.left, this.mRectInvalidF.top, this.mRectInvalidF.right, this.mRectInvalidF.bottom)))
       {
         if (i != 0) {
-          ENV.logE("ArkApp.ArkViewModel", String.format("doFrame.paint.succ.%h.(%.1f, %.1f, %.1f, %.1f)", new Object[] { this, Float.valueOf(this.mRectContainerF.left), Float.valueOf(this.mRectContainerF.top), Float.valueOf(this.mRectContainerF.right), Float.valueOf(this.mRectContainerF.bottom) }));
+          ENV.logI("ArkApp.ArkViewModel", String.format("doFrame.paint.succ.%h.(%.1f, %.1f, %.1f, %.1f)", new Object[] { this, Float.valueOf(this.mRectContainerF.left), Float.valueOf(this.mRectContainerF.top), Float.valueOf(this.mRectContainerF.right), Float.valueOf(this.mRectContainerF.bottom) }));
         }
         this.mRectInvalidF.setEmpty();
       }
     } while ((!this.mIsSurfaceInvalid) || (!this.mContainer.InvalidSurface()));
     this.mIsSurfaceInvalid = false;
     if (i != 0) {
-      ENV.logE("ArkApp.ArkViewModel", String.format("doFrame.invalid.succ.%h", new Object[] { this }));
+      ENV.logI("ArkApp.ArkViewModel", String.format("doFrame.invalid.succ.%h", new Object[] { this }));
     }
     endDraw();
+    didFirstPaint();
+  }
+  
+  public EGLContextHolder getContext()
+  {
+    return this.mContextManager.getContext(this.mAppInfo.name);
   }
   
   protected boolean initArkContainer(ArkViewImplement paramArkViewImplement)
   {
-    if (this.mIsGpuRendering)
+    if ((paramArkViewImplement == null) || (paramArkViewImplement.getView() == null)) {}
+    do
     {
-      if (!(paramArkViewImplement.getView() instanceof ArkTextureView)) {
-        return false;
+      return false;
+      if (!this.mIsGpuRendering) {
+        break;
       }
-      this.mHardwareView = ((ArkTextureView)paramArkViewImplement.getView());
-    }
+    } while (!(paramArkViewImplement.getView() instanceof ArkTextureViewImpl));
+    this.mHardwareView = ((ArkTextureViewImpl)paramArkViewImplement.getView());
     return super.initArkContainer(paramArkViewImplement);
   }
   
@@ -167,10 +197,22 @@ public class ArkViewModel
   {
     ark.MediaSetStub(ArkPlayer.sFactory);
   }
+  
+  public void invalidateRect()
+  {
+    super.invalidateRect();
+    this.mRectInvalidF.set(this.mRectContainerF);
+    this.mIsSurfaceInvalid = true;
+  }
+  
+  public boolean isGpuRenderingEnabled()
+  {
+    return this.mIsGpuRendering;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.ark.ArkViewModel
  * JD-Core Version:    0.7.0.1
  */

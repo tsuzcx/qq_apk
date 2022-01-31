@@ -1,27 +1,51 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.URL;
+import mqq.app.AppRuntime;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.json.JSONObject;
 
 public class aodz
-  extends Property
+  extends batt
 {
-  public aodz(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    super(paramClass, paramString);
-  }
-  
-  public Float a(GroundDrawable paramGroundDrawable)
-  {
-    return Float.valueOf(GroundDrawable.c(paramGroundDrawable));
-  }
-  
-  public void a(GroundDrawable paramGroundDrawable, Float paramFloat)
-  {
-    GroundDrawable.b(paramGroundDrawable, paramFloat.floatValue());
+    String str;
+    for (Object localObject = paramDownloadParams.url.getHost();; str = "")
+    {
+      try
+      {
+        localObject = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { BaseApplicationImpl.getApplication().getRuntime().getAccount(), localObject });
+        localObject = ndd.a(BaseApplicationImpl.getApplication(), (String)localObject, null, "GET", null, null, 5000, 5000);
+        if ((localObject == null) || (((HttpResponse)localObject).getStatusLine().getStatusCode() != 200)) {
+          continue;
+        }
+        localObject = ndd.a((HttpResponse)localObject);
+        localObject = new JSONObject((String)localObject);
+        if (Integer.parseInt(((JSONObject)localObject).getString("ret")) == 0)
+        {
+          localObject = ((JSONObject)localObject).getString("thumbUrl");
+          paramDownloadParams.url = new URL((String)localObject);
+          paramDownloadParams.urlStr = ((String)localObject);
+          localObject = super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
+          return localObject;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      return super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aodz
  * JD-Core Version:    0.7.0.1
  */

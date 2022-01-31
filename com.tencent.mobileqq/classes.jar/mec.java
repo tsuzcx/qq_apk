@@ -1,22 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.ui.AVLoadingDialogActivity;
 
-class mec
-  implements Runnable
+public class mec
+  extends BroadcastReceiver
 {
-  mec(meb parammeb, VideoPlayerWrapper paramVideoPlayerWrapper) {}
+  public mec(AVLoadingDialogActivity paramAVLoadingDialogActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.h();
+    if (paramIntent.getAction().equals("com.tencent.av.ui.AVLoadingDialogActivity.ACTION_LOADING_FINISH")) {
+      this.a.finish();
     }
-    VideoFeedsPlayManager.c(this.jdField_a_of_type_Meb.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mec
  * JD-Core Version:    0.7.0.1
  */

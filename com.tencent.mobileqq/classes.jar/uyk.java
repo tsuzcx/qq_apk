@@ -1,27 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Comparator;
 
-public class uyk
-  implements FileManagerUtil.TipsClickedInterface
+class uyk
+  implements Comparator<vlp>
 {
-  public uyk(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
+  uyk(uyj paramuyj) {}
   
-  public void a(View paramView)
+  public int a(vlp paramvlp1, vlp paramvlp2)
   {
-    paramView = DialogUtil.a(this.a.a, 230);
-    paramView.setTitle(2131437827);
-    paramView.setMessage(2131437845);
-    paramView.setNegativeButton(2131433015, new uyl(this, paramView));
-    paramView.setPositiveButton(2131433016, new uym(this));
-    paramView.show();
+    return vae.a(paramvlp1.a.mCreateTime, paramvlp2.a.mCreateTime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uyk
  * JD-Core Version:    0.7.0.1
  */

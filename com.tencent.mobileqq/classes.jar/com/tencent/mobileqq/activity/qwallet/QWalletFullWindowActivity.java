@@ -11,13 +11,13 @@ public class QWalletFullWindowActivity
     this.a = QWalletFullWindowActivity.QWalletFullWindowFragment.class;
   }
   
-  protected void doOnPause()
+  public void doOnPause()
   {
     super.doOnPause();
     sendBroadcast(new Intent("action_onpause"));
   }
   
-  protected void doOnResume()
+  public void doOnResume()
   {
     super.doOnResume();
     sendBroadcast(new Intent("action_onresume"));
@@ -31,13 +31,13 @@ public class QWalletFullWindowActivity
   public boolean showPreview()
   {
     boolean bool = super.showPreview();
-    if (findViewById(2131363454) != null) {}
+    if (findViewById(2131363457) != null) {}
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.QWalletFullWindowActivity
  * JD-Core Version:    0.7.0.1
  */

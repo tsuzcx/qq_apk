@@ -1,123 +1,132 @@
 package com.tencent.token.ui.base;
 
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.af;
-import com.tencent.token.core.bean.UpgradeDeterminResult;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.ui.BaseActivity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.PaintFlagsDrawFilter;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.token.utils.w;
 
-final class bi
-  extends Handler
+public class bi
+  extends Drawable
 {
-  bi(bh parambh) {}
+  private static int g = 50;
+  private Paint a = new Paint();
+  private Bitmap b;
+  private Bitmap c;
+  private Bitmap d;
+  private int e;
+  private int f;
+  private int h;
+  private Rect i;
+  private Rect j;
+  private Rect k;
+  private Rect l;
+  private int m;
+  private int n;
+  private int o;
+  private PaintFlagsDrawFilter p;
+  private boolean q = false;
   
-  public final void handleMessage(Message paramMessage)
+  public bi(Context paramContext, boolean paramBoolean)
   {
-    if ((bh.a(this.a) == null) || (bh.a(this.a).isFinishing())) {}
-    int i;
-    do
+    this.q = paramBoolean;
+    if (paramBoolean)
     {
-      do
-      {
-        return;
-        i = paramMessage.arg1;
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        case 1019: 
-          paramMessage = (byte[])paramMessage.obj;
-        }
-      } while (paramMessage == null);
-      bh.a(this.a, paramMessage);
-      af.a().a(bh.c(this.a), paramMessage, this.a.a, 2);
-      return;
-      bh.a(this.a).dismissDialog();
-      if (paramMessage.arg1 == 0)
-      {
-        bh.a(this.a, (UpgradeDeterminResult)paramMessage.obj);
-        bh.b(this.a, bh.b(this.a));
-        return;
-      }
-      paramMessage = (d)paramMessage.obj;
-      e.c("err " + paramMessage.a);
-      d.a(this.a.getResources(), paramMessage);
-      e.c("query up flow failed:" + paramMessage.a + "-" + paramMessage.b + "-" + paramMessage.c);
-      bh.a(this.a).showUserDialog(2131361831, paramMessage.c, 2131361800, null);
-      return;
-      byte[] arrayOfByte = (byte[])paramMessage.obj;
-      bh.a(this.a, arrayOfByte);
-      if ((i == 0) && (arrayOfByte != null))
-      {
-        af.a().a(bh.c(this.a), arrayOfByte, this.a.a, 2);
-        return;
-      }
-      if (i != 2) {
-        break;
-      }
-    } while (bh.a(this.a).isFinishing());
-    new WtloginCaptchaDialog(bh.a(this.a), this.a.a, Long.toString(bh.c(this.a))).show();
-    return;
-    if (i == -1000)
-    {
-      bh.a(this.a).dismissDialog();
-      bh.a(this.a).showToast(2131361943);
-      return;
+      this.b = BitmapFactory.decodeResource(paramContext.getResources(), 2130837890);
+      this.c = BitmapFactory.decodeResource(paramContext.getResources(), 2130837881);
+      this.d = BitmapFactory.decodeResource(paramContext.getResources(), 2130837793);
     }
-    if (i == 8192)
+    for (;;)
     {
-      bh.a(this.a).dismissDialog();
-      bh.a(this.a).showToast(2131362089);
+      this.p = new PaintFlagsDrawFilter(0, 3);
       return;
+      this.b = BitmapFactory.decodeResource(paramContext.getResources(), 2130837884);
+      this.c = BitmapFactory.decodeResource(paramContext.getResources(), 2130837880);
+      this.d = BitmapFactory.decodeResource(paramContext.getResources(), 2130837792);
+      this.m = w.a(paramContext, 0.0F);
+      this.n = w.a(paramContext, 4.0F);
+      this.o = w.a(paramContext, 30.0F);
     }
-    if ((i == 1) || (i == 15) || (i == 16))
-    {
-      bh.a(this.a).dismissDialog();
-      bh.a(this.a).showUserDialog(2131362364, this.a.getResources().getString(2131362365), 2131361800, new bj(this));
-      return;
-    }
-    bh.a(this.a).dismissDialog();
-    if ((paramMessage.getData() != null) && (paramMessage.getData().getString("loginerror") != null))
-    {
-      bh.a(this.a).showToast(this.a.getResources().getString(2131362091) + ":" + paramMessage.getData().getString("loginerror"));
-      return;
-    }
-    bh.a(this.a).showToast(2131362091);
-    return;
-    if (i == 0)
-    {
-      af.a().a(bh.c(this.a), bh.e(this.a), this.a.a);
-      return;
-    }
-    paramMessage = (d)paramMessage.obj;
-    e.c("err " + paramMessage.a);
-    d.a(this.a.getResources(), paramMessage);
-    e.c("query up flow failed:" + paramMessage.a + "-" + paramMessage.b + "-" + paramMessage.c);
-    bh.a(this.a).showToast(paramMessage.c);
-    return;
-    bh.a(this.a).dismissDialog();
-    if ((paramMessage.getData() != null) && (paramMessage.getData().getString("exception") != null))
-    {
-      bh.a(this.a).showToast(this.a.getResources().getString(2131362091) + ":" + paramMessage.getData().getString("exception"));
-      return;
-    }
-    bh.a(this.a).showToast(2131362091);
-    return;
-    bh.a(this.a).dismissDialog();
-    if (paramMessage.arg1 == 0)
-    {
-      bh.f(this.a);
-      return;
-    }
-    paramMessage = (d)paramMessage.obj;
-    d.a(this.a.getResources(), paramMessage);
-    e.c("query up flow failed:" + paramMessage.a + "-" + paramMessage.b + "-" + paramMessage.c);
-    bh.a(this.a).showUserDialog(2131361831, paramMessage.c, 2131361800, null);
   }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    int i2 = 0;
+    for (;;)
+    {
+      try
+      {
+        i1 = this.h % g * this.e;
+        if (this.h % g == g - 1) {
+          i1 = this.l.height();
+        }
+        this.a.setAntiAlias(true);
+        paramCanvas.setDrawFilter(this.p);
+        paramCanvas.drawBitmap(this.c, null, this.l, this.a);
+        paramCanvas.save();
+        this.j.set(0, 0, this.k.width(), this.l.top + i1);
+        paramCanvas.clipRect(this.j);
+        this.a.setAlpha(255);
+        paramCanvas.drawBitmap(this.b, null, this.l, this.a);
+        if (i1 - this.d.getHeight() > 0) {
+          continue;
+        }
+        if (this.q) {
+          continue;
+        }
+        this.i.set(this.l.left, i2 + this.l.top, this.l.right, i1 + this.l.top + this.n);
+        if (this.h % g <= g / 2) {
+          continue;
+        }
+        i1 = this.h;
+        i2 = g;
+        int i3 = this.f;
+        this.a.setAlpha(255 - (i1 % i2 * i3 & 0xFF));
+        paramCanvas.drawBitmap(this.d, null, this.i, this.a);
+        paramCanvas.restore();
+        this.h += 1;
+      }
+      catch (Exception paramCanvas)
+      {
+        int i1;
+        continue;
+      }
+      invalidateSelf();
+      return;
+      i2 = i1 - this.d.getHeight() + this.n;
+      continue;
+      this.i.set(this.l.left, i2 + this.l.top, this.l.right, i1 + this.l.top + this.n);
+      continue;
+      this.a.setAlpha(255);
+    }
+  }
+  
+  public int getOpacity()
+  {
+    return 0;
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.k = new Rect(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.i = new Rect(0, 0, this.k.width(), this.d.getHeight());
+    this.j = new Rect(0, 0, this.k.width(), this.k.height());
+    paramInt1 = this.k.width() - this.m;
+    paramInt2 = this.k.height() - this.m;
+    this.l = new Rect((this.k.width() - paramInt1) / 2, (this.k.height() - paramInt2) / 2, paramInt1 + (this.k.width() - paramInt1) / 2, paramInt2 + (this.k.height() - paramInt2) / 2);
+    this.e = (this.l.height() / g);
+    this.f = (255 / (g / 2));
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

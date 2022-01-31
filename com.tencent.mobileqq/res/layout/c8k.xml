@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/ls2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/ls3" android:background="@drawable/intimate_relationship_memory_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="-4.0dip" android:layout_marginRight="-4.0dip" android:layout_marginBottom="-7.0dip">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="62.0dip">
+            <ImageView android:id="@id/l_m" android:layout_width="fill_parent" android:layout_height="62.0dip" />
+            <TextView android:textSize="17.0sp" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/l4u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:text="@string/ngl" android:singleLine="true" android:includeFontPadding="false" android:layout_centerVertical="true" />
+            <com.tencent.widget.URLThemeImageView android:id="@id/icon" android:background="@drawable/icon_recent_public_account" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="2.0dip" android:layout_toRightOf="@id/l4u" android:layout_centerVertical="true" />
+            <TextView android:textSize="14.0sp" android:textColor="#ff4d94ff" android:id="@id/eab" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="33.0dip" android:text="@string/ngr" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <com.tencent.widget.ThemeImageView android:id="@id/yw" android:background="@drawable/crl" android:layout_width="7.0dip" android:layout_height="11.0dip" android:layout_marginRight="24.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,50 +1,51 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.opengl.QQGlRender;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.eqq.EnterpriseDetailActivity;
+import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.widget.Switch;
 
 public class bix
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  static final String jdField_a_of_type_JavaLangString = "reason";
-  static final String b = "homekey";
-  static final String c = "rencentkeys";
+  public bix(EnterpriseDetailActivity paramEnterpriseDetailActivity, mobileqq_mp.ConfigInfo paramConfigInfo, Switch paramSwitch, boolean paramBoolean) {}
   
-  public bix(AVActivity paramAVActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
-    {
-      paramContext = paramIntent.getStringExtra("reason");
-      if ((paramContext != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController != null))
+    if (paramInt == 0) {
+      if ((3 == this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo.state_id.get()) && (this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo.state.get() == 0))
       {
-        if (!paramContext.equals("homekey")) {
-          break label125;
-        }
-        if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().a == 4)
+        paramDialogInterface = this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity;
+        localConfigInfo = this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo;
+        localSwitch = this.jdField_a_of_type_ComTencentWidgetSwitch;
+        if (!this.jdField_a_of_type_Boolean)
         {
-          if (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().e) {
-            break label100;
-          }
-          ReportController.b(null, "CliOper", "", "", "0X80041BB", "0X80041BB", 0, 0, "", "", "", "");
+          bool = true;
+          EnterpriseDetailActivity.a(paramDialogInterface, localConfigInfo, localSwitch, bool);
         }
       }
+      else
+      {
+        EnterpriseDetailActivity.a(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
+        this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a.isConfirmed = true;
+        EnterpriseDetailActivity.b(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a);
+        this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.g = false;
+      }
     }
-    label100:
-    label125:
-    while ((!paramContext.equals(QQGlRender.SHOW1STFRAME_BROADCAST)) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null))
-    {
-      return;
-      ReportController.b(null, "CliOper", "", "", "0X80041BE", "0X80041BE", 0, 0, "", "", "", "");
-      return;
+    while (paramInt != 1) {
+      for (;;)
+      {
+        mobileqq_mp.ConfigInfo localConfigInfo;
+        Switch localSwitch;
+        return;
+        boolean bool = false;
+      }
     }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(84) });
+    EnterpriseDetailActivity.a(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a.isConfirmed = true;
+    EnterpriseDetailActivity.b(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.a);
+    this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.g = false;
   }
 }
 

@@ -1,38 +1,26 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout.DoodleLayoutListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
 
 public class urw
-  implements DoodleLayout.DoodleLayoutListener
+  extends Job<Object, Object, Object>
 {
-  public urw(DoodlePanel paramDoodlePanel) {}
-  
-  public void a(int paramInt)
+  public urw(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, urt paramurt)
   {
-    DoodlePanel.a(this.a);
+    super(paramString);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    if (paramInt1 == 2)
-    {
-      if (!DoodlePanel.a(this.a))
-      {
-        DoodlePanel.a(this.a, true);
-        urx localurx = new urx(this);
-        DialogUtil.a(this.a.getContext(), 230, null, this.a.getContext().getString(2131439077), null, this.a.getContext().getString(2131439081), localurx, null).show();
-      }
-      return;
-    }
-    QQToast.a(this.a.getContext(), this.a.getContext().getString(2131439078), 0).a();
+    this.jdField_a_of_type_Urt.a().a(880001, "no network", null);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     urw
  * JD-Core Version:    0.7.0.1
  */

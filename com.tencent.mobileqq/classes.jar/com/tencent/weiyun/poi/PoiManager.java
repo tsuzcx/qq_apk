@@ -5,14 +5,11 @@ import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Message;
 import com.tencent.weiyun.WeiyunLiteGlobal;
-import com.tencent.weiyun.callback.FetchPOICallback;
 import com.tencent.weiyun.cmd.CommandManager;
 import com.tencent.weiyun.data.PoiItem;
 import com.tencent.weiyun.utils.Singleton;
-import com.tencent.weiyun.utils.WyLog;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -26,13 +23,7 @@ public final class PoiManager
   private static final int MSG_INIT = 1;
   private static final int NETWORK_REQ_LIMIT = 50;
   private static final String TAG = "PoiManager";
-  private static Singleton<PoiManager, Void> sInstance = new Singleton()
-  {
-    protected PoiManager create(Void paramAnonymousVoid)
-    {
-      return new PoiManager(null);
-    }
-  };
+  private static Singleton<PoiManager, Void> sInstance = new PoiManager.2();
   private final Comparator<PoiItem> mComparator;
   private final Handler mHandler;
   private final HashSet<String> mPoiKeys;
@@ -43,24 +34,7 @@ public final class PoiManager
     localHandlerThread.start();
     this.mHandler = new Handler(localHandlerThread.getLooper(), this);
     this.mPoiKeys = new HashSet();
-    this.mComparator = new Comparator()
-    {
-      public int compare(PoiItem paramAnonymousPoiItem1, PoiItem paramAnonymousPoiItem2)
-      {
-        if (paramAnonymousPoiItem1.longitude < paramAnonymousPoiItem2.longitude) {}
-        do
-        {
-          return -1;
-          if (paramAnonymousPoiItem1.longitude > paramAnonymousPoiItem2.longitude) {
-            return 1;
-          }
-        } while (paramAnonymousPoiItem1.latitude < paramAnonymousPoiItem2.latitude);
-        if (paramAnonymousPoiItem1.latitude > paramAnonymousPoiItem2.latitude) {
-          return 1;
-        }
-        return 0;
-      }
-    };
+    this.mComparator = new PoiManager.1(this);
   }
   
   public static PoiManager getInstance()
@@ -68,7 +42,7 @@ public final class PoiManager
     return (PoiManager)sInstance.get(null);
   }
   
-  private void performFetchPoi(List<PoiItem> paramList, final IFetchPoiListener paramIFetchPoiListener)
+  private void performFetchPoi(List<PoiItem> paramList, PoiManager.IFetchPoiListener paramIFetchPoiListener)
   {
     if ((paramList == null) || (paramList.isEmpty())) {}
     for (;;)
@@ -100,7 +74,7 @@ public final class PoiManager
             paramIFetchPoiListener.onSuccess((List)localObject1, paramList.isEmpty());
           }
         }
-        final boolean bool = paramList.isEmpty();
+        boolean bool = paramList.isEmpty();
         while (!bool)
         {
           if (paramList.size() < 50) {}
@@ -117,51 +91,7 @@ public final class PoiManager
             }
           }
           bool = paramList.isEmpty();
-          WeiyunLiteGlobal.getInstance().getCommandManager().fetchPOI(Arrays.asList((Object[])localObject1), new FetchPOICallback()
-          {
-            public void onError(int paramAnonymousInt, String paramAnonymousString)
-            {
-              if (paramIFetchPoiListener != null) {
-                paramIFetchPoiListener.onError(paramAnonymousInt, paramAnonymousString, bool);
-              }
-            }
-            
-            public void onSuccess(List<PoiItem> paramAnonymousList)
-            {
-              Object localObject = paramAnonymousList;
-              if (paramAnonymousList == null) {
-                localObject = new ArrayList(0);
-              }
-              if (!((List)localObject).isEmpty())
-              {
-                int j = this.val$singleReq.length;
-                int i = 0;
-                paramAnonymousList = ((List)localObject).iterator();
-                while (paramAnonymousList.hasNext())
-                {
-                  PoiItem localPoiItem1 = (PoiItem)paramAnonymousList.next();
-                  if (i < j)
-                  {
-                    PoiItem localPoiItem2 = this.val$singleReq[i];
-                    localPoiItem1.longitude = localPoiItem2.longitude;
-                    localPoiItem1.latitude = localPoiItem2.latitude;
-                    i += 1;
-                  }
-                  else
-                  {
-                    paramAnonymousList.remove();
-                    WyLog.w("PoiManager", "fetchPOI: server respond error.");
-                  }
-                }
-              }
-              paramAnonymousList = new ArrayList((Collection)localObject);
-              if (paramIFetchPoiListener != null) {
-                paramIFetchPoiListener.onSuccess((List)localObject, bool);
-              }
-              Collections.sort(paramAnonymousList, PoiManager.this.mComparator);
-              PoiHelper.insertPoi(paramAnonymousList);
-            }
-          });
+          WeiyunLiteGlobal.getInstance().getCommandManager().fetchPOI(Arrays.asList((Object[])localObject1), new PoiManager.3(this, (PoiItem[])localObject1, paramIFetchPoiListener, bool));
         }
       }
     }
@@ -172,7 +102,7 @@ public final class PoiManager
     this.mHandler.removeMessages(2);
   }
   
-  public void fetchPoi(List<PoiItem> paramList, IFetchPoiListener paramIFetchPoiListener)
+  public void fetchPoi(List<PoiItem> paramList, PoiManager.IFetchPoiListener paramIFetchPoiListener)
   {
     if ((paramList == null) || (paramList.isEmpty())) {
       return;
@@ -192,7 +122,7 @@ public final class PoiManager
       }
     }
     if (???.what == 2) {
-      performFetchPoi((List)((Object[])(Object[])???.obj)[0], (IFetchPoiListener)((Object[])(Object[])???.obj)[1]);
+      performFetchPoi((List)((Object[])(Object[])???.obj)[0], (PoiManager.IFetchPoiListener)((Object[])(Object[])???.obj)[1]);
     }
     return true;
   }
@@ -214,17 +144,10 @@ public final class PoiManager
   {
     Message.obtain(this.mHandler, 1).sendToTarget();
   }
-  
-  public static abstract interface IFetchPoiListener
-  {
-    public abstract void onError(int paramInt, String paramString, boolean paramBoolean);
-    
-    public abstract void onSuccess(List<PoiItem> paramList, boolean paramBoolean);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.weiyun.poi.PoiManager
  * JD-Core Version:    0.7.0.1
  */

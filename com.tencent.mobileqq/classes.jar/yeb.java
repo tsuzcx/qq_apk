@@ -1,22 +1,27 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.graphics.drawable.AnimationDrawable;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.4.1;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
 
 public class yeb
-  implements Runnable
+  implements ylh
 {
-  public yeb(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  yeb(ydw paramydw) {}
   
-  public void run()
+  public void a() {}
+  
+  public void a(AnimationDrawable paramAnimationDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "mStartHidingRunnable run");
+    if (ydw.g(this.a) != null) {
+      ydw.m(this.a).runOnUiThread(new DetailBaseAdapter.4.1(this, paramAnimationDrawable));
     }
-    this.a.f();
   }
+  
+  public void a(QQAnimationDrawable paramQQAnimationDrawable) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yeb
  * JD-Core Version:    0.7.0.1
  */

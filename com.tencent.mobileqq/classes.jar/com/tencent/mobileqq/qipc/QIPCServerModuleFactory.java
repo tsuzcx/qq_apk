@@ -1,104 +1,254 @@
 package com.tencent.mobileqq.qipc;
 
-import com.etrump.mixlayout.VasFontIPCModule;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsIPCServer;
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterModule;
-import com.tencent.gdtad.ipc.GdtIpc;
-import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule;
-import com.tencent.mobileqq.app.BabyQIPCModule;
-import com.tencent.mobileqq.app.CommonModule;
-import com.tencent.mobileqq.app.SignInModule;
-import com.tencent.mobileqq.armap.ipc.ArMapIPCProxy;
-import com.tencent.mobileqq.campuscircle.CampusCircleIpcServer;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonIPCModule;
-import com.tencent.mobileqq.precover.ipc.PrecoverIPCServer;
-import com.tencent.mobileqq.realname.RealNameModule;
-import com.tencent.mobileqq.shortvideo.redbag.VideoPlayIPCServer;
-import com.tencent.mobileqq.statistics.battery.BatteryIPCModule;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
-import com.tencent.mobileqq.vas.VasMonitorIPCModule;
-import com.tencent.open.downloadnew.DownloaderGetCodeServer;
-import cooperation.comic.ipc.QQComicIPCModule;
-import cooperation.photoplus.PhotoPlusModule;
-import cooperation.qzone.QzoneIPCModule;
+import aaqt;
+import aaqz;
+import abwt;
+import aijf;
+import ajaz;
+import alon;
+import alpx;
+import alru;
+import altn;
+import amcq;
+import ampz;
+import amsa;
+import anqp;
+import aobg;
+import aocb;
+import aogi;
+import apnm;
+import apok;
+import arbl;
+import arxv;
+import aspa;
+import asxn;
+import atfk;
+import atkm;
+import atnl;
+import awjn;
+import awny;
+import axkh;
+import azjt;
+import azsf;
+import aztn;
+import bahs;
+import baic;
+import baol;
+import bazo;
+import bcuh;
+import bdua;
+import bdue;
+import bduu;
+import bfbl;
+import bfou;
+import binj;
+import biqg;
+import bjac;
+import bjfr;
+import bkix;
+import blau;
+import blis;
+import bmcy;
+import com.tencent.mobileqq.mini.reuse.MiniAppBannerIPCModule;
+import com.tencent.mobileqq.mini.reuse.MiniAppTransferModule;
+import com.tencent.mobileqq.vas.QuickUpdateIPCModule;
 import cooperation.qzone.QzoneVideoSoDownloadModule;
+import gh;
+import ldx;
+import mqq.app.SecurityFileModule;
+import pea;
+import reg;
+import xcy;
 
 public class QIPCServerModuleFactory
 {
-  public static QIPCModule a(String paramString)
+  public static final String TAG = "QIPCServerModuleFactory";
+  
+  public static QIPCModule onCreateModule(String paramString)
   {
     if ("CommonModule".equals(paramString)) {
-      return CommonModule.a();
+      return alpx.a();
     }
     if ("InnerDnsModule".equals(paramString)) {
-      return InnerDns.a();
+      return bazo.a();
     }
     if ("Module_DownloaderGetCodeServer".equals(paramString)) {
-      return DownloaderGetCodeServer.a().a();
+      return bfou.a().a();
     }
     if ("PhotoPlusModule".equals(paramString)) {
-      return PhotoPlusModule.a();
+      return biqg.a();
     }
     if ("PrecoverIPCServer_MODEL".equals(paramString)) {
-      return PrecoverIPCServer.a().a();
+      return awny.a().a();
     }
     if ("ArtFilterModule".equals(paramString)) {
-      return ArtFilterModule.a();
-    }
-    if ("ArMapModule".equals(paramString)) {
-      return ArMapIPCProxy.a().a();
+      return xcy.a();
     }
     if ("Module_VideoFeedsIPCServer".equals(paramString)) {
-      return VideoFeedsIPCServer.a().a();
+      return reg.a().a();
     }
     if ("BatteryModule".equals(paramString)) {
-      return BatteryIPCModule.a();
+      return azsf.a();
     }
     if ("VasMonitorIPCModule".equals(paramString)) {
-      return VasMonitorIPCModule.a();
+      return bduu.a();
     }
     if ("SignInModule".equals(paramString)) {
-      return SignInModule.a();
+      return amcq.a();
     }
     if ("QQComicIPCModule".equals(paramString)) {
-      return QQComicIPCModule.a();
+      return binj.a();
     }
     if ("QWalletIPCModule".equals(paramString)) {
-      return QWalletIPCModule.a();
+      return ajaz.a();
+    }
+    if ("WadlQIPCModule".equals(paramString)) {
+      return bkix.a();
     }
     if ("CampusCircleIpcServer_Model".equals(paramString)) {
-      return CampusCircleIpcServer.a();
+      return aobg.a();
+    }
+    if ("soso_interface".equals(paramString)) {
+      return ampz.a();
     }
     if ("REAL_NAME".equals(paramString)) {
-      return RealNameModule.a();
+      return axkh.a();
     }
     if ("QzoneVideoSoDownloadModule".equals(paramString)) {
       return QzoneVideoSoDownloadModule.a();
     }
     if ("QzoneIPCModule".equals(paramString)) {
-      return QzoneIPCModule.a();
+      return bjfr.a();
     }
     if ("Module_VideoPlayIPCServer".equals(paramString)) {
-      return VideoPlayIPCServer.a().a();
+      return azjt.a().a();
     }
     if ("gdt_ipc".equals(paramString)) {
-      return GdtIpc.a();
+      return aaqz.a();
+    }
+    if ("gdt_ipc_module_client_to_server".equals(paramString)) {
+      return aaqt.a();
     }
     if ("VasFontIPCModule".equals(paramString)) {
-      return VasFontIPCModule.a();
+      return gh.a();
     }
     if ("EmoticonIPCModule".equals(paramString)) {
-      return EmoticonIPCModule.a();
+      return apok.a();
     }
     if ("BabyQIPCModule".equals(paramString)) {
-      return BabyQIPCModule.a();
+      return alon.a();
+    }
+    if ("VasApngIPCModule".equals(paramString)) {
+      return bdua.a();
+    }
+    if ("ThemeIPCModule".equals(paramString)) {
+      return baol.a();
+    }
+    if ("QuickUpdateIPCModule".equals(paramString)) {
+      return QuickUpdateIPCModule.a();
+    }
+    if ("HardCoderModule".equals(paramString)) {
+      return abwt.a();
+    }
+    if ("TeamWorkModule".equals(paramString)) {
+      return bahs.a();
+    }
+    if ("ChooseImageIPCModule".equals(paramString)) {
+      return anqp.a();
+    }
+    if ("IdentificationIpcServer_Model".equals(paramString)) {
+      return asxn.a();
+    }
+    if ("MiniAppTransferModule".equals(paramString)) {
+      return MiniAppTransferModule.getInstance();
+    }
+    if ("MiniMsgIPCServer".equals(paramString)) {
+      return aijf.a();
+    }
+    if ("ColorNoteIPCServer".equals(paramString)) {
+      return aocb.a();
+    }
+    if ("JubaoIPCServer".equals(paramString)) {
+      return atkm.a();
+    }
+    if ("SecurityFileModule".equals(paramString)) {
+      return SecurityFileModule.getInstance();
+    }
+    if ("PublicAccountModule".equals(paramString)) {
+      return amsa.a();
+    }
+    if ("Module_WeiyunDownloadService".equals(paramString)) {
+      return arbl.a().a();
+    }
+    if ("Module_TDFileChangeNameQIPCModule".equals(paramString)) {
+      return baic.a();
+    }
+    if ("NetworkMonitorIPCModule".equals(paramString)) {
+      return aztn.a();
+    }
+    if (MiniAppBannerIPCModule.NAME.equals(paramString)) {
+      return MiniAppBannerIPCModule.getInstance();
+    }
+    if ("AECameraLaunchServer".equals(paramString)) {
+      return blau.a();
+    }
+    if ("VasCommonIPCModule".equals(paramString)) {
+      return bdue.a();
+    }
+    if ("ListenTogetherIPCModuleMainServer".equals(paramString)) {
+      return atnl.a();
+    }
+    if ("CameraEmoIpcServer".equals(paramString)) {
+      return apnm.a();
+    }
+    if ("Module_CheckInServer".equals(paramString)) {
+      return bcuh.a();
+    }
+    if ("PeakIpcModuleServer".equals(paramString)) {
+      return bmcy.a();
+    }
+    if ("AECameraGetInfoServer".equals(paramString)) {
+      return blis.a();
+    }
+    if ("FriendQIPCModule".equals(paramString)) {
+      return altn.a();
+    }
+    if ("ExtendFriendQIPCModule".equals(paramString)) {
+      return alru.a();
+    }
+    if ("open_sdk_qipc_module".equals(paramString)) {
+      return bfbl.a();
+    }
+    if ("PicSTWXQIPCModule".equals(paramString)) {
+      return awjn.a();
+    }
+    if ("ReadInJoyIPCModule".equals(paramString)) {
+      return pea.a();
+    }
+    if ("DanmuDataIPCServer".equals(paramString)) {
+      return aogi.a();
+    }
+    if ("AioShareMusicIPCMainClient".equals(paramString)) {
+      return ldx.a();
+    }
+    if ("QQGameIPCModule".equals(paramString)) {
+      return aspa.a();
+    }
+    if ("TogetherBusinessIPCModule".equals(paramString)) {
+      return atfk.a();
+    }
+    if ("ReaderIPCModule".equals(paramString)) {
+      return bjac.a();
+    }
+    if ("FlutterMainQIPCModule".equals(paramString)) {
+      return arxv.a();
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qipc.QIPCServerModuleFactory
  * JD-Core Version:    0.7.0.1
  */

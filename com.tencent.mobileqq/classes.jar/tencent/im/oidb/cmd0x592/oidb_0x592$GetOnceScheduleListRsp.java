@@ -10,11 +10,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x592$GetOnceScheduleListRsp
-  extends MessageMicro
+  extends MessageMicro<GetOnceScheduleListRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_error_msg = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_msg_result_list = PBField.initRepeatMessage(oidb_0x592.GetScheduleResult.class);
+  public final PBRepeatMessageField<oidb_0x592.GetScheduleResult> rpt_msg_result_list = PBField.initRepeatMessage(oidb_0x592.GetScheduleResult.class);
   public final PBUInt32Field uint32_get_direction = PBField.initUInt32(0);
   public final PBUInt32Field uint32_result = PBField.initUInt32(0);
   public final PBUInt64Field uint64_end_time = PBField.initUInt64(0L);
@@ -27,7 +27,7 @@ public final class oidb_0x592$GetOnceScheduleListRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x592.oidb_0x592.GetOnceScheduleListRsp
  * JD-Core Version:    0.7.0.1
  */

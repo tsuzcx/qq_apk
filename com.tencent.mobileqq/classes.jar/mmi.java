@@ -1,32 +1,85 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.TimeUtil;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.XListView.DrawFinishedListener;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import mqq.app.BaseActivity;
 
 public class mmi
-  implements XListView.DrawFinishedListener
 {
-  public mmi(FastWebActivity paramFastWebActivity) {}
+  View a;
+  View b;
   
-  public void a()
+  public mmi(View paramView)
   {
-    if (FastWebActivity.f(this.a))
-    {
-      FastWebActivity.c(this.a, false);
-      FastWebActivity.e(this.a);
-      long l = TimeUtil.a("FastWebActivity.show");
-      TimeUtil.b("fast_web_show_light_house_draw_finish");
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(FastWebActivity.a(this.a));
-      ThreadManager.post(new mmj(this, l, localArrayList), 5, null, false);
+    this.a = paramView.findViewById(2131372877);
+    this.b = paramView.getRootView().findViewById(2131372878);
+  }
+  
+  static void a(View paramView, int paramInt)
+  {
+    if (paramView == null) {
+      return;
     }
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
+    localLayoutParams.height = paramInt;
+    paramView.setLayoutParams(localLayoutParams);
+  }
+  
+  public void a(BaseActivity paramBaseActivity)
+  {
+    if ((paramBaseActivity == null) || (this.a == null)) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (ImmersiveUtils.isSupporImmersive() == 1) {
+            break;
+          }
+          this.a.setVisibility(8);
+        } while (this.b == null);
+        this.b.setVisibility(8);
+        return;
+        int i = ImmersiveUtils.getStatusBarHeight(paramBaseActivity);
+        QLog.w("QavStatusBar", 1, "adjust, height[" + i + "]");
+        if (i > 0)
+        {
+          a(this.a, i);
+          a(this.b, i);
+        }
+      } while (AudioHelper.a(0) != 1);
+      this.a.setBackgroundColor(2140405971);
+    } while (this.b == null);
+    this.b.setBackgroundColor(2140405971);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.a != null)
+    {
+      QLog.w("QavStatusBar", 1, "setBackgroundColor, bDoubleScreen[" + paramBoolean + "]");
+      if (paramBoolean) {
+        this.a.setBackgroundColor(-16777216);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.setBackgroundColor(0);
+  }
+  
+  public boolean a()
+  {
+    return (this.a != null) && (this.a.getVisibility() == 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mmi
  * JD-Core Version:    0.7.0.1
  */

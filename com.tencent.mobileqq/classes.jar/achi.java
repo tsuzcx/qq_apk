@@ -1,22 +1,47 @@
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
 
 public class achi
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public achi(EquipmentLockImpl paramEquipmentLockImpl) {}
+  public achi(AutoRemarkActivity paramAutoRemarkActivity) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DevLock", 2, "notification runnable run.");
+    Object localObject = new Rect();
+    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+    DisplayMetrics localDisplayMetrics = this.a.getResources().getDisplayMetrics();
+    int i = Math.max(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
+    if (i - (((Rect)localObject).bottom - ((Rect)localObject).top) > i / 3)
+    {
+      i = 1;
+      localObject = this.a.getCurrentFocus();
+      if (i != 0) {
+        break label101;
+      }
+      if ((localObject != null) && ((localObject instanceof EditText))) {
+        ((EditText)localObject).setCursorVisible(false);
+      }
     }
-    this.a.b();
+    label101:
+    while ((localObject == null) || (!(localObject instanceof EditText)))
+    {
+      return;
+      i = 0;
+      break;
+    }
+    ((EditText)localObject).setCursorVisible(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     achi
  * JD-Core Version:    0.7.0.1
  */

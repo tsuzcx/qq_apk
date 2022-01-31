@@ -1,23 +1,26 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgNumAnim;
-import com.tencent.mobileqq.activity.qwallet.widget.NumAnim.AnimListener;
-import java.util.List;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-public class upe
-  implements NumAnim.AnimListener
+class upe
+  implements zam
 {
-  public upe(GoldMsgNumAnim paramGoldMsgNumAnim) {}
+  upe(upd paramupd, zan paramzan, PublishVideoEntry paramPublishVideoEntry) {}
   
-  public void onFinished()
+  public void a(zan paramzan)
   {
-    if (this.a.jdField_a_of_type_JavaUtilList.size() < 1) {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, GoldMsgNumAnim.a(this.a));
-    }
+    this.jdField_a_of_type_Zan.a(0);
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeEnd = 60000;
+    upd.a(this.jdField_a_of_type_Upd, "convertImageToVideo ");
+  }
+  
+  public void b(zan paramzan)
+  {
+    this.jdField_a_of_type_Zan.a(paramzan.a());
+    upd.a(this.jdField_a_of_type_Upd, "convertImageToVideo ");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     upe
  * JD-Core Version:    0.7.0.1
  */

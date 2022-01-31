@@ -1,21 +1,19 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import android.view.View;
 
 class yyd
-  implements Runnable
+  implements yyj
 {
-  yyd(yyc paramyyc) {}
+  yyd(yya paramyya) {}
   
-  public void run()
+  public void a(View paramView, float paramFloat)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.setVisibility(8);
-    }
+    paramView.getLayoutParams().width = ((int)paramFloat);
+    paramView.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yyd
  * JD-Core Version:    0.7.0.1
  */

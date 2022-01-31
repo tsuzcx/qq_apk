@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Qworkflow$TodoChangeItem
-  extends MessageMicro
+  extends MessageMicro<TodoChangeItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_workflow_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -26,7 +26,7 @@ public final class Qworkflow$TodoChangeItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.trunk.Qworkflow.Qworkflow.TodoChangeItem
  * JD-Core Version:    0.7.0.1
  */

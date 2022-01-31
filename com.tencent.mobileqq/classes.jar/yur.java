@@ -1,52 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.store.webview.ApolloUrlInterceptor;
-import com.tencent.mobileqq.apollo.store.webview.ApolloWebDataHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class yur
-  implements Runnable
+final class yur
+  implements bfah
 {
-  public yur(ApolloUrlInterceptor paramApolloUrlInterceptor, ByteArrayOutputStream paramByteArrayOutputStream) {}
+  yur(String paramString) {}
   
-  public void run()
+  public void a(BaseResp paramBaseResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloUrlInterceptor", 1, "session(" + this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor.a + ") onClose:cachedStream size:" + this.jdField_a_of_type_JavaIoByteArrayOutputStream.size());
-    }
-    try
-    {
-      str = this.jdField_a_of_type_JavaIoByteArrayOutputStream.toString("UTF-8");
-      this.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
-      if ((!TextUtils.isEmpty(str)) && (!ApolloUrlInterceptor.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor)))
-      {
-        long l = System.currentTimeMillis();
-        ApolloWebDataHandler.a().b(ApolloUrlInterceptor.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor), str);
-        ApolloUrlInterceptor.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor, true);
-        if (QLog.isColorLevel()) {
-          QLog.d("apollo_client_ApolloUrlInterceptor", 4, "session(" + this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor.a + ") onClose:save bridgeStream " + (System.currentTimeMillis() - l) + " ms. htmlString.length:" + str.length());
-        }
-      }
-      ApolloUrlInterceptor.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor).set(false);
-      if ((ApolloUrlInterceptor.b(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor)) && (QLog.isColorLevel())) {
-        QLog.d("apollo_client_ApolloUrlInterceptor", 4, "session(" + this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor.a + ") onClose: postForceDestroyIfNeed send destroy message.");
-      }
+    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
       return;
     }
-    catch (Throwable localThrowable)
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
     {
-      for (;;)
-      {
-        String str = null;
-        QLog.e("apollo_client_ApolloUrlInterceptor", 1, "session(" + this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor.a + ") onClose error:" + localThrowable.getMessage());
-      }
+    case -1: 
+    default: 
+      ybk.a(1, 2131720031);
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      ybk.a(2, 2131720050);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yur
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,51 @@
-import com.tencent.av.AVLog;
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.OnResourceDownloadListener;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
 public class ahhr
-  implements INetEngine.INetEngineListener
+  extends ahes
 {
-  public ahhr(CaptureVideoFilterManager paramCaptureVideoFilterManager) {}
-  
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public ahhr(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    FilterDesc localFilterDesc = (FilterDesc)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
-    if (paramNetResp.jdField_a_of_type_Int != 0)
-    {
-      AVLog.c("CaptureVideoFilterManager", "download IconFile failed. errorCode: " + paramNetResp.b + ", errorMsg: " + paramNetResp.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.c);
-      return;
-    }
-    if ((CaptureVideoFilterManager.a(this.a).decrementAndGet() == 0) && (CaptureVideoFilterManager.a(this.a) != null)) {
-      CaptureVideoFilterManager.a(this.a).a(true);
-    }
-    AVLog.c("CaptureVideoFilterManager", "download iconFile success. file: " + localFilterDesc.c);
+    super(paramContext, paramQQAppInterface, paramBoolean);
+  }
+  
+  protected int a()
+  {
+    return 10028;
+  }
+  
+  protected void a(RecommendTroopItem paramRecommendTroopItem)
+  {
+    super.a(paramRecommendTroopItem);
+    azqs.b(null, "dc00899", "Grp_find_new", "", "grptab", "Clk_join", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int b()
+  {
+    return 21;
+  }
+  
+  protected void b(RecommendTroopItem paramRecommendTroopItem)
+  {
+    super.b(paramRecommendTroopItem);
+    azqs.b(null, "dc00899", "Grp_recom", "", "search", "recom_clk_add", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int c()
+  {
+    return 10003;
+  }
+  
+  protected void c(RecommendTroopItem paramRecommendTroopItem)
+  {
+    super.c(paramRecommendTroopItem);
+    azqs.b(null, "dc00899", "Grp_find_new", "", "grptab", "exp_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahhr
  * JD-Core Version:    0.7.0.1
  */

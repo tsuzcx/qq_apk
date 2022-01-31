@@ -15,6 +15,7 @@ import android.widget.TextView;
 public class ActivateFriendGridItem
   extends RelativeLayout
 {
+  public int a;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   public boolean a;
@@ -35,11 +36,11 @@ public class ActivateFriendGridItem
   
   private void a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
-    LayoutInflater.from(paramContext).inflate(2130970175, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362719));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369414));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362754));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369415));
+    LayoutInflater.from(paramContext).inflate(2131560790, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367819));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371901));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370977));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363295));
     if (!paramBoolean2)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setHorizontallyScrolling(false);
@@ -47,7 +48,7 @@ public class ActivateFriendGridItem
     }
     if (!paramBoolean1)
     {
-      paramContext = findViewById(2131369413).getBackground();
+      paramContext = findViewById(2131367556).getBackground();
       if ((paramContext != null) && ((paramContext instanceof GradientDrawable))) {
         ((GradientDrawable)paramContext).setColor(-1);
       }
@@ -77,11 +78,16 @@ public class ActivateFriendGridItem
     this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
   }
   
+  public void setCheckViewGone()
+  {
+    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+  }
+  
   public void setChecked(boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842154);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844340);
     }
     for (;;)
     {
@@ -92,13 +98,18 @@ public class ActivateFriendGridItem
       }
       setContentDescription(str1);
       return;
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842155);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844342);
     }
   }
   
   public void setHead(Bitmap paramBitmap)
   {
     this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+  }
+  
+  public void setIndex(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public void setNickName(String paramString)
@@ -108,7 +119,7 @@ public class ActivateFriendGridItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,36 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 
-public class mbg
-  implements INetInfoHandler
+class mbg
+  implements bhuk
 {
-  public mbg(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  mbg(mbc parammbc, long paramLong, bhuf parambhuf) {}
   
-  public void onNetMobile2None()
+  public void OnClick(View paramView, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetMobile2None()");
+      QLog.w("ShareChat", 1, "showChooseTypeActionSheet, which[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "], mIHandle[" + this.jdField_a_of_type_Mbc.a + "]");
     }
-    VideoFeedsAdapter.c(this.a);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetMobile2Wifi() ssid=" + paramString);
+    if (this.jdField_a_of_type_Mbc.a == null) {
+      return;
     }
-    VideoFeedsAdapter.a(this.a, true);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetNone2Mobile() apn=" + paramString);
+    paramView = paramView.getContext();
+    switch (paramInt)
+    {
     }
-    VideoFeedsAdapter.a(this.a, false);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetNone2Wifi() ssid=" + paramString);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      this.jdField_a_of_type_Mbc.b(this.jdField_a_of_type_Long, paramView);
+      continue;
+      this.jdField_a_of_type_Mbc.a(this.jdField_a_of_type_Long, paramView);
     }
-    VideoFeedsAdapter.a(this.a, true);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetWifi2Mobile() apn=" + paramString);
-    }
-    VideoFeedsAdapter.a(this.a, false);
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetWifi2None()");
-    }
-    VideoFeedsAdapter.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mbg
  * JD-Core Version:    0.7.0.1
  */

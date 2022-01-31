@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class EmosmPb$SubCmd0x14RspFetchTabMac$TabInfo
-  extends MessageMicro
+  extends MessageMicro<TabInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 21, 24, 32, 40, 50 }, new String[] { "uint32_tab_id", "fixed32_expire_time", "uint32_flags", "int32_wording_id", "int32_tab_type", "str_tab_name" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "" }, TabInfo.class);
   public final PBFixed32Field fixed32_expire_time = PBField.initFixed32(0);
@@ -21,7 +21,7 @@ public final class EmosmPb$SubCmd0x14RspFetchTabMac$TabInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.emosm.EmosmPb.SubCmd0x14RspFetchTabMac.TabInfo
  * JD-Core Version:    0.7.0.1
  */

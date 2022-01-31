@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/en0" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center|left|top" android:orientation="vertical" android:id="@id/eud" android:layout_width="82.0dip" android:layout_height="wrap_content">
+        <LinearLayout android:paddingLeft="5.0dip" android:layout_width="82.0dip" android:layout_height="36.0dip">
+            <com.tencent.mm.plugin.sns.ui.SnsUnScaleTextView android:textSize="30.0dip" android:textStyle="bold" android:textColor="@color/h6" android:gravity="bottom" android:layout_gravity="bottom" android:id="@id/eue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="20" android:singleLine="true" />
+            <com.tencent.mm.plugin.sns.ui.SnsUnScaleTextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/h6" android:gravity="center" android:layout_gravity="center" android:id="@id/euf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="" android:singleLine="true" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/nf" android:textColor="@color/re" android:id="@id/eg" android:paddingLeft="5.0dip" android:layout_width="60.0dip" android:layout_height="wrap_content" android:text="" android:maxLines="2" />
+    </LinearLayout>
+</LinearLayout>

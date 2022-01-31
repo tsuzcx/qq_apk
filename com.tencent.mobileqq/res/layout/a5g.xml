@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/cks" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/asm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true">
+        <com.tencent.qqmini.sdk.core.widget.SquareImageView android:id="@id/ehc" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginTop="21.0dip" />
+        <ProgressBar android:id="@id/e21" android:layout_width="31.0dip" android:layout_height="9.0dip" android:layout_marginTop="10.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/ln" android:indeterminateBehavior="repeat" />
+        <TextView android:textSize="18.0sp" android:textColor="@android:color/black" android:id="@id/cr_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="小游戏" android:includeFontPadding="false" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:id="@id/kdj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="0%" android:includeFontPadding="false" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/j0o" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="100.0dip" android:layout_alignParentBottom="true">
+        <ImageView android:layout_gravity="center" android:id="@id/ake" android:visibility="gone" android:layout_width="205.0dip" android:layout_height="78.0dip" android:scaleType="centerCrop" />
+        <ProgressBar android:id="@id/j0n" android:layout_width="31.0dip" android:layout_height="9.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/ln" android:indeterminateBehavior="repeat" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:id="@id/j0q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="0%" android:includeFontPadding="false" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/acy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="11.0sp" android:textColor="#ffb0b3bf" android:id="@id/cr6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="@string/hi6" android:lines="2" android:includeFontPadding="false" />
+        <TextView android:textSize="7.0sp" android:textColor="#ffb0b3bf" android:gravity="center_horizontal" android:id="@id/ljk" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="@string/hi7" android:maxLines="2" android:includeFontPadding="false" android:layout_centerHorizontal="true" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/bhx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="1.0dip" android:layout_marginRight="16.0dip">
+            <ImageView android:layout_gravity="center" android:layout_width="15.0dip" android:layout_height="fill_parent" android:src="@drawable/bgi" />
+            <TextView android:textSize="11.0sp" android:textColor="#ffb0b3bf" android:gravity="center" android:layout_gravity="center" android:id="@id/bhw" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="303.0dip" android:text="" android:includeFontPadding="false" />
+            <ImageView android:layout_gravity="center" android:layout_width="15.0dip" android:layout_height="fill_parent" android:src="@drawable/bgi" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:textColor="@android:color/white" android:gravity="center" android:id="@id/dzp" android:background="@drawable/lp" android:visibility="gone" android:layout_width="72.0dip" android:layout_height="27.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:text="跳过" android:layout_alignParentRight="true" />
+    <View android:id="@id/j1z" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+    <ImageView android:id="@id/fhv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@android:color/transparent" android:scaleType="centerCrop" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/mje" android:background="@drawable/bhc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="115.0dip" android:layout_alignParentBottom="true">
+        <com.tencent.qqmini.sdk.core.widget.SquareImageView android:id="@id/mja" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginLeft="64.0dip" android:layout_marginTop="55.0dip" />
+        <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:id="@id/mjb" android:layout_width="wrap_content" android:layout_height="22.0dip" android:layout_marginLeft="111.0dip" android:layout_marginTop="54.0dip" android:maxWidth="140.0dip" android:text="@string/wb0" />
+        <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:id="@id/mjd" android:layout_width="45.0dip" android:layout_height="22.0dip" android:layout_marginLeft="6.0dip" android:layout_marginTop="54.0dip" android:text="0%" android:layout_toRightOf="@id/mjb" android:alpha="0.6" />
+        <ProgressBar android:id="@id/mjc" android:layout_width="200.0dip" android:layout_height="2.0dip" android:layout_marginLeft="111.0dip" android:layout_marginTop="85.0dip" android:max="100" android:progress="0" android:progressDrawable="@drawable/b9n" style="@android:style/Widget.ProgressBar.Horizontal" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,25 +1,25 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SubAccountSettingActivity;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantImpl;
+import com.tencent.mobileqq.app.TroopHandler;
+import java.util.ArrayList;
 
-public class dsb
-  implements CompoundButton.OnCheckedChangeListener
+class dsb
+  implements DialogInterface.OnClickListener
 {
-  public dsb(SubAccountSettingActivity paramSubAccountSettingActivity) {}
+  dsb(drz paramdrz) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SubAccountAssistantImpl.a().a(this.a.b, paramBoolean);
-    QQAppInterface localQQAppInterface = this.a.b;
-    if (paramBoolean) {}
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "Bind_account", "Top_bind_account", 0, 0, paramCompoundButton, "", "", "");
-      return;
-    }
+    paramDialogInterface = new ArrayList();
+    paramDialogInterface.add(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ATroopMember.a);
+    this.a.jdField_a_of_type_Drx.a.i = this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ATroopMember.a;
+    ((TroopHandler)this.a.jdField_a_of_type_Drx.a.b.a(19)).a(TroopMemberListActivity.a(this.a.jdField_a_of_type_Drx.a), paramDialogInterface);
+    this.a.jdField_a_of_type_Drx.a.e();
+    this.a.jdField_a_of_type_Drx.a.a.show();
   }
 }
 

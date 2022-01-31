@@ -15,7 +15,7 @@ import com.tencent.mobileqq.app.TroopObserver;
 import com.tencent.mobileqq.data.RecommendTroopInfo;
 import com.tencent.mobileqq.model.FriendManager;
 import com.tencent.mobileqq.statistics.ReportController;
-import ghu;
+import gdi;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,19 +31,19 @@ public class RecommendTroopMessage
   public RecommendTroopMessage()
   {
     super(3);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ghu(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gdi(this);
   }
   
   public RecommendTroopMessage(int paramInt)
   {
     super(3, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ghu(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gdi(this);
   }
   
   public RecommendTroopMessage(RecommendTroopInfo paramRecommendTroopInfo, QQAppInterface paramQQAppInterface)
   {
     super(3);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ghu(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gdi(this);
     if (paramRecommendTroopInfo != null)
     {
       this.o = 1;
@@ -56,7 +56,7 @@ public class RecommendTroopMessage
   public RecommendTroopMessage(List paramList, QQAppInterface paramQQAppInterface)
   {
     super(3);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ghu(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gdi(this);
     if (paramList != null)
     {
       this.o = paramList.size();
@@ -86,7 +86,7 @@ public class RecommendTroopMessage
   private void a(ImageView paramImageView)
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramImageView.getContext().getResources().getDrawable(2130840142);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramImageView.getContext().getResources().getDrawable(2130840144);
     }
     paramImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
@@ -118,10 +118,10 @@ public class RecommendTroopMessage
   private int e()
   {
     if (this.o > 1) {
-      return 2130903558;
+      return 2130903560;
     }
     if (this.o == 1) {
-      return 2130903559;
+      return 2130903561;
     }
     return 0;
   }
@@ -132,15 +132,15 @@ public class RecommendTroopMessage
     if (this.o > 0)
     {
       paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(e(), paramViewGroup, false);
-      Object localObject = (ImageView)paramView.findViewById(2131232916);
-      paramViewGroup = (TextView)paramView.findViewById(2131232918);
+      Object localObject = (ImageView)paramView.findViewById(2131232919);
+      paramViewGroup = (TextView)paramView.findViewById(2131232921);
       a((ImageView)localObject);
       if (this.o > 1)
       {
         localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131560407) + "(" + this.o + ")";
         paramViewGroup.setText((CharSequence)localObject);
         paramViewGroup.setContentDescription((CharSequence)localObject);
-        paramViewGroup = (TextView)paramView.findViewById(2131232919);
+        paramViewGroup = (TextView)paramView.findViewById(2131232922);
         localObject = a();
         paramViewGroup.setText((CharSequence)localObject);
         paramViewGroup.setContentDescription((CharSequence)localObject);

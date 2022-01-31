@@ -1,27 +1,20 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
 
 public class dye
-  extends FriendListObserver
+  implements Runnable
 {
-  public dye(TroopRequestActivity paramTroopRequestActivity) {}
+  public dye(PressToSpeakPanel paramPressToSpeakPanel, String paramString) {}
   
-  protected void a(String paramString, boolean paramBoolean)
+  public void run()
   {
-    if ((!paramBoolean) || (paramString == null)) {}
-    do
-    {
-      return;
-      paramString = ((FriendManager)this.a.b.getManager(8)).a(paramString);
-    } while (paramString == null);
-    TroopRequestActivity.a(this.a, paramString);
+    PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).b(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dye
  * JD-Core Version:    0.7.0.1
  */

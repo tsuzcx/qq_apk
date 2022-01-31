@@ -1,22 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.DoodleActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 
 public class cph
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public cph(DoodleActivity paramDoodleActivity) {}
+  public cph(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setVisibility(0);
-    this.a.b.setVisibility(8);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     cph
  * JD-Core Version:    0.7.0.1
  */

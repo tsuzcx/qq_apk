@@ -54,7 +54,7 @@ public class ImmersiveTitleBar2
     if ((jdField_a_of_type_Boolean) && (ImmersiveUtils.isSupporImmersive() == 1))
     {
       jdField_b_of_type_Boolean = bool;
-      this.jdField_b_of_type_Int = ImmersiveUtils.a(paramContext);
+      this.jdField_b_of_type_Int = ImmersiveUtils.getStatusBarHeight(paramContext);
       if (!jdField_b_of_type_Boolean) {
         break label74;
       }
@@ -65,7 +65,7 @@ public class ImmersiveTitleBar2
       if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
         break label82;
       }
-      setBackgroundResource(2130845871);
+      setBackgroundResource(2130849536);
       return;
       bool = false;
       break;
@@ -73,7 +73,7 @@ public class ImmersiveTitleBar2
       setCustomHeight(0);
     }
     label82:
-    setBackgroundColor(getResources().getColor(2131494254));
+    setBackgroundColor(getResources().getColor(2131166959));
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -90,7 +90,7 @@ public class ImmersiveTitleBar2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.immersive.ImmersiveTitleBar2
  * JD-Core Version:    0.7.0.1
  */

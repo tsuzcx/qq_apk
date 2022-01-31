@@ -9,7 +9,7 @@ public final class GetTroopMemberListResp
   extends JceStruct
 {
   static int cache_result = 0;
-  static ArrayList cache_vecTroopMember = new ArrayList();
+  static ArrayList<stTroopMemberInfo> cache_vecTroopMember = new ArrayList();
   public long GroupCode;
   public long GroupUin;
   public long NextGetTime;
@@ -18,7 +18,7 @@ public final class GetTroopMemberListResp
   public long office_mode;
   public int result;
   public long uin;
-  public ArrayList vecTroopMember;
+  public ArrayList<stTroopMemberInfo> vecTroopMember;
   
   static
   {
@@ -28,7 +28,7 @@ public final class GetTroopMemberListResp
   
   public GetTroopMemberListResp() {}
   
-  public GetTroopMemberListResp(long paramLong1, long paramLong2, long paramLong3, ArrayList paramArrayList, long paramLong4, int paramInt, short paramShort, long paramLong5, long paramLong6)
+  public GetTroopMemberListResp(long paramLong1, long paramLong2, long paramLong3, ArrayList<stTroopMemberInfo> paramArrayList, long paramLong4, int paramInt, short paramShort, long paramLong5, long paramLong6)
   {
     this.uin = paramLong1;
     this.GroupCode = paramLong2;
@@ -69,7 +69,7 @@ public final class GetTroopMemberListResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     friendlist.GetTroopMemberListResp
  * JD-Core Version:    0.7.0.1
  */

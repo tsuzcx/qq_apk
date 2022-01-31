@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantManager;
 
-class gju
+public class gju
   implements Runnable
 {
-  gju(gjt paramgjt) {}
+  public gju(QZoneShareAlbumAssistantManager paramQZoneShareAlbumAssistantManager, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    QCallDetailActivity.a(this.a.a);
+    this.jdField_a_of_type_ComTencentMobileqqSharealbumQZoneShareAlbumAssistantManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqSharealbumQZoneShareAlbumAssistantManager.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

@@ -1,44 +1,48 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class cdt
-  implements View.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  public cdt(ChatActivity paramChatActivity, int paramInt) {}
+  public cdt(ChatSettingForTroop paramChatSettingForTroop, ImageView paramImageView) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    ChatActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity, 2);
-    ChatActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.b, "P_CliOper", "Safe_AntiFraud", this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.a.a, "banner", "userclick", this.jdField_a_of_type_Int, 0, "", "", "", "");
-    Object localObject = AntiFraudConfigFileUtil.a().a("SecWarningCfg", "BannerURL", 146, this.jdField_a_of_type_Int);
-    paramView = (View)localObject;
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      paramView = "http://jubao.qq.com/cn/jubao?appname=KQQ&subapp=$SUBAPP$&jubaotype=uin&system=$SYSTEM$&eviluin=$EVILUIN$&impeachuin=$USERUIN$";
-    }
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (paramView = paramView.replace("$SUBAPP$", "notice");; paramView = paramView.replace("$SUBAPP$", "tips"))
+    try
     {
-      paramView = paramView.replace("$SYSTEM$", "android").replace("$EVILUIN$", this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.a.a).replace("$USERUIN$", this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.b.getAccount());
-      localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity, QQBrowserDelegationActivity.class);
-      ((Intent)localObject).putExtra("injectrecommend", true);
-      ((Intent)localObject).putExtra("url", paramView);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.startActivity((Intent)localObject);
+      paramURLDrawable = ImageUtil.a(paramURLDrawable);
+      if (paramURLDrawable != null)
+      {
+        Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.b.a(paramURLDrawable, paramURLDrawable.getWidth(), paramURLDrawable.getHeight());
+        paramURLDrawable.recycle();
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+      }
       return;
     }
+    catch (NullPointerException paramURLDrawable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.chatopttroop", 2, QLog.getStackTraceString(paramURLDrawable));
+      return;
+    }
+    catch (OutOfMemoryError paramURLDrawable) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cdt
  * JD-Core Version:    0.7.0.1
  */

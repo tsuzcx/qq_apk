@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class SubMsgType0x7$MsgBody$GenericSubCmd$WifiPhotoWithPush
-  extends MessageMicro
+  extends MessageMicro<WifiPhotoWithPush>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_json = PBField.initBytes(ByteStringMicro.EMPTY);

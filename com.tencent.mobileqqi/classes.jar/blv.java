@@ -1,27 +1,34 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.service.RecvMsg;
-import com.tencent.av.ui.VideoLayerUI;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
+import com.tencent.biz.qrcode.util.QRCard;
+import java.util.HashMap;
 
 public class blv
-  implements Runnable
+  implements View.OnClickListener
 {
-  public blv(VideoLayerUI paramVideoLayerUI) {}
+  public blv(QRCardActivity paramQRCardActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_JavaUtilList.size() > 0)
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof Integer)) {
+      if (((Integer)localObject).intValue() != 0) {
+        break label101;
+      }
+    }
+    label101:
+    for (String str = (String)((TextView)paramView.findViewById(2131231118)).getText();; str = null)
     {
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.a.e);
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.a.f);
-      RecvMsg localRecvMsg = (RecvMsg)this.a.jdField_a_of_type_JavaUtilList.remove(0);
-      this.a.b(localRecvMsg);
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.e, 3000L);
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.f, 3000L);
+      if (((Integer)localObject).intValue() == 1)
+      {
+        this.a.a((String)this.a.a.d.get(this.a.j));
+        return;
+      }
+      QRCardActivity.a(this.a, paramView.getContext(), ((Integer)localObject).intValue(), null, str);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.a.e);
   }
 }
 

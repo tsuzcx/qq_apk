@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
 class aaqe
-  implements Runnable
+  implements DialogInterface.OnKeyListener
 {
-  aaqe(aaqd paramaaqd) {}
+  aaqe(aaqa paramaaqa) {}
   
-  public void run()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    ArkAppModuleReg.ModuleQQ.a(this.a.a.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ, this.a.a.jdField_a_of_type_Long, this.a.a.c, true, 2);
+    return (paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaqe
  * JD-Core Version:    0.7.0.1
  */

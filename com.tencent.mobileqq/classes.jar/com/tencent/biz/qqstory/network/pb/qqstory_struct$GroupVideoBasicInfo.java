@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_struct$GroupVideoBasicInfo
-  extends MessageMicro
+  extends MessageMicro<GroupVideoBasicInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48, 56, 66 }, new String[] { "author", "msg_time", "file_id", "video_vid", "group_gid", "story_source", "duration", "video_attr" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), "", "", Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), "" }, GroupVideoBasicInfo.class);
   public final PBUInt64Field author = PBField.initUInt64(0L);
@@ -22,7 +22,7 @@ public final class qqstory_struct$GroupVideoBasicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupVideoBasicInfo
  * JD-Core Version:    0.7.0.1
  */

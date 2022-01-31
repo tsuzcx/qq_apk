@@ -1,21 +1,21 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.activity.phone.BaseActivityView.IPhoneContext;
+import com.tencent.mobileqq.activity.phone.PhoneInnerFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class elp
-  implements Animation.AnimationListener
+  extends ContactBindObserver
 {
-  public elp(TroopActivity paramTroopActivity) {}
+  public elp(PhoneInnerFrame paramPhoneInnerFrame) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.a.setVisibility(8);
+    if (this.a.a)
+    {
+      this.a.b().a().unRegistObserver(this);
+      this.a.g();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

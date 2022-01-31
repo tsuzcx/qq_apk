@@ -1,23 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.content.DialogInterface.OnClickListener;
 
-public class wte
-  implements DialogInterface.OnKeyListener
+class wte
+  implements DialogInterface.OnClickListener
 {
-  public wte(BaseActivityView paramBaseActivityView) {}
+  wte(wtd paramwtd) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (paramInt == 4) && (this.a.a.e()) && (NetworkUtil.d(this.a.getContext()));
+    this.a.a.a(false, true, 12, null);
+    wxj.a("home_page", "guide_open", 0, 0, new String[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wte
  * JD-Core Version:    0.7.0.1
  */

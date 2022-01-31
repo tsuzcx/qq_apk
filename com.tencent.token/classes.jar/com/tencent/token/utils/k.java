@@ -7,18 +7,18 @@ import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
-import com.tencent.token.gi;
-import com.tencent.token.gl;
+import com.tencent.token.fx;
+import com.tencent.token.ga;
+import com.tencent.token.gd;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.e;
-import com.tencent.token.go;
+import com.tencent.token.global.h;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public final class k
+public class k
   extends BitmapDrawable
 {
   public static Bitmap a;
@@ -33,33 +33,24 @@ public final class k
   private k(String paramString1, String paramString2)
   {
     this.g = new BitmapDrawable(a);
-    new l(this, paramString1, paramString2).a(new String[] { "" });
+    new l(this, paramString1, paramString2).c(new String[] { "" });
   }
   
   private k(String paramString1, String paramString2, String paramString3, Bitmap paramBitmap)
   {
     this.g = new BitmapDrawable(paramBitmap);
-    new m(this, paramString1, paramString3, paramString2).a(new String[] { "" });
+    new m(this, paramString1, paramString3, paramString2).c(new String[] { "" });
   }
   
   public static BitmapDrawable a(String paramString1, String paramString2)
   {
-    Object localObject;
-    if (!h)
-    {
-      localObject = RqdApplication.i().getResources();
-      a = t.a((Resources)localObject, 2130837585);
-      b = t.a((Resources)localObject, 2130837544);
-      c = new ImageCache(30, RqdApplication.i());
-      e = Collections.synchronizedMap(new HashMap());
-      d = Collections.synchronizedMap(new HashMap());
-      h = true;
-    }
+    
     if (!f)
     {
       f = true;
       a(e);
     }
+    Object localObject;
     if (paramString2 != null)
     {
       localObject = paramString2;
@@ -75,15 +66,16 @@ public final class k
       do
       {
         return paramString2;
-        localObject = ImageCache.d(paramString1);
+        localObject = c.d(paramString1);
         localBitmap = c.a(localObject);
         if (localBitmap == null) {
           break;
         }
+        h.a("face:from cache");
         localObject = a(paramString1, (String)localObject, localBitmap);
         paramString2 = (String)localObject;
       } while (localObject != null);
-      e.b("from memcache" + paramString1);
+      h.b("from memcache" + paramString1);
       return new BitmapDrawable(localBitmap);
       localBitmap = c.b(c.c((String)localObject));
       if (localBitmap == null) {
@@ -93,7 +85,7 @@ public final class k
       localObject = a(paramString1, (String)localObject, localBitmap);
       paramString2 = (String)localObject;
     } while (localObject != null);
-    e.b("from cache,don't update" + paramString1);
+    h.b("from cache,don't update" + paramString1);
     return new BitmapDrawable(localBitmap);
     if ((paramString1 == null) || (paramString1.length() <= 4)) {
       return new BitmapDrawable(a);
@@ -101,10 +93,10 @@ public final class k
     paramString2 = (k)d.get(paramString1);
     if (paramString2 != null)
     {
-      e.b("from loading task" + paramString1);
+      h.b("from loading task" + paramString1);
       return paramString2;
     }
-    e.b("from new task" + paramString1);
+    h.b("from new task" + paramString1);
     paramString2 = new k(paramString1, (String)localObject);
     d.put(paramString1, paramString2);
     return paramString2;
@@ -131,40 +123,105 @@ public final class k
     if (paramMap == null) {
       return false;
     }
-    Object localObject = new gi();
+    Object localObject = new fx();
     try
     {
-      localObject = gl.a((go)localObject, "qqface", new String[] { "uinhash", "filename" }, null, null, null, null);
+      localObject = ga.a((gd)localObject, "qqface", new String[] { "uinhash", "filename" }, null, null, null, null, null, null);
       if (localObject == null) {
         return false;
       }
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        gi localgi = (gi)((Iterator)localObject).next();
-        if (localgi == null) {
+        fx localfx = (fx)((Iterator)localObject).next();
+        if (localfx == null) {
           break;
         }
-        paramMap.put(localgi.a, localgi.b);
+        paramMap.put(localfx.a, localfx.b);
       }
       return true;
     }
     catch (Exception paramMap)
     {
       paramMap.printStackTrace();
-      e.c(paramMap.toString());
+      h.c(paramMap.toString());
       return false;
     }
   }
   
-  public final void draw(Canvas paramCanvas)
+  public static BitmapDrawable b(String paramString1, String paramString2)
+  {
+    
+    if (!f)
+    {
+      f = true;
+      a(e);
+    }
+    String str;
+    if (paramString2 != null)
+    {
+      str = paramString2;
+      if (paramString2.length() > 4) {}
+    }
+    else
+    {
+      if ((paramString1 == null) || (paramString1.length() <= 4)) {
+        return new BitmapDrawable(a);
+      }
+      str = c.d(paramString1);
+    }
+    paramString2 = (k)d.get(paramString1);
+    if (paramString2 != null)
+    {
+      h.b("from loading task" + paramString1);
+      return paramString2;
+    }
+    h.b("from new task" + paramString1);
+    paramString2 = new k(paramString1, str);
+    d.put(paramString1, paramString2);
+    return paramString2;
+  }
+  
+  private static void b()
+  {
+    if (!h)
+    {
+      Resources localResources = RqdApplication.l().getResources();
+      a = x.a(localResources, 2130837666);
+      b = x.a(localResources, 2130837622);
+      c = new ImageCache("", 30, RqdApplication.l());
+      e = Collections.synchronizedMap(new HashMap());
+      d = Collections.synchronizedMap(new HashMap());
+      h = true;
+    }
+  }
+  
+  private static void d(String paramString1, String paramString2)
+  {
+    try
+    {
+      fx localfx = new fx();
+      localfx.a = paramString1;
+      localfx.b = paramString2;
+      ga.c(localfx);
+      return;
+    }
+    finally {}
+  }
+  
+  public BitmapDrawable a()
+  {
+    return this.g;
+  }
+  
+  public void draw(Canvas paramCanvas)
   {
     if (this.g != null) {
       this.g.draw(paramCanvas);
     }
   }
   
-  public final int getOpacity()
+  public int getOpacity()
   {
     if (this.g != null) {
       return this.g.getOpacity();
@@ -172,7 +229,7 @@ public final class k
     return -2;
   }
   
-  public final void onBoundsChange(Rect paramRect)
+  public void onBoundsChange(Rect paramRect)
   {
     if (this.g != null) {
       this.g.setBounds(paramRect);
@@ -180,14 +237,14 @@ public final class k
     super.onBoundsChange(paramRect);
   }
   
-  public final void setAlpha(int paramInt)
+  public void setAlpha(int paramInt)
   {
     if (this.g != null) {
       this.g.setAlpha(paramInt);
     }
   }
   
-  public final void setColorFilter(ColorFilter paramColorFilter)
+  public void setColorFilter(ColorFilter paramColorFilter)
   {
     if (this.g != null) {
       this.g.setColorFilter(paramColorFilter);

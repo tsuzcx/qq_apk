@@ -7,7 +7,7 @@ public class QueryCaptchaResult
   implements Serializable
 {
   private static final long serialVersionUID = -3090433295861489742L;
-  public String mCaptchaUrl = "";
+  public String mAppid = "1600000810";
   public long mLastGetUrlTime;
   public boolean mNeedCaptcha = false;
   public long mRealUin;
@@ -22,9 +22,9 @@ public class QueryCaptchaResult
       this.mNeedCaptcha = bool;
       if (this.mNeedCaptcha)
       {
-        this.mCaptchaUrl = paramJSONObject.getString("captcha_url");
         this.mUrlValidTimeSecs = paramJSONObject.getInt("url_valid_time");
         this.mLastGetUrlTime = (System.currentTimeMillis() / 1000L);
+        this.mAppid = ("" + paramJSONObject.getInt("appid"));
       }
       return;
       bool = false;

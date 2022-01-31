@@ -1,32 +1,21 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import mqq.app.QQPermissionCallback;
 
 public class aexz
-  implements Runnable
+  implements QQPermissionCallback
 {
-  long jdField_a_of_type_Long;
+  public aexz(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
   
-  public aexz(ShortVideoCommentsView paramShortVideoCommentsView, long paramLong)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    bdgm.a(this.a.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void run()
-  {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 1000L) {
-      return;
-    }
-    ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setFocusable(true);
-    ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setFocusableInTouchMode(true);
-    ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).requestFocus();
-    ThreadManager.getUIHandler().postDelayed(this, 100L);
-  }
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aexz
  * JD-Core Version:    0.7.0.1
  */

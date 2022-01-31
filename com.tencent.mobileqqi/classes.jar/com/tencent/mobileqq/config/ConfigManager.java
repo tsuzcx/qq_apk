@@ -9,9 +9,9 @@ import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
 import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.QLog;
-import fqz;
-import fra;
-import frb;
+import fmm;
+import fmn;
+import fmo;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -39,7 +39,7 @@ public class ConfigManager
   private static final String h = "http://conf.3g.qq.com/newConf/n";
   private static final String i = "POST";
   public Command a;
-  public fra a;
+  public fmn a;
   private File jdField_a_of_type_JavaIoFile;
   private Timer jdField_a_of_type_JavaUtilTimer;
   private boolean jdField_a_of_type_Boolean = false;
@@ -55,7 +55,7 @@ public class ConfigManager
   
   public ConfigManager(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_Fra = new fra(this);
+    this.jdField_a_of_type_Fmn = new fmn(this);
     String str = paramContext.getFilesDir().getAbsolutePath() + "/" + paramString;
     File localFile = new File(str);
     if (localFile != null) {}
@@ -459,7 +459,7 @@ public class ConfigManager
         if (this.jdField_a_of_type_Boolean) {
           return;
         }
-        ConfigParser.a(paramHttpMsg2, new frb(), this.j);
+        ConfigParser.a(paramHttpMsg2, new fmo(), this.j);
         b();
         d();
         return;
@@ -484,7 +484,7 @@ public class ConfigManager
     if (localHttpCommunicator != null) {
       localHttpCommunicator.a(paramArrayOfBaseConf);
     }
-    this.jdField_a_of_type_JavaUtilTimer.schedule(new fqz(this), 1000L);
+    this.jdField_a_of_type_JavaUtilTimer.schedule(new fmm(this), 1000L);
   }
   
   public boolean a()
@@ -519,7 +519,7 @@ public class ConfigManager
   public boolean b()
   {
     boolean bool = true;
-    switch (this.jdField_a_of_type_Fra.a)
+    switch (this.jdField_a_of_type_Fmn.a)
     {
     default: 
       bool = false;

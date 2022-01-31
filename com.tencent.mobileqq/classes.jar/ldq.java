@@ -1,21 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.rookery.translate.type.Language;
+import com.rookery.translate.type.TranslateError;
+import java.util.List;
 
-public class ldq
-  implements Runnable
+public abstract interface ldq
 {
-  public ldq(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  public abstract void a(TranslateError paramTranslateError, Long paramLong);
   
-  public void run()
-  {
-    ReadInJoyGlobalReporter.a().a(this.a.app, NetConnInfoCenter.getServerTimeMillis(), ReadInJoyUtils.e(), ReadInJoyUtils.d);
-  }
+  public abstract void a(List<Language> paramList, List<String> paramList1, Long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ldq
  * JD-Core Version:    0.7.0.1
  */

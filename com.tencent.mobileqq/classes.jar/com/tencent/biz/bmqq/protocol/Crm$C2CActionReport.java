@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class Crm$C2CActionReport
-  extends MessageMicro
+  extends MessageMicro<C2CActionReport>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "str_action_content" }, new Object[] { "" }, C2CActionReport.class);
   public final PBStringField str_action_content = PBField.initString("");

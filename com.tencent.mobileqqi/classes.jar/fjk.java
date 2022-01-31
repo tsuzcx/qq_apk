@@ -1,46 +1,58 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.ApplicationInfo;
-import com.tencent.mobileqq.app.PushSecSigHandler;
+import OnlinePushPack.MsgInfo;
+import android.text.TextUtils;
+import android.util.Pair;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.SecUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.message.OnLinePushMessageProcessor;
+import com.tencent.mobileqq.model.FriendManager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import java.util.ArrayList;
+import java.util.TimerTask;
 
 public class fjk
-  implements Runnable
+  extends TimerTask
 {
-  public fjk(PushSecSigHandler paramPushSecSigHandler) {}
+  public fjk(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, ArrayList paramArrayList, long paramLong1, long paramLong2, String paramString, MsgInfo paramMsgInfo, long paramLong3) {}
   
   public void run()
   {
-    QLog.d("PushSecSigHandler", 2, "mSecSigThread start");
-    String str1 = SecUtil.a(this.a.a.getApplication().getApplicationInfo().sourceDir);
-    if ((str1 == null) || (str1.length() == 0)) {
-      return;
-    }
-    Object localObject1 = BaseApplication.getContext().getSharedPreferences("SecSig", 0);
-    Object localObject2 = ((SharedPreferences)localObject1).edit();
-    String str2 = ((SharedPreferences)localObject1).getString("SecMd5Entry", null);
-    int i = ((SharedPreferences)localObject1).getInt("SecResEntry", -1);
-    long l1 = ((SharedPreferences)localObject1).getLong("SecStampEntry", -1L);
-    long l2 = System.currentTimeMillis();
-    QLog.d("PushSecSigHandler", 2, " start:md5 = " + str1 + "cacheMd5 = " + str2 + "cacheRes = " + i + "cacheStamp = " + (l1 ^ 0x12) + "stamp = " + l2);
-    ((SharedPreferences.Editor)localObject2).remove("SecResEntry");
-    ((SharedPreferences.Editor)localObject2).remove("SecStampEntry");
-    ((SharedPreferences.Editor)localObject2).putString("SecMd5Entry", str1);
-    ((SharedPreferences.Editor)localObject2).commit();
-    localObject1 = SecUtil.b(SecUtil.a(BaseApplication.getContext()));
-    localObject2 = SecUtil.a(BaseApplication.getContext());
-    if (!SecUtil.a(BaseApplication.getContext())) {}
-    for (i = 0;; i = 1)
+    if (this.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(this.jdField_a_of_type_Long)))
     {
-      QLog.d("PushSecSigHandler", 2, "mSecSigThread start:publickKey:" + (String)localObject1 + "b0DayRepack:" + i);
-      this.a.a(Long.parseLong(this.a.a.a()), 0, i, "MobileQQ", (String)localObject2, str1, (String)localObject1);
-      PushSecSigHandler.a(this.a, false);
-      return;
+      this.jdField_a_of_type_JavaUtilArrayList.remove(Long.valueOf(this.jdField_a_of_type_Long));
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.BaseMessageProcessor.discuss", 2, "陌生人uin包括自己,移出");
+      }
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      FriendManager localFriendManager = (FriendManager)this.jdField_a_of_type_ComTencentMobileqqAppMessageOnLinePushMessageProcessor.a.getManager(8);
+      int i = 0;
+      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        String str2 = (String)((Pair)this.jdField_a_of_type_JavaUtilArrayList.get(i)).second;
+        String str1 = str2;
+        if (TextUtils.isEmpty(str2))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.msg.BaseMessageProcessor.discuss", 2, "coptype 9 server showName empty");
+          }
+          str1 = localFriendManager.d(String.valueOf(this.b), String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.get(i)));
+        }
+        if (i == 0) {
+          localStringBuilder.append(str1);
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          localStringBuilder.append("、" + str1);
+        }
+      }
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.BaseMessageProcessor.discuss", 2, "show yinsi tips" + localStringBuilder.toString());
+      }
+      OnLinePushMessageProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOnLinePushMessageProcessor, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_Long, this.b, this.c, localStringBuilder.toString());
     }
   }
 }

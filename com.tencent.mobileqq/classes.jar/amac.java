@@ -1,19 +1,25 @@
-import com.tencent.widget.AbsListView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class amac
+  extends BroadcastReceiver
 {
-  private int a;
+  public amac(QQAppInterface paramQQAppInterface) {}
   
-  private amac(AbsListView paramAbsListView) {}
-  
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a = AbsListView.access$200(this.b);
-  }
-  
-  public boolean a()
-  {
-    return (this.b.hasWindowFocus()) && (AbsListView.access$300(this.b) == this.a);
+    if (this.a.l) {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqhead.broadcast", 2, "qqHeadBroadcastReceiver onReceive, app isReleased");
+      }
+    }
+    while ((paramIntent == null) || (!"com.tencent.qqhead.getheadreq".equals(paramIntent.getAction()))) {
+      return;
+    }
+    QQAppInterface.a(this.a, paramIntent);
   }
 }
 

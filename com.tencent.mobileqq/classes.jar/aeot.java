@@ -1,29 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class aeot
-  implements View.OnClickListener
+public class aeot
 {
-  aeot(aeos paramaeos, int paramInt, WerewolvesHandler paramWerewolvesHandler) {}
-  
-  public void onClick(View paramView)
+  public static BaseChatPie a()
   {
-    try
+    Object localObject = BaseActivity.sTopActivity;
+    if ((localObject instanceof FragmentActivity))
     {
-      long l = Long.parseLong(((aeor)this.jdField_a_of_type_Aeos.a.a.get(this.jdField_a_of_type_Int)).a);
-      this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler.a(this.jdField_a_of_type_Aeos.a.b, l, null);
-      this.jdField_a_of_type_Aeos.a.a("invite_page", "kick_out");
-      return;
+      localObject = ((FragmentActivity)localObject).getChatFragment();
+      if (localObject != null) {
+        return ((ChatFragment)localObject).a();
+      }
     }
-    catch (Exception paramView) {}
+    return null;
+  }
+  
+  public static boolean a()
+  {
+    boolean bool = false;
+    BaseChatPie localBaseChatPie = a();
+    if (localBaseChatPie != null) {
+      bool = ((AIOLongShotHelper)localBaseChatPie.a(15)).a();
+    }
+    return bool;
+  }
+  
+  public static boolean b()
+  {
+    return a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeot
  * JD-Core Version:    0.7.0.1
  */

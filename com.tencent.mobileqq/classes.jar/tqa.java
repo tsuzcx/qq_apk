@@ -1,42 +1,30 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.support.v4.content.FileProvider;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.app.MobileQQ;
 
 class tqa
-  implements Runnable
+  implements twi
 {
-  tqa(tpz paramtpz, String paramString) {}
+  tqa(tpz paramtpz) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString)
   {
-    Object localObject2 = this.jdField_a_of_type_JavaLangString;
-    if ((localObject2 == null) || (((String)localObject2).length() <= 0)) {
-      return;
-    }
-    Object localObject1 = localObject2;
-    if (!((String)localObject2).startsWith("http://"))
+    QLog.d("QCircleConfig", 1, "tryGetSplashVideoAsync onRspCallback " + paramBoolean + ", " + paramString);
+    if (paramBoolean)
     {
-      localObject1 = localObject2;
-      if (!((String)localObject2).startsWith("https://")) {
-        localObject1 = "http://" + (String)localObject2;
+      paramString = new File(paramString, tpz.a(this.a));
+      if ((paramString.exists()) && (paramString.length() > 0L))
+      {
+        tpz.a(FileProvider.getUriForFile(MobileQQ.getContext(), "com.tencent.mobileqq.fileprovider", paramString));
+        QLog.d("QCircleConfig", 1, "tryGetSplashVideoAsync splashVideoPath: " + tpz.b());
       }
     }
-    localObject2 = new Intent(this.jdField_a_of_type_Tpz.a.getActivity(), QQBrowserActivity.class);
-    ((Intent)localObject2).putExtra("is_register_uin", true);
-    ((Intent)localObject2).putExtra("isShowAd", false);
-    ((Intent)localObject2).putExtra("hide_more_button", true);
-    ((Intent)localObject2).putExtra("hide_operation_bar", true);
-    ((Intent)localObject2).putExtra("register_uin_msg", 104);
-    ((Intent)localObject2).putExtra("register_uin_class", RegisterPhoneNumActivity.class.getName());
-    this.jdField_a_of_type_Tpz.a.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
-    ((Intent)localObject2).putExtra("selfSet_leftViewText", "返回");
-    ReportController.b(this.jdField_a_of_type_Tpz.a.app, "CliOper", "", "", "0X800665A", "0X800665A", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tqa
  * JD-Core Version:    0.7.0.1
  */

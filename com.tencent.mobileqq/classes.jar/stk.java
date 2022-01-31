@@ -1,41 +1,54 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.QZonePhotoWall;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.util.WeakReferenceHandler;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
 public class stk
-  implements Runnable
+  implements bhtv
 {
-  public stk(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public stk(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void run()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    Object localObject1 = ((FriendsManager)this.a.app.getManager(50)).b(this.a.app.getCurrentAccountUin());
-    this.a.a((Card)localObject1);
-    this.a.app.runOnUiThread(new stl(this, (Card)localObject1));
-    this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.h();
-    Object localObject2 = (QZonePhotoWall)this.a.app.getEntityManagerFactory().createEntityManager().a(QZonePhotoWall.class, this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
-    localObject1 = new ArrayList();
-    if (localObject2 != null) {
-      this.a.a(((QZonePhotoWall)localObject2).totalPic, ((QZonePhotoWall)localObject2).hasMore, ((QZonePhotoWall)localObject2).attachInfo, ((QZonePhotoWall)localObject2).unpackPhotoWallData(), (List)localObject1);
+    switch (paramInt)
+    {
+    default: 
+      abvl.a().a("list_subscript");
     }
-    localObject2 = this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(1001);
-    ((Message)localObject2).obj = localObject1;
-    this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage((Message)localObject2);
+    for (;;)
+    {
+      return;
+      abvl.a().a("list_subscript", false);
+      paramInt = 0;
+      while (paramInt <= paramAbsListView.getChildCount())
+      {
+        Object localObject = paramAbsListView.getChildAt(paramInt);
+        if ((localObject != null) && ((((View)localObject).getTag() instanceof stp)))
+        {
+          localObject = (stp)((View)localObject).getTag();
+          Drawable localDrawable = ((stp)localObject).b.getDrawable();
+          if ((localDrawable != null) && ((localDrawable instanceof URLDrawable)) && (!((URLDrawable)localDrawable).isDownloadStarted()))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("SubscriptFeedsActivity", 2, "list child view start download pic!  uin : " + ((stp)localObject).a);
+            }
+            ((URLDrawable)localDrawable).startDownload();
+            ((URLDrawable)localDrawable).setAutoDownload(true);
+          }
+        }
+        paramInt += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     stk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class tdx
-  extends Handler
+class tdx
+  implements View.OnClickListener
 {
-  public tdx(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  tdx(tdu paramtdu) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    for (;;)
-    {
-      try
-      {
-        int i = paramMessage.what;
-        switch (i)
-        {
-        default: 
-          return;
-        }
-      }
-      finally {}
-      boolean bool = ((Boolean)paramMessage.obj).booleanValue();
-      NotifyPushSettingActivity.g(this.a).setChecked(bool);
-      continue;
-      paramMessage = (String)paramMessage.obj;
-      NotifyPushSettingActivity.a(this.a, paramMessage);
-      continue;
-      paramMessage = (String)paramMessage.obj;
-      NotifyPushSettingActivity.b(this.a, paramMessage);
-      continue;
-      bool = ((Boolean)paramMessage.obj).booleanValue();
-      NotifyPushSettingActivity.h(this.a).setChecked(bool);
-    }
+    tdn.a(this.a.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tdx
  * JD-Core Version:    0.7.0.1
  */

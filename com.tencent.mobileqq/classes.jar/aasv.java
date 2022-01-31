@@ -1,22 +1,30 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.ark.ArkAiScrollBar;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class aasv
-  implements View.OnLayoutChangeListener
+  implements BusinessObserver
 {
-  public aasv(ArkAiScrollBar paramArkAiScrollBar) {}
+  protected void a(int paramInt, String paramString1, String paramString2) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramInt4 != paramInt8) {
-      this.a.e();
+    if (100 == paramInt)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("QBossC2SCheckerServlet", 2, "Observer .onReceive Success: " + paramBoolean);
+      }
+      a(paramBundle.getInt("code"), paramBundle.getString("msg"), paramBundle.getString("adid"));
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.e("QBossC2SCheckerServlet", 2, "ID__C2S_CHECKER NOT MATCH isSuc" + paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aasv
  * JD-Core Version:    0.7.0.1
  */

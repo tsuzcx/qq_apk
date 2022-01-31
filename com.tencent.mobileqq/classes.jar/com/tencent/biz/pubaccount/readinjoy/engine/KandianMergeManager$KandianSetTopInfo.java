@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import alof;
+import amnz;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.Calendar;
 import mqq.os.MqqHandler;
+import nrt;
+import ors;
 
 public class KandianMergeManager$KandianSetTopInfo
   implements Serializable
@@ -30,7 +30,7 @@ public class KandianMergeManager$KandianSetTopInfo
     {
       this.count = this.fixNumOfTimes;
       this.setTopCountResetTime += 86400000L;
-      ReadInJoyUtils.a("kandian_msgtab_settop", this, true);
+      ors.a("kandian_msgtab_settop", this, true);
       QLog.d("KandianMergeManager.SETTOP", 2, "reset kandian SetTopInfo count : " + this);
     }
   }
@@ -57,18 +57,18 @@ public class KandianMergeManager$KandianSetTopInfo
   public void trySetTopKandianMsg(QQAppInterface paramQQAppInterface)
   {
     a();
-    MessageRecord localMessageRecord = paramQQAppInterface.a().b(AppConstants.as, 7220);
+    MessageRecord localMessageRecord = paramQQAppInterface.a().b(alof.aA, 7220);
     long l;
-    RecentUserProxy localRecentUserProxy;
+    amnz localamnz;
     RecentUser localRecentUser;
-    if ((localMessageRecord != null) && (!localMessageRecord.isread) && (!ReadInJoyUtils.b()) && (localMessageRecord.uniseq != this.lastSetTopMsgUniseq) && (this.count != 0))
+    if ((localMessageRecord != null) && (!localMessageRecord.isread) && (!ors.b(alof.aA)) && (localMessageRecord.uniseq != this.lastSetTopMsgUniseq) && (this.count != 0))
     {
       if (!paramQQAppInterface.a.d()) {
-        break label240;
+        break label243;
       }
       l = System.currentTimeMillis() / 1000L;
-      localRecentUserProxy = paramQQAppInterface.a().a();
-      localRecentUser = localRecentUserProxy.b(AppConstants.as, 7220);
+      localamnz = paramQQAppInterface.a().a();
+      localRecentUser = localamnz.b(alof.aA, 7220);
       if (localRecentUser != null) {}
     }
     else
@@ -76,26 +76,26 @@ public class KandianMergeManager$KandianSetTopInfo
       return;
     }
     localRecentUser.lastmsgtime = l;
-    paramQQAppInterface.a().a(AppConstants.as, 7220, localMessageRecord.uniseq, "time", Long.valueOf(l));
-    localRecentUserProxy.a(localRecentUser);
+    paramQQAppInterface.a().a(alof.aA, 7220, localMessageRecord.uniseq, "time", Long.valueOf(l));
+    localamnz.a(localRecentUser);
     paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
     if (paramQQAppInterface != null) {
       paramQQAppInterface.sendEmptyMessage(1009);
     }
     this.count -= 1;
     this.lastSetTopMsgUniseq = localMessageRecord.uniseq;
-    ReadInJoyUtils.a("kandian_msgtab_settop", this, true);
-    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X8007927", "0X8007927", 0, 0, "", "", "", "");
+    ors.a("kandian_msgtab_settop", this, true);
+    nrt.a(null, "CliOper", "", "", "0X8007927", "0X8007927", 0, 0, "", "", "", "");
     QLog.d("KandianMergeManager.SETTOP", 2, "successful setTop !  newTime : " + l + this);
     return;
-    label240:
-    ReadInJoyUtils.c = true;
+    label243:
+    ors.e = true;
     QLog.d("KandianMergeManager.SETTOP", 2, "receiving msg , wait callback ! " + this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager.KandianSetTopInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.language.SelectLanguageActivity;
 
-public final class ehj
-  implements Parcelable.Creator
+public class ehj
+  implements View.OnClickListener
 {
-  public AIOImageData a(Parcel paramParcel)
-  {
-    AIOImageData localAIOImageData = new AIOImageData();
-    localAIOImageData.a = paramParcel.readLong();
-    localAIOImageData.jdField_d_of_type_Int = paramParcel.readInt();
-    localAIOImageData.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localAIOImageData.e = paramParcel.readString();
-    localAIOImageData.f = paramParcel.readString();
-    localAIOImageData.g = paramParcel.readString();
-    localAIOImageData.b = paramParcel.readLong();
-    localAIOImageData.c = paramParcel.readLong();
-    return localAIOImageData;
-  }
+  public ehj(SelectLanguageActivity paramSelectLanguageActivity) {}
   
-  public AIOImageData[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new AIOImageData[paramInt];
+    SelectLanguageActivity.a(this.a, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ehj
  * JD-Core Version:    0.7.0.1
  */

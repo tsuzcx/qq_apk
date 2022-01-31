@@ -1,50 +1,32 @@
-import android.app.Dialog;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
 
-public final class akcc
-  implements View.OnClickListener
+public class akcc
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public akcc(DialogInterface.OnClickListener paramOnClickListener1, Dialog paramDialog, DialogInterface.OnClickListener paramOnClickListener2) {}
+  public akcc(TroopMemberListInnerFrame paramTroopMemberListInnerFrame, ViewGroup paramViewGroup) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    if (paramView.getId() == 2131369989) {}
-    for (;;)
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.c.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.c);
+    Bitmap localBitmap = TroopMemberListInnerFrame.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.c);
+    if (localBitmap == null) {}
+    do
     {
-      try
-      {
-        if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-          this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_AndroidAppDialog, 0);
-        }
-        if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
-          this.jdField_a_of_type_AndroidAppDialog.dismiss();
-        }
-        return;
-      }
-      catch (Exception paramView) {}
-      if (paramView.getId() == 2131369990)
-      {
-        if (this.b != null) {
-          this.b.onClick(this.jdField_a_of_type_AndroidAppDialog, 1);
-        }
-        try
-        {
-          if (this.jdField_a_of_type_AndroidAppDialog.isShowing())
-          {
-            this.jdField_a_of_type_AndroidAppDialog.dismiss();
-            return;
-          }
-        }
-        catch (Exception paramView) {}
-      }
-    }
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.c.setTag(localBitmap);
+    } while (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.a == null);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akcc
  * JD-Core Version:    0.7.0.1
  */

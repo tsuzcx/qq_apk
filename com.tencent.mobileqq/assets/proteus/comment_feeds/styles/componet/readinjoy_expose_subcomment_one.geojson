@@ -1,0 +1,45 @@
+{
+    "view_type":"UIView",
+    "view_id":"id_comment_expose_subcomment_one_bg",
+    "visible_depend_on_children":"YES",
+    "event_type":"cmd_expose_subcommment_one",
+    "height":{
+        "type":"wrap_content"
+    },
+    "width":{ 
+        "type":"match_parent"
+    },
+    "attributes":{
+        "setBackgroundColors:forStates:":[
+            [
+                "#00000000",
+                "#e5e5e5"
+            ],
+            [
+                "0",
+                "1"
+            ]
+        ]
+    },
+    "subviews":[
+        {
+            "margin_top":"12",
+            "margin_bottom":"12",
+            "margin_left":"9",
+            "margin_right":"9",
+            "view_type":"QQRIJRichTextView",
+            "view_id":"id_comment_expose_subcomment_one",
+            "align_parent_center_vertical": "YES",
+            "height":{
+                "type":"wrap_content"
+            },
+            "width":{
+                "type":"match_parent"
+            },
+            "attributes":{
+                "setFontSizeString:":"15",
+                "setCommentModel:":"$subcomment_one"
+            }
+        }
+    ]
+}

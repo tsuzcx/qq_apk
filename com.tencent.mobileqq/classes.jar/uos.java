@@ -1,47 +1,36 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
-import com.tencent.mobileqq.surfaceviewaction.action.Action;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.action.ScaleAction;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
-import com.tencent.mobileqq.util.DisplayUtil;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class uos
-  implements Action.OnActionEndListener
+class uos
+  extends SimpleJob<Object>
 {
-  public uos(FriendShipWaveView paramFriendShipWaveView) {}
-  
-  public void a()
+  uos(uom paramuom, String paramString)
   {
-    ScaleAction localScaleAction = new ScaleAction(500, 0.0F, 1.0F);
-    this.a.d.b = 255;
-    this.a.d.a(new Action[] { localScaleAction });
-    localScaleAction.a(new uot(this));
-    this.a.e = new Sprite();
-    this.a.e.a(FriendShipWaveView.a(this.a));
-    this.a.e.a(this.a.jdField_a_of_type_Int / 2 + DisplayUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 120.0F), this.a.b.d + 30.0F);
-    this.a.a(this.a.e);
-    localScaleAction = new ScaleAction(500, 0.0F, 1.0F);
-    this.a.e.a(new Action[] { localScaleAction });
-    localScaleAction.a(new uou(this));
-    this.a.f = new Sprite();
-    this.a.f.a(FriendShipWaveView.b(this.a));
-    this.a.f.a(this.a.jdField_a_of_type_Int / 2 - DisplayUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 142.0F), this.a.c.d - 50.0F);
-    this.a.a(this.a.f);
-    localScaleAction = new ScaleAction(500, 0.0F, 1.0F);
-    this.a.f.a(new Action[] { localScaleAction });
-    localScaleAction.a(new uov(this));
-    this.a.g = new Sprite();
-    this.a.g.a(FriendShipWaveView.c(this.a));
-    this.a.g.a(this.a.jdField_a_of_type_Int / 2 + DisplayUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 140.0F), this.a.c.d);
-    this.a.a(this.a.g);
-    localScaleAction = new ScaleAction(500, 0.0F, 1.0F);
-    this.a.g.a(new Action[] { localScaleAction });
-    localScaleAction.a(new uow(this));
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    paramVarArgs = ((uvx)uwa.a(5)).a();
+    paramJobContext = new ArrayList(paramVarArgs.size());
+    paramVarArgs = paramVarArgs.iterator();
+    while (paramVarArgs.hasNext()) {
+      paramJobContext.add(new uqf((StoryVideoItem)paramVarArgs.next()));
+    }
+    this.a.a(paramJobContext);
+    wxe.c("Q.qqstory.publish.upload:StoryVideoUploadManager", "had load local task size " + paramJobContext.size());
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uos
  * JD-Core Version:    0.7.0.1
  */

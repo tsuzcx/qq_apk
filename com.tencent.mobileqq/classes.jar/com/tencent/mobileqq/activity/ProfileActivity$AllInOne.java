@@ -1,34 +1,36 @@
 package com.tencent.mobileqq.activity;
 
+import adnx;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.ArrayList;
-import tgk;
 
 public class ProfileActivity$AllInOne
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new tgk();
+  public static final Parcelable.Creator<AllInOne> CREATOR = new adnx();
   public byte a;
   public int a;
   public long a;
   public Bundle a;
   public String a;
-  public ArrayList a;
+  public ArrayList<ProfileActivity.CardContactInfo> a;
   public short a;
   public boolean a;
   public byte[] a;
   public byte b;
   public int b;
+  public Bundle b;
   public String b;
   public boolean b;
   public byte[] b;
   public byte c;
   public int c;
   public String c;
+  public byte[] c;
   public int d;
   public String d;
   public int e;
@@ -62,6 +64,7 @@ public class ProfileActivity$AllInOne
     this.jdField_e_of_type_Int = -1;
     this.jdField_h_of_type_Int = 999;
     this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.jdField_b_of_type_AndroidOsBundle = new Bundle();
   }
   
   public ProfileActivity$AllInOne(String paramString, int paramInt)
@@ -73,44 +76,23 @@ public class ProfileActivity$AllInOne
     this.jdField_e_of_type_Int = -1;
     this.jdField_h_of_type_Int = 999;
     this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.jdField_b_of_type_AndroidOsBundle = new Bundle();
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == 110) || (paramInt == 111) || (paramInt == 112) || (paramInt == 114);
-  }
-  
   public static boolean a(AllInOne paramAllInOne)
   {
-    if (h(paramAllInOne)) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while ((paramAllInOne.jdField_a_of_type_Int == 41) || (paramAllInOne.jdField_a_of_type_Int == 42) || (paramAllInOne.jdField_a_of_type_Int == 86) || (paramAllInOne.jdField_a_of_type_Int == 4) || (paramAllInOne.jdField_a_of_type_Int == 52) || (paramAllInOne.jdField_a_of_type_Int == 56) || (paramAllInOne.jdField_a_of_type_Int == 57) || (paramAllInOne.jdField_a_of_type_Int == 71) || (paramAllInOne.jdField_a_of_type_Int == 72) || (paramAllInOne.jdField_a_of_type_Int == 58) || (paramAllInOne.jdField_a_of_type_Int == 80));
-      if (paramAllInOne.jdField_a_of_type_Int == 95) {
-        return true;
-      }
-    } while (b(paramAllInOne.jdField_a_of_type_Int));
-    return true;
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt == 92) || (paramInt == 93);
+    if (i(paramAllInOne)) {}
+    while ((paramAllInOne.jdField_a_of_type_Int == 41) || (paramAllInOne.jdField_a_of_type_Int == 42) || (paramAllInOne.jdField_a_of_type_Int == 86) || (paramAllInOne.jdField_a_of_type_Int == 4) || (paramAllInOne.jdField_a_of_type_Int == 52) || (paramAllInOne.jdField_a_of_type_Int == 56) || (paramAllInOne.jdField_a_of_type_Int == 57) || (paramAllInOne.jdField_a_of_type_Int == 71) || (paramAllInOne.jdField_a_of_type_Int == 72) || (paramAllInOne.jdField_a_of_type_Int == 58) || (paramAllInOne.jdField_a_of_type_Int == 80)) {
+      return false;
+    }
+    return paramAllInOne.jdField_a_of_type_Int == 95;
   }
   
   public static boolean b(AllInOne paramAllInOne)
   {
-    return (paramAllInOne.jdField_a_of_type_Int == 30) || (paramAllInOne.jdField_a_of_type_Int == 40) || (paramAllInOne.jdField_a_of_type_Int == 20) || (paramAllInOne.jdField_a_of_type_Int == 1) || (paramAllInOne.jdField_a_of_type_Int == 60) || (paramAllInOne.jdField_a_of_type_Int == 55) || (paramAllInOne.jdField_a_of_type_Int == 45) || (paramAllInOne.jdField_a_of_type_Int == 91);
-  }
-  
-  public static boolean c(int paramInt)
-  {
-    return (paramInt == 91) || (paramInt == 92) || (paramInt == 93);
+    return (paramAllInOne.jdField_a_of_type_Int == 30) || (paramAllInOne.jdField_a_of_type_Int == 40) || (paramAllInOne.jdField_a_of_type_Int == 20) || (paramAllInOne.jdField_a_of_type_Int == 1) || (paramAllInOne.jdField_a_of_type_Int == 60) || (paramAllInOne.jdField_a_of_type_Int == 55) || (paramAllInOne.jdField_a_of_type_Int == 45) || (paramAllInOne.jdField_a_of_type_Int == 0);
   }
   
   public static boolean c(AllInOne paramAllInOne)
@@ -178,7 +160,7 @@ public class ProfileActivity$AllInOne
   public static boolean d(AllInOne paramAllInOne)
   {
     if (paramAllInOne.jdField_a_of_type_Int == 0) {}
-    while ((paramAllInOne.jdField_a_of_type_Int == 33) || (paramAllInOne.jdField_a_of_type_Int == 28) || (b(paramAllInOne)) || (paramAllInOne.jdField_a_of_type_Int == 80)) {
+    while ((paramAllInOne.jdField_a_of_type_Int == 33) || (paramAllInOne.jdField_a_of_type_Int == 28) || (paramAllInOne.jdField_a_of_type_Int == 108) || (b(paramAllInOne)) || (paramAllInOne.jdField_a_of_type_Int == 80)) {
       return false;
     }
     return true;
@@ -197,59 +179,44 @@ public class ProfileActivity$AllInOne
           {
             do
             {
-              do
-              {
-                return true;
-              } while (g(paramAllInOne));
-              if (paramAllInOne.jdField_a_of_type_Int == 29) {
-                return false;
-              }
-            } while ((paramAllInOne.jdField_a_of_type_Int == 41) || (paramAllInOne.jdField_a_of_type_Int == 21) || (paramAllInOne.jdField_a_of_type_Int == 58));
-            if (paramAllInOne.jdField_a_of_type_Int != 3) {
-              break;
+              return true;
+            } while (h(paramAllInOne));
+            if (paramAllInOne.jdField_a_of_type_Int == 29) {
+              return false;
             }
-          } while (paramAllInOne.jdField_d_of_type_Int != 0);
-          return false;
-          if (paramAllInOne.jdField_a_of_type_Int != 31) {
+          } while ((paramAllInOne.jdField_a_of_type_Int == 41) || (paramAllInOne.jdField_a_of_type_Int == 21) || (paramAllInOne.jdField_a_of_type_Int == 58));
+          if (paramAllInOne.jdField_a_of_type_Int != 3) {
             break;
           }
-        } while (paramAllInOne.jdField_i_of_type_Int != 3001);
+        } while (paramAllInOne.jdField_d_of_type_Int != 0);
         return false;
-      } while ((paramAllInOne.jdField_a_of_type_Int == 34) || (paramAllInOne.jdField_a_of_type_Int == 50) || (paramAllInOne.jdField_a_of_type_Int == 46) || (paramAllInOne.jdField_a_of_type_Int == 56) || (paramAllInOne.jdField_a_of_type_Int == 71) || (paramAllInOne.jdField_a_of_type_Int == 70));
-      if (paramAllInOne.jdField_a_of_type_Int != 92) {
-        break;
-      }
-    } while ((paramAllInOne.jdField_b_of_type_ArrayOfByte != null) && (paramAllInOne.jdField_b_of_type_ArrayOfByte.length > 0));
-    return false;
+        if (paramAllInOne.jdField_a_of_type_Int != 31) {
+          break;
+        }
+      } while (paramAllInOne.jdField_i_of_type_Int != 3001);
+      return false;
+    } while ((paramAllInOne.jdField_a_of_type_Int == 34) || (paramAllInOne.jdField_a_of_type_Int == 50) || (paramAllInOne.jdField_a_of_type_Int == 46) || (paramAllInOne.jdField_a_of_type_Int == 56) || (paramAllInOne.jdField_a_of_type_Int == 71) || (paramAllInOne.jdField_a_of_type_Int == 70));
     return paramAllInOne.jdField_a_of_type_Int != 95;
   }
   
   public static boolean f(AllInOne paramAllInOne)
   {
-    return !h(paramAllInOne);
+    return (paramAllInOne.jdField_a_of_type_Int == 20) || (paramAllInOne.jdField_a_of_type_Int == 21) || (paramAllInOne.jdField_a_of_type_Int == 22) || (paramAllInOne.jdField_a_of_type_Int == 23) || (paramAllInOne.jdField_a_of_type_Int == 24) || (paramAllInOne.jdField_a_of_type_Int == 120);
   }
   
   public static boolean g(AllInOne paramAllInOne)
   {
-    return (paramAllInOne.jdField_a_of_type_Int == 22) || (paramAllInOne.jdField_a_of_type_Int == 42) || (paramAllInOne.jdField_a_of_type_Int == 2) || (paramAllInOne.jdField_a_of_type_Int == 34) || (paramAllInOne.jdField_a_of_type_Int == 47) || (paramAllInOne.jdField_a_of_type_Int == 57) || (paramAllInOne.jdField_a_of_type_Int == 72) || (paramAllInOne.jdField_a_of_type_Int == 27) || (paramAllInOne.jdField_a_of_type_Int == 74) || (paramAllInOne.jdField_a_of_type_Int == 86) || (paramAllInOne.jdField_a_of_type_Int == 93);
+    return !i(paramAllInOne);
   }
   
   public static boolean h(AllInOne paramAllInOne)
   {
-    return (paramAllInOne.jdField_a_of_type_Int == 33) || (paramAllInOne.jdField_a_of_type_Int == 32) || (paramAllInOne.jdField_a_of_type_Int == 31) || (paramAllInOne.jdField_a_of_type_Int == 34) || (paramAllInOne.jdField_a_of_type_Int == 50) || (paramAllInOne.jdField_a_of_type_Int == 51) || (paramAllInOne.jdField_a_of_type_Int == 53) || (paramAllInOne.jdField_a_of_type_Int == 29) || (paramAllInOne.jdField_a_of_type_Int == 36);
+    return (paramAllInOne.jdField_a_of_type_Int == 22) || (paramAllInOne.jdField_a_of_type_Int == 42) || (paramAllInOne.jdField_a_of_type_Int == 2) || (paramAllInOne.jdField_a_of_type_Int == 34) || (paramAllInOne.jdField_a_of_type_Int == 47) || (paramAllInOne.jdField_a_of_type_Int == 57) || (paramAllInOne.jdField_a_of_type_Int == 72) || (paramAllInOne.jdField_a_of_type_Int == 27) || (paramAllInOne.jdField_a_of_type_Int == 74) || (paramAllInOne.jdField_a_of_type_Int == 86);
   }
   
   public static boolean i(AllInOne paramAllInOne)
   {
-    if (paramAllInOne == null) {}
-    do
-    {
-      return false;
-      if (c(paramAllInOne.jdField_a_of_type_Int)) {
-        return true;
-      }
-    } while ((paramAllInOne.jdField_a_of_type_Int != 0) || (!a(paramAllInOne.jdField_h_of_type_Int)));
-    return true;
+    return (paramAllInOne.jdField_a_of_type_Int == 33) || (paramAllInOne.jdField_a_of_type_Int == 32) || (paramAllInOne.jdField_a_of_type_Int == 31) || (paramAllInOne.jdField_a_of_type_Int == 34) || (paramAllInOne.jdField_a_of_type_Int == 50) || (paramAllInOne.jdField_a_of_type_Int == 51) || (paramAllInOne.jdField_a_of_type_Int == 53) || (paramAllInOne.jdField_a_of_type_Int == 29) || (paramAllInOne.jdField_a_of_type_Int == 36);
   }
   
   public static boolean j(AllInOne paramAllInOne)
@@ -323,15 +290,17 @@ public class ProfileActivity$AllInOne
       paramParcel.writeLong(this.jdField_a_of_type_Long);
       paramParcel.writeInt(this.jdField_l_of_type_Int);
       paramParcel.writeString(this.q);
-      paramParcel.writeParcelable(this.jdField_a_of_type_AndroidOsBundle, paramInt);
+      paramParcel.writeParcelable(this.jdField_b_of_type_AndroidOsBundle, paramInt);
       paramParcel.writeInt(this.jdField_f_of_type_Int);
+      paramParcel.writeParcelable(this.jdField_a_of_type_AndroidOsBundle, paramInt);
+      paramParcel.writeByteArray(this.jdField_c_of_type_ArrayOfByte);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ProfileActivity.AllInOne
  * JD-Core Version:    0.7.0.1
  */

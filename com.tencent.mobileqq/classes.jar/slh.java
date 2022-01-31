@@ -1,14 +1,10 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
-
-public class slh
-  extends FacePreloadBaseAdapter.ViewHolder
+public abstract interface slh
 {
-  public TextView a;
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     slh
  * JD-Core Version:    0.7.0.1
  */

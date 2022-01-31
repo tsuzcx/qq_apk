@@ -1,25 +1,19 @@
-import android.view.View;
-import com.tencent.device.msg.activities.DevicePttItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.PttItemBuilder.Holder;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-
-public class qav
-  implements ActionSheet.OnButtonClickListener
+class qav
+  implements qci
 {
-  public qav(DevicePttItemBuilder paramDevicePttItemBuilder, PttItemBuilder.Holder paramHolder, MessageForPtt paramMessageForPtt, ActionSheet paramActionSheet) {}
+  qav(qau paramqau) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder$Holder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.b();
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    rro localrro = this.a.jdField_a_of_type_Rqj.a();
+    if (localrro != null) {
+      localrro.a(null, ((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qav
  * JD-Core Version:    0.7.0.1
  */

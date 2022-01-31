@@ -1,35 +1,12 @@
-import com.tencent.biz.qrcode.activity.LoginManagerActivity;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-public class osn
-  extends DownloadListener
+public abstract interface osn
 {
-  public osn(LoginManagerActivity paramLoginManagerActivity) {}
-  
-  public void onCancel(DownloadTask paramDownloadTask)
-  {
-    LoginManagerActivity.a(this.a, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginManagerActivity", 2, "downloadTimZipFile cancel");
-    }
-  }
-  
-  public void onDone(DownloadTask paramDownloadTask)
-  {
-    LoginManagerActivity.a(this.a, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginManagerActivity", 2, "downloadTimZipFile onDone status: " + paramDownloadTask.a() + ", errMsg :" + paramDownloadTask.b + " code :" + paramDownloadTask.a);
-    }
-    if (paramDownloadTask.a() == 3) {
-      this.a.runOnUiThread(new oso(this));
-    }
-  }
+  public abstract void a(BaseResp paramBaseResp);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     osn
  * JD-Core Version:    0.7.0.1
  */

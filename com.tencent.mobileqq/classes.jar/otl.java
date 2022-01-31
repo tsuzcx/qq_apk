@@ -1,61 +1,54 @@
 import android.text.TextUtils;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class otl
-  implements Runnable
+public class otl
+  implements AladdinConfigHandler
 {
-  otl(otk paramotk, String paramString) {}
-  
-  public void run()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (this.jdField_a_of_type_Otk.a.isFinishing()) {}
-    do
+    paramString = osq.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      do
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      if ((str1.equals("md5")) && (str2 != null))
       {
-        do
-        {
-          return;
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          QRUtils.a(1, 2131430004);
-        } while (this.jdField_a_of_type_Otk.a.jdField_c_of_type_Int != 2);
-        if (this.jdField_a_of_type_Otk.a.h == 2) {}
-        for (String str = "qr_wechat";; str = "qr_circle")
-        {
-          TroopReportor.a("Grp_share", "grpData_admin", str, 0, 0, new String[] { this.jdField_a_of_type_Otk.a.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Otk.a.a), "1" });
-          return;
-        }
-        if (this.jdField_a_of_type_Otk.a.h != 2) {
-          break;
-        }
-        WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Otk.a.b, 0);
-        if (this.jdField_a_of_type_Otk.a.jdField_c_of_type_Int == 2)
-        {
-          ReportController.b(this.jdField_a_of_type_Otk.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_wechat", 0, 0, this.jdField_a_of_type_Otk.a.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Otk.a.a), "");
-          return;
-        }
-      } while (this.jdField_a_of_type_Otk.a.jdField_c_of_type_Int != 5);
-      ReportController.b(this.jdField_a_of_type_Otk.a.app, "CliOper", "", "", "0X8006676", "0X8006676", 0, 0, "", "", "", "");
-      return;
-      WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Otk.a.b, 1);
-      if (this.jdField_a_of_type_Otk.a.jdField_c_of_type_Int == 2)
-      {
-        ReportController.b(this.jdField_a_of_type_Otk.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_circle", 0, 0, this.jdField_a_of_type_Otk.a.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Otk.a.a), "");
-        return;
+        opq.a(ors.a(), "sp_key_latest_app_md5", str2.toLowerCase());
       }
-    } while (this.jdField_a_of_type_Otk.a.jdField_c_of_type_Int != 5);
-    ReportController.b(this.jdField_a_of_type_Otk.a.app, "CliOper", "", "", "0X8006677", "0X8006677", 0, 0, "", "", "", "");
+      else if (str1.equals("version_name"))
+      {
+        opq.a(ors.a(), "sp_key_latest_app_version_name", str2);
+      }
+      else if ((str1.equals("download_url")) && (str2 != null))
+      {
+        str1 = orq.a(str2);
+        opq.a(ors.a(), "sp_key_kb_download_url", str1);
+      }
+      else if (str1.equals("enable_predownload"))
+      {
+        opq.a(ors.a(), "sp_key_enable_pre_download", TextUtils.equals("1", str2));
+      }
+    }
+    if (!paramString.containsKey("md5")) {
+      opq.a(ors.a(), "sp_key_latest_app_md5", null);
+    }
+    opq.a();
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    opq.a(ors.a(), "sp_key_latest_app_md5", null);
+    opq.a(ors.a(), "sp_key_latest_app_version_name", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     otl
  * JD-Core Version:    0.7.0.1
  */

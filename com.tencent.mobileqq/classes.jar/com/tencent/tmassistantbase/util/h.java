@@ -1,14 +1,18 @@
 package com.tencent.tmassistantbase.util;
 
-import java.util.List;
-
-public abstract interface h
+class h
+  implements Runnable
 {
-  public abstract void a(List<String> paramList);
+  h(GlobalUtil paramGlobalUtil) {}
+  
+  public void run()
+  {
+    ab.a(this.a.mContext);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,24 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.StringUtil;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class whk
-  implements Runnable
+class whk
+  implements wrt<Integer>
 {
-  public whk(AddContactsView paramAddContactsView, String paramString, SharedPreferences paramSharedPreferences) {}
+  whk(whh paramwhh, uvt paramuvt) {}
   
-  public void run()
+  public void a(ErrorMessage paramErrorMessage)
   {
-    List localList = AddContactsView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView);
-    String str = AddContactsView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView, localList);
-    if (!this.jdField_a_of_type_JavaLangString.equals(str))
-    {
-      AddContactsView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView, localList);
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(AddContactsView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView), StringUtil.a(AddContactsView.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView), ",")).commit();
-      ThreadManager.getUIHandler().post(new whl(this, str));
-    }
+    wxe.e("QQStoryTakeVideoHelper", "get vip error.");
+  }
+  
+  public void a(Integer paramInteger)
+  {
+    wxe.b("QQStoryTakeVideoHelper", "get vip competed, vip:" + paramInteger);
+    this.jdField_a_of_type_Uvt.b("qqstory_i_am_vip", paramInteger);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     whk
  * JD-Core Version:    0.7.0.1
  */

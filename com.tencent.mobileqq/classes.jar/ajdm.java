@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.troop.data.TroopCreateLogic;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
 
-class ajdm
-  implements Runnable
+public class ajdm
+  implements DialogInterface.OnClickListener
 {
-  ajdm(ajdk paramajdk) {}
+  public ajdm(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.b);
+    if ((DrawRedpacketPannelPreviewFragment.a(this.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.a).isShowing())) {
+      DrawRedpacketPannelPreviewFragment.a(this.a).dismiss();
+    }
   }
 }
 

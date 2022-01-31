@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 public class ManageThread
   extends Step
 {
-  protected boolean a()
+  protected boolean doStep()
   {
     ThreadManager.init();
     return true;
@@ -13,7 +13,7 @@ public class ManageThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.ManageThread
  * JD-Core Version:    0.7.0.1
  */

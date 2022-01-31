@@ -1,5 +1,9 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
+import ahnl;
+import ahnm;
+import alwx;
+import amlp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -9,22 +13,20 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import azqs;
+import bafi;
+import bdin;
+import bety;
 import com.tencent.mobileqq.activity.AddRequestActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -33,8 +35,6 @@ import tencent.mobileim.structmsg.structmsg.StructMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsgAction;
 import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
-import wke;
-import wkf;
 
 public class SystemRequestInfoView
   extends LinearLayout
@@ -42,12 +42,12 @@ public class SystemRequestInfoView
 {
   int jdField_a_of_type_Int;
   public long a;
+  private alwx jdField_a_of_type_Alwx = new ahnl(this);
   private Intent jdField_a_of_type_AndroidContentIntent;
   Button jdField_a_of_type_AndroidWidgetButton;
+  public bety a;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new wke(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public QQProgressDialog a;
   public String a;
   private structmsg.StructMsg jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg;
   byte[] jdField_a_of_type_ArrayOfByte;
@@ -70,38 +70,38 @@ public class SystemRequestInfoView
   
   public int a()
   {
-    return getResources().getDimensionPixelSize(2131558448);
+    return getResources().getDimensionPixelSize(2131298914);
   }
   
   void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+    if (this.jdField_a_of_type_Bety == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getContext(), a());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new wkf(this));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+      this.jdField_a_of_type_Bety = new bety(getContext(), a());
+      this.jdField_a_of_type_Bety.setOnDismissListener(new ahnm(this));
+      this.jdField_a_of_type_Bety.c(paramInt);
+      this.jdField_a_of_type_Bety.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_Bety.setCancelable(false);
+      this.jdField_a_of_type_Bety.show();
     }
   }
   
   public boolean a()
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
+    if (this.jdField_a_of_type_Bety != null)
     {
       bool = true;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+      this.jdField_a_of_type_Bety.cancel();
+      this.jdField_a_of_type_Bety = null;
     }
     return bool;
   }
   
   public void onClick(View paramView)
   {
-    if (!NetworkUtil.d(getContext())) {
-      QQToast.a(getContext(), getResources().getString(2131433213), 0).b(a());
+    if (!bdin.d(getContext())) {
+      QQToast.a(getContext(), getResources().getString(2131694766), 0).b(a());
     }
     label835:
     for (;;)
@@ -115,7 +115,7 @@ public class SystemRequestInfoView
         {
           ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(0, Long.parseLong(this.jdField_b_of_type_JavaLangString), this.jdField_a_of_type_Long, this.jdField_a_of_type_ArrayOfByte, (byte)0, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_Long, this.jdField_b_of_type_Long);
           i = 1;
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673B", "0X800673B", 0, 0, "", "", "", "");
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673B", "0X800673B", 0, 0, "", "", "", "");
         }
       }
       for (;;)
@@ -123,10 +123,10 @@ public class SystemRequestInfoView
         if (i == 0) {
           break label835;
         }
-        a(2131434453);
+        a(2131719785);
         return;
-        long l1 = FriendSystemMsgController.a().b();
-        paramView = FriendSystemMsgController.a().a(Long.valueOf(l1));
+        long l1 = bafi.a().b();
+        paramView = bafi.a().a(Long.valueOf(l1));
         long l2;
         int m;
         int n;
@@ -167,8 +167,8 @@ public class SystemRequestInfoView
         break;
         if (paramView == this.jdField_b_of_type_AndroidWidgetButton)
         {
-          l1 = FriendSystemMsgController.a().b();
-          this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = FriendSystemMsgController.a().a(Long.valueOf(l1));
+          l1 = bafi.a().b();
+          this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = bafi.a().a(Long.valueOf(l1));
           if (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null)
           {
             i = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get();
@@ -187,7 +187,7 @@ public class SystemRequestInfoView
           }
           for (;;)
           {
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673A", "0X800673A", 0, 0, "", "", "", "");
+            azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673A", "0X800673A", 0, 0, "", "", "", "");
             break;
             localObject = new StringBuilder().append("refuse, ");
             if (paramView != null) {}
@@ -207,7 +207,7 @@ public class SystemRequestInfoView
           paramView = new Intent(this.jdField_a_of_type_AndroidContentIntent);
           paramView.setClass(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, AddRequestActivity.class);
           this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivityForResult(paramView, 1018);
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673D", "0X800673D", 0, 0, "", "", "", "");
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800673D", "0X800673D", 0, 0, "", "", "", "");
           i = k;
         }
       }
@@ -221,7 +221,7 @@ public class SystemRequestInfoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView
  * JD-Core Version:    0.7.0.1
  */

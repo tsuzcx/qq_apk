@@ -1,28 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.util.ThreadPriorityManager;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.Groups;
 
-public final class akbd
-  extends Handler
+class akbd
 {
-  public akbd(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  int jdField_a_of_type_Int;
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  Groups jdField_a_of_type_ComTencentMobileqqDataGroups;
+  TextView b;
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      ThreadPriorityManager.a();
-      return;
-    }
-    ThreadPriorityManager.b();
-  }
+  akbd(akbb paramakbb) {}
 }
 
 

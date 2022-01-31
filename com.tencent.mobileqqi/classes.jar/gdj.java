@@ -1,91 +1,39 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBaby.IUniformDownloaderAppBabyListener;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.data.RecommendTroopInfo;
+import com.tencent.mobileqq.newfriend.RecommendTroopMessage;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.List;
 
 public class gdj
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  public final long a;
-  public UniformDownloaderAppBaby.IUniformDownloaderAppBabyListener a;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  final String jdField_a_of_type_JavaLangString;
-  public int b;
-  public final long b;
-  Object b;
-  long jdField_c_of_type_Long;
-  Object jdField_c_of_type_JavaLangObject = new Object();
-  long d;
+  gdj(RecommendTroopMessage paramRecommendTroopMessage) {}
   
-  public gdj(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk, long paramLong1, String paramString, long paramLong2)
+  public void onClick(View paramView)
   {
-    this.jdField_b_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_c_of_type_Long = 0L;
-    this.d = 0L;
-    this.jdField_b_of_type_Int = -1;
-  }
-  
-  int a()
-  {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      int i = this.jdField_a_of_type_Int;
-      return i;
+    ReportController.b(RecommendTroopMessage.a(this.a), "P_CliOper", "Grp_contacts", "", "Grp_ask", "Clk_oneblue_join", 0, 0, "", "", "", "");
+    paramView = (RecommendTroopInfo)RecommendTroopMessage.a(this.a).get(0);
+    TroopHandler localTroopHandler = (TroopHandler)RecommendTroopMessage.a(this.a).a(1);
+    if (localTroopHandler != null) {
+      RecommendTroopMessage.a(this.a).a(this.a.a);
     }
-  }
-  
-  public long a()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    try
     {
-      long l = this.jdField_c_of_type_Long;
-      return l;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      QLog.i(UniformDownloaderAppBabySdk.jdField_a_of_type_JavaLangString, 1, "[UniformDL] setStatus:" + this.jdField_a_of_type_Int + " -> " + paramInt + "url:" + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Int = paramInt;
+      localTroopHandler.a(Long.parseLong(paramView.uin), 8388736);
       return;
     }
-  }
-  
-  public void a(long paramLong)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    catch (Exception paramView)
     {
-      this.jdField_c_of_type_Long = paramLong;
-      return;
-    }
-  }
-  
-  public long b()
-  {
-    synchronized (this.jdField_c_of_type_JavaLangObject)
-    {
-      long l = this.d;
-      return l;
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    synchronized (this.jdField_c_of_type_JavaLangObject)
-    {
-      this.d = paramLong;
-      return;
+      RecommendTroopMessage.a(this.a).c(this.a.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gdj
  * JD-Core Version:    0.7.0.1
  */

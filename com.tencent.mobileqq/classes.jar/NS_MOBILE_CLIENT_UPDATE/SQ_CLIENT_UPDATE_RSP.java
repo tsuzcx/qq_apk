@@ -10,17 +10,17 @@ import java.util.Map;
 public final class SQ_CLIENT_UPDATE_RSP
   extends JceStruct
 {
-  static Map cache_extra_info;
+  static Map<String, String> cache_extra_info;
   static int cache_upType = 0;
-  static ArrayList cache_vModule;
-  static ArrayList cache_vPlugin;
-  public Map extra_info;
+  static ArrayList<UPDATE_INFO> cache_vModule;
+  static ArrayList<UPDATE_INFO> cache_vPlugin;
+  public Map<String, String> extra_info;
   public String md5 = "";
   public String upMsg = "";
   public int upType;
   public String upUrl = "";
-  public ArrayList vModule;
-  public ArrayList vPlugin;
+  public ArrayList<UPDATE_INFO> vModule;
+  public ArrayList<UPDATE_INFO> vPlugin;
   public String version = "";
   
   static
@@ -37,7 +37,7 @@ public final class SQ_CLIENT_UPDATE_RSP
   
   public SQ_CLIENT_UPDATE_RSP() {}
   
-  public SQ_CLIENT_UPDATE_RSP(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, Map paramMap, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public SQ_CLIENT_UPDATE_RSP(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, Map<String, String> paramMap, ArrayList<UPDATE_INFO> paramArrayList1, ArrayList<UPDATE_INFO> paramArrayList2)
   {
     this.version = paramString1;
     this.upUrl = paramString2;
@@ -89,7 +89,7 @@ public final class SQ_CLIENT_UPDATE_RSP
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_CLIENT_UPDATE.SQ_CLIENT_UPDATE_RSP
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 package oicq.wlogin_sdk.request;
 
+import oicq.wlogin_sdk.tools.util;
+
 class WtloginHelper$HelperThread$9
   implements Runnable
 {
@@ -8,6 +10,7 @@ class WtloginHelper$HelperThread$9
   public void run()
   {
     WtloginHelper.HelperThread.access$500(this.this$1);
+    util.LOGI("RequestTransport handler:ret=" + this.val$ret + "subCmd=" + this.this$1.mReqContext._subcmd + "cancel=" + this.val$cancel, this.this$1.mUserAccount);
     if (this.val$cancel != 0) {
       return;
     }

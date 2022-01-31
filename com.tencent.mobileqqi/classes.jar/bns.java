@@ -1,41 +1,53 @@
-import com.tencent.biz.common.download.OfflineDownloader;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.common.offline.HtmlOffline;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.biz.troop.TroopMemberApiPlugin;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class bns
-  implements AsyncBack
+public class bns
+  implements TroopMemberApiClient.Callback
 {
-  bns(bnr parambnr, long paramLong) {}
+  public bns(TroopMemberApiPlugin paramTroopMemberApiPlugin, int paramInt, List paramList, String paramString) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void a(Bundle paramBundle)
   {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.i("QQBrowserOffline", 2, "OfflineDownloader code:" + paramInt + ", time:" + l);
-    }
-    if (paramInt == 0)
+    Object localObject = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.mRuntime.a();
+    if ((localObject == null) || (((Activity)localObject).isFinishing())) {}
+    do
     {
-      HtmlOffline.a(bnr.a(this.jdField_a_of_type_Bnr), bnr.a(this.jdField_a_of_type_Bnr));
-      if (2 == this.jdField_a_of_type_Bnr.jdField_a_of_type_Int)
-      {
-        HtmlOffline.a(bnr.a(this.jdField_a_of_type_Bnr));
-        bnr.a(this.jdField_a_of_type_Bnr, -1);
-      }
-    }
-    for (;;)
-    {
-      HtmlOffline.a(bnr.a(this.jdField_a_of_type_Bnr), paramInt, l, OfflineDownloader.a(bnr.a(this.jdField_a_of_type_Bnr)));
       return;
-      if (this.jdField_a_of_type_Bnr.jdField_a_of_type_Boolean) {
-        HtmlOffline.a(bnr.a(this.jdField_a_of_type_Bnr));
+      localObject = paramBundle.getParcelableArray("resultList");
+    } while ((localObject == null) || (localObject.length != this.jdField_a_of_type_Int - 1000));
+    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.jdField_a_of_type_OrgJsonJSONArray != null) {}
+    for (paramBundle = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.jdField_a_of_type_OrgJsonJSONArray;; paramBundle = new JSONArray())
+    {
+      int i = 1000;
+      while (i < this.jdField_a_of_type_Int)
+      {
+        JSONObject localJSONObject = TroopMemberApiPlugin.a((TroopMemberInfo)this.jdField_a_of_type_JavaUtilList.get(i), (Bundle)localObject[(i - 1000)]);
+        if (localJSONObject != null) {
+          paramBundle.put(localJSONObject);
+        }
+        i += 1;
       }
-      bnr.a(this.jdField_a_of_type_Bnr, 0);
-      continue;
-      bnr.a(this.jdField_a_of_type_Bnr, 2);
     }
+    if ((!TroopMemberApiPlugin.b(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin)) || ((TroopMemberApiPlugin.b(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin)) && (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.b == null)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("troopMember", 2, "send data to web and size is jsonArray size is " + paramBundle.length());
+      }
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+    }
+    if ((!TroopMemberApiPlugin.a(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin)) || (TroopMemberApiPlugin.b(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin))) {
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+    }
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.jdField_a_of_type_OrgJsonJSONArray = null;
   }
 }
 

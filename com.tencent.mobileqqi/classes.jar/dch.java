@@ -1,19 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.MyPublishedHornActivity;
-import com.tencent.mobileqq.maproam.Utils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class dch
-  implements View.OnClickListener
+class dch
+  implements DialogInterface.OnClickListener
 {
-  public dch(MyPublishedHornActivity paramMyPublishedHornActivity) {}
+  dch(dcg paramdcg) {}
   
-  public void onClick(View paramView)
-  {
-    Utils.a();
-    this.a.a.setEnabled(true);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

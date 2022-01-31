@@ -1,32 +1,33 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
 
 public class fyl
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public fyl(FileTransferHandler paramFileTransferHandler, long paramLong, int paramInt, String paramString1, String paramString2) {}
+  public fyl(FilePreviewAnimQueue paramFilePreviewAnimQueue, FilePreviewAnimQueue.FilePreviewAnim paramFilePreviewAnim) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Long + "] Handle upload failed notify. retCode =" + this.jdField_a_of_type_Int + "(1:cancel upload) reason=" + this.jdField_a_of_type_JavaLangString);
-    if (1 == this.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.b, this.jdField_a_of_type_Long);
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue$FilePreviewAnim.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
-    if (2 == this.jdField_a_of_type_Int)
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.b, this.jdField_a_of_type_Long);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a();
       return;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    if (3 == this.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().c(this.b, this.jdField_a_of_type_Long);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.b, this.jdField_a_of_type_Long);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.jdField_a_of_type_Boolean = true;
   }
 }
 

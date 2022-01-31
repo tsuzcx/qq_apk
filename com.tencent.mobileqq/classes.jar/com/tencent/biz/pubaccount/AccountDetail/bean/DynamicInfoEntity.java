@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.AccountDetail.bean;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhs;
 
 public class DynamicInfoEntity
-  extends Entity
+  extends awge
 {
   public byte[] dynamicInfoData;
-  @unique
+  @awhs
   public String puin;
 }
 

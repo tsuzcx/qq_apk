@@ -1,28 +1,52 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class obu
-  implements Animation.AnimationListener
+  implements AladdinConfigHandler
 {
-  public obu(NewMessageYellowBar paramNewMessageYellowBar) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    this.a.setVisibility(8);
+    QLog.d("VideoSoftAdConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = osq.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("VideoSoftAdConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (paramInt1 == 200)
+      {
+        if ((TextUtils.equals(str1, "ad_guide_area")) && (!TextUtils.isEmpty(str2))) {
+          bkbq.a("sp_key_ad_soft_total_area", str2.trim());
+        }
+        if ((TextUtils.equals(str1, "ad_max_num")) && (!TextUtils.isEmpty(str2))) {
+          bkbq.a("sp_key_ad_soft_ad_max", str2.trim());
+        }
+        if ((TextUtils.equals(str1, "kd_max_num")) && (!TextUtils.isEmpty(str2))) {
+          bkbq.a("sp_key_ad_soft_kd_max", str2.trim());
+        }
+      }
+    }
+    return true;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onWipeConfig(int paramInt)
   {
-    this.a.a.setAlpha(1.0F);
+    if (paramInt == 200)
+    {
+      bkbq.a("sp_key_ad_soft_total_area", "0");
+      bkbq.a("sp_key_ad_soft_ad_max", "25");
+      bkbq.a("sp_key_ad_soft_kd_max", "25");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     obu
  * JD-Core Version:    0.7.0.1
  */

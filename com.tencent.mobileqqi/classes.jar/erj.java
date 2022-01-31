@@ -1,108 +1,18 @@
-import android.content.res.Resources;
-import android.util.Pair;
-import android.view.View;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.photo.LocalPhotoInfo;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.AlbumUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import com.tencent.widget.GestureSelectGridView;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class erj
-  implements AdapterView.OnItemClickListener
+class erj
+  implements DialogInterface.OnClickListener
 {
-  public erj(PhotoListActivity paramPhotoListActivity) {}
+  erj(eri parameri) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 2;
-    switch (this.a.jdField_a_of_type_Ero.getItemViewType(paramInt))
-    {
-    default: 
-      return;
-    case 0: 
-      if (!PhotoListActivity.f(this.a)) {
-        PhotoListActivity.c(this.a, true);
-      }
-      if (this.a.jdField_a_of_type_Boolean)
-      {
-        paramAdapterView = this.a.jdField_a_of_type_Ero.a(paramInt);
-        PhotoListActivity.a(this.a, paramAdapterView.a);
-        return;
-      }
-      ero localero = this.a.jdField_a_of_type_Ero;
-      LocalPhotoInfo localLocalPhotoInfo = localero.a(paramInt);
-      paramInt = localLocalPhotoInfo.e;
-      if ((paramInt == 2) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() >= this.a.c))
-      {
-        QQToast.a(this.a, this.a.getString(2131558990, new Object[] { Integer.valueOf(this.a.c) }), 0).b(this.a.d);
-        return;
-      }
-      label209:
-      String str;
-      if (paramInt == 1)
-      {
-        paramInt = i;
-        localLocalPhotoInfo.e = paramInt;
-        if (localLocalPhotoInfo.e != 1) {
-          break label381;
-        }
-        paramInt = 1;
-        str = localLocalPhotoInfo.a;
-        if (paramInt == 0) {
-          break label386;
-        }
-        this.a.jdField_a_of_type_JavaUtilArrayList.add(str);
-        paramView = (LinkedHashMap)AlbumUtil.b.get(PhotoListActivity.a(this.a));
-        paramAdapterView = paramView;
-        if (paramView == null)
-        {
-          paramAdapterView = new LinkedHashMap();
-          AlbumUtil.b.put(PhotoListActivity.a(this.a), paramAdapterView);
-        }
-        paramAdapterView.put(str, Integer.valueOf(this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.q()));
-        paramAdapterView = AlbumUtil.c;
-        if (!paramAdapterView.containsKey(str)) {
-          paramAdapterView.put(str, new Pair(PhotoListActivity.a(this.a), PhotoListActivity.b(this.a)));
-        }
-      }
-      for (;;)
-      {
-        localero.notifyDataSetChanged();
-        if (PhotoListActivity.a(this.a) == 1) {
-          PhotoListActivity.b(this.a, localLocalPhotoInfo.a);
-        }
-        PhotoListActivity.a(this.a);
-        return;
-        paramInt = 1;
-        break;
-        label381:
-        paramInt = 0;
-        break label209;
-        label386:
-        this.a.jdField_a_of_type_JavaUtilArrayList.remove(str);
-        paramAdapterView = (HashMap)AlbumUtil.b.get(PhotoListActivity.a(this.a));
-        if (paramAdapterView != null) {
-          paramAdapterView.remove(str);
-        }
-        paramAdapterView = AlbumUtil.c;
-        if (paramAdapterView.containsKey(str)) {
-          paramAdapterView.remove(str);
-        }
-      }
-    }
-    if (!Utils.e())
-    {
-      Toast.makeText(this.a, this.a.getResources().getString(2131562496), 0).show();
-      return;
-    }
-    PhotoListActivity.d(this.a);
+    this.a.a.f();
+    paramDialogInterface.dismiss();
+    ReportController.b(this.a.a.b, "CliOper", "", "", "Multi_call", "Clk_join_discuss_next", 0, 0, "", "", "", "");
   }
 }
 

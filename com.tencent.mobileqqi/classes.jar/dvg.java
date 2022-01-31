@@ -1,13 +1,70 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.service.lbs.LbsPortraitUtil;
+import java.util.ArrayList;
 
 public class dvg
-  implements DialogInterface.OnClickListener
+  extends CardObserver
 {
-  public dvg(TroopInfoActivity paramTroopInfoActivity) {}
+  public dvg(VisitorsActivity paramVisitorsActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected void a(boolean paramBoolean, String paramString, ArrayList paramArrayList, long paramLong1, long paramLong2, byte[] paramArrayOfByte)
+  {
+    if (!this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().equals(paramString)) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      paramString = this.a.jdField_a_of_type_JavaUtilArrayList;
+      if (this.a.jdField_a_of_type_Boolean)
+      {
+        paramString = new ArrayList();
+        new dvh(this).start();
+      }
+      paramString = LbsPortraitUtil.a(paramString, paramArrayList);
+      this.a.c = paramLong2;
+      paramArrayList = this.a.jdField_a_of_type_Dvk;
+      if (this.a.c != -1L) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        paramArrayList.a(paramBoolean);
+        this.a.a(paramString, paramLong1);
+        return;
+      }
+    }
+    this.a.d();
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, ArrayList paramArrayList, long paramLong1, long paramLong2, byte[] paramArrayOfByte, Card paramCard)
+  {
+    if (!this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().equals(paramString)) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      paramString = this.a.jdField_a_of_type_JavaUtilArrayList;
+      if (this.a.jdField_a_of_type_Boolean)
+      {
+        this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().c(AppConstants.S, 1001);
+        paramString = new ArrayList();
+      }
+      this.a.jdField_b_of_type_Long = paramLong2;
+      paramArrayOfByte = this.a.jdField_a_of_type_Dvk;
+      if (this.a.jdField_b_of_type_Long != -1L) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        paramArrayOfByte.a(paramBoolean);
+        paramString = LbsPortraitUtil.a(paramString, paramArrayList);
+        this.a.a(paramString, paramLong1);
+        return;
+      }
+    }
+    this.a.d();
+  }
 }
 
 

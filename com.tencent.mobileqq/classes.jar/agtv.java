@@ -1,14 +1,25 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.ptt.preop.PttPreSendManager;
+import android.os.Bundle;
+import android.os.Handler;
+import mqq.observer.BusinessObserver;
 
-public class agtv
-  implements Runnable
+class agtv
+  implements BusinessObserver
 {
-  public agtv(PttPreSendManager paramPttPreSendManager, BaseChatPie paramBaseChatPie) {}
+  agtv(agti paramagti) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.h(2131230731);
+    if (paramBundle != null)
+    {
+      paramInt = paramBundle.getInt("update_type");
+      if (paramInt != 2) {}
+    }
+    else
+    {
+      return;
+    }
+    if (paramInt == 1) {}
+    this.a.a.sendEmptyMessage(2);
   }
 }
 

@@ -1,36 +1,17 @@
-import android.content.Context;
-import android.support.v4.view.ViewPager.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import com.tencent.mobileqq.profile.view.QzonePhotoView;
-import com.tencent.widget.AdapterViewPagerAdapter.AdapterViewFactory;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantActivity;
 
 public class gjq
-  implements AdapterViewPagerAdapter.AdapterViewFactory
+  implements View.OnClickListener
 {
-  public gjq(QzonePhotoView paramQzonePhotoView) {}
+  public gjq(QZoneShareAlbumAssistantActivity paramQZoneShareAlbumAssistantActivity) {}
   
-  public AdapterView a(Context paramContext, int paramInt)
-  {
-    paramContext = new GridView(paramContext);
-    paramContext.setNumColumns(4);
-    paramContext.setFadingEdgeLength(0);
-    paramContext.setHorizontalSpacing(QzonePhotoView.a(this.a));
-    paramContext.setVerticalSpacing(QzonePhotoView.a(this.a));
-    paramContext.setStretchMode(2);
-    paramContext.setScrollingCacheEnabled(false);
-    paramContext.setSelector(2131361815);
-    ViewPager.LayoutParams localLayoutParams = new ViewPager.LayoutParams();
-    localLayoutParams.gravity = 17;
-    localLayoutParams.height = -2;
-    localLayoutParams.width = -1;
-    paramContext.setLayoutParams(localLayoutParams);
-    return paramContext;
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gjq
  * JD-Core Version:    0.7.0.1
  */

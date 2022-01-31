@@ -1,20 +1,10 @@
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-
-public class ymp
-  implements Runnable
+public abstract interface ymp
 {
-  public ymp(ApolloSurfaceView paramApolloSurfaceView) {}
-  
-  public void run()
-  {
-    ThreadManager.getUIHandler().post(new ymq(this));
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ymp
  * JD-Core Version:    0.7.0.1
  */

@@ -4,14 +4,16 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class submsgtype0xdc$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26 }, new String[] { "rpt_msg_list", "uint32_msg_type", "rpt_msg_list_0x02" }, new Object[] { null, Integer.valueOf(0), null }, MsgBody.class);
-  public final PBRepeatMessageField rpt_msg_list = PBField.initRepeatMessage(submsgtype0xdc.MsgContent.class);
-  public final PBRepeatMessageField rpt_msg_list_0x02 = PBField.initRepeatMessage(submsgtype0xdc.MsgContent.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34 }, new String[] { "rpt_msg_list", "uint32_msg_type", "rpt_msg_list_0x02", "minQqVer" }, new Object[] { null, Integer.valueOf(0), null, "" }, MsgBody.class);
+  public final PBStringField minQqVer = PBField.initString("");
+  public final PBRepeatMessageField<submsgtype0xdc.MsgContent> rpt_msg_list = PBField.initRepeatMessage(submsgtype0xdc.MsgContent.class);
+  public final PBRepeatMessageField<submsgtype0xdc.MsgContent> rpt_msg_list_0x02 = PBField.initRepeatMessage(submsgtype0xdc.MsgContent.class);
   public final PBUInt32Field uint32_msg_type = PBField.initUInt32(0);
 }
 

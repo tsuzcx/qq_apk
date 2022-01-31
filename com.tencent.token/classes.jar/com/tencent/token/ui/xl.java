@@ -1,16 +1,21 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.EditText;
+import com.tencent.token.cw;
 
-final class xl
-  implements DialogInterface.OnClickListener
+class xl
+  implements Runnable
 {
-  xl(xg paramxg) {}
+  xl(xk paramxk) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a.dismissDialog();
+    if (this.a.a)
+    {
+      cw.a().a(0L, RealNameStep1InputNameIdActivity.access$1700(this.a.b), 3, RealNameStep1InputNameIdActivity.access$1800(this.a.b).getText().toString(), RealNameStep1InputNameIdActivity.access$1900(this.a.b).getText().toString(), null, null, null, RealNameStep1InputNameIdActivity.access$2500(this.a.b), RealNameStep1InputNameIdActivity.access$2600(this.a.b), RealNameStep1InputNameIdActivity.access$2700(this.a.b));
+      return;
+    }
+    cw.a().a(0L, RealNameStep1InputNameIdActivity.access$1700(this.a.b), RealNameStep1InputNameIdActivity.access$000(this.a.b), RealNameStep1InputNameIdActivity.access$1800(this.a.b).getText().toString(), RealNameStep1InputNameIdActivity.access$1900(this.a.b).getText().toString(), RealNameStep1InputNameIdActivity.access$2400(this.a.b), RealNameStep1InputNameIdActivity.compressPicData(RealNameStep1InputNameIdActivity.access$2000(this.a.b)), RealNameStep1InputNameIdActivity.compressPicData(RealNameStep1InputNameIdActivity.access$2200(this.a.b)), RealNameStep1InputNameIdActivity.access$2500(this.a.b), RealNameStep1InputNameIdActivity.access$2600(this.a.b), RealNameStep1InputNameIdActivity.access$2700(this.a.b));
   }
 }
 

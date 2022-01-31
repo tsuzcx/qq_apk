@@ -2,14 +2,14 @@ package com.tencent.mobileqq.data;
 
 import android.database.Cursor;
 import android.text.TextUtils;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
-import com.tencent.mobileqq.utils.QAVHrMeeting;
+import awge;
+import awhp;
+import awhs;
+import bdjn;
 import com.tencent.qphone.base.util.QLog;
 
 public class DiscussionInfo
-  extends Entity
+  extends awge
 {
   public static final long UIControlFlag_Hidden_RecentUser = 1L;
   public static final long UIControlFlag_default = 0L;
@@ -23,19 +23,19 @@ public class DiscussionInfo
   public boolean hasCollect;
   public long infoSeq;
   public String inheritOwnerUin;
-  @notColumn
+  @awhp
   public long lastMsgTime;
   public int mComparePartInt;
   public String mCompareSpell;
   public long mOrigin = -1L;
   public long mOriginExtra = 0L;
   public int mSelfRight = -1;
-  @notColumn
+  @awhp
   public int mUnreliableMemberCount = 100;
   public String ownerUin;
   public long timeSec;
   public long uiControlFlag = 0L;
-  @unique
+  @awhs
   public String uin;
   
   public static boolean isValidDisUin(String paramString)
@@ -53,7 +53,7 @@ public class DiscussionInfo
     return false;
   }
   
-  protected boolean entityByCursor(Cursor paramCursor)
+  public boolean entityByCursor(Cursor paramCursor)
   {
     this.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
     this.infoSeq = paramCursor.getLong(paramCursor.getColumnIndex("infoSeq"));
@@ -86,7 +86,7 @@ public class DiscussionInfo
   
   public int getHrExtra()
   {
-    return QAVHrMeeting.a(this.mOriginExtra);
+    return bdjn.a(this.mOriginExtra);
   }
   
   public boolean hasRenamed()
@@ -96,12 +96,12 @@ public class DiscussionInfo
   
   public boolean isDiscussHrMeeting()
   {
-    return QAVHrMeeting.b(this.mOrigin);
+    return bdjn.b(this.mOrigin);
   }
   
   public boolean isHidden()
   {
-    return ((this.mOrigin & 0x2) == 2L) && (getHrExtra() == 1) && (QAVHrMeeting.a(this.mSelfRight));
+    return ((this.mOrigin & 0x2) == 2L) && (getHrExtra() == 1) && (bdjn.a(this.mSelfRight));
   }
   
   public boolean isOwnerOrInheritOwner(String paramString)
@@ -115,7 +115,7 @@ public class DiscussionInfo
   
   public boolean isPSTNConf()
   {
-    return QAVHrMeeting.a(this.mOrigin);
+    return bdjn.a(this.mOrigin);
   }
   
   public boolean isUIControlFlag_Hidden_RecentUser()

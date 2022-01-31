@@ -1,19 +1,44 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
+import com.tencent.gdtad.views.image.GdtGifImageView;
+import com.tencent.image.URLDrawable;
+import java.lang.ref.WeakReference;
+import java.net.URL;
 
-class aaun
-  implements Runnable
+public class aaun
+  implements aaum
 {
-  aaun(aaul paramaaul, String paramString) {}
+  public aaun(GdtGifImageView paramGdtGifImageView) {}
   
-  public void run()
+  public void a(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_Aaul.a.a.setText(this.jdField_a_of_type_JavaLangString);
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
+    for (String str = paramURLDrawable.getURL().toString();; str = null)
+    {
+      aase.b("GdtImageView", String.format("onLoadSuccessful %s", new Object[] { str }));
+      GdtGifImageView.a(this.a, paramURLDrawable, str);
+      if ((GdtGifImageView.a(this.a) != null) && (GdtGifImageView.a(this.a).get() != null) && (GdtGifImageView.a(this.a))) {
+        ((aauo)GdtGifImageView.a(this.a).get()).a(true);
+      }
+      return;
+    }
+  }
+  
+  public void b(URLDrawable paramURLDrawable)
+  {
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
+    for (String str = paramURLDrawable.getURL().toString();; str = null)
+    {
+      aase.b("GdtImageView", String.format("onLoadFailed %s", new Object[] { str }));
+      GdtGifImageView.a(this.a, paramURLDrawable, str);
+      if ((GdtGifImageView.a(this.a) != null) && (GdtGifImageView.a(this.a).get() != null)) {
+        ((aauo)GdtGifImageView.a(this.a).get()).a(false);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaun
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,75 @@
-import com.tencent.mobileqq.activity.PortraitImageview;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.mobileqq.app.PrivacyDeclareHelper;
+import com.tencent.mobileqq.international.LocaleString;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.EUCountryUtils;
+import java.io.UnsupportedEncodingException;
+import mqq.observer.WtloginObserver;
 
 public class dfi
-  implements Runnable
+  extends WtloginObserver
 {
-  float jdField_a_of_type_Float = 0.0F;
-  float b = 0.0F;
+  public dfi(RegisterPersonalInfoActivity paramRegisterPersonalInfoActivity) {}
   
-  public dfi(PortraitImageview paramPortraitImageview, float paramFloat1, long paramLong, float paramFloat2, float paramFloat3) {}
-  
-  public void run()
+  public void OnRegGetSMSVerifyLoginAccount(int paramInt, long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    long l = System.currentTimeMillis();
-    float f1 = Math.min(this.c, (float)(l - this.jdField_a_of_type_Long));
-    float f2 = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a(f1, 0.0F, this.d, this.c);
-    float f3 = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a(f1, 0.0F, this.e, this.c);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a(f2 - this.jdField_a_of_type_Float, f3 - this.b);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setImageMatrix(this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a());
-    this.jdField_a_of_type_Float = f2;
-    this.b = f3;
-    if (f1 < this.c) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.post(this);
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterPersonalInfoActivity", 2, "OnRegGetSMSVerifyLoginAccount ret=" + paramInt + " uin=" + paramLong);
     }
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.g();
+    if (paramInt == 0)
+    {
+      RegisterPersonalInfoActivity.a(this.a, Long.valueOf(paramLong).toString());
+      RegisterPersonalInfoActivity.a(this.a, paramArrayOfByte2);
+      if (TextUtils.isEmpty(RegisterPersonalInfoActivity.a(this.a)))
+      {
+        this.a.a(2131561658, 1);
+        return;
+      }
+      if ((RegisterPersonalInfoActivity.a(this.a) == null) || (RegisterPersonalInfoActivity.a(this.a).length == 0))
+      {
+        this.a.a(2131561658, 1);
+        return;
+      }
+      if (this.a.g > 0) {
+        EUCountryUtils.c(RegisterPersonalInfoActivity.a(this.a), this.a.g);
+      }
+      PrivacyDeclareHelper.a(RegisterPersonalInfoActivity.a(this.a), this.a.c);
+      paramArrayOfByte1 = new Intent(this.a, RegisterQQNumberActivity.class);
+      paramArrayOfByte1.putExtra("phonenum", this.a.c);
+      paramArrayOfByte1.putExtra("key", this.a.d);
+      paramArrayOfByte1.putExtra("uin", RegisterPersonalInfoActivity.a(this.a));
+      paramArrayOfByte1.putExtra("key_register_now_account", this.a.e);
+      paramArrayOfByte1.putExtra("key_register_sign", RegisterPersonalInfoActivity.a(this.a));
+      this.a.startActivity(paramArrayOfByte1);
+      this.a.finish();
+      return;
+    }
+    if (paramArrayOfByte3 != null) {}
+    for (;;)
+    {
+      try
+      {
+        paramArrayOfByte1 = new String(paramArrayOfByte3, "utf-8");
+        if (!TextUtils.isEmpty(paramArrayOfByte1)) {
+          break;
+        }
+        this.a.a(2131561658, 1);
+        return;
+      }
+      catch (UnsupportedEncodingException paramArrayOfByte1)
+      {
+        paramArrayOfByte1.printStackTrace();
+      }
+      paramArrayOfByte1 = null;
+    }
+    this.a.a(LocaleString.p(this.a, paramArrayOfByte1), 1);
   }
 }
 

@@ -1,23 +1,12 @@
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.ThemeTabLayout;
 
 public class ahmg
-  implements Runnable
 {
-  public ahmg(EffectsCameraCaptureView paramEffectsCameraCaptureView) {}
-  
-  public void run()
-  {
-    if (this.a.a != null)
-    {
-      this.a.a.a(null, null, null);
-      this.a.a.a(null, null);
-    }
-  }
+  public ThemeTabLayout a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahmg
  * JD-Core Version:    0.7.0.1
  */

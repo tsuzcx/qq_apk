@@ -1,16 +1,22 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
-class aofd
+public class aofd
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public aofd(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
   
-  aofd(aofc paramaofc) {}
+  public boolean onPreDraw()
+  {
+    this.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    ColorNoteSmallScreenRelativeLayout.a(this.a);
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aofd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,57 @@
-import com.tencent.mobileqq.app.HotchatSCMng;
-import com.tencent.mobileqq.app.HotchatSCMng.HotchatNote;
-import java.util.Comparator;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
-public class zfo
-  implements Comparator
+class zfo
+  extends Handler
 {
-  public zfo(HotchatSCMng paramHotchatSCMng) {}
-  
-  public int a(HotchatSCMng.HotchatNote paramHotchatNote1, HotchatSCMng.HotchatNote paramHotchatNote2)
+  zfo(zfn paramzfn, Looper paramLooper)
   {
-    if ((paramHotchatNote1 == null) || (paramHotchatNote2 == null)) {}
-    do
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Object localObject;
+    int i;
+    if ((paramMessage.what == 203) && ((paramMessage.obj instanceof Bundle)))
     {
-      return 0;
-      if (paramHotchatNote1.a > paramHotchatNote2.a) {
-        return 1;
+      paramMessage = (Bundle)paramMessage.obj;
+      localObject = paramMessage.getString("url");
+      if ((paramMessage.getInt("req_state", 0) == 2) && (!TextUtils.isEmpty(zfn.a(this.a))) && (!TextUtils.isEmpty(zfn.b(this.a))) && (zfn.b(this.a).equals(localObject)))
+      {
+        i = paramMessage.getInt("result_code");
+        localObject = new JSONObject();
+        if (i != 0) {
+          break label158;
+        }
       }
-    } while (paramHotchatNote1.a >= paramHotchatNote2.a);
-    return -1;
+    }
+    try
+    {
+      ((JSONObject)localObject).put("code", 0);
+      for (;;)
+      {
+        label113:
+        this.a.callJs(zfn.a(this.a) + "(" + ((JSONObject)localObject).toString() + ");");
+        return;
+        label158:
+        ((JSONObject)localObject).put("code", i);
+        ((JSONObject)localObject).put("msg", paramMessage.getString("error_message"));
+      }
+    }
+    catch (Exception paramMessage)
+    {
+      break label113;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zfo
  * JD-Core Version:    0.7.0.1
  */

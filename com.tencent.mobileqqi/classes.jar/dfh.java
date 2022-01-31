@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.activity.PortraitImageview;
+import android.app.Dialog;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
 
 public class dfh
   implements Runnable
 {
-  public dfh(PortraitImageview paramPortraitImageview, float paramFloat1, long paramLong, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5) {}
+  public dfh(RegisterBaseActivity paramRegisterBaseActivity, int paramInt) {}
   
   public void run()
   {
-    long l = System.currentTimeMillis();
-    float f1 = Math.min(this.jdField_a_of_type_Float, (float)(l - this.jdField_a_of_type_Long));
-    float f2 = this.b;
-    float f3 = this.c;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a(f2 + f3 * f1, this.d, this.e);
-    if (f1 < this.jdField_a_of_type_Float) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.post(this);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity, 2131624405);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.setContentView(2130903073);
+    ((TextView)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.findViewById(2131231029)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.getString(this.jdField_a_of_type_Int));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.show();
   }
 }
 

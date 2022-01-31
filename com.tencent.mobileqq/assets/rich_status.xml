@@ -320,10 +320,10 @@
 		<TinyIcon>http://appimg1.3g.qq.com/msoft/mobileQQ_richstatus/doingV3/music30.png</TinyIcon>
 		<Type>4</Type>
 		<NativeList>com.tencent.mobileqq.richstatus.ActionUrlActivity</NativeList>
-		<ListParam>http://y.qq.com/w/sign.html?uin=$A</ListParam><!--手Q会用"key_params_qq"作为key，将此参数放到intent中-->
+		<ListParam>https://y.qq.com/w/sign.html?uin=$A</ListParam><!--手Q会用"key_params_qq"作为key，将此参数放到intent中-->
 		<NativeDetail>com.tencent.mobileqq.activity.QQBrowserActivity</NativeDetail>
-		<DetailParam>http://data.music.qq.com/playsong.html?source=qqsign&amp;songid=$U</DetailParam><!--手Q会用"key_params_qq"作为key，将此参数放到intent中-->
-		<CoverURL>http://s.plcloud.music.qq.com/fcgi-bin/fcg_download_picture_by_song_id?size=58&amp;songid=$U</CoverURL>
+		<DetailParam>https://data.music.qq.com/playsong.html?source=qqsign&amp;songid=$U</DetailParam><!--手Q会用"key_params_qq"作为key，将此参数放到intent中-->
+		<CoverURL>https://s.plcloud.music.qq.com/fcgi-bin/fcg_download_picture_by_song_id?size=58&amp;songid=$U</CoverURL>
 	</RichState>
 	<RichState>
 		<ActionId>19</ActionId>

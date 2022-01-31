@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.profile.view.helper.HeartRiseLayerDrawable;
-
-public class agss
-  implements Runnable
+class agss
+  extends altm
 {
-  public agss(HeartRiseLayerDrawable paramHeartRiseLayerDrawable, int paramInt1, int paramInt2, int paramInt3) {}
+  agss(agso paramagso) {}
   
-  public void run()
+  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
   {
-    ((agst)this.jdField_a_of_type_ComTencentMobileqqProfileViewHelperHeartRiseLayerDrawable.getDrawable(this.jdField_a_of_type_Int)).a(this.b, this.c);
+    agso.a(this.a, paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agss
  * JD-Core Version:    0.7.0.1
  */

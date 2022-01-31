@@ -1,18 +1,60 @@
-import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class ymz
-  implements Runnable
+  implements IVideoInnerStatusListener
 {
-  public ymz(ApolloTextureView paramApolloTextureView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
+  public ymz(VideoPlayerView paramVideoPlayerView) {}
   
-  public void run()
+  public void notifyVideoClose(int paramInt)
   {
-    ApolloTextureView.access$100(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
+    VideoPlayerView.c(this.a, false);
+    if (VideoPlayerView.a(this.a) != null)
+    {
+      VideoPlayerView.a(this.a).b();
+      VideoPlayerView.a(this.a, null);
+    }
+    VideoPlayerView.a(this.a, null);
+    this.a.g();
+  }
+  
+  public void notifyVideoSeek(int paramInt)
+  {
+    QLog.d("VideoPlayerView", 4, "notifyVideoSeek seek " + paramInt);
+    this.a.a(paramInt * this.a.a().b() / 100L);
+  }
+  
+  public void notifyVideoStart()
+  {
+    if (VideoPlayerView.a(this.a).a() < VideoPlayerView.a(this.a).b())
+    {
+      this.a.d();
+      return;
+    }
+    if (VideoPlayerView.c(this.a))
+    {
+      QLog.d("VideoPlayerView", 4, "has more , wait for auto play next");
+      return;
+    }
+    VideoPlayerView.a(this.a).a(true);
+    this.a.f();
+    if (VideoPlayerView.a(this.a) != null) {
+      VideoPlayerView.a(this.a).onVideoStart((int)VideoPlayerView.a(this.a).b());
+    }
+    QLog.d("VideoPlayerView", 4, "no more, player repeat");
+  }
+  
+  public void notifyVideoStop()
+  {
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ymz
  * JD-Core Version:    0.7.0.1
  */

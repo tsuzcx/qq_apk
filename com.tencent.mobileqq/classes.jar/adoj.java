@@ -1,46 +1,29 @@
-import android.text.TextUtils;
-import android.widget.Button;
-import com.tencent.mobileqq.freshnews.QQInputView;
-import com.tencent.mobileqq.freshnews.QQInputView.IQQInputCallback;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
 
 public class adoj
-  implements Runnable
+  extends alpq
 {
-  public adoj(QQInputView paramQQInputView) {}
+  public adoj(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void run()
+  protected void onCardLabelUpdate(boolean paramBoolean, Object paramObject)
   {
-    String str1 = null;
-    String str2;
-    if (QQInputView.a(this.a) != null)
+    if (paramBoolean)
     {
-      str2 = QQInputView.a(this.a).a();
-      str1 = QQInputView.a(this.a).b();
+      this.a.setResult(-1);
+      this.a.b(2131720598);
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(str2))
-      {
-        QQInputView.a(this.a).setText(str2);
-        QQInputView.a(this.a).setSelection(str2.length());
-        QQInputView.a(this.a).setEnabled(true);
-        QQInputView.a(this.a).setSelected(true);
-      }
-      while (TextUtils.isEmpty(str1)) {
-        return;
-      }
-      QQInputView.a(this.a).setHint(str1);
-      QQInputView.a(this.a).setEnabled(false);
-      QQInputView.a(this.a).setSelected(false);
+      this.a.a = false;
+      this.a.finish();
       return;
-      str2 = null;
+      this.a.b(2131720596);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adoj
  * JD-Core Version:    0.7.0.1
  */

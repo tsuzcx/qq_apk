@@ -1,33 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShakeWindow;
 
 public class bxp
-  extends Handler
+  implements Runnable
 {
-  public bxp(AccountManageActivity paramAccountManageActivity) {}
+  public bxp(ChatActivity paramChatActivity, MessageForShakeWindow paramMessageForShakeWindow) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 9875: 
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountManageActivity", 2, "SUBACCOUNT_REQUEST_CHANGE_HANDLER_VALUE");
-      }
-      AccountManageActivity.a(this.a);
-      AccountManageActivity.b(this.a);
-      return;
-    }
-    this.a.f();
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.u();
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.b.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.frienduin, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bxp
  * JD-Core Version:    0.7.0.1
  */

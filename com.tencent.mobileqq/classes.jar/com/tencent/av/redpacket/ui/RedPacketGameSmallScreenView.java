@@ -7,17 +7,21 @@ import android.os.Vibrator;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.av.redpacket.AVRedPacketManager;
+import lxc;
+import lxg;
+import lxl;
+import lxt;
 
 public class RedPacketGameSmallScreenView
   extends View
 {
   public Paint a;
   public Vibrator a;
-  public RedPacketGameParticleHbSmallScreen a;
+  public lxl a;
   public boolean a;
-  public RedPacketGameParticleEmojiSmallScreen[] a;
-  public RedPacketGameParticleFocusSmallScreen[] a;
-  public RedPacketGameSprite[] a;
+  public lxc[] a;
+  public lxg[] a;
+  public lxt[] a;
   
   public RedPacketGameSmallScreenView(Context paramContext)
   {
@@ -44,49 +48,49 @@ public class RedPacketGameSmallScreenView
   {
     int j = 0;
     int i;
-    if (this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleEmojiSmallScreen != null)
+    if (this.jdField_a_of_type_ArrayOfLxc != null)
     {
       i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleEmojiSmallScreen.length)
+      while (i < this.jdField_a_of_type_ArrayOfLxc.length)
       {
-        if (this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleEmojiSmallScreen[i] != null) {
-          this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleEmojiSmallScreen[i].b();
+        if (this.jdField_a_of_type_ArrayOfLxc[i] != null) {
+          this.jdField_a_of_type_ArrayOfLxc[i].b();
         }
-        this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleEmojiSmallScreen[i] = null;
+        this.jdField_a_of_type_ArrayOfLxc[i] = null;
         i += 1;
       }
     }
-    this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleEmojiSmallScreen = null;
-    if (this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleHbSmallScreen != null) {
-      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleHbSmallScreen.b();
+    this.jdField_a_of_type_ArrayOfLxc = null;
+    if (this.jdField_a_of_type_Lxl != null) {
+      this.jdField_a_of_type_Lxl.b();
     }
-    this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleHbSmallScreen = null;
-    if (this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameSprite != null)
+    this.jdField_a_of_type_Lxl = null;
+    if (this.jdField_a_of_type_ArrayOfLxt != null)
     {
       i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameSprite.length)
+      while (i < this.jdField_a_of_type_ArrayOfLxt.length)
       {
-        if (this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameSprite[i] != null) {
-          this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameSprite[i].a();
+        if (this.jdField_a_of_type_ArrayOfLxt[i] != null) {
+          this.jdField_a_of_type_ArrayOfLxt[i].a();
         }
-        this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameSprite[i] = null;
+        this.jdField_a_of_type_ArrayOfLxt[i] = null;
         i += 1;
       }
     }
-    this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameSprite = null;
-    if (this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleFocusSmallScreen != null)
+    this.jdField_a_of_type_ArrayOfLxt = null;
+    if (this.jdField_a_of_type_ArrayOfLxg != null)
     {
       i = j;
-      while (i < this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleFocusSmallScreen.length)
+      while (i < this.jdField_a_of_type_ArrayOfLxg.length)
       {
-        if (this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleFocusSmallScreen[i] != null) {
-          this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleFocusSmallScreen[i].b();
+        if (this.jdField_a_of_type_ArrayOfLxg[i] != null) {
+          this.jdField_a_of_type_ArrayOfLxg[i].b();
         }
-        this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleFocusSmallScreen[i] = null;
+        this.jdField_a_of_type_ArrayOfLxg[i] = null;
         i += 1;
       }
     }
-    this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleFocusSmallScreen = null;
+    this.jdField_a_of_type_ArrayOfLxg = null;
     if (this.jdField_a_of_type_AndroidOsVibrator != null) {
       this.jdField_a_of_type_AndroidOsVibrator.cancel();
     }
@@ -104,24 +108,24 @@ public class RedPacketGameSmallScreenView
       for (;;)
       {
         j = k;
-        if (i >= this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleEmojiSmallScreen.length) {
+        if (i >= this.jdField_a_of_type_ArrayOfLxc.length) {
           break;
         }
-        this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleEmojiSmallScreen[i].a(paramLong);
+        this.jdField_a_of_type_ArrayOfLxc[i].a(paramLong);
         i += 1;
       }
-      while (j < this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleFocusSmallScreen.length)
+      while (j < this.jdField_a_of_type_ArrayOfLxg.length)
       {
-        this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleFocusSmallScreen[j].a(paramLong);
+        this.jdField_a_of_type_ArrayOfLxg[j].a(paramLong);
         j += 1;
       }
     }
-    this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleHbSmallScreen.a(paramLong);
+    this.jdField_a_of_type_Lxl.a(paramLong);
   }
   
   public void a(Context paramContext)
   {
-    setId(2131362538);
+    setId(2131372839);
   }
   
   public void a(Canvas paramCanvas, long paramLong)
@@ -134,19 +138,19 @@ public class RedPacketGameSmallScreenView
       for (;;)
       {
         j = k;
-        if (i >= this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleFocusSmallScreen.length) {
+        if (i >= this.jdField_a_of_type_ArrayOfLxg.length) {
           break;
         }
-        this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleFocusSmallScreen[i].a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint);
+        this.jdField_a_of_type_ArrayOfLxg[i].a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint);
         i += 1;
       }
-      while (j < this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleEmojiSmallScreen.length)
+      while (j < this.jdField_a_of_type_ArrayOfLxc.length)
       {
-        this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleEmojiSmallScreen[j].a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint);
+        this.jdField_a_of_type_ArrayOfLxc[j].a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint);
         j += 1;
       }
     }
-    this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleHbSmallScreen.a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_a_of_type_Lxl.a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -169,19 +173,19 @@ public class RedPacketGameSmallScreenView
       for (;;)
       {
         j = k;
-        if (i >= this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleEmojiSmallScreen.length) {
+        if (i >= this.jdField_a_of_type_ArrayOfLxc.length) {
           break;
         }
-        this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleEmojiSmallScreen[i].b(paramInt1, paramInt2, paramInt3, paramInt4);
+        this.jdField_a_of_type_ArrayOfLxc[i].b(paramInt1, paramInt2, paramInt3, paramInt4);
         i += 1;
       }
-      while (j < this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleFocusSmallScreen.length)
+      while (j < this.jdField_a_of_type_ArrayOfLxg.length)
       {
-        this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleFocusSmallScreen[j].b(paramInt1, paramInt2, paramInt3, paramInt4);
+        this.jdField_a_of_type_ArrayOfLxg[j].b(paramInt1, paramInt2, paramInt3, paramInt4);
         j += 1;
       }
     }
-    this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleHbSmallScreen.b(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_Lxl.b(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void setAVRedPacketManager(AVRedPacketManager paramAVRedPacketManager, boolean paramBoolean)
@@ -191,38 +195,38 @@ public class RedPacketGameSmallScreenView
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleEmojiSmallScreen = new RedPacketGameParticleEmojiSmallScreen[2];
+      this.jdField_a_of_type_ArrayOfLxc = new lxc[2];
       int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleEmojiSmallScreen.length)
+      while (i < this.jdField_a_of_type_ArrayOfLxc.length)
       {
-        this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleEmojiSmallScreen[i] = new RedPacketGameParticleEmojiSmallScreen();
-        this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleEmojiSmallScreen[i].b(i);
-        this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleEmojiSmallScreen[i].jdField_a_of_type_Long = (i * 2000 + l);
+        this.jdField_a_of_type_ArrayOfLxc[i] = new lxc();
+        this.jdField_a_of_type_ArrayOfLxc[i].b(i);
+        this.jdField_a_of_type_ArrayOfLxc[i].jdField_a_of_type_Long = (i * 2000 + l);
         i += 1;
       }
-      this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleEmojiSmallScreen[0].jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameSprite = new RedPacketGameSprite(paramAVRedPacketManager.a("qav_redpacket_emoji_6.png"));
-      this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleEmojiSmallScreen[1].jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameSprite = new RedPacketGameSprite(paramAVRedPacketManager.a("qav_redpacket_emoji_9.png"));
-      this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameSprite = new RedPacketGameSprite[6];
+      this.jdField_a_of_type_ArrayOfLxc[0].jdField_a_of_type_Lxt = new lxt(paramAVRedPacketManager.a("qav_redpacket_emoji_6.png"));
+      this.jdField_a_of_type_ArrayOfLxc[1].jdField_a_of_type_Lxt = new lxt(paramAVRedPacketManager.a("qav_redpacket_emoji_9.png"));
+      this.jdField_a_of_type_ArrayOfLxt = new lxt[6];
       i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameSprite.length)
+      while (i < this.jdField_a_of_type_ArrayOfLxt.length)
       {
-        this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameSprite[i] = new RedPacketGameSprite(paramAVRedPacketManager.a("qav_redpacket_focus_" + i * 6 + ".png"));
+        this.jdField_a_of_type_ArrayOfLxt[i] = new lxt(paramAVRedPacketManager.a("qav_redpacket_focus_" + i * 6 + ".png"));
         i += 1;
       }
-      this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleFocusSmallScreen = new RedPacketGameParticleFocusSmallScreen[2];
+      this.jdField_a_of_type_ArrayOfLxg = new lxg[2];
       i = j;
-      while (i < this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleFocusSmallScreen.length)
+      while (i < this.jdField_a_of_type_ArrayOfLxg.length)
       {
-        this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleFocusSmallScreen[i] = new RedPacketGameParticleFocusSmallScreen(this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleEmojiSmallScreen[i]);
-        this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleFocusSmallScreen[i].c = this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameSprite;
+        this.jdField_a_of_type_ArrayOfLxg[i] = new lxg(this.jdField_a_of_type_ArrayOfLxc[i]);
+        this.jdField_a_of_type_ArrayOfLxg[i].c = this.jdField_a_of_type_ArrayOfLxt;
         i += 1;
       }
     }
-    this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleHbSmallScreen = new RedPacketGameParticleHbSmallScreen();
-    this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleHbSmallScreen.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameSprite = new RedPacketGameSprite(paramAVRedPacketManager.a("qav_redpacket_hb_smallscreen.png"));
-    this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleHbSmallScreen.a(255);
+    this.jdField_a_of_type_Lxl = new lxl();
+    this.jdField_a_of_type_Lxl.jdField_a_of_type_Lxt = new lxt(paramAVRedPacketManager.a("qav_redpacket_hb_smallscreen.png"));
+    this.jdField_a_of_type_Lxl.a(255);
     this.jdField_a_of_type_AndroidOsVibrator = ((Vibrator)getContext().getSystemService("vibrator"));
-    this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleHbSmallScreen.jdField_a_of_type_Long = l;
+    this.jdField_a_of_type_Lxl.jdField_a_of_type_Long = l;
     this.jdField_a_of_type_AndroidOsVibrator.vibrate(200L);
     invalidate();
   }

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBFloatField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class QQSportsOrbit$OrbitPoint
-  extends MessageMicro
+  extends MessageMicro<OrbitPoint>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 9, 17, 25, 32, 45, 53, 61, 69, 72, 80, 93, 96 }, new String[] { "speed", "latitude", "longitude", "time", "latitudef", "longitudef", "timef", "speedf", "accuracy", "step", "altitude", "millisecond" }, new Object[] { Double.valueOf(0.0D), Double.valueOf(0.0D), Double.valueOf(0.0D), Integer.valueOf(0), Float.valueOf(0.0F), Float.valueOf(0.0F), Integer.valueOf(0), Float.valueOf(0.0F), Integer.valueOf(0), Integer.valueOf(0), Float.valueOf(0.0F), Integer.valueOf(0) }, OrbitPoint.class);
   public final PBInt32Field accuracy = PBField.initInt32(0);
@@ -27,7 +27,7 @@ public final class QQSportsOrbit$OrbitPoint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.pb.qqsport.QQSportsOrbit.OrbitPoint
  * JD-Core Version:    0.7.0.1
  */

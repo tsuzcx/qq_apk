@@ -15,6 +15,7 @@ public class ViewAnimation
   private int mCenterY;
   public ImageLayer mImageLayer;
   private DiniFlyAnimationView mLottieAnimationView;
+  private Matrix resMatrix = new Matrix();
   
   public ViewAnimation(@NonNull DiniFlyAnimationView paramDiniFlyAnimationView)
   {
@@ -34,11 +35,11 @@ public class ViewAnimation
     paramTransformation = paramTransformation.getMatrix();
     if (this.mImageLayer != null)
     {
-      Matrix localMatrix = this.mImageLayer.getMatrix();
+      this.resMatrix.set(this.mImageLayer.getMatrix());
       if (this.enableXCoordinateMirrored) {
-        mirrorXCoordinate(localMatrix);
+        mirrorXCoordinate(this.resMatrix);
       }
-      paramTransformation.set(localMatrix);
+      paramTransformation.set(this.resMatrix);
       return;
     }
     try
@@ -66,7 +67,7 @@ public class ViewAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.ViewAnimation
  * JD-Core Version:    0.7.0.1
  */

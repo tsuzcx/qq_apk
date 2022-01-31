@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.global.e;
+import com.tencent.token.global.h;
 
 public class TakeIDPhotoComfirmActivity
   extends BaseActivity
@@ -17,27 +17,27 @@ public class TakeIDPhotoComfirmActivity
     String str = getIntent().getStringExtra("data");
     if (TextUtils.isEmpty(str))
     {
-      e.a("data is null");
+      h.a("data is null");
       finish();
       return;
     }
-    Object localObject = (TextView)findViewById(2131296561);
+    Object localObject = (TextView)findViewById(2131558848);
     if (this.mFlag == 2) {
-      ((TextView)localObject).setText(2131362667);
+      ((TextView)localObject).setText(2131231342);
     }
-    localObject = (ImageView)findViewById(2131296559);
-    ((ImageView)localObject).postDelayed(new ach(this, str, (ImageView)localObject), 100L);
-    ((TextView)findViewById(2131296560)).setOnClickListener(new aci(this));
-    ((TextView)findViewById(2131296398)).setOnClickListener(new acj(this));
+    localObject = (ImageView)findViewById(2131558845);
+    ((ImageView)localObject).postDelayed(new aar(this, str, (ImageView)localObject), 100L);
+    ((TextView)findViewById(2131558847)).setOnClickListener(new aas(this));
+    ((TextView)findViewById(2131558649)).setOnClickListener(new aat(this));
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     setNeverShowLockVerifyView();
-    e.a("TakeIDPhotoComfirmActivity");
+    h.a("TakeIDPhotoComfirmActivity");
     this.mFlag = getIntent().getIntExtra("flag", -1);
-    setContentView(2130903082);
+    setContentView(2130968648);
     init();
   }
 }

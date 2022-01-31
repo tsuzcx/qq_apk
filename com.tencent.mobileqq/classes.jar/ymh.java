@@ -1,43 +1,17 @@
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
-import com.tencent.mobileqq.apollo.ITriggerRenderCallback;
-import com.tencent.util.WeakReferenceHandler;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class ymh
-  implements Runnable
+final class ymh
+  implements DialogInterface.OnDismissListener
 {
-  private WeakReference a;
-  
-  public ymh(ApolloRenderDriver paramApolloRenderDriver)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a = new WeakReference(paramApolloRenderDriver);
-  }
-  
-  public void run()
-  {
-    ApolloRenderDriver localApolloRenderDriver;
-    if ((this.a != null) && (this.a.get() != null))
-    {
-      localApolloRenderDriver = (ApolloRenderDriver)this.a.get();
-      if ((localApolloRenderDriver != null) && (localApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback != null) && (localApolloRenderDriver.jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null))
-      {
-        localApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback.onRender();
-        if (((ApolloRenderDriver)this.a.get()).jdField_a_of_type_Int <= 0) {
-          break label101;
-        }
-      }
-    }
-    label101:
-    for (int i = 1000 / ((ApolloRenderDriver)this.a.get()).jdField_a_of_type_Int;; i = 50)
-    {
-      localApolloRenderDriver.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(this, i);
-      return;
-    }
+    ymg.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ymh
  * JD-Core Version:    0.7.0.1
  */

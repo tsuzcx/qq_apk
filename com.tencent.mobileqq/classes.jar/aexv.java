@@ -1,59 +1,85 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import com.tencent.mobileqq.nearby.now.view.presenter.CommentsPresenter;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class aexv
-  implements View.OnClickListener
 {
-  public aexv(ShortVideoCommentsView paramShortVideoCommentsView) {}
-  
-  public void onClick(View paramView)
+  public static float a(float paramFloat, int paramInt)
   {
-    String str2 = ShortVideoCommentsView.a(this.a).getText().toString();
-    if (str2.equals(""))
+    return Math.abs(paramFloat) / paramInt;
+  }
+  
+  public static int a(int paramInt)
+  {
+    int i = paramInt;
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
+      i = paramInt + 100;
+    }
+    return i;
+  }
+  
+  public static int a(int paramInt1, int paramInt2)
+  {
+    int j = 1;
+    int i;
+    if ((paramInt1 == 0) && (paramInt2 == 1)) {
+      i = j;
+    }
+    for (;;)
     {
-      this.a.a(this.a.getContext().getResources().getString(2131430840));
-      return;
+      try
+      {
+        boolean bool = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
+        paramInt1 = i;
+        if (bool) {
+          paramInt1 = i + 100;
+        }
+        return paramInt1;
+      }
+      catch (Exception localException) {}
+      if ((paramInt1 == 1) && (paramInt2 == 0))
+      {
+        i = 2;
+      }
+      else if ((paramInt1 == 1) && (paramInt2 == 2))
+      {
+        i = 3;
+      }
+      else if ((paramInt1 == 2) && (paramInt2 == 1))
+      {
+        i = 4;
+      }
+      else if ((paramInt1 == 0) && (paramInt2 == 2))
+      {
+        i = 7;
+      }
+      else
+      {
+        i = j;
+        if (paramInt1 == 2)
+        {
+          i = j;
+          if (paramInt2 == 0) {
+            i = 6;
+          }
+        }
+      }
     }
-    if (str2.length() > 140)
-    {
-      this.a.a(this.a.getContext().getResources().getString(2131430841));
-      return;
-    }
-    Comments.Comment localComment = new Comments.Comment();
-    localComment.jdField_c_of_type_Long = Long.parseLong(this.a.a.getCurrentAccountUin());
-    localComment.jdField_c_of_type_JavaLangString = "";
-    String str1 = BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + this.a.a.getCurrentAccountUin(), 4).getString("nick", "");
-    paramView = str1;
-    if (TextUtils.isEmpty(str1)) {
-      paramView = this.a.a.getCurrentNickname();
-    }
-    localComment.jdField_b_of_type_JavaLangString = paramView;
-    localComment.jdField_a_of_type_JavaLangString = str2;
-    localComment.jdField_b_of_type_Long = (System.currentTimeMillis() / 1000L);
-    localComment.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalInfo = ShortVideoCommentsView.a(this.a);
-    if ((ShortVideoCommentsView.a(this.a) != null) && (ShortVideoCommentsView.a(this.a).jdField_c_of_type_Long > 0L))
-    {
-      localComment.e = ShortVideoCommentsView.a(this.a).jdField_c_of_type_JavaLangString;
-      localComment.jdField_d_of_type_JavaLangString = ShortVideoCommentsView.a(this.a).jdField_b_of_type_JavaLangString;
-      localComment.jdField_d_of_type_Long = ShortVideoCommentsView.a(this.a).jdField_c_of_type_Long;
-    }
-    ShortVideoCommentsView.a(this.a).a(localComment);
-    ShortVideoCommentsView.a(this.a, localComment);
+    return i;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 4) || (paramInt == 7) || (paramInt == 203) || (paramInt == 104) || (paramInt == 107) || (paramInt == 303);
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return paramInt <= 107;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aexv
  * JD-Core Version:    0.7.0.1
  */

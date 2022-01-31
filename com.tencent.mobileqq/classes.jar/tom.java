@@ -1,35 +1,57 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import mqq.observer.BusinessObserver;
 
-public class tom
-  extends MqqHandler
+class tom
+  implements BusinessObserver
 {
-  public tom(RegisterActivity paramRegisterActivity) {}
+  tom(toi paramtoi) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramMessage.what)
+    if (paramBoolean) {}
+    try
     {
-    }
-    do
-    {
-      return;
-      paramMessage = (String)paramMessage.obj;
-      if (!TextUtils.isEmpty(paramMessage))
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
       {
-        RegisterActivity.b(this.a, paramMessage);
+        mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+        localFollowResponse.mergeFrom(paramBundle);
+        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        if (paramInt == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PublicAccountImageCollectionAdapter", 2, "follow success");
+          }
+          this.a.a = true;
+          toi.a(this.a);
+          return;
+        }
+        if (paramInt == 58)
+        {
+          toi.a(this.a, 2131695726);
+          return;
+        }
+        if (paramInt == 65)
+        {
+          toi.a(this.a, 2131695699);
+          return;
+        }
+        toi.a(this.a, 2131695729);
         return;
+        toi.a(this.a, 2131695729);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("IphoneTitleBarActivity", 2, "captcha sig is empty");
+      return;
+    }
+    catch (Exception paramBundle) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tom
  * JD-Core Version:    0.7.0.1
  */

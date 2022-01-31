@@ -20,6 +20,20 @@ public class GameLoginService
   private final int d = 3000;
   private int e;
   
+  private void a()
+  {
+    try
+    {
+      long l = System.currentTimeMillis();
+      this.a.set(1, l + 3000L, this.b);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
   public IBinder onBind(Intent paramIntent)
   {
     return null;
@@ -52,10 +66,8 @@ public class GameLoginService
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    if (paramInt1 != 1)
-    {
-      long l = System.currentTimeMillis();
-      this.a.set(1, l + 3000L, this.b);
+    if (paramInt1 != 1) {
+      a();
     }
     if (Build.VERSION.SDK_INT < 18) {
       return super.onStartCommand(paramIntent, paramInt1, paramInt2);

@@ -1,30 +1,45 @@
-import android.os.Handler;
-import com.tencent.mobileqq.util.FPSCalculator;
-import com.tencent.mobileqq.util.FPSCalculator.GetFPSListener;
-import java.util.Vector;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.widget.PinnedFooterExpandableListView;
+import java.util.ArrayList;
 
 public class ajzl
-  implements Runnable
+  implements bbok
 {
-  public ajzl(FPSCalculator paramFPSCalculator) {}
+  public ajzl(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
-  public void run()
+  public ArrayList<ResultRecord> a()
   {
-    Object localObject1 = FPSCalculator.a(this.a);
-    int i = 0;
-    try
+    return this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c();
+  }
+  
+  public void a()
+  {
+    FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
+    if (FriendTeamListInnerFrame.a(this.a).getGroupCount() > 0)
     {
-      while (i < FPSCalculator.a(this.a).size())
+      Groups localGroups1 = FriendTeamListInnerFrame.a(this.a).a(1007L);
+      Groups localGroups2 = FriendTeamListInnerFrame.a(this.a).a(1008L);
+      if ((localGroups1 != null) || (localGroups2 != null))
       {
-        FPSCalculator.GetFPSListener localGetFPSListener = (FPSCalculator.GetFPSListener)FPSCalculator.a(this.a).get(i);
-        FPSCalculator.a(this.a, System.currentTimeMillis());
-        localGetFPSListener.a(FPSCalculator.a(this.a), 60.0D);
-        i += 1;
+        FriendTeamListInnerFrame.a(this.a).a(0);
+        FriendTeamListInnerFrame.a(this.a).setIsNeedScrollPositionTop(true);
+        FriendTeamListInnerFrame.a(this.a).smoothScrollToPositionFromTop(1, 0, 0);
+        if (localGroups1 != null) {
+          this.a.jdField_a_of_type_Bboi.a();
+        }
+        if (localGroups2 != null) {
+          this.a.jdField_a_of_type_Bboi.c();
+        }
       }
-      FPSCalculator.a(this.a).postDelayed(FPSCalculator.b(this.a), 500L);
-      return;
     }
-    finally {}
+  }
+  
+  public ArrayList<String> b()
+  {
+    return this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d();
   }
 }
 

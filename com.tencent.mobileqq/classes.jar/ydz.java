@@ -1,23 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.app.Activity;
+import android.graphics.drawable.AnimationDrawable;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.3.1;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
 
 public class ydz
-  implements DialogInterface.OnClickListener
+  implements ylh
 {
-  public ydz(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  ydz(ydw paramydw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a() {}
+  
+  public void a(AnimationDrawable paramAnimationDrawable)
   {
-    if (this.a.a != null) {
-      this.a.a.pauseDownload();
+    if (ydw.a(this.a) != null) {
+      ydw.f(this.a).runOnUiThread(new DetailBaseAdapter.3.1(this, paramAnimationDrawable));
     }
   }
+  
+  public void a(QQAnimationDrawable paramQQAnimationDrawable) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ydz
  * JD-Core Version:    0.7.0.1
  */

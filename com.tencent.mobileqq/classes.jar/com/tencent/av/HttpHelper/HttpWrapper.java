@@ -6,21 +6,15 @@ public class HttpWrapper
 {
   public static String tag;
   
-  public static void send(final byte[] paramArrayOfByte, String paramString)
+  public static void send(byte[] paramArrayOfByte, String paramString)
   {
     Log.e(tag, "send called with Buffer" + paramString + "end");
-    new Thread(new Runnable()
-    {
-      public void run()
-      {
-        HttpHelper.httpPostRequest(this.val$url, paramArrayOfByte, null, null, null);
-      }
-    }).start();
+    new Thread(new HttpWrapper.1(paramString, paramArrayOfByte)).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.HttpHelper.HttpWrapper
  * JD-Core Version:    0.7.0.1
  */

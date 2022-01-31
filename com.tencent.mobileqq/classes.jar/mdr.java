@@ -1,50 +1,54 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCommentManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoStatusListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.MobileQQ;
 
 public class mdr
-  extends VideoFeedsPlayManager.VideoStatusListener
+  implements View.OnClickListener
 {
-  public mdr(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public mdr(AVActivity paramAVActivity) {}
   
-  public void a(VideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayActivity", 2, "video play completion!, move to next position");
-    }
-    boolean bool = VideoFeedsPlayActivity.f(this.a);
-    if (VideoFeedsPlayActivity.f(this.a)) {
-      VideoFeedsPlayActivity.a(this.a).post(new mds(this));
-    }
-    if (VideoFeedsPlayActivity.a(this.a))
+    if (this.a.isDestroyed()) {}
+    for (;;)
     {
-      if (!bool) {
-        VideoFeedsPlayActivity.d(this.a);
+      return;
+      paramView = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
+      if (!paramView.x)
+      {
+        int i = paramView.d;
+        long l = AudioHelper.b();
+        QLog.w(this.a.b, 1, "onMsgClick, sessionType[" + i + "], state[" + paramView.jdField_g_of_type_Int + "], seq[" + l + "]");
+        if ((i == 1) || (i == 2))
+        {
+          if (!paramView.n()) {
+            this.a.a(l, this.a.c, this.a.d, this.a.k);
+          }
+        }
+        else {
+          while (AVActivity.a(this.a) != null)
+          {
+            AVActivity.a(this.a).a();
+            return;
+            if ((i == 3) || (i == 4))
+            {
+              paramView = String.valueOf(paramView.jdField_g_of_type_Long);
+              String str = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(this.a.d, paramView, null);
+              this.a.a(l, paramView, this.a.d, str);
+            }
+          }
+        }
       }
-      VideoFeedsPlayActivity.a(this.a).b(5);
     }
-    while ((this.a.a() == VideoFeedsPlayActivity.a(this.a).size() - 1) || (NetworkUtil.b(VideoFeedsPlayActivity.a(this.a).getApplication().getApplicationContext()))) {
-      return;
-    }
-    if (VideoFeedsPlayActivity.a(this.a).a())
-    {
-      VideoFeedsPlayActivity.d(this.a, true);
-      return;
-    }
-    VideoFeedsPlayActivity.a(this.a).postDelayed(new mdt(this, paramVideoPlayParam), 500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mdr
  * JD-Core Version:    0.7.0.1
  */

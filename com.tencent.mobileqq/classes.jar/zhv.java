@@ -1,16 +1,43 @@
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.newfriend.NewFriendMessage;
-import java.util.Comparator;
+import android.content.Context;
+import java.lang.reflect.Method;
+import mqq.app.IActivityDispatchCallback;
 
-public class zhv
-  implements Comparator
+public abstract class zhv
+  implements IActivityDispatchCallback
 {
-  public zhv(NewFriendManager paramNewFriendManager) {}
+  public static zhv a;
   
-  public int a(NewFriendMessage paramNewFriendMessage1, NewFriendMessage paramNewFriendMessage2)
+  public static void a()
   {
-    return (int)(paramNewFriendMessage2.a - paramNewFriendMessage1.a);
+    try
+    {
+      Method localMethod = Class.forName("com.tencent.mobileqq.screendetect.ScreenShotDetector").getMethod("getInstance", new Class[0]);
+      localMethod.setAccessible(true);
+      a = (zhv)localMethod.invoke(null, new Object[0]);
+      return;
+    }
+    catch (Throwable localThrowable) {}
   }
+  
+  public static void a(Context paramContext)
+  {
+    zhv localzhv = a;
+    if (localzhv != null) {
+      localzhv.c(paramContext);
+    }
+  }
+  
+  public static void b(Context paramContext)
+  {
+    zhv localzhv = a;
+    if (localzhv != null) {
+      localzhv.d(paramContext);
+    }
+  }
+  
+  public abstract void c(Context paramContext);
+  
+  public abstract void d(Context paramContext);
 }
 
 

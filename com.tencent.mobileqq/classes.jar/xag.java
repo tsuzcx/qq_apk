@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class xag
+class xag
+  implements View.OnClickListener
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
+  xag(xae paramxae) {}
   
-  private xag(PayCodeEntryActivity paramPayCodeEntryActivity) {}
+  public void onClick(View paramView)
+  {
+    this.a.a.a(0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xag
  * JD-Core Version:    0.7.0.1
  */

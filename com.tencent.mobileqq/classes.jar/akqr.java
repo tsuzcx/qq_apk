@@ -1,25 +1,34 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.TbsAccelerator;
-import com.tencent.qphone.base.util.QLog;
+import android.util.Log;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.egl.EGLSurface;
 
 public class akqr
-  implements Runnable
+  implements akqu
 {
-  public akqr(SwiftWebAccelerator paramSwiftWebAccelerator, long paramLong, Bundle paramBundle) {}
-  
-  public void run()
+  public EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject)
   {
-    SwiftWebAccelerator.TbsAccelerator.b();
-    SwiftBrowserStatistics.C = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "initX5Environment on sub thread, cost " + SwiftBrowserStatistics.C + "ms.");
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftWebAccelerator.a(this.jdField_a_of_type_AndroidOsBundle);
+    try
+    {
+      paramEGL10 = paramEGL10.eglCreateWindowSurface(paramEGLDisplay, paramEGLConfig, paramObject, null);
+      return paramEGL10;
+    }
+    catch (Throwable paramEGL10)
+    {
+      Log.e("GLTextureView", "eglCreateWindowSurface", paramEGL10);
+    }
+    return null;
+  }
+  
+  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
+  {
+    paramEGL10.eglDestroySurface(paramEGLDisplay, paramEGLSurface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akqr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,51 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextFaceEditLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
-import java.util.Map;
+import android.app.Dialog;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
 
 public class anyx
-  implements Runnable
+  implements View.OnClickListener
 {
-  public anyx(DoodleLayout paramDoodleLayout, Map paramMap) {}
+  public anyx(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    GestureHelper.ZoomItem localZoomItem;
-    if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b != null) && (this.jdField_a_of_type_JavaUtilMap != null))
+    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
     {
-      localZoomItem = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b;
-      if (!(localZoomItem instanceof FaceLayer.FaceItem)) {
-        break label97;
-      }
-      ((FaceLayer.FaceItem)localZoomItem).jdField_a_of_type_JavaUtilMap = this.jdField_a_of_type_JavaUtilMap;
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.a.jdField_a_of_type_AndroidAppDialog = null;
     }
-    for (;;)
+    if (this.a.jdField_a_of_type_Int == 0) {
+      azqs.b(this.a.app, "CliOper", "", "", "0X80064E3", "0X80064E3", 0, 0, "", "", "", "");
+    }
+    while ((this.a.jdField_a_of_type_Boolean) && (this.a.b) && (!this.a.isFinishing()))
     {
-      localZoomItem.i = 3;
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b = null;
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener != null) {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener.o();
-      }
+      this.a.finish();
       return;
-      label97:
-      if ((localZoomItem instanceof TextLayer.TextItem)) {
-        ((TextLayer.TextItem)localZoomItem).jdField_a_of_type_JavaUtilMap = this.jdField_a_of_type_JavaUtilMap;
+      if (this.a.getIntent().getIntExtra("source_activity", 0) == 1) {
+        azqs.b(this.a.app, "CliOper", "", "", "0X80064EE", "0X80064EE", 0, 0, "", "", "", "");
       }
     }
+    if (this.a.c)
+    {
+      aoae.a(this.a.app.getCurrentAccountUin(), -1);
+      this.a.c = false;
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard == null) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardId)))
+    {
+      this.a.finish();
+      return;
+    }
+    BusinessCardEditActivity.a(this.a, false, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anyx
  * JD-Core Version:    0.7.0.1
  */

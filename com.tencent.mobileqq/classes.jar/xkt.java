@@ -1,38 +1,17 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.PeakService;
-import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-
-public class xkt
-  implements Runnable
+class xkt
 {
-  public xkt(RecentOptPopBar paramRecentOptPopBar) {}
+  final int jdField_a_of_type_Int;
+  final xku jdField_a_of_type_Xku;
   
-  public void run()
+  public xkt(xku paramxku, int paramInt)
   {
-    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), PeakService.class);
-    if (VideoEnvironment.d(this.a.a.app)) {
-      localIntent.putExtra("ServiceAction", 2);
-    }
-    try
-    {
-      BaseApplicationImpl.getContext().startService(localIntent);
-      return;
-    }
-    catch (SecurityException localSecurityException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("RecentOptPopBar", 2, "onShow_otherThings, e = " + localSecurityException.getStackTrace());
-    }
+    this.jdField_a_of_type_Xku = paramxku;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xkt
  * JD-Core Version:    0.7.0.1
  */

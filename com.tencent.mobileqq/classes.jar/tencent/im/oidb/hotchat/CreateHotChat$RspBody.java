@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class CreateHotChat$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uint32_group_code", "uint32_group_uin" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, RspBody.class);
   public final PBUInt32Field uint32_group_code = PBField.initUInt32(0);
@@ -14,7 +14,7 @@ public final class CreateHotChat$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.hotchat.CreateHotChat.RspBody
  * JD-Core Version:    0.7.0.1
  */

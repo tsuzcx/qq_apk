@@ -1,36 +1,19 @@
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout.onSizeChangedListenner;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudRead.StGetCommentListRsp;
 
-public class tun
-  implements InputMethodRelativeLayout.onSizeChangedListenner
+class tun
+  implements zac<FeedCloudRead.StGetCommentListRsp>
 {
-  public tun(SubLoginActivity paramSubLoginActivity) {}
+  tun(tuk paramtuk, FeedCloudMeta.StFeed paramStFeed, boolean paramBoolean) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetCommentListRsp paramStGetCommentListRsp)
   {
-    if (paramBoolean)
-    {
-      int[] arrayOfInt = new int[2];
-      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
-      paramInt1 = arrayOfInt[1];
-      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
-      paramInt1 = paramInt1 - arrayOfInt[1] + SubLoginActivity.a(this.a).getHeight() - paramInt2;
-      if (paramInt1 > 0) {
-        SubLoginActivity.a(this.a).setPadding(SubLoginActivity.a(this.a).getPaddingLeft(), SubLoginActivity.a(this.a).getPaddingTop() - paramInt1, SubLoginActivity.a(this.a).getPaddingRight(), SubLoginActivity.a(this.a).getPaddingBottom());
-      }
-      SubLoginActivity.b(this.a).setVisibility(8);
-      return;
-    }
-    SubLoginActivity.b(this.a).setVisibility(0);
-    SubLoginActivity.a(this.a).setPadding(0, 0, 0, 0);
+    tuk.a(this.jdField_a_of_type_Tuk, paramBoolean, paramLong, paramString, paramStGetCommentListRsp, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tun
  * JD-Core Version:    0.7.0.1
  */

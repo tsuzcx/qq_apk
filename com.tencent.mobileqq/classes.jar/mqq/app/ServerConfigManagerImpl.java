@@ -33,6 +33,7 @@ class ServerConfigManagerImpl
     paramReqUserInfo.iPluginType = paramInt1;
     paramReqUserInfo.vecResReqInfo = paramArrayList;
     paramReqUserInfo.iAppid = paramInt2;
+    paramReqUserInfo.cReqVer = 1;
     localUniPacket.put("GetResourceReqV2", paramReqUserInfo);
     paramReqUserInfo = localUniPacket.encode();
     paramArrayList = new NewIntent(this.app.getApplication(), BuiltInServlet.class);
@@ -53,7 +54,7 @@ class ServerConfigManagerImpl
   
   public String getServerConfig(String paramString, ServerConfigManager.ConfigType paramConfigType)
   {
-    switch (1.$SwitchMap$mqq$manager$ServerConfigManager$ConfigType[paramConfigType.ordinal()])
+    switch (ServerConfigManagerImpl.1.$SwitchMap$mqq$manager$ServerConfigManager$ConfigType[paramConfigType.ordinal()])
     {
     default: 
       return null;

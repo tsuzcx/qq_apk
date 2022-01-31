@@ -1,72 +1,96 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.biz.anonymous.QQAnonymousDialog;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class rjm
-  implements View.OnClickListener
 {
-  public rjm(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString) {}
+  public static final String a = String.valueOf(20160519);
   
-  public void onClick(View paramView)
+  public static int a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getWindow().setSoftInputMode(2);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).getWindowToken(), 0);
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).clearFocus();
+    int i = 10000;
+    if (paramInt2 * 1000 > 60000) {
+      if (paramInt1 <= paramInt2 * 1000 - 8000) {}
     }
-    paramView = AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).getText().toString();
-    if (TextUtils.isEmpty(paramView))
+    for (;;)
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.isFinishing())
-      {
-        paramView = new QQAnonymousDialog(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText("请输入答案");
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843342);
-        paramView.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.video", 2, "getPreviewStartPosi(): forwardPosition=" + paramInt1 + ", videoDuration=" + paramInt2 + " => previewStartPosi=" + i);
       }
-      return;
+      return i;
+      if (paramInt1 >= 8000)
+      {
+        i = paramInt1 - 8000;
+        continue;
+        i = 0;
+      }
     }
-    if (!paramView.equals(this.jdField_a_of_type_JavaLangString))
+  }
+  
+  public static long a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    return paramInt2 * 512 + paramInt1 * paramInt3 / paramInt2;
+  }
+  
+  public static String a()
+  {
+    return "";
+  }
+  
+  public static String a(int paramInt)
+  {
+    switch (paramInt)
     {
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).setVisibility(0);
-      return;
+    default: 
+      return " PLAY_STATE_UNKNOW ";
+    case 0: 
+      return " PLAY_STATE_IDLE ";
+    case 1: 
+      return " PLAY_STATE_PREPARING ";
+    case 2: 
+      return " PLAY_STATE_PREPARED ";
+    case 3: 
+      return " PLAY_STATE_PLAYING ";
+    case 5: 
+      return " PLAY_STATE_PAUSED ";
+    case 4: 
+      return " PLAY_STATE_BUFFERING ";
+    case 7: 
+      return " PLAY_STATE_COMPLETE ";
     }
-    AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).setVisibility(8);
-    if (paramView.length() > 90)
+    return " PLAY_STATE_ERROR ";
+  }
+  
+  public static String a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 123)
     {
-      paramView = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 2131624516);
-      paramView.setContentView(2130971508);
-      ((TextView)paramView.findViewById(2131362776)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131434784));
-      ((ProgressBar)paramView.findViewById(2131362775)).setVisibility(8);
-      ((ImageView)paramView.findViewById(2131374243)).setImageResource(2130838752);
-      paramView.show();
-      return;
+      if (paramInt2 == 103) {
+        return alud.a(2131716722) + paramInt1 + "-" + paramInt2;
+      }
+      return alud.a(2131716736) + paramInt1 + "-" + paramInt2;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).getText().toString(), true);
-    if (NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))
+    if (paramInt1 == 122)
     {
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity), AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).getText().toString(), this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getIntent().getIntExtra("stat_option", 0));
-      return;
+      if (paramInt2 == 204) {
+        return alud.a(2131716732) + paramInt1 + "-" + paramInt2;
+      }
+      if (paramInt2 == 202) {
+        return alud.a(2131716725) + paramInt1 + "-" + paramInt2;
+      }
+      return alud.a(2131716712) + paramInt1 + "-" + paramInt2;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1, 2131434811, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getTitleBarHeight());
+    if (paramInt1 == 101)
+    {
+      if (paramInt2 == 80) {
+        return alud.a(2131716724) + paramInt1 + "-" + paramInt2;
+      }
+      return alud.a(2131716714) + paramInt1 + "-" + paramInt2;
+    }
+    return alud.a(2131716720) + paramInt1 + "-" + paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rjm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import mqq.os.MqqHandler;
 
-class adzw
-  implements Runnable
+public class adzw
+  extends MqqHandler
 {
-  adzw(adzv paramadzv, View paramView, int paramInt) {}
+  public adzw(SubAccountUgActivity paramSubAccountUgActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    LebaWithFeeds.a(this.jdField_a_of_type_Adzv.a, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.finish();
   }
 }
 

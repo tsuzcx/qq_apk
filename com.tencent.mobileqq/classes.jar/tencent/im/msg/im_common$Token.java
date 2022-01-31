@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_common$Token
-  extends MessageMicro
+  extends MessageMicro<Token>
 {
   public static final int BUF_FIELD_NUMBER = 1;
   public static final int C2C_TYPE_FIELD_NUMBER = 2;

@@ -1,22 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import UserGrowth.stNotificationReq;
+import UserGrowth.stNotificationRsp;
 
 public class tki
-  implements DialogInterface.OnClickListener
+  extends thb<stNotificationRsp>
 {
-  public tki(QQSettingCleanActivity paramQQSettingCleanActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public tki(String paramString)
   {
-    ReportController.b(this.a.app, "dc00898", "", "", "0X8007915", "0X8007915", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
+    super("Notification");
+    stNotificationReq localstNotificationReq = new stNotificationReq();
+    localstNotificationReq.linkStrategyArgs = tlp.a();
+    localstNotificationReq.push_info = paramString;
+    this.a = localstNotificationReq;
+    tlo.b("NotificationRequest", "stNotificationReq = " + localstNotificationReq.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tki
  * JD-Core Version:    0.7.0.1
  */

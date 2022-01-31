@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
 
-public final class ahzq
-  implements Runnable
+class ahzq
+  implements arpm
 {
-  public ahzq(String paramString) {}
+  ahzq(ahzp paramahzp) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2)
   {
-    QQToast.a(VideoEnvironment.a(), "" + this.a, 1).a();
+    if ((paramInt1 == 3) && (paramInt2 == 0))
+    {
+      azqs.b(this.a.a.a, "dc00898", "", "", "0X800A0B5", "0X800A0B5", 3, 0, "", "", "", "");
+      ChatHistoryC2CFileFragment.a(this.a.a, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahzq
  * JD-Core Version:    0.7.0.1
  */

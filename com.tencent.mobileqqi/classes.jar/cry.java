@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.activity.ForwardOperations;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.config.ResourcePluginListener;
+import com.tencent.qphone.base.util.QLog;
 
-class cry
-  implements Runnable
+public class cry
+  extends ResourcePluginListener
 {
-  cry(crx paramcrx) {}
+  public cry(Leba paramLeba) {}
   
-  public void run()
+  public void a(byte paramByte)
   {
-    this.a.a.a(1004, 1, null, 0, null);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.lebatab.leba", 4, "ResourcePluginListener listener notify = " + paramByte);
+    }
+    if (paramByte != -1) {
+      this.a.a.sendEmptyMessage(11340002);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     cry
  * JD-Core Version:    0.7.0.1
  */

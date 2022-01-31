@@ -12,12 +12,17 @@ import mqq.util.WeakReference;
 public class ActivatePageAdapter
   extends PagerAdapter
 {
-  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private WeakReference jdField_a_of_type_MqqUtilWeakReference;
+  private ArrayList<ActivateBasePage> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private WeakReference<ViewPager> jdField_a_of_type_MqqUtilWeakReference;
   
   public ActivatePageAdapter(ViewPager paramViewPager)
   {
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramViewPager);
+  }
+  
+  public ArrayList<ActivateBasePage> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
   public void a()
@@ -28,6 +33,21 @@ public class ActivatePageAdapter
     }
   }
   
+  public void a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {}
+    ActivateBasePage localActivateBasePage;
+    do
+    {
+      do
+      {
+        return;
+      } while ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()));
+      localActivateBasePage = (ActivateBasePage)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    } while (localActivateBasePage == null);
+    localActivateBasePage.d();
+  }
+  
   public void a(ActivateBasePage paramActivateBasePage)
   {
     this.jdField_a_of_type_JavaUtilArrayList.add(paramActivateBasePage);
@@ -35,6 +55,14 @@ public class ActivatePageAdapter
   }
   
   public void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((ActivateBasePage)localIterator.next()).c();
+    }
+  }
+  
+  public void c()
   {
     if ((this.jdField_a_of_type_MqqUtilWeakReference == null) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null)) {
       return;
@@ -89,7 +117,7 @@ public class ActivatePageAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivatePageAdapter
  * JD-Core Version:    0.7.0.1
  */

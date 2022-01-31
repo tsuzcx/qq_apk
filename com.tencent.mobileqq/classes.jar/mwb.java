@@ -1,24 +1,34 @@
-import android.net.Uri;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public final class mwb
-  implements Runnable
+final class mwb
+  extends BroadcastReceiver
 {
-  public mwb(Uri paramUri, String paramString) {}
-  
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    try
-    {
-      ReportController.b(null, "dc00899", "Pb_account_lifeservice", "", "0X8006A68", "0X8006A68", 0, 0, this.jdField_a_of_type_AndroidNetUri.getQueryParameter("article_id"), this.jdField_a_of_type_JavaLangString, "", "");
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    while (!mwa.a.equals(paramIntent.getAction())) {
       return;
     }
-    catch (Exception localException) {}
+    if (QLog.isDevelopLevel()) {
+      QLog.w("SensorReport", 1, "H264_decode");
+    }
+    HashMap localHashMap = (HashMap)paramIntent.getSerializableExtra("params");
+    paramIntent = paramIntent.getStringExtra("key");
+    paramContext = paramIntent;
+    if (paramIntent == null) {
+      paramContext = mwa.a;
+    }
+    UserAction.onUserAction(paramContext, true, -1L, -1L, localHashMap, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mwb
  * JD-Core Version:    0.7.0.1
  */

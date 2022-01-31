@@ -1,117 +1,198 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.utils.AlbumUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qzone.util.QZLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.EditGifImage;
+import com.tencent.image.AbstractGifImage.DoAccumulativeRunnable;
+import com.tencent.image.NativeGifImage;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import cooperation.qzone.widget.FastAnimationDrawable;
 
 public class wxv
-  extends Handler
+  extends xal
+  implements View.OnClickListener
 {
-  private final WeakReference a;
+  protected double a;
+  protected final int a;
+  protected LinearLayout a;
+  protected SeekBar a;
+  protected TextView a;
+  protected boolean a;
+  protected int b;
+  protected TextView b;
+  protected int c;
+  protected int d = 50;
+  protected int e = -1;
+  protected int f;
+  protected int g;
   
-  public wxv(PhotoListActivity paramPhotoListActivity)
+  public wxv(@NonNull xan paramxan)
   {
-    this.a = new WeakReference(paramPhotoListActivity);
+    super(paramxan);
+    this.jdField_a_of_type_Int = AbstractGifImage.DoAccumulativeRunnable.DELAY;
   }
   
-  public void handleMessage(Message paramMessage)
+  private void f()
   {
-    if ((this.a == null) || (this.a.get() == null)) {}
-    Object localObject;
-    label300:
+    this.f = bjvw.f;
+    this.g = (this.c * bjvw.g);
+    this.jdField_a_of_type_Double = ((this.f - this.g) / 100.0D);
+    if (QLog.isColorLevel()) {
+      QLog.d("EditGifSpeedControl", 2, "calculateSpeedChangeByLimit | defaultY:" + this.c + " maxSpeed:" + this.f + " minSpeed:" + this.g + " k1:" + this.jdField_a_of_type_Double);
+    }
+  }
+  
+  public void a()
+  {
+    super.a();
+    AbstractGifImage.DoAccumulativeRunnable.DELAY = 0;
+    NativeGifImage.QZONE_DELAY = -1;
+    this.jdField_b_of_type_Int = 50;
+    if (QLog.isColorLevel()) {
+      QLog.d("EditGifSpeedControl", 2, "onCreate | defaultX:" + this.jdField_b_of_type_Int + " defaultY:" + this.c + " delayTime:" + this.e);
+    }
+    f();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131376337));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131376332));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131376333));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)a(2131367201));
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(100);
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new wxw(this));
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      return;
+    }
+    if (this.e == -1)
+    {
+      if (!this.jdField_a_of_type_Xan.a.jdField_a_of_type_Boolean) {
+        break label193;
+      }
+      paramInt = (int)this.jdField_a_of_type_Xan.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.a();
+      this.e = paramInt;
+      this.c = paramInt;
+    }
+    for (NativeGifImage.QZONE_DELAY = paramInt;; NativeGifImage.QZONE_DELAY = paramInt)
+    {
+      f();
+      paramInt = (int)((this.c - this.g) / this.jdField_a_of_type_Double);
+      this.d = paramInt;
+      this.jdField_b_of_type_Int = paramInt;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "editVideoStateChanged | delayTime:" + this.e + " barPosition:" + this.d);
+      }
+      this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.d);
+      this.c = this.e;
+      this.jdField_b_of_type_Int = this.d;
+      return;
+      label193:
+      paramInt = NativeGifImage.GIF_DEFAULT_DELAY;
+      this.e = paramInt;
+      this.c = paramInt;
+    }
+  }
+  
+  public void a(@NonNull xlb paramxlb)
+  {
+    if (this.e == -1) {
+      if (this.jdField_a_of_type_Xan.a.jdField_a_of_type_Boolean)
+      {
+        paramxlb.a.jdField_b_of_type_Int = ((int)this.jdField_a_of_type_Xan.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.a());
+        paramxlb.a.c = this.jdField_a_of_type_Boolean;
+        if (QLog.isColorLevel()) {
+          QLog.d("EditGifSpeedControl", 2, "editVideoPrePublish | get defaultY:" + this.c + " isDelayTimeChange:" + this.jdField_a_of_type_Boolean);
+        }
+      }
+    }
     do
     {
-      int i;
+      return;
+      xlf localxlf = paramxlb.a;
+      if (NativeGifImage.GIF_DEFAULT_DELAY != -1) {}
+      for (int i = NativeGifImage.GIF_DEFAULT_DELAY;; i = bjvw.d)
+      {
+        localxlf.jdField_b_of_type_Int = i;
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "editVideoPrePublish | get delayTime:" + this.e + " isDelayTimeChange:" + this.jdField_a_of_type_Boolean);
+      }
+      paramxlb.a.jdField_b_of_type_Int = this.e;
+      paramxlb.a.c = this.jdField_a_of_type_Boolean;
+      if (this.e < this.c)
+      {
+        LpReportInfo_pf00064.allReport(628, 5, 3);
+        return;
+      }
+    } while (this.e <= this.c);
+    LpReportInfo_pf00064.allReport(628, 5, 2);
+  }
+  
+  public boolean a()
+  {
+    boolean bool = false;
+    if (this.jdField_a_of_type_Xan.jdField_b_of_type_Int == 21)
+    {
+      NativeGifImage.QZONE_DELAY = this.c;
+      if (this.jdField_a_of_type_Xan.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable != null) {
+        this.jdField_a_of_type_Xan.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.a(NativeGifImage.QZONE_DELAY);
+      }
+      this.e = this.c;
+      this.d = this.jdField_b_of_type_Int;
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "onBackPressed | delayTime:" + this.e + " barPosition:" + this.d);
+      }
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.jdField_a_of_type_Xan.a(0);
+      bool = true;
+      LpReportInfo_pf00064.allReport(628, 5, 4);
+    }
+    return bool;
+  }
+  
+  public void d()
+  {
+    super.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("EditGifSpeedControl", 2, "onDestroy | DEFAULT_DELAY:" + this.jdField_a_of_type_Int);
+    }
+    AbstractGifImage.DoAccumulativeRunnable.DELAY = this.jdField_a_of_type_Int;
+    NativeGifImage.QZONE_DELAY = -1;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+    case 2131376333: 
       do
       {
-        do
-        {
-          return;
-          localObject = (PhotoListActivity)this.a.get();
-          switch (paramMessage.what)
-          {
-          default: 
-            return;
-          case 0: 
-            localObject = ((PhotoListActivity)localObject).a;
-          }
-        } while (localObject == null);
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.addAll(((wxw)localObject).a);
-        paramMessage = paramMessage.getData();
-        i = paramMessage.getInt("ALBUMLIST_POSITION");
-        long l = paramMessage.getLong("ALBUMLIST_ITEM_DURATION");
-        paramMessage = (LocalMediaInfo)localArrayList.get(i);
-        paramMessage.mDuration = l;
-        localArrayList.set(i, paramMessage);
-        ((wxw)localObject).a(localArrayList);
-        ((wxw)localObject).notifyDataSetChanged();
         return;
-        ((PhotoListActivity)localObject).d();
-      } while (!(paramMessage.obj instanceof String));
-      paramMessage = (String)paramMessage.obj;
-      QZLog.d("PhotoListActivity", 2, new Object[] { "onEncodeSuccess = ", paramMessage });
-      if (((PhotoListActivity)localObject).c == null) {
-        ((PhotoListActivity)localObject).c = new ArrayList();
-      }
-      if (PhotoListActivity.e((PhotoListActivity)localObject))
-      {
-        i = AlbumUtil.b();
-        if (((PhotoListActivity)localObject).c.size() < ((PhotoListActivity)localObject).i) {
-          break label300;
-        }
-        QQToast.a((Context)localObject, String.format(((PhotoListActivity)localObject).getResources().getString(2131439173), new Object[] { Integer.valueOf(((PhotoListActivity)localObject).i) }), 0).a();
-      }
-      for (;;)
-      {
-        PhotoListActivity.a((PhotoListActivity)localObject, paramMessage);
-        return;
-        i = AlbumUtil.a();
-        break;
-        if (PhotoListActivity.a() >= i)
-        {
-          QQToast.a((Context)localObject, String.format(((PhotoListActivity)localObject).getResources().getString(2131439174), new Object[] { Integer.valueOf(i) }), 0).a();
-        }
-        else
-        {
-          ((PhotoListActivity)localObject).c.add(paramMessage);
-          PhotoListActivity.g((PhotoListActivity)localObject);
-        }
-      }
-      ((PhotoListActivity)localObject).d();
-      QZLog.e("PhotoListActivity", 2, new Object[] { "onEncodeError = ", Integer.valueOf(((Integer)paramMessage.obj).intValue()) });
-      QQToast.a((Context)localObject, ((PhotoListActivity)localObject).getResources().getString(2131439177), 0).a();
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      } while (this.jdField_a_of_type_Xan.jdField_b_of_type_Int != 21);
+      this.jdField_a_of_type_Xan.a(0);
       return;
-    } while (!(paramMessage.obj instanceof String));
-    paramMessage = (String)paramMessage.obj;
-    if (((PhotoListActivity)localObject).c == null) {
-      ((PhotoListActivity)localObject).c = new ArrayList();
     }
-    QZLog.d("PhotoListActivity", 2, new Object[] { "MSG_PHOTO_ENCODE_SUCCEED = ", paramMessage });
-    if (((PhotoListActivity)localObject).c.size() < ((PhotoListActivity)localObject).i)
-    {
-      ((PhotoListActivity)localObject).c.add(paramMessage);
-      PhotoListActivity.g((PhotoListActivity)localObject);
-    }
-    for (;;)
-    {
-      PhotoListActivity.a((PhotoListActivity)localObject, paramMessage);
-      return;
-      QQToast.a((Context)localObject, String.format(((PhotoListActivity)localObject).getResources().getString(2131439173), new Object[] { Integer.valueOf(((PhotoListActivity)localObject).i) }), 0).a();
-    }
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wxv
  * JD-Core Version:    0.7.0.1
  */

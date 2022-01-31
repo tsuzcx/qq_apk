@@ -1,21 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
 public class amwc
-  implements DialogInterface.OnClickListener
+  extends amvl
 {
-  public amwc(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, amwl paramamwl) {}
+  public ArCloudConfigInfo a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public amwc(String paramString, int paramInt1, int paramInt2, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    LocalMultiProcConfig.putBool("qzbg_music_mobinet_tips", true);
-    if (this.jdField_a_of_type_Amwl != null) {
-      this.jdField_a_of_type_Amwl.a();
-    }
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.isFlowWarningVisible = false;
+    super(paramString, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
+    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("MultiFragmentAnimARResourceInfo{");
+    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", trackMode=").append(this.b);
+    localStringBuilder.append(", arResourceInfo=").append(this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

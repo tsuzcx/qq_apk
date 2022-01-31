@@ -1,55 +1,42 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.cmgame.OnGameStartCheckListener;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.os.Build.VERSION;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 
 public class ypb
-  extends DownloadListener
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public ypb(CmGameStartChecker paramCmGameStartChecker) {}
+  public ypb(RelativePersonalBottomView paramRelativePersonalBottomView) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    super.onDone(paramDownloadTask);
-  }
-  
-  public void onDoneFile(DownloadTask paramDownloadTask)
-  {
-    if (paramDownloadTask == null) {
+    if (RelativePersonalBottomView.a(this.a).getId() == paramInt) {
+      RelativePersonalBottomView.a(this.a).setCurrentItem(0);
+    }
+    while (RelativePersonalBottomView.b(this.a).getId() != paramInt) {
       return;
     }
-    CmGameStartChecker.StartCheckParam localStartCheckParam = (CmGameStartChecker.StartCheckParam)paramDownloadTask.a().getSerializable("download_param");
-    if (paramDownloadTask.a() != 3)
+    if (Build.VERSION.SDK_INT >= 23) {}
+    for (boolean bool = amrk.a(this.a.getContext());; bool = true)
     {
-      CmGameStartChecker.a(this.a, localStartCheckParam);
-      QLog.e("apollo_cmGame_CmGameStartChecker", 1, "downLoad game res fail retCode: " + paramDownloadTask.a());
-      return;
-    }
-    this.a.c(localStartCheckParam);
-  }
-  
-  public void onProgress(DownloadTask paramDownloadTask)
-  {
-    CmGameStartChecker.StartCheckParam localStartCheckParam = (CmGameStartChecker.StartCheckParam)paramDownloadTask.a().getSerializable("download_param");
-    int i = (int)paramDownloadTask.a;
-    if (CmGameStartChecker.a(this.a) != null)
-    {
-      paramDownloadTask = (OnGameStartCheckListener)CmGameStartChecker.a(this.a).get();
-      if (paramDownloadTask != null)
+      if (!bool)
       {
-        QLog.d("apollo_cmGame_CmGameStartChecker", 2, "gameCheckListener.onDownloadGameResProgress startCheckParam:" + localStartCheckParam);
-        paramDownloadTask.onDownloadGameResProgress(localStartCheckParam, i);
+        bdgm.b((PublicFragmentActivity)this.a.getContext());
+        RelativePersonalBottomView.a(this.a).getChildAt(0).performClick();
+        return;
       }
+      RelativePersonalBottomView.a(this.a).setCurrentItem(1);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ypb
  * JD-Core Version:    0.7.0.1
  */

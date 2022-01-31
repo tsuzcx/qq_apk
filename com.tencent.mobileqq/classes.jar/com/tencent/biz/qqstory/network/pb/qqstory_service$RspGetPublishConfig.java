@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_service$RspGetPublishConfig
-  extends MessageMicro
+  extends MessageMicro<RspGetPublishConfig>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40 }, new String[] { "result", "show_now_entry", "can_take_picture", "is_firsttime_show_take_pic", "video_use_bdh" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, RspGetPublishConfig.class);
   public final PBUInt32Field can_take_picture = PBField.initUInt32(0);
@@ -17,7 +17,7 @@ public final class qqstory_service$RspGetPublishConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPublishConfig
  * JD-Core Version:    0.7.0.1
  */

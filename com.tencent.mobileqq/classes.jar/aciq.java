@@ -1,41 +1,14 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.Emoticon;
 
-public class aciq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class aciq
+  implements aufy<Emoticon>
 {
-  private int jdField_a_of_type_Int;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private boolean jdField_a_of_type_Boolean;
+  aciq(acip paramacip, int paramInt1, int paramInt2, String paramString) {}
   
-  public aciq(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
-  
-  public void onGlobalLayout()
+  public void a(Emoticon paramEmoticon)
   {
-    ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
-    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
-    if (i != this.jdField_a_of_type_Int)
-    {
-      int j = ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).getRootView().getHeight();
-      int k = j - i;
-      if (k <= j / 4) {
-        break label90;
-      }
-      ExtendFriendProfileEditFragment.c(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment, k);
-      this.jdField_a_of_type_Boolean = true;
-      ExtendFriendProfileEditFragment.d(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = i;
-      return;
-      label90:
-      if (this.jdField_a_of_type_Boolean) {
-        ExtendFriendProfileEditFragment.e(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
-      }
-    }
+    afvg.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Acip.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acip.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Acip.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
   }
 }
 

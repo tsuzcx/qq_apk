@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.widget;
 
-import aktk;
-import aktm;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.SpanWatcher;
@@ -10,16 +8,18 @@ import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.text.QQText.EmoticonSpan;
+import bamp;
+import bamw;
+import beok;
+import beom;
 import com.tencent.widget.BubblePopupWindow;
 
 public class ContextMenuTextView
   extends TextView
 {
-  aktm jdField_a_of_type_Aktm = new aktm(this, null);
   private Context jdField_a_of_type_AndroidContentContext;
   public View.OnClickListener a;
+  beom jdField_a_of_type_Beom = new beom(this, null);
   public BubblePopupWindow a;
   private boolean jdField_a_of_type_Boolean;
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
@@ -27,20 +27,20 @@ public class ContextMenuTextView
   public ContextMenuTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aktk(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new beok(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setOnLongClickListener(this.jdField_a_of_type_Aktm);
+    setOnLongClickListener(this.jdField_a_of_type_Beom);
     setSelectAllOnFocus(true);
   }
   
   public ContextMenuTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aktk(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new beok(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setOnLongClickListener(this.jdField_a_of_type_Aktm);
+    setOnLongClickListener(this.jdField_a_of_type_Beom);
     setSelectAllOnFocus(true);
-    setOnTouchListener(this.jdField_a_of_type_Aktm);
+    setOnTouchListener(this.jdField_a_of_type_Beom);
   }
   
   private void a(Object paramObject)
@@ -72,7 +72,7 @@ public class ContextMenuTextView
     if ((localObject1 instanceof Spannable))
     {
       localObject1 = (Spannable)localObject1;
-      localObject1 = (QQText.EmoticonSpan[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), QQText.EmoticonSpan.class);
+      localObject1 = (bamw[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), bamw.class);
       if ((localObject1 != null) && (localObject1.length > 0))
       {
         this.jdField_a_of_type_Boolean = true;
@@ -104,10 +104,10 @@ public class ContextMenuTextView
     if (!getText().equals(paramCharSequence))
     {
       super.setText(paramCharSequence, paramBufferType);
-      if ((getText() instanceof QQText))
+      if ((getText() instanceof bamp))
       {
         paramCharSequence = (Spannable)getText();
-        paramCharSequence = (QQText.EmoticonSpan[])paramCharSequence.getSpans(0, paramCharSequence.length(), QQText.EmoticonSpan.class);
+        paramCharSequence = (bamw[])paramCharSequence.getSpans(0, paramCharSequence.length(), bamw.class);
         paramBufferType = new Drawable[paramCharSequence.length];
         while (i < paramCharSequence.length)
         {
@@ -122,7 +122,7 @@ public class ContextMenuTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ContextMenuTextView
  * JD-Core Version:    0.7.0.1
  */

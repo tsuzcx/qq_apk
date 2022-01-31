@@ -1,54 +1,57 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import alqf;
+import amia;
 import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.app.LebaHelper;
+import aojv;
+import apks;
+import asub;
+import atko;
+import bbaa;
+import bbab;
+import bdin;
+import biqn;
 import com.tencent.mobileqq.app.PluginConfigProxy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.config.AboutConfig;
 import com.tencent.mobileqq.config.ResourcePluginListener;
-import com.tencent.mobileqq.earlydownload.EarlyDownloadManager;
-import com.tencent.mobileqq.hotpic.HotPicManager;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import com.tencent.mobileqq.transfile.predownload.RunnableTask;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.plugin.IPluginManager;
 import protocol.KQQConfig.GetResourceReqInfo;
-import zqs;
-import zqt;
 
 public class GetConfig
   extends AsyncStep
 {
   private ResourcePluginListener a;
   
-  protected int a()
+  public int a()
   {
+    ((atko)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(128)).a();
     Object localObject = new PluginConfigProxy();
-    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a().a((PluginConfigProxy)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a().a((PluginConfigProxy)localObject);
-    ((PluginConfigProxy)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b);
-    ((IPluginManager)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.getManager(26)).a();
-    ((EarlyDownloadManager)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.getManager(76)).b();
-    localObject = (ConfigHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(4);
-    ((ConfigHandler)localObject).a(null, new GetResourceReqInfo[] { ((ConfigHandler)localObject).d(), ((ConfigHandler)localObject).f(), ((ConfigHandler)localObject).b(), ((ConfigHandler)localObject).e(), ((ConfigHandler)localObject).c() });
-    if ((!"5.0.2".equals(Build.VERSION.RELEASE)) && (NetworkUtil.b(BaseApplication.getContext()) == 1))
+    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a().a((PluginConfigProxy)localObject);
+    ((PluginConfigProxy)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app);
+    ((biqn)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(27)).a();
+    ((apks)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(77)).a(true);
+    localObject = (alqf)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(4);
+    ((alqf)localObject).a(null, new GetResourceReqInfo[] { ((alqf)localObject).d(), ((alqf)localObject).f(), ((alqf)localObject).b(), ((alqf)localObject).e(), ((alqf)localObject).c() });
+    if (!"5.0.2".equals(Build.VERSION.RELEASE))
     {
-      localObject = new zqs(this);
-      PreDownloadController localPreDownloadController = (PreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.getManager(192);
-      if (!localPreDownloadController.a()) {
-        break label251;
+      int i = bdin.b(BaseApplication.getContext());
+      if ((i == 1) || (i == 4))
+      {
+        localObject = new GetConfig.1(this);
+        bbaa localbbaa = (bbaa)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(193);
+        if (!localbbaa.a()) {
+          break label264;
+        }
+        localbbaa.a(10057, null, "tvk_sdkmgr", 0, "http://tvk_sdkmgr/unkown", "unkown", 1, 0, false, new bbab(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app, "tvk_sdkmgr", (Runnable)localObject, 4000L));
       }
-      localPreDownloadController.a(10057, null, "tvk_sdkmgr", 0, "http://tvk_sdkmgr/unkown", "unkown", 1, 0, false, new RunnableTask(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b, "tvk_sdkmgr", (Runnable)localObject, 4000L));
     }
     for (;;)
     {
-      HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b).b();
+      asub.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app).b();
       return 2;
-      label251:
+      label264:
       ((Runnable)localObject).run();
     }
   }
@@ -57,13 +60,13 @@ public class GetConfig
   {
     if (this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new zqt(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.b(this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener);
+      this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new amia(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.b(this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener);
     }
   }
   
-  public void c()
+  public void d()
   {
     this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = null;
   }

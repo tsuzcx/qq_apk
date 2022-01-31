@@ -1,14 +1,26 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.3.1;
+import com.tencent.qphone.base.util.QLog;
 
-class aiys
-  implements Runnable
+public class aiys
+  implements aivb
 {
-  aiys(aiyr paramaiyr) {}
+  public aiys(ThemeHbFragment paramThemeHbFragment) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a.a.sendEmptyMessage(1006);
+    ThemeHbFragment.a(this.a, null);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ThemeHbFragment", 2, "setAnimFrameBgProcess download back obj = " + paramObject);
+    }
+    if (((paramObject instanceof String)) && (ThemeHbFragment.a(this.a) != null)) {
+      ThemeHbFragment.a(this.a).post(new ThemeHbFragment.3.1(this, paramObject));
+    }
   }
 }
 

@@ -1,42 +1,57 @@
-import android.os.AsyncTask;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0x438.oidb_0x438.RedBagInfo;
 
 public class aium
-  extends AsyncTask
+  extends Handler
 {
-  public aium(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
-  
-  protected String a(Void... paramVarArgs)
+  aium(aiul paramaiul, Looper paramLooper)
   {
-    try
-    {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
-      if (paramVarArgs != null)
-      {
-        ImageUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramVarArgs);
-        return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131434582) + " " + paramVarArgs;
-      }
-    }
-    catch (Exception paramVarArgs)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PhotoPreviewActivity", 2, QLog.getStackTraceString(paramVarArgs));
-        }
-        paramVarArgs = null;
-      }
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131434583);
+    super(paramLooper);
   }
   
-  protected void a(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
+    int i = paramMessage.what;
+    boolean bool;
+    if (paramMessage.arg1 == 1)
+    {
+      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("PasswdRedBagManager", 2, "receive passwdredbags from group or disgroup, isSuccess = " + bool);
+      }
+      if (bool) {
+        break label56;
+      }
+    }
+    for (;;)
+    {
+      return;
+      bool = false;
+      break;
+      label56:
+      if ((i == 1) || (i == 0))
+      {
+        ThreadManager.getFileThreadHandler().post(new PasswdRedBagManager.1.1(this, i));
+        paramMessage = (List)paramMessage.obj;
+        if (paramMessage != null)
+        {
+          paramMessage = paramMessage.iterator();
+          while (paramMessage.hasNext())
+          {
+            oidb_0x438.RedBagInfo localRedBagInfo = (oidb_0x438.RedBagInfo)paramMessage.next();
+            this.a.a(localRedBagInfo);
+          }
+        }
+      }
+    }
   }
 }
 

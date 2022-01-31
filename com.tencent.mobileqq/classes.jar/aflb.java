@@ -1,24 +1,51 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.MomentDataChangeObserver;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
 
-public class aflb
-  implements Runnable
+abstract class aflb
 {
-  public aflb(NearbyMomentManager paramNearbyMomentManager, String paramString, int paramInt) {}
+  protected int a;
+  protected afpx a;
+  protected String a;
+  protected int b;
+  protected String b;
   
-  public void run()
+  public int a()
   {
-    Iterator localIterator = NearbyMomentManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager).iterator();
-    while (localIterator.hasNext()) {
-      ((NearbyMomentManager.MomentDataChangeObserver)localIterator.next()).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    }
+    return this.jdField_b_of_type_Int;
   }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public abstract void a();
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(afpx paramafpx)
+  {
+    this.jdField_a_of_type_Afpx = paramafpx;
+  }
+  
+  public boolean a(String paramString)
+  {
+    a();
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = -1;
+    return true;
+  }
+  
+  public abstract boolean b(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aflb
  * JD-Core Version:    0.7.0.1
  */

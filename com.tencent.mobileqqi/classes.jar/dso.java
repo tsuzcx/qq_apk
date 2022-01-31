@@ -1,28 +1,50 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.statistics.ReportController;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class dso
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  public dso(SubLoginActivity paramSubLoginActivity) {}
+  public dso(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    if (paramCharSequence.length() > 0) {
-      if (SubLoginActivity.a(this.a) != null) {
-        SubLoginActivity.a(this.a).setVisibility(0);
-      }
-    }
-    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
+    long l = System.currentTimeMillis();
+    if ((l - TroopRequestActivity.d > 0L) && (l - TroopRequestActivity.d < 800L)) {
       return;
     }
-    SubLoginActivity.a(this.a).setVisibility(8);
+    TroopRequestActivity.d = l;
+    Bundle localBundle = TroopInfoActivity.a(this.a.p, 4);
+    int i = TroopRequestActivity.a(this.a).msg.group_msg_type.get();
+    QQAppInterface localQQAppInterface;
+    String str;
+    if ((i == 2) || (i == 10) || (i == 12))
+    {
+      i = 1;
+      localQQAppInterface = this.a.b;
+      str = TroopRequestActivity.a(this.a).msg.group_code.get() + "";
+      if (i == 0) {
+        break label172;
+      }
+    }
+    label172:
+    for (paramView = "0";; paramView = "1")
+    {
+      ReportController.b(localQQAppInterface, "P_CliOper", "Grp_contacts", "", "notice", "see_data", 0, 0, str, paramView, "", "");
+      ChatSettingForTroop.a(this.a, localBundle, 2);
+      return;
+      i = 0;
+      break;
+    }
   }
 }
 

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class AccountSearchPb$hotwordrecord
-  extends MessageMicro
+  extends MessageMicro<hotwordrecord>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 42 }, new String[] { "hotword", "hotword_type", "hotword_cover_url", "hotword_title", "hotword_description" }, new Object[] { "", Integer.valueOf(0), "", "", "" }, hotwordrecord.class);
   public final PBStringField hotword = PBField.initString("");
@@ -18,7 +18,7 @@ public final class AccountSearchPb$hotwordrecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord
  * JD-Core Version:    0.7.0.1
  */

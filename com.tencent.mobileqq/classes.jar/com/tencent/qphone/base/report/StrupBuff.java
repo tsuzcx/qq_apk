@@ -11,8 +11,8 @@ public final class StrupBuff
   extends JceStruct
 {
   static Map cache_logstring;
-  public byte encoding;
-  public Map logstring;
+  public byte encoding = 0;
+  public Map logstring = null;
   public String prefix = "";
   
   public StrupBuff() {}

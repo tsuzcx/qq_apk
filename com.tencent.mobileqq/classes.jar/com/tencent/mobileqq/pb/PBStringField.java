@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.pb;
 
-import java.io.IOException;
-
 public final class PBStringField
   extends PBPrimitiveField<String>
 {
@@ -52,14 +50,12 @@ public final class PBStringField
   }
   
   public void readFrom(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException
   {
     this.value = paramCodedInputStreamMicro.readString();
     setHasFlag(true);
   }
   
   protected String readFromDirectly(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException
   {
     return paramCodedInputStreamMicro.readString();
   }
@@ -76,7 +72,6 @@ public final class PBStringField
   }
   
   public void writeTo(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt)
-    throws IOException
   {
     if (has()) {
       paramCodedOutputStreamMicro.writeString(paramInt, this.value);
@@ -84,7 +79,6 @@ public final class PBStringField
   }
   
   protected void writeToDirectly(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt, String paramString)
-    throws IOException
   {
     paramCodedOutputStreamMicro.writeString(paramInt, paramString);
   }

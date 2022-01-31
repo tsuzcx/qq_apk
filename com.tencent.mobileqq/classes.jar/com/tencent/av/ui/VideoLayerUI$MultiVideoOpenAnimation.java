@@ -3,6 +3,7 @@ package com.tencent.av.ui;
 import android.graphics.Rect;
 import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
+import mgp;
 
 public class VideoLayerUI$MultiVideoOpenAnimation
   implements Runnable
@@ -14,33 +15,33 @@ public class VideoLayerUI$MultiVideoOpenAnimation
   public VideoLayerUI$MultiVideoOpenAnimation(VideoLayerUI paramVideoLayerUI, int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    paramVideoLayerUI = paramVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[this.jdField_a_of_type_Int];
+    paramVideoLayerUI = paramVideoLayerUI.jdField_a_of_type_ArrayOfMgp[this.jdField_a_of_type_Int];
     Rect localRect = paramVideoLayerUI.b();
     this.jdField_a_of_type_Float = (localRect.width() / 10.0F);
     paramInt = localRect.right;
     int i = localRect.width();
     paramVideoLayerUI.b(paramInt, localRect.top, i + paramInt, localRect.bottom);
-    paramVideoLayerUI.v();
+    paramVideoLayerUI.b();
   }
   
   public void run()
   {
     if (this.b == 9) {
-      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(false);
+      this.this$0.c(false);
     }
     for (;;)
     {
       this.b += 1;
       if (this.b <= 9) {
-        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 30L);
+        this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 30L);
       }
       return;
-      GLVideoView localGLVideoView = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[this.jdField_a_of_type_Int];
-      Rect localRect = localGLVideoView.b();
+      mgp localmgp = this.this$0.jdField_a_of_type_ArrayOfMgp[this.jdField_a_of_type_Int];
+      Rect localRect = localmgp.b();
       int i = (int)(localRect.left - this.jdField_a_of_type_Float);
       int j = localRect.width();
-      localGLVideoView.b(i, localRect.top, j + i, localRect.bottom);
-      localGLVideoView.v();
+      localmgp.b(i, localRect.top, j + i, localRect.bottom);
+      localmgp.b();
     }
   }
 }

@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVManager;
+import android.content.Context;
+import android.widget.GridView;
+import com.tencent.biz.troopgift.GridListViewPager;
 
-class yvd
-  implements Runnable
+public class yvd
+  extends GridView
 {
-  yvd(yvc paramyvc) {}
-  
-  public void run()
+  public yvd(GridListViewPager paramGridListViewPager, Context paramContext)
   {
-    AVManager.a(this.a.a.a).a(AVEngineWalper.a(this.a.a));
+    super(paramContext);
+  }
+  
+  public void setOverScrollMode(int paramInt)
+  {
+    super.setOverScrollMode(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yvd
  * JD-Core Version:    0.7.0.1
  */

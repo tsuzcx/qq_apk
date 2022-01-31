@@ -1,28 +1,25 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
 
 public class egm
-  extends BaseBubbleBuilder.ViewHolder
+  implements Animation.AnimationListener
 {
-  public ImageView a;
-  public LinearLayout a;
-  public ProgressBar a;
-  public TextView a;
-  public AsyncImageView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public egm(TroopActivity paramTroopActivity) {}
   
-  public egm(TroopFileItemBuilder paramTroopFileItemBuilder) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     egm
  * JD-Core Version:    0.7.0.1
  */

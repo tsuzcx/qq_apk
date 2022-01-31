@@ -1,7 +1,7 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.ba;
-import com.tencent.token.fp;
+import com.tencent.token.dr;
+import com.tencent.token.es;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -19,7 +19,7 @@ public class NewConfigureCacheItem
     this.mConfKey = paramString;
   }
   
-  public final void a()
+  public void a()
   {
     if (this.mClickVersion == this.mClientVersion) {
       return;
@@ -28,7 +28,7 @@ public class NewConfigureCacheItem
     if (this.mConfIDs != null) {
       this.mConfIDs.clear();
     }
-    ba.a().h.a();
+    dr.a().h.a();
   }
 }
 

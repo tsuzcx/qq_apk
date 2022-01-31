@@ -1,52 +1,20 @@
-import com.tencent.mobileqq.app.UniteSearchObserver;
-import com.tencent.mobileqq.leba.LebaTitleBar;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.mobileqq.search.model.SearchEntryDataModel;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SplashActivity;
 
 public class adzk
-  extends UniteSearchObserver
+  implements DialogInterface.OnClickListener
 {
-  public adzk(LebaTitleBar paramLebaTitleBar) {}
+  public adzk(SplashActivity paramSplashActivity) {}
   
-  public void b(int paramInt1, String paramString, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba_with_feeds_search", 2, "handleSearchDiscoveryError error, resultCode = " + paramInt1 + ",  errorMsg = " + paramString + ", fromType = " + paramInt2);
-    }
-  }
-  
-  public void b(List paramList, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba_with_feeds_search", 2, "handleSearchDiscoveryResult() result = " + paramList + ", fromType = " + paramInt);
-    }
-    if (paramInt != 4) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.lebatab.leba_with_feeds_search", 2, "handleSearchDiscoveryResult(), fromType is wrong, return");
-      }
-    }
-    for (;;)
-    {
-      return;
-      paramInt = 0;
-      while (paramInt < paramList.size())
-      {
-        SearchEntryDataModel localSearchEntryDataModel = (SearchEntryDataModel)paramList.get(paramInt);
-        if ((localSearchEntryDataModel instanceof HotWordSearchEntryDataModel))
-        {
-          this.a.a(((HotWordSearchEntryDataModel)localSearchEntryDataModel).a);
-          return;
-        }
-        paramInt += 1;
-      }
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adzk
  * JD-Core Version:    0.7.0.1
  */

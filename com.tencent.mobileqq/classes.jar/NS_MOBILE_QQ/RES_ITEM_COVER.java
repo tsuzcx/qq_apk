@@ -9,8 +9,8 @@ import java.util.Map;
 public final class RES_ITEM_COVER
   extends JceStruct
 {
-  static Map cache_extendinfo = new HashMap();
-  public Map extendinfo;
+  static Map<String, String> cache_extendinfo = new HashMap();
+  public Map<String, String> extendinfo;
   public String strJumpQzone = "";
   
   static
@@ -20,7 +20,7 @@ public final class RES_ITEM_COVER
   
   public RES_ITEM_COVER() {}
   
-  public RES_ITEM_COVER(String paramString, Map paramMap)
+  public RES_ITEM_COVER(String paramString, Map<String, String> paramMap)
   {
     this.strJumpQzone = paramString;
     this.extendinfo = paramMap;

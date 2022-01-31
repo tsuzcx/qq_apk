@@ -1,52 +1,50 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.subaccount.SubAccountProtocManager;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.observer.SubAccountObserver;
+import android.view.View;
+import android.view.ViewStub;
+import com.tencent.biz.qqcircle.QCircleInitBean;
+import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView;
 
 class ttx
-  extends SubAccountObserver
+  extends trw
 {
-  ttx(ttw paramttw, SimpleAccount paramSimpleAccount) {}
+  ttx(ttr paramttr) {}
   
-  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  public QCircleInitBean a()
   {
-    if (TextUtils.isEmpty(paramString3))
-    {
-      paramString1 = new HashMap();
-      paramString1.put("param_FailCode", "12005");
-      paramString1.put("fail_step", "getKeyEmpty");
-      paramString1.put("fail_location", "SubBind");
-      StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_Ttw.a.app.getCurrentAccountUin(), "actSBDLoginGetkey", false, 0L, 0L, paramString1, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onGetKeyBack: key is empty? why? shit");
-      }
-      this.jdField_a_of_type_Ttw.a.runOnUiThread(new tty(this));
+    return ttr.a(this.a);
+  }
+  
+  public QCirclePolymorphicAniView a()
+  {
+    if (ttr.a(this.a) != null) {
+      return (QCirclePolymorphicAniView)ttr.a(this.a).findViewById(2131373208);
     }
-    do
+    return null;
+  }
+  
+  public tuz a()
+  {
+    if ((ttr.a(this.a) == null) && (ttr.a(this.a) != null))
     {
-      return;
-      paramString1 = new HashMap();
-      paramString1.put("param_FailCode", "12006");
-      paramString1.put("fail_step", "getKeyNotEmpty");
-      paramString1.put("fail_location", "SubBind");
-      StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_Ttw.a.app.getCurrentAccountUin(), "actSBDLoginGetkey", true, 0L, 0L, paramString1, "");
-      paramString1 = (SubAccountProtocManager)this.jdField_a_of_type_Ttw.a.app.getManager(27);
-      if (paramString1 != null) {
-        paramString1.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin(), paramString3, this.jdField_a_of_type_Ttw.a.b);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onGetKeyBack:getA2 subAccount = " + paramString2 + ".....subA2 = " + paramString3);
+      ViewStub localViewStub = (ViewStub)ttr.a(this.a).findViewById(2131373151);
+      ttr.a(this.a, new tuz(this.a.a()));
+      ttr.a(this.a).a(this.a.a(), localViewStub);
+    }
+    return ttr.a(this.a);
+  }
+  
+  public void a(Object paramObject)
+  {
+    this.a.b("share_action_show_share_sheet", paramObject);
+  }
+  
+  public void a(ttf paramttf)
+  {
+    this.a.a().a("poly_zan_list_show", paramttf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ttx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
+import android.content.Context;
+import com.tencent.ad.tangram.net.AdNet;
 
-class aasg
-  implements aasr
+public class aasg
 {
-  aasg(aasc paramaasc, aasp paramaasp, aasr paramaasr) {}
-  
-  public void a(boolean paramBoolean)
+  public static int a(Context paramContext)
   {
-    ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateDict, local not exists, full update, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.jdField_a_of_type_Aasp.a }));
-    if (paramBoolean) {
-      ArkAppDataReport.a(this.jdField_a_of_type_Aasp.a, 2);
-    }
-    this.jdField_a_of_type_Aasr.a(paramBoolean);
+    return AdNet.getType(paramContext);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return bdin.d(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aasg
  * JD-Core Version:    0.7.0.1
  */

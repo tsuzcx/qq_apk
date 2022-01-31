@@ -1,46 +1,70 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ImageUtil;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class otu
-  implements Runnable
+public class otu
+  implements AladdinConfigHandler
 {
-  otu(ott paramott) {}
+  private static final Set<String> a = ;
   
-  public void run()
+  public static Set<String> a()
   {
-    if (this.a.a.jdField_c_of_type_Int == 1) {
-      this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.a.app.a(this.a.a.jdField_c_of_type_JavaLangString, false);
+    String str = oij.e();
+    QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 2, "getNativeFeedsAlladinKey | operationBarAladdinKey : " + str);
+    if ((a != null) && (!TextUtils.isEmpty(str))) {
+      a.add(str);
     }
-    for (;;)
+    return a;
+  }
+  
+  private static Set<String> b()
+  {
+    HashSet localHashSet = new HashSet();
+    Object localObject = (String)bkbq.a("native_feeds_aladdin_keys", "");
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return localHashSet;
+    }
+    localObject = ((String)localObject).split("\\|");
+    int j = localObject.length;
+    int i = 0;
+    while (i < j)
     {
-      if (this.a.a.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-        this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a();
-      }
-      return;
-      if (this.a.a.jdField_c_of_type_Int == 2)
+      localHashSet.add(localObject[i]);
+      i += 1;
+    }
+    return localHashSet;
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = osq.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      if ("native_article_aladdin_keys".equalsIgnoreCase(str1))
       {
-        this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.a.app.a(this.a.a.jdField_c_of_type_JavaLangString, (byte)3, false, false);
-        if (this.a.a.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-          this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.f();
-        }
-      }
-      else
-      {
-        Drawable localDrawable = this.a.a.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(this.a.a.jdField_c_of_type_JavaLangString, true);
-        if ((localDrawable instanceof BitmapDrawable)) {
-          this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)localDrawable).getBitmap();
-        }
+        String str2 = (String)paramString.get(str1);
+        QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+        bkbq.a("native_feeds_aladdin_keys", str2);
       }
     }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    QLog.d("PtsNativeFeedsAladdinKeyConfigHandler", 1, "[onWipeConfig]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     otu
  * JD-Core Version:    0.7.0.1
  */

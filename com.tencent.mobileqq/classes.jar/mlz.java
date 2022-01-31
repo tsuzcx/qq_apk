@@ -1,21 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher.ItemShowCallback;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ReportUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qphone.base.util.QLog;
 
 public class mlz
-  implements ItemShowDispatcher.ItemShowCallback
+  implements DialogInterface.OnClickListener
 {
-  public mlz(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
+  public mlz(VideoControlUI paramVideoControlUI, long paramLong) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReportUtil.a(FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g()) {
+      return;
+    }
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionNormalDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "]");
+    mww.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mlz
  * JD-Core Version:    0.7.0.1
  */

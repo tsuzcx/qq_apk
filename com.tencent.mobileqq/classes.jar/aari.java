@@ -1,39 +1,54 @@
-import android.annotation.TargetApi;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
-import com.tencent.mobileqq.ark.ArkAdapterItemForTextMsg;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class aari
-  implements ArkViewImplement.LoadCallback
+class aari
+  implements aaru
 {
-  public aari(ArkAdapterItemForTextMsg paramArkAdapterItemForTextMsg, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkAioContainerWrapper paramArkAioContainerWrapper, int paramInt) {}
-  
-  @TargetApi(14)
-  public void onLoadFinish(int paramInt)
+  public boolean a(aarb paramaarb, String paramString, String... paramVarArgs)
   {
-    if (paramInt == 1)
+    Object localObject = null;
+    if (paramaarb != null) {}
+    for (paramVarArgs = paramaarb.a(); (paramaarb == null) || (paramVarArgs == null); paramVarArgs = null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.a.setVisibility(0);
-      ArkAdapterItemForTextMsg.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAdapterItemForTextMsg, this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter, this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder);
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder, this.jdField_a_of_type_ComTencentMobileqqArkArkAdapterItemForTextMsg);
+      aase.d("GdtCarrierJsCallHandler", "handleJsCallRequest error");
+      return true;
     }
-    for (;;)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper, this.jdField_a_of_type_Int);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.a.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(8);
+      localJSONObject.put("carrier", aatg.a(paramVarArgs));
+    }
+    catch (JSONException localJSONException)
+    {
+      try
+      {
+        for (;;)
+        {
+          paramaarb.callJs(paramString, new String[] { localJSONObject.toString() });
+          paramString = localObject;
+          if (paramaarb != null) {
+            paramString = paramaarb.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getCarrier", paramString);
+          return true;
+          localJSONException = localJSONException;
+          aase.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", localJSONException);
+        }
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          aase.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", paramString);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aari
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import gsd;
+import gnw;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -23,7 +23,7 @@ public class SosoSrvAddrProvider
   public static final String c = "com.tencent.receiver.soso.type";
   private FileStoragePushFSSvcList jdField_a_of_type_ConfigPushFileStoragePushFSSvcList;
   Application jdField_a_of_type_AndroidAppApplication;
-  gsd jdField_a_of_type_Gsd = new gsd(this);
+  gnw jdField_a_of_type_Gnw = new gnw(this);
   
   static
   {
@@ -62,7 +62,7 @@ public class SosoSrvAddrProvider
     Object localObject = null;
     try
     {
-      FileStorageServerListInfo localFileStorageServerListInfo = this.jdField_a_of_type_Gsd.a(paramSosoSrvAddrType);
+      FileStorageServerListInfo localFileStorageServerListInfo = this.jdField_a_of_type_Gnw.a(paramSosoSrvAddrType);
       paramSosoSrvAddrType = localObject;
       if (localFileStorageServerListInfo != null) {
         paramSosoSrvAddrType = "http://" + localFileStorageServerListInfo.sIP + ":" + localFileStorageServerListInfo.iPort + "/";
@@ -118,7 +118,7 @@ public class SosoSrvAddrProvider
     try
     {
       a(null);
-      this.jdField_a_of_type_Gsd.a();
+      this.jdField_a_of_type_Gnw.a();
       QLog.d(jdField_a_of_type_JavaLangString, 1, "FMT SERVER LIST CLEARED!!!");
       return;
     }
@@ -134,7 +134,7 @@ public class SosoSrvAddrProvider
     try
     {
       this.jdField_a_of_type_ConfigPushFileStoragePushFSSvcList = paramFileStoragePushFSSvcList;
-      this.jdField_a_of_type_Gsd.a(paramFileStoragePushFSSvcList);
+      this.jdField_a_of_type_Gnw.a(paramFileStoragePushFSSvcList);
       return;
     }
     finally
@@ -148,7 +148,7 @@ public class SosoSrvAddrProvider
   {
     try
     {
-      this.jdField_a_of_type_Gsd.a(paramSosoSrvAddrType, paramString);
+      this.jdField_a_of_type_Gnw.a(paramSosoSrvAddrType, paramString);
       return;
     }
     finally

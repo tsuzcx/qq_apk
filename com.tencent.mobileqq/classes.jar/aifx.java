@@ -1,22 +1,41 @@
-import com.tencent.mobileqq.pluginsdk.PluginRuntime.IClickEventReportor;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aifx
-  implements PluginRuntime.IClickEventReportor
+class aifx
+  extends avva
 {
-  public void reportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
-  {
-    ReportController.b(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
-  }
+  aifx(aiez paramaiez) {}
   
-  public void reportClickEventRuntime(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    ReportController.a(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    if ((paramBoolean1) && (paramBoolean2) && (paramInt != 2)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("MainActivity", 2, "inform onGameCenterMsgReceive.type=" + paramInt);
+      }
+    }
+    switch (paramInt)
+    {
+    case 2: 
+    case 3: 
+    default: 
+      return;
+    case 0: 
+      this.a.g();
+      return;
+    case 1: 
+      this.a.g();
+      return;
+    case 4: 
+      this.a.g();
+      return;
+    }
+    this.a.g();
+    this.a.e();
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aifx
  * JD-Core Version:    0.7.0.1
  */

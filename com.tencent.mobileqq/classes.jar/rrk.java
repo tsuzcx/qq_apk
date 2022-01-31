@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShakeWindow;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class rrk
-  implements Runnable
+class rrk
+  implements View.OnClickListener
 {
-  public rrk(BaseChatPie paramBaseChatPie, MessageForShakeWindow paramMessageForShakeWindow) {}
+  rrk(rqj paramrqj, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.am();
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.frienduin, true);
+    nrt.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rrk
  * JD-Core Version:    0.7.0.1
  */

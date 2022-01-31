@@ -1,17 +1,34 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.vashealth.HealthStepCounterPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.widget.Switch;
 
-public class akjm
-  implements Runnable
+class akjm
+  implements View.OnClickListener
 {
-  public akjm(HealthStepCounterPlugin paramHealthStepCounterPlugin) {}
+  akjm(akjk paramakjk, RedTouch paramRedTouch, aozs paramaozs) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQToast localQQToast = new QQToast(this.a.mRuntime.a().getContext());
-    QQToast.a(this.a.mRuntime.a().getContext(), "抱歉，你未安装微信客户端，无法进行微信分享", 0).b((int)(localQQToast.b() * 2.5D));
+    Switch localSwitch;
+    if (AppSetting.c)
+    {
+      localSwitch = (Switch)paramView.findViewById(2131363728);
+      if (localSwitch != null) {
+        if (localSwitch.isChecked()) {
+          break label59;
+        }
+      }
+    }
+    label59:
+    for (boolean bool = true;; bool = false)
+    {
+      localSwitch.setChecked(bool);
+      akjk.a(this.jdField_a_of_type_Akjk, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_Aozs, localSwitch.isChecked());
+      paramView.sendAccessibilityEvent(1);
+      return;
+    }
   }
 }
 

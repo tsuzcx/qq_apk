@@ -1,59 +1,42 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.emoticonview.BigEmotionDownloadedAdapter;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.RejectedExecutionException;
+import com.tencent.mobileqq.activity.AgeSelectionActivity;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
 public class acdy
-  implements URLDrawable.URLDrawableListener
+  implements aoil
 {
-  public acdy(BigEmotionDownloadedAdapter paramBigEmotionDownloadedAdapter) {}
+  public acdy(AgeSelectionActivity paramAgeSelectionActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a()
   {
-    if ((paramThrowable instanceof RejectedExecutionException)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("BigEmotionDownloadedAdapter", 2, "arg0.getConstantState() = " + paramURLDrawable.getConstantState());
-      }
+    if ((AgeSelectionActivity.a(this.a) != null) && (AgeSelectionActivity.a(this.a).isShowing())) {
+      AgeSelectionActivity.a(this.a).dismiss();
     }
-    label41:
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          break label41;
-          do
-          {
-            return;
-          } while (paramURLDrawable == null);
-          paramThrowable = paramURLDrawable.getFileInLocal();
-          if ((paramThrowable != null) && (paramThrowable.exists())) {
-            paramThrowable.delete();
-          }
-          paramThrowable = paramURLDrawable.getTag();
-        } while (!(paramThrowable instanceof Integer));
-        i = ((Integer)paramThrowable).intValue();
-      } while (i >= 3);
-      i += 1;
-      paramURLDrawable.setTag(Integer.valueOf(i));
-      paramURLDrawable.restartDownload();
-    } while (!QLog.isColorLevel());
-    QLog.i("BigEmotionDownloadedAdapter", 2, "download recomment comic pic , try count = " + i);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
+  public void a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      AgeSelectionActivity.a(this.a);
+      AgeSelectionActivity.b(this.a);
+      if ((AgeSelectionActivity.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
+        AgeSelectionActivity.a(this.a).a(2);
+      }
+      return;
+      AgeSelectionActivity.a(this.a, paramInt2);
+      continue;
+      AgeSelectionActivity.b(this.a, paramInt2);
+      continue;
+      AgeSelectionActivity.c(this.a, paramInt2);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acdy
  * JD-Core Version:    0.7.0.1
  */

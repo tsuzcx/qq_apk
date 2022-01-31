@@ -17,8 +17,8 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.XListView;
-import dca;
-import dcb;
+import cwj;
+import cwk;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -30,10 +30,10 @@ public class MoveToGroupActivity
   public static final int a = 0;
   public static final String a = "PARAM_EXECUTE_IMMEDIATELY";
   public byte a;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dca(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cwj(this);
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private dcb jdField_a_of_type_Dcb = null;
+  private cwk jdField_a_of_type_Cwk = null;
   public List a;
   private byte jdField_b_of_type_Byte;
   private String jdField_b_of_type_JavaLangString;
@@ -97,8 +97,8 @@ public class MoveToGroupActivity
   public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     this.jdField_a_of_type_Byte = ((byte)((Groups)this.jdField_a_of_type_JavaUtilList.get(paramInt)).group_id);
-    if (this.jdField_a_of_type_Dcb != null) {
-      this.jdField_a_of_type_Dcb.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Cwk != null) {
+      this.jdField_a_of_type_Cwk.notifyDataSetChanged();
     }
     if (getIntent().getBooleanExtra("PARAM_EXECUTE_IMMEDIATELY", true))
     {
@@ -126,17 +126,17 @@ public class MoveToGroupActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903282);
+    setContentView(2130903284);
     setTitle(getString(2131561812));
     this.jdField_b_of_type_JavaLangString = getIntent().getExtras().getString("friendUin");
     this.jdField_b_of_type_Byte = getIntent().getExtras().getByte("mgid");
     this.jdField_a_of_type_Byte = this.jdField_b_of_type_Byte;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     g();
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131231932));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131231935));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_Dcb = new dcb(this, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Dcb);
+    this.jdField_a_of_type_Cwk = new cwk(this, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Cwk);
     return true;
   }
   

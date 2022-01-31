@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareActivity;
+import com.tencent.mobileqq.activity.voip.VoipHistoryAllType;
+import com.tencent.mobileqq.activity.voip.VoipHistoryInterface;
+import java.util.Comparator;
 
 public class ewv
-  implements DialogInterface.OnClickListener
+  implements Comparator
 {
-  public ewv(QvipSpecialCareActivity paramQvipSpecialCareActivity) {}
+  public ewv(VoipHistoryInterface paramVoipHistoryInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(VoipHistoryAllType paramVoipHistoryAllType1, VoipHistoryAllType paramVoipHistoryAllType2)
   {
-    paramDialogInterface.dismiss();
+    if (paramVoipHistoryAllType1.time > paramVoipHistoryAllType2.time) {
+      return -1;
+    }
+    if (paramVoipHistoryAllType1.time < paramVoipHistoryAllType2.time) {
+      return 1;
+    }
+    return 0;
   }
 }
 

@@ -1,24 +1,24 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SVIPObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class tma
-  extends SVIPObserver
+final class tma
+  implements Animation.AnimationListener
 {
-  public tma(QQSettingMe paramQQSettingMe) {}
+  tma(View paramView) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoChangedObserver");
-    }
-    this.a.b(this.a.a.getCurrentAccountUin());
+    this.a.setTag(-1, null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tma
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,30 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleDrawer;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleDrawer.DoodleDrawerListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class uro
-  implements DoodleDrawer.DoodleDrawerListener
 {
-  public uro(DoodleMsgView paramDoodleMsgView) {}
+  public int a;
+  public String b;
   
-  public void a(String paramString, int paramInt)
+  public uro() {}
+  
+  public uro(int paramInt, String paramString)
   {
-    QLog.d("DoodleMsgView", 2, "onDataState:" + paramInt + " - " + paramString);
-    this.a.a(new urq(this, paramInt));
+    this.a = paramInt;
+    this.b = paramString;
   }
   
-  public void a(String arg1, long paramLong, Bitmap paramBitmap)
+  public uro(qqstory_struct.ErrorInfo paramErrorInfo)
   {
-    if (DoodleMsgView.a(this.a) == null) {}
-    for (;;)
-    {
-      return;
-      if (paramBitmap != null) {
-        if (DoodleMsgView.a(this.a, paramBitmap.getWidth(), paramBitmap.getHeight())) {
-          if (DoodleMsgView.a(this.a) == null)
-          {
-            DoodleMsgView.a(this.a, new Paint());
-            DoodleMsgView.a(this.a).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
-            DoodleMsgView.a(this.a).setAntiAlias(true);
-          }
-        }
-      }
-      synchronized (this.a)
-      {
-        DoodleMsgView.a(this.a).drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(0, 0, DoodleMsgView.a(this.a).getWidth(), DoodleMsgView.a(this.a).getHeight()), DoodleMsgView.a(this.a));
-        this.a.postInvalidate();
-        if ((!DoodleMsgView.a(this.a)) || (paramLong < DoodleMsgView.a(this.a).a()) || (DoodleMsgView.a(this.a) < DoodleMsgView.a(this.a).a())) {
-          continue;
-        }
-        this.a.d();
-        this.a.a(new urp(this));
-        return;
-      }
-    }
+    this.a = paramErrorInfo.error_code.get();
+    this.b = paramErrorInfo.error_desc.get().toStringUtf8();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uro
  * JD-Core Version:    0.7.0.1
  */

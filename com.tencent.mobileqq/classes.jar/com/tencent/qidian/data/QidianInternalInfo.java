@@ -1,18 +1,18 @@
 package com.tencent.qidian.data;
 
 import android.text.TextUtils;
+import awge;
+import awhs;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qidian.proto.mobileqq_qidian.InternalInfo;
 
 public class QidianInternalInfo
-  extends Entity
+  extends awge
 {
   public byte[] infoByte;
   public String mobile = "";
-  @unique
+  @awhs
   public String uin = "";
   
   public void from(mobileqq_qidian.InternalInfo paramInternalInfo)
@@ -47,7 +47,7 @@ public class QidianInternalInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qidian.data.QidianInternalInfo
  * JD-Core Version:    0.7.0.1
  */

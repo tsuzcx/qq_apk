@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.OnErrorListener;
-
 public class ahjf
-  implements GuideVideoView.OnErrorListener
 {
-  public ahjf(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public int a;
+  public int b;
   
-  public void a(String paramString)
+  public ahjf(int paramInt1, int paramInt2)
   {
-    EffectsCameraCaptureFragment.c(this.a);
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahjf
  * JD-Core Version:    0.7.0.1
  */

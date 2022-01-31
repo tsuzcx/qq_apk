@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class CheckUpdateReq
   extends JceStruct
 {
-  static ArrayList cache_vecReqPkg;
+  static ArrayList<ReqItem> cache_vecReqPkg;
   public boolean isSupportSubPack;
-  public ArrayList vecReqPkg;
+  public ArrayList<ReqItem> vecReqPkg;
   
   public CheckUpdateReq() {}
   
-  public CheckUpdateReq(ArrayList paramArrayList, boolean paramBoolean)
+  public CheckUpdateReq(ArrayList<ReqItem> paramArrayList, boolean paramBoolean)
   {
     this.vecReqPkg = paramArrayList;
     this.isSupportSubPack = paramBoolean;
@@ -40,7 +40,7 @@ public final class CheckUpdateReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     KQQ.CheckUpdateReq
  * JD-Core Version:    0.7.0.1
  */

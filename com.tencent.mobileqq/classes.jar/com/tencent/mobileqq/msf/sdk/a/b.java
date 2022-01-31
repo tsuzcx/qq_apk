@@ -3,11 +3,11 @@ package com.tencent.mobileqq.msf.sdk.a;
 class b
   implements Runnable
 {
-  b(a parama, int paramInt) {}
+  b(a parama, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    a.a(this.b, this.a);
+    a.a(this.c, this.a, this.b);
   }
 }
 

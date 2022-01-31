@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnNetVideoInfoListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class adsm
-  implements TVK_IMediaPlayer.OnNetVideoInfoListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public adsm(VideoBaseItem paramVideoBaseItem) {}
+  public adsm(QQSettingMe paramQQSettingMe) {}
   
-  public void onNetVideoInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, TVK_NetVideoInfo paramTVK_NetVideoInfo)
+  public void onGlobalLayout()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onNetVideoInfo what=" + paramTVK_NetVideoInfo.getErrInfo() + ",extra=" + paramTVK_NetVideoInfo.getState() + ",mCacheProgress=");
+    if (QQSettingMe.a(this.a)) {
+      QQSettingMe.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
   }
 }

@@ -1,17 +1,22 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.List;
 
-final class if
-  implements View.OnClickListener
+class if
+  implements dy
 {
-  if(FaceRecognitionComfirmActivity paramFaceRecognitionComfirmActivity) {}
+  if(FaceRegCameraActivity paramFaceRegCameraActivity) {}
   
-  public final void onClick(View paramView)
+  public void a()
   {
-    this.a.setResult(10);
-    this.a.finish();
+    FaceRegCameraActivity.access$400(this.a).a(this.a, FaceRegCameraActivity.access$1800(this.a), FaceRegCameraActivity.access$1600(this.a), FaceRegCameraActivity.access$500(this.a), FaceRegCameraActivity.access$600(this.a));
+    FaceRegCameraActivity.access$400(this.a).setVisibility(0);
+  }
+  
+  public void a(List paramList)
+  {
+    FaceRegCameraActivity.access$400(this.a).a(this.a, FaceRegCameraActivity.access$1800(this.a), FaceRegCameraActivity.access$1600(this.a), FaceRegCameraActivity.access$500(this.a), FaceRegCameraActivity.access$600(this.a));
+    FaceRegCameraActivity.access$400(this.a).setVisibility(0);
   }
 }
 

@@ -1,23 +1,43 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.26.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class rqx
-  implements Runnable
+  implements rrt
 {
-  public rqx(BaseChatPie paramBaseChatPie, ChatMessage paramChatMessage, SessionInfo paramSessionInfo) {}
+  rqx(rqj paramrqj) {}
   
-  public void run()
+  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a != null) && (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    rqj.d(this.a, false);
+    if (!rqj.c(this.a)) {
+      return;
+    }
+    rqj.a(this.a, false);
+    if ((this.a.a()) && (rqj.a(this.a) != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.video", 2, "onDrawFinish checkplayable!");
+      }
+      if (!rqj.a(this.a).b()) {
+        break label122;
+      }
+      rqj.a(this.a).postDelayed(new ReadInJoyBaseAdapter.26.1(this, paramReadInJoyBaseListView), 1200L);
+    }
+    for (;;)
+    {
+      rqj.a(this.a, this.a.a.getLastVisiblePosition() + 1, rqj.c());
+      return;
+      label122:
+      this.a.a(paramReadInJoyBaseListView, rqj.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rqx
  * JD-Core Version:    0.7.0.1
  */

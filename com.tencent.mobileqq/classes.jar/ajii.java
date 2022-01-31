@@ -1,18 +1,11 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteEvaluateViewHolder;
+import android.view.animation.Interpolator;
 
 public class ajii
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Interpolator
 {
-  public ajii(ReciteEvaluateViewHolder paramReciteEvaluateViewHolder, boolean paramBoolean) {}
-  
-  public void onGlobalLayout()
+  public float getInterpolation(float paramFloat)
   {
-    ReciteEvaluateViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteEvaluateViewHolder).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    ReciteEvaluateViewHolder.b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteEvaluateViewHolder).setVisibility(4);
-    ReciteEvaluateViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteEvaluateViewHolder, this.jdField_a_of_type_Boolean, ReciteEvaluateViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteEvaluateViewHolder), ReciteEvaluateViewHolder.c(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteEvaluateViewHolder));
+    return (float)(Math.pow(paramFloat - 1.0D, 3.0D) + 1.0D);
   }
 }
 

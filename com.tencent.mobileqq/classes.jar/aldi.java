@@ -1,48 +1,20 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.appcommon.AppClient;
-import com.tencent.open.downloadnew.DownloadConstants;
-import com.tencent.open.downloadnew.MyAppApi;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
-public final class aldi
-  implements Runnable
+public class aldi
+  implements DialogInterface.OnClickListener
 {
-  public aldi(String paramString1, String paramString2, Activity paramActivity, boolean paramBoolean) {}
+  public aldi(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (MyAppApi.a().b())
-    {
-      Bundle localBundle = new Bundle();
-      String str = DownloadConstants.jdField_a_of_type_JavaLangString;
-      if (this.jdField_a_of_type_JavaLangString == null) {}
-      for (localObject = "";; localObject = this.jdField_a_of_type_JavaLangString)
-      {
-        localBundle.putString(str, (String)localObject);
-        localBundle.putString(DownloadConstants.b, "");
-        localBundle.putString(DownloadConstants.c, "");
-        localBundle.putString(DownloadConstants.e, this.b);
-        localBundle.putInt(DownloadConstants.d, 0);
-        localBundle.putString(DownloadConstants.h, "ANDROIDQQ.SHARESOURCE");
-        ThreadManager.getSubThreadHandler().post(new aldj(this, localBundle));
-        return;
-      }
-    }
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putString("uin", "");
-    ((Bundle)localObject).putString("sid", "");
-    ((Bundle)localObject).putString("via", "ANDROIDQQ.SHARESOURCE");
-    ((Bundle)localObject).putBoolean("autoDownload", false);
-    ((Bundle)localObject).putString("packageName", this.b);
-    ((Bundle)localObject).putString("subpagetype", "SHARESOURCE");
-    AppClient.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 2462, (Bundle)localObject);
+    mww.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aldi
  * JD-Core Version:    0.7.0.1
  */

@@ -12,8 +12,8 @@ public final class OperateDownloadTaskRequest
   extends JceStruct
   implements Cloneable
 {
-  static IPCBaseParam a;
-  static Map<String, Long> b;
+  static IPCBaseParam cache_baseParam;
+  static Map<String, Long> cache_timePoint;
   public String actionFlag = "";
   public IPCBaseParam baseParam = null;
   public String opList = "";
@@ -26,10 +26,10 @@ public final class OperateDownloadTaskRequest
     if (!OperateDownloadTaskRequest.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
-      c = bool;
-      a = new IPCBaseParam();
-      b = new HashMap();
-      b.put("", Long.valueOf(0L));
+      $assertionsDisabled = bool;
+      cache_baseParam = new IPCBaseParam();
+      cache_timePoint = new HashMap();
+      cache_timePoint.put("", Long.valueOf(0L));
       return;
     }
   }
@@ -61,7 +61,7 @@ public final class OperateDownloadTaskRequest
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (c) {}
+      while ($assertionsDisabled) {}
       throw new AssertionError();
     }
     return localObject1;
@@ -151,11 +151,11 @@ public final class OperateDownloadTaskRequest
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.requestType = paramJceInputStream.read(this.requestType, 0, true);
-    this.baseParam = ((IPCBaseParam)paramJceInputStream.read(a, 1, true));
+    this.baseParam = ((IPCBaseParam)paramJceInputStream.read(cache_baseParam, 1, true));
     this.opList = paramJceInputStream.readString(2, false);
     this.actionFlag = paramJceInputStream.readString(3, false);
     this.verifyType = paramJceInputStream.readString(4, false);
-    this.timePoint = ((Map)paramJceInputStream.read(b, 5, false));
+    this.timePoint = ((Map)paramJceInputStream.read(cache_timePoint, 5, false));
   }
   
   public void setActionFlag(String paramString)
@@ -208,7 +208,7 @@ public final class OperateDownloadTaskRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.OperateDownloadTaskRequest
  * JD-Core Version:    0.7.0.1
  */

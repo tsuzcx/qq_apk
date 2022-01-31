@@ -2,7 +2,7 @@ package com.tencent.qbardemo;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.utils.s;
+import com.tencent.token.utils.w;
 
 class MainActivity$2
   implements View.OnClickListener
@@ -11,7 +11,7 @@ class MainActivity$2
   
   public void onClick(View paramView)
   {
-    s.b(this.this$0, this.this$0.getString(2131361987));
+    w.b(this.this$0, this.this$0.getString(2131231286));
   }
 }
 

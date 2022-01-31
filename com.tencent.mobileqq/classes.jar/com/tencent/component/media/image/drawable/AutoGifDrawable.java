@@ -9,18 +9,17 @@ import com.tencent.component.media.gif.NewGifDrawable;
 import com.tencent.component.media.gif.NewGifDrawable.GifPlayListener;
 import com.tencent.component.media.image.ImageLoader;
 import com.tencent.component.media.image.ImageLoader.Options;
-import pht;
-import phu;
+import com.tencent.component.media.image.ImageUrl;
 
 public class AutoGifDrawable
 {
-  private static String jdField_a_of_type_JavaLangString = "AutoGifDrawable";
-  Context jdField_a_of_type_AndroidContentContext;
-  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new pht(this);
-  public NewGifDrawable a;
-  public AutoGifDrawable.AutoGifCallback a;
-  public AutoGifDrawable.GifDownloadCallBackListener a;
-  phu jdField_a_of_type_Phu = new phu(this, null);
+  private static String TAG = "AutoGifDrawable";
+  AutoGifDrawable.AutoGifCallback autoGifCallback;
+  Context context;
+  AutoGifDrawable.GifDownloadCallBackListener gifDownloadCallBackListener;
+  AutoGifDrawable.GifDownloadListener gifDownloadListener = new AutoGifDrawable.GifDownloadListener(this, null);
+  private Drawable.Callback gifDrawableCallback = new AutoGifDrawable.1(this);
+  NewGifDrawable realDrawable;
   
   public static AutoGifDrawable newAutoGifDrawable()
   {
@@ -30,11 +29,11 @@ public class AutoGifDrawable
   public boolean draw(Canvas paramCanvas, int paramInt1, int paramInt2)
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable != null)
+    if (this.realDrawable != null)
     {
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.setBounds(0, 0, paramInt1, paramInt2);
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.draw(paramCanvas);
+      this.realDrawable.setCallback(this.gifDrawableCallback);
+      this.realDrawable.setBounds(0, 0, paramInt1, paramInt2);
+      this.realDrawable.draw(paramCanvas);
       bool = true;
     }
     return bool;
@@ -42,26 +41,55 @@ public class AutoGifDrawable
   
   public NewGifDrawable.GifPlayListener getGifPlayListener()
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable != null) {
-      return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.getGifPlayListener();
+    if (this.realDrawable != null) {
+      return this.realDrawable.getGifPlayListener();
     }
     return null;
   }
   
   public int getLoopCount()
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable != null) {
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.getLoopCount();
+    if (this.realDrawable != null) {
+      this.realDrawable.getLoopCount();
     }
     return 0;
   }
   
   public Drawable getRealDrawable()
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable != null) {
-      return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable;
+    if (this.realDrawable != null) {
+      return this.realDrawable;
     }
-    return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable;
+    return this.realDrawable;
+  }
+  
+  public void init(ImageUrl paramImageUrl, ImageLoader.Options paramOptions, Context paramContext, AutoGifDrawable.AutoGifCallback paramAutoGifCallback)
+  {
+    init(paramImageUrl, paramOptions, paramContext, paramAutoGifCallback, null);
+  }
+  
+  public void init(ImageUrl paramImageUrl, ImageLoader.Options paramOptions, Context paramContext, AutoGifDrawable.AutoGifCallback paramAutoGifCallback, AutoGifDrawable.GifDownloadCallBackListener paramGifDownloadCallBackListener)
+  {
+    if ((paramImageUrl == null) || (paramContext == null)) {}
+    do
+    {
+      do
+      {
+        return;
+        ImageLoader.Options localOptions = ImageLoader.Options.copy(paramOptions);
+        localOptions.needShowGifAnimation = true;
+        localOptions.isGifPlayWhileDownloading = ImageManagerEnv.g().isSupportGifPlaying();
+        localOptions.useMainThread = true;
+        localOptions.mImageType = 2;
+        this.context = paramContext;
+        this.autoGifCallback = paramAutoGifCallback;
+        this.gifDownloadCallBackListener = paramGifDownloadCallBackListener;
+        paramContext = ImageLoader.getInstance(paramContext).loadImage(paramImageUrl, paramImageUrl.url, this.gifDownloadListener, localOptions);
+      } while (!(paramContext instanceof NewGifDrawable));
+      this.realDrawable = ((NewGifDrawable)paramContext);
+      this.realDrawable.setCallback(this.gifDrawableCallback);
+    } while (paramGifDownloadCallBackListener == null);
+    paramGifDownloadCallBackListener.onImageLoaded(paramImageUrl.url, this.realDrawable, paramOptions);
   }
   
   public void init(String paramString, ImageLoader.Options paramOptions, Context paramContext, AutoGifDrawable.AutoGifCallback paramAutoGifCallback)
@@ -82,100 +110,100 @@ public class AutoGifDrawable
         localOptions.isGifPlayWhileDownloading = ImageManagerEnv.g().isSupportGifPlaying();
         localOptions.useMainThread = true;
         localOptions.mImageType = 2;
-        this.jdField_a_of_type_AndroidContentContext = paramContext;
-        this.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$AutoGifCallback = paramAutoGifCallback;
-        this.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$GifDownloadCallBackListener = paramGifDownloadCallBackListener;
-        paramContext = ImageLoader.getInstance(paramContext).loadImage(paramString, this.jdField_a_of_type_Phu, localOptions);
+        this.context = paramContext;
+        this.autoGifCallback = paramAutoGifCallback;
+        this.gifDownloadCallBackListener = paramGifDownloadCallBackListener;
+        paramContext = ImageLoader.getInstance(paramContext).loadImage(paramString, this.gifDownloadListener, localOptions);
       } while (!(paramContext instanceof NewGifDrawable));
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable = ((NewGifDrawable)paramContext);
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
+      this.realDrawable = ((NewGifDrawable)paramContext);
+      this.realDrawable.setCallback(this.gifDrawableCallback);
     } while (paramGifDownloadCallBackListener == null);
-    paramGifDownloadCallBackListener.onImageLoaded(paramString, this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable, paramOptions);
+    paramGifDownloadCallBackListener.onImageLoaded(paramString, this.realDrawable, paramOptions);
   }
   
   public boolean isRunning()
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable != null) {
-      return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.isRunning();
+    if (this.realDrawable != null) {
+      return this.realDrawable.isRunning();
     }
     return false;
   }
   
   public void recycled()
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable != null)
+    if (this.realDrawable != null)
     {
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.setGifPlayListener(null);
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.setVisible(false, false);
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.stop();
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable = null;
+      this.realDrawable.setGifPlayListener(null);
+      this.realDrawable.setVisible(false, false);
+      this.realDrawable.stop();
+      this.realDrawable = null;
     }
-    this.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$GifDownloadCallBackListener = null;
-    this.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$AutoGifCallback = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
+    this.gifDownloadCallBackListener = null;
+    this.autoGifCallback = null;
+    this.context = null;
   }
   
   public void reset()
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable != null) {
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.reset();
+    if (this.realDrawable != null) {
+      this.realDrawable.reset();
     }
   }
   
   public void restart()
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable != null) {
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.setVisible(true, true);
+    if (this.realDrawable != null) {
+      this.realDrawable.setVisible(true, true);
     }
   }
   
   public void setGifPlayListener(NewGifDrawable.GifPlayListener paramGifPlayListener)
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable != null) {
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.setGifPlayListener(paramGifPlayListener);
+    if (this.realDrawable != null) {
+      this.realDrawable.setGifPlayListener(paramGifPlayListener);
     }
   }
   
   public void setLoopCount(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable != null) {
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.setLoopCount(paramInt);
+    if (this.realDrawable != null) {
+      this.realDrawable.setLoopCount(paramInt);
     }
   }
   
   public void setLoopModel(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable != null) {
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.setCurrentModel(paramInt);
+    if (this.realDrawable != null) {
+      this.realDrawable.setCurrentModel(paramInt);
     }
   }
   
   public void setSpeed(float paramFloat)
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable != null) {
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.setSpeed(paramFloat);
+    if (this.realDrawable != null) {
+      this.realDrawable.setSpeed(paramFloat);
     }
   }
   
   public void start()
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable != null) {
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.setVisible(true, false);
+    if (this.realDrawable != null) {
+      this.realDrawable.setVisible(true, false);
     }
   }
   
   public void stop()
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable != null)
+    if (this.realDrawable != null)
     {
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.setVisible(false, false);
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.stop();
+      this.realDrawable.setVisible(false, false);
+      this.realDrawable.stop();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.drawable.AutoGifDrawable
  * JD-Core Version:    0.7.0.1
  */

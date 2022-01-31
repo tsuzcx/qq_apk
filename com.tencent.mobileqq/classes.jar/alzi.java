@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.widget.RandomCoverView;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
-public final class alzi
-  implements Runnable
+class alzi
+  implements FileFilter
 {
-  public alzi(RandomCoverView paramRandomCoverView, String paramString) {}
-  
-  public void run()
+  public boolean accept(File paramFile)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.getWidth(), this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.getHeight());
+    return Pattern.matches("cpu[0-9]+", paramFile.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alzi
  * JD-Core Version:    0.7.0.1
  */

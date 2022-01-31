@@ -1,20 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aczf
-  implements Runnable
+  extends aqbl
 {
-  public aczf(UniformDownloadMgr paramUniformDownloadMgr, String paramString, Bundle paramBundle) {}
+  public aczf(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileCardActivity", 2, String.format("ProfileCardExtendFriendView onUpdateCampusCertificateStatus isSuccess=%s scene=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
+    }
+    if ((paramBoolean) && (paramInt == 2)) {
+      this.a.a(0L, null, null, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aczf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.fragment.MineFragment;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adnh
-  implements ActionSheet.OnButtonClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adnh(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public adnh(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "showRecommendDialog confirm clicked!");
     }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-        this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      }
-      this.a.o();
-      return;
-      NearbyHybridFragment.a(this.a);
-      continue;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a() == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.b();
-      }
-      if ((NetworkUtil.d(BaseApplication.getContext())) && (!this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.isFinishing()))
-      {
-        MineFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.finish();
-      }
-      else
-      {
-        QQToast.a(BaseApplication.getContext(), 1, this.a.getString(2131433213), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getTitleBarHeight());
-      }
-    }
+    PhoneUnityBindInfoActivity.c(this.a);
+    azqs.b(this.a.app, "dc00898", "", "", "0X800A604", "0X800A604", 0, 0, "", "", "", "");
   }
 }
 

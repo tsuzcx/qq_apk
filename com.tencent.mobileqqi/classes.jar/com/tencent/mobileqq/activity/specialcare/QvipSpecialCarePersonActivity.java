@@ -24,11 +24,11 @@ import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
-import ewy;
-import ewz;
-import exa;
-import exb;
-import exc;
+import esk;
+import esl;
+import esm;
+import esn;
+import eso;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -48,12 +48,12 @@ public class QvipSpecialCarePersonActivity
   private QvipSpecialCareManager jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialCareManager = null;
   private QvipSpecialCarePersonActivity.SpecialCareAdapter jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialCarePersonActivity$SpecialCareAdapter;
   private QvipSpecialSoundManager jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager = null;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new exa(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new esm(this);
   private FriendsManagerImp jdField_a_of_type_ComTencentMobileqqAppFriendsManagerImp = null;
-  private QvipSpecialCareObserver jdField_a_of_type_ComTencentMobileqqAppQvipSpecialCareObserver = new exb(this);
+  private QvipSpecialCareObserver jdField_a_of_type_ComTencentMobileqqAppQvipSpecialCareObserver = new esn(this);
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = null;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new ewz(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new esl(this);
   private int b;
   
   private String a(String paramString)
@@ -77,15 +77,15 @@ public class QvipSpecialCarePersonActivity
     }
     if (paramInt2 <= 1)
     {
-      paramView.setBackgroundResource(2130837880);
+      paramView.setBackgroundResource(2130837882);
       return;
     }
     if (paramInt1 == 0)
     {
-      paramView.setBackgroundResource(2130837880);
+      paramView.setBackgroundResource(2130837882);
       return;
     }
-    paramView.setBackgroundResource(2130837879);
+    paramView.setBackgroundResource(2130837881);
   }
   
   private void a(String paramString, FormSimpleItem paramFormSimpleItem)
@@ -121,15 +121,15 @@ public class QvipSpecialCarePersonActivity
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131233452));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131233454));
     Object localObject = LayoutInflater.from(this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131232881);
-    View localView = ((LayoutInflater)localObject).inflate(2130903701, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131232884);
+    View localView = ((LayoutInflater)localObject).inflate(2130903703, this.jdField_a_of_type_ComTencentWidgetXListView, false);
     this.jdField_a_of_type_ComTencentWidgetXListView.a(localView);
-    localObject = ((LayoutInflater)localObject).inflate(2130903694, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    localObject = ((LayoutInflater)localObject).inflate(2130903696, this.jdField_a_of_type_ComTencentWidgetXListView, false);
     this.jdField_a_of_type_ComTencentWidgetXListView.b((View)localObject);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131233453).setOnClickListener(this);
-    ((View)localObject).findViewById(2131233451).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131233455).setOnClickListener(this);
+    ((View)localObject).findViewById(2131233453).setOnClickListener(this);
   }
   
   private void f()
@@ -143,13 +143,13 @@ public class QvipSpecialCarePersonActivity
       g();
     }
     this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialCarePersonActivity$SpecialCareAdapter = new QvipSpecialCarePersonActivity.SpecialCareAdapter(this);
-    this.jdField_b_of_type_Int = ((int)getResources().getDimension(2131427611));
+    this.jdField_b_of_type_Int = ((int)getResources().getDimension(2131427614));
   }
   
   private void g()
   {
     d();
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(new ewy(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(new esk(this));
   }
   
   @SuppressLint({"NewApi"})
@@ -210,9 +210,9 @@ public class QvipSpecialCarePersonActivity
         Object localObject = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt1);
         if (localObject != null)
         {
-          localObject = (exc)((View)localObject).getTag();
-          if ((localObject != null) && (((exc)localObject).jdField_a_of_type_JavaLangString.endsWith(paramString)) && (((exc)localObject).jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem != null) && (paramBitmap != null)) {
-            ((exc)localObject).jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setLeftIcon(new BitmapDrawable(paramBitmap), this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
+          localObject = (eso)((View)localObject).getTag();
+          if ((localObject != null) && (((eso)localObject).jdField_a_of_type_JavaLangString.endsWith(paramString)) && (((eso)localObject).jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem != null) && (paramBitmap != null)) {
+            ((eso)localObject).jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setLeftIcon(new BitmapDrawable(paramBitmap), this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
           }
         }
       }
@@ -227,7 +227,7 @@ public class QvipSpecialCarePersonActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903695);
+    setContentView(2130903697);
     setTitle(2131561776);
     d();
     f();
@@ -286,7 +286,7 @@ public class QvipSpecialCarePersonActivity
       paramView.b(2131559929);
       paramView.a();
       return;
-      paramView = (exc)paramView.getTag();
+      paramView = (eso)paramView.getTag();
     } while (paramView == null);
     a(paramView.jdField_a_of_type_JavaLangString, paramView.b);
   }

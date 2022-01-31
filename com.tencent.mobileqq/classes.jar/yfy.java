@@ -1,49 +1,47 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qzonestatus.QzoneContactsFeedManager;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetCommentListRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Map;
 
-public class yfy
-  implements OverScrollViewListener
+class yfy
+  implements zac<CertifiedAccountRead.StGetCommentListRsp>
 {
-  public yfy(SpecailCareListActivity paramSpecailCareListActivity) {}
+  yfy(yfp paramyfp, CertifiedAccountMeta.StFeed paramStFeed, String paramString) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetCommentListRsp paramStGetCommentListRsp)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
-    if (NetworkUtil.d(this.a))
+    yfp.a(this.jdField_a_of_type_Yfp, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get(), true);
+    if (paramStGetCommentListRsp == null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(true);
-      this.a.jdField_a_of_type_Boolean = true;
-      ((QzoneContactsFeedManager)this.a.app.getManager(90)).a();
-      return true;
+      QLog.d(yfp.a(), 1, "getCommentSize: rsp is null");
+      return;
     }
-    paramView = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(2000, 0, 0);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramView, 1000L);
-    return true;
+    if (yfp.a(this.jdField_a_of_type_Yfp).get(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get()) != null)
+    {
+      QLog.d(yfp.a(), 2, "getCommentSize:" + paramStGetCommentListRsp.vecComment.size() + ", attachInfo:" + paramStGetCommentListRsp.extInfo.attachInfo.get() + "isFinish：" + paramStGetCommentListRsp.isFinish.get());
+      ((ArrayList)yfp.a(this.jdField_a_of_type_Yfp).get(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get())).addAll(this.jdField_a_of_type_Yfp.a(paramStGetCommentListRsp.vecComment.get(), this.jdField_a_of_type_JavaLangString));
+    }
+    yfp localyfp = this.jdField_a_of_type_Yfp;
+    String str = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get();
+    COMM.StCommonExt localStCommonExt = paramStGetCommentListRsp.extInfo;
+    if (paramStGetCommentListRsp.isFinish.get() == 0) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      yfp.a(localyfp, str, localStCommonExt, paramBoolean, true);
+      umc.a().dispatch(this.jdField_a_of_type_Yfp.a(new Object[] { Integer.valueOf(9), Long.valueOf(paramLong), paramString, paramStGetCommentListRsp, Integer.valueOf(this.jdField_a_of_type_Yfp.hashCode()), this.jdField_a_of_type_JavaLangString }));
+      return;
+    }
   }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yfy
  * JD-Core Version:    0.7.0.1
  */

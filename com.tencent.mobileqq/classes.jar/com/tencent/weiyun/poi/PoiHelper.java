@@ -76,8 +76,6 @@ final class PoiHelper
     double d3 = ((PoiItem)localObject).latitude;
     localObject = paramList.iterator();
     PoiItem localPoiItem;
-    double d6;
-    double d7;
     while (((Iterator)localObject).hasNext())
     {
       localPoiItem = (PoiItem)((Iterator)localObject).next();
@@ -85,82 +83,70 @@ final class PoiHelper
       if (localPoiItem.longitude < d2) {
         d5 = localPoiItem.longitude;
       }
-      d6 = d4;
+      double d6 = d4;
       if (localPoiItem.longitude > d4) {
         d6 = localPoiItem.longitude;
       }
-      d7 = d1;
+      double d7 = d1;
       if (localPoiItem.latitude < d1) {
         d7 = localPoiItem.latitude;
       }
-      d2 = d5;
-      d4 = d6;
       d1 = d7;
+      d4 = d6;
+      d2 = d5;
       if (localPoiItem.latitude > d3)
       {
         d3 = localPoiItem.latitude;
-        d2 = d5;
-        d4 = d6;
         d1 = d7;
+        d4 = d6;
+        d2 = d5;
       }
     }
     int i = 1;
     double d5 = d1;
+    d1 = d2;
+    label227:
     if (i != 0)
     {
-      localObject = singleQuery(localPoiDbWrapper, d2, d4, d5, d3);
-      int j;
-      if ((localObject == null) || (((List)localObject).size() < 200))
-      {
-        j = 0;
-        d7 = d5;
-        d6 = d2;
-      }
-      for (;;)
-      {
-        d2 = d6;
-        d5 = d7;
-        i = j;
-        if (localObject == null) {
-          break;
-        }
-        d2 = d6;
-        d5 = d7;
-        i = j;
-        if (((List)localObject).isEmpty()) {
-          break;
-        }
-        ((List)localObject).retainAll(paramList);
-        localArrayList.addAll((Collection)localObject);
-        paramList.removeAll((Collection)localObject);
-        d2 = d6;
-        d5 = d7;
-        i = j;
-        if (!paramList.isEmpty()) {
-          break;
-        }
+      localObject = singleQuery(localPoiDbWrapper, d1, d4, d5, d3);
+      if ((localObject == null) || (((List)localObject).size() < 200)) {
         i = 0;
-        d2 = d6;
-        d5 = d7;
-        break;
-        localPoiItem = (PoiItem)((List)localObject).get(((List)localObject).size() - 1);
-        d1 = d2;
-        if (localPoiItem.longitude > d2) {
-          d1 = localPoiItem.longitude;
-        }
-        d6 = d1;
-        d7 = d5;
-        j = i;
-        if (localPoiItem.longitude == d4)
-        {
-          d7 = localPoiItem.latitude;
-          d6 = d1;
-          j = i;
-        }
       }
     }
-    PoiDbManager.getInstance().closePoiDb(localPoiDbWrapper);
-    return localArrayList;
+    for (;;)
+    {
+      int j = i;
+      if (localObject != null)
+      {
+        j = i;
+        if (!((List)localObject).isEmpty())
+        {
+          ((List)localObject).retainAll(paramList);
+          localArrayList.addAll((Collection)localObject);
+          paramList.removeAll((Collection)localObject);
+          j = i;
+          if (paramList.isEmpty()) {
+            j = 0;
+          }
+        }
+      }
+      i = j;
+      break label227;
+      localPoiItem = (PoiItem)((List)localObject).get(((List)localObject).size() - 1);
+      d2 = d1;
+      if (localPoiItem.longitude > d1) {
+        d2 = localPoiItem.longitude;
+      }
+      if (localPoiItem.longitude == d4)
+      {
+        d5 = localPoiItem.latitude;
+        d1 = d2;
+        continue;
+        PoiDbManager.getInstance().closePoiDb(localPoiDbWrapper);
+        break;
+      }
+      d1 = d2;
+    }
   }
   
   /* Error */
@@ -182,326 +168,327 @@ final class PoiHelper
     //   26: invokestatic 86	com/tencent/weiyun/utils/WyLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   29: aload_3
     //   30: areturn
-    //   31: aconst_null
-    //   32: astore_1
-    //   33: aconst_null
-    //   34: astore_0
-    //   35: aload 4
-    //   37: ldc 161
-    //   39: getstatic 24	com/tencent/weiyun/poi/PoiHelper:PROJ_KEY	[Ljava/lang/String;
+    //   31: aload 4
+    //   33: ldc 161
+    //   35: getstatic 24	com/tencent/weiyun/poi/PoiHelper:PROJ_KEY	[Ljava/lang/String;
+    //   38: aconst_null
+    //   39: aconst_null
+    //   40: aconst_null
+    //   41: aconst_null
     //   42: aconst_null
-    //   43: aconst_null
-    //   44: aconst_null
-    //   45: aconst_null
-    //   46: aconst_null
-    //   47: invokevirtual 220	com/tencent/weiyun/poi/PoiDbWrapper:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   50: astore_2
-    //   51: aload_2
-    //   52: ifnull +68 -> 120
-    //   55: aload_2
-    //   56: astore_0
-    //   57: aload_2
-    //   58: astore_1
-    //   59: aload_2
-    //   60: invokeinterface 225 1 0
-    //   65: ifeq +55 -> 120
-    //   68: aload_2
-    //   69: astore_0
-    //   70: aload_2
-    //   71: astore_1
-    //   72: aload_3
-    //   73: aload_2
-    //   74: iconst_0
-    //   75: invokeinterface 229 2 0
-    //   80: aload_2
-    //   81: iconst_1
-    //   82: invokeinterface 229 2 0
-    //   87: invokestatic 231	com/tencent/weiyun/poi/PoiHelper:generateKey	(DD)Ljava/lang/String;
-    //   90: invokevirtual 235	java/util/HashSet:add	(Ljava/lang/Object;)Z
-    //   93: pop
-    //   94: goto -39 -> 55
-    //   97: astore_2
-    //   98: aload_0
-    //   99: astore_1
-    //   100: ldc 14
-    //   102: aload_2
-    //   103: invokestatic 238	com/tencent/weiyun/utils/WyLog:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   106: aload_0
-    //   107: invokestatic 244	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   110: invokestatic 74	com/tencent/weiyun/poi/PoiDbManager:getInstance	()Lcom/tencent/weiyun/poi/PoiDbManager;
-    //   113: aload 4
-    //   115: invokevirtual 175	com/tencent/weiyun/poi/PoiDbManager:closePoiDb	(Lcom/tencent/weiyun/poi/PoiDbWrapper;)V
-    //   118: aload_3
-    //   119: areturn
-    //   120: aload_2
-    //   121: invokestatic 244	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   124: goto -14 -> 110
-    //   127: astore_0
-    //   128: aload_1
-    //   129: invokestatic 244	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   132: aload_0
-    //   133: athrow
+    //   43: invokevirtual 220	com/tencent/weiyun/poi/PoiDbWrapper:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   46: astore_1
+    //   47: aload_1
+    //   48: ifnull +64 -> 112
+    //   51: aload_1
+    //   52: astore_0
+    //   53: aload_1
+    //   54: invokeinterface 225 1 0
+    //   59: ifeq +53 -> 112
+    //   62: aload_1
+    //   63: astore_0
+    //   64: aload_3
+    //   65: aload_1
+    //   66: iconst_0
+    //   67: invokeinterface 229 2 0
+    //   72: aload_1
+    //   73: iconst_1
+    //   74: invokeinterface 229 2 0
+    //   79: invokestatic 231	com/tencent/weiyun/poi/PoiHelper:generateKey	(DD)Ljava/lang/String;
+    //   82: invokevirtual 235	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   85: pop
+    //   86: goto -35 -> 51
+    //   89: astore_2
+    //   90: aload_1
+    //   91: astore_0
+    //   92: ldc 14
+    //   94: aload_2
+    //   95: invokestatic 238	com/tencent/weiyun/utils/WyLog:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   98: aload_1
+    //   99: invokestatic 244	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   102: invokestatic 74	com/tencent/weiyun/poi/PoiDbManager:getInstance	()Lcom/tencent/weiyun/poi/PoiDbManager;
+    //   105: aload 4
+    //   107: invokevirtual 175	com/tencent/weiyun/poi/PoiDbManager:closePoiDb	(Lcom/tencent/weiyun/poi/PoiDbWrapper;)V
+    //   110: aload_3
+    //   111: areturn
+    //   112: aload_1
+    //   113: invokestatic 244	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   116: goto -14 -> 102
+    //   119: astore_1
+    //   120: aconst_null
+    //   121: astore_0
+    //   122: aload_0
+    //   123: invokestatic 244	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   126: aload_1
+    //   127: athrow
+    //   128: astore_1
+    //   129: goto -7 -> 122
+    //   132: astore_2
+    //   133: aconst_null
+    //   134: astore_1
+    //   135: goto -45 -> 90
     // Local variable table:
     //   start	length	slot	name	signature
-    //   34	73	0	localObject1	Object
-    //   127	6	0	localObject2	Object
-    //   32	97	1	localObject3	Object
-    //   50	31	2	localCursor	android.database.Cursor
-    //   97	24	2	localThrowable	java.lang.Throwable
-    //   7	112	3	localHashSet	java.util.HashSet
-    //   15	99	4	localPoiDbWrapper	PoiDbWrapper
+    //   52	71	0	localCursor1	android.database.Cursor
+    //   46	67	1	localCursor2	android.database.Cursor
+    //   119	8	1	localObject1	Object
+    //   128	1	1	localObject2	Object
+    //   134	1	1	localObject3	Object
+    //   89	6	2	localThrowable1	java.lang.Throwable
+    //   132	1	2	localThrowable2	java.lang.Throwable
+    //   7	104	3	localHashSet	java.util.HashSet
+    //   15	91	4	localPoiDbWrapper	PoiDbWrapper
     // Exception table:
     //   from	to	target	type
-    //   35	51	97	java/lang/Throwable
-    //   59	68	97	java/lang/Throwable
-    //   72	94	97	java/lang/Throwable
-    //   35	51	127	finally
-    //   59	68	127	finally
-    //   72	94	127	finally
-    //   100	106	127	finally
+    //   53	62	89	java/lang/Throwable
+    //   64	86	89	java/lang/Throwable
+    //   31	47	119	finally
+    //   53	62	128	finally
+    //   64	86	128	finally
+    //   92	98	128	finally
+    //   31	47	132	java/lang/Throwable
   }
   
   /* Error */
   private static List<PoiItem> singleQuery(PoiDbWrapper paramPoiDbWrapper, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 11
-    //   3: aconst_null
-    //   4: astore 12
-    //   6: new 48	java/lang/StringBuilder
-    //   9: dup
-    //   10: invokespecial 49	java/lang/StringBuilder:<init>	()V
-    //   13: ldc 20
-    //   15: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   18: ldc 250
-    //   20: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: ldc 22
-    //   25: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   28: ldc 252
-    //   30: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   33: astore 21
-    //   35: dload_1
+    //   0: new 48	java/lang/StringBuilder
+    //   3: dup
+    //   4: invokespecial 49	java/lang/StringBuilder:<init>	()V
+    //   7: ldc 20
+    //   9: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12: ldc 250
+    //   14: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   17: ldc 22
+    //   19: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   22: ldc 252
+    //   24: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: astore 15
+    //   29: dload_1
+    //   30: invokestatic 255	java/lang/Double:toString	(D)Ljava/lang/String;
+    //   33: astore 9
+    //   35: dload_3
     //   36: invokestatic 255	java/lang/Double:toString	(D)Ljava/lang/String;
-    //   39: astore 15
-    //   41: dload_3
-    //   42: invokestatic 255	java/lang/Double:toString	(D)Ljava/lang/String;
-    //   45: astore 16
-    //   47: dload 5
-    //   49: invokestatic 255	java/lang/Double:toString	(D)Ljava/lang/String;
-    //   52: astore 17
-    //   54: dload 7
-    //   56: invokestatic 255	java/lang/Double:toString	(D)Ljava/lang/String;
-    //   59: astore 18
-    //   61: new 48	java/lang/StringBuilder
-    //   64: dup
-    //   65: invokespecial 49	java/lang/StringBuilder:<init>	()V
-    //   68: ldc 20
-    //   70: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: bipush 44
-    //   75: invokevirtual 56	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   78: ldc 22
+    //   39: astore 10
+    //   41: dload 5
+    //   43: invokestatic 255	java/lang/Double:toString	(D)Ljava/lang/String;
+    //   46: astore 11
+    //   48: dload 7
+    //   50: invokestatic 255	java/lang/Double:toString	(D)Ljava/lang/String;
+    //   53: astore 12
+    //   55: new 48	java/lang/StringBuilder
+    //   58: dup
+    //   59: invokespecial 49	java/lang/StringBuilder:<init>	()V
+    //   62: ldc 20
+    //   64: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: bipush 44
+    //   69: invokevirtual 56	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   72: ldc 22
+    //   74: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: ldc_w 257
     //   80: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   83: ldc_w 257
-    //   86: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: sipush 200
-    //   92: invokevirtual 260	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   95: astore 20
-    //   97: aconst_null
-    //   98: astore 14
-    //   100: aconst_null
-    //   101: astore 13
-    //   103: aload 13
-    //   105: astore 9
-    //   107: aload 14
-    //   109: astore 10
-    //   111: getstatic 40	com/tencent/weiyun/poi/PoiHelper:PROJ_ALL	[Ljava/lang/String;
-    //   114: astore 19
-    //   116: aload 13
-    //   118: astore 9
-    //   120: aload 14
-    //   122: astore 10
-    //   124: aload 21
-    //   126: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   129: astore 21
-    //   131: aload 13
-    //   133: astore 9
-    //   135: aload 14
-    //   137: astore 10
-    //   139: aload 20
-    //   141: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   144: astore 20
-    //   146: aload 13
-    //   148: astore 9
-    //   150: aload 14
-    //   152: astore 10
-    //   154: aload_0
-    //   155: ldc 161
-    //   157: aload 19
-    //   159: aload 21
-    //   161: iconst_4
-    //   162: anewarray 18	java/lang/String
-    //   165: dup
-    //   166: iconst_0
-    //   167: aload 15
-    //   169: aastore
-    //   170: dup
-    //   171: iconst_1
-    //   172: aload 16
-    //   174: aastore
-    //   175: dup
-    //   176: iconst_2
-    //   177: aload 17
-    //   179: aastore
-    //   180: dup
-    //   181: iconst_3
-    //   182: aload 18
-    //   184: aastore
-    //   185: aconst_null
-    //   186: aconst_null
-    //   187: aload 20
-    //   189: invokevirtual 220	com/tencent/weiyun/poi/PoiDbWrapper:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   192: astore_0
-    //   193: aload 11
-    //   195: astore 9
+    //   83: sipush 200
+    //   86: invokevirtual 260	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   89: astore 14
+    //   91: getstatic 40	com/tencent/weiyun/poi/PoiHelper:PROJ_ALL	[Ljava/lang/String;
+    //   94: astore 13
+    //   96: aload 15
+    //   98: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   101: astore 15
+    //   103: aload 14
+    //   105: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   108: astore 14
+    //   110: aload_0
+    //   111: ldc 161
+    //   113: aload 13
+    //   115: aload 15
+    //   117: iconst_4
+    //   118: anewarray 18	java/lang/String
+    //   121: dup
+    //   122: iconst_0
+    //   123: aload 9
+    //   125: aastore
+    //   126: dup
+    //   127: iconst_1
+    //   128: aload 10
+    //   130: aastore
+    //   131: dup
+    //   132: iconst_2
+    //   133: aload 11
+    //   135: aastore
+    //   136: dup
+    //   137: iconst_3
+    //   138: aload 12
+    //   140: aastore
+    //   141: aconst_null
+    //   142: aconst_null
+    //   143: aload 14
+    //   145: invokevirtual 220	com/tencent/weiyun/poi/PoiDbWrapper:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   148: astore_0
+    //   149: aload_0
+    //   150: ifnull +202 -> 352
+    //   153: aload_0
+    //   154: astore 9
+    //   156: new 181	java/util/ArrayList
+    //   159: dup
+    //   160: aload_0
+    //   161: invokeinterface 263 1 0
+    //   166: invokespecial 266	java/util/ArrayList:<init>	(I)V
+    //   169: astore 10
+    //   171: aload 10
+    //   173: astore 11
+    //   175: aload_0
+    //   176: astore 9
+    //   178: aload_0
+    //   179: invokeinterface 225 1 0
+    //   184: ifeq +171 -> 355
+    //   187: aload_0
+    //   188: astore 9
+    //   190: aload_0
+    //   191: iconst_0
+    //   192: invokeinterface 229 2 0
     //   197: aload_0
-    //   198: ifnull +175 -> 373
-    //   201: aload_0
-    //   202: astore 9
-    //   204: aload_0
-    //   205: astore 10
-    //   207: new 181	java/util/ArrayList
-    //   210: dup
-    //   211: aload_0
-    //   212: invokeinterface 263 1 0
-    //   217: invokespecial 266	java/util/ArrayList:<init>	(I)V
-    //   220: astore 11
-    //   222: aload_0
-    //   223: invokeinterface 225 1 0
-    //   228: ifeq +141 -> 369
-    //   231: aload_0
-    //   232: iconst_0
-    //   233: invokeinterface 229 2 0
-    //   238: aload_0
-    //   239: iconst_1
-    //   240: invokeinterface 229 2 0
-    //   245: invokestatic 270	com/tencent/weiyun/data/PoiItem:createGpsInfo	(DD)Lcom/tencent/weiyun/data/PoiItem;
-    //   248: astore 9
-    //   250: aload 9
-    //   252: aload_0
-    //   253: iconst_2
-    //   254: invokeinterface 274 2 0
-    //   259: putfield 138	com/tencent/weiyun/data/PoiItem:nationType	I
-    //   262: aload 9
-    //   264: aload_0
-    //   265: iconst_3
-    //   266: invokeinterface 278 2 0
-    //   271: putfield 149	com/tencent/weiyun/data/PoiItem:nationName	Ljava/lang/String;
-    //   274: aload 9
-    //   276: aload_0
-    //   277: iconst_4
-    //   278: invokeinterface 274 2 0
-    //   283: putfield 154	com/tencent/weiyun/data/PoiItem:cityId	I
-    //   286: aload 9
-    //   288: aload_0
-    //   289: iconst_5
-    //   290: invokeinterface 278 2 0
-    //   295: putfield 157	com/tencent/weiyun/data/PoiItem:cityName	Ljava/lang/String;
-    //   298: aload 9
-    //   300: aload_0
-    //   301: bipush 6
-    //   303: invokeinterface 278 2 0
-    //   308: putfield 109	com/tencent/weiyun/data/PoiItem:poiId	Ljava/lang/String;
-    //   311: aload 9
-    //   313: aload_0
-    //   314: bipush 7
-    //   316: invokeinterface 278 2 0
-    //   321: putfield 117	com/tencent/weiyun/data/PoiItem:poiName	Ljava/lang/String;
-    //   324: aload 9
-    //   326: aload_0
-    //   327: bipush 8
-    //   329: invokeinterface 278 2 0
-    //   334: putfield 159	com/tencent/weiyun/data/PoiItem:address	Ljava/lang/String;
-    //   337: aload 11
-    //   339: aload 9
-    //   341: invokeinterface 279 2 0
-    //   346: pop
-    //   347: goto -125 -> 222
-    //   350: astore 10
-    //   352: aload_0
-    //   353: astore 9
-    //   355: ldc 14
-    //   357: aload 10
-    //   359: invokestatic 238	com/tencent/weiyun/utils/WyLog:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   362: aload_0
-    //   363: invokestatic 244	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   366: aload 11
-    //   368: areturn
-    //   369: aload 11
-    //   371: astore 9
-    //   373: aload_0
-    //   374: invokestatic 244	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   377: aload 9
-    //   379: areturn
-    //   380: astore 10
-    //   382: aload 9
-    //   384: astore_0
-    //   385: aload 10
-    //   387: astore 9
-    //   389: aload_0
-    //   390: invokestatic 244	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   393: aload 9
-    //   395: athrow
-    //   396: astore 9
-    //   398: goto -9 -> 389
-    //   401: astore 9
-    //   403: aload 10
-    //   405: astore_0
-    //   406: aload 9
-    //   408: astore 10
-    //   410: aload 12
-    //   412: astore 11
-    //   414: goto -62 -> 352
+    //   198: iconst_1
+    //   199: invokeinterface 229 2 0
+    //   204: invokestatic 270	com/tencent/weiyun/data/PoiItem:createGpsInfo	(DD)Lcom/tencent/weiyun/data/PoiItem;
+    //   207: astore 11
+    //   209: aload_0
+    //   210: astore 9
+    //   212: aload 11
+    //   214: aload_0
+    //   215: iconst_2
+    //   216: invokeinterface 274 2 0
+    //   221: putfield 138	com/tencent/weiyun/data/PoiItem:nationType	I
+    //   224: aload_0
+    //   225: astore 9
+    //   227: aload 11
+    //   229: aload_0
+    //   230: iconst_3
+    //   231: invokeinterface 278 2 0
+    //   236: putfield 149	com/tencent/weiyun/data/PoiItem:nationName	Ljava/lang/String;
+    //   239: aload_0
+    //   240: astore 9
+    //   242: aload 11
+    //   244: aload_0
+    //   245: iconst_4
+    //   246: invokeinterface 274 2 0
+    //   251: putfield 154	com/tencent/weiyun/data/PoiItem:cityId	I
+    //   254: aload_0
+    //   255: astore 9
+    //   257: aload 11
+    //   259: aload_0
+    //   260: iconst_5
+    //   261: invokeinterface 278 2 0
+    //   266: putfield 157	com/tencent/weiyun/data/PoiItem:cityName	Ljava/lang/String;
+    //   269: aload_0
+    //   270: astore 9
+    //   272: aload 11
+    //   274: aload_0
+    //   275: bipush 6
+    //   277: invokeinterface 278 2 0
+    //   282: putfield 109	com/tencent/weiyun/data/PoiItem:poiId	Ljava/lang/String;
+    //   285: aload_0
+    //   286: astore 9
+    //   288: aload 11
+    //   290: aload_0
+    //   291: bipush 7
+    //   293: invokeinterface 278 2 0
+    //   298: putfield 117	com/tencent/weiyun/data/PoiItem:poiName	Ljava/lang/String;
+    //   301: aload_0
+    //   302: astore 9
+    //   304: aload 11
+    //   306: aload_0
+    //   307: bipush 8
+    //   309: invokeinterface 278 2 0
+    //   314: putfield 159	com/tencent/weiyun/data/PoiItem:address	Ljava/lang/String;
+    //   317: aload_0
+    //   318: astore 9
+    //   320: aload 10
+    //   322: aload 11
+    //   324: invokeinterface 279 2 0
+    //   329: pop
+    //   330: goto -159 -> 171
+    //   333: astore 11
+    //   335: aload_0
+    //   336: astore 9
+    //   338: ldc 14
+    //   340: aload 11
+    //   342: invokestatic 238	com/tencent/weiyun/utils/WyLog:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   345: aload_0
+    //   346: invokestatic 244	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   349: aload 10
+    //   351: areturn
+    //   352: aconst_null
+    //   353: astore 11
+    //   355: aload_0
+    //   356: invokestatic 244	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   359: aload 11
+    //   361: areturn
+    //   362: astore_0
+    //   363: aconst_null
+    //   364: astore 9
+    //   366: aload 9
+    //   368: invokestatic 244	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   371: aload_0
+    //   372: athrow
+    //   373: astore_0
+    //   374: goto -8 -> 366
+    //   377: astore 11
+    //   379: aconst_null
+    //   380: astore_0
+    //   381: aconst_null
+    //   382: astore 10
+    //   384: goto -49 -> 335
+    //   387: astore 11
+    //   389: aconst_null
+    //   390: astore 10
+    //   392: goto -57 -> 335
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	417	0	paramPoiDbWrapper	PoiDbWrapper
-    //   0	417	1	paramDouble1	double
-    //   0	417	3	paramDouble2	double
-    //   0	417	5	paramDouble3	double
-    //   0	417	7	paramDouble4	double
-    //   105	289	9	localObject1	Object
-    //   396	1	9	localObject2	Object
-    //   401	6	9	localThrowable1	java.lang.Throwable
-    //   109	97	10	localObject3	Object
-    //   350	8	10	localThrowable2	java.lang.Throwable
-    //   380	24	10	localObject4	Object
-    //   408	1	10	localThrowable3	java.lang.Throwable
-    //   1	412	11	localObject5	Object
-    //   4	407	12	localObject6	Object
-    //   101	46	13	localObject7	Object
-    //   98	53	14	localObject8	Object
-    //   39	129	15	str1	String
-    //   45	128	16	str2	String
-    //   52	126	17	str3	String
-    //   59	124	18	str4	String
-    //   114	44	19	arrayOfString	String[]
-    //   95	93	20	localObject9	Object
-    //   33	127	21	localObject10	Object
+    //   0	395	0	paramPoiDbWrapper	PoiDbWrapper
+    //   0	395	1	paramDouble1	double
+    //   0	395	3	paramDouble2	double
+    //   0	395	5	paramDouble3	double
+    //   0	395	7	paramDouble4	double
+    //   33	334	9	localObject1	Object
+    //   39	352	10	localObject2	Object
+    //   46	277	11	localObject3	Object
+    //   333	8	11	localThrowable1	java.lang.Throwable
+    //   353	7	11	localList	List<PoiItem>
+    //   377	1	11	localThrowable2	java.lang.Throwable
+    //   387	1	11	localThrowable3	java.lang.Throwable
+    //   53	86	12	str	String
+    //   94	20	13	arrayOfString	String[]
+    //   89	55	14	localObject4	Object
+    //   27	89	15	localObject5	Object
     // Exception table:
     //   from	to	target	type
-    //   222	347	350	java/lang/Throwable
-    //   111	116	380	finally
-    //   124	131	380	finally
-    //   139	146	380	finally
-    //   154	193	380	finally
-    //   207	222	380	finally
-    //   355	362	380	finally
-    //   222	347	396	finally
-    //   111	116	401	java/lang/Throwable
-    //   124	131	401	java/lang/Throwable
-    //   139	146	401	java/lang/Throwable
-    //   154	193	401	java/lang/Throwable
-    //   207	222	401	java/lang/Throwable
+    //   178	187	333	java/lang/Throwable
+    //   190	209	333	java/lang/Throwable
+    //   212	224	333	java/lang/Throwable
+    //   227	239	333	java/lang/Throwable
+    //   242	254	333	java/lang/Throwable
+    //   257	269	333	java/lang/Throwable
+    //   272	285	333	java/lang/Throwable
+    //   288	301	333	java/lang/Throwable
+    //   304	317	333	java/lang/Throwable
+    //   320	330	333	java/lang/Throwable
+    //   91	149	362	finally
+    //   156	171	373	finally
+    //   178	187	373	finally
+    //   190	209	373	finally
+    //   212	224	373	finally
+    //   227	239	373	finally
+    //   242	254	373	finally
+    //   257	269	373	finally
+    //   272	285	373	finally
+    //   288	301	373	finally
+    //   304	317	373	finally
+    //   320	330	373	finally
+    //   338	345	373	finally
+    //   91	149	377	java/lang/Throwable
+    //   156	171	387	java/lang/Throwable
   }
   
   public static int updatePoi(PoiItem paramPoiItem)
@@ -538,7 +525,7 @@ final class PoiHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.weiyun.poi.PoiHelper
  * JD-Core Version:    0.7.0.1
  */

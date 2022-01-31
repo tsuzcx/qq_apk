@@ -1,28 +1,28 @@
-import com.tencent.open.appcommon.js.BaseInterface;
-import com.tencent.smtt.sdk.WebView;
-import java.util.List;
-import java.util.TimerTask;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aldr
-  extends TimerTask
+  implements akrb
 {
-  public aldr(BaseInterface paramBaseInterface, WebView paramWebView, long paramLong) {}
+  public aldr(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseInterface.optLef <= 0)
+    if (this.a.a != null)
     {
-      cancel();
-      this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseInterface.firstIn = true;
-    }
-    if (this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseInterface.batchCallbackQueue.size() > 0) {
-      this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseInterface.batchCallback(this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_Long);
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGuestsStateActivity", 2, "apolloguestActivity stop loop");
+      }
+      this.a.a.getRenderImpl().a(0L);
     }
   }
+  
+  public void a(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aldr
  * JD-Core Version:    0.7.0.1
  */

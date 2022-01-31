@@ -1,23 +1,15 @@
-import com.tencent.mobileqq.data.EmoticonTab;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.persistence.EntityManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
 
 public class aehw
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aehw(EmoticonManager paramEmoticonManager, String paramString) {}
+  public aehw(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    EmoticonTab localEmoticonTab = (EmoticonTab)this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.a(EmoticonTab.class, this.jdField_a_of_type_JavaLangString);
-    if (localEmoticonTab != null) {}
-    for (localEmoticonTab.aioHave = true;; localEmoticonTab.aioHave = true)
-    {
-      EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, localEmoticonTab);
-      return;
-      localEmoticonTab = new EmoticonTab();
-      localEmoticonTab.epId = this.jdField_a_of_type_JavaLangString;
-    }
+    this.a.g();
   }
 }
 

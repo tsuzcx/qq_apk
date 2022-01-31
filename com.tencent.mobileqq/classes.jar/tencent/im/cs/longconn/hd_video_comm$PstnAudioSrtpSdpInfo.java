@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class hd_video_comm$PstnAudioSrtpSdpInfo
-  extends MessageMicro
+  extends MessageMicro<PstnAudioSrtpSdpInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_raw_key = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -28,7 +28,7 @@ public final class hd_video_comm$PstnAudioSrtpSdpInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.longconn.hd_video_comm.PstnAudioSrtpSdpInfo
  * JD-Core Version:    0.7.0.1
  */

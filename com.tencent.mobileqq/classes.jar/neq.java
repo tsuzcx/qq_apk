@@ -1,31 +1,43 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabStoryVideoPreloader;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.List;
-import java.util.Queue;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class neq
-  extends SimpleJob
+public final class neq
+  implements yrb
 {
-  public neq(MsgTabStoryVideoPreloader paramMsgTabStoryVideoPreloader, List paramList) {}
+  public neq(Activity paramActivity, boolean paramBoolean, String paramString) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void callback(Bundle paramBundle)
   {
-    paramJobContext = MsgTabStoryVideoPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader, this.jdField_a_of_type_JavaUtilList);
-    if ((!paramJobContext.isEmpty()) && (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.a()))
-    {
-      MsgTabStoryVideoPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader);
-      MsgTabStoryVideoPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader, paramJobContext);
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.b();
+    int i = paramBundle.getInt("currentFragment", -1);
+    if (QLog.isColorLevel()) {
+      QLog.i("SensorAPIJavaScript", 2, "isFromAio callback " + i);
     }
-    return null;
+    if (i == 2)
+    {
+      paramBundle = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
+      paramBundle.setFlags(67108864);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramBundle);
+      return;
+    }
+    if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    {
+      paramBundle = aepi.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
+      paramBundle.putExtra("uin", this.jdField_a_of_type_JavaLangString);
+      paramBundle.putExtra("uintype", 1);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramBundle);
+      return;
+    }
+    this.jdField_a_of_type_AndroidAppActivity.setResult(4660);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     neq
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.open.appcommon;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.base.LogUtility;
 import com.tencent.open.base.http.HttpCgiAsyncTask.Callback;
-import hon;
+import hkj;
 import java.util.concurrent.CountDownLatch;
 import org.json.JSONObject;
 
@@ -30,7 +30,7 @@ public class ResourceUpdater$CheckUpdateCallback
   public void a(JSONObject paramJSONObject)
   {
     LogUtility.a(ResourceUpdater.jdField_a_of_type_JavaLangString, "<checkUpdate> CheckUpdateCallback -> reponseCode OK. result = " + paramJSONObject);
-    ThreadManager.a(new hon(this, paramJSONObject));
+    ThreadManager.a(new hkj(this, paramJSONObject));
     Common.a(false);
   }
 }

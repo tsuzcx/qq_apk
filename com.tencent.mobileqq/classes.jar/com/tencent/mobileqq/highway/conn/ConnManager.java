@@ -6,6 +6,7 @@ import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.IHwManager;
 import com.tencent.mobileqq.highway.config.ConfigManager;
 import com.tencent.mobileqq.highway.config.HwNetSegConf;
+import com.tencent.mobileqq.highway.config.Ipv6Available;
 import com.tencent.mobileqq.highway.segment.HwRequest;
 import com.tencent.mobileqq.highway.segment.HwResponse;
 import com.tencent.mobileqq.highway.segment.RequestWorker;
@@ -23,13 +24,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
-import mqq.app.AppRuntime;
 
 public class ConnManager
   implements IHwManager, IConnectionListener
 {
-  public static boolean CONN_NUM_CUSTOM = false;
-  public static final int IO_TYPE_SYNC = 1;
   private static final int IP_TIMEOUT_FOR_HTTP_PATCH_MAX = 3;
   public static AtomicInteger connSeq = new AtomicInteger(1);
   private long _connStartTime = -1L;
@@ -58,53 +56,66 @@ public class ConnManager
   
   private void createNewConnectionIfNeed(int paramInt, boolean paramBoolean)
   {
-    try
-    {
-      int j = (int)this.engine.getCurrentConfig().curConnNum;
-      int i = j;
-      if (!paramBoolean)
+    int j;
+    for (int i = 1;; i = j) {
+      label262:
+      for (;;)
       {
-        i = j;
-        if (paramInt <= 1) {
-          i = 1;
-        }
-      }
-      j = i;
-      if (this.bUseHttpPatch.get()) {
-        j = i + 1;
-      }
-      synchronized (this.connections)
-      {
-        do
+        try
         {
-          if (this.connections.size() >= j) {
+          j = (int)this.engine.getCurrentConfig().curConnNum;
+          if ((paramBoolean) || (paramInt > 1)) {
             break;
           }
-          i = HwNetworkCenter.getInstance(this.engine.getAppContext()).getNetType();
-          if (i == 0)
-          {
-            BdhLogUtil.LogEvent("C", "CreateNewConnectionIfNeed : No network in networkCenter : ConnSize:" + this.connections.size() + " currentRequests:" + paramInt + " maxConnNum:" + j);
-            HwNetworkCenter.getInstance(this.engine.getAppContext()).updateNetInfo(this.engine.getAppContext());
-            this.engine.mRequestWorker.sendConnectRequest(5000L, false);
-            return;
+          if (!this.bUseHttpPatch.get()) {
+            break label262;
           }
-        } while (openNewConnection(i, false));
-        return;
+          i += 1;
+          synchronized (this.connections)
+          {
+            if (this.connections.size() < i)
+            {
+              j = HwNetworkCenter.getInstance(this.engine.getAppContext()).getNetType();
+              if (j == 0)
+              {
+                BdhLogUtil.LogEvent("C", "CreateNewConnectionIfNeed : No network in networkCenter : ConnSize:" + this.connections.size() + " currentRequests:" + paramInt + " maxConnNum:" + i);
+                HwNetworkCenter.getInstance(this.engine.getAppContext()).updateNetInfo(this.engine.getAppContext());
+                this.engine.mRequestWorker.sendConnectRequest(5000L, false);
+                return;
+              }
+              if (this.engine != null)
+              {
+                ConfigManager localConfigManager = ConfigManager.getInstance(this.engine.getAppContext(), this.engine);
+                if (localConfigManager != null)
+                {
+                  paramBoolean = localConfigManager.isIpv6On();
+                  BdhLogUtil.LogEvent("C", "createNewConnectionIfNeed, isIpv6 = " + paramBoolean);
+                  if (openNewConnection(j, false, paramBoolean)) {
+                    continue;
+                  }
+                }
+              }
+            }
+            else
+            {
+              return;
+            }
+          }
+          paramBoolean = false;
+        }
+        catch (Exception localException)
+        {
+          BdhLogUtil.LogException("C", "Create Conn Error.", localException);
+          return;
+        }
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      BdhLogUtil.LogException("C", "Create Conn Error.", localException);
     }
   }
   
-  private boolean openNewConnection(int paramInt, boolean paramBoolean)
+  private boolean openNewConnection(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    ??? = this.engine.getAppContext();
-    Object localObject2 = this.engine.app;
-    HwEngine localHwEngine = this.engine;
-    localObject2 = ConfigManager.getInstance((Context)???, (AppRuntime)localObject2, HwEngine.appId, this.engine.currentUin).getNextSrvAddr(this.engine.getAppContext(), this.engine.app, this.engine.currentUin);
+    EndPoint localEndPoint1 = ConfigManager.getInstance(this.engine.getAppContext(), this.engine).getNextSrvAddr(this.engine.getAppContext(), this.engine.app, this.engine.currentUin, paramBoolean2);
+    BdhLogUtil.LogEvent("C", "openNewConnection, isIpv6 = " + paramBoolean2 + ",ep = " + localEndPoint1.toString());
     if ((this.connectedConn <= 0) && (this._connStartTime == -1L)) {
       this._connStartTime = SystemClock.uptimeMillis();
     }
@@ -113,7 +124,7 @@ public class ConnManager
       synchronized (this.connections)
       {
         int i = this.connections.size();
-        if (localObject2 == null)
+        if (localEndPoint1 == null)
         {
           BdhLogUtil.LogEvent("C", "OpenNewConnection : ep is Null, connSize:" + i);
           if (i == 0) {
@@ -121,37 +132,37 @@ public class ConnManager
           }
           return false;
         }
-        this.lastEndPoint = ((EndPoint)localObject2);
-        reportChannelStart((EndPoint)localObject2);
-        if ((paramBoolean) || (((EndPoint)localObject2).protoType != 1)) {
-          break label275;
+        this.lastEndPoint = localEndPoint1;
+        reportChannelStart(localEndPoint1);
+        if ((paramBoolean1) || (localEndPoint1.protoType != 1)) {
+          break label295;
         }
         i = connSeq.incrementAndGet();
         if (paramInt == 1)
         {
           paramInt = 10000;
-          ??? = new TcpConnection(this, i, (EndPoint)localObject2, paramInt, 30000);
-          if (??? != null)
-          {
-            this.connections.put(Integer.valueOf(((IConnection)???).getConnId()), ???);
-            ((IConnection)???).setConnectListener(this);
-            ((IConnection)???).connect();
+          ??? = new TcpConnection(this, i, localEndPoint1, paramInt, 30000, paramBoolean2);
+          if ((??? == null) || (!((IConnection)???).connect())) {
+            break;
           }
+          ((IConnection)???).setConnectListener(this);
+          this.connections.put(Integer.valueOf(((IConnection)???).getConnId()), ???);
           return true;
         }
       }
       paramInt = 20000;
       continue;
-      label275:
-      HttpConnection localHttpConnection = new HttpConnection(this, connSeq.incrementAndGet(), localEndPoint);
+      label295:
+      HttpConnection localHttpConnection = new HttpConnection(this, connSeq.incrementAndGet(), localEndPoint2, paramBoolean2);
       ??? = localHttpConnection;
-      if (paramBoolean)
+      if (paramBoolean1)
       {
         this.iHttpPatchConnId = localHttpConnection.getConnId();
         BdhLogUtil.LogEvent("C", "OpenNewConnection For Http Patch : ID[" + this.iHttpPatchConnId + "]");
         ??? = localHttpConnection;
       }
     }
+    return false;
   }
   
   public long getConnCost()
@@ -201,13 +212,11 @@ public class ConnManager
   
   public void onConnect(boolean paramBoolean, int paramInt1, IConnection paramIConnection, EndPoint paramEndPoint, int paramInt2, ConnReportInfo paramConnReportInfo)
   {
-    Object localObject = null;
+    BdhLogUtil.LogEvent("C", "ConnManager.onConnect, isSuccess = " + paramBoolean + ", errno = " + paramInt2);
+    ConfigManager localConfigManager = null;
     Context localContext = this.engine.getAppContext();
-    if (localContext != null)
-    {
-      localObject = this.engine.app;
-      HwEngine localHwEngine = this.engine;
-      localObject = ConfigManager.getInstance(localContext, (AppRuntime)localObject, HwEngine.appId, this.engine.currentUin);
+    if (localContext != null) {
+      localConfigManager = ConfigManager.getInstance(localContext, this.engine);
     }
     if (paramBoolean)
     {
@@ -226,16 +235,19 @@ public class ConnManager
     }
     for (;;)
     {
-      if (localObject != null) {
-        ((ConfigManager)localObject).onSvrConnFinish(paramEndPoint, paramInt2);
+      if (localConfigManager != null) {
+        localConfigManager.onSvrConnFinish(paramEndPoint, paramInt2);
       }
       this.vConnErrCode = paramInt2;
       reportConnectResult(paramEndPoint, paramBoolean, paramInt2, paramConnReportInfo.connElapseTime);
       BdhLogUtil.LogEvent("C", "OnConnect :　connId:" + paramInt1 + " Size:" + this.connections.size() + " errno:" + paramInt2);
       return;
       this.connections.remove(Integer.valueOf(paramIConnection.getConnId()));
-      if (localObject != null) {
-        ((ConfigManager)localObject).onSrvAddrUnavailable(this.engine.getAppContext(), this.engine.app, this.engine.currentUin, paramEndPoint.host, paramInt2);
+      if (localConfigManager != null) {
+        localConfigManager.onSrvAddrUnavailable(this.engine.getAppContext(), this.engine.app, this.engine.currentUin, paramEndPoint.host, paramInt2, paramIConnection.isIpv6());
+      }
+      if ((paramIConnection.isIpv6()) && (localConfigManager != null)) {
+        localConfigManager.mIpv6Available.recordIpv6Unavailable(this.engine.getAppContext());
       }
       if (paramInt2 == 3) {
         this.engine.mRequestWorker.sendConnectRequest(5000L, false);
@@ -273,29 +285,70 @@ public class ConnManager
     }
   }
   
-  public void onHeartBreakResp(int paramInt, EndPoint paramEndPoint)
+  public void onHeartBreakResp(int paramInt, EndPoint paramEndPoint, boolean paramBoolean)
   {
-    BdhLogUtil.LogEvent("C", "onHeartBreakResp : connId:" + paramInt);
+    BdhLogUtil.LogEvent("C", "onHeartBreakResp : connId = " + paramInt + ", isUrgent = " + paramBoolean);
     paramEndPoint = (IConnection)this.connections.get(Integer.valueOf(paramInt));
     if (paramEndPoint != null)
     {
+      if (!paramBoolean) {
+        break label78;
+      }
       paramEndPoint.setUrgentFlag(false);
       this.heartBreaks.remove(Integer.valueOf(paramInt));
     }
+    label78:
+    ConfigManager localConfigManager;
+    do
+    {
+      return;
+      localConfigManager = ConfigManager.getInstance(this.engine.getAppContext(), this.engine);
+    } while ((!paramEndPoint.isIpv6()) || (localConfigManager == null));
+    localConfigManager.mIpv6Available.recordIpv6Available(this.engine.getAppContext());
+  }
+  
+  public void onHeartBreakTimeout(int paramInt)
+  {
+    BdhLogUtil.LogEvent("C", "onHeartBreakTimeout : connId:" + paramInt);
+    IConnection localIConnection = (IConnection)this.connections.get(Integer.valueOf(paramInt));
+    if (localIConnection != null)
+    {
+      ConfigManager localConfigManager = ConfigManager.getInstance(this.engine.getAppContext(), this.engine);
+      if ((localIConnection.isIpv6()) && (localConfigManager != null)) {
+        localConfigManager.mIpv6Available.recordIpv6Unavailable(this.engine.getAppContext());
+      }
+    }
+  }
+  
+  public void onIPV6IllegalUserErr(int paramInt)
+  {
+    Object localObject2 = (IConnection)this.connections.get(Integer.valueOf(paramInt));
+    if (localObject2 != null)
+    {
+      Object localObject1 = ((IConnection)localObject2).getEndPoint();
+      ((IConnection)localObject2).disConnect();
+      localObject2 = this.engine.getAppContext();
+      if ((localObject1 != null) && (localObject2 != null))
+      {
+        localObject1 = ConfigManager.getInstance((Context)localObject2, this.engine);
+        if (localObject1 != null) {
+          ((ConfigManager)localObject1).clearIpv6Cfg((Context)localObject2);
+        }
+      }
+    }
+    createNewConnectionIfNeed(1, false);
   }
   
   public void onInit() {}
   
-  public void onRecvInvalidData(EndPoint paramEndPoint)
+  public void onRecvInvalidData(EndPoint paramEndPoint, IConnection paramIConnection)
   {
     Context localContext = this.engine.getAppContext();
     if ((paramEndPoint != null) && (localContext != null))
     {
-      Object localObject = this.engine.app;
-      HwEngine localHwEngine = this.engine;
-      localObject = ConfigManager.getInstance(localContext, (AppRuntime)localObject, HwEngine.appId, this.engine.currentUin);
-      if (localObject != null) {
-        ((ConfigManager)localObject).onSrvAddrUnavailable(localContext, this.engine.app, this.engine.currentUin, paramEndPoint.host, 15);
+      ConfigManager localConfigManager = ConfigManager.getInstance(localContext, this.engine);
+      if (localConfigManager != null) {
+        localConfigManager.onSrvAddrUnavailable(localContext, this.engine.app, this.engine.currentUin, paramEndPoint.host, 15, paramIConnection.isIpv6());
       }
       BdhLogUtil.LogEvent("P", "receive the invalid data,start weak net probe! ip:" + paramEndPoint.host);
     }
@@ -305,47 +358,47 @@ public class ConnManager
   {
     BdhLogUtil.LogEvent("C", "onRequestTimeOut : connId:" + paramInt);
     IConnection localIConnection = (IConnection)this.connections.get(Integer.valueOf(paramInt));
-    EndPoint localEndPoint;
     if (localIConnection != null)
     {
-      localEndPoint = localIConnection.getEndPoint();
-      if (localIConnection.getProtoType() != 1) {
-        break label175;
+      ??? = localIConnection.getEndPoint();
+      if (localIConnection.getProtoType() == 1)
+      {
+        localIConnection.setUrgentFlag(true);
+        this.mIpTimeOutCounter.put(((EndPoint)???).host, ((EndPoint)???).host);
+        if ((this.bUseHttpPatch.compareAndSet(false, true)) && (this.mIpTimeOutCounter.size() >= 3))
+        {
+          this.mIpTimeOutCounter.clear();
+          paramInt = HwNetworkCenter.getInstance(this.engine.getAppContext()).getNetType();
+          BdhLogUtil.LogEvent("C", "onRequestTimeOut : About to create a http patch. netType:" + paramInt);
+          if (paramInt == 1)
+          {
+            paramInt = (int)this.engine.getCurrentConfig().curConnNum;
+            synchronized (this.connections)
+            {
+              if (this.connections.size() < paramInt) {
+                openNewConnection(1, true, localIConnection.isIpv6());
+              }
+              return;
+            }
+          }
+          this.bUseHttpPatch.set(false);
+        }
       }
-      localIConnection.setUrgentFlag(true);
-      this.mIpTimeOutCounter.put(localEndPoint.host, localEndPoint.host);
-      if ((this.bUseHttpPatch.compareAndSet(false, true)) && (this.mIpTimeOutCounter.size() >= 3))
+      else if (localObject1.getProtoType() == 2)
       {
         this.mIpTimeOutCounter.clear();
-        paramInt = HwNetworkCenter.getInstance(this.engine.getAppContext()).getNetType();
-        BdhLogUtil.LogEvent("C", "onRequestTimeOut : About to create a http patch. netType:" + paramInt);
-        if (paramInt != 1) {
-          break label166;
+        Object localObject3 = this.engine.getAppContext();
+        if ((??? != null) && (localObject3 != null))
+        {
+          localObject3 = ConfigManager.getInstance((Context)localObject3, this.engine);
+          if (localObject3 != null) {
+            ((ConfigManager)localObject3).onSrvAddrUnavailable(this.engine.getAppContext(), this.engine.app, this.engine.currentUin, ((EndPoint)???).host, 7, localObject1.isIpv6());
+          }
         }
-        openNewConnection(1, true);
+        localObject1.disConnect();
+        createNewConnectionIfNeed(1, false);
       }
     }
-    label166:
-    label175:
-    while (localIConnection.getProtoType() != 2)
-    {
-      return;
-      this.bUseHttpPatch.set(false);
-      return;
-    }
-    this.mIpTimeOutCounter.clear();
-    Object localObject = this.engine.getAppContext();
-    if ((localEndPoint != null) && (localObject != null))
-    {
-      AppRuntime localAppRuntime = this.engine.app;
-      HwEngine localHwEngine = this.engine;
-      localObject = ConfigManager.getInstance((Context)localObject, localAppRuntime, HwEngine.appId, this.engine.currentUin);
-      if (localObject != null) {
-        ((ConfigManager)localObject).onSrvAddrUnavailable(this.engine.getAppContext(), this.engine.app, this.engine.currentUin, localEndPoint.host, 7);
-      }
-    }
-    localIConnection.disConnect();
-    createNewConnectionIfNeed(1, false);
   }
   
   public void onRequestWriteTimeout(int paramInt)
@@ -360,19 +413,17 @@ public class ConnManager
   public void onUrgentHeartBreakTimeout(int paramInt)
   {
     BdhLogUtil.LogEvent("C", "onUrgentHeartBreakTimeout : connId:" + paramInt);
-    Object localObject = (IConnection)this.connections.get(Integer.valueOf(paramInt));
-    if (localObject != null)
+    IConnection localIConnection = (IConnection)this.connections.get(Integer.valueOf(paramInt));
+    if (localIConnection != null)
     {
-      EndPoint localEndPoint = ((IConnection)localObject).getEndPoint();
-      ((IConnection)localObject).disConnect();
-      localObject = this.engine.getAppContext();
+      EndPoint localEndPoint = localIConnection.getEndPoint();
+      localIConnection.disConnect();
+      Object localObject = this.engine.getAppContext();
       if ((localEndPoint != null) && (localObject != null))
       {
-        AppRuntime localAppRuntime = this.engine.app;
-        HwEngine localHwEngine = this.engine;
-        localObject = ConfigManager.getInstance((Context)localObject, localAppRuntime, HwEngine.appId, this.engine.currentUin);
+        localObject = ConfigManager.getInstance((Context)localObject, this.engine);
         if (localObject != null) {
-          ((ConfigManager)localObject).onSrvAddrUnavailable(this.engine.getAppContext(), this.engine.app, this.engine.currentUin, localEndPoint.host, 7);
+          ((ConfigManager)localObject).onSrvAddrUnavailable(this.engine.getAppContext(), this.engine.app, this.engine.currentUin, localEndPoint.host, 7, localIConnection.isIpv6());
         }
       }
     }
@@ -460,7 +511,7 @@ public class ConnManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.conn.ConnManager
  * JD-Core Version:    0.7.0.1
  */

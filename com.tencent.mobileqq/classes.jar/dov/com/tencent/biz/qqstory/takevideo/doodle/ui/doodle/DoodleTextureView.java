@@ -4,8 +4,9 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLSurfaceView.Renderer;
-import anzu;
-import anzv;
+import bmto;
+import bmus;
+import bmvp;
 import com.tencent.qphone.base.util.QLog;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -13,16 +14,15 @@ import javax.microedition.khronos.opengles.GL10;
 @TargetApi(14)
 public class DoodleTextureView
   extends GLTextureView
-  implements GLSurfaceView.Renderer, DoodleGLCallback
+  implements GLSurfaceView.Renderer, bmto
 {
-  public int a;
-  public DoodleOpController a;
-  public int b = 480;
+  int jdField_a_of_type_Int = 320;
+  bmus jdField_a_of_type_Bmus;
+  int b = 480;
   
   public DoodleTextureView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 320;
     super.setEGLContextClientVersion(2);
     super.setEGLConfigChooser(8, 8, 8, 8, 16, 0);
     super.setOpaque(false);
@@ -37,8 +37,8 @@ public class DoodleTextureView
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.c(paramInt);
+    if (this.jdField_a_of_type_Bmus != null) {
+      this.jdField_a_of_type_Bmus.c(paramInt);
     }
   }
   
@@ -52,13 +52,13 @@ public class DoodleTextureView
     if (QLog.isColorLevel()) {
       QLog.d("DoodleTextureView", 2, "onDestroy start");
     }
-    b(new anzv(this));
+    b(new DoodleTextureView.2(this));
   }
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.e();
+    if (this.jdField_a_of_type_Bmus != null) {
+      this.jdField_a_of_type_Bmus.e();
     }
   }
   
@@ -67,9 +67,9 @@ public class DoodleTextureView
   {
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController != null)
+    if (this.jdField_a_of_type_Bmus != null)
     {
-      paramGL10 = (PersonalityOperator)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.a(102);
+      paramGL10 = (bmvp)this.jdField_a_of_type_Bmus.a(102);
       if (paramGL10 != null) {
         paramGL10.a(paramInt1, paramInt2);
       }
@@ -78,8 +78,8 @@ public class DoodleTextureView
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.d();
+    if (this.jdField_a_of_type_Bmus != null) {
+      this.jdField_a_of_type_Bmus.d();
     }
   }
   
@@ -89,16 +89,16 @@ public class DoodleTextureView
     return true;
   }
   
-  public void setOpController(DoodleOpController paramDoodleOpController)
+  public void setOpController(bmus parambmus)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController = paramDoodleOpController;
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.a(this);
-    super.b(new anzu(this));
+    this.jdField_a_of_type_Bmus = parambmus;
+    this.jdField_a_of_type_Bmus.a(this);
+    super.b(new DoodleTextureView.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView
  * JD-Core Version:    0.7.0.1
  */

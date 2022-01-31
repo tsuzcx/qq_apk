@@ -1,46 +1,49 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import java.util.HashMap;
 
 public class rjz
-  extends CardObserver
 {
-  public rjz(AddRequestActivity paramAddRequestActivity) {}
+  public static int a;
+  public static int b = 1;
+  public static int c = 2;
+  public static int d = 3;
+  public static int e = 4;
+  public static int f = 1;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
   
-  protected void a(boolean paramBoolean, String paramString)
+  public rjz(int paramInt1, int paramInt2)
   {
-    if (!this.a.a.equals(paramString)) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.a.a(2130838750, this.a.getString(2131433470));
-      return;
-    }
-    this.a.a(2130838739, this.a.getString(2131433469));
+    this.m = paramInt1;
+    this.n = paramInt2;
   }
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  public HashMap<String, String> a()
   {
-    if ((ProfileActivity.e(AddRequestActivity.a(this.a))) && (paramBoolean) && ((paramObject instanceof Card)))
-    {
-      paramObject = (Card)paramObject;
-      if (Utils.a(paramObject.uin, this.a.a)) {
-        this.a.a(paramObject.strCampusName);
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.i("Q.systemmsg.AddRequestActivity", 4, String.format(Locale.getDefault(), "onGetCampusInfo [%s, %s]", new Object[] { Utils.b(paramObject.uin), Utils.b(paramObject.strCampusName) }));
-      }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_hitCount", String.valueOf(this.g));
+    localHashMap.put("param_notHitCount", String.valueOf(this.h));
+    localHashMap.put("param_triggerCount", String.valueOf(this.i));
+    localHashMap.put("param_triggerHitCount", String.valueOf(this.j));
+    localHashMap.put("param_distinctTriggerHitCount", String.valueOf(this.k));
+    localHashMap.put("param_realTriggerHitCount", String.valueOf(this.l));
+    localHashMap.put("param_sceneType", String.valueOf(this.m));
+    localHashMap.put("param_strategy", String.valueOf(this.n));
+    if (QLog.isColorLevel()) {
+      QLog.i("wgs", 2, "VideoPreloadReportData getReportMap " + localHashMap.toString());
     }
+    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rjz
  * JD-Core Version:    0.7.0.1
  */

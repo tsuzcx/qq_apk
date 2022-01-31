@@ -1,29 +1,47 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
-import mqq.app.MobileQQ;
+import android.content.DialogInterface.OnDismissListener;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import mqq.util.WeakReference;
 
 public class addi
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public addi(MPcFileModel paramMPcFileModel) {}
+  WeakReference<GeneralSettingActivity> a;
+  WeakReference<CompoundButton> b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public addi(GeneralSettingActivity paramGeneralSettingActivity, CompoundButton paramCompoundButton)
   {
-    this.a.c();
-    this.a.a.removeObserver(MPcFileModel.a(this.a));
-    Intent localIntent = new Intent(this.a.a.getApplication(), LiteActivity.class);
-    localIntent.addFlags(67108864);
-    this.a.a.getApplication().startActivity(localIntent);
-    paramDialogInterface.dismiss();
+    this.a = new WeakReference(paramGeneralSettingActivity);
+    this.b = new WeakReference(paramCompoundButton);
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    CompoundButton localCompoundButton = null;
+    if (this.a == null)
+    {
+      paramDialogInterface = null;
+      if (this.b != null) {
+        break label47;
+      }
+    }
+    for (;;)
+    {
+      if ((paramDialogInterface != null) && (localCompoundButton != null)) {
+        paramDialogInterface.a(localCompoundButton, false);
+      }
+      return;
+      paramDialogInterface = (GeneralSettingActivity)this.a.get();
+      break;
+      label47:
+      localCompoundButton = (CompoundButton)this.b.get();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     addi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,26 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.location.LocationDataManager;
-import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
-import com.tencent.util.LogUtil;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import java.util.List;
 
-public class aesr
+class aesr
   implements View.OnClickListener
 {
-  public aesr(SelectLocationFragment paramSelectLocationFragment) {}
+  aesr(aesk paramaesk) {}
   
   public void onClick(View paramView)
   {
-    LogUtil.d("SelectLocationFragment", "mNetworkErrorView onClick()");
-    if (SelectLocationFragment.a(this.a) == null)
-    {
-      LogUtil.d("SelectLocationFragment", "mNetworkErrorView getLocation()");
-      SelectLocationFragment.b(this.a);
-    }
-    while (SelectLocationFragment.a(this.a) == null) {
+    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.isEmpty())) {
       return;
     }
-    LogUtil.d("SelectLocationFragment", "mNetworkErrorView search()");
-    SelectLocationFragment.a(this.a).a(SelectLocationFragment.a(this.a));
+    TroopWithCommonFriendsFragment.a(this.a.jdField_a_of_type_JavaLangString);
+    TroopWithCommonFriendsFragment.a(paramView.getContext(), 2);
+    azqs.b(null, "dc00898", "", "", "0X800AD22", "0X800AD22", 0, 0, "0", "0", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aesr
  * JD-Core Version:    0.7.0.1
  */

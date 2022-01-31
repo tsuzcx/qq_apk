@@ -1,16 +1,25 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
-class ajov
-  implements Runnable
+public class ajov
+  implements DialogInterface.OnDismissListener
 {
-  ajov(ajou paramajou) {}
+  public ajov(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    int i = BaseApplicationImpl.sApplication.getResources().getDimensionPixelSize(2131558448);
-    QQToast.a(BaseApplicationImpl.sApplication, "转发成功", 0).b(i);
+    if (EditLocalVideoActivity.a(this.a) != null) {
+      EditLocalVideoActivity.a(this.a).setVisibility(0);
+    }
+    if (EditLocalVideoActivity.a(this.a) != null) {
+      EditLocalVideoActivity.a(this.a).setVisibility(0);
+    }
+    if ((EditLocalVideoActivity.a(this.a) != null) && (EditLocalVideoActivity.a(this.a) != 1)) {
+      EditLocalVideoActivity.a(this.a, false);
+    }
   }
 }
 

@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import com.tencent.mobileqq.activity.MainFragment;
 
-class adin
-  implements Runnable
+public class adin
+  implements bevw
 {
-  adin(adil paramadil, String paramString1, int paramInt, String paramString2) {}
+  public adin(MainFragment paramMainFragment) {}
   
-  public void run()
+  public void a()
   {
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Adil.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Adil.a);
+    MainFragment.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adin
  * JD-Core Version:    0.7.0.1
  */

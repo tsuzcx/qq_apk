@@ -1,26 +1,21 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.aio.qwallet.ScrollPlayer;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 
 public class xch
-  extends RecyclerView.OnScrollListener
+  implements vyl
 {
-  public xch(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public xch(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public boolean a(vyi paramvyi, int paramInt1, int paramInt2)
   {
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ScrollPlayer.a(bool);
-      return;
-    }
+    LocalVideoSelectActivity.a(this.a).a();
+    LocalVideoSelectActivity.a(this.a).a(true);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xch
  * JD-Core Version:    0.7.0.1
  */

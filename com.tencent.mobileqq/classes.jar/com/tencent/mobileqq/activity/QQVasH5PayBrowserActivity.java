@@ -3,6 +3,8 @@ package com.tencent.mobileqq.activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.manager.MonitorManager;
 
 public class QQVasH5PayBrowserActivity
   extends QQBrowserActivity
@@ -12,10 +14,14 @@ public class QQVasH5PayBrowserActivity
     this.a = QQVasH5PayBrowserActivity.QQVasH5PayBrowserFragment.class;
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_QQBrowserActivity", 2, "QQVasH5PayBrowserActivity doOnCreate: ");
+    }
     boolean bool = super.doOnCreate(paramBundle);
     overridePendingTransition(0, 0);
+    MonitorManager.a().a(1, 0, "会员：呼起透明支付Activity", "");
     return bool;
   }
   
@@ -34,14 +40,14 @@ public class QQVasH5PayBrowserActivity
   public boolean showPreview()
   {
     boolean bool = super.showPreview();
-    getWindow().setBackgroundDrawableResource(2131492924);
-    findViewById(2131363454).setBackgroundResource(2131492924);
+    getWindow().setBackgroundDrawableResource(2131167140);
+    findViewById(2131363457).setBackgroundResource(2131167140);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

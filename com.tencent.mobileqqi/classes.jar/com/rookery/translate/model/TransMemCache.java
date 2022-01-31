@@ -1,7 +1,7 @@
 package com.rookery.translate.model;
 
 import android.support.v4.util.LruCache;
-import bfy;
+import bgg;
 
 public class TransMemCache
   implements ICache
@@ -27,7 +27,7 @@ public class TransMemCache
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new bfy(this, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new bgg(this, this.jdField_a_of_type_Int);
   }
   
   public void a(String paramString)

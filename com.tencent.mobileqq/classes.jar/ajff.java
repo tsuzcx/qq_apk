@@ -1,18 +1,36 @@
-import android.content.Context;
-import android.widget.ScrollView;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
-
 public class ajff
-  extends ScrollView
 {
-  public ajff(TroopEnterEffectController paramTroopEnterEffectController, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public float a;
+  public int a;
+  public float b;
+  public int b;
+  public float c;
+  public int c;
+  public float d;
+  public float e;
+  public float f;
+  public float g;
+  public float h;
+  public float i;
+  public float j;
+  public float k;
   
-  public void setOverScrollMode(int paramInt)
+  public ajff(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, int paramInt1, int paramInt2)
   {
-    super.setOverScrollMode(2);
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_c_of_type_Float = paramFloat3;
+    this.f = paramFloat3;
+    this.d = paramFloat5;
+    this.h = paramFloat5;
+    this.e = paramFloat7;
+    this.j = paramFloat7;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.g = paramFloat4;
+    this.i = paramFloat6;
+    this.k = paramFloat8;
+    this.jdField_c_of_type_Int = paramInt2;
   }
 }
 

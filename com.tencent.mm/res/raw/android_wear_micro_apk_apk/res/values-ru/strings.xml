@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Включить</string>
+    <string name="b">Для работы приложения \"%1$s\" требуется включить сервисы Google Play.</string>
+    <string name="c">Включите сервисы Google Play</string>
+    <string name="d">Установить</string>
+    <string name="e">Для работы приложения \"%1$s\" требуется установить сервисы Google Play.</string>
+    <string name="f">Установите сервисы Google Play</string>
+    <string name="g">Ошибка сервисов Google Play</string>
+    <string name="h">Приложению \"%1$s\" не удается подключиться к сервисам Google Play. Повторите попытку.</string>
+    <string name="i">Для работы с приложением \"%1$s\" требуются сервисы Google Play. Они не поддерживаются на вашем устройстве.</string>
+    <string name="j">Обновить</string>
+    <string name="k">Чтобы запустить приложение \"%1$s\", обновите сервисы Google Play.</string>
+    <string name="l">Обновите сервисы Google Play</string>
+    <string name="m">Сервисы Google Play, необходимые для работы приложения \"%1$s\", в настоящий момент обновляются.</string>
+    <string name="n">Версия сервисов Google Play устарела. Они автоматически обновятся в ближайшее время.</string>
+    <string name="o">Открыть на телефоне</string>
+    <string name="p">Войти</string>
+    <string name="q">Войти через аккаунт Google</string>
+    <string name="r">>999</string>
+    <string name="s">WeChat</string>
+    <string name="t">Закрыть</string>
+    <string name="u">Ali</string>
+    <string name="v">Mr. Luo History</string>
+    <string name="w">Kiss</string>
+    <string name="x">Robot Six</string>
+    <string name="y">Этот стикер загружается...</string>
+    <string name="z">Отправить сердцебиение</string>
+    <string name="a0">Я измерил(а) сердцебиение с помощью часов:%d уд./мин.</string>
+    <string name="a1">Невозможно загрузить изображение</string>
+    <string name="a2">Не удалось загрузить источник. После перезагрузки WeChat на мобильном устройстве. Нажмите, чтобы повторить попытку.</string>
+    <string name="a3">Убедитесь, что мобильный телефон и часы сопряжены. В WeChat на мобильном выполнен вход. Нажмите, чтобы повторить попытку.</string>
+    <string name="a4">Не удалось войти в систему после перезагрузки WeChat на мобильном устройстве. Нажмите, чтобы повторить попытку.</string>
+    <string name="a5">￥%s</string>
+    <string name="a6">CNY</string>
+    <string name="a7">"Удачи в
+следующий раз"</string>
+    <string name="a8">Принять</string>
+    <string name="a9">Игнорировать</string>
+    <string name="a_">Уведомления</string>
+    <string name="aa">Открыть в мобильном устройстве</string>
+    <string name="ab">Текст</string>
+    <string name="ac">Отправить снова</string>
+    <string name="ad">Оплатить</string>
+    <string name="ae">Возможно</string>
+    <string name="af">Нет</string>
+    <string name="ag">Да</string>
+    <string name="ah">Отправить</string>
+    <string name="ai">Стикеры</string>
+    <string name="aj">Текст</string>
+    <string name="ak">Голосов</string>
+    <string name="al">Ответ</string>
+    <string name="am">Говорите…</string>
+    <string name="an">%d</string>
+    <string name="ao">"Ошибка распознавания
+Удерживайте и говорите снова"</string>
+    <string name="ap">Преобразование в текст</string>
+    <string name="aq">%d</string>
+    <string name="ar">Отправка…</string>
+    <string name="as">"Сообщение слишком короткое
+Удерживайте и говорите снова"</string>
+    <string name="at">1300  1030  7150  9660  79</string>
+    <string name="au">Загрузка изображения</string>
+    <string name="av">Загрузка…</string>
+    <string name="aw">Загрузка источника</string>
+    <string name="ax">Вход</string>
+    <string name="ay">Открыта страница оплаты на мобильном устройстве</string>
+    <string name="az">Устройство не поддерживает воспроизведение аудио.</string>
+    <string name="b0">С возвращением в WeChat</string>
+</resources>

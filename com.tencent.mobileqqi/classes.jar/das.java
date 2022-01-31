@@ -1,29 +1,32 @@
 import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.PublicAccountChatActivity;
 
 public class das
-  implements Runnable
+  extends Handler
 {
-  public das(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
+  public das(PublicAccountChatActivity paramPublicAccountChatActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if ((LoginVerifyCodeActivity.a(this.a) == 1) || (this.a.isFinishing()))
+    switch (paramMessage.what)
     {
-      LoginVerifyCodeActivity.a(this.a).setText(2131562863);
-      LoginVerifyCodeActivity.a(this.a).setEnabled(true);
-      LoginVerifyCodeActivity.a(this.a).setClickable(true);
+    }
+    do
+    {
+      return;
+    } while (this.a.isFinishing());
+    try
+    {
+      PublicAccountChatActivity.a(this.a);
       return;
     }
-    LoginVerifyCodeActivity.b(this.a);
-    LoginVerifyCodeActivity.a(this.a).setText(this.a.getString(2131562863) + "(" + LoginVerifyCodeActivity.a(this.a) + ")");
-    this.a.b.postDelayed(this, 1000L);
+    catch (Exception paramMessage) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     das
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,19 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.photo.PhotoMagicStickUtils;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollGroupFloatingListener;
+import com.tencent.widget.AbsListView;
 
-public final class err
-  implements ActionSheet.OnButtonClickListener
+public class err
+  extends SlideDetectListView.OnScrollGroupFloatingListener
 {
-  public err(Activity paramActivity, String paramString1, ActionSheet paramActionSheet, boolean paramBoolean, String paramString2, String paramString3, String paramString4) {}
+  public err(TroopListInnerFrame paramTroopListInnerFrame) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    PhotoMagicStickUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentWidgetActionSheet, this.jdField_a_of_type_Boolean, paramInt, this.b, this.c, this.d);
+    if (TroopListInnerFrame.a(this.a) != null) {
+      TroopListInnerFrame.a(this.a, paramInt1);
+    }
   }
 }
 

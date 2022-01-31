@@ -24,16 +24,16 @@ public class PhoneUnityVerifyActivity
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970518);
-    super.setTitle(getString(2131436846));
+    super.setContentView(2131561146);
+    super.setTitle(getString(2131695183));
     this.leftView.setVisibility(8);
     this.rightViewText.setVisibility(0);
-    this.rightViewText.setText(2131436302);
+    this.rightViewText.setText(2131693339);
     this.rightViewText.setOnClickListener(this);
-    paramBundle = (Button)super.findViewById(2131370977);
+    paramBundle = (Button)super.findViewById(2131371794);
     if (paramBundle != null) {
       paramBundle.setOnClickListener(this);
     }
@@ -48,7 +48,7 @@ public class PhoneUnityVerifyActivity
   {
     super.setResult(-1, new Intent());
     super.finish();
-    super.overridePendingTransition(0, 2131034135);
+    super.overridePendingTransition(0, 2130772001);
     return false;
   }
   
@@ -58,7 +58,7 @@ public class PhoneUnityVerifyActivity
     {
     default: 
       return;
-    case 2131370977: 
+    case 2131371794: 
       paramView = new Intent(this, QQBrowserActivity.class);
       paramView.putExtra("uin", this.app.getCurrentAccountUin());
       paramView.putExtra("url", this.a);
@@ -73,12 +73,12 @@ public class PhoneUnityVerifyActivity
     }
     super.setResult(-1, new Intent());
     super.finish();
-    super.overridePendingTransition(0, 2131034135);
+    super.overridePendingTransition(0, 2130772001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PhoneUnityVerifyActivity
  * JD-Core Version:    0.7.0.1
  */

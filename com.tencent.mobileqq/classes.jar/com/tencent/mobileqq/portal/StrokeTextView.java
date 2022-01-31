@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.portal;
 
+import aepi;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -9,7 +10,6 @@ import android.os.Build.VERSION;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 
@@ -43,7 +43,7 @@ public class StrokeTextView
   {
     this.jdField_a_of_type_AndroidTextTextPaint = getPaint();
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = AIOUtils.a(2.0F, getResources());
+    this.jdField_c_of_type_Int = aepi.a(2.0F, getResources());
     if (Build.VERSION.SDK_INT > 11) {
       setLayerType(1, null);
     }
@@ -141,7 +141,7 @@ public class StrokeTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.portal.StrokeTextView
  * JD-Core Version:    0.7.0.1
  */

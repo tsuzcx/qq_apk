@@ -1,28 +1,43 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import android.widget.RelativeLayout.LayoutParams;
 
-class lds
-  implements View.OnClickListener
+public class lds
+  extends Animation
 {
-  lds(ldr paramldr, FrameLayout paramFrameLayout) {}
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private RelativeLayout.LayoutParams jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
+  private int b;
+  private int c;
+  private int d;
   
-  public void onClick(View paramView)
+  public lds(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Ldr.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a.a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_Ldr.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a);
-    if (260 == this.jdField_a_of_type_Ldr.jdField_a_of_type_Int) {
-      SharedPreUtils.u(this.jdField_a_of_type_Ldr.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity, this.jdField_a_of_type_Ldr.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.app.getCurrentAccountUin(), null);
+    setDuration(paramInt1);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)paramView.getLayoutParams());
+    this.b = paramView.getMeasuredHeight();
+    this.jdField_a_of_type_Int = paramView.getMeasuredWidth();
+    this.d = (this.b + paramInt3);
+    this.c = (this.jdField_a_of_type_Int + paramInt2);
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    super.applyTransformation(paramFloat, paramTransformation);
+    if (paramFloat < 1.0F)
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.height = (this.b + (int)((this.d - this.b) * paramFloat));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = (this.jdField_a_of_type_Int + (int)((this.c - this.jdField_a_of_type_Int) * paramFloat));
+      this.jdField_a_of_type_AndroidViewView.requestLayout();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lds
  * JD-Core Version:    0.7.0.1
  */

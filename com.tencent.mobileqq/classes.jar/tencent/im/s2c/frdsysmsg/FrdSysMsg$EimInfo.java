@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class FrdSysMsg$EimInfo
-  extends MessageMicro
+  extends MessageMicro<EimInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32 }, new String[] { "uint64_eim_fuin", "str_eim_id", "str_eim_telno", "uint64_group_id" }, new Object[] { Long.valueOf(0L), "", "", Long.valueOf(0L) }, EimInfo.class);
   public final PBStringField str_eim_id = PBField.initString("");

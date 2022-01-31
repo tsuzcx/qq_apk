@@ -1,26 +1,7 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-
-public class uic
-  implements Runnable
-{
-  public uic(VisitorsActivity paramVisitorsActivity, ScaleAnimation paramScaleAnimation, AlphaAnimation paramAlphaAnimation1, AlphaAnimation paramAlphaAnimation2, AnimationSet paramAnimationSet) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.reset();
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.reset();
-    this.b.reset();
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.reset();
-    this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.f.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimationSet);
-  }
-}
+public class uic {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uic
  * JD-Core Version:    0.7.0.1
  */

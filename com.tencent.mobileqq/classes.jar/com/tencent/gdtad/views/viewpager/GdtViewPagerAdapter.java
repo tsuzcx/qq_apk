@@ -5,23 +5,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import java.util.List;
 
-public class GdtViewPagerAdapter
+public class GdtViewPagerAdapter<T extends View>
   extends PagerAdapter
 {
-  private List a;
-  
-  public View a(int paramInt)
-  {
-    if ((this.a == null) || (paramInt < 0) || (paramInt >= this.a.size())) {
-      return null;
-    }
-    return (View)this.a.get(paramInt);
-  }
-  
-  public void a(List paramList)
-  {
-    this.a = paramList;
-  }
+  private List<T> a;
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
@@ -46,7 +33,7 @@ public class GdtViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.views.viewpager.GdtViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

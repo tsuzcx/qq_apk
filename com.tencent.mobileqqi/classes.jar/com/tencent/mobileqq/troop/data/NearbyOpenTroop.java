@@ -22,12 +22,12 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import gyz;
-import gza;
-import gzb;
-import gzc;
-import gzd;
-import gze;
+import gus;
+import gut;
+import guu;
+import guv;
+import guw;
+import gux;
 
 public class NearbyOpenTroop
 {
@@ -72,10 +72,10 @@ public class NearbyOpenTroop
     this.jdField_e_of_type_JavaLangString = "";
     this.jdField_c_of_type_Boolean = false;
     this.jdField_e_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new gyz(this);
-    this.jdField_b_of_type_ComTencentMobileqqAppBizTroopObserver = new gza(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new gzb(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gze(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new gus(this);
+    this.jdField_b_of_type_ComTencentMobileqqAppBizTroopObserver = new gut(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new guu(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gux(this);
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_c_of_type_JavaLangString = paramString2;
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
@@ -84,7 +84,7 @@ public class NearbyOpenTroop
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_AndroidAppActivity, paramInt);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_b_of_type_ComTencentMobileqqAppBizTroopObserver);
-    this.jdField_a_of_type_AndroidOsHandler = new gzc(this);
+    this.jdField_a_of_type_AndroidOsHandler = new guv(this);
   }
   
   private void a()
@@ -173,7 +173,7 @@ public class NearbyOpenTroop
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new gzd(this), 1000L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new guw(this), 1000L);
     this.jdField_a_of_type_NearbyGroupGroupInfo = paramGroupInfo;
     this.jdField_a_of_type_ComTencentMobileqqAppBizTroopHandler.a(this.jdField_a_of_type_JavaLangString);
   }

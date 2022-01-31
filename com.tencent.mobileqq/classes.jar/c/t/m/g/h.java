@@ -5,18 +5,18 @@ import java.util.concurrent.CountDownLatch;
 final class h
   implements Runnable
 {
-  h(j paramj, i parami) {}
+  h(k paramk, i parami) {}
   
   public final void run()
   {
-    aj localaj = this.a.a();
-    this.b.a(localaj);
-    this.b.i.countDown();
+    ao localao = this.a.a();
+    this.b.a(localao);
+    this.b.l.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.h
  * JD-Core Version:    0.7.0.1
  */

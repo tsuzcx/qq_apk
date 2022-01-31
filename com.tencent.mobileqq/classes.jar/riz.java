@@ -1,17 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 
-public class riz
-  implements DialogInterface.OnClickListener
+class riz
+  extends bhry
 {
-  public riz(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  riz(riw paramriw, AlphaAnimation paramAlphaAnimation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_Riw.a.s.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+  }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     riz
  * JD-Core Version:    0.7.0.1
  */

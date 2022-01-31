@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:focusableInTouchMode="true" android:layout_width="251.0dip" android:layout_height="145.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a075d" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerVertical="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b1673" />
-    <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a075e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e6d" />
-</FrameLayout>

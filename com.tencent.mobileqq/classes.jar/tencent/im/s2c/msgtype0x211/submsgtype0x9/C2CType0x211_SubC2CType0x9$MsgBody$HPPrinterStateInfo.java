@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class C2CType0x211_SubC2CType0x9$MsgBody$HPPrinterStateInfo
-  extends MessageMicro
+  extends MessageMicro<HPPrinterStateInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34 }, new String[] { "uint64_printer_din", "str_printer_qr_pic_url", "str_printer_qr_open_url", "str_printer_tip_url" }, new Object[] { Long.valueOf(0L), "", "", "" }, HPPrinterStateInfo.class);
   public final PBStringField str_printer_qr_open_url = PBField.initString("");

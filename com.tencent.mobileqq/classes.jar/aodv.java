@@ -1,32 +1,10 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
-
-public class aodv
-  extends Property
+public abstract interface aodv
 {
-  public aodv(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
-  
-  public Integer a(GroundDrawable paramGroundDrawable)
-  {
-    if (paramGroundDrawable != null) {
-      return Integer.valueOf(GroundDrawable.a(paramGroundDrawable));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(GroundDrawable paramGroundDrawable, Integer paramInteger)
-  {
-    if (paramGroundDrawable != null) {
-      GroundDrawable.a(paramGroundDrawable, paramInteger.intValue());
-    }
-  }
+  public abstract void a(aodk paramaodk, int paramInt, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aodv
  * JD-Core Version:    0.7.0.1
  */

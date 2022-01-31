@@ -1,46 +1,75 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import java.util.List;
+import tencent.im.nearfield_discuss.nearfield_discuss.UserProfile;
 
-public final class ajyx
-  implements DownloadParams.DecodeHandler
+public class ajyx
+  extends BaseAdapter
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  ajyy jdField_a_of_type_Ajyy;
+  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  
+  public ajyx(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity)
   {
-    if ((paramBitmap == null) || (paramDownloadParams == null)) {}
-    int i;
-    int j;
-    int k;
-    int m;
-    do
-    {
-      do
-      {
-        return paramBitmap;
-        paramDownloadParams = paramDownloadParams.tag;
-      } while ((!(paramDownloadParams instanceof int[])) || (((int[])paramDownloadParams).length != 4));
-      paramDownloadParams = (int[])paramDownloadParams;
-      i = paramDownloadParams[0];
-      j = paramDownloadParams[1];
-      k = paramDownloadParams[2];
-      m = paramDownloadParams[3];
-    } while ((k <= 0) || (m <= 0) || ((k == paramBitmap.getWidth()) && (m == paramBitmap.getHeight())));
-    try
-    {
-      paramDownloadParams = Bitmap.createBitmap(k, m, Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas(paramDownloadParams);
-      Matrix localMatrix = new Matrix();
-      URLDrawableDecodeHandler.a(localMatrix, paramBitmap.getWidth(), paramBitmap.getHeight(), k, m, i, j);
-      localCanvas.drawBitmap(paramBitmap, localMatrix, new Paint(6));
-      return paramDownloadParams;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramCreateFaceToFaceDiscussionActivity.jdField_a_of_type_AndroidContentContext);
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    catch (OutOfMemoryError paramDownloadParams) {}
-    return paramBitmap;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.size() < 50) {
+      return this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.size() + 1;
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList == null) {
+      return null;
+    }
+    return (nearfield_discuss.UserProfile)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560981, null);
+      this.jdField_a_of_type_Ajyy = new ajyy(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity);
+      this.jdField_a_of_type_Ajyy.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367819));
+      this.jdField_a_of_type_Ajyy.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370977));
+      paramView.setTag(this.jdField_a_of_type_Ajyy);
+    }
+    while ((paramInt == getCount() - 1) && (getCount() < 50))
+    {
+      CreateFaceToFaceDiscussionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity, paramView);
+      return paramView;
+      this.jdField_a_of_type_Ajyy = ((ajyy)paramView.getTag());
+      if (this.jdField_a_of_type_Ajyy.jdField_a_of_type_Boolean)
+      {
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560981, null);
+        this.jdField_a_of_type_Ajyy = new ajyy(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity);
+        this.jdField_a_of_type_Ajyy.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367819));
+        this.jdField_a_of_type_Ajyy.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370977));
+        paramView.setTag(this.jdField_a_of_type_Ajyy);
+        this.jdField_a_of_type_Ajyy.jdField_a_of_type_Boolean = false;
+      }
+    }
+    CreateFaceToFaceDiscussionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity, paramView, (nearfield_discuss.UserProfile)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.get(paramInt));
+    return paramView;
   }
 }
 

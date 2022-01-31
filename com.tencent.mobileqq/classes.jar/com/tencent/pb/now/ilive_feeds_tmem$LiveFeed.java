@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ilive_feeds_tmem$LiveFeed
-  extends MessageMicro
+  extends MessageMicro<LiveFeed>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField desc = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -17,7 +17,7 @@ public final class ilive_feeds_tmem$LiveFeed
   public final PBBytesField pic_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field room_type = PBField.initUInt32(0);
   public final PBUInt32Field roomid = PBField.initUInt32(0);
-  public final PBRepeatField topic = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> topic = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBBytesField vid = PBField.initBytes(ByteStringMicro.EMPTY);
   
   static
@@ -31,7 +31,7 @@ public final class ilive_feeds_tmem$LiveFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_tmem.LiveFeed
  * JD-Core Version:    0.7.0.1
  */

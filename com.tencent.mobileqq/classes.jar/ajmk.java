@@ -1,24 +1,74 @@
-import android.text.Spannable;
-import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
-import java.util.Comparator;
+import android.content.Context;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class ajmk
-  implements Comparator
+public class ajmk
+  extends ajlr
 {
-  public ajmk(Spannable paramSpannable) {}
+  public boolean a;
   
-  public int a(AtTroopMemberSpan paramAtTroopMemberSpan1, AtTroopMemberSpan paramAtTroopMemberSpan2)
+  public ajmk(Context paramContext)
   {
-    int i = 0;
-    int j = this.a.getSpanStart(paramAtTroopMemberSpan1);
-    int k = this.a.getSpanStart(paramAtTroopMemberSpan2);
-    if (j < k) {
-      i = -1;
+    this(paramContext, false);
+  }
+  
+  public ajmk(Context paramContext, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131698112);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
+    {
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.optLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.optLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.optString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.optInt("color");
+      this.jdField_a_of_type_Boolean = paramArrayOfByte.optBoolean("isToAll");
+      if (this.jdField_a_of_type_Bbpe == null) {
+        this.jdField_a_of_type_Bbpe = new bbpe();
+      }
+      this.jdField_a_of_type_Bbpe.a(paramArrayOfByte.getString("messageNavInfo"));
+      return;
     }
-    while (j <= k) {
-      return i;
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
     }
-    return 1;
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      localJSONObject.put("isToAll", this.jdField_a_of_type_Boolean);
+      if (this.jdField_a_of_type_Bbpe != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbpe.a());
+      }
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 

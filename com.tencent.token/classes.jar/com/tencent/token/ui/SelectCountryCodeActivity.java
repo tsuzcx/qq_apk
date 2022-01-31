@@ -1,104 +1,71 @@
 package com.tencent.token.ui;
 
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ListView;
+import com.tencent.token.global.b;
+import com.tencent.token.global.e;
+import com.tencent.token.global.g;
+import com.tencent.token.global.k;
+import com.tencent.token.global.m;
+import com.tencent.token.ui.base.RightLetterView;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class SelectCountryCodeActivity
   extends BaseActivity
-  implements View.OnClickListener
 {
-  private View mView_HK;
-  private View mView_australia;
-  private View mView_canada;
-  private View mView_china;
-  private View mView_indonesia;
-  private View mView_italy;
-  private View mView_japan;
-  private View mView_korea;
-  private View mView_macau;
-  private View mView_malaysia;
-  private View mView_philippines;
-  private View mView_singapore;
-  private View mView_taiwan;
-  private View mView_thailand;
-  private View mView_usa;
+  private k adapter;
+  private b characterParser;
+  private g pinyinComparator;
+  RightLetterView sideBar;
+  private ListView sortListView;
+  private List sourceDateList;
   
-  public void onClick(View paramView)
+  private List filledData(String[][] paramArrayOfString)
   {
-    if (paramView.getId() == 2131296657) {
-      setResult(86);
-    }
-    for (;;)
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    if (i < paramArrayOfString.length)
     {
-      finish();
-      return;
-      if (paramView.getId() == 2131296660) {
-        setResult(852);
-      } else if (paramView.getId() == 2131296663) {
-        setResult(853);
-      } else if (paramView.getId() == 2131296666) {
-        setResult(886);
-      } else if (paramView.getId() == 2131296669) {
-        setResult(1111);
-      } else if (paramView.getId() == 2131296672) {
-        setResult(81);
-      } else if (paramView.getId() == 2131296675) {
-        setResult(82);
-      } else if (paramView.getId() == 2131296678) {
-        setResult(65);
-      } else if (paramView.getId() == 2131296681) {
-        setResult(1);
-      } else if (paramView.getId() == 2131296684) {
-        setResult(61);
-      } else if (paramView.getId() == 2131296687) {
-        setResult(39);
-      } else if (paramView.getId() == 2131296690) {
-        setResult(60);
-      } else if (paramView.getId() == 2131296693) {
-        setResult(63);
-      } else if (paramView.getId() == 2131296696) {
-        setResult(66);
-      } else if (paramView.getId() == 2131296699) {
-        setResult(62);
+      m localm = new m();
+      localm.b(paramArrayOfString[i][1]);
+      localm.a(paramArrayOfString[i][0]);
+      String str = this.characterParser.b(paramArrayOfString[i][1]).substring(0, 1).toUpperCase();
+      if (str.matches("[A-Z]")) {
+        localm.c(str.toUpperCase());
+      }
+      for (;;)
+      {
+        localArrayList.add(localm);
+        i += 1;
+        break;
+        localm.c("#");
       }
     }
+    return localArrayList;
+  }
+  
+  private void init()
+  {
+    this.characterParser = b.a();
+    this.pinyinComparator = new g();
+    this.sortListView = ((ListView)findViewById(2131559004));
+    this.sideBar = ((RightLetterView)findViewById(2131559005));
+    this.sideBar.setOnTouchingLetterChangedListener(new yu(this, null));
+    this.sourceDateList = filledData(e.b);
+    List localList = filledData(e.c);
+    Collections.sort(localList, this.pinyinComparator);
+    this.sourceDateList.addAll(localList);
+    this.adapter = new k(this, this.sourceDateList, new yt(this));
+    this.sortListView.setAdapter(this.adapter);
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903106);
-    this.mView_china = findViewById(2131296657);
-    this.mView_china.setOnClickListener(this);
-    this.mView_HK = findViewById(2131296660);
-    this.mView_HK.setOnClickListener(this);
-    this.mView_macau = findViewById(2131296663);
-    this.mView_macau.setOnClickListener(this);
-    this.mView_taiwan = findViewById(2131296666);
-    this.mView_taiwan.setOnClickListener(this);
-    this.mView_usa = findViewById(2131296669);
-    this.mView_usa.setOnClickListener(this);
-    this.mView_japan = findViewById(2131296672);
-    this.mView_japan.setOnClickListener(this);
-    this.mView_korea = findViewById(2131296675);
-    this.mView_korea.setOnClickListener(this);
-    this.mView_singapore = findViewById(2131296678);
-    this.mView_singapore.setOnClickListener(this);
-    this.mView_canada = findViewById(2131296681);
-    this.mView_canada.setOnClickListener(this);
-    this.mView_australia = findViewById(2131296684);
-    this.mView_australia.setOnClickListener(this);
-    this.mView_italy = findViewById(2131296687);
-    this.mView_italy.setOnClickListener(this);
-    this.mView_malaysia = findViewById(2131296690);
-    this.mView_malaysia.setOnClickListener(this);
-    this.mView_philippines = findViewById(2131296693);
-    this.mView_philippines.setOnClickListener(this);
-    this.mView_thailand = findViewById(2131296696);
-    this.mView_thailand.setOnClickListener(this);
-    this.mView_indonesia = findViewById(2131296699);
-    this.mView_indonesia.setOnClickListener(this);
+    setContentView(2130968738);
+    init();
   }
 }
 

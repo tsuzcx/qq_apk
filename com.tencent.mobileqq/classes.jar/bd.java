@@ -1,31 +1,20 @@
-import android.os.Bundle;
 import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import java.util.ArrayList;
+import mqq.app.QQPermissionCallback;
 
 public class bd
-  implements FMDialogUtil.FMDialogInterface
+  implements QQPermissionCallback
 {
-  public bd(LiteActivity paramLiteActivity, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  public bd(LiteActivity paramLiteActivity) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Bundle localBundle;
-    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-    {
-      localBundle = new Bundle();
-      localBundle.putStringArrayList("PhotoConst.PHOTO_PATHS", this.jdField_a_of_type_JavaUtilArrayList);
-      new bu(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).execute(new Bundle[] { localBundle });
-    }
-    if (!this.b.isEmpty())
-    {
-      localBundle = new Bundle();
-      localBundle.putStringArrayList("PhotoConst.PHOTO_PATHS", this.b);
-      new bv(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity).execute(new Bundle[] { localBundle });
-    }
+    bdgm.b(this.a.getActivity());
   }
   
-  public void b() {}
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.r();
+  }
 }
 
 

@@ -1,30 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Gxzb;
+import msf.msgcomm.msg_comm.Msg;
 
-public final class abub
-  implements Parcelable.Creator
+public abstract interface abub
 {
-  public IPSiteModel.Gxzb a(Parcel paramParcel)
-  {
-    IPSiteModel.Gxzb localGxzb = new IPSiteModel.Gxzb();
-    localGxzb.appid = paramParcel.readInt();
-    localGxzb.appName = paramParcel.readString();
-    localGxzb.cover = paramParcel.readString();
-    localGxzb.feeType = paramParcel.readInt();
-    localGxzb.id = paramParcel.readString();
-    localGxzb.name = paramParcel.readString();
-    return localGxzb;
-  }
-  
-  public IPSiteModel.Gxzb[] a(int paramInt)
-  {
-    return new IPSiteModel.Gxzb[paramInt];
-  }
+  public abstract void a(msg_comm.Msg paramMsg, azaj paramazaj);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abub
  * JD-Core Version:    0.7.0.1
  */

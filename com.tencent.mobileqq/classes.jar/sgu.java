@@ -1,26 +1,38 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
+import java.lang.ref.WeakReference;
 
-class sgu
-  implements Runnable
+public class sgu
+  extends Handler
 {
-  sgu(sgt paramsgt) {}
+  private WeakReference<ReadInJoySkinAnimManager> a;
   
-  public void run()
+  public sgu(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager)
   {
-    if (this.a.a.a != null)
-    {
-      this.a.a.a.c();
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "Conversation onUpdateFriendList");
-      }
+    this.a = new WeakReference(paramReadInJoySkinAnimManager);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ReadInJoySkinAnimManager localReadInJoySkinAnimManager = (ReadInJoySkinAnimManager)this.a.get();
+    if (localReadInJoySkinAnimManager == null) {
+      return;
     }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      ReadInJoySkinAnimManager.b(localReadInJoySkinAnimManager);
+      return;
+    }
+    ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sgu
  * JD-Core Version:    0.7.0.1
  */

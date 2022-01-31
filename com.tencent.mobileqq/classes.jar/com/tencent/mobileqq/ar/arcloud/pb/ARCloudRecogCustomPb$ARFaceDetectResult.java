@@ -10,12 +10,12 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class ARCloudRecogCustomPb$ARFaceDetectResult
-  extends MessageMicro
+  extends MessageMicro<ARFaceDetectResult>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field ar_face_detect_errorcode = PBField.initInt32(0);
   public final PBStringField ar_face_detect_errormsg = PBField.initString("");
-  public final PBRepeatField cdb_res = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> cdb_res = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public YTOpenDetection.DetectFaceRsp image_ar_face_detect_res = new YTOpenDetection.DetectFaceRsp();
   
   static
@@ -26,7 +26,7 @@ public final class ARCloudRecogCustomPb$ARFaceDetectResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ARFaceDetectResult
  * JD-Core Version:    0.7.0.1
  */

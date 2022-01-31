@@ -1,13 +1,32 @@
 package com.tencent.token.ui.base;
 
-final class dc
-  implements Runnable
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class dc
+  implements View.OnClickListener
 {
-  private dc(SwitchButton paramSwitchButton, byte paramByte) {}
+  dc(UtilsAccountLockTipDialog paramUtilsAccountLockTipDialog) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    this.a.performClick();
+    if (UtilsAccountLockTipDialog.a(this.a) != null)
+    {
+      paramView = UtilsAccountLockTipDialog.a(this.a).obtainMessage(3035);
+      if (!UtilsAccountLockTipDialog.b(this.a)) {
+        break label72;
+      }
+    }
+    label72:
+    for (int i = 1;; i = 0)
+    {
+      paramView.arg1 = i;
+      paramView.obj = UtilsAccountLockTipDialog.c(this.a);
+      UtilsAccountLockTipDialog.a(this.a).sendMessage(paramView);
+      this.a.dismiss();
+      return;
+    }
   }
 }
 

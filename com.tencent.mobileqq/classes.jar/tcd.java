@@ -1,34 +1,28 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.app.NearbyObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
 
 public class tcd
-  extends NearbyObserver
+  extends RecyclerView.OnScrollListener
 {
-  public tcd(NearbyActivity paramNearbyActivity) {}
+  public tcd(WSRecommendFragment paramWSRecommendFragment) {}
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.heart_beat", 2, "onNearbyHeartBeat:isSucc=" + paramBoolean + ", cmd=" + paramString + ", interval=" + paramLong);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 1) {
+      WSRecommendFragment.c(this.a, true);
     }
-    if ("OidbSvc.0xafc_1".equals(paramString))
-    {
-      if (paramBoolean) {
-        this.a.n = paramLong;
-      }
-      if (!this.a.c)
-      {
-        this.a.b.removeMessages(this.a.d);
-        this.a.b.sendEmptyMessageDelayed(this.a.d, this.a.n);
-      }
-    }
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tcd
  * JD-Core Version:    0.7.0.1
  */

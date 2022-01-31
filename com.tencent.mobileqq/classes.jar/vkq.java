@@ -1,19 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.SignVideoItemHolder;
-
-class vkq
-  implements Runnable
+public class vkq
+  extends vkn
 {
-  vkq(vkp paramvkp) {}
-  
-  public void run()
-  {
-    this.a.a.d.setVisibility(8);
-  }
+  public String a;
+  public boolean a;
+  public String c;
+  public String d;
+  public String e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vkq
  * JD-Core Version:    0.7.0.1
  */

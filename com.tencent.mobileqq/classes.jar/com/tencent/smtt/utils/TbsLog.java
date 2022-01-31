@@ -192,7 +192,10 @@ public class TbsLog
   
   public static void d(String paramString1, String paramString2)
   {
-    if (mTbsLogClient == null) {}
+    if (mTbsLogClient == null) {
+      return;
+    }
+    mTbsLogClient.d(paramString1, "TBS:" + paramString2);
   }
   
   public static void d(String paramString1, String paramString2, boolean paramBoolean)
@@ -208,6 +211,7 @@ public class TbsLog
     if (mTbsLogClient == null) {
       return;
     }
+    mTbsLogClient.e(paramString1, "TBS:" + paramString2);
     mTbsLogClient.writeLog("(E)-" + paramString1 + "-TBS:" + paramString2);
   }
   
@@ -232,6 +236,7 @@ public class TbsLog
     if (mTbsLogClient == null) {
       return;
     }
+    mTbsLogClient.i(paramString1, "TBS:" + paramString2);
     mTbsLogClient.writeLog("(I)-" + paramString1 + "-TBS:" + paramString2);
   }
   
@@ -290,7 +295,10 @@ public class TbsLog
   
   public static void v(String paramString1, String paramString2)
   {
-    if (mTbsLogClient == null) {}
+    if (mTbsLogClient == null) {
+      return;
+    }
+    mTbsLogClient.v(paramString1, "TBS:" + paramString2);
   }
   
   public static void v(String paramString1, String paramString2, boolean paramBoolean)
@@ -306,6 +314,7 @@ public class TbsLog
     if (mTbsLogClient == null) {
       return;
     }
+    mTbsLogClient.w(paramString1, "TBS:" + paramString2);
     mTbsLogClient.writeLog("(W)-" + paramString1 + "-TBS:" + paramString2);
   }
   
@@ -335,7 +344,7 @@ public class TbsLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.utils.TbsLog
  * JD-Core Version:    0.7.0.1
  */

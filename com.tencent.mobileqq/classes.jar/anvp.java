@@ -1,47 +1,21 @@
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
+import com.tencent.mobileqq.haoliyou.JefsClass;
 
 public class anvp
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public anvp(EditWebVideoHallowenUpload paramEditWebVideoHallowenUpload, RMVideoStateMgr paramRMVideoStateMgr) {}
+  public anvp(JumpConfirmFragment paramJumpConfirmFragment) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EditWebVideoActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
-      }
-      RecordManager.a().a().recordSubmit();
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        localUnsatisfiedLinkError.printStackTrace();
-        synchronized (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
-        {
-          this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-          this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.notifyAll();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("EditWebVideoActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString + ", call AVideoCodec.recordSubmit() fail, error = " + localUnsatisfiedLinkError.getMessage());
-          return;
-        }
-      }
-    }
+    JefsClass.getInstance().a(JumpConfirmFragment.a(this.a), JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anvp
  * JD-Core Version:    0.7.0.1
  */

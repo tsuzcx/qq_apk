@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/c2" android:layout_width="fill_parent" android:layout_height="@dimen/s8"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/jp" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="15.0dip" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/se" android:visibility="gone" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginRight="20.0dip" android:src="@raw/ic_appbrand_star_mark" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <FrameLayout android:id="@id/rb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/se" android:layout_toRightOf="@id/jp">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:id="@id/c6" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/sj" />
+                <TextView android:id="@id/rd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" style="@style/sk" />
+            </LinearLayout>
+            <TextView android:id="@id/q9" android:background="@drawable/c5" android:padding="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" style="@style/sl" />
+        </LinearLayout>
+    </FrameLayout>
+    <TextView android:textSize="11.0dip" android:id="@id/sf" android:background="@drawable/c5" android:padding="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:layout_alignParentEnd="true" style="@style/sl" />
+    <View android:id="@id/pm" android:layout_alignLeft="@id/rb" android:layout_alignParentBottom="true" android:layout_alignStart="@id/rb" style="@style/ww" />
+</RelativeLayout>

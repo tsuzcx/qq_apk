@@ -68,7 +68,7 @@ public class ActionBarActivity
     this.mImpl.onContentChanged();
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     this.mImpl = ActionBarActivityDelegate.createDelegate(this);
     super.onCreate(paramBundle);
@@ -123,7 +123,7 @@ public class ActionBarActivity
   
   public void onPrepareSupportNavigateUpTaskStack(TaskStackBuilder paramTaskStackBuilder) {}
   
-  protected void onStop()
+  public void onStop()
   {
     super.onStop();
     this.mImpl.onStop();

@@ -7,13 +7,13 @@ import com.qq.taf.jce.JceStruct;
 public final class ConfigItem
   extends JceStruct
 {
-  static byte[] a = (byte[])new byte[1];
+  static byte[] cache_configuration = (byte[])new byte[1];
   public byte[] configuration = null;
   public int type = 0;
   
   static
   {
-    ((byte[])a)[0] = 0;
+    ((byte[])cache_configuration)[0] = 0;
   }
   
   public ConfigItem() {}
@@ -27,7 +27,7 @@ public final class ConfigItem
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.type = paramJceInputStream.read(this.type, 0, true);
-    this.configuration = ((byte[])paramJceInputStream.read(a, 1, true));
+    this.configuration = ((byte[])paramJceInputStream.read(cache_configuration, 1, true));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -38,7 +38,7 @@ public final class ConfigItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.ConfigItem
  * JD-Core Version:    0.7.0.1
  */

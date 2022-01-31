@@ -1,19 +1,31 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePackage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class okd
-  implements Runnable
+final class okd
+  implements DialogInterface.OnClickListener
 {
-  public okd(FaceListPage paramFaceListPage, FacePackage paramFacePackage) {}
+  okd(omg paramomg, omt paramomt) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage);
+    if (paramInt == 1)
+    {
+      if (this.jdField_a_of_type_Omg != null)
+      {
+        paramDialogInterface = this.jdField_a_of_type_Omg.a();
+        if (paramDialogInterface != null)
+        {
+          paramDialogInterface.a(this.jdField_a_of_type_Omt);
+          this.jdField_a_of_type_Omg.notifyDataSetChanged();
+        }
+      }
+      bkbq.a("family_comment_card_hide_timestamp", Long.valueOf(System.currentTimeMillis()));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okd
  * JD-Core Version:    0.7.0.1
  */

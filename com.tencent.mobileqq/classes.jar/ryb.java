@@ -1,38 +1,37 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.PstnManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import java.util.Map;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
-public final class ryb
-  implements DialogInterface.OnClickListener
+public class ryb
+  implements qft
 {
-  public ryb(PstnManager paramPstnManager, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, String paramString4, boolean paramBoolean2, boolean paramBoolean3, ChatActivityUtils.StartVideoListener paramStartVideoListener, Map paramMap, int paramInt2) {}
+  public ryb(FastWebActivity paramFastWebActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    boolean bool = ((QQCustomDialog)paramDialogInterface).getCheckBoxState();
-    if (bool) {
-      this.jdField_a_of_type_ComTencentMobileqqQcallPstnManager.a(true);
-    }
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.d, this.jdField_b_of_type_Boolean, this.jdField_c_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, this.jdField_a_of_type_JavaUtilMap, this.jdField_b_of_type_Int, false);
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (bool) {}
-    for (paramInt = 1;; paramInt = 2)
+    if (paramBoolean)
     {
-      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X8006402", "0X8006402", paramInt, 0, "", "", "", "");
-      return;
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)FastWebActivity.a(this.a).getLayoutParams();
+      int i = xin.b(this.a, 144.0F);
+      localLayoutParams.rightMargin = i;
+      localLayoutParams.leftMargin = i;
+      FastWebActivity.a(this.a).setLayoutParams(localLayoutParams);
+      FastWebActivity.a(this.a).setVisibility(0);
+      FastWebActivity.a(this.a).setOnClickListener(new ryc(this));
+      FastWebActivity.a(this.a);
+      if (FastWebActivity.b(this.a)) {
+        FastWebActivity.a(this.a).setImageResource(2130848991);
+      }
+      FastWebActivity.a(this.a).a(2, FastWebActivity.a(this.a), FastWebActivity.a(this.a).innerUniqueID);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ryb
  * JD-Core Version:    0.7.0.1
  */

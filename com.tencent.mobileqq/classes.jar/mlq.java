@@ -1,25 +1,74 @@
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.KandianAppInPush;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import com.tencent.av.app.VideoAppInterface;
 
 public class mlq
-  implements AppInPushNotification.OnDismissListener
+  extends mll
 {
-  public mlq(KandianAppInPush paramKandianAppInPush) {}
-  
-  public void a(boolean paramBoolean)
+  protected mlq(Context paramContext, VideoAppInterface paramVideoAppInterface)
   {
-    KandianAppInPush.a(this.a, null);
-    KandianAppInPush.a(this.a, null);
-    if ((paramBoolean) && (KandianAppInPush.a(this.a) != null)) {
-      ThreadManager.getSubThreadHandler().postDelayed(new mlr(this), 500L);
+    super(paramContext, paramVideoAppInterface);
+  }
+  
+  private void a(mgp parammgp1, mgp parammgp2, int paramInt)
+  {
+    int i = paramInt >> 1;
+    int j = mlm.b(paramInt);
+    parammgp1.a(0, 0, 0, 0);
+    parammgp1.b(i, 0, paramInt, j);
+    parammgp1.d(-15197410);
+    parammgp2.a(0, 0, 0, 0);
+    parammgp2.b(0, 0, i, j);
+    parammgp2.d(-15197410);
+  }
+  
+  public int a()
+  {
+    return 2;
+  }
+  
+  public void a(mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
+  
+  public void a(mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
+  {
+    boolean bool;
+    if (!this.a.getCurrentAccountUin().equals(paramArrayOfmgp[1].a(0)))
+    {
+      bool = true;
+      lek.c("ScreenLayoutSmallUIDouble", "layoutCommon: " + paramBoolean + "|" + bool);
+      if (!bool) {
+        break label112;
+      }
+      if (paramBoolean) {
+        break label94;
+      }
+      paramBoolean = true;
     }
+    label94:
+    label112:
+    for (;;)
+    {
+      if (paramBoolean)
+      {
+        a(paramArrayOfmgp[0], paramArrayOfmgp[1], paramInt1);
+        return;
+        bool = false;
+        break;
+        paramBoolean = false;
+        continue;
+      }
+      a(paramArrayOfmgp[1], paramArrayOfmgp[0], paramInt1);
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mlq
  * JD-Core Version:    0.7.0.1
  */

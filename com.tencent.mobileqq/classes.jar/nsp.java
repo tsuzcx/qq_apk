@@ -1,33 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter.ChangeVideoSortEvent;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter.YearCollectionViewHolder;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.EntranceDownloadInfo;
 
-public class nsp
-  implements View.OnClickListener
+public final class nsp
+  implements Parcelable.Creator<VideoInfo.EntranceDownloadInfo>
 {
-  public nsp(ShareGroupsListAdapter.YearCollectionViewHolder paramYearCollectionViewHolder) {}
-  
-  public void onClick(View paramView)
+  public VideoInfo.EntranceDownloadInfo a(Parcel paramParcel)
   {
-    paramView = new ShareGroupsListAdapter.ChangeVideoSortEvent();
-    if (this.a.a.a) {
-      this.a.a.a = false;
-    }
-    for (paramView.a = 0;; paramView.a = 1)
-    {
-      Dispatchers.get().dispatch(paramView);
-      return;
-      this.a.a.a = true;
-    }
+    return new VideoInfo.EntranceDownloadInfo(paramParcel);
+  }
+  
+  public VideoInfo.EntranceDownloadInfo[] a(int paramInt)
+  {
+    return new VideoInfo.EntranceDownloadInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nsp
  * JD-Core Version:    0.7.0.1
  */

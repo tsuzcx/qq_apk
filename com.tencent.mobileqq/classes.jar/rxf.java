@@ -1,31 +1,22 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 
-public final class rxf
-  implements DialogInterface.OnClickListener
+public class rxf
+  implements View.OnClickListener
 {
-  public rxf(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt) {}
+  public rxf(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 1, 8);
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_a_of_type_Int == 5) {}
-    for (paramInt = 2;; paramInt = 3)
-    {
-      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X80063FB", "0X80063FB", paramInt, 0, "", "", "", "");
-      return;
-    }
+    PublicTransFragmentActivity.a(this.a.a(), ReadInJoyChannelPanelFragment.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rxf
  * JD-Core Version:    0.7.0.1
  */

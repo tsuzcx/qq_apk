@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/root" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c013d" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.troop.homework.entry.ui.view.ComplexGuidViewPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a19d5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</RelativeLayout>

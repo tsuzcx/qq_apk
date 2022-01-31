@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import com.tencent.mobileqq.app.DiscussionHandler;
+import alri;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -8,9 +8,9 @@ import com.tencent.mobileqq.app.automator.Automator;
 public class GetDiscussionInfo
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
-    ((DiscussionHandler)this.a.b.a(6)).d();
+    ((alri)this.a.app.a(6)).c();
     return 7;
   }
 }

@@ -21,9 +21,9 @@ import com.tencent.open.downloadnew.DownloadConstants;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadManager;
 import com.tencent.open.downloadnew.MyAppApi;
-import hog;
-import hoh;
-import hoi;
+import hkc;
+import hkd;
+import hke;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -269,7 +269,7 @@ public class AppClient
       if ((TextUtils.isEmpty((CharSequence)localObject4)) || (TextUtils.isEmpty((CharSequence)localObject3)) || ("0".equals(localObject4)) || (localObject2 == null) || (!MyAppApi.a().c())) {
         break label721;
       }
-      ThreadManager.b().post(new hoh(paramBundle, (Bundle)localObject2, localMalformedURLException, paramActivity, (String)localObject1));
+      ThreadManager.b().post(new hkd(paramBundle, (Bundle)localObject2, localMalformedURLException, paramActivity, (String)localObject1));
       return;
       localObject2 = null;
       localObject3 = null;
@@ -575,7 +575,7 @@ public class AppClient
       bool = false;
     }
     label1181:
-    ThreadManager.b().post(new hog(paramString1, localBundle, str1, paramActivity, localIntent, paramBundle));
+    ThreadManager.b().post(new hkc(paramString1, localBundle, str1, paramActivity, localIntent, paramBundle));
     return;
     label1205:
     paramActivity.startActivityForResult(localIntent, 200);
@@ -756,7 +756,7 @@ public class AppClient
       localBundle.putString(DownloadConstants.e, str2);
       localBundle.putInt(DownloadConstants.d, 0);
       localBundle.putString(DownloadConstants.h, "ANDROIDQQ.SHARESOURCE");
-      ThreadManager.b().post(new hoi(paramActivity, localBundle));
+      ThreadManager.b().post(new hke(paramActivity, localBundle));
       return;
     }
     paramBundle = new Bundle();

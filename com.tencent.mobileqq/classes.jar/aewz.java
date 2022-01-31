@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-public class aewz
-  implements View.OnClickListener
+class aewz
+  implements badp
 {
-  public aewz(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  aewz(aewx paramaewx) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    ShortVideoCommentsView.a(this.a);
+    badv localbadv = new badv(3000, 360, 0);
+    localbadv.a = true;
+    this.a.a.e.a(new bado[] { localbadv });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aewz
  * JD-Core Version:    0.7.0.1
  */

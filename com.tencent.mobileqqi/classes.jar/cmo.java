@@ -1,15 +1,25 @@
-import com.tencent.mobileqq.activity.DetailProfileActivity;
-import com.tencent.widget.TimePickerView.TimePickerListener;
+import android.app.Dialog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
 public class cmo
-  implements TimePickerView.TimePickerListener
+  implements Animation.AnimationListener
 {
-  public cmo(DetailProfileActivity paramDetailProfileActivity) {}
+  public cmo(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a(paramInt1, paramInt2, paramInt3);
+    this.a.jdField_a_of_type_AndroidAppDialog.show();
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(null);
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

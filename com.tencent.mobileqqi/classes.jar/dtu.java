@@ -1,16 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.ExpandableListView.OnGroupClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class dtu
-  implements ExpandableListView.OnGroupClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public dtu(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public dtu(UpgradeActivity paramUpgradeActivity) {}
   
-  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return true;
+    this.a.finish();
   }
 }
 

@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.vas.PendantInfo;
+import android.widget.CheckBox;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.contact.SimpleTextView;
+import com.tencent.widget.SingleLineTextView;
 
 public class akhv
 {
-  public String a;
-  
-  public akhv(PendantInfo paramPendantInfo, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public int a;
+  public CheckBox a;
+  public ProgressBar a;
+  public SimpleTextView a;
+  public SingleLineTextView a;
+  public StringBuilder a;
+  public SingleLineTextView b;
 }
 
 

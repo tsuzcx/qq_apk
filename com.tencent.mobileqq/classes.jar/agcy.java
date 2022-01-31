@@ -1,63 +1,75 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload.ARCloudFileUploadCallback;
-import com.tencent.mobileqq.ar.arengine.ARCloudRecogResult;
-import com.tencent.mobileqq.ar.arengine.ARCloudReqFileInfo;
-import com.tencent.mobileqq.ar.arengine.ARCloudReqInfo;
-import com.tencent.mobileqq.ar.arengine.SearchQuestionResult;
-import com.tencent.mobileqq.ocr.question.SearchQuestionFragment;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
-import java.io.File;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.CacheMap;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class agcy
-  implements ARCloudFileUpload.ARCloudFileUploadCallback
 {
-  public agcy(SearchQuestionFragment paramSearchQuestionFragment, ARCloudReqInfo paramARCloudReqInfo) {}
+  private static final String jdField_a_of_type_JavaLangString = agcy.class.getSimpleName();
+  private StructingMsgItemBuilder.CacheMap jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap = new StructingMsgItemBuilder.CacheMap(null);
+  private StructingMsgItemBuilder.CacheMap b = new StructingMsgItemBuilder.CacheMap(null);
   
-  public void a(int paramInt, String paramString, ARCloudRecogResult paramARCloudRecogResult)
+  private agcz a(String paramString, ViewGroup paramViewGroup)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchQuestionFragment", 2, "retCode:" + paramInt + "sessionId:" + paramString + ",recogResult:" + paramARCloudRecogResult);
-    }
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqOcrQuestionSearchQuestionFragment.c)) && (this.jdField_a_of_type_ComTencentMobileqqOcrQuestionSearchQuestionFragment.c.equals(paramString)))
+    Iterator localIterator = this.b.get(paramString).iterator();
+    while (localIterator.hasNext())
     {
-      if ((paramInt != 0) || (paramARCloudRecogResult == null)) {
-        break label205;
-      }
-      paramString = paramARCloudRecogResult.a;
-      if (paramString != null)
-      {
-        paramString = paramString.c;
-        paramARCloudRecogResult = new Message();
-        paramARCloudRecogResult.obj = paramString;
-        paramARCloudRecogResult.what = 5;
-        this.jdField_a_of_type_ComTencentMobileqqOcrQuestionSearchQuestionFragment.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(paramARCloudRecogResult);
+      paramString = (agcz)localIterator.next();
+      if (paramString != null) {
+        paramString.a(paramViewGroup);
       }
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.jdField_a_of_type_JavaLangString))) {}
-      try
-      {
-        if (new File(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.jdField_a_of_type_JavaLangString).getParent().equals(SearchQuestionFragment.jdField_a_of_type_JavaLangString)) {
-          FileUtils.d(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.jdField_a_of_type_JavaLangString);
-        }
-        return;
-      }
-      catch (Exception paramString)
-      {
-        label205:
-        paramString.printStackTrace();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqOcrQuestionSearchQuestionFragment.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(4);
+      this.b.remove(paramString);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.add(paramString);
+      return paramString;
+      paramString = null;
     }
+  }
+  
+  public View a(String paramString, ViewGroup paramViewGroup)
+  {
+    a(paramString, paramViewGroup);
+    paramString = a(paramString, paramViewGroup);
+    if (paramString != null) {
+      return paramString.a();
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.clear();
+    this.b.clear();
+  }
+  
+  public void a(String paramString, View paramView, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.add(new agcz(paramString, paramView, paramViewGroup));
+  }
+  
+  public void a(String paramString, ViewGroup paramViewGroup)
+  {
+    if (paramViewGroup == null) {}
+    agcz localagcz;
+    do
+    {
+      return;
+      while (!paramString.hasNext()) {
+        paramString = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.get(paramString).iterator();
+      }
+      localagcz = (agcz)paramString.next();
+    } while ((localagcz == null) || (localagcz.a() == null) || (localagcz.a() != paramViewGroup));
+    localagcz.a().removeAllViews();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.remove(localagcz);
+    this.b.add(localagcz);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agcy
  * JD-Core Version:    0.7.0.1
  */

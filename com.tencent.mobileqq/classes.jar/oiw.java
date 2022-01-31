@@ -1,43 +1,44 @@
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
 public class oiw
-  implements TextWatcher
 {
-  public oiw(EditTextDialog paramEditTextDialog) {}
+  private oiy jdField_a_of_type_Oiy;
+  private upd jdField_a_of_type_Upd = new upd();
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  private void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiEditTextDialog$EditTextDialogEventListener == null) {}
-    do
-    {
-      return;
-      paramInt2 = this.a.a(paramCharSequence.toString());
-      if (paramInt2 > 420)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.subSequence(0, paramInt1));
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramInt1);
-        if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiEditTextDialog$EditTextDialogEventListener != null) {
-          this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiEditTextDialog$EditTextDialogEventListener.b(420);
-        }
-      }
-    } while (paramInt2 <= 0);
-    this.a.b.setTextColor(Color.parseColor("#12b7f5"));
-    this.a.b.setEnabled(true);
+    if (this.jdField_a_of_type_Oiy != null) {
+      this.jdField_a_of_type_Oiy.a(paramPublishVideoEntry, paramInt, paramString);
+    }
+  }
+  
+  private void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  {
+    if (this.jdField_a_of_type_Oiy != null) {
+      this.jdField_a_of_type_Oiy.a(paramPublishVideoEntry, paramString);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    upd.a(upd.a(paramString));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    paramString1 = upd.a(paramString1);
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_Upd.a(paramString1, paramString2 + ".tmp.mp4", false, true, new oix(this, l, paramString1));
+  }
+  
+  public void a(oiy paramoiy)
+  {
+    this.jdField_a_of_type_Oiy = paramoiy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oiw
  * JD-Core Version:    0.7.0.1
  */

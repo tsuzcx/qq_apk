@@ -1,36 +1,34 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XEditTextEx;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class rtv
-  implements View.OnClickListener
+  implements oil
 {
-  public rtv(BaseChatPie paramBaseChatPie, String paramString1, String paramString2) {}
+  public rtv(ReadInJoyListViewGroup paramReadInJoyListViewGroup, ArticleInfo paramArticleInfo) {}
   
-  public void onClick(View paramView)
+  public void a(oio paramoio)
   {
-    if (!this.jdField_a_of_type_JavaLangString.equals("0"))
+    if (paramoio.a() == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().clear();
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagManager = ((PasswdRedBagManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(124));
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagManager.c(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c);
+      olt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, new CommentInfo(), false);
+      QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup.a(), 2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup.a().getString(2131718801), 0).a();
     }
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart();
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText();
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.M = true;
-    paramView.insert(i, this.b);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.M = false;
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(paramView.length());
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aj();
+    for (;;)
+    {
+      ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).a();
+      ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup, null);
+      return;
+      QQToast.a(BaseApplication.getContext(), 1, alud.a(2131713279), 0).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rtv
  * JD-Core Version:    0.7.0.1
  */

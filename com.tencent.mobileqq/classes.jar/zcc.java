@@ -1,21 +1,58 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.PrinterHandler;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.s2c.msgtype0x211.submsgtype0x9.C2CType0x211_SubC2CType0x9.MsgBody;
+import android.widget.TextView;
+import com.tencent.biz.videostory.widget.view.smartmusicview.SmartMusicRecyclerView;
+import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class zcc
-  implements Runnable
+class zcc
+  implements zcg
 {
-  public zcc(DataLineHandler paramDataLineHandler1, DataLineHandler paramDataLineHandler2, msg_comm.Msg paramMsg, C2CType0x211_SubC2CType0x9.MsgBody paramMsgBody) {}
+  zcc(zby paramzby) {}
   
-  public void run()
+  public void a(int paramInt, VsMusicItemInfo paramVsMusicItemInfo)
   {
-    this.b.a.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler, this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg, this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0x9C2CType0x211_SubC2CType0x9$MsgBody);
+    boolean bool = false;
+    if (paramInt == this.a.a) {
+      return;
+    }
+    zby.a(this.a).setHasAutoSet(false);
+    if (zby.a(this.a) != null)
+    {
+      paramVsMusicItemInfo = zby.a(this.a);
+      if (!zby.a(this.a)) {
+        bool = true;
+      }
+      paramVsMusicItemInfo.a(bool);
+      zby.a(this.a).b();
+    }
+    zby.a(this.a).smoothScrollToPosition(paramInt);
+  }
+  
+  public void a(int paramInt, zck paramzck)
+  {
+    if (zby.a(this.a)) {
+      zby.a(this.a);
+    }
+    VsMusicItemInfo localVsMusicItemInfo = zby.a(this.a).a(paramInt);
+    if ((zby.c(this.a) != null) && (localVsMusicItemInfo != null))
+    {
+      QLog.i("EditVideoSmartMusicPart", 1, "onPositionChange:" + paramInt + ", music name:" + localVsMusicItemInfo.mMusicName + ", musicSongMid:" + localVsMusicItemInfo.mSongMid + ", musicCoverUrl:" + localVsMusicItemInfo.mAlbumUrl + ", musicUrl:" + localVsMusicItemInfo.mUrl);
+      zby.b(this.a);
+      zby.c(this.a).setText(localVsMusicItemInfo.mMusicName);
+      zby.a(this.a, localVsMusicItemInfo, paramInt, paramzck);
+    }
+    zby.c(this.a);
+  }
+  
+  public void a(VsMusicItemInfo paramVsMusicItemInfo, int paramInt, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (zby.a(this.a) != null) && (zby.a(this.a).mSongMid != null) && (zby.a(this.a).mSongMid.equals(paramVsMusicItemInfo.mSongMid))) {
+      zby.a(this.a, paramVsMusicItemInfo, paramInt, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zcc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,24 @@
-import com.tencent.mobileqq.richstatus.ActionUrlActivity;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import java.util.HashMap;
 
 public class ahpf
-  extends WebChromeClient
+  implements ahpd
 {
-  private ahpf(ActionUrlActivity paramActionUrlActivity) {}
+  public ahpf(TroopActivity paramTroopActivity) {}
   
-  public void onProgressChanged(WebView paramWebView, int paramInt)
+  public void a(String paramString, boolean paramBoolean)
   {
-    super.onProgressChanged(paramWebView, paramInt);
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    this.a.setTitle(paramString);
-    this.a.a();
+    if ((this.a.a.containsKey(paramString)) && (((Boolean)this.a.a.get(paramString)).booleanValue() != paramBoolean))
+    {
+      this.a.a.remove(paramString);
+      return;
+    }
+    this.a.a.put(paramString, Boolean.valueOf(paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahpf
  * JD-Core Version:    0.7.0.1
  */

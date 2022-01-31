@@ -1,43 +1,21 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.jtcode.JtcodePluginInstallActivity;
-import cooperation.plugin.IPluginManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Comparator;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
 
-public class amlm
-  implements Runnable
+class amlm
+  implements Comparator<msg_comm.Msg>
 {
-  public amlm(JtcodePluginInstallActivity paramJtcodePluginInstallActivity) {}
+  amlm(amll paramamll) {}
   
-  public void run()
+  public int a(msg_comm.Msg paramMsg1, msg_comm.Msg paramMsg2)
   {
-    long l1 = System.currentTimeMillis();
-    if ((JtcodePluginInstallActivity.a(this.a).a("wlx_jtcode.apk") == null) || (!JtcodePluginInstallActivity.a(this.a).isReady()))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.e("JtcodePluginInstallActivity", 4, "mPluginManager.queryPlugin->pluginInfo is null");
-      }
-      if (!JtcodePluginInstallActivity.a(this.a))
-      {
-        ThreadManager.getSubThreadHandler().postDelayed(this, 3000L);
-        JtcodePluginInstallActivity.a(this.a, true);
-        return;
-      }
-      QQToast.a(this.a.getApplicationContext(), 2131438295, 0);
-      JtcodePluginInstallActivity.a(this.a, false);
-      this.a.finish();
-      return;
-    }
-    long l2 = System.currentTimeMillis();
-    JtcodePluginInstallActivity.a(this.a).append(" ==step4:initPluginManager queryPlugin cost=" + (l2 - l1) + ";start time=" + l1);
-    ThreadManager.getUIHandler().post(new amln(this));
-    JtcodePluginInstallActivity.a(this.a).append(" ==step5:initPluginManager UIHandler().post cost=" + (System.currentTimeMillis() - l2));
+    return ((msg_comm.MsgHead)paramMsg1.msg_head.get()).msg_time.get() - ((msg_comm.MsgHead)paramMsg2.msg_head.get()).msg_time.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amlm
  * JD-Core Version:    0.7.0.1
  */

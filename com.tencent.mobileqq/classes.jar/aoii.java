@@ -1,19 +1,19 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
 public class aoii
-  implements Runnable
+  implements bicg
 {
-  public aoii(LbsFilterStatusManager paramLbsFilterStatusManager, int paramInt, boolean paramBoolean, ArrayList paramArrayList) {}
+  public aoii(IphonePickerView paramIphonePickerView) {}
   
-  public void run()
+  public void a(View paramView, int paramInt)
   {
-    LbsFilterStatusManager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilArrayList);
+    IphonePickerView.a(this.a, paramView, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoii
  * JD-Core Version:    0.7.0.1
  */

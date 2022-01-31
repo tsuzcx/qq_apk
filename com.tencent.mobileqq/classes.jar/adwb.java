@@ -1,32 +1,50 @@
-import com.tencent.mobileqq.jsp.DataApiPlugin;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SearchFriendListActivity;
+import java.util.ArrayList;
 
 public class adwb
-  extends WtloginListener
+  extends BaseAdapter
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
-  private String d;
+  private adwb(SearchFriendListActivity paramSearchFriendListActivity) {}
   
-  public adwb(DataApiPlugin paramDataApiPlugin, String paramString1, String paramString2, String paramString3, String paramString4)
+  public int getCount()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
+    return SearchFriendListActivity.a(this.a).size();
   }
   
-  public void OnGetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg)
+  public Object getItem(int paramInt)
   {
-    if (paramInt2 == 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqJspDataApiPlugin.a(this.jdField_a_of_type_JavaLangString, paramWUserSigInfo, this.b, paramInt1, this.c, this.d);
-      return;
+    if ((paramInt < 0) || (paramInt >= SearchFriendListActivity.a(this.a).size())) {
+      return null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqJspDataApiPlugin.a(this.b, "getTicket fail code = " + paramInt2);
+    return SearchFriendListActivity.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null)
+    {
+      localView = this.a.getLayoutInflater().inflate(2131562588, paramViewGroup, false);
+      paramView = new adwc();
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367546));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371160));
+      paramView.b = ((TextView)localView.findViewById(2131365050));
+      localView.setTag(paramView);
+      localView.setOnClickListener(this.a);
+    }
+    this.a.a(localView, paramInt);
+    return localView;
   }
 }
 

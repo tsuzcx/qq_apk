@@ -1,50 +1,69 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeVideoList;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
 class uyx
-  implements ActionSheet.OnButtonClickListener
+  implements urr<uzm, uzn>
 {
-  uyx(uyv paramuyv, ActionSheet paramActionSheet) {}
+  uyx(uyw paramuyw, uyg paramuyg) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(@NonNull uzm paramuzm, @Nullable uzn paramuzn, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (paramInt)
+    if ((paramuzn == null) || (paramErrorMessage.isFail()))
     {
-    default: 
+      wxe.e("Q.qqstory.msgTab.jobPullVidList", "pull failed, err=" + paramErrorMessage.getErrorMessage() + " node:" + this.jdField_a_of_type_Uyg);
+      uyw.a(this.jdField_a_of_type_Uyw, paramErrorMessage);
       return;
     }
-    String str;
-    if (this.jdField_a_of_type_Uyv.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1006)
+    if (paramuzn.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.video_list.size() == 0)
     {
-      str = this.jdField_a_of_type_Uyv.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      paramView = null;
-    }
-    for (;;)
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_Uyv.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Uyv.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Uyv.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramView, this.jdField_a_of_type_Uyv.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, str, true, this.jdField_a_of_type_Uyv.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, true, true, null, null);
-      str = ChatActivityUtils.a(this.jdField_a_of_type_Uyv.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-      paramView = str;
-      if (str == null) {
-        paramView = "";
+      if (this.jdField_a_of_type_Uyg.jdField_a_of_type_Int != 5)
+      {
+        wxe.e("Q.qqstory.msgTab.jobPullVidList", "pull failed, ERROR_NODE_VIDEOINFO_VIDLIST_IS_NULL, info=" + this.jdField_a_of_type_Uyg + ", err=ERROR_NODE_VIDEOINFO_VIDLIST_IS_NULL, " + paramErrorMessage.getErrorMessage());
+        uyw.b(this.jdField_a_of_type_Uyw, new ErrorMessage(103, paramErrorMessage.getErrorMessage()));
+        return;
       }
-      ReportController.b(this.jdField_a_of_type_Uyv.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "12", paramView, "", "");
-      ReportController.b(this.jdField_a_of_type_Uyv.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005974", "0X8005974", 0, 0, "", "", "", "");
+      uyw.a(this.jdField_a_of_type_Uyw, uyw.a(paramuzn.jdField_a_of_type_JavaUtilList));
       return;
-      paramView = this.jdField_a_of_type_Uyv.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      str = null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.jobPullVidList", 2, "pull succeed, info=" + this.jdField_a_of_type_Uyg);
+    }
+    uyz.a(this.jdField_a_of_type_Uyg, paramuzn.jdField_a_of_type_ArrayOfByte);
+    paramuzm = uyw.a(paramuzn.jdField_a_of_type_JavaUtilList);
+    if (this.jdField_a_of_type_Uyg.jdField_a_of_type_Int == 12) {}
+    uyw.b(this.jdField_a_of_type_Uyw, paramuzm);
+    if (this.jdField_a_of_type_Uyg.jdField_a_of_type_Int == 12) {
+      if (this.jdField_a_of_type_Uyw.a != null)
+      {
+        this.jdField_a_of_type_Uyw.a.c = paramuzn.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.cookie.get();
+        paramuzm = this.jdField_a_of_type_Uyw.a;
+        if (paramuzn.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.is_end.get() <= 0) {
+          break label345;
+        }
+      }
+    }
+    label345:
+    for (boolean bool = true;; bool = false)
+    {
+      paramuzm.a = bool;
+      this.jdField_a_of_type_Uyg.i = paramuzn.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.cookie.get();
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      wxe.a("Q.qqstory.msgTab.jobPullVidList", "MsgTabNodeVidListPullSegment::runSegment() use net resp %s, %s", this.jdField_a_of_type_Uyg.jdField_a_of_type_JavaLangString, paramuzn.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uyx
  * JD-Core Version:    0.7.0.1
  */

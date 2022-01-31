@@ -12,26 +12,31 @@ public final class get_photo_list_2_rsp
   extends JceStruct
 {
   static Album cache_albuminfo = new Album();
-  static Map cache_features;
-  static ArrayList cache_photolist = new ArrayList();
+  static Map<Integer, String> cache_busi_param;
+  static Map<Integer, byte[]> cache_features;
+  static int cache_photo_search_status = 0;
+  static ArrayList<s_picdata> cache_photolist = new ArrayList();
   static stPhotoPoiAreaList cache_pos;
-  static ArrayList cache_recommand_album;
+  static ArrayList<Album> cache_recommand_album;
   static RecommendPhotos cache_recommend_photos;
   static s_outshare cache_shareinfo;
-  static ArrayList cache_timeline;
+  static ArrayList<TimeLine> cache_timeline;
   static s_videoflow_user cache_user;
   public Album albuminfo;
   public int appid;
+  public String attach_info = "";
+  public Map<Integer, String> busi_param;
   public int curindex;
-  public Map features;
+  public Map<Integer, byte[]> features;
   public long finish;
   public int lossy_service;
-  public ArrayList photolist;
+  public int photo_search_status = 1;
+  public ArrayList<s_picdata> photolist;
   public stPhotoPoiAreaList pos;
-  public ArrayList recommand_album;
+  public ArrayList<Album> recommand_album;
   public RecommendPhotos recommend_photos;
   public s_outshare shareinfo;
-  public ArrayList timeline;
+  public ArrayList<TimeLine> timeline;
   public long total;
   public s_videoflow_user user;
   
@@ -53,26 +58,31 @@ public final class get_photo_list_2_rsp
     cache_timeline = new ArrayList();
     localObject = new TimeLine();
     cache_timeline.add(localObject);
+    cache_busi_param = new HashMap();
+    cache_busi_param.put(Integer.valueOf(0), "");
   }
   
   public get_photo_list_2_rsp() {}
   
-  public get_photo_list_2_rsp(Album paramAlbum, ArrayList paramArrayList1, int paramInt1, int paramInt2, long paramLong1, long paramLong2, s_outshare params_outshare, int paramInt3, ArrayList paramArrayList2, s_videoflow_user params_videoflow_user, Map paramMap, RecommendPhotos paramRecommendPhotos, stPhotoPoiAreaList paramstPhotoPoiAreaList, ArrayList paramArrayList3)
+  public get_photo_list_2_rsp(Album paramAlbum, ArrayList<s_picdata> paramArrayList, int paramInt1, int paramInt2, long paramLong1, long paramLong2, s_outshare params_outshare, int paramInt3, ArrayList<Album> paramArrayList1, s_videoflow_user params_videoflow_user, Map<Integer, byte[]> paramMap, RecommendPhotos paramRecommendPhotos, stPhotoPoiAreaList paramstPhotoPoiAreaList, ArrayList<TimeLine> paramArrayList2, String paramString, Map<Integer, String> paramMap1, int paramInt4)
   {
     this.albuminfo = paramAlbum;
-    this.photolist = paramArrayList1;
+    this.photolist = paramArrayList;
     this.curindex = paramInt1;
     this.appid = paramInt2;
     this.total = paramLong1;
     this.finish = paramLong2;
     this.shareinfo = params_outshare;
     this.lossy_service = paramInt3;
-    this.recommand_album = paramArrayList2;
+    this.recommand_album = paramArrayList1;
     this.user = params_videoflow_user;
     this.features = paramMap;
     this.recommend_photos = paramRecommendPhotos;
     this.pos = paramstPhotoPoiAreaList;
-    this.timeline = paramArrayList3;
+    this.timeline = paramArrayList2;
+    this.attach_info = paramString;
+    this.busi_param = paramMap1;
+    this.photo_search_status = paramInt4;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -91,6 +101,9 @@ public final class get_photo_list_2_rsp
     this.recommend_photos = ((RecommendPhotos)paramJceInputStream.read(cache_recommend_photos, 13, false));
     this.pos = ((stPhotoPoiAreaList)paramJceInputStream.read(cache_pos, 14, false));
     this.timeline = ((ArrayList)paramJceInputStream.read(cache_timeline, 15, false));
+    this.attach_info = paramJceInputStream.readString(16, false);
+    this.busi_param = ((Map)paramJceInputStream.read(cache_busi_param, 17, false));
+    this.photo_search_status = paramJceInputStream.read(this.photo_search_status, 18, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -123,6 +136,13 @@ public final class get_photo_list_2_rsp
     if (this.timeline != null) {
       paramJceOutputStream.write(this.timeline, 15);
     }
+    if (this.attach_info != null) {
+      paramJceOutputStream.write(this.attach_info, 16);
+    }
+    if (this.busi_param != null) {
+      paramJceOutputStream.write(this.busi_param, 17);
+    }
+    paramJceOutputStream.write(this.photo_search_status, 18);
   }
 }
 

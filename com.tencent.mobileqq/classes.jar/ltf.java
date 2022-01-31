@@ -1,24 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFService;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.aekit.openrender.internal.Frame;
 
-public class ltf
-  implements Runnable
+class ltf
+  implements ltm
 {
-  public ltf(ReadInJoyMSFService paramReadInJoyMSFService, ToServiceMsg paramToServiceMsg, WeakReference paramWeakReference) {}
+  ltf(lte paramlte) {}
   
-  public void run()
+  public void a(Frame paramFrame, ltj paramltj)
   {
-    int i = ReadInJoyMSFService.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyMSFService);
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttributes().put("seq", Integer.valueOf(i));
-    ReadInJoyMSFService.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyMSFService).put(Integer.valueOf(i), this.jdField_a_of_type_JavaLangRefWeakReference);
+    lte.a(this.a, paramFrame);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ltf
  * JD-Core Version:    0.7.0.1
  */

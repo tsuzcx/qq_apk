@@ -1,75 +1,84 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedItem;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 class nui
-  implements Runnable
+  implements View.OnClickListener
 {
-  nui(nuh paramnuh, boolean paramBoolean) {}
+  nui(nuh paramnuh, int paramInt, JSONObject paramJSONObject, Context paramContext, MessageRecord paramMessageRecord) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i1 = 0;
-    if (DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a).isJobCancelled())
+    switch (this.jdField_a_of_type_Int)
     {
-      SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "stream cancel on all function completed.");
-      return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    for (;;)
     {
-      Object localObject = (Integer)this.jdField_a_of_type_Nuh.getFunctionResult(0);
-      if (localObject != null) {
-        DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a).a.mViewTotalTime = ((Integer)localObject).intValue();
+      if ((nuh.a(this.jdField_a_of_type_Nuh) != null) && (nuh.a(this.jdField_a_of_type_Nuh).isShowing())) {
+        nuh.a(this.jdField_a_of_type_Nuh).dismiss();
       }
-      if (DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a).a()) {}
-      int m;
-      int n;
-      for (int j = 2;; j = 1)
+      return;
+      paramView = this.jdField_a_of_type_OrgJsonJSONObject.optString("action_url", "");
+      if (!bdnn.a(paramView))
       {
-        int k = 0;
-        int i = 1;
-        for (;;)
+        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        localIntent.putExtra("url", paramView);
+        localIntent.putExtra("big_brother_source_key", "biz_src_gzh_qqgw");
+        ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivity(localIntent);
+        continue;
+        ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForArkApp))
         {
-          m = i;
-          n = i1;
-          if (k >= j) {
-            break;
-          }
-          localObject = (nug)this.jdField_a_of_type_Nuh.getFunctionResult(i);
-          if (localObject != null)
+          paramView = (MessageForArkApp)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+          if (paramView.arkContainer != null)
           {
-            DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a).b(((nug)localObject).jdField_a_of_type_JavaUtilList, true, ((nug)localObject).jdField_a_of_type_Boolean);
-            DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a).b(((nug)localObject).jdField_a_of_type_Boolean, ((nug)localObject).jdField_a_of_type_Int);
-            DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a).a.mHadLike = ((nug)localObject).b;
+            if (QLog.isColorLevel()) {
+              QLog.i("EcshopAdHelper", 2, "doOnEvent ARKAPP_TYPE_DESTROY");
+            }
+            paramView.arkContainer.doOnEvent(2);
           }
-          k += 1;
-          i += 1;
         }
-      }
-      while (n < j)
-      {
-        localObject = (nuf)this.jdField_a_of_type_Nuh.getFunctionResult(m);
-        if (localObject != null)
+        ((nud)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(8, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692458), 1).a();
+        continue;
+        ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForArkApp))
         {
-          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a).a(((nuf)localObject).jdField_a_of_type_JavaUtilList, true, ((nuf)localObject).jdField_a_of_type_Boolean);
-          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a).a(((nuf)localObject).jdField_a_of_type_Boolean, ((nuf)localObject).jdField_a_of_type_Int);
-          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a).a(((nuf)localObject).jdField_a_of_type_Boolean, ((nuf)localObject).b);
-          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a).a(((nuf)localObject).jdField_a_of_type_Boolean, ((nuf)localObject).jdField_a_of_type_JavaLangString);
+          paramView = (MessageForArkApp)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+          if (paramView.arkContainer != null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("EcshopAdHelper", 2, "doOnEvent ARKAPP_TYPE_DESTROY");
+            }
+            paramView.arkContainer.doOnEvent(2);
+          }
         }
-        n += 1;
-        m += 1;
+        ((nud)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(7, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692458), 1).a();
       }
-      DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a, DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a));
-      return;
     }
-    DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a, new ErrorMessage(-1, "get feed interact data error."));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nui
  * JD-Core Version:    0.7.0.1
  */

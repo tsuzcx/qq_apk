@@ -1,84 +1,77 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import Wallet.SkinInfo;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class aize
-  extends Handler
 {
-  public aize(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  public static boolean a;
+  public static int c = 0;
+  public int a;
+  public SkinInfo a;
+  public RedPacketInfoBase a;
+  public String a;
+  public int b;
+  public String b = "";
   
-  public void handleMessage(Message paramMessage)
+  public aize(SkinInfo paramSkinInfo)
   {
-    if (this.a.isFinishing()) {}
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_WalletSkinInfo = new SkinInfo();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = new RedPacketInfoBase();
+    this.jdField_a_of_type_JavaLangString = paramSkinInfo.skin_name;
+    this.jdField_a_of_type_WalletSkinInfo = paramSkinInfo;
+  }
+  
+  public aize(String paramString)
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_WalletSkinInfo = new SkinInfo();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = new RedPacketInfoBase();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static int a(List<aize> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      aize localaize = (aize)paramList.next();
+      if (c == localaize.jdField_a_of_type_WalletSkinInfo.skin_id) {
+        return localaize.jdField_a_of_type_WalletSkinInfo.skin_id;
+      }
+    }
+    return -1;
+  }
+  
+  public static void a(List<aize> paramList)
+  {
+    Collections.sort(paramList, new aizf());
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
     do
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            switch (paramMessage.what)
-            {
-            case 1002: 
-            case 1007: 
-            default: 
-              return;
-            case 1001: 
-              this.a.a(false);
-              if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-                this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-              }
-              QQToast.a(this.a, 2131430349, 1).b(this.a.getTitleBarHeight());
-            }
-          } while (!(paramMessage.obj instanceof String));
-          paramMessage = (String)paramMessage.obj;
-          try
-          {
-            this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramMessage);
-            return;
-          }
-          catch (UnsupportedOperationException paramMessage) {}
-        } while (!QLog.isColorLevel());
-        QLog.d("TroopBar", 2, paramMessage.toString());
-        return;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-        }
-        this.a.a(false);
-        this.a.a();
-        return;
-        if ((paramMessage.arg1 == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo != null)) {
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.url = ((String)paramMessage.obj);
-        }
-      } while ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()));
-      this.a.a();
-      return;
-      this.a.a(false);
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      return true;
+      if (!(paramObject instanceof aize)) {
+        break;
       }
-      QQToast.a(this.a, 2131430348, 1).b(this.a.getTitleBarHeight());
-      return;
-      if ((paramMessage.obj instanceof String))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a((String)paramMessage.obj);
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a(this.a.jdField_a_of_type_JavaUtilArrayList);
-    } while (this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
-    return;
-    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-    TroopBarReplyActivity.a(this.a, 4);
+    } while (this.jdField_a_of_type_WalletSkinInfo.skin_id == ((aize)paramObject).jdField_a_of_type_WalletSkinInfo.skin_id);
+    return false;
+    return super.equals(paramObject);
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("");
+    localStringBuffer.append("background : " + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.background + " | ");
+    localStringBuffer.append("icon : " + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.icon + " | ");
+    return localStringBuffer.toString();
   }
 }
 

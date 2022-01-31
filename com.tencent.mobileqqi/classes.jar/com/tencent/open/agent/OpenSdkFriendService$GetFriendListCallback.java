@@ -13,7 +13,7 @@ import com.tencent.open.base.http.HttpBaseUtil.NetworkUnavailableException;
 import com.tencent.open.base.http.HttpCgiAsyncTask;
 import com.tencent.open.base.http.HttpCgiAsyncTask.Callback;
 import com.tencent.open.settings.OpensdkPreference;
-import hno;
+import hjk;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
@@ -125,7 +125,7 @@ public class OpenSdkFriendService$GetFriendListCallback
           {
             paramJSONObject = (ArrayList)FriendGroup.c(paramJSONObject);
             localFriendResponseInfo.jdField_a_of_type_JavaUtilArrayList = paramJSONObject;
-            ThreadManager.b(new hno(this, paramJSONObject, str));
+            ThreadManager.b(new hjk(this, paramJSONObject, str));
             if (this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$GetFriendInfoListener == null) {
               break label536;
             }

@@ -1,54 +1,46 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.adapter.TroopMessageSettingSingleAdapter;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.List;
-import tencent.im.oidb.cmd0x72d.cmd0x72d.RspBody;
+import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
+import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView;
 
 public class twp
-  extends ProtoUtils.TroopProtocolObserver
+  extends trw
 {
-  public twp(TroopAssistantActivity paramTroopAssistantActivity, TroopAssistantManager paramTroopAssistantManager) {}
+  public twp(QCircleBaseTabFragment paramQCircleBaseTabFragment) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public QCirclePolymorphicAniView a()
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app, 0L);
-      return;
+    return this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicAniView;
+  }
+  
+  public String a()
+  {
+    if (this.a.jdField_a_of_type_Tsa != null) {
+      return this.a.jdField_a_of_type_Tsa.b();
     }
-    catch (Exception paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-      return;
+    return "";
+  }
+  
+  public tuz a()
+  {
+    return this.a.jdField_a_of_type_Tuz;
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (this.a.jdField_a_of_type_Ttl != null) {
+      this.a.jdField_a_of_type_Ttl.a("share_action_show_share_sheet", paramObject);
     }
-    paramBundle = new cmd0x72d.RspBody();
-    paramBundle.mergeFrom(paramArrayOfByte);
-    paramArrayOfByte = paramBundle.rpt_uint64_groupcode.get();
-    if (paramBundle.opt_uint32_ret_code.get() == 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app, paramBundle.opt_uint64_timestamp.get());
-      if ((paramArrayOfByte.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingSingleAdapter != null))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.jdField_a_of_type_JavaUtilList = paramArrayOfByte;
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingSingleAdapter.a(paramArrayOfByte);
-        return;
-      }
-      TroopAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity);
-      return;
+  }
+  
+  public void a(ttf paramttf)
+  {
+    if (this.a.jdField_a_of_type_Tvv != null) {
+      this.a.jdField_a_of_type_Tvv.a().a("poly_zan_list_show", paramttf);
     }
-    this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app, 0L);
-    TroopAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     twp
  * JD-Core Version:    0.7.0.1
  */

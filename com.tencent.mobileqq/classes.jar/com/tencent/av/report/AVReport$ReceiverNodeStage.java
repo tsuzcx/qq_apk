@@ -3,6 +3,8 @@ package com.tencent.av.report;
 public enum AVReport$ReceiverNodeStage
 {
   RecvInviteRequest,  other;
+  
+  private AVReport$ReceiverNodeStage() {}
 }
 
 

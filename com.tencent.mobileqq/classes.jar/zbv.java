@@ -1,38 +1,31 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import protocol.KQQConfig.GetResourceRespInfo;
+import WEISHI_USER_GROWTH.WEISHI.stGetPersonalPageRsp;
+import java.lang.ref.WeakReference;
 
-public class zbv
-  implements Runnable
+final class zbv
+  implements zac<WEISHI.stGetPersonalPageRsp>
 {
-  public zbv(ConfigHandler paramConfigHandler, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
+  private final WeakReference<zbr> a;
   
-  public void run()
+  public zbv(zbr paramzbr)
   {
-    File localFile = new File(AppConstants.bG);
-    try
+    this.a = new WeakReference(paramzbr);
+  }
+  
+  public void a(boolean paramBoolean, long paramLong, String paramString, WEISHI.stGetPersonalPageRsp paramstGetPersonalPageRsp)
+  {
+    paramString = (zbr)this.a.get();
+    if (paramString == null) {}
+    do
     {
-      if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.b, new URL(this.jdField_a_of_type_JavaLangString), localFile))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(1, true, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(1, false, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
       return;
-    }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(1, false, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
-    }
+      paramString.a(paramstGetPersonalPageRsp, false);
+    } while (paramstGetPersonalPageRsp == null);
+    zbr.a(paramString, paramstGetPersonalPageRsp.toByteArray());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zbv
  * JD-Core Version:    0.7.0.1
  */

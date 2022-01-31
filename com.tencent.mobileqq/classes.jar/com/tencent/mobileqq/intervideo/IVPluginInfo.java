@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.intervideo;
 
-import adtg;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import aszf;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class IVPluginInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new adtg();
+  public static final Parcelable.Creator<IVPluginInfo> CREATOR = new aszf();
   public int a;
   public long a;
   public Bundle a;
@@ -58,7 +58,7 @@ public class IVPluginInfo
     this.k = paramParcel.readString();
   }
   
-  public static Map a()
+  public static Map<String, IVPluginInfo> a()
   {
     HashMap localHashMap = new HashMap();
     IVPluginInfo localIVPluginInfo1 = new IVPluginInfo();
@@ -78,13 +78,20 @@ public class IVPluginInfo
     localIVPluginInfo3.jdField_c_of_type_JavaLangString = "com.tencent.gvideo";
     localIVPluginInfo3.jdField_b_of_type_JavaLangString = "1104763709";
     localIVPluginInfo3.e = "1";
+    IVPluginInfo localIVPluginInfo4 = new IVPluginInfo();
+    localIVPluginInfo3.jdField_a_of_type_Int = 2;
+    localIVPluginInfo3.jdField_a_of_type_JavaLangString = "Od";
+    localIVPluginInfo3.jdField_c_of_type_JavaLangString = "com.tencent.huiyin";
+    localIVPluginInfo3.jdField_b_of_type_JavaLangString = "1104763709";
+    localIVPluginInfo3.e = "100";
     localHashMap.put(localIVPluginInfo1.jdField_c_of_type_JavaLangString, localIVPluginInfo1);
     localHashMap.put(localIVPluginInfo2.jdField_c_of_type_JavaLangString, localIVPluginInfo2);
     localHashMap.put(localIVPluginInfo3.jdField_c_of_type_JavaLangString, localIVPluginInfo3);
+    localHashMap.put(localIVPluginInfo4.jdField_c_of_type_JavaLangString, localIVPluginInfo4);
     return localHashMap;
   }
   
-  public static Map a(String paramString)
+  public static Map<String, IVPluginInfo> a(String paramString)
   {
     localHashMap = new HashMap();
     try
@@ -142,7 +149,7 @@ public class IVPluginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.IVPluginInfo
  * JD-Core Version:    0.7.0.1
  */

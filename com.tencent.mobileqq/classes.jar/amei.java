@@ -1,24 +1,14 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class amei
-  implements View.OnFocusChangeListener
+public final class amei
+  implements DialogInterface.OnClickListener
 {
-  public amei(XPanelContainer paramXPanelContainer) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
-  {
-    if ((QLog.isColorLevel()) && ((this.a.getContext() instanceof Activity))) {
-      QLog.d("XPanelContainer", 2, new Object[] { "input focus changed, hasFocus=", Boolean.valueOf(paramBoolean), ", current focus=", ((Activity)this.a.getContext()).getCurrentFocus() });
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amei
  * JD-Core Version:    0.7.0.1
  */

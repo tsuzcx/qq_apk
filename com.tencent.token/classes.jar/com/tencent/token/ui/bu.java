@@ -2,17 +2,15 @@ package com.tencent.token.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.global.e;
 
-final class bu
+class bu
   implements View.OnClickListener
 {
-  bu(BindUinActivity paramBindUinActivity) {}
+  bu(BaseActivity paramBaseActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    e.c("removeTimeTask showProgressDialog");
-    this.a.removeTimeTask(5);
+    this.a.finish();
   }
 }
 

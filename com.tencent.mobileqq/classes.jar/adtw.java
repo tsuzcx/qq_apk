@@ -1,24 +1,52 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class adtw
-  implements INetEventHandler
+  extends Handler
 {
-  public adtw(GroupVideoManager paramGroupVideoManager) {}
+  public adtw(RegisterActivity paramRegisterActivity) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    if (GroupVideoManager.a(this.a) == null) {}
-    do
+    this.a.c();
+    switch (paramMessage.what)
     {
+    case -1: 
+    case 0: 
+    case 2: 
+    default: 
+    case 1: 
+    case 3: 
+    case 4: 
+    case 5: 
+      do
+      {
+        return;
+        paramMessage = this.a;
+        paramMessage.jdField_a_of_type_Byte = ((byte)(paramMessage.jdField_a_of_type_Byte + 1));
+        this.a.a();
+        return;
+        this.a.d();
+        return;
+        this.a.b();
+        return;
+      } while (this.a.jdField_a_of_type_JavaLangString == null);
+      Toast.makeText(this.a.getApplicationContext(), this.a.jdField_a_of_type_JavaLangString, 1).show();
+      this.a.jdField_a_of_type_JavaLangString = null;
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupVideoManager", 2, "onNetChangeEvent connect:" + paramBoolean + " isMSFConnect:" + GroupVideoManager.a(this.a).e);
-      }
-    } while (!paramBoolean);
-    this.a.a(false);
+    case 6: 
+      paramMessage = paramMessage.getData().getString("url");
+      this.a.a(paramMessage);
+      return;
+    case 7: 
+      this.a.a(paramMessage.getData().getString("telNum"), paramMessage.getData().getString("msg"));
+      return;
+    }
+    this.a.jdField_a_of_type_Byte = 3;
+    this.a.a();
   }
 }
 

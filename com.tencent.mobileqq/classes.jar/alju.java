@@ -1,49 +1,19 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.open.wadl.WLog;
-import com.tencent.open.wadl.WadlJsBridgeService;
-import cooperation.wadl.ipc.WadlParams;
-import cooperation.wadl.ipc.WadlProxyServiceUtil;
-import cooperation.wadl.ipc.WadlProxyServiceWrap;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class alju
-  extends Handler
+  implements akoh
 {
-  public alju(WadlJsBridgeService paramWadlJsBridgeService, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public alju(alkb paramalkb, QQAppInterface paramQQAppInterface) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    String str = (String)paramMessage.obj;
-    WLog.b(WadlJsBridgeService.a(), "The obj field of msg:" + paramMessage.what + "," + paramMessage.obj);
-    switch (paramMessage.what)
-    {
-    case 2: 
-    case 3: 
-    default: 
-    case 0: 
-    case 4: 
-      for (;;)
-      {
-        this.a.stopSelf(paramMessage.arg1);
-        return;
-        WadlProxyServiceUtil.a().b(4, str);
-      }
-    case 5: 
-      WadlProxyServiceUtil.a().a(4, str);
-      return;
-    }
-    paramMessage = new WadlParams(str, "");
-    paramMessage.c = 4;
-    WadlProxyServiceUtil.a().c(paramMessage);
+    this.jdField_a_of_type_Alkb.b(ApolloGameUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alju
  * JD-Core Version:    0.7.0.1
  */

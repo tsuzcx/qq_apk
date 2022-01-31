@@ -1,46 +1,25 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
-import com.tencent.mobileqq.subaccount.logic.SubAccountGetMessageControll;
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
 
 public class gpw
-  extends MessageObserver
+  implements View.OnTouchListener
 {
-  public gpw(SubAccountGetMessageControll paramSubAccountGetMessageControll) {}
+  public gpw(NearbyTroopsActivity paramNearbyTroopsActivity) {}
   
-  public void b(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramString = SubAccountGetMessageControll.a(this.a);
-    if ((paramBoolean) && (paramSubAccountBackProtocData != null)) {}
-    try
-    {
-      if (!paramSubAccountBackProtocData.a)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.subaccount.SubAccountGetMessageControll", 2, "onGetSubAccountMsgNotify： is get msg last finish = false");
-        }
-        return;
-      }
-      SubAccountGetMessageControll.a(this.a, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.subaccount.SubAccountGetMessageControll", 2, "onGetSubAccountMsgNotify： observer = >onGetSubAccountMsgNotify pushNum =" + SubAccountGetMessageControll.a(this.a));
-      }
-      if (SubAccountGetMessageControll.a(this.a) > 0)
-      {
-        SubAccountGetMessageControll.a(this.a, 0);
-        this.a.a(false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.subaccount.SubAccountGetMessageControll", 2, "onGetSubAccountMsgNotify： observer = >onGetSubAccountMsgNotify end");
-      }
-      return;
+    if (this.a.a != null) {
+      this.a.a.onTouchEvent(paramMotionEvent);
     }
-    finally {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     gpw
  * JD-Core Version:    0.7.0.1
  */

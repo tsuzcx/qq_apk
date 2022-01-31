@@ -1,13 +1,29 @@
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCarePersonActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.content.Context;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.voip.VoipTencentPayActivity;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.IPluginManager.OnPluginReadyListener;
+import cooperation.plugin.IPluginManager.PluginParams;
+import java.util.Timer;
 
 public class exc
+  implements IPluginManager.OnPluginReadyListener
 {
-  public FormSimpleItem a;
-  public String a;
-  public String b;
+  public exc(VoipTencentPayActivity paramVoipTencentPayActivity) {}
   
-  private exc(QvipSpecialCarePersonActivity paramQvipSpecialCarePersonActivity) {}
+  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      paramContext = new exd(this);
+      new Timer().schedule(paramContext, 100L);
+      return;
+    }
+    VoipTencentPayActivity.a().post(new exe(this, paramContext));
+  }
 }
 
 

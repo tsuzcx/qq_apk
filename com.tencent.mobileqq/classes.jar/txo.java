@@ -1,48 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.qqcircle.events.QCircleDoublePraiseAnimationEvent;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
 
 public class txo
-  extends BroadcastReceiver
+  implements uhq
 {
-  public txo(TroopInfoActivity paramTroopInfoActivity) {}
+  public txo(QCircleContentImage paramQCircleContentImage, FeedCloudMeta.StFeed paramStFeed) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    if (paramIntent == null) {}
-    do
+    if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null)
     {
-      do
-      {
-        return;
-      } while (!"changeGroupTribe".equals(paramIntent.getStringExtra("event")));
-      paramContext = paramIntent.getStringExtra("data");
-    } while (paramContext == null);
-    try
-    {
-      paramContext = new JSONObject(paramContext);
-      this.a.a.tribeId = paramContext.optInt("bid");
-      this.a.a.tribeName = paramContext.optString("bname");
-      this.a.e = true;
-      paramContext = new ArrayList();
-      if (!TextUtils.isEmpty(this.a.a.tribeName)) {
-        paramContext.add(this.a.a.tribeName);
-      }
-      this.a.a(9, paramContext, true, 1, true);
-      return;
+      String str = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get();
+      int i = tzy.a().a();
+      yiw.a().a(new QCircleDoublePraiseAnimationEvent(str, i, QCircleContentImage.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage)));
+      QLog.d("QCircleContentImage", 1, "dispatchEvent id:" + str + " pageType:" + i);
     }
-    catch (JSONException paramContext) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txo
  * JD-Core Version:    0.7.0.1
  */

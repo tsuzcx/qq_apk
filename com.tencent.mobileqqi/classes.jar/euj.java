@@ -1,16 +1,16 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.DiscussionListInnerFrame;
-import com.tencent.mobileqq.data.DiscussionInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class euj
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public DiscussionInfo a;
-  public TextView b;
+  public euj(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  private euj(DiscussionListInnerFrame paramDiscussionListInnerFrame) {}
+  public void onClick(View paramView)
+  {
+    this.a.c(paramView);
+  }
 }
 
 

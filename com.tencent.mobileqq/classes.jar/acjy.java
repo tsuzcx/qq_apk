@@ -1,21 +1,30 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
 public final class acjy
-  implements View.OnTouchListener
+  implements DialogInterface.OnCancelListener
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public acjy(aclo paramaclo, int paramInt, acln paramacln) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    switch (paramMotionEvent.getAction())
+    if (this.jdField_a_of_type_Aclo.a)
     {
+      if (this.jdField_a_of_type_Int != 2) {
+        break label59;
+      }
+      azqs.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "3", "", "", "");
     }
     for (;;)
     {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+      if (this.jdField_a_of_type_Acln != null) {
+        this.jdField_a_of_type_Acln.a();
+      }
+      return;
+      label59:
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+        azqs.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "3", "", "", "");
+      }
     }
   }
 }

@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.util.ScreenShotUtil;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SigCommentListActivity;
 
 public class adyb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public adyb(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject) {}
+  public adyb(SigCommentListActivity paramSigCommentListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.i = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
-    ScreenShotUtil.a(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a(), new adyc(this));
+    this.a.a(true, true);
   }
 }
 

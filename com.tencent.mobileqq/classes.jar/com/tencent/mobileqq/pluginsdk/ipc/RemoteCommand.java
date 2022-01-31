@@ -5,19 +5,19 @@ import android.os.Bundle;
 public abstract class RemoteCommand
 {
   public static final String RESULT_KEY = "result_key";
-  private String a;
+  private String mCmd;
   
   public RemoteCommand(String paramString)
   {
-    this.a = paramString;
+    this.mCmd = paramString;
   }
   
   public String getCmd()
   {
-    return this.a;
+    return this.mCmd;
   }
   
-  public abstract Bundle invoke(Bundle paramBundle, OnInvokeFinishLinstener paramOnInvokeFinishLinstener);
+  public abstract Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener);
   
   public boolean isSynchronized()
   {
@@ -26,12 +26,7 @@ public abstract class RemoteCommand
   
   public String toString()
   {
-    return "[cmd:" + this.a + ", sync:" + isSynchronized() + "]";
-  }
-  
-  public static abstract interface OnInvokeFinishLinstener
-  {
-    public abstract void onInvokeFinish(Bundle paramBundle);
+    return "[cmd:" + this.mCmd + ", sync:" + isSynchronized() + "]";
   }
 }
 

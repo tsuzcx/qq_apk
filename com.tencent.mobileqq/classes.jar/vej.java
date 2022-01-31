@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.List;
 
-class vej
-  implements Runnable
+public class vej
+  extends uli
 {
-  vej(vei paramvei) {}
+  public List<StoryVideoItem> a;
   
-  public void run()
+  public String toString()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a(this.a.jdField_a_of_type_Ver, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, this.a.jdField_a_of_type_ComTencentImageURLDrawable);
+    return "GetVideoBasicInfoListEvent{, mVideoList=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vej
  * JD-Core Version:    0.7.0.1
  */

@@ -20,6 +20,7 @@ public final class UserProfile
   public byte bFavorited = -1;
   public byte bFavoritedMe = -1;
   public short bIsLastVoteCharged;
+  public short bMutualFriends;
   public byte bSex = -1;
   public byte bSingle = -1;
   public short bTodayVotedCnt;
@@ -55,7 +56,7 @@ public final class UserProfile
   
   public UserProfile() {}
   
-  public UserProfile(long paramLong1, int paramInt1, short paramShort1, byte paramByte1, byte paramByte2, String paramString, int paramInt2, int paramInt3, short paramShort2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6, byte[] paramArrayOfByte3, byte paramByte7, VipBaseInfo paramVipBaseInfo, byte[] paramArrayOfByte4, short paramShort3, long paramLong2, short paramShort4, short paramShort5, short paramShort6, long paramLong3, short paramShort7, short paramShort8)
+  public UserProfile(long paramLong1, int paramInt1, short paramShort1, byte paramByte1, byte paramByte2, String paramString, int paramInt2, int paramInt3, short paramShort2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6, byte[] paramArrayOfByte3, byte paramByte7, VipBaseInfo paramVipBaseInfo, byte[] paramArrayOfByte4, short paramShort3, long paramLong2, short paramShort4, short paramShort5, short paramShort6, long paramLong3, short paramShort7, short paramShort8, short paramShort9)
   {
     this.lEctID = paramLong1;
     this.lTime = paramInt1;
@@ -84,6 +85,7 @@ public final class UserProfile
     this.dwLikeCustomId = paramLong3;
     this.bTollVoteCnt = paramShort7;
     this.bIsLastVoteCharged = paramShort8;
+    this.bMutualFriends = paramShort9;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -115,6 +117,7 @@ public final class UserProfile
     this.dwLikeCustomId = paramJceInputStream.read(this.dwLikeCustomId, 24, false);
     this.bTollVoteCnt = paramJceInputStream.read(this.bTollVoteCnt, 25, false);
     this.bIsLastVoteCharged = paramJceInputStream.read(this.bIsLastVoteCharged, 26, false);
+    this.bMutualFriends = paramJceInputStream.read(this.bMutualFriends, 27, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -156,6 +159,7 @@ public final class UserProfile
     paramJceOutputStream.write(this.dwLikeCustomId, 24);
     paramJceOutputStream.write(this.bTollVoteCnt, 25);
     paramJceOutputStream.write(this.bIsLastVoteCharged, 26);
+    paramJceOutputStream.write(this.bMutualFriends, 27);
   }
 }
 

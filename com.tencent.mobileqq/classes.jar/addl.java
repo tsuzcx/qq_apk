@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.activity.GesturePWDGuideActivity;
 
-class addl
-  implements FMDialogUtil.FMDialogInterface
+public class addl
+  implements View.OnClickListener
 {
-  addl(addk paramaddk) {}
+  public addl(GesturePWDGuideActivity paramGesturePWDGuideActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a.r();
+    paramView = new Intent(this.a, GesturePWDCreateActivity.class);
+    this.a.startActivityForResult(paramView, 999);
+    this.a.overridePendingTransition(2130771997, 2130771990);
+    azqs.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_Gesture_password", 0, 0, "", "", "", "");
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     addl
  * JD-Core Version:    0.7.0.1
  */

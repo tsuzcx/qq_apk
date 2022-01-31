@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/yj" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.activity.aio.item.ArkAppView android:id="@id/yo" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

@@ -1,40 +1,38 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcess;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface.Stub;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.SkinRedPacketStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.qphone.base.util.QLog;
 
 public class aerk
-  extends NearbyProcessInterface.Stub
+  implements ajal
 {
-  public aerk(NearbyProcess paramNearbyProcess) {}
+  public aerk(CustomizeStrategyFactory.SkinRedPacketStrategy.1 param1) {}
   
-  public Message a(Message paramMessage)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if (paramMessage == null) {
-      return null;
-    }
-    return this.a.b(paramMessage);
-  }
-  
-  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
-  {
-    if (paramBasicTypeDataParcel == null) {}
-    Object[] arrayOfObject;
-    do
+    paramPathResult = paramPathResult.filePath;
+    if (paramInt == 0) {}
+    try
     {
-      return null;
+      this.a.a.resPath = paramPathResult;
       if (QLog.isColorLevel()) {
-        QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
+        QLog.d("CustomizeStrategyFactory", 2, "TYPE_POP_ANIM path=" + paramPathResult);
       }
-      arrayOfObject = this.a.b(paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
-    } while (arrayOfObject == null);
-    return new BasicTypeDataParcel(paramBasicTypeDataParcel.jdField_a_of_type_Int, arrayOfObject);
+      CustomizeStrategyFactory.a().a(this.a.a);
+      return;
+    }
+    catch (Throwable paramPathResult)
+    {
+      for (;;)
+      {
+        paramPathResult.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerk
  * JD-Core Version:    0.7.0.1
  */

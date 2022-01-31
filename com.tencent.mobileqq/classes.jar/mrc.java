@@ -1,21 +1,19 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import com.tencent.av.ui.funchat.zimu.ZimuViewPacMan;
 
 public class mrc
-  implements View.OnLongClickListener
 {
-  public mrc(NativeText paramNativeText) {}
+  public int a;
+  public int b;
   
-  public boolean onLongClick(View paramView)
+  public mrc(ZimuViewPacMan paramZimuViewPacMan, int paramInt1, int paramInt2)
   {
-    this.a.a(0, 0, true);
-    return false;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mrc
  * JD-Core Version:    0.7.0.1
  */

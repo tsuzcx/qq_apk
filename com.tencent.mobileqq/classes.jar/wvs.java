@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
-import com.tencent.mobileqq.utils.LogTag;
+import android.widget.TextView;
 
-public class wvs
-  implements Runnable
+class wvs
+  implements upa
 {
-  public wvs(AlbumListAdapter paramAlbumListAdapter) {}
+  wvs(wvq paramwvq, TextView paramTextView) {}
   
-  public void run()
+  public void a(String paramString, int paramInt)
   {
-    LogTag.a();
-    this.a.a(100);
-    LogTag.a("PEAK", "queryAlbumList");
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131707914) + paramInt + "%");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wvs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,40 @@
-import android.app.Activity;
-import android.app.AlertDialog.Builder;
-import android.app.Dialog;
-import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import com.tencent.open.base.LogUtility;
+import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public final class alev
-  implements Runnable
+public class alev
+  extends bead
 {
-  public alev(Bundle paramBundle, Activity paramActivity, int paramInt1, ApkUpdateDetail paramApkUpdateDetail, int paramInt2) {}
+  public alev(ApolloCardWindow paramApolloCardWindow) {}
   
-  public void run()
+  public void onDoneFile(beae parambeae)
   {
-    Object localObject = new alew(this);
-    alex localalex = new alex(this);
-    LogUtility.b("DownloadJSApi", "dialog create and show");
-    localObject = new AlertDialog.Builder(this.jdField_a_of_type_AndroidAppActivity).setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131428555)).setPositiveButton(2131428552, localalex).setNegativeButton(2131428553, (DialogInterface.OnClickListener)localObject).create();
-    ((Dialog)localObject).setCanceledOnTouchOutside(false);
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      ((Dialog)localObject).show();
+    if (parambeae == null) {
+      return;
+    }
+    try
+    {
+      ??? = parambeae.a().getString("path");
+      String str = parambeae.a().getString("url");
+      parambeae = this.a.a((String)???);
+      str = bflr.d(str);
+      synchronized (ApolloCardWindow.a)
+      {
+        ApolloCardWindow.a.put(str, parambeae);
+        return;
+      }
+      return;
+    }
+    catch (Exception parambeae)
+    {
+      QLog.e("ApolloCardWindow", 1, "onDoneFile error:", parambeae);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alev
  * JD-Core Version:    0.7.0.1
  */

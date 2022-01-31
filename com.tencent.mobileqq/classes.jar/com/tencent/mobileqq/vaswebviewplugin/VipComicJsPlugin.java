@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.emosm.DataFactory;
+import apmh;
+import apml;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -18,7 +18,7 @@ public class VipComicJsPlugin
     this.mPluginNameSpace = "ppreloader";
   }
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
       QLog.d("Plugin Preloader", 2, "handleJsRequest, url=" + paramString1);
@@ -36,7 +36,7 @@ public class VipComicJsPlugin
         {
           paramString2 = new Bundle();
           paramString2.putString("processId", paramString1.optString("processId"));
-          sendRemoteReq(DataFactory.a("ipc_preload_plugin_process", paramJsBridgeListener, this.mOnRemoteResp.key, paramString2), false, false);
+          sendRemoteReq(apml.a("ipc_preload_plugin_process", paramJsBridgeListener, this.mOnRemoteResp.key, paramString2), false, false);
           return true;
         }
         catch (Exception paramString1)
@@ -101,7 +101,7 @@ public class VipComicJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VipComicJsPlugin
  * JD-Core Version:    0.7.0.1
  */

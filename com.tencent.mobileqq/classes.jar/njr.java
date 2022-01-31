@@ -1,19 +1,20 @@
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase.GetFeedFeatureReceiver;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class njr
-  implements Runnable
+class njr
+  implements View.OnClickListener
 {
-  public njr(FeedsPlayModeBase.GetFeedFeatureReceiver paramGetFeedFeatureReceiver, FeedsPlayModeBase paramFeedsPlayModeBase) {}
+  njr(nin paramnin, String paramString, npo paramnpo) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.v();
+    nin.c(this.jdField_a_of_type_Nin, this.jdField_a_of_type_JavaLangString);
+    nin.a(this.jdField_a_of_type_Nin, this.jdField_a_of_type_Npo.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     njr
  * JD-Core Version:    0.7.0.1
  */

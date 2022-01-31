@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/jqh" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/ha0" android:background="@drawable/qq_title_immersive_bar" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" />
+    <include android:id="@id/ha1" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" layout="@layout/bjr" />
+</RelativeLayout>

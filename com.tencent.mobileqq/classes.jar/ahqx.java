@@ -1,34 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.SearchHistory;
-import com.tencent.mobileqq.search.HistorySearchEntryModel;
-import com.tencent.mobileqq.search.IContactSearchable;
-import com.tencent.mobileqq.search.util.SearchUtils;
-import java.util.List;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import mqq.os.MqqHandler;
 
 public class ahqx
-  implements View.OnClickListener
+  extends ameq
 {
-  public ahqx(HistorySearchEntryModel paramHistorySearchEntryModel) {}
+  public ahqx(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt1, int paramInt2)
   {
-    long l = ((Long)paramView.getTag(-1)).longValue();
-    int i = HistorySearchEntryModel.a(this.a, this.a.a, l);
-    if (i == -1) {}
-    do
-    {
-      return;
-      paramView = (SearchHistory)((IContactSearchable)this.a.a.get(i)).a();
-    } while (paramView == null);
-    SearchUtils.a("home_page", "del_history", new String[] { "" + i });
-    ThreadManager.postImmediately(new ahqy(this, paramView, l), null, true);
+    if (paramInt1 == 8) {
+      this.a.a.sendEmptyMessage(1018);
+    }
+  }
+  
+  protected void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramInt1 == 8) {
+      this.a.a.sendEmptyMessage(1016);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahqx
  * JD-Core Version:    0.7.0.1
  */

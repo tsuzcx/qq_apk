@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.activity.contacts.view.pullrefresh;
 
+import ahvu;
+import ahvw;
+import ahvx;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -10,28 +13,27 @@ import android.text.style.ImageSpan;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.RotateAnimation;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.biz.ui.IPullRefreshHeader;
-import com.tencent.mobileqq.utils.TimeFormatterUtils;
+import bdns;
+import yxi;
 
 public class ContactRefreshHeader
-  extends FrameLayout
-  implements IPullRefreshHeader, SwipeRefreshTrigger, SwipeTrigger
+  extends RelativeLayout
+  implements ahvw, ahvx, yxi
 {
   private int jdField_a_of_type_Int = 0;
   public long a;
+  private ahvu jdField_a_of_type_Ahvu;
   private Context jdField_a_of_type_AndroidContentContext;
   private RotateAnimation jdField_a_of_type_AndroidViewAnimationRotateAnimation;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ContactRefreshHeader.OnRefreshHeaderUpdateListener jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshContactRefreshHeader$OnRefreshHeaderUpdateListener;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = -1;
   private RotateAnimation jdField_b_of_type_AndroidViewAnimationRotateAnimation;
@@ -64,7 +66,7 @@ public class ContactRefreshHeader
     this.jdField_b_of_type_AndroidViewAnimationRotateAnimation = new RotateAnimation(-180.0F, 0.0F, 1, 0.5F, 1, 0.5F);
     this.jdField_b_of_type_AndroidViewAnimationRotateAnimation.setDuration(100L);
     this.jdField_b_of_type_AndroidViewAnimationRotateAnimation.setFillAfter(true);
-    this.h = getResources().getDimensionPixelOffset(2131558434);
+    this.h = getResources().getDimensionPixelOffset(2131298665);
   }
   
   @TargetApi(17)
@@ -81,8 +83,8 @@ public class ContactRefreshHeader
   private long b()
   {
     long l = 0L;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshContactRefreshHeader$OnRefreshHeaderUpdateListener != null) {
-      l = this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshContactRefreshHeader$OnRefreshHeaderUpdateListener.a();
+    if (this.jdField_a_of_type_Ahvu != null) {
+      l = this.jdField_a_of_type_Ahvu.a();
     }
     return l;
   }
@@ -99,7 +101,7 @@ public class ContactRefreshHeader
     if (paramLong != 0L)
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("%s%s", new Object[] { this.jdField_a_of_type_AndroidContentContext.getString(2131434348), TimeFormatterUtils.a(paramLong, true, "yyyy-MM-dd") }));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("%s%s", new Object[] { this.jdField_a_of_type_AndroidContentContext.getString(2131720338), bdns.a(paramLong, true, "yyyy-MM-dd") }));
       if (this.f >= 0) {
         this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.f);
       }
@@ -125,15 +127,6 @@ public class ContactRefreshHeader
       return;
       a(localLayoutParams, 12);
       localLayoutParams.addRule(10);
-    }
-  }
-  
-  public void Y_()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetProgressBar != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
     }
   }
   
@@ -173,14 +166,14 @@ public class ContactRefreshHeader
       b(this.e);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       return;
-      localDrawable = getResources().getDrawable(2130845445);
-      str = getResources().getString(2131434353);
+      localDrawable = getResources().getDrawable(2130849028);
+      str = getResources().getString(2131720343);
       continue;
-      localDrawable = getResources().getDrawable(2130845443);
-      str = getResources().getString(2131434349);
+      localDrawable = getResources().getDrawable(2130849026);
+      str = getResources().getString(2131720337);
       continue;
-      localDrawable = getResources().getDrawable(2130845444);
-      str = getResources().getString(2131434349);
+      localDrawable = getResources().getDrawable(2130849027);
+      str = getResources().getString(2131720337);
     }
   }
   
@@ -207,11 +200,11 @@ public class ContactRefreshHeader
       b(this.e);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       return;
-      localDrawable = getResources().getDrawable(2130845445);
+      localDrawable = getResources().getDrawable(2130849028);
       continue;
-      localDrawable = getResources().getDrawable(2130845443);
+      localDrawable = getResources().getDrawable(2130849026);
       continue;
-      localDrawable = getResources().getDrawable(2130845444);
+      localDrawable = getResources().getDrawable(2130849027);
     }
   }
   
@@ -240,7 +233,7 @@ public class ContactRefreshHeader
   {
     try
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131434346);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131720339);
       b(this.d);
       label18:
       d(paramLong);
@@ -252,6 +245,15 @@ public class ContactRefreshHeader
     catch (Exception localException)
     {
       break label18;
+    }
+  }
+  
+  public void at_()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetProgressBar != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
     }
   }
   
@@ -268,7 +270,7 @@ public class ContactRefreshHeader
   {
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
     this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationRotateAnimation);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131434347);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131720342);
     b(this.c);
     d(paramLong);
   }
@@ -283,25 +285,25 @@ public class ContactRefreshHeader
     if (this.jdField_a_of_type_Int == 0)
     {
       if (this.g == 0) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845441);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849024);
       }
       for (;;)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131434345);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131720340);
         b(this.jdField_b_of_type_Int);
         d(paramLong);
         return;
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838619);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839250);
       }
     }
     if (this.g == 0) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845442);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849025);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131434344);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131720341);
       break;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838620);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839251);
     }
   }
   
@@ -315,7 +317,7 @@ public class ContactRefreshHeader
   public void e()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131434345);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131720340);
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
@@ -330,16 +332,16 @@ public class ContactRefreshHeader
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363057));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363049));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363301));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363944));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363945));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364771));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131375588));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375585));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375587));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375593));
     if (this.jdField_a_of_type_Int != 0) {
       f();
     }
     if (this.g != 0) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838621);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839252);
     }
     c(0L);
   }
@@ -379,9 +381,9 @@ public class ContactRefreshHeader
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void setRefreshHeaderUpdateListener(ContactRefreshHeader.OnRefreshHeaderUpdateListener paramOnRefreshHeaderUpdateListener)
+  public void setRefreshHeaderUpdateListener(ahvu paramahvu)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshContactRefreshHeader$OnRefreshHeaderUpdateListener = paramOnRefreshHeaderUpdateListener;
+    this.jdField_a_of_type_Ahvu = paramahvu;
   }
   
   public void setTextColor(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
@@ -395,7 +397,7 @@ public class ContactRefreshHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader
  * JD-Core Version:    0.7.0.1
  */

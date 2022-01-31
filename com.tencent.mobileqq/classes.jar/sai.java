@@ -1,31 +1,18 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.utils.ShareMsgHelper;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-public class sai
-  implements Runnable
+public abstract interface sai
 {
-  public sai(ChatHistoryFileActivity paramChatHistoryFileActivity, String paramString1, String paramString2, int paramInt) {}
+  public abstract int a(BaseData paramBaseData);
   
-  public void run()
-  {
-    Iterator localIterator = MultiMsgManager.a().a.iterator();
-    while (localIterator.hasNext())
-    {
-      ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-      if ((localChatMessage instanceof MessageForStructing)) {
-        ShareMsgHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, ((MessageForStructing)localChatMessage).structingMsg, null);
-      }
-    }
-  }
+  public abstract sah a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup);
+  
+  public abstract boolean a(BaseData paramBaseData);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sai
  * JD-Core Version:    0.7.0.1
  */

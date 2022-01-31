@@ -1,23 +1,14 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ftf
-  extends RadioButton
+public final class ftf
+  implements DialogInterface.OnClickListener
 {
-  public ftf(EmoticonPagerRadioGroup paramEmoticonPagerRadioGroup, Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  public boolean performClick()
-  {
-    return true;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ftf
  * JD-Core Version:    0.7.0.1
  */

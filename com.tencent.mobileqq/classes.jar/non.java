@@ -1,26 +1,14 @@
-import com.tencent.biz.qqstory.playvideo.TVKPreloader;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadListener;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArraySet;
-
-class non
-  implements Runnable
+public class non
 {
-  non(nol paramnol, TVKPreloader.PreloadItem paramPreloadItem, String paramString1, int paramInt, String paramString2) {}
-  
-  public void run()
-  {
-    Iterator localIterator = TVKPreloader.a().iterator();
-    while (localIterator.hasNext()) {
-      ((TVKPreloader.PreloadListener)localIterator.next()).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem, new Throwable(this.jdField_a_of_type_JavaLangString + "|" + String.valueOf(this.jdField_a_of_type_Int) + "|" + this.b));
-    }
-    TVKPreloader.a(true);
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     non
  * JD-Core Version:    0.7.0.1
  */

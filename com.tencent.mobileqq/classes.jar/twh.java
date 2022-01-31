@@ -1,32 +1,46 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Headers;
+import okhttp3.Response;
 
-public class twh
-  extends MqqHandler
+class twh
+  implements Callback
 {
-  public twh(TroopAssistantActivity paramTroopAssistantActivity) {}
+  twh(twe paramtwe, tvy paramtvy, boolean paramBoolean, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onFailure(Call paramCall, IOException paramIOException)
   {
-    if (!this.a.app.isLogin()) {
-      return;
-    }
-    switch (paramMessage.what)
+    QLog.d(twe.jdField_a_of_type_JavaLangString, 1, "checkResource onFailure");
+    this.jdField_a_of_type_Tvy.a(false, this.jdField_a_of_type_Boolean, false, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onResponse(Call paramCall, Response paramResponse)
+  {
+    try
     {
-    default: 
-      return;
-    case 1: 
-      this.a.c();
+      paramCall = paramResponse.headers().get("X-COS-META-MD5");
+      if ((TextUtils.isEmpty(paramCall)) || (this.jdField_a_of_type_JavaLangString.equals(paramCall)))
+      {
+        QLog.d(twe.jdField_a_of_type_JavaLangString, 1, "checkResource is up to date");
+        this.jdField_a_of_type_Tvy.a(true, this.jdField_a_of_type_Boolean, false, paramCall);
+        return;
+      }
+      QLog.d(twe.jdField_a_of_type_JavaLangString, 1, "checkResource need update");
+      this.jdField_a_of_type_Tvy.a(true, this.jdField_a_of_type_Boolean, true, paramCall);
       return;
     }
-    this.a.c();
+    catch (Throwable paramCall)
+    {
+      paramCall.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     twh
  * JD-Core Version:    0.7.0.1
  */

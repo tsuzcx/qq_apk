@@ -1,29 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordReport.1;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordReport.2;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordReport.3;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordReport.4;
+import com.tencent.qphone.base.util.QLog;
 
-public final class amuk
-  implements Parcelable.Creator
+public class amuk
 {
-  public CoverCacheData.GameCoverInfo a(Parcel paramParcel)
+  private static amuk a;
+  
+  public static amuk a()
   {
-    CoverCacheData.GameCoverInfo localGameCoverInfo = new CoverCacheData.GameCoverInfo();
-    if (paramParcel != null)
-    {
-      localGameCoverInfo.jdField_a_of_type_Double = paramParcel.readDouble();
-      localGameCoverInfo.jdField_b_of_type_Double = paramParcel.readDouble();
-      localGameCoverInfo.c = paramParcel.readDouble();
-      localGameCoverInfo.d = paramParcel.readDouble();
-      localGameCoverInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      localGameCoverInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      localGameCoverInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    if (a == null) {
+      a = new amuk();
     }
-    return localGameCoverInfo;
+    return a;
   }
   
-  public CoverCacheData.GameCoverInfo[] a(int paramInt)
+  public void a()
   {
-    return null;
+    QLog.d("ARRecordReport", 2, "reportPreRecordStart");
+    ThreadManager.post(new ARRecordReport.1(this), 5, null, false);
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("ARRecordReport", 2, String.format("reportRecordFail failType=%s", new Object[] { Integer.valueOf(paramInt) }));
+    ThreadManager.post(new ARRecordReport.4(this, paramInt), 5, null, false);
+  }
+  
+  public void a(int paramInt, long paramLong)
+  {
+    QLog.d("ARRecordReport", 2, String.format("reportRecordSuccess successType=%s videoLength=%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) }));
+    ThreadManager.post(new ARRecordReport.3(this, paramInt, paramLong), 5, null, false);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    QLog.d("ARRecordReport", 2, String.format("reportActiveRecordStart inPreRecord=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    ThreadManager.post(new ARRecordReport.2(this, paramBoolean), 5, null, false);
   }
 }
 

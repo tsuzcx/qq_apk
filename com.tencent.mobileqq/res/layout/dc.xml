@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/root" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:background="@null" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <TextView android:textColor="@color/al3" android:gravity="center" android:id="@id/ivTitleBtnLeft" android:background="@drawable/fd" android:layout_width="wrap_content" android:layout_height="44.0dip" android:layout_marginLeft="10.0dip" android:maxWidth="99.0dip" android:minWidth="40.0dip" android:text="@string/u3" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+        <RelativeLayout android:id="@id/dtm" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <TextView android:textColor="@color/al3" android:gravity="center" android:id="@id/ds2" android:paddingRight="8.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/jl6" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <FrameLayout android:id="@id/b9r" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/rlCommenTitle" />
+</RelativeLayout>

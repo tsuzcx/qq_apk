@@ -1,47 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.AddressDataProvider;
-import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
-import com.tencent.biz.qqstory.network.request.GetLocationRequest;
-import com.tencent.biz.qqstory.network.response.GetLocationResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.annotation.TargetApi;
+import android.content.ClipData;
+import android.content.Context;
+import android.os.Build.VERSION;
 
-public class ncr
-  implements CmdTaskManger.CommandCallback
+public final class ncr
 {
-  public ncr(AddressDataProvider paramAddressDataProvider) {}
-  
-  public void a(@NonNull GetLocationRequest paramGetLocationRequest, @Nullable GetLocationResponse paramGetLocationResponse, @NonNull ErrorMessage paramErrorMessage)
+  @TargetApi(11)
+  public static void a(Context paramContext, String paramString)
   {
-    SLog.b("AddressDataProvider", "requestAddress Cmd Respond.");
-    if ((paramErrorMessage.isSuccess()) && (paramGetLocationResponse != null))
+    if (Build.VERSION.SDK_INT >= 11)
     {
-      SLog.a("AddressDataProvider", "requestAddress onCmdRespond success : %s .", paramGetLocationResponse.toString());
-      this.a.jdField_a_of_type_JavaLangObject = new AddressDataProvider.AddressInfo(paramGetLocationResponse.a, paramGetLocationResponse.c, paramGetLocationResponse.d, paramGetLocationResponse.e, paramGetLocationResponse.f, paramGetLocationRequest.d, paramGetLocationRequest.e);
-      this.a.a("country", paramGetLocationResponse.a);
-      this.a.a("province", paramGetLocationResponse.c);
-      this.a.a("city", paramGetLocationResponse.d);
-      this.a.a("district", paramGetLocationResponse.e);
-      this.a.a("street", paramGetLocationResponse.f);
-      this.a.a("longitude", paramGetLocationRequest.d);
-      this.a.a("latitude", paramGetLocationRequest.e);
-      this.a.a("time", System.currentTimeMillis());
-      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
+      ((android.content.ClipboardManager)paramContext.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, paramString));
       return;
-      SLog.d("AddressDataProvider", "requestAddress onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramGetLocationRequest });
-      this.a.a(false, null);
     }
+    ((android.text.ClipboardManager)paramContext.getSystemService("clipboard")).setText(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ncr
  * JD-Core Version:    0.7.0.1
  */

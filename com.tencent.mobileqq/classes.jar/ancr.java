@@ -1,14 +1,19 @@
-import cooperation.qzone.cache.FileCacheService;
-import cooperation.qzone.webviewplugin.QzoneOfflineCacheHelper;
-
-public final class ancr
-  implements Runnable
+public class ancr
 {
-  public ancr(String paramString) {}
+  public long a;
+  public ancg a;
+  public ancq a;
   
-  public void run()
+  public ancr()
   {
-    QzoneOfflineCacheHelper.access$000().a(this.a, true);
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Ancq = null;
+    this.jdField_a_of_type_Ancg = null;
+  }
+  
+  public String toString()
+  {
+    return "ARLocalRecogResult{frameIdx = " + this.jdField_a_of_type_Long + ", markerResult = " + this.jdField_a_of_type_Ancq + ", faceResult = " + this.jdField_a_of_type_Ancg + '}';
   }
 }
 

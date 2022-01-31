@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
+import awhp;
 import com.tencent.mobileqq.persistence.fts.FTSOptSync;
-import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.utils.fts.FTSMessageCodec;
 import com.tencent.mobileqq.utils.fts.FTSMessageCodec.MsgExts;
 
@@ -10,7 +10,7 @@ public class FTSMessageSync
 {
   public static final String MSG_SYNC_LOG_TABLE = "msg_sync_log";
   public int istroop;
-  @notColumn
+  @awhp
   public FTSMessageCodec.MsgExts msgExts;
   public byte[] msgExtsData;
   public int msgtype;
@@ -22,19 +22,19 @@ public class FTSMessageSync
     return "msg_sync_log";
   }
   
-  protected void postRead()
+  public void postRead()
   {
     this.msgExts = ((FTSMessageCodec.MsgExts)FTSMessageCodec.a(this.msgExtsData, 1));
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     this.msgExtsData = FTSMessageCodec.a(this.msgExts, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.FTSMessageSync
  * JD-Core Version:    0.7.0.1
  */

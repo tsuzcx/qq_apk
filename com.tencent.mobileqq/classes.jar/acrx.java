@@ -1,32 +1,44 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.List;
 
 public class acrx
-  implements Runnable
+  extends amdd
 {
-  public acrx(QfileLocalFileMediaTabView paramQfileLocalFileMediaTabView, FileInfo paramFileInfo) {}
+  public acrx(Conversation paramConversation) {}
   
-  public void run()
+  public void a(List<String> paramList)
   {
-    Object localObject = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.a());
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a.containsKey(localObject)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a.put(localObject, new ArrayList());
+    amnz localamnz;
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      localamnz = this.a.a.a();
+      if (localamnz != null) {
+        break label37;
+      }
+      QLog.d("Q.recent", 1, "onBatchDelete, proxy == null");
     }
-    localObject = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a.get(localObject);
-    if (((List)localObject).contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo) == true) {
+    for (;;)
+    {
       return;
+      label37:
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        RecentUser localRecentUser = localamnz.a((String)paramList.next(), 0);
+        if (localRecentUser != null) {
+          localamnz.b(localRecentUser);
+        }
+      }
     }
-    ((List)localObject).add(0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acrx
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,8 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
-import fln;
-import flp;
+import fhb;
+import fhd;
 import java.lang.reflect.Field;
 import java.util.Timer;
 import java.util.concurrent.Executor;
@@ -63,7 +63,7 @@ public final class ThreadManager
     if (jdField_a_of_type_JavaUtilTimer == null) {}
     try
     {
-      jdField_a_of_type_JavaUtilTimer = new fln("QQ_Timer");
+      jdField_a_of_type_JavaUtilTimer = new fhb("QQ_Timer");
       return jdField_a_of_type_JavaUtilTimer;
     }
     finally {}
@@ -71,7 +71,7 @@ public final class ThreadManager
   
   public static Executor a()
   {
-    return new flp(null);
+    return new fhd(null);
   }
   
   public static void a() {}

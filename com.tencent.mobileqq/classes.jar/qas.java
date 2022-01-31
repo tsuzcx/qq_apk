@@ -1,98 +1,101 @@
-import android.os.Bundle;
-import android.widget.CompoundButton;
-import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
-import com.tencent.device.utils.SmartDeviceReport;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.ToastUtil;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class qas
-  implements BusinessObserver
+  extends pxl
 {
-  public qas(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public qas(Context paramContext, bdbb parambdbb, rqj paramrqj)
   {
-    boolean bool2 = true;
-    int i = 1;
-    boolean bool1 = false;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    if (!paramBoolean)
+    super(paramContext, parambdbb, paramrqj);
+  }
+  
+  public pxl a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return f(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bdbb).q().l().n().h().g();
+  }
+  
+  public pxl d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout1.setOrientation(1);
+    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend);
+    }
+    if ((this.jdField_a_of_type_Pxk != null) && ((this.jdField_a_of_type_Pxk instanceof ComponentContentBig)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null))
     {
-      paramBundle = this.a.jdField_a_of_type_AndroidWidgetCompoundButton;
-      paramBoolean = bool1;
-      if (!this.a.jdField_a_of_type_AndroidWidgetCompoundButton.isChecked()) {
-        paramBoolean = true;
-      }
-      paramBundle.setChecked(paramBoolean);
-      ToastUtil.a().a(this.a.getString(2131427806));
-      return;
+      RelativeLayout localRelativeLayout1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      localRelativeLayout1.setPadding(aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aepi.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
+      LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      localLinearLayout2.setOrientation(1);
+      localLinearLayout2.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+      localLinearLayout2.addView((ComponentContentBig)this.jdField_a_of_type_Pxk);
+      RelativeLayout localRelativeLayout2 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      Object localObject = new LinearLayout.LayoutParams(-1, -2);
+      ((LinearLayout.LayoutParams)localObject).setMargins(0, aepi.a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aepi.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localRelativeLayout2.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localLinearLayout2.addView(localRelativeLayout2);
+      localObject = new RelativeLayout.LayoutParams(-2, -2);
+      ((RelativeLayout.LayoutParams)localObject).addRule(15);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localRelativeLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
+      localLinearLayout2.setBackgroundResource(2130842512);
+      localLinearLayout2.setOnClickListener(new qat(this));
+      localRelativeLayout1.addView(localLinearLayout2);
+      localLinearLayout1.addView(localRelativeLayout1);
     }
-    if (paramBundle.getInt("cgiResultCode", -1) != 0)
-    {
-      ToastUtil.a().a(this.a.getString(2131427804));
-      return;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
     }
-    for (;;)
-    {
-      try
-      {
-        paramBundle = new JSONObject(new String(paramBundle.getByteArray("data")));
-        if (paramBundle.optInt("ret", -1) != 0) {
-          break label280;
-        }
-        int j = ((Integer)this.a.jdField_a_of_type_AndroidWidgetCompoundButton.getTag()).intValue();
-        paramBundle = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-        if (!paramBundle.hasNext()) {
-          break;
-        }
-        localObject = (qat)paramBundle.next();
-        if (((qat)localObject).a == j) {
-          if (this.a.jdField_a_of_type_AndroidWidgetCompoundButton.isChecked())
-          {
-            paramInt = 1;
-            ((qat)localObject).b = paramInt;
-          }
-          else
-          {
-            paramInt = 0;
-          }
-        }
-      }
-      catch (JSONException paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
-      }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
     }
-    paramBundle = this.a.app;
-    long l = Long.parseLong(this.a.c);
-    paramInt = i;
-    if (this.a.jdField_a_of_type_AndroidWidgetCompoundButton.isChecked()) {
-      paramInt = 2;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
     }
-    SmartDeviceReport.a(paramBundle, l, "Usr_MsgMgr_Setting", paramInt, 0, Integer.parseInt(this.a.b));
-    return;
-    label280:
-    Object localObject = this.a.jdField_a_of_type_AndroidWidgetCompoundButton;
-    if (!this.a.jdField_a_of_type_AndroidWidgetCompoundButton.isChecked()) {}
-    for (paramBoolean = bool2;; paramBoolean = false)
-    {
-      ((CompoundButton)localObject).setChecked(paramBoolean);
-      LogUtility.a("DeviceMsgSettingActivity", "msg:" + paramBundle.optString("msg"));
-      ToastUtil.a().a(this.a.getString(2131427806));
-      return;
+    a(localLinearLayout1);
+    return this;
+  }
+  
+  public pxl e()
+  {
+    return null;
+  }
+  
+  public pxl g()
+  {
+    this.jdField_a_of_type_Pxk = new ComponentContentBig(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public pxl o()
+  {
+    super.o();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend.a(this.jdField_a_of_type_JavaLangObject);
     }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qas
  * JD-Core Version:    0.7.0.1
  */

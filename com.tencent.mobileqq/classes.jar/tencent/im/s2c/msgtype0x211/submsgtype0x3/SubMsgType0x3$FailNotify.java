@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SubMsgType0x3$FailNotify
-  extends MessageMicro
+  extends MessageMicro<FailNotify>
 {
   public static final int BYTES_REASON_FIELD_NUMBER = 3;
   public static final int UINT32_RETCODE_FIELD_NUMBER = 2;

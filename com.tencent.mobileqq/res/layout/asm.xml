@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.InputMethodRelativeLayout android:id="@id/root_layout" android:background="@drawable/b70" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/e3e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/e37" android:background="@drawable/fyz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/e3e">
+        <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/amr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:layout_below="@id/i7j">
+            <ImageButton android:id="@id/dfd" android:background="@drawable/trans" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="@dimen/nd" android:src="@drawable/qzone_skin_toolbar_btn_face_click" android:layout_toLeftOf="@id/plus_btn" android:layout_centerVertical="true" android:contentDescription="@string/dty" />
+            <View android:layout_width="1.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+            <CheckBox android:layout_gravity="center_vertical" android:id="@id/se" android:background="@drawable/cm_blue_check_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:button="@null" />
+            <TextView android:textSize="16.0sp" android:textColor="@color/zs" android:id="@id/sf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="7.0dip" android:text="@string/xx" />
+        </LinearLayout>
+        <com.tencent.mobileqq.activity.aio.InputLinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/i7j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/e3e">
+            <View android:id="@id/ix5" android:layout_width="0.0dip" android:layout_height="0.0dip" />
+            <LinearLayout android:gravity="bottom|center|left" android:orientation="horizontal" android:background="@drawable/h21" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:layout_weight="1.0">
+                <com.tencent.widget.XEditTextEx android:textSize="16.0sp" android:textColor="@color/skin_input" android:gravity="center|left|top" android:id="@id/bys" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLines="3" android:shadowColor="@color/dn" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="1.0" android:layout_weight="1.0" android:inputType="textMultiLine" android:contentDescription="@string/qn8" android:textSelectHandle="@drawable/h57" />
+            </LinearLayout>
+            <Button android:enabled="true" android:textSize="14.0sp" android:textColor="@color/skin_aio_send_button" android:layout_gravity="bottom" android:id="@id/send_btn" android:background="@drawable/dj" android:layout_width="57.0dip" android:layout_height="@dimen/ad9" android:layout_marginLeft="7.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="4.0dip" android:text="@string/a1p" />
+        </com.tencent.mobileqq.activity.aio.InputLinearLayout>
+    </LinearLayout>
+    <View android:id="@id/jvv" android:background="@drawable/b70" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/e37" />
+    <View android:background="@color/x6" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignBottom="@id/i7j" />
+    <View android:background="@color/x6" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignTop="@id/i7j" />
+    <View android:id="@id/dem" android:background="@color/x6" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignBottom="@id/jvv" />
+</com.tencent.mobileqq.widget.InputMethodRelativeLayout>

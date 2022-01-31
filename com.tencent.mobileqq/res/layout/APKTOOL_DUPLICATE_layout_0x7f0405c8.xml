@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.emoticonview.StickerGrayTipLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022213" android:paddingLeft="20.0dip" android:paddingTop="6.0dip" android:paddingRight="20.0dip" android:paddingBottom="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="50.0dip" android:layout_marginBottom="6.0dip">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1bc7" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02103d" />
-        <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:layout_gravity="center" android:id="@id/graybar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:text="腾讯文档支持多人协同编辑" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1bc7" />
-    </RelativeLayout>
-</com.tencent.mobileqq.emoticonview.StickerGrayTipLayout>

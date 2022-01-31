@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.remind.widget.IosTimepicker android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/dol" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentTop="true">
+        <RelativeLayout android:gravity="center_vertical" android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="16.0dip" android:textColor="@color/skin_black" android:ellipsize="end" android:gravity="center" android:id="@id/ima" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/h0x" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <View android:id="@id/doj" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentTop="true" />
+            <Button android:id="@id/jlr" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/h0r" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/i9" />
+            <View android:id="@id/doi" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+    </FrameLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/azn" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/dok" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/azq" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/azn">
+            <View android:id="@id/e_x" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/w0" />
+            <View android:id="@id/e_b" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/vz" android:layout_below="@id/e_x" />
+        </RelativeLayout>
+    </FrameLayout>
+</com.tencent.mobileqq.remind.widget.IosTimepicker>

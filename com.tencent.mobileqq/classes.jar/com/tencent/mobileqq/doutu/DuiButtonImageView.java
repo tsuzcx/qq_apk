@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.doutu;
 
+import afkx;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import android.widget.ImageView;
+import apjy;
+import bdhj;
 import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.FrameAnimationState;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -19,8 +20,8 @@ import java.util.List;
 public class DuiButtonImageView
   extends ImageView
 {
-  static WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private static List jdField_a_of_type_JavaUtilList = new ArrayList();
+  static WeakReference<DuiButtonImageView> jdField_a_of_type_JavaLangRefWeakReference;
+  private static List<File> jdField_a_of_type_JavaUtilList = new ArrayList();
   public static volatile boolean a;
   private static volatile boolean b;
   Context jdField_a_of_type_AndroidContentContext;
@@ -49,7 +50,7 @@ public class DuiButtonImageView
   
   public static boolean a()
   {
-    Object localObject1 = new File(DoutuManager.jdField_a_of_type_JavaLangString + "dui_icon");
+    Object localObject1 = new File(apjy.jdField_a_of_type_JavaLangString + "dui_icon");
     if (((File)localObject1).exists()) {}
     for (;;)
     {
@@ -99,7 +100,7 @@ public class DuiButtonImageView
       return false;
       paramDuiButtonImageView.g();
     } while (paramDuiButtonImageView.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable == null);
-    paramDuiButtonImageView.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.g();
+    paramDuiButtonImageView.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.h();
     paramDuiButtonImageView.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a();
     paramDuiButtonImageView.setImageDrawable(paramDuiButtonImageView.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable);
     paramDuiButtonImageView.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.c();
@@ -113,7 +114,7 @@ public class DuiButtonImageView
     }
     b = false;
     if ((jdField_a_of_type_JavaLangRefWeakReference != null) && (jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (((DuiButtonImageView)jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable != null)) {
-      ((DuiButtonImageView)jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.f();
+      ((DuiButtonImageView)jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.g();
     }
     jdField_a_of_type_JavaLangRefWeakReference = null;
   }
@@ -125,7 +126,7 @@ public class DuiButtonImageView
     }
     b = false;
     if ((jdField_a_of_type_JavaLangRefWeakReference != null) && (jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (((DuiButtonImageView)jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable != null)) {
-      ((DuiButtonImageView)jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.e();
+      ((DuiButtonImageView)jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.f();
     }
   }
   
@@ -150,17 +151,17 @@ public class DuiButtonImageView
       ((BitmapFactory.Options)localObject).inMutable = true;
       if ((jdField_a_of_type_JavaUtilList != null) && (jdField_a_of_type_JavaUtilList.size() > 0))
       {
-        localObject = ImageUtil.a(((File)jdField_a_of_type_JavaUtilList.get(0)).getAbsolutePath(), (BitmapFactory.Options)localObject);
+        localObject = bdhj.a(((File)jdField_a_of_type_JavaUtilList.get(0)).getAbsolutePath(), (BitmapFactory.Options)localObject);
         if (localObject == null)
         {
           jdField_a_of_type_Boolean = false;
-          DoutuManager.a(this.jdField_a_of_type_AndroidContentContext);
+          apjy.a(this.jdField_a_of_type_AndroidContentContext);
         }
-        DoutuManager localDoutuManager = (DoutuManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(213);
-        if (localDoutuManager == null) {
+        apjy localapjy = (apjy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(214);
+        if (localapjy == null) {
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable = new CustomFrameAnimationDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject, localDoutuManager.jdField_a_of_type_MqqOsMqqHandler);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable = new CustomFrameAnimationDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject, localapjy.jdField_a_of_type_MqqOsMqqHandler);
         while (i < jdField_a_of_type_JavaUtilList.size())
         {
           localObject = (File)jdField_a_of_type_JavaUtilList.get(i);
@@ -184,7 +185,7 @@ public class DuiButtonImageView
       QLog.d("DuiButtonImageView", 2, "stopAnim");
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.f();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.g();
     }
   }
   
@@ -212,11 +213,11 @@ public class DuiButtonImageView
           ((BitmapFactory.Options)localObject).inMutable = true;
           if (jdField_a_of_type_JavaUtilList.size() > 0)
           {
-            localObject = ImageUtil.a(((File)jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_JavaUtilList.size() - 1)).getAbsolutePath(), (BitmapFactory.Options)localObject);
+            localObject = bdhj.a(((File)jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_JavaUtilList.size() - 1)).getAbsolutePath(), (BitmapFactory.Options)localObject);
             if (localObject == null)
             {
               jdField_a_of_type_Boolean = false;
-              DoutuManager.a(this.jdField_a_of_type_AndroidContentContext);
+              apjy.a(this.jdField_a_of_type_AndroidContentContext);
             }
             setImageBitmap((Bitmap)localObject);
             return;
@@ -236,7 +237,7 @@ public class DuiButtonImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DuiButtonImageView
  * JD-Core Version:    0.7.0.1
  */

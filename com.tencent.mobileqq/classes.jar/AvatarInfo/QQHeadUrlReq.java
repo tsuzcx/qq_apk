@@ -8,14 +8,14 @@ import java.util.ArrayList;
 public final class QQHeadUrlReq
   extends JceStruct
 {
-  static ArrayList cache_destUserInfo;
-  public ArrayList destUserInfo;
+  static ArrayList<DestQQHeadInfo> cache_destUserInfo;
+  public ArrayList<DestQQHeadInfo> destUserInfo;
   public byte dstUsrType;
   public long myUin;
   
   public QQHeadUrlReq() {}
   
-  public QQHeadUrlReq(long paramLong, ArrayList paramArrayList, byte paramByte)
+  public QQHeadUrlReq(long paramLong, ArrayList<DestQQHeadInfo> paramArrayList, byte paramByte)
   {
     this.myUin = paramLong;
     this.destUserInfo = paramArrayList;

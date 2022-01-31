@@ -1,48 +1,35 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager.AtlasCallbackImpl;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
-import com.tencent.mobileqq.utils.DisplayUtils;
-import com.tencent.mobileqq.widget.QQToast;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.HorizontalScrollView;
+import com.tencent.av.ui.EffectSettingUi;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
 
 public class mfu
-  extends ReadInJoyAtlasManager.AtlasCallbackImpl
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public mfu(VideoShareHelper paramVideoShareHelper) {}
+  public mfu(EffectSettingUi paramEffectSettingUi, ViewTreeObserver paramViewTreeObserver, HorizontalScrollView paramHorizontalScrollView) {}
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  @TargetApi(16)
+  public void onGlobalLayout()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "handleDoFavoriteResult isSuccess = " + paramBoolean + ", operationType = " + paramInt + ", cid = " + paramString2);
-    }
-    if (TextUtils.isEmpty(paramString1)) {}
-    while (!VideoShareHelper.a(this.a).contains(paramString1)) {
-      return;
-    }
-    paramString2 = new QQToast(VideoShareHelper.a(this.a));
-    paramString2.d(2000);
-    if (paramBoolean)
-    {
-      paramString2.a(QQToast.a(2));
-      paramString2.c(2131431572);
-      paramString2.b(VideoShareHelper.a(this.a).getResources().getDimensionPixelSize(2131558448) - (int)DisplayUtils.a(VideoShareHelper.a(this.a), 5.0F));
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.jdField_a_of_type_AndroidViewViewTreeObserver.removeOnGlobalLayoutListener(this);
     }
     for (;;)
     {
-      VideoShareHelper.a(this.a).remove(paramString1);
+      QLog.w("EffectSettingUi", 1, "onGlobalLayout");
+      this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setTag(new Object());
+      this.jdField_a_of_type_ComTencentAvUiEffectSettingUi.c();
       return;
-      paramString2.a(QQToast.a(1));
-      paramString2.c(2131431580);
-      paramString2.b(VideoShareHelper.a(this.a).getResources().getDimensionPixelSize(2131558448) - (int)DisplayUtils.a(VideoShareHelper.a(this.a), 5.0F));
+      this.jdField_a_of_type_AndroidViewViewTreeObserver.removeGlobalOnLayoutListener(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfu
  * JD-Core Version:    0.7.0.1
  */

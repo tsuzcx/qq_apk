@@ -1,33 +1,32 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import cooperation.comic.VipComicJumpActivity;
+import org.json.JSONObject;
 
-public class ajhb
-  implements CompoundButton.OnCheckedChangeListener
+class ajhb
+  implements View.OnClickListener
 {
-  public ajhb(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  ajhb(ajgb paramajgb, String paramString) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    paramView = new JSONObject();
+    try
     {
-      localStringBuilder = new StringBuilder().append("口算开关状态改变 ");
-      if (!paramBoolean) {
-        break label71;
-      }
-    }
-    label71:
-    for (paramCompoundButton = "on";; paramCompoundButton = "off")
-    {
-      QLog.d("PublishHomeWorkFragment", 2, paramCompoundButton);
-      PublishHomeWorkFragment.c(this.a, paramBoolean);
-      if (PublishHomeWorkFragment.e(this.a)) {
-        PublishHomeWorkFragment.a(this.a).setChecked(true);
-      }
+      paramView.put("from", "20");
+      label17:
+      Intent localIntent = new Intent(ajgb.a(this.jdField_a_of_type_Ajgb), VipComicJumpActivity.class);
+      localIntent.putExtra("options", paramView.toString());
+      ajgb.a(this.jdField_a_of_type_Ajgb).startActivity(localIntent);
+      binc.a(ajgb.a(this.jdField_a_of_type_Ajgb).getAppInterface(), "100007", "2", "40040", this.jdField_a_of_type_JavaLangString, new String[0]);
+      azqs.a(ajgb.a(this.jdField_a_of_type_Ajgb).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 2, 0, "", "", "", "");
       return;
+    }
+    catch (Exception localException)
+    {
+      break label17;
     }
   }
 }

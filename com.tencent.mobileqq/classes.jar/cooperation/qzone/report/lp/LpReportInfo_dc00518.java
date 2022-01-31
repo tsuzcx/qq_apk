@@ -1,9 +1,9 @@
 package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
+import bjdm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.module.common.NetworkState;
-import cooperation.qzone.QUA;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -23,12 +23,14 @@ public class LpReportInfo_dc00518
   public static final int DC00518_NETWORK_TYPE_WIFI = 1;
   public int actiontype;
   public String extraInfo;
-  public Map infos;
+  public Map<String, String> infos;
   public int network_type;
   public String qua;
   public int reserves;
   public int subactiontype;
   public long uin;
+  
+  public LpReportInfo_dc00518() {}
   
   public LpReportInfo_dc00518(int paramInt1, int paramInt2, int paramInt3)
   {
@@ -37,7 +39,7 @@ public class LpReportInfo_dc00518
     this.reserves = paramInt3;
   }
   
-  public LpReportInfo_dc00518(int paramInt1, int paramInt2, int paramInt3, Map paramMap)
+  public LpReportInfo_dc00518(int paramInt1, int paramInt2, int paramInt3, Map<String, String> paramMap)
   {
     this.actiontype = paramInt1;
     this.subactiontype = paramInt2;
@@ -80,7 +82,7 @@ public class LpReportInfo_dc00518
     return "dc00518:" + this.actiontype + "," + this.subactiontype + "," + this.reserves;
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
     Object localObject1;
@@ -118,7 +120,7 @@ public class LpReportInfo_dc00518
         {
           i = Integer.parseInt((String)localHashMap.get("network_type"));
           localHashMap.put("network_type", String.valueOf(convertNetworkTypeToFitInDc00518(i)));
-          localHashMap.put("qua", QUA.a());
+          localHashMap.put("qua", bjdm.a());
           localHashMap.put("device", "2");
           return localHashMap;
           localJSONObject = new JSONObject();
@@ -157,7 +159,7 @@ public class LpReportInfo_dc00518
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc00518
  * JD-Core Version:    0.7.0.1
  */

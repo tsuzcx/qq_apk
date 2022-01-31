@@ -1,18 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
-import com.tencent.mobileqq.troop.utils.TroopFileManager;
+import VACDReport.ReportRsp;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-public class ajek
-  implements DialogInterface.OnClickListener
+class ajek
+  implements BusinessObserver
 {
-  public ajek(TroopFileItemOperation paramTroopFileItemOperation, TroopFileInfo paramTroopFileInfo) {}
+  ajek(ajei paramajei) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    TroopFileManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.a, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.b).c(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo);
-    paramDialogInterface.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    if (paramBundle.containsKey("rsp")) {}
+    for (paramBundle = ((ReportRsp)paramBundle.getSerializable("rsp")).headers;; paramBundle = null)
+    {
+      ajei.a(this.a, paramBundle);
+      return;
+    }
   }
 }
 

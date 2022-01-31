@@ -2,9 +2,7 @@ package android.support.v7.widget;
 
 import android.content.Context;
 import android.graphics.PointF;
-import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable.Creator;
 import android.support.v4.view.accessibility.AccessibilityEventCompat;
 import android.support.v4.view.accessibility.AccessibilityRecordCompat;
 import android.util.AttributeSet;
@@ -22,12 +20,12 @@ public class LinearLayoutManager
   private static final float MAX_SCROLL_FACTOR = 0.3333333F;
   private static final String TAG = "LinearLayoutManager";
   public static final int VERTICAL = 1;
-  final AnchorInfo mAnchorInfo = new AnchorInfo();
+  final LinearLayoutManager.AnchorInfo mAnchorInfo = new LinearLayoutManager.AnchorInfo(this);
   private boolean mLastStackFromEnd;
-  private LayoutState mLayoutState;
+  private LinearLayoutManager.LayoutState mLayoutState;
   int mOrientation;
   OrientationHelper mOrientationHelper;
-  SavedState mPendingSavedState = null;
+  LinearLayoutManager.SavedState mPendingSavedState = null;
   int mPendingScrollPosition = -1;
   int mPendingScrollPositionOffset = -2147483648;
   private boolean mRecycleChildrenOnDetach;
@@ -164,22 +162,21 @@ public class LinearLayoutManager
     int i = this.mOrientationHelper.getEndAfterPadding() - paramInt;
     if (i > 0)
     {
-      i = -scrollBy(-i, paramRecycler, paramState);
+      int j = -scrollBy(-i, paramRecycler, paramState);
+      i = j;
       if (paramBoolean)
       {
-        paramInt = this.mOrientationHelper.getEndAfterPadding() - (paramInt + i);
+        paramInt = this.mOrientationHelper.getEndAfterPadding() - (paramInt + j);
+        i = j;
         if (paramInt > 0)
         {
           this.mOrientationHelper.offsetChildren(paramInt);
-          return paramInt + i;
+          i = j + paramInt;
         }
       }
+      return i;
     }
-    else
-    {
-      return 0;
-    }
-    return i;
+    return 0;
   }
   
   private int fixLayoutStartGap(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState, boolean paramBoolean)
@@ -187,22 +184,21 @@ public class LinearLayoutManager
     int i = paramInt - this.mOrientationHelper.getStartAfterPadding();
     if (i > 0)
     {
-      i = -scrollBy(i, paramRecycler, paramState);
+      int j = -scrollBy(i, paramRecycler, paramState);
+      i = j;
       if (paramBoolean)
       {
-        paramInt = paramInt + i - this.mOrientationHelper.getStartAfterPadding();
+        paramInt = paramInt + j - this.mOrientationHelper.getStartAfterPadding();
+        i = j;
         if (paramInt > 0)
         {
           this.mOrientationHelper.offsetChildren(-paramInt);
-          return i - paramInt;
+          i = j - paramInt;
         }
       }
+      return i;
     }
-    else
-    {
-      return 0;
-    }
-    return i;
+    return 0;
   }
   
   private View getChildClosestToEnd()
@@ -226,57 +222,71 @@ public class LinearLayoutManager
     if ((!paramState.willRunPredictiveAnimations()) || (getChildCount() == 0) || (paramState.isPreLayout()) || (!supportsPredictiveItemAnimations())) {
       return;
     }
+    int i = 0;
     int j = 0;
-    int k = 0;
     List localList = paramRecycler.getScrapList();
     int n = localList.size();
     int i1 = getPosition(getChildAt(0));
-    int i = 0;
-    if (i < n)
+    int k = 0;
+    if (k < n)
     {
-      RecyclerView.ViewHolder localViewHolder = (RecyclerView.ViewHolder)localList.get(i);
-      if (localViewHolder.isRemoved()) {}
+      RecyclerView.ViewHolder localViewHolder = (RecyclerView.ViewHolder)localList.get(k);
+      int m;
+      if (localViewHolder.isRemoved())
+      {
+        m = j;
+        j = i;
+        i = m;
+      }
       for (;;)
       {
-        i += 1;
+        m = k + 1;
+        k = j;
+        j = i;
+        i = k;
+        k = m;
         break;
         int i2;
         if (localViewHolder.getLayoutPosition() < i1)
         {
           i2 = 1;
-          label115:
+          label143:
           if (i2 == this.mShouldReverseLayout) {
-            break label159;
+            break label195;
           }
         }
-        label159:
-        for (int m = -1;; m = 1)
+        label195:
+        for (m = -1;; m = 1)
         {
           if (m != -1) {
-            break label165;
+            break label201;
           }
-          j += this.mOrientationHelper.getDecoratedMeasurement(localViewHolder.itemView);
+          m = this.mOrientationHelper.getDecoratedMeasurement(localViewHolder.itemView) + i;
+          i = j;
+          j = m;
           break;
           i2 = 0;
-          break label115;
+          break label143;
         }
-        label165:
-        k += this.mOrientationHelper.getDecoratedMeasurement(localViewHolder.itemView);
+        label201:
+        m = this.mOrientationHelper.getDecoratedMeasurement(localViewHolder.itemView) + j;
+        j = i;
+        i = m;
       }
     }
     this.mLayoutState.mScrapList = localList;
-    if (j > 0)
+    if (i > 0)
     {
       updateLayoutStateToFillStart(getPosition(getChildClosestToStart()), paramInt1);
-      this.mLayoutState.mExtra = j;
+      this.mLayoutState.mExtra = i;
       this.mLayoutState.mAvailable = 0;
       this.mLayoutState.assignPositionFromScrapList();
       fill(paramRecycler, this.mLayoutState, paramState, false);
     }
-    if (k > 0)
+    if (j > 0)
     {
       updateLayoutStateToFillEnd(getPosition(getChildClosestToEnd()), paramInt2);
-      this.mLayoutState.mExtra = k;
+      this.mLayoutState.mExtra = j;
       this.mLayoutState.mAvailable = 0;
       this.mLayoutState.assignPositionFromScrapList();
       fill(paramRecycler, this.mLayoutState, paramState, false);
@@ -297,7 +307,7 @@ public class LinearLayoutManager
     Log.d("LinearLayoutManager", "==============");
   }
   
-  private void recycleByLayoutState(RecyclerView.Recycler paramRecycler, LayoutState paramLayoutState)
+  private void recycleByLayoutState(RecyclerView.Recycler paramRecycler, LinearLayoutManager.LayoutState paramLayoutState)
   {
     if ((!paramLayoutState.mRecycle) || (paramLayoutState.mInfinite)) {
       return;
@@ -316,6 +326,7 @@ public class LinearLayoutManager
     for (;;)
     {
       return;
+      int i = paramInt1;
       if (paramInt2 > paramInt1)
       {
         paramInt2 -= 1;
@@ -327,10 +338,10 @@ public class LinearLayoutManager
       }
       else
       {
-        while (paramInt1 > paramInt2)
+        while (i > paramInt2)
         {
-          removeAndRecycleViewAt(paramInt1, paramRecycler);
-          paramInt1 -= 1;
+          removeAndRecycleViewAt(i, paramRecycler);
+          i -= 1;
         }
       }
     }
@@ -433,14 +444,15 @@ public class LinearLayoutManager
     }
   }
   
-  private boolean updateAnchorFromChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState, AnchorInfo paramAnchorInfo)
+  private boolean updateAnchorFromChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState, LinearLayoutManager.AnchorInfo paramAnchorInfo)
   {
+    int i = 0;
     if (getChildCount() == 0) {}
     do
     {
       return false;
       View localView = getFocusedChild();
-      if ((localView != null) && (paramAnchorInfo.isViewValidAsAnchor(localView, paramState)))
+      if ((localView != null) && (LinearLayoutManager.AnchorInfo.access$000(paramAnchorInfo, localView, paramState)))
       {
         paramAnchorInfo.assignFromViewAndKeepVisibleRect(localView);
         return true;
@@ -449,41 +461,36 @@ public class LinearLayoutManager
     if (paramAnchorInfo.mLayoutFromEnd)
     {
       paramRecycler = findReferenceChildClosestToEnd(paramRecycler, paramState);
-      label63:
+      label66:
       if (paramRecycler == null) {
-        break label162;
+        break label165;
       }
       paramAnchorInfo.assignFromView(paramRecycler);
       if ((!paramState.isPreLayout()) && (supportsPredictiveItemAnimations()))
       {
-        if ((this.mOrientationHelper.getDecoratedStart(paramRecycler) < this.mOrientationHelper.getEndAfterPadding()) && (this.mOrientationHelper.getDecoratedEnd(paramRecycler) >= this.mOrientationHelper.getStartAfterPadding())) {
-          break label164;
+        if ((this.mOrientationHelper.getDecoratedStart(paramRecycler) >= this.mOrientationHelper.getEndAfterPadding()) || (this.mOrientationHelper.getDecoratedEnd(paramRecycler) < this.mOrientationHelper.getStartAfterPadding())) {
+          i = 1;
         }
-        i = 1;
-        label125:
         if (i != 0) {
           if (!paramAnchorInfo.mLayoutFromEnd) {
-            break label170;
+            break label167;
           }
         }
       }
     }
-    label162:
-    label164:
-    label170:
-    for (int i = this.mOrientationHelper.getEndAfterPadding();; i = this.mOrientationHelper.getStartAfterPadding())
+    label165:
+    label167:
+    for (i = this.mOrientationHelper.getEndAfterPadding();; i = this.mOrientationHelper.getStartAfterPadding())
     {
       paramAnchorInfo.mCoordinate = i;
       return true;
       paramRecycler = findReferenceChildClosestToStart(paramRecycler, paramState);
-      break label63;
+      break label66;
       break;
-      i = 0;
-      break label125;
     }
   }
   
-  private boolean updateAnchorFromPendingData(RecyclerView.State paramState, AnchorInfo paramAnchorInfo)
+  private boolean updateAnchorFromPendingData(RecyclerView.State paramState, LinearLayoutManager.AnchorInfo paramAnchorInfo)
   {
     boolean bool = false;
     if ((paramState.isPreLayout()) || (this.mPendingScrollPosition == -1)) {
@@ -565,7 +572,7 @@ public class LinearLayoutManager
     return true;
   }
   
-  private void updateAnchorInfoForLayout(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState, AnchorInfo paramAnchorInfo)
+  private void updateAnchorInfoForLayout(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState, LinearLayoutManager.AnchorInfo paramAnchorInfo)
   {
     if (updateAnchorFromPendingData(paramState, paramAnchorInfo)) {}
     while (updateAnchorFromChildren(paramRecycler, paramState, paramAnchorInfo)) {
@@ -584,7 +591,7 @@ public class LinearLayoutManager
   {
     int j = 1;
     int i = 1;
-    LayoutState localLayoutState = this.mLayoutState;
+    LinearLayoutManager.LayoutState localLayoutState = this.mLayoutState;
     if (this.mOrientationHelper.getMode() == 0) {}
     for (boolean bool = true;; bool = false)
     {
@@ -633,7 +640,7 @@ public class LinearLayoutManager
   private void updateLayoutStateToFillEnd(int paramInt1, int paramInt2)
   {
     this.mLayoutState.mAvailable = (this.mOrientationHelper.getEndAfterPadding() - paramInt2);
-    LayoutState localLayoutState = this.mLayoutState;
+    LinearLayoutManager.LayoutState localLayoutState = this.mLayoutState;
     if (this.mShouldReverseLayout) {}
     for (int i = -1;; i = 1)
     {
@@ -646,7 +653,7 @@ public class LinearLayoutManager
     }
   }
   
-  private void updateLayoutStateToFillEnd(AnchorInfo paramAnchorInfo)
+  private void updateLayoutStateToFillEnd(LinearLayoutManager.AnchorInfo paramAnchorInfo)
   {
     updateLayoutStateToFillEnd(paramAnchorInfo.mPosition, paramAnchorInfo.mCoordinate);
   }
@@ -655,7 +662,7 @@ public class LinearLayoutManager
   {
     this.mLayoutState.mAvailable = (paramInt2 - this.mOrientationHelper.getStartAfterPadding());
     this.mLayoutState.mCurrentPosition = paramInt1;
-    LayoutState localLayoutState = this.mLayoutState;
+    LinearLayoutManager.LayoutState localLayoutState = this.mLayoutState;
     if (this.mShouldReverseLayout) {}
     for (paramInt1 = 1;; paramInt1 = -1)
     {
@@ -667,7 +674,7 @@ public class LinearLayoutManager
     }
   }
   
-  private void updateLayoutStateToFillStart(AnchorInfo paramAnchorInfo)
+  private void updateLayoutStateToFillStart(LinearLayoutManager.AnchorInfo paramAnchorInfo)
   {
     updateLayoutStateToFillStart(paramAnchorInfo.mPosition, paramAnchorInfo.mCoordinate);
   }
@@ -706,15 +713,19 @@ public class LinearLayoutManager
   
   public PointF computeScrollVectorForPosition(int paramInt)
   {
-    int i = 0;
+    int i = 1;
+    int j = 0;
     if (getChildCount() == 0) {
       return null;
     }
     if (paramInt < getPosition(getChildAt(0))) {
-      i = 1;
+      j = 1;
     }
-    if (i != this.mShouldReverseLayout) {}
-    for (paramInt = -1; this.mOrientation == 0; paramInt = 1) {
+    paramInt = i;
+    if (j != this.mShouldReverseLayout) {
+      paramInt = -1;
+    }
+    if (this.mOrientation == 0) {
       return new PointF(paramInt, 0.0F);
     }
     return new PointF(0.0F, paramInt);
@@ -774,9 +785,9 @@ public class LinearLayoutManager
     }
   }
   
-  LayoutState createLayoutState()
+  LinearLayoutManager.LayoutState createLayoutState()
   {
-    return new LayoutState();
+    return new LinearLayoutManager.LayoutState();
   }
   
   void ensureLayoutState()
@@ -789,7 +800,7 @@ public class LinearLayoutManager
     }
   }
   
-  int fill(RecyclerView.Recycler paramRecycler, LayoutState paramLayoutState, RecyclerView.State paramState, boolean paramBoolean)
+  int fill(RecyclerView.Recycler paramRecycler, LinearLayoutManager.LayoutState paramLayoutState, RecyclerView.State paramState, boolean paramBoolean)
   {
     int k = paramLayoutState.mAvailable;
     if (paramLayoutState.mScrollingOffset != -2147483648)
@@ -800,7 +811,7 @@ public class LinearLayoutManager
       recycleByLayoutState(paramRecycler, paramLayoutState);
     }
     int i = paramLayoutState.mAvailable + paramLayoutState.mExtra;
-    LayoutChunkResult localLayoutChunkResult = new LayoutChunkResult();
+    LinearLayoutManager.LayoutChunkResult localLayoutChunkResult = new LinearLayoutManager.LayoutChunkResult();
     if (((paramLayoutState.mInfinite) || (i > 0)) && (paramLayoutState.hasMore(paramState)))
     {
       localLayoutChunkResult.resetInternal();
@@ -885,119 +896,109 @@ public class LinearLayoutManager
     ensureLayoutState();
     int j = this.mOrientationHelper.getStartAfterPadding();
     int k = this.mOrientationHelper.getEndAfterPadding();
-    int i;
-    if (paramInt2 > paramInt1) {
-      i = 1;
-    }
-    Object localObject2;
-    for (Object localObject1 = null;; localObject1 = localObject2)
+    if (paramInt2 > paramInt1) {}
+    Object localObject;
+    View localView;
+    for (int i = 1;; i = -1)
     {
+      localObject = null;
       if (paramInt1 == paramInt2) {
-        break label150;
+        break label130;
       }
-      View localView = getChildAt(paramInt1);
+      localView = getChildAt(paramInt1);
       int m = this.mOrientationHelper.getDecoratedStart(localView);
       int n = this.mOrientationHelper.getDecoratedEnd(localView);
-      localObject2 = localObject1;
-      if (m < k)
-      {
-        localObject2 = localObject1;
-        if (n > j)
-        {
-          if ((!paramBoolean1) || ((m >= j) && (n <= k)))
-          {
-            return localView;
-            i = -1;
-            break;
-          }
-          localObject2 = localObject1;
-          if (paramBoolean2)
-          {
-            localObject2 = localObject1;
-            if (localObject1 == null) {
-              localObject2 = localView;
-            }
-          }
-        }
+      if ((m >= k) || (n <= j)) {
+        break label133;
       }
-      paramInt1 += i;
+      if ((paramBoolean1) && ((m < j) || (n > k))) {
+        break;
+      }
+      return localView;
     }
-    label150:
-    return localObject1;
+    if ((paramBoolean2) && (localObject == null)) {
+      localObject = localView;
+    }
+    label130:
+    label133:
+    for (;;)
+    {
+      paramInt1 += i;
+      break;
+      return localObject;
+    }
   }
   
   View findReferenceChild(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState, int paramInt1, int paramInt2, int paramInt3)
   {
-    ensureLayoutState();
     paramState = null;
-    paramRecycler = null;
+    ensureLayoutState();
     int j = this.mOrientationHelper.getStartAfterPadding();
     int k = this.mOrientationHelper.getEndAfterPadding();
     int i;
-    View localView;
+    label35:
     Object localObject1;
-    Object localObject2;
     if (paramInt2 > paramInt1)
     {
       i = 1;
+      paramRecycler = null;
       if (paramInt1 == paramInt2) {
-        break label183;
+        break label157;
       }
-      localView = getChildAt(paramInt1);
-      int m = getPosition(localView);
-      localObject1 = paramState;
-      localObject2 = paramRecycler;
-      if (m >= 0)
-      {
-        localObject1 = paramState;
-        localObject2 = paramRecycler;
-        if (m < paramInt3)
-        {
-          if (!((RecyclerView.LayoutParams)localView.getLayoutParams()).isItemRemoved()) {
-            break label131;
-          }
-          localObject1 = paramState;
-          localObject2 = paramRecycler;
-          if (paramState == null)
-          {
-            localObject2 = paramRecycler;
-            localObject1 = localView;
-          }
-        }
+      localObject1 = getChildAt(paramInt1);
+      int m = getPosition((View)localObject1);
+      if ((m < 0) || (m >= paramInt3)) {
+        break label172;
       }
+      if (!((RecyclerView.LayoutParams)((View)localObject1).getLayoutParams()).isItemRemoved()) {
+        break label113;
+      }
+      if (paramRecycler != null) {
+        break label172;
+      }
+      paramRecycler = paramState;
+      paramState = (RecyclerView.State)localObject1;
     }
     for (;;)
     {
       paramInt1 += i;
-      paramState = (RecyclerView.State)localObject1;
-      paramRecycler = (RecyclerView.Recycler)localObject2;
-      break;
+      localObject1 = paramState;
+      paramState = paramRecycler;
+      paramRecycler = (RecyclerView.Recycler)localObject1;
+      break label35;
       i = -1;
       break;
-      label131:
-      if (this.mOrientationHelper.getDecoratedStart(localView) < k)
+      label113:
+      Object localObject2;
+      if (this.mOrientationHelper.getDecoratedStart((View)localObject1) < k)
       {
-        localObject1 = localView;
-        if (this.mOrientationHelper.getDecoratedEnd(localView) >= j) {
-          break label190;
+        localObject2 = localObject1;
+        if (this.mOrientationHelper.getDecoratedEnd((View)localObject1) >= j) {}
+      }
+      else
+      {
+        if (paramState != null) {
+          break label172;
+        }
+        paramState = paramRecycler;
+        paramRecycler = (RecyclerView.Recycler)localObject1;
+        continue;
+        label157:
+        if (paramState == null) {
+          break label167;
         }
       }
-      localObject1 = paramState;
-      localObject2 = paramRecycler;
-      if (paramRecycler == null)
+      for (;;)
       {
-        localObject1 = paramState;
-        localObject2 = localView;
+        localObject2 = paramState;
+        return localObject2;
+        label167:
+        paramState = paramRecycler;
       }
-    }
-    label183:
-    if (paramRecycler != null) {}
-    for (;;)
-    {
+      label172:
       localObject1 = paramRecycler;
-      label190:
-      return localObject1;
       paramRecycler = paramState;
+      paramState = (RecyclerView.State)localObject1;
     }
   }
   
@@ -1065,7 +1066,7 @@ public class LinearLayoutManager
     return this.mSmoothScrollbarEnabled;
   }
   
-  void layoutChunk(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState, LayoutState paramLayoutState, LayoutChunkResult paramLayoutChunkResult)
+  void layoutChunk(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState, LinearLayoutManager.LayoutState paramLayoutState, LinearLayoutManager.LayoutChunkResult paramLayoutChunkResult)
   {
     paramRecycler = paramLayoutState.next(paramRecycler);
     if (paramRecycler == null)
@@ -1077,10 +1078,10 @@ public class LinearLayoutManager
     boolean bool2;
     boolean bool1;
     label61:
-    int k;
+    int i;
     int j;
     label120:
-    int i;
+    int k;
     int m;
     if (paramLayoutState.mScrapList == null)
     {
@@ -1095,23 +1096,23 @@ public class LinearLayoutManager
         measureChildWithMargins(paramRecycler, 0, 0);
         paramLayoutChunkResult.mConsumed = this.mOrientationHelper.getDecoratedMeasurement(paramRecycler);
         if (this.mOrientation != 1) {
-          break label314;
+          break label322;
         }
         if (!isLayoutRTL()) {
           break label271;
         }
-        k = getWidth() - getPaddingRight();
-        j = k - this.mOrientationHelper.getDecoratedMeasurementInOther(paramRecycler);
+        i = getWidth() - getPaddingRight();
+        j = i - this.mOrientationHelper.getDecoratedMeasurementInOther(paramRecycler);
         if (paramLayoutState.mLayoutDirection != -1) {
           break label293;
         }
-        i = paramLayoutState.mOffset;
+        k = paramLayoutState.mOffset;
         m = paramLayoutState.mOffset - paramLayoutChunkResult.mConsumed;
       }
     }
     for (;;)
     {
-      layoutDecorated(paramRecycler, j + paramState.leftMargin, m + paramState.topMargin, k - paramState.rightMargin, i - paramState.bottomMargin);
+      layoutDecorated(paramRecycler, j + paramState.leftMargin, m + paramState.topMargin, i - paramState.rightMargin, k - paramState.bottomMargin);
       if ((paramState.isItemRemoved()) || (paramState.isItemChanged())) {
         paramLayoutChunkResult.mIgnoreConsumed = true;
       }
@@ -1137,29 +1138,33 @@ public class LinearLayoutManager
       break label61;
       label271:
       j = getPaddingLeft();
-      k = j + this.mOrientationHelper.getDecoratedMeasurementInOther(paramRecycler);
+      i = this.mOrientationHelper.getDecoratedMeasurementInOther(paramRecycler) + j;
       break label120;
       label293:
       m = paramLayoutState.mOffset;
-      i = paramLayoutState.mOffset + paramLayoutChunkResult.mConsumed;
+      k = paramLayoutState.mOffset;
+      int n = paramLayoutChunkResult.mConsumed;
+      k += n;
       continue;
-      label314:
+      label322:
       m = getPaddingTop();
-      i = m + this.mOrientationHelper.getDecoratedMeasurementInOther(paramRecycler);
+      k = this.mOrientationHelper.getDecoratedMeasurementInOther(paramRecycler) + m;
       if (paramLayoutState.mLayoutDirection == -1)
       {
-        k = paramLayoutState.mOffset;
+        i = paramLayoutState.mOffset;
         j = paramLayoutState.mOffset - paramLayoutChunkResult.mConsumed;
       }
       else
       {
         j = paramLayoutState.mOffset;
-        k = paramLayoutState.mOffset + paramLayoutChunkResult.mConsumed;
+        i = paramLayoutState.mOffset;
+        n = paramLayoutChunkResult.mConsumed;
+        i += n;
       }
     }
   }
   
-  void onAnchorReady(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState, AnchorInfo paramAnchorInfo, int paramInt) {}
+  void onAnchorReady(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState, LinearLayoutManager.AnchorInfo paramAnchorInfo, int paramInt) {}
   
   public void onDetachedFromWindow(RecyclerView paramRecyclerView, RecyclerView.Recycler paramRecycler)
   {
@@ -1174,36 +1179,44 @@ public class LinearLayoutManager
   public View onFocusSearchFailed(View paramView, int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
   {
     resolveShouldLayoutReverse();
-    if (getChildCount() == 0)
+    if (getChildCount() == 0) {}
+    label133:
+    label135:
+    label141:
+    for (;;)
     {
-      paramRecycler = null;
-      return paramRecycler;
-    }
-    paramInt = convertFocusDirectionToLayoutDirection(paramInt);
-    if (paramInt == -2147483648) {
       return null;
-    }
-    ensureLayoutState();
-    if (paramInt == -1) {}
-    for (View localView = findReferenceChildClosestToStart(paramRecycler, paramState); localView == null; localView = findReferenceChildClosestToEnd(paramRecycler, paramState)) {
-      return null;
-    }
-    ensureLayoutState();
-    updateLayoutState(paramInt, (int)(0.3333333F * this.mOrientationHelper.getTotalSpace()), false, paramState);
-    this.mLayoutState.mScrollingOffset = -2147483648;
-    this.mLayoutState.mRecycle = false;
-    fill(paramRecycler, this.mLayoutState, paramState, true);
-    if (paramInt == -1) {}
-    for (paramView = getChildClosestToStart();; paramView = getChildClosestToEnd())
-    {
-      if (paramView != localView)
+      paramInt = convertFocusDirectionToLayoutDirection(paramInt);
+      if (paramInt != -2147483648)
       {
-        paramRecycler = paramView;
-        if (paramView.isFocusable()) {
+        ensureLayoutState();
+        if (paramInt == -1)
+        {
+          paramView = findReferenceChildClosestToStart(paramRecycler, paramState);
+          label42:
+          if (paramView == null) {
+            break label133;
+          }
+          ensureLayoutState();
+          updateLayoutState(paramInt, (int)(0.3333333F * this.mOrientationHelper.getTotalSpace()), false, paramState);
+          this.mLayoutState.mScrollingOffset = -2147483648;
+          this.mLayoutState.mRecycle = false;
+          fill(paramRecycler, this.mLayoutState, paramState, true);
+          if (paramInt != -1) {
+            break label135;
+          }
+        }
+        for (paramRecycler = getChildClosestToStart();; paramRecycler = getChildClosestToEnd())
+        {
+          if ((paramRecycler == paramView) || (!paramRecycler.isFocusable())) {
+            break label141;
+          }
+          return paramRecycler;
+          paramView = findReferenceChildClosestToEnd(paramRecycler, paramState);
+          break label42;
           break;
         }
       }
-      return null;
     }
   }
   
@@ -1237,183 +1250,187 @@ public class LinearLayoutManager
     int i = getExtraLayoutSpace(paramState);
     int j;
     int m;
-    Object localObject;
-    label244:
-    boolean bool;
-    label257:
-    label277:
-    label313:
     int n;
+    int k;
+    Object localObject;
+    label248:
+    boolean bool;
     if (this.mLayoutState.mLastScrollDelta >= 0)
     {
       j = 0;
-      k = j + this.mOrientationHelper.getStartAfterPadding();
-      m = i + this.mOrientationHelper.getEndPadding();
-      i = m;
-      j = k;
+      m = j + this.mOrientationHelper.getStartAfterPadding();
+      n = i + this.mOrientationHelper.getEndPadding();
+      j = n;
+      k = m;
       if (paramState.isPreLayout())
       {
-        i = m;
-        j = k;
+        j = n;
+        k = m;
         if (this.mPendingScrollPosition != -1)
         {
-          i = m;
-          j = k;
+          j = n;
+          k = m;
           if (this.mPendingScrollPositionOffset != -2147483648)
           {
             localObject = findViewByPosition(this.mPendingScrollPosition);
-            i = m;
-            j = k;
+            j = n;
+            k = m;
             if (localObject != null)
             {
               if (!this.mShouldReverseLayout) {
-                break label666;
+                break label663;
               }
               i = this.mOrientationHelper.getEndAfterPadding() - this.mOrientationHelper.getDecoratedEnd((View)localObject) - this.mPendingScrollPositionOffset;
               if (i <= 0) {
-                break label698;
+                break label695;
               }
-              j = k + i;
-              i = m;
+              k = m + i;
+              j = n;
             }
           }
         }
       }
+      label262:
       if (!this.mAnchorInfo.mLayoutFromEnd) {
-        break label716;
+        break label713;
       }
       if (!this.mShouldReverseLayout) {
-        break label710;
+        break label708;
       }
-      k = 1;
-      onAnchorReady(paramRecycler, paramState, this.mAnchorInfo, k);
+      i = 1;
+      label281:
+      onAnchorReady(paramRecycler, paramState, this.mAnchorInfo, i);
       detachAndScrapAttachedViews(paramRecycler);
       localObject = this.mLayoutState;
       if (this.mOrientationHelper.getMode() != 0) {
-        break label735;
+        break label730;
       }
       bool = true;
-      ((LayoutState)localObject).mInfinite = bool;
+      label316:
+      ((LinearLayoutManager.LayoutState)localObject).mInfinite = bool;
       this.mLayoutState.mIsPreLayout = paramState.isPreLayout();
       if (!this.mAnchorInfo.mLayoutFromEnd) {
-        break label741;
+        break label736;
       }
       updateLayoutStateToFillStart(this.mAnchorInfo);
-      this.mLayoutState.mExtra = j;
-      fill(paramRecycler, this.mLayoutState, paramState, false);
-      k = this.mLayoutState.mOffset;
-      n = this.mLayoutState.mCurrentPosition;
-      j = i;
-      if (this.mLayoutState.mAvailable > 0) {
-        j = i + this.mLayoutState.mAvailable;
-      }
-      updateLayoutStateToFillEnd(this.mAnchorInfo);
-      this.mLayoutState.mExtra = j;
-      localObject = this.mLayoutState;
-      ((LayoutState)localObject).mCurrentPosition += this.mLayoutState.mItemDirection;
+      this.mLayoutState.mExtra = k;
       fill(paramRecycler, this.mLayoutState, paramState, false);
       m = this.mLayoutState.mOffset;
-      i = m;
-      j = k;
-      if (this.mLayoutState.mAvailable > 0)
-      {
-        i = this.mLayoutState.mAvailable;
-        updateLayoutStateToFillStart(n, k);
-        this.mLayoutState.mExtra = i;
-        fill(paramRecycler, this.mLayoutState, paramState, false);
-        j = this.mLayoutState.mOffset;
-        i = m;
+      n = this.mLayoutState.mCurrentPosition;
+      i = j;
+      if (this.mLayoutState.mAvailable > 0) {
+        i = j + this.mLayoutState.mAvailable;
       }
-      label539:
+      updateLayoutStateToFillEnd(this.mAnchorInfo);
+      this.mLayoutState.mExtra = i;
+      localObject = this.mLayoutState;
+      ((LinearLayoutManager.LayoutState)localObject).mCurrentPosition += this.mLayoutState.mItemDirection;
+      fill(paramRecycler, this.mLayoutState, paramState, false);
+      k = this.mLayoutState.mOffset;
+      if (this.mLayoutState.mAvailable <= 0) {
+        break label981;
+      }
+      i = this.mLayoutState.mAvailable;
+      updateLayoutStateToFillStart(n, m);
+      this.mLayoutState.mExtra = i;
+      fill(paramRecycler, this.mLayoutState, paramState, false);
+    }
+    label536:
+    label695:
+    label708:
+    label713:
+    label981:
+    for (i = this.mLayoutState.mOffset;; i = m)
+    {
+      j = i;
+      i = k;
       k = i;
       m = j;
       if (getChildCount() > 0)
       {
         if (!(this.mShouldReverseLayout ^ this.mStackFromEnd)) {
-          break label940;
+          break label936;
         }
         k = fixLayoutEndGap(i, paramRecycler, paramState, true);
         m = j + k;
         j = fixLayoutStartGap(m, paramRecycler, paramState, false);
         m += j;
       }
-    }
-    for (int k = i + k + j;; k = i + n)
-    {
-      layoutForPredictiveAnimations(paramRecycler, paramState, m, k);
-      if (!paramState.isPreLayout())
+      for (k = i + k + j;; k = i + n)
       {
-        this.mPendingScrollPosition = -1;
-        this.mPendingScrollPositionOffset = -2147483648;
-        this.mOrientationHelper.onLayoutComplete();
-      }
-      this.mLastStackFromEnd = this.mStackFromEnd;
-      this.mPendingSavedState = null;
-      return;
-      j = i;
-      i = 0;
-      break;
-      label666:
-      i = this.mOrientationHelper.getDecoratedStart((View)localObject);
-      j = this.mOrientationHelper.getStartAfterPadding();
-      i = this.mPendingScrollPositionOffset - (i - j);
-      break label244;
-      label698:
-      i = m - i;
-      j = k;
-      break label257;
-      label710:
-      k = -1;
-      break label277;
-      label716:
-      if (this.mShouldReverseLayout) {}
-      for (k = -1;; k = 1) {
+        layoutForPredictiveAnimations(paramRecycler, paramState, m, k);
+        if (!paramState.isPreLayout())
+        {
+          this.mPendingScrollPosition = -1;
+          this.mPendingScrollPositionOffset = -2147483648;
+          this.mOrientationHelper.onLayoutComplete();
+        }
+        this.mLastStackFromEnd = this.mStackFromEnd;
+        this.mPendingSavedState = null;
+        return;
+        j = i;
+        i = 0;
         break;
+        i = this.mOrientationHelper.getDecoratedStart((View)localObject);
+        j = this.mOrientationHelper.getStartAfterPadding();
+        i = this.mPendingScrollPositionOffset - (i - j);
+        break label248;
+        j = n - i;
+        k = m;
+        break label262;
+        i = -1;
+        break label281;
+        if (this.mShouldReverseLayout)
+        {
+          i = -1;
+          break label281;
+        }
+        i = 1;
+        break label281;
+        label730:
+        bool = false;
+        break label316;
+        label736:
+        updateLayoutStateToFillEnd(this.mAnchorInfo);
+        this.mLayoutState.mExtra = j;
+        fill(paramRecycler, this.mLayoutState, paramState, false);
+        m = this.mLayoutState.mOffset;
+        n = this.mLayoutState.mCurrentPosition;
+        i = k;
+        if (this.mLayoutState.mAvailable > 0) {
+          i = k + this.mLayoutState.mAvailable;
+        }
+        updateLayoutStateToFillStart(this.mAnchorInfo);
+        this.mLayoutState.mExtra = i;
+        localObject = this.mLayoutState;
+        ((LinearLayoutManager.LayoutState)localObject).mCurrentPosition += this.mLayoutState.mItemDirection;
+        fill(paramRecycler, this.mLayoutState, paramState, false);
+        k = this.mLayoutState.mOffset;
+        i = m;
+        j = k;
+        if (this.mLayoutState.mAvailable <= 0) {
+          break label536;
+        }
+        i = this.mLayoutState.mAvailable;
+        updateLayoutStateToFillEnd(n, m);
+        this.mLayoutState.mExtra = i;
+        fill(paramRecycler, this.mLayoutState, paramState, false);
+        i = this.mLayoutState.mOffset;
+        j = k;
+        break label536;
+        k = fixLayoutStartGap(j, paramRecycler, paramState, true);
+        i += k;
+        n = fixLayoutEndGap(i, paramRecycler, paramState, false);
+        m = j + k + n;
       }
-      label735:
-      bool = false;
-      break label313;
-      label741:
-      updateLayoutStateToFillEnd(this.mAnchorInfo);
-      this.mLayoutState.mExtra = i;
-      fill(paramRecycler, this.mLayoutState, paramState, false);
-      k = this.mLayoutState.mOffset;
-      n = this.mLayoutState.mCurrentPosition;
-      i = j;
-      if (this.mLayoutState.mAvailable > 0) {
-        i = j + this.mLayoutState.mAvailable;
-      }
-      updateLayoutStateToFillStart(this.mAnchorInfo);
-      this.mLayoutState.mExtra = i;
-      localObject = this.mLayoutState;
-      ((LayoutState)localObject).mCurrentPosition += this.mLayoutState.mItemDirection;
-      fill(paramRecycler, this.mLayoutState, paramState, false);
-      m = this.mLayoutState.mOffset;
-      i = k;
-      j = m;
-      if (this.mLayoutState.mAvailable <= 0) {
-        break label539;
-      }
-      i = this.mLayoutState.mAvailable;
-      updateLayoutStateToFillEnd(n, k);
-      this.mLayoutState.mExtra = i;
-      fill(paramRecycler, this.mLayoutState, paramState, false);
-      i = this.mLayoutState.mOffset;
-      j = m;
-      break label539;
-      label940:
-      k = fixLayoutStartGap(j, paramRecycler, paramState, true);
-      i += k;
-      n = fixLayoutEndGap(i, paramRecycler, paramState, false);
-      m = j + k + n;
     }
   }
   
   public void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    if ((paramParcelable instanceof SavedState))
+    if ((paramParcelable instanceof LinearLayoutManager.SavedState))
     {
-      this.mPendingSavedState = ((SavedState)paramParcelable);
+      this.mPendingSavedState = ((LinearLayoutManager.SavedState)paramParcelable);
       requestLayout();
     }
   }
@@ -1421,9 +1438,9 @@ public class LinearLayoutManager
   public Parcelable onSaveInstanceState()
   {
     if (this.mPendingSavedState != null) {
-      return new SavedState(this.mPendingSavedState);
+      return new LinearLayoutManager.SavedState(this.mPendingSavedState);
     }
-    SavedState localSavedState = new SavedState();
+    LinearLayoutManager.SavedState localSavedState = new LinearLayoutManager.SavedState();
     if (getChildCount() > 0)
     {
       ensureLayoutState();
@@ -1447,34 +1464,30 @@ public class LinearLayoutManager
   
   int scrollBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
   {
-    if ((getChildCount() == 0) || (paramInt == 0)) {}
-    int i;
+    if ((getChildCount() == 0) || (paramInt == 0)) {
+      return 0;
+    }
+    this.mLayoutState.mRecycle = true;
+    ensureLayoutState();
+    if (paramInt > 0) {}
     int j;
     int k;
-    do
+    for (int i = 1;; i = -1)
     {
-      return 0;
-      this.mLayoutState.mRecycle = true;
-      ensureLayoutState();
-      if (paramInt <= 0) {
-        break;
-      }
-      i = 1;
       j = Math.abs(paramInt);
       updateLayoutState(i, j, true, paramState);
       k = this.mLayoutState.mScrollingOffset + fill(paramRecycler, this.mLayoutState, paramState, false);
-    } while (k < 0);
+      if (k >= 0) {
+        break;
+      }
+      return 0;
+    }
     if (j > k) {
       paramInt = i * k;
     }
-    for (;;)
-    {
-      this.mOrientationHelper.offsetChildren(-paramInt);
-      this.mLayoutState.mLastScrollDelta = paramInt;
-      return paramInt;
-      i = -1;
-      break;
-    }
+    this.mOrientationHelper.offsetChildren(-paramInt);
+    this.mLayoutState.mLastScrollDelta = paramInt;
+    return paramInt;
   }
   
   public int scrollHorizontallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
@@ -1564,13 +1577,7 @@ public class LinearLayoutManager
   
   public void smoothScrollToPosition(RecyclerView paramRecyclerView, RecyclerView.State paramState, int paramInt)
   {
-    paramRecyclerView = new LinearSmoothScroller(paramRecyclerView.getContext())
-    {
-      public PointF computeScrollVectorForPosition(int paramAnonymousInt)
-      {
-        return LinearLayoutManager.this.computeScrollVectorForPosition(paramAnonymousInt);
-      }
-    };
+    paramRecyclerView = new LinearLayoutManager.1(this, paramRecyclerView.getContext());
     paramRecyclerView.setTargetPosition(paramInt);
     startSmoothScroll(paramRecyclerView);
   }
@@ -1646,309 +1653,6 @@ public class LinearLayoutManager
           }
           i += 1;
         }
-      }
-    }
-  }
-  
-  class AnchorInfo
-  {
-    int mCoordinate;
-    boolean mLayoutFromEnd;
-    int mPosition;
-    
-    AnchorInfo() {}
-    
-    private boolean isViewValidAsAnchor(View paramView, RecyclerView.State paramState)
-    {
-      paramView = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-      return (!paramView.isItemRemoved()) && (paramView.getViewLayoutPosition() >= 0) && (paramView.getViewLayoutPosition() < paramState.getItemCount());
-    }
-    
-    void assignCoordinateFromPadding()
-    {
-      if (this.mLayoutFromEnd) {}
-      for (int i = LinearLayoutManager.this.mOrientationHelper.getEndAfterPadding();; i = LinearLayoutManager.this.mOrientationHelper.getStartAfterPadding())
-      {
-        this.mCoordinate = i;
-        return;
-      }
-    }
-    
-    public void assignFromView(View paramView)
-    {
-      if (this.mLayoutFromEnd) {}
-      for (this.mCoordinate = (LinearLayoutManager.this.mOrientationHelper.getDecoratedEnd(paramView) + LinearLayoutManager.this.mOrientationHelper.getTotalSpaceChange());; this.mCoordinate = LinearLayoutManager.this.mOrientationHelper.getDecoratedStart(paramView))
-      {
-        this.mPosition = LinearLayoutManager.this.getPosition(paramView);
-        return;
-      }
-    }
-    
-    public void assignFromViewAndKeepVisibleRect(View paramView)
-    {
-      int j = LinearLayoutManager.this.mOrientationHelper.getTotalSpaceChange();
-      if (j >= 0) {
-        assignFromView(paramView);
-      }
-      int i;
-      do
-      {
-        int k;
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              this.mPosition = LinearLayoutManager.this.getPosition(paramView);
-              if (!this.mLayoutFromEnd) {
-                break;
-              }
-              i = LinearLayoutManager.this.mOrientationHelper.getEndAfterPadding() - j - LinearLayoutManager.this.mOrientationHelper.getDecoratedEnd(paramView);
-              this.mCoordinate = (LinearLayoutManager.this.mOrientationHelper.getEndAfterPadding() - i);
-            } while (i <= 0);
-            j = LinearLayoutManager.this.mOrientationHelper.getDecoratedMeasurement(paramView);
-            k = this.mCoordinate;
-            m = LinearLayoutManager.this.mOrientationHelper.getStartAfterPadding();
-            j = k - j - (m + Math.min(LinearLayoutManager.this.mOrientationHelper.getDecoratedStart(paramView) - m, 0));
-          } while (j >= 0);
-          this.mCoordinate += Math.min(i, -j);
-          return;
-          k = LinearLayoutManager.this.mOrientationHelper.getDecoratedStart(paramView);
-          i = k - LinearLayoutManager.this.mOrientationHelper.getStartAfterPadding();
-          this.mCoordinate = k;
-        } while (i <= 0);
-        int m = LinearLayoutManager.this.mOrientationHelper.getDecoratedMeasurement(paramView);
-        int n = LinearLayoutManager.this.mOrientationHelper.getEndAfterPadding();
-        int i1 = LinearLayoutManager.this.mOrientationHelper.getDecoratedEnd(paramView);
-        j = LinearLayoutManager.this.mOrientationHelper.getEndAfterPadding() - Math.min(0, n - j - i1) - (k + m);
-      } while (j >= 0);
-      this.mCoordinate -= Math.min(i, -j);
-    }
-    
-    void reset()
-    {
-      this.mPosition = -1;
-      this.mCoordinate = -2147483648;
-      this.mLayoutFromEnd = false;
-    }
-    
-    public String toString()
-    {
-      return "AnchorInfo{mPosition=" + this.mPosition + ", mCoordinate=" + this.mCoordinate + ", mLayoutFromEnd=" + this.mLayoutFromEnd + '}';
-    }
-  }
-  
-  protected static class LayoutChunkResult
-  {
-    public int mConsumed;
-    public boolean mFinished;
-    public boolean mFocusable;
-    public boolean mIgnoreConsumed;
-    
-    void resetInternal()
-    {
-      this.mConsumed = 0;
-      this.mFinished = false;
-      this.mIgnoreConsumed = false;
-      this.mFocusable = false;
-    }
-  }
-  
-  static class LayoutState
-  {
-    static final int INVALID_LAYOUT = -2147483648;
-    static final int ITEM_DIRECTION_HEAD = -1;
-    static final int ITEM_DIRECTION_TAIL = 1;
-    static final int LAYOUT_END = 1;
-    static final int LAYOUT_START = -1;
-    static final int SCOLLING_OFFSET_NaN = -2147483648;
-    static final String TAG = "LinearLayoutManager#LayoutState";
-    int mAvailable;
-    int mCurrentPosition;
-    int mExtra = 0;
-    boolean mInfinite;
-    boolean mIsPreLayout = false;
-    int mItemDirection;
-    int mLastScrollDelta;
-    int mLayoutDirection;
-    int mOffset;
-    boolean mRecycle = true;
-    List<RecyclerView.ViewHolder> mScrapList = null;
-    int mScrollingOffset;
-    
-    private View nextViewFromScrapList()
-    {
-      int j = this.mScrapList.size();
-      int i = 0;
-      if (i < j)
-      {
-        View localView = ((RecyclerView.ViewHolder)this.mScrapList.get(i)).itemView;
-        RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)localView.getLayoutParams();
-        if (localLayoutParams.isItemRemoved()) {}
-        while (this.mCurrentPosition != localLayoutParams.getViewLayoutPosition())
-        {
-          i += 1;
-          break;
-        }
-        assignPositionFromScrapList(localView);
-        return localView;
-      }
-      return null;
-    }
-    
-    public void assignPositionFromScrapList()
-    {
-      assignPositionFromScrapList(null);
-    }
-    
-    public void assignPositionFromScrapList(View paramView)
-    {
-      paramView = nextViewInLimitedList(paramView);
-      if (paramView == null)
-      {
-        this.mCurrentPosition = -1;
-        return;
-      }
-      this.mCurrentPosition = ((RecyclerView.LayoutParams)paramView.getLayoutParams()).getViewLayoutPosition();
-    }
-    
-    boolean hasMore(RecyclerView.State paramState)
-    {
-      return (this.mCurrentPosition >= 0) && (this.mCurrentPosition < paramState.getItemCount());
-    }
-    
-    void log()
-    {
-      Log.d("LinearLayoutManager#LayoutState", "avail:" + this.mAvailable + ", ind:" + this.mCurrentPosition + ", dir:" + this.mItemDirection + ", offset:" + this.mOffset + ", layoutDir:" + this.mLayoutDirection);
-    }
-    
-    View next(RecyclerView.Recycler paramRecycler)
-    {
-      if (this.mScrapList != null) {
-        return nextViewFromScrapList();
-      }
-      paramRecycler = paramRecycler.getViewForPosition(this.mCurrentPosition);
-      this.mCurrentPosition += this.mItemDirection;
-      return paramRecycler;
-    }
-    
-    public View nextViewInLimitedList(View paramView)
-    {
-      int n = this.mScrapList.size();
-      Object localObject1 = null;
-      int j = 2147483647;
-      int i = 0;
-      Object localObject2 = localObject1;
-      if (i < n)
-      {
-        View localView = ((RecyclerView.ViewHolder)this.mScrapList.get(i)).itemView;
-        RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)localView.getLayoutParams();
-        localObject2 = localObject1;
-        int k = j;
-        if (localView != paramView)
-        {
-          if (!localLayoutParams.isItemRemoved()) {
-            break label99;
-          }
-          k = j;
-          localObject2 = localObject1;
-        }
-        label99:
-        int m;
-        do
-        {
-          do
-          {
-            do
-            {
-              i += 1;
-              localObject1 = localObject2;
-              j = k;
-              break;
-              m = (localLayoutParams.getViewLayoutPosition() - this.mCurrentPosition) * this.mItemDirection;
-              localObject2 = localObject1;
-              k = j;
-            } while (m < 0);
-            localObject2 = localObject1;
-            k = j;
-          } while (m >= j);
-          localObject1 = localView;
-          k = m;
-          localObject2 = localObject1;
-        } while (m != 0);
-        localObject2 = localObject1;
-      }
-      return localObject2;
-    }
-  }
-  
-  public static class SavedState
-    implements Parcelable
-  {
-    public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator()
-    {
-      public LinearLayoutManager.SavedState createFromParcel(Parcel paramAnonymousParcel)
-      {
-        return new LinearLayoutManager.SavedState(paramAnonymousParcel);
-      }
-      
-      public LinearLayoutManager.SavedState[] newArray(int paramAnonymousInt)
-      {
-        return new LinearLayoutManager.SavedState[paramAnonymousInt];
-      }
-    };
-    boolean mAnchorLayoutFromEnd;
-    int mAnchorOffset;
-    int mAnchorPosition;
-    
-    public SavedState() {}
-    
-    SavedState(Parcel paramParcel)
-    {
-      this.mAnchorPosition = paramParcel.readInt();
-      this.mAnchorOffset = paramParcel.readInt();
-      if (paramParcel.readInt() == 1) {}
-      for (;;)
-      {
-        this.mAnchorLayoutFromEnd = bool;
-        return;
-        bool = false;
-      }
-    }
-    
-    public SavedState(SavedState paramSavedState)
-    {
-      this.mAnchorPosition = paramSavedState.mAnchorPosition;
-      this.mAnchorOffset = paramSavedState.mAnchorOffset;
-      this.mAnchorLayoutFromEnd = paramSavedState.mAnchorLayoutFromEnd;
-    }
-    
-    public int describeContents()
-    {
-      return 0;
-    }
-    
-    boolean hasValidAnchor()
-    {
-      return this.mAnchorPosition >= 0;
-    }
-    
-    void invalidateAnchor()
-    {
-      this.mAnchorPosition = -1;
-    }
-    
-    public void writeToParcel(Parcel paramParcel, int paramInt)
-    {
-      paramParcel.writeInt(this.mAnchorPosition);
-      paramParcel.writeInt(this.mAnchorOffset);
-      if (this.mAnchorLayoutFromEnd) {}
-      for (paramInt = 1;; paramInt = 0)
-      {
-        paramParcel.writeInt(paramInt);
-        return;
       }
     }
   }

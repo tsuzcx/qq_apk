@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 
 public class uqs
-  implements Runnable
 {
-  public uqs(PressToSpeakPanel paramPressToSpeakPanel, String paramString, QQRecorder.RecorderParam paramRecorderParam) {}
-  
-  public void run()
+  public static String a(QQUserUIItem paramQQUserUIItem)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel.b();
-    PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam);
+    return url.a(paramQQUserUIItem);
+  }
+  
+  public static boolean a()
+  {
+    return true;
+  }
+  
+  public static String b(QQUserUIItem paramQQUserUIItem)
+  {
+    return url.b(paramQQUserUIItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uqs
  * JD-Core Version:    0.7.0.1
  */

@@ -9,11 +9,11 @@ import java.util.Map;
 public final class material_tab_get_rsp
   extends JceStruct
 {
-  static Map cache_mapExtInfo;
+  static Map<String, String> cache_mapExtInfo;
   static MaterialTab cache_stTab = new MaterialTab();
   public int iCode;
   public int iHasMore;
-  public Map mapExtInfo;
+  public Map<String, String> mapExtInfo;
   public MaterialTab stTab;
   public String strAttachInfo = "";
   
@@ -25,7 +25,7 @@ public final class material_tab_get_rsp
   
   public material_tab_get_rsp() {}
   
-  public material_tab_get_rsp(int paramInt1, MaterialTab paramMaterialTab, String paramString, int paramInt2, Map paramMap)
+  public material_tab_get_rsp(int paramInt1, MaterialTab paramMaterialTab, String paramString, int paramInt2, Map<String, String> paramMap)
   {
     this.iCode = paramInt1;
     this.stTab = paramMaterialTab;

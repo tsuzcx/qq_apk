@@ -1,76 +1,50 @@
 package com.tencent.token.ui;
 
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.token.global.h;
+import com.tencent.token.widget.InputMethodRelativeLayout;
+import com.tencent.token.widget.a;
 
-final class ri
-  extends bo
+class ri
+  implements a
 {
-  ri(NetActiveVryMobileNoSmsActivity paramNetActiveVryMobileNoSmsActivity)
-  {
-    super(paramNetActiveVryMobileNoSmsActivity);
-  }
+  ri(NetActiveVryQuesActivity paramNetActiveVryQuesActivity) {}
   
-  public final void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if ((this.a == null) || ((this.a != null) && (this.a.isFinishing()))) {
-      return;
-    }
-    switch (paramMessage.what)
+    if (paramBoolean)
     {
-    default: 
-      e.c("unknown msg: " + paramMessage.what);
-      return;
-    case -100: 
-      NetActiveVryMobileNoSmsActivity.access$100(this.a);
-      return;
-    case 100: 
-      this.a.showProDialog(this.a, 2131361808, 2131361817, null);
-      return;
-    case 3031: 
-      if (paramMessage.arg1 != 0)
+      localObject = new int[2];
+      this.a.mConfirmBtn.getLocationInWindow((int[])localObject);
+      paramInt1 = localObject[1];
+      this.a.mRootLayout.getLocationInWindow((int[])localObject);
+      int i = localObject[1];
+      if (NetActiveVryQuesActivity.access$1300(this.a))
       {
-        paramMessage = (d)paramMessage.obj;
-        e.c("err " + paramMessage.a);
-        d.a(this.a.getResources(), paramMessage);
-        e.c("get mobile code failed:" + paramMessage.a + "-" + paramMessage.b + "-" + paramMessage.c);
-        this.a.mHandler.removeMessages(-100);
-        if (124 == paramMessage.a)
-        {
-          NetActiveVryMobileNoSmsActivity.access$1400(this.a, paramMessage.c);
-          return;
-        }
-        this.a.showUserDialog(2131361831, paramMessage.c, 2131361800, null);
-        return;
+        NetActiveVryQuesActivity.access$1402(this.a, paramInt1);
+        NetActiveVryQuesActivity.access$1502(this.a, i);
+        NetActiveVryQuesActivity.access$1602(this.a, paramInt2);
       }
-      this.a.setContentView(2130903148);
-      NetActiveVryMobileNoSmsActivity.access$1500(this.a);
-      return;
-    case 3029: 
-      if (paramMessage.arg1 == 0)
+      do
       {
-        NetActiveVryMobileNoSmsActivity.access$1600(this.a);
         return;
-      }
-      paramMessage = (d)paramMessage.obj;
-      e.c("err " + paramMessage.a);
-      d.a(this.a.getResources(), paramMessage);
-      e.c("query up flow failed:" + paramMessage.a + "-" + paramMessage.b + "-" + paramMessage.c);
-      NetActiveVryMobileNoSmsActivity.access$1700(this.a, paramMessage.c);
+        paramInt1 = NetActiveVryQuesActivity.access$1400(this.a);
+        paramInt2 = NetActiveVryQuesActivity.access$1500(this.a);
+        i = NetActiveVryQuesActivity.access$1600(this.a);
+        paramInt1 = paramInt1 - paramInt2 + this.a.mConfirmBtn.getHeight() - i;
+      } while (paramInt1 <= 0);
+      localObject = new RelativeLayout.LayoutParams(-1, -1);
+      ((RelativeLayout.LayoutParams)localObject).setMargins(this.a.mScrollAreaLayout.getPaddingLeft(), this.a.mScrollAreaLayout.getPaddingTop() - paramInt1, this.a.mScrollAreaLayout.getPaddingRight(), this.a.mScrollAreaLayout.getPaddingBottom());
+      this.a.mScrollAreaLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      h.c("mScrollAreaLayout.getPaddingTop()-paddingY = " + (this.a.mScrollAreaLayout.getPaddingTop() - paramInt1) + "paddingY = " + paramInt1);
       return;
     }
-    this.a.dismissDialog();
-    if (paramMessage.arg1 == 0)
-    {
-      NetActiveVryMobileNoSmsActivity.access$1800(this.a);
-      return;
-    }
-    paramMessage = (d)paramMessage.obj;
-    d.a(this.a.getResources(), paramMessage);
-    e.c("query up flow failed:" + paramMessage.a + "-" + paramMessage.b + "-" + paramMessage.c);
-    NetActiveVryMobileNoSmsActivity.access$1700(this.a, paramMessage.c);
+    Object localObject = new RelativeLayout.LayoutParams(-1, -1);
+    ((RelativeLayout.LayoutParams)localObject).setMargins(this.a.mScrollAreaLayout.getPaddingLeft(), this.a.mScrollAreaLayout.getPaddingTop(), this.a.mScrollAreaLayout.getPaddingRight(), this.a.mScrollAreaLayout.getPaddingBottom());
+    this.a.mScrollAreaLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
   }
 }
 

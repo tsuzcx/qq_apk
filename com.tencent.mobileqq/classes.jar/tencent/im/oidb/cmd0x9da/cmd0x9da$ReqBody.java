@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x9da$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int BYTES_COOKIE_FIELD_NUMBER = 3;
   public static final int UINT32_FEED_NUM_FIELD_NUMBER = 2;
@@ -27,7 +27,7 @@ public final class cmd0x9da$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x9da.cmd0x9da.ReqBody
  * JD-Core Version:    0.7.0.1
  */

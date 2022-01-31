@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.activity.JumpActivity;
-
-public class swd
-  implements Runnable
+abstract interface swd
 {
-  public swd(JumpActivity paramJumpActivity) {}
+  public abstract void a();
   
-  public void run()
-  {
-    JumpActivity.a(this.a);
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     swd
  * JD-Core Version:    0.7.0.1
  */

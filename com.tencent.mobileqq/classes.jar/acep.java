@@ -1,25 +1,26 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class acep
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public acep(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public acep(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "func updateLastEmoticonPanel begins.");
+    arwq.a(this.a.app).a(paramBoolean, this.a.app);
+    if (paramBoolean)
+    {
+      azqs.b(this.a.app, "CliOper", "", "", "0X8008C75", "0X8008C75", 0, 0, "", "", "", "");
+      return;
     }
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
+    azqs.b(this.a.app, "CliOper", "", "", "0X8008C74", "0X8008C74", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acep
  * JD-Core Version:    0.7.0.1
  */

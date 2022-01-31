@@ -1,59 +1,20 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.RemoteException;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.music.IQQPlayerService;
-import com.tencent.mobileqq.music.IQQPlayerService.Stub;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import com.tencent.mobileqq.musicgene.MusicPlayerHandler;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class aekt
-  implements ServiceConnection
+  implements DialogInterface.OnClickListener
 {
-  public aekt(MusicPlayerActivity paramMusicPlayerActivity) {}
+  public aekt(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MusicPlayerActivity.a(this.a, IQQPlayerService.Stub.a(paramIBinder));
-    try
-    {
-      MusicPlayerActivity.a(this.a).a(MusicPlayerActivity.a(this.a));
-      paramComponentName = MusicPlayerActivity.a(this.a).a();
-      paramIBinder = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramComponentName, -1L);
-      if (paramComponentName != null)
-      {
-        String str = MusicPlayerActivity.a(this.a, paramComponentName);
-        if (MusicPlayerActivity.b().containsKey(str)) {
-          MusicPlayerActivity.a(this.a, (aekz)MusicPlayerActivity.b().get(str), paramIBinder);
-        }
-        for (;;)
-        {
-          int i = MusicPlayerActivity.a(this.a).a();
-          Message.obtain(MusicPlayerActivity.a(this.a), 50, i, 0).sendToTarget();
-          MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramComponentName.b, paramComponentName.g, paramComponentName.f, String.valueOf(paramComponentName.a), paramComponentName.c, MusicPlayerActivity.a(this.a).c());
-          return;
-          MusicPlayerActivity.a(this.a, paramComponentName.b, paramComponentName.g, paramComponentName.d, paramIBinder, false, false);
-        }
-      }
-      return;
+    azqs.b(this.a.app, "CliOper", "", "", "0X800417E", "0X800417E", 0, 0, "", "", "", "");
+    if (UpgradeActivity.a(this.a)) {
+      azqs.b(this.a.app, "CliOper", "", "", "0X800714C", "0X800714C", 0, 0, "", "", "", "");
     }
-    catch (Exception paramComponentName) {}
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    paramComponentName = MusicPlayerActivity.a(this.a);
-    if (paramComponentName != null) {}
-    try
-    {
-      paramComponentName.b(MusicPlayerActivity.a(this.a));
-      return;
-    }
-    catch (RemoteException paramComponentName) {}
+    UpgradeActivity.a(this.a, false);
+    azqs.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, amqd.b(), String.valueOf(2), amqe.a(), "");
   }
 }
 

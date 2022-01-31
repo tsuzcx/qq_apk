@@ -1,38 +1,18 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.FastScroller;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class ambn
-  implements Runnable
+class ambn
+  extends ampn
 {
-  public ambn(FastScroller paramFastScroller) {}
-  
-  public void run()
+  ambn(ambm paramambm, String paramString, boolean paramBoolean)
   {
-    int k;
-    int j;
-    int i;
-    if (this.a.jdField_a_of_type_ComTencentWidgetAbsListView.mIsAttached)
-    {
-      this.a.f();
-      k = this.a.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight();
-      j = (int)this.a.jdField_a_of_type_Float - this.a.jdField_a_of_type_Int + 10;
-      if (j >= 0) {
-        break label100;
-      }
-      i = 0;
-    }
-    for (;;)
-    {
-      this.a.c = i;
-      this.a.a(this.a.c / (k - this.a.jdField_a_of_type_Int));
-      this.a.b = false;
-      return;
-      label100:
-      i = j;
-      if (this.a.jdField_a_of_type_Int + j > k) {
-        i = k - this.a.jdField_a_of_type_Int;
-      }
-    }
+    super(paramString, paramBoolean);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    QLog.d("RedpointHandler", 1, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
+    ambm.a(this.a, paramInt, paramSosoLbsInfo);
   }
 }
 

@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.activity.contact.newfriend.QIMFollowerAddBuilder;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
 
-class wju
-  implements Runnable
+public class wju
+  extends xwf
 {
-  wju(wjt paramwjt) {}
+  public wju(StoryDetailFragment paramStoryDetailFragment) {}
   
-  public void run()
+  public boolean a(boolean paramBoolean)
   {
-    this.a.a.a.c();
+    this.a.d();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wju
  * JD-Core Version:    0.7.0.1
  */

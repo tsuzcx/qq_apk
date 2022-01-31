@@ -1,41 +1,58 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.report.QzoneOnlineTimeCollectRptService;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
 
-public class amyo
-  implements Runnable
+class amyo
+  extends amzq
 {
-  public amyo(QzoneOnlineTimeCollectRptService paramQzoneOnlineTimeCollectRptService) {}
+  amyo(amyk paramamyk) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    QLog.d("QzoneOnlineTimeCollectRptService", 1, "beginTrace isForeground:" + QzoneOnlineTimeCollectRptService.a(this.a));
-    if (!QzoneOnlineTimeCollectRptService.a(this.a)) {}
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadSuccess success " + paramInt);
+    }
+    if (amyk.a(this.a) == null)
     {
-      this.a.a = Long.parseLong(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-      QzoneOnlineTimeCollectRptService.a(this.a, QzoneConfig.getInstance().getConfig("ClientReport", "OnlineLocalSaveFrequency", 10000));
-      this.a.b();
-      QzoneOnlineTimeCollectRptService.a(this.a);
-      QzoneOnlineTimeCollectRptService.a(this.a, true);
-      LocalMultiProcConfig.putBool("key_sp_qzone_isforeground", true);
-      if (QzoneOnlineTimeCollectRptService.a(this.a) != 0) {
-        ThreadManager.getSubThreadHandler().post(QzoneOnlineTimeCollectRptService.a(this.a));
-      }
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "onMiniDownloadSuccess error mHandler is null ");
       return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("QzoneOnlineTimeCollectRptService", 2, "beginTrace:" + localException.toString());
-      }
+    Message localMessage = Message.obtain();
+    localMessage.what = 10;
+    localMessage.arg1 = paramInt;
+    amyk.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadProcess process " + paramInt1 + " : " + paramInt2);
     }
+    if (amyk.a(this.a) == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 11;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    amyk.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadError " + paramInt1 + " : " + paramInt2);
+    }
+    if (amyk.a(this.a) == null)
+    {
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "onMiniDownloadError error mHandler is null ");
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 12;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    amyk.a(this.a).sendMessage(localMessage);
   }
 }
 

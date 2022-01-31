@@ -4,6 +4,10 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import mkh;
+import mkj;
 
 public abstract class QavListItemBase
   extends LinearLayout
@@ -11,12 +15,14 @@ public abstract class QavListItemBase
 {
   protected int a;
   Context jdField_a_of_type_AndroidContentContext;
-  QavListItemBase.IClickCallback jdField_a_of_type_ComTencentAvUiQavListItemBase$IClickCallback;
+  final String jdField_a_of_type_JavaLangString;
+  mkh jdField_a_of_type_Mkh;
   
   public QavListItemBase(Context paramContext)
   {
     super(paramContext);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "_" + AudioHelper.b());
   }
   
   public int a()
@@ -28,22 +34,25 @@ public abstract class QavListItemBase
   
   public abstract void a(int paramInt1, int paramInt2);
   
-  public void a(int paramInt, QavListItemBase.IClickCallback paramIClickCallback)
+  public void a(int paramInt, mkh parammkh)
   {
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentAvUiQavListItemBase$IClickCallback = paramIClickCallback;
+    this.jdField_a_of_type_Mkh = parammkh;
   }
   
-  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, QavListItemBase.ItemInfo paramItemInfo, QavListItemBase.IClickCallback paramIClickCallback);
+  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, mkj parammkj, mkh parammkh);
   
-  public void a(QavListItemBase.ItemInfo paramItemInfo, int paramInt) {}
+  public void a(mkj parammkj, int paramInt) {}
   
   public abstract void b(int paramInt1, int paramInt2);
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiQavListItemBase$IClickCallback != null) {
-      this.jdField_a_of_type_ComTencentAvUiQavListItemBase$IClickCallback.a(this.jdField_a_of_type_Int, this);
+    if (this.jdField_a_of_type_Mkh != null)
+    {
+      long l = AudioHelper.b();
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onClick, seq[" + l + "], mPosition[" + this.jdField_a_of_type_Int + "]");
+      this.jdField_a_of_type_Mkh.a(l, this.jdField_a_of_type_Int, this);
     }
   }
   

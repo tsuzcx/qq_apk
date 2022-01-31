@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/lx_" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <ImageView android:id="@id/lx9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/lxb" android:layout_width="26.0dip" android:layout_height="50.0dip" android:scaleType="centerCrop" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/ams" android:id="@id/lxc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/amu" android:id="@id/lxa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_below="@id/lxc" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.activity.contact.newfriend.connections.TriangleView android:id="@id/jw1" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="7.0dip" android:layout_below="@id/lx_" android:layout_centerHorizontal="true" />
+</RelativeLayout>

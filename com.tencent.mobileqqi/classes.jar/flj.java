@@ -1,21 +1,32 @@
-import com.tencent.ims.signature.SignatureReport;
-import com.tencent.mobileqq.app.StartAppCheckHandler;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.widget.ActionSheet;
 
 public class flj
+  implements IphonePickerView.IphonePickListener
 {
-  public int a;
-  public long a;
-  signature.SignatureReport jdField_a_of_type_ComTencentImsSignature$SignatureReport;
-  fli jdField_a_of_type_Fli;
-  public String a;
-  String b;
-  String c;
-  String d;
+  public flj(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public flj(StartAppCheckHandler paramStartAppCheckHandler, String paramString)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentImsSignature$SignatureReport = new signature.SignatureReport();
+    if ((this.a.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.a.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()))
+    {
+      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = null;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (this.a.c == 0)
+    {
+      this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(ConditionSearchFriendActivity.jdField_b_of_type_ArrayOfJavaLangString[paramInt2]);
+      this.a.jdField_b_of_type_Int = paramInt2;
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(ConditionSearchFriendActivity.jdField_a_of_type_ArrayOfJavaLangString[paramInt2]);
+    this.a.jdField_a_of_type_Int = paramInt2;
   }
 }
 

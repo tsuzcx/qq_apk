@@ -1,26 +1,24 @@
-import java.io.File;
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout;
 
 class rpe
-  implements Comparator
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  rpe(rpc paramrpc) {}
+  rpe(rpd paramrpd, View paramView) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    long l = paramFile1.lastModified() - paramFile2.lastModified();
-    if (l > 0L) {
-      return -1;
-    }
-    if (l < 0L) {
-      return 1;
-    }
-    return 0;
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setX(f);
+    CaptureOperateTouchLayout.a(this.jdField_a_of_type_Rpd.a).setX(f + this.jdField_a_of_type_AndroidViewView.getWidth() * 0.32F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rpe
  * JD-Core Version:    0.7.0.1
  */

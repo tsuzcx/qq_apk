@@ -1,30 +1,36 @@
-import android.app.Dialog;
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
-import com.tencent.widget.ActionSheet;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import java.util.List;
 
-public class vsh
+class vsh
   implements View.OnClickListener
 {
-  public vsh(DiscussChatPie paramDiscussChatPie, String paramString) {}
+  vsh(vsg paramvsg) {}
   
   public void onClick(View paramView)
   {
-    if ((DiscussChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie) != null) && (DiscussChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie).isShowing())) {
-      DiscussChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie).dismiss();
+    paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
+    if (paramView != null) {
+      paramView.d = 2;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.a.isShowing()))
+    this.a.a().finish();
+    String str = "";
+    paramView = str;
+    if (this.a.jdField_a_of_type_Int >= 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.a.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.a = null;
+      paramView = str;
+      if (this.a.jdField_a_of_type_Int < this.a.jdField_a_of_type_JavaUtilList.size()) {
+        paramView = ((vtt)this.a.jdField_a_of_type_JavaUtilList.get(this.a.jdField_a_of_type_Int)).a;
+      }
     }
-    DiscussChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie, this.jdField_a_of_type_JavaLangString);
+    wxj.a("play_video", "clk_quit", 0, 0, new String[] { "", "", "", paramView });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vsh
  * JD-Core Version:    0.7.0.1
  */

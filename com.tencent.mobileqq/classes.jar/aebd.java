@@ -1,16 +1,41 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.leba.model.pluginactions.PluginAction;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aebd
-  implements Runnable
+  extends avvk
 {
-  public aebd(PluginAction paramPluginAction, QQAppInterface paramQQAppInterface, BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
+  public aebd(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
   {
-    ((RedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(35)).a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+    TextPreviewTranslateActivity.b(this.a);
+    if ((paramBoolean) && (paramTranslateResult != null) && (paramTranslateResult.b()) && (!paramTranslateResult.a()))
+    {
+      TextPreviewTranslateActivity.a(this.a, paramTranslateResult);
+      return;
+    }
+    String str2 = this.a.getResources().getString(2131699624);
+    String str1 = str2;
+    if (paramTranslateResult != null)
+    {
+      if (TextUtils.isEmpty(paramTranslateResult.e)) {
+        break label92;
+      }
+      str1 = paramTranslateResult.e;
+    }
+    for (;;)
+    {
+      QQToast.a(this.a, 1, str1, 0).a();
+      return;
+      label92:
+      str1 = str2;
+      if (paramTranslateResult.a()) {
+        str1 = this.a.getResources().getString(2131699603);
+      }
+    }
   }
 }
 

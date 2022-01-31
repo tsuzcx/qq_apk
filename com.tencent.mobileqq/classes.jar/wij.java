@@ -1,30 +1,32 @@
-import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.XListView;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
+import java.util.ArrayList;
 
-public class wij
-  extends PublicAccountObserver
+class wij
+  extends ParallelJobSegment<String, Integer>
 {
-  public wij(PublicView paramPublicView) {}
-  
-  public void a(boolean paramBoolean)
+  public wij(wib paramwib)
   {
-    if (true == paramBoolean)
-    {
-      PublicView.a(this.a).a(0);
-      PublicView.a(this.a).sendEmptyMessage(1);
-      PublicView.a(this.a).sendEmptyMessage(3);
-      return;
-    }
-    PublicView.a(this.a).springBackOverScrollHeaderView();
-    PublicView.a(this.a, 1, 2131434349);
-    PublicView.a(this.a);
+    this(paramwib, "RequestViewCountSegment");
+  }
+  
+  public wij(wib paramwib, String paramString)
+  {
+    super(paramString);
+  }
+  
+  protected void a(JobContext paramJobContext, String paramString)
+  {
+    vfj localvfj = new vfj();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramString);
+    localvfj.a = localArrayList;
+    urp.a().a(localvfj, new wik(this, paramJobContext, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wij
  * JD-Core Version:    0.7.0.1
  */

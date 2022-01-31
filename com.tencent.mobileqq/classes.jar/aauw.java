@@ -1,17 +1,21 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.view.View;
+import com.tencent.gdtad.views.video.GdtVideoCommonView;
 
-public final class aauw
-  implements FileFilter
+public abstract interface aauw
 {
-  public boolean accept(File paramFile)
-  {
-    return (paramFile.isFile()) && (paramFile.exists());
-  }
+  public abstract void a(View paramView);
+  
+  public abstract void a(GdtVideoCommonView paramGdtVideoCommonView);
+  
+  public abstract void b(GdtVideoCommonView paramGdtVideoCommonView);
+  
+  public abstract void c(GdtVideoCommonView paramGdtVideoCommonView);
+  
+  public abstract void d(GdtVideoCommonView paramGdtVideoCommonView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aauw
  * JD-Core Version:    0.7.0.1
  */

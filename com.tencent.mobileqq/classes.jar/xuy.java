@@ -1,41 +1,27 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class xuy
-  implements Runnable
+  implements View.OnTouchListener
 {
-  xuy(xuw paramxuw) {}
+  xuy(xux paramxux) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool = CameraCompatibleList.a(CameraCompatibleList.y);
-    if (bool)
+    switch (paramMotionEvent.getAction())
     {
-      RMVideoStateMgr.a().a(1102, "已经获取权限，需要重新进入打开摄像头", true);
-      return;
     }
-    try
+    for (;;)
     {
-      if ((!this.a.d) && (this.a.f)) {
-        RMVideoStateMgr.a().a(1102, "初始化失败,code=1102", true);
-      }
-      RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-      if (QLog.isColorLevel()) {
-        QLog.e("RMVideoInitState", 2, "[ERR_CODE_INIT_TIMEOUT]初始化失败,code=1102 mIsReadAVCodec=" + this.a.a + " mIsReadCamera=" + this.a.b + " black=" + bool + " rmStateMgr.mIsAudioReady=" + localRMVideoStateMgr.d + " rmStateMgr.mVideoFileDir=" + localRMVideoStateMgr.a);
-      }
-      RMVideoStateMgr.b(null);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      return true;
+      this.a.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xuy
  * JD-Core Version:    0.7.0.1
  */

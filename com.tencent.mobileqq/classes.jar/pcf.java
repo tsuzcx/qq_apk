@@ -1,44 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.PubAccountMailJsPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 
 public class pcf
-  implements DialogInterface.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public pcf(PubAccountMailJsPlugin paramPubAccountMailJsPlugin) {}
+  public pcf(VideoView paramVideoView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (!TextUtils.isEmpty(this.a.a))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PubAccountMailJsPlugin", 2, String.format("Contact menu dialog click phone = %s, which = %d", new Object[] { this.a.a, Integer.valueOf(paramInt) }));
-      }
-      switch (paramInt)
-      {
-      default: 
-        if (QLog.isColorLevel()) {
-          QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow contact button %d", new Object[] { Integer.valueOf(paramInt) }));
-        }
-        break;
-      }
+    if (VideoView.a(this.a) != null) {
+      VideoView.a(this.a).setVisibility(4);
     }
-    while (!QLog.isColorLevel())
-    {
-      return;
-      PubAccountMailJsPlugin.e(this.a);
-      return;
-      PubAccountMailJsPlugin.f(this.a);
-      return;
+    if (VideoView.b(this.a) != null) {
+      VideoView.b(this.a).setVisibility(4);
     }
-    QLog.d("PubAccountMailJsPlugin", 2, "phone is empty");
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pcf
  * JD-Core Version:    0.7.0.1
  */

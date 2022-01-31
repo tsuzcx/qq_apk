@@ -1,29 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
 
-public class xqt
-  implements ActionSheet.OnButtonClickListener
+abstract interface xqt
 {
-  public xqt(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public abstract void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener);
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a("PTV.NewFlowCameraActivity");
-    NewFlowCameraActivity.e(this.a);
-    this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xqt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.ark.ArkAppManagerPanel;
-import java.util.ArrayList;
+import com.tencent.ad.tangram.net.AdHttp.Params;
 
-public class aaug
-  implements Runnable
+class aaug
+  extends AdHttp.Params
 {
-  public aaug(ArkAppManagerPanel paramArkAppManagerPanel, ArrayList paramArrayList) {}
+  public int a = -2147483648;
   
-  public void run()
+  public boolean isSuccess()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel.a(this.jdField_a_of_type_JavaUtilArrayList);
+    return (super.isSuccess()) && (this.responseData != null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaug
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.PendantTipsInfo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.ref.WeakReference;
 
 public class wsh
-  implements DialogInterface.OnClickListener
+  implements urr<wsj, wsk>
 {
-  public wsh(AvatarPendantActivity paramAvatarPendantActivity, PendantTipsInfo paramPendantTipsInfo, int paramInt) {}
+  private WeakReference<wsg> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public wsh(wsg paramwsg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantPendantTipsInfo, false, this.jdField_a_of_type_Int);
+    this.a = new WeakReference(paramwsg);
+  }
+  
+  public void a(@NonNull wsj paramwsj, @Nullable wsk paramwsk, @NonNull ErrorMessage paramErrorMessage)
+  {
+    wxe.d("Q.qqstory.home.GetUserGuideInfoStep", "onCmdRespond");
+    wsg localwsg = (wsg)this.a.get();
+    if (localwsg == null) {
+      return;
+    }
+    localwsg.a(paramwsj, paramwsk, paramErrorMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wsh
  * JD-Core Version:    0.7.0.1
  */

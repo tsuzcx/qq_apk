@@ -1,16 +1,19 @@
-import NearbyGroup.GroupInfo;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.RecommendTroopAdapter;
-
 public class aiuu
-  implements View.OnClickListener
 {
-  public aiuu(RecommendTroopAdapter paramRecommendTroopAdapter, GroupInfo paramGroupInfo) {}
+  public int a;
+  public long a;
+  public long b;
   
-  public void onClick(View paramView)
+  public boolean equals(Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityRecommendTroopAdapter.a(this.jdField_a_of_type_NearbyGroupGroupInfo);
+    if ((paramObject instanceof aiuu))
+    {
+      paramObject = (aiuu)paramObject;
+      if ((paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (paramObject.jdField_a_of_type_Long == this.jdField_a_of_type_Long)) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 

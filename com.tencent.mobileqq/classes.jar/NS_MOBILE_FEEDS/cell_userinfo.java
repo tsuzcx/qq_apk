@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public final class cell_userinfo
   extends JceStruct
 {
-  static ArrayList cache_luckyMoneyPics;
+  static ArrayList<String> cache_luckyMoneyPics;
   static s_user cache_user = new s_user();
   public String action_desc = "";
   public int actiontype = 5;
-  public ArrayList luckyMoneyPics;
+  public ArrayList<String> luckyMoneyPics;
   public s_user user;
   
   static
@@ -55,7 +55,7 @@ public final class cell_userinfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_userinfo
  * JD-Core Version:    0.7.0.1
  */

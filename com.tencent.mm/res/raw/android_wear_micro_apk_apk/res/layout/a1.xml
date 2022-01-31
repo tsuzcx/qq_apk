@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" style="@style/n"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="right" android:background="@drawable/bz" android:layout_marginLeft="30.0dip" style="@style/a2">
+        <com.tencent.mm.wear.app.ui.widget.WearTextView android:id="@id/ay" android:text="恭喜发财，大吉大利" android:layout_marginStart="10.0dip" style="@style/a3" />
+        <ImageView android:layout_marginStart="4.0dip" android:layout_marginEnd="5.0dip" style="@style/a1" />
+    </LinearLayout>
+</LinearLayout>

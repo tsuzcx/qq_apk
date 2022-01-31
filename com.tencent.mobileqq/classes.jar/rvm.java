@@ -1,47 +1,64 @@
-import NS_MOBILE_AIONewestFeed.AIONewestFeedRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.observer.QZoneObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.annotation.TargetApi;
+import android.text.Layout;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.method.BaseMovementMethod;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.widget.TextView;
 
+@TargetApi(11)
 public class rvm
-  extends QZoneObserver
+  extends BaseMovementMethod
 {
-  public SessionInfo a;
-  public WeakReference a;
+  private static rvm a;
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public static rvm a()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("UndealCount.QZoneObserver.QZoneFeeds", 2, "onGetQZoneNewestFeed appRef==null");
-      }
+    if (a == null) {
+      a = new rvm();
     }
-    QQAppInterface localQQAppInterface;
-    do
+    return a;
+  }
+  
+  public void initialize(TextView paramTextView, Spannable paramSpannable)
+  {
+    Selection.removeSelection(paramSpannable);
+  }
+  
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getActionMasked();
+    if ((i == 1) || (i == 0))
     {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
-        break;
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramTextView.getTotalPaddingLeft();
+      int n = paramTextView.getTotalPaddingTop();
+      int i1 = paramTextView.getScrollX();
+      int i2 = paramTextView.getScrollY();
+      paramMotionEvent = paramTextView.getLayout();
+      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
+      paramMotionEvent = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
+      if (paramMotionEvent.length > 0)
+      {
+        if (i == 1) {
+          paramMotionEvent[0].onClick(paramTextView);
+        }
+        for (;;)
+        {
+          return true;
+          Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(paramMotionEvent[0]), paramSpannable.getSpanEnd(paramMotionEvent[0]));
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("UndealCount.QZoneObserver.QZoneFeeds", 2, "onGetQZoneNewestFeed app == null || sessionInfo == nul");
-    return;
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof AIONewestFeedRsp))) {
-      ChatActivityFacade.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (AIONewestFeedRsp)paramBundle);
+      Selection.removeSelection(paramSpannable);
     }
-    localQQAppInterface.unRegistObserver(ChatActivityFacade.a());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rvm
  * JD-Core Version:    0.7.0.1
  */

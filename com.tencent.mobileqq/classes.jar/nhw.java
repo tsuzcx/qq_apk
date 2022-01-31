@@ -1,30 +1,23 @@
 import android.content.Context;
-import android.util.SparseArray;
-import android.util.SparseIntArray;
-import com.tencent.biz.qqstory.notification.StoryMsgNotification;
-import com.tencent.mobileqq.msf.sdk.QNotificationManager;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class nhw
-  implements Runnable
+class nhw
+  implements View.OnClickListener
 {
-  public nhw(StoryMsgNotification paramStoryMsgNotification, Context paramContext) {}
+  nhw(nhu paramnhu, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    StoryMsgNotification.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    QNotificationManager localQNotificationManager = new QNotificationManager(this.jdField_a_of_type_AndroidContentContext);
-    int j = StoryMsgNotification.jdField_a_of_type_AndroidUtilSparseIntArray.size();
-    int i = 0;
-    while (i < j)
-    {
-      localQNotificationManager.cancel("StoryMsgNotification", StoryMsgNotification.jdField_a_of_type_AndroidUtilSparseIntArray.get(StoryMsgNotification.jdField_a_of_type_AndroidUtilSparseIntArray.keyAt(i)));
-      i += 1;
-    }
+    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    nhu.a(this.jdField_a_of_type_Nhu).startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nhw
  * JD-Core Version:    0.7.0.1
  */

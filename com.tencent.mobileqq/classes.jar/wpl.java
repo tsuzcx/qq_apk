@@ -1,28 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasH5PayUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
 
-public class wpl
-  implements DialogInterface.OnClickListener
+class wpl
+  implements urr<veu, vev>
 {
-  public wpl(PicSelectAdapter paramPicSelectAdapter) {}
+  wpl(wpi paramwpi, JobContext paramJobContext, wov paramwov) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(@NonNull veu paramveu, @Nullable vev arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      wxe.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed like info pull segment cancel on net respond");
+      return;
     }
-    if (paramInt == 1) {
-      VasH5PayUtil.a(PicSelectAdapter.a(this.a), PicSelectAdapter.a(this.a), "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", PicSelectAdapter.a(this.a).getApp().getString(2131436943), "");
+    if (??? == null)
+    {
+      paramErrorMessage = new vev(paramErrorMessage);
+      synchronized (this.jdField_a_of_type_Wpi)
+      {
+        wpi.a(this.jdField_a_of_type_Wpi, paramErrorMessage);
+        wpi.a(this.jdField_a_of_type_Wpi).remove(paramveu);
+        wpi.a(this.jdField_a_of_type_Wpi, this.jdField_a_of_type_Wov);
+        return;
+      }
+    }
+    if (paramErrorMessage.isFail()) {
+      wxe.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for like request");
+    }
+    uvm localuvm = (uvm)uwa.a(15);
+    Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
+    for (;;)
+    {
+      paramErrorMessage = ???;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      paramErrorMessage = (vew)localIterator.next();
+      localuvm.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpl
  * JD-Core Version:    0.7.0.1
  */

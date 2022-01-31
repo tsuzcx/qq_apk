@@ -1,30 +1,28 @@
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.qq.im.capture.QIMCaptureController;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 
-public class anjr
-  implements Runnable
+class anjr
+  implements SensorEventListener
 {
-  public anjr(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit, boolean paramBoolean) {}
+  anjr(anjo paramanjo) {}
   
-  public void run()
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if ((this.jdField_a_of_type_Boolean) && (QIMEffectCameraCaptureUnit.e(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit)))
-    {
-      this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.d = true;
-      QIMEffectCameraCaptureUnit.d(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit);
+    if (paramSensorEvent.sensor.getType() == 1) {
+      anjo.a(this.a, paramSensorEvent);
     }
-    ((QIMPtvTemplateManager)QIMManager.a(3)).a("0", QIMPtvTemplateAdapter.b, "");
-    this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.jdField_a_of_type_DovComQqImCaptureQIMCaptureController.t();
-    this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setFaceEffect("");
+    while (paramSensorEvent.sensor.getType() != 3) {
+      return;
+    }
+    anjo.b(this.a, paramSensorEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anjr
  * JD-Core Version:    0.7.0.1
  */

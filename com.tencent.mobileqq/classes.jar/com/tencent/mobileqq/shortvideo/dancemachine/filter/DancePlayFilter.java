@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.shortvideo.dancemachine.filter;
 
-import aiaq;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.SystemClock;
@@ -13,6 +12,7 @@ import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport;
 import com.tencent.mobileqq.shortvideo.dancemachine.DisplayUtils;
 import com.tencent.mobileqq.shortvideo.dancemachine.GLAudioWaveN;
 import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoy;
 import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoyManager;
 import com.tencent.mobileqq.shortvideo.dancemachine.GLLyricsManager;
 import com.tencent.mobileqq.shortvideo.dancemachine.GLProgressBar;
@@ -25,6 +25,7 @@ import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.GameNumberRe
 import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.GamingResource;
 import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.GeneralResource;
 import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.LBGeneralResource;
+import com.tencent.mobileqq.shortvideo.filter.FilterBusinessOperation;
 import com.tencent.mobileqq.shortvideo.filter.QQDanceEventHandler;
 import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
 import java.util.List;
@@ -34,217 +35,219 @@ public class DancePlayFilter
   extends DanceBaseFilter
   implements Animation.AnimationListener, GLProgressBar.ProgressBarListener
 {
-  private long jdField_a_of_type_Long;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
-  private AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
-  private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
-  private GLAudioWaveN jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLAudioWaveN;
-  private GLImageView jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView;
-  private GLLittleBoyManager jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoyManager;
-  private GLLyricsManager jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsManager;
-  private GLProgressBar jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar;
-  private GLRecognizeRegionView jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView;
-  private GLScoreBoard jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard;
-  private boolean jdField_a_of_type_Boolean;
-  private AnimationSet jdField_b_of_type_AndroidViewAnimationAnimationSet;
-  private boolean jdField_b_of_type_Boolean = false;
+  private AnimationSet mAnimGreatPro;
+  private AnimationSet mAnimPerfectPro;
+  private GLAudioWaveN mAudioWave;
+  private GLLittleBoyManager mBoyManager;
+  private boolean mHaveBackgoundAudioStarted = false;
+  private boolean mHaveStartProgress;
+  private GLLyricsManager mLyricsManager;
+  private GLProgressBar mProgress;
+  private GLRecognizeRegionView mRecognizeRegion;
+  private GLImageView mSceneImageBg;
+  private GLScoreBoard mScoreBoard;
+  private long mStartRecordMis;
+  private RectF mTempSize = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
+  private TranslateAnimation mTransformProgress;
   
   public DancePlayFilter(int paramInt, QQFilterRenderManager paramQQFilterRenderManager)
   {
     super(paramInt, paramQQFilterRenderManager);
   }
   
-  private void i()
+  private void onDrawOtherObject()
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLAudioWaveN.a();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoyManager.c();
-    int i = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoyManager.b();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.a(i);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.b();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.d(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoyManager.a());
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.b());
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a().b(this.jdField_a_of_type_AndroidGraphicsRectF);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.e(this.jdField_a_of_type_AndroidGraphicsRectF);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.a();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsManager.a();
+    this.mSceneImageBg.draw();
+    this.mAudioWave.draw();
+    this.mBoyManager.drawFrame();
+    int i = this.mBoyManager.getShowStatus();
+    this.mRecognizeRegion.addQueueScoreStatus(i);
+    this.mRecognizeRegion.draw();
+    this.mProgress.draw();
+    this.mScoreBoard.setScore(this.mBoyManager.getTotalScore());
+    this.mTempSize.set(this.mProgress.getCurrentDrawRegionSize());
+    this.mDanceManager.getContext().unmapNormalRegion(this.mTempSize);
+    this.mScoreBoard.changeParentSize(this.mTempSize);
+    this.mScoreBoard.draw();
+    this.mLyricsManager.drawFrame();
   }
   
-  public TreeSet a()
+  public TreeSet<GLLittleBoy> getCurrentVisible()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoyManager != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoyManager.a();
+    if (this.mBoyManager != null) {
+      return this.mBoyManager.getItems();
     }
     return null;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.b();
-    if (this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a().c();
-      this.jdField_b_of_type_Boolean = false;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a().a.jdField_a_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a().a.b = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.b();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a();
-    QQDanceEventHandler localQQDanceEventHandler = a().a();
-    if (localQQDanceEventHandler != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a().a.jdField_a_of_type_Boolean = true;
-      localQQDanceEventHandler.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a().a);
-    }
-  }
-  
-  public void b()
-  {
-    a();
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a().b();
-    paramInt1 = ((Rect)localObject).width();
-    paramInt2 = ((Rect)localObject).height();
-    localObject = ResourceManager.a().jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$GamingResource;
-    RectF localRectF1 = new RectF(0.0F, 0.0F, paramInt1, paramInt2);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.b(localRectF1);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.d(localRectF1);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(((ResourceManager.GamingResource)localObject).m);
-    localRectF1 = new RectF(DisplayUtils.a(37.0F), DisplayUtils.a(32.0F), paramInt1 - DisplayUtils.a(37.0F), DisplayUtils.a(161.0F));
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(localRectF1);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.b(localRectF1);
-    RectF localRectF2 = new RectF(DisplayUtils.a(2.0F), DisplayUtils.a(0.0F), DisplayUtils.a(213.0F), DisplayUtils.a(119.0F));
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.b((String)((ResourceManager.GamingResource)localObject).jdField_a_of_type_JavaUtilList.get(0));
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.c(localRectF2);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(DisplayUtils.a(80.0F), DisplayUtils.a(131.0F));
-    int i = ResourceManager.a().jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(i);
-    localRectF2 = new RectF(DisplayUtils.a(2.0F), DisplayUtils.a(197.0F), paramInt1 - DisplayUtils.a(2.0F), paramInt2 - DisplayUtils.a(194.0F));
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.a(localRectF2);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoyManager.a(localRectF2);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoyManager.a();
-    localRectF2.set(DisplayUtils.a(15.0F), DisplayUtils.a(185.0F), paramInt1 - DisplayUtils.a(15.0F), DisplayUtils.a(328.0F));
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.b(localRectF2);
-    localRectF2.set(DisplayUtils.a(0.0F), DisplayUtils.a(0.0F), paramInt1, DisplayUtils.a(571.0F));
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.c(localRectF2);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.b(DisplayUtils.a(180.0F));
-    localRectF2.set(DisplayUtils.a(194.0F), DisplayUtils.a(98.0F), paramInt1 - DisplayUtils.a(194.0F), DisplayUtils.a(138.0F));
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.a(localRectF2, localRectF1);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.e(DisplayUtils.a(-10.0F));
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLAudioWaveN.a(((ResourceManager.GamingResource)localObject).n);
-    float f = DisplayUtils.a(1.0F);
-    localRectF2.set(f, paramInt2 - DisplayUtils.a(180.0F), paramInt1 - f, paramInt2 - f);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLAudioWaveN.a(localRectF2);
-  }
-  
-  public void c()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a();
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(((RectF)localObject).left, ((RectF)localObject).left, -20.0F, ((RectF)localObject).top);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(200L);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(this);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setInterpolator(new LinearInterpolator());
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = false;
-    int i = ResourceManager.a().jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(i);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.e();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.d();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.c();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoyManager.d();
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      localObject = ResourceManager.a().jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$LBGeneralResource;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a().b(((ResourceManager.LBGeneralResource)localObject).jdField_a_of_type_JavaLangString);
-      this.jdField_b_of_type_Boolean = true;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(true);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLAudioWaveN.h_(true);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.h_(true);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.h_(true);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.a(true);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet = null;
-    this.jdField_b_of_type_AndroidViewAnimationAnimationSet = null;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a().a.a();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsManager.b();
-  }
-  
-  public void d()
-  {
-    Object localObject = ResourceManager.a().jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$GamingResource;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView = new GLImageView(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a(ResourceManager.a().jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$GeneralResource.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar = new GLProgressBar(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.g(2);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView = new GLRecognizeRegionView(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.a((String)((ResourceManager.GamingResource)localObject).jdField_b_of_type_JavaUtilList.get(1));
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.b((String)((ResourceManager.GamingResource)localObject).jdField_b_of_type_JavaUtilList.get(0));
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.c((String)((ResourceManager.GamingResource)localObject).jdField_b_of_type_JavaUtilList.get(3));
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.d((String)((ResourceManager.GamingResource)localObject).jdField_b_of_type_JavaUtilList.get(2));
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.a("", ((ResourceManager.GamingResource)localObject).j, ((ResourceManager.GamingResource)localObject).k, ((ResourceManager.GamingResource)localObject).l);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.b(((ResourceManager.GamingResource)localObject).e, ((ResourceManager.GamingResource)localObject).f, ((ResourceManager.GamingResource)localObject).g, ((ResourceManager.GamingResource)localObject).h);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.c(((ResourceManager.GamingResource)localObject).jdField_a_of_type_JavaLangString, ((ResourceManager.GamingResource)localObject).jdField_b_of_type_JavaLangString, ((ResourceManager.GamingResource)localObject).c, ((ResourceManager.GamingResource)localObject).d);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.a(new aiaq(this));
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard = new GLScoreBoard(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-    localObject = ResourceManager.a().jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$GameNumberResource;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.a(((ResourceManager.GameNumberResource)localObject).jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.a(0);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.b();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoyManager = new GLLittleBoyManager(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLAudioWaveN = new GLAudioWaveN(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLAudioWaveN.g(2);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsManager = new GLLyricsManager(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-  }
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g()
-  {
-    if (this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a().c();
-      this.jdField_b_of_type_Boolean = false;
-    }
-  }
-  
-  public void h()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
-      i();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.b();
-  }
-  
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
+    if (paramAnimation == this.mTransformProgress)
     {
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoyManager.a(this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsManager.a(this.jdField_a_of_type_Long);
+      this.mStartRecordMis = SystemClock.uptimeMillis();
+      this.mHaveStartProgress = true;
+      this.mBoyManager.updateStartTimestamp(this.mStartRecordMis);
+      this.mLyricsManager.updateStartTimestamp(this.mStartRecordMis);
     }
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
   
   public void onAnimationStart(Animation paramAnimation) {}
+  
+  public void onChangeCamera(int paramInt) {}
+  
+  public void onCloseClicked()
+  {
+    progressMax();
+  }
+  
+  public void onDrawFrame()
+  {
+    if (this.mHaveStartProgress)
+    {
+      this.mProgress.setProgress(SystemClock.uptimeMillis() - this.mStartRecordMis);
+      onDrawOtherObject();
+      return;
+    }
+    this.mSceneImageBg.draw();
+    this.mProgress.startAnimation(this.mTransformProgress);
+    this.mProgress.draw();
+    this.mRecognizeRegion.draw();
+  }
+  
+  public void onPause()
+  {
+    if (this.mHaveBackgoundAudioStarted)
+    {
+      this.mDanceManager.getContext().stopAllSound();
+      this.mHaveBackgoundAudioStarted = false;
+    }
+  }
+  
+  public void onResume() {}
+  
+  public void onSurfaceChange(int paramInt1, int paramInt2)
+  {
+    Object localObject = this.mDanceManager.getContext().getSurfaceViewSize();
+    paramInt1 = ((Rect)localObject).width();
+    paramInt2 = ((Rect)localObject).height();
+    localObject = ResourceManager.getInstance().mGamingResource;
+    RectF localRectF1 = new RectF(0.0F, 0.0F, paramInt1, paramInt2);
+    this.mSceneImageBg.setImageRegion(localRectF1);
+    this.mSceneImageBg.setImageClipDrawRegion(localRectF1);
+    this.mProgress.setBackgroundImageRes(((ResourceManager.GamingResource)localObject).timeBackground);
+    localRectF1 = new RectF(DisplayUtils.pixelToRealPixel(37.0F), DisplayUtils.pixelToRealPixel(32.0F), paramInt1 - DisplayUtils.pixelToRealPixel(37.0F), DisplayUtils.pixelToRealPixel(161.0F));
+    this.mProgress.setBackgroundRegion(localRectF1);
+    this.mProgress.setBackgroundClipRegion(localRectF1);
+    RectF localRectF2 = new RectF(DisplayUtils.pixelToRealPixel(2.0F), DisplayUtils.pixelToRealPixel(0.0F), DisplayUtils.pixelToRealPixel(213.0F), DisplayUtils.pixelToRealPixel(119.0F));
+    this.mProgress.setProgressImageRes((String)((ResourceManager.GamingResource)localObject).timeFronts.get(0));
+    this.mProgress.setProgressRegion(localRectF2);
+    this.mProgress.setProgressStretchRelativeRegion(DisplayUtils.pixelToRealPixel(80.0F), DisplayUtils.pixelToRealPixel(131.0F));
+    int i = ResourceManager.getInstance().durationTime;
+    this.mProgress.setMaxProgress(i);
+    localRectF2 = new RectF(DisplayUtils.pixelToRealPixel(2.0F), DisplayUtils.pixelToRealPixel(197.0F), paramInt1 - DisplayUtils.pixelToRealPixel(2.0F), paramInt2 - DisplayUtils.pixelToRealPixel(194.0F));
+    this.mRecognizeRegion.setRecognizeRegion(localRectF2);
+    this.mBoyManager.updateRecognizeRegion(localRectF2);
+    this.mBoyManager.initLittleBoyBeginRegion();
+    localRectF2.set(DisplayUtils.pixelToRealPixel(15.0F), DisplayUtils.pixelToRealPixel(185.0F), paramInt1 - DisplayUtils.pixelToRealPixel(15.0F), DisplayUtils.pixelToRealPixel(328.0F));
+    this.mRecognizeRegion.setScoreStatusBackgroundBarRegion(localRectF2);
+    localRectF2.set(DisplayUtils.pixelToRealPixel(0.0F), DisplayUtils.pixelToRealPixel(0.0F), paramInt1, DisplayUtils.pixelToRealPixel(571.0F));
+    this.mRecognizeRegion.setScoreStatusMongolianBarRegion(localRectF2);
+    this.mRecognizeRegion.updateScoreStatusTypefaceRegion(DisplayUtils.pixelToRealPixel(180.0F));
+    localRectF2.set(DisplayUtils.pixelToRealPixel(194.0F), DisplayUtils.pixelToRealPixel(98.0F), paramInt1 - DisplayUtils.pixelToRealPixel(194.0F), DisplayUtils.pixelToRealPixel(138.0F));
+    this.mScoreBoard.setScoreBoardSize(localRectF2, localRectF1);
+    this.mScoreBoard.setNumberInterval(DisplayUtils.pixelToRealPixel(-10.0F));
+    this.mAudioWave.setImageRes(((ResourceManager.GamingResource)localObject).volumSoundPic);
+    float f = DisplayUtils.pixelToRealPixel(1.0F);
+    localRectF2.set(f, paramInt2 - DisplayUtils.pixelToRealPixel(180.0F), paramInt1 - f, paramInt2 - f);
+    this.mAudioWave.setWaveRegion(localRectF2);
+  }
+  
+  public void onSurfaceCreate()
+  {
+    Object localObject = ResourceManager.getInstance().mGamingResource;
+    this.mSceneImageBg = new GLImageView(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+    this.mSceneImageBg.setImageRes(ResourceManager.getInstance().mGeneralResource.bgPic);
+    this.mProgress = new GLProgressBar(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+    this.mProgress.setProgressBarListener(this);
+    this.mProgress.setBlendMode(2);
+    this.mRecognizeRegion = new GLRecognizeRegionView(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+    this.mRecognizeRegion.setLeftTopImage((String)((ResourceManager.GamingResource)localObject).recogRects.get(1));
+    this.mRecognizeRegion.setLeftBottomImage((String)((ResourceManager.GamingResource)localObject).recogRects.get(0));
+    this.mRecognizeRegion.setRightTopImage((String)((ResourceManager.GamingResource)localObject).recogRects.get(3));
+    this.mRecognizeRegion.setRightBottomImage((String)((ResourceManager.GamingResource)localObject).recogRects.get(2));
+    this.mRecognizeRegion.setScoreStatusTypefaceImage("", ((ResourceManager.GamingResource)localObject).good, ((ResourceManager.GamingResource)localObject).great, ((ResourceManager.GamingResource)localObject).perfect);
+    this.mRecognizeRegion.setScoreStatusBackgroundImage(((ResourceManager.GamingResource)localObject).miss_background, ((ResourceManager.GamingResource)localObject).good_background, ((ResourceManager.GamingResource)localObject).great_background, ((ResourceManager.GamingResource)localObject).perfect_background);
+    this.mRecognizeRegion.setScoreStatusMongolianImage(((ResourceManager.GamingResource)localObject).miss_mongolian, ((ResourceManager.GamingResource)localObject).good_mongolian, ((ResourceManager.GamingResource)localObject).great_mongolian, ((ResourceManager.GamingResource)localObject).perfect_mongolian);
+    this.mRecognizeRegion.setStatusListner(new DancePlayFilter.1(this));
+    this.mScoreBoard = new GLScoreBoard(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+    localObject = ResourceManager.getInstance().mGameNumberResource;
+    this.mScoreBoard.setAnimationFrames(((ResourceManager.GameNumberResource)localObject).gameNums);
+    this.mScoreBoard.setLoadTextureMode(0);
+    this.mScoreBoard.initAnimationFrame();
+    this.mBoyManager = new GLLittleBoyManager(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+    this.mAudioWave = new GLAudioWaveN(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+    this.mAudioWave.setBlendMode(2);
+    this.mLyricsManager = new GLLyricsManager(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+  }
+  
+  public void onSurfaceDestroy() {}
+  
+  public void progressMax()
+  {
+    this.mDanceManager.mGamePlayOutData.mScore = this.mScoreBoard.getScore();
+    if (this.mHaveBackgoundAudioStarted)
+    {
+      this.mDanceManager.getContext().stopAllSound();
+      this.mHaveBackgoundAudioStarted = false;
+    }
+    this.mDanceManager.getContext().mReport.mGameDuration = (SystemClock.uptimeMillis() - this.mStartRecordMis);
+    this.mDanceManager.getContext().mReport.mGameTotalScore = this.mScoreBoard.getScore();
+    this.mDanceManager.selectNextFilter();
+    QQDanceEventHandler localQQDanceEventHandler = getQQFilterRenderManager().getBusinessOperation().getDanceEventHandler();
+    if (localQQDanceEventHandler != null)
+    {
+      this.mDanceManager.getContext().mReport.mHasReported = true;
+      localQQDanceEventHandler.playSceneEndEvent(this.mDanceManager.getContext().mReport);
+    }
+  }
+  
+  public void rollbackStatusCallOnInitFilter()
+  {
+    Object localObject = this.mProgress.gettBackgroundClipRegion();
+    this.mTransformProgress = new TranslateAnimation(((RectF)localObject).left, ((RectF)localObject).left, -20.0F, ((RectF)localObject).top);
+    this.mTransformProgress.setDuration(200L);
+    this.mTransformProgress.setAnimationListener(this);
+    this.mTransformProgress.setInterpolator(new LinearInterpolator());
+    this.mStartRecordMis = 0L;
+    this.mHaveStartProgress = false;
+    int i = ResourceManager.getInstance().durationTime;
+    this.mProgress.setMaxProgress(i);
+    this.mProgress.clearAnimation();
+    this.mProgress.clearStatus();
+    this.mRecognizeRegion.clearStatus();
+    this.mBoyManager.clearStatus();
+    if (!this.mHaveBackgoundAudioStarted)
+    {
+      localObject = ResourceManager.getInstance().mLBGeneraResource;
+      this.mDanceManager.getContext().playBackGroundSound(((ResourceManager.LBGeneralResource)localObject).bgmV);
+      this.mHaveBackgoundAudioStarted = true;
+    }
+    this.mSceneImageBg.setVisibility(true);
+    this.mAudioWave.setVisibility(true);
+    this.mScoreBoard.setVisibility(true);
+    this.mProgress.setVisibility(true);
+    this.mRecognizeRegion.setVisibility(true);
+    this.mAnimGreatPro = null;
+    this.mAnimPerfectPro = null;
+    this.mDanceManager.getContext().mReport.clear();
+    this.mLyricsManager.clearStatus();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.filter.DancePlayFilter
  * JD-Core Version:    0.7.0.1
  */

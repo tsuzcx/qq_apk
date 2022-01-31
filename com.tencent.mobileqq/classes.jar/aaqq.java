@@ -1,29 +1,40 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.AppSchemeHandler;
-import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.lang.ref.WeakReference;
 
-public class aaqq
-  extends ArkAppCGI.ArkAppCGICallback
+class aaqq
+  implements EIPCResultCallback
 {
-  public aaqq(ArkAppSchemeCenter.AppSchemeHandler paramAppSchemeHandler, String paramString) {}
+  aaqq(aaqp paramaaqp, WeakReference paramWeakReference, aaqw paramaaqw) {}
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (!paramBoolean)
+    aaqx localaaqx = new aaqx();
+    boolean bool;
+    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
     {
-      QLog.i("ArkApp", 1, "ArkAppSchemeCenter.AppSchemeHandler.get packagename failed.");
-      return;
+      bool = true;
+      localaaqx.jdField_a_of_type_Boolean = bool;
+      if (paramEIPCResult == null) {
+        break label83;
+      }
     }
-    ArkAppSchemeCenter.AppSchemeHandler.a((ArkAppSchemeCenter.AppSchemeHandler)paramObject, paramString2, this.jdField_a_of_type_JavaLangString, paramString1);
-    BaseApplication.getContext().getSharedPreferences("arkappid2pkname_entry", 4).edit().putString(paramString2, paramString1).commit();
+    label83:
+    for (paramEIPCResult = paramEIPCResult.data;; paramEIPCResult = null)
+    {
+      localaaqx.jdField_a_of_type_AndroidOsBundle = paramEIPCResult;
+      if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+        ((aaqs)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_Aaqw, localaaqx);
+      }
+      return;
+      bool = false;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaqq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
-import java.util.TimerTask;
+import android.graphics.Bitmap;
+import com.tencent.av.gaudio.AVPhoneUserInfo;
 
-public class mge
-  extends TimerTask
+final class mge
 {
-  public mge(VideoVolumeControl paramVideoVolumeControl) {}
+  public int a;
+  public long a;
+  public Bitmap a;
+  public AVPhoneUserInfo a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e = true;
   
-  public void run()
-  {
-    VideoVolumeControl.a(this.a, true);
-  }
+  private mge(mgb parammgb) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mge
  * JD-Core Version:    0.7.0.1
  */

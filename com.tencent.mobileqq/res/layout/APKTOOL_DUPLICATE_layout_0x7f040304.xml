@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1160" android:background="#80000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="310.0dip" android:layout_height="425.0dip" android:layout_centerInParent="true">
-        <VideoView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1161" android:layout_width="246.0dip" android:layout_height="281.0dip" android:layout_marginTop="71.0dip" android:layout_centerHorizontal="true" />
-        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1162" android:layout_width="310.0dip" android:layout_height="358.0dip" android:layout_centerHorizontal="true" />
-        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1163" android:layout_width="47.0dip" android:layout_height="47.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-</RelativeLayout>

@@ -1,16 +1,31 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
+import ajem;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import android.os.ResultReceiver;
 import android.text.TextUtils;
 import android.util.SparseArray;
+import bdnn;
+import begz;
+import bjco;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.QWalletPayBridge;
+import cooperation.vip.manager.MonitorManager;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Map;
@@ -21,17 +36,142 @@ public class QWalletPayJsPlugin
   extends VasWebviewJsPlugin
 {
   private static final String METHOD_NAME_OPENSUPERVIP = "openSuperVip";
+  private static final String METHOD_NAME_QWALLETBRIDGE = "qWalletBridge";
   public static final String OBJECT_NAME_NEW = "qw.pay";
+  public static final String OBJECT_NAME_NEW_COMPATIBLE_IOS = "qw_pay";
   private static final String OBJECT_NAME_OLD = "pay";
   private static final String TAG = "QWalletPayJsHandler";
-  public static SparseArray mFirstUrls = new SparseArray();
-  public static ArrayList mSequence = new ArrayList();
+  public static SparseArray<String> mFirstUrls = new SparseArray();
+  public static ArrayList<Integer> mSequence = new ArrayList();
+  private AppInterface app;
+  private String mCallback;
+  private Context mContext;
   protected long mReceiveRequestTime;
+  private QWalletPayJsPlugin.QWalletPayJsPluginResultReceiver mRecevicer;
   public long mReportSeq;
   
   public QWalletPayJsPlugin()
   {
     this.mPluginNameSpace = "qw.pay";
+  }
+  
+  private void doCallback(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletPayJsHandler", 2, "doCallback: " + paramString);
+    }
+    doCallback(this.mCallback, paramString);
+  }
+  
+  private void doCallback(String paramString1, String paramString2)
+  {
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+      callJs(paramString1, new String[] { paramString2 });
+    }
+  }
+  
+  private static JSONObject filterUinByNickName(JSONObject paramJSONObject)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    if (paramJSONObject != null)
+    {
+      localJSONObject = paramJSONObject.optJSONObject("send_object");
+      String str = localJSONObject.optString("lucky_uin");
+      localJSONObject.remove("lucky_uin");
+      if (!bdnn.a(str)) {
+        localJSONObject.put("lucky_name", ajem.a(str));
+      }
+      paramJSONObject.remove("send_object");
+      paramJSONObject.put("send_object", localJSONObject);
+      return paramJSONObject;
+    }
+    return localJSONObject;
+  }
+  
+  private void getHbDetail(AppInterface paramAppInterface, String paramString, QWalletPayJsPlugin.QWalletPayJsPluginResultReceiver paramQWalletPayJsPluginResultReceiver)
+  {
+    if (paramAppInterface == null) {
+      return;
+    }
+    try
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("extra_data", paramString);
+      localBundle.putString("callbackSn", "0");
+      paramString = new Bundle();
+      paramString.putInt("PayInvokerId", 22);
+      Parcel localParcel = Parcel.obtain();
+      paramQWalletPayJsPluginResultReceiver.writeToParcel(localParcel, 0);
+      localParcel.setDataPosition(0);
+      paramQWalletPayJsPluginResultReceiver = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(localParcel);
+      localParcel.recycle();
+      paramString.putParcelable("_qwallet_payresult_receiver", paramQWalletPayJsPluginResultReceiver);
+      paramString.putBundle("_qwallet_payparams_data", localBundle);
+      paramString.putString("_qwallet_payparams_tag", "redgiftH5CommonDetail");
+      QWalletPayBridge.launchBackground(BaseApplicationImpl.sApplication, paramAppInterface, paramString);
+      return;
+    }
+    catch (Throwable paramAppInterface)
+    {
+      paramAppInterface.printStackTrace();
+    }
+  }
+  
+  private void getHbDetailInfo(JSONObject paramJSONObject, String paramString)
+  {
+    String str1 = paramJSONObject.optString("listid");
+    String str2 = paramJSONObject.optString("uin");
+    String str3 = paramJSONObject.optString("offset");
+    String str4 = paramJSONObject.optString("limit");
+    if ((!TextUtils.isEmpty(str2)) && (str2.equals(this.app.getCurrentAccountUin())) && (!TextUtils.isEmpty(str1)))
+    {
+      paramJSONObject = new JSONObject();
+      paramJSONObject.put("listid", str1);
+      paramJSONObject.put("uin", str2);
+      paramJSONObject.put("offset", str3);
+      paramJSONObject.put("limit", str4);
+      paramJSONObject.put("viewTag", paramString);
+      getHbDetail(this.app, paramJSONObject.toString(), this.mRecevicer);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("QWalletPayJsHandler", 2, "notifyViewUpdate extstr = " + paramJSONObject);
+  }
+  
+  private void getHbResult(JSONObject paramJSONObject)
+  {
+    String str1 = paramJSONObject.optString("listid");
+    String str2 = paramJSONObject.optString("uin", "");
+    if ((!bdnn.a(str1)) && (str2.equals(this.app.getCurrentAccountUin())))
+    {
+      Object localObject = bjco.a().b(str1);
+      paramJSONObject = (JSONObject)localObject;
+      if (bdnn.a((String)localObject)) {
+        paramJSONObject = SharedPreferencesProxyManager.getInstance().getProxy("common_h5_hb_info" + str2, 0).getString(str1, "");
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QWalletPayJsHandler", 2, "getHbResult dataStr: " + paramJSONObject);
+      }
+      paramJSONObject = new JSONObject(paramJSONObject);
+      if (paramJSONObject.has("detail_data"))
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("retcode", 0);
+        ((JSONObject)localObject).put("retmsg", "ok");
+        ((JSONObject)localObject).put("detail_data", paramJSONObject.optJSONObject("detail_data"));
+        doCallback(((JSONObject)localObject).toString());
+        return;
+      }
+      if (paramJSONObject.has("exception_data"))
+      {
+        doCallback(paramJSONObject.optString("exception_data"));
+        return;
+      }
+      handJsError("-1001", "params error, detail_data is empty");
+      return;
+    }
+    handJsError("-1001", "params error,listid is empty or is not current user");
   }
   
   public static String getPayAppInfo()
@@ -50,13 +190,13 @@ public class QWalletPayJsPlugin
           {
             k = ((String)localObject).indexOf("qqwallet_appinfo=");
             if (k != -1) {
-              break label85;
+              break label86;
             }
           }
           i -= 1;
           break;
         }
-        label85:
+        label86:
         int j = ((String)localObject).indexOf('&', "qqwallet_appinfo=".length() + k);
         i = j;
         if (j == -1) {
@@ -66,6 +206,96 @@ public class QWalletPayJsPlugin
       }
     }
     return "";
+  }
+  
+  private String getPreCode(String paramString)
+  {
+    String str = "";
+    if (paramString.contains("pre_code="))
+    {
+      str = paramString.substring(paramString.indexOf("pre_code="));
+      paramString = str;
+      if (str.contains("&")) {
+        paramString = str.substring(0, str.indexOf("&"));
+      }
+      str = paramString;
+      if (paramString.contains("=")) {
+        str = paramString.split("=")[1];
+      }
+    }
+    return str;
+  }
+  
+  private void grapH5CommonHb(JSONObject paramJSONObject)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletPayJsHandler", 2, "grapH5CommonHb params: " + paramJSONObject);
+      }
+      String str1 = paramJSONObject.optString("listid");
+      String str2 = paramJSONObject.optString("uin");
+      if ((!bdnn.a(str2)) && (str2.equals(this.app.getCurrentAccountUin())) && (!bdnn.a(str1)))
+      {
+        String str3 = paramJSONObject.optString("feedsid");
+        String str4 = paramJSONObject.optString("token");
+        String str5 = str1 + "_" + getPreCode(str4);
+        if (QLog.isColorLevel()) {
+          QLog.i("QWalletPayJsHandler", 2, "cache key: " + str5);
+        }
+        bjco localbjco = bjco.a();
+        str1 = localbjco.b(str5);
+        paramJSONObject = str1;
+        if (bdnn.a(str1))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QWalletPayJsHandler", 2, "get cache from disk");
+          }
+          paramJSONObject = localbjco.a(str2, str5, SharedPreferencesProxyManager.getInstance().getProxy("qb_tenpay_h5_common_hb_" + str2, 0));
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("QWalletPayJsHandler", 2, "paramForGarpH5CommonHb:" + paramJSONObject);
+        }
+        if (!TextUtils.isEmpty(paramJSONObject))
+        {
+          paramJSONObject = new JSONObject(paramJSONObject);
+          paramJSONObject.put("feedsid", str3);
+          paramJSONObject.put("uin", str2);
+          paramJSONObject.put("token", str4);
+          paramJSONObject.put("viewTag", "grapH5CommonHb");
+          if ((this.mRuntime != null) && (this.mRuntime.a() != null) && (this.mRuntime.a().getUrl() != null)) {
+            paramJSONObject.put("domain", new URL(this.mRuntime.a().getUrl()).getHost());
+          }
+          getGrapH5CommonHbResult(this.app, paramJSONObject.toString(), this.mRecevicer);
+          return;
+        }
+        handJsError("-1001", "params error");
+        return;
+      }
+    }
+    catch (Throwable paramJSONObject)
+    {
+      handJsError("-1001", paramJSONObject.getLocalizedMessage());
+    }
+  }
+  
+  private void handJsError(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletPayJsHandler", 2, "handJsError: " + paramString2);
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("retcode", paramString1);
+      localJSONObject.put("retmsg", paramString2);
+      doCallback(localJSONObject.toString());
+      return;
+    }
+    catch (Throwable paramString1)
+    {
+      paramString1.printStackTrace();
+    }
   }
   
   private boolean openSuperVip(String paramString)
@@ -124,6 +354,56 @@ public class QWalletPayJsPlugin
     return false;
   }
   
+  private void parseCallback(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramString.toLowerCase().indexOf("callback") < 0)) {
+      return;
+    }
+    try
+    {
+      this.mCallback = new JSONObject(paramString).optString("callback");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  private boolean qWalletBridge(String paramString)
+  {
+    JSONObject localJSONObject;
+    try
+    {
+      localJSONObject = new JSONObject(paramString);
+      paramString = localJSONObject.optString("action");
+      localJSONObject = localJSONObject.optJSONObject("params");
+      if ("graphb".equals(paramString)) {
+        grapH5CommonHb(localJSONObject);
+      } else if ("getHbResult".equals(paramString)) {
+        getHbResult(localJSONObject);
+      }
+    }
+    catch (Exception paramString)
+    {
+      handJsError("-1001", "params exception: " + paramString.getLocalizedMessage());
+    }
+    boolean bool = "refreshHbDetail".equals(paramString);
+    if (bool) {
+      try
+      {
+        getHbDetailInfo(localJSONObject, "redgiftH5CommonDetail");
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+      }
+    } else {
+      handJsError("-1001", "params exception: no match action");
+    }
+    return true;
+  }
+  
   public void buyGoods(JSONObject paramJSONObject, String paramString)
   {
     if (QLog.isColorLevel()) {
@@ -137,57 +417,110 @@ public class QWalletPayJsPlugin
     PayBridgeActivity.a(this.mRuntime.a(), 7, localBundle);
   }
   
-  protected boolean handleEvent(String paramString, long paramLong, Map paramMap)
+  public void getGrapH5CommonHbResult(AppInterface paramAppInterface, String paramString, QWalletPayJsPlugin.QWalletPayJsPluginResultReceiver paramQWalletPayJsPluginResultReceiver)
+  {
+    if (paramAppInterface == null) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("extra_data", paramString);
+    localBundle.putString("callbackSn", "0");
+    paramString = new Bundle();
+    paramString.putInt("PayInvokerId", 22);
+    Parcel localParcel = Parcel.obtain();
+    paramQWalletPayJsPluginResultReceiver.writeToParcel(localParcel, 0);
+    localParcel.setDataPosition(0);
+    paramQWalletPayJsPluginResultReceiver = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(localParcel);
+    localParcel.recycle();
+    paramString.putParcelable("_qwallet_payresult_receiver", paramQWalletPayJsPluginResultReceiver);
+    paramString.putBundle("_qwallet_payparams_data", localBundle);
+    paramString.putString("_qwallet_payparams_tag", "grapH5CommonHb");
+    QWalletPayBridge.launchBackground(BaseApplicationImpl.sApplication, paramAppInterface, paramString);
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if (8589934600L == paramLong)
     {
       paramString = (Integer)paramMap.get("requestCode");
       if ((paramString != null) && (paramString.intValue() == 11))
       {
-        paramMap = (Intent)paramMap.get("data");
-        if (paramMap != null)
+        Object localObject = (Intent)paramMap.get("data");
+        paramString = new StringBuilder();
+        if (localObject != null)
         {
-          paramString = paramMap.getStringExtra("callbackSn");
-          paramMap = paramMap.getStringExtra("result");
-          callJs("qw.bridge.publicTube('" + paramString + "', '{\"code\":0, \"msg\":\"ok\", \"data\":" + paramMap + "}')");
+          paramMap = ((Intent)localObject).getStringExtra("callbackSn");
+          localObject = ((Intent)localObject).getStringExtra("result");
+          callJs("qw.bridge.publicTube('" + paramMap + "', '{\"code\":0, \"msg\":\"ok\", \"data\":" + (String)localObject + "}')");
+          paramString.append("result : ").append((String)localObject);
         }
+        MonitorManager.a().a(1, 2, "会员：返回支付结果", paramString.toString());
         return true;
       }
     }
     return false;
   }
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (paramVarArgs.length <= 0)) {}
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length <= 0)) {}
+    label197:
+    label231:
     do
     {
       do
       {
         return false;
-        this.mReceiveRequestTime = System.currentTimeMillis();
-        if (!"qw.pay".equals(paramString2)) {
-          break;
+        if (QLog.isColorLevel())
+        {
+          paramString1 = new StringBuilder().append("handleJsRequeste pkgName :").append(paramString2).append(" method: ").append(paramString3);
+          if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+            break label197;
+          }
         }
-      } while (!"openSuperVip".equals(paramString3));
-      this.mReportSeq = VACDReportUtil.a(null, "qqwallet", "openSVip", "payinvoke", null, 0, null);
-      return openSuperVip(paramVarArgs[0]);
+        for (paramJsBridgeListener = " arg: " + paramVarArgs[0];; paramJsBridgeListener = "")
+        {
+          QLog.i("QWalletPayJsHandler", 2, paramJsBridgeListener);
+          this.mReceiveRequestTime = System.currentTimeMillis();
+          if ((!"qw.pay".equals(paramString2)) && (!"qw_pay".equals(paramString2))) {
+            break label231;
+          }
+          if (!"openSuperVip".equals(paramString3)) {
+            break;
+          }
+          this.mReportSeq = VACDReportUtil.a(null, "qqwallet", "openSVip", "payinvoke", null, 0, null);
+          MonitorManager.a().a(1, 1, "会员：调用支付支付sdk", "");
+          return openSuperVip(paramVarArgs[0]);
+        }
+      } while (!"qWalletBridge".equals(paramString3));
+      parseCallback(paramVarArgs[0]);
+      return qWalletBridge(paramVarArgs[0]);
     } while (!QLog.isColorLevel());
     QLog.i("QWalletPayJsHandler", 2, "can not handle objectname:" + paramString2);
     return false;
   }
   
-  protected boolean handleSchemaRequest(String paramString1, String paramString2)
+  public boolean handleSchemaRequest(String paramString1, String paramString2)
   {
     return handleThemeAndBubbleSchemaRequest(paramString1, paramString2, "pay");
   }
   
-  protected void onCreate()
+  public void onCreate()
   {
     super.onCreate();
+    if (this.mRuntime != null)
+    {
+      Activity localActivity = this.mRuntime.a();
+      if (localActivity != null)
+      {
+        this.app = this.mRuntime.a();
+        this.mContext = localActivity.getApplicationContext();
+        this.mRecevicer = new QWalletPayJsPlugin.QWalletPayJsPluginResultReceiver(this, new Handler(), this.app);
+      }
+    }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     if ((this.mRuntime != null) && (this.mRuntime.a() != null))
     {
@@ -198,7 +531,7 @@ public class QWalletPayJsPlugin
     super.onDestroy();
   }
   
-  protected void onWebViewCreated(CustomWebView paramCustomWebView)
+  public void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
     if ((this.mRuntime != null) && (this.mRuntime.a() != null))
@@ -289,7 +622,7 @@ public class QWalletPayJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,34 @@
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.CreateFakeVideoEvent;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.StoryVideoPublishStatusEvent;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoTaskInfo;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class nao
-  implements Runnable
+class nao
+  extends BroadcastReceiver
 {
-  public nao(StoryVideoUploadManager paramStoryVideoUploadManager, StoryVideoTaskInfo paramStoryVideoTaskInfo, StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent) {}
+  nao(nan paramnan) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "create story %s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo });
-    Dispatchers.get().dispatch(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadStoryVideoUploadManager$StoryVideoPublishStatusEvent);
-    Dispatchers.get().dispatch(new StoryVideoUploadManager.CreateFakeVideoEvent());
+    int i = paramIntent.getIntExtra("request_type", 0);
+    QLog.i(this.a.c, 2, "receive request" + paramIntent.getExtras());
+    switch (i)
+    {
+    default: 
+      return;
+    }
+    paramContext = new Intent();
+    paramContext.setAction("com.tencent.mobileqq.NearbyJsInterface");
+    paramContext.putExtra("command_type", 1);
+    paramContext.putExtra("data", nan.a(this.a));
+    this.a.a.getApp().sendBroadcast(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nao
  * JD-Core Version:    0.7.0.1
  */

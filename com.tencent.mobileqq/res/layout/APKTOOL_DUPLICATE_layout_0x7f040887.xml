@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0217c2" android:layout_width="fill_parent" android:layout_height="40.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2743" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="加载更多" android:layout_centerInParent="true" />
-</RelativeLayout>

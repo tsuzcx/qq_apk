@@ -1,20 +1,14 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
-
-public class aepj
-  extends DataSetObserver
+final class aepj
+  extends ThreadLocal<char[]>
 {
-  public aepj(PlayerInvitePanel paramPlayerInvitePanel) {}
-  
-  public void onChanged()
+  protected char[] a()
   {
-    super.onChanged();
-    this.a.a();
+    return new char[1024];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aepj
  * JD-Core Version:    0.7.0.1
  */

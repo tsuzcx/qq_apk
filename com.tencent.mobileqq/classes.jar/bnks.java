@@ -1,0 +1,10 @@
+class bnks
+{
+  private static final bnkr a = new bnkr(null);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     bnks
+ * JD-Core Version:    0.7.0.1
+ */

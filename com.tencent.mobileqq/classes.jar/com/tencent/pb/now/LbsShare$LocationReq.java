@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class LbsShare$LocationReq
-  extends MessageMicro
+  extends MessageMicro<LocationReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 56, 64, 74, 82 }, new String[] { "lat", "lng", "coordinate", "keyword", "category", "page", "count", "requireMyLbs", "imei", "city" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "" }, LocationReq.class);
   public final PBStringField category = PBField.initString("");
@@ -24,7 +24,7 @@ public final class LbsShare$LocationReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.LbsShare.LocationReq
  * JD-Core Version:    0.7.0.1
  */

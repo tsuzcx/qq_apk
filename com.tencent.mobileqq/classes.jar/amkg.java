@@ -1,30 +1,58 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.jsp.QQComicDownloadObserverProxy;
-import cooperation.comic.ui.QQComicTabBarView;
-import cooperation.comic.utils.QQComicPluginBridge;
-import cooperation.comic.utils.QQComicRedTouchManager;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.memory.QLogReporter.1;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class amkg
-  implements Runnable
 {
-  public amkg(QQComicTabBarView paramQQComicTabBarView) {}
+  private static volatile amkg a;
+  public static final SimpleDateFormat a;
   
-  public void run()
+  static
   {
-    if (this.a.jdField_a_of_type_CooperationComicUtilsQQComicRedTouchManager != null) {
-      this.a.jdField_a_of_type_CooperationComicUtilsQQComicRedTouchManager.deleteObserver(this.a.jdField_a_of_type_CooperationComicUtilsQQComicRedTouchManager$PluginRedTouchObserver);
+    jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy.MM.dd");
+  }
+  
+  public static amkg a()
+  {
+    if (jdField_a_of_type_Amkg == null) {}
+    try
+    {
+      if (jdField_a_of_type_Amkg == null) {
+        jdField_a_of_type_Amkg = new amkg();
+      }
+      return jdField_a_of_type_Amkg;
     }
-    if (QQComicPluginBridge.a != null) {
-      QQComicPluginBridge.a.b(this.a.jdField_a_of_type_CooperationComicJspQQComicDownloadCountObserver);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewTabBarView", 2, "unregister observers");
-    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    if (new GregorianCalendar().get(11) < 2) {}
+    SharedPreferences localSharedPreferences;
+    long l1;
+    Calendar localCalendar;
+    String str;
+    do
+    {
+      return;
+      localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qlog_reporter", 0);
+      l1 = System.currentTimeMillis();
+      long l2 = localSharedPreferences.getLong("LastLogSizeReportTime", 0L);
+      localCalendar = Calendar.getInstance();
+      localCalendar.setTimeInMillis(l2);
+      str = jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime());
+      localCalendar.setTimeInMillis(l1);
+    } while (str.equals(jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime())));
+    ThreadManager.executeOnSubThread(new QLogReporter.1(this, localSharedPreferences, l1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amkg
  * JD-Core Version:    0.7.0.1
  */

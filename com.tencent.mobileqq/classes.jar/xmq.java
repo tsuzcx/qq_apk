@@ -1,25 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 
-public class xmq
-  implements DialogInterface.OnClickListener
+public final class xmq
+  implements Parcelable.Creator<SlideItemInfo>
 {
-  public xmq(LoginView paramLoginView) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public SlideItemInfo a(Parcel paramParcel)
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface) {}
+    return new SlideItemInfo(paramParcel);
+  }
+  
+  public SlideItemInfo[] a(int paramInt)
+  {
+    return new SlideItemInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xmq
  * JD-Core Version:    0.7.0.1
  */

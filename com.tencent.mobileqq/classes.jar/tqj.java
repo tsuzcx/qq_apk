@@ -1,54 +1,74 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import feedcloud.FeedCloudMeta.StGPSV2;
 
 public class tqj
-  extends AccountObserver
 {
-  public tqj(RegisterSendUpSms paramRegisterSendUpSms) {}
+  private static volatile tqj jdField_a_of_type_Tqj;
+  private FeedCloudMeta.StGPSV2 jdField_a_of_type_FeedcloudFeedCloudMeta$StGPSV2 = new FeedCloudMeta.StGPSV2();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onRegisterQuerySmsStatResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4)
+  public static tqj a()
   {
-    RegisterSendUpSms.c(this.a, paramInt1);
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterSendUpSms", 2, "onRegisterQuerySmsStatResp isSuccess=" + paramBoolean + ", code=" + paramInt1 + ", uin=" + paramString1 + ", nick=" + paramString2 + ", faceUrl=" + paramString3 + ", errmsg=" + paramString4);
-    }
-    if (paramInt1 == 4) {
-      return;
-    }
-    RegisterSendUpSms.a(this.a).setEnabled(true);
-    if (paramInt1 == 0)
-    {
-      RegisterSendUpSms.a(this.a).setText("验证成功");
-      RegisterSendUpSms.a(this.a, paramString1);
-      RegisterSendUpSms.b(this.a, paramString2);
-      RegisterSendUpSms.c(this.a, paramString3);
-      RegisterSendUpSms.a(this.a);
-      return;
-    }
-    paramString1 = paramString4;
-    if (paramInt1 == -1) {}
+    if (jdField_a_of_type_Tqj == null) {}
     try
     {
-      paramString1 = new String(paramArrayOfByte, "utf-8");
-      QQToast.a(this.a, paramString1.trim(), 0).b(this.a.getTitleBarHeight());
-      return;
+      if (jdField_a_of_type_Tqj == null) {
+        jdField_a_of_type_Tqj = new tqj();
+      }
+      return jdField_a_of_type_Tqj;
     }
-    catch (Throwable paramArrayOfByte)
+    finally {}
+  }
+  
+  private void a(SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StGPSV2.lat.set(Double.valueOf(paramSosoLbsInfo.a.a * 1000000.0D).intValue());
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StGPSV2.lon.set(Double.valueOf(paramSosoLbsInfo.a.b * 1000000.0D).intValue());
+  }
+  
+  public FeedCloudMeta.StGPSV2 a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return this.jdField_a_of_type_FeedcloudFeedCloudMeta$StGPSV2;
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    if (a())
     {
-      for (;;)
+      SosoInterface.SosoLbsInfo localSosoLbsInfo = ampk.a("qqcircle");
+      if ((localSosoLbsInfo != null) && (localSosoLbsInfo.a != null))
       {
-        paramArrayOfByte.printStackTrace();
-        paramString1 = paramString4;
+        a(localSosoLbsInfo);
+        QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from cache");
       }
     }
+    else
+    {
+      return;
+    }
+    QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from request");
+    ampk.a(new tqk(this, "qqcircle", true));
+  }
+  
+  public boolean a()
+  {
+    return (Build.VERSION.SDK_INT < 23) || (BaseApplicationImpl.getContext().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tqj
  * JD-Core Version:    0.7.0.1
  */

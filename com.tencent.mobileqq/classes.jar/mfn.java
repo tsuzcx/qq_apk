@@ -1,29 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI.4;
 
 public class mfn
-  implements DialogInterface.OnDismissListener
+  implements mkg
 {
-  public mfn(VideoShareHelper paramVideoShareHelper) {}
+  public mfn(DoubleVideoMeetingCtrlUI.4 param4) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
-    }
-    if (VideoShareHelper.a(this.a) != null) {
-      VideoShareHelper.a(this.a).a(VideoShareHelper.a(this.a), VideoShareHelper.b(this.a), false, false);
-    }
-    VideoShareHelper.a(this.a, true);
-    VideoShareHelper.b(this.a, false);
+    this.a.this$0.k = true;
+    this.a.this$0.L();
+  }
+  
+  public void b()
+  {
+    this.a.this$0.d(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Int);
+    this.a.this$0.k = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfn
  * JD-Core Version:    0.7.0.1
  */

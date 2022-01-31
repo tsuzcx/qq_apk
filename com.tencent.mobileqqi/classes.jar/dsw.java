@@ -1,28 +1,18 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.activity.TroopShareTmpActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class dsw
-  implements View.OnFocusChangeListener
+  extends FriendListObserver
 {
-  public dsw(SubLoginActivity paramSubLoginActivity) {}
+  public dsw(TroopShareTmpActivity paramTroopShareTmpActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  protected void c(boolean paramBoolean, String paramString)
   {
-    if (true == paramBoolean)
-    {
-      if ((SubLoginActivity.a(this.a) != null) && (SubLoginActivity.a(this.a).getText().length() > 0)) {
-        SubLoginActivity.a(this.a).setVisibility(0);
-      }
-      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
+    if ((paramBoolean) && (paramString != null) && (paramString.equalsIgnoreCase(TroopShareTmpActivity.a(this.a)))) {
+      TroopShareTmpActivity.a(this.a).setImageDrawable(this.a.b.a(TroopShareTmpActivity.a(this.a)));
     }
-    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
-      return;
-    }
-    SubLoginActivity.a(this.a).setVisibility(8);
   }
 }
 

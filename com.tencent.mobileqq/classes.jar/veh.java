@@ -1,20 +1,22 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
-import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollectionID;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class veh
-  implements Runnable
 {
-  public veh(ReplyTextItemBuilder paramReplyTextItemBuilder, ver paramver, MessageForReplyText paramMessageForReplyText, URLDrawable paramURLDrawable) {}
+  public int a;
+  public int b;
   
-  public void run()
+  public qqstory_struct.DateVideoCollectionID a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a(this.jdField_a_of_type_Ver, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, this.jdField_a_of_type_ComTencentImageURLDrawable);
+    qqstory_struct.DateVideoCollectionID localDateVideoCollectionID = new qqstory_struct.DateVideoCollectionID();
+    localDateVideoCollectionID.collection_id.set(this.a);
+    localDateVideoCollectionID.collection_type.set(this.b);
+    return localDateVideoCollectionID;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     veh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.richstatus.StatusHistoryActivity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.systemmsg.SystemMsgController;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class glz
-  extends GestureDetector.SimpleOnGestureListener
+  implements Runnable
 {
-  public glz(StatusHistoryActivity paramStatusHistoryActivity, int paramInt) {}
+  public glz(SystemMsgController paramSystemMsgController, QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void run()
   {
-    paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
-    if ((paramFloat1 <= -this.jdField_a_of_type_Int) && (paramFloat2 < 0.5F)) {
-      return StatusHistoryActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusHistoryActivity);
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putInt("unread_system_msg", this.jdField_a_of_type_Int).commit();
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     glz
  * JD-Core Version:    0.7.0.1
  */

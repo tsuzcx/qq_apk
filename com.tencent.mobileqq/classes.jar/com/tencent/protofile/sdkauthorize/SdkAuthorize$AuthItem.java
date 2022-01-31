@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SdkAuthorize$AuthItem
-  extends MessageMicro
+  extends MessageMicro<AuthItem>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 50 }, new String[] { "default_flag", "id", "title", "api_list", "is_new", "logo_url" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), "" }, AuthItem.class);
   public final PBStringField api_list = PBField.initString("");
@@ -20,7 +20,7 @@ public final class SdkAuthorize$AuthItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthItem
  * JD-Core Version:    0.7.0.1
  */

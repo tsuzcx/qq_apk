@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class safecheckPB$ReqMQScanRequest
-  extends MessageMicro
+  extends MessageMicro<ReqMQScanRequest>
 {
   public static final int STRING_CHECK_PARAMETERS_FIELD_NUMBER = 4;
   public static final int STRING_CHECK_TARGET_FIELD_NUMBER = 3;
@@ -23,7 +23,7 @@ public final class safecheckPB$ReqMQScanRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.safecheckPB.ReqMQScanRequest
  * JD-Core Version:    0.7.0.1
  */

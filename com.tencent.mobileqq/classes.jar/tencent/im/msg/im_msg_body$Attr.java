@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_msg_body$Attr
-  extends MessageMicro
+  extends MessageMicro<Attr>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field char_set = PBField.initUInt32(78);

@@ -1,41 +1,35 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
+import java.util.Map;
 
-class sox
-  implements Runnable
+public class sox
+  implements qux
 {
-  sox(sov paramsov, String paramString1, String paramString2) {}
+  public sox(BridgeModule paramBridgeModule) {}
   
-  public void run()
+  public void a(UgcVideo paramUgcVideo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.profilecard.FrdProfileCard", 2, "onUpdateAddFriend, uin: " + this.jdField_a_of_type_JavaLangString + ", mobileNum = " + this.b);
-    }
-    Object localObject1 = (FriendsManager)this.jdField_a_of_type_Sov.a.app.getManager(50);
-    if (localObject1 == null) {}
-    for (localObject1 = null;; localObject1 = ((FriendsManager)localObject1).a(this.jdField_a_of_type_Sov.a.a.a.jdField_a_of_type_JavaLangString))
+    QQAppInterface localQQAppInterface = ors.a();
+    QLog.i(BridgeModule.TAG, 1, "onPublish, title =" + paramUgcVideo.title);
+    if (localQQAppInterface == null) {}
+    String str;
+    do
     {
-      Message localMessage = Message.obtain();
-      localMessage.what = 3;
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = this.jdField_a_of_type_JavaLangString;
-      }
-      localMessage.obj = localObject2;
-      this.jdField_a_of_type_Sov.a.b.sendMessage(localMessage);
       return;
-    }
+      str = (String)BridgeModule.access$900(this.a).get(Long.valueOf(0L));
+      if ((str != null) && (!str.isEmpty())) {
+        qun.a(localQQAppInterface).a(0L, new soy(this, str));
+      }
+      str = (String)BridgeModule.access$900(this.a).get(Long.valueOf(paramUgcVideo.columnId));
+    } while ((str == null) || (str.isEmpty()));
+    qun.a(localQQAppInterface).a(paramUgcVideo.columnId, new soz(this, paramUgcVideo, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sox
  * JD-Core Version:    0.7.0.1
  */

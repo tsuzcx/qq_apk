@@ -1,26 +1,54 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.webviewbase.WebAIOController;
+import android.graphics.Color;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class pax
-  extends BroadcastReceiver
+  implements benm
 {
-  public pax(WebAIOController paramWebAIOController) {}
+  public pax(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(float paramFloat1, float paramFloat2) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ("com.tencent.msg.newmessage".equals(paramIntent.getAction()))
+    paramInt1 = ReadInJoySelfFragment.a(this.a).getScrollY();
+    if ((this.a.getActivity() != null) && ((this.a.getActivity() instanceof ReadInJoyNewFeedsActivity))) {}
+    do
     {
-      WebAIOController.b = false;
-      WebAIOController.c = true;
-      this.a.a(true);
-    }
+      return;
+      if (paramInt1 >= ReadInJoySelfFragment.a(this.a))
+      {
+        ReadInJoySelfFragment.a(this.a).setBackgroundColor(Color.parseColor("#FFFFFF"));
+        if (paramInt1 >= ReadInJoySelfFragment.a(this.a) * 3) {}
+        for (float f = 1.0F;; f = paramInt1 * 0.33F / ReadInJoySelfFragment.a(this.a))
+        {
+          ReadInJoySelfFragment.a(this.a).setAlpha(f);
+          ReadInJoySelfFragment.a(this.a).setBackgroundResource(2130842604);
+          ReadInJoySelfFragment.a(this.a).setVisibility(0);
+          if ((this.a.getActivity() == null) || (!(this.a.getActivity() instanceof ReadInJoySelfActivity))) {
+            break;
+          }
+          ImmersiveUtils.a(true, this.a.getActivity().getWindow());
+          return;
+        }
+      }
+      ReadInJoySelfFragment.a(this.a).setBackgroundColor(Color.parseColor("#00FFFFFF"));
+      ReadInJoySelfFragment.a(this.a).setBackgroundResource(2130842605);
+      ReadInJoySelfFragment.a(this.a).setVisibility(8);
+    } while ((this.a.getActivity() == null) || (!(this.a.getActivity() instanceof ReadInJoySelfActivity)));
+    ImmersiveUtils.a(false, this.a.getActivity().getWindow());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pax
  * JD-Core Version:    0.7.0.1
  */

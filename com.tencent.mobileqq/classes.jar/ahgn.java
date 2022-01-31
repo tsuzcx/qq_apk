@@ -1,54 +1,30 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.LOG;
-import com.tencent.mobileqq.richmedia.RichmediaClient;
-import com.tencent.mobileqq.richmedia.VideoCompoundController;
-import java.lang.ref.WeakReference;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
 public class ahgn
-  extends Handler
+  implements View.OnTouchListener
 {
-  final WeakReference a;
+  public ahgn(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public ahgn(Looper paramLooper, RichmediaClient paramRichmediaClient)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramRichmediaClient);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    LOG.a("PTV.RichmediaClient", "handleMessage, msg.what = " + paramMessage.what);
-    RichmediaClient localRichmediaClient = (RichmediaClient)this.a.get();
-    if (localRichmediaClient == null) {}
-    do
-    {
-      return;
-      if (paramMessage.getData() != null) {
-        paramMessage.getData().getInt("msg_sub_cmd");
-      }
-      switch (paramMessage.what)
-      {
-      case 1001: 
-      default: 
-        super.handleMessage(paramMessage);
-        return;
-      case 1000: 
-        LOG.a("PTV.RichmediaClient", "handleMessage MSG_S2C_TEST");
-        return;
-      }
-      LOG.a("PTV.RichmediaClient", "handleMessage MSG_S2C_VIDEO_SLICE_UPLOAD_FINISH");
-      paramMessage = paramMessage.getData();
-    } while (paramMessage == null);
-    paramMessage = paramMessage.getString("vidoe_record_uniseq");
-    localRichmediaClient.a().a(paramMessage);
+    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
+    if (paramMotionEvent.isActive()) {
+      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    }
+    this.a.a.clearFocus();
+    paramView = this.a.a.getText().toString();
+    this.a.a.setSelection(paramView.length());
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahgn
  * JD-Core Version:    0.7.0.1
  */

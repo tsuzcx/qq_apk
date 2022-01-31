@@ -1,34 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFlowLayout;
-import com.tencent.widget.AdapterView.AdapterDataSetObserver;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class mid
-  extends AdapterView.AdapterDataSetObserver
+  extends lhs
 {
-  public mid(ReadInJoyFlowLayout paramReadInJoyFlowLayout)
-  {
-    super(paramReadInJoyFlowLayout);
-  }
+  public mid(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  public void a()
+  protected void a(long paramLong1, long paramLong2, ArrayList<lfu> paramArrayList)
   {
-    super.a();
-  }
-  
-  public void onChanged()
-  {
-    super.onChanged();
-    ReadInJoyFlowLayout.a(this.a);
-  }
-  
-  public void onInvalidated()
-  {
-    super.onInvalidated();
-    ReadInJoyFlowLayout.a(this.a);
+    ThreadManager.getUIHandler().post(new MultiVideoCtrlLayerUIBase.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mid
  * JD-Core Version:    0.7.0.1
  */

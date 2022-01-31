@@ -1,73 +1,21 @@
-import android.graphics.Typeface;
-import android.text.TextUtils;
-import com.etrump.mixlayout.ETEngine;
-import com.tencent.mobileqq.hiboom.HiBoomFont;
-import com.tencent.mobileqq.hiboom.HiBoomFont.HiBoomFontDownloader;
-import com.tencent.mobileqq.hiboom.HiBoomFontDrawer;
-import com.tencent.mobileqq.hiboom.HiBoomInfo;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class adoz
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public adoz(HiBoomFontDrawer paramHiBoomFontDrawer, boolean paramBoolean) {}
+  public adoz(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_Int == 1)
+    if (paramMotionEvent.getAction() == 1)
     {
-      if (!HiBoomFont.a().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        HiBoomFont.a().b();
-      }
-      if (HiBoomFont.a().jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-      {
-        if (!new File(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int + File.separator + this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int + ".hy").exists()) {
-          break label274;
-        }
-        if (HiBoomFont.a().jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_isFontLoaded(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int)) {
-          break label260;
-        }
-        boolean bool = HiBoomFont.a().jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_loadFont(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int + File.separator + this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int + ".hy", this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int, false);
-        this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(bool);
-      }
+      this.a.a();
+      nrt.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573C", "0X800573C", 0, 0, "", "", "", "", false);
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        HiBoomFontDrawer.a(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      return;
-      label260:
-      this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      continue;
-      label274:
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int);
-        continue;
-        if (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_Int == 2)
-        {
-          File localFile = new File(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int + File.separator + this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int + ".hb");
-          String str = FileUtils.a(localFile, -1);
-          if (!TextUtils.isEmpty(str))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomInfo = HiBoomInfo.a(str);
-            if (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_AndroidGraphicsTypeface == null) {
-              this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int + File.separator + this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int + ".fz");
-            }
-            this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-          }
-          else if ((!localFile.exists()) && (this.jdField_a_of_type_Boolean))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int);
-          }
-        }
-      }
-    }
+    return true;
   }
 }
 

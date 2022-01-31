@@ -841,7 +841,7 @@ public class e
     //   237: aload_0
     //   238: astore 4
     //   240: aload_1
-    //   241: invokestatic 255	com/tencent/qqprotect/singleupdate/MD5FileUtil:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   241: invokestatic 255	bhpp:a	(Ljava/lang/String;)Ljava/lang/String;
     //   244: astore 8
     //   246: aload 8
     //   248: ifnull +461 -> 709
@@ -963,7 +963,7 @@ public class e
     //   498: astore_0
     //   499: goto -294 -> 205
     //   502: aload_0
-    //   503: invokestatic 255	com/tencent/qqprotect/singleupdate/MD5FileUtil:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   503: invokestatic 255	bhpp:a	(Ljava/lang/String;)Ljava/lang/String;
     //   506: astore_1
     //   507: aload_1
     //   508: putstatic 260	com/tencent/mqp/app/sec/e:sCachedMd5	Ljava/lang/String;
@@ -1123,7 +1123,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mqp.app.sec.e
  * JD-Core Version:    0.7.0.1
  */

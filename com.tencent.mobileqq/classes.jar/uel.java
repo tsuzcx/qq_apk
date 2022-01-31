@@ -1,26 +1,33 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import android.animation.TypeEvaluator;
+import android.graphics.PointF;
+import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView;
 
 public class uel
-  implements View.OnTouchListener
+  implements TypeEvaluator<PointF>
 {
-  public uel(TroopTransferActivity paramTroopTransferActivity) {}
+  PointF jdField_a_of_type_AndroidGraphicsPointF;
+  PointF b = new PointF();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public uel(QCirclePolymorphicAniView paramQCirclePolymorphicAniView, PointF paramPointF)
   {
-    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
-    if (paramMotionEvent != null) {
-      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    }
-    return false;
+    this.jdField_a_of_type_AndroidGraphicsPointF = paramPointF;
+  }
+  
+  private PointF a(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3, float paramFloat)
+  {
+    this.b.x = ((1.0F - paramFloat) * (1.0F - paramFloat) * paramPointF1.x + 2.0F * paramFloat * (1.0F - paramFloat) * paramPointF3.x + paramFloat * paramFloat * paramPointF2.x);
+    this.b.y = ((1.0F - paramFloat) * (1.0F - paramFloat) * paramPointF1.y + 2.0F * paramFloat * (1.0F - paramFloat) * paramPointF3.y + paramFloat * paramFloat * paramPointF2.y);
+    return this.b;
+  }
+  
+  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
+  {
+    return a(paramPointF1, paramPointF2, this.jdField_a_of_type_AndroidGraphicsPointF, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uel
  * JD-Core Version:    0.7.0.1
  */

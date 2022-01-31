@@ -1,23 +1,21 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.ProfileCardBrowserActivity.ImageGalleryAdapter;
-import com.tencent.mobileqq.profile.view.CircularProgressBar;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import msf.msgcomm.msg_comm.Msg;
 
-public class gjb
+public final class gjb
+  implements Runnable
 {
-  public ImageView a;
-  public ProgressBar a;
-  public TextView a;
-  public CircularProgressBar a;
-  public ImageView b;
-  public ImageView c;
+  public gjb(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg) {}
   
-  public gjb(ProfileCardBrowserActivity.ImageGalleryAdapter paramImageGalleryAdapter) {}
+  public void run()
+  {
+    ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.a(8)).a(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gjb
  * JD-Core Version:    0.7.0.1
  */

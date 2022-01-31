@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import java.util.ArrayList;
 
 class aisz
-  implements Runnable
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  aisz(aisy paramaisy) {}
+  aisz(aisy paramaisy, Intent paramIntent, ArrayList paramArrayList) {}
   
-  public void run()
+  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    QQToast.a(this.a.a.getActivity(), 2, "已保存到本地相册", 0).a();
+    ((NewPhotoListActivity)this.jdField_a_of_type_Aisy.mActivity).cancleProgressDailog();
+    if (bnfr.a(this.jdField_a_of_type_Aisy.mActivity, paramLocalMediaInfo))
+    {
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
+      PhotoUtils.a(this.jdField_a_of_type_Aisy.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
+    }
   }
 }
 

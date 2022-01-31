@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.MagicFaceViewBinder;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.activity.fileviewer.base.BaseFileViewerActivity;
+import com.tencent.mobileqq.filemanager.activity.fileviewer.base.BaseFileViewerController;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-class ftb
-  implements Runnable
+public class ftb
+  implements AdapterView.OnItemClickListener
 {
-  ftb(fta paramfta, int paramInt, MagicFaceViewBinder paramMagicFaceViewBinder) {}
+  public ftb(BaseFileViewerController paramBaseFileViewerController) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (EmoticonMainPanel.b() == 2)
-    {
-      EmoticonMainPanel.a(this.jdField_a_of_type_Fta.a, EmoticonMainPanel.a(this.jdField_a_of_type_Fta.a));
-      if (EmoticonMainPanel.c() == this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewMagicFaceViewBinder.d();
-      }
-    }
+    this.a.a.b(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ftb
  * JD-Core Version:    0.7.0.1
  */

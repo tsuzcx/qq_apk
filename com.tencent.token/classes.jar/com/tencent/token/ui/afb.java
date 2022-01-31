@@ -1,17 +1,15 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.utils.s;
+import com.tencent.token.ui.base.dn;
 
-final class afb
-  implements View.OnClickListener
+class afb
+  implements dn
 {
-  afb(UtilsMbInfoItemActivity paramUtilsMbInfoItemActivity, String paramString) {}
+  afb(VerifyStartScanActivity paramVerifyStartScanActivity) {}
   
-  public final void onClick(View paramView)
+  public void a()
   {
-    s.b(this.b, this.a);
+    VerifyStartScanActivity.access$000(this.a);
   }
 }
 

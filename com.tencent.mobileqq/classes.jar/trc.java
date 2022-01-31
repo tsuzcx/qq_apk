@@ -1,39 +1,23 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.ScoreQAVFragment.OnItemClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 
-class trc
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+public class trc
+  extends FlingGestureHandler
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ScoreQAVFragment.OnItemClickListener jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener;
-  
-  public trc(trb paramtrb, View paramView, ScoreQAVFragment.OnItemClickListener paramOnItemClickListener)
+  public trc(Activity paramActivity)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener = paramOnItemClickListener;
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131366251));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    super(paramActivity);
   }
   
-  public void onClick(View paramView)
+  public void flingLToR()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener.a(paramView, getPosition());
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("ScoreActivity", 2, "mOnItemClickListener is null!");
+    tzv.a("", 22, 10L);
+    super.flingLToR();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trc
  * JD-Core Version:    0.7.0.1
  */

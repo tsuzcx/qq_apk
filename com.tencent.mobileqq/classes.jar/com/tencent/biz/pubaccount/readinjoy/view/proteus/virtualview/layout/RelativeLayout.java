@@ -11,136 +11,134 @@ import java.util.List;
 public class RelativeLayout
   extends Layout
 {
-  private RelativeLayoutHelper a;
-  private List b;
-  private List c;
+  private static final String TAG = "RelativeLayout_TMTEST";
+  private RelativeLayoutHelper relativeLayoutHelper = new RelativeLayoutHelper();
+  private List<ViewBase> sortedHorizontalView;
+  private List<ViewBase> sortedVerticalView;
   
   public RelativeLayout(VafContext paramVafContext)
   {
     super(paramVafContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewLayoutHelperRelativeLayoutHelper = new RelativeLayoutHelper();
   }
   
-  private int a(int paramInt1, int paramInt2)
+  private int getMaxHeight()
   {
-    int i;
-    if (-2147483648 == paramInt1)
-    {
-      i = paramInt2;
-      if (paramInt2 <= 0) {
-        i = l();
-      }
-    }
-    do
-    {
-      return i;
-      i = paramInt2;
-    } while (1073741824 == paramInt1);
-    return l();
-  }
-  
-  private int b(int paramInt1, int paramInt2)
-  {
-    int i;
-    if (-2147483648 == paramInt1)
-    {
-      i = paramInt2;
-      if (paramInt2 <= 0) {
-        i = m();
-      }
-    }
-    do
-    {
-      return i;
-      i = paramInt2;
-    } while (1073741824 == paramInt1);
-    return m();
-  }
-  
-  private List b()
-  {
-    if ((this.b == null) || (this.b.size() != this.jdField_a_of_type_JavaUtilList.size()))
-    {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewLayoutHelperRelativeLayoutHelper.a() == null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewLayoutHelperRelativeLayoutHelper.a(this);
-      }
-      this.b = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewLayoutHelperRelativeLayoutHelper.a();
-      this.b = this.jdField_a_of_type_JavaUtilList;
-    }
-    return this.b;
-  }
-  
-  private List c()
-  {
-    if ((this.c == null) || (this.c.size() != this.jdField_a_of_type_JavaUtilList.size()))
-    {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewLayoutHelperRelativeLayoutHelper.a() == null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewLayoutHelperRelativeLayoutHelper.a(this);
-      }
-      this.c = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewLayoutHelperRelativeLayoutHelper.b();
-      this.c = this.jdField_a_of_type_JavaUtilList;
-    }
-    return this.c;
-  }
-  
-  private int l()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.mSubViews.iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
       ViewBase localViewBase = (ViewBase)localIterator.next();
-      if (!localViewBase.d())
+      if (!localViewBase.isGone())
       {
-        RelativeLayout.Params localParams = (RelativeLayout.Params)localViewBase.b();
-        int j = localParams.g;
-        j = localViewBase.a() + j + localParams.d;
+        RelativeLayout.Params localParams = (RelativeLayout.Params)localViewBase.getComLayoutParams();
+        int j = localParams.mTop;
+        j = localViewBase.getComMeasuredHeight() + j + localParams.mLayoutMarginBottom;
         if (j <= i) {
-          break label99;
+          break label94;
         }
         i = j;
       }
     }
-    label99:
+    label94:
     for (;;)
     {
       break;
-      return this.q + this.r + (this.e << 1) + i;
+      return this.mPaddingBottom + (this.mBorderWidth << 1) + i;
     }
   }
   
-  private int m()
+  private int getMaxWidth()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.mSubViews.iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
       ViewBase localViewBase = (ViewBase)localIterator.next();
-      if (!localViewBase.d())
+      if (!localViewBase.isGone())
       {
-        RelativeLayout.Params localParams = (RelativeLayout.Params)localViewBase.b();
-        int j = localParams.h;
-        j = localViewBase.k() + j + localParams.f;
+        RelativeLayout.Params localParams = (RelativeLayout.Params)localViewBase.getComLayoutParams();
+        int j = localParams.mLeft;
+        j = localViewBase.getComMeasuredWidth() + j + localParams.mLayoutMarginRight;
         if (j <= i) {
-          break label99;
+          break label94;
         }
         i = j;
       }
     }
-    label99:
+    label94:
     for (;;)
     {
       break;
-      return this.q + this.r + (this.e << 1) + i;
+      return this.mPaddingRight + (this.mBorderWidth << 1) + i;
     }
   }
   
-  public RelativeLayout.Params a()
+  private int getRealHeight(int paramInt1, int paramInt2)
+  {
+    if (-2147483648 == paramInt1) {
+      paramInt2 = getMaxHeight();
+    }
+    while (1073741824 == paramInt1) {
+      return paramInt2;
+    }
+    return getMaxHeight();
+  }
+  
+  private int getRealWidth(int paramInt1, int paramInt2)
+  {
+    if (-2147483648 == paramInt1) {
+      paramInt2 = getMaxWidth();
+    }
+    while (1073741824 == paramInt1) {
+      return paramInt2;
+    }
+    return getMaxWidth();
+  }
+  
+  private List<ViewBase> sortHorizontal()
+  {
+    if ((this.sortedHorizontalView == null) || (this.sortedHorizontalView.size() != this.mSubViews.size()))
+    {
+      if (this.relativeLayoutHelper.getParent() == null) {
+        this.relativeLayoutHelper.setParent(this);
+      }
+      this.sortedHorizontalView = this.relativeLayoutHelper.getHorizontalSortedView();
+    }
+    return this.sortedHorizontalView;
+  }
+  
+  private List<ViewBase> sortVertical()
+  {
+    if ((this.sortedVerticalView == null) || (this.sortedVerticalView.size() != this.mSubViews.size()))
+    {
+      if (this.relativeLayoutHelper.getParent() == null) {
+        this.relativeLayoutHelper.setParent(this);
+      }
+      this.sortedVerticalView = this.relativeLayoutHelper.getVerticalSortedView();
+    }
+    return this.sortedVerticalView;
+  }
+  
+  public RelativeLayout.Params generateParams()
   {
     return new RelativeLayout.Params();
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    Iterator localIterator = this.mSubViews.iterator();
+    while (localIterator.hasNext())
+    {
+      ViewBase localViewBase = (ViewBase)localIterator.next();
+      if (!localViewBase.isGone())
+      {
+        RelativeLayout.Params localParams = (RelativeLayout.Params)localViewBase.getComLayoutParams();
+        localViewBase.comLayout(localParams.mLeft + paramInt1, localParams.mTop + paramInt2, localParams.mRight + paramInt1, localParams.mBottom + paramInt2);
+      }
+    }
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
   {
     int k = View.MeasureSpec.getMode(paramInt1);
     int m = View.MeasureSpec.getMode(paramInt2);
@@ -152,7 +150,7 @@ public class RelativeLayout
       if (m != 0) {}
       for (;;)
       {
-        List localList = b();
+        List localList = sortHorizontal();
         int n = localList.size();
         boolean bool1;
         boolean bool2;
@@ -165,41 +163,41 @@ public class RelativeLayout
         {
           bool1 = true;
           if (m == 1073741824) {
-            break label197;
+            break label198;
           }
           bool2 = true;
           j = 0;
           if (j >= n) {
-            break label206;
+            break label207;
           }
           localViewBase = (ViewBase)localList.get(j);
           i = paramInt1;
-          if (localViewBase.c() != 2)
+          if (localViewBase.getVisibility() != 8)
           {
-            localParams = (RelativeLayout.Params)localViewBase.b();
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewLayoutHelperRelativeLayoutHelper.a(localParams, paramInt1);
+            localParams = (RelativeLayout.Params)localViewBase.getComLayoutParams();
+            this.relativeLayoutHelper.applyHorizontalSizeRules(localParams, paramInt1);
             i = paramInt1;
             if (bool1)
             {
               i = paramInt1;
-              if (localParams.a == -1)
+              if (localParams.mLayoutWidth == -1)
               {
-                i = l();
+                i = getMaxWidth();
                 if (i <= 0) {
-                  break label203;
+                  break label204;
                 }
                 paramInt1 = i;
               }
             }
           }
         }
-        label197:
-        label203:
+        label198:
+        label204:
         for (;;)
         {
           i = paramInt1;
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewLayoutHelperRelativeLayoutHelper.a(localViewBase, localParams, i, paramInt2);
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewLayoutHelperRelativeLayoutHelper.a(localViewBase, localParams, i, bool1);
+          this.relativeLayoutHelper.measureChildHorizontal(localViewBase, localParams, i, paramInt2);
+          this.relativeLayoutHelper.positionChildHorizontal(localViewBase, localParams, i, bool1);
           j += 1;
           paramInt1 = i;
           break label70;
@@ -208,43 +206,46 @@ public class RelativeLayout
           bool2 = false;
           break label67;
         }
-        label206:
-        localList = c();
+        label207:
+        localList = sortVertical();
         int j = 0;
         if (j < n)
         {
           localViewBase = (ViewBase)localList.get(j);
           i = paramInt2;
-          if (localViewBase.c() != 2)
+          if (localViewBase.getVisibility() != 8)
           {
-            localParams = (RelativeLayout.Params)localViewBase.b();
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewLayoutHelperRelativeLayoutHelper.b(localParams, paramInt2);
+            localParams = (RelativeLayout.Params)localViewBase.getComLayoutParams();
+            this.relativeLayoutHelper.applyVerticalSizeRules(localParams, paramInt2);
             i = paramInt2;
-            if (bool2)
-            {
-              i = paramInt2;
-              if (localParams.b == -1)
+            if (bool2) {
+              if (localParams.mLayoutHeight != -1)
               {
-                i = m();
+                i = paramInt2;
+                if (!RelativeLayoutHelper.hasVerticleCenterRule(localParams)) {}
+              }
+              else
+              {
+                i = getMaxHeight();
                 if (i <= 0) {
-                  break label337;
+                  break label347;
                 }
                 paramInt2 = i;
               }
             }
           }
-          label337:
+          label347:
           for (;;)
           {
             i = paramInt2;
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewLayoutHelperRelativeLayoutHelper.b(localViewBase, localParams, paramInt1, i);
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewLayoutHelperRelativeLayoutHelper.a(localViewBase, localParams, i, bool2);
+            this.relativeLayoutHelper.measureChild(localViewBase, localParams, paramInt1, i);
+            this.relativeLayoutHelper.positionChildVertical(localViewBase, localParams, i, bool2);
             j += 1;
             paramInt2 = i;
             break;
           }
         }
-        b(a(k, paramInt1), b(m, paramInt2));
+        setComMeasuredDimension(getRealWidth(k, paramInt1), getRealHeight(m, paramInt2));
         return;
         paramInt2 = -1;
       }
@@ -252,30 +253,16 @@ public class RelativeLayout
     }
   }
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public boolean setAttribute(int paramInt, String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      ViewBase localViewBase = (ViewBase)localIterator.next();
-      if (!localViewBase.d())
-      {
-        RelativeLayout.Params localParams = (RelativeLayout.Params)localViewBase.b();
-        localViewBase.b(localParams.g + paramInt1, localParams.h + paramInt2, localParams.i + paramInt1, localParams.j + paramInt2);
-      }
-    }
-  }
-  
-  protected boolean a(int paramInt, String paramString)
-  {
-    boolean bool = super.a(paramInt, paramString);
+    boolean bool = super.setAttribute(paramInt, paramString);
     if (!bool) {}
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.layout.RelativeLayout
  * JD-Core Version:    0.7.0.1
  */

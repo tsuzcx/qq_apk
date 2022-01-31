@@ -1,30 +1,23 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.os.MessageQueue.IdleHandler;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
 public class ahgv
-  implements PtvTemplateManager.IPtvTemplateDownloadListener
+  implements MessageQueue.IdleHandler
 {
-  public ahgv(PtvTemplateAdapter paramPtvTemplateAdapter) {}
+  public ahgv(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public boolean queueIdle()
   {
-    if (this.a.a != null) {
-      this.a.a.runOnUiThread(new ahgx(this, paramPtvTemplateInfo, paramInt));
-    }
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
-  {
-    if (this.a.a != null) {
-      this.a.a.runOnUiThread(new ahgw(this, paramPtvTemplateInfo, paramBoolean));
-    }
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahgv
  * JD-Core Version:    0.7.0.1
  */

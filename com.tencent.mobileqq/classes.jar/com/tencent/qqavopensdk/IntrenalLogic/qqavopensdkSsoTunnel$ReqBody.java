@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class qqavopensdkSsoTunnel$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int BYTES_REQBODY_FIELD_NUMBER = 2;
   public static final int MSG_SDK_DATA_FIELD_NUMBER = 1;
@@ -23,7 +23,7 @@ public final class qqavopensdkSsoTunnel$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqavopensdk.IntrenalLogic.qqavopensdkSsoTunnel.ReqBody
  * JD-Core Version:    0.7.0.1
  */

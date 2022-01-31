@@ -1,58 +1,40 @@
-import com.tencent.av.core.VcSystemInfo;
-import com.tencent.av.utils.TraeHelper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.EarlyDownloadManager;
-import com.tencent.mobileqq.earlydownload.handler.EarlyHandler;
-import com.tencent.mobileqq.earlydownload.handler.QavSoDownloadHandler;
-import com.tencent.mobileqq.startup.step.UpdateAvSo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
+import com.tribe.async.reactive.SimpleObserver;
 
-public final class uqb
-  implements Runnable
+public class uqb
+  extends SimpleObserver<ErrorMessage>
 {
-  public uqb(boolean paramBoolean, QQAppInterface paramQQAppInterface, String paramString) {}
+  private uqb(BasePublishTask paramBasePublishTask) {}
   
-  public void run()
+  public void a(ErrorMessage paramErrorMessage)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (paramErrorMessage.isSuccess())
     {
-      if (PressToChangeVoicePanel.jdField_a_of_type_JavaLangString == null) {
-        PressToChangeVoicePanel.jdField_a_of_type_JavaLangString = TraeHelper.a(BaseApplicationImpl.sApplication);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOAudioPanel", 2, "checkVcSo async:" + PressToChangeVoicePanel.jdField_a_of_type_JavaLangString);
-      }
-    }
-    if ((PressToChangeVoicePanel.jdField_a_of_type_JavaLangString != null) || (VcSystemInfo.f() <= 2)) {}
-    for (;;)
-    {
-      try
-      {
-        EarlyHandler localEarlyHandler = ((EarlyDownloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(76)).a(QavSoDownloadHandler.e());
-        if (localEarlyHandler == null) {
-          continue;
-        }
-        localEarlyHandler.a(false);
-      }
-      catch (Exception localException)
-      {
-        QLog.e("AIOAudioPanel", 1, "voiceChang checkVcSo Exception:" + localException.getMessage());
-        continue;
-      }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
+      this.a.a(new ErrorMessage());
       return;
-      QLog.e("AIOAudioPanel", 1, "voiceChang checkVcSo null == earlyHandler:");
-      continue;
-      UpdateAvSo.b(BaseApplicationImpl.sApplication, "traeimp-armeabi-v7a", true);
     }
+    this.a.a(paramErrorMessage);
+  }
+  
+  public void onCancel() {}
+  
+  public void onComplete() {}
+  
+  public void onError(@NonNull Error paramError)
+  {
+    if ((paramError instanceof ErrorMessage))
+    {
+      this.a.a((ErrorMessage)paramError);
+      return;
+    }
+    this.a.a(new ErrorMessage(940005, "upload file fail:" + paramError));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uqb
  * JD-Core Version:    0.7.0.1
  */

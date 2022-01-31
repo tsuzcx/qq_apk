@@ -1,28 +1,19 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class alwi
-  implements Handler.Callback
+class alwi
+  implements babe
 {
-  public alwi(Login paramLogin) {}
+  alwi(alwd paramalwd) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.setResult(0);
-      this.a.finish();
-    }
+    ((FriendListHandler)alwd.a(this.a).a(1)).notifyUI(108, true, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alwi
  * JD-Core Version:    0.7.0.1
  */

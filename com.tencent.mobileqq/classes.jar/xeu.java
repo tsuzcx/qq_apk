@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgDialog;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import java.util.List;
-import mqq.app.AppRuntime;
+import java.io.File;
+import java.io.FileFilter;
 
-public class xeu
-  implements Runnable
+class xeu
+  implements FileFilter
 {
-  public xeu(GoldMsgDialog paramGoldMsgDialog, PreloadManager paramPreloadManager, List paramList, AppRuntime paramAppRuntime) {}
+  xeu(xet paramxet) {}
   
-  public void run()
+  public boolean accept(File paramFile)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.a(this.jdField_a_of_type_JavaUtilList, new xev(this));
+    return (paramFile.isDirectory()) && (paramFile.getName().startsWith("emoji_folder_"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xeu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,41 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qidian.QidianProfileCardActivity.QidianSimpleProfileItem;
+import com.tencent.qphone.base.util.QLog;
 
-public final class alnf
-  implements Parcelable.Creator
+public class alnf
 {
-  public QidianProfileCardActivity.QidianSimpleProfileItem a(Parcel paramParcel)
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d = 3;
+  public int e;
+  
+  public void a()
   {
-    boolean bool2 = true;
-    QidianProfileCardActivity.QidianSimpleProfileItem localQidianSimpleProfileItem = new QidianProfileCardActivity.QidianSimpleProfileItem();
-    localQidianSimpleProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQidianSimpleProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
+    if (QLog.isColorLevel())
     {
-      bool1 = true;
-      localQidianSimpleProfileItem.jdField_a_of_type_Boolean = bool1;
-      localQidianSimpleProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
-      localQidianSimpleProfileItem.jdField_b_of_type_Int = paramParcel.readInt();
-      localQidianSimpleProfileItem.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      if (paramParcel.readByte() == 0) {
-        break label109;
-      }
-      bool1 = true;
-      label80:
-      localQidianSimpleProfileItem.jdField_b_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label114;
-      }
-    }
-    label109:
-    label114:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localQidianSimpleProfileItem.jdField_c_of_type_Boolean = bool1;
-      return localQidianSimpleProfileItem;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label80;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("gameId:").append(this.jdField_a_of_type_Int).append(",roomId:").append(this.jdField_a_of_type_Long).append(",actionId:").append(this.jdField_b_of_type_Int).append(",gameName:").append(this.jdField_b_of_type_JavaLangString).append(",wording:").append(",imgType:");
+      QLog.d("ApolloPanel", 2, localStringBuilder.toString());
     }
   }
   
-  public QidianProfileCardActivity.QidianSimpleProfileItem[] a(int paramInt)
+  public void b()
   {
-    return new QidianProfileCardActivity.QidianSimpleProfileItem[paramInt];
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.d = 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alnf
  * JD-Core Version:    0.7.0.1
  */

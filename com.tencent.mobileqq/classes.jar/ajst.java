@@ -1,15 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.widget.ProfileGuideHelper;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.Properties;
 
 public class ajst
-  implements View.OnClickListener
 {
-  public ajst(ProfileGuideHelper paramProfileGuideHelper) {}
+  private static int a = 10000;
   
-  public void onClick(View paramView)
+  public static void a(int paramInt)
   {
-    this.a.a();
+    a = paramInt;
+  }
+  
+  public static void a(String paramString, Properties paramProperties)
+  {
+    Properties localProperties = paramProperties;
+    if (paramProperties == null) {
+      localProperties = new Properties();
+    }
+    localProperties.setProperty("shortvideo_business_type", "" + a);
+    azqh.a(VideoEnvironment.a()).reportKVEvent(paramString, localProperties);
   }
 }
 

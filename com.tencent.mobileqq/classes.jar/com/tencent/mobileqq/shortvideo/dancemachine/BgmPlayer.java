@@ -7,28 +7,39 @@ import java.io.IOException;
 public class BgmPlayer
   implements MediaPlayer.OnPreparedListener
 {
-  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean mPausedAudio = false;
+  private MediaPlayer mediaPlayer = new MediaPlayer();
   
-  public void a()
+  public boolean isPlaying()
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying()) {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-    }
-    this.jdField_a_of_type_Boolean = false;
+    return this.mediaPlayer.isPlaying();
   }
   
-  public void a(String paramString)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
+  {
+    this.mediaPlayer.start();
+  }
+  
+  public void pauseAudio()
+  {
+    if (isPlaying())
+    {
+      this.mediaPlayer.pause();
+      this.mPausedAudio = true;
+    }
+  }
+  
+  public void playAsync(String paramString)
   {
     try
     {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
-      if (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying()) {
+      this.mediaPlayer.reset();
+      this.mediaPlayer.setDataSource(paramString);
+      if (this.mediaPlayer.isPlaying()) {
         return;
       }
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(this);
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
+      this.mediaPlayer.setOnPreparedListener(this);
+      this.mediaPlayer.prepareAsync();
       return;
     }
     catch (IOException paramString)
@@ -37,24 +48,55 @@ public class BgmPlayer
     }
   }
   
-  public void b()
+  public void playSync(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    try
     {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
+      this.mediaPlayer.reset();
+      this.mediaPlayer.setDataSource(paramString);
+      if (this.mediaPlayer.isPlaying()) {
+        return;
+      }
+      this.mediaPlayer.prepare();
+      this.mediaPlayer.start();
+      return;
+    }
+    catch (IOException paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void releaseResource()
   {
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
+    if (this.mediaPlayer != null)
+    {
+      this.mediaPlayer.stop();
+      this.mediaPlayer.release();
+      this.mediaPlayer = null;
+    }
+  }
+  
+  public void resumeAudio()
+  {
+    if (this.mPausedAudio)
+    {
+      this.mediaPlayer.start();
+      this.mPausedAudio = false;
+    }
+  }
+  
+  public void stop()
+  {
+    if (this.mediaPlayer.isPlaying()) {
+      this.mediaPlayer.stop();
+    }
+    this.mPausedAudio = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.BgmPlayer
  * JD-Core Version:    0.7.0.1
  */

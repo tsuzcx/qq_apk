@@ -1,93 +1,33 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView.ITroopContext;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.RedDotTextView;
-import com.tencent.mobileqq.widget.TabBarView;
-import com.tencent.util.WeakReferenceHandler;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import java.lang.ref.WeakReference;
 
 public class ell
-  implements BaseTroopView.ITroopContext
+  extends Handler
 {
-  public ell(TroopActivity paramTroopActivity) {}
+  private WeakReference a;
   
-  public Activity a()
+  public ell(DialogBaseActivity paramDialogBaseActivity)
   {
-    return this.a;
+    this.a = new WeakReference(paramDialogBaseActivity);
   }
   
-  public View a()
+  public void handleMessage(Message paramMessage)
   {
-    return this.a.findViewById(2131231116);
-  }
-  
-  public ForwardOperations a()
-  {
-    return TroopActivity.a(this.a);
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.b;
-  }
-  
-  public WeakReferenceHandler a()
-  {
-    return TroopActivity.a(this.a);
-  }
-  
-  public void a(int paramInt, View.OnClickListener paramOnClickListener) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (this.a.j != 2) {
+    DialogBaseActivity localDialogBaseActivity = (DialogBaseActivity)this.a.get();
+    if (localDialogBaseActivity == null) {
       return;
     }
-    switch (paramInt)
+    switch (paramMessage.what)
     {
     default: 
-      return;
-    case 0: 
-      TroopActivity.a(this.a).a(0).a(paramBoolean);
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      localDialogBaseActivity.a(paramMessage.arg1);
       return;
     }
-    TroopActivity.a(this.a).a(1).a(paramBoolean);
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    this.a.runOnUiThread(paramRunnable);
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.a.isResume()) {
-      QQToast.a(a(), paramString, 0).b(this.a.d());
-    }
-  }
-  
-  public boolean a()
-  {
-    return TroopActivity.a(this.a);
-  }
-  
-  public View b()
-  {
-    return this.a.findViewById(2131231374);
-  }
-  
-  public View c()
-  {
-    return this.a.findViewById(2131232304);
-  }
-  
-  public View d()
-  {
-    return TroopActivity.a(this.a);
+    localDialogBaseActivity.finish();
   }
 }
 

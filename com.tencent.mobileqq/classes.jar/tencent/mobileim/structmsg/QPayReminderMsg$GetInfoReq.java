@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class QPayReminderMsg$GetInfoReq
-  extends MessageMicro
+  extends MessageMicro<GetInfoReq>
 {
   public static final int INFO_DATE_FIELD_NUMBER = 3;
   public static final int SCENE_FIELD_NUMBER = 1;
@@ -18,7 +18,7 @@ public final class QPayReminderMsg$GetInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.mobileim.structmsg.QPayReminderMsg.GetInfoReq
  * JD-Core Version:    0.7.0.1
  */

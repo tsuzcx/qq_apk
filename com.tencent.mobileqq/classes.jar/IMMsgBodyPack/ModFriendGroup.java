@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class ModFriendGroup
   extends JceStruct
 {
-  static ArrayList cache_vMsgFrdGroup;
-  public ArrayList vMsgFrdGroup;
+  static ArrayList<FriendGroup> cache_vMsgFrdGroup;
+  public ArrayList<FriendGroup> vMsgFrdGroup;
   
   public ModFriendGroup() {}
   
-  public ModFriendGroup(ArrayList paramArrayList)
+  public ModFriendGroup(ArrayList<FriendGroup> paramArrayList)
   {
     this.vMsgFrdGroup = paramArrayList;
   }
@@ -38,7 +38,7 @@ public final class ModFriendGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     IMMsgBodyPack.ModFriendGroup
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,12 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import AvatarInfo.QQHeadInfo;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public class ffv
-  implements Runnable
+class ffv
 {
-  public ffv(DataLineHandler paramDataLineHandler, String paramString) {}
+  QQHeadInfo jdField_a_of_type_AvatarInfoQQHeadInfo;
+  ToServiceMsg jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg;
   
-  public void run()
-  {
-    FMToastUtil.a("'" + this.jdField_a_of_type_JavaLangString + "'" + BaseApplication.getContext().getResources().getString(2131558519));
-  }
+  private ffv(fft paramfft) {}
 }
 
 

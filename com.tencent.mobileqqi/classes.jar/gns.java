@@ -1,33 +1,36 @@
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantActivity;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.util.WeakReferenceHandler;
+import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
+import com.tencent.mobileqq.transfile.ProtoReqManager;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.NewIntent;
 
-class gns
+public class gns
   implements Runnable
 {
-  gns(gnr paramgnr, boolean paramBoolean) {}
+  public long a;
+  public ProtoReqManager.ProtoResp a;
+  public NewIntent a;
+  public boolean a;
+  long b;
+  public boolean b;
+  public long c;
+  public boolean c = false;
+  
+  public gns(ProtoReqManager paramProtoReqManager)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+  }
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QZoneShareAlbumAssistantActivity.a(this.jdField_a_of_type_Gnr.a).sendEmptyMessageDelayed(8877, 800L);
-      QZoneShareAlbumAssistantActivity.a(this.jdField_a_of_type_Gnr.a).a(0);
-      QZoneShareAlbumAssistantActivity.a(this.jdField_a_of_type_Gnr.a, QZoneShareAlbumAssistantActivity.b(this.jdField_a_of_type_Gnr.a));
-    }
-    for (;;)
-    {
-      if ((QZoneShareAlbumAssistantActivity.a(this.jdField_a_of_type_Gnr.a) != null) && (QZoneShareAlbumAssistantActivity.b(this.jdField_a_of_type_Gnr.a) != null))
-      {
-        QZoneShareAlbumAssistantActivity.a(this.jdField_a_of_type_Gnr.a).a(QZoneShareAlbumAssistantActivity.b(this.jdField_a_of_type_Gnr.a));
-        QZoneShareAlbumAssistantActivity.a(this.jdField_a_of_type_Gnr.a).notifyDataSetChanged();
-      }
-      return;
-      this.jdField_a_of_type_Gnr.a.a(1, this.jdField_a_of_type_Gnr.a.getString(2131562097));
-      this.jdField_a_of_type_Gnr.a.a.B();
-    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_MqqAppNewIntent.putExtra("key_timeout", this.jdField_a_of_type_Long);
+    MessageObserver.StatictisInfo localStatictisInfo = this.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$ProtoResp.a;
+    localStatictisInfo.c += 1;
+    this.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.a.put(this.jdField_a_of_type_MqqAppNewIntent, this.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$ProtoResp);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.a(this.jdField_a_of_type_MqqAppNewIntent);
   }
 }
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/bj1" android:background="@color/a6q" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/bj2" android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/va" />
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/m1" android:paddingRight="@dimen/m1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m1">
+        <TextView android:textSize="@dimen/di" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/bj3" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ln" />
+    </LinearLayout>
+    <TextView android:textSize="14.0sp" android:textColor="#ff6c6c6c" android:id="@id/bj4" android:paddingTop="@dimen/n_" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m1" android:layout_marginRight="@dimen/m1" android:lineSpacingMultiplier="1.1" />
+    <View android:id="@id/bj5" android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m1" android:layout_marginRight="@dimen/m1" />
+    <include android:id="@id/bix" layout="@layout/v9" />
+    <include android:id="@id/bj6" layout="@layout/vc" />
+    <TextView android:id="@id/bj7" android:background="@color/zm" android:paddingLeft="@dimen/m1" android:paddingTop="@dimen/la" android:paddingRight="@dimen/m1" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/bef" style="@style/my" />
+</LinearLayout>

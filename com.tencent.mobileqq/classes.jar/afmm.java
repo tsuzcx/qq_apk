@@ -1,37 +1,29 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.smooth.ItemManager;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.customviews.PicProgressView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class afmm
-  implements AdapterView.OnItemSelectedListener
+  extends aeqi
 {
-  private afmm(ItemManager paramItemManager) {}
+  public FrameLayout a;
+  public RelativeLayout a;
+  public URLDrawable a;
+  public PicProgressView a;
+  public BubbleImageView a;
+  public boolean a;
+  public int e;
+  public int f;
   
-  public void a(AdapterView paramAdapterView)
+  public afmm(afmf paramafmf)
   {
-    AdapterView.OnItemSelectedListener localOnItemSelectedListener = this.a.jdField_a_of_type_Afmi.a();
-    if (localOnItemSelectedListener != null) {
-      localOnItemSelectedListener.a(paramAdapterView);
-    }
-  }
-  
-  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    if (this.a.jdField_a_of_type_Int != 0)
-    {
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.a();
-    }
-    AdapterView.OnItemSelectedListener localOnItemSelectedListener = this.a.jdField_a_of_type_Afmi.a();
-    if (localOnItemSelectedListener != null) {
-      localOnItemSelectedListener.b(paramAdapterView, paramView, paramInt, paramLong);
-    }
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afmm
  * JD-Core Version:    0.7.0.1
  */

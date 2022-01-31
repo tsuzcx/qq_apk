@@ -2,32 +2,32 @@ package com.tencent.mobileqq.util;
 
 import android.support.v4.util.LruCache;
 
-public class CustomLruCache
-  extends LruCache
+public class CustomLruCache<K, V>
+  extends LruCache<K, V>
 {
   public CustomLruCache(int paramInt)
   {
     super(paramInt);
   }
   
-  protected Object create(Object paramObject)
+  public V create(K paramK)
   {
-    return super.create(paramObject);
+    return super.create(paramK);
   }
   
-  protected void entryRemoved(boolean paramBoolean, Object paramObject1, Object paramObject2, Object paramObject3)
+  public void entryRemoved(boolean paramBoolean, K paramK, V paramV1, V paramV2)
   {
-    super.entryRemoved(paramBoolean, paramObject1, paramObject2, paramObject3);
+    super.entryRemoved(paramBoolean, paramK, paramV1, paramV2);
   }
   
-  public int sizeOf(Object paramObject1, Object paramObject2)
+  public int sizeOf(K paramK, V paramV)
   {
-    return super.sizeOf(paramObject1, paramObject2);
+    return super.sizeOf(paramK, paramV);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.CustomLruCache
  * JD-Core Version:    0.7.0.1
  */

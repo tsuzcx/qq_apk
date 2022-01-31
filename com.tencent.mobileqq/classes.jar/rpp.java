@@ -1,26 +1,50 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SelectLimitListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.animation.Interpolator;
+import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
+import com.tencent.widget.AbsListView;
 
 public class rpp
-  implements PhotoListPanel.SelectLimitListener
+  implements bhtv
 {
-  public rpp(BaseChatPie paramBaseChatPie) {}
+  public rpp(DailyTitleBarSwitcher paramDailyTitleBarSwitcher) {}
   
-  public boolean a(int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    String str = String.format(this.a.a().getString(2131439000), new Object[] { Integer.valueOf(paramInt) });
-    QQToast.a(this.a.a(), str, 0).b(this.a.a().getResources().getDimensionPixelSize(2131558448));
-    ReportController.b(this.a.a, "CliOper", "", "", "0x80083EC", "0x80083EC", 0, 0, "", "", "", "");
-    return true;
+    if ((paramInt1 <= 1) && (this.a.getVisibility() == 0))
+    {
+      paramAbsListView = paramAbsListView.getChildAt(0);
+      if (paramAbsListView != null)
+      {
+        paramInt1 = paramAbsListView.getHeight();
+        paramInt2 = paramAbsListView.getTop();
+        if ((paramInt1 != 0) && (paramInt2 != 0))
+        {
+          float f = paramInt2 * -1.0F / paramInt1;
+          DailyTitleBarSwitcher.a(this.a, DailyTitleBarSwitcher.a(this.a).getInterpolation(f));
+          return;
+        }
+        DailyTitleBarSwitcher.a(this.a, 0.0F);
+        return;
+      }
+      DailyTitleBarSwitcher.a(this.a, 0.0F);
+      return;
+    }
+    DailyTitleBarSwitcher.a(this.a, 1.0F);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      this.a.setLayerType(0, null);
+      return;
+    }
+    this.a.setLayerType(2, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rpp
  * JD-Core Version:    0.7.0.1
  */

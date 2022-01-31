@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.data.LebaFeedInfo;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 
-public abstract interface adyp
+public class adyp
+  implements View.OnClickListener
 {
-  public abstract void a(LebaFeedInfo paramLebaFeedInfo);
+  public adyp(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public abstract void a(LebaFeedInfo paramLebaFeedInfo, HashMap paramHashMap);
-  
-  public abstract void ag_();
-  
-  public abstract void b();
-  
-  public abstract void b(LebaFeedInfo paramLebaFeedInfo);
+  public void onClick(View paramView)
+  {
+    SoundAndVibrateActivity.a(this.a, "CHANNEL_ID_GROUP_MSG");
+    azqs.b(null, "CliOper", "", "", "0X800AC8A", "0X800AC8A", 0, 0, "", "", "", "");
+  }
 }
 
 

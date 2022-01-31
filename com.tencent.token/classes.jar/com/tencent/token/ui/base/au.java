@@ -6,7 +6,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import com.tencent.token.ui.IndexActivity;
 
-final class au
+class au
   implements Runnable
 {
   private View b;
@@ -26,10 +26,10 @@ final class au
     this.e = paramView4;
     this.h = new TranslateAnimation(0.0F, 0.0F, 0.0F, (int)(IndexActivity.S_DENSITY * 40.0F) + -GameLoginSndConfirmView.c(paramGameLoginSndConfirmView));
     this.h.setDuration(600L);
-    this.h.setInterpolator(new ay(paramGameLoginSndConfirmView));
+    this.h.setInterpolator(new ay(paramGameLoginSndConfirmView, null));
     this.i = new TranslateAnimation(0.0F, 0.0F, 0.0F, GameLoginSndConfirmView.b(paramGameLoginSndConfirmView));
     this.i.setDuration(600L);
-    this.i.setInterpolator(new ay(paramGameLoginSndConfirmView));
+    this.i.setInterpolator(new ay(paramGameLoginSndConfirmView, null));
     this.f = new TranslateAnimation(0.0F, 0.0F, 0.0F, -GameLoginSndConfirmView.c(paramGameLoginSndConfirmView));
     this.f.setDuration(600L);
     this.f.setInterpolator(new AccelerateInterpolator());
@@ -41,7 +41,7 @@ final class au
     this.i.setAnimationListener(new av(this, paramGameLoginSndConfirmView));
   }
   
-  public final void run()
+  public void run()
   {
     GameLoginSndConfirmView.e(this.a).setEnabled(false);
     GameLoginSndConfirmView.f(this.a).setEnabled(false);

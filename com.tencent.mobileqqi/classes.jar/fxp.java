@@ -1,10 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
 
-public final class fxp
-  implements DialogInterface.OnClickListener
+public class fxp
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public long a;
+  public String a;
+  public long b;
+  
+  public fxp(FileManagerProxy paramFileManagerProxy) {}
 }
 
 

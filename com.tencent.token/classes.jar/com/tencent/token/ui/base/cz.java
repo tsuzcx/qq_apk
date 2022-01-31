@@ -1,16 +1,21 @@
 package com.tencent.token.ui.base;
 
-import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-final class cz
-  implements Runnable
+class cz
+  implements Animation.AnimationListener
 {
-  cz(SlidingMenuView paramSlidingMenuView) {}
+  cz(TitleOptionMenu paramTitleOptionMenu) {}
   
-  public final void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.scrollTo(this.a.findViewById(2131296641).getWidth(), 0);
+    this.a.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

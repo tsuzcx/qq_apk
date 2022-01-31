@@ -1,29 +1,50 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adlu
-  extends Handler
+  extends BroadcastReceiver
 {
-  public adlu(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  public adlu(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramMessage.what == 0) {
-      QQToast.a(this.a.a, "网络异常", 0).a();
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.PCActive"))
+    {
+      paramContext = paramIntent.getStringExtra("uin");
+      NotifyPushSettingActivity.a(this.a, paramContext);
     }
-    while (1 != paramMessage.what) {
+    do
+    {
+      boolean bool;
+      do
+      {
+        return;
+        if (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.ConfigPCActive")) {
+          break;
+        }
+        paramContext = paramIntent.getStringExtra("uin");
+        bool = paramIntent.getBooleanExtra("configPCActive", false);
+      } while (!this.a.app.getAccount().equals(paramContext));
+      if (true == bool)
+      {
+        NotifyPushSettingActivity.g(this.a).setVisibility(0);
+        return;
+      }
+      NotifyPushSettingActivity.g(this.a).setVisibility(8);
       return;
-    }
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    } while (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.HelloLiveMessage"));
+    paramContext = paramIntent.getStringExtra("uin");
+    NotifyPushSettingActivity.b(this.a, paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adlu
  * JD-Core Version:    0.7.0.1
  */

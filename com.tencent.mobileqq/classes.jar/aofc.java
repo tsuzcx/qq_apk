@@ -1,84 +1,29 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.stroke.HorizontalStroke;
-import java.util.ArrayList;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
 public class aofc
-  extends BaseAdapter
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  int jdField_a_of_type_Int = -1;
-  Context jdField_a_of_type_AndroidContentContext;
-  ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public aofc(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
   
-  public aofc(HorizontalSelectColorLayout paramHorizontalSelectColorLayout, Context paramContext)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public void a(ArrayList paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    HorizontalStroke localHorizontalStroke = (HorizontalStroke)getItem(paramInt);
-    View localView;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968952, paramViewGroup, false);
-      paramView = new aofd(this);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364378));
-      paramView.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131364377));
-      localView.setTag(paramView);
-      paramViewGroup = paramView;
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
     for (;;)
     {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localHorizontalStroke.a);
-      if (paramInt != this.jdField_a_of_type_Int) {
-        break;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.getResources().getDrawable(2130842472));
-      return localView;
-      paramViewGroup = (aofd)paramView.getTag();
-      localView = paramView;
+      ColorNoteSmallScreenRelativeLayout.a(this.a);
+      return;
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
-    paramViewGroup.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(null);
-    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aofc
  * JD-Core Version:    0.7.0.1
  */

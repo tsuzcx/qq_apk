@@ -6,12 +6,12 @@ import java.util.ArrayList;
 public class PortalManager$RedPacketConfig
   implements Serializable
 {
-  public ArrayList bannerConfigs = new ArrayList();
-  public ArrayList comboNumberConfigs = new ArrayList();
+  public ArrayList<PortalManager.BannerConfig> bannerConfigs = new ArrayList();
+  public ArrayList<PortalManager.ComboNumber> comboNumberConfigs = new ArrayList();
   public long grebInterval = -1L;
   public int id;
   public long lastGrabTime;
-  public ArrayList portalConfigs = new ArrayList();
+  public ArrayList<PortalManager.PortalConfig> portalConfigs = new ArrayList();
   public long reportActiveInterval = -1L;
   public long reportNormalInterval = -1L;
   public int shareBaseLine;
@@ -31,7 +31,7 @@ public class PortalManager$RedPacketConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.portal.PortalManager.RedPacketConfig
  * JD-Core Version:    0.7.0.1
  */

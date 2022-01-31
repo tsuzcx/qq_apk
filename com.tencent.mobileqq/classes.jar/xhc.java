@@ -1,25 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import mqq.observer.BusinessObserver;
-
 public class xhc
-  implements BusinessObserver
 {
-  public xhc(RedPacketManager paramRedPacketManager) {}
+  public int a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public xhc(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.a.a(paramBoolean, paramBundle);
+    this.a = paramInt;
   }
+  
+  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xhc
  * JD-Core Version:    0.7.0.1
  */

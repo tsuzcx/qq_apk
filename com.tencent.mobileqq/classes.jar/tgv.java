@@ -1,33 +1,14 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.qq.jce.wup.UniAttribute;
+import com.qq.taf.jce.JceInputStream;
 
 public class tgv
-  implements Runnable
+  extends UniAttribute
 {
-  public tgv(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
-  
-  public void run()
-  {
-    try
-    {
-      i = this.a.a(this.a.a.a);
-      this.a.b = false;
-      this.a.app.runOnUiThread(new tgw(this, i));
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        int i = -1;
-      }
-    }
-  }
+  JceInputStream a = new JceInputStream();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tgv
  * JD-Core Version:    0.7.0.1
  */

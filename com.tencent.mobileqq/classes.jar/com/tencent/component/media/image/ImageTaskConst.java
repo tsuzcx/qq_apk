@@ -9,6 +9,7 @@ public class ImageTaskConst
   public static final String FAIL_CODE = "failCode";
   public static final String FILE_PATH = "filePath";
   public static final int IMAGE_TASK_DECODE_EXCEPTION = 110;
+  public static final int IMAGE_TASK_DECODE_GET_ANIMATEDWEBP_DRAWABLE_THROWABLE = 113;
   public static final int IMAGE_TASK_DECODE_GET_PHOTO_GIF_DRAWABLE_FAILED = 106;
   public static final int IMAGE_TASK_DECODE_GIF_DRAWABLE_FIALED = 107;
   public static final int IMAGE_TASK_DECODE_NORMAL_IMAGE_THROWABLE = 112;
@@ -135,7 +136,7 @@ public class ImageTaskConst
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.ImageTaskConst
  * JD-Core Version:    0.7.0.1
  */

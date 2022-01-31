@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ilive_feeds_read$ReadFollowFeedsReq
-  extends MessageMicro
+  extends MessageMicro<ReadFollowFeedsReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "start_time", "num", "load_num" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0) }, ReadFollowFeedsReq.class);
   public final PBUInt32Field load_num = PBField.initUInt32(0);
@@ -16,7 +16,7 @@ public final class ilive_feeds_read$ReadFollowFeedsReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_read.ReadFollowFeedsReq
  * JD-Core Version:    0.7.0.1
  */

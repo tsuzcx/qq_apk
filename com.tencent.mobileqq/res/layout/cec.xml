@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/m51" android:background="@drawable/b72" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/b82"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.URLThemeImageView android:layout_gravity="center_vertical" android:id="@id/m54" android:duplicateParentState="true" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/hmz" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="4.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="5.0dip">
+        <TextView android:textSize="14.0dip" android:textColor="@color/qb_troop_notification_bar_other_text_color" android:id="@id/m55" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="128.0dip" android:singleLine="true" />
+    </LinearLayout>
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/m53" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginRight="9.0dip" android:src="@drawable/hzg" android:rotation="180.0" />
+</LinearLayout>

@@ -1,29 +1,49 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ocr.OCRHandler;
-import com.tencent.mobileqq.ocr.OCRManager;
-import com.tencent.mobileqq.ocr.OCRObserver;
-import java.util.List;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 public class agax
-  extends OCRObserver
+  extends Handler
 {
-  public agax(OCRManager paramOCRManager) {}
-  
-  public void a(boolean paramBoolean, String paramString, List paramList)
+  public agax(Looper paramLooper)
   {
-    paramList = this.a.a(paramList);
-    OCRHandler localOCRHandler = (OCRHandler)this.a.a.a(113);
-    if (paramBoolean) {}
-    for (int i = 0;; i = -1)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      localOCRHandler.a(3, paramBoolean, new Object[] { Integer.valueOf(i), paramString, paramList });
-      return;
     }
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        i = paramMessage.arg1;
+        paramMessage = paramMessage.getData();
+      } while (!QLog.isColorLevel());
+      QLog.i("ShortVideoPTVItemBuilder", 2, "ret is " + i);
+      QLog.i("ShortVideoPTVItemBuilder", 2, "data is " + paramMessage);
+      return;
+      i = paramMessage.arg1;
+      switch (paramMessage.arg1)
+      {
+      default: 
+        return;
+      }
+      paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
+    } while (!QLog.isColorLevel());
+    QLog.i("ShortVideoPTVItemBuilder", 2, "ret is " + i);
+    QLog.i("ShortVideoPTVItemBuilder", 2, "targetFile is " + paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agax
  * JD-Core Version:    0.7.0.1
  */

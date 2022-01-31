@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.DispatchActionMoveScrollView android:scrollbarThumbVertical="@drawable/b2n" android:id="@id/cz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/cs" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/action_sheet_actionView" android:layout_alignParentBottom="true" style="@style/action_sheet_layout_style">
+            <LinearLayout android:orientation="vertical" android:id="@id/ct" style="@style/action_sheet_content_style" />
+        </RelativeLayout>
+    </RelativeLayout>
+</com.tencent.mobileqq.widget.DispatchActionMoveScrollView>

@@ -1,15 +1,18 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
+import java.util.HashMap;
 
 public class amvp
-  implements Runnable
 {
-  public amvp(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  private HashMap<String, Object> a = new HashMap();
+  public float[] a;
   
-  public void run()
+  public Object a(String paramString)
   {
-    RemoteHandleManager.a().a().d();
+    return this.a.get(paramString);
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    this.a.put(paramString, paramObject);
   }
 }
 

@@ -1,18 +1,28 @@
-import com.tencent.component.media.image.ImageManager;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class phf
-  implements Runnable
+class phf
+  extends Handler
 {
-  public phf(ImageManager paramImageManager) {}
-  
-  public void run()
+  phf(phd paramphd, Looper paramLooper)
   {
-    ImageManager.post(ImageManager.a(), false);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     phf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,45 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.PttItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.qphone.base.util.QLog;
 
 public class eaf
-  implements View.OnClickListener
+  implements Runnable
 {
-  public eaf(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public eaf(PttItemBuilder paramPttItemBuilder, MessageForPtt paramMessageForPtt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    if ((paramView == null) || (paramView.length() == 0)) {
-      Toast.makeText(this.a, this.a.getString(2131562031), 0).show();
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("FileTrans", 2, "downloadPtt istroop" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop + " itemType " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.itemType + " uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.uniseq);
     }
-    while (paramView == null) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop == 1001) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.subVersion < 3))
+    {
+      PttItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder).a().b(PttItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.uniseq);
       return;
     }
-    this.a.a(paramView);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-    VerifyCodeActivity.b(this.a, false);
+    TransferRequest localTransferRequest = new TransferRequest();
+    localTransferRequest.jdField_a_of_type_JavaLangString = PttItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder).getAccount();
+    localTransferRequest.jdField_b_of_type_JavaLangString = PttItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder).jdField_a_of_type_JavaLangString;
+    localTransferRequest.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop;
+    localTransferRequest.jdField_b_of_type_Int = 2;
+    localTransferRequest.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.uniseq;
+    localTransferRequest.jdField_a_of_type_Boolean = false;
+    localTransferRequest.d = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.urlAtServer;
+    localTransferRequest.f = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url;
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.isSendFromOtherTerminal()) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.isSend())) {
+      bool = true;
+    }
+    localTransferRequest.jdField_b_of_type_Boolean = bool;
+    localTransferRequest.e = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.md5;
+    localTransferRequest.jdField_c_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.groupFileID;
+    localTransferRequest.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.subVersion;
+    localTransferRequest.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt;
+    PttItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder).a().a(localTransferRequest);
   }
 }
 

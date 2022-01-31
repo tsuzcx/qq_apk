@@ -1,20 +1,27 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.AudioInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem;
-import cooperation.troop_homework.TroopHomeworkHelper;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ajkq
-  implements Runnable
+class ajkq
+  implements bhuk
 {
-  public ajkq(AudioItem paramAudioItem, AudioInfo paramAudioInfo) {}
+  ajkq(ajkm paramajkm, QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData, bhuf parambhuf) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    String str = TroopHomeworkHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.b);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.b(str);
-    if (!TextUtils.isEmpty(str)) {
-      ((Activity)AudioItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem)).runOnUiThread(new ajkr(this));
+    if (ajkm.a(this.jdField_a_of_type_Ajkm)) {
+      return;
+    }
+    ajkm.a(this.jdField_a_of_type_Ajkm, true);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a(), "0X800991E", "0X800991E", 0, 0, "", "", "", "");
+      ajkm.c(this.jdField_a_of_type_Ajkm, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
   }
 }

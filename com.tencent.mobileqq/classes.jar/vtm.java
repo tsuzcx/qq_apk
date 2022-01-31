@@ -1,36 +1,32 @@
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.jumplightalk.AIOJumpLightalkConfig;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.io.File;
 
-public class vtm
-  implements Runnable
+class vtm
+  implements vvh
 {
-  public vtm(FriendChatPie paramFriendChatPie) {}
+  private vtm(vtj paramvtj) {}
   
-  public void run()
+  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, String paramString2, File paramFile, boolean paramBoolean) {}
+  
+  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, vwa paramvwa) {}
+  
+  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, vwa paramvwa, int paramInt, Object paramObject)
   {
-    FriendChatPie.a(this.a, AIOJumpLightalkConfig.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
-    if ((FriendChatPie.a(this.a) != null) && (!Utils.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
-    {
-      FriendChatPie.a(this.a, SharedPreUtils.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).getBoolean("aio_jump_lightalk_red_dot", false));
-      Message localMessage = FriendChatPie.e(this.a).obtainMessage(42);
-      Bundle localBundle = new Bundle();
-      localBundle.putBoolean("showRedDot", FriendChatPie.a(this.a));
-      localMessage.setData(localBundle);
-      FriendChatPie.f(this.a).sendMessage(localMessage);
-    }
+    return false;
   }
+  
+  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, vwa paramvwa, boolean paramBoolean)
+  {
+    return this.a.a.a(paramVideoViewVideoHolder, paramvwa, paramBoolean);
+  }
+  
+  public void b(VideoViewVideoHolder paramVideoViewVideoHolder, vwa paramvwa) {}
+  
+  public void c(VideoViewVideoHolder paramVideoViewVideoHolder, vwa paramvwa) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vtm
  * JD-Core Version:    0.7.0.1
  */

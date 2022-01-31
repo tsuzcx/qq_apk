@@ -1,16 +1,17 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.utils.UserTask;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.utils.w;
 
-final class add
-  extends UserTask
+class add
+  implements View.OnClickListener
 {
-  add(UtilsActivity paramUtilsActivity) {}
+  add(acz paramacz) {}
   
-  public final void a()
+  public void onClick(View paramView)
   {
-    super.a();
-    UtilsActivity.access$1302(this.a, false);
+    w.b(this.a.a, this.a.a.getString(2131231486));
   }
 }
 

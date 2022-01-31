@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class afkk
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   afkk(afkj paramafkj) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NearbyMomentFragment.a(this.a.a, null);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afkk
  * JD-Core Version:    0.7.0.1
  */

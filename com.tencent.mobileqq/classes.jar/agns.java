@@ -1,32 +1,70 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.XListView;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class agns
-  implements View.OnClickListener
+class agns
+  implements BusinessObserver
 {
-  public agns(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  agns(agnn paramagnn) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramView = new Intent(this.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://ti.qq.com/cgi-node/specialtag/zanlist?_wv=1027&asyncMode=3");
-    this.a.startActivity(paramView);
-    paramView = PersonalityLabelGalleryActivity.a(this.a);
-    paramView.praiseCount += PersonalityLabelGalleryActivity.a(this.a).unreadCount;
-    PersonalityLabelGalleryActivity.a(this.a).unreadCount = 0;
-    PersonalityLabelGalleryActivity.a(this.a).postDelayed(new agnt(this), 500L);
-    ReportController.b(this.a.app, "dc00898", "", "", "0X8007FCF", "0X8007FCF", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
+    if (paramBoolean)
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
+        paramInt = ((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get();
+        if (paramInt == 0)
+        {
+          paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
+          ndv.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle);
+          this.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount(paramBundle, 0L);
+          agnn.a(this.a, paramBundle);
+          this.a.b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
+          return;
+        }
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("BusinessChatPie", 2, "showEqqLbsEnableDialog() get eqq detail ret code error: " + paramInt);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle) {}
+      if (QLog.isColorLevel())
+      {
+        QLog.d("BusinessChatPie", 2, "showEqqLbsEnableDialog() get eqq detail data is null");
+        return;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("BusinessChatPie", 2, "showEqqLbsEnableDialog() get eqq detail isSuccess is null");
+          return;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agns
  * JD-Core Version:    0.7.0.1
  */

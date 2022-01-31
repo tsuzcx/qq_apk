@@ -1,5 +1,12 @@
 package com.tencent.mobileqq.activity;
 
+import adfn;
+import adfo;
+import aepi;
+import alpk;
+import alpq;
+import alto;
+import alud;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -19,53 +26,44 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import azqs;
+import bcyz;
+import bdgk;
+import bdin;
+import bidb;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
 import com.tencent.mobileqq.data.KplCard;
 import com.tencent.mobileqq.data.KplRoleInfo;
 import com.tencent.mobileqq.data.KplRoleInfo.WZRYUIinfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vas.avatar.AvatarLayout;
 import com.tencent.mobileqq.widget.HorizontalScrollLayout;
 import com.tencent.mobileqq.widget.KPLScoreView;
 import com.tencent.mobileqq.widget.ProfileCardFavorItemView;
 import com.tencent.mobileqq.widget.ProfileCardFavorShowView;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.PullToZoomHeaderListView;
-import com.tencent.widget.XSimpleListAdapter;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import java.util.List;
 import mqq.os.MqqHandler;
-import swg;
-import swh;
-import swi;
-import swj;
-import swk;
 
 public class KPLProfileCardActivity
   extends BaseActivity
   implements View.OnClickListener
 {
+  alpq jdField_a_of_type_Alpq = new adfo(this);
   LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   View jdField_a_of_type_AndroidViewView;
   Button jdField_a_of_type_AndroidWidgetButton;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new swk(this);
-  DynamicAvatarView jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView;
   public KplCard a;
   KplRoleInfo.WZRYUIinfo jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo;
+  AvatarLayout jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout;
   PullToZoomHeaderListView jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView;
   ImmersiveTitleBar2 jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
   public boolean a;
@@ -93,9 +91,9 @@ public class KPLProfileCardActivity
         localObject = localView;
         if (!TextUtils.isEmpty(paramString))
         {
-          localObject = (ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970542, null);
-          localView = ((ViewGroup)localObject).findViewById(2131362719);
-          TextView localTextView = (TextView)((ViewGroup)localObject).findViewById(2131364119);
+          localObject = (ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561180, null);
+          localView = ((ViewGroup)localObject).findViewById(2131367819);
+          TextView localTextView = (TextView)((ViewGroup)localObject).findViewById(2131368235);
           localView.setBackgroundResource(paramInt);
           localTextView.setText(paramString.trim());
           paramViewGroup.addView((View)localObject);
@@ -107,36 +105,37 @@ public class KPLProfileCardActivity
   
   private void a()
   {
-    setContentView(2130970371);
+    setContentView(2131561003);
     this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)getSystemService("layout_inflater"));
-    this.jdField_a_of_type_AndroidViewView = View.inflate(this, 2130970370, null);
+    this.jdField_a_of_type_AndroidViewView = View.inflate(this, 2131561002, null);
     this.jdField_a_of_type_Boolean = false;
     Object localObject = (FrameLayout)findViewById(16908290);
     if (localObject != null) {
-      ((FrameLayout)localObject).setBackgroundResource(2130843039);
+      ((FrameLayout)localObject).setBackgroundResource(2130845358);
     }
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370252));
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView = ((DynamicAvatarView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369100));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370257));
-    this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView = ((PullToZoomHeaderListView)findViewById(2131363733));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368265));
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout = ((AvatarLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368242));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368260));
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.a(0, this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.findViewById(2131363115), false);
+    this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView = ((PullToZoomHeaderListView)findViewById(2131364645));
     this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView.setHeaderImage(this.jdField_a_of_type_ComTencentImageURLImageView);
-    this.b = ((TextView)findViewById(2131363245));
-    this.b.setText(getString(2131433698));
-    this.b.setBackgroundResource(2130845274);
-    this.b.setTextColor(getResources().getColor(2131494188));
+    this.b = ((TextView)findViewById(2131368624));
+    this.b.setText(getString(2131690623));
+    this.b.setBackgroundResource(2130848660);
+    this.b.setTextColor(getResources().getColor(2131166606));
     this.b.setOnClickListener(this);
-    localObject = (LinearLayout)findViewById(2131364148);
-    View localView = View.inflate(this, 2130970529, null);
+    localObject = (LinearLayout)findViewById(2131363759);
+    View localView = View.inflate(this, 2131561162, null);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131365251));
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131427368);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131379107));
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131691190);
     this.jdField_a_of_type_AndroidWidgetButton.setTag("addFriend");
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     ((LinearLayout)localObject).addView(localView, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)findViewById(2131363379));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)findViewById(2131378030));
     this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(4);
-    this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView.setAdapter(new XSimpleListAdapter(this.jdField_a_of_type_AndroidViewView));
+    this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView.setAdapter(new bidb(this.jdField_a_of_type_AndroidViewView));
   }
   
   private void a(KplCard paramKplCard)
@@ -149,11 +148,11 @@ public class KPLProfileCardActivity
   {
     paramHorizontalScrollLayout.removeAllViews();
     int k = paramKplCard.roleList.size();
-    int i = (int)DeviceInfoUtil.j();
+    int i = (int)bdgk.i();
     Object localObject1;
     int m;
     int j;
-    label76:
+    label77:
     Object localObject3;
     if (k <= 4)
     {
@@ -162,28 +161,28 @@ public class KPLProfileCardActivity
       ((LinearLayout.LayoutParams)localObject1).setMargins(0, 0, 0, 0);
       paramHorizontalScrollLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       localObject1 = null;
-      m = i - AIOUtils.a(20.0F, getResources());
+      m = i - aepi.a(20.0F, getResources());
       j = 0;
       if (j >= k) {
         return;
       }
       localObject3 = (KplRoleInfo)paramKplCard.roleList.get(j);
       if (localObject3 != null) {
-        break label126;
+        break label127;
       }
     }
     for (;;)
     {
       j += 1;
-      break label76;
+      break label77;
       i = i * 146 / 640;
       break;
-      label126:
-      View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970536, null);
-      ImageView localImageView = (ImageView)localView.findViewById(2131362960);
+      label127:
+      View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561172, null);
+      ImageView localImageView = (ImageView)localView.findViewById(2131367843);
       Object localObject2 = localObject1;
       if (localObject1 == null) {
-        localObject2 = getResources().getDrawable(2130843058);
+        localObject2 = getResources().getDrawable(2130845384);
       }
       Object localObject4 = ((KplRoleInfo)localObject3).roleUrl;
       localObject1 = ((KplRoleInfo)localObject3).roleName;
@@ -196,11 +195,11 @@ public class KPLProfileCardActivity
         localURLDrawableOptions.mRequestHeight = m;
         localURLDrawableOptions.mRequestWidth = m;
         localObject4 = URLDrawable.getDrawable((String)localObject4, localURLDrawableOptions);
-        ((URLDrawable)localObject4).setTag(URLDrawableDecodeHandler.a(m, m, (int)(16.0F * DeviceInfoUtil.a())));
-        ((URLDrawable)localObject4).setDecodeHandler(URLDrawableDecodeHandler.g);
+        ((URLDrawable)localObject4).setTag(bcyz.b(m, m, (int)(16.0F * bdgk.a())));
+        ((URLDrawable)localObject4).setDecodeHandler(bcyz.i);
         localImageView.setImageDrawable((Drawable)localObject4);
-        ((TextView)localView.findViewById(2131369792)).setText((CharSequence)localObject1);
-        ((TextView)localView.findViewById(2131367500)).setText((CharSequence)localObject3);
+        ((TextView)localView.findViewById(2131378033)).setText((CharSequence)localObject1);
+        ((TextView)localView.findViewById(2131365127)).setText((CharSequence)localObject3);
         localView.setContentDescription((String)localObject1 + (String)localObject3);
         paramHorizontalScrollLayout.addView(localView, new LinearLayout.LayoutParams(i, -2));
         localObject1 = localObject2;
@@ -217,7 +216,7 @@ public class KPLProfileCardActivity
   
   private void b()
   {
-    ThreadManager.postImmediately(new swg(this), null, true);
+    ThreadManager.postImmediately(new KPLProfileCardActivity.1(this), null, true);
   }
   
   private void b(KplCard paramKplCard)
@@ -227,7 +226,7 @@ public class KPLProfileCardActivity
     }
     try
     {
-      localDrawable = getResources().getDrawable(2130843018);
+      localDrawable = getResources().getDrawable(2130845333);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
@@ -239,18 +238,18 @@ public class KPLProfileCardActivity
           URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
           localURLDrawableOptions.mLoadingDrawable = localDrawable;
           localURLDrawableOptions.mFailedDrawable = localDrawable;
-          int i = getResources().getDimensionPixelSize(2131558664);
+          int i = getResources().getDimensionPixelSize(2131297408);
           int j = getResources().getDisplayMetrics().widthPixels;
           localURLDrawableOptions.mRequestHeight = i;
           localURLDrawableOptions.mRequestWidth = j;
           paramKplCard = URLDrawable.getDrawable(paramKplCard.bgUrl, localURLDrawableOptions);
-          paramKplCard.setTag(URLDrawableDecodeHandler.a(j, i, (int)(10.0F * DeviceInfoUtil.a())));
+          paramKplCard.setTag(bcyz.b(j, i, (int)(10.0F * bdgk.a())));
           this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramKplCard);
-          this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setFaceDrawable(this.app, 1, this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.uin, 200, true, true, true, false, 3);
+          this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setFaceDrawable(this.app, 1, this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.uin, 200, true, true, true, false, 3);
           return;
           localOutOfMemoryError = localOutOfMemoryError;
           localOutOfMemoryError.printStackTrace();
-          ColorDrawable localColorDrawable = new ColorDrawable(getResources().getColor(2131492971));
+          ColorDrawable localColorDrawable = new ColorDrawable(getResources().getColor(2131165307));
         }
       }
       catch (Exception paramKplCard)
@@ -265,22 +264,22 @@ public class KPLProfileCardActivity
   
   private void c()
   {
-    FriendsManager localFriendsManager = (FriendsManager)this.app.getManager(50);
-    CardHandler localCardHandler = (CardHandler)this.app.a(2);
+    alto localalto = (alto)this.app.getManager(51);
+    alpk localalpk = (alpk)this.app.a(2);
     if (this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataKplCard = localFriendsManager.a(this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.uin);
-      if (NetworkUtil.g(this)) {
+      this.jdField_a_of_type_ComTencentMobileqqDataKplCard = localalto.a(this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.uin);
+      if (bdin.g(this)) {
         break label85;
       }
-      ThreadManager.getUIHandler().post(new swh(this));
+      ThreadManager.getUIHandler().post(new KPLProfileCardActivity.2(this));
     }
     for (;;)
     {
-      ThreadManager.getUIHandler().post(new swi(this));
+      ThreadManager.getUIHandler().post(new KPLProfileCardActivity.3(this));
       return;
       label85:
-      localCardHandler.d(this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.uin);
+      localalpk.d(this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.uin);
     }
   }
   
@@ -292,57 +291,57 @@ public class KPLProfileCardActivity
     Object localObject1 = KplRoleInfo.WZRYUIinfo.buildNickName(paramKplCard.qqNick, paramKplCard.gameNick);
     this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    localObject1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131370258);
+    localObject1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131361833);
     ((View)localObject1).setVisibility(0);
-    Object localObject2 = (LinearLayout)((View)localObject1).findViewById(2131370259);
+    Object localObject2 = (LinearLayout)((View)localObject1).findViewById(2131361832);
     ((LinearLayout)localObject2).removeAllViews();
     localObject1 = "";
     if (paramKplCard.gender == 0) {
-      localObject1 = "男  ";
+      localObject1 = alud.a(2131706346);
     }
     for (;;)
     {
-      a((ViewGroup)localObject2, 2130843047, (String)localObject1 + paramKplCard.gameLevel);
-      a((ViewGroup)localObject2, 2130842646, paramKplCard.commonInfo);
-      localObject1 = (ProfileCardFavorShowView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370260);
+      a((ViewGroup)localObject2, 2130845368, (String)localObject1 + paramKplCard.gameLevel);
+      a((ViewGroup)localObject2, 2130844916, paramKplCard.commonInfo);
+      localObject1 = (ProfileCardFavorShowView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369110);
       ((ProfileCardFavorShowView)localObject1).setVisibility(0);
-      ((ProfileCardFavorShowView)localObject1).setTitle("王者荣耀");
+      ((ProfileCardFavorShowView)localObject1).setTitle(alud.a(2131706347));
       ((ProfileCardFavorShowView)localObject1).removeAllViews();
       localObject2 = new ProfileCardFavorItemView(this);
-      ((ProfileCardFavorItemView)localObject2).setTitle("对战资料");
+      ((ProfileCardFavorItemView)localObject2).setTitle(alud.a(2131706350));
       ((ProfileCardFavorItemView)localObject2).setArrowVisiale(false);
       ((ProfileCardFavorItemView)localObject2).jdField_a_of_type_AndroidViewView.setVisibility(8);
       Object localObject3 = new KPLScoreView(this);
-      ((KPLScoreView)localObject3).setKplValue(paramKplCard.mvpLevel + "场", paramKplCard.superLevel + "次", paramKplCard.score + "%", paramKplCard.round + "场");
+      ((KPLScoreView)localObject3).setKplValue(paramKplCard.mvpLevel + alud.a(2131706352), paramKplCard.superLevel + alud.a(2131706351), paramKplCard.score + "%", paramKplCard.round + alud.a(2131706352));
       ((ProfileCardFavorItemView)localObject2).addView((View)localObject3);
-      ((ProfileCardFavorItemView)localObject2).b.setImageDrawable(new ColorDrawable(getResources().getColor(2131492969)));
+      ((ProfileCardFavorItemView)localObject2).b.setImageDrawable(new ColorDrawable(getResources().getColor(2131167194)));
       ((ProfileCardFavorShowView)localObject1).addView((View)localObject2);
       if ((paramKplCard.roleList == null) || (paramKplCard.roleList.size() <= 0)) {
         break;
       }
       localObject2 = new ProfileCardFavorItemView(this);
-      ((ProfileCardFavorItemView)localObject2).setTitle("常用英雄");
+      ((ProfileCardFavorItemView)localObject2).setTitle(alud.a(2131706353));
       ((ProfileCardFavorItemView)localObject2).setArrowVisiale(false);
-      localObject3 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970553, null);
-      HorizontalScrollLayout localHorizontalScrollLayout = (HorizontalScrollLayout)((View)localObject3).findViewById(2131364073);
-      localHorizontalScrollLayout.setOnTouchListener(new swj(this));
+      localObject3 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561190, null);
+      HorizontalScrollLayout localHorizontalScrollLayout = (HorizontalScrollLayout)((View)localObject3).findViewById(2131376205);
+      localHorizontalScrollLayout.setOnTouchListener(new adfn(this));
       a(localHorizontalScrollLayout, paramKplCard);
       ((ProfileCardFavorItemView)localObject2).addView((View)localObject3);
-      ((ProfileCardFavorItemView)localObject2).b.setBackgroundDrawable(new ColorDrawable(getResources().getColor(2131492969)));
+      ((ProfileCardFavorItemView)localObject2).b.setBackgroundDrawable(new ColorDrawable(getResources().getColor(2131167194)));
       ((ProfileCardFavorShowView)localObject1).addView((View)localObject2);
       return;
       if (paramKplCard.gender == 1) {
-        localObject1 = "女  ";
+        localObject1 = alud.a(2131706348);
       }
     }
   }
   
   private void d()
   {
-    if (!NetworkUtil.g(this)) {}
+    if (!bdin.g(this)) {}
     do
     {
-      QQToast.a(this, getResources().getString(2131437758), 0).b(getTitleBarHeight());
+      QQToast.a(this, getResources().getString(2131694832), 0).b(getTitleBarHeight());
       do
       {
         return;
@@ -350,43 +349,43 @@ public class KPLProfileCardActivity
       if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.verifyMsg)) {
         this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.verifyMsg = KplRoleInfo.getKplVerifyMsg(this.app);
       }
-    } while (((FriendsManager)this.app.getManager(50)).b(this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.uin));
+    } while (((alto)this.app.getManager(51)).b(this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.uin));
     Object localObject = KplRoleInfo.WZRYUIinfo.buildNickName(this.jdField_a_of_type_ComTencentMobileqqDataKplCard.qqNick, this.jdField_a_of_type_ComTencentMobileqqDataKplCard.gameNick);
     int i;
     if (this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.sourceId == 0)
     {
       i = 3045;
       if (this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.subSourceId != 0) {
-        break label237;
+        break label238;
       }
     }
-    label237:
-    for (int j = 2;; j = this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.subSourceId)
+    label238:
+    for (int j = 23;; j = this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.subSourceId)
     {
-      localObject = AddFriendLogicActivity.a(this, 1, this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.uin, null, i, j, (String)localObject, null, null, getString(2131435226), null);
+      localObject = AddFriendLogicActivity.a(this, 1, this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.uin, null, i, j, (String)localObject, null, null, getString(2131689628), null);
       ((Intent)localObject).putExtra("param_wzry_data", this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo);
       startActivityForResult((Intent)localObject, 228);
-      ReportController.b(this.app, "CliOper", "", "", "0X80085C5", "0X80085C5", 0, 0, String.valueOf(j), "", "", "");
+      azqs.b(this.app, "CliOper", "", "", "0X80085C5", "0X80085C5", 0, 0, String.valueOf(j), "", "", "");
       return;
       i = this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.sourceId;
       break;
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo = ((KplRoleInfo.WZRYUIinfo)getIntent().getSerializableExtra("param_wzry_data"));
     a();
     b();
-    this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
+    this.app.addObserver(this.jdField_a_of_type_Alpq);
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
-    this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
+    this.app.removeObserver(this.jdField_a_of_type_Alpq);
     super.doOnDestroy();
   }
   
@@ -398,9 +397,9 @@ public class KPLProfileCardActivity
       if ("addFriend".equals(paramView.getTag()))
       {
         d();
-        ReportController.b(this.app, "dc00898", "", "", "0X8008436", "0X8008436", 0, 0, "", "", "", "");
+        azqs.b(this.app, "dc00898", "", "", "0X8008436", "0X8008436", 0, 0, "", "", "", "");
       }
-    case 2131363428: 
+    case 2131368655: 
       return;
     }
     finish();
@@ -408,7 +407,7 @@ public class KPLProfileCardActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.KPLProfileCardActivity
  * JD-Core Version:    0.7.0.1
  */

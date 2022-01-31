@@ -24,17 +24,19 @@ public class MultiHashMap<K, V>
   
   public boolean remove(K paramK, V paramV)
   {
+    boolean bool = true;
     if (paramV == null) {
       return remove(paramK) != null;
     }
     Collection localCollection = (Collection)get(paramK);
     if ((localCollection != null) && (localCollection.remove(paramV))) {}
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
       if ((localCollection != null) && (localCollection.isEmpty())) {
         remove(paramK);
       }
       return bool;
+      bool = false;
     }
   }
   
@@ -49,7 +51,7 @@ public class MultiHashMap<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.weiyun.utils.MultiHashMap
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,36 @@
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.app.FontSettingManager;
-import com.tencent.widget.ListView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.adapter.ILogAdapter;
 
-class snf
-  implements Runnable
+public class snf
+  implements ILogAdapter
 {
-  snf(sne paramsne) {}
-  
-  public void run()
+  public void callLog(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_Sne.a.jdField_a_of_type_ComTencentWidgetListView.setAdapter(null);
-    this.jdField_a_of_type_Sne.a.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Sne.a.jdField_a_of_type_Sne);
-    FontSettingManager.a(this.jdField_a_of_type_Sne.a);
+    switch (paramInt)
+    {
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d(paramString1, 2, paramString2);
+      }
+      break;
+    }
+    do
+    {
+      do
+      {
+        return;
+        QLog.e(paramString1, 2, paramString2);
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.i(paramString1, 2, paramString2);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.w(paramString1, 2, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     snf
  * JD-Core Version:    0.7.0.1
  */

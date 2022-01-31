@@ -21,7 +21,7 @@ import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import hfm;
+import hbf;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.text.DecimalFormat;
@@ -659,7 +659,7 @@ public class Utils
       arrayOfObject[i] = { (String)((Pair)localObject).first, String.valueOf(((Pair)localObject).second) };
       i += 1;
     }
-    Arrays.sort(arrayOfObject, new hfm());
+    Arrays.sort(arrayOfObject, new hbf());
     paramArrayList.clear();
     i = 0;
     while (i < arrayOfObject.length)

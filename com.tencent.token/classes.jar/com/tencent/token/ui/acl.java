@@ -1,45 +1,61 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.global.e;
+import android.os.Message;
+import android.widget.ListView;
+import com.tencent.token.dr;
+import com.tencent.token.eo;
+import com.tencent.token.global.f;
+import com.tencent.token.global.h;
 
-final class acl
-  implements View.OnClickListener
+class acl
+  extends cb
 {
-  public final int a = 0;
-  public final int b = 1;
-  private int d = 0;
-  
-  public acl(ack paramack, int paramInt)
+  acl(UtilsGameProtectActivity paramUtilsGameProtectActivity)
   {
-    this.d = paramInt;
+    super(paramUtilsGameProtectActivity);
   }
   
-  public final void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    e.a("conf modify onClick=" + this.d);
-    paramView = (StartPwdDigitSelActivity)ack.a(this.c);
-    paramView.finish();
-    switch (this.d)
+    if ((this.a == null) || (this.a.isFinishing())) {}
+    do
     {
-    default: 
+      int i;
+      do
+      {
+        do
+        {
+          return;
+          switch (paramMessage.what)
+          {
+          default: 
+            return;
+          case 3001: 
+            this.a.mIsIniting = false;
+            if (paramMessage.arg1 != 0) {
+              break label183;
+            }
+            this.a.hideTip();
+          }
+        } while (UtilsGameProtectActivity.access$100(this.a) <= 0);
+        i = dr.a().d.b(UtilsGameProtectActivity.access$100(this.a)) - 1;
+        h.b("want find indexID =" + UtilsGameProtectActivity.access$100(this.a) + " result=" + i);
+      } while (i <= 0);
+      UtilsGameProtectActivity.access$200(this.a).post(new acm(this, i));
       return;
-    case 0: 
-      localIntent = new Intent(paramView, StartPwdDigitVerifyActivity.class);
-      localBundle = new Bundle();
-      localBundle.putInt("enter_type", 2);
-      localIntent.putExtra("com.tencent.input_param", localBundle);
-      paramView.startActivity(localIntent);
+    } while (UtilsGameProtectActivity.access$000(this.a) == null);
+    UtilsGameProtectActivity.access$000(this.a).notifyDataSetChanged();
+    return;
+    label183:
+    paramMessage = (f)paramMessage.obj;
+    f.a(this.a.getResources(), paramMessage);
+    h.c("game protect load failed:" + paramMessage.a + "-" + paramMessage.b);
+    if ((111 == paramMessage.a) || (110 == paramMessage.a) || (103 == paramMessage.a))
+    {
+      this.a.showTip(paramMessage.a, UtilsGameProtectActivity.access$300(this.a), UtilsGameProtectActivity.access$400(this.a), true);
       return;
     }
-    Intent localIntent = new Intent(paramView, StartPwdDigitVerifyActivity.class);
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("enter_type", 3);
-    localIntent.putExtra("com.tencent.input_param", localBundle);
-    paramView.startActivity(localIntent);
+    this.a.showTip(paramMessage.a, paramMessage.c, null, false);
   }
 }
 

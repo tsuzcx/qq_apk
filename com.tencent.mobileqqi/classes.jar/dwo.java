@@ -1,28 +1,17 @@
-import android.app.Dialog;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
 
-public class dwo
-  implements Animation.AnimationListener
+class dwo
+  implements PermissionDialogCallback
 {
-  public dwo(TroopMemberListActivity paramTroopMemberListActivity, TranslateAnimation paramTranslateAnimation, Dialog paramDialog) {}
+  dwo(dwn paramdwn) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation) {
-      this.jdField_a_of_type_AndroidAppDialog.show();
-    }
-  }
+  public void a() {}
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dwo
  * JD-Core Version:    0.7.0.1
  */

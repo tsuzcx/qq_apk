@@ -1,18 +1,12 @@
-import cooperation.comic.jsp.QQComicJsPlugin;
+import java.util.List;
 
-class amjw
-  implements Runnable
+public abstract interface amjw
 {
-  amjw(amjv paramamjv) {}
-  
-  public void run()
-  {
-    this.a.jdField_a_of_type_CooperationComicJspQQComicJsPlugin.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject, this.a.b);
-  }
+  public abstract void a(boolean paramBoolean, List<agxz> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjw
  * JD-Core Version:    0.7.0.1
  */

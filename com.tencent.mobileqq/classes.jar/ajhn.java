@@ -1,74 +1,44 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.troop.homework.HomeworkInfo;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ajhn
-  extends TroopObserver
+class ajhn
+  implements View.OnClickListener
 {
-  public ajhn(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  ajhn(ajgb paramajgb) {}
   
-  public void a(boolean paramBoolean, HomeworkInfo paramHomeworkInfo)
+  public void onClick(View paramView)
   {
-    super.a(paramBoolean, paramHomeworkInfo);
-    this.a.b();
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("获取作业信息");
-      if (!paramBoolean) {
-        break label124;
-      }
+    paramView = (azum)paramView.getTag();
+    if (paramView != null) {
+      paramView.jdField_a_of_type_Bdhk.b();
     }
-    for (String str = "成功";; str = "失败")
+    try
     {
-      QLog.d("SubmitHomeWorkFragment", 2, str);
-      if ((!paramBoolean) || (paramHomeworkInfo == null) || (paramHomeworkInfo.b == null)) {
-        break;
-      }
-      SubmitHomeWorkFragment.a(this.a, paramHomeworkInfo);
-      paramHomeworkInfo = paramHomeworkInfo.b;
-      try
+      if (!TextUtils.isEmpty(paramView.jdField_a_of_type_JavaLangString))
       {
-        paramHomeworkInfo = new JSONObject(paramHomeworkInfo).getJSONArray("c");
-        paramHomeworkInfo = new JSONObject().put("c", paramHomeworkInfo).toString();
-        SubmitHomeWorkFragment.a(this.a, paramHomeworkInfo);
-        return;
-      }
-      catch (Exception paramHomeworkInfo)
-      {
-        label124:
-        SubmitHomeWorkFragment.a(this.a, 3, null, null, null);
+        i = Integer.parseInt(paramView.jdField_a_of_type_JavaLangString);
+        azqs.b(ajgb.a(this.a).app, "dc00898", "", "", "0X80087C1", "0X80087C1", i, 0, "", "", "", "");
+        paramView = new aokd(ajgb.a(this.a).getApplicationContext(), aozj.jdField_a_of_type_JavaLangString);
+        if (paramView != null)
+        {
+          paramView.b();
+          paramView.c();
+        }
         return;
       }
     }
-    SubmitHomeWorkFragment.a(this.a, 3, null, null, null);
-    SubmitHomeWorkFragment.a(this.a, null);
-    this.a.getActivity().finish();
-  }
-  
-  public void b(boolean paramBoolean, int paramInt)
-  {
-    super.b(paramBoolean, paramInt);
-    this.a.b();
-    if (paramBoolean)
+    catch (Throwable paramView)
     {
-      SubmitHomeWorkFragment.a(this.a);
-      return;
+      for (;;)
+      {
+        paramView.printStackTrace();
+        int i = 0;
+        continue;
+        i = 0;
+      }
     }
-    if (paramInt == 1002)
-    {
-      SubmitHomeWorkFragment.a(this.a, 2, null, null, null);
-      return;
-    }
-    if (paramInt == 10022)
-    {
-      SubmitHomeWorkFragment.a(this.a, 1, null, null, null);
-      return;
-    }
-    SubmitHomeWorkFragment.a(this.a, 3, null, null, null);
   }
 }
 

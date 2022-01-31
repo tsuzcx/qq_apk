@@ -1,52 +1,65 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloaderGetCodeServer;
-import eipc.EIPCResult;
-import java.util.Map;
-
 public class alhq
-  extends QIPCModule
 {
-  public alhq(DownloaderGetCodeServer paramDownloaderGetCodeServer, String paramString)
+  private int jdField_a_of_type_Int;
+  private alic jdField_a_of_type_Alic;
+  private alid jdField_a_of_type_Alid;
+  private alif jdField_a_of_type_Alif;
+  private String jdField_a_of_type_JavaLangString;
+  private int b;
+  
+  private alhq(int paramInt1, String paramString, int paramInt2, alif paramalif, alid paramalid, alic paramalic)
   {
-    super(paramString);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Alif = paramalif;
+    this.jdField_a_of_type_Alid = paramalid;
+    this.jdField_a_of_type_Alic = paramalic;
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public int a()
   {
-    LogUtility.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
-    Object localObject = DownloaderGetCodeServer.a(this.a);
-    if (localObject == null) {
-      LogUtility.c("DownloaderWriteCodeIPC", "onCall action but appInterface is null");
-    }
-    String str;
-    int i;
-    do
-    {
-      do
-      {
-        return null;
-      } while ((!"DownloaderWriteCodeIPC_Action__GetCode".equals(paramString)) || (paramBundle == null));
-      str = paramBundle.getString("PackageName");
-      i = paramBundle.getInt("VersionCode");
-      LogUtility.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " packageName|" + str + " versionCode|" + i);
-    } while (str == null);
-    ((QQAppInterface)localObject).a(DownloaderGetCodeServer.a(this.a));
-    paramString = (ConfigHandler)((QQAppInterface)localObject).a(4);
-    localObject = str + "_" + i;
-    paramBundle.putInt("CallbackId", paramInt);
-    paramBundle = new Bundle(paramBundle);
-    DownloaderGetCodeServer.a(this.a).put(localObject, paramBundle);
-    paramString.a(str, i, (String)localObject);
-    return null;
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public alic a()
+  {
+    return this.jdField_a_of_type_Alic;
+  }
+  
+  public alid a()
+  {
+    return this.jdField_a_of_type_Alid;
+  }
+  
+  public alif a()
+  {
+    return this.jdField_a_of_type_Alif;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String a(int paramInt)
+  {
+    return this.jdField_a_of_type_Alic.a(paramInt);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return this.jdField_a_of_type_Alic.a(paramInt);
+  }
+  
+  public int b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alhq
  * JD-Core Version:    0.7.0.1
  */

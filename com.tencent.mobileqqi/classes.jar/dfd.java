@@ -1,27 +1,26 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.richstatus.IStatusListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
 
 public class dfd
-  implements IStatusListener
+  extends Handler
 {
-  public dfd(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public dfd(RegisterBaseActivity paramRegisterBaseActivity) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    PermisionPrivacyActivity.a(this.a, this.a.d.a(), paramBoolean);
-  }
-  
-  public void b(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == -1) {
-      PermisionPrivacyActivity.a(this.a, 2131562080);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    PermisionPrivacyActivity.a(this.a, this.a.d.a(), PermisionPrivacyActivity.a(this.a).b());
+    this.a.g();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131563125);
+    }
+    this.a.a(paramMessage, 1);
   }
 }
 

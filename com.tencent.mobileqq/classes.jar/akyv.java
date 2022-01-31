@@ -1,24 +1,33 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mm.opensdk.openapi.IWXAPI;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class akyv
-  extends BroadcastReceiver
+final class akyv
+  implements EIPCResultCallback
 {
-  public akyv(WXShareHelper paramWXShareHelper) {}
+  akyv(String paramString, long paramLong) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (WXShareHelper.a(this.a) != null) {
-      WXShareHelper.a(this.a).handleIntent(paramIntent, this.a);
+    paramEIPCResult = paramEIPCResult.data;
+    int i = paramEIPCResult.getInt("type");
+    if (i == 1)
+    {
+      paramEIPCResult = paramEIPCResult.getString("nickName");
+      akwd.a().callbackGetNick(paramEIPCResult, this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_Long);
     }
+    while (i != 2) {
+      return;
+    }
+    paramEIPCResult = (Bitmap)paramEIPCResult.getParcelable("head");
+    akwd.a().callbackGetHead(paramEIPCResult, this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akyv
  * JD-Core Version:    0.7.0.1
  */

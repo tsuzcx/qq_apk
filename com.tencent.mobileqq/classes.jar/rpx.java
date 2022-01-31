@@ -1,23 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
-import com.tencent.mobileqq.statistics.ReportController;
-
-public class rpx
-  implements DialogInterface.OnClickListener
+public abstract interface rpx
 {
-  public rpx(BaseChatPie paramBaseChatPie) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    ReportController.b(this.a.a, "CliOper", "", "", AIOShareActionSheet.b, AIOShareActionSheet.b, 0, 0, "", "", "", "");
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rpx
  * JD-Core Version:    0.7.0.1
  */

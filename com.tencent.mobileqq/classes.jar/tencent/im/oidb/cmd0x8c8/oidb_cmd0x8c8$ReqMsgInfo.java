@@ -11,12 +11,12 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_cmd0x8c8$ReqMsgInfo
-  extends MessageMicro
+  extends MessageMicro<ReqMsgInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_recommend_reason = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBEnumField feeds_type = PBField.initEnum(0);
-  public final PBRepeatField rpt_topic_id = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
+  public final PBRepeatField<Integer> rpt_topic_id = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   public final PBUInt32Field uint32_biu_time = PBField.initUInt32(0);
   public final PBUInt32Field uint32_business_id = PBField.initUInt32(0);
   public final PBUInt32Field uint32_feeds_style = PBField.initUInt32(0);
@@ -30,7 +30,7 @@ public final class oidb_cmd0x8c8$ReqMsgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.ReqMsgInfo
  * JD-Core Version:    0.7.0.1
  */

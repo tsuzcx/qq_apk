@@ -1,26 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.PAMultiItemBuilder;
 
 public class dzy
-  implements DialogInterface.OnKeyListener
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public dzy(UpgradeActivity paramUpgradeActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4)
-    {
-      this.a.finish();
-      this.a.e();
-    }
-    return false;
-  }
+  public dzy(PAMultiItemBuilder paramPAMultiItemBuilder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dzy
  * JD-Core Version:    0.7.0.1
  */

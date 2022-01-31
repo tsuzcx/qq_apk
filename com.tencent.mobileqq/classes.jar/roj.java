@@ -1,35 +1,23 @@
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.Map;
+import org.json.JSONObject;
 
-public class roj
-  implements Runnable
+final class roj
+  extends rok
 {
-  public roj(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
-  
-  public void run()
+  roj(BaseArticleInfo paramBaseArticleInfo, int paramInt1, int paramInt2, Map paramMap)
   {
-    try
-    {
-      if ((AuthDevVerifyCodeActivity.a(this.a) != null) && (AuthDevVerifyCodeActivity.a(this.a).isShowing()))
-      {
-        AuthDevVerifyCodeActivity.a(this.a).dismiss();
-        AuthDevVerifyCodeActivity.a(this.a).cancel();
-      }
-      AuthDevVerifyCodeActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    super(paramBaseArticleInfo, paramInt1, paramInt2, paramMap);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    roi.a(this, paramJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     roj
  * JD-Core Version:    0.7.0.1
  */

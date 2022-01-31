@@ -1,17 +1,33 @@
+import android.os.Handler;
+import android.view.View;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+
 public class aemg
+  extends bhry
 {
-  public int a;
-  public String a;
+  public aemg(VisitorsActivity paramVisitorsActivity) {}
   
-  public aemg(String paramString, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    if (this.a.c > 0)
+    {
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 200L);
+      return;
+    }
+    this.a.f.setVisibility(4);
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    paramAnimation = this.a;
+    paramAnimation.c -= 1;
+    this.a.f.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemg
  * JD-Core Version:    0.7.0.1
  */

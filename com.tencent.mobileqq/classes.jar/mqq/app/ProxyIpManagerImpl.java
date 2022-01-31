@@ -5,7 +5,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
 import android.text.TextUtils;
 import com.qq.taf.jce.HexUtil;
 import com.qq.taf.jce.JceInputStream;
@@ -31,18 +30,7 @@ public class ProxyIpManagerImpl
   private static final String SP_KEY_PROXYIP = "_key_proxyip_";
   private static final String TAG = "ProxyIpManagerImpl";
   private final AppRuntime mApp;
-  private Handler mHandler = new Handler(Looper.getMainLooper())
-  {
-    public void handleMessage(Message paramAnonymousMessage)
-    {
-      switch (paramAnonymousMessage.what)
-      {
-      default: 
-        return;
-      }
-      ProxyIpManagerImpl.this.mApp.onProxyIpChanged();
-    }
-  };
+  private Handler mHandler = new ProxyIpManagerImpl.1(this, Looper.getMainLooper());
   private MsfStore mMsfStore;
   private ArrayList<ProxyIpList> mProxyIpCache;
   

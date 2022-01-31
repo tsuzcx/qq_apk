@@ -1,22 +1,21 @@
 import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.utils.ApolloHttpCallBack;
 
-public final class ylq
-  extends ApolloHttpCallBack
+final class ylq
+  implements bhuk
 {
-  public ylq(View paramView, long paramLong) {}
+  ylq(yls paramyls, bhuf parambhuf) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidViewView instanceof ApolloSurfaceView)) {
-      ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).queueEvent(new ylr(this, paramArrayOfByte, paramInt));
+    if (this.jdField_a_of_type_Yls != null) {
+      this.jdField_a_of_type_Yls.a(true);
     }
+    this.jdField_a_of_type_Bhuf.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ylq
  * JD-Core Version:    0.7.0.1
  */

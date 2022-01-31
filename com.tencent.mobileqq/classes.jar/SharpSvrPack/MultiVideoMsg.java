@@ -11,7 +11,7 @@ public final class MultiVideoMsg
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList cache_to_uin;
+  static ArrayList<Long> cache_to_uin;
   static byte[] cache_video_buff;
   public short csCmd;
   public long from_uin;
@@ -21,7 +21,7 @@ public final class MultiVideoMsg
   public long msg_type;
   public long msg_uid;
   public short subCmd;
-  public ArrayList to_uin;
+  public ArrayList<Long> to_uin;
   public byte type;
   public byte ver;
   public byte[] video_buff;
@@ -38,7 +38,7 @@ public final class MultiVideoMsg
   
   public MultiVideoMsg() {}
   
-  public MultiVideoMsg(byte paramByte1, byte paramByte2, short paramShort1, long paramLong1, ArrayList paramArrayList, byte[] paramArrayOfByte, short paramShort2, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6)
+  public MultiVideoMsg(byte paramByte1, byte paramByte2, short paramShort1, long paramLong1, ArrayList<Long> paramArrayList, byte[] paramArrayOfByte, short paramShort2, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6)
   {
     this.ver = paramByte1;
     this.type = paramByte2;
@@ -165,7 +165,7 @@ public final class MultiVideoMsg
     return this.subCmd;
   }
   
-  public ArrayList getTo_uin()
+  public ArrayList<Long> getTo_uin()
   {
     return this.to_uin;
   }
@@ -264,7 +264,7 @@ public final class MultiVideoMsg
     this.subCmd = paramShort;
   }
   
-  public void setTo_uin(ArrayList paramArrayList)
+  public void setTo_uin(ArrayList<Long> paramArrayList)
   {
     this.to_uin = paramArrayList;
   }

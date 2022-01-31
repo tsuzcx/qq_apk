@@ -1,26 +1,19 @@
-import java.util.TimerTask;
+import android.animation.ValueAnimator;
 
-public abstract class xgc
-  extends TimerTask
+public class xgc
+  implements xgb
 {
-  private boolean a;
+  public void a(ValueAnimator paramValueAnimator) {}
   
-  public abstract void a();
+  public void b(ValueAnimator paramValueAnimator) {}
   
-  public boolean a()
-  {
-    return this.a;
-  }
+  public void c(ValueAnimator paramValueAnimator) {}
   
-  public void run()
-  {
-    a();
-    this.a = true;
-  }
+  public void d(ValueAnimator paramValueAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgc
  * JD-Core Version:    0.7.0.1
  */

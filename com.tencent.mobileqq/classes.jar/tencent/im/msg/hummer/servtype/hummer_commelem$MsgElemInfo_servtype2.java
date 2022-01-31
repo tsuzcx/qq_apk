@@ -8,13 +8,16 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class hummer_commelem$MsgElemInfo_servtype2
-  extends MessageMicro
+  extends MessageMicro<MsgElemInfo_servtype2>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_poke_summary = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_vaspoke_minver = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_vaspoke_name = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field uint32_double_hit = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_face_bubble_count = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_msg_type = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_poke_flag = PBField.initUInt32(0);
   public final PBUInt32Field uint32_poke_strength = PBField.initUInt32(0);
   public final PBUInt32Field uint32_poke_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_vaspoke_id = PBField.initUInt32(0);
@@ -24,7 +27,7 @@ public final class hummer_commelem$MsgElemInfo_servtype2
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 50, 56 }, new String[] { "uint32_poke_type", "bytes_poke_summary", "uint32_double_hit", "uint32_vaspoke_id", "bytes_vaspoke_name", "bytes_vaspoke_minver", "uint32_poke_strength" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0) }, MsgElemInfo_servtype2.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 50, 56, 64, 72, 80 }, new String[] { "uint32_poke_type", "bytes_poke_summary", "uint32_double_hit", "uint32_vaspoke_id", "bytes_vaspoke_name", "bytes_vaspoke_minver", "uint32_poke_strength", "uint32_msg_type", "uint32_face_bubble_count", "uint32_poke_flag" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, MsgElemInfo_servtype2.class);
   }
 }
 

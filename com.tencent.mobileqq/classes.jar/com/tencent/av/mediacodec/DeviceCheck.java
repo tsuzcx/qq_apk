@@ -6,10 +6,13 @@ import android.media.MediaCodecInfo;
 import android.media.MediaCodecInfo.CodecCapabilities;
 import android.os.Build;
 import android.os.Build.VERSION;
-import com.tencent.av.config.ConfigInfo;
-import com.tencent.av.mediacodec.config.CodecConfigParser;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import lim;
+import lqu;
+import lqw;
+import lra;
 
 @SuppressLint({"NewApi"})
 public class DeviceCheck
@@ -125,15 +128,15 @@ public class DeviceCheck
   @TargetApi(16)
   public static boolean c()
   {
-    List localList = AndroidCodec.a(AndroidCodec.b);
+    List localList = lqu.a(lqu.b);
     int i = 0;
     for (;;)
     {
       MediaCodecInfo.CodecCapabilities localCodecCapabilities;
       if (i < localList.size())
       {
-        localCodecCapabilities = AndroidCodec.a((MediaCodecInfo)localList.get(i), AndroidCodec.b);
-        if (localCodecCapabilities != null) {}
+        localCodecCapabilities = lqu.a((MediaCodecInfo)localList.get(i), lqu.b);
+        if ((localCodecCapabilities != null) && (localCodecCapabilities.colorFormats != null)) {}
       }
       else
       {
@@ -155,14 +158,14 @@ public class DeviceCheck
   @TargetApi(16)
   public static boolean d()
   {
-    List localList = AndroidCodec.b(AndroidCodec.b);
+    List localList = lqu.b(lqu.b);
     int i = 0;
     for (;;)
     {
       MediaCodecInfo.CodecCapabilities localCodecCapabilities;
       if (i < localList.size())
       {
-        localCodecCapabilities = AndroidCodec.a((MediaCodecInfo)localList.get(i), AndroidCodec.b);
+        localCodecCapabilities = lqu.a((MediaCodecInfo)localList.get(i), lqu.b);
         if (localCodecCapabilities != null) {}
       }
       else
@@ -186,14 +189,14 @@ public class DeviceCheck
   public static boolean e()
   {
     boolean bool2 = false;
-    List localList = AndroidCodec.a(AndroidCodec.a);
+    List localList = lqu.a(lqu.a);
     int i = 0;
     boolean bool1 = bool2;
     MediaCodecInfo.CodecCapabilities localCodecCapabilities;
     if (i < localList.size())
     {
-      localCodecCapabilities = AndroidCodec.a((MediaCodecInfo)localList.get(i), AndroidCodec.a);
-      if (localCodecCapabilities != null) {}
+      localCodecCapabilities = lqu.a((MediaCodecInfo)localList.get(i), lqu.a);
+      if ((localCodecCapabilities != null) && (localCodecCapabilities.colorFormats != null)) {}
     }
     for (;;)
     {
@@ -217,7 +220,7 @@ public class DeviceCheck
   public static boolean f()
   {
     boolean bool2 = false;
-    List localList = AndroidCodec.b(AndroidCodec.a);
+    List localList = lqu.b(lqu.a);
     int i = 0;
     for (;;)
     {
@@ -226,7 +229,7 @@ public class DeviceCheck
       int j;
       if (i < localList.size())
       {
-        localCodecCapabilities = AndroidCodec.a((MediaCodecInfo)localList.get(i), AndroidCodec.a);
+        localCodecCapabilities = lqu.a((MediaCodecInfo)localList.get(i), lqu.a);
         if (localCodecCapabilities != null) {
           j = 0;
         }
@@ -250,23 +253,19 @@ public class DeviceCheck
   public static boolean g()
   {
     if (h()) {}
-    Object localObject;
+    lra locallra;
+    lqw locallqw1;
+    lqw locallqw2;
     do
     {
       do
       {
-        do
-        {
-          return false;
-        } while (Build.VERSION.SDK_INT < 21);
-        localObject = ConfigInfo.instance();
-      } while (localObject == null);
-      localObject = ((ConfigInfo)localObject).getSharpConfigPayloadFromFile();
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceCheck", 2, "isSupportAsyncAPI sharpConfigPayload:\n" + (String)localObject);
-      }
-      localObject = new CodecConfigParser((String)localObject);
-    } while ((!((CodecConfigParser)localObject).d()) || (!((CodecConfigParser)localObject).a(2)) || (!((CodecConfigParser)localObject).c()) || (!((CodecConfigParser)localObject).a(1)));
+        return false;
+      } while (Build.VERSION.SDK_INT < 21);
+      locallra = new lra(lim.a(BaseApplicationImpl.getContext()));
+      locallqw1 = locallra.d();
+      locallqw2 = locallra.c();
+    } while ((locallqw1 == null) || (!locallqw1.a) || (!locallra.a(2)) || (locallqw2 == null) || (!locallqw2.a) || (!locallra.a(1)));
     if (QLog.isColorLevel()) {
       QLog.d("DeviceCheck", 2, "SUPPORT Async API");
     }

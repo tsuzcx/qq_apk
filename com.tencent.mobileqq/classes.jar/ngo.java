@@ -1,28 +1,21 @@
-import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareCopyLinkData;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
 
 public class ngo
-  extends EncryptUrlJob
+  implements View.OnClickListener
 {
-  public ngo(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareCopyLinkData paramShareCopyLinkData)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  public ngo(EqqAccountDetailActivity paramEqqAccountDetailActivity, npo paramnpo) {}
   
-  public boolean b()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a = ((String)a("EncryptUrlJob_encryptedUrl"));
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a, this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a);
-    a("ShortenUrlJob_shortenedUrls", localHashMap);
-    return true;
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a = this.jdField_a_of_type_Npo.d;
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_Npo, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ngo
  * JD-Core Version:    0.7.0.1
  */

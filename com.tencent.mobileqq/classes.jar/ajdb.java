@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.troop.data.TroopAioNotificationBar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
 public class ajdb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ajdb(TroopAioNotificationBar paramTroopAioNotificationBar) {}
+  public ajdb(DrawHbFragment paramDrawHbFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    TroopAioNotificationBar.a(this.a, -1);
+    DrawHbFragment.b(this.a).c("draw.wrappacket.random");
   }
 }
 

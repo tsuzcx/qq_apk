@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class RecommEncounterInfo
   extends JceStruct
 {
-  static ArrayList cache_vEncounterInfos = new ArrayList();
+  static ArrayList<RespEncounterInfo> cache_vEncounterInfos = new ArrayList();
   public String icon_url = "";
   public int postion;
   public int show_num;
   public String title = "";
-  public ArrayList vEncounterInfos;
+  public ArrayList<RespEncounterInfo> vEncounterInfos;
   
   static
   {
@@ -23,7 +23,7 @@ public final class RecommEncounterInfo
   
   public RecommEncounterInfo() {}
   
-  public RecommEncounterInfo(String paramString1, String paramString2, int paramInt1, int paramInt2, ArrayList paramArrayList)
+  public RecommEncounterInfo(String paramString1, String paramString2, int paramInt1, int paramInt2, ArrayList<RespEncounterInfo> paramArrayList)
   {
     this.icon_url = paramString1;
     this.title = paramString2;

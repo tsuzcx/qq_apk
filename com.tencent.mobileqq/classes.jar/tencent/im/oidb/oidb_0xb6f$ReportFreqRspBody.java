@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0xb6f$ReportFreqRspBody
-  extends MessageMicro
+  extends MessageMicro<ReportFreqRspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 32, 40 }, new String[] { "identity", "remain_times", "expire_time" }, new Object[] { null, Long.valueOf(0L), Integer.valueOf(0) }, ReportFreqRspBody.class);
   public final PBUInt32Field expire_time = PBField.initUInt32(0);
@@ -16,7 +16,7 @@ public final class oidb_0xb6f$ReportFreqRspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xb6f.ReportFreqRspBody
  * JD-Core Version:    0.7.0.1
  */

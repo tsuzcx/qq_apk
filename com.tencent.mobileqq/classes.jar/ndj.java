@@ -1,26 +1,11 @@
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler;
-import java.util.ArrayList;
-import java.util.List;
-
-public class ndj
-  implements Runnable
+public abstract interface ndj
+  extends nbs
 {
-  public ndj(UserManager paramUserManager) {}
-  
-  public void run()
-  {
-    this.a.a = false;
-    if (!UserManager.a(this.a).isEmpty())
-    {
-      new GetUserInfoHandler().a(1, UserManager.a(this.a));
-      UserManager.a(this.a, new ArrayList());
-    }
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ndj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
+import java.util.Comparator;
 
-public class suw
-  implements View.OnClickListener
+class suw
+  implements Comparator<TroopBarData>
 {
-  public suw(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
+  suw(suv paramsuv) {}
   
-  public void onClick(View paramView)
+  public int a(TroopBarData paramTroopBarData1, TroopBarData paramTroopBarData2)
   {
-    H5MagicPlayerActivity.a(this.a);
-    if ((this.a.d.equals(this.a.c)) && (this.a.a != null))
+    long l1 = Math.max(paramTroopBarData1.mLastMsgTime, paramTroopBarData1.mLastDraftTime);
+    long l2 = Math.max(paramTroopBarData2.mLastMsgTime, paramTroopBarData2.mLastDraftTime);
+    if ((paramTroopBarData2.mIsSticky) && (!paramTroopBarData1.mIsSticky)) {}
+    do
     {
-      ReportController.b(null, "CliOper", "", "", "MbFasong", "MbGuanbi", 0, 0, this.a.a.epId, "", "", "");
-      return;
+      do
+      {
+        return 1;
+        if ((!paramTroopBarData2.mIsSticky) && (paramTroopBarData1.mIsSticky)) {
+          return -1;
+        }
+        if ((!paramTroopBarData2.mIsSticky) || (!paramTroopBarData1.mIsSticky)) {
+          break;
+        }
+      } while (paramTroopBarData2.mLastStickyTime > paramTroopBarData1.mLastStickyTime);
+      if (paramTroopBarData2.mLastStickyTime == paramTroopBarData1.mLastStickyTime) {
+        return 0;
+      }
+      return -1;
+    } while (l1 < l2);
+    if (l1 == l2) {
+      return 0;
     }
-    ReportController.b(null, "CliOper", "", "", "MbJieshou", "MbZhudongGuanbi", 0, 0, this.a.a.epId, "", "", "");
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     suw
  * JD-Core Version:    0.7.0.1
  */

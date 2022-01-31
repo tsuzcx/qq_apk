@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.dataline.util.file.SendInfo;
+import com.dataline.util.HttpDownload.HttpDownloadListenerPack;
 
-public final class eu
-  implements Parcelable.Creator
+public class eu
+  implements Runnable
 {
-  public SendInfo a(Parcel paramParcel)
-  {
-    return new SendInfo(paramParcel, null);
-  }
+  public eu(HttpDownload.HttpDownloadListenerPack paramHttpDownloadListenerPack, long paramLong1, long paramLong2, long paramLong3) {}
   
-  public SendInfo[] a(int paramInt)
+  public void run()
   {
-    return new SendInfo[paramInt];
+    this.jdField_a_of_type_ComDatalineUtilHttpDownload$HttpDownloadListenerPack.a(this.jdField_a_of_type_Long, this.b, this.c);
   }
 }
 

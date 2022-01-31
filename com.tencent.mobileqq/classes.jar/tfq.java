@@ -1,19 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import UserGrowth.stFeed;
+import android.view.ViewGroup;
 
-class tfq
-  implements DialogInterface.OnClickListener
+public class tfq
 {
-  tfq(tfl paramtfl) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static biej<stFeed> a(int paramInt, ViewGroup paramViewGroup, tbb paramtbb)
   {
-    paramDialogInterface.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return tfk.a(paramViewGroup, paramtbb);
+    case 1: 
+      return tfr.a(paramViewGroup, paramtbb);
+    }
+    return tfk.a(paramViewGroup, paramtbb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tfq
  * JD-Core Version:    0.7.0.1
  */

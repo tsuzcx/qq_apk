@@ -1,30 +1,25 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.ARDeviceController;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import java.util.HashMap;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.UploadTask;
 
-public class zxd
-  implements Runnable
+class zxd
+  implements akcn
 {
-  public zxd(ARDeviceController paramARDeviceController, int paramInt, boolean paramBoolean) {}
+  zxd(zxc paramzxc) {}
   
-  public void run()
+  public void a(int paramInt) {}
+  
+  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
   {
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put("param_FailCode", String.valueOf(this.jdField_a_of_type_Int));
-    StatisticCollector.a(BaseApplication.getContext()).a(null, "AREnable", this.jdField_a_of_type_Boolean, 0L, 0L, (HashMap)localObject, null);
-    localObject = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).edit();
-    ((SharedPreferences.Editor)localObject).putInt("ar_incompatible_reason", this.jdField_a_of_type_Int);
-    SharedPreUtils.a((SharedPreferences.Editor)localObject);
+    if (zxc.a(this.a) != null)
+    {
+      zxc.a(this.a).md5 = HexUtil.bytes2HexStr(paramArrayOfByte1);
+      new ShortVideoRealItemBuilder.UploadTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, zxc.a(this.a), paramString1, this.a).run();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zxd
  * JD-Core Version:    0.7.0.1
  */

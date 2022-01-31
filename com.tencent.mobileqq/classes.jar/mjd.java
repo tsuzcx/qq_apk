@@ -1,75 +1,70 @@
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.AnimationUtils;
-import android.view.animation.Interpolator;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyPullToZoomListView;
+import android.content.res.Resources;
+import android.widget.Button;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.av.ui.MultiVideoEnterPageMembersControlUI;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class mjd
-  implements Runnable
+  extends lij
 {
-  float jdField_a_of_type_Float;
-  long jdField_a_of_type_Long;
-  public boolean a;
-  long b;
+  public mjd(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public mjd(ReadInJoyPullToZoomListView paramReadInJoyPullToZoomListView)
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if ((QLog.isColorLevel()) && (ReadInJoyPullToZoomListView.a())) {
-      QLog.e("Q.readinjoy.video.PullToZoomListView", 2, "#ScalingRunnalable# abortAnimation(): ");
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    this.b = AnimationUtils.currentAnimationTimeMillis();
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Float = (ReadInJoyPullToZoomListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView).getBottom() / ReadInJoyPullToZoomListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView));
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView.post(this);
-    if ((QLog.isColorLevel()) && (ReadInJoyPullToZoomListView.a())) {
-      QLog.d("Q.readinjoy.video.PullToZoomListView", 2, "#ScalingRunnalable# startAnimation(): duration =" + paramLong + ", mScale=" + this.jdField_a_of_type_Float);
-    }
-  }
-  
-  public void run()
-  {
-    ReadInJoyPullToZoomListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView);
-    float f1;
-    float f2;
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Float > 1.0D))
+    if ((this.a.jdField_a_of_type_ComTencentAvVideoController == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null))
     {
-      f1 = ((float)AnimationUtils.currentAnimationTimeMillis() - (float)this.b) / (float)this.jdField_a_of_type_Long;
-      f2 = this.jdField_a_of_type_Float - (this.jdField_a_of_type_Float - 1.0F) * ReadInJoyPullToZoomListView.a().getInterpolation(f1);
-      ViewGroup.LayoutParams localLayoutParams = ReadInJoyPullToZoomListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView).getLayoutParams();
-      if (f2 <= 1.0F) {
-        break label173;
+      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onKickOutResult, empty");
+      return;
+    }
+    if (paramLong != this.a.jdField_a_of_type_Long)
+    {
+      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onKickOutResult, ignore");
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getLongAccountUin(), paramLong, this.a.b);
+      this.a.b(paramInt2);
+      return;
+    }
+    if (paramInt3 == -5)
+    {
+      if (this.a.jdField_a_of_type_Boolean) {
+        if ((this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI != null) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI.length > 1) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI[1] != null)) {
+          this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI[1].b.setVisibility(8);
+        }
       }
-      localLayoutParams.height = ReadInJoyPullToZoomListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView);
-      localLayoutParams.height = ((int)(ReadInJoyPullToZoomListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView) * f2));
-      ReadInJoyPullToZoomListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView).setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView.post(this);
-      if ((QLog.isColorLevel()) && (ReadInJoyPullToZoomListView.a())) {
-        QLog.d("Q.readinjoy.video.PullToZoomListView", 2, "#ScalingRunnalable# runing...... f1 = " + f1 + ", f2=" + f2);
+      for (;;)
+      {
+        QQToast.a(this.a, 2131693342, 1).b(MultiVideoEnterPageActivity.b(this.a).getDimensionPixelSize(2131298914));
+        return;
+        this.a.jdField_a_of_type_Mjc.b.setVisibility(8);
       }
     }
-    return;
-    label173:
-    if ((QLog.isColorLevel()) && (ReadInJoyPullToZoomListView.a())) {
-      QLog.w("Q.readinjoy.video.PullToZoomListView", 2, "#ScalingRunnalable# run() end! f1 = " + f1 + ", f2=" + f2);
+    QQToast.a(this.a, 2131693341, 1).b(MultiVideoEnterPageActivity.c(this.a).getDimensionPixelSize(2131298914));
+  }
+  
+  protected void c(long paramLong)
+  {
+    super.c(paramLong);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin:" + paramLong + ", mRelationId = " + this.a.jdField_a_of_type_Long);
     }
-    this.jdField_a_of_type_Boolean = true;
+    if ((paramLong != 0L) && (paramLong == this.a.jdField_a_of_type_Long))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin matched");
+      }
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mjd
  * JD-Core Version:    0.7.0.1
  */

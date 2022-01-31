@@ -1,25 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.DataReport;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
 
-public final class rwc
-  implements DialogInterface.OnClickListener
+public abstract interface rwc
 {
-  public rwc(ChatActivityUtils.StartVideoListener paramStartVideoListener, boolean paramBoolean) {}
+  public abstract void a(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
-    }
-    paramDialogInterface.dismiss();
-    DataReport.b(this.jdField_a_of_type_Boolean);
-  }
+  public abstract void a(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, boolean paramBoolean);
+  
+  public abstract void m();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rwc
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public final class ThemeItem
   extends JceStruct
 {
-  static ArrayList cache_vecPreUrls;
+  static ArrayList<String> cache_vecPreUrls;
   public String strDescription = "";
   public String strH5 = "";
   public String strMd5 = "";
@@ -22,11 +22,11 @@ public final class ThemeItem
   public long uIsNew;
   public long uIsVip;
   public long uSize;
-  public ArrayList vecPreUrls;
+  public ArrayList<String> vecPreUrls;
   
   public ThemeItem() {}
   
-  public ThemeItem(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2, long paramLong3, ArrayList paramArrayList, String paramString5, String paramString6, String paramString7, long paramLong4, String paramString8, String paramString9)
+  public ThemeItem(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2, long paramLong3, ArrayList<String> paramArrayList, String paramString5, String paramString6, String paramString7, long paramLong4, String paramString8, String paramString9)
   {
     this.strThemeId = paramString1;
     this.strThemeName = paramString2;

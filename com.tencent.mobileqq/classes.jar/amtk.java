@@ -1,47 +1,30 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
-import cooperation.qzone.plugin.OnQZonePluginInstallListner.Stub;
+import android.view.View;
 
-public class amtk
-  extends OnQZonePluginInstallListner.Stub
+public abstract interface amtk
 {
-  private long jdField_a_of_type_Long = -1L;
+  public abstract int a();
   
-  public amtk(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  public abstract int a(int paramInt);
   
-  public void a(String paramString)
-  {
-    QLog.i("QzoneVerticalVideoDownloadActivity", 1, "[onInstallBegin] pluginId=" + paramString);
-    if (this.jdField_a_of_type_Long < 0L) {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-    }
-  }
+  public abstract String a();
   
-  public void a(String paramString, float paramFloat, long paramLong)
-  {
-    QLog.i("QzoneVerticalVideoDownloadActivity", 1, "[onInstallDownloadProgress] pluginId=" + paramString + " progress=" + paramFloat + " total=" + paramLong);
-  }
+  public abstract void a();
   
-  public void a(String paramString, int paramInt)
-  {
-    QLog.w("QzoneVerticalVideoDownloadActivity", 1, "[onInstallError] pluginId=" + paramString + ", errorCode=" + paramInt);
-    paramString = QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).obtainMessage();
-    paramString.what = 1010;
-    if (8 == paramInt) {}
-    for (paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadErrorNoSpace", "内部存储空间不足，下载失败");; paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadError", "插件下载失败"))
-    {
-      QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).sendMessage(paramString);
-      return;
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public void b(String paramString)
-  {
-    QLog.i("QzoneVerticalVideoDownloadActivity", 1, "[onInstallFinish] pluginId=" + paramString);
-    QzoneVerticalVideoDownloadActivity.a("vertical_layer", "vertical_layer_time_cost", "plugin_install_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-  }
+  public abstract void a(View paramView);
+  
+  public abstract void a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3, boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract String b();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 

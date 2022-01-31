@@ -1,31 +1,27 @@
-import com.tencent.mobileqq.activity.Leba;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil.10.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyProcessMonitor;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
-class syc
-  implements Runnable
+public final class syc
+  implements BusinessObserver
 {
-  syc(syb paramsyb) {}
+  syc(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    WebProcessManager localWebProcessManager = (WebProcessManager)this.a.a.a.getManager(12);
-    if ((localWebProcessManager != null) && (localWebProcessManager.d())) {
-      localWebProcessManager.a(202, new syd(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
     }
-    this.a.a.n();
-    this.a.a.a(1);
-    if (NearbyUtils.b()) {
-      NearbyUtils.a("Q.lebatab.", new Object[] { "preload nearby process/tool process" });
-    }
-    NearbyProcessMonitor.a(this.a.a.a.getAccount(), 0);
+    ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountUtil.10.1(this, paramBoolean, paramBundle), 10L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     syc
  * JD-Core Version:    0.7.0.1
  */

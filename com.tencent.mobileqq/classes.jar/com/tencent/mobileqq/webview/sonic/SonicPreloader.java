@@ -2,10 +2,10 @@ package com.tencent.mobileqq.webview.sonic;
 
 import android.text.TextUtils;
 import android.util.SparseArray;
+import bdin;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -20,19 +20,24 @@ import org.json.JSONObject;
 
 public class SonicPreloader
 {
-  public static final List a = new ArrayList();
+  public static final int SONIC_PRELOAD_ID_GAME_CENTER = 1002;
+  public static final int SONIC_PRELOAD_ID_GXH = 1001;
+  public static final int SONIC_PRELOAD_ID_VIP = 1000;
+  public static final int SONIC_PRELOAD_ID_VIRTUAL = 0;
+  public static final String TAG = "SonicPreload";
+  public static final List<Integer> preloadIdList = new ArrayList();
   
   static
   {
-    a.add(Integer.valueOf(0));
-    a.add(Integer.valueOf(1002));
-    a.add(Integer.valueOf(1001));
-    a.add(Integer.valueOf(1000));
+    preloadIdList.add(Integer.valueOf(0));
+    preloadIdList.add(Integer.valueOf(1002));
+    preloadIdList.add(Integer.valueOf(1001));
+    preloadIdList.add(Integer.valueOf(1000));
   }
   
-  public static SparseArray a(BusinessInfoCheckUpdate.AppInfo paramAppInfo, int paramInt)
+  public static SparseArray<SonicPreloadData> getSonicPreloadDataList(BusinessInfoCheckUpdate.AppInfo paramAppInfo, int paramInt)
   {
-    if ((paramAppInfo == null) || (paramAppInfo.iNewFlag.get() == 0) || (!a.contains(Integer.valueOf(paramInt)))) {
+    if ((paramAppInfo == null) || (paramAppInfo.iNewFlag.get() == 0) || (!preloadIdList.contains(Integer.valueOf(paramInt)))) {
       return null;
     }
     Object localObject1 = paramAppInfo.buffer.get();
@@ -99,10 +104,10 @@ public class SonicPreloader
       if (localSparseArray.indexOfKey(m) > 0)
       {
         localSonicPreloadData = (SonicPreloadData)localSparseArray.get(m);
-        if (localSonicPreloadData.jdField_a_of_type_Long < l2)
+        if (localSonicPreloadData.templateChangeTime < l2)
         {
-          localSonicPreloadData.jdField_a_of_type_Long = l2;
-          localSonicPreloadData.b = localJSONObject.optInt("preloadType", 0);
+          localSonicPreloadData.templateChangeTime = l2;
+          localSonicPreloadData.noCacheFilePreloadType = localJSONObject.optInt("preloadType", 0);
         }
       }
       else
@@ -129,67 +134,66 @@ public class SonicPreloader
     }
   }
   
-  public static boolean a()
+  public static boolean isWifiOrG3OrG4()
   {
-    int i = NetworkUtil.a(BaseApplication.getContext());
+    int i = bdin.a(BaseApplication.getContext());
     if (QLog.isColorLevel()) {
       QLog.d("SonicPreload", 2, "isWifiOrG3OrG4 netType = " + i);
     }
     return (i == 1) || (i == 3) || (i == 4);
   }
   
-  public static boolean a(List paramList)
+  public static boolean preload(List<SonicPreloadData> paramList)
   {
     if ((paramList == null) || (paramList.size() < 1)) {
       return false;
     }
-    if (!a())
+    if (!isWifiOrG3OrG4())
     {
       QLog.e("SonicPreload", 1, "preload net type not wifi or 3g or 4g ");
       return false;
     }
     Iterator localIterator = paramList.iterator();
     boolean bool1 = false;
-    for (;;)
+    while (localIterator.hasNext())
     {
-      if (localIterator.hasNext())
+      SonicPreloadData localSonicPreloadData = (SonicPreloadData)localIterator.next();
+      boolean bool2 = bool1;
+      if (localSonicPreloadData != null)
       {
-        SonicPreloadData localSonicPreloadData = (SonicPreloadData)localIterator.next();
-        if (localSonicPreloadData == null) {
-          break label222;
+        paramList = localSonicPreloadData.url;
+        if (TextUtils.isEmpty(paramList)) {
+          continue;
         }
-        paramList = localSonicPreloadData.jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(paramList)) {
-          if (paramList.contains("?"))
-          {
-            paramList = paramList + "&_sonic_rp=1";
-            label108:
-            SonicSessionConfig.Builder localBuilder = new SonicSessionConfig.Builder();
-            localBuilder.setSessionMode(1);
-            boolean bool2 = WebAccelerateHelper.getSonicEngine().preCreateSession(paramList, localBuilder.build(), localSonicPreloadData.jdField_a_of_type_Long, localSonicPreloadData.b);
-            bool1 = bool2;
-            if (QLog.isColorLevel())
-            {
-              QLog.d("SonicPreload", 2, "preload: url = " + paramList + ",result = " + bool2);
-              bool1 = bool2;
-            }
-          }
+        if (!paramList.contains("?")) {
+          break label211;
         }
       }
+      label211:
+      for (paramList = paramList + "&_sonic_rp=1";; paramList = paramList + "?_sonic_rp=1")
+      {
+        SonicSessionConfig.Builder localBuilder = new SonicSessionConfig.Builder();
+        localBuilder.setSessionMode(1);
+        SonicEngine localSonicEngine = WebAccelerateHelper.getSonicEngine();
+        if (localSonicEngine != null) {
+          bool1 = localSonicEngine.preCreateSession(paramList, localBuilder.build(), localSonicPreloadData.templateChangeTime, localSonicPreloadData.noCacheFilePreloadType);
+        }
+        bool2 = bool1;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("SonicPreload", 2, "preload: url = " + paramList + ",result = " + bool1);
+          bool2 = bool1;
+        }
+        bool1 = bool2;
+        break;
+      }
     }
-    label222:
-    for (;;)
-    {
-      break;
-      paramList = paramList + "?_sonic_rp=1";
-      break label108;
-      return bool1;
-    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.sonic.SonicPreloader
  * JD-Core Version:    0.7.0.1
  */

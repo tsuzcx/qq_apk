@@ -2,15 +2,18 @@ package com.tencent.token.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.token.global.RqdApplication;
 
-final class yr
+class yr
   implements View.OnClickListener
 {
-  yr(yq paramyq) {}
+  yr(ScanLoginConfirmLoginActivity paramScanLoginConfirmLoginActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.a.addUser();
+    Toast.makeText(RqdApplication.l(), 2131231416, 0).show();
+    this.a.finish();
   }
 }
 

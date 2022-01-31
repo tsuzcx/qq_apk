@@ -1,56 +1,41 @@
-import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
-import android.view.KeyEvent;
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo2.StoryEffectsCameraCaptureFragment;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.TextView;
 
-public class oml
-  implements View.OnKeyListener
+class oml
+  implements bhuk
 {
-  private oml(StoryEffectsCameraCaptureFragment paramStoryEffectsCameraCaptureFragment) {}
+  oml(omg paramomg, bhuf parambhuf, int[] paramArrayOfInt, Context paramContext, olz paramolz) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    SLog.d("story.publish.CaptureFragment", "onBackPressed");
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if (localFragmentActivity != null)
-    {
-      this.a.getActivity().finish();
-      localFragmentActivity.overridePendingTransition(2131034165, 2131034328);
+    this.jdField_a_of_type_Bhuf.dismiss();
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfInt.length)) {
+      return;
     }
-  }
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramInt)
+    paramView = this.jdField_a_of_type_AndroidContentContext.getString(this.jdField_a_of_type_ArrayOfInt[paramInt]);
+    bdjz localbdjz = new bdjz(this.jdField_a_of_type_AndroidContentContext, 2131755801);
+    localbdjz.setContentView(2131558919);
+    localbdjz.setMessage(String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131718782), new Object[] { paramView }));
+    localbdjz.setTitle(2131718783);
+    ViewGroup.LayoutParams localLayoutParams = localbdjz.getMessageTextView().getLayoutParams();
+    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams))
     {
-    default: 
-      bool1 = false;
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).leftMargin = bdoo.a(12.0F);
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).rightMargin = bdoo.a(12.0F);
+      localbdjz.getMessageTextView().setLayoutParams(localLayoutParams);
     }
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-      switch (paramKeyEvent.getAction())
-      {
-      case 0: 
-      default: 
-        break;
-      case 1: 
-        bool1 = bool2;
-      }
-    } while (paramKeyEvent.isCanceled());
-    a();
-    return true;
+    localbdjz.setTag(paramView);
+    localbdjz.setPositiveButton(2131718785, new omm(this, paramView, paramInt + 1));
+    localbdjz.setNegativeButton(2131718784, new omn(this));
+    localbdjz.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oml
  * JD-Core Version:    0.7.0.1
  */

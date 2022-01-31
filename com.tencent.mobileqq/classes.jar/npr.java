@@ -1,26 +1,14 @@
-import android.util.SparseArray;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
-import mqq.os.MqqHandler;
+import com.tencent.image.URLImageView;
 
-public class npr
-  implements TVK_IMediaPlayer.OnInfoListener
+class npr
 {
-  public npr(VideoViewTVKImpl paramVideoViewTVKImpl) {}
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
-  {
-    SLog.d("VideoViewTVKImpl", "mMediaPlayer onInfo, what:%d, meaning:%s, extra:%s", new Object[] { Integer.valueOf(paramInt), (String)VideoViewTVKImpl.a.get(paramInt, "UNKNOWN"), paramObject });
-    ThreadManager.getUIHandler().post(new nps(this, paramInt, paramObject));
-    return false;
-  }
+  npr(npq paramnpq) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     npr
  * JD-Core Version:    0.7.0.1
  */

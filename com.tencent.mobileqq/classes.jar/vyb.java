@@ -1,24 +1,23 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.util.FaceDrawable;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.PlaybackThread;
 
 public class vyb
-  extends FriendListObserver
+  implements vxy
 {
-  public vyb(PublicAccountChatPie paramPublicAccountChatPie, ImageView paramImageView) {}
+  public vyb(MediaPlayer paramMediaPlayer) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void a(vxw paramvxw)
   {
-    if ((paramBoolean) && (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a().a))) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(FaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a, paramString, (byte)3));
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread != null) && (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread.a()) && (!this.a.e) && (this.a.jdField_a_of_type_Vxu.b() < 2000000L) && (!this.a.jdField_a_of_type_Vxu.b()))
+    {
+      this.a.e = true;
+      this.a.jdField_a_of_type_Vyc.sendMessage(this.a.jdField_a_of_type_Vyc.obtainMessage(200, 701, 0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vyb
  * JD-Core Version:    0.7.0.1
  */

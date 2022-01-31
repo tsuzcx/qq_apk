@@ -1,25 +1,33 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.musicpendant.MusicPendantManager;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.MusicPendantView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView.2;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 
 public class akvb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public akvb(MusicPendantView paramMusicPendantView) {}
+  public akvb(CmGameLoadingView.2 param2) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Card localCard = MusicPendantManager.a().a();
-    if ((localCard != null) && (localCard.autoPlayMusicPendant) && (!NetworkUtil.b(BaseApplicationImpl.getContext()))) {
-      MusicPendantManager.a().b();
+    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.a.this$0.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+    this.a.this$0.setProgressViewVisibility(true);
+    if (this.a.jdField_a_of_type_Aksj != null) {
+      this.a.jdField_a_of_type_Aksj.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.mLoadingOnMainProcess)) {
+      ApolloGameUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akvb
  * JD-Core Version:    0.7.0.1
  */

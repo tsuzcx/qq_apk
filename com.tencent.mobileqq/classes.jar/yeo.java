@@ -1,23 +1,23 @@
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import mqq.os.MqqHandler;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
 
-public class yeo
-  extends MqqHandler
+class yeo
+  implements View.OnClickListener
 {
-  public yeo(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  yeo(yen paramyen, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    paramMessage = ShortVideoUtils.a(paramMessage.arg1);
-    this.a.c.setText(paramMessage);
+    if (((this.jdField_a_of_type_Yen.itemView instanceof RelativeFeedItemView)) && (yei.a(this.jdField_a_of_type_Yen.a) != null)) {
+      yei.a(this.jdField_a_of_type_Yen.a).a(this.jdField_a_of_type_Yen.itemView, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yeo
  * JD-Core Version:    0.7.0.1
  */

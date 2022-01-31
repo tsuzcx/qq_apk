@@ -1,31 +1,58 @@
-import android.view.KeyEvent;
-import android.view.Window;
-import android.view.WindowManager;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel.DispatchKeyEventListener;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class akep
-  implements SystemEmoticonPanel.DispatchKeyEventListener
+  implements DialogInterface.OnDismissListener
 {
-  public akep(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
+  public akep(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity, boolean paramBoolean, amne paramamne) {}
   
-  public boolean a(KeyEvent paramKeyEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.b))
+    Object localObject;
+    boolean bool;
+    if (bdin.g(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity))
     {
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
-      this.a.b = false;
-      paramKeyEvent = this.a.getWindow().getAttributes();
-      paramKeyEvent.y = 0;
-      this.a.getWindow().setAttributes(paramKeyEvent);
-      return true;
+      paramDialogInterface = QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity);
+      localObject = QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity);
+      bool = this.jdField_a_of_type_Boolean;
+      paramDialogInterface.b(1, new String[] { localObject }, new boolean[] { bool });
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.obtainMessage(8193);
+      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.sendMessage(paramDialogInterface);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.app.getCurrentAccountUin();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label208;
+      }
     }
-    return false;
+    label208:
+    for (paramDialogInterface = "SwitchOn";; paramDialogInterface = "SwitchOff")
+    {
+      VasWebviewUtil.reportCommercialDrainage((String)localObject, "Care", paramDialogInterface, Integer.toString(QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity)), 1, 0, 0, null, null, null);
+      this.jdField_a_of_type_Amne.a();
+      return;
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.obtainMessage(8195);
+      paramDialogInterface.arg1 = 0;
+      paramDialogInterface.arg2 = 2131692398;
+      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.sendMessage(paramDialogInterface);
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity;
+      localObject = QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity);
+      if (!QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity).a()) {}
+      for (bool = true;; bool = false)
+      {
+        paramDialogInterface.a((FormSwitchItem)localObject, bool);
+        break;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akep
  * JD-Core Version:    0.7.0.1
  */

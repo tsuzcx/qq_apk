@@ -1,26 +1,30 @@
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
 
 class yzm
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  yzm(yzl paramyzl) {}
+  yzm(yzj paramyzj) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -0.5F, 1, 0.5F, 1, -0.5F, 1, 0.5F);
-    localTranslateAnimation.setDuration(400L);
-    localTranslateAnimation.setRepeatCount(1);
-    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    localTranslateAnimation.setAnimationListener(new yzn(this));
-    this.a.a.a.setVisibility(0);
-    this.a.a.a.startAnimation(localTranslateAnimation);
+    if (yzj.a(this.a) != null) {
+      yzj.a(this.a).setVisibility(4);
+    }
+    if (yzj.a(this.a) != null) {
+      yzj.a(this.a).setAlpha(1.0F);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yzm
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ public class NearbyGrayTipsManager$SceneFive
 {
   private static final long serialVersionUID = 1L;
   public boolean faceScoreTrigger;
-  public ArrayList randomWordingForFeMale;
-  public ArrayList randomWordingForMale;
+  public ArrayList<String> randomWordingForFeMale;
+  public ArrayList<String> randomWordingForMale;
 }
 
 

@@ -1,42 +1,13 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.emoticonview.RecommendEmoticonViewBinder;
 
 public class fpc
-  implements Runnable
+  implements View.OnClickListener
 {
-  public fpc(RecentUserProxy paramRecentUserProxy, SharedPreferences paramSharedPreferences) {}
+  public fpc(RecommendEmoticonViewBinder paramRecommendEmoticonViewBinder) {}
   
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentUserProxy", 2, "checkNewFriendUpgrade | start");
-    }
-    Object localObject1 = null;
-    for (;;)
-    {
-      int i;
-      synchronized (RecentUserProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy))
-      {
-        Iterator localIterator = RecentUserProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy).iterator();
-        if (localIterator.hasNext())
-        {
-          RecentUser localRecentUser = (RecentUser)localIterator.next();
-          if ((localRecentUser != null) && (AppConstants.R.equals(localRecentUser.uin))) {
-            localObject1 = localRecentUser;
-          }
-        }
-        else if (localObject1 != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy.b((RecentUser)localObject1);
-        }
-      }
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

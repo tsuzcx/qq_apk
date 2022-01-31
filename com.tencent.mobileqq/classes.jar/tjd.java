@@ -1,23 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.widget.XEditTextEx;
+import android.content.Context;
 
-public class tjd
-  implements View.OnTouchListener
+public abstract class tjd<MSG extends tiw, INFO extends tix>
 {
-  public tjd(QQLSActivity paramQQLSActivity) {}
+  MSG a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public tjd(MSG paramMSG)
   {
-    QQLSActivity.a(this.a).setCursorVisible(true);
-    return false;
+    this.a = paramMSG;
   }
+  
+  public abstract boolean a(Context paramContext, INFO paramINFO);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tjd
  * JD-Core Version:    0.7.0.1
  */

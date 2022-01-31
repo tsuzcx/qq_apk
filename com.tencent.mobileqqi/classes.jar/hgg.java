@@ -1,17 +1,53 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.JumpAction;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.CustomAlertDialog;
+import com.tencent.mobileqq.widget.CustomAlertDialog.OnPrepareOptionMenuItem;
+import java.util.HashMap;
+import java.util.List;
 
 public class hgg
-  implements Handler.Callback
+  extends BaseAdapter
 {
-  public hgg(JumpAction paramJumpAction) {}
+  List jdField_a_of_type_JavaUtilList;
   
-  public boolean handleMessage(Message paramMessage)
+  public hgg(CustomAlertDialog paramCustomAlertDialog, List paramList)
   {
-    ((BaseActivity)JumpAction.a(this.a)).finish();
-    return true;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = ((LayoutInflater)this.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2130903125, null);
+    }
+    ((TextView)paramViewGroup.findViewById(2131231294)).setText((String)((HashMap)this.jdField_a_of_type_JavaUtilList.get(paramInt)).get("optionStr"));
+    paramViewGroup.setOnClickListener(new hgh(this, paramInt));
+    ((ImageView)paramViewGroup.findViewById(2131231293)).setImageResource(((Integer)((HashMap)this.jdField_a_of_type_JavaUtilList.get(paramInt)).get("imgId")).intValue());
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog$OnPrepareOptionMenuItem != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog$OnPrepareOptionMenuItem.a(paramInt, paramViewGroup);
+    }
+    return paramViewGroup;
   }
 }
 

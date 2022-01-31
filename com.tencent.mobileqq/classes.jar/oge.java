@@ -1,18 +1,12 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoPoi;
+import android.view.View;
 
-class oge
-  implements Runnable
+public abstract interface oge
 {
-  oge(ogd paramogd) {}
-  
-  public void run()
-  {
-    EditVideoPoi.a(this.a.a, 0);
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oge
  * JD-Core Version:    0.7.0.1
  */

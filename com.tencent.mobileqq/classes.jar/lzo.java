@@ -1,30 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.VideoUploadController;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.graphics.Bitmap;
 
-public class lzo
-  implements Runnable
+class lzo
+  implements mag
 {
-  public lzo(VideoUploadController paramVideoUploadController) {}
+  lzo(lzn paramlzn, String paramString, Bitmap paramBitmap) {}
   
-  public void run()
+  public void a(maf parammaf)
   {
-    if ((!TextUtils.isEmpty(VideoUploadController.a(this.a))) && (!TextUtils.isEmpty(VideoUploadController.b(this.a))) && (!VideoUploadController.a(this.a).equals(VideoUploadController.b(this.a))))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoUploadController", 2, "clearTempFile(video), origin:" + VideoUploadController.a(this.a) + ", compress:" + VideoUploadController.b(this.a));
-      }
-      File localFile = new File(VideoUploadController.b(this.a));
-      if (localFile.exists()) {
-        localFile.delete();
-      }
-    }
+    parammaf.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    parammaf.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lzo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,55 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.LocalMediaInfo;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aetp
-  implements Parcelable.Creator
+public class aetp
+  implements bhuk
 {
-  public LocalMediaInfo a(Parcel paramParcel)
-  {
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    localLocalMediaInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localLocalMediaInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_c_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_d_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.jdField_e_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.jdField_e_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.h = paramParcel.readInt();
-    localLocalMediaInfo.i = paramParcel.readInt();
-    localLocalMediaInfo.j = paramParcel.readInt();
-    localLocalMediaInfo.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramParcel.readInt());
-    localLocalMediaInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localLocalMediaInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localLocalMediaInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.jdField_d_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.g = paramParcel.readInt();
-    localLocalMediaInfo.f = paramParcel.readInt();
-    return localLocalMediaInfo;
-  }
+  public aetp(PlusPanel paramPlusPanel, bhuf parambhuf) {}
   
-  public LocalMediaInfo[] a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new LocalMediaInfo[0];
+    if (this.jdField_a_of_type_Bhuf != null) {
+      this.jdField_a_of_type_Bhuf.dismiss();
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      try
+      {
+        PlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel, true);
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800ABFC", "0X800ABFC", 0, 0, "", "", "", "");
+        return;
+      }
+      catch (Exception paramView)
+      {
+        for (;;)
+        {
+          QLog.d("PlusPanel", 1, "showTroopCourseActionSheet handleTroopLiveOrTroopCourseClick Exception", paramView);
+        }
+      }
+    }
+    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+    paramView = "https://qun.qq.com/livework/index?gc=" + paramView + "&_wv=2";
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), QQBrowserActivity.class);
+    localIntent.putExtra("url", paramView);
+    if (QLog.isColorLevel()) {
+      QLog.i("PlusPanel", 2, "showTroopCourseActionSheet replayUrl = " + paramView);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().startActivity(localIntent);
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800ABFD", "0X800ABFD", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aetp
  * JD-Core Version:    0.7.0.1
  */

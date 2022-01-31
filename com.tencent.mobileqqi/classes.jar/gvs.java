@@ -1,22 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.app.Activity;
+import com.tencent.mobileqq.troop.data.TroopCreateLogic;
+import java.util.TimerTask;
 
 public class gvs
-  implements Animation.AnimationListener
+  extends TimerTask
 {
-  public gvs(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public gvs(TroopCreateLogic paramTroopCreateLogic) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.d = false;
-    paramAnimation.setAnimationListener(null);
-    this.a.finish();
+    if (this.a.a != null) {
+      this.a.a.runOnUiThread(new gvt(this));
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

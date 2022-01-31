@@ -215,7 +215,7 @@ public class AlbumWorkSpace
         if (Math.abs(i - paramInt) < 2) {}
         for (boolean bool = true;; bool = false)
         {
-          localObject = new AlbumImageProxy(localQQAppInterface, localContext, (String)localObject, 2130837934, bool);
+          localObject = new AlbumImageProxy(localQQAppInterface, localContext, (String)localObject, 2130837936, bool);
           ((AlbumImageProxy)localObject).SetMinZoom(0.5F);
           addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
           i += 1;

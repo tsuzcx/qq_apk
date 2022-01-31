@@ -6,14 +6,14 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class ilive_feeds_read$ReadFeedsByIdRsp
-  extends MessageMicro
+  extends MessageMicro<ReadFeedsByIdRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "infos" }, new Object[] { null }, ReadFeedsByIdRsp.class);
-  public final PBRepeatMessageField infos = PBField.initRepeatMessage(ilive_feeds_read.FeedsInfo.class);
+  public final PBRepeatMessageField<ilive_feeds_read.FeedsInfo> infos = PBField.initRepeatMessage(ilive_feeds_read.FeedsInfo.class);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_read.ReadFeedsByIdRsp
  * JD-Core Version:    0.7.0.1
  */

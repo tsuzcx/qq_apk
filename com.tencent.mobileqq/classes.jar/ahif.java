@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
 public class ahif
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahif(CameraCaptureFragment paramCameraCaptureFragment) {}
+  public ahif(SearchContactsActivity paramSearchContactsActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.setVisibility(8);
+    this.a.setResult(0);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahif
  * JD-Core Version:    0.7.0.1
  */

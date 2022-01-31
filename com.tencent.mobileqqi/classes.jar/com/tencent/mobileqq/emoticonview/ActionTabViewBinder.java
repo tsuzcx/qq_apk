@@ -20,7 +20,7 @@ public final class ActionTabViewBinder
     default: 
       return null;
     }
-    return paramContext.getResources().getDrawable(2130839163);
+    return paramContext.getResources().getDrawable(2130839165);
   }
 }
 

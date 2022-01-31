@@ -1,48 +1,64 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper;
-import com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper.IdleTask;
-import java.util.ArrayList;
+import com.tencent.mobileqq.apollo.GLTextureView;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-public class akqo
-  implements MessageQueue.IdleHandler
+public abstract class akqo
+  implements akqs
 {
-  public akqo(SwiftBrowserIdleTaskHelper paramSwiftBrowserIdleTaskHelper) {}
+  protected int[] a;
   
-  public boolean queueIdle()
+  public akqo(GLTextureView paramGLTextureView, int[] paramArrayOfInt)
   {
-    Object localObject;
-    int i;
-    if (!SwiftBrowserIdleTaskHelper.a().isEmpty())
-    {
-      localObject = (SwiftBrowserIdleTaskHelper.IdleTask)SwiftBrowserIdleTaskHelper.a().remove(0);
-      i = ((SwiftBrowserIdleTaskHelper.IdleTask)localObject).a();
-      if (2 == i) {
-        SwiftBrowserIdleTaskHelper.a().add(localObject);
-      }
+    this.jdField_a_of_type_ArrayOfInt = a(paramArrayOfInt);
+  }
+  
+  private int[] a(int[] paramArrayOfInt)
+  {
+    if ((GLTextureView.access$300(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 2) && (GLTextureView.access$300(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 3)) {
+      return paramArrayOfInt;
     }
-    else
-    {
-      label38:
-      localObject = this.a;
-      if (SwiftBrowserIdleTaskHelper.a().isEmpty()) {
-        break label75;
-      }
+    int i = paramArrayOfInt.length;
+    int[] arrayOfInt = new int[i + 2];
+    System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, i - 1);
+    arrayOfInt[(i - 1)] = 12352;
+    if (GLTextureView.access$300(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) == 2) {
+      arrayOfInt[i] = 4;
     }
-    label75:
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      ((SwiftBrowserIdleTaskHelper)localObject).a = bool;
-      return this.a.a;
-      if (1 != i) {
-        break;
-      }
-      break label38;
+      arrayOfInt[(i + 1)] = 12344;
+      return arrayOfInt;
+      arrayOfInt[i] = 64;
     }
   }
+  
+  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
+  {
+    int[] arrayOfInt = new int[1];
+    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, null, 0, arrayOfInt)) {
+      throw new IllegalArgumentException("eglChooseConfig failed");
+    }
+    int i = arrayOfInt[0];
+    if (i <= 0) {
+      throw new IllegalArgumentException("No configs match configSpec");
+    }
+    EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
+    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, arrayOfEGLConfig, i, arrayOfInt)) {
+      throw new IllegalArgumentException("eglChooseConfig#2 failed");
+    }
+    paramEGL10 = a(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
+    if (paramEGL10 == null) {
+      throw new IllegalArgumentException("No config chosen");
+    }
+    return paramEGL10;
+  }
+  
+  abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akqo
  * JD-Core Version:    0.7.0.1
  */

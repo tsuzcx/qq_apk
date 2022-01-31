@@ -7,7 +7,7 @@ public class GdtCanvasFragmentForJS
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS
  * JD-Core Version:    0.7.0.1
  */

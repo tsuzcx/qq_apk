@@ -1,56 +1,55 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.search.FileEntitySearchResultModel;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchDetailFragment;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchResultPresenter;
-import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
-import com.tencent.mobileqq.search.model.ISearchResultModel;
-import com.tencent.mobileqq.search.presenter.IPresenter;
-import com.tencent.mobileqq.search.view.IView;
-import com.tencent.mobileqq.search.view.SearchResultView;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adaw
-  extends BaseMvpFaceAdapter
+  implements DialogInterface.OnClickListener
 {
-  public adaw(FileSearchDetailFragment paramFileSearchDetailFragment, ListView paramListView, FaceDecoder paramFaceDecoder, ISearchResultModel paramISearchResultModel, String paramString, QQAppInterface paramQQAppInterface)
+  public adaw(FriendProfileCardActivity paramFriendProfileCardActivity, Context paramContext) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramListView, paramFaceDecoder);
-    paramFileSearchDetailFragment = (FileEntitySearchResultModel)paramISearchResultModel;
-    if (paramFileSearchDetailFragment.jdField_a_of_type_JavaUtilList.size() > 1)
+    switch (paramInt)
     {
-      paramListView = new ArrayList();
-      paramFaceDecoder = paramFileSearchDetailFragment.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramFaceDecoder.hasNext())
-      {
-        paramISearchResultModel = (FileManagerEntity)paramFaceDecoder.next();
-        paramString = new FileEntitySearchResultModel();
-        paramString.jdField_a_of_type_JavaLangString = paramFileSearchDetailFragment.jdField_a_of_type_JavaLangString;
-        paramString.jdField_a_of_type_JavaUtilList.add(paramISearchResultModel);
-        paramListView.add(paramString);
-      }
-      a(paramListView);
     }
-  }
-  
-  protected IPresenter a(int paramInt)
-  {
-    return new FileSearchResultPresenter(this.a.a);
-  }
-  
-  protected IView a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new SearchResultView(paramViewGroup, 2130971541);
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.dismiss();
+      com.tencent.mobileqq.activity.AddFriendLogicActivity.b = false;
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("FriendProfileCardActivity", 2, "qbShowShareResultDialog back");
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getIntent().getIntExtra("source_id", 3999) == 3090) {}
+      try
+      {
+        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getIntent().getStringExtra("extra");
+        asdb.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, true, "action_game_make_friend", Long.valueOf(paramDialogInterface).longValue(), -1, alud.a(2131705305));
+        if ((this.jdField_a_of_type_AndroidContentContext == null) || (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity))) {
+          continue;
+        }
+        ((Activity)this.jdField_a_of_type_AndroidContentContext).moveTaskToBack(true);
+      }
+      catch (Exception paramDialogInterface)
+      {
+        for (;;)
+        {
+          QLog.e("FriendProfileCardActivity", 1, "feedBackToGameSDK error = " + paramDialogInterface);
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("FriendProfileCardActivity", 2, "qbShowShareResultDialog stay");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adaw
  * JD-Core Version:    0.7.0.1
  */

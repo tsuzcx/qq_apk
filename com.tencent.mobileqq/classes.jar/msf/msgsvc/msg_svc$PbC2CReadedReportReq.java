@@ -8,10 +8,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class msg_svc$PbC2CReadedReportReq
-  extends MessageMicro
+  extends MessageMicro<PbC2CReadedReportReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatMessageField pair_info = PBField.initRepeatMessage(msg_svc.PbC2CReadedReportReq.UinPairReadInfo.class);
+  public final PBRepeatMessageField<msg_svc.PbC2CReadedReportReq.UinPairReadInfo> pair_info = PBField.initRepeatMessage(msg_svc.PbC2CReadedReportReq.UinPairReadInfo.class);
   public final PBBytesField sync_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   
   static
@@ -22,7 +22,7 @@ public final class msg_svc$PbC2CReadedReportReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msf.msgsvc.msg_svc.PbC2CReadedReportReq
  * JD-Core Version:    0.7.0.1
  */

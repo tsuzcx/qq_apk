@@ -1,18 +1,19 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
+import azib;
+import azjw;
 import java.io.File;
 
 public class AudioEncoder
 {
-  public static int a(AudioEncoder.AudioData paramAudioData)
+  public static int a(azjw paramazjw)
   {
     try
     {
-      int i = encode(paramAudioData.jdField_a_of_type_JavaLangString, paramAudioData.jdField_b_of_type_JavaLangString, paramAudioData.jdField_a_of_type_Int, paramAudioData.jdField_b_of_type_Int, paramAudioData.c, paramAudioData.d, paramAudioData.e);
+      int i = encode(paramazjw.jdField_a_of_type_JavaLangString, paramazjw.jdField_b_of_type_JavaLangString, paramazjw.jdField_a_of_type_Int, paramazjw.jdField_b_of_type_Int, paramazjw.c, paramazjw.d, paramazjw.e);
       return i;
     }
-    catch (UnsatisfiedLinkError paramAudioData) {}
+    catch (UnsatisfiedLinkError paramazjw) {}
     return -200;
   }
   
@@ -31,29 +32,29 @@ public class AudioEncoder
     return 0;
   }
   
-  public static AudioEncoder.AudioData a(String paramString1, String paramString2, int paramInt)
+  public static azjw a(String paramString1, String paramString2, int paramInt)
   {
-    AudioEncoder.AudioData localAudioData = new AudioEncoder.AudioData();
-    localAudioData.jdField_a_of_type_JavaLangString = paramString1;
-    localAudioData.jdField_b_of_type_JavaLangString = paramString2;
-    localAudioData.jdField_a_of_type_Int = paramInt;
-    localAudioData.d = CodecParam.q;
-    localAudioData.c = CodecParam.n;
-    if (CodecParam.p == 2) {}
-    for (localAudioData.jdField_b_of_type_Int = 16; CodecParam.o == 16; localAudioData.jdField_b_of_type_Int = 8)
+    azjw localazjw = new azjw();
+    localazjw.jdField_a_of_type_JavaLangString = paramString1;
+    localazjw.jdField_b_of_type_JavaLangString = paramString2;
+    localazjw.jdField_a_of_type_Int = paramInt;
+    localazjw.d = azib.q;
+    localazjw.c = azib.n;
+    if (azib.p == 2) {}
+    for (localazjw.jdField_b_of_type_Int = 16; azib.o == 16; localazjw.jdField_b_of_type_Int = 8)
     {
-      localAudioData.e = 1;
-      return localAudioData;
+      localazjw.e = 1;
+      return localazjw;
     }
-    localAudioData.e = 2;
-    return localAudioData;
+    localazjw.e = 2;
+    return localazjw;
   }
   
   private static native int encode(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.AudioEncoder
  * JD-Core Version:    0.7.0.1
  */

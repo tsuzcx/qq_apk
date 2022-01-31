@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.activity.DetailProfileActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.widget.XListView;
 
-class cml
-  implements Runnable
+public class cml
+  implements View.OnClickListener
 {
-  cml(cmk paramcmk) {}
+  public cml(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.b(this.a.a.b);
-    this.a.a.a(this.a.a.jdField_a_of_type_Byte);
-    this.a.a.a(this.a.a.jdField_a_of_type_Int);
-    this.a.a.a();
+    int i = ForwardRecentActivity.a(this.a).k();
+    int j = ((Integer)paramView.getTag(-1)).intValue();
+    this.a.a(ForwardRecentActivity.a(this.a), paramView, Integer.valueOf(j + i).intValue(), paramView.getId());
   }
 }
 

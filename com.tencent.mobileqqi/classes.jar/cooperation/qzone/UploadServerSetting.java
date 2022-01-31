@@ -10,10 +10,10 @@ import android.widget.ListView;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.upload.uinterface.Utility;
-import igw;
-import igx;
-import igy;
-import igz;
+import icc;
+import icd;
+import ice;
+import icf;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -107,16 +107,16 @@ public class UploadServerSetting
   public QQCustomDialog a(Context paramContext, int paramInt1, int paramInt2)
   {
     paramContext = new QQCustomDialog(paramContext, 2131624405);
-    paramContext.setContentView(2130903910);
-    EditText localEditText1 = (EditText)paramContext.findViewById(2131234305);
-    EditText localEditText2 = (EditText)paramContext.findViewById(2131234306);
+    paramContext.setContentView(2130903912);
+    EditText localEditText1 = (EditText)paramContext.findViewById(2131234307);
+    EditText localEditText2 = (EditText)paramContext.findViewById(2131234308);
     if (!TextUtils.isEmpty(this.e))
     {
       localEditText1.setText(this.e);
       localEditText2.setText(this.i + "");
     }
-    paramContext.setNegativeButton(paramInt1, new igx(this, paramContext));
-    paramContext.setPositiveButton(paramInt2, new igy(this, localEditText1, localEditText2, paramContext));
+    paramContext.setNegativeButton(paramInt1, new icd(this, paramContext));
+    paramContext.setPositiveButton(paramInt2, new ice(this, localEditText1, localEditText2, paramContext));
     paramContext.setCanceledOnTouchOutside(true);
     return paramContext;
   }
@@ -149,11 +149,11 @@ public class UploadServerSetting
     super.onCreate(paramBundle);
     b();
     c();
-    paramBundle = new igz(this, this.jdField_a_of_type_JavaUtilArrayList);
-    setContentView(2130903907);
-    ListView localListView = (ListView)findViewById(2131234282);
+    paramBundle = new icf(this, this.jdField_a_of_type_JavaUtilArrayList);
+    setContentView(2130903909);
+    ListView localListView = (ListView)findViewById(2131234284);
     localListView.setAdapter(paramBundle);
-    localListView.setOnItemClickListener(new igw(this));
+    localListView.setOnItemClickListener(new icc(this));
   }
 }
 

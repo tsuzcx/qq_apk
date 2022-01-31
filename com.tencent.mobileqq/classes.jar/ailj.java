@@ -1,22 +1,32 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.Node;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity.10.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class ailj
-  implements Runnable
+  extends altm
 {
-  public ailj(SpriteGLView paramSpriteGLView) {}
+  public ailj(BindNumberActivity paramBindNumberActivity) {}
   
-  public void run()
+  public void onGetFriendsHasBindPhone(boolean paramBoolean, int paramInt, List<String> paramList)
   {
-    this.a.o();
-    int i = 0;
-    while (i < SpriteGLView.a(this.a).size())
-    {
-      ((Node)SpriteGLView.a(this.a).get(i)).b();
-      i += 1;
+    if (QLog.isColorLevel()) {
+      if (paramList != null) {
+        break label95;
+      }
     }
-    SpriteGLView.a(this.a).clear();
+    label95:
+    for (Object localObject = "null";; localObject = Integer.valueOf(paramList.size()))
+    {
+      QLog.i("BindNumberActivity", 2, String.format("onGetFriendsHasBindPhone [%s, %s, %s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), localObject }));
+      if (paramBoolean) {
+        this.a.runOnUiThread(new BindNumberActivity.10.1(this, paramInt, paramList));
+      }
+      this.a.app.removeObserver(this.a.a);
+      this.a.a = null;
+      return;
+    }
   }
 }
 

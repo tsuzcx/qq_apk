@@ -1,38 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.FriendHotTipsBar;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.settings.QGSettingFragment;
 
 public class wct
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public wct(FriendHotTipsBar paramFriendHotTipsBar) {}
+  public wct(QGSettingFragment paramQGSettingFragment) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ReportController.b(FriendHotTipsBar.a(this.a), "CliOper", "", "", "Free_call", "Clk_free_call_tips", 0, 0, "", "", "", "");
-    FriendHotTipsBar.c(FriendHotTipsBar.a(this.a), FriendHotTipsBar.a(this.a).jdField_a_of_type_JavaLangString);
-    FriendHotTipsBar.a(this.a).a();
-    paramView = null;
-    String str = null;
-    if (FriendHotTipsBar.a(this.a).jdField_a_of_type_Int == 1006) {
-      str = FriendHotTipsBar.a(this.a).jdField_a_of_type_JavaLangString;
-    }
-    for (;;)
-    {
-      ChatActivityUtils.a(FriendHotTipsBar.a(this.a), FriendHotTipsBar.a(this.a), FriendHotTipsBar.a(this.a).jdField_a_of_type_Int, paramView, FriendHotTipsBar.a(this.a).d, str, true, FriendHotTipsBar.a(this.a).b, true, true, null, "from_internal");
-      ReportController.b(FriendHotTipsBar.a(this.a), "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "8", "", "", "");
-      return;
-      paramView = FriendHotTipsBar.a(this.a).jdField_a_of_type_JavaLangString;
-    }
+    QGSettingFragment.c(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wct
  * JD-Core Version:    0.7.0.1
  */

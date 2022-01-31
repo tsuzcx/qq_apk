@@ -1,38 +1,31 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ocr.OCRHandler;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class agau
-  implements INetEngine.INetEngineListener
+class agau
+  implements bhuk
 {
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private String jdField_a_of_type_JavaLangString;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  agau(agat paramagat, MessageForShortVideo paramMessageForShortVideo, agaz paramagaz, bhuf parambhuf) {}
   
-  public agau(OCRHandler paramOCRHandler, Intent paramIntent, byte[] paramArrayOfByte, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.ocr.OCRHandler", 2, "BaseOCRReqBigListener.onResp()");
+    switch (paramInt)
+    {
     }
-    ThreadManager.post(new agav(this, paramNetResp), 8, null, true);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2) {
+        this.jdField_a_of_type_Agat.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Agaz);
+      } else {
+        this.jdField_a_of_type_Agat.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Agaz);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agau
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,41 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Process;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class lhk
-  implements ActionSheet.OnButtonClickListener
+class lhk
+  extends BroadcastReceiver
 {
-  public lhk(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity, ActionSheet paramActionSheet) {}
+  lhk(lhj paramlhj) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramInt)
+    if ((paramIntent != null) && ("com.tencent.process.exit".equals(paramIntent.getAction())))
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      PublicAccountReportUtils.a(null, "", "0X80081D2", "0X80081D2", 0, 0, "", "", "", VideoReporter.a(ReadInJoyCameraCaptureActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraCaptureActivity)), false);
-      ReadInJoyCameraCaptureActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraCaptureActivity, 8);
-      ReadInJoyCameraCaptureActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraCaptureActivity);
-      ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraCaptureActivity);
+      paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
+      paramIntent = paramIntent.getExtras().getString("verify");
+      if ((lhj.a(this.a, paramIntent, paramContext)) && (lhj.a(this.a, paramContext)))
+      {
+        paramContext = lhj.a(this.a).a();
+        if ((paramContext == null) || (paramContext.a().e()))
+        {
+          if (paramContext != null) {
+            paramContext.B();
+          }
+          QLog.d("GKillProcessMonitor", 1, "qqExitBroadcastReceiver");
+          Process.killProcess(Process.myPid());
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lhk
  * JD-Core Version:    0.7.0.1
  */

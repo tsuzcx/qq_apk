@@ -16,8 +16,8 @@ import android.graphics.RectF;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.TextUtils;
-import bnw;
-import bnx;
+import bhs;
+import bht;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedOutputStream;
@@ -56,8 +56,8 @@ public class ImageUtil
     jdField_a_of_type_Int = 7;
     jdField_b_of_type_Int = 10;
     jdField_b_of_type_JavaLangString = "ImageUtil";
-    jdField_a_of_type_AndroidOsHandler = new bnw();
-    jdField_a_of_type_JavaLangRunnable = new bnx();
+    jdField_a_of_type_AndroidOsHandler = new bhs();
+    jdField_a_of_type_JavaLangRunnable = new bht();
   }
   
   public static final int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)

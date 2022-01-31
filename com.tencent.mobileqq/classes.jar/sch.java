@@ -1,66 +1,32 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo.2;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo.2.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class sch
-  extends TroopObserver
+  implements pfr
 {
-  public sch(ChatSettingForTroop paramChatSettingForTroop) {}
+  public sch(FastWebArticleInfo.2 param2) {}
   
-  protected void a(boolean paramBoolean, int paramInt, ArrayList paramArrayList, String paramString)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, FastWebArticleInfo paramFastWebArticleInfo)
   {
-    super.a(paramBoolean, paramInt, paramArrayList, paramString);
-    if (!paramBoolean) {}
-    Object localObject1;
-    do
+    if ((paramBoolean1) && (paramFastWebArticleInfo != null))
     {
-      return;
-      localObject2 = "";
-      localObject1 = localObject2;
-      if (this.a.a != null)
-      {
-        localObject1 = localObject2;
-        if (this.a.a.troopuin != null) {
-          localObject1 = this.a.a.troopuin;
-        }
+      this.a.this$0.jdField_b_of_type_Long = paramFastWebArticleInfo.jdField_b_of_type_Long;
+      if (paramFastWebArticleInfo.a > this.a.this$0.a) {
+        this.a.this$0.a = paramFastWebArticleInfo.a;
       }
-    } while (this.a.e == null);
-    Object localObject2 = new HashSet();
-    if ((paramString != null) && (paramString.equals(localObject1)))
-    {
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        paramString = (String)paramArrayList.next();
-        localObject1 = this.a.e.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          oidb_0x899.memberlist localmemberlist = (oidb_0x899.memberlist)((Iterator)localObject1).next();
-          if (paramString.equals(localmemberlist.uint64_member_uin.get() + "")) {
-            ((Collection)localObject2).add(localmemberlist);
-          }
-        }
-      }
-      paramArrayList = ((Collection)localObject2).iterator();
-      while (paramArrayList.hasNext())
-      {
-        paramString = (oidb_0x899.memberlist)paramArrayList.next();
-        this.a.e.remove(paramString);
-      }
+      this.a.this$0.jdField_b_of_type_Boolean = false;
+      QLog.d("Q.readinjoy.fast_web", 2, "update fastweb info, rowkey : " + paramFastWebArticleInfo.j + ",  commentCnt : " + paramFastWebArticleInfo.jdField_b_of_type_Long + ", readCnt :" + paramFastWebArticleInfo.a);
     }
-    this.a.a(this.a.e);
+    ThreadManager.getUIHandler().post(new FastWebArticleInfo.2.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sch
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public final class PhotoFeedsData
   extends JceStruct
 {
   static Album cache_album;
-  static ArrayList cache_photolist = new ArrayList();
+  static ArrayList<Photo> cache_photolist = new ArrayList();
   static cell_comm cache_pss_cell_comm;
   static cell_comment cache_pss_cell_comment = new cell_comment();
   static cell_id cache_pss_cell_id;
@@ -22,7 +22,7 @@ public final class PhotoFeedsData
   static cell_operation cache_pss_cell_operation;
   public Album album;
   public int appid;
-  public ArrayList photolist;
+  public ArrayList<Photo> photolist;
   public cell_comm pss_cell_comm;
   public cell_comment pss_cell_comment;
   public cell_id pss_cell_id;
@@ -42,7 +42,7 @@ public final class PhotoFeedsData
   
   public PhotoFeedsData() {}
   
-  public PhotoFeedsData(int paramInt, ArrayList paramArrayList, Album paramAlbum, cell_comm paramcell_comm, cell_id paramcell_id, cell_operation paramcell_operation, cell_like paramcell_like, cell_comment paramcell_comment)
+  public PhotoFeedsData(int paramInt, ArrayList<Photo> paramArrayList, Album paramAlbum, cell_comm paramcell_comm, cell_id paramcell_id, cell_operation paramcell_operation, cell_like paramcell_like, cell_comment paramcell_comment)
   {
     this.appid = paramInt;
     this.photolist = paramArrayList;

@@ -1,20 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.ui.funchat.zimu.ZimuViewMotion;
+import java.lang.ref.WeakReference;
 
-public class mrb
-  implements View.OnClickListener
+public final class mrb
+  extends Handler
 {
-  public mrb(NativeText paramNativeText) {}
+  WeakReference<ZimuViewMotion> a;
   
-  public void onClick(View paramView)
+  public mrb(ZimuViewMotion paramZimuViewMotion)
   {
-    this.a.a(0, 0, false);
+    this.a = new WeakReference(paramZimuViewMotion);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      paramMessage = (ZimuViewMotion)this.a.get();
+    } while (paramMessage == null);
+    paramMessage.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mrb
  * JD-Core Version:    0.7.0.1
  */

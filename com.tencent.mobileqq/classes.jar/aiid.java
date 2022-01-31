@@ -1,16 +1,15 @@
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
+import android.view.View.OnClickListener;
 
-public class aiid
-  extends URLDrawableDownListener.Adapter
+class aiid
+  implements View.OnClickListener
 {
-  public aiid(StructMsgForHypertext paramStructMsgForHypertext) {}
+  aiid(aihy paramaihy) {}
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    paramView.setBackgroundDrawable(null);
+    aihy.a(this.a, paramView);
+    this.a.dismiss();
   }
 }
 

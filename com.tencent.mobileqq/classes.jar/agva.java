@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.8;
 
 public class agva
-  implements ActionSheet.OnDismissListener
+  implements nrr
 {
-  public agva(QCallDetailActivity paramQCallDetailActivity) {}
+  public agva(PublicAccountChatPie.8 param8) {}
   
-  public void onDismiss()
+  public void a()
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8005AFA", "0X8005AFA", 0, 0, "", "", "", "");
+    this.a.this$0.a.sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agva
  * JD-Core Version:    0.7.0.1
  */

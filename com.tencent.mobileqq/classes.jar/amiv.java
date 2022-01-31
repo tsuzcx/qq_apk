@@ -1,57 +1,54 @@
-import common.qzone.component.cache.common.SoftHashMap;
-import java.util.AbstractCollection;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.UpdateFriend;
+import com.tencent.qphone.base.util.QLog;
 
 public class amiv
-  extends AbstractCollection
+  extends altm
 {
-  public amiv(SoftHashMap paramSoftHashMap) {}
+  private amiv(UpdateFriend paramUpdateFriend) {}
   
-  public void clear()
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.clear();
-  }
-  
-  public boolean contains(Object paramObject)
-  {
-    return this.a.containsValue(paramObject);
-  }
-  
-  public Iterator iterator()
-  {
-    return new amiu(this.a);
-  }
-  
-  public int size()
-  {
-    return this.a.size();
-  }
-  
-  public Object[] toArray()
-  {
-    ArrayList localArrayList = new ArrayList(size());
-    Iterator localIterator = iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(localIterator.next());
+    if ((this.a.b == 7) || (this.a.b == 3))
+    {
+      if (paramBoolean1) {
+        break label37;
+      }
+      this.a.a(6);
     }
-    return localArrayList.toArray();
+    label37:
+    while ((!paramBoolean1) || (!paramBoolean2)) {
+      return;
+    }
+    this.a.a.a.edit().putBoolean("isFriendlistok", true).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "onUpdateFriendList put PREF_ISFRIENDLIST_OK true");
+    }
+    this.a.a.notifyUI(3, true, Integer.valueOf(1));
+    this.a.a(7);
   }
   
-  public Object[] toArray(Object[] paramArrayOfObject)
+  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    ArrayList localArrayList = new ArrayList(size());
-    Iterator localIterator = iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(localIterator.next());
+    if (this.a.b == 8)
+    {
+      if (paramBoolean1) {
+        break label26;
+      }
+      this.a.a(6);
     }
-    return localArrayList.toArray(paramArrayOfObject);
+    label26:
+    while (!paramBoolean2) {
+      return;
+    }
+    this.a.a(7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amiv
  * JD-Core Version:    0.7.0.1
  */

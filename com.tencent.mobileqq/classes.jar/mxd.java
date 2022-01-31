@@ -1,39 +1,17 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView.ListViewEventListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-
-class mxd
-  implements PublicAccountImageCollectionListView.ListViewEventListener
+class mxd<Data>
 {
-  mxd(mxc parammxc) {}
+  final mxc jdField_a_of_type_Mxc;
+  final Data[] jdField_a_of_type_ArrayOfJavaLangObject;
   
-  public void a(Object paramObject)
+  mxd(mxc parammxc, Data... paramVarArgs)
   {
-    if ((paramObject instanceof mxi))
-    {
-      if (!this.a.b) {
-        ((PublicAccountImageCollectionMainActivity)mxc.a(this.a)).h();
-      }
-      this.a.b = true;
-    }
-    while ((paramObject instanceof mxj)) {
-      if (mxc.a(this.a))
-      {
-        this.a.d(true);
-        return;
-        ((PublicAccountImageCollectionMainActivity)mxc.a(this.a)).g();
-      }
-      else
-      {
-        this.a.d(false);
-        return;
-      }
-    }
-    this.a.d(true);
+    this.jdField_a_of_type_Mxc = parammxc;
+    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mxd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,20 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
 
-class adnt
-  implements View.OnClickListener
+public class adnt
+  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  adnt(adnq paramadnq, String paramString) {}
-  
-  public void onClick(View paramView)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    paramView = new Intent(this.jdField_a_of_type_Adnq.a.a, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Adnq.a.a.startActivity(paramView);
+    return false;
   }
+  
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return true;
+  }
+  
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

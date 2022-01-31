@@ -1,22 +1,19 @@
-import android.os.Handler;
-import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.TroopNotify;
-import org.json.JSONObject;
-
-public class oxw
-  implements Runnable
+final class oxw
+  implements oxx
 {
-  public oxw(TroopNewGuidePopWindow paramTroopNewGuidePopWindow, JSONObject paramJSONObject, int paramInt) {}
-  
-  public void run()
+  public void l()
   {
-    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify = TroopFeedsDataManager.TroopNotify.a(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.b, this.jdField_a_of_type_OrgJsonJSONObject);
-    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidOsHandler.post(new oxx(this));
+    szp.a(2, true, System.currentTimeMillis(), 0, 0, false);
+  }
+  
+  public void m()
+  {
+    szp.a(2, false, oxs.d, 0, 0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oxw
  * JD-Core Version:    0.7.0.1
  */

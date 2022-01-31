@@ -2,32 +2,33 @@ package dov.com.tencent.mobileqq.shortvideo.multisender;
 
 import android.database.Cursor;
 import android.text.TextUtils;
+import awge;
+import awhp;
+import awhs;
+import bnrk;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class MultiSendEntry
-  extends Entity
+  extends awge
 {
-  @unique
+  @awhs
   public String fakeVid;
   public String md5;
-  @notColumn
-  List messageDataList;
+  @awhp
+  List<bnrk> messageDataList;
   public String messageInfos;
   public int syncToStory;
   public long time;
   public String uploadInfo;
-  @notColumn
-  MessageBaseData uploadMessageData;
+  @awhp
+  bnrk uploadMessageData;
   public String uuid;
   public String videoPath;
   
-  protected boolean entityByCursor(Cursor paramCursor)
+  public boolean entityByCursor(Cursor paramCursor)
   {
     this.fakeVid = paramCursor.getString(paramCursor.getColumnIndex("fakeVid"));
     this.md5 = paramCursor.getString(paramCursor.getColumnIndex("md5"));
@@ -40,7 +41,7 @@ public class MultiSendEntry
     if (!TextUtils.isEmpty(this.uploadInfo)) {}
     try
     {
-      this.uploadMessageData = new MessageBaseData();
+      this.uploadMessageData = new bnrk();
       this.uploadMessageData.a(this.uploadInfo);
       if (TextUtils.isEmpty(this.messageInfos)) {}
     }
@@ -50,7 +51,7 @@ public class MultiSendEntry
       {
         try
         {
-          this.messageDataList = MessageBaseData.a(this.messageInfos);
+          this.messageDataList = bnrk.a(this.messageInfos);
           return true;
           paramCursor = paramCursor;
           paramCursor.printStackTrace();
@@ -72,28 +73,28 @@ public class MultiSendEntry
     }
     Iterator localIterator = this.messageDataList.iterator();
     while (localIterator.hasNext()) {
-      if (((MessageBaseData)localIterator.next()).a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq)) {
+      if (((bnrk)localIterator.next()).a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq)) {
         localIterator.remove();
       }
     }
-    this.messageInfos = MessageBaseData.a(this.messageDataList);
+    this.messageInfos = bnrk.a(this.messageDataList);
   }
   
-  public void setMessageDataList(List paramList)
+  public void setMessageDataList(List<bnrk> paramList)
   {
     this.messageDataList = paramList;
-    this.messageInfos = MessageBaseData.a(paramList);
+    this.messageInfos = bnrk.a(paramList);
   }
   
-  public void setUploadMessageData(MessageBaseData paramMessageBaseData)
+  public void setUploadMessageData(bnrk parambnrk)
   {
-    this.uploadMessageData = paramMessageBaseData;
-    this.uploadInfo = paramMessageBaseData.a();
+    this.uploadMessageData = parambnrk;
+    this.uploadInfo = parambnrk.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.multisender.MultiSendEntry
  * JD-Core Version:    0.7.0.1
  */

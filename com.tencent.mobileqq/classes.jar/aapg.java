@@ -1,29 +1,21 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.ViewGroup;
 
-public class aapg
-  implements SensorEventListener
+class aapg
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public aapg(ArkAppEventObserverManager paramArkAppEventObserverManager) {}
+  aapg(aape paramaape, ViewGroup paramViewGroup) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    if (paramSensorEvent.sensor.getType() == 1) {
-      ArkAppEventObserverManager.a(this.a, paramSensorEvent);
+    if ((paramInt & 0x4) == 0) {
+      this.jdField_a_of_type_AndroidViewViewGroup.setSystemUiVisibility(7942);
     }
-    while (paramSensorEvent.sensor.getType() != 3) {
-      return;
-    }
-    ArkAppEventObserverManager.b(this.a, paramSensorEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aapg
  * JD-Core Version:    0.7.0.1
  */

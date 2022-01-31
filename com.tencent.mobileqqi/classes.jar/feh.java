@@ -1,13 +1,25 @@
-import com.tencent.mobileqq.app.CircleManager;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.NewFriendManager;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
 
 public class feh
   implements Runnable
 {
-  public feh(CircleManager paramCircleManager) {}
+  public feh(NewFriendManager paramNewFriendManager) {}
   
   public void run()
   {
-    this.a.c(CircleManager.a(this.a));
+    QQAppInterface localQQAppInterface = this.a.a;
+    if ((localQQAppInterface == null) || (this.a.a.getManager(10) == null)) {
+      return;
+    }
+    ((PhoneContactManagerImp)localQQAppInterface.getManager(10)).l();
+    localQQAppInterface.a().a().b();
+    FriendSystemMsgController.a().a(this.a.a, 0);
+    FriendSystemMsgController.a().c(this.a.a);
   }
 }
 

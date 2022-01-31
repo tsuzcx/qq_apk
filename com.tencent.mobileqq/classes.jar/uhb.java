@@ -1,37 +1,101 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.ImageView;
+import com.tencent.biz.qqcircle.QCircleInitBean;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.SquareImageView;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StImage;
+import feedcloud.FeedCloudMeta.StNotice;
 
 public class uhb
-  implements DialogInterface.OnClickListener
+  extends ugz
 {
-  public uhb(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  private ViewStub jdField_a_of_type_AndroidViewViewStub;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private SquareImageView jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView;
+  private View c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public uhb(int paramInt)
   {
-    this.a.n();
-    if (this.a.jdField_a_of_type_Boolean)
+    super(paramInt);
+  }
+  
+  private QCircleInitBean a()
+  {
+    try
     {
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.e();
-      this.a.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.setVisibility(0);
-      this.a.f();
+      if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StNotice.feed.get() != null)
+      {
+        Object localObject = new tqo();
+        ubd.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StNotice.feed, 3);
+        ((tqo)localObject).a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StNotice.feed);
+        ExtraTypeInfo localExtraTypeInfo = new ExtraTypeInfo();
+        localExtraTypeInfo.sourceType = 1002;
+        ((tqo)localObject).a(localExtraTypeInfo);
+        a((tqo)localObject);
+        localObject = ((tqo)localObject).a();
+        ((QCircleInitBean)localObject).isSingleFeed = true;
+        return localObject;
+      }
     }
-    if (!TextUtils.isEmpty(this.a.a())) {}
-    for (paramDialogInterface = "1";; paramDialogInterface = "0")
+    catch (Exception localException)
     {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, HttpUtil.a(), paramDialogInterface, "1");
+      QLog.e("QCircleDefaultMessagePresenter", 1, "jumpDetailPageError:" + localException.getMessage());
+      localException.printStackTrace();
+    }
+    return null;
+  }
+  
+  private void a(FeedCloudMeta.StNotice paramStNotice)
+  {
+    ImageView localImageView;
+    if (!TextUtils.isEmpty(paramStNotice.feed.cover.picUrl.get()))
+    {
+      if ((this.c == null) && (this.jdField_a_of_type_AndroidViewViewStub != null)) {
+        this.c = this.jdField_a_of_type_AndroidViewViewStub.inflate();
+      }
+      if (this.c != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.c.findViewById(2131368778));
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.c.findViewById(2131368782));
+        this.c.setVisibility(0);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setRoundRect(20);
+        tql.a(paramStNotice.feed.cover.picUrl.get(), this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
+        localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+        if (!tra.b(paramStNotice.feed)) {
+          break label158;
+        }
+      }
+    }
+    label158:
+    for (int i = 0;; i = 8)
+    {
+      localImageView.setVisibility(i);
+      this.c.setOnClickListener(new uhc(this));
       return;
     }
+  }
+  
+  protected void a(tqo paramtqo) {}
+  
+  public void b(Context paramContext, View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)paramView.findViewById(2131373250));
+  }
+  
+  public void b(FeedCloudMeta.StNotice paramStNotice, int paramInt)
+  {
+    a(paramStNotice);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uhb
  * JD-Core Version:    0.7.0.1
  */

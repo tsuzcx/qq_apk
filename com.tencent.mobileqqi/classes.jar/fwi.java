@@ -1,16 +1,19 @@
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
 public class fwi
-  implements Runnable
 {
-  public fwi(LocalFileBrowserActivity paramLocalFileBrowserActivity, int paramInt) {}
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public boolean c = false;
   
-  public void run()
+  public fwi(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelected(true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelection(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelected(true);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 

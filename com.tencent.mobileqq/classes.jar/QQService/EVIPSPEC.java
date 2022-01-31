@@ -5,10 +5,16 @@ import java.io.Serializable;
 public final class EVIPSPEC
   implements Serializable
 {
+  public static final EVIPSPEC E_SP_BIGCLUB;
+  public static final EVIPSPEC E_SP_PAY_MUSIC_PACKAGE;
+  public static final EVIPSPEC E_SP_QQREADING_VIP;
   public static final EVIPSPEC E_SP_QQVIDEO_HOLLYWOOD;
   public static final EVIPSPEC E_SP_QQVIP;
   public static final EVIPSPEC E_SP_SUPERQQ;
   public static final EVIPSPEC E_SP_SUPERVIP;
+  public static final int _E_SP_BIGCLUB = 7;
+  public static final int _E_SP_PAY_MUSIC_PACKAGE = 6;
+  public static final int _E_SP_QQREADING_VIP = 5;
   public static final int _E_SP_QQVIDEO_HOLLYWOOD = 4;
   public static final int _E_SP_QQVIP = 1;
   public static final int _E_SP_SUPERQQ = 2;
@@ -23,11 +29,14 @@ public final class EVIPSPEC
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      a = new EVIPSPEC[4];
+      a = new EVIPSPEC[7];
       E_SP_QQVIP = new EVIPSPEC(0, 1, "E_SP_QQVIP");
       E_SP_SUPERQQ = new EVIPSPEC(1, 2, "E_SP_SUPERQQ");
       E_SP_SUPERVIP = new EVIPSPEC(2, 3, "E_SP_SUPERVIP");
       E_SP_QQVIDEO_HOLLYWOOD = new EVIPSPEC(3, 4, "E_SP_QQVIDEO_HOLLYWOOD");
+      E_SP_QQREADING_VIP = new EVIPSPEC(4, 5, "E_SP_QQREADING_VIP");
+      E_SP_PAY_MUSIC_PACKAGE = new EVIPSPEC(5, 6, "E_SP_PAY_MUSIC_PACKAGE");
+      E_SP_BIGCLUB = new EVIPSPEC(6, 7, "E_SP_BIGCLUB");
       return;
     }
   }

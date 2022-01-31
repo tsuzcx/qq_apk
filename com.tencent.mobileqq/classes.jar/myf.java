@@ -1,19 +1,25 @@
-import android.widget.TextView;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.widget.stageview.StageEffectView.5.1;
+import com.tencent.av.widget.stageview.StageMemberView;
 
-class myf
-  implements Runnable
+public class myf
+  implements Animation.AnimationListener
 {
-  myf(mye parammye, int paramInt) {}
+  public myf(StageEffectView.5.1 param1) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Mye.a.b.setText("" + this.jdField_a_of_type_Int);
+    this.a.a.a.a(true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     myf
  * JD-Core Version:    0.7.0.1
  */

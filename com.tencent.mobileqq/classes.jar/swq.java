@@ -1,52 +1,26 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.UniteSearchObserver;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.mobileqq.search.model.SearchEntryDataModel;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.util.ProfileParams;
+import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
 
-public class swq
-  extends UniteSearchObserver
+public final class swq
+  implements Parcelable.Creator<ProfileParams>
 {
-  public swq(Leba paramLeba) {}
-  
-  public void b(int paramInt1, String paramString, int paramInt2)
+  public ProfileParams a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba", 2, "handleSearchDiscoveryError error, resultCode = " + paramInt1 + ",  errorMsg = " + paramString + ", fromType = " + paramInt2);
-    }
+    swr localswr = new swr();
+    localswr.a(paramParcel.readString()).a(paramParcel.readInt()).b(paramParcel.readString()).c(paramParcel.readString()).d(paramParcel.readString()).a((ProfileParams.CurLoginUsr)paramParcel.readParcelable(ProfileParams.CurLoginUsr.CREATOR.getClass().getClassLoader()));
+    return localswr.a();
   }
   
-  public void b(List paramList, int paramInt)
+  public ProfileParams[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba", 2, "handleSearchDiscoveryResult() result = " + paramList + ", fromType = " + paramInt);
-    }
-    if (paramInt != 4) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.lebatab.leba", 2, "handleSearchDiscoveryResult(), fromType is wrong, return");
-      }
-    }
-    for (;;)
-    {
-      return;
-      paramInt = 0;
-      while (paramInt < paramList.size())
-      {
-        SearchEntryDataModel localSearchEntryDataModel = (SearchEntryDataModel)paramList.get(paramInt);
-        if ((localSearchEntryDataModel instanceof HotWordSearchEntryDataModel))
-        {
-          Leba.a(this.a, ((HotWordSearchEntryDataModel)localSearchEntryDataModel).a);
-          return;
-        }
-        paramInt += 1;
-      }
-    }
+    return new ProfileParams[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     swq
  * JD-Core Version:    0.7.0.1
  */

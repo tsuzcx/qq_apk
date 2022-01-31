@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.BaseHornListActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class cci
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public cci(BaseHornListActivity paramBaseHornListActivity) {}
+  public cci(ChatHistory paramChatHistory) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.d();
+    this.a.h();
   }
 }
 

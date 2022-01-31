@@ -1,23 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.fragment.CommonTabFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class admp
-  implements View.OnClickListener
+  implements aybu
 {
-  public admp(CommonTabFragment paramCommonTabFragment) {}
+  public admp(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if ((this.a.a == null) || (this.a.a.a == null)) {}
-    do
-    {
-      return;
-      paramView = this.a.a.a.a();
-    } while (paramView == null);
-    paramView.a(this.a.a.a.getUrl(), 8589934606L, null);
+    PermisionPrivacyActivity.a(this.a, this.a.h.a(), paramBoolean);
+  }
+  
+  public void b(int paramInt, boolean paramBoolean)
+  {
+    if (paramInt == -1) {
+      PermisionPrivacyActivity.a(this.a, 2131719884);
+    }
+    PermisionPrivacyActivity.a(this.a, this.a.h.a(), PermisionPrivacyActivity.a(this.a).b());
   }
 }
 

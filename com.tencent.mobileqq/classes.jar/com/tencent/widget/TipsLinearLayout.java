@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
+import bibx;
 import com.tencent.qphone.base.util.QLog;
 
 public class TipsLinearLayout
@@ -13,7 +14,7 @@ public class TipsLinearLayout
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private TipsLinearLayout.TipsLayoutAnimListener jdField_a_of_type_ComTencentWidgetTipsLinearLayout$TipsLayoutAnimListener;
+  private bibx jdField_a_of_type_Bibx;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 0;
   private boolean jdField_b_of_type_Boolean = true;
@@ -68,7 +69,7 @@ public class TipsLinearLayout
   
   private void c()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout$TipsLayoutAnimListener == null) {
+    if (this.jdField_a_of_type_Bibx == null) {
       return;
     }
     if (this.jdField_b_of_type_Int == 1)
@@ -76,13 +77,13 @@ public class TipsLinearLayout
       if (QLog.isColorLevel()) {
         QLog.d("TipsLinearLayout", 2, "ANIM_IN end.");
       }
-      this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout$TipsLayoutAnimListener.a();
+      this.jdField_a_of_type_Bibx.a();
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("TipsLinearLayout", 2, "ANIM_OUT end.");
     }
-    this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout$TipsLayoutAnimListener.b();
+    this.jdField_a_of_type_Bibx.b();
   }
   
   public void a()
@@ -144,14 +145,14 @@ public class TipsLinearLayout
     super.onDraw(paramCanvas);
   }
   
-  public void setmTipsLayoutAnimListener(TipsLinearLayout.TipsLayoutAnimListener paramTipsLayoutAnimListener)
+  public void setmTipsLayoutAnimListener(bibx parambibx)
   {
-    this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout$TipsLayoutAnimListener = paramTipsLayoutAnimListener;
+    this.jdField_a_of_type_Bibx = parambibx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.TipsLinearLayout
  * JD-Core Version:    0.7.0.1
  */

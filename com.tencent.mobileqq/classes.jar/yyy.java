@@ -1,35 +1,76 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class yyy
-  implements View.OnClickListener
+  extends aokh<yyx>
 {
-  public yyy(ApolloPanel paramApolloPanel, ApolloActionData paramApolloActionData) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
-    paramView.putExtra("url", ApolloConstant.I + "&actionId=" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId + "&_bid=2282");
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramView);
-    ApolloPanel.c(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "action_flame_clickgain", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId) });
+    return 411;
+  }
+  
+  public Class<yyx> a()
+  {
+    return yyx.class;
+  }
+  
+  @NonNull
+  public yyx a(int paramInt)
+  {
+    return new yyx();
+  }
+  
+  @Nullable
+  public yyx a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      yyx localyyx = yyx.a(paramArrayOfaoko[0].a);
+      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
+      a(localyyx);
+      return localyyx;
     }
+    QLog.e("Q.videostory.config.VSEntranceProcessor", 2, "onParsed conf content is null!");
+    return null;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(yyx paramyyx)
+  {
+    if (paramyyx != null)
+    {
+      yyw.a().a("mine_videostory_entrance", paramyyx.a());
+      yyw.a().a("enable_click_take_picture", paramyyx.b());
+      yyw.a().a("mine_videostory_drawer_entrance", paramyyx.c());
+      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, "onUpdate:" + paramyyx.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yyy
  * JD-Core Version:    0.7.0.1
  */

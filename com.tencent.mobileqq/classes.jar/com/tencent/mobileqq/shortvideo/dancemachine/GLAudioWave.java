@@ -6,17 +6,36 @@ import java.util.Random;
 public class GLAudioWave
   extends GLImageView
 {
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private Random jdField_a_of_type_JavaUtilRandom;
-  private float[] jdField_a_of_type_ArrayOfFloat;
-  private float b;
-  private float c;
-  private float jdField_d_of_type_Float;
-  private RectF jdField_d_of_type_AndroidGraphicsRectF;
+  public static final int NUM_OF_COLUMN = 5;
+  public static final int WAVE_COLUMN = 15;
+  private float extraSizeH = (this.mWaveColumn.length - 1) * this.spacing;
+  private float extraSizeV = 4.0F * this.spacing;
+  private float mHeightBlock;
+  private Random mRandom = new Random();
+  private RectF mSoundRegion = new RectF();
+  private float[] mWaveColumn = new float[15];
+  private RectF mWaveRegion = new RectF();
+  private float mWidthBlock;
+  private float spacing = DisplayUtils.pixelToRealPixel(2.0F);
   
-  private void a(float paramFloat1, float paramFloat2)
+  public GLAudioWave(GLViewContext paramGLViewContext, String paramString)
   {
-    float f1 = this.jdField_a_of_type_AndroidGraphicsRectF.bottom;
+    super(paramGLViewContext, paramString);
+  }
+  
+  private void computeBlockSize()
+  {
+    int i = this.mBackGround.getWidth();
+    int j = this.mBackGround.getHeight();
+    this.mWidthBlock = ((this.mWaveRegion.width() - this.extraSizeH) / this.mWaveColumn.length);
+    float f1 = j * 1.0F / i;
+    float f2 = this.mWidthBlock;
+    this.mHeightBlock = Math.min((this.mWaveRegion.height() - this.extraSizeV) / 5.0F, f1 * f2);
+  }
+  
+  private void drawColumn(float paramFloat1, float paramFloat2)
+  {
+    float f1 = this.mWaveRegion.bottom;
     int j = (int)paramFloat2;
     float f2 = paramFloat2 - j;
     int i = j;
@@ -27,57 +46,63 @@ public class GLAudioWave
     j = 0;
     if (j < i)
     {
-      f1 = paramFloat2 - this.jdField_d_of_type_Float;
-      this.jdField_d_of_type_AndroidGraphicsRectF.set(paramFloat1, f1, this.c + paramFloat1, paramFloat2);
-      super.b(this.jdField_d_of_type_AndroidGraphicsRectF);
+      f1 = paramFloat2 - this.mHeightBlock;
+      this.mSoundRegion.set(paramFloat1, f1, this.mWidthBlock + paramFloat1, paramFloat2);
+      super.setImageRegion(this.mSoundRegion);
       if ((f2 > 0.0F) && (j == i - 1))
       {
-        f1 = paramFloat2 - this.jdField_d_of_type_Float * f2;
-        this.jdField_d_of_type_AndroidGraphicsRectF.set(paramFloat1, f1, this.c + paramFloat1, paramFloat2);
-        super.d(this.jdField_d_of_type_AndroidGraphicsRectF);
-        this.i = true;
-        super.a();
+        f1 = paramFloat2 - this.mHeightBlock * f2;
+        this.mSoundRegion.set(paramFloat1, f1, this.mWidthBlock + paramFloat1, paramFloat2);
+        super.setImageClipDrawRegion(this.mSoundRegion);
+        this.mEnableClip = true;
+        super.draw();
       }
       for (paramFloat2 = f1;; paramFloat2 = f1)
       {
-        paramFloat2 -= this.b;
+        paramFloat2 -= this.spacing;
         j += 1;
         break;
-        super.d(this.jdField_d_of_type_AndroidGraphicsRectF);
-        super.a();
+        super.setImageClipDrawRegion(this.mSoundRegion);
+        super.draw();
       }
     }
   }
   
-  private void f()
+  private void generateWaveColumnValue()
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfFloat.length)
+    while (i < this.mWaveColumn.length)
     {
-      this.jdField_a_of_type_JavaUtilRandom.setSeed(System.nanoTime());
-      this.jdField_a_of_type_ArrayOfFloat[i] = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * 5.0F);
+      this.mRandom.setSeed(System.nanoTime());
+      this.mWaveColumn[i] = (this.mRandom.nextFloat() * 5.0F);
       i += 1;
     }
   }
   
-  public void a()
+  public void draw()
   {
-    f();
-    float f = this.jdField_a_of_type_AndroidGraphicsRectF.left;
-    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    generateWaveColumnValue();
+    float f = this.mWaveRegion.left;
+    float[] arrayOfFloat = this.mWaveColumn;
     int j = arrayOfFloat.length;
     int i = 0;
     while (i < j)
     {
-      a(f, arrayOfFloat[i]);
-      f += this.b + this.c;
+      drawColumn(f, arrayOfFloat[i]);
+      f += this.spacing + this.mWidthBlock;
       i += 1;
     }
+  }
+  
+  public void setWaveRegion(RectF paramRectF)
+  {
+    this.mWaveRegion.set(paramRectF);
+    computeBlockSize();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLAudioWave
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,124 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgFactory;
-import com.tencent.mobileqq.util.ScreenShotUtil;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import java.io.File;
-import org.json.JSONObject;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-class adyd
-  implements Runnable
+public class adyd
 {
-  adyd(adyc paramadyc, Bitmap paramBitmap) {}
+  private adyg jdField_a_of_type_Adyg;
+  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private View jdField_a_of_type_AndroidViewView;
+  private GeneralSettingActivity jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public void run()
+  private void a(URLImageView paramURLImageView, adyf paramadyf)
   {
-    String str1 = this.jdField_a_of_type_Adyc.a.jdField_a_of_type_OrgJsonJSONObject.optString("briefMsg");
-    String str2 = this.jdField_a_of_type_Adyc.a.jdField_a_of_type_OrgJsonJSONObject.optString("appName");
-    String str3 = this.jdField_a_of_type_Adyc.a.jdField_a_of_type_OrgJsonJSONObject.optString("iconUrl");
-    String str4 = this.jdField_a_of_type_Adyc.a.jdField_a_of_type_OrgJsonJSONObject.optString("actionUrl");
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    localObject = URLDrawable.getDrawable(paramadyf.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
+    boolean bool = a((URLDrawable)localObject);
+    if (paramURLImageView != null)
     {
-      Object localObject1 = new File(BaseApplicationImpl.getApplication().getCacheDir(), "ShareScreenShots");
-      Object localObject2 = "ShareScreenShot_" + System.currentTimeMillis() + ".jpg";
-      localObject1 = ScreenShotUtil.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (File)localObject1, (String)localObject2);
-      localObject2 = new Intent(this.jdField_a_of_type_Adyc.a.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a(), ForwardRecentActivity.class);
-      ((Intent)localObject2).putExtra("key_flag_from_plugin", true);
-      ((Intent)localObject2).putExtra("image_url", (String)localObject1);
-      ((Intent)localObject2).putExtra("forward_type", -3);
-      ((Intent)localObject2).putExtra("pkg_name", "com.tencent.mobileqq");
-      ((Intent)localObject2).putExtra("req_type", 5);
-      ((Intent)localObject2).putExtra("k_back", true);
-      ((Intent)localObject2).putExtra("brief_key", str1);
-      ((Intent)localObject2).putExtra("app_name", str2);
-      if (!TextUtils.isEmpty(str3)) {
-        ((Intent)localObject2).putExtra("struct_share_key_source_icon", str3);
+      paramURLImageView.setImageDrawable(null);
+      paramURLImageView.setImageDrawable((Drawable)localObject);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SimpleUIChoiceView", 2, "onBindViewHolder loadPic colorDrawable=" + localObject + " bReady=" + bool + " checked=" + paramadyf.jdField_a_of_type_Boolean);
+    }
+    paramadyf.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)localObject);
+    if (!bool)
+    {
+      ((URLDrawable)localObject).setURLDrawableListener(this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity);
+      ((URLDrawable)localObject).startDownload();
+    }
+  }
+  
+  private boolean a(URLDrawable paramURLDrawable)
+  {
+    return (paramURLDrawable != null) && ((paramURLDrawable.getStatus() == 1) || (paramURLDrawable.getStatus() == 4));
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SimpleUIChoiceView", 2, "updateSimpleUIChoice bpref=" + paramInt + " needChangeTheme=" + paramBoolean);
+    }
+    if ((paramInt >= 0) && (this.jdField_a_of_type_Adyg != null))
+    {
+      adyf localadyf = this.jdField_a_of_type_Adyg.a(paramInt);
+      localadyf.jdField_b_of_type_Boolean = paramBoolean;
+      if ((this.jdField_a_of_type_Adyg.a(localadyf, paramInt, true)) && (paramBoolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity.a(localadyf.jdField_a_of_type_Int);
       }
-      ((Intent)localObject2).putExtra("struct_share_key_source_action", "web");
-      ((Intent)localObject2).putExtra("struct_share_key_source_url", str4);
-      ((Intent)localObject2).putExtra("stuctmsg_bytes", StructMsgFactory.a(((Intent)localObject2).getExtras()).getBytes());
-      this.jdField_a_of_type_Adyc.a.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.startActivityForResult((Intent)localObject2, (byte)15);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.scrollToPosition(paramInt);
+    }
+  }
+  
+  public void a(View paramView, GeneralSettingActivity paramGeneralSettingActivity)
+  {
+    ArrayList localArrayList = new ArrayList();
+    int j = azmk.c();
+    int i = 0;
+    while (i < azmf.a.length)
+    {
+      adyf localadyf = new adyf(this, azmf.b[i], azmf.a[i], i);
+      if (i == j) {
+        localadyf.jdField_a_of_type_Boolean = true;
+      }
+      a(null, localadyf);
+      localArrayList.add(localadyf);
+      i += 1;
+    }
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131364436));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemViewCacheSize(7);
+    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(paramGeneralSettingActivity);
+    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setOrientation(0);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
+    this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity = paramGeneralSettingActivity;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new adyl(this, 8));
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Adyg = new adyg(this, localArrayList);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Adyg);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null) {}
+    float f;
+    do
+    {
+      return true;
+      f = paramMotionEvent.getY();
+      paramMotionEvent = new int[2];
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLocationOnScreen(paramMotionEvent);
+    } while ((f <= paramMotionEvent[1]) || (f >= paramMotionEvent[1] + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getHeight()));
+    return false;
+  }
+  
+  public void b(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SimpleUIChoiceView", 2, "selectSimpleUIChoice bpref=" + paramInt + " isLoading=" + paramBoolean);
+    }
+    if ((paramInt >= 0) && (this.jdField_a_of_type_Adyg != null))
+    {
+      adyf localadyf = this.jdField_a_of_type_Adyg.a(paramInt);
+      localadyf.jdField_b_of_type_Boolean = paramBoolean;
+      this.jdField_a_of_type_Adyg.a(localadyf, paramInt, true);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.scrollToPosition(paramInt);
     }
   }
 }

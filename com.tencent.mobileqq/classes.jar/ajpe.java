@@ -1,16 +1,43 @@
-import com.tencent.mobileqq.troop.utils.TroopFileError.SimpleErrorInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import android.app.Activity;
+import android.content.res.Resources;
 
 class ajpe
-  implements Runnable
+  implements ajpf
 {
-  ajpe(ajpd paramajpd, TroopFileTransferManager.Item paramItem) {}
+  ajpe(ajpb paramajpb, ajpf paramajpf) {}
   
-  public void run()
+  public void a()
   {
-    TroopFileError.SimpleErrorInfo localSimpleErrorInfo = new TroopFileError.SimpleErrorInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Ajpd.a.f, 3, 210);
-    this.jdField_a_of_type_Ajpd.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 3, localSimpleErrorInfo);
+    ajpb.a(this.jdField_a_of_type_Ajpb, new bety(ajpb.a(this.jdField_a_of_type_Ajpb), ajpb.a(this.jdField_a_of_type_Ajpb).getResources().getDimensionPixelSize(2131298914)));
+    ajpb.a(this.jdField_a_of_type_Ajpb).c(2131718384);
+    ajpb.a(this.jdField_a_of_type_Ajpb).setCancelable(false);
+    ajpb.a(this.jdField_a_of_type_Ajpb).show();
+    if (this.jdField_a_of_type_Ajpf != null) {
+      this.jdField_a_of_type_Ajpf.a();
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (ajpb.a(this.jdField_a_of_type_Ajpb) != null) {
+      ajpb.a(this.jdField_a_of_type_Ajpb).dismiss();
+    }
+    this.jdField_a_of_type_Ajpb.a(true);
+    ajpb.a(this.jdField_a_of_type_Ajpb, false);
+    if (this.jdField_a_of_type_Ajpf != null) {
+      this.jdField_a_of_type_Ajpf.a(paramString);
+    }
+  }
+  
+  public void b()
+  {
+    if (ajpb.a(this.jdField_a_of_type_Ajpb) != null) {
+      ajpb.a(this.jdField_a_of_type_Ajpb).dismiss();
+    }
+    ajpb.a(this.jdField_a_of_type_Ajpb, false);
+    if (this.jdField_a_of_type_Ajpf != null) {
+      this.jdField_a_of_type_Ajpf.b();
+    }
   }
 }
 

@@ -1,23 +1,27 @@
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller;
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
-import com.tencent.biz.qqstory.troop.model.TroopStoryAIOVideoListSynchronizer;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.ArrayList;
 
-public class ony
-  implements BatchHandlerListPuller.IPullResultCallback
+class ony
+  extends oob
 {
-  public ony(TroopStoryAIOVideoListSynchronizer paramTroopStoryAIOVideoListSynchronizer, BatchHandlerListPuller paramBatchHandlerListPuller) {}
-  
-  public void a(boolean paramBoolean)
+  ony(omz paramomz, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopStoryAIOVideoListSynchronizer.a.set(false);
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopStoryAIOVideoListSynchronizer.c();
+    super(paramomz, null);
+  }
+  
+  void a(ooe paramooe)
+  {
+    if (this.jdField_a_of_type_Int == 1) {
+      paramooe.onCommentListLoad(1, false, new ArrayList(), false, 6, 6);
+    }
+    while (this.jdField_a_of_type_Int != 2) {
+      return;
+    }
+    paramooe.onCommentLoadMore(1, false, new ArrayList(), false, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ony
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
-class afdk
-  implements Runnable
+public final class afdk
+  implements bhuk
 {
-  afdk(afdj paramafdj, Card paramCard) {}
+  public afdk(Activity paramActivity, bhuf parambhuf, String paramString, afdp paramafdp) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    NearbyProfileDisplayPanel.a(this.jdField_a_of_type_Afdj.a).setOnClickListener(new afdl(this));
+    AIOLongShotHelper.a(this.jdField_a_of_type_AndroidAppActivity, paramView, paramInt, this.jdField_a_of_type_Bhuf, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Afdp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afdk
  * JD-Core Version:    0.7.0.1
  */

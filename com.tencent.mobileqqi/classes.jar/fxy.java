@@ -1,18 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-class fxy
-  implements DialogInterface.OnClickListener
+public final class fxy
+  implements Runnable
 {
-  fxy(fxx paramfxx, SharedPreferences paramSharedPreferences, QQCustomDialog paramQQCustomDialog) {}
+  public fxy(int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("FileViewFirstTips5.0", true).commit();
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, this.a, 0).b(FMToastUtil.a());
   }
 }
 

@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
 class adnb
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  adnb(adna paramadna) {}
+  adnb(admx paramadmx) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.a.j();
+    this.a.a.setResult(4003);
+    this.a.a.finish();
   }
 }
 

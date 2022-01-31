@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/q1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <TextView android:id="@id/bw5" android:visibility="gone" style="@style/lf" />
+        <ListView android:id="@id/bvr" android:background="@color/a6q" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/a3x" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
+        <TextView android:textColor="@color/a8h" android:gravity="center_horizontal" android:id="@id/bw6" android:background="#ffced2d7" android:paddingTop="40.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/lf" />
+        <LinearLayout android:gravity="center_vertical" android:id="@id/bvt" android:background="@drawable/vw" android:visibility="gone" style="@style/mp">
+            <TextView android:id="@id/bvu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="3.0dip" android:text="@string/d36" android:singleLine="false" android:layout_weight="1.0" style="@style/lg" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

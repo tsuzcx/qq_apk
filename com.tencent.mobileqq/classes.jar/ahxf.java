@@ -1,23 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendListInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public final class ahxf
-  implements Parcelable.Creator
+class ahxf
+  implements DialogInterface.OnKeyListener
 {
-  public FriendListInfo a(Parcel paramParcel)
-  {
-    return new FriendListInfo(paramParcel);
-  }
+  ahxf(ahww paramahww, int paramInt) {}
   
-  public FriendListInfo[] a(int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    return new FriendListInfo[paramInt];
+    if (paramInt == 4)
+    {
+      if (!ahww.a(this.jdField_a_of_type_Ahww)) {
+        break label28;
+      }
+      ahww.a(this.jdField_a_of_type_Ahww, this.jdField_a_of_type_Int);
+    }
+    for (;;)
+    {
+      return true;
+      label28:
+      ahww.a(this.jdField_a_of_type_Ahww, ahww.a(this.jdField_a_of_type_Ahww), Long.valueOf(ahww.a(this.jdField_a_of_type_Ahww)).longValue());
+      ahww.a(this.jdField_a_of_type_Ahww);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxf
  * JD-Core Version:    0.7.0.1
  */

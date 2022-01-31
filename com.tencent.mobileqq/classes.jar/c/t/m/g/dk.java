@@ -1,37 +1,33 @@
 package c.t.m.g;
 
-import android.location.Location;
-import android.os.Bundle;
+import android.os.Looper;
 
-public final class dk
+public abstract class dk
+  extends dl
 {
-  public static final Location a = new Location("Empty");
+  public abstract int a(Looper paramLooper);
   
-  static
+  public final int b(Looper paramLooper)
   {
-    new Bundle();
-  }
-  
-  public static String a(int paramInt1, int paramInt2)
-  {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    boolean bool = cy.a().d("https");
-    StringBuilder localStringBuilder2 = new StringBuilder("http");
-    if (bool) {}
-    for (String str = "s";; str = "")
+    synchronized (this.n)
     {
-      localStringBuilder1.append(str + "://lbs.map.qq.com/loc");
-      localStringBuilder1.append("?");
-      localStringBuilder1.append("c=1");
-      localStringBuilder1.append("&mars=").append(paramInt1);
-      localStringBuilder1.append("&obs=").append(paramInt2);
-      return localStringBuilder1.toString();
+      if (this.m) {
+        return -1;
+      }
+      this.m = true;
+      if (co.e())
+      {
+        b();
+        co.a("startup()");
+      }
+      int i = a(paramLooper);
+      return i;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.dk
  * JD-Core Version:    0.7.0.1
  */

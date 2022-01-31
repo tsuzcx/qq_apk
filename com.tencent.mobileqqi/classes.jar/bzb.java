@@ -1,46 +1,27 @@
-import android.app.Dialog;
 import android.view.View;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class bzb
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  int jdField_a_of_type_Int = -1;
+  public bzb(ChatActivity paramChatActivity, FrameLayout paramFrameLayout) {}
   
-  public bzb(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.delmsg", 2, "hor anim onAnimationEnd() is called,time is:" + System.currentTimeMillis());
     }
-    switch (paramInt)
-    {
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.a.setVisibility(0);
     }
-    do
-    {
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
-      } while (this.jdField_a_of_type_Int < 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, false);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
-    } while (this.jdField_a_of_type_Int < 0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, true);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bzb
  * JD-Core Version:    0.7.0.1
  */

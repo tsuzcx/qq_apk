@@ -1,45 +1,103 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.support.annotation.Nullable;
+import java.util.Arrays;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class uxj
-  implements ActionSheet.OnButtonClickListener
 {
-  public uxj(FileVideoItemBuilder paramFileVideoItemBuilder, MessageForFile paramMessageForFile, ActionSheet paramActionSheet) {}
+  public int a;
+  private final String a;
+  public final String[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public final int h;
   
-  public void OnClick(View paramView, int paramInt)
+  private uxj(JSONObject paramJSONObject)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -1L) != -1) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.b.post(new uxk(this));
-    }
-    for (;;)
+    int j;
+    try
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      return;
-      paramView = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
-      if (paramView.status == 16)
-      {
-        FMToastUtil.a(2131428188);
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-        return;
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
+      this.jdField_a_of_type_Int = paramJSONObject.getInt("t");
+      this.h = paramJSONObject.getJSONObject("a").getInt("r");
+      JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
+      this.b = localJSONArray.getInt(0);
+      this.c = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
+      this.d = localJSONArray.getInt(0);
+      this.e = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("lp");
+      this.f = localJSONArray.getInt(0);
+      this.g = localJSONArray.getInt(1);
+      paramJSONObject = paramJSONObject.getJSONArray("c");
+      j = paramJSONObject.length();
+      if (j < 1) {
+        throw new IllegalArgumentException("content length should more than 1");
       }
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status = 1002;
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
     }
+    catch (JSONException paramJSONObject)
+    {
+      throw new IllegalArgumentException(paramJSONObject);
+    }
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
+    while (i < j)
+    {
+      this.jdField_a_of_type_ArrayOfJavaLangString[i] = paramJSONObject.optString(i, "(NULL)");
+      i += 1;
+    }
+  }
+  
+  public static uxj a(@Nullable String paramString)
+  {
+    try
+    {
+      paramString = a(new JSONObject(paramString));
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      wxe.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+      return null;
+    }
+    catch (NullPointerException paramString)
+    {
+      wxe.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+    }
+    return null;
+  }
+  
+  public static uxj a(JSONObject paramJSONObject)
+  {
+    try
+    {
+      paramJSONObject = new uxj(paramJSONObject);
+      return paramJSONObject;
+    }
+    catch (IllegalArgumentException paramJSONObject)
+    {
+      wxe.a("StoryVideoItem.PollLayout", "fromJson()", paramJSONObject);
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String toString()
+  {
+    return "PollLayout{type=" + this.jdField_a_of_type_Int + ", screenWidth=" + this.b + ", screenHeight=" + this.c + ", layoutWidth=" + this.d + ", layoutHeight=" + this.e + ", layoutCenterX=" + this.f + ", layoutCenterY=" + this.g + ", rotation=" + this.h + ", contents=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uxj
  * JD-Core Version:    0.7.0.1
  */

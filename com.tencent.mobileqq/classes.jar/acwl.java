@@ -1,98 +1,69 @@
-import com.tencent.mobileqq.filemanager.core.FileVideoManager;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerCallback;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.mobileqq.widget.QQBlurView;
 
 public class acwl
-  implements Runnable
+  implements View.OnClickListener
 {
-  public acwl(FileVideoManager.VideoControl paramVideoControl, FileManagerEntity paramFileManagerEntity, FileVideoManager.FileVideoManagerCallback paramFileVideoManagerCallback) {}
+  public acwl(EmosmActivity paramEmosmActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((FileVideoManager.a != null) && (FileVideoManager.a(FileVideoManager.a) != null) && (FileVideoManager.a(FileVideoManager.a).size() > 0))
+    if (!this.a.jdField_b_of_type_Boolean)
     {
-      localObject = FileVideoManager.a(FileVideoManager.a).keySet().iterator();
-      while (((Iterator)localObject).hasNext())
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131692332);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(true);
+      this.a.jdField_a_of_type_Apoy.a(true);
+      this.a.jdField_b_of_type_Boolean = true;
+      this.a.jdField_a_of_type_Apoy.notifyDataSetChanged();
+      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+      EmosmActivity.a(this.a).setVisibility(0);
+      EmosmActivity.a(this.a).setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+      this.a.setTitle(String.format(this.a.getResources().getString(2131692331), new Object[] { Integer.valueOf(0) }));
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setPadding(0, 0, 0, bdoo.a(44.0F));
+      azqs.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpsEdit", 0, 0, "", "", "", "");
+      if (this.a.jdField_b_of_type_Int == 1) {
+        azqs.b(this.a.app, "dc00898", "", "", "0X800AB0F", "0X800AB0F", 0, 0, "", "", "", "");
+      }
+    }
+    while ((this.a.jdField_a_of_type_Int != 2) && (this.a.jdField_a_of_type_Int != 1)) {
+      for (;;)
       {
-        long l = ((Long)((Iterator)localObject).next()).longValue();
-        if (l != this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId)
-        {
-          FileVideoManager.VideoControl localVideoControl = (FileVideoManager.VideoControl)FileVideoManager.a(FileVideoManager.a).get(Long.valueOf(l));
-          if (localVideoControl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
-          {
-            localVideoControl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
-            localVideoControl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.release();
-            localVideoControl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = null;
-          }
-          if (localVideoControl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr != null)
-          {
-            if (localVideoControl.jdField_a_of_type_Int > 0)
-            {
-              localVideoControl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.stopPreLoad(localVideoControl.jdField_a_of_type_Int);
-              if (QLog.isDevelopLevel()) {
-                QLog.i("FileVideoManager<FileAssistant>", 1, "[" + localVideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] stop playId[" + localVideoControl.jdField_a_of_type_Int + "]");
-              }
-            }
-            if (localVideoControl.jdField_c_of_type_Int > 0)
-            {
-              localVideoControl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.stopPreLoad(localVideoControl.jdField_c_of_type_Int);
-              if (QLog.isDevelopLevel()) {
-                QLog.i("FileVideoManager<FileAssistant>", 1, "[" + localVideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] stop downloadId[" + localVideoControl.jdField_c_of_type_Int + "]");
-              }
-            }
-            if (localVideoControl.d > 0)
-            {
-              localVideoControl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.stopPreLoad(localVideoControl.d);
-              if (QLog.isDevelopLevel()) {
-                QLog.i("FileVideoManager<FileAssistant>", 1, "[" + localVideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] stop blockId[" + localVideoControl.jdField_c_of_type_Int + "]");
-              }
-            }
-          }
-        }
+        this.a.a(this.a.jdField_b_of_type_Boolean);
+        return;
+        azqs.b(this.a.app, "dc00898", "", "", "0X800AB16", "0X800AB16", 0, 0, "", "", "", "");
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]getPlayUrl");
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131692330);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(false);
+    this.a.jdField_a_of_type_Apoy.a(false);
+    this.a.f();
+    this.a.jdField_b_of_type_Boolean = false;
+    this.a.jdField_a_of_type_Apoy.notifyDataSetChanged();
+    this.a.jdField_a_of_type_Apoy.a();
+    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    EmosmActivity.a(this.a).setVisibility(8);
+    EmosmActivity.a(this.a).setVisibility(8);
+    if (this.a.jdField_b_of_type_Int == 2) {
+      this.a.setTitle(2131692094);
     }
-    Object localObject = FMSettings.a().c() + MD5.toMD5(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_b_of_type_JavaLangString = ((String)localObject);
-    FileVideoManager.VideoControl.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]##########getPlayUrl########### bDownloading = false");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_b_of_type_Boolean = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_Int >= 0)
+    for (;;)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.buildPlayURLMp4(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_Int);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FileVideoManager<FileAssistant>", 2, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]getPlayUrl:" + (String)localObject);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerCallback.a((String)localObject, this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_c_of_type_JavaLangString);
-      }
-      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setPadding(0, 0, 0, 0);
+      break;
+      this.a.setTitle(2131692341);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType == 3000)
-    {
-      FileVideoManager.VideoControl.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, new acwm(this));
-      return;
-    }
-    FileVideoManager.VideoControl.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, new acwn(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acwl
  * JD-Core Version:    0.7.0.1
  */

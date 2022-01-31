@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/boj" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/gcz" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <TextView android:id="@id/m1q" android:background="@drawable/hee" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignTop="@id/gcp" android:layout_alignBottom="@id/gd2" />
+        <View android:id="@id/gcp" android:layout_width="fill_parent" android:layout_height="@dimen/a_m" android:layout_marginBottom="4.0dip" />
+        <include android:id="@id/gd2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/gcp" layout="@layout/zh" />
+        <RelativeLayout android:id="@id/g84" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="46.0dip" android:layout_below="@id/gd2" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/g85" android:layout_width="@dimen/a4s" android:layout_height="@dimen/a4s" android:src="@drawable/com" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <TextView android:textSize="21.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/g86" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="34.0dip" android:maxWidth="144.0dip" android:singleLine="true" android:layout_below="@id/g84" android:layout_centerHorizontal="true" />
+        <include android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/g86" android:layout_centerHorizontal="true" layout="@layout/x5" />
+    </RelativeLayout>
+    <include android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="@dimen/a7m" android:layout_alignParentTop="true" layout="@layout/yl" />
+    <com.tencent.av.ui.QavPanel android:id="@id/gb4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/g7q" android:background="@color/ql" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

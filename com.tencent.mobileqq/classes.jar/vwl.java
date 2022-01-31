@@ -1,22 +1,14 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
-
-public class vwl
-  implements Runnable
+public abstract interface vwl
 {
-  public vwl(NearbyChatPie paramNearbyChatPie) {}
+  public abstract void a(long paramLong1, long paramLong2, vwa paramvwa);
   
-  public void run()
-  {
-    Intent localIntent = this.a.a.getIntent();
-    localIntent.putExtra("uintype", 0);
-    NearbyChatPie.a(this.a, localIntent);
-  }
+  public abstract void b(vwa paramvwa);
+  
+  public abstract void c(vwa paramvwa);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vwl
  * JD-Core Version:    0.7.0.1
  */

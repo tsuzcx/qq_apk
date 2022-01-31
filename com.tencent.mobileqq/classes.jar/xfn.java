@@ -1,31 +1,26 @@
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig.ConfigInfo;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-public class xfn
-  implements Runnable
+class xfn
+  implements View.OnClickListener
 {
-  public xfn(PreloadManager paramPreloadManager) {}
+  xfn(xfh paramxfh) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadManager", 2, "synDataFromMoggy");
+    this.a.dismiss();
+    if ((this.a.a != null) && (this.a.a.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 3, 4);
     }
-    Object localObject = (QWalletConfigManager)this.a.a.getManager(244);
-    if (localObject != null)
-    {
-      ((QWalletConfigManager)localObject).a("preload", this.a);
-      localObject = ((QWalletConfigManager)localObject).a("preload");
-      this.a.a((QWalletConfig.ConfigInfo)localObject);
-    }
+    wxk.a("0X80076C6");
+    wxk.b("0X80075DA");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xfn
  * JD-Core Version:    0.7.0.1
  */

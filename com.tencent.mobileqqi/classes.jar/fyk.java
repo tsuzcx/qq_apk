@@ -1,17 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
 
-public class fyk
-  implements Runnable
+public final class fyk
+  extends ClickableSpan
 {
-  public fyk(FileTransferHandler paramFileTransferHandler, long paramLong, boolean paramBoolean, String paramString) {}
+  public fyk(FileManagerUtil.TipsClickedInterface paramTipsClickedInterface) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Long + "]  handle query onlinefile upload progress resp. sucess =" + this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    this.a.a(paramView);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.maproam.widget.RoamLocalSearchBar;
 
-public final class gcc
-  implements Parcelable.Creator
+public class gcc
+  implements DialogInterface.OnDismissListener
 {
-  public ForwardFileInfo a(Parcel paramParcel)
-  {
-    return new ForwardFileInfo(paramParcel, null);
-  }
+  public gcc(RoamLocalSearchBar paramRoamLocalSearchBar, View paramView1, int paramInt, View paramView2, TranslateAnimation paramTranslateAnimation) {}
   
-  public ForwardFileInfo[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new ForwardFileInfo[paramInt];
+    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.b.setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamLocalSearchBar.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gcc
  * JD-Core Version:    0.7.0.1
  */

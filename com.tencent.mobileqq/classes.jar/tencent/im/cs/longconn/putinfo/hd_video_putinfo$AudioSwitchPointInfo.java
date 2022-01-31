@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class hd_video_putinfo$AudioSwitchPointInfo
-  extends MessageMicro
+  extends MessageMicro<AudioSwitchPointInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_nowifi_words = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -31,7 +31,7 @@ public final class hd_video_putinfo$AudioSwitchPointInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.longconn.putinfo.hd_video_putinfo.AudioSwitchPointInfo
  * JD-Core Version:    0.7.0.1
  */

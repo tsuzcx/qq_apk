@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import msf.msgcomm.msg_comm.Msg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class ahxo
-  implements Runnable
+class ahxo
+  implements DialogInterface.OnClickListener
 {
-  public ahxo(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg) {}
+  ahxo(ahww paramahww) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b.a(8)).a(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg);
+    if (paramInt == 0) {
+      ahww.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxo
  * JD-Core Version:    0.7.0.1
  */

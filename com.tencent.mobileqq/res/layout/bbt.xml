@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/jt8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/jt7" android:background="@drawable/skin_entry_background_theme_version2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:orientation="horizontal" android:id="@id/agq" android:background="@drawable/j7" android:clickable="true" android:layout_width="fill_parent" android:layout_height="46.0dip">
+            <ImageView android:id="@id/bre" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="11.0dip" android:src="@drawable/fnk" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/ayq" android:textColor="@color/skin_black_theme_version2" android:id="@id/aks" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:text="@string/rfc" android:includeFontPadding="false" android:drawableRight="@drawable/skin_icon_arrow_right_normal" android:layout_toRightOf="@id/bre" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </FrameLayout>
+    <View android:id="@id/bmt" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+</LinearLayout>

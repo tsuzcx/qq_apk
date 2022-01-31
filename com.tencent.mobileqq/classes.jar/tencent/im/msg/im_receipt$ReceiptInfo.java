@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class im_receipt$ReceiptInfo
-  extends MessageMicro
+  extends MessageMicro<ReceiptInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8 }, new String[] { "uint64_read_time" }, new Object[] { Long.valueOf(0L) }, ReceiptInfo.class);
   public final PBUInt64Field uint64_read_time = PBField.initUInt64(0L);

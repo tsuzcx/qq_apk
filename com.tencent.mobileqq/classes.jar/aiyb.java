@@ -1,19 +1,18 @@
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
 
-class aiyb
-  extends AnimatorListenerAdapter
+public class aiyb
+  implements View.OnClickListener
 {
-  aiyb(aiya paramaiya) {}
+  public aiyb(LingHbFragment paramLingHbFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.r();
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b.requestFocus();
+    this.a.c.clearFocus();
+    LingHbFragment.a(this.a).a();
   }
 }
 

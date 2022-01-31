@@ -1,27 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
+import com.tencent.av.ui.VideoLayerUI;
 
-class mnn
-  implements Runnable
+public class mnn
+  implements luv
 {
-  mnn(mnm parammnm) {}
+  public mnn(VideoLayerUI paramVideoLayerUI, mgp parammgp, boolean paramBoolean) {}
   
-  public void run()
+  public void a()
   {
-    PublicAccountDataManager localPublicAccountDataManager = (PublicAccountDataManager)BaseApplicationImpl.getApplication().getRuntime().getManager(55);
-    mnm.a(this.a, localPublicAccountDataManager.a(Long.valueOf(mnm.a(this.a))));
-    if ((!mnm.a(this.a)) && (mnm.b(this.a))) {
-      mnm.b(this.a, true);
-    }
-    ThreadManager.getUIHandler().post(new mno(this));
+    this.jdField_a_of_type_Mgp.n(true);
+    this.jdField_a_of_type_Mgp.a(-1044L, this.jdField_a_of_type_Boolean);
+    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, this.jdField_a_of_type_Mgp, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mnn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import mqq.app.QQPermissionCallback;
 
 public class aciz
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements QQPermissionCallback
 {
-  public aciz(ExtendFriendSquareFragment paramExtendFriendSquareFragment, View paramView) {}
+  public aciz(BaseChatPie paramBaseChatPie) {}
   
-  public void onGlobalLayout()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    int[] arrayOfInt = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(arrayOfInt);
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    ExtendFriendSquareFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment, arrayOfInt[1]);
+    bdgm.a(this.a.a(), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.bm();
   }
 }
 

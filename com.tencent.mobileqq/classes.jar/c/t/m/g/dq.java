@@ -1,83 +1,48 @@
 package c.t.m.g;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Handler;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
 
 public final class dq
-  extends BroadcastReceiver
 {
-  private final da a;
-  private boolean b;
+  private static HashMap<String, ThreadLocal<SimpleDateFormat>> a = new HashMap();
   
-  public dq(da paramda)
+  public static SimpleDateFormat a(String paramString)
   {
-    this.a = paramda;
-  }
-  
-  public final void a()
-  {
-    if (!this.b) {
-      return;
-    }
-    this.b = false;
-    try
+    for (;;)
     {
-      this.a.a.unregisterReceiver(this);
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  public final void a(Handler paramHandler)
-  {
-    if (this.b) {
-      return;
-    }
-    this.b = true;
-    try
-    {
-      IntentFilter localIntentFilter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
-      this.a.a.registerReceiver(this, localIntentFilter, null, paramHandler);
-      return;
-    }
-    catch (Exception paramHandler)
-    {
-      f.a.a("TxNetworkStateMonitor", "listenNetworkState: failed", paramHandler);
-    }
-  }
-  
-  public final void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent == null) {
-      return;
-    }
-    try
-    {
-      if (paramIntent.getBooleanExtra("noConnectivity", false))
+      try
       {
-        this.a.b(Integer.valueOf(-1));
-        return;
+        ThreadLocal localThreadLocal = (ThreadLocal)a.get(paramString);
+        if (localThreadLocal == null)
+        {
+          localThreadLocal = new ThreadLocal();
+          a.put(paramString, localThreadLocal);
+          SimpleDateFormat localSimpleDateFormat2 = (SimpleDateFormat)localThreadLocal.get();
+          SimpleDateFormat localSimpleDateFormat1 = localSimpleDateFormat2;
+          if (localSimpleDateFormat2 == null)
+          {
+            localSimpleDateFormat1 = new SimpleDateFormat(paramString, Locale.ENGLISH);
+            localThreadLocal.set(localSimpleDateFormat1);
+          }
+          return localSimpleDateFormat1;
+        }
       }
+      finally {}
     }
-    catch (Exception paramContext)
-    {
-      f.a.a("TxNetworkStateMonitor", "listenNetworkState: Exception", paramContext);
-      return;
-    }
-    if (f.a.e(paramContext))
-    {
-      this.a.b(Integer.valueOf(1));
-      return;
-    }
-    this.a.b(Integer.valueOf(0));
+  }
+  
+  public static String b(String paramString)
+  {
+    long l = System.currentTimeMillis();
+    return a(paramString).format(new Date(l));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.dq
  * JD-Core Version:    0.7.0.1
  */

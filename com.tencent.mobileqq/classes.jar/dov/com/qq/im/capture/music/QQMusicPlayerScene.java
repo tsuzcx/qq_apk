@@ -3,29 +3,23 @@ package dov.com.qq.im.capture.music;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import anmd;
-import anme;
+import bhtd;
+import bltu;
 import com.tencent.mobileqq.activity.aio.AudioPlayer;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class QQMusicPlayerScene
-  extends MusicPlayerScene
+  extends bltu
   implements Handler.Callback
 {
-  public WeakReferenceHandler a;
+  bhtd jdField_a_of_type_Bhtd = new bhtd(Looper.getMainLooper(), this);
   private Timer jdField_a_of_type_JavaUtilTimer;
   private TimerTask jdField_a_of_type_JavaUtilTimerTask;
   private boolean jdField_a_of_type_Boolean = true;
-  
-  public QQMusicPlayerScene()
-  {
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-  }
   
   public void a()
   {
@@ -40,21 +34,21 @@ public class QQMusicPlayerScene
         StringBuilder localStringBuilder = new StringBuilder("startMusic");
         if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null))
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a(3);
-          str = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.a;
-          if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.g < this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.f)
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.b(3);
+          str = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mMusicName;
+          if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicDuration < this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicEnd)
           {
             localStringBuilder.append(" music format no correct musicName=").append(str);
-            localStringBuilder.append(" musicDuration=").append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.g);
-            localStringBuilder.append(" musicEnd=").append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.f);
-            this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.e = 0;
-            this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.f = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.g;
+            localStringBuilder.append(" musicDuration=").append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicDuration);
+            localStringBuilder.append(" musicEnd=").append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicEnd);
+            this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart = 0;
+            this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicEnd = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicDuration;
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.f <= this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.e)
+          if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicEnd <= this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart)
           {
             localStringBuilder.append(" musicEnd <= musicStart don't play music musicName=").append(str);
-            localStringBuilder.append(" musicEnd=").append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.f);
-            localStringBuilder.append(" musicStart=").append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.e);
+            localStringBuilder.append(" musicEnd=").append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicEnd);
+            localStringBuilder.append(" musicStart=").append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart);
             localStringBuilder.append("\n");
             if (QLog.isColorLevel()) {
               QLog.d("QQMusicPlayerScene", 2, localStringBuilder.toString());
@@ -62,10 +56,10 @@ public class QQMusicPlayerScene
             a(-1, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
             return;
           }
-          j = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.e;
+          j = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart;
           a(j, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-          i = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.f - this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.e;
-          a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.a(), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.e, i);
+          i = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicEnd - this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart;
+          a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath(), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart, i);
           localStringBuilder.append(" musicName=").append(str);
           localStringBuilder.append(" position=").append(j);
           localStringBuilder.append(" timer=").append(i);
@@ -85,7 +79,7 @@ public class QQMusicPlayerScene
   {
     h();
     this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_JavaUtilTimerTask = new anme(this, null);
+    this.jdField_a_of_type_JavaUtilTimerTask = new QQMusicPlayerScene.MyMusicTimerTask(this, null);
     this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_JavaUtilTimerTask, paramInt);
     if (QLog.isColorLevel()) {
       QLog.d("QQMusicPlayerScene", 2, "setMyMusicTimer");
@@ -96,7 +90,7 @@ public class QQMusicPlayerScene
   
   protected void a(String paramString, int paramInt1, int paramInt2)
   {
-    ThreadManager.postImmediately(new anmd(this, paramString, paramInt1, paramInt2), null, true);
+    ThreadManager.postImmediately(new QQMusicPlayerScene.1(this, paramString, paramInt1, paramInt2), null, true);
   }
   
   public void b()
@@ -111,15 +105,15 @@ public class QQMusicPlayerScene
         this.jdField_a_of_type_Boolean = true;
         if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a()) && (this.jdField_a_of_type_Int != -1))
         {
-          str = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.a;
-          if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.f)
+          str = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mMusicName;
+          if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicEnd)
           {
             localStringBuilder.append(" mCurrentPosition>=musicEnd reset musicName").append(str);
             localStringBuilder.append(" mCurrentPosition=").append(this.jdField_a_of_type_Int);
-            localStringBuilder.append(" musicEnd").append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.f);
-            this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.e;
+            localStringBuilder.append(" musicEnd").append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicEnd);
+            this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart;
           }
-          i = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.f - this.jdField_a_of_type_Int;
+          i = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicEnd - this.jdField_a_of_type_Int;
           if (i <= 0)
           {
             a(-1, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
@@ -129,7 +123,7 @@ public class QQMusicPlayerScene
             }
             return;
           }
-          a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.a(), this.jdField_a_of_type_Int, i);
+          a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath(), this.jdField_a_of_type_Int, i);
           j = this.jdField_a_of_type_Int;
           b(j, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
           localStringBuilder.append(" musicName=").append(str);
@@ -157,11 +151,11 @@ public class QQMusicPlayerScene
       StringBuilder localStringBuilder = new StringBuilder("pauseMusic");
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a())
       {
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a();
+        this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.b();
         i = this.jdField_a_of_type_Int;
       }
       if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) {
-        str = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.a;
+        str = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mMusicName;
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.c();
       h();
@@ -189,17 +183,17 @@ public class QQMusicPlayerScene
         StringBuilder localStringBuilder = new StringBuilder("replayMusic");
         if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null))
         {
-          str = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.a;
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a(3);
-          if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.g < this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.f)
+          str = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mMusicName;
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.b(3);
+          if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicDuration < this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicEnd)
           {
             localStringBuilder.append(" music format no correct musicName=").append(str);
-            localStringBuilder.append(" musicDuration=").append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.g);
-            localStringBuilder.append(" musicEnd=").append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.f);
-            this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.e = 0;
-            this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.f = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.g;
+            localStringBuilder.append(" musicDuration=").append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicDuration);
+            localStringBuilder.append(" musicEnd=").append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicEnd);
+            this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart = 0;
+            this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicEnd = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicDuration;
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.f <= this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.e)
+          if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicEnd <= this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart)
           {
             a(-1, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
             if (QLog.isColorLevel()) {
@@ -207,13 +201,13 @@ public class QQMusicPlayerScene
             }
             return;
           }
-          j = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.e;
-          i = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.f - this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.e;
+          j = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart;
+          i = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicEnd - this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart;
           if (a()) {
             this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.c();
           }
           d(j, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-          a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.a(), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.e, i);
+          a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath(), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart, i);
           localStringBuilder.append(" musicName=").append(str);
           localStringBuilder.append(" position=").append(j);
           localStringBuilder.append(" timer=").append(i);
@@ -238,7 +232,7 @@ public class QQMusicPlayerScene
       h();
       if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null)
       {
-        str = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.a;
+        str = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mMusicName;
         this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = null;
       }
       super.e();
@@ -308,7 +302,7 @@ public class QQMusicPlayerScene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.music.QQMusicPlayerScene
  * JD-Core Version:    0.7.0.1
  */

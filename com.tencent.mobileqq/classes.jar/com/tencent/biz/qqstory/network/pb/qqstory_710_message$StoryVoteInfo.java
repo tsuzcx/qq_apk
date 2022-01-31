@@ -9,9 +9,10 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_710_message$StoryVoteInfo
-  extends MessageMicro
+  extends MessageMicro<StoryVoteInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
+  public final PBUInt32Field at_video_ts = PBField.initUInt32(0);
   public final PBUInt32Field is_bigv = PBField.initUInt32(0);
   public final PBUInt32Field is_my_vote = PBField.initUInt32(0);
   public final PBBytesField nick_postfix = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -29,12 +30,12 @@ public final class qqstory_710_message$StoryVoteInfo
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 50, 58, 64, 72, 82 }, new String[] { "vote_uid", "vote_time", "is_bigv", "union_id", "vote_type", "vote_question", "vote_answer", "video_del", "is_my_vote", "nick_postfix" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro4 }, StoryVoteInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 50, 58, 64, 72, 82, 88 }, new String[] { "vote_uid", "vote_time", "is_bigv", "union_id", "vote_type", "vote_question", "vote_answer", "video_del", "is_my_vote", "nick_postfix", "at_video_ts" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro4, Integer.valueOf(0) }, StoryVoteInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_710_message.StoryVoteInfo
  * JD-Core Version:    0.7.0.1
  */

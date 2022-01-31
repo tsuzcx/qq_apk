@@ -1,20 +1,22 @@
-import com.qq.jce.wup.UniAttribute;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.service.qzone.QZoneFeedCountPackeger;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class ahxr
-  implements Runnable
+class ahxr
+  implements View.OnClickListener
 {
-  public ahxr(UniAttribute paramUniAttribute, QQAppInterface paramQQAppInterface) {}
+  ahxr(ahxp paramahxp, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QZoneFeedCountPackeger.a(this.jdField_a_of_type_ComQqJceWupUniAttribute, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ahxp, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxr
  * JD-Core Version:    0.7.0.1
  */

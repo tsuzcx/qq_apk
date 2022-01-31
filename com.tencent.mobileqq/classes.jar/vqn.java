@@ -1,44 +1,33 @@
-import com.tencent.ark.ArkDebugger.DebuggerCallback;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
 
-class vqn
-  implements ArkDebugger.DebuggerCallback
+public class vqn
+  extends Subscriber.SingleEventSubscriberNoRefect<uow>
 {
-  vqn(vqm paramvqm) {}
+  vqi a;
   
-  public void Accepted()
+  public vqn(@NonNull vqi paramvqi)
   {
-    ArkDispatchTask.getInstance().postToMainThread(new vqo(this));
-    QLog.d("ArkDebugChatPie", 1, "ArkDebugger Accepted");
+    this.a = paramvqi;
   }
   
-  public boolean ReadyToRun(String paramString1, String paramString2, String paramString3)
+  protected void a(@NonNull uow paramuow)
   {
-    ArkAppCenter.a().postToMainThread(new vqs(this, paramString3, paramString2, paramString1));
-    QLog.d("ArkDebugChatPie", 1, String.format("ArkDebugger ReadyToRun viewId: %s, metaData: %s, mode: %s", new Object[] { paramString1, paramString2, paramString3 }));
-    return true;
+    if ((paramuow.b != null) && (paramuow.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)) {
+      vqi.a(this.a, paramuow.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramuow.b.mVid, paramuow.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.feedId);
+    }
   }
   
-  public void ReceivedPackage(String paramString1, String paramString2)
+  public Class acceptEventClass()
   {
-    ArkDebugChatPie.a(this.a.a, paramString1);
-    ArkDebugChatPie.b(this.a.a, paramString2);
-    ArkDispatchTask.getInstance().postToMainThread(new vqr(this, paramString1, paramString2));
-    QLog.d("ArkDebugChatPie", 1, String.format("ArkDebugger ReceivedPackage appid: %s, appview: %s", new Object[] { paramString1, paramString2 }));
-  }
-  
-  public void Stopped(int paramInt)
-  {
-    ArkDispatchTask.getInstance().postToMainThread(new vqp(this, paramInt));
-    QLog.d("ArkDebugChatPie", 1, "ArkDebugger Stopped");
+    return uow.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vqn
  * JD-Core Version:    0.7.0.1
  */

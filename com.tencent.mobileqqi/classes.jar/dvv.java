@@ -1,41 +1,59 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberCardActivity;
-import com.tencent.mobileqq.activity.TroopMemberCardActivity.ViewHolder;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 
 public class dvv
-  implements View.OnClickListener
+  implements SensorEventListener
 {
-  public dvv(TroopMemberCardActivity paramTroopMemberCardActivity) {}
+  public dvv(MediaPlayerManager paramMediaPlayerManager) {}
   
-  public void onClick(View paramView)
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    paramView = paramView.getTag();
-    if ((paramView == null) || (!(paramView instanceof TroopMemberCardActivity.ViewHolder))) {}
-    do
+    float f3;
+    float f2;
+    float f1;
+    int i;
+    int j;
+    int k;
+    if (paramSensorEvent.sensor.getType() == 1)
     {
-      return;
-      paramView = (TroopMemberCardActivity.ViewHolder)paramView;
-      if (paramView.a == 0)
+      float f6 = paramSensorEvent.values[0];
+      float f5 = paramSensorEvent.values[1];
+      float f4 = paramSensorEvent.values[2];
+      f3 = f4;
+      f2 = f5;
+      f1 = f6;
+      if (MediaPlayerManager.c())
       {
-        this.a.c(this.a.e);
-        this.a.f("Clk_account");
-        return;
+        f1 = f6 * 10.0F;
+        f2 = f5 * 10.0F;
+        f3 = f4 * 10.0F;
       }
-      if (paramView.a == 1)
+      i = (int)(this.a.jdField_a_of_type_Float - f1);
+      j = (int)(this.a.b - f2);
+      k = (int)(this.a.c - f3);
+      if ((i == 0) && (j == 0) && (k == 0)) {
+        break label156;
+      }
+    }
+    for (this.a.jdField_a_of_type_Boolean = true;; this.a.jdField_a_of_type_Boolean = false) {
+      label156:
+      do
       {
-        this.a.b(this.a.c, this.a.e);
-        this.a.f("Clk_name");
+        this.a.jdField_a_of_type_Float = f1;
+        this.a.b = f2;
+        this.a.c = f3;
         return;
-      }
-    } while (paramView.a != 3);
-    this.a.a(this.a.c, this.a.e);
-    this.a.f("Clk_set");
+      } while ((i != 0) || (j != 0) || (k != 0));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dvv
  * JD-Core Version:    0.7.0.1
  */

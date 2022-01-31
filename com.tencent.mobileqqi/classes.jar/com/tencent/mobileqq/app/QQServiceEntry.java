@@ -8,16 +8,16 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
-import fkl;
-import fkm;
-import fkn;
+import ffz;
+import fga;
+import fgb;
 import java.util.List;
 
 public class QQServiceEntry
   implements View.OnClickListener, AdapterView.OnItemClickListener
 {
   public static final int a = 1;
-  public static final fkm[] a;
+  public static final fga[] a;
   public static final int b = 4;
   public static final int c = 8;
   public static final int d = 16;
@@ -36,7 +36,7 @@ public class QQServiceEntry
   
   static
   {
-    jdField_a_of_type_ArrayOfFkm = new fkm[6];
+    jdField_a_of_type_ArrayOfFga = new fga[6];
   }
   
   public QQServiceEntry(Context paramContext)
@@ -83,10 +83,10 @@ public class QQServiceEntry
     this.i = ((int)(38.0F * this.jdField_a_of_type_Float));
     this.k = ((int)(5.0F * this.jdField_a_of_type_Float));
     this.jdField_a_of_type_ComTencentMobileqqAppQQServiceEntry$Tag.jdField_a_of_type_AndroidWidgetGridView.setColumnWidth(this.j);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQServiceEntry$Tag.jdField_a_of_type_AndroidWidgetGridView.setAdapter(new fkn(this, this.jdField_a_of_type_ComTencentMobileqqAppQQServiceEntry$Tag.b));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQServiceEntry$Tag.jdField_a_of_type_AndroidWidgetGridView.setAdapter(new fgb(this, this.jdField_a_of_type_ComTencentMobileqqAppQQServiceEntry$Tag.b));
     this.jdField_a_of_type_ComTencentMobileqqAppQQServiceEntry$Tag.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQServiceEntry$Tag.jdField_a_of_type_AndroidWidgetGridView.setVisibility(0);
-    paramView.post(new fkl(this));
+    paramView.post(new ffz(this));
   }
   
   public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong) {}

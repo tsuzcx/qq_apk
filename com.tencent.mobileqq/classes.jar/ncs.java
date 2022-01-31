@@ -1,23 +1,45 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.DefaultPlayerVideoListSynchronizer;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
+import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class ncs
-  extends Job
 {
-  public ncs(DefaultPlayerVideoListSynchronizer paramDefaultPlayerVideoListSynchronizer, int paramInt) {}
+  private static final String a = ncs.class.getName();
   
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelDefaultPlayerVideoListSynchronizer.b(this.jdField_a_of_type_Int);
-    return null;
+    localStringBuffer = new StringBuffer();
+    try
+    {
+      paramString = new BufferedReader(new InputStreamReader(((HttpURLConnection)new URL(paramString).openConnection()).getInputStream()));
+      for (;;)
+      {
+        String str = paramString.readLine();
+        if (str == null) {
+          break;
+        }
+        localStringBuffer.append(str);
+      }
+      return localStringBuffer.toString();
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 2, "http error");
+      }
+    }
+  }
+  
+  public static void a(String paramString, ncu paramncu)
+  {
+    new nct(paramncu, paramString).execute(new Void[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ncs
  * JD-Core Version:    0.7.0.1
  */

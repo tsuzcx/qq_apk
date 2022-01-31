@@ -1,19 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.global.h;
 
-final class aed
-  implements DialogInterface.OnClickListener
+class aed
+  implements View.OnClickListener
 {
-  aed(aec paramaec) {}
+  aed(UtilsModSetMobileStep2SmsActivity paramUtilsModSetMobileStep2SmsActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = new Intent(this.a.a, WtloginSigExpireActivity.class);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    h.c("removeTimeTask showProgressDialog");
+    this.a.removeTimeTask();
   }
 }
 

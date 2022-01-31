@@ -1,28 +1,28 @@
-import com.tencent.mobileqq.activity.photo.MediaFileFilter;
-import com.tencent.mobileqq.activity.photo.MimeHelper;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
 
-public final class wwo
-  extends MediaFileFilter
+public class wwo
+  implements Animation.AnimationListener
 {
-  public boolean a()
+  public wwo(NewMessageYellowBar paramNewMessageYellowBar) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return true;
+    this.a.setVisibility(8);
   }
   
-  public boolean a(String paramString)
-  {
-    paramString = MimeHelper.a(paramString);
-    return (paramString == null) || (!"image".equals(paramString[0])) || (!MimeHelper.a(paramString[1])) || (paramString[1].equals("gif"));
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public boolean b()
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return false;
+    this.a.a.setAlpha(1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wwo
  * JD-Core Version:    0.7.0.1
  */

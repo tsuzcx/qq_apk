@@ -1,11 +1,25 @@
-class gmu
-  implements Runnable
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.service.message.MessageFactoryReceiver.UploadStreamStruct;
+import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
+import com.tencent.mobileqq.transfile.FileMsg;
+
+public class gmu
+  extends MessageObserver
 {
-  gmu(gmr paramgmr, long paramLong1, boolean paramBoolean, long paramLong2) {}
+  public gmu(BuddyTransfileProcessor paramBuddyTransfileProcessor) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, MessageFactoryReceiver.UploadStreamStruct paramUploadStreamStruct)
   {
-    this.jdField_a_of_type_Gmr.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.b);
+    this.a.c(2);
+    if ((paramUploadStreamStruct == null) || (paramUploadStreamStruct.a == null) || (!paramUploadStreamStruct.a.equalsIgnoreCase(this.a.a.e))) {
+      return;
+    }
+    if (!paramBoolean)
+    {
+      BuddyTransfileProcessor.a(this.a, false, paramUploadStreamStruct);
+      return;
+    }
+    BuddyTransfileProcessor.a(this.a, true, paramUploadStreamStruct);
   }
 }
 

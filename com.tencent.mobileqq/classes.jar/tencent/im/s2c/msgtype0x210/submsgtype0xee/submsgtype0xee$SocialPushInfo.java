@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0xee$SocialPushInfo
-  extends MessageMicro
+  extends MessageMicro<SocialPushInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField string_biu_comment = PBField.initBytes(ByteStringMicro.EMPTY);

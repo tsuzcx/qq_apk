@@ -1,34 +1,25 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 public class uqt
-  extends Handler
 {
-  public uqt(RecordSoundPanel paramRecordSoundPanel, Looper paramLooper)
+  public static boolean a(StoryVideoItem paramStoryVideoItem)
   {
-    super(paramLooper);
+    return urm.a(paramStoryVideoItem);
   }
   
-  public void handleMessage(Message paramMessage)
+  public static boolean a(String paramString)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.a.f(1);
-    this.a.b();
-    QQToast.a(this.a.a.a(), this.a.a.a().getString(2131433385), 1).a();
+    return urm.a(paramString);
+  }
+  
+  public static boolean a(String paramString, boolean paramBoolean)
+  {
+    return urm.a(paramString, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uqt
  * JD-Core Version:    0.7.0.1
  */

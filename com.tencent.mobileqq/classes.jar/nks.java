@@ -1,43 +1,77 @@
-import com.tencent.biz.qqstory.boundaries.StoryDepends.InviteCode;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.StoryShare;
-import com.tencent.biz.qqstory.newshare.mode.BigVContentShareMode;
-import com.tencent.biz.qqstory.newshare.mode.OpenStoryShareMode;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
 
 public class nks
-  implements Runnable
+  extends amrx
 {
-  public nks(NewFriendsPlayMode paramNewFriendsPlayMode, boolean paramBoolean, StoryVideoItem paramStoryVideoItem, String paramString, VideoListFeedItem paramVideoListFeedItem) {}
+  public nks(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void run()
+  public int a()
   {
-    
-    Object localObject;
-    if (this.jdField_a_of_type_Boolean)
+    return 5;
+  }
+  
+  public void a(Object paramObject)
+  {
+    if ((paramObject instanceof oidb_cmd0xc96.RspBody))
     {
-      localObject = new BigVContentShareMode(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a().a(2131433100).a(new nkt(this, this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode)).a((ShareModeBase)localObject).a();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label138;
+      paramObject = (oidb_cmd0xc96.RspBody)paramObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, new Object[] { "0xc96 responseBody success, wording=", paramObject.wording.get() });
+      }
+      paramObject = new JSONObject();
+      if (this.a.d == null) {}
+    }
+    try
+    {
+      paramObject.put("uin", this.a.d);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add("find.mp.qq.com");
+      localArrayList.add("post.mp.qq.com");
+      localArrayList.add("article.mp.qq.com");
+      athj.a("unFollow", paramObject, localArrayList, null);
+      this.a.h();
+      nrt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.d, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
+      StructLongMessageDownloadProcessor.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.d);
+      ((bcml)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+      return;
+    }
+    catch (JSONException paramObject)
+    {
+      for (;;)
+      {
+        paramObject.printStackTrace();
       }
     }
-    label138:
-    for (int i = 1;; i = 2)
-    {
-      StoryReportor.a("play_video", "guest_share", i, 0, new String[] { "", String.valueOf(StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem)), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-      return;
-      localObject = new OpenStoryShareMode(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_JavaLangString);
-      break;
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
+  {
+    this.a.d(2131695729);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = this.a;
+    paramObject.c -= 1;
+    if (this.a.c == 0) {
+      this.a.L();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nks
  * JD-Core Version:    0.7.0.1
  */

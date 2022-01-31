@@ -1,26 +1,47 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgPayManager;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import mqq.app.AppRuntime;
+import android.location.Location;
+import android.location.LocationListener;
+import android.os.Bundle;
+import java.util.List;
 
-public class xex
-  implements Runnable
+class xex
+  implements LocationListener
 {
-  public xex(GoldMsgPayManager paramGoldMsgPayManager, MessageRecord paramMessageRecord) {}
+  xex(xet paramxet) {}
   
-  public void run()
+  public void onLocationChanged(Location paramLocation)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      ((QQAppInterface)localAppRuntime).a().a(8022, true, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin });
+    if (paramLocation != null)
+    {
+      wxe.a("DoodleEmojiManager", "onLocationChanged, location : %s", paramLocation);
+      if (this.a.b.size() >= 10)
+      {
+        this.a.b.remove(0);
+        wxe.b("DoodleEmojiManager", "onLocationChanged, LocationList size > 5, remove the first location.");
+      }
+      this.a.b.add(new Location(paramLocation));
+      return;
     }
+    wxe.d("DoodleEmojiManager", "onLocationChanged, location is null.");
+  }
+  
+  public void onProviderDisabled(String paramString)
+  {
+    wxe.a("DoodleEmojiManager", "onProviderDisabled, provider: %s .", paramString);
+  }
+  
+  public void onProviderEnabled(String paramString)
+  {
+    wxe.a("DoodleEmojiManager", "onProviderEnabled, provider: %s .", paramString);
+  }
+  
+  public void onStatusChanged(String paramString, int paramInt, Bundle paramBundle)
+  {
+    wxe.a("DoodleEmojiManager", "onStatusChanged, provider: %s , status: %s .", paramString, Integer.valueOf(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xex
  * JD-Core Version:    0.7.0.1
  */

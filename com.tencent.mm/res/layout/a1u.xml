@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/jn"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:src="@drawable/agj" style="@style/jd" />
+    <TextView android:text="@string/c24" style="@style/ju" />
+    <LinearLayout android:id="@id/bzx" android:layout_marginTop="@dimen/i_" style="@style/jr">
+        <RelativeLayout android:id="@id/bzy" style="@style/jo">
+            <TextView android:id="@id/bzz" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true" style="@style/jq" />
+            <CheckBox android:id="@id/c00" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:checked="false" android:text="@string/c2l" android:layout_alignParentRight="true" style="@style/o1" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@id/c01" style="@style/jr">
+        <LinearLayout android:background="@null" style="@style/jm">
+            <TextView android:id="@id/c02" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jp" />
+        </LinearLayout>
+    </LinearLayout>
+    <RelativeLayout android:id="@id/c03" android:visibility="gone" android:layout_marginTop="@dimen/i_" style="@style/js">
+        <TextView android:id="@id/c04" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true" style="@style/jq" />
+        <TextView android:id="@id/c05" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/c3a" android:layout_alignParentRight="true" style="@style/jt" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" android:layout_marginTop="@dimen/i8" style="@style/mj">
+        <Button android:id="@id/c06" android:text="@string/c2j" style="@style/jz" />
+    </LinearLayout>
+    <RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <Button android:id="@id/c07" android:visibility="gone" android:layout_height="20.0dip" android:layout_marginBottom="0.0dip" android:text="查看更多三星服务" android:layout_alignParentBottom="true" style="@style/jv" />
+    </RelativeLayout>
+</LinearLayout>

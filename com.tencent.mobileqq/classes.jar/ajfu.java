@@ -1,13 +1,27 @@
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectManager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
 
-class ajfu
-  implements Runnable
+public class ajfu
+  implements Animation.AnimationListener
 {
-  ajfu(ajft paramajft) {}
+  public ajfu(AnonymousEntranceView paramAnonymousEntranceView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectManager.c(this.a.jdField_a_of_type_JavaLangString);
+    if (AnonymousEntranceView.b(this.a) != null) {
+      AnonymousEntranceView.b(this.a).setVisibility(4);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (AnonymousEntranceView.b(this.a) != null) {
+      AnonymousEntranceView.b(this.a).setVisibility(0);
+    }
   }
 }
 

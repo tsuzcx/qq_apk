@@ -1,44 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
 
-class aaob
-  implements DialogInterface.OnClickListener
+final class aaob
+  implements View.OnClickListener
 {
-  aaob(aanz paramaanz, QQCustomDialog paramQQCustomDialog) {}
+  aaob(aany paramaany, aanx paramaanx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ArkAppCenter.a().post(new aaoc(this));
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
+    aany localaany = this.jdField_a_of_type_Aany;
+    paramView = aany.a.onClick(paramView);
+    if (!TextUtils.isEmpty(paramView))
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      label38:
-      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aanz.a, "ark_authority_api_location", this.jdField_a_of_type_Aanz.c, 2);
-      paramDialogInterface = DialogUtil.a(BaseActivity.sTopActivity, BaseActivity.sTopActivity.getString(2131438819), 2131435269, 2131435269, new DialogUtil.DialogOnClickAdapter(), null);
-      try
-      {
-        paramDialogInterface.show();
-        return;
-      }
-      catch (Exception paramDialogInterface) {}
+      this.jdField_a_of_type_Aanx.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a = paramView;
+      aase.d("GdtBannerViewBuilder", "onclick:" + this.jdField_a_of_type_Aanx.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a);
     }
-    catch (Exception paramDialogInterface)
-    {
-      break label38;
+    if (this.jdField_a_of_type_Aanx.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick != null) {
+      this.jdField_a_of_type_Aanx.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick.a();
     }
+    GdtHandler.a(this.jdField_a_of_type_Aanx.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaob
  * JD-Core Version:    0.7.0.1
  */

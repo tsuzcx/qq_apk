@@ -1,21 +1,12 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.widget.ListView;
-
-public class nfh
-  implements Runnable
+public abstract interface nfh
 {
-  public nfh(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
   
-  public void run()
-  {
-    if (this.a.a.getFirstVisiblePosition() != this.a.a.getHeaderViewsCount()) {
-      this.a.a.setSelection(this.a.a.getHeaderViewsCount());
-    }
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nfh
  * JD-Core Version:    0.7.0.1
  */

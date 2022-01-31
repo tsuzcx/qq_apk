@@ -1,61 +1,87 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager;
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager.UUIDToUrlCallback;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper.MediaPlayListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.view.Display;
+import android.view.OrientationEventListener;
+import android.view.WindowManager;
 
-class mef
-  implements ThirdVideoManager.UUIDToUrlCallback
+public abstract class mef
+  extends OrientationEventListener
 {
-  mef(med parammed, VideoPlayerWrapper paramVideoPlayerWrapper, long paramLong, ThirdVideoManager paramThirdVideoManager) {}
+  int jdField_a_of_type_Int = -25;
+  protected Context a;
+  Configuration jdField_a_of_type_AndroidContentResConfiguration;
+  Display jdField_a_of_type_AndroidViewDisplay;
+  boolean jdField_a_of_type_Boolean = false;
+  public boolean b;
   
-  public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, String paramString3)
+  public mef(Context paramContext, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "UUIDToUrlCallback Callback vid:" + paramString2 + " url:" + paramString1);
+    super(paramContext, paramInt);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidContentResConfiguration = this.jdField_a_of_type_AndroidContentContext.getResources().getConfiguration();
+    this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+    this.jdField_a_of_type_Boolean = muz.f(paramContext);
+  }
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    if (paramInt == -1) {
+      this.jdField_a_of_type_Int = paramInt;
     }
-    VideoFeedsPlayManager.VideoPlayParam localVideoPlayParam = VideoFeedsPlayManager.a(this.jdField_a_of_type_Med.a);
-    if ((localVideoPlayParam != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper == VideoFeedsPlayManager.a(this.jdField_a_of_type_Med.a)) && (paramString2.equals(localVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a))) {
-      if (TextUtils.isEmpty(paramString1)) {
-        if (VideoFeedsPlayManager.a(this.jdField_a_of_type_Med.a) != null) {
-          VideoFeedsPlayManager.a(this.jdField_a_of_type_Med.a).a(null, 123, 107, 0, "UUIDToUrlCallback vid2url ERROR ", null);
-        }
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Int < 0) {
+        this.jdField_a_of_type_Int = 0;
+      }
+    } while ((paramInt - this.jdField_a_of_type_Int < 20) && (paramInt - this.jdField_a_of_type_Int > -20) && (!this.b));
+    int i = paramInt;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      paramInt -= 90;
+      i = paramInt;
+      if (paramInt < 0) {
+        i = paramInt + 360;
       }
     }
-    while (!QLog.isColorLevel()) {
-      for (;;)
-      {
-        return;
-        VideoPreDownloadMgr localVideoPreDownloadMgr = VideoFeedsPlayManager.a(this.jdField_a_of_type_Med.a);
-        if (localVideoPreDownloadMgr != null)
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.b = localVideoPreDownloadMgr.a(paramString1, paramString2);
-          localVideoPreDownloadMgr.a(localVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.b);
-        }
-        if (paramInt == 1) {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.a(paramString2, paramString1, 1, this.jdField_a_of_type_Long, 0L, localVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.d, paramBoolean);
-        }
-        while (localVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData != null)
-        {
-          localVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager.a.longValue();
-          localVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_d_of_type_Boolean = paramBoolean;
-          localVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.jdField_d_of_type_JavaLangString = paramString3;
-          return;
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.a(paramString2, paramString1, 2, this.jdField_a_of_type_Long, 0L, localVideoPlayParam.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.d, paramBoolean);
-        }
+    if (this.b) {}
+    for (paramInt = lno.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), false, false, (byte)0, true) * 90;; paramInt = lno.b(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), false, false, (byte)0, true) * 90)
+    {
+      int j = paramInt;
+      if (paramInt > 360) {
+        j = paramInt % 360;
       }
+      i -= j;
+      paramInt = i;
+      if (i < 0) {
+        paramInt = i + 360;
+      }
+      this.jdField_a_of_type_Int = paramInt;
+      if ((paramInt <= 314) && (paramInt >= 45)) {
+        break;
+      }
+      a(0, this.b);
+      return;
     }
-    QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "vid2url换回来后，当前视频已经不再播放，vid:" + paramString2 + " url:" + paramString1);
+    if ((paramInt > 44) && (paramInt < 135))
+    {
+      a(90, this.b);
+      return;
+    }
+    if ((paramInt > 134) && (paramInt < 225))
+    {
+      a(180, this.b);
+      return;
+    }
+    a(270, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mef
  * JD-Core Version:    0.7.0.1
  */

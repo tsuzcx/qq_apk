@@ -1,23 +1,16 @@
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.widget.TextView;
 
 class rub
-  implements Runnable
 {
-  rub(rua paramrua) {}
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void run()
-  {
-    if ((BaseChatPie.b(this.a.a.a) != null) && (BaseChatPie.b(this.a.a.a).getParent() != null)) {
-      ((ViewGroup)BaseChatPie.b(this.a.a.a).getParent()).removeView(BaseChatPie.b(this.a.a.a));
-    }
-    BaseChatPie.b(this.a.a.a, null);
-  }
+  private rub(rty paramrty) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rub
  * JD-Core Version:    0.7.0.1
  */

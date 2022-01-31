@@ -1,39 +1,41 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.theme.diy.ResData;
-import com.tencent.mobileqq.theme.diy.ThemeDiyStyleLogic.StyleCallBack;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
 
-class acce
-  implements ThemeDiyStyleLogic.StyleCallBack
+public class acce
+  implements DialogInterface.OnClickListener
 {
-  acce(acbg paramacbg) {}
+  public acce(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramResData = (MessengerService)this.a.a.get();
-    Bundle localBundle;
-    if (paramResData != null)
+    if (paramInt == 1)
     {
-      localBundle = new Bundle();
-      localBundle.putString("themeId", paramBundle.getString("themeId"));
-      if (paramInt2 != 4) {
-        break label73;
-      }
+      paramDialogInterface = new Intent(this.a, LoginActivity.class);
+      paramDialogInterface.putExtra("is_change_account", true);
+      paramDialogInterface.putExtra("if_check_account_same", true);
+      paramDialogInterface.putExtras(this.a.getIntent().getExtras());
+      paramDialogInterface.putExtra("appid", AddFriendLogicActivity.c(this.a));
+      paramDialogInterface.putExtra("openid", AddFriendLogicActivity.jdField_a_of_type_JavaLangString);
+      paramDialogInterface.putExtra("key_action", AddFriendLogicActivity.class.getSimpleName());
+      paramDialogInterface.addFlags(268435456);
+      paramDialogInterface.addFlags(67108864);
+      this.a.jdField_a_of_type_Bdjz.cancel();
+      this.a.startActivity(paramDialogInterface);
+      this.a.finish();
     }
-    label73:
-    for (paramInt1 = 0;; paramInt1 = -2)
-    {
-      localBundle.putInt("themeStatus", paramInt1);
-      paramBundle.putBundle("response", localBundle);
-      paramResData.a(paramBundle);
-      return 1;
+    while (paramInt != 0) {
+      return;
     }
+    this.a.setResult(0);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acce
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
-import com.tencent.mobileqq.extendfriend.fragment.GroupItemClickListeneer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-class acij
-  implements View.OnClickListener
+public class acij
+  implements DialogInterface.OnClickListener
 {
-  acij(acih paramacih, ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
+  public acij(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = this.jdField_a_of_type_Acih.getPosition();
-    int i = j;
-    if (j > 0) {
-      i = j - 1;
-    }
-    acih.a(this.jdField_a_of_type_Acih).a(i);
+    paramDialogInterface.dismiss();
   }
 }
 

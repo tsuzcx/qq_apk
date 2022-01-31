@@ -1,16 +1,15 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
 
-final class cp
-  implements View.OnClickListener
+class cp
+  implements Runnable
 {
-  cp(CorrectTokenActivity paramCorrectTokenActivity) {}
+  cp(co paramco, DeterminVerifyFactorsResult paramDeterminVerifyFactorsResult) {}
   
-  public final void onClick(View paramView)
+  public void run()
   {
-    this.a.showDialog(1);
+    abi.a().a(this.b.a, this.a, CommonVerifyActivity.access$100(this.b.a));
   }
 }
 

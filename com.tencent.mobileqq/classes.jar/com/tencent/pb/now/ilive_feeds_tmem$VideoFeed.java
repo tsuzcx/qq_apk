@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ilive_feeds_tmem$VideoFeed
-  extends MessageMicro
+  extends MessageMicro<VideoFeed>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field anchor_uin = PBField.initUInt64(0L);
@@ -25,7 +25,7 @@ public final class ilive_feeds_tmem$VideoFeed
   public final PBBytesField lng = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField pic_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field start_time = PBField.initUInt32(0);
-  public final PBRepeatField topic = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> topic = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBBytesField vid = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field video_hight = PBField.initUInt32(0);
   public final PBBytesField video_md5 = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -52,7 +52,7 @@ public final class ilive_feeds_tmem$VideoFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_tmem.VideoFeed
  * JD-Core Version:    0.7.0.1
  */

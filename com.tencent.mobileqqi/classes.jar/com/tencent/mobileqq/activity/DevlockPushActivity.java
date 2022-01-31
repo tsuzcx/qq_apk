@@ -8,12 +8,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import cmt;
-import cmu;
-import cmv;
-import cmw;
-import cmx;
-import cmy;
+import cgh;
+import cgi;
+import cgj;
+import cgk;
+import cgl;
+import cgm;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
@@ -34,11 +34,11 @@ public class DevlockPushActivity
   private static final String jdField_a_of_type_JavaLangString = "Q.devlock.DevlockPushActivity";
   private static final String b = "UserBehavior";
   private static final String c = "Push";
-  private Handler jdField_a_of_type_AndroidOsHandler = new cmt(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new cgh(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new cmu(this);
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new cgi(this);
   private DevlockInfo jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = null;
   private boolean jdField_a_of_type_Boolean = false;
   private String d;
@@ -92,7 +92,7 @@ public class DevlockPushActivity
       }
       paramDevlockInfo = getString(2131561753);
       String str = getString(2131561863);
-      QQCustomDialogDevLock.a(this, this.i, this.j, this.jdField_k_of_type_JavaLangString, paramDevlockInfo, str, new cmv(this), new cmw(this)).show();
+      QQCustomDialogDevLock.a(this, this.i, this.j, this.jdField_k_of_type_JavaLangString, paramDevlockInfo, str, new cgj(this), new cgk(this)).show();
       return;
       n = 0;
     }
@@ -106,7 +106,7 @@ public class DevlockPushActivity
       c(2131561746, this);
       this.jdField_m_of_type_AndroidWidgetTextView.setContentDescription(getString(2131561746));
     }
-    TextView localTextView = (TextView)findViewById(2131232947);
+    TextView localTextView = (TextView)findViewById(2131232950);
     if (TextUtils.isEmpty(this.g)) {
       localTextView.setVisibility(8);
     }
@@ -122,12 +122,12 @@ public class DevlockPushActivity
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new cmx(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new cgl(this));
   }
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new cmy(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new cgm(this));
   }
   
   public void a()
@@ -340,10 +340,10 @@ public class DevlockPushActivity
     int n = 0;
     setTheme(2131624531);
     super.onCreate(paramBundle);
-    setContentView(2130903568);
+    setContentView(2130903570);
     setTitle(2131561941);
     this.b.setDevLockIntent(null);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232948));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232951));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     Object localObject = getIntent();
     if (localObject == null)

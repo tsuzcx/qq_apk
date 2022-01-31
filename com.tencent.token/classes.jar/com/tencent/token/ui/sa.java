@@ -2,27 +2,27 @@ package com.tencent.token.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.t;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cw;
+import com.tencent.token.do;
+import com.tencent.token.eq;
 
-final class sa
+class sa
   implements View.OnClickListener
 {
-  sa(NetActiveVryQuesActivity paramNetActiveVryQuesActivity) {}
+  sa(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    t.a(this.a);
-    NetActiveVryQuesActivity.access$902(this.a, NetActiveVryQuesActivity.access$700(this.a).getText().toString());
-    e.a("mobile " + NetActiveVryQuesActivity.access$900(this.a));
-    if ((NetActiveVryQuesActivity.access$900(this.a) != null) && (NetActiveVryQuesActivity.access$900(this.a).length() != 0))
+    paramView = do.a().e();
+    if ((eq.a().c() == null) && (paramView != null) && (paramView.mIsBinded))
     {
-      NetActiveVryQuesActivity.access$100(this.a);
-      this.a.showProDialog(this.a, 2131361808, 2131361817, null);
+      cw.a().e(0L, OpMsgDisplayActivity.access$300(this.a));
+      OpMsgDisplayActivity.access$002(this.a, 50);
+      this.a.showUserDialog(12);
       return;
     }
-    this.a.showToast(2131361946);
+    OpMsgDisplayActivity.access$100(this.a, 50);
   }
 }
 

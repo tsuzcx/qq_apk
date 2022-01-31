@@ -1,21 +1,13 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.activity.IndividuationSetActivity;
 
 public class cqt
   implements View.OnClickListener
 {
-  public cqt(EmosmActivity paramEmosmActivity) {}
+  public cqt(IndividuationSetActivity paramIndividuationSetActivity) {}
   
-  public void onClick(View paramView)
-  {
-    if (this.a.a) {}
-    while (!EmosmUtils.showNetEnable(this.a)) {
-      return;
-    }
-    this.a.a = true;
-  }
+  public void onClick(View paramView) {}
 }
 
 

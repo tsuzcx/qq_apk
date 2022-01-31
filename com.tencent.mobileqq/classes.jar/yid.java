@@ -1,22 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.adapter.RecommendFriendAdapter;
-import com.tencent.mobileqq.richstatus.IIconListener;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class yid
-  implements IIconListener
+class yid
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public yid(RecommendFriendAdapter paramRecommendFriendAdapter) {}
+  yid(yib paramyib) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onGlobalLayout()
   {
-    if ((paramInt2 == 200) && (paramBitmap != null)) {
-      this.a.notifyDataSetChanged();
-    }
+    yib.a(this.a, this.a.e());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yid
  * JD-Core Version:    0.7.0.1
  */

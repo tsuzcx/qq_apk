@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/kr8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/kr0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a28" android:scaleType="fitXY" android:layout_alignLeft="@id/kr4" android:layout_alignTop="@id/kr4" android:layout_alignRight="@id/kr4" android:layout_alignBottom="@id/kr4" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/kr4" android:paddingLeft="8.0dip" android:paddingRight="10.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="23.0dip">
+        <com.tencent.image.URLImageView android:id="@id/kr1" android:layout_width="wrap_content" android:layout_height="11.0dip" />
+        <TextView android:textSize="11.0sp" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/kr_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:maxLines="1" />
+    </LinearLayout>
+</RelativeLayout>

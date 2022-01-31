@@ -1,28 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.mobileqq.pb.PBStringField;
 
-public class yfz
-  extends ygj
+class yfz
 {
-  public yfz(SpecailCareListActivity paramSpecailCareListActivity)
-  {
-    super(paramSpecailCareListActivity, null);
-  }
+  public COMM.StCommonExt a;
+  public boolean a;
+  public boolean b;
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public String toString()
   {
-    if (this.a.d != 0) {
-      this.a.b = true;
-    }
-    while ((paramInt2 != 200) || (paramBitmap == null)) {
-      return;
-    }
-    this.a.a.notifyDataSetChanged();
+    return "CommentResponse{hasMore=" + this.jdField_a_of_type_Boolean + ", attachInfo='" + this.jdField_a_of_type_NS_COMMCOMM$StCommonExt.attachInfo.get() + '\'' + ", hasResponse='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yfz
  * JD-Core Version:    0.7.0.1
  */

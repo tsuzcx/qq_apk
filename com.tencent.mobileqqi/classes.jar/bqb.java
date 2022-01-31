@@ -1,35 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
-import com.tencent.widget.Switch;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.galleryactivity.AbstractImageListScene;
 
 public class bqb
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public bqb(AccountDetailActivity paramAccountDetailActivity, mobileqq_mp.ConfigInfo paramConfigInfo, Switch paramSwitch, boolean paramBoolean) {}
+  public bqb(AbstractImageListScene paramAbstractImageListScene) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0)
-    {
-      AccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.a.isConfirmed = true;
-      AccountDetailActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.a);
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.g = false;
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    AccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch, this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.a.isConfirmed = true;
-    AccountDetailActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.a);
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.g = false;
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bqb
  * JD-Core Version:    0.7.0.1
  */

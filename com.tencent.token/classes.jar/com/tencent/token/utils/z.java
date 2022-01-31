@@ -1,27 +1,16 @@
 package com.tencent.token.utils;
 
-import android.os.Handler;
-import android.os.Message;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
 final class z
-  extends Handler
+  implements ThreadFactory
 {
-  private z(byte paramByte) {}
+  private final AtomicInteger a = new AtomicInteger(1);
   
-  public final void handleMessage(Message paramMessage)
+  public Thread newThread(Runnable paramRunnable)
   {
-    aa localaa = (aa)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    case 2: 
-    default: 
-      return;
-    case 1: 
-      UserTask.a(localaa.a, localaa.b[0]);
-      return;
-    }
-    localaa.a.a();
-    UserTask.a(localaa.a, UserTask.Status.FINISHED);
+    return new Thread(paramRunnable, "UserTask #" + this.a.getAndIncrement());
   }
 }
 

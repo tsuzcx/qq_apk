@@ -1,15 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class eqy
-  implements DialogInterface.OnCancelListener
+  implements View.OnTouchListener
 {
-  public eqy(CameraPreviewActivity paramCameraPreviewActivity) {}
+  float jdField_a_of_type_Float = 0.0F;
+  float b = 0.0F;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public eqy(SelectMemberActivity paramSelectMemberActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a = null;
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
+    {
+      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.b = paramMotionEvent.getRawY();
+    }
+    while ((i != 2) || ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float <= 10.0F) && (paramMotionEvent.getRawY() - this.b <= 10.0F))) {
+      return false;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

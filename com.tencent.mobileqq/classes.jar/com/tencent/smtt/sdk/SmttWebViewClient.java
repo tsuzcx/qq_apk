@@ -19,7 +19,6 @@ import com.tencent.smtt.export.external.interfaces.WebResourceError;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.export.external.proxy.X5ProxyWebViewClient;
-import com.tencent.smtt.utils.QBApkProcesser;
 import com.tencent.smtt.utils.TbsConfigFile;
 import com.tencent.smtt.utils.TbsLog;
 
@@ -86,6 +85,12 @@ class SmttWebViewClient
     this.mClient.onLoadResource(this.mWebView, paramString);
   }
   
+  public void onPageCommitVisible(IX5WebViewBase paramIX5WebViewBase, String paramString)
+  {
+    this.mWebView.setX5WebView(paramIX5WebViewBase);
+    this.mClient.onPageCommitVisible(this.mWebView, paramString);
+  }
+  
   public void onPageFinished(IX5WebViewBase paramIX5WebViewBase, int paramInt1, int paramInt2, String paramString)
   {
     if (result_configForceSyswebview == null)
@@ -113,15 +118,7 @@ class SmttWebViewClient
       if ((!TbsShareManager.mHasQueryed) && (this.mWebView.getContext() != null) && (TbsShareManager.isThirdPartyApp(this.mWebView.getContext())))
       {
         TbsShareManager.mHasQueryed = true;
-        new Thread(new Runnable()
-        {
-          public void run()
-          {
-            if ((!TbsShareManager.forceLoadX5FromTBSDemo(SmttWebViewClient.this.mWebView.getContext())) && (TbsDownloader.needDownload(SmttWebViewClient.this.mWebView.getContext(), false))) {
-              TbsDownloader.startDownload(SmttWebViewClient.this.mWebView.getContext());
-            }
-          }
-        }).start();
+        new Thread(new SmttWebViewClient.1(this)).start();
       }
       if ((this.mWebView.getContext() != null) && (!TbsLogReport.getInstance(this.mWebView.getContext()).getShouldUploadEventReport()))
       {
@@ -251,12 +248,10 @@ class SmttWebViewClient
     if ((paramWebResourceRequest != null) && (paramWebResourceRequest.getUrl() != null)) {}
     for (String str = paramWebResourceRequest.getUrl().toString();; str = null)
     {
-      if ((str == null) || (this.mWebView.showDebugView(str))) {}
-      do
-      {
+      if ((str == null) || (this.mWebView.showDebugView(str))) {
         return true;
-        this.mWebView.setX5WebView(paramIX5WebViewBase);
-      } while (QBApkProcesser.getInstance().hiJackUrl(this.mWebView.getContext().getApplicationContext(), str));
+      }
+      this.mWebView.setX5WebView(paramIX5WebViewBase);
       boolean bool = this.mClient.shouldOverrideUrlLoading(this.mWebView, paramWebResourceRequest);
       if (!bool)
       {
@@ -278,12 +273,10 @@ class SmttWebViewClient
   
   public boolean shouldOverrideUrlLoading(IX5WebViewBase paramIX5WebViewBase, String paramString)
   {
-    if ((paramString == null) || (this.mWebView.showDebugView(paramString))) {}
-    do
-    {
+    if ((paramString == null) || (this.mWebView.showDebugView(paramString))) {
       return true;
-      this.mWebView.setX5WebView(paramIX5WebViewBase);
-    } while (QBApkProcesser.getInstance().hiJackUrl(this.mWebView.getContext().getApplicationContext(), paramString));
+    }
+    this.mWebView.setX5WebView(paramIX5WebViewBase);
     boolean bool = this.mClient.shouldOverrideUrlLoading(this.mWebView, paramString);
     if (!bool)
     {
@@ -309,7 +302,7 @@ class SmttWebViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.sdk.SmttWebViewClient
  * JD-Core Version:    0.7.0.1
  */

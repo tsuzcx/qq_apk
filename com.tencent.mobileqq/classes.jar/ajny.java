@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.troop.utils.TroopAioNotifyManager;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.widget.AutoCompleteTextView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
-public final class ajny
-  implements Runnable
+public class ajny
+  implements DialogInterface.OnClickListener
 {
-  public ajny(QQAppInterface paramQQAppInterface, String paramString, TroopHandler paramTroopHandler) {}
+  public ajny(LoginView paramLoginView) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    List localList = TroopAioNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-    localList = TroopAioNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ArrayList(), localList);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(94, true, new Object[] { this.jdField_a_of_type_JavaLangString, localList });
+    paramDialogInterface = this.a.a.getText().toString();
+    if (!TextUtils.isEmpty(paramDialogInterface)) {
+      this.a.b(paramDialogInterface);
+    }
   }
 }
 

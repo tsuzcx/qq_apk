@@ -1,25 +1,30 @@
-import android.content.ContentValues;
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.view.View;
+import java.lang.ref.WeakReference;
 
 public class zvf
-  implements Runnable
 {
-  public zvf(DataLineMsgProxy paramDataLineMsgProxy, long paramLong, String paramString) {}
+  public WeakReference<View> a;
+  public WeakReference<apen> b;
   
-  public void run()
+  public zvf(zve paramzve, View paramView, apen paramapen)
   {
-    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_Long);
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("path", this.jdField_a_of_type_JavaLangString);
-    if (localDataLineMsgRecord != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.jdField_a_of_type_JavaLangString, localContentValues, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramapen);
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public apen a()
+  {
+    return (apen)this.b.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zvf
  * JD-Core Version:    0.7.0.1
  */

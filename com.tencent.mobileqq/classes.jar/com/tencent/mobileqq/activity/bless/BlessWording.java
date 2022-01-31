@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.bless;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhs;
 
 public class BlessWording
-  extends Entity
+  extends awge
 {
   private String editingWording;
-  @unique
+  @awhs
   public String wording;
   
   public BlessWording() {}
@@ -35,7 +35,7 @@ public class BlessWording
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessWording
  * JD-Core Version:    0.7.0.1
  */

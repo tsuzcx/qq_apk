@@ -19,7 +19,7 @@ public class RedTouchUI
   extends RedTouch
 {
   public RedAppInfo a;
-  private List b;
+  private List<RedTypeInfo> b;
   private int x = -1;
   private int y = -1;
   
@@ -137,7 +137,7 @@ public class RedTouchUI
     return true;
   }
   
-  private boolean a(List paramList)
+  private boolean a(List<RedTypeInfo> paramList)
   {
     if (this.jdField_b_of_type_JavaUtilList.size() == 0) {}
     while (this.jdField_b_of_type_JavaUtilList.size() != paramList.size()) {
@@ -228,7 +228,7 @@ public class RedTouchUI
         {
           localTextView.measure(0, 0);
           this.l = (localTextView.getMeasuredWidth() / 2);
-          a();
+          c();
         }
         return localTextView;
         localTextView.setText(paramString);
@@ -247,7 +247,7 @@ public class RedTouchUI
   
   public void a(RedAppInfo paramRedAppInfo)
   {
-    b();
+    d();
     if (paramRedAppInfo == null) {}
     do
     {
@@ -274,7 +274,7 @@ public class RedTouchUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchUI
  * JD-Core Version:    0.7.0.1
  */

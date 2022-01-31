@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a331e" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02207c" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.CommonLine android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0eb2" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0220a1" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08d3" android:layout_height="fill_parent" android:layout_marginLeft="32.0dip" />
-    <com.qzone.widget.QZonePullToRefreshListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d9d" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a331f" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="40.0dip" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:scrollingCache="false" android:cacheColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:divider="@null" />
-</RelativeLayout>

@@ -1,24 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.view.ViewStub;
 
 public class ugc
-  implements DialogInterface.OnClickListener
+  extends uga
 {
-  public ugc(UpgradeActivity paramUpgradeActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(ViewStub paramViewStub)
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, UpgradeConstants.b(), String.valueOf(0), UpgradeController.a(), "0");
-    this.a.a();
+    if (paramViewStub != null)
+    {
+      this.jdField_a_of_type_AndroidViewView = paramViewStub.inflate();
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new ugd(this));
+    }
+  }
+  
+  public void a(Object paramObject, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Int = paramInt;
+    if (a())
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ugc
  * JD-Core Version:    0.7.0.1
  */

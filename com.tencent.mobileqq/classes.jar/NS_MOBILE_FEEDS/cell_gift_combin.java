@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class cell_gift_combin
   extends JceStruct
 {
-  static ArrayList cache_gifts = new ArrayList();
-  public ArrayList gifts;
+  static ArrayList<s_gift_item> cache_gifts = new ArrayList();
+  public ArrayList<s_gift_item> gifts;
   
   static
   {
@@ -19,7 +19,7 @@ public final class cell_gift_combin
   
   public cell_gift_combin() {}
   
-  public cell_gift_combin(ArrayList paramArrayList)
+  public cell_gift_combin(ArrayList<s_gift_item> paramArrayList)
   {
     this.gifts = paramArrayList;
   }
@@ -38,7 +38,7 @@ public final class cell_gift_combin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_gift_combin
  * JD-Core Version:    0.7.0.1
  */

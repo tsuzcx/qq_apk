@@ -1,18 +1,16 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-final class in
-  implements View.OnClickListener
+class in
+  implements DialogInterface.OnCancelListener
 {
-  in(FaceRecognitionDefaultActivity paramFaceRecognitionDefaultActivity) {}
+  in(ij paramij) {}
   
-  public final void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramView = new Intent(this.a, FacePwdIndexActivity.class);
-    this.a.startActivity(paramView);
+    FaceStartVryCameraActivity.access$400(this.a.a);
   }
 }
 

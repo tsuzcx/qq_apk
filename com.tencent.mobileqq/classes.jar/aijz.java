@@ -1,24 +1,47 @@
 import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.structmsg.CGILoader;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
+import android.content.res.Resources;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aijz
-  implements Runnable
+  extends aijq
 {
-  public aijz(StructMsgItemVideo paramStructMsgItemVideo, Context paramContext, View paramView) {}
-  
-  public void run()
+  public aijz(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    String str = CGILoader.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.t, StructMsgItemVideo.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo));
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.a.obtainMessage().obj = this.jdField_a_of_type_AndroidViewView;
-    if (!TextUtils.isEmpty(str))
-    {
-      StructMsgItemVideo.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo, this.jdField_a_of_type_AndroidContentContext, str);
+    super(paramContext, paramSessionInfo, paramQQAppInterface);
+  }
+  
+  private void A()
+  {
+    if (!this.d) {}
+    while (this.jdField_a_of_type_AndroidWidgetImageView == null) {
       return;
     }
-    StructMsgItemVideo.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo, this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(null);
+    if (mdj.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698878));
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+  }
+  
+  protected boolean b()
+  {
+    return true;
+  }
+  
+  protected void g()
+  {
+    super.g();
+    A();
+  }
+  
+  protected void y()
+  {
+    this.jdField_a_of_type_JavaLangString = "MiniPieForDisc";
   }
 }
 

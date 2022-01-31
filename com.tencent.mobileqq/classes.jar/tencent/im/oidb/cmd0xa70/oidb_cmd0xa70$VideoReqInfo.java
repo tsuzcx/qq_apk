@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class oidb_cmd0xa70$VideoReqInfo
-  extends MessageMicro
+  extends MessageMicro<VideoReqInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_wangzhe_share_url = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,7 +20,7 @@ public final class oidb_cmd0xa70$VideoReqInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xa70.oidb_cmd0xa70.VideoReqInfo
  * JD-Core Version:    0.7.0.1
  */

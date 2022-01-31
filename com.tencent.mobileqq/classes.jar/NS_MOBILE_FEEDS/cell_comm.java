@@ -11,11 +11,11 @@ import java.util.Map;
 public final class cell_comm
   extends JceStruct
 {
-  static ArrayList cache_custom_droplist;
-  static Map cache_extendInfo;
-  static Map cache_extendInfoData;
+  static ArrayList<s_droplist_option> cache_custom_droplist;
+  static Map<String, String> cache_extendInfo;
+  static Map<String, byte[]> cache_extendInfoData;
   static UgcRightInfo cache_right_info = new UgcRightInfo();
-  static Map cache_stMapABTest = new HashMap();
+  static Map<Integer, Integer> cache_stMapABTest = new HashMap();
   public int actiontype;
   public String actionurl = "";
   public long adv_stytle;
@@ -23,26 +23,30 @@ public final class cell_comm
   public int appid;
   public String clientkey = "";
   public String curlikekey = "";
-  public ArrayList custom_droplist;
+  public ArrayList<s_droplist_option> custom_droplist;
   public long editmask = 4294967295L;
-  public Map extendInfo;
-  public Map extendInfoData;
+  public Map<String, String> extendInfo;
+  public Map<String, byte[]> extendInfoData;
   public long feedsDelTime;
   public int feedsattr;
   public int feedsattr2;
   public String feedsid = "";
   public String feedskey = "";
   public int feedstype;
+  public int hot_score;
   public int iClick_area = 0;
   public String interestkey = "";
+  public boolean is_kuolie;
   public boolean is_stay;
   public int operatemask;
   public int operatemask2;
+  public long operatemask3;
   public String orglikekey = "";
   public int originaltype;
   public String paykey = "";
   public int positionmask;
   public int positionmask2;
+  public boolean pull_qzone;
   public int recom_show_type;
   public int recomlayout;
   public long recomreportid;
@@ -54,7 +58,7 @@ public final class cell_comm
   public long show_mask;
   public int space_right;
   public String sqDynamicFeedsKey = "";
-  public Map stMapABTest;
+  public Map<Integer, Integer> stMapABTest;
   public int subid;
   public int time;
   public int uflag;
@@ -78,7 +82,7 @@ public final class cell_comm
   
   public cell_comm() {}
   
-  public cell_comm(int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2, int paramInt5, int paramInt6, String paramString3, String paramString4, String paramString5, int paramInt7, int paramInt8, String paramString6, String paramString7, long paramLong1, int paramInt9, int paramInt10, String paramString8, String paramString9, int paramInt11, String paramString10, long paramLong2, long paramLong3, UgcRightInfo paramUgcRightInfo, int paramInt12, long paramLong4, int paramInt13, int paramInt14, int paramInt15, int paramInt16, Map paramMap1, boolean paramBoolean, String paramString11, int paramInt17, int paramInt18, int paramInt19, long paramLong5, ArrayList paramArrayList, Map paramMap2, int paramInt20, long paramLong6, String paramString12, int paramInt21, Map paramMap3)
+  public cell_comm(int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2, int paramInt5, int paramInt6, String paramString3, String paramString4, String paramString5, int paramInt7, int paramInt8, String paramString6, String paramString7, long paramLong1, int paramInt9, int paramInt10, String paramString8, String paramString9, int paramInt11, String paramString10, long paramLong2, long paramLong3, UgcRightInfo paramUgcRightInfo, int paramInt12, long paramLong4, int paramInt13, int paramInt14, int paramInt15, int paramInt16, Map<Integer, Integer> paramMap, boolean paramBoolean1, String paramString11, int paramInt17, int paramInt18, int paramInt19, long paramLong5, ArrayList<s_droplist_option> paramArrayList, Map<String, String> paramMap1, int paramInt20, long paramLong6, String paramString12, int paramInt21, Map<String, byte[]> paramMap2, int paramInt22, boolean paramBoolean2, boolean paramBoolean3, long paramLong7)
   {
     this.appid = paramInt1;
     this.subid = paramInt2;
@@ -111,20 +115,24 @@ public final class cell_comm
     this.reportfeedsattr = paramInt14;
     this.recom_show_type = paramInt15;
     this.wup_feeds_type = paramInt16;
-    this.stMapABTest = paramMap1;
-    this.is_stay = paramBoolean;
+    this.stMapABTest = paramMap;
+    this.is_stay = paramBoolean1;
     this.paykey = paramString11;
     this.operatemask2 = paramInt17;
     this.positionmask = paramInt18;
     this.positionmask2 = paramInt19;
     this.editmask = paramLong5;
     this.custom_droplist = paramArrayList;
-    this.extendInfo = paramMap2;
+    this.extendInfo = paramMap1;
     this.feedsattr2 = paramInt20;
     this.feedsDelTime = paramLong6;
     this.sqDynamicFeedsKey = paramString12;
     this.iClick_area = paramInt21;
-    this.extendInfoData = paramMap3;
+    this.extendInfoData = paramMap2;
+    this.hot_score = paramInt22;
+    this.is_kuolie = paramBoolean2;
+    this.pull_qzone = paramBoolean3;
+    this.operatemask3 = paramLong7;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -174,6 +182,10 @@ public final class cell_comm
     this.sqDynamicFeedsKey = paramJceInputStream.readString(42, false);
     this.iClick_area = paramJceInputStream.read(this.iClick_area, 43, false);
     this.extendInfoData = ((Map)paramJceInputStream.read(cache_extendInfoData, 44, false));
+    this.hot_score = paramJceInputStream.read(this.hot_score, 45, false);
+    this.is_kuolie = paramJceInputStream.read(this.is_kuolie, 46, false);
+    this.pull_qzone = paramJceInputStream.read(this.pull_qzone, 47, false);
+    this.operatemask3 = paramJceInputStream.read(this.operatemask3, 48, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -257,11 +269,15 @@ public final class cell_comm
     if (this.extendInfoData != null) {
       paramJceOutputStream.write(this.extendInfoData, 44);
     }
+    paramJceOutputStream.write(this.hot_score, 45);
+    paramJceOutputStream.write(this.is_kuolie, 46);
+    paramJceOutputStream.write(this.pull_qzone, 47);
+    paramJceOutputStream.write(this.operatemask3, 48);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_comm
  * JD-Core Version:    0.7.0.1
  */

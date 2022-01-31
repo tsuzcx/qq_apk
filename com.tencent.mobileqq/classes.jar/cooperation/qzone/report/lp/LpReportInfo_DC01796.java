@@ -2,10 +2,10 @@ package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
 import android.util.Log;
+import bjdm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.downloader.handler.ReportHandler.DownloadReportObject;
 import common.config.service.QzoneConfig;
-import cooperation.qzone.QUA;
 import cooperation.qzone.util.NetworkState;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
@@ -39,7 +39,7 @@ public class LpReportInfo_DC01796
     return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(localDate);
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
     if (this.reportObj != null)
@@ -54,7 +54,7 @@ public class LpReportInfo_DC01796
       LpReportUtils.safePut(localHashMap, "url", URLEncoder.encode(this.reportObj.url));
       localHashMap.put("size", String.valueOf(this.reportObj.fileSize));
       localHashMap.put("terminal", "Android-QzoneInQQ");
-      LpReportUtils.safePut(localHashMap, "qua", QUA.a());
+      LpReportUtils.safePut(localHashMap, "qua", bjdm.a());
       LpReportUtils.safePut(localHashMap, "client_ip", this.reportObj.clientip);
       localHashMap.put("retry", String.valueOf(this.reportObj.retry));
       localHashMap.put("flow", String.valueOf(this.reportObj.flow));
@@ -92,7 +92,7 @@ public class LpReportInfo_DC01796
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_DC01796
  * JD-Core Version:    0.7.0.1
  */

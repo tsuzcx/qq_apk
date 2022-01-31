@@ -1,34 +1,27 @@
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
-import java.util.Iterator;
-import java.util.List;
-
-class abwl
-  implements Runnable
+public class abwl
 {
-  abwl(abwj paramabwj, boolean paramBoolean, String paramString1, String paramString2) {}
+  public double a;
+  public int a;
+  public long a;
+  public String a;
+  public double b;
+  public long b;
+  public String b;
+  public String c = "";
   
-  public void run()
+  public abwl()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Abwj.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) && (this.jdField_a_of_type_Abwj.a.jdField_a_of_type_JavaUtilList != null))
-    {
-      Iterator localIterator = this.jdField_a_of_type_Abwj.a.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
-        if (localRecentBaseData.a().equals(this.jdField_a_of_type_JavaLangString))
-        {
-          localRecentBaseData.b = this.b;
-          this.jdField_a_of_type_Abwj.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Abwj.a.jdField_a_of_type_Int);
-        }
-      }
-    }
+    this.jdField_a_of_type_Double = (0.0D / 0.0D);
+    this.jdField_a_of_type_Long = 9223372036854775807L;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Double = (0.0D / 0.0D);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwl
  * JD-Core Version:    0.7.0.1
  */

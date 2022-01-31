@@ -1,25 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import java.util.Iterator;
+import java.util.List;
 
 public class skv
-  implements DialogInterface.OnDismissListener
+  implements ViewPager.OnPageChangeListener
 {
-  public skv(DiscussionMemberActivity paramDiscussionMemberActivity, int paramInt, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager, FriendListObserver paramFriendListObserver) {}
+  private skv(ViewPagerCompat paramViewPagerCompat) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.getHandler().postDelayed(new skw(this), 150L);
+    if (ViewPagerCompat.a(this.a) != null)
+    {
+      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
+      }
+    }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (ViewPagerCompat.a(this.a) != null)
+    {
+      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
+      }
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (ViewPagerCompat.a(this.a) != null)
+    {
+      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     skv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,18 @@
 package com.tencent.token.ui;
 
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class cw
+class cw
   implements View.OnClickListener
 {
-  cw(DetectIDPhotoActivity paramDetectIDPhotoActivity) {}
+  cw(CopyFaceToOtherUinActivity paramCopyFaceToOtherUinActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    this.a.showProDialogWithoutShutDown(this.a, this.a.getResources().getString(2131230985));
+    com.tencent.token.cw.a().m(0L, CopyFaceToOtherUinActivity.access$000(this.a));
   }
 }
 

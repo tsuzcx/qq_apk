@@ -1,20 +1,25 @@
-import com.tencent.widget.AdapterView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.plugin.PluginManagerV2;
 
 public class iai
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  private iai(AdapterView paramAdapterView) {}
+  private String jdField_a_of_type_JavaLangString;
   
-  public void run()
+  private iai(PluginManagerV2 paramPluginManagerV2, String paramString)
   {
-    if (this.a.p)
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (paramInt)
     {
-      if (this.a.a() != null) {
-        this.a.post(this);
-      }
+    default: 
       return;
     }
-    AdapterView.a(this.a);
+    this.jdField_a_of_type_CooperationPluginPluginManagerV2.cancelInstall(this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,36 +1,20 @@
-import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
 
-public class aepr
+public abstract interface aepr
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
+  public abstract void a(AudioPlayer paramAudioPlayer);
   
-  aepr(WerewolvesDataManager paramWerewolvesDataManager) {}
+  public abstract void a(AudioPlayer paramAudioPlayer, int paramInt);
   
-  public boolean equals(Object paramObject)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof aepr))
-    {
-      paramObject = (aepr)paramObject;
-      bool1 = bool2;
-      if (paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))
-      {
-        bool1 = bool2;
-        if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
+  public abstract void b(AudioPlayer paramAudioPlayer, int paramInt);
+  
+  public abstract void c(AudioPlayer paramAudioPlayer, int paramInt);
+  
+  public abstract void d(AudioPlayer paramAudioPlayer, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aepr
  * JD-Core Version:    0.7.0.1
  */

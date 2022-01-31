@@ -1,26 +1,34 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import android.os.Bundle;
 
-public class zdo
-  implements Runnable
+class zdo
+  extends apmh
 {
-  public zdo(FrameHelperActivity paramFrameHelperActivity) {}
+  zdo(zdj paramzdj) {}
   
-  public void run()
+  public void onBindedToClient() {}
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle)
   {
-    if ((this.a.getActivity() == null) || (this.a.getActivity().app == null)) {}
-    do
+    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == zdj.a(this.a).key))
     {
-      return;
-      this.a.l();
-    } while (this.a.a == null);
-    this.a.a.sendEmptyMessage(9);
+      String str1 = paramBundle.getString("cmd");
+      String str2 = paramBundle.getString("callbackid");
+      paramBundle = paramBundle.getBundle("request");
+      if ((str1 != null) && ("ipc_hotchat_plugin".equals(str1)) && (paramBundle.getString("key_action").endsWith("updateFavoriteFlag")))
+      {
+        int i = paramBundle.getInt("result", 1);
+        this.a.callJs(str2, new String[] { Integer.toString(i) });
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zdo
  * JD-Core Version:    0.7.0.1
  */

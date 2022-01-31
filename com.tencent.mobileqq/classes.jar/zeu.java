@@ -1,28 +1,37 @@
-import com.tencent.mobileqq.app.HotChatCenterManager;
-import com.tencent.mobileqq.data.HotChatItemData;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public class zeu
-  implements Comparator
+class zeu
+  implements bhuk
 {
-  public zeu(HotChatCenterManager paramHotChatCenterManager) {}
+  zeu(zet paramzet) {}
   
-  public int a(HotChatItemData paramHotChatItemData1, HotChatItemData paramHotChatItemData2)
+  public void OnClick(View paramView, int paramInt)
   {
-    long l1 = Math.max(paramHotChatItemData1.mLatestMsgSec, paramHotChatItemData1.mDraftSec);
-    long l2 = Math.max(paramHotChatItemData2.mLatestMsgSec, paramHotChatItemData2.mDraftSec);
-    if (l1 < l2) {
-      return 1;
+    this.a.a.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow button %d", new Object[] { Integer.valueOf(paramInt) }));
+      }
+      return;
+    case 0: 
+      zet.a(this.a);
+      return;
+    case 1: 
+      zet.b(this.a);
+      return;
+    case 2: 
+      zet.c(this.a);
+      return;
     }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    zet.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zeu
  * JD-Core Version:    0.7.0.1
  */

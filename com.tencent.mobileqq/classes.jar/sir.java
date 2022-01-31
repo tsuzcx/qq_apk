@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public class sir
-  implements Runnable
+public abstract interface sir
 {
-  public sir(Conversation paramConversation) {}
-  
-  public void run()
-  {
-    this.a.a.q();
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sir
  * JD-Core Version:    0.7.0.1
  */

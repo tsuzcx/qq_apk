@@ -1,55 +1,77 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ark.ArkViewImplement.ArkViewInterface;
+import android.support.annotation.NonNull;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-class uuz
-  implements View.OnClickListener
+public abstract class uuz<DATA>
 {
-  uuz(uuy paramuuy, int paramInt, ArkViewImplement.ArkViewInterface paramArkViewInterface) {}
+  public static final String a;
+  protected DATA a;
+  protected List<uva<DATA>> a;
   
-  public void onClick(View paramView)
+  static
   {
-    int i = paramView.getId();
-    if (this.jdField_a_of_type_Int == 2) {
-      if (i == 0) {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(5);
-      }
+    jdField_a_of_type_JavaLangString = uuz.class.getName();
+  }
+  
+  public uuz()
+  {
+    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  }
+  
+  public DATA a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a()
+  {
+    a(null);
+  }
+  
+  public void a(@NonNull uva<DATA> paramuva)
+  {
+    if (!this.jdField_a_of_type_JavaUtilList.contains(paramuva)) {
+      this.jdField_a_of_type_JavaUtilList.add(paramuva);
     }
-    do
-    {
-      do
-      {
-        return;
-        if (i == 1)
-        {
-          this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(4);
-          return;
-        }
-      } while (i != 2);
-      this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
-      return;
-      if (this.jdField_a_of_type_Int != 1) {
-        break;
-      }
-      if (i == 0)
-      {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(1);
-        return;
-      }
-      if (i == 1)
-      {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(2);
-        return;
-      }
-    } while (i != 2);
-    this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
-    return;
-    this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+  }
+  
+  protected abstract void a(uxs paramuxs);
+  
+  protected void a(boolean paramBoolean, DATA paramDATA)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((uva)localIterator.next()).a(paramBoolean, paramDATA);
+    }
+  }
+  
+  public void b()
+  {
+    wxe.b(jdField_a_of_type_JavaLangString, "onInit");
+  }
+  
+  public void b(@NonNull uva<DATA> paramuva)
+  {
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramuva)) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramuva);
+    }
+  }
+  
+  public void b(uxs paramuxs)
+  {
+    a(paramuxs);
+  }
+  
+  public void c()
+  {
+    wxe.b(jdField_a_of_type_JavaLangString, "onDestroy");
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uuz
  * JD-Core Version:    0.7.0.1
  */

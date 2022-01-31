@@ -1,27 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCGI;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.lang.ref.WeakReference;
-
-class aasm
-  implements Runnable
+public class aasm
 {
-  aasm(aasc paramaasc, String paramString, aass paramaass, aasq paramaasq) {}
-  
-  public void run()
+  public static void a(String paramString)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)aasc.a(this.jdField_a_of_type_Aasc).get();
-    if (localQQAppInterface == null)
-    {
-      ArkAppCenter.b("ArkApp.Dict.Update", "downloadDictFile, qq app interface is null, return from task");
-      return;
-    }
-    ((ArkAppCenter)localQQAppInterface.getManager(120)).a().a(this.jdField_a_of_type_JavaLangString, 0L, new aasn(this));
+    aasq.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aasm
  * JD-Core Version:    0.7.0.1
  */

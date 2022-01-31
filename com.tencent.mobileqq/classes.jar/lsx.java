@@ -1,20 +1,39 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.opengl.GLES20;
+import javax.microedition.khronos.opengles.GL11;
 
-class lsx
-  implements Runnable
+public class lsx
+  implements lsy
 {
-  lsx(lsw paramlsw) {}
-  
-  public void run()
+  public int a()
   {
-    ReadInJoyLogicEngine.a().a((int)OnTopicRecommendHeaderFollowClickListener.a(this.a.a).businessId, 1);
+    int[] arrayOfInt = new int[1];
+    arrayOfInt[0] = 0;
+    GLES20.glGenTextures(1, arrayOfInt, 0);
+    lux.a();
+    return arrayOfInt[0];
+  }
+  
+  public void a(int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  {
+    GLES20.glGenBuffers(paramInt1, paramArrayOfInt, paramInt2);
+    lux.a();
+  }
+  
+  public void a(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  {
+    GLES20.glDeleteTextures(paramInt1, paramArrayOfInt, paramInt2);
+    lux.a();
+  }
+  
+  public void b(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  {
+    GLES20.glDeleteBuffers(paramInt1, paramArrayOfInt, paramInt2);
+    lux.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lsx
  * JD-Core Version:    0.7.0.1
  */

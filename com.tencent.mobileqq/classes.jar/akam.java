@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class akam
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  akam(akak paramakak, Exception paramException) {}
+  akam(akak paramakak) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Akak.a.dismiss();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "safetyReport exception1" + this.jdField_a_of_type_JavaLangException.getMessage());
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

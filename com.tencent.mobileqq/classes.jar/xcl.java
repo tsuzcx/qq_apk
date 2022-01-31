@@ -1,21 +1,31 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbListAdapter;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
 
 public class xcl
-  extends RecyclerView.ViewHolder
+  implements Animator.AnimatorListener
 {
-  public xcm a;
+  public xcl(QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity) {}
   
-  public xcl(TroopUnAccalimedRedPacketList.HbListAdapter paramHbListAdapter, View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramView);
-    this.jdField_a_of_type_Xcm = ((xcm)paramView);
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772038);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772038);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xcl
  * JD-Core Version:    0.7.0.1
  */

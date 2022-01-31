@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class cpx
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public cpx(EditInfoActivity paramEditInfoActivity) {}
+  public cpx(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a();
+    GroupManagerActivity.a(this.a, null);
   }
 }
 

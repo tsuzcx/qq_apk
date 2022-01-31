@@ -9,7 +9,7 @@ public enum a
   
   public static a[] a()
   {
-    return (a[])F.clone();
+    return (a[])G.clone();
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.token.ui;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.token.ag;
+import com.tencent.token.cx;
 
 public class SerialNumberActivity
   extends BaseActivity
@@ -13,16 +13,16 @@ public class SerialNumberActivity
   
   public void initialize()
   {
-    this.text = ((TextView)findViewById(2131297063));
-    if (ag.c().j() != null) {
-      this.text.setText(ag.c().j());
+    this.text = ((TextView)findViewById(2131559246));
+    if (cx.c().j() != null) {
+      this.text.setText(cx.c().j());
     }
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903193);
+    setContentView(2130968755);
     initialize();
   }
 }

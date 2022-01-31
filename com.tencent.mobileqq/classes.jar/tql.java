@@ -1,36 +1,123 @@
-import android.os.Message;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
-import mqq.os.MqqHandler;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.MQLruCache;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import mqq.util.WeakReference;
+import org.jetbrains.annotations.NotNull;
 
 public class tql
-  extends MqqHandler
 {
-  public tql(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  @NotNull
+  public static URLDrawable.URLDrawableOptions a(URLImageView paramURLImageView)
   {
-    switch (paramMessage.what)
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846162);
+    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843636);
+    if (paramURLImageView.getLayoutParams() != null)
     {
-    case 107: 
-    default: 
-      return;
-    case 106: 
-      this.a.finish();
+      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
+      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
+    }
+    return localURLDrawableOptions;
+  }
+  
+  public static void a()
+  {
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      BaseApplicationImpl.sImageCache.evict(0);
       return;
     }
-    int i = 0;
-    while (i < 6)
+    BaseApplicationImpl.sImageCache.evictAll();
+  }
+  
+  public static void a(String paramString, URLImageView paramURLImageView)
+  {
+    a(paramString, paramURLImageView, null, false);
+  }
+  
+  public static void a(String paramString, URLImageView paramURLImageView, Drawable paramDrawable)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = b(paramURLImageView);
+    localURLDrawableOptions.mLoadingDrawable = paramDrawable;
+    a(paramString, paramURLImageView, localURLDrawableOptions, false);
+  }
+  
+  public static void a(String paramString, URLImageView paramURLImageView, URLDrawable.URLDrawableOptions paramURLDrawableOptions, boolean paramBoolean)
+  {
+    a(paramString, paramURLImageView, paramURLDrawableOptions, paramBoolean, null);
+  }
+  
+  public static void a(String paramString, URLImageView paramURLImageView, URLDrawable.URLDrawableOptions paramURLDrawableOptions, boolean paramBoolean, URLDrawableDownListener paramURLDrawableDownListener)
+  {
+    WeakReference localWeakReference = new WeakReference(paramURLImageView);
+    Object localObject = paramURLDrawableOptions;
+    if (paramURLDrawableOptions == null) {}
+    for (;;)
     {
-      RegisterVerifyCodeActivity.a(this.a)[i].setText("");
-      i += 1;
+      try
+      {
+        localObject = a(paramURLImageView);
+        long l = 0L;
+        if (paramBoolean)
+        {
+          paramURLDrawableOptions = URLDrawable.getFileDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
+          if ((paramURLDrawableOptions == null) || (localWeakReference.get() == null)) {
+            break label158;
+          }
+          paramURLImageView.setURLDrawableDownListener(new tqm(paramURLDrawableDownListener, l, paramString));
+          ((ImageView)localWeakReference.get()).setImageDrawable(paramURLDrawableOptions);
+          return;
+        }
+        localObject = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
+        paramURLDrawableOptions = (URLDrawable.URLDrawableOptions)localObject;
+        switch (((URLDrawable)localObject).getStatus())
+        {
+        case 1: 
+        case 3: 
+          l = System.currentTimeMillis();
+          ((URLDrawable)localObject).startDownload();
+          paramURLDrawableOptions = (URLDrawable.URLDrawableOptions)localObject;
+          break;
+        case 2: 
+          l = System.currentTimeMillis();
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+      ((URLDrawable)localObject).restartDownload();
+      paramURLDrawableOptions = (URLDrawable.URLDrawableOptions)localObject;
+      continue;
+      label158:
+      return;
     }
-    RegisterVerifyCodeActivity.a(this.a)[0].requestFocus();
+  }
+  
+  public static URLDrawable.URLDrawableOptions b(URLImageView paramURLImageView)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841309);
+    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843636);
+    if ((paramURLImageView != null) && (paramURLImageView.getLayoutParams() != null))
+    {
+      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
+      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
+    }
+    return localURLDrawableOptions;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tql
  * JD-Core Version:    0.7.0.1
  */

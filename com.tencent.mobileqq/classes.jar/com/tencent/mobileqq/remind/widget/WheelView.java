@@ -8,6 +8,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
 import android.os.Build;
+import android.os.Build.VERSION;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -101,7 +102,7 @@ public class WheelView
     this.jdField_a_of_type_AndroidGraphicsCamera.save();
     this.jdField_a_of_type_AndroidGraphicsCamera.translate(0.0F, 0.0F, 100.0F);
     paramTransformation.setAlpha(paramFloat4);
-    if ((!Build.MODEL.equals("HUAWEI Y325-T00")) && (!Build.MODEL.equals("Lenovo A318t")) && (!Build.MODEL.equals("Lenovo A308t")) && (!Build.MODEL.equals("Lenovo A269")) && (!Build.MODEL.equals("PRA-TL10")) && (!Build.MODEL.equals("HUAWEI CAZ-TL10")) && (!Build.MODEL.equals("BLN-TL10"))) {
+    if ((!Build.MODEL.equals("HUAWEI Y325-T00")) && (!Build.MODEL.equals("Lenovo A318t")) && (!Build.MODEL.equals("Lenovo A308t")) && (!Build.MODEL.equals("Lenovo A269")) && (!Build.MODEL.equals("PRA-TL10")) && (!Build.MODEL.equals("HUAWEI CAZ-TL10")) && (!Build.MODEL.equals("BLN-TL10")) && (!a())) {
       this.jdField_a_of_type_AndroidGraphicsCamera.rotateX(paramFloat1);
     }
     this.jdField_a_of_type_AndroidGraphicsCamera.translate(0.0F, 0.0F, paramFloat2);
@@ -111,6 +112,15 @@ public class WheelView
     localMatrix.preTranslate(-j / 2, -k / 2);
     localMatrix.postTranslate(j / 2, k / 2);
     this.jdField_a_of_type_AndroidGraphicsCamera.restore();
+  }
+  
+  public static boolean a()
+  {
+    if ((Build.MODEL.equals("VKY-AL00")) && (Build.VERSION.SDK_INT == 24)) {}
+    while ((Build.MODEL.equals("NXT-AL10")) && (Build.VERSION.SDK_INT == 24)) {
+      return true;
+    }
+    return false;
   }
   
   private float b(View paramView)
@@ -155,7 +165,7 @@ public class WheelView
     return f;
   }
   
-  protected boolean getChildStaticTransformation(View paramView, Transformation paramTransformation)
+  public boolean getChildStaticTransformation(View paramView, Transformation paramTransformation)
   {
     float f1 = a(paramView);
     float f2 = b(paramView);
@@ -165,7 +175,7 @@ public class WheelView
     return true;
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_Int = a();
@@ -180,7 +190,7 @@ public class WheelView
     }
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.jdField_a_of_type_Int = a();
@@ -206,7 +216,7 @@ public class WheelView
     }
   }
   
-  protected void selectionChanged()
+  public void selectionChanged()
   {
     super.selectionChanged();
     playSoundEffect(0);
@@ -229,7 +239,7 @@ public class WheelView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.remind.widget.WheelView
  * JD-Core Version:    0.7.0.1
  */

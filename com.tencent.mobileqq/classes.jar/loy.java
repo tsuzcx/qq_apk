@@ -1,24 +1,59 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class loy
-  implements Runnable
 {
-  public loy(ArticleInfoModule paramArticleInfoModule, List paramList, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean) {}
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  String b;
+  String c;
+  String d;
   
-  public void run()
+  public static loy a()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (List localList = ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean); this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a == null; localList = this.jdField_a_of_type_JavaUtilList) {
-      return;
+    Object localObject = lex.b(298).jdField_a_of_type_JavaLangString;
+    loy localloy = null;
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      localloy = a((String)localObject);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a.post(new loz(this, localList));
+    localObject = localloy;
+    if (localloy == null) {
+      localObject = new loy();
+    }
+    return localObject;
+  }
+  
+  static loy a(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      loy localloy = new loy();
+      localloy.jdField_a_of_type_Boolean = paramString.getBoolean("enable");
+      localloy.jdField_a_of_type_Int = paramString.getInt("task_id");
+      localloy.jdField_a_of_type_JavaLangString = paramString.getString("url_zip_so");
+      localloy.b = paramString.getString("MD5_zip_so");
+      localloy.c = paramString.getString("MD5_so");
+      localloy.d = paramString.getString("so_name");
+      return localloy;
+    }
+    catch (Exception paramString)
+    {
+      QLog.d("QavGPDownloadManager", 1, String.format("parseJson, Exception\n%s", new Object[] { paramString }));
+    }
+    return null;
+  }
+  
+  public String toString()
+  {
+    return String.format("task_id[%s], enable[%s], url_zip_so[%s], MD5_zip_so[%s], MD5_so[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_JavaLangString, this.b, this.c });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     loy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,93 +1,78 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.pluginsdk.PluginInterface;
+import android.opengl.GLES20;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.thirdpay.ThirdPayGate;
 
 public class anez
-  extends anfa
 {
-  public anez(ThirdPayGate paramThirdPayGate, PluginInterface paramPluginInterface, String paramString, long paramLong, Handler paramHandler)
+  private int jdField_a_of_type_Int;
+  private int[] jdField_a_of_type_ArrayOfInt;
+  private int jdField_b_of_type_Int;
+  private int[] jdField_b_of_type_ArrayOfInt;
+  
+  private void b(int paramInt1, int paramInt2)
   {
-    super(paramThirdPayGate);
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      throw new IllegalArgumentException("width & height should > 0!");
+    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    if (this.jdField_a_of_type_ArrayOfInt != null)
+    {
+      GLES20.glDeleteFramebuffers(1, this.jdField_a_of_type_ArrayOfInt, 0);
+      this.jdField_a_of_type_ArrayOfInt = null;
+    }
+    if (this.jdField_b_of_type_ArrayOfInt != null)
+    {
+      GLES20.glDeleteTextures(1, this.jdField_b_of_type_ArrayOfInt, 0);
+      this.jdField_b_of_type_ArrayOfInt = null;
+    }
+    this.jdField_a_of_type_ArrayOfInt = new int[1];
+    this.jdField_b_of_type_ArrayOfInt = new int[1];
+    GLES20.glGenFramebuffers(1, this.jdField_a_of_type_ArrayOfInt, 0);
+    GLES20.glGenTextures(1, this.jdField_b_of_type_ArrayOfInt, 0);
+    GLES20.glBindTexture(3553, this.jdField_b_of_type_ArrayOfInt[0]);
+    GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameterf(3553, 10241, 9729.0F);
+    GLES20.glTexParameterf(3553, 10242, 33071.0F);
+    GLES20.glTexParameterf(3553, 10243, 33071.0F);
+    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ArrayOfInt[0]);
+    GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.jdField_b_of_type_ArrayOfInt[0], 0);
+    GLES20.glBindTexture(3553, 0);
+    GLES20.glBindFramebuffer(36160, 0);
   }
   
-  public void run()
+  public int a()
   {
-    for (;;)
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        Bundle localBundle = ThirdPayGate.access$500(this.jdField_a_of_type_CooperationThirdpayThirdPayGate, this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginInterface, this.jdField_a_of_type_JavaLangString);
-        if ((localBundle == null) || (!localBundle.getBoolean("plugininfo", false)))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("CardPayGate", 2, "install----pluginInfo is null...");
-          }
-          if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 5000L)
-          {
-            try
-            {
-              Thread.sleep(1000L);
-            }
-            catch (InterruptedException localInterruptedException1)
-            {
-              localInterruptedException1.printStackTrace();
-            }
-            continue;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("CardPayGate", 2, "install----pluginInfo is null. timeout.");
-          }
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4097);
-        }
-      }
-      else
-      {
-        return;
-      }
-      int i = localInterruptedException1.getInt("pluginstate");
-      float f = localInterruptedException1.getFloat("pluginprogress");
-      if (QLog.isColorLevel())
-      {
-        QLog.d("CardPayGate", 2, "pluginState----" + i);
-        QLog.d("CardPayGate", 2, "progress----" + f);
-      }
-      if (i == 4)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-        return;
-      }
-      if (i != 1) {
-        if (i == 2)
-        {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-        }
-        else if (i == 3)
-        {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-        }
-        else
-        {
-          if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 15000L)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("CardPayGate", 2, "install----pluginInfo is not null. timeout.");
-            }
-            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4097);
-            return;
-          }
-          try
-          {
-            Thread.sleep(1000L);
-          }
-          catch (InterruptedException localInterruptedException2)
-          {
-            localInterruptedException2.printStackTrace();
-          }
-        }
-      }
+    int i = 0;
+    if (this.jdField_b_of_type_ArrayOfInt != null) {
+      i = this.jdField_b_of_type_ArrayOfInt[0];
     }
+    return i;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_b_of_type_ArrayOfInt != null)
+    {
+      GLES20.glDeleteTextures(this.jdField_b_of_type_ArrayOfInt.length, this.jdField_b_of_type_ArrayOfInt, 0);
+      this.jdField_b_of_type_ArrayOfInt = null;
+    }
+    if (this.jdField_a_of_type_ArrayOfInt != null)
+    {
+      GLES20.glDeleteFramebuffers(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+      this.jdField_a_of_type_ArrayOfInt = null;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_b_of_type_ArrayOfInt == null) || (paramInt1 != this.jdField_a_of_type_Int) || (paramInt2 != this.jdField_b_of_type_Int))
+    {
+      long l = System.currentTimeMillis();
+      b(paramInt1, paramInt2);
+      QLog.i("Keying_FrameBuffer", 2, " init need " + (System.currentTimeMillis() - l));
+    }
+    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ArrayOfInt[0]);
   }
 }
 

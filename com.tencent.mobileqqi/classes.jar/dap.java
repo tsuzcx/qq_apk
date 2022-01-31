@@ -1,46 +1,89 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import com.tencent.mobileqq.international.LocaleString;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.PublicAccountActivity;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.FaceInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
 
 public class dap
-  extends WtloginObserver
+  extends FacePreloadBaseAdapter
 {
-  public dap(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
-  
-  public void OnCheckSMSVerifyLoginAccount(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
+  public dap(PublicAccountActivity paramPublicAccountActivity, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView)
   {
-    if (QLog.isColorLevel())
+    super(paramContext, paramQQAppInterface, paramXListView, 1, true);
+    paramXListView.setAdapter(this);
+  }
+  
+  public PublicAccountInfo a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.a.a.size())) {
+      return (PublicAccountInfo)this.a.a.get(paramInt);
+    }
+    return null;
+  }
+  
+  protected Object a(int paramInt)
+  {
+    FacePreloadBaseAdapter.FaceInfo localFaceInfo = new FacePreloadBaseAdapter.FaceInfo(this);
+    localFaceInfo.jdField_a_of_type_JavaLangString = a(paramInt).getUin();
+    return localFaceInfo;
+  }
+  
+  public int getCount()
+  {
+    return this.a.a.size();
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    PublicAccountInfo localPublicAccountInfo;
+    if (paramView == null)
     {
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount appid=" + paramLong1 + " subAppid=" + paramLong2 + " countryCode=" + paramString1 + " mobile=" + paramString2);
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount msg=" + paramString3 + " msgCnt=" + paramInt1 + " timeLimit=" + paramInt2 + " ret=" + paramInt3);
-      if (paramErrMsg != null) {
-        QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
+      paramView = LayoutInflater.from(this.a).inflate(2130903323, paramViewGroup, false);
+      paramViewGroup = new dar();
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131230940));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232080));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231395));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232078));
+      paramViewGroup.e = ((TextView)paramView.findViewById(2131232077));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131232079));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131231396));
+      paramView.setTag(paramViewGroup);
+      paramView.setOnClickListener(this.a);
+      localPublicAccountInfo = a(paramInt);
+      paramViewGroup.jdField_a_of_type_JavaLangString = localPublicAccountInfo.getUin();
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = localPublicAccountInfo;
+      paramViewGroup.e.setVisibility(8);
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramViewGroup.d.setVisibility(0);
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(localPublicAccountInfo.name);
+      if (localPublicAccountInfo.certifiedGrade <= 0L) {
+        break label323;
       }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838181);
     }
-    this.a.g();
-    if (this.a.isFinishing()) {
-      return;
-    }
-    if (paramInt3 == 0)
+    for (;;)
     {
-      this.a.s_();
-      return;
+      paramViewGroup.d.setText(localPublicAccountInfo.summary);
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(1, localPublicAccountInfo.getUin()));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramViewGroup.b.setVisibility(8);
+      paramView.setContentDescription(localPublicAccountInfo.name + "简介:" + localPublicAccountInfo.summary);
+      return paramView;
+      paramViewGroup = (dar)paramView.getTag();
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      break;
+      label323:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    paramString1 = null;
-    if (paramErrMsg != null)
-    {
-      paramString1 = paramErrMsg.getMessage();
-      paramString1 = LocaleString.a(this.a, paramString1);
-    }
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      this.a.a(null, paramString1);
-      return;
-    }
-    this.a.a(2131562783, 1);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
+import begz;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 
 public class SuitUIPlugin
   extends VasWebviewUiPlugin
@@ -24,7 +24,7 @@ public class SuitUIPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.SuitUIPlugin
  * JD-Core Version:    0.7.0.1
  */

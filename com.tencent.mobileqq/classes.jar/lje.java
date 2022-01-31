@@ -1,78 +1,38 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
-public class lje
-  implements EmoticonCallback
+public abstract class lje<T1 extends MessageMicro, T2 extends MessageMicro>
 {
-  public lje(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
-  
-  public void a(EmoticonInfo paramEmoticonInfo)
+  protected final void a(long paramLong, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramEmoticonInfo instanceof PicEmoticonInfo))
+    Object localObject = ljb.a(this);
+    ((ljd)localObject).a("QAVMessageHandler", paramLong);
+    if ((((ljd)localObject).a != null) && (((ljd)localObject).b != null)) {}
+    try
     {
-      paramEmoticonInfo = (PicEmoticonInfo)paramEmoticonInfo;
-      Context localContext = ReadInJoyCommentComponentFragment.a(this.a).getApplicationContext();
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramEmoticonInfo.a(localContext, localContext.getResources().getDisplayMetrics().density));
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      ReadInJoyCommentComponentFragment.a(this.a);
+      MessageMicro localMessageMicro = (MessageMicro)((ljd)localObject).a.newInstance();
+      localObject = (MessageMicro)((ljd)localObject).b.newInstance();
+      paramToServiceMsg = paramToServiceMsg.getWupBuffer();
+      if ((paramToServiceMsg != null) && (paramToServiceMsg.length > 4)) {
+        localMessageMicro.mergeFrom(paramToServiceMsg, 4, paramToServiceMsg.length - 4);
+      }
+      ((MessageMicro)localObject).mergeFrom(paramFromServiceMsg.getWupBuffer());
+      a(paramLong, paramFromServiceMsg.isSuccess(), localMessageMicro, (MessageMicro)localObject, paramObject);
       return;
     }
-    ReadInJoyBaseDeliverActivity.a(paramEmoticonInfo, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText);
-  }
-  
-  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
-  
-  public boolean a(EmoticonInfo paramEmoticonInfo)
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getSelectionStart() == 0) {}
-    for (;;)
+    catch (Exception paramToServiceMsg)
     {
-      return;
-      try
-      {
-        Editable localEditable = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText();
-        int i = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getSelectionStart();
-        int j = TextUtils.getOffsetBefore(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
+      QLog.w("QAVMessageHandler", 1, "onSendMsgRsp, Exception, seq[" + paramLong + "]", paramToServiceMsg);
     }
   }
   
-  public void b(EmoticonInfo paramEmoticonInfo) {}
-  
-  public void c() {}
-  
-  public void setting() {}
+  public abstract void a(long paramLong, boolean paramBoolean, T1 paramT1, T2 paramT2, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lje
  * JD-Core Version:    0.7.0.1
  */

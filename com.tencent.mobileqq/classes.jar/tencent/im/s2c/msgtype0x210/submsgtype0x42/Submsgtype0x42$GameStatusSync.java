@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class Submsgtype0x42$GameStatusSync
-  extends MessageMicro
+  extends MessageMicro<GameStatusSync>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_data = PBField.initBytes(ByteStringMicro.EMPTY);

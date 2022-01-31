@@ -3,12 +3,12 @@ package com.dataline.mpfile;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import cw;
+import dj;
 
 public class MpfileTaskInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new cw();
+  public static final Parcelable.Creator<MpfileTaskInfo> CREATOR = new dj();
   public static int a;
   public static int b;
   public static int c;
@@ -73,7 +73,7 @@ public class MpfileTaskInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.dataline.mpfile.MpfileTaskInfo
  * JD-Core Version:    0.7.0.1
  */

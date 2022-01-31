@@ -44,11 +44,11 @@ public class TroopBarPublishBarSelectActivity$MyBarListAdapter
   {
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903408, null);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903410, null);
       paramViewGroup = new TroopBarPublishBarSelectActivity.MyBarListAdapter.ViewHolder(this);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231604));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231605));
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231000));
-      paramViewGroup.b = ((ImageView)paramView.findViewById(2131232523));
+      paramViewGroup.b = ((ImageView)paramView.findViewById(2131232526));
       paramView.setTag(paramViewGroup);
     }
     for (;;)

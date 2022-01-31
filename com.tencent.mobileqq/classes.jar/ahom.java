@@ -1,20 +1,30 @@
-import android.os.Handler;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.VideoFlowDecodeWrapper.FlowListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class ahom
-  implements VideoFlowDecodeWrapper.FlowListener
+  implements View.OnClickListener
 {
-  public ahom(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
+  public ahom(NotificationView paramNotificationView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    NeoVideoFilterPlayView.a(this.a).sendEmptyMessage(1);
+    paramView = (ahok)paramView.getTag();
+    if (paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get() == 2)
+    {
+      this.a.a(paramView);
+      if (paramView.jdField_a_of_type_Int == 82) {
+        azqs.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "Clk_notice", 0, 0, "", "", "", paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahom
  * JD-Core Version:    0.7.0.1
  */

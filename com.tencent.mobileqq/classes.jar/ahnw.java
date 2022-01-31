@@ -1,56 +1,55 @@
-import com.tencent.mobileqq.richmedia.dc.DataAdapter;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectsExplorationBanner;
+import com.tencent.widget.SimpleTextView;
 
-public class ahnw
-  extends DataAdapter
+class ahnw
+  extends bibk
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  boolean jdField_a_of_type_Boolean;
-  int b;
-  int c;
-  int d;
-  int e;
-  int f;
-  int g;
-  
-  public HashMap a(String paramString)
+  ahnw(ahns paramahns, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    if ("actStreamingVideoPlay".equalsIgnoreCase(paramString))
-    {
-      paramString = new HashMap();
-      paramString.put("StreamingVideoSupport", String.valueOf(this.jdField_a_of_type_Boolean));
-      paramString.put("FirstBufferTime", String.valueOf(this.jdField_a_of_type_Int));
-      paramString.put("PlayProgress", String.valueOf(this.b));
-      paramString.put("LoadProgress", String.valueOf(this.c));
-      paramString.put("FileDuration", String.valueOf(this.d));
-      paramString.put("FileLen", String.valueOf(this.e));
-      paramString.put("param_seekTimes", String.valueOf(this.f));
-      paramString.put("PlayResult", String.valueOf(this.g));
-      paramString.put("param_playTimeCost", String.valueOf(this.jdField_a_of_type_Long));
-      return paramString;
-    }
-    return null;
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public String toString()
+  public View a(int paramInt, Object paramObject, bibj parambibj, View.OnClickListener paramOnClickListener)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("supportProgressive ").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("playReadyTime ").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("exitPlayProgress ").append(this.b);
-    localStringBuilder.append("exitCacheProgress ").append(this.c);
-    localStringBuilder.append("durationTime ").append(this.d);
-    localStringBuilder.append("fileSize ").append(this.e);
-    localStringBuilder.append("seekTimes ").append(this.f);
-    localStringBuilder.append("playResult ").append(this.g);
-    localStringBuilder.append("playTimeCost").append(this.jdField_a_of_type_Long);
-    return localStringBuilder.toString();
+    parambibj = super.a(paramInt, paramObject, parambibj, paramOnClickListener);
+    if ((parambibj instanceof SimpleTextView)) {
+      parambibj.setTag(paramObject);
+    }
+    return parambibj;
+  }
+  
+  public void a(int paramInt, Object paramObject, bibj[] paramArrayOfbibj)
+  {
+    int i = 0;
+    if ((paramArrayOfbibj == null) || (paramArrayOfbibj.length <= 0)) {}
+    for (;;)
+    {
+      return;
+      paramInt = i;
+      if (paramArrayOfbibj.length < 0)
+      {
+        paramInt = i;
+        if (!(paramObject instanceof ConnectsExplorationBanner))
+        {
+          paramArrayOfbibj[0].b = 0;
+          paramArrayOfbibj[0].a = 0;
+          paramInt = 1;
+        }
+      }
+      while (paramInt < paramArrayOfbibj.length)
+      {
+        paramArrayOfbibj[paramInt].b = -1;
+        paramArrayOfbibj[paramInt].a = -1;
+        paramInt += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahnw
  * JD-Core Version:    0.7.0.1
  */

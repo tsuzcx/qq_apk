@@ -1,34 +1,27 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.GamePartyPlugin;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
 
 public class pba
-  extends Client.onRemoteRespObserver
+  implements Animation.AnimationListener
 {
-  public pba(GamePartyPlugin paramGamePartyPlugin) {}
+  public pba(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramBundle != null) && (paramBundle.getInt("respkey") == GamePartyPlugin.a(this.a).key) && ("batchGetUserInfo".equals(paramBundle.getString("cmd"))))
-    {
-      String str = paramBundle.getString("callbackid");
-      paramBundle = paramBundle.getBundle("response").getString("result");
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramBundle))) {
-        this.a.callJs(str, new String[] { paramBundle });
-      }
-    }
+    ReadInJoySelfFragment.a(this.a).setVisibility(8);
+    ReadInJoySelfFragment.b(this.a).setAnimation(null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pba
  * JD-Core Version:    0.7.0.1
  */

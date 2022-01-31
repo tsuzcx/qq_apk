@@ -1,98 +1,31 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.DiscussionManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.subaccount.SubAccountDataControll;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.util.List;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import com.tencent.mobileqq.data.RecentUser;
 
-public class byl
-  extends FriendListObserver
+class byl
+  implements DialogInterface.OnClickListener
 {
-  public byl(AccountManageActivity paramAccountManageActivity) {}
+  byl(byk parambyk, String paramString) {}
   
-  void a(String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.a().post(new bym(this, paramString, paramInt));
-  }
-  
-  protected void a(String paramString, boolean paramBoolean)
-  {
-    int j = 0;
-    if ((!paramBoolean) || (paramString == null)) {}
-    for (;;)
-    {
-      return;
-      Object localObject1 = SubAccountDataControll.a().a(this.a.b);
-      Object localObject2;
-      if ((localObject1 != null) && (((SubAccountInfo)localObject1).subuin != null) && (((SubAccountInfo)localObject1).subuin.equals(paramString)))
-      {
-        localObject2 = ContactUtils.b(this.a.b, ((SubAccountInfo)localObject1).subuin, false);
-        if ((!TextUtils.isEmpty((CharSequence)localObject2)) && ((TextUtils.isEmpty(((SubAccountInfo)localObject1).subname)) || (!((String)localObject2).equals(((SubAccountInfo)localObject1).subname))))
-        {
-          ((SubAccountInfo)localObject1).subname = ((String)localObject2);
-          AccountManageActivity.a(this.a).setRightText((CharSequence)localObject2);
-          AccountManageActivity.a(this.a).setContentDescription("关联QQ号" + (String)localObject2);
-        }
-      }
-      int i;
-      if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-        i = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-      }
-      while (j < this.a.jdField_a_of_type_JavaUtilList.size())
-      {
-        if ((i > j) && (this.a.jdField_a_of_type_JavaUtilList.get(j) != null) && (paramString.equals(((SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(j)).getUin())))
-        {
-          localObject1 = (TextView)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).findViewById(2131231000);
-          localObject2 = (TextView)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).findViewById(2131231001);
-          ((TextView)localObject1).setText(ContactUtils.g(this.a.b, paramString));
-          ((TextView)localObject2).setText(this.a.b.b(paramString));
-          a(paramString, j);
-          return;
-        }
-        j += 1;
-        continue;
-        i = 0;
-      }
+    ((DiscussionManager)this.jdField_a_of_type_Byk.a.b.getManager(48)).a(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_Byk.a.b.a().a();
+    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
+    if (localRecentUser != null) {
+      paramDialogInterface.b(localRecentUser);
     }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    int j = 0;
-    if ((!paramBoolean) || (paramString == null)) {}
-    for (;;)
-    {
-      return;
-      int i;
-      if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-        i = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-      }
-      while (j < this.a.jdField_a_of_type_JavaUtilList.size())
-      {
-        if ((i > j) && (this.a.jdField_a_of_type_JavaUtilList.get(j) != null) && (paramString.equals(((SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(j)).getUin())))
-        {
-          a(paramString, j);
-          return;
-        }
-        j += 1;
-        continue;
-        i = 0;
-      }
-    }
+    this.jdField_a_of_type_Byk.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     byl
  * JD-Core Version:    0.7.0.1
  */

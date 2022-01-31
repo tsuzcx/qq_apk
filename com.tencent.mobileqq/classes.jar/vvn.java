@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
-
-class vvn
-  implements Runnable
+public class vvn
 {
-  vvn(vvm paramvvm) {}
-  
-  public void run()
-  {
-    this.a.a.aX();
-  }
+  public float a;
+  public int a;
+  public Object a;
+  public boolean a;
+  public float b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vvn
  * JD-Core Version:    0.7.0.1
  */

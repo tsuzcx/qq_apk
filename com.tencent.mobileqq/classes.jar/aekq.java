@@ -1,31 +1,16 @@
-import android.graphics.Bitmap;
-import android.os.Message;
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
-class aekq
-  implements Runnable
+public class aekq
+  implements DialogInterface.OnClickListener
 {
-  aekq(aekp paramaekp, int paramInt) {}
+  public aekq(UpgradeActivity paramUpgradeActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = MusicGeneWebViewPlugin.a(this.jdField_a_of_type_Aekp.jdField_a_of_type_Aeky.c);
-    if (localObject != null)
-    {
-      int i = ((Bitmap)localObject).getWidth();
-      int j = ((Bitmap)localObject).getHeight();
-      if (i * j > 8000)
-      {
-        double d = Math.sqrt(8000.0D / (i * j));
-        Bitmap localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(i * d), (int)(j * d), true);
-        ((Bitmap)localObject).recycle();
-        localObject = Message.obtain(MusicPlayerActivity.a(this.jdField_a_of_type_Aekp.jdField_a_of_type_Aeko.a), 55);
-        ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
-        ((Message)localObject).obj = localBitmap;
-        ((Message)localObject).sendToTarget();
-      }
-    }
+    azqs.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, amqd.b(), String.valueOf(0), amqe.a(), "0");
+    this.a.finish();
   }
 }
 

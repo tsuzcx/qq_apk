@@ -1,11 +1,12 @@
 package dov.com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
 import android.content.res.AssetManager;
+import bnru;
 
 public class GameplayEngine
 {
   private long jdField_a_of_type_Long = 0L;
-  private GameEventConsumer jdField_a_of_type_DovComTencentMobileqqShortvideoPtvfilterMaterialGameEventConsumer = new GameEventConsumer(new Game3DNativeEvent());
+  private bnru jdField_a_of_type_Bnru = new bnru(new Game3DNativeEvent());
   
   private native int createEngineContext(AssetManager paramAssetManager);
   
@@ -19,7 +20,7 @@ public class GameplayEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.ptvfilter.material.GameplayEngine
  * JD-Core Version:    0.7.0.1
  */

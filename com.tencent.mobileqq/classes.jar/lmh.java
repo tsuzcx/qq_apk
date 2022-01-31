@@ -1,34 +1,59 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class lmh
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public lmh(ReadinjoySPEventReport paramReadinjoySPEventReport, String paramString, long paramLong) {}
+  public lmh(CameraUtils paramCameraUtils) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ArrayList localArrayList = new ArrayList();
-    oidb_cmd0x80a.AttributeList localAttributeList1 = new oidb_cmd0x80a.AttributeList();
-    localAttributeList1.att_id.set(1);
-    localAttributeList1.att_name.set("uin");
-    localAttributeList1.att_value.set("" + this.jdField_a_of_type_JavaLangString);
-    oidb_cmd0x80a.AttributeList localAttributeList2 = new oidb_cmd0x80a.AttributeList();
-    localAttributeList2.att_id.set(2);
-    localAttributeList2.att_name.set("time");
-    localAttributeList2.att_value.set(String.valueOf(ReadinjoySPEventReport.a(this.jdField_a_of_type_Long) / 1000L));
-    localArrayList.add(localAttributeList1);
-    localArrayList.add(localAttributeList2);
-    PublicAccountUtil.a(21, "ExitMsgBusiness", localArrayList);
+    if (paramIntent == null) {
+      return;
+    }
+    paramContext = paramIntent.getStringExtra("camera_id");
+    int i = paramIntent.getIntExtra("availability", 1);
+    long l = mwd.a(paramIntent);
+    CameraUtils.a(this.a).put(paramContext, Integer.valueOf(i));
+    if ((i == 1) && (this.a.b(l)))
+    {
+      paramContext = CameraUtils.a(this.a).entrySet().iterator();
+      do
+      {
+        if (!paramContext.hasNext()) {
+          break;
+        }
+      } while (((Integer)((Map.Entry)paramContext.next()).getValue()).intValue() != 0);
+    }
+    for (boolean bool = false;; bool = true)
+    {
+      if (AudioHelper.e()) {
+        QLog.w("CameraUtils", 1, "CameraAvailabilityReceiver, sendReopenCameraMsg, result[" + bool + "], seq[" + l + "]");
+      }
+      if (!bool) {
+        break;
+      }
+      CameraUtils.a(this.a).a("CameraAvailabilityReceiver", l, -1, -1);
+      return;
+      if (AudioHelper.e()) {
+        QLog.w("CameraUtils", 1, "CameraAvailabilityReceiver, removeReopenCameraMsg, seq[" + i + "]");
+      }
+      CameraUtils.a(this.a).a(l);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lmh
  * JD-Core Version:    0.7.0.1
  */

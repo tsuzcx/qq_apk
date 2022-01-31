@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/a_j" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/na" android:textColor="@color/o" android:ellipsize="end" android:gravity="left" android:layout_gravity="left" android:id="@id/b2z" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="5" android:lineSpacingExtra="2.0dip" />
+    <TextView android:textSize="@dimen/na" android:textColor="@color/o" android:ellipsize="end" android:gravity="left" android:layout_gravity="left" android:id="@id/ct8" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="5" android:lineSpacingExtra="2.0dip" />
+    <TextView android:textSize="@dimen/m2" android:textColor="#ff4f729c" android:id="@id/ct9" android:paddingBottom="2.5dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/s_" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/o2" />
+</RelativeLayout>

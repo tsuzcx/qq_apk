@@ -1,28 +1,15 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.MessageObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class due
-  extends MessageObserver
+  implements DialogInterface.OnClickListener
 {
-  public due(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public due(UpgradeActivity paramUpgradeActivity) {}
   
-  protected void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.h();
-  }
-  
-  protected void a(String paramString1, boolean paramBoolean, String paramString2, int paramInt)
-  {
-    if (!paramBoolean) {
-      this.a.h();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject) {}
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    this.a.h();
+    UpgradeActivity.a(this.a, false);
   }
 }
 

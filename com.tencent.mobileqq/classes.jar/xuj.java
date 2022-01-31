@@ -1,25 +1,28 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager.AnimationProxy;
+import android.database.DataSetObserver;
+import android.support.v4.view.PagerAdapter;
+import com.tencent.biz.qqstory.view.EmptySupportViewPager;
 
-class xuj
-  implements Runnable
+public class xuj
+  extends DataSetObserver
 {
-  xuj(xui paramxui, int paramInt, View paramView) {}
+  public xuj(EmptySupportViewPager paramEmptySupportViewPager) {}
   
-  public void run()
+  public void onChanged()
   {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(1000L);
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new VideoFilterViewPager.AnimationProxy(this.jdField_a_of_type_Xui.a, VideoFilterViewPager.a(this.jdField_a_of_type_Xui.a), this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
+    PagerAdapter localPagerAdapter = this.a.getAdapter();
+    if ((localPagerAdapter != null) && (localPagerAdapter.getCount() > 0))
+    {
+      this.a.a(8);
+      EmptySupportViewPager.a(this.a, 0);
+      return;
+    }
+    this.a.a(0);
+    EmptySupportViewPager.b(this.a, 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xuj
  * JD-Core Version:    0.7.0.1
  */

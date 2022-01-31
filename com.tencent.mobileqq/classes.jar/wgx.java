@@ -1,39 +1,49 @@
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.TimeFormatterUtils;
-import java.util.Calendar;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class wgx
 {
-  long jdField_a_of_type_Long;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  CharSequence jdField_a_of_type_JavaLangCharSequence;
-  String jdField_a_of_type_JavaLangString;
-  long jdField_b_of_type_Long;
-  CharSequence jdField_b_of_type_JavaLangCharSequence;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
   
-  public wgx(TroopMemberHistoryFragment paramTroopMemberHistoryFragment, String paramString, long paramLong1, CharSequence paramCharSequence, long paramLong2, MessageRecord paramMessageRecord)
+  public wgx(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Int = 3;
+    paramString = (String)((uvt)uwa.a(10)).b(paramString, "");
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_Int = paramString.optInt("show", 3);
+      if (this.jdField_a_of_type_Int >= 0)
+      {
+        this.c = paramString.optString("url");
+        this.jdField_a_of_type_JavaLangString = paramString.optString("icon");
+        this.b = paramString.optString("text");
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      do
+      {
+        this.jdField_a_of_type_Int = 3;
+      } while (!QLog.isColorLevel());
+      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "ButtonConfig exc: " + QLog.getStackTraceString(paramString));
+    }
   }
   
-  public CharSequence a()
+  public String toString()
   {
-    if (this.jdField_b_of_type_JavaLangCharSequence == null)
-    {
-      Calendar.getInstance().setTimeInMillis(this.jdField_a_of_type_Long * 1000L);
-      this.jdField_b_of_type_JavaLangCharSequence = TimeFormatterUtils.a(this.jdField_a_of_type_Long * 1000L, true, "yyyy-MM-dd");
-    }
-    return this.jdField_b_of_type_JavaLangCharSequence;
+    return "ButtonConfig: show = " + this.jdField_a_of_type_Int + ", iconText = " + this.b + ", iconUrl = " + this.jdField_a_of_type_JavaLangString + ", jumpUrl = " + this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wgx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,25 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.downloadnew.MyAppDialog;
+import com.tencent.mobileqq.data.ApolloFavActionData;
+import java.util.Comparator;
 
-public class alix
-  implements View.OnClickListener
+class alix
+  implements Comparator<ApolloFavActionData>
 {
-  public alix(MyAppDialog paramMyAppDialog, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
+  alix(aliw paramaliw) {}
   
-  public void onClick(View paramView)
+  public int a(ApolloFavActionData paramApolloFavActionData1, ApolloFavActionData paramApolloFavActionData2)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog, this.jdField_a_of_type_Int);
+    if (paramApolloFavActionData2.favId == paramApolloFavActionData1.favId) {
+      return 0;
     }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.dismiss();
+    if (paramApolloFavActionData2.favId > paramApolloFavActionData1.favId) {
+      return 1;
     }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alix
  * JD-Core Version:    0.7.0.1
  */

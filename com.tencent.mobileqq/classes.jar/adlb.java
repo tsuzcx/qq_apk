@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.forward.ForwardQFavBatchOption;
-import com.tencent.mobileqq.utils.ForwardSendPicUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
 
-class adlb
-  implements Runnable
+public class adlb
+  implements DialogInterface.OnClickListener
 {
-  adlb(adla paramadla, String paramString) {}
+  public adlb(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ForwardSendPicUtil.a(this.jdField_a_of_type_Adla.jdField_a_of_type_ComTencentMobileqqForwardForwardQFavBatchOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adla.b, this.jdField_a_of_type_Adla.jdField_a_of_type_Int, this.jdField_a_of_type_Adla.c, false, this.jdField_a_of_type_Adla.jdField_a_of_type_ComTencentMobileqqForwardForwardQFavBatchOption.jdField_a_of_type_AndroidAppActivity);
+    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adlb
  * JD-Core Version:    0.7.0.1
  */

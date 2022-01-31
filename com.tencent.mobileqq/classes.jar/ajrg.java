@@ -1,15 +1,23 @@
-import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class ajrg
-  implements Runnable
+public class ajrg
+  implements azht
 {
-  ajrg(ajre paramajre, TroopTopicDetailInfo paramTroopTopicDetailInfo) {}
+  public ajrg(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Ajre.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopTopicDetailInfo);
-    this.jdField_a_of_type_Ajre.a.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopTopicDetailInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d(".photo", 2, "single tap focus " + paramBoolean1);
+    }
+    ajrw.a(paramBoolean1);
+    if (paramBoolean1)
+    {
+      NewFlowCameraActivity.h(this.a, true);
+      return;
+    }
+    this.a.a.g();
   }
 }
 

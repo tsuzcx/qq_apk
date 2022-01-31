@@ -8,12 +8,11 @@ class ARGLSurfaceView$13
   public void run()
   {
     this.this$0.native_onSensorChanged(this.val$x, this.val$y, this.val$z, this.val$timestamp, 1);
-    this.this$0.native_updateAccel(this.val$x, this.val$y, this.val$z);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ARGLSurfaceView.13
  * JD-Core Version:    0.7.0.1
  */

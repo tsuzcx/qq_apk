@@ -1,19 +1,19 @@
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
+import java.util.List;
 
-public final class vcz
-  implements Runnable
+public class vcz
+  extends uli
 {
-  public vcz(int paramInt) {}
+  public List<String> a;
+  public List<vgd> b;
   
-  public void run()
+  public String toString()
   {
-    HapticManager.a().a(String.valueOf(this.a), PokeItemHelper.e + this.a + "/" + this.a + ".hapt");
+    return "GetStoryPlayerTagInfoEvent{requestVidList=" + this.a + ", tagVidList=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vcz
  * JD-Core Version:    0.7.0.1
  */

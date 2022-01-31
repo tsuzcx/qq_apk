@@ -23,252 +23,166 @@ import org.json.JSONObject;
 public class IPConfigStrategy
   implements IPStrategy
 {
-  private int jdField_a_of_type_Int = -1;
-  private Map jdField_a_of_type_JavaUtilMap = new HashMap();
-  private ReadWriteLock jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock = new ReentrantReadWriteLock();
-  private byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private Map b = new HashMap();
-  private Map c = new ConcurrentHashMap();
-  private Map d = new HashMap();
-  private Map e = new HashMap();
+  private static final String TAG = "IPConfigStrategy";
+  private byte[] CONFIG_LOCK = new byte[0];
+  private ReadWriteLock RW_LOCK = new ReentrantReadWriteLock();
+  private Map<String, Map<Integer, IPConfigStrategy.IPConfig>> mCacheIPConfigs = new HashMap();
+  private Map<String, String> mConfigs = new HashMap();
+  private int mDefaultIsp = -1;
+  private Map<String, Pattern> mDominPatterns = new HashMap();
+  private Map<String, Map<Integer, IPConfigStrategy.IPConfig>> mIPConfigs = new HashMap();
+  private Map<String, String> mValidIPCache = new ConcurrentHashMap();
   
-  private String a(String paramString, int paramInt1, int paramInt2)
+  private final void addConfig(String paramString, Map<String, Map<Integer, IPConfigStrategy.IPConfig>> paramMap, Map<String, Pattern> paramMap1)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    Map localMap = a(paramString);
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.readLock().lock();
-    if (localMap != null) {}
+    if ((TextUtils.isEmpty(paramString)) || (paramMap == null) || (paramMap1 == null)) {}
     for (;;)
     {
-      try
+      return;
+      paramString = paramString.trim();
+      if (paramString.startsWith(","))
       {
-        IPConfigStrategy.IPConfig localIPConfig = (IPConfigStrategy.IPConfig)localMap.get(Integer.valueOf(paramInt1));
-        paramString = localIPConfig;
-        if (localIPConfig == null)
+        paramString = "{" + paramString.substring(1);
+        try
         {
-          paramString = localIPConfig;
-          if (paramInt2 != -1) {
-            paramString = (IPConfigStrategy.IPConfig)localMap.get(Integer.valueOf(paramInt2));
+          for (;;)
+          {
+            JSONObject localJSONObject = new JSONObject(paramString);
+            if (localJSONObject == null) {
+              break;
+            }
+            JSONArray localJSONArray1 = localJSONObject.names();
+            if (localJSONArray1 == null) {
+              break;
+            }
+            int i = 0;
+            if (i >= localJSONArray1.length()) {
+              break;
+            }
+            String str = localJSONArray1.getString(i);
+            HashMap localHashMap = new HashMap();
+            JSONArray localJSONArray2 = localJSONObject.getJSONArray(localJSONArray1.getString(i));
+            if (localJSONArray2 != null)
+            {
+              int j = 0;
+              while (j < localJSONArray2.length())
+              {
+                Object localObject2 = localJSONArray2.getJSONObject(j);
+                localObject1 = ((JSONObject)localObject2).getString("ip");
+                int k = ((JSONObject)localObject2).getInt("port");
+                Integer localInteger = Integer.valueOf(((JSONObject)localObject2).getInt("apn"));
+                IPInfo localIPInfo = new IPInfo((String)localObject1, Integer.valueOf(k).intValue());
+                localObject2 = (IPConfigStrategy.IPConfig)localHashMap.get(localInteger);
+                localObject1 = localObject2;
+                if (localObject2 == null)
+                {
+                  localObject1 = new IPConfigStrategy.IPConfig();
+                  localHashMap.put(localInteger, localObject1);
+                }
+                ((IPConfigStrategy.IPConfig)localObject1).appendIP(localIPInfo);
+                j += 1;
+              }
+            }
+            Object localObject1 = (Map)paramMap.get(str);
+            if (localObject1 == null) {
+              paramMap.put(str, localHashMap);
+            }
+            for (;;)
+            {
+              paramMap1.put(str, Pattern.compile(str, 2));
+              i += 1;
+              break;
+              ((Map)localObject1).putAll(localHashMap);
+            }
           }
         }
-        if ((paramString == null) || (paramString.a == null) || (paramString.a.size() <= 0)) {
-          break label200;
+        catch (Throwable paramMap)
+        {
+          QDLog.e("IPConfigStrategy", "exception when add ip config: " + paramString, paramMap);
+          return;
         }
-        paramInt1 = paramString.b();
-        paramInt2 = paramString.a.size();
-        paramString = (IPInfo)paramString.a.get(paramInt1 % paramInt2);
-        if (paramString == null) {
-          break label200;
-        }
-        paramString = paramString.a;
       }
-      catch (Throwable paramString)
-      {
-        QDLog.c("IPConfigStrategy", "resolveIP", paramString);
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.readLock().unlock();
-        paramString = null;
-        continue;
-      }
-      finally
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.readLock().unlock();
-      }
-      return paramString;
-      label200:
-      paramString = null;
     }
   }
   
-  private List a(String paramString, int paramInt1, int paramInt2)
+  private Map<Integer, IPConfigStrategy.IPConfig> findIPConfigs(String paramString)
   {
+    Object localObject1 = null;
+    Object localObject2 = null;
     if (TextUtils.isEmpty(paramString)) {
-      return null;
+      return localObject2;
     }
-    Map localMap = a(paramString);
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.readLock().lock();
-    if (localMap != null) {}
-    for (;;)
-    {
-      try
-      {
-        IPConfigStrategy.IPConfig localIPConfig = (IPConfigStrategy.IPConfig)localMap.get(Integer.valueOf(paramInt1));
-        paramString = localIPConfig;
-        if (localIPConfig == null)
-        {
-          paramString = localIPConfig;
-          if (paramInt2 != -1) {
-            paramString = (IPConfigStrategy.IPConfig)localMap.get(Integer.valueOf(paramInt2));
-          }
-        }
-        if (paramString == null) {
-          break label152;
-        }
-        paramString = paramString.a;
-      }
-      catch (Throwable paramString)
-      {
-        QDLog.c("IPConfigStrategy", "resolveIP", paramString);
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.readLock().unlock();
-        paramString = null;
-        continue;
-      }
-      finally
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.readLock().unlock();
-      }
-      return paramString;
-      label152:
-      paramString = null;
-    }
-  }
-  
-  private Map a(String paramString)
-  {
-    Object localObject3;
-    if (TextUtils.isEmpty(paramString))
-    {
-      localObject3 = null;
-      return localObject3;
-    }
-    int k = 1;
     int j = 1;
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.readLock().lock();
-    int i = k;
+    this.RW_LOCK.readLock().lock();
+    int i = j;
     for (;;)
     {
       try
       {
-        if (!this.b.containsKey(paramString)) {
+        if (!this.mCacheIPConfigs.containsKey(paramString)) {
           continue;
         }
-        i = k;
-        localObject1 = (Map)this.b.get(paramString);
         i = j;
+        localObject2 = (Map)this.mCacheIPConfigs.get(paramString);
+        localObject1 = localObject2;
+        i = 1;
       }
       catch (Throwable localThrowable)
       {
-        Object localObject1;
-        QDLog.c("IPConfigStrategy", "findIPConfigs", localThrowable);
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.readLock().unlock();
-        localObject2 = null;
+        QDLog.w("IPConfigStrategy", "findIPConfigs", localThrowable);
+        this.RW_LOCK.readLock().unlock();
         continue;
       }
       finally
       {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.readLock().unlock();
+        this.RW_LOCK.readLock().unlock();
       }
-      localObject3 = localObject1;
+      localObject2 = localObject1;
       if (i != 0) {
         break;
       }
-      localObject3 = localObject1;
+      localObject2 = localObject1;
       if (localObject1 == null) {
         break;
       }
       try
       {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.writeLock().lock();
-        this.b.put(paramString, localObject1);
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.writeLock().unlock();
+        this.RW_LOCK.writeLock().lock();
+        this.mCacheIPConfigs.put(paramString, localObject1);
+        this.RW_LOCK.writeLock().unlock();
         return localObject1;
       }
       finally
       {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.writeLock().unlock();
+        this.RW_LOCK.writeLock().unlock();
       }
-      k = 0;
       j = 0;
-      i = k;
-      localObject1 = b(paramString);
-      i = k;
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        i = k;
-        if (this.jdField_a_of_type_JavaUtilMap.containsKey(localObject1))
-        {
-          i = k;
-          localObject1 = (Map)this.jdField_a_of_type_JavaUtilMap.get(localObject1);
-          i = j;
-          continue;
-        }
-      }
-      Object localObject2 = null;
       i = j;
+      localObject2 = getDominKey(paramString);
+      i = j;
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        i = j;
+        if (this.mIPConfigs.containsKey(localObject2))
+        {
+          i = j;
+          localObject2 = (Map)this.mIPConfigs.get(localObject2);
+          localObject1 = localObject2;
+          i = 0;
+          continue;
+        }
+      }
+      i = 0;
+      localObject1 = null;
     }
   }
   
-  private final void a(String paramString, Map paramMap1, Map paramMap2)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramMap1 == null) || (paramMap2 == null)) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        if (localJSONObject == null) {
-          continue;
-        }
-        JSONArray localJSONArray1 = localJSONObject.names();
-        if (localJSONArray1 == null) {
-          continue;
-        }
-        int i = 0;
-        if (i >= localJSONArray1.length()) {
-          continue;
-        }
-        String str = localJSONArray1.getString(i);
-        HashMap localHashMap = new HashMap();
-        JSONArray localJSONArray2 = localJSONObject.getJSONArray(localJSONArray1.getString(i));
-        if (localJSONArray2 != null)
-        {
-          int j = 0;
-          while (j < localJSONArray2.length())
-          {
-            Object localObject2 = localJSONArray2.getJSONObject(j);
-            localObject1 = ((JSONObject)localObject2).getString("ip");
-            int k = ((JSONObject)localObject2).getInt("port");
-            Integer localInteger = Integer.valueOf(((JSONObject)localObject2).getInt("apn"));
-            IPInfo localIPInfo = new IPInfo((String)localObject1, Integer.valueOf(k).intValue());
-            localObject2 = (IPConfigStrategy.IPConfig)localHashMap.get(localInteger);
-            localObject1 = localObject2;
-            if (localObject2 == null)
-            {
-              localObject1 = new IPConfigStrategy.IPConfig();
-              localHashMap.put(localInteger, localObject1);
-            }
-            ((IPConfigStrategy.IPConfig)localObject1).a(localIPInfo);
-            j += 1;
-          }
-        }
-        Object localObject1 = (Map)paramMap1.get(str);
-        if (localObject1 == null) {
-          paramMap1.put(str, localHashMap);
-        }
-        for (;;)
-        {
-          paramMap2.put(str, Pattern.compile(str, 2));
-          i += 1;
-          break;
-          ((Map)localObject1).putAll(localHashMap);
-        }
-        return;
-      }
-      catch (Throwable paramMap1)
-      {
-        QDLog.d("IPConfigStrategy", "exception when add ip config: " + paramString, paramMap1);
-      }
-    }
-  }
-  
-  private String b(String paramString)
+  private String getDominKey(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    Iterator localIterator = this.mIPConfigs.entrySet().iterator();
     String str;
     do
     {
@@ -276,13 +190,99 @@ public class IPConfigStrategy
         break;
       }
       str = (String)((Map.Entry)localIterator.next()).getKey();
-    } while (!Utils.match((Pattern)this.d.get(str), paramString));
+    } while (!Utils.match((Pattern)this.mDominPatterns.get(str), paramString));
     for (paramString = str;; paramString = null) {
       return paramString;
     }
   }
   
-  private boolean b(String paramString1, String paramString2)
+  private String resolveIP(String paramString, int paramInt1, int paramInt2)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    Map localMap = findIPConfigs(paramString);
+    this.RW_LOCK.readLock().lock();
+    if (localMap != null) {}
+    for (;;)
+    {
+      try
+      {
+        IPConfigStrategy.IPConfig localIPConfig = (IPConfigStrategy.IPConfig)localMap.get(Integer.valueOf(paramInt1));
+        paramString = localIPConfig;
+        if (localIPConfig == null)
+        {
+          paramString = localIPConfig;
+          if (paramInt2 != -1) {
+            paramString = (IPConfigStrategy.IPConfig)localMap.get(Integer.valueOf(paramInt2));
+          }
+        }
+        if ((paramString != null) && (paramString.ipInfos != null) && (paramString.ipInfos.size() > 0))
+        {
+          paramInt1 = paramString.getFailCount();
+          paramInt2 = paramString.ipInfos.size();
+          paramString = (IPInfo)paramString.ipInfos.get(paramInt1 % paramInt2);
+          if (paramString != null)
+          {
+            paramString = paramString.ip;
+            return paramString;
+          }
+        }
+      }
+      catch (Throwable paramString)
+      {
+        QDLog.w("IPConfigStrategy", "resolveIP", paramString);
+        return null;
+      }
+      finally
+      {
+        this.RW_LOCK.readLock().unlock();
+      }
+      paramString = null;
+    }
+  }
+  
+  private List<IPInfo> resolveVideoIP(String paramString, int paramInt1, int paramInt2)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    Map localMap = findIPConfigs(paramString);
+    this.RW_LOCK.readLock().lock();
+    if (localMap != null) {}
+    for (;;)
+    {
+      try
+      {
+        IPConfigStrategy.IPConfig localIPConfig = (IPConfigStrategy.IPConfig)localMap.get(Integer.valueOf(paramInt1));
+        paramString = localIPConfig;
+        if (localIPConfig == null)
+        {
+          paramString = localIPConfig;
+          if (paramInt2 != -1) {
+            paramString = (IPConfigStrategy.IPConfig)localMap.get(Integer.valueOf(paramInt2));
+          }
+        }
+        if (paramString != null)
+        {
+          paramString = paramString.ipInfos;
+          return paramString;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        QDLog.w("IPConfigStrategy", "resolveIP", paramString);
+        return null;
+      }
+      finally
+      {
+        this.RW_LOCK.readLock().unlock();
+      }
+      paramString = null;
+    }
+  }
+  
+  private boolean strEqual(String paramString1, String paramString2)
   {
     if (paramString1 != null) {
       return paramString1.equals(paramString2);
@@ -290,70 +290,128 @@ public class IPConfigStrategy
     return paramString2 == null;
   }
   
-  protected String a()
+  protected String getLogTag()
   {
     return "IPConfigStrategy";
   }
   
-  public String a(String paramString)
+  public boolean isIPValid(String paramString1, String paramString2)
   {
-    return a(paramString, NetworkManager.getIspType(), this.jdField_a_of_type_Int);
+    boolean bool1 = true;
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      bool1 = false;
+    }
+    int i;
+    String str;
+    do
+    {
+      return bool1;
+      i = NetworkManager.getIspType();
+      str = paramString1 + "_" + i;
+    } while (paramString2.equals((String)this.mValidIPCache.get(str)));
+    Map localMap = findIPConfigs(paramString1);
+    this.RW_LOCK.readLock().lock();
+    if (localMap != null) {}
+    for (;;)
+    {
+      try
+      {
+        IPConfigStrategy.IPConfig localIPConfig = (IPConfigStrategy.IPConfig)localMap.get(Integer.valueOf(i));
+        paramString1 = localIPConfig;
+        if (localIPConfig == null)
+        {
+          paramString1 = localIPConfig;
+          if (this.mDefaultIsp != -1) {
+            paramString1 = (IPConfigStrategy.IPConfig)localMap.get(Integer.valueOf(this.mDefaultIsp));
+          }
+        }
+        if ((paramString1 == null) || (paramString1.ipInfos == null)) {
+          break label297;
+        }
+        paramString1 = paramString1.ipInfos.iterator();
+        if (!paramString1.hasNext()) {
+          break label297;
+        }
+        bool1 = paramString2.equals(((IPInfo)paramString1.next()).ip);
+        if (!bool1) {
+          continue;
+        }
+        bool1 = true;
+        this.RW_LOCK.readLock().unlock();
+        bool2 = bool1;
+      }
+      catch (Throwable paramString1)
+      {
+        QDLog.w("IPConfigStrategy", "isIPValid", paramString1);
+        this.RW_LOCK.readLock().unlock();
+        boolean bool2 = false;
+        continue;
+      }
+      finally
+      {
+        this.RW_LOCK.readLock().unlock();
+      }
+      bool1 = bool2;
+      if (!bool2) {
+        break;
+      }
+      this.mValidIPCache.put(str, paramString2);
+      return bool2;
+      label297:
+      bool1 = false;
+    }
   }
   
-  public String a(String paramString, int paramInt)
-  {
-    return a(paramString, paramInt, -1);
-  }
-  
-  public List a(String paramString)
-  {
-    return a(paramString, NetworkManager.getIspType(), this.jdField_a_of_type_Int);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean)
+  public void onIPAccessResult(String paramString1, String paramString2, boolean paramBoolean)
   {
     if ((TextUtils.isEmpty(paramString1)) || (paramBoolean) || (TextUtils.isEmpty(paramString2))) {
       return;
     }
     int i = NetworkManager.getIspType();
-    paramString1 = a(paramString1);
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.writeLock().lock();
+    paramString1 = findIPConfigs(paramString1);
+    this.RW_LOCK.writeLock().lock();
     if (paramString1 != null) {}
     try
     {
       paramString1 = (IPConfigStrategy.IPConfig)paramString1.get(Integer.valueOf(i));
-      if ((paramString1 != null) && (paramString1.a != null))
+      if ((paramString1 != null) && (paramString1.ipInfos != null))
       {
-        if (paramString1.a() < 0) {
-          paramString1.a(paramString2);
+        if (paramString1.getCurrFailCount() < 0) {
+          paramString1.initFailCount(paramString2);
         }
-        if (paramString2.equals(((IPInfo)paramString1.a.get(paramString1.b() % paramString1.a.size())).a)) {
-          paramString1.a(paramString1.b() + 1);
+        if (paramString2.equals(((IPInfo)paramString1.ipInfos.get(paramString1.getFailCount() % paramString1.ipInfos.size())).ip)) {
+          paramString1.setFailCount(paramString1.getFailCount() + 1);
         }
       }
-      paramString1 = this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.writeLock();
+      return;
     }
     catch (Throwable paramString1)
     {
-      for (;;)
-      {
-        QDLog.c("IPConfigStrategy", "onIPAccessResult", paramString1);
-        paramString1 = this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.writeLock();
-      }
+      QDLog.w("IPConfigStrategy", "onIPAccessResult", paramString1);
+      return;
     }
     finally
     {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.writeLock().unlock();
+      this.RW_LOCK.writeLock().unlock();
     }
-    paramString1.unlock();
   }
   
-  public final void a(Map paramMap)
+  public String resolveIP(String paramString)
+  {
+    return resolveIP(paramString, NetworkManager.getIspType(), this.mDefaultIsp);
+  }
+  
+  public String resolveIP(String paramString, int paramInt)
+  {
+    return resolveIP(paramString, paramInt, -1);
+  }
+  
+  public List<IPInfo> resolveVideoIP(String paramString)
+  {
+    return resolveVideoIP(paramString, NetworkManager.getIspType(), this.mDefaultIsp);
+  }
+  
+  public final void setConfig(Map<String, String> paramMap)
   {
     if (paramMap == null) {
       return;
@@ -361,15 +419,15 @@ public class IPConfigStrategy
     for (;;)
     {
       Object localObject2;
-      synchronized (this.jdField_a_of_type_ArrayOfByte)
+      synchronized (this.CONFIG_LOCK)
       {
-        if (paramMap.size() != this.e.size())
+        if (paramMap.size() != this.mConfigs.size())
         {
           i = 1;
           if (i != 0)
           {
-            this.e.clear();
-            this.e.putAll(paramMap);
+            this.mConfigs.clear();
+            this.mConfigs.putAll(paramMap);
           }
           if (i == 0) {
             break;
@@ -383,8 +441,8 @@ public class IPConfigStrategy
           localObject4 = (Map.Entry)paramMap.next();
           localObject3 = (String)((Map.Entry)localObject4).getKey();
           localObject4 = (String)((Map.Entry)localObject4).getValue();
-          QDLog.b(a(), "IP Config -- " + (String)localObject3 + ":" + (String)localObject4, null);
-          a((String)localObject4, (Map)???, (Map)localObject2);
+          QDLog.i(getLogTag(), "IP Config -- " + (String)localObject3 + ":" + (String)localObject4, null);
+          addConfig((String)localObject4, (Map)???, (Map)localObject2);
           continue;
         }
         localObject2 = paramMap.entrySet().iterator();
@@ -393,7 +451,7 @@ public class IPConfigStrategy
         }
         Object localObject3 = (Map.Entry)((Iterator)localObject2).next();
         Object localObject4 = (String)((Map.Entry)localObject3).getKey();
-        if (b((String)((Map.Entry)localObject3).getValue(), (String)this.e.get(localObject4))) {
+        if (strEqual((String)((Map.Entry)localObject3).getValue(), (String)this.mConfigs.get(localObject4))) {
           continue;
         }
         i = 1;
@@ -401,95 +459,32 @@ public class IPConfigStrategy
       try
       {
         label274:
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.writeLock().lock();
-        this.jdField_a_of_type_JavaUtilMap.clear();
-        this.jdField_a_of_type_JavaUtilMap.putAll((Map)???);
-        this.d.clear();
-        this.d.putAll((Map)localObject2);
-        this.b.clear();
-        this.c.clear();
+        this.RW_LOCK.writeLock().lock();
+        this.mIPConfigs.clear();
+        this.mIPConfigs.putAll((Map)???);
+        this.mDominPatterns.clear();
+        this.mDominPatterns.putAll((Map)localObject2);
+        this.mCacheIPConfigs.clear();
+        this.mValidIPCache.clear();
         return;
       }
       finally
       {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.writeLock().unlock();
+        this.RW_LOCK.writeLock().unlock();
       }
       label377:
       int i = 0;
     }
   }
   
-  public boolean a(String paramString1, String paramString2)
+  public void setDefaultIsp(int paramInt)
   {
-    boolean bool2 = false;
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      bool2 = false;
-    }
-    String str;
-    do
-    {
-      return bool2;
-      int i = NetworkManager.getIspType();
-      str = paramString1 + "_" + i;
-      if (paramString2.equals((String)this.c.get(str))) {
-        return true;
-      }
-      Map localMap = a(paramString1);
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.readLock().lock();
-      bool1 = bool2;
-      if (localMap != null) {}
-      try
-      {
-        IPConfigStrategy.IPConfig localIPConfig = (IPConfigStrategy.IPConfig)localMap.get(Integer.valueOf(i));
-        paramString1 = localIPConfig;
-        if (localIPConfig == null)
-        {
-          paramString1 = localIPConfig;
-          if (this.jdField_a_of_type_Int != -1) {
-            paramString1 = (IPConfigStrategy.IPConfig)localMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
-          }
-        }
-        bool1 = bool2;
-        if (paramString1 != null)
-        {
-          bool1 = bool2;
-          if (paramString1.a != null)
-          {
-            paramString1 = paramString1.a.iterator();
-            do
-            {
-              bool1 = bool2;
-              if (!paramString1.hasNext()) {
-                break;
-              }
-              bool1 = paramString2.equals(((IPInfo)paramString1.next()).a);
-            } while (!bool1);
-            bool1 = true;
-          }
-        }
-      }
-      catch (Throwable paramString1)
-      {
-        for (;;)
-        {
-          QDLog.c("IPConfigStrategy", "isIPValid", paramString1);
-          this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.readLock().unlock();
-          bool1 = false;
-        }
-      }
-      finally
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock.readLock().unlock();
-      }
-      bool2 = bool1;
-    } while (!bool1);
-    this.c.put(str, paramString2);
-    return bool1;
+    this.mDefaultIsp = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.strategy.IPConfigStrategy
  * JD-Core Version:    0.7.0.1
  */

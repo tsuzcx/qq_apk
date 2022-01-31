@@ -1,54 +1,26 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.RemoteException;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.app.VideoNotifyCenter;
-import com.tencent.av.service.IQQServiceForAV;
-import com.tencent.av.service.IQQServiceForAV.Stub;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.PoiMapActivity.PoiTab;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class bhc
-  implements ServiceConnection
+  implements AdapterView.OnItemClickListener
 {
-  public bhc(VideoAppInterface paramVideoAppInterface) {}
+  public bhc(PoiMapActivity.PoiTab paramPoiTab, PoiMapActivity paramPoiMapActivity) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV = IQQServiceForAV.Stub.a(paramIBinder);
-    try
+    this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.a(paramInt, true);
+    int i = this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.jdField_a_of_type_ComTencentBizPoiMapActivity.a.length;
+    paramInt = 0;
+    while (paramInt < i)
     {
-      this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV.a(this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceCallback$Stub);
-      this.a.a(new Object[] { Integer.valueOf(10) });
-      return;
-    }
-    catch (RemoteException paramComponentName)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.w(VideoAppInterface.jdField_a_of_type_JavaLangString, 2, "onServiceConnected", paramComponentName);
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    try
-    {
-      if (this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV != null) {
-        this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV.b(this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceCallback$Stub);
+      if (this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.d != paramInt) {
+        this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.jdField_a_of_type_ComTencentBizPoiMapActivity.a[paramInt].a(-1, false);
       }
-      this.a.a(new Object[] { Integer.valueOf(11) });
-      this.a.a().deleteObservers();
+      paramInt += 1;
     }
-    catch (RemoteException paramComponentName)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w(VideoAppInterface.jdField_a_of_type_JavaLangString, 2, "onServiceDisconnected", paramComponentName);
-        }
-      }
-    }
-    this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV = null;
   }
 }
 

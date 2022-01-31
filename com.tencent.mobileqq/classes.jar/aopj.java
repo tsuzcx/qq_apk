@@ -1,21 +1,62 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class aopj
-  implements Runnable
+public class aopj
 {
-  public aopj(QQAppInterface paramQQAppInterface, List paramList, ShortVideoResourceManager.INet_ShortVideoResource paramINet_ShortVideoResource) {}
+  public int a = -1;
   
-  public void run()
+  public static aopj a(aoko[] paramArrayOfaoko)
   {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager$INet_ShortVideoResource, "new_qq_android_native_portrait_filter_");
+    aopj localaopj = new aopj();
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      int j = paramArrayOfaoko.length;
+      int i = 0;
+      if (i < j)
+      {
+        Object localObject = paramArrayOfaoko[i];
+        if (localObject == null) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          localObject = ((aoko)localObject).a;
+          try
+          {
+            a(new JSONObject((String)localObject), localaopj);
+            if (QLog.isColorLevel()) {
+              QLog.i("PhotoListPanelBean", 2, "parse: " + (String)localObject + " bean:" + localaopj);
+            }
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+            }
+          }
+        }
+      }
+    }
+    return localaopj;
+  }
+  
+  private static void a(JSONObject paramJSONObject, aopj paramaopj)
+  {
+    if (paramJSONObject.has("showMode")) {
+      paramaopj.a = paramJSONObject.optInt("showMode");
+    }
+  }
+  
+  public String toString()
+  {
+    return "PhotoListPanelBean{showMode=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aopj
  * JD-Core Version:    0.7.0.1
  */

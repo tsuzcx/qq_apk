@@ -1,23 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionBase;
-
-public final class uln
-  implements Parcelable.Creator
+public abstract class uln<T>
+  implements ulo<T>
 {
-  public ForwardUtils.SectionBase a(Parcel paramParcel)
+  private ulp<T> a;
+  
+  public void a()
   {
-    return new ForwardUtils.SectionBase(paramParcel);
+    Object localObject = this.a.a();
+    if (localObject != null)
+    {
+      a(localObject);
+      wxe.a("Q.qqstory.home.data.Producer", "start one consumer:%s", localObject);
+      return;
+    }
+    wxe.d("Q.qqstory.home.data.Producer", "no data return");
   }
   
-  public ForwardUtils.SectionBase[] a(int paramInt)
+  public abstract void a(T paramT);
+  
+  public void a(ulp<T> paramulp)
   {
-    return new ForwardUtils.SectionBase[paramInt];
+    this.a = paramulp;
+  }
+  
+  public void b()
+  {
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uln
  * JD-Core Version:    0.7.0.1
  */

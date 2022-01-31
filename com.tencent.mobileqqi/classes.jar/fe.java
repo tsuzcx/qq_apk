@@ -1,19 +1,24 @@
+import android.os.Handler;
+import com.dataline.util.widget.WaitTextView;
+import com.dataline.util.widget.WaitTextView.RefreshListener;
+
 public class fe
+  implements Runnable
 {
-  public float a;
-  public int a;
-  public float b;
+  public fe(WaitTextView paramWaitTextView) {}
   
-  public fe(int paramInt, float paramFloat1, float paramFloat2)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
+    WaitTextView.a(this.a);
+    if (WaitTextView.a(this.a) != null) {
+      WaitTextView.a(this.a).a();
+    }
+    WaitTextView.a(this.a).postDelayed(this, 500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     fe
  * JD-Core Version:    0.7.0.1
  */

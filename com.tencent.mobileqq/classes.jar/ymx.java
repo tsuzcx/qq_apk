@@ -1,30 +1,40 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 import com.tencent.qphone.base.util.QLog;
 
 public class ymx
-  implements Runnable
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public ymx(ApolloTextureView paramApolloTextureView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
+  public ymx(VideoPlayerView paramVideoPlayerView) {}
   
-  public void run()
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    try
-    {
-      ApolloSurfaceView.nativeTouchInput(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender().getSavaWrapper().a, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
-      return;
+    if (VideoPlayerView.a(this.a)) {
+      yxt.a("setSeekBar", 100L, new ymy(this, paramSeekBar));
     }
-    catch (Throwable localThrowable)
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    VideoPlayerView.a(this.a, true);
+    VideoPlayerView.b(this.a, true);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if (this.a.a() != null)
     {
-      QLog.e("ApolloTextureView", 1, "send touch event err e=" + localThrowable.toString());
+      QLog.d("VideoPlayerView", 1, "seek onStopTrackingTouch seekBar progress" + paramSeekBar.getProgress());
+      this.a.a((int)(paramSeekBar.getProgress() / (this.a.a.getMax() * 1.0F) * (float)this.a.a().b()));
     }
+    VideoPlayerView.a(this.a, false);
+    VideoPlayerView.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ymx
  * JD-Core Version:    0.7.0.1
  */

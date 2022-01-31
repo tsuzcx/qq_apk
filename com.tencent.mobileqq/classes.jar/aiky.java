@@ -1,18 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.OnBuiltListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.9.1;
 
 public class aiky
-  implements Runnable
+  extends amfb
 {
-  public aiky(SceneBuilder paramSceneBuilder, SpriteGLView paramSpriteGLView, SceneBuilder.OnBuiltListener paramOnBuiltListener) {}
+  public aiky(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void run()
+  public void a()
   {
-    String str = SceneBuilder.a(SceneBuilder.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder) + "/scene.json");
-    new Handler(Looper.getMainLooper()).post(new aikz(this, str));
+    this.a.runOnUiThread(new AvatarPendantActivity.9.1(this));
   }
 }
 

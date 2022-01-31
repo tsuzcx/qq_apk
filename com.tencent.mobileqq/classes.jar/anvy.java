@@ -1,22 +1,40 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditMusicExport;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.2;
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class anvy
-  implements Runnable
+  extends anvt
 {
-  public anvy(HWEditImportVideoPlayer paramHWEditImportVideoPlayer) {}
+  public anvy(RockDownloaderManager.2 param2) {}
   
-  public void run()
+  public void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt)
   {
-    EditMusicExport localEditMusicExport = (EditMusicExport)this.a.a(EditMusicExport.class);
-    if (localEditMusicExport != null) {
-      localEditMusicExport.as_();
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloaderManager", 2, new Object[] { "onFail: RockDownloadInfo=", paramRockDownloadInfo, " errorMsg=", paramString, " errorCode=", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public void a(ArrayList<RockDownloadInfo> paramArrayList)
+  {
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)paramArrayList.next();
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloaderManager", 2, new Object[] { "onSuccess:", localRockDownloadInfo });
+      }
+      boolean bool = anvz.b(localRockDownloadInfo);
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloaderManager", 2, new Object[] { "install success=", Boolean.valueOf(bool) });
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anvy
  * JD-Core Version:    0.7.0.1
  */

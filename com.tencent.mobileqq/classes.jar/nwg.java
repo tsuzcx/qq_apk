@@ -1,41 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.model.item.HotTopicInfoItem;
-import com.tencent.biz.qqstory.storyHome.discover.view.QQStoryDiscoverFragment;
-import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverActivity;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
 public class nwg
-  implements View.OnClickListener
+  extends Handler
 {
-  public nwg(StoryDiscoverActivity paramStoryDiscoverActivity) {}
+  private WeakReference<nwc> a;
   
-  public void onClick(View paramView)
+  public nwg(nwc paramnwc)
   {
-    if (StoryDiscoverActivity.a(this.a) > 0L)
+    this.a = new WeakReference(paramnwc);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    nwc localnwc = (nwc)this.a.get();
+    if (localnwc == null) {}
+    do
     {
-      if (StoryDiscoverActivity.a(this.a).a() == null) {
-        break label96;
-      }
-      paramView = String.valueOf(StoryDiscoverActivity.a(this.a).a().mTopicId);
-      if (StoryDiscoverActivity.a(this.a).a() == null) {
-        break label102;
-      }
-    }
-    label96:
-    label102:
-    for (String str = StoryDiscoverActivity.a(this.a).a().mSubjectName;; str = "")
-    {
-      StoryReportor.a("content_flow", "clk_share", 0, 0, new String[] { paramView, "", str });
+      do
+      {
+        return;
+        switch (paramMessage.what)
+        {
+        default: 
+          return;
+        case 1: 
+          nwc.a(localnwc);
+          return;
+        }
+      } while (nwc.a(localnwc) == null);
+      nwc.a(localnwc).a(nwc.a(localnwc));
       return;
-      paramView = "";
-      break;
-    }
+    } while (nwc.a(localnwc) == null);
+    nwc.a(localnwc).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nwg
  * JD-Core Version:    0.7.0.1
  */

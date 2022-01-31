@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import hgs;
-import hgt;
+import hcl;
+import hcm;
 
 public class QQCustomDialogDevLock
   extends Dialog
@@ -34,7 +34,7 @@ public class QQCustomDialogDevLock
   public static QQCustomDialogDevLock a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
     paramContext = new QQCustomDialogDevLock(paramContext, 2131624405);
-    paramContext.setContentView(2130903658);
+    paramContext.setContentView(2130903660);
     paramContext.c(paramString1);
     paramContext.a(paramString2);
     paramContext.b(paramString3);
@@ -54,7 +54,7 @@ public class QQCustomDialogDevLock
     this.d.setText(paramString);
     this.d.setContentDescription(paramString);
     this.d.setVisibility(0);
-    this.d.setOnClickListener(new hgs(this, paramOnClickListener));
+    this.d.setOnClickListener(new hcl(this, paramOnClickListener));
     a();
     return this;
   }
@@ -85,7 +85,7 @@ public class QQCustomDialogDevLock
     this.e.setText(paramString);
     this.e.setContentDescription(paramString);
     this.e.setVisibility(0);
-    this.e.setOnClickListener(new hgt(this, paramOnClickListener));
+    this.e.setOnClickListener(new hcm(this, paramOnClickListener));
     a();
     return this;
   }
@@ -132,10 +132,10 @@ public class QQCustomDialogDevLock
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231985));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233295));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231988));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233297));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231395));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233297));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233299));
     this.c = ((TextView)findViewById(2131231396));
     this.d = ((TextView)findViewById(2131231472));
     this.e = ((TextView)findViewById(2131231473));

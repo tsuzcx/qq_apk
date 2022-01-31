@@ -1,23 +1,26 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class mtu
-  implements Runnable
 {
-  public mtu(SubscriptRecommendController paramSubscriptRecommendController) {}
-  
-  public void run()
+  public static String a()
   {
-    if (this.a.jdField_a_of_type_Boolean)
+    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localFile == null)
     {
-      String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      this.a.a(str);
+      if (QLog.isColorLevel()) {
+        QLog.i("DingdongSoundUtil", 2, "[sound_early] getFilesDir is null");
+      }
+      return "";
     }
+    return localFile.getParent() + "/dingdong/sound_early/";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mtu
  * JD-Core Version:    0.7.0.1
  */

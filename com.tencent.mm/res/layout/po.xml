@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/kw" android:paddingLeft="20.0dip" android:paddingTop="15.0dip" android:paddingRight="20.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/b1_" android:layout_width="21.0dip" android:layout_height="21.0dip" android:src="@raw/collect_sound_on" android:scaleType="centerInside" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/w_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/at_" android:layout_weight="1.0" />
+        </LinearLayout>
+        <TextView android:textSize="12.0dip" android:textColor="@color/at" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="@string/at9" />
+    </LinearLayout>
+    <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/b1a" android:focusable="false" android:focusableInTouchMode="true" android:clickable="false" android:layout_width="@dimen/no" android:layout_height="@dimen/nl" />
+</LinearLayout>

@@ -1,5 +1,5 @@
 {
-  "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+  "class": "com.tencent.ditto.widget.LinearAreaLayout",
   "shell": {
     "id":"left_thumb_root",
     "width": "match_parent",
@@ -9,7 +9,7 @@
   },
   "children": [
     {
-      "Area": "com.qzone.canvasui.widget.TagImageArea",
+      "class": "com.qzone.canvasui.widget.TagImageArea",
       "shell": {
         "id":"left_thumb_image",
         "width": "80 dp",
@@ -18,7 +18,7 @@
     },
 
     {
-      "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+      "class": "com.tencent.ditto.widget.LinearAreaLayout",
       "shell": {
         "id":"left_thumb_right_root",
         "width": "match_parent",
@@ -30,7 +30,7 @@
       },
       "children": [
         {
-          "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+          "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
           "shell": {
             "id":"left_thumb_title",
             "width": "match_parent",
@@ -42,7 +42,7 @@
           }
         },
         {
-          "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+          "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
           "shell": {
             "id":"left_thumb_content",
             "width": "match_parent",

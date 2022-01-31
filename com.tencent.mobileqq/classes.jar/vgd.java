@@ -1,34 +1,26 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ThumbInfo;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-
 public class vgd
-  implements Runnable
 {
-  public vgd(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, MessageForShortVideo paramMessageForShortVideo) {}
+  public final String a;
+  public final xnx a;
+  public final xof a;
+  public final String b;
   
-  public void run()
+  public vgd(String paramString1, xof paramxof, xnx paramxnx, String paramString2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      ShortVideoRealItemBuilder.a(true);
-      ShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-      EncodeVideoTask.ThumbInfo localThumbInfo = new EncodeVideoTask.ThumbInfo(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.mThumbFilePath, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbMD5, null, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbWidth, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbHeight);
-      localObject = new EncodeVideoTask(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a, (String)localObject, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.mediacodecEncode, localThumbInfo);
-      ((EncodeVideoTask)localObject).a(ShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder));
-      ((EncodeVideoTask)localObject).a(false);
-      Utils.executeAsyncTaskOnSerialExcuter((AsyncTask)localObject, new Void[] { (Void)null });
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Xof = paramxof;
+    this.jdField_a_of_type_Xnx = paramxnx;
+    this.b = paramString2;
+  }
+  
+  public String toString()
+  {
+    return "TagInfoBaseVidList{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tagInfo=" + this.jdField_a_of_type_Xof + ", comInfo=" + this.jdField_a_of_type_Xnx + ", extCfgInfo=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vgd
  * JD-Core Version:    0.7.0.1
  */

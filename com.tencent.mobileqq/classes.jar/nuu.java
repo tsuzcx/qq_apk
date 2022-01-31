@@ -1,27 +1,21 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.biz.qqstory.storyHome.detail.model.SpannableStringUtils.ClickNickCallback;
+import android.view.View.OnClickListener;
 
-public final class nuu
-  extends ClickableSpan
+class nuu
+  implements View.OnClickListener
 {
-  public nuu(SpannableStringUtils.ClickNickCallback paramClickNickCallback, String paramString, int paramInt) {}
+  nuu(nut paramnut, String paramString) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelSpannableStringUtils$ClickNickCallback.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(paramTextPaint.getColor());
-    paramTextPaint.setUnderlineText(false);
+    if (this.jdField_a_of_type_Nut.jdField_a_of_type_Nun != null) {
+      this.jdField_a_of_type_Nut.jdField_a_of_type_Nun.b(this.jdField_a_of_type_Nut.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nuu
  * JD-Core Version:    0.7.0.1
  */

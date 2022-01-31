@@ -1,27 +1,21 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.qzonealbumreddot.QzonePhotoGuideNotifyService;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class agvt
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public agvt(QzonePhotoGuideNotifyService paramQzonePhotoGuideNotifyService) {}
+  public agvt(TroopChatPie paramTroopChatPie) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramIntent != null) && ("com.qzonex.localalbum.new_photo_notification_feedback_action".equals(paramIntent.getAction())))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzonePhotoGuideNotifyServlet", 2, "QzonePhotoGuideNotifyServlet onReceive");
-      }
-      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      }
-      this.a.b();
-    }
+    paramDialogInterface = new Intent(this.a.jdField_a_of_type_AndroidContentContext, TroopLowCreditLevelNotifyActivity.class);
+    paramDialogInterface.putExtra("troopUin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
   }
 }
 

@@ -16,16 +16,16 @@ public abstract class LoaderManager
   
   public abstract void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString);
   
-  public abstract Loader getLoader(int paramInt);
+  public abstract <D> Loader<D> getLoader(int paramInt);
   
   public boolean hasRunningLoaders()
   {
     return false;
   }
   
-  public abstract Loader initLoader(int paramInt, Bundle paramBundle, LoaderManager.LoaderCallbacks paramLoaderCallbacks);
+  public abstract <D> Loader<D> initLoader(int paramInt, Bundle paramBundle, LoaderManager.LoaderCallbacks<D> paramLoaderCallbacks);
   
-  public abstract Loader restartLoader(int paramInt, Bundle paramBundle, LoaderManager.LoaderCallbacks paramLoaderCallbacks);
+  public abstract <D> Loader<D> restartLoader(int paramInt, Bundle paramBundle, LoaderManager.LoaderCallbacks<D> paramLoaderCallbacks);
 }
 
 

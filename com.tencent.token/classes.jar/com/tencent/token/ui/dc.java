@@ -1,22 +1,21 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.TimePickerDialog.OnTimeSetListener;
+import android.widget.TimePicker;
+import com.tencent.token.ch;
 
-final class dc
-  implements DialogInterface.OnClickListener
+class dc
+  implements TimePickerDialog.OnTimeSetListener
 {
-  dc(DetectIDPhotoActivity paramDetectIDPhotoActivity) {}
+  dc(CorrectTokenActivity paramCorrectTokenActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onTimeSet(TimePicker paramTimePicker, int paramInt1, int paramInt2)
   {
-    DetectIDPhotoActivity.access$100(this.a).a(false);
-    if (!DetectIDPhotoActivity.access$600(this.a))
-    {
-      DetectIDPhotoActivity.access$602(this.a, true);
-      DetectIDPhotoActivity.access$100(this.a).postDelayed(DetectIDPhotoActivity.access$1700(this.a), 30000L);
-    }
-    this.a.dismissDialog();
+    CorrectTokenActivity.mHour = paramInt1;
+    CorrectTokenActivity.mMinute = paramInt2;
+    CorrectTokenActivity.access$600(this.a);
+    CorrectTokenActivity.access$000(this.a);
+    ch.a().a(System.currentTimeMillis(), 56);
   }
 }
 

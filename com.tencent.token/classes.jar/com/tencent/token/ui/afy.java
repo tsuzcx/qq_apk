@@ -1,32 +1,27 @@
 package com.tencent.token.ui;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.token.ax;
-import com.tencent.token.utils.s;
+import com.tencent.token.ch;
+import com.tencent.token.do;
 
-final class afy
+class afy
   implements View.OnClickListener
 {
-  afy(UtilsTokenLabActivity paramUtilsTokenLabActivity) {}
+  afy(WtLoginAccountInput paramWtLoginAccountInput) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    if (ax.a().j())
+    if ((do.a().d() >= 3) && (do.a().d(WtLoginAccountInput.access$700(this.a)) == null))
     {
-      paramView = new Intent(this.a, FaceRecognitionDefaultActivity.class);
-      this.a.startActivity(paramView);
-    }
-    for (;;)
-    {
-      UtilsTokenLabActivity.access$000(this.a).setVisibility(4);
-      s.h("util_lab_fr_new");
+      this.a.showUserDialog(2131230935, this.a.getResources().getString(2131230877), 2131230897, null);
       return;
-      paramView = new Intent(this.a, FaceRecognitionCreateActivity.class);
-      this.a.startActivity(paramView);
     }
+    ch.a().a(System.currentTimeMillis(), 87);
+    paramView = new Intent(this.a, FindPasswdActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 

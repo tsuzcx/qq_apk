@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import android.os.Handler;
 
 class agnt
-  implements Runnable
+  extends alwx
 {
-  agnt(agns paramagns) {}
+  agnt(agnn paramagnn) {}
   
-  public void run()
+  protected void f(boolean paramBoolean)
   {
-    PersonalityLabelGalleryActivity.a(this.a.a, 8);
+    super.f(paramBoolean);
+    this.a.a.sendEmptyMessage(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agnt
  * JD-Core Version:    0.7.0.1
  */

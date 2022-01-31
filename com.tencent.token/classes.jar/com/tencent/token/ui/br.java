@@ -1,20 +1,49 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.w;
 
-final class br
-  implements View.OnClickListener
+class br
+  implements DialogInterface.OnClickListener
 {
-  br(BindUinActivity paramBindUinActivity) {}
+  br(BaseActivity paramBaseActivity, int paramInt, Message paramMessage, Context paramContext) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent(this.a, IndexActivity.class);
-    paramView.putExtra("index_from", 16);
-    this.a.startActivity(paramView);
-    this.a.finish();
+    if (this.a == 40)
+    {
+      str = this.d.getResources().getString(2131230774);
+      paramDialogInterface = str;
+      if (this.b.getData().getString("loginurl") != null)
+      {
+        paramDialogInterface = str;
+        if (this.b.getData().getString("loginurl").length() != 0) {
+          paramDialogInterface = this.b.getData().getString("loginurl");
+        }
+      }
+      h.c(this + "goToRemoveProtectH5 url:" + paramDialogInterface);
+      w.a(this.c, paramDialogInterface, this.d.getResources().getString(2131230924));
+    }
+    while (this.a != 42) {
+      return;
+    }
+    String str = this.d.getResources().getString(2131230764);
+    paramDialogInterface = str;
+    if (this.b.getData().getString("loginurl") != null)
+    {
+      paramDialogInterface = str;
+      if (this.b.getData().getString("loginurl").length() != 0) {
+        paramDialogInterface = this.b.getData().getString("loginurl");
+      }
+    }
+    h.c(this + "goToRemoveProtectH5 url:" + paramDialogInterface);
+    w.a(this.c, paramDialogInterface, this.d.getResources().getString(2131231122));
   }
 }
 

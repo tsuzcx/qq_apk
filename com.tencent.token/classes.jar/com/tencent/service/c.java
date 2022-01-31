@@ -1,6 +1,6 @@
 package com.tencent.service;
 
-final class c {}
+class c {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

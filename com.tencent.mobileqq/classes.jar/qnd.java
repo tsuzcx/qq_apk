@@ -1,18 +1,23 @@
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
 
-public class qnd
-  implements Runnable
+public final class qnd
+  implements Parcelable.Creator<TagInfo>
 {
-  public qnd(GdtVideoCommonView paramGdtVideoCommonView) {}
-  
-  public void run()
+  public TagInfo a(Parcel paramParcel)
   {
-    GdtVideoCommonView.c(this.a);
+    return new TagInfo(paramParcel);
+  }
+  
+  public TagInfo[] a(int paramInt)
+  {
+    return new TagInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qnd
  * JD-Core Version:    0.7.0.1
  */

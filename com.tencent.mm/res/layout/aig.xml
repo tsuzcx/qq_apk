@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/lp" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView android:id="@id/dgg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.mmsight.ui.VideoSeekBarEditorView android:id="@id/a5p" android:background="@color/a3x" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="95.0dip" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true" />
+</RelativeLayout>

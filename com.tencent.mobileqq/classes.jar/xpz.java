@@ -1,54 +1,66 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraOperator;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class xpz
-  extends OrientationEventListener
 {
-  public xpz(NewFlowCameraActivity paramNewFlowCameraActivity, Context paramContext)
+  public View a;
+  public View b;
+  
+  public xpz(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
-    super(paramContext);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramView.findViewById(2131369451);
   }
   
-  public void onOrientationChanged(int paramInt)
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
   {
-    NewFlowCameraActivity.a(this.a).a(paramInt);
-    if (this.a.j) {}
-    do
+    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_JavaUtilArrayList.iterator();
+    float f = 0.0F;
+    if (localIterator.hasNext())
     {
-      return;
-      if (paramInt == -1)
+      switch (((TroopStoryItemInfo)localIterator.next()).itemType)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("PTV.NewFlowCameraActivity", 2, "OrientationEventListener unknown");
+      }
+      for (;;)
+      {
+        break;
+        if ((xqz.b(paramTroopStoryItemInfo.publishTime)) || (xqz.d(paramTroopStoryItemInfo.publishTime)))
+        {
+          f = xsm.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 44.0F) + f;
         }
-        this.a.o = 90;
-        return;
+        else
+        {
+          f = xsm.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 71.0F) + f;
+          continue;
+          f = xsm.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
+          continue;
+          f = xsm.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 70.0F) + f;
+          continue;
+          f = xsm.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
+        }
       }
-      if ((paramInt > 315) || (paramInt < 45))
-      {
-        this.a.o = 90;
-        return;
-      }
-      if ((paramInt > 45) && (paramInt < 135))
-      {
-        this.a.o = 180;
-        return;
-      }
-      if ((paramInt > 135) && (paramInt < 225))
-      {
-        this.a.o = 270;
-        return;
-      }
-    } while ((paramInt <= 225) || (paramInt >= 315));
-    this.a.o = 0;
+    }
+    int i = (int)(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_Float - f);
+    paramTroopStoryItemInfo = (LinearLayout.LayoutParams)this.b.getLayoutParams();
+    if (i <= 0)
+    {
+      paramTroopStoryItemInfo.height = 0;
+      this.b.setLayoutParams(paramTroopStoryItemInfo);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      return;
+    }
+    paramTroopStoryItemInfo.height = i;
+    this.b.setLayoutParams(paramTroopStoryItemInfo);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xpz
  * JD-Core Version:    0.7.0.1
  */

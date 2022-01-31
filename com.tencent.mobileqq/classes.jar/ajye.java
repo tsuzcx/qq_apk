@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.support.annotation.NonNull;
+import android.view.View;
 
-public class ajye
-  implements FilenameFilter
+public abstract interface ajye
 {
-  public ajye(UnifiedDebugManager paramUnifiedDebugManager, String paramString) {}
+  public abstract void a();
   
-  public boolean accept(File paramFile, String paramString)
-  {
-    return (paramString.startsWith(this.jdField_a_of_type_JavaLangString)) && (paramString.endsWith(".localstorage"));
-  }
+  public abstract void a(@NonNull View paramView1, int paramInt1, int paramInt2, @NonNull View paramView2, boolean paramBoolean);
+  
+  public abstract boolean a();
 }
 
 

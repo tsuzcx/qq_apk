@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class xbn
-  implements DialogInterface.OnClickListener
+class xbn
+  implements betp
 {
-  public xbn(SendHbActivity paramSendHbActivity) {}
+  xbn(xbk paramxbk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(betn parambetn)
   {
-    this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambetn);
+    }
   }
+  
+  public void a(betn parambetn, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xbn
  * JD-Core Version:    0.7.0.1
  */

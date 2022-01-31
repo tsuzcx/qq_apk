@@ -123,7 +123,7 @@ public class AppSharePicItemBuilder
       paramViewHolder = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
       paramViewHolder.setOrientation(1);
       paramView = new ChatThumbView(this.jdField_a_of_type_AndroidContentContext);
-      paramView.setId(2131231604);
+      paramView.setId(2131231605);
       if (!jdField_a_of_type_Boolean) {
         paramView.setAdjustViewBounds(true);
       }
@@ -178,7 +178,7 @@ public class AppSharePicItemBuilder
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    if (paramInt == 2131234872) {
+    if (paramInt == 2131234874) {
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
     }
   }

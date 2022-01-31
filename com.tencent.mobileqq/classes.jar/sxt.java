@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.LebaQZoneFacePlayHelper;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.6;
 
 class sxt
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  sxt(sxq paramsxq) {}
+  sxt(sxs paramsxs) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (Leba.a(this.a.a) != null) {
-      Leba.a(this.a.a).e();
-    }
+    alsf.a();
+    this.a.a.this$0.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sxt
  * JD-Core Version:    0.7.0.1
  */

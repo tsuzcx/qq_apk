@@ -53,6 +53,12 @@ public abstract interface TencentLocation
   
   public abstract int getFakeReason();
   
+  public abstract String getIndoorBuildingFloor();
+  
+  public abstract String getIndoorBuildingId();
+  
+  public abstract int getIndoorLocationType();
+  
   public abstract double getLatitude();
   
   public abstract double getLongitude();
@@ -94,7 +100,7 @@ public abstract interface TencentLocation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.geolocation.TencentLocation
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,89 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.image.SafeBitmapFactory;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import java.util.ArrayList;
 
 public class aopm
+  extends aokh<aopl>
 {
-  public int a;
-  HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
-  public String a;
-  public ArrayList a;
-  public int b = 0;
-  
-  public aopm(ShortVideoResourceManager paramShortVideoResourceManager, HttpNetReq paramHttpNetReq)
+  public int a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = paramHttpNetReq;
-    this.b = 0;
+    return 251;
   }
   
-  public void a()
+  @NonNull
+  public aopl a(int paramInt)
+  {
+    return new aopl();
+  }
+  
+  @Nullable
+  public aopl a(aoko[] paramArrayOfaoko)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoResourceManager", 2, "HttpEngineTask[start]: " + this);
+      QLog.d("PicCommonConfProcessor", 2, "onParsed " + paramArrayOfaoko.length);
     }
-    this.b = 1;
-    ShortVideoResourceManager.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoShortVideoResourceManager).getNetEngine(0).a(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfaoko != null)
+    {
+      localObject1 = localObject2;
+      if (paramArrayOfaoko.length > 0) {
+        localObject1 = aopl.a(paramArrayOfaoko);
+      }
+    }
+    return localObject1;
+  }
+  
+  public Class<aopl> a()
+  {
+    return aopl.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicCommonConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(aopl paramaopl)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicCommonConfProcessor", 2, "onUpdate " + paramaopl.toString());
+    }
+    SafeBitmapFactory.setNeedRegionDecode(paramaopl.jdField_a_of_type_Boolean);
+    SafeBitmapFactory.setPxThreshoidToSp(paramaopl.jdField_a_of_type_Long);
+    SafeBitmapFactory.setRamThreshoidToSp(paramaopl.jdField_a_of_type_Int);
+    SafeBitmapFactory.setThreadCountToSp(paramaopl.jdField_b_of_type_Int);
+    bazm.a(paramaopl.jdField_b_of_type_Long);
+    bazm.b(paramaopl.jdField_c_of_type_Long);
+    bazk.a(paramaopl.jdField_c_of_type_Int);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
+  
+  public boolean d()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aopm
  * JD-Core Version:    0.7.0.1
  */

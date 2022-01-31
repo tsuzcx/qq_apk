@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class QFind$DeviceInfo
-  extends MessageMicro
+  extends MessageMicro<DeviceInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_sig = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -33,7 +33,7 @@ public final class QFind$DeviceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.qfind.QFind.DeviceInfo
  * JD-Core Version:    0.7.0.1
  */

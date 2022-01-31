@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0xee$StatisticsInfo
-  extends MessageMicro
+  extends MessageMicro<StatisticsInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "uint64_algorithm_id", "uint64_strategy_id", "uint64_folder_status" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L) }, StatisticsInfo.class);
   public final PBUInt64Field uint64_algorithm_id = PBField.initUInt64(0L);

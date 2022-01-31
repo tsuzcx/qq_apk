@@ -1,15 +1,30 @@
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class adou
-  implements Comparator
+  extends alzr
 {
-  public adou(MessageForUniteGrayTip paramMessageForUniteGrayTip) {}
+  public adou(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public int a(MessageForGrayTips.HightlightItem paramHightlightItem1, MessageForGrayTips.HightlightItem paramHightlightItem2)
+  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    return paramHightlightItem1.start - paramHightlightItem2.start;
+    if (paramInt == 0) {
+      this.a.c();
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.c();
+    }
+  }
+  
+  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.c();
+    }
   }
 }
 

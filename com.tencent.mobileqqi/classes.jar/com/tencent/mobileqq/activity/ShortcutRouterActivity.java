@@ -14,9 +14,9 @@ import com.tencent.mobileqq.model.FriendManager;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
-import doa;
-import dob;
-import doc;
+import dij;
+import dik;
+import dil;
 import mqq.app.AppRuntime;
 
 public class ShortcutRouterActivity
@@ -25,7 +25,7 @@ public class ShortcutRouterActivity
   private static final int jdField_a_of_type_Int = 0;
   private static final int b = 1;
   private static final int c = 2;
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new doc(this);
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new dil(this);
   private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback;
   
   private int a(Intent paramIntent)
@@ -60,7 +60,7 @@ public class ShortcutRouterActivity
     {
       localQQCustomDialog.setNegativeButton(2131562549, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
       localQQCustomDialog.addView(localTextView);
-      localQQCustomDialog.setOnDismissListener(new dob(this));
+      localQQCustomDialog.setOnDismissListener(new dik(this));
       if (!isFinishing()) {
         localQQCustomDialog.show();
       }
@@ -118,10 +118,10 @@ public class ShortcutRouterActivity
       i = paramBundle.getIntExtra("uintype", 0);
       paramBundle = paramBundle.getStringExtra("extraUin");
       if (this.jdField_a_of_type_AndroidOsHandler$Callback == null) {
-        this.jdField_a_of_type_AndroidOsHandler$Callback = new doa(this);
+        this.jdField_a_of_type_AndroidOsHandler$Callback = new dij(this);
       }
       bool1 = bool2;
-    } while (!ChatActivityUtils.a(this.b, this, i, str1, str2, null, true, paramBundle, true, true, this.jdField_a_of_type_AndroidOsHandler$Callback, "from_internal"));
+    } while (!ChatActivityUtils.a(this.b, this, i, str1, str2, null, true, paramBundle, true, true, this.jdField_a_of_type_AndroidOsHandler$Callback, ""));
     finish();
     return true;
   }

@@ -1,20 +1,38 @@
-import com.tencent.component.media.image.ImageKey;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.UICallbackTask;
+import java.util.List;
 
-public class phs
-  implements Runnable
+public abstract interface phs<BEAN>
 {
-  public phs(UICallbackTask paramUICallbackTask, ImageKey paramImageKey, float paramFloat) {}
+  public abstract void a();
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.listener.onImageProgress(UICallbackTask.a(this.jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey), this.jdField_a_of_type_Float, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(List<BEAN> paramList, boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt, String paramString);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     phs
  * JD-Core Version:    0.7.0.1
  */

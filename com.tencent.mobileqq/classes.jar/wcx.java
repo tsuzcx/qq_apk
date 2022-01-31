@@ -1,19 +1,31 @@
-import com.tencent.mobileqq.activity.aio.tips.HomeworkTroopSurveyBar;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class wcx
-  implements Runnable
+  extends nac
 {
-  wcx(wcw paramwcw, TroopMemberInfo paramTroopMemberInfo) {}
+  wcx(wcv paramwcv, boolean paramBoolean) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Wcw.jdField_a_of_type_ComTencentMobileqqActivityAioTipsHomeworkTroopSurveyBar.a(this.jdField_a_of_type_Wcw.jdField_a_of_type_ComTencentMobileqqAppTroopManager, this.jdField_a_of_type_Wcw.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+    if (paramInt != 0)
+    {
+      paramArrayOfByte = this.a;
+      if (!this.b) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramArrayOfByte.a(2, bool);
+        this.a.a(0, this.a.a.getString(2131721096));
+        return;
+      }
+    }
+    ((ulu)this.a.a.app.getManager(181)).a(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wcx
  * JD-Core Version:    0.7.0.1
  */

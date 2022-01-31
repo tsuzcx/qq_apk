@@ -1,39 +1,26 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import feedcloud.FeedCloudMeta.StUser;
 
-public class ttd
-  implements CompoundButton.OnCheckedChangeListener
+class ttd
+  implements View.OnClickListener
 {
-  public ttd(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  ttd(ttb paramttb, FeedCloudMeta.StUser paramStUser) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    int i = 1;
-    if (paramBoolean)
+    tqs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser);
+    if (paramView == ttb.a(this.jdField_a_of_type_Ttb))
     {
-      this.a.app.d(1);
-      paramCompoundButton = this.a.app;
-      if (!paramBoolean) {
-        break label68;
-      }
-    }
-    for (;;)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_grpshake", 0, i, "", "", "", "");
+      tzs.a(71, 2, tsw.a(this.jdField_a_of_type_Ttb.a));
       return;
-      this.a.app.d(0);
-      break;
-      label68:
-      i = 0;
     }
+    tzs.a(72, 2, tsw.a(this.jdField_a_of_type_Ttb.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ttd
  * JD-Core Version:    0.7.0.1
  */

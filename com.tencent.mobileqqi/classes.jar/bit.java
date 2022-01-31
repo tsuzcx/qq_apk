@@ -1,10 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.eqq.EnterpriseDetailActivity;
+
 public class bit
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
+  public bit(EnterpriseDetailActivity paramEnterpriseDetailActivity) {}
   
-  public bit(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a = paramInt;
+    EnterpriseDetailActivity.a(this.a, false);
   }
 }
 

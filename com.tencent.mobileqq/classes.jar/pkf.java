@@ -1,22 +1,43 @@
-import java.util.Comparator;
+import android.content.res.Resources;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
-public final class pkf
-  implements Comparator
+public class pkf
 {
-  public int a(pkg parampkg1, pkg parampkg2)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    if (parampkg1.a < parampkg2.a) {
-      return -1;
+    String str = null;
+    JSONObject localJSONObject = new JSONObject();
+    Object localObject2;
+    if ((paramBaseArticleInfo.mTopicRecommendFeedsInfo != null) && (paramBaseArticleInfo.mTopicRecommendFeedsInfo.a != null) && (paramBaseArticleInfo.mTopicRecommendFeedsInfo.a.size() != 0))
+    {
+      localObject1 = (qno)paramBaseArticleInfo.mTopicRecommendFeedsInfo.a.get(0);
+      localObject2 = BaseApplicationImpl.getApplication().getResources();
+      str = ((qno)localObject1).d;
     }
-    if (parampkg1.a == parampkg2.a) {
-      return 0;
+    for (Object localObject1 = String.format(((Resources)localObject2).getString(2131719063), new Object[] { bkbq.a(((qno)localObject1).b) });; localObject1 = null)
+    {
+      localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("participant_title_text", localObject1);
+      localJSONObject.put("id_participant_title", localObject2);
+      pkm.a(paramBaseArticleInfo, localJSONObject, false);
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("participant_pic_url", str);
+      localJSONObject.put("id_participant_imge", localObject1);
+      localJSONObject.put("id_view_cover", new JSONObject());
+      pkm.b(paramBaseArticleInfo, localJSONObject);
+      pkm.l(paramBaseArticleInfo, localJSONObject);
+      localJSONObject.put("style_ID", "ReadInjoy_single_topic_cell");
+      pkm.a(localJSONObject, paramBaseArticleInfo);
+      return localJSONObject;
     }
-    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pkf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,72 +1,100 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
-import com.tencent.mobileqq.ark.ArkAppCGI.ActionAppUpdateInfo;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.MobileQQ;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.process.AdProcessManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
 
-class aaqy
-  implements Runnable
+final class aaqy
+  extends QIPCModule
 {
-  aaqy(aaqx paramaaqx, ArrayList paramArrayList) {}
+  private static volatile aaqy a;
   
-  public void run()
+  private aaqy(String paramString)
   {
-    aard localaard2 = null;
-    if ((ArkActionAppMgr)this.jdField_a_of_type_Aaqx.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+    super(paramString);
+  }
+  
+  public static aaqy a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new aaqy("gdt_ipc_module_server_to_client");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public void callbackResult(int paramInt, EIPCResult paramEIPCResult)
+  {
+    if (paramEIPCResult != null) {}
+    for (boolean bool = paramEIPCResult.isSuccess();; bool = false)
+    {
+      aase.b("GdtIPCManager", String.format("ServerToClientIPCModule.callbackResult success:%b", new Object[] { Boolean.valueOf(bool) }));
+      super.callbackResult(paramInt, paramEIPCResult);
       return;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    aard localaard1 = null;
-    ArkAppCGI.ActionAppUpdateInfo localActionAppUpdateInfo;
-    while (localIterator.hasNext())
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    aaqw localaaqw = new aaqw(paramBundle);
+    String str;
+    if (localaaqw != null)
     {
-      localActionAppUpdateInfo = (ArkAppCGI.ActionAppUpdateInfo)localIterator.next();
-      ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("_checkActionNeedUpdate, action=%s.%s, gray-appid=%d, appid=%d, need-update=%s", new Object[] { localActionAppUpdateInfo.jdField_a_of_type_JavaLangString, localActionAppUpdateInfo.jdField_b_of_type_JavaLangString, Long.valueOf(localActionAppUpdateInfo.jdField_b_of_type_Long), Long.valueOf(localActionAppUpdateInfo.jdField_a_of_type_Long), Boolean.toString(localActionAppUpdateInfo.jdField_a_of_type_Boolean) }));
-      if (localActionAppUpdateInfo.jdField_a_of_type_Boolean)
-      {
-        ArkActionAppMgr.a(this.jdField_a_of_type_Aaqx.jdField_a_of_type_ComTencentMobileqqArkArkActionAppMgr, localActionAppUpdateInfo.jdField_a_of_type_JavaLangString, localActionAppUpdateInfo.jdField_b_of_type_JavaLangString, localActionAppUpdateInfo.jdField_b_of_type_Long, localActionAppUpdateInfo.jdField_a_of_type_Long);
+      paramBundle = localaaqw.a();
+      if (localaaqw == null) {
+        break label70;
       }
-      else
-      {
-        label151:
-        if (localaard1 != null) {
-          break label269;
-        }
-        localaard1 = new aard();
-        localaard1.a(this.jdField_a_of_type_Aaqx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), 2);
+      str = localaaqw.b();
+      label33:
+      aase.b("GdtIPCManager", String.format("ServerToClientIPCModule.onCall action:%s to:%s", new Object[] { paramBundle, str }));
+      if (!TextUtils.isEmpty(paramString)) {
+        break label76;
       }
     }
-    label269:
-    for (;;)
+    label70:
+    label76:
+    do
     {
-      if (localaard2 == null)
+      do
       {
-        localaard2 = new aard();
-        localaard2.a(this.jdField_a_of_type_Aaqx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), 1);
+        return null;
+        paramBundle = null;
+        break;
+        str = null;
+        break label33;
+      } while ((!localaaqw.a()) || (!TextUtils.equals(localaaqw.a(), paramString)) || (!TextUtils.equals(AdProcessManager.INSTANCE.getCurrentProcessName(BaseApplicationImpl.getContext()), localaaqw.b())));
+      paramString = aaqp.a(aaqp.a(), paramString);
+    } while (paramString == null);
+    paramString = paramString.a(localaaqw);
+    paramBundle = new EIPCResult();
+    int i;
+    if ((paramString != null) && (paramString.jdField_a_of_type_Boolean))
+    {
+      i = 0;
+      paramBundle.code = i;
+      if (paramString == null) {
+        break label194;
       }
-      for (;;)
-      {
-        localaard1.a(localActionAppUpdateInfo.jdField_a_of_type_JavaLangString, localActionAppUpdateInfo.jdField_b_of_type_JavaLangString);
-        localaard2.a(localActionAppUpdateInfo.jdField_a_of_type_JavaLangString, localActionAppUpdateInfo.jdField_b_of_type_JavaLangString);
-        break label151;
-        if (localaard1 != null) {
-          localaard1.a();
-        }
-        if (localaard2 == null) {
-          break;
-        }
-        localaard2.a();
-        return;
-      }
+    }
+    label194:
+    for (paramString = paramString.jdField_a_of_type_AndroidOsBundle;; paramString = null)
+    {
+      paramBundle.data = paramString;
+      callbackResult(paramInt, paramBundle);
+      return null;
+      i = -102;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaqy
  * JD-Core Version:    0.7.0.1
  */

@@ -30,9 +30,9 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qlink.QQServiceForQlink;
-import fnt;
-import fnu;
-import fnv;
+import fjh;
+import fji;
+import fjj;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -701,7 +701,7 @@ public class OfflineFileMessageProcessor
     MobileQQService.c = i + 1;
     long l = i;
     paramFMTransC2CMsgInfo.queueSeq = l;
-    a(true, true, true, l, new fnt(this, paramString, paramFMTransC2CMsgInfo, paramInt1, paramArrayOfByte2, paramArrayOfByte1, paramInt2, paramInt3));
+    a(true, true, true, l, new fjh(this, paramString, paramFMTransC2CMsgInfo, paramInt1, paramArrayOfByte2, paramArrayOfByte1, paramInt2, paramInt3));
     return true;
   }
   
@@ -711,7 +711,7 @@ public class OfflineFileMessageProcessor
     MobileQQService.c = i + 1;
     long l = i;
     paramFMTransC2CMsgInfo.queueSeq = l;
-    a(true, true, true, l, new fnu(this, paramString, paramFMTransC2CMsgInfo, paramInt, paramArrayOfByte));
+    a(true, true, true, l, new fji(this, paramString, paramFMTransC2CMsgInfo, paramInt, paramArrayOfByte));
     return true;
   }
   
@@ -720,7 +720,7 @@ public class OfflineFileMessageProcessor
     int i = MobileQQService.c;
     MobileQQService.c = i + 1;
     long l = i;
-    a(true, true, true, l, new fnv(this, paramString, paramLong, Math.abs(new Random().nextInt()), l, paramInt, paramArrayOfByte));
+    a(true, true, true, l, new fjj(this, paramString, paramLong, Math.abs(new Random().nextInt()), l, paramInt, paramArrayOfByte));
     return true;
   }
   

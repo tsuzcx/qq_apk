@@ -1,40 +1,24 @@
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ajgl
+class ajgl
   implements View.OnClickListener
 {
-  public ajgl(HomeWorkTroopSelectorFragment paramHomeWorkTroopSelectorFragment) {}
+  ajgl(ajgb paramajgb) {}
   
   public void onClick(View paramView)
   {
-    paramView = new ArrayList();
-    ArrayList localArrayList = new ArrayList();
-    if (HomeWorkTroopSelectorFragment.a(this.a) != null)
-    {
-      int j = HomeWorkTroopSelectorFragment.a(this.a).getCount();
-      int i = 0;
-      while (i < j)
-      {
-        localObject = (ajgr)HomeWorkTroopSelectorFragment.a(this.a).getItem(i);
-        if ((((Boolean)((ajgr)localObject).b).booleanValue()) && (!HomeWorkTroopSelectorFragment.a(this.a).equals(((TroopInfo)((ajgr)localObject).a).troopuin)))
-        {
-          paramView.add(((TroopInfo)((ajgr)localObject).a).troopname);
-          localArrayList.add(((TroopInfo)((ajgr)localObject).a).troopuin);
-        }
-        i += 1;
-      }
+    if (bhtb.e()) {
+      ajgb.a(this.a).startActivity(new Intent("android.settings.SETTINGS"));
     }
-    Object localObject = new Intent();
-    ((Intent)localObject).putStringArrayListExtra("HomeWorkConstants:homework_async_uin_list_key", localArrayList);
-    ((Intent)localObject).putStringArrayListExtra("HomeWorkConstants:homework_async_name_list_key", paramView);
-    this.a.getActivity().setResult(262, (Intent)localObject);
-    this.a.getActivity().doOnBackPressed();
+    for (;;)
+    {
+      azqs.a(ajgb.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 1, 0, "", "", "", "");
+      return;
+      ajgb.a(this.a).startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
+    }
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
+import adfp;
+import adfq;
+import adfr;
 import android.app.Dialog;
 import android.os.Bundle;
+import auwq;
+import bdap;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.util.CustomDialogFactory;
 import com.tencent.mobileqq.widget.QQToast;
-import swl;
-import swm;
-import swn;
 
 public class LbsBaseActivity
   extends IphoneTitleBarActivity
@@ -20,7 +20,7 @@ public class LbsBaseActivity
   
   private boolean a()
   {
-    return NearbySPUtil.a(getAppInterface().getAccount());
+    return auwq.a(getAppInterface().getAccount());
   }
   
   private void c(Runnable paramRunnable)
@@ -30,15 +30,15 @@ public class LbsBaseActivity
   
   private void d(Runnable paramRunnable)
   {
-    paramRunnable = new swl(this, paramRunnable);
-    this.b = CustomDialogFactory.a(this, 2131433947, a(), 2131433954, 2131433953, new swm(this), new swn(this));
+    paramRunnable = new adfp(this, paramRunnable);
+    this.b = bdap.a(this, 2131692146, a(), 2131691958, 2131691955, new adfq(this), new adfr(this));
     this.b.setOnDismissListener(paramRunnable);
     this.b.show();
   }
   
-  public int a()
+  protected int a()
   {
-    return 2131433948;
+    return 2131692141;
   }
   
   public void a()
@@ -60,15 +60,15 @@ public class LbsBaseActivity
     //   0: aload_1
     //   1: invokevirtual 102	android/app/Dialog:dismiss	()V
     //   4: aload_1
-    //   5: invokestatic 106	com/tencent/mfsdk/LeakInspector/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
+    //   5: invokestatic 106	abvb:a	(Landroid/app/Dialog;)V
     //   8: return
     //   9: astore_2
     //   10: aload_1
-    //   11: invokestatic 106	com/tencent/mfsdk/LeakInspector/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
+    //   11: invokestatic 106	abvb:a	(Landroid/app/Dialog;)V
     //   14: return
     //   15: astore_2
     //   16: aload_1
-    //   17: invokestatic 106	com/tencent/mfsdk/LeakInspector/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
+    //   17: invokestatic 106	abvb:a	(Landroid/app/Dialog;)V
     //   20: aload_2
     //   21: athrow
     // Local variable table:
@@ -83,12 +83,12 @@ public class LbsBaseActivity
     //   0	4	15	finally
   }
   
-  public void a(Runnable paramRunnable)
+  protected void a(Runnable paramRunnable)
   {
     c(paramRunnable);
   }
   
-  public void b(Runnable paramRunnable)
+  protected void b(Runnable paramRunnable)
   {
     if (a())
     {
@@ -120,7 +120,7 @@ public class LbsBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LbsBaseActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public final class e
   extends JceStruct
 {
   static ArrayList c;
-  public ArrayList a;
+  public ArrayList a = null;
   public int b = 64;
   
   public e() {}

@@ -5,7 +5,7 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import iff;
+import ial;
 
 public abstract class IQlinkService$Stub
   extends Binder
@@ -28,7 +28,7 @@ public abstract class IQlinkService$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IQlinkService))) {
       return (IQlinkService)localIInterface;
     }
-    return new iff(paramIBinder);
+    return new ial(paramIBinder);
   }
   
   public IBinder asBinder()

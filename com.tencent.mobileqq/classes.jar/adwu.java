@@ -1,91 +1,74 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.mobileqq.jsp.QQApiPlugin;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgFactory;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.ArrayList;
+import java.util.List;
 
-public class adwu
-  implements BusinessObserver
+class adwu
+  extends aqru
 {
-  public adwu(QQApiPlugin paramQQApiPlugin, Intent paramIntent) {}
+  adwu(adws paramadws) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.a.dismiss();
-    if (paramBoolean) {}
+    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferProgress");
+    if (this.a.jdField_a_of_type_JavaUtilList != null)
+    {
+      paramInt = 0;
+      if (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
+        break label232;
+      }
+      if (((adwz)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a != paramLong1) {}
+    }
     for (;;)
     {
-      try
+      if (paramInt != -1) {
+        paramInt = 0;
+      }
+      for (;;)
       {
-        Object localObject = paramBundle.getByteArray("data");
-        if (localObject != null)
+        if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())
         {
-          paramBundle = new GetAppInfoProto.GetAppinfoResponse();
-          paramBundle.mergeFrom((byte[])localObject);
-          if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
-          {
-            localAndroidInfo = paramBundle.androidInfo;
-            localObject = Share.a(paramBundle.iconsURL, 16);
-            Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.sourceUrl != null) {
-              continue;
-            }
-            paramBundle = "";
-            localIntent.putExtra("struct_share_key_source_url", paramBundle);
-            localIntent = this.jdField_a_of_type_AndroidContentIntent;
-            paramBundle = (Bundle)localObject;
-            if (localObject == null) {
-              paramBundle = "";
-            }
-            localIntent.putExtra("struct_share_key_source_icon", paramBundle);
-            localObject = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.messagetail != null) {
-              continue;
-            }
-            paramBundle = "";
-            ((Intent)localObject).putExtra("struct_share_key_source_name", paramBundle);
-            localObject = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.packName != null) {
-              continue;
-            }
-            paramBundle = "";
-            ((Intent)localObject).putExtra("struct_share_key_source_a_action_data", paramBundle);
+          paramString = (FileManagerEntity)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+          if (paramString.uniseq != paramLong1) {
+            break label202;
+          }
+          if (this.a.jdField_a_of_type_Bdjz != null) {
+            this.a.jdField_a_of_type_Bdjz.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf((int)(paramString.fProgress * 100.0F)) }));
           }
         }
+        return;
+        paramInt += 1;
+        break;
+        label202:
+        paramInt += 1;
       }
-      catch (Exception paramBundle)
-      {
-        GetAppInfoProto.AndroidInfo localAndroidInfo;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("QQApi", 2, paramBundle.getMessage());
-        continue;
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
-        this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
-      }
-      paramBundle = StructMsgFactory.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
-      if (paramBundle != null) {
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQApi", 2, "build struct msg fail");
-      }
+      this.a.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
       return;
-      paramBundle = localAndroidInfo.sourceUrl.get();
-      continue;
-      paramBundle = localAndroidInfo.messagetail.get();
-      continue;
-      paramBundle = localAndroidInfo.packName.get();
+      label232:
+      paramInt = -1;
     }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String arg6, int paramInt1, int paramInt2, String paramString2)
+  {
+    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferEnd");
+    if (!this.a.jdField_b_of_type_Boolean) {
+      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+      {
+        this.a.a();
+        return;
+      }
+    }
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferStart");
+    if (this.a.jdField_a_of_type_Bdjz != null) {
+      this.a.jdField_a_of_type_Bdjz.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(0) }));
+    }
+    this.a.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
   }
 }
 

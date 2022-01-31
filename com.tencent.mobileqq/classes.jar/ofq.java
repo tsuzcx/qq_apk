@@ -1,24 +1,40 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class ofq
-  extends SimpleJob
+class ofq
+  implements Animator.AnimatorListener
 {
-  public ofq(EditVideoPartManager paramEditVideoPartManager) {}
+  ofq(ofn paramofn) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    VideoEditReport.a("0X80076BC");
-    return null;
+    ofn.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ofn.a(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    ofn.a(this.a, true);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    ofn.a(this.a, true);
+    ofn.a(this.a).setAlpha(0.0F);
+    ofn.b(this.a).setAlpha(0.0F);
+    ofn.c(this.a).setAlpha(0.0F);
+    ofn.a(this.a).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ofq
  * JD-Core Version:    0.7.0.1
  */

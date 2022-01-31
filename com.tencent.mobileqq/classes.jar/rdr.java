@@ -1,19 +1,17 @@
-import android.view.Choreographer.FrameCallback;
-import com.tencent.mfsdk.collector.DropFrameMonitor;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class rdr
-  implements Choreographer.FrameCallback
+final class rdr
+  implements DialogInterface.OnClickListener
 {
-  public rdr(DropFrameMonitor paramDropFrameMonitor) {}
-  
-  public void doFrame(long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(paramLong);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rdr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,23 @@
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
-class acpj
-  implements BubblePopupWindow.OnDismissListener
+public class acpj
+  implements View.OnClickListener
 {
-  acpj(acph paramacph, View paramView) {}
+  public acpj(ChatSettingForTroop paramChatSettingForTroop, Dialog paramDialog) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpj
  * JD-Core Version:    0.7.0.1
  */

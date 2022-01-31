@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class mobileqq_mp$ConfigInfo
-  extends MessageMicro
+  extends MessageMicro<ConfigInfo>
 {
   public static final int LOCAL_EVENT = 3;
   public static final int NEED_UIN = 1;
@@ -37,7 +37,7 @@ public final class mobileqq_mp$ConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo
  * JD-Core Version:    0.7.0.1
  */

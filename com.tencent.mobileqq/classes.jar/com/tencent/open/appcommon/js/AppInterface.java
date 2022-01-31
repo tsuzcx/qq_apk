@@ -1,7 +1,5 @@
 package com.tencent.open.appcommon.js;
 
-import aldn;
-import aldp;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RecentTaskInfo;
@@ -18,19 +16,19 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.base.ImageUtil;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.StringAddition;
-import com.tencent.open.business.base.AppUtil;
-import com.tencent.open.business.base.StaticAnalyz;
-import com.tencent.open.downloadnew.MyAppDialog;
+import bdiv;
+import bfbm;
+import bfja;
+import bfln;
+import bflp;
+import bflv;
+import bfms;
+import bfmw;
+import bfmy;
+import bfpl;
 import com.tencent.smtt.sdk.WebView;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import org.json.JSONArray;
 
 public class AppInterface
@@ -38,16 +36,27 @@ public class AppInterface
 {
   protected static final String APP_UPDATE_TAG = "AppUpdate";
   public static final String PLUGIN_NAMESPACE = "qzone_app";
-  public Activity activity;
+  private static final String TAG = "AppInterface";
+  protected Activity activity;
   public Handler mHandler;
-  public MyAppDialog tipDialog;
-  public WebView webView;
+  public bfpl tipDialog;
+  protected WebView webView;
   
   public AppInterface(Activity paramActivity, WebView paramWebView)
   {
     this.activity = paramActivity;
     this.webView = paramWebView;
     this.mHandler = new Handler(Looper.getMainLooper());
+  }
+  
+  public static String getImei()
+  {
+    return bfmw.c();
+  }
+  
+  public static String getImsi()
+  {
+    return bfmw.d();
   }
   
   public String gSetPackageScanSetting(String paramString1, String paramString2)
@@ -58,20 +67,20 @@ public class AppInterface
       return null;
       if (paramString1.equals("2"))
       {
-        if (AppUtil.a(this.activity)) {
+        if (bfms.a(this.activity)) {
           return "1";
         }
         return "0";
       }
       if (paramString1.equals("0"))
       {
-        StaticAnalyz.a("100", "ANDROIDQQ.STORE.UPDATECHECKBOX", "");
-        paramString1 = new aldn(this, paramString2);
-        this.mHandler.post(new aldp(this, paramString1));
+        bfmy.a("100", "ANDROIDQQ.STORE.UPDATECHECKBOX", "");
+        paramString1 = new bfja(this, paramString2);
+        this.mHandler.post(new AppInterface.2(this, paramString1));
         return null;
       }
     } while (!paramString1.equals("1"));
-    paramString1 = CommonDataAdapter.a().a().getSharedPreferences("package_scan", 0).edit();
+    paramString1 = bfbm.a().a().getSharedPreferences("package_scan", 0).edit();
     paramString1.putBoolean("qqsetting_package_scan_flag", true);
     paramString1.commit();
     return "1";
@@ -83,13 +92,13 @@ public class AppInterface
       return "baby,you don't have permission";
     }
     JSONArray localJSONArray = new JSONArray();
-    List localList = AppUtil.a(this.activity);
-    if (localList != null)
+    ArrayList localArrayList = new ArrayList();
+    if (localArrayList != null)
     {
       int i = 0;
-      while (i < localList.size())
+      while (i < localArrayList.size())
       {
-        PackageInfo localPackageInfo = (PackageInfo)localList.get(i);
+        PackageInfo localPackageInfo = (PackageInfo)localArrayList.get(i);
         if ((localPackageInfo.applicationInfo.flags & 0x1) == 0) {
           localJSONArray.put(getAppInfo(localPackageInfo, paramString1, paramString2, paramString3));
         }
@@ -115,7 +124,7 @@ public class AppInterface
       if (!hasRight()) {
         return "baby,you don't have permission";
       }
-      if (StringAddition.a(paramString1)) {
+      if (bflv.a(paramString1)) {
         return "[]";
       }
       paramString1 = this.activity.getPackageManager().getPackageInfo(paramString1, 0);
@@ -162,7 +171,7 @@ public class AppInterface
       if (j == 0) {
         break label224;
       }
-      paramString1.put(ImageUtil.a(paramPackageInfo.applicationInfo.loadIcon(this.activity.getPackageManager())));
+      paramString1.put(bfln.a(paramPackageInfo.applicationInfo.loadIcon(this.activity.getPackageManager())));
       label128:
       if (k == 0) {
         break label252;
@@ -217,41 +226,41 @@ public class AppInterface
   
   public String getAppInfoBatch(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
+    int i = 0;
     if (!hasRight()) {
       return "baby,you don't have permission";
     }
-    if (StringAddition.a(paramString1)) {
+    if (bflv.a(paramString1)) {
       return "{}";
     }
-    paramString2 = StringAddition.a(paramString1, paramString2);
-    if (paramString2.length == 0) {
+    paramString1 = bflv.a(paramString1, paramString2);
+    if (paramString1.length == 0) {
       return "{}";
-    }
-    paramString1 = new LinkedHashMap();
-    int j = paramString2.length;
-    int i = 0;
-    while (i < j)
-    {
-      localObject = paramString2[i];
-      if ((localObject != null) && (((String)localObject).length() > 0)) {
-        paramString1.put(localObject, "");
-      }
-      i += 1;
     }
     paramString2 = new JSONArray();
-    Object localObject = AppUtil.a(this.activity);
-    if (localObject != null)
+    PackageManager localPackageManager = this.activity.getPackageManager();
+    int j = paramString1.length;
+    for (;;)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      CharSequence localCharSequence;
+      if (i < j)
       {
-        PackageInfo localPackageInfo = (PackageInfo)((Iterator)localObject).next();
-        if (paramString1.containsKey(localPackageInfo.packageName)) {
-          paramString2.put(getAppInfo(localPackageInfo, paramString3, paramString4, paramString5));
-        }
+        localCharSequence = paramString1[i];
+        if ((TextUtils.isEmpty(localCharSequence)) || (!bdiv.a(this.activity, localCharSequence))) {}
+      }
+      try
+      {
+        paramString2.put(getAppInfo(localPackageManager.getPackageInfo(localCharSequence, 0), paramString3, paramString4, paramString5));
+        label115:
+        i += 1;
+        continue;
+        return paramString2.toString();
+      }
+      catch (PackageManager.NameNotFoundException localNameNotFoundException)
+      {
+        break label115;
       }
     }
-    return paramString2.toString();
   }
   
   public String getInterfaceName()
@@ -364,10 +373,10 @@ public class AppInterface
   
   public void getUpdateApp(String paramString)
   {
-    LogUtility.b("AppUpdate", "getUpdateApp , param = " + paramString);
+    bflp.b("AppUpdate", "getUpdateApp , param = " + paramString);
     try
     {
-      CommonDataAdapter.a().a(paramString, this.activity, this.webView);
+      bfbm.a().a(paramString, this.activity, this.webView);
       return;
     }
     catch (Exception paramString)
@@ -379,7 +388,7 @@ public class AppInterface
   public int uninstallApp(String paramString)
   {
     if (!hasRight()) {}
-    while (!AppUtil.b(this.activity, paramString)) {
+    while (!bfms.b(this.activity, paramString)) {
       return -1;
     }
     return 0;
@@ -387,7 +396,7 @@ public class AppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.js.AppInterface
  * JD-Core Version:    0.7.0.1
  */

@@ -1,79 +1,54 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 
-public class achd
-  extends SosoInterface.OnLocationListener
+class achd
+  extends awhw
 {
-  public achd(EnterpriseQQManager paramEnterpriseQQManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  achd(achb paramachb) {}
+  
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "onUploadContact  isSuccess = " + paramBoolean);
+    }
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo arg2)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
   {
-    int i = 1;
     if (QLog.isColorLevel()) {
-      QLog.d("EnterpriseQQManager", 2, "onLocationFinish() errCode=" + paramInt);
+      QLog.d("AutoLoginHelper", 2, "RegisterQQNumberActivity onGetBindUinWithPhone isSuccess = " + paramBoolean1 + "; isBindOk = " + paramBoolean2 + ";hadbind = " + paramBoolean3 + ";uin =" + paramString);
     }
-    if (paramInt == 0) {
-      paramInt = i;
-    }
-    ache localache;
-    label219:
-    while (paramInt != 0)
+    if (paramBoolean1)
     {
-      ??? = ???.a;
-      double d1 = ???.a;
-      double d2 = ???.b;
-      EnterpriseQQManager.a(this.a, d1);
-      EnterpriseQQManager.b(this.a, d2);
-      EnterpriseQQManager.a(this.a, System.currentTimeMillis());
-      synchronized (EnterpriseQQManager.a())
+      if (paramBoolean2)
       {
-        if ((EnterpriseQQManager.a(this.a) == null) || (EnterpriseQQManager.a(this.a).size() <= 0)) {
-          break label219;
-        }
-        Iterator localIterator1 = EnterpriseQQManager.a(this.a).iterator();
-        do
-        {
-          if (!localIterator1.hasNext()) {
-            break;
-          }
-          localache = (ache)localIterator1.next();
-        } while (localache == null);
-        this.a.a(EnterpriseQQManager.a(this.a), EnterpriseQQManager.a(this.a), localache.a, localache.b, true, d1, d2);
+        achb.a(this.a, true);
+        achb.b(this.a);
       }
-      paramInt = 0;
-      continue;
-      EnterpriseQQManager.a(this.a).clear();
-    }
-    label362:
-    for (;;)
-    {
-      EnterpriseQQManager.a(this.a, null);
-      EnterpriseQQManager.a(this.a, null);
+      do
+      {
+        return;
+        if ((!paramBoolean3) || (TextUtils.isEmpty(paramString))) {
+          break;
+        }
+        achb.a(this.a);
+      } while (achb.a(this.a) == null);
+      Intent localIntent = new Intent(achb.a(this.a), VerifyPhoneNumActivity.class);
+      localIntent.putExtra("phonenum", this.a.a);
+      localIntent.putExtra("key", this.a.b);
+      localIntent.putExtra("uin", achb.a(this.a));
+      localIntent.putExtra("key_register_sign", achb.a(this.a));
+      localIntent.putExtra("key_register_binduin", paramString);
+      achb.a(this.a).startActivity(localIntent);
+      achb.a(this.a).finish();
       return;
-      synchronized (EnterpriseQQManager.a())
-      {
-        if ((EnterpriseQQManager.a(this.a) == null) || (EnterpriseQQManager.a(this.a).size() <= 0)) {
-          break label362;
-        }
-        Iterator localIterator2 = EnterpriseQQManager.a(this.a).iterator();
-        while (localIterator2.hasNext())
-        {
-          localache = (ache)localIterator2.next();
-          if (localache != null) {
-            this.a.a(EnterpriseQQManager.a(this.a), EnterpriseQQManager.a(this.a), localache.a, localache.b, false, 0.0D, 0.0D);
-          }
-        }
-      }
-      EnterpriseQQManager.a(this.a).clear();
+      achb.b(this.a);
+      return;
     }
+    achb.b(this.a);
   }
 }
 

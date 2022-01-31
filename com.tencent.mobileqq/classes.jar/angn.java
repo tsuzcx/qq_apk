@@ -1,25 +1,10 @@
 import android.os.Bundle;
-import com.tencent.open.wadl.WLog;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
-import mqq.observer.BusinessObserver;
+import com.tencent.common.app.AppInterface;
 
 public class angn
-  implements BusinessObserver
+  extends angm
 {
-  public angn(WadlProxyServiceManager paramWadlProxyServiceManager, String paramString) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    paramInt = paramBundle.getInt("extra_result_code");
-    String str = paramBundle.getString("extra_result_err_msg");
-    paramBundle = paramBundle.getString("extra_cmd");
-    if (!paramBoolean)
-    {
-      WLog.a("WadlProxyServiceManager", "onReportDownloadEvent fail operId=" + this.jdField_a_of_type_JavaLangString + ",cmd=" + paramBundle + ",errCode=" + paramInt + ",errMsg=" + str);
-      return;
-    }
-    WLog.b("WadlProxyServiceManager", "onReportDownloadEvent success operId=" + this.jdField_a_of_type_JavaLangString + ",cmd=" + paramBundle);
-  }
+  public void a(AppInterface paramAppInterface, Bundle paramBundle) {}
 }
 
 

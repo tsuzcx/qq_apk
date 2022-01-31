@@ -1,31 +1,60 @@
-import com.tencent.biz.qqstory.playmode.child.MsgTabPlayMode;
-import com.tencent.biz.qqstory.playmode.util.MsgTabVideoDataProvider.MsgTabVideoDataEvent;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.pubaccount.AccountDetail.jce.SetRecvMsgStateRsp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-public class njs
-  implements Runnable
+class njs
+  extends alzr
 {
-  public njs(MsgTabPlayMode paramMsgTabPlayMode, MsgTabVideoDataProvider.MsgTabVideoDataEvent paramMsgTabVideoDataEvent) {}
+  private nin b;
   
-  public void run()
+  public njs(nin paramnin1, nin paramnin2)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.e = false;
+    this.b = paramnin2;
+  }
+  
+  public void a()
+  {
+    this.b = null;
+  }
+  
+  public void a(boolean paramBoolean, SetRecvMsgStateRsp paramSetRecvMsgStateRsp)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("wyx", 2, new Object[] { "before current setCurrentItem index=", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider$MsgTabVideoDataEvent.jdField_a_of_type_Int), ", mCurrentIndex=", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.jdField_b_of_type_Int) });
+      QLog.d("AccountDetailGroupListContainer", 2, "onGetRecvMsgState isSuccess = " + paramBoolean);
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.a.setCurrentItem(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider$MsgTabVideoDataEvent.jdField_a_of_type_Int, false);
-    if ((!this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider$MsgTabVideoDataEvent.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider$MsgTabVideoDataEvent.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      MsgTabPlayMode.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode, this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider$MsgTabVideoDataEvent);
+    if ((paramBoolean) && (paramSetRecvMsgStateRsp.result == 0))
+    {
+      nin.b(this.a, this.a.jdField_a_of_type_Int);
+      if (this.a.jdField_a_of_type_AndroidContentSharedPreferences != null) {
+        this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("setting_status_" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_Int).commit();
+      }
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.jdField_b_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, true);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.c, false);
+  }
+  
+  public void a(boolean paramBoolean, npo paramnpo)
+  {
+    if ((paramBoolean) && (paramnpo != null)) {
+      if (paramnpo.e != 3) {}
+    }
+    while (this.b == null) {
+      for (;;)
+      {
+        syb.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.a.jdField_a_of_type_JavaLangString);
+        return;
+        if ((paramnpo.e == 6) && (this.b != null)) {
+          nin.a(this.b, paramnpo);
+        }
+      }
+    }
+    nin.a(this.b, 2131695729);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     njs
  * JD-Core Version:    0.7.0.1
  */

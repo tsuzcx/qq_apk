@@ -1,31 +1,27 @@
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class aaib
-  implements Runnable
 {
-  public aaib(ARReport paramARReport, long paramLong, boolean paramBoolean) {}
+  private static aaib jdField_a_of_type_Aaib;
+  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newFixedThreadPool(5);
   
-  public void run()
+  public static aaib a()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
-    if (this.jdField_a_of_type_Boolean) {
-      localHashMap.put("result", "0");
+    if (jdField_a_of_type_Aaib == null) {
+      jdField_a_of_type_Aaib = new aaib();
     }
-    for (;;)
-    {
-      StatisticCollector.a(BaseApplication.getContext()).a("", "ARLocalFaceRecogInit", true, 0L, 0L, localHashMap, "");
-      return;
-      localHashMap.put("result", "1");
-    }
+    return jdField_a_of_type_Aaib;
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaib
  * JD-Core Version:    0.7.0.1
  */

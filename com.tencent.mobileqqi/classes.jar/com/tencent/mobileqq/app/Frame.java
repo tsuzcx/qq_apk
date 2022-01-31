@@ -16,7 +16,7 @@ public abstract class Frame
   private View jdField_a_of_type_AndroidViewView;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   public QQAppInterface a;
-  protected boolean a_;
+  public boolean a_;
   
   private void h()
   {
@@ -58,7 +58,7 @@ public abstract class Frame
     return this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService(paramString);
   }
   
-  protected String a()
+  public String a()
   {
     return null;
   }
@@ -159,7 +159,7 @@ public abstract class Frame
   
   public abstract void f();
   
-  protected void g() {}
+  public void g() {}
   
   public void j() {}
   

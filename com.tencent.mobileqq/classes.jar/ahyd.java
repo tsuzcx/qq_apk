@@ -1,27 +1,36 @@
-import com.tencent.mobileqq.servlet.QZoneNotifyServlet;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryAuthDevForRoamMsgFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ahyd
-  implements Runnable
+  implements Handler.Callback
 {
-  public ahyd(QZoneNotifyServlet paramQZoneNotifyServlet) {}
+  public ahyd(ChatHistoryAuthDevForRoamMsgFragment paramChatHistoryAuthDevForRoamMsgFragment) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.UndealCount.QZoneNotifyServlet", 2, "QZone scheduled QZoneFeedTimeTask run. currentTime:" + System.currentTimeMillis());
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
     }
-    AppRuntime localAppRuntime = this.a.getAppRuntime();
-    if (localAppRuntime == null) {
-      return;
+    ChatHistoryAuthDevForRoamMsgFragment.a(this.a).findViewById(2131379406).setEnabled(true);
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
     }
-    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), QZoneNotifyServlet.class);
-    localNewIntent.setAction("Qzone_Get_NewAndUnread_Count");
-    localNewIntent.putExtra("bNotWorkInBackGround", true);
-    localNewIntent.putExtra("qzone_send_by_time", 4);
-    localAppRuntime.startServlet(localNewIntent);
+    if (paramMessage.arg1 == 0) {
+      QQToast.a(this.a.getActivity(), 2, alud.a(2131702001), 0).b(this.a.getActivity().getTitleBarHeight());
+    }
+    for (;;)
+    {
+      this.a.getActivity().setResult(1);
+      this.a.getActivity().finish();
+      return false;
+      QQToast.a(this.a.getActivity(), 2, alud.a(2131702011), 0).b(this.a.getActivity().getTitleBarHeight());
+    }
   }
 }
 

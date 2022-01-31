@@ -1,27 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.LocalSearchBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.voip.VoipAddressBookView;
 
 public class ete
-  implements View.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
-  public ete(LocalSearchBar paramLocalSearchBar) {}
+  public ete(VoipAddressBookView paramVoipAddressBookView) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.a.a > 1000L)
-    {
-      this.a.a = l;
-      Conversation.d(false);
-      this.a.a();
+    if (paramInt == 4) {
+      VoipAddressBookView.m(this.a);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ete
  * JD-Core Version:    0.7.0.1
  */

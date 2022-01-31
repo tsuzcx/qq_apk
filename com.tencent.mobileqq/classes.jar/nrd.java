@@ -1,34 +1,20 @@
 import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.biz.qqstory.base.QQStoryManager;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettingDelegate;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.PublicAccountManager.1;
+import mqq.observer.BusinessObserver;
 
 public class nrd
-  extends ProtoUtils.TroopProtocolObserver
+  implements BusinessObserver
 {
-  public nrd(QQStoryFriendSettingDelegate paramQQStoryFriendSettingDelegate, boolean paramBoolean) {}
+  public nrd(PublicAccountManager.1 param1) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramInt != 0)
-    {
-      paramArrayOfByte = this.a;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramArrayOfByte.a(3, bool);
-        this.a.a(0, this.a.a.getString(2131435374));
-        return;
-      }
-    }
-    ((QQStoryManager)this.a.a.app.getManager(180)).b(this.b);
+    this.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nrd
  * JD-Core Version:    0.7.0.1
  */

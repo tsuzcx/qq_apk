@@ -1,36 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.werewolves.ReflectUtils;
-import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.lang.reflect.Method;
+import com.tencent.mobileqq.apollo.data.CmGamePushItem;
+import java.util.Comparator;
 
-public class aksg
-  implements ActionSheet.OnButtonClickListener
+class aksg
+  implements Comparator<CmGamePushItem>
 {
-  public aksg(WerewolvesHostInterface paramWerewolvesHostInterface, Object paramObject, ActionSheet paramActionSheet) {}
+  aksg(aksf paramaksf) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public int a(CmGamePushItem paramCmGamePushItem1, CmGamePushItem paramCmGamePushItem2)
   {
-    paramView = ReflectUtils.a(this.jdField_a_of_type_JavaLangObject.getClass(), "onClick", new Class[] { Integer.TYPE });
-    try
-    {
-      paramView.invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { Integer.valueOf(paramInt) });
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
+    if (paramCmGamePushItem1.start_ts == paramCmGamePushItem2.start_ts) {
+      return paramCmGamePushItem2.send_time - paramCmGamePushItem1.send_time;
     }
-    catch (Exception paramView)
-    {
-      for (;;)
-      {
-        paramView.printStackTrace();
-      }
-    }
+    return paramCmGamePushItem2.start_ts - paramCmGamePushItem1.start_ts;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aksg
  * JD-Core Version:    0.7.0.1
  */

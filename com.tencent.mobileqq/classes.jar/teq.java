@@ -1,23 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.qphone.base.util.QLog;
+import UserGrowth.stBlockRecommPersonRsp;
 
-public class teq
-  implements DialogInterface.OnDismissListener
+class teq
+  implements tgt
 {
-  public teq(PayBridgeActivity paramPayBridgeActivity) {}
+  teq(tep paramtep) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(the paramthe)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.qwallet.payPayBridgeActivity", 4, "finish dialog dismiss...");
+    if (!(paramthe.a instanceof stBlockRecommPersonRsp)) {
+      tlo.b("WSUserBusiness", "[actionBlockRecommendPerson] data error: " + paramthe.a);
     }
+    do
+    {
+      return;
+      paramthe = (stBlockRecommPersonRsp)paramthe.a;
+    } while (paramthe == null);
+    tlo.b("WSUserBusiness", "[actionBlockRecommendPerson] data success resultBean.ret:" + paramthe.ret);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     teq
  * JD-Core Version:    0.7.0.1
  */

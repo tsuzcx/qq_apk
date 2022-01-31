@@ -1,142 +1,63 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troop.logic.TroopSearchLogic;
-import com.tencent.mobileqq.troop.logic.TroopSearchLogic.SearchResult;
-import com.tencent.mobileqq.troop.logic.TroopSearchLogic.TroopSearchCallback;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import com.tencent.mobileqq.utils.ChnToSpell.ChnSpelling;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ajme
-  implements Runnable
+  extends ajlr
 {
-  TroopSearchLogic.TroopSearchCallback jdField_a_of_type_ComTencentMobileqqTroopLogicTroopSearchLogic$TroopSearchCallback;
-  ArrayList jdField_a_of_type_JavaUtilArrayList;
-  
-  public ajme(TroopSearchLogic paramTroopSearchLogic, TroopSearchLogic.TroopSearchCallback paramTroopSearchCallback, ArrayList paramArrayList)
+  public ajme(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopSearchLogic$TroopSearchCallback = paramTroopSearchCallback;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131697884);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   
-  private void a(ArrayList paramArrayList)
+  public void a(byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopSearchLogic$TroopSearchCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopSearchLogic$TroopSearchCallback.a(paramArrayList);
-    }
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 <= 5)
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
     {
-      if (paramInt1 <= 20) {}
-    }
-    else {
-      do
-      {
-        return false;
-        if ((paramInt2 <= 6) || (paramInt2 >= 20) || (paramInt1 <= 50)) {
-          break;
-        }
-      } while (paramInt1 > 50);
-    }
-    while ((paramInt2 < 20) || (paramInt1 <= 100)) {
-      return true;
-    }
-    return false;
-  }
-  
-  public void run()
-  {
-    Object localObject1 = (TroopHandler)this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopSearchLogic.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    localObject1 = new ArrayList();
-    Object localObject2 = new ArrayList(this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopSearchLogic.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a());
-    if ((localObject2 == null) || (((List)localObject2).size() == 0))
-    {
-      a((ArrayList)localObject1);
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      if (this.jdField_a_of_type_Bbpe == null) {
+        this.jdField_a_of_type_Bbpe = new bbpe();
+      }
+      this.jdField_a_of_type_Bbpe.a(paramArrayOfByte.getString("messageNavInfo"));
       return;
     }
-    int i = ((List)localObject2).size() - 1;
-    TroopInfo localTroopInfo;
-    while (i >= 0)
+    catch (JSONException paramArrayOfByte)
     {
-      localTroopInfo = (TroopInfo)((List)localObject2).get(i);
-      if (!a(localTroopInfo.wMemberNum, this.jdField_a_of_type_JavaUtilArrayList.size())) {
-        ((List)localObject2).remove(localTroopInfo);
-      }
-      i -= 1;
+      paramArrayOfByte.printStackTrace();
     }
-    int k = this.jdField_a_of_type_JavaUtilArrayList.size();
-    localObject2 = ((List)localObject2).iterator();
-    List localList;
-    Object localObject3;
-    for (;;)
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      if (((Iterator)localObject2).hasNext())
-      {
-        localTroopInfo = (TroopInfo)((Iterator)localObject2).next();
-        localList = this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopSearchLogic.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(localTroopInfo.troopuin);
-        if ((localList != null) && (localList.size() > 0) && (a(localList.size(), this.jdField_a_of_type_JavaUtilArrayList.size())) && (this.jdField_a_of_type_JavaUtilArrayList.size() == localList.size()))
-        {
-          localObject3 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-          i = 1;
-          label253:
-          if (((Iterator)localObject3).hasNext())
-          {
-            ResultRecord localResultRecord = (ResultRecord)((Iterator)localObject3).next();
-            Iterator localIterator = localList.iterator();
-            TroopMemberInfo localTroopMemberInfo;
-            do
-            {
-              if (!localIterator.hasNext()) {
-                break;
-              }
-              localTroopMemberInfo = (TroopMemberInfo)localIterator.next();
-            } while (!TextUtils.equals(localResultRecord.jdField_a_of_type_JavaLangString, localTroopMemberInfo.memberuin));
-          }
-        }
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Bbpe != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbpe.a());
       }
+      return localJSONObject.toString().getBytes();
     }
-    for (int j = 1;; j = 0)
+    catch (JSONException localJSONException)
     {
-      if (j == 0) {
-        i = 0;
-      }
       for (;;)
       {
-        break label253;
-        if (i == 0) {
-          break label451;
-        }
-        localObject3 = new TroopSearchLogic.SearchResult();
-        ((TroopSearchLogic.SearchResult)localObject3).jdField_a_of_type_ComTencentMobileqqDataTroopInfo = localTroopInfo;
-        ((TroopSearchLogic.SearchResult)localObject3).jdField_a_of_type_Int = localList.size();
-        ((TroopSearchLogic.SearchResult)localObject3).jdField_a_of_type_JavaLangString = ChnToSpell.a(localTroopInfo.getTroopName(), 1).jdField_a_of_type_JavaLangString;
-        localTroopInfo.lastMsgTime = this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopSearchLogic.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(localTroopInfo.troopuin, 1).lastmsgtime;
-        if (k != ((TroopSearchLogic.SearchResult)localObject3).jdField_a_of_type_Int) {
-          break;
-        }
-        ((TroopSearchLogic.SearchResult)localObject3).b = 1;
-        ((ArrayList)localObject1).add(localObject3);
-        break;
-        Collections.sort((List)localObject1);
-        a((ArrayList)localObject1);
-        return;
+        localJSONException.printStackTrace();
       }
-      label451:
-      break;
     }
   }
 }

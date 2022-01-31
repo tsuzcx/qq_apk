@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.qzoneplayer.video.OperationContainer android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/hnq" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_centerInParent="true">
+        <ImageView android:id="@id/hoh" android:layout_width="60.0dip" android:layout_height="60.0dip" android:scaleType="centerCrop" />
+        <TextView android:textSize="9.0sp" android:textColor="#ffffffff" android:id="@id/hns" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.5dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</com.tencent.mobileqq.qzoneplayer.video.OperationContainer>

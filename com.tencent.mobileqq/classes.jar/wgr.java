@@ -1,21 +1,30 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 
 public class wgr
-  implements View.OnTouchListener
+  implements Animation.AnimationListener
 {
-  public wgr(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  public wgr(QQStoryBaseActivity paramQQStoryBaseActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return (paramMotionEvent.getAction() == 2) && ((this.a.a == null) || (this.a.a.getCount() == 0));
+    if (this.a.c != null)
+    {
+      this.a.c.clearAnimation();
+      ((ViewGroup)((ViewGroup)this.a.findViewById(16908290)).getChildAt(0)).removeView(this.a.c);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wgr
  * JD-Core Version:    0.7.0.1
  */

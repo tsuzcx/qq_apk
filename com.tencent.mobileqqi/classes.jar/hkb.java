@@ -1,47 +1,22 @@
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.ClearableEditText.OnTextClearedListener;
+import android.view.View.OnLongClickListener;
+import com.tencent.open.appcenter.QZoneAppCenterActivity;
+import com.tencent.open.base.LogUtility;
 
 public class hkb
-  implements View.OnTouchListener
+  implements View.OnLongClickListener
 {
-  public hkb(ClearableEditText paramClearableEditText) {}
+  public hkb(QZoneAppCenterActivity paramQZoneAppCenterActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean onLongClick(View paramView)
   {
-    int i = 1;
-    if (this.a.getCompoundDrawables()[2] == null) {}
-    label107:
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {}
-        for (;;)
-        {
-          if (i == 0) {
-            break label107;
-          }
-          this.a.setText("");
-          this.a.setClearButtonVisible(false);
-          if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$OnTextClearedListener == null) {
-            break;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$OnTextClearedListener.a();
-          return false;
-          i = 0;
-        }
-      }
-    }
+    LogUtility.c(QZoneAppCenterActivity.c, "webView onLongClick");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hkb
  * JD-Core Version:    0.7.0.1
  */

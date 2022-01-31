@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RadioButton android:textSize="10.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080d71" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207bd" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080cfc" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01b4" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01b5" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201b0" android:layout_alignParentLeft="true" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080cfe" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02079a" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f080cfe" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f080cfc" android:layout_centerVertical="true">
+        <TableLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:shrinkColumns="0">
+            <TableRow>
+                <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00b4" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080cff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+                <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00b9" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080d00" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+    <com.qzone.widget.CommonLine android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01ad" android:layout_alignParentBottom="true" />
+</RelativeLayout>

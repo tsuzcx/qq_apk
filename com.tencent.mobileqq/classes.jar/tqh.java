@@ -1,25 +1,32 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StUser;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
 
-public class tqh
-  extends MqqHandler
+final class tqh
+  implements zac<FeedCloudRead.StGetMainPageRsp>
 {
-  public tqh(RegisterSendUpSms paramRegisterSendUpSms) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    switch (paramMessage.what)
+    if ((paramBoolean) && (paramLong == 0L))
     {
-    default: 
-      return;
+      if (paramStGetMainPageRsp == null) {
+        break label54;
+      }
+      tqg.a((FeedCloudMeta.StUser)paramStGetMainPageRsp.user.get());
+      if (TextUtils.isEmpty(tqg.c().nick.get())) {
+        QLog.w("QCircleGlobalInfo", 1, "qCircle get nick empty");
+      }
     }
-    this.a.finish();
+    return;
+    label54:
+    QLog.w("QCircleGlobalInfo", 1, "getPuinUser empty");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tqh
  * JD-Core Version:    0.7.0.1
  */

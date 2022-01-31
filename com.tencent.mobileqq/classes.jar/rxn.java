@@ -1,21 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.support.v7.widget.RecyclerView.RecycledViewPool;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
+import java.util.List;
 
-class rxn
-  implements DialogInterface.OnClickListener
+public class rxn
+  extends RecyclerView.RecycledViewPool
 {
-  rxn(rxm paramrxm) {}
+  public rxn(RecyclerViewWithHeaderFooterFix paramRecyclerViewWithHeaderFooterFix) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public RecyclerView.ViewHolder getRecycledView(int paramInt)
   {
-    paramDialogInterface.dismiss();
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString, true, true, this.a.jdField_a_of_type_JavaUtilMap);
+    Object localObject = this.a.getAdapter();
+    RecyclerView.ViewHolder localViewHolder = super.getRecycledView(paramInt);
+    if ((localViewHolder != null) && ((localObject instanceof bifb)))
+    {
+      localObject = (bifb)localObject;
+      if (((bifb)localObject).d(paramInt))
+      {
+        if (!RecyclerViewWithHeaderFooterFix.a(this.a).contains(localViewHolder.itemView))
+        {
+          putRecycledView(localViewHolder);
+          return null;
+        }
+      }
+      else if ((((bifb)localObject).c(paramInt)) && (!RecyclerViewWithHeaderFooterFix.b(this.a).contains(localViewHolder.itemView)))
+      {
+        putRecycledView(localViewHolder);
+        return null;
+      }
+    }
+    return localViewHolder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rxn
  * JD-Core Version:    0.7.0.1
  */

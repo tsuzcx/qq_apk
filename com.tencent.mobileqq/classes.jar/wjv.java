@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.activity.contact.newfriend.QIMNotifyAddFriendBuilder;
-import com.tencent.mobileqq.app.QIMNewFriendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.newfriend.QIMNotifyAddFriendMsg;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
 
 public class wjv
-  implements Runnable
+  extends xwf
 {
-  public wjv(QIMNotifyAddFriendBuilder paramQIMNotifyAddFriendBuilder) {}
+  public wjv(StoryDetailFragment paramStoryDetailFragment) {}
   
-  public void run()
+  public boolean a(boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQIMNewFriendManager.b(((QIMNotifyAddFriendMsg)this.a.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage).a);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new wjw(this));
+    this.a.d();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wjv
  * JD-Core Version:    0.7.0.1
  */

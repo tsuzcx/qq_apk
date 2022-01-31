@@ -7,14 +7,14 @@ public class OCRTextSearchInfo$SougouSearchInfo
   implements Serializable
 {
   public String abstractStr = "";
-  public List abstractStrKeyWords;
+  public List<String> abstractStrKeyWords;
   public String jumpURL = "";
   public String keyWord = "";
   public String sourceFrom = "";
   public String stype = "";
   public String summaryPic = "";
   public String title = "";
-  public List titleKeyWords;
+  public List<String> titleKeyWords;
   
   public String toString()
   {
@@ -30,7 +30,7 @@ public class OCRTextSearchInfo$SougouSearchInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRTextSearchInfo.SougouSearchInfo
  * JD-Core Version:    0.7.0.1
  */

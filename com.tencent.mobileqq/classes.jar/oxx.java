@@ -1,18 +1,12 @@
-import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
-
-class oxx
-  implements Runnable
+public abstract interface oxx
 {
-  oxx(oxw paramoxw) {}
+  public abstract void l();
   
-  public void run()
-  {
-    TroopNewGuidePopWindow.a(this.a.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow, this.a.jdField_a_of_type_OrgJsonJSONObject, this.a.jdField_a_of_type_Int);
-  }
+  public abstract void m();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oxx
  * JD-Core Version:    0.7.0.1
  */

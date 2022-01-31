@@ -1,36 +1,37 @@
-import android.view.ViewGroup;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistory;
+import mqq.os.MqqHandler;
 
 public class acmg
-  implements Runnable
+  extends alwx
 {
-  public acmg(FilePreviewActivity paramFilePreviewActivity) {}
+  public acmg(ChatHistory paramChatHistory) {}
   
-  public void run()
+  protected void b(boolean paramBoolean)
   {
-    if (!this.a.d) {
+    this.a.r();
+    if (!paramBoolean)
+    {
+      Message localMessage = this.a.a.obtainMessage(5);
+      this.a.a(localMessage);
+    }
+  }
+  
+  protected void c(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      localMessage = this.a.a.obtainMessage(3);
+      this.a.a(localMessage);
       return;
     }
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0 - this.a.jdField_a_of_type_AndroidViewViewGroup.getHeight(), 0.0F);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue == null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue = new FilePreviewAnimQueue(this.a.jdField_a_of_type_AndroidViewViewGroup);
-    }
-    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
-    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localTranslateAnimation;
-    localFilePreviewAnim.jdField_a_of_type_Boolean = true;
-    localFilePreviewAnim.jdField_a_of_type_Int = FilePreviewAnimQueue.b;
-    localFilePreviewAnim.b = 250;
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a(localFilePreviewAnim);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a();
-    this.a.d = false;
+    Message localMessage = this.a.a.obtainMessage(2);
+    this.a.a(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acmg
  * JD-Core Version:    0.7.0.1
  */

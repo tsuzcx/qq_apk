@@ -1,29 +1,42 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
+import com.tencent.qphone.base.util.QLog;
 
-class mcn
-  extends FriendListObserver
+public class mcn
+  extends MagicFaceDataEntity
 {
-  mcn(mck parammck, QQAppInterface paramQQAppInterface) {}
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public mcn(VideoAppInterface paramVideoAppInterface, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt)
   {
-    if (paramBoolean)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("VALUE_USER_UIN_TO_GET_NICK_NAME", paramString);
-      localBundle.putString("VALUE_USER_NICK_NAME", ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, true));
-      QIPCServerHelper.getInstance().callClient(VideoFeedsAppInterface.a, "Module_VideoFeedsIPCServer", "CMD_GET_NICK_NAME_BY_UIN", localBundle, null);
+    super(paramVideoAppInterface, paramString1, paramString2, paramString3, paramBoolean, paramInt);
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte, short paramShort1, short paramShort2, short paramShort3, short paramShort4, boolean paramBoolean)
+  {
+    super.a(paramString, paramArrayOfByte, paramShort1, paramShort2, paramShort3, paramShort4, paramBoolean);
+    if (paramBoolean) {
+      QLog.d("SwitchFaceMagicFaceDataEntity", 2, "WL_DEBUG onReceivePeerFaceFeature uin = " + paramString + ", width = " + paramShort1 + ", height = " + paramShort2 + ", frameWidth = " + paramShort3 + ", frameHeight = " + paramShort4);
     }
+  }
+  
+  public void c()
+  {
+    super.c();
+    c(0);
+    c(1);
+    a(true);
+    a(null);
+  }
+  
+  public void d()
+  {
+    super.d();
+    b(0);
+    b(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mcn
  * JD-Core Version:    0.7.0.1
  */

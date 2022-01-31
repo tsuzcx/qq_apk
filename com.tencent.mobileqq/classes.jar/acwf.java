@@ -1,31 +1,40 @@
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-class acwf
-  implements Runnable
+public abstract class acwf
+  extends ClickableSpan
 {
-  acwf(acwe paramacwe) {}
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public void run()
+  public acwf(EditInfoActivity paramEditInfoActivity, int paramInt1, int paramInt2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileVideoManager<FileAssistant>.FVBlock", 1, "[" + this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] chang thread[" + this.a.a.d + "]");
-    }
-    if (this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr != null)
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.b;; i = this.jdField_a_of_type_Int)
     {
-      this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.stopPreLoad(this.a.a.d);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FileVideoManager<FileAssistant>.FVBlock", 1, "[" + this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] block is full stop downloadId[" + this.a.a.d + "]");
-      }
-      this.a.a.d = -1;
+      paramTextPaint.setColor(i);
+      paramTextPaint.setUnderlineText(false);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acwf
  * JD-Core Version:    0.7.0.1
  */

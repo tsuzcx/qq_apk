@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="13.0sp" android:textColor="@android:color/white" android:ellipsize="end" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06fb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_marginTop="32.0dip" android:layout_marginRight="12.0dip" android:text="- 1万人正在参与 -" android:lines="1" />
-    <com.tencent.biz.widgets.KandianTextView android:textSize="22.0sp" android:textStyle="bold" android:textColor="@android:color/white" android:ellipsize="end" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a148f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="11.0dip" android:layout_marginBottom="11.0dip" android:maxLines="1" android:includeFontPadding="false" />
-</merge>

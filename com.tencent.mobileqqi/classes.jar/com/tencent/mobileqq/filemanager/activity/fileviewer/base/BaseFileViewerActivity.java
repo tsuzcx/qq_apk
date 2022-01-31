@@ -32,16 +32,16 @@ public abstract class BaseFileViewerActivity
   
   private void a(int paramInt)
   {
-    super.f(2130903507);
-    ((RelativeLayout)findViewById(2131232758)).addView(((LayoutInflater)getSystemService("layout_inflater")).inflate(paramInt, null));
+    super.f(2130903509);
+    ((RelativeLayout)findViewById(2131232761)).addView(((LayoutInflater)getSystemService("layout_inflater")).inflate(paramInt, null));
     b(getIntent());
   }
   
-  protected abstract int a();
+  public abstract int a();
   
-  protected abstract IFileViewerController a();
+  public abstract IFileViewerController a();
   
-  protected abstract String a(Object paramObject);
+  public abstract String a(Object paramObject);
   
   public abstract List a();
   
@@ -83,7 +83,7 @@ public abstract class BaseFileViewerActivity
     return getString(2131558721);
   }
   
-  protected abstract boolean c();
+  public abstract boolean c();
   
   public void d()
   {
@@ -103,7 +103,7 @@ public abstract class BaseFileViewerActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    a(2130903512);
+    a(2130903514);
     x();
     if (!c())
     {
@@ -123,9 +123,9 @@ public abstract class BaseFileViewerActivity
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileviewerBaseFileViewerImageAdapter = new FileViewerImageAdapter(this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileviewerBaseFileViewerImageAdapter.a(this.jdField_a_of_type_JavaUtilList);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileviewerBaseFileViewerController = new FileViewerController(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileviewerBaseIFileViewerController);
-    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131231775));
+    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131231777));
     this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileviewerBaseFileViewerImageAdapter);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131427408));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131427411));
     this.jdField_a_of_type_ComTencentWidgetGallery.setSelection(this.jdField_a_of_type_Int);
     f();
     return true;

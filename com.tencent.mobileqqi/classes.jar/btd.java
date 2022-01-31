@@ -1,19 +1,46 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.biz.qrcode.activity.ScannerActivity.QQDialogCancelListener;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class btd
-  extends ScannerActivity.QQDialogCancelListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public btd(ScannerActivity paramScannerActivity) {}
+  int jdField_a_of_type_Int = -1;
   
-  public void a()
+  public btd(AccountManageActivity paramAccountManageActivity) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.d();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    }
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
+      } while (this.jdField_a_of_type_Int < 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, false);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
+    } while (this.jdField_a_of_type_Int < 0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, true);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     btd
  * JD-Core Version:    0.7.0.1
  */

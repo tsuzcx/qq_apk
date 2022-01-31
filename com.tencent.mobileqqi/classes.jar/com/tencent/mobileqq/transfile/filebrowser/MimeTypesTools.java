@@ -48,7 +48,7 @@ public class MimeTypesTools
     if ((paramString != null) && (paramString.size() > 0)) {
       return ((ResolveInfo)paramString.get(0)).loadIcon(localPackageManager);
     }
-    return paramContext.getResources().getDrawable(2130840358);
+    return paramContext.getResources().getDrawable(2130840360);
   }
   
   private static MimeTypes a(Context paramContext)
@@ -72,7 +72,7 @@ public class MimeTypesTools
     if (!jdField_a_of_type_Boolean)
     {
       localMimeTypeParser = new MimeTypeParser();
-      paramContext = paramContext.getResources().getXml(2131099649);
+      paramContext = paramContext.getResources().getXml(2131099650);
     }
     try
     {

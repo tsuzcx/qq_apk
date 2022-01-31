@@ -1,44 +1,12 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.QfavHelper;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.ark.ArkViewModel;
 
-class ampb
-  extends OnPluginInstallListener.Stub
+public abstract interface ampb
 {
-  ampb(ampa paramampa) {}
+  public abstract void a();
   
-  public void onInstallBegin(String paramString) {}
+  public abstract void a(String paramString, int paramInt, boolean paramBoolean, ArkViewModel paramArkViewModel);
   
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 2, "install plugin " + paramString + " error! " + paramInt);
-    }
-    try
-    {
-      ThreadManager.post(this.a.a, 5, null, false);
-      return;
-    }
-    catch (Exception paramString) {}
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 2, "install plugin " + paramString + " OK.");
-    }
-    QfavHelper.a().set(true);
-    try
-    {
-      ThreadManager.post(this.a.a, 5, null, false);
-      return;
-    }
-    catch (Exception paramString) {}
-  }
+  public abstract void b();
 }
 
 

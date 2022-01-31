@@ -1,40 +1,36 @@
-import com.tencent.ark.ark;
-import com.tencent.ark.ark.Container;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
 
 public class aapl
-  implements Runnable
+  implements aaqi
 {
-  public aapl(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong, String paramString) {}
+  public aapl(GdtMotiveVideoFragment paramGdtMotiveVideoFragment) {}
   
-  public void run()
+  public Activity a()
   {
-    Object localObject = ark.arkGetContainer(this.jdField_a_of_type_Long);
-    if (localObject == null) {}
-    ArkFullScreenAppActivity localArkFullScreenAppActivity;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (!(BaseActivity.sTopActivity instanceof ArkFullScreenAppActivity));
-        localArkFullScreenAppActivity = (ArkFullScreenAppActivity)BaseActivity.sTopActivity;
-        localObject = ArkAppContainer.a((ark.Container)localObject);
-      } while (localObject == null);
-      localObject = (ArkAppContainer)((WeakReference)localObject).get();
-    } while (localObject == null);
-    localArkFullScreenAppActivity.a((ArkAppContainer)localObject, this.jdField_a_of_type_JavaLangString);
+    return this.a.getActivity();
+  }
+  
+  public void a()
+  {
+    Activity localActivity = a();
+    if (localActivity != null) {
+      localActivity.finish();
+    }
+  }
+  
+  public void a(int paramInt, Intent paramIntent)
+  {
+    Activity localActivity = a();
+    if (localActivity != null) {
+      localActivity.setResult(paramInt, paramIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aapl
  * JD-Core Version:    0.7.0.1
  */

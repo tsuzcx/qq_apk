@@ -1,192 +1,536 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.CmShowRscUpdateHandler.1;
+import com.tencent.mobileqq.apollo.CmShowRscUpdateHandler.2;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.open.base.BspatchUtil;
+import com.tencent.pb.clubcontent.CmShowContentUpdate.STContInfo;
+import com.tencent.pb.clubcontent.CmShowContentUpdate.STContUpdReq;
+import com.tencent.pb.clubcontent.CmShowContentUpdate.STContUpdRsp;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReq;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReqComm;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerRsp;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 public class akqf
-  implements Runnable
+  implements BusinessObserver
 {
-  public akqf(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler) {}
+  private static int jdField_a_of_type_Int = 180;
+  private static akqf jdField_a_of_type_Akqf;
+  private final SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("cmshow_rsc_update_sp", 4);
+  private final SparseArray<WeakReference<akqj>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private List<akqi> jdField_a_of_type_JavaUtilList;
   
-  /* Error */
-  public void run()
+  private akqf()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 12	akqf:a	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
-    //   4: getfield 24	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   7: astore_1
-    //   8: aload_1
-    //   9: monitorenter
-    //   10: aload_0
-    //   11: getfield 12	akqf:a	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
-    //   14: getfield 27	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangBoolean	Ljava/lang/Boolean;
-    //   17: invokevirtual 33	java/lang/Boolean:booleanValue	()Z
-    //   20: ifne +13 -> 33
-    //   23: aload_0
-    //   24: getfield 12	akqf:a	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
-    //   27: getfield 24	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   30: invokevirtual 36	java/lang/Object:wait	()V
-    //   33: new 38	android/os/Bundle
-    //   36: dup
-    //   37: invokespecial 39	android/os/Bundle:<init>	()V
-    //   40: astore_2
-    //   41: aload_2
-    //   42: getstatic 44	com/tencent/open/downloadnew/DownloadConstants:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   45: ldc 46
-    //   47: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   50: aload_2
-    //   51: getstatic 53	com/tencent/open/downloadnew/DownloadConstants:i	Ljava/lang/String;
-    //   54: aload_0
-    //   55: getfield 12	akqf:a	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
-    //   58: getfield 54	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   61: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   64: aload_2
-    //   65: getstatic 57	com/tencent/open/downloadnew/DownloadConstants:j	Ljava/lang/String;
-    //   68: iconst_2
-    //   69: invokevirtual 61	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   72: aload_2
-    //   73: getstatic 64	com/tencent/open/downloadnew/DownloadConstants:k	Ljava/lang/String;
-    //   76: ldc 66
-    //   78: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   81: aload_2
-    //   82: getstatic 69	com/tencent/open/downloadnew/DownloadConstants:q	Ljava/lang/String;
-    //   85: iconst_0
-    //   86: invokevirtual 73	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   89: aload_2
-    //   90: getstatic 76	com/tencent/open/downloadnew/DownloadConstants:w	Ljava/lang/String;
-    //   93: iconst_0
-    //   94: invokevirtual 73	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   97: aload_2
-    //   98: getstatic 79	com/tencent/open/downloadnew/DownloadConstants:e	Ljava/lang/String;
-    //   101: ldc 81
-    //   103: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   106: aload_0
-    //   107: getfield 12	akqf:a	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
-    //   110: getfield 84	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity	Lcom/tencent/mobileqq/activity/QQBrowserActivity;
-    //   113: aload_2
-    //   114: iconst_0
-    //   115: aconst_null
-    //   116: iconst_0
-    //   117: invokestatic 89	com/tencent/open/downloadnew/DownloadApi:a	(Landroid/app/Activity;Landroid/os/Bundle;ILcom/tencent/apkupdate/logic/data/ApkUpdateDetail;I)V
-    //   120: aload_1
-    //   121: monitorexit
-    //   122: return
-    //   123: astore_2
-    //   124: new 38	android/os/Bundle
-    //   127: dup
-    //   128: invokespecial 39	android/os/Bundle:<init>	()V
-    //   131: astore_2
-    //   132: aload_2
-    //   133: getstatic 44	com/tencent/open/downloadnew/DownloadConstants:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   136: ldc 46
-    //   138: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   141: aload_2
-    //   142: getstatic 53	com/tencent/open/downloadnew/DownloadConstants:i	Ljava/lang/String;
-    //   145: aload_0
-    //   146: getfield 12	akqf:a	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
-    //   149: getfield 54	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   152: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   155: aload_2
-    //   156: getstatic 57	com/tencent/open/downloadnew/DownloadConstants:j	Ljava/lang/String;
-    //   159: iconst_2
-    //   160: invokevirtual 61	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   163: aload_2
-    //   164: getstatic 64	com/tencent/open/downloadnew/DownloadConstants:k	Ljava/lang/String;
-    //   167: ldc 66
-    //   169: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   172: aload_2
-    //   173: getstatic 69	com/tencent/open/downloadnew/DownloadConstants:q	Ljava/lang/String;
-    //   176: iconst_0
-    //   177: invokevirtual 73	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   180: aload_2
-    //   181: getstatic 76	com/tencent/open/downloadnew/DownloadConstants:w	Ljava/lang/String;
-    //   184: iconst_0
-    //   185: invokevirtual 73	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   188: aload_2
-    //   189: getstatic 79	com/tencent/open/downloadnew/DownloadConstants:e	Ljava/lang/String;
-    //   192: ldc 81
-    //   194: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   197: aload_0
-    //   198: getfield 12	akqf:a	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
-    //   201: getfield 84	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity	Lcom/tencent/mobileqq/activity/QQBrowserActivity;
-    //   204: aload_2
-    //   205: iconst_0
-    //   206: aconst_null
-    //   207: iconst_0
-    //   208: invokestatic 89	com/tencent/open/downloadnew/DownloadApi:a	(Landroid/app/Activity;Landroid/os/Bundle;ILcom/tencent/apkupdate/logic/data/ApkUpdateDetail;I)V
-    //   211: goto -91 -> 120
-    //   214: astore_2
-    //   215: aload_1
-    //   216: monitorexit
-    //   217: aload_2
-    //   218: athrow
-    //   219: astore_2
-    //   220: new 38	android/os/Bundle
-    //   223: dup
-    //   224: invokespecial 39	android/os/Bundle:<init>	()V
-    //   227: astore_3
-    //   228: aload_3
-    //   229: getstatic 44	com/tencent/open/downloadnew/DownloadConstants:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   232: ldc 46
-    //   234: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   237: aload_3
-    //   238: getstatic 53	com/tencent/open/downloadnew/DownloadConstants:i	Ljava/lang/String;
-    //   241: aload_0
-    //   242: getfield 12	akqf:a	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
-    //   245: getfield 54	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   248: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   251: aload_3
-    //   252: getstatic 57	com/tencent/open/downloadnew/DownloadConstants:j	Ljava/lang/String;
-    //   255: iconst_2
-    //   256: invokevirtual 61	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   259: aload_3
-    //   260: getstatic 64	com/tencent/open/downloadnew/DownloadConstants:k	Ljava/lang/String;
-    //   263: ldc 66
-    //   265: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   268: aload_3
-    //   269: getstatic 69	com/tencent/open/downloadnew/DownloadConstants:q	Ljava/lang/String;
-    //   272: iconst_0
-    //   273: invokevirtual 73	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   276: aload_3
-    //   277: getstatic 76	com/tencent/open/downloadnew/DownloadConstants:w	Ljava/lang/String;
-    //   280: iconst_0
-    //   281: invokevirtual 73	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   284: aload_3
-    //   285: getstatic 79	com/tencent/open/downloadnew/DownloadConstants:e	Ljava/lang/String;
-    //   288: ldc 81
-    //   290: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   293: aload_0
-    //   294: getfield 12	akqf:a	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
-    //   297: getfield 84	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity	Lcom/tencent/mobileqq/activity/QQBrowserActivity;
-    //   300: aload_3
-    //   301: iconst_0
-    //   302: aconst_null
-    //   303: iconst_0
-    //   304: invokestatic 89	com/tencent/open/downloadnew/DownloadApi:a	(Landroid/app/Activity;Landroid/os/Bundle;ILcom/tencent/apkupdate/logic/data/ApkUpdateDetail;I)V
-    //   307: aload_2
-    //   308: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	309	0	this	akqf
-    //   7	209	1	localObject1	Object
-    //   40	74	2	localBundle1	android.os.Bundle
-    //   123	1	2	localInterruptedException	java.lang.InterruptedException
-    //   131	74	2	localBundle2	android.os.Bundle
-    //   214	4	2	localObject2	Object
-    //   219	89	2	localObject3	Object
-    //   227	74	3	localBundle3	android.os.Bundle
-    // Exception table:
-    //   from	to	target	type
-    //   10	33	123	java/lang/InterruptedException
-    //   33	120	214	finally
-    //   120	122	214	finally
-    //   124	211	214	finally
-    //   215	217	214	finally
-    //   220	309	214	finally
-    //   10	33	219	finally
+    int i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("json_content_update_interval", 0);
+    if (i >= 10) {
+      jdField_a_of_type_Int = i;
+    }
+    QLog.i("rscContent_CmShowRscUpdateHandler", 1, "RscContentUpdateHandler sJsonContentUpdateInterval:" + jdField_a_of_type_Int);
+  }
+  
+  public static akqf a()
+  {
+    try
+    {
+      if (jdField_a_of_type_Akqf == null) {
+        jdField_a_of_type_Akqf = new akqf();
+      }
+      akqf localakqf = jdField_a_of_type_Akqf;
+      return localakqf;
+    }
+    finally {}
+  }
+  
+  private void a(int paramInt)
+  {
+    WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if ((localWeakReference != null) && (localWeakReference.get() != null))
+    {
+      ((akqj)localWeakReference.get()).a(false, null);
+      this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+    }
+    QLog.i("rscContent_CmShowRscUpdateHandler", 1, "onContentCheckFailed requestId:" + paramInt);
+  }
+  
+  private void a(int paramInt, akqi paramakqi)
+  {
+    if (paramakqi == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("rscContent_CmShowRscUpdateHandler", 2, "onContentCheckSuccess result" + paramakqi);
+    }
+    if ((paramakqi.jdField_a_of_type_Int == 100) && (paramakqi.jdField_a_of_type_Long == 1L))
+    {
+      if (1 == BaseApplicationImpl.sProcessId) {
+        break label293;
+      }
+      if ("all_room3D".equals(paramakqi.jdField_a_of_type_JavaLangString)) {
+        akqa.a().a();
+      }
+    }
+    else
+    {
+      label79:
+      a(paramakqi, paramakqi.jdField_b_of_type_Int);
+      if (paramakqi.jdField_b_of_type_Boolean)
+      {
+        if (paramakqi.jdField_d_of_type_Int <= 0) {
+          break label417;
+        }
+        if (jdField_a_of_type_Int == paramakqi.jdField_d_of_type_Int) {
+          break label380;
+        }
+        jdField_a_of_type_Int = paramakqi.jdField_d_of_type_Int;
+        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("json_content_update_interval", paramakqi.jdField_d_of_type_Int).commit();
+        QLog.i("rscContent_CmShowRscUpdateHandler", 1, "onContentCheckSuccess interval != result.mCheckServerInterval:" + paramakqi.jdField_d_of_type_Int);
+      }
+    }
+    label417:
+    for (;;)
+    {
+      for (;;)
+      {
+        if (this.jdField_a_of_type_JavaUtilList != null)
+        {
+          this.jdField_a_of_type_JavaUtilList.remove(paramakqi);
+          if (this.jdField_a_of_type_JavaUtilList.isEmpty())
+          {
+            this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("last_json_content_update_ts", System.currentTimeMillis()).commit();
+            QLog.i("rscContent_CmShowRscUpdateHandler", 1, "onContentCheckSuccess save lastCheckContentUpdateTS");
+          }
+        }
+        Object localObject = (WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+        if ((localObject == null) || (((WeakReference)localObject).get() == null)) {
+          break;
+        }
+        ((akqj)((WeakReference)localObject).get()).a(true, paramakqi);
+        this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+        return;
+        QLog.i("rscContent_CmShowRscUpdateHandler", 1, "check update from QQ process");
+        break label79;
+        label293:
+        if (!akwd.a(BaseApplicationImpl.getContext())) {
+          break label79;
+        }
+        localObject = new Intent();
+        ((Intent)localObject).setAction("com.tencent.mobileqq.webprocess.launch_cmgame");
+        ((Intent)localObject).putExtra("action_apollo_cmshow_content_update", true);
+        ((Intent)localObject).putExtra("key_content_update_zip_name", "all_room3D");
+        ((Intent)localObject).setPackage(BaseApplicationImpl.getContext().getPackageName());
+        try
+        {
+          QLog.i("rscContent_CmShowRscUpdateHandler", 1, "send sendBroadcast contentUpdate");
+          BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
+        }
+        catch (Throwable localThrowable)
+        {
+          QLog.e("rscContent_CmShowRscUpdateHandler", 1, localThrowable, new Object[0]);
+        }
+      }
+      break label79;
+      label380:
+      if (QLog.isColorLevel())
+      {
+        QLog.d("rscContent_CmShowRscUpdateHandler", 2, "onContentCheckSuccess interval == result.mCheckServerInterval:" + paramakqi.jdField_d_of_type_Int);
+        continue;
+        QLog.i("rscContent_CmShowRscUpdateHandler", 1, "onContentCheckSuccess result.mCheckServerInterval <= 0" + paramakqi.jdField_d_of_type_Int);
+      }
+    }
+  }
+  
+  private void a(int paramInt, CmShowContentUpdate.STContUpdRsp paramSTContUpdRsp, boolean paramBoolean)
+  {
+    if (paramSTContUpdRsp != null) {
+      ThreadManager.post(new CmShowRscUpdateHandler.2(this, paramSTContUpdRsp, paramBoolean, paramInt), 5, null, false);
+    }
+  }
+  
+  private void a(int paramInt, List<akqi> paramList)
+  {
+    if (paramList != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("rscContent_CmShowRscUpdateHandler", 2, "updateResource checkResults:" + paramList.size());
+      }
+      if (paramList.isEmpty()) {}
+      for (;;)
+      {
+        return;
+        Object localObject = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (localObject != null)
+        {
+          localObject = (beag)((AppInterface)localObject).getManager(47);
+          if ((localObject != null) && (((beag)localObject).a(3) != null))
+          {
+            paramList = paramList.iterator();
+            while (paramList.hasNext())
+            {
+              akqi localakqi = (akqi)paramList.next();
+              if (localakqi != null)
+              {
+                localObject = new File(localakqi.c());
+                ((File)localObject).getParentFile().mkdirs();
+                if (((File)localObject).exists()) {
+                  ((File)localObject).delete();
+                }
+                String str1 = localakqi.e();
+                if ((localakqi.jdField_a_of_type_Boolean) && (!new File(str1).exists()))
+                {
+                  localakqi.jdField_a_of_type_Boolean = false;
+                  QLog.e("rscContent_CmShowRscUpdateHandler", 1, "updateResource old version File no exist :" + str1);
+                }
+                if (localakqi.jdField_a_of_type_Boolean)
+                {
+                  if (localakqi.jdField_a_of_type_ArrayOfByte != null)
+                  {
+                    String str2 = localakqi.d();
+                    if (bdhb.a(localakqi.jdField_a_of_type_ArrayOfByte, str2))
+                    {
+                      if (BspatchUtil.a(str1, str2, ((File)localObject).getAbsolutePath()))
+                      {
+                        QLog.d("rscContent_CmShowRscUpdateHandler", 2, "BspatchUtil.patch success path:" + ((File)localObject).getAbsolutePath());
+                        try
+                        {
+                          str1 = bflr.a(((File)localObject).getAbsolutePath());
+                          if (QLog.isColorLevel()) {
+                            QLog.d("rscContent_CmShowRscUpdateHandler", 2, " updateResource onDone dstMd5:" + str1 + " result.mMd5:" + localakqi.jdField_d_of_type_JavaLangString);
+                          }
+                          if (!b(localakqi, str1)) {
+                            break label640;
+                          }
+                          if (b(localakqi))
+                          {
+                            ndr.a((File)localObject, ((File)localObject).getParent() + File.separator);
+                            if (QLog.isColorLevel()) {
+                              QLog.d("rscContent_CmShowRscUpdateHandler", 2, "updateResource unZipFile ok file dstpath:" + ((File)localObject).getAbsolutePath());
+                            }
+                            a(localakqi.jdField_e_of_type_Int, localakqi);
+                          }
+                        }
+                        catch (Exception localException)
+                        {
+                          for (;;)
+                          {
+                            ((File)localObject).delete();
+                            if (QLog.isColorLevel()) {
+                              QLog.d("rscContent_CmShowRscUpdateHandler", 2, "updateResource unZipFile file error path->" + ((File)localObject).getAbsolutePath() + localException.getMessage());
+                            }
+                            a(paramInt);
+                            break;
+                            boolean bool = bdhb.d(((File)localObject).getAbsolutePath(), localException.b() + localException.jdField_e_of_type_JavaLangString);
+                            QLog.i("rscContent_CmShowRscUpdateHandler", 1, "downloadAllZip no need unzip copy:" + bool);
+                          }
+                        }
+                        catch (OutOfMemoryError localOutOfMemoryError)
+                        {
+                          ((File)localObject).delete();
+                        }
+                        if (QLog.isColorLevel())
+                        {
+                          QLog.d("rscContent_CmShowRscUpdateHandler", 2, "updateResource unZipFile file error path->" + ((File)localObject).getAbsolutePath() + localOutOfMemoryError.getMessage());
+                          continue;
+                          label640:
+                          QLog.e("rscContent_CmShowRscUpdateHandler", 1, "dstMd5 != result.mMd5");
+                          b(localOutOfMemoryError);
+                        }
+                      }
+                      else
+                      {
+                        QLog.e("rscContent_CmShowRscUpdateHandler", 1, "BspatchUtil.patch failed path:" + ((File)localObject).getAbsolutePath());
+                        b(localOutOfMemoryError);
+                      }
+                    }
+                    else {
+                      b(localOutOfMemoryError);
+                    }
+                  }
+                  else
+                  {
+                    a(localOutOfMemoryError);
+                  }
+                }
+                else {
+                  b(localOutOfMemoryError);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    a(paramInt, null);
+  }
+  
+  private void a(akqi paramakqi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch result:" + paramakqi);
+    }
+    if (paramakqi == null) {}
+    Object localObject;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          localObject = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        } while (localObject == null);
+        localObject = (beag)((AppInterface)localObject).getManager(47);
+      } while (localObject == null);
+      localObject = ((beag)localObject).a(3);
+    } while (localObject == null);
+    if (TextUtils.isEmpty(paramakqi.c))
+    {
+      QLog.e("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch result.mDownloadPatchFileUrl is empty result:" + paramakqi);
+      return;
+    }
+    File localFile = new File(paramakqi.d());
+    localFile.getParentFile().mkdirs();
+    if (localFile.exists()) {
+      localFile.delete();
+    }
+    beae localbeae = new beae(paramakqi.c, localFile);
+    localbeae.p = true;
+    localbeae.n = true;
+    localbeae.f = "apollo_res";
+    localbeae.jdField_b_of_type_Int = 1;
+    localbeae.q = true;
+    localbeae.r = true;
+    localbeae.jdField_a_of_type_JavaLangString = (paramakqi.jdField_b_of_type_JavaLangString + "_" + paramakqi.jdField_a_of_type_JavaLangString);
+    ((beaj)localObject).a(localbeae, new akqg(this, localFile, paramakqi), null);
+  }
+  
+  private void b(akqi paramakqi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip result:" + paramakqi);
+    }
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (paramakqi == null)) {}
+    Object localObject;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          localObject = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        } while (localObject == null);
+        localObject = (beag)((AppInterface)localObject).getManager(47);
+      } while (localObject == null);
+      localObject = ((beag)localObject).a(3);
+    } while (localObject == null);
+    if (TextUtils.isEmpty(paramakqi.jdField_b_of_type_JavaLangString))
+    {
+      QLog.e("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip result.mDownloadFileUrl is empty result:" + paramakqi);
+      return;
+    }
+    File localFile = new File(paramakqi.c());
+    localFile.getParentFile().mkdirs();
+    if (localFile.exists()) {
+      localFile.delete();
+    }
+    beae localbeae = new beae(paramakqi.jdField_b_of_type_JavaLangString, localFile);
+    localbeae.p = true;
+    localbeae.n = true;
+    localbeae.f = "apollo_res";
+    localbeae.jdField_b_of_type_Int = 1;
+    localbeae.q = true;
+    localbeae.r = true;
+    localbeae.jdField_a_of_type_JavaLangString = (paramakqi.jdField_b_of_type_JavaLangString + "_" + paramakqi.jdField_a_of_type_JavaLangString);
+    ((beaj)localObject).a(localbeae, new akqh(this, localFile, paramakqi), null);
+  }
+  
+  private static boolean b(akqi paramakqi)
+  {
+    if (paramakqi == null) {}
+    while ((TextUtils.isEmpty(paramakqi.jdField_e_of_type_JavaLangString)) || (!paramakqi.jdField_e_of_type_JavaLangString.endsWith(".zip"))) {
+      return false;
+    }
+    return true;
+  }
+  
+  private static boolean b(akqi paramakqi, String paramString)
+  {
+    if (paramakqi == null) {}
+    do
+    {
+      return false;
+      if (TextUtils.isEmpty(paramakqi.jdField_d_of_type_JavaLangString)) {
+        return true;
+      }
+    } while ((paramString == null) || (!paramString.equalsIgnoreCase(paramakqi.jdField_d_of_type_JavaLangString)));
+    return true;
+  }
+  
+  public int a(int paramInt, long paramLong, String paramString)
+  {
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(paramInt + "_" + paramLong + "_" + paramString, 0);
+  }
+  
+  public void a(int paramInt1, long paramLong, String paramString, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramInt1 + "_" + paramLong + "_" + paramString, paramInt2).commit();
+  }
+  
+  public void a(int paramInt, akqj paramakqj)
+  {
+    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+    {
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, new WeakReference(paramakqj));
+      return;
+    }
+  }
+  
+  public void a(akqi paramakqi, int paramInt)
+  {
+    if (paramakqi != null)
+    {
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramakqi.a(), paramInt).commit();
+      QLog.i("rscContent_CmShowRscUpdateHandler", 1, "saveContentVersion version:" + paramInt);
+    }
+  }
+  
+  public void a(AppInterface paramAppInterface)
+  {
+    ThreadManagerV2.excute(new CmShowRscUpdateHandler.1(this, paramAppInterface), 16, null, false);
+  }
+  
+  public void a(AppInterface paramAppInterface, int paramInt, boolean paramBoolean)
+  {
+    QLog.i("rscContent_CmShowRscUpdateHandler", 1, "checkCmShowContentUpdate forceCheck:" + paramBoolean);
+    if (paramAppInterface == null) {}
+    do
+    {
+      return;
+      if (!akqi.a(100, 1L, "all_room3D", "all_room3D.json"))
+      {
+        a(100, 1L, "all_room3D", 0);
+        paramBoolean = true;
+      }
+      if (!paramBoolean)
+      {
+        long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("last_json_content_update_ts", 0L);
+        if (System.currentTimeMillis() - l < jdField_a_of_type_Int * 1000)
+        {
+          QLog.i("rscContent_CmShowRscUpdateHandler", 1, "checkCmShowContentUpdate in sJsonContentUpdateInterval:" + jdField_a_of_type_Int);
+          return;
+        }
+      }
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
+      Object localObject1 = new CmShowContentUpdate.STContUpdReq();
+      ((CmShowContentUpdate.STContUpdReq)localObject1).app_id.set(1);
+      Object localObject2 = new ArrayList();
+      Object localObject3 = new CmShowContentUpdate.STContInfo();
+      ((CmShowContentUpdate.STContInfo)localObject3).biz_id.set(100);
+      ((CmShowContentUpdate.STContInfo)localObject3).item_id.set(1L);
+      ((CmShowContentUpdate.STContInfo)localObject3).name.set(ByteStringMicro.copyFromUtf8("all_room3D"));
+      ((CmShowContentUpdate.STContInfo)localObject3).ver.set(a(100, 1L, "all_room3D"));
+      ((List)localObject2).add(localObject3);
+      ((CmShowContentUpdate.STContUpdReq)localObject1).cont_list.set((List)localObject2);
+      try
+      {
+        localObject3 = new WebSSOAgent.UniSsoServerReqComm();
+        ((WebSSOAgent.UniSsoServerReqComm)localObject3).platform.set(109L);
+        ((WebSSOAgent.UniSsoServerReqComm)localObject3).osver.set(Build.VERSION.RELEASE);
+        ((WebSSOAgent.UniSsoServerReqComm)localObject3).mqqver.set("8.3.5");
+        localObject2 = new WebSSOAgent.UniSsoServerReq();
+        ((WebSSOAgent.UniSsoServerReq)localObject2).comm.set((MessageMicro)localObject3);
+        ((WebSSOAgent.UniSsoServerReq)localObject2).pbReqData.set(ByteStringMicro.copyFrom(((CmShowContentUpdate.STContUpdReq)localObject1).toByteArray()));
+        localObject1 = new NewIntent(BaseApplicationImpl.getContext(), atkg.class);
+        ((NewIntent)localObject1).putExtra("extra_cmd", "cmshowar_content_update.check");
+        ((NewIntent)localObject1).putExtra("extra_data", ((WebSSOAgent.UniSsoServerReq)localObject2).toByteArray());
+        ((NewIntent)localObject1).putExtra("extra_callbackid", String.valueOf(paramInt));
+        ((NewIntent)localObject1).setObserver(this);
+        paramAppInterface.startServlet((NewIntent)localObject1);
+        return;
+      }
+      catch (Exception paramAppInterface) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("rscContent_CmShowRscUpdateHandler", 2, "OpenPandora failed ", paramAppInterface);
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramBundle == null) {}
+    String str;
+    for (;;)
+    {
+      return;
+      paramInt = paramBundle.getInt("extra_result_code");
+      Object localObject = paramBundle.getString("extra_cmd");
+      str = paramBundle.getString("extra_callbackid");
+      QLog.i("rscContent_CmShowRscUpdateHandler", 1, "isSuccess:" + paramBoolean);
+      if (QLog.isColorLevel()) {
+        QLog.d("rscContent_CmShowRscUpdateHandler", 2, "svrRet:" + paramInt + " cmd:" + (String)localObject + " requestIdStr:" + str);
+      }
+      if (!paramBoolean) {
+        break label281;
+      }
+      try
+      {
+        byte[] arrayOfByte = paramBundle.getByteArray("extra_data");
+        paramBundle = new WebSSOAgent.UniSsoServerRsp();
+        paramBundle.mergeFrom(arrayOfByte);
+        long l = paramBundle.ret.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("rscContent_CmShowRscUpdateHandler", 2, "retCode:" + l + " isSuccess:" + paramBoolean + " cmd:" + (String)localObject);
+        }
+        if ("cmshowar_content_update.check".equals(localObject)) {
+          if (l == 0L)
+          {
+            localObject = new CmShowContentUpdate.STContUpdRsp();
+            ((CmShowContentUpdate.STContUpdRsp)localObject).mergeFrom(paramBundle.pbRsqData.get().toByteArray());
+            a(ApolloUtil.b(str), (CmShowContentUpdate.STContUpdRsp)localObject, true);
+            return;
+          }
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        QLog.e("rscContent_CmShowRscUpdateHandler", 1, paramBundle, new Object[0]);
+        return;
+      }
+    }
+    a(ApolloUtil.b(str));
+    return;
+    label281:
+    a(ApolloUtil.b(str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akqf
  * JD-Core Version:    0.7.0.1
  */

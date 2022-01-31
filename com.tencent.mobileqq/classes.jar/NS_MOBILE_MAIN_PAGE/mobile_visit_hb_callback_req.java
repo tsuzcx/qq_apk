@@ -9,12 +9,12 @@ import java.util.Map;
 public final class mobile_visit_hb_callback_req
   extends JceStruct
 {
-  static Map cache_trans_info = new HashMap();
+  static Map<String, String> cache_trans_info = new HashMap();
   public String client_key = "";
   public String comment = "";
   public String hb_id = "";
   public short hb_type;
-  public Map trans_info;
+  public Map<String, String> trans_info;
   public long uin;
   
   static
@@ -24,7 +24,7 @@ public final class mobile_visit_hb_callback_req
   
   public mobile_visit_hb_callback_req() {}
   
-  public mobile_visit_hb_callback_req(long paramLong, short paramShort, String paramString1, String paramString2, String paramString3, Map paramMap)
+  public mobile_visit_hb_callback_req(long paramLong, short paramShort, String paramString1, String paramString2, String paramString3, Map<String, String> paramMap)
   {
     this.uin = paramLong;
     this.hb_type = paramShort;

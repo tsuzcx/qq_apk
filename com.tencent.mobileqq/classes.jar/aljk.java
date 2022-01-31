@@ -1,31 +1,12 @@
-import android.text.TextUtils;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.export.js.VipDownloadInterface;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aljk
-  implements Runnable
+public abstract interface aljk
 {
-  public aljk(VipDownloadInterface paramVipDownloadInterface, String paramString) {}
-  
-  public void run()
-  {
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      LogUtility.a(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "webview loadUrl>>> ", localException);
-    }
-  }
+  public abstract void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt2, int[] paramArrayOfInt, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aljk
  * JD-Core Version:    0.7.0.1
  */

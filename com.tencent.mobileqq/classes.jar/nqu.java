@@ -1,21 +1,21 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnCompletionListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.MediaPlayerWrapper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
 public class nqu
-  implements MediaPlayer.OnCompletionListener
+  implements DialogInterface.OnCancelListener
 {
-  public nqu(MediaPlayerWrapper paramMediaPlayerWrapper, IMediaPlayer.OnCompletionListener paramOnCompletionListener) {}
+  public nqu(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperMediaPlayerWrapper);
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nqu
  * JD-Core Version:    0.7.0.1
  */

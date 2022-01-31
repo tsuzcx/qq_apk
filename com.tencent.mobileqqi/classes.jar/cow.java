@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.DoodleActivity;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.gesturelock.LockPatternView;
 
-public class cow
-  implements View.OnClickListener
+class cow
+  implements Runnable
 {
-  public cow(DoodleActivity paramDoodleActivity) {}
+  cow(cos paramcos) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.b.setVisibility(0);
-    this.a.a.setVisibility(8);
+    this.a.a.a.a();
   }
 }
 

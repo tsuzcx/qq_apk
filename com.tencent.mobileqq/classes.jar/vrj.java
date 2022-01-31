@@ -1,43 +1,57 @@
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.biz.eqq.CrmUtils;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.qidian.QidianManager;
-import com.tencent.qidian.data.BmqqAccountType;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.List;
 
 public class vrj
-  extends CardObserver
+  extends JobSegment<String, wiq>
 {
-  public vrj(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  public vrj(vrd paramvrd) {}
   
-  protected void a(boolean paramBoolean, BmqqAccountType paramBmqqAccountType)
+  protected void a(JobContext paramJobContext, String paramString)
   {
-    super.a(paramBoolean, paramBmqqAccountType);
-    BusinessCmrTmpChatPie.a(this.a);
-    this.a.aX();
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) && (this.a.jdField_a_of_type_ComTencentQidianQidianManager.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (!BusinessCmrTmpChatPie.a(this.a)))
+    if ((vrd.a(this.a).a != null) && (TextUtils.equals(vrd.a(this.a).a.feedId, paramString)))
     {
-      BusinessCmrTmpChatPie.a(this.a, true);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getChatFragment().a);
+      wxe.d("Q.qqstory.player.CommentFloatDialogController", "feed item already exist , no need to pull again");
+      notifyError(new ErrorMessage(2223, "feed item already exist"));
+      return;
     }
-    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramBmqqAccountType.getUin().equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (paramBmqqAccountType.getAccountType() == 6)) {
-      BusinessCmrTmpChatPie.b(this.a);
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024) && ((TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))))
+    paramString = new wiq();
+    Object localObject1 = (CommentLikeFeedItem)((woy)uwa.a(11)).a(vrd.a(this.a));
+    if (localObject1 != null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = CrmUtils.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      this.a.d.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+      if ((localObject1 instanceof VideoListFeedItem))
+      {
+        paramJobContext = (VideoListFeedItem)localObject1;
+        localObject2 = ((wpe)uwa.a(12)).a(vrd.a(this.a), paramJobContext.mVideoPullType);
+        if (localObject2 != null)
+        {
+          paramJobContext.mVideoNextCookie = ((FeedVideoInfo)localObject2).mVideoNextCookie;
+          paramJobContext.mIsVideoEnd = ((FeedVideoInfo)localObject2).mIsVideoEnd;
+          paramJobContext.mVideoPullType = ((FeedVideoInfo)localObject2).mVideoPullType;
+          paramJobContext.mVideoSeq = ((FeedVideoInfo)localObject2).mVideoSeq;
+          paramString.a(((FeedVideoInfo)localObject2).mVideoItemList, true);
+        }
+      }
+      paramString.a = ((CommentLikeFeedItem)localObject1);
+      notifyResult(paramString);
+      return;
     }
+    localObject1 = new vex();
+    ((vex)localObject1).a = new ArrayList();
+    Object localObject2 = new woq(vrd.a(this.a), 0, "", "");
+    ((vex)localObject1).a.add(localObject2);
+    urp.a().a((urt)localObject1, new vrk(this, paramJobContext, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vrj
  * JD-Core Version:    0.7.0.1
  */

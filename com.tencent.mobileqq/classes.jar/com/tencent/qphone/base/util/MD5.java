@@ -11,8 +11,9 @@ import java.security.NoSuchAlgorithmException;
 public class MD5
 {
   static final char[] Digit = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
-  public static boolean isLoaded;
-  public static int soLoadResultCode;
+  private static final String TAG = "MD5";
+  public static boolean isLoaded = false;
+  public static int soLoadResultCode = 0;
   private byte[] buffer = new byte[64];
   private byte[] digest = new byte[16];
   public String digestHexStr;
@@ -76,7 +77,7 @@ public class MD5
     //   14: aload 11
     //   16: astore 7
     //   18: aload_0
-    //   19: invokevirtual 116	java/lang/String:length	()I
+    //   19: invokevirtual 117	java/lang/String:length	()I
     //   22: ifeq +13 -> 35
     //   25: lload_1
     //   26: lconst_0
@@ -86,27 +87,27 @@ public class MD5
     //   33: astore 7
     //   35: aload 7
     //   37: areturn
-    //   38: new 138	java/io/FileInputStream
+    //   38: new 139	java/io/FileInputStream
     //   41: dup
     //   42: aload_0
-    //   43: invokespecial 139	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   43: invokespecial 140	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   46: astore 8
     //   48: aload 8
     //   50: astore 7
-    //   52: new 118	java/io/File
+    //   52: new 119	java/io/File
     //   55: dup
     //   56: aload_0
-    //   57: invokespecial 121	java/io/File:<init>	(Ljava/lang/String;)V
+    //   57: invokespecial 122	java/io/File:<init>	(Ljava/lang/String;)V
     //   60: astore_0
     //   61: aload 8
     //   63: astore 7
     //   65: aload_0
-    //   66: invokevirtual 125	java/io/File:exists	()Z
+    //   66: invokevirtual 126	java/io/File:exists	()Z
     //   69: ifeq +126 -> 195
     //   72: aload 8
     //   74: astore 7
     //   76: aload_0
-    //   77: invokevirtual 127	java/io/File:length	()J
+    //   77: invokevirtual 128	java/io/File:length	()J
     //   80: lstore 5
     //   82: lload_1
     //   83: lconst_0
@@ -123,19 +124,19 @@ public class MD5
     //   102: astore 7
     //   104: aload 8
     //   106: lload_3
-    //   107: invokestatic 143	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   107: invokestatic 144	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
     //   110: astore_0
     //   111: aload_0
     //   112: astore 7
     //   114: aload 8
     //   116: ifnull -81 -> 35
     //   119: aload 8
-    //   121: invokevirtual 146	java/io/FileInputStream:close	()V
+    //   121: invokevirtual 147	java/io/FileInputStream:close	()V
     //   124: aload_0
     //   125: areturn
     //   126: astore 7
     //   128: aload 7
-    //   130: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   130: invokevirtual 148	java/io/IOException:printStackTrace	()V
     //   133: aload_0
     //   134: areturn
     //   135: astore 9
@@ -144,13 +145,13 @@ public class MD5
     //   139: aload_0
     //   140: astore 7
     //   142: aload 9
-    //   144: invokevirtual 134	java/lang/Exception:printStackTrace	()V
+    //   144: invokevirtual 135	java/lang/Exception:printStackTrace	()V
     //   147: aload 11
     //   149: astore 7
     //   151: aload_0
     //   152: ifnull -117 -> 35
     //   155: aload_0
-    //   156: invokevirtual 146	java/io/FileInputStream:close	()V
+    //   156: invokevirtual 147	java/io/FileInputStream:close	()V
     //   159: aconst_null
     //   160: areturn
     //   161: astore 7
@@ -163,19 +164,19 @@ public class MD5
     //   173: aload 7
     //   175: ifnull +8 -> 183
     //   178: aload 7
-    //   180: invokevirtual 146	java/io/FileInputStream:close	()V
+    //   180: invokevirtual 147	java/io/FileInputStream:close	()V
     //   183: aload_0
     //   184: athrow
     //   185: astore 7
     //   187: aload 7
-    //   189: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   189: invokevirtual 148	java/io/IOException:printStackTrace	()V
     //   192: goto -9 -> 183
     //   195: aload 11
     //   197: astore 7
     //   199: aload 8
     //   201: ifnull -166 -> 35
     //   204: aload 8
-    //   206: invokevirtual 146	java/io/FileInputStream:close	()V
+    //   206: invokevirtual 147	java/io/FileInputStream:close	()V
     //   209: aconst_null
     //   210: areturn
     //   211: astore 7
@@ -262,8 +263,8 @@ public class MD5
     //   10: ifne +5 -> 15
     //   13: aconst_null
     //   14: areturn
-    //   15: ldc 43
-    //   17: invokestatic 157	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   15: ldc 10
+    //   17: invokestatic 158	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   20: astore 6
     //   22: sipush 16384
     //   25: newarray byte
@@ -292,7 +293,7 @@ public class MD5
     //   59: aload 7
     //   61: iconst_0
     //   62: iload_3
-    //   63: invokevirtual 172	java/io/InputStream:read	([BII)I
+    //   63: invokevirtual 173	java/io/InputStream:read	([BII)I
     //   66: istore_3
     //   67: iload_3
     //   68: iflt -55 -> 13
@@ -300,7 +301,7 @@ public class MD5
     //   73: aload 7
     //   75: iconst_0
     //   76: iload_3
-    //   77: invokevirtual 161	java/security/MessageDigest:update	([BII)V
+    //   77: invokevirtual 162	java/security/MessageDigest:update	([BII)V
     //   80: lload 4
     //   82: iload_3
     //   83: i2l
@@ -308,20 +309,20 @@ public class MD5
     //   85: lstore 4
     //   87: goto -54 -> 33
     //   90: aload_0
-    //   91: invokevirtual 173	java/io/InputStream:close	()V
+    //   91: invokevirtual 174	java/io/InputStream:close	()V
     //   94: aload 6
-    //   96: invokevirtual 164	java/security/MessageDigest:digest	()[B
+    //   96: invokevirtual 165	java/security/MessageDigest:digest	()[B
     //   99: astore_0
     //   100: aload_0
     //   101: areturn
     //   102: astore_0
     //   103: aload_0
-    //   104: invokevirtual 165	java/security/NoSuchAlgorithmException:printStackTrace	()V
+    //   104: invokevirtual 166	java/security/NoSuchAlgorithmException:printStackTrace	()V
     //   107: aconst_null
     //   108: areturn
     //   109: astore_0
     //   110: aload_0
-    //   111: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   111: invokevirtual 148	java/io/IOException:printStackTrace	()V
     //   114: aconst_null
     //   115: areturn
     //   116: astore_0
@@ -442,6 +443,7 @@ public class MD5
   {
     if ((paramInputStream == null) || (paramLong < 0L)) {}
     long l1;
+    Object localObject2;
     do
     {
       for (;;)
@@ -466,11 +468,11 @@ public class MD5
           }
           if (l1 != 0L)
           {
-            byte[] arrayOfByte1 = sysGetStremMd5(paramInputStream, l1);
-            if (arrayOfByte1 == null) {
+            localObject2 = sysGetStremMd5(paramInputStream, l1);
+            if (localObject2 == null) {
               break label114;
             }
-            this.digest = arrayOfByte1;
+            this.digest = ((byte[])localObject2);
             return this.digest;
           }
         }
@@ -490,25 +492,34 @@ public class MD5
       paramInputStream.printStackTrace();
       return null;
     }
+    label114:
+    Object localObject1 = localObject2;
     try
     {
-      label114:
-      byte[] arrayOfByte2 = getStremMd5(paramInputStream, l1);
-      localObject = arrayOfByte2;
+      byte[] arrayOfByte = getStremMd5(paramInputStream, l1);
+      localObject1 = arrayOfByte;
+      localObject2 = arrayOfByte;
       paramInputStream.close();
-      localObject = arrayOfByte2;
+      localObject1 = arrayOfByte;
     }
     catch (Exception paramInputStream)
     {
       for (;;)
       {
-        Object localObject;
-        paramInputStream.printStackTrace();
+        QLog.d("MD5", 1, "getBufferMd5 UnsatisfiedLinkError", paramInputStream);
       }
     }
-    if (localObject != null)
+    catch (UnsatisfiedLinkError paramInputStream)
     {
-      this.digest = localObject;
+      for (;;)
+      {
+        QLog.d("MD5", 1, "getStremMd5 UnsatisfiedLinkError", paramInputStream);
+        localObject1 = localObject2;
+      }
+    }
+    if (localObject1 != null)
+    {
+      this.digest = localObject1;
       return this.digest;
     }
     return this.digest;
@@ -538,7 +549,15 @@ public class MD5
     {
       for (;;)
       {
-        paramArrayOfByte.printStackTrace();
+        QLog.d("MD5", 1, "getBufferMd5 Exception", paramArrayOfByte);
+        paramArrayOfByte = arrayOfByte;
+      }
+    }
+    catch (UnsatisfiedLinkError paramArrayOfByte)
+    {
+      for (;;)
+      {
+        QLog.d("MD5", 1, "getBufferMd5 UnsatisfiedLinkError", paramArrayOfByte);
         paramArrayOfByte = arrayOfByte;
       }
     }

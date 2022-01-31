@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.widget.cardview.ColorfulCardView android:id="@id/lgq" android:layout_width="fill_parent" android:layout_height="116.0dip" android:layout_margin="5.0dip" app:cardCornerRadius="6.0dip" app:cardElevation="0.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/lxh" android:layout_width="11.0dip" android:layout_height="11.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/hhz" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_alignParentEnd="true" />
+        <ImageView android:id="@id/m41" android:layout_width="37.0dip" android:layout_height="37.0dip" android:src="@drawable/hhw" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <TextView android:textSize="21.0sp" android:textColor="#ffffffff" android:id="@id/lxn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="12.0dip" android:text="@string/rtc" android:maxLines="2" android:layout_alignParentBottom="true" android:fontFamily="PingFangSC-Medium" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="13.0dip">
+            <com.qzone.widget.AvatarImageView android:id="@id/lxj" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="13.0dip" android:layout_marginStart="13.0dip" />
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="17.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_marginEnd="17.0dip">
+                <com.qzone.widget.AsyncImageView android:layout_gravity="center_vertical" android:id="@id/mfy" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginRight="5.0dip" android:layout_toLeftOf="@id/lxi" android:layout_marginEnd="5.0dip" android:layout_toStartOf="@id/lxi" />
+                <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:id="@id/lxi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="200人" android:layout_alignParentRight="true" android:fontFamily="PingFangSC-Medium" />
+            </LinearLayout>
+        </RelativeLayout>
+        <com.qzone.widget.AsyncImageView android:id="@id/lxg" android:layout_width="106.0dip" android:layout_height="fill_parent" android:layout_marginTop="5.0dip" android:layout_marginRight="-21.0dip" android:layout_marginBottom="5.0dip" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</com.qzone.widget.cardview.ColorfulCardView>

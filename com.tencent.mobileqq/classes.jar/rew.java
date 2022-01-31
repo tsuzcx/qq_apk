@@ -1,68 +1,52 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.Doraemon.impl.commonModule.UserInfoModule;
-import com.tencent.mobileqq.Doraemon.impl.commonModule.UserInfoModule.LoginInfo;
-import com.tencent.mobileqq.Doraemon.impl.commonModule.UserLoginLogic;
-import com.tencent.mobileqq.Doraemon.util.DoraemonUtil;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
 
 public class rew
-  implements BusinessObserver
+  extends rex
 {
-  public rew(UserLoginLogic paramUserLoginLogic, String paramString) {}
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private int c;
+  private int d;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public rew(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView, Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    Object localObject = paramBundle.getString("ssoAccount");
-    if (!this.jdField_a_of_type_JavaLangString.equals(localObject)) {
-      return;
-    }
-    paramInt = paramBundle.getInt("code");
-    if (paramBoolean)
-    {
-      localObject = new SdkAuthorize.GetAuthApiListResponse();
-      try
-      {
-        paramBundle = (SdkAuthorize.GetAuthApiListResponse)((SdkAuthorize.GetAuthApiListResponse)localObject).mergeFrom(paramBundle.getByteArray("data"));
-        paramInt = paramBundle.ret.get();
-        localObject = paramBundle.msg.get();
-        if (paramInt != 0)
-        {
-          DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramInt, (String)localObject);
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d(UserLoginLogic.jdField_a_of_type_JavaLangString, 2, "parse auth info error: \n" + paramBundle.getMessage());
-        }
-        DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, -1, "parse auth info error");
-        return;
-      }
-      localObject = (SdkAuthorize.AuthorizeResponse)paramBundle.auth_response.get();
-      if ((UserLoginLogic.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic, paramBundle)) && (localObject != null) && (((SdkAuthorize.AuthorizeResponse)localObject).has()))
-      {
-        paramBundle = new UserInfoModule.LoginInfo();
-        paramBundle.jdField_a_of_type_JavaLangString = ((SdkAuthorize.AuthorizeResponse)localObject).openid.get().toUpperCase();
-        paramBundle.b = ((SdkAuthorize.AuthorizeResponse)localObject).access_token.get().toUpperCase();
-        this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule.a(paramBundle);
-        DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramBundle.a());
-        return;
-      }
-      UserLoginLogic.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic);
-      return;
-    }
-    DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramInt, "get auth info failure");
+    super(paramLikeExplosionView);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_c_of_type_Int = paramInt1;
+    this.jdField_d_of_type_Int = paramInt2;
+  }
+  
+  public rew(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView, Drawable paramDrawable, int paramInt1, int paramInt2, int paramInt3)
+  {
+    super(paramLikeExplosionView);
+    double d1 = Math.toRadians(paramInt3);
+    this.e = ((float)Math.cos(d1));
+    this.f = ((float)Math.sin(d1));
+    a();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_c_of_type_Int = paramInt1;
+    this.jdField_d_of_type_Int = paramInt2;
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    int i = (int)(this.jdField_c_of_type_Float - this.jdField_c_of_type_Int / 2);
+    int j = (int)(this.jdField_d_of_type_Float - this.jdField_c_of_type_Int / 2);
+    int k = this.jdField_c_of_type_Int;
+    int m = this.jdField_c_of_type_Int;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(i, j, k + i, m + j);
+    VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView).reset();
+    VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView).setRotate(this.jdField_d_of_type_Int, VideoFeedsLikeAnimate.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a), VideoFeedsLikeAnimate.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a));
+    paramCanvas.setMatrix(VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rew
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,30 @@
-import android.content.AsyncQueryHandler;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.database.Cursor;
-import com.tencent.mobileqq.adapter.ForwardFriendListAdapter;
-import java.util.Map;
+import android.content.Intent;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.qphone.base.util.QLog;
 
-public final class fcs
-  extends AsyncQueryHandler
+public class fcs
+  extends BroadcastReceiver
 {
-  public fcs(ForwardFriendListAdapter paramForwardFriendListAdapter, Context paramContext)
-  {
-    super(paramContext.getContentResolver());
-  }
+  private fcs(GuardManager paramGuardManager) {}
   
-  public void onQueryComplete(int paramInt, Object paramObject, Cursor paramCursor)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramCursor == null) {}
-    label266:
-    for (;;)
-    {
-      return;
-      int j = this.a.getGroupCount();
-      int k = (int)this.a.getGroupId(j - 1);
-      int i = 0;
-      for (;;)
-      {
-        if (i >= j) {
-          break label266;
-        }
-        long l = this.a.getGroupId(i);
-        if (l == paramInt)
-        {
-          if (i == 0)
-          {
-            this.a.c = 0;
-            this.a.jdField_b_of_type_JavaUtilMap.clear();
-          }
-          if ((j <= 1) && (!this.a.jdField_b_of_type_JavaUtilMap.containsKey(Long.valueOf(l))))
-          {
-            paramObject = this.a;
-            paramObject.c += paramCursor.getCount();
-            this.a.jdField_b_of_type_JavaUtilMap.put(Long.valueOf(l), Boolean.valueOf(true));
-          }
-          if (l == k)
-          {
-            this.a.jdField_b_of_type_Int = this.a.c;
-            this.a.c = 0;
-            this.a.jdField_b_of_type_JavaUtilMap.clear();
-          }
-          this.a.a.put(Integer.valueOf(i), paramCursor);
-          this.a.setChildrenCursor(i, paramCursor);
-          if ((l != this.a.getGroupId(1)) || (paramCursor == null)) {
-            break;
-          }
-          new Thread(new fct(this)).start();
-          return;
-        }
-        i += 1;
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("GuardManager", 2, "received with " + paramContext);
+    }
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext)) {
+      if (GuardManager.a(this.a) > 0L) {
+        this.a.a(false);
       }
     }
+    while ((!"android.intent.action.SCREEN_ON".equals(paramContext)) || (GuardManager.a(this.a) != 0L) || (!GuardManager.a(this.a))) {
+      return;
+    }
+    GuardManager.a(this.a, SystemClock.uptimeMillis());
   }
 }
 

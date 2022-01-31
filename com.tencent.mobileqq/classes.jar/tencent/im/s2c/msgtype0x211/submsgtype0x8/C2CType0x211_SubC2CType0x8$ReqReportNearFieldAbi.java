@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class C2CType0x211_SubC2CType0x8$ReqReportNearFieldAbi
-  extends MessageMicro
+  extends MessageMicro<ReqReportNearFieldAbi>
 {
   public static final int BYTES_COOKIE_FIELD_NUMBER = 4;
   public static final int MSG_HEAD_FIELD_NUMBER = 1;

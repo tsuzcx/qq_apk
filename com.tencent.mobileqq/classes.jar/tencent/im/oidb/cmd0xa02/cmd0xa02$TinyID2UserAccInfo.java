@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0xa02$TinyID2UserAccInfo
-  extends MessageMicro
+  extends MessageMicro<TinyID2UserAccInfo>
 {
   public static final int STR_USERACC_IDENTIFIER_FIELD_NUMBER = 4;
   public static final int UINT32_SDKAPPID_FIELD_NUMBER = 3;
@@ -22,7 +22,7 @@ public final class cmd0xa02$TinyID2UserAccInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xa02.cmd0xa02.TinyID2UserAccInfo
  * JD-Core Version:    0.7.0.1
  */

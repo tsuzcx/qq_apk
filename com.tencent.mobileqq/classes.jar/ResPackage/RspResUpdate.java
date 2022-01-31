@@ -12,10 +12,10 @@ public final class RspResUpdate
   implements Cloneable
 {
   static int cache_ResID;
-  static ArrayList cache_ResInfo;
+  static ArrayList<ResUpdate> cache_ResInfo;
   static int cache_Ret;
   public int ResID;
-  public ArrayList ResInfo;
+  public ArrayList<ResUpdate> ResInfo;
   public int Ret;
   public long SeqID;
   
@@ -31,7 +31,7 @@ public final class RspResUpdate
   
   public RspResUpdate() {}
   
-  public RspResUpdate(int paramInt1, long paramLong, ArrayList paramArrayList, int paramInt2)
+  public RspResUpdate(int paramInt1, long paramLong, ArrayList<ResUpdate> paramArrayList, int paramInt2)
   {
     this.Ret = paramInt1;
     this.SeqID = paramLong;
@@ -99,7 +99,7 @@ public final class RspResUpdate
     return this.ResID;
   }
   
-  public ArrayList getResInfo()
+  public ArrayList<ResUpdate> getResInfo()
   {
     return this.ResInfo;
   }
@@ -146,7 +146,7 @@ public final class RspResUpdate
     this.ResID = paramInt;
   }
   
-  public void setResInfo(ArrayList paramArrayList)
+  public void setResInfo(ArrayList<ResUpdate> paramArrayList)
   {
     this.ResInfo = paramArrayList;
   }
@@ -173,7 +173,7 @@ public final class RspResUpdate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ResPackage.RspResUpdate
  * JD-Core Version:    0.7.0.1
  */

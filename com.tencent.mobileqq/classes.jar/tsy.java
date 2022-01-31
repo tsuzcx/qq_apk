@@ -1,30 +1,24 @@
-import android.provider.Settings.System;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.qqcircle.component.QCircleComponentPageView;
+import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
 
-public class tsy
-  implements View.OnClickListener
+class tsy
+  implements ubh
 {
-  public tsy(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  tsy(tsw paramtsw) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.a(2);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.a);
-    if (this.a.a().booleanValue())
-    {
-      paramView = Settings.System.DEFAULT_NOTIFICATION_URI;
-      this.a.b();
-      this.a.a(paramView);
-    }
+    tsw.a(this.a).a().scrollToPosition(0);
+    tsw.a(this.a).a().e();
+    tsw.a(this.a).clearData();
+    tzs.a(75, 2, tsw.a(this.a));
+    QLog.d("QCirclePolyListPart", 3, "dismiss");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tsy
  * JD-Core Version:    0.7.0.1
  */

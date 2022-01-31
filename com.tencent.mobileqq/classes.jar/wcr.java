@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.activity.aio.tips.FraudTipsBar;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.settings.QGSettingFragment;
 
-class wcr
-  implements Runnable
+public class wcr
+  implements CompoundButton.OnCheckedChangeListener
 {
-  wcr(wcq paramwcq) {}
+  public wcr(QGSettingFragment paramQGSettingFragment) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    FraudTipsBar.a(this.a.a, 2);
-    FraudTipsBar.a(this.a.a).a();
+    if (paramBoolean)
+    {
+      QGSettingFragment.b(true);
+      return;
+    }
+    QGSettingFragment.b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wcr
  * JD-Core Version:    0.7.0.1
  */

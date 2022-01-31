@@ -1,23 +1,15 @@
-import com.tencent.mobileqq.utils.httputils.HttpMsg;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
 
-class fyp
+public class fyp
+  implements Runnable
 {
-  public int a;
-  public long a = 0L;
-  public HttpMsg a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b = 0L;
-  public String b;
-  public long c = 0L;
-  public String c;
-  public long d = 0L;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  public fyp(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk, String paramString) {}
+  
+  public void run()
+  {
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk, this.jdField_a_of_type_JavaLangString, 1);
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk);
+  }
 }
 
 

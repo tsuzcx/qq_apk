@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/b_7" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.PinnedDividerListView android:scrollbarStyle="outsideOverlay" android:id="@id/g49" android:paddingBottom="54.0dip" android:visibility="visible" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:divider="@null" android:dividerHeight="0.0px" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <com.tencent.mobileqq.widget.IndexView android:id="@id/djh" android:background="@drawable/o8" android:paddingLeft="8.0dip" android:paddingTop="6.0dip" android:paddingRight="8.0dip" android:paddingBottom="6.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <ViewStub android:id="@id/bww" android:layout="@layout/vm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

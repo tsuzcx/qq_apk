@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.webview.swift;
 
 import android.content.Context;
+import bevu;
 import com.tencent.mobileqq.widget.TabBarView;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
 import java.util.List;
 
 public class SwiftFragmentTabBar
@@ -13,7 +13,7 @@ public class SwiftFragmentTabBar
     super(paramContext);
   }
   
-  public void a(List paramList, TabBarView.OnTabChangeListener paramOnTabChangeListener)
+  public void a(List<WebViewTabBarData> paramList, bevu parambevu)
   {
     if ((paramList == null) || (paramList.size() < 1)) {
       return;
@@ -24,14 +24,14 @@ public class SwiftFragmentTabBar
       super.a(((WebViewTabBarData)paramList.get(i)).tabName);
       i += 1;
     }
-    super.setOnTabChangeListener(paramOnTabChangeListener);
+    super.setOnTabChangeListener(parambevu);
     super.setSelectedTab(0, false);
     super.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.SwiftFragmentTabBar
  * JD-Core Version:    0.7.0.1
  */

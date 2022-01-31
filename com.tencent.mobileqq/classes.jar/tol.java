@@ -1,22 +1,19 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class tol
-  implements Runnable
+class tol
+  implements View.OnClickListener
 {
-  public tol(RegisterActivity paramRegisterActivity) {}
+  tol(toi paramtoi) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
-      this.a.a.dismiss();
-    }
-    this.a.a = null;
+    this.a.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tol
  * JD-Core Version:    0.7.0.1
  */

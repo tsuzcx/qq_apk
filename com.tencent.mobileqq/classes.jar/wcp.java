@@ -1,26 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.DiscActiveTipsBar;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 public class wcp
-  implements View.OnClickListener
 {
-  public wcp(DiscActiveTipsBar paramDiscActiveTipsBar) {}
+  public List<String> a = new ArrayList();
+  public List<String> b = new ArrayList();
   
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    DiscActiveTipsBar.a(this.a).a();
-    ChatActivityUtils.a(DiscActiveTipsBar.a(this.a), DiscActiveTipsBar.a(this.a), DiscActiveTipsBar.a(this.a).jdField_a_of_type_Int, DiscActiveTipsBar.a(this.a).jdField_a_of_type_JavaLangString, true, true, null, null);
-    ReportController.b(DiscActiveTipsBar.a(this.a), "CliOper", "", "", "0X8003F00", "0X8003F00", 0, 0, "", "", "", "");
+    if ((!TextUtils.isEmpty(paramString)) && (!this.b.contains(paramString))) {
+      this.b.add(paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wcp
  * JD-Core Version:    0.7.0.1
  */

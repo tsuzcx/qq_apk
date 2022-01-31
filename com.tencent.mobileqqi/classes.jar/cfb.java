@@ -1,17 +1,22 @@
-import android.view.Window;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.observer.GameCenterObserver;
+import com.tencent.mobileqq.redtouch.VipBannerInfo;
 
 public class cfb
-  implements Runnable
+  extends GameCenterObserver
 {
-  public cfb(ChatActivity paramChatActivity) {}
+  public cfb(Conversation paramConversation) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    this.a.a(true);
-    this.a.getWindow().clearFlags(128);
-    QQToast.a(this.a, 2131562737, 1).b(this.a.d());
+    super.a(paramBoolean1, paramBoolean2, paramInt);
+    if ((paramBoolean1) && (paramInt != 2))
+    {
+      VipBannerInfo.a(this.a.a());
+      if (Conversation.c(this.a)) {
+        VipBannerInfo.a(this.a);
+      }
+    }
   }
 }
 

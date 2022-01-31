@@ -1,21 +1,31 @@
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import dov.com.tencent.mobileqq.richmedia.VideoSendTaskManager;
-import java.util.HashMap;
+import com.qq.android.dexposed.XC_MethodHook;
+import com.qq.android.dexposed.XC_MethodHook.MethodHookParam;
+import com.tencent.mobileqq.config.QConfigureException;
+import com.tencent.qphone.base.util.QLog;
 
-public class aoky
-  implements Runnable
+final class aoky
+  extends XC_MethodHook
 {
-  public aoky(VideoSendTaskManager paramVideoSendTaskManager, HashMap paramHashMap) {}
-  
-  public void run()
+  public void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
   {
-    StatisticCollector.a(BaseApplication.getContext()).a(null, "actPreUploadVideoCancel", true, 0L, -1L, this.jdField_a_of_type_JavaUtilHashMap, "");
+    try
+    {
+      paramMethodHookParam = aokv.a();
+      if ((!paramMethodHookParam.contains("QConfigManager.readSync")) && (!paramMethodHookParam.contains("QConfigManager.loadConObj")) && (!paramMethodHookParam.contains("QConfigManager.save"))) {
+        aokv.a(new QConfigureException(paramMethodHookParam), "Can not parse json beyond QConfigManager when app starting.", "QConfigWatchDog_Json");
+      }
+      return;
+    }
+    catch (Exception paramMethodHookParam)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QConfigWatchDog", 2, "hook json exception.", paramMethodHookParam);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoky
  * JD-Core Version:    0.7.0.1
  */

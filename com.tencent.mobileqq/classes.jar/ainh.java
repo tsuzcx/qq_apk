@@ -1,17 +1,34 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.spread.ConfigSetting;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.activity.phone.RebindActivity;
 
 public class ainh
-  implements Runnable
+  extends awhw
 {
-  public ainh(ConfigSetting paramConfigSetting) {}
+  public ainh(RebindActivity paramRebindActivity) {}
   
-  public void run()
+  protected void b(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a.getApp().getSharedPreferences(this.a.a.getCurrentAccountUin() + "_m_str_teamwork_tips_sp", 0).edit().putInt("file_str_key_max_count_local", ConfigSetting.f(this.a)).commit();
+    this.a.b();
+    if (paramBoolean)
+    {
+      paramBundle = new Intent(this.a, BindVerifyActivity.class);
+      paramBundle.putExtra("kSrouce", this.a.jdField_a_of_type_Int);
+      paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
+      paramBundle.putExtra("kBindType", RebindActivity.a(this.a));
+      paramBundle.putExtra("keyReqBindMode", 1);
+      paramBundle.putExtra("k_country_code", RebindActivity.a(this.a));
+      paramBundle.putExtra("cmd_param_is_from_uni", RebindActivity.a(this.a));
+      paramBundle.putExtra("cmd_param_is_from_change_bind", RebindActivity.b(this.a));
+      paramBundle.addFlags(67108864);
+      paramBundle.putExtra("k_is_block", this.a.getIntent().getBooleanExtra("k_is_block", false));
+      paramBundle.putExtra("key_is_from_qqhotspot", this.a.getIntent().getBooleanExtra("key_is_from_qqhotspot", false));
+      paramBundle.putExtra("key_is_from_qav_multi_call", this.a.getIntent().getBooleanExtra("key_is_from_qav_multi_call", false));
+      this.a.startActivityForResult(paramBundle, 1);
+      return;
+    }
+    this.a.b(2131719233);
   }
 }
 

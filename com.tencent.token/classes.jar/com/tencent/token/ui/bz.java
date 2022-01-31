@@ -1,18 +1,18 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.global.e;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.token.core.bean.j;
+import com.tencent.token.utils.w;
 
-final class bz
-  implements View.OnClickListener
+class bz
+  implements DialogInterface.OnClickListener
 {
-  bz(CheckMobileAvailableActivity paramCheckMobileAvailableActivity) {}
+  bz(BaseActivity paramBaseActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    e.c("removeTimeTask showProgressDialog");
-    this.a.removeTimeTask();
+    w.a(this.a, j.b().d);
   }
 }
 

@@ -1,24 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
 
 public class ahye
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public ahye(BaseShortVideoOprerator paramBaseShortVideoOprerator, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ahye(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    this.a.a(paramMessage);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahye
  * JD-Core Version:    0.7.0.1
  */

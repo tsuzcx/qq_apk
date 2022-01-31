@@ -1,22 +1,14 @@
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import java.util.List;
+import com.tencent.mobileqq.startup.director.StartupDirector;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class gjx
+public class gjx
   implements Runnable
 {
-  gjx(gjw paramgjw, List paramList, boolean paramBoolean) {}
+  public gjx(StartupDirector paramStartupDirector, int paramInt) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      QCallDetailActivity.a(this.jdField_a_of_type_Gjw.a).jdField_a_of_type_JavaUtilList.clear();
-      QCallDetailActivity.a(this.jdField_a_of_type_Gjw.a).jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    }
-    QCallDetailActivity.a(this.jdField_a_of_type_Gjw.a, this.jdField_a_of_type_Boolean);
-    if (QCallDetailActivity.a(this.jdField_a_of_type_Gjw.a) != null) {
-      QCallDetailActivity.a(this.jdField_a_of_type_Gjw.a).notifyDataSetChanged();
-    }
+    ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "web_start", 0, 1, this.jdField_a_of_type_Int, "", "", "", "");
   }
 }
 

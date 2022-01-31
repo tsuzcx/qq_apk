@@ -1,31 +1,44 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.ocr.OcrCamera;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.videoplatform.view.CropBubbleVideoView;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class agbi
-  extends OrientationEventListener
+  extends aeqi
 {
-  public agbi(OcrCamera paramOcrCamera, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public ImageView a;
+  public TextView a;
+  public CropBubbleVideoView a;
+  public MessageProgressView a;
+  public ImageView b;
+  public int e;
+  public int f;
   
-  public void onOrientationChanged(int paramInt)
+  public agbi(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
+  
+  public void a()
   {
-    if (paramInt == -1) {
-      this.a.b = 0;
-    }
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView != null)
     {
-      return;
-      this.a.b = ((paramInt + 45) / 90 * 90);
-    } while (this.a.b >= 0);
-    this.a.b = 0;
+      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getCurPlayingPos();
+      if (l > 0L)
+      {
+        MessageForShortVideo localMessageForShortVideo = bdew.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getId()));
+        if (localMessageForShortVideo != null) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a(localMessageForShortVideo, l);
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.releasePlayer(true);
+      ShortVideoRealItemBuilder.a.remove(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agbi
  * JD-Core Version:    0.7.0.1
  */

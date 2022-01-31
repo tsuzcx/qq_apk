@@ -17,9 +17,9 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import hkq;
-import hks;
-import hkt;
+import hgm;
+import hgo;
+import hgp;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -34,7 +34,7 @@ public class DropdownView
   public InputMethodManager a;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private final RelativeLayout.LayoutParams jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-  public hkt a;
+  public hgp a;
   public boolean a;
   public Drawable b;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
@@ -44,7 +44,7 @@ public class DropdownView
     super(paramContext);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Hkt = new hkt(this, paramContext);
+    this.jdField_a_of_type_Hgp = new hgp(this, paramContext);
     a(paramContext);
   }
   
@@ -52,7 +52,7 @@ public class DropdownView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Hkt = new hkt(this, paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Hgp = new hgp(this, paramContext, paramAttributeSet);
     a(paramContext);
   }
   
@@ -61,7 +61,7 @@ public class DropdownView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Hkt = new hkt(this, paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Hgp = new hgp(this, paramContext, paramAttributeSet, paramInt);
     a(paramContext);
   }
   
@@ -72,18 +72,18 @@ public class DropdownView
     setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
     setPadding(0, 0, 0, 0);
     Object localObject1 = new RelativeLayout.LayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    addView(this.jdField_a_of_type_Hkt, (ViewGroup.LayoutParams)localObject1);
-    this.jdField_a_of_type_Hkt.setDropDownVerticalOffset(0);
+    addView(this.jdField_a_of_type_Hgp, (ViewGroup.LayoutParams)localObject1);
+    this.jdField_a_of_type_Hgp.setDropDownVerticalOffset(0);
     localObject1 = new LinearLayout(paramContext);
     new RelativeLayout.LayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
     Object localObject2 = new RelativeLayout.LayoutParams(-2, -1);
     ((RelativeLayout.LayoutParams)localObject2).setMargins(0, 0, 0, 0);
     ((RelativeLayout.LayoutParams)localObject2).addRule(15);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(7, this.jdField_a_of_type_Hkt.getId());
+    ((RelativeLayout.LayoutParams)localObject2).addRule(7, this.jdField_a_of_type_Hgp.getId());
     addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(paramContext);
     this.jdField_b_of_type_AndroidWidgetImageView.setPadding((int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 15.0F), (int)(this.jdField_a_of_type_Float * 10.0F));
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130837845);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130837847);
     this.jdField_b_of_type_AndroidWidgetImageView.setClickable(true);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription("删除文本");
@@ -95,19 +95,19 @@ public class DropdownView
     this.jdField_a_of_type_AndroidWidgetImageView.setId(571);
     this.jdField_a_of_type_AndroidWidgetImageView.setPadding((int)(1.0F * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 15.0F), (int)(this.jdField_a_of_type_Float * 10.0F));
     this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("帐号列表");
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838114);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838115);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838116);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838117);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     this.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
     paramContext = new LinearLayout.LayoutParams((int)(35.0F * this.jdField_a_of_type_Float), (int)(33.0F * this.jdField_a_of_type_Float));
     paramContext.gravity = 16;
     ((LinearLayout)localObject1).addView(this.jdField_a_of_type_AndroidWidgetImageView, paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new hkq(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new hgm(this));
     try
     {
-      paramContext = this.jdField_a_of_type_Hkt.getClass().getSuperclass().getDeclaredField("mPopup");
+      paramContext = this.jdField_a_of_type_Hgp.getClass().getSuperclass().getDeclaredField("mPopup");
       paramContext.setAccessible(true);
-      paramContext = paramContext.get(this.jdField_a_of_type_Hkt);
+      paramContext = paramContext.get(this.jdField_a_of_type_Hgp);
       paramContext.getClass().getMethod("setOnDismissListener", new Class[] { PopupWindow.OnDismissListener.class }).invoke(paramContext, new Object[] { this });
       return;
     }
@@ -116,7 +116,7 @@ public class DropdownView
   
   public AutoCompleteTextView a()
   {
-    return this.jdField_a_of_type_Hkt;
+    return this.jdField_a_of_type_Hgp;
   }
   
   public ImageView a()
@@ -132,7 +132,7 @@ public class DropdownView
   public void onDismiss()
   {
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    new Handler().postDelayed(new hks(this), 500L);
+    new Handler().postDelayed(new hgo(this), 500L);
   }
 }
 

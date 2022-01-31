@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class group_effect$UserConfig
-  extends MessageMicro
+  extends MessageMicro<UserConfig>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "group_code", "effect_id", "status", "set_mode" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L) }, UserConfig.class);
   public final PBUInt32Field effect_id = PBField.initUInt32(0);
@@ -17,7 +17,7 @@ public final class group_effect$UserConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.qun.group_effect.group_effect.UserConfig
  * JD-Core Version:    0.7.0.1
  */

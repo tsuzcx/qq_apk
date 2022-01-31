@@ -1,17 +1,23 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13.ViewHolder;
+import com.tencent.qphone.base.util.QLog;
 
-class aiiu
-  implements Runnable
+public class aiiu
 {
-  aiiu(aiit paramaiit, String paramString) {}
-  
-  public void run()
+  public static void a(String paramString)
   {
-    this.jdField_a_of_type_Aiit.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout13.a(this.jdField_a_of_type_Aiit.jdField_a_of_type_AndroidContentResResources, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aiit.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout13$ViewHolder.a);
-    this.jdField_a_of_type_Aiit.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout13.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aiit.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.frienduin, this.jdField_a_of_type_Aiit.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.author);
+    a(paramString, "");
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    a(paramString1, paramString2, "");
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3)
+  {
+    azqs.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d(aike.a + ".report", 2, "tag=" + paramString1 + ",extra1=" + paramString2 + ",extra2=" + paramString3);
+    }
   }
 }
 

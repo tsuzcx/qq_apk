@@ -1,24 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadController;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.ZipFilePresenter;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.config.ResourcePluginListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class adfs
-  implements View.OnClickListener
+  extends ResourcePluginListener
 {
-  public adfs(ZipFilePresenter paramZipFilePresenter) {}
+  public adfs(Leba paramLeba) {}
   
-  public void onClick(View paramView)
+  public void a(byte paramByte)
   {
-    if (this.a.a.a() != null) {
-      this.a.a.a().a();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.lebatab.leba", 4, "ResourcePluginListener listener notify = " + paramByte);
+    }
+    if (paramByte != -1) {
+      this.a.a.sendEmptyMessage(11340002);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adfs
  * JD-Core Version:    0.7.0.1
  */

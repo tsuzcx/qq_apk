@@ -1,23 +1,20 @@
-import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.voip.VoipDialInterface;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
-class eut
+public class eut
   implements View.OnClickListener
 {
-  eut(eur parameur, int paramInt) {}
+  public eut(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Bundle();
-    paramView.putInt("friend_team_id", ((Groups)this.jdField_a_of_type_Eur.getItem(this.jdField_a_of_type_Int)).group_id);
-    paramView.putString("group_name", ((Groups)this.jdField_a_of_type_Eur.getItem(this.jdField_a_of_type_Int)).group_name);
-    this.jdField_a_of_type_Eur.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a(6, paramView);
-    ReportController.b(this.jdField_a_of_type_Eur.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Friends_select", "Fs_tab_clk", 0, 0, "5", "", "", "");
+    this.a.a.a("1");
+    VoipDialInterfaceActivity.a(this.a, '1');
+    if (VoipDialInterfaceActivity.b(this.a)) {
+      new Thread(new euu(this)).start();
+    }
   }
 }
 

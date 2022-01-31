@@ -1,27 +1,31 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
+import android.text.TextUtils;
+import awge;
+import awhp;
+import awhs;
+import bdtd;
 import java.io.Serializable;
 
 public class ApolloActionData
-  extends Entity
+  extends awge
   implements Serializable
 {
   public static final int ACTION_HIDE = 0;
+  public static final int ACTION_ID_3D_SEGMENT = 300000;
   public static final int ACTION_SHOW = 1;
   public static final int CURRENCY_TYPE_GOLD = 1;
   public static final int MAIN_ACTION = 1;
   public static final int POST_ACTION = 2;
   public static final int PRE_ACTION = 0;
-  @unique
+  @awhs
   public int actionId;
   public float actionMoveDis;
   public String actionName;
   public int actionType;
+  public int activeValue;
   public String anmiName;
-  @notColumn
+  @awhp
   public String atNickName;
   public String boy1;
   public String bubbleText;
@@ -32,11 +36,13 @@ public class ApolloActionData
   public long endTime;
   public String extraWording;
   public int feeType;
+  public int gameId;
+  public String gameName;
   public boolean hasExtraAction;
   public boolean hasSound;
   public int icon;
   public String iconUrl;
-  @notColumn
+  @awhp
   public String inputText;
   public int isShow;
   public String keywords;
@@ -49,10 +55,13 @@ public class ApolloActionData
   public float peerMoveDis;
   public String peerUin;
   public int personNum;
+  public String pk3DIds;
   public String pkIds;
   public int playArea;
   public int sessionType;
   public int slaveActionId;
+  public int soundType;
+  public String soundURL;
   public long startTime;
   public int status;
   public String textImg;
@@ -60,6 +69,19 @@ public class ApolloActionData
   public long version;
   public String vibrate;
   public int vipLevel;
+  
+  public static String getModelString(int paramInt)
+  {
+    if (isAction3DModel(paramInt)) {
+      return "3D";
+    }
+    return "2D";
+  }
+  
+  public static boolean isAction3DModel(int paramInt)
+  {
+    return paramInt >= 300000;
+  }
   
   public boolean isHasPostAction()
   {
@@ -77,10 +99,15 @@ public class ApolloActionData
     localStringBuilder.append("actionId:").append(this.actionId).append(",actionName:").append(this.actionName).append(",freeType:").append(this.feeType).append(",isShow:").append(this.isShow).append("limitFree:").append(this.limitFree).append(",startTime:").append(this.startTime);
     return localStringBuilder.toString();
   }
+  
+  public boolean verifyVersion(String paramString)
+  {
+    return (TextUtils.isEmpty(this.minVer)) || (TextUtils.isEmpty(this.maxVer)) || ((bdtd.a(this.minVer, paramString)) && (bdtd.a(paramString, this.maxVer)));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.ApolloActionData
  * JD-Core Version:    0.7.0.1
  */

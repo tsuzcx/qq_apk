@@ -1,47 +1,22 @@
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.EncodeTask;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class xsb
-  implements Runnable
+class xsb
+  implements View.OnClickListener
 {
-  public xsb(NewFlowCameraActivity.EncodeTask paramEncodeTask, RMVideoStateMgr paramRMVideoStateMgr) {}
+  xsb(xsa paramxsa) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PTV.NewFlowCameraActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
-      }
-      RecordManager.a().a().recordSubmit();
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        localUnsatisfiedLinkError.printStackTrace();
-        synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.notifyAll();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("PTV.NewFlowCameraActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString + ", call AVideoCodec.recordSubmit() fail, error = " + localUnsatisfiedLinkError.getMessage());
-          return;
-        }
-      }
+    paramView = this.a.jdField_a_of_type_Xrw;
+    if (paramView != null) {
+      paramView.a(this.a.jdField_a_of_type_Xsc, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xsb
  * JD-Core Version:    0.7.0.1
  */

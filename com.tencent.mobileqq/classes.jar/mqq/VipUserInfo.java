@@ -8,7 +8,8 @@ import java.util.ArrayList;
 public final class VipUserInfo
   extends JceStruct
 {
-  static ArrayList cache_vSendList = new ArrayList();
+  static ArrayList<Long> cache_vSendList = new ArrayList();
+  public int bUpdate;
   public int iCanUseRed = -1;
   public int iCheckFreq = -1;
   public int iGrowthSpeed = -1;
@@ -25,7 +26,7 @@ public final class VipUserInfo
   public String sGrayTail = "";
   public String sRedPackRemard = "";
   public String sUri = "";
-  public ArrayList vSendList;
+  public ArrayList<Long> vSendList;
   
   static
   {
@@ -34,7 +35,7 @@ public final class VipUserInfo
   
   public VipUserInfo() {}
   
-  public VipUserInfo(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong, int paramInt7, String paramString1, int paramInt8, int paramInt9, int paramInt10, int paramInt11, String paramString2, ArrayList paramArrayList, int paramInt12, String paramString3)
+  public VipUserInfo(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong, int paramInt7, String paramString1, int paramInt8, int paramInt9, int paramInt10, int paramInt11, String paramString2, ArrayList<Long> paramArrayList, int paramInt12, String paramString3, int paramInt13)
   {
     this.iOpenVip = paramInt1;
     this.iOpenSVip = paramInt2;
@@ -53,6 +54,7 @@ public final class VipUserInfo
     this.vSendList = paramArrayList;
     this.iRedPackId = paramInt12;
     this.sRedPackRemard = paramString3;
+    this.bUpdate = paramInt13;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -74,6 +76,7 @@ public final class VipUserInfo
     this.vSendList = ((ArrayList)paramJceInputStream.read(cache_vSendList, 15, false));
     this.iRedPackId = paramJceInputStream.read(this.iRedPackId, 16, false);
     this.sRedPackRemard = paramJceInputStream.readString(17, false);
+    this.bUpdate = paramJceInputStream.read(this.bUpdate, 18, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -103,6 +106,7 @@ public final class VipUserInfo
     if (this.sRedPackRemard != null) {
       paramJceOutputStream.write(this.sRedPackRemard, 17);
     }
+    paramJceOutputStream.write(this.bUpdate, 18);
   }
 }
 

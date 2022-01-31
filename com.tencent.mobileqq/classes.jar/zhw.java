@@ -1,74 +1,181 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.newfriend.FriendSystemMessage;
-import com.tencent.mobileqq.newfriend.NewFriendMessage;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
-import java.util.ArrayList;
-import java.util.Iterator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.app.ActivityManager;
+import android.os.Build.VERSION;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.theme.ISkinEngineLog;
+import com.tencent.theme.SkinEngineHandler;
+import java.util.HashMap;
 
 public class zhw
-  extends FriendListObserver
+  implements ISkinEngineLog, SkinEngineHandler
 {
-  public zhw(NewFriendManager paramNewFriendManager) {}
+  private int jdField_a_of_type_Int = -1;
+  private BaseApplicationImpl jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
   
-  protected void onAddFriend(String paramString)
+  public zhw(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = paramBaseApplicationImpl;
+  }
+  
+  public boolean onDecodeOOM(OutOfMemoryError paramOutOfMemoryError, String paramString, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Int == -1) {
+      this.jdField_a_of_type_Int = ((ActivityManager)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getSystemService("activity")).getMemoryClass();
+    }
+    long l = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+    paramOutOfMemoryError = new StringBuffer("decode resources oom, fileName: ");
+    paramOutOfMemoryError.append(paramString);
+    paramOutOfMemoryError.append(", is skin file: ");
+    paramOutOfMemoryError.append(paramBoolean);
+    paramOutOfMemoryError.append(", memory used:");
+    paramOutOfMemoryError.append(l);
+    paramOutOfMemoryError.append(" , heap size: ");
+    paramOutOfMemoryError.append(this.jdField_a_of_type_Int);
+    paramOutOfMemoryError.append(", api level:");
+    paramOutOfMemoryError.append(Build.VERSION.SDK_INT);
+    if (BaseApplicationImpl.sImageCache != null)
     {
-      return;
-      localObject = this.a.b();
-    } while (((ArrayList)localObject).isEmpty());
-    Object localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+      paramOutOfMemoryError.append(", imageCache size:");
+      paramOutOfMemoryError.append(BaseApplicationImpl.sImageCache.size());
+    }
+    QLog.e("res-OOM", 1, paramOutOfMemoryError.toString());
+    paramOutOfMemoryError = new HashMap(4);
+    paramOutOfMemoryError.put("param_FailCode", Integer.toString(89100));
+    paramOutOfMemoryError.put("param_heapSize", Integer.toString(this.jdField_a_of_type_Int));
+    paramOutOfMemoryError.put("param_apiLevel", Integer.toString(Build.VERSION.SDK_INT));
+    paramOutOfMemoryError.put("param_cacheUsed", Long.toString(l));
+    try
     {
-      NewFriendMessage localNewFriendMessage = (NewFriendMessage)((Iterator)localObject).next();
-      if ((localNewFriendMessage instanceof FriendSystemMessage))
+      azri.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl).a(null, "report_resource_decode_OOM", false, 0L, 0L, paramOutOfMemoryError, "");
+      if (BaseApplicationImpl.sImageCache != null) {
+        BaseApplicationImpl.sImageCache.evictAll();
+      }
+      System.gc();
+      Thread.yield();
+      System.gc();
+      return true;
+    }
+    catch (Exception paramOutOfMemoryError)
+    {
+      for (;;)
       {
-        int i = ((FriendSystemMessage)localNewFriendMessage).a.structMsg.msg.sub_type.get();
-        String str = ((FriendSystemMessage)localNewFriendMessage).a.senderuin;
-        if ((i == 13) && (paramString.equals(str)))
-        {
-          ((Iterator)localObject).remove();
-          NewFriendManager.a(this.a).a().b(AppConstants.K, 0, ((FriendSystemMessage)localNewFriendMessage).a.uniseq, false);
-        }
+        paramOutOfMemoryError.printStackTrace();
       }
     }
-    NewFriendManager.a(this.a).sendEmptyMessage(2);
   }
   
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  public boolean onDecodeReturnNullBitmap(String paramString, boolean paramBoolean)
   {
-    if ((paramBoolean) && (NewFriendManager.a(this.a) != null)) {
-      NewFriendManager.a(this.a).sendEmptyMessage(2);
+    if (this.jdField_a_of_type_Int == -1) {
+      this.jdField_a_of_type_Int = ((ActivityManager)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getSystemService("activity")).getMemoryClass();
+    }
+    long l = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+    StringBuffer localStringBuffer = new StringBuffer("decode resources return null, fileName: ");
+    localStringBuffer.append(paramString);
+    localStringBuffer.append(", is skin file: ");
+    localStringBuffer.append(paramBoolean);
+    localStringBuffer.append(", memory used:");
+    localStringBuffer.append(l);
+    localStringBuffer.append(" , heap size: ");
+    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", api level:");
+    localStringBuffer.append(Build.VERSION.SDK_INT);
+    if (BaseApplicationImpl.sImageCache != null)
+    {
+      localStringBuffer.append(", imageCache size:");
+      localStringBuffer.append(BaseApplicationImpl.sImageCache.size());
+    }
+    paramString = new HashMap(4);
+    paramString.put("param_FailCode", Integer.toString(89102));
+    paramString.put("param_heapSize", Integer.toString(this.jdField_a_of_type_Int));
+    paramString.put("param_apiLevel", Integer.toString(Build.VERSION.SDK_INT));
+    paramString.put("param_cacheUsed", Long.toString(l));
+    try
+    {
+      azri.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl).a(null, "report_resource_decode_OOM", false, 0L, 0L, paramString, "");
+      QLog.e("res-OOM", 1, localStringBuffer.toString());
+      if (BaseApplicationImpl.sImageCache != null) {
+        BaseApplicationImpl.sImageCache.evictAll();
+      }
+      System.gc();
+      Thread.yield();
+      System.gc();
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
     }
   }
   
-  protected void onGetPushRecommend(boolean paramBoolean)
+  public boolean onSecondDecodeOOM(OutOfMemoryError paramOutOfMemoryError, String paramString, boolean paramBoolean)
   {
-    if ((paramBoolean) && (NewFriendManager.a(this.a) != null)) {
-      NewFriendManager.a(this.a).sendEmptyMessage(2);
+    if (this.jdField_a_of_type_Int == -1) {
+      this.jdField_a_of_type_Int = ((ActivityManager)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getSystemService("activity")).getMemoryClass();
+    }
+    long l = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+    StringBuffer localStringBuffer = new StringBuffer("decode resources second oom, fileName: ");
+    localStringBuffer.append(paramString);
+    localStringBuffer.append(", is skin file: ");
+    localStringBuffer.append(paramBoolean);
+    localStringBuffer.append(", memory used:");
+    localStringBuffer.append(l);
+    localStringBuffer.append(" , heap size: ");
+    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", api level:");
+    localStringBuffer.append(Build.VERSION.SDK_INT);
+    if (BaseApplicationImpl.sImageCache != null)
+    {
+      localStringBuffer.append(", imageCache size:");
+      localStringBuffer.append(BaseApplicationImpl.sImageCache.size());
+    }
+    paramString = new HashMap(4);
+    paramString.put("param_FailCode", Integer.toString(89101));
+    paramString.put("param_heapSize", Integer.toString(this.jdField_a_of_type_Int));
+    paramString.put("param_apiLevel", Integer.toString(Build.VERSION.SDK_INT));
+    paramString.put("param_cacheUsed", Long.toString(l));
+    try
+    {
+      azri.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl).a(null, "report_resource_decode_OOM", false, 0L, 0L, paramString, "");
+      QLog.e("res-OOM", 1, localStringBuffer.toString(), paramOutOfMemoryError);
+      if (BaseApplicationImpl.sImageCache != null) {
+        BaseApplicationImpl.sImageCache.evictAll();
+      }
+      System.gc();
+      Thread.yield();
+      System.gc();
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
     }
   }
   
-  protected void onMayknowStateChanged(boolean paramBoolean)
+  public void trace(int paramInt1, String paramString1, int paramInt2, String paramString2, Throwable paramThrowable)
   {
-    NewFriendManager.a(this.a).runOnUiThread(new zhx(this, paramBoolean));
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (NewFriendManager.a(this.a) != null)) {
-      NewFriendManager.a(this.a).sendEmptyMessage(2);
+    if ((1 == paramInt2) || (QLog.isColorLevel())) {}
+    switch (paramInt1)
+    {
+    case 4: 
+    default: 
+      QLog.i(paramString1, paramInt2, paramString2, null);
+      return;
+    case 5: 
+      QLog.w(paramString1, paramInt2, paramString2, null);
+      return;
+    case 6: 
+      QLog.e(paramString1, paramInt2, paramString2, null);
+      return;
     }
+    QLog.d(paramString1, paramInt2, paramString2, null);
   }
 }
 

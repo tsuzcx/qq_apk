@@ -18,10 +18,10 @@ import com.tencent.mobileqq.magicface.model.MagicfaceResLoader;
 import com.tencent.mobileqq.magicface.model.RecordVolume;
 import com.tencent.mobileqq.magicface.view.MagicfaceContainerView.MagicfaceGestureListener;
 import com.tencent.mobileqq.statistics.ReportController;
-import gex;
-import gey;
-import gez;
-import gfa;
+import gal;
+import gam;
+import gan;
+import gao;
 import java.util.List;
 import mqq.app.AppRuntime;
 
@@ -40,16 +40,16 @@ public class MagicfaceActionManager
   public static final String e = "MagicfaceActionManager";
   private long jdField_a_of_type_Long;
   private ChatActivity jdField_a_of_type_ComTencentMobileqqActivityChatActivity;
-  private ShakeListener jdField_a_of_type_ComTencentMobileqqAppShakeListener = new gez(this);
+  private ShakeListener jdField_a_of_type_ComTencentMobileqqAppShakeListener = new gan(this);
   private Emoticon jdField_a_of_type_ComTencentMobileqqDataEmoticon;
   private Action jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction;
   private ActionGlobalData jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData = null;
   private MagicfaceActionDecoder jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionMagicfaceActionDecoder;
   private MagicfaceResLoader jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceResLoader;
-  private RecordVolume jdField_a_of_type_ComTencentMobileqqMagicfaceModelRecordVolume = new RecordVolume(new gfa(this));
+  private RecordVolume jdField_a_of_type_ComTencentMobileqqMagicfaceModelRecordVolume = new RecordVolume(new gao(this));
   private MagicfaceActionManager.MagicfaceActionListener jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceActionListener;
   private MagicfaceActionManager.MagicfaceCloseListener jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceCloseListener;
-  private MagicfaceActionManager.MagicfaceSensorOperation jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceSensorOperation = new gex(this);
+  private MagicfaceActionManager.MagicfaceSensorOperation jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceSensorOperation = new gal(this);
   private MagicfaceActionManager.MagicfaceTextUpdateListener jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceTextUpdateListener;
   private MagicfacePlayManager jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager;
   private SoundPoolUtil jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil;
@@ -215,7 +215,7 @@ public class MagicfaceActionManager
     this.jdField_a_of_type_ComTencentMobileqqDataEmoticon = paramEmoticon;
     this.jdField_c_of_type_Int = paramInt;
     this.f = paramString;
-    new Thread(new gey(this, paramInt)).start();
+    new Thread(new gam(this, paramInt)).start();
   }
   
   public void a(MagicfaceActionManager.MagicfaceActionListener paramMagicfaceActionListener)

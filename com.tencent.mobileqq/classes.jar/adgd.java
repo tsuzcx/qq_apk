@@ -1,22 +1,25 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.31.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class adgd
-  implements FMDialogUtil.FMDialogInterface
+  extends amph
 {
-  public adgd(FileModel paramFileModel, Activity paramActivity) {}
+  public adgd(Leba paramLeba) {}
   
-  public void a()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    FileModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerRecreateFileModel, this.jdField_a_of_type_AndroidAppActivity);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.leba", 2, "onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
+    }
+    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x1) != 0)) {
+      this.a.a(new Leba.31.1(this));
+    }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adgd
  * JD-Core Version:    0.7.0.1
  */

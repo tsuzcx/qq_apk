@@ -1,23 +1,34 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.TroopQZoneUploadAlbumObserver;
-
 public class shd
-  extends TroopQZoneUploadAlbumObserver
 {
-  public shd(Conversation paramConversation) {}
+  private final int jdField_a_of_type_Int;
+  private final Object jdField_a_of_type_JavaLangObject;
+  private final int b;
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public shd(int paramInt1, int paramInt2, Object paramObject)
   {
-    if (!(paramObject instanceof String)) {
-      return;
-    }
-    paramObject = (String)paramObject;
-    this.a.a(8, paramObject, -2147483648);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public int b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     shd
  * JD-Core Version:    0.7.0.1
  */

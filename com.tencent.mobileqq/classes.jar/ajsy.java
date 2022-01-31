@@ -1,17 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class ajsy
-  implements ValueAnimator.AnimatorUpdateListener
+class ajsy
+  implements baug
 {
-  public ajsy(RedDotAnimateView paramRedDotAnimateView) {}
+  ajsy(ajsv paramajsv) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onResp(bavf parambavf)
   {
-    this.a.c = ((int)(((Float)paramValueAnimator.getAnimatedValue()).floatValue() * 255.0F));
-    this.a.invalidate();
+    FilterDesc localFilterDesc = (FilterDesc)parambavf.jdField_a_of_type_Bave.a();
+    if (parambavf.jdField_a_of_type_Int != 0)
+    {
+      lek.c("VideoFilterTools", "download IconFile failed. errorCode: " + parambavf.b + ", errorMsg: " + parambavf.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.iconurl);
+      return;
+    }
+    if ((ajsv.a(this.a).decrementAndGet() == 0) && (ajsv.a(this.a) != null)) {
+      ajsv.a(this.a).a(true);
+    }
+    lek.c("VideoFilterTools", "download iconFile success. file: " + localFilterDesc.iconurl);
   }
+  
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

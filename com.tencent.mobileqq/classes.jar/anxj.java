@@ -1,36 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
+import android.animation.TypeEvaluator;
+import android.annotation.TargetApi;
 
+@TargetApi(11)
 public class anxj
-  extends AnimatorListenerAdapter
+  implements TypeEvaluator<anxi>
 {
-  public anxj(TextLayer.TextItem paramTextItem) {}
+  public anxj(anxd paramanxd) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public anxi a(float paramFloat, anxi paramanxi1, anxi paramanxi2)
   {
-    SLog.b(TextLayer.a, "scaleAnimator cancel!");
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    SLog.b(TextLayer.a, "scaleAnimator end!");
-    this.a.w = 1.0F;
-    this.a.i = false;
-    this.a.a.k();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    SLog.b(TextLayer.a, "scaleAnimator start!");
-    this.a.i = true;
+    return paramanxi2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anxj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,28 @@
-import android.graphics.Rect;
-import com.tencent.mobileqq.activity.richmedia.view.CameraCover.PictureCallback;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aick
+  implements View.OnClickListener
 {
-  public int a;
-  public Rect a;
-  public CameraCover.PictureCallback a;
-  public File a;
-  public boolean a;
-  public int b;
+  public aick(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  private aick(CameraProxy paramCameraProxy) {}
+  public void onClick(View paramView)
+  {
+    paramView = new ArrayList();
+    Iterator localIterator = this.a.a.b.iterator();
+    while (localIterator.hasNext()) {
+      paramView.add(Long.valueOf(Long.parseLong((String)localIterator.next())));
+    }
+    ChatHistoryTroopMemberFragment.a(this.a, paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aick
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.activity.aio.tips.ComicTipsBar;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 class wco
-  implements Runnable
+  implements vlo
 {
   wco(wcn paramwcn) {}
   
-  public void run()
+  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.b();
-    }
+    return (!paramStoryVideoItem.isBasicInfoOK()) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wco
  * JD-Core Version:    0.7.0.1
  */

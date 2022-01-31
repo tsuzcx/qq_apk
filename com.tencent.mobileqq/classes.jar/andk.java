@@ -1,16 +1,41 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class andk
-  implements Runnable
+class andk
+  extends bazy
 {
-  public andk(QzoneVideoTabJsPlugin paramQzoneVideoTabJsPlugin, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
-  
-  public void run()
+  andk(andh paramandh, QQAppInterface paramQQAppInterface, String paramString, bazz parambazz, baub parambaub, andn paramandn, andm paramandm)
   {
-    RemoteHandleManager.a().a().b(this.jdField_a_of_type_JavaUtilArrayList, this.b);
+    super(paramQQAppInterface, paramString, parambazz, parambaub);
+  }
+  
+  protected void realCancel()
+  {
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, " HttpEngineTask realCancel");
+    synchronized (andh.a(this.jdField_a_of_type_Andh))
+    {
+      andm localandm = (andm)andh.a(this.jdField_a_of_type_Andh).get(this.jdField_a_of_type_Andn.b);
+      if (localandm != null) {
+        localandm.b();
+      }
+      super.realCancel();
+      return;
+    }
+  }
+  
+  protected void realStart()
+  {
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, " HttpEngineTask  realStart");
+    synchronized (andh.a(this.jdField_a_of_type_Andh))
+    {
+      andm localandm = (andm)andh.a(this.jdField_a_of_type_Andh).get(this.jdField_a_of_type_Andn.b);
+      if (localandm != null) {
+        this.jdField_a_of_type_Andm.a();
+      }
+      super.realStart();
+      return;
+    }
   }
 }
 

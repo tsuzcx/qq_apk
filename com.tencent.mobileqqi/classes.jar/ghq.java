@@ -1,29 +1,20 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.musicgene.BitmapBlur;
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
-import java.io.File;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.richstatus.StatusHistoryActivity;
 
 public class ghq
-  implements Runnable
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public ghq(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin, String paramString, File paramFile) {}
+  public ghq(StatusHistoryActivity paramStatusHistoryActivity, int paramInt) {}
   
-  public void run()
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    Object localObject1 = MusicGeneWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicGeneWebViewPlugin, this.jdField_a_of_type_JavaLangString);
-    if (localObject1 != null)
-    {
-      Object localObject2 = BitmapBlur.a((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), true);
-      MusicGeneWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicGeneWebViewPlugin, (Bitmap)localObject2);
-      localObject1 = Message.obtain(MusicGeneWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicGeneWebViewPlugin));
-      ((Message)localObject1).obj = localObject2;
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putString("BUNDLE_KEY_FILE_PATH", this.jdField_a_of_type_JavaIoFile.getPath());
-      ((Message)localObject1).setData((Bundle)localObject2);
-      ((Message)localObject1).sendToTarget();
+    paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
+    if ((paramFloat1 <= -this.jdField_a_of_type_Int) && (paramFloat2 < 0.5F)) {
+      return StatusHistoryActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusHistoryActivity);
     }
+    return false;
   }
 }
 

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0x67$GroupInfo
-  extends MessageMicro
+  extends MessageMicro<GroupInfo>
 {
   public static final int STR_GROUP_MEMO_FIELD_NUMBER = 3;
   public static final int STR_GROUP_NAME_FIELD_NUMBER = 2;

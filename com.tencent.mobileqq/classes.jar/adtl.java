@@ -1,29 +1,25 @@
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.CheckListener;
-import com.tencent.mobileqq.intervideo.huayang.Monitor;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.QuickLoginActivity;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class adtl
-  implements GroupVideoManager.CheckListener
+  implements AdapterView.OnItemClickListener
 {
-  public adtl(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
+  public adtl(QuickLoginActivity paramQuickLoginActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramBoolean)
-    {
-      GroupVideoLoadingFragment.a(this.a, false);
-      return;
-    }
-    if (!NetworkUtil.a(GroupVideoLoadingFragment.a(this.a))) {
-      GroupVideoLoadingFragment.a(this.a, true);
-    }
-    for (;;)
-    {
-      Monitor.b("2880338");
-      return;
-      GroupVideoLoadingFragment.a(this.a, false);
-    }
+    paramAdapterView = (String)((HashMap)this.a.a.get(paramInt)).get("qq");
+    libsafeedit.getLoginLegal((String)((HashMap)this.a.a.get(paramInt)).get("password"));
+    paramView = libsafeedit.byteSafeEditTextToMD5(Boolean.valueOf(true));
+    this.a.getAppRuntime().login(paramAdapterView, paramView, QuickLoginActivity.a(this.a));
+    Toast.makeText(this.a.getApplicationContext(), "logining...", 0).show();
   }
 }
 

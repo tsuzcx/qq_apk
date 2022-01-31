@@ -1,70 +1,54 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAiDictMgr;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.VasUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.wordsegment.WordSegment;
-import java.lang.ref.WeakReference;
-import java.util.Locale;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class aarz
-  implements Runnable
+class aarz
+  implements aaru
 {
-  public aarz(ArkAiDictMgr paramArkAiDictMgr) {}
-  
-  public void run()
+  public boolean a(aarb paramaarb, String paramString, String... paramVarArgs)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a.get();
-    if (localQQAppInterface == null)
+    Object localObject = null;
+    if (paramaarb != null) {}
+    for (paramVarArgs = paramaarb.a(); (paramaarb == null) || (paramVarArgs == null); paramVarArgs = null)
     {
-      ArkAppCenter.b("ArkApp.Dict", "initWordData, qq app is null, return.");
-      return;
+      aase.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error");
+      return true;
     }
-    int j = -1;
-    for (int i = j;; i = j)
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("netType", aasg.a(paramVarArgs));
+    }
+    catch (JSONException localJSONException)
     {
       try
       {
-        WordSegment.setLogCallback(new aasa(this));
-        i = j;
-        if (!ArkAiDictMgr.a(localQQAppInterface)) {
-          break label124;
+        for (;;)
+        {
+          paramaarb.callJs(paramString, new String[] { localJSONObject.toString() });
+          paramString = localObject;
+          if (paramaarb != null) {
+            paramString = paramaarb.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getNetType", paramString);
+          return true;
+          localJSONException = localJSONException;
+          aase.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error", localJSONException);
         }
-        i = j;
-        j = WordSegment.init(ArkAppCenter.e() + '/');
-        i = j;
-        ArkAppCenter.b("ArkApp.Dict", String.format("getWordInitState, WordSegment_Init State is opened", new Object[0]));
-        i = j;
       }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      catch (Throwable paramString)
       {
         for (;;)
         {
-          label124:
-          j = i;
-          i = j;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ArkApp.Dict", 2, "initWordData, UnsatisfiedLinkError, err:" + localUnsatisfiedLinkError.getMessage());
-            i = j;
-          }
+          aase.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error", paramString);
         }
-        ArkAiDictMgr.b = true;
-        VasUtils.a(localQQAppInterface);
       }
-      if (i == 0) {
-        break;
-      }
-      ArkAppCenter.b("ArkApp.Dict", String.format(Locale.CHINA, "initWordData failed, ret=%d", new Object[] { Integer.valueOf(i) }));
-      return;
-      i = j;
-      ArkAppCenter.b("ArkApp.Dict", String.format("getWordInitState, WordSegment_Init State is closed", new Object[0]));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aarz
  * JD-Core Version:    0.7.0.1
  */

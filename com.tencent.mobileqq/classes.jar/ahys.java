@@ -1,55 +1,58 @@
-import com.tencent.biz.common.util.ZipUtils;
+import android.os.AsyncTask;
+import android.os.Handler;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.data.MessageRecord;
 
 class ahys
-  implements INetEngine.INetEngineListener
+  extends AsyncTask<MessageRecord, Object, Object>
 {
   ahys(ahyr paramahyr) {}
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  protected Object a(MessageRecord... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Doodle_Strokes_PtvTemplateManager", 2, "onResp url: " + this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUrl + " resultcode: " + paramNetResp.c);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUsable = this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo, false);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUsable) {}
-    try
+    int i;
+    if (paramVarArgs[0].time <= this.a.a.jdField_a_of_type_Alxa.a())
     {
-      ZipUtils.a(new File(PtvTemplateManager.b, this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleName), PtvTemplateManager.c);
-      if (paramNetResp.jdField_a_of_type_Int == 0)
-      {
-        PreDownloadController localPreDownloadController = (PreDownloadController)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(192);
-        if (localPreDownloadController.a()) {
-          localPreDownloadController.a(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUrl, paramNetResp.jdField_a_of_type_Long);
-        }
+      i = ((awhr)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(201)).a(paramVarArgs[0], true);
+      if (i > 0) {
+        this.a.a.f = true;
       }
-      return;
     }
-    catch (IOException localIOException)
+    for (;;)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          localIOException.printStackTrace();
-        }
+      if ((paramVarArgs[0] instanceof MessageForApollo)) {
+        alaz.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history_c2c_del_all_msg");
       }
+      return null;
+      if ((i == 0) && (paramVarArgs[0].time == this.a.a.jdField_a_of_type_Alxa.a()))
+      {
+        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramVarArgs[0], true);
+        continue;
+        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramVarArgs[0], true);
+      }
+    }
+  }
+  
+  protected void onPostExecute(Object paramObject)
+  {
+    super.onPostExecute(paramObject);
+    this.a.a.b.removeMessages(1);
+    if ((this.a.a.jdField_a_of_type_Bety != null) && (this.a.a.jdField_a_of_type_Bety.isShowing())) {
+      this.a.a.jdField_a_of_type_Bety.dismiss();
+    }
+    if ((this.a.a.f) && (this.a.a.e))
+    {
+      this.a.a.e = false;
+      this.a.a.jdField_a_of_type_Alxa.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahys
  * JD-Core Version:    0.7.0.1
  */

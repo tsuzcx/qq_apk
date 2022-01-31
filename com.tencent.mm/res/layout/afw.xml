@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center|top" android:orientation="horizontal" android:id="@id/dds" android:background="@color/a6q" android:paddingTop="@dimen/ll" android:paddingBottom="@dimen/ll" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include style="@style/h8" layout="@layout/aqm" />
+    <include style="@style/h8" layout="@layout/aqm" />
+    <include style="@style/h8" layout="@layout/aqm" />
+    <include style="@style/h8" layout="@layout/aqm" />
+    <include style="@style/h8" layout="@layout/aqm" />
+</LinearLayout>

@@ -1,13 +1,6 @@
-import cooperation.qzone.sim.DeviceInfoUtil;
-import cooperation.qzone.util.NetworkState.NetworkStateListener;
-
-public final class anab
-  implements NetworkState.NetworkStateListener
+public abstract interface anab
 {
-  public void onNetworkConnect(boolean paramBoolean)
-  {
-    DeviceInfoUtil.a(null);
-  }
+  public abstract void a(int paramInt, String paramString, anbm paramanbm);
 }
 
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="1600" android:drawable="@drawable/cm4" />
+    <item android:duration="80" android:drawable="@drawable/cm5" />
+    <item android:duration="80" android:drawable="@drawable/cm6" />
+    <item android:duration="80" android:drawable="@drawable/cm7" />
+    <item android:duration="80" android:drawable="@drawable/cm8" />
+    <item android:duration="80" android:drawable="@drawable/cm9" />
+    <item android:duration="80" android:drawable="@drawable/cm_" />
+    <item android:duration="80" android:drawable="@drawable/cma" />
+    <item android:duration="80" android:drawable="@drawable/cmb" />
+    <item android:duration="80" android:drawable="@drawable/cmc" />
+    <item android:duration="80" android:drawable="@drawable/cmd" />
+    <item android:duration="80" android:drawable="@drawable/cme" />
+    <item android:duration="80" android:drawable="@drawable/cmf" />
+    <item android:duration="80" android:drawable="@drawable/cmg" />
+    <item android:duration="80" android:drawable="@drawable/cmh" />
+</animation-list>

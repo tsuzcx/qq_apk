@@ -1,20 +1,30 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.open.agent.GroupListOpenFrame;
-import com.tencent.open.agent.SocialFriendChooser;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.UpdateManager;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
 
 public class hnk
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public hnk(GroupListOpenFrame paramGroupListOpenFrame) {}
+  public hnk(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.a.g();
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h) != null)
+      {
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h).mSavePath;
+        UpdateManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+      }
+      return;
     }
-    return true;
+    catch (Exception localException)
+    {
+      LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
+    }
   }
 }
 

@@ -3,18 +3,20 @@ package com.tencent.biz.qrcode.ipc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ouw;
+import yav;
 
 public class ScannerParams
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ouw();
+  public static final Parcelable.Creator<ScannerParams> CREATOR = new yav();
+  public int a;
   public String a;
   public boolean a;
   public String b;
   public boolean b;
   public String c;
   public boolean c;
+  public String d;
   public boolean d;
   public boolean e;
   public boolean f;
@@ -31,13 +33,13 @@ public class ScannerParams
       bool1 = true;
       this.jdField_a_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label162;
+        break label178;
       }
       bool1 = true;
       label29:
       this.jdField_b_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label167;
+        break label183;
       }
       bool1 = true;
       label43:
@@ -45,51 +47,53 @@ public class ScannerParams
       this.jdField_a_of_type_JavaLangString = paramParcel.readString();
       this.jdField_b_of_type_JavaLangString = paramParcel.readString();
       if (paramParcel.readByte() == 0) {
-        break label172;
+        break label188;
       }
       bool1 = true;
       label73:
-      this.d = bool1;
+      this.jdField_d_of_type_Boolean = bool1;
       this.jdField_c_of_type_JavaLangString = paramParcel.readString();
       if (paramParcel.readByte() == 0) {
-        break label177;
+        break label193;
       }
       bool1 = true;
       label95:
       this.e = bool1;
       if (paramParcel.readByte() == 0) {
-        break label182;
+        break label198;
       }
       bool1 = true;
       label109:
       this.f = bool1;
       if (paramParcel.readByte() == 0) {
-        break label187;
+        break label203;
       }
       bool1 = true;
       label123:
       this.g = bool1;
       if (paramParcel.readByte() == 0) {
-        break label192;
+        break label208;
       }
       bool1 = true;
       label137:
       this.h = bool1;
       if (paramParcel.readByte() == 0) {
-        break label197;
+        break label213;
       }
     }
-    label162:
-    label167:
-    label172:
-    label177:
-    label182:
-    label187:
-    label192:
-    label197:
+    label178:
+    label183:
+    label188:
+    label193:
+    label198:
+    label203:
+    label208:
+    label213:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.i = bool1;
+      this.jdField_a_of_type_Int = paramParcel.readByte();
+      this.jdField_d_of_type_JavaLangString = paramParcel.readString();
       return;
       bool1 = false;
       break;
@@ -123,12 +127,14 @@ public class ScannerParams
     localStringBuilder.append("  isFormPublicAccountNew: ").append(this.jdField_c_of_type_Boolean);
     localStringBuilder.append("  from: ").append(this.jdField_a_of_type_JavaLangString);
     localStringBuilder.append("  subFrom: ").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("  isDecodingFile: ").append(this.d);
+    localStringBuilder.append("  isDecodingFile: ").append(this.jdField_d_of_type_Boolean);
     localStringBuilder.append("  toDecodeFilePath: ").append(this.jdField_c_of_type_JavaLangString);
     localStringBuilder.append("  fromQRDecode: ").append(this.e);
     localStringBuilder.append("  hasCamera: ").append(this.g);
     localStringBuilder.append("  fromQLink: ").append(this.h);
     localStringBuilder.append("  isCameraReadyToUse: ").append(this.i);
+    localStringBuilder.append("  detectType: ").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("  preResult: ").append(this.jdField_d_of_type_JavaLangString);
     localStringBuilder.append("} ");
     return localStringBuilder.toString();
   }
@@ -141,65 +147,67 @@ public class ScannerParams
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
       if (!this.jdField_b_of_type_Boolean) {
-        break label167;
+        break label184;
       }
       paramInt = 1;
       label26:
       paramParcel.writeByte((byte)paramInt);
       if (!this.jdField_c_of_type_Boolean) {
-        break label172;
+        break label189;
       }
       paramInt = 1;
       label41:
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
       paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-      if (!this.d) {
-        break label177;
+      if (!this.jdField_d_of_type_Boolean) {
+        break label194;
       }
       paramInt = 1;
       label72:
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
       if (!this.e) {
-        break label182;
+        break label199;
       }
       paramInt = 1;
       label95:
       paramParcel.writeByte((byte)paramInt);
       if (!this.f) {
-        break label187;
+        break label204;
       }
       paramInt = 1;
       label110:
       paramParcel.writeByte((byte)paramInt);
       if (!this.g) {
-        break label192;
+        break label209;
       }
       paramInt = 1;
       label125:
       paramParcel.writeByte((byte)paramInt);
       if (!this.h) {
-        break label197;
+        break label214;
       }
       paramInt = 1;
       label140:
       paramParcel.writeByte((byte)paramInt);
       if (!this.i) {
-        break label202;
+        break label219;
       }
     }
-    label167:
-    label172:
-    label177:
-    label182:
-    label187:
-    label192:
-    label197:
-    label202:
+    label184:
+    label189:
+    label194:
+    label199:
+    label204:
+    label209:
+    label214:
+    label219:
     for (paramInt = j;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
+      paramParcel.writeByte((byte)this.jdField_a_of_type_Int);
+      paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
       return;
       paramInt = 0;
       break;
@@ -222,7 +230,7 @@ public class ScannerParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qrcode.ipc.ScannerParams
  * JD-Core Version:    0.7.0.1
  */

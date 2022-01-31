@@ -1,39 +1,47 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
-public class vth
-  implements Runnable
+public abstract class vth
 {
-  public vth(FriendChatPie paramFriendChatPie) {}
+  public abstract Activity a();
   
-  public void run()
-  {
-    AVNotifyCenter localAVNotifyCenter = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {}
-    for (;;)
-    {
-      return;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null)) {
-        try
-        {
-          long l = Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
-          if (localAVNotifyCenter.a(l))
-          {
-            this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, localAVNotifyCenter.a(Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue()));
-            localAVNotifyCenter.a(Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue(), false, -1);
-            return;
-          }
-        }
-        catch (NumberFormatException localNumberFormatException) {}
-      }
-    }
-  }
+  public abstract OpenPlayerBuilder.Data a();
+  
+  public abstract XViewPager a();
+  
+  public abstract String a(String paramString);
+  
+  public abstract vpm a();
+  
+  public abstract vpp a();
+  
+  public abstract vsz a();
+  
+  public abstract vts a();
+  
+  public abstract void a();
+  
+  public abstract void a(Intent paramIntent);
+  
+  public abstract void a(ulw paramulw);
+  
+  public abstract void a(vrx paramvrx);
+  
+  public abstract void a(vua paramvua);
+  
+  public abstract boolean a();
+  
+  public abstract void b(ulw paramulw);
+  
+  public abstract void b(vrx paramvrx);
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vth
  * JD-Core Version:    0.7.0.1
  */

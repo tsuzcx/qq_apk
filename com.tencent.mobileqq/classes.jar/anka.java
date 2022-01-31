@@ -1,48 +1,42 @@
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.data.CaptureComboManager;
-import dov.com.qq.im.setting.IQIMCameraContainer;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools.DataSet;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
 
-public class anka
-  implements Runnable
+final class anka
+  implements anqt
 {
-  public anka(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void run()
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QIMEffectCameraCaptureUnit", 2, "onResourceDownload update filterpager begin");
+      QLog.d("ArkApp", 2, "ArkSafe.report onDisableReport");
     }
-    VideoFilterViewPager localVideoFilterViewPager = QIMEffectCameraCaptureUnit.a(this.a);
-    if (localVideoFilterViewPager == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMEffectCameraCaptureUnit", 2, "onResourceDownload filterPager null ");
-      }
+    anqp.a().a(null);
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp", 2, new Object[] { "ArkSafe.report onReportUrlCheck content=", paramString });
     }
-    do
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localObject instanceof QQAppInterface)) {}
+    for (localObject = (QQAppInterface)localObject;; localObject = null)
     {
-      return;
-      localVideoFilterViewPager.setCaptureScene(0);
-      CaptureComboManager localCaptureComboManager = (CaptureComboManager)QIMManager.a(5);
-      QIMPtvTemplateManager localQIMPtvTemplateManager = (QIMPtvTemplateManager)QIMManager.a(3);
-      if (localCaptureComboManager.a() != null) {
-        localVideoFilterViewPager.a(localCaptureComboManager.a().c);
+      if (localObject != null)
+      {
+        localObject = ((ArkAppCenter)((QQAppInterface)localObject).getManager(121)).a();
+        if (localObject != null) {
+          ((annc)localObject).a(paramString);
+        }
       }
-      VideoFilterTools.a().a(null);
-      VideoFilterTools.a().a(null, this.a.a.a(), 0);
-      localQIMPtvTemplateManager.a("0", 0, "");
-    } while (!QLog.isColorLevel());
-    QLog.d("QIMEffectCameraCaptureUnit", 2, "onResourceDownload update filterpager end; postion=" + 0);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anka
  * JD-Core Version:    0.7.0.1
  */

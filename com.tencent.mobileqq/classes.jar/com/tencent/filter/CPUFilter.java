@@ -1,29 +1,24 @@
 package com.tencent.filter;
 
+import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.view.RendererUtils;
 
-public class CPUFilter
+public abstract class CPUFilter
   extends BaseFilter
 {
   public CPUFilter()
   {
-    super(GLSLRender.FILTER_SHADER_NONE);
+    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
     this.mIsGPU = false;
   }
   
   public CPUFilter(int paramInt)
   {
-    super(paramInt);
+    super(BaseFilter.getFragmentShader(paramInt));
     this.mIsGPU = false;
   }
   
-  public void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
-  {
-    this.mIsPreviewFilter = paramBoolean;
-    if (paramBoolean) {
-      super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
-    }
-  }
+  protected abstract QImage ApplyFilter(QImage paramQImage);
   
   public void RenderProcess(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, double paramDouble, Frame paramFrame)
   {
@@ -41,10 +36,18 @@ public class CPUFilter
     } while (paramFrame == localQImage);
     localQImage.Dispose();
   }
+  
+  public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
+  {
+    this.mIsPreviewFilter = paramBoolean;
+    if (paramBoolean) {
+      super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.filter.CPUFilter
  * JD-Core Version:    0.7.0.1
  */

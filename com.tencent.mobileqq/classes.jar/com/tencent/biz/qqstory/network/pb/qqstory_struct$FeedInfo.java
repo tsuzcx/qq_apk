@@ -9,13 +9,13 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_struct$FeedInfo
-  extends MessageMicro
+  extends MessageMicro<FeedInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field date = PBField.initUInt32(0);
   public final PBBytesField feed_attr = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField feed_id = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField feed_video_info_list = PBField.initRepeatMessage(qqstory_struct.FeedVideoInfo.class);
+  public final PBRepeatMessageField<qqstory_struct.FeedVideoInfo> feed_video_info_list = PBField.initRepeatMessage(qqstory_struct.FeedVideoInfo.class);
   public final PBUInt32Field is_end = PBField.initUInt32(0);
   public final PBBytesField next_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field pull_type = PBField.initUInt32(0);
@@ -34,7 +34,7 @@ public final class qqstory_struct$FeedInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedInfo
  * JD-Core Version:    0.7.0.1
  */

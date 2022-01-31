@@ -1,40 +1,29 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.paster.PasterDataManager;
-import dov.com.qq.im.capture.view.StaticStickerProviderView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage.FacePackagePageEventListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
 public class anqc
-  implements FaceListPage.FacePackagePageEventListener
+  implements View.OnClickListener
 {
-  public anqc(StaticStickerProviderView paramStaticStickerProviderView) {}
+  public anqc(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    SLog.b("StaticStickerProviderView", "用户点击重新拉取地理贴纸");
-    ((PasterDataManager)QIMManager.a(4)).d();
-  }
-  
-  public void a(String paramString)
-  {
-    SLog.b("StaticStickerProviderView", "用户点击下载：" + paramString);
-    VideoEditReport.b("0X80075DD");
-    if (!((DoodleEmojiManager)SuperManager.a(36)).a(paramString, true)) {
-      SLog.d("StaticStickerProviderView", "用户点击下载启动失败");
+    paramView = (bhuf)bhus.a(BaseActivity.sTopActivity, null);
+    paramView.a(BaseActivity.sTopActivity.getString(2131690268));
+    paramView.a(2131690267, 3);
+    paramView.c(2131690266);
+    paramView.setOnDismissListener(new anqd(this, paramView));
+    paramView.a(new anqe(this, paramView));
+    if (!paramView.isShowing()) {
+      paramView.show();
     }
-  }
-  
-  public void b(String paramString)
-  {
-    SLog.b("StaticStickerProviderView", "用户点击下载取消：" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anqc
  * JD-Core Version:    0.7.0.1
  */

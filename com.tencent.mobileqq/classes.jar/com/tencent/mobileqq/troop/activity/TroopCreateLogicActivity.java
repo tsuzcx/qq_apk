@@ -1,44 +1,201 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aizf;
+import alud;
+import amdu;
+import ameq;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
+import aryl;
+import aryv;
+import asbd;
+import azup;
+import azut;
+import azvc;
+import azvd;
+import bamp;
+import bbkt;
+import bbku;
+import bbkv;
+import bbkw;
+import bbkx;
+import bbky;
+import bbkz;
+import bbqu;
+import bbrd;
+import bbre;
+import bcpr;
+import bcxl;
+import bdin;
+import bdna;
+import bfah;
+import bfln;
+import bjev;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopObserver;
 import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgFactory;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic.TroopCreateCallback;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic.TroopCreateInfo;
-import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.troopshare.TroopShareUtility;
-import com.tencent.mobileqq.utils.ShareMsgHelper;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class TroopCreateLogicActivity
   extends BaseActivity
-  implements TroopCreateLogic.TroopCreateCallback
+  implements bbrd
 {
-  public TroopObserver a;
-  TroopCreateLogic jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic = null;
+  public ameq a;
+  bbqu jdField_a_of_type_Bbqu = null;
+  bcxl jdField_a_of_type_Bcxl;
+  public bfah a;
   TroopInfoData jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData = new TroopInfoData();
-  TroopShareUtility jdField_a_of_type_ComTencentMobileqqTroopshareTroopShareUtility;
+  public String a;
   public boolean a;
   
   public TroopCreateLogicActivity()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new aizf(this);
+    this.jdField_a_of_type_Bfah = new bbkt(this);
+    this.jdField_a_of_type_Ameq = new bbku(this);
+  }
+  
+  private void a()
+  {
+    if (getIntent() != null) {
+      asbd.a(getIntent(), this.app, this).a(aryl.a.intValue(), getIntent().getExtras());
+    }
+  }
+  
+  private void a(String paramString, bbkz parambbkz)
+  {
+    if ((parambbkz == null) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    paramString = URLDrawable.getDrawable(paramString, URLDrawable.URLDrawableOptions.obtain());
+    paramString.setURLDrawableListener(new bbkx(this, paramString, parambbkz));
+    paramString.setDownloadListener(new bbky(this, paramString, parambbkz));
+    if (paramString.getStatus() == 1)
+    {
+      parambbkz.a(bfln.a(paramString, 100, 100));
+      return;
+    }
+    paramString.startDownload();
+  }
+  
+  private void a(JSONObject paramJSONObject)
+  {
+    Object localObject = paramJSONObject.optString("shareLink");
+    String str1 = paramJSONObject.optString("shareTitle");
+    String str2 = paramJSONObject.optString("shareDesc");
+    paramJSONObject = paramJSONObject.optString("shareIcon");
+    localObject = new azup(StructMsgForGeneralShare.class).c(149).a(alud.a(2131715675) + str1).e((String)localObject).a();
+    azut localazut = azvc.a(2);
+    localazut.a(paramJSONObject, str1, str2);
+    ((AbsShareMsg)localObject).addItem(localazut);
+    paramJSONObject = new Intent();
+    paramJSONObject.putExtra("forward_type", -3);
+    paramJSONObject.putExtra("stuctmsg_bytes", ((AbsShareMsg)localObject).getBytes());
+    aryv.a(this, paramJSONObject, 1002);
+  }
+  
+  private void b()
+  {
+    if (getIntent() != null) {
+      asbd.a(getIntent(), this.app, this).p();
+    }
+  }
+  
+  private void b(JSONObject paramJSONObject)
+  {
+    String str1 = paramJSONObject.optString("shareLink");
+    String str2 = paramJSONObject.optString("shareTitle");
+    String str3 = paramJSONObject.optString("shareDesc");
+    Object localObject = paramJSONObject.optString("shareIcon");
+    paramJSONObject = new ArrayList();
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      paramJSONObject.add(localObject);
+    }
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("title", str2);
+    ((Bundle)localObject).putString("desc", str3);
+    ((Bundle)localObject).putLong("req_share_id", 0L);
+    ((Bundle)localObject).putString("detail_url", str1);
+    ((Bundle)localObject).putString("url", str1);
+    ((Bundle)localObject).putStringArrayList("image_url", paramJSONObject);
+    ((Bundle)localObject).putString("bizname", "SharePlato");
+    bjev.a(this.app, this, (Bundle)localObject, null, 1001);
+  }
+  
+  private void c()
+  {
+    Object localObject = getIntent();
+    int i = ((Intent)localObject).getIntExtra("chanelId", -1);
+    localObject = ((Intent)localObject).getStringExtra("params");
+    for (;;)
+    {
+      try
+      {
+        localObject = new JSONObject((String)localObject);
+        switch (i)
+        {
+        case 0: 
+          QLog.e("qqBaseActivity", 1, "unrecognized channel! shareChanel = " + i);
+          finish();
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("qqBaseActivity", 1, "commonShare failed! exception = ", localException);
+        return;
+      }
+      a((JSONObject)localObject);
+      return;
+      b(localException);
+      return;
+      c(localException);
+      return;
+      d(localException);
+      return;
+    }
+  }
+  
+  private void c(JSONObject paramJSONObject)
+  {
+    if (!bdin.g(this))
+    {
+      QQToast.a(this, 1, 2131694768, 1).a();
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = String.valueOf(System.currentTimeMillis());
+    String str1 = paramJSONObject.optString("shareLink");
+    String str2 = paramJSONObject.optString("shareTitle");
+    String str3 = paramJSONObject.optString("shareDesc");
+    a(paramJSONObject.optString("shareIcon"), new bbkv(this, str2, str3, str1));
+    finish();
+  }
+  
+  private void d(JSONObject paramJSONObject)
+  {
+    if (!bdin.g(this))
+    {
+      QQToast.a(this, 1, 2131694768, 1).a();
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = String.valueOf(System.currentTimeMillis());
+    String str1 = paramJSONObject.optString("shareLink");
+    String str2 = paramJSONObject.optString("shareTitle");
+    String str3 = paramJSONObject.optString("shareDesc");
+    a(paramJSONObject.optString("shareIcon"), new bbkw(this, str2, str3, str1));
+    finish();
   }
   
   public void a(int paramInt, String paramString)
@@ -57,13 +214,13 @@ public class TroopCreateLogicActivity
       finish();
       return;
     }
-    Object localObject = (TroopManager)this.app.getManager(51);
+    Object localObject = (TroopManager)this.app.getManager(52);
     if (localObject == null)
     {
       finish();
       return;
     }
-    TroopInfo localTroopInfo = ((TroopManager)localObject).a(paramString);
+    TroopInfo localTroopInfo = ((TroopManager)localObject).b(paramString);
     if (localTroopInfo == null)
     {
       finish();
@@ -74,7 +231,7 @@ public class TroopCreateLogicActivity
     try
     {
       if (!TextUtils.isEmpty(localTroopInfo.mRichFingerMemo)) {
-        paramString = new QQText(localTroopInfo.mRichFingerMemo, 11).a();
+        paramString = new bamp(localTroopInfo.mRichFingerMemo, 11).a();
       }
       ((JSONObject)localObject).put("classify", localTroopInfo.dwGroupClassExt);
       ((JSONObject)localObject).put("name", localTroopInfo.troopname);
@@ -98,10 +255,10 @@ public class TroopCreateLogicActivity
   
   public void b(String paramString)
   {
-    if ((this.app == null) || (this.jdField_a_of_type_ComTencentMobileqqTroopshareTroopShareUtility == null) || (TextUtils.isEmpty(paramString))) {
+    if ((this.app == null) || (this.jdField_a_of_type_Bcxl == null) || (TextUtils.isEmpty(paramString))) {
       finish();
     }
-    label75:
+    label76:
     do
     {
       return;
@@ -111,7 +268,7 @@ public class TroopCreateLogicActivity
         try
         {
           if (Long.parseLong(paramString) > 0L) {
-            break label75;
+            break label76;
           }
           finish();
           return;
@@ -134,15 +291,15 @@ public class TroopCreateLogicActivity
         return;
       }
       this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin = paramString;
-      localTroopManager = (TroopManager)this.app.getManager(51);
+      localTroopManager = (TroopManager)this.app.getManager(52);
     } while (localTroopManager == null);
-    paramString = localTroopManager.a(paramString);
+    paramString = localTroopManager.b(paramString);
     if (paramString != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.updateForTroopChatSetting(paramString, getResources(), this.app.getCurrentAccountUin());
       this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember = true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopshareTroopShareUtility.a(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
+    this.jdField_a_of_type_Bcxl.a(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
   }
   
   public void c(String paramString) {}
@@ -220,7 +377,7 @@ public class TroopCreateLogicActivity
       paramString.troopuin = ((String)localObject2);
       paramString.troopname = ((String)localObject1);
       paramString.Administrator = this.app.getCurrentAccountUin();
-      localObject1 = (TroopManager)this.app.getManager(51);
+      localObject1 = (TroopManager)this.app.getManager(52);
       if (localObject1 != null) {
         ((TroopManager)localObject1).b(paramString);
       }
@@ -228,45 +385,68 @@ public class TroopCreateLogicActivity
     finish();
   }
   
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     switch (paramInt1)
     {
-    default: 
-      super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     }
-    int i;
-    Object localObject;
-    do
-    {
-      return;
-      if (paramInt2 != -1) {
-        break;
-      }
-      i = getResources().getDimensionPixelSize(2131558448);
-      QQToast.a(this, 2, getString(2131430463), 0).b(i);
-      localObject = StructMsgFactory.a(paramIntent.getByteArrayExtra("stuctmsg_bytes"));
-    } while (localObject == null);
-    if ((localObject instanceof StructMsgForImageShare)) {}
     for (;;)
     {
-      if (TextUtils.isEmpty(paramIntent.getExtras().getString("share_comment_message"))) {
-        localObject = ((AbsStructMsg)localObject).mCommentText;
+      super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
+      int i;
+      Object localObject;
+      do
+      {
+        return;
+        if (paramInt2 != -1) {
+          break;
+        }
+        i = getResources().getDimensionPixelSize(2131298914);
+        QQToast.a(this, 2, getString(2131696957), 0).b(i);
+        localObject = azvd.a(paramIntent.getByteArrayExtra("stuctmsg_bytes"));
+      } while (localObject == null);
+      if ((localObject instanceof StructMsgForImageShare)) {}
+      String str;
+      for (;;)
+      {
+        if (TextUtils.isEmpty(paramIntent.getExtras().getString("share_comment_message"))) {
+          localObject = ((AbsStructMsg)localObject).mCommentText;
+        }
+        this.jdField_a_of_type_Boolean = false;
+        finish();
+        break;
+        str = paramIntent.getStringExtra("uin");
+        i = paramIntent.getIntExtra("uintype", -1);
+        bdna.a(this.app, str, i, (AbsStructMsg)localObject, null);
       }
-      this.jdField_a_of_type_Boolean = false;
+      if (paramInt2 == -1)
+      {
+        localObject = azvd.a(paramIntent.getByteArrayExtra("stuctmsg_bytes"));
+        str = paramIntent.getStringExtra("uin");
+        i = paramIntent.getIntExtra("uintype", -1);
+        if ((localObject == null) || (TextUtils.isEmpty(str))) {
+          break label244;
+        }
+        bdna.a(this.app, str, i, (AbsStructMsg)localObject, null);
+      }
+      for (;;)
+      {
+        finish();
+        break;
+        label244:
+        if (QLog.isColorLevel()) {
+          QLog.e("qqBaseActivity", 2, "friendUin = " + str + " structMsg = " + localObject);
+        }
+      }
       finish();
-      break;
-      String str = paramIntent.getStringExtra("uin");
-      i = paramIntent.getIntExtra("uintype", -1);
-      ShareMsgHelper.a(this.app, str, i, (AbsStructMsg)localObject, null);
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic = ((TroopCreateLogic)this.app.getManager(31));
-    this.jdField_a_of_type_ComTencentMobileqqTroopshareTroopShareUtility = new TroopShareUtility(this, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
+    this.jdField_a_of_type_Bbqu = ((bbqu)this.app.getManager(32));
+    this.jdField_a_of_type_Bcxl = new bcxl(this, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
     paramBundle = getIntent();
     int i = paramBundle.getIntExtra("type", -1);
     if (i == 1) {
@@ -274,7 +454,7 @@ public class TroopCreateLogicActivity
     }
     for (;;)
     {
-      TroopTechReportUtils.a("TroopCreateLogicActivity", new String[] { "" + i });
+      bcpr.a("TroopCreateLogicActivity", new String[] { "" + i });
       return true;
       if (i == 2)
       {
@@ -292,19 +472,19 @@ public class TroopCreateLogicActivity
       {
         String str = paramBundle.getStringExtra("troop_location");
         long l = paramBundle.getLongExtra("troop_uin", 0L);
-        this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
-        ((TroopHandler)this.app.a(20)).a(l, TextUtils.isEmpty(str), str);
+        this.app.addObserver(this.jdField_a_of_type_Ameq);
+        ((amdu)this.app.a(20)).a(l, TextUtils.isEmpty(str), str);
       }
       else if (i == 6)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic == null)
+        if (this.jdField_a_of_type_Bbqu == null)
         {
           finish();
         }
         else
         {
           paramBundle = new Intent();
-          paramBundle.putExtra("has_head", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.a().jdField_a_of_type_Boolean);
+          paramBundle.putExtra("has_head", this.jdField_a_of_type_Bbqu.a().jdField_a_of_type_Boolean);
           setResult(-1, paramBundle);
           finish();
         }
@@ -313,6 +493,18 @@ public class TroopCreateLogicActivity
       {
         d(paramBundle.getStringExtra("cfg"));
       }
+      else if (i == 8)
+      {
+        c();
+      }
+      else if (i == 9)
+      {
+        a();
+      }
+      else if (i == 10)
+      {
+        b();
+      }
       else
       {
         finish();
@@ -320,35 +512,35 @@ public class TroopCreateLogicActivity
     }
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopshareTroopShareUtility != null)
+    this.jdField_a_of_type_Bbqu = null;
+    if (this.jdField_a_of_type_Bcxl != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopshareTroopShareUtility.f();
-      this.jdField_a_of_type_ComTencentMobileqqTroopshareTroopShareUtility = null;
+      this.jdField_a_of_type_Bcxl.f();
+      this.jdField_a_of_type_Bcxl = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver != null)
+    if (this.jdField_a_of_type_Ameq != null)
     {
-      this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = null;
+      this.app.removeObserver(this.jdField_a_of_type_Ameq);
+      this.jdField_a_of_type_Ameq = null;
     }
   }
   
   public void e(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic != null)
+    if (this.jdField_a_of_type_Bbqu != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.a(paramString, 0);
-      this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.a(this);
+      this.jdField_a_of_type_Bbqu.a(paramString, 0);
+      this.jdField_a_of_type_Bbqu.b(this);
     }
   }
   
   public void f(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.a();
+    if (this.jdField_a_of_type_Bbqu != null) {
+      this.jdField_a_of_type_Bbqu.a();
     }
     if (TextUtils.isEmpty(paramString))
     {
@@ -368,7 +560,7 @@ public class TroopCreateLogicActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,43 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.RiskInfoItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import mqq.util.WeakReference;
 
-public final class tqw
-  implements Parcelable.Creator
+class tqw
+  implements View.OnClickListener
 {
-  public RiskInfoItem a(Parcel paramParcel)
-  {
-    return new RiskInfoItem(paramParcel, null);
-  }
+  tqw(tqt paramtqt) {}
   
-  public RiskInfoItem[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new RiskInfoItem[paramInt];
+    tqy localtqy;
+    if (tqt.a(this.a) != null)
+    {
+      localtqy = (tqy)tqt.a(this.a).get();
+      if (localtqy == null) {}
+    }
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131373204: 
+      localtqy.a(tqz.a);
+      return;
+    case 2131373200: 
+      localtqy.a(tqz.b);
+      return;
+    case 2131373201: 
+      localtqy.a(tqz.c);
+      return;
+    case 2131373203: 
+      localtqy.a(tqz.d);
+      return;
+    }
+    localtqy.a(tqz.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tqw
  * JD-Core Version:    0.7.0.1
  */

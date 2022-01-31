@@ -1,62 +1,115 @@
 package com.tencent.qphone.base.util;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import LBS.Attr;
+import LBS.Cell;
+import LBS.GPS;
+import LBS.LBSInfo;
+import LBS.Wifi;
+import android.content.Context;
+import android.net.wifi.ScanResult;
+import android.net.wifi.WifiManager;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class e
 {
-  public static int a(int paramInt)
-  {
-    return (0xFF00 & paramInt) >> 8 | (paramInt & 0xFF) << 8;
-  }
+  private static final String a = "LocationUtil";
+  private static TelephonyManager b;
+  private static GPS c = null;
+  private static ArrayList d = null;
+  private static PhoneStateListener e;
   
-  public static String a(String paramString)
+  public static LBSInfo a(Context paramContext)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramString != null)
+    localArrayList = new ArrayList();
+    try
     {
-      int i = 0;
-      if (i < paramString.length())
+      Object localObject = (WifiManager)paramContext.getSystemService("wifi");
+      if (localObject != null)
       {
-        String str = Integer.toHexString(paramString.charAt(i));
-        if (str.length() % 2 == 0) {
-          localStringBuilder.append(str);
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          localStringBuilder.append("0").append(str);
+        localObject = ((WifiManager)localObject).getScanResults();
+        if ((localObject != null) && (((List)localObject).size() > 0)) {
+          localObject = ((List)localObject).iterator();
         }
       }
+      for (;;)
+      {
+        ScanResult localScanResult;
+        if (((Iterator)localObject).hasNext())
+        {
+          localScanResult = (ScanResult)((Iterator)localObject).next();
+          if (localScanResult.level <= -70) {
+            continue;
+          }
+          if (localArrayList.size() <= 20) {}
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("LocationUtil", 2, localArrayList.toString());
+          }
+          b = (TelephonyManager)paramContext.getSystemService("phone");
+          c();
+          b = (TelephonyManager)paramContext.getSystemService("phone");
+          b.listen(e, 256);
+          b.listen(e, 16);
+          if (b.getCellLocation() != null) {
+            e.onCellLocationChanged(b.getCellLocation());
+          }
+          paramContext = new Attr(b.getDeviceId(), b.getSubscriberId(), "");
+          if (QLog.isColorLevel()) {
+            QLog.i("LocationUtil", 2, paramContext.toString());
+          }
+          c = new GPS();
+          return new LBSInfo(c, localArrayList, d, paramContext);
+        }
+        long l = 0L;
+        if (!TextUtils.isEmpty(localScanResult.BSSID)) {
+          l = Long.parseLong(localScanResult.BSSID.replace(":", ""), 16);
+        }
+        localArrayList.add(new Wifi(l, (short)localScanResult.level));
+      }
+      return new LBSInfo(new GPS(), localArrayList, d, null);
     }
-    return localStringBuilder.toString();
-  }
-  
-  public static InetAddress a(long paramLong)
-    throws UnknownHostException
-  {
-    int i = (byte)(int)(paramLong >> 24 & 0xFF);
-    int j = (byte)(int)(paramLong >> 16 & 0xFF);
-    int k = (byte)(int)(paramLong >> 8 & 0xFF);
-    return InetAddress.getByAddress(new byte[] { (byte)(int)(paramLong & 0xFF), k, j, i });
-  }
-  
-  public static final long b(String paramString)
-  {
-    Matcher localMatcher = Pattern.compile("((\\d{1,3}\\.){3}\\d{1,3})").matcher(paramString);
-    if (!localMatcher.find())
+    catch (Throwable paramContext)
     {
-      QLog.d("MSF.C.NetConnTag", 1, "ip not match:" + paramString);
-      return -2L;
+      if (QLog.isColorLevel()) {
+        QLog.e("LocationUtil", 2, paramContext.getMessage());
+      }
     }
-    paramString = localMatcher.group(1).split("\\.");
-    long l1 = Long.parseLong(paramString[3]);
-    long l2 = Long.parseLong(paramString[2]);
-    long l3 = Long.parseLong(paramString[1]);
-    return Long.parseLong(paramString[0]) + ((l1 << 24) + (l2 << 16) + (l3 << 8));
+  }
+  
+  private static void a(Cell paramCell)
+  {
+    if ((paramCell == null) || (d == null)) {
+      break label10;
+    }
+    label10:
+    while (d.size() >= 3) {
+      return;
+    }
+    int i = 0;
+    for (;;)
+    {
+      if (i >= d.size()) {
+        break label60;
+      }
+      if (paramCell.iCellId == ((Cell)d.get(i)).iCellId) {
+        break;
+      }
+      i += 1;
+    }
+    label60:
+    d.add(paramCell);
+  }
+  
+  private static void c()
+  {
+    e = new f();
   }
 }
 

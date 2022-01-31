@@ -1,13 +1,16 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
-import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class eup
-  extends TroopMemberListActivity.ViewHolder
+  implements View.OnClickListener
 {
-  public CheckBox a;
+  public eup(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  private eup(FriendListInnerFrame paramFriendListInnerFrame) {}
+  public void onClick(View paramView)
+  {
+    this.a.q();
+  }
 }
 
 

@@ -4,14 +4,18 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class FileControlRsp
   extends JceStruct
 {
   static byte[] cache_biz_rsp;
+  static Map<Integer, DumpBussinessRsp> cache_dumpRsp;
   static ArrayList<stOffset> cache_offset_list;
   static stResult cache_result = new stResult();
   public byte[] biz_rsp = null;
+  public Map<Integer, DumpBussinessRsp> dumpRsp = null;
   public long offset = 0L;
   public ArrayList<stOffset> offset_list = null;
   public String redirect_ip = "";
@@ -25,13 +29,16 @@ public final class FileControlRsp
     cache_biz_rsp = (byte[])new byte[1];
     ((byte[])cache_biz_rsp)[0] = 0;
     cache_offset_list = new ArrayList();
-    stOffset localstOffset = new stOffset();
-    cache_offset_list.add(localstOffset);
+    Object localObject = new stOffset();
+    cache_offset_list.add(localObject);
+    cache_dumpRsp = new HashMap();
+    localObject = new DumpBussinessRsp();
+    cache_dumpRsp.put(Integer.valueOf(0), localObject);
   }
   
   public FileControlRsp() {}
   
-  public FileControlRsp(stResult paramstResult, String paramString1, long paramLong1, long paramLong2, byte[] paramArrayOfByte, ArrayList<stOffset> paramArrayList, String paramString2, int paramInt)
+  public FileControlRsp(stResult paramstResult, String paramString1, long paramLong1, long paramLong2, byte[] paramArrayOfByte, ArrayList<stOffset> paramArrayList, String paramString2, int paramInt, Map<Integer, DumpBussinessRsp> paramMap)
   {
     this.result = paramstResult;
     this.session = paramString1;
@@ -41,6 +48,7 @@ public final class FileControlRsp
     this.offset_list = paramArrayList;
     this.redirect_ip = paramString2;
     this.thread_num = paramInt;
+    this.dumpRsp = paramMap;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -53,6 +61,7 @@ public final class FileControlRsp
     this.offset_list = ((ArrayList)paramJceInputStream.read(cache_offset_list, 6, false));
     this.redirect_ip = paramJceInputStream.readString(7, false);
     this.thread_num = paramJceInputStream.read(this.thread_num, 8, false);
+    this.dumpRsp = ((Map)paramJceInputStream.read(cache_dumpRsp, 9, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -73,11 +82,14 @@ public final class FileControlRsp
       paramJceOutputStream.write(this.redirect_ip, 7);
     }
     paramJceOutputStream.write(this.thread_num, 8);
+    if (this.dumpRsp != null) {
+      paramJceOutputStream.write(this.dumpRsp, 9);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     SLICE_UPLOAD.FileControlRsp
  * JD-Core Version:    0.7.0.1
  */

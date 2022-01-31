@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public final class ResponseGetRecommendedList
   extends JceStruct
 {
-  static ArrayList cache_alreadyBindContacts;
-  static ArrayList cache_assistBindContacts;
-  static ArrayList cache_circleInfo;
+  static ArrayList<MobileContactsDetailInfo> cache_alreadyBindContacts;
+  static ArrayList<MobileContactsDetailInfo> cache_assistBindContacts;
+  static ArrayList<CircleFriendInfo> cache_circleInfo;
   static byte[] cache_sessionSid = (byte[])new byte[1];
   static int cache_type = 0;
   public long ConfigVersion;
@@ -19,10 +19,10 @@ public final class ResponseGetRecommendedList
   public long PopCloseCount;
   public long PopWindowsCount;
   public long PopWindowsTime;
-  public ArrayList alreadyBindContacts;
-  public ArrayList assistBindContacts;
+  public ArrayList<MobileContactsDetailInfo> alreadyBindContacts;
+  public ArrayList<MobileContactsDetailInfo> assistBindContacts;
   public long bindingTime;
-  public ArrayList circleInfo;
+  public ArrayList<CircleFriendInfo> circleInfo;
   public long lastUsedFlag = 1L;
   public String mobileNo = "";
   public String nationCode = "";
@@ -48,14 +48,14 @@ public final class ResponseGetRecommendedList
   
   public ResponseGetRecommendedList() {}
   
-  public ResponseGetRecommendedList(long paramLong1, long paramLong2, byte[] paramArrayOfByte, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3, String paramString1, String paramString2, String paramString3, long paramLong3, int paramInt, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, long paramLong9, long paramLong10)
+  public ResponseGetRecommendedList(long paramLong1, long paramLong2, byte[] paramArrayOfByte, ArrayList<MobileContactsDetailInfo> paramArrayList1, ArrayList<CircleFriendInfo> paramArrayList, ArrayList<MobileContactsDetailInfo> paramArrayList2, String paramString1, String paramString2, String paramString3, long paramLong3, int paramInt, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, long paramLong9, long paramLong10)
   {
     this.nextFlag = paramLong1;
     this.timeStamp = paramLong2;
     this.sessionSid = paramArrayOfByte;
     this.alreadyBindContacts = paramArrayList1;
-    this.circleInfo = paramArrayList2;
-    this.assistBindContacts = paramArrayList3;
+    this.circleInfo = paramArrayList;
+    this.assistBindContacts = paramArrayList2;
     this.nationCode = paramString1;
     this.mobileNo = paramString2;
     this.MobileUniqueNo = paramString3;

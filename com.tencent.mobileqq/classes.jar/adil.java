@@ -1,90 +1,54 @@
-import android.os.Handler;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import android.app.Dialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.music.QQPlayerService;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import cooperation.qwallet.plugin.PatternLockUtils;
 
 public class adil
-  implements ITMAssistantDownloadClientListener
+  implements View.OnClickListener
 {
-  public adil(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk) {}
+  public adil(MainFragment paramMainFragment, Dialog paramDialog) {}
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public void onClick(View paramView)
   {
-    UniformDownloaderAppBabySdk.b(this.a);
-    if (!UniformDownloaderAppBabySdk.a(this.a).post(new adim(this, paramString, paramLong1, paramLong2))) {
-      QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
-    }
-  }
-  
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    int i = 0;
-    int j = 0;
-    Object localObject2 = null;
-    QLog.i(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] inPDownloadSDKTaskStateChanged  state:[" + paramInt1 + "] errcode:[" + paramInt2 + "] errStr:[" + paramString2 + "] url:[" + paramString1 + "]");
-    String str = "";
-    Object localObject1;
-    if ((paramTMAssistantDownloadClient != null) && (4 == paramInt1))
+    QLog.flushLog();
+    boolean bool = ((CheckBox)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131364244)).isChecked();
+    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.d = bool;
+    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity(), MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getString(2131719121), "qqsetting_receivemsg_whenexit_key", bool);
+    SyncService.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.d);
+    int i = MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).a().b();
+    int j = MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).a().a();
+    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity().getSharedPreferences("unreadcount", 4).edit();
+    paramView.putInt("unread", i + j);
+    paramView.commit();
+    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.g();
+    MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).a = this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.d;
+    MainFragment.c = true;
+    if (QQPlayerService.a())
     {
-      try
-      {
-        localObject1 = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
-        i = 0;
-        paramTMAssistantDownloadClient = str;
-      }
-      catch (Exception paramTMAssistantDownloadClient)
-      {
-        do
-        {
-          for (;;)
-          {
-            paramTMAssistantDownloadClient.printStackTrace();
-            paramTMAssistantDownloadClient = UniformDownloader.a(22);
-            localObject1 = null;
-            j = 22;
-            i = 1;
-            continue;
-            localObject1 = ((TMAssistantDownloadTaskInfo)localObject1).mSavePath;
-          }
-        } while ((UniformDownloaderAppBabySdk.a(this.a) == null) || (UniformDownloaderAppBabySdk.a(this.a).post(new adio(this, paramString1, paramInt1, paramInt2, paramString2, (String)localObject1))));
-        QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
-        return;
-      }
-      if (localObject1 == null) {
-        localObject1 = localObject2;
-      }
+      paramView = new Intent();
+      paramView.setAction("qqplayer_exit_action");
+      this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity().sendBroadcast(paramView);
     }
-    for (;;)
-    {
-      UniformDownloaderAppBabySdk.b(this.a);
-      if (i != 0)
-      {
-        if (!UniformDownloaderAppBabySdk.a(this.a).post(new adin(this, paramString1, j, paramTMAssistantDownloadClient))) {
-          QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. haveErr and thread error!!");
-        }
-        return;
-      }
-      localObject1 = null;
-      paramTMAssistantDownloadClient = "";
-      j = 0;
-    }
-  }
-  
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
-  {
-    QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] ABSdkdownload service invalid ");
-    UniformDownloaderAppBabySdk.b(this.a);
-    if (!UniformDownloaderAppBabySdk.a(this.a).post(new adip(this))) {
-      QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDwonloadSDKServiceInvalid. thread error!!");
-    }
+    PatternLockUtils.setFirstEnterAfterLoginState(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity(), MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).getCurrentAccountUin(), true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity().finish();
+    azqs.b(MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment), "CliOper", "", "", "Quit", "Setting_Quit", 0, 0, "0", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adil
  * JD-Core Version:    0.7.0.1
  */

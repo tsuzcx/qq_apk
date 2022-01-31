@@ -1,59 +1,27 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ReportUtil;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.qphone.base.util.QLog;
 
-class mnp
-  extends PublicAccountObserver
+public class mnp
+  implements lft
 {
-  mnp(mnm parammnm) {}
+  public mnp(VideoLayerUI paramVideoLayerUI, int paramInt, boolean paramBoolean) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a()
   {
-    mnm.a(this.a, true);
-    Context localContext = this.a.jdField_a_of_type_AndroidViewView.getContext();
-    ArticleInfo localArticleInfo = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.c()) {
-      paramString = "2";
-    }
-    for (;;)
+    if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMgp != null) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMgp.length > this.jdField_a_of_type_Int))
     {
-      paramString = ReadInJoyUtils.a(localContext, localArticleInfo, 0, paramString);
-      int i;
-      if (paramBoolean) {
-        i = 1;
-      }
-      try
-      {
-        for (;;)
-        {
-          paramString.put("is_done", i);
-          ReportUtil.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X800898B", paramString.toString());
-          return;
-          paramString = "1";
-          break;
-          i = 2;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-      }
+      mth.a("switch_camera", "switchCameraFristData", 3, new Object[0]);
+      VideoLayerUI.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMgp[this.jdField_a_of_type_Int], this.jdField_a_of_type_Boolean);
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "switchCameraFristData Error : Index = " + this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mnp
  * JD-Core Version:    0.7.0.1
  */

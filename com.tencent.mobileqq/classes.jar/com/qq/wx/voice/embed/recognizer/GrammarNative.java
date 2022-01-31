@@ -4,6 +4,8 @@ public class GrammarNative
 {
   public static native int begin();
   
+  public static native int destroy();
+  
   public static native int end();
   
   public static native float getResultCfd();
@@ -16,7 +18,7 @@ public class GrammarNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.qq.wx.voice.embed.recognizer.GrammarNative
  * JD-Core Version:    0.7.0.1
  */

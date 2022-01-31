@@ -1,50 +1,28 @@
-import android.view.MotionEvent;
+import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
 public class vto
-  implements View.OnTouchListener
+  implements vvs
 {
-  public vto(GameRoomChatPie paramGameRoomChatPie) {}
+  public vto(StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(@NonNull View paramView, int paramInt)
   {
-    int i = paramMotionEvent.getAction();
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
-    if (i == 0) {
-      if ((paramView != null) && (paramView.d()))
-      {
-        this.a.j.setText("正在发言");
-        this.a.j.setPressed(true);
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.b();
-        paramView.a(true);
-      }
-    }
-    do
+    if (bnle.a)
     {
-      return true;
-      this.a.o(false);
-      return true;
-      if ((i != 3) && (i != 1)) {
-        break;
-      }
-      this.a.j.setText("按住发言");
-      this.a.j.setPressed(false);
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.c();
-    } while (paramView == null);
-    paramView.a(false);
-    return true;
-    return false;
+      paramInt = StoryPlayerGroupHolder.a(this.a);
+      paramView = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+      paramView.bottomMargin = paramInt;
+      this.a.a.setLayoutParams(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vto
  * JD-Core Version:    0.7.0.1
  */

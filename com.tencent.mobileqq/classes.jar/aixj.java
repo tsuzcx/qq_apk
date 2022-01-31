@@ -1,109 +1,120 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.tribe.view.TEditText.OnSelectionChangedListener;
-import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.TitlePrefixItem;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.util.InputMethodUtil;
+import Wallet.RedPackGrapInfo;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.ViewGroup;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbListAdapter.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.List;
 
 public class aixj
-  implements TEditText.OnSelectionChangedListener
+  extends RecyclerView.Adapter<aixk>
 {
-  public aixj(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<RedPackGrapInfo> jdField_a_of_type_JavaUtilList;
   
-  public void a(int paramInt1, int paramInt2)
+  public aixj(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList, Context paramContext)
   {
-    int m = 1;
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.getText().length();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.getText().length() <= 0) {
-      return;
-    }
-    int j = this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$TitlePrefixItem.b.length();
-    int k = this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$TitlePrefixItem.a.length();
-    int n = this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$TitlePrefixItem.c.length() + (j + k);
-    if ((paramInt1 < this.a.K.length() + n) && (paramInt2 < this.a.K.length() + n))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public aixk a(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new aixk(this, new aixl(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList, this.jdField_a_of_type_AndroidContentContext, new afzb(TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), this.jdField_a_of_type_AndroidContentContext, TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList))));
+  }
+  
+  public void a(aixk paramaixk, int paramInt)
+  {
+    RedPackGrapInfo localRedPackGrapInfo = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(paramaixk.getPosition());
+    if (localRedPackGrapInfo == null) {}
+    do
     {
-      if (TroopBarPublishActivity.a(this.a).size() > 1)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.clearFocus();
-        InputMethodUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText);
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
       return;
-    }
-    if (paramInt1 < 0) {
-      if (paramInt2 > this.a.K.length() + n)
-      {
-        paramInt1 = paramInt2;
-        label195:
-        if (paramInt1 <= i) {
-          break label431;
-        }
-      }
-    }
+      paramaixk = paramaixk.a;
+    } while (paramaixk == null);
+    paramaixk.a(localRedPackGrapInfo);
+  }
+  
+  void a(String paramString)
+  {
     for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
-      return;
-      paramInt1 = this.a.K.length() + n;
-      break label195;
-      if (paramInt2 < 0) {
-        if (paramInt1 > this.a.K.length() + n) {
-          label250:
-          if (paramInt1 <= i) {
-            break label426;
-          }
-        }
-      }
-      for (;;)
+      try
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
+        if (this.jdField_a_of_type_JavaUtilList == null) {
+          break label233;
+        }
+        if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+          break label234;
+        }
         return;
-        paramInt1 = this.a.K.length() + n;
-        break label250;
-        if (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$TitlePrefixItem.b)) {
-          break;
-        }
-        k = 0;
-        j = paramInt1;
-        if (paramInt1 < this.a.K.length() + n)
-        {
-          j = n + this.a.K.length();
-          k = 1;
-        }
-        if (paramInt2 < this.a.K.length() + n)
-        {
-          paramInt1 = n + this.a.K.length();
-          k = 1;
-        }
-        for (;;)
-        {
-          paramInt2 = j;
-          if (j > i)
-          {
-            k = 1;
-            paramInt2 = i;
-          }
-          if (paramInt1 > i) {
-            k = m;
-          }
-          while (k != 0)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(paramInt2, i);
-            return;
-            i = paramInt1;
-          }
-          break;
-          paramInt1 = paramInt2;
-        }
-        label426:
-        i = paramInt1;
       }
-      label431:
-      i = paramInt1;
+      catch (Throwable paramString)
+      {
+        RedPackGrapInfo localRedPackGrapInfo;
+        int j;
+        if (!QLog.isColorLevel()) {
+          break label233;
+        }
+        QLog.e(TroopUnAccalimedRedPacketList.b(), 2, "removeHbList occur an exception: " + paramString);
+        return;
+        i += 1;
+        continue;
+        TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList).postDelayed(new TroopUnAccalimedRedPacketList.HbListAdapter.1(this), 300L);
+        return;
+        i = 0;
+        continue;
+      }
+      if (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        localRedPackGrapInfo = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+        if ((localRedPackGrapInfo != null) && (localRedPackGrapInfo.sBiilNo.equals(paramString)))
+        {
+          j = i;
+          if (i == this.jdField_a_of_type_JavaUtilList.size()) {
+            j = i - 1;
+          }
+          this.jdField_a_of_type_JavaUtilList.remove(j);
+          notifyItemRemoved(j);
+          notifyItemRangeChanged(j, this.jdField_a_of_type_JavaUtilList.size());
+          if (TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList) == null) {
+            break label233;
+          }
+          if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
+            continue;
+          }
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList.a == null) {
+            break label233;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList.a.dismiss();
+        }
+      }
+      label233:
+      return;
+      label234:
+      int i = 0;
     }
+  }
+  
+  void a(List<RedPackGrapInfo> paramList)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

@@ -1,58 +1,83 @@
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.text.method.PasswordTransformationMethod;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.TroopInfoManager;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
+import com.tencent.qphone.base.remote.SimpleAccount;
 import java.util.List;
-import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.AppInfo;
-import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.RspBody;
 
-public final class ajnq
-  implements Runnable
+public class ajnq
+  implements TextWatcher
 {
-  public ajnq(QQAppInterface paramQQAppInterface, String paramString) {}
+  public ajnq(LoginView paramLoginView) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    TroopInfoManager localTroopInfoManager = (TroopInfoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36);
-    Object localObject = localTroopInfoManager.a(this.jdField_a_of_type_JavaLangString);
-    if (localObject != null) {
-      try
+    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null) {
+      LoginView.a(this.a, null);
+    }
+    String str;
+    SimpleAccount localSimpleAccount;
+    for (;;)
+    {
+      return;
+      if (paramCharSequence != null)
       {
-        oidb_0xaf4.RspBody localRspBody = new oidb_0xaf4.RspBody();
-        localRspBody.mergeFrom((byte[])localObject);
-        localObject = localRspBody.infos.get();
-        if ((localObject == null) || (((List)localObject).size() == 0))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("hw_troop", 2, "setAIOHomeworkBtnRedPoint: appList == null || appList.size() == 0");
-          }
+        str = paramCharSequence.toString();
+        if ((str == null) || (str.length() == 0) || (this.a.jdField_a_of_type_JavaUtilList == null)) {
+          break;
         }
-        else
+        paramInt1 = 0;
+        while (paramInt1 < this.a.jdField_a_of_type_JavaUtilList.size())
         {
-          Iterator localIterator = ((List)localObject).iterator();
-          while (localIterator.hasNext())
-          {
-            oidb_0xaf4.AppInfo localAppInfo = (oidb_0xaf4.AppInfo)localIterator.next();
-            if (localAppInfo.appid.get() == 1104445552L)
-            {
-              localAppInfo.push_red_point.set(0);
-              localRspBody.infos.set((List)localObject);
-              localTroopInfoManager.a(this.jdField_a_of_type_JavaLangString, localRspBody.toByteArray());
-              return;
-            }
+          localSimpleAccount = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(paramInt1);
+          if ((localSimpleAccount != null) && (localSimpleAccount.getUin() != null)) {
+            break label110;
+          }
+          paramInt1 += 1;
+        }
+      }
+    }
+    label110:
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
+    {
+      paramCharSequence = localSimpleAccount.getUin();
+      label126:
+      if (!str.equals(paramCharSequence)) {
+        break label298;
+      }
+      if ((localSimpleAccount != null) && (localSimpleAccount.isLogined())) {
+        if (!LoginView.h(this.a))
+        {
+          LoginView.i(this.a, true);
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+          paramCharSequence = this.a.c;
+          if ((!LoginView.d(this.a)) && (!LoginView.e(this.a)) && (!LoginView.f(this.a))) {
+            break label300;
           }
         }
       }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("hw_troop", 2, "setAIOHomeworkBtnRedPoint: InvalidProtocolBufferMicroException.");
-        }
-      }
+    }
+    label298:
+    label300:
+    for (paramInt1 = 2130846524;; paramInt1 = 2130844304)
+    {
+      paramCharSequence.setImageResource(paramInt1);
+      this.a.c.setContentDescription(alud.a(2131706745));
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("!@#ewaGbhkc$!!=");
+      this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = localSimpleAccount;
+      LoginView.c(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setClearButtonVisible(false);
+      return;
+      paramCharSequence = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(localSimpleAccount.getUin());
+      break label126;
+      break;
     }
   }
 }

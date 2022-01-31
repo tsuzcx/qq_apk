@@ -1,37 +1,33 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.contact.newfriend.BaseNewFriendView.INewFriendContext;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import com.tencent.mobileqq.service.circle.ISwitchObserver;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import com.tencent.mobileqq.activity.messagesearch.SearchHistoryAdapter;
 
 public class ejm
-  implements ISwitchObserver
+  implements TextWatcher
 {
-  public ejm(NewFriendActivity paramNewFriendActivity) {}
+  public ejm(MessageSearchDialog paramMessageSearchDialog) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((!this.a.isFinishing()) && (NewFriendActivity.a(this.a) != null))
-    {
-      if (!paramBoolean1) {
-        break label92;
-      }
-      this.a.c = paramBoolean2;
-      if (!paramBoolean2) {
-        break label79;
-      }
+    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    if (this.a.jdField_a_of_type_Boolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter.a(paramEditable);
     }
-    label79:
-    for (String str = this.a.getString(2131561652);; str = this.a.getString(2131562507))
+    this.a.jdField_a_of_type_Boolean = true;
+    if (paramEditable.length() == 0)
     {
-      str = this.a.getString(2131562212, new Object[] { str });
-      NewFriendActivity.a(this.a).a(str, 2);
+      this.a.findViewById(2131233088).setVisibility(8);
       return;
     }
-    label92:
-    NewFriendActivity.a(this.a).a(this.a.getResources().getString(2131562080), 1);
+    this.a.findViewById(2131233088).setVisibility(0);
   }
   
-  public void b(boolean paramBoolean1, boolean paramBoolean2) {}
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,47 +1,24 @@
-import com.tencent.component.network.utils.thread.AsyncTask;
-import com.tencent.component.network.utils.thread.internel.ArrayDeque;
-import java.util.concurrent.Executor;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class plr
-  implements Executor
+class plr
+  implements Animation.AnimationListener
 {
-  final ArrayDeque jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque = new ArrayDeque();
-  Runnable jdField_a_of_type_JavaLangRunnable;
+  plr(plq paramplq, View paramView, Animation paramAnimation) {}
   
-  protected void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    try
-    {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque.poll();
-      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
-      if (localRunnable != null) {
-        AsyncTask.a.execute(this.jdField_a_of_type_JavaLangRunnable);
-      }
-      return;
-    }
-    finally {}
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
   
-  public void execute(Runnable paramRunnable)
-  {
-    try
-    {
-      this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque.offer(new pls(this, paramRunnable));
-      if (this.jdField_a_of_type_JavaLangRunnable == null) {
-        a();
-      }
-      return;
-    }
-    finally
-    {
-      paramRunnable = finally;
-      throw paramRunnable;
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     plr
  * JD-Core Version:    0.7.0.1
  */

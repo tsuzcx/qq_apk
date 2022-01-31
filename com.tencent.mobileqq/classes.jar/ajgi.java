@@ -1,18 +1,12 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troop.homework.config.BeginnerGuideDownloadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ajgi
-  implements Runnable
+class ajgi
+  implements DialogInterface.OnClickListener
 {
-  public ajgi(BeginnerGuideDownloadManager paramBeginnerGuideDownloadManager, Handler paramHandler, int paramInt, boolean paramBoolean) {}
+  ajgi(ajgg paramajgg) {}
   
-  public void run()
-  {
-    if ((!BeginnerGuideDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkConfigBeginnerGuideDownloadManager, this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean)) && (QLog.isColorLevel())) {
-      QLog.d("BeginnerGuideDownloadManager", 2, "postDownload return false");
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

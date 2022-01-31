@@ -1,42 +1,17 @@
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView.Callback;
-import com.tencent.mobileqq.leba.view.LebaFeedsArkView;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
 
 public class aebe
-  implements ArkAppView.Callback
+  implements avzl
 {
-  public aebe(LebaFeedsArkView paramLebaFeedsArkView) {}
+  public aebe(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public void a()
+  public void a(int paramInt, avzm paramavzm)
   {
-    ViewGroup.LayoutParams localLayoutParams;
-    StringBuilder localStringBuilder;
-    if (this.a.a != null)
+    if ((!TextUtils.isEmpty(TextPreviewTranslateActivity.a(this.a))) && (!TextPreviewTranslateActivity.a(this.a).equals(paramavzm.b)))
     {
-      localLayoutParams = this.a.a.getLayoutParams();
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("ark view loadSucc, lp.height=");
-        if (localLayoutParams == null) {
-          break label90;
-        }
-        localObject = Integer.valueOf(localLayoutParams.height);
-        localStringBuilder = localStringBuilder.append(localObject).append(", lp.width=");
-        if (localLayoutParams == null) {
-          break label96;
-        }
-      }
-    }
-    label90:
-    label96:
-    for (Object localObject = Integer.valueOf(localLayoutParams.width);; localObject = "null")
-    {
-      QLog.i("LebaFeedsArkView", 2, localObject);
-      return;
-      localObject = "null";
-      break;
+      TextPreviewTranslateActivity.a(this.a, paramavzm.b);
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
     }
   }
 }

@@ -1,33 +1,30 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class ssq
-  implements IphonePickerView.IphonePickListener
+class ssq
+  extends alwx
 {
-  public ssq(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  ssq(ssp paramssp) {}
   
-  public void onConfirmBtClicked()
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("ServiceAccountFolderManager", 2, "onUpdateSendMsgError->uin:" + paramString1 + ", type:" + paramInt1 + ", uniseq:" + paramLong2 + ", errorCode:" + paramInt2);
     }
+    ssp.a(this.a, paramString1);
   }
   
-  public void onItemSelected(int paramInt1, int paramInt2)
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    if (paramInt2 == 0) {}
-    for (paramInt1 = 0;; paramInt1 = 1)
-    {
-      this.a.c = true;
-      this.a.a(paramInt1, true);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ServiceAccountFolderManager", 2, "onSendResult->puin:" + paramString + ", isSuccess:" + paramBoolean);
     }
+    ssp.a(this.a, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ssq
  * JD-Core Version:    0.7.0.1
  */

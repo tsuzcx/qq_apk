@@ -1598,7 +1598,7 @@ public class ScrollView
       return;
     }
     this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838101);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838103);
   }
   
   public void setEdgeEffectEnabled(boolean paramBoolean)

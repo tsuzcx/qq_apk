@@ -1,59 +1,18 @@
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.like.PraiseManager;
-import com.tencent.mobileqq.profile.vote.VoteHelper;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
 
-public class agsv
-  implements Runnable
+class agsv
+  implements bhuk
 {
-  public agsv(VoteHelper paramVoteHelper, long paramLong, int paramInt, boolean paramBoolean) {}
+  agsv(agso paramagso, bhuf parambhuf) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    int j = 2;
-    boolean bool = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a.getManager(50)).b(Long.toString(this.jdField_a_of_type_Long));
-    int i;
-    if (this.jdField_a_of_type_Int == 2) {
-      if (bool)
-      {
-        i = 5;
-        if (PraiseManager.a(this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a) <= 0) {
-          break label134;
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          break label129;
-        }
-      }
-    }
-    for (;;)
-    {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a, "CliOper", "", "", "P_prof", "Prof_good", i, 1, j, "0", "1", this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a.getCurrentAccountUin(), Long.toString(this.jdField_a_of_type_Long));
-      return;
-      i = 6;
-      break;
-      if (bool)
-      {
-        i = 7;
-        break;
-      }
-      i = 8;
-      break;
-      label129:
-      j = 3;
-      continue;
-      label134:
-      if (this.jdField_a_of_type_Boolean) {
-        j = 0;
-      } else {
-        j = 1;
-      }
-    }
+    agso.a(this.jdField_a_of_type_Agso, paramView, paramInt, this.jdField_a_of_type_Bhuf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agsv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,19 @@
-import android.os.AsyncTask;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import java.io.IOException;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.activity.qwallet.voice.KSongMicView;
 
 public class aivx
-  extends AsyncTask
+  extends bewx
 {
-  public aivx(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, URLDrawable paramURLDrawable, String paramString) {}
+  public aivx(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  protected String a(Void... paramVarArgs)
+  public void a()
   {
-    try
-    {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
-      if (paramVarArgs != null)
-      {
-        ImageUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, paramVarArgs);
-        return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131434582) + " " + paramVarArgs;
-      }
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131434583);
-      return paramVarArgs;
+    super.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongMicView.a();
+    this.a.a(alud.a(2131713715));
+    if (this.a.jdField_a_of_type_Ajfi != null) {
+      this.a.jdField_a_of_type_Ajfi.b();
     }
-    catch (IOException paramVarArgs)
-    {
-      return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131434583);
-    }
-    catch (OutOfMemoryError paramVarArgs) {}
-    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131434583);
-  }
-  
-  protected void a(String paramString)
-  {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getTitleBarHeight());
   }
 }
 

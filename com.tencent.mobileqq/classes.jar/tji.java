@@ -1,44 +1,45 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemNewFriendMsgData;
-import com.tencent.mobileqq.app.NewFriendManager.INewFriendListener;
-import com.tencent.mobileqq.managers.QQLSRecentManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
 public class tji
-  implements NewFriendManager.INewFriendListener
+  extends tjd<WSRedDotPushMsg, WSPushStrategyInfo>
 {
-  public tji(QQLSActivity paramQQLSActivity) {}
+  private int jdField_a_of_type_Int;
+  private Intent jdField_a_of_type_AndroidContentIntent;
   
-  public void Q_() {}
-  
-  public void a(int paramInt)
+  public tji(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
   {
-    if ((paramInt == 0) && (this.a.a.a().size() > 0))
-    {
-      Iterator localIterator = this.a.a.a().iterator();
-      while (localIterator.hasNext())
-      {
-        RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
-        if ((localRecentBaseData instanceof RecentItemNewFriendMsgData))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQLSActivity", 2, "Need to delete RecentItemNewFriendMsgData");
-          }
-          this.a.a.a().remove(localRecentBaseData);
-          this.a.b();
-        }
-      }
-    }
+    super(paramWSRedDotPushMsg);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
   }
   
-  public void b() {}
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  {
+    boolean bool = false;
+    if (this.jdField_a_of_type_Int == 2)
+    {
+      tlv.a(paramContext, null, 0, null, null, (WSRedDotPushMsg)this.jdField_a_of_type_Tiw, 2);
+      paramWSPushStrategyInfo = tlv.a();
+      if ((paramWSPushStrategyInfo != null) && ((paramContext instanceof Activity))) {
+        paramWSPushStrategyInfo.a((Activity)paramContext);
+      }
+      tlv.a();
+      bool = true;
+    }
+    while (this.jdField_a_of_type_Int != 6) {
+      return bool;
+    }
+    tch.a((Activity)paramContext, this.jdField_a_of_type_AndroidContentIntent, (WSRedDotPushMsg)this.jdField_a_of_type_Tiw);
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tji
  * JD-Core Version:    0.7.0.1
  */

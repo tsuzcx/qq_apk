@@ -1,20 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.galleryactivity.AbstractImageListScene;
-
-public class pfa
-  implements View.OnClickListener
+public abstract interface pfa
 {
-  public pfa(AbstractImageListScene paramAbstractImageListScene) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.i();
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pfa
  * JD-Core Version:    0.7.0.1
  */

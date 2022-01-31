@@ -1,27 +1,37 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import com.tencent.mobileqq.app.icebreaking.AIOIceBreakShow;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class affc
-  implements View.OnClickListener
+class affc
+  implements amjw
 {
-  public affc(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  affc(affb paramaffb) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, List<agxz> paramList)
   {
-    paramView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://buluo.qq.com/mobile/xxq_setting.html?_wv=1027&uin=" + this.a.a.app.c());
-    paramView.putExtra("reqType", 1);
-    this.a.a.startActivity(paramView);
+    StringBuilder localStringBuilder = new StringBuilder().append("onGetIceBreakHotPic, success: ").append(paramBoolean).append(" hotPiceList size: ");
+    int i;
+    if (paramList == null)
+    {
+      i = 0;
+      QLog.i("IceBreak.HotPic", 1, i);
+      if (paramBoolean) {
+        break label59;
+      }
+    }
+    label59:
+    while (this.a.a == null)
+    {
+      return;
+      i = paramList.size();
+      break;
+    }
+    this.a.a.a(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     affc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,23 @@
-import com.tencent.biz.qqstory.base.QQStoryHandler;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DPCObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
 
 public class nep
-  implements DeviceProfileManager.DPCObserver
+  implements SoundPool.OnLoadCompleteListener
 {
-  public nep(MsgTabStoryNodeConfigManager paramMsgTabStoryNodeConfigManager) {}
+  public nep(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void a(boolean paramBoolean)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    ((QQStoryHandler)this.a.a.a(98)).a(1023, true, Boolean.valueOf(paramBoolean));
+    if ((this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
+      QLog.d("SensorApi", 2, "play failure url=" + this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nep
  * JD-Core Version:    0.7.0.1
  */

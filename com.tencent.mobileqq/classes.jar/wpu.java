@@ -1,32 +1,40 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.app.NewFriendManager.INewFriendListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
 
-public class wpu
-  implements NewFriendManager.INewFriendListener
+class wpu
+  extends ulw
 {
-  public wpu(MainAssistObserver paramMainAssistObserver) {}
+  wpu(wpr paramwpr) {}
   
-  public void Q_() {}
-  
-  public void a(int paramInt)
+  public void a(StoryPushMsg paramStoryPushMsg)
   {
-    this.a.f();
-  }
-  
-  public void b()
-  {
-    if ((this.a.a == null) || (this.a.a.app == null)) {
-      return;
+    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
+    {
+      wxe.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new comment push: %s", new Object[] { paramStoryPushMsg });
+      this.a.a(paramStoryPushMsg.d);
     }
-    ((NewFriendManager)this.a.a.app.getManager(33)).b();
+    do
+    {
+      return;
+      if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 18))
+      {
+        wxe.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new like push: %s", new Object[] { paramStoryPushMsg });
+        this.a.b(paramStoryPushMsg.d);
+        return;
+      }
+      if (paramStoryPushMsg.a == 17)
+      {
+        wxe.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete comment push: %s", new Object[] { paramStoryPushMsg });
+        ((uux)uwa.a(17)).a(paramStoryPushMsg.d, paramStoryPushMsg.c);
+        return;
+      }
+    } while (paramStoryPushMsg.a != 16);
+    wxe.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete like push: %s", new Object[] { paramStoryPushMsg });
+    this.a.b(paramStoryPushMsg.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpu
  * JD-Core Version:    0.7.0.1
  */

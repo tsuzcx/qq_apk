@@ -5,12 +5,15 @@ import android.widget.ImageView;
 class yzl
   implements Animation.AnimationListener
 {
-  yzl(yzk paramyzk) {}
+  yzl(yzj paramyzj) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.setVisibility(8);
-    this.a.a.postDelayed(new yzm(this), 300L);
+    if (yzj.a(this.a) != null)
+    {
+      yzj.a(this.a).clearAnimation();
+      yzj.a(this.a).startAnimation(yzj.a(this.a));
+    }
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -19,7 +22,7 @@ class yzl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yzl
  * JD-Core Version:    0.7.0.1
  */

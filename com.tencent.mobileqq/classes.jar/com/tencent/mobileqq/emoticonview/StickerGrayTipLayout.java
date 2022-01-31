@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
+import aeqz;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
@@ -8,11 +9,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.aio.ChatItemBuilder.BaseHolder;
+import aprx;
+import apry;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.Sticker;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerDoubleClickListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,9 +22,9 @@ public class StickerGrayTipLayout
 {
   private int jdField_a_of_type_Int;
   private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
+  public apry a;
   MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  public EmojiStickerManager.StickerDoubleClickListener a;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<aprx> jdField_a_of_type_JavaUtilArrayList;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
@@ -50,18 +50,18 @@ public class StickerGrayTipLayout
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        EmojiStickerManager.Sticker localSticker = (EmojiStickerManager.Sticker)localIterator.next();
-        int j = localSticker.jdField_a_of_type_Int;
+        aprx localaprx = (aprx)localIterator.next();
+        int j = localaprx.jdField_a_of_type_Int;
         int k = this.jdField_a_of_type_Int;
-        int m = (int)((localSticker.jdField_a_of_type_Float - 1.0F) * localSticker.c);
-        int i = (int)((localSticker.jdField_a_of_type_Float - 1.0F) * localSticker.d);
-        j = j + k + localSticker.e - m / 2;
-        i = localSticker.b - i / 2;
-        if ((paramFloat1 > j) && (paramFloat1 < j + localSticker.jdField_a_of_type_Float * localSticker.c) && (paramFloat2 > i))
+        int m = (int)((localaprx.jdField_a_of_type_Float - 1.0F) * localaprx.c);
+        int i = (int)((localaprx.jdField_a_of_type_Float - 1.0F) * localaprx.d);
+        j = j + k + localaprx.e - m / 2;
+        i = localaprx.b - i / 2;
+        if ((paramFloat1 > j) && (paramFloat1 < j + localaprx.jdField_a_of_type_Float * localaprx.c) && (paramFloat2 > i))
         {
           float f1 = i;
-          float f2 = localSticker.jdField_a_of_type_Float;
-          if (paramFloat2 < localSticker.d * f2 + f1) {
+          float f2 = localaprx.jdField_a_of_type_Float;
+          if (paramFloat2 < localaprx.d * f2 + f1) {
             return true;
           }
         }
@@ -87,41 +87,41 @@ public class StickerGrayTipLayout
   private void c()
   {
     boolean bool;
-    EmojiStickerManager.Sticker localSticker;
+    aprx localaprx;
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       bool = false;
       if (localIterator.hasNext())
       {
-        localSticker = (EmojiStickerManager.Sticker)localIterator.next();
-        if (localSticker.jdField_a_of_type_Int + this.jdField_a_of_type_Int + localSticker.c / 2 < getMeasuredWidth() / 2) {
-          if (Math.abs(localSticker.e) > 200)
+        localaprx = (aprx)localIterator.next();
+        if (localaprx.jdField_a_of_type_Int + this.jdField_a_of_type_Int + localaprx.c / 2 < getMeasuredWidth() / 2) {
+          if (Math.abs(localaprx.e) > 200)
           {
-            localSticker.e -= EmojiStickerManager.i;
-            localSticker.f -= Math.abs(EmojiStickerManager.i / 2);
-            localSticker.f = Math.min(255, Math.max(0, localSticker.f));
+            localaprx.e -= EmojiStickerManager.i;
+            localaprx.f -= Math.abs(EmojiStickerManager.i / 2);
+            localaprx.f = Math.min(255, Math.max(0, localaprx.f));
             label138:
-            if (localSticker.e > 0)
+            if (localaprx.e > 0)
             {
-              localSticker.e = 0;
-              localSticker.f = 255;
+              localaprx.e = 0;
+              localaprx.f = 255;
               this.jdField_a_of_type_Boolean = false;
               bool = false;
             }
             label164:
-            if (localSticker.e < -400)
+            if (localaprx.e < -400)
             {
-              localSticker.e = -400;
-              localSticker.f = 0;
+              localaprx.e = -400;
+              localaprx.f = 0;
               this.jdField_a_of_type_Boolean = false;
               bool = true;
             }
-            if (localSticker.e <= 400) {
+            if (localaprx.e <= 400) {
               break label434;
             }
-            localSticker.e = 400;
-            localSticker.f = 0;
+            localaprx.e = 400;
+            localaprx.f = 0;
             this.jdField_a_of_type_Boolean = false;
             bool = true;
           }
@@ -133,27 +133,27 @@ public class StickerGrayTipLayout
     for (;;)
     {
       break;
-      localSticker.f += Math.abs(EmojiStickerManager.i / 2);
-      localSticker.f = Math.min(255, Math.max(0, localSticker.f));
-      localSticker.e += EmojiStickerManager.i;
+      localaprx.f += Math.abs(EmojiStickerManager.i / 2);
+      localaprx.f = Math.min(255, Math.max(0, localaprx.f));
+      localaprx.e += EmojiStickerManager.i;
       break label138;
-      if (Math.abs(localSticker.e) < 200)
+      if (Math.abs(localaprx.e) < 200)
       {
-        localSticker.f += Math.abs(EmojiStickerManager.i / 2);
-        localSticker.f = Math.min(255, Math.max(0, localSticker.f));
+        localaprx.f += Math.abs(EmojiStickerManager.i / 2);
+        localaprx.f = Math.min(255, Math.max(0, localaprx.f));
       }
-      for (localSticker.e -= EmojiStickerManager.i;; localSticker.e += EmojiStickerManager.i)
+      for (localaprx.e -= EmojiStickerManager.i;; localaprx.e += EmojiStickerManager.i)
       {
-        if (localSticker.e >= 0) {
+        if (localaprx.e >= 0) {
           break label412;
         }
-        localSticker.e = 0;
-        localSticker.f = 255;
+        localaprx.e = 0;
+        localaprx.f = 255;
         this.jdField_a_of_type_Boolean = false;
         bool = false;
         break;
-        localSticker.f -= Math.abs(EmojiStickerManager.i / 2);
-        localSticker.f = Math.min(255, Math.max(0, localSticker.f));
+        localaprx.f -= Math.abs(EmojiStickerManager.i / 2);
+        localaprx.f = Math.min(255, Math.max(0, localaprx.f));
       }
       break label164;
       if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) {
@@ -180,8 +180,8 @@ public class StickerGrayTipLayout
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        EmojiStickerManager.Sticker localSticker = (EmojiStickerManager.Sticker)localIterator.next();
-        localSticker.b += paramInt;
+        aprx localaprx = (aprx)localIterator.next();
+        localaprx.b += paramInt;
       }
     }
   }
@@ -192,7 +192,7 @@ public class StickerGrayTipLayout
     {
       int i;
       label45:
-      EmojiStickerManager.Sticker localSticker;
+      aprx localaprx;
       int j;
       if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.stickerHidden))
       {
@@ -201,28 +201,28 @@ public class StickerGrayTipLayout
         if (!localIterator.hasNext()) {
           break label447;
         }
-        localSticker = (EmojiStickerManager.Sticker)localIterator.next();
+        localaprx = (aprx)localIterator.next();
         if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (i != 0))
         {
-          if (localSticker.jdField_a_of_type_Int + this.jdField_a_of_type_Int + localSticker.c / 2 >= getMeasuredWidth() / 2) {
+          if (localaprx.jdField_a_of_type_Int + this.jdField_a_of_type_Int + localaprx.c / 2 >= getMeasuredWidth() / 2) {
             break label279;
           }
           j = -400;
           label110:
-          localSticker.e = j;
-          localSticker.f = 0;
+          localaprx.e = j;
+          localaprx.f = 0;
         }
-        if ((paramInt2 != EmojiStickerManager.h) || (localSticker.e != 0))
+        if ((paramInt2 != EmojiStickerManager.h) || (localaprx.e != 0))
         {
           if (paramInt2 != EmojiStickerManager.g) {
             break label302;
           }
-          if (localSticker.jdField_a_of_type_Int + this.jdField_a_of_type_Int + localSticker.c / 2 >= getMeasuredWidth() / 2) {
+          if (localaprx.jdField_a_of_type_Int + this.jdField_a_of_type_Int + localaprx.c / 2 >= getMeasuredWidth() / 2) {
             break label287;
           }
-          localSticker.e -= paramInt1;
-          localSticker.f -= Math.abs(paramInt1 / 2);
-          localSticker.f = Math.min(255, Math.max(0, localSticker.f));
+          localaprx.e -= paramInt1;
+          localaprx.f -= Math.abs(paramInt1 / 2);
+          localaprx.f = Math.min(255, Math.max(0, localaprx.f));
         }
       }
       label279:
@@ -231,43 +231,43 @@ public class StickerGrayTipLayout
       while (paramInt2 != EmojiStickerManager.h) {
         for (;;)
         {
-          if (localSticker.e < -400)
+          if (localaprx.e < -400)
           {
-            localSticker.e = -400;
-            localSticker.f = 0;
+            localaprx.e = -400;
+            localaprx.f = 0;
           }
-          if (localSticker.e <= 400) {
+          if (localaprx.e <= 400) {
             break label45;
           }
-          localSticker.e = 400;
-          localSticker.f = 0;
+          localaprx.e = 400;
+          localaprx.f = 0;
           break label45;
           i = 0;
           break;
           j = 400;
           break label110;
-          localSticker.e += paramInt1;
+          localaprx.e += paramInt1;
         }
       }
-      if (localSticker.jdField_a_of_type_Int + this.jdField_a_of_type_Int + localSticker.c / 2 < getMeasuredWidth() / 2)
+      if (localaprx.jdField_a_of_type_Int + this.jdField_a_of_type_Int + localaprx.c / 2 < getMeasuredWidth() / 2)
       {
-        localSticker.e += paramInt1;
-        if (localSticker.e > 0)
+        localaprx.e += paramInt1;
+        if (localaprx.e > 0)
         {
-          localSticker.e = 0;
-          localSticker.f = 255;
+          localaprx.e = 0;
+          localaprx.f = 255;
         }
       }
       for (;;)
       {
-        localSticker.f += Math.abs(paramInt1 / 2);
-        localSticker.f = Math.min(255, Math.max(0, localSticker.f));
+        localaprx.f += Math.abs(paramInt1 / 2);
+        localaprx.f = Math.min(255, Math.max(0, localaprx.f));
         break;
-        localSticker.e -= paramInt1;
-        if (localSticker.e < 0)
+        localaprx.e -= paramInt1;
+        if (localaprx.e < 0)
         {
-          localSticker.e = 0;
-          localSticker.f = 255;
+          localaprx.e = 0;
+          localaprx.f = 255;
         }
       }
       label447:
@@ -290,19 +290,19 @@ public class StickerGrayTipLayout
     }
     if (this.jdField_a_of_type_JavaUtilArrayList.size() < EmojiStickerManager.f)
     {
-      EmojiStickerManager.Sticker localSticker = new EmojiStickerManager.Sticker();
+      aprx localaprx = new aprx();
       if (paramDrawable != null)
       {
-        localSticker.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable.mutate();
+        localaprx.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable.mutate();
         paramDrawable.setCallback(this);
       }
-      localSticker.jdField_a_of_type_Int = paramInt1;
-      localSticker.b = paramInt2;
-      localSticker.c = paramInt3;
-      localSticker.d = paramInt4;
-      localSticker.jdField_a_of_type_Double = paramDouble;
-      localSticker.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localSticker);
+      localaprx.jdField_a_of_type_Int = paramInt1;
+      localaprx.b = paramInt2;
+      localaprx.c = paramInt3;
+      localaprx.d = paramInt4;
+      localaprx.jdField_a_of_type_Double = paramDouble;
+      localaprx.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_JavaUtilArrayList.add(localaprx);
       return true;
     }
     return false;
@@ -318,14 +318,14 @@ public class StickerGrayTipLayout
   {
     super.dispatchDraw(paramCanvas);
     Object localObject = getParent();
-    if (((localObject instanceof ViewGroup)) && ((((ViewGroup)localObject).getTag() instanceof ChatItemBuilder.BaseHolder))) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((ChatItemBuilder.BaseHolder)((ViewGroup)localObject).getTag()).a;
+    if (((localObject instanceof ViewGroup)) && ((((ViewGroup)localObject).getTag() instanceof aeqz))) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((aeqz)((ViewGroup)localObject).getTag()).a;
     }
     int i = getChildCount() - 1;
     while (i >= 0)
     {
       localObject = getChildAt(i);
-      if (((View)localObject).getId() == 2131363789) {
+      if (((View)localObject).getId() == 2131367292) {
         this.jdField_a_of_type_Int = ((View)localObject).getLeft();
       }
       i -= 1;
@@ -335,24 +335,24 @@ public class StickerGrayTipLayout
       i = 0;
       if (i <= this.jdField_a_of_type_JavaUtilArrayList.size() - 1)
       {
-        localObject = (EmojiStickerManager.Sticker)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        localObject = (aprx)this.jdField_a_of_type_JavaUtilArrayList.get(i);
         if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.stickerHidden)) {
-          if (((EmojiStickerManager.Sticker)localObject).jdField_a_of_type_Int + this.jdField_a_of_type_Int + ((EmojiStickerManager.Sticker)localObject).c / 2 >= getMeasuredWidth() / 2) {
+          if (((aprx)localObject).jdField_a_of_type_Int + this.jdField_a_of_type_Int + ((aprx)localObject).c / 2 >= getMeasuredWidth() / 2) {
             break label307;
           }
         }
         label307:
         for (int j = -400;; j = 400)
         {
-          ((EmojiStickerManager.Sticker)localObject).e = j;
-          ((EmojiStickerManager.Sticker)localObject).f = 0;
+          ((aprx)localObject).e = j;
+          ((aprx)localObject).f = 0;
           j = paramCanvas.getSaveCount();
           paramCanvas.save();
-          paramCanvas.translate(((EmojiStickerManager.Sticker)localObject).jdField_a_of_type_Int + this.jdField_a_of_type_Int + ((EmojiStickerManager.Sticker)localObject).e, ((EmojiStickerManager.Sticker)localObject).b);
-          paramCanvas.rotate((float)((EmojiStickerManager.Sticker)localObject).jdField_a_of_type_Double, ((EmojiStickerManager.Sticker)localObject).c / 2, ((EmojiStickerManager.Sticker)localObject).d / 2);
-          ((EmojiStickerManager.Sticker)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(((EmojiStickerManager.Sticker)localObject).f);
-          ((EmojiStickerManager.Sticker)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ((EmojiStickerManager.Sticker)localObject).c, ((EmojiStickerManager.Sticker)localObject).d);
-          ((EmojiStickerManager.Sticker)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+          paramCanvas.translate(((aprx)localObject).jdField_a_of_type_Int + this.jdField_a_of_type_Int + ((aprx)localObject).e, ((aprx)localObject).b);
+          paramCanvas.rotate((float)((aprx)localObject).jdField_a_of_type_Double, ((aprx)localObject).c / 2, ((aprx)localObject).d / 2);
+          ((aprx)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(((aprx)localObject).f);
+          ((aprx)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ((aprx)localObject).c, ((aprx)localObject).d);
+          ((aprx)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
           paramCanvas.restoreToCount(j);
           i += 1;
           break;
@@ -386,14 +386,14 @@ public class StickerGrayTipLayout
       int j = 0;
       while (paramInt1 < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        EmojiStickerManager.Sticker localSticker = (EmojiStickerManager.Sticker)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
-        localSticker.f = 255;
-        localSticker.e = 0;
+        aprx localaprx = (aprx)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
+        localaprx.f = 255;
+        localaprx.e = 0;
         int i = paramInt2;
-        if (localSticker.b + localSticker.d > paramInt2)
+        if (localaprx.b + localaprx.d > paramInt2)
         {
           j = 1;
-          i = localSticker.b + localSticker.d;
+          i = localaprx.b + localaprx.d;
         }
         paramInt1 += 1;
         paramInt2 = i;
@@ -416,8 +416,8 @@ public class StickerGrayTipLayout
         if ((this.jdField_a_of_type_AndroidViewMotionEvent != null) && (a(this.jdField_a_of_type_AndroidViewMotionEvent, paramMotionEvent)))
         {
           this.b = true;
-          if (this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerDoubleClickListener != null) {
-            this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerDoubleClickListener.a(this);
+          if (this.jdField_a_of_type_Apry != null) {
+            this.jdField_a_of_type_Apry.a(this);
           }
         }
       }
@@ -438,7 +438,7 @@ public class StickerGrayTipLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.StickerGrayTipLayout
  * JD-Core Version:    0.7.0.1
  */

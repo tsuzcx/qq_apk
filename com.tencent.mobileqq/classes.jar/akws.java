@@ -1,34 +1,21 @@
-import android.view.View;
-import android.view.animation.AnimationSet;
-import com.tencent.mobileqq.widget.ScrollerRunnable;
-import com.tencent.mobileqq.widget.ScrollerRunnable.FlushMessageItemAnimation;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import org.json.JSONObject;
 
-public class akws
-  implements Runnable
+class akws
+  implements MediaPlayer.OnCompletionListener
 {
-  public akws(ScrollerRunnable paramScrollerRunnable, View paramView) {}
+  akws(akwn paramakwn, akxn paramakxn, JSONObject paramJSONObject) {}
   
-  public void run()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    ScrollerRunnable.FlushMessageItemAnimation localFlushMessageItemAnimation1 = new ScrollerRunnable.FlushMessageItemAnimation(this.jdField_a_of_type_AndroidViewView, 1.0F, 0.0F);
-    localFlushMessageItemAnimation1.setFillEnabled(true);
-    localFlushMessageItemAnimation1.setDuration(700L);
-    ScrollerRunnable.FlushMessageItemAnimation localFlushMessageItemAnimation2 = new ScrollerRunnable.FlushMessageItemAnimation(this.jdField_a_of_type_AndroidViewView, 0.0F, 1.0F);
-    localFlushMessageItemAnimation2.setFillEnabled(true);
-    localFlushMessageItemAnimation2.setStartTime(700L);
-    localFlushMessageItemAnimation2.setDuration(700L);
-    AnimationSet localAnimationSet = new AnimationSet(true);
-    localAnimationSet.addAnimation(localFlushMessageItemAnimation1);
-    localAnimationSet.addAnimation(localFlushMessageItemAnimation2);
-    localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new akwt(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimationSet);
-    ScrollerRunnable.a(this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, -1L);
+    this.jdField_a_of_type_Akxn.a(this.jdField_a_of_type_OrgJsonJSONObject);
+    this.jdField_a_of_type_Akwn.a(10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akws
  * JD-Core Version:    0.7.0.1
  */

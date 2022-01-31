@@ -1,15 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.newfriend.RecommendListView;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
 
 public class ejx
   implements View.OnClickListener
 {
-  public ejx(RecommendListView paramRecommendListView) {}
+  public ejx(BaseActivityView paramBaseActivityView) {}
   
   public void onClick(View paramView)
   {
-    this.a.i();
+    this.a.f();
   }
 }
 

@@ -1,32 +1,48 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.NearbyFakeActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CardProfile;
 
 public class aelv
-  extends Handler
+  implements View.OnClickListener
 {
-  public aelv(NearbyFakeActivity paramNearbyFakeActivity) {}
+  public aelv(VisitorsActivity paramVisitorsActivity, CardProfile paramCardProfile, awsr paramawsr, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    int i = 1;
+    int j;
+    int k;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3)
     {
+      j = 1;
+      k = this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bIsLastVoteCharged;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type != 3) {
+        break label136;
+      }
+      if (!((auvr)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app.getManager(207)).c(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID)) {
+        break label131;
+      }
     }
     for (;;)
     {
-      super.handleMessage(paramMessage);
+      this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a(this.jdField_a_of_type_Awsr, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bVoteCnt, i);
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app, "CliOper", "", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID), "like_mall", "like_list_view", j, 0, "", "", "", "");
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyFakeActivity", 2, "procPreload time out");
-      }
-      NearbyFakeActivity.a(this.a, 1);
+      j = 0;
+      break;
+      label131:
+      i = 0;
+      continue;
+      label136:
+      i = k;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aelv
  * JD-Core Version:    0.7.0.1
  */

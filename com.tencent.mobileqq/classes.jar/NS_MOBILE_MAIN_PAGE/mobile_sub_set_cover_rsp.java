@@ -9,15 +9,15 @@ import java.util.Map;
 public final class mobile_sub_set_cover_rsp
   extends JceStruct
 {
-  static Map cache_MulRelsotionUrl;
-  public Map MulRelsotionUrl;
+  static Map<String, String> cache_MulRelsotionUrl;
+  public Map<String, String> MulRelsotionUrl;
   public long coverScene;
   public int ret;
   public long syncflag;
   
   public mobile_sub_set_cover_rsp() {}
   
-  public mobile_sub_set_cover_rsp(int paramInt, Map paramMap, long paramLong1, long paramLong2)
+  public mobile_sub_set_cover_rsp(int paramInt, Map<String, String> paramMap, long paramLong1, long paramLong2)
   {
     this.ret = paramInt;
     this.MulRelsotionUrl = paramMap;

@@ -1,55 +1,65 @@
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-class vel
-  implements Runnable
+public class vel
+  extends vce
+  implements urr<vfz, vhp>
 {
-  vel(vek paramvek, MessageRecord paramMessageRecord) {}
+  protected String a;
+  protected List<String> a;
   
-  public void run()
+  public vel(String paramString, List<String> paramList)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
+  }
+  
+  public void a()
+  {
+    vfz localvfz = new vfz();
+    localvfz.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    urp.a().a(localvfz, this);
+  }
+  
+  public void a(@NonNull vfz paramvfz, @Nullable vhp paramvhp, @NonNull ErrorMessage paramErrorMessage)
+  {
+    paramvfz = new vem();
+    if ((paramvhp == null) || (paramErrorMessage.isFail()))
     {
-      Object localObject;
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic)) {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Vek.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a(this.jdField_a_of_type_Vek.jdField_a_of_type_Ver, this.jdField_a_of_type_Vek.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, (MessageRecord)localObject);
-        return;
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForMixedMsg))
-        {
-          localMessageRecord = (MessageRecord)((MessageForMixedMsg)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).msgElemList.get(this.jdField_a_of_type_Vek.jdField_a_of_type_Int);
-          localObject = localMessageRecord;
-          if ((localMessageRecord instanceof MessageForPic)) {}
-        }
-        else
-        {
-          while (!(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForTroopFile))
-          {
-            MessageRecord localMessageRecord;
-            localObject = null;
-            break;
-          }
-          localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-        }
-      }
+      c();
+      umc.a().dispatch(paramvfz);
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.w("ChatItemBuilder", 2, "renderingPicCommentUI:source msg has been deleted.");
+    b();
+    paramvhp.jdField_a_of_type_JavaUtilList = ((uvx)uwa.a(5)).a(paramvhp.jdField_a_of_type_JavaUtilList);
+    paramvfz.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    paramvhp = paramvhp.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramvhp.hasNext())
+    {
+      paramErrorMessage = (StoryVideoItem)paramvhp.next();
+      paramErrorMessage = new wnd(paramErrorMessage.mVid, paramErrorMessage);
+      paramvfz.jdField_a_of_type_JavaUtilList.add(paramErrorMessage);
     }
-    this.jdField_a_of_type_Vek.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a(this.jdField_a_of_type_Vek.jdField_a_of_type_Ver, this.jdField_a_of_type_Vek.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, null);
+    umc.a().dispatch(paramvfz);
+  }
+  
+  public String toString()
+  {
+    return "VidToSimpleInfoHandler{mVidList=" + this.jdField_a_of_type_JavaUtilList + ", mCollectionId=" + this.jdField_a_of_type_JavaLangString + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vel
  * JD-Core Version:    0.7.0.1
  */

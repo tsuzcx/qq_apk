@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class WeiyunPB$PwdVerifyMsgRsp
-  extends MessageMicro
+  extends MessageMicro<PwdVerifyMsgRsp>
 {
   public static final int CS_SIG_FIELD_NUMBER = 1;
   static final MessageMicro.FieldMap __fieldMap__;
@@ -21,7 +21,7 @@ public final class WeiyunPB$PwdVerifyMsgRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.PwdVerifyMsgRsp
  * JD-Core Version:    0.7.0.1
  */

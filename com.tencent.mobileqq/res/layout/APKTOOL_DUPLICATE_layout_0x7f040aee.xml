@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.tencent.widget.FadeIconImageView android:gravity="center" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021c00" android:scaleType="fitCenter" android:includeFontPadding="false" android:layout_centerVertical="true" android:contentDescription="消息" tencent:skintype="title_right_view"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto" />

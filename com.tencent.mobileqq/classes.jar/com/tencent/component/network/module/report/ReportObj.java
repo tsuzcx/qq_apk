@@ -119,16 +119,16 @@ public class ReportObj
     return localStringBuffer1.toString();
   }
   
-  public String getRefer()
+  protected String getRefer()
   {
     return this.refer;
   }
   
   public void init()
   {
-    this.terminal = Config.a();
-    this.version = Config.b();
-    this.refer = Config.c();
+    this.terminal = Config.getTerminal();
+    this.version = Config.getVersion();
+    this.refer = Config.getRefer();
   }
   
   public JSONObject toJSON()
@@ -146,7 +146,7 @@ public class ReportObj
         localJSONObject.put("terminalver", this.version);
         localJSONObject.put("refer", getRefer());
         localJSONObject.put("errcode", this.retCode);
-        localJSONObject.put("uin", Config.a());
+        localJSONObject.put("uin", Config.getCurrentUin());
         localJSONObject.put("time", this.endTime / 1000L);
         localJSONObject.put("flow", this.flow);
         localJSONObject.put("sip", this.serverIp);
@@ -156,28 +156,28 @@ public class ReportObj
           if (this.extend == null) {
             this.extend = new ExtendData();
           }
-          Object localObject = ((WifiManager)Global.a().getSystemService("wifi")).getDhcpInfo();
+          Object localObject = ((WifiManager)Global.getContext().getSystemService("wifi")).getDhcpInfo();
           if (localObject == null) {
             break label377;
           }
           localObject = putAddress(((DhcpInfo)localObject).dns1) + "," + putAddress(((DhcpInfo)localObject).dns2);
-          this.extend.a(0, Build.MODEL);
-          this.extend.a(1, Build.VERSION.RELEASE);
+          this.extend.put(0, Build.MODEL);
+          this.extend.put(1, Build.VERSION.RELEASE);
           ExtendData localExtendData = this.extend;
-          if (SDCardUtil.a())
+          if (SDCardUtil.isSDCardMounted())
           {
             i = 1;
-            localExtendData.a(2, String.valueOf(i));
-            this.extend.a(3, SDCardUtil.b());
-            this.extend.a(4, SDCardUtil.c());
-            this.extend.a(6, (String)localObject);
+            localExtendData.put(2, String.valueOf(i));
+            this.extend.put(3, SDCardUtil.getSDCardCapabilityForDisplay());
+            this.extend.put(4, SDCardUtil.getSDCardRemainForDisplay());
+            this.extend.put(6, (String)localObject);
             localObject = this.extend;
             if (!IS_CONNECT_USB) {
               continue;
             }
             i = 1;
-            ((ExtendData)localObject).a(7, String.valueOf(i));
-            localJSONObject.put("extend", this.extend.a());
+            ((ExtendData)localObject).put(7, String.valueOf(i));
+            localJSONObject.put("extend", this.extend.getExtendString());
           }
         }
         else
@@ -192,7 +192,7 @@ public class ReportObj
       }
       catch (Throwable localThrowable)
       {
-        QDLog.d("BusinessReport", "to json error!", localThrowable);
+        QDLog.e("BusinessReport", "to json error!", localThrowable);
         return localJSONObject;
       }
     }
@@ -228,7 +228,7 @@ public class ReportObj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.module.report.ReportObj
  * JD-Core Version:    0.7.0.1
  */

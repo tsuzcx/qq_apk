@@ -1,111 +1,53 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
-import com.tencent.mobileqq.systemmsg.SystemMsgUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 
 public class wke
-  extends MessageObserver
+  extends umf<wjw, wpf>
 {
-  public wke(SystemRequestInfoView paramSystemRequestInfoView) {}
-  
-  protected void a(String paramString)
+  public wke(wjw paramwjw)
   {
-    if (this.a.a())
-    {
-      paramString = this.a.getResources().getString(2131433176);
-      QQToast.a(this.a.getContext(), 1, paramString, 0).b(this.a.a());
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionError");
+    super(paramwjw);
   }
   
-  protected void a(boolean paramBoolean, String paramString) {}
-  
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  public void a(@NonNull wjw paramwjw, @NonNull wpf paramwpf)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionFin");
-    }
-    if (!this.a.a()) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionFin stopProgress = fasle");
-      }
-    }
-    long l1;
-    structmsg.StructMsg localStructMsg;
-    for (;;)
+    if ((paramwpf.jdField_a_of_type_Int == 2) || (!paramwpf.jdField_a_of_type_JavaLangString.equals(wjw.a(paramwjw))) || (wjw.a(paramwjw) == null))
     {
+      wxe.b(this.TAG, "ignore this video cookie change event. %s.", paramwpf.toString());
       return;
-      long l2 = FriendSystemMsgController.a().b();
-      l1 = l2;
-      if (!TextUtils.isEmpty(paramString1)) {}
-      try
-      {
-        l1 = Long.parseLong(paramString1);
-        localStructMsg = FriendSystemMsgController.a().a(Long.valueOf(l1));
-        if (!paramBoolean) {
-          if (!TextUtils.isEmpty(paramString3))
-          {
-            QQToast.a(this.a.getContext(), 1, paramString3, 0).b(this.a.a());
-            if (!SystemMsgUtils.a(localStructMsg, paramInt3, paramString2, paramString4)) {
-              continue;
-            }
-            SystemRequestInfoView.a(this.a).finish();
-            return;
-          }
-        }
-      }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          paramString1.printStackTrace();
-          l1 = l2;
-          continue;
-          paramString3 = this.a.getResources().getString(2131434464);
-        }
-        SystemMsgUtils.a(localStructMsg, paramInt1, paramString2, paramInt2);
-        paramString2 = null;
-        if (paramInt1 != 1) {
-          break label234;
-        }
-      }
     }
-    SystemRequestInfoView.a(this.a).finish();
-    paramString1 = this.a.getResources().getString(2131433072);
-    for (;;)
+    if (!wjw.a(paramwjw).c())
     {
-      QQToast.a(this.a.getContext(), 2, paramString1, 0).b(this.a.a());
+      wxe.e(this.TAG, "this feed does not support video list. ignore this video cookie change event. %s.", new Object[] { paramwpf.toString() });
       return;
-      label234:
-      paramString1 = paramString2;
-      if (paramInt1 == 0)
-      {
-        paramString1 = paramString2;
-        if (localStructMsg != null)
-        {
-          paramString1 = this.a.getResources().getString(2131433071);
-          AutoRemarkActivity.a(SystemRequestInfoView.a(this.a), 1017, String.valueOf(localStructMsg.req_uin.get()), l1, null);
-        }
-      }
     }
+    paramwpf = wjw.a(paramwjw).a(wjw.a(paramwjw), wjw.a(paramwjw).a().mVideoPullType);
+    if (paramwpf == null)
+    {
+      wxe.e(this.TAG, "can't find video info for feedId:%s, pullType:%d.", new Object[] { wjw.a(paramwjw), Integer.valueOf(wjw.a(paramwjw).a().mVideoPullType) });
+      return;
+    }
+    wxe.a(this.TAG, "receive video cookie change event. %s.", paramwpf.toString());
+    wjw.a(paramwjw).a().updateVideoInfo(paramwpf);
+    wjw.a(paramwjw).a(paramwpf.mVideoItemList, true);
+    if (wjw.a(paramwjw) != null) {
+      wjw.a(paramwjw).a(paramwpf.mVideoPullType, paramwpf.mVideoNextCookie, paramwpf.mVideoSeq);
+    }
+    wjw.a(paramwjw).c();
   }
   
-  protected void b(boolean paramBoolean, String paramString) {}
+  public Class acceptEventClass()
+  {
+    return wpf.class;
+  }
+  
+  public void b(@NonNull wjw paramwjw, @NonNull wpf paramwpf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wke
  * JD-Core Version:    0.7.0.1
  */

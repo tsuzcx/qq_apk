@@ -1,5 +1,10 @@
 package com.tencent.mobileqq.activity;
 
+import advf;
+import advh;
+import advi;
+import alok;
+import alop;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler.Callback;
@@ -16,28 +21,23 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import azqs;
+import bdaq;
+import bdeu;
+import bdgf;
+import bdin;
+import bdrh;
+import bdrj;
+import bdug;
+import bdul;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.app.BabyQHandler;
-import com.tencent.mobileqq.app.BabyQObserver;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.CustomHandler;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.vas.ClubContentJsonTask;
-import com.tencent.mobileqq.vas.ClubContentJsonTask.PersonalCardUrlInfo;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.mobileqq.vas.VasExtensionObserver;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
-import tqr;
-import tqt;
-import tqu;
 
 public class RewardNoticeActivity
   extends BaseActivity
@@ -45,14 +45,14 @@ public class RewardNoticeActivity
 {
   public int a;
   protected long a;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new tqr(this);
+  alop jdField_a_of_type_Alop = new advh(this);
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new advf(this);
   View jdField_a_of_type_AndroidViewView;
   public ImageView a;
   public RelativeLayout a;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  BabyQObserver jdField_a_of_type_ComTencentMobileqqAppBabyQObserver = new tqt(this);
-  private CustomHandler jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler;
-  VasExtensionObserver jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver = new tqu(this);
+  private bdgf jdField_a_of_type_Bdgf;
+  bdul jdField_a_of_type_Bdul = new advi(this);
   protected String a;
   protected byte[] a;
   protected int b;
@@ -122,11 +122,11 @@ public class RewardNoticeActivity
     this.jdField_b_of_type_Int = ((Intent)localObject).getIntExtra("rewardReportType", -1);
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder().append("initData type:").append(this.jdField_a_of_type_Int).append(" name:").append(this.jdField_a_of_type_JavaLangString).append(" url:").append(Utils.a(this.jdField_b_of_type_JavaLangString)).append(" cookie:");
+      localObject = new StringBuilder().append("initData type:").append(this.jdField_a_of_type_Int).append(" name:").append(this.jdField_a_of_type_JavaLangString).append(" url:").append(bdeu.a(this.jdField_b_of_type_JavaLangString)).append(" cookie:");
       if (this.jdField_a_of_type_ArrayOfByte != null)
       {
         i = this.jdField_a_of_type_ArrayOfByte.length;
-        QLog.d("Q.BabyQ", 2, i + " jump:" + Utils.a(this.jdField_c_of_type_JavaLangString) + " optWord:" + this.jdField_d_of_type_JavaLangString + " optUrl:" + Utils.a(this.e) + " toast:" + this.f + " picUrl:" + Utils.a(this.g) + " faceId:" + this.jdField_a_of_type_Long);
+        QLog.d("Q.BabyQ", 2, i + " jump:" + bdeu.a(this.jdField_c_of_type_JavaLangString) + " optWord:" + this.jdField_d_of_type_JavaLangString + " optUrl:" + bdeu.a(this.e) + " toast:" + this.f + " picUrl:" + bdeu.a(this.g) + " faceId:" + this.jdField_a_of_type_Long);
       }
     }
     else
@@ -138,8 +138,8 @@ public class RewardNoticeActivity
   void a()
   {
     int i = 0;
-    if (!NetworkUtil.g(BaseApplicationImpl.getContext())) {
-      QQToast.a(this, 1, 2131433213, 0).b(getTitleBarHeight());
+    if (!bdin.g(BaseApplicationImpl.getContext())) {
+      QQToast.a(this, 1, 2131694766, 0).b(getTitleBarHeight());
     }
     for (;;)
     {
@@ -155,24 +155,24 @@ public class RewardNoticeActivity
       {
         finish();
         return;
-        ((VasExtensionHandler)this.app.a(71)).a(this.jdField_a_of_type_Long, -1, 1);
-        ReportController.b(this.app, "dc00898", "", "", "0X800723D", "0X800723D", 0, 0, "", "", "", "");
+        ((bdug)this.app.a(71)).a(this.jdField_a_of_type_Long, -1, 1);
+        azqs.b(this.app, "dc00898", "", "", "0X800723D", "0X800723D", 0, 0, "", "", "", "");
         continue;
         if (this.jdField_a_of_type_Int == 11)
         {
           b();
-          BabyQHandler.a(this.app, this.jdField_b_of_type_Int, 2);
+          alok.a(this.app, this.jdField_b_of_type_Int, 2);
           i = 1;
         }
         else if ((this.jdField_a_of_type_Int == 12) || (this.jdField_a_of_type_Int == 13))
         {
-          ((BabyQHandler)this.app.a(53)).b(this.jdField_a_of_type_ArrayOfByte);
-          BabyQHandler.a(this.app, this.jdField_b_of_type_Int, 2);
+          ((alok)this.app.a(53)).b(this.jdField_a_of_type_ArrayOfByte);
+          alok.a(this.app, this.jdField_b_of_type_Int, 2);
         }
         else if (this.jdField_a_of_type_Int == 2)
         {
           d();
-          ReportController.b(this.app, "dc00898", "", "", "0X800724B", "0X800724B", 0, 0, "", "", "", "");
+          azqs.b(this.app, "dc00898", "", "", "0X800724B", "0X800724B", 0, 0, "", "", "", "");
           i = 1;
         }
         else
@@ -205,7 +205,7 @@ public class RewardNoticeActivity
     localIntent.putExtra("hide_more_button", true);
     localIntent.putExtra("hide_operation_bar", true);
     localIntent.putExtra("url", this.jdField_b_of_type_JavaLangString);
-    localIntent.putExtra("leftViewText", super.getString(2131432414));
+    localIntent.putExtra("leftViewText", super.getString(2131690382));
     super.startActivity(localIntent);
   }
   
@@ -228,12 +228,12 @@ public class RewardNoticeActivity
   void d()
   {
     String str = "";
-    if (ClubContentJsonTask.a != null) {
-      str = ClubContentJsonTask.a.jdField_a_of_type_JavaLangString;
+    if (bdrh.a != null) {
+      str = bdrh.a.jdField_a_of_type_JavaLangString;
     }
     if (TextUtils.isEmpty(str))
     {
-      str = String.format("http://m.vip.qq.com/redirect/index.php?go=androidzhanghao&qq=%s&aid=%s&_wv=5123", new Object[] { "0", "mvip.pingtai.mobileqq.androidziliaoka.fromqita" }) + "&adtag=" + "qita";
+      str = String.format("https://m.vip.qq.com/redirect/index.php?go=androidzhanghao&qq=%s&aid=%s&_wv=5123", new Object[] { "0", "mvip.pingtai.mobileqq.androidziliaoka.fromqita" }) + "&adtag=" + "qita";
       if (QLog.isColorLevel()) {
         QLog.d("Q.BabyQ", 2, "gotoQQVipWeb() url = " + str);
       }
@@ -259,21 +259,21 @@ public class RewardNoticeActivity
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970588);
+    super.setContentView(2131561249);
     e();
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131371235));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131371237));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371236));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371238));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371244));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371241));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363978));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371242));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131371239);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131375758));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131375759));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131377455));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131375753));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131375755));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131375757));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131364337));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131375754));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131375224);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
@@ -284,17 +284,17 @@ public class RewardNoticeActivity
     try
     {
       paramBundle = URLDrawable.URLDrawableOptions.obtain();
-      paramBundle.mRequestWidth = DisplayUtil.a(this, 75.0F);
-      paramBundle.mRequestHeight = DisplayUtil.a(this, 65.0F);
+      paramBundle.mRequestWidth = bdaq.a(this, 75.0F);
+      paramBundle.mRequestHeight = bdaq.a(this, 65.0F);
       paramBundle = URLDrawable.getDrawable(this.g, paramBundle);
       this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler = new CustomHandler(Looper.getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler.sendEmptyMessageDelayed(1, 200L);
-      super.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppBabyQObserver);
-      super.addObserver(this.jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver);
+      this.jdField_a_of_type_Bdgf = new bdgf(Looper.getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
+      this.jdField_a_of_type_Bdgf.sendEmptyMessageDelayed(1, 200L);
+      super.addObserver(this.jdField_a_of_type_Alop);
+      super.addObserver(this.jdField_a_of_type_Bdul);
       if (this.jdField_a_of_type_Int == 2)
       {
-        ReportController.b(this.app, "dc00898", "", "", "0X800724A", "0X800724A", 0, 0, "", "", "", "");
+        azqs.b(this.app, "dc00898", "", "", "0X800724A", "0X800724A", 0, 0, "", "", "", "");
         return true;
       }
     }
@@ -306,17 +306,17 @@ public class RewardNoticeActivity
           QLog.w("Q.BabyQ", 2, "load pic error" + paramBundle.toString());
         }
       }
-      BabyQHandler.a(this.app, this.jdField_b_of_type_Int, 1);
+      alok.a(this.app, this.jdField_b_of_type_Int, 1);
     }
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
-    super.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppBabyQObserver);
-    super.removeObserver(this.jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler.removeCallbacksAndMessages(null);
+    super.removeObserver(this.jdField_a_of_type_Alop);
+    super.removeObserver(this.jdField_a_of_type_Bdul);
+    this.jdField_a_of_type_Bdgf.removeCallbacksAndMessages(null);
   }
   
   public void onClick(View paramView)
@@ -325,7 +325,7 @@ public class RewardNoticeActivity
     {
     default: 
       return;
-    case 2131371244: 
+    case 2131375755: 
       a();
       return;
     }
@@ -334,7 +334,7 @@ public class RewardNoticeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RewardNoticeActivity
  * JD-Core Version:    0.7.0.1
  */

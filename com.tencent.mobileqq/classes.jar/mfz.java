@@ -1,24 +1,32 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.FaceToolbar;
+import com.tencent.av.ui.FaceToolbar.1.1;
 
 public class mfz
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public mfz(VideoUIManager paramVideoUIManager) {}
+  public mfz(FaceToolbar paramFaceToolbar) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((VideoUIManager.a(this.a) != null) && (VideoUIManager.a(this.a).a != null)) {
-      PublicAccountReportUtils.a(null, "", "0X8008ACF", "0X8008ACF", 0, 0, "", "", "", VideoReporter.a(VideoUIManager.a(this.a).a.mVideoVid, VideoUIManager.a(this.a).a.innerUniqueID, (int)VideoUIManager.a(this.a).a.mChannelID, null), false);
+    if (this.a.mApp == null) {
+      return;
+    }
+    if (paramIntent.getAction().equalsIgnoreCase("tencent.video.q2v.ptusoDownloadRet")) {}
+    for (int i = 0;; i = 1)
+    {
+      this.a.mApp.a().postDelayed(new FaceToolbar.1.1(this, i), 2000L);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfz
  * JD-Core Version:    0.7.0.1
  */

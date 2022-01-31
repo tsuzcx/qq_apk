@@ -1,23 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class ysi
-  implements Runnable
+class ysi
+  extends ysw
 {
-  public ysi(SpriteUIHandler paramSpriteUIHandler, String paramString) {}
-  
-  public void run()
+  ysi(ysb paramysb, ysj paramysj, String paramString1, String paramString2)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      QQToast.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, 1).a();
+    super(paramysb);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "combineUnit end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "combineAudioAndVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Ysb.a));
+      this.jdField_a_of_type_Ysb.a = System.currentTimeMillis();
     }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Ysj.a(this.jdField_a_of_type_JavaLangString, true, "cmobine auido video done.");
+      return;
+    }
+    this.jdField_a_of_type_Ysj.a(this.b, false, "cmobine auido video done.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ysi
  * JD-Core Version:    0.7.0.1
  */

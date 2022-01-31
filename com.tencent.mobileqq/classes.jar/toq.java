@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 
-class toq
-  implements Runnable
+public class toq
 {
-  toq(too paramtoo) {}
-  
-  public void run()
-  {
-    RegisterActivity.d(this.a.a);
-    RegisterActivity.a(this.a.a, "请重新发送短信");
-  }
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  public TextView a;
+  public VideoFeedsAlphaMaskView a;
+  public ZImageView a;
+  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     toq
  * JD-Core Version:    0.7.0.1
  */

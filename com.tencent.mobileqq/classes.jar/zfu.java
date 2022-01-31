@@ -1,101 +1,63 @@
-import KQQ.HttpUploadReq;
-import KQQ.UploadInfo;
-import com.tencent.common.config.AppSetting;
-import com.tencent.qphone.base.util.Cryptor;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.entity.ByteArrayEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
+import org.json.JSONObject;
 
-public final class zfu
-  implements Runnable
+class zfu
+  extends apmh
 {
-  public zfu(byte[] paramArrayOfByte, String paramString) {}
+  zfu(zft paramzft) {}
   
-  public void run()
+  public void onBindedToClient() {}
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle)
   {
-    boolean bool3 = false;
-    boolean bool1 = false;
-    boolean bool2 = bool3;
-    try
+    int i;
+    Object localObject;
+    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == zft.a(this.a).key))
     {
-      Object localObject1 = new UploadInfo();
-      bool2 = bool3;
-      ((UploadInfo)localObject1).lAppID = AppSetting.a;
-      bool2 = bool3;
-      ((UploadInfo)localObject1).lFromMID = 9901L;
-      bool2 = bool3;
-      ((UploadInfo)localObject1).lToMID = 0L;
-      bool2 = bool3;
-      ((UploadInfo)localObject1).shType = 2;
-      bool2 = bool3;
-      ((UploadInfo)localObject1).vSignature = "NoSignature".getBytes();
-      bool2 = bool3;
-      localObject1 = ((UploadInfo)localObject1).toByteArray();
-      bool2 = bool3;
-      Object localObject2 = new Cryptor().encrypt((byte[])localObject1, this.jdField_a_of_type_ArrayOfByte);
-      bool2 = bool3;
-      localObject1 = new HttpUploadReq();
-      bool2 = bool3;
-      ((HttpUploadReq)localObject1).vEncryptUploadInfo = ((byte[])localObject2);
-      bool2 = bool3;
-      ((HttpUploadReq)localObject1).vFileData = this.jdField_a_of_type_JavaLangString.getBytes();
-      int i = 0;
-      for (;;)
+      i = paramBundle.getInt("failcode");
+      localObject = paramBundle.getBundle("request");
+      if (i == 1000) {
+        break label80;
+      }
+      QLog.e("SSOWebviewPlugin", 2, "IPC failed ! failcode: " + i + "  reqParams: " + localObject);
+    }
+    for (;;)
+    {
+      return;
+      label80:
+      String str = paramBundle.getString("cmd");
+      paramBundle = paramBundle.getBundle("response");
+      if (("ipc_cmd_certified_account_web_plugin_follow".equals(str)) && (localObject != null) && (paramBundle != null))
       {
-        bool2 = bool1;
-        if (bool1) {
-          break;
-        }
-        bool2 = bool1;
-        if (i >= 3) {
-          break;
-        }
-        bool2 = bool1;
-        localObject2 = new HttpPost("http://bugtrace.3g.qq.com/upload/1/0");
-        bool2 = bool1;
-        ((HttpPost)localObject2).setEntity(new ByteArrayEntity(((HttpUploadReq)localObject1).toByteArray()));
-        bool2 = bool1;
-        localObject2 = new DefaultHttpClient().execute((HttpUriRequest)localObject2);
-        bool3 = bool1;
-        bool2 = bool1;
-        if (((HttpResponse)localObject2).getStatusLine().getStatusCode() == 200)
+        localObject = ((Bundle)localObject).getString("callback");
+        i = paramBundle.getInt("retCode");
+        paramBundle = new JSONObject();
+        try
         {
-          bool2 = bool1;
-          localObject2 = ((HttpResponse)localObject2).getEntity();
-          bool3 = bool1;
-          if (localObject2 != null)
+          paramBundle.put("retCode", i);
+          this.a.callJs((String)localObject, new String[] { paramBundle.toString() });
+          if (QLog.isColorLevel())
           {
-            bool2 = bool1;
-            localObject2 = EntityUtils.toString((HttpEntity)localObject2);
-            bool2 = bool1;
-            bool3 = Pattern.compile("ret\\s*=\\s*0", 2).matcher((CharSequence)localObject2).find();
+            QLog.d("SSOWebviewPlugin", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW return! retCode: " + i);
+            return;
           }
         }
-        i += 1;
-        bool1 = bool3;
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("DexLoad", 2, "upload result: " + bool2 + ", " + this.jdField_a_of_type_JavaLangString);
+        catch (Throwable paramBundle)
+        {
+          QLog.e("SSOWebviewPlugin", 2, "sso.PublicFollow failed! " + QLog.getStackTraceString(paramBundle));
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zfu
  * JD-Core Version:    0.7.0.1
  */

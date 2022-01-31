@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class BusinessInfoCheckUpdate$LbsPoiInfo
-  extends MessageMicro
+  extends MessageMicro<LbsPoiInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98, 104, 114, 122, 128 }, new String[] { "name", "addr", "catalog", "latitude", "longitude", "dist", "uid", "catalogid", "city", "cityid", "dianping_id", "hotvalue", "is_business_area", "province", "region", "shopping_mall" }, new Object[] { "", "", "", "", "", "", "", "", "", "", "", "", Integer.valueOf(0), "", "", Integer.valueOf(0) }, LbsPoiInfo.class);
   public final PBStringField addr = PBField.initString("");
@@ -29,7 +29,7 @@ public final class BusinessInfoCheckUpdate$LbsPoiInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.LbsPoiInfo
  * JD-Core Version:    0.7.0.1
  */

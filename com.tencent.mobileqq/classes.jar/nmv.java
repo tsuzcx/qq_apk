@@ -1,42 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.OnGetUserInfoCallback;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.OnFetchUserInfoCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
-public final class nmv
-  implements GetUserInfoHandler.OnGetUserInfoCallback
+public class nmv
+  implements arrh
 {
-  public nmv(PlayModeUtils.OnFetchUserInfoCallback paramOnFetchUserInfoCallback, String paramString1, String paramString2) {}
+  public nmv(VideoCoverView paramVideoCoverView) {}
   
-  public void a(GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  public void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$OnFetchUserInfoCallback != null)
-    {
-      boolean bool = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess();
-      paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-      if ((bool) && (paramUpdateUserInfoEvent != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_JavaLangString.equals(paramUpdateUserInfoEvent.uid)))
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.w("Q.qqstory.player.PlayModeUtils", 2, "[az]PlayModeUtils.fetchUserInfo: ohhh! bad guy!!! require " + this.jdField_a_of_type_JavaLangString + " and the return uid is " + paramUpdateUserInfoEvent.uid);
-        }
-        paramUpdateUserInfoEvent.uid = this.jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(this.b)) {
-          paramUpdateUserInfoEvent.qq = this.b;
-        }
-        ((UserManager)SuperManager.a(2)).a(paramUpdateUserInfoEvent);
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$OnFetchUserInfoCallback.a(bool, paramUpdateUserInfoEvent, true);
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = true;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
+    if (this.a.jdField_a_of_type_Int == 5) {
+      this.a.d();
     }
+    for (;;)
+    {
+      nly.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, true);
+      return;
+      this.a.b(VideoCoverView.a(this.a));
+    }
+  }
+  
+  public void b()
+  {
+    this.a.jdField_a_of_type_Int = 6;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = false;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
+    this.a.g();
+    nly.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nmv
  * JD-Core Version:    0.7.0.1
  */

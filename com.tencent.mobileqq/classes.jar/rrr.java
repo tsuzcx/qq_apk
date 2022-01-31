@@ -1,42 +1,38 @@
-import android.content.Context;
-import android.os.Build;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.widget.ToastStyleDialog;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
 import com.tencent.qphone.base.util.QLog;
 
 public class rrr
-  implements Runnable
+  implements rrp
 {
-  public rrr(BaseChatPie paramBaseChatPie, int paramInt) {}
+  public rrr(ReadInJoyBaseListView paramReadInJoyBaseListView) {}
   
-  public void run()
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "recorderVolumeChange " + this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_Int == 1) {
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.j()) {
-        QLog.i("Q.aio.BaseChatPie", 1, "volueme state err" + Build.MANUFACTURER + Build.MODEL);
+    if (ork.a(ork.a()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", Integer.valueOf(this.a.c) });
+      }
+      if ((this.a.c == 0) && ((!szp.a(this.a.d)) || (!this.a.b)))
+      {
+        this.a.a(4);
+        QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch ON, loadingMore()");
       }
     }
-    while (((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 0)) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetToastStyleDialog == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetToastStyleDialog.isShowing()) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetToastStyleDialog.getWindow() == null))
+    do
     {
-      do
-      {
-        return;
-      } while ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetToastStyleDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetToastStyleDialog.isShowing()));
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetToastStyleDialog = new ToastStyleDialog(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetToastStyleDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getString(2131433393));
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetToastStyleDialog.show();
       return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetToastStyleDialog.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetToastStyleDialog = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch OFF, mCurrentStatus = ", Integer.valueOf(this.a.c) });
+      }
+    } while ((szp.a(this.a.d)) && ((this.a.c != 0) || (this.a.b)));
+    this.a.a(4);
+    QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch OFF, loadingMore()");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rrr
  * JD-Core Version:    0.7.0.1
  */

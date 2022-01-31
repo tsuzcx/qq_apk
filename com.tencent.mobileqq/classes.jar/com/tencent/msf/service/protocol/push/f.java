@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class f
   extends JceStruct
 {
-  public long a;
-  public byte b;
+  public long a = 0L;
+  public byte b = 0;
   public String c = "";
   
   public f() {}

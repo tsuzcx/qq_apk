@@ -1,85 +1,80 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.app.DataLineObserver;
+import com.dataline.activities.DLFilesViewerActivity;
+import com.dataline.util.file.DLFileInfo;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.DataLineMsgSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class ab
-  extends DataLineObserver
+class ab
+  implements arrh
 {
-  public ab(LiteActivity paramLiteActivity) {}
+  ab(aa paramaa, DataLineMsgRecord paramDataLineMsgRecord, alqo paramalqo) {}
   
-  protected void a()
+  public void a()
   {
-    this.a.runOnUiThread(new ad(this));
-  }
-  
-  @TargetApi(11)
-  protected void a(int paramInt, String paramString, long paramLong)
-  {
-    paramInt = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (Build.VERSION.SDK_INT < 11)
-    {
-      this.a.runOnUiThread(new aj(this, paramString, paramInt));
-      return;
+    Object localObject1 = null;
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.isSendFromLocal()) && (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.strMoloKey != null)) {
+      this.jdField_a_of_type_Alqo.b(112);
     }
-    this.a.runOnUiThread(new ak(this, paramString, paramInt));
+    DLFilesViewerActivity.a(this.jdField_a_of_type_Aa.a).setPaused(false);
+    Iterator localIterator = DLFilesViewerActivity.a(this.jdField_a_of_type_Aa.a).values().iterator();
+    Object localObject2 = null;
+    if (localIterator.hasNext())
+    {
+      DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
+      DLFileInfo localDLFileInfo = dm.a(localDataLineMsgRecord);
+      Object localObject3;
+      if (localDLFileInfo.a == 1)
+      {
+        localObject3 = localObject2;
+        if (localObject2 == null) {
+          localObject3 = new ArrayList();
+        }
+        ((ArrayList)localObject3).add(localDataLineMsgRecord);
+        localObject2 = localObject3;
+      }
+      for (;;)
+      {
+        break;
+        if (localDLFileInfo.a != 4)
+        {
+          localObject3 = localObject1;
+          if (localDLFileInfo.a != 2) {}
+        }
+        else
+        {
+          if ((localDataLineMsgRecord.fileMsgStatus == 1L) && (localDataLineMsgRecord.strMoloKey != null)) {
+            dl.e(this.jdField_a_of_type_Aa.a.app);
+          }
+          localObject3 = localObject1;
+          if (localObject1 == null) {
+            localObject3 = new ArrayList();
+          }
+          ((List)localObject3).add(Long.valueOf(localDataLineMsgRecord.sessionid));
+          localDataLineMsgRecord.fileMsgStatus = 0L;
+          int i = DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid);
+          this.jdField_a_of_type_Aa.a.app.a().a(i).c(localDataLineMsgRecord.msgId);
+        }
+        localObject1 = localObject3;
+      }
+    }
+    if ((localObject2 != null) && (localObject2.size() > 0)) {
+      this.jdField_a_of_type_Alqo.a(localObject2, true);
+    }
+    if ((localObject1 != null) && (localObject1.size() > 0)) {
+      this.jdField_a_of_type_Alqo.a(localObject1);
+    }
+    DLFilesViewerActivity.a(this.jdField_a_of_type_Aa.a).notifyDataSetChanged();
   }
   
-  protected void a(long paramLong)
-  {
-    this.a.runOnUiThread(new al(this));
-  }
-  
-  protected void a(long paramLong, float paramFloat)
-  {
-    super.a(paramLong, paramFloat);
-    this.a.runOnUiThread(new af(this, paramLong, paramFloat));
-  }
-  
-  protected void a(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
-  {
-    super.a(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
-    paramInt = DataLineMsgRecord.getDevTypeBySeId(paramLong1);
-    this.a.runOnUiThread(new ag(this, paramInt, paramLong1));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong)
-  {
-    super.a(paramBoolean, paramLong);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.a(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    this.a.runOnUiThread(new ae(this, paramBoolean, i, paramLong, paramString));
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong, String paramString)
-  {
-    super.a(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong.longValue());
-    this.a.runOnUiThread(new ai(this, i));
-  }
-  
-  protected void b(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
-  {
-    super.b(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
-    paramInt = DataLineMsgRecord.getDevTypeBySeId(paramLong1);
-    this.a.runOnUiThread(new ah(this, paramInt, paramLong1));
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.b(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    this.a.runOnUiThread(new ac(this, i, paramLong, paramString));
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ab
  * JD-Core Version:    0.7.0.1
  */

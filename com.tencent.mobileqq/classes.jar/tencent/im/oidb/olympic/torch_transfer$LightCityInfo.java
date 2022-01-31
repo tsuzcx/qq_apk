@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class torch_transfer$LightCityInfo
-  extends MessageMicro
+  extends MessageMicro<LightCityInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uint32_cur_city_id", "uint32_next_city_num" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, LightCityInfo.class);
   public final PBUInt32Field uint32_cur_city_id = PBField.initUInt32(0);
@@ -14,7 +14,7 @@ public final class torch_transfer$LightCityInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.olympic.torch_transfer.LightCityInfo
  * JD-Core Version:    0.7.0.1
  */

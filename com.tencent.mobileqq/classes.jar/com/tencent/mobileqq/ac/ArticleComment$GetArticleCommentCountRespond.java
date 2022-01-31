@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ArticleComment$GetArticleCommentCountRespond
-  extends MessageMicro
+  extends MessageMicro<GetArticleCommentCountRespond>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16 }, new String[] { "ret", "count" }, new Object[] { null, Integer.valueOf(0) }, GetArticleCommentCountRespond.class);
   public final PBUInt32Field count = PBField.initUInt32(0);
@@ -14,7 +14,7 @@ public final class ArticleComment$GetArticleCommentCountRespond
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ac.ArticleComment.GetArticleCommentCountRespond
  * JD-Core Version:    0.7.0.1
  */

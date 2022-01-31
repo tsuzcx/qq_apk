@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.medalwall;
 
-import aefv;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import aubi;
 
 public class MedalID
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aefv();
+  public static final Parcelable.Creator<MedalID> CREATOR = new aubi();
   public int a;
   public int b;
   
@@ -37,7 +37,7 @@ public class MedalID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.MedalID
  * JD-Core Version:    0.7.0.1
  */

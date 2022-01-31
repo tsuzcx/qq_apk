@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x903$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "opt_msg_check_forbit_group_req", "opt_msg_get_invited_uin_list_req", "uint32_client_type", "uint32_client_version" }, new Object[] { null, null, Integer.valueOf(0), Integer.valueOf(0) }, ReqBody.class);
   public cmd0x903.SubCmd0x1Req opt_msg_check_forbit_group_req = new cmd0x903.SubCmd0x1Req();
@@ -16,7 +16,7 @@ public final class cmd0x903$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x903.cmd0x903.ReqBody
  * JD-Core Version:    0.7.0.1
  */

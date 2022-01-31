@@ -23,11 +23,11 @@ import cooperation.qqfav.QfavHelper;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QzonePluginProxyActivity;
 import cooperation.zebra.ZebraPluginProxyActivity;
-import eqn;
-import eqo;
-import eqp;
-import eqq;
-import eqr;
+import elz;
+import ema;
+import emb;
+import emc;
+import emd;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -44,9 +44,9 @@ public class AlbumListActivity
   private Dialog jdField_a_of_type_AndroidAppDialog;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   public XListView a;
-  public eqr a;
+  public emd a;
   ArrayList jdField_a_of_type_JavaUtilArrayList;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new eqp(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new emb(this);
   boolean jdField_a_of_type_Boolean = true;
   public int b;
   TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -61,9 +61,9 @@ public class AlbumListActivity
   private void a(List paramList)
   {
     int i = 0;
-    this.jdField_a_of_type_Eqr.a(paramList);
+    this.jdField_a_of_type_Emd.a(paramList);
     if ((paramList == null) || (paramList.size() == 0)) {
-      this.jdField_a_of_type_ComTencentWidgetXListView.setEmptyView(findViewById(2131232881));
+      this.jdField_a_of_type_ComTencentWidgetXListView.setEmptyView(findViewById(2131232884));
     }
     int j;
     int k;
@@ -71,7 +71,7 @@ public class AlbumListActivity
     {
       this.jdField_a_of_type_Boolean = false;
       j = AlbumUtil.a();
-      k = this.jdField_a_of_type_Eqr.getCount();
+      k = this.jdField_a_of_type_Emd.getCount();
       if (k != 0) {
         break label113;
       }
@@ -82,7 +82,7 @@ public class AlbumListActivity
         QLog.d("SelectPhotoTrace", 2, "AlbumListActivity,start to position,firstVisiblePos is:" + i);
       }
       this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(i);
-      this.jdField_a_of_type_Eqr.notifyDataSetChanged();
+      this.jdField_a_of_type_Emd.notifyDataSetChanged();
       return;
       label113:
       if (j > k - 1) {
@@ -135,7 +135,7 @@ public class AlbumListActivity
   
   private void c()
   {
-    this.jdField_b_of_type_Int = getResources().getDimensionPixelSize(2131427452);
+    this.jdField_b_of_type_Int = getResources().getDimensionPixelSize(2131427455);
     this.jdField_c_of_type_Int = this.jdField_b_of_type_Int;
   }
   
@@ -162,10 +162,10 @@ public class AlbumListActivity
   @TargetApi(9)
   private void e()
   {
-    this.jdField_a_of_type_Eqr = new eqr(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232880));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Eqr);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new eqq(this, null));
+    this.jdField_a_of_type_Emd = new emd(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232883));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Emd);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new emc(this, null));
     if (Build.VERSION.SDK_INT > 8) {
       this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(2);
     }
@@ -177,7 +177,7 @@ public class AlbumListActivity
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(getResources().getString(2131558985));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new eqo(this));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new ema(this));
   }
   
   private void f()
@@ -194,7 +194,7 @@ public class AlbumListActivity
         this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131624405);
         this.jdField_a_of_type_AndroidAppDialog.setCancelable(true);
         this.jdField_a_of_type_AndroidAppDialog.show();
-        this.jdField_a_of_type_AndroidAppDialog.setContentView(2130903317);
+        this.jdField_a_of_type_AndroidAppDialog.setContentView(2130903319);
       }
       return;
     }
@@ -345,7 +345,7 @@ public class AlbumListActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903543);
+    setContentView(2130903545);
     c();
     d();
     e();
@@ -375,10 +375,10 @@ public class AlbumListActivity
   public void onResume()
   {
     super.onResume();
-    eqn localeqn = new eqn(this);
+    elz localelz = new elz(this);
     if ((AlbumUtil.a() == null) || (jdField_a_of_type_Long < AlbumUtil.a()))
     {
-      localeqn.execute(new Object[] { "" });
+      localelz.execute(new Object[] { "" });
       return;
     }
     a(a());

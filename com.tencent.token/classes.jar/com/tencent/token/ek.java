@@ -1,73 +1,17 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.File;
+import java.util.Comparator;
 
-public final class ek
-  extends bm
+class ek
+  implements Comparator
 {
-  private el c;
-  
-  protected final String a()
+  public int a(File paramFile1, File paramFile2)
   {
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
+    if (paramFile1.lastModified() > paramFile2.lastModified()) {
+      return -1;
     }
-    for (String str = ax.c; str == null; str = null)
-    {
-      this.a.a(104, null, null);
-      return null;
-    }
-    str = "?aq_base_sid=" + str;
-    return b.c() + "/cn/mbtoken3/mbtoken3_qry_bind_notify_msg" + str;
-  }
-  
-  protected final void a(fs paramfs) {}
-  
-  protected final void a(JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
-    {
-      a(i, paramJSONObject.getString("info"));
-      return;
-    }
-    this.c = new el(this);
-    this.c.a = paramJSONObject.getInt("is_have_msg");
-    if (this.c.a == 1)
-    {
-      this.c.b = paramJSONObject.getString("content");
-      paramJSONObject = paramJSONObject.getString("data");
-      localObject = s.d(paramJSONObject);
-      if (localObject == null) {
-        throw new JSONException("dec transdata error");
-      }
-      this.c.c = new JSONObject(new String((byte[])localObject)).getLong("uin");
-      e.b("qrybindnotifymsg: havemsg=" + this.c.a + ", content=" + this.c.b + ", uin=" + this.c.c + ", data=" + paramJSONObject + ", descdata=" + new String((byte[])localObject));
-    }
-    paramJSONObject = this.a;
-    Object localObject = this.c.b;
-    paramJSONObject.a = 0;
-    paramJSONObject.c = ((String)localObject);
-  }
-  
-  protected final void b()
-  {
-    if (!this.b.e)
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.c;
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
+    return 1;
   }
 }
 

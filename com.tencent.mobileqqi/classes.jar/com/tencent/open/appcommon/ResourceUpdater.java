@@ -675,11 +675,11 @@ public class ResourceUpdater
     //   103: ifne +23 -> 126
     //   106: invokestatic 539	com/tencent/open/appcommon/Common:p	()Ljava/lang/String;
     //   109: invokestatic 371	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   112: ifne +531 -> 643
+    //   112: ifne +547 -> 659
     //   115: invokestatic 539	com/tencent/open/appcommon/Common:p	()Ljava/lang/String;
     //   118: aload 6
     //   120: invokevirtual 386	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   123: ifne +520 -> 643
+    //   123: ifne +536 -> 659
     //   126: new 71	java/lang/StringBuilder
     //   129: dup
     //   130: invokespecial 72	java/lang/StringBuilder:<init>	()V
@@ -721,7 +721,7 @@ public class ResourceUpdater
     //   213: astore 10
     //   215: aload 10
     //   217: invokeinterface 563 1 0
-    //   222: ifeq +281 -> 503
+    //   222: ifeq +297 -> 519
     //   225: aload 10
     //   227: invokeinterface 566 1 0
     //   232: checkcast 568	java/util/zip/ZipEntry
@@ -729,263 +729,269 @@ public class ResourceUpdater
     //   236: aload_3
     //   237: invokevirtual 569	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
     //   240: astore 11
-    //   242: aload_3
-    //   243: invokevirtual 572	java/util/zip/ZipEntry:isDirectory	()Z
-    //   246: ifeq +46 -> 292
-    //   249: new 361	java/io/File
-    //   252: dup
-    //   253: aload 9
-    //   255: invokevirtual 575	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   258: aload 11
-    //   260: invokespecial 576	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   263: astore_3
-    //   264: aload_3
-    //   265: invokevirtual 365	java/io/File:exists	()Z
-    //   268: ifne -53 -> 215
-    //   271: aload_3
-    //   272: invokevirtual 546	java/io/File:mkdirs	()Z
-    //   275: pop
-    //   276: goto -61 -> 215
+    //   242: aload 11
+    //   244: ifnull -29 -> 215
+    //   247: aload 11
+    //   249: ldc_w 571
+    //   252: invokevirtual 574	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   255: ifne -40 -> 215
+    //   258: aload_3
+    //   259: invokevirtual 577	java/util/zip/ZipEntry:isDirectory	()Z
+    //   262: ifeq +46 -> 308
+    //   265: new 361	java/io/File
+    //   268: dup
+    //   269: aload 9
+    //   271: invokevirtual 580	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   274: aload 11
+    //   276: invokespecial 581	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   279: astore_3
-    //   280: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
-    //   283: ldc_w 578
-    //   286: aload_3
-    //   287: invokestatic 526	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   290: iconst_0
-    //   291: ireturn
-    //   292: new 361	java/io/File
-    //   295: dup
-    //   296: aload 9
-    //   298: invokevirtual 575	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   301: aload 11
-    //   303: invokespecial 576	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   306: astore 5
-    //   308: aload 5
-    //   310: invokevirtual 365	java/io/File:exists	()Z
-    //   313: ifeq +9 -> 322
-    //   316: aload 5
-    //   318: invokevirtual 581	java/io/File:delete	()Z
-    //   321: pop
-    //   322: aload 7
-    //   324: aload 11
-    //   326: invokevirtual 102	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   329: invokeinterface 582 2 0
-    //   334: pop
-    //   335: aload 8
-    //   337: aload_3
-    //   338: invokevirtual 586	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   341: astore_3
-    //   342: new 588	java/io/FileOutputStream
-    //   345: dup
-    //   346: aload 5
-    //   348: invokespecial 589	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   351: astore 5
-    //   353: sipush 1024
-    //   356: newarray byte
-    //   358: astore 11
-    //   360: aload_3
-    //   361: ifnull +77 -> 438
-    //   364: aload_3
-    //   365: aload 11
-    //   367: invokevirtual 595	java/io/InputStream:read	([B)I
-    //   370: istore_2
-    //   371: iload_2
-    //   372: iconst_m1
-    //   373: if_icmpeq +65 -> 438
-    //   376: aload 5
-    //   378: aload 11
-    //   380: iconst_0
-    //   381: iload_2
-    //   382: invokevirtual 601	java/io/OutputStream:write	([BII)V
-    //   385: goto -21 -> 364
-    //   388: astore 6
-    //   390: aload_3
-    //   391: astore 4
-    //   393: aload 5
-    //   395: astore_3
-    //   396: aload 6
-    //   398: astore 5
-    //   400: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
-    //   403: ldc_w 578
-    //   406: aload 5
-    //   408: invokestatic 526	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   411: aload 4
-    //   413: ifnull +8 -> 421
-    //   416: aload 4
-    //   418: invokevirtual 604	java/io/InputStream:close	()V
-    //   421: aload_3
-    //   422: ifnull -392 -> 30
-    //   425: aload_3
-    //   426: invokevirtual 605	java/io/OutputStream:close	()V
-    //   429: iconst_0
-    //   430: ireturn
-    //   431: astore_3
-    //   432: aload_3
-    //   433: invokevirtual 608	java/io/IOException:printStackTrace	()V
-    //   436: iconst_0
-    //   437: ireturn
-    //   438: aload_3
-    //   439: ifnull +7 -> 446
-    //   442: aload_3
-    //   443: invokevirtual 604	java/io/InputStream:close	()V
-    //   446: aload 5
-    //   448: ifnull -233 -> 215
-    //   451: aload 5
-    //   453: invokevirtual 605	java/io/OutputStream:close	()V
-    //   456: goto -241 -> 215
-    //   459: astore_3
-    //   460: aload_3
-    //   461: invokevirtual 608	java/io/IOException:printStackTrace	()V
-    //   464: goto -249 -> 215
-    //   467: astore 4
-    //   469: aconst_null
-    //   470: astore 5
-    //   472: aconst_null
-    //   473: astore_3
-    //   474: aload_3
-    //   475: ifnull +7 -> 482
-    //   478: aload_3
-    //   479: invokevirtual 604	java/io/InputStream:close	()V
-    //   482: aload 5
-    //   484: ifnull +8 -> 492
-    //   487: aload 5
-    //   489: invokevirtual 605	java/io/OutputStream:close	()V
-    //   492: aload 4
-    //   494: athrow
-    //   495: astore_3
-    //   496: aload_3
-    //   497: invokevirtual 608	java/io/IOException:printStackTrace	()V
-    //   500: goto -8 -> 492
-    //   503: aload 9
-    //   505: invokevirtual 612	java/io/File:listFiles	()[Ljava/io/File;
-    //   508: astore_3
-    //   509: aload_3
-    //   510: ifnull +55 -> 565
-    //   513: aload_3
-    //   514: arraylength
-    //   515: istore_2
-    //   516: iload_1
-    //   517: iload_2
-    //   518: if_icmpge +47 -> 565
-    //   521: aload_3
-    //   522: iload_1
-    //   523: aaload
-    //   524: astore 4
-    //   526: aload 4
-    //   528: invokevirtual 613	java/io/File:isDirectory	()Z
-    //   531: ifne +27 -> 558
-    //   534: aload 7
-    //   536: aload 4
-    //   538: invokevirtual 614	java/io/File:getName	()Ljava/lang/String;
-    //   541: invokevirtual 102	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   544: invokeinterface 617 2 0
-    //   549: ifne +9 -> 558
+    //   280: aload_3
+    //   281: invokevirtual 365	java/io/File:exists	()Z
+    //   284: ifne -69 -> 215
+    //   287: aload_3
+    //   288: invokevirtual 546	java/io/File:mkdirs	()Z
+    //   291: pop
+    //   292: goto -77 -> 215
+    //   295: astore_3
+    //   296: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
+    //   299: ldc_w 583
+    //   302: aload_3
+    //   303: invokestatic 526	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   306: iconst_0
+    //   307: ireturn
+    //   308: new 361	java/io/File
+    //   311: dup
+    //   312: aload 9
+    //   314: invokevirtual 580	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   317: aload 11
+    //   319: invokespecial 581	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   322: astore 5
+    //   324: aload 5
+    //   326: invokevirtual 365	java/io/File:exists	()Z
+    //   329: ifeq +9 -> 338
+    //   332: aload 5
+    //   334: invokevirtual 586	java/io/File:delete	()Z
+    //   337: pop
+    //   338: aload 7
+    //   340: aload 11
+    //   342: invokevirtual 102	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   345: invokeinterface 587 2 0
+    //   350: pop
+    //   351: aload 8
+    //   353: aload_3
+    //   354: invokevirtual 591	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   357: astore_3
+    //   358: new 593	java/io/FileOutputStream
+    //   361: dup
+    //   362: aload 5
+    //   364: invokespecial 594	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   367: astore 5
+    //   369: sipush 1024
+    //   372: newarray byte
+    //   374: astore 11
+    //   376: aload_3
+    //   377: ifnull +77 -> 454
+    //   380: aload_3
+    //   381: aload 11
+    //   383: invokevirtual 600	java/io/InputStream:read	([B)I
+    //   386: istore_2
+    //   387: iload_2
+    //   388: iconst_m1
+    //   389: if_icmpeq +65 -> 454
+    //   392: aload 5
+    //   394: aload 11
+    //   396: iconst_0
+    //   397: iload_2
+    //   398: invokevirtual 606	java/io/OutputStream:write	([BII)V
+    //   401: goto -21 -> 380
+    //   404: astore 6
+    //   406: aload_3
+    //   407: astore 4
+    //   409: aload 5
+    //   411: astore_3
+    //   412: aload 6
+    //   414: astore 5
+    //   416: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
+    //   419: ldc_w 583
+    //   422: aload 5
+    //   424: invokestatic 526	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   427: aload 4
+    //   429: ifnull +8 -> 437
+    //   432: aload 4
+    //   434: invokevirtual 609	java/io/InputStream:close	()V
+    //   437: aload_3
+    //   438: ifnull -408 -> 30
+    //   441: aload_3
+    //   442: invokevirtual 610	java/io/OutputStream:close	()V
+    //   445: iconst_0
+    //   446: ireturn
+    //   447: astore_3
+    //   448: aload_3
+    //   449: invokevirtual 613	java/io/IOException:printStackTrace	()V
+    //   452: iconst_0
+    //   453: ireturn
+    //   454: aload_3
+    //   455: ifnull +7 -> 462
+    //   458: aload_3
+    //   459: invokevirtual 609	java/io/InputStream:close	()V
+    //   462: aload 5
+    //   464: ifnull -249 -> 215
+    //   467: aload 5
+    //   469: invokevirtual 610	java/io/OutputStream:close	()V
+    //   472: goto -257 -> 215
+    //   475: astore_3
+    //   476: aload_3
+    //   477: invokevirtual 613	java/io/IOException:printStackTrace	()V
+    //   480: goto -265 -> 215
+    //   483: astore 4
+    //   485: aconst_null
+    //   486: astore 5
+    //   488: aconst_null
+    //   489: astore_3
+    //   490: aload_3
+    //   491: ifnull +7 -> 498
+    //   494: aload_3
+    //   495: invokevirtual 609	java/io/InputStream:close	()V
+    //   498: aload 5
+    //   500: ifnull +8 -> 508
+    //   503: aload 5
+    //   505: invokevirtual 610	java/io/OutputStream:close	()V
+    //   508: aload 4
+    //   510: athrow
+    //   511: astore_3
+    //   512: aload_3
+    //   513: invokevirtual 613	java/io/IOException:printStackTrace	()V
+    //   516: goto -8 -> 508
+    //   519: aload 9
+    //   521: invokevirtual 617	java/io/File:listFiles	()[Ljava/io/File;
+    //   524: astore_3
+    //   525: aload_3
+    //   526: ifnull +55 -> 581
+    //   529: aload_3
+    //   530: arraylength
+    //   531: istore_2
+    //   532: iload_1
+    //   533: iload_2
+    //   534: if_icmpge +47 -> 581
+    //   537: aload_3
+    //   538: iload_1
+    //   539: aaload
+    //   540: astore 4
+    //   542: aload 4
+    //   544: invokevirtual 618	java/io/File:isDirectory	()Z
+    //   547: ifne +27 -> 574
+    //   550: aload 7
     //   552: aload 4
-    //   554: invokevirtual 581	java/io/File:delete	()Z
-    //   557: pop
-    //   558: iload_1
-    //   559: iconst_1
-    //   560: iadd
-    //   561: istore_1
-    //   562: goto -46 -> 516
-    //   565: aload 8
-    //   567: ifnull +8 -> 575
-    //   570: aload 8
-    //   572: invokevirtual 618	java/util/zip/ZipFile:close	()V
-    //   575: iload_0
-    //   576: ifeq +8 -> 584
-    //   579: aload 6
-    //   581: invokestatic 620	com/tencent/open/appcommon/Common:d	(Ljava/lang/String;)V
-    //   584: iconst_1
-    //   585: ireturn
-    //   586: astore_3
-    //   587: goto -12 -> 575
-    //   590: astore 4
-    //   592: aconst_null
-    //   593: astore 5
-    //   595: goto -121 -> 474
-    //   598: astore 4
-    //   600: goto -126 -> 474
-    //   603: astore 5
-    //   605: aload 4
-    //   607: astore 6
-    //   609: aload 5
-    //   611: astore 4
-    //   613: aload_3
-    //   614: astore 5
-    //   616: aload 6
-    //   618: astore_3
-    //   619: goto -145 -> 474
-    //   622: astore 5
-    //   624: aconst_null
-    //   625: astore_3
-    //   626: goto -226 -> 400
-    //   629: astore 5
-    //   631: aconst_null
-    //   632: astore 6
-    //   634: aload_3
-    //   635: astore 4
-    //   637: aload 6
-    //   639: astore_3
-    //   640: goto -240 -> 400
-    //   643: iconst_0
-    //   644: istore_0
-    //   645: goto -489 -> 156
+    //   554: invokevirtual 619	java/io/File:getName	()Ljava/lang/String;
+    //   557: invokevirtual 102	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   560: invokeinterface 621 2 0
+    //   565: ifne +9 -> 574
+    //   568: aload 4
+    //   570: invokevirtual 586	java/io/File:delete	()Z
+    //   573: pop
+    //   574: iload_1
+    //   575: iconst_1
+    //   576: iadd
+    //   577: istore_1
+    //   578: goto -46 -> 532
+    //   581: aload 8
+    //   583: ifnull +8 -> 591
+    //   586: aload 8
+    //   588: invokevirtual 622	java/util/zip/ZipFile:close	()V
+    //   591: iload_0
+    //   592: ifeq +8 -> 600
+    //   595: aload 6
+    //   597: invokestatic 624	com/tencent/open/appcommon/Common:d	(Ljava/lang/String;)V
+    //   600: iconst_1
+    //   601: ireturn
+    //   602: astore_3
+    //   603: goto -12 -> 591
+    //   606: astore 4
+    //   608: aconst_null
+    //   609: astore 5
+    //   611: goto -121 -> 490
+    //   614: astore 4
+    //   616: goto -126 -> 490
+    //   619: astore 5
+    //   621: aload 4
+    //   623: astore 6
+    //   625: aload 5
+    //   627: astore 4
+    //   629: aload_3
+    //   630: astore 5
+    //   632: aload 6
+    //   634: astore_3
+    //   635: goto -145 -> 490
+    //   638: astore 5
+    //   640: aconst_null
+    //   641: astore_3
+    //   642: goto -226 -> 416
+    //   645: astore 5
+    //   647: aconst_null
+    //   648: astore 6
+    //   650: aload_3
+    //   651: astore 4
+    //   653: aload 6
+    //   655: astore_3
+    //   656: goto -240 -> 416
+    //   659: iconst_0
+    //   660: istore_0
+    //   661: goto -505 -> 156
     // Local variable table:
     //   start	length	slot	name	signature
-    //   155	490	0	i	int
-    //   4	558	1	j	int
-    //   370	149	2	k	int
-    //   70	202	3	localObject1	Object
-    //   279	59	3	localException1	Exception
-    //   341	85	3	localObject2	Object
-    //   431	12	3	localIOException1	java.io.IOException
-    //   459	2	3	localIOException2	java.io.IOException
-    //   473	6	3	localObject3	Object
-    //   495	2	3	localIOException3	java.io.IOException
-    //   508	14	3	arrayOfFile	java.io.File[]
-    //   586	28	3	localIOException4	java.io.IOException
-    //   618	22	3	localObject4	Object
-    //   1	416	4	localObject5	Object
-    //   467	26	4	localObject6	Object
-    //   524	29	4	localObject7	Object
-    //   590	1	4	localObject8	Object
-    //   598	8	4	localObject9	Object
-    //   611	25	4	localObject10	Object
-    //   306	288	5	localObject11	Object
-    //   603	7	5	localObject12	Object
-    //   614	1	5	localIOException5	java.io.IOException
-    //   622	1	5	localException2	Exception
-    //   629	1	5	localException3	Exception
+    //   155	506	0	i	int
+    //   4	574	1	j	int
+    //   386	149	2	k	int
+    //   70	218	3	localObject1	Object
+    //   295	59	3	localException1	Exception
+    //   357	85	3	localObject2	Object
+    //   447	12	3	localIOException1	java.io.IOException
+    //   475	2	3	localIOException2	java.io.IOException
+    //   489	6	3	localObject3	Object
+    //   511	2	3	localIOException3	java.io.IOException
+    //   524	14	3	arrayOfFile	java.io.File[]
+    //   602	28	3	localIOException4	java.io.IOException
+    //   634	22	3	localObject4	Object
+    //   1	432	4	localObject5	Object
+    //   483	26	4	localObject6	Object
+    //   540	29	4	localObject7	Object
+    //   606	1	4	localObject8	Object
+    //   614	8	4	localObject9	Object
+    //   627	25	4	localObject10	Object
+    //   322	288	5	localObject11	Object
+    //   619	7	5	localObject12	Object
+    //   630	1	5	localIOException5	java.io.IOException
+    //   638	1	5	localException2	Exception
+    //   645	1	5	localException3	Exception
     //   38	108	6	str	String
-    //   388	192	6	localException4	Exception
-    //   607	31	6	localObject13	Object
-    //   187	348	7	localHashSet	java.util.HashSet
-    //   206	365	8	localZipFile	java.util.zip.ZipFile
-    //   164	340	9	localFile	java.io.File
+    //   404	192	6	localException4	Exception
+    //   623	31	6	localObject13	Object
+    //   187	364	7	localHashSet	java.util.HashSet
+    //   206	381	8	localZipFile	java.util.zip.ZipFile
+    //   164	356	9	localFile	java.io.File
     //   213	13	10	localEnumeration	java.util.Enumeration
-    //   240	139	11	localObject14	Object
+    //   240	155	11	localObject14	Object
     // Exception table:
     //   from	to	target	type
-    //   189	208	279	java/lang/Exception
-    //   353	360	388	java/lang/Exception
-    //   364	371	388	java/lang/Exception
-    //   376	385	388	java/lang/Exception
-    //   416	421	431	java/io/IOException
-    //   425	429	431	java/io/IOException
-    //   442	446	459	java/io/IOException
-    //   451	456	459	java/io/IOException
-    //   335	342	467	finally
-    //   478	482	495	java/io/IOException
-    //   487	492	495	java/io/IOException
-    //   570	575	586	java/io/IOException
-    //   342	353	590	finally
-    //   353	360	598	finally
-    //   364	371	598	finally
-    //   376	385	598	finally
-    //   400	411	603	finally
-    //   335	342	622	java/lang/Exception
-    //   342	353	629	java/lang/Exception
+    //   189	208	295	java/lang/Exception
+    //   369	376	404	java/lang/Exception
+    //   380	387	404	java/lang/Exception
+    //   392	401	404	java/lang/Exception
+    //   432	437	447	java/io/IOException
+    //   441	445	447	java/io/IOException
+    //   458	462	475	java/io/IOException
+    //   467	472	475	java/io/IOException
+    //   351	358	483	finally
+    //   494	498	511	java/io/IOException
+    //   503	508	511	java/io/IOException
+    //   586	591	602	java/io/IOException
+    //   358	369	606	finally
+    //   369	376	614	finally
+    //   380	387	614	finally
+    //   392	401	614	finally
+    //   416	427	619	finally
+    //   351	358	638	java/lang/Exception
+    //   358	369	645	java/lang/Exception
   }
   
   /* Error */
@@ -998,21 +1004,21 @@ public class ResourceUpdater
     //   4: istore 4
     //   6: iconst_0
     //   7: istore_3
-    //   8: invokestatic 629	android/os/SystemClock:elapsedRealtime	()J
+    //   8: invokestatic 633	android/os/SystemClock:elapsedRealtime	()J
     //   11: lstore 13
     //   13: aload_0
-    //   14: invokevirtual 632	java/lang/String:length	()I
+    //   14: invokevirtual 636	java/lang/String:length	()I
     //   17: i2l
     //   18: lstore 15
     //   20: lconst_0
     //   21: lstore 11
     //   23: aload_0
     //   24: sipush 180
-    //   27: invokestatic 634	com/tencent/open/appcommon/ResourceUpdater:a	(Ljava/lang/String;I)Lorg/apache/http/HttpResponse;
+    //   27: invokestatic 638	com/tencent/open/appcommon/ResourceUpdater:a	(Ljava/lang/String;I)Lorg/apache/http/HttpResponse;
     //   30: astore 17
     //   32: aload 17
     //   34: ifnonnull +164 -> 198
-    //   37: ldc_w 636
+    //   37: ldc_w 640
     //   40: astore 17
     //   42: aconst_null
     //   43: astore 19
@@ -1029,8 +1035,8 @@ public class ResourceUpdater
     //   61: aload 19
     //   63: ifnull +750 -> 813
     //   66: aload 19
-    //   68: invokevirtual 604	java/io/InputStream:close	()V
-    //   71: invokestatic 641	com/tencent/open/business/cgireport/ReportManager:a	()Lcom/tencent/open/business/cgireport/ReportManager;
+    //   68: invokevirtual 609	java/io/InputStream:close	()V
+    //   71: invokestatic 645	com/tencent/open/business/cgireport/ReportManager:a	()Lcom/tencent/open/business/cgireport/ReportManager;
     //   74: new 71	java/lang/StringBuilder
     //   77: dup
     //   78: invokespecial 72	java/lang/StringBuilder:<init>	()V
@@ -1046,12 +1052,12 @@ public class ResourceUpdater
     //   104: iload_1
     //   105: invokestatic 148	com/tencent/open/adapter/CommonDataAdapter:a	()Lcom/tencent/open/adapter/CommonDataAdapter;
     //   108: invokevirtual 430	com/tencent/open/adapter/CommonDataAdapter:a	()J
-    //   111: ldc_w 643
+    //   111: ldc_w 647
     //   114: aload 17
-    //   116: invokevirtual 646	com/tencent/open/business/cgireport/ReportManager:a	(Ljava/lang/String;JJJIJLjava/lang/String;Ljava/lang/String;)V
+    //   116: invokevirtual 650	com/tencent/open/business/cgireport/ReportManager:a	(Ljava/lang/String;JJJIJLjava/lang/String;Ljava/lang/String;)V
     //   119: iload_3
     //   120: ifeq +588 -> 708
-    //   123: ldc_w 648
+    //   123: ldc_w 652
     //   126: astore 17
     //   128: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
     //   131: new 71	java/lang/StringBuilder
@@ -1061,22 +1067,22 @@ public class ResourceUpdater
     //   140: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   143: aload_0
     //   144: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   147: ldc_w 650
+    //   147: ldc_w 654
     //   150: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   153: lload 13
     //   155: invokevirtual 81	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   158: ldc_w 650
+    //   158: ldc_w 654
     //   161: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   164: lload 15
     //   166: invokevirtual 81	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   169: ldc_w 650
+    //   169: ldc_w 654
     //   172: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   175: lload 5
     //   177: invokevirtual 81	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   180: ldc_w 650
+    //   180: ldc_w 654
     //   183: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   186: iload_1
-    //   187: invokevirtual 653	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   187: invokevirtual 657	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   190: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   193: invokestatic 89	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   196: iload_3
@@ -1089,7 +1095,7 @@ public class ResourceUpdater
     //   212: sipush 200
     //   215: if_icmpne +154 -> 369
     //   218: aload 17
-    //   220: invokestatic 655	com/tencent/open/appcommon/ResourceUpdater:a	(Lorg/apache/http/HttpResponse;)Ljava/io/InputStream;
+    //   220: invokestatic 659	com/tencent/open/appcommon/ResourceUpdater:a	(Lorg/apache/http/HttpResponse;)Ljava/io/InputStream;
     //   223: astore 17
     //   225: aload 17
     //   227: ifnull +104 -> 331
@@ -1101,8 +1107,8 @@ public class ResourceUpdater
     //   240: lstore 9
     //   242: aload 17
     //   244: invokestatic 540	com/tencent/open/appcommon/Common:a	()Ljava/lang/String;
-    //   247: ldc_w 657
-    //   250: invokestatic 660	com/tencent/open/appcommon/Common:a	(Ljava/io/InputStream;Ljava/lang/String;Ljava/lang/String;)J
+    //   247: ldc_w 661
+    //   250: invokestatic 664	com/tencent/open/appcommon/Common:a	(Ljava/io/InputStream;Ljava/lang/String;Ljava/lang/String;)J
     //   253: lstore 5
     //   255: aload 17
     //   257: astore 18
@@ -1112,7 +1118,7 @@ public class ResourceUpdater
     //   265: lstore 9
     //   267: lload 5
     //   269: lstore 11
-    //   271: invokestatic 661	com/tencent/open/appcommon/ResourceUpdater:a	()Z
+    //   271: invokestatic 665	com/tencent/open/appcommon/ResourceUpdater:a	()Z
     //   274: ifeq +21 -> 295
     //   277: aconst_null
     //   278: astore 18
@@ -1130,9 +1136,9 @@ public class ResourceUpdater
     //   299: lload 5
     //   301: lstore 7
     //   303: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
-    //   306: ldc_w 663
+    //   306: ldc_w 667
     //   309: invokestatic 124	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   312: ldc_w 665
+    //   312: ldc_w 669
     //   315: astore 18
     //   317: bipush 200
     //   319: istore_1
@@ -1148,7 +1154,7 @@ public class ResourceUpdater
     //   339: lload 11
     //   341: lstore 9
     //   343: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
-    //   346: ldc_w 667
+    //   346: ldc_w 671
     //   349: invokestatic 124	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   352: aconst_null
     //   353: astore 18
@@ -1170,7 +1176,7 @@ public class ResourceUpdater
     //   380: goto -332 -> 48
     //   383: astore 18
     //   385: aload 18
-    //   387: invokevirtual 608	java/io/IOException:printStackTrace	()V
+    //   387: invokevirtual 613	java/io/IOException:printStackTrace	()V
     //   390: goto -319 -> 71
     //   393: astore 20
     //   395: aconst_null
@@ -1182,7 +1188,7 @@ public class ResourceUpdater
     //   404: aload 19
     //   406: astore 18
     //   408: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
-    //   411: ldc_w 669
+    //   411: ldc_w 673
     //   414: aload 20
     //   416: invokestatic 526	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   419: bipush 249
@@ -1196,13 +1202,13 @@ public class ResourceUpdater
     //   432: aload 19
     //   434: ifnull +379 -> 813
     //   437: aload 19
-    //   439: invokevirtual 604	java/io/InputStream:close	()V
+    //   439: invokevirtual 609	java/io/InputStream:close	()V
     //   442: iconst_0
     //   443: istore_3
     //   444: goto -373 -> 71
     //   447: astore 18
     //   449: aload 18
-    //   451: invokevirtual 608	java/io/IOException:printStackTrace	()V
+    //   451: invokevirtual 613	java/io/IOException:printStackTrace	()V
     //   454: iconst_0
     //   455: istore_3
     //   456: goto -385 -> 71
@@ -1216,7 +1222,7 @@ public class ResourceUpdater
     //   470: aload 19
     //   472: astore 18
     //   474: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
-    //   477: ldc_w 669
+    //   477: ldc_w 673
     //   480: aload 20
     //   482: invokestatic 526	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   485: bipush 248
@@ -1230,13 +1236,13 @@ public class ResourceUpdater
     //   498: aload 19
     //   500: ifnull +313 -> 813
     //   503: aload 19
-    //   505: invokevirtual 604	java/io/InputStream:close	()V
+    //   505: invokevirtual 609	java/io/InputStream:close	()V
     //   508: iconst_0
     //   509: istore_3
     //   510: goto -439 -> 71
     //   513: astore 18
     //   515: aload 18
-    //   517: invokevirtual 608	java/io/IOException:printStackTrace	()V
+    //   517: invokevirtual 613	java/io/IOException:printStackTrace	()V
     //   520: iconst_0
     //   521: istore_3
     //   522: goto -451 -> 71
@@ -1246,18 +1252,18 @@ public class ResourceUpdater
     //   529: aload 17
     //   531: astore 18
     //   533: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
-    //   536: ldc_w 669
+    //   536: ldc_w 673
     //   539: aload_0
     //   540: invokestatic 526	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   543: aload 17
     //   545: ifnull +8 -> 553
     //   548: aload 17
-    //   550: invokevirtual 604	java/io/InputStream:close	()V
+    //   550: invokevirtual 609	java/io/InputStream:close	()V
     //   553: iconst_0
     //   554: ireturn
     //   555: astore_0
     //   556: aload_0
-    //   557: invokevirtual 608	java/io/IOException:printStackTrace	()V
+    //   557: invokevirtual 613	java/io/IOException:printStackTrace	()V
     //   560: goto -7 -> 553
     //   563: astore 19
     //   565: lconst_0
@@ -1270,10 +1276,10 @@ public class ResourceUpdater
     //   578: new 71	java/lang/StringBuilder
     //   581: dup
     //   582: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   585: ldc_w 671
+    //   585: ldc_w 675
     //   588: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   591: aload 19
-    //   593: invokevirtual 674	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   593: invokevirtual 678	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   596: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   599: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   602: aload 19
@@ -1283,10 +1289,10 @@ public class ResourceUpdater
     //   611: new 71	java/lang/StringBuilder
     //   614: dup
     //   615: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   618: ldc_w 676
+    //   618: ldc_w 680
     //   621: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   624: aload 19
-    //   626: invokevirtual 674	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   626: invokevirtual 678	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   629: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   632: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   635: astore 19
@@ -1299,7 +1305,7 @@ public class ResourceUpdater
     //   647: aload 17
     //   649: ifnull +164 -> 813
     //   652: aload 17
-    //   654: invokevirtual 604	java/io/InputStream:close	()V
+    //   654: invokevirtual 609	java/io/InputStream:close	()V
     //   657: iconst_0
     //   658: istore_3
     //   659: aload 19
@@ -1307,7 +1313,7 @@ public class ResourceUpdater
     //   663: goto -592 -> 71
     //   666: astore 17
     //   668: aload 17
-    //   670: invokevirtual 608	java/io/IOException:printStackTrace	()V
+    //   670: invokevirtual 613	java/io/IOException:printStackTrace	()V
     //   673: iconst_0
     //   674: istore_3
     //   675: aload 19
@@ -1319,14 +1325,14 @@ public class ResourceUpdater
     //   686: aload 18
     //   688: ifnull +8 -> 696
     //   691: aload 18
-    //   693: invokevirtual 604	java/io/InputStream:close	()V
+    //   693: invokevirtual 609	java/io/InputStream:close	()V
     //   696: aload_0
     //   697: athrow
     //   698: astore 17
     //   700: aload 17
-    //   702: invokevirtual 608	java/io/IOException:printStackTrace	()V
+    //   702: invokevirtual 613	java/io/IOException:printStackTrace	()V
     //   705: goto -9 -> 696
-    //   708: ldc_w 678
+    //   708: ldc_w 682
     //   711: astore 17
     //   713: goto -585 -> 128
     //   716: astore_0
@@ -1350,7 +1356,7 @@ public class ResourceUpdater
     //   752: astore 17
     //   754: goto -284 -> 470
     //   757: astore 20
-    //   759: ldc_w 665
+    //   759: ldc_w 669
     //   762: astore 18
     //   764: aload 17
     //   766: astore 19
@@ -1368,7 +1374,7 @@ public class ResourceUpdater
     //   790: astore 17
     //   792: goto -388 -> 404
     //   795: astore 20
-    //   797: ldc_w 665
+    //   797: ldc_w 669
     //   800: astore 18
     //   802: aload 17
     //   804: astore 19
@@ -1484,10 +1490,10 @@ public class ResourceUpdater
     //   10: istore 10
     //   12: iconst_0
     //   13: istore 4
-    //   15: invokestatic 629	android/os/SystemClock:elapsedRealtime	()J
+    //   15: invokestatic 633	android/os/SystemClock:elapsedRealtime	()J
     //   18: lstore 19
     //   20: aload_0
-    //   21: invokevirtual 632	java/lang/String:length	()I
+    //   21: invokevirtual 636	java/lang/String:length	()I
     //   24: i2l
     //   25: lstore 21
     //   27: lconst_0
@@ -1532,11 +1538,11 @@ public class ResourceUpdater
     //   94: astore 28
     //   96: aload_0
     //   97: sipush 180
-    //   100: invokestatic 634	com/tencent/open/appcommon/ResourceUpdater:a	(Ljava/lang/String;I)Lorg/apache/http/HttpResponse;
+    //   100: invokestatic 638	com/tencent/open/appcommon/ResourceUpdater:a	(Ljava/lang/String;I)Lorg/apache/http/HttpResponse;
     //   103: astore 36
     //   105: aload 36
     //   107: ifnonnull +179 -> 286
-    //   110: ldc_w 636
+    //   110: ldc_w 640
     //   113: astore 23
     //   115: iconst_0
     //   116: istore 4
@@ -1557,14 +1563,14 @@ public class ResourceUpdater
     //   141: aload 24
     //   143: ifnull +2083 -> 2226
     //   146: aload 24
-    //   148: invokevirtual 604	java/io/InputStream:close	()V
+    //   148: invokevirtual 609	java/io/InputStream:close	()V
     //   151: aload 23
     //   153: astore_1
     //   154: iload_3
     //   155: istore_2
     //   156: lload 13
     //   158: lstore 11
-    //   160: invokestatic 641	com/tencent/open/business/cgireport/ReportManager:a	()Lcom/tencent/open/business/cgireport/ReportManager;
+    //   160: invokestatic 645	com/tencent/open/business/cgireport/ReportManager:a	()Lcom/tencent/open/business/cgireport/ReportManager;
     //   163: new 71	java/lang/StringBuilder
     //   166: dup
     //   167: invokespecial 72	java/lang/StringBuilder:<init>	()V
@@ -1580,12 +1586,12 @@ public class ResourceUpdater
     //   193: iload_2
     //   194: invokestatic 148	com/tencent/open/adapter/CommonDataAdapter:a	()Lcom/tencent/open/adapter/CommonDataAdapter;
     //   197: invokevirtual 430	com/tencent/open/adapter/CommonDataAdapter:a	()J
-    //   200: ldc_w 643
+    //   200: ldc_w 647
     //   203: aload_1
-    //   204: invokevirtual 646	com/tencent/open/business/cgireport/ReportManager:a	(Ljava/lang/String;JJJIJLjava/lang/String;Ljava/lang/String;)V
+    //   204: invokevirtual 650	com/tencent/open/business/cgireport/ReportManager:a	(Ljava/lang/String;JJJIJLjava/lang/String;Ljava/lang/String;)V
     //   207: iload 4
     //   209: ifeq +1972 -> 2181
-    //   212: ldc_w 681
+    //   212: ldc_w 685
     //   215: astore_1
     //   216: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
     //   219: new 71	java/lang/StringBuilder
@@ -1595,22 +1601,22 @@ public class ResourceUpdater
     //   227: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   230: aload_0
     //   231: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   234: ldc_w 650
+    //   234: ldc_w 654
     //   237: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   240: lload 19
     //   242: invokevirtual 81	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   245: ldc_w 650
+    //   245: ldc_w 654
     //   248: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   251: lload 21
     //   253: invokevirtual 81	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   256: ldc_w 650
+    //   256: ldc_w 654
     //   259: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   262: lload 11
     //   264: invokevirtual 81	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   267: ldc_w 650
+    //   267: ldc_w 654
     //   270: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   273: iload_2
-    //   274: invokevirtual 653	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   274: invokevirtual 657	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   277: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   280: invokestatic 89	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   283: iload 4
@@ -1663,7 +1669,7 @@ public class ResourceUpdater
     //   382: aload 35
     //   384: astore 28
     //   386: aload 36
-    //   388: invokestatic 655	com/tencent/open/appcommon/ResourceUpdater:a	(Lorg/apache/http/HttpResponse;)Ljava/io/InputStream;
+    //   388: invokestatic 659	com/tencent/open/appcommon/ResourceUpdater:a	(Lorg/apache/http/HttpResponse;)Ljava/io/InputStream;
     //   391: astore 23
     //   393: aload 23
     //   395: ifnonnull +74 -> 469
@@ -1688,19 +1694,19 @@ public class ResourceUpdater
     //   434: aload 23
     //   436: astore 28
     //   438: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
-    //   441: ldc_w 683
+    //   441: ldc_w 687
     //   444: invokestatic 124	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   447: iconst_0
     //   448: istore 4
     //   450: aload 23
     //   452: ifnull -169 -> 283
     //   455: aload 23
-    //   457: invokevirtual 604	java/io/InputStream:close	()V
+    //   457: invokevirtual 609	java/io/InputStream:close	()V
     //   460: iconst_0
     //   461: ireturn
     //   462: astore_0
     //   463: aload_0
-    //   464: invokevirtual 608	java/io/IOException:printStackTrace	()V
+    //   464: invokevirtual 613	java/io/IOException:printStackTrace	()V
     //   467: iconst_0
     //   468: ireturn
     //   469: lload 11
@@ -1772,7 +1778,7 @@ public class ResourceUpdater
     //   605: aload 23
     //   607: astore 28
     //   609: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
-    //   612: ldc_w 685
+    //   612: ldc_w 689
     //   615: invokestatic 89	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   618: bipush 199
     //   620: istore_2
@@ -1805,8 +1811,8 @@ public class ResourceUpdater
     //   671: astore 28
     //   673: aload 23
     //   675: invokestatic 540	com/tencent/open/appcommon/Common:a	()Ljava/lang/String;
-    //   678: ldc_w 687
-    //   681: invokestatic 660	com/tencent/open/appcommon/Common:a	(Ljava/io/InputStream;Ljava/lang/String;Ljava/lang/String;)J
+    //   678: ldc_w 691
+    //   681: invokestatic 664	com/tencent/open/appcommon/Common:a	(Ljava/io/InputStream;Ljava/lang/String;Ljava/lang/String;)J
     //   684: lstore 11
     //   686: lload 11
     //   688: lstore 13
@@ -1828,7 +1834,7 @@ public class ResourceUpdater
     //   720: lstore 17
     //   722: aload 23
     //   724: astore 28
-    //   726: invokestatic 689	com/tencent/open/appcommon/ResourceUpdater:c	()Z
+    //   726: invokestatic 693	com/tencent/open/appcommon/ResourceUpdater:c	()Z
     //   729: ifeq +995 -> 1724
     //   732: lload 11
     //   734: lstore 13
@@ -1850,7 +1856,7 @@ public class ResourceUpdater
     //   766: lstore 17
     //   768: aload 23
     //   770: astore 28
-    //   772: invokestatic 692	com/tencent/open/appcommon/Common:k	()Ljava/lang/String;
+    //   772: invokestatic 696	com/tencent/open/appcommon/Common:k	()Ljava/lang/String;
     //   775: invokestatic 349	com/tencent/open/base/MD5Utils:a	(Ljava/lang/String;)Ljava/lang/String;
     //   778: astore 31
     //   780: lload 11
@@ -1898,7 +1904,7 @@ public class ResourceUpdater
     //   865: aload 23
     //   867: astore 28
     //   869: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
-    //   872: ldc_w 694
+    //   872: ldc_w 698
     //   875: invokestatic 124	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   878: lload 11
     //   880: lstore 13
@@ -1924,11 +1930,11 @@ public class ResourceUpdater
     //   921: new 71	java/lang/StringBuilder
     //   924: dup
     //   925: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   928: ldc_w 696
+    //   928: ldc_w 700
     //   931: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   934: aload_1
     //   935: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   938: ldc_w 698
+    //   938: ldc_w 702
     //   941: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   944: aload 31
     //   946: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1955,7 +1961,7 @@ public class ResourceUpdater
     //   991: aload 23
     //   993: astore 28
     //   995: aload 30
-    //   997: invokevirtual 581	java/io/File:delete	()Z
+    //   997: invokevirtual 586	java/io/File:delete	()Z
     //   1000: pop
     //   1001: iconst_0
     //   1002: istore 4
@@ -1985,9 +1991,9 @@ public class ResourceUpdater
     //   1046: istore 8
     //   1048: new 361	java/io/File
     //   1051: dup
-    //   1052: invokestatic 701	com/tencent/open/appcommon/Common:j	()Ljava/lang/String;
+    //   1052: invokestatic 705	com/tencent/open/appcommon/Common:j	()Ljava/lang/String;
     //   1055: invokespecial 362	java/io/File:<init>	(Ljava/lang/String;)V
-    //   1058: invokevirtual 581	java/io/File:delete	()Z
+    //   1058: invokevirtual 586	java/io/File:delete	()Z
     //   1061: pop
     //   1062: lload 11
     //   1064: lstore 13
@@ -2013,7 +2019,7 @@ public class ResourceUpdater
     //   1105: aload 23
     //   1107: astore 28
     //   1109: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
-    //   1112: ldc_w 703
+    //   1112: ldc_w 707
     //   1115: invokestatic 89	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   1118: lload 11
     //   1120: lstore 13
@@ -2036,7 +2042,7 @@ public class ResourceUpdater
     //   1154: aload 23
     //   1156: astore 28
     //   1158: aload 30
-    //   1160: invokevirtual 581	java/io/File:delete	()Z
+    //   1160: invokevirtual 586	java/io/File:delete	()Z
     //   1163: ifeq +500 -> 1663
     //   1166: lload 11
     //   1168: lstore 13
@@ -2059,7 +2065,7 @@ public class ResourceUpdater
     //   1202: aload 23
     //   1204: astore 28
     //   1206: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
-    //   1209: ldc_w 705
+    //   1209: ldc_w 709
     //   1212: invokestatic 89	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   1215: lload 11
     //   1217: lstore 13
@@ -2083,7 +2089,7 @@ public class ResourceUpdater
     //   1253: astore 28
     //   1255: new 361	java/io/File
     //   1258: dup
-    //   1259: invokestatic 692	com/tencent/open/appcommon/Common:k	()Ljava/lang/String;
+    //   1259: invokestatic 696	com/tencent/open/appcommon/Common:k	()Ljava/lang/String;
     //   1262: invokespecial 362	java/io/File:<init>	(Ljava/lang/String;)V
     //   1265: astore_1
     //   1266: lload 11
@@ -2108,7 +2114,7 @@ public class ResourceUpdater
     //   1304: astore 28
     //   1306: aload_1
     //   1307: aload 30
-    //   1309: invokevirtual 708	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   1309: invokevirtual 712	java/io/File:renameTo	(Ljava/io/File;)Z
     //   1312: ifeq +245 -> 1557
     //   1315: lload 11
     //   1317: lstore 13
@@ -2131,7 +2137,7 @@ public class ResourceUpdater
     //   1351: aload 23
     //   1353: astore 28
     //   1355: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
-    //   1358: ldc_w 710
+    //   1358: ldc_w 714
     //   1361: invokestatic 89	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   1364: lload 11
     //   1366: lstore 13
@@ -2153,7 +2159,7 @@ public class ResourceUpdater
     //   1398: lstore 17
     //   1400: aload 23
     //   1402: astore 28
-    //   1404: invokestatic 661	com/tencent/open/appcommon/ResourceUpdater:a	()Z
+    //   1404: invokestatic 665	com/tencent/open/appcommon/ResourceUpdater:a	()Z
     //   1407: ifeq +12 -> 1419
     //   1410: iconst_1
     //   1411: istore 4
@@ -2162,7 +2168,7 @@ public class ResourceUpdater
     //   1416: goto -406 -> 1010
     //   1419: bipush 200
     //   1421: istore_2
-    //   1422: ldc_w 665
+    //   1422: ldc_w 669
     //   1425: astore_1
     //   1426: aload_1
     //   1427: astore 27
@@ -2183,7 +2189,7 @@ public class ResourceUpdater
     //   1456: iload 10
     //   1458: istore 8
     //   1460: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
-    //   1463: ldc_w 663
+    //   1463: ldc_w 667
     //   1466: invokestatic 124	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1469: goto -459 -> 1010
     //   1472: astore_1
@@ -2199,10 +2205,10 @@ public class ResourceUpdater
     //   1492: new 71	java/lang/StringBuilder
     //   1495: dup
     //   1496: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   1499: ldc_w 712
+    //   1499: ldc_w 716
     //   1502: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1505: aload_1
-    //   1506: invokevirtual 713	org/apache/http/conn/ConnectTimeoutException:getMessage	()Ljava/lang/String;
+    //   1506: invokevirtual 717	org/apache/http/conn/ConnectTimeoutException:getMessage	()Ljava/lang/String;
     //   1509: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1512: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1515: aload_1
@@ -2220,7 +2226,7 @@ public class ResourceUpdater
     //   1535: aload 23
     //   1537: ifnull +689 -> 2226
     //   1540: aload 23
-    //   1542: invokevirtual 604	java/io/InputStream:close	()V
+    //   1542: invokevirtual 609	java/io/InputStream:close	()V
     //   1545: lload 13
     //   1547: lstore 11
     //   1549: iload_3
@@ -2249,7 +2255,7 @@ public class ResourceUpdater
     //   1593: aload 23
     //   1595: astore 28
     //   1597: aload_1
-    //   1598: invokevirtual 581	java/io/File:delete	()Z
+    //   1598: invokevirtual 586	java/io/File:delete	()Z
     //   1601: pop
     //   1602: lload 11
     //   1604: lstore 13
@@ -2272,7 +2278,7 @@ public class ResourceUpdater
     //   1638: aload 23
     //   1640: astore 28
     //   1642: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
-    //   1645: ldc_w 715
+    //   1645: ldc_w 719
     //   1648: invokestatic 124	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1651: iconst_0
     //   1652: istore 4
@@ -2302,7 +2308,7 @@ public class ResourceUpdater
     //   1699: aload 23
     //   1701: astore 28
     //   1703: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
-    //   1706: ldc_w 717
+    //   1706: ldc_w 721
     //   1709: invokestatic 124	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1712: iconst_0
     //   1713: istore 4
@@ -2332,7 +2338,7 @@ public class ResourceUpdater
     //   1760: aload 23
     //   1762: astore 28
     //   1764: aload 30
-    //   1766: invokevirtual 581	java/io/File:delete	()Z
+    //   1766: invokevirtual 586	java/io/File:delete	()Z
     //   1769: pop
     //   1770: lload 11
     //   1772: lstore 13
@@ -2355,7 +2361,7 @@ public class ResourceUpdater
     //   1806: aload 23
     //   1808: astore 28
     //   1810: getstatic 29	com/tencent/open/appcommon/ResourceUpdater:a	Ljava/lang/String;
-    //   1813: ldc_w 719
+    //   1813: ldc_w 723
     //   1816: invokestatic 124	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1819: iconst_0
     //   1820: istore 4
@@ -2375,7 +2381,7 @@ public class ResourceUpdater
     //   1844: goto -1716 -> 128
     //   1847: astore_1
     //   1848: aload_1
-    //   1849: invokevirtual 608	java/io/IOException:printStackTrace	()V
+    //   1849: invokevirtual 613	java/io/IOException:printStackTrace	()V
     //   1852: lload 13
     //   1854: lstore 11
     //   1856: iload_3
@@ -2385,7 +2391,7 @@ public class ResourceUpdater
     //   1861: goto -1701 -> 160
     //   1864: astore_1
     //   1865: aload_1
-    //   1866: invokevirtual 608	java/io/IOException:printStackTrace	()V
+    //   1866: invokevirtual 613	java/io/IOException:printStackTrace	()V
     //   1869: lload 13
     //   1871: lstore 11
     //   1873: iload_3
@@ -2404,10 +2410,10 @@ public class ResourceUpdater
     //   1895: new 71	java/lang/StringBuilder
     //   1898: dup
     //   1899: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   1902: ldc_w 712
+    //   1902: ldc_w 716
     //   1905: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1908: aload_1
-    //   1909: invokevirtual 720	java/net/SocketTimeoutException:getMessage	()Ljava/lang/String;
+    //   1909: invokevirtual 724	java/net/SocketTimeoutException:getMessage	()Ljava/lang/String;
     //   1912: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1915: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1918: aload_1
@@ -2425,7 +2431,7 @@ public class ResourceUpdater
     //   1938: aload 27
     //   1940: ifnull +286 -> 2226
     //   1943: aload 27
-    //   1945: invokevirtual 604	java/io/InputStream:close	()V
+    //   1945: invokevirtual 609	java/io/InputStream:close	()V
     //   1948: lload 13
     //   1950: lstore 11
     //   1952: iload_3
@@ -2435,7 +2441,7 @@ public class ResourceUpdater
     //   1957: goto -1797 -> 160
     //   1960: astore_1
     //   1961: aload_1
-    //   1962: invokevirtual 608	java/io/IOException:printStackTrace	()V
+    //   1962: invokevirtual 613	java/io/IOException:printStackTrace	()V
     //   1965: lload 13
     //   1967: lstore 11
     //   1969: iload_3
@@ -2450,10 +2456,10 @@ public class ResourceUpdater
     //   1985: new 71	java/lang/StringBuilder
     //   1988: dup
     //   1989: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   1992: ldc_w 712
+    //   1992: ldc_w 716
     //   1995: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1998: aload_0
-    //   1999: invokevirtual 721	com/tencent/open/base/http/HttpBaseUtil$NetworkUnavailableException:getMessage	()Ljava/lang/String;
+    //   1999: invokevirtual 725	com/tencent/open/base/http/HttpBaseUtil$NetworkUnavailableException:getMessage	()Ljava/lang/String;
     //   2002: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2005: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2008: aload_0
@@ -2463,12 +2469,12 @@ public class ResourceUpdater
     //   2016: aload 26
     //   2018: ifnull -1735 -> 283
     //   2021: aload 26
-    //   2023: invokevirtual 604	java/io/InputStream:close	()V
+    //   2023: invokevirtual 609	java/io/InputStream:close	()V
     //   2026: iload 5
     //   2028: ireturn
     //   2029: astore_0
     //   2030: aload_0
-    //   2031: invokevirtual 608	java/io/IOException:printStackTrace	()V
+    //   2031: invokevirtual 613	java/io/IOException:printStackTrace	()V
     //   2034: iload 5
     //   2036: ireturn
     //   2037: astore_1
@@ -2480,10 +2486,10 @@ public class ResourceUpdater
     //   2049: new 71	java/lang/StringBuilder
     //   2052: dup
     //   2053: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   2056: ldc_w 712
+    //   2056: ldc_w 716
     //   2059: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2062: aload_1
-    //   2063: invokevirtual 674	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   2063: invokevirtual 678	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   2066: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2069: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2072: aload_1
@@ -2493,10 +2499,10 @@ public class ResourceUpdater
     //   2080: new 71	java/lang/StringBuilder
     //   2083: dup
     //   2084: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   2087: ldc_w 676
+    //   2087: ldc_w 680
     //   2090: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2093: aload_1
-    //   2094: invokevirtual 674	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   2094: invokevirtual 678	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   2097: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2100: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2103: astore 23
@@ -2513,7 +2519,7 @@ public class ResourceUpdater
     //   2121: aload 25
     //   2123: ifnull +103 -> 2226
     //   2126: aload 25
-    //   2128: invokevirtual 604	java/io/InputStream:close	()V
+    //   2128: invokevirtual 609	java/io/InputStream:close	()V
     //   2131: lload 15
     //   2133: lstore 11
     //   2135: iload_3
@@ -2523,7 +2529,7 @@ public class ResourceUpdater
     //   2140: goto -1980 -> 160
     //   2143: astore_1
     //   2144: aload_1
-    //   2145: invokevirtual 608	java/io/IOException:printStackTrace	()V
+    //   2145: invokevirtual 613	java/io/IOException:printStackTrace	()V
     //   2148: lload 15
     //   2150: lstore 11
     //   2152: iload_3
@@ -2535,14 +2541,14 @@ public class ResourceUpdater
     //   2161: aload 24
     //   2163: ifnull +8 -> 2171
     //   2166: aload 24
-    //   2168: invokevirtual 604	java/io/InputStream:close	()V
+    //   2168: invokevirtual 609	java/io/InputStream:close	()V
     //   2171: aload_0
     //   2172: athrow
     //   2173: astore_1
     //   2174: aload_1
-    //   2175: invokevirtual 608	java/io/IOException:printStackTrace	()V
+    //   2175: invokevirtual 613	java/io/IOException:printStackTrace	()V
     //   2178: goto -7 -> 2171
-    //   2181: ldc_w 723
+    //   2181: ldc_w 727
     //   2184: astore_1
     //   2185: goto -1969 -> 216
     //   2188: astore_1

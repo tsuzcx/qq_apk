@@ -1,28 +1,43 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.biz.ui.CustomMenuBar;
+import android.os.Bundle;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class btz
-  implements PopupWindow.OnDismissListener
+  extends FriendListObserver
 {
-  public btz(CustomMenuBar paramCustomMenuBar, ImageView paramImageView, TextView paramTextView) {}
+  public btz(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onDismiss()
+  protected void b(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838491);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131362033));
-    this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = true;
-    this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable, 50L);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    }
+    if (paramBoolean)
+    {
+      if (paramBundle.getInt("resultCode") == 0)
+      {
+        String str = paramBundle.getString("friend_mobile_number");
+        int i = paramBundle.getInt("friend_setting");
+        int j = paramBundle.getInt("source_id");
+        this.a.a(paramBundle.getString("uin"), (byte)i, true, this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), j, str, paramBundle.getByteArray("sig"));
+        return;
+      }
+      if ((paramBundle.getString("ErrorString") != null) && (!paramBundle.getString("ErrorString").trim().equals(""))) {}
+      for (paramBundle = paramBundle.getString("ErrorString");; paramBundle = this.a.getString(2131563223))
+      {
+        QQToast.a(this.a, 1, paramBundle, 1).b(this.a.d());
+        return;
+      }
+    }
+    QQToast.a(this.a, 1, this.a.getString(2131562783), 1).b(this.a.d());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     btz
  * JD-Core Version:    0.7.0.1
  */

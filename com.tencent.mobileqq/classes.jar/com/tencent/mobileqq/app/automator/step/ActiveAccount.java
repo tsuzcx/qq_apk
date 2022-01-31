@@ -1,59 +1,86 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import com.tencent.biz.anonymous.AnonymousChatHelper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.hotpatch.PatchSecurityMode;
-import com.tencent.hotpatch.config.PatchConfigServlet;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotificationUtils;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper;
+import ahpp;
+import alof;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import araj;
+import ayzl;
+import bacu;
+import bdhb;
+import bema;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
 import com.tencent.mobileqq.openapi.OpenApiManager;
-import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.statistics.UnifiedMonitor;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import nav;
 
 public class ActiveAccount
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "onInitState: " + this.a.b.getAccount());
+      QLog.d("QQInitHandler", 2, "onInitState: " + this.a.app.getAccount());
     }
     this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (PatchSecurityMode.a(BaseApplicationImpl.sApplication))
+    this.a.jdField_a_of_type_AndroidContentSharedPreferences = this.a.app.getApp().getSharedPreferences("acc_info" + this.a.app.getAccount(), 0);
+    localObject = this.a.app;
+    ThemeUtil.initTheme((QQAppInterface)localObject);
+    try
     {
-      PatchConfigServlet.a(this.a.b, this.a.b.getCurrentAccountUin(), -1, "SecurityMode");
-      QLog.d("PatchLogTag", 1, "ActiveAccount requestPatchConfig as security mode.");
+      ((QQAppInterface)localObject).a(true, this.a.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PREF_PLUGIN_DELAY_TIME", -1L));
+      bool = false;
     }
-    this.a.jdField_a_of_type_AndroidContentSharedPreferences = this.a.b.getApp().getSharedPreferences("acc_info" + this.a.b.getAccount(), 0);
-    QQAppInterface localQQAppInterface = this.a.b;
-    ThemeUtil.initTheme(localQQAppInterface);
-    localQQAppInterface.a(true);
-    SubAccountControll.a(localQQAppInterface);
-    localQQAppInterface.b();
-    UniformDownloadMgr.a().b();
-    UnifiedMonitor.a().b();
-    OpenApiManager.getInstance().onRuntimeActive(localQQAppInterface);
-    if (TroopNotificationUtils.a(localQQAppInterface.getCurrentAccountUin()))
+    catch (Throwable localThrowable1)
+    {
+      for (;;)
+      {
+        boolean bool;
+        ((QQAppInterface)localObject).a(true);
+        try
+        {
+          this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("PREF_PLUGIN_DELAY_TIME", 0L).apply();
+          bool = true;
+        }
+        catch (Throwable localThrowable2)
+        {
+          bool = true;
+        }
+      }
+    }
+    bacu.a((QQAppInterface)localObject);
+    ((QQAppInterface)localObject).b();
+    araj.a().b();
+    UnifiedMonitor.a().a();
+    OpenApiManager.getInstance().onRuntimeActive((QQAppInterface)localObject);
+    if (ahpp.a(((QQAppInterface)localObject).getCurrentAccountUin()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "addSystemMsgSeq:0");
       }
-      localQQAppInterface.a().d("last_group_seq", 0L);
-      TroopNotificationUtils.a(localQQAppInterface.getCurrentAccountUin(), false);
-      localQQAppInterface.a().d("last_friend_seq_47", 0L);
+      ((QQAppInterface)localObject).a().e("last_group_seq", 0L);
+      ((QQAppInterface)localObject).a().e("last_group_suspicious_seq", 0L);
+      ahpp.a(((QQAppInterface)localObject).getCurrentAccountUin(), false);
+      ((QQAppInterface)localObject).a().e("last_friend_seq_47", 0L);
     }
-    if (AnonymousChatHelper.a != null) {
-      AnonymousChatHelper.a().a();
+    if (nav.a != null) {
+      nav.a().a();
     }
-    GoldMsgChatHelper.a();
+    if ((((QQAppInterface)localObject).a(107) instanceof bema)) {
+      ((bema)((QQAppInterface)localObject).a(107)).a();
+    }
+    localObject = new File(alof.aX);
+    if (!bdhb.a(alof.aX)) {
+      ((File)localObject).mkdirs();
+    }
+    CleanCache.a(alof.aX);
+    QLog.d("QQInitHandler", 2, new Object[] { "pluginManageDelayTime=", Long.valueOf(this.a.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PREF_PLUGIN_DELAY_TIME", -1L)), " hasCrashInAddManager=", Boolean.valueOf(bool) });
     return 7;
   }
   

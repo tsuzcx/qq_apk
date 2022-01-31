@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class fye
+public final class fye
   implements Runnable
 {
-  public fye(FMObserver paramFMObserver, Object paramObject) {}
+  public fye(int paramInt) {}
   
   public void run()
   {
-    FMObserver.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver, this.jdField_a_of_type_JavaLangObject);
+    QQToast.a(BaseApplicationImpl.getContext(), -1, this.a, 0).b(FMToastUtil.a());
   }
 }
 

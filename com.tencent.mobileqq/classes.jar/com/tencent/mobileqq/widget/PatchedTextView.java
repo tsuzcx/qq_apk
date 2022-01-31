@@ -10,8 +10,9 @@ import com.tencent.qphone.base.util.QLog;
 public class PatchedTextView
   extends TextView
 {
-  private boolean a;
-  private boolean b = true;
+  private static final String TAG = "PatchedTextView";
+  private boolean mDiscardNextActionUp;
+  private boolean mTmpEnable = true;
   
   public PatchedTextView(Context paramContext)
   {
@@ -30,10 +31,10 @@ public class PatchedTextView
   
   public boolean isEnabled()
   {
-    return (this.b) && (super.isEnabled());
+    return (this.mTmpEnable) && (super.isEnabled());
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     try
     {
@@ -53,12 +54,12 @@ public class PatchedTextView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getAction();
-    if ((this.a) && ((i & 0xFF) == 1))
+    if ((this.mDiscardNextActionUp) && ((i & 0xFF) == 1))
     {
-      this.b = false;
+      this.mTmpEnable = false;
       boolean bool = super.onTouchEvent(paramMotionEvent);
-      this.b = true;
-      this.a = false;
+      this.mTmpEnable = true;
+      this.mDiscardNextActionUp = false;
       return bool;
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -68,7 +69,7 @@ public class PatchedTextView
   {
     boolean bool = super.performLongClick();
     if (bool) {
-      this.a = true;
+      this.mDiscardNextActionUp = true;
     }
     return bool;
   }
@@ -108,7 +109,7 @@ public class PatchedTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PatchedTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,32 @@
-import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
 
 public class aeuy
-  implements View.OnClickListener
 {
-  public aeuy(SmallVideoSendFragment paramSmallVideoSendFragment) {}
+  public float a;
+  public int a;
+  public long a;
+  public aeux a;
+  public View a;
+  public boolean a;
+  public float b;
+  public int b;
+  public boolean b;
+  public float c = 0.0F;
+  public float d = 1.0F;
+  public float e = 1.0F;
+  public float f = 1.0F;
   
-  public void onClick(View paramView)
+  public aeuy()
   {
-    paramView = SmallVideoSendFragment.b(this.a);
-    Bundle localBundle = new Bundle();
-    localBundle.putString("preLoadParams", paramView);
-    localBundle.putBoolean("scroll_to_comment", false);
-    localBundle.putString("isLocal", "1");
-    localBundle.putString("play_mode", String.valueOf(2));
-    localBundle.putBoolean("is_multi_progress_bar", false);
-    if (SmallVideoSendFragment.a(this.a).h == 1) {}
-    for (paramView = "4";; paramView = "2")
-    {
-      localBundle.putString("feed_type", paramView);
-      SmallVideoFragment.a(this.a.getActivity(), localBundle);
-      return;
-    }
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeuy
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.conditionsearch.data;
 
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import fqq;
+import fmd;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -65,7 +65,7 @@ public class AddressData
   
   private void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramQQAppInterface.runOnUiThread(new fqq(this, paramString));
+    paramQQAppInterface.runOnUiThread(new fmd(this, paramString));
   }
   
   private boolean a(String paramString, Map paramMap)

@@ -1,36 +1,83 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiAdapter;
-import com.tencent.mobileqq.utils.VipUtils;
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.widget.HeightAdaptableListView;
 
 public class acev
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public acev(EmoticonMainPanel paramEmoticonMainPanel, String paramString) {}
+  public acev(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    EmoticonMainPanel.b(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
-    SpriteCommFunc.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "emoticon_panel", false);
-    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_JavaUtilList.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter != null))
+    int j = 1;
+    int k = this.a.jdField_a_of_type_ComTencentWidgetHeightAdaptableListView.getChildCount();
+    int i = 0;
+    Object localObject;
+    if (i < k)
     {
-      paramView = (EmotionPanelInfo)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_JavaUtilList.get(0);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.a(paramView);
-      if ((paramView != null) && ((paramView instanceof SystemAndEmojiAdapter))) {
-        ((SystemAndEmojiAdapter)paramView).d();
+      localObject = this.a.jdField_a_of_type_ComTencentWidgetHeightAdaptableListView.getChildAt(i);
+      if ((localObject instanceof FormSwitchItem))
+      {
+        localObject = (FormSwitchItem)localObject;
+        if (paramCompoundButton != ((FormSwitchItem)localObject).a()) {}
       }
     }
-    VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "0X8008232", this.jdField_a_of_type_JavaLangString, 0, 0, new String[] { "0", "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
+    for (paramCompoundButton = (CompoundButton)localObject;; paramCompoundButton = null)
+    {
+      if ((paramCompoundButton == null) || (!(paramCompoundButton.getTag() instanceof ahua))) {}
+      ahua localahua;
+      boolean bool;
+      do
+      {
+        return;
+        i += 1;
+        break;
+        localahua = (ahua)paramCompoundButton.getTag();
+        if (paramBoolean) {
+          break label253;
+        }
+        bool = true;
+        localahua.e = bool;
+        if (this.a.jdField_a_of_type_Ahuf != null) {
+          this.a.jdField_a_of_type_Ahuf.a(localahua, localahua.e);
+        }
+        paramCompoundButton = this.a.app;
+        k = localahua.a;
+        i = j;
+        if (localahua.e) {
+          i = 2;
+        }
+        azqs.b(paramCompoundButton, "dc00898", "", "", "0X80097A0", "0X80097A0", k, 0, String.valueOf(i), "", "", "");
+      } while (localahua.a != 3);
+      QQAppInterface localQQAppInterface = this.a.app;
+      if (paramBoolean)
+      {
+        paramCompoundButton = "0X8009C0A";
+        label216:
+        if (!paramBoolean) {
+          break label265;
+        }
+      }
+      label265:
+      for (localObject = "0X8009C0A";; localObject = "0X8009C0B")
+      {
+        azqs.b(localQQAppInterface, "dc00898", "", "", paramCompoundButton, (String)localObject, localahua.a, 0, "", "", "", "");
+        return;
+        label253:
+        bool = false;
+        break;
+        paramCompoundButton = "0X8009C0B";
+        break label216;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acev
  * JD-Core Version:    0.7.0.1
  */

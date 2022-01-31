@@ -1,24 +1,46 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.activity.SubaccountUgActivity;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
+import android.view.View;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class dsu
-  implements DialogInterface.OnClickListener
+public class dsu
+  implements ActionSheet.OnButtonClickListener
 {
-  dsu(dst paramdst) {}
+  public dsu(TroopRequestActivity paramTroopRequestActivity, ActionSheet paramActionSheet) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    SubAccountAssistantForward.b(this.a.a.b);
-    SubAccountAssistantForward.a(this.a.a.b);
-    this.a.a.a().setTitle("");
-    paramDialogInterface = new Intent(this.a.a.a(), SubaccountUgActivity.class);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      if (NetworkUtil.e(BaseApplication.getContext())) {}
+      try
+      {
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b.a();
+        ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, "", TroopRequestActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity), paramView, false);
+        for (;;)
+        {
+          label66:
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "report", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.p, TroopRequestActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity), "", "");
+          break;
+          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 2131562449, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.d());
+        }
+      }
+      catch (Exception paramView)
+      {
+        break label66;
+      }
+    }
   }
 }
 

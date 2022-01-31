@@ -1,16 +1,25 @@
-import com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment;
-import java.util.List;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ajgm
-  implements Runnable
+class ajgm
+  implements View.OnClickListener
 {
-  public ajgm(HomeWorkTroopSelectorFragment paramHomeWorkTroopSelectorFragment, List paramList) {}
+  ajgm(ajgb paramajgb) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (HomeWorkTroopSelectorFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiHomeWorkTroopSelectorFragment)) {
-      HomeWorkTroopSelectorFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiHomeWorkTroopSelectorFragment, this.jdField_a_of_type_JavaUtilList);
+    switch (paramView.getId())
+    {
+    default: 
+      return;
     }
+    paramView = new Bundle();
+    paramView.putBoolean("string_from", false);
+    paramView.putBoolean("string_uin", true);
+    paramView.putLong("device_din", 0L);
+    paramView.putInt("sTitleID", 0);
+    biun.a(ajgb.a(this.a), paramView, "com.qqdataline.activity.LiteWifiphotoActivity");
   }
 }
 

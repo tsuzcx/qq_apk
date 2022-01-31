@@ -1,42 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class akla
-  implements Runnable
 {
-  akla(akkz paramakkz, DownloadTask paramDownloadTask) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  String jdField_a_of_type_JavaLangString;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
   
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QueueDownloader", 2, "doTask | run() downloadLimitCount=" + this.jdField_a_of_type_Akkz.a.get() + ",task=" + this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.c) && (DownloaderFactory.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.jdField_a_of_type_JavaLangString)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.jdField_a_of_type_Int = -101;
-      this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a(-1);
-      this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.e();
-      this.jdField_a_of_type_Akkz.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
-      this.jdField_a_of_type_Akkz.a.addAndGet(-1);
-      this.jdField_a_of_type_Akkz.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("QueueDownloader", 2, "doTask | run() task is limit of failTime, task=" + this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
-      }
-      return;
-    }
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    int i = DownloaderFactory.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask, localAppRuntime);
-    if (QLog.isColorLevel()) {
-      QLog.d("QueueDownloader", 2, "doTask | run() download task result=" + i + ",task=" + this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
-    }
-    this.jdField_a_of_type_Akkz.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
-    this.jdField_a_of_type_Akkz.a.addAndGet(-1);
-    this.jdField_a_of_type_Akkz.a();
-  }
+  akla(akkt paramakkt) {}
 }
 
 

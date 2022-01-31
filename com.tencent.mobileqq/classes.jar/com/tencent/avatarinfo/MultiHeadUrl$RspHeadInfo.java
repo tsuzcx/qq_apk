@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class MultiHeadUrl$RspHeadInfo
-  extends MessageMicro
+  extends MessageMicro<RspHeadInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 58 }, new String[] { "usrType", "faceType", "timestamp", "faceFlag", "url", "sysid", "headVerify" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), "" }, RspHeadInfo.class);
   public final PBUInt32Field faceFlag = PBField.initUInt32(0);
@@ -20,7 +20,7 @@ public final class MultiHeadUrl$RspHeadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.avatarinfo.MultiHeadUrl.RspHeadInfo
  * JD-Core Version:    0.7.0.1
  */

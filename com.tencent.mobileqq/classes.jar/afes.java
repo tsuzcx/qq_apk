@@ -1,52 +1,68 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.nearby.profilecard.OnTagClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
 
-public class afes
-  implements OnTagClickListener
+class afes
+  implements ActionMode.Callback
 {
-  public afes(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  int jdField_a_of_type_Int = 1;
+  int b = 2;
   
-  public void a(View paramView, int paramInt, InterestTagInfo paramInterestTagInfo)
+  afes(afeq paramafeq) {}
+  
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyProfileDisplayTribePanel", 2, "click troops item  tuin:" + paramInterestTagInfo.tagJumpUrl);
-    }
-    if (paramInterestTagInfo.tagJumpUrl.equals("icon_more_url"))
+    boolean bool = false;
+    if (paramMenuItem.getItemId() == this.jdField_a_of_type_Int)
     {
-      paramView = new Intent(this.a.a, QQBrowserActivity.class);
-      paramView.putExtra("url", this.a.e);
-      this.a.a.startActivity(paramView);
-      paramInterestTagInfo = this.a.a.app;
-      if (this.a.a.e == 2) {}
-      for (paramView = "1";; paramView = "2")
-      {
-        ReportController.b(paramInterestTagInfo, "dc00899", "grp_lbs", "", "data_card", "clk_more_grp", 0, 0, paramView, "", "", "");
-        return;
-      }
+      azqs.b(this.jdField_a_of_type_Afeq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A513", "0X800A513", this.jdField_a_of_type_Afeq.a(), 0, "", "", "", "");
+      this.jdField_a_of_type_Afeq.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getText().insert(this.jdField_a_of_type_Afeq.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getSelectionStart(), "\n");
+      paramActionMode.finish();
+      bool = true;
     }
-    paramView = TroopInfoActivity.a(paramInterestTagInfo.tagJumpUrl, 33);
-    ChatSettingForTroop.a(this.a.a, paramView, -1);
-    paramInterestTagInfo = this.a.a.app;
-    if (this.a.a.e == 2) {}
-    for (paramView = "1";; paramView = "2")
+    while (paramMenuItem.getItemId() != this.b) {
+      return bool;
+    }
+    if (this.jdField_a_of_type_Afeq.a())
     {
-      ReportController.b(paramInterestTagInfo, "dc00899", "grp_lbs", "", "data_card", "clk_grp", 0, 0, paramView, "", "", "");
-      return;
+      azqs.b(this.jdField_a_of_type_Afeq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A514", "0X800A514", this.jdField_a_of_type_Afeq.a(), 0, "", "", "", "");
+      this.jdField_a_of_type_Afeq.a(false);
     }
+    for (;;)
+    {
+      paramActionMode.finish();
+      return true;
+      azqs.b(this.jdField_a_of_type_Afeq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009F28", "0X8009F28", this.jdField_a_of_type_Afeq.a(), 0, "", "", "", "");
+      afeq.b(this.jdField_a_of_type_Afeq);
+    }
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    paramMenu.add(0, this.jdField_a_of_type_Int, 196608, alud.a(2131705354));
+    int i = this.b;
+    if (this.jdField_a_of_type_Afeq.a()) {}
+    for (paramActionMode = alud.a(2131705355);; paramActionMode = alud.a(2131705352))
+    {
+      paramMenu.add(0, i, 196608, paramActionMode);
+      return true;
+    }
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afes
  * JD-Core Version:    0.7.0.1
  */

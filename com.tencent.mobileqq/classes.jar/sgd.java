@@ -1,22 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.Conversation;
-
 public class sgd
-  implements DialogInterface.OnDismissListener
 {
-  public sgd(Conversation paramConversation) {}
+  public final String a;
+  public final sge a;
+  public final String b;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public sgd(String paramString1, String paramString2)
   {
-    if (paramDialogInterface == Conversation.a(this.a)) {
-      Conversation.a(this.a, null);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Sge = new sge(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sgd
  * JD-Core Version:    0.7.0.1
  */

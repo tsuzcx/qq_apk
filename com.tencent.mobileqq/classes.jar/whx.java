@@ -1,27 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class whx
-  implements View.OnClickListener
+class whx
+  extends SimpleJob
 {
-  public whx(ClassificationSearchActivity paramClassificationSearchActivity) {}
-  
-  public void onClick(View paramView)
+  whx(whw paramwhw, String paramString, whz paramwhz, boolean paramBoolean)
   {
-    paramView = (InputMethodManager)this.a.getSystemService("input_method");
-    if ((paramView != null) && (paramView.isActive())) {
-      paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
-    }
-    this.a.setResult(1);
-    this.a.finish();
+    super(paramString);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  {
+    this.jdField_a_of_type_Whw.a();
+    this.jdField_a_of_type_Whw.b();
+    ((uux)uwa.a(17)).a(this.jdField_a_of_type_Whz.a, whw.a(this.jdField_a_of_type_Whw).a, whw.a(this.jdField_a_of_type_Whw).a(), this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Whw.a("Q.qqstory.detail:CommentListPageLoader");
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     whx
  * JD-Core Version:    0.7.0.1
  */

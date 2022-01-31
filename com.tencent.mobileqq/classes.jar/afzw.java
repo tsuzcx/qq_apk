@@ -1,27 +1,21 @@
-import EncounterSvc.RespEncounterInfo;
-import com.tencent.mobileqq.nearpeople.NearbyRecommender.ChatPushCarrierHelper;
-import com.tencent.mobileqq.util.FaceDecoder;
+import android.graphics.Bitmap;
+import java.lang.ref.WeakReference;
 
-public class afzw
-  implements Runnable
+class afzw
+  implements aybs
 {
-  public afzw(ChatPushCarrierHelper paramChatPushCarrierHelper, String paramString, RespEncounterInfo paramRespEncounterInfo) {}
+  public WeakReference<afzu> a;
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3)
   {
-    FaceDecoder localFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqNearpeopleNearbyRecommenderChatPushCarrierHelper.a;
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp > 0) {}
-    for (long l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp;; l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.common_face_timestamp)
-    {
-      localFaceDecoder.a(32, str, 202, l);
-      return;
+    if (this.a.get() != null) {
+      afzu.a((afzu)this.a.get(), paramInt1, paramInt2, paramBitmap, paramInt3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afzw
  * JD-Core Version:    0.7.0.1
  */

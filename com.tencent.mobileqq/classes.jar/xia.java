@@ -1,37 +1,58 @@
-import com.tencent.mobileqq.activity.qwallet.voice.VoiceRedPacketHelper;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.Context;
+import android.widget.BaseAdapter;
 
-public class xia
-  implements WtTicketPromise
+public abstract class xia<PACKAGE extends xhr>
+  extends BaseAdapter
 {
-  public xia(VoiceRedPacketHelper paramVoiceRedPacketHelper, xib paramxib) {}
+  public int a;
+  protected Context a;
+  protected PACKAGE a;
+  protected xht a;
   
-  public void Done(Ticket paramTicket)
+  public xia(Context paramContext)
   {
-    if ((paramTicket != null) && (paramTicket._sig != null) && (paramTicket._sig.length != 0))
-    {
-      paramTicket = new String(paramTicket._sig);
-      this.jdField_a_of_type_Xib.a(paramTicket);
-      return;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a(PACKAGE paramPACKAGE)
+  {
+    this.jdField_a_of_type_Xhr = paramPACKAGE;
+  }
+  
+  public void a(xht paramxht)
+  {
+    this.jdField_a_of_type_Xht = paramxht;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_Xhr == null) {
+      return 0;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.b("get skey is null");
+    int i = this.jdField_a_of_type_Xhr.b();
+    int j = this.jdField_a_of_type_Xhr.a();
+    if (j < 1) {
+      throw new IllegalArgumentException("per item count < 1 :" + j);
+    }
+    if (i % j == 0) {
+      return i / j;
+    }
+    return i / j + 1;
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public Object getItem(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.b("get skey failed");
+    return Integer.valueOf(paramInt);
   }
   
-  public void Timeout(ErrMsg paramErrMsg)
+  public long getItemId(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.b("get skey time out");
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xia
  * JD-Core Version:    0.7.0.1
  */

@@ -1,128 +1,139 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import com.tencent.open.agent.BindGroupActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.script.SpriteCommFunc.1;
+import com.tencent.mobileqq.apollo.script.SpriteCommFunc.2;
+import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
+import java.util.Set;
 import org.json.JSONObject;
 
 public class alaz
-  implements HttpWebCgiAsyncTask.Callback
 {
-  public alaz(BindGroupActivity paramBindGroupActivity) {}
+  private static final Set<String> a = new SpriteCommFunc.1();
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public static void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[stopTaskByMsg], msgId", Long.valueOf(paramLong), ",from:", paramString });
     }
+    if (!albi.c(paramQQAppInterface)) {}
     do
     {
-      return;
-    } while (paramJSONObject == null);
-    for (;;)
-    {
-      try
+      do
       {
-        paramInt = ((Integer)paramJSONObject.get("retcode")).intValue();
-        paramJSONObject = (JSONObject)paramJSONObject.get("result");
-        if ((paramInt != 0) || (paramJSONObject == null)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("BindGroupActivity", 2, "checkApiState onResult. retCode = " + paramInt + "\n");
-        }
-        paramBundle = (JSONObject)paramJSONObject.get("basics");
-        Object localObject2;
-        if (paramBundle != null)
-        {
-          paramBundle = (JSONArray)paramBundle.get("datas");
-          if (paramBundle != null)
-          {
-            paramInt = 0;
-            if (paramInt < paramBundle.length())
-            {
-              localObject2 = (JSONObject)paramBundle.get(paramInt);
-              str = (String)((JSONObject)localObject2).get("name");
-              i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
-              localObject1 = (String)((JSONObject)localObject2).get("api");
-              localObject2 = (String)((JSONObject)localObject2).get("msg");
-              if (!QLog.isColorLevel()) {
-                break label717;
-              }
-              QLog.i("BindGroupActivity", 2, "checkApiState onResult, basics name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg = " + (String)localObject2 + "\n");
-              break label717;
-            }
-          }
-        }
-        paramBundle = (JSONObject)paramJSONObject.get("friendlink");
-        if (paramBundle != null)
-        {
-          paramBundle = (JSONArray)paramBundle.get("datas");
-          if (paramBundle != null)
-          {
-            paramInt = 0;
-            if (paramInt < paramBundle.length())
-            {
-              localObject2 = (JSONObject)paramBundle.get(paramInt);
-              str = (String)((JSONObject)localObject2).get("name");
-              i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
-              localObject1 = (String)((JSONObject)localObject2).get("api");
-              localObject2 = (String)((JSONObject)localObject2).get("msg");
-              if (("bind_group".equals(localObject1)) && (i != 1)) {
-                this.a.runOnUiThread(new alba(this));
-              }
-              if (!QLog.isColorLevel()) {
-                break label724;
-              }
-              QLog.i("BindGroupActivity", 2, "checkApiState onResult, friendlink name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg= " + (String)localObject2 + "\n");
-              break label724;
-            }
-          }
-        }
-        paramInt = ((Integer)paramJSONObject.get("appid")).intValue();
-        if (QLog.isColorLevel()) {
-          QLog.i("BindGroupActivity", 2, "checkApiState onResult, appid =" + paramInt + "\n");
-        }
-        paramJSONObject = (JSONObject)paramJSONObject.get("qqpay");
-        if (paramJSONObject == null) {
-          break;
-        }
-        paramJSONObject = (JSONArray)paramJSONObject.get("datas");
-        if (paramJSONObject == null) {
-          break;
-        }
-        paramInt = 0;
-        if (paramInt >= paramJSONObject.length()) {
-          break;
-        }
-        Object localObject1 = (JSONObject)paramJSONObject.get(paramInt);
-        paramBundle = (String)((JSONObject)localObject1).get("name");
-        int i = ((Integer)((JSONObject)localObject1).get("state")).intValue();
-        String str = (String)((JSONObject)localObject1).get("api");
-        localObject1 = (String)((JSONObject)localObject1).get("msg");
-        if (QLog.isColorLevel()) {
-          QLog.i("BindGroupActivity", 2, "checkApiState onResult, qqpay name = " + paramBundle + " state = " + i + " api = " + str + " msg= " + (String)localObject1 + "\n");
-        }
-        paramInt += 1;
-        continue;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-      }
-      catch (Exception paramJSONObject) {}
-      QLog.d("BindGroupActivity", 2, "checkApiState onResult " + paramJSONObject.toString());
+        return;
+        paramQQAppInterface = albi.a(paramQQAppInterface);
+      } while (paramQQAppInterface == null);
+      paramQQAppInterface = paramQQAppInterface.a();
+    } while (paramQQAppInterface == null);
+    paramString = paramQQAppInterface.a(paramLong);
+    if (paramString == null)
+    {
+      QLog.w("cmshow_scripted_SpriteCommFunc", 2, "task NOT exist, msgId:" + paramLong);
       return;
-      label717:
-      paramInt += 1;
-      continue;
-      label724:
-      paramInt += 1;
     }
+    ThreadManager.post(new SpriteCommFunc.2(paramQQAppInterface, paramString), 5, null, true);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[stopAllTask]", ",from:", paramString });
+    }
+    if (!albi.c(paramQQAppInterface)) {
+      return;
+    }
+    try
+    {
+      paramString = new JSONObject();
+      paramString.put("type", 0);
+      paramQQAppInterface = albi.a(paramQQAppInterface);
+      if ((paramQQAppInterface == null) || (paramQQAppInterface.a() == null))
+      {
+        QLog.e("cmshow_scripted_SpriteCommFunc", 1, "[stopAllTask], spriteContext or getSurfaceView is null.");
+        return;
+      }
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      QLog.e("cmshow_scripted_SpriteCommFunc", 1, "[stopAllTask],", paramQQAppInterface);
+      return;
+    }
+    ApolloCmdChannel.getChannel(paramQQAppInterface.a()).callbackFromRequest(paramQQAppInterface.a().getLuaState(), 0, "sc.stop_all_task.local", paramString.toString());
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[showOrHideSprite]", ",from:", paramString });
+    }
+    if (!albi.c(paramQQAppInterface)) {}
+    do
+    {
+      albf localalbf;
+      do
+      {
+        do
+        {
+          return;
+        } while (!a.contains(paramString));
+        localalbf = albi.a(paramQQAppInterface);
+      } while (localalbf == null);
+      alba localalba = albi.a(paramQQAppInterface);
+      if (localalba != null) {
+        localalba.a(paramString, paramBoolean);
+      }
+      if (albi.a(paramQQAppInterface))
+      {
+        QLog.i("cmshow_scripted_SpriteCommFunc", 1, "showOrHideSprite double should hide");
+        return;
+      }
+      paramQQAppInterface = localalbf.a();
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.a(paramBoolean, false, paramString);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool1 = albi.b(paramQQAppInterface);
+    boolean bool2 = albi.a(paramQQAppInterface);
+    return (bool1) || (bool2);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[isSpriteActive]", ",from:", paramString });
+    }
+    if (!albi.c(paramQQAppInterface)) {}
+    do
+    {
+      do
+      {
+        return false;
+        paramQQAppInterface = albi.a(paramQQAppInterface);
+      } while (paramQQAppInterface == null);
+      paramQQAppInterface = paramQQAppInterface.a();
+    } while (paramQQAppInterface == null);
+    return paramQQAppInterface.a();
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramQQAppInterface == null)) {}
+    do
+    {
+      return false;
+      paramQQAppInterface = albi.a(paramQQAppInterface);
+    } while ((paramQQAppInterface == null) || (!paramQQAppInterface.a(paramString)));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alaz
  * JD-Core Version:    0.7.0.1
  */

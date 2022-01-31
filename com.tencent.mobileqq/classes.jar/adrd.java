@@ -1,16 +1,8 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnHoverListener;
+import android.widget.TextView;
 
-class adrd
-  implements View.OnHoverListener
+public class adrd
 {
-  adrd(adrc paramadrc) {}
-  
-  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  TextView a;
 }
 
 

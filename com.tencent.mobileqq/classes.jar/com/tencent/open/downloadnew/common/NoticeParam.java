@@ -1,15 +1,15 @@
 package com.tencent.open.downloadnew.common;
 
-import alje;
 import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bfqc;
 
 public class NoticeParam
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new alje();
+  public static final Parcelable.Creator<NoticeParam> CREATOR = new bfqc();
   public int a;
   public long a;
   public Intent a;
@@ -67,7 +67,7 @@ public class NoticeParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.common.NoticeParam
  * JD-Core Version:    0.7.0.1
  */

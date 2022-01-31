@@ -1,51 +1,54 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vas.IndividuationUrlHelper;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
-import cooperation.qqindividuality.QQIndividualityUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedLike;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class vev
-  implements View.OnClickListener
+  extends uro
 {
-  public vev(RichStatItemBuilder paramRichStatItemBuilder) {}
+  public List<vew> a;
   
-  public void onClick(View paramView)
+  public vev(ErrorMessage paramErrorMessage)
   {
-    String str = IndividuationUrlHelper.a("signatureHistoryH5Url");
-    if ((!TextUtils.isEmpty(str)) && (str.startsWith("http")))
+    super(paramErrorMessage.errorCode, paramErrorMessage.errorMsg);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public vev(qqstory_service.RspBatchFeedLike paramRspBatchFeedLike)
+  {
+    super(paramRspBatchFeedLike.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramRspBatchFeedLike = paramRspBatchFeedLike.feed_like_info_list.get().iterator();
+    while (paramRspBatchFeedLike.hasNext())
     {
-      paramView = str;
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-        paramView = str + "&fuin=" + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+      Object localObject = (qqstory_struct.FeedLikeInfo)paramRspBatchFeedLike.next();
+      vew localvew = new vew();
+      localvew.jdField_a_of_type_JavaLangString = ((qqstory_struct.FeedLikeInfo)localObject).feed_id.get().toStringUtf8();
+      localvew.b = ((qqstory_struct.FeedLikeInfo)localObject).has_like.get();
+      localvew.jdField_a_of_type_Int = ((qqstory_struct.FeedLikeInfo)localObject).like_total_count.get();
+      localvew.jdField_a_of_type_JavaUtilList = new ArrayList();
+      localObject = ((qqstory_struct.FeedLikeInfo)localObject).like_list.get().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)((Iterator)localObject).next());
+        localLikeEntry.feedId = localvew.jdField_a_of_type_JavaLangString;
+        localvew.jdField_a_of_type_JavaUtilList.add(localLikeEntry);
       }
-      VasWebviewUtil.openQQBrowserWithoutAD(this.a.jdField_a_of_type_AndroidContentContext, paramView, -1L, null, false, -1);
-    }
-    for (;;)
-    {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "signiture", "aio_clk_his", 0, 0, "", "", "", "");
-      return;
-      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQIndividualityBridgeActivity.class);
-      paramView.putExtra("key_uin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      paramView.putExtra("key__entry_type", 2);
-      paramView.putExtra(QQIndividualityUtils.l, 2);
-      paramView.putExtra("key_uin_name", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-      paramView.putExtra(QQIndividualityUtils.e, "path");
-      paramView.putExtra(QQIndividualityUtils.f, "name");
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      this.jdField_a_of_type_JavaUtilList.add(localvew);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vev
  * JD-Core Version:    0.7.0.1
  */

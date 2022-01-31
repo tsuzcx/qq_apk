@@ -1,27 +1,30 @@
-import com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler;
-import com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler.Callback;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.support.annotation.NonNull;
+import org.json.JSONObject;
 
 public class abyv
-  implements Runnable
+  extends abwy
 {
-  public abyv(ChirpSoHandler paramChirpSoHandler) {}
-  
-  public void run()
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull abwu paramabwu)
   {
-    synchronized (ChirpSoHandler.a(this.a))
+    switch (paramInt)
     {
-      Iterator localIterator = ChirpSoHandler.a(this.a).iterator();
-      if (localIterator.hasNext()) {
-        ((ChirpSoHandler.Callback)localIterator.next()).k();
-      }
+    default: 
+      return false;
+    case 31: 
+      acab.a(paramabwu, null);
+    }
+    for (;;)
+    {
+      return true;
+      acab.a(paramabwu, null);
+      continue;
+      acab.a(paramabwu, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abyv
  * JD-Core Version:    0.7.0.1
  */

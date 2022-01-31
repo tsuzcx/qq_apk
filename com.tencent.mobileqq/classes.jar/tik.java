@@ -1,30 +1,30 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
-import mqq.util.WeakReference;
+import UserGrowth.stRedDotRsp;
 
-public class tik
-  implements TabBarView.OnTabChangeListener
+class tik
+  implements tgt
 {
-  final WeakReference a;
+  tik(tij paramtij) {}
   
-  public tik(QQBrowserActivity paramQQBrowserActivity)
+  public void a(the paramthe)
   {
-    this.a = new WeakReference(paramQQBrowserActivity);
-  }
-  
-  public void onTabSelected(int paramInt1, int paramInt2)
-  {
-    QQBrowserActivity localQQBrowserActivity = (QQBrowserActivity)this.a.get();
-    if (localQQBrowserActivity == null) {}
-    while (paramInt1 == paramInt2) {
+    if ((this.a.a() != null) && (paramthe != null) && (paramthe.a()) && (paramthe.a != null) && ((paramthe.a instanceof stRedDotRsp)))
+    {
+      paramthe = (stRedDotRsp)paramthe.a;
+      tij.a(this.a, paramthe.notificationReddot);
+      tij.b(this.a, paramthe.menu);
+      if (this.a.a() != null) {
+        ((tiu)this.a.a()).a(paramthe);
+      }
+    }
+    while (this.a.a() == null) {
       return;
     }
-    QQBrowserActivity.a(paramInt2, localQQBrowserActivity);
+    ((tiu)this.a.a()).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tik
  * JD-Core Version:    0.7.0.1
  */

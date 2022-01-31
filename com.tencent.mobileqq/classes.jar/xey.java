@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgPayManager;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgPayManager.PayItem;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-
-public class xey
-  implements Runnable
+class xey
+  implements uxw
 {
-  public xey(GoldMsgPayManager paramGoldMsgPayManager, GoldMsgPayManager.PayItem paramPayItem) {}
+  xey(xet paramxet, xfg paramxfg) {}
   
-  public void run()
+  public void a(boolean paramBoolean, uxs paramuxs)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgPayManager$PayItem.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgPayManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgPayManager$PayItem.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    wxe.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
+    if ((paramBoolean) && (paramuxs != null))
+    {
+      this.jdField_a_of_type_Xet.a(paramuxs.b, paramuxs.a, this.jdField_a_of_type_Xfg);
+      return;
+    }
+    wxe.e("DoodleEmojiManager", "onLbsUpdate failed.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xey
  * JD-Core Version:    0.7.0.1
  */

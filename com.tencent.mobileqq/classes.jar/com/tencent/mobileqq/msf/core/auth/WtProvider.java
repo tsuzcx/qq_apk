@@ -9,12 +9,12 @@ public class WtProvider
   
   public static void cancel(int paramInt)
   {
-    m.a(paramInt);
+    n.a(paramInt);
   }
   
   public static int sendData(WUserSigInfo paramWUserSigInfo, String paramString1, String paramString2, byte[] paramArrayOfByte, int paramInt, boolean paramBoolean, WtloginMsfListener paramWtloginMsfListener)
   {
-    return m.a(paramWUserSigInfo, paramString1, paramString2, paramArrayOfByte, paramInt, paramBoolean, paramWtloginMsfListener);
+    return n.a(paramWUserSigInfo, paramString1, paramString2, paramArrayOfByte, paramInt, paramBoolean, paramWtloginMsfListener);
   }
 }
 

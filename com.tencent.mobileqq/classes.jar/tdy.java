@@ -1,50 +1,28 @@
-import android.content.BroadcastReceiver;
+import NS_KING_SOCIALIZE_META.stMetaReply;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class tdy
-  extends BroadcastReceiver
+class tdy
+  implements View.OnClickListener
 {
-  public tdy(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  tdy(tdu paramtdu, stMetaReply paramstMetaReply) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.PCActive"))
+    paramView = (ClipboardManager)tdn.a(this.jdField_a_of_type_Tdu.a).getSystemService("clipboard");
+    if (paramView != null)
     {
-      paramContext = paramIntent.getStringExtra("uin");
-      NotifyPushSettingActivity.a(this.a, paramContext);
+      paramView.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaReply.wording));
+      tdn.a(this.jdField_a_of_type_Tdu.a).dismiss();
     }
-    do
-    {
-      boolean bool;
-      do
-      {
-        return;
-        if (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.ConfigPCActive")) {
-          break;
-        }
-        paramContext = paramIntent.getStringExtra("uin");
-        bool = paramIntent.getBooleanExtra("configPCActive", false);
-      } while (!this.a.app.getAccount().equals(paramContext));
-      if (true == bool)
-      {
-        NotifyPushSettingActivity.g(this.a).setVisibility(0);
-        return;
-      }
-      NotifyPushSettingActivity.g(this.a).setVisibility(8);
-      return;
-    } while (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.HelloLiveMessage"));
-    paramContext = paramIntent.getStringExtra("uin");
-    NotifyPushSettingActivity.b(this.a, paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tdy
  * JD-Core Version:    0.7.0.1
  */

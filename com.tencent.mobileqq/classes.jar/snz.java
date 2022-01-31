@@ -1,29 +1,19 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONObject;
 
 public class snz
-  implements View.OnClickListener
+  implements spj
 {
-  public snz(ForwardRecentActivity paramForwardRecentActivity) {}
+  public snz(BridgeModule paramBridgeModule) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    paramView = new Bundle();
-    paramView.putString("uin", String.valueOf(AppConstants.z));
-    paramView.putInt("uintype", -1);
-    this.a.a.a(ForwardAbility.ForwardAbilityType.k.intValue(), paramView);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004051", "0X8004051", 0, 0, "", "", "", "");
+    this.a.invokeCallJS(paramString, paramJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     snz
  * JD-Core Version:    0.7.0.1
  */

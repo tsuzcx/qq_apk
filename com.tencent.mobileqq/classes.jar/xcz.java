@@ -1,40 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import java.util.ArrayList;
-
 public class xcz
-  implements View.OnClickListener
+  implements Comparable<xcz>
 {
-  public xcz(CommonHbFragment paramCommonHbFragment, View paramView) {}
+  public int a;
+  public String a;
+  int b;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  public xcz()
   {
-    long l = System.currentTimeMillis();
-    if (CommonHbFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment) + 1200L > l) {
-      return;
-    }
-    CommonHbFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment, l);
-    paramView = new ArrayList();
-    try
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public xcz(int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+  }
+  
+  public int a(xcz paramxcz)
+  {
+    if (paramxcz == null) {}
+    do
     {
-      ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_AndroidViewView.getTag();
-      paramView = localArrayList;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
+      return -1;
+      if (this.jdField_b_of_type_Int < paramxcz.jdField_b_of_type_Int) {
+        return 1;
       }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment.a.a(CommonHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment), paramView);
+    } while (this.jdField_b_of_type_Int != paramxcz.jdField_b_of_type_Int);
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return "FilterTemplate{id='" + this.jdField_a_of_type_Int + '\'' + ", thumbPath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", priority=" + this.jdField_b_of_type_Int + ", name='" + this.jdField_b_of_type_JavaLangString + '\'' + ", pron='" + this.c + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xcz
  * JD-Core Version:    0.7.0.1
  */

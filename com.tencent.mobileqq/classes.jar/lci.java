@@ -1,26 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyBaseViewController;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.net.Socket;
+import java.security.KeyStore;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
 
 public class lci
-  implements View.OnClickListener
+  extends org.apache.http.conn.ssl.SSLSocketFactory
 {
-  public lci(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  private SSLContext a = SSLContext.getInstance("TLS");
   
-  public void onClick(View paramView)
+  public lci(KeyStore paramKeyStore)
   {
-    if ((ReadInJoyChannelActivity.a(this.a)) || (ReadInJoyChannelActivity.b(this.a)))
+    super(paramKeyStore);
+    try
     {
-      this.a.a.a(true);
+      paramKeyStore = new lck();
+      this.a.init(null, new TrustManager[] { paramKeyStore }, null);
       return;
     }
-    this.a.a.a(false);
+    catch (Exception paramKeyStore)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Translator", 2, "[cancel] cancel task" + paramKeyStore);
+        }
+        paramKeyStore = null;
+      }
+    }
+  }
+  
+  public Socket createSocket()
+  {
+    return this.a.getSocketFactory().createSocket();
+  }
+  
+  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
+  {
+    return this.a.getSocketFactory().createSocket(paramSocket, paramString, paramInt, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lci
  * JD-Core Version:    0.7.0.1
  */

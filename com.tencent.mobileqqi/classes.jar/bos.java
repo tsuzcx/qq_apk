@@ -1,70 +1,50 @@
-import android.os.Bundle;
-import com.tencent.biz.eqq.EnterpriseDetailActivity;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.app.Activity;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.biz.pubaccount.util.OfflineUpdateStatus;
+import com.tencent.biz.webviewplugin.OfflinePlugin;
+import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
+import java.util.HashMap;
 
 public class bos
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  public bos(EnterpriseDetailActivity paramEnterpriseDetailActivity) {}
+  public bos(OfflinePlugin paramOfflinePlugin) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean) {
-      if (!this.a.jdField_a_of_type_Boolean) {
-        this.a.a(2131560545);
-      }
-    }
-    for (;;)
+    paramView = this.a.mRuntime.a();
+    if (paramView == null) {}
+    OfflineUpdateStatus localOfflineUpdateStatus;
+    do
     {
-      paramBundle = this.a;
-      paramBundle.jdField_a_of_type_Int -= 1;
-      if (this.a.jdField_a_of_type_Int == 0) {
-        EnterpriseDetailActivity.b(this.a);
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("crmtest", 4, "receive sendDetailInfoResponse, ts=" + System.currentTimeMillis());
-      }
-      return;
-      if (paramBoolean) {}
-      try
+      do
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
+        do
         {
-          mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
-          localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
-          if ((((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() != 0) || ((this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail != null) && ((this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail == null) || (localGetEqqAccountDetailInfoResponse.seqno.get() == this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.seqno)))) {
-            continue;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetEqqAccountDetailInfoResponse = localGetEqqAccountDetailInfoResponse;
-          paramBundle = new EqqDetail(this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetEqqAccountDetailInfoResponse);
-          if ((this.a.c) && (paramBundle.followType == 1))
-          {
-            EnterpriseDetailActivity.b(this.a, this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-            EnterpriseDetailActivity.f(this.a);
-            continue;
-          }
-          EnterpriseDetailActivity.c(this.a, paramBundle);
-          continue;
-        }
-        if (this.a.jdField_a_of_type_Boolean) {
-          continue;
-        }
-        this.a.a(2131560545);
+          return;
+        } while ((OfflinePlugin.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(OfflinePlugin.b(this.a))));
+        localOfflineUpdateStatus = (OfflineUpdateStatus)OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.get(OfflinePlugin.b(this.a));
+      } while (localOfflineUpdateStatus == null);
+      if (localOfflineUpdateStatus.b() == 3)
+      {
+        localOfflineUpdateStatus.a();
+        this.a.a();
+        localOfflineUpdateStatus.c(4);
+        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+        OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.remove(OfflinePlugin.b(this.a));
+        return;
       }
-      catch (Exception paramBundle) {}
-      if (!this.a.jdField_a_of_type_Boolean) {
-        this.a.a(2131560545);
-      }
-    }
+    } while (localOfflineUpdateStatus.b() != 0);
+    HtmlOffline.a(paramView.getApplicationContext(), OfflinePlugin.b(this.a), localOfflineUpdateStatus.jdField_f_of_type_JavaLangString, localOfflineUpdateStatus.jdField_f_of_type_Int, localOfflineUpdateStatus);
+    localOfflineUpdateStatus.c(1);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(OfflinePlugin.a(this.a), 2000L);
   }
 }
 

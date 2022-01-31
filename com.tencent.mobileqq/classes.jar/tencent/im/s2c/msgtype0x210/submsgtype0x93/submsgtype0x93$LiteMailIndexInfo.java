@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class submsgtype0x93$LiteMailIndexInfo
-  extends MessageMicro
+  extends MessageMicro<LiteMailIndexInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_feeds_id = PBField.initBytes(ByteStringMicro.EMPTY);

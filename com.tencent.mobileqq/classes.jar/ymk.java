@@ -1,24 +1,27 @@
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.ApolloResponseManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
+import java.lang.ref.WeakReference;
 
 class ymk
-  implements Runnable
+  extends alzr
 {
-  ymk(ymj paramymj, ApolloActionData paramApolloActionData) {}
+  WeakReference<ymm> a;
   
-  public void run()
+  public ymk(ymm paramymm)
   {
-    if (this.jdField_a_of_type_Ymj.a.a == null) {
-      return;
+    this.a = new WeakReference(paramymm);
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    super.a(paramBoolean, paramString);
+    ymm localymm = (ymm)this.a.get();
+    if (localymm != null) {
+      localymm.a(paramBoolean, paramString, false);
     }
-    ((ApolloManager)this.jdField_a_of_type_Ymj.a.a.getManager(152)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ymk
  * JD-Core Version:    0.7.0.1
  */

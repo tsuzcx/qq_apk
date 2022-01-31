@@ -1,41 +1,50 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import android.text.TextUtils;
-import com.tencent.mobileqq.addon.DiyPendantEntity;
-import com.tencent.mobileqq.addon.DiyPendantFetcher;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.LRULinkedHashMap;
-import java.util.Iterator;
-import java.util.List;
 
 public class yjb
-  implements Runnable
+  implements aocf
 {
-  public yjb(DiyPendantFetcher paramDiyPendantFetcher, QQAppInterface paramQQAppInterface) {}
+  public yjb(SubscribeBaseFragment paramSubscribeBaseFragment) {}
   
-  public void run()
+  public ColorNote getColorNote()
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(DiyPendantEntity.class, true, null, null, null, null, null, " 20 ");
-    if ((localList != null) && (localList.size() > 0))
+    if ((this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) || (this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo == null))
     {
-      Iterator localIterator = localList.iterator();
-      while (localIterator.hasNext())
-      {
-        DiyPendantEntity localDiyPendantEntity = (DiyPendantEntity)localIterator.next();
-        if (!TextUtils.isEmpty(localDiyPendantEntity.uinAndDiyId)) {
-          this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.a.put(localDiyPendantEntity.uinAndDiyId, localDiyPendantEntity);
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("DiyPendantFetcher", 2, "initCacheFromDB, size: " + localList.size());
-      }
+      QLog.e("SubscribeBaseFragment", 1, "initColorNote, shareInfoBean is null");
+      return null;
     }
+    byte[] arrayOfByte = yly.a(new SubscribeColorNoteReserveBean(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.toByteArray(), this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType));
+    ydo localydo = new ydo();
+    localydo.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+    localydo.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
+    String str1 = "";
+    String str3 = localydo.c();
+    String str2 = localydo.d();
+    String str4 = localydo.e();
+    switch (localydo.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType)
+    {
+    }
+    while (TextUtils.isEmpty(str1))
+    {
+      return null;
+      str2 = localydo.f();
+      str1 = "" + localydo.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get();
+      continue;
+      str1 = "" + localydo.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
+    }
+    return new aocl().a(16908291).a(str1).b(str3).c(str2).d(str4).a(arrayOfByte).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yjb
  * JD-Core Version:    0.7.0.1
  */

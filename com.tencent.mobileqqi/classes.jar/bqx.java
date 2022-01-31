@@ -1,21 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.assistant.PubAccountAssistantSettingActivity;
-import com.tencent.biz.pubaccount.assistant.PubAccountAssistantSettingAdapter;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
 
 public class bqx
-  extends Handler
+  implements Runnable
 {
-  public bqx(PubAccountAssistantSettingActivity paramPubAccountAssistantSettingActivity) {}
+  public bqx(LiteTransferWrapper paramLiteTransferWrapper, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    PubAccountAssistantSettingActivity.a(this.a).notifyDataSetChanged();
+    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetThumbPathToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bqx
  * JD-Core Version:    0.7.0.1
  */

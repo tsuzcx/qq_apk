@@ -1,26 +1,51 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.view.VipProfileSimpleView;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class agsm
-  implements Animation.AnimationListener
+  extends aqbl
 {
-  public agsm(VipProfileSimpleView paramVipProfileSimpleView, ProfileCardInfo paramProfileCardInfo) {}
+  agsm(agse paramagse) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, aqcl paramaqcl, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileSimpleView.c = true;
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileSimpleView.h(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, String.format("onGetUnLimitFriendInfo() success=%s uinType=%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) }));
+    }
+    if ((paramBoolean) && (paramaqcl != null)) {
+      ThreadManager.getSubThreadHandler().post(new LimitChatPie.7.1(this, paramInt2, paramaqcl));
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  protected void a(boolean paramBoolean, aqcx paramaqcx, int paramInt)
+  {
+    if ((paramBoolean) && (paramaqcx != null))
+    {
+      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramaqcx, this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO, this.a.g, this.a.L);
+      agse.a(this.a, paramaqcx.mNickName);
+      this.a.e.setText(paramaqcx.mNickName);
+      if ((!TextUtils.isEmpty(paramaqcx.mNickName)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramaqcx.mNickName;
+      }
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected void a(boolean paramBoolean, ArrayList<Long> paramArrayList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, String.format("onGetExtendFriendOnlineState success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    agse.a(this.a, paramArrayList);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agsm
  * JD-Core Version:    0.7.0.1
  */

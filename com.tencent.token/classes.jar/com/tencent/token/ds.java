@@ -1,62 +1,43 @@
 package com.tencent.token;
 
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.core.bean.MbInfoResult;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import java.util.HashMap;
-import org.json.JSONObject;
+import com.tencent.token.core.bean.OnlineDeviceResult;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.utils.w;
 
-public final class ds
-  extends bm
+public class ds
+  extends dt
 {
-  MbInfoResult c;
-  private long d;
+  static ds a = null;
+  public OnlineDeviceResult b;
   
-  protected final String a()
+  private ds()
   {
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    for (String str = ax.c; str == null; str = null)
-    {
-      this.a.a(104, null, null);
-      return null;
-    }
-    str = "?uin=" + this.d + "&aq_base_sid=" + str;
-    return b.c() + "/cn/mbtoken3/mbtoken3_get_mbinfo" + str;
+    super("tbl_login_log");
   }
   
-  protected final void a(fs paramfs)
+  public static ds a()
   {
-    this.d = ((Long)paramfs.c.get("param.uinhash")).longValue();
+    if (a == null) {
+      a = new ds();
+    }
+    return a;
   }
   
-  protected final void a(JSONObject paramJSONObject)
+  public static void b()
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
-    {
-      a(i, paramJSONObject.getString("info"));
-      return;
-    }
-    this.c = new MbInfoResult(paramJSONObject);
-    fn.a().a(this.c);
-    this.a.a = 0;
+    a = null;
   }
   
-  protected final void b()
+  public void a(byte paramByte, String paramString, Handler paramHandler)
   {
-    if (!this.b.e)
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.c;
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
+    c();
+    cw.a().a(0L, paramByte, 0, w.a(cp.a(RqdApplication.l()).b()), 523005419, 1, "com.tencent.token", paramString, paramHandler);
+  }
+  
+  public void c()
+  {
+    a(0);
   }
 }
 

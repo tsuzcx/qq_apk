@@ -1,38 +1,23 @@
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import com.tencent.mobileqq.shortvideo.filter.QQMovieFilter;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
 
 public class aibk
-  implements SurfaceTexture.OnFrameAvailableListener
+  implements bcms
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = true;
+  private long jdField_a_of_type_Long;
   
-  public aibk(QQMovieFilter paramQQMovieFilter)
+  public aibk(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQMovieFilter);
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void a()
+  public long a()
   {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QQMovieFilter localQQMovieFilter = (QQMovieFilter)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localQQMovieFilter != null) {
-        localQQMovieFilter.a(paramSurfaceTexture);
-      }
-    }
+    return this.jdField_a_of_type_Long;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aibk
  * JD-Core Version:    0.7.0.1
  */

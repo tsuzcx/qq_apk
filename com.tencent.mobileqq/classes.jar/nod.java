@@ -1,27 +1,21 @@
-import android.os.Handler;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.RelativeLayout;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
-import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
 
 public class nod
-  implements ViewTreeObserver.OnPreDrawListener
+  implements View.OnClickListener
 {
-  public nod(StoryPlayVideoActivity paramStoryPlayVideoActivity) {}
+  public nod(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public boolean onPreDraw()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(0);
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new noe(this), 100L);
-    this.a.h();
-    this.a.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.getViewTreeObserver().removeOnPreDrawListener(this);
-    return false;
+    ReadInJoyNativeAdFragment.a(this.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nod
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public class sis
-  implements Runnable
+public abstract interface sis
 {
-  public sis(Conversation paramConversation) {}
-  
-  public void run()
-  {
-    this.a.a.q();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sis
  * JD-Core Version:    0.7.0.1
  */

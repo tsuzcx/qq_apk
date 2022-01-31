@@ -6,6 +6,7 @@ public class DownloadInfo
   public String[] rpt_str_downloadip_list;
   public int rpt_str_downloadip_list_count;
   public String str_cookie;
+  public String str_download_dns;
   public String str_download_domain;
   public String str_download_ip;
   public String str_download_url;
@@ -13,7 +14,7 @@ public class DownloadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.litetransfersdk.DownloadInfo
  * JD-Core Version:    0.7.0.1
  */

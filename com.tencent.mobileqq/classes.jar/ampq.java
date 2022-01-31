@@ -1,29 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qqfav.widget.QfavJumpActivity;
-import java.io.IOException;
-import java.io.InputStream;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class ampq
-  implements DialogInterface.OnClickListener
+public final class ampq
+  extends BroadcastReceiver
 {
-  public ampq(QfavJumpActivity paramQfavJumpActivity, InputStream paramInputStream) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    try
+    if (paramIntent == null) {}
+    do
     {
-      this.jdField_a_of_type_JavaIoInputStream.close();
-      this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.finish();
-      return;
-    }
-    catch (IOException paramDialogInterface)
-    {
-      for (;;)
+      do
       {
-        paramDialogInterface.printStackTrace();
-      }
-    }
+        do
+        {
+          return;
+          if (!paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) {
+            break;
+          }
+          SosoInterface.a(true);
+        } while (!QLog.isColorLevel());
+        QLog.i("SOSO.LBS", 2, "onReceive action is screen on.");
+        return;
+      } while (!paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"));
+      SosoInterface.a(false);
+      SosoInterface.a().sendEmptyMessage(1002);
+    } while (!QLog.isColorLevel());
+    QLog.i("SOSO.LBS", 2, "onReceive action is screen off.");
   }
 }
 

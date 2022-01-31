@@ -1,23 +1,14 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
-
-public class vvr
-  implements Runnable
+public abstract interface vvr
 {
-  public vvr(MultiForwardChatPie paramMultiForwardChatPie) {}
+  public abstract void a(int paramInt);
   
-  public void run()
-  {
-    MultiForwardChatPie.a(this.a).setVisibility(0);
-    MultiForwardChatPie.a(this.a).setText(2131433421);
-    this.a.d.setText(this.a.g);
-    this.a.y();
-  }
+  public abstract void a(int paramInt1, float paramFloat, int paramInt2);
+  
+  public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vvr
  * JD-Core Version:    0.7.0.1
  */

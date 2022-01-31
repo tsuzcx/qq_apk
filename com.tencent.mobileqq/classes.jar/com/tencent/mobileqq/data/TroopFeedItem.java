@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
+import awge;
+import bdnn;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
-import com.tencent.mobileqq.utils.StringUtil;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="id")
 public class TroopFeedItem
-  extends Entity
+  extends awge
 {
   public static final int ABLUM_FEED_TYPE = 18;
   public static final String APPID_STORY_PGC_CONTENT = "1105527223";
@@ -46,8 +46,8 @@ public class TroopFeedItem
   
   public boolean isVaild()
   {
-    if ((StringUtil.a(this.tag)) || (StringUtil.a(this.title))) {}
-    while (((this.type == 0) || (this.type == 131)) && (StringUtil.a(this.content))) {
+    if ((bdnn.a(this.tag)) || (bdnn.a(this.title))) {}
+    while (((this.type == 0) || (this.type == 131)) && (bdnn.a(this.content))) {
       return false;
     }
     return true;
@@ -55,7 +55,7 @@ public class TroopFeedItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopFeedItem
  * JD-Core Version:    0.7.0.1
  */

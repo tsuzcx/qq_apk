@@ -1,29 +1,14 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.troop.data.TroopAioTips;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
 public class ajdd
-  extends GestureDetector.SimpleOnGestureListener
+  extends aiym
 {
-  public ajdd(TroopAioTips paramTroopAioTips) {}
+  public ajdd(DrawHbFragment paramDrawHbFragment) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ScrollTest", 4, "velocityY = " + paramFloat2);
-    }
-    if (paramFloat2 < -10.0F) {}
-    for (;;)
-    {
-      return false;
-      if (paramFloat2 <= 10.0F) {}
-    }
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
+    DrawHbFragment.a(this.a);
   }
 }
 

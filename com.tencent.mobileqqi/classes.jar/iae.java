@@ -1,18 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.AbsSpinner.SavedState;
+import java.io.File;
+import java.io.FileFilter;
 
 public final class iae
-  implements Parcelable.Creator
+  implements FileFilter
 {
-  public AbsSpinner.SavedState a(Parcel paramParcel)
+  public boolean accept(File paramFile)
   {
-    return new AbsSpinner.SavedState(paramParcel, null);
-  }
-  
-  public AbsSpinner.SavedState[] a(int paramInt)
-  {
-    return new AbsSpinner.SavedState[paramInt];
+    return paramFile.getName().endsWith(".cfg");
   }
 }
 

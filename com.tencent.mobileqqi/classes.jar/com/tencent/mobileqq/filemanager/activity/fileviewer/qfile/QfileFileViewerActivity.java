@@ -18,7 +18,7 @@ import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
-import fya;
+import fto;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -29,7 +29,7 @@ public final class QfileFileViewerActivity
   static final String jdField_a_of_type_JavaLangString = "<FileAssistant>QfileFileViewerActivity";
   int jdField_a_of_type_Int = 0;
   QfileFileController jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileviewerQfileQfileFileController = null;
-  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new fya(this);
+  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new fto(this);
   public FileManagerEntity a;
   public ForwardFileInfo a;
   public List a;

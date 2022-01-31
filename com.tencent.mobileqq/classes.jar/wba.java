@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager.Callback;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class wba
-  implements TroopRobotManager.Callback
+class wba
+  implements DialogInterface.OnDismissListener
 {
-  public wba(TroopChatPie paramTroopChatPie) {}
+  wba(waz paramwaz) {}
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramInt == 0) {
-      return;
+    if (this.a.a != null) {
+      this.a.a.c(false);
     }
-    QQToast.a(this.a.a, 1, "操作失败" + "", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wba
  * JD-Core Version:    0.7.0.1
  */

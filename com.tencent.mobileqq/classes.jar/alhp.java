@@ -1,43 +1,95 @@
-import android.os.Bundle;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.ApkGetCodeListener;
-import com.tencent.open.downloadnew.DownloaderGetCodeClient;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
 public class alhp
-  implements EIPCResultCallback
 {
-  public alhp(DownloaderGetCodeClient paramDownloaderGetCodeClient) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public static void a(int paramInt)
   {
-    LogUtility.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback...");
-    if (paramEIPCResult == null) {
-      return;
-    }
-    paramEIPCResult = paramEIPCResult.data;
-    if (paramEIPCResult == null)
+    a(paramInt, "");
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    a(paramInt1, null, paramInt2, -100, 0L, 0, 0L, new Object[] { "" });
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3, long paramLong, Object... paramVarArgs)
+  {
+    a(paramInt1, null, paramInt2, paramInt3, paramLong, 0, 0L, paramVarArgs);
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3, Object... paramVarArgs)
+  {
+    a(paramInt1, null, paramInt2, paramInt3, 0L, 0, 0L, paramVarArgs);
+  }
+  
+  public static void a(int paramInt1, int paramInt2, Object... paramVarArgs)
+  {
+    a(paramInt1, null, paramInt2, -100, 0L, 0, 0L, paramVarArgs);
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    a(paramInt, paramString, null);
+  }
+  
+  public static void a(int paramInt1, String paramString, int paramInt2)
+  {
+    a(paramInt1, paramString, paramInt2, -100, 0L, 0, 0L, new Object[] { "" });
+  }
+  
+  public static void a(int paramInt1, String paramString, int paramInt2, int paramInt3, long paramLong1, int paramInt4, long paramLong2, Object... paramVarArgs)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
+    int i = 0;
+    while (i < paramVarArgs.length)
     {
-      LogUtility.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback data is null...");
-      return;
+      localStringBuilder.append(paramVarArgs[i]);
+      i += 1;
     }
-    String str1 = paramEIPCResult.getString("PackageName");
-    int i = paramEIPCResult.getInt("VersionCode");
-    String str2 = paramEIPCResult.getString("Code");
-    boolean bool = paramEIPCResult.getBoolean("IsSuccess");
-    LogUtility.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback pkgName|" + str1 + " versionCode|" + i + " isSuc|" + bool + " code|" + str2);
-    if (DownloaderGetCodeClient.a(this.a) != null)
-    {
-      DownloaderGetCodeClient.a(this.a).a(str1, i, str2, bool, null);
-      return;
-    }
-    LogUtility.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback getCodeListener is null");
+    alhw.a(paramInt1, paramString, paramInt2, paramInt3, paramLong1, paramInt4, paramLong2, new Object[] { localStringBuilder.toString() });
+  }
+  
+  public static void a(int paramInt1, String paramString, int paramInt2, int paramInt3, Object... paramVarArgs)
+  {
+    a(paramInt1, paramString, paramInt2, paramInt3, 0L, 0, 0L, paramVarArgs);
+  }
+  
+  public static void a(int paramInt1, String paramString, int paramInt2, Object... paramVarArgs)
+  {
+    a(paramInt1, paramString, paramInt2, -100, 0L, 0, 0L, paramVarArgs);
+  }
+  
+  public static void a(int paramInt, String paramString1, String paramString2)
+  {
+    alhw.a(paramInt, paramString1, paramString2);
+  }
+  
+  public static void a(int paramInt, String paramString, int... paramVarArgs)
+  {
+    alhw.a(paramInt, paramString, paramVarArgs);
+  }
+  
+  public static void a(int paramInt, boolean paramBoolean)
+  {
+    alhw.a(paramInt, paramBoolean);
+  }
+  
+  public static void a(alhq paramalhq)
+  {
+    alhw.a(paramalhq);
+  }
+  
+  public static void b(int paramInt)
+  {
+    b(paramInt, null);
+  }
+  
+  public static void b(int paramInt, String paramString)
+  {
+    alhw.a(paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alhp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:background="@drawable/bg_texture_theme_version2" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <com.tencent.mobileqq.widget.TabBarView android:id="@id/j_x" android:layout_width="fill_parent" android:layout_height="50.0dip" />
+    </LinearLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:id="@id/elg" android:background="@drawable/skin_aio_input_bar_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            <FrameLayout android:id="@id/jso" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="40.0dip" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:id="@id/imd" android:background="@drawable/skin_aio_input_bar_bg" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_alignParentBottom="true">
+            <ImageView android:id="@id/cjs" android:clickable="true" android:layout_width="fill_parent" android:layout_height="32.0dip" android:src="@drawable/j_" android:layout_weight="1.0" android:contentDescription="@string/bc0" />
+            <ImageView android:id="@id/bow" android:clickable="true" android:layout_width="fill_parent" android:layout_height="32.0dip" android:src="@drawable/j5" android:layout_weight="1.0" android:contentDescription="@string/aa5" />
+            <ImageView android:id="@id/ig4" android:clickable="true" android:layout_width="fill_parent" android:layout_height="32.0dip" android:src="@drawable/jz" android:layout_weight="1.0" android:contentDescription="@string/be0" />
+            <ImageView android:id="@id/bew" android:clickable="true" android:layout_width="fill_parent" android:layout_height="32.0dip" android:src="@drawable/ix" android:layout_weight="1.0" android:contentDescription="@string/ak3" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

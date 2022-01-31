@@ -1,88 +1,61 @@
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Bundle;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.jsp.QQApiPlugin;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.open.agent.report.ReportCenter;
-import com.tencent.open.agent.report.ReportDef.RepUtil;
-import java.io.IOException;
-import java.util.Map;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class adwt
-  implements Runnable
+class adwt
+  extends bayj
 {
-  public adwt(QQApiPlugin paramQQApiPlugin, String paramString1, Map paramMap, Runnable paramRunnable, String paramString2, String paramString3) {}
+  adwt(adws paramadws) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    int i = 1;
-    try
-    {
-      localObject1 = HttpUtil.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
-      if (localObject1 == null) {
-        break label126;
-      }
-      localObject1 = BitmapFactory.decodeByteArray((byte[])localObject1, 0, localObject1.length);
-      if (localObject1 == null) {
-        break label126;
-      }
-      int j = ((Bitmap)localObject1).getWidth();
-      int k = ((Bitmap)localObject1).getHeight();
-      if (j * k <= 8000) {
-        break label370;
-      }
-      double d = Math.sqrt(8000.0D / (j * k));
-      localObject2 = Bitmap.createScaledBitmap((Bitmap)localObject1, (int)(j * d), (int)(k * d), true);
-      ((Bitmap)localObject1).recycle();
-      localObject1 = localObject2;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      Object localObject1;
-      Object localObject2;
-      break label126;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;) {}
-    }
-    this.jdField_a_of_type_JavaUtilMap.put("image", localObject1);
-    label126:
-    if (this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.mRuntime.a().getClass().getName().equalsIgnoreCase("com.tencent.qqreadinjoy.detailspage.ReadInJoyArticleDetailActivity"))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.mRuntime.a().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putString("report_type", "102");
-      ((Bundle)localObject1).putString("act_type", "96");
-      localObject2 = new StringBuilder().append("");
-      if (this.jdField_a_of_type_JavaUtilMap.get("image") != null) {
-        break label350;
-      }
-      ((Bundle)localObject1).putString("intext_1", i);
-      ((Bundle)localObject1).putString("intext_4", "0");
-      localObject2 = new StringBuilder().append("");
-      if (!"2".equals(this.b)) {
-        break label355;
+    int i = paramMessage.what;
+    paramMessage = (bass)paramMessage.obj;
+    if (paramMessage == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SendMultiPictureHelper", 2, "file is null");
       }
     }
-    label222:
-    label355:
-    for (i = 3;; i = 4)
+    do
     {
-      ((Bundle)localObject1).putString("intext_3", ReportDef.RepUtil.b(i));
-      ((Bundle)localObject1).putString("stringext_1", this.c);
-      ReportCenter.a().a((Bundle)localObject1, "", this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.mRuntime.a().getAccount(), false);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.mRuntime.a().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
-      break;
-      i = 0;
-      break label222;
-    }
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("SendMultiPictureHelper", 2, "transferListener status: " + i);
+        }
+        i = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessage.p, paramMessage.i, paramMessage.b);
+      } while (this.a.jdField_d_of_type_Boolean);
+      if (this.a.jdField_b_of_type_Boolean)
+      {
+        if (paramMessage.d == 1005)
+        {
+          this.a.jdField_c_of_type_Boolean = true;
+          return;
+        }
+        if (paramMessage.d == 1003)
+        {
+          this.a.a();
+          return;
+        }
+        adws.a(this.a, this.a.jdField_c_of_type_Int, this.a.jdField_a_of_type_JavaLangString, paramMessage.b);
+        return;
+      }
+      if (paramMessage.d == 1003)
+      {
+        if (this.a.jdField_a_of_type_Bdjz != null) {
+          this.a.jdField_a_of_type_Bdjz.setMessage(String.format(this.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(100) }));
+        }
+        this.a.a();
+        return;
+      }
+      if (paramMessage.d == 1005)
+      {
+        this.a.a();
+        return;
+      }
+    } while (this.a.jdField_a_of_type_Bdjz == null);
+    this.a.jdField_a_of_type_Bdjz.setMessage(String.format(this.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(i) }));
   }
 }
 

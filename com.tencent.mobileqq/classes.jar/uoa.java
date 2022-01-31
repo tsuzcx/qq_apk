@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class uoa
-  implements Runnable
+public abstract interface uoa
 {
-  public uoa(XBubbleAnimation paramXBubbleAnimation) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public void run()
-  {
-    this.a.d();
-  }
+  public abstract void a(String paramString, int paramInt, ErrorMessage paramErrorMessage);
+  
+  public abstract void b(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uoa
  * JD-Core Version:    0.7.0.1
  */

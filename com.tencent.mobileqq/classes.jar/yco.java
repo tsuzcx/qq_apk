@@ -1,51 +1,35 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
-class yco
-  implements Runnable
+public class yco
+  extends RecyclerView.ItemDecoration
 {
-  yco(ycn paramycn, List paramList) {}
-  
-  public void run()
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    int i = 0;
-    try
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    int i = paramRecyclerView.getChildAdapterPosition(paramView);
+    if (i == 0)
     {
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("onUpdateTroopGetMemberList:");
-        if (this.jdField_a_of_type_JavaUtilList != null) {
-          break label159;
-        }
-      }
-      for (;;)
-      {
-        QLog.d("TroopMemberListInnerFrame", 2, i);
-        this.jdField_a_of_type_Ycn.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getSharedPreferences("last_update_time" + this.jdField_a_of_type_Ycn.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).edit().putLong("key_last_update_time" + this.jdField_a_of_type_Ycn.a.b, System.currentTimeMillis()).commit();
-        TroopMemberListInnerFrame.a(this.jdField_a_of_type_Ycn.a, this.jdField_a_of_type_Ycn.a.b, this.jdField_a_of_type_JavaUtilList);
-        return;
-        label159:
-        i = this.jdField_a_of_type_JavaUtilList.size();
-      }
+      paramRect.left = bdaq.a(paramView.getContext(), 3.0F);
+      paramRect.right = 0;
       return;
     }
-    catch (Exception localException)
+    paramRecyclerView = paramRecyclerView.getAdapter();
+    if ((paramRecyclerView != null) && (i == paramRecyclerView.getItemCount() - 1)) {}
+    for (paramRect.right = bdaq.a(paramView.getContext(), 3.0F);; paramRect.right = 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopMemberListInnerFrame", 2, "onUpdateTroopGetMemberList:" + localException.toString());
-      }
+      paramRect.left = (-bdaq.a(paramView.getContext(), 6.0F));
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yco
  * JD-Core Version:    0.7.0.1
  */

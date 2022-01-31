@@ -1,22 +1,17 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.3;
 
-class yoa
-  implements Runnable
+public class yoa
+  implements View.OnClickListener
 {
-  yoa(ynz paramynz, String paramString) {}
+  public yoa(SubscribeQRCodeShareHelper.3 param3) {}
   
-  public void run()
-  {
-    if ((this.jdField_a_of_type_Ynz.jdField_a_of_type_Int < 0) && (HotChatCenterFragment.a(this.jdField_a_of_type_Ynz.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment))) {
-      this.jdField_a_of_type_Ynz.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    }
-    this.jdField_a_of_type_Ynz.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yoa
  * JD-Core Version:    0.7.0.1
  */

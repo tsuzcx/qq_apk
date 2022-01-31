@@ -1,17 +1,26 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.utils.s;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.HandlerThread;
 
-final class uq
-  implements View.OnClickListener
+class uq
+  implements DialogInterface.OnClickListener
 {
-  uq(RealNameActivity paramRealNameActivity) {}
+  uq(ui paramui) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    s.b(this.a, this.a.getString(2131361998));
+    if (RealNameFindActivity.access$2900(this.a.a) == null)
+    {
+      RealNameFindActivity.access$2902(this.a.a, new HandlerThread("uploadphoto", 1));
+      RealNameFindActivity.access$2900(this.a.a).start();
+    }
+    if (RealNameFindActivity.access$3000(this.a.a) == null) {
+      RealNameFindActivity.access$3002(this.a.a, new Handler(RealNameFindActivity.access$2900(this.a.a).getLooper()));
+    }
+    RealNameFindActivity.access$3000(this.a.a).post(new ur(this));
   }
 }
 

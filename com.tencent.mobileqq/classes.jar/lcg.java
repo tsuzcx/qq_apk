@@ -1,27 +1,31 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpRequestInterceptor;
+import org.apache.http.protocol.HttpContext;
 
-public class lcg
-  implements TextWatcher
+class lcg
+  implements HttpRequestInterceptor
 {
-  public lcg(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  lcg(lce paramlce) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void process(HttpRequest paramHttpRequest, HttpContext paramHttpContext)
   {
-    this.a.a(paramEditable);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a.a(paramCharSequence, paramInt1, paramInt2, paramInt3);
+    if (!paramHttpRequest.containsHeader("Accept-Encoding")) {
+      paramHttpRequest.addHeader("Accept-Encoding", "gzip");
+    }
+    paramHttpContext = lce.a(this.a).keySet().iterator();
+    while (paramHttpContext.hasNext())
+    {
+      String str = (String)paramHttpContext.next();
+      paramHttpRequest.addHeader(str, (String)lce.a(this.a).get(str));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lcg
  * JD-Core Version:    0.7.0.1
  */

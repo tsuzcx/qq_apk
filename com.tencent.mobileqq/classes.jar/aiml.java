@@ -1,76 +1,128 @@
-import com.tencent.mobileqq.filemanager.app.FileTransferObserver;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportHandler;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportJobForDisc;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.phone.CountryActivity;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aiml
-  extends FileTransferObserver
+  extends BaseAdapter
 {
-  public aiml(TeamWorkFileImportJobForDisc paramTeamWorkFileImportJobForDisc) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private ArrayList<bdjc> jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_JavaUtilArrayList;
   
-  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2)
+  private aiml(CountryActivity paramCountryActivity) {}
+  
+  private int a(bdjc parambdjc)
   {
-    paramInt2 = 0;
-    paramString2 = new JSONObject();
-    if (paramBoolean)
+    if (parambdjc.a) {
+      return 0;
+    }
+    if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.equals(""))) {
+      return 0;
+    }
+    String str2 = parambdjc.c;
+    String str3 = parambdjc.b;
+    String str1 = parambdjc.d;
+    parambdjc = str1;
+    if (str1 != null) {
+      parambdjc = str1.toLowerCase();
+    }
+    str1 = ChnToSpell.a(str3, 1);
+    String str4 = ChnToSpell.a(str3, 2);
+    if ((str2.equals(this.jdField_a_of_type_JavaLangString)) || (str3.equals(this.jdField_a_of_type_JavaLangString)) || (str1.equals(this.jdField_a_of_type_JavaLangString)) || (str4.equals(this.jdField_a_of_type_JavaLangString)) || ((parambdjc != null) && (parambdjc.equals(this.jdField_a_of_type_JavaLangString)))) {
+      return 3;
+    }
+    if ((str2.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str3.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str1.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str4.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || ((parambdjc != null) && (parambdjc.indexOf(this.jdField_a_of_type_JavaLangString) == 0))) {
+      return 2;
+    }
+    if ((str2.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str3.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str1.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str4.indexOf(this.jdField_a_of_type_JavaLangString) > 0)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public void a(String paramString)
+  {
+    int j = 0;
+    Object localObject = paramString.toLowerCase();
+    paramString = (String)localObject;
+    if (((String)localObject).equals("hk")) {
+      paramString = "xianggang";
+    }
+    localObject = paramString;
+    if (paramString.equals("uk")) {
+      localObject = "united kingdom";
+    }
+    int i;
+    label81:
+    bdjc localbdjc;
+    int k;
+    if (((String)localObject).startsWith(this.jdField_a_of_type_JavaLangString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("TeamWorkFileImportJobForDisc", 2, "---OnDiscDownloadInfo retCode: " + paramLong1 + ",retMsg: " + paramString1 + ",strCookie: " + paramString5 + ",host: " + paramString3 + ",port: " + paramInt1);
+      paramString = this.jdField_a_of_type_JavaUtilArrayList;
+      this.jdField_a_of_type_JavaLangString = ((String)localObject);
+      localObject = new ArrayList(8);
+      paramString = paramString.iterator();
+      i = 0;
+      if (!paramString.hasNext()) {
+        break label181;
       }
-      paramString1 = new StringBuilder("http://");
-      paramString1.append(paramString3).append(":").append(paramInt1).append("/ftn_handler/").append(paramString4);
+      localbdjc = (bdjc)paramString.next();
+      k = a(localbdjc);
+      if (k != 3) {
+        break label141;
+      }
+      ((ArrayList)localObject).add(j, localbdjc);
+      j += 1;
     }
     for (;;)
     {
-      try
+      break label81;
+      paramString = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_JavaUtilArrayList;
+      break;
+      label141:
+      if (k == 2)
       {
-        paramString3 = new JSONArray();
-        paramString3.put(0, paramString1.toString());
-        paramString2.put("urls", paramString3);
-        paramString2.put("filename", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
-        paramString2.put("cookie", paramString5);
-        paramInt1 = 1;
+        ((ArrayList)localObject).add(i + j, localbdjc);
+        i += 1;
       }
-      catch (Exception paramString1)
+      else if (k == 1)
       {
-        paramInt1 = 0;
-        QLog.e("TeamWorkFileImportJobForDisc", 2, "OnDiscDownloadInfo exception: " + paramString1.toString());
-        continue;
+        ((ArrayList)localObject).add(localbdjc);
       }
-      paramInt2 = 0;
-      try
-      {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
-        {
-          if (paramInt1 == 0) {
-            paramString2.put("filename", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
-          }
-          paramString2.put("filetype", 2);
-          paramString2.put("fileid", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid);
-          paramString2.put("discussuin", Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin));
-          paramString2.put("md5", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5);
-          paramInt2 = 1;
-        }
-      }
-      catch (Exception paramString1)
-      {
-        QLog.e("TeamWorkFileImportJobForDisc", 2, "put fileid exception: " + paramString1.toString());
-        paramInt2 = 0;
-        continue;
-        this.a.a(true);
-      }
-      if (((paramInt2 == 0) && (paramInt1 == 0)) || (paramString2 == null)) {
-        break;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler.a(paramString2, this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      return;
-      QLog.e("TeamWorkFileImportJobForDisc", 1, "---OnDiscDownloadInfo retCode: " + paramLong1 + ",fileName: " + this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b + "----");
-      paramInt1 = paramInt2;
     }
+    label181:
+    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null)
+    {
+      localView = CountryActivity.a(paramViewGroup, this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.getLayoutInflater(), true);
+      localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity);
+    }
+    CountryActivity.a(localView, (bdjc)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+    return localView;
   }
 }
 

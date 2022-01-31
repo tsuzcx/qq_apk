@@ -1,15 +1,10 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.QQSettingUtil;
+import android.view.View;
 
-public final class akay
-  implements Runnable
+public class akay
+  extends akba
 {
-  public akay(QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
-  {
-    QQSettingUtil.b(this.a);
-  }
+  public long a;
+  public View a;
 }
 
 

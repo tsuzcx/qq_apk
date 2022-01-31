@@ -1,16 +1,28 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.ch;
+import com.tencent.token.core.bean.FreezeStatusResult;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.do;
+import com.tencent.token.ui.base.FreezeUinDialog;
 
-final class jp
-  implements DialogInterface.OnClickListener
+class jp
+  implements View.OnClickListener
 {
-  jp(jl paramjl) {}
+  jp(FreezeStatusActivity paramFreezeStatusActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    FaceStartVryCameraActivity.access$1200(this.a.a);
+    paramView = do.a().e();
+    if ((paramView == null) || (FreezeStatusActivity.access$000(this.a) == null))
+    {
+      this.a.finish();
+      return;
+    }
+    ch.a().a(System.currentTimeMillis(), 221);
+    new FreezeUinDialog(this.a, 2131362182, paramView.mUinMask, FreezeStatusActivity.access$000(this.a).mAutoFreezeIntervalTime, this.a.mHandler).show();
   }
 }
 

@@ -14,8 +14,8 @@ public final class RespGetNeighbors
   static RespHeader cache_stHeader;
   static UserDetailLocalInfo cache_stUDLinfo;
   static UserData cache_stUserData;
-  static ArrayList cache_vGroupList;
-  static ArrayList cache_vNeighborInfos;
+  static ArrayList<GroupInfo> cache_vGroupList;
+  static ArrayList<RespNeighborInfo> cache_vNeighborInfos;
   public long RespTime;
   public int iSessionTotalNumber;
   public byte[] nearbyGroupResp;
@@ -23,17 +23,17 @@ public final class RespGetNeighbors
   public RespHeader stHeader;
   public UserDetailLocalInfo stUDLinfo;
   public UserData stUserData;
-  public ArrayList vGroupList;
-  public ArrayList vNeighborInfos;
+  public ArrayList<GroupInfo> vGroupList;
+  public ArrayList<RespNeighborInfo> vNeighborInfos;
   
   public RespGetNeighbors() {}
   
-  public RespGetNeighbors(RespHeader paramRespHeader, long paramLong, ArrayList paramArrayList1, ArrayList paramArrayList2, UserData paramUserData, UserDetailLocalInfo paramUserDetailLocalInfo, EctFragmentation paramEctFragmentation, int paramInt, byte[] paramArrayOfByte)
+  public RespGetNeighbors(RespHeader paramRespHeader, long paramLong, ArrayList<RespNeighborInfo> paramArrayList, ArrayList<GroupInfo> paramArrayList1, UserData paramUserData, UserDetailLocalInfo paramUserDetailLocalInfo, EctFragmentation paramEctFragmentation, int paramInt, byte[] paramArrayOfByte)
   {
     this.stHeader = paramRespHeader;
     this.RespTime = paramLong;
-    this.vNeighborInfos = paramArrayList1;
-    this.vGroupList = paramArrayList2;
+    this.vNeighborInfos = paramArrayList;
+    this.vGroupList = paramArrayList1;
     this.stUserData = paramUserData;
     this.stUDLinfo = paramUserDetailLocalInfo;
     this.stEctFmt = paramEctFragmentation;
@@ -111,7 +111,7 @@ public final class RespGetNeighbors
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NeighborSvc.RespGetNeighbors
  * JD-Core Version:    0.7.0.1
  */

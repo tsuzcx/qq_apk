@@ -1,24 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.ConvertIFramesRunnable;
 
 public class xce
-  implements View.OnClickListener
+  implements axvn
 {
-  public xce(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public xce(HWEditLocalVideoPlayer.ConvertIFramesRunnable paramConvertIFramesRunnable) {}
   
-  public void onClick(View paramView)
-  {
-    TroopUnAccalimedRedPacketList.a(this.a, true);
-    if (TroopUnAccalimedRedPacketList.a() != null) {
-      TroopUnAccalimedRedPacketList.a().dismiss();
-    }
-  }
+  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xce
  * JD-Core Version:    0.7.0.1
  */

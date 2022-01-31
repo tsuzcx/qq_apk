@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1550" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <com.tencent.biz.qqstory.view.widget.QQStoryLoadingView android:textSize="14.0sp" android:textColor="#ffa6a6a6" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1279" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2c71" android:drawablePadding="15.0dip" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1551" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="16.0sp" android:textColor="#ff777777" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2c72" android:drawableTop="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02177c" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />
-    </RelativeLayout>
-</RelativeLayout>

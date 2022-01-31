@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
 
 public final class member_lbs$Wifi
-  extends MessageMicro
+  extends MessageMicro<Wifi>
 {
   public static final int INT32_RSSI_FIELD_NUMBER = 2;
   public static final int INT64_MAC_FIELD_NUMBER = 1;
@@ -17,7 +17,7 @@ public final class member_lbs$Wifi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.lbs.member_lbs.Wifi
  * JD-Core Version:    0.7.0.1
  */

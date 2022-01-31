@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.nearby.now.view;
 
+import alud;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -28,7 +29,7 @@ public class QQStoryVideoPlayerErrorView
   
   public void a()
   {
-    this.a.setText("加载失败，点击重试");
+    this.a.setText(alud.a(2131711484));
     this.a.setVisibility(0);
     this.b.setVisibility(8);
   }
@@ -41,9 +42,9 @@ public class QQStoryVideoPlayerErrorView
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2130969132, this, true);
-    this.a = ((TextView)paramContext.findViewById(2131365306));
-    this.b = ((TextView)paramContext.findViewById(2131362728));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559391, this, true);
+    this.a = ((TextView)paramContext.findViewById(2131375735));
+    this.b = ((TextView)paramContext.findViewById(2131377898));
   }
   
   public void setOnRetryClickListener(View.OnClickListener paramOnClickListener)
@@ -59,7 +60,7 @@ public class QQStoryVideoPlayerErrorView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,17 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.util.CustomLruCache;
-import com.tencent.mobileqq.util.ImageCache;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import java.util.ArrayList;
 
 public class akaf
-  extends CustomLruCache
+  implements DialogInterface.OnClickListener
 {
-  public akaf(ImageCache paramImageCache, int paramInt)
-  {
-    super(paramInt);
-  }
+  public akaf(SelectMemberActivity paramSelectMemberActivity, ArrayList paramArrayList) {}
   
-  protected int a(String paramString, Drawable paramDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 0;
-    int j = 0;
-    if ((paramDrawable instanceof BitmapDrawable))
-    {
-      paramString = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramString != null) {
-        j = paramString.getRowBytes() * paramString.getHeight();
-      }
-    }
-    int m;
-    int k;
-    do
-    {
-      do
-      {
-        return j;
-      } while (!(paramDrawable instanceof AnimationDrawable));
-      paramString = (AnimationDrawable)paramDrawable;
-      m = paramString.getNumberOfFrames();
-      k = 0;
-      j = i;
-    } while (k >= m);
-    paramDrawable = paramString.getFrame(k);
-    if ((paramDrawable instanceof BitmapDrawable))
-    {
-      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramDrawable != null)
-      {
-        j = paramDrawable.getRowBytes();
-        i = paramDrawable.getHeight() * j + i;
-      }
-    }
-    for (;;)
-    {
-      k += 1;
-      break;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(this.jdField_a_of_type_JavaUtilArrayList);
+    paramDialogInterface.dismiss();
   }
 }
 

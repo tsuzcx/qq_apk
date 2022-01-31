@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
+import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelViewNew;
 
-public class sta
-  implements Runnable
+class sta
+  implements yls
 {
-  public sta(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, String paramString, int paramInt) {}
+  sta(ssz paramssz) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.app, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 0, "", "", "", "");
+    if (paramBoolean)
+    {
+      ssy.a(this.a.a).c();
+      this.a.a.a(false);
+      this.a.a.a.c();
+      zaj.a("", "auth_discover", "fold", 0, 0, new String[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sta
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class ComicIPSite$Video
-  extends MessageMicro
+  extends MessageMicro<Video>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64, 72, 80, 90, 98, 106 }, new String[] { "id", "buttonDesc", "content", "cover", "desc", "name", "endTime", "isShow", "newStartTime", "newEndTime", "redirectUrl", "videoSource", "showDate" }, new Object[] { "", "", "", "", "", "", "", Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), "", "", "" }, Video.class);
   public final PBStringField buttonDesc = PBField.initString("");
@@ -27,7 +27,7 @@ public final class ComicIPSite$Video
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.emosm.ComicIPSite.Video
  * JD-Core Version:    0.7.0.1
  */

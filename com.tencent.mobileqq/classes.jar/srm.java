@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
 
-class srm
-  implements Runnable
+public class srm
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  srm(srl paramsrl, int paramInt1, int paramInt2, String paramString) {}
+  public srm(ViolaLazyFragment paramViolaLazyFragment) {}
   
-  public void run()
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    this.jdField_a_of_type_Srl.a.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    paramInt = this.a.getActivity().getWindow().getDecorView().getSystemUiVisibility();
+    this.a.getActivity().getWindow().getDecorView().setSystemUiVisibility(paramInt | 0x2 | 0x400);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     srm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,66 +1,21 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.biz.qqstory.utils.DateUtils;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
-import com.tencent.widget.SwipRightMenuBuilder.SwipItemBaseHolder;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 
-public class ont
-  extends SwipRightMenuBuilder.SwipItemBaseHolder
+class ont
+  extends oob
 {
-  public View a;
-  public TextView a;
-  public URLImageView a;
-  public TextView b;
-  public URLImageView b;
-  
-  public ont(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  ont(omz paramomz, BaseCommentData paramBaseCommentData)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131367037));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362754));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366704));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131371878));
+    super(paramomz, null);
   }
   
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt)
+  void a(ooe paramooe)
   {
-    TroopStoryMemoriesListAdapter.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter, paramTroopStoryItemInfo, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(DateUtils.c(paramTroopStoryItemInfo.publishTime));
-    Drawable localDrawable = this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130843797);
-    try
-    {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = localDrawable;
-      localURLDrawableOptions.mFailedDrawable = localDrawable;
-      localURLDrawableOptions.mMemoryCacheKeySuffix = "troop_story_message";
-      paramTroopStoryItemInfo = URLDrawable.getDrawable(paramTroopStoryItemInfo.videoThumbUrl, localURLDrawableOptions);
-      paramTroopStoryItemInfo.setTag(URLDrawableDecodeHandler.a(UIUtils.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 50.0F), UIUtils.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 70.0F), UIUtils.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 3.0F)));
-      paramTroopStoryItemInfo.setDecodeHandler(URLDrawableDecodeHandler.g);
-      this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(paramTroopStoryItemInfo);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new onu(this, paramInt));
-      return;
-    }
-    catch (Exception paramTroopStoryItemInfo)
-    {
-      for (;;)
-      {
-        this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
-      }
-    }
+    paramooe.onCommentReply(true, new omt(0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, omz.a(this.jdField_a_of_type_Omz)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ont
  * JD-Core Version:    0.7.0.1
  */

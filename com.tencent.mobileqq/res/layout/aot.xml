@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:textSize="@dimen/ayj" android:textColor="@color/skin_color_qq_screen_shot_gray_text" android:ellipsize="end" android:gravity="center|top" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jx" android:maxLines="2" android:lineSpacingExtra="@dimen/jy" android:lineSpacingMultiplier="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

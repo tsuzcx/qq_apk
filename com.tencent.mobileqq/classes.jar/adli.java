@@ -1,85 +1,44 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.open.agent.report.ReportCenter;
-import com.tencent.open.base.ShareProcessorUtil;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.util.HandlerPlus;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import cooperation.qzone.LocalMultiProcConfig;
 
 public class adli
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adli(ForwardSdkBaseOption paramForwardSdkBaseOption, String paramString) {}
+  public adli(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    long l = System.currentTimeMillis();
-    Object localObject = ShareProcessorUtil.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-    int i = ((Integer)localObject[0]).intValue();
-    boolean bool = ((Boolean)localObject[1]).booleanValue();
-    String str = (String)localObject[2];
-    l = System.currentTimeMillis() - l;
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardSdkBaseOption", 2, "changeRemoteUrl|ret=" + i + ",needRich=" + bool + ",url=" + str + ",cost=" + l);
+    LocalMultiProcConfig.putBooleanAsync(this.a.getString(2131719346) + this.a.a, paramBoolean);
+    if (AppSetting.c) {
+      NotifyPushSettingActivity.e(this.a).setContentDescription(alud.a(2131708053));
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("report_type", "102");
-    localBundle.putString("act_type", "19");
-    localBundle.putString("intext_1", "" + i);
-    if (bool)
+    QQAppInterface localQQAppInterface = this.a.app;
+    int i;
+    if (paramBoolean)
     {
-      localObject = "1";
-      localBundle.putString("intext_2", (String)localObject);
-      localBundle.putString("intext_3", "0");
-      localBundle.putString("intext_5", "" + l);
-      localBundle.putString("stringext_2", this.jdField_a_of_type_JavaLangString);
-      ReportCenter.a().a(localBundle, "" + this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), false);
-      if ((!bool) || (this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.l)) {
-        break label359;
+      i = 1;
+      if (!paramBoolean) {
+        break label109;
       }
-      QLog.d("ForwardSdkBaseOption", 1, "changeRemoteUrl|need rich since invalid url=" + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_AndroidOsBundle.putString("image_url_remote", "");
-      ForwardSdkBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption).sendEmptyMessage(0);
     }
-    for (;;)
+    label109:
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
     {
+      azqs.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_about_me", 0, i, paramCompoundButton, "", "", "");
       return;
-      localObject = "0";
+      i = 0;
       break;
-      label359:
-      if (i != -1) {}
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_AndroidOsBundle.putByte("struct_share_key_image_url_status", (byte)3);
-        if ((i != 0) || (TextUtils.isEmpty(str))) {
-          continue;
-        }
-        ShareProcessorUtil.a(false, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, str);
-        this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_AndroidOsBundle.putString("image_url_remote", str);
-        if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg == null) {
-          continue;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.updateCover(str);
-        ForwardSdkBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption).sendEmptyMessage(2);
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("ForwardOption.ForwardSdkBaseOption", 2, localException, new Object[0]);
-          }
-        }
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adli
  * JD-Core Version:    0.7.0.1
  */

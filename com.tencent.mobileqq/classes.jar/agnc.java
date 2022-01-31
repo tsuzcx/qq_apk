@@ -1,98 +1,124 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PrecoverResource;
-import com.tencent.mobileqq.precover.PrecoverManager;
-import com.tencent.mobileqq.precover.PrecoverReporter;
-import com.tencent.mobileqq.precover.PrecoverResDownloader;
-import com.tencent.mobileqq.precover.PrecoverUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
 public class agnc
-  implements Runnable
+  extends agmy
 {
-  public agnc(PrecoverManager paramPrecoverManager, String paramString) {}
+  public static String[] a;
+  public int a;
+  public Bitmap a;
+  public AnimationView.AnimationInfo a;
+  public HashMap<String, Bitmap> a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void run()
+  static
   {
-    boolean bool1 = true;
-    Object localObject4;
-    Object localObject3;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "icon_def", "icon_txt", "icon_voice", "icon_video", "icon_sp" };
+  }
+  
+  public agnc(String paramString)
+  {
+    super(paramString);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  public Bitmap a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    Object localObject;
+    if (paramRedPacketInfo == null)
+    {
+      localObject = null;
+      return localObject;
+    }
+    if ((paramRedPacketInfo.a instanceof MessageForQQWalletMsg))
+    {
+      paramRedPacketInfo = (MessageForQQWalletMsg)paramRedPacketInfo.a;
+      if (paramRedPacketInfo.messageType == 6) {
+        paramRedPacketInfo = "icon_txt";
+      }
+    }
     for (;;)
     {
-      synchronized (PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager))
+      label38:
+      if (paramRedPacketInfo != null) {}
+      for (paramRedPacketInfo = (Bitmap)this.jdField_a_of_type_JavaUtilHashMap.get(paramRedPacketInfo);; paramRedPacketInfo = null)
       {
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-        {
-          Object localObject1 = PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).keySet();
-          localObject4 = new ArrayList();
-          localObject1 = ((Set)localObject1).iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-          Object localObject5 = (String)((Iterator)localObject1).next();
-          if (QLog.isColorLevel()) {
-            QLog.d("PrecoverManager", 2, new Object[] { "startDownload, download business=", localObject5 });
-          }
-          localObject5 = (List)PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).get(localObject5);
-          if ((localObject5 == null) || (((List)localObject5).size() <= 0)) {
-            continue;
-          }
-          ((List)localObject4).addAll((Collection)localObject5);
+        localObject = paramRedPacketInfo;
+        if (paramRedPacketInfo != null) {
+          break;
         }
+        return (Bitmap)this.jdField_a_of_type_JavaUtilHashMap.get("icon_def");
+        if (paramRedPacketInfo.messageType == 14)
+        {
+          paramRedPacketInfo = "icon_video";
+          break label38;
+        }
+        if ((paramRedPacketInfo.messageType == 13) || (paramRedPacketInfo.messageType == 15))
+        {
+          paramRedPacketInfo = "icon_voice";
+          break label38;
+        }
+        if (paramRedPacketInfo.messageType == 18)
+        {
+          paramRedPacketInfo = "icon_ksong";
+          break label38;
+        }
+        if (paramRedPacketInfo.messageType == 19)
+        {
+          paramRedPacketInfo = "icon_emoji";
+          break label38;
+        }
+        if (paramRedPacketInfo.messageType == 22)
+        {
+          paramRedPacketInfo = "icon_draw";
+          break label38;
+        }
+        if ((paramRedPacketInfo.messageType != 7) && (paramRedPacketInfo.messageType != 8) && (paramRedPacketInfo.messageType != 11) && (paramRedPacketInfo.messageType != 12) && (paramRedPacketInfo.messageType != 23)) {
+          break label213;
+        }
+        paramRedPacketInfo = "icon_sp";
+        break label38;
       }
-      localObject3 = new HashSet();
-      ((Set)localObject3).add(this.jdField_a_of_type_JavaLangString);
+      label213:
+      paramRedPacketInfo = null;
     }
-    if ((this.jdField_a_of_type_JavaLangString == null) && (PrecoverUtils.a(PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).getApp(), "res_cover"))) {}
-    for (;;)
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
     {
-      if (bool1)
+      this.b = paramRedPacketInfo.background;
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.corner;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramRedPacketInfo.animInfo;
+      this.c = paramRedPacketInfo.title;
+      this.jdField_a_of_type_Int = paramRedPacketInfo.isHideTitle;
+      this.d = paramRedPacketInfo.resPath;
+      String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
       {
-        PrecoverUtils.a(PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).getApp(), "res_cover");
-        PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager, true);
-        PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager, new HashSet());
-        PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PrecoverManager", 2, new Object[] { "startDownload, needReport=", Boolean.valueOf(bool1), ", resToDownload.size=", Integer.valueOf(((List)localObject4).size()) });
-      }
-      localObject3 = ((List)localObject4).iterator();
-      while (((Iterator)localObject3).hasNext())
-      {
-        localObject4 = (PrecoverResource)((Iterator)localObject3).next();
-        if ((localObject4 != null) && (((PrecoverResource)localObject4).isValid()))
+        String str = arrayOfString[i];
+        if (paramRedPacketInfo.attribute.containsKey(str))
         {
-          if ((bool1) && (PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager) != null)) {
-            PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).add(localObject4);
-          }
-          boolean bool2 = PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).a((PrecoverResource)localObject4, null, true, false);
-          if ((bool1) && (PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager) != null) && (!bool2)) {
-            PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).remove(localObject4);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("PrecoverManager", 2, "startDownload, res=" + localObject4 + ", started=" + bool2);
-          }
+          Bitmap localBitmap = (Bitmap)paramRedPacketInfo.attribute.getParcelable(str);
+          this.jdField_a_of_type_JavaUtilHashMap.put(str, localBitmap);
         }
+        i += 1;
       }
-      if ((bool1) && (PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager) != null) && (PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).size() == 0))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PrecoverManager", 2, "startDownload, nothing need download, doing report");
-        }
-        PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager, false);
-        PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).b(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager);
-        PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).a();
-      }
-      return;
-      bool1 = false;
     }
+  }
+  
+  public boolean a()
+  {
+    return (this.b != null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo != null);
   }
 }
 

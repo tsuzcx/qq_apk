@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.XListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02088b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080ab3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0a0017" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" />
-</LinearLayout>
+<com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f080ab0" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:leftIconWidth="50.0dip" formItem:leftIconHeight="50.0dip" formItem:customHeight="60.0dip" formItem:leftIcon="@drawable/ic_launcher" formItem:showArrow="true"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqqi" />

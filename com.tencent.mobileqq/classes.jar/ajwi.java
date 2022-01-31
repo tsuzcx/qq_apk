@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
+import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
 
-class ajwi
-  extends TroopGiftCallback
+public class ajwi
+  implements azlj
 {
-  ajwi(ajvw paramajvw) {}
+  public ajwi(CameraFilterGLView paramCameraFilterGLView) {}
   
-  public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInteractGiftAnimationController", 2, "startInteract: errorCode = " + paramInt);
-    }
+    CameraFilterGLView.b(this.a);
   }
 }
 

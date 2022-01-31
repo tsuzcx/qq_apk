@@ -1,35 +1,20 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.observer.GameCenterObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class cxx
-  extends GameCenterObserver
+  implements DialogInterface.OnClickListener
 {
-  public cxx(Leba paramLeba) {}
+  public cxx(NotificationActivity paramNotificationActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!paramBoolean1) || (paramInt == 2)) {}
-    for (;;)
-    {
-      return;
-      if (Leba.c(this.a))
-      {
-        ArrayList localArrayList = new ArrayList();
-        List localList = LebaShowListManager.a().b();
-        LebaShowListManager.a().a(localArrayList, localList);
-        this.a.b(new cxy(this, localArrayList));
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.i("Q.lebatab.leba", 2, "onGameCenterMsgReceive, " + Leba.d(this.a));
-        return;
-        LebaShowListManager.c |= 0x2;
-      }
-    }
+    paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(this.a.a + "&sid=" + this.a.b.getSid()));
+    this.a.startActivity(paramDialogInterface);
+    this.a.c();
   }
 }
 

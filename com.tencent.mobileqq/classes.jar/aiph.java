@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.transfile.FileAssistantDownloader;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aiph
+class aiph
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b = false;
-  public boolean c = false;
-  public boolean d = false;
+  aiph(aipa paramaipa) {}
   
-  public aiph(FileAssistantDownloader paramFileAssistantDownloader)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
+    if (paramInt == 0)
+    {
+      this.a.b();
+      aipa.a(this.a).moveTaskToBack(true);
+    }
   }
 }
 

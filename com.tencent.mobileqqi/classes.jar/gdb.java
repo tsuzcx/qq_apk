@@ -1,19 +1,31 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import com.tencent.mobileqq.music.IQQPlayerCallback.Stub;
+import com.tencent.mobileqq.music.IQQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
 
 public class gdb
-  implements Runnable
+  extends IQQPlayerCallback.Stub
 {
-  public gdb(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk, String paramString) {}
+  public gdb(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk, this.jdField_a_of_type_JavaLangString, 1);
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk);
+    MusicGeneWebViewPlugin.a(this.a, paramInt);
+    if (paramInt == 2) {
+      MusicGeneWebViewPlugin.a(this.a, MusicGeneWebViewPlugin.a(this.a).c());
+    }
+  }
+  
+  public void a(SongInfo paramSongInfo)
+  {
+    if (MusicGeneWebViewPlugin.a(this.a) != null) {
+      MusicGeneWebViewPlugin.a(this.a, MusicGeneWebViewPlugin.a(this.a).a());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gdb
  * JD-Core Version:    0.7.0.1
  */

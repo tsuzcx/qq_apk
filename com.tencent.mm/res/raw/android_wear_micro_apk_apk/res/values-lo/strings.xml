@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">ເປີດນຳໃຊ້</string>
+    <string name="b">%1$s ຈະບໍ່ສາມາດໃຊ້ງານໄດ້ຈົນກວ່າທ່ານຈະເປີດໃຊ້ງານ​ການ​ບໍ​ລິ​ການ Google Play.</string>
+    <string name="c">ເປີດໃຊ້ການ​ບໍ​ລິ​ການ Google Play</string>
+    <string name="d">ຕິດຕັ້ງ</string>
+    <string name="e">%1$s ຈະບໍ່ສາມາດເປີດໃຊ້ໄດ້ຫາກບໍ່ມີການບໍລິການ Google Play ເຊິ່ງແທັບເລັດຂອງທ່ານບໍ່ມີ.</string>
+    <string name="f">ຕິດຕັ້ງບໍລິການ Google Play</string>
+    <string name="g">Google Play Services ​ເກີດ​ຄວາມ​ຜິດ​ພາດ</string>
+    <string name="h">%1$s ກຳລັງມີບັນຫາກັບບໍລິການ Google Play. ກະລຸນາລອງໃໝ່ອີກຄັ້ງ.</string>
+    <string name="i">%1$s ຈະບໍ່ສາມາດໃຊ້ໄດ້ຫາກບໍ່ມີບໍລິການ Google Play ເຊິ່ງອຸປະກອນຂອງທ່ານບໍ່ຮອງຮັບ.</string>
+    <string name="j">ອັບເດດ</string>
+    <string name="k">%1$s ຈະບໍ່ສາມາດເຮັດວຽກໄດ້ຈົນກວ່າທ່ານຈະອັບເດດການ​ບໍ​ລິ​ການ Google Play</string>
+    <string name="l">ອັບເດດການ​ບໍ​ລິ​ການ Google Play</string>
+    <string name="m">%1$s ຈະບໍ່ສາມາດໃຊ້ງານໄດ້ໂດຍທີ່ບໍ່ມີການ​ບໍ​ລິ​ການ Google Play, ເຊິ່ງ​ກຳ​ລັງ​ອັບ​ເດດ​ຢູ່​ໃນ​ປະ​ຈຸ​ບັນ.</string>
+    <string name="n">ຈຳ​ເປັນ​ຕ້ອງ​ມີ​ກາ​ນ​ບໍ​ລິ​ການ Google Play ເວີ​ຊັນ​ໃໝ່. ມັນ​ຈະ​ອັບ​ເດດ​ຕົວ​ເອງ​ໄວໆ​ນີ້.</string>
+    <string name="o">​ເປີດ​ໃນ​ໂທ​ລະ​ສັບ</string>
+    <string name="p">ລົງຊື່ເຂົ້າໃຊ້</string>
+    <string name="q">ລົງຊື່ເຂົ້າໃຊ້ດ້ວຍ Google</string>
+    <string name="r">999+</string>
+    <string name="s">WeChat</string>
+    <string name="u">Ali</string>
+    <string name="v">ປະຫວັດຄະແນນຂອງ ທ່ານ ລູໂອ</string>
+    <string name="w">ຈູບ</string>
+    <string name="x">Robot ຫົກ</string>
+    <string name="y">ກຳລັງດາວໂຫຼດສະຕິດເກີ້ນີ້...</string>
+    <string name="z">ສົ່ງຫົວໃຈເຕັ້ນ</string>
+    <string name="a0">ຂ້າພະເຈົ້າວັດຫົວໃຈເຕັ້ນກັບໂມງ: %d ເວລາ/ນາທີ.</string>
+    <string name="a1">ບໍ່​ສາ​ມາດໂຫຼດຮູບ​​ໄດ້</string>
+    <string name="a2">ບໍ່ສາມາດໂຫຼດທີ່ມາໄດ້. ຫຼັງຈາກປິດເປີດໃໝ່ WeChat ເທິງມືຖື. ແຕະເພື່ອລອງໃໝ່ອີກຄັ້ງ.</string>
+    <string name="a3">ຮັບປະກັນວ່າມືຖື ແລະ ໂມງໄດ້ເຊື່ອມຕໍ່ກັນແລ້ວ. ມືຖື WeChat ໄດ້ເຂົ້າສູ່ລະບົບແລ້ວ. ແຕະເພື່ອລອງໃໝ່ອີກຄັ້ງ.</string>
+    <string name="a4">ບໍ່ສາມາດເຂົ້າສູ່ລະບົບ. ຫຼັງຈາກປິດເປີດໃໝ່ WeChat ເທິງມືຖື. ແຕະເພື່ອລອງໃໝ່ອີກຄັ້ງ.</string>
+    <string name="a5">%s RMB</string>
+    <string name="a6">CNY</string>
+    <string name="a7">"ໂຊກດີກວ່າ
+ເທື່ອໜ້າ"</string>
+    <string name="a8">ຍອມຮັບ</string>
+    <string name="a9">ບໍ່ສົນໃຈ</string>
+    <string name="a_">ປິດ​ສຽງການ​ແຈ້ງ​ເຕືອນ</string>
+    <string name="aa">ເປີດໃນມືຖື</string>
+    <string name="ab">ຂໍ້ຄວາມ</string>
+    <string name="ac">ສົ່ງຄືນ​ໃໝ່</string>
+    <string name="ad">ຈ່າຍ</string>
+    <string name="ae">ບາງທີ</string>
+    <string name="af">ບໍ່ແມ່ນ</string>
+    <string name="ag">​ແມ່ນແລ້ວ</string>
+    <string name="ah">ສົ່ງ</string>
+    <string name="ai">ແກ​ເລີ​ຣີ​ສະ​ຕິກ​ເກີ</string>
+    <string name="aj">ຂໍ້ຄວາມ</string>
+    <string name="ak">ສຽງ</string>
+    <string name="al">ຕອບຄືນ</string>
+    <string name="am">ເວົ້າ</string>
+    <string name="an">%d</string>
+    <string name="ao">"ການຮັບຮອງຜິດພາດ
+ກົດເພື່ອເວົ້າອີກຄັ້ງ"</string>
+    <string name="ap">ກຳລັງປ່ຽນເປັນຮູບແບບຕົວໜັງສື</string>
+    <string name="aq">%d</string>
+    <string name="ar">ກໍາລັງສົ່ງ</string>
+    <string name="as">"ຂໍ້ຄວາມສັ້ນໂພດ
+ກົດເພື່ອເວົ້າອີກຄັ້ງ"</string>
+    <string name="au">ກຳ​ລັງໂຫຼດຮູບ</string>
+    <string name="av">ກໍາລັງໂຫຼດ...</string>
+    <string name="aw">ກຳລັງໂຫຼດທີ່ມາ</string>
+    <string name="ax">ກຳ​ລັງ​ເຂົ້າ​ສູ່ລະ​ບົບ</string>
+    <string name="ay">ເປີດແລ້ວໜ້າຊຳລະເງິນຢູ່ເທິງມືຖື</string>
+    <string name="az">ເຄື່ອງບໍ່ຕອບສະໜອງການຫຼີ້ນສຽງ.</string>
+    <string name="b0">ຍິນ​ດີ​ຕ້ອນ​ຮັບ​ສູ່ WeChat</string>
+</resources>

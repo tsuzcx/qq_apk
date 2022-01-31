@@ -448,12 +448,12 @@ public class LruCache<K, V>
     //   242: aload 5
     //   244: invokespecial 123	android/support/v4/util/LruCache:safeSizeOf	(Ljava/lang/Object;Ljava/lang/Object;)I
     //   247: iconst_1
-    //   248: if_icmpne +54 -> 302
+    //   248: if_icmpne +58 -> 306
     //   251: aload 5
-    //   253: ifnull +49 -> 302
+    //   253: ifnull +53 -> 306
     //   256: aload 5
     //   258: instanceof 203
-    //   261: ifeq +41 -> 302
+    //   261: ifeq +45 -> 306
     //   264: aload 5
     //   266: checkcast 203	android/graphics/drawable/BitmapDrawable
     //   269: invokevirtual 207	android/graphics/drawable/BitmapDrawable:getBitmap	()Landroid/graphics/Bitmap;
@@ -461,36 +461,40 @@ public class LruCache<K, V>
     //   274: aload 6
     //   276: ifnull -89 -> 187
     //   279: aload_0
-    //   280: aload_0
-    //   281: getfield 126	android/support/v4/util/LruCache:clearMemory	I
+    //   280: getfield 126	android/support/v4/util/LruCache:clearMemory	I
+    //   283: istore_2
     //   284: aload 6
     //   286: invokevirtual 198	android/graphics/Bitmap:getRowBytes	()I
-    //   289: aload 6
-    //   291: invokevirtual 201	android/graphics/Bitmap:getHeight	()I
-    //   294: imul
-    //   295: iadd
-    //   296: putfield 126	android/support/v4/util/LruCache:clearMemory	I
-    //   299: goto -112 -> 187
-    //   302: aload_0
-    //   303: aload_0
-    //   304: getfield 126	android/support/v4/util/LruCache:clearMemory	I
+    //   289: istore_3
+    //   290: aload_0
+    //   291: aload 6
+    //   293: invokevirtual 201	android/graphics/Bitmap:getHeight	()I
+    //   296: iload_3
+    //   297: imul
+    //   298: iload_2
+    //   299: iadd
+    //   300: putfield 126	android/support/v4/util/LruCache:clearMemory	I
+    //   303: goto -116 -> 187
+    //   306: aload_0
     //   307: aload_0
-    //   308: aload 4
-    //   310: aload 5
-    //   312: invokespecial 123	android/support/v4/util/LruCache:safeSizeOf	(Ljava/lang/Object;Ljava/lang/Object;)I
-    //   315: iadd
-    //   316: putfield 126	android/support/v4/util/LruCache:clearMemory	I
-    //   319: goto -132 -> 187
+    //   308: getfield 126	android/support/v4/util/LruCache:clearMemory	I
+    //   311: aload_0
+    //   312: aload 4
+    //   314: aload 5
+    //   316: invokespecial 123	android/support/v4/util/LruCache:safeSizeOf	(Ljava/lang/Object;Ljava/lang/Object;)I
+    //   319: iadd
+    //   320: putfield 126	android/support/v4/util/LruCache:clearMemory	I
+    //   323: goto -136 -> 187
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	322	0	this	LruCache
-    //   0	322	1	paramInt	int
-    //   161	23	2	i	int
-    //   170	12	3	j	int
+    //   0	326	0	this	LruCache
+    //   0	326	1	paramInt	int
+    //   161	139	2	i	int
+    //   170	128	3	j	int
     //   64	5	4	localObject1	Object
-    //   121	188	4	localObject2	Object
-    //   112	199	5	localObject3	Object
-    //   272	18	6	localBitmap	android.graphics.Bitmap
+    //   121	192	4	localObject2	Object
+    //   112	203	5	localObject3	Object
+    //   272	20	6	localBitmap	android.graphics.Bitmap
     // Exception table:
     //   from	to	target	type
     //   7	31	64	finally
@@ -503,8 +507,8 @@ public class LruCache<K, V>
     //   187	226	64	finally
     //   239	251	64	finally
     //   256	274	64	finally
-    //   279	299	64	finally
-    //   302	319	64	finally
+    //   279	303	64	finally
+    //   306	323	64	finally
   }
 }
 

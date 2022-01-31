@@ -1,28 +1,35 @@
-import com.tencent.mobileqq.hotpic.HotPicManager;
-import java.io.File;
-import java.util.Comparator;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class adqa
-  implements Comparator
+  implements axqs
 {
-  public adqa(HotPicManager paramHotPicManager) {}
+  public adqa(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(axqw paramaxqw) {}
+  
+  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult) {}
+  
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (paramFile1.lastModified() > paramFile2.lastModified()) {}
-    do
+    if (!paramBoolean)
     {
-      return -1;
-      if (paramFile1.lastModified() != paramFile2.lastModified()) {
-        break;
-      }
-      if (paramFile1.length() > paramFile2.length()) {
-        return 1;
-      }
-    } while (paramFile1.length() < paramFile2.length());
-    return 0;
-    return 1;
+      bdgm.a(this.a, 230, this.a.getString(2131698770), alud.a(2131710746), new adqb(this), null).show();
+      return;
+    }
+    QQIdentiferActivity.a(this.a).set(false);
+    QQIdentiferActivity.a(this.a).a();
   }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

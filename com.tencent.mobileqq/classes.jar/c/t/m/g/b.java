@@ -10,7 +10,8 @@ public final class b
   public String d = "";
   public String e = "";
   String f = "0M100WJ33N1CQ08O";
-  int g = -1;
+  private boolean g = false;
+  private int h = -1;
   
   public b(Context paramContext, String paramString1, String paramString2)
   {
@@ -29,14 +30,14 @@ public final class b
     localStringBuilder.append(",channelid:" + this.e);
     localStringBuilder.append(",isSDKMode:" + this.c);
     localStringBuilder.append(",isTest:false");
-    localStringBuilder.append(",testAppid:" + this.g);
+    localStringBuilder.append(",testAppid:" + this.h);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.b
  * JD-Core Version:    0.7.0.1
  */

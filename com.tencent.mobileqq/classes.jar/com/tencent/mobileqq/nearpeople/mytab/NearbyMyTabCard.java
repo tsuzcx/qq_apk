@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.nearpeople.mytab;
 
+import com.tencent.mobileqq.data.StrangerInfo;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ public class NearbyMyTabCard
   public int carrier;
   public int charmLevel;
   public int charmValue;
-  public List configList = new ArrayList();
+  public List<NearbyMyTabCard.NearbyMyTabConfig> configList = new ArrayList();
   public int currentCharm;
   public int gender;
   public int giftNum;
@@ -21,7 +22,7 @@ public class NearbyMyTabCard
   public int nextCharm;
   public String nickName = "";
   public Long uin;
-  public List visitors = new ArrayList();
+  public List<StrangerInfo> visitors = new ArrayList();
   
   public String toString()
   {
@@ -32,7 +33,7 @@ public class NearbyMyTabCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard
  * JD-Core Version:    0.7.0.1
  */

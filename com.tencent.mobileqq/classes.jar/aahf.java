@@ -1,41 +1,48 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
-import com.tencent.mobileqq.ar.arengine.ARFacePreviewResample;
-import com.tencent.mobileqq.ar.arengine.ARLocalControl;
-import com.tencent.mobileqq.ar.arengine.ARLocalFaceRecog;
+import android.content.Intent;
+import com.tencent.gamecenter.appointment.GameCenterCheck;
 import com.tencent.qphone.base.util.QLog;
 
-public class aahf
-  implements Runnable
+final class aahf
+  extends BroadcastReceiver
 {
-  public aahf(ARLocalControl paramARLocalControl, int paramInt1, int paramInt2, Context paramContext, ARScanStarFaceConfigInfo paramARScanStarFaceConfigInfo, long paramLong) {}
-  
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((ARLocalControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl) & 0x4) != 0L)
+    boolean bool = false;
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
     {
-      ??? = new ARFacePreviewResample();
-      ((ARFacePreviewResample)???).a(this.jdField_a_of_type_Int, this.b, 17);
-      int i = ((ARFacePreviewResample)???).a();
-      int j = ((ARFacePreviewResample)???).b();
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a = new ARLocalFaceRecog();
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a.a((ARFacePreviewResample)???);
-      if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a.a(this.jdField_a_of_type_AndroidContentContext, i, j, this.jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo, this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl)) {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a = null;
-      }
-    }
-    synchronized (ARLocalControl.a())
-    {
-      ARLocalControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl, true);
-      ARLocalControl.a().notifyAll();
-      QLog.i("AREngine_ARLocalControl", 1, String.format("initFaceRecogAsync end. time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) }));
+      do
+      {
+        return;
+        if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+        {
+          if (QLog.isColorLevel()) {
+            bfrz.c("GameCenterBroadcastReceiver", "mScreenOff = true");
+          }
+          GameCenterCheck.b();
+          return;
+        }
+        if (!"android.intent.action.BATTERY_CHANGED".equals(paramContext)) {
+          break;
+        }
+        aahe.a = paramIntent.getIntExtra("level", 0) * 100 / paramIntent.getIntExtra("scale", 100);
+      } while (!QLog.isColorLevel());
+      bfrz.c("GameCenterBroadcastReceiver", "battery cap= " + aahe.a);
       return;
+    } while ((!"android.intent.action.ACTION_POWER_CONNECTED".equals(paramContext)) && (!"android.intent.action.ACTION_POWER_DISCONNECTED".equals(paramContext)));
+    int i = paramIntent.getIntExtra("status", -1);
+    if ((i == 2) || (i == 5)) {
+      bool = true;
     }
+    aahe.b = bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aahf
  * JD-Core Version:    0.7.0.1
  */

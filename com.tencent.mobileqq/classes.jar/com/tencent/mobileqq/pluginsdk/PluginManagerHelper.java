@@ -5,41 +5,38 @@ import android.content.ServiceConnection;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class PluginManagerHelper
 {
-  private static PluginManagerClient a;
-  private static ArrayList b = new ArrayList();
-  private static RemotePluginManager.Stub c = new i();
-  private static ServiceConnection d = new j();
+  private static RemotePluginManager.Stub mStub = new PluginManagerHelper.1();
+  private static PluginManagerClient sClient;
+  private static List<WeakReference<PluginManagerHelper.OnPluginManagerLoadedListener>> sListener = Collections.synchronizedList(new ArrayList());
+  private static ServiceConnection sSc = new PluginManagerHelper.2();
+  
+  private static void clear()
+  {
+    sListener.clear();
+  }
   
   public static void destory(Context paramContext)
   {
-    PluginRemoteProcessor.get().cancel(d);
+    PluginRemoteProcessor.get().cancel(sSc);
   }
   
-  private static void e()
-  {
-    b.clear();
-  }
-  
-  public static void getPluginInterface(Context paramContext, OnPluginManagerLoadedListener paramOnPluginManagerLoadedListener)
+  public static void getPluginInterface(Context paramContext, PluginManagerHelper.OnPluginManagerLoadedListener paramOnPluginManagerLoadedListener)
   {
     if (QLog.isColorLevel()) {
       QLog.i("plugin_tag", 2, "PluginManagerHelper.getPluginInterface");
     }
-    if ((a == null) || (!a.useful()))
+    if ((sClient == null) || (!sClient.useful()))
     {
-      b.add(new WeakReference(paramOnPluginManagerLoadedListener));
-      PluginRemoteProcessor.get().process(paramContext, d, 1);
+      sListener.add(new WeakReference(paramOnPluginManagerLoadedListener));
+      PluginRemoteProcessor.get().process(paramContext, sSc, 1);
       return;
     }
-    paramOnPluginManagerLoadedListener.onPluginManagerLoaded(a);
-  }
-  
-  public static abstract interface OnPluginManagerLoadedListener
-  {
-    public abstract void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient);
+    paramOnPluginManagerLoadedListener.onPluginManagerLoaded(sClient);
   }
 }
 

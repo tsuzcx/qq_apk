@@ -1,15 +1,35 @@
-import com.tencent.widget.ActionSheet;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
-class aiwz
-  implements Runnable
+public class aiwz
+  implements TextWatcher
 {
-  aiwz(aiwy paramaiwy) {}
+  public aiwz(TransactionActivity paramTransactionActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.a.b(2131435874);
-    this.a.a.b();
+    if (TransactionActivity.b(this.a).getText().length() > 4) {
+      if (!TransactionActivity.b(this.a).isEnabled())
+      {
+        TransactionActivity.b(this.a).setEnabled(true);
+        TransactionActivity.b(this.a).setClickable(true);
+        this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.enable", "", "", TransactionActivity.b(this.a), "");
+      }
+    }
+    while (!TransactionActivity.b(this.a).isEnabled()) {
+      return;
+    }
+    TransactionActivity.b(this.a).setClickable(false);
+    TransactionActivity.b(this.a).setEnabled(false);
+    this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.disable", "", "", TransactionActivity.b(this.a), "");
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

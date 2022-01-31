@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class AudioTransInterfaceTranslate$IntTransFailedRsp
-  extends MessageMicro
+  extends MessageMicro<IntTransFailedRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "uint32_errcode", "str_errmsg" }, new Object[] { Integer.valueOf(0), "" }, IntTransFailedRsp.class);
   public final PBStringField str_errmsg = PBField.initString("");
@@ -15,7 +15,7 @@ public final class AudioTransInterfaceTranslate$IntTransFailedRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.audiotrans.AudioTransInterfaceTranslate.IntTransFailedRsp
  * JD-Core Version:    0.7.0.1
  */

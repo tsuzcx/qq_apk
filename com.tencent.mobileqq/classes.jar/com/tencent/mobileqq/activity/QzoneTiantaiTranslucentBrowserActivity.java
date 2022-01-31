@@ -1,187 +1,126 @@
 package com.tencent.mobileqq.activity;
 
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import cooperation.qzone.thread.BaseHandler;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.webviewplugin.QzonePersonalizeJsPlugin;
-import toa;
-import tob;
+import bkhg;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import mqq.app.AppRuntime;
 
 public class QzoneTiantaiTranslucentBrowserActivity
   extends QQTranslucentBrowserActivity
 {
-  private long jdField_a_of_type_Long;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new tob(this);
-  private Runnable jdField_a_of_type_JavaLangRunnable = new toa(this);
-  private volatile boolean jdField_a_of_type_Boolean;
-  private volatile boolean b;
-  private volatile boolean c;
+  private static volatile long jdField_a_of_type_Long;
+  private bkhg jdField_a_of_type_Bkhg;
   
-  private void a()
+  private bkhg a()
   {
-    View localView = findViewById(2131362369);
-    if (localView == null) {
-      return;
-    }
-    if (!this.jdField_a_of_type_Boolean)
+    Intent localIntent = getIntent();
+    if (localIntent != null)
     {
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 6000L)
+      switch (localIntent.getIntExtra("translucent_controller", 0))
       {
-        localView.setAlpha(0.0F);
-        this.b = false;
-        QZLog.i("QzoneTiantaiTranslucentBrowserActivity", "setAlpha(0)");
-        return;
+      default: 
+        return new bkhg(this);
       }
-      QZLog.i("QzoneTiantaiTranslucentBrowserActivity", "视频播放超时了，setAlpha(1)");
-      a(localView);
-      return;
+      return new bkhg(this);
     }
-    QZLog.i("QzoneTiantaiTranslucentBrowserActivity", "视频播放完了，setAlpha(1)");
-    a(localView);
+    return new bkhg(this);
   }
   
-  private void a(View paramView)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    if (!this.b)
+    long l = System.currentTimeMillis();
+    if (l - jdField_a_of_type_Long > 60000L)
     {
-      this.b = true;
-      QZLog.i("QzoneTiantaiTranslucentBrowserActivity", "setAlpha(1)");
-      if (paramView != null) {
-        paramView.setAlpha(1.0F);
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        paramView = b().a();
-        if (paramView != null)
-        {
-          Object localObject = paramView.getTag(2131361916);
-          if ((localObject == null) || (!((Boolean)localObject).booleanValue())) {
-            break label106;
-          }
-          i = 1;
-          paramView.setTag(2131361917, Boolean.TRUE);
-          if (i != 0)
-          {
-            QZLog.i("QzoneTiantaiTranslucentBrowserActivity", "tiantai jsReady true,notify webview.");
-            QzonePersonalizeJsPlugin.a(paramView);
-            return;
-          }
-          QZLog.i("QzoneTiantaiTranslucentBrowserActivity", "tiantai jsReady false,not notify webview.");
-          return;
-        }
-      }
-      catch (Exception paramView)
-      {
-        QZLog.e("QzoneTiantaiTranslucentBrowserActivity", "notify webview qzRoofStartAnimation fail.", paramView);
-      }
-      return;
-      label106:
-      int i = 0;
+      QLog.e("WebLog_QQBrowserActivity", 1, "  nowCallTime =" + l + "gLastLoadToolsProcessTime =" + jdField_a_of_type_Long);
+      jdField_a_of_type_Long = l;
+      b(paramQQAppInterface);
     }
   }
   
-  private void b()
+  public static void b(QQAppInterface paramQQAppInterface)
   {
-    if (this.c) {}
-    for (;;)
+    QLog.i("WebLog_QQBrowserActivity", 1, "preloadToolsProcessImpl running");
+    Object localObject = null;
+    if (paramQQAppInterface == null)
     {
+      paramQQAppInterface = localObject;
+      if (BaseApplicationImpl.getApplication() != null)
+      {
+        paramQQAppInterface = localObject;
+        if (BaseApplicationImpl.getApplication().getRuntime() == null) {}
+      }
+    }
+    for (paramQQAppInterface = (WebProcessManager)BaseApplicationImpl.getApplication().getRuntime().getManager(13);; paramQQAppInterface = (WebProcessManager)paramQQAppInterface.getManager(13))
+    {
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.a(1);
+      }
       return;
-      try
-      {
-        QZLog.i("QzoneTiantaiTranslucentBrowserActivity", "registerBroadcast");
-        IntentFilter localIntentFilter = new IntentFilter();
-        localIntentFilter.addAction("QZONE.ACTION_VIDEO_PLAY_FINISH");
-        boolean bool = this.c;
-        if (bool) {
-          continue;
-        }
-        try
-        {
-          registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
-          this.c = true;
-          return;
-        }
-        catch (Exception localException1)
-        {
-          QZLog.e("QzoneTiantaiTranslucentBrowserActivity", "regist receiver error:", localException1);
-          return;
-        }
-        return;
-      }
-      catch (Exception localException2)
-      {
-        QZLog.e("QzoneTiantaiTranslucentBrowserActivity", "registerBroadcast error", localException2);
-      }
     }
   }
   
-  private void c()
+  public void a(WebView paramWebView, String paramString)
   {
-    try
-    {
-      if (this.c)
-      {
-        QZLog.i("QzoneTiantaiTranslucentBrowserActivity", "removeBroadcast");
-        try
-        {
-          unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-          this.c = false;
-          return;
-        }
-        catch (Exception localException1)
-        {
-          for (;;)
-          {
-            QZLog.e("QzoneTiantaiTranslucentBrowserActivity", "unregisterReceiver error ", localException1);
-          }
-        }
-      }
-      return;
+    super.a(paramWebView, paramString);
+    if (this.jdField_a_of_type_Bkhg != null) {
+      this.jdField_a_of_type_Bkhg.e();
     }
-    catch (Exception localException2)
-    {
-      QZLog.e("QzoneTiantaiTranslucentBrowserActivity", "removeBroadcast error", localException2);
+  }
+  
+  public void doOnBackPressed()
+  {
+    if ((this.jdField_a_of_type_Bkhg != null) && (this.jdField_a_of_type_Bkhg.a())) {
+      super.doOnBackPressed();
     }
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    a();
+    if (this.jdField_a_of_type_Bkhg != null) {
+      this.jdField_a_of_type_Bkhg.a();
+    }
     return bool;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
-    c();
+    if (this.jdField_a_of_type_Bkhg != null) {
+      this.jdField_a_of_type_Bkhg.d();
+    }
   }
   
-  protected void doOnResume()
+  public void doOnPause()
+  {
+    super.doOnPause();
+    if (this.jdField_a_of_type_Bkhg != null) {
+      this.jdField_a_of_type_Bkhg.b();
+    }
+  }
+  
+  public void doOnResume()
   {
     super.doOnResume();
+    if (this.jdField_a_of_type_Bkhg != null) {
+      this.jdField_a_of_type_Bkhg.c();
+    }
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    b();
-    new BaseHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 6100L);
+    this.jdField_a_of_type_Bkhg = a();
     super.onCreate(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QzoneTiantaiTranslucentBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

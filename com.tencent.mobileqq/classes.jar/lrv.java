@@ -1,20 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule;
-import java.util.List;
+import android.graphics.Bitmap;
 
-public class lrv
-  implements Runnable
+public abstract interface lrv
 {
-  public lrv(SubscriptionInfoModule paramSubscriptionInfoModule, List paramList) {}
+  public abstract void a(Bitmap paramBitmap, lyh paramlyh);
   
-  public void run()
-  {
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_JavaUtilList);
-  }
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, lyh paramlyh);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lrv
  * JD-Core Version:    0.7.0.1
  */

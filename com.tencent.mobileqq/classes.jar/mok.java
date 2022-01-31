@@ -1,64 +1,57 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.av.ui.VoiceChangeToolbar;
 
 public class mok
-  extends OrientationEventListener
+  implements mjp
 {
-  public mok(FastWebVideoFeedsListView paramFastWebVideoFeedsListView, Context paramContext, int paramInt)
+  public mok(VoiceChangeToolbar paramVoiceChangeToolbar) {}
+  
+  public void a(long paramLong)
   {
-    super(paramContext, paramInt);
+    EffectSettingUi.a(this.a.mApp, paramLong);
   }
   
-  public void onOrientationChanged(int paramInt)
+  public void a(long paramLong, mkj parammkj)
   {
-    if (FastWebVideoFeedsListView.a(this.a)) {}
-    label10:
-    do
+    lek.d(VoiceChangeToolbar.TAG, "onEffectClick| voiceType=" + parammkj.jdField_a_of_type_JavaLangString);
+    lid locallid = this.a.mApp.a().a();
+    int i = Integer.parseInt(parammkj.jdField_a_of_type_JavaLangString);
+    if (i == 0) {
+      lvt.a().b(64);
+    }
+    while (i == 0)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                break label10;
-                break label10;
-                break label10;
-                break label10;
-                do
-                {
-                  return;
-                } while ((!FastWebVideoFeedsListView.b(this.a)) || (FastWebVideoFeedsListView.a(this.a) == 1) || (!FastWebVideoFeedsListView.a(this.a, paramInt)) || (!FastWebVideoFeedsListView.c(this.a)));
-                if ((paramInt < 0) || ((paramInt > 30) && (paramInt < 330))) {
-                  break;
-                }
-              } while ((FastWebVideoFeedsListView.b(this.a) != -1) && (FastWebVideoFeedsListView.b(this.a) != 0));
-              FastWebVideoFeedsListView.a(this.a, -1);
-            } while (FastWebVideoFeedsListView.c(this.a) == 0);
-            this.a.e();
-            return;
-            if ((paramInt < 70) || (paramInt > 110)) {
-              break;
-            }
-          } while ((FastWebVideoFeedsListView.b(this.a) != -1) && (FastWebVideoFeedsListView.b(this.a) != 2));
-          FastWebVideoFeedsListView.a(this.a, -1);
-        } while (FastWebVideoFeedsListView.c(this.a) == 2);
-        FastWebVideoFeedsListView.a(this.a, 2);
-        return;
-      } while ((paramInt < 250) || (paramInt > 290) || ((FastWebVideoFeedsListView.b(this.a) != -1) && (FastWebVideoFeedsListView.b(this.a) != 1)));
-      FastWebVideoFeedsListView.a(this.a, -1);
-    } while (FastWebVideoFeedsListView.c(this.a) == 1);
-    FastWebVideoFeedsListView.a(this.a, 1);
+      locallid.v = null;
+      locallid.T = i;
+      locallid.U = 0;
+      parammkj = this.a.getAVActivity();
+      if ((parammkj != null) && (parammkj.a != null)) {
+        parammkj.a.f(paramLong, 8);
+      }
+      this.a.mApp.a().A();
+      moi.a(locallid, i);
+      EffectSettingUi.a(this.a.mApp, paramLong);
+      if (locallid.d == 4) {
+        azqk.e(String.valueOf(i));
+      }
+      return;
+      lvt.a().a(64);
+    }
+    if ((parammkj.jdField_a_of_type_JavaLangObject instanceof moh)) {}
+    for (locallid.v = ((moh)parammkj.jdField_a_of_type_JavaLangObject).b;; locallid.v = parammkj.b)
+    {
+      mtq.a(parammkj.jdField_a_of_type_JavaLangString);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mok
  * JD-Core Version:    0.7.0.1
  */

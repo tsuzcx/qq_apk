@@ -1,42 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Locale;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
-public class yik
-  extends CardObserver
+class yik
+  extends RecyclerView.OnScrollListener
 {
-  public yik(SystemMsgListAdapter paramSystemMsgListAdapter) {}
+  yik(yij paramyij) {}
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if ((paramBoolean) && ((paramObject instanceof Card))) {}
-    try
-    {
-      paramObject = (Card)paramObject;
-      if ((!TextUtils.isEmpty(paramObject.strCampusName)) && (this.a.a != null) && (this.a.a.contains(paramObject.uin)))
-      {
-        SystemMsgListAdapter.a(this.a).runOnUiThread(new yil(this));
-        if (QLog.isDevelopLevel()) {
-          QLog.i("SystemMsgListAdapter", 4, String.format(Locale.getDefault(), "onGetCampusInfo [%s, %s]", new Object[] { Utils.b(paramObject.uin), Utils.b(paramObject.strCampusName) }));
-        }
-      }
-      return;
-    }
-    catch (Exception paramObject)
-    {
-      paramObject.printStackTrace();
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (paramInt2 > 0) {
+      this.a.h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yik
  * JD-Core Version:    0.7.0.1
  */

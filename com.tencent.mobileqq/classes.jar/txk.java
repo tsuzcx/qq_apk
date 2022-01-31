@@ -1,50 +1,27 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopGagActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr;
+import com.tencent.biz.qqcircle.events.QCircleDoublePraiseAnimationEvent;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import feedcloud.FeedCloudMeta.StFeed;
 
-public class txk
-  extends TroopObserver
+class txk
+  implements ucr
 {
-  public txk(TroopGagActivity paramTroopGagActivity) {}
+  txk(txj paramtxj) {}
   
-  protected void a(String paramString, boolean paramBoolean, List paramList, int paramInt, long paramLong)
+  public void a()
   {
-    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {
-      return;
-    }
-    if (paramBoolean)
+    if (txj.a(this.a) != null)
     {
-      this.a.jdField_a_of_type_Txm.notifyDataSetChanged();
-      if (this.a.jdField_a_of_type_Txm.getCount() != 0) {
-        break label209;
-      }
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.a.getSharedPreferences("last_update_time" + this.a.app.getCurrentAccountUin(), 0).edit().putLong("key_last_update_time" + this.a.jdField_a_of_type_JavaLangString, System.currentTimeMillis()).commit();
-      ThreadManager.post(new txl(this, (TroopGagMgr)this.a.app.getManager(47)), 8, null, false);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("TroopGagActivity", 2, "onUpdateTroopGetMemberList: isSuccess=" + paramBoolean);
-      return;
-      label209:
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      String str = txj.a(this.a).id.get();
+      int i = tzy.a().a();
+      yiw.a().a(new QCircleDoublePraiseAnimationEvent(str, i, txj.a(this.a)));
+      QLog.d("QCircleContentHorizontalAdapter", 1, "dispatchEvent id:" + str + " pageType:" + i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txk
  * JD-Core Version:    0.7.0.1
  */

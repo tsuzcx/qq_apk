@@ -9,11 +9,11 @@ import java.util.Map;
 public final class get_photo_comment_req
   extends JceStruct
 {
-  static Map cache_extent_info = new HashMap();
+  static Map<String, String> cache_extent_info = new HashMap();
   public String albumid = "";
   public String attach_info = "";
   public int commenttype;
-  public Map extent_info;
+  public Map<String, String> extent_info;
   public int order;
   public String photoid = "";
   public int refresh_type = 8;
@@ -36,7 +36,7 @@ public final class get_photo_comment_req
     this.topicid = paramString3;
   }
   
-  public get_photo_comment_req(long paramLong, String paramString1, String paramString2, int paramInt, String paramString3, Map paramMap)
+  public get_photo_comment_req(long paramLong, String paramString1, String paramString2, int paramInt, String paramString3, Map<String, String> paramMap)
   {
     this.uin = paramLong;
     this.albumid = paramString1;

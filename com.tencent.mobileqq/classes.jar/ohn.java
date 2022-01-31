@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.richmedia.mediacodec.encoder.Mp4ReEncoder.EncodeFilterRender;
+import org.jetbrains.annotations.NotNull;
 
-class ohn
-  implements Mp4ReEncoder.EncodeFilterRender
+public abstract interface ohn
 {
-  ohn(ohj paramohj) {}
-  
-  public void a() {}
+  public abstract void a(@NotNull Runnable paramRunnable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ohn
  * JD-Core Version:    0.7.0.1
  */

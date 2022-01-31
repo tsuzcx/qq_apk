@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
 
-class aaos
-  implements Runnable
+public final class aaos
+  implements Parcelable.Creator<GdtInterstitialParams>
 {
-  aaos(aaor paramaaor, String paramString1, String paramString2) {}
-  
-  public void run()
+  public GdtInterstitialParams a(Parcel paramParcel)
   {
-    ArkAppDeviceModule.a(this.jdField_a_of_type_Aaor.jdField_a_of_type_Aaoq.a, this.jdField_a_of_type_Aaor.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
+    return new GdtInterstitialParams(paramParcel);
+  }
+  
+  public GdtInterstitialParams[] a(int paramInt)
+  {
+    return new GdtInterstitialParams[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaos
  * JD-Core Version:    0.7.0.1
  */

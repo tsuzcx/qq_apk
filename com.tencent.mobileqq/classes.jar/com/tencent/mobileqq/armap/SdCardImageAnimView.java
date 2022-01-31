@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.armap;
 
-import abdd;
-import abde;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.HandlerThread;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import ansm;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -14,14 +13,14 @@ import mqq.os.MqqHandler;
 
 public class SdCardImageAnimView
   extends ImageView
-  implements FrameBmpCache.EndListener
+  implements ansm
 {
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  FrameBmpCache.EndListener jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener = null;
+  ansm jdField_a_of_type_Ansm = null;
   private FrameBmpCache jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new abdd(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new SdCardImageAnimView.1(this);
   public boolean a;
-  private Runnable jdField_b_of_type_JavaLangRunnable = new abde(this);
+  private Runnable jdField_b_of_type_JavaLangRunnable = new SdCardImageAnimView.2(this);
   private boolean jdField_b_of_type_Boolean;
   private boolean c;
   private boolean d;
@@ -90,11 +89,6 @@ public class SdCardImageAnimView
     this.jdField_a_of_type_AndroidGraphicsBitmap = null;
   }
   
-  public FrameBmpCache a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache;
-  }
-  
   public void a()
   {
     if (!this.jdField_b_of_type_Boolean)
@@ -115,8 +109,8 @@ public class SdCardImageAnimView
   
   public void a(SdCardImageAnimView paramSdCardImageAnimView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener.a(this);
+    if (this.jdField_a_of_type_Ansm != null) {
+      this.jdField_a_of_type_Ansm.a(this);
     }
   }
   
@@ -131,17 +125,17 @@ public class SdCardImageAnimView
     return true;
   }
   
-  public void setAnimationData(ArrayList paramArrayList)
+  public void setAnimationData(ArrayList<String> paramArrayList)
   {
     setAnimationData(paramArrayList, false);
   }
   
-  public void setAnimationData(ArrayList paramArrayList, boolean paramBoolean)
+  public void setAnimationData(ArrayList<String> paramArrayList, boolean paramBoolean)
   {
     setAnimationData(paramArrayList, paramBoolean, false);
   }
   
-  public void setAnimationData(ArrayList paramArrayList, boolean paramBoolean1, boolean paramBoolean2)
+  public void setAnimationData(ArrayList<String> paramArrayList, boolean paramBoolean1, boolean paramBoolean2)
   {
     if ((paramArrayList != null) && (paramArrayList.size() > 0)) {}
     for (this.jdField_b_of_type_Boolean = true;; this.jdField_b_of_type_Boolean = false)
@@ -158,9 +152,9 @@ public class SdCardImageAnimView
     ThreadManager.getSubThreadHandler().post(this.jdField_b_of_type_JavaLangRunnable);
   }
   
-  public void setEndListener(FrameBmpCache.EndListener paramEndListener)
+  public void setEndListener(ansm paramansm)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener = paramEndListener;
+    this.jdField_a_of_type_Ansm = paramansm;
   }
   
   public void setFPS(int paramInt)
@@ -182,7 +176,7 @@ public class SdCardImageAnimView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.armap.SdCardImageAnimView
  * JD-Core Version:    0.7.0.1
  */

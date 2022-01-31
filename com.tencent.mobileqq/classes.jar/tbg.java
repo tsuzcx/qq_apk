@@ -1,64 +1,90 @@
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.view.View;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
-import java.util.HashMap;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.weishi_new.WSBaseHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import java.util.List;
 
 public class tbg
-  implements Runnable
+  implements ViewPager.OnPageChangeListener
 {
-  public tbg(MainFragment paramMainFragment) {}
+  public tbg(WSHomeFragment paramWSHomeFragment) {}
   
-  public void run()
+  public void onPageScrollStateChanged(int paramInt)
   {
-    if (this.a.getActivity() == null) {
+    if (paramInt == 1) {
+      WSHomeFragment.b(this.a, true);
+    }
+    for (;;)
+    {
       return;
-    }
-    MainFragment.a(this.a, PreferenceManager.getDefaultSharedPreferences(MainFragment.a(this.a).getApp()));
-    if (MainFragment.a(this.a).getBoolean("theme_voice_setting_" + MainFragment.a(this.a).getCurrentAccountUin(), true))
-    {
-      Object localObject = ThemeUtil.getUserCurrentThemeId(MainFragment.a(this.a));
-      localObject = ThemeUtil.getThemeInfo(this.a.getActivity(), (String)localObject);
-      if ((localObject == null) || (!((ThemeUtil.ThemeInfo)localObject).status.equals("5")) || (!((ThemeUtil.ThemeInfo)localObject).isVoiceTheme)) {}
-    }
-    for (boolean bool = false;; bool = true)
-    {
-      if (MainFragment.a(this.a) != null)
+      if (paramInt == 0)
       {
-        if (MainFragment.a(this.a).get("消息") != null) {
-          ((View)MainFragment.a(this.a).get("消息")).setSoundEffectsEnabled(bool);
-        }
-        if (MainFragment.a(this.a).get("联系人") != null) {
-          ((View)MainFragment.a(this.a).get("联系人")).setSoundEffectsEnabled(bool);
-        }
-        if (MainFragment.a(this.a).get("动态") != null) {
-          ((View)MainFragment.a(this.a).get("动态")).setSoundEffectsEnabled(bool);
-        }
-        if (MainFragment.a(this.a).get("电话") != null) {
-          ((View)MainFragment.a(this.a).get("电话")).setSoundEffectsEnabled(bool);
-        }
-        if (MainFragment.a(this.a).get("NOW") != null) {
-          ((View)MainFragment.a(this.a).get("NOW")).setSoundEffectsEnabled(bool);
-        }
-        if (MainFragment.a(this.a).get("看点") != null) {
-          ((View)MainFragment.a(this.a).get("看点")).setSoundEffectsEnabled(bool);
+        paramInt = 0;
+        while (paramInt < WSHomeFragment.a(this.a).size())
+        {
+          Fragment localFragment = (Fragment)WSHomeFragment.a(this.a).get(paramInt);
+          if ((localFragment instanceof WSBaseHomeFragment)) {
+            ((WSBaseHomeFragment)localFragment).a(WSHomeFragment.a);
+          }
+          paramInt += 1;
         }
       }
-      if (MultiMsgManager.a().a()) {
-        break;
-      }
-      MultiMsgManager.a().a(MainFragment.a(this.a));
+    }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if ((!WSHomeFragment.a(this.a)) || (WSHomeFragment.a(this.a) == null) || (WSHomeFragment.b(this.a) == null)) {
       return;
     }
+    switch (paramInt1)
+    {
+    default: 
+      return;
+    case 0: 
+      WSHomeFragment.a(this.a).b(paramFloat, true);
+      WSHomeFragment.b(this.a).a(paramFloat, true);
+      return;
+    }
+    WSHomeFragment.a(this.a).a(paramFloat, true);
+    WSHomeFragment.b(this.a).b(paramFloat, true);
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    WSHomeFragment.a = paramInt;
+    WSHomeFragment.a(this.a, true);
+    if (WSHomeFragment.a == 0)
+    {
+      tlv.c("focus");
+      localWSPublicAccReport = WSPublicAccReport.getInstance();
+      if (WSHomeFragment.a(this.a) == null)
+      {
+        paramInt = 0;
+        localWSPublicAccReport.reportAttentionClick(paramInt);
+        WSHomeFragment.a(this.a, 0);
+        WSPublicAccReport.getInstance().reportPageVisitEnter("focus");
+        WSPublicAccReport.getInstance().reportPageVisitExit("feeds");
+      }
+    }
+    while (WSHomeFragment.a != 1) {
+      for (;;)
+      {
+        WSPublicAccReport localWSPublicAccReport;
+        return;
+        paramInt = WSHomeFragment.a(this.a).a();
+      }
+    }
+    tlv.c("feeds");
+    WSPublicAccReport.getInstance().reportRecommendClick();
+    WSPublicAccReport.getInstance().reportPageVisitEnter("feeds");
+    WSPublicAccReport.getInstance().reportPageVisitExit("focus");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tbg
  * JD-Core Version:    0.7.0.1
  */

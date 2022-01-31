@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.appbrand.widget.desktop.RecentAppBrandView android:id="@id/qw" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    <include android:layout_gravity="center_horizontal" android:id="@id/qx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" layout="@layout/eo" />
+</RelativeLayout>

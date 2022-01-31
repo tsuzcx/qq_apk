@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/abw"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:textSize="@dimen/i9" android:id="@id/txt" android:layout_width="fill_parent" android:layout_height="@dimen/i1" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip" style="@style/e0" />
+    <com.tencent.mobileqq.widget.ProgressButton android:textColor="@color/xx" android:id="@id/g1s" android:background="@drawable/a97" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip" android:minHeight="44.0dip" />
+</LinearLayout>

@@ -1,49 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
 
 public class aekc
-  implements INetInfoHandler
 {
-  long a = 0L;
+  public int a;
+  public awge a;
+  public String a;
   
-  private void a(int paramInt)
+  public aekc(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, int paramInt, awge paramawge)
   {
-    if (System.currentTimeMillis() - this.a < 500L) {
-      return;
-    }
-    this.a = System.currentTimeMillis();
-    QQPlayerService.d(BaseApplicationImpl.getContext());
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Awge = paramawge;
   }
   
-  public void onNetMobile2None()
+  public void a(String paramString)
   {
-    a(4);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    a(3);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    a(1);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    a(2);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    a(6);
-  }
-  
-  public void onNetWifi2None()
-  {
-    a(5);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

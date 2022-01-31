@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.jsbridge.JsBridge.JsHandler;
-import com.tencent.mobileqq.statistics.ReportController;
+import aekz;
+import amqd;
+import amqe;
+import atgv;
+import azqs;
 import com.tencent.qphone.base.util.QLog;
 
 public class UpgradeTipsDialog$JsCover
-  extends JsBridge.JsHandler
+  extends atgv
 {
   protected UpgradeTipsDialog$JsCover(UpgradeTipsDialog paramUpgradeTipsDialog) {}
   
@@ -17,7 +18,7 @@ public class UpgradeTipsDialog$JsCover
       QLog.d("UpgradeController", 2, "loadTipsComplete");
     }
     UpgradeTipsDialog.a(this.a, true);
-    ReportController.b(UpgradeTipsDialog.a(this.a), "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, UpgradeConstants.b(), String.valueOf(1), UpgradeController.a(), "");
+    azqs.b(UpgradeTipsDialog.a(this.a), "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, amqd.b(), String.valueOf(1), amqe.a(), "");
     if (UpgradeTipsDialog.a(this.a) != null)
     {
       UpgradeTipsDialog.a(this.a).a(this.a);
@@ -34,7 +35,7 @@ public class UpgradeTipsDialog$JsCover
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UpgradeTipsDialog.JsCover
  * JD-Core Version:    0.7.0.1
  */

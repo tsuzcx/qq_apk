@@ -1,28 +1,12 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
 public class dif
-  extends BroadcastReceiver
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public dif(QQMapActivity paramQQMapActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ((paramIntent.getAction().equals("android.intent.action.SCREEN_OFF")) && (!this.a.m) && (!this.a.jdField_n_of_type_Boolean) && (GesturePWDUtils.getGesturePWDState(this.a, this.a.jdField_n_of_type_JavaLangString) == 2) && (GesturePWDUtils.getGesturePWDMode(this.a, this.a.jdField_n_of_type_JavaLangString) == 21))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("qqbaseactivity", 2, "qqmapactivity.start lock. receive lock.");
-      }
-      paramContext = new Intent(this.a, GesturePWDUnlockActivity.class);
-      QQMapActivity.b(this.a, paramContext);
-      this.a.jdField_n_of_type_Boolean = true;
-    }
-  }
+  public TextView a;
+  public TextView b;
+  public TextView c;
 }
 
 

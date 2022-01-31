@@ -1,15 +1,11 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
+import android.media.MediaPlayer;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
-public class ajvt
-  implements FrameSprite.OnFrameEndListener
+public abstract interface ajvt
 {
-  public ajvt(TroopGiftToPersonalSurfaceView paramTroopGiftToPersonalSurfaceView, FrameSprite.OnFrameEndListener paramOnFrameEndListener) {}
+  public abstract void a(MediaPlayer paramMediaPlayer);
   
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToPersonalSurfaceView.a(0, new ajvu(this));
-  }
+  public abstract void a(FixedSizeVideoView paramFixedSizeVideoView, int paramInt1, int paramInt2);
 }
 
 

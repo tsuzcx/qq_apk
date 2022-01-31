@@ -1,19 +1,26 @@
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.service.message.MessagePBElemDecoder;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class ahxl
-  implements Runnable
+class ahxl
+  implements QQPermissionCallback
 {
-  public ahxl(MessagePBElemDecoder paramMessagePBElemDecoder) {}
+  ahxl(ahww paramahww) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    PublicAccountManager.a().a(MessagePBElemDecoder.a(this.a));
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion denied sd grant");
+    bdgm.a(ahww.a(this.a), new ahxm(this));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion user grant");
+    ahww.a(this.a, ahww.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxl
  * JD-Core Version:    0.7.0.1
  */

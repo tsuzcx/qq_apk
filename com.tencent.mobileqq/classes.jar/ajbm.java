@@ -1,32 +1,49 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView.GridViewAdapter;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class ajbm
-  implements View.OnKeyListener
 {
-  public ajbm(NewTroopContactView paramNewTroopContactView) {}
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public static int a(String paramString, int paramInt1, int paramInt2)
   {
-    if (paramInt == 67)
+    SharedPreferences localSharedPreferences = a(paramInt2);
+    paramInt2 = paramInt1;
+    if (localSharedPreferences != null)
     {
-      if (paramKeyEvent.getAction() != 0) {
-        break label35;
+      paramInt2 = paramInt1;
+      if (!TextUtils.isEmpty(paramString)) {
+        paramInt2 = localSharedPreferences.getInt("url_down_scene" + paramString, paramInt1);
       }
-      this.a.jdField_a_of_type_Boolean = TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText());
     }
-    for (;;)
+    return paramInt2;
+  }
+  
+  private static SharedPreferences a(int paramInt)
+  {
+    if (BaseApplicationImpl.getApplication() != null)
     {
-      return false;
-      label35:
-      if ((paramKeyEvent.getAction() == 1) && (this.a.jdField_a_of_type_Boolean)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView$GridViewAdapter.a();
+      if (paramInt == 1) {
+        return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_down_record_utilinner", 4);
       }
+      return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_down_record_util", 4);
+    }
+    return null;
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = a(paramInt);
+    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
+      localSharedPreferences.edit().remove("url_down_scene" + paramString).apply();
+    }
+  }
+  
+  public static void a(String paramString, int paramInt1, int paramInt2)
+  {
+    SharedPreferences localSharedPreferences = a(paramInt2);
+    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
+      localSharedPreferences.edit().putInt("url_down_scene" + paramString, paramInt1).apply();
     }
   }
 }

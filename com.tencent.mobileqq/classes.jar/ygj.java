@@ -1,29 +1,24 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-import com.tencent.mobileqq.richstatus.IIconListener;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.subscribe.comment.CommentPresenter.5.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class ygj
-  implements IIconListener
+  implements View.OnLayoutChangeListener
 {
-  private ygj(SpecailCareListActivity paramSpecailCareListActivity) {}
+  ygj(ygg paramygg) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if ((paramBitmap != null) && (paramInt2 == 200))
-    {
-      if (this.b.d != 0) {
-        this.b.b = true;
-      }
+    QLog.d(ygg.a(), 2, "OnLayoutChangeListener scrollToReplyView start mScrollToTargetReply" + ygg.c(this.a));
+    if ((ygg.a(this.a) != null) && (ygg.c(this.a))) {
+      ygg.a(this.a, new CommentPresenter.5.1(this));
     }
-    else {
-      return;
-    }
-    this.b.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ygj
  * JD-Core Version:    0.7.0.1
  */

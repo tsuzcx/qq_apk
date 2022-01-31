@@ -1,24 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.widget.AntiphingToast;
+import com.tencent.open.agent.OpenSdkFriendService;
+import com.tencent.open.agent.OpenSdkFriendService.GetFriendListCallback;
+import java.util.ArrayList;
 
 public class hjk
-  extends Handler
+  implements Runnable
 {
-  public hjk(AntiphingToast paramAntiphingToast) {}
+  public hjk(OpenSdkFriendService.GetFriendListCallback paramGetFriendListCallback, ArrayList paramArrayList, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage.what == 1) {
-      this.a.a(0.0F, 0 - AntiphingToast.a(this.a).getHeight(), true);
+    if ("action_invite".equals(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$GetFriendListCallback.a.i))
+    {
+      this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$GetFriendListCallback.a.a(this.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$GetFriendListCallback.a.a(this.jdField_a_of_type_JavaLangString);
     }
-    super.handleMessage(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hjk
  * JD-Core Version:    0.7.0.1
  */

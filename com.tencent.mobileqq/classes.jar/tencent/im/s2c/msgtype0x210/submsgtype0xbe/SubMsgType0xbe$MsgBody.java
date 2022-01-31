@@ -8,10 +8,10 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0xbe$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42 }, new String[] { "uint64_uin", "uint64_group_code", "uint32_notify_type", "uint32_online_level", "rpt_msg_medal_list" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), null }, MsgBody.class);
-  public final PBRepeatMessageField rpt_msg_medal_list = PBField.initRepeatMessage(SubMsgType0xbe.Medal.class);
+  public final PBRepeatMessageField<SubMsgType0xbe.Medal> rpt_msg_medal_list = PBField.initRepeatMessage(SubMsgType0xbe.Medal.class);
   public final PBUInt32Field uint32_notify_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_online_level = PBField.initUInt32(0);
   public final PBUInt64Field uint64_group_code = PBField.initUInt64(0L);

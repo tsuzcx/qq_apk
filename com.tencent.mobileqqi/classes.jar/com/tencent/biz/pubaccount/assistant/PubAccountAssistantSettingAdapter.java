@@ -9,10 +9,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bra;
-import brb;
-import brc;
-import brd;
+import bkw;
+import bkx;
+import bky;
+import bkz;
 import com.tencent.biz.pubaccount.PublicAccountServlet;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.PublicAccountInfo;
@@ -50,20 +50,20 @@ public class PubAccountAssistantSettingAdapter
     }
     if (paramInt2 <= 1)
     {
-      paramView.setBackgroundResource(2130837875);
+      paramView.setBackgroundResource(2130837877);
       return;
     }
     if (paramInt1 == 0)
     {
-      paramView.setBackgroundResource(2130837880);
+      paramView.setBackgroundResource(2130837882);
       return;
     }
     if (paramInt1 == paramInt2 - 1)
     {
-      paramView.setBackgroundResource(2130837877);
+      paramView.setBackgroundResource(2130837879);
       return;
     }
-    paramView.setBackgroundResource(2130837879);
+    paramView.setBackgroundResource(2130837881);
   }
   
   private void a(PublicAccountInfo paramPublicAccountInfo, int paramInt1, int paramInt2)
@@ -82,7 +82,7 @@ public class PubAccountAssistantSettingAdapter
     {
       localPBUInt32Field.set(paramInt1);
       localNewIntent.putExtra("data", localSetFunctionFlagRequset.toByteArray());
-      localNewIntent.setObserver(new brc(this, paramPublicAccountInfo));
+      localNewIntent.setObserver(new bky(this, paramPublicAccountInfo));
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
       return;
     }
@@ -117,11 +117,11 @@ public class PubAccountAssistantSettingAdapter
     String str;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903425, null);
-      paramViewGroup = new brd();
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903427, null);
+      paramViewGroup = new bkz();
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131230940));
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131230941));
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)paramView.findViewById(2131232566));
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)paramView.findViewById(2131232569));
       paramView.setTag(paramViewGroup);
       PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
       localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localPublicAccountInfo.getUin(), true);
@@ -137,7 +137,7 @@ public class PubAccountAssistantSettingAdapter
       }
       bool = true;
       ((Switch)localObject).setChecked(bool);
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new brb(this, localPublicAccountInfo, paramView));
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new bkx(this, localPublicAccountInfo, paramView));
       localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131560566);
       str = localPublicAccountInfo.name;
       if (localPublicAccountInfo.mShowMsgFlag != 1) {
@@ -152,14 +152,14 @@ public class PubAccountAssistantSettingAdapter
       paramView.setContentDescription(String.format((String)localObject, new Object[] { str, paramViewGroup }));
       a(paramView, paramInt, getCount());
       return paramView;
-      paramViewGroup = (brd)paramView.getTag();
+      paramViewGroup = (bkz)paramView.getTag();
       break;
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(ImageUtil.a());
       if (this.jdField_a_of_type_Boolean) {
         break label111;
       }
       this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new bra(this), 1000L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new bkw(this), 1000L);
       break label111;
       bool = false;
       break label149;

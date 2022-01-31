@@ -1,39 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.SplashActivity;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.qphone.base.util.QLog;
 
 public class dpj
-  implements DialogInterface.OnClickListener
+  extends FriendListObserver
 {
-  public dpj(SplashActivity paramSplashActivity, CheckBox paramCheckBox) {}
+  public dpj(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    paramDialogInterface = "";
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b.d()) {
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b.a();
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!Utils.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.p))) {
+      return;
     }
-    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity).edit();
-    localEditor.putBoolean("notToastPushMsg" + paramDialogInterface, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
-    localEditor.putBoolean(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563428) + paramDialogInterface, false);
-    localEditor.putBoolean(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563429) + paramDialogInterface, false);
-    localEditor.putBoolean("discussion_msg_notify" + paramDialogInterface, false);
-    localEditor.putBoolean(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563431) + paramDialogInterface, false);
-    localEditor.commit();
-    paramDialogInterface = new Intent("tencent.notify.activity.setting");
-    this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.sendBroadcast(paramDialogInterface, "com.tencent.msg.permission.pushnotify");
-    this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.finish();
+    this.a.jdField_b_of_type_Boolean = false;
+    Object localObject = (FriendManager)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8);
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((FriendManager)localObject).c(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.p))
+    {
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.q = ((String)localObject);
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("Q.troopinfo", 2, "onUpdateFriendInfo|uin = " + paramString + ", tmpNickName = " + (String)localObject);
+      return;
+    }
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (Utils.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c))) {
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dpj
  * JD-Core Version:    0.7.0.1
  */

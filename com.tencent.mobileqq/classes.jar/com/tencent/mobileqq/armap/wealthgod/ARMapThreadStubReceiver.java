@@ -32,9 +32,6 @@ public class ARMapThreadStubReceiver
         QLog.d("ARMapThreadStubReceiver", 2, String.format("onReceive action=%s preStart=%s", new Object[] { str, Boolean.valueOf(bool) }));
       }
       paramIntent = paramIntent.getStringExtra("from");
-      if (!"qr".equals(paramIntent)) {
-        SplashBitmapUtils.a();
-      }
       if ("com.tencent.mobileqq.armap.ACTION_START_THREAD".equals(str)) {
         a(paramContext, bool, paramIntent);
       }
@@ -43,7 +40,7 @@ public class ARMapThreadStubReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.armap.wealthgod.ARMapThreadStubReceiver
  * JD-Core Version:    0.7.0.1
  */

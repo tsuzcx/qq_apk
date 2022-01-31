@@ -1,17 +1,55 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.leba.header.LebaGridMenuAdapter.LebaGridItemViewHolder;
-import com.tencent.mobileqq.leba.model.pluginactions.PluginAction;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aeay
-  implements Runnable
+public class aeay
+  extends bead
 {
-  aeay(aeax paramaeax, Bitmap paramBitmap) {}
-  
-  public void run()
+  public aeay(TextPreviewActivity paramTextPreviewActivity, String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Aeax.jdField_a_of_type_ComTencentMobileqqLebaModelPluginactionsPluginAction != null) {
-      this.jdField_a_of_type_Aeax.jdField_a_of_type_ComTencentMobileqqLebaModelPluginactionsPluginAction.a(this.jdField_a_of_type_Aeax.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridMenuAdapter$LebaGridItemViewHolder.a, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    super(paramString1, paramString2);
+  }
+  
+  public void onCancel(beae parambeae)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onCancel| task:" + parambeae);
     }
+    super.onCancel(parambeae);
+  }
+  
+  public void onDone(beae parambeae)
+  {
+    super.onDone(parambeae);
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onDone| task:" + parambeae);
+    }
+    if (parambeae.b()) {}
+    do
+    {
+      return;
+      if (parambeae.a() == -1)
+      {
+        parambeae = new Message();
+        parambeae.what = 17;
+        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(parambeae);
+        return;
+      }
+      parambeae = this.a.jdField_a_of_type_Fx.a(this.a.e);
+    } while (parambeae == null);
+    Message localMessage = new Message();
+    localMessage.what = 18;
+    localMessage.obj = parambeae;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public boolean onStart(beae parambeae)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onStart| task:" + parambeae);
+    }
+    return super.onStart(parambeae);
   }
 }
 

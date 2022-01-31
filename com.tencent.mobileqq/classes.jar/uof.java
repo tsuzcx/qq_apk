@@ -1,19 +1,33 @@
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
-import com.tencent.mobileqq.bubble.BubbleInfo.CommonAttrs;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class uof
-  implements Runnable
+  extends SimpleJob<Void>
 {
-  uof(uoe paramuoe) {}
-  
-  public void run()
+  uof(uoe paramuoe, String paramString)
   {
-    this.a.a.a(false, this.a.a.a.b);
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    boolean bool = xrg.a(500L);
+    if (this.a.a(bool)) {
+      uoe.a(this.a, bool);
+    }
+    return null;
+  }
+  
+  public int getJobType()
+  {
+    return 4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uof
  * JD-Core Version:    0.7.0.1
  */

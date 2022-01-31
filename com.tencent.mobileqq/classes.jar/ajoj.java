@@ -1,14 +1,15 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
-public final class ajoj
-  implements Runnable
+public class ajoj
+  implements DialogInterface.OnClickListener
 {
-  public ajoj(Context paramContext, int paramInt1, String paramString, int paramInt2) {}
+  public ajoj(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 0).b(this.b);
+    this.a.finish();
   }
 }
 

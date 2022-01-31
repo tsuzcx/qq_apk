@@ -1,33 +1,37 @@
-import android.os.Bundle;
-import com.tencent.biz.viewplugin.ViewPluginLoader;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONObject;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
 
 public class pah
-  implements Runnable
+  extends RecyclerView.ItemDecoration
 {
-  public pah(ViewPluginLoader paramViewPluginLoader, JSONObject paramJSONObject, String paramString, DownloadListener paramDownloadListener) {}
+  private int jdField_a_of_type_Int;
   
-  public void run()
+  public pah(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, int paramInt)
   {
-    String str = this.jdField_a_of_type_OrgJsonJSONObject.optString("url");
-    Object localObject = new File(this.jdField_a_of_type_JavaLangString);
-    Bundle localBundle = new Bundle();
-    localObject = new DownloadTask(str, (File)localObject);
-    ((DownloadTask)localObject).b = 3;
-    this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a().a((DownloadTask)localObject, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, localBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("ViewPluginLoader", 2, "start Download url = " + str);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    if (((StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams()).getSpanIndex() % 2 == 0)
+    {
+      paramRect.left = (this.jdField_a_of_type_Int * 2);
+      paramRect.right = this.jdField_a_of_type_Int;
+      return;
     }
+    paramRect.left = (this.jdField_a_of_type_Int / 2);
+    paramRect.right = this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pah
  * JD-Core Version:    0.7.0.1
  */

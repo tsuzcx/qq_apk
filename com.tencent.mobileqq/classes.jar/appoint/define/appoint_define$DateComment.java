@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class appoint_define$DateComment
-  extends MessageMicro
+  extends MessageMicro<DateComment>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 50, 56, 66 }, new String[] { "str_comment_id", "msg_appoint_id", "msg_publisher_info", "uint32_time", "msg_reply_info", "uint32_flag", "msg_content" }, new Object[] { "", null, null, Integer.valueOf(0), null, Integer.valueOf(0), null }, DateComment.class);
   public appoint_define.AppointID msg_appoint_id = new appoint_define.AppointID();
@@ -20,7 +20,7 @@ public final class appoint_define$DateComment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     appoint.define.appoint_define.DateComment
  * JD-Core Version:    0.7.0.1
  */

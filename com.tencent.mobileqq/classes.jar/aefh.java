@@ -1,15 +1,26 @@
-import com.tencent.mobileqq.data.TroopAssistantData;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.persistence.EntityManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aefh
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aefh(TroopAssistantManager paramTroopAssistantManager, EntityManager paramEntityManager, TroopAssistantData paramTroopAssistantData) {}
+  public aefh(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData);
+    this.a.c = false;
+    this.a.t = "";
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.a.d != 22) {
+      this.a.b.setVisibility(0);
+    }
+    if (this.a.jdField_a_of_type_Aegv != null) {
+      this.a.jdField_a_of_type_Aegv.a();
+    }
   }
 }
 

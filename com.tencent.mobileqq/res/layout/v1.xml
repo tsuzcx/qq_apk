@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center" android:id="@id/krk" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView android:layout_gravity="center" android:id="@id/kq_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <com.tencent.biz.qqstory.view.widget.QQStoryLoadingView android:textSize="14.0dip" android:textColor="#ffa6a6a6" android:id="@id/efs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pno" android:drawablePadding="15.0dip" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@id/c2a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="16.0dip" android:textColor="#ff777777" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/plq" android:drawableTop="@drawable/fd2" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/j3c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/bqy" android:background="@drawable/br3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentLeft="true" />
+        <ImageView android:id="@id/br_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/duf" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

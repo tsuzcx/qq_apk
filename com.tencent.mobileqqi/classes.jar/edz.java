@@ -1,27 +1,24 @@
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.contact.newfriend.CircleGroupListView;
 
-class edz
-  implements DialogInterface.OnClickListener
+public class edz
+  implements DialogInterface.OnDismissListener
 {
-  edz(edx paramedx) {}
+  public edz(CircleGroupListView paramCircleGroupListView, int paramInt, TranslateAnimation paramTranslateAnimation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((this.a.b != null) && (this.a.b.length() > 0))
-    {
-      paramDialogInterface = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.a.b));
-      GrayTipsItemBuilder.h(this.a.a).startActivity(paramDialogInterface);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendCircleGroupListView.b.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendCircleGroupListView.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendCircleGroupListView.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     edz
  * JD-Core Version:    0.7.0.1
  */

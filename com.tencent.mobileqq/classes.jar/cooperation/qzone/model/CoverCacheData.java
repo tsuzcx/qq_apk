@@ -4,29 +4,30 @@ import NS_MOBILE_COVER_DATE.CoverPackageInfo;
 import NS_MOBILE_COVER_DATE.GameCoverInfo;
 import NS_MOBILE_COVER_DATE.feeds_cover;
 import NS_MOBILE_MAIN_PAGE.mobile_sub_get_cover_rsp;
-import amuj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bjkq;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class CoverCacheData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amuj();
+  public static final Parcelable.Creator<CoverCacheData> CREATOR = new bjkq();
   public int a;
   public long a;
   public CoverCacheData.GameCoverInfo a;
   public CoverCacheData.PackageInfo a;
   public String a;
-  public ArrayList a;
-  public HashMap a;
+  public ArrayList<Map<Integer, String>> a;
+  public HashMap<String, String> a;
   public int b;
   public String b;
-  public HashMap b;
+  public HashMap<String, String> b;
   public String c;
-  public HashMap c;
+  public HashMap<String, String> c;
   
   public CoverCacheData()
   {
@@ -151,7 +152,7 @@ public class CoverCacheData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.CoverCacheData
  * JD-Core Version:    0.7.0.1
  */

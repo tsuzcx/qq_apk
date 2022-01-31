@@ -20,16 +20,9 @@ public class OnlineDeviceResult
       while (i < paramJSONArray.length())
       {
         JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-        f localf = new f(this);
-        localf.a = localJSONObject.getString("dguid");
-        localf.b = localJSONObject.getString("dname");
-        localf.c = localJSONObject.getString("dtype");
-        localf.d = localJSONObject.getString("ddes");
-        localf.e = localJSONObject.getInt("dappid");
-        localf.f = localJSONObject.getInt("dsubappid");
-        localf.g = localJSONObject.getString("dappname");
-        localf.h = localJSONObject.getInt("dflag");
-        this.mDevicesList.add(localf);
+        g localg = new g(this);
+        localg.a(localJSONObject);
+        this.mDevicesList.add(localg);
         i += 1;
       }
     }

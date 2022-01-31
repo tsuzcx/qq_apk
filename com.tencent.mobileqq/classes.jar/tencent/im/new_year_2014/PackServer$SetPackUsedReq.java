@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class PackServer$SetPackUsedReq
-  extends MessageMicro
+  extends MessageMicro<SetPackUsedReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField external = PBField.initBool(false);
@@ -22,7 +22,7 @@ public final class PackServer$SetPackUsedReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.new_year_2014.PackServer.SetPackUsedReq
  * JD-Core Version:    0.7.0.1
  */

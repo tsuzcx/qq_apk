@@ -1,33 +1,27 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import java.util.List;
 
-public final class akgs
-  implements Runnable
+class akgs
+  implements View.OnClickListener
 {
-  public akgs(Context paramContext, String paramString) {}
+  akgs(akgr paramakgr, akgq paramakgq, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)))
+    if (this.jdField_a_of_type_Akgq.a.isChecked()) {}
+    for (((ammf)this.jdField_a_of_type_Akgr.a.get(this.jdField_a_of_type_Int)).a = false;; ((ammf)this.jdField_a_of_type_Akgr.a.get(this.jdField_a_of_type_Int)).a = true)
     {
-      FragmentActivity localFragmentActivity = (FragmentActivity)this.jdField_a_of_type_AndroidContentContext;
-      if ((localFragmentActivity.getChatFragment() != null) && (localFragmentActivity.getChatFragment().a() != null))
-      {
-        localFragmentActivity.getChatFragment().a().R();
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, this.jdField_a_of_type_JavaLangString, 0).a();
-        }
-      }
+      this.jdField_a_of_type_Akgr.notifyItemChanged(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Akgr.a();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akgs
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class hummer_commelem$StoryAioObjMsg
-  extends MessageMicro
+  extends MessageMicro<StoryAioObjMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "str_ui_url", "str_jmp_url" }, new Object[] { "", "" }, StoryAioObjMsg.class);
   public final PBStringField str_jmp_url = PBField.initString("");

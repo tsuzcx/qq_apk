@@ -1,64 +1,46 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IThumbController;
-import com.tencent.mobileqq.filemanager.fileviewer.data.DefaultImageInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.ImageFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnThumbEventListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.FormSwitchSimpleItem;
+import com.tencent.widget.Switch;
 
 public class adcv
-  implements IThumbController
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adcv(DefaultFileModel paramDefaultFileModel) {}
+  public adcv(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void a(FileBrowserModelBase.ImageFileInfo paramImageFileInfo)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    IFileViewerAdapter localIFileViewerAdapter = ((DefaultImageInfo)paramImageFileInfo).a();
-    if (localIFileViewerAdapter != null)
-    {
-      if (1 != localIFileViewerAdapter.c()) {
-        break label147;
-      }
-      if (!localIFileViewerAdapter.a().isZipInnerFile) {
-        break label91;
-      }
-      paramImageFileInfo = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localIFileViewerAdapter.a());
-      if ((paramImageFileInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener.a(String.valueOf(localIFileViewerAdapter.a()), paramImageFileInfo);
-      }
+    boolean bool1 = this.a.a.a().isChecked();
+    boolean bool2 = ThemeUtil.isNowThemeIsNight(this.a.app, false, null);
+    int j = azmk.c();
+    int i;
+    if ((bool1) && (bool2)) {
+      i = azmk.b;
     }
-    label91:
-    while (2 != localIFileViewerAdapter.c())
+    while (paramBoolean)
     {
-      do
+      String str = azmf.b[i];
+      if (!banm.a(this.a, str, new adcw(this, paramCompoundButton, bool1, i))) {
+        GeneralSettingActivity.a(this.a, paramCompoundButton, true, bool1, i);
+      }
+      return;
+      i = j;
+      if (bool1)
       {
-        return;
-        paramImageFileInfo = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localIFileViewerAdapter.a(), 7);
-      } while ((paramImageFileInfo == null) || (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener == null));
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener.a(localIFileViewerAdapter.c(), paramImageFileInfo);
-      return;
-    }
-    label147:
-    FileManagerEngine localFileManagerEngine = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    String str = localIFileViewerAdapter.e();
-    if (localIFileViewerAdapter.a() == null) {}
-    for (paramImageFileInfo = null;; paramImageFileInfo = localIFileViewerAdapter.a().e)
-    {
-      paramImageFileInfo = localFileManagerEngine.a(str, paramImageFileInfo, 7, localIFileViewerAdapter);
-      if ((paramImageFileInfo == null) || (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener == null)) {
-        break;
+        i = j;
+        if (ThemeUtil.isNowThemeIsNight(this.a.app, false, azmf.b[j])) {
+          i = azmk.d();
+        }
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener.a(localIFileViewerAdapter.e(), paramImageFileInfo);
-      return;
     }
+    GeneralSettingActivity.a(this.a, paramCompoundButton, false, bool1, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adcv
  * JD-Core Version:    0.7.0.1
  */

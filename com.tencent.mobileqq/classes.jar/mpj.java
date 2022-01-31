@@ -1,53 +1,65 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager;
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager.UUIDToUrlCallback;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper.MediaPlayListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoInfo;
+import android.content.Intent;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallConfig;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallHandler;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-class mpj
-  implements ThirdVideoManager.UUIDToUrlCallback
+public class mpj
 {
-  mpj(mpi parammpi, VideoPlayerWrapper paramVideoPlayerWrapper, long paramLong, ThirdVideoManager paramThirdVideoManager) {}
-  
-  public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, String paramString3)
+  public static int a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "UUIDToUrlCallback Callback vid:" + paramString2 + " url:" + paramString1);
-    }
-    paramString3 = FastWebVideoFeedsPlayManager.a(this.jdField_a_of_type_Mpi.a);
-    if ((paramString3 != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper != null) && (paramString2.equals(paramString3.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoInfo.a))) {
-      if (TextUtils.isEmpty(paramString1)) {
-        if (FastWebVideoFeedsPlayManager.a(this.jdField_a_of_type_Mpi.a) != null) {
-          FastWebVideoFeedsPlayManager.a(this.jdField_a_of_type_Mpi.a).a(null, 123, 107, 0, "UUIDToUrlCallback vid2url ERROR ", null);
-        }
+    int i = 0;
+    if (paramBoolean2) {
+      if (!paramBoolean1) {
+        break label67;
       }
     }
-    while (!QLog.isColorLevel()) {
-      for (;;)
-      {
-        return;
-        if (paramInt == 1) {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.a(paramString2, paramString1, 1, this.jdField_a_of_type_Long, 0L, 0, paramBoolean);
-        }
-        while (paramString3.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData != null)
-        {
-          paramString3.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager.a.longValue();
-          paramString3.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.d = paramBoolean;
-          return;
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.a(paramString2, paramString1, 2, this.jdField_a_of_type_Long, 0L, 0, paramBoolean);
-        }
+    label67:
+    for (i = becr.a(paramAppRuntime, paramString, 6, paramBoolean1, null); i != 0; i = becr.a(paramAppRuntime, paramAppRuntime.getAccount(), 6, paramBoolean1, paramString))
+    {
+      if (AudioHelper.e()) {
+        QLog.w("QAVConfig_382", 1, "getFunVideoId, 已经有默认配置, fcId[" + i + "]");
       }
+      return i;
     }
-    QLog.d("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "vid2url换回来后，当前视频已经不再播放，vid:" + paramString2 + " url:" + paramString1);
+    paramString = BusinessCommonConfig.getInstance(paramAppRuntime);
+    if (paramString != null)
+    {
+      paramAppRuntime = (QAVFunCallHandler)paramString.getConfigHandler(382);
+      paramAppRuntime = paramAppRuntime.getConfigDirect();
+      if (paramAppRuntime == null) {
+        break label174;
+      }
+      i = paramAppRuntime.getActivityFCId();
+    }
+    label174:
+    for (;;)
+    {
+      if (AudioHelper.e()) {
+        QLog.w("QAVConfig_382", 1, "getFunVideoId, fcId[" + i + "]");
+      }
+      return i;
+      paramAppRuntime = new QAVFunCallHandler(paramAppRuntime.getAccount());
+      break;
+    }
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    Intent localIntent = new Intent();
+    localIntent.setAction("tencent.video.v2q.AnnimateDownloadStart");
+    localIntent.setPackage(paramVideoAppInterface.getApp().getPackageName());
+    localIntent.putExtra("callId", paramInt);
+    paramVideoAppInterface.getApp().sendBroadcast(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mpj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,133 +1,118 @@
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.RectF;
-import android.graphics.Typeface;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.richmedia.subtitles.ItemBase;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.style.ImageSpan;
+import java.lang.ref.WeakReference;
 
-class xvr
+public class xvr
+  extends ImageSpan
 {
-  public float a;
-  public int a;
-  public Bitmap a;
-  public xvq a;
-  private xvs a;
-  public boolean a;
+  private WeakReference<Drawable> a;
   
-  public xvr(String paramString, xvs paramxvs, Typeface paramTypeface)
+  public xvr(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Xvs = paramxvs;
-    this.jdField_a_of_type_Xvq = new xvq(paramString, this.jdField_a_of_type_Xvs.c, this.jdField_a_of_type_Xvs.b, this.jdField_a_of_type_Xvs.e, this.jdField_a_of_type_Xvs.f, 0.0F, (this.jdField_a_of_type_Xvs.jdField_a_of_type_Float - this.jdField_a_of_type_Xvs.b) / 2.0F, paramTypeface);
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      b(paramString);
-      return;
-    }
+    this(paramDrawable, 4);
   }
   
-  private boolean a(String paramString1, String paramString2)
+  public xvr(Drawable paramDrawable, int paramInt)
   {
-    if ((paramString1 == null) && (paramString2 == null)) {}
-    do
-    {
-      return true;
-      if ((paramString1 == null) || (paramString2 == null)) {
-        return false;
-      }
-    } while (paramString1.equals(paramString2));
-    return false;
+    super(paramDrawable, paramInt);
   }
   
-  private void b(String paramString)
+  private Drawable a()
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      if (this.jdField_a_of_type_Int != -1)
-      {
-        GlUtil.a(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Int = -1;
-      }
-      return;
+    Object localObject = this.a;
+    Drawable localDrawable = null;
+    if (localObject != null) {
+      localDrawable = (Drawable)((WeakReference)localObject).get();
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    }
-    if (this.jdField_a_of_type_Int != -1)
+    localObject = localDrawable;
+    if (localDrawable == null)
     {
-      GlUtil.a(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = -1;
+      localObject = getDrawable();
+      this.a = new WeakReference(localObject);
     }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = ItemBase.a(this.jdField_a_of_type_Xvq.c, this.jdField_a_of_type_Xvs.jdField_a_of_type_Float);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    return localObject;
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  {
+    paramCharSequence = getDrawable();
+    paramPaint = paramCharSequence.getBounds();
+    float f;
+    switch (this.mVerticalAlignment)
     {
-      paramString = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_Xvq.jdField_a_of_type_Float = 0.0F;
-      this.jdField_a_of_type_Xvq.a(paramString);
+    case 2: 
+    default: 
+      f = paramInt5 - paramPaint.height();
     }
     for (;;)
     {
-      this.jdField_a_of_type_Int = -1;
+      paramCanvas.save();
+      paramCanvas.translate(paramFloat, f);
+      paramCharSequence.draw(paramCanvas);
+      paramCanvas.restore();
       return;
-      QLog.d("BeanItemWrapper", 2, "createcache error:" + this.jdField_a_of_type_Xvq.c + "-" + this.jdField_a_of_type_Xvs.jdField_a_of_type_Float);
+      f = paramInt4 - paramPaint.height();
+      continue;
+      f = (paramInt5 - paramInt3 - paramPaint.height()) / 2 + paramInt3;
+      continue;
+      f = paramInt3;
     }
   }
   
-  public void a(Canvas paramCanvas, float paramFloat1, float paramFloat2)
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    paramCharSequence = a().getBounds();
+    float f1;
+    float f2;
+    float f3;
+    float f4;
+    if (paramFontMetricsInt != null)
     {
-      this.jdField_a_of_type_Xvq.jdField_a_of_type_Float = paramFloat1;
-      paramFloat1 = this.jdField_a_of_type_Xvq.b;
-      xvq localxvq = this.jdField_a_of_type_Xvq;
-      localxvq.b += paramFloat2;
-      this.jdField_a_of_type_Xvq.a(paramCanvas);
-      this.jdField_a_of_type_Xvq.b = paramFloat1;
-      return;
-    }
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramFloat1, paramFloat2, null);
-  }
-  
-  public void a(RenderBuffer paramRenderBuffer, RectF paramRectF, float paramFloat1, float paramFloat2)
-  {
-    if ((paramRenderBuffer == null) || (!this.jdField_a_of_type_Boolean)) {}
-    do
-    {
-      return;
-      if ((this.jdField_a_of_type_Int < 0) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
-        this.jdField_a_of_type_Int = GlUtil.a(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
-      }
-    } while (this.jdField_a_of_type_Int < 0);
-    ItemBase.a(paramRenderBuffer, this.jdField_a_of_type_Int, this.jdField_a_of_type_Xvq.c, this.jdField_a_of_type_Xvs.jdField_a_of_type_Float, paramRectF, paramFloat1, paramFloat2);
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      if (!a(paramString, this.jdField_a_of_type_Xvq.jdField_a_of_type_JavaLangString))
+      paramPaint = paramPaint.getFontMetrics();
+      f1 = paramPaint.top - paramPaint.ascent;
+      f2 = paramPaint.bottom - paramPaint.descent;
+      f3 = paramPaint.descent;
+      f4 = paramPaint.ascent;
+      paramInt1 = paramCharSequence.height();
+      switch (this.mVerticalAlignment)
       {
-        this.jdField_a_of_type_Xvq.a(paramString);
-        b(paramString);
+      case 2: 
+      default: 
+        f2 = paramPaint.descent - paramInt1;
+        paramFontMetricsInt.ascent = ((int)f2);
+        paramFontMetricsInt.top = ((int)(f2 + f1));
       }
-      return;
+    }
+    for (;;)
+    {
+      return paramCharSequence.right;
+      f4 = paramPaint.descent - (f3 - f4) / 2.0F;
+      f3 = f4 - paramInt1 / 2;
+      f4 += paramInt1 / 2;
+      paramFontMetricsInt.ascent = ((int)f3);
+      paramFontMetricsInt.top = ((int)(f1 + f3));
+      paramFontMetricsInt.descent = ((int)f4);
+      paramFontMetricsInt.bottom = ((int)(f4 + f2));
+      continue;
+      f2 = -paramInt1;
+      paramFontMetricsInt.ascent = (-paramInt1);
+      paramFontMetricsInt.top = ((int)(f2 + f1));
+      continue;
+      f1 = paramInt1;
+      f1 = paramPaint.ascent + f1;
+      paramFontMetricsInt.descent = ((int)f1);
+      paramFontMetricsInt.bottom = ((int)(f1 + f2));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xvr
  * JD-Core Version:    0.7.0.1
  */

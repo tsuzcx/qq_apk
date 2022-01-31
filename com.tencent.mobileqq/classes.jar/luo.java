@@ -1,25 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeSmallSocial;
+import java.util.Comparator;
 
-public class luo
-  implements View.OnTouchListener
+class luo
+  implements Comparator<luj>
 {
-  public luo(FeedItemCellTypeSmallSocial paramFeedItemCellTypeSmallSocial, RelativeLayout paramRelativeLayout) {}
+  luo(lum paramlum) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(luj paramluj1, luj paramluj2)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
+    if (paramluj1.d() >= paramluj2.d()) {
+      return 1;
     }
-    return false;
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     luo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,28 @@
-import com.tencent.mobileqq.leba.LebaWithFeeds;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 
 public class aeae
-  implements Runnable
+  implements View.OnFocusChangeListener
 {
-  public aeae(LebaWithFeeds paramLebaWithFeeds, boolean paramBoolean) {}
+  public aeae(SubLoginActivity paramSubLoginActivity) {}
   
-  public void run()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    LebaWithFeeds.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaWithFeeds, this.jdField_a_of_type_Boolean);
+    if (true == paramBoolean)
+    {
+      if ((SubLoginActivity.a(this.a) != null) && (SubLoginActivity.a(this.a).getText().length() > 0)) {
+        SubLoginActivity.a(this.a).setVisibility(0);
+      }
+      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
+    }
+    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
+      return;
+    }
+    SubLoginActivity.a(this.a).setVisibility(8);
   }
 }
 

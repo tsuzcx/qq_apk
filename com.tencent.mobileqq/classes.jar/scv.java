@@ -1,19 +1,13 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.util.FaceDrawable;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.util.List;
 
-class scv
-  implements Runnable
+public abstract interface scv
 {
-  scv(scu paramscu, ImageView paramImageView, FaceDrawable paramFaceDrawable) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDrawable);
-  }
+  public abstract void a(boolean paramBoolean, List<BaseData> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     scv
  * JD-Core Version:    0.7.0.1
  */

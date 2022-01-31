@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 class agif
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  agif(aghx paramaghx, String paramString, boolean paramBoolean, int paramInt) {}
+  agif(aghx paramaghx) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ScanTorchActivity.a(this.jdField_a_of_type_Aghx.a, false, 0);
-    ScanTorchActivity.a(this.jdField_a_of_type_Aghx.a, this.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (aghx.a(this.a) != null)) {
+      this.a.q();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agif
  * JD-Core Version:    0.7.0.1
  */

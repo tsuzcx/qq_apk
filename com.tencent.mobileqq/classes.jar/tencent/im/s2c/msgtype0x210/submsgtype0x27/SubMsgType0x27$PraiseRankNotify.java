@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SubMsgType0x27$PraiseRankNotify
-  extends MessageMicro
+  extends MessageMicro<PraiseRankNotify>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 88, 96, 106 }, new String[] { "uint32_is_champion", "uint32_rank_num", "str_msg" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "" }, PraiseRankNotify.class);
   public final PBStringField str_msg = PBField.initString("");

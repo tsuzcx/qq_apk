@@ -1,26 +1,24 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityForPtt;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.ResultReceiver;
+import com.tencent.av.utils.PopupDialogQQSide;
 
 public class mvd
-  implements ClickableColorSpanTextView.SpanClickListener
+  implements DialogInterface.OnClickListener
 {
-  public mvd(PublicAccountH5AbilityForPtt paramPublicAccountH5AbilityForPtt) {}
+  public mvd(PopupDialogQQSide paramPopupDialogQQSide, ResultReceiver paramResultReceiver) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.a.startActivity(paramClickableColorSpanTextView);
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null) {
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, this.jdField_a_of_type_ComTencentAvUtilsPopupDialogQQSide.getArguments());
+    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mvd
  * JD-Core Version:    0.7.0.1
  */

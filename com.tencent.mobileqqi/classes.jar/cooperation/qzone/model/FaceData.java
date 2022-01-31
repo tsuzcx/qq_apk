@@ -5,7 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import ihe;
+import ick;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.json.JSONArray;
@@ -15,7 +15,7 @@ import org.json.JSONObject;
 public class FaceData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ihe();
+  public static final Parcelable.Creator CREATOR = new ick();
   private static final int b = 1;
   public int a;
   public long a;

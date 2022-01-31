@@ -1,108 +1,43 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ContactCard;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.forward.ForwardShareCardOption;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import mqq.app.MobileQQ;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class spc
-  implements ActionSheet.OnButtonClickListener
+  implements qfo
 {
-  public spc(FriendProfileCardActivity paramFriendProfileCardActivity, PhoneContactManagerImp paramPhoneContactManagerImp, boolean paramBoolean, ActionSheet paramActionSheet) {}
+  public spc(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    boolean bool = true;
-    switch (paramInt)
-    {
-    }
+    JSONObject localJSONObject = new JSONObject();
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
-      return;
-      Object localObject;
-      if (NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getApplication().getApplicationContext()))
+      try
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.k;
-        paramView = (View)localObject;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataContactCard.nickName;
+        localJSONObject.put("wording", paramString);
+        if (!paramBoolean) {
+          continue;
         }
-        localObject = ForwardShareCardOption.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, paramView, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataContactCard.bindQQ);
-        paramView = new Bundle();
-        paramView.putString("uin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataContactCard.mobileNo);
-        paramView.putInt("uintype", 1006);
-        paramView.putInt("forward_type", 20);
-        paramView.putInt("structmsg_service_id", ((AbsShareMsg)localObject).mMsgServiceID);
-        paramView.putByteArray("stuctmsg_bytes", ((AbsShareMsg)localObject).getBytes());
-        paramView.putBoolean("k_dataline", false);
-        paramView.putInt("pa_type", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int);
-        localObject = new Intent();
-        ((Intent)localObject).putExtras(paramView);
-        ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, (Intent)localObject, 21);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 53) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8007016", "0X8007016", 0, 0, "", "", "", "");
-        } else {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8007168", "0X8007168", 0, 0, "", "", "", "");
-        }
+        i = 1;
+        localJSONObject.put("shouldShow", i);
+        localJSONObject.put("status", paramInt);
       }
-      else
+      catch (JSONException paramString)
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, 1, "当前网络不可用", 1000).a();
+        int i;
+        QLog.e(BridgeModule.TAG, 1, "requestBubbleTipsWording error: " + paramString.toString());
         continue;
-        if (NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getApplication().getApplicationContext()))
-        {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp;
-          localObject = FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-          label403:
-          QQAppInterface localQQAppInterface;
-          if (!this.jdField_a_of_type_Boolean)
-          {
-            paramView.a((String)localObject, bool);
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.F();
-            localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app;
-            if (!this.jdField_a_of_type_Boolean) {
-              break label479;
-            }
-            paramView = "0X800603E";
-            label436:
-            if (!this.jdField_a_of_type_Boolean) {
-              break label485;
-            }
-          }
-          label479:
-          label485:
-          for (localObject = "0X800603E";; localObject = "0X800603D")
-          {
-            ReportController.b(localQQAppInterface, "CliOper", "", "", paramView, (String)localObject, 0, 0, "", "", "", "");
-            break;
-            bool = false;
-            break label403;
-            paramView = "0X800603D";
-            break label436;
-          }
-        }
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, 1, "当前网络不可用", 1000).a();
       }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+      return;
+      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     spc
  * JD-Core Version:    0.7.0.1
  */

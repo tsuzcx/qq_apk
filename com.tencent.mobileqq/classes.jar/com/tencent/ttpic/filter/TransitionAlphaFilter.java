@@ -1,9 +1,9 @@
 package com.tencent.ttpic.filter;
 
+import com.tencent.aekit.openrender.UniformParam.FloatParam;
+import com.tencent.aekit.openrender.UniformParam.TextureParam;
+import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.filter.BaseFilter;
-import com.tencent.filter.Param.FloatParam;
-import com.tencent.filter.Param.TextureParam;
-import com.tencent.ttpic.util.VideoFilterUtil;
 
 public class TransitionAlphaFilter
   extends BaseFilter
@@ -26,46 +26,40 @@ public class TransitionAlphaFilter
     switch (this.easeCurve)
     {
     default: 
-      return (paramDouble2 - paramDouble1) * paramDouble3 + paramDouble1;
+      return paramDouble3 * (paramDouble2 - paramDouble1) + paramDouble1;
     case 1: 
-      return -(paramDouble2 - paramDouble1) * Math.cos(1.570796326794897D * paramDouble3) + paramDouble2;
+      paramDouble1 = -(paramDouble2 - paramDouble1);
+      return Math.cos(paramDouble3 * 1.570796326794897D) * paramDouble1 + paramDouble2;
     case 2: 
-      return (paramDouble2 - paramDouble1) * Math.sin(1.570796326794897D * paramDouble3) + paramDouble1;
+      return Math.sin(paramDouble3 * 1.570796326794897D) * (paramDouble2 - paramDouble1) + paramDouble1;
     }
-    return -(paramDouble2 - paramDouble1) / 2.0D * (Math.cos(3.141592653589793D * paramDouble3) - 1.0D) + paramDouble1;
+    paramDouble2 = -(paramDouble2 - paramDouble1) / 2.0D;
+    return (Math.cos(paramDouble3 * 3.141592653589793D) - 1.0D) * paramDouble2 + paramDouble1;
   }
   
   private void initParams()
   {
-    addParam(new Param.TextureParam("inputImageTexture2", 0, 33986));
-    addParam(new Param.FloatParam("alpha", 0.0F));
+    addParam(new UniformParam.TextureParam("inputImageTexture2", 0, 33986));
+    addParam(new UniformParam.FloatParam("alpha", 0.0F));
   }
   
   private void updateTextureParam(long paramLong)
   {
-    float f = (float)(getDuration(this.transitionStartTime, this.transitionStartTime + this.transitionDuration, paramLong) - this.transitionStartTime) / (float)this.transitionDuration;
-    if (f > 1.0F)
+    float f1 = 1.0F;
+    float f2 = (float)(getDuration(this.transitionStartTime, this.transitionStartTime + this.transitionDuration, paramLong) - this.transitionStartTime) / (float)this.transitionDuration;
+    if (f2 > 1.0F) {}
+    for (;;)
     {
-      addParam(new Param.FloatParam("alpha", 1.0F));
-      clearTextureParam();
+      addParam(new UniformParam.FloatParam("alpha", f1));
       return;
+      f1 = f2;
     }
-    addParam(new Param.FloatParam("alpha", f));
-  }
-  
-  protected void clearTextureParam()
-  {
-    setPositions(VideoFilterUtil.EMPTY_POSITIONS);
-    this.transitionStartTime = -1L;
   }
   
   public void reset()
   {
-    if (this.transitionStartTime > 0L)
-    {
-      this.transitionStartTime = -1L;
-      setPositions(VideoFilterUtil.ORIGIN_POSITION_COORDS);
-    }
+    this.transitionStartTime = -1L;
+    setPositions(GlUtil.ORIGIN_POSITION_COORDS);
   }
   
   public void setDataPath(String paramString) {}
@@ -82,7 +76,7 @@ public class TransitionAlphaFilter
   
   public void setLastTex(int paramInt)
   {
-    addParam(new Param.TextureParam("inputImageTexture2", paramInt, 33986));
+    addParam(new UniformParam.TextureParam("inputImageTexture2", paramInt, 33986));
   }
   
   public void updatePreview(long paramLong)
@@ -95,7 +89,7 @@ public class TransitionAlphaFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.filter.TransitionAlphaFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,12 @@
-import com.tencent.mobileqq.startup.director.StartupDirector;
-import mqq.app.AppActivity;
+import android.view.MotionEvent;
 
-public class aieo
-  implements Runnable
+public abstract interface aieo
 {
-  public aieo(StartupDirector paramStartupDirector, AppActivity paramAppActivity) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_MqqAppAppActivity.superFinish();
-    System.exit(0);
-  }
+  public abstract void a(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aieo
  * JD-Core Version:    0.7.0.1
  */

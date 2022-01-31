@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import acfy;
-import acfz;
+import aetu;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -11,8 +10,8 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import apxd;
 import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
@@ -21,11 +20,11 @@ public class FastImagePreviewLayout
   extends LinearLayout
 {
   public static String a;
-  float a;
-  public long a;
-  public Context a;
-  public URLDrawable a;
-  public MqqHandler a;
+  float jdField_a_of_type_Float;
+  long jdField_a_of_type_Long = 0L;
+  Context jdField_a_of_type_AndroidContentContext;
+  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable = null;
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   final String b = "/tencent/zebra/cache/";
   
   static
@@ -36,8 +35,6 @@ public class FastImagePreviewLayout
   public FastImagePreviewLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentImageURLDrawable = null;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
   }
@@ -45,11 +42,11 @@ public class FastImagePreviewLayout
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "showFastImage called, path = " + PlusPanelUtils.b);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "showFastImage called, path = " + aetu.b);
     }
     removeAllViews();
-    Object localObject = inflate(this.jdField_a_of_type_AndroidContentContext, 2130968637, null);
-    ((ImageView)((View)localObject).findViewById(2131362986)).setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    Object localObject = inflate(this.jdField_a_of_type_AndroidContentContext, 2131558574, null);
+    ((ImageView)((View)localObject).findViewById(2131366005)).setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
     addView((View)localObject);
     setVisibility(0);
     localObject = new AlphaAnimation(0.0F, 1.0F);
@@ -72,7 +69,7 @@ public class FastImagePreviewLayout
       localAlphaAnimation.setDuration(500L);
       localAlphaAnimation.setFillAfter(true);
       startAnimation(localAlphaAnimation);
-      localAlphaAnimation.setAnimationListener(new acfy(this));
+      localAlphaAnimation.setAnimationListener(new apxd(this));
       return;
     }
     removeAllViews();
@@ -80,7 +77,7 @@ public class FastImagePreviewLayout
   
   public void b()
   {
-    ThreadManager.getSubThreadHandler().post(new acfz(this));
+    ThreadManager.getSubThreadHandler().post(new FastImagePreviewLayout.2(this));
   }
   
   public void setHandler(MqqHandler paramMqqHandler)
@@ -90,7 +87,7 @@ public class FastImagePreviewLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.FastImagePreviewLayout
  * JD-Core Version:    0.7.0.1
  */

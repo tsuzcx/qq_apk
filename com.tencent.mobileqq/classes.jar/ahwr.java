@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.search.util.HighlightModel;
-import java.util.Comparator;
-
-public class ahwr
-  implements Comparator
+class ahwr
+  implements ahwu
 {
-  public ahwr(HighlightModel paramHighlightModel) {}
+  ahwr(ahwo paramahwo) {}
   
-  public int a(String paramString1, String paramString2)
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return 0;
-    }
-    return paramString2.length() - paramString1.length();
+    ahwo.a(this.a, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahwr
  * JD-Core Version:    0.7.0.1
  */

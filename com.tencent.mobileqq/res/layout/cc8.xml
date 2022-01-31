@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.ThemeTextView android:textSize="14.0sp" android:textColor="#ff03081a" android:id="@id/kbk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="40.0dip" android:layout_marginBottom="12.0dip" android:text="" android:drawableLeft="@drawable/c4d" android:drawablePadding="12.0dip" android:layout_centerVertical="true" />
+    <com.tencent.widget.ThemeURLImageView android:id="@id/dum" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/h8n" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <View android:id="@id/lnk" android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_below="@id/kbk" />
+</merge>

@@ -1,25 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
-
 public class aomw
-  extends Handler
 {
-  public aomw(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void handleMessage(Message paramMessage)
+  public aomw(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    super.handleMessage(paramMessage);
-    this.a.a(paramMessage);
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomw
  * JD-Core Version:    0.7.0.1
  */

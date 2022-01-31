@@ -1,26 +1,26 @@
-import com.tencent.biz.troop.TroopMemberApiPlugin;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.AddFriendActivity;
 
 class btr
-  implements Runnable
+  implements View.OnClickListener
 {
   btr(btq parambtq) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
+    Object localObject = paramView.getTag();
+    if (localObject != null)
     {
-      TroopMemberApiPlugin.a(this.a.a, this.a.a.i, this.a.a.e);
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      this.a.a.callJs(this.a.a.i, new String[] { "[]" });
+      int i = ((bts)localObject).a;
+      this.a.a.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener.onItemClick(this.a.a.jdField_a_of_type_AndroidWidgetGridView, paramView, i, i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     btr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,34 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.ChatBackgroundInfo;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.IPCDownloadListener;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aehm
-  extends DownloadListener
+  implements View.OnClickListener
 {
-  public aehm(ChatBackgroundManager paramChatBackgroundManager, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public aehm(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onClick(View paramView)
   {
-    super.onDone(paramDownloadTask);
-    ChatBackgroundInfo localChatBackgroundInfo = (ChatBackgroundInfo)paramDownloadTask.a().get("chatbgInfo");
-    long l1 = paramDownloadTask.h;
-    long l2 = paramDownloadTask.g;
-    int i = paramDownloadTask.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatBackgroundManager", 2, "endDownload  id=" + paramDownloadTask.b() + "result =" + i);
-    }
-    if (i == 3) {
-      this.a.a(0, String.valueOf(paramDownloadTask.b()), l1 - l2);
-    }
-    for (i = 0;; i = 1)
+    paramView = (amdc)this.a.app.a(26);
+    ArrayList localArrayList = new ArrayList();
+    try
     {
-      if ((this.a.a != null) && (paramDownloadTask.a().containsKey("callbackId"))) {
-        this.a.a.a(paramDownloadTask.b(), i, paramDownloadTask.a());
+      if (!TextUtils.isEmpty(this.a.b)) {
+        localArrayList.add(Long.valueOf(Long.parseLong(this.a.b)));
       }
+      paramView.a(localArrayList);
       return;
-      this.a.a(1, String.valueOf(paramDownloadTask.b()), 0L);
-      QLog.d("ChatBackgroundManager", 1, "chatbg downloadfail:id = " + paramDownloadTask.b() + ";result =" + i);
     }
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatBackgroundManager", 2, "startDownload  id=" + paramDownloadTask.b());
+    catch (NumberFormatException paramView)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.systemmsg.TroopRequestActivity", 2, "delete Stranger parseLong() error", paramView);
     }
-    super.onStart(paramDownloadTask);
-    return true;
   }
 }
 

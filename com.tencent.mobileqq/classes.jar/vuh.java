@@ -1,70 +1,99 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
-import com.tencent.widget.PatchedButton;
-import com.tencent.widget.XEditTextEx;
-import com.tencent.widget.XPanelContainer;
-import java.util.HashMap;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class vuh
-  implements View.OnClickListener
+  extends SimpleJob<Object>
 {
-  public vuh(GameRoomChatPie paramGameRoomChatPie) {}
-  
-  public void onClick(View paramView)
+  public vuh(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, boolean paramBoolean1, int paramInt1, Long paramLong, boolean paramBoolean2, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3, int paramInt5, int paramInt6, int paramInt7, vwn paramvwn, long paramLong1, String paramString4, String paramString5)
   {
-    HashMap localHashMap1 = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a().b();
-    HashMap localHashMap2 = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a().a();
-    if (paramView == this.a.n) {
-      if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getVisibility() != 0)
+    super(paramString1);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    int i = 0;
+    paramJobContext = "0";
+    int j;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      j = 200;
+      i = this.jdField_a_of_type_Int;
+      paramVarArgs = String.valueOf(i) + "*";
+      paramJobContext = paramVarArgs;
+      i = j;
+      if (this.jdField_a_of_type_JavaLangLong != null)
       {
-        if (localHashMap1 != null) {
-          this.a.n.setImageDrawable((Drawable)localHashMap1.get("audioIcon"));
-        }
-        this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(0);
-        GameRoomChatPie.a(this.a).setVisibility(0);
-        this.a.j.setVisibility(4);
-        GameRoomChatPie.a(this.a).a(25);
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel != null) && (localHashMap2 != null)) {
-          this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.setBackgroundColor(((Integer)localHashMap2.get("quickWordBgColor")).intValue());
-        }
+        paramJobContext = paramVarArgs + String.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_JavaLangLong.longValue());
+        i = j;
       }
+      if ((i != 0) && (i != 7) && ((i != 200) || (this.jdField_a_of_type_Int < 6) || (this.jdField_a_of_type_Int > 10))) {
+        break label509;
+      }
+      if (this.jdField_d_of_type_Int != 1) {
+        break label503;
+      }
+      paramVarArgs = "1";
+      label138:
+      if ((!TextUtils.equals(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString)) || (i == 0)) {
+        break label532;
+      }
+      wxe.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "reportDevPlayerDone, errorCode=%d, suError=%s => treat as success => 300", new Object[] { Integer.valueOf(i), paramJobContext });
+      j = 300;
+      String str = String.valueOf(i) + "*";
+      paramJobContext = str + paramJobContext;
     }
-    while (paramView != this.a.o)
+    for (;;)
     {
-      return;
-      if (localHashMap1 != null) {
-        this.a.n.setImageDrawable((Drawable)localHashMap1.get("textIcon"));
+      wxj.b("play_video", "play_result", this.e, j, new String[] { paramJobContext, paramVarArgs, wxj.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
+      wxj.b("play_video", "play_buffering", this.e, j, new String[] { String.valueOf(this.f), String.valueOf(this.g), wxj.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
+      if (this.jdField_a_of_type_Vwn.jdField_a_of_type_Long > 0L) {
+        wxj.b("play_video", "play_bitRate", this.e, j, new String[] { paramJobContext, this.jdField_a_of_type_Vwn.toString(), wxj.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
       }
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(4);
-      GameRoomChatPie.b(this.a).setVisibility(4);
-      this.a.j.setVisibility(0);
-      this.a.ay();
-      return;
-    }
-    if (GameRoomChatPie.b(this.a).a() != 3)
-    {
-      this.a.a(Integer.valueOf(3));
-      if (localHashMap1 != null) {
-        this.a.n.setImageDrawable((Drawable)localHashMap1.get("audioIcon"));
+      if (this.jdField_a_of_type_Boolean) {
+        i = 1;
       }
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(0);
-      GameRoomChatPie.c(this.a).setVisibility(0);
-      this.a.j.setVisibility(4);
-      return;
+      for (;;)
+      {
+        if (i != 0)
+        {
+          long l = 0L;
+          if (this.jdField_a_of_type_Long != 0L) {
+            l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
+          }
+          wxj.b("sdk_download_video", "video_download_error", this.e, j, new String[] { this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString, String.valueOf(i), String.valueOf(l) });
+        }
+        return null;
+        if (!this.jdField_b_of_type_Boolean) {
+          break;
+        }
+        i = this.jdField_b_of_type_Int;
+        paramJobContext = String.valueOf(this.jdField_c_of_type_Int);
+        break;
+        label503:
+        paramVarArgs = "2";
+        break label138;
+        label509:
+        paramVarArgs = "0";
+        break label138;
+        if (this.jdField_b_of_type_Boolean) {
+          i = 2;
+        } else {
+          i = 0;
+        }
+      }
+      label532:
+      j = i;
     }
-    this.a.ay();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vuh
  * JD-Core Version:    0.7.0.1
  */

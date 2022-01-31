@@ -1,49 +1,54 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.util.LruCache;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.download.DownloadUrlManager;
-import com.tencent.biz.qqstory.database.DownloadingUrlEntry;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.List;
-import java.util.concurrent.locks.ReentrantLock;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class mzx
-  extends SimpleJob
+  extends MSFServlet
 {
-  public mzx(DownloadUrlManager paramDownloadUrlManager, String paramString, int paramInt) {}
-  
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    try
-    {
-      DownloadUrlManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager).lock();
-      paramJobContext = DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      DownloadUrlManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager).remove(paramJobContext);
-      paramJobContext = QQStoryContext.a().a().createEntityManager();
-      paramVarArgs = StoryManager.a(paramJobContext, DownloadingUrlEntry.class, DownloadingUrlEntry.class.getSimpleName(), "key=?", new String[] { DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) });
-      if ((paramVarArgs != null) && (paramVarArgs.size() > 0))
-      {
-        paramVarArgs = (DownloadingUrlEntry)paramVarArgs.get(0);
-        paramVarArgs.setStatus(1000);
-        paramVarArgs.bIsDownloadCompleted = 1;
-        paramJobContext.b(paramVarArgs);
-      }
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.i("MSFServlet", 2, "onReceive");
     }
-    finally
+    if (paramIntent == null) {
+      return;
+    }
+    Bundle localBundle = paramIntent.getExtras();
+    if (paramFromServiceMsg.isSuccess()) {}
+    for (byte[] arrayOfByte = bdpd.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
     {
-      DownloadUrlManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager).unlock();
+      localBundle.putByteArray("data", arrayOfByte);
+      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("MSFServlet", 2, "onReceive exit");
+      return;
+      localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
+      localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MSFServlet", 2, "onSend");
+    }
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bdpd.a(arrayOfByte));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    if (QLog.isColorLevel()) {
+      QLog.i("MSFServlet", 2, "onSend exit");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mzx
  * JD-Core Version:    0.7.0.1
  */

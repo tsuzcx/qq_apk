@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.app.DeviceProfileManager.DPCObserver;
-import com.tencent.mobileqq.ocr.data.OcrDpc;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
-public final class agcu
-  implements DeviceProfileManager.DPCObserver
+public class agcu
+  implements DialogInterface.OnClickListener
 {
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      OcrDpc.a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.ocr.dpc", 2, "onDpcPullFinished, hasChanged=" + paramBoolean);
-    }
-  }
+  public agcu(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agcu
  * JD-Core Version:    0.7.0.1
  */

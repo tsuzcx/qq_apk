@@ -1,99 +1,70 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
-import com.tencent.mobileqq.util.FaceDrawable;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
 public class rga
-  implements Runnable
+  implements rcc
 {
-  public rga(AccountManageActivity paramAccountManageActivity, String paramString1, SimpleAccount paramSimpleAccount, String paramString2, TextView paramTextView, ImageView paramImageView) {}
+  private rga(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    boolean bool = true;
-    for (;;)
+    boolean bool2 = true;
+    VideoFeedsRecyclerView localVideoFeedsRecyclerView;
+    if (VideoFeedsRecommendFragment.a(this.a) != null)
     {
-      try
+      VideoFeedsRecommendFragment.a(this.a).a.d(paramBoolean);
+      if ((!VideoFeedsRecommendFragment.a(this.a).b) && ((VideoFeedsRecommendFragment.a(this.a).itemView.getParent() instanceof VideoFeedsRecyclerView)))
       {
-        Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a(1, this.jdField_a_of_type_JavaLangString, (byte)3, 0);
-        Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a((String)localObject1);
-        if (localBitmap == null)
-        {
-          if ((!AccountManageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).containsKey(this.jdField_a_of_type_JavaLangString)) || (AccountManageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).get(this.jdField_a_of_type_JavaLangString) == null))
-          {
-            localObject1 = FaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app, this.jdField_a_of_type_JavaLangString, (byte)3);
-            String str2 = ContactUtils.j(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app, this.jdField_a_of_type_JavaLangString);
-            localObject2 = (SubAccountManager)this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.getManager(60);
-            if (localObject2 == null) {
-              break label337;
-            }
-            localObject2 = ((SubAccountManager)localObject2).a(this.jdField_a_of_type_JavaLangString);
-            String str1;
-            if (!this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.isLogined())
-            {
-              str1 = str2;
-              if (localObject2 != null)
-              {
-                str1 = str2;
-                if (((SubAccountInfo)localObject2).subuin != null)
-                {
-                  str1 = str2;
-                  if (!((SubAccountInfo)localObject2).subuin.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {}
-                }
-              }
-            }
-            else if (!TextUtils.isEmpty(str2))
-            {
-              str1 = str2;
-              if (!str2.equals(this.jdField_a_of_type_JavaLangString)) {}
-            }
-            else
-            {
-              str1 = ContactUtils.k(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app, this.jdField_a_of_type_JavaLangString);
-            }
-            if ((!TextUtils.isEmpty(str1)) && (!this.b.equals(str1))) {
-              this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.runOnUiThread(new rgb(this, bool, str1, localBitmap, (Drawable)localObject1));
-            }
-          }
-          else
-          {
-            localBitmap = (Bitmap)AccountManageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).get(this.jdField_a_of_type_JavaLangString);
-            FaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app, this.jdField_a_of_type_JavaLangString, (byte)3);
-            localObject1 = null;
-            continue;
-          }
+        localVideoFeedsRecyclerView = (VideoFeedsRecyclerView)VideoFeedsRecommendFragment.a(this.a).itemView.getParent();
+        if (paramBoolean) {
+          break label201;
         }
-        else
-        {
-          AccountManageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).put(this.jdField_a_of_type_JavaLangString, localBitmap);
-          localObject1 = null;
-          continue;
-        }
-        bool = false;
+        bool1 = true;
+        localVideoFeedsRecyclerView.setScrollable(bool1);
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      continue;
-      label337:
-      Object localObject2 = null;
     }
+    if (paramBoolean)
+    {
+      VideoFeedsRecommendFragment.a(this.a).setNeedDetectOrientation(this.a.getActivity(), false);
+      label112:
+      if (!VideoFeedsRecommendFragment.b(this.a))
+      {
+        localVideoFeedsRecyclerView = VideoFeedsRecommendFragment.a(this.a);
+        if (paramBoolean) {
+          break label223;
+        }
+      }
+    }
+    label201:
+    label223:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localVideoFeedsRecyclerView.setScrollable(bool1);
+      if ((!paramBoolean) && (VideoFeedsRecommendFragment.c(this.a)))
+      {
+        VideoFeedsRecommendFragment.a(this.a).a();
+        VideoFeedsRecommendFragment.a(this.a, false);
+      }
+      if (VideoFeedsRecommendFragment.a(this.a) != null) {
+        VideoFeedsRecommendFragment.a(this.a).a(paramBoolean);
+      }
+      return;
+      bool1 = false;
+      break;
+      VideoFeedsRecommendFragment.a(this.a, VideoFeedsRecommendFragment.a(this.a));
+      break label112;
+    }
+  }
+  
+  public void b()
+  {
+    this.a.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rga
  * JD-Core Version:    0.7.0.1
  */

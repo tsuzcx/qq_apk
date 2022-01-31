@@ -1,17 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aojz
-  implements DialogInterface.OnClickListener
+public abstract interface aojz
 {
-  public aojz(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, aojy paramaojy);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aojz
  * JD-Core Version:    0.7.0.1
  */

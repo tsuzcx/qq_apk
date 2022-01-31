@@ -1,0 +1,9 @@
+public abstract interface appi
+  extends appg, appk, appo
+{}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     appi
+ * JD-Core Version:    0.7.0.1
+ */

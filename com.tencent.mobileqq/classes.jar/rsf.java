@@ -1,46 +1,20 @@
-import android.content.Context;
-import android.content.Intent;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
 
 public class rsf
-  implements Runnable
+  implements oot
 {
-  public rsf(BaseChatPie paramBaseChatPie, boolean paramBoolean, Intent paramIntent1, Intent paramIntent2) {}
+  public rsf(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("forward", 1, "updateSession_forwardType, postDelayed Run! needToBottom=" + this.jdField_a_of_type_Boolean);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.f(this.jdField_a_of_type_AndroidContentIntent);
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.O();
-    }
-    if (this.b.getBooleanExtra("isFromShare", false))
-    {
-      this.b.removeExtra("forward_type");
-      this.b.removeExtra("isFromShare");
-      String str2 = this.b.getStringExtra("leftBackText");
-      String str1;
-      if (str2 != null)
-      {
-        str1 = str2;
-        if (!"".equals(str2)) {}
-      }
-      else
-      {
-        str1 = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getString(2131433698);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aJ();
+    if (paramInt != 2) {
+      ReadInJoyFastWebBottomSocialView.a(this.a, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rsf
  * JD-Core Version:    0.7.0.1
  */

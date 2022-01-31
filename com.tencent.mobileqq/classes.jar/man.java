@@ -1,22 +1,21 @@
-import android.animation.ObjectAnimator;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.share.AVSchema;
 
 public class man
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public man(VideoFeedsAdapter paramVideoFeedsAdapter, ImageView paramImageView, ScaleAnimation paramScaleAnimation, ObjectAnimator paramObjectAnimator) {}
+  public man(AVSchema paramAVSchema, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    mts.d();
+    this.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     man
  * JD-Core Version:    0.7.0.1
  */

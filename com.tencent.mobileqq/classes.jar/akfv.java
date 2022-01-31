@@ -1,20 +1,28 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-public final class akfv
-  implements View.OnClickListener
+public class akfv
+  implements aybr
 {
-  public akfv(Dialog paramDialog) {}
+  private akfv(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.a.dismiss();
+    if ((paramBitmap != null) && (paramInt2 == 200))
+    {
+      if (this.b.d != 0) {
+        this.b.b = true;
+      }
+    }
+    else {
+      return;
+    }
+    this.b.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akfv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.game.ui.GameRankHeadView android:orientation="vertical" android:id="@id/c8e" android:background="@drawable/ai2" android:layout_width="fill_parent" android:layout_height="190.0dip">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/c8f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dp" android:src="@drawable/aij" android:scaleType="centerCrop" />
+        <TextView android:textSize="20.0dip" android:textColor="#ff333333" android:layout_gravity="center_horizontal" android:id="@id/c8g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dl" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/ko" android:textColor="#ffb2b2b2" android:layout_gravity="center_horizontal" android:id="@id/c8h" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/dp" />
+            <TextView android:textSize="@dimen/ko" android:textColor="#ff576b95" android:layout_gravity="center_horizontal" android:id="@id/c8i" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/dl" />
+            <ImageView android:id="@id/c8j" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/aho" />
+        </LinearLayout>
+    </com.tencent.mm.plugin.game.ui.GameRankHeadView>
+</LinearLayout>

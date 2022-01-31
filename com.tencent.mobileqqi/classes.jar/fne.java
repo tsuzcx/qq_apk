@@ -1,38 +1,27 @@
-import com.tencent.mobileqq.app.message.AccostMessageProcessor;
-import java.util.ArrayList;
+import android.net.Uri;
+import android.net.Uri.Builder;
+import android.provider.ContactsContract.RawContacts;
+import com.tencent.mobileqq.contactsync.ContactSyncManager;
 
 public class fne
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList a;
-  public byte[] a;
-  public long b;
-  public String b;
-  public long c;
-  public long d;
-  public long e;
+  public static final int a = 0;
+  public static final String[] a = { "_id", "sourceid", "contact_id" };
+  public static final int b = 1;
+  public static final String[] b = { "sync1", "sync2", "sync3" };
+  public static final int c = 2;
+  private static final int d = 0;
+  private static final int e = 1;
+  private static final int f = 2;
   
-  public fne(AccostMessageProcessor paramAccostMessageProcessor, long paramLong1, int paramInt, long paramLong2, long paramLong3, ArrayList paramArrayList, String paramString)
+  public static final Uri a(String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong2;
-    this.c = paramLong3;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public fne(AccostMessageProcessor paramAccostMessageProcessor, long paramLong, ArrayList paramArrayList)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    return ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", paramString).appendQueryParameter("account_type", "com.tencent.mobileqqi.account").appendQueryParameter("caller_is_syncadapter", ContactSyncManager.b()).build();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     fne
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,31 @@
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
 
-public class agja
-  implements OnCompositionLoadedListener
+class agja
+  implements View.OnClickListener
 {
-  public agja(ScanTorchActivity paramScanTorchActivity) {}
+  agja(agiy paramagiy, AIOShortVideoData paramAIOShortVideoData) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public void onClick(View paramView)
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    ScanTorchActivity.l(this.a).setImageDrawable(localLottieDrawable);
+    agiy.a(this.jdField_a_of_type_Agiy, agiy.a(this.jdField_a_of_type_Agiy), alud.a(2131700435));
+    boolean bool = azgd.a().a();
+    paramView = agiy.b(this.jdField_a_of_type_Agiy);
+    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.g;
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.e;
+    if (bool) {}
+    for (int i = 1;; i = 0)
+    {
+      DanceMachineQQBrowserActivity.a(paramView, j, str, i, -999, 1, 0, null);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agja
  * JD-Core Version:    0.7.0.1
  */

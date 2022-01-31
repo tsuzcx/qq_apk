@@ -8,11 +8,11 @@ sdkInfo: null
 sharedLibrary: false
 sparseResources: false
 unknownFiles:
-  libPatchDispatcher.so: '8'
+  KingkongPatchDriver.jar: '8'
   libkkfixerdriver.so: '8'
-  libxposed_art50.so: '8'
-  libxposed_art51.so: '8'
-  libxposed_art60.so: '8'
+  libPatchDispatcher.so: '8'
+  libstlport_shared.so: '8'
+  libxposed_art.so: '8'
   libxposed_dalvik.so: '8'
 usesFramework: null
 version: 2.6.0

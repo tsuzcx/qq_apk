@@ -1,26 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.intervideo.now.NowDataReporter;
-import com.tencent.mobileqq.intervideo.now.NowLoadingActivity;
-import com.tencent.mobileqq.intervideo.now.NowPlugin;
-import com.tencent.mobileqq.intervideo.now.NowProxy;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aduv
-  implements View.OnClickListener
+  extends WtloginObserver
 {
-  public aduv(NowLoadingActivity paramNowLoadingActivity, NowProxy paramNowProxy) {}
+  public aduv(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public void onClick(View paramView)
+  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.d)
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.d = false;
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.a.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.c.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowProxy.a.a.a();
-      NowLoadingActivity.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity);
+      QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      }
     }
+    if (paramInt2 == 0) {
+      return;
+    }
+    RegisterQQNumberActivity.a(this.a);
+    paramString = new Intent(this.a, LoginActivity.class);
+    paramString.putExtra("uin", RegisterQQNumberActivity.a(this.a));
+    paramString.putExtra("tab_index", MainFragment.b);
+    paramString.addFlags(131072);
+    this.a.startActivity(paramString);
+    this.a.finish();
   }
 }
 

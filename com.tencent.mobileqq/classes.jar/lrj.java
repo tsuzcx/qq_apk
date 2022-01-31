@@ -1,29 +1,44 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-public class lrj
-  implements Runnable
+public abstract interface lrj
 {
-  public lrj(InterestLabelInfoModule paramInterestLabelInfoModule, List paramList) {}
+  public abstract int a(int paramInt, boolean paramBoolean1, lsd paramlsd, boolean paramBoolean2);
   
-  public void run()
-  {
-    InterestLabelInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelInterestLabelInfoModule).clear();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      InterestLabelInfo localInterestLabelInfo = (InterestLabelInfo)localIterator.next();
-      InterestLabelInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelInterestLabelInfoModule).add(localInterestLabelInfo);
-    }
-    ReadInJoyLogicEngineEventDispatcher.a().a(InterestLabelInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelInterestLabelInfoModule));
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(PendantItem paramPendantItem, VideoMaterial paramVideoMaterial);
+  
+  public abstract void a(FilterDesc paramFilterDesc);
+  
+  public abstract void a(lsa paramlsa, lsd paramlsd);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(lrq paramlrq);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt1, int paramInt2);
+  
+  public abstract boolean c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lrj
  * JD-Core Version:    0.7.0.1
  */

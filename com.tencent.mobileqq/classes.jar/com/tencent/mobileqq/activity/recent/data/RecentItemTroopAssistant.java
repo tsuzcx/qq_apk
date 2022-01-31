@@ -1,50 +1,66 @@
 package com.tencent.mobileqq.activity.recent.data;
 
+import abti;
+import ajlh;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import com.tencent.biz.anonymous.AnonymousChatHelper;
+import auam;
+import bamb;
+import bamp;
+import bdgc;
+import bdil;
+import bdrv;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
-import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.data.DraftSummaryInfo;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.data.TroopAssistantData;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.MsgUtils;
 import com.tencent.qphone.base.util.QLog;
+import nav;
 
 public class RecentItemTroopAssistant
   extends RecentUserBaseData
 {
+  public static final String TAG = "RecentItemTroopAssistant";
+  
   public RecentItemTroopAssistant(RecentUser paramRecentUser)
   {
     super(paramRecentUser);
-    this.jdField_b_of_type_Int = 0;
+    this.mUnreadFlag = 0;
   }
   
   public void a(Context paramContext)
   {
-    if (this.jdField_c_of_type_Int > 0)
+    if (this.mUnreadNum > 0)
     {
-      this.jdField_d_of_type_JavaLangCharSequence = String.format(paramContext.getString(2131436684), new Object[] { Integer.valueOf(this.jdField_c_of_type_Int) });
-      this.e = paramContext.getResources().getColor(2131494288);
+      this.mMsgExtroInfo = String.format(paramContext.getString(2131720982), new Object[] { Integer.valueOf(this.mUnreadNum) });
+      this.mExtraInfoColor = paramContext.getResources().getColor(2131166981);
       return;
     }
-    this.jdField_d_of_type_JavaLangCharSequence = "";
+    this.mMsgExtroInfo = "";
+  }
+  
+  public void a(QQMessageFacade.Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
+  {
+    String str = bdgc.a(paramQQAppInterface, paramMessage.frienduin, true);
+    bdil.a(paramContext, paramQQAppInterface, paramMessage, this.mUser.getType(), paramMsgSummary, str, false, false);
+    if ((paramMessage.istroop == 1) && (abti.m(paramMessage.msgtype))) {
+      paramMsgSummary.strPrefix = str;
+    }
   }
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = 0;
-    TroopAssistantData localTroopAssistantData = TroopAssistantManager.a().a(paramQQAppInterface);
+    this.mStatus = 0;
+    TroopAssistantData localTroopAssistantData = auam.a().a(paramQQAppInterface);
     if ((localTroopAssistantData == null) || (TextUtils.isEmpty(localTroopAssistantData.troopUin))) {}
     do
     {
@@ -54,10 +70,10 @@ public class RecentItemTroopAssistant
     paramQQAppInterface = paramQQAppInterface.a(localTroopAssistantData.troopUin, 1);
     if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramQQAppInterface.getSummary())))
     {
-      this.jdField_a_of_type_Int = 4;
+      this.mStatus = 4;
       return;
     }
-    this.jdField_a_of_type_Int = 0;
+    this.mStatus = 0;
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -66,75 +82,104 @@ public class RecentItemTroopAssistant
       return;
     }
     super.a(paramQQAppInterface, paramContext);
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_b_of_type_JavaLangString = paramContext.getString(2131435186);
+    if (TextUtils.isEmpty(this.mTitleName)) {
+      this.mTitleName = paramContext.getString(2131720966);
     }
+    SpannableString localSpannableString = null;
+    Object localObject1 = null;
     QQMessageFacade localQQMessageFacade = paramQQAppInterface.a();
-    TroopAssistantManager localTroopAssistantManager;
-    Object localObject;
+    Object localObject2 = localSpannableString;
+    Object localObject3;
     if (localQQMessageFacade != null)
     {
-      localTroopAssistantManager = TroopAssistantManager.a();
-      localObject = localTroopAssistantManager.a(paramQQAppInterface);
-      if (localObject != null) {
-        localObject = localQQMessageFacade.a(((TroopAssistantData)localObject).troopUin, 1);
+      localObject3 = auam.a();
+      localObject4 = ((auam)localObject3).a(paramQQAppInterface);
+      localObject1 = localObject3;
+      localObject2 = localSpannableString;
+      if (localObject4 != null)
+      {
+        localObject2 = localQQMessageFacade.a(((TroopAssistantData)localObject4).troopUin, 1);
+        localObject1 = localObject3;
       }
     }
-    for (;;)
+    Object localObject4 = a();
+    if (localObject2 != null)
     {
-      MsgSummary localMsgSummary = a();
-      if (localObject != null)
-      {
-        this.jdField_c_of_type_Int = localTroopAssistantManager.a(localQQMessageFacade);
-        if (QLog.isColorLevel()) {
-          QLog.i("RecentItemTroopAssistant", 2, "mUnreadNum :" + this.jdField_c_of_type_Int);
-        }
-        this.jdField_a_of_type_Long = ((QQMessageFacade.Message)localObject).time;
-        a((QQMessageFacade.Message)localObject, 1, paramQQAppInterface, paramContext, localMsgSummary);
-        if ((this.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_Long != 9223372036854775806L)) {
-          this.jdField_c_of_type_JavaLangString = TimeManager.a().a(a(), this.jdField_a_of_type_Long);
-        }
+      this.mUnreadNum = ((auam)localObject1).a(localQQMessageFacade, paramQQAppInterface);
+      if (QLog.isColorLevel()) {
+        QLog.i("RecentItemTroopAssistant", 2, "mUnreadNum :" + this.mUnreadNum);
       }
-      for (;;)
+      this.mDisplayTime = ((QQMessageFacade.Message)localObject2).time;
+      a((QQMessageFacade.Message)localObject2, 1, paramQQAppInterface, paramContext, (MsgSummary)localObject4);
+      if ((this.mDisplayTime > 0L) && (this.mDisplayTime != 9223372036854775806L)) {
+        this.mShowTime = ajlh.a().a(a(), this.mDisplayTime);
+      }
+      label210:
+      if ((!TextUtils.isEmpty(((MsgSummary)localObject4).strContent)) || (!TextUtils.isEmpty(((MsgSummary)localObject4).suffix)))
       {
-        if ((TextUtils.isEmpty(localMsgSummary.b)) && (TextUtils.isEmpty(localMsgSummary.jdField_c_of_type_JavaLangCharSequence)))
+        localSpannableString = null;
+        if (TextUtils.isEmpty(((MsgSummary)localObject4).strContent)) {
+          break label616;
+        }
+        localObject3 = ((MsgSummary)localObject4).strContent.toString();
+        localObject1 = localObject3;
+        if (!TextUtils.isEmpty(((MsgSummary)localObject4).strPrefix))
         {
-          localMsgSummary.jdField_a_of_type_JavaLangCharSequence = null;
-          localMsgSummary.b = paramContext.getString(2131435187);
+          localObject1 = localObject3;
+          if (TextUtils.indexOf(((MsgSummary)localObject4).strContent, ((MsgSummary)localObject4).strPrefix) == 0)
+          {
+            localObject1 = localObject3;
+            if (((MsgSummary)localObject4).strContent.length() <= ((MsgSummary)localObject4).strPrefix.length() + 2) {}
+          }
         }
-        a(paramQQAppInterface);
-        a(paramQQAppInterface, localMsgSummary);
-        a(paramQQAppInterface, paramContext, localMsgSummary);
-        a(paramContext);
-        if ((TextUtils.isEmpty(this.jdField_d_of_type_JavaLangCharSequence)) && (localObject != null) && (localMsgSummary != null) && (AnonymousChatHelper.a((MessageRecord)localObject))) {
-          this.jdField_c_of_type_JavaLangCharSequence = localMsgSummary.a(paramContext, paramContext.getResources().getString(2131430287), -1);
-        }
-        if (!AppSetting.b) {
-          break;
-        }
-        if (this.jdField_c_of_type_Int <= 0) {
-          break label351;
-        }
-        this.jdField_d_of_type_JavaLangString = String.format("群助手,%d个群有新消息，%s。", new Object[] { Integer.valueOf(this.jdField_c_of_type_Int), this.jdField_c_of_type_JavaLangString });
-        return;
-        this.jdField_c_of_type_Int = 0;
-        this.jdField_a_of_type_Long = 0L;
       }
-      label351:
-      this.jdField_d_of_type_JavaLangString = String.format("群助手,%s，%s。", new Object[] { this.jdField_c_of_type_JavaLangCharSequence, this.jdField_c_of_type_JavaLangString });
-      return;
-      localObject = null;
-      continue;
-      localTroopAssistantManager = null;
-      localObject = null;
     }
+    label616:
+    for (localObject1 = (String)((String)localObject3).subSequence(((MsgSummary)localObject4).strPrefix.length() + 2, ((MsgSummary)localObject4).strContent.length());; localObject1 = ((MsgSummary)localObject4).suffix.toString())
+    {
+      if (!TextUtils.isEmpty(((MsgSummary)localObject4).strPrefix)) {
+        localSpannableString = new bamb(((MsgSummary)localObject4).strPrefix, 16).a();
+      }
+      localObject1 = bdrv.a((String)localObject1, (MessageRecord)localObject2, 16, 3);
+      localObject3 = new SpannableStringBuilder();
+      if (localSpannableString != null) {
+        ((SpannableStringBuilder)localObject3).append(localSpannableString).append(": ");
+      }
+      ((SpannableStringBuilder)localObject3).append((CharSequence)localObject1);
+      ((MsgSummary)localObject4).strContent = new bamp((CharSequence)localObject3, 3, 16);
+      if ((TextUtils.isEmpty(((MsgSummary)localObject4).strContent)) && (TextUtils.isEmpty(((MsgSummary)localObject4).suffix)))
+      {
+        ((MsgSummary)localObject4).strPrefix = null;
+        ((MsgSummary)localObject4).strContent = paramContext.getString(2131720970);
+      }
+      a(paramQQAppInterface);
+      a(paramQQAppInterface, (MsgSummary)localObject4);
+      a(paramQQAppInterface, paramContext, (MsgSummary)localObject4);
+      a(paramContext);
+      if ((TextUtils.isEmpty(this.mMsgExtroInfo)) && (localObject2 != null) && (localObject4 != null) && (nav.a((MessageRecord)localObject2))) {
+        this.mLastMsg = ((MsgSummary)localObject4).a(paramContext, paramContext.getResources().getString(2131697672), -1);
+      }
+      if (!AppSetting.c) {
+        break;
+      }
+      if (this.mUnreadNum <= 0) {
+        break label630;
+      }
+      this.mContentDesc = String.format(alud.a(2131713574), new Object[] { Integer.valueOf(this.mUnreadNum), this.mShowTime });
+      return;
+      this.mUnreadNum = 0;
+      this.mDisplayTime = 0L;
+      break label210;
+    }
+    label630:
+    this.mContentDesc = String.format(alud.a(2131713580), new Object[] { this.mLastMsg, this.mShowTime });
   }
   
-  protected void a(QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
     super.a(paramQQAppInterface, paramContext, paramMsgSummary);
-    if (this.jdField_c_of_type_Int > 0) {
-      this.jdField_c_of_type_JavaLangCharSequence = "";
+    if (this.mUnreadNum > 0) {
+      this.mLastMsg = "";
     }
   }
   
@@ -142,8 +187,8 @@ public class RecentItemTroopAssistant
   {
     if (paramMsgSummary != null)
     {
-      paramMsgSummary.jdField_a_of_type_Boolean = false;
-      paramMsgSummary.jdField_d_of_type_JavaLangCharSequence = null;
+      paramMsgSummary.bShowDraft = false;
+      paramMsgSummary.mDraft = null;
     }
     Object localObject = paramQQAppInterface.a();
     if (localObject == null) {}
@@ -153,29 +198,20 @@ public class RecentItemTroopAssistant
       do
       {
         return;
-        localTroopAssistantData = TroopAssistantManager.a().a(paramQQAppInterface);
-      } while ((localTroopAssistantData == null) || (TextUtils.isEmpty(localTroopAssistantData.troopUin)) || (this.jdField_a_of_type_Long >= localTroopAssistantData.lastdrafttime));
+        localTroopAssistantData = auam.a().a(paramQQAppInterface);
+      } while ((localTroopAssistantData == null) || (TextUtils.isEmpty(localTroopAssistantData.troopUin)) || (this.mDisplayTime >= localTroopAssistantData.lastdrafttime));
       localObject = ((QQMessageFacade)localObject).a(localTroopAssistantData.troopUin, 1);
     } while ((localObject == null) || (TextUtils.isEmpty(((DraftSummaryInfo)localObject).getSummary())));
-    this.jdField_a_of_type_Long = ((DraftSummaryInfo)localObject).getTime();
-    paramMsgSummary.jdField_a_of_type_Boolean = true;
+    this.mDisplayTime = ((DraftSummaryInfo)localObject).getTime();
+    paramMsgSummary.bShowDraft = true;
     localObject = ((DraftSummaryInfo)localObject).getSummary();
-    paramQQAppInterface = ContactUtils.a(paramQQAppInterface, localTroopAssistantData.troopUin, true);
-    paramMsgSummary.jdField_d_of_type_JavaLangCharSequence = new QQText(paramQQAppInterface + ": " + (String)localObject, 3, 16);
-  }
-  
-  protected void a(QQMessageFacade.Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
-  {
-    String str = ContactUtils.a(paramQQAppInterface, paramMessage.frienduin, true);
-    MsgUtils.a(paramContext, paramQQAppInterface, paramMessage, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type, paramMsgSummary, str, false, false);
-    if ((paramMessage.istroop == 1) && (MsgProxyUtils.k(paramMessage.msgtype))) {
-      paramMsgSummary.jdField_a_of_type_JavaLangCharSequence = str;
-    }
+    paramQQAppInterface = bdgc.a(paramQQAppInterface, localTroopAssistantData.troopUin, true);
+    paramMsgSummary.mDraft = new bamp(paramQQAppInterface + ": " + (String)localObject, 3, 16);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemTroopAssistant
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,73 @@
+{
+    "ReadInjoy_article_listitem_cell": {
+        "view_type": "container",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+            {
+                "view_type": "container",
+                "layout_type":"layout_relative",
+                "default_visible": "YES",
+                "margin_left":"15",
+                "margin_right":"15",
+                "margin_top":"12",
+                "height":{
+                    "type": "wrap_content"
+                },
+                "width":{
+                    "type":"relative",
+                    "value":"345"
+                },
+                "subviews":[
+                    {
+                        "view_type": "UIView",
+                        "view_id": "id_listitem_flag",
+                        "default_visible": "YES",
+                        "margin_top":"9",
+                        "align_parent_top":"YES",
+                        "align_parent_left":"YES",
+                        "height":{
+                            "type":"absolutely",
+                            "value":"6"
+                        },
+                        "width":{
+                            "type":"absolutely",
+                            "value":"6"
+                        },
+                        "attributes":{
+                            "setCornerRadiusString:": "3.0",
+                            "setBackgroundColorString:":"#262626"
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_listitem_content",
+                        "margin_left":"12",
+                        "align_parent_top":"YES",
+                        "right_of_view": "id_listitem_flag",
+                        "height":{
+                            "type": "wrap_content"
+                        },
+                        "width":{
+                            "type":"match_parent"
+                        },
+                        "attributes":{
+                            "setRichText:": "$id_attribute_text",
+                            "setNumberOfLinesString:":"0",
+                            "setTextColorString:":"#262626",
+                            "setTextAlignmentString:": "$text_align",
+                            "setFontSizeString:": "$attribute_text_size",
+                            "setLineSpace:":"13"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

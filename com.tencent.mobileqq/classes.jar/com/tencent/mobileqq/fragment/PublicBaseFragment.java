@@ -3,52 +3,78 @@ package com.tencent.mobileqq.fragment;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 
 public class PublicBaseFragment
   extends Fragment
 {
-  public void a(Activity paramActivity) {}
+  public void beforeFinish() {}
   
-  public void a(Intent paramIntent) {}
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public void b(boolean paramBoolean) {}
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
-  
-  public boolean d()
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     return false;
   }
   
-  public boolean i()
+  public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  {
+    return false;
+  }
+  
+  public void initWindowStyleAndAnimation(Activity paramActivity) {}
+  
+  public boolean isSupportScreenShot()
   {
     return true;
   }
   
-  public void k() {}
+  public boolean isWrapContent()
+  {
+    return true;
+  }
   
-  public void l() {}
+  public boolean needDispatchTouchEvent()
+  {
+    return false;
+  }
   
-  public void m() {}
+  public boolean needImmersive()
+  {
+    return true;
+  }
   
-  public void u_() {}
+  public boolean needStatusTrans()
+  {
+    return true;
+  }
+  
+  public void onAccountChanged() {}
+  
+  public boolean onBackEvent()
+  {
+    return false;
+  }
+  
+  public void onFinish() {}
+  
+  public void onMultiWindowModeChanged(boolean paramBoolean) {}
+  
+  public void onNewIntent(Intent paramIntent) {}
+  
+  public void onPostThemeChanged() {}
+  
+  public void onPreThemeChanged() {}
+  
+  public void onWindowFocusChanged(boolean paramBoolean) {}
+  
+  public boolean overrideFinish()
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.PublicBaseFragment
  * JD-Core Version:    0.7.0.1
  */

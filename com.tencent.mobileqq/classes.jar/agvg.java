@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.QCallFacade;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class agvg
-  implements Runnable
+class agvg
+  implements View.OnClickListener
 {
-  public agvg(QCallFacade paramQCallFacade) {}
+  agvg(agvf paramagvf) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QCallFacade.a(this.a).x();
+    if (!this.a.N) {
+      acjm.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agvg
  * JD-Core Version:    0.7.0.1
  */

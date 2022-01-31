@@ -1,77 +1,127 @@
+import android.content.Context;
 import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
-import com.tencent.mobileqq.apollo.game.ApolloGameTool;
-import com.tencent.mobileqq.apollo.game.ApolloJSContext;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter.1;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class ypi
-  implements EIPCResultCallback
+public class ypi
+  extends RecyclerView.Adapter
+  implements bdbc
 {
-  ypi(yph paramyph) {}
+  private ajjp jdField_a_of_type_Ajjp;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private DragFrameLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout;
+  private HashMap<String, Bitmap> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private List<ssj> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public ypi(Context paramContext, RecyclerView paramRecyclerView)
   {
-    paramEIPCResult = paramEIPCResult.data;
-    int i = paramEIPCResult.getInt("type");
-    ApolloJSContext localApolloJSContext;
-    if (i == 1)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Ajjp = new ajjp(((BaseActivity)paramContext).app, this, false);
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
     {
-      paramEIPCResult = paramEIPCResult.getString("nickName");
-      if ((ApolloGameInterfaceProxy.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameInterfaceProxy) != null) && (ApolloGameInterfaceProxy.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameInterfaceProxy).get() != null))
-      {
-        localApolloJSContext = (ApolloJSContext)ApolloGameInterfaceProxy.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameInterfaceProxy).get();
-        if (localApolloJSContext == null) {}
+      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.isComputingLayout()) {
+        ThreadManager.getUIHandler().post(new ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter.1(this));
       }
     }
-    JSONObject localJSONObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          try
-          {
-            localJSONObject = new JSONObject();
-            localJSONObject.put("nickname", 1);
-            localJSONObject.put("data", paramEIPCResult);
-            localJSONObject.put("openId", this.a.jdField_a_of_type_JavaLangString);
-            localApolloJSContext.a(0, "cs.get_userInfo.local", "" + localJSONObject.toString() + "");
-            return;
-          }
-          catch (Throwable paramEIPCResult)
-          {
-            QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
-            return;
-          }
-        } while (i != 2);
-        paramEIPCResult = ApolloGameTool.a((Bitmap)paramEIPCResult.getParcelable("head"), 100);
-      } while ((ApolloGameInterfaceProxy.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameInterfaceProxy) == null) || (ApolloGameInterfaceProxy.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameInterfaceProxy).get() == null));
-      localApolloJSContext = (ApolloJSContext)ApolloGameInterfaceProxy.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameInterfaceProxy).get();
-    } while (localApolloJSContext == null);
-    try
-    {
-      localJSONObject = new JSONObject();
-      localJSONObject.put("avatar", 1);
-      localJSONObject.put("data", paramEIPCResult);
-      localJSONObject.put("openId", this.a.jdField_a_of_type_JavaLangString);
-      localApolloJSContext.a(0, "cs.get_userInfo.local", "" + localJSONObject.toString() + "");
+    else {
       return;
     }
-    catch (Throwable paramEIPCResult)
+    notifyDataSetChanged();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    }
+    if (this.jdField_a_of_type_Ajjp != null) {
+      this.jdField_a_of_type_Ajjp.a();
+    }
+  }
+  
+  public void a(DragFrameLayout paramDragFrameLayout)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = paramDragFrameLayout;
+  }
+  
+  public void a(List<ssj> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    b();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    ((ypj)paramViewHolder).a(this.jdField_a_of_type_Boolean);
+    ((ypj)paramViewHolder).a((ssj)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new ypj(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559505, paramViewGroup, false), this.jdField_a_of_type_Ajjp, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if ((paramBitmap == null) || (paramString == null) || (paramString.length() == 0)) {}
+    for (;;)
     {
-      QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
+      return;
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramBitmap);
+      paramBitmap = (LinearLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager();
+      paramInt1 = 0;
+      while (paramInt1 < getItemCount())
+      {
+        Object localObject = paramBitmap.findViewByPosition(paramInt1);
+        if (localObject != null)
+        {
+          localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder((View)localObject);
+          if (((localObject instanceof ypj)) && (paramString.equals(((ypj)localObject).a.a)))
+          {
+            ((ypj)localObject).a(ypj.a((ypj)localObject), paramString);
+            return;
+          }
+        }
+        paramInt1 += 1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ypi
  * JD-Core Version:    0.7.0.1
  */

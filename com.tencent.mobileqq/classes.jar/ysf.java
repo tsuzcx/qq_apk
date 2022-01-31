@@ -1,18 +1,29 @@
-import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class ysf
-  implements Runnable
+class ysf
+  extends ysw
 {
-  public ysf(SpriteUIHandler paramSpriteUIHandler, long paramLong, int paramInt) {}
-  
-  public void run()
+  ysf(ysb paramysb, ysj paramysj, String paramString)
   {
-    SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    super(paramysb);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "splitAudio end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "splitAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Ysb.a));
+      this.jdField_a_of_type_Ysb.a = System.currentTimeMillis();
+    }
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Ysj.a(this.jdField_a_of_type_JavaLangString, false, "splitAudio done.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ysf
  * JD-Core Version:    0.7.0.1
  */

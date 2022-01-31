@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.trunk.Qworkflow.Qworkflow.Approver;
 
 public final class oidb_0x4d4$ApproverChange
-  extends MessageMicro
+  extends MessageMicro<ApproverChange>
 {
   public static final int ADD = 1;
   public static final int DELETE = 2;
@@ -17,7 +17,7 @@ public final class oidb_0x4d4$ApproverChange
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x4d4.oidb_0x4d4.ApproverChange
  * JD-Core Version:    0.7.0.1
  */

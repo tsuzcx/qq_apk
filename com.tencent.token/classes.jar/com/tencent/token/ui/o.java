@@ -4,12 +4,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 
-final class o
+class o
   implements View.OnTouchListener
 {
   o(AccountPageActivity paramAccountPageActivity) {}
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     return true;
   }

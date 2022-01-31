@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x8cf$AppBrief
-  extends MessageMicro
+  extends MessageMicro<AppBrief>
 {
   public static final int OPT_UINT32_TIME_STAMP_FIELD_NUMBER = 2;
   public static final int OPT_UINT64_APPID_FIELD_NUMBER = 1;
@@ -17,7 +17,7 @@ public final class oidb_0x8cf$AppBrief
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.oidb_0x8cf.oidb_0x8cf.AppBrief
  * JD-Core Version:    0.7.0.1
  */

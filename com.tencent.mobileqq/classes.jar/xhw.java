@@ -1,20 +1,17 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.qwallet.voice.VoiceRedPacketHelper;
-import com.tencent.mobileqq.widget.QQToast;
-
 public class xhw
-  implements Runnable
 {
-  public xhw(VoiceRedPacketHelper paramVoiceRedPacketHelper, Context paramContext, int paramInt1, int paramInt2) {}
-  
-  public void run()
-  {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, 0).b(this.b);
-  }
+  public int a;
+  public String a;
+  public int[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xhw
  * JD-Core Version:    0.7.0.1
  */

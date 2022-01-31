@@ -54,7 +54,7 @@ public class UserguideFragment
   public void e()
   {
     Object localObject = PreferenceManager.getDefaultSharedPreferences(this.a).edit();
-    ((SharedPreferences.Editor)localObject).putString("qq_version", "6500");
+    ((SharedPreferences.Editor)localObject).putString("qq_version", "6602");
     ((SharedPreferences.Editor)localObject).commit();
     localObject = null;
     if ((this.a.getAppRuntime() instanceof QQAppInterface)) {

@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.TMG.sdk.AVVideoCtrl.LocalVideoPreviewCallback;
+import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
+import com.tencent.mobileqq.apollo.AVCameraCaptureModel.1.1.1;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
 public class akno
-  implements Runnable
+  extends AVVideoCtrl.LocalVideoPreviewCallback
 {
-  public akno(WebViewFragment paramWebViewFragment) {}
+  akno(aknn paramaknn) {}
   
-  public void run()
+  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
   {
-    ThreadManager.postImmediately(new aknp(this), null, false);
+    Object localObject = akwd.a(aknm.a(this.a.a));
+    if (localObject == null) {}
+    do
+    {
+      return;
+      localObject = ((akyg)localObject).a();
+    } while (localObject == null);
+    ((ApolloSurfaceView)localObject).queueEvent(new AVCameraCaptureModel.1.1.1(this, (ApolloSurfaceView)localObject, paramVideoFrame));
   }
 }
 

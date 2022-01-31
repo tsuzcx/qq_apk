@@ -1,39 +1,34 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
-import com.tencent.mobileqq.intervideo.groupvideo.PluginLoadListener;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.List;
 
 public class adtr
-  implements PluginLoadListener
+  implements akkc
 {
-  public adtr(GroupVideoManager paramGroupVideoManager) {}
+  public adtr(RecommendFriendActivity paramRecommendFriendActivity) {}
   
-  public void a(int paramInt, Bundle paramBundle)
+  public void a()
   {
-    switch (paramInt)
-    {
-    case 6: 
-    case 8: 
-    default: 
-    case 5: 
-    case 7: 
-    case 10: 
-      do
-      {
-        return;
-        GroupVideoManager.a(this.a);
-        if (GroupVideoManager.a(this.a) != null) {
-          QQToast.a(GroupVideoManager.a(this.a).getApplication(), "加载失败，请重试", 1).b(GroupVideoManager.a(this.a).getApp().getResources().getDimensionPixelSize(2131558448));
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("GroupVideoManager", 2, "GroupVideoPlugin loadFailed state:" + paramInt);
-      return;
-    }
-    GroupVideoManager.a(this.a);
+    RecommendFriendActivity.a(this.a).setVisibility(0);
+  }
+  
+  public void a(String paramString)
+  {
+    RecommendFriendActivity.a(this.a, paramString);
+  }
+  
+  public void a(List<MayKnowRecommend> paramList)
+  {
+    Intent localIntent = this.a.getIntent();
+    int i = localIntent.getIntExtra("EntranceId", 0);
+    RecommendFriendActivity.a(this.a, localIntent, i, paramList);
+  }
+  
+  public void b()
+  {
+    RecommendFriendActivity.a(this.a).setVisibility(8);
   }
 }
 

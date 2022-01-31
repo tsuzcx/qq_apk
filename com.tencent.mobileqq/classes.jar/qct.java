@@ -1,30 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.device.qfind.QFindBLEScanMgr;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
 
-public class qct
-  extends BroadcastReceiver
+class qct
+  implements View.OnClickListener
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  qct(qcr paramqcr, RecommendFollowInfo paramRecommendFollowInfo) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QFindBLE", 2, "QFindBLEScanMgr alarm is coming " + paramIntent.getAction());
-    }
-    if ((this.a.a == null) || (System.currentTimeMillis() - QFindBLEScanMgr.a(this.a) < this.a.h)) {
+    paramView = this.jdField_a_of_type_Qcr.a;
+    RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+    if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.a(localRecommendFollowInfo, bool);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("QFindBLE", 2, "QFindBLEScanMgr startScan");
-    }
-    this.a.a.post(new qcu(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qct
  * JD-Core Version:    0.7.0.1
  */

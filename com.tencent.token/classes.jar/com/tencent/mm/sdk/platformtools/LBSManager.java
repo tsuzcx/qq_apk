@@ -16,7 +16,7 @@ import java.util.List;
 public class LBSManager
   extends BroadcastReceiver
 {
-  private static LocationCache F;
+  private static LBSManager.LocationCache F;
   public static final String FILTER_GPS = "filter_gps";
   public static final int INVALID_ACC = -1000;
   public static final float INVALID_LAT = -1000.0F;
@@ -25,7 +25,7 @@ public class LBSManager
   public static final int MM_SOURCE_NET = 1;
   public static final int MM_SOURCE_REPORT_HARWARE = 3;
   public static final int MM_SOURCE_REPORT_NETWORK = 4;
-  private OnLocationGotListener G;
+  private LBSManager.OnLocationGotListener G;
   private LocationManager H;
   private PendingIntent I;
   private boolean J = false;
@@ -36,7 +36,7 @@ public class LBSManager
   private MTimerHandler O = new MTimerHandler(new LBSManager.1(this), false);
   private Context q;
   
-  public LBSManager(Context paramContext, OnLocationGotListener paramOnLocationGotListener)
+  public LBSManager(Context paramContext, LBSManager.OnLocationGotListener paramOnLocationGotListener)
   {
     this.G = paramOnLocationGotListener;
     this.K = false;
@@ -76,7 +76,7 @@ public class LBSManager
     }
     Log.v("MicroMsg.LBSManager", "setLocationCache [" + paramFloat1 + "," + paramFloat2 + "] acc:" + paramInt1 + " source:" + paramInt2);
     if (F == null) {
-      F = new LocationCache();
+      F = new LBSManager.LocationCache();
     }
     F.Q = paramFloat1;
     F.R = paramFloat2;
@@ -319,20 +319,6 @@ public class LBSManager
     } while (this.G == null);
     label302:
     this.G.onLocationGot(-1000.0F, -1000.0F, -1000, 0, str1, str2, true);
-  }
-  
-  static class LocationCache
-  {
-    float Q = -1000.0F;
-    float R = -1000.0F;
-    int S = -1000;
-    int T = 1;
-    long time;
-  }
-  
-  public static abstract interface OnLocationGotListener
-  {
-    public abstract void onLocationGot(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, String paramString1, String paramString2, boolean paramBoolean);
   }
 }
 

@@ -1,49 +1,28 @@
-import android.graphics.Bitmap;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.BaseScaleAndMoveBitmapView;
+import mqq.os.MqqHandler;
 
-public class ajgc
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
+class ajgc
+  implements aufw
 {
-  private ajgc(BaseScaleAndMoveBitmapView paramBaseScaleAndMoveBitmapView) {}
+  ajgc(ajgb paramajgb) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public void a(int paramInt)
   {
-    BaseScaleAndMoveBitmapView.a(this.a, false);
-    BaseScaleAndMoveBitmapView localBaseScaleAndMoveBitmapView = this.a;
-    localBaseScaleAndMoveBitmapView.c *= paramScaleGestureDetector.getScaleFactor();
-    this.a.c = Math.max(BaseScaleAndMoveBitmapView.a(this.a), Math.min(this.a.c, BaseScaleAndMoveBitmapView.b(this.a)));
-    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c <= this.a.getHeight())
+    ajgb.a(this.a).removeMessages(11);
+    ajgb.a(this.a).sendEmptyMessageDelayed(11, 1000L);
+  }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt)
+  {
+    if ((paramInt & 0x1) != 0)
     {
-      this.a.b = ((this.a.getHeight() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c) / 2.0F / this.a.c);
-      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c > this.a.getWidth()) {
-        break label323;
-      }
-      this.a.jdField_a_of_type_Float = ((this.a.getWidth() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c) / 2.0F);
-    }
-    for (;;)
-    {
-      SLog.a("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "onScale %f", Float.valueOf(this.a.c));
-      this.a.invalidate();
-      return true;
-      if (this.a.b(0.0F) >= 0.0F)
-      {
-        this.a.b = 0.0F;
-        break;
-      }
-      if (this.a.b(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) > this.a.getHeight()) {
-        break;
-      }
-      this.a.b = (this.a.getHeight() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-      break;
-      label323:
-      if (this.a.a(0.0F) >= 0.0F) {
-        this.a.jdField_a_of_type_Float = 0.0F;
-      } else if (this.a.a(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) <= this.a.getWidth()) {
-        this.a.jdField_a_of_type_Float = (this.a.getWidth() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
-      }
+      ajgb.a(this.a).removeMessages(11);
+      ajgb.a(this.a).sendEmptyMessageDelayed(11, 1000L);
     }
   }
 }

@@ -1,25 +1,26 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
-class ryh
-  implements DialogInterface.OnCancelListener
+public class ryh
+  implements oma
 {
-  ryh(ryg paramryg) {}
+  public ryh(FastWebActivity paramFastWebActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a() {}
+  
+  public void onClick(View paramView)
   {
-    if (this.a.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    switch (paramView.getId())
+    {
+    default: 
+      return;
     }
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.a(false, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ryh
  * JD-Core Version:    0.7.0.1
  */

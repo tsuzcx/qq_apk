@@ -7,7 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
 import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.utils.t;
+import com.tencent.token.utils.x;
 
 public class RectView
   extends View
@@ -40,8 +40,8 @@ public class RectView
     this.right = ((this.width + paramInt1) / 2);
     this.pen = new Paint();
     paramContext = getResources();
-    this.mMaskColor = paramContext.getColor(2131165231);
-    this.mCornerColor = paramContext.getColor(2131165232);
+    this.mMaskColor = paramContext.getColor(2131493074);
+    this.mCornerColor = paramContext.getColor(2131492895);
   }
   
   public Paint getPen()
@@ -60,11 +60,11 @@ public class RectView
     paramCanvas.drawRect(this.right + 1, this.top, i, this.bottom + 1, this.pen);
     paramCanvas.drawRect(0.0F, this.bottom + 1, i, j, this.pen);
     if (this.mScanLine == null) {
-      this.mScanLine = t.a(getResources(), 2130837879, this.width);
+      this.mScanLine = x.a(getResources(), 2130837945, this.width);
     }
-    String str = getResources().getString(2131362112);
-    this.pen.setColor(getResources().getColor(2131165194));
-    this.pen.setTextSize(getResources().getDimension(2131230728));
+    String str = getResources().getString(2131230859);
+    this.pen.setColor(getResources().getColor(2131492933));
+    this.pen.setTextSize(getResources().getDimension(2131296400));
     float f = this.pen.measureText(str);
     paramCanvas.drawText(str, (i - f) / 2.0F, this.bottom + 30.0F * IndexActivity.S_DENSITY, this.pen);
     j = this.CORNER_HEIGHT / 2;

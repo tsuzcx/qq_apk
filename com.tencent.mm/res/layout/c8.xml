@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/r_" android:layout_height="wrap_content" style="@style/nk">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/ra" android:layout_width="@dimen/hk" android:layout_height="@dimen/hk" android:layout_marginRight="@dimen/mx" android:src="@raw/fts_weapp_search_default_icon" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/rb" android:paddingRight="@dimen/g2" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toRightOf="@id/ra" android:layout_toEndOf="@id/ra">
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:id="@id/rc" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/ln" />
+                <TextView android:id="@id/rd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" style="@style/sk" />
+            </LinearLayout>
+            <TextView android:id="@id/q9" android:background="@drawable/c5" android:padding="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" style="@style/sl" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:id="@id/pm" android:background="@color/x" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="72.0dip" android:layout_alignParentBottom="true" />
+</RelativeLayout>

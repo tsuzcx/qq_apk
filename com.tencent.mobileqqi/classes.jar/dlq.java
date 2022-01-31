@@ -1,21 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.activity.SubAccountMessageActivity;
 
 public class dlq
   implements DialogInterface.OnClickListener
 {
-  public dlq(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public dlq(SubAccountMessageActivity paramSubAccountMessageActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dlq
  * JD-Core Version:    0.7.0.1
  */

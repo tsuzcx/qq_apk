@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
-public class xls
-  implements Runnable
+public final class xls
+  implements Parcelable.Creator<PublishParam>
 {
-  public xls(RecentItemChatMsgData paramRecentItemChatMsgData, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public PublishParam a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X80085A3");
+    return new PublishParam(paramParcel);
+  }
+  
+  public PublishParam[] a(int paramInt)
+  {
+    return new PublishParam[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xls
  * JD-Core Version:    0.7.0.1
  */

@@ -13,30 +13,41 @@ public class NativeMemoryMonitor
   public static final long FLAG_JNI_GLOBAL_REF_MONITOR = 1L;
   public static final long FLAG_JNI_LOCAL_REF_MONITOR = 2L;
   public static final long FLAG_JNI_LONG_SET_FIELD_MONITOR = 8L;
+  public static final long FLAG_JNI_NATIVE_THREAD_MONITOR = 64L;
   public static final long FLAG_JNI_PRIMITIVE_ARRAY_MONITOR = 4L;
   public static final long FLAG_JNI_WEAK_GLOBAL_REF_MONITOR = 16L;
   public static final long FLAG_LARGE_OBJECT_ALLOC_MONITOR = 4294967296L;
   public static final long FLAG_LOG_ALL = 4611686018427387904L;
   public static final long FLAG_OVER_ALLOCATE_PER_TIME_MONITOR = 2147483648L;
   private static final String TAG = "NativeMemoryMonitor";
+  private static ExternalProvider externalProvider;
   private static volatile boolean sSoLoadRes = false;
   private static volatile boolean sSoLoaded = false;
   private boolean mInit = false;
   private boolean mInitThreadHook = false;
   
+  private native boolean applyHiddenApiPolicyCrack(ApplicationInfo paramApplicationInfo);
+  
   public static NativeMemoryMonitor getInstance(Context paramContext)
   {
     loadSoIfNeeded(paramContext);
-    return Holder.INSTANCE;
+    return NativeMemoryMonitor.Holder.access$000();
   }
   
   private static void loadSoIfNeeded(Context paramContext)
   {
-    if (!sSoLoaded)
+    if (!sSoLoaded) {
+      if ((!SoLoadUtilNew.loadSoByName(paramContext, "c++_shared")) || (!SoLoadUtilNew.loadSoByName(paramContext, "native-memory-library-lib"))) {
+        break label59;
+      }
+    }
+    label59:
+    for (boolean bool = true;; bool = false)
     {
-      sSoLoadRes = SoLoadUtilNew.loadSoByName(paramContext, "native-memory-library-lib");
+      sSoLoadRes = bool;
       logErrorFromNative("load so res: " + sSoLoadRes);
       sSoLoaded = true;
+      return;
     }
   }
   
@@ -66,13 +77,51 @@ public class NativeMemoryMonitor
     }
   }
   
+  private native void nativeDump();
+  
   private native int nativeGetJavaThreadPeakCount();
   
-  private native void nativeInit(long paramLong1, String paramString1, String paramString2, String[] paramArrayOfString, long paramLong2, long paramLong3, long paramLong4);
+  private native void nativeInit(long paramLong1, String[] paramArrayOfString, long paramLong2, long paramLong3, long paramLong4);
+  
+  private native void nativeSoLoadHook(String paramString1, String paramString2);
   
   private native void nativeThreadCreateHookInit(String paramString);
   
   private native void nativeThreadHook();
+  
+  private static void onSoLoad(String paramString1, String paramString2)
+  {
+    ExternalProvider localExternalProvider = externalProvider;
+    if (localExternalProvider != null)
+    {
+      String str = paramString2.replaceAll("\\t", " ");
+      if (paramString2.equals(str)) {}
+      paramString2 = str;
+      if (str.startsWith("java.lang.Throwable: \n")) {
+        paramString2 = str.substring("java.lang.Throwable: \n".length());
+      }
+      localExternalProvider.onSoLoad(paramString1, paramString2);
+    }
+  }
+  
+  public boolean applyHiddenApiPolicyCrack(Context paramContext)
+  {
+    return applyHiddenApiPolicyCrack(paramContext.getApplicationInfo());
+  }
+  
+  public void dump()
+  {
+    try
+    {
+      nativeDump();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
   
   public int getJavaThreadPeakCount()
   {
@@ -82,7 +131,9 @@ public class NativeMemoryMonitor
     return nativeGetJavaThreadPeakCount();
   }
   
-  public void init(Context paramContext, long paramLong1, String[] paramArrayOfString, long paramLong2, long paramLong3, long paramLong4)
+  public native String getUndetachThreads();
+  
+  public void init(long paramLong1, String[] paramArrayOfString, long paramLong2, long paramLong3, long paramLong4)
   {
     for (;;)
     {
@@ -101,8 +152,7 @@ public class NativeMemoryMonitor
       }
       finally {}
       logInfoFromNative("init");
-      ApplicationInfo localApplicationInfo = paramContext.getApplicationInfo();
-      nativeInit(paramLong1, paramContext.getPackageName(), localApplicationInfo.nativeLibraryDir, paramArrayOfString, paramLong2, paramLong3, paramLong4);
+      nativeInit(paramLong1, paramArrayOfString, paramLong2, paramLong3, paramLong4);
       this.mInit = true;
     }
   }
@@ -128,9 +178,9 @@ public class NativeMemoryMonitor
     //   22: putfield 63	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:mInitThreadHook	Z
     //   25: aload_0
     //   26: aload_1
-    //   27: invokespecial 160	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:nativeThreadCreateHookInit	(Ljava/lang/String;)V
+    //   27: invokespecial 201	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:nativeThreadCreateHookInit	(Ljava/lang/String;)V
     //   30: aload_0
-    //   31: invokespecial 162	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:nativeThreadHook	()V
+    //   31: invokespecial 203	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:nativeThreadHook	()V
     //   34: goto -24 -> 10
     //   37: astore_1
     //   38: aload_0
@@ -148,14 +198,27 @@ public class NativeMemoryMonitor
     //   13	34	37	finally
   }
   
-  private static class Holder
+  public native void setupASanCallback();
+  
+  public void setupSoLoadHook(Context paramContext, ExternalProvider paramExternalProvider)
   {
-    private static NativeMemoryMonitor INSTANCE = new NativeMemoryMonitor(null);
+    try
+    {
+      externalProvider = paramExternalProvider;
+      paramExternalProvider = paramContext.getApplicationInfo();
+      nativeSoLoadHook(paramContext.getPackageName(), paramExternalProvider.nativeLibraryDir);
+      return;
+    }
+    finally
+    {
+      paramContext = finally;
+      throw paramContext;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nativememorymonitor.library.NativeMemoryMonitor
  * JD-Core Version:    0.7.0.1
  */

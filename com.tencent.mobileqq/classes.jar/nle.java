@@ -1,29 +1,42 @@
-import com.tencent.biz.qqstory.base.preload.PlayingListPreloader;
-import com.tencent.biz.qqstory.playmode.child.SelectVideosPlayMode;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import java.util.ArrayList;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class nle
-  implements Runnable
+public class nle
+  implements bhuk
 {
-  nle(nld paramnld) {}
+  public nle(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.setCurrentItem(this.a.a.a.b, false);
-    if ((this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a != null) && (this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size() > 0))
+    PublicAccountAdvertisementActivity.a(this.a).dismiss();
+    if (paramView != null)
     {
-      this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader.a(this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a);
-      this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.a(1);
+      paramView = PublicAccountAdvertisementActivity.a(this.a).a(paramInt);
+      if (QLog.isColorLevel()) {
+        QLog.i("PublicAccountAdvertisementActivity", 2, "action" + paramView);
+      }
+      if (!TextUtils.isEmpty(paramView))
+      {
+        if (!paramView.equals(this.a.getResources().getString(2131692826))) {
+          break label91;
+        }
+        PublicAccountAdvertisementActivity.d(this.a);
+      }
     }
-    this.a.a.a.jdField_a_of_type_Boolean = true;
+    label91:
+    while (!paramView.equals(this.a.getResources().getString(2131693472))) {
+      return;
+    }
+    asya.a().a(PublicAccountAdvertisementActivity.a(this.a), null, 3, 2);
+    azqs.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FC", "0X80090FC", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nle
  * JD-Core Version:    0.7.0.1
  */

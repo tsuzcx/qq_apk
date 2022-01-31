@@ -16,11 +16,11 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import ccg;
-import cch;
-import cci;
-import ccj;
-import cck;
+import bwl;
+import bwm;
+import bwn;
+import bwo;
+import bwp;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.NearHornHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -68,11 +68,11 @@ public class BaseHornListActivity
   public Context a;
   protected BitmapDrawable a;
   public LayoutInflater a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ccg(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bwl(this);
   public View a;
   protected ListView a;
   protected TextView a;
-  public ccj a;
+  public bwo a;
   public BaseHornListActivity.BaseHornAdapter a;
   public NearHornHandler a;
   public HornDetail a;
@@ -90,7 +90,7 @@ public class BaseHornListActivity
   {
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Ccj = new ccj(this);
+    this.jdField_a_of_type_Bwo = new bwo(this);
   }
   
   public static String a(String paramString)
@@ -583,7 +583,7 @@ public class BaseHornListActivity
   protected void a()
   {
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130839181);
+    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130839183);
     this.jdField_a_of_type_AndroidWidgetTextView.setHeight((int)(35.0F * this.jdField_a_of_type_Float));
     this.jdField_a_of_type_AndroidWidgetListView.addHeaderView(this.jdField_a_of_type_AndroidWidgetTextView, null, false);
   }
@@ -607,9 +607,9 @@ public class BaseHornListActivity
         Object localObject = this.jdField_a_of_type_AndroidWidgetListView.getChildAt(paramInt1);
         if (localObject != null)
         {
-          localObject = (cck)((View)localObject).getTag();
-          if ((localObject != null) && (paramString.equals(((cck)localObject).jdField_a_of_type_JavaLangString))) {
-            ((cck)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+          localObject = (bwp)((View)localObject).getTag();
+          if ((localObject != null) && (paramString.equals(((bwp)localObject).jdField_a_of_type_JavaLangString))) {
+            ((bwp)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
           }
         }
       }
@@ -618,7 +618,7 @@ public class BaseHornListActivity
         if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_ComTencentMobileqqDataHornDetail == null) || (!paramString.equals(this.jdField_a_of_type_ComTencentMobileqqDataHornDetail.uin))) {
           break;
         }
-        ((cck)this.jdField_a_of_type_AndroidViewView.getTag()).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+        ((bwp)this.jdField_a_of_type_AndroidViewView.getTag()).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
         return;
       }
       paramInt1 += 1;
@@ -633,7 +633,7 @@ public class BaseHornListActivity
   protected void a(String paramString)
   {
     FrameLayout localFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
-    localFrameLayout.setBackgroundResource(2130839181);
+    localFrameLayout.setBackgroundResource(2130839183);
     TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
     localTextView.setId(2131230821);
     localFrameLayout.addView(localTextView, new FrameLayout.LayoutParams(-1, -2));
@@ -665,7 +665,7 @@ public class BaseHornListActivity
   protected void b()
   {
     this.p.setVisibility(0);
-    this.p.setImageResource(2130838009);
+    this.p.setImageResource(2130838011);
     this.p.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.p.setContentDescription("更多操作按钮，点击展开");
   }
@@ -1137,8 +1137,8 @@ public class BaseHornListActivity
     localActionSheet.c(2131562420);
     localActionSheet.c(2131562427);
     localActionSheet.d(2131561746);
-    localActionSheet.a(new cch(this));
-    localActionSheet.setOnDismissListener(new cci(this));
+    localActionSheet.a(new bwm(this));
+    localActionSheet.setOnDismissListener(new bwn(this));
     localActionSheet.setCanceledOnTouchOutside(true);
     this.jdField_a_of_type_AndroidAppDialog = localActionSheet;
     try

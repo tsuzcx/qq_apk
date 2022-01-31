@@ -2,152 +2,201 @@ package com.tencent.ttpic.filter;
 
 import android.graphics.Bitmap;
 import android.graphics.PointF;
-import android.graphics.drawable.BitmapDrawable;
+import android.opengl.ETC1Util.ETC1Texture;
 import android.opengl.GLES20;
 import android.text.TextUtils;
-import com.tencent.filter.Param.IntParam;
-import com.tencent.filter.Param.TextureParam;
-import com.tencent.ttpic.cache.ImageMemoryManager;
-import com.tencent.ttpic.config.MediaConfig;
-import com.tencent.ttpic.face.FaceRangeStatus;
-import com.tencent.ttpic.facedetect.FaceDetector;
-import com.tencent.ttpic.facedetect.FaceDetectorManager;
-import com.tencent.ttpic.gles.AttributeParam;
-import com.tencent.ttpic.gles.GlUtil;
-import com.tencent.ttpic.model.FaceActionCounter;
-import com.tencent.ttpic.model.StickerItem;
-import com.tencent.ttpic.model.StickerItem.FeatureStatValueRange;
-import com.tencent.ttpic.recorder.ActVideoDecoder;
-import com.tencent.ttpic.util.AudioUtils;
-import com.tencent.ttpic.util.AudioUtils.Player;
-import com.tencent.ttpic.util.VideoBitmapUtil;
-import com.tencent.ttpic.util.VideoFilterFactory;
-import com.tencent.ttpic.util.VideoFilterUtil;
-import com.tencent.ttpic.util.VideoGlobalContext;
-import com.tencent.ttpic.util.VideoMaterialUtil;
-import com.tencent.ttpic.util.VideoMaterialUtil.ITEM_SOURCE_TYPE;
-import com.tencent.ttpic.util.VideoMaterialUtil.TRIGGER_TYPE;
-import com.tencent.ttpic.util.VideoPrefsUtil;
-import com.tencent.ttpic.util.youtu.VideoPreviewFaceOutlineDetector;
+import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.aekit.openrender.AttributeParam;
+import com.tencent.aekit.openrender.UniformParam.Float2fParam;
+import com.tencent.aekit.openrender.UniformParam.Float3fParam;
+import com.tencent.aekit.openrender.UniformParam.FloatParam;
+import com.tencent.aekit.openrender.UniformParam.IntParam;
+import com.tencent.aekit.openrender.UniformParam.Mat4Param;
+import com.tencent.aekit.openrender.UniformParam.TextureParam;
+import com.tencent.aekit.openrender.internal.VideoFilterBase;
+import com.tencent.aekit.openrender.util.GlUtil;
+import com.tencent.ttpic.baseutils.audio.PlayerUtil;
+import com.tencent.ttpic.baseutils.audio.PlayerUtil.Player;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import com.tencent.ttpic.baseutils.fps.BenchUtil;
+import com.tencent.ttpic.baseutils.log.LogUtils;
+import com.tencent.ttpic.openapi.PTDetectInfo;
+import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
+import com.tencent.ttpic.openapi.config.MediaConfig;
+import com.tencent.ttpic.openapi.model.RedPacketPosition;
+import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.recorder.ActVideoDecoder;
+import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
+import com.tencent.ttpic.openapi.shader.ShaderManager;
+import com.tencent.ttpic.openapi.util.MatrixUtil;
+import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.util.VideoMaterialUtil.ITEM_SOURCE_TYPE;
+import com.tencent.ttpic.openapi.util.VideoPrefsUtil;
+import com.tencent.ttpic.util.PTFaceLogUtil;
+import com.tencent.ttpic.util.VideoFilterFactory.POSITION_TYPE;
+import com.tencent.ttpic.util.VideoFilterFactory.STICKER_TYPE;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public abstract class NormalVideoFilter
   extends VideoFilterBase
 {
   private static final String TAG = NormalVideoFilter.class.getSimpleName();
+  protected float audioScaleFactor = 1.0F;
+  protected long firstTriggerInStateTime = 0L;
+  protected int frameIndex;
   protected long frameStartTime;
+  private boolean gotSpritePicture = false;
+  protected ArrayList<RedPacketPosition> hotAreaPositions;
+  protected boolean isFirstTriggered;
   protected boolean isImageReady;
-  protected int lastImageIndex = -1;
-  private AudioUtils.Player mPlayer;
+  protected boolean isInState = false;
+  protected boolean isRenderForBitmap;
+  protected StickerItem item;
+  private int lastImageIndex = -1;
+  private boolean mAudioPause;
+  private boolean mHasBodyDetected = false;
+  private boolean mHasSeenValid = false;
+  private boolean mIsNeedSeekTime = false;
+  private PlayerUtil.Player mPlayer;
+  public List<PointF> mPreviousBodyPoints = null;
+  private long mPreviousLostTime = System.currentTimeMillis();
+  private long mTimesForLostProtect = 2000L;
   protected ActVideoDecoder mVideoDecoder;
-  protected final String materialId;
-  protected int playCount = 0;
-  protected int[] tex = new int[1];
+  protected int playMode = 0;
+  private int spritePictureColumn;
+  private int spritePictureHeight;
+  private int spritePictureRow;
+  private int spritePictureWidth;
+  private int[] tex = new int[2];
   protected boolean triggered = false;
   
   public NormalVideoFilter(StickerItem paramStickerItem, String paramString)
   {
-    super(VideoFilterFactory.VERTEX_SHADER_COMMON, VideoFilterFactory.FRAGMENT_SHADER_IMAGE, paramStickerItem);
-    if (paramStickerItem.anchorPoint != null)
-    {
-      int i = 0;
-      while (i < paramStickerItem.anchorPoint.length)
-      {
-        int[] arrayOfInt = paramStickerItem.anchorPoint;
-        arrayOfInt[i] = ((int)(arrayOfInt[i] * 1.0D));
-        i += 1;
-      }
-    }
-    paramStickerItem.width = ((int)(paramStickerItem.width * 1.0D));
-    paramStickerItem.height = ((int)(paramStickerItem.height * 1.0D));
-    paramStickerItem.scaleFactor = ((int)(paramStickerItem.scaleFactor * 1.0D));
+    super(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.STICKER_NORMAL));
+    this.item = paramStickerItem;
     this.dataPath = paramString;
-    this.materialId = VideoMaterialUtil.getMaterialId(paramString);
-    setStickerItem(paramStickerItem);
-    setDrawPartial(true);
     initParams();
+    initAudio();
   }
   
-  public NormalVideoFilter(String paramString1, String paramString2, StickerItem paramStickerItem, String paramString3)
+  public NormalVideoFilter(StickerItem paramStickerItem, String paramString1, String paramString2, String paramString3)
   {
-    super(paramString1, paramString2, paramStickerItem);
-    if (paramStickerItem.anchorPoint != null)
-    {
-      int i = 0;
-      while (i < paramStickerItem.anchorPoint.length)
-      {
-        paramString1 = paramStickerItem.anchorPoint;
-        paramString1[i] = ((int)(paramString1[i] * 1.0D));
-        i += 1;
-      }
-    }
-    paramStickerItem.width = ((int)(paramStickerItem.width * 1.0D));
-    paramStickerItem.height = ((int)(paramStickerItem.height * 1.0D));
-    paramStickerItem.scaleFactor = ((int)(paramStickerItem.scaleFactor * 1.0D));
-    this.dataPath = paramString3;
-    this.materialId = VideoMaterialUtil.getMaterialId(paramString3);
-    setStickerItem(paramStickerItem);
-    setDrawPartial(true);
+    super(paramString2, paramString3);
+    this.item = paramStickerItem;
+    this.dataPath = paramString1;
     initParams();
+    initAudio();
   }
   
-  private int getFrameIndex(FaceRangeStatus paramFaceRangeStatus, long paramLong)
+  private void avoidBodyPointsShake(PTDetectInfo paramPTDetectInfo)
   {
-    if (!this.triggered) {
-      this.frameStartTime = paramLong;
-    }
-    long l = this.frameStartTime;
-    int i = 0;
-    if (this.item.frameType == 0)
+    if ((paramPTDetectInfo.bodyPoints == null) || (paramPTDetectInfo.bodyPoints.isEmpty()))
     {
-      i = (int)((paramLong - l) / Math.max(this.item.frameDuration, 1.0D));
-      if (i >= this.item.frames * (this.playCount + 1))
+      this.mHasBodyDetected = false;
+      if (this.mHasSeenValid)
       {
-        this.playCount += 1;
-        if (!VideoPrefsUtil.getMaterialMute()) {
-          AudioUtils.startPlayer(this.mPlayer, false);
+        if (System.currentTimeMillis() - this.mPreviousLostTime < this.mTimesForLostProtect) {
+          paramPTDetectInfo.bodyPoints = this.mPreviousBodyPoints;
         }
       }
-      i %= Math.max(this.item.frames, 1);
+      else {
+        return;
+      }
+      this.mHasSeenValid = false;
+      this.mPreviousBodyPoints = null;
+      return;
     }
-    while (this.item.frameType != 1) {
-      return i;
-    }
-    return (int)((VideoFilterUtil.getFaceStatus(paramFaceRangeStatus, this.item.featureStatType, this.item.featureStatValueRange) - this.item.featureStatValueRange.min) / ((this.item.featureStatValueRange.max - this.item.featureStatValueRange.min) / this.item.frames));
+    this.mHasBodyDetected = true;
+    this.mHasSeenValid = true;
+    this.mPreviousLostTime = System.currentTimeMillis();
+    this.mPreviousBodyPoints = paramPTDetectInfo.bodyPoints;
   }
   
   private int getNextFrame(int paramInt)
   {
-    this.isImageReady = false;
-    if (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE)
+    if (VideoMaterialUtil.isEmptyItem(this.item)) {
+      return this.tex[0];
+    }
+    if ((this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG) && (this.mVideoDecoder != null))
     {
       this.mVideoDecoder.decodeFrame(paramInt);
-      this.mVideoDecoder.updateFrame();
-      this.isImageReady = true;
+      if (this.mVideoDecoder.updateFrame()) {
+        this.isImageReady = true;
+      }
+      this.lastImageIndex = paramInt;
     }
+    label404:
     for (;;)
     {
       return this.tex[0];
-      Bitmap localBitmap = ImageMemoryManager.getInstance().loadImage(this.item.id, paramInt);
-      int i = 0;
-      Object localObject = localBitmap;
-      if (localBitmap == null)
-      {
-        i = 1;
-        localObject = this.dataPath + File.separator + this.item.subFolder + File.separator + this.item.id + "_" + paramInt + ".png";
-        localObject = VideoBitmapUtil.decodeSampleBitmap(VideoGlobalContext.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
-      }
-      if (VideoBitmapUtil.isLegal((Bitmap)localObject))
-      {
-        GlUtil.loadTexture(this.tex[0], (Bitmap)localObject);
-        if (i != 0) {
-          ((Bitmap)localObject).recycle();
+      if (this.tex[0] != 0) {
+        if ((this.item.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG) && (!VideoMemoryManager.getInstance().isExtraStickerBitmap(this.item.id)))
+        {
+          if (VideoMemoryManager.getInstance().loadExtraStickerTxt(this.item.id, paramInt, this.tex[0]) >= 0)
+          {
+            this.isImageReady = true;
+            this.lastImageIndex = paramInt;
+          }
         }
-        this.isImageReady = true;
+        else
+        {
+          Object localObject = VideoMemoryManager.getInstance().loadImage(this.item.id, paramInt);
+          if ((localObject == null) && ((VideoMemoryManager.getInstance().isForceLoadFromSdCard()) || (!this.isImageReady) || (this.isRenderForBitmap)))
+          {
+            localObject = this.dataPath + File.separator + this.item.subFolder + File.separator + this.item.id + "_" + paramInt + ".png";
+            localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
+          }
+          for (int i = 1;; i = 0) {
+            for (;;)
+            {
+              if (!BitmapUtils.isLegal((Bitmap)localObject)) {
+                break label404;
+              }
+              BenchUtil.benchStart("normal loadTexture");
+              try
+              {
+                GlUtil.loadTexture(this.tex[0], (Bitmap)localObject);
+                BenchUtil.benchEnd("normal loadTexture");
+                this.spritePictureWidth = ((Bitmap)localObject).getWidth();
+                this.spritePictureHeight = ((Bitmap)localObject).getHeight();
+                if (i != 0)
+                {
+                  ((Bitmap)localObject).recycle();
+                  this.isImageReady = true;
+                  this.lastImageIndex = paramInt;
+                }
+              }
+              catch (Exception localException)
+              {
+                for (;;)
+                {
+                  PTFaceLogUtil.e(TAG, "getNextFrame:loadTexture Exception:" + localException.getMessage());
+                  continue;
+                  VideoMemoryManager.getInstance().recycleBitmap(this.item.id, (Bitmap)localObject);
+                }
+              }
+            }
+          }
+        }
       }
     }
+  }
+  
+  private void initAudio()
+  {
+    if (this.mPlayer != null) {}
+    while ((this.item == null) || (TextUtils.isEmpty(this.dataPath)) || (TextUtils.isEmpty(this.item.id)) || (TextUtils.isEmpty(this.item.audio))) {
+      return;
+    }
+    String str = this.dataPath + File.separator + this.item.id + File.separator + this.item.audio;
+    if (str.startsWith("assets://"))
+    {
+      this.mPlayer = PlayerUtil.createPlayerFromAssets(AEModule.getContext(), str.replace("assets://", ""), false);
+      return;
+    }
+    this.mPlayer = PlayerUtil.createPlayerFromUri(AEModule.getContext(), str, false);
   }
   
   private boolean isFullScreenRender(AttributeParam paramAttributeParam)
@@ -176,40 +225,62 @@ public abstract class NormalVideoFilter
   public void ApplyGLSLFilter()
   {
     super.ApplyGLSLFilter();
-    GLES20.glGenTextures(this.tex.length, this.tex, 0);
-    if (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE) {
-      this.mVideoDecoder = new ActVideoDecoder(this.dataPath + File.separator + this.item.subFolder + File.separator + this.item.id + ".mp4", this.tex[0]);
+    GlUtil.createEtcTexture(this.tex);
+    if ((this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG))
+    {
+      String str2 = this.dataPath + File.separator + this.item.subFolder + File.separator + this.item.id;
+      String str1 = str2;
+      if (!str2.endsWith(".mp4")) {
+        str1 = str2 + ".mp4";
+      }
+      this.mVideoDecoder = new ActVideoDecoder(str1, this.tex[0]);
+    }
+    if (this.item.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG) {
+      VideoMemoryManager.getInstance().initInGLThread(this.item.id, this.tex[0]);
     }
   }
   
   public boolean canUseBlendMode()
   {
-    return (this.item.blendMode < 2) || (this.item.blendMode > 12);
+    return (this.item != null) && (this.item.blendMode < 2);
   }
   
   public void clearGLSLSelf()
   {
+    int i = 0;
     super.clearGLSLSelf();
     GLES20.glDeleteTextures(this.tex.length, this.tex, 0);
-    if (this.mVideoDecoder != null) {
-      this.mVideoDecoder.release();
+    try
+    {
+      while (i < this.tex.length)
+      {
+        this.tex[i] = 0;
+        i += 1;
+      }
+      if (this.mVideoDecoder != null)
+      {
+        this.mVideoDecoder.release();
+        this.mVideoDecoder = null;
+      }
+      return;
     }
+    finally {}
   }
   
   protected void clearTextureParam()
   {
-    setPositions(VideoFilterUtil.EMPTY_POSITIONS);
+    setPositions(GlUtil.EMPTY_POSITIONS);
   }
   
   public void destroy()
   {
     clearGLSLSelf();
-    AudioUtils.destroyPlayer(this.mPlayer);
+    destroyAudio();
   }
   
   public void destroyAudio()
   {
-    AudioUtils.destroyPlayer(this.mPlayer);
+    PlayerUtil.destroyPlayer(this.mPlayer);
     this.mPlayer = null;
   }
   
@@ -221,15 +292,69 @@ public abstract class NormalVideoFilter
     return (float)((paramLong - this.frameStartTime) / 1000.0D);
   }
   
+  public int getFrameIndex()
+  {
+    return this.frameIndex;
+  }
+  
+  public long getFrameStartTime()
+  {
+    return this.frameStartTime;
+  }
+  
   public int getLastFrameIndex()
   {
     return this.lastImageIndex;
   }
   
+  public StickerItem getStickerItem()
+  {
+    return this.item;
+  }
+  
+  protected int getTextureId()
+  {
+    return this.tex[0];
+  }
+  
   public void initParams()
   {
-    addParam(new Param.IntParam("blendMode", this.item.blendMode));
-    addParam(new Param.TextureParam("inputImageTexture2", 0, 33986));
+    int i = -1;
+    int j;
+    if (this.item.transformType == 1) {
+      j = 1;
+    }
+    for (;;)
+    {
+      addParam(new UniformParam.IntParam("blendMode", this.item.blendMode));
+      addParam(new UniformParam.TextureParam("inputImageTexture2", 0, 33986));
+      addParam(new UniformParam.TextureParam("inputImageTexture3", 0, 33987));
+      addParam(new UniformParam.IntParam("texNeedTransform", 1));
+      addParam(new UniformParam.Float2fParam("canvasSize", 0.0F, 0.0F));
+      addParam(new UniformParam.Float2fParam("texAnchor", 0.0F, 0.0F));
+      addParam(new UniformParam.FloatParam("texScale", 1.0F));
+      addParam(new UniformParam.FloatParam("texScaleX", j));
+      addParam(new UniformParam.FloatParam("texScaleY", i));
+      addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
+      addParam(new UniformParam.FloatParam("alpha", 1.0F));
+      addParam(new UniformParam.Mat4Param("u_MVPMatrix", MatrixUtil.getMVPMatrix(6.0F, 4.0F, 10.0F)));
+      return;
+      if (this.item.transformType == 2)
+      {
+        j = -1;
+        i = 1;
+      }
+      else
+      {
+        i = 1;
+        j = 1;
+      }
+    }
+  }
+  
+  public boolean isFirstTriggered()
+  {
+    return this.isFirstTriggered;
   }
   
   public boolean isRenderReady()
@@ -237,13 +362,23 @@ public abstract class NormalVideoFilter
     return (this.triggered) && (this.isImageReady);
   }
   
+  public boolean isStaticSticker()
+  {
+    return (this.item != null) && ((this.item.type == VideoFilterFactory.POSITION_TYPE.STATIC.type) || (this.item.type == VideoFilterFactory.POSITION_TYPE.RELATIVE.type));
+  }
+  
   public boolean needCopyTex()
   {
     if (this.item == null) {}
-    while ((this.item.blendMode < 2) || (this.item.blendMode > 12) || (isFullScreenRender(getAttribParam("position")))) {
+    while ((this.item.blendMode < 2) || (this.item.blendMode > 12)) {
       return false;
     }
     return true;
+  }
+  
+  boolean needLoadImage()
+  {
+    return (this.item.stickerType != VideoFilterFactory.STICKER_TYPE.FACE_FEATURE.type) && (this.item.stickerType != VideoFilterFactory.STICKER_TYPE.SNAP_SHOT.type);
   }
   
   public boolean needRenderTexture()
@@ -251,144 +386,287 @@ public abstract class NormalVideoFilter
     return this.triggered;
   }
   
-  public void setBitmapDrawable(BitmapDrawable paramBitmapDrawable) {}
-  
-  public void setStickerItem(StickerItem paramStickerItem)
+  public void reset()
   {
-    this.item = paramStickerItem;
+    this.mHasBodyDetected = false;
+    this.mHasSeenValid = false;
+    this.mPreviousBodyPoints = null;
+    this.mAudioPause = false;
   }
   
-  protected void updateActionTriggered(Map<Integer, FaceActionCounter> paramMap, FaceRangeStatus paramFaceRangeStatus, long paramLong)
+  public void setAudioPause(boolean paramBoolean)
   {
-    if (this.item == null) {}
-    label142:
-    label327:
-    label357:
-    label492:
-    label502:
+    this.mAudioPause = paramBoolean;
+  }
+  
+  public void setAudioScaleFactor(float paramFloat)
+  {
+    this.audioScaleFactor = paramFloat;
+  }
+  
+  public void setFirstTriggerInStateTime(long paramLong)
+  {
+    this.firstTriggerInStateTime = paramLong;
+  }
+  
+  public void setFirstTriggered(boolean paramBoolean)
+  {
+    this.isFirstTriggered = paramBoolean;
+  }
+  
+  public void setFrameIndex(int paramInt)
+  {
+    this.frameIndex = paramInt;
+  }
+  
+  public void setFrameStartTime(long paramLong)
+  {
+    this.frameStartTime = paramLong;
+  }
+  
+  public void setHotAreaPosition(ArrayList<RedPacketPosition> paramArrayList)
+  {
+    this.hotAreaPositions = paramArrayList;
+  }
+  
+  public void setIsInState(boolean paramBoolean)
+  {
+    this.isInState = paramBoolean;
+  }
+  
+  public void setLastFrameIndex(int paramInt)
+  {
+    this.lastImageIndex = paramInt;
+  }
+  
+  public void setPlayMode(int paramInt)
+  {
+    this.playMode = paramInt;
+  }
+  
+  public void setRenderForBitmap(boolean paramBoolean)
+  {
+    this.isRenderForBitmap = paramBoolean;
+  }
+  
+  public void setTriggered(boolean paramBoolean)
+  {
+    this.triggered = paramBoolean;
+  }
+  
+  public void stopAndResetAudio()
+  {
+    PlayerUtil.stopAndResetPlayer(this.mPlayer);
+  }
+  
+  public void updateHotArea(ArrayList<RedPacketPosition> paramArrayList)
+  {
+    if (paramArrayList != null) {
+      this.hotAreaPositions.addAll(paramArrayList);
+    }
+  }
+  
+  protected void updatePlayer(boolean paramBoolean)
+  {
+    if (!this.triggered)
+    {
+      destroyAudio();
+      if ((this.playMode == 1) && (this.isInState)) {
+        this.mIsNeedSeekTime = true;
+      }
+    }
     do
     {
-      int j;
-      int i;
-      boolean bool;
       do
       {
         return;
-        j = 0;
-        if (this.item.activateTriggerTotalCount == 0) {
-          break label357;
-        }
-        i = j;
-        if (FaceDetectorManager.getInstance().getCurrentFaceDetector().detectExpression(this.item.preTriggerType))
-        {
-          i = j;
-          if (((FaceActionCounter)paramMap.get(Integer.valueOf(this.item.countTriggerType))).count % this.item.activateTriggerTotalCount == this.item.activateTriggerCount)
-          {
-            if ((this.item.playCount != 0) && (this.playCount >= this.item.playCount)) {
-              break;
-            }
-            j = 1;
-            if (this.playCount >= this.item.playCount) {
-              break label327;
-            }
-            FaceDetectorManager.getInstance().getCurrentFaceDetector().lockActionCounter();
-            i = j;
-          }
-        }
-        if (i == 0) {
-          break label502;
-        }
-        bool = false;
-        if (!this.triggered)
-        {
-          this.frameStartTime = paramLong;
-          bool = true;
-        }
-        this.triggered = true;
-      } while ((this.item == null) || (TextUtils.isEmpty(this.dataPath)) || (TextUtils.isEmpty(this.item.id)) || (TextUtils.isEmpty(this.item.audio)));
-      if ((this.mPlayer == null) && (!VideoPrefsUtil.getMaterialMute()))
-      {
-        paramMap = this.dataPath + File.separator + this.item.id + File.separator + this.item.audio;
-        if (!paramMap.startsWith("assets://")) {
-          break label477;
-        }
-      }
-      for (this.mPlayer = AudioUtils.createPlayerFromAssets(VideoGlobalContext.getContext(), paramMap.replace("assets://", ""), false);; this.mPlayer = AudioUtils.createPlayerFromUri(VideoGlobalContext.getContext(), paramMap, false))
-      {
-        if (!VideoPrefsUtil.getMaterialMute()) {
-          break label492;
-        }
-        AudioUtils.stopPlayer(this.mPlayer);
-        return;
-        j = 0;
-        break;
-        i = j;
-        if (this.item.playCount <= 0) {
-          break label142;
-        }
-        FaceDetectorManager.getInstance().getCurrentFaceDetector().clearActionCounter();
-        i = j;
-        break label142;
-        if (this.item.isFabbyMvItem)
-        {
-          if (((FaceActionCounter)paramMap.get(Integer.valueOf(VideoMaterialUtil.TRIGGER_TYPE.FABBY_PART.value))).count % this.item.fabbyTotalParts == this.item.fabbyPart)
-          {
-            i = 1;
-            break label142;
-          }
-          i = 0;
-          break label142;
-        }
-        if (((FaceDetectorManager.getInstance().getCurrentFaceDetector().detectExpression(this.item.triggerType)) && (VideoFilterUtil.isStatusTriggered(paramFaceRangeStatus, this.item.featureStatType, this.item.featureStatValueRange))) || (this.mIsRenderForBitmap)) {}
-        for (i = 1;; i = 0) {
+        if ((VideoPrefsUtil.getMaterialMute()) || (this.mAudioPause)) {
           break;
         }
+        initAudio();
+      } while (this.mPlayer == null);
+      if (this.item.audioLoopCount <= 0) {
+        break;
       }
-      AudioUtils.startPlayer(this.mPlayer, bool);
+    } while (!paramBoolean);
+    if (this.playMode == 0)
+    {
+      PlayerUtil.startPlayer(this.mPlayer, true);
       return;
-    } while ((!this.item.alwaysTriggered) && (this.playCount < this.item.playCount));
-    label477:
-    this.triggered = false;
-    AudioUtils.stopPlayer(this.mPlayer);
+    }
+    long l;
+    if ((this.playMode == 1) && (this.mIsNeedSeekTime))
+    {
+      l = System.currentTimeMillis();
+      PlayerUtil.seekPlayer(this.mPlayer, (int)(l - this.firstTriggerInStateTime) % this.mPlayer.getDuration());
+      this.mIsNeedSeekTime = false;
+      return;
+    }
+    PlayerUtil.startPlayer(this.mPlayer, false);
+    return;
+    if (this.playMode == 0)
+    {
+      PlayerUtil.startPlayer(this.mPlayer, paramBoolean);
+      return;
+    }
+    if ((this.playMode == 1) && (this.mIsNeedSeekTime))
+    {
+      l = System.currentTimeMillis();
+      PlayerUtil.seekPlayer(this.mPlayer, (int)(l - this.firstTriggerInStateTime) % this.mPlayer.getDuration());
+      this.mIsNeedSeekTime = false;
+      return;
+    }
+    PlayerUtil.startPlayer(this.mPlayer, false);
+    return;
+    PlayerUtil.stopPlayer(this.mPlayer);
   }
+  
+  protected void updatePositions(List<PointF> paramList) {}
+  
+  protected void updatePositions(List<PointF> paramList, int paramInt) {}
   
   protected abstract void updatePositions(List<PointF> paramList, float[] paramArrayOfFloat, float paramFloat);
   
-  public void updatePreview(List<PointF> paramList, float[] paramArrayOfFloat, Map<Integer, FaceActionCounter> paramMap, float paramFloat, long paramLong)
+  protected void updatePositionsForMultiAnchor(List<PointF> paramList, int paramInt) {}
+  
+  public void updatePreview(Object paramObject)
   {
-    FaceRangeStatus localFaceRangeStatus = VideoPreviewFaceOutlineDetector.getInstance().detectFaceRangeStatus(paramList);
-    int i = getFrameIndex(localFaceRangeStatus, paramLong);
-    updateActionTriggered(paramMap, localFaceRangeStatus, paramLong);
-    if (!needRenderTexture())
+    int i;
+    if ((paramObject instanceof PTDetectInfo))
     {
-      clearTextureParam();
-      this.playCount = 0;
-      this.lastImageIndex = -1;
-      ImageMemoryManager.getInstance().reset(this.item.id);
-      if (this.mVideoDecoder != null) {
-        this.mVideoDecoder.reset();
+      paramObject = (PTDetectInfo)paramObject;
+      if (VideoMaterialUtil.isBodyDetectItem(this.item)) {
+        avoidBodyPointsShake(paramObject);
       }
+      updatePlayer(this.isFirstTriggered);
+      i = this.frameIndex;
+      if (!needRenderTexture())
+      {
+        clearTextureParam();
+        VideoMemoryManager.getInstance().reset(this.item.id);
+        updateTextureParam(0, paramObject.timestamp);
+      }
+    }
+    else
+    {
       return;
     }
-    updatePositions(paramList, paramArrayOfFloat, paramFloat);
-    updateTextureParam(i, paramLong);
+    if (VideoMaterialUtil.isGestureItem(this.item)) {
+      updatePositions(paramObject.handPoints);
+    }
+    for (;;)
+    {
+      updateTextureParam(i, paramObject.timestamp);
+      return;
+      if (VideoMaterialUtil.isBodyDetectItem(this.item))
+      {
+        if (VideoMaterialUtil.isBody4AnchorItem(this.item)) {
+          updatePositionsForMultiAnchor(paramObject.bodyPoints, 4);
+        }
+        for (;;)
+        {
+          if (this.mHasBodyDetected) {
+            break label177;
+          }
+          paramObject.bodyPoints = null;
+          break;
+          if (VideoMaterialUtil.isBody2AnchorItem(this.item)) {
+            updatePositionsForMultiAnchor(paramObject.bodyPoints, 2);
+          } else {
+            updatePositions(paramObject.bodyPoints);
+          }
+        }
+      }
+      else
+      {
+        label177:
+        updatePositions(paramObject.facePoints, paramObject.faceAngles, paramObject.phoneAngle);
+      }
+    }
+  }
+  
+  public void updateRandomGroupValue(int paramInt) {}
+  
+  public void updateTextureParam(int paramInt)
+  {
+    if (needLoadImage()) {
+      return;
+    }
+    addParam(new UniformParam.TextureParam("inputImageTexture2", paramInt, 33986));
+    this.isImageReady = true;
   }
   
   protected void updateTextureParam(int paramInt, long paramLong)
   {
-    if (paramInt == this.lastImageIndex) {
+    if (!needLoadImage()) {
+      break label7;
+    }
+    for (;;)
+    {
+      label7:
       return;
+      if (paramInt != this.lastImageIndex)
+      {
+        if ((this.lastImageIndex > paramInt) && (this.mVideoDecoder != null)) {
+          this.mVideoDecoder.reset();
+        }
+        if (this.item.stickerType == VideoFilterFactory.STICKER_TYPE.ETC.type)
+        {
+          ETC1Util.ETC1Texture localETC1Texture1 = VideoMemoryManager.getInstance().loadETCRGBTexture(this.item.id, paramInt);
+          ETC1Util.ETC1Texture localETC1Texture2 = VideoMemoryManager.getInstance().loadETCAlphaTexture(this.item.id, paramInt);
+          if ((localETC1Texture1 == null) || (localETC1Texture2 == null)) {
+            break;
+          }
+          BenchUtil.benchStart("mPkmReader loadTexture");
+          GlUtil.loadTexture(this.tex[0], localETC1Texture1);
+          GlUtil.loadTexture(this.tex[1], localETC1Texture2);
+          BenchUtil.benchEnd("mPkmReader loadTexture");
+          addParam(new UniformParam.TextureParam("inputImageTexture2", this.tex[0], 33986));
+          addParam(new UniformParam.TextureParam("inputImageTexture3", this.tex[1], 33987));
+          this.isImageReady = true;
+          this.lastImageIndex = paramInt;
+          return;
+        }
+        if (this.item.stickerType != VideoFilterFactory.STICKER_TYPE.SPIRITE.type) {
+          break label453;
+        }
+        if (!this.gotSpritePicture)
+        {
+          addParam(new UniformParam.TextureParam("inputImageTexture2", getNextFrame(paramInt), 33986));
+          this.gotSpritePicture = true;
+          if ((this.item.frameSize == null) || (this.item.frameSize.length < 2)) {
+            break label441;
+          }
+          this.spritePictureColumn = (this.spritePictureWidth / this.item.frameSize[0]);
+          this.spritePictureRow = (this.spritePictureHeight / this.item.frameSize[1]);
+        }
+        while (paramInt < this.spritePictureColumn * this.spritePictureRow)
+        {
+          float f1 = 1.0F / this.spritePictureRow * Math.min(this.spritePictureRow - 1, paramInt / this.spritePictureColumn);
+          float f2 = Math.min(1.0F / this.spritePictureRow + f1, 1.0F);
+          float f3 = 1.0F / this.spritePictureColumn * (paramInt % this.spritePictureColumn);
+          float f4 = Math.min(1.0F / this.spritePictureColumn + f3, 1.0F);
+          setTexCords(new float[] { f3, f1, f3, f2, f4, f2, f4, f1 });
+          this.lastImageIndex = paramInt;
+          return;
+          label441:
+          LogUtils.e(TAG, "SPIRITE Invalid frameSize.");
+        }
+      }
     }
-    if ((this.lastImageIndex > paramInt) && (this.mVideoDecoder != null)) {
-      this.mVideoDecoder.reset();
-    }
-    addParam(new Param.TextureParam("inputImageTexture2", getNextFrame(paramInt), 33986));
-    this.lastImageIndex = paramInt;
+    label453:
+    addParam(new UniformParam.TextureParam("inputImageTexture2", getNextFrame(paramInt), 33986));
+  }
+  
+  public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
+  {
+    super.updateVideoSize(paramInt1, paramInt2, paramDouble);
+    addParam(new UniformParam.Float2fParam("canvasSize", paramInt1, paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.filter.NormalVideoFilter
  * JD-Core Version:    0.7.0.1
  */

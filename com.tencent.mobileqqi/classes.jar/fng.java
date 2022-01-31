@@ -1,18 +1,80 @@
-import com.tencent.mobileqq.app.message.BaseMessageManager;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import java.util.Map;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.pic.ReportInfo;
 
-class fng
-  implements Runnable
+public final class fng
+  implements Parcelable.Creator
 {
-  fng(fnf paramfnf) {}
-  
-  public void run()
+  public MessageForPic a(Parcel paramParcel)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a.b.containsKey(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a.b.remove(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
+    boolean bool2 = true;
+    MessageForPic localMessageForPic = new MessageForPic();
+    localMessageForPic.path = paramParcel.readString();
+    localMessageForPic.size = paramParcel.readLong();
+    localMessageForPic.type = paramParcel.readInt();
+    if (paramParcel.readInt() == 1)
+    {
+      bool1 = true;
+      localMessageForPic.isRead = bool1;
+      localMessageForPic.uuid = paramParcel.readString();
+      localMessageForPic.groupFileID = paramParcel.readLong();
+      localMessageForPic.md5 = paramParcel.readString();
+      localMessageForPic.serverStoreSource = paramParcel.readString();
+      localMessageForPic.thumbMsgUrl = paramParcel.readString();
+      localMessageForPic.thumbWidth = paramParcel.readInt();
+      localMessageForPic.thumbHeight = paramParcel.readInt();
+      localMessageForPic.bigMsgUrl = paramParcel.readString();
+      localMessageForPic.rawMsgUrl = paramParcel.readString();
+      localMessageForPic.fileSizeFlag = paramParcel.readInt();
+      localMessageForPic.picExtraFlag = paramParcel.readInt();
+      if (paramParcel.readInt() != 1) {
+        break label390;
+      }
+      bool1 = true;
+      label163:
+      localMessageForPic.isMixed = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label395;
+      }
     }
+    label390:
+    label395:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localMessageForPic.isShareAppActionMsg = bool1;
+      localMessageForPic.action = paramParcel.readString();
+      localMessageForPic.shareAppID = paramParcel.readLong();
+      localMessageForPic.actMsgContentValue = paramParcel.readString();
+      localMessageForPic.localUUID = paramParcel.readString();
+      localMessageForPic.subMsgId = paramParcel.readInt();
+      localMessageForPic.isReport = paramParcel.readInt();
+      localMessageForPic.subVersion = paramParcel.readInt();
+      localMessageForPic.busiType = paramParcel.readInt();
+      localMessageForPic.frienduin = paramParcel.readString();
+      localMessageForPic.selfuin = paramParcel.readString();
+      localMessageForPic.senderuin = paramParcel.readString();
+      localMessageForPic.istroop = paramParcel.readInt();
+      localMessageForPic.versionCode = paramParcel.readInt();
+      localMessageForPic.uniseq = paramParcel.readLong();
+      localMessageForPic.issend = paramParcel.readInt();
+      localMessageForPic.time = paramParcel.readLong();
+      localMessageForPic.msgtype = paramParcel.readInt();
+      localMessageForPic.preDownState = paramParcel.readInt();
+      localMessageForPic.preDownNetworkType = paramParcel.readInt();
+      localMessageForPic.previewed = paramParcel.readInt();
+      localMessageForPic.reportInfo = ((ReportInfo)paramParcel.readParcelable(ReportInfo.class.getClassLoader()));
+      return localMessageForPic;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label163;
+    }
+  }
+  
+  public MessageForPic[] a(int paramInt)
+  {
+    return new MessageForPic[paramInt];
   }
 }
 

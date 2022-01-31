@@ -1,26 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class afhp
-  implements DialogInterface.OnClickListener
+class afhp
+  extends aepm
 {
-  public afhp(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel, QQCustomDialog paramQQCustomDialog) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView b;
+  TextView c;
+  TextView d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    }
-    while (paramInt != 0) {
-      return;
-    }
-  }
+  afhp(afhn paramafhn) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afhp
  * JD-Core Version:    0.7.0.1
  */

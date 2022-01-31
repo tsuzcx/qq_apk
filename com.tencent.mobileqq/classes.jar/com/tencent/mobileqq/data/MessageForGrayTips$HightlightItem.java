@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.data;
 
+import bdoo;
+
 public class MessageForGrayTips$HightlightItem
 {
   public int actionType;
@@ -7,6 +9,7 @@ public class MessageForGrayTips$HightlightItem
   public int groupId;
   public String icon;
   public String iconAlt;
+  private int iconSize = bdoo.b(16.0F);
   public String mMsgActionData;
   public String mMsg_A_ActionData;
   public boolean needUpdateNick;
@@ -45,10 +48,15 @@ public class MessageForGrayTips$HightlightItem
     this.remark = paramString5;
     this.groupId = paramInt6;
   }
+  
+  public int getIconSize()
+  {
+    return this.iconSize;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem
  * JD-Core Version:    0.7.0.1
  */

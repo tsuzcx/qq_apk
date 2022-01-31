@@ -34,27 +34,16 @@ public class HorizontialListView
   private AdapterView.OnItemSelectedListener l;
   private AdapterView.OnItemClickListener m;
   private boolean n = false;
-  private DataSetObserver o = new bc(this);
-  private GestureDetector.OnGestureListener p = new be(this);
+  private DataSetObserver o = new be(this);
+  private GestureDetector.OnGestureListener p = new bg(this);
   
   public HorizontialListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    b();
+    a();
   }
   
-  private void a(View paramView, int paramInt)
-  {
-    ViewGroup.LayoutParams localLayoutParams2 = paramView.getLayoutParams();
-    ViewGroup.LayoutParams localLayoutParams1 = localLayoutParams2;
-    if (localLayoutParams2 == null) {
-      localLayoutParams1 = new ViewGroup.LayoutParams(-1, -1);
-    }
-    addViewInLayout(paramView, paramInt, localLayoutParams1, true);
-    paramView.measure(View.MeasureSpec.makeMeasureSpec(getWidth(), -2147483648), View.MeasureSpec.makeMeasureSpec(getHeight(), -2147483648));
-  }
-  
-  private void b()
+  private void a()
   {
     try
     {
@@ -75,11 +64,54 @@ public class HorizontialListView
     }
   }
   
-  private void c()
+  private void a(int paramInt)
+  {
+    int i2 = 0;
+    View localView = getChildAt(getChildCount() - 1);
+    if (localView != null) {}
+    for (int i1 = localView.getRight();; i1 = 0)
+    {
+      a(i1, paramInt);
+      localView = getChildAt(0);
+      i1 = i2;
+      if (localView != null) {
+        i1 = localView.getLeft();
+      }
+      b(i1, paramInt);
+      return;
+    }
+  }
+  
+  private void a(int paramInt1, int paramInt2)
+  {
+    while ((paramInt1 + paramInt2 < getWidth()) && (this.g < this.b.getCount()))
+    {
+      View localView = this.b.getView(this.g, (View)this.k.poll(), this);
+      a(localView, -1);
+      paramInt1 += localView.getMeasuredWidth();
+      if (this.g == this.b.getCount() - 1) {
+        this.h = (this.c + paramInt1 - getWidth());
+      }
+      this.g += 1;
+    }
+  }
+  
+  private void a(View paramView, int paramInt)
+  {
+    ViewGroup.LayoutParams localLayoutParams2 = paramView.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams1 = localLayoutParams2;
+    if (localLayoutParams2 == null) {
+      localLayoutParams1 = new ViewGroup.LayoutParams(-1, -1);
+    }
+    addViewInLayout(paramView, paramInt, localLayoutParams1, true);
+    paramView.measure(View.MeasureSpec.makeMeasureSpec(getWidth(), -2147483648), View.MeasureSpec.makeMeasureSpec(getHeight(), -2147483648));
+  }
+  
+  private void b()
   {
     try
     {
-      b();
+      a();
       removeAllViewsInLayout();
       requestLayout();
       return;
@@ -91,27 +123,64 @@ public class HorizontialListView
     }
   }
   
-  public final void a(ListAdapter paramListAdapter)
+  private void b(int paramInt)
   {
-    if (this.b != null) {
-      this.b.unregisterDataSetObserver(this.o);
+    for (View localView = getChildAt(0); (localView != null) && (localView.getRight() + paramInt <= 0); localView = getChildAt(0))
+    {
+      this.i += localView.getMeasuredWidth();
+      this.k.offer(localView);
+      removeViewInLayout(localView);
+      this.f += 1;
     }
-    this.b = paramListAdapter;
-    this.b.registerDataSetObserver(this.o);
-    c();
+    for (localView = getChildAt(getChildCount() - 1); (localView != null) && (localView.getLeft() + paramInt >= getWidth()); localView = getChildAt(getChildCount() - 1))
+    {
+      this.k.offer(localView);
+      removeViewInLayout(localView);
+      this.g -= 1;
+    }
   }
   
-  protected final boolean a()
+  private void b(int paramInt1, int paramInt2)
+  {
+    while ((paramInt1 + paramInt2 > 0) && (this.f >= 0))
+    {
+      View localView = this.b.getView(this.f, (View)this.k.poll(), this);
+      a(localView, 0);
+      paramInt1 -= localView.getMeasuredWidth();
+      this.f -= 1;
+      this.i -= localView.getMeasuredWidth();
+    }
+  }
+  
+  private void c(int paramInt)
+  {
+    if (getChildCount() > 0)
+    {
+      this.i += paramInt;
+      int i1 = this.i;
+      paramInt = 0;
+      while (paramInt < getChildCount())
+      {
+        View localView = getChildAt(paramInt);
+        int i2 = localView.getMeasuredWidth();
+        localView.layout(i1, 0, i1 + i2, localView.getMeasuredHeight());
+        i1 += i2;
+        paramInt += 1;
+      }
+    }
+  }
+  
+  protected boolean a(MotionEvent paramMotionEvent)
   {
     this.e.forceFinished(true);
     return true;
   }
   
-  protected final boolean a(float paramFloat)
+  protected boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
     try
     {
-      this.e.fling(this.d, 0, (int)-paramFloat, 0, 0, this.h, 0, 0);
+      this.e.fling(this.d, 0, (int)-paramFloat1, 0, 0, this.h, 0, 0);
       requestLayout();
       return true;
     }
@@ -123,127 +192,149 @@ public class HorizontialListView
     return this.j.onTouchEvent(paramMotionEvent);
   }
   
+  public ListAdapter getAdapter()
+  {
+    return this.b;
+  }
+  
   public View getSelectedView()
   {
     return null;
   }
   
+  /* Error */
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i1 = 0;
-    try
-    {
-      super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-      Object localObject1 = this.b;
-      if (localObject1 == null) {
-        return;
-      }
-      if (this.n)
-      {
-        paramInt1 = this.c;
-        b();
-        removeAllViewsInLayout();
-        this.d = paramInt1;
-        this.n = false;
-      }
-      if (this.e.computeScrollOffset()) {
-        this.d = this.e.getCurrX();
-      }
-      if (this.d < 0)
-      {
-        this.d = 0;
-        this.e.forceFinished(true);
-      }
-      if (this.d > this.h)
-      {
-        this.d = this.h;
-        this.e.forceFinished(true);
-      }
-      paramInt2 = this.c - this.d;
-      for (localObject1 = getChildAt(0); (localObject1 != null) && (((View)localObject1).getRight() + paramInt2 <= 0); localObject1 = getChildAt(0))
-      {
-        this.i += ((View)localObject1).getMeasuredWidth();
-        this.k.offer(localObject1);
-        removeViewInLayout((View)localObject1);
-        this.f += 1;
-      }
-      for (;;)
-      {
-        localObject1 = getChildAt(getChildCount() - 1);
-        if ((localObject1 == null) || (((View)localObject1).getLeft() + paramInt2 < getWidth())) {
-          break;
-        }
-        this.k.offer(localObject1);
-        removeViewInLayout((View)localObject1);
-        this.g -= 1;
-      }
-      localView = getChildAt(getChildCount() - 1);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: iload_1
+    //   4: iload_2
+    //   5: iload_3
+    //   6: iload 4
+    //   8: iload 5
+    //   10: invokespecial 220	android/widget/AdapterView:onLayout	(ZIIII)V
+    //   13: aload_0
+    //   14: getfield 118	com/tencent/token/ui/base/HorizontialListView:b	Landroid/widget/ListAdapter;
+    //   17: astore 6
+    //   19: aload 6
+    //   21: ifnonnull +6 -> 27
+    //   24: aload_0
+    //   25: monitorexit
+    //   26: return
+    //   27: aload_0
+    //   28: getfield 54	com/tencent/token/ui/base/HorizontialListView:n	Z
+    //   31: ifeq +26 -> 57
+    //   34: aload_0
+    //   35: getfield 71	com/tencent/token/ui/base/HorizontialListView:c	I
+    //   38: istore_2
+    //   39: aload_0
+    //   40: invokespecial 68	com/tencent/token/ui/base/HorizontialListView:a	()V
+    //   43: aload_0
+    //   44: invokevirtual 173	com/tencent/token/ui/base/HorizontialListView:removeAllViewsInLayout	()V
+    //   47: aload_0
+    //   48: iload_2
+    //   49: putfield 73	com/tencent/token/ui/base/HorizontialListView:d	I
+    //   52: aload_0
+    //   53: iconst_0
+    //   54: putfield 54	com/tencent/token/ui/base/HorizontialListView:n	Z
+    //   57: aload_0
+    //   58: getfield 84	com/tencent/token/ui/base/HorizontialListView:e	Landroid/widget/Scroller;
+    //   61: invokevirtual 224	android/widget/Scroller:computeScrollOffset	()Z
+    //   64: ifeq +14 -> 78
+    //   67: aload_0
+    //   68: aload_0
+    //   69: getfield 84	com/tencent/token/ui/base/HorizontialListView:e	Landroid/widget/Scroller;
+    //   72: invokevirtual 227	android/widget/Scroller:getCurrX	()I
+    //   75: putfield 73	com/tencent/token/ui/base/HorizontialListView:d	I
+    //   78: aload_0
+    //   79: getfield 73	com/tencent/token/ui/base/HorizontialListView:d	I
+    //   82: ifge +16 -> 98
+    //   85: aload_0
+    //   86: iconst_0
+    //   87: putfield 73	com/tencent/token/ui/base/HorizontialListView:d	I
+    //   90: aload_0
+    //   91: getfield 84	com/tencent/token/ui/base/HorizontialListView:e	Landroid/widget/Scroller;
+    //   94: iconst_1
+    //   95: invokevirtual 200	android/widget/Scroller:forceFinished	(Z)V
+    //   98: aload_0
+    //   99: getfield 73	com/tencent/token/ui/base/HorizontialListView:d	I
+    //   102: aload_0
+    //   103: getfield 43	com/tencent/token/ui/base/HorizontialListView:h	I
+    //   106: if_icmple +19 -> 125
+    //   109: aload_0
+    //   110: aload_0
+    //   111: getfield 43	com/tencent/token/ui/base/HorizontialListView:h	I
+    //   114: putfield 73	com/tencent/token/ui/base/HorizontialListView:d	I
+    //   117: aload_0
+    //   118: getfield 84	com/tencent/token/ui/base/HorizontialListView:e	Landroid/widget/Scroller;
+    //   121: iconst_1
+    //   122: invokevirtual 200	android/widget/Scroller:forceFinished	(Z)V
+    //   125: aload_0
+    //   126: getfield 71	com/tencent/token/ui/base/HorizontialListView:c	I
+    //   129: aload_0
+    //   130: getfield 73	com/tencent/token/ui/base/HorizontialListView:d	I
+    //   133: isub
+    //   134: istore_2
+    //   135: aload_0
+    //   136: iload_2
+    //   137: invokespecial 229	com/tencent/token/ui/base/HorizontialListView:b	(I)V
+    //   140: aload_0
+    //   141: iload_2
+    //   142: invokespecial 231	com/tencent/token/ui/base/HorizontialListView:a	(I)V
+    //   145: aload_0
+    //   146: iload_2
+    //   147: invokespecial 233	com/tencent/token/ui/base/HorizontialListView:c	(I)V
+    //   150: aload_0
+    //   151: aload_0
+    //   152: getfield 73	com/tencent/token/ui/base/HorizontialListView:d	I
+    //   155: putfield 71	com/tencent/token/ui/base/HorizontialListView:c	I
+    //   158: aload_0
+    //   159: getfield 84	com/tencent/token/ui/base/HorizontialListView:e	Landroid/widget/Scroller;
+    //   162: invokevirtual 236	android/widget/Scroller:isFinished	()Z
+    //   165: ifne -141 -> 24
+    //   168: aload_0
+    //   169: new 238	com/tencent/token/ui/base/bf
+    //   172: dup
+    //   173: aload_0
+    //   174: invokespecial 239	com/tencent/token/ui/base/bf:<init>	(Lcom/tencent/token/ui/base/HorizontialListView;)V
+    //   177: invokevirtual 243	com/tencent/token/ui/base/HorizontialListView:post	(Ljava/lang/Runnable;)Z
+    //   180: pop
+    //   181: goto -157 -> 24
+    //   184: astore 6
+    //   186: aload_0
+    //   187: monitorexit
+    //   188: aload 6
+    //   190: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	191	0	this	HorizontialListView
+    //   0	191	1	paramBoolean	boolean
+    //   0	191	2	paramInt1	int
+    //   0	191	3	paramInt2	int
+    //   0	191	4	paramInt3	int
+    //   0	191	5	paramInt4	int
+    //   17	3	6	localListAdapter	ListAdapter
+    //   184	5	6	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	19	184	finally
+    //   27	57	184	finally
+    //   57	78	184	finally
+    //   78	98	184	finally
+    //   98	125	184	finally
+    //   125	181	184	finally
+  }
+  
+  public void setAdapter(ListAdapter paramListAdapter)
+  {
+    if (this.b != null) {
+      this.b.unregisterDataSetObserver(this.o);
     }
-    finally {}
-    View localView;
-    if (localView != null)
-    {
-      paramInt1 = localView.getRight();
-      break label646;
-      label307:
-      while ((paramInt1 + paramInt2 < getWidth()) && (this.g < this.b.getCount()))
-      {
-        localView = this.b.getView(this.g, (View)this.k.poll(), this);
-        a(localView, -1);
-        paramInt1 = localView.getMeasuredWidth() + paramInt1;
-        if (this.g == this.b.getCount() - 1) {
-          this.h = (this.c + paramInt1 - getWidth());
-        }
-        this.g += 1;
-      }
-      localView = getChildAt(0);
-      if (localView != null)
-      {
-        paramInt1 = localView.getLeft();
-        break label649;
-      }
-    }
-    label646:
-    label649:
-    for (;;)
-    {
-      if ((paramInt1 + paramInt2 > 0) && (this.f >= 0))
-      {
-        localView = this.b.getView(this.f, (View)this.k.poll(), this);
-        a(localView, 0);
-        paramInt3 = localView.getMeasuredWidth();
-        this.f -= 1;
-        this.i -= localView.getMeasuredWidth();
-        paramInt1 -= paramInt3;
-      }
-      else
-      {
-        if (getChildCount() > 0)
-        {
-          this.i += paramInt2;
-          paramInt2 = this.i;
-          paramInt1 = i1;
-          while (paramInt1 < getChildCount())
-          {
-            localView = getChildAt(paramInt1);
-            paramInt3 = localView.getMeasuredWidth();
-            localView.layout(paramInt2, 0, paramInt2 + paramInt3, localView.getMeasuredHeight());
-            paramInt2 += paramInt3;
-            paramInt1 += 1;
-          }
-        }
-        this.c = this.d;
-        if (this.e.isFinished()) {
-          break;
-        }
-        post(new bd(this));
-        break;
-        paramInt1 = 0;
-        break label649;
-        paramInt1 = 0;
-        break label307;
-      }
-    }
+    this.b = paramListAdapter;
+    this.b.registerDataSetObserver(this.o);
+    b();
   }
   
   public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)

@@ -1,20 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.DialogActivity;
+import android.view.View;
 
-public class sju
-  implements DialogInterface.OnDismissListener
+public abstract interface sju
 {
-  public sju(DialogActivity paramDialogActivity) {}
+  public abstract void a(View paramView, int paramInt, long paramLong);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public abstract void b(View paramView, int paramInt, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sju
  * JD-Core Version:    0.7.0.1
  */

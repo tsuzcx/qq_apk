@@ -1,37 +1,21 @@
-import android.os.Message;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
-import com.tencent.util.WeakReferenceHandler;
-import cooperation.troop_homework.TroopHomeworkHelper;
-import java.lang.ref.WeakReference;
-
-public class ajlr
-  implements Runnable
+public abstract class ajlr
+  implements ajlt
 {
-  private final WeakReference a;
-  private final WeakReference b;
+  public int a;
+  public long a;
+  public bbpe a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public String c;
   
-  public ajlr(HWReciteItem paramHWReciteItem, HWReciteInfo paramHWReciteInfo)
+  public ajlr()
   {
-    this.a = new WeakReference(paramHWReciteItem);
-    this.b = new WeakReference(paramHWReciteInfo);
-  }
-  
-  public void run()
-  {
-    HWReciteInfo localHWReciteInfo = (HWReciteInfo)this.b.get();
-    if (localHWReciteInfo != null)
-    {
-      localHWReciteInfo.d = TroopHomeworkHelper.a(localHWReciteInfo.e);
-      Object localObject = (HWReciteItem)this.a.get();
-      if ((localObject != null) && (HWReciteItem.a((HWReciteItem)localObject) != null))
-      {
-        localObject = HWReciteItem.a((HWReciteItem)localObject).obtainMessage();
-        ((Message)localObject).what = 233;
-        ((Message)localObject).obj = localHWReciteInfo;
-        ((Message)localObject).sendToTarget();
-      }
-    }
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_b_of_type_Int = -35072;
+    this.jdField_a_of_type_Bbpe = new bbpe();
   }
 }
 

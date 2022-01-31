@@ -1,30 +1,44 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import java.util.concurrent.CountDownLatch;
+import android.os.Handler;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public final class anaq
-  implements Downloader.DownloadListener
+class anaq
+  extends ampt
 {
-  public anaq(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
-  
-  public void onDownloadCanceled(String paramString)
+  anaq(anam paramanam, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = true;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    anam.f(this.a, false);
+    if (anam.a(this.a) != null) {
+      anam.a(this.a).removeMessages(2);
+    }
+    if (anam.a(this.a)) {
+      return;
+    }
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      paramSosoLbsInfo = paramSosoLbsInfo.a;
+      paramInt = (int)(paramSosoLbsInfo.jdField_a_of_type_Double * 1000000.0D);
+      int i = (int)(paramSosoLbsInfo.jdField_b_of_type_Double * 1000000.0D);
+      QLog.i("AREngine_ARCloudControl", 1, "GetLBSLocation. onLocationFinish. gps info. Lat_02 = " + paramSosoLbsInfo.jdField_a_of_type_Double + ", Lon_02 = " + paramSosoLbsInfo.jdField_b_of_type_Double + ", latitude = " + paramInt + ", longitude = " + i + ", altitude = " + paramSosoLbsInfo.e + ", accuracy = " + paramSosoLbsInfo.jdField_a_of_type_Float + ", name = " + paramSosoLbsInfo.jdField_a_of_type_JavaLangString + ", address = " + paramSosoLbsInfo.jdField_b_of_type_JavaLangString);
+      paramSosoLbsInfo = anbm.a(this.a.a.recognitions, anam.a(this.a));
+      anam.a(this.a, paramSosoLbsInfo, paramInt, i);
+      return;
+    }
+    QLog.i("AREngine_ARCloudControl", 1, "GetLBSLocation. onLocationFinish. gps info failed. errCode = " + paramInt);
+    paramSosoLbsInfo = new anau();
+    paramSosoLbsInfo.a = 2;
+    anbm.a(this.a.a.recognitions, anam.a(this.a), paramSosoLbsInfo);
+    if (anam.a(this.a) != null) {
+      anam.a(this.a).a(0, anam.a(this.a));
+    }
+    anam.a(this.a, null);
   }
 }
 

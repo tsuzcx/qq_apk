@@ -1,35 +1,68 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.List;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-class thg
-  implements View.OnClickListener
+public class thg
+  implements INetInfoHandler
 {
-  thg(thf paramthf) {}
+  private WSPlayerManager a;
   
-  public void onClick(View paramView)
+  public thg(WSPlayerManager paramWSPlayerManager)
   {
-    paramView = paramView.getTag();
-    if ((paramView instanceof the))
+    this.a = paramWSPlayerManager;
+  }
+  
+  private void a()
+  {
+    if ((this.a != null) && (this.a.a() != null))
     {
-      paramView = (the)paramView;
-      if ((paramView.a >= 0) && (paramView.a < this.a.a.a.size()))
-      {
-        paramView = (ProfileLabelInfo)this.a.a.a.remove(paramView.a);
-        this.a.a.a(this.a.a.a.size());
-        this.a.notifyDataSetChanged();
-        thf.a(this.a, paramView);
-        ReportController.b(this.a.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
+      thl localthl = this.a.a();
+      if ((!this.a.f()) && (!this.a.e())) {
+        break label55;
       }
+      this.a.b(localthl, false);
     }
+    label55:
+    while (!this.a.g()) {
+      return;
+    }
+    this.a.a();
+  }
+  
+  public void onNetMobile2None()
+  {
+    tlo.b("WSPlayerForNetInfoHandler", "onNetMobile2None");
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    tlo.b("WSPlayerForNetInfoHandler", "onNetMobile2Wifi s:" + paramString);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    tlo.b("WSPlayerForNetInfoHandler", "onNetNone2Mobile s:" + paramString);
+    a();
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    tlo.b("WSPlayerForNetInfoHandler", "onNetNone2Wifi s:" + paramString);
+    a();
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    tlo.b("WSPlayerForNetInfoHandler", "onNetWifi2Mobile s:" + paramString);
+  }
+  
+  public void onNetWifi2None()
+  {
+    tlo.b("WSPlayerForNetInfoHandler", "onNetWifi2None");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     thg
  * JD-Core Version:    0.7.0.1
  */

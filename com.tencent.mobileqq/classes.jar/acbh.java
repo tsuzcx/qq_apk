@@ -1,26 +1,25 @@
-import android.os.IBinder.DeathRecipient;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
 
-class acbh
-  implements IBinder.DeathRecipient
+public class acbh
+  implements View.OnClickListener
 {
-  acbh(acbg paramacbg) {}
+  public acbh(AccountManageActivity paramAccountManageActivity) {}
   
-  public void binderDied()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("MessengerService$IncomingHandler", 2, "-->binder died");
-      MessengerService.a((MessengerService)this.a.a.get());
-      MessengerService.b((MessengerService)this.a.a.get());
-    }
+    paramView = new Intent();
+    PublicFragmentActivity.a(this.a, paramView, AccountOnlineStateActivity.class, 0);
+    awet.a(this.a.app);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acbh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,17 @@
-import com.tencent.av.opengl.gesture.GlViewTouchListener;
-import com.tencent.av.opengl.gesture.ZoomAnimationListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.eqq.EnterpriseDetailActivity;
+import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class bid
-  implements ZoomAnimationListener
+  implements View.OnClickListener
 {
-  public bid(GlViewTouchListener paramGlViewTouchListener) {}
+  public bid(EnterpriseDetailActivity paramEnterpriseDetailActivity, mobileqq_mp.ConfigInfo paramConfigInfo) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.b = false;
-    this.a.c();
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if ((paramFloat1 <= this.a.h) && (paramFloat1 >= this.a.i)) {
-      this.a.a(paramFloat1, paramFloat2, paramFloat3);
-    }
+    EnterpriseDetailActivity.a(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$ConfigInfo.content.get());
   }
 }
 

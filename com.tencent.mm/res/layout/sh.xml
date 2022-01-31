@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/b9t" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/q1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.tools.CropImageView android:gravity="center" android:layout_gravity="center" android:id="@id/b9u" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="#00000000" android:scaleType="matrix" />
+    <View android:gravity="center" android:layout_gravity="center" android:id="@id/b9q" android:layout_width="312.0dip" android:layout_height="312.0dip" />
+    <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/b9r" android:background="@drawable/akb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" />
+    <LinearLayout android:orientation="vertical" android:id="@id/b9v" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/b9w" android:paddingLeft="8.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:id="@id/b9x" style="@style/r5" />
+            <View android:layout_width="8.0dip" style="@style/nz" />
+            <Button android:id="@id/b9y" style="@style/zb" />
+            <Button android:id="@id/b9z" style="@style/za" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/b_0" android:background="@drawable/bgr" android:padding="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:layout_gravity="center_vertical" android:id="@id/b_1" android:minWidth="@dimen/lx" android:text="@string/b5l" style="@style/ns" />
+        </LinearLayout>
+    </LinearLayout>
+    <com.tencent.mm.ui.tools.FilterImageView android:id="@id/b_2" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

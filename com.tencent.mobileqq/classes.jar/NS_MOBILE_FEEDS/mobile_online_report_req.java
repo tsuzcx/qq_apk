@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public final class mobile_online_report_req
   extends JceStruct
 {
-  static ArrayList cache_vecOnlineItem = new ArrayList();
+  static ArrayList<mobile_online_report_item> cache_vecOnlineItem = new ArrayList();
   public int appid;
   public int type_id;
   public long uin;
-  public ArrayList vecOnlineItem;
+  public ArrayList<mobile_online_report_item> vecOnlineItem;
   
   static
   {
@@ -22,7 +22,7 @@ public final class mobile_online_report_req
   
   public mobile_online_report_req() {}
   
-  public mobile_online_report_req(long paramLong, int paramInt1, int paramInt2, ArrayList paramArrayList)
+  public mobile_online_report_req(long paramLong, int paramInt1, int paramInt2, ArrayList<mobile_online_report_item> paramArrayList)
   {
     this.uin = paramLong;
     this.appid = paramInt1;
@@ -50,7 +50,7 @@ public final class mobile_online_report_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_online_report_req
  * JD-Core Version:    0.7.0.1
  */

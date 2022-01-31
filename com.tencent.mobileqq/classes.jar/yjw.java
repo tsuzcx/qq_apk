@@ -1,43 +1,38 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
 public class yjw
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  protected WeakReference a;
+  public yjw(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
   
-  public yjw(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramQQAppInterface);
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent == null) {
-      QLog.e("ApolloGameManager", 1, "[onReceive] intent null");
-    }
-    String str;
-    do
+    boolean bool2 = true;
+    if ((SubscribeVideoDetailFragment.a(this.a) != null) && (SubscribeVideoDetailFragment.a(this.a) != null))
     {
-      return;
-      str = paramIntent.getAction();
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGameManager", 2, new Object[] { "[onReceive] action=", str + ", app: " + this.a.get() });
+      paramView = SubscribeVideoDetailFragment.a(this.a).a(1);
+      bool1 = bool2;
+      if (SubscribeVideoDetailFragment.a(this.a).d()) {
+        if (SubscribeVideoDetailFragment.a(this.a).f()) {
+          break label78;
+        }
       }
-      paramContext = (QQAppInterface)this.a.get();
-    } while ((paramContext == null) || (!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(str)) || (!"apolloGameWebMessage".equals(paramIntent.getStringExtra("event"))));
-    paramIntent = paramIntent.getStringExtra("data");
-    ApolloCmdChannel.getChannel(paramContext).handleWebEvent(paramIntent);
+    }
+    label78:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      paramView.c = bool1;
+      this.a.a(paramView);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yjw
  * JD-Core Version:    0.7.0.1
  */

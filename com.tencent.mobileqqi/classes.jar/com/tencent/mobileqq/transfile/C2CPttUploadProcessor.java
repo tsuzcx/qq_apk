@@ -23,7 +23,7 @@ import com.tencent.mobileqq.utils.QQRecorder;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import gri;
+import gnb;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.RandomAccessFile;
@@ -46,7 +46,7 @@ public class C2CPttUploadProcessor
   public C2CPttUploadProcessor(TransFileController paramTransFileController, TransferRequest paramTransferRequest)
   {
     super(paramTransFileController, paramTransferRequest);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new gri(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new gnb(this);
   }
   
   protected String a(byte[] paramArrayOfByte)

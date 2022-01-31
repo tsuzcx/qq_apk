@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class oidb_0x6d8$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42 }, new String[] { "file_info_rsp", "file_list_info_rsp", "group_file_cnt_rsp", "group_space_rsp", "file_preview_rsp" }, new Object[] { null, null, null, null, null }, RspBody.class);
   public oidb_0x6d8.GetFileInfoRspBody file_info_rsp = new oidb_0x6d8.GetFileInfoRspBody();
@@ -15,7 +15,7 @@ public final class oidb_0x6d8$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody
  * JD-Core Version:    0.7.0.1
  */

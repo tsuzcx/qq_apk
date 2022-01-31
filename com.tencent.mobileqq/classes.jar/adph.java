@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.hiboom.HiBoomPanelView;
-import com.tencent.mobileqq.hiboom.HiBoomPanelView.HiBoomAdapter;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class adph
-  implements Runnable
+public class adph
+  extends akit
 {
-  adph(adpf paramadpf, int paramInt, long paramLong1, long paramLong2) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_Adpf.a.a.a(this.jdField_a_of_type_Int, (int)(this.jdField_a_of_type_Long * 100L / this.b));
-  }
+  public adpf a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
 }
 
 

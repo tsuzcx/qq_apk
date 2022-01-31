@@ -7,15 +7,16 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
+import android.os.Build.VERSION;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
-import anpl;
-import anpm;
-import anpn;
-import anpo;
-import com.tencent.mobileqq.utils.ViewUtils;
+import bdoo;
+import bmav;
+import bmaw;
+import bmax;
+import bmay;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,20 +24,20 @@ public class QIMCircleProgress
   extends ImageView
 {
   public static int a;
-  float jdField_a_of_type_Float = 1.0F;
+  protected float a;
   ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  Paint jdField_a_of_type_AndroidGraphicsPaint;
+  protected Paint a;
   RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<Float> jdField_a_of_type_JavaUtilList = new ArrayList();
   public boolean a;
-  float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int = 0;
+  float b;
+  protected int b;
   public ValueAnimator b;
-  Paint jdField_b_of_type_AndroidGraphicsPaint;
+  protected Paint b;
   public boolean b;
   public float c;
-  int jdField_c_of_type_Int = 10;
-  Paint jdField_c_of_type_AndroidGraphicsPaint;
+  int c;
+  protected Paint c;
   public boolean c;
   float jdField_d_of_type_Float = 5.0F;
   int jdField_d_of_type_Int;
@@ -46,9 +47,10 @@ public class QIMCircleProgress
   int f;
   int g;
   int h;
-  int i;
-  private int j;
-  private int k;
+  protected int i;
+  protected int j;
+  protected int k;
+  protected int l;
   
   static
   {
@@ -58,47 +60,27 @@ public class QIMCircleProgress
   public QIMCircleProgress(Context paramContext)
   {
     super(paramContext);
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_c_of_type_Int = 10;
     this.jdField_c_of_type_Float = 0.0F;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
-    e();
+    a();
   }
   
   public QIMCircleProgress(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_c_of_type_Int = 10;
     this.jdField_c_of_type_Float = 0.0F;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
-    e();
-  }
-  
-  private void e()
-  {
-    setLayerType(1, null);
-    this.jdField_b_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_d_of_type_Int = getResources().getColor(2131492982);
-    this.f = getResources().getColor(2131493442);
-    this.jdField_e_of_type_Int = 51;
-    this.g = 100;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
-    this.jdField_d_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_d_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131492969));
-    this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(this.f);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-1);
+    a();
   }
   
   public float a()
@@ -106,31 +88,41 @@ public class QIMCircleProgress
     return this.jdField_e_of_type_Float;
   }
   
-  public List a()
+  public int a()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public List<Float> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public void a()
+  protected void a()
   {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
-    {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(150L);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(3);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new anpl(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new anpm(this));
-    }
-    if (this.jdField_b_of_type_AndroidAnimationValueAnimator == null)
-    {
-      this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new anpn(this));
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new anpo(this));
-    }
+    setLayerType(1, null);
+    this.jdField_b_of_type_Float = getResources().getDisplayMetrics().density;
+    this.jdField_d_of_type_Int = getResources().getColor(2131165614);
+    this.f = getResources().getColor(2131166204);
+    this.jdField_e_of_type_Int = 51;
+    this.h = 100;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
+    this.jdField_d_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_d_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_d_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.jdField_d_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167194));
+    this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(this.f);
+    this.g = -1;
+    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.g);
   }
   
   public void a(float paramFloat)
@@ -148,12 +140,40 @@ public class QIMCircleProgress
   {
     this.jdField_b_of_type_Int = paramInt;
     if (this.jdField_b_of_type_Int == 1) {
-      c();
+      d();
     }
     invalidate();
   }
   
+  protected void a(Canvas paramCanvas)
+  {
+    paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.l / 2, this.jdField_b_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.k / 2, this.jdField_c_of_type_AndroidGraphicsPaint);
+  }
+  
   public void b()
+  {
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
+    {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(150L);
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(3);
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bmav(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bmaw(this));
+    }
+    if (this.jdField_b_of_type_AndroidAnimationValueAnimator == null)
+    {
+      this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(400L);
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bmax(this));
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new bmay(this));
+    }
+  }
+  
+  public void c()
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
@@ -163,7 +183,7 @@ public class QIMCircleProgress
     postInvalidate();
   }
   
-  public void c()
+  public void d()
   {
     if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning()))
     {
@@ -175,7 +195,7 @@ public class QIMCircleProgress
     }
   }
   
-  public void d()
+  public void e()
   {
     if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning()))
     {
@@ -190,13 +210,13 @@ public class QIMCircleProgress
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    this.h = getWidth();
-    this.i = getHeight();
-    if (this.h <= 0) {}
+    this.i = getWidth();
+    this.j = getHeight();
+    if (this.i <= 0) {}
     for (;;)
     {
       return;
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_Int * 1.2F, this.jdField_c_of_type_Int * 1.2F, this.h - this.jdField_c_of_type_Int * 1.2F, this.i - this.jdField_c_of_type_Int * 1.2F);
+      this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_Int * 1.38F, this.jdField_c_of_type_Int * 1.38F, this.i - this.jdField_c_of_type_Int * 1.38F, this.j - this.jdField_c_of_type_Int * 1.38F);
       float f1 = jdField_a_of_type_Int;
       int m = 0;
       f1 *= -0.005555556F;
@@ -208,12 +228,14 @@ public class QIMCircleProgress
         if (f1 > 0.0F)
         {
           if ((!this.jdField_a_of_type_Boolean) || (m != this.jdField_a_of_type_JavaUtilList.size() - 1)) {
-            break label334;
+            break label347;
           }
-          this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth((int)(this.jdField_c_of_type_Int * (1.0D - 0.2D * this.jdField_c_of_type_Float)));
-          this.jdField_d_of_type_AndroidGraphicsPaint.setStrokeWidth((int)(this.jdField_c_of_type_Int * (1.0D - 0.2D * this.jdField_c_of_type_Float)));
+          this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth((int)(this.jdField_c_of_type_Int * (1.0D - 0.38D * this.jdField_c_of_type_Float)));
+          this.jdField_d_of_type_AndroidGraphicsPaint.setStrokeWidth((int)(this.jdField_c_of_type_Int * (1.0D - 0.38D * this.jdField_c_of_type_Float)));
           this.jdField_d_of_type_AndroidGraphicsPaint.setAlpha((int)(255.0F * this.jdField_c_of_type_Float));
-          this.jdField_d_of_type_AndroidGraphicsPaint.setShadowLayer(this.jdField_d_of_type_Float * this.jdField_c_of_type_Float, 0.0F, 0.0F, getResources().getColor(2131492969));
+          if (Build.VERSION.SDK_INT >= 21) {
+            this.jdField_d_of_type_AndroidGraphicsPaint.setShadowLayer(this.jdField_d_of_type_Float * this.jdField_c_of_type_Float, 0.0F, 0.0F, getResources().getColor(2131167194));
+          }
           paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, f3, f1, false, this.jdField_a_of_type_AndroidGraphicsPaint);
           paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, f3, f1, false, this.jdField_d_of_type_AndroidGraphicsPaint);
           this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_c_of_type_Int);
@@ -223,7 +245,7 @@ public class QIMCircleProgress
           m += 1;
           f1 = f2;
           break;
-          label334:
+          label347:
           paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, f3, f1, false, this.jdField_a_of_type_AndroidGraphicsPaint);
         }
       }
@@ -233,8 +255,7 @@ public class QIMCircleProgress
       }
       while (this.jdField_b_of_type_Int != 2)
       {
-        paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.k / 2, this.jdField_b_of_type_AndroidGraphicsPaint);
-        paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.j / 2, this.jdField_c_of_type_AndroidGraphicsPaint);
+        a(paramCanvas);
         return;
         if (this.jdField_b_of_type_Boolean)
         {
@@ -246,6 +267,13 @@ public class QIMCircleProgress
     }
   }
   
+  public void setCenterCircleColor(int paramInt)
+  {
+    this.g = paramInt;
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.g);
+    invalidate();
+  }
+  
   public void setCenterScaleValue(float paramFloat)
   {
     this.jdField_a_of_type_Float = paramFloat;
@@ -254,8 +282,8 @@ public class QIMCircleProgress
   
   public void setCenterView()
   {
-    this.j = ViewUtils.a(24.0F);
-    this.k = ViewUtils.a(54.0F);
+    this.k = bdoo.a(24.0F);
+    this.l = bdoo.a(54.0F);
   }
   
   public void setProgress(float paramFloat)
@@ -274,6 +302,14 @@ public class QIMCircleProgress
     }
   }
   
+  public void setProgressColor(int paramInt)
+  {
+    this.f = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
+    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(this.f);
+    invalidate();
+  }
+  
   public void setStrokeWidth(float paramFloat)
   {
     this.jdField_c_of_type_Int = ((int)(this.jdField_b_of_type_Float * paramFloat + 0.5D));
@@ -283,7 +319,7 @@ public class QIMCircleProgress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.view.QIMCircleProgress
  * JD-Core Version:    0.7.0.1
  */

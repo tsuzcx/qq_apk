@@ -1,31 +1,23 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class aapi
-  implements Runnable
+class aapi
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aapi(ArkAppModuleReg.ModuleQQ paramModuleQQ, String paramString1, String paramString2) {}
+  aapi(aape paramaape, ViewGroup paramViewGroup, View paramView) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if (localBaseActivity != null)
-    {
-      Intent localIntent = ArkFullScreenAppActivity.a(localBaseActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ.jdField_a_of_type_JavaLangString, this.b, localBaseActivity.getResources().getDisplayMetrics().scaledDensity);
-      if (localIntent != null) {
-        ForwardBaseOption.a(localBaseActivity, localIntent);
-      }
-    }
+    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    aase.a("GdtMotiveVideoDialog", "onGlobalLayout: l=" + this.jdField_a_of_type_AndroidViewViewGroup.getLeft() + ",t=" + this.jdField_a_of_type_AndroidViewViewGroup.getTop() + ",r=" + this.jdField_a_of_type_AndroidViewViewGroup.getRight() + ",b=" + this.jdField_a_of_type_AndroidViewViewGroup.getBottom());
+    aase.a("GdtMotiveVideoDialog", "onGlobalLayout: " + this.jdField_a_of_type_AndroidViewView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aapi
  * JD-Core Version:    0.7.0.1
  */

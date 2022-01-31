@@ -1,21 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.search.presenter.EntranceResultPresenter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
-public class ahui
-  implements View.OnTouchListener
+class ahui
+  extends aqbl
 {
-  public ahui(EntranceResultPresenter paramEntranceResultPresenter) {}
+  ahui(ahuf paramahuf) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void c(boolean paramBoolean)
   {
-    return true;
+    ahua localahua = this.a.a(2);
+    localahua.jdField_a_of_type_JavaLangObject = Boolean.valueOf(paramBoolean);
+    if ((localahua.c) && (paramBoolean)) {
+      ahuf.a(this.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onResourceStateUpdate [id: %s, canBeShown: %s, isReady: %s]", new Object[] { Integer.valueOf(localahua.jdField_a_of_type_Int), Boolean.valueOf(localahua.c), Boolean.valueOf(paramBoolean) }));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahui
  * JD-Core Version:    0.7.0.1
  */

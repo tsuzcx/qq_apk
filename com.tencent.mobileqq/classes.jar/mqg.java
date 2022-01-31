@@ -1,156 +1,105 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyCapsuleView;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.GifStateListener;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.Locale;
 
 public class mqg
-  implements ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.GifStateListener, URLDrawable.URLDrawableListener
 {
-  private static ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController$GifPlayOnceEventMultiCaster = new ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster(null);
-  private ChannelCoverInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo;
-  private ReadInJoyCapsuleView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private boolean jdField_a_of_type_Boolean;
+  private static mqg a;
+  public int a;
+  public String a;
+  public int b = 4;
+  public int c = 2000;
+  public int d = 4;
+  public int e = 2150;
+  public int f = 720;
+  public int g = 1;
+  public int h = 5;
+  public int i = 120000;
+  public int j = 1;
+  public int k = 1;
+  public int l = 0;
+  public int m = 0;
+  public int n = 5000;
+  public int o = 0;
+  public int p = 25000;
+  public int q = 1;
+  public int r;
+  public int s;
   
-  public mqg(ReadInJoyCapsuleView paramReadInJoyCapsuleView)
+  public mqg()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView = paramReadInJoyCapsuleView;
+    this.jdField_a_of_type_Int = 1;
   }
   
-  private void a(boolean paramBoolean)
+  private static int a(String[] paramArrayOfString, int paramInt1, int paramInt2)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = ReadInJoyFeedsHeaderViewController.a();
-    localURLDrawableOptions.mFailedDrawable = ReadInJoyFeedsHeaderViewController.a();
-    localURLDrawableOptions.mPlayGifImage = paramBoolean;
+    if ((paramArrayOfString == null) || (paramInt1 >= paramArrayOfString.length)) {
+      return paramInt2;
+    }
     try
     {
-      this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(new URL(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.externalExposureBackgroundUrl), localURLDrawableOptions);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setBackgroundSrc(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      return;
+      paramInt1 = Integer.parseInt(paramArrayOfString[paramInt1]);
+      return paramInt1;
     }
-    catch (MalformedURLException localMalformedURLException)
+    catch (Exception paramArrayOfString)
     {
-      QLog.e("ReadInJoyFeedsHeaderVie", 2, "fail to set background", localMalformedURLException);
+      paramArrayOfString.printStackTrace();
     }
+    return paramInt2;
   }
   
-  private void c()
+  public static mqg a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setTextColor(Color.parseColor("#777777"));
-    int i = ReadInJoyFeedsHeaderViewController.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId, false);
-    if (i != 0) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setDrawableLeft(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.getContext().getResources().getDrawable(i));
+    if (jdField_a_of_type_Mqg == null) {
+      jdField_a_of_type_Mqg = b();
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setBackgroundSrc(new ColorDrawable(Color.parseColor("#F1F3F6")));
+    return jdField_a_of_type_Mqg;
   }
   
-  private void d()
+  private static mqg b()
   {
-    this.jdField_a_of_type_Boolean = true;
-    a(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setColorFilter(ReadInJoyFeedsHeaderViewController.a());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setTextColor(-1);
-    int i = ReadInJoyFeedsHeaderViewController.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId, true);
-    if (i != 0) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setDrawableLeft(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.getContext().getResources().getDrawable(i));
-    }
-  }
-  
-  private void e()
-  {
-    a(true);
-    this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) {
-      onLoadSuccessed(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    }
-  }
-  
-  public ChannelCoverInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo;
-  }
-  
-  public void a()
-  {
-    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onPlayOnce: pause the animation - " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverName);
-    Drawable localDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable();
-    if ((localDrawable instanceof GifDrawable))
+    mqg localmqg = new mqg();
+    Object localObject = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.qavDpc.name());
+    localmqg.jdField_a_of_type_JavaLangString = ((String)localObject);
+    if (!TextUtils.isEmpty(localmqg.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.setIndividualPause(true);
-      ((GifDrawable)localDrawable).getImage().reset();
-      this.jdField_a_of_type_ComTencentImageURLDrawable.setGIFPlayOnceListener(null);
-      a(false);
-      QLog.d("ReadInJoyFeedsHeaderVie", 2, "reset gif");
+      localObject = ((String)localObject).split("\\|");
+      localmqg.jdField_a_of_type_Int = a((String[])localObject, 0, 1);
+      localmqg.b = a((String[])localObject, 1, 4);
+      localmqg.c = a((String[])localObject, 2, 2000);
+      localmqg.d = a((String[])localObject, 3, 4);
+      localmqg.e = a((String[])localObject, 4, 2150);
+      localmqg.f = a((String[])localObject, 5, 720);
+      localmqg.g = a((String[])localObject, 6, 1);
+      localmqg.h = a((String[])localObject, 7, 5);
+      localmqg.i = a((String[])localObject, 8, 120000);
+      localmqg.j = a((String[])localObject, 9, 1);
+      localmqg.k = a((String[])localObject, 10, 1);
+      localmqg.l = a((String[])localObject, 11, 0);
+      localmqg.m = a((String[])localObject, 12, 0);
+      localmqg.n = a((String[])localObject, 13, 5000);
+      localmqg.o = a((String[])localObject, 14, 0);
+      localmqg.p = a((String[])localObject, 15, 25000);
+      localmqg.q = a((String[])localObject, 16, 1);
     }
-  }
-  
-  public void a(ChannelCoverInfo paramChannelCoverInfo, View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo = paramChannelCoverInfo;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setOnClickListener(new mqh(this, paramOnClickListener));
-    if ((TextUtils.isEmpty(paramChannelCoverInfo.externalExposureBackgroundUrl)) || (ReadInJoyHelper.b(paramChannelCoverInfo.mChannelCoverId)))
-    {
-      c();
-      return;
+    localmqg.r = bdgk.b();
+    localmqg.s = ((int)(bdgk.b() / 1000L));
+    if (QLog.isColorLevel()) {
+      QLog.d("QavRecordDpc", 2, "init=" + localmqg);
     }
-    e();
+    return localmqg;
   }
   
-  public boolean a()
+  public String toString()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController$GifPlayOnceEventMultiCaster.a();
-  }
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
-  {
-    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onLoadCanceled: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.externalExposureBackgroundUrl);
-    c();
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onLoadFialed: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.externalExposureBackgroundUrl);
-    c();
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onLoadSuccessed: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverName);
-    d();
-    AbstractGifImage.resumeAll();
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController$GifPlayOnceEventMultiCaster.a(this, paramURLDrawable);
+    return String.format(Locale.getDefault(), "QavRecordDpc:dpc=%s, default=%d|%d|%d|%d|%d|%d, value=%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%s|%s|%s, system=%d|%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(1), Integer.valueOf(4), Integer.valueOf(2000), Integer.valueOf(4), Integer.valueOf(2150), Integer.valueOf(720), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c), Integer.valueOf(this.d), Integer.valueOf(this.e), Integer.valueOf(this.f), Integer.valueOf(this.g), Integer.valueOf(this.h), Integer.valueOf(this.i), Integer.valueOf(this.k), Integer.valueOf(this.l), Integer.valueOf(this.m), Integer.valueOf(this.n), Integer.valueOf(this.o), Integer.valueOf(this.p), Integer.valueOf(this.q), Integer.valueOf(this.r), Integer.valueOf(this.s) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mqg
  * JD-Core Version:    0.7.0.1
  */

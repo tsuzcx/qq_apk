@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08c1" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08c2" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08c1" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" />

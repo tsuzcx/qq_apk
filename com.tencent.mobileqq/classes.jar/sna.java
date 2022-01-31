@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import javax.annotation.Nullable;
 
-public class sna
-  implements View.OnClickListener
+public abstract interface sna
 {
-  public sna(FontSettingActivity paramFontSettingActivity) {}
+  public abstract InputStream a(@Nullable InputStream paramInputStream);
   
-  public void onClick(View paramView)
-  {
-    this.a.c();
-  }
+  public abstract void a();
+  
+  public abstract void a(HttpURLConnection paramHttpURLConnection, @Nullable String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sna
  * JD-Core Version:    0.7.0.1
  */

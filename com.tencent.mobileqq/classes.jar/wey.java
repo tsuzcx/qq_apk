@@ -1,44 +1,31 @@
-import com.tencent.mobileqq.activity.bless.BlessManager;
-import com.tencent.mobileqq.activity.bless.BlessTask;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
 
 public class wey
-  extends DownloadListener
+  extends wmf
 {
-  public wey(BlessManager paramBlessManager, String paramString1, String paramString2) {}
+  protected final int a;
+  protected final String a;
   
-  public void onCancel(DownloadTask paramDownloadTask)
+  public wey(String paramString1, int paramInt, String paramString2)
   {
-    BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager).remove(this.jdField_a_of_type_JavaLangString);
+    super(paramString1, paramString2);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onDone(DownloadTask paramDownloadTask)
+  protected vce a(String paramString, List<String> paramList)
   {
-    BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager).remove(this.jdField_a_of_type_JavaLangString);
-    if (paramDownloadTask.a() == 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessManager", 2, "download finished " + this.b);
-      }
-      if ((this.b != null) && (BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager) != null) && (this.b.equals(BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager).starVideo))) {
-        BlessManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager);
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      return;
-      BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager);
-      return;
-    }
-    QLog.d("BlessManager", 2, "downloadFile failed: " + paramDownloadTask.b + " code=" + paramDownloadTask.a);
+    return new vek(paramString, paramList);
+  }
+  
+  protected vcf a()
+  {
+    return new wez(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wey
  * JD-Core Version:    0.7.0.1
  */

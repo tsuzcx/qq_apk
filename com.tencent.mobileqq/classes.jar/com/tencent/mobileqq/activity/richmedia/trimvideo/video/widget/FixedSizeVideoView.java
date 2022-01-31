@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
+import ajvr;
+import ajvs;
+import ajvt;
 import android.content.Context;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Handler;
@@ -8,29 +11,27 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.VideoView;
-import xwt;
-import xwu;
 
 public class FixedSizeVideoView
   extends VideoView
   implements Handler.Callback
 {
   private int jdField_a_of_type_Int = -1;
+  public ajvt a;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  public FixedSizeVideoView.OnTrimVDPlayCompelteListener a;
   private int b;
   private int c;
   
   public FixedSizeVideoView(Context paramContext)
   {
     super(paramContext);
-    super.setOnCompletionListener(new xwt(this));
+    super.setOnCompletionListener(new ajvr(this));
   }
   
   public FixedSizeVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    super.setOnCompletionListener(new xwu(this));
+    super.setOnCompletionListener(new ajvs(this));
   }
   
   public int a()
@@ -46,8 +47,8 @@ public class FixedSizeVideoView
     for (;;)
     {
       return true;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFixedSizeVideoView$OnTrimVDPlayCompelteListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFixedSizeVideoView$OnTrimVDPlayCompelteListener.a(this, this.c, this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Ajvt != null) {
+        this.jdField_a_of_type_Ajvt.a(this, this.c, this.jdField_a_of_type_Int);
       }
     }
   }
@@ -63,10 +64,10 @@ public class FixedSizeVideoView
     throw new RuntimeException("Stub!");
   }
   
-  public void setOnFixVDPlayCompelteListener(FixedSizeVideoView.OnTrimVDPlayCompelteListener paramOnTrimVDPlayCompelteListener)
+  public void setOnFixVDPlayCompelteListener(ajvt paramajvt)
   {
-    if (paramOnTrimVDPlayCompelteListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFixedSizeVideoView$OnTrimVDPlayCompelteListener = paramOnTrimVDPlayCompelteListener;
+    if (paramajvt != null) {
+      this.jdField_a_of_type_Ajvt = paramajvt;
     }
   }
   
@@ -110,7 +111,7 @@ public class FixedSizeVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView
  * JD-Core Version:    0.7.0.1
  */

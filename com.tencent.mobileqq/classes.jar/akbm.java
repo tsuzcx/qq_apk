@@ -1,21 +1,24 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
 
-public final class akbm
-  implements Runnable
+public class akbm
+  extends akit
 {
-  public akbm(String paramString) {}
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public DiscussionInfo a;
+  public TroopInfo a;
+  public ImageView b;
+  public TextView b;
   
-  public void run()
-  {
-    QQToast localQQToast = QQToast.a(BaseApplicationImpl.getContext(), "debug:" + this.a, 1);
-    localQQToast.a();
-    localQQToast.a();
-  }
+  public akbm(akbj paramakbj) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbm
  * JD-Core Version:    0.7.0.1
  */

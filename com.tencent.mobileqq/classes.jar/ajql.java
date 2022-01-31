@@ -1,20 +1,17 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager.Callback;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.hardware.Camera;
+import android.hardware.Camera.Face;
+import android.hardware.Camera.FaceDetectionListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajql
-  implements TroopRobotManager.Callback
+  implements Camera.FaceDetectionListener
 {
-  public ajql(TroopRobotManager paramTroopRobotManager, String paramString) {}
+  public ajql(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public void onFaceDetection(Camera.Face[] paramArrayOfFace, Camera paramCamera)
   {
-    if (paramInt == 0) {
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopRobotManager.a.getApp(), 1, "操作失败" + "", 0).a();
+    if (QLog.isColorLevel()) {}
   }
 }
 

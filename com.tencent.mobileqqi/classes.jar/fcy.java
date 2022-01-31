@@ -1,22 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.adapter.FriendProfileImageAdapter;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import com.tencent.i18n.pa.proto.QQiPublicAccount.RecommendedPublicAccountInfo;
+import com.tencent.mobileqq.app.I18nPublicAccountsManagerImp;
 
 public class fcy
-  extends Handler
 {
-  public fcy(FriendProfileImageAdapter paramFriendProfileImageAdapter) {}
+  public QQiPublicAccount.RecommendedPublicAccountInfo a;
+  public String a;
   
-  public void handleMessage(Message paramMessage)
+  private fcy(I18nPublicAccountsManagerImp paramI18nPublicAccountsManagerImp)
   {
-    if ((paramMessage.what == 1) && ((paramMessage.obj instanceof ImageProgressCircle)))
-    {
-      paramMessage = (ImageProgressCircle)paramMessage.obj;
-      if (paramMessage.getVisibility() != 0) {
-        paramMessage.setVisibility(0);
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

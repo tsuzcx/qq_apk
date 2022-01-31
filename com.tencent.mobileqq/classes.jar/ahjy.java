@@ -1,22 +1,40 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import java.util.List;
 
-public class ahjy
-  implements Runnable
+public abstract interface ahjy
 {
-  public ahjy(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4) {}
+  public abstract void a();
   
-  public void run()
-  {
-    EffectsCameraCaptureFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment, this.jdField_a_of_type_Boolean);
-    EffectsCameraCaptureFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment, this.b);
-    EffectsCameraCaptureFragment.c(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment, this.c);
-    EffectsCameraCaptureFragment.d(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment, this.d);
-    EffectsCameraCaptureFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment, this.jdField_a_of_type_Boolean, this.b, this.c, this.d);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, List<ahjx> paramList);
+  
+  public abstract void a(List<String> paramList);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahjy
  * JD-Core Version:    0.7.0.1
  */

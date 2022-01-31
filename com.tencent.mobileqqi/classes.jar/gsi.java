@@ -1,36 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.transfile.VideoThumbDownloader;
-import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.text.TextUtils;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class gsi
-  implements BitmapDecoder
+  implements View.OnClickListener
 {
-  public gsi(VideoThumbDownloader paramVideoThumbDownloader) {}
+  public gsi(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public Bitmap a(URL paramURL)
+  public void onClick(View paramView)
   {
-    String str = paramURL.getPath();
-    try
-    {
-      Bitmap localBitmap = VideoThumbDownloader.a(this.a, str);
-      paramURL = localBitmap;
-      if (localBitmap == null) {
-        paramURL = VideoThumbDownloader.b(this.a, str);
-      }
-      return paramURL;
-    }
-    catch (Throwable paramURL)
-    {
-      QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
-    }
-    return null;
+    TextUtils.a(this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     gsi
  * JD-Core Version:    0.7.0.1
  */

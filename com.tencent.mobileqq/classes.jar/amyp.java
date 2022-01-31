@@ -1,25 +1,41 @@
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.report.QzoneOnlineTimeCollectRptService;
-import mqq.os.MqqHandler;
 
-public class amyp
-  implements Runnable
+class amyp
+  extends amzw
 {
-  public amyp(QzoneOnlineTimeCollectRptService paramQzoneOnlineTimeCollectRptService) {}
+  amyp(amyk paramamyk) {}
   
-  public void run()
+  public void a()
   {
-    QLog.d("QzoneOnlineTimeCollectRptService", 1, "closeTrace isForeground:" + QzoneOnlineTimeCollectRptService.a(this.a));
-    if (QzoneOnlineTimeCollectRptService.a(this.a))
-    {
-      ThreadManager.getSubThreadHandler().removeCallbacks(QzoneOnlineTimeCollectRptService.a(this.a));
-      this.a.c();
-      QzoneOnlineTimeCollectRptService.b(this.a);
-      LocalMultiProcConfig.putBool("key_sp_qzone_isforeground", false);
-      QzoneOnlineTimeCollectRptService.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadSuccess");
     }
+    Message localMessage = amyk.a(this.a).obtainMessage();
+    localMessage.what = 100;
+    localMessage.sendToTarget();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadProcess process=" + paramInt);
+    }
+    Message localMessage = amyk.a(this.a).obtainMessage();
+    localMessage.what = 102;
+    localMessage.arg1 = paramInt;
+    localMessage.sendToTarget();
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadFail");
+    }
+    Message localMessage = amyk.a(this.a).obtainMessage();
+    localMessage.what = 101;
+    localMessage.sendToTarget();
   }
 }
 

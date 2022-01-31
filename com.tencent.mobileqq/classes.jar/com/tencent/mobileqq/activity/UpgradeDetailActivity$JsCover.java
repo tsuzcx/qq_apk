@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
+import amqe;
+import atgv;
 import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
-import com.tencent.mobileqq.jsbridge.JsBridge.JsHandler;
 import com.tencent.qphone.base.util.QLog;
 import protocol.KQQConfig.UpgradeInfo;
 
 public class UpgradeDetailActivity$JsCover
-  extends JsBridge.JsHandler
+  extends atgv
 {
   protected UpgradeDetailActivity$JsCover(UpgradeDetailActivity paramUpgradeDetailActivity) {}
   
@@ -28,7 +28,7 @@ public class UpgradeDetailActivity$JsCover
   
   public int getDownloadState()
   {
-    return UpgradeController.a().a();
+    return amqe.a().a();
   }
   
   public long getUpgradeTime()
@@ -38,13 +38,13 @@ public class UpgradeDetailActivity$JsCover
   
   public int installApk()
   {
-    UpgradeController.a().a(this.a);
+    amqe.a().a(this.a);
     return 0;
   }
   
   public int pauseDownload()
   {
-    UpgradeController.a().e();
+    amqe.a().e();
     return 0;
   }
   
@@ -53,7 +53,7 @@ public class UpgradeDetailActivity$JsCover
     if (QLog.isColorLevel()) {
       QLog.d("preLoad_configServlet", 2, "resume download from web, mark it.");
     }
-    UpgradeController.a().d();
+    amqe.a().d();
     return 0;
   }
   
@@ -62,13 +62,13 @@ public class UpgradeDetailActivity$JsCover
     if (QLog.isColorLevel()) {
       QLog.d("preLoad_configServlet", 2, "start download from web, mark it.");
     }
-    UpgradeController.a().b(false);
+    UpgradeDetailActivity.a(this.a, true);
     return 0;
   }
   
   public int stopDownload()
   {
-    UpgradeController.a().c();
+    amqe.a().c();
     return 0;
   }
   
@@ -77,13 +77,13 @@ public class UpgradeDetailActivity$JsCover
     QLog.d("Hyim", 2, "loadTipsComplete");
     this.a.a = true;
     int i = getDownloadState();
-    this.a.a(i, UpgradeController.a());
+    this.a.a(i, amqe.a());
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UpgradeDetailActivity.JsCover
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,54 @@
-import com.tencent.litetransfersdk.LiteTransferListenerCallback;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.BaseHornListActivity;
+import com.tencent.mobileqq.activity.BaseHornListActivity.BaseHornAdapter;
+import java.lang.ref.WeakReference;
 
 public class bwo
-  implements Runnable
+  extends Handler
 {
-  public bwo(LiteTransferListenerCallback paramLiteTransferListenerCallback, long paramLong1, long paramLong2, long paramLong3) {}
+  private WeakReference a;
   
-  public void run()
+  public bwo(BaseHornListActivity paramBaseHornListActivity)
   {
-    LiteTransferListenerCallback.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferListenerCallback, this.jdField_a_of_type_Long, this.b, this.c);
+    this.a = new WeakReference(paramBaseHornListActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    BaseHornListActivity localBaseHornListActivity = (BaseHornListActivity)this.a.get();
+    if (localBaseHornListActivity == null) {}
+    do
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 0: 
+        localBaseHornListActivity.a(2131562097);
+      }
+    } while (localBaseHornListActivity.a == null);
+    localBaseHornListActivity.a.a = false;
+    localBaseHornListActivity.a.notifyDataSetChanged();
+    return;
+    localBaseHornListActivity.a(2131561874);
+    return;
+    if (paramMessage.arg1 > 0)
+    {
+      localBaseHornListActivity.a(localBaseHornListActivity.getString(2131559034, new Object[] { Integer.valueOf(paramMessage.arg1) }));
+      return;
+    }
+    localBaseHornListActivity.a(2131563218);
+    return;
+    localBaseHornListActivity.a(2131562652);
+    return;
+    localBaseHornListActivity.a(2131563060);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bwo
  * JD-Core Version:    0.7.0.1
  */

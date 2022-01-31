@@ -1,45 +1,51 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.ocr.OCRShareHelper;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.UploadTask;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
 
 public class agbh
-  implements ActionSheet.OnButtonClickListener
+  implements akcn
 {
-  int jdField_a_of_type_Int = -1;
-  String jdField_a_of_type_JavaLangString = "";
+  public agbh(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
   
-  public agbh(OCRShareHelper paramOCRShareHelper) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt)
   {
-    switch (paramInt)
+    ShortVideoRealItemBuilder localShortVideoRealItemBuilder = this.a;
+    if (ShortVideoRealItemBuilder.a(this.a) != null) {}
+    for (long l = ShortVideoRealItemBuilder.a(this.a).uniseq;; l = -1L)
     {
-    }
-    for (;;)
-    {
-      if ((OCRShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRShareHelper) != null) && (OCRShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRShareHelper).isShowing())) {
-        OCRShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRShareHelper).dismiss();
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        ReportController.b(null, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
-      }
+      ShortVideoRealItemBuilder.a(localShortVideoRealItemBuilder, l);
       return;
-      OCRShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRShareHelper, 1, OCRShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRShareHelper));
-      this.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_JavaLangString = "0X80082EB";
-      continue;
-      OCRShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRShareHelper, 2, OCRShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRShareHelper));
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_JavaLangString = "0X80082EC";
     }
+  }
+  
+  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  {
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfByte2 = new StringBuilder().append("onEncodeSuccess curMsg:");
+      if (ShortVideoRealItemBuilder.a(this.a) == null) {
+        break label120;
+      }
+    }
+    label120:
+    for (paramString2 = Long.valueOf(ShortVideoRealItemBuilder.a(this.a).uniseq);; paramString2 = "")
+    {
+      QLog.i("ShortVideoRealItemBuilder", 2, paramString2);
+      if (ShortVideoRealItemBuilder.a(this.a) == null) {
+        break;
+      }
+      ShortVideoRealItemBuilder.a(this.a).md5 = HexUtil.bytes2HexStr(paramArrayOfByte1);
+      new ShortVideoRealItemBuilder.UploadTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, ShortVideoRealItemBuilder.a(this.a), paramString1, this.a).run();
+      return;
+    }
+    axwq.a(new RuntimeException("onMediaMessageSend failed"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agbh
  * JD-Core Version:    0.7.0.1
  */

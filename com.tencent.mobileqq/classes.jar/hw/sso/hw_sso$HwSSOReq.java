@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class hw_sso$HwSSOReq
-  extends MessageMicro
+  extends MessageMicro<HwSSOReq>
 {
   public static final int BODY_FIELD_NUMBER = 2;
   public static final int CMD_FIELD_NUMBER = 1;
@@ -24,7 +24,7 @@ public final class hw_sso$HwSSOReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     hw.sso.hw_sso.HwSSOReq
  * JD-Core Version:    0.7.0.1
  */

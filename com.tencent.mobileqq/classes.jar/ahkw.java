@@ -1,44 +1,24 @@
-import com.tencent.mobileqq.richmedia.capture.util.ReportBadCase;
-import com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils.BadDataFrame;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 
-public final class ahkw
-  implements Runnable
+class ahkw
+  implements View.OnLongClickListener
 {
-  public void run()
+  ahkw(ahkt paramahkt, ahkz paramahkz) {}
+  
+  public boolean onLongClick(View paramView)
   {
-    for (;;)
+    if (this.jdField_a_of_type_Ahkt.a != null)
     {
-      int i;
-      synchronized ()
-      {
-        int j = ReportBadCase.a().size();
-        if (j > 0)
-        {
-          i = 0;
-          if (i < j)
-          {
-            BadcaseReportUtils.BadDataFrame localBadDataFrame = (BadcaseReportUtils.BadDataFrame)ReportBadCase.a().get(i);
-            if ((!localBadDataFrame.b) || (localBadDataFrame.d == null) || ("".equals(localBadDataFrame.d))) {
-              break label96;
-            }
-            FileUtils.d(localBadDataFrame.d);
-            break label96;
-          }
-        }
-        ReportBadCase.a().clear();
-        ReportBadCase.b();
-        return;
-      }
-      label96:
-      i += 1;
+      int i = this.jdField_a_of_type_Ahkz.getAdapterPosition();
+      return this.jdField_a_of_type_Ahkt.a.a(paramView, this.jdField_a_of_type_Ahkz, i);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahkw
  * JD-Core Version:    0.7.0.1
  */

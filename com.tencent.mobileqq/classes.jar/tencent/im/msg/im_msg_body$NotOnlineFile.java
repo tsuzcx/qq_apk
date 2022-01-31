@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class im_msg_body$NotOnlineFile
-  extends MessageMicro
+  extends MessageMicro<NotOnlineFile>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_file_md5 = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -19,7 +19,7 @@ public final class im_msg_body$NotOnlineFile
   public final PBBytesField bytes_note = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_pb_reserve = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_sig = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField rpt_bytes_file_urls = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> rpt_bytes_file_urls = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBUInt32Field uint32_abs_file_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_client_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_danger_evel = PBField.initUInt32(0);

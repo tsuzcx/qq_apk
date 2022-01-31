@@ -1,20 +1,12 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketProxy.1;
+import android.view.MotionEvent;
 
-public class xhf
-  implements Runnable
+public abstract class xhf
 {
-  public xhf(RedPacketProxy.1 param1, RedPacketInfoBase paramRedPacketInfoBase) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketProxy$1.a.onGetSkin(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase);
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xhf
  * JD-Core Version:    0.7.0.1
  */

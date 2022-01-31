@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class mobileqq_mp$CRMSendLBSInfoRequest
-  extends MessageMicro
+  extends MessageMicro<CRMSendLBSInfoRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 17, 25, 34 }, new String[] { "uin", "latitude", "longitude", "cityinfo" }, new Object[] { Long.valueOf(0L), Double.valueOf(0.0D), Double.valueOf(0.0D), "" }, CRMSendLBSInfoRequest.class);
   public final PBStringField cityinfo = PBField.initString("");
@@ -18,7 +18,7 @@ public final class mobileqq_mp$CRMSendLBSInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mp.mobileqq_mp.CRMSendLBSInfoRequest
  * JD-Core Version:    0.7.0.1
  */

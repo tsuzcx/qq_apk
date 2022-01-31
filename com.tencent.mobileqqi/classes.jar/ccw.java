@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.activity.ChatActivity;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class ccw
-  implements Runnable
+  implements IIconListener
 {
-  public ccw(ChatActivity paramChatActivity, int paramInt1, int paramInt2) {}
+  public ccw(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    ChatActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity, this.jdField_a_of_type_Int, this.b, "");
+    if ((this.a.jdField_a_of_type_AndroidWidgetTextView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.b == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
+      ChatSettingActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus, this.a.jdField_a_of_type_AndroidWidgetTextView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ccw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener;
-
-class vpx
-  implements View.OnTouchListener
+public class vpx
+  extends vpm
 {
-  vpx(vpw paramvpw, PhotoListPanel.SwipeUpAndDragListener paramSwipeUpAndDragListener) {}
+  public woq a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public vpx(String paramString)
   {
-    paramView = paramView.getParent();
-    if (paramView != null) {
-      paramView.requestDisallowInterceptTouchEvent(true);
-    }
-    return false;
+    super(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vpx
  * JD-Core Version:    0.7.0.1
  */

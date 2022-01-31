@@ -1,17 +1,21 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-final class fk
-  implements DialogInterface.OnClickListener
+class fk
+  implements Animation.AnimationListener
 {
-  fk(es parames) {}
+  fk(fj paramfj) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.finish();
+    FaceRecognitionCameraActivity.access$900(this.a.a);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

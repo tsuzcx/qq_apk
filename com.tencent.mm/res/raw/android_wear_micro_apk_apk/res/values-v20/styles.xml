@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ab" parent="@style/ac" />
+    <style name="ac" parent="@style/an">
+        <item name="android:textColor">@color/ak</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:lineSpacingMultiplier">0.92</item>
+    </style>
+    <style name="ad" parent="@style/ae" />
+    <style name="ae" parent="@style/an">
+        <item name="android:textColor">@color/aj</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:singleLine">false</item>
+    </style>
+    <style name="af" parent="@style/al">
+        <item name="android:textColor">@color/a_</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/z</item>
+        <item name="android:lineSpacingExtra">-2.0sp</item>
+    </style>
+    <style name="ag">
+        <item name="u">7.799988dip</item>
+        <item name="v">2.0999756dip</item>
+        <item name="w">3.0999756dip</item>
+        <item name="x">@color/ai</item>
+        <item name="y">@color/ai</item>
+        <item name="z">true</item>
+        <item name="a0">1000</item>
+        <item name="a1">250</item>
+        <item name="a2">100</item>
+        <item name="a3">#66000000</item>
+        <item name="a4">2.0px</item>
+        <item name="a5">1.0px</item>
+        <item name="a6">1.0px</item>
+    </style>
+    <style name="ah" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">24.0sp</item>
+        <item name="android:textColor">@color/ab</item>
+    </style>
+    <style name="ai" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">20.0sp</item>
+        <item name="android:textColor">@color/ab</item>
+    </style>
+    <style name="aj" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textColor">@color/ab</item>
+    </style>
+    <style name="ak" parent="@android:style/Widget.Holo.Light">
+        <item name="android:textAppearance">@style/ah</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+    <style name="al" parent="@style/ak">
+        <item name="android:textAppearance">@style/ah</item>
+        <item name="android:fontFamily">sans-serif-condensed-light</item>
+    </style>
+    <style name="am" parent="@android:style/Widget.Holo.Light">
+        <item name="android:textAppearance">@style/ai</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+    <style name="an" parent="@style/am">
+        <item name="android:textAppearance">@style/ai</item>
+        <item name="android:fontFamily">sans-serif-condensed-light</item>
+    </style>
+    <style name="ao" parent="@android:style/Widget.Holo.Light">
+        <item name="android:textAppearance">@style/aj</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+    <style name="ap" parent="@style/ao">
+        <item name="android:textAppearance">@style/aj</item>
+        <item name="android:fontFamily">sans-serif-condensed-light</item>
+    </style>
+    <style name="aq" parent="@android:style/Theme.DeviceDefault" />
+    <style name="ar" parent="@style/aq">
+        <item name="android:windowSwipeToDismiss">false</item>
+    </style>
+</resources>

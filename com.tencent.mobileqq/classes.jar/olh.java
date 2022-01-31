@@ -1,26 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.permission.PermissionListAdapter;
-import com.tencent.biz.qqstory.takevideo.permission.PermissionSettingActivity;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
 public class olh
-  implements View.OnClickListener
+  implements oot
 {
-  public olh(PermissionSettingActivity paramPermissionSettingActivity) {}
+  public olh(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment, oot paramoot) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    paramView = PermissionSettingActivity.a(this.a).a();
-    if (paramView != null)
-    {
-      PermissionSettingActivity.a(this.a, paramView);
-      this.a.finish();
+    ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment).c();
+    if (this.jdField_a_of_type_Oot != null) {
+      this.jdField_a_of_type_Oot.a(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     olh
  * JD-Core Version:    0.7.0.1
  */

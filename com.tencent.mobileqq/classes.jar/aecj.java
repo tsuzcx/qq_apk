@@ -1,39 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
 public class aecj
-  extends TroopObserver
+  extends alwx
 {
-  public aecj(LoginWelcomeManager paramLoginWelcomeManager) {}
+  public aecj(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    if (paramBoolean)
-    {
-      paramString = LoginWelcomeManager.a(this.a).getBundle("request");
-      paramString.putString("uin", String.valueOf(paramLong));
-      paramString.putShort("option", paramTroopInfo.cGroupOption);
-      paramString.putString("name", paramTroopInfo.troopname);
-      if ((paramTroopInfo.cGroupOption != 4) && (paramTroopInfo.cGroupOption != 5)) {
-        break label114;
-      }
-      paramString.putString("answer", paramTroopInfo.joinTroopAnswer);
-      paramString.putString("question", paramTroopInfo.joinTroopQuestion);
-    }
-    for (;;)
-    {
-      this.a.b();
-      LoginWelcomeManager.a(this.a).removeObserver(this);
-      return;
-      label114:
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginWelcomeManager", 2, "onOIDB0X88D_1_Ret err");
-      }
-    }
+    this.a.c();
+  }
+  
+  protected void b()
+  {
+    this.a.c();
   }
 }
 

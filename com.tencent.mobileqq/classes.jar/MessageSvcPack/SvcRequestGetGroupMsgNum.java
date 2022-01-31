@@ -8,14 +8,14 @@ import java.util.ArrayList;
 public final class SvcRequestGetGroupMsgNum
   extends JceStruct
 {
-  static ArrayList cache_vGroupInfo;
+  static ArrayList<SvcRequestGroupInfo> cache_vGroupInfo;
   public byte cVerifyType;
   public long lUin;
-  public ArrayList vGroupInfo;
+  public ArrayList<SvcRequestGroupInfo> vGroupInfo;
   
   public SvcRequestGetGroupMsgNum() {}
   
-  public SvcRequestGetGroupMsgNum(long paramLong, ArrayList paramArrayList, byte paramByte)
+  public SvcRequestGetGroupMsgNum(long paramLong, ArrayList<SvcRequestGroupInfo> paramArrayList, byte paramByte)
   {
     this.lUin = paramLong;
     this.vGroupInfo = paramArrayList;

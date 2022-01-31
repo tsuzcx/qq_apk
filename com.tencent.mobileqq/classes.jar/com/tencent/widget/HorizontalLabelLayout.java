@@ -33,7 +33,7 @@ public class HorizontalLabelLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public FrameLayout.LayoutParams a()
+  protected FrameLayout.LayoutParams a()
   {
     return new FrameLayout.LayoutParams(-2, -2, 16);
   }
@@ -53,7 +53,7 @@ public class HorizontalLabelLayout
     return new FrameLayout.LayoutParams(paramLayoutParams);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i6 = getChildCount();
     int i7 = paramInt3 - paramInt1 - getPaddingLeft() - getPaddingRight();
@@ -421,7 +421,7 @@ public class HorizontalLabelLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.HorizontalLabelLayout
  * JD-Core Version:    0.7.0.1
  */

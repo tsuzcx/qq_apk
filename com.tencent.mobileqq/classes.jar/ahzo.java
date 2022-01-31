@@ -1,32 +1,24 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class ahzo
-  implements INetInfoHandler
+  extends aruk
 {
-  public ahzo(ShortVideoResourceManager paramShortVideoResourceManager) {}
+  public ahzo(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
   
-  public void onNetMobile2None()
+  public void a(View paramView)
   {
-    ShortVideoResourceManager.a(this.a);
-  }
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
-  {
-    ShortVideoResourceManager.a(this.a);
+    if ((paramView.getTag() instanceof String)) {
+      return;
+    }
+    paramView = (FileManagerEntity)((aidr)paramView.getTag()).a;
+    this.a.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahzo
  * JD-Core Version:    0.7.0.1
  */

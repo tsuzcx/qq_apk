@@ -1,49 +1,53 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.mobileqq.richmedia.ICallBack;
-import com.tencent.mobileqq.richmedia.LOG;
-import com.tencent.mobileqq.richmedia.RichmediaClient;
-import com.tencent.util.BinderWarpper;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.Iterator;
+import java.util.List;
 
 public class ahgl
-  implements ServiceConnection
+  implements ruy
 {
-  public ahgl(RichmediaClient paramRichmediaClient) {}
+  public ahgl(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a(String paramString)
   {
-    LOG.a("PTV.RichmediaClient", "onServiceConnected");
-    this.a.b = new Messenger(paramIBinder);
-    paramComponentName = Message.obtain(null, 1);
-    paramComponentName.replyTo = this.a.jdField_a_of_type_AndroidOsMessenger;
-    paramIBinder = new BinderWarpper(this.a.jdField_a_of_type_ComTencentMobileqqRichmediaICallBack.asBinder());
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("ICallBack_BinderWrapper", paramIBinder);
-    paramComponentName.setData(localBundle);
-    try
+    Object localObject;
+    if (paramString != null)
     {
-      this.a.b.send(paramComponentName);
+      Iterator localIterator = this.a.c.iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject = (ChannelInfo)localIterator.next();
+      } while (!paramString.equals(((ChannelInfo)localObject).mChannelName));
+    }
+    for (paramString = (String)localObject;; paramString = null)
+    {
+      if (paramString != null)
+      {
+        if (!TextUtils.isEmpty(paramString.mJumpUrl))
+        {
+          localObject = new Intent(this.a, QQBrowserActivity.class);
+          ((Intent)localObject).putExtra("hide_operation_bar", true);
+          ((Intent)localObject).putExtra("url", paramString.mJumpUrl);
+          this.a.startActivity((Intent)localObject);
+        }
+      }
+      else {
+        return;
+      }
+      nxu.a(this.a, paramString.mChannelID, paramString.mChannelName, paramString.mChannelType, 0);
       return;
     }
-    catch (RemoteException paramComponentName)
-    {
-      LOG.b("PTV.RichmediaClient", "MSG_C2S_REGISTER_CLIENT send failed. e = " + paramComponentName);
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    this.a.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahgl
  * JD-Core Version:    0.7.0.1
  */

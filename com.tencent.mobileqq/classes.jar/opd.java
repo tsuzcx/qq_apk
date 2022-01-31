@@ -1,34 +1,20 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeCommentTextView;
 
-public final class opd
-  extends ExecuteBinResponseCallback
+public class opd
+  implements bhvm
 {
-  public opd(ExecuteBinResponseCallback paramExecuteBinResponseCallback) {}
+  public opd(NativeCommentTextView paramNativeCommentTextView) {}
   
   public void a()
   {
-    super.a();
-    this.a.a();
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.a(paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.a(paramBoolean);
-  }
-  
-  public void b(String paramString)
-  {
-    this.a.b(paramString);
+    this.a.setBackgroundColor(NativeCommentTextView.a(this.a).getResources().getColor(2131167194));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     opd
  * JD-Core Version:    0.7.0.1
  */

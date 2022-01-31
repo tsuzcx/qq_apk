@@ -1,40 +1,27 @@
-import android.support.annotation.NonNull;
-import android.widget.LinearLayout;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.AssertUtils;
-import com.tencent.mobileqq.troop.homework.arithmetic.stream.SendArithHomeResultSegment.RspInfo;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class ajge
-  extends SimpleObserver
+class ajge
+  implements View.OnClickListener
 {
-  public ajge(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
+  ajge(ajgb paramajgb, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
   
-  public void a(SendArithHomeResultSegment.RspInfo paramRspInfo)
+  public void onClick(View paramView)
   {
-    super.onNext(paramRspInfo);
-    SLog.d("QQ.Troop.homework.CheckArithHWResultFragment", "requestSendHomeworkResult completed");
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
-    AssertUtils.a(paramRspInfo.a);
-    AssertUtils.a(paramRspInfo.b);
-    CheckArithHWResultFragment.a(this.a, paramRspInfo.a, paramRspInfo.b);
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    SLog.e("QQ.Troop.homework.CheckArithHWResultFragment", "send homework error:" + paramError);
-    QQToast.a(this.a.getActivity(), 1, "上传作业失败", 0).a();
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
-    CheckArithHWResultFragment.a(this.a, null, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper close banner");
+    }
+    paramView = (QQAppInterface)ajgb.a(this.jdField_a_of_type_Ajgb).getAppRuntime();
+    this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper.a();
+    UpgradeTIMWrapper.a(paramView, this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper);
+    ajgb.a(this.jdField_a_of_type_Ajgb).obtainMessage(20).sendToTarget();
+    azqs.b(paramView, "CliOper", "", "", "0X800865A", "0X800865A", 0, 0, "", "", "", "");
   }
 }
 

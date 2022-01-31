@@ -1,18 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import mqq.app.permission.PermissionCallback;
 
-public class cng
-  implements DialogInterface.OnClickListener
+class cng
+  implements PermissionCallback
 {
-  public cng(DialogActivity paramDialogActivity) {}
+  cng(cnf paramcnf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.b.a().e();
-    this.a.finish();
+    new PermissionsDialog().a(this.a.a.a, paramInt, paramArrayOfString, new cnh(this));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.a.a.jdField_a_of_type_AndroidNetUri = ProfileActivity.a(this.a.a.a, 5);
+    ReportController.b(this.a.a.a.b, "CliOper", "", "", "0X8004176", "0X8004176", ProfileActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.f), 0, "", "", "", "");
   }
 }
 

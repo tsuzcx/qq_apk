@@ -3,7 +3,6 @@ package android.support.v4.view;
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff.Mode;
 import android.view.View;
-import android.view.View.OnApplyWindowInsetsListener;
 import android.view.WindowInsets;
 
 class ViewCompatLollipop
@@ -135,14 +134,7 @@ class ViewCompatLollipop
       paramView.setOnApplyWindowInsetsListener(null);
       return;
     }
-    paramView.setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener()
-    {
-      public WindowInsets onApplyWindowInsets(View paramAnonymousView, WindowInsets paramAnonymousWindowInsets)
-      {
-        paramAnonymousWindowInsets = new WindowInsetsCompatApi21(paramAnonymousWindowInsets);
-        return ((WindowInsetsCompatApi21)this.val$listener.onApplyWindowInsets(paramAnonymousView, paramAnonymousWindowInsets)).unwrap();
-      }
-    });
+    paramView.setOnApplyWindowInsetsListener(new ViewCompatLollipop.1(paramOnApplyWindowInsetsListener));
   }
   
   public static void setTransitionName(View paramView, String paramString)

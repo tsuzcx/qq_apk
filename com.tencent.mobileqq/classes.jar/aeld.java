@@ -1,17 +1,29 @@
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
+
 public class aeld
+  implements TextWatcher
 {
-  public int a;
-  public String a;
+  public aeld(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public aeld()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
+    if (paramEditable.length() >= 4)
+    {
+      VerifyCodeActivity.c(this.a, true);
+      return;
+    }
+    VerifyCodeActivity.d(this.a, false);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeld
  * JD-Core Version:    0.7.0.1
  */

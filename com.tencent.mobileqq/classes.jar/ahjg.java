@@ -1,28 +1,10 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-
-public class ahjg
-  implements Runnable
+public abstract interface ahjg
 {
-  public ahjg(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
-  
-  public void run()
-  {
-    EffectsCameraCaptureFragment.h(this.a, false);
-    if (EffectsCameraCaptureFragment.a(this.a) == null) {
-      return;
-    }
-    EffectsCameraCaptureFragment.a(this.a).removeView(EffectsCameraCaptureFragment.a(this.a));
-    EffectsCameraCaptureFragment.a(this.a).setVisibility(0);
-    EffectsCameraCaptureFragment.a(this.a).setEnabled(true);
-    this.a.a.a(null);
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahjg
  * JD-Core Version:    0.7.0.1
  */

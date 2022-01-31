@@ -1,35 +1,34 @@
-import Wallet.WalletSkinRsp;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import java.util.List;
 
-class xaz
-  implements PreloadManager.OnGetPathListener
+public abstract interface xaz
+  extends xam
 {
-  xaz(xay paramxay, String paramString) {}
+  public abstract long a(int paramInt);
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletSkinHandler", 2, "setWalletSkin OnGetPathListener:" + paramInt + "|" + paramPathResult);
-    }
-    if ((paramInt != 0) || (TextUtils.isEmpty(paramPathResult.folderPath)))
-    {
-      QWalletSkinHandler.a(this.jdField_a_of_type_Xay.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_Xay.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, false);
-      return;
-    }
-    QWalletSkinHandler.a(this.jdField_a_of_type_Xay.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_Xay.jdField_a_of_type_WalletWalletSkinRsp.skinID);
-    QWalletSkinHandler.a(this.jdField_a_of_type_Xay.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Xay.jdField_a_of_type_WalletWalletSkinRsp.zipUrl);
-    QWalletSkinHandler.b(this.jdField_a_of_type_Xay.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Xay.jdField_a_of_type_WalletWalletSkinRsp.zipMd5);
-    QWalletSkinHandler.a(this.jdField_a_of_type_Xay.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_Xay.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, true);
-    QWalletSkinHandler.a(this.jdField_a_of_type_Xay.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler);
-  }
+  public abstract Bitmap a(int paramInt);
+  
+  public abstract List<? extends xcs> a();
+  
+  public abstract void a(int paramInt1, int paramInt2, float paramFloat);
+  
+  public abstract void a(int paramInt, byte[] paramArrayOfByte);
+  
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void j();
+  
+  public abstract void k();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xaz
  * JD-Core Version:    0.7.0.1
  */

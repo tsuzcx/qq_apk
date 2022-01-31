@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class Roam$RoamRspHead
-  extends MessageMicro
+  extends MessageMicro<RoamRspHead>
 {
   public static final int MSG_FIELD_NUMBER = 2;
   public static final int RESULT_FIELD_NUMBER = 1;
@@ -17,7 +17,7 @@ public final class Roam$RoamRspHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.sso.roam.Roam.RoamRspHead
  * JD-Core Version:    0.7.0.1
  */

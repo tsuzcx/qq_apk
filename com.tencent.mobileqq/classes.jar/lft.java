@@ -1,16 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-
-public class lft
+public abstract interface lft
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
-  
-  private lft(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lft
  * JD-Core Version:    0.7.0.1
  */

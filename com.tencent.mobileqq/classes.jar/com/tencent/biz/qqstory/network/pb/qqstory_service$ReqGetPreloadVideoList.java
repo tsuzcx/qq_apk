@@ -10,12 +10,12 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_service$ReqGetPreloadVideoList
-  extends MessageMicro
+  extends MessageMicro<ReqGetPreloadVideoList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBEnumField pull_type = PBField.initEnum(1);
-  public final PBRepeatField ugc_topic_id_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
-  public final PBRepeatField union_id_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<Long> ugc_topic_id_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> union_id_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
   
   static
   {
@@ -25,7 +25,7 @@ public final class qqstory_service$ReqGetPreloadVideoList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPreloadVideoList
  * JD-Core Version:    0.7.0.1
  */

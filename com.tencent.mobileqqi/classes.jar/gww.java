@@ -1,17 +1,35 @@
-import android.widget.ImageButton;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler;
+import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
 
 public class gww
-  implements Runnable
+  implements View.OnClickListener
 {
-  public gww(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public gww(VideoPlayLogic paramVideoPlayLogic) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130839368);
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(this.a.getString(2131558490));
+    if (VideoPlayLogic.a(this.a) != null) {
+      VideoPlayLogic.a(this.a).c();
+    }
+    if (VideoPlayLogic.a(this.a))
+    {
+      if (this.a.c()) {
+        ReportController.b(VideoPlayLogic.a(this.a).b, "P_CliOper", "Grp_AIO", "", "video", "jump", 0, 0, VideoPlayLogic.a(this.a).a, "1", "", "");
+      }
+      for (;;)
+      {
+        new StructMsgForGeneralShare.GeneralClickHandler(VideoPlayLogic.a(this.a), VideoPlayLogic.a(this.a), VideoPlayLogic.a(this.a)).a(VideoPlayLogic.a(this.a));
+        return;
+        ReportController.b(VideoPlayLogic.a(this.a).b, "P_CliOper", "Grp_AIO", "", "video", "jump", 0, 0, VideoPlayLogic.a(this.a).a, "0", "", "");
+      }
+    }
+    this.a.a(VideoPlayLogic.a(this.a));
   }
 }
 

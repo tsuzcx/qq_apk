@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.filemanager.data;
 
-import adar;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import arcb;
 import java.util.ArrayList;
 
 public class ForwardFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new adar();
-  private int jdField_a_of_type_Int;
+  public static final Parcelable.Creator<ForwardFileInfo> CREATOR = new arcb();
+  public int a;
   private long jdField_a_of_type_Long;
   private WeiYunFileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo;
   private String jdField_a_of_type_JavaLangString;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
   private String jdField_b_of_type_JavaLangString;
@@ -24,7 +24,8 @@ public class ForwardFileInfo
   private int jdField_d_of_type_Int;
   private long jdField_d_of_type_Long;
   private String jdField_d_of_type_JavaLangString;
-  private String e;
+  private int jdField_e_of_type_Int;
+  private String jdField_e_of_type_JavaLangString;
   private String f;
   
   public ForwardFileInfo()
@@ -34,7 +35,7 @@ public class ForwardFileInfo
     d("");
     b(-1L);
     c("");
-    b(this.jdField_a_of_type_Int);
+    b(this.jdField_b_of_type_Int);
     e("");
   }
   
@@ -65,7 +66,7 @@ public class ForwardFileInfo
   
   public int a()
   {
-    return this.jdField_d_of_type_Int;
+    return this.jdField_e_of_type_Int;
   }
   
   public long a()
@@ -83,7 +84,7 @@ public class ForwardFileInfo
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  public ArrayList a()
+  public ArrayList<Long> a()
   {
     if (this.jdField_a_of_type_JavaUtilArrayList == null) {
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -93,7 +94,7 @@ public class ForwardFileInfo
   
   public void a(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.jdField_e_of_type_Int = paramInt;
   }
   
   public void a(long paramLong)
@@ -111,18 +112,18 @@ public class ForwardFileInfo
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(ArrayList paramArrayList)
+  public void a(ArrayList<Long> paramArrayList)
   {
-    ArrayList localArrayList = paramArrayList;
+    Object localObject = paramArrayList;
     if (paramArrayList == null) {
-      localArrayList = new ArrayList();
+      localObject = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
   }
   
   public int b()
   {
-    return this.jdField_a_of_type_Int;
+    return this.jdField_b_of_type_Int;
   }
   
   public long b()
@@ -137,7 +138,7 @@ public class ForwardFileInfo
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_Int = paramInt;
   }
   
   public void b(long paramLong)
@@ -152,7 +153,7 @@ public class ForwardFileInfo
   
   public int c()
   {
-    return this.jdField_c_of_type_Int;
+    return this.jdField_d_of_type_Int;
   }
   
   public long c()
@@ -167,7 +168,7 @@ public class ForwardFileInfo
   
   public void c(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_d_of_type_Int = paramInt;
   }
   
   public void c(long paramLong)
@@ -182,7 +183,7 @@ public class ForwardFileInfo
   
   public int d()
   {
-    return this.jdField_b_of_type_Int;
+    return this.jdField_c_of_type_Int;
   }
   
   public long d()
@@ -197,7 +198,7 @@ public class ForwardFileInfo
   
   public void d(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_c_of_type_Int = paramInt;
   }
   
   public void d(long paramLong)
@@ -217,12 +218,12 @@ public class ForwardFileInfo
   
   public String e()
   {
-    return this.e;
+    return this.jdField_e_of_type_JavaLangString;
   }
   
   public void e(String paramString)
   {
-    this.e = paramString;
+    this.jdField_e_of_type_JavaLangString = paramString;
   }
   
   public boolean equals(Object paramObject)
@@ -253,7 +254,7 @@ public class ForwardFileInfo
   
   public String toString()
   {
-    return "type[" + this.jdField_a_of_type_Int + "], cloudTYpe[" + this.jdField_b_of_type_Int + "], sessionId[" + this.jdField_a_of_type_Long + "], uniseq[" + this.jdField_b_of_type_Long + "], uuid[" + this.jdField_b_of_type_JavaLangString + "], fileId[" + this.jdField_c_of_type_JavaLangString + "], weiYunSrcType[" + this.jdField_c_of_type_Int + "], uuidTroopFile[" + this.e;
+    return "type[" + this.jdField_b_of_type_Int + "], cloudTYpe[" + this.jdField_c_of_type_Int + "], sessionId[" + this.jdField_a_of_type_Long + "], uniseq[" + this.jdField_b_of_type_Long + "], uuid[" + this.jdField_b_of_type_JavaLangString + "], fileId[" + this.jdField_c_of_type_JavaLangString + "], weiYunSrcType[" + this.jdField_d_of_type_Int + "], uuidTroopFile[" + this.jdField_e_of_type_JavaLangString;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -278,7 +279,7 @@ public class ForwardFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.ForwardFileInfo
  * JD-Core Version:    0.7.0.1
  */

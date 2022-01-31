@@ -1,28 +1,19 @@
-import android.content.Context;
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Queue;
+import android.support.annotation.Nullable;
+import android.view.View;
 
-public class ajyf
-  implements Runnable
+public abstract interface ajyf
 {
-  public ajyf(UnifiedDebugManager paramUnifiedDebugManager, long paramLong1, Context paramContext, String paramString1, int paramInt, long paramLong2, String paramString2) {}
+  public abstract int a();
   
-  public void run()
-  {
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager.a)
-    {
-      ajyh localajyh = (ajyh)this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager.a.peek();
-      if ((localajyh != null) && (localajyh.jdField_b_of_type_Long == this.jdField_a_of_type_Long))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Long, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaLangString);
-        if (QLog.isColorLevel()) {
-          QLog.d("UnifiedDebugManager", 2, "start debug(retry): seq=" + this.jdField_a_of_type_Long);
-        }
-      }
-      return;
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(@Nullable ajyd paramajyd);
+  
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
 }
 
 

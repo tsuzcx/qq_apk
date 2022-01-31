@@ -1,27 +1,26 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-import com.tencent.mobileqq.scribble.ScribbleMsgUtils;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-class usa
-  implements Runnable
+public class usa
+  extends SimpleJob<Void>
 {
-  usa(urz paramurz, int paramInt) {}
-  
-  public void run()
+  public usa(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, urt paramurt)
   {
-    this.jdField_a_of_type_Urz.a.d();
-    if (this.jdField_a_of_type_Int == ScribbleMsgUtils.d)
-    {
-      this.jdField_a_of_type_Urz.a.c();
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_Urz.a.getContext(), 2131439068, 0).b(DoodlePanel.a(this.jdField_a_of_type_Urz.a).a());
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a(this.jdField_a_of_type_Urt);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     usa
  * JD-Core Version:    0.7.0.1
  */

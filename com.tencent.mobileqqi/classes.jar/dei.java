@@ -1,30 +1,27 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BizTroopObserver;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.QuickLoginActivity;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
-class dei
-  extends BizTroopObserver
+public class dei
+  implements AdapterView.OnItemClickListener
 {
-  dei(deg paramdeg) {}
+  public dei(QuickLoginActivity paramQuickLoginActivity) {}
   
-  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (!paramString2.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b(this.a.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
-      deg.a(this.a);
-      return;
-    }
-    if (!this.a.jdField_b_of_type_Boolean)
-    {
-      this.a.jdField_c_of_type_Boolean = true;
-      this.a.jdField_a_of_type_JavaLangString = paramString1;
-      this.a.jdField_b_of_type_JavaLangString = paramString2;
-      this.a.d = paramBoolean;
-      this.a.jdField_c_of_type_JavaLangString = paramString3;
-      return;
-    }
-    deg.a(this.a, paramString1, paramString2, paramBoolean, paramString3);
+    Log.d("QuickLogin", ((HashMap)this.a.a.get(paramInt)).toString());
+    paramAdapterView = (String)((HashMap)this.a.a.get(paramInt)).get("qq");
+    libsafeedit.getLoginLegal((String)((HashMap)this.a.a.get(paramInt)).get("password"));
+    paramView = libsafeedit.byteSafeEditTextToMD5(Boolean.valueOf(true));
+    this.a.getAppRuntime().login(paramAdapterView, paramView, QuickLoginActivity.a(this.a));
+    Toast.makeText(this.a.getApplicationContext(), "logining...", 0).show();
   }
 }
 

@@ -1,25 +1,28 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket;
 
+import ajbv;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
-import xgr;
 
 public class RedPacketInfoBase
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new xgr();
+  public static final Parcelable.Creator<RedPacketInfoBase> CREATOR = new ajbv();
   public static final String ICON_DEF = "icon_def";
+  public static final String ICON_DRAW = "icon_draw";
+  public static final String ICON_EMOJI = "icon_emoji";
+  public static final String ICON_KSONG = "icon_ksong";
   public static final String ICON_SP = "icon_sp";
   public static final String ICON_TXT = "icon_txt";
   public static final String ICON_VIDEO = "icon_video";
   public static final String ICON_VOICE = "icon_voice";
   public AnimationView.AnimationInfo animInfo;
   public Bundle attribute = new Bundle();
-  public Bitmap background;
+  public String background;
   public int bigAnimId;
   public int channel = -1;
   public Bitmap corner;
@@ -45,7 +48,6 @@ public class RedPacketInfoBase
     this.channel = paramParcel.readInt();
     this.bigAnimId = paramParcel.readInt();
     this.templateId = paramParcel.readString();
-    this.background = ((Bitmap)paramParcel.readParcelable(Bitmap.class.getClassLoader()));
     this.corner = ((Bitmap)paramParcel.readParcelable(Bitmap.class.getClassLoader()));
     this.icon = ((Bitmap)paramParcel.readParcelable(Bitmap.class.getClassLoader()));
     this.specialBackground = ((Bitmap)paramParcel.readParcelable(Bitmap.class.getClassLoader()));
@@ -74,7 +76,6 @@ public class RedPacketInfoBase
     paramParcel.writeInt(this.channel);
     paramParcel.writeInt(this.bigAnimId);
     paramParcel.writeString(this.templateId);
-    paramParcel.writeParcelable(this.background, paramInt);
     paramParcel.writeParcelable(this.corner, paramInt);
     paramParcel.writeParcelable(this.icon, paramInt);
     paramParcel.writeParcelable(this.specialBackground, paramInt);
@@ -92,7 +93,7 @@ public class RedPacketInfoBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase
  * JD-Core Version:    0.7.0.1
  */

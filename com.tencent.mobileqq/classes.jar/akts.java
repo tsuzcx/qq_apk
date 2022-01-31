@@ -1,45 +1,106 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.CustomedTabWidget;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.apollo.game.ApolloGameConfig.1;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class akts
-  implements View.OnTouchListener
 {
-  public akts(CustomedTabWidget paramCustomedTabWidget) {}
+  static {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static int a(String paramString)
   {
-    if (paramMotionEvent.getAction() == 0)
+    int i = -1;
+    SharedPreferences localSharedPreferences = ApolloGameUtil.a();
+    if (localSharedPreferences != null) {
+      i = localSharedPreferences.getInt(paramString, -1);
+    }
+    return i;
+  }
+  
+  public static int a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    int j = -1;
+    if (paramQQAppInterface != null)
     {
-      i = 0;
-      if (i < this.a.getChildCount())
+      paramQQAppInterface = (aknx)paramQQAppInterface.getManager(153);
+      int i;
+      if ("aio.city.game".equals(paramString))
       {
-        if (this.a.getChildAt(i) != paramView) {
-          break label57;
+        i = j;
+        if (paramQQAppInterface != null)
+        {
+          if (!paramQQAppInterface.d) {
+            break label45;
+          }
+          i = aktt.d;
         }
-        this.a.jdField_a_of_type_Int = i;
-        this.a.jdField_a_of_type_Boolean = true;
-        this.a.invalidate();
       }
-    }
-    label57:
-    while (paramMotionEvent.getAction() != 1) {
-      for (;;)
+      label45:
+      do
       {
-        int i;
-        return false;
-        i += 1;
-      }
+        do
+        {
+          do
+          {
+            for (;;)
+            {
+              return i;
+              i = -1;
+            }
+            i = j;
+          } while (!"drawer.game".equals(paramString));
+          i = j;
+        } while (paramQQAppInterface == null);
+        i = j;
+      } while (!paramQQAppInterface.e);
+      return aktt.b;
     }
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.invalidate();
+    QLog.e("ApolloGameConfig", 1, "app is null");
+    return -1;
+  }
+  
+  public static String a(String paramString)
+  {
+    SharedPreferences localSharedPreferences = ApolloGameUtil.a();
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getString(paramString, "");
+    }
+    return "";
+  }
+  
+  public static void a()
+  {
+    ThreadManager.post(new ApolloGameConfig.1(), 8, null, true);
+  }
+  
+  public static boolean a(String paramString, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = ApolloGameUtil.a();
+    if (localSharedPreferences != null)
+    {
+      localSharedPreferences.edit().putInt(paramString, paramInt).apply();
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean a(String paramString1, String paramString2)
+  {
+    SharedPreferences localSharedPreferences = ApolloGameUtil.a();
+    if (localSharedPreferences != null)
+    {
+      localSharedPreferences.edit().putString(paramString1, paramString2).apply();
+      return true;
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akts
  * JD-Core Version:    0.7.0.1
  */

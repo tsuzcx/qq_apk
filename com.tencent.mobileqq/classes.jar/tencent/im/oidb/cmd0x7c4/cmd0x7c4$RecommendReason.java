@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x7c4$RecommendReason
-  extends MessageMicro
+  extends MessageMicro<RecommendReason>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_recommend_reason = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class cmd0x7c4$RecommendReason
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x7c4.cmd0x7c4.RecommendReason
  * JD-Core Version:    0.7.0.1
  */

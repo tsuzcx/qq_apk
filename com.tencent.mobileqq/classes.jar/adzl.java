@@ -1,40 +1,47 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.leba.LebaTopBarAdapter;
-import com.tencent.mobileqq.leba.header.LebaGridUtils;
-import com.tencent.mobileqq.leba.model.LebaGridItemInfo;
-import com.tencent.mobileqq.leba.model.PluginInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.ConcurrentHashMap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.StructMsgObserver.1;
+import com.tencent.mobileqq.activity.StructMsgObserver.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import java.util.Observable;
+import java.util.Observer;
 
 public class adzl
-  implements Runnable
+  implements Observer
 {
-  public adzl(LebaTopBarAdapter paramLebaTopBarAdapter, LebaGridItemInfo paramLebaGridItemInfo, String paramString, ImageView paramImageView) {}
-  
-  public void run()
+  public void update(Observable paramObservable, Object paramObject)
   {
-    Object localObject = LebaGridUtils.a(LebaTopBarAdapter.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaTopBarAdapter), this.jdField_a_of_type_ComTencentMobileqqLebaModelLebaGridItemInfo.a.pkgName, this.jdField_a_of_type_ComTencentMobileqqLebaModelLebaGridItemInfo.a.resBigUrl);
-    if (((File)localObject).exists())
+    if (!aemu.a) {}
+    do
     {
-      localObject = LebaGridUtils.a((File)localObject);
-      if (localObject == null) {
-        break label123;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(LebaTopBarAdapter.a(), 2, "found bitmap from sdcard, info=" + this.jdField_a_of_type_ComTencentMobileqqLebaModelLebaGridItemInfo.a.resName);
-      }
-      BaseApplicationImpl.sImageHashMap.put(this.jdField_a_of_type_JavaLangString, localObject);
-      ((BaseActivity)LebaTopBarAdapter.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaTopBarAdapter)).runOnUiThread(new adzm(this, (Bitmap)localObject));
-    }
-    label123:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d(LebaTopBarAdapter.a(), 2, "can't find bitmap form cache & sdcard" + this.jdField_a_of_type_ComTencentMobileqqLebaModelLebaGridItemInfo.a.resName);
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (!(paramObject instanceof MessageForStructing)) {
+              break;
+            }
+            paramObject = (MessageForStructing)paramObject;
+            paramObservable = paramObject.structingMsg;
+          } while ((paramObject.isSend()) || (!aemu.a(paramObservable)));
+          paramObject = paramObservable.mMsgUrl;
+          str1 = paramObservable.currentAccountUin;
+          str2 = paramObservable.uin;
+          ThreadManager.post(new StructMsgObserver.1(this, paramObject, paramObservable.uinType, str1, str2), 5, null, false);
+          return;
+        } while (!(paramObject instanceof MessageForText));
+        paramObservable = (MessageForText)paramObject;
+      } while ((paramObservable.isSend()) || (TextUtils.isEmpty(paramObservable.msg)));
+      paramObject = aemu.c(paramObservable.msg);
+    } while (TextUtils.isEmpty(paramObject));
+    String str1 = paramObservable.frienduin;
+    String str2 = paramObservable.selfuin;
+    ThreadManager.post(new StructMsgObserver.2(this, paramObject, paramObservable.istroop, str2, str1), 5, null, false);
   }
 }
 

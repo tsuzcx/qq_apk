@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="14.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/cwi" android:background="@drawable/b3g" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="15.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ila" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/cwk" android:background="@drawable/b3g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="2.0dip" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/ild" android:layout_width="fill_parent" android:layout_height="31.0dip">
+            <TextView android:textSize="14.0sp" android:textColor="@color/qzone_skin_feed_second_content_text_color" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="2.5dip" android:text="@string/jeb" android:singleLine="true" />
+            <TextView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.5dip" android:layout_weight="0.88" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/il_" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="2.5dip" android:src="@drawable/qzone_skin_feed_icon_dropdown" android:scaleType="centerInside" android:layout_centerInParent="true" />
+        </LinearLayout>
+        <include android:visibility="gone" layout="@layout/by0" />
+        <com.qzone.module.feedcomponent.ui.QzoneSecretCanvasFeedView android:id="@id/hr6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/hr7" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="14.0sp" android:textColor="@color/qzone_skin_feed_second_content_text_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jea" />
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:src="@drawable/qzone_skin_secret_feed_arrow_right" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

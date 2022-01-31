@@ -1,43 +1,60 @@
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder.Holder;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.peak.PeakUtils;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGetGroupHotRankVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupHotRankVideo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class vcr
-  implements Runnable
+  extends uub
 {
-  public vcr(PicItemBuilder paramPicItemBuilder, MessageForPic paramMessageForPic, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener, PicItemBuilder.Holder paramHolder) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void run()
+  public vcr(vcq paramvcq, boolean paramBoolean)
   {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public String a()
+  {
+    return uqn.a("StoryGroupSvc.get_hot_rank_video_list");
+  }
+  
+  public uuc a(byte[] paramArrayOfByte)
+  {
+    qqstory_group.RspGetGroupHotRankVideo localRspGetGroupHotRankVideo = new qqstory_group.RspGetGroupHotRankVideo();
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.checkIsGIF();
-      LightReplyMenuManager localLightReplyMenuManager = LightReplyMenuManager.a();
-      if ((!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.isSend()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.isDui) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.a.a == 1) && (localLightReplyMenuManager != null) && (localLightReplyMenuManager.d()) && (localLightReplyMenuManager.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic)) && (!PeakUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.imageType))) {}
-      for (boolean bool = true;; bool = false)
-      {
-        ThreadManager.getUIHandler().post(new vcs(this, bool));
-        return;
-      }
-      return;
+      localRspGetGroupHotRankVideo.mergeFrom(paramArrayOfByte);
+      return new vcs(this.jdField_a_of_type_Vcq, localRspGetGroupHotRankVideo, this.jdField_a_of_type_Boolean);
     }
-    catch (Exception localException)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      QLog.e("PicItemBuilder", 1, "checkIsGIF exception :", localException);
+      wxe.d("GetHotSortVideoHandler", "" + paramArrayOfByte);
     }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_group.ReqGetGroupHotRankVideo localReqGetGroupHotRankVideo = new qqstory_group.ReqGetGroupHotRankVideo();
+    localReqGetGroupHotRankVideo.union_id.set(ByteStringMicro.copyFromUtf8(vcq.a(this.jdField_a_of_type_Vcq)));
+    localReqGetGroupHotRankVideo.size.set(10);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localReqGetGroupHotRankVideo.seq.set(vcq.a(this.jdField_a_of_type_Vcq));
+      if (!TextUtils.isEmpty(vcq.b(this.jdField_a_of_type_Vcq))) {
+        localReqGetGroupHotRankVideo.start_cookie.set(ByteStringMicro.copyFromUtf8(vcq.b(this.jdField_a_of_type_Vcq)));
+      }
+    }
+    return localReqGetGroupHotRankVideo.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vcr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <PreferenceTitleCategory android:title="" android:key="refund_way_detail" />
+    <com.tencent.mm.plugin.wallet.pwd.ui.RadioBelowSummarytAndIconPreference android:summary="" android:title="" android:key="refund_way_detail_lq" android:layout="@layout/afi" />
+    <com.tencent.mm.plugin.wallet.pwd.ui.RadioBelowSummarytAndIconPreference android:summary="" android:title="" android:key="refund_way_detail_origin" android:layout="@layout/afi" />
+</PreferenceScreen>

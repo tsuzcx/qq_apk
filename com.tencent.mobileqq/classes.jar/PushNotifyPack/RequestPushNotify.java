@@ -16,9 +16,11 @@ public final class RequestPushNotify
   public long lBindedUin;
   public long lUin;
   public String msg_ctrl_buf = "";
+  public long ping_flag;
   public MsgInfo stMsgInfo;
   public String strCmd = "";
   public String strService = "";
+  public int svrip;
   public int usMsgType;
   public byte[] vNotifyCookie;
   public int wGeneralFlag;
@@ -34,7 +36,7 @@ public final class RequestPushNotify
   
   public RequestPushNotify() {}
   
-  public RequestPushNotify(long paramLong1, byte paramByte, String paramString1, String paramString2, byte[] paramArrayOfByte1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, MsgInfo paramMsgInfo, String paramString3, byte[] paramArrayOfByte2)
+  public RequestPushNotify(long paramLong1, byte paramByte, String paramString1, String paramString2, byte[] paramArrayOfByte1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, MsgInfo paramMsgInfo, String paramString3, byte[] paramArrayOfByte2, long paramLong3, int paramInt4)
   {
     this.lUin = paramLong1;
     this.cType = paramByte;
@@ -48,6 +50,8 @@ public final class RequestPushNotify
     this.stMsgInfo = paramMsgInfo;
     this.msg_ctrl_buf = paramString3;
     this.bytes_server_buf = paramArrayOfByte2;
+    this.ping_flag = paramLong3;
+    this.svrip = paramInt4;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -64,6 +68,8 @@ public final class RequestPushNotify
     this.stMsgInfo = ((MsgInfo)paramJceInputStream.read(cache_stMsgInfo, 9, false));
     this.msg_ctrl_buf = paramJceInputStream.readString(10, false);
     this.bytes_server_buf = ((byte[])paramJceInputStream.read(cache_bytes_server_buf, 11, false));
+    this.ping_flag = paramJceInputStream.read(this.ping_flag, 12, false);
+    this.svrip = paramJceInputStream.read(this.svrip, 13, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -88,6 +94,8 @@ public final class RequestPushNotify
     if (this.bytes_server_buf != null) {
       paramJceOutputStream.write(this.bytes_server_buf, 11);
     }
+    paramJceOutputStream.write(this.ping_flag, 12);
+    paramJceOutputStream.write(this.svrip, 13);
   }
 }
 

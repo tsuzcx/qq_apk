@@ -1,11 +1,7 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.global.e;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class UpgradeDeterminResult
   implements Serializable
@@ -21,58 +17,43 @@ public class UpgradeDeterminResult
   public static final int BINDTYPE_REALNAME_H5 = 9;
   private static final long serialVersionUID = 1229246620832794524L;
   private int bindType = 0;
-  public int mHaveMobile;
-  public int mMobileAppear;
+  public int mHaveMobile = 0;
+  public int mMobileAppear = 0;
   public String mMobileMask = "";
-  public int mQqtokenAppear;
-  public int mQuesAppear;
+  public int mQqtokenAppear = 0;
+  public int mQuesAppear = 0;
   public List mQuesInfo = null;
   public long mServerTime;
   public String mSmsPort;
   public String mSmsPrefix = "";
   public String mUin = "";
   
-  public UpgradeDeterminResult()
+  public boolean a()
   {
-    this.mHaveMobile = 0;
-    this.mQqtokenAppear = 0;
-    this.mQuesAppear = 0;
-    this.mMobileAppear = 0;
-    this.mQuesInfo = new ArrayList();
+    return this.mHaveMobile == 1;
   }
   
-  public UpgradeDeterminResult(JSONObject paramJSONObject)
+  public String b()
   {
-    this.bindType = paramJSONObject.getInt("bind_type");
-    e.a("UpgradeDeterminResult jsonObject=" + paramJSONObject.toString());
-    this.mHaveMobile = paramJSONObject.getInt("have_mobile");
-    this.mMobileMask = paramJSONObject.getString("mobile_mask");
-    this.mQqtokenAppear = paramJSONObject.getInt("qqtoken_appear");
-    this.mQuesAppear = paramJSONObject.getInt("ques_appear");
-    this.mMobileAppear = paramJSONObject.getInt("mobile_appear");
-    this.mSmsPrefix = paramJSONObject.getString("mobile_sms_prefix");
-    if (this.mQuesAppear == 1)
-    {
-      paramJSONObject = paramJSONObject.getJSONArray("ques_info");
-      if ((paramJSONObject != null) && (paramJSONObject.length() != 0)) {
-        break label156;
-      }
-    }
-    for (;;)
-    {
-      return;
-      label156:
-      this.mQuesInfo = new ArrayList();
-      while (i < paramJSONObject.length())
-      {
-        UpgradeDeterminResult.QuesInfoItem localQuesInfoItem = new UpgradeDeterminResult.QuesInfoItem(this, paramJSONObject.getJSONObject(i));
-        this.mQuesInfo.add(localQuesInfoItem);
-        i += 1;
-      }
-    }
+    return this.mMobileMask;
   }
   
-  public final int a()
+  public boolean c()
+  {
+    return this.mMobileAppear == 1;
+  }
+  
+  public boolean d()
+  {
+    return this.mQqtokenAppear == 1;
+  }
+  
+  public boolean e()
+  {
+    return this.mQuesAppear == 1;
+  }
+  
+  public int f()
   {
     return this.bindType;
   }

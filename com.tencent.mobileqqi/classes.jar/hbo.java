@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import org.json.JSONObject;
+import android.content.Context;
+import android.widget.Button;
+import com.tencent.widget.BubblePopupWindow;
 
-public class hbo
-  implements Runnable
+public final class hbo
+  extends Button
 {
-  public hbo(HttpWebCgiAsyncTask paramHttpWebCgiAsyncTask, JSONObject paramJSONObject) {}
-  
-  public void run()
+  public hbo(Context paramContext, BubblePopupWindow paramBubblePopupWindow)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask.b, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask.jdField_a_of_type_AndroidOsBundle);
-    }
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    this.a.b();
+    return super.performClick();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hbo
  * JD-Core Version:    0.7.0.1
  */

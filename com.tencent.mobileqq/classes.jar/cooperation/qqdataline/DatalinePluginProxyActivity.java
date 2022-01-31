@@ -7,18 +7,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import bety;
+import biqn;
+import biqw;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.PluginParams;
+import cooperation.plugin.PluginInfo;
 import java.util.Iterator;
 import java.util.List;
 
 public class DatalinePluginProxyActivity
   extends PluginProxyActivity
 {
-  private static Class a(Intent paramIntent, String paramString)
+  private static Class<? extends PluginProxyActivity> a(Intent paramIntent, String paramString)
   {
     if ((paramString != null) && (paramString.equals("com.qqdataline.activity.LiteWifiphotoActivity"))) {
       paramIntent.setFlags(paramIntent.getFlags() | 0x20000000);
@@ -29,21 +30,21 @@ public class DatalinePluginProxyActivity
     return DatalinePluginProxyActivity.class;
   }
   
-  public static void a(Activity paramActivity, String paramString1, Intent paramIntent, String paramString2, int paramInt, QQProgressDialog paramQQProgressDialog)
+  public static void a(Activity paramActivity, String paramString1, Intent paramIntent, String paramString2, int paramInt, bety parambety)
   {
     paramIntent.putExtra("userQqResources", 2);
-    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.jdField_b_of_type_JavaLangString = "qqdataline.apk";
-    localPluginParams.d = "数据线";
-    localPluginParams.jdField_a_of_type_JavaLangString = paramString1;
-    localPluginParams.e = paramString2;
-    localPluginParams.jdField_a_of_type_JavaLangClass = a(paramIntent, paramString2);
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localPluginParams.jdField_b_of_type_Int = paramInt;
-    localPluginParams.jdField_a_of_type_AndroidAppDialog = paramQQProgressDialog;
-    localPluginParams.c = 10000;
-    localPluginParams.f = null;
-    IPluginManager.a(paramActivity, localPluginParams);
+    biqw localbiqw = new biqw(0);
+    localbiqw.jdField_b_of_type_JavaLangString = "qqdataline.apk";
+    localbiqw.d = PluginInfo.d;
+    localbiqw.jdField_a_of_type_JavaLangString = paramString1;
+    localbiqw.e = paramString2;
+    localbiqw.jdField_a_of_type_JavaLangClass = a(paramIntent, paramString2);
+    localbiqw.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localbiqw.jdField_b_of_type_Int = paramInt;
+    localbiqw.jdField_a_of_type_AndroidAppDialog = parambety;
+    localbiqw.c = 10000;
+    localbiqw.f = null;
+    biqn.a(paramActivity, localbiqw);
   }
   
   public static boolean a(Context paramContext)
@@ -69,7 +70,7 @@ public class DatalinePluginProxyActivity
     return "qqdataline.apk";
   }
   
-  protected Class getProxyActivity(String paramString)
+  public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
     if (paramString.equals("com.qqdataline.activity.LiteWifiphotoActivity")) {
       return DatalinePluginProxyActivity.SingleTop.class;
@@ -77,7 +78,7 @@ public class DatalinePluginProxyActivity
     return super.getProxyActivity(paramString);
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     if (!TextUtils.isEmpty(this.mCreateErrorInfo)) {
@@ -99,7 +100,7 @@ public class DatalinePluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqdataline.DatalinePluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

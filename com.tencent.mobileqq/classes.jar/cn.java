@@ -1,33 +1,23 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.dataline.activities.PrinterOptionActivity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.dataline.activities.LiteMutiPicViewerActivity;
+import com.dataline.util.widget.AsyncImageView;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class cn
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public cn(PrinterOptionActivity paramPrinterOptionActivity) {}
+  public View a;
+  public ImageView a;
+  public RelativeLayout a;
+  public AsyncImageView a;
+  public DataLineMsgRecord a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      PrinterOptionActivity.a(this.a).setVisibility(0);
-      PrinterOptionActivity.a(this.a).setText(2131427687);
-      return;
-    }
-    if (PrinterOptionActivity.b(this.a))
-    {
-      PrinterOptionActivity.a(this.a).setVisibility(0);
-      PrinterOptionActivity.a(this.a).setText(2131427688);
-      return;
-    }
-    PrinterOptionActivity.a(this.a).setVisibility(4);
-  }
+  public cn(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cn
  * JD-Core Version:    0.7.0.1
  */

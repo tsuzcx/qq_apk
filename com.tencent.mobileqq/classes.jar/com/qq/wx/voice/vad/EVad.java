@@ -29,6 +29,9 @@ public class EVad
   
   public int Init(int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4)
   {
+    if (this.a != 0L) {
+      Release();
+    }
     this.a = this.b.Init(paramInt1, paramInt2, paramFloat, paramInt3, paramInt4);
     if (this.a == 0L) {
       return 1;
@@ -39,9 +42,11 @@ public class EVad
   public int Release()
   {
     if (this.a == 0L) {
-      return 1;
+      return 0;
     }
-    return this.b.Release(this.a);
+    int i = this.b.Release(this.a);
+    this.a = 0L;
+    return i;
   }
   
   public int Reset()
@@ -54,7 +59,7 @@ public class EVad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.qq.wx.voice.vad.EVad
  * JD-Core Version:    0.7.0.1
  */

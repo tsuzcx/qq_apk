@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x6f$RewardInfo
-  extends MessageMicro
+  extends MessageMicro<RewardInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_cookies = PBField.initBytes(ByteStringMicro.EMPTY);

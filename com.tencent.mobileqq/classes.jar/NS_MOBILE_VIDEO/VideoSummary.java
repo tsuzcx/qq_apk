@@ -9,8 +9,8 @@ import java.util.Map;
 public final class VideoSummary
   extends JceStruct
 {
-  static Map cache_cover = new HashMap();
-  public Map cover;
+  static Map<Integer, String> cache_cover = new HashMap();
+  public Map<Integer, String> cover;
   public int num;
   
   static
@@ -20,7 +20,7 @@ public final class VideoSummary
   
   public VideoSummary() {}
   
-  public VideoSummary(int paramInt, Map paramMap)
+  public VideoSummary(int paramInt, Map<Integer, String> paramMap)
   {
     this.num = paramInt;
     this.cover = paramMap;
@@ -42,7 +42,7 @@ public final class VideoSummary
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_VIDEO.VideoSummary
  * JD-Core Version:    0.7.0.1
  */

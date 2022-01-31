@@ -1,22 +1,21 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import android.app.PendingIntent;
 
-public class mvl
-  implements TroopMemberApiClient.Callback
+class mvl
 {
-  public mvl(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin) {}
+  public final int a;
+  public final PendingIntent a;
+  public final String a;
   
-  public void a(Bundle paramBundle)
+  public mvl(int paramInt, String paramString, PendingIntent paramPendingIntent)
   {
-    if (this.a.a != null) {
-      this.a.k();
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidAppPendingIntent = paramPendingIntent;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mvl
  * JD-Core Version:    0.7.0.1
  */

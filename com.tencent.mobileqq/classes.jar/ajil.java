@@ -1,17 +1,20 @@
+import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
 
 public class ajil
-  implements View.OnClickListener
+  extends ajjk
 {
-  public ajil(ReciteFragment paramReciteFragment) {}
-  
-  public void onClick(View paramView)
+  public View a(int paramInt, Object paramObject, ajjp paramajjp, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ajlm paramajlm)
   {
-    ReciteFragment.a(this.a);
-    BeginnerGuideFragment.b(this.a.getActivity(), null, 4);
+    paramObject = new View(paramContext);
+    paramObject.setBackgroundColor(Color.parseColor("#f2f2f2"));
+    paramObject.setMinimumHeight(bdaq.a(paramContext, 20.0F));
+    paramObject.setMinimumWidth((int)bdgk.g());
+    return paramObject;
   }
 }
 

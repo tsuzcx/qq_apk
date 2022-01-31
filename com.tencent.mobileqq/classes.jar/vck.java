@@ -1,24 +1,33 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.PLNewsItemBuilder;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import java.util.ArrayList;
+import java.util.List;
 
 public class vck
-  extends AbstractChatItemBuilder.ViewHolder
+  extends vcb
 {
-  public long a;
-  public CornerImageView a;
+  public int a;
   public String a;
-  public View b;
-  public TextView b;
-  public TextView c;
+  public List<VideoCollectionItem> a;
+  public String b;
+  public boolean e = true;
   
-  public vck(PLNewsItemBuilder paramPLNewsItemBuilder) {}
+  public vck(String paramString, ErrorMessage paramErrorMessage)
+  {
+    super(paramErrorMessage);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String toString()
+  {
+    return "GetCollectionListEvent{isEnd=" + this.jdField_a_of_type_Boolean + ", isUpdated=" + this.e + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isRefreshFromLoadMore=" + this.d + ", collectionList=" + this.jdField_a_of_type_JavaUtilList + ", totalVideoCount=" + this.jdField_a_of_type_Int + ", context='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vck
  * JD-Core Version:    0.7.0.1
  */

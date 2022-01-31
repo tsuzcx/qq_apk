@@ -10,15 +10,26 @@ public class ArkPlayerSurfaceHolder
 {
   protected static final ArkEnvironmentManager ENV = ;
   public static final int GL_TEXTURE_EXTERNAL_OES = 36197;
-  public static final String TAG = "Ark.ArkPlayerSurfaceHolder";
+  public static final String TAG = "ArkApp.ArkPlayerSurfaceHolder";
   public long mFrameCallback = 0L;
   public int mFrameHeight = 0;
   public long mFrameUserdata = 0L;
   public int mFrameWidth = 0;
   protected EGLContextHolder mOffscreenContext;
+  protected String mQueueKey;
   public Surface mSurface;
   public SurfaceTexture mSurfaceTexture;
   public int mTextureID = 0;
+  
+  public void DoDispathTask(Runnable paramRunnable)
+  {
+    if (this.mQueueKey == ArkDispatchQueue.getCurrentQueueKey())
+    {
+      paramRunnable.run();
+      return;
+    }
+    ArkDispatchQueue.asyncRun(this.mQueueKey, paramRunnable);
+  }
   
   public void SetFrameCallback(long paramLong1, long paramLong2)
   {
@@ -69,19 +80,20 @@ public class ArkPlayerSurfaceHolder
     if (this.mSurfaceTexture != null) {
       return true;
     }
+    this.mQueueKey = ArkDispatchQueue.getCurrentQueueKey();
     if (this.mOffscreenContext == null) {
       this.mOffscreenContext = ArkViewModel.getOffscreenContext();
     }
     if ((this.mOffscreenContext == null) || (!this.mOffscreenContext.makeCurrent()))
     {
-      ENV.logE("Ark.ArkPlayerSurfaceHolder", "initialize.makeCurrent.fail!!");
+      ENV.logE("ArkApp.ArkPlayerSurfaceHolder", "initialize.makeCurrent.fail!!");
       return false;
     }
     int[] arrayOfInt = new int[1];
     GLES20.glGenTextures(1, arrayOfInt, 0);
     if (arrayOfInt[0] == 0)
     {
-      ENV.logE("Ark.ArkPlayerSurfaceHolder", "initialize.glGenTextures.fail!!");
+      ENV.logE("ArkApp.ArkPlayerSurfaceHolder", "initialize.glGenTextures.fail!!");
       return false;
     }
     this.mTextureID = arrayOfInt[0];
@@ -97,21 +109,15 @@ public class ArkPlayerSurfaceHolder
   
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    if ((this.mSurfaceTexture == null) || (this.mOffscreenContext == null) || (this.mFrameCallback == 0L)) {}
-    while (!this.mOffscreenContext.makeCurrent()) {
+    if ((this.mSurfaceTexture == null) || (this.mOffscreenContext == null) || (this.mFrameCallback == 0L)) {
       return;
     }
-    this.mSurfaceTexture.updateTexImage();
-    paramSurfaceTexture = new ark.PlayerStub.FrameInfo();
-    paramSurfaceTexture.width = this.mFrameWidth;
-    paramSurfaceTexture.height = this.mFrameHeight;
-    paramSurfaceTexture.texture = this.mTextureID;
-    ark.PlayerUpdateFrame(this.mFrameCallback, this.mFrameUserdata, paramSurfaceTexture);
+    DoDispathTask(new ArkPlayerSurfaceHolder.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.ark.ArkPlayerSurfaceHolder
  * JD-Core Version:    0.7.0.1
  */

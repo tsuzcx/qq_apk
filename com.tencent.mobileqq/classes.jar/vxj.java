@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.1;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import mqq.os.MqqHandler;
 
 public class vxj
-  implements Runnable
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public vxj(PublicAccountChatPie paramPublicAccountChatPie, int paramInt) {}
+  vxj(vxe paramvxe) {}
   
-  public void run()
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (PublicAccountChatPie.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie) > 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.v(this.jdField_a_of_type_Int);
-    }
+    ThreadManager.executeOnSubThread(new VideoViewTVKImpl.5.1(this, paramTVK_IMediaPlayer));
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.5.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vxj
  * JD-Core Version:    0.7.0.1
  */

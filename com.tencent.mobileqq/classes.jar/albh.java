@@ -1,22 +1,23 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.open.agent.BindGroupConfirmActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
 
-public class albh
-  implements Runnable
+public final class albh
+  implements Parcelable.Creator<SpriteTaskParam>
 {
-  public albh(BindGroupConfirmActivity paramBindGroupConfirmActivity, Bitmap paramBitmap) {}
-  
-  public void run()
+  public SpriteTaskParam a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
+    return new SpriteTaskParam(paramParcel);
+  }
+  
+  public SpriteTaskParam[] a(int paramInt)
+  {
+    return new SpriteTaskParam[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     albh
  * JD-Core Version:    0.7.0.1
  */

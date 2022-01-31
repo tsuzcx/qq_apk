@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.troop.data.TroopAioNotificationBar;
+import android.view.View;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
 public class ajdc
-  implements Runnable
+  implements ajcl
 {
-  public ajdc(TroopAioNotificationBar paramTroopAioNotificationBar) {}
+  public ajdc(DrawHbFragment paramDrawHbFragment, View paramView) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    TroopAioNotificationBar.a(this.a);
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131368213).setVisibility(8);
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131368213).setVisibility(0);
   }
 }
 

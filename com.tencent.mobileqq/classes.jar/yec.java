@@ -1,33 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.widget.PopupWindow;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.4.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class yec
-  extends BroadcastReceiver
+  implements ydg
 {
-  public yec(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public yec(DetailBaseAdapter.4.1 param1) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onReceive ===>" + paramContext);
-    }
-    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext)))
-    {
-      if ((this.a.a != null) && (this.a.a.isPlaying())) {
-        this.a.h = true;
-      }
-      this.a.j();
+    QLog.d(ydw.jdField_a_of_type_JavaLangString, 2, "showPraiseTipView");
+  }
+  
+  public void b()
+  {
+    QLog.d(ydw.jdField_a_of_type_JavaLangString, 2, "dismiss popupWindow priseTipView");
+    if (this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+      this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yec
  * JD-Core Version:    0.7.0.1
  */

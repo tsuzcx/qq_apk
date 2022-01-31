@@ -1,27 +1,33 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.TMG.utils.QLog;
 
 class acaa
-  implements Runnable
+  implements DialogInterface.OnKeyListener
 {
-  acaa(abzz paramabzz, FileMsg paramFileMsg) {}
+  acaa(abzw paramabzw, DialogInterface.OnCancelListener paramOnCancelListener) {}
   
-  public void run()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.jdField_a_of_type_Abzz.a.a == null)
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1))
     {
-      QLog.e("FavroamingManager", 1, "app is null");
-      return;
+      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener == null)
+      {
+        QLog.e("SdkAuthDialog", 1, "keyListener is null");
+        return true;
+      }
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener.onCancel(paramDialogInterface);
+      this.jdField_a_of_type_Abzw.a();
+      azqs.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "1", "", "", "");
     }
-    ((FavroamingDBManager)this.jdField_a_of_type_Abzz.a.a.getManager(148)).a(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.g);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acaa
  * JD-Core Version:    0.7.0.1
  */

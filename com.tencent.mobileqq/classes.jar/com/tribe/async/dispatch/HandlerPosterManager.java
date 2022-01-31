@@ -11,7 +11,7 @@ public class HandlerPosterManager
   
   public static HandlerPosterManager instance()
   {
-    return InstanceHolder.sInstance;
+    return HandlerPosterManager.InstanceHolder.sInstance;
   }
   
   public HandlerPoster getHandlerPoster(Looper paramLooper)
@@ -25,15 +25,10 @@ public class HandlerPosterManager
     }
     return localHandlerPoster1;
   }
-  
-  private static class InstanceHolder
-  {
-    public static HandlerPosterManager sInstance = new HandlerPosterManager(null);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tribe.async.dispatch.HandlerPosterManager
  * JD-Core Version:    0.7.0.1
  */

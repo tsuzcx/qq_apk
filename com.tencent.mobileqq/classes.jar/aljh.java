@@ -1,37 +1,20 @@
-import com.tencent.open.appcircle.st.AppCircleReportManager;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.common.DownloadDBHelper;
-import com.tencent.open.downloadnew.common.PackageInstallReceiver;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aljh
-  implements Runnable
+final class aljh
+  implements aled
 {
-  public aljh(PackageInstallReceiver paramPackageInstallReceiver, String paramString1, String paramString2) {}
+  aljh(aljj paramaljj, long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, aksm paramaksm, int[] paramArrayOfInt) {}
   
-  public void run()
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_ADDED >> " + this.jdField_a_of_type_JavaLangString);
-    DownloadInfo localDownloadInfo = DownloadDBHelper.a().a(this.b);
-    if (localDownloadInfo != null)
-    {
-      LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_ADDED info != null>> " + localDownloadInfo.toString() + " " + localDownloadInfo.b + " " + localDownloadInfo.d);
-      DownloadManager.a().d(localDownloadInfo);
-      AppCircleReportManager.a().a(101, localDownloadInfo);
-    }
-    for (;;)
-    {
-      DownloadManager.a().a(6, localDownloadInfo);
-      return;
-      localDownloadInfo = new DownloadInfo("", this.b);
-      LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_ADDED info == null>> " + localDownloadInfo.toString());
+    if (this.jdField_a_of_type_Aljj != null) {
+      this.jdField_a_of_type_Aljj.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Aksm.a, this.jdField_a_of_type_ArrayOfInt, 22);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aljh
  * JD-Core Version:    0.7.0.1
  */

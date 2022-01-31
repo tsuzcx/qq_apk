@@ -1,31 +1,25 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import eipc.EIPCResult;
 
-public class akwa
-  implements View.OnClickListener
+class akwa
+  implements bduh
 {
-  public akwa(ProfileCardMoreInfoView paramProfileCardMoreInfoView, Card paramCard) {}
+  akwa(akvv paramakvv, bdug parambdug, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    paramView = new Intent();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCard != null) {
-      paramView.putExtra("key_extend_friend_info", new ExtendFriendProfileEditFragment.ExtendFriendInfo(this.jdField_a_of_type_ComTencentMobileqqDataCard));
+    this.jdField_a_of_type_Bdug.a(null);
+    if (paramBoolean) {}
+    for (int i = 0;; i = -1)
+    {
+      EIPCResult localEIPCResult = EIPCResult.createResult(i, null);
+      this.jdField_a_of_type_Akvv.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
+      return;
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092DB", "0X80092DB", 0, 0, "", "", "", "");
-    PublicFragmentActivity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramView, ExtendFriendEditFragment.class, 4097);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akwa
  * JD-Core Version:    0.7.0.1
  */

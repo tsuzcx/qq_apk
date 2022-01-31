@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-
-public class akvq
-  implements Runnable
+public abstract interface akvq
 {
-  public akvq(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
-  
-  public void run()
-  {
-    this.a.a("map_key_extend_friend_info");
-  }
+  public abstract void a(akvr paramakvr);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akvq
  * JD-Core Version:    0.7.0.1
  */

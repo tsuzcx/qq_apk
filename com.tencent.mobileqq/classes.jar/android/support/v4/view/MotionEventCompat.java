@@ -56,23 +56,23 @@ public final class MotionEventCompat
   public static final int AXIS_X = 0;
   public static final int AXIS_Y = 1;
   public static final int AXIS_Z = 11;
-  static final MotionEventVersionImpl IMPL = new BaseMotionEventVersionImpl();
+  static final MotionEventCompat.MotionEventVersionImpl IMPL = new MotionEventCompat.BaseMotionEventVersionImpl();
   
   static
   {
     if (Build.VERSION.SDK_INT >= 12)
     {
-      IMPL = new HoneycombMr1MotionEventVersionImpl();
+      IMPL = new MotionEventCompat.HoneycombMr1MotionEventVersionImpl();
       return;
     }
     if (Build.VERSION.SDK_INT >= 9)
     {
-      IMPL = new GingerbreadMotionEventVersionImpl();
+      IMPL = new MotionEventCompat.GingerbreadMotionEventVersionImpl();
       return;
     }
     if (Build.VERSION.SDK_INT >= 5)
     {
-      IMPL = new EclairMotionEventVersionImpl();
+      IMPL = new MotionEventCompat.EclairMotionEventVersionImpl();
       return;
     }
   }
@@ -125,133 +125,6 @@ public final class MotionEventCompat
   public static float getY(MotionEvent paramMotionEvent, int paramInt)
   {
     return IMPL.getY(paramMotionEvent, paramInt);
-  }
-  
-  static class BaseMotionEventVersionImpl
-    implements MotionEventCompat.MotionEventVersionImpl
-  {
-    public int findPointerIndex(MotionEvent paramMotionEvent, int paramInt)
-    {
-      if (paramInt == 0) {
-        return 0;
-      }
-      return -1;
-    }
-    
-    public float getAxisValue(MotionEvent paramMotionEvent, int paramInt)
-    {
-      return 0.0F;
-    }
-    
-    public float getAxisValue(MotionEvent paramMotionEvent, int paramInt1, int paramInt2)
-    {
-      return 0.0F;
-    }
-    
-    public int getPointerCount(MotionEvent paramMotionEvent)
-    {
-      return 1;
-    }
-    
-    public int getPointerId(MotionEvent paramMotionEvent, int paramInt)
-    {
-      if (paramInt == 0) {
-        return 0;
-      }
-      throw new IndexOutOfBoundsException("Pre-Eclair does not support multiple pointers");
-    }
-    
-    public int getSource(MotionEvent paramMotionEvent)
-    {
-      return 0;
-    }
-    
-    public float getX(MotionEvent paramMotionEvent, int paramInt)
-    {
-      if (paramInt == 0) {
-        return paramMotionEvent.getX();
-      }
-      throw new IndexOutOfBoundsException("Pre-Eclair does not support multiple pointers");
-    }
-    
-    public float getY(MotionEvent paramMotionEvent, int paramInt)
-    {
-      if (paramInt == 0) {
-        return paramMotionEvent.getY();
-      }
-      throw new IndexOutOfBoundsException("Pre-Eclair does not support multiple pointers");
-    }
-  }
-  
-  static class EclairMotionEventVersionImpl
-    extends MotionEventCompat.BaseMotionEventVersionImpl
-  {
-    public int findPointerIndex(MotionEvent paramMotionEvent, int paramInt)
-    {
-      return MotionEventCompatEclair.findPointerIndex(paramMotionEvent, paramInt);
-    }
-    
-    public int getPointerCount(MotionEvent paramMotionEvent)
-    {
-      return MotionEventCompatEclair.getPointerCount(paramMotionEvent);
-    }
-    
-    public int getPointerId(MotionEvent paramMotionEvent, int paramInt)
-    {
-      return MotionEventCompatEclair.getPointerId(paramMotionEvent, paramInt);
-    }
-    
-    public float getX(MotionEvent paramMotionEvent, int paramInt)
-    {
-      return MotionEventCompatEclair.getX(paramMotionEvent, paramInt);
-    }
-    
-    public float getY(MotionEvent paramMotionEvent, int paramInt)
-    {
-      return MotionEventCompatEclair.getY(paramMotionEvent, paramInt);
-    }
-  }
-  
-  static class GingerbreadMotionEventVersionImpl
-    extends MotionEventCompat.EclairMotionEventVersionImpl
-  {
-    public int getSource(MotionEvent paramMotionEvent)
-    {
-      return MotionEventCompatGingerbread.getSource(paramMotionEvent);
-    }
-  }
-  
-  static class HoneycombMr1MotionEventVersionImpl
-    extends MotionEventCompat.GingerbreadMotionEventVersionImpl
-  {
-    public float getAxisValue(MotionEvent paramMotionEvent, int paramInt)
-    {
-      return MotionEventCompatHoneycombMr1.getAxisValue(paramMotionEvent, paramInt);
-    }
-    
-    public float getAxisValue(MotionEvent paramMotionEvent, int paramInt1, int paramInt2)
-    {
-      return MotionEventCompatHoneycombMr1.getAxisValue(paramMotionEvent, paramInt1, paramInt2);
-    }
-  }
-  
-  static abstract interface MotionEventVersionImpl
-  {
-    public abstract int findPointerIndex(MotionEvent paramMotionEvent, int paramInt);
-    
-    public abstract float getAxisValue(MotionEvent paramMotionEvent, int paramInt);
-    
-    public abstract float getAxisValue(MotionEvent paramMotionEvent, int paramInt1, int paramInt2);
-    
-    public abstract int getPointerCount(MotionEvent paramMotionEvent);
-    
-    public abstract int getPointerId(MotionEvent paramMotionEvent, int paramInt);
-    
-    public abstract int getSource(MotionEvent paramMotionEvent);
-    
-    public abstract float getX(MotionEvent paramMotionEvent, int paramInt);
-    
-    public abstract float getY(MotionEvent paramMotionEvent, int paramInt);
   }
 }
 

@@ -1,29 +1,34 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.view.logic.VideoInfoListenerImpl;
+import android.content.Context;
+import android.net.Uri;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class aesc
-  implements URLDrawable.URLDrawableListener
+public final class aesc
+  implements arrh
 {
-  public aesc(StoryPlayController paramStoryPlayController, VideoInfoListenerImpl paramVideoInfoListenerImpl) {}
+  public aesc(ArrayList paramArrayList, Context paramContext, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewLogicVideoInfoListenerImpl != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewLogicVideoInfoListenerImpl.a(paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight(), true);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (Uri)localIterator.next();
+      localObject = arzt.a(this.jdField_a_of_type_AndroidContentContext, (Uri)localObject);
+      if (this.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.jdField_a_of_type_JavaLangString);
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
+      }
     }
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aesc
  * JD-Core Version:    0.7.0.1
  */

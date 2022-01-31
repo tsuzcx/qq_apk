@@ -1,25 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.activity.VADActivity;
-import com.tencent.mobileqq.search.fragment.GroupSearchFragment;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ahry
-  implements View.OnClickListener
+class ahry
+  extends ameq
 {
-  public ahry(UniteSearchActivity paramUniteSearchActivity) {}
+  ahry(ahrs paramahrs) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    VADActivity.a(this.a, 3);
-    if (this.a.a != null) {
-      this.a.a.e();
+    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
+    if (localBitmap != null) {
+      ahrs.a(this.a, paramString, localBitmap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahry
  * JD-Core Version:    0.7.0.1
  */

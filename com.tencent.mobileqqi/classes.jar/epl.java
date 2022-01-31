@@ -1,5 +1,7 @@
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.app.NearFieldDiscussHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import tencent.im.nearfield_discuss.nearfield_discuss.LBSInfo;
 
 class epl
   implements Runnable
@@ -8,8 +10,8 @@ class epl
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.e();
-    this.a.a.jdField_a_of_type_Epn.sendEmptyMessage(3);
+    nearfield_discuss.LBSInfo localLBSInfo = CreateFaceToFaceDiscussionActivity.a(this.a.a);
+    ((NearFieldDiscussHandler)this.a.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(40)).b(this.a.a.a.toString(), this.a.a.jdField_b_of_type_Int, localLBSInfo);
   }
 }
 

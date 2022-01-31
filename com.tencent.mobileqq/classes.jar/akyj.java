@@ -1,22 +1,32 @@
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
+import android.app.Activity;
 import com.tencent.qphone.base.util.QLog;
 
-public class akyj
-  implements Runnable
+class akyj
+  implements alkp
 {
-  public akyj(WorldCupShareFragment paramWorldCupShareFragment) {}
+  akyj(akyg paramakyg) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    WorldCupShareFragment.a(this.a, WorldCupShareFragment.a(this.a));
-    if (QLog.isColorLevel()) {
-      QLog.d("WorldCupShareFragment", 2, String.format("delete video path, %s", new Object[] { WorldCupShareFragment.a(this.a) }));
+    QLog.i("cmgame_process.CmGameLauncher", 1, "[onSoLoadComplete], ret:" + paramInt);
+    alko.b(akyg.a(this.a));
+    Activity localActivity = this.a.a();
+    if (paramInt == 0) {
+      if ((localActivity != null) && (!akyg.c(this.a)))
+      {
+        akyg.a(this.a, true);
+        akyg.c(this.a);
+      }
     }
+    while (localActivity == null) {
+      return;
+    }
+    localActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akyj
  * JD-Core Version:    0.7.0.1
  */

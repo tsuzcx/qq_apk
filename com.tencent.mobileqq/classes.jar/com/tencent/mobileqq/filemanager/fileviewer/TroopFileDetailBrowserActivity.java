@@ -1,36 +1,45 @@
 package com.tencent.mobileqq.filemanager.fileviewer;
 
-import adcf;
 import android.content.Context;
 import android.content.Intent;
+import android.text.method.LinkMovementMethod;
 import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import aoui;
+import aouj;
+import aoul;
+import aqru;
+import aqwn;
+import arfp;
+import arhw;
+import arie;
+import arif;
+import arrr;
+import azqs;
+import bdin;
+import beav;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public final class TroopFileDetailBrowserActivity
   extends FileBrowserActivity
-  implements IFileBrowser
+  implements arhw
 {
-  protected FMObserver a;
+  protected aqru a;
   public ForwardFileInfo b;
   
   public TroopFileDetailBrowserActivity()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new adcf(this);
+    this.jdField_a_of_type_Aqru = new arie(this);
   }
   
   private int a(Context paramContext)
   {
-    if (!NetworkUtil.g(paramContext)) {
+    if (!bdin.g(paramContext)) {
       return 2;
     }
-    if (NetworkUtil.h(paramContext)) {
+    if (bdin.h(paramContext)) {
       return 0;
     }
     return 1;
@@ -39,32 +48,45 @@ public final class TroopFileDetailBrowserActivity
   protected boolean a(Intent paramIntent)
   {
     if (this.app != null) {
-      this.app.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+      this.app.a().addObserver(this.jdField_a_of_type_Aqru);
     }
-    TroopFileViewerParamParser localTroopFileViewerParamParser = new TroopFileViewerParamParser(this.app);
-    if (!localTroopFileViewerParamParser.a(paramIntent, this)) {}
+    arif localarif = new arif(this.app);
+    if (!localarif.a(paramIntent, this)) {}
     do
     {
       return false;
       this.b = ((ForwardFileInfo)super.getIntent().getParcelableExtra("fileinfo"));
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserManager == null)
+      if (this.jdField_a_of_type_Arfp == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserManager = new FileBrowserManager(this, this, localTroopFileViewerParamParser.a(this));
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewListener);
+        this.jdField_a_of_type_Arfp = new arfp(this, this, localarif.a(this));
+        this.jdField_a_of_type_Arfp.a(this.jdField_a_of_type_Arhx);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserManager.a(a(), new RelativeLayout.LayoutParams(-1, -1))) {
+      int i = paramIntent.getIntExtra("file_enter_file_browser_type", 0);
+      paramIntent = paramIntent.getBundleExtra("file_browser_extra_params");
+      if (this.jdField_a_of_type_Arfp.a(a(), new RelativeLayout.LayoutParams(-1, -1), i, paramIntent)) {
         break;
       }
     } while (!QLog.isColorLevel());
     QLog.w("FileBrowserActivity<FileAssistant>", 2, "error. can not create a fileviewer from FileBrowserManager");
     return false;
-    if (localTroopFileViewerParamParser.a() == 1) {
-      ReportController.b(super.a(), "P_CliOper", "Grp_files", "", "in_mid", "pic_enter", 0, 0, this.b.a() + "", this.jdField_a_of_type_Int + "", a(getApplicationContext()) + "", FileManagerUtil.b(FileManagerUtil.a(this.b.d())));
+    if (localarif.a() == 1) {
+      azqs.b(super.a(), "P_CliOper", "Grp_files", "", "in_mid", "pic_enter", 0, 0, this.b.a() + "", this.jdField_a_of_type_Int + "", a(getApplicationContext()) + "", arrr.b(arrr.a(this.b.d())));
     }
     for (;;)
     {
+      if (a(getBaseContext()) == 1)
+      {
+        paramIntent = (TextView)findViewById(2131367377);
+        if ((paramIntent != null) && (aoul.c().c.a) && (!beav.a().b()))
+        {
+          paramIntent.setText(aoul.c().c.a(this, ""));
+          paramIntent.setMovementMethod(LinkMovementMethod.getInstance());
+          paramIntent.setHighlightColor(17170445);
+          paramIntent.setVisibility(0);
+        }
+      }
       return true;
-      ReportController.b(super.a(), "P_CliOper", "Grp_files", "", "in_mid", "nonpic_enter", 0, 0, this.b.a() + "", this.jdField_a_of_type_Int + "", a(getApplicationContext()) + "", FileManagerUtil.b(FileManagerUtil.a(this.b.d())));
+      azqs.b(super.a(), "P_CliOper", "Grp_files", "", "in_mid", "nonpic_enter", 0, 0, this.b.a() + "", this.jdField_a_of_type_Int + "", a(getApplicationContext()) + "", arrr.b(arrr.a(this.b.d())));
     }
   }
   
@@ -76,7 +98,7 @@ public final class TroopFileDetailBrowserActivity
     return super.b();
   }
   
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if ((paramInt2 == -1) && (paramInt1 == 10099) && (paramIntent != null) && (paramIntent.getBooleanExtra("isNeedFinish", false)))
     {
@@ -86,15 +108,15 @@ public final class TroopFileDetailBrowserActivity
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.app.a().deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+    this.app.a().deleteObserver(this.jdField_a_of_type_Aqru);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

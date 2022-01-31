@@ -3,6 +3,7 @@ package com.tencent.mobileqq.widget;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import benq;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.VideoDrawable;
 import com.tencent.image.VideoDrawable.OnAudioPlayOnceListener;
@@ -12,8 +13,8 @@ public class CircleVideoDrawableView
   extends CircleBubbleImageView
   implements VideoDrawable.OnAudioPlayOnceListener
 {
+  benq a;
   public URLDrawable a;
-  CircleVideoDrawableView.VideoListener a;
   public String a;
   
   public CircleVideoDrawableView(Context paramContext)
@@ -26,8 +27,8 @@ public class CircleVideoDrawableView
     if (QLog.isColorLevel()) {
       QLog.d("BlessPTVActivity", 2, " onFinish ");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetCircleVideoDrawableView$VideoListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetCircleVideoDrawableView$VideoListener.b();
+    if (this.jdField_a_of_type_Benq != null) {
+      this.jdField_a_of_type_Benq.b();
     }
   }
   
@@ -55,8 +56,8 @@ public class CircleVideoDrawableView
       paramURLDrawable.resetAndPlayAudioOnce();
       paramURLDrawable.setOnAudioPlayOnceListener(this);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetCircleVideoDrawableView$VideoListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetCircleVideoDrawableView$VideoListener.a();
+    if (this.jdField_a_of_type_Benq != null) {
+      this.jdField_a_of_type_Benq.a();
     }
   }
   
@@ -90,9 +91,9 @@ public class CircleVideoDrawableView
     }
   }
   
-  public void setVideoListener(CircleVideoDrawableView.VideoListener paramVideoListener)
+  public void setVideoListener(benq parambenq)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleVideoDrawableView$VideoListener = paramVideoListener;
+    this.jdField_a_of_type_Benq = parambenq;
   }
   
   public void setVideoPath(String paramString)
@@ -102,7 +103,7 @@ public class CircleVideoDrawableView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CircleVideoDrawableView
  * JD-Core Version:    0.7.0.1
  */

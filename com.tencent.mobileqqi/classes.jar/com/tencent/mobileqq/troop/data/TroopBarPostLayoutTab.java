@@ -18,8 +18,8 @@ import com.tencent.mobileqq.data.TroopBarPageEntity;
 import com.tencent.mobileqq.data.TroopBarPageEntity.TypeListEntity;
 import com.tencent.mobileqq.troop.activity.TroopBarPageActivity;
 import com.tencent.mobileqq.troop.utils.TroopBarUtils;
-import gzu;
-import gzv;
+import gvn;
+import gvo;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -27,7 +27,7 @@ public class TroopBarPostLayoutTab
   extends TroopBarPostAbsLayout
   implements View.OnClickListener
 {
-  protected static final int a = 2130903449;
+  protected static final int a = 2130903451;
   protected View a;
   protected ArrayList a;
   public boolean a;
@@ -45,8 +45,8 @@ public class TroopBarPostLayoutTab
   {
     if (paramView == null)
     {
-      paramView = paramLayoutInflater.inflate(2130903449, null);
-      paramLayoutInflater = (gzv)a(paramView);
+      paramView = paramLayoutInflater.inflate(2130903451, null);
+      paramLayoutInflater = (gvo)a(paramView);
       paramView.setTag(paramLayoutInflater);
     }
     for (;;)
@@ -61,17 +61,17 @@ public class TroopBarPostLayoutTab
       }
       localObject = paramActivity.getResources();
       this.b = (((Resources)localObject).getDisplayMetrics().widthPixels / this.jdField_a_of_type_JavaUtilArrayList.size());
-      this.c = ((this.b - ((Resources)localObject).getDimensionPixelSize(2131427582)) / 2);
+      this.c = ((this.b - ((Resources)localObject).getDimensionPixelSize(2131427585)) / 2);
       this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.jdField_a_of_type_AndroidViewView;
       a(paramLayoutInflater.jdField_a_of_type_AndroidWidgetLinearLayout, paramActivity, this.jdField_a_of_type_JavaUtilArrayList, paramTroopBarAbsDataEntity);
       return paramView;
-      paramLayoutInflater = (gzv)paramView.getTag();
+      paramLayoutInflater = (gvo)paramView.getTag();
     }
   }
   
   public TroopBarPostAbsLayout.AbsItemViewHolder a(View paramView)
   {
-    return new gzv(this, paramView);
+    return new gvo(this, paramView);
   }
   
   protected void a(LinearLayout paramLinearLayout, Context paramContext, ArrayList paramArrayList, TroopBarPageEntity paramTroopBarPageEntity)
@@ -137,7 +137,7 @@ public class TroopBarPostLayoutTab
     {
       TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, (j - i) * this.b, 0.0F, 0.0F);
       localTranslateAnimation.setDuration(300L);
-      localTranslateAnimation.setAnimationListener(new gzu(this, (TroopBarPageEntity.TypeListEntity)localObject3, ???));
+      localTranslateAnimation.setAnimationListener(new gvn(this, (TroopBarPageEntity.TypeListEntity)localObject3, ???));
       synchronized (this.jdField_a_of_type_AndroidViewView)
       {
         this.jdField_a_of_type_AndroidViewView.startAnimation(localTranslateAnimation);

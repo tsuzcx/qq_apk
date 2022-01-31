@@ -1,45 +1,25 @@
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.arcard.ARCardCamereButtonLayout;
-import com.tencent.mobileqq.arcard.ARCardCamereButtonLayout.CaptureButtonListenerInterceptor;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.ad.tangram.analysis.AdAnalysisAdapter;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
 public class aals
-  implements View.OnTouchListener
+  implements AdAnalysisAdapter
 {
-  public aals(ARCardCamereButtonLayout paramARCardCamereButtonLayout) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public String getAppVersion()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARCardCamereButtonLayout", 2, "touch action:" + (paramMotionEvent.getAction() & 0xFF) + ", shortVideoShot:" + this.a.a.get() + ", actionUp:" + this.a.b.get() + ", isOver:" + ARCardCamereButtonLayout.a(this.a));
-    }
-    this.a.a();
-    if (ARCardCamereButtonLayout.a(this.a)) {}
+    return aash.a();
+  }
+  
+  public String getUIN()
+  {
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
     do
     {
-      return false;
-      switch (paramMotionEvent.getAction() & 0xFF)
-      {
-      case 2: 
-      default: 
-        return false;
-      }
-    } while (ARCardCamereButtonLayout.b(this.a));
-    if ((ARCardCamereButtonLayout.a(this.a) != null) && (!ARCardCamereButtonLayout.a(this.a).a())) {
-      return true;
-    }
-    this.a.b();
-    if ((ARCardCamereButtonLayout.a(this.a) == 3) || (ARCardCamereButtonLayout.a(this.a) == 1)) {
-      ARCardCamereButtonLayout.a(this.a).sendEmptyMessageDelayed(1, 100L);
-    }
-    ARCardCamereButtonLayout.a(this.a, true);
-    return true;
-    ARCardCamereButtonLayout.b(this.a);
-    return true;
+      return null;
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+    } while (localObject == null);
+    return ((AppRuntime)localObject).getAccount();
   }
 }
 

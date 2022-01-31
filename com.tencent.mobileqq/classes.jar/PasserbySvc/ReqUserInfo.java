@@ -12,27 +12,27 @@ public final class ReqUserInfo
 {
   static int cache_ePosType;
   static GPS cache_stGps;
-  static ArrayList cache_vCells;
+  static ArrayList<Cell> cache_vCells;
   static byte[] cache_vLBSKeyData;
-  static ArrayList cache_vMacs;
+  static ArrayList<Long> cache_vMacs;
   public int ePosType;
   public GPS stGps;
   public String strAuthName = "";
   public String strAuthPassword = "";
-  public ArrayList vCells;
+  public ArrayList<Cell> vCells;
   public byte[] vLBSKeyData;
-  public ArrayList vMacs;
+  public ArrayList<Long> vMacs;
   
   public ReqUserInfo() {}
   
-  public ReqUserInfo(String paramString1, String paramString2, int paramInt, GPS paramGPS, ArrayList paramArrayList1, ArrayList paramArrayList2, byte[] paramArrayOfByte)
+  public ReqUserInfo(String paramString1, String paramString2, int paramInt, GPS paramGPS, ArrayList<Long> paramArrayList, ArrayList<Cell> paramArrayList1, byte[] paramArrayOfByte)
   {
     this.strAuthName = paramString1;
     this.strAuthPassword = paramString2;
     this.ePosType = paramInt;
     this.stGps = paramGPS;
-    this.vMacs = paramArrayList1;
-    this.vCells = paramArrayList2;
+    this.vMacs = paramArrayList;
+    this.vCells = paramArrayList1;
     this.vLBSKeyData = paramArrayOfByte;
   }
   
@@ -87,7 +87,7 @@ public final class ReqUserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     PasserbySvc.ReqUserInfo
  * JD-Core Version:    0.7.0.1
  */

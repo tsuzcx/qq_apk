@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="wrap_content" android:layout_height="250.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/ish" android:layout_width="60.0dip" android:layout_height="60.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/o7" />
+    <ProgressBar android:layout_gravity="bottom" android:id="@id/isi" android:layout_width="fill_parent" android:layout_height="3.0dip" android:maxHeight="3.0dip" android:max="100" android:progress="0" android:progressDrawable="@drawable/a2x" android:minHeight="2.0dip" android:layout_alignParentBottom="true" style="?android:progressBarStyleHorizontal" />
+</FrameLayout>

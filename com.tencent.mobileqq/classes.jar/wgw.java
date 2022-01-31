@@ -1,53 +1,54 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import android.app.PendingIntent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
 
 public class wgw
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
+  public wgw(QQStoryMainActivity paramQQStoryMainActivity, Intent paramIntent) {}
   
-  private wgw(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
-  
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void run()
-  {
-    long l1;
-    Message localMessage;
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.isDetached())
+    switch (paramInt)
     {
-      l1 = System.currentTimeMillis();
-      List localList = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.a();
-      localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(0, localList);
-      localMessage.arg1 = this.jdField_a_of_type_Int;
-      if ((localList != null) && (!localList.isEmpty())) {
-        break label83;
-      }
-      localMessage.arg2 = 11;
     }
-    for (;;)
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
-      return;
-      label83:
-      localMessage.arg2 = 10;
-      if (QLog.isColorLevel())
+      do
       {
-        long l2 = System.currentTimeMillis();
-        QLog.d(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "More messages loaded. Costs " + (l2 - l1) + " ms.");
-      }
-    }
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog back");
+        }
+        ndq.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity, 0, "", "");
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.finish();
+        try
+        {
+          paramDialogInterface = (PendingIntent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("activity_finish_run_pendingIntent");
+          if ((paramDialogInterface != null) && ((paramDialogInterface instanceof PendingIntent)))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "-->finish--send callback using PendingIntent");
+            }
+            paramDialogInterface.send();
+          }
+          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.moveTaskToBack(true);
+          return;
+        }
+        catch (Throwable paramDialogInterface) {}
+      } while (!QLog.isColorLevel());
+      QLog.e("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog ", paramDialogInterface);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "-->qbShowShareResultDialog--stay");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wgw
  * JD-Core Version:    0.7.0.1
  */

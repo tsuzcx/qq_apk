@@ -1,34 +1,22 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
-import com.tencent.mobileqq.search.fragment.FunctionSearchFragment;
-import com.tencent.mobileqq.search.presenter.ActiveEntitySearchResultPresenter;
-import com.tencent.mobileqq.search.presenter.IPresenter;
-import com.tencent.mobileqq.search.view.IView;
-import com.tencent.mobileqq.search.view.SearchResultFromNetView;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
 
 public class ahtb
-  extends BaseMvpFaceAdapter
+  extends alqv
 {
-  public ahtb(FunctionSearchFragment paramFunctionSearchFragment, ListView paramListView, FaceDecoder paramFaceDecoder)
-  {
-    super(paramListView, paramFaceDecoder);
-  }
+  public ahtb(DeviceFragment paramDeviceFragment) {}
   
-  protected IPresenter a(int paramInt)
+  protected void b()
   {
-    return new ActiveEntitySearchResultPresenter(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, 268435456);
-  }
-  
-  protected IView a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new SearchResultFromNetView(paramViewGroup, 268435456);
+    if (this.a.a == null) {
+      return;
+    }
+    this.a.a.d();
+    this.a.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahtb
  * JD-Core Version:    0.7.0.1
  */

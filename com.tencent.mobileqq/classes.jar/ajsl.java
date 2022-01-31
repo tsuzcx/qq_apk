@@ -1,19 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
-import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter;
-import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter.ViewHolder;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
 
 public class ajsl
   implements View.OnClickListener
 {
-  public ajsl(MediaPreviewAdapter paramMediaPreviewAdapter, MediaPreviewAdapter.ViewHolder paramViewHolder, MediaPreviewInfo paramMediaPreviewInfo) {}
+  public ajsl(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter$ViewHolder.a.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewInfo, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter$ViewHolder);
+    QzoneSlideShowPreparingFragment.a(this.a);
   }
 }
 

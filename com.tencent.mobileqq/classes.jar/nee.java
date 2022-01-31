@@ -1,22 +1,16 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
-import com.tencent.qphone.base.util.QLog;
+import java.nio.charset.Charset;
 
-class nee
-  implements Runnable
+final class nee
+  extends ThreadLocal<Charset>
 {
-  nee(ned paramned) {}
-  
-  public void run()
+  protected Charset a()
   {
-    boolean bool = this.a.a.a(true, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.nodeList", 2, "refresh msg node, change=" + bool);
-    }
+    return Charset.forName("UTF-8");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nee
  * JD-Core Version:    0.7.0.1
  */

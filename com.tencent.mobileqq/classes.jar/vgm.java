@@ -1,27 +1,37 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
-import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
 public class vgm
-  implements ProgressPieDrawable.OnProgressListener
+  extends urt<vhx>
 {
-  public vgm(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
-  
-  public void a(ProgressPieDrawable paramProgressPieDrawable)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ShortVideoRealItemBuilder", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
-    }
-    ShortVideoRealItemBuilder.a(this.a).postDelayed(new vgn(this, paramProgressPieDrawable), 100L);
+    return uqn.a("StorySvc.video_apply_authkey");
   }
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
+  public vhx a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspAuthKey localRspAuthKey = new qqstory_service.RspAuthKey();
+    try
+    {
+      localRspAuthKey.mergeFrom(paramArrayOfByte);
+      return new vhx(localRspAuthKey);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wxe.d("Q.qqstory:RefreshVideoFileKeyRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return new byte[0];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vgm
  * JD-Core Version:    0.7.0.1
  */

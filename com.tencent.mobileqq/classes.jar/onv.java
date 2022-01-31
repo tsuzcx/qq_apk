@@ -1,28 +1,31 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.biz.qqstory.utils.DateUtils;
+import java.util.ArrayList;
 
-public class onv
+class onv
+  extends oob
 {
-  public TextView a;
-  public TextView b;
-  
-  public onv(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  onv(omz paramomz, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364203));
-    this.b = ((TextView)paramView.findViewById(2131372059));
+    super(paramomz, null);
   }
   
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
+  void a(ooe paramooe)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(DateUtils.b(paramTroopStoryItemInfo.publishTime));
+    if (paramooe == null) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        paramooe.onCommentListLoad(1, false, new ArrayList(), false, 3, 3);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 2);
+    paramooe.onCommentLoadMore(1, false, new ArrayList(), false, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     onv
  * JD-Core Version:    0.7.0.1
  */

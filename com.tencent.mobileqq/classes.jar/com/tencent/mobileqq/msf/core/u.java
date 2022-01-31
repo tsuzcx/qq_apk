@@ -9,59 +9,88 @@ public class u
   public static final String b = "MsfCoreSocketReaderNew";
   public static final String c = "LightSender";
   public static final String d = "LightTcpSenderThread";
-  private static HandlerThread e;
-  private static Handler f;
-  private static HandlerThread g;
-  private static Handler h;
+  public static final String e = "MSFSubHandlerThread";
+  private static HandlerThread f = null;
+  private static Handler g = null;
+  private static HandlerThread h = null;
+  private static Handler i = null;
+  private static HandlerThread j = null;
+  private static Handler k = null;
   
   public static HandlerThread a()
   {
-    if (e == null) {}
+    if (f == null) {}
     try
     {
       HandlerThread localHandlerThread = new HandlerThread("MSF_StatReportThread");
       localHandlerThread.start();
-      e = localHandlerThread;
-      return e;
+      f = localHandlerThread;
+      return f;
     }
     finally {}
   }
   
   public static Handler b()
   {
-    if (f == null) {}
+    if (g == null) {}
     try
     {
-      if (f == null) {
-        f = new Handler(a().getLooper());
+      if (g == null) {
+        g = new Handler(a().getLooper());
       }
-      return f;
+      return g;
     }
     finally {}
   }
   
   public static HandlerThread c()
   {
-    if (g == null) {}
+    if (j == null) {}
     try
     {
       HandlerThread localHandlerThread = new HandlerThread("MSFNetHandlerThread");
       localHandlerThread.start();
-      g = localHandlerThread;
-      return g;
+      j = localHandlerThread;
+      return j;
     }
     finally {}
   }
   
   public static Handler d()
   {
+    if (k == null) {}
+    try
+    {
+      if (k == null) {
+        k = new Handler(c().getLooper());
+      }
+      return k;
+    }
+    finally {}
+  }
+  
+  public static HandlerThread e()
+  {
     if (h == null) {}
     try
     {
-      if (h == null) {
-        h = new Handler(c().getLooper());
-      }
+      HandlerThread localHandlerThread = new HandlerThread("MSFSubHandlerThread");
+      localHandlerThread.start();
+      h = localHandlerThread;
       return h;
+    }
+    finally {}
+  }
+  
+  public static Handler f()
+  {
+    if (i == null) {}
+    try
+    {
+      if (i == null) {
+        i = new Handler(e().getLooper());
+      }
+      return i;
     }
     finally {}
   }

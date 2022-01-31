@@ -1,39 +1,22 @@
-import android.database.DataSetObservable;
-import android.database.DataSetObserver;
-import com.tencent.widget.XBaseAdapter;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
 
-public class ameg
-  extends DataSetObservable
+public final class ameg
+  implements DialogInterface.OnClickListener
 {
-  public ameg(XBaseAdapter paramXBaseAdapter) {}
+  public ameg(TroopManager paramTroopManager, String paramString, QQAppInterface paramQQAppInterface) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    for (;;)
-    {
-      int i;
-      synchronized (this.mObservers)
-      {
-        i = this.mObservers.size() - 1;
-        if (i >= 0)
-        {
-          DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
-          if ((localDataSetObserver instanceof amef)) {
-            ((amef)localDataSetObserver).a(paramInt1, paramInt2);
-          } else {
-            localDataSetObserver.onChanged();
-          }
-        }
-      }
-      return;
-      i -= 1;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qq_vip", "0X800A57E", 2, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ameg
  * JD-Core Version:    0.7.0.1
  */

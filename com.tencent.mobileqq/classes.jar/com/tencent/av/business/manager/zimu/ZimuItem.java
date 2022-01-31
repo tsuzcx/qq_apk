@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.zimu;
 
-import com.tencent.av.business.manager.EffectConfigBase.ItemBase;
+import ljo;
 
 public class ZimuItem
-  extends EffectConfigBase.ItemBase
+  extends ljo
 {
   private String desc;
   private String iconurl;
@@ -55,7 +55,7 @@ public class ZimuItem
   
   public String toString()
   {
-    return "ZimuItemView{id='" + this.id + '\'' + ", iconurl='" + this.iconurl + '\'' + ", usable='" + this.usable + '\'' + ", resurl='" + this.resurl + '\'' + ", md5='" + this.md5 + '\'' + ", platform='" + this.platform + '\'' + ", desc='" + this.desc + '\'' + 125;
+    return "id[" + this.id + "], iconurl[" + this.iconurl + "], usable[" + this.usable + "], resurl[" + this.resurl + "], md5[" + this.md5 + "], platform[" + this.platform + "], desc[" + this.desc + "], isDownloading[" + this.isDownloading + "]";
   }
 }
 

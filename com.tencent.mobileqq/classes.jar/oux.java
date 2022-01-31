@@ -1,27 +1,28 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.SpannableString;
-import com.tencent.biz.qrcode.ipc.VoiceScan;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.os.Handler;
+import android.support.annotation.Nullable;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.4;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import java.io.File;
 
 public class oux
-  implements Runnable
+  implements OnCompositionLoadedListener
 {
-  public oux(VoiceScan paramVoiceScan) {}
+  public oux(ReadInJoyLottieDrawable.4 param4) {}
   
-  public void run()
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    SpannableString localSpannableString = new SpannableString(VoiceScan.a(this.a).getString(2131433410));
-    localSpannableString.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(VoiceScan.a(this.a).getResources().getColor(2131493062), VoiceScan.a(this.a).getResources().getColor(2131493063)), localSpannableString.length() - 7, localSpannableString.length() - 1, 33);
-    VoiceScan.a(this.a, DialogUtil.a(VoiceScan.a(this.a), VoiceScan.a(this.a).getString(2131433409), localSpannableString, 0, 2131433697, null, null, new ouy(this)));
-    VoiceScan.a(this.a).show();
+    if (paramLottieComposition != null)
+    {
+      out.a().put(this.a.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramLottieComposition);
+      out.a(this.a.this$0).post(this.a.jdField_a_of_type_JavaLangRunnable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oux
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,17 @@
-import com.tencent.biz.qqstory.newshare.model.Job;
-import com.tencent.biz.qqstory.newshare.model.JobExecutor;
-import java.util.concurrent.ConcurrentHashMap;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class nhi
-  implements Runnable
+class nhi
 {
-  public nhi(JobExecutor paramJobExecutor, Job paramJob, ConcurrentHashMap paramConcurrentHashMap) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void run()
-  {
-    JobExecutor.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor, this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob, this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
-  }
+  nhi(ngw paramngw) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nhi
  * JD-Core Version:    0.7.0.1
  */

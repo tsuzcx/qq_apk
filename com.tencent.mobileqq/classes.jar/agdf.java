@@ -1,26 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ocr.ui.SearchResultAdapter;
-import com.tencent.mobileqq.ocr.ui.SearchResultAdapter.ListItem;
-import com.tencent.mobileqq.ocr.ui.SearchResultAdapter.OnResultItemClickedListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agdf
-  implements View.OnClickListener
+class agdf
+  implements DialogInterface.OnClickListener
 {
-  public agdf(SearchResultAdapter paramSearchResultAdapter) {}
+  agdf(agda paramagda) {}
   
-  public void onClick(View paramView)
-  {
-    if ((this.a.a != null) && ((paramView.getTag() instanceof SearchResultAdapter.ListItem)))
-    {
-      paramView = (SearchResultAdapter.ListItem)paramView.getTag();
-      this.a.a.a(paramView);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agdf
  * JD-Core Version:    0.7.0.1
  */

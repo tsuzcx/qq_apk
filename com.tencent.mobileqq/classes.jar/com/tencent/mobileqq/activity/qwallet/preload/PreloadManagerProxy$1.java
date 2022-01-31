@@ -1,14 +1,16 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
+import ajah;
+import ajao;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import com.tencent.qphone.base.util.QLog;
 
-class PreloadManagerProxy$1
+public class PreloadManagerProxy$1
   extends ResultReceiver
 {
-  PreloadManagerProxy$1(PreloadManagerProxy paramPreloadManagerProxy, Handler paramHandler, PreloadManager.DownloadCallback paramDownloadCallback, String paramString)
+  public PreloadManagerProxy$1(ajao paramajao, Handler paramHandler, ajah paramajah, String paramString)
   {
     super(paramHandler);
   }
@@ -24,18 +26,18 @@ class PreloadManagerProxy$1
       if (QLog.isColorLevel()) {
         QLog.d("PreloadManagerProxy", 2, "PreloadManagerProxy downloadModule" + str2 + "|" + paramBundle);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$DownloadCallback.onDownloadResFinished(str1, paramInt, str2, paramBundle);
+      this.jdField_a_of_type_Ajah.onDownloadResFinished(str1, paramInt, str2, paramBundle);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("PreloadManagerProxy", 2, "PreloadManagerProxy downloadModule IPC wrong");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$DownloadCallback.onDownloadResFinished(this.jdField_a_of_type_JavaLangString, -8, null, null);
+    this.jdField_a_of_type_Ajah.onDownloadResFinished(this.jdField_a_of_type_JavaLangString, -8, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.preload.PreloadManagerProxy.1
  * JD-Core Version:    0.7.0.1
  */

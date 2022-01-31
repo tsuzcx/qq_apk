@@ -1,22 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qqdataline.ipc.DatalineRemoteManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import java.util.ArrayList;
 
-public class amop
-  implements DialogInterface.OnClickListener
+class amop
+  implements View.OnClickListener
 {
-  public amop(DatalineRemoteManager paramDatalineRemoteManager) {}
+  amop(amoo paramamoo, ArrayList paramArrayList, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.b = true;
-    DatalineRemoteManager.a(this.a, 1);
-    DatalineRemoteManager.b(this.a);
+    paramView = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString), 120);
+    paramView.a();
+    vod.a(this.jdField_a_of_type_Amoo.a.a, paramView.a(), null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amop
  * JD-Core Version:    0.7.0.1
  */

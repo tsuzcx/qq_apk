@@ -1,18 +1,22 @@
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragmentAllWaite;
-
 public class aolw
-  implements Runnable
+  extends aolr
 {
-  public aolw(CaptureQmcfSoDownloadFragmentAllWaite paramCaptureQmcfSoDownloadFragmentAllWaite) {}
+  private aomq a;
   
-  public void run()
+  public aolw(String paramString, aomq paramaomq)
   {
-    this.a.a();
+    super(paramString);
+    this.a = paramaomq;
+  }
+  
+  public aomq a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aolw
  * JD-Core Version:    0.7.0.1
  */

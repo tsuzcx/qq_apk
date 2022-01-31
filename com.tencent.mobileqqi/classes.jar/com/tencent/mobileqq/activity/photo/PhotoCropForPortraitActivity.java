@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.photo;
 import com.tencent.mobileqq.app.FriendsManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
-import erh;
+import emt;
 
 public class PhotoCropForPortraitActivity
   extends PhotoCropActivity
@@ -12,7 +12,7 @@ public class PhotoCropForPortraitActivity
   {
     ExtensionInfo localExtensionInfo = ((FriendsManagerImp)this.b.getManager(8)).a(this.b.a());
     if ((localExtensionInfo != null) && (localExtensionInfo.isPendantValid())) {
-      this.a = new erh(this, paramInt1, paramInt2, localExtensionInfo);
+      this.a = new emt(this, paramInt1, paramInt2, localExtensionInfo);
     }
     super.a(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
   }

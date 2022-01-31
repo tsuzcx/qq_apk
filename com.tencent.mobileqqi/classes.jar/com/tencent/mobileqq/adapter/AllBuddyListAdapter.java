@@ -25,8 +25,8 @@ import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
-import fbw;
-import fbx;
+import exi;
+import exj;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -48,7 +48,7 @@ public class AllBuddyListAdapter
   private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
   private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new fbw(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new exi(this);
   private LinkedHashMap jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   private char[] jdField_a_of_type_ArrayOfChar = null;
   private int[] jdField_a_of_type_ArrayOfInt = null;
@@ -112,9 +112,9 @@ public class AllBuddyListAdapter
     {
       localObject1 = ((RichStatus)localObject1).a(null);
       paramViewGroup.e.setText((CharSequence)localObject1);
-      paramViewGroup.d.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131362070));
+      paramViewGroup.d.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131362080));
       paramViewGroup.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-      paramViewGroup.c.setOnClickListener(new fbx(this, localFriends));
+      paramViewGroup.c.setOnClickListener(new exj(this, localFriends));
       paramViewGroup = new StringBuilder(str);
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         paramViewGroup.append(this.jdField_a_of_type_AndroidContentContext.getString(2131559165)).append((CharSequence)localObject1);
@@ -126,7 +126,7 @@ public class AllBuddyListAdapter
       paramViewGroup.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
       break;
       label404:
-      paramViewGroup.c.setImageResource(2130838588);
+      paramViewGroup.c.setImageResource(2130838590);
       break label135;
       label417:
       bool = false;

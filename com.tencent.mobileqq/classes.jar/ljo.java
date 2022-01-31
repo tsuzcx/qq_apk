@@ -1,25 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-
-public class ljo
-  implements View.OnClickListener
+public abstract class ljo
 {
-  public ljo(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
+  public int cid = -1;
+  public boolean isDownloading;
   
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    this.a.a(true, null);
-  }
+  public abstract String getDesc();
+  
+  public abstract String getIconurl();
+  
+  public abstract String getId();
+  
+  public abstract String getMd5();
+  
+  public abstract int getPlatform();
+  
+  public abstract String getResurl();
+  
+  public abstract boolean isUsable();
+  
+  public abstract void setUsable(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ljo
  * JD-Core Version:    0.7.0.1
  */

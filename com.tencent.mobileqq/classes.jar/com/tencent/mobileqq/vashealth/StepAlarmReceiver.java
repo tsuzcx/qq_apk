@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vashealth;
 
-import akki;
-import akkj;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import bdyp;
+import bdys;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -12,15 +12,13 @@ import com.tencent.qphone.base.util.QLog;
 public class StepAlarmReceiver
   extends BroadcastReceiver
 {
-  public static String a;
-  public int a;
-  public long a;
-  public QQAppInterface a;
+  static String jdField_a_of_type_JavaLangString;
+  int jdField_a_of_type_Int = 1000;
+  long jdField_a_of_type_Long = 7200000L;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   public StepAlarmReceiver(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Long = 7200000L;
-    this.jdField_a_of_type_Int = 1000;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
@@ -31,7 +29,9 @@ public class StepAlarmReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (!SportManager.a()) {}
+    if (!bdys.a()) {
+      QLog.e("StepAlarmReceiver", 1, "onReceive:step counter not support");
+    }
     do
     {
       do
@@ -43,28 +43,26 @@ public class StepAlarmReceiver
           if (!"action_sport_timer1".equals(paramContext)) {
             break;
           }
-        } while ((!SSOHttpUtils.a(2)) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null));
-        ThreadManager.post(new akki(this), 5, null, true);
+        } while ((!bdyp.a(2)) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null));
+        ThreadManager.post(new StepAlarmReceiver.1(this), 5, null, true);
         return;
         if (!"action_sport_timer2".equals(paramContext)) {
           break;
         }
       } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
-      ((SportManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(259)).c();
+      ((bdys)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(260)).c();
       return;
     } while (!"StepAlarmReceiver_long_time_report".equals(paramContext));
-    if (QLog.isColorLevel()) {
-      QLog.i("StepAlarmReceiver", 2, "StepAlarmReceiver_long_time_report!");
-    }
+    QLog.i("StepAlarmReceiver", 1, "StepAlarmReceiver_long_time_report!");
     if (!paramIntent.getBooleanExtra("VerifyResult", true)) {
-      SSOHttpUtils.a(-1000, "verifyFailed");
+      bdyp.a(-1000, "verifyFailed");
     }
-    ThreadManager.post(new akkj(this), 5, null, true);
+    ThreadManager.post(new StepAlarmReceiver.2(this), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.StepAlarmReceiver
  * JD-Core Version:    0.7.0.1
  */

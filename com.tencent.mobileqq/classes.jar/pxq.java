@@ -1,25 +1,20 @@
-import com.tencent.device.file.DeviceAVFileMsgObserver;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
 
-public class pxq
+class pxq
+  implements bhyb
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
+  pxq(pxl parampxl) {}
   
-  public pxq(DeviceAVFileMsgObserver paramDeviceAVFileMsgObserver, String paramString1, long paramLong1, int paramInt, String paramString2, long paramLong2)
+  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Long = paramLong2;
+    pxl.a(this.a, (pgd)this.a.a, paramInt, paramArrayList, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pxq
  * JD-Core Version:    0.7.0.1
  */

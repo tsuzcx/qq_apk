@@ -1,20 +1,21 @@
-import android.hardware.Camera;
-import android.hardware.Camera.PictureCallback;
-import com.tencent.mobileqq.ocr.OcrCamera;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class agbn
-  implements Camera.PictureCallback
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public agbn(OcrCamera paramOcrCamera) {}
+  public agbn(SixCombolEffectView paramSixCombolEffectView, agbz paramagbz) {}
   
-  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.a(paramArrayOfByte, true);
+    this.jdField_a_of_type_Agbz.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agbn
  * JD-Core Version:    0.7.0.1
  */

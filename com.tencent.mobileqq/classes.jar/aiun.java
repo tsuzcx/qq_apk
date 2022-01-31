@@ -1,23 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
+import java.util.Comparator;
 
-public final class aiun
-  implements Parcelable.Creator
+class aiun
+  implements Comparator<aiuk>
 {
-  public MediaPreviewInfo a(Parcel paramParcel)
-  {
-    MediaPreviewInfo localMediaPreviewInfo = new MediaPreviewInfo();
-    localMediaPreviewInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localMediaPreviewInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localMediaPreviewInfo.b = paramParcel.readString();
-    localMediaPreviewInfo.c = paramParcel.readString();
-    return localMediaPreviewInfo;
-  }
+  aiun(aiul paramaiul) {}
   
-  public MediaPreviewInfo[] a(int paramInt)
+  public int a(aiuk paramaiuk1, aiuk paramaiuk2)
   {
-    return new MediaPreviewInfo[paramInt];
+    return (int)(paramaiuk2.a - paramaiuk1.a);
   }
 }
 

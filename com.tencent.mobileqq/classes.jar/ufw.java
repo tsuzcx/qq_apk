@@ -1,25 +1,56 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.open.appcircle.st.AppCircleReportManager;
-import com.tencent.open.appcircle.st.STUtils;
-import com.tencent.open.base.LogUtility;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StTagInfo;
+import java.util.List;
 
-public class ufw
-  implements DialogInterface.OnClickListener
+class ufw
+  extends RecyclerView.ViewHolder
 {
-  public ufw(UpgradeActivity paramUpgradeActivity) {}
+  public RelativeLayout a;
+  public TextView a;
+  public FeedCloudMeta.StTagInfo a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ufw(ufv paramufv, View paramView)
   {
-    LogUtility.b("qqBaseActivity", STUtils.a(10010, 1, 2, 200));
-    AppCircleReportManager.a().a(17, STUtils.a(10010, 1, 2, 200));
-    this.a.finish();
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369129));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369127));
+  }
+  
+  public void a(FeedCloudMeta.StTagInfo paramStTagInfo, int paramInt)
+  {
+    if (paramStTagInfo != null)
+    {
+      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo = paramStTagInfo;
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramStTagInfo.tagName.get());
+      paramStTagInfo = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      if (paramInt != 0) {
+        break label89;
+      }
+      paramStTagInfo.setMargins(0, 0, 0, 0);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramStTagInfo);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(azkz.a(5.0F), 0, azkz.a(5.0F), 0);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new ufx(this));
+      return;
+      label89:
+      if (paramInt == this.jdField_a_of_type_Ufv.a.size() - 1) {
+        paramStTagInfo.setMargins(azkz.a(5.0F), 0, azkz.a(38.0F), 0);
+      } else {
+        paramStTagInfo.setMargins(azkz.a(5.0F), 0, 0, 0);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ufw
  * JD-Core Version:    0.7.0.1
  */

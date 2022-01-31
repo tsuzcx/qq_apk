@@ -1,20 +1,8 @@
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.util.FaceDrawable;
+import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
 
 public class heq
-  extends DiscussionObserver
 {
-  private heq(FaceDrawable paramFaceDrawable) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if (paramBoolean2)
-    {
-      FaceDrawable.a(this.a, paramBoolean1, 101, paramString, FaceDrawable.a(this.a));
-      return;
-    }
-    FaceDrawable.a(this.a, paramBoolean1, 101, paramString, null);
-  }
+  public static final KapalaiAdapterUtil a = new KapalaiAdapterUtil(null);
 }
 
 

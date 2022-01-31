@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.util.InputMethodUtil;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 
-public class aitn
-  implements Runnable
+class aitn
+  implements afdp
 {
-  public aitn(AbsPublishActivity paramAbsPublishActivity) {}
+  aitn(aitm paramaitm) {}
   
-  public void run()
+  public void a()
   {
-    InputMethodUtil.a(this.a.b);
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, new Intent());
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
+  }
+  
+  public void b()
+  {
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, new Intent());
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
   }
 }
 

@@ -1,17 +1,8 @@
-import android.app.Activity;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qzone.QZoneVideoCommonUtils.onForwardVideoActivityFailedListener;
-import cooperation.qzone.webviewplugin.personalize.QZoneCoverStoreJsPlugin;
-
-public class andu
-  implements QZoneVideoCommonUtils.onForwardVideoActivityFailedListener
+public abstract interface andu
 {
-  public andu(QZoneCoverStoreJsPlugin paramQZoneCoverStoreJsPlugin, int paramInt) {}
+  public abstract void a(long paramLong1, long paramLong2);
   
-  public void onFail(Activity paramActivity, String paramString)
-  {
-    QQToast.a(paramActivity, paramString, 0).b(this.jdField_a_of_type_Int);
-  }
+  public abstract void a(boolean paramBoolean, andv paramandv);
 }
 
 

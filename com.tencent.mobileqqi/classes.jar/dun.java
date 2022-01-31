@@ -1,47 +1,20 @@
-import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
 
 public class dun
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public dun(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public dun(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    boolean bool = false;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      TroopAssistantActivity.a(this.a).dismiss();
-      return;
-      paramView = this.a;
-      if (!TroopAssistantActivity.a(this.a)) {
-        bool = true;
-      }
-      TroopAssistantActivity.a(paramView, bool);
-      TroopAssistantManager.a().b(this.a.b, TroopAssistantActivity.a(this.a));
-      continue;
-      paramView = new Intent(this.a, TroopAssisSettingActivity.class);
-      paramView.setFlags(67108864);
-      this.a.startActivity(paramView);
-      ReportController.b(this.a.b, "P_CliOper", "Grp_msg", "", "help_list", "Clk_set", 0, 0, "", "", "", "");
-      continue;
-      TroopAssistantManager.a().a(this.a.b, false);
-      this.a.finish();
-    }
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dun
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class achr
-  implements DialogInterface.OnClickListener
+  implements bicn
 {
-  public achr(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public achr(BaseChatPie paramBaseChatPie) {}
 }
 
 

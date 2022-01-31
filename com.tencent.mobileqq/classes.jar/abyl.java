@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.doutu.DoutuManager;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class abyl
-  implements Runnable
+class abyl
+  implements View.OnClickListener
 {
-  public abyl(DoutuManager paramDoutuManager) {}
+  abyl(abyi paramabyi) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.d();
+    this.a.jdField_a_of_type_Abwx.d();
+    acab.a(this.a.jdField_a_of_type_Abwu, 4);
   }
 }
 

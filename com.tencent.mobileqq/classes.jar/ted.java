@@ -1,45 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import cooperation.qzone.LocalMultiProcConfig;
+import org.json.JSONObject;
 
-public class ted
-  implements CompoundButton.OnCheckedChangeListener
+public abstract class ted
 {
-  public ted(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public ted(JSONObject paramJSONObject)
   {
-    LocalMultiProcConfig.putBooleanAsync(this.a.getString(2131434207) + this.a.a, paramBoolean);
-    if (AppSetting.b) {
-      NotifyPushSettingActivity.e(this.a).setContentDescription("与我相关的通知");
-    }
-    QQAppInterface localQQAppInterface = this.a.app;
-    int i;
-    if (paramBoolean)
-    {
-      i = 1;
-      if (!paramBoolean) {
-        break label106;
-      }
-    }
-    label106:
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_about_me", 0, i, paramCompoundButton, "", "", "");
-      return;
-      i = 0;
-      break;
-    }
+    a(paramJSONObject);
   }
+  
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ted
  * JD-Core Version:    0.7.0.1
  */

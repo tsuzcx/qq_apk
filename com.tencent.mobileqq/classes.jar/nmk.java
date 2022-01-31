@@ -1,28 +1,20 @@
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler;
-import java.util.ArrayList;
+import android.view.View;
 
-public class nmk
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+public abstract interface nmk
 {
-  public nmk(BatchGetVideoInfoHandler paramBatchGetVideoInfoHandler, BatchGetVideoInfo paramBatchGetVideoInfo) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
   
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.b(2);
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
   
-  public void a(ArrayList paramArrayList)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.a(2, paramArrayList);
-  }
+  public abstract boolean a();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nmk
  * JD-Core Version:    0.7.0.1
  */

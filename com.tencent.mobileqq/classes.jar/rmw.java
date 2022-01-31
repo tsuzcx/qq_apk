@@ -1,20 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class rmw
-  implements View.OnClickListener
+class rmw
+  extends nta
 {
-  public rmw(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  private rmw(rmv paramrmv) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.onBackEvent();
+    if ((!paramBoolean) || (paramBundle == null)) {}
+    for (;;)
+    {
+      return;
+      String str = paramBundle.getString("VALUE_VIDEO_VID");
+      int i = paramBundle.getInt("VALUE_VIDEO_PLAY_COUNT");
+      if (!TextUtils.isEmpty(str))
+      {
+        paramBundle = rmv.a(this.a).a().iterator();
+        while (paramBundle.hasNext())
+        {
+          VideoInfo localVideoInfo = (VideoInfo)paramBundle.next();
+          if ((str.equals(localVideoInfo.a)) && (i > 0) && (localVideoInfo.p == 0))
+          {
+            localVideoInfo.p = i;
+            rmv.a(this.a).b(localVideoInfo);
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rmw
  * JD-Core Version:    0.7.0.1
  */

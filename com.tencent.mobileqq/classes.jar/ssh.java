@@ -1,20 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.support.v4.view.ViewPager;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
 
 public class ssh
-  implements DialogInterface.OnClickListener
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public ssh(FriendProfileImageActivity paramFriendProfileImageActivity, String paramString1, String paramString2) {}
+  public ssh(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b(this.jdField_a_of_type_JavaLangString, this.b);
+    ServiceAccountFolderActivityNew.a(this.a, true);
+    if (ServiceAccountFolderActivityNew.a(this.a).getId() == paramInt) {
+      ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(0);
+    }
+    while (ServiceAccountFolderActivityNew.b(this.a).getId() != paramInt) {
+      return;
+    }
+    ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ssh
  * JD-Core Version:    0.7.0.1
  */

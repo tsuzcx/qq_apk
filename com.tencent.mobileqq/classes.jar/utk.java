@@ -1,69 +1,28 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.doodle.control.RDBaseListLayout;
-import com.tencent.mobileqq.activity.aio.doodle.control.RDBaseViewHolder;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLikeFeed;
 
 public class utk
-  extends BaseAdapter
+  extends uuc
 {
-  private utk(RDBaseListLayout paramRDBaseListLayout) {}
+  qqstory_service.RspLikeFeed a;
+  
+  public utk() {}
+  
+  public utk(qqstory_service.RspLikeFeed paramRspLikeFeed)
+  {
+    super(paramRspLikeFeed.result);
+    this.a = paramRspLikeFeed;
+  }
   
   public void a() {}
   
-  public void b() {}
+  public void a(int paramInt, Bundle paramBundle) {}
   
-  public int getCount()
-  {
-    return RDBaseListLayout.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return RDBaseListLayout.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = RDBaseListLayout.a(this.a).get(paramInt);
-    if (paramView == null) {
-      paramView = this.a.a(paramInt, paramViewGroup);
-    }
-    for (;;)
-    {
-      if (paramView == null) {
-        paramViewGroup = null;
-      }
-      View localView;
-      do
-      {
-        return paramViewGroup;
-        paramView = (utl)paramView.getTag();
-        if (paramView == null) {
-          break label102;
-        }
-        paramView = paramView.a;
-        break;
-        this.a.a(paramInt, paramViewGroup, paramView);
-        localView = ((RDBaseViewHolder)paramView).a();
-        paramViewGroup = localView;
-      } while (localView == null);
-      localView.setTag(new utl(this.a, paramInt, paramView));
-      return localView;
-      label102:
-      paramView = null;
-    }
-  }
+  public void a(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     utk
  * JD-Core Version:    0.7.0.1
  */

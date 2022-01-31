@@ -9,13 +9,13 @@ import com.tencent.component.media.utils.ImageManagerLog;
 public class IBitmapFactory$ArtBitmapFactory
   extends IBitmapFactory
 {
-  ByteArrayPool jdField_a_of_type_ComTencentComponentMediaImageByteArrayPool;
-  IDecoder jdField_a_of_type_ComTencentComponentMediaImageIDecoder;
+  ByteArrayPool mByteArrayPool;
+  IDecoder mDecoder;
   
   public IBitmapFactory$ArtBitmapFactory(ByteArrayPool paramByteArrayPool, IDecoder paramIDecoder)
   {
-    this.jdField_a_of_type_ComTencentComponentMediaImageByteArrayPool = paramByteArrayPool;
-    this.jdField_a_of_type_ComTencentComponentMediaImageIDecoder = paramIDecoder;
+    this.mByteArrayPool = paramByteArrayPool;
+    this.mDecoder = paramIDecoder;
   }
   
   @TargetApi(12)
@@ -26,10 +26,10 @@ public class IBitmapFactory$ArtBitmapFactory
       ImageManagerLog.w("BitmapFactory", "width height error " + paramInt1 + ", " + paramInt2);
       return null;
     }
-    byte[] arrayOfByte = a((short)paramInt1, (short)paramInt2, this.jdField_a_of_type_ComTencentComponentMediaImageByteArrayPool);
+    byte[] arrayOfByte = generate((short)paramInt1, (short)paramInt2, this.mByteArrayPool);
     Object localObject = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject).inPreferredConfig = paramConfig;
-    localObject = this.jdField_a_of_type_ComTencentComponentMediaImageIDecoder.decodeImage(arrayOfByte, 0, jdField_a_of_type_Int, (BitmapFactory.Options)localObject, paramInt1, paramInt2);
+    localObject = this.mDecoder.decodeImage(arrayOfByte, 0, sEmptyByteSize, (BitmapFactory.Options)localObject, paramInt1, paramInt2);
     if (localObject == null) {
       return BitmapReference.getBitmapReference(Bitmap.createBitmap(paramInt1, paramInt2, paramConfig));
     }
@@ -41,13 +41,13 @@ public class IBitmapFactory$ArtBitmapFactory
     if ((((BitmapReference)localObject).getWidth() != paramInt1) || (((BitmapReference)localObject).getHeight() != paramInt2)) {
       return BitmapReference.getBitmapReference(Bitmap.createBitmap(paramInt1, paramInt2, paramConfig));
     }
-    this.jdField_a_of_type_ComTencentComponentMediaImageByteArrayPool.release(arrayOfByte);
+    this.mByteArrayPool.release(arrayOfByte);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.IBitmapFactory.ArtBitmapFactory
  * JD-Core Version:    0.7.0.1
  */

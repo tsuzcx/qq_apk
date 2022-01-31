@@ -1,21 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountSettingActivity;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
 
 class dse
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  dse(dsc paramdsc) {}
+  dse(dsd paramdsd, TroopMemberListActivity.ATroopMember paramATroopMember) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
-    {
-      this.a.a.d();
-      SubAccountSettingActivity.a(this.a.a, true);
-      SubAccountAssistantManager.a().a(this.a.a.b);
-    }
+    TroopMemberListActivity.a(this.jdField_a_of_type_Dsd.a, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ATroopMember.a);
   }
 }
 

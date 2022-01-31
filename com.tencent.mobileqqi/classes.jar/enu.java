@@ -1,44 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RadioButton;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.util.EUCountryUtils;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qquserguide.UserguideVideoFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class enu
-  implements View.OnClickListener
+  implements MediaPlayer.OnPreparedListener
 {
-  public enu(MainAssistObserver paramMainAssistObserver, RadioButton paramRadioButton1, QQCustomDialog paramQQCustomDialog, RadioButton paramRadioButton2) {}
+  public enu(UserguideVideoFragment paramUserguideVideoFragment) {}
   
-  public void onClick(View paramView)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (this.jdField_a_of_type_AndroidWidgetRadioButton.isChecked())
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      }
-      MainAssistObserver.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new env(this), 200L);
+    if (QLog.isDevelopLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 4, "fight............onPrepared .== ...........");
     }
-    do
-    {
-      return;
-      if (!this.b.isChecked()) {
-        break;
-      }
-      EUCountryUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a.b.a(), 1);
-      EUCountryUtils.b(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a.b.a(), 2);
-    } while (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    return;
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a, 2131563355, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     enu
  * JD-Core Version:    0.7.0.1
  */

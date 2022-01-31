@@ -1,39 +1,85 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.ICmGameConfirmListener;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.utils.VipUtils;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.subscribe.widget.SubscribeBannerView.BannerAdapter;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeMultiPicHeadItemView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class ypa
-  implements CmGameStartChecker.ICmGameConfirmListener
+  extends SubscribeBannerView.BannerAdapter
 {
-  public ypa(CmGameStartChecker paramCmGameStartChecker, boolean paramBoolean, String paramString1, String paramString2, String paramString3) {}
+  public ypa(RelativeMultiPicHeadItemView paramRelativeMultiPicHeadItemView) {}
   
-  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  private String a(Object paramObject)
   {
-    CmGameStartChecker localCmGameStartChecker = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker;
-    String str;
-    if (this.jdField_a_of_type_Boolean)
+    if ((paramObject instanceof CertifiedAccountMeta.StImage)) {
+      return ((CertifiedAccountMeta.StImage)paramObject).url.get();
+    }
+    return "";
+  }
+  
+  public View a(View paramView, Object paramObject)
+  {
+    String str = a(paramObject);
+    if (((paramObject instanceof CertifiedAccountMeta.StImage)) && (RelativeMultiPicHeadItemView.a(this.a) != 0))
     {
-      str = this.jdField_a_of_type_JavaLangString;
-      localCmGameStartChecker.a(paramStartCheckParam, str);
-      if (!"message".equals(this.c)) {
-        break label77;
+      paramObject = (CertifiedAccountMeta.StImage)paramObject;
+      if ((paramObject.width.get() != 0) && (paramObject.height.get() != 0))
+      {
+        float f = paramObject.height.get() / paramObject.width.get();
+        paramObject = paramView.getLayoutParams();
+        int j = (int)(RelativeMultiPicHeadItemView.a(this.a) / f);
+        int i = j;
+        if (j > RelativeMultiPicHeadItemView.b(this.a)) {
+          i = RelativeMultiPicHeadItemView.b(this.a);
+        }
+        paramObject.width = i;
+        paramObject.height = RelativeMultiPicHeadItemView.a(this.a);
       }
     }
-    label77:
-    for (int i = 1;; i = 0)
+    if (str != null) {}
+    try
     {
-      VipUtils.a(null, "cmshow", "Apollo", "download_confirm", i, 3, new String[] { String.valueOf(paramStartCheckParam.game.gameId) });
-      return;
-      str = this.b;
-      break;
+      paramObject = ykt.a(str);
+      if (!TextUtils.isEmpty(paramObject))
+      {
+        paramObject = new File(paramObject);
+        if (paramObject.exists())
+        {
+          ((URLImageView)paramView).setImageURI(Uri.fromFile(paramObject));
+          return paramView;
+        }
+      }
+    }
+    catch (Exception paramObject)
+    {
+      QLog.d("RelativeMultiPicHeadItemView", 1, "bindItemView set local image path error!exception:" + paramObject);
+      ybm.a(str, (URLImageView)paramView);
+    }
+    return paramView;
+  }
+  
+  protected URLImageView a(ViewGroup paramViewGroup)
+  {
+    paramViewGroup = new URLImageView(paramViewGroup.getContext());
+    if (RelativeMultiPicHeadItemView.a(this.a) == 0) {}
+    for (int i = -1;; i = RelativeMultiPicHeadItemView.a(this.a))
+    {
+      paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(-1, i));
+      return paramViewGroup;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ypa
  * JD-Core Version:    0.7.0.1
  */

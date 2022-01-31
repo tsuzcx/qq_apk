@@ -1,33 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
 
 public class ssv
-  implements ActionSheet.OnButtonClickListener
+  implements yds
 {
-  public ssv(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, ActionSheet paramActionSheet) {}
+  public ssv(FolderFollowTabFragment paramFolderFollowTabFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a("0X80081E5", 2);
-      continue;
-      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a("0X80081E5", 3);
+    if ((this.a.getActivity() != null) && (!this.a.getActivity().isFinishing()) && (FolderFollowTabFragment.a(this.a) != null)) {
+      FolderFollowTabFragment.a(this.a).a(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ssv
  * JD-Core Version:    0.7.0.1
  */

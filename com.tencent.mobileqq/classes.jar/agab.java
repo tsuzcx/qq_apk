@@ -1,28 +1,21 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.now.enter.ConversationNowController;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder.3.1;
+import com.tencent.qphone.base.util.QLog;
 
-public class agab
-  implements ValueAnimator.AnimatorUpdateListener
+public final class agab
+  implements betp
 {
-  public agab(ConversationNowController paramConversationNowController, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  public agab(Handler paramHandler) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(betn parambetn)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {}
-    float f;
-    do
-    {
-      return;
-      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-      int i = (int)(-ConversationNowController.a(this.jdField_a_of_type_ComTencentMobileqqNowEnterConversationNowController) * (1.0F - f));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    } while (!this.jdField_a_of_type_ComTencentMobileqqNowEnterConversationNowController.d);
-    this.b.setAlpha(f);
+    if (QLog.isColorLevel()) {
+      QLog.i("ScribbleItemBuilder", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambetn);
+    }
+    this.a.postDelayed(new ScribbleItemBuilder.3.1(this, parambetn), 100L);
   }
+  
+  public void a(betn parambetn, int paramInt1, int paramInt2) {}
 }
 
 

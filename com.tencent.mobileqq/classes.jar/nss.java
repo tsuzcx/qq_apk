@@ -1,22 +1,23 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller;
-import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
 
-public class nss
-  implements QQStoryPullToRefreshListView.PullToRefreshListener
+public final class nss
+  implements Parcelable.Creator<VideoInfo.InterruptedWeishiAd>
 {
-  public nss(StoryPickerFragment paramStoryPickerFragment) {}
-  
-  public void a()
+  public VideoInfo.InterruptedWeishiAd a(Parcel paramParcel)
   {
-    if (this.a.a != null) {
-      this.a.a.d();
-    }
+    return new VideoInfo.InterruptedWeishiAd(paramParcel);
+  }
+  
+  public VideoInfo.InterruptedWeishiAd[] a(int paramInt)
+  {
+    return new VideoInfo.InterruptedWeishiAd[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nss
  * JD-Core Version:    0.7.0.1
  */

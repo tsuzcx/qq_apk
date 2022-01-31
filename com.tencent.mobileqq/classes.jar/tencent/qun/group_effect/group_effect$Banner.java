@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class group_effect$Banner
-  extends MessageMicro
+  extends MessageMicro<Banner>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 810 }, new String[] { "effect_id", "bottom_url", "top_url", "goto_url", "time_begin", "time_end", "effect_info" }, new Object[] { Integer.valueOf(0), "", "", "", Integer.valueOf(0), Integer.valueOf(0), null }, Banner.class);
   public final PBStringField bottom_url = PBField.initString("");
@@ -20,7 +20,7 @@ public final class group_effect$Banner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.qun.group_effect.group_effect.Banner
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class sia
-  extends BroadcastReceiver
+class sia
+  implements PopupWindow.OnDismissListener
 {
-  public sia(Conversation paramConversation) {}
+  sia(shz paramshz) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onDismiss()
   {
-    if ("login".equals(paramIntent.getStringExtra("status")))
-    {
-      this.a.a.a(9, 2);
-      this.a.a.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("loginInfo");
-      this.a.a.c = paramIntent.getStringExtra("loginAppId");
-      this.a.a.jdField_b_of_type_Int = paramIntent.getIntExtra("appType", -1);
-      this.a.a.d = paramIntent.getStringExtra("bannerTips");
-      this.a.a.a = paramIntent.getLongExtra("subappid", 1L);
-      this.a.a.a(-1, null);
-      return;
-    }
-    this.a.a.b();
+    this.a.a(1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sia
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,21 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class dew
-  extends CardObserver
+  implements DialogInterface.OnClickListener
 {
-  public dew(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public dew(RegisterActivity paramRegisterActivity, String paramString) {}
   
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().equals(paramString)) {
-      return;
-    }
-    if (!paramBoolean1) {
-      this.a.a(2131562080, 1);
-    }
-    if (paramBoolean2)
-    {
-      PermisionPrivacyActivity.a(this.a, this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.a(), paramBoolean3);
-      return;
-    }
-    PermisionPrivacyActivity.a(this.a, PermisionPrivacyActivity.a(this.a), paramBoolean3);
-  }
-  
-  protected void b(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if (!this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().equals(paramString)) {
-      return;
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.a(), paramBoolean2);
-    PermisionPrivacyActivity.a(this.a, PermisionPrivacyActivity.a(this.a), paramBoolean3);
+    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.startActivity(localIntent);
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.a.sendEmptyMessage(1);
   }
 }
 

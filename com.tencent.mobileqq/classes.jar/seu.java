@@ -1,41 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 class seu
-  implements DialogInterface.OnClickListener
+  extends amfg
 {
   seu(set paramset) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    if (paramInt == 1)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.cancel();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.e("ReadInJoyTabTopSearchHeaderController", 2, "handleKandianSearchHotwordError, resultCode = " + paramInt1 + "， errorMsg = " + paramString + ", fromType = " + paramInt2);
     }
-    try
-    {
-      ForwardSdkShareOption.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, true, "action_game_join_group", Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.c).longValue(), -1, this.a.jdField_a_of_type_JavaLangString);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.cancel();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.finish();
-      return;
+  }
+  
+  public void a(List<aypb> paramList, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyTabTopSearchHeaderController", 2, "handleKandianSearchHotwordResult, result = " + paramList + ", fromType = " + paramInt);
     }
-    catch (Exception paramDialogInterface)
+    if (paramInt != 10) {}
+    aypb localaypb;
+    do
     {
-      for (;;)
+      do
       {
-        QLog.e("Q.chatopttroop", 1, "showAlertDlg error = " + paramDialogInterface);
-      }
-    }
+        return;
+        while ((paramList == null) || (paramList.size() <= 0)) {}
+        paramList = paramList.iterator();
+      } while (!paramList.hasNext());
+      localaypb = (aypb)paramList.next();
+    } while (!(localaypb instanceof HotWordSearchEntryDataModel));
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)localaypb);
+    set.jdField_a_of_type_Int = 0;
+    this.a.a(false, -1, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     seu
  * JD-Core Version:    0.7.0.1
  */

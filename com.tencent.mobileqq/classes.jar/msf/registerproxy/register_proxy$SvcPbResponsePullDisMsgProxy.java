@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class register_proxy$SvcPbResponsePullDisMsgProxy
-  extends MessageMicro
+  extends MessageMicro<SvcPbResponsePullDisMsgProxy>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field member_seq = PBField.initUInt64(0L);
@@ -22,7 +22,7 @@ public final class register_proxy$SvcPbResponsePullDisMsgProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msf.registerproxy.register_proxy.SvcPbResponsePullDisMsgProxy
  * JD-Core Version:    0.7.0.1
  */

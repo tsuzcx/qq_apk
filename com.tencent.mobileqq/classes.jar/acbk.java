@@ -1,48 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.video.VipVideoManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
-class acbk
-  implements TVK_SDKMgr.InstallListener
+public class acbk
+  implements CompoundButton.OnCheckedChangeListener
 {
-  acbk(acbg paramacbg, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public acbk(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onInstallProgress(float paramFloat)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int i = (int)Math.floor(100.0F * paramFloat);
-    if (i > VipVideoManager.a)
+    SettingCloneUtil.writeValue(this.a, this.a.app.getCurrentAccountUin(), null, "qqsetting_subaccount_notify", paramBoolean);
+    ((badd)this.a.app.getManager(61)).a(this.a.app);
+    paramCompoundButton = this.a.app;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
     {
-      VipVideoManager.a = i;
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("status", 1);
-      localBundle.putFloat("progress", i);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      azqs.b(paramCompoundButton, "dc00898", "", "", "0X800AC3A", "0X800AC3A", 0, 0, i + "", "", "", "");
+      return;
     }
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("status", 2);
-    localBundle.putInt("errCode", paramInt);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("status", 3);
-    localBundle.putBoolean("result", true);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acbk
  * JD-Core Version:    0.7.0.1
  */

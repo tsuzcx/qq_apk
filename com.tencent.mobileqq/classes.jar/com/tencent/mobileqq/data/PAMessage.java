@@ -8,7 +8,7 @@ public class PAMessage
 {
   private static final long serialVersionUID = 243242567575L;
   public String grayTips;
-  public ArrayList items;
+  public ArrayList<PAMessage.Item> items;
   public long mMsgId;
   public String moreText;
   public String msg;
@@ -17,7 +17,7 @@ public class PAMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.PAMessage
  * JD-Core Version:    0.7.0.1
  */

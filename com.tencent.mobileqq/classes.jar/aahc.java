@@ -1,23 +1,23 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
 
 public class aahc
-  implements Runnable
+  implements aahz
 {
-  public aahc(AREngine paramAREngine) {}
+  public aahc(GameCenterActivity.GameCenterFragment paramGameCenterFragment, WebView paramWebView) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    QLog.i("AREngine_AREngine", 1, "uninit run. mIsInited = " + AREngine.e(this.a));
-    AREngine.b(this.a);
-    AREngine.b(this.a, 0);
-    AREngine.b(this.a, false);
-    QLog.i("AREngine_AREngine", 1, "uninit end. mIsInited = " + AREngine.e(this.a));
+    QLog.i("GameCenterFragment", 1, "addShot res code=" + paramInt);
+    if (paramInt == 304) {
+      aahx.a().a(this.jdField_a_of_type_ComTencentSmttSdkWebView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aahc
  * JD-Core Version:    0.7.0.1
  */

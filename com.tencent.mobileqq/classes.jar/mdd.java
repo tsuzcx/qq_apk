@@ -1,28 +1,113 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppJumpManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.graphics.drawable.Drawable;
+import android.view.View.OnClickListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class mdd
-  implements AbsListView.OnScrollListener
+public abstract class mdd
 {
-  public mdd(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public static void a(long paramLong, VideoAppInterface paramVideoAppInterface)
   {
-    if ((VideoFeedsPlayActivity.j(this.a)) && (paramInt == 1)) {
-      VideoFeedsPlayActivity.b(this.a);
+    if (paramVideoAppInterface == null) {
+      return;
     }
-    if ((VideoFeedsPlayActivity.a(this.a) != null) && (paramInt == 1)) {
-      VideoFeedsPlayActivity.a(this.a).a(1);
-    }
+    QLog.w("NewTipsManager", 1, "hideAllTips, seq[" + paramLong + "]");
+    ((lli)paramVideoAppInterface.a(11)).b();
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  public static void a(VideoAppInterface paramVideoAppInterface)
+  {
+    if (paramVideoAppInterface == null) {
+      return;
+    }
+    ((lli)paramVideoAppInterface.a(11)).c();
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    if (paramVideoAppInterface == null) {
+      return;
+    }
+    ((lli)paramVideoAppInterface.a(11)).a(paramInt);
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, boolean paramBoolean)
+  {
+    if (paramVideoAppInterface == null) {
+      return;
+    }
+    ((lli)paramVideoAppInterface.a(11)).a(paramBoolean);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lli)paramVideoAppInterface.a(11)).a(paramInt);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, int paramInt2)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return a(paramVideoAppInterface, paramInt1, paramVideoAppInterface.getApp().getString(paramInt2));
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, long paramLong)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lli)paramVideoAppInterface.a(11)).a(paramInt, paramLong);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, long paramLong, boolean paramBoolean)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lli)paramVideoAppInterface.a(11)).a(paramInt, paramLong, paramBoolean);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lli)paramVideoAppInterface.a(11)).a(paramInt, paramString);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, String paramString, Drawable paramDrawable, int paramInt2, View.OnClickListener paramOnClickListener)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lli)paramVideoAppInterface.a(11)).a(paramInt1, paramString, paramDrawable, paramInt2, paramOnClickListener);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString, View.OnClickListener paramOnClickListener)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lli)paramVideoAppInterface.a(11)).a(paramInt, paramString, null, -1, paramOnClickListener);
+  }
+  
+  public static void b(VideoAppInterface paramVideoAppInterface)
+  {
+    if (paramVideoAppInterface == null) {
+      return;
+    }
+    ((lli)paramVideoAppInterface.a(11)).d();
+  }
+  
+  public static void b(VideoAppInterface paramVideoAppInterface, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mdd
  * JD-Core Version:    0.7.0.1
  */

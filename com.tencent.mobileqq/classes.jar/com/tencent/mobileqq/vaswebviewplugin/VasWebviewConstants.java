@@ -54,6 +54,7 @@ public class VasWebviewConstants
   public static final int REPORT_FROM_MY_INDIVIDUATION_SET = 40101;
   public static final int REPORT_FROM_OTHER_PROFILE_CARD = 40203;
   public static final int REPORT_FROM_PROFILE_CARD_MALL_BUTON = 40204;
+  public static final int REPORT_FROM_TROOP_SETTING = 40402;
   public static final int REPORT_FROM_USER_PROFILE_CARD = 40202;
   public static final String REPORT_KEY_PERSONAL_WEB_PRELOAD_HIT_RIT = "personal_web_preload_hit_rit";
   public static final String REPORT_NAME_EMOTICON_PANEL_PLUS_ENTRANCE = "emoticon_main_panel_plus";
@@ -78,7 +79,7 @@ public class VasWebviewConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasWebviewConstants
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,44 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.NetworkRequest;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
-public class nbr
-  extends SimpleJob
+class nbr
+  extends bead
 {
-  public nbr(QQStoryCmdHandler paramQQStoryCmdHandler, NetworkRequest paramNetworkRequest) {}
+  nbr(nbq paramnbq) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onDone(beae parambeae)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest);
-    return null;
+    if (parambeae.a == 0) {
+      parambeae = parambeae.a().getString("file_path");
+    }
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        File localFile = new File(parambeae);
+        String str = bdhb.b(localFile);
+        if (QLog.isColorLevel()) {
+          QLog.d("CommonConfigBase", 2, "onDone() content =  " + str + ", filePath = " + parambeae);
+        }
+        localFile.delete();
+        this.a.b(str);
+        this.a.a(str);
+        return;
+      }
+      catch (IOException parambeae)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d("CommonConfigBase", 2, QLog.getStackTraceString(parambeae));
+        return;
+      }
+    }
+    QLog.d("CommonConfigBase", 2, "onError(), errorCode = " + parambeae.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nbr
  * JD-Core Version:    0.7.0.1
  */

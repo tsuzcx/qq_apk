@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import com.tencent.mobileqq.antiphing.UinFraudInfo;
 
 public class eza
-  implements View.OnClickListener
 {
-  public eza(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  public int a;
+  public long a;
   
-  public void onClick(View paramView)
+  public eza(UinFraudInfo paramUinFraudInfo)
   {
-    VoipDialInterfaceActivity.a(this.a);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     eza
  * JD-Core Version:    0.7.0.1
  */

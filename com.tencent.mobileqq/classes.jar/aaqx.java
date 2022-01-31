@@ -1,23 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
-import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.os.Bundle;
 
-public class aaqx
-  extends ArkAppCGI.ArkAppCGICallback
+public final class aaqx
 {
-  public aaqx(ArkActionAppMgr paramArkActionAppMgr, WeakReference paramWeakReference, QQAppInterface paramQQAppInterface) {}
-  
-  public void a(boolean paramBoolean, Object paramObject, ArrayList paramArrayList)
-  {
-    ThreadManager.post(new aaqy(this, paramArrayList), 5, null, true);
-  }
+  public Bundle a;
+  public boolean a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaqx
  * JD-Core Version:    0.7.0.1
  */

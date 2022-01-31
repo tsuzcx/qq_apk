@@ -1,26 +1,23 @@
 package com.tencent.open.downloadnew.common;
 
-import aljf;
-import aljg;
-import aljh;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import bflp;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.LogUtility;
 
 public class PackageInstallReceiver
   extends BroadcastReceiver
 {
-  public final String a = PackageInstallReceiver.class.getName();
+  protected final String a = PackageInstallReceiver.class.getName();
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    LogUtility.c(this.a, "onReceive >> " + paramIntent.getAction());
+    bflp.c(this.a, "onReceive >> " + paramIntent.getAction());
     paramContext = paramIntent.getDataString();
     if (TextUtils.isEmpty(paramContext)) {
-      LogUtility.e(this.a, "onReceive intentPkgNameString == null ");
+      bflp.e(this.a, "onReceive intentPkgNameString == null ");
     }
     Object localObject;
     do
@@ -31,26 +28,26 @@ public class PackageInstallReceiver
       {
         localObject = localObject[1];
         if (paramIntent.getAction().equals("android.intent.action.PACKAGE_REMOVED")) {
-          ThreadManager.post(new aljf(this, paramContext, (String)localObject), 5, null, true);
+          ThreadManager.post(new PackageInstallReceiver.1(this, paramContext, (String)localObject), 5, null, true);
         }
       }
       else
       {
-        LogUtility.e(this.a, "onReceive packageName == null " + paramIntent.getDataString());
+        bflp.e(this.a, "onReceive packageName == null " + paramIntent.getDataString());
         return;
       }
       if (paramIntent.getAction().equals("android.intent.action.PACKAGE_REPLACED"))
       {
-        ThreadManager.post(new aljg(this, paramContext, (String)localObject), 5, null, true);
+        ThreadManager.post(new PackageInstallReceiver.2(this, paramContext, (String)localObject), 5, null, true);
         return;
       }
     } while (!paramIntent.getAction().equals("android.intent.action.PACKAGE_ADDED"));
-    ThreadManager.post(new aljh(this, paramContext, (String)localObject), 5, null, true);
+    ThreadManager.post(new PackageInstallReceiver.3(this, paramContext, (String)localObject), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.common.PackageInstallReceiver
  * JD-Core Version:    0.7.0.1
  */

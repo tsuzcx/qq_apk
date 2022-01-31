@@ -12,7 +12,7 @@ import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import efz;
+import eax;
 
 public class SystemItemBuilder
   extends BaseBubbleBuilder
@@ -34,7 +34,7 @@ public class SystemItemBuilder
   
   protected BaseBubbleBuilder.ViewHolder a()
   {
-    return new efz(this);
+    return new eax(this);
   }
   
   protected String a(ChatMessage paramChatMessage)

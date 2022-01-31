@@ -1,33 +1,69 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
+import android.support.v4.app.FragmentActivity;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qidian.data.QidianExternalInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class agqb
-  implements Runnable
+class agqb
+  extends bfzo
 {
-  public agqb(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, String paramString, int paramInt) {}
+  agqb(agps paramagps) {}
   
-  public void run()
+  protected void d(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_JavaLangString, false);
-    if (localObject != null)
+    if (paramBoolean)
     {
-      localObject = new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.getResources(), (Bitmap)localObject);
-      BaseApplicationImpl.sImageCache.put(this.jdField_a_of_type_JavaLangString, localObject);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage();
-      ((Message)localObject).what = 28;
-      ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage((Message)localObject);
+      this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
+      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131698551), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+      return;
     }
+    QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131698550), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+  }
+  
+  protected void e(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  {
+    if ((paramBoolean) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
+    {
+      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramHashMap.uin)))
+      {
+        paramHashMap = this.a.b.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        if (paramHashMap != null)
+        {
+          agps.a(this.a, true);
+          this.a.f.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+          agps.a(this.a).setOnClickListener(null);
+          agps.b(this.a).setOnClickListener(null);
+          this.a.h = paramHashMap;
+          this.a.a(paramHashMap);
+          if (acjl.S) {
+            this.a.f.setContentDescription(paramHashMap);
+          }
+          agps.a(this.a, true);
+        }
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        return;
+        agps.b(this.a, false);
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onGetQidianUserDetailInfo not current curFriendUin");
+      return;
+    }
+    QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onGetQidianUserDetailInfo fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqb
  * JD-Core Version:    0.7.0.1
  */

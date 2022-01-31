@@ -1,35 +1,49 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.content.Intent;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
 
-public class msw
-  implements AsyncBack
+class msw
+  extends ClickableSpan
 {
-  public msw(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  msw(msr parammsr, boolean paramBoolean, String paramString1, String paramString2) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubscriptFeedsActivity", 2, "HtmlOffline.checkUpByBusinessId businessId=2278, code=" + paramInt);
+    QLog.w(this.jdField_a_of_type_Msr.i, 1, "closeUI showNoNameDialog, realName[" + this.jdField_a_of_type_Boolean + "]");
+    this.jdField_a_of_type_Msr.a(this.jdField_a_of_type_JavaLangString);
+    paramView = this.jdField_a_of_type_Msr.a();
+    if (paramView == null) {
+      return;
     }
-    this.a.app.getApplication();
-    int i = NetworkUtil.a(MobileQQ.getContext());
-    paramString = new HashMap();
-    paramString.put("network", "" + i);
-    paramString.put("status_code", "" + paramInt);
-    StatisticCollector.a(this.a).a(null, "subscription_htmloffline", true, 0L, 0L, paramString, "", false);
+    paramView.finish();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      msa.a(this.jdField_a_of_type_Msr.a, this.b);
+      return;
+    }
+    paramView = aepi.a(new Intent(BaseApplicationImpl.getApplication(), SplashActivity.class), new int[] { 2 });
+    paramView.putExtra("uin", this.jdField_a_of_type_Msr.a.a().a().d);
+    paramView.putExtra("uintype", 0);
+    paramView.putExtra("uinname", this.jdField_a_of_type_Msr.a.a().a().e);
+    paramView.putExtra("entrance", 8);
+    BaseApplicationImpl.getApplication().startActivity(paramView);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msw
  * JD-Core Version:    0.7.0.1
  */

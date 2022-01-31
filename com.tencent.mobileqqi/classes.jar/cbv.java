@@ -1,24 +1,78 @@
 import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
 public class cbv
-  implements Runnable
+  extends MessageObserver
 {
-  public cbv(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  public cbv(ChatHistory paramChatHistory) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if (AuthDevVerifyCodeActivity.a(this.a) <= 1)
+    if (!paramBoolean1)
     {
-      AuthDevVerifyCodeActivity.a(this.a).setText(2131562863);
-      AuthDevVerifyCodeActivity.a(this.a).setEnabled(true);
-      AuthDevVerifyCodeActivity.a(this.a).setClickable(true);
+      int i = 1;
+      if (paramBoolean2) {
+        i = 7;
+      }
+      paramString = this.a.a.obtainMessage(i);
+      this.a.a(paramString);
       return;
     }
-    AuthDevVerifyCodeActivity.b(this.a);
-    AuthDevVerifyCodeActivity.a(this.a).setText(this.a.getString(2131562863) + "(" + AuthDevVerifyCodeActivity.a(this.a) + ")");
-    this.a.a.postDelayed(this, 1000L);
+    this.a.b.a().c();
+    paramString = this.a.a.obtainMessage(0);
+    this.a.a(paramString);
+  }
+  
+  protected void a_(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      localMessage = this.a.a.obtainMessage(1);
+      this.a.a(localMessage);
+      return;
+    }
+    this.a.b.a().c();
+    Message localMessage = this.a.a.obtainMessage(0);
+    this.a.a(localMessage);
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    this.a.m();
+    if (!paramBoolean)
+    {
+      Message localMessage = this.a.a.obtainMessage(5);
+      this.a.a(localMessage);
+    }
+  }
+  
+  protected void b_(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      localMessage = this.a.a.obtainMessage(1);
+      this.a.a(localMessage);
+      return;
+    }
+    this.a.b.a().c();
+    Message localMessage = this.a.a.obtainMessage(0);
+    this.a.a(localMessage);
+  }
+  
+  protected void c(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      localMessage = this.a.a.obtainMessage(3);
+      this.a.a(localMessage);
+      return;
+    }
+    Message localMessage = this.a.a.obtainMessage(2);
+    this.a.a(localMessage);
   }
 }
 

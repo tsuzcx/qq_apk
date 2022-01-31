@@ -1,21 +1,24 @@
-import com.etrump.mixlayout.ETEngine;
-import com.tencent.mobileqq.addon.DiyPendantFetcher;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import NS_COMM.COMM.StCommonExt;
+import java.util.List;
 
 public class yiz
-  implements Runnable
 {
-  public yiz(DiyPendantFetcher paramDiyPendantFetcher, String paramString, int paramInt) {}
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.a.native_loadFont(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true)) {
-      this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.d();
-    }
-  }
+  public CertifiedAccountMeta.StFeed a;
+  public CertifiedAccountMeta.StUser a;
+  public CertifiedAccountRead.StGetMainPageRsp a;
+  public COMM.StCommonExt a;
+  public String a;
+  public List<CertifiedAccountMeta.StFeed> a;
+  public boolean a;
+  public String b;
+  public boolean b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yiz
  * JD-Core Version:    0.7.0.1
  */

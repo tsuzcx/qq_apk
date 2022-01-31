@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pic.PicPreDownloader;
-import com.tencent.mobileqq.pic.PreDownloadStrategyBeta;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 
 public class agky
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public agky(PicPreDownloader paramPicPreDownloader, QQAppInterface paramQQAppInterface) {}
+  public agky(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.a.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agky
  * JD-Core Version:    0.7.0.1
  */

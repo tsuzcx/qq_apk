@@ -1,21 +1,39 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.BaseResponse;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback;
-import com.tencent.biz.qqstory.channel.NetworkRequest;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class nbl
-  implements Runnable
+class nbl
+  extends Handler
 {
-  public nbl(CmdTaskManger.UIThreadCallback paramUIThreadCallback, NetworkRequest paramNetworkRequest, BaseResponse paramBaseResponse, ErrorMessage paramErrorMessage) {}
-  
-  public void run()
+  nbl(nbk paramnbk, Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryChannelCmdTaskManger$UIThreadCallback.b(this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest, this.jdField_a_of_type_ComTencentBizQqstoryChannelBaseResponse, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("AuthorizeConfig", 2, "clear mJsApiWhiteList");
+      }
+      this.a.a.clear();
+    } while (!(paramMessage.obj instanceof ConcurrentHashMap));
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorizeConfig", 2, "update new mJsApiWhiteList!");
+    }
+    this.a.a.putAll((ConcurrentHashMap)paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nbl
  * JD-Core Version:    0.7.0.1
  */

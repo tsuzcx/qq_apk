@@ -5,33 +5,35 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout
 public class RelativeLayout$Params
   extends Layout.Params
 {
-  public static final int[] a;
-  public static final int[] b = { 2, 3 };
-  public boolean a;
-  private String[] a;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
+  public static final int ABOVE_OF = 0;
+  public static final int ALIGN_PARENT_BOTTOM = 7;
+  public static final int ALIGN_PARENT_CENTER = 10;
+  public static final int ALIGN_PARENT_CENTER_HORIZONTAL = 9;
+  public static final int ALIGN_PARENT_CENTER_VERTICAL = 8;
+  public static final int ALIGN_PARENT_LEFT = 4;
+  public static final int ALIGN_PARENT_RIGHT = 5;
+  public static final int ALIGN_PARENT_TOP = 6;
+  public static final int BELOW_OF = 1;
+  public static final int LEFT_OF = 2;
+  public static final int RIGHT_OF = 3;
+  public static final int[] RULES_HORIZONTAL = { 2, 3 };
+  public static final int[] RULES_VERTICAL = { 0, 1 };
+  public static final int RULE_COUNT = 11;
+  public boolean alignWithParent;
+  public int mBottom;
+  public int mLeft;
+  public int mRight;
+  public int mTop;
+  private String[] rule = new String[11];
   
-  static
+  public String[] getRule()
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, 1 };
+    return this.rule;
   }
   
-  public RelativeLayout$Params()
+  public boolean setAttribute(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[11];
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_ArrayOfJavaLangString[paramInt] = paramString;
-  }
-  
-  public boolean a(int paramInt, String paramString)
-  {
-    boolean bool = super.a(paramInt, paramString);
+    boolean bool = super.setAttribute(paramInt, paramString);
     if (bool) {
       return bool;
     }
@@ -41,38 +43,38 @@ public class RelativeLayout$Params
     for (;;)
     {
       return false;
-      a(3, paramString);
+      setRule(3, paramString);
       continue;
-      a(2, paramString);
+      setRule(2, paramString);
       continue;
-      a(1, paramString);
+      setRule(1, paramString);
       continue;
-      a(0, paramString);
+      setRule(0, paramString);
       continue;
-      a(4, paramString);
+      setRule(4, paramString);
       continue;
-      a(5, paramString);
+      setRule(5, paramString);
       continue;
-      a(6, paramString);
+      setRule(6, paramString);
       continue;
-      a(7, paramString);
+      setRule(7, paramString);
       continue;
-      a(8, paramString);
+      setRule(8, paramString);
       continue;
-      a(9, paramString);
+      setRule(9, paramString);
       continue;
-      a(10, paramString);
+      setRule(10, paramString);
     }
   }
   
-  public String[] a()
+  public void setRule(int paramInt, String paramString)
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangString;
+    this.rule[paramInt] = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.layout.RelativeLayout.Params
  * JD-Core Version:    0.7.0.1
  */

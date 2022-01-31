@@ -1,29 +1,27 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.troop.TroopMemberApiService;
+import android.net.Uri;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class owl
-  implements Runnable
+public class owl
+  implements szy
 {
-  owl(owi paramowi, int paramInt) {}
+  public owl(KandianMergeManager paramKandianMergeManager) {}
   
-  public void run()
+  public void a(Uri paramUri, String paramString, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_Owi.a.getBaseContext().getSharedPreferences("sp_public_account_with_cuin_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
-    if (localObject != null)
+    paramUri = BaseActivity.sTopActivity;
+    if (paramUri != null) {}
+    for (paramUri = paramUri.getClass().getSimpleName();; paramUri = "unkonw")
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putInt("browser_font_size_index", this.jdField_a_of_type_Int);
-      ((SharedPreferences.Editor)localObject).commit();
+      azqs.b(null, "dc01160", "Pb_account_lifeservice", "", "0X8009815", "0X8009815", 0, 0, "", "", paramUri, xrn.c(BaseApplicationImpl.getContext()));
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     owl
  * JD-Core Version:    0.7.0.1
  */

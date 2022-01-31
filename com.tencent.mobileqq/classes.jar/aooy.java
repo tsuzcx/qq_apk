@@ -1,63 +1,120 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.data.QIMRedDotConfig;
-import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
-import java.io.File;
-import java.util.Collection;
-import java.util.List;
+import org.json.JSONObject;
 
 public class aooy
-  implements Runnable
 {
-  public aooy(QIMPtvTemplateManager paramQIMPtvTemplateManager, File paramFile) {}
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
   
-  public void run()
+  public static aooy a(aoko[] paramArrayOfaoko)
   {
-    Object localObject2 = QIMRedDotConfig.getRedDotConfigFromFile(QIMPtvTemplateManager.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-    if (localObject2 != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMRedDotConfig_PTV", 2, "initLocalTemplateConfigInfo|updateByServer =" + this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.jdField_a_of_type_Boolean);
-      }
-    }
-    synchronized (QIMPtvTemplateManager.jdField_a_of_type_JavaLangObject)
+    aooy localaooy = new aooy();
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    for (;;)
     {
-      if (!this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig = ((QIMRedDotConfig)localObject2);
-      }
-      localObject2 = this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(this.jdField_a_of_type_JavaIoFile);
-      if (QLog.isColorLevel()) {
-        QLog.i("QIMPtvTemplateManager", 2, String.format("rebuildTemplateInfos, isUpdateedByServer[%s], templateInfos[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.jdField_a_of_type_Boolean), localObject2 }));
-      }
-      if (localObject2 == null) {}
-    }
-    synchronized (this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.jdField_b_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.jdField_a_of_type_Boolean) {}
-      do
+      try
       {
-        return;
-        localCollection = finally;
-        throw localCollection;
-        this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.jdField_a_of_type_JavaUtilList.addAll(localCollection);
-        this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.jdField_b_of_type_Boolean = true;
-        if (PtvFilterSoLoad.b()) {
-          this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.b(this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.jdField_a_of_type_JavaUtilList);
+        if (i >= paramArrayOfaoko.length) {
+          break label221;
         }
-        if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a() != null) {
-          this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a().notifyObservers(CaptureConfigUpdateObserver.class, 3, true, null);
+        String str = paramArrayOfaoko[i].a;
+        if (TextUtils.isEmpty(str))
+        {
+          QLog.d("OpenSdkConfProcessor", 1, "parse, content empty");
         }
-      } while (!QLog.isDevelopLevel());
-      QLog.d("QIMPtvTemplateManager", 4, String.format("rebuildTemplateInfos, [%s] finished", new Object[] { Integer.valueOf(hashCode()) }));
-      return;
+        else
+        {
+          JSONObject localJSONObject = new JSONObject(str);
+          if (localJSONObject.has("enable_third_app_share_for_backend"))
+          {
+            if (localJSONObject.optInt("enable_third_app_share_for_backend", 0) == 1)
+            {
+              bool = true;
+              localaooy.jdField_a_of_type_Boolean = bool;
+            }
+          }
+          else
+          {
+            if (localJSONObject.has("enable_third_app_share_big_image_by_server"))
+            {
+              if (localJSONObject.optInt("enable_third_app_share_big_image_by_server", 0) != 1) {
+                break label211;
+              }
+              bool = true;
+              localaooy.b = bool;
+            }
+            if (localJSONObject.has("sdk_share_verify_appinfo_timeout_duration")) {
+              localaooy.jdField_a_of_type_Long = localJSONObject.optInt("sdk_share_verify_appinfo_timeout_duration", 0);
+            }
+            if (localJSONObject.has("sdk_login_use_third_transform_pkg_name"))
+            {
+              if (localJSONObject.optInt("sdk_login_use_third_transform_pkg_name", 0) != 1) {
+                break label216;
+              }
+              bool = true;
+              localaooy.c = bool;
+            }
+            localStringBuilder.append("config: ").append(str).append(",");
+          }
+        }
+      }
+      catch (Exception paramArrayOfaoko)
+      {
+        QLog.e("OpenSdkConfProcessor", 1, "parse, failed!", paramArrayOfaoko);
+        return null;
+      }
+      boolean bool = false;
+      continue;
+      label211:
+      bool = false;
+      continue;
+      label216:
+      bool = false;
+      continue;
+      label221:
+      QLog.d("OpenSdkConfProcessor", 1, "parse, content:" + localStringBuilder.toString());
+      return localaooy;
+      i += 1;
     }
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
+  }
+  
+  public boolean c()
+  {
+    return this.c;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("serverShareEntryEnable:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("serverShareImageEnable:").append(this.b);
+    localStringBuilder.append("timeout_duration:").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("useThirdTransformPkgName:").append(this.c);
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aooy
  * JD-Core Version:    0.7.0.1
  */

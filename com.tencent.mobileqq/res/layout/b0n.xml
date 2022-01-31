@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/dkt" android:background="@drawable/common_strip_setting_bottom" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/dl4" android:text="@string/bv_" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/c0" />
+    <ImageView android:id="@id/dkq" android:duplicateParentState="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/bt" />
+    <LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/uq" android:paddingBottom="@dimen/uq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:layout_toLeftOf="@id/dkq" android:layout_toRightOf="@id/dl4" android:layout_alignParentTop="true">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.image.URLImageView android:id="@id/dkw" android:layout_width="@dimen/aif" android:layout_height="@dimen/aif" android:scaleType="centerCrop" />
+            <ImageView android:layout_gravity="center" android:id="@id/dl1" android:visibility="visible" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/ghm" android:scaleType="centerInside" />
+        </FrameLayout>
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip">
+            <com.tencent.image.URLImageView android:id="@id/dkx" android:layout_width="50.0dip" android:layout_height="50.0dip" android:scaleType="centerCrop" />
+            <ImageView android:layout_gravity="center" android:id="@id/dl2" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/ghm" android:scaleType="centerInside" />
+        </FrameLayout>
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip">
+            <com.tencent.image.URLImageView android:id="@id/dky" android:layout_width="50.0dip" android:layout_height="50.0dip" android:scaleType="centerCrop" />
+            <ImageView android:layout_gravity="center" android:id="@id/dl3" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/ghm" android:scaleType="centerInside" />
+        </FrameLayout>
+    </LinearLayout>
+</RelativeLayout>

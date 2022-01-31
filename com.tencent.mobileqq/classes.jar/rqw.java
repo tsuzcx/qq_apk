@@ -1,24 +1,25 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.widget.AbsListView;
 
-public class rqw
-  implements View.OnLongClickListener
+class rqw
+  implements bhtv
 {
-  public rqw(BaseChatPie paramBaseChatPie) {}
+  rqw(rqj paramrqj) {}
   
-  public boolean onLongClick(View paramView)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ("//findcrash".equals(this.a.a.getText().toString())) {
-      BaseChatPie.a(this.a);
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
-    return true;
+    rqj.b(this.a, paramAbsListView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rqw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/l5q" android:layout_width="fill_parent" android:layout_height="213.0dip" android:contentDescription="@string/ril" />
+    <ImageView android:id="@id/l5x" android:visibility="invisible" android:layout_width="533.0dip" android:layout_height="153.0dip" android:layout_marginTop="-20.0dip" android:layout_marginBottom="20.0dip" android:layout_below="@id/l5q" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/l5w" android:visibility="invisible" android:layout_width="173.0dip" android:layout_height="128.0dip" android:layout_marginBottom="20.0dip" android:layout_below="@id/l5q" android:layout_centerHorizontal="true" />
+    <HorizontalScrollView android:id="@id/l5m" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="127.5dip" android:layout_marginTop="8.0dip" android:layout_below="@id/l5w">
+        <LinearLayout android:orientation="horizontal" android:paddingTop="34.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.mobileqq.profile.view.ShimmerLinearLayout android:id="@id/l5l" android:paddingLeft="12.0dip" android:layout_width="wrap_content" android:layout_height="80.0dip" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/l5i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" />
+        </LinearLayout>
+    </HorizontalScrollView>
+    <RelativeLayout android:id="@id/l62" android:background="#e61c212c" android:paddingTop="6.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="78.0dip" android:layout_alignParentBottom="true">
+        <com.tencent.mobileqq.vas.avatar.AvatarLayout android:id="@id/l5r" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="10.0dip">
+            <com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView android:id="@id/a6e" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+        </com.tencent.mobileqq.vas.avatar.AvatarLayout>
+        <ImageView android:id="@id/l5p" android:layout_width="63.0dip" android:layout_height="72.0dip" android:layout_marginLeft="5.5dip" android:layout_marginTop="-6.0dip" android:scaleType="fitXY" />
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/l5u" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="71.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="45.0dip">
+            <com.tencent.mobileqq.widget.ProfileNameView android:textSize="@dimen/aiu" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/l5t" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:maxLength="6" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/aio" android:textColor="@android:color/white" android:ellipsize="end" android:id="@id/l5v" android:visibility="invisible" android:layout_width="160.0dip" android:layout_height="wrap_content" android:layout_marginLeft="71.0dip" android:singleLine="true" android:layout_below="@id/l5u" android:lineSpacingExtra="0.0dip" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.widget.VoteView android:id="@id/l63" android:paddingLeft="35.0dip" android:paddingRight="10.0dip" android:paddingBottom="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="21.0dip" android:layout_below="@id/l5m" android:layout_alignParentRight="true" />
+    <TextView android:textSize="14.5dip" android:textColor="#ffffffff" android:gravity="center_vertical" android:id="@id/l5s" android:background="@drawable/ahd" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/d0z" android:singleLine="true" android:drawableLeft="@drawable/gu5" android:drawablePadding="3.0dip" android:layout_alignTop="@id/l63" android:layout_alignParentRight="true" />
+    <TextView android:textSize="16.0sp" android:textColor="@android:color/white" android:id="@id/l5y" android:background="@drawable/erq" android:paddingLeft="7.0dip" android:paddingTop="7.0dip" android:paddingRight="7.0dip" android:paddingBottom="13.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/fp3" android:layout_above="@id/l63" android:layout_alignParentRight="true" />
+    <com.tencent.mobileqq.hotchat.anim.HeartLayout android:id="@id/l5n" android:clickable="false" android:layout_width="fill_parent" android:layout_height="165.0dip" android:layout_above="@id/l63" android:contentDescription="@string/rin" />
+</RelativeLayout>

@@ -1,30 +1,49 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class oud
-  implements Comparator
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  public oud(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public int a(String paramString1, String paramString2)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    int i = 1;
-    if ((paramString1 != null) && (paramString2 != null)) {
-      i = ChnToSpell.a(paramString1, 1).compareTo(ChnToSpell.a(paramString2, 1));
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoSdkConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = osq.a(paramString);
+    Object localObject = paramString.keySet();
+    try
+    {
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str1 = (String)((Iterator)localObject).next();
+        String str2 = (String)paramString.get(str1);
+        if (TextUtils.equals(str1, "readinjoy_video_preplay_download_time_limit")) {
+          bkbq.k(Integer.parseInt(str2));
+        }
+      }
+      return true;
     }
-    while (paramString1 != null) {
-      return i;
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
     }
-    if (paramString2 != null) {
-      return -1;
-    }
-    return 0;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bkbq.k(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oud
  * JD-Core Version:    0.7.0.1
  */

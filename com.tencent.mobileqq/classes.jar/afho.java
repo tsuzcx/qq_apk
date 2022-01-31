@@ -1,34 +1,82 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.widget.ActionSheet;
+import android.content.Context;
+import android.graphics.Paint;
+import android.text.SpannableString;
+import android.text.TextPaint;
+import android.text.style.ForegroundColorSpan;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.TextView;
 
-public class afho
-  implements IphonePickerView.IphonePickListener
+class afho
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public afho(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel, IphonePickerView paramIphonePickerView, ActionSheet paramActionSheet) {}
+  afho(afhn paramafhn, TextView paramTextView, String paramString) {}
   
-  public void onConfirmBtClicked()
+  private String a(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()))
+    paramString = paramString.toCharArray();
+    int i = 0;
+    if (i < paramString.length)
     {
-      NearbyProfileEditTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.b, false);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      if (paramString[i] == '　') {
+        paramString[i] = 32;
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        if ((paramString[i] > 65280) && (paramString[i] < 65375)) {
+          paramString[i] = ((char)(paramString[i] - 65248));
+        }
+      }
     }
+    return new String(paramString);
   }
   
-  public void onItemSelected(int paramInt1, int paramInt2)
+  public boolean onPreDraw()
   {
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.b.setTag(Byte.valueOf((byte)paramInt1));
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.b.setText(NearbyProfileEditTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel).getText(0, paramInt1));
+    int j = 0;
+    int k = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() * 2;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    TextPaint localTextPaint = this.jdField_a_of_type_AndroidWidgetTextView.getPaint();
+    String str2 = a(this.jdField_a_of_type_Afhn.a.getString(2131697652) + ">");
+    String str3 = a(this.jdField_a_of_type_JavaLangString);
+    String str1 = "  " + str2;
+    Object localObject = str3 + str1;
+    if (localTextPaint.measureText((String)localObject + "      ") < k) {}
+    label329:
+    for (;;)
+    {
+      k = ((String)localObject).length();
+      int i = j;
+      if (k > str2.length()) {
+        i = k - str2.length();
+      }
+      localObject = new SpannableString((CharSequence)localObject);
+      ((SpannableString)localObject).setSpan(new ForegroundColorSpan(-12541697), i, k, 33);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      return true;
+      String str4 = "..." + str1;
+      int m = str3.length();
+      i = 0;
+      for (;;)
+      {
+        if (i >= m) {
+          break label329;
+        }
+        str1 = str3.substring(0, m - i) + str4;
+        localObject = str1;
+        if (localTextPaint.measureText(str1 + "      ") < k) {
+          break;
+        }
+        i += 1;
+        localObject = str1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afho
  * JD-Core Version:    0.7.0.1
  */

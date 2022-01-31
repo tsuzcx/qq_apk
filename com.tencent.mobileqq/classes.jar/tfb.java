@@ -1,57 +1,101 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.Switch;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.Iterator;
+import java.util.List;
 
-public class tfb
-  extends TroopObserver
+final class tfb
+  extends tez
 {
-  public tfb(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    TextView localTextView;
-    if (paramBoolean1)
-    {
-      this.a.e.a().setChecked(paramBoolean2);
-      localTextView = this.a.a;
-      if (!paramBoolean2) {
-        break label59;
-      }
-    }
-    label59:
-    for (int i = 2131435392;; i = 2131435393)
-    {
-      localTextView.setText(i);
-      SharedPreUtils.j(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
+    super.installSucceed(paramString1, paramString2);
+    if (tfa.b()) {
       return;
+    }
+    tfa.a(paramString1, paramString2, true);
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    tlo.c("WeishiDownloadUtil", "qq onDownloadCancel info = " + paramDownloadInfo);
+    if (tfa.a(paramDownloadInfo))
+    {
+      tfa.a();
+      int i = tfa.b();
+      WSPublicAccReport.getInstance().reportDownload(tfa.a(), i, 3, 2, 0);
     }
   }
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
   {
-    boolean bool = true;
-    if (!paramBoolean1)
+    tlo.d("WeishiDownloadUtil", "qq onDownloadError info = " + paramDownloadInfo);
+    if (tfa.a(paramDownloadInfo))
     {
-      QQToast.a(this.a, 1, "设置失败", 0).a();
-      Switch localSwitch = this.a.e.a();
-      if (!paramBoolean2) {}
-      for (paramBoolean1 = bool;; paramBoolean1 = false)
-      {
-        localSwitch.setChecked(paramBoolean1);
-        return;
+      tfa.a();
+      paramInt2 = tfa.b();
+      WSPublicAccReport.getInstance().reportDownload(tfa.a(), paramInt2, 3, 2, 0);
+      tlo.d("WeishiDownloadUtil", " errorCode:" + paramInt1 + ", errorMsg: " + paramString);
+      tfa.a(paramDownloadInfo, paramInt1);
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    tfa.a();
+    int i = tfa.a();
+    int j = tfa.b();
+    if (tfa.b())
+    {
+      if (tfa.d()) {
+        tlo.d("WeishiDownloadUtil", "这是预下载中点击操作，qq监听器响应");
       }
     }
-    SharedPreUtils.j(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
+    else
+    {
+      tfa.a(paramDownloadInfo, i, j, "QQ");
+      return;
+    }
+    tlo.d("WeishiDownloadUtil", "这是qq的监听器，不响应qzone. onDownloadFinish eventId:" + i + ",eventType:" + j);
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    super.onDownloadPause(paramDownloadInfo);
+    tlo.d("WeishiDownloadUtil", "qq onDownloadPause info = " + paramDownloadInfo);
+    if (tfa.a(paramDownloadInfo)) {
+      tfa.a();
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    super.onDownloadUpdate(paramList);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+        tlo.c("WeishiDownloadUtil", "qq onDownloadUpdate progress = " + localDownloadInfo.f + ", url = " + localDownloadInfo.d);
+      }
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    super.onDownloadWait(paramDownloadInfo);
+    tlo.d("WeishiDownloadUtil", "qq onDownloadWait info = " + paramDownloadInfo);
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    super.packageReplaced(paramString1, paramString2);
+    tlo.d("WeishiDownloadUtil", "qq packageReplaced appid = " + paramString1 + ", packageName = " + paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tfb
  * JD-Core Version:    0.7.0.1
  */

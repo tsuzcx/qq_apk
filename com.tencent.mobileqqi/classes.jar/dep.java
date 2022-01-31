@@ -1,32 +1,31 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class dep
-  implements OverScrollViewListener
+  implements Runnable
 {
-  public dep(PeopleAroundBaseActivity paramPeopleAroundBaseActivity) {}
+  public dep(RecentLoginDevActivity paramRecentLoginDevActivity) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(this.a.jdField_a_of_type_Long);
+    try
+    {
+      if ((RecentLoginDevActivity.a(this.a) != null) && (RecentLoginDevActivity.a(this.a).isShowing()))
+      {
+        RecentLoginDevActivity.a(this.a).dismiss();
+        RecentLoginDevActivity.a(this.a).cancel();
+      }
+      RecentLoginDevActivity.a(this.a, null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(this.a.jdField_a_of_type_Long);
-    this.a.a(true, true);
-    return true;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(this.a.jdField_a_of_type_Long);
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

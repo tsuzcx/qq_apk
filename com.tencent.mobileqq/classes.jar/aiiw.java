@@ -1,21 +1,63 @@
-import android.text.TextUtils.EllipsizeCallback;
+import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13;
+import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
 
 public class aiiw
-  implements TextUtils.EllipsizeCallback
+  implements IMiniMsgUnreadCallback
 {
-  public aiiw(StructMsgItemLayout13 paramStructMsgItemLayout13, TextView paramTextView, String paramString) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void ellipsized(int paramInt1, int paramInt2)
+  public aiiw(View paramView, TextView paramTextView)
   {
-    if (paramInt1 == paramInt2)
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+  }
+  
+  public void destroy()
+  {
+    this.jdField_a_of_type_AndroidViewView = null;
+    this.jdField_a_of_type_AndroidWidgetTextView = null;
+  }
+  
+  public void hide()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+  }
+  
+  public void hideUnread()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+  }
+  
+  public boolean show(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    updateUnreadCount(paramInt, false);
+    return true;
+  }
+  
+  public void updateOnBackFromMiniAIO(Bundle paramBundle) {}
+  
+  public void updateUnreadCount(int paramInt, boolean paramBoolean)
+  {
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    String str = String.valueOf(paramInt);
+    if (paramInt > 99) {
+      str = "99+";
+    }
+    localTextView.setText(str);
+    if (!paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+      if (paramInt <= 0) {
+        localTextView.setVisibility(8);
+      }
+    }
+    else {
       return;
     }
-    String str = this.jdField_a_of_type_JavaLangString.substring(0, paramInt1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(str + "...");
+    localTextView.setVisibility(0);
   }
 }
 

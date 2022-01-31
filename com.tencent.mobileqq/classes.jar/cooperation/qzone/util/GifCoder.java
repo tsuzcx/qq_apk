@@ -1,6 +1,5 @@
 package cooperation.qzone.util;
 
-import anaq;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -9,12 +8,16 @@ import android.graphics.BitmapFactory.Options;
 import android.graphics.Matrix;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
+import bjhx;
+import bjhz;
+import bjts;
+import bjuc;
+import bjup;
+import bjvw;
+import bjxe;
+import bjyd;
 import com.tencent.component.network.utils.Base64;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.cache.CacheManager;
-import cooperation.qzone.cache.FileCacheService;
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
-import cooperation.qzone.webviewplugin.QzoneOfflinePluginJsForQQ;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -27,7 +30,7 @@ import org.json.JSONArray;
 public class GifCoder
 {
   private static boolean jdField_a_of_type_Boolean;
-  private int jdField_a_of_type_Int = gifCoderWnsConfig.b();
+  private int jdField_a_of_type_Int = bjvw.b();
   private long jdField_a_of_type_Long;
   private GifCoder.EncodingType jdField_a_of_type_CooperationQzoneUtilGifCoder$EncodingType = GifCoder.EncodingType.ENCODING_TYPE_SIMPLE_FAST;
   private final int jdField_b_of_type_Int = 0;
@@ -193,7 +196,7 @@ public class GifCoder
     {
       try
       {
-        byte[] arrayOfByte = Base64.a(paramString, 0);
+        byte[] arrayOfByte = Base64.decode(paramString, 0);
         BitmapFactory.Options localOptions = new BitmapFactory.Options();
         localOptions.inJustDecodeBounds = true;
         BitmapFactory.decodeByteArray(arrayOfByte, 0, arrayOfByte.length, localOptions);
@@ -266,12 +269,22 @@ public class GifCoder
   
   public static void a()
   {
-    if (AlbumLibDownloaderUtil.a().a(AlbumLibDownloaderUtil.a, true))
-    {
-      a(AlbumLibDownloaderUtil.a().b(AlbumLibDownloaderUtil.a));
-      return;
+    if (bjts.a().a(bjts.a, true)) {
+      try
+      {
+        System.loadLibrary("c++_shared");
+        a(bjts.a().b(bjts.a));
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          QLog.e("GifCoder", 1, "tryToLoad c++_shared fail", localThrowable);
+        }
+      }
     }
-    AlbumLibDownloaderUtil.a().a();
+    bjts.a().a();
   }
   
   private static boolean a()
@@ -279,7 +292,7 @@ public class GifCoder
     boolean[] arrayOfBoolean = new boolean[1];
     arrayOfBoolean[0] = false;
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    AlbumLibDownloaderUtil.a().b(new anaq(arrayOfBoolean, localCountDownLatch));
+    bjts.a().b(new bjuc(arrayOfBoolean, localCountDownLatch));
     try
     {
       localCountDownLatch.await(30L, TimeUnit.SECONDS);
@@ -464,12 +477,12 @@ public class GifCoder
     return false;
   }
   
-  public boolean a(String paramString, ArrayList paramArrayList, int paramInt)
+  public boolean a(String paramString, ArrayList<String> paramArrayList, int paramInt)
   {
     return a(paramString, paramArrayList, paramInt, false);
   }
   
-  public boolean a(String paramString, ArrayList paramArrayList, int paramInt, boolean paramBoolean)
+  public boolean a(String paramString, ArrayList<String> paramArrayList, int paramInt, boolean paramBoolean)
   {
     if (!jdField_a_of_type_Boolean)
     {
@@ -496,7 +509,7 @@ public class GifCoder
       str = (String)localIterator.next();
       if (this.jdField_c_of_type_Boolean)
       {
-        localObject2 = PhotoUtils.a(str, (Bitmap)localObject1);
+        localObject2 = bjup.a(str, (Bitmap)localObject1);
         label98:
         if (localObject1 != null) {
           break label361;
@@ -507,7 +520,7 @@ public class GifCoder
     label361:
     for (;;)
     {
-      int j = PhotoUtils.a(str);
+      int j = bjup.a(str);
       if (this.jdField_c_of_type_Boolean) {}
       for (;;)
       {
@@ -521,7 +534,7 @@ public class GifCoder
         }
         QLog.i("GifCoder", 1, "decode bitmap is NULL,decode pic = " + str);
         break;
-        localObject2 = PhotoUtils.a(str, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, (Bitmap)localObject1);
+        localObject2 = bjup.a(str, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, (Bitmap)localObject1);
         break label98;
         localObject2 = a((Bitmap)localObject2, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, j, this.jdField_b_of_type_Boolean);
       }
@@ -574,12 +587,12 @@ public class GifCoder
       if (paramBoolean2)
       {
         localObject2 = paramJSONArray.optString(i);
-        if (!QZoneSharePictureJsPlugin.a((String)localObject2))
+        if (!bjxe.a((String)localObject2))
         {
           QLog.e("GifCoder", 1, "file name is invalid. name=" + (String)localObject2);
           return false;
         }
-        localObject2 = CacheManager.b().a((String)localObject2);
+        localObject2 = bjhx.b().a((String)localObject2);
         localObject3 = new File((String)localObject2);
         if (!((File)localObject3).exists())
         {
@@ -592,7 +605,7 @@ public class GifCoder
     {
       try
       {
-        localObject3 = QzoneOfflinePluginJsForQQ.a((File)localObject3);
+        localObject3 = bjyd.a((File)localObject3);
         if ((localObject3 == null) || (((String)localObject3).length() == 0))
         {
           QLog.e("GifCoder", 1, "file is empty: " + (String)localObject2);
@@ -706,7 +719,7 @@ public class GifCoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.util.GifCoder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,21 @@
-import com.tencent.mobileqq.troop.utils.TroopNativeUtils;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class ajqg
+class ajqg
+  extends hp
 {
-  public static TroopNativeUtils a = new TroopNativeUtils(null);
+  private ajqg(ajqe paramajqe) {}
+  
+  public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
+    }
+    if ((ajqe.a(this.a) != null) && (ajqe.a(this.a).hasMessages(paramInt))) {
+      ajqe.a(this.a, paramBoolean, paramArrayList, paramInt);
+    }
+  }
 }
 
 

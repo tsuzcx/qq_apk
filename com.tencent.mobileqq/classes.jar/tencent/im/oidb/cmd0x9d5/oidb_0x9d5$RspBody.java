@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0x9d5$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24 }, new String[] { "str_error_tips", "str_comment_count_info", "uint32_comment_count" }, new Object[] { "", "", Integer.valueOf(0) }, RspBody.class);
   public final PBStringField str_comment_count_info = PBField.initString("");
@@ -16,7 +16,7 @@ public final class oidb_0x9d5$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x9d5.oidb_0x9d5.RspBody
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,16 @@
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.leba.view.LebaGridIndicator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
 
 public class aebm
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public aebm(LebaGridIndicator paramLebaGridIndicator, int paramInt) {}
+  public aebm(TranslucentTRansferFragment paramTranslucentTRansferFragment) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (LebaGridIndicator.a(this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaGridIndicator) != null) {
-      LebaGridIndicator.b(this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaGridIndicator).setCurrentItem(this.jdField_a_of_type_Int);
-    }
+    this.a.getActivity().finish();
   }
 }
 

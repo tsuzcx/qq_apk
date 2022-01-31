@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.avatar.dynamicavatar.videodrawable;
 
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import anuw;
 
 public class DrawableSeekbar
   extends LinearLayout
@@ -20,7 +22,7 @@ public class DrawableSeekbar
 {
   int jdField_a_of_type_Int;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
-  DrawableSeekbar.OnProgressChangedListener jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener;
+  anuw jdField_a_of_type_Anuw;
   boolean jdField_a_of_type_Boolean = false;
   int b;
   int c;
@@ -51,7 +53,7 @@ public class DrawableSeekbar
     this.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("滑动选择一张图片，在头像静止时展示。");
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131703922));
   }
   
   private void b()
@@ -106,8 +108,8 @@ public class DrawableSeekbar
         getParent().requestDisallowInterceptTouchEvent(true);
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
         this.b = ((int)paramMotionEvent.getRawY());
-        if (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener.a();
+        if (this.jdField_a_of_type_Anuw != null) {
+          this.jdField_a_of_type_Anuw.a();
         }
       }
     case 2: 
@@ -130,24 +132,25 @@ public class DrawableSeekbar
         k = getWidth();
         j = k - paramView.getWidth();
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener != null)
+      if (this.jdField_a_of_type_Anuw != null)
       {
         i = this.d;
         this.d = ((int)(j / (getWidth() - paramView.getWidth()) * this.c));
         if (i != this.d) {
-          this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener.a(this.d);
+          this.jdField_a_of_type_Anuw.a(this.d);
         }
       }
       paramView.layout(j, paramView.getTop(), k, paramView.getBottom());
+      paramView.invalidate();
       this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
       this.b = ((int)paramMotionEvent.getRawY());
       break;
       getParent().requestDisallowInterceptTouchEvent(false);
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener == null) {
+      if (this.jdField_a_of_type_Anuw == null) {
         break;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener.b();
+      this.jdField_a_of_type_Anuw.b();
       break;
       j = i;
     }
@@ -158,9 +161,9 @@ public class DrawableSeekbar
     this.c = paramInt;
   }
   
-  public void setOnProgressChangedListener(DrawableSeekbar.OnProgressChangedListener paramOnProgressChangedListener)
+  public void setOnProgressChangedListener(anuw paramanuw)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener = paramOnProgressChangedListener;
+    this.jdField_a_of_type_Anuw = paramanuw;
   }
   
   public void setProgress(int paramInt)
@@ -199,7 +202,7 @@ public class DrawableSeekbar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.videodrawable.DrawableSeekbar
  * JD-Core Version:    0.7.0.1
  */

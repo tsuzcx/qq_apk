@@ -3,14 +3,7 @@ package com.qq.android.dexposed;
 public abstract class XC_MethodReplacement
   extends XC_MethodHook
 {
-  public static final XC_MethodReplacement DO_NOTHING = new XC_MethodReplacement(20000)
-  {
-    protected Object replaceHookedMethod(XC_MethodHook.MethodHookParam paramAnonymousMethodHookParam)
-      throws Throwable
-    {
-      return null;
-    }
-  };
+  public static final XC_MethodReplacement DO_NOTHING = new XC_MethodReplacement.1(20000);
   
   public XC_MethodReplacement() {}
   
@@ -19,16 +12,9 @@ public abstract class XC_MethodReplacement
     super(paramInt);
   }
   
-  public static XC_MethodReplacement returnConstant(int paramInt, final Object paramObject)
+  public static XC_MethodReplacement returnConstant(int paramInt, Object paramObject)
   {
-    new XC_MethodReplacement(paramInt)
-    {
-      protected Object replaceHookedMethod(XC_MethodHook.MethodHookParam paramAnonymousMethodHookParam)
-        throws Throwable
-      {
-        return paramObject;
-      }
-    };
+    return new XC_MethodReplacement.2(paramInt, paramObject);
   }
   
   public static XC_MethodReplacement returnConstant(Object paramObject)
@@ -36,12 +22,9 @@ public abstract class XC_MethodReplacement
     return returnConstant(50, paramObject);
   }
   
-  protected final void afterHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
-    throws Throwable
-  {}
+  protected final void afterHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam) {}
   
   protected final void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
-    throws Throwable
   {
     try
     {
@@ -54,23 +37,11 @@ public abstract class XC_MethodReplacement
     }
   }
   
-  protected abstract Object replaceHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
-    throws Throwable;
-  
-  public abstract class XC_MethodKeepReplacement
-    extends XC_MethodReplacement
-  {
-    public XC_MethodKeepReplacement() {}
-    
-    public XC_MethodKeepReplacement(int paramInt)
-    {
-      super();
-    }
-  }
+  protected abstract Object replaceHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.qq.android.dexposed.XC_MethodReplacement
  * JD-Core Version:    0.7.0.1
  */

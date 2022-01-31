@@ -1,19 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.global.h;
 
-final class afj
-  extends BroadcastReceiver
+class afj
+  implements View.OnClickListener
 {
-  afj(UtilsModSetMobileStep2Activity paramUtilsModSetMobileStep2Activity) {}
+  afj(VryMobileForStrategyActivity paramVryMobileForStrategyActivity) {}
   
-  public final void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (paramIntent.getAction().equals("com.tencent.token.GET_MOBILE_CODE_INTERVAL")) {
-      UtilsModSetMobileStep2Activity.access$000(this.a);
-    }
+    h.a("interval: " + VryMobileForStrategyActivity.access$200(this.a) + "  count: " + VryMobileForStrategyActivity.access$300(this.a));
+    VryMobileForStrategyActivity.access$100(this.a);
   }
 }
 

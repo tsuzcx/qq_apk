@@ -14,10 +14,11 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQMapActivityProxy;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.mobileqq.statistics.StatisticAssist;
+import com.tencent.mobileqq.utils.FileProvider7Helper;
 import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.qphone.base.util.QLog;
-import cxl;
+import crf;
 import java.io.File;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -304,10 +305,8 @@ public class JumpActivity
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
-    this.jdField_a_of_type_AndroidNetUri = Uri.fromFile(new File(AppConstants.an + "photo/" + System.currentTimeMillis() + ".jpg"));
-    localObject = new Intent("android.media.action.IMAGE_CAPTURE");
-    ((Intent)localObject).putExtra("output", this.jdField_a_of_type_AndroidNetUri);
-    ((Intent)localObject).putExtra("android.intent.extra.videoQuality", 100);
+    localObject = new Intent();
+    this.jdField_a_of_type_AndroidNetUri = FileProvider7Helper.setSystemCapture(this, new File(AppConstants.an + "photo/" + System.currentTimeMillis() + ".jpg"), (Intent)localObject);
     startActivityForResult((Intent)localObject, 3);
   }
   
@@ -376,7 +375,7 @@ public class JumpActivity
         if (paramIntent == null) {
           break;
         }
-        localObject = new cxl(this);
+        localObject = new crf(this);
         if (!ChatActivityUtils.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this, paramIntent, true, true, (Handler.Callback)localObject)) {
           break;
         }

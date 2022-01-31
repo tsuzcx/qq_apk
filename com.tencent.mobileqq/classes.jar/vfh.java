@@ -1,59 +1,61 @@
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder.Holder;
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedCommentList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedCommentList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class vfh
-  implements Runnable
+  extends urt
 {
-  private WeakReference a;
-  private WeakReference b;
-  private WeakReference c;
-  private WeakReference d;
+  public static final String a;
+  public wop a;
   
-  public vfh(MessageForScribble paramMessageForScribble, ScribbleItemBuilder.Holder paramHolder, Handler paramHandler, Context paramContext)
+  static
   {
-    this.a = new WeakReference(paramMessageForScribble);
-    this.b = new WeakReference(paramHolder);
-    this.c = new WeakReference(paramHandler);
-    this.d = new WeakReference(paramContext);
+    jdField_a_of_type_JavaLangString = uqn.a("StorySvc.feed_comment_list_775");
   }
   
-  public void run()
+  public String a()
   {
-    if (this.a != null) {}
-    for (MessageForScribble localMessageForScribble = (MessageForScribble)this.a.get();; localMessageForScribble = null)
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspFeedCommentList localRspFeedCommentList = new qqstory_service.RspFeedCommentList();
+    try
     {
-      if (this.b != null) {}
-      for (ScribbleItemBuilder.Holder localHolder = (ScribbleItemBuilder.Holder)this.b.get();; localHolder = null)
+      localRspFeedCommentList.mergeFrom(paramArrayOfByte);
+      return new vfi(localRspFeedCommentList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
       {
-        if (this.c != null) {}
-        for (Handler localHandler = (Handler)this.c.get();; localHandler = null)
-        {
-          if (this.d != null) {}
-          for (Context localContext = (Context)this.d.get();; localContext = null)
-          {
-            if ((localMessageForScribble == null) || (localHandler == null) || (localHolder == null) || (localContext == null)) {}
-            do
-            {
-              return;
-              ScribbleItemBuilder.a(localMessageForScribble);
-              ScribbleItemBuilder.a(localMessageForScribble, localHolder, localMessageForScribble.mUiProgress, false, localContext, localHandler);
-            } while (!localHolder.a.isShown());
-            localHandler.postDelayed(localMessageForScribble.mUpdateProgressRunnable, 50L);
-            return;
-          }
-        }
+        paramArrayOfByte.printStackTrace();
       }
     }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqFeedCommentList localReqFeedCommentList = new qqstory_service.ReqFeedCommentList();
+    localReqFeedCommentList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Wop.jdField_a_of_type_JavaLangString));
+    if (this.jdField_a_of_type_Wop.jdField_b_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_Wop.jdField_b_of_type_JavaLangString = "";
+    }
+    localReqFeedCommentList.cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Wop.jdField_b_of_type_JavaLangString));
+    localReqFeedCommentList.source.set(this.jdField_a_of_type_Wop.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Wop.jdField_b_of_type_Int != -1) {
+      localReqFeedCommentList.type.set(this.jdField_a_of_type_Wop.jdField_b_of_type_Int);
+    }
+    return localReqFeedCommentList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vfh
  * JD-Core Version:    0.7.0.1
  */

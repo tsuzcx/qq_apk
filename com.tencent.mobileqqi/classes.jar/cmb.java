@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.ForwardOperations;
+import java.util.HashMap;
 
-public class cmb
+class cmb
   implements Runnable
 {
-  public cmb(Conversation paramConversation, String paramString) {}
+  cmb(clz paramclz, HashMap paramHashMap) {}
   
   public void run()
   {
-    ForwardRecentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), -1, 1, null, this.jdField_a_of_type_JavaLangString, true, true, null);
+    this.jdField_a_of_type_Clz.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(this.jdField_a_of_type_Clz.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Clz.jdField_a_of_type_Int, this.jdField_a_of_type_Clz.b, this.jdField_a_of_type_JavaUtilHashMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cmb
  * JD-Core Version:    0.7.0.1
  */

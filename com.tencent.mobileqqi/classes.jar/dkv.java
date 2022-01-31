@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.activity.RegisterBaseActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.StrangerManageActivity;
+import com.tencent.mobileqq.activity.StrangerManageActivity.StrangeManagerListAdapter;
+import com.tencent.mobileqq.data.Stranger;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class dkv
-  implements Runnable
+  implements View.OnClickListener
 {
-  public dkv(RegisterBaseActivity paramRegisterBaseActivity, String paramString1, String paramString2) {}
+  public dkv(StrangerManageActivity paramStrangerManageActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity, 230);
-    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
-    localQQCustomDialog.setMessage(this.b);
-    localQQCustomDialog.setPositiveButton(2131562543, new dkw(this));
-    localQQCustomDialog.show();
+    paramView = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramView.hasNext()) {
+      ((Stranger)paramView.next()).uiSelected = true;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityStrangerManageActivity$StrangeManagerListAdapter.notifyDataSetChanged();
+    this.a.c(true);
   }
 }
 

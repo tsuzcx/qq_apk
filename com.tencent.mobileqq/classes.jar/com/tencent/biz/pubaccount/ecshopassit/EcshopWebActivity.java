@@ -1,5 +1,6 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
+import amrz;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -7,11 +8,11 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import begs;
+import bibb;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewFragmentBuilder;
 import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
-import com.tencent.widget.SwipListView.RightIconMenuListener;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -21,19 +22,20 @@ import java.util.Set;
 
 public class EcshopWebActivity
   extends QQBrowserActivity
-  implements SwipListView.RightIconMenuListener
+  implements bibb
 {
   public long a;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   public String a;
-  public List a;
-  Map jdField_a_of_type_JavaUtilMap = new HashMap();
+  public List<RecentShopParcel> a;
+  Map<Rect, Boolean> jdField_a_of_type_JavaUtilMap = new HashMap();
   boolean jdField_a_of_type_Boolean = false;
   public long b;
   public String b;
   boolean b;
   long jdField_c_of_type_Long;
   boolean jdField_c_of_type_Boolean = false;
+  private long e;
   
   public EcshopWebActivity()
   {
@@ -59,7 +61,7 @@ public class EcshopWebActivity
     if (this.jdField_a_of_type_Boolean) {
       return super.a(paramWebViewTabBarData);
     }
-    return WebViewFragmentBuilder.a(this, paramWebViewTabBarData, super.getIntent());
+    return begs.a(this, paramWebViewTabBarData, super.getIntent());
   }
   
   public void a(Rect paramRect, boolean paramBoolean)
@@ -127,15 +129,15 @@ public class EcshopWebActivity
     int i = paramMotionEvent.getAction();
     if (this.jdField_a_of_type_AndroidViewViewGroup == null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131366769));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131380185));
       if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
-        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131362369));
+        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131364785));
       }
       if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
         return super.dispatchTouchEvent(paramMotionEvent);
       }
     }
-    View localView = findViewById(2131363244);
+    View localView = findViewById(2131375863);
     if (localView == null) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
@@ -163,7 +165,7 @@ public class EcshopWebActivity
     }
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
     Intent localIntent = new Intent("action_folder_destroy");
@@ -171,7 +173,7 @@ public class EcshopWebActivity
     sendBroadcast(localIntent);
   }
   
-  protected void doOnPause()
+  public void doOnPause()
   {
     super.doOnPause();
     Intent localIntent = new Intent("action_folder_set_read");
@@ -179,9 +181,10 @@ public class EcshopWebActivity
       localIntent.putExtra("uin", ((RecentShopParcel)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString);
     }
     sendBroadcast(localIntent);
+    amrz.a(this.app, "9970", 1, 4, System.currentTimeMillis() - this.e);
   }
   
-  protected void doOnRestoreInstanceState(Bundle paramBundle)
+  public void doOnRestoreInstanceState(Bundle paramBundle)
   {
     super.doOnRestoreInstanceState(paramBundle);
     paramBundle = paramBundle.getBundle("bundle");
@@ -189,7 +192,13 @@ public class EcshopWebActivity
     getIntent().putExtra("bundle", paramBundle);
   }
   
-  protected void doOnSaveInstanceState(Bundle paramBundle)
+  public void doOnResume()
+  {
+    super.doOnResume();
+    this.e = System.currentTimeMillis();
+  }
+  
+  public void doOnSaveInstanceState(Bundle paramBundle)
   {
     super.doOnSaveInstanceState(paramBundle);
     paramBundle.putBundle("bundle", getIntent().getBundleExtra("bundle"));
@@ -200,7 +209,7 @@ public class EcshopWebActivity
     return true;
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     if (paramBundle != null) {
       getIntent().putExtras(paramBundle);
@@ -212,7 +221,7 @@ public class EcshopWebActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcshopWebActivity
  * JD-Core Version:    0.7.0.1
  */

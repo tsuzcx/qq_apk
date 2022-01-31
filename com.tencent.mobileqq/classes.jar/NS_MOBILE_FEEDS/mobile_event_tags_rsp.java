@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class mobile_event_tags_rsp
   extends JceStruct
 {
-  static ArrayList cache_event_tags = new ArrayList();
-  public ArrayList event_tags;
+  static ArrayList<s_event_tag> cache_event_tags = new ArrayList();
+  public ArrayList<s_event_tag> event_tags;
   
   static
   {
@@ -19,7 +19,7 @@ public final class mobile_event_tags_rsp
   
   public mobile_event_tags_rsp() {}
   
-  public mobile_event_tags_rsp(ArrayList paramArrayList)
+  public mobile_event_tags_rsp(ArrayList<s_event_tag> paramArrayList)
   {
     this.event_tags = paramArrayList;
   }
@@ -38,7 +38,7 @@ public final class mobile_event_tags_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_event_tags_rsp
  * JD-Core Version:    0.7.0.1
  */

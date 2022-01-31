@@ -1,24 +1,23 @@
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.aio.panel.PEPanel;
-import com.tencent.widget.ListView;
-import com.tencent.widget.XPanelContainer;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.6.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public class vlw
-  implements Runnable
+public final class vlw
+  implements urr<vfd, vhb>
 {
-  public vlw(PEPanel paramPEPanel) {}
+  vlw(vmd paramvmd) {}
   
-  public void run()
+  public void a(@NonNull vfd paramvfd, @Nullable vhb paramvhb, @NonNull ErrorMessage paramErrorMessage)
   {
-    PEPanel.a(this.a).setVisibility(0);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, XPanelContainer.a, 0.0F);
-    localTranslateAnimation.setDuration(200L);
-    PEPanel.a(this.a).startAnimation(localTranslateAnimation);
+    ThreadManager.getUIHandler().post(new PlayModeUtils.6.1(this, paramvhb, paramErrorMessage));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vlw
  * JD-Core Version:    0.7.0.1
  */

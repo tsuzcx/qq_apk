@@ -1,16 +1,42 @@
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ajyb
-  implements FilenameFilter
+public abstract interface ajyb
 {
-  public ajyb(UnifiedDebugManager paramUnifiedDebugManager, String paramString) {}
+  public abstract void bind(@Nullable ajyd paramajyd);
   
-  public boolean accept(File paramFile, String paramString)
-  {
-    return paramString.startsWith(this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void clearHighlightContent();
+  
+  @Nullable
+  public abstract CharSequence content();
+  
+  public abstract int contentLength();
+  
+  @Nullable
+  public abstract ajyd delegate();
+  
+  public abstract void doSelecting(ChatMessage paramChatMessage);
+  
+  public abstract boolean hasSelected();
+  
+  public abstract void highlightBackgroundColor(@ColorInt int paramInt);
+  
+  public abstract void highlightContent();
+  
+  public abstract void locationByIndex(int paramInt, @NonNull int[] paramArrayOfInt, boolean paramBoolean);
+  
+  @Nullable
+  public abstract CharSequence selectContent();
+  
+  public abstract void selectContent(int paramInt1, int paramInt2);
+  
+  public abstract int touchIndex(int paramInt1, int paramInt2);
+  
+  @NonNull
+  public abstract View view();
 }
 
 

@@ -16,6 +16,14 @@ public class LoginMsgMenuDialog
   private View.OnClickListener d;
   private View.OnClickListener e;
   
+  private void a()
+  {
+    this.b = ((Button)findViewById(2131558983));
+    this.c = ((Button)findViewById(2131558984));
+    this.b.setOnClickListener(this.e);
+    this.c.setOnClickListener(this.d);
+  }
+  
   protected void onCreate(Bundle paramBundle)
   {
     if ((this.a == null) || ((this.a != null) && (this.a.isFinishing())))
@@ -24,14 +32,11 @@ public class LoginMsgMenuDialog
       return;
     }
     super.onCreate(paramBundle);
-    setContentView(2130903125);
-    this.b = ((Button)findViewById(2131296780));
-    this.c = ((Button)findViewById(2131296781));
-    this.b.setOnClickListener(this.e);
-    this.c.setOnClickListener(this.d);
+    setContentView(2130968682);
+    a();
     setCanceledOnTouchOutside(true);
     paramBundle = getWindow();
-    paramBundle.setBackgroundDrawableResource(2130837639);
+    paramBundle.setBackgroundDrawableResource(2130837730);
     paramBundle.getAttributes().width = -1;
     paramBundle.setGravity(80);
   }

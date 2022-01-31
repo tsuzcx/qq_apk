@@ -1,43 +1,78 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.emoticonview.BigEmotionDownloadedAdapter;
+import android.view.View;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsgAction;
+import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
 
 public class acdr
-  implements Runnable
+  implements bhuk
 {
-  public acdr(BigEmotionDownloadedAdapter paramBigEmotionDownloadedAdapter, Context paramContext) {}
+  public acdr(AddRequestActivity paramAddRequestActivity, bhuf parambhuf) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.a = new ColorDrawable(Color.parseColor("#fafafa"));
-    Bitmap localBitmap = Bitmap.createBitmap(AIOUtils.a(44.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(44.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), Bitmap.Config.ARGB_8888);
-    Canvas localCanvas = new Canvas(localBitmap);
-    Paint localPaint = new Paint();
-    Rect localRect = new Rect(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
-    RectF localRectF = new RectF(new Rect(0, 0, localBitmap.getWidth(), localBitmap.getHeight()));
-    localPaint.setAntiAlias(true);
-    localCanvas.drawARGB(0, 0, 0, 0);
-    localPaint.setColor(-16777216);
-    localCanvas.drawRoundRect(localRectF, 4.0F, 4.0F, localPaint);
-    localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-    localCanvas.drawBitmap(localBitmap, new Rect(0, 0, localBitmap.getWidth(), localBitmap.getHeight()), localRect, localPaint);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.a.draw(localCanvas);
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+    }
+    if (bdin.d(BaseApplication.getContext()))
+    {
+      long l1 = bafi.a().b();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a = bafi.a().a(Long.valueOf(l1));
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a != null)
+      {
+        paramInt = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg_type.get();
+        l1 = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg_seq.get();
+        long l2 = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.req_uin.get();
+        int i = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.sub_type.get();
+        int j = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.src_id.get();
+        int k = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.sub_src_id.get();
+        int m = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.group_msg_type.get();
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.actions.get();
+        if ((paramView != null) && (1 < paramView.size()))
+        {
+          ((structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramView.get(1)).action_info.get()).blacklist.set(true);
+          AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, true);
+          this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.a().a().a(paramInt, l1, l2, i, j, k, m, (structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramView.get(1)).action_info.get(), 1, null, false);
+          AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131719785, 1000L, false);
+        }
+      }
+    }
+    for (;;)
+    {
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app, "CliOper", "", "", "Verification_msg", "Vfc_shield_clk", 0, 0, "", "", "", "");
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app, "CliOper", "", "", "0X800AA45", "0X800AA45", 0, 0, "", "", "", "");
+      break;
+      StringBuilder localStringBuilder = new StringBuilder().append("shield, ");
+      if (paramView != null) {}
+      for (paramInt = paramView.size();; paramInt = -1)
+      {
+        QLog.d("Q.systemmsg.AddRequestActivity", 1, paramInt);
+        break;
+      }
+      QLog.d("Q.systemmsg.AddRequestActivity", 1, "shield");
+      continue;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131694768, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acdr
  * JD-Core Version:    0.7.0.1
  */

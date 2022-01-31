@@ -1,18 +1,32 @@
-import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class acqv
-  implements Runnable
+public class acqv
+  implements Animation.AnimationListener
 {
-  acqv(acqu paramacqu) {}
+  public acqv(ContactBindedActivity paramContactBindedActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QfileFileAssistantActivity.g(this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim end");
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim start");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqv
  * JD-Core Version:    0.7.0.1
  */

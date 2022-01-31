@@ -1,158 +1,365 @@
-import android.content.Intent;
+import UserGrowth.stAnnexation;
+import UserGrowth.stGlobalConfig;
+import UserGrowth.stPopWindowsButton;
+import UserGrowth.stPopWindowsConfig;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.util.ArrayList;
 
 public class tax
-  extends WtloginObserver
+  extends yhq
+  implements View.OnClickListener
 {
-  public tax(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
+  public final int a;
+  private long jdField_a_of_type_Long;
+  private stGlobalConfig jdField_a_of_type_UserGrowthStGlobalConfig;
+  public stPopWindowsConfig a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private final String jdField_a_of_type_JavaLangString = "RichBlockDialog";
+  private boolean jdField_a_of_type_Boolean;
+  public final int b;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private String jdField_b_of_type_JavaLangString = "weishi://main";
+  public final int c;
+  private TextView c;
+  private int jdField_d_of_type_Int = 12;
+  private TextView jdField_d_of_type_AndroidWidgetTextView;
+  private int jdField_e_of_type_Int = 5;
+  private TextView jdField_e_of_type_AndroidWidgetTextView;
+  private TextView f;
   
-  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, ErrMsg paramErrMsg)
+  public tax(Context paramContext)
   {
-    String str1 = null;
-    if (QLog.isColorLevel())
+    this(paramContext, -1, -1);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private tax(Context paramContext, int paramInt1, int paramInt2)
+  {
+    this(paramContext, 2131755918, paramInt1, paramInt2);
+  }
+  
+  private tax(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  {
+    super(paramContext, paramInt1);
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_b_of_type_Int = 2;
+    this.jdField_c_of_type_Int = 3;
+    b();
+    paramContext = getWindow();
+    if (paramContext == null)
     {
-      QLog.d("LoginVerifyCodeActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("LoginVerifyCodeActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
-      }
-    }
-    if (paramInt2 == 0)
-    {
-      QLog.d("LoginVerifyCodeActivity", 2, "OnGetStViaSMSVerifyLogin  login success ret =  " + paramInt2);
-      if ((LoginVerifyCodeActivity2.c(this.a) == 2) || (LoginVerifyCodeActivity2.c(this.a) == 3))
-      {
-        this.a.c();
-        paramErrMsg = new Intent();
-        paramErrMsg.putExtra("last_account", paramString);
-        this.a.setResult(-1, paramErrMsg);
-        this.a.finish();
-        return;
-      }
-      LoginVerifyCodeActivity2.a(this.a).ssoGetTicketNoPasswd(paramString, 4096, this.a.a);
+      tlo.b("RichBlockDialog", 2, "ScrollMoreDialog() window == null.");
       return;
     }
-    this.a.c();
-    if (paramInt2 == -20160326)
+    paramContext = paramContext.getAttributes();
+    if (paramContext == null)
     {
-      this.a.finish();
+      tlo.b("RichBlockDialog", 2, "ScrollMoreDialog() params == null.");
       return;
     }
-    if (paramInt2 == 2008)
+    paramContext.width = paramInt2;
+    paramContext.height = paramInt3;
+  }
+  
+  private int a()
+  {
+    switch (this.jdField_a_of_type_UserGrowthStPopWindowsConfig.type)
     {
-      this.a.a(2131433218, 0);
-      this.a.finish();
+    case 1: 
+    default: 
+      return 6;
+    case 2: 
+      return 401;
+    }
+    return 7;
+  }
+  
+  private String a(int paramInt)
+  {
+    String str2 = String.format("%.3f", new Object[] { Double.valueOf(paramInt / 100.0D) });
+    String str1 = str2;
+    if (str2.indexOf(".") > 0) {
+      str1 = str2.replaceAll("0+?$", "").replaceAll("[.]$", "");
+    }
+    return str1;
+  }
+  
+  private void a(int paramInt)
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 1500L)
+    {
+      tlo.a("RichBlockDialog", 1, "点击时间小于1.5秒，不做响应");
       return;
     }
-    String str3;
-    if (paramErrMsg != null)
+    this.jdField_a_of_type_Long = l;
+    Context localContext;
+    if ((this.jdField_a_of_type_UserGrowthStPopWindowsConfig != null) && (this.jdField_a_of_type_UserGrowthStPopWindowsConfig.jp_button != null))
     {
-      str3 = paramErrMsg.getMessage();
-      str2 = str3;
-      if (paramErrMsg.getType() == 1) {
-        str1 = paramErrMsg.getOtherinfo();
+      tju.c(112, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.type, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.windowsid);
+      tjr.a(112, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.windowsid);
+      localContext = getContext();
+      if (!(localContext instanceof ContextThemeWrapper)) {
+        break label164;
+      }
+      localContext = ((ContextThemeWrapper)localContext).getBaseContext();
+    }
+    label164:
+    for (;;)
+    {
+      String str1 = this.jdField_a_of_type_UserGrowthStPopWindowsConfig.schema_url;
+      String str2 = this.jdField_a_of_type_UserGrowthStPopWindowsConfig.h5url;
+      tlv.a(this.jdField_a_of_type_AndroidContentContext, str1, str2, "", this.jdField_a_of_type_UserGrowthStPopWindowsConfig.type, new tay(this, localContext));
+      d();
+      return;
+    }
+  }
+  
+  private void a(URLDrawable paramURLDrawable, String paramString, ImageView paramImageView)
+  {
+    if (this.jdField_a_of_type_UserGrowthStPopWindowsConfig != null)
+    {
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.title)) {
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.title);
+      }
+      if (this.jdField_a_of_type_UserGrowthStPopWindowsConfig.type != 1) {
+        break label282;
+      }
+      if ((this.jdField_a_of_type_UserGrowthStPopWindowsConfig.annexation != null) && (this.jdField_a_of_type_UserGrowthStPopWindowsConfig.annexation.money > 0))
+      {
+        paramURLDrawable = a(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.annexation.money);
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(paramURLDrawable);
       }
     }
-    for (String str2 = str3;; str2 = null)
+    for (;;)
     {
-      if (!TextUtils.isEmpty(str1))
+      if ((this.jdField_a_of_type_UserGrowthStPopWindowsConfig.jp_button != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.jp_button.title))) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.jp_button.title);
+      }
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.text)) {
+        this.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.text);
+      }
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.remark)) {
+        this.jdField_e_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.remark);
+      }
+      show();
+      tju.c(6, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.type, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.windowsid);
+      tjr.a(6, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.windowsid);
+      WSPublicAccReport.getInstance().reportExposeRichBlockPop(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.windowsid, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.trace_id);
+      a();
+      tlo.a("813", "onLoadSuccessed - " + paramString);
+      return;
+      label282:
+      if (this.jdField_a_of_type_UserGrowthStPopWindowsConfig.annexation != null) {
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.annexation.money + "");
+      }
+    }
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131562418, null, false);
+    setContentView(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375160));
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375164));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375161));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375163));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375162));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375158));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375157));
+    this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375165));
+    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+  }
+  
+  private void c()
+  {
+    if ((this.jdField_a_of_type_UserGrowthStPopWindowsConfig != null) && (this.jdField_a_of_type_UserGrowthStPopWindowsConfig.type != 1))
+    {
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
+      this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(4);
+      this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(4);
+      this.f.setVisibility(4);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+      tlo.a("weishi-813", "展示图片");
+      return;
+    }
+    tlo.a("weishi-813", "展示红包");
+  }
+  
+  private void d()
+  {
+    if (isShowing()) {
+      dismiss();
+    }
+  }
+  
+  public void a() {}
+  
+  public void a(stGlobalConfig paramstGlobalConfig)
+  {
+    a();
+    if (paramstGlobalConfig != null)
+    {
+      this.jdField_a_of_type_UserGrowthStGlobalConfig = paramstGlobalConfig;
+      if ((paramstGlobalConfig.windows_config == null) || (paramstGlobalConfig.windows_config.size() <= 0)) {
+        break label129;
+      }
+      paramstGlobalConfig = (stPopWindowsConfig)paramstGlobalConfig.windows_config.get(0);
+      if (paramstGlobalConfig == null) {
+        break label117;
+      }
+      if (paramstGlobalConfig.type != 1) {
+        break label93;
+      }
+      this.jdField_a_of_type_UserGrowthStPopWindowsConfig = paramstGlobalConfig;
+      tlo.a("weishi-813", "阻断页rich化 type是：" + paramstGlobalConfig.type);
+    }
+    for (;;)
+    {
+      c();
+      return;
+      label93:
+      if (paramstGlobalConfig.type == 2)
       {
-        paramErrMsg = new Intent(this.a, NotificationActivity.class);
-        paramErrMsg.putExtra("type", 8);
-        if (paramInt2 == 40) {
-          paramErrMsg.putExtra("msg", str2);
-        }
-        for (;;)
-        {
-          paramErrMsg.putExtra("loginalias", paramString);
-          paramErrMsg.putExtra("loginret", paramInt2);
-          this.a.startActivity(paramErrMsg);
-          return;
-          paramErrMsg.putExtra("msg", str2 + " " + str1);
-        }
+        this.jdField_a_of_type_UserGrowthStPopWindowsConfig = paramstGlobalConfig;
+        break;
       }
-      if (TextUtils.isEmpty(str2)) {
-        this.a.a();
-      }
-      while (paramInt2 == 155)
-      {
-        this.a.finish();
-        return;
-        this.a.a(str2, 0);
-      }
+      this.jdField_a_of_type_UserGrowthStPopWindowsConfig = paramstGlobalConfig;
       break;
+      label117:
+      tlo.a("weishi-813", "阻断页rich化 windowsConfig为null");
+      continue;
+      label129:
+      tlo.c("weishi-813", "瀑布流阻断页rich化 windowsConfig size为0");
     }
   }
   
-  public void OnRefreshSMSVerifyLoginAccount(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
+  public void a(Context paramContext, int paramInt)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("LoginVerifyCodeActivity", 2, "OnRefreshSMSVerifyLoginAccount.mobile=" + paramString1 + " msg=" + paramString2 + " timeLimit=" + paramInt2);
-      QLog.d("LoginVerifyCodeActivity", 2, "OnRefreshSMSVerifyLoginAccount.ret=" + paramInt3);
-      if (paramErrMsg != null) {
-        QLog.d("LoginVerifyCodeActivity", 2, "OnRefreshSMSVerifyLoginAccount.errMsg=" + paramErrMsg);
-      }
-    }
-    if (this.a.isFinishing()) {
+    if (paramContext == null) {
       return;
     }
-    this.a.c();
-    if (paramInt3 != 0)
+    if ((this.jdField_a_of_type_UserGrowthStPopWindowsConfig == null) || (this.jdField_a_of_type_UserGrowthStPopWindowsConfig.type != 2))
     {
-      paramString1 = null;
-      if (paramErrMsg != null) {
-        paramString1 = paramErrMsg.getMessage();
-      }
-      if (TextUtils.isEmpty(paramString1))
-      {
-        this.a.a();
-        return;
-      }
-      this.a.a(paramString1, 0);
+      tlo.a("RichBlockDialog", "813不支持瀑布流红包和动图弹窗");
       return;
     }
-    LoginVerifyCodeActivity2.a(this.a, 60);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.bg_img_url))
+    {
+      paramContext = getContext().getResources().getDrawable(2130841378);
+      a(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.bg_img_url, paramContext, paramContext, alud.a(2131713839));
+      return;
+    }
+    d();
   }
   
-  public void OnVerifySMSVerifyLoginAccount(String paramString1, String paramString2, int paramInt, ErrMsg paramErrMsg)
+  public void a(ImageView paramImageView, String paramString1, Drawable paramDrawable1, Drawable paramDrawable2, String paramString2)
   {
-    if (QLog.isColorLevel())
+    tfd.a(3);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mFailedDrawable = paramDrawable1;
+    localURLDrawableOptions.mLoadingDrawable = paramDrawable2;
+    paramString1 = URLDrawable.getDrawable(paramString1, localURLDrawableOptions);
+    paramString1.setURLDrawableListener(new taz(this, paramString2, paramImageView));
+    paramImageView.setImageDrawable(paramString1);
+    paramString1.startDownload();
+    if (1 != paramString1.getStatus())
     {
-      QLog.d("LoginVerifyCodeActivity", 2, "OnVerifySMSVerifyLoginAccount mobile=" + paramString1 + " msgCode=" + paramString2 + " ret=" + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("LoginVerifyCodeActivity", 2, "OnVerifySMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
-      }
-    }
-    if (this.a.isFinishing()) {
+      paramString1.restartDownload();
       return;
     }
-    if (paramInt != 0)
+    a(paramString1, paramString2, paramImageView);
+    tlo.a("813", "onLoad ~~~~~~");
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public void dismiss()
+  {
+    tlo.b("RichBlockDialog", 2, "dismiss()");
+    try
     {
-      this.a.c();
-      paramString1 = null;
-      if (paramErrMsg != null) {
-        paramString1 = paramErrMsg.getMessage();
-      }
-      if (TextUtils.isEmpty(paramString1))
+      this.jdField_a_of_type_Boolean = false;
+      super.dismiss();
+      return;
+    }
+    catch (Exception localException)
+    {
+      tlo.d("RichBlockDialog", 2, localException.getLocalizedMessage());
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView == null) {}
+    do
+    {
+      return;
+      switch (paramView.getId())
       {
-        this.a.a();
+      case 2131375159: 
+      default: 
         return;
+      case 2131375157: 
+        tlo.a("weishi-813", "点击了红包 提现");
+        a(1);
+        return;
+      case 2131375158: 
+        d();
       }
-      this.a.a(paramString1, 0);
+    } while (this.jdField_a_of_type_UserGrowthStPopWindowsConfig == null);
+    tju.c(117, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.type, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.windowsid);
+    tjr.a(117, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.windowsid);
+    WSPublicAccReport.getInstance().reportClickRichBlockPop(1000005, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.windowsid, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.trace_id);
+    return;
+    tlo.a("weishi-813", "点击了图片 背景图");
+    a(2);
+  }
+  
+  public void show()
+  {
+    tlo.b("RichBlockDialog", 2, "show()");
+    try
+    {
+      super.show();
+      this.jdField_a_of_type_Boolean = true;
       return;
     }
-    LoginVerifyCodeActivity2.a(this.a);
+    catch (Exception localException)
+    {
+      tlo.d("RichBlockDialog", 2, localException.getLocalizedMessage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tax
  * JD-Core Version:    0.7.0.1
  */

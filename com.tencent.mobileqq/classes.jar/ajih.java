@@ -1,18 +1,14 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteEvaluateViewHolder;
-
-public class ajih
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface ajih
 {
-  public ajih(ReciteEvaluateViewHolder paramReciteEvaluateViewHolder, String paramString) {}
+  public abstract void a(int paramInt);
   
-  public void onGlobalLayout()
-  {
-    ReciteEvaluateViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteEvaluateViewHolder).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    ReciteEvaluateViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteEvaluateViewHolder, this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(int paramInt, float paramFloat);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 

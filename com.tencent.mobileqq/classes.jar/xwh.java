@@ -1,21 +1,44 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.RDConfigServletProxy;
-import com.tencent.mobileqq.activity.richmedia.subtitles.RDConfigServletProxy.RDConfigServletProxyListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
-public final class xwh
-  implements RDConfigServletProxy.RDConfigServletProxyListener
+public class xwh
+  extends Handler
 {
-  public xwh(QQAppInterface paramQQAppInterface, int paramInt, String paramString) {}
-  
-  public boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
+  public xwh(QQStoryLoadingView paramQQStoryLoadingView, Looper paramLooper)
   {
-    RDConfigServletProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, paramString);
-    return true;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    Object localObject = paramMessage.obj;
+    String str;
+    if (paramMessage.what == 8) {
+      str = "GONE";
+    }
+    for (;;)
+    {
+      wxe.a("QQStoryLoadingView", "%s => setVisibility => %s", localObject, str);
+      this.a.setVisibility(paramMessage.what);
+      return;
+      if (paramMessage.what == 0) {
+        str = "VISIBLE";
+      } else {
+        str = "INVISIBLE";
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xwh
  * JD-Core Version:    0.7.0.1
  */

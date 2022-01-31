@@ -1,21 +1,18 @@
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.biz.ui.CustomMenuBar.OnMenuItemClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
-public class vxp
-  implements CustomMenuBar.OnMenuItemClickListener
+class vxp
+  implements vyl
 {
-  public vxp(PublicAccountChatPie paramPublicAccountChatPie) {}
+  vxp(vxn paramvxn, vwd paramvwd, Object paramObject) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public boolean a(vyi paramvyi, int paramInt1, int paramInt2)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(paramString, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), paramInt1, PublicAccountChatPie.a(this.a), PublicAccountChatPie.b(this.a), paramInt2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    return this.jdField_a_of_type_Vwd.a(this.jdField_a_of_type_Vxn, 0, paramInt1, this.jdField_a_of_type_Vxn.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vxp
  * JD-Core Version:    0.7.0.1
  */

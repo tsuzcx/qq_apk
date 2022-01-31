@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
+import addl;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import stz;
 
 public class GesturePWDGuideActivity
   extends IphoneTitleBarActivity
@@ -13,12 +13,12 @@ public class GesturePWDGuideActivity
   
   private void a()
   {
-    setTitle(2131436034);
-    this.a = ((Button)findViewById(2131364709));
-    this.a.setOnClickListener(new stz(this));
+    setTitle(2131693107);
+    this.a = ((Button)findViewById(2131367146));
+    this.a.setOnClickListener(new addl(this));
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if ((paramInt2 == -1) && (paramInt1 == 999))
     {
@@ -28,16 +28,16 @@ public class GesturePWDGuideActivity
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130969010);
+    super.setContentView(2131559159);
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GesturePWDGuideActivity
  * JD-Core Version:    0.7.0.1
  */

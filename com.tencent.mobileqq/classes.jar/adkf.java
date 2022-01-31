@@ -1,29 +1,28 @@
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.pic.PicResult;
-import com.tencent.mobileqq.pic.UiCallBack.DownAdapter;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
-class adkf
-  extends UiCallBack.DownAdapter
+public class adkf
+  implements DialogInterface.OnClickListener
 {
-  adkf(adke paramadke, MessageForPic paramMessageForPic) {}
+  public adkf(NotificationActivity paramNotificationActivity) {}
   
-  public void a(int paramInt, PicResult paramPicResult)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Adke.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a.setProgressBarVisibility(8);
-    paramPicResult = AbsDownloader.d(URLDrawableHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, 1, null).toString().toString());
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardBaseOption", 2, "DownloadBigPic finish");
+    try
+    {
+      azqs.b(null, "P_CliOper", "Safe_StartAppCheck", "", "DIALOG_PACKAGE_INVALID", "LeftButton", 0, 0, "", "", "", "");
+      this.a.finish();
+      return;
     }
-    ForwardBaseOption.a(this.jdField_a_of_type_Adke.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption, paramPicResult, this.jdField_a_of_type_Adke.jdField_a_of_type_JavaLangString);
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
+      }
+    }
   }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
 }
 
 

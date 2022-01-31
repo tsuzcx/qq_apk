@@ -1,81 +1,27 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.view.SurfaceHolder;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
-import com.tencent.mobileqq.troop.widget.VideoViewX;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQUtils;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.VersionUtils;
 
-public class hdy
-  implements MediaPlayer.OnPreparedListener
+public final class hdy
+  implements Runnable
 {
-  public hdy(VideoViewX paramVideoViewX) {}
+  public hdy(QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
   
-  @TargetApi(8)
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void run()
   {
-    VideoViewX.c(this.a, 2);
-    VideoViewX.a(this.a, true);
-    boolean bool;
-    if (VersionUtils.b())
-    {
-      i = ((AudioManager)BaseApplication.getContext().getSystemService("audio")).requestAudioFocus(this.a.a, 3, 1);
-      if (QLog.isColorLevel())
-      {
-        String str = VideoViewX.a(this.a);
-        StringBuilder localStringBuilder = new StringBuilder().append("requestAudioFocus,result:");
-        if (i != 1) {
-          break label292;
-        }
-        bool = true;
-        QLog.d(str, 2, bool);
-      }
+    String str = null;
+    if (QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), new String[] { this.jdField_a_of_type_JavaLangString })) {
+      str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131561614);
     }
-    if (VideoViewX.a(this.a) != null) {
-      VideoViewX.a(this.a).onPrepared(VideoViewX.a(this.a));
+    if (str != null) {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 2, str, 0).b(this.jdField_a_of_type_Int);
     }
-    if (VideoViewX.a(this.a) != null) {
-      VideoViewX.a(this.a).setEnabled(true);
-    }
-    VideoViewX.a(this.a, paramMediaPlayer.getVideoWidth());
-    VideoViewX.b(this.a, paramMediaPlayer.getVideoHeight());
-    int i = VideoViewX.d(this.a);
-    if (i != 0) {
-      this.a.a(i);
-    }
-    if ((VideoViewX.b(this.a) != 0) && (VideoViewX.c(this.a) != 0))
-    {
-      this.a.getHolder().setFixedSize(VideoViewX.b(this.a), VideoViewX.c(this.a));
-      if ((VideoViewX.e(this.a) == VideoViewX.b(this.a)) && (VideoViewX.f(this.a) == VideoViewX.c(this.a)))
-      {
-        if (VideoViewX.g(this.a) != 3) {
-          break label297;
-        }
-        this.a.a();
-      }
-    }
-    label292:
-    label297:
-    while (VideoViewX.g(this.a) != 3)
-    {
-      do
-      {
-        return;
-        bool = false;
-        break;
-      } while ((this.a.a()) || (i != 0) || (this.a.b() <= 0));
-      return;
-    }
-    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hdy
  * JD-Core Version:    0.7.0.1
  */

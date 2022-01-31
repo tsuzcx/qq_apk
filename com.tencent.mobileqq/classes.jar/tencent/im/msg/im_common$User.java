@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class im_common$User
-  extends MessageMicro
+  extends MessageMicro<User>
 {
   public static final int APP_ID_FIELD_NUMBER = 2;
   public static final int APP_TYPE_FIELD_NUMBER = 4;

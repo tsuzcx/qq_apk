@@ -8,6 +8,7 @@ import android.graphics.drawable.LayerDrawable;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.widget.SeekBar;
+import mxq;
 
 public class BidirectionSeekBar
   extends SeekBar
@@ -37,17 +38,17 @@ public class BidirectionSeekBar
   private void a()
   {
     if (getThumbOffset() != 0) {
-      setThumbOffset(4);
+      setThumbOffset(0);
     }
-    int i = getResources().getDrawable(2130840096).getIntrinsicWidth();
+    int i = getResources().getDrawable(2130841608).getIntrinsicWidth();
     Object localObject = getProgressDrawable();
     if ((localObject instanceof LayerDrawable))
     {
       localObject = (LayerDrawable)localObject;
       Drawable localDrawable = ((LayerDrawable)localObject).findDrawableByLayerId(16908301);
-      BidirectionClipDrawable localBidirectionClipDrawable = new BidirectionClipDrawable(getResources().getDrawable(2130840090), getResources().getDrawable(2130840091), 1, i);
-      localBidirectionClipDrawable.setLevel(localDrawable.getLevel());
-      ((LayerDrawable)localObject).setDrawableByLayerId(16908301, localBidirectionClipDrawable);
+      mxq localmxq = new mxq(getResources().getDrawable(2130841600), getResources().getDrawable(2130841603), 1, i);
+      localmxq.setLevel(localDrawable.getLevel());
+      ((LayerDrawable)localObject).setDrawableByLayerId(16908301, localmxq);
     }
     if (Build.VERSION.SDK_INT >= 11) {}
   }
@@ -62,7 +63,7 @@ public class BidirectionSeekBar
   public void setThumb(Drawable paramDrawable)
   {
     super.setThumb(paramDrawable);
-    setThumbOffset(4);
+    setThumbOffset(0);
     onSizeChanged(this.a, this.b, this.a, this.b);
   }
 }

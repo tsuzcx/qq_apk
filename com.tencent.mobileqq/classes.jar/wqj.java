@@ -1,56 +1,71 @@
-import android.content.res.Resources;
-import android.support.v4.util.MQLruCache;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.MemoryConfigs;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.statistics.battery.BatteryStats;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.MultiRecommend;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.MultiRecommendItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wqj
-  implements Runnable
+  extends wqp<HotRecommendFeedItem>
 {
-  public wqj(MainAssistObserver paramMainAssistObserver) {}
-  
-  public void run()
+  public wqj(@NonNull HotRecommendFeedItem paramHotRecommendFeedItem)
   {
-    Object localObject = this.a.a;
-    if (localObject != null) {}
-    for (QQAppInterface localQQAppInterface = ((SplashActivity)localObject).app; (localObject == null) || (localQQAppInterface == null); localQQAppInterface = null) {
-      return;
-    }
-    try
+    super(paramHotRecommendFeedItem);
+  }
+  
+  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
+  {
+    Object localObject1 = (qqstory_struct.MultiRecommend)paramStoryFeed.multi_recommend_feed.get();
+    ((HotRecommendFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.MultiRecommend)localObject1);
+    ((HotRecommendFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    paramStoryFeed = (uwm)uwa.a(2);
+    ArrayList localArrayList = new ArrayList();
+    localObject1 = ((qqstory_struct.MultiRecommend)localObject1).recommend_feed.get().iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      AIOPanelUtiles.a(localQQAppInterface);
-      MultiMsgManager.a().a(localQQAppInterface);
-      localObject = BaseApplicationImpl.sApplication.getResources().getDisplayMetrics();
-      int i = ((DisplayMetrics)localObject).widthPixels;
-      int j = ((DisplayMetrics)localObject).heightPixels;
-      localObject = BaseApplicationImpl.sImageCache;
-      float f = MemoryConfigs.a().a;
-      ((MQLruCache)localObject).setLargeSize((int)(j * i * 4 * f));
-      localQQAppInterface.D();
-      QQToast.a(true);
-      QQAppInterface.a().a();
-      return;
+      Object localObject2 = (qqstory_struct.MultiRecommendItem)((Iterator)localObject1).next();
+      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+      localStoryVideoItem.convertFrom("HotRecommendHomeFeed", (qqstory_struct.MultiRecommendItem)localObject2);
+      localArrayList.add(localStoryVideoItem);
+      QQUserUIItem localQQUserUIItem = new QQUserUIItem();
+      localQQUserUIItem.convertFrom(((qqstory_struct.MultiRecommendItem)localObject2).user);
+      localObject2 = paramStoryFeed.a(localQQUserUIItem);
+      localStoryVideoItem.mOwnerUid = ((QQUserUIItem)localObject2).uid;
+      localStoryVideoItem.mOwnerName = ((QQUserUIItem)localObject2).getDisplayName();
     }
-    catch (Exception localException)
+    c(localArrayList, true);
+    return !localArrayList.isEmpty();
+  }
+  
+  public void b()
+  {
+    super.b();
+    uwm localuwm = (uwm)uwa.a(2);
+    if (!this.c.isEmpty())
     {
-      for (;;)
+      Iterator localIterator = this.c.iterator();
+      while (localIterator.hasNext())
       {
-        QLog.d("MainAssistObserver", 4, "notifyWindowShowed e=" + localException);
+        StoryVideoItem localStoryVideoItem = (StoryVideoItem)localIterator.next();
+        if (!TextUtils.isEmpty(localStoryVideoItem.mOwnerUid)) {
+          localuwm.b(localStoryVideoItem.mOwnerUid);
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wqj
  * JD-Core Version:    0.7.0.1
  */

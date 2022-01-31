@@ -1,204 +1,34 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.biz.webviewplugin.ReportPlugin;
-import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.managers.ShieldMsgManger;
-import com.tencent.mobileqq.phone.PhoneNumberInfo;
-import com.tencent.mobileqq.phone.PhoneNumberUtil;
-import com.tencent.mobileqq.qcall.LightalkShieldData;
-import com.tencent.mobileqq.qcall.LightalkShieldHandler;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.qcall.UinUtils;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.QQToastNotifier;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.AccountDetail;
 
-public class aguk
-  implements ActionSheet.OnButtonClickListener
+class aguk
+  implements nrs
 {
-  public aguk(QCallDetailActivity paramQCallDetailActivity, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, ActionSheet paramActionSheet) {}
+  aguk(agti paramagti) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    switch (paramInt)
+    this.a.bs();
+    if (!paramBoolean)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+      this.a.B(2131695729);
       return;
-      if (!NetworkUtil.d(BaseApplication.getContext()))
-      {
-        QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).a(2131433103, 1);
-        return;
-      }
-      if (QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == 26)
-      {
-        paramView = PhoneNumberUtil.a(QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity));
-        paramView = paramView.a + "-" + paramView.c;
-        if (this.jdField_a_of_type_Boolean) {
-          QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).b(20, paramView);
-        }
-      }
-      for (;;)
-      {
-        if (!this.jdField_a_of_type_Boolean) {
-          break label802;
-        }
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, "CliOper", "", "", "0X8004E6F", "0X8004E6F", 0, 0, "", "", "", "");
-        break;
-        QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).a(20, paramView);
-        continue;
-        paramInt = 0;
-        long l;
-        Object localObject;
-        try
-        {
-          Long.parseLong(QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity));
-          if (!this.b) {
-            break label393;
-          }
-        }
-        catch (Exception paramView)
-        {
-          for (;;)
-          {
-            try
-            {
-              l = Long.parseLong(QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity));
-              if (!this.jdField_a_of_type_Boolean) {
-                break label359;
-              }
-              if (this.c) {
-                break label325;
-              }
-              paramView = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity, 0);
-              paramView.setTitle(2131437808);
-              paramView.setMessage(2131437809);
-              paramView.setCanceledOnTouchOutside(false);
-              localObject = new agul(this, paramView, l);
-              paramView.setNegativeButton(2131437811, (DialogInterface.OnClickListener)localObject);
-              paramView.setPositiveButton(2131437810, (DialogInterface.OnClickListener)localObject);
-              paramView.show();
-            }
-            catch (Exception paramView)
-            {
-              QQToast.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity, 1, "无效的号码", 0).b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.getTitleBarHeight());
-            }
-            paramView = paramView;
-            paramInt = 1;
-          }
-        }
-        break;
-        label325:
-        paramView = QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
-        if (!this.jdField_a_of_type_Boolean) {}
-        for (boolean bool = true;; bool = false)
-        {
-          paramView.a(l, bool);
-          break;
-        }
-        label359:
-        paramView = QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
-        if (!this.jdField_a_of_type_Boolean) {}
-        for (bool = true;; bool = false)
-        {
-          paramView.a(l, bool);
-          break;
-        }
-        label393:
-        label783:
-        if (paramInt != 0)
-        {
-          paramView = new LightalkShieldData();
-          paramView.qcallId = UinUtils.a(QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity));
-          paramView.phone = QCallDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
-          if (this.jdField_a_of_type_Boolean)
-          {
-            if (!this.c)
-            {
-              paramView = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity, 0);
-              paramView.setTitle(2131437808);
-              paramView.setMessage(2131437809);
-              paramView.setCanceledOnTouchOutside(false);
-              localObject = new agum(this, paramView);
-              paramView.setNegativeButton(2131437811, (DialogInterface.OnClickListener)localObject);
-              paramView.setPositiveButton(2131437810, (DialogInterface.OnClickListener)localObject);
-              paramView.show();
-            }
-            else
-            {
-              QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).b(10, UinUtils.a(QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity)));
-              ReportController.b(null, "CliOper", "", "", "0X8006256", "0X8006256", 0, 0, "", "", "", "");
-            }
-          }
-          else
-          {
-            QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).a(10, UinUtils.a(QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity)));
-            ReportController.b(null, "CliOper", "", "", "0X8006256", "0X8006256", 1, 0, "", "", "", "");
-          }
-        }
-        else
-        {
-          ArrayList localArrayList;
-          try
-          {
-            l = Long.parseLong(QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity));
-            localObject = (ShieldMsgManger)this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app.getManager(15);
-            localArrayList = new ArrayList();
-            if (localObject != null) {
-              localArrayList.add(Long.valueOf(l));
-            }
-            if (!this.jdField_a_of_type_Boolean) {
-              break label783;
-            }
-            if (this.c) {
-              break label764;
-            }
-            paramView = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity, 0);
-            paramView.setTitle(2131437808);
-            paramView.setMessage(2131437809);
-            paramView.setCanceledOnTouchOutside(false);
-            localObject = new agun(this, paramView, (ShieldMsgManger)localObject, localArrayList);
-            paramView.setNegativeButton(2131437811, (DialogInterface.OnClickListener)localObject);
-            paramView.setPositiveButton(2131437810, (DialogInterface.OnClickListener)localObject);
-            paramView.show();
-          }
-          catch (Exception paramView)
-          {
-            QQToast.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity, 1, "无效的号码", 0).b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.getTitleBarHeight());
-          }
-          break;
-          label764:
-          if (localObject != null)
-          {
-            ((ShieldMsgManger)localObject).b(this.jdField_a_of_type_Int, localArrayList);
-            continue;
-            if (localObject != null) {
-              ((ShieldMsgManger)localObject).a(this.jdField_a_of_type_Int, localArrayList);
-            }
-          }
-        }
-      }
-      label802:
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, "CliOper", "", "", "0X8004E6E", "0X8004E6E", 0, 0, "", "", "", "");
-      continue;
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, "CliOper", "", "", "0X8004FA9", "0X8004FA9", 0, 0, "", "", "", "");
-      ReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity, 410, "", QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity), this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app.getCurrentAccountUin());
     }
+    awgf localawgf = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    AccountDetail localAccountDetail = (AccountDetail)localawgf.a(AccountDetail.class, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    if (localAccountDetail != null) {
+      localawgf.b(localAccountDetail);
+    }
+    localawgf.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1008);
+    this.a.I();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aguk
  * JD-Core Version:    0.7.0.1
  */

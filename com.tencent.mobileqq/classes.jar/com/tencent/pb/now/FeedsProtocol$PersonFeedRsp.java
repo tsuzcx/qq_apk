@@ -10,12 +10,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class FeedsProtocol$PersonFeedRsp
-  extends MessageMicro
+  extends MessageMicro<PersonFeedRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field end_flag = PBField.initUInt32(0);
   public final PBBytesField errmsg = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField msg_feeds = PBField.initRepeatMessage(FeedsProtocol.FeedsInfo.class);
+  public final PBRepeatMessageField<FeedsProtocol.FeedsInfo> msg_feeds = PBField.initRepeatMessage(FeedsProtocol.FeedsInfo.class);
   public final PBInt32Field result = PBField.initInt32(0);
   public final PBUInt32Field total = PBField.initUInt32(0);
   
@@ -27,7 +27,7 @@ public final class FeedsProtocol$PersonFeedRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.FeedsProtocol.PersonFeedRsp
  * JD-Core Version:    0.7.0.1
  */

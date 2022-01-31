@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
-
-class aiqb
-  implements Runnable
+public abstract interface aiqb
 {
-  aiqb(aiqa paramaiqa, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  public abstract void a();
   
-  public void run()
-  {
-    this.jdField_a_of_type_Aiqa.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 1);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(ainn paramainn);
+  
+  public abstract void a(ainn paramainn, bcpw parambcpw);
+  
+  public abstract void b(ainn paramainn);
 }
 
 

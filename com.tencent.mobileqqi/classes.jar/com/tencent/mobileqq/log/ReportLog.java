@@ -17,9 +17,9 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.BaseApplication;
-import gen;
-import geo;
-import gep;
+import gab;
+import gac;
+import gad;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.PrintStream;
@@ -31,8 +31,8 @@ public class ReportLog
 {
   static final int jdField_a_of_type_Int = 10000001;
   public static ProgressDialog a;
-  private static Handler jdField_a_of_type_AndroidOsHandler = new gen(Looper.getMainLooper());
-  private static IHttpCommunicatorListener jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorListener = new geo();
+  private static Handler jdField_a_of_type_AndroidOsHandler = new gab(Looper.getMainLooper());
+  private static IHttpCommunicatorListener jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorListener = new gac();
   public static final String a = "/Tencent/MobileQQ/log/";
   private static Thread.UncaughtExceptionHandler jdField_a_of_type_JavaLangThread$UncaughtExceptionHandler;
   public static boolean a = false;
@@ -87,7 +87,7 @@ public class ReportLog
   
   public static void a(Activity paramActivity, String paramString)
   {
-    jdField_a_of_type_AndroidOsHandler.post(new gep(paramActivity, paramString));
+    jdField_a_of_type_AndroidOsHandler.post(new gad(paramActivity, paramString));
   }
   
   public static void a(Context paramContext, boolean paramBoolean)

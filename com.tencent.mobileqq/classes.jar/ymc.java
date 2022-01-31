@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ymc
-  implements Runnable
+class ymc
+  implements View.OnClickListener
 {
-  public ymc(ApolloRenderDriver paramApolloRenderDriver) {}
+  ymc(ymb paramymb, ymm paramymm, String paramString, bhuf parambhuf) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str = String.format("mainTicker.interval = %f;mainTicker.paused = false;renderTicker.paused = false;renderTicker.interval = %f;BK.Director.tickerResume();", new Object[] { Double.valueOf(60.0D / this.a.jdField_a_of_type_Int), Double.valueOf(60.0D / this.a.jdField_a_of_type_Int) });
-    this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine.a(str);
+    this.jdField_a_of_type_Ymm.a(false, this.jdField_a_of_type_JavaLangString, true);
+    this.jdField_a_of_type_Bhuf.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ymc
  * JD-Core Version:    0.7.0.1
  */

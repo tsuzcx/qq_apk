@@ -1,35 +1,20 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.Window;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.biz.subscribe.comment.CommentInputPopupWindow.1.1;
 
 public class yge
-  implements Animation.AnimationListener
+  implements ygb
 {
-  public yge(SpecailCareListActivity paramSpecailCareListActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(View paramView)
   {
-    this.a.c.clearAnimation();
-    ((FrameLayout)this.a.getWindow().getDecorView()).removeView(this.a.c);
-    this.a.c = null;
-    if (this.a.a != null)
-    {
-      this.a.a.a();
-      this.a.a = null;
+    if (this.a.isShowing()) {
+      ygd.a(this.a).runOnUiThread(new CommentInputPopupWindow.1.1(this));
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yge
  * JD-Core Version:    0.7.0.1
  */

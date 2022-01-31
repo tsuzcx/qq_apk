@@ -1,27 +1,44 @@
+import android.content.res.Resources;
 import android.os.Message;
-import com.tencent.mobileqq.data.SearchHistory;
-import com.tencent.mobileqq.search.HistorySearchEntryModel;
-import com.tencent.util.MqqWeakReferenceHandler;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
-class ahqy
-  implements Runnable
+public class ahqy
+  extends MqqHandler
 {
-  ahqy(ahqx paramahqx, SearchHistory paramSearchHistory, long paramLong) {}
+  public ahqy(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (HistorySearchEntryModel.a(this.jdField_a_of_type_Ahqx.a, this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory))
+    switch (paramMessage.what)
     {
-      Message localMessage = this.jdField_a_of_type_Ahqx.a.a.obtainMessage();
-      localMessage.what = 3;
-      localMessage.obj = new Long(this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_Ahqx.a.a.sendMessage(localMessage);
+    case 1013: 
+    case 1015: 
+    case 1017: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (TroopWithCommonFriendsFragment.a(this.a) == null);
+      TroopWithCommonFriendsFragment.a(this.a).notifyDataSetChanged();
+      return;
+    case 1014: 
+      paramMessage = this.a.a.getResources().getString(2131720551);
+      QQToast.a(this.a.a, 1, paramMessage, 0).b(this.a.a());
+      return;
+    case 1016: 
+      QQToast.a(this.a.a, this.a.getString(2131719768), 0).b(this.a.a());
+      return;
     }
+    QQToast.a(this.a.a, this.a.getString(2131719755), 0).b(this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahqy
  * JD-Core Version:    0.7.0.1
  */

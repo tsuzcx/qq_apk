@@ -1,21 +1,27 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
 
 public class ahjm
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  public ahjm(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public ahjm(Face2FaceAddContactFragment paramFace2FaceAddContactFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    EffectsCameraCaptureFragment.a(this.a).setAlpha(1.0F);
+    int i = Face2FaceAddContactFragment.a(this.a).length();
+    if (i >= 4) {
+      return;
+    }
+    Face2FaceAddContactFragment.a(this.a, paramView, i);
+    i = Face2FaceAddContactFragment.a(this.a).length();
+    Face2FaceAddContactFragment.a(this.a, i);
+    Face2FaceAddContactFragment.b(this.a, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahjm
  * JD-Core Version:    0.7.0.1
  */

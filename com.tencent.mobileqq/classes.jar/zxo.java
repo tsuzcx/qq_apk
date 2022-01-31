@@ -1,38 +1,21 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.ar.ARMusicController;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForPtt;
 
-public class zxo
-  implements MediaPlayer.OnPreparedListener
+class zxo
+  implements bhuk
 {
-  public zxo(ARMusicController paramARMusicController) {}
+  zxo(zxm paramzxm, afxu paramafxu, MessageForPtt paramMessageForPtt, bhuf parambhuf) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void OnClick(View paramView, int paramInt)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMusicController", 2, "load bg music success. : " + ARMusicController.b(this.a));
-      }
-      this.a.a.seekTo(0);
-      ARMusicController.b(this.a, true);
-      if (ARMusicController.b(this.a))
-      {
-        this.a.a.start();
-        ARMusicController.c(this.a, false);
-      }
-      return;
-    }
-    catch (Exception paramMediaPlayer)
-    {
-      paramMediaPlayer.printStackTrace();
-    }
+    this.jdField_a_of_type_Zxm.a(this.jdField_a_of_type_Afxu, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    this.jdField_a_of_type_Zxm.b();
+    this.jdField_a_of_type_Bhuf.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zxo
  * JD-Core Version:    0.7.0.1
  */

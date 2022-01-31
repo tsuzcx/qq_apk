@@ -1,36 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.activity.PublicAccountChatActivity;
-import java.util.List;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
 
 public class dgr
-  implements BusinessObserver
+  implements DialogInterface.OnClickListener
 {
-  public dgr(PublicAccountChatActivity paramPublicAccountChatActivity) {}
+  public dgr(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBundle != null)
-    {
-      paramInt = paramBundle.getInt("update_type");
-      if (paramInt != 2) {}
-    }
-    do
-    {
-      return;
-      if (paramInt == 1) {
-        PublicAccountChatActivity.a(this.a).a();
-      }
-      paramBundle = PublicAccountChatActivity.a(this.a).a(this.a.b, this.a.c());
-      PublicAccountChatActivity.a(this.a, paramBundle);
-    } while ((paramBundle == null) || (paramBundle.isEmpty()));
-    this.a.d(true);
+    RegisterSendUpSms.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dgr
  * JD-Core Version:    0.7.0.1
  */

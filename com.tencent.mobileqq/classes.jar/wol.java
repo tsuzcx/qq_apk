@@ -1,22 +1,30 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
 
 public class wol
-  extends View.AccessibilityDelegate
+  extends uln<wop>
 {
-  public wol(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
+  private Stream<whz> a;
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void a(wop paramwop)
   {
-    if (paramInt != 4096) {
-      super.sendAccessibilityEvent(paramView, paramInt);
+    this.a = Stream.of(paramwop).map(new ThreadOffFunction("Q.qqstory.home.data.FeedCommentBackgroundSyncer", 2)).map(new won(null));
+    this.a.subscribe(new wom(this));
+  }
+  
+  public void c()
+  {
+    wxe.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull consumer destroy");
+    if (this.a != null)
+    {
+      this.a.cancel();
+      this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wol
  * JD-Core Version:    0.7.0.1
  */

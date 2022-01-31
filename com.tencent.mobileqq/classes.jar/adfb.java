@@ -1,58 +1,33 @@
-import android.annotation.TargetApi;
-import android.os.Handler;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class adfb
-  implements SeekBar.OnSeekBarChangeListener
+  extends altm
 {
-  public adfb(VideoFilePresenter paramVideoFilePresenter) {}
+  public adfb(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null))
+    if (paramBoolean)
     {
-      VideoFilePresenter.a(this.a, VideoFilePresenter.b(this.a, paramInt));
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.b(VideoFilePresenter.a(this.a));
-      if (QLog.isDevelopLevel()) {
-        QLog.d("#@#@", 1, "onProgressChanged userPos[" + VideoFilePresenter.a(this.a) + "]");
+      paramString = ((alto)this.a.app.getManager(51)).e(this.a.a + "");
+      if (paramString != null)
+      {
+        this.a.e = paramString.name;
+        JoinDiscussionActivity.a(this.a);
       }
     }
-  }
-  
-  @TargetApi(16)
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (!this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()))
-    {
-      this.a.b = false;
+    while (!QLog.isColorLevel()) {
       return;
     }
-    VideoFilePresenter.c(this.a);
-    VideoFilePresenter.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    this.a.b = this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying();
-    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.pause();
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a(null);
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {
-      return;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("##########", 1, "mMediaPlayer sekTo [" + VideoFilePresenter.a(this.a) + "]");
-    }
-    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.seekTo(VideoFilePresenter.a(this.a));
+    QLog.d("IphoneTitleBarActivity", 2, "get owner name failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adfb
  * JD-Core Version:    0.7.0.1
  */

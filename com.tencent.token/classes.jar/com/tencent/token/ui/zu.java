@@ -1,20 +1,22 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.token.cy;
+import com.tencent.token.global.RqdApplication;
 
-final class zu
-  implements View.OnClickListener
+class zu
+  implements DialogInterface.OnClickListener
 {
-  zu(SettingPageActivity paramSettingPageActivity) {}
+  zu(StartPwdGestureDeleteActivity paramStartPwdGestureDeleteActivity, Context paramContext) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent(this.a, VerifyStartScanActivity.class);
-    paramView.putExtra("source_from", 1);
-    this.a.startActivity(paramView);
-    SettingPageActivity.mShowQRNew = false;
+    cy.a().a(this.a);
+    RqdApplication.i();
+    this.b.setResult(35);
+    this.b.finish();
   }
 }
 

@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.activity.bless;
 
+import ahcn;
 import android.graphics.drawable.AnimationDrawable;
 
 public class BlessActivity$AnimationDrawable2
   extends AnimationDrawable
 {
-  private BlessActivity.IAnimationFinishListener jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$IAnimationFinishListener;
+  private ahcn jdField_a_of_type_Ahcn;
   private boolean jdField_a_of_type_Boolean;
   
   public BlessActivity$AnimationDrawable2(BlessActivity paramBlessActivity) {}
@@ -16,9 +17,9 @@ public class BlessActivity$AnimationDrawable2
     this.jdField_a_of_type_Boolean = false;
   }
   
-  public void a(BlessActivity.IAnimationFinishListener paramIAnimationFinishListener)
+  public void a(ahcn paramahcn)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$IAnimationFinishListener = paramIAnimationFinishListener;
+    this.jdField_a_of_type_Ahcn = paramahcn;
   }
   
   public boolean selectDrawable(int paramInt)
@@ -27,8 +28,8 @@ public class BlessActivity$AnimationDrawable2
     if ((paramInt != 0) && (paramInt == getNumberOfFrames() - 1) && (!this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_Boolean = true;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$IAnimationFinishListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$IAnimationFinishListener.a();
+      if (this.jdField_a_of_type_Ahcn != null) {
+        this.jdField_a_of_type_Ahcn.a();
       }
     }
     return bool;
@@ -36,7 +37,7 @@ public class BlessActivity$AnimationDrawable2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessActivity.AnimationDrawable2
  * JD-Core Version:    0.7.0.1
  */

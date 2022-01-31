@@ -1,56 +1,84 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public final class ujk
-  implements Runnable
+public class ujk
+  extends JobSegment<List<uja>, List<uiz>>
+  implements uiv
 {
-  public ujk(QQAppInterface paramQQAppInterface, int paramInt, String paramString, long paramLong) {}
+  private ArrayList<uiz> jdField_a_of_type_JavaUtilArrayList;
+  private List<uit> jdField_a_of_type_JavaUtilList;
+  private ujn jdField_a_of_type_Ujn;
   
-  public void run()
+  public ujk(ujn paramujn)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    do
+    this.jdField_a_of_type_Ujn = paramujn;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  private List<uit> a(long paramLong1, long paramLong2)
+  {
+    int i = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getInt("kmeans_interval_txt", 1);
+    ArrayList localArrayList = new ArrayList();
+    List localList = ((uio)uwa.a(30)).a(paramLong1, paramLong2);
+    if (localList != null) {
+      localArrayList.addAll(localList);
+    }
+    localArrayList.add(new uix(i, this.jdField_a_of_type_Ujn));
+    return localArrayList;
+  }
+  
+  private void a(List<uja> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      do
-      {
-        return;
-        if (this.jdField_a_of_type_Int != 1) {
-          break;
-        }
-        localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_JavaLangString);
-      } while (localObject == null);
-      HashMap localHashMap = new HashMap(3);
-      localHashMap.put("m_num", ((TroopInfo)localObject).wMemberNum + "");
-      StatisticCollector.a(BaseApplication.getContext()).a(null, "AIOWebTC", false, 0L, 0L, localHashMap, "", false);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    } while (localObject == null);
-    Object localObject = ((List)localObject).iterator();
-    do
-    {
-      if (!((Iterator)localObject).hasNext()) {
-        break;
-      }
-    } while (((ChatMessage)((Iterator)localObject).next()).msgUid != this.jdField_a_of_type_Long);
-    for (int i = 1;; i = 2)
-    {
-      localObject = new HashMap(3);
-      ((HashMap)localObject).put("m_i", i + "");
-      StatisticCollector.a(BaseApplication.getContext()).a(null, "AIOWebmsgposition", false, 0L, 0L, (HashMap)localObject, "", false);
+      uit localuit = (uit)this.jdField_a_of_type_JavaUtilList.remove(0);
+      localuit.a(paramList);
+      localuit.a(this);
       return;
     }
+    paramList = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramList.hasNext()) {
+      uio.a((uiz)paramList.next(), 10);
+    }
+    notifyResult(this.jdField_a_of_type_JavaUtilArrayList);
+  }
+  
+  protected void a(JobContext paramJobContext, List<uja> paramList)
+  {
+    wxe.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.AlbumSplitSegment", "start runSegment piccount=%d", new Object[] { Integer.valueOf(paramList.size()) });
+    if (paramList.isEmpty())
+    {
+      notifyResult(this.jdField_a_of_type_JavaUtilArrayList);
+      return;
+    }
+    uio.b(paramList);
+    this.jdField_a_of_type_JavaUtilList = a(((uja)paramList.get(0)).b, ((uja)paramList.get(paramList.size() - 1)).b);
+    a(paramList);
+  }
+  
+  public void a(List<uiz> paramList, List<uja> paramList1)
+  {
+    if (paramList != null)
+    {
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        uiz localuiz = (uiz)localIterator.next();
+        wxe.b("Q.qqstory.recommendAlbum.logic.StoryScanManager.AlbumSplitSegment", "onFilterFinish album:" + localuiz.toString());
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    }
+    a(paramList1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ujk
  * JD-Core Version:    0.7.0.1
  */

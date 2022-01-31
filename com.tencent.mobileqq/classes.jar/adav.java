@@ -1,34 +1,46 @@
-import com.tencent.mobileqq.filemanager.data.search.FileManagerSearchEngine;
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
-import java.util.List;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.widget.AbsListView;
 
 public class adav
-  implements Runnable
+  implements bhtv
 {
-  public ISearchListener a;
-  public SearchRequest a;
+  public adav(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  private adav(FileManagerSearchEngine paramFileManagerSearchEngine) {}
-  
-  public void run()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    SearchRequest localSearchRequest = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest;
-    String str = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a;
-    List localList = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine.a(localSearchRequest);
-    try
+    FriendProfileCardActivity.a(this.a, paramInt1);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (this.a.jdField_a_of_type_Int != paramInt) {
+      this.a.jdField_a_of_type_Int = paramInt;
+    }
+    switch (paramInt)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null) && (localSearchRequest == this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest) && (str.equals(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a))) {
-        this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localList, 1);
+    default: 
+      abvl.a().a("vas_profilecard_list");
+    }
+    for (;;)
+    {
+      if (FriendProfileCardActivity.a(this.a) != null) {
+        FriendProfileCardActivity.a(this.a).a(paramInt);
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.onScrollStateChanged(paramAbsListView, paramInt);
       }
       return;
+      abvl.a().a("vas_profilecard_list", false);
     }
-    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adav
  * JD-Core Version:    0.7.0.1
  */

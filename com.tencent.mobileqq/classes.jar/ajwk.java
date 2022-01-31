@@ -1,15 +1,9 @@
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
-
 public class ajwk
-  implements Runnable
 {
-  public ajwk(TroopInteractGiftAnimationController paramTroopInteractGiftAnimationController, MessageForDeliverGiftTips paramMessageForDeliverGiftTips) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
-  }
+  public int a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
 }
 
 

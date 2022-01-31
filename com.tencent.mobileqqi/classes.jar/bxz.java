@@ -1,22 +1,25 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivity;
 
 public class bxz
-  extends AccountObserver
+  implements View.OnClickListener
 {
-  public bxz(AccountManageActivity paramAccountManageActivity) {}
+  public bxz(ChatActivity paramChatActivity) {}
   
-  public void onDeleteAccount(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Switch_Account", 2, "onDeleteAccount isSuccess " + paramBoolean);
-    }
+    ChatActivity.a(this.a);
+    paramView = new Intent();
+    paramView.setAction("com.i.qqreader.aioback2reader");
+    paramView.putExtra("bookid", ChatActivity.a(this.a));
+    this.a.sendBroadcast(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bxz
  * JD-Core Version:    0.7.0.1
  */

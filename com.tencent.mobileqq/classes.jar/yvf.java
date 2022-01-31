@@ -1,29 +1,28 @@
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqavopensdk.AVEngineEventHandler;
-import com.tencent.qqavopensdk.PBuffer.SSOTunnelEvent.CsCmdCallback;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.troopgift.RadioViewPager;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class yvf
-  implements SSOTunnelEvent.CsCmdCallback
+  implements View.OnClickListener
 {
-  public yvf(AVEngineWalper paramAVEngineWalper, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
+  public yvf(RadioViewPager paramRadioViewPager, Context paramContext, String paramString) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper.a.b(1, "ctrl Params download failed!!!!");
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    ThreadManager.getUIHandler().post(new yvg(this, paramArrayOfByte));
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("selfSet_leftViewText", alud.a(2131713092));
+    paramView.putExtra("hide_more_button", true);
+    paramView.putExtra("hide_operation_bar", true);
+    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yvf
  * JD-Core Version:    0.7.0.1
  */

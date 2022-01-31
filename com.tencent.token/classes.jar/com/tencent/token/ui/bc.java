@@ -1,25 +1,44 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mm.sdk.openapi.IWXAPI;
+import com.tencent.mm.sdk.openapi.SendMessageToWX.Req;
+import com.tencent.mm.sdk.openapi.WXMediaMessage;
+import com.tencent.mm.sdk.openapi.WXWebpageObject;
+import com.tencent.token.ch;
+import com.tencent.token.utils.x;
 
-final class bc
+class bc
   implements View.OnClickListener
 {
-  bc(BaseActivity paramBaseActivity1, int paramInt, BaseActivity paramBaseActivity2) {}
+  bc(AssistantRecommendFriendQrcode paramAssistantRecommendFriendQrcode) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    this.c.dismissDialog();
-    if (this.a == 1)
+    ch.a().a(System.currentTimeMillis(), 62);
+    if (AssistantRecommendFriendQrcode.access$200(this.a).isWXAppInstalled())
     {
-      this.c.gotoVerify(BaseActivity.access$100(this.c));
+      if (AssistantRecommendFriendQrcode.access$200(this.a).getWXAppSupportAPI() >= 553779201)
+      {
+        paramView = new WXWebpageObject();
+        paramView.webpageUrl = "http://m.aq.qq.com/lp?i=18";
+        paramView = new WXMediaMessage(paramView);
+        paramView.title = this.a.getResources().getString(2131231438);
+        paramView.description = AssistantRecommendFriendQrcode.access$400(this.a);
+        paramView.setThumbImage(x.a(this.a.getResources(), 2130838049));
+        SendMessageToWX.Req localReq = new SendMessageToWX.Req();
+        localReq.transaction = String.valueOf(System.currentTimeMillis());
+        localReq.message = paramView;
+        localReq.scene = 1;
+        AssistantRecommendFriendQrcode.access$200(this.a).sendReq(localReq);
+        return;
+      }
+      this.a.showToast(this.a.getString(2131231444));
       return;
     }
-    paramView = new Intent(this.b, WtLoginAccountInput.class);
-    paramView.putExtra("page_id", 4);
-    this.c.startActivity(paramView);
+    AssistantRecommendFriendQrcode.access$300(this.a);
   }
 }
 

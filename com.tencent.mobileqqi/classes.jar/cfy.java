@@ -1,87 +1,50 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.DetailProfileActivity;
+import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.RecentEmotionData;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.service.profile.ProfileUtil;
+import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-public final class cfy
-  extends AsyncTask
+public class cfy
+  extends Thread
 {
-  public cfy(QQAppInterface paramQQAppInterface, Emoticon paramEmoticon) {}
+  public cfy(DetailProfileActivity paramDetailProfileActivity, String paramString) {}
   
-  protected Integer a(Void... paramVarArgs)
+  public void run()
   {
-    for (;;)
+    Card localCard = ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    if (localCard != null)
     {
-      int j;
-      String str;
-      Object localObject;
-      int k;
-      try
-      {
-        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-        j = Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId).intValue();
-        str = this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId;
-        localObject = paramVarArgs.a(RecentEmotionData.class, false, null, null, null, null, null, null);
-        if ((localObject == null) || (((List)localObject).size() == 0))
-        {
-          localObject = new RecentEmotionData();
-          ChatActivityFacade.a((RecentEmotionData)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0, 5, j, str);
-          paramVarArgs.a((Entity)localObject);
-          paramVarArgs.a();
-          return Integer.valueOf(0);
-        }
-        int i = ChatActivityFacade.a((List)localObject, 5, j, str);
-        RecentEmotionData localRecentEmotionData;
-        if (i >= 0)
-        {
-          localRecentEmotionData = (RecentEmotionData)((List)localObject).get(i);
-          ((List)localObject).remove(localRecentEmotionData);
-          paramVarArgs.b(localRecentEmotionData);
-        }
-        k = ((List)localObject).size();
-        if (k == 8)
-        {
-          i = 0;
-          if (i < k - 1)
-          {
-            localRecentEmotionData = (RecentEmotionData)((List)localObject).get(i);
-            localRecentEmotionData.type = ((RecentEmotionData)((List)localObject).get(i + 1)).type;
-            localRecentEmotionData.emoIndex = ((RecentEmotionData)((List)localObject).get(i + 1)).emoIndex;
-            localRecentEmotionData.emoPath = ((RecentEmotionData)((List)localObject).get(i + 1)).emoPath;
-            paramVarArgs.a(localRecentEmotionData);
-            i += 1;
-            continue;
-          }
-          localObject = (RecentEmotionData)((List)localObject).get(k - 1);
-          ChatActivityFacade.a((RecentEmotionData)localObject, ((RecentEmotionData)localObject).uin, ((RecentEmotionData)localObject).emoId, 5, j, str);
-          paramVarArgs.a((Entity)localObject);
-          continue;
-        }
-        localObject = new RecentEmotionData();
+      this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_JavaLangString = localCard.strSign;
+      this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_b_of_type_JavaLangString = localCard.strNick;
+      this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Int = ((int)localCard.lBirthday);
+      this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Byte = ((byte)localCard.shGender);
+      this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.runOnUiThread(new cfz(this));
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.Detail", 2, "需要去拉取出生日期信息");
       }
-      catch (Exception paramVarArgs)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(ChatActivityFacade.a(), 2, paramVarArgs.getMessage());
-        }
-        return Integer.valueOf(1);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler = ((CardHandler)this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(2));
       }
-      ChatActivityFacade.a((RecentEmotionData)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), k, 5, j, str);
-      paramVarArgs.b((Entity)localObject);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler.b(localCard.uin, null);
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder(150);
+      localStringBuilder.append("initCard| uin = ").append(this.jdField_a_of_type_JavaLangString);
+      if (localCard != null) {
+        localStringBuilder.append(", id = ").append(localCard.getId()).append(", nick = ").append(localCard.strNick).append(", gender = ").append(localCard.shGender).append(", birthday = ").append(localCard.lBirthday).append(", sig = ").append(localCard.strSign).append(", label = ").append(ProfileUtil.a(localCard.getTagInfoArray()));
+      }
+      QLog.d("Q.profilecard.Detail", 2, localStringBuilder.toString());
     }
   }
-  
-  protected void a(Integer paramInteger) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cfy
  * JD-Core Version:    0.7.0.1
  */

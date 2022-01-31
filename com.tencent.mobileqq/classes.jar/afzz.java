@@ -1,30 +1,21 @@
-import com.tencent.mobileqq.app.NowHandler;
-import com.tencent.mobileqq.now.ChannelResponse;
-import com.tencent.mobileqq.now.NowAppHelper;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.flashchat.FlashChatManager;
 
-class afzz
-  extends DownloadListener
+public class afzz
+  implements View.OnClickListener
 {
-  afzz(afzy paramafzy) {}
+  public afzz(ScribbleItemBuilder paramScribbleItemBuilder) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onClick(View paramView)
   {
-    super.onDone(paramDownloadTask);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppNowHandler.a("downloadApk", "", "", "", "", paramDownloadTask.a());
-    if (QLog.isColorLevel()) {
-      QLog.d(NowAppHelper.a, 2, "doShortCutAction download onDone,task=" + paramDownloadTask);
+    MessageRecord localMessageRecord = (MessageRecord)paramView.getTag();
+    if (localMessageRecord != null) {
+      ((FlashChatManager)this.a.a.getManager(217)).a(paramView.getContext(), localMessageRecord);
     }
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(NowAppHelper.a, 2, "doShortCutAction download onStart,apkUrl=" + this.a.jdField_a_of_type_ComTencentMobileqqNowChannelResponse.downloadLink);
-    }
-    return super.onStart(paramDownloadTask);
   }
 }
 

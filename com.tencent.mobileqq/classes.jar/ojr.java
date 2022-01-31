@@ -1,69 +1,19 @@
-import android.util.SparseBooleanArray;
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.LineLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.model.TextInfo;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class ojr
-  implements EditTextDialog.EditTextDialogEventListener
+class ojr
+  implements ViewBase.OnClickListener
 {
-  private ojr(DoodleLayout paramDoodleLayout) {}
+  ojr(ojn paramojn) {}
   
-  public void a()
+  public void onClick(ViewBase paramViewBase)
   {
-    this.a.a().c();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a.a().a(paramInt);
-  }
-  
-  public void a(boolean paramBoolean, TextInfo paramTextInfo)
-  {
-    TextLayer localTextLayer = this.a.a();
-    if (paramBoolean)
-    {
-      localTextLayer.a(true);
-      switch (this.a.b)
-      {
-      }
-      for (;;)
-      {
-        this.a.c(3);
-        return;
-        this.a.a().b(false);
-      }
-    }
-    if (paramTextInfo.jdField_a_of_type_Int != -1) {
-      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, true);
-    }
-    for (;;)
-    {
-      localTextLayer.a(paramTextInfo);
-      localTextLayer.a(false);
-      this.a.a(new View[] { this.a.jdField_a_of_type_AndroidWidgetRelativeLayout });
-      this.a.c(0);
-      this.a.d(0);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener.i();
-      return;
-      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, false);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener.b(3, paramInt);
-    }
+    ((ola)this.a.jdField_a_of_type_Omg).a(this.a.jdField_a_of_type_Omt, ojm.a(this.a.jdField_a_of_type_Omt, 1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ojr
  * JD-Core Version:    0.7.0.1
  */

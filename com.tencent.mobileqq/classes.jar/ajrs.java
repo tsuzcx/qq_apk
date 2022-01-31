@@ -1,34 +1,24 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.mobileqq.troop.widget.BorderURLImageView;
-import mqq.util.WeakReference;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.RunnableUpdateThumb;
 
 public class ajrs
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ajrs(AvatarWallAdapter paramAvatarWallAdapter, BorderURLImageView paramBorderURLImageView, String paramString) {}
+  public ajrs(NewFlowCameraActivity.RunnableUpdateThumb paramRunnableUpdateThumb, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    Object localObject;
-    Setting localSetting;
-    do
-    {
-      do
-      {
-        return;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-        localSetting = (Setting)((EntityManager)localObject).a(Setting.class, "troop_" + this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b);
-        ((EntityManager)localObject).a();
-      } while (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_MqqUtilWeakReference == null);
-      localObject = (Activity)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_MqqUtilWeakReference.get();
-    } while ((localObject == null) || (((Activity)localObject).isFinishing()));
-    ((Activity)localObject).runOnUiThread(new ajrt(this, localSetting));
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    paramValueAnimator = (RelativeLayout.LayoutParams)NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$RunnableUpdateThumb.this$0).getLayoutParams();
+    paramValueAnimator.width = ((int)((this.jdField_a_of_type_Int - this.b) * f1 + this.b));
+    paramValueAnimator.height = ((int)((this.c - this.d) * f1 + this.d));
+    paramValueAnimator.leftMargin = ((int)((this.e + 0) * f1 + 0.0F));
+    paramValueAnimator.bottomMargin = ((int)(f1 * (this.f + 0) + 0.0F));
+    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$RunnableUpdateThumb.this$0).setLayoutParams(paramValueAnimator);
   }
 }
 

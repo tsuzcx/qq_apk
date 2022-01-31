@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.activity.MayKnowManActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-class dbl
-  implements Runnable
+public class dbl
 {
-  dbl(dbk paramdbk, List paramList) {}
-  
-  public void run()
-  {
-    MayKnowManActivity.a(this.jdField_a_of_type_Dbk.a.a, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Dbk.a.a.b.a());
-  }
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
 }
 
 

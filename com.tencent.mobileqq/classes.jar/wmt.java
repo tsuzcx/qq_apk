@@ -1,86 +1,52 @@
-import android.os.AsyncTask;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.contacts.base.CardViewController;
-import com.tencent.mobileqq.app.MayknowRecommendManager;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class wmt
-  extends AsyncTask
+class wmt
+  extends ulw
 {
-  public wmt(CardViewController paramCardViewController, boolean paramBoolean1, boolean paramBoolean2) {}
+  wmt(wms paramwms) {}
   
-  protected List a(Void... paramVarArgs)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
-    int j = 0;
-    int i = 0;
-    Object localObject = ((MayknowRecommendManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(158)).a();
-    paramVarArgs = new ArrayList();
-    if (this.b)
-    {
-      localObject = CardViewController.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController, (List)localObject);
-      j = CardViewController.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController);
-      int k = ((List)localObject).size();
-      while (i < k - j)
-      {
-        paramVarArgs.add(((List)localObject).get(i));
-        i += 1;
-      }
-    }
-    String[] arrayOfString = CardViewController.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController, "card_displaying_list_sp");
-    if (arrayOfString != null)
-    {
-      i = j;
-      while (i < ((List)localObject).size())
-      {
-        String str = ((MayKnowRecommend)((List)localObject).get(i)).uin;
-        if (CardViewController.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController, str, arrayOfString)) {
-          paramVarArgs.add(((List)localObject).get(i));
-        }
-        i += 1;
-      }
-    }
-    return paramVarArgs;
-  }
-  
-  protected void a(List paramList)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      Object localObject = new StringBuilder();
-      int i = 0;
-      while (i < paramList.size())
-      {
-        ((StringBuilder)localObject).append(((MayKnowRecommend)paramList.get(i)).uin);
-        ((StringBuilder)localObject).append(";");
-        i += 1;
-      }
-      localObject = ((StringBuilder)localObject).toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("CardViewController", 2, "getDisplayList 更新配置后保存显示列表 displayingStr ");
-      }
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label109;
-      }
-      CardViewController.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController, (String)localObject);
-    }
-    for (;;)
-    {
-      CardViewController.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController, paramList);
-      CardViewController.d(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController);
+    paramInt = 1;
+    if ((this.a.a == null) || (!TextUtils.equals(paramString, this.a.a.uid))) {
       return;
-      label109:
-      CardViewController.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController, null);
     }
+    if (paramBoolean1)
+    {
+      paramString = this.a.a;
+      if (paramBoolean2)
+      {
+        paramString.isSubscribe = paramInt;
+        paramString = (ulu)vls.a().getManager(181);
+        if (!paramBoolean2) {
+          break label128;
+        }
+        if (!paramString.h()) {
+          paramString.b();
+        }
+        QQToast.a(vls.a(), 2, alud.a(2131711334), 0).a();
+      }
+      for (;;)
+      {
+        wms.a(this.a).e();
+        wms.a(this.a).c();
+        return;
+        paramInt = 0;
+        break;
+        label128:
+        QQToast.a(vls.a(), 2, alud.a(2131711330), 0).a();
+      }
+    }
+    QQToast.a(vls.a(), 1, alud.a(2131711339), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wmt
  * JD-Core Version:    0.7.0.1
  */

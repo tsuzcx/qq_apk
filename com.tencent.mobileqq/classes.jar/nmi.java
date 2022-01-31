@@ -1,28 +1,25 @@
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler;
-import java.util.ArrayList;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import com.tencent.qphone.base.util.QLog;
 
 public class nmi
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public nmi(BatchGetVideoInfoHandler paramBatchGetVideoInfoHandler, BatchGetVideoInfo paramBatchGetVideoInfo) {}
+  public nmi(AdControlView paramAdControlView) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.b(1);
-  }
-  
-  public void a(ArrayList paramArrayList)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.a(1, paramArrayList);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    QLog.d("Ron", 2, "alpha:" + f);
+    AdControlView.a(this.a).setAlpha(f);
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nmi
  * JD-Core Version:    0.7.0.1
  */

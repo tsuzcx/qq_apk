@@ -1,35 +1,21 @@
-import android.os.SystemClock;
-import com.tencent.av.avgesture.AVGestureWrapper;
-import com.tencent.mobileqq.shortvideo.facedancegame.FaceDanceDetectTask;
-import com.tencent.mobileqq.shortvideo.facedancegame.FaceDanceDetectTask.GestureDetectTaskResult;
-import com.tencent.mobileqq.shortvideo.facedancegame.GestureDetectManager;
-import com.tencent.mobileqq.shortvideo.facedancegame.IGestureDetectCallBack;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchActivity;
 
 public class aibe
-  implements Runnable
+  extends aruk
 {
-  public aibe(GestureDetectManager paramGestureDetectManager, byte[] paramArrayOfByte, int paramInt1, int paramInt2, IGestureDetectCallBack paramIGestureDetectCallBack) {}
+  public aibe(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    long l = SystemClock.elapsedRealtimeNanos();
-    AVGestureWrapper localAVGestureWrapper = new AVGestureWrapper();
-    boolean bool = localAVGestureWrapper.doCalc(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b, 0, 0, true);
-    FaceDanceDetectTask.a("AVGestureWrapper.doCalc", l, SystemClock.elapsedRealtimeNanos());
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFacedancegameIGestureDetectCallBack != null)
-    {
-      FaceDanceDetectTask.GestureDetectTaskResult localGestureDetectTaskResult = new FaceDanceDetectTask.GestureDetectTaskResult();
-      localGestureDetectTaskResult.jdField_a_of_type_Boolean = bool;
-      if (bool) {
-        localGestureDetectTaskResult.jdField_a_of_type_JavaLangString = localAVGestureWrapper.getGestureType();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoFacedancegameIGestureDetectCallBack.a(localGestureDetectTaskResult);
-    }
+    azqs.b(this.a.a, "dc00898", "", "", "0X800A0BF", "0X800A0BF", 2, 0, "", "", "", "");
+    FileSearchActivity.a(this.a.getActivity(), 13, this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aibe
  * JD-Core Version:    0.7.0.1
  */

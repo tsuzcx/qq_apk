@@ -1,19 +1,63 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngSoLoader;
+import com.tencent.image.ProtocolDownloader;
+import com.tencent.image.URLDrawableParams;
+import java.io.File;
 
-class aavo
-  implements Runnable
+public class aavo
+  extends URLDrawableParams
 {
-  aavo(aavn paramaavn, boolean paramBoolean, byte[] paramArrayOfByte, Object paramObject) {}
+  Context a;
   
-  public void run()
+  public aavo(Context paramContext, File paramFile)
   {
-    ArkLocalAppMgr.a(this.jdField_a_of_type_Aavn.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfByte, (ArkLocalAppMgr.UpdateAppByNameTask)this.jdField_a_of_type_JavaLangObject);
+    super(paramContext);
+    this.a = paramContext;
+    bayu.a = paramFile;
+    com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new basi(paramFile);
+  }
+  
+  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
+  {
+    boolean bool = true;
+    if (("http".equals(paramString)) || ("https".equals(paramString)))
+    {
+      if (BaseApplicationImpl.sProcessId == 1) {}
+      for (;;)
+      {
+        return new batt(bool, paramObject);
+        bool = false;
+      }
+    }
+    return null;
+  }
+  
+  public String doGetLocalFilePath(String paramString)
+  {
+    return null;
+  }
+  
+  public ApngSoLoader getApngSoLoader()
+  {
+    return bdua.a();
+  }
+  
+  public Drawable getDefaultLoadingDrawable()
+  {
+    return this.a.getResources().getDrawable(2130847367);
+  }
+  
+  public Drawable getDefualtFailedDrawable()
+  {
+    return this.a.getResources().getDrawable(2130847367);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aavo
  * JD-Core Version:    0.7.0.1
  */

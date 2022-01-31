@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class Qworkflow$Operation
-  extends MessageMicro
+  extends MessageMicro<Operation>
 {
   public static final int LOCAL = 1;
   public static final int URL_BACKGROUND = 3;
@@ -25,7 +25,7 @@ public final class Qworkflow$Operation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.trunk.Qworkflow.Qworkflow.Operation
  * JD-Core Version:    0.7.0.1
  */

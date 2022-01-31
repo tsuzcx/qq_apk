@@ -1,26 +1,16 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadListener;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class afkb
-  implements VideoFeedsUploader.UploadListener
+class afkb
+  implements DialogInterface.OnClickListener
 {
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo) {}
+  afkb(afjw paramafjw) {}
   
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo, int paramInt) {}
-  
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult)
-  {
-    ThreadManager.getUIHandler().post(new afkc(this, paramUploadInfo, paramUploadResult));
-  }
-  
-  public void b(VideoFeedsUploader.UploadInfo paramUploadInfo) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afkb
  * JD-Core Version:    0.7.0.1
  */

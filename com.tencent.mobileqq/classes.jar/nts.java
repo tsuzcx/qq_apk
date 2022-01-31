@@ -1,21 +1,53 @@
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.takevideo.TakeVideoButtonMainPart.OnTakeVideoButtonClickListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 
 public class nts
-  implements TakeVideoButtonMainPart.OnTakeVideoButtonClickListener
+  implements TouchWebView.OnScrollChangedListener
 {
-  public nts(QQStoryMainController paramQQStoryMainController) {}
+  public nts(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
   
-  public void a()
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    StoryReportor.a("video_shoot", "clk_shoot", 0, 0, new String[0]);
-    this.a.a(false, true, 1, null);
+    paramInt1 = paramInt2 - paramInt4;
+    if (paramInt1 > 0)
+    {
+      if (this.a.jdField_b_of_type_Int < 0) {
+        this.a.jdField_b_of_type_Int = 0;
+      }
+      paramView = this.a;
+      paramView.jdField_b_of_type_Int = (paramInt1 + paramView.jdField_b_of_type_Int);
+      if ((this.a.jdField_b_of_type_Int > this.a.jdField_c_of_type_Int) && (this.a.jdField_c_of_type_Boolean))
+      {
+        this.a.jdField_c_of_type_Boolean = false;
+        if (this.a.jdField_a_of_type_AndroidViewView != null)
+        {
+          this.a.a(this.a.jdField_b_of_type_AndroidViewView, 0);
+          this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+          this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
+        }
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (this.a.jdField_b_of_type_Int > 0) {
+          this.a.jdField_b_of_type_Int = 0;
+        }
+        paramView = this.a;
+        paramView.jdField_b_of_type_Int = (paramInt1 + paramView.jdField_b_of_type_Int);
+      } while ((-this.a.jdField_b_of_type_Int <= this.a.jdField_c_of_type_Int) || (this.a.jdField_c_of_type_Boolean));
+      this.a.jdField_c_of_type_Boolean = true;
+    } while (this.a.jdField_a_of_type_AndroidViewView == null);
+    this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nts
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@color/a6q" android:paddingLeft="@dimen/m1" android:paddingRight="@dimen/m1" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="36.0dip">
+            <ImageView android:id="@id/aa7" android:layout_width="@dimen/lu" android:layout_height="@dimen/lu" android:src="@raw/room_manager_icon" />
+            <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:layout_width="wrap_content" android:layout_marginTop="@dimen/ll" android:text="@string/dwx" android:layout_below="@id/aa7" android:layout_centerHorizontal="true" style="@style/r2" />
+        </LinearLayout>
+        <TextView android:textSize="12.0sp" android:textColor="@color/ln" android:gravity="left" android:id="@id/ecl" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ll" android:layout_marginTop="@dimen/l5" android:text="@string/dww" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/ln" android:gravity="left" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ll" android:layout_marginTop="@dimen/ll" android:text="@string/dwt" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/ln" android:gravity="left" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ll" android:layout_marginTop="@dimen/ll" android:text="@string/dwu" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/ln" android:gravity="left" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ll" android:layout_marginTop="@dimen/ll" android:text="@string/dwv" />
+        <View android:background="#ffd8d8d8" android:paddingLeft="@dimen/di" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/l5" android:layout_marginBottom="@dimen/l5" />
+        <GridView android:gravity="center" android:id="@id/ecm" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:verticalSpacing="@dimen/dp" android:numColumns="4" />
+    </LinearLayout>
+</ScrollView>

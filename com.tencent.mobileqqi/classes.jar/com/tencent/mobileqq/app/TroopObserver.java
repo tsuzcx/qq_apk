@@ -5,8 +5,8 @@ import android.os.Bundle;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.troopshare.TroopShareResp;
 import com.tencent.qphone.base.util.QLog;
-import flr;
-import fls;
+import fhf;
+import fhg;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,15 +15,15 @@ public class TroopObserver
 {
   protected void a() {}
   
-  protected void a(int paramInt) {}
+  public void a(int paramInt) {}
   
-  protected void a(int paramInt, byte paramByte) {}
+  public void a(int paramInt, byte paramByte) {}
   
-  protected void a(int paramInt, byte paramByte, String paramString) {}
+  public void a(int paramInt, byte paramByte, String paramString) {}
   
   protected void a(int paramInt1, boolean paramBoolean, int paramInt2, long paramLong, List paramList) {}
   
-  protected void a(int paramInt1, boolean paramBoolean, int paramInt2, List paramList) {}
+  public void a(int paramInt1, boolean paramBoolean, int paramInt2, List paramList) {}
   
   public void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
@@ -183,13 +183,13 @@ public class TroopObserver
                     } while (!QLog.isColorLevel());
                     QLog.d("Q.troopinfo", 2, paramObject.toString());
                     return;
-                    paramObject = (fls)paramObject;
+                    paramObject = (fhg)paramObject;
                     a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean, paramObject.b, paramObject.jdField_a_of_type_JavaUtilList);
                     return;
-                    paramObject = (fls)paramObject;
+                    paramObject = (fhg)paramObject;
                     a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean, paramObject.b, paramObject.jdField_a_of_type_Long, paramObject.jdField_a_of_type_JavaUtilList);
                     return;
-                    paramObject = (flr)paramObject;
+                    paramObject = (fhf)paramObject;
                     a(paramObject.jdField_a_of_type_Long, paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean, paramObject.jdField_a_of_type_JavaLangString, paramObject.b, paramObject.c);
                     return;
                     paramObject = (Object[])paramObject;
@@ -391,75 +391,75 @@ public class TroopObserver
     }
   }
   
-  protected void a(long paramLong, int paramInt1, boolean paramBoolean, String paramString, int paramInt2, int paramInt3) {}
+  public void a(long paramLong, int paramInt1, boolean paramBoolean, String paramString, int paramInt2, int paramInt3) {}
   
-  protected void a(String paramString, int paramInt) {}
+  public void a(String paramString, int paramInt) {}
   
-  protected void a(String paramString1, String paramString2, byte paramByte) {}
+  public void a(String paramString1, String paramString2, byte paramByte) {}
   
-  protected void a(boolean paramBoolean) {}
+  public void a(boolean paramBoolean) {}
   
-  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2) {}
+  public void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2) {}
   
-  protected void a(boolean paramBoolean, int paramInt) {}
+  public void a(boolean paramBoolean, int paramInt) {}
   
-  protected void a(boolean paramBoolean, int paramInt, ArrayList paramArrayList) {}
+  public void a(boolean paramBoolean, int paramInt, ArrayList paramArrayList) {}
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo) {}
+  public void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo) {}
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString) {}
+  public void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, int paramInt1, List paramList, long paramLong2, int paramInt2, String paramString) {}
+  public void a(boolean paramBoolean, long paramLong1, int paramInt1, List paramList, long paramLong2, int paramInt2, String paramString) {}
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2, int paramInt, String paramString3) {}
+  public void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2, int paramInt, String paramString3) {}
   
   protected void a(boolean paramBoolean, long paramLong, long[] paramArrayOfLong, String[] paramArrayOfString) {}
   
-  protected void a(boolean paramBoolean, RespBatchProcess paramRespBatchProcess) {}
+  public void a(boolean paramBoolean, RespBatchProcess paramRespBatchProcess) {}
   
-  protected void a(boolean paramBoolean, TroopInfo paramTroopInfo) {}
+  public void a(boolean paramBoolean, TroopInfo paramTroopInfo) {}
   
   public void a(boolean paramBoolean, TroopShareResp paramTroopShareResp) {}
   
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  public void a(boolean paramBoolean, Object paramObject) {}
   
-  protected void a(boolean paramBoolean, String paramString) {}
+  public void a(boolean paramBoolean, String paramString) {}
   
-  protected void a(boolean paramBoolean, String paramString, int paramInt) {}
+  public void a(boolean paramBoolean, String paramString, int paramInt) {}
   
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List paramList) {}
+  public void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List paramList) {}
   
-  protected void a(boolean paramBoolean, String paramString, int paramInt, long[] paramArrayOfLong) {}
+  public void a(boolean paramBoolean, String paramString, int paramInt, long[] paramArrayOfLong) {}
   
-  protected void a(boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3) {}
+  public void a(boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3) {}
   
-  protected void a(boolean paramBoolean, ArrayList paramArrayList) {}
+  public void a(boolean paramBoolean, ArrayList paramArrayList) {}
   
-  protected void a(boolean paramBoolean1, ArrayList paramArrayList, boolean paramBoolean2) {}
+  public void a(boolean paramBoolean1, ArrayList paramArrayList, boolean paramBoolean2) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, List paramList) {}
+  public void a(boolean paramBoolean1, boolean paramBoolean2, List paramList) {}
   
-  protected void b(boolean paramBoolean) {}
+  public void b(boolean paramBoolean) {}
   
-  protected void b(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString) {}
+  public void b(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString) {}
   
-  protected void b(boolean paramBoolean, String paramString) {}
+  public void b(boolean paramBoolean, String paramString) {}
   
-  protected void b(boolean paramBoolean, String paramString, int paramInt) {}
+  public void b(boolean paramBoolean, String paramString, int paramInt) {}
   
-  protected void b(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List paramList) {}
+  public void b(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List paramList) {}
   
-  protected void b(boolean paramBoolean, ArrayList paramArrayList) {}
+  public void b(boolean paramBoolean, ArrayList paramArrayList) {}
   
-  protected void c(boolean paramBoolean) {}
+  public void c(boolean paramBoolean) {}
   
   protected void c(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString) {}
   
-  protected void c(boolean paramBoolean, ArrayList paramArrayList) {}
+  public void c(boolean paramBoolean, ArrayList paramArrayList) {}
   
-  protected void d(boolean paramBoolean) {}
+  public void d(boolean paramBoolean) {}
   
-  protected void d(boolean paramBoolean, ArrayList paramArrayList) {}
+  public void d(boolean paramBoolean, ArrayList paramArrayList) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {

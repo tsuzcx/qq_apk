@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x345$ReqBody$SubCmd0x1ReqBody
-  extends MessageMicro
+  extends MessageMicro<SubCmd0x1ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 48, 56, 64 }, new String[] { "str_md5", "str_sha", "str_file_name", "uint64_file_size", "uint32_upload_type", "uint32_disscus_uin", "uint32_sender_uin", "uint32_costom_id" }, new Object[] { "", "", "", Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, SubCmd0x1ReqBody.class);
   public final PBStringField str_file_name = PBField.initString("");
@@ -22,7 +22,7 @@ public final class cmd0x345$ReqBody$SubCmd0x1ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x345.cmd0x345.ReqBody.SubCmd0x1ReqBody
  * JD-Core Version:    0.7.0.1
  */

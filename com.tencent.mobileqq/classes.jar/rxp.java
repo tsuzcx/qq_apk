@@ -1,20 +1,22 @@
-import com.tencent.av.utils.GVideoGrayConfig;
-import com.tencent.av.utils.GVideoGrayConfig.GVideoGrayConfigListener;
-import com.tencent.mobileqq.widget.QQProgressDialog.Callback;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
 
-public final class rxp
-  implements QQProgressDialog.Callback
+public class rxp
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public rxp(GVideoGrayConfig.GVideoGrayConfigListener paramGVideoGrayConfigListener) {}
+  public rxp(SlideActiveAnimController paramSlideActiveAnimController, Runnable paramRunnable) {}
   
-  public void a()
+  public void onGlobalLayout()
   {
-    GVideoGrayConfig.a().a(this.a);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.a();
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rxp
  * JD-Core Version:    0.7.0.1
  */

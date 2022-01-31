@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.GLTextureView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
-class ailg
-  implements Runnable
+public class ailg
+  implements DialogInterface.OnKeyListener
 {
-  ailg(ailf paramailf) {}
+  public ailg(BaseActivityView paramBaseActivityView) {}
   
-  public void run()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.a.setAlpha(255.0F);
+    return (paramInt == 4) && (this.a.a.e()) && (bdin.d(this.a.getContext()));
   }
 }
 

@@ -1,29 +1,24 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
+import android.view.animation.AccelerateDecelerateInterpolator;
 
+@TargetApi(11)
 public class xfy
-  implements AsyncBack
 {
-  public xfy(PreloadModule paramPreloadModule) {}
-  
-  public void a(int paramInt)
+  public static ValueAnimator a(long paramLong, float paramFloat1, float paramFloat2, xgb paramxgb)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadModule", 2, "checkUpByBusinessId progress:" + paramInt);
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadModule", 2, "checkUpByBusinessId loaded, code:" + paramInt);
-    }
+    float f = (paramFloat2 - paramFloat1) / 5.0F;
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2, paramFloat2 - 3.0F * f, paramFloat2, paramFloat2 - f, paramFloat2 });
+    localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+    localValueAnimator.addUpdateListener(new xfz(paramxgb));
+    localValueAnimator.addListener(new xga(paramxgb, localValueAnimator));
+    localValueAnimator.setDuration(paramLong);
+    return localValueAnimator;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xfy
  * JD-Core Version:    0.7.0.1
  */

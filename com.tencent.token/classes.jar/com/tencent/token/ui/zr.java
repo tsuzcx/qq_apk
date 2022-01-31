@@ -1,17 +1,39 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.token.af;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
+import com.tencent.token.cy;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.ui.base.bs;
 
-final class zr
-  implements DialogInterface.OnClickListener
+class zr
+  implements bs
 {
-  zr(zp paramzp) {}
+  zr(StartPwdGestureDeleteActivity paramStartPwdGestureDeleteActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    af.a().a(this.a.a.mHandler);
+    cy.a().a(this.a);
+    this.a.setResult(257);
+    SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("start_pwd_config", 0).edit();
+    localEditor.clear();
+    localEditor.commit();
+    if (!cy.a().c()) {
+      this.a.pwdIsDelete();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.showUserDialog(2131230843, this.a.getResources().getString(2131231116), 2131230897, new zs(this));
+  }
+  
+  public void b()
+  {
+    StartPwdGestureDeleteActivity.access$302(this.a, 1);
+    StartPwdGestureDeleteActivity.access$400(this.a);
   }
 }
 

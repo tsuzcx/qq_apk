@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/hlv" android:background="@drawable/aao" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/cwi" android:background="@drawable/b3g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="15.0dip" />
+    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/content" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="@dimen/aq3">
+        <com.qzone.component.banner.PassiveFeedBubbleBannerBg android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hll" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="54.0dip" android:layout_marginTop="3.0dip" android:layout_centerHorizontal="true">
+            <RelativeLayout android:id="@id/hlq" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.qzone.widget.AsyncImageView android:id="@id/hlp" android:focusable="false" android:clickable="false" android:layout_width="56.0dip" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:scaleType="center" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+                <com.qzone.widget.AvatarImageView android:id="@id/hln" android:layout_width="@dimen/aq1" android:layout_height="@dimen/aq1" android:layout_marginLeft="13.0dip" android:src="@drawable/bvj" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                <com.qzone.widget.AsyncImageView android:id="@id/hlo" android:focusable="false" android:clickable="false" android:layout_width="29.0dip" android:layout_height="14.0dip" android:layout_marginLeft="0.5dip" android:layout_marginTop="-12.0dip" android:scaleType="center" android:layout_alignLeft="@id/hln" android:layout_alignParentTop="true" />
+                <com.qzone.widget.AvatarImageView android:id="@id/hlr" android:layout_width="@dimen/aq1" android:layout_height="@dimen/aq1" android:layout_marginLeft="@dimen/aq2" android:src="@drawable/bvj" android:layout_alignLeft="@id/hln" android:layout_centerVertical="true" />
+                <com.qzone.widget.AsyncImageView android:id="@id/hls" android:focusable="false" android:clickable="false" android:layout_width="29.0dip" android:layout_height="14.0dip" android:layout_marginLeft="0.5dip" android:layout_marginTop="-12.0dip" android:scaleType="center" android:layout_alignLeft="@id/hlr" android:layout_alignParentTop="true" />
+                <com.qzone.widget.AvatarImageView android:id="@id/hlt" android:layout_width="@dimen/aq1" android:layout_height="@dimen/aq1" android:layout_marginLeft="@dimen/aq2" android:src="@drawable/bvj" android:layout_alignLeft="@id/hlr" android:layout_centerVertical="true" />
+                <com.qzone.widget.AsyncImageView android:id="@id/hlu" android:focusable="false" android:clickable="false" android:layout_width="29.0dip" android:layout_height="14.0dip" android:layout_marginLeft="0.5dip" android:layout_marginTop="-12.0dip" android:scaleType="center" android:layout_alignLeft="@id/hlt" android:layout_alignParentTop="true" />
+            </RelativeLayout>
+            <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:gravity="center_vertical" android:id="@id/hlx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:text="1条新消息" />
+            <ImageView android:id="@id/hlm" android:layout_width="@dimen/aq0" android:layout_height="@dimen/aq5" android:layout_marginLeft="11.0dip" android:layout_marginRight="21.0dip" android:src="@drawable/gak" android:scaleType="fitCenter" />
+        </com.qzone.component.banner.PassiveFeedBubbleBannerBg>
+    </RelativeLayout>
+</LinearLayout>

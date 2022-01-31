@@ -1,22 +1,41 @@
-import android.graphics.Matrix;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wpn
+  extends wot
 {
-  public float a;
-  private final Matrix a;
-  public boolean a;
-  public float b = 0.0F;
+  public List<wqn> b = new ArrayList();
+  public boolean e;
   
-  public wpn()
+  public wpn(ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 0.0F;
+    super(paramErrorMessage);
+  }
+  
+  public String b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext())
+    {
+      wqn localwqn = (wqn)localIterator.next();
+      localStringBuilder.append("feedId:").append(localwqn.a().feedId);
+      localStringBuilder.append("unionId:").append(localwqn.a().getOwner().getUnionId());
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public String toString()
+  {
+    return "FeedData{" + super.toString() + "mFeedItems=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpn
  * JD-Core Version:    0.7.0.1
  */

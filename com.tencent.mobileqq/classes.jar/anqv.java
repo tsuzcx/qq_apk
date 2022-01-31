@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.poi.PoiInfo;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
-public final class anqv
-  implements Parcelable.Creator
+class anqv
+  implements arrh
 {
-  public PoiInfo a(Parcel paramParcel)
+  anqv(anqu paramanqu) {}
+  
+  public void a()
   {
-    return new PoiInfo(paramParcel, null);
+    anqu.a(this.a);
   }
   
-  public PoiInfo[] a(int paramInt)
+  public void b()
   {
-    return new PoiInfo[paramInt];
+    ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anqv
  * JD-Core Version:    0.7.0.1
  */

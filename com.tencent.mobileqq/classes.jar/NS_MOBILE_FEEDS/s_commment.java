@@ -11,22 +11,22 @@ public final class s_commment
   extends JceStruct
 {
   static s_audio cache_audio;
-  static Map cache_binaryExtInfo;
-  static ArrayList cache_commentpic;
-  static Map cache_extendInfo;
-  static ArrayList cache_likemans;
-  static ArrayList cache_picdata;
-  static ArrayList cache_replys;
+  static Map<String, byte[]> cache_binaryExtInfo;
+  static ArrayList<s_picdata> cache_commentpic;
+  static Map<String, String> cache_extendInfo;
+  static ArrayList<s_likeman> cache_likemans;
+  static ArrayList<s_picdata> cache_picdata;
+  static ArrayList<s_reply> cache_replys;
   static s_user cache_user = new s_user();
   public s_audio audio;
-  public Map binaryExtInfo;
+  public Map<String, byte[]> binaryExtInfo;
   public String commentLikekey = "";
   public String commentid = "";
-  public ArrayList commentpic;
+  public ArrayList<s_picdata> commentpic;
   public String content = "";
   public int date;
   public int displayflag;
-  public Map extendInfo;
+  public Map<String, String> extendInfo;
   public int floor;
   public int iDisplayReplyNum;
   public boolean isDeleted;
@@ -35,11 +35,13 @@ public final class s_commment
   public int isStickTop;
   public int isliked;
   public int likeNum;
-  public ArrayList likemans;
-  public ArrayList picdata;
+  public ArrayList<s_likeman> likemans;
+  public ArrayList<s_picdata> picdata;
+  public int pokeLikeCount;
+  public String pokeLikeEmotion = "";
   public String refer = "";
   public int replynum;
-  public ArrayList replys;
+  public ArrayList<s_reply> replys;
   public s_user user;
   
   static
@@ -67,31 +69,33 @@ public final class s_commment
   
   public s_commment() {}
   
-  public s_commment(String paramString1, s_user params_user, String paramString2, int paramInt1, String paramString3, ArrayList paramArrayList1, int paramInt2, ArrayList paramArrayList2, s_audio params_audio, ArrayList paramArrayList3, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean, Map paramMap1, int paramInt6, String paramString4, int paramInt7, int paramInt8, int paramInt9, int paramInt10, ArrayList paramArrayList4, Map paramMap2)
+  public s_commment(String paramString1, s_user params_user, String paramString2, int paramInt1, String paramString3, ArrayList<s_reply> paramArrayList, int paramInt2, ArrayList<s_picdata> paramArrayList1, s_audio params_audio, ArrayList<s_picdata> paramArrayList2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean, Map<String, String> paramMap, int paramInt6, String paramString4, int paramInt7, int paramInt8, int paramInt9, int paramInt10, ArrayList<s_likeman> paramArrayList3, Map<String, byte[]> paramMap1, String paramString5, int paramInt11)
   {
     this.commentid = paramString1;
     this.user = params_user;
     this.content = paramString2;
     this.date = paramInt1;
     this.refer = paramString3;
-    this.replys = paramArrayList1;
+    this.replys = paramArrayList;
     this.replynum = paramInt2;
-    this.picdata = paramArrayList2;
+    this.picdata = paramArrayList1;
     this.audio = params_audio;
-    this.commentpic = paramArrayList3;
+    this.commentpic = paramArrayList2;
     this.floor = paramInt3;
     this.isPrivate = paramInt4;
     this.isEssence = paramInt5;
     this.isDeleted = paramBoolean;
-    this.extendInfo = paramMap1;
+    this.extendInfo = paramMap;
     this.likeNum = paramInt6;
     this.commentLikekey = paramString4;
     this.isliked = paramInt7;
     this.isStickTop = paramInt8;
     this.displayflag = paramInt9;
     this.iDisplayReplyNum = paramInt10;
-    this.likemans = paramArrayList4;
-    this.binaryExtInfo = paramMap2;
+    this.likemans = paramArrayList3;
+    this.binaryExtInfo = paramMap1;
+    this.pokeLikeEmotion = paramString5;
+    this.pokeLikeCount = paramInt11;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -119,6 +123,8 @@ public final class s_commment
     this.iDisplayReplyNum = paramJceInputStream.read(this.iDisplayReplyNum, 20, false);
     this.likemans = ((ArrayList)paramJceInputStream.read(cache_likemans, 21, false));
     this.binaryExtInfo = ((Map)paramJceInputStream.read(cache_binaryExtInfo, 22, false));
+    this.pokeLikeEmotion = paramJceInputStream.readString(23, false);
+    this.pokeLikeCount = paramJceInputStream.read(this.pokeLikeCount, 24, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -170,11 +176,15 @@ public final class s_commment
     if (this.binaryExtInfo != null) {
       paramJceOutputStream.write(this.binaryExtInfo, 22);
     }
+    if (this.pokeLikeEmotion != null) {
+      paramJceOutputStream.write(this.pokeLikeEmotion, 23);
+    }
+    paramJceOutputStream.write(this.pokeLikeCount, 24);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_commment
  * JD-Core Version:    0.7.0.1
  */

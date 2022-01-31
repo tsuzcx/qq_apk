@@ -1,33 +1,16 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.utils.DingdongPluginBizObserver;
-
-public class tmc
-  extends DingdongPluginBizObserver
+public abstract interface tmc
 {
-  public tmc(QQSettingMe paramQQSettingMe) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (paramInt == 5)
-    {
-      QQSettingMe.a(this.a, true);
-      this.a.I();
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (paramInt != 13);
-      QQSettingMe.a(this.a, true);
-    } while (!QQSettingMe.f(this.a));
-    QQSettingMe.d(this.a);
-    this.a.a(true);
-  }
+  public abstract void b(String paramString, int paramInt);
+  
+  public abstract void c(String paramString, int paramInt);
+  
+  public abstract void d(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tmc
  * JD-Core Version:    0.7.0.1
  */

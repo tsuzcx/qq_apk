@@ -1,23 +1,12 @@
-import android.view.WindowManager;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.troop.robot.RobotResourcesManager;
+import android.content.Context;
 
-class ajmj
-  implements Runnable
+public class ajmj
+  extends ajlx
 {
-  ajmj(ajmi paramajmi) {}
-  
-  public void run()
+  public ajmj(Context paramContext)
   {
-    if (this.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView != null) {
-      RobotResourcesManager.a(this.a.a.a).removeView(this.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView);
-    }
-    this.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView = null;
-    this.a.a.a.jdField_a_of_type_JavaLangString = null;
-    if (this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
-      this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.notifyDataSetChanged();
-    }
+    this.a = paramContext.getString(2131698833);
+    this.b = this.a;
   }
 }
 

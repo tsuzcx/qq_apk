@@ -5,33 +5,33 @@ import com.tencent.mobileqq.shortvideo.dancemachine.utils.Vec3f;
 public class IVec3f
   extends Vec3f
 {
-  public int a;
+  public int index;
   
   public IVec3f(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
+    this.index = paramInt;
+    this.x = paramFloat1;
+    this.y = paramFloat2;
+    this.z = paramFloat3;
   }
   
   public IVec3f(int paramInt, Vec3f paramVec3f)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramVec3f.jdField_a_of_type_Float;
-    this.b = paramVec3f.b;
-    this.c = paramVec3f.c;
+    this.index = paramInt;
+    this.x = paramVec3f.x;
+    this.y = paramVec3f.y;
+    this.z = paramVec3f.z;
   }
   
   public String toString()
   {
     String str = super.toString();
-    return this.jdField_a_of_type_Int + "  : " + str;
+    return this.index + "  : " + str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.matchTemplate.IVec3f
  * JD-Core Version:    0.7.0.1
  */

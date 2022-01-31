@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.activity.qwallet.fragment.HbSkinInfo;
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public final class xdp
-  implements Comparator
+class xdp
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a(HbSkinInfo paramHbSkinInfo1, HbSkinInfo paramHbSkinInfo2)
+  xdp(xdo paramxdo) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return paramHbSkinInfo1.a - paramHbSkinInfo2.a;
+    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xdp
  * JD-Core Version:    0.7.0.1
  */

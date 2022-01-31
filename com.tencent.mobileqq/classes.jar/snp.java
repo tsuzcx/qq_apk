@@ -1,20 +1,29 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
-import com.tencent.util.InputMethodUtil;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 
-public class snp
-  implements Runnable
+class snp
+  implements snq
 {
-  public snp(ForwardFriendListActivity paramForwardFriendListActivity, View paramView) {}
+  snp(sno paramsno) {}
   
-  public void run()
+  public void a(String paramString, View.OnClickListener paramOnClickListener)
   {
-    InputMethodUtil.a(this.jdField_a_of_type_AndroidViewView);
+    sno.a(this.a).b(paramString, paramOnClickListener);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    sno.a(this.a).c(paramBoolean);
+  }
+  
+  public void b(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    sno.a(this.a).a(paramString, paramOnClickListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     snp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 
 public class dnh
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public dnh(SendMultiPictureHelper paramSendMultiPictureHelper) {}
+  public dnh(SubLoginActivity paramSubLoginActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
-      this.a.b = true;
-      SendMultiPictureHelper.a(this.a);
-      this.a.b();
-    }
+    this.a.h();
   }
 }
 

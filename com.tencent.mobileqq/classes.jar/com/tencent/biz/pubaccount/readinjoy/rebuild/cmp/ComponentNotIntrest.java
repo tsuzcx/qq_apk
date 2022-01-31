@@ -1,23 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
+import aepi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.ComponentView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import ors;
+import pgd;
+import pxk;
+import pxt;
+import qbs;
 
 public class ComponentNotIntrest
   extends FrameLayout
-  implements View.OnClickListener, ComponentView
+  implements View.OnClickListener, pxk
 {
   public View a;
-  CmpCtxt a;
+  qbs a;
   
   public ComponentNotIntrest(Context paramContext)
   {
@@ -39,7 +40,7 @@ public class ComponentNotIntrest
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt = new CmpCtxt();
+    this.jdField_a_of_type_Qbs = new qbs();
     a(paramContext);
     a();
   }
@@ -51,48 +52,48 @@ public class ComponentNotIntrest
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2130969588, this, true).findViewById(2131366879);
-  }
-  
-  public void a(FeedItemCell.CellListener paramCellListener)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a(paramCellListener);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559975, this, true).findViewById(2131379300);
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof IReadInJoyModel))
+    if ((paramObject instanceof pgd))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a((IReadInJoyModel)paramObject);
+      this.jdField_a_of_type_Qbs.a((pgd)paramObject);
       b();
     }
   }
   
+  public void a(pxt parampxt)
+  {
+    this.jdField_a_of_type_Qbs.a(parampxt);
+  }
+  
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a())
+    if (this.jdField_a_of_type_Qbs.a())
     {
-      this.jdField_a_of_type_AndroidViewView.setPadding(AIOUtils.a(5.0F, getResources()), AIOUtils.a(5.0F, getResources()), AIOUtils.a(5.0F, getResources()), AIOUtils.a(5.0F, getResources()));
+      this.jdField_a_of_type_AndroidViewView.setPadding(aepi.a(5.0F, getResources()), aepi.a(5.0F, getResources()), aepi.a(5.0F, getResources()), aepi.a(5.0F, getResources()));
       return;
     }
-    if (ReadInJoyUtils.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelIReadInJoyModel.a()))
+    if (ors.l(this.jdField_a_of_type_Qbs.jdField_a_of_type_Pgd.a()))
     {
-      this.jdField_a_of_type_AndroidViewView.setPadding(AIOUtils.a(5.0F, getResources()), AIOUtils.a(5.0F, getResources()), AIOUtils.a(9.0F, getResources()), AIOUtils.a(5.0F, getResources()));
+      this.jdField_a_of_type_AndroidViewView.setPadding(aepi.a(5.0F, getResources()), aepi.a(5.0F, getResources()), aepi.a(9.0F, getResources()), aepi.a(5.0F, getResources()));
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setPadding(AIOUtils.a(12.0F, getResources()), AIOUtils.a(9.0F, getResources()), AIOUtils.a(12.0F, getResources()), AIOUtils.a(9.0F, getResources()));
+    this.jdField_a_of_type_AndroidViewView.setPadding(aepi.a(12.0F, getResources()), aepi.a(9.0F, getResources()), aepi.a(12.0F, getResources()), aepi.a(9.0F, getResources()));
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCell$CellListener != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCell$CellListener.a(paramView, null);
+    if (this.jdField_a_of_type_Qbs.jdField_a_of_type_Pxt != null) {
+      this.jdField_a_of_type_Qbs.jdField_a_of_type_Pxt.a(paramView, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentNotIntrest
  * JD-Core Version:    0.7.0.1
  */

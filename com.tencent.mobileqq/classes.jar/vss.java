@@ -1,23 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.activity.aio.tips.FriendHotTipsBar;
-import com.tencent.mobileqq.servlet.ReduFriendObserver;
-
-public class vss
-  extends ReduFriendObserver
+public abstract interface vss
 {
-  public vss(FriendChatPie paramFriendChatPie) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.a();
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3);
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vss
  * JD-Core Version:    0.7.0.1
  */

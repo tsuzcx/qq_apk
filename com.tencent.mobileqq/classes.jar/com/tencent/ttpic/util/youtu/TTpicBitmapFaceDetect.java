@@ -1,34 +1,30 @@
 package com.tencent.ttpic.util.youtu;
 
-import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.util.Log;
 import com.tencent.faceBeauty.FaceDetect;
 import com.tencent.faceBeauty.FaceParam;
-import com.tencent.ttpic.util.VideoGlobalContext;
-import com.tencent.util.LogUtil;
-import java.io.IOException;
-import java.io.InputStream;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import com.tencent.ttpic.openapi.initializer.FaceDetectInitializer;
+import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import java.util.List;
 
 public class TTpicBitmapFaceDetect
   extends FaceDetect
 {
+  private volatile boolean inited;
   private long mNativeObjPtr;
   
   public TTpicBitmapFaceDetect()
   {
-    if (!nativeConstructor())
-    {
-      LogUtil.e("TTpicBitmapFaceDetect", "nativeConstructor failed");
-      throw new RuntimeException();
+    if (!FeatureManager.Features.FACE_DETECT.init()) {
+      return;
     }
-    initModel();
+    nativeConstructor();
+    this.inited = true;
   }
   
   private void detectParam(Bitmap paramBitmap, boolean paramBoolean, Rect paramRect, Point paramPoint1, Point paramPoint2)
@@ -36,31 +32,33 @@ public class TTpicBitmapFaceDetect
     this.mDetectedFace = false;
     this.mFaceParams.clear();
     this.faceCount = 0;
-    if (paramBitmap == null) {
+    if ((!this.inited) || (!BitmapUtils.isLegal(paramBitmap))) {
       return;
     }
     int m = paramBitmap.getWidth();
     int n = paramBitmap.getHeight();
     int i;
-    int j;
     if (m > n)
     {
       i = m;
-      j = i / 512;
-      i = j;
-      if (j < 1) {
-        i = 1;
+      i /= 512;
+      if (i >= 1) {
+        break label1035;
       }
+      i = 1;
     }
-    Bitmap localBitmap;
+    label1029:
+    label1035:
     for (;;)
     {
+      Bitmap localBitmap;
+      int j;
       try
       {
         localBitmap = Bitmap.createBitmap(m / i, n / i, Bitmap.Config.ARGB_8888);
         new Canvas(localBitmap).drawBitmap(paramBitmap, new Rect(0, 0, m, n), new Rect(0, 0, m / i, n / i), null);
         if (!paramBoolean) {
-          break label999;
+          break label1009;
         }
         if (paramRect == null)
         {
@@ -68,7 +66,7 @@ public class TTpicBitmapFaceDetect
           this.faceCount = size(paramBitmap);
           j = 0;
           if (j >= this.faceCount) {
-            break label1019;
+            break label1029;
           }
           paramPoint1 = paramBitmap[j];
           this.mDetectedFace = true;
@@ -103,9 +101,9 @@ public class TTpicBitmapFaceDetect
           Rect localRect1 = new Rect();
           paramRect.mRightEye = localRect1;
           localRect1.left = (paramPoint1.rightEyeX * i - i1 / 2);
-          localRect1.right = (localRect1.left + i1);
+          localRect1.right = (i1 + localRect1.left);
           localRect1.top = (paramPoint1.rightEyeY * i - k / 2);
-          localRect1.bottom = (localRect1.top + k);
+          localRect1.bottom = (k + localRect1.top);
           paramRect.mRightEyeCenter = new Point(paramPoint1.rightEyeX * i, paramPoint1.rightEyeY * i);
           Rect localRect2 = new Rect();
           paramRect.mEye = localRect2;
@@ -140,14 +138,14 @@ public class TTpicBitmapFaceDetect
             this.mFemale.add(Boolean.valueOf(true));
           }
           if (!this.mGetFaceFeatures) {
-            break label1010;
+            break label1020;
           }
           paramPoint1 = nativeGetFeatures(j);
           paramRect.mFaceOutline = paramPoint1;
           i1 = size(paramPoint1);
           k = 0;
           if (k >= i1) {
-            break label1010;
+            break label1020;
           }
           paramPoint1[k][0] *= i;
           paramPoint1[k][1] *= i;
@@ -158,40 +156,20 @@ public class TTpicBitmapFaceDetect
       }
       catch (OutOfMemoryError paramBitmap)
       {
+        paramBitmap.printStackTrace();
         return;
       }
       paramBitmap = nativeDetectBitmapByFace(localBitmap, paramRect.left / i, paramRect.top / i, paramRect.width() / i, paramRect.height() / i);
       continue;
-      label999:
+      label1009:
       paramBitmap = nativeDetectBitmap(localBitmap, false);
       continue;
-      label1010:
+      label1020:
       j += 1;
+      continue;
+      localBitmap.recycle();
+      return;
     }
-    label1019:
-    localBitmap.recycle();
-  }
-  
-  private boolean initModel()
-  {
-    try
-    {
-      InputStream localInputStream = VideoGlobalContext.getContext().getAssets().open("ufdmtcc.bin");
-      byte[] arrayOfByte1 = new byte[localInputStream.available()];
-      localInputStream.read(arrayOfByte1);
-      localInputStream.close();
-      localInputStream = VideoGlobalContext.getContext().getAssets().open("ufat.bin");
-      byte[] arrayOfByte2 = new byte[localInputStream.available()];
-      localInputStream.read(arrayOfByte2);
-      localInputStream.close();
-      boolean bool = nativeInit(arrayOfByte1, arrayOfByte2);
-      return bool;
-    }
-    catch (IOException localIOException)
-    {
-      Log.e("FaceTrack", "initModel error");
-    }
-    return false;
   }
   
   private native boolean nativeConstructor();
@@ -210,9 +188,15 @@ public class TTpicBitmapFaceDetect
   
   private native int[][] nativeGetShapePoints(int paramInt);
   
+  private native int nativeInit(String paramString);
+  
   public void destroy()
   {
-    nativeDestructor();
+    if (this.inited)
+    {
+      nativeDestructor();
+      this.inited = false;
+    }
   }
   
   public void detectFaceByManual(Bitmap paramBitmap, Point paramPoint1, Point paramPoint2)
@@ -225,14 +209,14 @@ public class TTpicBitmapFaceDetect
     detectParam(paramBitmap, true, paramRect, paramPoint1, paramPoint2);
   }
   
-  protected void doDetectFace(Bitmap paramBitmap)
+  public void doDetectFace(Bitmap paramBitmap)
   {
     detectParam(paramBitmap, false, null, null, null);
   }
   
-  protected void doInitial() {}
+  public void doInitial() {}
   
-  protected void doRelease() {}
+  public void doRelease() {}
   
   public float[] getFaceAngles(int paramInt)
   {
@@ -246,8 +230,6 @@ public class TTpicBitmapFaceDetect
     return arrayOfFloat;
   }
   
-  public native boolean nativeInit(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
-  
   public int size(Object[] paramArrayOfObject)
   {
     if (paramArrayOfObject == null) {
@@ -258,7 +240,7 @@ public class TTpicBitmapFaceDetect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.util.youtu.TTpicBitmapFaceDetect
  * JD-Core Version:    0.7.0.1
  */

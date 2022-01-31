@@ -1,39 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.emosm.DataFactory;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.redtouch.RedTouchWebviewHandler;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import java.util.ArrayList;
-import org.json.JSONObject;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
 class ahfv
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ahfv(ahfu paramahfu, String paramString1, JSONObject paramJSONObject, BusinessInfoCheckUpdate.AppInfo paramAppInfo, int paramInt1, int paramInt2, ArrayList paramArrayList, String paramString2, String paramString3) {}
+  ahfv(ahfu paramahfu) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Ahfu.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-    Object localObject = "";
-    if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo != null) {
-      localObject = RedTouchWebviewHandler.access$100(this.jdField_a_of_type_Ahfu.a, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.buffer.get());
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("ret", String.valueOf(this.jdField_a_of_type_Int));
-    localBundle.putString("buffer", (String)localObject);
-    localBundle.putString("red", String.valueOf(this.jdField_b_of_type_Int));
-    localBundle.putStringArrayList("missions", this.jdField_a_of_type_JavaUtilArrayList);
-    localBundle.putString("path", this.jdField_b_of_type_JavaLangString);
-    localBundle.putString("serial", this.c);
-    localBundle.putString("callback", this.jdField_a_of_type_JavaLangString);
-    localObject = DataFactory.a("redTouch_getAppInfo_report", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ahfu.a.mOnRemoteResp.key, localBundle);
-    this.jdField_a_of_type_Ahfu.a.sendRemoteReq((Bundle)localObject, false, true);
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (FrameLayout.LayoutParams)this.a.a.a.getLayoutParams();
+    paramValueAnimator.topMargin = i;
+    this.a.a.a.setLayoutParams(paramValueAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahfv
  * JD-Core Version:    0.7.0.1
  */

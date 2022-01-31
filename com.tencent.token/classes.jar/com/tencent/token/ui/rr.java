@@ -1,24 +1,18 @@
 package com.tencent.token.ui;
 
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.token.utils.s;
+import android.view.View.OnClickListener;
 
-final class rr
-  extends ClickableSpan
+class rr
+  implements View.OnClickListener
 {
-  rr(NetActiveVryOtherListActivity paramNetActiveVryOtherListActivity) {}
+  rr(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    s.a(this.a, this.a.getString(2131362126), this.a.getString(2131362125));
-  }
-  
-  public final void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(false);
+    paramView = new Intent(this.a, OpreateMsgActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 

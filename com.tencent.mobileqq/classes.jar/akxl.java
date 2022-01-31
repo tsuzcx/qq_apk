@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.widget.Workspace.SavedState;
-
-public final class akxl
-  implements Parcelable.Creator
+public abstract interface akxl
 {
-  public Workspace.SavedState a(Parcel paramParcel)
-  {
-    return new Workspace.SavedState(paramParcel, null);
-  }
+  public abstract int a();
   
-  public Workspace.SavedState[] a(int paramInt)
-  {
-    return new Workspace.SavedState[paramInt];
-  }
+  public abstract akrw a(String paramString1, String paramString2, int paramInt1, int paramInt2);
+  
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akxl
  * JD-Core Version:    0.7.0.1
  */

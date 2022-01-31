@@ -3,11 +3,11 @@ package cooperation.zebra;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import azqs;
+import bdfa;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.pluginsdk.PluginActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.qphone.base.util.MD5;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,8 +25,8 @@ public class ZebraPluginProxy
   public static final String KEY_PHOTOCONST_SINGLE_PHOTO_PATH = "PhotoConst.SINGLE_PHOTO_PATH";
   public static final String KEY_PHOTOCONST_UIN = "PhotoConst.UIN";
   public static final String KEY_TRANSFILE_UTILE_TYPE_PHOTO = "TransfileUtile.TYPE_PHOTO";
-  private static HashMap sConstIntMap = new HashMap();
-  private static HashMap sConstStringMap = new HashMap();
+  private static HashMap<String, Integer> sConstIntMap = new HashMap();
+  private static HashMap<String, String> sConstStringMap = new HashMap();
   
   static
   {
@@ -82,15 +82,15 @@ public class ZebraPluginProxy
   
   public static void reportController_reportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
   {
-    ReportController.b(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    azqs.b(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
   }
   
-  public static void sendPhoto(Activity paramActivity, Intent paramIntent, ArrayList paramArrayList, boolean paramBoolean)
+  public static void sendPhoto(Activity paramActivity, Intent paramIntent, ArrayList<String> paramArrayList, boolean paramBoolean)
   {
     PhotoUtils.a(paramActivity, paramIntent, paramArrayList, 0, paramBoolean);
   }
   
-  public static void sendPhotoForPhotoPlus(Activity paramActivity, Intent paramIntent, ArrayList paramArrayList)
+  public static void sendPhotoForPhotoPlus(Activity paramActivity, Intent paramIntent, ArrayList<String> paramArrayList)
   {
     PhotoUtils.a(paramActivity, paramIntent, paramArrayList);
   }
@@ -100,17 +100,18 @@ public class ZebraPluginProxy
     try
     {
       Intent localIntent = new Intent();
-      localIntent.setClassName("com.tencent.mobileqq", PhotoListActivity.class.getName());
+      localIntent.putExtra("enter_from", 7);
+      localIntent.setClassName("com.tencent.mobileqq", NewPhotoListActivity.class.getName());
       if (paramBundle != null) {
         localIntent.putExtras(paramBundle);
       }
       paramActivity.startActivity(localIntent);
       if ((paramActivity instanceof PluginActivity))
       {
-        AlbumUtil.a(((PluginActivity)paramActivity).getOutActivity(), false, true);
+        bdfa.anim(((PluginActivity)paramActivity).getOutActivity(), false, true);
         return;
       }
-      AlbumUtil.a(paramActivity, false, true);
+      bdfa.anim(paramActivity, false, true);
       return;
     }
     catch (Exception paramActivity)
@@ -121,7 +122,7 @@ public class ZebraPluginProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.zebra.ZebraPluginProxy
  * JD-Core Version:    0.7.0.1
  */

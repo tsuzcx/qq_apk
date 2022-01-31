@@ -1,14 +1,10 @@
-import cooperation.qzone.share.QZoneShareActivity;
+import android.os.IInterface;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 
-public class amzm
-  implements Runnable
+public abstract interface amzm
+  extends IInterface
 {
-  public amzm(QZoneShareActivity paramQZoneShareActivity) {}
-  
-  public void run()
-  {
-    QZoneShareActivity.d(this.a);
-  }
+  public abstract ARScanStarFaceConfigInfo a();
 }
 
 

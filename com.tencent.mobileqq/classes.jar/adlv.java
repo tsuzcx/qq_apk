@@ -1,35 +1,33 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class adlv
-  implements Runnable
+  implements View.OnClickListener
 {
-  public adlv(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  public adlv(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {}
-    do
+    if (NotifyPushSettingActivity.a(this.a) == null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.w("ForwardOption.ForwardSdkShareOption", 2, "-->preForward--fetch openid timeout");
-      }
-      this.a.h = true;
-      this.a.t();
-    } while (!ForwardSdkShareOption.a(this.a));
-    this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
-    this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
-    this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", ForwardAbility.ForwardAbilityType.e.intValue());
-    this.a.j();
+      NotifyPushSettingActivity.a(this.a, new admb(this.a, this.a.app, NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a)));
+      admb.a(NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a));
+    }
+    if (NotifyPushSettingActivity.a(this.a))
+    {
+      int i = (int)NetConnInfoCenter.getServerTime();
+      int j = SettingCloneUtil.readValueForInt(this.a.getApplicationContext(), null, "no_disturb_mode", "qqsetting_nodisturb_mode_key", 2147483647);
+      NotifyPushSettingActivity.a(this.a).a(j - i);
+    }
+    NotifyPushSettingActivity.a(this.a).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adlv
  * JD-Core Version:    0.7.0.1
  */

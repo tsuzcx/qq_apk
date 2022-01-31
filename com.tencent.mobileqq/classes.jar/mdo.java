@@ -1,19 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.qqstory.view.widget.DragFrameLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.AVActivity;
 
 public class mdo
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public mdo(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public mdo(AVActivity paramAVActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    VideoFeedsPlayActivity.a(this.a).a(300, new mdu(null));
+    this.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mdo
  * JD-Core Version:    0.7.0.1
  */

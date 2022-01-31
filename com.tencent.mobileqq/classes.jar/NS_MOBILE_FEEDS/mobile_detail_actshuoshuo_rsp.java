@@ -8,10 +8,10 @@ import java.util.ArrayList;
 public final class mobile_detail_actshuoshuo_rsp
   extends JceStruct
 {
-  static ArrayList cache_close_fri = new ArrayList();
+  static ArrayList<s_user> cache_close_fri = new ArrayList();
   public String act_content = "";
   public String act_content_after = "";
-  public ArrayList close_fri;
+  public ArrayList<s_user> close_fri;
   public String no_img_tips = "";
   public boolean require_img = true;
   
@@ -23,7 +23,7 @@ public final class mobile_detail_actshuoshuo_rsp
   
   public mobile_detail_actshuoshuo_rsp() {}
   
-  public mobile_detail_actshuoshuo_rsp(String paramString1, ArrayList paramArrayList, String paramString2, boolean paramBoolean, String paramString3)
+  public mobile_detail_actshuoshuo_rsp(String paramString1, ArrayList<s_user> paramArrayList, String paramString2, boolean paramBoolean, String paramString3)
   {
     this.act_content = paramString1;
     this.close_fri = paramArrayList;
@@ -60,7 +60,7 @@ public final class mobile_detail_actshuoshuo_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_detail_actshuoshuo_rsp
  * JD-Core Version:    0.7.0.1
  */

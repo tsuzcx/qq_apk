@@ -1,39 +1,20 @@
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagStatus;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class cdv
-  extends BizTroopObserver
+  implements View.OnClickListener
 {
-  public cdv(ChatActivity paramChatActivity) {}
+  public cdv(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void a(TroopGagMgr.GagStatus paramGagStatus)
+  public void onClick(View paramView)
   {
-    if ((paramGagStatus.jdField_a_of_type_Int == 2) && (paramGagStatus.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$SelfGagInfo != null) && (this.a.a.jdField_a_of_type_JavaLangString.equals(paramGagStatus.jdField_a_of_type_JavaLangString))) {
-      ChatActivity.a(this.a, paramGagStatus.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$SelfGagInfo, true);
-    }
-  }
-  
-  protected void a(Object paramObject)
-  {
-    if (ChatActivity.a(this.a) != null) {
-      ChatActivity.a(this.a).notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    long l = ((Long)paramObject).longValue();
-    if ((this.a.a.jdField_a_of_type_Int == 1) && (this.a.a.jdField_a_of_type_JavaLangString.equals(String.valueOf(l)))) {
-      ChatActivity.c(this.a);
-    }
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cdv
  * JD-Core Version:    0.7.0.1
  */

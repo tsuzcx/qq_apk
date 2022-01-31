@@ -37,8 +37,8 @@ import com.tencent.widget.AdapterViewPagerAdapter;
 import com.tencent.widget.CirclePageIndicator;
 import com.tencent.widget.XListView.MotionEventInterceptor;
 import cooperation.qzone.model.CoverCacheData;
-import gjq;
-import gjr;
+import gfh;
+import gfi;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -57,7 +57,7 @@ public class QzonePhotoView
   private float jdField_a_of_type_Float;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new gjr(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new gfi(this);
   View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   public QQAppInterface a;
@@ -146,12 +146,12 @@ public class QzonePhotoView
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
     this.h = 0;
     this.jdField_b_of_type_JavaLangString = paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).inflate(2130903687, this, true);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).inflate(2130903689, this, true);
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
     this.jdField_a_of_type_Float = localDisplayMetrics.density;
     this.e = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-    int k = getResources().getDimensionPixelSize(2131427560);
-    this.g = getResources().getDimensionPixelSize(2131427561);
+    int k = getResources().getDimensionPixelSize(2131427563);
+    this.g = getResources().getDimensionPixelSize(2131427564);
     this.f = ((this.e - k * 2 - this.g * 3) / 4);
     if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {}
     for (;;)
@@ -203,12 +203,12 @@ public class QzonePhotoView
     if (paramList != null)
     {
       k = paramList.size();
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233429));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233431));
       ProfileCardTemplate.a(this.jdField_a_of_type_AndroidWidgetImageView, "src", this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate, "photoAddTipsImage");
       this.jdField_a_of_type_AndroidWidgetImageView.setTag(new DataTag(25, null));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localViewPager = (ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131233430);
-      localCirclePageIndicator = (CirclePageIndicator)this.jdField_a_of_type_AndroidViewView.findViewById(2131233431);
+      localViewPager = (ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131233432);
+      localCirclePageIndicator = (CirclePageIndicator)this.jdField_a_of_type_AndroidViewView.findViewById(2131233433);
       if (k <= 0) {
         break label335;
       }
@@ -216,7 +216,7 @@ public class QzonePhotoView
       localPhotoGridAdapter.a(paramList);
       localPhotoGridAdapter.a(this.f, this.f);
       paramList = new AdapterViewPagerAdapter(getContext(), localPhotoGridAdapter, 8);
-      paramList.a(new gjq(this));
+      paramList.a(new gfh(this));
       ViewGroup.LayoutParams localLayoutParams = localViewPager.getLayoutParams();
       localLayoutParams.width = this.e;
       if (localPhotoGridAdapter.getCount() <= 4) {
@@ -328,7 +328,7 @@ public class QzonePhotoView
   {
     boolean bool3 = true;
     boolean bool2 = false;
-    ViewPager localViewPager = (ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131233430);
+    ViewPager localViewPager = (ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131233432);
     paramView.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
     localViewPager.getLocationInWindow(this.jdField_b_of_type_ArrayOfInt);
     float f1 = paramMotionEvent.getRawY();

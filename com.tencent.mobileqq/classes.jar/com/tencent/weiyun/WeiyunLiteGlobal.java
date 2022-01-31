@@ -2,28 +2,20 @@ package com.tencent.weiyun;
 
 import android.app.Application;
 import android.content.Context;
-import android.net.NetworkInfo;
 import com.tencent.weiyun.cmd.CommandManager;
 import com.tencent.weiyun.poi.PoiManager;
 import com.tencent.weiyun.utils.ILog;
 import com.tencent.weiyun.utils.NetworkUtils;
-import com.tencent.weiyun.utils.NetworkUtils.INetworkInfoProvider;
 import com.tencent.weiyun.utils.Singleton;
 import com.tencent.weiyun.utils.WyLog;
 
 public final class WeiyunLiteGlobal
 {
   private static final String TAG = "WeiyunLiteGlobal";
-  private static Singleton<WeiyunLiteGlobal, Void> sInstance = new Singleton()
-  {
-    protected WeiyunLiteGlobal create(Void paramAnonymousVoid)
-    {
-      return new WeiyunLiteGlobal(null);
-    }
-  };
+  private static Singleton<WeiyunLiteGlobal, Void> sInstance = new WeiyunLiteGlobal.1();
   private CommandManager mCommandManager;
   private Application mContext;
-  private HostInterface mHostInterface;
+  private WeiyunLiteGlobal.HostInterface mHostInterface;
   private PoiManager mPoiManager;
   
   public static WeiyunLiteGlobal getInstance()
@@ -44,7 +36,7 @@ public final class WeiyunLiteGlobal
     return this.mContext;
   }
   
-  public HostInterface getHostInterface()
+  public WeiyunLiteGlobal.HostInterface getHostInterface()
   {
     return this.mHostInterface;
   }
@@ -57,7 +49,7 @@ public final class WeiyunLiteGlobal
     return this.mPoiManager;
   }
   
-  public void initLite(Application paramApplication, HostInterface paramHostInterface, ILog paramILog)
+  public void initLite(Application paramApplication, WeiyunLiteGlobal.HostInterface paramHostInterface, ILog paramILog)
   {
     if ((paramApplication == null) || (paramHostInterface == null)) {
       try
@@ -69,13 +61,7 @@ public final class WeiyunLiteGlobal
     this.mContext = paramApplication;
     this.mHostInterface = paramHostInterface;
     WyLog.setLog(paramILog);
-    NetworkUtils.setNetworkInfoProvider(new NetworkUtils.INetworkInfoProvider()
-    {
-      public NetworkInfo getNetworkInfo(Context paramAnonymousContext)
-      {
-        return WeiyunLiteGlobal.this.mHostInterface.getRecentNetworkInfo();
-      }
-    });
+    NetworkUtils.setNetworkInfoProvider(new WeiyunLiteGlobal.2(this));
     this.mCommandManager = CommandManager.getInstance();
     this.mPoiManager = PoiManager.getInstance();
     this.mPoiManager.init();
@@ -85,26 +71,10 @@ public final class WeiyunLiteGlobal
   {
     getCommandManager().resetWeiyunSdk();
   }
-  
-  public static abstract interface HostInterface
-  {
-    public abstract int getCurrentIsp();
-    
-    public abstract long getCurrentUin();
-    
-    public abstract NetworkInfo getRecentNetworkInfo();
-    
-    public abstract void sendRequest(String paramString, byte[] paramArrayOfByte, WeiyunLiteGlobal.IResponseHandler paramIResponseHandler);
-  }
-  
-  public static abstract interface IResponseHandler
-  {
-    public abstract void receiveResponse(int paramInt, String paramString, byte[] paramArrayOfByte);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.weiyun.WeiyunLiteGlobal
  * JD-Core Version:    0.7.0.1
  */

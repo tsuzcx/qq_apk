@@ -6,13 +6,13 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.util.VersionUtils;
-import ecs;
+import dxq;
 import java.util.ArrayList;
 
 public class PathAnimation
   extends AIOAnimationConatiner.AIOAnimator
 {
-  private ecs a;
+  private dxq a;
   public ArrayList a;
   
   public PathAnimation(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ChatXListView paramChatXListView)
@@ -115,10 +115,10 @@ public class PathAnimation
         localView.setTag(localValues);
       }
       label305:
-      if (this.jdField_a_of_type_Ecs == null)
+      if (this.jdField_a_of_type_Dxq == null)
       {
-        this.jdField_a_of_type_Ecs = new ecs(this, null);
-        this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.postDelayed(this.jdField_a_of_type_Ecs, 16L);
+        this.jdField_a_of_type_Dxq = new dxq(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.postDelayed(this.jdField_a_of_type_Dxq, 16L);
       }
       return true;
     }
@@ -128,10 +128,10 @@ public class PathAnimation
   
   protected void c()
   {
-    if (this.jdField_a_of_type_Ecs != null)
+    if (this.jdField_a_of_type_Dxq != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.removeCallbacks(this.jdField_a_of_type_Ecs);
-      this.jdField_a_of_type_Ecs = null;
+      this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.removeCallbacks(this.jdField_a_of_type_Dxq);
+      this.jdField_a_of_type_Dxq = null;
     }
   }
 }

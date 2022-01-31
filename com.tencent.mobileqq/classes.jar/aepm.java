@@ -1,14 +1,16 @@
 import android.view.View;
+import android.widget.TextView;
 
-public abstract interface aepm
+public abstract class aepm
+  extends aeqz
 {
-  public abstract void a(View paramView);
-  
-  public abstract void a(View paramView, aepr paramaepr);
+  public int a;
+  public View a;
+  public TextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aepm
  * JD-Core Version:    0.7.0.1
  */

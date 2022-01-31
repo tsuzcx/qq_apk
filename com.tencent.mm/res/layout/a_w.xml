@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ct3" android:background="@drawable/bj" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginBottom="@dimen/n_" android:layout_centerHorizontal="true">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@raw/app_brand_desktop_icon_info" />
+        <TextView android:textSize="@dimen/nh" android:textColor="@color/h6" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/ct4" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginLeft="@dimen/lb" android:includeFontPadding="false" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/ct5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ct3">
+        <FrameLayout android:gravity="center" android:id="@id/zw" android:layout_width="@dimen/r0" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+            <ImageView android:layout_gravity="center" android:id="@id/jp" android:layout_width="@dimen/qx" android:layout_height="@dimen/qx" android:layout_marginTop="@dimen/n_" android:layout_marginBottom="@dimen/n_" android:src="@drawable/aew" />
+            <ImageView android:layout_gravity="center" android:id="@id/zq" android:background="@drawable/c0" android:layout_width="@dimen/qx" android:layout_height="@dimen/qx" android:layout_marginTop="@dimen/n_" android:layout_marginBottom="@dimen/n_" />
+            <TextView android:textSize="8.0dip" android:textColor="@color/a6q" android:ellipsize="end" android:layout_gravity="center" android:id="@id/zr" android:background="@drawable/c1" android:padding="1.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="18.0dip" android:text="@string/dhz" android:singleLine="true" />
+        </FrameLayout>
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/bbq" android:visibility="invisible" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="@dimen/lb" android:src="@raw/app_brand_desktop_add_icon" android:layout_alignRight="@id/zw" android:layout_alignParentTop="true" />
+    </RelativeLayout>
+</RelativeLayout>

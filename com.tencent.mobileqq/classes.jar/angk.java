@@ -1,15 +1,19 @@
-import com.tencent.open.wadl.WLog;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
+import android.os.Bundle;
 
-public class angk
-  implements Runnable
+public final class angk
 {
-  public angk(WadlProxyServiceManager paramWadlProxyServiceManager) {}
-  
-  public void run()
+  public static Bundle a(Bundle paramBundle)
   {
-    WLog.b("WadlProxyServiceManager", "##@failed to lauch servie: reset mServiceConnecting status.");
-    this.a.a = false;
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    paramBundle = new angp(localBundle);
+    paramBundle.a(10L);
+    paramBundle.b(true);
+    paramBundle.a(true);
+    paramBundle.b(4096L);
+    return paramBundle.a();
   }
 }
 

@@ -1,0 +1,61 @@
+package com.tencent.mm.ui.bizchat;
+
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+final class BizChatSearchUI$c
+{
+  View jTP;
+  View jTQ;
+  View jTR;
+  
+  private void w(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int j = 0;
+    AppMethodBeat.i(30158);
+    View localView = this.jTP;
+    if (paramBoolean1)
+    {
+      i = 0;
+      localView.setVisibility(i);
+      this.jTQ.setVisibility(8);
+      localView = this.jTR;
+      if (!paramBoolean2) {
+        break label68;
+      }
+    }
+    label68:
+    for (int i = j;; i = 8)
+    {
+      localView.setVisibility(i);
+      AppMethodBeat.o(30158);
+      return;
+      i = 8;
+      break;
+    }
+  }
+  
+  public final void sb(int paramInt)
+  {
+    AppMethodBeat.i(30157);
+    switch (paramInt)
+    {
+    default: 
+      w(false, false);
+      AppMethodBeat.o(30157);
+      return;
+    case 1: 
+      w(true, false);
+      AppMethodBeat.o(30157);
+      return;
+    }
+    w(false, true);
+    AppMethodBeat.o(30157);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+ * Qualified Name:     com.tencent.mm.ui.bizchat.BizChatSearchUI.c
+ * JD-Core Version:    0.7.0.1
+ */

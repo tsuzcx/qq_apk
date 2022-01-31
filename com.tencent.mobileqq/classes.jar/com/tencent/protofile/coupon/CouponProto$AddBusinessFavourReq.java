@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class CouponProto$AddBusinessFavourReq
-  extends MessageMicro
+  extends MessageMicro<AddBusinessFavourReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "bid", "source_id" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, AddBusinessFavourReq.class);
   public final PBUInt32Field bid = PBField.initUInt32(0);
@@ -14,7 +14,7 @@ public final class CouponProto$AddBusinessFavourReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.protofile.coupon.CouponProto.AddBusinessFavourReq
  * JD-Core Version:    0.7.0.1
  */

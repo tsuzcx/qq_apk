@@ -1,46 +1,47 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.ShoppingPhotoItemInfo;
-import com.tencent.mobileqq.profile.view.PhotoViewForShopping;
-import com.tencent.mobileqq.profile.view.PhotoViewForShopping.StylePagerAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.lang.ref.Reference;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class agqx
-  implements View.OnClickListener
+class agqx
+  extends bemo
 {
-  public agqx(PhotoViewForShopping.StylePagerAdapter paramStylePagerAdapter) {}
+  agqx(agqq paramagqq) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    int i = paramView.getId();
-    if (PhotoViewForShopping.a(this.a.a).get() != null)
-    {
-      paramView = new Intent((Context)PhotoViewForShopping.a(this.a.a).get(), QQBrowserActivity.class);
-      paramView.putExtra("url", ((ShoppingPhotoItemInfo)this.a.a.jdField_a_of_type_JavaUtilList.get(i)).b);
-      ((Activity)PhotoViewForShopping.a(this.a.a).get()).startActivity(paramView);
-      if (PhotoViewForShopping.a(this.a.a).a.a.equals(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-        ReportController.b(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Shop_lifeservice", "", "Shop_Mtemplatewindowclk", "0X8005B94", 0, 0, "", "", "", "");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDownLoadedPluginResult result = " + paramInt);
     }
-    else
+    if (paramInt == 0) {
+      this.a.bz();
+    }
+    do
     {
       return;
+      QQToast.a(this.a.a(), alud.a(2131705495), 0).a();
+    } while (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setProgress(0);
+  }
+  
+  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onNotifyGameRoomSpeakerStatus uin = " + paramLong2 + " isSeaking = " + paramBoolean);
     }
-    ReportController.b(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Shop_lifeservice", "", "Shop_Ftemplatewindowclk", "0X8005B98", 0, 0, "", "", "", "");
+    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(String.valueOf(paramLong1))) || (this.a.jdField_a_of_type_Bemq == null)) {}
+    bemp localbemp;
+    do
+    {
+      return;
+      localbemp = this.a.jdField_a_of_type_Bemq.a();
+    } while (localbemp == null);
+    localbemp.a(String.valueOf(paramLong2), paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqx
  * JD-Core Version:    0.7.0.1
  */

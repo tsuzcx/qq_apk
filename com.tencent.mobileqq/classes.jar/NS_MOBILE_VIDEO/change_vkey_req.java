@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class change_vkey_req
   extends JceStruct
 {
-  static ArrayList cache_video_urls;
-  public ArrayList video_urls;
+  static ArrayList<String> cache_video_urls;
+  public ArrayList<String> video_urls;
   
   public change_vkey_req() {}
   
-  public change_vkey_req(ArrayList paramArrayList)
+  public change_vkey_req(ArrayList<String> paramArrayList)
   {
     this.video_urls = paramArrayList;
   }
@@ -37,7 +37,7 @@ public final class change_vkey_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_VIDEO.change_vkey_req
  * JD-Core Version:    0.7.0.1
  */

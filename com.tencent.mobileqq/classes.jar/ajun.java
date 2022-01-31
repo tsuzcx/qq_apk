@@ -1,16 +1,8 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.widget.VerticalGallery.OnSelectViewDataUpdateListener;
+import java.nio.ByteBuffer;
 
-public class ajun
-  implements VerticalGallery.OnSelectViewDataUpdateListener
+public abstract interface ajun
 {
-  public ajun(WheelPickerLayout paramWheelPickerLayout) {}
-  
-  public void a(View paramView, int paramInt)
-  {
-    WheelPickerLayout.a(this.a, paramView, 1);
-  }
+  public abstract void a(long paramLong, ByteBuffer paramByteBuffer);
 }
 
 

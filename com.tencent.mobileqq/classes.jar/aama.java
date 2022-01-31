@@ -1,16 +1,60 @@
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.arcard.ARCardPageProcess;
-import com.tencent.mobileqq.arcard.ARCardPageProcess.Circle;
+import com.tencent.ad.tangram.canvas.download.AdCanvasDownloadListenerAdapter;
+import com.tencent.ad.tangram.canvas.download.IAdDownloader.Callback;
+import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppDownloadManager;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class aama
-  implements ValueAnimator.AnimatorUpdateListener
+  implements AdCanvasDownloadListenerAdapter
 {
-  public aama(ARCardPageProcess paramARCardPageProcess, ARCardPageProcess.Circle paramCircle) {}
+  private List<IAdDownloader.Callback> a = new CopyOnWriteArrayList();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public IAdDownloader.Callback getDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess$Circle.setTranslationX(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    if ((this.a != null) && (this.a.size() > 0))
+    {
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        IAdDownloader.Callback localCallback = (IAdDownloader.Callback)localIterator.next();
+        if (((localCallback instanceof aalz)) && (((aalz)localCallback).a() == paramAdAppDownloadManager)) {
+          return localCallback;
+        }
+      }
+    }
+    return null;
+  }
+  
+  public void removeDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
+  {
+    if ((this.a == null) || (paramAdAppDownloadManager == null)) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        IAdDownloader.Callback localCallback = (IAdDownloader.Callback)localIterator.next();
+        if ((localCallback instanceof aalz))
+        {
+          AdAppDownloadManager localAdAppDownloadManager = ((aalz)localCallback).a();
+          if ((localAdAppDownloadManager != null) && (localAdAppDownloadManager == paramAdAppDownloadManager)) {
+            this.a.remove(localCallback);
+          }
+        }
+      }
+    }
+  }
+  
+  public void setDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
+  {
+    if ((this.a != null) && (paramAdAppDownloadManager != null))
+    {
+      aalz localaalz = new aalz();
+      localaalz.a(paramAdAppDownloadManager);
+      this.a.add(localaalz);
+    }
   }
 }
 

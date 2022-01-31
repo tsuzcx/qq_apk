@@ -1,74 +1,81 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.widget.RotateSwitchImageView;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class rge
-  implements View.OnClickListener
+  extends altm
 {
-  public rge(AccountManageActivity paramAccountManageActivity) {}
+  private rge(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (!(paramView instanceof RotateSwitchImageView)) {}
-    View localView2;
-    do
+    int j = 0;
+    if (TextUtils.isEmpty(paramString)) {
+      break label10;
+    }
+    label10:
+    label227:
+    for (;;)
     {
-      do
-      {
-        return;
-        localView1 = AccountManageActivity.a(this.a, paramView);
-        localView2 = AccountManageActivity.b(this.a, paramView);
-        if (AccountManageActivity.a(this.a) != null) {
-          break;
-        }
-        AccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
-        ((RotateSwitchImageView)paramView).b();
-        localLayoutParams = localView2.getLayoutParams();
-        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.g(this.a) * 75.0F));
-        localView2.setLayoutParams(localLayoutParams);
-        if ((localView1 instanceof ShaderAnimLayout)) {
-          ((ShaderAnimLayout)localView1).b();
-        }
-      } while (!AppSetting.b);
-      paramView.setContentDescription(this.a.getString(2131427468));
       return;
-      if (AccountManageActivity.a(this.a) != paramView) {
-        break;
+      if (paramBoolean)
+      {
+        Object localObject1 = VideoFeedsRecommendFragment.a(this.a);
+        if (localObject1 != null) {}
+        for (localObject1 = bdgc.b((QQAppInterface)localObject1, paramString, false);; localObject1 = null)
+        {
+          if (TextUtils.isEmpty((CharSequence)localObject1)) {
+            break label227;
+          }
+          Iterator localIterator = VideoFeedsRecommendFragment.a(this.a).iterator();
+          while (localIterator.hasNext())
+          {
+            Object localObject2 = (VideoInfo)localIterator.next();
+            int i = j;
+            if (paramString.equals(((VideoInfo)localObject2).j))
+            {
+              i = j;
+              if (!((String)localObject1).equals(((VideoInfo)localObject2).k))
+              {
+                ((VideoInfo)localObject2).k = ((String)localObject1);
+                i = 1;
+              }
+            }
+            j = i;
+            if (((VideoInfo)localObject2).d != null)
+            {
+              localObject2 = ((VideoInfo)localObject2).d.iterator();
+              for (;;)
+              {
+                j = i;
+                if (!((Iterator)localObject2).hasNext()) {
+                  break;
+                }
+                VideoInfo localVideoInfo = (VideoInfo)((Iterator)localObject2).next();
+                if ((paramString.equals(localVideoInfo.j)) && (!((String)localObject1).equals(localVideoInfo.k)))
+                {
+                  localVideoInfo.k = ((String)localObject1);
+                  i = 1;
+                }
+              }
+            }
+          }
+          if (j == 0) {
+            break;
+          }
+          VideoFeedsRecommendFragment.a(this.a).a(paramString);
+          return;
+        }
       }
-      AccountManageActivity.a(this.a).a();
-      localLayoutParams = localView2.getLayoutParams();
-      localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.h(this.a) * 40.0F));
-      localView2.setLayoutParams(localLayoutParams);
-      if ((localView1 instanceof ShaderAnimLayout)) {
-        ((ShaderAnimLayout)localView1).f();
-      }
-      AccountManageActivity.a(this.a, null);
-    } while (!AppSetting.b);
-    paramView.setContentDescription(this.a.getString(2131427467));
-    return;
-    AccountManageActivity.a(this.a).a();
-    ((RotateSwitchImageView)paramView).b();
-    AccountManageActivity.b(this.a, AccountManageActivity.a(this.a)).getLayoutParams().width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.i(this.a) * 40.0F));
-    ViewGroup.LayoutParams localLayoutParams = localView2.getLayoutParams();
-    localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.j(this.a) * 75.0F));
-    localView2.setLayoutParams(localLayoutParams);
-    if ((localView1 instanceof ShaderAnimLayout)) {
-      ((ShaderAnimLayout)localView1).b();
     }
-    View localView1 = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
-    if ((localView1 instanceof ShaderAnimLayout)) {
-      ((ShaderAnimLayout)localView1).f();
-    }
-    AccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rge
  * JD-Core Version:    0.7.0.1
  */

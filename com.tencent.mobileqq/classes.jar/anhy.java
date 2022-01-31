@@ -1,27 +1,37 @@
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import cooperation.weiyun.sdk.download.DownloadJobContext;
-import cooperation.weiyun.sdk.download.WyDownloader;
-import java.util.HashMap;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView;
+import com.tencent.qphone.base.util.QLog;
 
 public class anhy
-  implements ThreadPool.Job
+  implements View.OnTouchListener
 {
-  public anhy(WyDownloader paramWyDownloader, Long paramLong, NetReq paramNetReq) {}
+  public anhy(ScanEntryProviderContainerView paramScanEntryProviderContainerView) {}
   
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramJobContext = (DownloadJobContext)WyDownloader.a(this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader).get(this.jdField_a_of_type_JavaLangLong);
-    if ((paramJobContext == null) || (paramJobContext.d())) {
-      WyDownloader.a(this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader, this.jdField_a_of_type_JavaLangLong.longValue());
+    if (QLog.isColorLevel()) {
+      QLog.d("ScanEntryProviderContainerView", 2, String.format("dispatchTouchEvent onTabClickListener", new Object[0]));
     }
-    for (;;)
+    long l = System.currentTimeMillis();
+    if (l - ScanEntryProviderContainerView.a(this.a) <= 1000L) {
+      QLog.i("ScanEntryProviderContainerView", 1, "avoid user fast click");
+    }
+    do
     {
-      return null;
-      WyDownloader.b(this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader).a(this.jdField_a_of_type_ComTencentMobileqqTransfileNetReq);
-    }
+      return false;
+      ScanEntryProviderContainerView.a(this.a, l);
+      switch (paramMotionEvent.getAction())
+      {
+      default: 
+        return false;
+      }
+      paramView = (Integer)paramView.getTag();
+      ScanEntryProviderContainerView.a(this.a).a(paramView.intValue(), new anhz(this, paramView));
+    } while (paramView.intValue() != 2);
+    azqs.b(null, "dc00898", "", "", "0X800A9CE", "0X800A9CE", 0, 0, "", "0", "0", "");
+    return false;
   }
 }
 

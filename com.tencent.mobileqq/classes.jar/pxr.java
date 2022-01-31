@@ -1,29 +1,27 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.device.file.DeviceFileHandler;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class pxr
-  extends Handler
+class pxr
+  implements PopupWindow.OnDismissListener
 {
-  public pxr(DeviceFileHandler paramDeviceFileHandler, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  pxr(pxl parampxl, bhxx parambhxx) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDismiss()
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Bhxx.a(1.0F);
+    if (this.jdField_a_of_type_Pxl.a.b)
     {
-    default: 
-      return;
+      rjg localrjg = this.jdField_a_of_type_Pxl.a.a();
+      if (localrjg != null)
+      {
+        localrjg.c();
+        this.jdField_a_of_type_Pxl.a.b = false;
+      }
     }
-    this.a.a(103, true, paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pxr
  * JD-Core Version:    0.7.0.1
  */

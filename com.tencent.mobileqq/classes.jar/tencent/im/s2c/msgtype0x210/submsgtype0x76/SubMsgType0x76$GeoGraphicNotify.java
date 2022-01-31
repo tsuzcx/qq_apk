@@ -8,11 +8,11 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class SubMsgType0x76$GeoGraphicNotify
-  extends MessageMicro
+  extends MessageMicro<GeoGraphicNotify>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_local_city = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_msg_one_friend = PBField.initRepeatMessage(SubMsgType0x76.OneGeoGraphicFriend.class);
+  public final PBRepeatMessageField<SubMsgType0x76.OneGeoGraphicFriend> rpt_msg_one_friend = PBField.initRepeatMessage(SubMsgType0x76.OneGeoGraphicFriend.class);
   
   static
   {

@@ -1,21 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class tok
-  implements DialogInterface.OnClickListener
+class tok
+  implements View.OnTouchListener
 {
-  public tok(RegisterActivity paramRegisterActivity) {}
+  tok(toi paramtoi, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a = 0;
-    this.a.finish();
+    toi.a(this.jdField_a_of_type_Toi, paramView);
+    this.jdField_a_of_type_Toi.d = this.jdField_a_of_type_Int;
+    toi.a(this.jdField_a_of_type_Toi).onTouchEvent(paramMotionEvent);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tok
  * JD-Core Version:    0.7.0.1
  */

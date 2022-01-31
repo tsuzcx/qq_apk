@@ -1,30 +1,15 @@
-import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.RecommendTroopInfo;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.phone.CountryActivity;
 
 public class elb
-  extends TroopObserver
+  implements DialogInterface.OnDismissListener
 {
-  public elb(RecommendTroopView paramRecommendTroopView) {}
+  public elb(CountryActivity paramCountryActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((this.a.a == null) || (paramLong != Long.valueOf(this.a.a.uin).longValue())) {
-      return;
-    }
-    this.a.l();
-    if (paramBoolean)
-    {
-      this.a.a.option = paramTroopInfo.cGroupOption;
-      RecommendTroopView.a(this.a, this.a.a, paramTroopInfo.joinTroopQuestion, paramTroopInfo.joinTroopAnswer);
-    }
-    for (;;)
-    {
-      this.a.a = null;
-      return;
-      this.a.b(2131561435);
-    }
+    this.a.a = null;
   }
 }
 

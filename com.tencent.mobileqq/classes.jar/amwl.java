@@ -1,6 +1,21 @@
-public abstract interface amwl
+class amwl
+  extends ante
 {
-  public abstract void a();
+  amwl(amwk paramamwk) {}
+  
+  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
+  {
+    if (amwk.a(this.a) != null) {
+      amwk.a(this.a).a(paramArrayOfFloat);
+    }
+  }
+  
+  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    if (amwk.a(this.a) != null) {
+      amwk.a(this.a).a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    }
+  }
 }
 
 

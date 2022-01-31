@@ -1,26 +1,29 @@
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.teamwork.TeamWorkSaveDialog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class aimq
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aimq(TeamWorkSaveDialog paramTeamWorkSaveDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  public aimq(DialogBaseActivity paramDialogBaseActivity, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkSaveDialog, 0);
-    }
-    try
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkSaveDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkSaveDialog.dismiss();
-      }
+      paramDialogInterface = new Intent(BaseActivity.sTopActivity, SplashActivity.class);
+      paramDialogInterface.putExtra("main_tab_id", 1);
+      paramDialogInterface.setFlags(603979776);
+      BaseActivity.sTopActivity.startActivity(paramDialogInterface);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.app, "dc00898", "", "", "0X8006AA6", "0X8006AA6", 0, 0, "", "", "", "");
       return;
     }
-    catch (Exception paramView) {}
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
   }
 }
 

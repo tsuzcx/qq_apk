@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import tencent.im.oidb.hotchat.LBS.Wifi;
 
 public final class oidb_0x89b$JoinPublicGroupReqBody
-  extends MessageMicro
+  extends MessageMicro<JoinPublicGroupReqBody>
 {
   public static final int UINT64_VISITOR_UIN_FIELD_NUMBER = 1;
   public static final int WIFI_INFO_FIELD_NUMBER = 2;
@@ -17,7 +17,7 @@ public final class oidb_0x89b$JoinPublicGroupReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x89b.oidb_0x89b.JoinPublicGroupReqBody
  * JD-Core Version:    0.7.0.1
  */

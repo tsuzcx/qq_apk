@@ -1,30 +1,33 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebFastShareBottomCreator.ViewHolder.ShareCallBack.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class sbj
-  implements DialogInterface.OnCancelListener
+  extends pfq
 {
-  private final WeakReference a;
+  public ArticleInfo a;
   
-  public sbj(ChatHistoryForC2C paramChatHistoryForC2C)
+  public sbj(sbi paramsbi, ArticleInfo paramArticleInfo)
   {
-    this.a = new WeakReference(paramChatHistoryForC2C);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
   }
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a(boolean paramBoolean, int paramInt, scw paramscw)
   {
-    paramDialogInterface = (ChatHistoryForC2C)this.a.get();
-    if ((paramDialogInterface != null) && (paramDialogInterface.a != null)) {
-      paramDialogInterface.a.dismiss();
+    super.a(paramBoolean, paramInt, paramscw);
+    if ((paramBoolean) && (paramscw != null) && (!TextUtils.isEmpty(paramscw.a(paramInt)))) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      ThreadManager.getUIHandler().post(new WebFastShareBottomCreator.ViewHolder.ShareCallBack.1(this, paramBoolean, paramInt, paramscw));
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sbj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,105 +1,114 @@
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.MemoryManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkMediaPlayer;
-import com.tencent.mobileqq.statistics.StatisticHitRateCollector;
-import com.tencent.mobileqq.statistics.battery.BatteryStats;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import mqq.manager.TicketManager;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class zdd
-  extends zeq
+  extends WebViewPlugin
 {
-  protected long a;
-  private String a;
-  protected long b;
-  
-  protected void a()
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool2 = true;
-    super.a();
-    this.jdField_a_of_type_Long += 1L;
-    this.b += 1L;
-    MemoryManager.a().a(0, 0, this.c, this.d, 0L, 0L, 3);
-    if (this.d >= 3L)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null) {
-        break label217;
-      }
-      bool1 = true;
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, new String[] { "com.tencent.mobileqq:tool", "com.tencent.mobileqq:qzone", this.jdField_a_of_type_JavaLangString });
-      this.d = 0L;
-      if (!bool1) {
-        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, null);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountRelease", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
     }
-    if ((this.jdField_a_of_type_Long >= 15L) && (!DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.disable_qzone_kill.name())))
+    if (!"accountRelease".equals(paramString2)) {
+      return false;
+    }
+    if ("onReleaseSuccess".equals(paramString3))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString != null)
+      paramJsBridgeListener = this.mRuntime.a();
+      if (paramJsBridgeListener != null)
       {
-        bool1 = true;
-        label153:
-        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, "com.tencent.mobileqq:qzone");
-        StatisticHitRateCollector.a().d(StatisticHitRateCollector.a());
-        this.jdField_a_of_type_Long = 0L;
+        paramJsBridgeListener.setResult(-1, null);
+        paramJsBridgeListener.finish();
       }
     }
-    else if (this.b >= GuardManager.d) {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null) {
-        break label227;
+    while (!"getToken".equals(paramString3)) {
+      for (;;)
+      {
+        return false;
+        QLog.d("AccountRelease", 1, "release success, activity == null");
       }
     }
-    label217:
-    label227:
-    for (boolean bool1 = bool2;; bool1 = false)
+    paramJsBridgeListener = this.mRuntime.a();
+    paramString1 = this.mRuntime.a();
+    boolean bool = false;
+    if (paramString1 != null) {
+      bool = paramString1.getIntent().getBooleanExtra("is_release_account", false);
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, "com.tencent.mobileqq:tool");
-      this.b = 0L;
-      return;
-      bool1 = false;
+      if ((bool) && (paramJsBridgeListener != null))
+      {
+        paramString1 = (TicketManager)paramJsBridgeListener.getManager(2);
+        paramJsBridgeListener = paramJsBridgeListener.getCurrentAccountUin();
+        paramString1 = paramString1.getA2(paramJsBridgeListener);
+        if ((!TextUtils.isEmpty(paramJsBridgeListener)) && (!TextUtils.isEmpty(paramString1)))
+        {
+          paramString1 = bdhe.a(paramString1);
+          long l = Long.valueOf(paramJsBridgeListener).longValue();
+          paramJsBridgeListener = new byte[76];
+          paramJsBridgeListener[3] = ((byte)(int)(0xFF & l));
+          paramJsBridgeListener[2] = ((byte)(int)(l >>> 8 & 0xFF));
+          paramJsBridgeListener[1] = ((byte)(int)(l >>> 16 & 0xFF));
+          paramJsBridgeListener[0] = ((byte)(int)(l >>> 24 & 0xFF));
+          int i = 0;
+          for (;;)
+          {
+            if (i < paramString1.length)
+            {
+              paramJsBridgeListener[(i + 4)] = paramString1[i];
+              i += 1;
+              continue;
+              QLog.d("AccountRelease", 1, "getToken, activity == null");
+              break;
+            }
+          }
+          paramJsBridgeListener = bflr.a(paramJsBridgeListener);
+          if (QLog.isColorLevel()) {
+            QLog.d("AccountRelease", 2, String.format("getToken: %s", new Object[] { paramJsBridgeListener }));
+          }
+          paramString1 = new JSONObject();
+        }
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        if (!TextUtils.isEmpty(paramJsBridgeListener)) {
+          break label465;
+        }
+        paramString1.put("token", "");
+        callJs(new JSONObject(paramVarArgs[0]).optString("callback"), new String[] { paramString1.toString() });
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        paramJsBridgeListener.printStackTrace();
+      }
       break;
-      bool1 = false;
-      break label153;
-    }
-  }
-  
-  protected void a(String paramString)
-  {
-    if (!"com.tencent.mobileqq".equals(paramString))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(3, paramString);
-      ArkMediaPlayer.a();
-    }
-  }
-  
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    QQAppInterface.a().d();
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
-    CoreService.startCoreService(zeo.a().a);
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b();
-  }
-  
-  protected void c(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  protected void d(String paramString)
-  {
-    if ("com.tencent.mobileqq".equals(paramString))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, null);
-      ArkMediaPlayer.b();
+      QLog.d("AccountRelease", 1, "uin or a2 is empty, uin:" + paramJsBridgeListener + ",a2:" + paramString1);
+      for (;;)
+      {
+        paramJsBridgeListener = "";
+        break;
+        QLog.d("AccountRelease", 1, "getToken, app == null or flag: " + bool);
+      }
+      label465:
+      paramString1.put("token", paramJsBridgeListener);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zdd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
-
-public class akpk
-  implements Runnable
+public abstract interface akpk
 {
-  public akpk(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler) {}
+  public abstract void a();
   
-  public void run()
-  {
-    this.a.g();
-  }
+  public abstract void a(long paramLong);
+  
+  public abstract void b(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akpk
  * JD-Core Version:    0.7.0.1
  */

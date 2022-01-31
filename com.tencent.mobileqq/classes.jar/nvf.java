@@ -1,20 +1,21 @@
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreSimpleListener;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class nvf
-  extends LoadingMoreHelper.OnLoadMoreSimpleListener
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public nvf(StoryDetailFragment paramStoryDetailFragment) {}
+  public nvf(CustomTabView paramCustomTabView) {}
   
-  public boolean a(boolean paramBoolean)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.d();
-    return true;
+    QLog.i("EcshopCustomTabView", 2, "onLaunchResult" + paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvf
  * JD-Core Version:    0.7.0.1
  */

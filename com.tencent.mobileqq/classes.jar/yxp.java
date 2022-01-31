@@ -1,44 +1,50 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.widget.ListView;
 
-class yxp
-  implements View.OnClickListener
+public class yxp
+  implements bhzf
 {
-  yxp(yxn paramyxn) {}
+  public yxp(RefreshView paramRefreshView) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    if ((!TextUtils.isEmpty(yxn.a(this.a))) && (!yxn.a(this.a).equals("0")))
+    if (this.a.jdField_a_of_type_Int == 2)
     {
-      QQAppInterface localQQAppInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
-      int i = this.a.a.jdField_a_of_type_Int;
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData != null) {}
-      for (paramView = Integer.toString(this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameId);; paramView = "")
-      {
-        VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "clk_fuwuhao", i, 0, new String[] { paramView });
-        paramView = new Intent(this.a.a.getActivity(), AccountDetailActivity.class);
-        paramView.putExtra("uin", yxn.a(this.a));
-        paramView.putExtra("uintype", 1008);
-        this.a.a.getActivity().startActivity(paramView);
-        return;
-      }
+      this.a.jdField_a_of_type_Yxi.at_();
+      return;
     }
-    QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, "[setPubAccountInfo] uin is null or = 0");
+    this.a.jdField_a_of_type_Yxi.c(0L);
+  }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Int != 2)
+    {
+      RefreshView.a(this.a, false);
+      this.a.a(RefreshView.a(this.a));
+      this.a.jdField_a_of_type_Yxi.a(0L);
+      this.a.jdField_a_of_type_Int = 2;
+      RefreshView.a(this.a);
+    }
+    return false;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Int != 2) {
+      this.a.jdField_a_of_type_Yxi.b(0L);
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yxp
  * JD-Core Version:    0.7.0.1
  */

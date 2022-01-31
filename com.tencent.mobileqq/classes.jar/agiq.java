@@ -1,54 +1,71 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.armap.ItemInfo;
-import com.tencent.mobileqq.binhai.BinHaiOpenRedPackDialog;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x98b.oidb_0x98b.ItemInfo;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.res.Resources;
+import android.os.Message;
+import com.tencent.image.NativeVideoImage;
+import com.tencent.mobileqq.widget.QQToast;
+import java.io.File;
+import mqq.os.MqqHandler;
 
-public class agiq
-  implements Runnable
+class agiq
+  extends MqqHandler
 {
-  public agiq(ScanTorchActivity paramScanTorchActivity, ArrayList paramArrayList, int paramInt, String paramString) {}
+  agiq(aghx paramaghx) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    Bitmap localBitmap = null;
-    Object localObject2;
-    if (ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity) == null)
+    switch (paramMessage.what)
     {
-      ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, new BinHaiOpenRedPackDialog(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.b));
-      ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).a(new agir(this));
-      ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, false, 0);
-      localObject1 = ItemInfo.a((oidb_0x98b.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0));
-      localObject2 = ((ItemInfo)localObject1).jdField_a_of_type_JavaLangString;
-      String str = "http://sqimg.qq.com/qq_product_operations/mma/binhai_redpack_2017/rank.html?_wv=536929249&_wwv=5&actid=" + ScanTorchActivity.c(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
-      ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).a((String)localObject2, "", "", "", (ItemInfo)localObject1, this.jdField_a_of_type_Int, str, this.jdField_a_of_type_JavaLangString);
-      localObject2 = ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, "res/redpack/redpack_bg.png", true);
-      if (this.jdField_a_of_type_Int <= 1) {
-        break label247;
+    default: 
+    case 1: 
+    case 2: 
+    case 3: 
+      do
+      {
+        do
+        {
+          return;
+          QQToast.a(aghx.e(this.a), 2131720109, 0).a();
+          return;
+          aghx.f(this.a).getString(2131720110);
+          paramMessage = (String)paramMessage.obj;
+          bdhj.a(aghx.g(this.a), paramMessage);
+          QQToast.a(aghx.h(this.a), 2, alud.a(2131700436), 0).a();
+          return;
+        } while (paramMessage.obj == null);
+        paramMessage = new File((String)paramMessage.obj);
+      } while (!paramMessage.exists());
+      paramMessage = bdgm.a(aghx.i(this.a), 232, aghx.j(this.a).getResources().getString(2131720142), aghx.k(this.a).getResources().getString(2131720141), 2131720124, 2131719209, new agir(this, paramMessage), new agis(this));
+      try
+      {
+        paramMessage.show();
+        return;
       }
-    }
-    label247:
-    for (Object localObject1 = ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, "res/redpack/redpack_left.png", true);; localObject1 = null)
-    {
-      if (this.jdField_a_of_type_Int > 1) {
-        localBitmap = ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, "res/redpack/redpack_right.png", true);
+      catch (Throwable paramMessage)
+      {
+        return;
       }
-      ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).a((Bitmap)localObject2, (Bitmap)localObject1, localBitmap);
-      ScanTorchActivity.c(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, false);
-      ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).show();
+    case 10001: 
+      this.a.B();
+      QQToast.a(aghx.l(this.a), 1, alud.a(2131700454), 0).a();
+      NativeVideoImage.resumeAll();
+      aghx.a(this.a);
       return;
-      if (!ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).isShowing()) {
-        break;
-      }
-      ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).dismiss();
-      break;
+    case 10000: 
+      this.a.n = true;
+      this.a.d(100);
+      sendEmptyMessageDelayed(10003, 200L);
+      return;
     }
+    this.a.B();
+    QQToast.a(aghx.m(this.a), 2, alud.a(2131700443), 0).a();
+    NativeVideoImage.resumeAll();
+    aghx.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agiq
  * JD-Core Version:    0.7.0.1
  */

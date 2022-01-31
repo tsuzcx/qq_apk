@@ -1,24 +1,26 @@
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class anik
-  implements Runnable
+class anik
+  implements anjw
 {
-  public anik(QIMCameraCaptureUnit paramQIMCameraCaptureUnit, boolean paramBoolean) {}
+  anik(anii paramanii, long paramLong) {}
   
-  public void run()
+  public void a(long paramLong)
   {
-    if (!this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.b) {
-      this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.h(true);
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Anii.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
-    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.f();
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.e();
-    }
+  }
+  
+  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    anif.a(this.jdField_a_of_type_Anii.a, this.jdField_a_of_type_Long, paramBoolean, "Orientation", paramFloat1, paramFloat2, paramFloat3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anik
  * JD-Core Version:    0.7.0.1
  */

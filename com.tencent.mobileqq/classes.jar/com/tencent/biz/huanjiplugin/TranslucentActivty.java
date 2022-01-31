@@ -1,16 +1,18 @@
 package com.tencent.biz.huanjiplugin;
 
+import alud;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import biqn;
+import biqw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.PluginParams;
 import cooperation.qhuanji.QHuanjiPluginProxyActivity;
+import nff;
 
 public class TranslucentActivty
   extends Activity
@@ -21,22 +23,22 @@ public class TranslucentActivty
       QLog.w("HuanjiPlugin", 2, "begin startPlugin.......");
     }
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (((IPluginManager)localQQAppInterface.getManager(26)).isPlugininstalled("qhuanji_plugin.apk"))
+    if (((biqn)localQQAppInterface.getManager(27)).isPlugininstalled("qhuanji_plugin.apk"))
     {
-      HuanjiPluginProxy.a().a(4, 5, 100);
+      nff.a().a(4, 5, 100);
       paramIntent.putExtra("userQqResources", 2);
-      IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-      localPluginParams.jdField_b_of_type_JavaLangString = "qhuanji_plugin.apk";
-      localPluginParams.d = "闪电换机";
-      localPluginParams.jdField_a_of_type_JavaLangString = localQQAppInterface.c();
-      localPluginParams.e = "com.tencent.huanji.activity.SwitchPhoneActivity";
-      localPluginParams.jdField_a_of_type_JavaLangClass = QHuanjiPluginProxyActivity.class;
-      localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-      localPluginParams.jdField_b_of_type_Int = -1;
-      localPluginParams.c = 10000;
-      localPluginParams.f = null;
-      IPluginManager.a(this, localPluginParams);
-      HuanjiPluginProxy.a().a(4, 6, 100);
+      biqw localbiqw = new biqw(0);
+      localbiqw.jdField_b_of_type_JavaLangString = "qhuanji_plugin.apk";
+      localbiqw.d = alud.a(2131715462);
+      localbiqw.jdField_a_of_type_JavaLangString = localQQAppInterface.c();
+      localbiqw.e = "com.tencent.huanji.activity.SwitchPhoneActivity";
+      localbiqw.jdField_a_of_type_JavaLangClass = QHuanjiPluginProxyActivity.class;
+      localbiqw.jdField_a_of_type_AndroidContentIntent = paramIntent;
+      localbiqw.jdField_b_of_type_Int = -1;
+      localbiqw.c = 10000;
+      localbiqw.f = null;
+      biqn.a(this, localbiqw);
+      nff.a().a(4, 6, 100);
       finish();
       return;
     }

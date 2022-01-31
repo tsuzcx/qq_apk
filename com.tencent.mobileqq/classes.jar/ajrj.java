@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import java.lang.ref.WeakReference;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-public final class ajrj
-  implements Runnable
+public class ajrj
+  implements Animation.AnimationListener
 {
-  public ajrj(WeakReference paramWeakReference, String paramString, FrameSprite.OnFrameEndListener paramOnFrameEndListener) {}
+  public ajrj(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    SpriteVideoView localSpriteVideoView = (SpriteVideoView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localSpriteVideoView != null) {
-      localSpriteVideoView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener);
+    if (NewFlowCameraActivity.b(this.a) != null) {
+      NewFlowCameraActivity.b(this.a).setVisibility(4);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

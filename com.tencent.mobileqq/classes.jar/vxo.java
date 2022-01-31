@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-
-public class vxo
-  implements View.OnClickListener
+class vxo
+  implements vyk
 {
-  public vxo(PublicAccountChatPie paramPublicAccountChatPie) {}
+  vxo(vxn paramvxn, vwb paramvwb) {}
   
-  public void onClick(View paramView)
+  public void a(vyi paramvyi)
   {
-    paramView.setVisibility(8);
+    this.jdField_a_of_type_Vwb.b(this.jdField_a_of_type_Vxn);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vxo
  * JD-Core Version:    0.7.0.1
  */

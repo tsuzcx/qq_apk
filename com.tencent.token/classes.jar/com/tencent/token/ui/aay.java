@@ -1,20 +1,24 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.token.cw;
+import com.tencent.token.cx;
+import com.tencent.token.global.h;
 
-final class aay
-  implements View.OnClickListener
+class aay
+  implements Runnable
 {
-  aay(SmsContentTipActivity paramSmsContentTipActivity) {}
+  aay(UnbindUinActivity paramUnbindUinActivity) {}
   
-  public final void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(this.a, IndexActivity.class);
-    paramView.putExtra("index_from", 16);
-    this.a.startActivity(paramView);
-    this.a.finish();
+    h.a("send unbind seq request:" + this.a.mUnBindRetryTimes);
+    if (!UnbindUinActivity.access$000(this.a)) {
+      return;
+    }
+    cx.c().n();
+    cw.a().a(UnbindUinActivity.access$100(this.a), UnbindUinActivity.access$200(this.a), 1005, 0, this.a.handler);
+    UnbindUinActivity localUnbindUinActivity = this.a;
+    localUnbindUinActivity.mUnBindRetryTimes += 1;
   }
 }
 

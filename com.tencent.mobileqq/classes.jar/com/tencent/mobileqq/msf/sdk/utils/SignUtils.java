@@ -8,21 +8,12 @@ import android.text.TextUtils;
 import android.util.Base64;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
 import java.math.BigInteger;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
 import java.security.KeyPairGenerator;
 import java.security.KeyStore;
 import java.security.KeyStore.Entry;
 import java.security.KeyStore.PrivateKeyEntry;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
 import java.security.Signature;
-import java.security.SignatureException;
-import java.security.UnrecoverableEntryException;
-import java.security.cert.CertificateException;
 import java.security.spec.AlgorithmParameterSpec;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -36,7 +27,6 @@ public class SignUtils
   public static final String TYPE_RSA = "RSA";
   
   private static void createKeys(Context paramContext, String paramString)
-    throws NoSuchProviderException, NoSuchAlgorithmException, InvalidAlgorithmParameterException
   {
     if (TextUtils.isEmpty(paramString)) {}
     for (;;)
@@ -104,30 +94,30 @@ public class SignUtils
     //   15: aload 6
     //   17: astore_2
     //   18: aload_0
-    //   19: invokevirtual 199	java/io/File:exists	()Z
+    //   19: invokevirtual 192	java/io/File:exists	()Z
     //   22: ifeq -9 -> 13
     //   25: aload 6
     //   27: astore_2
     //   28: aload_0
-    //   29: invokevirtual 202	java/io/File:isFile	()Z
+    //   29: invokevirtual 195	java/io/File:isFile	()Z
     //   32: ifeq -19 -> 13
-    //   35: new 204	java/io/FileInputStream
+    //   35: new 197	java/io/FileInputStream
     //   38: dup
     //   39: aload_0
-    //   40: invokespecial 207	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   40: invokespecial 200	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   43: astore_2
-    //   44: new 209	java/io/InputStreamReader
+    //   44: new 202	java/io/InputStreamReader
     //   47: dup
     //   48: aload_2
-    //   49: ldc 211
-    //   51: invokespecial 214	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   49: ldc 204
+    //   51: invokespecial 207	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
     //   54: astore 5
     //   56: aload 5
     //   58: astore 4
     //   60: aload_2
     //   61: astore_3
     //   62: aload_0
-    //   63: invokevirtual 218	java/io/File:length	()J
+    //   63: invokevirtual 211	java/io/File:length	()J
     //   66: l2i
     //   67: istore_1
     //   68: iload_1
@@ -144,10 +134,10 @@ public class SignUtils
     //   89: astore 4
     //   91: aload_2
     //   92: astore_3
-    //   93: new 66	java/lang/StringBuilder
+    //   93: new 60	java/lang/StringBuilder
     //   96: dup
     //   97: sipush 12288
-    //   100: invokespecial 221	java/lang/StringBuilder:<init>	(I)V
+    //   100: invokespecial 214	java/lang/StringBuilder:<init>	(I)V
     //   103: astore 8
     //   105: aload 5
     //   107: astore 4
@@ -155,7 +145,7 @@ public class SignUtils
     //   110: astore_3
     //   111: aload 5
     //   113: aload_0
-    //   114: invokevirtual 225	java/io/InputStreamReader:read	([C)I
+    //   114: invokevirtual 218	java/io/InputStreamReader:read	([C)I
     //   117: istore_1
     //   118: iconst_m1
     //   119: iload_1
@@ -168,7 +158,7 @@ public class SignUtils
     //   131: aload_0
     //   132: iconst_0
     //   133: iload_1
-    //   134: invokevirtual 228	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
+    //   134: invokevirtual 221	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
     //   137: pop
     //   138: goto -33 -> 105
     //   141: astore_3
@@ -182,13 +172,13 @@ public class SignUtils
     //   152: astore_3
     //   153: ldc 14
     //   155: iconst_1
-    //   156: ldc 230
+    //   156: ldc 223
     //   158: aload 5
-    //   160: invokestatic 236	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   160: invokestatic 229	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   163: aload_2
     //   164: ifnull +7 -> 171
     //   167: aload_2
-    //   168: invokevirtual 241	java/io/InputStream:close	()V
+    //   168: invokevirtual 234	java/io/InputStream:close	()V
     //   171: aload 6
     //   173: astore_2
     //   174: aload_0
@@ -196,7 +186,7 @@ public class SignUtils
     //   178: aload 7
     //   180: astore_2
     //   181: aload_0
-    //   182: invokevirtual 242	java/io/InputStreamReader:close	()V
+    //   182: invokevirtual 235	java/io/InputStreamReader:close	()V
     //   185: aconst_null
     //   186: areturn
     //   187: astore_0
@@ -207,12 +197,12 @@ public class SignUtils
     //   194: aload_2
     //   195: astore_3
     //   196: aload 8
-    //   198: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   198: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   201: astore_0
     //   202: aload_2
     //   203: ifnull +7 -> 210
     //   206: aload_2
-    //   207: invokevirtual 241	java/io/InputStream:close	()V
+    //   207: invokevirtual 234	java/io/InputStream:close	()V
     //   210: aload_0
     //   211: astore_2
     //   212: aload 5
@@ -220,7 +210,7 @@ public class SignUtils
     //   217: aload_0
     //   218: astore_2
     //   219: aload 5
-    //   221: invokevirtual 242	java/io/InputStreamReader:close	()V
+    //   221: invokevirtual 235	java/io/InputStreamReader:close	()V
     //   224: aload_0
     //   225: areturn
     //   226: aload 5
@@ -234,14 +224,14 @@ public class SignUtils
     //   238: astore 4
     //   240: aload_2
     //   241: astore_3
-    //   242: new 86	java/lang/String
+    //   242: new 80	java/lang/String
     //   245: dup
     //   246: aload_0
     //   247: iconst_0
     //   248: aload 5
     //   250: aload_0
-    //   251: invokevirtual 225	java/io/InputStreamReader:read	([C)I
-    //   254: invokespecial 245	java/lang/String:<init>	([CII)V
+    //   251: invokevirtual 218	java/io/InputStreamReader:read	([C)I
+    //   254: invokespecial 238	java/lang/String:<init>	([CII)V
     //   257: astore_0
     //   258: goto -56 -> 202
     //   261: astore_0
@@ -252,11 +242,11 @@ public class SignUtils
     //   267: aload_2
     //   268: ifnull +7 -> 275
     //   271: aload_2
-    //   272: invokevirtual 241	java/io/InputStream:close	()V
+    //   272: invokevirtual 234	java/io/InputStream:close	()V
     //   275: aload 4
     //   277: ifnull +8 -> 285
     //   280: aload 4
-    //   282: invokevirtual 242	java/io/InputStreamReader:close	()V
+    //   282: invokevirtual 235	java/io/InputStreamReader:close	()V
     //   285: aload_0
     //   286: athrow
     //   287: astore_2
@@ -337,7 +327,6 @@ public class SignUtils
   }
   
   public static String signData(Context paramContext, String paramString1, String paramString2)
-    throws KeyStoreException, UnrecoverableEntryException, NoSuchAlgorithmException, InvalidKeyException, SignatureException, IOException, CertificateException, NoSuchProviderException, InvalidAlgorithmParameterException
   {
     byte[] arrayOfByte = paramString1.getBytes();
     KeyStore localKeyStore = KeyStore.getInstance("AndroidKeyStore");
@@ -369,7 +358,6 @@ public class SignUtils
   }
   
   public static boolean verifyData(String paramString1, String paramString2, String paramString3)
-    throws KeyStoreException, CertificateException, NoSuchAlgorithmException, IOException, UnrecoverableEntryException, InvalidKeyException, SignatureException
   {
     paramString1 = paramString1.getBytes();
     if (paramString2 == null)
@@ -410,10 +398,10 @@ public class SignUtils
   public static void writeFile(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: new 196	java/io/File
+    //   0: new 189	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 330	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 311	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore 4
     //   10: aconst_null
     //   11: astore_2
@@ -422,31 +410,31 @@ public class SignUtils
     //   14: aload_2
     //   15: astore_0
     //   16: aload 4
-    //   18: invokevirtual 199	java/io/File:exists	()Z
+    //   18: invokevirtual 192	java/io/File:exists	()Z
     //   21: ifne +11 -> 32
     //   24: aload_2
     //   25: astore_0
     //   26: aload 4
-    //   28: invokevirtual 333	java/io/File:createNewFile	()Z
+    //   28: invokevirtual 314	java/io/File:createNewFile	()Z
     //   31: pop
     //   32: aload_2
     //   33: astore_0
-    //   34: new 335	java/io/FileOutputStream
+    //   34: new 316	java/io/FileOutputStream
     //   37: dup
     //   38: aload 4
     //   40: iconst_0
-    //   41: invokespecial 338	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   41: invokespecial 319	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
     //   44: astore_2
     //   45: aload_2
     //   46: aload_1
-    //   47: invokevirtual 263	java/lang/String:getBytes	()[B
-    //   50: invokevirtual 341	java/io/FileOutputStream:write	([B)V
+    //   47: invokevirtual 244	java/lang/String:getBytes	()[B
+    //   50: invokevirtual 322	java/io/FileOutputStream:write	([B)V
     //   53: aload_2
-    //   54: invokevirtual 344	java/io/FileOutputStream:flush	()V
+    //   54: invokevirtual 325	java/io/FileOutputStream:flush	()V
     //   57: aload_2
     //   58: ifnull +7 -> 65
     //   61: aload_2
-    //   62: invokevirtual 345	java/io/FileOutputStream:close	()V
+    //   62: invokevirtual 326	java/io/FileOutputStream:close	()V
     //   65: return
     //   66: astore_2
     //   67: aload_3
@@ -455,13 +443,13 @@ public class SignUtils
     //   70: astore_0
     //   71: ldc 14
     //   73: iconst_1
-    //   74: ldc_w 347
+    //   74: ldc_w 328
     //   77: aload_2
-    //   78: invokestatic 236	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   78: invokestatic 229	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   81: aload_1
     //   82: ifnull -17 -> 65
     //   85: aload_1
-    //   86: invokevirtual 345	java/io/FileOutputStream:close	()V
+    //   86: invokevirtual 326	java/io/FileOutputStream:close	()V
     //   89: return
     //   90: astore_0
     //   91: return
@@ -473,7 +461,7 @@ public class SignUtils
     //   97: aload_1
     //   98: ifnull +7 -> 105
     //   101: aload_1
-    //   102: invokevirtual 345	java/io/FileOutputStream:close	()V
+    //   102: invokevirtual 326	java/io/FileOutputStream:close	()V
     //   105: aload_0
     //   106: athrow
     //   107: astore_1

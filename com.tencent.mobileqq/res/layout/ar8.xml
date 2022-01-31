@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/idz" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true" layout="@layout/j0" />
+    <FrameLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/idz">
+        <com.tencent.widget.XListView android:scrollbarStyle="insideOverlay" android:id="@id/album_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scrollingCache="false" android:divider="#ffdddddd" android:dividerHeight="1.0dip" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="15.0sp" android:textColor="@color/skin_gray2_theme_version2" android:gravity="center" android:layout_gravity="center" android:id="@id/bww" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/cuq" android:drawableTop="@drawable/hap" android:drawablePadding="10.0dip" />
+        </FrameLayout>
+    </FrameLayout>
+</RelativeLayout>

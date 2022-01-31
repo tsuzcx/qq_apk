@@ -1,17 +1,18 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 
-final class og
-  implements View.OnClickListener
+class og
+  implements DialogInterface.OnClickListener
 {
-  og(LoginMsgActivity paramLoginMsgActivity, View paramView) {}
+  og(LogoActivity paramLogoActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.setVisibility(8);
-    LoginMsgActivity.access$1300(this.b);
+    paramDialogInterface = new Intent(this.a, StartPwdGestureModifyActivity.class);
+    this.a.startActivityForResult(paramDialogInterface, 260);
   }
 }
 

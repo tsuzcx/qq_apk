@@ -1,19 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import com.tencent.mobileqq.activity.QQLSActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class adqj
-  implements DialogInterface.OnClickListener
+  extends alwx
 {
-  public adqj(HotPicPageView paramHotPicPageView, HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, int paramInt) {}
+  public adqj(QQLSActivity paramQQLSActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder, this.jdField_a_of_type_Int);
-    QLog.d("HotPicManagerHotPicPageView", 2, "User allowed downd");
+    super.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSActivity", 2, "PC has read onPushReadedNotify finish" + Thread.currentThread().getId());
+    }
+    QQLSActivity.a(this.a);
   }
 }
 

@@ -1,26 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import android.os.Bundle;
 
-public class ysy
-  implements Animation.AnimationListener
+class ysy
+  implements yrb
 {
-  public ysy(ApolloGameActivity paramApolloGameActivity) {}
+  ysy(ysx paramysx) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void callback(Bundle paramBundle)
   {
-    ApolloGameActivity.a(this.a).setVisibility(4);
-    ApolloGameActivity.a(this.a);
+    this.a.a.a.b();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ysy
  * JD-Core Version:    0.7.0.1
  */

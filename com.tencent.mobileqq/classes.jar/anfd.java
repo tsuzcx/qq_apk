@@ -1,17 +1,8 @@
-import android.app.Activity;
-import cooperation.plugin.IPluginManager.OnOpenPluginListener;
-
-public final class anfd
-  implements IPluginManager.OnOpenPluginListener
+public abstract interface anfd
 {
-  public anfd(Activity paramActivity) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      this.a.finish();
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

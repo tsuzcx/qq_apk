@@ -1,28 +1,20 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 public class rzh
-  implements Animation.AnimationListener
+  implements MessageQueue.IdleHandler
 {
-  public rzh(ChatHistory paramChatHistory, View paramView1, View paramView2) {}
+  public rzh(FastWebActivity paramFastWebActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean queueIdle()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.show();
-    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
-    this.b.setVisibility(8);
+    FastWebActivity.e(this.a);
+    return false;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rzh
  * JD-Core Version:    0.7.0.1
  */

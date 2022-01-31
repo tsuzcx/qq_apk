@@ -1,27 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 public class vul
-  implements DialogInterface.OnClickListener
+  extends vut<StoryVideoItem>
 {
-  public vul(GameRoomChatPie paramGameRoomChatPie, WerewolvesPluginInterface paramWerewolvesPluginInterface) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public vul(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.W = true;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.V = true;
-    GameRoomChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie, false);
-    if ((this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface.a()) && (!this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface.b())) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
-    }
+    super(paramVideoViewVideoHolder, null);
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem)
+  {
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    wxe.d(this.a.a, "STATE_VIDEOFILE_ED error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vul
  * JD-Core Version:    0.7.0.1
  */

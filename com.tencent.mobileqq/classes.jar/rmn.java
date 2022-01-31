@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class rmn
-  implements Runnable
+public abstract interface rmn
 {
-  public rmn(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  public abstract void a(String paramString);
   
-  public void run()
-  {
-    if (this.a.a != null) {
-      this.a.a.springBackOverScrollHeaderView();
-    }
-  }
+  public abstract void b(int paramInt);
+  
+  public abstract void b(VideoInfo paramVideoInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rmn
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.v4.util.MQLruCache;
 import android.util.DisplayMetrics;
+import com.tencent.image.downloader.IllegalURLDownloader;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.concurrent.Executor;
@@ -42,6 +43,8 @@ public abstract class URLDrawableParams
   
   protected abstract String doGetLocalFilePath(String paramString);
   
+  protected abstract ApngSoLoader getApngSoLoader();
+  
   protected abstract Drawable getDefaultLoadingDrawable();
   
   protected abstract Drawable getDefualtFailedDrawable();
@@ -72,9 +75,16 @@ public abstract class URLDrawableParams
       }
       return localObject;
       label71:
-      paramObject = localObject;
-      if ("qqlive".equalsIgnoreCase(paramString)) {
+      if ("qqlive".equalsIgnoreCase(paramString))
+      {
         paramObject = new QQLiveDownloader();
+      }
+      else
+      {
+        paramObject = localObject;
+        if ("illegalurl".equals(paramString)) {
+          paramObject = new IllegalURLDownloader();
+        }
       }
     }
   }

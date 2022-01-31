@@ -1,14 +1,14 @@
 package cooperation.qzone;
 
-import amrk;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bjdd;
 
 public class LbsDataV2$PoiInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amrk();
+  public static final Parcelable.Creator<PoiInfo> CREATOR = new bjdd();
   public String address;
   public String city = "";
   public String country = "";
@@ -54,6 +54,10 @@ public class LbsDataV2$PoiInfo
     localPoiInfo.poiType = paramPoiInfo.poiType;
     localPoiInfo.poiTypeName = paramPoiInfo.poiTypeName;
     localPoiInfo.show_poi = paramPoiInfo.show_poi;
+    localPoiInfo.city = paramPoiInfo.city;
+    localPoiInfo.province = paramPoiInfo.province;
+    localPoiInfo.country = paramPoiInfo.country;
+    localPoiInfo.district = paramPoiInfo.district;
     return localPoiInfo;
   }
   
@@ -98,11 +102,15 @@ public class LbsDataV2$PoiInfo
     paramParcel.writeString(this.dianPingId);
     paramParcel.writeParcelable(this.gpsInfo, paramInt);
     paramParcel.writeInt(this.show_poi);
+    paramParcel.writeString(this.country);
+    paramParcel.writeString(this.province);
+    paramParcel.writeString(this.city);
+    paramParcel.writeString(this.district);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.LbsDataV2.PoiInfo
  * JD-Core Version:    0.7.0.1
  */

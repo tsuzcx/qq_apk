@@ -1,50 +1,19 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.utils.LogTag;
-import dov.com.tencent.mobileqq.richmedia.RichmediaService;
-import dov.com.tencent.mobileqq.richmedia.VideoSendTaskManager;
-import java.util.HashMap;
-
 public class aolb
-  implements Runnable
 {
-  String jdField_a_of_type_JavaLangString;
-  
-  public aolb(VideoSendTaskManager paramVideoSendTaskManager, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void run()
-  {
-    Object localObject = (TransferRequest)VideoSendTaskManager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaVideoSendTaskManager).get(this.jdField_a_of_type_JavaLangString);
-    if (localObject == null)
-    {
-      LogTag.a(this.jdField_a_of_type_JavaLangString, "RemoveRequest", "[RemoveRequest]TransferRequest is removed");
-      return;
-    }
-    localObject = (MessageForShortVideo)((TransferRequest)localObject).a;
-    if ((TextUtils.isEmpty(((MessageForShortVideo)localObject).md5)) || (TextUtils.isEmpty(((MessageForShortVideo)localObject).mLocalMd5)))
-    {
-      LogTag.a(this.jdField_a_of_type_JavaLangString, "RemoveRequest", "[RemoveRequest]Remove failed:md5=" + ((MessageForShortVideo)localObject).md5 + ",localMd5=" + ((MessageForShortVideo)localObject).mLocalMd5);
-      return;
-    }
-    VideoSendTaskManager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaVideoSendTaskManager).remove(this.jdField_a_of_type_JavaLangString);
-    localObject = RichmediaService.a();
-    if (localObject != null)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("vidoe_record_uniseq", this.jdField_a_of_type_JavaLangString);
-      ((RichmediaService)localObject).a(1002, -1, localBundle);
-    }
-    LogTag.a(this.jdField_a_of_type_JavaLangString, "RemoveRequest", "[RemoveRequest]Remove success");
-  }
+  public static String a = "com.tencent.map.WelcomeActivity";
+  public static String b = "com.google.android.maps.MapsActivity";
+  public static String c = "com.tencent.map";
+  public static String d = "com.autonavi.minimap";
+  public static String e = "com.google.android.apps.maps";
+  public static String f = "com.baidu.BaiduMap";
+  public static String g = "http://softroute.map.qq.com/downloadfile?cid=00214";
+  public static String h = alof.bo + "tencentmap.apk";
+  public static String i = "QQMAP_DEFAULT";
+  public static String j = "Location";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aolb
  * JD-Core Version:    0.7.0.1
  */

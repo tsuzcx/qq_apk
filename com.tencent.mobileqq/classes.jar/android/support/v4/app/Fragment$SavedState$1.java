@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
 final class Fragment$SavedState$1
-  implements Parcelable.Creator
+  implements Parcelable.Creator<Fragment.SavedState>
 {
   public Fragment.SavedState createFromParcel(Parcel paramParcel)
   {

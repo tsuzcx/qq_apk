@@ -1,115 +1,43 @@
-import com.tencent.mobileqq.activity.contact.troop.DiscussionView;
-import com.tencent.mobileqq.adapter.DiscussionListAdapter2;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Map;
 
-public class wkh
-  extends DiscussionObserver
+public final class wkh
+  extends QQUIEventReceiver<wjw, uwf>
 {
-  private wkh(DiscussionView paramDiscussionView) {}
-  
-  protected void a()
+  public wkh(@NonNull wjw paramwjw)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    super(paramwjw);
   }
   
-  protected void a(boolean paramBoolean)
+  public void a(@NonNull wjw paramwjw, @NonNull uwf paramuwf)
   {
-    if (paramBoolean) {
-      this.a.i();
+    if (wjw.a(paramwjw) == null) {
+      wxe.b("Q.qqstory.detail.StoryDetailPresenter", "ignore this tag info event. %s.", paramuwf.toString());
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    if (this.a.c)
+    do
     {
-      this.a.c = false;
-      if (paramBoolean)
+      do
       {
-        DiscussionView.a(this.a).a(0);
-        this.a.a(100, 800L);
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.springBackOverScrollHeaderView();
-    this.a.b(2131434349);
+        return;
+      } while (!paramuwf.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+      wxe.a("Q.qqstory.detail.StoryDetailPresenter", "receive tag info event. %s.", paramuwf.toString());
+      paramuwf = (vfl)paramuwf.jdField_a_of_type_JavaUtilMap.get(wjw.a(paramwjw));
+    } while (paramuwf == null);
+    paramuwf = ((uwd)uwa.a(27)).a(wjw.a(paramwjw).a(), paramuwf.a);
+    wjw.a(paramwjw).b(paramuwf, true);
+    paramwjw.a();
   }
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString)
+  public Class acceptEventClass()
   {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList paramArrayList)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DiscussionView", 2, "onUncollectDiscussion isSuccess:" + paramBoolean + " uin:" + paramLong);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    }
-  }
-  
-  protected void b()
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-  }
-  
-  protected void b(boolean paramBoolean, Long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DiscussionView", 2, "onUncollectDiscussion isSuccess:" + paramBoolean + " uin:" + paramLong);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    }
+    return uwf.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wkh
  * JD-Core Version:    0.7.0.1
  */

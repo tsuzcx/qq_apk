@@ -1,27 +1,21 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
 public class afdi
-  implements Handler.Callback
+  implements View.OnClickListener
 {
-  public afdi(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  public afdi(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      NearbyProfileDisplayPanel.a(this.a);
-    }
+    this.a.b(paramView);
+    AIOLongShotHelper.a("0X8009DE9");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afdi
  * JD-Core Version:    0.7.0.1
  */

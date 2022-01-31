@@ -24,7 +24,8 @@ abstract class LookupTableInterpolator
     }
     int i = Math.min((int)((this.mValues.length - 1) * paramFloat), this.mValues.length - 2);
     paramFloat = (paramFloat - i * this.mStepSize) / this.mStepSize;
-    return this.mValues[i] + (this.mValues[(i + 1)] - this.mValues[i]) * paramFloat;
+    float f = this.mValues[i];
+    return (this.mValues[(i + 1)] - this.mValues[i]) * paramFloat + f;
   }
 }
 

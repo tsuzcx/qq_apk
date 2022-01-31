@@ -1,45 +1,63 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.WeatherDataProvider;
-import com.tencent.biz.qqstory.model.WeatherDataProvider.WeatherInfo;
-import com.tencent.biz.qqstory.network.request.GetWeatherRequest;
-import com.tencent.biz.qqstory.network.response.GetWeatherResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.coupon.CouponActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public class nds
-  implements CmdTaskManger.CommandCallback
+  extends WebViewPlugin
 {
-  public nds(WeatherDataProvider paramWeatherDataProvider) {}
-  
-  public void a(@NonNull GetWeatherRequest paramGetWeatherRequest, @Nullable GetWeatherResponse paramGetWeatherResponse, @NonNull ErrorMessage paramErrorMessage)
+  public nds()
   {
-    SLog.b("WeatherDataProvider", "requestWeather Cmd Respond.");
-    if ((paramErrorMessage.isSuccess()) && (paramGetWeatherResponse != null))
+    this.mPluginNameSpace = "coupon";
+  }
+  
+  public void a(String paramString)
+  {
+    Activity localActivity = this.mRuntime.a();
+    int i;
+    if ((localActivity instanceof CouponActivity))
     {
-      SLog.a("WeatherDataProvider", "requestWeather onCmdRespond success, temperature : %s .", Integer.valueOf(paramGetWeatherResponse.b));
-      this.a.jdField_a_of_type_JavaLangObject = new WeatherDataProvider.WeatherInfo(paramGetWeatherResponse.b);
-      SLog.c("WeatherDataProvider", "update local weather data.");
-      paramGetWeatherRequest = (StoryConfigManager)SuperManager.a(10);
-      paramGetWeatherRequest.b("edit_video_weather_filter_data", Integer.valueOf(paramGetWeatherResponse.b));
-      paramGetWeatherRequest.b("edit_video_weather_expiry_time", Long.valueOf(System.currentTimeMillis() + 14400000L));
-      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
+      localObject = (CouponActivity)localActivity;
+      i = ((CouponActivity)localObject).a;
+      if ((i & 0x8) != 0)
+      {
+        paramString = new Intent();
+        paramString.putExtra("toPage", 2);
+        ((CouponActivity)localObject).setResult(-1, paramString);
+        ((CouponActivity)localObject).superFinish();
+      }
     }
-    for (;;)
+    else
     {
-      this.a.jdField_a_of_type_Boolean = false;
       return;
-      SLog.d("WeatherDataProvider", "requestWeather onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramGetWeatherRequest });
-      this.a.a(false, null);
     }
+    Object localObject = new Intent(localActivity, CouponActivity.class);
+    ((Intent)localObject).putExtra("from", (i | 0xA) & 0xE);
+    if (!TextUtils.isEmpty(paramString)) {
+      ((Intent)localObject).putExtra("jsonParams", paramString);
+    }
+    localActivity.startActivity((Intent)localObject);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ("coupon".equals(paramString2))
+    {
+      if (("goToCouponHomePage".equals(paramString3)) && (paramVarArgs.length == 1))
+      {
+        a(paramVarArgs[0]);
+        paramJsBridgeListener.a(null);
+      }
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nds
  * JD-Core Version:    0.7.0.1
  */

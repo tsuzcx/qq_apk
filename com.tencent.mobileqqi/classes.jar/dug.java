@@ -1,17 +1,18 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.widget.XListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class dug
-  implements Runnable
+public class dug
+  implements DialogInterface.OnClickListener
 {
-  dug(duf paramduf) {}
+  public dug(UpgradeActivity paramUpgradeActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a.a.a() instanceof BaseAdapter)) {
-      ((BaseAdapter)this.a.a.a.a()).notifyDataSetChanged();
-    }
+    ReportController.b(this.a.b, "CliOper", "", "", "0X800417F", "0X800417F", 0, 0, "", "", "", "");
+    this.a.finish();
+    this.a.e();
   }
 }
 

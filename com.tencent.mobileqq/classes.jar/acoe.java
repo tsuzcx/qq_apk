@@ -1,22 +1,28 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
 
-class acoe
-  implements Runnable
+public class acoe
+  implements DialogInterface.OnClickListener
 {
-  acoe(acod paramacod) {}
+  public acoe(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    UniformDownloadActivity.b(this.a.a).setVisibility(0);
-    UniformDownloadActivity.a(this.a.a).setVisibility(0);
-    UniformDownloadActivity.b(this.a.a).setText(this.a.a.getString(2131428580, new Object[] { "0%" }));
+    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
+    {
+      this.a.jdField_a_of_type_AndroidAppDialog.cancel();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask.a(false);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acoe
  * JD-Core Version:    0.7.0.1
  */

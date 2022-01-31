@@ -1,58 +1,70 @@
-import android.content.Intent;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Handler;
+import android.text.SpannableString;
+import android.text.style.AbsoluteSizeSpan;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.net.URLEncoder;
-import mqq.os.MqqHandler;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import com.tencent.widget.XEditTextEx;
+import com.tribe.async.dispatch.IEventReceiver;
 
 public class xjg
-  implements View.OnClickListener
+  implements IEventReceiver
 {
-  public xjg(BannerManager paramBannerManager) {}
+  public View.OnClickListener a;
+  public final View a;
+  public ImageButton a;
+  public TextView a;
+  public XEditTextEx a;
+  public String a;
+  public xjj a;
   
-  public void onClick(View paramView)
+  public xjg(View paramView)
   {
-    if (!BannerManager.a(this.a)) {
-      return;
-    }
-    BannerManager.a(this.a, false);
-    new Handler().postDelayed(new xjh(this), 1000L);
-    paramView = (QQAppInterface)BannerManager.a(this.a).getAppRuntime();
-    String str = paramView.getCurrentAccountUin();
-    Object localObject = new StringBuilder("http://aq.qq.com/cn2/change_psw/mobile/mobile_change_psw_reg_input_psw");
-    ((StringBuilder)localObject).append("?");
-    ((StringBuilder)localObject).append("uin=");
-    ((StringBuilder)localObject).append(str);
-    ((StringBuilder)localObject).append("&plat=1");
-    ((StringBuilder)localObject).append("&app=1");
-    ((StringBuilder)localObject).append("&version=7.6.3.3560");
-    ((StringBuilder)localObject).append("&device=" + URLEncoder.encode(Build.DEVICE));
-    ((StringBuilder)localObject).append("&system=" + Build.VERSION.RELEASE);
-    ((StringBuilder)localObject).append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
-    localObject = ((StringBuilder)localObject).toString();
-    Intent localIntent = new Intent();
-    localIntent.putExtra("portraitOnly", true);
-    localIntent.putExtra("url", (String)localObject);
-    localIntent.putExtra("uin", str);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("hide_more_button", true);
-    VasWebviewUtil.openQQBrowserActivity(BannerManager.a(this.a), (String)localObject, 32768L, localIntent, false, -1);
-    PhoneNumLoginImpl.a().a(paramView);
-    BannerManager.a(this.a).sendEmptyMessageDelayed(4, 1000L);
-    ReportController.b(paramView, "CliOper", "", "", "Mobile_signup", "Clk_blue_pw", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    a(paramView);
+  }
+  
+  private void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131363042));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364664));
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)paramView.findViewById(2131365601));
+    paramView = new SpannableString(alud.a(2131711192));
+    paramView.setSpan(new AbsoluteSizeSpan(14, true), 0, paramView.length(), 33);
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setHint(paramView);
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(new xji(this));
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnEditorActionListener(new xjh(this));
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_AndroidViewView.getVisibility();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(paramInt);
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(paramOnClickListener);
+  }
+  
+  public void b(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
+  }
+  
+  public boolean isValidate()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xjg
  * JD-Core Version:    0.7.0.1
  */

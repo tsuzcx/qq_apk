@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.DownloadCallback;
+import ajah;
 import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class QWalletCommonJsPlugin$QWVideoJsPlugin$1
-  implements PreloadManager.DownloadCallback
+  implements ajah
 {
   QWalletCommonJsPlugin$QWVideoJsPlugin$1(QWalletCommonJsPlugin.QWVideoJsPlugin paramQWVideoJsPlugin, String paramString) {}
   
@@ -28,7 +28,7 @@ class QWalletCommonJsPlugin$QWVideoJsPlugin$1
       for (;;)
       {
         paramString1.put("resultCode", paramInt);
-        QWalletCommonJsPlugin.QWVideoJsPlugin.access$800(this.this$1, "downloadVideo", this.val$vid, paramString1);
+        QWalletCommonJsPlugin.QWVideoJsPlugin.access$1000(this.this$1, "downloadVideo", this.val$vid, paramString1);
         return;
         if (paramInt == -4) {
           paramInt = -2;
@@ -50,7 +50,7 @@ class QWalletCommonJsPlugin$QWVideoJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin.QWVideoJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

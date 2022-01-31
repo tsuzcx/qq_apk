@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.SupplicantState;
 import android.net.wifi.WifiInfo;
+import android.os.Build.VERSION;
 import android.os.SystemClock;
 import android.provider.Settings.System;
 import android.telephony.TelephonyManager;
@@ -236,11 +237,15 @@ public class j
   
   private static boolean g()
   {
-    boolean bool = false;
-    if (Settings.System.getInt(BaseApplication.getContext().getContentResolver(), "airplane_mode_on", 0) != 0) {
-      bool = true;
+    if (Build.VERSION.SDK_INT >= 17) {
+      if (Settings.System.getInt(BaseApplication.getContext().getContentResolver(), "airplane_mode_on", 0) == 0) {}
     }
-    return bool;
+    while (Settings.System.getInt(BaseApplication.getContext().getContentResolver(), "airplane_mode_on", 0) != 0)
+    {
+      return true;
+      return false;
+    }
+    return false;
   }
   
   public void a()
@@ -252,7 +257,6 @@ public class j
       Object localObject = new l(this);
       CrashStrategyBean localCrashStrategyBean = new CrashStrategyBean();
       localCrashStrategyBean.setMaxStackFrame(6);
-      localCrashStrategyBean.setMaxStackLine(400);
       CrashReport.initCrashReport(BaseApplication.getContext(), (CrashHandleListener)localObject, new a(), true, localCrashStrategyBean);
       UserAction.closeUseInfoEvent();
       UserAction.setAutoLaunchEventUsable(true);

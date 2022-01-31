@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class sysmsg_0x20c_0x20$MemberNumRemind
-  extends MessageMicro
+  extends MessageMicro<MemberNumRemind>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "u64_discuss_code", "u32_mem_num" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0) }, MemberNumRemind.class);
   public final PBUInt32Field u32_mem_num = PBField.initUInt32(0);
@@ -15,7 +15,7 @@ public final class sysmsg_0x20c_0x20$MemberNumRemind
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.conf.sysmsg_0x20c_0x20.MemberNumRemind
  * JD-Core Version:    0.7.0.1
  */

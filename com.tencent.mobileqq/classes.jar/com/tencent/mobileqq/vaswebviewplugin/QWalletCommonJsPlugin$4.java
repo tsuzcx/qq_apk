@@ -1,72 +1,51 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import Wallet.AuthCodeItem;
-import Wallet.AuthCodeRsp;
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.io.File;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import azps;
+import com.tencent.biz.pubaccount.CustomWebView;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 class QWalletCommonJsPlugin$4
   implements Runnable
 {
-  QWalletCommonJsPlugin$4(QWalletCommonJsPlugin paramQWalletCommonJsPlugin, String paramString) {}
+  QWalletCommonJsPlugin$4(QWalletCommonJsPlugin paramQWalletCommonJsPlugin, long paramLong1, CustomWebView paramCustomWebView, String paramString, long paramLong2) {}
   
   public void run()
   {
+    long l = this.val$totalTime;
+    String str1 = "";
+    if (this.val$webView != null) {
+      str1 = this.val$webView.getUrl();
+    }
+    if (!TextUtils.isEmpty(str1)) {}
     for (;;)
     {
-      int i;
       try
       {
-        Object localObject1 = FileUtils.a(this.val$cacheFileName);
-        if (localObject1 == null)
+        str1 = URLEncoder.encode(str1, "utf-8");
+        int i = 3;
+        String str3 = this.val$authCode;
+        if (TextUtils.isEmpty(this.val$authCode))
         {
-          QWalletCommonJsPlugin.access$100(this.this$0);
-          return;
+          i = 4;
+          str3 = "";
+          l = 0L;
         }
-        localObject2 = new JceInputStream((byte[])localObject1);
-        localObject1 = new AuthCodeRsp();
-        ((AuthCodeRsp)localObject1).readFrom((JceInputStream)localObject2);
-        long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-        if ((localObject1 == null) || (((AuthCodeRsp)localObject1).items == null)) {
-          break;
-        }
-        i = 0;
-        if (i >= ((AuthCodeRsp)localObject1).items.size()) {
-          break;
-        }
-        if ((((AuthCodeRsp)localObject1).items.get(i) == null) || (((AuthCodeItem)((AuthCodeRsp)localObject1).items.get(i)).appid != QWalletCommonJsPlugin.access$200(this.this$0)) || (((AuthCodeItem)((AuthCodeRsp)localObject1).items.get(i)).expireTime <= l)) {
-          break label245;
-        }
-        this.this$0.doAuthCodeCallback(QWalletCommonJsPlugin.access$300(this.this$0), (AuthCodeItem)((AuthCodeRsp)localObject1).items.get(i));
-        ((AuthCodeRsp)localObject1).items.remove(i);
-        if (((AuthCodeRsp)localObject1).items.size() <= 0)
-        {
-          new File(this.val$cacheFileName).delete();
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        QWalletCommonJsPlugin.access$100(this.this$0);
+        azps.a(null, "dc01021", "" + i + '|' + str3 + '|' + str1 + '|' + "2|" + this.val$appid + "|||" + l, false);
         return;
       }
-      Object localObject2 = new JceOutputStream();
-      localException.writeTo((JceOutputStream)localObject2);
-      FileUtils.a(((JceOutputStream)localObject2).toByteArray(), this.val$cacheFileName);
-      return;
-      label245:
-      i += 1;
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        localUnsupportedEncodingException.printStackTrace();
+      }
+      String str2 = "";
     }
-    QWalletCommonJsPlugin.access$100(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

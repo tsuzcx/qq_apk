@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class QIMVideoUpload$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 80, 88, 98 }, new String[] { "msg_err", "uint64_uin", "uint64_service_type", "str_uuid" }, new Object[] { null, Long.valueOf(0L), Long.valueOf(0L), "" }, RspBody.class);
   public QIMVideoUpload.ErrorInfo msg_err = new QIMVideoUpload.ErrorInfo();
@@ -17,7 +17,7 @@ public final class QIMVideoUpload$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.qim.trans.QIMVideoUpload.QIMVideoUpload.RspBody
  * JD-Core Version:    0.7.0.1
  */

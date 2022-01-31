@@ -1,48 +1,28 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.GridView;
-import com.tencent.mobileqq.widget.DraggableGridView;
-import com.tencent.widget.ListView;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 
 public class aktx
-  implements Animation.AnimationListener
+  implements akyw
 {
-  private aktx(DraggableGridView paramDraggableGridView) {}
+  public aktx(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy, int paramInt, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    int i = 0;
-    while (i < DraggableGridView.a(this.a).getChildCount())
+    if (!TextUtils.isEmpty(paramString2))
     {
-      paramAnimation = DraggableGridView.a(this.a).getChildAt(i);
-      if ((paramAnimation instanceof GridView))
-      {
-        paramAnimation = (GridView)paramAnimation;
-        int j = 0;
-        while (j < paramAnimation.getChildCount())
-        {
-          paramAnimation.getChildAt(j).clearAnimation();
-          paramAnimation.getChildAt(j).setPressed(false);
-          paramAnimation.getChildAt(j).setVisibility(0);
-          j += 1;
-        }
-      }
-      i += 1;
+      paramString1 = new Bundle();
+      paramString1.putInt("type", this.jdField_a_of_type_Int);
+      paramString1.putString("uin", paramString2);
+      paramString2 = new akty(this);
+      QIPCClientHelper.getInstance().callServer("cm_game_module", "action_get_accountInfo", paramString1, paramString2);
     }
-    this.a.b();
-    DraggableGridView.b(this.a, false);
-    DraggableGridView.c(this.a, false);
-    DraggableGridView.a(this.a).notifyDataSetChanged();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aktx
  * JD-Core Version:    0.7.0.1
  */

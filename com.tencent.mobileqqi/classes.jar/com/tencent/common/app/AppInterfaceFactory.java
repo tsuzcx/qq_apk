@@ -1,6 +1,5 @@
 package com.tencent.common.app;
 
-import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.activity.QQMapActivity.MapRuntime;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.PeakAppInterface;
@@ -18,17 +17,21 @@ public class AppInterfaceFactory
 {
   public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    QQAppInterface localQQAppInterface = null;
+    Object localObject2 = null;
     String str = paramBaseApplicationImpl.getPackageName();
+    Object localObject1;
     if (str.equals(paramString)) {
-      localQQAppInterface = new QQAppInterface(paramBaseApplicationImpl, paramString);
+      localObject1 = new QQAppInterface(paramBaseApplicationImpl, paramString);
     }
-    while (paramString.equals(str + ":notifypush")) {
-      return localQQAppInterface;
-    }
-    if (paramString.equals(str + ":video")) {
-      return new VideoAppInterface(paramBaseApplicationImpl, "video");
-    }
+    do
+    {
+      do
+      {
+        return localObject1;
+        localObject1 = localObject2;
+      } while (paramString.equals(str + ":notifypush"));
+      localObject1 = localObject2;
+    } while (paramString.equals(str + ":video"));
     if (paramString.equals(str + ":qzone")) {
       return QZoneHelper.a(paramBaseApplicationImpl, "qzone");
     }

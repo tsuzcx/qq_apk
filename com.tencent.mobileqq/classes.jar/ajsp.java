@@ -1,14 +1,6 @@
-import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
-
 public class ajsp
-  implements Runnable
 {
-  public ajsp(MessageSubtitleView paramMessageSubtitleView) {}
-  
-  public void run()
-  {
-    MessageSubtitleView.a(this.a);
-  }
+  public static final String a = alud.a(2131712768) + ulg.a + alud.a(2131712769);
 }
 
 

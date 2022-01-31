@@ -1,7 +1,7 @@
 package com.tencent.mm.sdk.storage;
 
 class MStorage$2
-  extends MStorageEvent<MStorage.IOnStorageLoaded, String>
+  extends MStorageEvent
 {
   MStorage$2(MStorage paramMStorage) {}
 }

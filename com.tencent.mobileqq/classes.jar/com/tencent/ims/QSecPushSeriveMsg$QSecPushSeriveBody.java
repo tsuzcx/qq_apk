@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class QSecPushSeriveMsg$QSecPushSeriveBody
-  extends MessageMicro
+  extends MessageMicro<QSecPushSeriveBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field canCache = PBField.initUInt32(0);
@@ -31,7 +31,7 @@ public final class QSecPushSeriveMsg$QSecPushSeriveBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.QSecPushSeriveMsg.QSecPushSeriveBody
  * JD-Core Version:    0.7.0.1
  */

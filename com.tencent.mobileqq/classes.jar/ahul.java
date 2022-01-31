@@ -1,21 +1,59 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.presenter.SearchResultGroupMorePresenter;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ahul
-  implements View.OnClickListener
 {
-  public ahul(SearchResultGroupMorePresenter paramSearchResultGroupMorePresenter, ISearchResultGroupModel paramISearchResultGroupModel) {}
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public boolean b;
   
-  public void onClick(View paramView)
+  public JSONObject a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel.a(paramView);
+    try
+    {
+      localJSONObject = new JSONObject();
+      localJSONException1.printStackTrace();
+    }
+    catch (JSONException localJSONException1)
+    {
+      try
+      {
+        localJSONObject.put("entryID", this.jdField_a_of_type_Int);
+        localJSONObject.put("redDotVersion", this.jdField_b_of_type_Int);
+        localJSONObject.put("showRedDot", this.jdField_a_of_type_Boolean);
+        localJSONObject.put("userCanceled", this.jdField_b_of_type_Boolean);
+        localJSONObject.put("lastCancelTime", this.jdField_a_of_type_Long);
+        return localJSONObject;
+      }
+      catch (JSONException localJSONException2)
+      {
+        JSONObject localJSONObject;
+        break label68;
+      }
+      localJSONException1 = localJSONException1;
+      localJSONObject = null;
+    }
+    label68:
+    return localJSONObject;
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null)
+    {
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("entryID");
+      this.jdField_b_of_type_Int = paramJSONObject.optInt("redDotVersion");
+      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("showRedDot");
+      this.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("userCanceled");
+      this.jdField_a_of_type_Long = paramJSONObject.optLong("lastCancelTime");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahul
  * JD-Core Version:    0.7.0.1
  */

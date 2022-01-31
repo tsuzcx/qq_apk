@@ -1,22 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.TroopQZoneUploadAlbumObserver;
 
 public class byb
-  implements DialogInterface.OnClickListener
+  extends TroopQZoneUploadAlbumObserver
 {
-  public byb(AccountManageActivity paramAccountManageActivity) {}
+  public byb(ChatActivity paramChatActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    ReportController.a(this.a.b, "CliOper", "", "", "0X80040A7", "0X80040A7", 0, 0, "", "", "", "");
-    this.a.e();
+    this.a.a(65536);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     byb
  * JD-Core Version:    0.7.0.1
  */

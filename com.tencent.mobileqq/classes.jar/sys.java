@@ -1,28 +1,22 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.app.RedTouchObserver;
-import com.tencent.mobileqq.leba.header.LebaGridShowManager;
-import com.tencent.qphone.base.util.QLog;
-
-public class sys
-  extends RedTouchObserver
+class sys
+  implements biai
 {
-  public sys(LebaListMgrActivity paramLebaListMgrActivity) {}
+  sys(syq paramsyq) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.lebatab.mgr", 4, "notifyLebaViewItemsReloaded");
+    syq.a(this.a, paramInt2);
+    float f = syq.a(this.a).a(syq.a(this.a));
+    bkbq.a("readinjoy_font_size_sp", Float.valueOf(f));
+    bkbq.a("readinjoy_font_size_index_sp" + ors.a(), Integer.valueOf(syq.a(this.a)));
+    if (syq.a(this.a) != null) {
+      syq.a(this.a).a(syq.a(this.a), f);
     }
-    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {
-      return;
-    }
-    paramObject = LebaGridShowManager.a().c(this.a.app);
-    this.a.runOnUiThread(new syt(this, paramObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sys
  * JD-Core Version:    0.7.0.1
  */

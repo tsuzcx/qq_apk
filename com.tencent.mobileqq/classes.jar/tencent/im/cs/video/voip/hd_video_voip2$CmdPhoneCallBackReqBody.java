@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class hd_video_voip2$CmdPhoneCallBackReqBody
-  extends MessageMicro
+  extends MessageMicro<CmdPhoneCallBackReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_prvt_session = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -27,7 +27,7 @@ public final class hd_video_voip2$CmdPhoneCallBackReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.video.voip.hd_video_voip2.CmdPhoneCallBackReqBody
  * JD-Core Version:    0.7.0.1
  */

@@ -8,264 +8,349 @@ import com.tencent.mobileqq.shortvideo.resource.AVFilterResource;
 import com.tencent.mobileqq.shortvideo.resource.Resources;
 import com.tencent.sveffects.SLog;
 import com.tencent.sveffects.SdkContext;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class QQAVFilter
   extends QQBaseFilter
 {
-  private FilterRender a;
-  private int e = 0;
-  private int f = 0;
+  private int lastHeight = 0;
+  private int lastWidth = 0;
+  private FilterRender mFilterRender;
+  private List<QQAVFilter.FragmentFilterDesc> mFragmentFilterDescs = new CopyOnWriteArrayList();
   
   public QQAVFilter(int paramInt, QQFilterRenderManager paramQQFilterRenderManager)
   {
     super(paramInt, paramQQFilterRenderManager);
   }
   
-  private String a(String paramString, FilterDesc paramFilterDesc)
+  private void doInternaldestroyFilter()
+  {
+    if (this.mFilterRender != null)
+    {
+      this.mFilterRender.destroy();
+      this.mFilterRender = null;
+      SLog.i("avFilterRender", "destroyNewFilter");
+    }
+  }
+  
+  private String getLocalResFold(String paramString, FilterDesc paramFilterDesc)
   {
     String str2 = "";
     String str1 = str2;
     if (paramFilterDesc != null)
     {
       str1 = str2;
-      if (paramFilterDesc.e.equals("EMPTY")) {
+      if (paramFilterDesc.name.equals("EMPTY")) {
         str1 = null;
       }
-      if (paramFilterDesc.e.equals("MANHUA")) {
+      if (paramFilterDesc.name.equals("MANHUA")) {
         str1 = paramString + "COMIC";
       }
-      if (paramFilterDesc.e.equals("SHENGXIA")) {
+      if (paramFilterDesc.name.equals("SHENGXIA")) {
         str1 = paramString + "GESE";
       }
-      if (paramFilterDesc.e.equals("NUANYANG")) {
+      if (paramFilterDesc.name.equals("NUANYANG")) {
         str1 = paramString + "BRIGHTFIRE";
       }
-      if (paramFilterDesc.e.equals("YUEGUANG")) {
+      if (paramFilterDesc.name.equals("YUEGUANG")) {
         str1 = paramString + "SKYLINE";
       }
-      if (paramFilterDesc.e.equals("QIANGWEI")) {
+      if (paramFilterDesc.name.equals("QIANGWEI")) {
         str1 = paramString + "G1";
       }
-      if (paramFilterDesc.e.equals("YOULAN")) {
+      if (paramFilterDesc.name.equals("YOULAN")) {
         str1 = paramString + "ORCHID";
       }
-      if (paramFilterDesc.e.equals("SHENGDAE")) {
+      if (paramFilterDesc.name.equals("SHENGDAE")) {
         str1 = paramString + "SHENGDAI";
       }
-      if (paramFilterDesc.e.equals("BOHE")) {
+      if (paramFilterDesc.name.equals("BOHE")) {
         str1 = paramString + "AMARO";
       }
-      if (paramFilterDesc.e.equals("LANGMAN")) {
+      if (paramFilterDesc.name.equals("LANGMAN")) {
         str1 = paramString + "FENBI";
       }
-      if (paramFilterDesc.e.equals("VSCOG3")) {
+      if (paramFilterDesc.name.equals("NATURE")) {
+        str1 = paramString + "NATURE";
+      }
+      if (paramFilterDesc.name.equals("VSCOG3")) {
         str1 = paramString + "VSCOG3";
       }
-      if (paramFilterDesc.e.equals("VUEF1")) {
+      if (paramFilterDesc.name.equals("VUEF1")) {
         str1 = paramString + "VUEF1";
       }
-      if (paramFilterDesc.e.equals("VSCOC1")) {
+      if (paramFilterDesc.name.equals("VSCOC1")) {
         str1 = paramString + "VSCOC1";
       }
-      if (paramFilterDesc.e.equals("FOODIEYU5")) {
+      if (paramFilterDesc.name.equals("FOODIEYU5")) {
         str1 = paramString + "FOODIEYU5";
       }
-      if (paramFilterDesc.e.equals("FOODIECH1")) {
+      if (paramFilterDesc.name.equals("FOODIECH1")) {
         str1 = paramString + "FOODIECH1";
       }
-      if (paramFilterDesc.e.equals("ANALOGFILM04")) {
+      if (paramFilterDesc.name.equals("ANALOGFILM04")) {
         str1 = paramString + "ANALOGFILM04";
       }
-      if (paramFilterDesc.e.equals("INSLARK")) {
+      if (paramFilterDesc.name.equals("INSLARK")) {
         str1 = paramString + "INSLARK";
       }
-      if (paramFilterDesc.e.equals("BEAUTYCAM")) {
+      if (paramFilterDesc.name.equals("BEAUTYCAM")) {
         str1 = paramString + "BEAUTYCAM";
       }
-      if (paramFilterDesc.e.equals("ANALOGFILM02")) {
+      if (paramFilterDesc.name.equals("ANALOGFILM02")) {
         str1 = paramString + "ANALOGFILM02";
       }
-      if (paramFilterDesc.e.equals("BLACKWHITE")) {
+      if (paramFilterDesc.name.equals("BLACKWHITE")) {
         str1 = paramString + "BLACKWHITE";
       }
-      if (paramFilterDesc.e.equals("B612HONGRUN")) {
+      if (paramFilterDesc.name.equals("B612HONGRUN")) {
         str1 = paramString + "B612HONGRUN";
       }
-      if (paramFilterDesc.e.equals("INSTASIZETOKYO")) {
+      if (paramFilterDesc.name.equals("INSTASIZETOKYO")) {
         str1 = paramString + "INSTASIZETOKYO";
       }
-      if (paramFilterDesc.e.equals("MEITUJIAOPIAN")) {
+      if (paramFilterDesc.name.equals("MEITUJIAOPIAN")) {
         str1 = paramString + "MEITUJIAOPIAN";
       }
-      if (paramFilterDesc.e.equals("MEIYANHUAYAN")) {
+      if (paramFilterDesc.name.equals("MEIYANHUAYAN")) {
         str1 = paramString + "MEIYANHUAYAN";
       }
-      if (paramFilterDesc.e.equals("VUELANMEIZHIYE")) {
+      if (paramFilterDesc.name.equals("VUELANMEIZHIYE")) {
         str1 = paramString + "VUELANMEIZHIYE";
       }
-      if (paramFilterDesc.e.equals("HEAVYFELLING")) {
+      if (paramFilterDesc.name.equals("HEAVYFELLING")) {
         str1 = paramString + "HEAVYFELLING";
       }
-      if (paramFilterDesc.e.equals("ANHONG")) {
+      if (paramFilterDesc.name.equals("ANHONG")) {
         str1 = paramString + "ANHONG";
       }
-      if (paramFilterDesc.e.equals("BOPU")) {
+      if (paramFilterDesc.name.equals("BOPU")) {
         str1 = paramString + "BOPU";
       }
-      if (paramFilterDesc.e.equals("KLEINBLUE")) {
+      if (paramFilterDesc.name.equals("KLEINBLUE")) {
         str1 = paramString + "KLEINBLUE";
       }
-      if (paramFilterDesc.e.equals("PURPLEORANGE")) {
+      if (paramFilterDesc.name.equals("PURPLEORANGE")) {
         str1 = paramString + "PURPLEORANGE";
       }
-      if (paramFilterDesc.e.equals("TEATIME")) {
+      if (paramFilterDesc.name.equals("TEATIME")) {
         str1 = paramString + "TEATIME";
       }
-      if (paramFilterDesc.e.equals("FOREST")) {
+      if (paramFilterDesc.name.equals("FOREST")) {
         str1 = paramString + "FOREST";
       }
-      if (paramFilterDesc.e.equals("NORGE")) {
+      if (paramFilterDesc.name.equals("NORGE")) {
         str1 = paramString + "NORGE";
       }
-      if (paramFilterDesc.e.equals("SANTORINI")) {
+      if (paramFilterDesc.name.equals("SANTORINI")) {
         str1 = paramString + "SANTORINI";
       }
-      if (paramFilterDesc.e.equals("SHIFTER")) {
+      if (paramFilterDesc.name.equals("SHIFTER")) {
         str1 = paramString + "SHIFTER";
       }
-      if (paramFilterDesc.e.equals("BLACKNOISE")) {
+      if (paramFilterDesc.name.equals("BLACKNOISE")) {
         str1 = paramString + "BLACKNOISE";
       }
-      if (paramFilterDesc.e.equals("STRONG")) {
+      if (paramFilterDesc.name.equals("STRONG")) {
         str1 = paramString + "STRONG";
       }
-      if (paramFilterDesc.e.equals("DELICIOUS")) {
+      if (paramFilterDesc.name.equals("DELICIOUS")) {
         str1 = paramString + "DELICIOUS";
       }
-      if (paramFilterDesc.e.equals("WHITETEA")) {
+      if (paramFilterDesc.name.equals("WHITETEA")) {
         str1 = paramString + "WHITETEA";
       }
-      if (paramFilterDesc.e.equals("SALIS")) {
+      if (paramFilterDesc.name.equals("SALIS")) {
         str1 = paramString + "SALIS";
       }
-      if (paramFilterDesc.e.equals("CLEANCOLD")) {
+      if (paramFilterDesc.name.equals("CLEANCOLD")) {
         str1 = paramString + "CLEANCOLD";
       }
-      if (paramFilterDesc.e.equals("FILM")) {
+      if (paramFilterDesc.name.equals("FILM")) {
         str1 = paramString + "FILM";
       }
-      if (paramFilterDesc.e.equals("MACAROON")) {
+      if (paramFilterDesc.name.equals("MACAROON")) {
         str1 = paramString + "MACAROON";
       }
-      if (paramFilterDesc.e.equals("GRASS")) {
+      if (paramFilterDesc.name.equals("GRASS")) {
         str1 = paramString + "GRASS";
       }
     }
     return str1;
   }
   
-  private void a()
+  public int getAVFilterType()
   {
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender != null)
-    {
-      this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender.destroy();
-      this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender = null;
-      SLog.c("avFilterRender", "destroyNewFilter");
-    }
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender != null) {
-      return this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender.getFilterType();
+    if (this.mFilterRender != null) {
+      return this.mFilterRender.getFilterType();
     }
     return 0;
   }
   
-  public void a(FilterDesc paramFilterDesc)
+  public boolean isFilterWork()
   {
-    String str3 = SdkContext.a().a().a().a();
-    String str1 = "";
-    if (paramFilterDesc != null) {
-      str1 = paramFilterDesc.b(str3);
-    }
-    String str2 = str1;
-    if (TextUtils.isEmpty(str1)) {
-      str2 = a(str3, paramFilterDesc);
-    }
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender == null) {
-      this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender = new FilterRender(SdkContext.a().a());
-    }
-    this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender.setFilterPath(str2);
-    if (!TextUtils.isEmpty(str2))
-    {
-      SLog.c("avFilterRender", "setNewSdkFilterID path:" + str2);
-      return;
-    }
-    SLog.c("avFilterRender", "set empty path~~");
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if ((this.f != paramInt1) || (this.f != paramInt2)) {
-      a();
-    }
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender == null) {
-      this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender = new FilterRender(SdkContext.a().a());
-    }
-    a(a().a(0));
-    SLog.c("avFilterRender", "AVFILTER onSurfaceChange");
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender != null) {
-      a();
-    }
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender == null)
-    {
-      this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender = new FilterRender(SdkContext.a().a());
-      this.e = a().f();
-      this.f = a().g();
-      this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender.preProcess(this.e, this.f);
-    }
-  }
-  
-  public void e()
-  {
-    a();
-    SLog.c("avFilterRender", "AVFILTER onSurfaceDestroy");
-  }
-  
-  public void h()
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender == null)
-    {
-      this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender = new FilterRender(SdkContext.a().a());
-      a(a().a(0));
-    }
-    this.e = a().f();
-    this.f = a().g();
-    this.b = this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender.process(this.jdField_a_of_type_Int, -1, this.e, this.f).getTextureId();
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender.getFilterType() != -1) {
-      bool = true;
-    }
-    QQFilterLogManager.a("QQAvFilter", bool);
-  }
-  
-  public boolean i_()
-  {
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender == null) {}
-    while (this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender.getFilterType() == -1) {
+    if (this.mFilterRender == null) {}
+    while (this.mFilterRender.getFilterType() == -1) {
       return false;
     }
     return true;
   }
+  
+  public void onDrawFrame()
+  {
+    boolean bool = false;
+    FilterBusinessOperation localFilterBusinessOperation = getQQFilterRenderManager().getBusinessOperation();
+    localFilterBusinessOperation.getPresentTimeStamp();
+    long l = localFilterBusinessOperation.getOrgTimeStamp();
+    if (this.mFilterRender == null)
+    {
+      this.mFilterRender = new FilterRender(SdkContext.getInstance().getApplication());
+      setCurrentId(localFilterBusinessOperation.getCurrentAVFilterIdByType(0), false);
+    }
+    int i;
+    if (this.mFragmentFilterDescs.size() > 0) {
+      i = 0;
+    }
+    for (;;)
+    {
+      QQAVFilter.FragmentFilterDesc localFragmentFilterDesc;
+      if (i < this.mFragmentFilterDescs.size())
+      {
+        if (l >= ((QQAVFilter.FragmentFilterDesc)this.mFragmentFilterDescs.get(i)).timeSlamp.longValue()) {
+          break label273;
+        }
+        localFragmentFilterDesc = (QQAVFilter.FragmentFilterDesc)this.mFragmentFilterDescs.get(i);
+        FilterDesc localFilterDesc = localFilterBusinessOperation.getCurrentAVFilterIdByType(0);
+        if (localFilterDesc == null) {
+          break label248;
+        }
+        if (!localFilterDesc.name.equals(localFragmentFilterDesc.filterDesc.name))
+        {
+          this.mFilterRender.setFilterPath(localFragmentFilterDesc.filterPath);
+          localFilterBusinessOperation.addSelectedFilterDesc(localFragmentFilterDesc.filterDesc);
+        }
+      }
+      for (;;)
+      {
+        this.lastWidth = getQQFilterRenderManager().getFilterWidth();
+        this.lastHeight = getQQFilterRenderManager().getFilterHeight();
+        this.mOutputTextureID = this.mFilterRender.process(this.mInputTextureID, -1, this.lastWidth, this.lastHeight).getTextureId();
+        if (this.mFilterRender.getFilterType() != -1) {
+          bool = true;
+        }
+        QQFilterLogManager.setFilterStatus("QQAvFilter", bool);
+        return;
+        label248:
+        this.mFilterRender.setFilterPath(localFragmentFilterDesc.filterPath);
+        localFilterBusinessOperation.addSelectedFilterDesc(localFragmentFilterDesc.filterDesc);
+      }
+      label273:
+      i += 1;
+    }
+  }
+  
+  public void onSurfaceChange(int paramInt1, int paramInt2)
+  {
+    if ((this.lastWidth != paramInt1) || (this.lastHeight != paramInt2)) {
+      doInternaldestroyFilter();
+    }
+    if (this.mFilterRender == null) {
+      this.mFilterRender = new FilterRender(SdkContext.getInstance().getApplication());
+    }
+    setCurrentId(getQQFilterRenderManager().getBusinessOperation().getCurrentAVFilterIdByType(0), false);
+    SLog.i("avFilterRender", "AVFILTER onSurfaceChange");
+  }
+  
+  public void onSurfaceCreate()
+  {
+    if (this.mFilterRender != null) {
+      doInternaldestroyFilter();
+    }
+    if (this.mFilterRender == null)
+    {
+      this.mFilterRender = new FilterRender(SdkContext.getInstance().getApplication());
+      this.lastWidth = getQQFilterRenderManager().getFilterWidth();
+      this.lastHeight = getQQFilterRenderManager().getFilterHeight();
+      this.mFilterRender.preProcess(this.lastWidth, this.lastHeight);
+    }
+  }
+  
+  public void onSurfaceDestroy()
+  {
+    doInternaldestroyFilter();
+    SLog.i("avFilterRender", "AVFILTER onSurfaceDestroy");
+  }
+  
+  public void setAVListAndTimeSlamp(List<FilterDesc> paramList, List<Long> paramList1)
+  {
+    SLog.i("avFilterRender", "setAVListAndTimeSlamp");
+    if (this.mFilterRender == null) {
+      this.mFilterRender = new FilterRender(SdkContext.getInstance().getApplication());
+    }
+    String str = SdkContext.getInstance().getResources().getAvFilterResource().getFilterResPath();
+    if ((paramList != null) && (paramList1 != null) && (paramList.size() == paramList1.size()))
+    {
+      this.mFragmentFilterDescs.clear();
+      int i = 0;
+      while (i < paramList.size())
+      {
+        FilterDesc localFilterDesc = (FilterDesc)paramList.get(i);
+        QQAVFilter.FragmentFilterDesc localFragmentFilterDesc = new QQAVFilter.FragmentFilterDesc();
+        if (localFilterDesc != null) {
+          localFragmentFilterDesc.filterPath = localFilterDesc.getResFold(str);
+        }
+        if (TextUtils.isEmpty(localFragmentFilterDesc.filterPath)) {
+          localFragmentFilterDesc.filterPath = getLocalResFold(str, localFilterDesc);
+        }
+        localFragmentFilterDesc.filterDesc = localFilterDesc;
+        localFragmentFilterDesc.timeSlamp = ((Long)paramList1.get(i));
+        this.mFragmentFilterDescs.add(localFragmentFilterDesc);
+        if (i == 0)
+        {
+          this.mFilterRender.setFilterPath(localFragmentFilterDesc.filterPath);
+          getQQFilterRenderManager().getBusinessOperation().addSelectedFilterDesc(localFragmentFilterDesc.filterDesc);
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public void setCurrentId(FilterDesc paramFilterDesc, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.mFragmentFilterDescs.clear();
+    }
+    String str3 = SdkContext.getInstance().getResources().getAvFilterResource().getFilterResPath();
+    String str1 = "";
+    if (paramFilterDesc != null) {
+      if (TextUtils.isEmpty(paramFilterDesc.resRootPath)) {
+        break label144;
+      }
+    }
+    label144:
+    for (str1 = paramFilterDesc.getResFold(paramFilterDesc.resRootPath);; str1 = paramFilterDesc.getResFold(str3))
+    {
+      String str2 = str1;
+      if (TextUtils.isEmpty(str1)) {
+        str2 = getLocalResFold(str3, paramFilterDesc);
+      }
+      if (this.mFilterRender == null) {
+        this.mFilterRender = new FilterRender(SdkContext.getInstance().getApplication());
+      }
+      this.mFilterRender.setFilterPath(str2);
+      if (TextUtils.isEmpty(str2)) {
+        break;
+      }
+      SLog.i("avFilterRender", "setNewSdkFilterID path:" + str2);
+      return;
+    }
+    SLog.i("avFilterRender", "set empty path~~");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQAVFilter
  * JD-Core Version:    0.7.0.1
  */

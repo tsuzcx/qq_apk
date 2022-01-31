@@ -1,23 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.voip.VoipAddressBookView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.adapter.BuddyListAdapter;
 
 public class exp
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public exp(VoipAddressBookView paramVoipAddressBookView) {}
+  public exp(BuddyListAdapter paramBuddyListAdapter) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    VoipAddressBookView.b(this.a).a(new exq(this));
-    VoipAddressBookView.k(this.a);
-    this.a.n();
+    this.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     exp
  * JD-Core Version:    0.7.0.1
  */

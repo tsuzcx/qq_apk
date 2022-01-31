@@ -1,30 +1,21 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.Contacts;
 
 public class acre
-  implements View.OnLongClickListener
+  extends avva
 {
-  public acre(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public acre(Contacts paramContacts) {}
   
-  public boolean onLongClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramView == null) || (QfileBaseLocalFileTabView.a(this.a))) {
-      return false;
+    if (Contacts.a(this.a)) {
+      Contacts.a(this.a);
     }
-    paramView.setSelected(true);
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131362740, paramView.getContext().getString(2131434041));
-    this.a.a = BubbleContextMenu.a(paramView, localQQCustomMenu, new acrf(this, paramView), new acrh(this, paramView));
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acre
  * JD-Core Version:    0.7.0.1
  */

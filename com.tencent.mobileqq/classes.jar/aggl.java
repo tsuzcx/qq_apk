@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aggl
-  implements Runnable
+final class aggl
+  implements DialogInterface.OnClickListener
 {
-  public aggl(ScanTorchActivity paramScanTorchActivity, String paramString) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ScanTorchActivity.b(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aggl
  * JD-Core Version:    0.7.0.1
  */

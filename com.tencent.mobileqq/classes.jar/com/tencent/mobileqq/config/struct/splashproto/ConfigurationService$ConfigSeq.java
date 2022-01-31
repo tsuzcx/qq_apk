@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class ConfigurationService$ConfigSeq
-  extends MessageMicro
+  extends MessageMicro<ConfigSeq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "type", "version", "compress" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, ConfigSeq.class);
   public final PBInt32Field compress = PBField.initInt32(0);

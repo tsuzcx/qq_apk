@@ -1,39 +1,30 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 
-class top
-  implements Runnable
+public class top
 {
-  top(too paramtoo, String paramString) {}
-  
-  public void run()
-  {
-    Object localObject2 = this.jdField_a_of_type_JavaLangString;
-    if ((localObject2 == null) || (((String)localObject2).length() <= 0)) {
-      return;
-    }
-    Object localObject1 = localObject2;
-    if (!((String)localObject2).startsWith("http://"))
-    {
-      localObject1 = localObject2;
-      if (!((String)localObject2).startsWith("https://")) {
-        localObject1 = "http://" + (String)localObject2;
-      }
-    }
-    localObject2 = new Intent(this.jdField_a_of_type_Too.a.getActivity(), QQBrowserActivity.class);
-    ((Intent)localObject2).putExtra("is_register_uin", true);
-    ((Intent)localObject2).putExtra("isShowAd", false);
-    ((Intent)localObject2).putExtra("hide_more_button", true);
-    ((Intent)localObject2).putExtra("hide_operation_bar", true);
-    ((Intent)localObject2).putExtra("register_uin_msg", 9);
-    ((Intent)localObject2).putExtra("register_uin_class", RegisterActivity.class.getName());
-    this.jdField_a_of_type_Too.a.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
-  }
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public VideoFeedsAlphaMaskView a;
+  ZImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView;
+  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
+  TextView b;
+  TextView c;
+  TextView d;
+  TextView e;
+  TextView f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     top
  * JD-Core Version:    0.7.0.1
  */

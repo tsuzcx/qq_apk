@@ -1,37 +1,29 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
-import com.tencent.mobileqq.widget.QQToast;
-
-public class wjx
-  extends Handler
+class wjx
+  implements wkc
 {
-  public wjx(SystemMsgListView paramSystemMsgListView) {}
+  wjx(wjw paramwjw) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (SystemMsgListView.a(this.a) == null);
-      this.a.i();
-      SystemMsgListView.a(this.a).notifyDataSetChanged();
+    if (wjw.a(this.a) == null) {
       return;
     }
-    paramMessage = SystemMsgListView.a(this.a).getResources().getString(2131433178);
-    QQToast.a(SystemMsgListView.a(this.a), 1, paramMessage, 0).b(this.a.a());
+    if (paramInt == 1) {
+      wjw.a(this.a);
+    }
+    for (;;)
+    {
+      this.a.h();
+      return;
+      if (paramInt == 2) {
+        wjw.b(this.a);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wjx
  * JD-Core Version:    0.7.0.1
  */

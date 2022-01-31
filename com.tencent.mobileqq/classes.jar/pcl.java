@@ -1,26 +1,29 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.biz.webviewplugin.PubAccountUIPlugin;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class pcl
-  implements Animation.AnimationListener
+  implements TVK_IMediaPlayer.OnDownloadCallbackListener
 {
-  public pcl(PubAccountUIPlugin paramPubAccountUIPlugin, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  public pcl(VideoView paramVideoView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void OnDownloadCallback(String paramString)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    try
+    {
+      paramString = new JSONObject(paramString);
+      paramString.getInt("callBackType");
+      int i = paramString.getInt("fileSize");
+      this.a.setFileSize(i);
+      return;
+    }
+    catch (JSONException paramString) {}
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pcl
  * JD-Core Version:    0.7.0.1
  */

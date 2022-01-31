@@ -1,21 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-
 public class aoka
-  implements DialogInterface.OnClickListener
 {
-  public aoka(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  private String a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aoka(String paramString, int paramInt1, int paramInt2)
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    this.a = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof aoka))) {}
+    while (!toString().equals(paramObject.toString())) {
+      return false;
+    }
+    return true;
+  }
+  
+  public String toString()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoka
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,49 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCountTimeLayout;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
-import java.util.concurrent.atomic.AtomicBoolean;
+import org.json.JSONObject;
 
 public class aona
-  extends AnimatorListenerAdapter
 {
-  public aona(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout, boolean paramBoolean) {}
+  public long a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public aona()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraSegmentCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + " segmentShot:" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.c.get() + ", mActionUpAnimator:" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.b.get());
-    }
-    if (!this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.b.get())
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      }
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.c.set(true);
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCountTimeLayout.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.b.set(false);
-      return;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.d();
-        this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.a(1.0F);
-      }
-    }
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public static aona a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraSegmentCaptureLayout", 2, "scaleAnimator start!");
-    }
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        aona localaona = new aona();
+        paramString = new JSONObject(paramString);
+        localaona.jdField_a_of_type_Boolean = paramString.optBoolean("useParcelForBoot", true);
+        localaona.jdField_a_of_type_Long = paramString.optLong("delayPluginManageTimeInMills", 0L);
+        localaona.b = paramString.optBoolean("enableKernelServiceInVivo", false);
+        localaona.c = paramString.optBoolean("disableSimpleBreakStrategy", false);
+        QLog.d("BootOptimizeConfProcessor", 2, "confBean = " + localaona.toString());
+        return localaona;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("BootOptimizeConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public String toString()
+  {
+    return "BootOptimizeConfigureBean{useParcelForBoot=" + this.jdField_a_of_type_Boolean + ", delayPluginManageTimeInMills=" + this.jdField_a_of_type_Long + ", enableKernelServiceInVivo=" + this.b + ", disableSimpleBreakStrategy=" + this.c + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aona
  * JD-Core Version:    0.7.0.1
  */

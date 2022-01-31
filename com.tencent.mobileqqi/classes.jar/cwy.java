@@ -1,37 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.IndividuationSetActivity;
-import com.tencent.mobileqq.app.ConfigObserver;
-import protocol.KQQConfig.GetResourceRespInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
 
 public class cwy
-  extends ConfigObserver
+  implements DialogInterface.OnClickListener
 {
-  public cwy(IndividuationSetActivity paramIndividuationSetActivity) {}
+  public cwy(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
   
-  protected void a(boolean paramBoolean, GetResourceRespInfo paramGetResourceRespInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    View localView;
-    if (paramBoolean)
-    {
-      paramGetResourceRespInfo = this.a.findViewById(2131231816);
-      localView = this.a.findViewById(2131231818);
+    paramDialogInterface = MySelfTroopMemberCard.a(this.a).getInputValue();
+    if ((paramDialogInterface != null) && (!paramDialogInterface.equals("")) && (!paramDialogInterface.equals(this.a.a.getText()))) {
+      MySelfTroopMemberCard.a(this.a).post(new cwz(this, paramDialogInterface));
     }
-    switch (IndividuationSetActivity.a(this.a))
-    {
-    default: 
-      IndividuationSetActivity.a(this.a, false);
-      paramGetResourceRespInfo.setVisibility(8);
-      localView.setVisibility(8);
-      return;
-    case 1: 
-      IndividuationSetActivity.a(this.a, true);
-      paramGetResourceRespInfo.setVisibility(0);
-      localView.setVisibility(8);
-      return;
-    }
-    IndividuationSetActivity.a(this.a, true);
-    paramGetResourceRespInfo.setVisibility(8);
-    localView.setVisibility(0);
   }
 }
 

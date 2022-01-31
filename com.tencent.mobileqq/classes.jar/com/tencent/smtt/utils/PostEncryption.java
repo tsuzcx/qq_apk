@@ -56,19 +56,16 @@ public class PostEncryption
   }
   
   public byte[] DESDecrypt(byte[] paramArrayOfByte)
-    throws Exception
   {
     return DesUtils.DesEncrypt(this.mDesKeyStr.getBytes(), paramArrayOfByte, 0);
   }
   
   public byte[] DESEncrypt(byte[] paramArrayOfByte)
-    throws Exception
   {
     return DesUtils.DesEncrypt(this.mDesKeyStr.getBytes(), paramArrayOfByte, 1);
   }
   
   public String RSAEncode(String paramString)
-    throws Exception
   {
     byte[] arrayOfByte = paramString.getBytes();
     paramString = null;
@@ -100,13 +97,11 @@ public class PostEncryption
   }
   
   public void addBouncyCastleProvider()
-    throws Exception
   {
     Security.addProvider((Provider)Class.forName("com.android.org.bouncycastle.jce.provider.BouncyCastleProvider", true, ClassLoader.getSystemClassLoader()).newInstance());
   }
   
   public String initRSAKey()
-    throws Exception
   {
     byte[] arrayOfByte;
     if (this.mRsaKeyStr == null)
@@ -144,7 +139,7 @@ public class PostEncryption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.utils.PostEncryption
  * JD-Core Version:    0.7.0.1
  */

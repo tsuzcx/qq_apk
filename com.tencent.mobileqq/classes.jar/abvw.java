@@ -1,20 +1,6 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.database.corrupt.DBFixDialogUI;
-
-public class abvw
-  implements DialogInterface.OnClickListener
+public abstract interface abvw
 {
-  public abvw(DBFixDialogUI paramDBFixDialogUI) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.cancel();
-    paramDialogInterface = new Intent("android.settings.INTERNAL_STORAGE_SETTINGS");
-    this.a.a.startActivity(paramDialogInterface);
-  }
+  public abstract void a(int paramInt);
 }
 
 

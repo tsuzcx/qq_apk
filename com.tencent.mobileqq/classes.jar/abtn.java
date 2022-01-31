@@ -1,16 +1,20 @@
-import android.net.Uri;
-import android.provider.ContactsContract.Data;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.observer.SubAccountObserver;
 
-public class abtn
+class abtn
+  extends SubAccountObserver
 {
-  public static final Uri a;
-  public static final String[] a;
-  public static final String[] b = { "raw_contact_id", "data1" };
+  abtn(abtl paramabtl, badd parambadd) {}
   
-  static
+  public void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    jdField_a_of_type_AndroidNetUri = ContactsContract.Data.CONTENT_URI;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "_id", "mimetype", "data1" };
+    if ((paramString3 == null) || (this.jdField_a_of_type_Abtl.a == null) || (paramString1 == null)) {}
+    while (!paramString1.equalsIgnoreCase(this.jdField_a_of_type_Abtl.a.getAccount())) {
+      return;
+    }
+    this.jdField_a_of_type_Badd.a(paramString2, paramString3, true);
+    bacu.a(this.jdField_a_of_type_Abtl.a, (byte)1, paramString2);
+    bacu.a(this.jdField_a_of_type_Abtl.a, paramString2, false);
   }
 }
 

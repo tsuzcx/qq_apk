@@ -1,23 +1,37 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 
 public class srh
-  implements ImageAssetDelegate
+  extends Handler
 {
-  public srh(FriendProfileCardActivity.ColorScreenLoader paramColorScreenLoader) {}
-  
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public srh(ViolaBaseView paramViolaBaseView, Looper paramLooper)
   {
-    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    case 1: 
+    default: 
+      return;
+    case 0: 
+      ViolaBaseView.d(this.a);
+      return;
+    case 3: 
+      ViolaBaseView.a(this.a);
+      return;
+    }
+    ViolaBaseView.a(this.a, true);
+    ViolaBaseView.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     srh
  * JD-Core Version:    0.7.0.1
  */

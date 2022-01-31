@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.activity.richmedia.FlowSendTask;
+import android.content.DialogInterface;
 
-public class xpl
-  implements Runnable
+class xpl
+  extends bdgx
 {
-  public xpl(FlowSendTask paramFlowSendTask) {}
+  xpl(xpk paramxpk) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(this.a.a, 2131436145);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xpl
  * JD-Core Version:    0.7.0.1
  */

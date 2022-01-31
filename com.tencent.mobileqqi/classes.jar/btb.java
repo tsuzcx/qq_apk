@@ -1,41 +1,55 @@
-import android.os.Message;
-import android.view.SurfaceHolder;
-import com.tencent.biz.qrcode.CameraManager;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import java.io.IOException;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
-public class btb
-  extends Thread
+class btb
+  implements Runnable
 {
-  public btb(ScannerActivity paramScannerActivity, SurfaceHolder paramSurfaceHolder) {}
+  btb(bta parambta) {}
   
   public void run()
   {
-    if ((!this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.j) || (this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.e)) {
+    if (this.a.jdField_a_of_type_AndroidViewView == null) {
       return;
     }
-    try
+    RelativeLayout.LayoutParams localLayoutParams;
+    switch (this.a.jdField_a_of_type_Int)
     {
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.jdField_a_of_type_ComTencentBizQrcodeCameraManager.a(this.jdField_a_of_type_AndroidViewSurfaceHolder, this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.b());
-      Message.obtain(this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity$ScannerActivityHandler, 111).sendToTarget();
+    default: 
       return;
+    case 0: 
+      localLayoutParams = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      localLayoutParams.leftMargin += (int)(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a * 34.0F);
+      this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+      this.a.jdField_a_of_type_AndroidViewView.setTag("right");
     }
-    catch (IOException localIOException)
+    for (;;)
     {
-      Message.obtain(this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity$ScannerActivityHandler, 112).sendToTarget();
+      this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
       return;
+      localLayoutParams = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      localLayoutParams.leftMargin -= (int)(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a * 34.0F);
+      this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+      this.a.jdField_a_of_type_AndroidViewView.setTag("left");
+      continue;
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130839715);
+      continue;
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130839714);
+      continue;
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      if (this.a.jdField_a_of_type_AndroidViewView.getId() == 2131231002)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.q_();
+        continue;
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      }
     }
-    catch (RuntimeException localRuntimeException)
-    {
-      Message.obtain(this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity$ScannerActivityHandler, 112).sendToTarget();
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     btb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <com.tencent.mobileqq.activity.aio.InputLinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/i7j" android:background="@color/a3h" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <View android:id="@id/ix5" android:layout_width="0.0dip" android:layout_height="0.0dip" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/acx" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <com.tencent.widget.XEditTextEx android:textSize="14.0dip" android:textColor="#ffffffff" android:textColorHint="#ffffffff" android:gravity="center|left|top" android:id="@id/byr" android:background="@null" android:paddingLeft="15.0dip" android:paddingTop="13.0dip" android:paddingRight="10.0dip" android:paddingBottom="13.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/r5d" android:maxLines="2" android:maxLength="40" android:inputType="textMultiLine" android:textSelectHandle="@drawable/h57" android:textCursorDrawable="@color/a3i" />
+            </LinearLayout>
+            <ImageButton android:layout_gravity="center_vertical" android:id="@id/bva" android:background="@drawable/trans" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/akm" android:contentDescription="@string/dty" />
+        </com.tencent.mobileqq.activity.aio.InputLinearLayout>
+        <View android:layout_width="fill_parent" android:layout_height="@dimen/ac2" android:layout_below="@id/i7j" />
+        <RelativeLayout android:id="@id/bvt" android:background="#fff7f7f7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/i7j">
+            <FrameLayout android:id="@id/emotion_panel" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <RelativeLayout android:id="@id/container_secondary_tab" android:background="#fff7f7f7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_below="@id/emotion_panel">
+                <RelativeLayout android:background="#ffdedede" android:layout_width="50.0dip" android:layout_height="fill_parent" android:layout_alignParentLeft="true">
+                    <ImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/c0p" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+                </RelativeLayout>
+                <View android:background="@drawable/al1" android:layout_width="7.5dip" android:layout_height="fill_parent" android:layout_toLeftOf="@id/fun_btn" />
+                <com.tencent.widget.PatchedButton android:textSize="16.0dip" android:textColor="@color/skin_aio_send_button" android:layout_gravity="center_vertical" android:id="@id/fun_btn" android:background="@drawable/al0" android:layout_width="76.0dip" android:layout_height="fill_parent" android:text="@string/a1p" android:layout_alignParentRight="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

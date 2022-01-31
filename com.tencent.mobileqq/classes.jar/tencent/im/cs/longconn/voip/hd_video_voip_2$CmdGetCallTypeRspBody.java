@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class hd_video_voip_2$CmdGetCallTypeRspBody
-  extends MessageMicro
+  extends MessageMicro<CmdGetCallTypeRspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_call_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -27,7 +27,7 @@ public final class hd_video_voip_2$CmdGetCallTypeRspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.longconn.voip.hd_video_voip_2.CmdGetCallTypeRspBody
  * JD-Core Version:    0.7.0.1
  */

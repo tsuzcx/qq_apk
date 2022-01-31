@@ -1,32 +1,37 @@
-import Wallet.GoldMsgGetReq;
-import Wallet.GoldMsgGetRsp;
-import Wallet.GoldMsgSetReq;
-import Wallet.GoldMsgSetRsp;
-import com.tencent.mobileqq.activity.qwallet.GoldConfigObserver;
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class wzj
-  extends GoldConfigObserver
+class wzj
+  extends QQUIEventReceiver<wzb, xfd>
 {
-  public wzj(GoldMsgSettingActivity paramGoldMsgSettingActivity) {}
-  
-  public void a(boolean paramBoolean, GoldMsgGetReq paramGoldMsgGetReq, GoldMsgGetRsp paramGoldMsgGetRsp)
+  public wzj(@NonNull wzb paramwzb)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean, paramGoldMsgGetReq, paramGoldMsgGetRsp);
+    super(paramwzb);
+  }
+  
+  public void a(@NonNull wzb paramwzb, @NonNull xfd paramxfd)
+  {
+    wzl localwzl = paramwzb.a;
+    if (localwzl != null) {
+      localwzl.a(paramwzb.a());
+    }
+    for (;;)
+    {
+      wxj.b("edit_video", "face_list_success", 0, paramxfd.a.errorCode, new String[0]);
+      return;
+      wxe.b(this.TAG, "DoodleEmojiListEventReceiver adapter is null");
     }
   }
   
-  public void a(boolean paramBoolean, GoldMsgSetReq paramGoldMsgSetReq, GoldMsgSetRsp paramGoldMsgSetRsp)
+  public Class acceptEventClass()
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean, paramGoldMsgSetReq, paramGoldMsgSetRsp);
-    }
+    return xfd.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wzj
  * JD-Core Version:    0.7.0.1
  */

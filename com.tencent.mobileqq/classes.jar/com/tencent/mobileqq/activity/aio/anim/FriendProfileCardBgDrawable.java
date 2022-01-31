@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
+import aevi;
 import android.annotation.TargetApi;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -16,26 +17,25 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.util.DisplayMetrics;
-import com.tencent.mobileqq.vas.FriendProfileCardBgInfo;
+import bdsu;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import unr;
 
 public class FriendProfileCardBgDrawable
   extends Drawable
   implements Runnable
 {
   public int a;
+  public aevi a;
   public Resources a;
   public Bitmap a;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   public Handler a;
-  public FriendProfileCardBgDrawable.DecodeNextFrameTask a;
-  private FriendProfileCardBgInfo jdField_a_of_type_ComTencentMobileqqVasFriendProfileCardBgInfo;
+  private bdsu jdField_a_of_type_Bdsu;
   public Object a;
   public boolean a;
   private final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
@@ -53,20 +53,20 @@ public class FriendProfileCardBgDrawable
   private boolean jdField_e_of_type_Boolean;
   private int f;
   
-  public FriendProfileCardBgDrawable(Resources paramResources, FriendProfileCardBgInfo paramFriendProfileCardBgInfo)
+  public FriendProfileCardBgDrawable(Resources paramResources, bdsu parambdsu)
   {
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = 50;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidContentResResources = paramResources;
-    this.jdField_a_of_type_ComTencentMobileqqVasFriendProfileCardBgInfo = paramFriendProfileCardBgInfo;
-    if (paramFriendProfileCardBgInfo != null)
+    this.jdField_a_of_type_Bdsu = parambdsu;
+    if (parambdsu != null)
     {
-      if (paramFriendProfileCardBgInfo.jdField_a_of_type_ArrayOfJavaLangString != null) {
+      if (parambdsu.jdField_a_of_type_ArrayOfJavaLangString != null) {
         this.jdField_d_of_type_Boolean = true;
       }
-      a(paramFriendProfileCardBgInfo.jdField_a_of_type_ArrayOfJavaLangString, paramFriendProfileCardBgInfo.jdField_b_of_type_Int, paramFriendProfileCardBgInfo.jdField_a_of_type_JavaLangString);
+      a(parambdsu.jdField_a_of_type_ArrayOfJavaLangString, parambdsu.jdField_b_of_type_Int, parambdsu.jdField_a_of_type_JavaLangString);
     }
   }
   
@@ -94,14 +94,14 @@ public class FriendProfileCardBgDrawable
   
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqVasFriendProfileCardBgInfo != null) && (this.jdField_d_of_type_Boolean))
+    if ((this.jdField_a_of_type_Bdsu != null) && (this.jdField_d_of_type_Boolean))
     {
       float f1 = this.jdField_e_of_type_Int / paramInt1;
       float f2 = this.f / paramInt2;
-      int i = (int)(this.jdField_a_of_type_ComTencentMobileqqVasFriendProfileCardBgInfo.jdField_a_of_type_Float * paramInt3);
-      paramInt1 = (int)(this.jdField_a_of_type_ComTencentMobileqqVasFriendProfileCardBgInfo.jdField_b_of_type_Float * paramInt4);
-      paramInt2 = (int)(this.jdField_a_of_type_ComTencentMobileqqVasFriendProfileCardBgInfo.c * paramInt3);
-      paramInt3 = (int)(this.jdField_a_of_type_ComTencentMobileqqVasFriendProfileCardBgInfo.d * paramInt4);
+      int i = (int)(this.jdField_a_of_type_Bdsu.jdField_a_of_type_Float * paramInt3);
+      paramInt1 = (int)(this.jdField_a_of_type_Bdsu.jdField_b_of_type_Float * paramInt4);
+      paramInt2 = (int)(this.jdField_a_of_type_Bdsu.c * paramInt3);
+      paramInt3 = (int)(this.jdField_a_of_type_Bdsu.d * paramInt4);
       paramInt4 = (int)(i / f1);
       paramInt1 = (int)(paramInt1 / f2);
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect(paramInt4, paramInt1, (int)(paramInt2 / f1) + paramInt4, (int)(paramInt3 / f2) + paramInt1);
@@ -460,8 +460,8 @@ public class FriendProfileCardBgDrawable
     //   29: ldc 245
     //   31: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: aload_0
-    //   35: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_ComTencentMobileqqVasFriendProfileCardBgInfo	Lcom/tencent/mobileqq/vas/FriendProfileCardBgInfo;
-    //   38: getfield 71	com/tencent/mobileqq/vas/FriendProfileCardBgInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   35: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bdsu	Lbdsu;
+    //   38: getfield 71	bdsu:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   41: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   44: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   47: astore 6
@@ -488,8 +488,8 @@ public class FriendProfileCardBgDrawable
     //   87: ldc_w 263
     //   90: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   93: aload_0
-    //   94: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_ComTencentMobileqqVasFriendProfileCardBgInfo	Lcom/tencent/mobileqq/vas/FriendProfileCardBgInfo;
-    //   97: getfield 71	com/tencent/mobileqq/vas/FriendProfileCardBgInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   94: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bdsu	Lbdsu;
+    //   97: getfield 71	bdsu:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   100: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   103: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   106: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -519,8 +519,8 @@ public class FriendProfileCardBgDrawable
     //   148: ldc_w 267
     //   151: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   154: aload_0
-    //   155: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_ComTencentMobileqqVasFriendProfileCardBgInfo	Lcom/tencent/mobileqq/vas/FriendProfileCardBgInfo;
-    //   158: getfield 71	com/tencent/mobileqq/vas/FriendProfileCardBgInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   155: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bdsu	Lbdsu;
+    //   158: getfield 71	bdsu:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   161: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   164: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   167: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -537,8 +537,8 @@ public class FriendProfileCardBgDrawable
     //   187: new 128	java/io/FileInputStream
     //   190: dup
     //   191: aload_0
-    //   192: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_ComTencentMobileqqVasFriendProfileCardBgInfo	Lcom/tencent/mobileqq/vas/FriendProfileCardBgInfo;
-    //   195: getfield 71	com/tencent/mobileqq/vas/FriendProfileCardBgInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   192: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bdsu	Lbdsu;
+    //   195: getfield 71	bdsu:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   198: invokespecial 131	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   201: invokespecial 134	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   204: astore_2
@@ -574,141 +574,153 @@ public class FriendProfileCardBgDrawable
     //   267: ldc_w 273
     //   270: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   273: aload_1
-    //   274: ifnull +151 -> 425
+    //   274: ifnull +171 -> 445
     //   277: aload_0
     //   278: getfield 97	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_e_of_type_Int	I
-    //   281: ifle +73 -> 354
+    //   281: ifle +93 -> 374
     //   284: aload_0
     //   285: getfield 99	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:f	I
-    //   288: ifle +66 -> 354
+    //   288: ifle +86 -> 374
     //   291: aload_0
     //   292: aload_1
-    //   293: iconst_0
-    //   294: iconst_0
-    //   295: aload_0
-    //   296: getfield 97	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_e_of_type_Int	I
-    //   299: aload_0
-    //   300: getfield 99	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:f	I
-    //   303: invokestatic 277	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
-    //   306: putfield 94	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_d_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   309: aload_1
-    //   310: invokevirtual 280	android/graphics/Bitmap:recycle	()V
-    //   313: goto -71 -> 242
-    //   316: astore_3
-    //   317: aload_2
-    //   318: astore_1
-    //   319: ldc 176
-    //   321: iconst_1
-    //   322: new 178	java/lang/StringBuilder
-    //   325: dup
-    //   326: invokespecial 179	java/lang/StringBuilder:<init>	()V
-    //   329: ldc_w 282
-    //   332: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   335: aload_3
-    //   336: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   339: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   342: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   345: aload_2
-    //   346: ifnull -219 -> 127
-    //   349: aload_2
-    //   350: invokevirtual 174	java/io/BufferedInputStream:close	()V
-    //   353: return
-    //   354: aload_0
-    //   355: aload_1
-    //   356: putfield 94	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_d_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   359: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   362: ifeq -53 -> 309
-    //   365: ldc 176
-    //   367: iconst_2
-    //   368: new 178	java/lang/StringBuilder
-    //   371: dup
-    //   372: invokespecial 179	java/lang/StringBuilder:<init>	()V
-    //   375: ldc_w 284
-    //   378: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   381: aload_0
-    //   382: getfield 97	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_e_of_type_Int	I
-    //   385: invokevirtual 287	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   388: ldc_w 289
-    //   391: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   394: aload_0
-    //   395: getfield 99	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:f	I
-    //   398: invokevirtual 287	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   401: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   404: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   407: goto -98 -> 309
-    //   410: astore_3
-    //   411: aload_2
-    //   412: astore_1
-    //   413: aload_3
-    //   414: astore_2
-    //   415: aload_1
-    //   416: ifnull +7 -> 423
-    //   419: aload_1
-    //   420: invokevirtual 174	java/io/BufferedInputStream:close	()V
-    //   423: aload_2
-    //   424: athrow
-    //   425: ldc 176
-    //   427: iconst_1
-    //   428: ldc_w 291
-    //   431: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   434: goto -192 -> 242
-    //   437: astore_2
-    //   438: goto -23 -> 415
-    //   441: astore_3
-    //   442: aload 4
-    //   444: astore_2
-    //   445: goto -128 -> 317
+    //   293: aload_1
+    //   294: invokevirtual 237	android/graphics/Bitmap:getWidth	()I
+    //   297: aload_0
+    //   298: getfield 97	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_e_of_type_Int	I
+    //   301: isub
+    //   302: iconst_2
+    //   303: idiv
+    //   304: aload_1
+    //   305: invokevirtual 240	android/graphics/Bitmap:getHeight	()I
+    //   308: aload_0
+    //   309: getfield 99	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:f	I
+    //   312: isub
+    //   313: iconst_2
+    //   314: idiv
+    //   315: aload_0
+    //   316: getfield 97	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_e_of_type_Int	I
+    //   319: aload_0
+    //   320: getfield 99	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:f	I
+    //   323: invokestatic 277	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
+    //   326: putfield 94	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_d_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   329: aload_1
+    //   330: invokevirtual 280	android/graphics/Bitmap:recycle	()V
+    //   333: goto -91 -> 242
+    //   336: astore_3
+    //   337: aload_2
+    //   338: astore_1
+    //   339: ldc 176
+    //   341: iconst_1
+    //   342: new 178	java/lang/StringBuilder
+    //   345: dup
+    //   346: invokespecial 179	java/lang/StringBuilder:<init>	()V
+    //   349: ldc_w 282
+    //   352: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   355: aload_3
+    //   356: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   359: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   362: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   365: aload_2
+    //   366: ifnull -239 -> 127
+    //   369: aload_2
+    //   370: invokevirtual 174	java/io/BufferedInputStream:close	()V
+    //   373: return
+    //   374: aload_0
+    //   375: aload_1
+    //   376: putfield 94	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_d_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   379: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   382: ifeq -53 -> 329
+    //   385: ldc 176
+    //   387: iconst_2
+    //   388: new 178	java/lang/StringBuilder
+    //   391: dup
+    //   392: invokespecial 179	java/lang/StringBuilder:<init>	()V
+    //   395: ldc_w 284
+    //   398: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   401: aload_0
+    //   402: getfield 97	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_e_of_type_Int	I
+    //   405: invokevirtual 287	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   408: ldc_w 289
+    //   411: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   414: aload_0
+    //   415: getfield 99	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:f	I
+    //   418: invokevirtual 287	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   421: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   424: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   427: goto -98 -> 329
+    //   430: astore_3
+    //   431: aload_2
+    //   432: astore_1
+    //   433: aload_3
+    //   434: astore_2
+    //   435: aload_1
+    //   436: ifnull +7 -> 443
+    //   439: aload_1
+    //   440: invokevirtual 174	java/io/BufferedInputStream:close	()V
+    //   443: aload_2
+    //   444: athrow
+    //   445: ldc 176
+    //   447: iconst_1
+    //   448: ldc_w 291
+    //   451: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   454: goto -212 -> 242
+    //   457: astore_2
+    //   458: goto -23 -> 435
+    //   461: astore_3
+    //   462: aload 4
+    //   464: astore_2
+    //   465: goto -128 -> 337
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	448	0	this	FriendProfileCardBgDrawable
-    //   12	408	1	localObject1	Object
-    //   10	414	2	localObject2	Object
-    //   437	1	2	localObject3	Object
-    //   444	1	2	localObject4	Object
+    //   0	468	0	this	FriendProfileCardBgDrawable
+    //   12	428	1	localObject1	Object
+    //   10	434	2	localObject2	Object
+    //   457	1	2	localObject3	Object
+    //   464	1	2	localObject4	Object
     //   4	178	3	localObject5	Object
-    //   316	20	3	localThrowable1	java.lang.Throwable
-    //   410	4	3	localObject6	Object
-    //   441	1	3	localThrowable2	java.lang.Throwable
-    //   1	442	4	localObject7	Object
+    //   336	20	3	localThrowable1	java.lang.Throwable
+    //   430	4	3	localObject6	Object
+    //   461	1	3	localThrowable2	java.lang.Throwable
+    //   1	462	4	localObject7	Object
     //   6	220	5	localOptions	BitmapFactory.Options
     //   47	199	6	str	String
     // Exception table:
     //   from	to	target	type
-    //   205	242	316	java/lang/Throwable
-    //   242	255	316	java/lang/Throwable
-    //   258	273	316	java/lang/Throwable
-    //   277	309	316	java/lang/Throwable
-    //   309	313	316	java/lang/Throwable
-    //   354	407	316	java/lang/Throwable
-    //   425	434	316	java/lang/Throwable
-    //   205	242	410	finally
-    //   242	255	410	finally
-    //   258	273	410	finally
-    //   277	309	410	finally
-    //   309	313	410	finally
-    //   354	407	410	finally
-    //   425	434	410	finally
-    //   13	20	437	finally
-    //   22	49	437	finally
-    //   51	63	437	finally
-    //   69	75	437	finally
-    //   77	109	437	finally
-    //   111	116	437	finally
-    //   130	136	437	finally
-    //   138	170	437	finally
-    //   172	181	437	finally
-    //   183	205	437	finally
-    //   319	345	437	finally
-    //   13	20	441	java/lang/Throwable
-    //   22	49	441	java/lang/Throwable
-    //   51	63	441	java/lang/Throwable
-    //   69	75	441	java/lang/Throwable
-    //   77	109	441	java/lang/Throwable
-    //   111	116	441	java/lang/Throwable
-    //   130	136	441	java/lang/Throwable
-    //   138	170	441	java/lang/Throwable
-    //   172	181	441	java/lang/Throwable
-    //   183	205	441	java/lang/Throwable
+    //   205	242	336	java/lang/Throwable
+    //   242	255	336	java/lang/Throwable
+    //   258	273	336	java/lang/Throwable
+    //   277	329	336	java/lang/Throwable
+    //   329	333	336	java/lang/Throwable
+    //   374	427	336	java/lang/Throwable
+    //   445	454	336	java/lang/Throwable
+    //   205	242	430	finally
+    //   242	255	430	finally
+    //   258	273	430	finally
+    //   277	329	430	finally
+    //   329	333	430	finally
+    //   374	427	430	finally
+    //   445	454	430	finally
+    //   13	20	457	finally
+    //   22	49	457	finally
+    //   51	63	457	finally
+    //   69	75	457	finally
+    //   77	109	457	finally
+    //   111	116	457	finally
+    //   130	136	457	finally
+    //   138	170	457	finally
+    //   172	181	457	finally
+    //   183	205	457	finally
+    //   339	365	457	finally
+    //   13	20	461	java/lang/Throwable
+    //   22	49	461	java/lang/Throwable
+    //   51	63	461	java/lang/Throwable
+    //   69	75	461	java/lang/Throwable
+    //   77	109	461	java/lang/Throwable
+    //   111	116	461	java/lang/Throwable
+    //   130	136	461	java/lang/Throwable
+    //   138	170	461	java/lang/Throwable
+    //   172	181	461	java/lang/Throwable
+    //   183	205	461	java/lang/Throwable
   }
   
   protected int a(int paramInt)
@@ -739,10 +751,10 @@ public class FriendProfileCardBgDrawable
   }
   
   @TargetApi(11)
-  protected Bitmap a(Object paramObject, int paramInt)
+  public Bitmap a(Object paramObject, int paramInt)
   {
     Object localObject = new BitmapFactory.Options();
-    if (this.jdField_a_of_type_ComTencentMobileqqVasFriendProfileCardBgInfo != null)
+    if (this.jdField_a_of_type_Bdsu != null)
     {
       d();
       if (this.jdField_d_of_type_Boolean) {}
@@ -799,7 +811,7 @@ public class FriendProfileCardBgDrawable
   {
     if (Looper.myLooper() != Looper.getMainLooper())
     {
-      new Handler(Looper.getMainLooper()).post(new unr(this));
+      new Handler(Looper.getMainLooper()).post(new FriendProfileCardBgDrawable.1(this));
       return;
     }
     b();
@@ -810,387 +822,416 @@ public class FriendProfileCardBgDrawable
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore 5
-    //   6: aconst_null
-    //   7: astore_2
-    //   8: aconst_null
-    //   9: astore_3
-    //   10: aload_0
-    //   11: getfield 94	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_d_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   14: ifnonnull +127 -> 141
-    //   17: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   20: ifeq +12 -> 32
-    //   23: ldc 176
-    //   25: iconst_2
-    //   26: ldc_w 342
-    //   29: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   32: aload_2
-    //   33: astore_1
-    //   34: new 178	java/lang/StringBuilder
-    //   37: dup
-    //   38: invokespecial 179	java/lang/StringBuilder:<init>	()V
-    //   41: ldc 245
-    //   43: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: aload_0
-    //   47: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_ComTencentMobileqqVasFriendProfileCardBgInfo	Lcom/tencent/mobileqq/vas/FriendProfileCardBgInfo;
-    //   50: getfield 71	com/tencent/mobileqq/vas/FriendProfileCardBgInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   53: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   59: astore 6
-    //   61: aload_2
-    //   62: astore_1
-    //   63: getstatic 251	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
-    //   66: aload 6
-    //   68: invokevirtual 257	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   71: checkcast 224	android/graphics/Bitmap
-    //   74: astore 7
-    //   76: aload 7
-    //   78: ifnull +68 -> 146
-    //   81: aload_2
-    //   82: astore_1
-    //   83: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   86: ifeq +37 -> 123
-    //   89: aload_2
-    //   90: astore_1
-    //   91: ldc 176
-    //   93: iconst_2
-    //   94: new 178	java/lang/StringBuilder
-    //   97: dup
-    //   98: invokespecial 179	java/lang/StringBuilder:<init>	()V
-    //   101: ldc_w 344
-    //   104: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1: astore_3
+    //   2: aconst_null
+    //   3: astore_1
+    //   4: aload_0
+    //   5: getfield 94	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_d_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   8: ifnonnull +112 -> 120
+    //   11: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   14: ifeq +12 -> 26
+    //   17: ldc 176
+    //   19: iconst_2
+    //   20: ldc_w 342
+    //   23: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   26: new 178	java/lang/StringBuilder
+    //   29: dup
+    //   30: invokespecial 179	java/lang/StringBuilder:<init>	()V
+    //   33: ldc 245
+    //   35: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: aload_0
+    //   39: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bdsu	Lbdsu;
+    //   42: getfield 71	bdsu:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   45: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   51: astore 4
+    //   53: getstatic 251	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
+    //   56: aload 4
+    //   58: invokevirtual 257	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   61: checkcast 224	android/graphics/Bitmap
+    //   64: astore_2
+    //   65: aload_2
+    //   66: ifnull +59 -> 125
+    //   69: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   72: ifeq +35 -> 107
+    //   75: ldc 176
+    //   77: iconst_2
+    //   78: new 178	java/lang/StringBuilder
+    //   81: dup
+    //   82: invokespecial 179	java/lang/StringBuilder:<init>	()V
+    //   85: ldc_w 344
+    //   88: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   91: aload_0
+    //   92: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bdsu	Lbdsu;
+    //   95: getfield 71	bdsu:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   98: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   101: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   104: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   107: aload_0
-    //   108: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_ComTencentMobileqqVasFriendProfileCardBgInfo	Lcom/tencent/mobileqq/vas/FriendProfileCardBgInfo;
-    //   111: getfield 71	com/tencent/mobileqq/vas/FriendProfileCardBgInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   114: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   117: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   120: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   123: aload_2
-    //   124: astore_1
-    //   125: aload_0
-    //   126: aload 7
-    //   128: putfield 94	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_d_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   131: aload_3
-    //   132: astore_1
-    //   133: aload_1
-    //   134: ifnull +7 -> 141
-    //   137: aload_1
-    //   138: invokevirtual 174	java/io/BufferedInputStream:close	()V
-    //   141: aload_0
-    //   142: getfield 94	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_d_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   145: areturn
-    //   146: aload_2
-    //   147: astore_1
-    //   148: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   151: ifeq +37 -> 188
-    //   154: aload_2
-    //   155: astore_1
-    //   156: ldc 176
-    //   158: iconst_2
-    //   159: new 178	java/lang/StringBuilder
-    //   162: dup
-    //   163: invokespecial 179	java/lang/StringBuilder:<init>	()V
-    //   166: ldc_w 346
-    //   169: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   172: aload_0
-    //   173: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_ComTencentMobileqqVasFriendProfileCardBgInfo	Lcom/tencent/mobileqq/vas/FriendProfileCardBgInfo;
-    //   176: getfield 71	com/tencent/mobileqq/vas/FriendProfileCardBgInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   179: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   182: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   185: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   188: aload_2
-    //   189: astore_1
-    //   190: new 120	android/graphics/BitmapFactory$Options
-    //   193: dup
-    //   194: invokespecial 121	android/graphics/BitmapFactory$Options:<init>	()V
-    //   197: astore_3
-    //   198: aload_2
-    //   199: astore_1
-    //   200: new 126	java/io/BufferedInputStream
-    //   203: dup
-    //   204: new 128	java/io/FileInputStream
-    //   207: dup
-    //   208: aload_0
-    //   209: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_ComTencentMobileqqVasFriendProfileCardBgInfo	Lcom/tencent/mobileqq/vas/FriendProfileCardBgInfo;
-    //   212: getfield 71	com/tencent/mobileqq/vas/FriendProfileCardBgInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   215: invokespecial 131	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   218: invokespecial 134	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   221: astore_2
-    //   222: aload_2
-    //   223: aconst_null
-    //   224: aload_3
-    //   225: invokestatic 140	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   228: astore_1
-    //   229: aload_3
-    //   230: getfield 146	android/graphics/BitmapFactory$Options:outWidth	I
-    //   233: aload_0
-    //   234: getfield 97	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_e_of_type_Int	I
-    //   237: if_icmpne +37 -> 274
-    //   240: aload_3
-    //   241: getfield 143	android/graphics/BitmapFactory$Options:outHeight	I
-    //   244: aload_0
-    //   245: getfield 99	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:f	I
-    //   248: if_icmpne +26 -> 274
-    //   251: aload_0
-    //   252: aload_1
-    //   253: putfield 94	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_d_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   256: getstatic 251	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
-    //   259: aload 6
-    //   261: aload_0
-    //   262: getfield 94	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_d_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   265: invokevirtual 271	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   268: pop
-    //   269: aload_2
-    //   270: astore_1
-    //   271: goto -138 -> 133
-    //   274: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   277: ifeq +12 -> 289
-    //   280: ldc 176
-    //   282: iconst_2
-    //   283: ldc_w 348
-    //   286: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   108: aload_2
+    //   109: putfield 94	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_d_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   112: aload_1
+    //   113: ifnull +7 -> 120
+    //   116: aload_1
+    //   117: invokevirtual 174	java/io/BufferedInputStream:close	()V
+    //   120: aload_0
+    //   121: getfield 94	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_d_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   124: areturn
+    //   125: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   128: ifeq +35 -> 163
+    //   131: ldc 176
+    //   133: iconst_2
+    //   134: new 178	java/lang/StringBuilder
+    //   137: dup
+    //   138: invokespecial 179	java/lang/StringBuilder:<init>	()V
+    //   141: ldc_w 346
+    //   144: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   147: aload_0
+    //   148: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bdsu	Lbdsu;
+    //   151: getfield 71	bdsu:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   154: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   157: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   160: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   163: new 120	android/graphics/BitmapFactory$Options
+    //   166: dup
+    //   167: invokespecial 121	android/graphics/BitmapFactory$Options:<init>	()V
+    //   170: astore 5
+    //   172: new 126	java/io/BufferedInputStream
+    //   175: dup
+    //   176: new 128	java/io/FileInputStream
+    //   179: dup
+    //   180: aload_0
+    //   181: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bdsu	Lbdsu;
+    //   184: getfield 71	bdsu:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   187: invokespecial 131	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   190: invokespecial 134	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   193: astore_1
+    //   194: aload_1
+    //   195: astore_2
+    //   196: aload_1
+    //   197: aconst_null
+    //   198: aload 5
+    //   200: invokestatic 140	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   203: astore_3
+    //   204: aload_1
+    //   205: astore_2
+    //   206: aload 5
+    //   208: getfield 146	android/graphics/BitmapFactory$Options:outWidth	I
+    //   211: aload_0
+    //   212: getfield 97	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_e_of_type_Int	I
+    //   215: if_icmpne +42 -> 257
+    //   218: aload_1
+    //   219: astore_2
+    //   220: aload 5
+    //   222: getfield 143	android/graphics/BitmapFactory$Options:outHeight	I
+    //   225: aload_0
+    //   226: getfield 99	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:f	I
+    //   229: if_icmpne +28 -> 257
+    //   232: aload_1
+    //   233: astore_2
+    //   234: aload_0
+    //   235: aload_3
+    //   236: putfield 94	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_d_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   239: aload_1
+    //   240: astore_2
+    //   241: getstatic 251	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
+    //   244: aload 4
+    //   246: aload_0
+    //   247: getfield 94	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_d_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   250: invokevirtual 271	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   253: pop
+    //   254: goto -142 -> 112
+    //   257: aload_1
+    //   258: astore_2
+    //   259: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   262: ifeq +14 -> 276
+    //   265: aload_1
+    //   266: astore_2
+    //   267: ldc 176
+    //   269: iconst_2
+    //   270: ldc_w 348
+    //   273: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   276: aload_3
+    //   277: ifnull +273 -> 550
+    //   280: aload_1
+    //   281: astore_2
+    //   282: aload_0
+    //   283: getfield 97	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_e_of_type_Int	I
+    //   286: ifle +132 -> 418
     //   289: aload_1
-    //   290: ifnull +241 -> 531
-    //   293: aload_0
-    //   294: getfield 97	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_e_of_type_Int	I
-    //   297: ifle +108 -> 405
+    //   290: astore_2
+    //   291: aload_0
+    //   292: getfield 99	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:f	I
+    //   295: ifle +123 -> 418
+    //   298: aload_1
+    //   299: astore_2
     //   300: aload_0
-    //   301: getfield 99	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:f	I
-    //   304: ifle +101 -> 405
-    //   307: aload_0
-    //   308: aload_1
-    //   309: iconst_0
-    //   310: iconst_0
-    //   311: aload_0
-    //   312: getfield 97	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_e_of_type_Int	I
-    //   315: aload_0
-    //   316: getfield 99	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:f	I
-    //   319: invokestatic 277	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
-    //   322: putfield 94	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_d_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   325: aload_1
-    //   326: invokevirtual 280	android/graphics/Bitmap:recycle	()V
-    //   329: goto -73 -> 256
-    //   332: astore_3
-    //   333: aload_2
-    //   334: astore_1
-    //   335: ldc 176
-    //   337: iconst_1
-    //   338: new 178	java/lang/StringBuilder
-    //   341: dup
-    //   342: invokespecial 179	java/lang/StringBuilder:<init>	()V
-    //   345: ldc_w 350
-    //   348: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   351: aload_3
-    //   352: invokevirtual 298	java/io/IOException:toString	()Ljava/lang/String;
-    //   355: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   358: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   361: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   301: aload_3
+    //   302: aload_3
+    //   303: invokevirtual 237	android/graphics/Bitmap:getWidth	()I
+    //   306: aload_0
+    //   307: getfield 97	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_e_of_type_Int	I
+    //   310: isub
+    //   311: iconst_2
+    //   312: idiv
+    //   313: aload_3
+    //   314: invokevirtual 240	android/graphics/Bitmap:getHeight	()I
+    //   317: aload_0
+    //   318: getfield 99	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:f	I
+    //   321: isub
+    //   322: iconst_2
+    //   323: idiv
+    //   324: aload_0
+    //   325: getfield 97	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_e_of_type_Int	I
+    //   328: aload_0
+    //   329: getfield 99	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:f	I
+    //   332: invokestatic 277	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
+    //   335: putfield 94	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_d_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   338: aload_1
+    //   339: astore_2
+    //   340: aload_3
+    //   341: invokevirtual 280	android/graphics/Bitmap:recycle	()V
+    //   344: goto -105 -> 239
+    //   347: astore_2
+    //   348: ldc 176
+    //   350: iconst_1
+    //   351: new 178	java/lang/StringBuilder
+    //   354: dup
+    //   355: invokespecial 179	java/lang/StringBuilder:<init>	()V
+    //   358: ldc_w 350
+    //   361: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   364: aload_2
-    //   365: ifnull -224 -> 141
-    //   368: aload_2
-    //   369: invokevirtual 174	java/io/BufferedInputStream:close	()V
-    //   372: goto -231 -> 141
-    //   375: astore_1
-    //   376: ldc 176
-    //   378: iconst_1
-    //   379: new 178	java/lang/StringBuilder
-    //   382: dup
-    //   383: invokespecial 179	java/lang/StringBuilder:<init>	()V
-    //   386: ldc_w 352
-    //   389: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   392: aload_1
-    //   393: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   396: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   399: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   402: goto -261 -> 141
-    //   405: aload_0
-    //   406: aload_1
-    //   407: putfield 94	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_d_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   410: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   413: ifeq -88 -> 325
-    //   416: ldc 176
-    //   418: iconst_2
-    //   419: new 178	java/lang/StringBuilder
-    //   422: dup
-    //   423: invokespecial 179	java/lang/StringBuilder:<init>	()V
-    //   426: ldc_w 354
-    //   429: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   432: aload_0
-    //   433: getfield 97	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_e_of_type_Int	I
-    //   436: invokevirtual 287	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   439: ldc_w 289
-    //   442: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   445: aload_0
-    //   446: getfield 99	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:f	I
-    //   449: invokevirtual 287	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   452: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   455: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   458: goto -133 -> 325
-    //   461: astore_3
-    //   462: aload_2
-    //   463: astore_1
-    //   464: ldc 176
-    //   466: iconst_1
-    //   467: new 178	java/lang/StringBuilder
-    //   470: dup
-    //   471: invokespecial 179	java/lang/StringBuilder:<init>	()V
-    //   474: ldc_w 356
-    //   477: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   480: aload_3
-    //   481: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   484: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   487: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   490: aload_2
-    //   491: ifnull -350 -> 141
-    //   494: aload_2
-    //   495: invokevirtual 174	java/io/BufferedInputStream:close	()V
-    //   498: goto -357 -> 141
-    //   501: astore_1
-    //   502: ldc 176
-    //   504: iconst_1
-    //   505: new 178	java/lang/StringBuilder
-    //   508: dup
-    //   509: invokespecial 179	java/lang/StringBuilder:<init>	()V
-    //   512: ldc_w 352
-    //   515: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   518: aload_1
-    //   519: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   522: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   525: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   528: goto -387 -> 141
-    //   531: ldc 176
-    //   533: iconst_1
-    //   534: ldc_w 358
-    //   537: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   540: goto -284 -> 256
-    //   543: astore_3
-    //   544: aload_2
-    //   545: astore_1
-    //   546: aload_3
-    //   547: astore_2
-    //   548: aload_1
-    //   549: ifnull +7 -> 556
-    //   552: aload_1
-    //   553: invokevirtual 174	java/io/BufferedInputStream:close	()V
-    //   556: aload_2
-    //   557: athrow
-    //   558: astore_1
-    //   559: ldc 176
-    //   561: iconst_1
-    //   562: new 178	java/lang/StringBuilder
-    //   565: dup
-    //   566: invokespecial 179	java/lang/StringBuilder:<init>	()V
-    //   569: ldc_w 352
-    //   572: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   575: aload_1
-    //   576: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   579: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   582: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   585: goto -444 -> 141
-    //   588: astore_1
-    //   589: ldc 176
-    //   591: iconst_1
-    //   592: new 178	java/lang/StringBuilder
-    //   595: dup
-    //   596: invokespecial 179	java/lang/StringBuilder:<init>	()V
-    //   599: ldc_w 352
-    //   602: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   605: aload_1
-    //   606: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   609: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   612: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   615: goto -59 -> 556
-    //   618: astore_2
-    //   619: goto -71 -> 548
-    //   622: astore_3
-    //   623: aload 5
-    //   625: astore_2
-    //   626: goto -164 -> 462
-    //   629: astore_3
-    //   630: aload 4
-    //   632: astore_2
-    //   633: goto -300 -> 333
+    //   365: invokevirtual 298	java/io/IOException:toString	()Ljava/lang/String;
+    //   368: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   371: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   374: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   377: aload_1
+    //   378: ifnull -258 -> 120
+    //   381: aload_1
+    //   382: invokevirtual 174	java/io/BufferedInputStream:close	()V
+    //   385: goto -265 -> 120
+    //   388: astore_1
+    //   389: ldc 176
+    //   391: iconst_1
+    //   392: new 178	java/lang/StringBuilder
+    //   395: dup
+    //   396: invokespecial 179	java/lang/StringBuilder:<init>	()V
+    //   399: ldc_w 352
+    //   402: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   405: aload_1
+    //   406: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   409: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   412: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   415: goto -295 -> 120
+    //   418: aload_1
+    //   419: astore_2
+    //   420: aload_0
+    //   421: aload_3
+    //   422: putfield 94	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_d_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   425: aload_1
+    //   426: astore_2
+    //   427: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   430: ifeq -92 -> 338
+    //   433: aload_1
+    //   434: astore_2
+    //   435: ldc 176
+    //   437: iconst_2
+    //   438: new 178	java/lang/StringBuilder
+    //   441: dup
+    //   442: invokespecial 179	java/lang/StringBuilder:<init>	()V
+    //   445: ldc_w 354
+    //   448: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   451: aload_0
+    //   452: getfield 97	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_e_of_type_Int	I
+    //   455: invokevirtual 287	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   458: ldc_w 289
+    //   461: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   464: aload_0
+    //   465: getfield 99	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:f	I
+    //   468: invokevirtual 287	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   471: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   474: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   477: goto -139 -> 338
+    //   480: astore_3
+    //   481: aload_1
+    //   482: astore_2
+    //   483: ldc 176
+    //   485: iconst_1
+    //   486: new 178	java/lang/StringBuilder
+    //   489: dup
+    //   490: invokespecial 179	java/lang/StringBuilder:<init>	()V
+    //   493: ldc_w 356
+    //   496: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   499: aload_3
+    //   500: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   503: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   506: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   509: aload_1
+    //   510: ifnull -390 -> 120
+    //   513: aload_1
+    //   514: invokevirtual 174	java/io/BufferedInputStream:close	()V
+    //   517: goto -397 -> 120
+    //   520: astore_1
+    //   521: ldc 176
+    //   523: iconst_1
+    //   524: new 178	java/lang/StringBuilder
+    //   527: dup
+    //   528: invokespecial 179	java/lang/StringBuilder:<init>	()V
+    //   531: ldc_w 352
+    //   534: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   537: aload_1
+    //   538: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   541: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   544: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   547: goto -427 -> 120
+    //   550: aload_1
+    //   551: astore_2
+    //   552: ldc 176
+    //   554: iconst_1
+    //   555: ldc_w 358
+    //   558: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   561: goto -322 -> 239
+    //   564: astore_1
+    //   565: aload_2
+    //   566: ifnull +7 -> 573
+    //   569: aload_2
+    //   570: invokevirtual 174	java/io/BufferedInputStream:close	()V
+    //   573: aload_1
+    //   574: athrow
+    //   575: astore_1
+    //   576: ldc 176
+    //   578: iconst_1
+    //   579: new 178	java/lang/StringBuilder
+    //   582: dup
+    //   583: invokespecial 179	java/lang/StringBuilder:<init>	()V
+    //   586: ldc_w 352
+    //   589: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   592: aload_1
+    //   593: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   596: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   599: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   602: goto -482 -> 120
+    //   605: astore_2
+    //   606: ldc 176
+    //   608: iconst_1
+    //   609: new 178	java/lang/StringBuilder
+    //   612: dup
+    //   613: invokespecial 179	java/lang/StringBuilder:<init>	()V
+    //   616: ldc_w 352
+    //   619: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   622: aload_2
+    //   623: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   626: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   629: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   632: goto -59 -> 573
+    //   635: astore_1
+    //   636: aconst_null
+    //   637: astore_2
+    //   638: goto -73 -> 565
+    //   641: astore_3
+    //   642: aload_1
+    //   643: astore_2
+    //   644: aload_3
+    //   645: astore_1
+    //   646: goto -81 -> 565
+    //   649: astore_3
+    //   650: aconst_null
+    //   651: astore_1
+    //   652: goto -171 -> 481
+    //   655: astore_2
+    //   656: aload_3
+    //   657: astore_1
+    //   658: goto -310 -> 348
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	636	0	this	FriendProfileCardBgDrawable
-    //   33	302	1	localObject1	Object
-    //   375	32	1	localIOException1	IOException
-    //   463	1	1	localObject2	Object
-    //   501	18	1	localIOException2	IOException
-    //   545	8	1	localObject3	Object
-    //   558	18	1	localIOException3	IOException
-    //   588	18	1	localIOException4	IOException
-    //   7	550	2	localObject4	Object
-    //   618	1	2	localObject5	Object
-    //   625	8	2	localObject6	Object
-    //   9	232	3	localOptions	BitmapFactory.Options
-    //   332	20	3	localIOException5	IOException
-    //   461	20	3	localThrowable1	java.lang.Throwable
-    //   543	4	3	localObject7	Object
-    //   622	1	3	localThrowable2	java.lang.Throwable
-    //   629	1	3	localIOException6	IOException
-    //   1	630	4	localObject8	Object
-    //   4	620	5	localObject9	Object
-    //   59	201	6	str	String
-    //   74	53	7	localBitmap	Bitmap
+    //   0	661	0	this	FriendProfileCardBgDrawable
+    //   3	379	1	localBufferedInputStream	BufferedInputStream
+    //   388	126	1	localIOException1	IOException
+    //   520	31	1	localIOException2	IOException
+    //   564	10	1	localObject1	Object
+    //   575	18	1	localIOException3	IOException
+    //   635	8	1	localObject2	Object
+    //   645	13	1	localObject3	Object
+    //   64	276	2	localObject4	Object
+    //   347	18	2	localIOException4	IOException
+    //   419	151	2	localIOException5	IOException
+    //   605	18	2	localIOException6	IOException
+    //   637	7	2	localObject5	Object
+    //   655	1	2	localIOException7	IOException
+    //   1	421	3	localBitmap	Bitmap
+    //   480	20	3	localThrowable1	java.lang.Throwable
+    //   641	4	3	localObject6	Object
+    //   649	8	3	localThrowable2	java.lang.Throwable
+    //   51	194	4	str	String
+    //   170	51	5	localOptions	BitmapFactory.Options
     // Exception table:
     //   from	to	target	type
-    //   222	256	332	java/io/IOException
-    //   256	269	332	java/io/IOException
-    //   274	289	332	java/io/IOException
-    //   293	325	332	java/io/IOException
-    //   325	329	332	java/io/IOException
-    //   405	458	332	java/io/IOException
-    //   531	540	332	java/io/IOException
-    //   368	372	375	java/io/IOException
-    //   222	256	461	java/lang/Throwable
-    //   256	269	461	java/lang/Throwable
-    //   274	289	461	java/lang/Throwable
-    //   293	325	461	java/lang/Throwable
-    //   325	329	461	java/lang/Throwable
-    //   405	458	461	java/lang/Throwable
-    //   531	540	461	java/lang/Throwable
-    //   494	498	501	java/io/IOException
-    //   222	256	543	finally
-    //   256	269	543	finally
-    //   274	289	543	finally
-    //   293	325	543	finally
-    //   325	329	543	finally
-    //   405	458	543	finally
-    //   531	540	543	finally
-    //   137	141	558	java/io/IOException
-    //   552	556	588	java/io/IOException
-    //   34	61	618	finally
-    //   63	76	618	finally
-    //   83	89	618	finally
-    //   91	123	618	finally
-    //   125	131	618	finally
-    //   148	154	618	finally
-    //   156	188	618	finally
-    //   190	198	618	finally
-    //   200	222	618	finally
-    //   335	364	618	finally
-    //   464	490	618	finally
-    //   34	61	622	java/lang/Throwable
-    //   63	76	622	java/lang/Throwable
-    //   83	89	622	java/lang/Throwable
-    //   91	123	622	java/lang/Throwable
-    //   125	131	622	java/lang/Throwable
-    //   148	154	622	java/lang/Throwable
-    //   156	188	622	java/lang/Throwable
-    //   190	198	622	java/lang/Throwable
-    //   200	222	622	java/lang/Throwable
-    //   34	61	629	java/io/IOException
-    //   63	76	629	java/io/IOException
-    //   83	89	629	java/io/IOException
-    //   91	123	629	java/io/IOException
-    //   125	131	629	java/io/IOException
-    //   148	154	629	java/io/IOException
-    //   156	188	629	java/io/IOException
-    //   190	198	629	java/io/IOException
-    //   200	222	629	java/io/IOException
+    //   196	204	347	java/io/IOException
+    //   206	218	347	java/io/IOException
+    //   220	232	347	java/io/IOException
+    //   234	239	347	java/io/IOException
+    //   241	254	347	java/io/IOException
+    //   259	265	347	java/io/IOException
+    //   267	276	347	java/io/IOException
+    //   282	289	347	java/io/IOException
+    //   291	298	347	java/io/IOException
+    //   300	338	347	java/io/IOException
+    //   340	344	347	java/io/IOException
+    //   420	425	347	java/io/IOException
+    //   427	433	347	java/io/IOException
+    //   435	477	347	java/io/IOException
+    //   552	561	347	java/io/IOException
+    //   381	385	388	java/io/IOException
+    //   196	204	480	java/lang/Throwable
+    //   206	218	480	java/lang/Throwable
+    //   220	232	480	java/lang/Throwable
+    //   234	239	480	java/lang/Throwable
+    //   241	254	480	java/lang/Throwable
+    //   259	265	480	java/lang/Throwable
+    //   267	276	480	java/lang/Throwable
+    //   282	289	480	java/lang/Throwable
+    //   291	298	480	java/lang/Throwable
+    //   300	338	480	java/lang/Throwable
+    //   340	344	480	java/lang/Throwable
+    //   420	425	480	java/lang/Throwable
+    //   427	433	480	java/lang/Throwable
+    //   435	477	480	java/lang/Throwable
+    //   552	561	480	java/lang/Throwable
+    //   513	517	520	java/io/IOException
+    //   196	204	564	finally
+    //   206	218	564	finally
+    //   220	232	564	finally
+    //   234	239	564	finally
+    //   241	254	564	finally
+    //   259	265	564	finally
+    //   267	276	564	finally
+    //   282	289	564	finally
+    //   291	298	564	finally
+    //   300	338	564	finally
+    //   340	344	564	finally
+    //   420	425	564	finally
+    //   427	433	564	finally
+    //   435	477	564	finally
+    //   483	509	564	finally
+    //   552	561	564	finally
+    //   116	120	575	java/io/IOException
+    //   569	573	605	java/io/IOException
+    //   26	65	635	finally
+    //   69	107	635	finally
+    //   107	112	635	finally
+    //   125	163	635	finally
+    //   163	194	635	finally
+    //   348	377	641	finally
+    //   26	65	649	java/lang/Throwable
+    //   69	107	649	java/lang/Throwable
+    //   107	112	649	java/lang/Throwable
+    //   125	163	649	java/lang/Throwable
+    //   163	194	649	java/lang/Throwable
+    //   26	65	655	java/io/IOException
+    //   69	107	655	java/io/IOException
+    //   107	112	655	java/io/IOException
+    //   125	163	655	java/io/IOException
+    //   163	194	655	java/io/IOException
   }
   
   public void b()
@@ -1206,10 +1247,10 @@ public class FriendProfileCardBgDrawable
       this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
       this.jdField_b_of_type_AndroidGraphicsBitmap = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable$DecodeNextFrameTask != null)
+    if (this.jdField_a_of_type_Aevi != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable$DecodeNextFrameTask.cancel(false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable$DecodeNextFrameTask = null;
+      this.jdField_a_of_type_Aevi.cancel(false);
+      this.jdField_a_of_type_Aevi = null;
     }
     if (this.jdField_c_of_type_AndroidGraphicsBitmap != null) {
       synchronized (this.jdField_a_of_type_ArrayOfByte)
@@ -1235,11 +1276,11 @@ public class FriendProfileCardBgDrawable
     this.jdField_a_of_type_Boolean = false;
     long l1 = SystemClock.uptimeMillis();
     long l2 = this.jdField_b_of_type_Int;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable$DecodeNextFrameTask != null) {
+    if (this.jdField_a_of_type_Aevi != null) {
       QLog.e("FriendProfileCardBgDrawable", 1, "decodeNextFrame mTask != null currentFrame = " + this.jdField_a_of_type_Int);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable$DecodeNextFrameTask = new FriendProfileCardBgDrawable.DecodeNextFrameTask(this, this.jdField_a_of_type_JavaLangObject);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable$DecodeNextFrameTask.execute(new Long[] { Long.valueOf(l1 + l2), Long.valueOf(this.jdField_a_of_type_Int) });
+    this.jdField_a_of_type_Aevi = new aevi(this, this.jdField_a_of_type_JavaLangObject);
+    this.jdField_a_of_type_Aevi.execute(new Long[] { Long.valueOf(l1 + l2), Long.valueOf(this.jdField_a_of_type_Int) });
   }
   
   public void draw(Canvas paramCanvas)
@@ -1367,7 +1408,7 @@ public class FriendProfileCardBgDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable
  * JD-Core Version:    0.7.0.1
  */

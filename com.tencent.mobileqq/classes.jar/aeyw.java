@@ -1,36 +1,35 @@
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnInfoListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditScrollerView;
 
-class aeyw
-  implements Runnable
+public class aeyw
+  implements Animator.AnimatorListener
 {
-  aeyw(aeyv paramaeyv, int paramInt, Object paramObject) {}
+  public aeyw(VoiceTextEditScrollerView paramVoiceTextEditScrollerView, int paramInt) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    int i;
-    if (this.jdField_a_of_type_Aeyv.a.a != null)
+    if (VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditScrollerView) != null)
     {
-      i = this.jdField_a_of_type_Int;
-      if (this.jdField_a_of_type_Int != 21) {
-        break label58;
+      if (this.jdField_a_of_type_Int == 0) {
+        VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditScrollerView).j();
       }
-      i = 2;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aeyv.a.a.a(this.jdField_a_of_type_Aeyv.a, i, this.jdField_a_of_type_JavaLangObject);
+    else {
       return;
-      label58:
-      if (this.jdField_a_of_type_Int == 22) {
-        i = 3;
-      }
     }
+    VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditScrollerView).k();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeyw
  * JD-Core Version:    0.7.0.1
  */

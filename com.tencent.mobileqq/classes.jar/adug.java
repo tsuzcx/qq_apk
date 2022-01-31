@@ -1,82 +1,31 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
-import com.tencent.mobileqq.intervideo.huayang.HuayangCrashReport;
-import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
-import com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher;
-import com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher.HuayangPluginLauncherListener;
-import com.tencent.mobileqq.intervideo.huayang.Monitor;
-import com.tencent.mobileqq.intervideo.huayang.MonitorConfig;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class adug
-  implements Handler.Callback
+  implements View.OnFocusChangeListener
 {
-  public adug(HuayangPluginLauncher paramHuayangPluginLauncher) {}
+  public adug(RegisterByNicknameAndPwdActivity paramRegisterByNicknameAndPwdActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    switch (paramMessage.what)
+    if (paramView == RegisterByNicknameAndPwdActivity.a(this.a))
     {
+      if (paramBoolean)
+      {
+        RegisterByNicknameAndPwdActivity.a(this.a).setSelection(RegisterByNicknameAndPwdActivity.a(this.a).getText().length());
+        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
+        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
+        RegisterByNicknameAndPwdActivity.b(this.a).setVisibility(0);
+      }
     }
-    do
-    {
-      return false;
-      Object localObject = HuayangPluginLauncher.a(this.a).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((HuayangPluginLauncher.HuayangPluginLauncherListener)((Iterator)localObject).next()).a(paramMessage.arg1);
-      }
-      localObject = HuayangPluginLauncher.a(this.a).iterator();
-      if (((Iterator)localObject).hasNext())
-      {
-        HuayangPluginLauncher.HuayangPluginLauncherListener localHuayangPluginLauncherListener = (HuayangPluginLauncher.HuayangPluginLauncherListener)((Iterator)localObject).next();
-        if (paramMessage.arg1 == 0) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localHuayangPluginLauncherListener.a(bool, (Throwable)paramMessage.obj);
-          break;
-        }
-      }
-      localObject = new Intent(HuayangJsPlugin.a(HuayangPluginLauncher.a(this.a).c));
-      if (paramMessage.arg1 == 0)
-      {
-        if (HuayangJsPlugin.a(HuayangPluginLauncher.a(this.a).c)) {}
-        for (int i = 9;; i = 8)
-        {
-          ((Intent)localObject).putExtra("key_state", i);
-          HuayangPluginLauncher.a(this.a).sendBroadcast((Intent)localObject);
-          if (MonitorConfig.a.get(HuayangPluginLauncher.a(this.a)) == null) {
-            break;
-          }
-          Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginLauncher.a(this.a))).f));
-          return false;
-        }
-      }
-      if (HuayangJsPlugin.a(HuayangPluginLauncher.a(this.a).c)) {
-        Monitor.a("2691708");
-      }
-      for (;;)
-      {
-        HuayangCrashReport.a((Throwable)paramMessage.obj);
-        ((Intent)localObject).putExtra("key_state", 7);
-        HuayangPluginLauncher.a(this.a).sendBroadcast((Intent)localObject);
-        return false;
-        if (HuayangJsPlugin.b(HuayangPluginLauncher.a(this.a).c)) {
-          Monitor.a("2597726");
-        } else if (MonitorConfig.a.get(HuayangPluginLauncher.a(this.a)) != null) {
-          Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginLauncher.a(this.a))).e));
-        }
-      }
-      paramMessage = new Intent(HuayangJsPlugin.a(HuayangPluginLauncher.a(this.a).c));
-      paramMessage.putExtra("key_state", 6);
-      HuayangPluginLauncher.a(this.a).sendBroadcast(paramMessage);
-    } while (MonitorConfig.a.get(HuayangPluginLauncher.a(this.a)) == null);
-    Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginLauncher.a(this.a))).d));
-    return false;
+    else {
+      return;
+    }
+    RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(8);
   }
 }
 

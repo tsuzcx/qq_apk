@@ -1,74 +1,67 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.os.MqqHandler;
 
 public class vek
-  implements Runnable
+  extends vce
+  implements urr<vfy, vho>
 {
-  public vek(ReplyTextItemBuilder paramReplyTextItemBuilder, MessageForReplyText paramMessageForReplyText, int paramInt, ver paramver) {}
+  protected String a;
+  protected List<String> a;
   
-  public void run()
+  public vek(String paramString, List<String> paramList)
   {
-    int i = 0;
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a.a().c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.mSourceMsgInfo.mSourceMsgSeq);
-    ArrayList localArrayList;
-    if ((localMessageRecord == null) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.mHasPullHistorySourceMsg))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.mHasPullHistorySourceMsg = true;
-      Bundle localBundle = new Bundle();
-      QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a.a();
-      localArrayList = new ArrayList();
-      int j = localQQMessageFacade.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
-      localBundle.putInt("counter", j);
-      localBundle.putBoolean("success", false);
-      localQQMessageFacade.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(j), localArrayList);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.mSourceMsgInfo.mSourceMsgSeq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.mSourceMsgInfo.mSourceMsgSeq, true, localBundle, 0);
-      localQQMessageFacade.b.put(MsgProxyUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.istroop), Boolean.valueOf(false));
-      if (!NetworkUtil.g(BaseApplication.getContext())) {}
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
-    label332:
-    for (;;)
+  }
+  
+  public void a()
+  {
+    vfy localvfy = new vfy();
+    localvfy.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    urp.a().a(localvfy, this);
+  }
+  
+  public void a(@NonNull vfy paramvfy, @Nullable vho paramvho, @NonNull ErrorMessage paramErrorMessage)
+  {
+    vem localvem = new vem();
+    if ((paramvho == null) || (paramErrorMessage.isFail()))
     {
-      try
-      {
-        localArrayList.wait(35000L);
-        if ((localArrayList.size() <= 0) || (i >= localArrayList.size())) {
-          break label332;
-        }
-        if (((MessageRecord)localArrayList.get(i)).shmsgseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.mSourceMsgInfo.mSourceMsgSeq)
-        {
-          localMessageRecord = (MessageRecord)localArrayList.get(i);
-          ThreadManager.getUIHandler().post(new vel(this, localMessageRecord));
-          return;
-        }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-        continue;
-      }
-      finally {}
-      i += 1;
+      c();
+      umc.a().dispatch(localvem);
+      return;
     }
+    wxe.b("Q.qqstory.net:VidToShareGroupVideoInfoHandler", "onCmdRespond: request.count=" + paramvfy.jdField_a_of_type_JavaUtilList.size() + ",content=" + paramvfy.jdField_a_of_type_JavaUtilList.toString());
+    wxe.b("Q.qqstory.net:VidToShareGroupVideoInfoHandler", "onCmdRespond: count=" + paramvho.jdField_a_of_type_JavaUtilList.size() + ",content=" + paramvho.toString());
+    b();
+    paramvho.jdField_a_of_type_JavaUtilList = ((uvx)uwa.a(5)).a(paramvho.jdField_a_of_type_JavaUtilList);
+    localvem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    paramvfy = paramvho.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramvfy.hasNext())
+    {
+      paramvho = (StoryVideoItem)paramvfy.next();
+      paramvho = new wnd(paramvho.mVid, paramvho);
+      localvem.jdField_a_of_type_JavaUtilList.add(paramvho);
+    }
+    umc.a().dispatch(localvem);
+  }
+  
+  public String toString()
+  {
+    return "VidToShareGroupVideoInfoHandler{mVidList=" + this.jdField_a_of_type_JavaUtilList + ", mCollectionId='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vek
  * JD-Core Version:    0.7.0.1
  */

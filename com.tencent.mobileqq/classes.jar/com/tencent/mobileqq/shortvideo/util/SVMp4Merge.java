@@ -8,7 +8,7 @@ public class SVMp4Merge
   public static int a = 2;
   public static int b;
   
-  public static int a(List paramList, String paramString)
+  public static int a(List<String> paramList, String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     int k = paramList.size();
@@ -76,7 +76,7 @@ public class SVMp4Merge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.SVMp4Merge
  * JD-Core Version:    0.7.0.1
  */

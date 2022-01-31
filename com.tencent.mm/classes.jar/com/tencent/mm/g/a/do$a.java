@@ -1,0 +1,15 @@
+package com.tencent.mm.g.a;
+
+import android.content.Context;
+
+public final class do$a
+{
+  public Context context;
+  public String cqQ;
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+ * Qualified Name:     com.tencent.mm.g.a.do.a
+ * JD-Core Version:    0.7.0.1
+ */

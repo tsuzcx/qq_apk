@@ -1,19 +1,20 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.RecentMemberInnerFrame;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity.6.1;
+import java.util.ArrayList;
 
 public class yaa
-  extends FacePreloadBaseAdapter.ViewHolder
+  implements ybh
 {
-  public CheckBox a;
-  public TextView a;
+  public yaa(QRLoginMgrActivity paramQRLoginMgrActivity) {}
   
-  private yaa(RecentMemberInnerFrame paramRecentMemberInnerFrame) {}
+  public void a(ArrayList<ybe> paramArrayList)
+  {
+    this.a.runOnUiThread(new QRLoginMgrActivity.6.1(this, paramArrayList));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yaa
  * JD-Core Version:    0.7.0.1
  */

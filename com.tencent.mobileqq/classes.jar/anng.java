@@ -1,22 +1,23 @@
-import android.widget.EditText;
-import com.tencent.util.InputMethodUtil;
-import dov.com.qq.im.capture.poi.FacePoiSearchUI;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class anng
-  implements Runnable
+class anng
+  implements alpg
 {
-  public anng(FacePoiSearchUI paramFacePoiSearchUI) {}
+  anng(annc paramannc) {}
   
-  public void run()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.a.setFocusableInTouchMode(true);
-    this.a.a.requestFocus();
-    InputMethodUtil.a(this.a.a);
+    if (!paramBoolean)
+    {
+      ArkAppCenter.c("ArkApp.ArkAppCGI", "ArkSafe,doReport, sso request failed");
+      return;
+    }
+    ArkAppCenter.b("ArkApp.ArkAppCGI", "ArkSafe.doReport.server.back=" + paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anng
  * JD-Core Version:    0.7.0.1
  */

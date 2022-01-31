@@ -1,42 +1,37 @@
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.XListView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.Banner;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.ADView;
 
 public class eoe
-  implements AbsListView.OnScrollListener
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
+  public eoe(BannerManager paramBannerManager) {}
   
-  public eoe(MessageSearchDialog paramMessageSearchDialog) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (MessageSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageSearchDialog).a() == this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageSearchDialog.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter) {}
-    do
+    BannerManager.a(this.a).getSharedPreferences("mobileQQi", 0).edit().putBoolean("push_banner_display" + BannerManager.a(this.a).b.getAccount(), false).commit();
+    paramView = BannerManager.a(this.a)[14];
+    if ((paramView != null) && (paramView.a != null))
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, scrollState = " + paramInt + ", lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
+      paramView = (ADView)paramView.a.findViewById(2131232088);
+      if (paramView != null) {
+        paramView.a();
       }
-    } while ((this.b == 0) || (this.jdField_a_of_type_Int != this.b) || (paramInt != 0));
-    if (QLog.isColorLevel()) {
-      QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, reach bottom, lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
     }
-    MessageSearchDialog.b(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageSearchDialog);
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-    this.b = paramInt3;
+    this.a.a(14, 0);
+    this.a.a(null);
+    this.a.b = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eoe
  * JD-Core Version:    0.7.0.1
  */

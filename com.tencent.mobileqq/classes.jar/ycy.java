@@ -1,19 +1,11 @@
-import com.tencent.mobileqq.app.BaseActivity;
-
-class ycy
-  implements Runnable
+public abstract interface ycy
+  extends ybw
 {
-  ycy(ycw paramycw) {}
-  
-  public void run()
-  {
-    this.a.a.setResult(0);
-    this.a.a.finish();
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ycy
  * JD-Core Version:    0.7.0.1
  */

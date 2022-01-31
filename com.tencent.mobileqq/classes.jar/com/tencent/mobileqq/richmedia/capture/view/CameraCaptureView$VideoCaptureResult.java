@@ -8,6 +8,7 @@ public class CameraCaptureView$VideoCaptureResult
   public static final int TYPE_MERGED = 1;
   public static final int TYPE_UNMERGED = 0;
   public String audioDataFilePath;
+  public String bgmAudioDataFilePath;
   public int errorCode;
   public String mergedMp4FilePath;
   public int orientation;
@@ -22,7 +23,7 @@ public class CameraCaptureView$VideoCaptureResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult
  * JD-Core Version:    0.7.0.1
  */

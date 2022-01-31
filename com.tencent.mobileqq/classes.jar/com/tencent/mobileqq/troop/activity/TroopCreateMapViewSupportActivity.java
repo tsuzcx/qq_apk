@@ -20,28 +20,28 @@ public class TroopCreateMapViewSupportActivity
   {
     ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.getParent();
     localViewGroup.removeView(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)getLayoutInflater().inflate(2130969435, null, true));
-    this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131558812));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)getLayoutInflater().inflate(2131559731, null, true));
+    this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131297824));
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView = new AutoLocationMapView(this);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView.setId(2131362012);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView.setId(2131372927);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView, new RelativeLayout.LayoutParams(-1, this.jdField_a_of_type_Int));
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView.setVisibility(8);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    localLayoutParams.addRule(3, 2131362012);
+    localLayoutParams.addRule(3, 2131372927);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView, localLayoutParams);
     localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    localLayoutParams.addRule(3, 2131363244);
+    localLayoutParams.addRule(3, 2131375863);
     localViewGroup.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, localLayoutParams);
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     e();
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
     if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView != null) {
@@ -49,7 +49,7 @@ public class TroopCreateMapViewSupportActivity
     }
   }
   
-  protected void doOnPause()
+  public void doOnPause()
   {
     super.doOnPause();
     if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView != null) {
@@ -57,7 +57,7 @@ public class TroopCreateMapViewSupportActivity
     }
   }
   
-  protected void doOnResume()
+  public void doOnResume()
   {
     super.doOnResume();
     if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView != null) {
@@ -65,7 +65,7 @@ public class TroopCreateMapViewSupportActivity
     }
   }
   
-  protected void doOnStop()
+  public void doOnStop()
   {
     super.doOnStop();
     if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAutoLocationMapView != null) {
@@ -83,7 +83,7 @@ public class TroopCreateMapViewSupportActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopCreateMapViewSupportActivity
  * JD-Core Version:    0.7.0.1
  */

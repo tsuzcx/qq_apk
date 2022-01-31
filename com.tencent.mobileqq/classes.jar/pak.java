@@ -1,29 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.viewplugin.ViewPluginManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
 
 public class pak
-  implements Runnable
+  implements View.OnClickListener
 {
-  public pak(ViewPluginManager paramViewPluginManager) {}
+  public pak(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment, ImageView paramImageView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str = "http://" + this.a.b + "?_bid=" + this.a.jdField_a_of_type_JavaLangString;
-    if (TextUtils.isEmpty(str)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ViewPluginManager", 2, "checkOfflineUpNotCallback.");
-    }
-    HtmlOffline.b(str, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyFragment.getActivity(), this.jdField_a_of_type_AndroidWidgetImageView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pak
  * JD-Core Version:    0.7.0.1
  */

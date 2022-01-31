@@ -1,16 +1,18 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class dck
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public dck(MySelfTroopMemberCard paramMySelfTroopMemberCard, String paramString) {}
+  public dck(QQMapActivity paramQQMapActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_f_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.g = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_f_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.g);
+    if ((this.a.i) && (!this.a.j) && (!this.a.h)) {
+      this.a.finish();
+    }
+    this.a.j = false;
   }
 }
 

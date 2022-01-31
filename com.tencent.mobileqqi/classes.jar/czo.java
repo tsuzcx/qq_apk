@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.PortraitImageview;
 
 public class czo
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public czo(LoginActivity paramLoginActivity) {}
+  public czo(PortraitImageview paramPortraitImageview) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    LoginActivity.b(this.a, false);
+    this.a.postInvalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     czo
  * JD-Core Version:    0.7.0.1
  */

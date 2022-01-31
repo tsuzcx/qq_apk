@@ -1,42 +1,35 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.IphoneTreeView;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.TMG.utils.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class akur
-  implements View.OnTouchListener
+class akur
+  implements EIPCResultCallback
 {
-  public akur(IphoneTreeView paramIphoneTreeView) {}
+  akur(akuq paramakuq) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    boolean bool = true;
-    switch (paramMotionEvent.getAction())
+    if (paramEIPCResult.code == 0)
     {
-    case 2: 
-    default: 
-      bool = false;
+      paramEIPCResult = paramEIPCResult.data.getString("key_game_friUin");
+      QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] current game friendUin:" + paramEIPCResult + ",mCurrentFriUin:" + akuq.a(this.a));
+      if (!akuq.a(this.a).equals(paramEIPCResult))
+      {
+        akuq.a(this.a).removeMessages(1);
+        akuq.a(this.a).sendEmptyMessage(1);
+      }
+      return;
     }
-    do
-    {
-      return bool;
-      paramView.setPressed(true);
-      this.a.invalidate();
-      return true;
-      paramView.setPressed(false);
-      this.a.invalidate();
-      break;
-    } while (!paramView.isPressed());
-    paramView.setPressed(false);
-    this.a.collapseGroup(this.a.jdField_a_of_type_Int);
-    this.a.setSelectedGroup(this.a.jdField_a_of_type_Int);
-    this.a.jdField_a_of_type_AndroidViewView = null;
-    return true;
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] game is not exist. exit room");
+    akuq.a(this.a).removeMessages(1);
+    akuq.a(this.a).sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akur
  * JD-Core Version:    0.7.0.1
  */

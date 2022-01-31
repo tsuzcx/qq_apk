@@ -68,15 +68,13 @@ public final class UploadHelper
     }
     do
     {
-      int k;
       int j;
       do
       {
         return i;
-        k = paramUploadResponse.code();
-        j = k;
+        j = paramUploadResponse.code();
         i = j;
-      } while (!UploadError.isCurlError(k));
+      } while (!UploadError.isCurlError(j));
       i = j;
     } while (!isNetworkChange());
     return 1810003;
@@ -100,7 +98,7 @@ public final class UploadHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.weiyun.transmission.upload.UploadHelper
  * JD-Core Version:    0.7.0.1
  */

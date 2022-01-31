@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class WordsSecurity$SecurityReq
-  extends MessageMicro
+  extends MessageMicro<SecurityReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField biz_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -37,7 +37,7 @@ public final class WordsSecurity$SecurityReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.WordsSecurity.SecurityReq
  * JD-Core Version:    0.7.0.1
  */

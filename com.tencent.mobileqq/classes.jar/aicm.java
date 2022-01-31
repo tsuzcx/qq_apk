@@ -1,22 +1,22 @@
-import com.tencent.mobileqq.shortvideo.mediadevice.DispatchThread;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable;
 
 public class aicm
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public aicm(DispatchThread paramDispatchThread) {}
+  public aicm(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    synchronized (this.a)
-    {
-      this.a.notifyAll();
-      return;
-    }
+    this.a.b.postDelayed(new ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable(this.a), 150L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aicm
  * JD-Core Version:    0.7.0.1
  */

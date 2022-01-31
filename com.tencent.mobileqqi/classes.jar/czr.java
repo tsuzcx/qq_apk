@@ -1,44 +1,31 @@
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout.onSizeChangedListenner;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.PortraitImageview;
 
 public class czr
-  implements InputMethodRelativeLayout.onSizeChangedListenner
+  implements Runnable
 {
-  public czr(LoginActivity paramLoginActivity) {}
+  float jdField_a_of_type_Float = 0.0F;
+  float b = 0.0F;
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public czr(PortraitImageview paramPortraitImageview, float paramFloat1, long paramLong, float paramFloat2, float paramFloat3) {}
+  
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity", 2, "onSizeChange isOpen:" + paramBoolean + " preH:" + paramInt1 + " curH:" + paramInt2);
+    long l = System.currentTimeMillis();
+    float f1 = Math.min(this.c, (float)(l - this.jdField_a_of_type_Long));
+    float f2 = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a(f1, 0.0F, this.d, this.c);
+    float f3 = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a(f1, 0.0F, this.e, this.c);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a(f2 - this.jdField_a_of_type_Float, f3 - this.b);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setImageMatrix(this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a());
+    this.jdField_a_of_type_Float = f2;
+    this.b = f3;
+    if (f1 < this.c) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.post(this);
     }
-    if (paramBoolean)
-    {
-      int[] arrayOfInt = new int[2];
-      this.a.jdField_a_of_type_AndroidWidgetButton.getLocationInWindow(arrayOfInt);
-      paramInt1 = arrayOfInt[1];
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout.getLocationInWindow(arrayOfInt);
-      int i = arrayOfInt[1];
-      paramInt2 = paramInt1 - i + this.a.jdField_a_of_type_AndroidWidgetButton.getHeight() - paramInt2;
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginActivity", 2, "onSizeChange btnY:" + paramInt1 + " layoutY:" + i + " paddingY:" + paramInt2);
-      }
-      if (paramInt2 > 0) {
-        this.a.c.setPadding(this.a.c.getPaddingLeft(), this.a.c.getPaddingTop() - paramInt2, this.a.c.getPaddingRight(), this.a.c.getPaddingBottom());
-      }
-      this.a.b.setVisibility(8);
-      return;
-    }
-    this.a.b.setVisibility(0);
-    this.a.c.setPadding(0, 0, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     czr
  * JD-Core Version:    0.7.0.1
  */

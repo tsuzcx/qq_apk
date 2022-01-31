@@ -9,13 +9,13 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class ilive_feeds_tmem$PicFeed
-  extends MessageMicro
+  extends MessageMicro<PicFeed>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField desc = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField feed_md5 = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField infos = PBField.initRepeatMessage(ilive_feeds_tmem.PicInfo.class);
-  public final PBRepeatField topic = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatMessageField<ilive_feeds_tmem.PicInfo> infos = PBField.initRepeatMessage(ilive_feeds_tmem.PicInfo.class);
+  public final PBRepeatField<ByteStringMicro> topic = PBField.initRepeat(PBBytesField.__repeatHelper__);
   
   static
   {
@@ -27,7 +27,7 @@ public final class ilive_feeds_tmem$PicFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_tmem.PicFeed
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,38 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.JoinGroupTransitActivity;
+import java.lang.ref.WeakReference;
 
 public class myt
-  implements Animation.AnimationListener
+  extends Handler
 {
-  public myt(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  private WeakReference<JoinGroupTransitActivity> a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public myt(JoinGroupTransitActivity paramJoinGroupTransitActivity)
   {
-    this.a.a.startAnimation(PublicAccountImageCollectionMainActivity.a(this.a));
+    this.a = new WeakReference(paramJoinGroupTransitActivity);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void handleMessage(Message paramMessage)
+  {
+    JoinGroupTransitActivity localJoinGroupTransitActivity = (JoinGroupTransitActivity)this.a.get();
+    if ((paramMessage == null) || (localJoinGroupTransitActivity == null) || (localJoinGroupTransitActivity.isFinishing())) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      JoinGroupTransitActivity.a(localJoinGroupTransitActivity).a(JoinGroupTransitActivity.a(localJoinGroupTransitActivity));
+      return;
+    }
+    localJoinGroupTransitActivity.finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     myt
  * JD-Core Version:    0.7.0.1
  */

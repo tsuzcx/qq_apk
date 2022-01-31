@@ -1,17 +1,10 @@
-import java.io.File;
-import java.io.FilenameFilter;
-
-public final class anxq
-  implements FilenameFilter
+public abstract interface anxq
 {
-  public boolean accept(File paramFile, String paramString)
-  {
-    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp")) || (paramString.endsWith(".apng"));
-  }
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anxq
  * JD-Core Version:    0.7.0.1
  */

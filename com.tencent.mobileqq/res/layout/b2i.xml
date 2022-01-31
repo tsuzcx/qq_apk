@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/ew4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.videostory.widget.view.CustomHorizontallyScrollRecyclerView android:orientation="vertical" android:id="@id/j3u" android:paddingLeft="22.5dip" android:paddingRight="22.5dip" android:visibility="gone" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="70.0dip" />
+    <FrameLayout android:id="@id/ew5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="22.5dip" android:layout_marginRight="22.5dip">
+        <RelativeLayout android:gravity="center" android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <ImageView android:id="@id/ew6" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginLeft="2.0dip" android:src="@drawable/skin_my_story_video_take_video_no_bg" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <ViewStub android:id="@id/l31" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginRight="4.5dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/skin_qq_setting_my_story_text_color" android:gravity="center" android:id="@id/ew7" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginLeft="42.5dip" android:text="@string/f6_" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </FrameLayout>
+</RelativeLayout>

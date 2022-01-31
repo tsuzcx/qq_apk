@@ -9,9 +9,9 @@ import java.util.Map;
 public final class cell_view_more
   extends JceStruct
 {
-  static Map cache_busi_param = new HashMap();
+  static Map<Integer, String> cache_busi_param = new HashMap();
   public int actiontype;
-  public Map busi_param;
+  public Map<Integer, String> busi_param;
   public String guide_content = "";
   public String jump_url = "";
   
@@ -22,7 +22,7 @@ public final class cell_view_more
   
   public cell_view_more() {}
   
-  public cell_view_more(String paramString1, Map paramMap, int paramInt, String paramString2)
+  public cell_view_more(String paramString1, Map<Integer, String> paramMap, int paramInt, String paramString2)
   {
     this.guide_content = paramString1;
     this.busi_param = paramMap;
@@ -54,7 +54,7 @@ public final class cell_view_more
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_view_more
  * JD-Core Version:    0.7.0.1
  */

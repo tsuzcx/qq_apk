@@ -1,21 +1,21 @@
 package com.tencent.widget;
 
-import amab;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.util.SparseBooleanArray;
 import android.view.View.BaseSavedState;
-import com.tencent.util.LongSparseArray;
+import bhsk;
+import bhty;
 
 public class AbsListView$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator CREATOR = new amab();
+  public static final Parcelable.Creator<SavedState> CREATOR = new bhty();
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long = -1L;
   SparseBooleanArray jdField_a_of_type_AndroidUtilSparseBooleanArray;
-  LongSparseArray jdField_a_of_type_ComTencentUtilLongSparseArray;
+  bhsk<Integer> jdField_a_of_type_Bhsk;
   String jdField_a_of_type_JavaLangString;
   boolean jdField_a_of_type_Boolean;
   public int b;
@@ -42,12 +42,12 @@ public class AbsListView$SavedState
       if (j <= 0) {
         break;
       }
-      this.jdField_a_of_type_ComTencentUtilLongSparseArray = new LongSparseArray();
+      this.jdField_a_of_type_Bhsk = new bhsk();
       while (i < j)
       {
         long l = paramParcel.readLong();
         int k = paramParcel.readInt();
-        this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(l, Integer.valueOf(k));
+        this.jdField_a_of_type_Bhsk.a(l, Integer.valueOf(k));
         i += 1;
       }
     }
@@ -79,18 +79,18 @@ public class AbsListView$SavedState
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeInt(this.d);
       paramParcel.writeSparseBooleanArray(this.jdField_a_of_type_AndroidUtilSparseBooleanArray);
-      if (this.jdField_a_of_type_ComTencentUtilLongSparseArray == null) {
+      if (this.jdField_a_of_type_Bhsk == null) {
         break label154;
       }
     }
     label154:
-    for (paramInt = this.jdField_a_of_type_ComTencentUtilLongSparseArray.a();; paramInt = 0)
+    for (paramInt = this.jdField_a_of_type_Bhsk.a();; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
       while (i < paramInt)
       {
-        paramParcel.writeLong(this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(i));
-        paramParcel.writeInt(((Integer)this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(i)).intValue());
+        paramParcel.writeLong(this.jdField_a_of_type_Bhsk.a(i));
+        paramParcel.writeInt(((Integer)this.jdField_a_of_type_Bhsk.a(i)).intValue());
         i += 1;
       }
       paramInt = 0;

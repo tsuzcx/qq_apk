@@ -1,23 +1,28 @@
 package com.tencent.token.ui;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.global.e;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult.VerifyTypeItem;
+import com.tencent.token.global.h;
+import java.util.List;
 
-final class qy
-  implements DialogInterface.OnClickListener
+class qy
+  implements View.OnClickListener
 {
-  qy(qx paramqx) {}
+  qy(qv paramqv, DeterminVerifyFactorsResult.VerifyTypeItem paramVerifyTypeItem) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    NetActiveSetDirBySeqActivity.access$300(this.a.a).dismiss();
-    e.b("dir bind token cofirm");
-    this.a.a.showProDialog(this.a.a, 2131361808, 2131361817, null);
-    af.a().c(NetActiveSetDirBySeqActivity.access$400(this.a.a).mRealUin, NetActiveSetDirBySeqActivity.access$500(this.a.a), NetActiveSetDirBySeqActivity.access$100(this.a.a), NetActiveSetDirBySeqActivity.access$600(this.a.a), NetActiveSetDirBySeqActivity.access$700(this.a.a));
+    NetActiveVryOtherListActivity.access$302(this.b.a, false);
+    if (NetActiveVryOtherListActivity.access$400(this.b.a).a() == this.a.a())
+    {
+      this.b.a.finish();
+      return;
+    }
+    int i = ((Integer)this.a.c().get(0)).intValue();
+    abi.a().a((Activity)qv.a(this.b), NetActiveVryOtherListActivity.access$200(this.b.a), this.a, i, true, null);
+    h.a("verify infoclick:id1=" + NetActiveVryOtherListActivity.access$400(this.b.a).a() + ",id2=" + this.a.a() + "factorid=" + i);
   }
 }
 

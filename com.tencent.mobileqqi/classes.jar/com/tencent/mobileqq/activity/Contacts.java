@@ -28,14 +28,14 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import cko;
-import ckp;
-import ckq;
-import ckr;
-import cks;
-import ckt;
-import cku;
-import ckv;
+import ceh;
+import cei;
+import cej;
+import cek;
+import cel;
+import cem;
+import cen;
+import ceo;
 import com.dataline.activities.LiteActivity;
 import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
 import com.tencent.mobileqq.activity.main.CommonLoadingView;
@@ -126,10 +126,10 @@ public class Contacts
   private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  private cks jdField_a_of_type_Cks = new cks(this, null);
-  private ckt jdField_a_of_type_Ckt = new ckt(this, null);
-  private cku jdField_a_of_type_Cku = new cku(this, null);
-  private ckv jdField_a_of_type_Ckv = new ckv(this, null);
+  private cel jdField_a_of_type_Cel = new cel(this, null);
+  private cem jdField_a_of_type_Cem = new cem(this, null);
+  private cen jdField_a_of_type_Cen = new cen(this, null);
+  private ceo jdField_a_of_type_Ceo = new ceo(this, null);
   private CommonLoadingView jdField_a_of_type_ComTencentMobileqqActivityMainCommonLoadingView;
   private AllBuddyListAdapter jdField_a_of_type_ComTencentMobileqqAdapterAllBuddyListAdapter;
   public BuddyListAdapter a;
@@ -190,7 +190,7 @@ public class Contacts
   {
     if (paramListView == this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSPinnedHeaderExpandableListView) {
       if (paramListView.q() > 0) {
-        super.a(new cko(this));
+        super.a(new ceh(this));
       }
     }
     while (paramListView.q() <= 0) {
@@ -309,7 +309,7 @@ public class Contacts
       i1 = i2;
       if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new ckp(this);
+        this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new cei(this);
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
       }
     }
@@ -424,9 +424,9 @@ public class Contacts
       return;
     }
     jdField_a_of_type_Int += 1;
-    this.jdField_a_of_type_AndroidAppDialog = new ckq(this, a(), 2131624528, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, paramInt);
+    this.jdField_a_of_type_AndroidAppDialog = new cej(this, a(), 2131624528, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, paramInt);
     this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(true);
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new ckr(this));
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new cek(this));
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
   
@@ -568,7 +568,7 @@ public class Contacts
         }
       }
       label125:
-      for (int i1 = 2130839695;; i1 = 2130839692)
+      for (int i1 = 2130839697;; i1 = 2130839694)
       {
         paramMenu.setIcon(i1);
         MenuItemCompat.setShowAsAction(paramMenu, 2);
@@ -693,25 +693,25 @@ public class Contacts
     if (this.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter != null) {
       this.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter.a();
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_Ckt);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_Cks);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_Cku);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_Cem);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_Cel);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_Cen);
     StatusManager localStatusManager = (StatusManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13);
     if (localStatusManager != null) {
-      localStatusManager.b(this.jdField_a_of_type_Ckv);
+      localStatusManager.b(this.jdField_a_of_type_Ceo);
     }
   }
   
   public void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Ckt);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Cks);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Cku);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Cem);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Cel);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Cen);
     Object localObject = (StatusManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13);
     if (localObject != null)
     {
-      ((StatusManager)localObject).b(this.jdField_a_of_type_Ckv);
-      ((StatusManager)localObject).a(this.jdField_a_of_type_Ckv);
+      ((StatusManager)localObject).b(this.jdField_a_of_type_Ceo);
+      ((StatusManager)localObject).a(this.jdField_a_of_type_Ceo);
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && ("0".equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()))) {
       return;
@@ -810,7 +810,7 @@ public class Contacts
         a(paramView.a);
       }
       return;
-    case 2131233085: 
+    case 2131233087: 
       a(0);
       return;
     case 2131231419: 
@@ -843,19 +843,19 @@ public class Contacts
       this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSPinnedHeaderExpandableListView = ((FPSPinnedHeaderExpandableListView)paramView.findViewById(2131231393));
       this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSPinnedHeaderExpandableListView.setActTAG("actFPSFriend");
       this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSPinnedHeaderExpandableListView.setSelector(2131361815);
-      this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSPinnedHeaderExpandableListView.setGroupIndicator(a().getResources().getDrawable(2130837887));
+      this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSPinnedHeaderExpandableListView.setGroupIndicator(a().getResources().getDrawable(2130837889));
       float f1 = a().getResources().getDisplayMetrics().density;
       this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSPinnedHeaderExpandableListView.setIndicatorBounds((int)(26.0F * f1), (int)(f1 * 50.0F));
       paramViewStub = this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSPinnedHeaderExpandableListView;
       paramView = LayoutInflater.from(a());
-      localView1 = paramView.inflate(2130903942, paramViewStub, false);
-      localView1.findViewById(2131233084).setVisibility(8);
-      localObject = (EditText)localView1.findViewById(2131233085);
+      localView1 = paramView.inflate(2130903944, paramViewStub, false);
+      localView1.findViewById(2131233086).setVisibility(8);
+      localObject = (EditText)localView1.findViewById(2131233087);
       ((EditText)localObject).setFocusable(false);
       ((EditText)localObject).setOnClickListener(this);
       ((EditText)localObject).setCursorVisible(false);
       localObject = new View(a());
-      ((View)localObject).setBackgroundResource(2130837891);
+      ((View)localObject).setBackgroundResource(2130837893);
       ((View)localObject).setLayoutParams(new AbsListView.LayoutParams(-1, 1));
       paramViewStub.a((View)localObject);
       localObject = paramView.inflate(2130903151, paramViewStub, false);
@@ -865,7 +865,7 @@ public class Contacts
       ((View)localObject).setOnClickListener(this);
       localView2.setOnClickListener(this);
       paramView.inflate(2130903140, paramViewStub, false).setOnClickListener(this);
-      localObject = (PullRefreshHeader)paramView.inflate(2130903323, paramViewStub, false);
+      localObject = (PullRefreshHeader)paramView.inflate(2130903325, paramViewStub, false);
       ((PullRefreshHeader)localObject).setTag(new Contacts.OverScrollViewTag());
       paramViewStub.setOverScrollHeader((View)localObject);
       paramViewStub.setOverScrollListener(this);
@@ -877,7 +877,7 @@ public class Contacts
     }
     for (;;)
     {
-      paramViewStub.setContentBackground(2130838136);
+      paramViewStub.setContentBackground(2130838138);
       paramViewStub.b(paramView.inflate(2130903134, paramViewStub, false));
       paramViewStub.setDescendantFocusability(393216);
       k();

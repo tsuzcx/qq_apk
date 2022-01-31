@@ -1,25 +1,26 @@
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.ipc.NearbyProxyObserver;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.AppointmentNotify;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import java.util.Comparator;
 
 public class aemx
-  extends NearbyProxyObserver
+  implements Comparator<aeok>
 {
-  public aemx(NearbyProxy paramNearbyProxy, SubMsgType0x27.AppointmentNotify paramAppointmentNotify) {}
+  public aemx(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  protected void a()
+  public int a(aeok paramaeok1, aeok paramaeok2)
   {
-    if (QLog.isColorLevel()) {
-      NearbyUtils.a("hasOnLinePush", new Object[] { "onNearbyProcStart" });
+    long l = paramaeok2.a - paramaeok1.a;
+    if (l > 0L) {
+      return 1;
     }
-    NearbyProxy.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy, 4101, new Object[] { this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x27SubMsgType0x27$AppointmentNotify.toByteArray() });
+    if (l < 0L) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemx
  * JD-Core Version:    0.7.0.1
  */

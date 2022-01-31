@@ -9,12 +9,12 @@ import java.util.ArrayList;
 public class PhotoGifDrawable
   extends QzoneAnimationDrawable
 {
-  private static Drawable a = ImageManagerEnv.g().getPhotoGifDefaultDrawable();
+  private static Drawable sDefaultFrame = ImageManagerEnv.g().getPhotoGifDefaultDrawable();
   
   public PhotoGifDrawable(ImageKey paramImageKey)
   {
     super(paramImageKey);
-    setDrawableForDefaultFrame(a);
+    setDrawableForDefaultFrame(sDefaultFrame);
   }
   
   public static boolean isPhotoGif(ImageKey paramImageKey)
@@ -24,7 +24,7 @@ public class PhotoGifDrawable
   
   public static void setDefaultFrame(Drawable paramDrawable)
   {
-    a = paramDrawable;
+    sDefaultFrame = paramDrawable;
   }
   
   public boolean canAnimate()
@@ -34,7 +34,7 @@ public class PhotoGifDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.photogif.PhotoGifDrawable
  * JD-Core Version:    0.7.0.1
  */

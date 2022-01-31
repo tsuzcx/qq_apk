@@ -1,54 +1,32 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.conn.LiteTcpConnection;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
 public class ahnf
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public ahnf(LiteTcpConnection paramLiteTcpConnection, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ahnf(SystemMsgListView paramSystemMsgListView) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (LiteTcpConnection.a(this.a) != null) {
-      LiteTcpConnection.a(this.a).sendEmptyMessage(3);
-    }
-  }
-  
-  public void b()
-  {
-    ahnf localahnf = LiteTcpConnection.a(this.a);
-    if (localahnf != null) {
-      localahnf.sendEmptyMessage(2);
-    }
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1) {
-      LiteTcpConnection.a(this.a, LiteTcpConnection.a(this.a));
-    }
-    do
+    if (paramInt == 1)
     {
+      paramDialogInterface = new Intent(this.a.getContext(), BindNumberActivity.class);
+      paramDialogInterface.putExtra("kSrouce", 17);
+      this.a.a(paramDialogInterface, 230);
+      azqs.b(this.a.a, "dc00898", "", "", "0X80077C9", "0X80077C9", 0, 0, "", "", "", "");
+    }
+    while (paramInt != 0) {
       return;
-      if (paramMessage.what == 2)
-      {
-        LiteTcpConnection.a(this.a);
-        return;
-      }
-    } while (paramMessage.what != 3);
-    LiteTcpConnection.a(this.a).quit();
-    LiteTcpConnection.a(this.a, null);
-    LiteTcpConnection.a(this.a, null);
+    }
+    azqs.b(this.a.a, "dc00898", "", "", "0X80077CA", "0X80077CA", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahnf
  * JD-Core Version:    0.7.0.1
  */

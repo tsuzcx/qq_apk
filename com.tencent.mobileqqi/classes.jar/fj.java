@@ -1,125 +1,54 @@
-import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import com.google.zxing.qrcode.decoder.Version;
-import com.google.zxing.qrcode.decoder.Version.ECB;
-import com.google.zxing.qrcode.decoder.Version.ECBlocks;
+import com.etrump.mixlayout.ETEngine;
+import com.etrump.mixlayout.FontManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public final class fj
+public class fj
+  implements Runnable
 {
-  private final int jdField_a_of_type_Int;
-  private final byte[] jdField_a_of_type_ArrayOfByte;
+  public fj(ETEngine paramETEngine, int paramInt, fg paramfg, boolean paramBoolean) {}
   
-  private fj(int paramInt, byte[] paramArrayOfByte)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public static fj[] a(byte[] paramArrayOfByte, Version paramVersion, ErrorCorrectionLevel paramErrorCorrectionLevel)
-  {
-    if (paramArrayOfByte.length != paramVersion.b()) {
-      throw new IllegalArgumentException();
-    }
-    paramVersion = paramVersion.a(paramErrorCorrectionLevel);
-    paramErrorCorrectionLevel = paramVersion.a();
-    int k = paramErrorCorrectionLevel.length;
-    int i = 0;
-    int j = 0;
-    while (i < k)
+    try
     {
-      j += paramErrorCorrectionLevel[i].a();
-      i += 1;
-    }
-    fj[] arrayOffj = new fj[j];
-    int m = paramErrorCorrectionLevel.length;
-    k = 0;
-    int n;
-    for (j = 0; k < m; j = i)
-    {
-      Object localObject = paramErrorCorrectionLevel[k];
-      i = j;
-      j = 0;
-      while (j < localObject.a())
+      Thread.sleep(1500L);
+      if (!this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Fg.a, this.jdField_a_of_type_Boolean))
       {
-        n = localObject.b();
-        arrayOffj[i] = new fj(n, new byte[paramVersion.a() + n]);
-        j += 1;
-        i += 1;
+        if ((new File(this.jdField_a_of_type_Fg.a).exists()) || (ETEngine.a(this.jdField_a_of_type_ComEtrumpMixlayoutETEngine) == null)) {
+          break label136;
+        }
+        ETEngine.a(this.jdField_a_of_type_ComEtrumpMixlayoutETEngine).a(this.jdField_a_of_type_Int, null);
+        if (QLog.isColorLevel()) {
+          QLog.d("ETEngine", 2, "load font fail file not exist font id=" + this.jdField_a_of_type_Int);
+        }
       }
-      k += 1;
-    }
-    k = arrayOffj[0].jdField_a_of_type_ArrayOfByte.length;
-    i = arrayOffj.length - 1;
-    int i1;
-    if ((i < 0) || (arrayOffj[i].jdField_a_of_type_ArrayOfByte.length == k))
-    {
-      i1 = i + 1;
-      n = k - paramVersion.a();
-      k = 0;
-      i = 0;
-    }
-    for (;;)
-    {
-      if (k >= n) {
-        break label273;
-      }
-      m = 0;
       for (;;)
       {
-        if (m < j)
-        {
-          arrayOffj[m].jdField_a_of_type_ArrayOfByte[k] = paramArrayOfByte[i];
-          m += 1;
-          i += 1;
-          continue;
-          i -= 1;
-          break;
+        if (ETEngine.a(this.jdField_a_of_type_ComEtrumpMixlayoutETEngine) != null) {
+          ETEngine.a(this.jdField_a_of_type_ComEtrumpMixlayoutETEngine).a(false, this.jdField_a_of_type_Boolean);
+        }
+        return;
+        label136:
+        if (QLog.isColorLevel()) {
+          QLog.d("ETEngine", 2, "load font fail font id=" + this.jdField_a_of_type_Int);
         }
       }
-      k += 1;
     }
-    label273:
-    m = i1;
-    k = i;
-    while (m < j)
+    catch (Throwable localThrowable)
     {
-      arrayOffj[m].jdField_a_of_type_ArrayOfByte[n] = paramArrayOfByte[k];
-      m += 1;
-      k += 1;
-    }
-    int i2 = arrayOffj[0].jdField_a_of_type_ArrayOfByte.length;
-    i = n;
-    while (i < i2)
-    {
-      m = 0;
-      if (m < j)
+      for (;;)
       {
-        if (m < i1) {}
-        for (n = i;; n = i + 1)
-        {
-          arrayOffj[m].jdField_a_of_type_ArrayOfByte[n] = paramArrayOfByte[k];
-          m += 1;
-          k += 1;
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.e("ETEngine", 2, "load font fail" + localThrowable.getMessage());
         }
       }
-      i += 1;
     }
-    return arrayOffj;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fj
  * JD-Core Version:    0.7.0.1
  */

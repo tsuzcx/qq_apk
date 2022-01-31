@@ -1,21 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.WordNavView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class skx
-  implements View.OnClickListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public skx(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  private skx(WordNavView paramWordNavView) {}
   
-  public void onClick(View paramView)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    this.a.a.setText("");
+    float f = paramMotionEvent.getY();
+    Iterator localIterator = WordNavView.a(this.a).entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if ((f >= ((Float)localEntry.getKey()).floatValue() - this.a.getHeight() / WordNavView.a(this.a).size() / 2) && (f <= ((Float)localEntry.getKey()).floatValue() + this.a.getHeight() / WordNavView.a(this.a).size() / 2)) {
+        if (WordNavView.a(this.a) != null) {
+          WordNavView.a(this.a).a((String)localEntry.getValue());
+        }
+      }
+    }
+    return super.onSingleTapUp(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     skx
  * JD-Core Version:    0.7.0.1
  */

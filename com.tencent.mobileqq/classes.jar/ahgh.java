@@ -1,27 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.revokemsg.RevokeMsgInfo;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
 
-public final class ahgh
-  implements Parcelable.Creator
+public class ahgh
+  implements bibb
 {
-  public RevokeMsgInfo a(Parcel paramParcel)
+  public ahgh(AddContactsView paramAddContactsView) {}
+  
+  public void a(View paramView)
   {
-    RevokeMsgInfo localRevokeMsgInfo = new RevokeMsgInfo();
-    localRevokeMsgInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localRevokeMsgInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localRevokeMsgInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localRevokeMsgInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localRevokeMsgInfo.b = paramParcel.readLong();
-    localRevokeMsgInfo.jdField_c_of_type_Long = paramParcel.readLong();
-    localRevokeMsgInfo.d = paramParcel.readString();
-    localRevokeMsgInfo.e = paramParcel.readInt();
-    return localRevokeMsgInfo;
+    AddContactsView.a(this.a, false);
   }
   
-  public RevokeMsgInfo[] a(int paramInt)
+  public void b(View paramView)
   {
-    return new RevokeMsgInfo[paramInt];
+    AddContactsView.a(this.a, true);
   }
 }
 

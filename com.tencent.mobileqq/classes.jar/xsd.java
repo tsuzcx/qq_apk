@@ -1,32 +1,39 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-
-public class xsd
-  implements Runnable
+class xsd
+  implements xrv
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
+  xsd(xsc paramxsc) {}
   
-  public xsd(NewFlowCameraActivity paramNewFlowCameraActivity, boolean paramBoolean)
+  public void a(xsa paramxsa, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramNewFlowCameraActivity.a.jdField_a_of_type_Int;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_Boolean)
+    int i = 0;
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.I();
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.J();
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.K();
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.L();
+      xsa[] arrayOfxsa = this.a.a();
+      j = arrayOfxsa.length;
+      i = 0;
+      while (i < j)
+      {
+        xsa localxsa = arrayOfxsa[i];
+        if (localxsa != paramxsa) {
+          localxsa.b(false);
+        }
+        i += 1;
+      }
+    }
+    paramxsa = this.a.a();
+    int j = paramxsa.length;
+    for (;;)
+    {
+      if ((i >= j) || (paramxsa[i].a())) {
+        return;
+      }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xsd
  * JD-Core Version:    0.7.0.1
  */

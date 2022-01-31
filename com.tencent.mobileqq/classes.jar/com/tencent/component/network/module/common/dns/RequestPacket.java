@@ -2,39 +2,34 @@ package com.tencent.component.network.module.common.dns;
 
 public class RequestPacket
 {
-  private static byte[] jdField_a_of_type_ArrayOfByte = { 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0 };
-  private static byte[] b = { 0, 0, 1, 0, 1 };
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  private static byte[] header = { 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0 };
+  private static byte[] question = { 0, 0, 1, 0, 1 };
+  private String domain;
+  private int reqId;
   
   public RequestPacket(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = AtomicRequestId.a().a();
+    this.domain = paramString;
+    this.reqId = AtomicRequestId.getInstance().getId();
   }
   
-  private void a(byte[] paramArrayOfByte)
+  private void warpReqId(byte[] paramArrayOfByte)
   {
-    paramArrayOfByte[0] = ((byte)(this.jdField_a_of_type_Int >>> 8 & 0xFF));
-    paramArrayOfByte[1] = ((byte)(this.jdField_a_of_type_Int & 0xFF));
+    paramArrayOfByte[0] = ((byte)(this.reqId >>> 8 & 0xFF));
+    paramArrayOfByte[1] = ((byte)(this.reqId & 0xFF));
   }
   
-  public int a()
+  public byte[] getQueryData()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public byte[] a()
-  {
-    if (this.jdField_a_of_type_JavaLangString == null) {}
+    if (this.domain == null) {}
     do
     {
       return null;
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.trim().toLowerCase();
-    } while (this.jdField_a_of_type_JavaLangString.length() == 0);
-    byte[] arrayOfByte1 = new byte[jdField_a_of_type_ArrayOfByte.length + b.length + this.jdField_a_of_type_JavaLangString.length() + 1];
-    String[] arrayOfString = this.jdField_a_of_type_JavaLangString.split("\\.");
-    int j = jdField_a_of_type_ArrayOfByte.length;
+      this.domain = this.domain.trim().toLowerCase();
+    } while (this.domain.length() == 0);
+    byte[] arrayOfByte1 = new byte[header.length + question.length + this.domain.length() + 1];
+    String[] arrayOfString = this.domain.split("\\.");
+    int j = header.length;
     int i = 0;
     while (i < arrayOfString.length)
     {
@@ -45,15 +40,25 @@ public class RequestPacket
       j += arrayOfByte2.length;
       i += 1;
     }
-    System.arraycopy(jdField_a_of_type_ArrayOfByte, 0, arrayOfByte1, 0, jdField_a_of_type_ArrayOfByte.length);
-    System.arraycopy(b, 0, arrayOfByte1, j, b.length);
-    a(arrayOfByte1);
+    System.arraycopy(header, 0, arrayOfByte1, 0, header.length);
+    System.arraycopy(question, 0, arrayOfByte1, j, question.length);
+    warpReqId(arrayOfByte1);
     return arrayOfByte1;
+  }
+  
+  public int getReqId()
+  {
+    return this.reqId;
+  }
+  
+  public int getType()
+  {
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.module.common.dns.RequestPacket
  * JD-Core Version:    0.7.0.1
  */

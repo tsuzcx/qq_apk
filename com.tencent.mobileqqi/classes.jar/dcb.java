@@ -2,54 +2,58 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.international.LocaleString;
-import java.util.List;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.widget.CustomWidgetUtil;
+import java.util.ArrayList;
 
 public class dcb
   extends BaseAdapter
 {
-  private dcb(MoveToGroupActivity paramMoveToGroupActivity) {}
+  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  
+  public dcb(QQLSActivity paramQQLSActivity, ArrayList paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+  }
   
   public int getCount()
   {
-    if (this.a.jdField_a_of_type_JavaUtilList != null) {
-      return this.a.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return null;
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
   }
   
   public long getItemId(int paramInt)
   {
-    return 0L;
+    return paramInt;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    System.currentTimeMillis();
     paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = this.a.getLayoutInflater().inflate(2130903283, null);
-    }
-    int i = (byte)((Groups)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).group_id;
-    paramView = (ImageView)paramViewGroup.findViewById(2131231935);
-    if (i == this.a.jdField_a_of_type_Byte) {
-      paramView.setVisibility(0);
-    }
-    for (;;)
+    if (paramView == null)
     {
-      paramView = (TextView)paramViewGroup.findViewById(2131231934);
-      LocaleString.a(((Groups)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).group_name, paramView);
-      return paramViewGroup;
-      paramView.setVisibility(8);
+      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.getLayoutInflater().inflate(2130903592, null);
+      paramView = new dcd();
+      paramView.a = ((TextView)paramViewGroup.findViewById(2131233005));
+      paramView.b = ((TextView)paramViewGroup.findViewById(2131233017));
+      paramView.c = ((TextView)paramViewGroup.findViewById(2131233006));
+      paramView.d = ((TextView)paramViewGroup.findViewById(2131233009));
+      paramViewGroup.setTag(paramView);
     }
+    paramView = (dcd)paramViewGroup.getTag();
+    RecentBaseData localRecentBaseData = (RecentBaseData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramView.a.setText(localRecentBaseData.a);
+    paramView.b.setText(localRecentBaseData.jdField_b_of_type_JavaLangCharSequence);
+    paramView.c.setText(localRecentBaseData.jdField_b_of_type_JavaLangString);
+    CustomWidgetUtil.a(paramView.d, 3, localRecentBaseData.b(), 0);
+    return paramViewGroup;
   }
 }
 

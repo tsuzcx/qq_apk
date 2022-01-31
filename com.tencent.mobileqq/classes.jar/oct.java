@@ -1,29 +1,28 @@
-import com.tencent.biz.qqstory.takevideo.EditGifImage;
-import com.tencent.biz.qqstory.takevideo.EditVideoButton;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.image.URLImageView;
-import cooperation.qzone.widget.FastAnimationDrawable;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.text.style.ReplacementSpan;
 
-public class oct
-  implements Runnable
+class oct
+  extends ReplacementSpan
 {
-  public oct(EditGifImage paramEditGifImage) {}
+  private int a;
   
-  public void run()
+  public oct(int paramInt)
   {
-    FastAnimationDrawable localFastAnimationDrawable = this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable;
-    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.stop();
-    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable = this.a.b;
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable);
-    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
-    this.a.d = false;
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a(true, false);
-    this.a.b = localFastAnimationDrawable;
+    this.a = paramInt;
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint) {}
+  
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oct
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.fragments.QCirclePersonalDynamicFragment;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import java.util.List;
 
-class txe
-  implements DialogInterface.OnClickListener
+public class txe
+  implements Observer<ubz<List<FeedCloudMeta.StFeed>>>
 {
-  txe(txc paramtxc, QQCustomDialog paramQQCustomDialog) {}
+  public txe(QCirclePersonalDynamicFragment paramQCirclePersonalDynamicFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(@Nullable ubz<List<FeedCloudMeta.StFeed>> paramubz)
   {
-    ReportController.b(this.jdField_a_of_type_Txc.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Txc.a.a, "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+    QLog.d(QCirclePersonalDynamicFragment.a(), 4, "initViewData:getFeedListRequestRsp");
+    QCirclePersonalDynamicFragment.a(this.a, paramubz);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txe
  * JD-Core Version:    0.7.0.1
  */

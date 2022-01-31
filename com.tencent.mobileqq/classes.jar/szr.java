@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.Comparator;
 
-public class szr
-  implements Runnable
+final class szr
+  implements Comparator<ArticleInfo>
 {
-  public szr(LoginActivity paramLoginActivity, String paramString) {}
-  
-  public void run()
+  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity", 2, "-->login success(finish after ls), go to AgentActivity, account:" + this.jdField_a_of_type_JavaLangString);
+    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
+      return 0;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.finish();
+    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
+      return -1;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     szr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 
-class fdd
-  implements DialogInterface.OnClickListener
+public class fdd
+  implements View.OnClickListener
 {
-  fdd(fdb paramfdb) {}
+  public fdd(IphoneTitleBarActivity paramIphoneTitleBarActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    this.a.b();
   }
 }
 

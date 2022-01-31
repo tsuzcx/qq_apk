@@ -1,35 +1,42 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.startup.step.ProcessInfoUtil;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.data.OpenID;
 import com.tencent.qphone.base.util.QLog;
 
-public final class aifm
-  implements Runnable
+class aifm
+  extends ndm
 {
-  public aifm(String paramString) {}
+  aifm(aiez paramaiez) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    SharedPreferences localSharedPreferences = ProcessInfoUtil.a();
-    int i;
-    if (localSharedPreferences != null)
-    {
-      i = ProcessInfoUtil.a(BaseApplicationImpl.getContext(), this.a);
-      if (i != -1) {
-        break label27;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("MainAssistObserver", 2, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID.toString() + " mOpenId = " + this.a.jdField_b_of_type_JavaLangString);
     }
-    label27:
-    long l;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.isFinishing()) || (this.a.c)) {}
     do
     {
+      do
+      {
+        return;
+        if (this.a.jdField_a_of_type_Bety != null) {
+          this.a.jdField_a_of_type_Bety.hide();
+        }
+        if (this.a.jdField_b_of_type_AndroidOsHandler != null) {
+          this.a.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+        }
+        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("MainAssistObserver", 2, "openIdObserver success");
+        }
+      } while ((TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) || (paramOpenID.openID.equals(this.a.jdField_b_of_type_JavaLangString)));
+      this.a.i();
       return;
-      l = System.currentTimeMillis();
-      localSharedPreferences.edit().putInt("pid" + this.a, i);
-      localSharedPreferences.edit().putLong("start_time" + this.a, l).apply();
     } while (!QLog.isColorLevel());
-    QLog.d("ProcessUtils", 2, "recordProcessStart - " + this.a + ":" + i + "|" + l);
+    QLog.d("MainAssistObserver", 2, "openIdObserver fail");
   }
 }
 

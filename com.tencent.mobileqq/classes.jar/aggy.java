@@ -1,21 +1,32 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.aio.panel.PEPanel;
+import com.tencent.widget.ListView;
+import com.tencent.widget.XPanelContainer;
 
-class aggy
-  implements Runnable
+public class aggy
+  implements Handler.Callback
 {
-  aggy(aggv paramaggv) {}
+  public aggy(PEPanel paramPEPanel) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.a();
-    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    }
+    PEPanel.a(this.a).setVisibility(0);
+    paramMessage = new TranslateAnimation(0.0F, 0.0F, XPanelContainer.a, 0.0F);
+    paramMessage.setDuration(200L);
+    PEPanel.a(this.a).startAnimation(paramMessage);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aggy
  * JD-Core Version:    0.7.0.1
  */

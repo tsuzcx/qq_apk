@@ -1,29 +1,30 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.activities.LiteActivity;
-import com.dataline.activities.LiteAdvanceActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticAssist;
-import mqq.app.MobileQQ;
+import android.app.PendingIntent;
+import android.os.IInterface;
+import com.android.internal.telephony.SmsRawData;
+import java.util.List;
 
-public class t
-  implements View.OnClickListener
+public abstract interface t
+  extends IInterface
 {
-  public t(LiteActivity paramLiteActivity) {}
+  public abstract List<SmsRawData> a();
   
-  public void onClick(View paramView)
-  {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    StatisticAssist.a(this.a.app.getApplication().getApplicationContext(), this.a.app.getCurrentAccountUin(), "dl_ckadv");
-    paramView = new Intent(this.a, LiteAdvanceActivity.class);
-    paramView.putExtra("targetUin", this.a.b);
-    this.a.startActivityForResult(paramView, 7);
-  }
+  public abstract void a(String paramString1, String paramString2, int paramInt, byte[] paramArrayOfByte, PendingIntent paramPendingIntent1, PendingIntent paramPendingIntent2);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, PendingIntent paramPendingIntent1, PendingIntent paramPendingIntent2);
+  
+  public abstract void a(String paramString1, String paramString2, List<String> paramList, List<PendingIntent> paramList1, List<PendingIntent> paramList2);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte);
+  
+  public abstract boolean a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
+  
+  public abstract boolean b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     t
  * JD-Core Version:    0.7.0.1
  */

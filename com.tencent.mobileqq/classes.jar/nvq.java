@@ -1,28 +1,20 @@
-import com.tencent.biz.qqstory.newshare.callback.OnSimpleShareListener;
-import com.tencent.biz.qqstory.storyHome.detail.view.segment.DetailInteractSegment;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class nvq
-  extends OnSimpleShareListener
+class nvq
+  implements View.OnClickListener
 {
-  public nvq(DetailInteractSegment paramDetailInteractSegment, FeedItem paramFeedItem) {}
+  nvq(nvp paramnvp) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    super.a();
-    DetailInteractSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailInteractSegment, null);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    StoryReportor.a("home_page", "suc_share", 2, paramInt, new String[] { StoryReportor.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId });
+    ((Activity)paramView.getContext()).onBackPressed();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvq
  * JD-Core Version:    0.7.0.1
  */

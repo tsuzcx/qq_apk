@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/root" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.TabBarView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dce" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0322" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0322" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040100" />
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dcf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0dce" />
-</RelativeLayout>

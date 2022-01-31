@@ -1,36 +1,57 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import android.os.SystemClock;
-import android.preference.PreferenceManager;
-import android.widget.Toast;
-import com.tencent.mobileqq.app.ScreenShot;
-import java.io.File;
+import android.os.Build.VERSION;
+import java.util.AbstractCollection;
+import java.util.ArrayDeque;
+import java.util.concurrent.ArrayBlockingQueue;
 
-class flb
-  implements Runnable
+public class flb
 {
-  flb(fla paramfla, File paramFile) {}
+  final AbstractCollection a;
   
-  public void run()
+  public flb(int paramInt)
   {
-    if (this.jdField_a_of_type_Fla.jdField_a_of_type_Boolean)
+    if (Build.VERSION.SDK_INT >= 9)
     {
-      this.jdField_a_of_type_Fla.jdField_a_of_type_Fky.k = this.jdField_a_of_type_Fla.jdField_a_of_type_Fky.f;
-      ScreenShot.a(this.jdField_a_of_type_Fla.jdField_a_of_type_Fky.a, false);
-      this.jdField_a_of_type_Fla.jdField_a_of_type_Fky.invalidate();
-      this.jdField_a_of_type_Fla.jdField_a_of_type_Fky.scheduleDrawable(null, new flc(this), SystemClock.uptimeMillis() + 1000L);
-      String str = this.jdField_a_of_type_Fla.jdField_a_of_type_Fky.a.jdField_a_of_type_AndroidContentContext.getString(2131562807).replace("${path}", ScreenShot.jdField_a_of_type_JavaLangString);
-      SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_Fla.jdField_a_of_type_Fky.a.jdField_a_of_type_AndroidContentContext).edit();
-      localEditor.putString("LastScreenShotUri", Uri.fromFile(this.jdField_a_of_type_JavaIoFile).toString());
-      localEditor.commit();
-      this.jdField_a_of_type_Fla.jdField_a_of_type_Fky.a.jdField_a_of_type_AndroidContentContext.sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.fromFile(this.jdField_a_of_type_JavaIoFile)));
-      Toast.makeText(this.jdField_a_of_type_Fla.jdField_a_of_type_Fky.a.jdField_a_of_type_AndroidContentContext, str, 1).show();
+      this.a = new ArrayDeque();
       return;
     }
-    Toast.makeText(this.jdField_a_of_type_Fla.jdField_a_of_type_Fky.a.jdField_a_of_type_AndroidContentContext, 2131562817, 1).show();
+    this.a = new ArrayBlockingQueue(30);
+  }
+  
+  public int a()
+  {
+    return this.a.size();
+  }
+  
+  public Object a()
+  {
+    if (Build.VERSION.SDK_INT >= 9)
+    {
+      if ((this.a instanceof ArrayDeque)) {
+        return ((ArrayDeque)this.a).poll();
+      }
+    }
+    else if ((this.a instanceof ArrayBlockingQueue)) {
+      return ((ArrayBlockingQueue)this.a).poll();
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (Build.VERSION.SDK_INT >= 9) {
+      if ((this.a instanceof ArrayDeque)) {
+        ((ArrayDeque)this.a).offer(paramObject);
+      }
+    }
+    while (!(this.a instanceof ArrayBlockingQueue)) {
+      return;
+    }
+    ((ArrayBlockingQueue)this.a).offer(paramObject);
   }
 }
 

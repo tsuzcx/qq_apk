@@ -1,28 +1,39 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter;
+import com.tencent.qphone.base.util.QLog;
 
-class msk
-  implements Runnable
+public class msk
+  extends mta
 {
-  msk(msi parammsi) {}
+  public int a;
+  public lip a;
+  public boolean a;
+  public boolean b;
   
-  public void run()
+  msk(mrt parammrt)
   {
-    boolean bool = true;
-    SubscriptFeedsActivity.a(this.a.a).b = true;
-    SubscriptFeedsActivity localSubscriptFeedsActivity = this.a.a;
-    if (SubscriptFeedsActivity.a(this.a.a).g == 1) {}
-    for (;;)
+    super(parammrt);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Lip = new msl(this);
+    parammrt = lio.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    if (parammrt != null)
     {
-      SubscriptFeedsActivity.a(localSubscriptFeedsActivity, false, bool, false);
+      parammrt.a(11, this.jdField_a_of_type_Lip);
       return;
-      bool = false;
+    }
+    QLog.w(this.i, 1, "ListenPeerMsg, mHandlerForVideo为空");
+  }
+  
+  void a(String paramString)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -1;
+    if (QLog.isDevelopLevel()) {
+      QLog.w(this.i, 1, "resetData[" + paramString + "]");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msk
  * JD-Core Version:    0.7.0.1
  */

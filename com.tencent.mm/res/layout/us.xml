@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/n9" style="@style/lx"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/k6" android:layout_height="@dimen/n9" style="@style/mp">
+        <TextView android:id="@android:id/title" style="@style/lg" />
+    </LinearLayout>
+</LinearLayout>

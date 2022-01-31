@@ -1,14 +1,14 @@
-import com.tencent.qqprotect.qsec.ICloudAVEngine.ResultBundle;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 
-abstract class alwz
+public abstract interface alwz
 {
-  public void a() {}
-  
-  public abstract boolean a(String paramString, ICloudAVEngine.ResultBundle paramResultBundle);
+  public static final String a = apmq.a("VIP_roam_msg_search_cfg", "http://i.gtimg.cn/qqshow/admindata/comdata/searchStrategy/xydata.json");
+  public static final String b = BaseApplication.getContext().getFilesDir() + File.separator + "searchInCloudConfig.json";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alwz
  * JD-Core Version:    0.7.0.1
  */

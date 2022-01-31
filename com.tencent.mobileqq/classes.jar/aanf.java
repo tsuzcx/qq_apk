@@ -1,32 +1,14 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.StoryVideoExtRsp;
-import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.UploadPicExtInfo;
-import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipFileUploadCallBack;
-import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import tencent.gdt.qq_ad_get.QQAdGet;
 
-class aanf
-  implements ARRelationShipFileUpload.ARRelationShipFileUploadCallBack
+public abstract class aanf
 {
-  aanf(aanc paramaanc) {}
+  public GdtHandler.Params a;
+  public qq_ad_get.QQAdGet a;
   
-  public void a(int paramInt)
+  public boolean a()
   {
-    this.a.a.a(1, paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    ARVideoPreviewActivity.a(this.a.a).post(new aang(this));
-  }
-  
-  public void a(String paramString, ARRelationShipUploadRusult.StoryVideoExtRsp paramStoryVideoExtRsp) {}
-  
-  public void a(String paramString, ARRelationShipUploadRusult.UploadPicExtInfo paramUploadPicExtInfo)
-  {
-    paramString = paramUploadPicExtInfo.bytes_download_url.get().toStringUtf8();
-    this.a.a.a(1, paramString);
+    return this.a != null;
   }
 }
 

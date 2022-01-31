@@ -1,14 +1,10 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-
-public class toc
-  extends Handler
+public abstract interface toc
 {
-  public toc(RecentLoginDevActivity paramRecentLoginDevActivity) {}
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     toc
  * JD-Core Version:    0.7.0.1
  */

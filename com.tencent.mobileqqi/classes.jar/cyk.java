@@ -1,25 +1,31 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class cyk
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public cyk(Leba paramLeba, LebaViewItem paramLebaViewItem) {}
+  public cyk(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.a().createEntityManager();
-    ResourcePluginInfo.persistOrReplace(localEntityManager, this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.a);
-    localEntityManager.a();
+    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131563461), "qqsetting_notify_myfeedpush_key", paramBoolean);
+    NotifyPushSettingActivity.d(this.a).setContentDescription("与我相关的动态");
+    paramCompoundButton = this.a.b;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_about_me", 0, i, "", "", "", "");
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cyk
  * JD-Core Version:    0.7.0.1
  */

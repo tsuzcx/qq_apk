@@ -1,24 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager;
+import android.view.View.OnTouchListener;
 
-public class ageq
-  implements ValueAnimator.AnimatorUpdateListener
+class ageq
+  implements View.OnTouchListener
 {
-  public ageq(ARTipsManager paramARTipsManager, View paramView) {}
+  ageq(agem paramagem, aetk paramaetk) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
-    this.jdField_a_of_type_AndroidViewView.setTranslationY(f * AIOUtils.a(25.0F, ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager)));
+    this.jdField_a_of_type_Aetk.onTouch(paramView, paramMotionEvent);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ageq
  * JD-Core Version:    0.7.0.1
  */

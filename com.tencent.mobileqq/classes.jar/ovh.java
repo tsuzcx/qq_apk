@@ -1,31 +1,24 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import java.lang.ref.WeakReference;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.basic.ReadInJoyDynamicChannelBaseFragment;
 
 public class ovh
-  implements Runnable
+  extends RecyclerView.OnScrollListener
 {
-  private WeakReference a;
+  public ovh(ReadInJoyDynamicChannelBaseFragment paramReadInJoyDynamicChannelBaseFragment, StaggeredGridLayoutManager paramStaggeredGridLayoutManager) {}
   
-  public ovh(TribeVideoPlugin paramTribeVideoPlugin)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.a = new WeakReference(paramTribeVideoPlugin);
-  }
-  
-  public void run()
-  {
-    TribeVideoPlugin localTribeVideoPlugin = (TribeVideoPlugin)this.a.get();
-    if (localTribeVideoPlugin == null) {
-      return;
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0) {
+      this.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager.invalidateSpanAssignments();
     }
-    TVK_SDKMgr.installPlugin(localTribeVideoPlugin.mRuntime.a().getApplication(), new ovi(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ovh
  * JD-Core Version:    0.7.0.1
  */

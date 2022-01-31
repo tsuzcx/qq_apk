@@ -1,25 +1,37 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopGiftProtocolObserver;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
-public class aetx
-  extends ProtoUtils.TroopGiftProtocolObserver
+final class aetx
+  implements bjch
 {
-  public aetx(NowShortVideoProtoManager paramNowShortVideoProtoManager, NowShortVideoProtoManager.Callback paramCallback) {}
+  aetx(int paramInt1, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, int paramInt2, String paramString, Activity paramActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(int paramInt, String... paramVarArgs)
   {
-    QLog.i("reportPlay", 1, " reportPlay code:" + paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager$Callback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager$Callback.a(paramInt, paramArrayOfByte, paramBundle);
+    if ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null))
+    {
+      QLog.i("PlusPanelUtils", 2, "error get pskey...");
+      return;
     }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("pskey_type", "27");
+    localHashMap.put("pskey", paramVarArgs[0]);
+    localHashMap.put("recv_group_type", this.jdField_a_of_type_Int + "");
+    localHashMap.put("recv_group_id", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    localHashMap.put("send_nickname", bdgc.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()));
+    localHashMap.put("send_uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+    localHashMap.put("group_count", this.b + "");
+    paramVarArgs = bjcf.a(this.jdField_a_of_type_JavaLangString, localHashMap, true);
+    ajet.a(this.jdField_a_of_type_AndroidAppActivity, paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aetx
  * JD-Core Version:    0.7.0.1
  */

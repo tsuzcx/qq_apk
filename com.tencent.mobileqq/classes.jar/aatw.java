@@ -1,44 +1,22 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.form.GdtFormView;
 
 public class aatw
-  implements INetInfoHandler
+  implements View.OnClickListener
 {
-  public aatw(ArkAppCenter paramArkAppCenter) {}
+  public aatw(GdtFormView paramGdtFormView) {}
   
-  public void onNetMobile2None()
+  public void onClick(View paramView)
   {
-    ArkAppCenter.a(this.a, 1, 0);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    ArkAppCenter.a(this.a, 1, 2);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    ArkAppCenter.a(this.a, 0, 1);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    ArkAppCenter.a(this.a, 0, 2);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    ArkAppCenter.a(this.a, 2, 1);
-  }
-  
-  public void onNetWifi2None()
-  {
-    ArkAppCenter.a(this.a, 2, 0);
+    if (GdtFormView.a(this.a)) {
+      GdtFormView.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aatw
  * JD-Core Version:    0.7.0.1
  */

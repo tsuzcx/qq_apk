@@ -1,21 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.AdapterView;
 
-public class afdz
-  implements DialogInterface.OnClickListener
+class afdz
+  implements bhuw
 {
-  public afdz(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel, QQCustomDialog paramQQCustomDialog) {}
+  afdz(afdy paramafdy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    paramAdapterView = (aihj)afdy.a(this.a).a.getItem(paramInt - 1);
+    afdy.a(this.a, paramAdapterView);
+    afdy.a(this.a).dismiss();
+    azqs.b(afdy.a(this.a).a, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afdz
  * JD-Core Version:    0.7.0.1
  */

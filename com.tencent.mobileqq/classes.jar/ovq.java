@@ -1,63 +1,164 @@
+import android.content.Context;
 import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ovq
-  implements TextWatcher
+  extends ovd<BaseArticleInfo>
 {
-  public ovq(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
+  private pmc a;
   
-  public void afterTextChanged(Editable paramEditable)
+  public int a(BaseArticleInfo paramBaseArticleInfo)
   {
-    String str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    int i;
-    if (str.equals(""))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-      i = str.length();
-      ThemeUtil.getCurrentThemeInfo().getString("themeId");
-      if (i <= 6) {
-        break label215;
-      }
-      EditUniqueTitleActivity.a(this.a, false);
-      if (!this.a.jdField_a_of_type_Boolean) {
-        this.a.rightViewText.setAlpha(0.5F);
-      }
+    if (paramBaseArticleInfo == null) {
+      return b;
     }
-    for (paramEditable = this.a.getResources().getColorStateList(2131494302);; paramEditable = this.a.getResources().getColorStateList(2131494269))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramEditable);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(str.length() + "/" + 6);
-      int j = 6 - str.length();
-      i = j;
-      if (j < 0) {
-        i = 0;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(String.format(this.a.getString(2131430413), new Object[] { Integer.valueOf(i) }));
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-      break;
-      label215:
-      EditUniqueTitleActivity.b(this.a, true);
-      if (!this.a.jdField_a_of_type_Boolean) {
-        this.a.rightViewText.setAlpha(1.0F);
-      }
+    TemplateBean localTemplateBean = a(paramBaseArticleInfo);
+    Integer localInteger = null;
+    if (localTemplateBean != null) {
+      localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localTemplateBean.getStyleName());
     }
+    if (localInteger == null)
+    {
+      QLog.d("DynamicItemViewHelperCompat", 2, "getType: templateBean : " + localTemplateBean + " data: " + paramBaseArticleInfo.proteusItemsData);
+      return b;
+    }
+    if ((localInteger.intValue() < b) || (localInteger.intValue() >= this.d))
+    {
+      aepi.a("DynamicItemViewHelperCompat", "", new IllegalArgumentException(alud.a(2131703965)));
+      return b;
+    }
+    return localInteger.intValue();
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  protected TemplateBean a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    TemplateBean localTemplateBean2 = null;
+    int i = b;
+    if (QLog.isColorLevel()) {
+      QLog.d("DynamicItemViewHelperCompat", 2, "getTemplateBean : " + paramBaseArticleInfo);
+    }
+    TemplateBean localTemplateBean1 = localTemplateBean2;
+    try
+    {
+      if (this.jdField_a_of_type_Pmc == null) {
+        return null;
+      }
+      localTemplateBean1 = localTemplateBean2;
+      JSONObject localJSONObject = this.jdField_a_of_type_Pmc.a(i, paramBaseArticleInfo);
+      localTemplateBean1 = localTemplateBean2;
+      localTemplateBean2 = this.jdField_a_of_type_Pmc.a(i, localJSONObject);
+      localTemplateBean1 = localTemplateBean2;
+      paramBaseArticleInfo.mProteusTemplateBean = localTemplateBean2;
+      paramBaseArticleInfo = localTemplateBean2;
+      if (localTemplateBean2 != null)
+      {
+        localTemplateBean1 = localTemplateBean2;
+        paramBaseArticleInfo = localTemplateBean2;
+        if (localTemplateBean2.getViewBean() != null)
+        {
+          paramBaseArticleInfo = localTemplateBean2;
+          if (localJSONObject != null)
+          {
+            localTemplateBean1 = localTemplateBean2;
+            paramBaseArticleInfo = localTemplateBean2;
+            if (localJSONObject.has("report_feeds_type"))
+            {
+              localTemplateBean1 = localTemplateBean2;
+              localTemplateBean2.getViewBean().putDynamicValue("report_feeds_type", localJSONObject.getString("report_feeds_type"));
+              return localTemplateBean2;
+            }
+          }
+        }
+      }
+    }
+    catch (JSONException paramBaseArticleInfo)
+    {
+      QLog.d("DynamicItemViewHelperCompat", 1, paramBaseArticleInfo, new Object[] { "getView" });
+      paramBaseArticleInfo = localTemplateBean1;
+    }
+    return paramBaseArticleInfo;
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(ProteusItemView paramProteusItemView, int paramInt1, BaseArticleInfo paramBaseArticleInfo, VafContext paramVafContext, int paramInt2)
+  {
+    biby.a("bindData");
+    if ((paramProteusItemView == null) || (paramProteusItemView.a() == null))
+    {
+      biby.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("DynamicItemViewHelperCompat", 2, new Object[] { "bindData, adapterViewType = ", Integer.valueOf(paramInt1), ", articleInfo = ", paramBaseArticleInfo });
+      }
+      if (paramProteusItemView != null) {
+        paramProteusItemView.setVisibility(8);
+      }
+      return;
+    }
+    if (paramInt1 == b)
+    {
+      paramProteusItemView.setVisibility(8);
+      return;
+    }
+    QLog.d("DynamicItemViewHelperCompat", 1, new Object[] { "bindData, adapterViewType = ", Integer.valueOf(paramInt1), ", articleInfo = ", paramBaseArticleInfo });
+    TemplateBean localTemplateBean1 = paramProteusItemView.a();
+    TemplateBean localTemplateBean2 = a(paramBaseArticleInfo);
+    Object localObject = localTemplateBean1;
+    if (localTemplateBean1 != null)
+    {
+      localObject = localTemplateBean1;
+      if (localTemplateBean2 != null)
+      {
+        localObject = localTemplateBean1;
+        if (!localTemplateBean2.equals(localTemplateBean1))
+        {
+          localObject = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean2);
+          if (localObject != null)
+          {
+            ((Container)localObject).setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841381));
+            paramProteusItemView.d();
+            paramProteusItemView.a((Container)localObject);
+          }
+          paramBaseArticleInfo.mProteusTemplateBean = localTemplateBean2;
+          localObject = null;
+        }
+      }
+    }
+    paramBaseArticleInfo = paramProteusItemView.a();
+    paramProteusItemView.setTemplateBean(localTemplateBean2);
+    if (localTemplateBean2 != null) {
+      opy.a(paramBaseArticleInfo, (TemplateBean)localObject, localTemplateBean2);
+    }
+    opy.a(paramBaseArticleInfo, paramVafContext, localTemplateBean2);
+    biby.a();
+  }
+  
+  public void a(VafContext paramVafContext, int paramInt)
+  {
+    super.a(paramVafContext, paramInt);
+    this.jdField_a_of_type_Pmc = new pmc(paramVafContext);
+  }
+  
+  public boolean a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (paramBaseArticleInfo == null) {}
+    while (paramBaseArticleInfo.mFeedType != 29) {
+      return false;
+    }
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ovq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,43 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
-class acok
-  implements Runnable
+public class acok
+  implements acpa
 {
-  acok(acoi paramacoi) {}
+  public acok(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void run()
+  public void a(Activity paramActivity)
   {
-    UniformDownloadActivity.b(this.a.a).setVisibility(0);
-    UniformDownloadActivity.a(this.a.a).setVisibility(4);
+    QQToast.a(this.a, 2, 2131691566, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (paramInt == 0) {
+      azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A17D", "0X800A17D", 1, 0, "", "", "", "");
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A17F", "0X800A17F", 1, 0, "", "", "", "");
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (paramInt == 0) {
+      azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A17E", "0X800A17E", 1, 0, "", "", "", "");
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A180", "0X800A180", 1, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acok
  * JD-Core Version:    0.7.0.1
  */

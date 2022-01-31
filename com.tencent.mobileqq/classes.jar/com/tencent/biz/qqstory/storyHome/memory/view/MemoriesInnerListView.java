@@ -6,19 +6,21 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.BaseAdapter;
-import com.tencent.biz.qqstory.storyHome.memory.view.adapter.MemoriesInnerListAdapter;
-import com.tencent.mobileqq.util.DisplayUtil;
+import bdaq;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
-import nxp;
+import wnd;
+import wne;
+import wnf;
+import wng;
 
 @TargetApi(9)
 public class MemoriesInnerListView
   extends HorizontalListView
 {
   protected int a;
-  public MemoriesInnerListView.OnInnerListRefreshListener a;
-  private MemoriesInnerListAdapter a;
+  public wnf a;
+  private wng a;
   protected int b;
   
   public MemoriesInnerListView(Context paramContext)
@@ -36,22 +38,22 @@ public class MemoriesInnerListView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.b = DisplayUtil.a(paramContext, 82.0F);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter = new MemoriesInnerListAdapter(getContext());
-    super.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter);
-    super.setOnItemClickListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter);
-    super.setOnScrollStateChangedListener(new nxp(this));
+    this.b = bdaq.a(paramContext, 82.0F);
+    this.jdField_a_of_type_Wng = new wng(getContext());
+    super.setAdapter(this.jdField_a_of_type_Wng);
+    super.setOnItemClickListener(this.jdField_a_of_type_Wng);
+    super.setOnScrollStateChangedListener(new wne(this));
     setOverScrollMode(1);
   }
   
   public BaseAdapter a()
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter;
+    return this.jdField_a_of_type_Wng;
   }
   
-  public void setDate(List paramList, String paramString)
+  public void setDate(List<wnd> paramList, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter.a(paramList, paramString);
+    this.jdField_a_of_type_Wng.a(paramList, paramString);
     int i = this.jdField_a_of_type_Int / this.b;
     if (paramList.size() >= i)
     {
@@ -63,7 +65,7 @@ public class MemoriesInnerListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView
  * JD-Core Version:    0.7.0.1
  */

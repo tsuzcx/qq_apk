@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qqfav.widget.QfavJumpActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoCell;
 
-public class ampv
-  implements DialogInterface.OnClickListener
+public final class ampv
+  implements Parcelable.Creator<SosoInterface.SosoCell>
 {
-  public ampv(QfavJumpActivity paramQfavJumpActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public SosoInterface.SosoCell a(Parcel paramParcel)
   {
-    this.a.finish();
+    return new SosoInterface.SosoCell(paramParcel);
+  }
+  
+  public SosoInterface.SosoCell[] a(int paramInt)
+  {
+    return new SosoInterface.SosoCell[paramInt];
   }
 }
 

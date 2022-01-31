@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 
-class adlq
-  implements Runnable
+public class adlq
+  implements View.OnClickListener
 {
-  adlq(adlo paramadlo) {}
+  public adlq(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ForwardSdkBaseOption.c(this.a.a);
+    paramView = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adlq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,33 @@
-import com.tencent.mobileqq.search.ContentRecommendModel;
-import com.tencent.mobileqq.search.model.ContentRecommendDataModel;
-import com.tencent.util.UiThreadUtil;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import java.util.Map;
 
 public class ahqo
-  implements Runnable
+  extends altm
 {
-  public ahqo(ContentRecommendModel paramContentRecommendModel, ContentRecommendDataModel paramContentRecommendDataModel) {}
+  public ahqo(TroopView paramTroopView) {}
   
-  public void run()
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelContentRecommendDataModel.a();
-    UiThreadUtil.a(new ahqp(this));
+    if (paramBoolean1) {
+      this.a.j();
+    }
+  }
+  
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  {
+    this.a.j();
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.j();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahqo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.ttpic.filter;
 
+import com.tencent.aekit.openrender.UniformParam.TextureParam;
 import com.tencent.filter.BaseFilter;
-import com.tencent.filter.Param.TextureParam;
 
 public class GuideFilterRefine3
   extends BaseFilter
@@ -16,17 +16,17 @@ public class GuideFilterRefine3
   
   private void initParams()
   {
-    addParam(new Param.TextureParam("inputImageTexture2", 0, 33986));
+    addParam(new UniformParam.TextureParam("inputImageTexture2", 0, 33986));
   }
   
   public void updateParams(int paramInt)
   {
-    addParam(new Param.TextureParam("inputImageTexture2", paramInt, 33986));
+    addParam(new UniformParam.TextureParam("inputImageTexture2", paramInt, 33986));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.filter.GuideFilterRefine3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,45 @@
-import android.annotation.TargetApi;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
-import com.tencent.mobileqq.data.ArkBabyqCardInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
 public class abts
-  implements ArkViewImplement.LoadCallback
 {
-  public abts(ArkBabyqCardInfo paramArkBabyqCardInfo, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkAioContainerWrapper paramArkAioContainerWrapper, int paramInt) {}
+  public int a;
+  long a;
+  public abtd a;
+  public Object a;
+  public String a;
+  public List<MessageRecord> a;
+  public boolean a;
+  public int b;
+  long b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d = true;
+  public int e;
+  public boolean e;
+  public int f;
+  public boolean f = true;
+  public boolean g = true;
+  public boolean h;
+  public volatile boolean i;
   
-  @TargetApi(14)
-  public void onLoadFinish(int paramInt)
+  public abts()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkBabyqCardInfo", 2, "attachArkView onLoadFinish ArkBabyqCardInfo state=" + paramInt);
-    }
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder, this.jdField_a_of_type_ComTencentMobileqqDataArkBabyqCardInfo);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper, this.jdField_a_of_type_Int);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(8);
-    }
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = 9223372036854775807L;
+    this.jdField_b_of_type_Long = 0L;
+  }
+  
+  public String toString()
+  {
+    return "[isComplete = " + this.jdField_a_of_type_Boolean + ", isJoined = " + this.jdField_b_of_type_Boolean + ", isLocalOnly = " + this.c + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abts
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.NewFlowEditVideoActivity;
-
 public class xsp
-  implements DialogInterface.OnClickListener
 {
-  public xsp(NewFlowEditVideoActivity paramNewFlowEditVideoActivity) {}
+  bety a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  xsp(bety parambety)
   {
-    paramDialogInterface.dismiss();
-    NewFlowEditVideoActivity.b(this.a, true);
-    NewFlowEditVideoActivity.b(this.a).setSelected(true);
+    this.a = parambety;
+  }
+  
+  public void a()
+  {
+    if ((this.a != null) && (this.a.isShowing())) {
+      this.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xsp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 
 public class duz
-  implements View.OnClickListener
+  implements Runnable
 {
-  public duz(TroopInfoActivity paramTroopInfoActivity) {}
+  public duz(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.h();
+    VerifyPhoneNumActivity.a(this.a);
   }
 }
 

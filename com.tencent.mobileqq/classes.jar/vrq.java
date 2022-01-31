@@ -1,45 +1,38 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import java.lang.ref.WeakReference;
 
 public class vrq
-  extends PublicAccountObserver
+  implements wiz
 {
-  public vrq(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  private WeakReference<vrp> a;
   
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public vrq(vrp paramvrp)
   {
-    if (paramInt == 0) {
-      this.a.c(this.a.a.getIntent());
-    }
+    this.a = new WeakReference(paramvrp);
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(String paramString, int paramInt)
   {
-    if (paramBoolean) {
-      this.a.c(this.a.a.getIntent());
-    }
-  }
-  
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.c(this.a.a.getIntent());
-    }
-  }
-  
-  public void v_()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "onDownPublicAccount");
+    wxe.a("Q.qqstory.detail.DetailCommentSegment", "on nick click. unionId = %s.", paramString);
+    vrp localvrp = (vrp)this.a.get();
+    if ((localvrp == null) || (paramInt == 1002) || (paramInt == 1003)) {}
+    do
+    {
+      return;
+      uqn.a(vrp.a(localvrp), 12, paramString);
+    } while ((localvrp.a == null) || (localvrp.a.a == null));
+    paramInt = wxj.a(localvrp.a.a);
+    if (localvrp.a.a.getOwner().isMe()) {}
+    for (paramString = "1";; paramString = "2")
+    {
+      wxj.a("home_page", "clk_reply_nick", paramInt, 0, new String[] { paramString, wxj.a(4444), "", localvrp.a.a.feedId });
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vrq
  * JD-Core Version:    0.7.0.1
  */

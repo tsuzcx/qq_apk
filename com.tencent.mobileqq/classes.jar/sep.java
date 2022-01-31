@@ -1,26 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.BizTroopHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.util.TroopReportor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class sep
-  implements DialogInterface.OnClickListener
+class sep
+  implements View.OnClickListener
 {
-  public sep(ChatSettingForTroop paramChatSettingForTroop, BizTroopHandler paramBizTroopHandler) {}
+  sep(seo paramseo, View.OnClickListener paramOnClickListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopHandler.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopCode, false);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app, "P_CliOper", "Grp_set", "", "Grp_data", "share_set_close", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin, "", "", "");
-    TroopReportor.a("Grp_set_new", "grpData_admin", "share_set_close", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin, TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a) });
+    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onClick: " + seo.a(this.jdField_a_of_type_Seo).mChannelCoverName);
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    }
+    bkbq.a(seo.a(this.jdField_a_of_type_Seo).mChannelCoverId, true);
+    seo.a(this.jdField_a_of_type_Seo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sep
  * JD-Core Version:    0.7.0.1
  */

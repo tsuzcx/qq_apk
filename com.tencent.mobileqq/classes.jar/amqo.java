@@ -1,39 +1,42 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import cooperation.qqpim.QQPimDefineList;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import android.util.SparseArray;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileFilter;
+import org.json.JSONObject;
 
-public class amqo
-  implements Runnable
+class amqo
+  implements FileFilter
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  amqo(amqn paramamqn, SparseArray paramSparseArray) {}
   
-  public amqo(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC, String paramString1, String paramString2)
+  public boolean accept(File paramFile)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public void run()
-  {
+    Object localObject = new File(paramFile, "config.json");
+    if ((((File)localObject).exists()) && (((File)localObject).isFile())) {
+      localObject = bdhb.a((File)localObject);
+    }
     try
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString(QQPimDefineList.l, this.jdField_a_of_type_JavaLangString);
-      localBundle.putString(QQPimDefineList.m, this.b);
-      QIPCServerHelper.getInstance().callClient(QQPimDefineList.b, QQPimDefineList.c, QQPimDefineList.d, localBundle, new amqp(this));
-      return;
+      int i = Integer.parseInt(paramFile.getName());
+      long l = new JSONObject((String)localObject).optLong("version");
+      this.jdField_a_of_type_AndroidUtilSparseArray.append(i, Long.valueOf(l));
+      QLog.i("ApolloContentUpdateHandler", 1, "getApolloRoleReqInfo roleId: " + i + ", ver: " + l / 1000L);
+      return false;
     }
-    catch (Throwable localThrowable)
+    catch (Exception localException)
     {
-      localThrowable.printStackTrace();
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ApolloContentUpdateHandler", 1, "getApolloRoleReqInfo failed role: " + paramFile.getAbsolutePath());
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amqo
  * JD-Core Version:    0.7.0.1
  */

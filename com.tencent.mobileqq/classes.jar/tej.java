@@ -1,20 +1,30 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.mobileqq.activity.Now;
+import org.json.JSONObject;
 
 public class tej
-  implements Runnable
+  extends ted
 {
-  public tej(Now paramNow) {}
+  public String a;
   
-  public void run()
+  public tej(JSONObject paramJSONObject)
   {
-    ((UserManager)SuperManager.a(2)).c();
+    super(paramJSONObject);
+  }
+  
+  public static tej a(JSONObject paramJSONObject)
+  {
+    return new tej(paramJSONObject);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null) {
+      this.a = paramJSONObject.toString();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tej
  * JD-Core Version:    0.7.0.1
  */

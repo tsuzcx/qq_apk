@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Submsgtype0xe5$MsgBody$S2CSMSEventPush
-  extends MessageMicro
+  extends MessageMicro<S2CSMSEventPush>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42 }, new String[] { "uint32_type", "str_phone_num", "uint64_timestamp", "str_sms_id", "str_event_msg" }, new Object[] { Integer.valueOf(0), "", Long.valueOf(0L), "", "" }, S2CSMSEventPush.class);
   public final PBStringField str_event_msg = PBField.initString("");

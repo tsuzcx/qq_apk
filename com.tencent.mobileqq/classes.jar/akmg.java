@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class akmg
-  implements Runnable
+public class akmg
 {
-  akmg(akmf paramakmf, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
   
-  public void run()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  protected akmg(akmf paramakmf) {}
 }
 
 

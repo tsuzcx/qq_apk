@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:clickable="true" android:layout_width="@dimen/b4y" android:layout_height="@dimen/b4x" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/agb" />
+    <RelativeLayout android:id="@id/iny" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:layout_below="@id/j0u" android:layout_centerHorizontal="true">
+        <TextView android:textSize="14.0sp" android:textColor="@color/ur" android:id="@id/inx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dw3" />
+        <ImageView android:id="@id/fuc" android:background="@null" android:paddingLeft="5.0dip" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dx_" android:layout_toRightOf="@id/inx" android:layout_alignBottom="@id/inw" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/eyu" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/iny" android:layout_centerHorizontal="true">
+        <TextView android:textSize="68.0sp" android:textColor="@color/uo" android:id="@id/d16" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0.00" android:includeFontPadding="false" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/uo" android:id="@id/d17" android:paddingLeft="2.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="44.0dip" android:text="@string/q3f" android:layout_toRightOf="@id/d16" />
+    </RelativeLayout>
+    <TextView android:textSize="24.0sp" android:textColor="@color/uo" android:id="@id/d1_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="34.5dip" android:text="@string/e8r" android:layout_below="@id/l48" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="15.0sp" android:textColor="@color/ur" android:id="@id/fgh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/dqf" android:layout_below="@id/d1_" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/ur" android:id="@id/d0z" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/q4b" android:singleLine="true" android:layout_below="@id/eyu" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="20.0sp" android:textColor="@color/uo" android:id="@id/l48" android:layout_width="wrap_content" android:layout_height="28.0dip" android:layout_marginTop="9.0dip" android:text="@string/q3b" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/d0z" android:layout_centerHorizontal="true" />
+    <include android:id="@id/cwa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="108.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" layout="@layout/aed" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/d1g" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <TextView android:textColor="@drawable/a3o" android:id="@id/d1f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e8t" />
+        <ImageView android:paddingLeft="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dww" />
+    </LinearLayout>
+</RelativeLayout>

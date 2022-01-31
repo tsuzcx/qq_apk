@@ -1,49 +1,26 @@
-import android.content.Context;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.OnPluginReadyListener;
-import cooperation.plugin.IPluginManager.PluginParams;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
 
-public final class amlx
-  extends OnPluginInstallListener.Stub
+class amlx
+  implements abso
 {
-  public amlx(IPluginManager.OnPluginReadyListener paramOnPluginReadyListener, IPluginManager.PluginParams paramPluginParams, Context paramContext) {}
+  amlx(amlp paramamlp, long paramLong, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
   
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  public ToServiceMsg a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("plugin_tag", 4, "doHandleOtherProcess onInstallError");
-    }
-    if (this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null) {
-      this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener.a(false, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
-    }
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("plugin_tag", 4, "doHandleOtherProcess onInstallFinish");
-    }
-    if (this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null)
-    {
-      paramString = IPluginManager.a().queryPlugin(this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b);
-      if (paramString != null) {
-        this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.c = paramString.mInstalledPath;
-      }
-      this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
-    }
+    ToServiceMsg localToServiceMsg = amlp.b(this.jdField_a_of_type_Amlp).createToServiceMsg("ProfileService.Pb.ReqSystemMsgRead");
+    localToServiceMsg.extraData.putLong("latestGroupSeq", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putLong("type", 1L);
+    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
+    localToServiceMsg.setEnableFastResend(true);
+    return localToServiceMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amlx
  * JD-Core Version:    0.7.0.1
  */

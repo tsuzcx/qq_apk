@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.config.operation;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhs;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQOperationTaskRecord
-  extends Entity
+  extends awge
 {
   public int aioCount;
   public String hasShowedUins = "";
   public long recordTime;
   public String showCount = "";
-  @unique
+  @awhs
   public int taskid;
   
   public void addUinShowCount(String paramString)

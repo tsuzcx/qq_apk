@@ -1,16 +1,18 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-class dre
-  implements Runnable
+public class dre
+  implements AdapterView.OnItemClickListener
 {
-  dre(drd paramdrd, String paramString, int paramInt) {}
+  public dre(TroopMemberListActivity paramTroopMemberListActivity, Dialog paramDialog) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    Drawable localDrawable = this.jdField_a_of_type_Drd.a.b.b(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Drd.a.runOnUiThread(new drf(this, localDrawable));
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a(paramAdapterView, paramView, paramInt);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

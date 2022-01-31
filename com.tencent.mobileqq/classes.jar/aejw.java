@@ -1,15 +1,43 @@
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
-import com.tencent.mobileqq.music.SongInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.Friends;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aejw
-  implements Runnable
+  extends alpq
 {
-  public aejw(QQPlayerService paramQQPlayerService, QQPlayerService.QQPlayerCallback paramQQPlayerCallback, SongInfo paramSongInfo) {}
+  public aejw(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
   
-  public void run()
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback.onPlaySongChanged(this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo);
+    if (!paramBoolean) {
+      return;
+    }
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
+    {
+      if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.uin)))
+      {
+        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+        aekc localaekc;
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localaekc = (aekc)localIterator.next();
+        } while ((localaekc.a == null) || (!(localaekc.a instanceof Friends)) || (!paramObject.uin.equals(((Friends)localaekc.a).uin)));
+      }
+      for (int i = 1; i != 0; i = 0)
+      {
+        UncommonlyUsedContactsActivity.a(this.a);
+        this.a.jdField_a_of_type_Aeka.notifyDataSetChanged();
+        return;
+      }
+      break;
+    }
   }
 }
 

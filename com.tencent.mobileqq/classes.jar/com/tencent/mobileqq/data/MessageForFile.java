@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.data;
 
+import alud;
+import awhp;
 import java.io.File;
 
 public class MessageForFile
@@ -11,6 +13,12 @@ public class MessageForFile
   public long fileSize;
   public String fileSizeString;
   public String fileType;
+  @awhp
+  public long originalMsgUid;
+  @awhp
+  public long originalTime;
+  @awhp
+  public long originalmsgShseq;
   public int status;
   public String[] tempMsg;
   public String url;
@@ -44,7 +52,7 @@ public class MessageForFile
   
   public String getSummaryMsg()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("[文件]");
+    StringBuilder localStringBuilder = new StringBuilder().append(alud.a(2131706961));
     if (this.fileName == null) {}
     for (String str = "";; str = this.fileName) {
       return str;
@@ -55,10 +63,20 @@ public class MessageForFile
   {
     return true;
   }
+  
+  public void postRead()
+  {
+    try
+    {
+      super.postRead();
+      return;
+    }
+    catch (Exception localException) {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForFile
  * JD-Core Version:    0.7.0.1
  */

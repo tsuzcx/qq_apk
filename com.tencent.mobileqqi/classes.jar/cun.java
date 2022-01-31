@@ -1,31 +1,35 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import QQService.SvcDevLoginInfo;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
+import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.SubAccountObserver;
 
-public class cun
-  implements ActionSheet.OnButtonClickListener
+class cun
+  extends SubAccountObserver
 {
-  public cun(FriendProfileImageActivity paramFriendProfileImageActivity, FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo, ActionSheet paramActionSheet) {}
+  cun(cum paramcum, SvcDevLoginInfo paramSvcDevLoginInfo) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.devlock.LoginInfoActivity", 2, "onGetKeyBack mainAccount=" + paramString1 + " subAccount=" + paramString2 + " key=" + paramString3);
     }
-    for (;;)
+    if ((paramString3 == null) || (paramString3.length() > 0))
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.d, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.e);
-      continue;
-      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.a)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.LoginInfoActivity", 2, "onGetKeyBack begin to kickOutDev");
       }
+      if (EquipmentLockImpl.a().a(this.jdField_a_of_type_Cum.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.b, this.jdField_a_of_type_QQServiceSvcDevLoginInfo.iAppId, (byte)1, HexUtil.a(paramString3), this.jdField_a_of_type_Cum.jdField_a_of_type_Int))
+      {
+        LoginInfoActivity.a(this.jdField_a_of_type_Cum.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, 1);
+        return;
+      }
+      LoginInfoActivity.a(this.jdField_a_of_type_Cum.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).post(new cuo(this));
+      return;
     }
+    LoginInfoActivity.a(this.jdField_a_of_type_Cum.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).post(new cup(this));
   }
 }
 

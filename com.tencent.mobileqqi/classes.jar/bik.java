@@ -1,75 +1,68 @@
-import android.os.IBinder;
-import com.tencent.av.service.IQQServiceCallback;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.biz.eqq.EnterpriseDetailActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 public class bik
-  implements IQQServiceCallback
+  extends BaseAdapter
 {
-  private IBinder a;
+  public bik(EnterpriseDetailActivity paramEnterpriseDetailActivity, int paramInt1, JSONArray paramJSONArray, int paramInt2) {}
   
-  public bik(IBinder paramIBinder)
+  public String a(int paramInt)
   {
-    this.a = paramIBinder;
+    try
+    {
+      String str = this.jdField_a_of_type_OrgJsonJSONArray.getString(paramInt);
+      return str;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return "";
   }
   
-  public String a()
+  public int getCount()
   {
-    return "com.tencent.av.service.IQQServiceCallback";
+    int i = 9;
+    if (this.jdField_a_of_type_Int < 9) {
+      i = this.jdField_a_of_type_Int;
+    }
+    return i;
   }
   
-  /* Error */
-  public void a(com.tencent.av.service.RecvMsg paramRecvMsg)
+  public long getItemId(int paramInt)
   {
-    // Byte code:
-    //   0: invokestatic 26	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: aload_2
-    //   5: ldc 19
-    //   7: invokevirtual 30	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_1
-    //   11: ifnull +33 -> 44
-    //   14: aload_2
-    //   15: iconst_1
-    //   16: invokevirtual 34	android/os/Parcel:writeInt	(I)V
-    //   19: aload_1
-    //   20: aload_2
-    //   21: iconst_0
-    //   22: invokevirtual 40	com/tencent/av/service/RecvMsg:writeToParcel	(Landroid/os/Parcel;I)V
-    //   25: aload_0
-    //   26: getfield 15	bik:a	Landroid/os/IBinder;
-    //   29: iconst_1
-    //   30: aload_2
-    //   31: aconst_null
-    //   32: iconst_1
-    //   33: invokeinterface 46 5 0
-    //   38: pop
-    //   39: aload_2
-    //   40: invokevirtual 49	android/os/Parcel:recycle	()V
-    //   43: return
-    //   44: aload_2
-    //   45: iconst_0
-    //   46: invokevirtual 34	android/os/Parcel:writeInt	(I)V
-    //   49: goto -24 -> 25
-    //   52: astore_1
-    //   53: aload_2
-    //   54: invokevirtual 49	android/os/Parcel:recycle	()V
-    //   57: aload_1
-    //   58: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	59	0	this	bik
-    //   0	59	1	paramRecvMsg	com.tencent.av.service.RecvMsg
-    //   3	51	2	localParcel	android.os.Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   4	10	52	finally
-    //   14	25	52	finally
-    //   25	39	52	finally
-    //   44	49	52	finally
+    return paramInt;
   }
   
-  public IBinder asBinder()
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return this.a;
+    AsyncImageView localAsyncImageView = new AsyncImageView(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity);
+    localAsyncImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    paramView = null;
+    try
+    {
+      paramViewGroup = URLDrawable.getDrawable(this.jdField_a_of_type_OrgJsonJSONArray.getString(paramInt));
+      paramView = paramViewGroup;
+    }
+    catch (JSONException paramViewGroup)
+    {
+      for (;;)
+      {
+        paramViewGroup.printStackTrace();
+      }
+    }
+    localAsyncImageView.setImageDrawable(paramView);
+    localAsyncImageView.setLayoutParams(new AbsListView.LayoutParams(this.b, this.b));
+    return localAsyncImageView;
   }
 }
 

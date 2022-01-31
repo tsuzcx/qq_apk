@@ -1,22 +1,53 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.item.MixedMsgItemBuilder;
-import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.contact.newfriend.RecommendListView;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class eex
-  implements AnimationTextView.OnDoubleClick
+  extends FriendListObserver
 {
-  public eex(MixedMsgItemBuilder paramMixedMsgItemBuilder) {}
+  public eex(RecommendListView paramRecommendListView) {}
   
-  public void a(View paramView)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    ChatActivityUtils.a(MixedMsgItemBuilder.a(this.a), paramView, (ChatActivity)MixedMsgItemBuilder.a(this.a));
+    if (!RecommendListView.a(this.a)) {}
+    while (!paramBoolean) {
+      return;
+    }
+    RecommendListView.a(this.a);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (!RecommendListView.a(this.a)) {}
+    while (!paramBoolean) {
+      return;
+    }
+    this.a.jdField_a_of_type_Efb.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!RecommendListView.a(this.a)) {}
+    while (!paramBoolean1) {
+      return;
+    }
+    RecommendListView.a(this.a);
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if (!RecommendListView.a(this.a)) {}
+    while ((!paramBoolean) || (paramString == null)) {
+      return;
+    }
+    Drawable localDrawable = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramString, (byte)3);
+    this.a.jdField_a_of_type_Efb.a(paramString, localDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     eex
  * JD-Core Version:    0.7.0.1
  */

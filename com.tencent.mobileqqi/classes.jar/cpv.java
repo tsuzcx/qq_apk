@@ -1,78 +1,111 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.EditActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.adapter.GroupEditeDragSortAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.emosm.view.DragSortListView.DropListener;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import java.util.List;
 
 public class cpv
-  implements TextWatcher
+  implements DragSortListView.DropListener
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = true;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = true;
-  String jdField_c_of_type_JavaLangString;
-  boolean jdField_c_of_type_Boolean = false;
+  public cpv(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public cpv(EditActivity paramEditActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public void a_(int paramInt1, int paramInt2)
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (paramInt1 == paramInt2) {
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (paramEditable = this.jdField_c_of_type_JavaLangString;; paramEditable = "")
+    int j = this.a.jdField_a_of_type_JavaUtilList.size();
+    this.a.jdField_a_of_type_ArrayOfByte = new byte[j];
+    this.a.jdField_b_of_type_ArrayOfByte = new byte[j];
+    int i = 0;
+    while (i < j)
     {
-      paramEditable = paramEditable + this.jdField_b_of_type_JavaLangString;
-      if (this.jdField_c_of_type_Boolean)
+      this.a.jdField_a_of_type_ArrayOfByte[i] = ((byte)((Groups)this.a.jdField_a_of_type_JavaUtilList.get(i)).group_id);
+      i += 1;
+    }
+    if (paramInt2 < paramInt1)
+    {
+      i = j - 1;
+      if (i >= 0)
       {
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.a.setText(paramEditable);
-        this.jdField_b_of_type_Boolean = true;
+        if ((paramInt2 < i) && (i <= paramInt1)) {
+          this.a.jdField_b_of_type_ArrayOfByte[i] = this.a.jdField_a_of_type_ArrayOfByte[(i - 1)];
+        }
+        for (;;)
+        {
+          i -= 1;
+          break;
+          if (i == paramInt2) {
+            this.a.jdField_b_of_type_ArrayOfByte[i] = this.a.jdField_a_of_type_ArrayOfByte[paramInt1];
+          } else {
+            this.a.jdField_b_of_type_ArrayOfByte[i] = this.a.jdField_a_of_type_ArrayOfByte[i];
+          }
+        }
       }
-      int i = this.jdField_a_of_type_JavaLangString.length();
-      int j = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.a.setSelection(i + j);
-      this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.g();
-      return;
     }
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (!this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString().substring(0, paramInt1);
-    this.jdField_b_of_type_JavaLangString = paramCharSequence.toString().substring(paramInt1 + paramInt2);
-    if (paramInt3 > 0)
+    else if (paramInt1 < paramInt2)
     {
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (!this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    this.jdField_c_of_type_JavaLangString = paramCharSequence.toString().substring(paramInt1, paramInt1 + paramInt3);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityEditActivity.s == 100) && (this.jdField_c_of_type_JavaLangString.contains("\n")))
+      i = 0;
+      if (i < j)
       {
-        this.jdField_c_of_type_Boolean = true;
-        this.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString.replace("\n", "");
+        if ((i < paramInt1) || (paramInt2 < i)) {
+          this.a.jdField_b_of_type_ArrayOfByte[i] = this.a.jdField_a_of_type_ArrayOfByte[i];
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (i == paramInt2) {
+            this.a.jdField_b_of_type_ArrayOfByte[i] = this.a.jdField_a_of_type_ArrayOfByte[paramInt1];
+          } else {
+            this.a.jdField_b_of_type_ArrayOfByte[i] = this.a.jdField_a_of_type_ArrayOfByte[(i + 1)];
+          }
+        }
       }
-      this.jdField_a_of_type_Int = this.jdField_c_of_type_JavaLangString.length();
-      return;
     }
-    this.jdField_a_of_type_Int = 0;
+    i = 0;
+    while (i < j)
+    {
+      this.a.jdField_a_of_type_ArrayOfByte[i] = ((byte)i);
+      i += 1;
+    }
+    Groups localGroups;
+    if (paramInt2 < paramInt1)
+    {
+      localGroups = (Groups)this.a.jdField_a_of_type_JavaUtilList.remove(paramInt1);
+      this.a.jdField_a_of_type_JavaUtilList.add(paramInt2, localGroups);
+      GroupManagerActivity.a(this.a).notifyDataSetChanged();
+      if (QLog.isColorLevel())
+      {
+        QLog.d(GroupManagerActivity.jdField_a_of_type_JavaLangString, 2, "DragSortListView.DropListener onDrop groupIdList = " + Arrays.toString(this.a.jdField_b_of_type_ArrayOfByte));
+        QLog.d(GroupManagerActivity.jdField_a_of_type_JavaLangString, 2, "DragSortListView.DropListener onDrop sortIdList = " + Arrays.toString(this.a.jdField_a_of_type_ArrayOfByte));
+      }
+      GroupManagerActivity.a(this.a, this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.a.jdField_b_of_type_ArrayOfByte, this.a.jdField_a_of_type_ArrayOfByte));
+      if (QLog.isColorLevel()) {
+        QLog.d(GroupManagerActivity.jdField_a_of_type_JavaLangString, 2, "SortFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
+      }
+      if (!GroupManagerActivity.a(this.a)) {
+        break label592;
+      }
+      this.a.a(2131562955);
+    }
+    for (;;)
+    {
+      ReportController.b(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "category", "Move_category", 0, 0, "", "", "", "");
+      return;
+      if (paramInt1 >= paramInt2) {
+        break;
+      }
+      localGroups = (Groups)this.a.jdField_a_of_type_JavaUtilList.remove(paramInt1);
+      this.a.jdField_a_of_type_JavaUtilList.add(paramInt2, localGroups);
+      break;
+      label592:
+      this.a.a();
+    }
   }
 }
 

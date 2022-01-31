@@ -1,18 +1,20 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
-class xza
-  implements Runnable
+public class xza
+  implements DialogInterface.OnDismissListener
 {
-  xza(xyz paramxyz, View paramView) {}
+  public xza(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_AndroidViewView.sendAccessibilityEvent(8);
+    this.a.f = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xza
  * JD-Core Version:    0.7.0.1
  */

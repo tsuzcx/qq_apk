@@ -1,30 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-
 public class xyi
-  implements View.OnClickListener
 {
-  public xyi(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  int jdField_a_of_type_Int = 0;
+  short jdField_a_of_type_Short = 0;
+  byte[] jdField_a_of_type_ArrayOfByte = null;
   
-  public void onClick(View paramView)
+  public xyi() {}
+  
+  public xyi(int paramInt, short paramShort, byte[] paramArrayOfByte)
   {
-    if (this.a.c) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      ReportController.b(this.a.app, "dc00899", "Grp_create_new", "", "suc_create", "clk_cancel", 0, 0, "", "" + this.a.h, "", "");
-      this.a.finish();
-      return;
-      ReportController.b(this.a.app, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Short = paramShort;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_ArrayOfByte.length + 4;
+  }
+  
+  public long a()
+  {
+    return ybk.a(this.jdField_a_of_type_ArrayOfByte);
+  }
+  
+  public String a()
+  {
+    return new String(this.jdField_a_of_type_ArrayOfByte);
+  }
+  
+  public String toString()
+  {
+    return String.format("{t: %s, l: %s, v: %s}", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Short.valueOf(this.jdField_a_of_type_Short), this.jdField_a_of_type_ArrayOfByte });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xyi
  * JD-Core Version:    0.7.0.1
  */

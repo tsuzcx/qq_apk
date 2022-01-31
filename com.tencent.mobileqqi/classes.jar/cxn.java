@@ -1,37 +1,24 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.LbsBaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class cxn
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public cxn(LbsBaseActivity paramLbsBaseActivity, Runnable paramRunnable) {}
+  public cxn(NotificationActivity paramNotificationActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (NetworkUtil.e(BaseApplication.getContext()))
-    {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-      this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.b.d(false);
-      if ((LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity) != null) && (LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity).isShowing())) {
-        LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity).dismiss();
-      }
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.a(1, 2131562451);
-    } while ((LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity) == null) || (!LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity).isShowing()));
-    LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity).dismiss();
+    SettingCloneUtil.writeValue(this.a.b.a(), null, "security_scan_key", "qqsetting_security_scan_key", true);
+    this.a.b.B();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     cxn
  * JD-Core Version:    0.7.0.1
  */

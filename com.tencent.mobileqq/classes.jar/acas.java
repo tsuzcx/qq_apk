@@ -1,30 +1,25 @@
-import com.tencent.mobileqq.emosm.web.EmojiIPCAlarmer;
-import com.tencent.mobileqq.emosm.web.EmojiIPCAlarmer.TimeoutObserver;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import mqq.os.MqqHandler;
 
 public class acas
-  implements Runnable
+  extends MqqHandler
 {
-  private int jdField_a_of_type_Int;
+  public acas(AccountManageActivity paramAccountManageActivity) {}
   
-  public acas(EmojiIPCAlarmer paramEmojiIPCAlarmer, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer.a != null) {}
-    try
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer.a.a(this.jdField_a_of_type_Int);
+    default: 
       return;
     }
-    catch (Throwable localThrowable) {}
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acas
  * JD-Core Version:    0.7.0.1
  */

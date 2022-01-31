@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x6b5$Player
-  extends MessageMicro
+  extends MessageMicro<Player>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_tips = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -26,7 +26,7 @@ public final class oidb_0x6b5$Player
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6b5.oidb_0x6b5.Player
  * JD-Core Version:    0.7.0.1
  */

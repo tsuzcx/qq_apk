@@ -1,22 +1,25 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class aohj
-  implements Runnable
+public class aohj
+  extends Handler
 {
-  aohj(aohe paramaohe) {}
+  public aohj(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (localRMVideoStateMgr.a != null) {
-      localRMVideoStateMgr.a.u();
+    if ((paramMessage.what == 1000) && ((this.a.j == 1) || (this.a.j == 2)))
+    {
+      this.a.a();
+      QQToast.a(this.a, 2131691082, 0).b(this.a.getTitleBarHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aohj
  * JD-Core Version:    0.7.0.1
  */

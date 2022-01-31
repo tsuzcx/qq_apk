@@ -1,15 +1,56 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
+import android.app.Activity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Gallery;
 
-public class eca
-  implements Runnable
+public final class eca
+  implements URLDrawable.URLDrawableListener
 {
-  public eca(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt) {}
+  public int a;
+  public long a;
+  public URLDrawable a;
   
-  public void run()
+  private eca(AIOGalleryScene paramAIOGalleryScene) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(2, 300, new Object[] { this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, Integer.valueOf(this.jdField_a_of_type_Int) });
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadCanceled URL():" + paramURLDrawable.getURL());
+    }
+    this.a.a(false);
+    this.a.jdField_a_of_type_Eca = null;
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadFialed URL():" + paramURLDrawable.getURL());
+    }
+    QQToast.a(AIOGalleryScene.a(this.a), AIOGalleryScene.b(this.a).getString(2131561436), 0).a();
+    this.a.c(true);
+    this.a.a(false);
+    this.a.jdField_a_of_type_Eca = null;
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadSuccessed URL():" + paramURLDrawable.getURL());
+    }
+    this.a.c(false);
+    this.a.a(false);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.b.b = paramURLDrawable.getExifOrientation();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(paramURLDrawable, AIOGalleryScene.a(this.a).p());
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.notifyDataSetChanged();
+    AIOGalleryScene.b(this.a).e();
+    this.a.jdField_a_of_type_Eca = null;
   }
 }
 

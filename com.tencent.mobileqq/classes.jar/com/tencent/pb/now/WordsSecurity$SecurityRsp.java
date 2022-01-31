@@ -10,12 +10,12 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class WordsSecurity$SecurityRsp
-  extends MessageMicro
+  extends MessageMicro<SecurityRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field credit_beat = PBField.initUInt32(0);
   public final PBUInt32Field dirty_word_beat = PBField.initUInt32(0);
-  public final PBRepeatField dirty_word_tips = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> dirty_word_tips = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBUInt32Field real_auth = PBField.initUInt32(0);
   public final PBUInt32Field required_score = PBField.initUInt32(0);
   public final PBInt32Field ret_code = PBField.initInt32(0);
@@ -32,7 +32,7 @@ public final class WordsSecurity$SecurityRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.WordsSecurity.SecurityRsp
  * JD-Core Version:    0.7.0.1
  */

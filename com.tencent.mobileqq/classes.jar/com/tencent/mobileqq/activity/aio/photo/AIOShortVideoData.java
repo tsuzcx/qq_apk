@@ -21,10 +21,13 @@ public class AIOShortVideoData
   public String d;
   public int e;
   public String e;
-  public int g;
+  public String f;
+  public String g;
   public int h;
+  private String h;
   public int i;
   public int j;
+  public int k;
   
   public AIOShortVideoData()
   {
@@ -55,6 +58,11 @@ public class AIOShortVideoData
       localObject = this.jdField_b_of_type_JavaLangString;
     }
     return null;
+  }
+  
+  public String a()
+  {
+    return this.jdField_h_of_type_JavaLangString;
   }
   
   public String a(int paramInt)
@@ -104,11 +112,18 @@ public class AIOShortVideoData
     this.jdField_e_of_type_Int = paramParcel.readInt();
     this.jdField_c_of_type_JavaLangString = paramParcel.readString();
     this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    this.g = paramParcel.readInt();
+    this.jdField_h_of_type_Int = paramParcel.readInt();
     this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    this.h = paramParcel.readInt();
     this.i = paramParcel.readInt();
+    this.k = paramParcel.readInt();
     this.j = paramParcel.readInt();
+    this.f = paramParcel.readString();
+    this.g = paramParcel.readString();
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_h_of_type_JavaLangString = paramString;
   }
   
   public boolean a(int paramInt)
@@ -148,16 +163,18 @@ public class AIOShortVideoData
     paramParcel.writeInt(this.jdField_e_of_type_Int);
     paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeInt(this.g);
+    paramParcel.writeInt(this.jdField_h_of_type_Int);
     paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-    paramParcel.writeInt(this.h);
     paramParcel.writeInt(this.i);
+    paramParcel.writeInt(this.k);
     paramParcel.writeInt(this.j);
+    paramParcel.writeString(this.f);
+    paramParcel.writeString(this.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData
  * JD-Core Version:    0.7.0.1
  */

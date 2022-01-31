@@ -10,8 +10,6 @@ public class SecurityReporterResult$ChartAreas
   public String table;
   public String title;
   public int type;
-  
-  public SecurityReporterResult$ChartAreas(SecurityReporterResult paramSecurityReporterResult) {}
 }
 
 

@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.troop.activity.TroopBarPublishBarSelectActivity;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-class gxa
-  implements Runnable
+public class gxa
+  implements TroopMemberApiClient.Callback
 {
-  gxa(gwz paramgwz) {}
+  public gxa(VideoPlayLogic paramVideoPlayLogic) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    this.a.a.a(0);
+    if (paramBundle.getBoolean("ret"))
+    {
+      VideoPlayLogic.b(this.a);
+      return;
+    }
+    if ((VideoPlayLogic.a(this.a) != null) && (VideoPlayLogic.a(this.a).isShowing() == true)) {
+      VideoPlayLogic.a(this.a).dismiss();
+    }
+    this.a.a(VideoPlayLogic.a(this.a));
   }
 }
 

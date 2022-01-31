@@ -1,26 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
+import java.util.ArrayList;
 
-public class zao
-  extends BroadcastReceiver
+public abstract interface zao
 {
-  private zao(BaseActivity2 paramBaseActivity2) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
-    {
-      BaseActivity2.T = false;
-      GesturePWDUtils.setAppForground(paramContext, BaseActivity2.T);
-    }
-  }
+  public abstract void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zao
  * JD-Core Version:    0.7.0.1
  */

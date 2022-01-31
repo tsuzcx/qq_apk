@@ -1,37 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.activity.TroopAdminList;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class aiuy
-  implements Runnable
+  extends bead
 {
-  public aiuy(TroopAdminList paramTroopAdminList) {}
+  aiuy(aiux paramaiux) {}
   
-  public void run()
+  public void onDone(beae parambeae)
   {
-    int i = 0;
-    int j = this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
-    while (i < j)
-    {
-      String str = this.a.jdField_a_of_type_ArrayOfJavaLangString[i];
-      if (!TextUtils.isEmpty(str))
-      {
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("uin", str);
-        localHashMap.put("nick", ContactUtils.l(this.a.app, str));
-        this.a.jdField_a_of_type_JavaUtilList.add(localHashMap);
-      }
-      i += 1;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = ((FriendListHandler)this.a.app.a(1));
-    this.a.addObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.c(this.a.jdField_a_of_type_ArrayOfJavaLangString);
-    this.a.runOnUiThread(new aiuz(this));
+    super.onDone(parambeae);
+    ThreadManager.getFileThreadHandler().post(new PreloadImgManager.1.1(this, parambeae));
   }
 }
 

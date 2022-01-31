@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.medalwall.MedalWallMng;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agrk
-  implements Runnable
+class agrk
+  implements DialogInterface.OnClickListener
 {
-  public agrk(ProfileHeaderView paramProfileHeaderView) {}
+  agrk(agqq paramagqq) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((MedalWallMng)this.a.a.getManager(249)).a(1, null);
+    this.a.aa = true;
+    agqq.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrk
  * JD-Core Version:    0.7.0.1
  */

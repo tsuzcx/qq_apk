@@ -1,23 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.TCWDatePicker.SavedState;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
+import java.util.concurrent.ConcurrentHashMap;
 
-public final class amdt
-  implements Parcelable.Creator
+public class amdt
+  extends RecyclablePool.Recyclable
 {
-  public TCWDatePicker.SavedState a(Parcel paramParcel)
+  public int a;
+  public long a;
+  ConcurrentHashMap<String, Long> a;
+  long b;
+  
+  public amdt()
   {
-    return new TCWDatePicker.SavedState(paramParcel, null);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(4);
   }
   
-  public TCWDatePicker.SavedState[] a(int paramInt)
+  public void recycle()
   {
-    return new TCWDatePicker.SavedState[paramInt];
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    super.recycle();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amdt
  * JD-Core Version:    0.7.0.1
  */

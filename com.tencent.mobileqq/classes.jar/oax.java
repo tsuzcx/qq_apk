@@ -1,26 +1,21 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.MessageNotifySegment;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import com.tencent.widget.SwipListView;
 
-public class oax
-  implements Runnable
+class oax
+  implements View.OnClickListener
 {
-  public oax(MessageNotifySegment paramMessageNotifySegment, ImageView paramImageView, Drawable paramDrawable) {}
+  oax(oaw paramoaw, View paramView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    UserManager localUserManager = (UserManager)SuperManager.a(2);
-    String str = localUserManager.b(Long.toString(MessageNotifySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentMessageNotifySegment)), true);
-    ThreadManager.getUIHandler().post(new oay(this, str, localUserManager));
+    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Oaw.a).a(this.jdField_a_of_type_AndroidViewView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oax
  * JD-Core Version:    0.7.0.1
  */

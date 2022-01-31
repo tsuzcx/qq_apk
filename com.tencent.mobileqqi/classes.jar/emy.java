@@ -1,39 +1,43 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.observer.QZoneObserver;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzonePluginProxyActivity;
+import android.content.Context;
+import android.media.MediaScannerConnection;
+import android.media.MediaScannerConnection.MediaScannerConnectionClient;
+import android.net.Uri;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 
 public class emy
-  extends QZoneObserver
+  implements MediaScannerConnection.MediaScannerConnectionClient
 {
-  public emy(MainAssistObserver paramMainAssistObserver) {}
+  MediaScannerConnection jdField_a_of_type_AndroidMediaMediaScannerConnection;
+  final String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  final String b;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public emy(PhotoListActivity paramPhotoListActivity, Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
   {
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainActivity", 2, "inform onGetQZoneFeedCountFin");
-      }
-      if ((this.a.a != null) && (this.a.a.b != null)) {}
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    paramPhotoListActivity = new MediaScannerConnection(paramContext, this);
+    paramPhotoListActivity.connect();
+    this.jdField_a_of_type_AndroidMediaMediaScannerConnection = paramPhotoListActivity;
+  }
+  
+  public void onMediaScannerConnected()
+  {
+    this.jdField_a_of_type_AndroidMediaMediaScannerConnection.scanFile(this.jdField_a_of_type_JavaLangString, this.b);
+  }
+  
+  public void onScanCompleted(String paramString, Uri paramUri)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.runOnUiThread(new emz(this));
     }
-    else
-    {
-      return;
-    }
-    QQAppInterface localQQAppInterface = this.a.a.b;
-    if (!GuardManager.a.a()) {
-      QzonePluginProxyActivity.a(localQQAppInterface);
-    }
-    this.a.g();
+    this.jdField_a_of_type_AndroidMediaMediaScannerConnection.disconnect();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     emy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,17 @@
-import com.tencent.open.base.ToastUtil;
-import com.tencent.open.downloadnew.MyAppApi;
-
 public class alii
-  implements Runnable
 {
-  public alii(MyAppApi paramMyAppApi) {}
+  public int a;
+  public int b;
   
-  public void run()
+  public alii(int paramInt1, int paramInt2)
   {
-    ToastUtil.a().a(this.a.a);
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alii
  * JD-Core Version:    0.7.0.1
  */

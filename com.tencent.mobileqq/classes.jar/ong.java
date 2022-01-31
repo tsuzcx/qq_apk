@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import java.util.List;
 
-public final class ong
-  implements Parcelable.Creator
+class ong
+  extends oob
 {
-  public TroopStoryItemInfo a(Parcel paramParcel)
+  ong(omz paramomz, List paramList)
   {
-    return new TroopStoryItemInfo(paramParcel);
+    super(paramomz, null);
   }
   
-  public TroopStoryItemInfo[] a(int paramInt)
+  void a(ooe paramooe)
   {
-    return new TroopStoryItemInfo[paramInt];
+    paramooe.onCommentListLoad(1, true, this.jdField_a_of_type_JavaUtilList, omz.a(this.jdField_a_of_type_Omz), 3, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ong
  * JD-Core Version:    0.7.0.1
  */

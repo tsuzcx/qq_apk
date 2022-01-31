@@ -4,18 +4,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.token.ah;
-import com.tencent.token.ax;
 import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cy;
+import com.tencent.token.do;
 import com.tencent.token.ui.base.SwitchButton;
-import com.tencent.token.utils.t;
+import com.tencent.token.utils.x;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FacePwdIndexActivity
   extends BaseActivity
 {
-  private ep mAdapter;
+  private fg mAdapter;
   private View mDivider;
   private TextView mFacePwdVerifyTipTextView;
   private boolean mIsChecked = false;
@@ -25,13 +25,13 @@ public class FacePwdIndexActivity
   
   private void initView()
   {
-    this.mFacePwdVerifyTipTextView = ((TextView)findViewById(2131296549));
-    this.mDivider = findViewById(2131296550);
-    this.mSwitchVerifySet = ((SwitchButton)findViewById(2131296548));
-    ax.a().a(this.mRegisterFacePwdUserList);
+    this.mFacePwdVerifyTipTextView = ((TextView)findViewById(2131558835));
+    this.mDivider = findViewById(2131558836);
+    this.mSwitchVerifySet = ((SwitchButton)findViewById(2131558834));
+    do.a().a(this.mRegisterFacePwdUserList);
     if (this.mRegisterFacePwdUserList.size() > 0)
     {
-      QQUser localQQUser = t.f();
+      QQUser localQQUser = x.f();
       if ((localQQUser != null) && (localQQUser.mIsRegisterFacePwd))
       {
         this.mSwitchVerifySet.a(false, false);
@@ -40,9 +40,9 @@ public class FacePwdIndexActivity
     }
     for (;;)
     {
-      this.mSwitchVerifySet.setOnCheckedChangeListener(new en(this));
-      this.mListView = ((ListView)findViewById(2131296562));
-      this.mAdapter = new ep(this, this.mRegisterFacePwdUserList);
+      this.mSwitchVerifySet.setOnCheckedChangeListener(new fe(this));
+      this.mListView = ((ListView)findViewById(2131558849));
+      this.mAdapter = new fg(this, this.mRegisterFacePwdUserList);
       this.mListView.setAdapter(this.mAdapter);
       if (!this.mIsChecked) {
         break;
@@ -64,15 +64,15 @@ public class FacePwdIndexActivity
   
   private void showGesturePwdDialog()
   {
-    if (!ah.a().c()) {
-      showUserDialog(2131362130, getString(2131362131), 2131362132, 2131362133, new eo(this), null);
+    if (!cy.a().c()) {
+      showUserDialog(2131230994, getString(2131230991), 2131230993, 2131230992, new ff(this), null);
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903083);
+    setContentView(2130968649);
     initView();
   }
   

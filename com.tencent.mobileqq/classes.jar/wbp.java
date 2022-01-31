@@ -1,64 +1,59 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.common.util.Util;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
-public final class wbp
-  implements DialogInterface.OnClickListener
+public class wbp
+  extends vtg
 {
-  public wbp(AbsShareMsg paramAbsShareMsg, FragmentActivity paramFragmentActivity, Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  public wbp(wax paramwax) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    switch (paramInt)
+    Object localObject = this.a.a();
+    if ((localObject == null) || (!this.a.jdField_a_of_type_Vpm.equals(localObject))) {}
+    do
     {
-    default: 
       return;
-    case 0: 
-      if (QLog.isColorLevel()) {
-        QLog.i("ChatActivity", 2, "qbShowWpaResultDialog back");
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
+      if (paramInt1 == this.a.hashCode())
       {
-        paramDialogInterface = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("appid");
-        if (paramDialogInterface != null) {
-          ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, true, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("callback_type"), Long.parseLong(paramDialogInterface));
+        wxe.b(this.a.b, "onActivityResult, onChooseFriendResult");
+        localObject = ((StoryPlayerGroupHolder)this.a.a()).a();
+        if (localObject != null) {
+          ((VideoViewVideoHolder)localObject).c(false);
+        }
+        if (paramInt2 == -1) {
+          vmg.a().a(paramIntent.getExtras());
         }
       }
-      Util.a(this.jdField_a_of_type_AndroidContentContext, 0, "", "");
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X8004B56", "0X8004B56", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
-      return;
+      if ((paramInt1 == 10002) && (paramInt2 == -1))
+      {
+        uom.b(this.a.b + " onActivityResult");
+        QQToast.a(this.a.b(), this.a.b().getString(2131720059), 1).a();
+      }
+      if ((paramInt1 == 467) && (paramInt2 == -1) && (wax.a(this.a) != null)) {
+        wax.a(this.a).a();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.b, 2, new Object[] { "MoreVideoInfoWidget.MyActivityLifeCycle onActivityResult. hashCode=", Integer.valueOf(hashCode()) });
+      }
+    } while (this.a.jdField_a_of_type_Vic == null);
+    this.a.jdField_a_of_type_Vic.a(paramInt1, paramInt2, paramIntent);
+  }
+  
+  public void g()
+  {
+    super.g();
+    if (wax.a(this.a) != null) {
+      wax.a(this.a).a();
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X8004B55", "0X8004B55", 0, 0, "", "", "", "");
-    if (!(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity instanceof SplashActivity))
-    {
-      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, SplashActivity.class);
-      paramDialogInterface.putExtra("tab_index", MainFragment.a);
-      paramDialogInterface.addFlags(67108864);
-      paramDialogInterface.addFlags(268435456);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
-      return;
-    }
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getChatFragment().a().I();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wbp
  * JD-Core Version:    0.7.0.1
  */

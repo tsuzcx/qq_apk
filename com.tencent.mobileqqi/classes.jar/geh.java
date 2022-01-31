@@ -1,55 +1,99 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.jsp.QQApiPlugin;
-import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
-import java.io.IOException;
-import java.util.Map;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.profile.ProfileCardBrowserActivity;
+import com.tencent.mobileqq.profile.ProfileCardBrowserActivity.ImageGalleryAdapter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class geh
-  implements Runnable
+  extends Handler
 {
-  public geh(QQApiPlugin paramQQApiPlugin, String paramString, Map paramMap, Runnable paramRunnable) {}
+  public geh(ProfileCardBrowserActivity paramProfileCardBrowserActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    label138:
-    try
+    switch (paramMessage.what)
     {
-      localObject = HttpUtil.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, "GET", null, null);
-      localObject = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
-      if (localObject == null) {
-        break label110;
-      }
-      int i = ((Bitmap)localObject).getWidth();
-      int j = ((Bitmap)localObject).getHeight();
-      if (i * j <= 8000) {
-        break label138;
-      }
-      double d = Math.sqrt(8000.0D / (i * j));
-      Bitmap localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(i * d), (int)(j * d), true);
-      ((Bitmap)localObject).recycle();
-      localObject = localBitmap;
+    case 10: 
+    case 11: 
+    case 12: 
+    case 13: 
+    case 14: 
+    case 15: 
+    default: 
+    case 1: 
+    case 18: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 5: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            paramMessage = new LinearLayout.LayoutParams(this.a.jdField_a_of_type_JavaUtilList.size() * (this.a.A + this.a.D), this.a.B);
+            this.a.jdField_a_of_type_AndroidWidgetGridView.setLayoutParams(paramMessage);
+            this.a.jdField_a_of_type_AndroidWidgetGridView.setColumnWidth(this.a.A);
+            this.a.jdField_a_of_type_AndroidWidgetGridView.setStretchMode(0);
+            this.a.jdField_a_of_type_AndroidWidgetGridView.setNumColumns(this.a.jdField_a_of_type_JavaUtilList.size());
+            this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardBrowserActivity$ImageGalleryAdapter = new ProfileCardBrowserActivity.ImageGalleryAdapter(this.a, this.a.jdField_a_of_type_AndroidContentContext);
+            this.a.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardBrowserActivity$ImageGalleryAdapter);
+            if (QLog.isColorLevel()) {
+              QLog.d("ProfileCard.ProfileCardBrowserActivity", 2, "handleMessage mIsRedPoint : " + this.a.d + ", mLoaded : " + this.a.c);
+            }
+          } while ((!this.a.d) || (this.a.c));
+          ThreadManager.a(ProfileCardBrowserActivity.a(this.a));
+          return;
+        } while (this.a.jdField_a_of_type_AndroidViewView == null);
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        this.a.jdField_a_of_type_AndroidViewView = null;
+        return;
+        this.a.b(paramMessage.arg1, 2);
+        return;
+        this.a.b(paramMessage.arg1, 3);
+        return;
+        this.a.b(paramMessage.arg1, 4);
+        return;
+        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        this.a.b(paramMessage.arg1, 5);
+      } while (this.a.y != 0);
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      return;
+    case 6: 
+      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      this.a.b(paramMessage.arg1, 6);
+      return;
+    case 8: 
+      this.a.a(paramMessage.arg1, paramMessage.arg2);
+      return;
+    case 7: 
+      Toast.makeText(this.a.jdField_a_of_type_AndroidContentContext, 2131563268, 0).show();
+      return;
+    case 9: 
+      this.a.f();
+      return;
+    case 16: 
+      this.a.b(this.a.x, 16);
+      return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      Object localObject;
-      break label110;
-    }
-    catch (IOException localIOException)
-    {
-      label110:
-      for (;;) {}
-    }
-    this.jdField_a_of_type_JavaUtilMap.put("image", localObject);
-    this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.mRuntime.a().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
+    this.a.b(paramMessage.arg1, 17);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     geh
  * JD-Core Version:    0.7.0.1
  */

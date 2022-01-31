@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
+import awge;
+import awhp;
 
 public class MayKnowExposure
-  extends Entity
+  extends awge
 {
   public static final int EXPOSE_ACTION_CLICK_ADD = 3;
   public static final int EXPOSE_ACTION_CLICK_PROFILE = 2;
@@ -12,34 +12,44 @@ public class MayKnowExposure
   public static final int EXPOSE_ENTRANCE_BABYQ = 7;
   public static final int EXPOSE_ENTRANCE_CONTACTS_ADDFRIEND = 3;
   public static final int EXPOSE_ENTRANCE_CONTACTS_NEWFRIEND = 2;
+  public static final int EXPOSE_ENTRANCE_CONTACT_BANNER = 8;
   public static final int EXPOSE_ENTRANCE_CONVERSATION_ADDFRIEND = 4;
   public static final int EXPOSE_ENTRANCE_CONVERSATION_NEWFRIEND = 1;
   public static final int EXPOSE_ENTRANCE_DEFAULT = 0;
   public static final int EXPOSE_ENTRANCE_NEWFRIEND_ADDFRIEND = 6;
+  public static final int EXPOSE_ENTRANCE_PUSH_NOTICE = 9;
   public static final int EXPOSE_ENTRANCE_QZONE = 5;
-  public static final int EXPOSURE_PAGE_ADDFRIEND = 1;
+  public static final int EXPOSE_ENTRANCE_SELECT_FINDNEWFRIEND = 10;
+  public static final int EXPOSURE_PAGE_ADDFRIEND = 21;
+  public static final int EXPOSURE_PAGE_CONTACT_BANNER = 24;
+  public static final int EXPOSURE_PAGE_CONTACT_RECOMMEND_TAB = 20;
+  public static final int EXPOSURE_PAGE_CONVERSION_RECOMMEND = 25;
+  public static final int EXPOSURE_PAGE_DEFAULT = 0;
+  public static final int EXPOSURE_PAGE_FINDNEWFRIEND = 28;
   public static final int EXPOSURE_PAGE_MAYKNOWALL = 3;
-  public static final int EXPOSURE_PAGE_NEWFRIEND = 2;
+  public static final int EXPOSURE_PAGE_NEWFRIEND = 23;
   public static final int EXPOSURE_PAGE_QZONE = 4;
   public byte[] acBuffer;
   public int actionId;
+  public byte[] additive;
   public int entranceId;
   public int exposeCnt;
   public int exposeTime;
   public int pageId;
-  @notColumn
+  @awhp
   public long startExploseTime;
   public String uin;
   
   public MayKnowExposure() {}
   
-  public MayKnowExposure(String paramString, int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
+  public MayKnowExposure(String paramString, int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     this.uin = paramString;
     this.pageId = paramInt1;
     this.entranceId = paramInt2;
     this.actionId = paramInt3;
-    this.acBuffer = paramArrayOfByte;
+    this.acBuffer = paramArrayOfByte1;
+    this.additive = paramArrayOfByte2;
   }
   
   public static String generateKey(MayKnowExposure paramMayKnowExposure)
@@ -90,7 +100,7 @@ public class MayKnowExposure
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MayKnowExposure
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class stLabelInfo
   extends JceStruct
 {
-  static ArrayList cache_labels = new ArrayList();
-  public ArrayList labels;
+  static ArrayList<String> cache_labels = new ArrayList();
+  public ArrayList<String> labels;
   
   static
   {
@@ -18,7 +18,7 @@ public final class stLabelInfo
   
   public stLabelInfo() {}
   
-  public stLabelInfo(ArrayList paramArrayList)
+  public stLabelInfo(ArrayList<String> paramArrayList)
   {
     this.labels = paramArrayList;
   }

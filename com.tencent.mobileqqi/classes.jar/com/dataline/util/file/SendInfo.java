@@ -3,13 +3,13 @@ package com.dataline.util.file;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import eu;
+import fc;
 import java.io.File;
 
 public class SendInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new eu();
+  public static final Parcelable.Creator CREATOR = new fc();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;

@@ -1,20 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
 
 public class aezr
-  implements DialogInterface.OnDismissListener
+  implements afao
 {
-  public aezr(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public aezr(DoodleLayout paramDoodleLayout) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    this.a.a = false;
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a(this.a.a(true, false));
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aezr
  * JD-Core Version:    0.7.0.1
  */

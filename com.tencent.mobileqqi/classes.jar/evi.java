@@ -1,18 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class evi
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public evi(SelectMemberActivity paramSelectMemberActivity) {}
+  public evi(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.showSoftInput(this.a.jdField_a_of_type_AndroidWidgetEditText, 0);
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent(this.a, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("uin", this.a.b.a());
+    this.a.startActivity(paramDialogInterface.putExtra("url", "http://mp.imqq.com/user/charge"));
+    this.a.finish();
   }
 }
 

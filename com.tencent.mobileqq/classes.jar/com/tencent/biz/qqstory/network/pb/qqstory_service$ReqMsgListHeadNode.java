@@ -10,12 +10,12 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_service$ReqMsgListHeadNode
-  extends MessageMicro
+  extends MessageMicro<ReqMsgListHeadNode>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField current_seq = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field source = PBField.initUInt32(0);
-  public final PBRepeatField uin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> uin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   
   static
   {
@@ -25,7 +25,7 @@ public final class qqstory_service$ReqMsgListHeadNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgListHeadNode
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,21 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView.1;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-class sgv
-  implements Runnable
+public class sgv
+  implements OnCompositionLoadedListener
 {
-  sgv(sgt paramsgt, String paramString) {}
+  public sgv(RefreshAnimView.1 param1) {}
   
-  public void run()
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    if (this.jdField_a_of_type_Sgt.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) {
-      this.jdField_a_of_type_Sgt.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_JavaLangString, false);
-    }
-    if (this.jdField_a_of_type_Sgt.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager != null)
-    {
-      this.jdField_a_of_type_Sgt.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.a(this.jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "Conversation onUpdateCustomHead uin = " + this.jdField_a_of_type_JavaLangString);
-      }
-    }
+    RefreshAnimView.a(this.a.this$0, paramLottieComposition);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sgv
  * JD-Core Version:    0.7.0.1
  */

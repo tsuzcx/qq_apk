@@ -1,37 +1,48 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper.OnGetLocalLogListener;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aink
-  extends Handler
+class aink
+  implements DialogInterface.OnClickListener
 {
-  public aink(ShareAppLogHelper paramShareAppLogHelper, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  aink(aini paramaini) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
+    if (this.a.a.jdField_a_of_type_Int == 2) {
+      this.a.a.a("0X8005B8A", 1);
     }
-    do
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          return;
-        } while (ShareAppLogHelper.a(this.a) == null);
-        ShareAppLogHelper.a(this.a).a((String)paramMessage.obj);
-        return;
-      } while (ShareAppLogHelper.a(this.a) == null);
-      ShareAppLogHelper.a(this.a).a(((Integer)paramMessage.obj).intValue());
+      paramDialogInterface.dismiss();
+      if (bdin.d(this.a.a)) {
+        break;
+      }
+      this.a.a.b(2131694831);
       return;
-    } while (ShareAppLogHelper.a(this.a) == null);
-    ShareAppLogHelper.a(this.a).b(((Integer)paramMessage.obj).intValue());
+      if (this.a.a.jdField_a_of_type_Int == 6) {
+        this.a.a.a("0X8005B8A", 2);
+      } else if (this.a.a.jdField_a_of_type_Int == 7) {
+        this.a.a.a("0X8005B8A", 3);
+      }
+    }
+    paramDialogInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a();
+    if ((paramDialogInterface == null) || (paramDialogInterface.nationCode == null) || (paramDialogInterface.mobileNo == null))
+    {
+      this.a.a.setResult(0);
+      this.a.a.finish();
+      return;
+    }
+    if (this.a.a.b == null)
+    {
+      this.a.a.b = new ainl(this);
+      this.a.a.app.registObserver(this.a.a.b);
+    }
+    this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b(paramDialogInterface.nationCode, paramDialogInterface.mobileNo);
+    this.a.a.a(2131719785, 300L, true);
   }
 }
 

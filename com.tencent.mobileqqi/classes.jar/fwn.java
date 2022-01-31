@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
 
 public class fwn
-  implements DialogInterface.OnCancelListener
+  implements Runnable
 {
-  public fwn(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public fwn(UniformDownloadMgr paramUniformDownloadMgr) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.a.a(null);
-    LocalFileBrowserActivity.a(this.a);
+    UniformDownloadMgr.b(this.a, null);
+    UniformDownloadMgr.b(this.a);
   }
 }
 

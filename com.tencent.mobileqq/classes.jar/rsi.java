@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.stickerbubble.PEPanelHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
 
 public class rsi
-  implements Runnable
+  implements oot
 {
-  public rsi(BaseChatPie paramBaseChatPie) {}
+  public rsi(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView, oot paramoot) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "checkPESourceDowned onShow First");
+    ReadInJoyFastWebBottomSocialView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialView).setVisibility(8);
+    if (this.jdField_a_of_type_Oot != null) {
+      this.jdField_a_of_type_Oot.a(paramInt);
     }
-    PEPanelHelper.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rsi
  * JD-Core Version:    0.7.0.1
  */

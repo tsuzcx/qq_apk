@@ -1,24 +1,28 @@
-import android.view.animation.Interpolator;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import com.tencent.widget.RoundRectImageView;
 
-public class aglr
-  implements Interpolator
+class aglr
+  implements Animation.AnimationListener
 {
-  public float getInterpolation(float paramFloat)
+  aglr(aglq paramaglq) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramFloat < 0.2094D) {
-      return (float)(-34.0D * (paramFloat - 0.18D) * (paramFloat - 0.18D) + 1.08D);
-    }
-    if (paramFloat < 0.404D) {
-      return (float)(5.9D * (paramFloat - 0.34D) * (paramFloat - 0.34D) + 0.95D);
-    }
-    if (paramFloat < 0.6045D) {
-      return (float)(-3.0D * (paramFloat - 0.53D) * (paramFloat - 0.53D) + 1.02D);
-    }
-    if (paramFloat < 0.8064D) {
-      return (float)((paramFloat - 0.72D) * (paramFloat - 0.72D) + 0.99D);
-    }
-    return (float)(-0.3D * (paramFloat - 0.915D) * (paramFloat - 0.915D) + 1.001D);
+    paramAnimation = new AnimationSet(false);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getWidth() / 2, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getHeight() / 2);
+    paramAnimation.addAnimation(this.a.b);
+    paramAnimation.addAnimation(localScaleAnimation);
+    paramAnimation.setDuration(200L);
+    this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.startAnimation(paramAnimation);
+    paramAnimation.setAnimationListener(this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

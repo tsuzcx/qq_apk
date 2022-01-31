@@ -1,94 +1,37 @@
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.DynamicGridView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class ambc
-  implements AbsListView.OnScrollListener
+  extends alpd
 {
-  private int jdField_a_of_type_Int = -1;
-  private int b = -1;
-  private int c;
-  private int d;
-  private int e;
-  
-  public ambc(DynamicGridView paramDynamicGridView) {}
-  
-  private void c()
+  public ambc(QQAppInterface paramQQAppInterface)
   {
-    if ((this.d > 0) && (this.e == 0))
+    super(paramQQAppInterface);
+  }
+  
+  protected Class<? extends alpg> observerClass()
+  {
+    return ambd.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("QzoneService.GetNewAndUnread".equals(paramToServiceMsg.getServiceCmd()))
     {
-      if ((!DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) || (!DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView))) {
-        break label42;
+      if (paramObject == null) {
+        notifyUI(1, false, null);
       }
-      DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
     }
-    label42:
-    while (!DynamicGridView.c(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) {
+    else {
       return;
     }
-    DynamicGridView.c(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
-  }
-  
-  public void a()
-  {
-    if ((this.c != this.jdField_a_of_type_Int) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != -1L))
-    {
-      DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView));
-      DynamicGridView.d(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
-    }
-  }
-  
-  public void b()
-  {
-    if ((this.c + this.d != this.jdField_a_of_type_Int + this.b) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != -1L))
-    {
-      DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView));
-      DynamicGridView.d(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
-    }
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    if (this.jdField_a_of_type_Int == -1)
-    {
-      i = this.c;
-      this.jdField_a_of_type_Int = i;
-      if (this.b != -1) {
-        break label111;
-      }
-    }
-    label111:
-    for (int i = this.d;; i = this.b)
-    {
-      this.b = i;
-      a();
-      b();
-      this.jdField_a_of_type_Int = this.c;
-      this.b = this.d;
-      if (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != null) {
-        DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-      }
-      return;
-      i = this.jdField_a_of_type_Int;
-      break;
-    }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    this.e = paramInt;
-    DynamicGridView.c(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, paramInt);
-    c();
-    if (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != null) {
-      DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView).onScrollStateChanged(paramAbsListView, paramInt);
-    }
+    notifyUI(1, true, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ambc
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import tencent.im.oidb.olympic.MqqLbs.LBSInfo;
 
 public final class MqqLbsPack$ReqGetLBSRPList
-  extends MessageMicro
+  extends MessageMicro<ReqGetLBSRPList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -38,7 +38,7 @@ public final class MqqLbsPack$ReqGetLBSRPList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.lbspack.MqqLbsPack.ReqGetLBSRPList
  * JD-Core Version:    0.7.0.1
  */

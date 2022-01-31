@@ -1,16 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
 
-class enm
-  implements DialogInterface.OnCancelListener
+public class enm
+  implements ActionSheet.OnButtonClickListener
 {
-  enm(enk paramenk) {}
+  public enm(PhotoPreviewActivity paramPhotoPreviewActivity, ArrayList paramArrayList, ActionSheet paramActionSheet) {}
   
-  public void onCancel(DialogInterface paramDialogInterface) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    PhotoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoPreviewActivity, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentWidgetActionSheet, paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     enm
  * JD-Core Version:    0.7.0.1
  */

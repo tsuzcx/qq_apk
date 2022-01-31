@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.profile.view;
 
-import agqu;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -11,6 +10,7 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import awux;
 
 public class CircularProgressBar
   extends View
@@ -18,7 +18,7 @@ public class CircularProgressBar
   private int jdField_a_of_type_Int = 60;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Handler jdField_a_of_type_AndroidOsHandler = new agqu(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new awux(this);
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 5;
   private Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
@@ -122,7 +122,7 @@ public class CircularProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.CircularProgressBar
  * JD-Core Version:    0.7.0.1
  */

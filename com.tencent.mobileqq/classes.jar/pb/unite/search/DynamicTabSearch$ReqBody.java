@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class DynamicTabSearch$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public DynamicSearch.ExtensionRequestInfo extension_request_info = new DynamicSearch.ExtensionRequestInfo();
@@ -26,7 +26,7 @@ public final class DynamicTabSearch$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pb.unite.search.DynamicTabSearch.ReqBody
  * JD-Core Version:    0.7.0.1
  */

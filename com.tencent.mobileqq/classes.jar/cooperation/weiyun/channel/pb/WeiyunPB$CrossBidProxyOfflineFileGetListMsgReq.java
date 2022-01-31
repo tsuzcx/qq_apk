@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class WeiyunPB$CrossBidProxyOfflineFileGetListMsgReq
-  extends MessageMicro
+  extends MessageMicro<CrossBidProxyOfflineFileGetListMsgReq>
 {
   public static final int UINT32_FTN_BID_FIELD_NUMBER = 10;
   public static final int UINT32_NUMBER_FIELD_NUMBER = 3;
@@ -20,7 +20,7 @@ public final class WeiyunPB$CrossBidProxyOfflineFileGetListMsgReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.CrossBidProxyOfflineFileGetListMsgReq
  * JD-Core Version:    0.7.0.1
  */

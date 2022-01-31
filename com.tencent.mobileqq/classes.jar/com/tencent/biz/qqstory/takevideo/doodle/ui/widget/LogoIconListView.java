@@ -4,16 +4,17 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
-import com.tencent.biz.qqstory.takevideo.doodle.compat.ViewCompat;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePackage;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.LogoIconAdapter;
 import com.tencent.widget.HorizontalListView;
+import xdl;
+import xhr;
+import xig;
+import xim;
 
 @TargetApi(14)
 public class LogoIconListView
   extends HorizontalListView
-  implements FaceViewPager.PageChangedObserver
+  implements xim
 {
   private int a;
   
@@ -27,13 +28,13 @@ public class LogoIconListView
   
   public void b(int paramInt)
   {
-    LogoIconAdapter localLogoIconAdapter = (LogoIconAdapter)super.a();
-    if ((paramInt < 0) || (paramInt >= localLogoIconAdapter.getCount())) {
+    xig localxig = (xig)super.getAdapter();
+    if ((paramInt < 0) || (paramInt >= localxig.getCount())) {
       return;
     }
-    Object localObject = (FacePackage)localLogoIconAdapter.getItem(paramInt);
+    Object localObject = (xhr)localxig.getItem(paramInt);
     int i;
-    if ((localObject != null) && ("LocationFacePackage".equals(((FacePackage)localObject).a())))
+    if ((localObject != null) && ("LocationFacePackage".equals(((xhr)localObject).a())))
     {
       if (DoodleLayout.a)
       {
@@ -43,19 +44,19 @@ public class LogoIconListView
     }
     else
     {
-      localLogoIconAdapter.a(paramInt);
-      i = localLogoIconAdapter.a();
+      localxig.a(paramInt);
+      i = localxig.a();
       if ((this.a >= super.getFirstVisiblePosition()) && (this.a <= super.getLastVisiblePosition())) {
-        ViewCompat.a(super.b(this.a), 0.5F);
+        xdl.a(super.getChild(this.a), 0.5F);
       }
       if ((paramInt >= super.getFirstVisiblePosition()) && (paramInt <= super.getLastVisiblePosition())) {
-        ViewCompat.a(super.b(paramInt), 1.0F);
+        xdl.a(super.getChild(paramInt), 1.0F);
       }
       if (paramInt > super.getFirstVisiblePosition()) {
         break label179;
       }
       i = -i;
-      super.b(super.getFirstVisiblePosition(), i, 100);
+      super.smoothScrollToPositionFromLeftOrRight(super.getFirstVisiblePosition(), i, 100);
     }
     for (;;)
     {
@@ -65,14 +66,14 @@ public class LogoIconListView
       break;
       label179:
       if (paramInt >= super.getLastVisiblePosition()) {
-        super.b(super.getFirstVisiblePosition(), i, 100);
+        super.smoothScrollToPositionFromLeftOrRight(super.getFirstVisiblePosition(), i, 100);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.doodle.ui.widget.LogoIconListView
  * JD-Core Version:    0.7.0.1
  */

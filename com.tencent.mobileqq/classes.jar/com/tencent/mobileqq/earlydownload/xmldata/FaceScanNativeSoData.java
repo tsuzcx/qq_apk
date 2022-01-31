@@ -5,17 +5,17 @@ public class FaceScanNativeSoData
 {
   public String getSharedPreferencesName()
   {
-    return "early_qq.android.ar.face.so_v7.2.0";
+    return "early_qq.android.ar.face.so_v8.2.0_32";
   }
   
   public String getStrResName()
   {
-    return "qq.android.ar.face.so_v7.2.0";
+    return "qq.android.ar.face.so_v8.2.0_32";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.FaceScanNativeSoData
  * JD-Core Version:    0.7.0.1
  */

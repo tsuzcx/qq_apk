@@ -1,20 +1,13 @@
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public class oin
-  implements FileFilter
+public abstract interface oin
 {
-  public oin(DoodleEmojiManager paramDoodleEmojiManager) {}
-  
-  public boolean accept(File paramFile)
-  {
-    return (paramFile.isDirectory()) && (paramFile.getName().startsWith("emoji_folder_"));
-  }
+  public abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oin
  * JD-Core Version:    0.7.0.1
  */

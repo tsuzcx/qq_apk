@@ -1,35 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.ExpandableListView.OnGroupClickListener;
-import com.tencent.widget.PinnedHeaderExpandableListView;
-import com.tencent.widget.PinnedHeaderExpandableListView.ExpandableListAdapter;
+import android.content.Context;
+import android.content.Intent;
 
-public class amda
-  implements View.OnTouchListener
+class amda
 {
-  public amda(PinnedHeaderExpandableListView paramPinnedHeaderExpandableListView) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  Intent jdField_a_of_type_AndroidContentIntent;
+  String jdField_a_of_type_JavaLangString;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  amda(amcw paramamcw, String paramString, Context paramContext, Intent paramIntent)
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      long l = this.a.a(this.a.getFirstVisiblePosition());
-      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
-      {
-        int i = ExpandableListView.c(l);
-        if ((PinnedHeaderExpandableListView.a(this.a) == null) || (!PinnedHeaderExpandableListView.a(this.a).a(this.a, paramView, i, PinnedHeaderExpandableListView.a(this.a).getGroupId(i)))) {
-          this.a.b(i);
-        }
-      }
-    }
-    return true;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amda
  * JD-Core Version:    0.7.0.1
  */

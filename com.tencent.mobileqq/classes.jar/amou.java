@@ -1,50 +1,35 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqdataline.ipc.DatalineRemoteManager;
-import cooperation.qqdataline.ipc.IDatalineService;
-import java.util.ArrayList;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class amou
-  implements Runnable
+class amou
+  extends BroadcastReceiver
 {
-  public amou(DatalineRemoteManager paramDatalineRemoteManager) {}
+  amou(amos paramamos) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    for (;;)
+    if (paramIntent != null)
     {
-      Bundle localBundle;
-      if (!this.a.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+      paramContext = paramIntent.getAction();
+      if (paramContext != null)
       {
-        localBundle = (Bundle)this.a.jdField_a_of_type_JavaUtilArrayList.remove(0);
-        if (localBundle != null) {}
-      }
-      else
-      {
-        return;
-      }
-      String str = localBundle.getString("notify_cmd");
-      try
-      {
-        localBundle.setClassLoader(getClass().getClassLoader());
-        if (QLog.isColorLevel()) {
-          QLog.d("DatalineRemoteManager", 2, "doPostCachedMsg send success strNotifyCmd:" + str);
+        if ((!paramContext.equals("com.tencent.mobileqq.intent.logout")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {
+          break label57;
         }
-        this.a.jdField_a_of_type_CooperationQqdatalineIpcIDatalineService.a("com.qqdataline.action.notify", localBundle);
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("DatalineRemoteManager", 2, "doPostCachedMsg send failed strNotifyCmd:" + str);
+        amos.a(this.a);
       }
     }
+    label57:
+    while ((!paramContext.equals("mqq.intent.action.LOGIN")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))) {
+      return;
+    }
+    amos.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amou
  * JD-Core Version:    0.7.0.1
  */

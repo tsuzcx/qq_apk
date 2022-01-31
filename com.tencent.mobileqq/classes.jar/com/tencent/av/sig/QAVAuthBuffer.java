@@ -1,41 +1,55 @@
 package com.tencent.av.sig;
 
+import android.annotation.SuppressLint;
+import com.tencent.TMG.utils.SoUtil;
+
 public class QAVAuthBuffer
 {
-  private static boolean mIsSoLoaded = false;
-  private static QAVAuthBuffer sAuthBuffer;
+  private static QAVAuthBuffer jdField_a_of_type_ComTencentAvSigQAVAuthBuffer;
+  private static boolean jdField_a_of_type_Boolean;
   
-  public static QAVAuthBuffer getInstance()
+  public static QAVAuthBuffer a()
   {
-    if (sAuthBuffer == null) {}
+    if (jdField_a_of_type_ComTencentAvSigQAVAuthBuffer == null) {}
     try
     {
-      if (sAuthBuffer == null)
+      if (jdField_a_of_type_ComTencentAvSigQAVAuthBuffer == null)
       {
-        loadSo();
-        if (mIsSoLoaded) {
-          sAuthBuffer = new QAVAuthBuffer();
+        a();
+        if (jdField_a_of_type_Boolean) {
+          jdField_a_of_type_ComTencentAvSigQAVAuthBuffer = new QAVAuthBuffer();
         }
       }
-      return sAuthBuffer;
+      return jdField_a_of_type_ComTencentAvSigQAVAuthBuffer;
     }
     finally {}
   }
   
-  private static void loadSo()
+  @SuppressLint({"UnsafeDynamicallyLoadedCode"})
+  private static void a()
   {
-    if (!mIsSoLoaded) {}
-    try
-    {
-      System.loadLibrary("stlport_shared");
-      System.loadLibrary("qav_authbuff");
-      mIsSoLoaded = true;
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      mIsSoLoaded = false;
-      localUnsatisfiedLinkError.printStackTrace();
+    if (!jdField_a_of_type_Boolean) {
+      try
+      {
+        if (SoUtil.customLibPath != null)
+        {
+          System.load(SoUtil.customLibPath + "/libstlport_shared.so");
+          System.load(SoUtil.customLibPath + "/libqav_authbuff.so");
+        }
+        for (;;)
+        {
+          jdField_a_of_type_Boolean = true;
+          return;
+          System.loadLibrary("stlport_shared");
+          System.loadLibrary("qav_authbuff");
+        }
+        return;
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      {
+        jdField_a_of_type_Boolean = false;
+        localUnsatisfiedLinkError.printStackTrace();
+      }
     }
   }
   
@@ -43,7 +57,7 @@ public class QAVAuthBuffer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.sig.QAVAuthBuffer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
-import com.tencent.widget.XListView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 
-public class wle
-  extends Handler
+class wle
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public wle(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
+  wle(wlc paramwlc, StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramMessage.what)
+    try
     {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
+      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.scrollTo((int)(300.0F - f * 300.0F), 0);
       return;
-      this.a.a.springBackOverScrollHeaderView();
-      continue;
-      this.a.a.springBackOverScrollHeaderView();
     }
+    catch (Exception paramValueAnimator) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wle
  * JD-Core Version:    0.7.0.1
  */

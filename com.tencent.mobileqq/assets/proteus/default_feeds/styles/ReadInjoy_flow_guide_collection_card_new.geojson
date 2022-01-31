@@ -1,0 +1,138 @@
+{
+  "ReadInjoy_flow_guide_collection_card_new": {
+    "view_type": "UIView",
+    "view_id":"id_multi_cell_2_3_wrapper",
+    "direction": "vertical",
+    "height": {
+      "type": "wrap_content"
+    },
+    "width": {
+      "type": "relative",
+      "value": "375"
+    },
+    "attributes": {
+        "setBackgroundColorString:": "#FFFFFF"
+    },
+    "data_attributes": {
+      "setRemoteInfo:": {
+        "all_rowkey": "$all_rowkey",
+        "jump_channelid": "$jump_channelid",
+        "jump_src": "$jump_src_fg_button",
+        "jump_page": "$jump_page_fg_button",
+        "feeds_type": "$feeds_type",
+        "guide_card_type":"$guide_card_type",
+        "account_expose_card": "$account_expose_card"
+      }
+    },
+    "subviews": [
+      {
+        "$includeComponet": "componet/flow_guide_type_3_header.geojson"
+      },
+      {
+        "view_type": "UIView",
+        "view_id":"id_gradient_back_view",
+        "layout_type": "layout_relative",
+        "visible_depend_on_children":"YES",
+        "height": {
+          "type": "wrap_content"
+        },
+        "width": {
+          "type": "relative",
+          "value": "375"
+        },
+        "attributes": {
+          "setGradientWithStartAlpha:endAlpha:color:direction:": [
+            "1.0",
+            "0.08",
+            "$main_color",
+            "1"
+          ]
+        },
+        "subviews": [
+            {
+                "view_type": "ReadInjoyAsynImageView",
+                "view_id": "id_ripple_view",
+                "height": {
+                    "type": "relative",
+                    "value": "179"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "175.5"
+                },
+                "attributes": {
+                    "setImageWithURLString:lineup:": [
+                        "http://pub.idqqimg.com/pc/misc/files/20190415/0ba97b006bbc4c2fada159cad4fda473.png",
+                        "0"
+                    ],
+                    "setAttatchInfo:": "$module_name"
+                }
+            },
+            {
+                "view_type": "container",
+                "direction": "vertical",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "visible_depend_on_children":"YES",
+                "subviews": [
+                    {
+                        "$includeComponet": "componet/flow_guide_type_1_2_header.geojson"
+                    },
+                    {
+                        "view_type": "ProteusCollectionView",
+                        "view_id": "id_proteus_collection_view",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "375"
+                        },
+                        "attributes": {
+                            "setCellArray:": "$datas",
+                            "setScrollTypeString:": "1",
+                            "setScrollIndicatorString:": "0",
+                            "setScrollBounceString:": "1",
+                            "setEdgeDragString:": "1",
+                            "setScrollJumpUrl:": "$jump_url",
+                            "setScrollInsetLeft:right:top:bottom:": [
+                                "4",
+                                "6",
+                                "0",
+                                "0"
+                            ]
+                        }
+                    },
+                    {
+                        "$includeComponet": "componet/flow_guide_bottom_1_2_3.geojson"
+                    }
+                ]
+            }
+        ]
+      },
+      {
+          "view_type": "UIView",
+          "view_id": "id_separator",
+          "event_type": "cmd_do_nothing",
+          "margin_left": "0",
+          "margin_top": "0",
+          "height": {
+              "type": "absolutely",
+              "value": "5"
+          },
+          "width": {
+              "type": "relative",
+              "value": "375"
+          },
+          "attributes": {
+              "setBackgroundColorString:": "$flow_guide_separator_color"
+          }
+      }
+    ]
+  }
+}
+

@@ -1,25 +1,19 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import android.view.View.OnClickListener;
 
-public class agod
-  extends RecyclerView.ItemDecoration
+class agod
+  implements View.OnClickListener
 {
-  private final int jdField_a_of_type_Int = (int)(3.0F * PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity));
+  agod(agnn paramagnn) {}
   
-  private agod(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void onClick(View paramView)
   {
-    paramRect.right = this.jdField_a_of_type_Int;
+    paramView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agod
  * JD-Core Version:    0.7.0.1
  */

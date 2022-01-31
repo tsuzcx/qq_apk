@@ -1,31 +1,71 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerCallback;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
-import java.lang.ref.WeakReference;
+import android.text.Layout;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.view.MotionEvent;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class acwd
-  implements DialogInterface.OnClickListener
+  extends LinkMovementMethod
 {
-  public acwd(FileVideoManager.VideoControl paramVideoControl) {}
+  private acwf jdField_a_of_type_Acwf;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private acwd(EditInfoActivity paramEditInfoActivity) {}
+  
+  private acwf a(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
+    int i = (int)paramMotionEvent.getX();
+    int j = (int)paramMotionEvent.getY();
+    int k = paramTextView.getTotalPaddingLeft();
+    int m = paramTextView.getTotalPaddingTop();
+    int n = paramTextView.getScrollX();
+    int i1 = paramTextView.getScrollY();
+    paramTextView = paramTextView.getLayout();
+    i = paramTextView.getOffsetForHorizontal(paramTextView.getLineForVertical(j - m + i1), i - k + n);
+    paramTextView = (acwf[])paramSpannable.getSpans(i, i, acwf.class);
+    if (paramTextView.length > 0) {
+      return paramTextView[0];
     }
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
+    return null;
+  }
+  
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
     {
-      paramDialogInterface = (FileVideoManager.FileVideoManagerCallback)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramDialogInterface != null) {
-        paramDialogInterface.ae_();
+      this.jdField_a_of_type_Acwf = a(paramTextView, paramSpannable, paramMotionEvent);
+      if (this.jdField_a_of_type_Acwf != null)
+      {
+        this.jdField_a_of_type_Acwf.a(true);
+        Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(this.jdField_a_of_type_Acwf), paramSpannable.getSpanEnd(this.jdField_a_of_type_Acwf));
       }
     }
+    do
+    {
+      return true;
+      if (paramMotionEvent.getAction() != 2) {
+        break;
+      }
+      paramTextView = a(paramTextView, paramSpannable, paramMotionEvent);
+    } while ((this.jdField_a_of_type_Acwf == null) || (paramTextView == this.jdField_a_of_type_Acwf));
+    this.jdField_a_of_type_Acwf.a(false);
+    this.jdField_a_of_type_Acwf = null;
+    Selection.removeSelection(paramSpannable);
+    return true;
+    if (this.jdField_a_of_type_Acwf != null)
+    {
+      this.jdField_a_of_type_Acwf.a(false);
+      super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+    }
+    this.jdField_a_of_type_Acwf = null;
+    Selection.removeSelection(paramSpannable);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acwd
  * JD-Core Version:    0.7.0.1
  */

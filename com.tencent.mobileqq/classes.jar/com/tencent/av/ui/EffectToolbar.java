@@ -1,32 +1,21 @@
 package com.tencent.av.ui;
 
-import android.content.Context;
+import alud;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
-import com.tencent.av.AVLog;
+import azgg;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.EffectConfigBase.IEffectConfigCallback;
 import com.tencent.av.business.manager.EffectOperateManager;
-import com.tencent.av.business.manager.filter.EffectFilterTools;
-import com.tencent.av.business.manager.magicface.EffectFaceManager;
 import com.tencent.av.business.manager.magicface.FaceItem;
-import com.tencent.av.business.manager.pendant.AVEffectPendantReport;
-import com.tencent.av.business.manager.pendant.EffectPendantTools;
 import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.av.opengl.effects.EffectController;
-import com.tencent.av.opengl.effects.EffectsRenderController;
+import com.tencent.av.opengl.effects.AEFilterSupport;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgr;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
@@ -37,42 +26,109 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
-import jua;
-import jub;
-import juc;
+import lek;
+import lid;
+import ljn;
+import ljs;
+import lju;
+import lkl;
+import lkp;
+import lkt;
+import lrz;
+import lsa;
+import mdd;
+import mej;
+import mfx;
+import mfy;
+import mjk;
+import mjp;
+import mjq;
+import mki;
+import mkj;
 
 public class EffectToolbar
   extends BaseToolbar
-  implements View.OnClickListener, EffectConfigBase.IEffectConfigCallback, QAVPtvTemplateAdapter.IItemDownloadMgr
+  implements View.OnClickListener, ljn<PendantItem>, mjq
 {
   private static final String TAG = "EffectToolbar";
-  QAVPtvTemplateAdapter mAdapter;
+  mjk mAdapter;
   public Button mEarbackBtn = null;
-  QAVPtvTemplateAdapter.IEffectCallback mEffectClickCallback = new jua(this);
-  boolean mEnableGesture = false;
+  mjp mEffectClickCallback = new mfx(this);
   HorizontalListView mListView;
-  protected juc mObserver;
-  private EffectPendantTools mPendantManager;
-  public Map mPtvTemplateInfoMap = new HashMap();
-  ArrayList mTemplateList = null;
-  BaseToolbar.UIInfo mUIInfo = null;
+  protected mfy mObserver;
+  private lkt mPendantManager;
+  public Map<String, PendantItem> mPtvTemplateInfoMap = new HashMap();
+  ArrayList<mkj> mTemplateList = null;
+  mej mUIInfo = null;
   
   public EffectToolbar(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
   {
     super(paramVideoAppInterface, paramAVActivity);
   }
   
+  private ArrayList<mkj> addItem_with_Double_Video_type()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = new mkj();
+    ((mkj)localObject).jdField_a_of_type_JavaLangString = "-1";
+    localArrayList.add(localObject);
+    localObject = new mkj();
+    ((mkj)localObject).jdField_a_of_type_JavaLangString = "0";
+    ((mkj)localObject).b = String.valueOf(2130841850);
+    ((mkj)localObject).d = alud.a(2131704384);
+    localArrayList.add(localObject);
+    this.mPtvTemplateInfoMap.clear();
+    localObject = this.mPendantManager.a(null);
+    boolean bool;
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
+    {
+      bool = ljs.a();
+      if ((!bool) || (AEFilterSupport.a())) {
+        break label284;
+      }
+      bool = azgg.a().c();
+    }
+    label284:
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("EffectToolbar", 2, "addItem_with_Double_Video_type, isSupportGesture[" + bool + "], size[" + ((List)localObject).size() + "]");
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        PendantItem localPendantItem = (PendantItem)((Iterator)localObject).next();
+        if ((localPendantItem.isShow()) && (ljs.a(localPendantItem)) && ((!localPendantItem.hasGesture()) || (bool)) && ((!PendantItem.isPanorama(localPendantItem.getKind())) || ((EffectSettingUi.a(this.mApp, false)) && (lkl.a()))))
+        {
+          localArrayList.add(ptvData2AVData(localPendantItem));
+          this.mPtvTemplateInfoMap.put(localPendantItem.getId(), localPendantItem);
+        }
+      }
+      return localArrayList;
+    }
+  }
+  
   @Nullable
   private String getCurrentPendantId()
   {
-    Object localObject = (PendantItem)this.mPendantManager.a();
-    if ((localObject == null) || (!((PendantItem)localObject).isShow())) {}
-    for (localObject = null;; localObject = ((PendantItem)localObject).getId())
+    Object localObject;
+    if (this.mPendantManager.d != null)
+    {
+      localObject = this.mPendantManager.d;
+      this.mPendantManager.d = null;
+    }
+    for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("EffectToolbar", 2, String.format("getCurrentPendantId", new Object[0]));
+        QLog.w("EffectToolbar", 1, "getCurrentPendantId, id[" + (String)localObject + "]");
       }
       return localObject;
+      localObject = (PendantItem)this.mPendantManager.a();
+      if ((localObject == null) || (!((PendantItem)localObject).isShow())) {
+        localObject = null;
+      } else {
+        localObject = ((PendantItem)localObject).getId();
+      }
     }
   }
   
@@ -81,31 +137,35 @@ public class EffectToolbar
     paramObservable = (Object[])paramObject;
     switch (((Integer)paramObservable[0]).intValue())
     {
+    case 169: 
+    case 170: 
     default: 
       return;
-    }
-    paramObject = (FaceItem)paramObservable[1];
-    StringBuilder localStringBuilder = new StringBuilder().append("TYPE_NOTIFY_FACE_ITEM_STATE_CHANGE :");
-    if (paramObject == null) {}
-    for (paramObservable = "null";; paramObservable = paramObject.getId())
-    {
-      AVLog.d("EffectToolbar", paramObservable);
-      if (paramObject == null) {
-        break;
+    case 168: 
+      paramObject = (FaceItem)paramObservable[1];
+      StringBuilder localStringBuilder = new StringBuilder().append("TYPE_NOTIFY_FACE_ITEM_STATE_CHANGE :");
+      if (paramObject == null) {}
+      for (paramObservable = "null";; paramObservable = paramObject.getId())
+      {
+        lek.d("EffectToolbar", paramObservable);
+        if (paramObject == null) {
+          break;
+        }
+        setLastItem();
+        return;
       }
-      setLastItem();
-      return;
     }
+    setLastItem();
   }
   
-  private void postSetCurrentItemById(String paramString)
+  private void postSetCurrentItemById(long paramLong, String paramString)
   {
     notifyEvent(Integer.valueOf(6101), null, Boolean.valueOf(true));
-    this.mApp.a().post(new jub(this, paramString));
+    this.mApp.a().post(new EffectToolbar.2(this, paramString, paramLong));
     boolean bool;
     if (this.mApp.a(3))
     {
-      paramString = (FaceItem)((EffectFaceManager)this.mApp.a(3)).a();
+      paramString = (FaceItem)((lju)this.mApp.a(3)).a();
       if ((paramString != null) && (TextUtils.isEmpty(paramString.getId()))) {
         bool = true;
       }
@@ -113,7 +173,7 @@ public class EffectToolbar
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("EffectToolbar", 2, "isInDoubleScreenPendant:" + bool);
+        QLog.w("EffectToolbar", 1, "postSetCurrentItemById, isInDoubleScreenPendant[" + bool + "], seq[" + paramLong + "]");
       }
       if (bool) {
         VideoController.a().a(3, "START_0");
@@ -125,17 +185,17 @@ public class EffectToolbar
     }
   }
   
-  private QavListItemBase.ItemInfo ptvData2AVData(PendantItem paramPendantItem)
+  private mkj ptvData2AVData(PendantItem paramPendantItem)
   {
-    QavListItemBase.ItemInfo localItemInfo = new QavListItemBase.ItemInfo();
-    localItemInfo.jdField_a_of_type_Int = 0;
-    localItemInfo.jdField_a_of_type_JavaLangString = paramPendantItem.getId();
-    localItemInfo.b = paramPendantItem.getIconurl();
-    localItemInfo.jdField_c_of_type_JavaLangString = paramPendantItem.getName();
-    localItemInfo.jdField_a_of_type_Boolean = paramPendantItem.isUsable();
-    localItemInfo.jdField_c_of_type_Int = paramPendantItem.getVoiceId();
-    localItemInfo.d = paramPendantItem.getDesc();
-    return localItemInfo;
+    mkj localmkj = new mkj();
+    localmkj.jdField_a_of_type_Int = 0;
+    localmkj.jdField_a_of_type_JavaLangString = paramPendantItem.getId();
+    localmkj.b = paramPendantItem.getIconurl();
+    localmkj.jdField_c_of_type_JavaLangString = paramPendantItem.getName();
+    localmkj.jdField_a_of_type_Boolean = paramPendantItem.isUsable();
+    localmkj.jdField_c_of_type_Int = paramPendantItem.getVoiceId();
+    localmkj.d = paramPendantItem.getDesc();
+    return localmkj;
   }
   
   private void setLastItem()
@@ -143,9 +203,9 @@ public class EffectToolbar
     Object localObject1;
     if (this.mApp.a(3))
     {
-      localObject1 = (FaceItem)((EffectFaceManager)this.mApp.a(3)).a();
+      localObject1 = (FaceItem)((lju)this.mApp.a(3)).a();
       if (localObject1 != null) {
-        if ("pendant".equalsIgnoreCase(((FaceItem)localObject1).getType())) {
+        if ((((FaceItem)localObject1).isSameType("pendant")) || (((FaceItem)localObject1).isSameType("creativecop"))) {
           localObject1 = null;
         }
       }
@@ -160,7 +220,7 @@ public class EffectToolbar
       do
       {
         return;
-      } while ("face".equalsIgnoreCase(((FaceItem)localObject1).getType()));
+      } while ((((FaceItem)localObject1).isSameType("face")) || (((FaceItem)localObject1).isSameType("voicesticker")));
       localObject1 = null;
       continue;
       localObject1 = getCurrentPendantId();
@@ -169,111 +229,43 @@ public class EffectToolbar
     }
   }
   
-  static int setLastSelectedIndex(String paramString, ArrayList paramArrayList, QAVPtvTemplateAdapter paramQAVPtvTemplateAdapter, HorizontalListView paramHorizontalListView)
+  static int setLastSelectedIndex(String paramString, ArrayList<mkj> paramArrayList, mjk parammjk, HorizontalListView paramHorizontalListView)
   {
-    int j;
-    if ((paramArrayList == null) || (paramQAVPtvTemplateAdapter == null) || (paramHorizontalListView == null))
-    {
-      j = -1;
-      return j;
+    if ((paramArrayList == null) || (parammjk == null) || (paramHorizontalListView == null)) {
+      return -1;
     }
     int i = 1;
-    label21:
     if (i < paramArrayList.size()) {
-      if (!((QavListItemBase.ItemInfo)paramArrayList.get(i)).jdField_a_of_type_JavaLangString.equals(paramString)) {}
+      if (!((mkj)paramArrayList.get(i)).jdField_a_of_type_JavaLangString.equals(paramString)) {}
     }
     for (;;)
     {
-      j = i;
-      if (!paramQAVPtvTemplateAdapter.a(i)) {
-        break;
-      }
-      if (i >= paramHorizontalListView.getFirstVisiblePosition())
-      {
-        j = i;
-        if (i <= paramHorizontalListView.getLastVisiblePosition()) {
-          break;
-        }
-      }
-      int k = 0;
-      j = k;
-      if (i > 0)
-      {
-        j = k;
-        if (i > QAVPtvTemplateAdapter.a(paramQAVPtvTemplateAdapter.jdField_a_of_type_AndroidContentContext)) {
-          j = paramQAVPtvTemplateAdapter.b + paramQAVPtvTemplateAdapter.jdField_a_of_type_Int * (i - 1);
-        }
-      }
-      paramHorizontalListView.a(j);
+      setSelectedListViewItemAndShow(paramHorizontalListView, parammjk, i);
       return i;
       i += 1;
-      break label21;
+      break;
       i = -1;
     }
   }
   
-  public static void showCloseEarbackToast(Context paramContext)
-  {
-    paramContext = QQToast.a(paramContext, 2, 2131429607, 1);
-    paramContext.a();
-    paramContext.a();
-  }
-  
   private void updateEarbackBtn()
   {
-    int i = 2130840361;
-    if (this.mApp.a().a().aC) {
-      i = 2130840362;
+    int i = 2130841963;
+    if (this.mApp.a().a().az) {
+      i = 2130841964;
     }
     this.mEarbackBtn.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
   }
   
-  ArrayList addItem_with_Double_Video_type(VideoAppInterface paramVideoAppInterface)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = new QavListItemBase.ItemInfo();
-    ((QavListItemBase.ItemInfo)localObject).jdField_a_of_type_JavaLangString = "-1";
-    localArrayList.add(localObject);
-    localObject = new QavListItemBase.ItemInfo();
-    ((QavListItemBase.ItemInfo)localObject).jdField_a_of_type_JavaLangString = "0";
-    ((QavListItemBase.ItemInfo)localObject).b = String.valueOf(2130840282);
-    ((QavListItemBase.ItemInfo)localObject).d = "取消挂件";
-    localArrayList.add(localObject);
-    this.mPtvTemplateInfoMap.clear();
-    boolean bool = EffectFilterTools.b(paramVideoAppInterface.getApp().getBaseContext());
-    this.mEnableGesture = GestureMgr.a().c();
-    paramVideoAppInterface = this.mPendantManager.a(null);
-    if ((paramVideoAppInterface != null) && (!paramVideoAppInterface.isEmpty()))
-    {
-      AVLog.d("EffectSettingUi", String.format("双人挂件, size[%s], isSupport[%s], bEnableGesture[%s]", new Object[] { Integer.valueOf(paramVideoAppInterface.size()), Boolean.valueOf(bool), Boolean.valueOf(this.mEnableGesture) }));
-      paramVideoAppInterface = paramVideoAppInterface.iterator();
-      while (paramVideoAppInterface.hasNext())
-      {
-        localObject = (PendantItem)paramVideoAppInterface.next();
-        if (((PendantItem)localObject).isShow())
-        {
-          QavListItemBase.ItemInfo localItemInfo = ptvData2AVData((PendantItem)localObject);
-          if ((!((PendantItem)localObject).hasGesture()) || ((bool) && (this.mEnableGesture)))
-          {
-            localArrayList.add(localItemInfo);
-            this.mPtvTemplateInfoMap.put(((PendantItem)localObject).getId(), localObject);
-          }
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  protected BaseToolbar.UIInfo getUIInfo()
+  protected mej getUIInfo()
   {
     if (this.mUIInfo == null)
     {
-      this.mUIInfo = new BaseToolbar.UIInfo();
+      this.mUIInfo = new mej();
       this.mUIInfo.d = 1;
-      this.mUIInfo.g = 2130969361;
-      this.mUIInfo.e = 103414;
-      this.mUIInfo.f = 2130840343;
-      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getResources().getString(2131428742);
+      this.mUIInfo.f = 2131559640;
+      this.mUIInfo.e = 2130841942;
+      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getString(2131696387);
     }
     return this.mUIInfo;
   }
@@ -281,14 +273,17 @@ public class EffectToolbar
   public String getUnableInfo()
   {
     if (this.mActivity.get() != null) {
-      return ((AVActivity)this.mActivity.get()).getResources().getString(2131428736);
+      return ((AVActivity)this.mActivity.get()).getResources().getString(2131695935);
     }
     return "";
   }
   
   public boolean isEffectBtnEnable()
   {
-    boolean bool = EffectsRenderController.a();
+    if (!lsa.a()) {
+      return false;
+    }
+    boolean bool = lsa.d();
     if (QLog.isDevelopLevel()) {
       QLog.d("EffectEnable", 4, String.format("特效按钮可用, bSuc[%s]", new Object[] { Boolean.valueOf(bool) }));
     }
@@ -297,7 +292,7 @@ public class EffectToolbar
   
   protected void notifyEvent(Integer paramInteger, Object paramObject1, Object paramObject2)
   {
-    AVLog.c("EffectToolbar", "notifyEvent :" + paramInteger + "|" + paramObject1);
+    lek.c("EffectToolbar", "notifyEvent :" + paramInteger + "|" + paramObject1);
     this.mApp.a(new Object[] { paramInteger, paramObject1, paramObject2 });
   }
   
@@ -309,112 +304,103 @@ public class EffectToolbar
       return;
     }
     paramView = this.mApp.a().a();
-    if (!this.mApp.a().a().aC) {}
+    if (!this.mApp.a().a().az) {}
     for (boolean bool = true;; bool = false)
     {
-      paramView.aC = bool;
-      if (this.mApp.a().a().S != 0) {
-        this.mApp.a().b(this.mApp.a().a().aC);
+      paramView.az = bool;
+      if (this.mApp.a().a().T != 0) {
+        this.mApp.a().c(this.mApp.a().a().az);
       }
       updateEarbackBtn();
-      if (!this.mApp.a().a().aC) {
-        showCloseEarbackToast((Context)this.mActivity.get());
+      if (!this.mApp.a().a().az) {
+        mdd.a(this.mApp, 1017);
       }
-      EffectSettingUi.a(this.mApp);
+      EffectSettingUi.a(this.mApp, -1009L);
       return;
     }
   }
   
-  protected void onCreate(AVActivity paramAVActivity)
+  protected void onCreate(long paramLong, AVActivity paramAVActivity)
   {
-    this.mPendantManager = ((EffectPendantTools)this.mApp.a(2));
-    this.mObserver = new juc(this);
-    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131366275));
+    this.mPendantManager = ((lkt)this.mApp.a(2));
+    this.mObserver = new mfy(this);
+    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131367803));
     this.mListView.setStayDisplayOffsetZero(true);
-    this.mTemplateList = addItem_with_Double_Video_type(this.mApp);
-    this.mAdapter = new QAVPtvTemplateAdapter(this.mApp, paramAVActivity, this.mTemplateList, this.mListView);
-    ViewGroup.LayoutParams localLayoutParams = this.mListView.getLayoutParams();
-    localLayoutParams.height = (this.mAdapter.jdField_a_of_type_Int + AIOUtils.a(30.0F, paramAVActivity.getResources()));
-    this.mListView.setLayoutParams(localLayoutParams);
+    this.mTemplateList = addItem_with_Double_Video_type();
+    this.mAdapter = new mjk(this.mApp, paramAVActivity, this.mTemplateList, this.mListView);
     this.mAdapter.b(true);
     this.mAdapter.a(this.mEffectClickCallback);
     this.mAdapter.a(this);
     this.mListView.setAdapter(this.mAdapter);
     setLastItem();
-    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131366282));
+    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131364103));
     this.mEarbackBtn.setOnClickListener(this);
-    AVEffectPendantReport.c();
+    lkp.c();
   }
   
-  protected void onDestroy(VideoAppInterface paramVideoAppInterface)
+  protected void onDestroy(long paramLong, VideoAppInterface paramVideoAppInterface)
   {
-    this.mPendantManager.b(this);
+    this.mPendantManager.b(paramLong, this);
     this.mListView = null;
     this.mAdapter = null;
   }
   
-  public void onDownloadFinish(PendantItem paramPendantItem, boolean paramBoolean)
+  public void onDownloadFinish(long paramLong, PendantItem paramPendantItem, boolean paramBoolean)
   {
     if (this.mAdapter != null) {
-      this.mAdapter.a(paramPendantItem.getId(), paramBoolean);
+      this.mAdapter.a(paramLong, paramPendantItem.getId(), paramBoolean);
     }
   }
   
-  protected void onHide()
+  protected void onHide(long paramLong)
   {
     this.mApp.b(this.mObserver);
-    this.mPendantManager.b(this);
+    this.mPendantManager.b(paramLong, this);
   }
   
-  public void onItemSelectedChanged(PendantItem paramPendantItem)
+  public void onItemSelectedChanged(long paramLong, PendantItem paramPendantItem)
   {
-    QLog.w("EffectToolbar", 1, "onItemSelectedChanged, current[" + paramPendantItem + "]");
+    int i = 1;
+    QLog.w("EffectToolbar", 1, "onItemSelectedChanged, current[" + paramPendantItem + "], seq[" + paramLong + "]");
     if (paramPendantItem == null)
     {
       paramPendantItem = VideoController.a().a(((AVActivity)this.mActivity.get()).getApplicationContext());
       if (paramPendantItem != null) {
-        paramPendantItem.b();
+        paramPendantItem.a(paramLong);
       }
     }
     paramPendantItem = (EffectOperateManager)this.mApp.a(8);
     String str;
-    if ((paramPendantItem != null) && (paramPendantItem.b()))
+    if ((paramPendantItem != null) && (paramPendantItem.a()))
     {
       str = paramPendantItem.a();
       setLastSelectedIndex(str, this.mTemplateList, this.mAdapter, this.mListView);
-      paramPendantItem.b(false);
+      paramPendantItem.c(false);
       if (str != null) {}
     }
     else
     {
       return;
     }
-    int i = 1;
-    paramPendantItem = null;
-    if (i < this.mTemplateList.size())
-    {
-      if (!((QavListItemBase.ItemInfo)this.mTemplateList.get(i)).jdField_a_of_type_JavaLangString.equals(str)) {
-        break label289;
-      }
-      paramPendantItem = (QavListItemBase.ItemInfo)this.mTemplateList.get(i);
+    if (i < this.mTemplateList.size()) {
+      if (!((mkj)this.mTemplateList.get(i)).jdField_a_of_type_JavaLangString.equals(str)) {}
     }
-    label289:
-    for (;;)
+    for (paramPendantItem = (mkj)this.mTemplateList.get(i);; paramPendantItem = null)
     {
-      i += 1;
-      break;
       if ((!str.isEmpty()) && (paramPendantItem != null) && (paramPendantItem.jdField_c_of_type_Int > 0))
       {
         QLog.i("EffectToolbar", 2, "onItemSelectedChanged voiceid : " + paramPendantItem.jdField_c_of_type_Int);
-        this.mApp.a().a().T = paramPendantItem.jdField_c_of_type_Int;
+        this.mApp.a().a().U = paramPendantItem.jdField_c_of_type_Int;
         this.mEarbackBtn.setVisibility(0);
         updateEarbackBtn();
       }
       for (;;)
       {
-        this.mApp.a().K();
+        this.mApp.a().A();
         return;
-        this.mApp.a().a().T = 0;
+        i += 1;
+        break;
+        this.mApp.a().a().U = 0;
         this.mEarbackBtn.setVisibility(4);
       }
     }
@@ -427,30 +413,30 @@ public class EffectToolbar
     }
   }
   
-  protected void onShow(int paramInt, boolean paramBoolean)
+  protected void onShow(long paramLong, int paramInt, boolean paramBoolean)
   {
     setLastItem();
     this.mApp.a(this.mObserver);
-    this.mPendantManager.a(this);
+    this.mPendantManager.a(paramLong, this);
     if (this.mEarbackBtn.isShown()) {
       updateEarbackBtn();
     }
     if (QLog.isColorLevel()) {
       QLog.i("EffectToolbar", 2, String.format("onShow", new Object[0]));
     }
-    AVEffectPendantReport.c();
+    lkp.c();
   }
   
-  public void startDownloadTemplate(AppInterface paramAppInterface, QavListItemBase.ItemInfo paramItemInfo, QavListItemBase.IDownloadCallback paramIDownloadCallback)
+  public void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, mkj parammkj, mki parammki)
   {
-    paramAppInterface = (PendantItem)this.mPendantManager.a(paramItemInfo.jdField_a_of_type_JavaLangString);
+    paramAppInterface = (PendantItem)this.mPendantManager.a(parammkj.jdField_a_of_type_JavaLangString);
     if (paramAppInterface != null)
     {
-      this.mPendantManager.a(paramAppInterface);
+      this.mPendantManager.a(paramLong, paramAppInterface);
       return;
     }
-    AVLog.e("EffectToolbar", "ItemDownloadMgr:startDownloadTemplate failed item = null");
-    paramIDownloadCallback.a(paramItemInfo.jdField_a_of_type_JavaLangString, false);
+    QLog.w("EffectToolbar", 1, "startDownloadTemplate, item为空, seq[" + paramLong + "]");
+    parammki.a(paramLong, parammkj.jdField_a_of_type_JavaLangString, false);
   }
 }
 

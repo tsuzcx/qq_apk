@@ -1,24 +1,25 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
-import com.tencent.mobileqq.troop.widget.MediaControllerX.MediaPlayerControlX;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
 
 public class hcw
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public hcw(MediaControllerX paramMediaControllerX) {}
+  public hcw(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = MediaControllerX.a(this.a).b();
-    MediaControllerX.a(this.a).a(i + 15000);
-    MediaControllerX.a(this.a);
-    this.a.a(5000);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839369);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hcw
  * JD-Core Version:    0.7.0.1
  */

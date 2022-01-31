@@ -1,44 +1,62 @@
-import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader.P2VEffectDownloadListener;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 
 public class xur
-  implements ModuleDownloadListener
+  extends Drawable
 {
-  public xur(P2VEffectLoader paramP2VEffectLoader, P2VEffectLoader.P2VEffectDownloadListener paramP2VEffectDownloadListener) {}
+  private int jdField_a_of_type_Int;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
+  private int b;
   
-  public void onDownloadCanceled(String paramString)
+  public xur(int paramInt1, int paramInt2)
   {
-    QZLog.i("P2VEffectLoader", 4, new Object[] { "onDownloadCanceled ", paramString });
+    this(null, paramInt1, paramInt2);
   }
   
-  public void onDownloadFailed(String paramString)
+  public xur(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    QZLog.i("P2VEffectLoader", 4, new Object[] { "onDownloadFailed ", paramString });
-    P2VEffectLoader.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader, false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader$P2VEffectDownloadListener.a(false);
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    QZLog.i("P2VEffectLoader", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("p2v_effect.jar")) {
+    wxe.c("Q.qqstory.record.StoryFaceDrawable", "StoryFaceDrawable.");
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    setBounds(0, 0, paramInt1, paramInt2);
+    if (paramBitmap == null) {}
+    for (this.jdField_a_of_type_AndroidGraphicsBitmap = bdhj.a();; this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap)
+    {
+      this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+      this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(paramInt1 / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), paramInt2 / this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
       return;
     }
-    QZLog.i("P2VEffectLoader", 4, new Object[] { "onDownloadSucceed url = ", P2VEffectLoader.a(), P2VEffectLoader.b() });
-    LocalMultiProcConfig.putString("p2v_effect_jar_md5", P2VEffectLoader.b());
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader$P2VEffectDownloadListener.a(true);
   }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(this.jdField_a_of_type_Int / paramBitmap.getWidth(), this.b / paramBitmap.getHeight());
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    wxe.c("Q.qqstory.record.StoryFaceDrawable", "StoryFaceDrawable draw start.");
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
+    wxe.c("Q.qqstory.record.StoryFaceDrawable", "StoryFaceDrawable draw end.");
+  }
+  
+  public int getOpacity()
+  {
+    return 0;
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xur
  * JD-Core Version:    0.7.0.1
  */

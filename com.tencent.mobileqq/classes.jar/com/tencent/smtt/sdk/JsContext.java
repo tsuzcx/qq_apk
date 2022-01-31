@@ -3,14 +3,12 @@ package com.tencent.smtt.sdk;
 import android.content.Context;
 import android.webkit.ValueCallback;
 import com.tencent.smtt.export.external.jscore.interfaces.IX5JsContext;
-import com.tencent.smtt.export.external.jscore.interfaces.IX5JsError;
-import com.tencent.smtt.export.external.jscore.interfaces.IX5JsValue;
 import java.net.URL;
 
 public final class JsContext
 {
   private final IX5JsContext mContext;
-  private ExceptionHandler mExceptionHandler;
+  private JsContext.ExceptionHandler mExceptionHandler;
   private String mName;
   private final JsVirtualMachine mVirtualMachine;
   
@@ -73,31 +71,29 @@ public final class JsContext
     return new JsValue(this, paramString);
   }
   
-  public void evaluateScriptAsync(String paramString, final ValueCallback<JsValue> paramValueCallback, URL paramURL)
+  public void evaluateScriptAsync(String paramString, ValueCallback<JsValue> paramValueCallback, URL paramURL)
   {
     if (paramValueCallback == null) {}
-    for (paramValueCallback = null;; paramValueCallback = new ValueCallback()
-        {
-          public void onReceiveValue(IX5JsValue paramAnonymousIX5JsValue)
-          {
-            ValueCallback localValueCallback = paramValueCallback;
-            if (paramAnonymousIX5JsValue == null) {}
-            for (paramAnonymousIX5JsValue = null;; paramAnonymousIX5JsValue = new JsValue(JsContext.this, paramAnonymousIX5JsValue))
-            {
-              localValueCallback.onReceiveValue(paramAnonymousIX5JsValue);
-              return;
-            }
-          }
-        })
+    for (paramValueCallback = null;; paramValueCallback = new JsContext.1(this, paramValueCallback))
     {
       this.mContext.evaluateScriptAsync(paramString, paramValueCallback, paramURL);
       return;
     }
   }
   
-  public ExceptionHandler exceptionHandler()
+  public JsContext.ExceptionHandler exceptionHandler()
   {
     return this.mExceptionHandler;
+  }
+  
+  public byte[] getNativeBuffer(int paramInt)
+  {
+    return this.mContext.getNativeBuffer(paramInt);
+  }
+  
+  public int getNativeBufferId()
+  {
+    return this.mContext.getNativeBufferId();
   }
   
   public String name()
@@ -110,7 +106,7 @@ public final class JsContext
     this.mContext.removeJavascriptInterface(paramString);
   }
   
-  public void setExceptionHandler(ExceptionHandler paramExceptionHandler)
+  public void setExceptionHandler(JsContext.ExceptionHandler paramExceptionHandler)
   {
     this.mExceptionHandler = paramExceptionHandler;
     if (paramExceptionHandler == null)
@@ -118,19 +114,18 @@ public final class JsContext
       this.mContext.setExceptionHandler(null);
       return;
     }
-    this.mContext.setExceptionHandler(new ValueCallback()
-    {
-      public void onReceiveValue(IX5JsError paramAnonymousIX5JsError)
-      {
-        JsContext.this.mExceptionHandler.handleException(JsContext.this, new JsError(paramAnonymousIX5JsError));
-      }
-    });
+    this.mContext.setExceptionHandler(new JsContext.2(this));
   }
   
   public void setName(String paramString)
   {
     this.mName = paramString;
     this.mContext.setName(paramString);
+  }
+  
+  public int setNativeBuffer(int paramInt, byte[] paramArrayOfByte)
+  {
+    return this.mContext.setNativeBuffer(paramInt, paramArrayOfByte);
   }
   
   public void stealValueFromOtherCtx(String paramString1, JsContext paramJsContext, String paramString2)
@@ -142,15 +137,10 @@ public final class JsContext
   {
     return this.mVirtualMachine;
   }
-  
-  public static abstract interface ExceptionHandler
-  {
-    public abstract void handleException(JsContext paramJsContext, JsError paramJsError);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.sdk.JsContext
  * JD-Core Version:    0.7.0.1
  */

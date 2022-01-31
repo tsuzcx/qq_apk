@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class ArticleComment$RecommendItemInfo
-  extends MessageMicro
+  extends MessageMicro<RecommendItemInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField article_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -26,7 +26,7 @@ public final class ArticleComment$RecommendItemInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ac.ArticleComment.RecommendItemInfo
  * JD-Core Version:    0.7.0.1
  */

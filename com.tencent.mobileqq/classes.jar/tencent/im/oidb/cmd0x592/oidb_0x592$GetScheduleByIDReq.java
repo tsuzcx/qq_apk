@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.trunk.Qworkflow.Qworkflow.WorkflowBrief;
 
 public final class oidb_0x592$GetScheduleByIDReq
-  extends MessageMicro
+  extends MessageMicro<GetScheduleByIDReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_workflow_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class oidb_0x592$GetScheduleByIDReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x592.oidb_0x592.GetScheduleByIDReq
  * JD-Core Version:    0.7.0.1
  */

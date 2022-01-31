@@ -1,33 +1,28 @@
-import Wallet.GetSkinListRsp;
-import com.qq.taf.jce.JceOutputStream;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
 class xgv
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  xgv(xgu paramxgu, GetSkinListRsp paramGetSkinListRsp) {}
+  xgv(xgt paramxgt) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    try
-    {
-      JceOutputStream localJceOutputStream = new JceOutputStream();
-      localJceOutputStream.setServerEncoding("utf-8");
-      this.jdField_a_of_type_WalletGetSkinListRsp.writeTo(localJceOutputStream);
-      FileUtils.a(localJceOutputStream.toByteArray(), BaseApplicationImpl.getApplication().getFilesDir() + "skins" + this.jdField_a_of_type_Xgu.a.getCurrentAccountUin());
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
+    if (this.a.a.jdField_a_of_type_Xgo != null) {
+      this.a.a.jdField_a_of_type_Xgo.a(null);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgv
  * JD-Core Version:    0.7.0.1
  */

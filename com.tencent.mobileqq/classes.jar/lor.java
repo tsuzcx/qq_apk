@@ -1,19 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.model.AdvertisementInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.io.BufferedReader;
 
 public class lor
-  implements Runnable
 {
-  public lor(AdvertisementInfoModule paramAdvertisementInfoModule, AdvertisementInfo paramAdvertisementInfo) {}
+  boolean a;
+  boolean b;
   
-  public void run()
+  public void a(BufferedReader paramBufferedReader)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAdvertisementInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
+    if (!this.b)
+    {
+      this.a = loo.a(paramBufferedReader, "active");
+      return;
+    }
+    this.a = true;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lor
  * JD-Core Version:    0.7.0.1
  */

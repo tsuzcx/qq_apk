@@ -1,5 +1,6 @@
 package dov.com.qq.im.capture.music.humrecognition.view;
 
+import alud;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler.Callback;
@@ -10,42 +11,41 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import anmq;
-import anmr;
+import bflz;
+import bhtd;
+import blqr;
+import blts;
+import blua;
+import bluc;
+import blud;
+import blun;
+import bluo;
+import blup;
+import blur;
+import blut;
+import bmau;
+import bmkb;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.open.base.ToastUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.music.MusicDownloadListener;
 import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-import dov.com.qq.im.capture.music.QimMusicPlayer;
-import dov.com.qq.im.capture.music.humrecognition.HumObserver;
-import dov.com.qq.im.capture.music.humrecognition.HumUtils;
-import dov.com.qq.im.capture.music.humrecognition.humming.IRecognizer;
-import dov.com.qq.im.capture.music.humrecognition.humming.OriginalBgmRecognizer;
-import dov.com.qq.im.capture.music.humrecognition.humming.VoiceBgmRecognizer;
-import dov.com.qq.im.capture.music.humrecognition.recognize.RecognitionManager;
 import dov.com.qq.im.capture.view.ProviderView;
-import dov.com.qq.im.capture.view.ProviderView.ProviderViewListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecognitionPart;
 
 public class BgmRecognitionProviderView
   extends ProviderView
-  implements Handler.Callback, View.OnClickListener, HumObserver
+  implements Handler.Callback, View.OnClickListener, bluc
 {
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bhtd jdField_a_of_type_Bhtd;
+  blts jdField_a_of_type_Blts = new blut(this);
+  private blua jdField_a_of_type_Blua;
+  private blun jdField_a_of_type_Blun;
+  private blur jdField_a_of_type_Blur;
+  private bmkb jdField_a_of_type_Bmkb;
   public MusicItemInfo a;
-  private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-  MusicDownloadListener jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener = new anmq(this);
   QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager;
-  private QimMusicPlayer jdField_a_of_type_DovComQqImCaptureMusicQimMusicPlayer = (QimMusicPlayer)QIMManager.a().c(8);
-  private IRecognizer jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionHummingIRecognizer;
-  private RecognitionManager jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager;
-  private EditRecognitionPart jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditRecognitionPart;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new anmr(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new BgmRecognitionProviderView.2(this);
   private boolean jdField_a_of_type_Boolean;
   private Button jdField_b_of_type_AndroidWidgetButton;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -62,7 +62,7 @@ public class BgmRecognitionProviderView
     if (QLog.isColorLevel()) {
       QLog.i("BgmRecognitionProviderView", 2, "updateHumMusicItemToMyTab: invoked. info: musicItemInfo = " + paramMusicItemInfo);
     }
-    if ((paramMusicItemInfo == null) || (paramMusicItemInfo.d == 7)) {
+    if ((paramMusicItemInfo == null) || (paramMusicItemInfo.mType == 7)) {
       return;
     }
     this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(paramMusicItemInfo, true);
@@ -71,17 +71,17 @@ public class BgmRecognitionProviderView
   private void h()
   {
     this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131439251);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131698612);
     this.jdField_b_of_type_AndroidWidgetButton.setEnabled(false);
   }
   
   private void i()
   {
-    if (HumUtils.b()) {
+    if (blud.b()) {
       return;
     }
-    this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionHummingIRecognizer = new VoiceBgmRecognizer();
-    o();
+    this.jdField_a_of_type_Blun = new blup();
+    q();
   }
   
   private void j()
@@ -89,83 +89,87 @@ public class BgmRecognitionProviderView
     if (QLog.isColorLevel()) {
       QLog.i("BgmRecognitionProviderView", 2, "doOnClickOriginalSongRecognition: invoked. ");
     }
-    if (HumUtils.b()) {
+    if (blud.b()) {
       return;
     }
-    this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionHummingIRecognizer = new OriginalBgmRecognizer();
-    o();
-  }
-  
-  private void l()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("BgmRecognitionProviderView", 2, "doOnClickHumRecognitionResult: invoked. ");
-    }
-    if (HumUtils.b()) {
-      return;
-    }
-    if (this.jdField_a_of_type_DovComQqImCaptureMusicQimMusicPlayer.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo))
-    {
-      this.jdField_a_of_type_DovComQqImCaptureMusicQimMusicPlayer.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo, this.f);
-      return;
-    }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131439247);
-    this.jdField_a_of_type_DovComQqImCaptureMusicQimMusicPlayer.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo, this.jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener);
-  }
-  
-  private void m()
-  {
-    if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener != null) {
-      this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener.e(true);
-    }
+    this.jdField_a_of_type_Blun = new bluo();
+    q();
   }
   
   private void n()
   {
-    this.jdField_a_of_type_DovComQqImCaptureMusicQimMusicPlayer.e();
+    if (QLog.isColorLevel()) {
+      QLog.i("BgmRecognitionProviderView", 2, "doOnClickHumRecognitionResult: invoked. ");
+    }
+    if (blud.b()) {}
+    while (this.jdField_a_of_type_Blua == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_Blua.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo))
+    {
+      this.jdField_a_of_type_Blua.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo, this.g);
+      return;
+    }
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131698614);
+    this.jdField_a_of_type_Blua.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo, this.jdField_a_of_type_Blts);
   }
   
   private void o()
   {
-    ToastUtil.a().a(2131439252);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131439250);
-    ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 5, null, false);
+    if (this.jdField_a_of_type_Bmau != null) {
+      this.jdField_a_of_type_Bmau.c(true);
+    }
   }
   
   private void p()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BgmRecognitionProviderView", 2, "doOnClickCancel: invoked. ");
+    if (this.jdField_a_of_type_Blua != null) {
+      this.jdField_a_of_type_Blua.e();
     }
-    n();
-    if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener != null) {
-      this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener.d(2);
-    }
-    h();
   }
   
   private void q()
   {
+    bflz.a().a(2131698621);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131698616);
+    ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 5, null, false);
+  }
+  
+  private void r()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BgmRecognitionProviderView", 2, "doOnClickCancel: invoked. ");
+    }
+    p();
+    if (this.jdField_a_of_type_Bmau != null) {
+      this.jdField_a_of_type_Bmau.d(2);
+    }
     h();
-    if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener != null)
+  }
+  
+  private void s()
+  {
+    h();
+    if (this.jdField_a_of_type_Bmau != null)
     {
-      this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener.d(2);
-      this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener.a(33, Integer.valueOf(1001));
+      this.jdField_a_of_type_Bmau.d(2);
+      this.jdField_a_of_type_Bmau.a(33, Integer.valueOf(1001));
     }
   }
   
-  protected int a()
+  public int a()
   {
-    return 2130970078;
+    return 2131560728;
   }
   
   public void a()
   {
-    super.a();
     if (QLog.isColorLevel()) {
-      QLog.i("BgmRecognitionProviderView", 2, "onProviderShow: invoked. info: TAG = BgmRecognitionProviderView");
+      QLog.i("BgmRecognitionProviderView", 2, "onDestroy: invoked. info: TAG = BgmRecognitionProviderView");
     }
-    this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager.a(this);
+    super.a();
+    this.jdField_a_of_type_Blts = null;
+    this.jdField_a_of_type_JavaLangRunnable = null;
   }
   
   public void a(Bundle paramBundle)
@@ -175,25 +179,26 @@ public class BgmRecognitionProviderView
     }
     super.a(paramBundle);
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970078, this, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560728, this, false);
     }
     a(this.jdField_a_of_type_AndroidViewView);
     setNeedTabBar(false);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager = ((RecognitionManager)QIMManager.a().c(10));
-    this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = ((QIMMusicConfigManager)QIMManager.a(2));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131367356));
+    this.jdField_a_of_type_Bhtd = new bhtd(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Blur = ((blur)blqr.a().c(10));
+    this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = ((QIMMusicConfigManager)blqr.a(2));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363810));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131368948));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363820));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.c = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131368950));
+    this.c = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363651));
     this.c.setOnClickListener(this);
-    this.d = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131368951));
+    this.d = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363652));
     this.d.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362845));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368952));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377784));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377793));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_Blua = ((blua)blqr.a().c(8));
     h();
   }
   
@@ -202,57 +207,38 @@ public class BgmRecognitionProviderView
     if (QLog.isColorLevel()) {
       QLog.i("BgmRecognitionProviderView", 2, "update: invoked. info: musicItemInfo = " + paramMusicItemInfo);
     }
-    ToastUtil.a().a("识别结束。结果：" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-    if ((paramMusicItemInfo == null) || (paramMusicItemInfo.d == 7))
+    bflz.a().a(alud.a(2131701468) + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+    if ((paramMusicItemInfo == null) || (paramMusicItemInfo.mType == 7))
     {
-      localMessage = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage();
+      localMessage = this.jdField_a_of_type_Bhtd.obtainMessage();
       localMessage.obj = paramMusicItemInfo;
       localMessage.what = 1002;
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(localMessage);
+      this.jdField_a_of_type_Bhtd.sendMessage(localMessage);
       return;
     }
-    Message localMessage = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage();
+    Message localMessage = this.jdField_a_of_type_Bhtd.obtainMessage();
     localMessage.obj = paramMusicItemInfo;
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = paramMusicItemInfo;
     localMessage.what = 1001;
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(localMessage);
-  }
-  
-  public void b()
-  {
-    super.b();
-    if (QLog.isColorLevel()) {
-      QLog.i("BgmRecognitionProviderView", 2, "onProviderDismiss: invoked. info: TAG = BgmRecognitionProviderView");
-    }
-    this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager.b(this);
+    this.jdField_a_of_type_Bhtd.sendMessage(localMessage);
   }
   
   public void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BgmRecognitionProviderView", 2, "onDestroy: invoked. info: TAG = BgmRecognitionProviderView");
-    }
     super.c();
-    this.jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener = null;
-    this.jdField_a_of_type_JavaLangRunnable = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("BgmRecognitionProviderView", 2, "onProviderShow: invoked. info: TAG = BgmRecognitionProviderView");
+    }
+    this.jdField_a_of_type_Blur.a(this);
   }
   
   public void d()
   {
+    super.d();
     if (QLog.isColorLevel()) {
-      QLog.i("BgmRecognitionProviderView", 2, "doOnClickFinish: invoked. ");
+      QLog.i("BgmRecognitionProviderView", 2, "onProviderDismiss: invoked. info: TAG = BgmRecognitionProviderView");
     }
-    this.jdField_a_of_type_Boolean = true;
-    b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-    if (this.jdField_a_of_type_DovComQqImCaptureMusicQimMusicPlayer.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo))
-    {
-      this.jdField_a_of_type_DovComQqImCaptureMusicQimMusicPlayer.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-      m();
-      q();
-      return;
-    }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131439247);
-    this.jdField_a_of_type_DovComQqImCaptureMusicQimMusicPlayer.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo, this.jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener);
+    this.jdField_a_of_type_Blur.b(this);
   }
   
   public void e()
@@ -272,6 +258,29 @@ public class BgmRecognitionProviderView
     this.jdField_a_of_type_Boolean = false;
   }
   
+  public void g()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BgmRecognitionProviderView", 2, "doOnClickFinish: invoked. ");
+    }
+    this.jdField_a_of_type_Boolean = true;
+    b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+    if (this.jdField_a_of_type_Blua != null)
+    {
+      if (this.jdField_a_of_type_Blua.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo))
+      {
+        this.jdField_a_of_type_Blua.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+        o();
+        s();
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131698614);
+    this.jdField_a_of_type_Blua.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo, this.jdField_a_of_type_Blts);
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
     MusicItemInfo localMusicItemInfo = (MusicItemInfo)paramMessage.obj;
@@ -281,29 +290,31 @@ public class BgmRecognitionProviderView
     do
     {
       return false;
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131439248);
-      if (!localMusicItemInfo.jdField_a_of_type_Boolean)
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131698615);
+      if (!localMusicItemInfo.mHasCopyright)
       {
-        paramMessage = HumUtils.a(localMusicItemInfo) + " 无版权";
+        paramMessage = blud.a(localMusicItemInfo) + alud.a(2131701469);
         this.jdField_a_of_type_AndroidWidgetTextView.setText(paramMessage);
         this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
         return false;
       }
-      paramMessage = "点击播放：" + HumUtils.a(localMusicItemInfo);
+      paramMessage = alud.a(2131701466) + blud.a(localMusicItemInfo);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramMessage);
       this.jdField_b_of_type_AndroidWidgetButton.setEnabled(true);
       this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
       return false;
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131439248);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(HumUtils.a(localMusicItemInfo));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131698615);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(blud.a(localMusicItemInfo));
       this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
       this.jdField_b_of_type_AndroidWidgetButton.setEnabled(false);
       return false;
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131439249);
-      this.jdField_a_of_type_DovComQqImCaptureMusicQimMusicPlayer.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-      m();
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131698613);
+      if (this.jdField_a_of_type_Blua != null) {
+        this.jdField_a_of_type_Blua.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+      }
+      o();
     } while (!this.jdField_a_of_type_Boolean);
-    q();
+    s();
     return false;
   }
   
@@ -313,30 +324,30 @@ public class BgmRecognitionProviderView
     {
     default: 
       return;
-    case 2131367356: 
-      p();
+    case 2131363810: 
+      r();
       return;
-    case 2131368948: 
-      d();
+    case 2131363820: 
+      g();
       return;
-    case 2131368950: 
+    case 2131363651: 
       j();
       return;
-    case 2131368951: 
+    case 2131363652: 
       i();
       return;
     }
-    l();
+    n();
   }
   
-  public void setRecognitionPart(EditRecognitionPart paramEditRecognitionPart)
+  public void setRecognitionPart(bmkb parambmkb)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditRecognitionPart = paramEditRecognitionPart;
+    this.jdField_a_of_type_Bmkb = parambmkb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.music.humrecognition.view.BgmRecognitionProviderView
  * JD-Core Version:    0.7.0.1
  */

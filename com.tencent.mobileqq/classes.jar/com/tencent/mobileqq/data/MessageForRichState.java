@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
+import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.mobileqq.richstatus.RichStatus.StickerInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MessageForRichState
@@ -18,11 +18,15 @@ public class MessageForRichState
   public static final String SIGN_MSG_DATA_TEXT_KEY = "datatext";
   public static final String SIGN_MSG_FEED_ID_KEY = "feedid";
   public static final String SIGN_MSG_FEED_NUM_KEY = "feednumtext";
+  public static final String SIGN_MSG_FONT_ID = "fontId";
+  public static final String SIGN_MSG_FONT_TYPE = "fontType";
   public static final String SIGN_MSG_LOC_TEXT_KEY = "loctext";
   public static final String SIGN_MSG_LOC_TEXT_POS_KEY = "loctextpos";
   public static final String SIGN_MSG_PLAIN_TEXT_KEY = "plaintext";
   public static final String SIGN_MSG_STICKER_KEY = "sticker";
   public static final String SIGN_MSG_TIME_KEY = "time";
+  public static final String SIGN_MSG_TOPICS = "topics";
+  public static final String SIGN_MSG_TOPICS_POS = "topicsPos";
   public static final String SIGN_MSG_TPL_ID_KEY = "tplid";
   public static final String SIGN_MSG_VER_KEY = "ver";
   public static final String SIGN_MSG_ZAN_COUNT_KEY = "count";
@@ -36,14 +40,18 @@ public class MessageForRichState
   public String dataText;
   public String feedId;
   public String feedNum;
+  public int fontId;
+  public int fontType;
   public boolean isRickSignState;
   public String locPos;
   public String locText;
-  public ArrayList mStickerInfos;
+  public ArrayList<RichStatus.StickerInfo> mStickerInfos;
   public JSONArray plainText;
   public JSONObject signMsg;
   public int size;
   public long time;
+  public String topics;
+  public String topicsPos;
   public int tplId;
   public int type;
   public String ver;
@@ -75,52 +83,68 @@ public class MessageForRichState
             this.tplId = this.signMsg.optInt("tplid");
             this.count = this.signMsg.optInt("count");
             this.zanFlag = this.signMsg.optInt("zanfalg");
+            this.topics = this.signMsg.optString("topics");
+            this.topicsPos = this.signMsg.optString("topicsPos");
             JSONArray localJSONArray = this.signMsg.optJSONArray("sticker");
-            if (localJSONArray != null)
-            {
-              this.mStickerInfos = new ArrayList();
-              int i = 0;
-              if (i < localJSONArray.length())
-              {
-                JSONObject localJSONObject = localJSONArray.getJSONObject(i);
-                RichStatus.StickerInfo localStickerInfo = new RichStatus.StickerInfo();
-                localStickerInfo.jdField_a_of_type_Int = localJSONObject.optInt("id");
-                localStickerInfo.jdField_a_of_type_Float = ((float)localJSONObject.optDouble("posX"));
-                localStickerInfo.b = ((float)localJSONObject.optDouble("posY"));
-                localStickerInfo.c = ((float)localJSONObject.optDouble("width"));
-                localStickerInfo.d = ((float)localJSONObject.optDouble("height"));
-                this.mStickerInfos.add(localStickerInfo);
-                i += 1;
-                continue;
-              }
+            if (localJSONArray == null) {
+              break;
             }
+            this.mStickerInfos = new ArrayList();
+            int i = 0;
+            if (i >= localJSONArray.length()) {
+              break;
+            }
+            JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+            RichStatus.StickerInfo localStickerInfo = new RichStatus.StickerInfo();
+            localStickerInfo.id = localJSONObject.optInt("id");
+            localStickerInfo.posX = ((float)localJSONObject.optDouble("posX"));
+            localStickerInfo.posY = ((float)localJSONObject.optDouble("posY"));
+            localStickerInfo.width = ((float)localJSONObject.optDouble("width"));
+            localStickerInfo.height = ((float)localJSONObject.optDouble("height"));
+            this.mStickerInfos.add(localStickerInfo);
+            i += 1;
+            continue;
           }
         }
         else
         {
           if ((this.actionText == null) || (this.actionText.length() <= 0)) {
-            break label434;
+            break label460;
           }
           this.isRickSignState = true;
           continue;
         }
         return;
       }
-      catch (JSONException localJSONException)
+      catch (Exception localException)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("AIOSign", 2, "convert msg to json failed,error msg is:" + localJSONException.getMessage(), localJSONException);
+          QLog.d("AIOSign", 2, "convert msg to json failed,error msg is:" + localException.getMessage(), localException);
         }
         this.isRickSignState = false;
       }
-      label434:
+      label460:
       this.isRickSignState = false;
+    }
+    this.fontId = this.signMsg.optInt("fontId");
+    this.fontType = this.signMsg.optInt("fontType");
+  }
+  
+  public String getPlainMsg()
+  {
+    if ((this.plainText != null) && (this.plainText.length() > 0)) {}
+    for (Object localObject = this.plainText.optString(0);; localObject = "")
+    {
+      localObject = new RichStatus((String)localObject);
+      ((RichStatus)localObject).topicFromJson(this.topics);
+      ((RichStatus)localObject).topicPosFromJson(this.topicsPos);
+      return ((RichStatus)localObject).getPlainText();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForRichState
  * JD-Core Version:    0.7.0.1
  */

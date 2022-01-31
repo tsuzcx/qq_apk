@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Enable</string>
+    <string name="b">"%1$s won't work unless you enable Google Play services."</string>
+    <string name="c">Enable Google Play services</string>
+    <string name="d">Install</string>
+    <string name="e">"%1$s won't run without Google Play services, which are missing from your device."</string>
+    <string name="f">Get Google Play services</string>
+    <string name="g">Google Play services error</string>
+    <string name="h">%1$s is having trouble with Google Play services. Please try again.</string>
+    <string name="i">"%1$s won't run without Google Play services, which are not supported by your device."</string>
+    <string name="j">Update</string>
+    <string name="k">"%1$s won't run unless you update Google Play services."</string>
+    <string name="l">Update Google Play services</string>
+    <string name="m">"%1$s won't run without Google Play services, which are currently updating."</string>
+    <string name="n">New version of Google Play services needed. It will update itself shortly.</string>
+    <string name="o">Open on phone</string>
+    <string name="p">Sign In</string>
+    <string name="q">Sign in with Google</string>
+    <string name="r">999+</string>
+    <string name="t">Quit</string>
+</resources>

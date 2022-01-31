@@ -1,67 +1,105 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.phone.BindNumberFromPcActivity;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.activity.phone.RebindActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.PointF;
+import android.graphics.Rect;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class eoz
-  extends ContactBindObserver
+  implements Runnable
 {
-  public eoz(BindNumberFromPcActivity paramBindNumberFromPcActivity) {}
+  public static final int a = 40;
+  private List jdField_a_of_type_JavaUtilList;
+  private int b;
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public eoz(DragRelativeLayout paramDragRelativeLayout, List paramList)
   {
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.a.d();
-    int i;
-    if (paramBoolean)
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
+    this.b = -1;
+  }
+  
+  public Bitmap a()
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.b >= 0)
     {
-      i = paramBundle.getInt("k_result");
-      if ((i == 104) || (i == 0))
+      localObject1 = localObject2;
+      if (this.b >= DragRelativeLayout.a().length) {}
+    }
+    try
+    {
+      localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout.getResources(), DragRelativeLayout.a()[this.b]);
+      return localObject1;
+    }
+    catch (Throwable localThrowable)
+    {
+      do
       {
-        paramBundle = new Intent(this.a, BindVerifyActivity.class);
-        paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
-        if ((paramBundle != null) && (!this.a.isFinishing()))
-        {
-          paramBundle.addFlags(536870912);
-          this.a.startActivityForResult(paramBundle, 1);
-        }
+        localObject1 = localObject2;
+      } while (!QLog.isColorLevel());
+      QLog.e("DragRelativeLayout", 2, "decodeBitmap failed" + localThrowable, localThrowable);
+    }
+    return null;
+  }
+  
+  public PointF a()
+  {
+    PointF localPointF = new PointF();
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    {
+      View localView = (View)this.jdField_a_of_type_JavaUtilList.get(0);
+      Rect localRect = new Rect();
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout.getGlobalVisibleRect(localRect);
+      int i = localRect.left;
+      int j = localRect.top;
+      localView.getGlobalVisibleRect(localRect);
+      localRect.left -= i;
+      localRect.top -= j;
+      localRect.right -= i;
+      localRect.bottom -= j;
+      localPointF.set(localRect.centerX(), localRect.centerY());
+    }
+    return localPointF;
+  }
+  
+  public void run()
+  {
+    if (this.jdField_a_of_type_JavaUtilList.size() == 0)
+    {
+      if (this == DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout)) {
+        DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, null);
       }
+      DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, -1);
+      if (QLog.isColorLevel()) {
+        QLog.d("Drag", 2, "DONE!");
+      }
+      DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, true);
     }
     for (;;)
     {
-      this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(BindNumberFromPcActivity.a(this.a));
-      BindNumberFromPcActivity.a(this.a, null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout.invalidate();
       return;
-      if (i == 107)
+      View localView = (View)this.jdField_a_of_type_JavaUtilList.get(0);
+      if (this.b == DragRelativeLayout.a().length)
       {
-        Intent localIntent = new Intent(this.a, RebindActivity.class);
-        localIntent.putExtra("k_uin", paramBundle.getString("k_uin"));
-        localIntent.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
-        localIntent.putExtra("k_country_code", this.a.jdField_b_of_type_JavaLangString);
-        paramBundle = localIntent;
-        break;
+        this.jdField_a_of_type_JavaUtilList.remove(0);
+        this.b = -1;
       }
-      if (i == 106)
+      else
       {
-        this.a.setResult(-1);
-        this.a.finish();
-        paramBundle = null;
-        break;
+        localView.setVisibility(4);
+        this.b += 1;
       }
-      this.a.b(a(i));
-      paramBundle = null;
-      break;
-      this.a.b(2131562782);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eoz
  * JD-Core Version:    0.7.0.1
  */

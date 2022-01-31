@@ -1,17 +1,68 @@
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
+import com.tencent.mobileqq.systemmsg.SystemMsgUtils;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
-class dsm
-  implements Runnable
+public class dsm
+  extends MessageObserver
 {
-  dsm(dsl paramdsl) {}
+  public dsm(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void run()
+  protected void a(String paramString)
   {
-    String str = SubLoginActivity.a(this.a.a).getText().toString();
-    if ((str != null) && (str.equals("!@#ewaGbhkc$!!="))) {
-      SubLoginActivity.a(this.a.a).setText("");
+    if ((TroopRequestActivity.a(this.a) != null) && (TroopRequestActivity.a(this.a).isShowing()))
+    {
+      TroopRequestActivity.a(this.a).dismiss();
+      paramString = this.a.getString(2131562784);
+      QQToast.a(this.a, 1, paramString, 0).b(this.a.d());
     }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  {
+    long l2 = GroupSystemMsgController.a().b();
+    long l1 = l2;
+    if (!TextUtils.isEmpty(paramString1)) {}
+    try
+    {
+      l1 = Long.parseLong(paramString1);
+      if (!paramBoolean)
+      {
+        if (TroopRequestActivity.a(this.a) != null) {
+          TroopRequestActivity.a(this.a).dismiss();
+        }
+        if (SystemMsgUtils.a(GroupSystemMsgController.a().a(Long.valueOf(l1)), paramInt3, paramString2, paramString4)) {
+          this.a.finish();
+        }
+        return;
+      }
+      if (TroopRequestActivity.a(this.a) != null) {
+        TroopRequestActivity.a(this.a).dismiss();
+      }
+      this.a.finish();
+      SystemMsgUtils.a(GroupSystemMsgController.a().a(Long.valueOf(l1)), paramInt1, paramString2, paramInt2);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        l1 = l2;
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    this.a.a(2130837960, this.a.getString(2131561718));
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    this.a.a(2130837960, this.a.getString(2131561717));
   }
 }
 

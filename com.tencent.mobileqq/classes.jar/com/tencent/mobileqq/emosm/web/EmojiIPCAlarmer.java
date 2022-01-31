@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.emosm.web;
 
-import acas;
 import android.os.Handler;
 import android.os.HandlerThread;
+import appu;
 
 public class EmojiIPCAlarmer
 {
-  private volatile Handler a;
-  public EmojiIPCAlarmer.TimeoutObserver a;
+  private volatile Handler jdField_a_of_type_AndroidOsHandler;
+  appu jdField_a_of_type_Appu;
   
-  public EmojiIPCAlarmer(EmojiIPCAlarmer.TimeoutObserver paramTimeoutObserver)
+  public EmojiIPCAlarmer(appu paramappu)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer$TimeoutObserver = paramTimeoutObserver;
+    this.jdField_a_of_type_Appu = paramappu;
   }
   
   public Runnable a(int paramInt, long paramLong)
   {
-    acas localacas = new acas(this, paramInt);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(localacas, paramLong);
-    return localacas;
+    EmojiIPCAlarmer.TimeoutTaskWrapper localTimeoutTaskWrapper = new EmojiIPCAlarmer.TimeoutTaskWrapper(this, paramInt);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(localTimeoutTaskWrapper, paramLong);
+    return localTimeoutTaskWrapper;
   }
   
   public void a()
@@ -37,7 +37,7 @@ public class EmojiIPCAlarmer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.EmojiIPCAlarmer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForceLogoutActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
 
-class cle
-  implements Runnable
+public class cle
+  implements View.OnClickListener
 {
-  cle(cld paramcld, String paramString) {}
+  public cle(ForceLogoutActivity paramForceLogoutActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (Conversation.a(this.jdField_a_of_type_Cld.a) != null) {
-      Conversation.a(this.jdField_a_of_type_Cld.a).a(this.jdField_a_of_type_JavaLangString, 3000);
-    }
+    this.a.finish();
+    this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cle
  * JD-Core Version:    0.7.0.1
  */

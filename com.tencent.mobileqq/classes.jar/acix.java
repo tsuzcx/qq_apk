@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
-class acix
-  implements Runnable
+public class acix
+  implements bets
 {
-  acix(aciw paramaciw) {}
+  private View jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.findViewById(2131372245);
   
-  public void run()
+  public acix(BaseChatPie paramBaseChatPie) {}
+  
+  public boolean a()
   {
-    try
-    {
-      ExtendFriendSquareFragment.a(this.a.a).a(0, true);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ExtendFriendSquareFragment", 1, "onScrolled fail.", localException);
-    }
+    return (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.isDirty()) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.isDirty()) || (this.jdField_a_of_type_AndroidViewView.isDirty());
   }
 }
 

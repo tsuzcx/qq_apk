@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.biz.subscribe.videoplayer.CleanVideoPlayerView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public class ymt
-  implements Runnable
+class ymt
+  implements vwf
 {
-  public ymt(ApolloSurfaceView paramApolloSurfaceView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
+  ymt(ymq paramymq, afkf paramafkf, CleanVideoPlayerView paramCleanVideoPlayerView) {}
   
-  public void run()
+  public void a(vwa paramvwa)
   {
-    ApolloSurfaceView.nativeTouchInput(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().a, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
+    Long localLong = (Long)ymq.b(this.jdField_a_of_type_Ymq).get(Integer.valueOf(this.jdField_a_of_type_Afkf.b));
+    if ((localLong != null) && (localLong.longValue() > 0L))
+    {
+      paramvwa.a(localLong.longValue());
+      QLog.d("SubscribePlayerManager", 4, "playInner seekTo: " + localLong);
+    }
+    this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerCleanVideoPlayerView.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ymt
  * JD-Core Version:    0.7.0.1
  */

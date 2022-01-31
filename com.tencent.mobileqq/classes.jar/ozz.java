@@ -1,27 +1,43 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.PopupWindow;
-import com.tencent.biz.ui.PopupWindows;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 
 public class ozz
-  implements View.OnTouchListener
+  implements rpj
 {
-  public ozz(PopupWindows paramPopupWindows) {}
+  public ChannelCoverInfo a;
+  public String a;
+  private boolean a;
+  public String b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ozz(ChannelCoverInfo paramChannelCoverInfo, String paramString1, String paramString2)
   {
-    if (paramMotionEvent.getAction() == 4)
-    {
-      this.a.a.dismiss();
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo = paramChannelCoverInfo;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ozz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 
 public class akbg
-  implements Runnable
+  extends akit
 {
-  public akbg(AntiFraudConfigFileUtil paramAntiFraudConfigFileUtil, String paramString) {}
-  
-  public void run()
-  {
-    if (!AntiFraudConfigFileUtil.a(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil).containsKey(this.jdField_a_of_type_JavaLangString)) {
-      AntiFraudConfigFileUtil.a(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil, this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public View a;
+  public Button a;
+  public CheckBox a;
+  public TextView a;
+  public TroopMemberInfo a;
+  public View b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbg
  * JD-Core Version:    0.7.0.1
  */

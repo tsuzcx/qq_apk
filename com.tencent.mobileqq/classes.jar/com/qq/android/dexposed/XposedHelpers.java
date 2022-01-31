@@ -4,7 +4,6 @@ import android.content.res.AssetManager;
 import android.content.res.Resources;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -32,7 +31,6 @@ public class XposedHelpers
   }
   
   public static byte[] assetAsByteArray(Resources paramResources, String paramString)
-    throws IOException
   {
     paramResources = paramResources.getAssets().open(paramString);
     paramString = new ByteArrayOutputStream();
@@ -67,7 +65,7 @@ public class XposedHelpers
     }
     catch (InvocationTargetException paramObject)
     {
-      throw new InvocationTargetError(paramObject.getCause());
+      throw new XposedHelpers.InvocationTargetError(paramObject.getCause());
     }
   }
   
@@ -89,7 +87,7 @@ public class XposedHelpers
     }
     catch (InvocationTargetException paramObject)
     {
-      throw new InvocationTargetError(paramObject.getCause());
+      throw new XposedHelpers.InvocationTargetError(paramObject.getCause());
     }
   }
   
@@ -111,7 +109,7 @@ public class XposedHelpers
     }
     catch (InvocationTargetException paramClass)
     {
-      throw new InvocationTargetError(paramClass.getCause());
+      throw new XposedHelpers.InvocationTargetError(paramClass.getCause());
     }
   }
   
@@ -133,7 +131,7 @@ public class XposedHelpers
     }
     catch (InvocationTargetException paramClass)
     {
-      throw new InvocationTargetError(paramClass.getCause());
+      throw new XposedHelpers.InvocationTargetError(paramClass.getCause());
     }
   }
   
@@ -150,7 +148,7 @@ public class XposedHelpers
     }
     catch (ClassNotFoundException paramString)
     {
-      throw new ClassNotFoundError(paramString);
+      throw new XposedHelpers.ClassNotFoundError(paramString);
     }
   }
   
@@ -179,8 +177,8 @@ public class XposedHelpers
     }
     catch (NoSuchMethodError paramVarArgs)
     {
-      paramClass = paramClass.getDeclaredConstructors();
-      int j = paramClass.length;
+      paramVarArgs = paramClass.getDeclaredConstructors();
+      int j = paramVarArgs.length;
       int i = 0;
       for (;;)
       {
@@ -191,7 +189,7 @@ public class XposedHelpers
           }
           throw new NullPointerException();
         }
-        paramVarArgs = paramClass[i];
+        paramClass = paramVarArgs[i];
         i += 1;
       }
       paramClass = new NoSuchMethodError((String)localObject);
@@ -234,17 +232,19 @@ public class XposedHelpers
     localObject = ((StringBuilder)localObject).toString();
     if (constructorCache.containsKey(localObject))
     {
-      paramClass = (Constructor)constructorCache.get(localObject);
-      if (paramClass == null) {
-        throw new NoSuchMethodError((String)localObject);
+      paramVarArgs = (Constructor)constructorCache.get(localObject);
+      paramClass = paramVarArgs;
+      if (paramVarArgs != null) {
+        break label89;
       }
-      return paramClass;
+      throw new NoSuchMethodError((String)localObject);
     }
     try
     {
       paramClass = paramClass.getDeclaredConstructor(paramVarArgs);
       paramClass.setAccessible(true);
       constructorCache.put(localObject, paramClass);
+      label89:
       return paramClass;
     }
     catch (NoSuchMethodException paramClass)
@@ -262,17 +262,19 @@ public class XposedHelpers
     localObject = ((StringBuilder)localObject).toString();
     if (fieldCache.containsKey(localObject))
     {
-      paramClass = (Field)fieldCache.get(localObject);
-      if (paramClass == null) {
-        throw new NoSuchFieldError((String)localObject);
+      paramString = (Field)fieldCache.get(localObject);
+      paramClass = paramString;
+      if (paramString != null) {
+        break label86;
       }
-      return paramClass;
+      throw new NoSuchFieldError((String)localObject);
     }
     try
     {
       paramClass = findFieldRecursiveImpl(paramClass, paramString);
       paramClass.setAccessible(true);
       fieldCache.put(localObject, paramClass);
+      label86:
       return paramClass;
     }
     catch (NoSuchFieldException paramClass)
@@ -283,7 +285,6 @@ public class XposedHelpers
   }
   
   private static Field findFieldRecursiveImpl(Class<?> paramClass, String paramString)
-    throws NoSuchFieldException
   {
     try
     {
@@ -350,43 +351,46 @@ public class XposedHelpers
       }
       throw new NoSuchMethodError((String)localObject);
     }
+    label111:
+    int i;
     try
     {
       paramString = findMethodExact(paramClass, paramString, paramVarArgs);
       methodCache.put(localObject, paramString);
       paramClass = paramString;
-      label111:
       return paramClass;
     }
     catch (NoSuchMethodError paramString)
     {
-      int i = 1;
-      paramString = paramClass.getDeclaredMethods();
-      int k = paramString.length;
+      i = 1;
+    }
+    for (;;)
+    {
+      paramVarArgs = paramClass.getDeclaredMethods();
+      int k = paramVarArgs.length;
       int j = 0;
       for (;;)
       {
         if (j >= k)
         {
-          i = 0;
-          paramString = paramClass.getSuperclass();
-          paramClass = paramString;
-          if (paramString != null) {
-            break;
+          paramClass = paramClass.getSuperclass();
+          if (paramClass != null) {
+            break label206;
           }
           if (0 == 0) {
-            break label188;
+            break;
           }
           throw new NullPointerException();
         }
-        paramVarArgs = paramString[j];
-        if ((i == 0) && (Modifier.isPrivate(paramVarArgs.getModifiers()))) {}
+        paramString = paramVarArgs[j];
+        if ((i == 0) && (Modifier.isPrivate(paramString.getModifiers()))) {}
         j += 1;
       }
-      label188:
       paramClass = new NoSuchMethodError((String)localObject);
       methodCache.put(localObject, null);
       throw paramClass;
+      label206:
+      i = 0;
     }
   }
   
@@ -426,17 +430,19 @@ public class XposedHelpers
     localObject = ((StringBuilder)localObject).toString();
     if (methodCache.containsKey(localObject))
     {
-      paramClass = (Method)methodCache.get(localObject);
-      if (paramClass == null) {
-        throw new NoSuchMethodError((String)localObject);
+      paramString = (Method)methodCache.get(localObject);
+      paramClass = paramString;
+      if (paramString != null) {
+        break label103;
       }
-      return paramClass;
+      throw new NoSuchMethodError((String)localObject);
     }
     try
     {
       paramClass = paramClass.getDeclaredMethod(paramString, paramVarArgs);
       paramClass.setAccessible(true);
       methodCache.put(localObject, paramClass);
+      label103:
       return paramClass;
     }
     catch (NoSuchMethodException paramClass)
@@ -448,8 +454,8 @@ public class XposedHelpers
   
   public static Method findMethodExact(Class<?> paramClass, String paramString, Object... paramVarArgs)
   {
-    Object localObject1 = null;
     int i = paramVarArgs.length - 1;
+    Object localObject1 = null;
     if (i < 0)
     {
       paramVarArgs = localObject1;
@@ -460,7 +466,7 @@ public class XposedHelpers
     }
     Object localObject3 = paramVarArgs[i];
     if (localObject3 == null) {
-      throw new ClassNotFoundError("parameter type must not be null", null);
+      throw new XposedHelpers.ClassNotFoundError("parameter type must not be null", null);
     }
     if ((localObject3 instanceof XC_MethodHook)) {}
     for (;;)
@@ -486,7 +492,7 @@ public class XposedHelpers
       }
     }
     label141:
-    throw new ClassNotFoundError("parameter type must either be specified as Class or String", null);
+    throw new XposedHelpers.ClassNotFoundError("parameter type must either be specified as Class or String", null);
   }
   
   public static Method findMethodExact(String paramString1, ClassLoader paramClassLoader, String paramString2, Object... paramVarArgs)
@@ -498,9 +504,9 @@ public class XposedHelpers
   {
     LinkedList localLinkedList = new LinkedList();
     paramClass1 = paramClass1.getDeclaredMethods();
-    int m = paramClass1.length;
+    int k = paramClass1.length;
     int i = 0;
-    if (i >= m) {
+    if (i >= k) {
       return (Method[])localLinkedList.toArray(new Method[localLinkedList.size()]);
     }
     Object localObject = paramClass1[i];
@@ -512,26 +518,25 @@ public class XposedHelpers
       break;
       arrayOfClass = localObject.getParameterTypes();
     } while (paramVarArgs.length != arrayOfClass.length);
-    int k = 1;
     int j = 0;
     for (;;)
     {
       if (j >= paramVarArgs.length) {}
-      for (j = k;; j = 0)
+      for (j = 1;; j = 0)
       {
         if (j == 0) {
-          break label144;
+          break label140;
         }
         localObject.setAccessible(true);
         localLinkedList.add(localObject);
         break;
         if (paramVarArgs[j] == arrayOfClass[j]) {
-          break label146;
+          break label142;
         }
       }
-      label144:
+      label140:
       break;
-      label146:
+      label142:
       j += 1;
     }
   }
@@ -550,12 +555,6 @@ public class XposedHelpers
       if (paramObject == null) {
         return null;
       }
-      try
-      {
-        paramString = paramObject.get(paramString);
-        return paramString;
-      }
-      finally {}
     }
   }
   
@@ -701,7 +700,6 @@ public class XposedHelpers
   }
   
   public static String getMD5Sum(String paramString)
-    throws IOException
   {
     try
     {
@@ -992,7 +990,7 @@ public class XposedHelpers
     }
     catch (InvocationTargetException paramClass)
     {
-      throw new InvocationTargetError(paramClass.getCause());
+      throw new XposedHelpers.InvocationTargetError(paramClass.getCause());
     }
     catch (InstantiationException paramClass)
     {
@@ -1018,7 +1016,7 @@ public class XposedHelpers
     }
     catch (InvocationTargetException paramClass)
     {
-      throw new InvocationTargetError(paramClass.getCause());
+      throw new XposedHelpers.InvocationTargetError(paramClass.getCause());
     }
     catch (InstantiationException paramClass)
     {
@@ -1040,12 +1038,6 @@ public class XposedHelpers
       if (paramObject == null) {
         return null;
       }
-      try
-      {
-        paramString = paramObject.remove(paramString);
-        return paramString;
-      }
-      finally {}
     }
   }
   
@@ -1067,15 +1059,20 @@ public class XposedHelpers
     if (paramString == null) {
       throw new NullPointerException("key must not be null");
     }
-    synchronized (additionalFields)
+    for (;;)
     {
-      HashMap localHashMap2 = (HashMap)additionalFields.get(paramObject1);
-      localHashMap1 = localHashMap2;
-      if (localHashMap2 == null)
+      HashMap localHashMap;
+      synchronized (additionalFields)
       {
-        localHashMap1 = new HashMap();
-        additionalFields.put(paramObject1, localHashMap1);
+        localHashMap = (HashMap)additionalFields.get(paramObject1);
+        if (localHashMap == null)
+        {
+          localHashMap = new HashMap();
+          additionalFields.put(paramObject1, localHashMap);
+          paramObject1 = localHashMap;
+        }
       }
+      paramObject1 = localHashMap;
     }
   }
   
@@ -1412,42 +1409,10 @@ public class XposedHelpers
       throw paramClass;
     }
   }
-  
-  public static class ClassNotFoundError
-    extends Error
-  {
-    private static final long serialVersionUID = -1070936889459514628L;
-    
-    public ClassNotFoundError(String paramString, Throwable paramThrowable)
-    {
-      super(paramThrowable);
-    }
-    
-    public ClassNotFoundError(Throwable paramThrowable)
-    {
-      super();
-    }
-  }
-  
-  public static class InvocationTargetError
-    extends Error
-  {
-    private static final long serialVersionUID = -1070936889459514628L;
-    
-    public InvocationTargetError(String paramString, Throwable paramThrowable)
-    {
-      super(paramThrowable);
-    }
-    
-    public InvocationTargetError(Throwable paramThrowable)
-    {
-      super();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.qq.android.dexposed.XposedHelpers
  * JD-Core Version:    0.7.0.1
  */

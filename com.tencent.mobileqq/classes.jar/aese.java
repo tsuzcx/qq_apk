@@ -1,42 +1,23 @@
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.utils.QualityReporter;
-import com.tencent.mobileqq.nearby.now.view.MagazinePlayerView;
-import com.tencent.mobileqq.nearby.now.view.PlayResultListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Pic;
 
-public class aese
-  implements PlayResultListener
+public final class aese
+  implements Parcelable.Creator<ForwardUtils.Section_Pic>
 {
-  public aese(StoryPlayController paramStoryPlayController) {}
-  
-  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public ForwardUtils.Section_Pic a(Parcel paramParcel)
   {
-    int j = 1;
-    int i = 1;
-    if (paramInt1 != 100)
-    {
-      paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewMagazinePlayerView.a.a;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewMagazinePlayerView.c()) {}
-      for (;;)
-      {
-        QualityReporter.a(paramString1, i, String.valueOf(paramInt1), String.valueOf(paramInt2));
-        return;
-        i = 2;
-      }
-    }
-    QualityReporter.e();
-    paramString1 = StoryPlayController.a(this.a);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewMagazinePlayerView.c()) {}
-    for (paramInt1 = j;; paramInt1 = 2)
-    {
-      QualityReporter.a(paramString1, paramInt1, this.a.jdField_a_of_type_Boolean);
-      return;
-    }
+    return new ForwardUtils.Section_Pic(paramParcel);
+  }
+  
+  public ForwardUtils.Section_Pic[] a(int paramInt)
+  {
+    return new ForwardUtils.Section_Pic[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aese
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.feedback.eup.CrashReport;
-import ieu;
-import iev;
+import iaa;
+import iab;
 
 public class PluginCrashReceiver
   extends BroadcastReceiver
@@ -43,11 +43,11 @@ public class PluginCrashReceiver
       }
       if ("com.tencent.mobileqq.ACTION_PLUGIN_STARTUP_FAILED".equals(str))
       {
-        new iev(paramIntent).execute(new String[] { "" });
+        new iab(paramIntent).execute(new String[] { "" });
         return;
       }
     } while (!"com.tencent.mobileqq.ACTION_PLUGIN_DIR_INFO_LOG".equals(str));
-    new ieu(paramContext).execute(new String[] { "" });
+    new iaa(paramContext).execute(new String[] { "" });
   }
 }
 

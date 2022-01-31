@@ -46,15 +46,15 @@ public class NearHornObserver
     a((String)paramObject[0], ((Integer)paramObject[1]).intValue());
   }
   
-  protected void a(String paramString, int paramInt) {}
+  public void a(String paramString, int paramInt) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString) {}
+  public void a(boolean paramBoolean, int paramInt, String paramString) {}
   
-  protected void a(boolean paramBoolean, List paramList, int paramInt, String paramString) {}
+  public void a(boolean paramBoolean, List paramList, int paramInt, String paramString) {}
   
-  protected void a(boolean paramBoolean, List paramList, Boolean paramBoolean1, int paramInt, String paramString) {}
+  public void a(boolean paramBoolean, List paramList, Boolean paramBoolean1, int paramInt, String paramString) {}
   
-  protected void a(boolean paramBoolean, List paramList, Boolean paramBoolean1, Boolean paramBoolean2, int paramInt, String paramString) {}
+  public void a(boolean paramBoolean, List paramList, Boolean paramBoolean1, Boolean paramBoolean2, int paramInt, String paramString) {}
 }
 
 

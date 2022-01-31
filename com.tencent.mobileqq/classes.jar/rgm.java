@@ -1,22 +1,22 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
-public class rgm
-  implements Runnable
+class rgm
+  implements View.OnLayoutChangeListener
 {
-  public rgm(AccountManageActivity paramAccountManageActivity) {}
+  rgm(rgl paramrgl) {}
   
-  public void run()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    long l = this.a.app.a();
-    SubAccountManager localSubAccountManager = (SubAccountManager)this.a.app.getManager(60);
-    this.a.runOnUiThread(new rgn(this, l));
+    VideoFeedsRecommendFragment.a(this.a.a).removeOnLayoutChangeListener(this);
+    VideoFeedsRecommendFragment.a(this.a.a).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rgm
  * JD-Core Version:    0.7.0.1
  */

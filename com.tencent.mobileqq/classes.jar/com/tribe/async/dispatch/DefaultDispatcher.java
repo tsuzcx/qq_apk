@@ -1,6 +1,5 @@
 package com.tribe.async.dispatch;
 
-import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.NonNull;
@@ -8,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import com.tribe.async.log.SLog;
 import com.tribe.async.utils.AssertUtils;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,37 +20,20 @@ public class DefaultDispatcher
 {
   private static final int DISPATCH = 16;
   private static final String TAG = "async.dispatch.DefaultDispatcher";
-  private final ThreadLocal<PostingThreadState> mCurrentPostingThreadState = new ThreadLocal()
-  {
-    protected DefaultDispatcher.PostingThreadState initialValue()
-    {
-      return new DefaultDispatcher.PostingThreadState();
-    }
-  };
+  private final ThreadLocal<DefaultDispatcher.PostingThreadState> mCurrentPostingThreadState = new DefaultDispatcher.1(this);
   private final Map<Integer, CopyOnWriteArraySet<Object>> mGroupsBySubscriber = new ConcurrentHashMap(10);
-  private final InternalHandler mHandler;
+  private final DefaultDispatcher.InternalHandler mHandler;
   private final HandlerPoster mHandlerPoster;
   private final Looper mLooper;
-  private final Map<SubscriberKey, CopyOnWriteArraySet<Wrapper>> mSubscribersByKey = new ConcurrentHashMap(10);
+  private final Map<DefaultDispatcher.SubscriberKey, CopyOnWriteArraySet<DefaultDispatcher.Wrapper>> mSubscribersByKey = new ConcurrentHashMap(10);
   
   public DefaultDispatcher(Looper paramLooper)
   {
     AssertUtils.checkNotNull(paramLooper);
     this.mLooper = paramLooper;
-    this.mHandler = new InternalHandler(paramLooper);
+    this.mHandler = new DefaultDispatcher.InternalHandler(this, paramLooper);
     this.mHandlerPoster = HandlerPosterManager.instance().getHandlerPoster(paramLooper);
-    this.mHandlerPoster.addPosterRunner(new HandlerPoster.PosterRunner()
-    {
-      public boolean acceptTag(Object paramAnonymousObject)
-      {
-        return "async.dispatch.DefaultDispatcher" == paramAnonymousObject;
-      }
-      
-      public void run(@NonNull String paramAnonymousString, @NonNull Dispatcher.Dispatchable paramAnonymousDispatchable)
-      {
-        DefaultDispatcher.this.doDispatch(paramAnonymousString, paramAnonymousDispatchable);
-      }
-    });
+    this.mHandlerPoster.addPosterRunner(new DefaultDispatcher.2(this));
   }
   
   private void dispatchSingle(Object paramObject, String paramString, Dispatcher.Dispatchable paramDispatchable)
@@ -68,7 +49,7 @@ public class DefaultDispatcher
     doDispatch(paramString, paramDispatchable);
   }
   
-  private void insertSubscriber(Object paramObject, Wrapper paramWrapper)
+  private void insertSubscriber(Object paramObject, DefaultDispatcher.Wrapper paramWrapper)
   {
     AssertUtils.checkNotNull(paramObject);
     AssertUtils.checkNotNull(paramWrapper);
@@ -81,7 +62,7 @@ public class DefaultDispatcher
     Iterator localIterator = ((List)localObject).iterator();
     while (localIterator.hasNext())
     {
-      SubscriberKey localSubscriberKey = makeKey((Class)localIterator.next(), paramObject);
+      DefaultDispatcher.SubscriberKey localSubscriberKey = makeKey((Class)localIterator.next(), paramObject);
       CopyOnWriteArraySet localCopyOnWriteArraySet = (CopyOnWriteArraySet)this.mSubscribersByKey.get(localSubscriberKey);
       localObject = localCopyOnWriteArraySet;
       if (localCopyOnWriteArraySet == null)
@@ -108,14 +89,14 @@ public class DefaultDispatcher
     localCopyOnWriteArraySet1.add(paramObject);
   }
   
-  private SubscriberKey makeKey(Class<? extends Dispatcher.Dispatchable> paramClass, Object paramObject)
+  private DefaultDispatcher.SubscriberKey makeKey(Class<? extends Dispatcher.Dispatchable> paramClass, Object paramObject)
   {
     AssertUtils.checkNotNull(paramClass);
     AssertUtils.checkNotNull(paramObject);
-    return new SubscriberKey(paramClass, paramObject);
+    return new DefaultDispatcher.SubscriberKey(paramClass, paramObject);
   }
   
-  private void notifySubscribers(Set<Wrapper> paramSet, SubscriberKey paramSubscriberKey, Dispatcher.Dispatchable paramDispatchable)
+  private void notifySubscribers(Set<DefaultDispatcher.Wrapper> paramSet, DefaultDispatcher.SubscriberKey paramSubscriberKey, Dispatcher.Dispatchable paramDispatchable)
   {
     AssertUtils.checkNotNull(paramSet);
     AssertUtils.checkNotNull(paramSubscriberKey);
@@ -125,7 +106,7 @@ public class DefaultDispatcher
     paramSubscriberKey = new ArrayList(1);
     while (localIterator.hasNext())
     {
-      Wrapper localWrapper = (Wrapper)localIterator.next();
+      DefaultDispatcher.Wrapper localWrapper = (DefaultDispatcher.Wrapper)localIterator.next();
       Subscriber localSubscriber = localWrapper.get();
       if (localSubscriber == null) {
         paramSubscriberKey.add(localWrapper);
@@ -136,7 +117,7 @@ public class DefaultDispatcher
     paramSubscriberKey = paramSubscriberKey.iterator();
     while (paramSubscriberKey.hasNext())
     {
-      paramDispatchable = (Wrapper)paramSubscriberKey.next();
+      paramDispatchable = (DefaultDispatcher.Wrapper)paramSubscriberKey.next();
       paramSet.remove(paramDispatchable);
       this.mGroupsBySubscriber.remove(Integer.valueOf(paramDispatchable.hashCode()));
     }
@@ -155,7 +136,7 @@ public class DefaultDispatcher
       Iterator localIterator = paramObject.iterator();
       while (localIterator.hasNext())
       {
-        Wrapper localWrapper = (Wrapper)localIterator.next();
+        DefaultDispatcher.Wrapper localWrapper = (DefaultDispatcher.Wrapper)localIterator.next();
         Subscriber localSubscriber = localWrapper.get();
         if ((localSubscriber != null) && (localSubscriber.equals(paramSubscriber))) {
           localArrayList.add(localWrapper);
@@ -178,7 +159,7 @@ public class DefaultDispatcher
     }
     paramString = PendingPost.obtainPendingPost("async.dispatch.DefaultDispatcher", str, paramDispatchable);
     this.mHandler.removeMessages(16, paramString);
-    ((PostingThreadState)this.mCurrentPostingThreadState.get()).eventQueue.remove(paramString);
+    ((DefaultDispatcher.PostingThreadState)this.mCurrentPostingThreadState.get()).eventQueue.remove(paramString);
   }
   
   public void dispatch(Dispatcher.Dispatchable paramDispatchable)
@@ -193,7 +174,7 @@ public class DefaultDispatcher
     if (TextUtils.isEmpty(paramString)) {
       str = "default_group";
     }
-    paramString = (PostingThreadState)this.mCurrentPostingThreadState.get();
+    paramString = (DefaultDispatcher.PostingThreadState)this.mCurrentPostingThreadState.get();
     List localList = paramString.eventQueue;
     localList.add(PendingPost.obtainPendingPost("async.dispatch.DefaultDispatcher", str, paramDispatchable));
     if (!paramString.isPosting)
@@ -249,25 +230,30 @@ public class DefaultDispatcher
   
   void doDispatch(Object paramObject, Dispatcher.Dispatchable paramDispatchable)
   {
+    int j = 1;
     AssertUtils.checkNotNull(paramDispatchable);
     AssertUtils.checkNotNull(paramObject);
     int i = 0;
-    SubscriberKey localSubscriberKey = makeKey(paramDispatchable.getClass(), paramObject);
+    DefaultDispatcher.SubscriberKey localSubscriberKey = makeKey(paramDispatchable.getClass(), paramObject);
     CopyOnWriteArraySet localCopyOnWriteArraySet = (CopyOnWriteArraySet)this.mSubscribersByKey.get(localSubscriberKey);
     if (localCopyOnWriteArraySet != null)
     {
-      i = 1;
       notifySubscribers(localCopyOnWriteArraySet, localSubscriberKey, paramDispatchable);
+      i = 1;
     }
     localSubscriberKey = makeKey(paramDispatchable.getClass(), "root_group");
     localCopyOnWriteArraySet = (CopyOnWriteArraySet)this.mSubscribersByKey.get(localSubscriberKey);
     if (localCopyOnWriteArraySet != null)
     {
-      i = 1;
       notifySubscribers(localCopyOnWriteArraySet, localSubscriberKey, paramDispatchable);
+      i = j;
     }
-    if (i != 0) {
-      SLog.d("async.dispatch.DefaultDispatcher", "group = " + paramObject + ", dispatchable = " + paramDispatchable);
+    for (;;)
+    {
+      if (i != 0) {
+        SLog.d("async.dispatch.DefaultDispatcher", "group = " + paramObject + ", dispatchable = " + paramDispatchable);
+      }
+      return;
     }
   }
   
@@ -293,7 +279,7 @@ public class DefaultDispatcher
     for (boolean bool = true;; bool = false)
     {
       AssertUtils.assertTrue(bool);
-      insertSubscriber(str, new DefaultWrpper(paramSubscriber));
+      insertSubscriber(str, new DefaultDispatcher.DefaultWrpper(paramSubscriber));
       return;
     }
   }
@@ -301,7 +287,7 @@ public class DefaultDispatcher
   public void registerWeakSubscriber(Subscriber paramSubscriber)
   {
     AssertUtils.checkNotNull(paramSubscriber);
-    insertSubscriber("default_group", new WeakWrapper(paramSubscriber));
+    insertSubscriber("default_group", new DefaultDispatcher.WeakWrapper(paramSubscriber));
   }
   
   public void registerWeakSubscriber(@Nullable String paramString, Subscriber paramSubscriber)
@@ -311,7 +297,7 @@ public class DefaultDispatcher
     if (TextUtils.isEmpty(paramString)) {
       str = "default_group";
     }
-    insertSubscriber(str, new WeakWrapper(paramSubscriber));
+    insertSubscriber(str, new DefaultDispatcher.WeakWrapper(paramSubscriber));
   }
   
   public void unRegisterSubscriber(Subscriber paramSubscriber)
@@ -344,169 +330,10 @@ public class DefaultDispatcher
     }
     this.mGroupsBySubscriber.remove(Integer.valueOf(paramSubscriber.hashCode()));
   }
-  
-  private static class DefaultWrpper
-    implements DefaultDispatcher.Wrapper
-  {
-    private final Subscriber mSubscriber;
-    
-    public DefaultWrpper(Subscriber paramSubscriber)
-    {
-      AssertUtils.checkNotNull(paramSubscriber);
-      this.mSubscriber = paramSubscriber;
-    }
-    
-    public boolean equals(Object paramObject)
-    {
-      if (paramObject == null) {}
-      while (!(paramObject instanceof DefaultWrpper)) {
-        return false;
-      }
-      paramObject = (DefaultWrpper)paramObject;
-      return this.mSubscriber.equals(paramObject.get());
-    }
-    
-    public Subscriber get()
-    {
-      return this.mSubscriber;
-    }
-    
-    public int hashCode()
-    {
-      return this.mSubscriber.hashCode();
-    }
-    
-    public String toString()
-    {
-      return "DefaultWrapper_" + this.mSubscriber.toString();
-    }
-  }
-  
-  private class InternalHandler
-    extends Handler
-  {
-    public InternalHandler(Looper paramLooper)
-    {
-      super();
-    }
-    
-    public void handleMessage(Message paramMessage)
-    {
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      }
-      paramMessage = (PendingPost)paramMessage.obj;
-      DefaultDispatcher.this.mHandlerPoster.enqueue(paramMessage.tag, paramMessage.group, paramMessage.dispatchable);
-      PendingPost.releasePendingPost(paramMessage);
-    }
-  }
-  
-  static final class PostingThreadState
-  {
-    boolean canceled;
-    final List<PendingPost> eventQueue = new ArrayList();
-    boolean isMainThread;
-    boolean isPosting;
-  }
-  
-  private static class SubscriberKey
-  {
-    public final Class<? extends Dispatcher.Dispatchable> dispatchClass;
-    public final Object group;
-    
-    public SubscriberKey(Class<? extends Dispatcher.Dispatchable> paramClass, Object paramObject)
-    {
-      AssertUtils.checkNotNull(paramClass);
-      AssertUtils.checkNotNull(paramObject);
-      this.dispatchClass = paramClass;
-      this.group = paramObject;
-    }
-    
-    public boolean equals(Object paramObject)
-    {
-      if (!(paramObject instanceof SubscriberKey)) {
-        return false;
-      }
-      if ((this.dispatchClass.equals(((SubscriberKey)paramObject).dispatchClass)) && (this.group.equals(((SubscriberKey)paramObject).group))) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
-      }
-    }
-    
-    public int hashCode()
-    {
-      return this.dispatchClass.hashCode();
-    }
-    
-    public String toString()
-    {
-      return "SubscriberKey{dispatchClass=" + this.dispatchClass + ", group=" + this.group + '}';
-    }
-  }
-  
-  private static class WeakWrapper
-    implements DefaultDispatcher.Wrapper
-  {
-    private int mHashCode;
-    private WeakReference<Subscriber> mSubscriberRef;
-    
-    public WeakWrapper(Subscriber paramSubscriber)
-    {
-      AssertUtils.checkNotNull(paramSubscriber);
-      this.mHashCode = paramSubscriber.hashCode();
-      this.mSubscriberRef = new WeakReference(paramSubscriber);
-    }
-    
-    public boolean equals(Object paramObject)
-    {
-      if (paramObject == null) {}
-      Object localObject;
-      do
-      {
-        do
-        {
-          return false;
-        } while (!(paramObject instanceof WeakWrapper));
-        localObject = (WeakWrapper)paramObject;
-        paramObject = get();
-        localObject = ((WeakWrapper)localObject).get();
-        if ((paramObject == null) && (localObject == null)) {
-          return true;
-        }
-      } while (paramObject == null);
-      return paramObject.equals(localObject);
-    }
-    
-    public Subscriber get()
-    {
-      return (Subscriber)this.mSubscriberRef.get();
-    }
-    
-    public int hashCode()
-    {
-      return this.mHashCode;
-    }
-    
-    public String toString()
-    {
-      Object localObject = get();
-      if (localObject == null) {}
-      for (localObject = this.mHashCode + "";; localObject = localObject.toString()) {
-        return "WeakWrapper_" + (String)localObject;
-      }
-    }
-  }
-  
-  private static abstract interface Wrapper
-  {
-    public abstract Subscriber get();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tribe.async.dispatch.DefaultDispatcher
  * JD-Core Version:    0.7.0.1
  */

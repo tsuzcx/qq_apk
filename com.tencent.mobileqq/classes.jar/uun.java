@@ -1,27 +1,21 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
-
 public class uun
-  implements ArkAppCenter.OnGetAppIcon
 {
-  public uun(ArkAppItemBubbleBuilder.Holder paramHolder1, ArkAppItemBubbleBuilder.Holder paramHolder2) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public uun(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    if (paramBitmap != null)
-    {
-      this.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uun
  * JD-Core Version:    0.7.0.1
  */

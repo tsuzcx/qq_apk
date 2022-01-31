@@ -1,43 +1,24 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-
-public class uut
-  extends SosoInterface.OnLocationListener
+class uut
+  implements uxw
 {
-  public uut(ArkAppLocationManager paramArkAppLocationManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  uut(uus paramuus) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, uxs paramuxs)
   {
-    if (paramInt2 < 3) {
-      return;
-    }
-    b(paramInt1, null);
-  }
-  
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    b(paramInt, paramSosoLbsInfo);
-  }
-  
-  protected void b(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {}
-    for (boolean bool = true;; bool = false)
+    wxe.b("AddressDataProvider", "AddressLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramuxs != null))
     {
-      ArkAppCenter.a().post(new uuu(this, bool, paramSosoLbsInfo));
+      wxe.a("AddressDataProvider", "AddressLbsListener: onLbsUpdate, [longitude=%s, latitude=%s]", Integer.valueOf(paramuxs.b), Integer.valueOf(paramuxs.a));
+      this.a.a(paramuxs.b, paramuxs.a);
       return;
     }
+    wxe.e("AddressDataProvider", "AddressLbsListener: onLbsUpdate, failed.");
+    this.a.a(false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uut
  * JD-Core Version:    0.7.0.1
  */

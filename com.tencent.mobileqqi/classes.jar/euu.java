@@ -1,10 +1,15 @@
-import android.widget.Button;
+import android.media.SoundPool;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 class euu
+  implements Runnable
 {
-  public Button a;
+  euu(eut parameut) {}
   
-  private euu(eur parameur) {}
+  public void run()
+  {
+    VoipDialInterfaceActivity.a(this.a.a).play(VoipDialInterfaceActivity.a(this.a.a), 1.0F, 1.0F, 0, 0, 1.0F);
+  }
 }
 
 

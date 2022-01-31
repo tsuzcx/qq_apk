@@ -1,33 +1,37 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFailedAdapter;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.PublishableMomentInfo;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.ShortVideoMomentFeedInfo;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.data.ArkFlashChatMessage;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
 
-public class afka
+class afka
   implements DialogInterface.OnClickListener
 {
-  public afka(NearbyMomentFailedAdapter paramNearbyMomentFailedAdapter, PublishableMomentInfo paramPublishableMomentInfo) {}
+  afka(afjw paramafjw, MessageForArkFlashChat paramMessageForArkFlashChat) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataPublishableMomentInfo instanceof ShortVideoMomentFeedInfo))
-    {
-      paramDialogInterface = (ShortVideoMomentFeedInfo)this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataPublishableMomentInfo;
-      if (paramDialogInterface.b % 1000L > 500L) {}
-      for (paramInt = (int)paramDialogInterface.b / 1000 + 1;; paramInt = (int)paramDialogInterface.b / 1000)
-      {
-        new NowVideoReporter().h("video_public").i("de_republic").a(String.valueOf(paramInt)).d("5").c("1").e("2").b(NearbyMomentFailedAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFailedAdapter));
-        return;
+    paramDialogInterface = (MessageForArkFlashChat)azaf.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat);
+    if (paramDialogInterface.msgData == null) {
+      if (paramDialogInterface.ark_app_message == null) {
+        ArkAppCenter.c("ArkApp", String.format("resendMessage, msgData and ark_app_message are null", new Object[0]));
       }
     }
-    new NowVideoReporter().h("video_public").i("de_republic").d("5").c("2").e("2").b(NearbyMomentFailedAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFailedAdapter));
+    while (this.jdField_a_of_type_Afjw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)
+    {
+      return;
+      paramDialogInterface.msgData = paramDialogInterface.ark_app_message.toBytes();
+    }
+    this.jdField_a_of_type_Afjw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Afjw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Afjw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.uniseq);
+    this.jdField_a_of_type_Afjw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramDialogInterface, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afka
  * JD-Core Version:    0.7.0.1
  */

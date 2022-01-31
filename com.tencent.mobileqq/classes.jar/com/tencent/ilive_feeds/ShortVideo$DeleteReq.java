@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ShortVideo$DeleteReq
-  extends MessageMicro
+  extends MessageMicro<DeleteReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField file_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -25,7 +25,7 @@ public final class ShortVideo$DeleteReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ilive_feeds.ShortVideo.DeleteReq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,23 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
 
 public class vzc
-  implements AsyncBack
+  extends vtg
 {
-  public vzc(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vzc(AbsVideoInfoWidget paramAbsVideoInfoWidget) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt) {}
+  public void g()
+  {
+    super.g();
+    if (this.a.jdField_b_of_type_Boolean)
+    {
+      AbsVideoInfoWidget.a(this.a);
+      wxe.b(this.a.jdField_b_of_type_JavaLangString, "destroy by activity");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vzc
  * JD-Core Version:    0.7.0.1
  */

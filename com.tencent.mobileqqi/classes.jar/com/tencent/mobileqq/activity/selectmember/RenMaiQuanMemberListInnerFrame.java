@@ -21,9 +21,9 @@ import com.tencent.mobileqq.service.circle.IGroupObserver;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.XListView;
-import euy;
-import euz;
-import eva;
+import eqk;
+import eql;
+import eqm;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,9 +34,9 @@ public class RenMaiQuanMemberListInnerFrame
   public int a;
   EditText jdField_a_of_type_AndroidWidgetEditText;
   public CircleManager a;
-  IGroupObserver jdField_a_of_type_ComTencentMobileqqServiceCircleIGroupObserver = new euy(this);
+  IGroupObserver jdField_a_of_type_ComTencentMobileqqServiceCircleIGroupObserver = new eqk(this);
   XListView jdField_a_of_type_ComTencentWidgetXListView;
-  public euz a;
+  public eql a;
   String jdField_a_of_type_JavaLangString;
   public ArrayList a;
   
@@ -71,16 +71,16 @@ public class RenMaiQuanMemberListInnerFrame
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    setContentView(2130903973);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232609));
+    setContentView(2130903975);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232612));
     this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2131361815);
-    paramBundle = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2130903942, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramBundle.findViewById(2131233085));
+    paramBundle = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2130903944, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramBundle.findViewById(2131233087));
     this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(this);
-    ((TextView)paramBundle.findViewById(2131234396)).setText(2131562831);
-    ((Button)paramBundle.findViewById(2131233084)).setVisibility(8);
-    this.jdField_a_of_type_Euz = new euz(this, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, 1, false);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Euz);
+    ((TextView)paramBundle.findViewById(2131234398)).setText(2131562831);
+    ((Button)paramBundle.findViewById(2131233086)).setVisibility(8);
+    this.jdField_a_of_type_Eql = new eql(this, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, 1, false);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Eql);
     this.jdField_a_of_type_ComTencentMobileqqAppCircleManager = ((CircleManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(33));
     if (this.jdField_a_of_type_ComTencentMobileqqAppCircleManager != null) {
       this.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(this.jdField_a_of_type_ComTencentMobileqqServiceCircleIGroupObserver);
@@ -105,7 +105,7 @@ public class RenMaiQuanMemberListInnerFrame
     }
     for (;;)
     {
-      this.jdField_a_of_type_Euz.notifyDataSetChanged();
+      this.jdField_a_of_type_Eql.notifyDataSetChanged();
       return;
       label103:
       if (i == -2) {
@@ -117,36 +117,36 @@ public class RenMaiQuanMemberListInnerFrame
   public void d()
   {
     super.d();
-    if (this.jdField_a_of_type_Euz != null) {
-      this.jdField_a_of_type_Euz.b();
+    if (this.jdField_a_of_type_Eql != null) {
+      this.jdField_a_of_type_Eql.b();
     }
     this.jdField_a_of_type_ComTencentMobileqqAppCircleManager.b(this.jdField_a_of_type_ComTencentMobileqqServiceCircleIGroupObserver);
   }
   
   public void f()
   {
-    this.jdField_a_of_type_Euz.notifyDataSetChanged();
+    this.jdField_a_of_type_Eql.notifyDataSetChanged();
   }
   
   public void onClick(View paramView)
   {
-    eva localeva = (eva)paramView.getTag();
-    if ((localeva != null) && (localeva.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localeva.jdField_a_of_type_ComTencentMobileqqDataCircleBuddy != null))
+    eqm localeqm = (eqm)paramView.getTag();
+    if ((localeqm != null) && (localeqm.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localeqm.jdField_a_of_type_ComTencentMobileqqDataCircleBuddy != null))
     {
-      CircleBuddy localCircleBuddy = localeva.jdField_a_of_type_ComTencentMobileqqDataCircleBuddy;
-      if (localeva.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
+      CircleBuddy localCircleBuddy = localeqm.jdField_a_of_type_ComTencentMobileqqDataCircleBuddy;
+      if (localeqm.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
       {
         boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(localCircleBuddy.uin, this.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(localCircleBuddy), 3, "-1");
-        localeva.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-        if (!localeva.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        localeqm.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+        if (!localeqm.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
           break label121;
         }
-        paramView.setContentDescription(localeva.jdField_a_of_type_AndroidWidgetTextView.getText().toString() + "已选中,双击取消");
+        paramView.setContentDescription(localeqm.jdField_a_of_type_AndroidWidgetTextView.getText().toString() + "已选中,双击取消");
       }
     }
     return;
     label121:
-    paramView.setContentDescription(localeva.jdField_a_of_type_AndroidWidgetTextView.getText().toString() + "未选中,双击选中");
+    paramView.setContentDescription(localeqm.jdField_a_of_type_AndroidWidgetTextView.getText().toString() + "未选中,双击选中");
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)

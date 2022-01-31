@@ -1,20 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import android.content.Context;
+import java.util.Map;
 
-public final class ncj
-  implements View.OnClickListener
+public abstract interface ncj
 {
-  public ncj(EditText paramEditText) {}
+  public abstract int a(Context paramContext, String paramString);
   
-  public void onClick(View paramView)
-  {
-    this.a.append("@");
-  }
+  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, nbs paramnbs, Map<String, String> paramMap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ncj
  * JD-Core Version:    0.7.0.1
  */

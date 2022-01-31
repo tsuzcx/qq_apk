@@ -1,43 +1,67 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RegisterProxySvcPackHandler;
+import com.tencent.ark.open.ArkView;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqdataline.ipc.DatalineRemoteManager;
-import cooperation.qqdataline.ipc.IDatalineService.Stub;
-import mqq.app.MobileQQ;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class amor
-  implements ServiceConnection
 {
-  public amor(DatalineRemoteManager paramDatalineRemoteManager) {}
+  private List<ArkView> a = new ArrayList();
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a()
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_CooperationQqdatalineIpcIDatalineService = IDatalineService.Stub.a(paramIBinder);
-    if (QLog.isColorLevel()) {
-      QLog.d("DatalineRemoteManager", 2, "mDatalineService connected");
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      ArkView localArkView = (ArkView)localIterator.next();
+      if (localArkView != null) {
+        localArkView.onDestroy();
+      }
     }
-    paramComponentName = (RegisterProxySvcPackHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(10);
-    this.a.a(paramComponentName.a(), paramComponentName.g(), paramComponentName.h(), paramComponentName.i(), paramComponentName.a());
-    DatalineRemoteManager.c(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkCollector", 2, this.a.size() + " ArkViews onDestroy");
+    }
+    this.a.clear();
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void a(ArkView paramArkView)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().unbindService(DatalineRemoteManager.a(this.a));
-    this.a.jdField_a_of_type_CooperationQqdatalineIpcIDatalineService = null;
-    this.a.jdField_a_of_type_Boolean = false;
+    this.a.add(paramArkView);
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      ArkView localArkView = (ArkView)localIterator.next();
+      if (localArkView != null) {
+        localArkView.onPause();
+      }
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("DatalineRemoteManager", 2, "mDatalineService disconnected");
+      QLog.d("ArkCollector", 2, this.a.size() + " ArkViews onPause");
+    }
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      ArkView localArkView = (ArkView)localIterator.next();
+      if (localArkView != null) {
+        localArkView.onResume();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkCollector", 2, this.a.size() + " ArkViews onResume");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amor
  * JD-Core Version:    0.7.0.1
  */

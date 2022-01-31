@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ARCloudRecogCustomPb$ImageARTag
-  extends MessageMicro
+  extends MessageMicro<ImageARTag>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field cdb_errorcode = PBField.initInt32(0);
@@ -31,7 +31,7 @@ public final class ARCloudRecogCustomPb$ImageARTag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ImageARTag
  * JD-Core Version:    0.7.0.1
  */

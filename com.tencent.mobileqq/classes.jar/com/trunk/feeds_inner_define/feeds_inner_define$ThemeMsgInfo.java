@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class feeds_inner_define$ThemeMsgInfo
-  extends MessageMicro
+  extends MessageMicro<ThemeMsgInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField opt_bytes_feedsid = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -30,7 +30,7 @@ public final class feeds_inner_define$ThemeMsgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.trunk.feeds_inner_define.feeds_inner_define.ThemeMsgInfo
  * JD-Core Version:    0.7.0.1
  */

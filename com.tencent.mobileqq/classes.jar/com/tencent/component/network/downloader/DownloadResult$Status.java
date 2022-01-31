@@ -4,12 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.component.network.module.report.ImageDownloadReporter;
-import pjj;
 
 public final class DownloadResult$Status
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new pjj();
+  public static final Parcelable.Creator<Status> CREATOR = new DownloadResult.Status.1();
   public static final int REASON_FAIL_CONTENT = 5;
   public static final int REASON_FAIL_EXCEPTION = 4;
   public static final int REASON_FAIL_META = 7;
@@ -124,7 +123,7 @@ public final class DownloadResult$Status
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.DownloadResult.Status
  * JD-Core Version:    0.7.0.1
  */

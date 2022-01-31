@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x383$ApplyCreateFolderReqBody
-  extends MessageMicro
+  extends MessageMicro<ApplyCreateFolderReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26 }, new String[] { "uint32_bus_id", "str_folder_name", "str_parent_folder_path" }, new Object[] { Integer.valueOf(0), "", "" }, ApplyCreateFolderReqBody.class);
   public final PBStringField str_folder_name = PBField.initString("");
@@ -16,7 +16,7 @@ public final class cmd0x383$ApplyCreateFolderReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x383.cmd0x383.ApplyCreateFolderReqBody
  * JD-Core Version:    0.7.0.1
  */

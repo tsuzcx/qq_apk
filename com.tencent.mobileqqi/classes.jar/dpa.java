@@ -1,24 +1,13 @@
-import com.tencent.mobileqq.activity.SpaceGateActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
 public class dpa
-  extends FriendListObserver
+  implements DialogInterface.OnClickListener
 {
-  public dpa(SpaceGateActivity paramSpaceGateActivity) {}
+  public dpa(TroopDisbandActivity paramTroopDisbandActivity) {}
   
-  protected void a(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.a(0);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.a(0);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

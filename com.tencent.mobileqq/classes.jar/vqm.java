@@ -1,25 +1,32 @@
-import com.tencent.ark.ArkDebugger;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
 
 public class vqm
-  implements Runnable
+  extends Subscriber.SingleEventSubscriberNoRefect<veb>
 {
-  public vqm(ArkDebugChatPie paramArkDebugChatPie) {}
+  vqi a;
   
-  public void run()
+  public vqm(@NonNull vqi paramvqi)
   {
-    ArkDebugger.Create();
-    ArkDebugger.SetCallback(new vqn(this));
-    ArkDebugChatPie.a(this.a, ArkAppCenter.f());
-    ArkDebugger.Listen("127.0.0.1", 23333L, 600000L, ArkAppCenter.f());
-    ArkDispatchTask.getInstance().postToMainThread(new vqt(this));
+    this.a = paramvqi;
+  }
+  
+  protected void a(@NonNull veb paramveb)
+  {
+    if (paramveb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+      this.a.a(paramveb.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return veb.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vqm
  * JD-Core Version:    0.7.0.1
  */

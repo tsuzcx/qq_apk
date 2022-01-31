@@ -1,34 +1,55 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletPushManager;
+import com.tencent.biz.pubaccount.weishi_new.event.FollowEvent;
 
 public class tep
-  implements View.OnClickListener
 {
-  public tep(PayBridgeActivity paramPayBridgeActivity, Dialog paramDialog) {}
-  
-  public void onClick(View paramView)
+  public static tep a()
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131364038: 
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-      paramView = QWalletPushManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity.a);
-      PayBridgeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity, paramView);
-      return;
+    return new tep();
+  }
+  
+  private tgt a(String paramString, int paramInt)
+  {
+    return new ter(this, paramInt, paramString);
+  }
+  
+  private void c(String paramString, int paramInt)
+  {
+    FollowEvent localFollowEvent = new FollowEvent();
+    localFollowEvent.setPersonId(paramString);
+    if (paramInt == 1) {
+      localFollowEvent.setIsFollow(1);
     }
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    QWalletPushManager.b();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity.finish();
+    for (;;)
+    {
+      tff.a().a(localFollowEvent);
+      return;
+      localFollowEvent.setIsFollow(2);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    tlo.b("WSUserBusiness", "[actionBlockRecommendPerson] personID : " + paramString);
+    paramString = new the(new tkb(paramString), null, new teq(this), 4006);
+    tgx.a().a(paramString);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    b(paramString, paramInt);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    tlo.b("WSUserBusiness", "[actionChangeFollow] personID : " + paramString + "  followStatus:" + paramInt);
+    c(paramString, paramInt);
+    paramString = new the(new tkc(paramString, paramInt), null, a(paramString, paramInt), 4005);
+    tgx.a().a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tep
  * JD-Core Version:    0.7.0.1
  */

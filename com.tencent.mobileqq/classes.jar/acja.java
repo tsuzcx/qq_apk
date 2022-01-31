@@ -1,25 +1,19 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.extras.PullToRefreshRecyclerView;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import mqq.app.QQPermissionCallback;
 
 public class acja
-  implements Runnable
+  implements QQPermissionCallback
 {
-  public acja(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  public acja(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (NetworkUtil.g(ExtendFriendSquareFragment.a(this.a)))
-    {
-      if (ExtendFriendSquareFragment.a(this.a) != null)
-      {
-        ExtendFriendSquareFragment.a(this.a).setRefreshing();
-        ExtendFriendSquareFragment.a(this.a).a(0, true);
-      }
-      return;
-    }
-    ExtendFriendSquareFragment.a(this.a, this.a.getString(2131437530), 1);
-    ExtendFriendSquareFragment.a(this.a).a(true);
+    bdgm.b(this.a.a());
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.aQ();
   }
 }
 

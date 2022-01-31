@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class submsgtype0x7e$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "str_notice", "msg_online_push" }, new Object[] { "", null }, MsgBody.class);
   public submsgtype0x7e.WalletMsgPush msg_online_push = new submsgtype0x7e.WalletMsgPush();

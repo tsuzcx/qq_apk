@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.ui.NoDrawingCacheLinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="horizontal" android:id="@id/oe" android:background="@drawable/abk" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:id="@id/o1" android:background="@null" android:paddingLeft="@dimen/g2" android:paddingRight="@dimen/dj" android:layout_width="wrap_content" android:layout_alignParentStart="true" style="@style/mo" />
+        <com.tencent.mm.ui.contact.CategoryTipView android:id="@id/of" android:paddingLeft="@dimen/g2" android:paddingRight="@dimen/dj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/a13" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/og" android:layout_width="fill_parent" android:layout_height="@dimen/l_">
+            <TextView android:id="@id/o7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="signature" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/h9" />
+            <TextView android:textSize="@dimen/ko" android:textColor="@color/dt" android:id="@id/oh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/m1" android:text="@string/dm" android:layout_toLeftOf="@id/o7" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/oi" android:background="@drawable/abk" android:paddingRight="36.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxEms="4" android:singleLine="true" android:layout_toLeftOf="@id/oh" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="10.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/oi">
+                <com.tencent.mm.ui.chatting.view.AvatarImageView android:id="@id/oj" android:layout_marginRight="10.0dip" style="@style/ga" />
+                <com.tencent.mm.ui.AddressView android:id="@id/ok" android:background="@drawable/abk" android:paddingRight="@dimen/dj" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</com.tencent.mm.ui.NoDrawingCacheLinearLayout>

@@ -14,8 +14,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.XListView;
-import gvp;
-import gvq;
+import gri;
+import grj;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +27,7 @@ public class TroopAdminList
   public View.OnClickListener a;
   protected LinearLayout a;
   protected FriendListHandler a;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new gvp(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new gri(this);
   TroopAdminList.AdminListAdapter jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList$AdminListAdapter;
   protected XListView a;
   protected final String a;
@@ -38,7 +38,7 @@ public class TroopAdminList
   public TroopAdminList()
   {
     this.jdField_a_of_type_JavaLangString = "TroopAdminList";
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new gvq(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new grj(this);
   }
   
   protected boolean c()
@@ -113,7 +113,7 @@ public class TroopAdminList
   
   protected void e()
   {
-    View localView = View.inflate(this, 2130903447, null);
+    View localView = View.inflate(this, 2130903449, null);
     this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localView.findViewById(2131231313));
     this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);

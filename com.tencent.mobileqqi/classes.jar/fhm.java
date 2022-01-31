@@ -1,14 +1,27 @@
-import com.tencent.i18n.pa.proto.QQiPublicAccount.RecommendedPublicAccountInfo;
-import com.tencent.mobileqq.app.I18nPublicAccountsManagerImp;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.automator.step.CheckFriendsLastLoginInfo;
 
 public class fhm
+  extends FriendListObserver
 {
-  public QQiPublicAccount.RecommendedPublicAccountInfo a;
-  public String a;
+  private fhm(CheckFriendsLastLoginInfo paramCheckFriendsLastLoginInfo) {}
   
-  private fhm(I18nPublicAccountsManagerImp paramI18nPublicAccountsManagerImp)
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    int i = 0;
+    if (!paramBoolean1) {
+      this.a.a(6);
+    }
+    for (;;)
+    {
+      if (i != 0) {
+        this.a.a(7);
+      }
+      return;
+      if (paramBoolean2) {
+        i = 1;
+      }
+    }
   }
 }
 

@@ -8,20 +8,18 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import pkp;
-import pkq;
 
 public class ProxyStatistics
 {
-  private final Map a = new HashMap();
-  private final Map b = new HashMap();
+  private final Map<String, ProxyStatistics.StatisticsUnit> mDominantUnitCache = new HashMap();
+  private final Map<String, FixedLinkedList<ProxyStatistics.StatisticsUnit>> mStatisticsCache = new HashMap();
   
-  public static ProxyStatistics a()
+  public static ProxyStatistics getInstance()
   {
-    return pkp.a;
+    return ProxyStatistics.InstanceHolder.INSTANCE;
   }
   
-  private void a(List paramList, String paramString)
+  private void updateStatistics(List<ProxyStatistics.StatisticsUnit> paramList, String paramString)
   {
     boolean bool2 = true;
     if (paramList == null) {
@@ -29,35 +27,35 @@ public class ProxyStatistics
     }
     for (;;)
     {
-      pkq localpkq;
+      ProxyStatistics.StatisticsUnit localStatisticsUnit;
       int i;
       int k;
       int j;
-      synchronized (this.b)
+      synchronized (this.mDominantUnitCache)
       {
-        localpkq = (pkq)this.b.get(paramString);
-        if (localpkq != null) {
+        localStatisticsUnit = (ProxyStatistics.StatisticsUnit)this.mDominantUnitCache.get(paramString);
+        if (localStatisticsUnit != null) {
           break label223;
         }
-        localpkq = new pkq();
-        this.b.put(paramString, localpkq);
-        paramString = localpkq;
+        localStatisticsUnit = new ProxyStatistics.StatisticsUnit();
+        this.mDominantUnitCache.put(paramString, localStatisticsUnit);
+        paramString = localStatisticsUnit;
         paramList = paramList.iterator();
         i = 0;
         k = 0;
         j = 0;
         if (paramList.hasNext())
         {
-          localpkq = (pkq)paramList.next();
-          if (localpkq == null) {
+          localStatisticsUnit = (ProxyStatistics.StatisticsUnit)paramList.next();
+          if (localStatisticsUnit == null) {
             continue;
           }
           int m = j + 1;
           j = k;
-          if (localpkq.a) {
+          if (localStatisticsUnit.allowProxy) {
             j = k + 1;
           }
-          if (!localpkq.b) {
+          if (!localStatisticsUnit.apnProxy) {
             break label220;
           }
           i += 1;
@@ -71,7 +69,7 @@ public class ProxyStatistics
       if (k / j > 0.5F)
       {
         bool1 = true;
-        paramString.a = bool1;
+        paramString.allowProxy = bool1;
         if (i / j <= 0.5F) {
           break label214;
         }
@@ -79,7 +77,7 @@ public class ProxyStatistics
       label214:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        paramString.b = bool1;
+        paramString.apnProxy = bool1;
         return;
         bool1 = false;
         break;
@@ -87,69 +85,69 @@ public class ProxyStatistics
       label220:
       continue;
       label223:
-      paramString = localpkq;
+      paramString = localStatisticsUnit;
     }
   }
   
-  public void a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
+  public boolean getAPNProxy()
+  {
+    String str = NetworkManager.getApnValue();
+    synchronized (this.mDominantUnitCache)
+    {
+      ProxyStatistics.StatisticsUnit localStatisticsUnit2 = (ProxyStatistics.StatisticsUnit)this.mDominantUnitCache.get(str);
+      ProxyStatistics.StatisticsUnit localStatisticsUnit1 = localStatisticsUnit2;
+      if (localStatisticsUnit2 == null)
+      {
+        localStatisticsUnit1 = new ProxyStatistics.StatisticsUnit();
+        this.mDominantUnitCache.put(str, localStatisticsUnit1);
+      }
+      return localStatisticsUnit1.apnProxy;
+    }
+  }
+  
+  public boolean getAllowProxy()
+  {
+    String str = NetworkManager.getApnValue();
+    synchronized (this.mDominantUnitCache)
+    {
+      ProxyStatistics.StatisticsUnit localStatisticsUnit2 = (ProxyStatistics.StatisticsUnit)this.mDominantUnitCache.get(str);
+      ProxyStatistics.StatisticsUnit localStatisticsUnit1 = localStatisticsUnit2;
+      if (localStatisticsUnit2 == null)
+      {
+        localStatisticsUnit1 = new ProxyStatistics.StatisticsUnit();
+        this.mDominantUnitCache.put(str, localStatisticsUnit1);
+      }
+      return localStatisticsUnit1.allowProxy;
+    }
+  }
+  
+  public void report(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (!NetworkUtils.isMobileConnected(paramContext)) {
       return;
     }
-    pkq localpkq = new pkq();
-    localpkq.a = paramBoolean1;
-    localpkq.b = paramBoolean2;
-    synchronized (this.a)
+    ProxyStatistics.StatisticsUnit localStatisticsUnit = new ProxyStatistics.StatisticsUnit();
+    localStatisticsUnit.allowProxy = paramBoolean1;
+    localStatisticsUnit.apnProxy = paramBoolean2;
+    synchronized (this.mStatisticsCache)
     {
       String str = NetworkManager.getApnValue();
-      FixedLinkedList localFixedLinkedList = (FixedLinkedList)this.a.get(str);
+      FixedLinkedList localFixedLinkedList = (FixedLinkedList)this.mStatisticsCache.get(str);
       paramContext = localFixedLinkedList;
       if (localFixedLinkedList == null)
       {
         paramContext = new FixedLinkedList(3, false);
-        this.a.put(str, paramContext);
+        this.mStatisticsCache.put(str, paramContext);
       }
-      paramContext.add(0, localpkq);
-      a(paramContext, str);
+      paramContext.add(0, localStatisticsUnit);
+      updateStatistics(paramContext, str);
       return;
-    }
-  }
-  
-  public boolean a()
-  {
-    String str = NetworkManager.getApnValue();
-    synchronized (this.b)
-    {
-      pkq localpkq2 = (pkq)this.b.get(str);
-      pkq localpkq1 = localpkq2;
-      if (localpkq2 == null)
-      {
-        localpkq1 = new pkq();
-        this.b.put(str, localpkq1);
-      }
-      return localpkq1.a;
-    }
-  }
-  
-  public boolean b()
-  {
-    String str = NetworkManager.getApnValue();
-    synchronized (this.b)
-    {
-      pkq localpkq2 = (pkq)this.b.get(str);
-      pkq localpkq1 = localpkq2;
-      if (localpkq2 == null)
-      {
-        localpkq1 = new pkq();
-        this.b.put(str, localpkq1);
-      }
-      return localpkq1.b;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.module.statistics.ProxyStatistics
  * JD-Core Version:    0.7.0.1
  */

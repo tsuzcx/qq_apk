@@ -1,22 +1,24 @@
-public class amcn
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.ShieldOperationItem;
+
+public final class amcn
+  implements Parcelable.Creator<ShieldOperationItem>
 {
-  private int a;
-  private int b;
-  
-  public int a()
+  public ShieldOperationItem a(Parcel paramParcel)
   {
-    return this.a;
+    ShieldOperationItem localShieldOperationItem = new ShieldOperationItem();
+    localShieldOperationItem.jdField_a_of_type_Int = paramParcel.readInt();
+    localShieldOperationItem.b = paramParcel.readInt();
+    localShieldOperationItem.c = paramParcel.readInt();
+    localShieldOperationItem.jdField_a_of_type_ArrayOfLong = paramParcel.createLongArray();
+    localShieldOperationItem.d = paramParcel.readInt();
+    return localShieldOperationItem;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public ShieldOperationItem[] a(int paramInt)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public int b()
-  {
-    return this.b;
+    return null;
   }
 }
 

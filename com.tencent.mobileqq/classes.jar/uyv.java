@@ -1,39 +1,65 @@
-import android.app.Activity;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-public class uyv
-  extends ClickableSpan
+class uyv
+  implements vln
 {
-  public uyv(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
+  uyv(uyt paramuyt, List paramList) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      paramView = ActionSheet.a(this.a.jdField_a_of_type_AndroidContentContext);
-      paramView.b(2131433828);
-      paramView.c(2131433015);
-      paramView.a(new uyw(this));
-      paramView.a(new uyx(this, paramView));
-      paramView.show();
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
-    }
+    QLog.e("Q.qqstory.msgTab.jobPullBasicInfo", 1, "pull video info failed");
+    uyt.b(this.jdField_a_of_type_Uyt, new ErrorMessage(102, "pull video info failed"));
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void a(ArrayList<StoryVideoItem> paramArrayList)
   {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    if (paramArrayList == null)
+    {
+      wxe.e("Q.qqstory.msgTab.jobPullBasicInfo", "video list empty !");
+      uyt.a(this.jdField_a_of_type_Uyt, new ErrorMessage(102, "video list empty !"));
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    paramArrayList = paramArrayList.iterator();
+    Object localObject;
+    while (paramArrayList.hasNext())
+    {
+      localObject = (StoryVideoItem)paramArrayList.next();
+      localHashMap.put(((StoryVideoItem)localObject).mVid, localObject);
+    }
+    paramArrayList = new ArrayList();
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    int i = 0;
+    if (i < j)
+    {
+      localObject = (vlp)this.jdField_a_of_type_JavaUtilList.get(i);
+      StoryVideoItem localStoryVideoItem = (StoryVideoItem)localHashMap.get(((vlp)localObject).b);
+      if (localStoryVideoItem == null) {
+        wxe.e("Q.qqstory.msgTab.jobPullBasicInfo", "not found video!");
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        ((vlp)localObject).a = localStoryVideoItem;
+        paramArrayList.add(localObject);
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.jobPullBasicInfo", 2, "pull video info succeed, info");
+    }
+    uyt.a(this.jdField_a_of_type_Uyt, paramArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uyv
  * JD-Core Version:    0.7.0.1
  */

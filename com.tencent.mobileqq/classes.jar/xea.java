@@ -1,22 +1,16 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import android.graphics.PointF;
 
-class xea
-  implements Runnable
+public abstract interface xea
 {
-  xea(xdz paramxdz, Object paramObject) {}
+  public abstract void a(xiq paramxiq);
   
-  public void run()
-  {
-    if (ThemeHbFragment.a(this.jdField_a_of_type_Xdz.a) != null) {
-      ThemeHbFragment.a(this.jdField_a_of_type_Xdz.a).setImageBitmap(ThemeHbFragment.a(this.jdField_a_of_type_Xdz.a, (Bitmap)this.jdField_a_of_type_JavaLangObject));
-    }
-  }
+  public abstract void a(xiq paramxiq, int paramInt1, int paramInt2);
+  
+  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xea
  * JD-Core Version:    0.7.0.1
  */

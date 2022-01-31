@@ -1,33 +1,23 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.view.ApolloInfo;
-import com.tencent.mobileqq.apollo.view.ApolloLinearLayout.ViewHolder;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.AnimatorSet;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
 
-public class yyn
-  implements Runnable
+class yyn
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public yyn(ApolloPanel paramApolloPanel, ApolloLinearLayout.ViewHolder paramViewHolder) {}
+  yyn(yyk paramyyk) {}
   
-  public void run()
+  public boolean onPreDraw()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder.jdField_a_of_type_AndroidWidgetImageView == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloPanel", 2, "holder.apolloInfo == null");
-      }
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a, this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a.getResources().getDisplayMetrics().density));
+    yyk.a(this.a).start();
+    yyk.a(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yyn
  * JD-Core Version:    0.7.0.1
  */

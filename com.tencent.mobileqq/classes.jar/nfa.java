@@ -1,53 +1,35 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryManager;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class nfa
-  implements Runnable
+final class nfa
+  implements BusinessObserver
 {
-  public nfa(MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate, String paramString) {}
+  nfa(QQAppInterface paramQQAppInterface, nfc paramnfc) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int j = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.a.a.getChildCount();
-    int i = 0;
-    for (;;)
+    if ((paramBoolean) && (paramBundle != null))
     {
-      if (i < j)
-      {
-        Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.a.a.getChildAt(i);
-        if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, String.valueOf(((View)localObject).getTag())))
-        {
-          localObject = (ImageView)((View)localObject).findViewById(2131371907);
-          if (localObject != null)
-          {
-            Rect localRect = new Rect();
-            ((ImageView)localObject).getGlobalVisibleRect(localRect);
-            MsgTabStoryManager localMsgTabStoryManager = (MsgTabStoryManager)this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(250);
-            localMsgTabStoryManager.a = (localRect.left + ((ImageView)localObject).getWidth() / 2);
-            i = localRect.top;
-            localMsgTabStoryManager.b = (((ImageView)localObject).getHeight() / 2 + i);
-          }
-        }
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        nez.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_Nfc);
       }
-      else
-      {
-        return;
-      }
-      i += 1;
     }
+    else
+    {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
+    }
+    this.jdField_a_of_type_Nfc.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nfa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,88 +1,66 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.widgets.ScannerView;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.oidb.oidb_0xb7e.RspBody;
 
-public class pee
-  extends Thread
-  implements Camera.AutoFocusCallback
+class pee
+  extends mzz
 {
-  Camera jdField_a_of_type_AndroidHardwareCamera;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  protected Runnable a;
+  pee(ped paramped, boolean paramBoolean) {}
   
-  public pee(ScannerView paramScannerView, Camera paramCamera)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new pef(this);
-    this.jdField_a_of_type_AndroidHardwareCamera = paramCamera;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  }
-  
-  public void a()
-  {
-    try
+    if (paramInt == 0)
     {
-      if ((ScannerView.e(this.jdField_a_of_type_ComTencentBizWidgetsScannerView)) && (this.jdField_a_of_type_AndroidHardwareCamera != null) && (ScannerView.f(this.jdField_a_of_type_ComTencentBizWidgetsScannerView)))
-      {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 2500L);
-        this.jdField_a_of_type_AndroidHardwareCamera.autoFocus(this);
-        ScannerView.b(this.jdField_a_of_type_ComTencentBizWidgetsScannerView, false);
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ScannerView", 4, "onAutoFocus");
-    }
-    ScannerView.b(this.jdField_a_of_type_ComTencentBizWidgetsScannerView, true);
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void run()
-  {
-    try
-    {
-      if (ScannerView.d(this.jdField_a_of_type_ComTencentBizWidgetsScannerView)) {
-        ScannerView.c(this.jdField_a_of_type_ComTencentBizWidgetsScannerView, false);
-      }
-      for (;;)
-      {
-        try
-        {
-          a();
-        }
-        catch (RuntimeException localRuntimeException1) {}
-        break;
-        Thread.sleep(3000L);
-      }
       try
       {
-        this.jdField_a_of_type_AndroidHardwareCamera.cancelAutoFocus();
-        ScannerView.b(this.jdField_a_of_type_ComTencentBizWidgetsScannerView, true);
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-        this.jdField_a_of_type_AndroidHardwareCamera = null;
+        paramBundle = new oidb_0xb7e.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (!paramBundle.rpt_top_item.has()) {
+          break label129;
+        }
+        List localList = paramBundle.rpt_top_item.get();
+        if ((localList == null) || (localList.size() <= 0))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(ped.a, 2, "requestDiandianTopConfig rpt_top_item is empty");
+          }
+          oxb.a().a(true, null);
+          ped.a(this.a, paramArrayOfByte, 0L);
+          return;
+        }
+        ped.a(this.a, paramArrayOfByte, System.currentTimeMillis());
+        if (!this.b) {
+          return;
+        }
+        ped.a(this.a, paramBundle);
         return;
       }
-      catch (RuntimeException localRuntimeException2)
+      catch (Exception paramArrayOfByte)
       {
-        break label77;
+        if (!QLog.isColorLevel()) {
+          return;
+        }
       }
+      QLog.e(ped.a, 2, "requestDiandianTopConfig parser failed");
+      return;
+      label129:
+      if (QLog.isColorLevel()) {
+        QLog.d(ped.a, 2, "requestDiandianTopConfig rpt_top_item is empty");
+      }
+      ped.a(this.a, paramArrayOfByte, 0L);
+      oxb.a().a(true, null);
+      return;
     }
-    catch (InterruptedException localInterruptedException)
-    {
-      if (ScannerView.e(this.jdField_a_of_type_ComTencentBizWidgetsScannerView)) {}
+    if (QLog.isColorLevel()) {
+      QLog.e(ped.a, 2, "requestDiandianTopConfig failed errorCode = " + paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pee
  * JD-Core Version:    0.7.0.1
  */

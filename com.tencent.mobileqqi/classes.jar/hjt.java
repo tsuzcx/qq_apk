@@ -1,21 +1,20 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.CameraFrameLayout;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.SwitchAccountActivity;
 
 public class hjt
-  implements Runnable
+  implements View.OnClickListener
 {
-  public hjt(CameraFrameLayout paramCameraFrameLayout) {}
+  public hjt(SwitchAccountActivity paramSwitchAccountActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQToast.a(this.a.getContext(), 0, this.a.getContext().getString(2131561697), 0).b(((BaseActivity)this.a.getContext()).d());
+    this.a.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hjt
  * JD-Core Version:    0.7.0.1
  */

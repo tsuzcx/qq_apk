@@ -1,28 +1,33 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.util.Base64;
-import com.tencent.mobileqq.app.MessageRoamManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.MobileQQ;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.biz.widgets.TabLayout;
+import java.io.PrintStream;
 
 public class zhl
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public zhl(MessageRoamManager paramMessageRoamManager) {}
+  public zhl(TabLayout paramTabLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView, int paramInt5) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    System.out.println("value = " + f);
+    int i = 0;
+    while (i < this.jdField_a_of_type_Int - this.b)
     {
-      SharedPreferences localSharedPreferences = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("vip_message_roam_passwordmd5_and_signature_file", 0);
-      String str = Base64.encodeToString(this.a.jdField_a_of_type_ArrayOfByte, 0);
-      localSharedPreferences.edit().putString("vip_message_roam_passwordmd5" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), str).commit();
+      paramValueAnimator = this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.getChildAt(this.c + i);
+      if (paramValueAnimator != null) {
+        paramValueAnimator.setTranslationX(this.d * f);
+      }
+      i += 1;
     }
+    this.jdField_a_of_type_AndroidViewView.setTranslationX(f * -this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zhl
  * JD-Core Version:    0.7.0.1
  */

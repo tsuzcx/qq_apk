@@ -13,7 +13,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Bundle;
-import btj;
+import bni;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
@@ -1001,7 +1001,7 @@ public class QRUtils
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, int paramInt, String paramString2, String paramString3, QRCodeEncodeCallback paramQRCodeEncodeCallback)
   {
     paramString1 = QRActionEntity.a(paramInt, paramString1).a();
-    paramString2 = new btj(paramQRCodeEncodeCallback);
+    paramString2 = new bni(paramQRCodeEncodeCallback);
     paramContext = new NewIntent(paramContext, QRCodeServlet.class);
     paramContext.putExtra("skey", paramString3);
     paramContext.putExtra("d", paramString1);

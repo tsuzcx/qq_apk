@@ -7,15 +7,15 @@ import com.qq.taf.jce.JceStruct;
 public final class d
   extends JceStruct
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  public int a = 0;
+  public int b = 0;
+  public int c = 0;
+  public int d = 0;
   public String e = "";
-  public int f;
+  public int f = 0;
   public String g = "";
   public String h = "";
-  public int i;
+  public int i = 0;
   
   public d() {}
   

@@ -1,31 +1,28 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.musicpendant.MusicPendantManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.MusicPendantView;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView.1;
 
 public class akva
   implements View.OnClickListener
 {
-  public akva(MusicPendantView paramMusicPendantView, String paramString, Card paramCard) {}
+  public akva(CmGameLoadingView.1 param1) {}
   
   public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    localIntent.putExtra("hide_more_button", true);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    paramView.getContext().startActivity(localIntent);
-    ReportController.b(MusicPendantManager.a().a(), "dc00899", "NOW", "", "qq_zlk", "logo_click", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataCard.uin, "", "", "");
+    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131702469));
+    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.this$0.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+    this.a.this$0.setProgressViewVisibility(true);
+    this.a.a.a(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akva
  * JD-Core Version:    0.7.0.1
  */

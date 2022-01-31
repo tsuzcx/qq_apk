@@ -5,7 +5,7 @@ import java.util.List;
 public class ApolloSlaveInfo
 {
   public int isCaptured;
-  public List slaveList;
+  public List<Long> slaveList;
   public int slaveTotal;
   public long uin;
   
@@ -18,7 +18,7 @@ public class ApolloSlaveInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.ApolloSlaveInfo
  * JD-Core Version:    0.7.0.1
  */

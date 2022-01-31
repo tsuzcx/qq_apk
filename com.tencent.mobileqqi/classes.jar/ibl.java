@@ -1,19 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.TCWDatePicker.SavedState;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import cooperation.qqfav.widget.LocationDetailActivity;
 
-public final class ibl
-  implements Parcelable.Creator
+public class ibl
+  implements Animation.AnimationListener
 {
-  public TCWDatePicker.SavedState a(Parcel paramParcel)
+  public ibl(LocationDetailActivity paramLocationDetailActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new TCWDatePicker.SavedState(paramParcel, null);
+    this.a.h.clearAnimation();
+    this.a.h.setVisibility(8);
   }
   
-  public TCWDatePicker.SavedState[] a(int paramInt)
-  {
-    return new TCWDatePicker.SavedState[paramInt];
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

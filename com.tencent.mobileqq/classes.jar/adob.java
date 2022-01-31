@@ -1,24 +1,29 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 
 public class adob
-  extends SosoInterface.OnLocationListener
+  implements awqz
 {
-  public adob(NowLiveFragment paramNowLiveFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public adob(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(int paramInt, String paramString)
   {
-    if (paramInt != 0)
-    {
-      QQToast.a(this.a.a, 1, "获取地理位置失败。", 1).a();
-      this.a.e();
+    if (paramInt == 0) {
+      if (ProfileActivity.AllInOne.b(this.a.a))
+      {
+        paramInt = 1;
+        azqs.b(this.a.app, "CliOper", "", "", "0X80050E7", "0X80050E7", paramInt, 0, "", "", "", "");
+        azqs.b(null, "dc00898", "", "", "0X800A4FD", "0X800A4FD", 0, 0, "", "0", "0", "");
+      }
     }
-    this.a.a(paramSosoLbsInfo);
+    while (paramInt != 2) {
+      for (;;)
+      {
+        return;
+        paramInt = 2;
+      }
+    }
+    azqs.b(null, "dc00898", "", "", "0X800A4FE", "0X800A4FE", 0, 0, "", "0", "0", "");
   }
 }
 

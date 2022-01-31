@@ -1,15 +1,25 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class eae
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public eae(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public eae(PicItemBuilder paramPicItemBuilder, MessageForPic paramMessageForPic, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.e();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+    }
   }
 }
 

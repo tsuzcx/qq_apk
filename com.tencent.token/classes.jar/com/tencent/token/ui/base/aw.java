@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-final class aw
+class aw
   implements Runnable
 {
   private View b;
@@ -13,11 +13,11 @@ final class aw
   public aw(GameLoginSndConfirmView paramGameLoginSndConfirmView, View paramView)
   {
     this.b = paramView;
-    this.c = AnimationUtils.loadAnimation(GameLoginSndConfirmView.g(paramGameLoginSndConfirmView), 2130968587);
+    this.c = AnimationUtils.loadAnimation(GameLoginSndConfirmView.g(paramGameLoginSndConfirmView), 2131034137);
     this.c.setAnimationListener(new ax(this, paramGameLoginSndConfirmView));
   }
   
-  public final void run()
+  public void run()
   {
     this.b.startAnimation(this.c);
   }

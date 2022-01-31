@@ -14,7 +14,7 @@ import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.Leba;
 import com.tencent.mobileqq.fpsreport.OnDrawCompleteListener;
 import com.tencent.qphone.base.util.QLog;
-import fgt;
+import fcf;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -26,7 +26,7 @@ public class FrameActivity
   implements OnDrawCompleteListener
 {
   long jdField_a_of_type_Long = -1L;
-  protected ViewPager a;
+  public ViewPager a;
   private Frame jdField_a_of_type_ComTencentMobileqqAppFrame;
   private final Map jdField_a_of_type_JavaUtilMap = new HashMap(3);
   String k = null;
@@ -36,7 +36,7 @@ public class FrameActivity
     return this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem();
   }
   
-  protected Frame a()
+  public Frame a()
   {
     if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager != null) {
       return (Frame)this.jdField_a_of_type_JavaUtilMap.get(a(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem()));
@@ -44,7 +44,7 @@ public class FrameActivity
     return null;
   }
   
-  protected Frame a(Class paramClass)
+  public Frame a(Class paramClass)
   {
     Frame localFrame = null;
     if (this.jdField_a_of_type_JavaUtilMap != null) {
@@ -93,7 +93,7 @@ public class FrameActivity
     }
   }
   
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     Frame localFrame = a();
@@ -199,7 +199,7 @@ public class FrameActivity
   {
     super.onAccountChanged();
     Collection localCollection = this.jdField_a_of_type_JavaUtilMap.values();
-    new Handler().post(new fgt(this, localCollection));
+    new Handler().post(new fcf(this, localCollection));
   }
   
   public void onLogout(Constants.LogoutReason paramLogoutReason)

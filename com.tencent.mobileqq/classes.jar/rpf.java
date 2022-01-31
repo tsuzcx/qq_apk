@@ -1,60 +1,14 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-
-class rpf
-  implements Runnable
+public abstract interface rpf
 {
-  rpf(rpc paramrpc) {}
+  public abstract void a();
   
-  public void run()
-  {
-    try
-    {
-      FragmentActivity localFragmentActivity = this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-      Object localObject;
-      String str;
-      if (BaseChatPie.j(this.a.a) > 0)
-      {
-        localObject = "发送到 " + this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d;
-        if (BaseChatPie.j(this.a.a) <= 0) {
-          break label186;
-        }
-        str = "Crash count: " + BaseChatPie.j(this.a.a) + "\n" + "CrashInfoSummary.txt";
-        label109:
-        if (BaseChatPie.j(this.a.a) <= 0) {
-          break label191;
-        }
-      }
-      label186:
-      label191:
-      for (int i = 2131433631;; i = 2131433016)
-      {
-        localObject = DialogUtil.b(localFragmentActivity, 230, (String)localObject, str, 2131433015, i, new rpg(this), new rph(this));
-        ((QQCustomDialog)localObject).adjustTitle();
-        if (this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) {
-          return;
-        }
-        ((QQCustomDialog)localObject).show();
-        return;
-        localObject = "0 Crash";
-        break;
-        str = null;
-        break label109;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rpf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,19 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoState;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class xuv
-  extends RMVideoState
+class xuv
+  implements View.OnClickListener
 {
-  public void a()
-  {
-    RMVideoStateMgr.a().a.p();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoIdleState", 2, "[@] initState end");
-    }
-  }
+  xuv(xus paramxus) {}
   
-  public boolean a()
+  public void onClick(View paramView)
   {
-    RMVideoStateMgr.a().a("RMVideoIdleState");
-    return true;
-  }
-  
-  public void b()
-  {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoIdleState", 2, "[@] realDeleteVideoSegment ...");
-    }
-    localRMVideoStateMgr.a.a(100);
-    localRMVideoStateMgr.a(3);
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xuv
  * JD-Core Version:    0.7.0.1
  */

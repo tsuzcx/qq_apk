@@ -1,44 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
-import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class adds
-  extends BizTroopObserver
+  implements View.OnClickListener
 {
-  public adds(TroopFileModel paramTroopFileModel) {}
+  public adds(GroupManagerActivity paramGroupManagerActivity) {}
   
-  protected void a(Object paramObject)
+  public void onClick(View paramView)
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-    paramObject = (TroopFileStatusInfo)paramObject;
-    if (((FileManagerEntity)localObject).TroopUin != paramObject.jdField_a_of_type_Long) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("TroopFileModel<FileAssistant>", 4, "difference troop uin file");
-      }
-    }
-    do
-    {
-      return;
-      if (TextUtils.isEmpty(TroopFileModel.a(this.a)))
-      {
-        localObject = TroopFileUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FileManagerEntity)localObject);
-        if (((TroopFileStatusInfo)localObject).jdField_a_of_type_JavaUtilUUID != null) {
-          TroopFileModel.a(this.a, ((TroopFileStatusInfo)localObject).jdField_a_of_type_JavaUtilUUID.toString());
-        }
-      }
-    } while ((paramObject.jdField_a_of_type_JavaUtilUUID == null) || (TroopFileModel.a(this.a) == null) || (!TroopFileModel.a(this.a).equals(paramObject.jdField_a_of_type_JavaUtilUUID.toString())));
-    TroopFileModel.a(this.a, paramObject);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adds
  * JD-Core Version:    0.7.0.1
  */

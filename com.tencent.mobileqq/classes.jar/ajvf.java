@@ -1,17 +1,16 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
-import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
+import java.util.Comparator;
 
 class ajvf
-  implements Runnable
+  implements Comparator<axow>
 {
-  ajvf(ajve paramajve, Bitmap paramBitmap) {}
+  ajvf(ajve paramajve) {}
   
-  public void run()
+  public int a(axow paramaxow1, axow paramaxow2)
   {
-    if ((this.jdField_a_of_type_Ajve.a.a.a instanceof TroopGiftToPersonalSurfaceView)) {
-      ((TroopGiftToPersonalSurfaceView)this.jdField_a_of_type_Ajve.a.a.a).setSendHeadBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if ((paramaxow1 != null) && (paramaxow2 != null)) {
+      return paramaxow1.b - paramaxow2.b;
     }
+    return -1;
   }
 }
 

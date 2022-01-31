@@ -1,35 +1,56 @@
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.biz.ui.RefreshView.OnRefreshListener;
-import com.tencent.mobileqq.app.NearbyHandler;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.PhoneUnityPhoneLoginActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class adnn
-  implements RefreshView.OnRefreshListener
+  extends amcj
 {
-  public adnn(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public adnn(PhoneUnityPhoneLoginActivity paramPhoneUnityPhoneLoginActivity) {}
   
-  public void a()
+  public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyHybridFragment", 2, "onRefresh");
+    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
+    {
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
+      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(true);
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
+      return;
     }
-    this.a.g();
-    SosoInterface.SosoLbsInfo localSosoLbsInfo = NearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo;
-    if (localSosoLbsInfo == null) {
-      localSosoLbsInfo = SosoInterface.b();
+    if (paramInt == 39)
+    {
+      azqs.b(this.a.app, "CliOper", "", "", "0X8005BFD", "0X8005BFD", 0, 0, "", "", "", "");
+      bdgm.a(this.a, 230, this.a.getString(2131695166), this.a.getString(2131695165), null, this.a.getString(2131692210), new adno(this), null).show();
+      return;
+    }
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = this.a.getString(2131695164);
+    }
+    QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void b(int paramInt, String paramString)
+  {
+    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
+    {
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
+      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(false);
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
+      return;
+    }
+    String str;
+    if (paramInt == 36) {
+      str = this.a.getString(2131695170);
     }
     for (;;)
     {
-      if (localSosoLbsInfo != null) {
-        ((NearbyHandler)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(3)).a((float)localSosoLbsInfo.a.b, (float)localSosoLbsInfo.a.a, 5);
-      }
-      this.a.jdField_a_of_type_ComTencentBizUiRefreshView.c();
+      QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
       return;
+      str = paramString;
+      if (TextUtils.isEmpty(paramString)) {
+        str = this.a.getString(2131695169);
+      }
     }
   }
 }

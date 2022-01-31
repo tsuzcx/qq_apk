@@ -1,30 +1,26 @@
-import com.tencent.mobileqq.nearby.NearbyIconDecoder;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcObserver;
-import java.util.List;
+import android.view.animation.Transformation;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class aema
-  extends NearbyProcObserver
+  implements bdoh<Integer>
 {
-  public aema(NearbyIconDecoder paramNearbyIconDecoder) {}
+  public aema(VisitorsActivity paramVisitorsActivity) {}
   
-  public void a(List paramList1, List paramList2)
+  public void a(bdob<Integer> parambdob, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    if ((paramList1 == null) || (paramList2 == null) || (paramList1.size() == 0) || (paramList1.size() != paramList2.size())) {}
-    for (;;)
+    this.a.c.setText(paramInteger + "");
+    if (paramInteger.intValue() > 9999)
     {
+      this.a.c.setTextSize(36.0F);
       return;
-      int i = 0;
-      while (i < paramList1.size())
-      {
-        this.a.a((String)paramList1.get(i), (String)paramList2.get(i));
-        i += 1;
-      }
     }
+    this.a.c.setTextSize(44.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aema
  * JD-Core Version:    0.7.0.1
  */

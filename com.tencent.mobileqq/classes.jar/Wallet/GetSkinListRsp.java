@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class GetSkinListRsp
   extends JceStruct
 {
-  static ArrayList cache_skin_list = new ArrayList();
+  static ArrayList<SkinInfo> cache_skin_list = new ArrayList();
   public boolean is_hide_list;
   public String more_skin_url = "";
   public String operate_desc = "";
   public String operate_url = "";
   public int selected_id;
-  public ArrayList skin_list;
+  public ArrayList<SkinInfo> skin_list;
   
   static
   {
@@ -24,7 +24,7 @@ public final class GetSkinListRsp
   
   public GetSkinListRsp() {}
   
-  public GetSkinListRsp(ArrayList paramArrayList, int paramInt, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  public GetSkinListRsp(ArrayList<SkinInfo> paramArrayList, int paramInt, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
     this.skin_list = paramArrayList;
     this.selected_id = paramInt;

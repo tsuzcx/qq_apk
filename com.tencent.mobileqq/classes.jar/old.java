@@ -1,55 +1,54 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetMusicListConfig;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.MusicConfigInfo;
-import com.tencent.biz.qqstory.network.request.GetMusicConfigRequest;
-import com.tencent.biz.qqstory.network.response.GetMusicConfigResponse;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.takevideo.music.QQStoryMusicInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import java.util.List;
 
 public class old
-  implements CmdTaskManger.CommandCallback
+  implements ood
 {
-  long jdField_a_of_type_Long = System.currentTimeMillis();
-  Context jdField_a_of_type_AndroidContentContext;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public old(@NonNull Context paramContext)
+  public old(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
+  
+  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<omt> paramList, boolean paramBoolean2, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    QLog.d("ReadInJoyCommentListFragment", 1, "onCommentListLoad anchor");
+    if (!paramBoolean1) {}
+    do
+    {
+      return;
+      paramList = ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment).a().a();
+    } while (paramList == null);
+    if (!TextUtils.isEmpty(paramList.b))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.f();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a(true, paramList.a, paramList.b);
+    }
+    for (;;)
+    {
+      paramList.a(false);
+      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.f();
+    }
   }
   
-  public void a(@NonNull GetMusicConfigRequest paramGetMusicConfigRequest, @Nullable GetMusicConfigResponse paramGetMusicConfigResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void onCommentStateError(int paramInt)
   {
-    StoryReportor.a("edit_video", "music_list_time", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "", "", "" });
-    if ((paramErrorMessage.isFail()) || (paramGetMusicConfigResponse == null))
+    if (this.jdField_a_of_type_Boolean) {}
+    do
     {
-      StoryReportor.a("edit_video", "music_list_failed", 0, 0, new String[] { "", "", "", "" });
       return;
-    }
-    paramGetMusicConfigRequest = paramGetMusicConfigResponse.a;
-    int j = paramGetMusicConfigRequest.music_config.size();
-    paramGetMusicConfigResponse = new ArrayList(j);
-    if (j > 0)
-    {
-      int i = 0;
-      while (i < j)
-      {
-        paramGetMusicConfigResponse.add(new QQStoryMusicInfo((qqstory_struct.MusicConfigInfo)paramGetMusicConfigRequest.music_config.get(i)));
-        i += 1;
+      this.jdField_a_of_type_Boolean = true;
+      if (paramInt == 1001) {
+        ybk.a(1, 2131718787);
       }
-    }
-    StoryReportor.a("edit_video", "music_list_count", 0, 0, new String[] { String.valueOf(j), "", "", "" });
-    QQStoryMusicInfo.a(this.jdField_a_of_type_AndroidContentContext, paramGetMusicConfigResponse);
+    } while (paramInt != 1003);
+    ybk.a(1, 2131718788);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     old
  * JD-Core Version:    0.7.0.1
  */

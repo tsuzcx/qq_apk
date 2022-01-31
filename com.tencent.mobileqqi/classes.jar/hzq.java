@@ -1,47 +1,19 @@
-import android.view.View;
-import com.tencent.widget.AbsListView;
+import android.app.Activity;
+import com.tencent.mobileqq.pluginsdk.SplashDialogWrapper;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
 
-public class hzq
-  extends iab
+public final class hzq
   implements Runnable
 {
-  private hzq(AbsListView paramAbsListView)
-  {
-    super(paramAbsListView, null);
-  }
+  public hzq(IPluginManager.PluginParams paramPluginParams, Activity paramActivity1, Activity paramActivity2) {}
   
   public void run()
   {
-    View localView;
-    if ((this.a.isPressed()) && (this.a.aA >= 0))
-    {
-      int i = this.a.aA;
-      int j = this.a.ap;
-      localView = this.a.getChildAt(i - j);
-      if (this.a.p) {
-        break label108;
-      }
-      if (!a()) {
-        break label128;
-      }
+    if (this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.jdField_a_of_type_AndroidAppDialog != null) {
+      new SplashDialogWrapper(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.jdField_a_of_type_AndroidAppDialog, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.d, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.jdField_a_of_type_Boolean, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.c).show();
     }
-    label128:
-    for (boolean bool = this.a.b(localView, this.a.aA, this.a.d);; bool = false)
-    {
-      if (bool)
-      {
-        this.a.setPressed(false);
-        localView.setPressed(false);
-      }
-      label108:
-      do
-      {
-        return;
-        this.a.setPressed(false);
-      } while (localView == null);
-      localView.setPressed(false);
-      return;
-    }
+    IPluginManager.b(this.b, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
   }
 }
 

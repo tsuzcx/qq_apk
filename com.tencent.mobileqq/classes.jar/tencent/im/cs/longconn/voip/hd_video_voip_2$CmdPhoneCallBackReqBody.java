@@ -10,10 +10,10 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class hd_video_voip_2$CmdPhoneCallBackReqBody
-  extends MessageMicro
+  extends MessageMicro<CmdPhoneCallBackReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatField bytes_last_call_id = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> bytes_last_call_id = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBBytesField bytes_prvt_session = PBField.initBytes(ByteStringMicro.EMPTY);
   public hd_video_voip_2.TelInfo msg_from_tel = new hd_video_voip_2.TelInfo();
   public hd_video_voip_2.TelInfo msg_to_tel = new hd_video_voip_2.TelInfo();
@@ -30,7 +30,7 @@ public final class hd_video_voip_2$CmdPhoneCallBackReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.longconn.voip.hd_video_voip_2.CmdPhoneCallBackReqBody
  * JD-Core Version:    0.7.0.1
  */

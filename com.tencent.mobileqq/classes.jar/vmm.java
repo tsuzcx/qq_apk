@@ -1,27 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.GalleryImageStruct;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
 
-class vmm
-  implements Runnable
+public class vmm
+  implements DialogInterface.OnCancelListener
 {
-  vmm(vml paramvml, String paramString) {}
+  public vmm(FollowCaptureLauncher paramFollowCaptureLauncher) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_Vml.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(this.jdField_a_of_type_Vml.jdField_a_of_type_Int, true);
-      this.jdField_a_of_type_Vml.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(this.jdField_a_of_type_Vml.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, null, this.jdField_a_of_type_Vml.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct, false);
-      if (AIOGalleryAdapter.a(this.jdField_a_of_type_Vml.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter) != null) {
-        AIOGalleryAdapter.a(this.jdField_a_of_type_Vml.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter).a(this.jdField_a_of_type_Vml.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_Vml.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct.a());
-      }
-    }
+    FollowCaptureLauncher.a(this.a, true);
+    FollowCaptureLauncher.a(this.a);
+    FollowCaptureLauncher.a(this.a, false);
+    wxj.a("FollowLaunchCancel", true, System.currentTimeMillis() - FollowCaptureLauncher.a(this.a), new String[] { "dialog_cancel" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmm
  * JD-Core Version:    0.7.0.1
  */

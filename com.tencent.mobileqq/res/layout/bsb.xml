@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:background="@null" android:layout_width="fill_parent" android:layout_height="@dimen/azx"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/ha0" android:layout_width="fill_parent" android:layout_height="@dimen/azw" />
+    <FrameLayout android:id="@id/h_w" android:background="@drawable/gfk" android:layout_width="fill_parent" android:layout_height="@dimen/azy" />
+    <include android:id="@id/ha1" android:background="@null" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_marginTop="@dimen/b01" layout="@layout/qzone_custom_commen_title" />
+    <ViewStub android:id="@id/h_z" android:background="@null" android:layout="@layout/brx" android:inflatedId="@id/h_y" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_marginTop="@dimen/b01" />
+    <FrameLayout android:layout_gravity="right" android:id="@id/htp" android:layout_width="wrap_content" android:layout_height="@dimen/title_bar_height" android:layout_marginTop="@dimen/b01" android:layout_marginRight="40.0dip" android:minWidth="50.0dip">
+        <ViewStub android:layout_gravity="center|right" android:id="@id/dtn" android:layout="@layout/bs8" android:layout_width="35.0dip" android:layout_height="35.0dip" />
+        <ViewStub android:layout_gravity="center|right" android:id="@id/dt9" android:layout="@layout/bs1" android:layout_width="50.0dip" android:layout_height="25.0dip" />
+    </FrameLayout>
+</merge>

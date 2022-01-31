@@ -1,0 +1,747 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <style type='text/css' >
+        html{
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            min-height: 60px;
+            font-size: 17px;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            color:#353535;
+            word-wrap: break-word;
+        }
+        body{
+            /*-webkit-user-select: none;*/
+            margin: 0;
+            padding: 10px 20px;
+        }
+        #WNEditor{
+            min-height: 60px;
+            height: 100%;
+            outline: none;
+        }
+        #WNEditor span{
+           opacity: 1.0;
+        }
+        #WNEditor img{
+            width: 100%;
+            display: inline-block;
+            margin: 0px;
+        }
+        #WNEditor .voice-loading{
+        border: 1px dashed #d6d6d6;
+        }
+    </style>
+</head>
+<body>
+<div id="WNEditor" contenteditable="true"></div>
+<script>
+
+//调试用
+window.onerror = function(e){
+    log(e);
+}
+var editor = document.getElementById('WNEditor');
+var editing = false;
+var editable = true;
+var edited = false;
+
+function log(){
+    //console.log(arguments);
+    /**
+    var div = document.createElement('div');
+    div.innerText ='debug:  '+ JSON.stringify(arguments);
+    document.getElementById('debug').appendChild(div);
+     **/
+//alert('function log :JSON.stringify(arguments)=  '+JSON.stringify(arguments));
+}
+function logbody(){
+    document.getElementById('debug').innerText = editor.innerHTML;
+}
+function clearLog(){
+    document.getElementById('debug').innerHTML = ''
+}
+
+
+// 与 native 交互的初始化
+function connectWebViewJavascriptBridge(callback) {
+    if (window.WebViewJavascriptBridge) {
+        callback(WebViewJavascriptBridge)
+    } else {
+        document.addEventListener('WeixinJSBridgeReady', function(jsApiBridge){
+            callback({
+                callHandler:function(){
+                //alert('callHandler:arguments='+JSON.stringify(arguments));
+                    WeixinJSBridge.invoke.apply(WeixinJSBridge,arguments)
+                },
+                registerHandler:function(){
+                    WeixinJSBridge.on.apply(WeixinJSBridge,arguments)
+                },
+                registerSyncHandler:function(){
+                    WeixinJSBridge.on.apply(WeixinJSBridge,arguments)
+                },
+                init:function(){}
+            })
+        }, false);
+
+        document.addEventListener('WebViewJavascriptBridgeReady', function () {
+            callback(WebViewJavascriptBridge)
+        }, false)
+    }
+}
+
+connectWebViewJavascriptBridge(function (bridge) {
+    var tpls = {
+        editorItem:'<img data-type="{{type}}" id="{{localEditorId}}" style="height: {{nodeHeight}}px;display:inline;" src="{{src}}" class="item item-{{_type}}">',
+        objectItem:'<object data-type="{{type}}" id="{{localEditorId}}" name="{{localEditorId}}" class="item item-{{_type}}">'
+    }
+
+    // 用于对比，感知内容高度的变化
+    var oldTop=0;
+    var typeMap = ['unknown', 'text','image','local','voice','file'];
+
+    var editor = document.getElementById('WNEditor');
+    var selection,rangeCache ;
+    selection = window.getSelection();
+
+    // 创建特殊元素的工厂 Map
+    var factoryMap={
+        voice:createVoice,
+        image:createImage,
+        local:createLocation,
+        file:createFile,
+        unknown:createUnknown
+    }
+
+
+    // 后端约定，暂无作用
+    bridge.init(function (message, responseCallback) {
+        var data = { 'Javascript Responds': 'Wee!' }
+        responseCallback(data)
+    })
+
+    function updateItem(node,item){
+        try{
+            //node.parentNode.replaceChild(createEditItem(item),node);
+            if (typeMap[item.type] == 'voice')
+            {
+                if (item.localPath == null)
+                {
+                    node.parentNode.removeChild(node);
+                }
+                else
+                {
+                    drawCompleteVoice(node,item);
+                }
+            }
+            else
+            {
+                node.src = item.localPath;
+            }
+        }catch (e){log(e.stack)}
+    }
+
+    bridge.registerHandler('WNJSHandlerInsert', function (data, responseCallback) {
+        var node;
+
+        if(node = document.getElementById(data.localEditorId)){
+            log('update');
+            updateItem(node,data);
+            //更新
+        }else{
+        //alert('insert WNJSHandlerInser');
+            insertItem(data);
+            change();
+        }
+
+        <!--responseCallback({-->
+            <!--isSuccess:true-->
+        <!--});-->
+        return {isSuccess:true};
+    })
+
+    bridge.registerHandler('WNJSHandlerMultiInsert', function (data, responseCallback) {
+        for(var i = 0 ;i<data.length;i++){
+            insertItem(data[i]);
+        }
+
+        change();
+
+        responseCallback({
+            isSuccess:true
+        });
+    })
+
+    bridge.registerSyncHandler('WNJSHandlerSaveSelectionRange', function (data) {
+        if(selection.rangeCount > 0) {
+            rangeCache = selection.getRangeAt(0);
+        }
+        return {};
+    })
+
+    bridge.registerSyncHandler('WNJSHandlerLoadSelectionRange', function (data) {
+        selection.removeAllRanges();
+        selection.addRange(rangeCache);
+        return {};
+    })
+
+    bridge.registerSyncHandler('WNJSHandlerEditableChange', function (data) {
+        log('EditableChange' + data.editable);
+        editor.contentEditable = data.editable;
+        editable = data.editable;
+        return {};
+    })
+
+    bridge.registerSyncHandler('WNJSHandlerEditingChange', function (data) {
+        log('EditingChange' + data.editing);
+        editing = data.editing;
+        if (!editing) editor.blur();
+        return {};
+    })
+
+    bridge.registerSyncHandler('WNJSHandlerHeaderAndFooterChange', function (data) {
+        log('HeaderAndFooterChange');
+        editor.style.marginTop = data.header && data.header.height + 'px';
+        editor.style.marginBottom = data.footer && data.footer.height + 'px';
+        return {};
+    })
+
+    function insertItem (item){
+        var node = createEditItem(item),contentNode,child;
+        try{
+            log('insertItem:', selection.rangeCount, rangeCache);
+
+            if (selection.rangeCount > 0) {
+                rangeCache = selection.getRangeAt(0);
+                log('insertItem: hasrange', rangeCache);
+            }
+
+            if(rangeCache){
+                log('insertItem: usercache', rangeCache)
+
+                rangeCache.deleteContents();
+                selection.removeAllRanges();
+                insertItemToRange(rangeCache,node);
+                selection.addRange(rangeCache);
+                rangeCache = undefined;
+            }else{
+                log('insertItem: no rangeCache');
+
+                var newRange = document.createRange();
+                if (!editor.lastChild)
+                {
+                    var br = document.createElement('br');
+                    editor.appendChild(br);
+                    newRange.setStartBefore(editor.lastChild);
+                }
+                else
+                {
+                    newRange.setStartAfter(editor.lastChild);
+                }
+                newRange.collapse();
+                selection.removeAllRanges();
+                insertItemToRange(newRange,node);
+                selection.addRange(newRange);
+            }
+        }catch (e){log(e.msg,e)}
+    }
+
+    function insertItemToRange(range,node){
+        range.insertNode(node);
+        if(node.nextSibling && !(node.nextSibling.nodeType == 3 && !node.textContent.match(/(\w|\s)+/) && !nextNodeIsBr(node)) ){
+            console.log(node.nextSibling);
+            range.setEndBefore(node.nextSibling);
+            range.collapse();
+        }else{
+            log('create br');
+            var br = document.createElement('br');
+            range.setEndAfter(node);
+            range.collapse();
+            range.insertNode(br);
+            range.setEndAfter(br);
+            range.collapse();
+        }
+
+        range.collapse();
+        return range;
+    }
+    function nextNodeIsBr(node){
+        var currentNode = node.nextSibling
+        if(currentNode){
+            if(currentNode.nodeType == 1){
+                if(currentNode.tagName.toLowerCase() == 'br'){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                if(currentNode.nodeType == 3 && currentNode.textContent == ''){
+                    return nextNodeIsBr(currentNode);
+                }else{
+                    return false;
+                }
+            }
+        }else{
+            return false;
+        }
+    }
+    function drawCompleteVoice(node,item){
+
+        var canvas = node.canvas;
+        canvas.width  = editor.offsetWidth * 2;
+        var ctx = canvas.getContext('2d');
+        ctx.textBaseline = 'middle';
+        ctx.clearRect(0, 0, canvas.width,canvas.height);
+        // bkg
+        ctx.fillStyle = "#FFFFFF";
+        ctx.fillRect(2, 2, canvas.width - 4, canvas.height - 4);
+        // text
+        ctx.font = "36px Helvetica Neue";
+        ctx.fillStyle = "#353535";
+        ctx.fillText(item.lengthStr, 130, 60);
+        // img
+        var img = new Image();
+        img.onload = function() {
+            ctx.drawImage(img, 20, 20);
+            node.src = canvas.toDataURL();
+        };
+        img.src = item.iconPath;
+        // border
+       // ctx.setLineDash([]);
+        ctx.strokeStyle = "#d6d6d6";
+        //node.removeClass('loading');
+        node.style.border= '';
+        roundedRect(ctx, 0, 0, canvas.width, canvas.height, 6);
+    }
+
+    function createVoice(item){
+        var canvas = document.createElement('canvas');
+        canvas.width  = editor.offsetWidth * 2;
+        canvas.height = 120;
+        var ctx=canvas.getContext('2d');
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.lineWidth = 2;
+        var resultimg;
+        if (item.length > 0 && item.downloaded) {
+            // bkg
+            ctx.fillStyle = "#FFFFFF";
+            ctx.fillRect(2, 2, canvas.width - 4, canvas.height - 4);
+            // text
+            ctx.font = "36px Helvetica Neue";
+            ctx.fillStyle = "#353535";
+            ctx.fillText(item.lengthStr, 130, 60);
+            // img
+            var img = new Image();
+            img.onload = function() {
+                ctx.drawImage(img, 20, 20);
+                item.src = canvas.toDataURL();
+                resultimg.src = item.src;
+            };
+            img.src = item.iconPath;
+        }
+        else {
+            // text
+            ctx.font = "30px Helvetica Neue";
+            ctx.fillText(item.placeHolder, 50, 60);
+            // red dot
+            ctx.beginPath();
+            ctx.arc(30, 60, 4, 0, 2 * Math.PI, false);
+            ctx.fillStyle = '#F74949';
+            ctx.fill();
+            // border
+            ctx.beginPath();
+           // ctx.setLineDash([6,4]);
+        }
+        if(item.downloaded){
+            ctx.strokeStyle = "#E4E4E4";
+        }else{
+            ctx.strokeStyle = "#FFFFFF";
+        }
+        roundedRect(ctx, 0, 0, canvas.width, canvas.height, 6);
+
+        item.src = canvas.toDataURL();
+        item.nodeHeight = 60;
+        resultimg = tplRander(tpls['editorItem'],item);
+        if(item.downloaded){
+            resultimg.style.border='';
+        }else{
+            resultimg.style.border='1px dashed #d6d6d6';
+        }
+        resultimg.canvas = canvas;
+        return resultimg;
+    }
+    function roundedRect(ctx,x,y,width,height,radius){
+        ctx.beginPath();
+        ctx.moveTo(x,y+radius);
+        ctx.lineTo(x,y+height-radius);
+        ctx.quadraticCurveTo(x,y+height,x+radius,y+height);
+        ctx.lineTo(x+width-radius,y+height);
+        ctx.quadraticCurveTo(x+width,y+height,x+width,y+height-radius);
+        ctx.lineTo(x+width,y+radius);
+        ctx.quadraticCurveTo(x+width,y,x+width-radius,y);
+        ctx.lineTo(x+radius,y);
+        ctx.quadraticCurveTo(x,y,x,y+radius);
+        ctx.stroke();
+    }
+    function createImage(item){
+        item.src = item.localPath;
+        item.nodeHeight = editor.offsetWidth*(item.height/item.width);
+        return tplRander(tpls['editorItem'],item);
+    }
+    function createLocation(item){
+        item.src = item.localPath;
+        return tplRander(tpls['editorItem'],item);
+    }
+    function createFile(item){
+
+        var canvas = document.createElement('canvas');
+        canvas.width  = editor.offsetWidth * 2;
+        canvas.height = 120;
+        var ctx=canvas.getContext('2d');
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.lineWidth = 2;
+        var resultimg;
+        // bkg
+        ctx.fillStyle = "#FFFFFF";
+        ctx.fillRect(1, 1, canvas.width - 2, canvas.height - 2);
+        // text
+        ctx.font = "30px Helvetica Neue";
+        ctx.fillStyle = "#353535";
+        ctx.fillText(item.title, 140, 40);
+        ctx.font = "24px Helvetica Neue";
+        ctx.fillStyle = "#888888";
+        ctx.fillText(item.content, 140, 80);
+        // img
+        var img = new Image();
+        img.onload = function() {
+        ctx.drawImage(img, 20, 15);
+        item.src = canvas.toDataURL();
+        resultimg.src = item.src;
+        };
+        img.src =  item.iconPath;
+        // border
+       // ctx.setLineDash([6,4]);
+        ctx.strokeStyle = "#E4E4E4";
+        roundedRect(ctx, 0, 0, canvas.width, canvas.height, 6);
+
+        item.src = canvas.toDataURL();
+        item.nodeHeight = 60;
+        resultimg = tplRander(tpls['editorItem'],item);
+        resultimg.canvas = canvas;
+        return resultimg;
+    }
+    function createUnknown(item){
+
+        var canvas = document.createElement('canvas');
+        canvas.width  = editor.offsetWidth * 2;
+        canvas.height = 120;
+        var ctx=canvas.getContext('2d');
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.lineWidth = 2;
+        var resultimg;
+        // bkg
+        ctx.fillStyle = "rgba(0, 0, 0, 0.03)";
+        ctx.fillRect(1, 1, canvas.width - 2, canvas.height - 2);
+        // text
+        ctx.font = "30px Helvetica Neue";
+        ctx.fillStyle = "#353535";
+        ctx.fillText(item.title, 100, 40);
+        ctx.font = "24px Helvetica Neue";
+        ctx.fillStyle = "#888888";
+        ctx.fillText(item.content, 100, 80);
+        // img
+        var img = new Image();
+        img.onload = function() {
+        ctx.drawImage(img, 30, 40);
+        item.src = canvas.toDataURL();
+        resultimg.src = item.src;
+        };
+        img.src = item.iconPath;
+        // border
+       // ctx.setLineDash([6,4]);
+        ctx.strokeStyle = "rgba(0, 0, 0, 0.06)";
+        roundedRect(ctx, 0, 0, canvas.width, canvas.height, 6);
+        
+        item.src = canvas.toDataURL();
+        item.nodeHeight = 60;
+        resultimg = tplRander(tpls['editorItem'],item);
+        resultimg.canvas = canvas;
+        return resultimg;
+    }
+
+    function tplRander(tpl,data){
+
+        var html =  tpl.replace(/\{\{(\w+)\}\}/g,function(a,b){
+            var value;
+            if(b.indexOf('||')>-1){
+                var keys = b.split('||');
+                for(var i  = 0; i < keys.length;i++){
+                    if(value = data[keys[i]]) break;
+                }
+
+            }else{
+                value = data[b];
+            }
+            return value || '';
+        })
+
+        var div = document.createElement('div')
+        div.innerHTML = html
+       /* var fragment = document.createDocumentFragment();
+
+        while(div.childNodes.length > 0){
+            fragment.appendChild(div.childNodes[0]);
+        }
+*/
+        return div.childNodes[0];
+    }
+
+    function getStyle(element,cssName){
+        return window.getComputedStyle(element)[cssName];
+    }
+
+    function createEditItem(item){
+        log(item.localPath);
+        var type = typeMap[item.type];
+        var node;
+        item._type = type;
+        switch (type){
+            case 'text':
+                node =  document.createTextNode(item.content);break;
+            default :
+                node = factoryMap[type](item);
+
+        }
+        var div = document.createElement('div');
+        div.appendChild(node);
+                               
+        return div;
+    }
+
+    bridge.registerHandler('WNJSHandlerExportData', function (data, responseCallback) {
+        var items = [],item;
+        var node;
+        var cloneNode = editor.cloneNode(true);
+        var itemNodes =cloneNode.getElementsByClassName('item');
+
+        for(var i = itemNodes.length - 1;i>=0;i--){
+            node = itemNodes[i];
+            item = {
+                localEditorId:node.id,
+                type:node.attributes['data-type'].value
+            };
+            items.unshift(item);
+            log(tplRander(tpls['objectItem'],item).outerHTML,node.outerHTML)
+            node.parentNode.replaceChild(tplRander(tpls['objectItem'],item),node);
+        }
+        return {isWNNoteValueResult:true,isInsert:data.isInsert,isSave:data.isSave,isSuccess:true,html:cloneNode.innerHTML,data:items};
+    })
+
+   bridge.callHandler('WNNativeCallbackInitData', {}, function (response) {
+
+       if(response.data){
+           response.data = JSON.parse(response.data)
+       }
+       if(response.header){
+           response.header = JSON.parse(response.header)
+       }
+       if(response.footer){
+           response.footer = JSON.parse(response.footer)
+       }
+       if(response.editor){
+           response.editor = JSON.parse(response.editor)
+       }
+
+
+       // alert(JSON.stringify(response));
+       var items = response.data;
+       editor.style.marginTop = response.header && response.header.height + 'px';
+       editor.style.marginBottom = response.footer && response.footer.height + 'px';
+       if (response.html.length > 0) editor.style.minHeight = response.editor && response.editor.minHeight + 'px';
+       editor.innerHTML = response.html;
+
+       for(var i = items.length - 1;i>=0;i--){
+           var item = items[i];
+           var curId = item.localEditorId;
+           var nodes = document.getElementsByName(curId);
+           var nodeCount = nodes.length;
+           if (nodeCount > 0)
+           {
+               for (var j=nodeCount-1; j >=0; j--)
+               {
+                   var node = nodes[j];
+                   node.parentNode.replaceChild(createEditItem(item),node);
+               }
+           }
+           else
+           {
+               var node = document.getElementById(curId);
+               node.parentNode.replaceChild(createEditItem(item),node);
+           }
+       }
+       if (response.html.length == 0 && response.title.length == 0)
+       {
+           setTimeout(function() {
+                editor.focus();
+                editor.style.minHeight = response.editor && response.editor.minHeight + 'px';
+            }, 0);
+           //editor.focus();
+       }
+   })
+
+    editor.addEventListener('click',itemClick);
+    editor.addEventListener('touchstart',touchstart);
+    var isFocus = false;
+    function touchstart(e){
+        var node = e.target;
+        log('event touchstart');
+        // 不是特殊元素的不给与点击事件
+        var touch = e.touches[0];
+        var x = touch.pageX;
+
+        if(!node.className || node.className.indexOf('item')< 0 || (!editing && (x < 40 || x > node.width))) {
+            if (editable) editor.contentEditable = 'true';
+        }
+        else if (!editing){
+            editor.contentEditable = 'false';
+        }
+    }
+
+    editor.addEventListener('focus',function(e){
+            log('event focus')
+            isFocus = true;
+            if (editing == false)
+            {
+                bridge.callHandler('WNNativeCallbackOnBecomeEditing', {}, function (response) {})
+                editing = true;
+                log('EditingChange2' + editing);
+            }
+            rangeCache = undefined;
+            change(true);
+            log('clearrangecache')
+    })
+
+    function itemClick(e){
+        log('event click');
+        // 事件代理
+        var node = e.target;
+
+        // 不是特殊元素的不给与点击事件
+        if(!node.className || node.className.indexOf('item')< 0) return;
+        log(selection.rangeCount);
+        log('focus',isFocus);
+        var x = e.clientX;
+        var elemRect = node.getBoundingClientRect();
+//alert('click: editing='+editing);
+//alert('click: editor.contentEditable='+editor.contentEditable);
+
+        if((editing == false && editor.contentEditable == 'false') || node.attributes['data-type'].value == 3){ // 非编辑态下可点击（点中边缘除外），编辑态下只有语音可点击
+            var params = {
+                localEditorId:node.id,
+                left:elemRect.left,
+                top:elemRect.top,
+                width:node.width,
+                height:node.height
+            }
+            //alert('on click item');
+
+            bridge.callHandler('WNNativeCallbackOnClick', params, function(){})
+            //alert('on click item end');
+            log('defoult')
+            e.preventDefault();
+
+        }else{
+            // 选中元素
+            var newRange = document.createRange();
+            if (e.clientX < elemRect.left + elemRect.width / 2) newRange.setStartBefore(node);
+            else newRange.setStartAfter(node);
+            newRange.collapse();
+            selection.removeAllRanges();
+            selection.addRange(newRange);
+        }
+    }
+
+    editor.addEventListener('input',function(e){
+        /*var range = selection.getRangeAt(0);
+        var span = document.createElement('span');
+
+        range.insertNode(span);
+        var prevNode = span.previousElementSibling;
+        var isItem = prevNode.className && prevNode.className.indexOf('item')>-1;
+        span.remove();
+        if(isItem){
+            prevNode.parentNode.insertBefore(document.createElement('span'),prevNode.nextSibling)
+
+        }*/
+        change();
+        if (edited == false) {
+            edited = true;
+           // alert('call edited');
+            bridge.callHandler('WNNativeCallbackOnBecomeEdited', {}, function (response) {})
+        }
+    })
+    function change(bool){
+        editing = true;
+        // todo: 对change 做频率控制
+        setTimeout(function(){
+           // var selection = window.getSelection();
+            //alert('delete do this');
+            var range = selection.getRangeAt(0);
+            var span = document.createElement('span');
+            var height,top ;
+            span.innerHTML='';
+            range.insertNode(span);
+            var prevNode = span.previousElementSibling;
+            // nodeType = 3 为文本节点
+            // todo:nextElementSibling 判断
+            if(prevNode && getStyle(prevNode,'display')=='inline-block' && !(selection.rangeCount > 0 && selection.focusNode.nodeType == 3)){
+                height = prevNode.offsetHeight;
+                top = prevNode.offsetTop;
+                log('block',top,height,prevNode.outerHTML);
+            }else{
+                top = span.offsetTop;
+                //if(prevNode && prevNode.tagName.toLowerCase() == 'br'){
+                    span.innerHTML = '.';
+                //}
+
+                height = span.offsetHeight;
+                log('span',top,height,prevNode);
+            }
+
+            <!--if( top != oldTop || bool){-->
+                <!--log('change',top,height);-->
+                <!--var cloneNode = editor.cloneNode(true);-->
+                <!--bridge.callHandler('WNNativeCallbackOnCaretChange', {top:top,height:height,html:cloneNode.innerHTML}, function (response) {-->
+                    <!--log('JS got response')-->
+                <!--})-->
+            <!--}-->
+            setTimeout(function() {
+                //var cloneNode = editor.cloneNode(true);//光标变化,通知native的完成按钮状态
+                bridge.callHandler('WNNativeCallbackOnCaretChange', {}, function (response) {})//{html:editor.innerHTML}, function (response) {})
+            }, 10);
+            if(span.remove){
+                span.remove();
+            }else{
+                span.parentNode.removeChild(span);
+            }
+
+            oldTop = top;
+        },0)
+    }
+
+    function itemLongClick(e){
+        bridge.callHandler('WNNativeCallbackOnLongClick', {'foo': 'bar'}, function (response) {
+            log('JS got response', response)
+        })
+    }
+})
+
+</script>
+</body>
+</html>

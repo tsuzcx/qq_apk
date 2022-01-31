@@ -1,6 +1,9 @@
 package com.tencent.mobileqq.app;
 
-public abstract interface ThreadCheck {}
+public abstract interface ThreadCheck
+{
+  public abstract void isLegalName(JobReporter.CheckParams paramCheckParams);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

@@ -1,35 +1,25 @@
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionActivity;
 
 public class tog
-  implements Runnable
+  extends Handler
 {
-  public tog(RecentLoginDevActivity paramRecentLoginDevActivity) {}
+  public tog(PublicAccountImageCollectionActivity paramPublicAccountImageCollectionActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    try
+    switch (paramMessage.what)
     {
-      if ((RecentLoginDevActivity.a(this.a) == null) && (!this.a.isFinishing())) {
-        RecentLoginDevActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
-      }
-      if ((RecentLoginDevActivity.a(this.a) != null) && (!RecentLoginDevActivity.a(this.a).isShowing())) {
-        RecentLoginDevActivity.a(this.a).show();
-      }
+    default: 
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    PublicAccountImageCollectionActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tog
  * JD-Core Version:    0.7.0.1
  */

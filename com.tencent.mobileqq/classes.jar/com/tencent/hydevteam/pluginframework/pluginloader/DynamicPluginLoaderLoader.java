@@ -20,7 +20,6 @@ class DynamicPluginLoaderLoader
   }
   
   final PluginLoader a()
-    throws DynamicPluginLoaderLoadException
   {
     if (!this.a.exists()) {
       throw new DynamicPluginLoaderLoadException("文件" + this.a.getAbsolutePath() + "不存在");
@@ -53,7 +52,7 @@ class DynamicPluginLoaderLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.hydevteam.pluginframework.pluginloader.DynamicPluginLoaderLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class mobileqq_dynamic_search$TabItemGroup
-  extends MessageMicro
+  extends MessageMicro<TabItemGroup>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field group_mask = PBField.initUInt32(0);
@@ -22,7 +22,7 @@ public final class mobileqq_dynamic_search$TabItemGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.TabItemGroup
  * JD-Core Version:    0.7.0.1
  */

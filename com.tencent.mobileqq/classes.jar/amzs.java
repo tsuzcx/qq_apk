@@ -1,25 +1,18 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.RDMEtraMsgCollector;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.os.IInterface;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-public class amzs
-  implements View.OnClickListener
+public abstract interface amzs
+  extends IInterface
 {
-  public amzs(QZoneShareActivity paramQZoneShareActivity) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    RDMEtraMsgCollector.a().a(QZoneShareActivity.a, paramView);
-    this.a.a(false);
-    paramView = new Intent(BaseApplication.getContext(), SelectMemberActivity.class);
-    paramView.putExtra("param_only_friends", true);
-    paramView.putExtra("param_min", 1);
-    this.a.startActivityForResult(paramView, 1000);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(ArConfigInfo paramArConfigInfo, ArEffectConfig paramArEffectConfig, ARCommonConfigInfo paramARCommonConfigInfo);
 }
 
 

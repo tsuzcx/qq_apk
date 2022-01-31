@@ -1,21 +1,31 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
-import com.tencent.litetransfersdk.Session;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
 
-public class rdc
-  implements Runnable
+class rdc
+  implements DialogInterface.OnClickListener
 {
-  public rdc(LiteTransferWrapper paramLiteTransferWrapper, Session[] paramArrayOfSession) {}
+  rdc(rcz paramrcz, boolean paramBoolean) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) != 0L) {
-      this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SyncGroupToJNI(LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_ArrayOfComTencentLitetransfersdkSession);
+    if (!this.jdField_a_of_type_Boolean) {
+      if (!rcz.a(this.jdField_a_of_type_Rcz)) {}
     }
+    while (!(rcz.a(this.jdField_a_of_type_Rcz) instanceof Activity))
+    {
+      return;
+      this.jdField_a_of_type_Rcz.b();
+      return;
+    }
+    oee.b(rcz.a(this.jdField_a_of_type_Rcz));
+    odv.a(rcz.a(this.jdField_a_of_type_Rcz), rcz.a(this.jdField_a_of_type_Rcz).o, rcz.a(this.jdField_a_of_type_Rcz).p, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rdc
  * JD-Core Version:    0.7.0.1
  */

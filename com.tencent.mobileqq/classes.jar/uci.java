@@ -1,23 +1,26 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class uci
-  implements Runnable
+class uci
+  implements Animation.AnimationListener
 {
-  public uci(TroopRequestActivity paramTroopRequestActivity, FriendsManager paramFriendsManager) {}
+  uci(uce paramuce) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    Card localCard = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b);
-    ThreadManager.getUIHandler().post(new ucj(this, localCard));
+    if (this.a.a != null) {
+      this.a.a.setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uci
  * JD-Core Version:    0.7.0.1
  */

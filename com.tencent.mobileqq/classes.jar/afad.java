@@ -1,28 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
-public class afad
-  implements View.OnTouchListener
+class afad
+  implements DialogInterface.OnClickListener
 {
-  public afad(PlayOperationViewModel paramPlayOperationViewModel) {}
+  afad(afac paramafac) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131370581).setAlpha(0.5F);
-    }
-    for (;;)
+    switch (paramInt)
     {
-      return false;
-      this.a.a.findViewById(2131370581).setAlpha(1.0F);
+    default: 
+      return;
     }
+    DoodlePanel.a(this.a.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afad
  * JD-Core Version:    0.7.0.1
  */

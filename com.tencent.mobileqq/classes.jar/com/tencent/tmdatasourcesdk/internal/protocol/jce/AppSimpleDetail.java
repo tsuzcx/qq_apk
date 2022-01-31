@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public final class AppSimpleDetail
   extends JceStruct
 {
-  static ArrayList<ApkDownUrl> a;
+  static ArrayList<ApkDownUrl> cache_apkDownUrl;
   public ArrayList<ApkDownUrl> apkDownUrl = null;
   public long apkId = 0L;
   public String apkMd5 = "";
@@ -56,13 +56,13 @@ public final class AppSimpleDetail
     this.signatureMd5 = paramJceInputStream.readString(7, false);
     this.apkMd5 = paramJceInputStream.readString(8, false);
     this.fileSize = paramJceInputStream.read(this.fileSize, 9, false);
-    if (a == null)
+    if (cache_apkDownUrl == null)
     {
-      a = new ArrayList();
+      cache_apkDownUrl = new ArrayList();
       ApkDownUrl localApkDownUrl = new ApkDownUrl();
-      a.add(localApkDownUrl);
+      cache_apkDownUrl.add(localApkDownUrl);
     }
-    this.apkDownUrl = ((ArrayList)paramJceInputStream.read(a, 10, false));
+    this.apkDownUrl = ((ArrayList)paramJceInputStream.read(cache_apkDownUrl, 10, false));
     this.diffApkMd5 = paramJceInputStream.readString(11, false);
     this.diffFileSize = paramJceInputStream.read(this.diffFileSize, 12, false);
     this.channelId = paramJceInputStream.readString(13, false);
@@ -106,7 +106,7 @@ public final class AppSimpleDetail
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,25 @@
-public final class wot
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.ArrayList;
+import java.util.List;
+
+public class wot
+  extends vcb
 {
-  private static boolean f(int paramInt)
+  public List<String> a = new ArrayList();
+  
+  public wot(ErrorMessage paramErrorMessage)
   {
-    return paramInt == -3;
+    super(paramErrorMessage);
   }
   
-  private static boolean g(int paramInt)
+  public String toString()
   {
-    return paramInt == -2;
-  }
-  
-  private static boolean h(int paramInt)
-  {
-    return paramInt == -1;
-  }
-  
-  private static boolean i(int paramInt)
-  {
-    return paramInt < 0;
-  }
-  
-  private static boolean j(int paramInt)
-  {
-    return paramInt == 0;
+    return "FeedData{" + super.toString() + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wot
  * JD-Core Version:    0.7.0.1
  */

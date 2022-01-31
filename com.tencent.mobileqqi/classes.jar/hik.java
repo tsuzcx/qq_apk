@@ -1,29 +1,33 @@
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
-import java.util.List;
+import android.app.ProgressDialog;
+import android.content.res.Resources;
+import android.widget.Button;
+import com.tencent.open.agent.AuthorityActivity;
 
 public class hik
   implements Runnable
 {
-  public hik(SendMessageHandler paramSendMessageHandler, long paramLong, String paramString) {}
+  public hik(AuthorityActivity paramAuthorityActivity) {}
   
   public void run()
   {
-    if (SendMessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler) >= SendMessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler).size()) {
-      return;
+    if ((this.a.jdField_a_of_type_AndroidAppProgressDialog != null) && (this.a.jdField_a_of_type_AndroidAppProgressDialog.isShowing())) {
+      this.a.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
     }
-    int i = SendMessageHandler.b(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler);
-    SendMessageHandler.SendMessageRunnable localSendMessageRunnable = (SendMessageHandler.SendMessageRunnable)SendMessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler).get(i);
-    localSendMessageRunnable.jdField_a_of_type_Int = i;
-    localSendMessageRunnable.i = System.currentTimeMillis();
-    localSendMessageRunnable.e = this.jdField_a_of_type_Long;
-    localSendMessageRunnable.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localSendMessageRunnable.run();
+    if (this.a.w == 0) {
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(2131562746);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      this.a.a(this.a.getResources().getString(2131562443), new hil(this));
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.y);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hik
  * JD-Core Version:    0.7.0.1
  */

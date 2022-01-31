@@ -9,13 +9,13 @@ import java.util.Map;
 public final class mobile_applist_req
   extends JceStruct
 {
-  static Map cache_mapEx = new HashMap();
+  static Map<String, String> cache_mapEx = new HashMap();
   public int album_show_type;
   public int appid;
   public String attach_info = "";
   public int count;
   public int extrance_type;
-  public Map mapEx;
+  public Map<String, String> mapEx;
   public int refresh_type;
   public long uin;
   
@@ -26,7 +26,7 @@ public final class mobile_applist_req
   
   public mobile_applist_req() {}
   
-  public mobile_applist_req(long paramLong, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4, int paramInt5, Map paramMap)
+  public mobile_applist_req(long paramLong, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4, int paramInt5, Map<String, String> paramMap)
   {
     this.uin = paramLong;
     this.appid = paramInt1;
@@ -68,7 +68,7 @@ public final class mobile_applist_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_applist_req
  * JD-Core Version:    0.7.0.1
  */

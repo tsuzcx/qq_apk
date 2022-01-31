@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/bt1" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq" xmlns:tencent="http://schemas.android.com/apk/res-auto">
+    <com.tencent.widget.immersive.ImmersiveTitleBar2 android:id="@id/jq6" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
+    <include layout="@layout/is" />
+    <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/bt9" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/a32" android:background="@drawable/common_strip_setting_middle" android:addStatesFromChildren="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/skin_black" android:text="@string/qvu" style="@style/c0" />
+                <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/a2o" android:layout_width="30.0dip" android:layout_height="30.0dip" />
+                <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                <ImageView style="@style/bt" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/k_" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/skin_black" android:text="@string/qwy" style="@style/c0" />
+                <EditText android:textSize="@dimen/ais" android:textColor="@color/skin_black" android:textColorHint="@color/skin_gray3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/nickname" android:background="@null" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginRight="30.0dip" android:hint="@string/qwu" android:singleLine="true" android:layout_weight="1.0" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/csq" android:background="@drawable/common_strip_setting_middle" android:addStatesFromChildren="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/skin_black" android:text="@string/qwn" style="@style/c0" />
+                <EditText android:textSize="@dimen/ais" android:textColor="@color/skin_black" android:textColorHint="@color/skin_gray3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/csn" android:background="@null" android:focusableInTouchMode="false" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="@string/qwo" android:singleLine="true" android:editable="false" android:layout_weight="1.0" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/iu" android:background="@drawable/common_strip_setting_middle" android:addStatesFromChildren="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/skin_black" android:text="@string/qx9" style="@style/c0" />
+                <EditText android:textSize="@dimen/ais" android:textColor="@color/skin_black" android:textColorHint="@color/skin_gray3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/is" android:background="@null" android:focusableInTouchMode="false" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="@string/qvz" android:singleLine="true" android:editable="false" android:layout_weight="1.0" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/l6e" android:background="@drawable/common_strip_setting_middle" android:addStatesFromChildren="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/skin_black" android:text="@string/qwa" style="@style/c0" />
+                <EditText android:textSize="@dimen/ais" android:textColor="@color/skin_black" android:textColorHint="@color/skin_gray3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/l6d" android:background="@null" android:focusableInTouchMode="false" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:hint="@string/qvg" android:singleLine="true" android:editable="false" android:layout_weight="1.0" />
+                <ImageView style="@style/bt" />
+            </LinearLayout>
+            <TextView android:textSize="13.0dip" android:textColor="@color/skin_gray3" android:id="@id/ig5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/up" android:layout_marginTop="20.0dip" android:layout_marginBottom="5.0dip" android:text="@string/h4g" android:lineSpacingExtra="5.0dip" />
+            <com.tencent.mobileqq.nearby.profilecard.SavorTagImg android:id="@id/ig9" android:background="@drawable/common_strip_setting_middle" android:paddingLeft="15.0dip" android:paddingRight="12.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <com.tencent.mobileqq.nearby.profilecard.SavorTagImg android:id="@id/ig_" android:background="@drawable/common_strip_setting_middle" android:paddingLeft="15.0dip" android:paddingRight="12.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <com.tencent.mobileqq.nearby.profilecard.SavorTagImg android:id="@id/ig8" android:background="@drawable/common_strip_setting_bottom" android:paddingLeft="15.0dip" android:paddingRight="12.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <com.tencent.mobileqq.nearby.profilecard.SavorTagIcon android:id="@id/iga" android:background="@drawable/common_strip_setting_middle" android:paddingLeft="15.0dip" android:paddingRight="12.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" />
+            <com.tencent.mobileqq.nearby.profilecard.SavorTagIcon android:id="@id/ig7" android:background="@drawable/common_strip_setting_middle" android:paddingLeft="15.0dip" android:paddingRight="12.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <com.tencent.mobileqq.nearby.profilecard.SavorTagIcon android:id="@id/ig6" android:background="@drawable/common_strip_setting_middle" android:paddingLeft="15.0dip" android:paddingRight="12.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <com.tencent.mobileqq.nearby.profilecard.SavorTagIcon android:id="@id/igb" android:background="@drawable/common_strip_setting_bottom" android:paddingLeft="15.0dip" android:paddingRight="12.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/cge" android:paddingLeft="10.0dip" android:focusable="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" formItem:bgType="jsv" formItem:switchChecked="true" formItem:switchText="收到的花对附近的人可见" />
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</LinearLayout>

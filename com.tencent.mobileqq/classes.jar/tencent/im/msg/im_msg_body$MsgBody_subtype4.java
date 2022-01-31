@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_msg_body$MsgBody_subtype4
-  extends MessageMicro
+  extends MessageMicro<MsgBody_subtype4>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16 }, new String[] { "msg_not_online_file", "uint32_msg_time" }, new Object[] { null, Integer.valueOf(0) }, MsgBody_subtype4.class);
   public im_msg_body.NotOnlineFile msg_not_online_file = new im_msg_body.NotOnlineFile();

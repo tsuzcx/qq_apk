@@ -1,20 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
 public class sbn
-  implements DialogInterface.OnClickListener
+  implements sai
 {
-  public sbn(ChatHistoryImageView paramChatHistoryImageView) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(BaseData paramBaseData)
   {
-    this.a.j();
+    return 5;
+  }
+  
+  public sah a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    return new sbo(LayoutInflater.from(paramContext).inflate(2131560027, null), paramBaseData);
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return paramBaseData.s == 5;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sbn
  * JD-Core Version:    0.7.0.1
  */

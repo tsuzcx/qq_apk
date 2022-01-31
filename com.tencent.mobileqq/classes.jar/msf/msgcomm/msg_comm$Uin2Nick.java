@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_comm$Uin2Nick
-  extends MessageMicro
+  extends MessageMicro<Uin2Nick>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "uint64_uin", "str_nick" }, new Object[] { Long.valueOf(0L), "" }, Uin2Nick.class);
   public final PBStringField str_nick = PBField.initString("");
@@ -15,7 +15,7 @@ public final class msg_comm$Uin2Nick
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msf.msgcomm.msg_comm.Uin2Nick
  * JD-Core Version:    0.7.0.1
  */

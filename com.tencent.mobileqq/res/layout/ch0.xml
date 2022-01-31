@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:id="@id/b4v" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:id="@id/aav" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <include layout="@layout/ch1" />
+        <include android:id="@id/bul" layout="@layout/n0" />
+    </LinearLayout>
+</ScrollView>

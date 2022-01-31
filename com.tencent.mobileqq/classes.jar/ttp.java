@@ -1,25 +1,43 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.biz.qqcircle.requests.QCircleDeleteFeedRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StRecomForward;
+import feedcloud.FeedCloudMeta.StUser;
 
-public class ttp
+class ttp
   implements DialogInterface.OnClickListener
 {
-  public ttp(SplashActivity paramSplashActivity) {}
+  ttp(ttl paramttl) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Intent localIntent = new Intent(this.a, GesturePWDSettingActivity.class);
-    localIntent.putExtra("key_reset", true);
-    this.a.startActivity(localIntent);
-    paramDialogInterface.dismiss();
+    if (paramInt == 1)
+    {
+      if (!ttl.a(this.a).a.isRecomFd.get()) {
+        break label118;
+      }
+      paramDialogInterface = new FeedCloudMeta.StFeed();
+      paramDialogInterface.id.set(ttl.a(this.a).a.recomForward.id.get());
+      paramDialogInterface.poster.set(ttl.a(this.a).a.recomForward.poster.get());
+    }
+    for (;;)
+    {
+      String str = paramDialogInterface.id.get();
+      paramDialogInterface = new QCircleDeleteFeedRequest(paramDialogInterface);
+      VSNetworkHelper.a().a(paramDialogInterface, new ttq(this, str));
+      return;
+      label118:
+      paramDialogInterface = ttl.a(this.a).a;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ttp
  * JD-Core Version:    0.7.0.1
  */

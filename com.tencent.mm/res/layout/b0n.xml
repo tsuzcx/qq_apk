@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/dj" android:layout_width="300.0dip" android:layout_height="88.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/f0y" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="16.0dip" android:layout_marginStart="16.0dip" />
+    <com.tencent.mm.plugin.story.ui.view.AudioWaveView android:id="@id/f0z" android:layout_width="74.0dip" android:layout_height="20.0dip" android:layout_marginTop="12.0dip" android:layout_centerHorizontal="true" android:layout_marginEnd="12.0dip" android:layout_alignParentEnd="true" />
+    <ProgressBar android:id="@id/ezc" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" style="@style/a02" />
+    <com.tencent.mm.plugin.story.ui.view.editor.item.MusicLrcView android:textSize="16.0sp" android:textColor="@color/h6" android:ellipsize="none" android:id="@id/f10" android:fadingEdge="horizontal" android:fadingEdgeLength="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="暂无歌词" android:singleLine="true" android:layout_below="@id/f0y" android:layout_centerHorizontal="true" android:requiresFadingEdge="horizontal" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip" />
+</RelativeLayout>

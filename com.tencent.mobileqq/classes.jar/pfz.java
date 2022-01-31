@@ -1,33 +1,23 @@
-import com.tencent.component.media.gif.NewGifDrawable;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0x977.oidb_cmd0x977.FollowStatusInfo;
+import tencent.im.oidb.cmd0x977.oidb_cmd0x977.KdUserInfo;
 
-public class pfz
-  implements Runnable
+class pfz
+  implements qob<oidb_cmd0x977.FollowStatusInfo, qkw>
 {
-  long jdField_a_of_type_Long;
+  pfz(pfw parampfw) {}
   
-  public pfz(NewGifDrawable paramNewGifDrawable, long paramLong)
+  public qkw a(oidb_cmd0x977.FollowStatusInfo paramFollowStatusInfo)
   {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void run()
-  {
-    long l = 0L;
-    NewGifDrawable.a(this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable);
-    NewGifDrawable localNewGifDrawable = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable;
-    ScheduledThreadPoolExecutor localScheduledThreadPoolExecutor = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor;
-    pgb localpgb = NewGifDrawable.a(this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable);
-    if (this.jdField_a_of_type_Long > 0L) {
-      l = this.jdField_a_of_type_Long;
-    }
-    localNewGifDrawable.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = localScheduledThreadPoolExecutor.schedule(localpgb, l, TimeUnit.MILLISECONDS);
+    return new qkw(Long.valueOf(paramFollowStatusInfo.uint64_uin.get()), Integer.valueOf(paramFollowStatusInfo.enum_account_type.get()), paramFollowStatusInfo.user_info.bytes_nick.get().toStringUtf8(), paramFollowStatusInfo.user_info.bytes_qq_head_url.get().toStringUtf8());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pfz
  * JD-Core Version:    0.7.0.1
  */

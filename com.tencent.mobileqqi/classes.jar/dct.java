@@ -1,16 +1,15 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class dct
-  implements Runnable
+  implements View.OnClickListener
 {
-  public dct(MySelfTroopMemberCard paramMySelfTroopMemberCard, String paramString) {}
+  public dct(QQMapActivity paramQQMapActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.e = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.e);
+    this.a.l();
   }
 }
 

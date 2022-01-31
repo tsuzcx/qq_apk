@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class mobileqq_dynamic_search$ResultItemGroup
-  extends MessageMicro
+  extends MessageMicro<ResultItemGroup>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field group_id = PBField.initUInt32(0);
@@ -18,7 +18,7 @@ public final class mobileqq_dynamic_search$ResultItemGroup
   public final PBBytesField group_name = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField more_name = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField more_url = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField result_items = PBField.initRepeatMessage(mobileqq_dynamic_search.ResultItem.class);
+  public final PBRepeatMessageField<mobileqq_dynamic_search.ResultItem> result_items = PBField.initRepeatMessage(mobileqq_dynamic_search.ResultItem.class);
   public final PBUInt64Field total_result_count = PBField.initUInt64(0L);
   
   static
@@ -31,7 +31,7 @@ public final class mobileqq_dynamic_search$ResultItemGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.ResultItemGroup
  * JD-Core Version:    0.7.0.1
  */

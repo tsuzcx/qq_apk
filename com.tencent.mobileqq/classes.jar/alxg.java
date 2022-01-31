@@ -1,20 +1,28 @@
-import android.util.Pair;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import common.config.service.QzoneConfig;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class alxg
-  implements alxi
+public class alxg
+  implements alpf
 {
-  public Pair a(String paramString)
+  private List<String> a = new ArrayList();
+  
+  public List<String> a(AppInterface paramAppInterface)
   {
-    int i = paramString.indexOf(':');
-    if ((i <= 0) || (i >= paramString.length())) {
-      return null;
+    if (this.a.isEmpty()) {
+      this.a.add("100077");
     }
-    return new Pair(paramString.substring(0, i).trim(), paramString.substring(i + 1).trim());
+    if (((paramAppInterface instanceof QQAppInterface)) && (QzoneConfig.getInstance().getConfig("qqminiapp", "settingMeMiniGameEnable", 1) == 1)) {
+      return this.a;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alxg
  * JD-Core Version:    0.7.0.1
  */

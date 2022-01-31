@@ -1,30 +1,52 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.qphone.base.util.QLog;
 
-public final class anht
-  implements INetEngine.IBreakDownFix
+public class anht
+  implements View.OnClickListener
 {
-  public void a(NetReq paramNetReq, NetResp paramNetResp)
+  public anht(QRScanEntryView paramQRScanEntryView) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    do
+    boolean bool2 = false;
+    if (QRScanEntryView.a(this.a))
     {
-      do
+      paramView = anft.a();
+      if (!QRScanEntryView.b(this.a))
+      {
+        bool1 = true;
+        if (paramView.a(bool1))
+        {
+          paramView = this.a;
+          if (QRScanEntryView.b(this.a)) {
+            break label118;
+          }
+          bool1 = true;
+          QRScanEntryView.a(paramView, bool1);
+          paramView = (anfy)this.a.a;
+          bool1 = bool2;
+          if (!QRScanEntryView.b(this.a)) {
+            bool1 = true;
+          }
+          paramView.a(bool1, 0L);
+          QRScanEntryView.a(this.a, true);
+          QRScanEntryView.b(this.a, QRScanEntryView.b(this.a));
+        }
+      }
+    }
+    label118:
+    while (!QLog.isColorLevel()) {
+      for (;;)
       {
         return;
-      } while (!(paramNetReq instanceof HttpNetReq));
-      paramNetReq = (HttpNetReq)paramNetReq;
-      paramNetReq.jdField_a_of_type_Long += paramNetResp.c;
-      paramNetResp.c = 0L;
-      paramNetResp = "bytes=" + paramNetReq.jdField_a_of_type_Long + "-";
-      paramNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
-      paramNetResp = paramNetReq.jdField_a_of_type_JavaLangString;
-    } while (!paramNetResp.contains("range="));
-    paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-    paramNetReq.jdField_a_of_type_JavaLangString = (paramNetResp + "range=" + paramNetReq.jdField_a_of_type_Long);
+        boolean bool1 = false;
+        continue;
+        bool1 = false;
+      }
+    }
+    QLog.d("AREngine_QRScanEntryView", 2, "initView click mFlashLightTips when view invisble.");
   }
 }
 

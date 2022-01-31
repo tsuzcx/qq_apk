@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.PublicAccountActivity;
 
 public class dam
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public dam(LoginPhoneNumActivity paramLoginPhoneNumActivity, String paramString1, String paramString2) {}
+  public dam(PublicAccountActivity paramPublicAccountActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.c(this.jdField_a_of_type_ComTencentMobileqqActivityLoginPhoneNumActivity, 230, null, null, 2131561746, 2131561875, null, null);
-    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
-    localQQCustomDialog.setMessage(this.b);
-    localQQCustomDialog.setDividerGone();
-    dan localdan = new dan(this);
-    dao localdao = new dao(this);
-    localQQCustomDialog.setPositiveButton(2131561875, localdan);
-    localQQCustomDialog.setNegativeButton(2131561746, localdao);
-    localQQCustomDialog.show();
+    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity).offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity).startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity, null);
   }
 }
 

@@ -1,59 +1,49 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.graphics.Rect;
+import java.util.ArrayList;
 
 public class aoji
-  implements SeekBar.OnSeekBarChangeListener
 {
-  public aoji(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public int a;
+  public Rect a;
+  public aojp a;
+  public ArrayList<aojj> a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c = 0;
+  public int d = 0;
+  public int e = 1;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public aoji(aojp paramaojp, int paramInt1, Rect paramRect, int paramInt2, boolean paramBoolean, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onProgressChanged: progress = " + paramInt + ",fromUser=" + paramBoolean);
-    }
-    if (paramBoolean)
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = 24;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Aojp = paramaojp;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
+    this.e = paramInt3;
+    if (paramaojp.jdField_a_of_type_Int > 0) {}
+    for (paramBoolean = bool;; paramBoolean = false)
     {
-      paramSeekBar = this.a;
-      paramSeekBar.g += 1;
-      ShortVideoPlayActivity.b(this.a, true);
+      this.jdField_b_of_type_Boolean = paramBoolean;
+      paramaojp.jdField_a_of_type_Int += 1;
+      return;
     }
-    this.a.b(paramInt * this.a.b / 10000L);
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public String toString()
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    ShortVideoPlayActivity.b(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onStartTrackingTouch: progress = " + i);
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    this.a.l();
-    paramSeekBar = this.a;
-    paramSeekBar.h += 1;
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    int j = (int)(i * this.a.b / 10000L);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onStopTrackingTouch: seekProgress = " + i + ", mCacheProgress= " + ShortVideoPlayActivity.b(this.a) + ", timestamp = " + j);
-    }
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
-    {
-      if (this.a.jdField_a_of_type_Int == 2) {
-        this.a.a();
-      }
-      this.a.a(j);
-    }
-    ShortVideoPlayActivity.b(this.a, false);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("text: ").append(this.jdField_a_of_type_Aojp.jdField_a_of_type_JavaLangString).append("; size: ").append(this.jdField_b_of_type_Int).append("; line_count: ").append(this.e).append("; container: ").append(this.jdField_a_of_type_AndroidGraphicsRect).append("; algin: ").append(this.c).append("; v_algin: ").append(this.d);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoji
  * JD-Core Version:    0.7.0.1
  */

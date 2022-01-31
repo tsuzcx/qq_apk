@@ -1,70 +1,32 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
-import com.tencent.mobileqq.app.FlashPicHelper;
-import com.tencent.mobileqq.app.HotChatHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AccountNotMatchException;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class von
-  implements Runnable
+final class von
+  extends SimpleJob<Object>
 {
-  public von(AIOImageProviderService paramAIOImageProviderService, long paramLong) {}
-  
-  public void run()
+  von(String paramString, umg paramumg, String[] paramArrayOfString, int paramInt, voo paramvoo, TVK_ICacheMgr paramTVK_ICacheMgr, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    try
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a);
-      ChatMessage localChatMessage = AIOImageProviderService.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService, this.jdField_a_of_type_Long);
-      QQMessageFacade localQQMessageFacade;
-      if (localChatMessage != null)
-      {
-        localQQMessageFacade = localQQAppInterface.a();
-        if (!HotChatHelper.a(localChatMessage)) {
-          break label157;
-        }
-        HotChatHelper.a(localChatMessage);
-        break label180;
-      }
-      for (;;)
-      {
-        localQQMessageFacade.a(localChatMessage.frienduin, localChatMessage.istroop, localChatMessage.uniseq, "extStr", localChatMessage.extStr);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.hotchat", 2, "makeFlashPicReaded,uin:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.b + ",type:" + localChatMessage.istroop + ",extStr" + localChatMessage.extStr);
-        }
-        ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8005979", "0X8005979", 0, 0, "", "", "", "");
-        return;
-        label157:
-        FlashPicHelper.a(localChatMessage);
-        Iterator localIterator = localQQMessageFacade.b(localChatMessage.frienduin, localChatMessage.msgtype).iterator();
-        label180:
-        if (localIterator.hasNext())
-        {
-          MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-          if (localMessageRecord.uniseq != this.jdField_a_of_type_Long) {
-            break;
-          }
-          FlashPicHelper.a(localMessageRecord);
-        }
-      }
-      return;
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    paramJobContext = this.jdField_a_of_type_Umg.a();
+    if (!TextUtils.isEmpty(paramJobContext)) {
+      this.jdField_a_of_type_ArrayOfJavaLangString[0] = bhsz.a(this.jdField_a_of_type_ArrayOfJavaLangString[0], "authkey", paramJobContext);
     }
-    catch (AccountNotMatchException localAccountNotMatchException)
-    {
-      QLog.d("Q.hotchat", 2, "setFlashPicReaded，account no match exception");
-    }
+    voi.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo, this.jdField_a_of_type_ArrayOfJavaLangString[0], this.jdField_a_of_type_Voo);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     von
  * JD-Core Version:    0.7.0.1
  */

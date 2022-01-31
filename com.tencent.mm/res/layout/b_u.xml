@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#fff0eff4" android:paddingTop="@dimen/l2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m1" style="@style/lx">
+        <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/n9">
+            <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/m1" android:text="@string/gb1" android:layout_weight="1.0" />
+            <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/fvy" android:layout_width="@dimen/no" android:layout_height="@dimen/nl" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/gb0" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m1" style="@style/lx">
+        <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/n9">
+            <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/m1" android:text="@string/gax" android:layout_weight="1.0" />
+            <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/fvz" android:layout_width="@dimen/no" android:layout_height="@dimen/nl" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/gb0" />
+    </LinearLayout>
+</LinearLayout>

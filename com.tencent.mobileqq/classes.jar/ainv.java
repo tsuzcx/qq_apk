@@ -1,20 +1,71 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.text.TextUtils;
-import com.tencent.mobileqq.text.TextUtils.LoadSysEmojiCallback;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
 
-public final class ainv
-  implements Runnable
+public class ainv
+  extends BaseAdapter
 {
-  public ainv(int paramInt, TextUtils.LoadSysEmojiCallback paramLoadSysEmojiCallback) {}
+  public ainv(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void run()
+  public String a(int paramInt)
   {
-    Drawable localDrawable = TextUtils.b(BaseApplicationImpl.getContext().getResources(), this.jdField_a_of_type_Int);
-    if ((localDrawable != null) && (this.jdField_a_of_type_ComTencentMobileqqTextTextUtils$LoadSysEmojiCallback != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqTextTextUtils$LoadSysEmojiCallback.a(localDrawable);
+    if ((CameraPreviewActivity.a(this.a) != null) && (paramInt < CameraPreviewActivity.a(this.a).size()) && (paramInt >= 0)) {
+      return (String)CameraPreviewActivity.a(this.a).get(paramInt);
     }
+    return null;
+  }
+  
+  public int getCount()
+  {
+    if (CameraPreviewActivity.a(this.a) != null) {
+      return CameraPreviewActivity.a(this.a).size();
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = this.a.getLayoutInflater().inflate(2131559434, null);
+      paramViewGroup = new ainw();
+      paramViewGroup.a = ((URLImageView)paramView.findViewById(2131372255));
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      Object localObject = a(paramInt);
+      if (localObject == null) {
+        break;
+      }
+      localObject = new File((String)localObject);
+      if (((File)localObject).exists()) {}
+      try
+      {
+        paramViewGroup.a.setImageDrawable(URLDrawable.getDrawable(((File)localObject).toURL(), CameraPreviewActivity.a(this.a), CameraPreviewActivity.b(this.a), CameraPreviewActivity.a(this.a), null, true));
+        return paramView;
+      }
+      catch (MalformedURLException paramViewGroup)
+      {
+        paramViewGroup.printStackTrace();
+        return paramView;
+      }
+      paramViewGroup = (ainw)paramView.getTag();
+    }
+    paramViewGroup.a.setImageDrawable(null);
+    return paramView;
   }
 }
 

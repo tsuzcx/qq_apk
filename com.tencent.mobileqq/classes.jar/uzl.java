@@ -1,90 +1,61 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class uzl
-  extends ClickableSpan
+  extends uro
 {
-  public uzl(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
+  public String a;
+  public ArrayList<uyg> a;
+  public boolean a;
+  public boolean b;
+  public String c;
   
-  public void onClick(View paramView)
+  public uzl(qqstory_service.RspMsgTabNodeList paramRspMsgTabNodeList)
   {
-    int i = 1;
-    int j;
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    super(paramRspMsgTabNodeList.result);
+    this.jdField_a_of_type_JavaLangString = paramRspMsgTabNodeList.list_seq.get().toStringUtf8();
+    this.c = paramRspMsgTabNodeList.next_cookie.get().toStringUtf8();
+    if (paramRspMsgTabNodeList.is_animate.get() > 0) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) {
-        break label225;
-      }
-      j = 0;
-    }
-    for (;;)
-    {
-      paramView = new JSONObject();
-      try
+      this.jdField_a_of_type_Boolean = bool1;
+      if (paramRspMsgTabNodeList.is_end.has())
       {
-        paramView.put("recv_uin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        paramView.put("recv_nick", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-        if (j > 0) {
-          paramView.put("people_num", j);
-        }
-        paramView.put("recv_type", i);
+        bool1 = bool2;
+        if (paramRspMsgTabNodeList.is_end.get() != 1) {}
       }
-      catch (JSONException localJSONException)
+      else
       {
-        for (;;)
-        {
-          Intent localIntent;
-          localJSONException.printStackTrace();
-        }
-        i = 0;
-        j = 0;
+        bool1 = true;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("GrayTipsItemBuilder", 2, "click HongBao:params=" + paramView.toString());
-      }
-      localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, SendHbActivity.class);
-      localIntent.putExtra("come_from", 2);
-      localIntent.putExtra("extra_data", paramView.toString());
-      localIntent.addFlags(536870912);
-      localIntent.putExtra("vacreport_key_seq", VACDReportUtil.a(null, "qqwallet", "makeHongbao", "click", "groupType=" + i, 0, null));
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      return;
-      label225:
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000)
+      this.b = bool1;
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramRspMsgTabNodeList.node_list.size());
+      paramRspMsgTabNodeList = paramRspMsgTabNodeList.node_list.get().iterator();
+      while (paramRspMsgTabNodeList.hasNext())
       {
-        j = ((DiscussionManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        i = 2;
-      }
-      else if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
-      {
-        i = 3;
-        j = 0;
+        qqstory_service.MsgTabNodeInfo localMsgTabNodeInfo = (qqstory_service.MsgTabNodeInfo)paramRspMsgTabNodeList.next();
+        uyg localuyg = new uyg();
+        localuyg.a(localMsgTabNodeInfo);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localuyg);
       }
     }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public String toString()
   {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    return "MsgTabNodeListResponse{shouldAnimate=" + this.jdField_a_of_type_Boolean + ", seq='" + this.jdField_a_of_type_JavaLangString + '\'' + ", cookie='" + this.c + '\'' + ", isEnd=" + this.b + ", nodeList=" + this.jdField_a_of_type_JavaUtilArrayList + "} " + super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uzl
  * JD-Core Version:    0.7.0.1
  */

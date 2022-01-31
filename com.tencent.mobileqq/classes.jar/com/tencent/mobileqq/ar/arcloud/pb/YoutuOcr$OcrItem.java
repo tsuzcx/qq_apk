@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class YoutuOcr$OcrItem
-  extends MessageMicro
+  extends MessageMicro<OcrItem>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "itemstring", "itemcoord" }, new Object[] { "", null }, OcrItem.class);
   public YoutuOcr.ItemCoord itemcoord = new YoutuOcr.ItemCoord();
@@ -14,7 +14,7 @@ public final class YoutuOcr$OcrItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.YoutuOcr.OcrItem
  * JD-Core Version:    0.7.0.1
  */

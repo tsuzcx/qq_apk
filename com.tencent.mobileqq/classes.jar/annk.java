@@ -1,18 +1,16 @@
-import dov.com.qq.im.capture.poi.FacePoiUI;
-
 public class annk
-  implements Runnable
 {
-  public annk(FacePoiUI paramFacePoiUI, boolean paramBoolean1, boolean paramBoolean2) {}
+  public void a(annm paramannm, Object paramObject) {}
   
-  public void run()
-  {
-    FacePoiUI.a(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiUI, this.jdField_a_of_type_Boolean, this.b);
-  }
+  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte) {}
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject) {}
+  
+  public void b(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     annk
  * JD-Core Version:    0.7.0.1
  */

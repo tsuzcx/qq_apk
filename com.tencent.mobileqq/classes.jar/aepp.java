@@ -1,25 +1,35 @@
-import com.tencent.mobileqq.nearby.gameroom.RecentInviteUser;
-import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager;
-import com.tencent.mobileqq.persistence.EntityManager;
+import android.media.AudioManager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
 
 public class aepp
-  implements Runnable
+  extends Handler
 {
-  public aepp(WerewolvesDataManager paramWerewolvesDataManager, RecentInviteUser paramRecentInviteUser) {}
+  public aepp(AudioPlayer paramAudioPlayer) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentInviteUser.getStatus() == 1000)
+    if ((paramMessage.what == 1000) && (AudioPlayer.a(this.a) == 0) && (this.a.a()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentInviteUser);
-      return;
+      int i = AudioPlayer.a(this.a).getStreamVolume(AudioPlayer.a(this.a).b);
+      int j = AudioPlayer.a(this.a).getStreamMaxVolume(AudioPlayer.a(this.a).b);
+      if (i / j <= 0.18F) {
+        break label126;
+      }
+      AudioPlayer.a(this.a, 1);
+      if (AudioPlayer.a(this.a) != null) {
+        AudioPlayer.a(this.a).c(this.a, AudioPlayer.a(this.a));
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentInviteUser);
+    return;
+    label126:
+    AudioPlayer.a(this.a).sendEmptyMessageDelayed(1000, 200L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aepp
  * JD-Core Version:    0.7.0.1
  */

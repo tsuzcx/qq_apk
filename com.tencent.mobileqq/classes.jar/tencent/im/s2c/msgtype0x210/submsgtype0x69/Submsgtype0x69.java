@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Submsgtype0x69
-  extends MessageMicro
+  extends MessageMicro<Submsgtype0x69>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_display_reddot = PBField.initBool(false);

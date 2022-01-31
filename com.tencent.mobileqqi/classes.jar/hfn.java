@@ -1,30 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.AntiFraudGetConfigObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.utils.CameraUtil;
+import com.tencent.mobileqq.widget.CameraFrameLayout;
 
 public class hfn
-  extends AntiFraudGetConfigObserver
+  implements Runnable
 {
-  public hfn(AntiFraudConfigFileUtil paramAntiFraudConfigFileUtil) {}
+  public hfn(CameraFrameLayout paramCameraFrameLayout) {}
   
-  protected void a(int paramInt, Bundle paramBundle)
+  public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localQQAppInterface != null) {
-      localQQAppInterface.c(AntiFraudConfigFileUtil.a(this.a));
-    }
-    if (paramInt != 1)
+    synchronized (CameraFrameLayout.a(this.a))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AntiFraudGetConfigObserver", 2, "invalid notification type for onGetUinSafetyWordingConfig:" + Integer.toString(paramInt));
+      if (CameraFrameLayout.a(this.a) != null)
+      {
+        CameraUtil.a(CameraFrameLayout.a(this.a));
+        CameraFrameLayout.a(this.a, null);
       }
+      CameraFrameLayout.a(this.a).obtainMessage(2).sendToTarget();
       return;
     }
-    ThreadManager.a(new hfo(this, paramBundle.getString("config_name"), paramBundle.getInt("effect_time", 0), paramBundle.getString("md5"), paramBundle.getString("download_url")));
   }
 }
 

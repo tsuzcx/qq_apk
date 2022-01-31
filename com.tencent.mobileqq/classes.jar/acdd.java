@@ -1,24 +1,25 @@
-import com.tencent.mobileqq.app.FavEmoRoamingObserver;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity.30;
 
 public class acdd
-  extends FavEmoRoamingObserver
+  implements DialogInterface.OnClickListener
 {
-  public acdd(EmojiManager paramEmojiManager, Object paramObject) {}
+  public acdd(AddFriendVerifyActivity.30 param30) {}
   
-  protected void a(List arg1)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    if (paramInt == 1)
     {
-      this.jdField_a_of_type_JavaLangObject.notify();
-      return;
+      this.a.this$0.a.cancel();
+      this.a.this$0.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acdd
  * JD-Core Version:    0.7.0.1
  */

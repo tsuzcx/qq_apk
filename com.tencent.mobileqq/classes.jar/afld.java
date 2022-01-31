@@ -1,24 +1,27 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.MomentDataChangeObserver;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
-public class afld
-  implements Runnable
+class afld
+  implements bhuk
 {
-  public afld(NearbyMomentManager paramNearbyMomentManager, String paramString) {}
+  afld(aflc paramaflc, MessageForDeviceFile paramMessageForDeviceFile, bhuf parambhuf) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    Iterator localIterator = NearbyMomentManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager).iterator();
-    while (localIterator.hasNext()) {
-      ((NearbyMomentManager.MomentDataChangeObserver)localIterator.next()).e(this.jdField_a_of_type_JavaLangString);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      this.jdField_a_of_type_Aflc.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afld
  * JD-Core Version:    0.7.0.1
  */

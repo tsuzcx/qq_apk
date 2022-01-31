@@ -8,15 +8,15 @@ import java.util.ArrayList;
 public final class common_gift_type_item
   extends JceStruct
 {
-  static ArrayList cache_common_gift_list;
-  public ArrayList common_gift_list;
+  static ArrayList<s_gift_item> cache_common_gift_list;
+  public ArrayList<s_gift_item> common_gift_list;
   public int item_type_id;
   public String name = "";
   public int total;
   
   public common_gift_type_item() {}
   
-  public common_gift_type_item(int paramInt1, String paramString, ArrayList paramArrayList, int paramInt2)
+  public common_gift_type_item(int paramInt1, String paramString, ArrayList<s_gift_item> paramArrayList, int paramInt2)
   {
     this.item_type_id = paramInt1;
     this.name = paramString;
@@ -50,7 +50,7 @@ public final class common_gift_type_item
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_TEMPLATE_GIFT.common_gift_type_item
  * JD-Core Version:    0.7.0.1
  */

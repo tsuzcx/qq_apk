@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class DynamicSearch$SubItemText
-  extends MessageMicro
+  extends MessageMicro<SubItemText>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField color = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class DynamicSearch$SubItemText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pb.unite.search.DynamicSearch.SubItemText
  * JD-Core Version:    0.7.0.1
  */

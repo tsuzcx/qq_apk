@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.trooppiceffects.view.ShakePicView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
 
-class ajxg
-  implements Runnable
+public class ajxg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ajxg(ajxf paramajxf) {}
+  public ajxg(RotationSeekBar paramRotationSeekBar) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.a.c();
+    RotationSeekBar.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
   }
 }
 

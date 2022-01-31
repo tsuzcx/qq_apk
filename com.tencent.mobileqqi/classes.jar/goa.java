@@ -1,21 +1,7 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantActivity;
-
 public class goa
-  implements View.OnTouchListener
 {
-  public goa(QZoneShareAlbumAssistantActivity paramQZoneShareAlbumAssistantActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (QZoneShareAlbumAssistantActivity.a(this.a).getVisibility() == 0) {
-      QZoneShareAlbumAssistantActivity.b(this.a);
-    }
-    return true;
-  }
+  public static final int a = 8;
+  public static final int b = 5;
 }
 
 

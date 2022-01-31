@@ -1,25 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.DataReport;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 
-public final class rwy
-  implements DialogInterface.OnClickListener
+public class rwy
+  implements View.OnClickListener
 {
-  public rwy(ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
+  public rwy(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a != null) {
-      this.a.a();
+    if (RIJRedPacketManager.a().b()) {
+      RIJRedPacketManager.a().a(this.a.a(), 1, 1, 0);
     }
-    paramDialogInterface.dismiss();
-    DataReport.b();
+    for (;;)
+    {
+      ReadinjoyTabFrame.a(this.a).b(1, false, null);
+      return;
+      ReadinjoyTabFrame.a(this.a).a(1, 1, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rwy
  * JD-Core Version:    0.7.0.1
  */

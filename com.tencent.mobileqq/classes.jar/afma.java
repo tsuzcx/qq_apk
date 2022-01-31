@@ -1,26 +1,26 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadListener;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public final class afma
-  implements VideoFeedsUploader.UploadListener
+class afma
+  implements arrh
 {
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo) {}
+  afma(aflw paramaflw, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo, int paramInt) {}
-  
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult)
+  public void a()
   {
-    ThreadManager.getUIHandler().post(new afmb(this, paramUploadInfo, paramUploadResult));
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
+    {
+      this.jdField_a_of_type_Aflw.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      return;
+    }
+    this.jdField_a_of_type_Aflw.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
   
-  public void b(VideoFeedsUploader.UploadInfo paramUploadInfo) {}
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afma
  * JD-Core Version:    0.7.0.1
  */

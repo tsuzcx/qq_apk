@@ -1,15 +1,22 @@
-import com.qq.jce.wup.UniAttribute;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.service.qzone.QZoneFeedCountPackeger;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
+import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
 
-public final class gnm
-  implements Runnable
+public class gnm
+  extends MessageObserver
 {
-  public gnm(UniAttribute paramUniAttribute, QQAppInterface paramQQAppInterface) {}
+  public gnm(GroupPicUploadProcessor paramGroupPicUploadProcessor) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
   {
-    QZoneFeedCountPackeger.a(this.jdField_a_of_type_ComQqJceWupUniAttribute, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.a.a("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
+    if (paramBoolean)
+    {
+      this.a.e();
+      return;
+    }
+    this.a.d();
   }
 }
 

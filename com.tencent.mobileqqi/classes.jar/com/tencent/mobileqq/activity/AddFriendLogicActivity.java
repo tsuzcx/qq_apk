@@ -6,11 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import bzo;
-import bzp;
-import bzq;
-import bzr;
-import bzs;
+import btt;
+import btu;
+import btv;
+import btw;
+import btx;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.FriendListObserver;
@@ -59,7 +59,7 @@ public class AddFriendLogicActivity
   public static final int t = 2;
   public DialogInterface.OnClickListener a;
   public DialogInterface.OnDismissListener a;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bzs(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new btx(this);
   final Friends jdField_a_of_type_ComTencentMobileqqDataFriends = new Friends();
   private final TroopInfo jdField_a_of_type_ComTencentMobileqqDataTroopInfo = new TroopInfo();
   private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
@@ -75,9 +75,9 @@ public class AddFriendLogicActivity
   
   public AddFriendLogicActivity()
   {
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new bzp(this);
-    this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new bzq(this);
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new bzr(this);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new btu(this);
+    this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new btv(this);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new btw(this);
   }
   
   private void a(String paramString1, int paramInt, String paramString2)
@@ -113,7 +113,7 @@ public class AddFriendLogicActivity
       }
       ((FriendListHandler)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(paramString1, paramInt, paramString2);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(2131562649);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(new bzo(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(new btt(this));
     } while (isFinishing());
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     return;

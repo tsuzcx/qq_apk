@@ -1,21 +1,46 @@
-import com.tencent.mobileqq.adapter.TroopListAdapter2;
-import java.util.List;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
 
-class yip
-  implements Runnable
+public class yip
+  extends LinearLayoutManager
 {
-  yip(yio paramyio, List paramList) {}
-  
-  public void run()
+  public yip(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Yio.a.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Yio.a.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    TroopListAdapter2.a(this.jdField_a_of_type_Yio.a);
+    super(paramContext, paramInt, paramBoolean);
+  }
+  
+  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
+    {
+      super.onLayoutChildren(paramRecycler, paramState);
+      return;
+    }
+    catch (Exception paramRecycler)
+    {
+      paramRecycler.printStackTrace();
+    }
+  }
+  
+  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
+    {
+      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
+      return paramInt;
+    }
+    catch (IndexOutOfBoundsException paramRecycler)
+    {
+      paramRecycler.printStackTrace();
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yip
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,71 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import com.tencent.mobileqq.activity.selectable.TranslateSelectableMenu.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.AnimationTextView;
+import com.tencent.mobileqq.widget.ContainerView;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.tencent.widget.ScrollView;
+import java.lang.ref.WeakReference;
 
-public final class ajyl
-  implements DownloadParams.DecodeHandler
+public class ajyl
+  extends ajxw<TextPreviewTranslateActivity>
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  protected void a(ContainerView paramContainerView)
   {
-    if ((paramBitmap == null) || (paramDownloadParams == null))
+    super.a(paramContainerView);
+    TextPreviewTranslateActivity localTextPreviewTranslateActivity = (TextPreviewTranslateActivity)this.b.get();
+    if (localTextPreviewTranslateActivity != null) {
+      paramContainerView.setOutScrollView((ScrollView)localTextPreviewTranslateActivity.findViewById(2131376201));
+    }
+    paramContainerView.jdField_a_of_type_Boolean = false;
+    paramContainerView.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.post(new TranslateSelectableMenu.1(this, paramContainerView));
+  }
+  
+  protected void a(ContainerView paramContainerView, View paramView)
+  {
+    super.a(paramContainerView, paramView);
+    azqs.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A435", "0X800A435", 0, 0, "", "", "", "");
+  }
+  
+  public void onClick(View paramView)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    switch (paramView.getId())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.hotchat", 2, "FLASH_PIC_MOSAIC_DECODE, bitmap is null");
+    }
+    for (;;)
+    {
+      if ((paramView.getId() != 2131376341) && (ajxm.a().c())) {
+        ajxm.a().d();
       }
-      return null;
+      do
+      {
+        for (;;)
+        {
+          return;
+          try
+          {
+            banj.a(a(), "TextPreview");
+            azqs.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A437", "0X800A437", 0, 0, "", "", "", "");
+          }
+          catch (Exception paramView) {}
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("TranslateSelectableMenu", 2, paramView.toString());
+      return;
+      banj.a((Activity)paramView.getContext(), a());
+      azqs.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A438", "0X800A438", 0, 0, "", "", "", "");
+      continue;
+      if (localQQAppInterface != null) {
+        banj.a((Activity)paramView.getContext(), localQQAppInterface, a());
+      }
+      azqs.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A439", "0X800A439", 0, 0, "", "", "", "");
+      continue;
+      ajxm.a().a(null);
+      azqs.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A436", "0X800A436", 0, 0, "", "", "", "");
     }
-    float f1 = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().density;
-    int j = (int)(paramDownloadParams.reqWidth / f1 + 0.5F);
-    int i = (int)(paramDownloadParams.reqHeight / f1 + 0.5F);
-    int k = paramBitmap.getWidth();
-    int m = paramBitmap.getHeight();
-    if ("chatthumb".equals(paramDownloadParams.url.getProtocol()))
-    {
-      j = 130;
-      i = 102;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.hotchat", 2, "downloadParams.reqWidth:" + paramDownloadParams.reqWidth + ",downloadParams.reqHeight:" + paramDownloadParams.reqHeight + ",reqWidth:" + j + ",reqHeight:" + i + ",isMutable:" + paramBitmap.isMutable());
-    }
-    f1 = j / k;
-    float f2 = i / m;
-    paramDownloadParams = new Matrix();
-    paramDownloadParams.postScale(f1, f2);
-    paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, k, m, paramDownloadParams, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.hotchat", 2, "scaleW:" + f1 + "scaleH:" + f2 + ",resizeBmp w:" + paramDownloadParams.getWidth() + ",h:" + paramDownloadParams.getHeight());
-    }
-    j = paramDownloadParams.getWidth() / 8;
-    i = j;
-    if (j == 0) {
-      i = 16;
-    }
-    paramDownloadParams = URLDrawableDecodeHandler.a(paramDownloadParams, i);
-    paramBitmap.recycle();
-    return paramDownloadParams;
   }
 }
 

@@ -2,11 +2,13 @@ package cooperation.qzone;
 
 import QMF_PROTOCAL.RetryInfo;
 import android.text.TextUtils;
+import bdpd;
+import bjdl;
+import bjdm;
+import bjur;
 import com.qq.jce.wup.UniAttribute;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.utils.WupUtil;
-import cooperation.qzone.util.ProtocolUtils;
 
 public abstract class QzoneExternalRequest
 {
@@ -16,32 +18,37 @@ public abstract class QzoneExternalRequest
   public static final String TAIL_NAME = "tail_name";
   private String charset = "utf-8";
   private String deviceTail;
-  public long hostUin;
+  protected long hostUin;
   private long loginUserId;
-  public boolean needCompress = true;
+  protected boolean needCompress = true;
   private String refer;
   private RetryInfo retryInfo;
   
   public static JceStruct decode(byte[] paramArrayOfByte, String paramString)
   {
-    return ProtocolUtils.a(paramArrayOfByte, paramString);
+    return bjur.a(paramArrayOfByte, paramString);
   }
   
-  protected static JceStruct decode(byte[] paramArrayOfByte, String paramString, int[] paramArrayOfInt)
+  public static JceStruct decode(byte[] paramArrayOfByte, String paramString, int[] paramArrayOfInt)
   {
-    return ProtocolUtils.a(paramArrayOfByte, paramString, paramArrayOfInt);
+    return bjur.a(paramArrayOfByte, paramString, paramArrayOfInt);
+  }
+  
+  protected static JceStruct decode(byte[] paramArrayOfByte, String paramString, int[] paramArrayOfInt, String[] paramArrayOfString)
+  {
+    return bjur.a(paramArrayOfByte, paramString, paramArrayOfInt, paramArrayOfString);
   }
   
   public byte[] encode()
   {
     Object localObject1 = getDeviceInfo();
-    Object localObject2 = QUA.a();
+    Object localObject2 = bjdm.a();
     long l = getLoginUserId();
     RetryInfo localRetryInfo = (RetryInfo)getRetryInfo();
     localObject1 = new WNSStream(1000027, (String)localObject2, l, new byte[0], (String)localObject1, localRetryInfo);
     localObject2 = getEncodedUniParameter();
     if (localObject2 != null) {
-      return WupUtil.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), getCmdString(), (byte[])localObject2, this.needCompress));
+      return bdpd.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), getCmdString(), (byte[])localObject2, this.needCompress));
     }
     return null;
   }
@@ -55,7 +62,7 @@ public abstract class QzoneExternalRequest
   
   public String getDeviceInfo()
   {
-    return PlatformInfor.a().b();
+    return bjdl.a().c();
   }
   
   public String getDeviceTail()
@@ -83,7 +90,7 @@ public abstract class QzoneExternalRequest
     return localUniAttribute.encode();
   }
   
-  public long getHostUin()
+  protected long getHostUin()
   {
     return this.hostUin;
   }
@@ -91,6 +98,16 @@ public abstract class QzoneExternalRequest
   public long getLoginUserId()
   {
     return this.loginUserId;
+  }
+  
+  public byte[] getRawReq()
+  {
+    return null;
+  }
+  
+  public String getRawReqType()
+  {
+    return null;
   }
   
   public String getRefer()
@@ -134,7 +151,7 @@ public abstract class QzoneExternalRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.QzoneExternalRequest
  * JD-Core Version:    0.7.0.1
  */

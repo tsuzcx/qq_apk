@@ -1,158 +1,117 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import java.util.Map;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
+import android.text.TextUtils;
+import com.tencent.halley.common.c;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
 
-final class bs
-  implements Runnable
+public class bs
 {
-  bs(bq parambq, fs paramfs) {}
+  private int a;
+  private String b = "";
+  private Socket c = null;
+  private int d = -1;
+  private int e = -1;
+  private bg f;
   
-  public final void run()
+  public void a()
   {
-    Object localObject2 = (Future)bq.a(this.b).remove(this.a);
-    if (localObject2 == null) {}
+    c.c("ConnectorImpl", "Thread:" + Thread.currentThread().getName() + " isDaemon:" + Thread.currentThread().isDaemon());
+    l1 = System.currentTimeMillis();
+    if (!TextUtils.isEmpty(this.b)) {}
     for (;;)
     {
-      return;
-      ((Future)localObject2).cancel(true);
-      Object localObject1 = new d((byte)0);
       try
       {
-        localObject2 = (d)((Future)localObject2).get();
+        Object localObject = InetAddress.getByName(this.b);
+        this.d = ((int)(System.currentTimeMillis() - l1));
+        localObject = new InetSocketAddress(((InetAddress)localObject).getHostAddress(), 14000);
+        Socket localSocket = new Socket();
+        l1 = 0L;
         try
         {
-          if ((this.a.e) || (this.a.d == null)) {
-            continue;
+          long l2 = System.currentTimeMillis();
+          l1 = l2;
+          this.a = bm.a().b.a;
+          l1 = l2;
+          localSocket.connect((SocketAddress)localObject, this.a);
+          l1 = l2;
+          if (localSocket.isConnected())
+          {
+            l1 = l2;
+            if (!localSocket.isClosed())
+            {
+              l1 = l2;
+              this.c = localSocket;
+              l1 = l2;
+              this.e = ((int)(System.currentTimeMillis() - l2));
+            }
           }
-          localObject1 = this.a.d.obtainMessage(this.a.f);
-          ((Message)localObject1).arg1 = ((d)localObject2).a;
-          ((Message)localObject1).obj = localObject2;
-          ((Message)localObject1).sendToTarget();
-          this.a.e = true;
-          return;
-        }
-        catch (Exception localException1)
-        {
-          return;
-        }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException = localInterruptedException;
-        e.b("task interrupted because timeout, tag=" + this.a.i);
-        localException1.a(200, null, null);
-        try
-        {
-          if ((this.a.e) || (this.a.d == null)) {
-            continue;
-          }
-          Message localMessage1 = this.a.d.obtainMessage(this.a.f);
-          localMessage1.arg1 = localException1.a;
-          localMessage1.obj = localException1;
-          localMessage1.sendToTarget();
-          this.a.e = true;
-          return;
         }
         catch (Exception localException2)
         {
-          return;
+          InetSocketAddress localInetSocketAddress;
+          localException2.printStackTrace();
+          localException2.getClass().getSimpleName();
+          cc.a(localException2);
+          this.e = ((int)(System.currentTimeMillis() - l1));
+          this.c = null;
+          continue;
         }
+        System.currentTimeMillis();
+        return;
       }
-      catch (ExecutionException localExecutionException)
+      catch (Exception localException1)
       {
-        localExecutionException = localExecutionException;
-        e.b("task interrupted because local bug, tag=" + this.a.i);
-        localException2.a(10000, "Exception:" + localExecutionException.toString(), null);
-        try
-        {
-          if ((this.a.e) || (this.a.d == null)) {
-            continue;
-          }
-          Message localMessage2 = this.a.d.obtainMessage(this.a.f);
-          localMessage2.arg1 = localException2.a;
-          localMessage2.obj = localException2;
-          localMessage2.sendToTarget();
-          this.a.e = true;
-          return;
-        }
-        catch (Exception localException3)
-        {
-          return;
-        }
+        localException1.getClass().getSimpleName();
+        new StringBuilder("Dns InetAddress exception: domain").append(this.b).toString();
+        localInetSocketAddress = null;
+        continue;
       }
-      catch (CancellationException localCancellationException)
-      {
-        localCancellationException = localCancellationException;
-        e.b("task cancelled because timeout, tag=" + this.a.i);
-        localException3.a(200, null, null);
-        try
-        {
-          if ((this.a.e) || (this.a.d == null)) {
-            continue;
-          }
-          Message localMessage3 = this.a.d.obtainMessage(this.a.f);
-          localMessage3.arg1 = localException3.a;
-          localMessage3.obj = localException3;
-          localMessage3.sendToTarget();
-          this.a.e = true;
-          return;
-        }
-        catch (Exception localException4)
-        {
-          return;
-        }
-      }
-      catch (Exception localException7)
-      {
-        localException7 = localException7;
-        e.b("task interrupted because local bug, tag=" + this.a.i);
-        localException4.a(10000, "Exception:" + localException7.toString(), null);
-        try
-        {
-          if ((this.a.e) || (this.a.d == null)) {
-            continue;
-          }
-          Message localMessage4 = this.a.d.obtainMessage(this.a.f);
-          localMessage4.arg1 = localException4.a;
-          localMessage4.obj = localException4;
-          localMessage4.sendToTarget();
-          this.a.e = true;
-          return;
-        }
-        catch (Exception localException5)
-        {
-          return;
-        }
-      }
-      finally {}
-      try
-      {
-        if (!this.a.e)
-        {
-          if (this.a.d == null) {
-            continue;
-          }
-          Message localMessage5 = this.a.d.obtainMessage(this.a.f);
-          localMessage5.arg1 = localException5.a;
-          localMessage5.obj = localException5;
-          localMessage5.sendToTarget();
-          this.a.e = true;
-        }
-        label640:
-        throw localObject3;
-      }
-      catch (Exception localException6)
-      {
-        break label640;
-      }
+      localInetSocketAddress = new InetSocketAddress(this.f.a(), this.f.b());
+      this.d = 0;
     }
+  }
+  
+  public void a(bg parambg)
+  {
+    this.f = parambg;
+  }
+  
+  public void a(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.c.close();
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+    }
+  }
+  
+  public Socket c()
+  {
+    return this.c;
+  }
+  
+  public int d()
+  {
+    return this.d;
+  }
+  
+  public int e()
+  {
+    return this.e;
   }
 }
 

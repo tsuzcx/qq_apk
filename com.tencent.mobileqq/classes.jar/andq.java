@@ -1,99 +1,129 @@
-import android.app.Activity;
-import android.graphics.Bitmap;
+import android.annotation.TargetApi;
 import android.os.Environment;
-import android.util.Base64;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ArFeatureInfo;
+import com.tencent.mobileqq.ar.model.ArModelResource;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.GifCoder;
-import cooperation.qzone.webviewplugin.QzoneWidgetAIJsPlugin;
-import cooperation.qzone.widgetai.QzoneWidgetAIInterface;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class andq
-  implements Runnable
 {
-  public andq(QzoneWidgetAIJsPlugin paramQzoneWidgetAIJsPlugin, String paramString) {}
-  
-  public void run()
+  public static String a()
   {
-    int k = 0;
-    Object localObject1 = new ArrayList();
-    for (;;)
-    {
-      int i;
-      try
-      {
-        Object localObject2 = new JSONObject(this.jdField_a_of_type_JavaLangString);
-        Object localObject3 = ((JSONObject)localObject2).getJSONArray("images");
-        if (localObject3 == null) {
-          return;
-        }
-        int j = ((JSONObject)localObject2).optInt("delay");
-        String str = ((JSONObject)localObject2).optString("content");
-        localObject2 = ((JSONObject)localObject2).optString("tagTitle");
-        i = 0;
-        Object localObject4;
-        if (i < ((JSONArray)localObject3).length())
-        {
-          QLog.d("QzoneWidgetAIJsPlugin", 1, "QzoneWidgetAI.handleShareWidgetAIGifAnimation jsonArrayImages, i = " + i);
-          localObject4 = QzoneWidgetAIJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneWidgetAIJsPlugin, ((JSONArray)localObject3).optString(i));
-          QLog.d("QzoneWidgetAIJsPlugin", 1, "QzoneWidgetAI.handleShareWidgetAIGifAnimation base64Image = " + (String)localObject4);
-          localObject4 = Base64.decode((String)localObject4, 0);
-          localObject4 = QzoneWidgetAIJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneWidgetAIJsPlugin, (byte[])localObject4);
-          if (localObject4 == null) {
-            break label465;
-          }
-          ((ArrayList)localObject1).add(localObject4);
-          break label465;
-        }
-        if ((this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneWidgetAIJsPlugin.a != null) && (this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneWidgetAIJsPlugin.a.mRuntime != null) && (this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneWidgetAIJsPlugin.a.mRuntime.a() != null) && (this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneWidgetAIJsPlugin.a.mRuntime.a().getExternalFilesDir(Environment.DIRECTORY_PICTURES) != null) && (this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneWidgetAIJsPlugin.a.mRuntime.a().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath() != null))
-        {
-          localObject3 = this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneWidgetAIJsPlugin.a.mRuntime.a().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath().toString() + "/widgetAI.gif";
-          if (((ArrayList)localObject1).size() > 0)
-          {
-            localObject4 = new GifCoder();
-            ((GifCoder)localObject4).b(true);
-            localObject1 = ((ArrayList)localObject1).iterator();
-            if (((Iterator)localObject1).hasNext())
-            {
-              boolean bool = ((GifCoder)localObject4).a((Bitmap)((Iterator)localObject1).next(), (String)localObject3, j);
-              k = bool;
-              if (bool) {
-                continue;
-              }
-              k = bool;
-            }
-            ((GifCoder)localObject4).b();
-            if (k != 0)
-            {
-              QzoneWidgetAIInterface.publishMood(str, new ArrayList(Arrays.asList(new String[] { localObject3 })), 0, 1, null, 0L, null, (String)localObject2);
-              QLog.d("QzoneWidgetAIJsPlugin", 1, "QzoneWidgetAI.handleShareWidgetAIGifAnimation EncodeGif, onSuccess!");
-              return;
-            }
-          }
-        }
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        QLog.e("QzoneWidgetAIJsPlugin", 2, QLog.getStackTraceString(localOutOfMemoryError));
-        return;
-        QLog.d("QzoneWidgetAIJsPlugin", 1, "encode gif failed");
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("QzoneWidgetAIJsPlugin", 2, QLog.getStackTraceString(localThrowable));
-      }
-      return;
-      label465:
-      i += 1;
+    if (a()) {
+      return bdzf.a(alof.aX);
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("AREngine_ARResouceDir", 2, "no_sdcard");
+    }
+    float f = bdhb.a();
+    if ((f < 15728640.0F) && (QLog.isColorLevel())) {
+      QLog.i("AREngine_ARResouceDir", 2, "inner memory avail may not enough : " + f);
+    }
+    return BaseApplicationImpl.sApplication.getFilesDir().getAbsolutePath() + File.separator;
+  }
+  
+  public static String a(ArCloudConfigInfo paramArCloudConfigInfo)
+  {
+    return paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.d + File.separator;
+  }
+  
+  public static String a(String paramString)
+  {
+    return a() + "ar_cloud_transfer/" + paramString + File.separator;
+  }
+  
+  @TargetApi(18)
+  public static boolean a()
+  {
+    try
+    {
+      boolean bool = Environment.getExternalStorageState().equals("mounted");
+      return bool;
+    }
+    catch (Exception localException) {}
+    return false;
+  }
+  
+  public static String b()
+  {
+    return a() + "ar_relationship/";
+  }
+  
+  public static String b(ArCloudConfigInfo paramArCloudConfigInfo)
+  {
+    try
+    {
+      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
+        return "";
+      }
+      String str = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
+      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + str + File.separator;
+      return paramArCloudConfigInfo;
+    }
+    catch (Exception paramArCloudConfigInfo)
+    {
+      QLog.i("AREngine_ARResouceDir", 2, "get3DModelUnzipDir error " + paramArCloudConfigInfo.getMessage());
+    }
+    return "";
+  }
+  
+  public static String c(ArCloudConfigInfo paramArCloudConfigInfo)
+  {
+    try
+    {
+      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
+        return "";
+      }
+      String str1 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
+      String str2 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.d;
+      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + str1 + File.separator + str2;
+      return paramArCloudConfigInfo;
+    }
+    catch (Exception paramArCloudConfigInfo)
+    {
+      QLog.i("AREngine_ARResouceDir", 2, "get3DModelLuaFilePath error " + paramArCloudConfigInfo.getMessage());
+    }
+    return "";
+  }
+  
+  public static String d(ArCloudConfigInfo paramArCloudConfigInfo)
+  {
+    try
+    {
+      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
+        return "";
+      }
+      String str = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
+      if (TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.c)) {
+        return "";
+      }
+      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + str + File.separator + paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.c;
+      return paramArCloudConfigInfo;
+    }
+    catch (Exception paramArCloudConfigInfo)
+    {
+      QLog.i("AREngine_ARResouceDir", 2, "get3DModelMusicFilePath error " + paramArCloudConfigInfo.getMessage());
+    }
+    return "";
+  }
+  
+  public static String e(ArCloudConfigInfo paramArCloudConfigInfo)
+  {
+    try
+    {
+      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + ((ArVideoResourceInfo)paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).c + "_model.zip";
+      return paramArCloudConfigInfo;
+    }
+    catch (Exception paramArCloudConfigInfo)
+    {
+      QLog.i("AREngine_ARResouceDir", 2, "getVideoFilePath error " + paramArCloudConfigInfo.getMessage());
+    }
+    return "";
   }
 }
 

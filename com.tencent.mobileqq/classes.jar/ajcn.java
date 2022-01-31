@@ -1,34 +1,16 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.TroopHandler.KeywordTipInfoObserver;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Comparator;
 
 class ajcn
-  extends TroopHandler.KeywordTipInfoObserver
+  implements Comparator<ajco>
 {
   ajcn(ajcm paramajcm) {}
   
-  protected void a(boolean paramBoolean, List paramList)
+  public int a(ajco paramajco1, ajco paramajco2)
   {
-    SparseArray localSparseArray;
-    if (paramBoolean)
-    {
-      localSparseArray = this.a.a.b;
-      if (paramList != null) {
-        try
-        {
-          paramList = paramList.iterator();
-          while (paramList.hasNext())
-          {
-            TroopAioKeywordTipInfo localTroopAioKeywordTipInfo = (TroopAioKeywordTipInfo)paramList.next();
-            this.a.a.b.put(localTroopAioKeywordTipInfo.ruleId, localTroopAioKeywordTipInfo);
-          }
-        }
-        finally {}
-      }
+    if (paramajco2.a - paramajco1.a > 0.0F) {
+      return 1;
     }
+    return -1;
   }
 }
 

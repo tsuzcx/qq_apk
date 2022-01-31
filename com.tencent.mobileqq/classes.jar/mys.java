@@ -1,23 +1,28 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.JoinGroupTransitActivity;
 
 public class mys
-  implements Runnable
+  implements myr
 {
-  public mys(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public mys(JoinGroupTransitActivity paramJoinGroupTransitActivity) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a.setVisibility(8);
-    this.a.a.findViewById(2131365654).setVisibility(8);
-    this.a.a.findViewById(2131365588).setVisibility(8);
-    this.a.a.findViewById(2131365589).setVisibility(8);
+    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(1);
+  }
+  
+  public void b()
+  {
+    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(2);
+  }
+  
+  public void c()
+  {
+    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mys
  * JD-Core Version:    0.7.0.1
  */

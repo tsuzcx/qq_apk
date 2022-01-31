@@ -1,15 +1,32 @@
 package com.tencent.tmassistant.st;
 
-import com.tencent.tmassistant.common.jce.StatReportRequest;
-import com.tencent.tmassistant.common.jce.StatReportResponse;
+import android.text.TextUtils;
 
-public abstract interface a
+public abstract class a
 {
-  public abstract void onStatReportFinish(int paramInt1, StatReportRequest paramStatReportRequest, StatReportResponse paramStatReportResponse, int paramInt2);
+  public static final String EMPTY = " ";
+  public static final String SPLIT = "|";
+  
+  public abstract String build();
+  
+  public void doReport()
+  {
+    SDKReportManager2.getInstance().postReport(getType(), build());
+  }
+  
+  protected String filterSplitStr(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    return paramString.replace("|", "");
+  }
+  
+  protected abstract int getType();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistant.st.a
  * JD-Core Version:    0.7.0.1
  */

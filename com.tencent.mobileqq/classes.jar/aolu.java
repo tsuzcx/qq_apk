@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.widget.CircleProgress;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment;
-
 public class aolu
-  implements Runnable
+  extends aolr
 {
-  public aolu(CaptureQmcfSoDownloadFragment paramCaptureQmcfSoDownloadFragment, String paramString) {}
+  private aoml a;
   
-  public void run()
+  aolu(String paramString, aoml paramaoml)
   {
-    CaptureQmcfSoDownloadFragment.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragment).setProgress(CaptureQmcfSoDownloadFragment.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragment));
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureQmcfSoDownloadFragment", 2, "" + this.jdField_a_of_type_JavaLangString + " setProgress=" + CaptureQmcfSoDownloadFragment.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragment));
-    }
+    super(paramString);
+    this.a = paramaoml;
+  }
+  
+  public aoml a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aolu
  * JD-Core Version:    0.7.0.1
  */

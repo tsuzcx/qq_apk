@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class appoint_define$LocaleInfo
-  extends MessageMicro
+  extends MessageMicro<LocaleInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66 }, new String[] { "str_name", "str_country", "str_province", "str_city", "str_region", "str_poi", "msg_gps", "str_address" }, new Object[] { "", "", "", "", "", "", null, "" }, LocaleInfo.class);
   public appoint_define.GPS msg_gps = new appoint_define.GPS();
@@ -20,7 +20,7 @@ public final class appoint_define$LocaleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     appoint.define.appoint_define.LocaleInfo
  * JD-Core Version:    0.7.0.1
  */

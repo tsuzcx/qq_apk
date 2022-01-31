@@ -1,36 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManagerProxy;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
 
-public class xfx
-  implements EIPCResultCallback
+class xfx
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public xfx(PreloadManagerProxy paramPreloadManagerProxy, PreloadManager.OnGetPathListener paramOnGetPathListener, String paramString) {}
+  private xfx(xfr paramxfr) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onGlobalLayout()
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null))
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getBottom() - this.a.c > this.a.b)
     {
-      i = paramEIPCResult.data.getInt("result_code");
-      paramEIPCResult = (PreloadManager.PathResult)paramEIPCResult.data.getSerializable("path_result");
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$OnGetPathListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$OnGetPathListener.onResult(i, paramEIPCResult);
-      }
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$OnGetPathListener == null)
-    {
-      int i;
+      this.a.dismiss();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$OnGetPathListener.onResult(1, PreloadManager.PathResult.getFailRes(this.jdField_a_of_type_JavaLangString));
+    this.a.jdField_a_of_type_Xfv.a(this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xfx
  * JD-Core Version:    0.7.0.1
  */

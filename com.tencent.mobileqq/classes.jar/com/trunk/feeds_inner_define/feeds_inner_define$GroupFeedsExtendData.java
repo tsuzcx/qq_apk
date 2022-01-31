@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class feeds_inner_define$GroupFeedsExtendData
-  extends MessageMicro
+  extends MessageMicro<GroupFeedsExtendData>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_reverse = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -23,7 +23,7 @@ public final class feeds_inner_define$GroupFeedsExtendData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.trunk.feeds_inner_define.feeds_inner_define.GroupFeedsExtendData
  * JD-Core Version:    0.7.0.1
  */

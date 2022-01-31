@@ -10,10 +10,10 @@ import java.util.Map;
 public final class NewestFeedInfo
   extends JceStruct
 {
-  static Map cache_mapEx;
-  static ArrayList cache_mediaData = new ArrayList();
-  public Map mapEx;
-  public ArrayList mediaData;
+  static Map<String, String> cache_mapEx;
+  static ArrayList<Media_Data> cache_mediaData = new ArrayList();
+  public Map<String, String> mapEx;
+  public ArrayList<Media_Data> mediaData;
   public String strContent = "";
   public String strImgUrl = "";
   public String strJmpUrl = "";
@@ -37,7 +37,7 @@ public final class NewestFeedInfo
   
   public NewestFeedInfo() {}
   
-  public NewestFeedInfo(long paramLong1, long paramLong2, long paramLong3, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong4, String paramString6, ArrayList paramArrayList, long paramLong5, long paramLong6, Map paramMap)
+  public NewestFeedInfo(long paramLong1, long paramLong2, long paramLong3, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong4, String paramString6, ArrayList<Media_Data> paramArrayList, long paramLong5, long paramLong6, Map<String, String> paramMap)
   {
     this.uAppid = paramLong1;
     this.uHostUin = paramLong2;
@@ -109,7 +109,7 @@ public final class NewestFeedInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_AIONewestFeed.NewestFeedInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,31 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.theme.ThemeDownloader;
-import com.tencent.mobileqq.theme.ThemeDownloader.ThemeDownloadListener;
-import com.tencent.mobileqq.theme.ThemeDownloader.ThemeUnzipListener;
-import com.tencent.mobileqq.theme.ThemeSwitchManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class aiog
-  implements ThemeDownloader.ThemeDownloadListener
+  extends Handler
 {
-  public aiog(ThemeSwitchManager paramThemeSwitchManager) {}
+  public aiog(PhotoCropActivity paramPhotoCropActivity) {}
   
-  public void onDownloadCallback(Bundle paramBundle, int paramInt1, int paramInt2, int paramInt3, ThemeDownloader paramThemeDownloader)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ThemeSwitchManager", 2, "mThemeDownloadListener onDownloadCallback stateCode:" + paramInt1);
-    }
-    if (paramInt1 == 3) {
-      this.a.jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader$ThemeUnzipListener.onUnzipCallback(paramBundle, paramInt1, paramThemeDownloader);
-    }
-    for (;;)
+    switch (paramMessage.what)
     {
-      this.a.a(null);
-      return;
-      BaseApplication localBaseApplication;
-      if (paramInt1 == 1)
-      {
-        if (this.a.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {}
-        for (localBaseApplication = this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp();; localBaseApplication = null)
-        {
-          paramThemeDownloader.a(localBaseApplication, paramBundle, this.a.jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader$ThemeUnzipListener);
-          break;
-        }
-      }
-      if (paramInt1 == 2)
-      {
-        if (this.a.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {}
-        for (localBaseApplication = this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp();; localBaseApplication = null)
-        {
-          paramThemeDownloader.a(localBaseApplication, paramBundle, this.a.jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader$ThemeUnzipListener);
-          break;
-        }
-      }
-      if (paramInt1 < 0)
-      {
-        QLog.e("ThemeSwitchManager", 1, "mThemeDownloadListener onDownloadCallback Error stateCode:" + paramInt1);
-        paramThemeDownloader.a();
-      }
     }
+    do
+    {
+      return;
+      this.a.b();
+      this.a.a.sendMessageDelayed(Message.obtain(this.a.a, 1003), 10000L);
+      return;
+    } while (this.a.isFinishing());
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoCropActivity", 2, "LOADING_TIMEOUT");
+    }
+    PhotoCropActivity.a(this.a, 2131717759);
+    this.a.c();
   }
-  
-  public void onDownloadProgress(Bundle paramBundle, int paramInt, long paramLong1, long paramLong2) {}
 }
 
 

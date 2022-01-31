@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bnk;
-import bnl;
+import bhg;
+import bhh;
 import com.tencent.mobileqq.app.ContactFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
@@ -87,7 +87,7 @@ public class ShareSelectionFriendListAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903228, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903230, paramViewGroup, false);
       paramViewGroup = new ShareSelectionFriendListAdapter.ViewTag();
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131230940));
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231395));
@@ -97,9 +97,9 @@ public class ShareSelectionFriendListAdapter
     {
       Friends localFriends = (Friends)getChild(paramInt1, paramInt2);
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(ContactUtils.a(localFriends));
-      bnk localbnk = new bnk(this);
-      bnl localbnl = new bnl(this, localFriends);
-      this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker.a(jdField_a_of_type_AndroidGraphicsBitmap, localFriends.uin + false + "round", paramViewGroup.jdField_a_of_type_AndroidWidgetImageView, localbnk, localbnl, true);
+      bhg localbhg = new bhg(this);
+      bhh localbhh = new bhh(this, localFriends);
+      this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker.a(jdField_a_of_type_AndroidGraphicsBitmap, localFriends.uin + false + "round", paramViewGroup.jdField_a_of_type_AndroidWidgetImageView, localbhg, localbhh, true);
       return paramView;
       paramViewGroup = (ShareSelectionFriendListAdapter.ViewTag)paramView.getTag();
     }

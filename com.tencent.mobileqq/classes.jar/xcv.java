@@ -1,30 +1,67 @@
-import android.view.KeyEvent;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import com.tencent.util.InputMethodUtil;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
+import java.io.File;
+import org.json.JSONObject;
 
 public class xcv
-  implements TextView.OnEditorActionListener
+  implements Cloneable
 {
-  public xcv(CommonHbFragment paramCommonHbFragment) {}
+  public static final String a;
+  public int a;
+  public int b;
+  public String b;
+  public String c;
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  static
   {
-    if ((paramInt == 6) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    jdField_a_of_type_JavaLangString = ArtFilterManager.jdField_b_of_type_JavaLangString + "loading" + File.separator;
+  }
+  
+  public static xcv a(JSONObject paramJSONObject)
+  {
+    xcv localxcv = new xcv();
+    localxcv.jdField_b_of_type_Int = paramJSONObject.getInt("version");
+    localxcv.jdField_a_of_type_Int = paramJSONObject.getInt("picNum");
+    localxcv.c = paramJSONObject.getString("url");
+    localxcv.jdField_b_of_type_JavaLangString = paramJSONObject.getString("md5");
+    return localxcv;
+  }
+  
+  public String a()
+  {
+    Object localObject = new File(c());
+    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
     {
-      if (CommonHbFragment.a(this.a).isEnabled()) {
-        CommonHbFragment.a(this.a).performClick();
+      localObject = ((File)localObject).listFiles();
+      if ((localObject != null) && (localObject.length == this.jdField_a_of_type_Int)) {
+        return c();
       }
-      InputMethodUtil.b(CommonHbFragment.a(this.a));
     }
-    return false;
+    return null;
+  }
+  
+  public String b()
+  {
+    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + ".zip";
+  }
+  
+  public String c()
+  {
+    return jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + File.separator;
+  }
+  
+  public Object clone()
+  {
+    return super.clone();
+  }
+  
+  public String d()
+  {
+    return "loading" + File.separator + this.jdField_b_of_type_Int + ".zip";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xcv
  * JD-Core Version:    0.7.0.1
  */

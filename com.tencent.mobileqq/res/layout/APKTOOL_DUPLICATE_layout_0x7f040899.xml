@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0419" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.SwipListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0958" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:divider="@null" />
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a277d" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.biz.qqstory.view.widget.QQStoryLoadingView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0585" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a277e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b12b8" android:drawablePadding="15.0dip" />
-        <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0585" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a223e" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="15.0dip" />
-    </LinearLayout>
-</FrameLayout>

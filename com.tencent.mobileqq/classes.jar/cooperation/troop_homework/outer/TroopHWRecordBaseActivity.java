@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
-import angg;
+import bkdu;
 import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.troop.data.AudioInfo;
@@ -27,12 +27,12 @@ public class TroopHWRecordBaseActivity
   
   public TroopHWRecordBaseActivity()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new angg(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bkdu(this);
   }
   
   private void a(Resources paramResources, View paramView)
   {
-    paramResources = paramResources.getDrawable(2130845947);
+    paramResources = paramResources.getDrawable(2130849680);
     if ((paramResources instanceof BitmapDrawable)) {
       paramResources = ((BitmapDrawable)paramResources).getBitmap();
     }
@@ -53,21 +53,21 @@ public class TroopHWRecordBaseActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131366606);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131378242);
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(1291845632);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131368461));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131375510));
     a(getResources(), this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     a();
   }
   
   protected void a() {}
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     this.mNeedStatusTrans = false;
     super.doOnCreate(paramBundle);
-    setContentView(2130969915);
+    setContentView(2131560465);
     b();
     return true;
   }
@@ -75,7 +75,7 @@ public class TroopHWRecordBaseActivity
   public void finish()
   {
     super.finish();
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130846443);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130850075);
   }
   
   public boolean onBackEvent()
@@ -87,7 +87,7 @@ public class TroopHWRecordBaseActivity
     return false;
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     super.onDestroy();
     if (QLog.isColorLevel()) {
@@ -105,14 +105,14 @@ public class TroopHWRecordBaseActivity
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.d();
   }
   
-  protected void requestWindowFeature(Intent paramIntent)
+  public void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.troop_homework.outer.TroopHWRecordBaseActivity
  * JD-Core Version:    0.7.0.1
  */

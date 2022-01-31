@@ -1,29 +1,63 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.appcenter.QZoneAppCenterActivity;
+import android.os.Bundle;
 import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.open.base.TicketUtils;
+import com.tencent.open.downloadnew.DownloadConstants;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK;
+import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDKParam;
+import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK_V2;
+import oicq.wlogin_sdk.tools.util;
 
-public class hoe
-  implements View.OnClickListener
+class hoe
+  implements Runnable
 {
-  public hoe(QZoneAppCenterActivity paramQZoneAppCenterActivity) {}
+  hoe(hod paramhod, byte[] paramArrayOfByte, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    LogUtility.b("AppViewBaseActivity", "button onClick!!!");
-    if (TextUtils.isEmpty(QZoneAppCenterActivity.a(this.a)))
+    boolean bool2 = false;
+    this.jdField_a_of_type_Hod.jdField_a_of_type_ComTencentOpenBaseTicketUtils.a();
+    for (;;)
     {
-      this.a.d();
-      this.a.e = "";
-      this.a.f = "";
-      QZoneAppCenterActivity.a(this.a);
-      QZoneAppCenterActivity.a(this.a).sendEmptyMessage(3);
-      return;
+      boolean bool3;
+      try
+      {
+        Object localObject = this.jdField_a_of_type_Hod.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_Hod.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam, this.jdField_a_of_type_Hod.jdField_a_of_type_AndroidOsBundle);
+        DownloadManager.a().e((DownloadInfo)localObject);
+        if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length != 0))
+        {
+          localObject = new StringBuilder();
+          this.jdField_a_of_type_Hod.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.uin = (this.jdField_a_of_type_JavaLangString + "&identity=" + util.buf_to_string(this.jdField_a_of_type_ArrayOfByte));
+          this.jdField_a_of_type_Hod.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.d = this.jdField_a_of_type_Hod.jdField_a_of_type_Long;
+        }
+        LogUtility.a("State_Log", "OpenSDK startToAppDetail param SNGAppId=" + this.jdField_a_of_type_Hod.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.SNGAppId + " apkId=" + this.jdField_a_of_type_Hod.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskApkId + " taskAppId=" + this.jdField_a_of_type_Hod.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskAppId + " packageName=" + this.jdField_a_of_type_Hod.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskPackageName + " version=" + this.jdField_a_of_type_Hod.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskVersion + " uin=" + this.jdField_a_of_type_Hod.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.uin + " via=" + this.jdField_a_of_type_Hod.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.via);
+        LogUtility.c("TIME-STATISTIC", "downloadSdk.startToDownloadTaskList");
+        this.jdField_a_of_type_Hod.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.c();
+        if (this.jdField_a_of_type_Hod.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a() <= 2)
+        {
+          ((TMQQDownloaderOpenSDK)this.jdField_a_of_type_Hod.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a).startToDownloadTaskList(this.jdField_a_of_type_Hod.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Hod.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam, this.jdField_a_of_type_Hod.jdField_a_of_type_Boolean, this.jdField_a_of_type_Hod.b);
+          return;
+        }
+        int i = this.jdField_a_of_type_Hod.jdField_a_of_type_AndroidOsBundle.getInt(DownloadConstants.j);
+        int j = this.jdField_a_of_type_Hod.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_Hod.jdField_a_of_type_AndroidOsBundle);
+        boolean bool1 = this.jdField_a_of_type_Hod.jdField_a_of_type_Boolean;
+        bool3 = this.jdField_a_of_type_Hod.b;
+        if (i == 3)
+        {
+          bool1 = false;
+          ((TMQQDownloaderOpenSDK_V2)this.jdField_a_of_type_Hod.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a).startToDownloadTaskList(this.jdField_a_of_type_Hod.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Hod.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam, bool1, bool2, j);
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        LogUtility.b("MyAppApi", "startToAppDetail err", localException);
+        return;
+      }
+      bool2 = bool3;
     }
-    this.a.a.loadUrl("javascript:JsBridge.callback(\"" + QZoneAppCenterActivity.b(this.a) + "\");void(0);");
   }
 }
 

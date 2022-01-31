@@ -1,25 +1,23 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.ExtraInfo;
 
 public final class rxk
-  implements DialogInterface.OnClickListener
+  implements Parcelable.Creator<RecommendFeedsDiandianEntranceManager.ExtraInfo>
 {
-  public rxk(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean, Map paramMap) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public RecommendFeedsDiandianEntranceManager.ExtraInfo a(Parcel paramParcel)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b);
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, false, this.jdField_a_of_type_JavaUtilMap);
-    paramDialogInterface.dismiss();
+    return new RecommendFeedsDiandianEntranceManager.ExtraInfo(paramParcel);
+  }
+  
+  public RecommendFeedsDiandianEntranceManager.ExtraInfo[] a(int paramInt)
+  {
+    return new RecommendFeedsDiandianEntranceManager.ExtraInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rxk
  * JD-Core Version:    0.7.0.1
  */

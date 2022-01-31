@@ -1,40 +1,25 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
-import com.tencent.mobileqq.ar.ARMusicController;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.device.msg.activities.DeviceTipActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class zxq
-  implements SoundPool.OnLoadCompleteListener
+  implements View.OnClickListener
 {
-  public zxq(ARMusicController paramARMusicController) {}
+  public zxq(DeviceTipActivity paramDeviceTipActivity) {}
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (paramInt2 != 0) {}
-    try
-    {
-      QLog.e("ARMusicController", 2, "load fire music failed. id=" + paramInt1);
-      return;
+    if (!bdin.g(this.a)) {
+      QQToast.a(this.a, alud.a(2131703623), 2000).a();
     }
-    catch (Exception paramSoundPool)
-    {
-      paramSoundPool.printStackTrace();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMusicController", 2, "load fire music success. id=" + paramInt1);
-    }
-    ARMusicController.a(this.a).add(Integer.valueOf(paramInt1));
-    if (ARMusicController.b(this.a).contains(Integer.valueOf(paramInt1)))
-    {
-      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
-      return;
-    }
+    DeviceTipActivity.a(this.a, 2);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zxq
  * JD-Core Version:    0.7.0.1
  */

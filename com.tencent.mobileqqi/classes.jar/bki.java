@@ -1,53 +1,72 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 public class bki
-  implements Runnable
+  implements BusinessObserver
 {
-  int jdField_a_of_type_Int = 0;
+  public bki(PublicAccountManager paramPublicAccountManager, NewIntent paramNewIntent, Context paramContext, String paramString, BusinessObserver paramBusinessObserver, QQAppInterface paramQQAppInterface) {}
   
-  public bki(MultiVideoCtrlLayerUI paramMultiVideoCtrlLayerUI) {}
-  
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void run()
-  {
-    int i = this.jdField_a_of_type_Int % 4;
-    Object localObject2 = null;
-    Object localObject1;
-    switch (i)
-    {
-    default: 
-      localObject1 = localObject2;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("MultiVideoCtrlLayerUI", 2, "WaitingTextChangeRunnable-->Wrong Type.Type =" + i);
-        localObject1 = localObject2;
-      }
-      break;
+    Object localObject1 = null;
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    if (!paramBoolean) {
+      return;
     }
     for (;;)
     {
-      if ((localObject1 != null) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.c != null)) {
-        this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.c.setText((CharSequence)localObject1);
+      try
+      {
+        localObject2 = paramBundle.getByteArray("data");
+        paramBundle = new mobileqq_mp.SendMenuEventResponse();
       }
-      this.jdField_a_of_type_Int += 1;
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 700L);
-      return;
-      localObject1 = this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_AndroidContentResResources.getString(2131560270);
-      continue;
-      localObject1 = this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_AndroidContentResResources.getString(2131560271);
-      continue;
-      localObject1 = this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_AndroidContentResResources.getString(2131560272);
-      continue;
-      localObject1 = this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_AndroidContentResResources.getString(2131560273);
+      catch (Exception paramBundle)
+      {
+        try
+        {
+          paramBundle.mergeFrom((byte[])localObject2);
+          Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("menuEventSharePre", 0);
+          localObject1 = paramBundle;
+          if (((SharedPreferences)localObject2).contains(this.jdField_a_of_type_JavaLangString))
+          {
+            localObject1 = paramBundle;
+            if (paramBundle.seqno.has())
+            {
+              localObject1 = paramBundle;
+              if (paramBundle.seqno.get() != ((SharedPreferences)localObject2).getInt(this.jdField_a_of_type_JavaLangString, 0))
+              {
+                if (this.jdField_a_of_type_MqqObserverBusinessObserver != null) {
+                  this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverBusinessObserver, true);
+                }
+                localObject1 = ((SharedPreferences)localObject2).edit();
+                ((SharedPreferences.Editor)localObject1).putInt(this.jdField_a_of_type_JavaLangString, paramBundle.seqno.get());
+                ((SharedPreferences.Editor)localObject1).commit();
+                localObject1 = paramBundle;
+              }
+            }
+          }
+          if (localObject1 != null) {
+            break;
+          }
+          return;
+        }
+        catch (Exception localException)
+        {
+          break label187;
+        }
+        paramBundle = paramBundle;
+        paramBundle = (Bundle)localObject1;
+      }
+      label187:
+      localObject1 = paramBundle;
     }
   }
 }

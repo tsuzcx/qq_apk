@@ -3,9 +3,9 @@ package com.tencent.biz.qqstory.storyHome;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.biz.qqstory.base.preload.PreloadDownloaderManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import unu;
+import uwa;
+import wxe;
 
 public class QQStoryMainController$ScreenActionBroadcastReceiver
   extends BroadcastReceiver
@@ -15,19 +15,19 @@ public class QQStoryMainController$ScreenActionBroadcastReceiver
     paramContext = paramIntent.getAction();
     if (paramContext.equals("android.intent.action.SCREEN_OFF"))
     {
-      ((PreloadDownloaderManager)SuperManager.a(6)).a(120000L);
-      SLog.d("Q.qqstory.home.QQStoryMainActivity", "screen off , preloader stop");
+      ((unu)uwa.a(6)).a(120000L);
+      wxe.d("Q.qqstory.home.QQStoryMainActivity", "screen off , preloader stop");
     }
     while (!paramContext.equals("android.intent.action.SCREEN_ON")) {
       return;
     }
-    ((PreloadDownloaderManager)SuperManager.a(6)).c();
-    SLog.d("Q.qqstory.home.QQStoryMainActivity", "screen on , preloader start");
+    ((unu)uwa.a(6)).c();
+    wxe.d("Q.qqstory.home.QQStoryMainActivity", "screen on , preloader start");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryMainController.ScreenActionBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

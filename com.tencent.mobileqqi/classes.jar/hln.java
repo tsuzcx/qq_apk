@@ -1,52 +1,57 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.mobileqq.international.LocaleString;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.QQToastNotifier;
+import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.os.Parcelable;
+import com.tencent.open.appcommon.Common;
+import com.tencent.open.applist.WebAppActivity;
+import com.tencent.open.base.LogUtility;
 
 public class hln
-  extends Handler
+  implements Runnable
 {
-  public hln(QQToastNotifier paramQQToastNotifier, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public hln(WebAppActivity paramWebAppActivity, String paramString1, String paramString2, boolean paramBoolean) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    paramMessage = (hlo)paramMessage.obj;
-    if (this.a.jdField_a_of_type_AndroidWidgetToast == null)
+    LogUtility.c("WebAppActivity", "has shortcut " + this.jdField_a_of_type_ComTencentOpenApplistWebAppActivity.c() + " | " + this.jdField_a_of_type_JavaLangString + " | " + this.b);
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentOpenApplistWebAppActivity.a(this.jdField_a_of_type_JavaLangString);
+    }
+    Intent localIntent = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
+    localIntent.putExtra("duplicate", false);
+    localIntent.putExtra("android.intent.extra.shortcut.NAME", this.b);
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (Common.a())
     {
-      if ((paramMessage.jdField_a_of_type_JavaLangString != null) && (paramMessage.jdField_a_of_type_JavaLangString.length() > 0)) {}
-      for (this.a.jdField_a_of_type_AndroidWidgetToast = QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, paramMessage.jdField_a_of_type_Int, LocaleString.p(this.a.jdField_a_of_type_AndroidContentContext, paramMessage.jdField_a_of_type_JavaLangString), paramMessage.c).a(paramMessage.d);; this.a.jdField_a_of_type_AndroidWidgetToast = QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, paramMessage.jdField_a_of_type_Int, paramMessage.b, paramMessage.c).a(paramMessage.d))
-      {
-        this.a.jdField_a_of_type_AndroidWidgetToast.show();
-        return;
+      String str = this.jdField_a_of_type_ComTencentOpenApplistWebAppActivity.a(this.jdField_a_of_type_ComTencentOpenApplistWebAppActivity.i);
+      localObject1 = localObject2;
+      if (str != null) {
+        localObject1 = BitmapFactory.decodeFile(str);
       }
     }
-    View localView = this.a.jdField_a_of_type_AndroidWidgetToast.getView();
-    TextView localTextView = (TextView)localView.findViewById(2131232008);
-    if ((paramMessage.jdField_a_of_type_JavaLangString != null) && (paramMessage.jdField_a_of_type_JavaLangString.length() > 0)) {
-      localTextView.setText(LocaleString.p(this.a.jdField_a_of_type_AndroidContentContext, paramMessage.jdField_a_of_type_JavaLangString));
-    }
-    for (;;)
+    localObject2 = localObject1;
+    if (localObject1 == null)
     {
-      ((ImageView)localView.findViewById(2131232007)).setImageResource(QQToast.a(paramMessage.jdField_a_of_type_Int));
-      this.a.jdField_a_of_type_AndroidWidgetToast.setDuration(paramMessage.c);
-      break;
-      localTextView.setText(this.a.jdField_a_of_type_AndroidContentContext.getString(paramMessage.b));
+      localObject1 = this.jdField_a_of_type_ComTencentOpenApplistWebAppActivity.a();
+      localObject2 = localObject1;
+      if (localObject1 == null)
+      {
+        LogUtility.c("WebAppActivity", "created bitmap from default");
+        localObject2 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentOpenApplistWebAppActivity.getResources(), 2130838184);
+      }
     }
+    localIntent.putExtra("android.intent.extra.shortcut.ICON", (Parcelable)localObject2);
+    localObject1 = new Intent("com.tencent.open.startwebapp");
+    ((Intent)localObject1).setFlags(335544320);
+    ((Intent)localObject1).putExtras(this.jdField_a_of_type_ComTencentOpenApplistWebAppActivity.a());
+    localIntent.putExtra("android.intent.extra.shortcut.INTENT", (Parcelable)localObject1);
+    LogUtility.c("WebAppActivity", "send shortcut broadcast");
+    this.jdField_a_of_type_ComTencentOpenApplistWebAppActivity.sendBroadcast(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hln
  * JD-Core Version:    0.7.0.1
  */

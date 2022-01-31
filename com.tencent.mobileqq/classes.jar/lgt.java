@@ -1,37 +1,23 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.WindowManager.BadTokenException;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.app.DeviceCapabilityExamination;
 
-public class lgt
-  implements Runnable
+class lgt
+  implements mxk
 {
-  public lgt(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
+  lgt(lgs paramlgs, lgx paramlgx, int paramInt1, String paramString, int paramInt2, int paramInt3) {}
   
-  public void run()
+  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    Object localObject = this.a;
-    String str = ((Activity)localObject).getString(2131428347);
-    localObject = DialogUtil.a((Context)localObject, 230).setMessage(str).setPositiveButton(((Activity)localObject).getString(2131428346), new lgu(this));
-    try
-    {
-      ((QQCustomDialog)localObject).setCancelable(false);
-      ((QQCustomDialog)localObject).show();
-      return;
-    }
-    catch (WindowManager.BadTokenException localBadTokenException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "", localBadTokenException);
+    this.jdField_a_of_type_Lgx.j = paramInt;
+    this.jdField_a_of_type_Lgx.i = paramString2;
+    DeviceCapabilityExamination.a(this.jdField_a_of_type_Lgx, this.jdField_a_of_type_Lgs.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Lgs.jdField_a_of_type_Lgq != null) {
+      this.jdField_a_of_type_Lgs.jdField_a_of_type_Lgq.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.c, String.valueOf(paramInt));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lgt
  * JD-Core Version:    0.7.0.1
  */

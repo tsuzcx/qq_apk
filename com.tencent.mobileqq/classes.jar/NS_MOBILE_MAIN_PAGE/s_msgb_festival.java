@@ -9,9 +9,9 @@ import java.util.Map;
 public final class s_msgb_festival
   extends JceStruct
 {
-  static Map cache_extendinfo = new HashMap();
+  static Map<String, String> cache_extendinfo = new HashMap();
   public String content = "";
-  public Map extendinfo;
+  public Map<String, String> extendinfo;
   public boolean is_festival = true;
   
   static
@@ -21,7 +21,7 @@ public final class s_msgb_festival
   
   public s_msgb_festival() {}
   
-  public s_msgb_festival(String paramString, boolean paramBoolean, Map paramMap)
+  public s_msgb_festival(String paramString, boolean paramBoolean, Map<String, String> paramMap)
   {
     this.content = paramString;
     this.is_festival = paramBoolean;

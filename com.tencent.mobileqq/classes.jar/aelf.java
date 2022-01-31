@@ -1,15 +1,10 @@
-import MyCarrier.Carrier;
-import com.tencent.mobileqq.mybusiness.MyBusinessManager;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 
-class aelf
-  implements Runnable
+public class aelf
+  extends Handler
 {
-  aelf(aele paramaele, Carrier paramCarrier) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_Aele.a.a(this.jdField_a_of_type_MyCarrierCarrier);
-  }
+  public aelf(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
 }
 
 

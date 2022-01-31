@@ -1,47 +1,22 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.HWDecodeListener;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.VideoFlowDecodeWrapper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class ahop
-  implements HWDecodeListener
+  implements View.OnClickListener
 {
-  public ahop(VideoFlowDecodeWrapper paramVideoFlowDecodeWrapper) {}
+  public ahop(NotificationView paramNotificationView, structmsg.SystemMsg paramSystemMsg) {}
   
-  public void a(int paramInt, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    SLog.d("FlowEdit_VideoFlowDecodeWrapper", paramThrowable, "onDecodeError: %d", new Object[] { Integer.valueOf(paramInt) });
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void b(long paramLong)
-  {
-    SLog.a("FlowEdit_VideoFlowDecodeWrapper", "onDecodeSeekTo: %d", Long.valueOf(paramLong));
-  }
-  
-  public void e()
-  {
-    SLog.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeStart: ");
-  }
-  
-  public void h()
-  {
-    SLog.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeFinish: ");
-  }
-  
-  public void k()
-  {
-    SLog.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeCancel: ");
-  }
-  
-  public void l()
-  {
-    SLog.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeRepeat: ");
+    awrt.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_Ahoe.a(), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.group_code.get()), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.action_uin.get()), -1, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahop
  * JD-Core Version:    0.7.0.1
  */

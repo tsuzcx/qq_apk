@@ -1,49 +1,31 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 
-public final class rvf
-  implements Runnable
+class rvf
+  implements View.OnClickListener
 {
-  public rvf(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  rvf(rve paramrve, int paramInt, TabChannelCoverInfo paramTabChannelCoverInfo, ImageView paramImageView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ExtensionInfo localExtensionInfo = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    long l1;
-    long l2;
-    if (localExtensionInfo == null)
-    {
-      l1 = 0L;
-      if (localExtensionInfo != null) {
-        break label102;
-      }
-      l2 = 0L;
-      label38:
-      if (localExtensionInfo != null) {
-        break label111;
-      }
+    if (rve.a(this.jdField_a_of_type_Rve) != null) {
+      rve.a(this.jdField_a_of_type_Rve).a(this.jdField_a_of_type_Int);
     }
-    label102:
-    label111:
-    for (long l3 = 0L;; l3 = localExtensionInfo.lastPullPLNewsTimestamp)
+    paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo;
+    int j = ojb.b;
+    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {}
+    for (int i = 1;; i = 0)
     {
-      if ((l1 > l2) && (System.currentTimeMillis() / 1000L - l3 >= 86400L)) {
-        ((PersonalityLabelHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(112)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, l2);
-      }
+      ojb.a("0X8009496", paramView, j, i, this.jdField_a_of_type_Int);
       return;
-      l1 = localExtensionInfo.latestPLUpdateTimestamp;
-      break;
-      l2 = localExtensionInfo.lastPLNewsTimestamp;
-      break label38;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rvf
  * JD-Core Version:    0.7.0.1
  */

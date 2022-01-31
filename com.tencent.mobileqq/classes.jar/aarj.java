@@ -1,55 +1,54 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout.ArkSearchReportCallback;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAdapterItemForTextMsg;
-import com.tencent.mobileqq.ark.ArkAppHandler;
-import com.tencent.mobileqq.data.RecommendCommonMessage;
-import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class aarj
-  implements ArkAppRootLayout.ArkSearchReportCallback
+class aarj
+  implements aaru
 {
-  public aarj(ArkAdapterItemForTextMsg paramArkAdapterItemForTextMsg) {}
-  
-  public void a()
+  public boolean a(aarb paramaarb, String paramString, String... paramVarArgs)
   {
-    Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    int i;
-    String str1;
-    String str2;
-    String str3;
-    String str4;
-    String str5;
-    if (localObject != null)
+    Object localObject = null;
+    if (paramaarb != null) {}
+    for (paramVarArgs = paramaarb.a(); (paramaarb == null) || (paramVarArgs == null); paramVarArgs = null)
     {
-      localObject = (ArkAppHandler)((QQAppInterface)localObject).a(95);
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.isFromArkServer) {
-        break label142;
-      }
-      i = 2;
-      str1 = this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.arkServerExtraInfo;
-      str2 = this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.arkServerMsgId;
-      str3 = this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appName;
-      str4 = this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appView;
-      str5 = this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.msg;
-      if (!"1".equals(this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.getExtInfoFromExtStr("ark_text_analysis_flag"))) {
-        break label148;
-      }
+      aase.d("GdtDeviceJsCallHandler", "handleJsCallRequest error");
+      return true;
     }
-    label142:
-    label148:
-    for (int j = 1;; j = 0)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      ((ArkAppHandler)localObject).a(i, 4, 2, str1, str2, str3, str4, str5, j, 0);
-      return;
-      i = 100;
-      break;
+      localJSONObject.put("deviceId", aatg.a(paramVarArgs));
+    }
+    catch (JSONException localJSONException)
+    {
+      try
+      {
+        for (;;)
+        {
+          paramaarb.callJs(paramString, new String[] { localJSONObject.toString() });
+          paramString = localObject;
+          if (paramaarb != null) {
+            paramString = paramaarb.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getDeviceId", paramString);
+          return true;
+          localJSONException = localJSONException;
+          aase.d("GdtDeviceJsCallHandler", "handleJsCallRequest error", localJSONException);
+        }
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          aase.d("GdtDeviceJsCallHandler", "handleJsCallRequest error", paramString);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aarj
  * JD-Core Version:    0.7.0.1
  */

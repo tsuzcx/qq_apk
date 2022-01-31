@@ -1,36 +1,27 @@
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.mobileqq.richmedia.VideoSendTaskManager;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
-class ahgs
-  implements Runnable
+public class ahgs
+  implements View.OnClickListener
 {
-  ahgs(ahgr paramahgr, UpCallBack.SendResult paramSendResult) {}
+  public ahgs(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((TransferRequest)VideoSendTaskManager.a(this.jdField_a_of_type_Ahgr.a).get(ahgr.a(this.jdField_a_of_type_Ahgr)) != null)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqPicUpCallBack$SendResult.a != 0) {
-        break label85;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("PreUploadVideo", 2, "[onSend]ResultOk id=" + ahgr.a(this.jdField_a_of_type_Ahgr));
-      }
-      this.jdField_a_of_type_Ahgr.a(this.jdField_a_of_type_ComTencentMobileqqPicUpCallBack$SendResult);
+    paramView = (InputMethodManager)this.a.getSystemService("input_method");
+    if ((paramView != null) && (paramView.isActive())) {
+      paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
     }
-    label85:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i("PreUploadVideo", 2, "[onSend]ResultFail id=" + ahgr.a(this.jdField_a_of_type_Ahgr));
+    this.a.setResult(1);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahgs
  * JD-Core Version:    0.7.0.1
  */

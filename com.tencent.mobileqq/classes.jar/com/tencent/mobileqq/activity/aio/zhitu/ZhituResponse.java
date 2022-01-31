@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
+import ahbz;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.util.JSONUtils.GenericType;
+import bdcu;
 import java.util.List;
-import wei;
 
 public class ZhituResponse
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new wei();
+  public static final Parcelable.Creator<ZhituResponse> CREATOR = new ahbz();
   public String cat;
   public String cookie;
   public int hasMore;
-  @JSONUtils.GenericType(a=ZhituImgResponse.class)
-  public List list;
-  @JSONUtils.GenericType(a=String.class)
-  public List tokens;
+  @bdcu(a=ZhituImgResponse.class)
+  public List<ZhituImgResponse> list;
+  @bdcu(a=String.class)
+  public List<String> tokens;
   
   public ZhituResponse() {}
   
@@ -51,7 +51,7 @@ public class ZhituResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse
  * JD-Core Version:    0.7.0.1
  */

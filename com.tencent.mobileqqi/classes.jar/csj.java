@@ -1,21 +1,28 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import com.tencent.widget.XListView;
+import mqq.app.permission.PermissionCallback;
 
-public class csj
-  implements DialogInterface.OnClickListener
+class csj
+  implements PermissionCallback
 {
-  public csj(ForwardOperations paramForwardOperations) {}
+  csj(csi paramcsi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a.finish();
+    new PermissionsDialog().a(this.a.jdField_a_of_type_Csc.a.a(), paramInt, paramArrayOfString, new csl(this));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    Leba.b(this.a.jdField_a_of_type_Csc.a, false);
+    this.a.jdField_a_of_type_Csc.a.a(this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_Int, null);
+    this.a.jdField_a_of_type_Csc.a.a.postDelayed(new csk(this), 500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     csj
  * JD-Core Version:    0.7.0.1
  */

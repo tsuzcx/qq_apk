@@ -1,21 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.widgets.QCirclePushRankIndicator;
+import com.tencent.biz.qqcircle.widgets.QCirclePushRankTopView;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.List;
+import qqcircle.QQCircleDitto.StItemContainer;
 
 public class uey
-  implements View.OnClickListener
+  implements ViewPager.OnPageChangeListener
 {
-  public uey(TroopTransferActivity paramTroopTransferActivity) {}
+  public uey(QCirclePushRankTopView paramQCirclePushRankTopView) {}
   
-  public void onClick(View paramView)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    this.a.a.setText("");
+    if (QCirclePushRankTopView.a(this.a) != null) {
+      QCirclePushRankTopView.a(this.a).a(paramInt);
+    }
+    QCirclePushRankTopView.a(this.a, paramInt);
+    QQCircleDitto.StItemContainer localStItemContainer = (QQCircleDitto.StItemContainer)QCirclePushRankTopView.a(this.a).get(paramInt);
+    QCirclePushRankTopView.a(this.a, localStItemContainer);
+    if (this.a.a != null) {
+      this.a.a.setText(localStItemContainer.subTitle.get());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uey
  * JD-Core Version:    0.7.0.1
  */

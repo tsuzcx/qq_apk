@@ -25,7 +25,7 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import fkq;
+import fge;
 import java.util.Iterator;
 import java.util.List;
 import java.util.WeakHashMap;
@@ -47,7 +47,7 @@ public class SVIPHandler
   public static final int e = 2;
   public static final int f = 3;
   private static final int g = 0;
-  Handler jdField_a_of_type_AndroidOsHandler = new fkq(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getMainLooper());
+  Handler jdField_a_of_type_AndroidOsHandler = new fge(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getMainLooper());
   public WeakHashMap a;
   AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
   public boolean a;
@@ -409,7 +409,7 @@ public class SVIPHandler
     ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), "AvatarUpdate.checkUpdate");
     localReqUpdate.uint32_plat_id.set(2);
     localReqUpdate.uint64_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()));
-    localReqUpdate.str_version.set("6.0.0.6500");
+    localReqUpdate.str_version.set("6.0.2.6602");
     localReqUpdate.int32_cmd.set(1);
     localReqUpdate.msg_req_data.set(localReqUpdateData);
     localReqUpdate.setHasFlag(true);
@@ -464,7 +464,7 @@ public class SVIPHandler
         }
         localReqUpdate.uint32_plat_id.set(2);
         localReqUpdate.uint64_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()));
-        localReqUpdate.str_version.set("6.0.0.6500");
+        localReqUpdate.str_version.set("6.0.2.6602");
         localReqUpdate.int32_cmd.set(1);
         localReqUpdate.msg_req_data.set(localReqUpdateData);
         localReqUpdate.setHasFlag(true);

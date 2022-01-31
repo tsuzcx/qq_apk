@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class torch_transfer$TorcherRankInfo
-  extends MessageMicro
+  extends MessageMicro<TorcherRankInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "bool_only_torcher", "uint32_rankings" }, new Object[] { Boolean.valueOf(false), Integer.valueOf(0) }, TorcherRankInfo.class);
   public final PBBoolField bool_only_torcher = PBField.initBool(false);
@@ -15,7 +15,7 @@ public final class torch_transfer$TorcherRankInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.olympic.torch_transfer.TorcherRankInfo
  * JD-Core Version:    0.7.0.1
  */

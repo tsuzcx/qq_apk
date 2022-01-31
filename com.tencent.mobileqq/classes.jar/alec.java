@@ -1,31 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.open.appcommon.js.DownloadInterface;
-import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.WebView;
-
 public class alec
-  implements Runnable
 {
-  public alec(DownloadInterface paramDownloadInterface, String paramString) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void run()
+  public alec(int paramInt1, int paramInt2)
   {
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.webview != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.webview.loadUrl(this.jdField_a_of_type_JavaLangString);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      LogUtility.a(this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.TAG, "webview loadUrl>>> ", localException);
-    }
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alec
  * JD-Core Version:    0.7.0.1
  */

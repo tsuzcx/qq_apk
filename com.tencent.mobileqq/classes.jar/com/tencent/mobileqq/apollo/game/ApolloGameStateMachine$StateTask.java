@@ -7,7 +7,7 @@ public class ApolloGameStateMachine$StateTask
 {
   public int a;
   public Runnable a;
-  private WeakReference a;
+  private WeakReference<ApolloGameStateMachine> a;
   
   public ApolloGameStateMachine$StateTask(int paramInt, Runnable paramRunnable, ApolloGameStateMachine paramApolloGameStateMachine)
   {
@@ -29,7 +29,7 @@ public class ApolloGameStateMachine$StateTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGameStateMachine.StateTask
  * JD-Core Version:    0.7.0.1
  */

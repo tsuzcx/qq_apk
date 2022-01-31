@@ -1,30 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.share.AVSchema;
 
 public class map
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public map(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  public map(AVSchema paramAVSchema) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
-    }
-    if ((VideoFeedsAdapter.a(this.a) != null) && (VideoFeedsAdapter.a(this.a).b()) && (VideoFeedsAdapter.g(this.a)) && (VideoFeedsAdapter.h(this.a))) {
-      VideoFeedsAdapter.a(this.a).d();
-    }
-    VideoFeedsAdapter.a(this.a).setNeedDetectScreenOrientation(true);
-    VideoFeedsAdapter.e(this.a, false);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     map
  * JD-Core Version:    0.7.0.1
  */

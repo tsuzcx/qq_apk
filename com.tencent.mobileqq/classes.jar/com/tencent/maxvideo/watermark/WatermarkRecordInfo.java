@@ -19,8 +19,8 @@ public class WatermarkRecordInfo
     int i;
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      i = 0;
       int j = paramList.size();
+      i = 0;
       if (i >= j) {
         localStringBuffer.append("]");
       }
@@ -120,7 +120,7 @@ public class WatermarkRecordInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.maxvideo.watermark.WatermarkRecordInfo
  * JD-Core Version:    0.7.0.1
  */

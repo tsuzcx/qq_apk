@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
-import com.tencent.qidian.QidianManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class allr
-  implements Runnable
+class allr
+  implements DialogInterface.OnClickListener
 {
-  public allr(QidianManager paramQidianManager, BmqqUserSimpleInfo paramBmqqUserSimpleInfo) {}
+  allr(alln paramalln) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QidianManager.a(this.jdField_a_of_type_ComTencentQidianQidianManager, this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     allr
  * JD-Core Version:    0.7.0.1
  */

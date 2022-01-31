@@ -7,21 +7,23 @@ import com.qq.taf.jce.JceStruct;
 public final class d
   extends JceStruct
 {
-  public long a;
-  public long b;
+  public long a = 0L;
+  public long b = 0L;
   public byte c = 1;
   public String d = "46000";
-  public int e;
-  public long f;
+  public int e = 0;
+  public long f = 0L;
   public String g = "";
-  public long h;
-  public long i;
-  public long j;
-  public byte k;
+  public long h = 0L;
+  public long i = 0L;
+  public long j = 0L;
+  public byte k = 0;
+  public byte l = 0;
+  public long m = 0L;
   
   public d() {}
   
-  public d(long paramLong1, long paramLong2, byte paramByte1, String paramString1, int paramInt, long paramLong3, String paramString2, long paramLong4, long paramLong5, long paramLong6, byte paramByte2)
+  public d(long paramLong1, long paramLong2, byte paramByte1, String paramString1, int paramInt, long paramLong3, String paramString2, long paramLong4, long paramLong5, long paramLong6, byte paramByte2, byte paramByte3, long paramLong7)
   {
     this.a = paramLong1;
     this.b = paramLong2;
@@ -34,6 +36,8 @@ public final class d
     this.i = paramLong5;
     this.j = paramLong6;
     this.k = paramByte2;
+    this.l = paramByte3;
+    this.m = paramLong7;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -49,6 +53,8 @@ public final class d
     this.i = paramJceInputStream.read(this.i, 9, false);
     this.j = paramJceInputStream.read(this.j, 10, false);
     this.k = paramJceInputStream.read(this.k, 11, false);
+    this.l = paramJceInputStream.read(this.l, 12, false);
+    this.m = paramJceInputStream.read(this.m, 13, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -64,6 +70,8 @@ public final class d
     paramJceOutputStream.write(this.i, 9);
     paramJceOutputStream.write(this.j, 10);
     paramJceOutputStream.write(this.k, 11);
+    paramJceOutputStream.write(this.l, 12);
+    paramJceOutputStream.write(this.m, 13);
   }
 }
 

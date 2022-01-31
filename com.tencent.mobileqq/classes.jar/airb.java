@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.transfile.ShortVideoForwardProcessor;
-
 class airb
-  implements Runnable
+  implements bezx
 {
-  airb(aira paramaira, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  airb(aira paramaira, Runnable paramRunnable) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Aira.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 

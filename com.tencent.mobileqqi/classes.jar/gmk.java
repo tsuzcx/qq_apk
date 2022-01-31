@@ -1,51 +1,52 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.richstatus.IActionListener;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper.OnGetLocalLogListener;
+import com.tencent.mobileqq.testassister.activity.ShareAppLogActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class gmk
-  extends ConfigObserver
+  implements ShareAppLogHelper.OnGetLocalLogListener
 {
-  public gmk(StatusManager paramStatusManager) {}
+  public gmk(ShareAppLogActivity paramShareAppLogActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "onUpdateStatusActions " + paramBoolean + ", " + paramInt);
-    }
-    StatusManager.a(this.a, 0L);
-    if (paramBoolean)
+    ShareAppLogActivity.a(this.a);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a, 230).setTitle("警告").setMessage(ShareAppLogActivity.a(this.a).a(paramInt));
+    localQQCustomDialog.setPositiveButton("继续", new gml(this));
+    localQQCustomDialog.setNegativeButton("取消", new gmm(this));
+    localQQCustomDialog.show();
+  }
+  
+  public void a(String paramString)
+  {
+    try
     {
-      if (paramInt == 100)
-      {
-        StatusManager.b(this.a, System.currentTimeMillis());
-        StatusManager.a(this.a).edit().putLong("k_update_time", StatusManager.a(this.a)).commit();
-      }
-      this.a.a(true);
+      ShareAppLogActivity.a(this.a, paramString);
+      return;
     }
-    if (StatusManager.a(this.a) != null)
+    catch (Exception paramString)
     {
-      Iterator localIterator = StatusManager.a(this.a).iterator();
-      if (localIterator.hasNext())
-      {
-        IActionListener localIActionListener = (IActionListener)localIterator.next();
-        if (paramBoolean) {}
-        for (int i = 300;; i = 301)
-        {
-          localIActionListener.a(paramInt, i);
-          break;
-        }
-      }
+      paramString.printStackTrace();
+      QQToast.a(this.a.getApplicationContext(), "发送失败!", 0).a();
+      return;
     }
+    finally
+    {
+      ShareAppLogActivity.a(this.a);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    ShareAppLogActivity.a(this.a);
+    QQToast.a(this.a.getApplicationContext(), ShareAppLogActivity.a(this.a).a(paramInt), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gmk
  * JD-Core Version:    0.7.0.1
  */

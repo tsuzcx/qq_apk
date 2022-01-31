@@ -1,13 +1,20 @@
-import com.tencent.smtt.sdk.WebView;
+import java.util.List;
 
-public class alep
+public abstract interface alep
 {
-  public WebView a;
-  public String a;
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  
+  public abstract void a(int[] paramArrayOfInt, int paramInt);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(List<alen> paramList);
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alep
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hiboom.HiBoomFont.HiBoomFontDownloader;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import mqq.app.AppRuntime;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
-public final class adpc
-  implements HiBoomFont.HiBoomFontDownloader
+public class adpc
+  implements View.OnClickListener
 {
-  public String a()
-  {
-    return AppConstants.aJ + ".hiboom_font/";
-  }
+  public adpc(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      ((VasQuickUpdateManager)localAppRuntime.getManager(183)).a(5L, "font.hifont.android." + paramInt, "HiBoomDownloader");
-    }
+    this.a.a.cancel();
   }
 }
 

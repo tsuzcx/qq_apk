@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
 
 public class egd
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public egd(TextItemBuilder paramTextItemBuilder) {}
+  public egd(RecommendTroopView paramRecommendTroopView, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     egd
  * JD-Core Version:    0.7.0.1
  */

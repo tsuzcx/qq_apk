@@ -61,17 +61,17 @@ class g
     try
     {
       Object localObject = paramJSONObject.optString("mid");
-      if (com.tencent.a.a.a.i.c((String)localObject))
+      if (com.tencent.stat.a.a.i.c((String)localObject))
       {
         if (StatConfig.isDebugEnable()) {
           d.i("update mid:" + (String)localObject);
         }
-        com.tencent.a.a.a.d locald = new com.tencent.a.a.a.d();
+        com.tencent.stat.a.a.d locald = new com.tencent.stat.a.a.d();
         locald.a = af.a(f).b(f).getImei();
         locald.b = af.a(f).b(f).getMac();
         locald.d = System.currentTimeMillis();
         locald.c = ((String)localObject);
-        com.tencent.a.a.a.h.a(f).a(locald);
+        com.tencent.stat.a.a.h.a(f).a(locald);
       }
       if (!paramJSONObject.isNull("cfg"))
       {

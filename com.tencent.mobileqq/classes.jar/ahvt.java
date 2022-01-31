@@ -1,46 +1,68 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.search.model.GroupSearchModeTitle;
-import com.tencent.mobileqq.search.model.GroupSearchModelMoreItem;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
-import com.tencent.mobileqq.search.util.SearchStatisticsConstants;
-import java.util.ArrayList;
-import java.util.List;
-
-public class ahvt
-  extends GroupSearchEngine.SearchEngineEntity
+public final class ahvt
 {
-  public ahvt(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
+  private static boolean m(int paramInt)
   {
-    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
+    return paramInt == -3;
   }
   
-  public ISearchResultGroupModel a(List paramList, String paramString)
+  private static boolean n(int paramInt)
   {
-    return null;
+    return paramInt == -2;
   }
   
-  public List a(SearchRequest paramSearchRequest)
+  private static boolean o(int paramInt)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = -1;
-    if (paramSearchRequest.jdField_a_of_type_AndroidOsBundle == null) {
-      paramSearchRequest.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramSearchRequest = new GroupSearchModelMoreItem(paramSearchRequest.jdField_a_of_type_JavaLangString, GroupSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine));
-    localArrayList.add(new GroupSearchModeTitle(paramSearchRequest));
-    localArrayList.add(paramSearchRequest);
-    SearchStatisticsConstants.a(0);
-    return localArrayList;
+    return paramInt == -1;
+  }
+  
+  private static boolean p(int paramInt)
+  {
+    return paramInt < 0;
+  }
+  
+  private static boolean q(int paramInt)
+  {
+    return paramInt == 0;
+  }
+  
+  private static boolean r(int paramInt)
+  {
+    return paramInt == 1;
+  }
+  
+  private static boolean s(int paramInt)
+  {
+    return paramInt == 2;
+  }
+  
+  private static boolean t(int paramInt)
+  {
+    return paramInt == 3;
+  }
+  
+  private static boolean u(int paramInt)
+  {
+    return paramInt == 4;
+  }
+  
+  private static boolean v(int paramInt)
+  {
+    return paramInt == 5;
+  }
+  
+  private static boolean w(int paramInt)
+  {
+    return paramInt > 2;
+  }
+  
+  private static boolean x(int paramInt)
+  {
+    return paramInt >= 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahvt
  * JD-Core Version:    0.7.0.1
  */

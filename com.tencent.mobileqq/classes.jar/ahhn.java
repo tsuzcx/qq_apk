@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PublicRecommendAccountInfo;
 
 public class ahhn
-  implements Runnable
+  extends akit
 {
-  public ahhn(CaptureVideoFilterManager paramCaptureVideoFilterManager) {}
-  
-  public void run()
-  {
-    this.a.a(true);
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMRedDotConfig", 2, "saved to red dot config file");
-    }
-  }
+  public TextView a;
+  public PublicRecommendAccountInfo a;
+  public TextView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahhn
  * JD-Core Version:    0.7.0.1
  */

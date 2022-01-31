@@ -1,19 +1,14 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-
-public class ybc
-  implements Runnable
+public abstract interface ybc
 {
-  public ybc(SelectMemberActivity paramSelectMemberActivity) {}
+  public abstract void a(ybe paramybe);
   
-  public void run()
-  {
-    this.a.c.sendAccessibilityEvent(8);
-  }
+  public abstract void b(ybe paramybe);
+  
+  public abstract void c(ybe paramybe);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ybc
  * JD-Core Version:    0.7.0.1
  */

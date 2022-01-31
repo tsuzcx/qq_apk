@@ -1,28 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader;
-import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader.CacheContext;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
 
 public class nfm
-  extends SimpleJob
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public nfm(DateCollectionListPageLoader paramDateCollectionListPageLoader) {}
+  public nfm(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onGlobalLayout()
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerDateCollectionListPageLoader$CacheContext == null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerDateCollectionListPageLoader$CacheContext = new DateCollectionListPageLoader.CacheContext(this.a, this.a.d);
-    }
-    this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerDateCollectionListPageLoader$CacheContext.jdField_a_of_type_JavaLangString;
-    DateCollectionListPageLoader.a(this.a);
-    return null;
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    int i = this.a.getWindow().getDecorView().getBottom();
+    int j = this.a.getWindow().getDecorView().getTop();
+    LebaSearchPluginManagerActivity.a(this.a, i - j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nfm
  * JD-Core Version:    0.7.0.1
  */

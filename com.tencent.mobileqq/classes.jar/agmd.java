@@ -1,61 +1,69 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.portal.Flake;
-import com.tencent.mobileqq.portal.FlakeView;
-import java.util.ArrayList;
-import java.util.Random;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
 
 public class agmd
-  implements Runnable
+  extends aglx
 {
-  public agmd(FlakeView paramFlakeView, String[] paramArrayOfString, int paramInt) {}
+  aiul a;
   
-  public void run()
+  public agmd(QQAppInterface paramQQAppInterface, agmp paramagmp, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, aere paramaere)
   {
-    Random localRandom = new Random();
-    Bitmap[] arrayOfBitmap = new Bitmap[this.jdField_a_of_type_ArrayOfJavaLangString.length];
-    int i = 0;
-    for (;;)
+    super(paramQQAppInterface, paramagmp, paramQQWalletTransferMsgElem, paramInt, paramaere);
+    this.jdField_a_of_type_Aiul = ((aiul)paramQQAppInterface.getManager(125));
+    if (a(this.jdField_a_of_type_Aiul.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId))) {}
+    for (this.i = 0;; this.i = paramQQWalletTransferMsgElem.effectsId)
     {
-      if (i < this.jdField_a_of_type_ArrayOfJavaLangString.length) {
-        try
-        {
-          arrayOfBitmap[i] = BitmapFactory.decodeFile(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-          i += 1;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          for (;;)
-          {
-            localOutOfMemoryError.printStackTrace();
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-          }
-        }
-      }
+      this.j = 2130846776;
+      return;
     }
-    i = 0;
-    while (i < this.jdField_a_of_type_Int)
+  }
+  
+  public boolean b()
+  {
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
+    }
+    this.jdField_a_of_type_Agmp.b.setVisibility(0);
+    this.jdField_a_of_type_Agmp.b.setTextColor(-8947849);
+    this.jdField_a_of_type_Agmp.b.setText("K歌红包");
+    return true;
+  }
+  
+  public void f()
+  {
+    super.f();
+    try
     {
-      Object localObject = arrayOfBitmap[localRandom.nextInt(this.jdField_a_of_type_ArrayOfJavaLangString.length)];
-      if (localObject != null)
-      {
-        localObject = Flake.a(this.jdField_a_of_type_ComTencentMobileqqPortalFlakeView.getWidth(), (Bitmap)localObject, 3, this.jdField_a_of_type_ComTencentMobileqqPortalFlakeView.getResources());
-        ((Flake)localObject).a = (this.jdField_a_of_type_ComTencentMobileqqPortalFlakeView.getWidth() / 2);
-        ((Flake)localObject).b = AIOUtils.a(205.0F, this.jdField_a_of_type_ComTencentMobileqqPortalFlakeView.getResources());
-        this.jdField_a_of_type_ComTencentMobileqqPortalFlakeView.a.add(localObject);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqPortalFlakeView;
-        ((FlakeView)localObject).e += 1;
-      }
-      i += 1;
+      this.jdField_a_of_type_Agmp.a.setText(ajeu.a(this.jdField_a_of_type_Agmp.a.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, 330, this.jdField_a_of_type_Agmp.a.getPaint()));
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqPortalFlakeView.d = false;
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  public void i()
+  {
+    QQWalletRedPacketMsg localQQWalletRedPacketMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg;
+    aiuk localaiuk2 = this.jdField_a_of_type_Aiul.a(localQQWalletRedPacketMsg.redPacketId);
+    aiuk localaiuk1 = localaiuk2;
+    if (localaiuk2 == null)
+    {
+      localaiuk1 = new aiuk(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, false, false, false, 2);
+      this.jdField_a_of_type_Aiul.a(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, String.valueOf(this.jdField_a_of_type_Aiul.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop)), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, localQQWalletRedPacketMsg.authkey, false, false, 2);
+    }
+    if (!a(localaiuk1))
+    {
+      this.jdField_a_of_type_Agmp.d.setVisibility(8);
+      return;
+    }
+    this.jdField_a_of_type_Agmp.d.setVisibility(0);
   }
 }
 

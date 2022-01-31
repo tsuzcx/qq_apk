@@ -1,33 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
-import com.tencent.mobileqq.utils.ImageUtil;
-import java.net.MalformedURLException;
-import java.net.URL;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.QavPanel;
 
 public class mkm
-  implements Runnable
+  implements View.OnClickListener
 {
-  public mkm(ReadinjoyTabFrame paramReadinjoyTabFrame, ZImageView paramZImageView, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
+  public mkm(QavPanel paramQavPanel) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.setRound(true);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.a(ImageUtil.a()).a(new URL(ReadInJoyUserInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo)));
-      return;
-    }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      localMalformedURLException.printStackTrace();
+    if ((this.a.a != null) && (this.a.a.a != null)) {
+      this.a.a.a.a(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mkm
  * JD-Core Version:    0.7.0.1
  */

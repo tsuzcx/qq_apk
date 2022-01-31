@@ -1,38 +1,30 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayUtils;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.EffectToolbar;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
 
 public class mfy
-  implements SeekBar.OnSeekBarChangeListener
+  implements Observer
 {
-  public mfy(VideoUIManager paramVideoUIManager) {}
+  private WeakReference<EffectToolbar> a;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public mfy(EffectToolbar paramEffectToolbar)
   {
-    int i = paramSeekBar.getProgress();
-    int j = VideoUIManager.a(this.a).a();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoUIManager", 2, "onStopTrackingTouch(): progress=" + i + ", playState=" + VideoPlayUtils.a(j));
-    }
-    if (j == 3) {
-      VideoUIManager.a(this.a).a(i * 1000, VideoUIManager.a(this.a));
-    }
-    while (j != 5) {
+    this.a = new WeakReference(paramEffectToolbar);
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    EffectToolbar localEffectToolbar = (EffectToolbar)this.a.get();
+    if (localEffectToolbar == null) {
       return;
     }
-    VideoUIManager.a(this.a).c(i * 1000);
+    EffectToolbar.access$300(localEffectToolbar, paramObservable, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfy
  * JD-Core Version:    0.7.0.1
  */

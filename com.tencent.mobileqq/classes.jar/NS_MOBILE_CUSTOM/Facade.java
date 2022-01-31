@@ -13,24 +13,24 @@ public final class Facade
   static int cache_iProperty;
   static int cache_iStyle;
   static int cache_iType;
-  static Map cache_mapExtInfo;
-  static ArrayList cache_vecView;
+  static Map<String, String> cache_mapExtInfo;
+  static ArrayList<FacadeView> cache_vecView;
   public int iCanEdit;
   public int iHasNewFlag;
   public int iProperty;
   public int iStyle;
   public int iType;
-  public Map mapExtInfo;
+  public Map<String, String> mapExtInfo;
   public String strDescription = "";
   public String strFacadeName = "";
   public String strId = "";
   public String strThumbUrl = "";
   public String strTraceInfo = "";
-  public ArrayList vecView;
+  public ArrayList<FacadeView> vecView;
   
   public Facade() {}
   
-  public Facade(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, ArrayList paramArrayList, int paramInt3, int paramInt4, int paramInt5, String paramString5, Map paramMap)
+  public Facade(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, ArrayList<FacadeView> paramArrayList, int paramInt3, int paramInt4, int paramInt5, String paramString5, Map<String, String> paramMap)
   {
     this.strId = paramString1;
     this.iType = paramInt1;

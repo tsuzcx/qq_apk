@@ -1,28 +1,12 @@
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.gdtad.ipc.AppInstallerReceiver;
 
-class aaqo
-  implements Runnable
+public final class aaqo
 {
-  aaqo(aaqn paramaaqn, int paramInt) {}
-  
-  public void run()
-  {
-    Iterator localIterator = ArkAppMusicModule.a.iterator();
-    while (localIterator.hasNext())
-    {
-      ArkAppMusicModule localArkAppMusicModule = (ArkAppMusicModule)((WeakReference)localIterator.next()).get();
-      if (localArkAppMusicModule != null) {
-        localArkAppMusicModule.a(this.jdField_a_of_type_Int);
-      }
-    }
-  }
+  public static AppInstallerReceiver a = new AppInstallerReceiver(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaqo
  * JD-Core Version:    0.7.0.1
  */

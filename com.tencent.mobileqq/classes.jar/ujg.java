@@ -1,33 +1,13 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
-import com.tencent.mobileqq.app.activateFriends.ActivateFriendsObserver;
-import com.tencent.widget.XPanelContainer;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-public class ujg
-  extends ActivateFriendsObserver
+public abstract interface ujg
 {
-  public ujg(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
-  
-  public void a(int paramInt)
-  {
-    this.a.d();
-    SendBirthdayWishesActivity.a(this.a, paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.a);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 0) {
-      this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
-    }
-    if (paramInt != 2)
-    {
-      SendBirthdayWishesActivity.a(this.a).removeCallbacks(SendBirthdayWishesActivity.a(this.a));
-      SendBirthdayWishesActivity.a(this.a).postDelayed(SendBirthdayWishesActivity.a(this.a), 600L);
-    }
-  }
+  public abstract void a(ErrorMessage paramErrorMessage, List<String> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ujg
  * JD-Core Version:    0.7.0.1
  */

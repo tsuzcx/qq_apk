@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class group_effect_commu$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66, 2402 }, new String[] { "ret", "st_get_detail", "st_get_effect", "st_set_effect", "st_get_switch_others", "st_set_switch", "st_set_global_effect", "st_set_switch_others", "st_entry_notify" }, new Object[] { Integer.valueOf(0), null, null, null, null, null, null, null, null }, RspBody.class);
   public final PBInt32Field ret = PBField.initInt32(0);
@@ -21,7 +21,7 @@ public final class group_effect_commu$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.qun.group_effect.group_effect_commu.RspBody
  * JD-Core Version:    0.7.0.1
  */

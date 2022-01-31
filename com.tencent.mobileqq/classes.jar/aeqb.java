@@ -1,25 +1,26 @@
-import com.tencent.mobileqq.nearby.business.NearbyCardObserver;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import java.util.ArrayList;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
 public class aeqb
-  extends NearbyCardObserver
+  extends View.AccessibilityDelegate
 {
-  public aeqb(NearbyGuideActivity paramNearbyGuideActivity) {}
+  public aeqb(BaseBubbleBuilder paramBaseBubbleBuilder) {}
   
-  protected void a(boolean paramBoolean, ArrayList paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  @TargetApi(16)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    this.a.runOnUiThread(new aeqc(this, paramBoolean, paramInt1, paramArrayList));
-  }
-  
-  protected void b(boolean paramBoolean, ArrayList paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.runOnUiThread(new aeqd(this, paramBoolean, paramInt1, paramArrayList));
+    if (Build.VERSION.SDK_INT >= 16) {
+      paramAccessibilityNodeInfo.setVisibleToUser(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqb
  * JD-Core Version:    0.7.0.1
  */

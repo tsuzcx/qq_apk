@@ -1,90 +1,27 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.ShieldListObserver;
-import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
-import com.tencent.mobileqq.util.Utils;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class advh
-  extends ShieldListObserver
+  extends alop
 {
-  public advh(ShareToQQActivity paramShareToQQActivity) {}
+  public advh(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  protected void a(boolean paramBoolean, List paramList)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if (this.a.a == null)
+    if (paramBoolean)
     {
-      this.a.finish();
-      return;
-    }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.h(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
-    {
-      if (paramList == null) {}
-      int k;
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        k = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
+      if (!TextUtils.isEmpty(this.a.f)) {
+        QQToast.a(this.a.app.getApp(), 2, this.a.f, 0).a();
       }
-      if (k != 0)
-      {
-        paramList = new Intent();
-        paramList.putExtra("isSuccess", paramBoolean);
-        paramList.putExtra("isCancelShield", false);
-        this.a.setResult(-1, paramList);
+      if (this.a.a == 13) {
+        this.a.b();
       }
       this.a.finish();
       return;
     }
-  }
-  
-  protected void b(boolean paramBoolean, List paramList)
-  {
-    int k = 0;
-    if (this.a.a == null)
-    {
-      this.a.finish();
-      return;
-    }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.h(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
-    {
-      if (paramList == null) {}
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k != 0)
-      {
-        paramList = new Intent();
-        paramList.putExtra("isSuccess", paramBoolean);
-        paramList.putExtra("isCancelShield", true);
-        this.a.setResult(-1, paramList);
-      }
-      this.a.finish();
-      return;
-    }
+    QQToast.a(this.a.app.getApp(), 1, alud.a(2131713837), 0).a();
   }
 }
 

@@ -1,17 +1,8 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditItemBase.OnEditItemListener;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import android.view.View;
 
-class ajlp
-  implements Runnable
+public abstract interface ajlp
 {
-  ajlp(ajlo paramajlo) {}
-  
-  public void run()
-  {
-    HWReciteItem.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem.a.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.c), true);
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 

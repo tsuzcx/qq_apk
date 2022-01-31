@@ -1,16 +1,15 @@
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.provider.ContactsContract.RawContacts;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 public class abtp
+  implements Comparator<MessageRecord>
 {
-  public static final String[] a = { "_id", "sourceid", "contact_id" };
-  public static final String[] b = { "sync1", "sync2", "sync3" };
+  public abtp(QQMessageFacade paramQQMessageFacade) {}
   
-  public static final Uri a(String paramString)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    return ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", paramString).appendQueryParameter("account_type", "com.tencent.mobileqq.account").appendQueryParameter("caller_is_syncadapter", ContactSyncManager.b()).build();
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 

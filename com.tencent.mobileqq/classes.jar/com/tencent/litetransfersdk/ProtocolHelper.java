@@ -1,18 +1,18 @@
 package com.tencent.litetransfersdk;
 
+import alqo;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import arri;
+import arrr;
+import arsx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
-import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
 import com.tencent.image.GifDrawable;
-import com.tencent.mobileqq.app.DataLineHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -33,11 +33,6 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rdi;
-import rdj;
-import rdk;
-import rdl;
-import rdm;
 import tencent.im.cs.cmd0x346.cmd0x346.ApplyCopyToReq;
 import tencent.im.cs.cmd0x346.cmd0x346.ApplyCopyToRsp;
 import tencent.im.cs.cmd0x346.cmd0x346.ApplyDownloadReq;
@@ -66,6 +61,7 @@ import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MpFileNot
 import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MsgHeader;
 import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.NFCNotify;
 import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.RNFCNotify;
+import ztp;
 
 public class ProtocolHelper
 {
@@ -81,8 +77,8 @@ public class ProtocolHelper
   public static int mDstInstId = 1;
   public static int mDstType = 1;
   public static final String sTagName = "dataline.ProtocolHelper";
-  public AppInterface mApp;
-  public int mUinType = 0;
+  protected AppInterface mApp;
+  protected int mUinType = 0;
   
   public ProtocolHelper(AppInterface paramAppInterface, int paramInt)
   {
@@ -96,7 +92,7 @@ public class ProtocolHelper
     if (paramInt == 1)
     {
       str = paramString1;
-      if (FileManagerUtil.a(paramString1) != 0)
+      if (arrr.a(paramString1) != 0)
       {
         str = paramString1;
         if (!paramBoolean) {
@@ -157,7 +153,7 @@ public class ProtocolHelper
   
   public static void fillMsgHeader(SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, long paramLong1, long paramLong2, int paramInt)
   {
-    int i = AppSetting.a;
+    int i = AppSetting.a();
     paramMsgHeader.uint32_src_app_id.set(1001);
     paramMsgHeader.uint32_src_inst_id.set(i);
     paramMsgHeader.uint64_dst_uin.set(paramLong1);
@@ -197,42 +193,50 @@ public class ProtocolHelper
       if (QLog.isColorLevel()) {
         QLog.e("dataline.ProtocolHelper", 2, "PBToMsgSCBody : msgtype is not cmd0x346");
       }
-      return;
     case 1610: 
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp = new ApplyUploadRsp();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.int32_ret_code = paramRspBody.msg_apply_upload_rsp_v2.int32_ret_code.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_ret_msg = paramRspBody.msg_apply_upload_rsp_v2.str_ret_msg.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_total_space = paramRspBody.msg_apply_upload_rsp_v2.uint64_total_space.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_used_space = paramRspBody.msg_apply_upload_rsp_v2.uint64_used_space.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_uploaded_size = paramRspBody.msg_apply_upload_rsp_v2.uint64_uploaded_size.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_ip = paramRspBody.msg_apply_upload_rsp_v2.str_upload_ip.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_domain = paramRspBody.msg_apply_upload_rsp_v2.str_upload_domain.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_upload_port = paramRspBody.msg_apply_upload_rsp_v2.uint32_upload_port.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_uuid = paramRspBody.msg_apply_upload_rsp_v2.bytes_uuid.get().toStringUtf8();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_upload_key = paramRspBody.msg_apply_upload_rsp_v2.bytes_upload_key.get().toByteArray();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_file_exist = paramRspBody.msg_apply_upload_rsp_v2.bool_file_exist.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_pack_size = paramRspBody.msg_apply_upload_rsp_v2.uint32_pack_size.get();
-      localList = paramRspBody.msg_apply_upload_rsp_v2.rpt_str_uploadip_list.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadip_list = ((String[])localList.toArray(new String[localList.size()]));
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_httpsvr_api_ver = paramRspBody.msg_apply_upload_rsp_v2.uint32_httpsvr_api_ver.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_sha = paramRspBody.msg_apply_upload_rsp_v2.bytes_sha.get().toByteArray();
-      return;
     case 1710: 
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp = new ApplyUploadRsp();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.int32_ret_code = paramRspBody.msg_apply_upload_rsp_v3.int32_ret_code.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_ret_msg = paramRspBody.msg_apply_upload_rsp_v3.str_ret_msg.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_total_space = paramRspBody.msg_apply_upload_rsp_v3.uint64_total_space.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_used_space = paramRspBody.msg_apply_upload_rsp_v3.uint64_used_space.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_uploaded_size = paramRspBody.msg_apply_upload_rsp_v3.uint64_uploaded_size.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_ip = paramRspBody.msg_apply_upload_rsp_v3.str_upload_ip.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_domain = paramRspBody.msg_apply_upload_rsp_v3.str_upload_domain.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_upload_port = paramRspBody.msg_apply_upload_rsp_v3.uint32_upload_port.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_uuid = paramRspBody.msg_apply_upload_rsp_v3.bytes_uuid.get().toStringUtf8();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_upload_key = paramRspBody.msg_apply_upload_rsp_v3.bytes_upload_key.get().toByteArray();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_file_exist = paramRspBody.msg_apply_upload_rsp_v3.bool_file_exist.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_pack_size = paramRspBody.msg_apply_upload_rsp_v3.uint32_pack_size.get();
-      paramRspBody = paramRspBody.msg_apply_upload_rsp_v3.rpt_str_uploadip_list.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadip_list = ((String[])paramRspBody.toArray(new String[paramRspBody.size()]));
+      do
+      {
+        do
+        {
+          return;
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp = new ApplyUploadRsp();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.int32_ret_code = paramRspBody.msg_apply_upload_rsp_v2.int32_ret_code.get();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_ret_msg = paramRspBody.msg_apply_upload_rsp_v2.str_ret_msg.get();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_total_space = paramRspBody.msg_apply_upload_rsp_v2.uint64_total_space.get();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_used_space = paramRspBody.msg_apply_upload_rsp_v2.uint64_used_space.get();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_uploaded_size = paramRspBody.msg_apply_upload_rsp_v2.uint64_uploaded_size.get();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_ip = paramRspBody.msg_apply_upload_rsp_v2.str_upload_ip.get();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_domain = paramRspBody.msg_apply_upload_rsp_v2.str_upload_domain.get();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_upload_port = paramRspBody.msg_apply_upload_rsp_v2.uint32_upload_port.get();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_uuid = paramRspBody.msg_apply_upload_rsp_v2.bytes_uuid.get().toStringUtf8();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_upload_key = paramRspBody.msg_apply_upload_rsp_v2.bytes_upload_key.get().toByteArray();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_file_exist = paramRspBody.msg_apply_upload_rsp_v2.bool_file_exist.get();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_pack_size = paramRspBody.msg_apply_upload_rsp_v2.uint32_pack_size.get();
+          localList = paramRspBody.msg_apply_upload_rsp_v2.rpt_str_uploadip_list.get();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadip_list = ((String[])localList.toArray(new String[localList.size()]));
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_httpsvr_api_ver = paramRspBody.msg_apply_upload_rsp_v2.uint32_httpsvr_api_ver.get();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_sha = paramRspBody.msg_apply_upload_rsp_v2.bytes_sha.get().toByteArray();
+        } while ((this.mApp == null) || (!(this.mApp instanceof QQAppInterface)) || (!arsx.b((QQAppInterface)this.mApp)));
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_dns = paramRspBody.msg_apply_upload_rsp_v2.str_upload_dns.get();
+        return;
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp = new ApplyUploadRsp();
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.int32_ret_code = paramRspBody.msg_apply_upload_rsp_v3.int32_ret_code.get();
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_ret_msg = paramRspBody.msg_apply_upload_rsp_v3.str_ret_msg.get();
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_total_space = paramRspBody.msg_apply_upload_rsp_v3.uint64_total_space.get();
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_used_space = paramRspBody.msg_apply_upload_rsp_v3.uint64_used_space.get();
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_uploaded_size = paramRspBody.msg_apply_upload_rsp_v3.uint64_uploaded_size.get();
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_ip = paramRspBody.msg_apply_upload_rsp_v3.str_upload_ip.get();
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_domain = paramRspBody.msg_apply_upload_rsp_v3.str_upload_domain.get();
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_upload_port = paramRspBody.msg_apply_upload_rsp_v3.uint32_upload_port.get();
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_uuid = paramRspBody.msg_apply_upload_rsp_v3.bytes_uuid.get().toStringUtf8();
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_upload_key = paramRspBody.msg_apply_upload_rsp_v3.bytes_upload_key.get().toByteArray();
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_file_exist = paramRspBody.msg_apply_upload_rsp_v3.bool_file_exist.get();
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_pack_size = paramRspBody.msg_apply_upload_rsp_v3.uint32_pack_size.get();
+        localList = paramRspBody.msg_apply_upload_rsp_v3.rpt_str_uploadip_list.get();
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadip_list = ((String[])localList.toArray(new String[localList.size()]));
+      } while ((this.mApp == null) || (!(this.mApp instanceof QQAppInterface)) || (!arsx.b((QQAppInterface)this.mApp)));
+      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_dns = paramRspBody.msg_apply_upload_rsp_v3.str_upload_dns.get();
       return;
     case 1810: 
       paramMsgSCBody.msgBody0x346.pMsgBody0x346_1810 = new ApplyUploadHitRsp();
@@ -258,6 +262,9 @@ public class ProtocolHelper
       localList = paramRspBody.msg_apply_download_rsp.msg_download_info.rpt_str_downloadip_list.get();
       paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.rpt_str_downloadip_list = ((String[])localList.toArray(new String[localList.size()]));
       paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_cookie = paramRspBody.msg_apply_download_rsp.msg_download_info.str_cookie.get();
+      if ((this.mApp != null) && ((this.mApp instanceof QQAppInterface)) && (arsx.b((QQAppInterface)this.mApp))) {
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_download_dns = paramRspBody.msg_apply_download_rsp.msg_download_info.str_download_dns.get();
+      }
       paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_file_info = createFileInfo(paramRspBody.msg_apply_download_rsp.msg_file_info);
       return;
     case 810: 
@@ -420,7 +427,7 @@ public class ProtocolHelper
       return Long.valueOf(this.mApp.getCurrentAccountUin()).longValue();
     }
     if (this.mUinType == 1) {
-      return ((SmartDeviceProxyMgr)((QQAppInterface)this.mApp).a(51)).a();
+      return ((ztp)((QQAppInterface)this.mApp).a(51)).a();
     }
     return 0L;
   }
@@ -436,7 +443,9 @@ public class ProtocolHelper
     localFTNNotify.uint64_sessionid.set(paramFTNNotify.uint64_sessionid);
     localFTNNotify.str_file_name.set((String)localObject);
     localFTNNotify.str_file_index.set(paramFTNNotify.str_file_index);
-    localFTNNotify.bytes_file_md5.set(ByteStringMicro.copyFrom(paramFTNNotify.bytes_file_md5));
+    if (paramFTNNotify.bytes_file_md5 != null) {
+      localFTNNotify.bytes_file_md5.set(ByteStringMicro.copyFrom(paramFTNNotify.bytes_file_md5));
+    }
     localFTNNotify.uint64_file_len.set(paramFTNNotify.uint64_file_len);
     if (paramFTNNotify.bytes_originfile_md5 != null) {
       localFTNNotify.bytes_originfile_md5.set(ByteStringMicro.copyFrom(paramFTNNotify.bytes_originfile_md5));
@@ -603,7 +612,7 @@ public class ProtocolHelper
     }
   }
   
-  public MsgCSBody MsgCSBodyFromFTNNotify(int paramInt, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List paramList, boolean paramBoolean)
+  public MsgCSBody MsgCSBodyFromFTNNotify(int paramInt, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List<SubMsgType0x7.MsgBody.FTNNotify> paramList, boolean paramBoolean)
   {
     MsgCSBody localMsgCSBody = new MsgCSBody();
     localMsgCSBody.uMsgTime = paramInt;
@@ -788,7 +797,7 @@ public class ProtocolHelper
     return localMsgCSBody;
   }
   
-  public MsgCSBody MsgCSBodyFromFileControl(SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List paramList)
+  public MsgCSBody MsgCSBodyFromFileControl(SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List<SubMsgType0x7.MsgBody.FileControl> paramList)
   {
     MsgCSBody localMsgCSBody = new MsgCSBody();
     localMsgCSBody.uMsgType = 529;
@@ -918,7 +927,7 @@ public class ProtocolHelper
     return localMsgCSBody;
   }
   
-  public MsgCSBody MsgCSBodyFromNFCNotify(int paramInt, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List paramList, boolean paramBoolean)
+  public MsgCSBody MsgCSBodyFromNFCNotify(int paramInt, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List<SubMsgType0x7.MsgBody.NFCNotify> paramList, boolean paramBoolean)
   {
     MsgCSBody localMsgCSBody = new MsgCSBody();
     localMsgCSBody.uMsgTime = paramInt;
@@ -1116,7 +1125,7 @@ public class ProtocolHelper
     return localMsgCSBody;
   }
   
-  public MsgCSBody MsgCSBodyFromRFCInfoNotify(int paramInt, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List paramList)
+  public MsgCSBody MsgCSBodyFromRFCInfoNotify(int paramInt, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List<SubMsgType0x7.MsgBody.RNFCNotify> paramList)
   {
     MsgCSBody localMsgCSBody = new MsgCSBody();
     localMsgCSBody.uMsgTime = paramInt;
@@ -1225,7 +1234,7 @@ public class ProtocolHelper
   
   public Session genSession(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    Session localSession = genSession(paramDataLineMsgRecord.fileFrom, paramDataLineMsgRecord.path, paramDataLineMsgRecord.thumbPath, paramDataLineMsgRecord.filename, DataLineHandler.d(paramDataLineMsgRecord.msgtype), 0, paramDataLineMsgRecord.sessionid, paramDataLineMsgRecord.groupId, paramDataLineMsgRecord.groupSize, paramDataLineMsgRecord.groupIndex);
+    Session localSession = genSession(paramDataLineMsgRecord.fileFrom, paramDataLineMsgRecord.path, paramDataLineMsgRecord.thumbPath, paramDataLineMsgRecord.filename, alqo.b(paramDataLineMsgRecord.msgtype), 0, paramDataLineMsgRecord.sessionid, paramDataLineMsgRecord.groupId, paramDataLineMsgRecord.groupSize, paramDataLineMsgRecord.groupIndex);
     if (localSession != null)
     {
       localSession.uFileSizeSrc = paramDataLineMsgRecord.filesize;
@@ -1275,7 +1284,7 @@ public class ProtocolHelper
   
   public MsgHeader msgHeader(long paramLong, int paramInt)
   {
-    int i = AppSetting.a;
+    int i = AppSetting.a();
     MsgHeader localMsgHeader = new MsgHeader();
     localMsgHeader.uint32_src_app_id = 1001;
     localMsgHeader.uint32_src_inst_id = i;
@@ -1294,10 +1303,10 @@ public class ProtocolHelper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      FMToastUtil.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131427559));
+      arri.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131694022));
       return;
     }
-    new Handler(localLooper).post(new rdi(this, paramString));
+    new Handler(localLooper).post(new ProtocolHelper.1(this, paramString));
   }
   
   public void showFileNotExistDialog(String paramString)
@@ -1305,10 +1314,10 @@ public class ProtocolHelper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      FMToastUtil.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131427516));
+      arri.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131694026));
       return;
     }
-    new Handler(localLooper).post(new rdk(this, paramString));
+    new Handler(localLooper).post(new ProtocolHelper.3(this, paramString));
   }
   
   public void showFileTooLargeDialog(String paramString)
@@ -1316,10 +1325,10 @@ public class ProtocolHelper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      FMToastUtil.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131427561));
+      arri.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131694024));
       return;
     }
-    new Handler(localLooper).post(new rdj(this, paramString));
+    new Handler(localLooper).post(new ProtocolHelper.2(this, paramString));
   }
   
   public void showNoNetworkDialog()
@@ -1327,10 +1336,10 @@ public class ProtocolHelper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      FMToastUtil.a(2131427563);
+      arri.a(2131694063);
       return;
     }
-    new Handler(localLooper).post(new rdm(this));
+    new Handler(localLooper).post(new ProtocolHelper.5(this));
   }
   
   public void showQQIsOfflineDialog()
@@ -1338,15 +1347,15 @@ public class ProtocolHelper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      FMToastUtil.a(2131427562);
+      arri.a(2131694062);
       return;
     }
-    new Handler(localLooper).post(new rdl(this));
+    new Handler(localLooper).post(new ProtocolHelper.4(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.litetransfersdk.ProtocolHelper
  * JD-Core Version:    0.7.0.1
  */

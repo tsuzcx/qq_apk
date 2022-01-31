@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.app.AutomatorObserver;
-import com.tencent.mobileqq.app.automator.step.RegisterProxy;
+import com.tencent.mobileqq.config.Config;
+import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
+import com.tencent.mobileqq.config.struct.PicAndAdConf;
 
 public class fmt
-  extends AutomatorObserver
+  extends Thread
 {
-  private fmt(RegisterProxy paramRegisterProxy) {}
+  public fmt(ConfigServlet paramConfigServlet, String paramString) {}
   
-  protected void a()
+  public void run()
   {
-    this.a.a(10000L);
+    Config.a.a_(this.jdField_a_of_type_JavaLangString);
   }
 }
 

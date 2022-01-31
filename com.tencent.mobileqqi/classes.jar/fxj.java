@@ -1,15 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.fileviewer.base.BaseFileViewerController;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
+import com.tencent.qphone.base.util.QLog;
+import com.weiyun.sdk.IWyFileSystem.IWyCallback;
+import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
 
 public class fxj
-  implements View.OnClickListener
+  implements IWyFileSystem.IWyCallback
 {
-  public fxj(BaseFileViewerController paramBaseFileViewerController) {}
+  public fxj(WeiYunLogicCenter paramWeiYunLogicCenter) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    this.a.e(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "getPreviewUrl onSucceed.");
+    }
+    this.a.a.a().a(true, 40, new Object[] { paramString });
+  }
+  
+  public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getPreviewUrl onFailed: errcode[" + paramWyErrorStatus.errorCode + "], errmsg[" + paramWyErrorStatus.errorMsg + "]");
+    }
+    this.a.a.a().a(false, 40, new Object[] { Integer.valueOf(paramWyErrorStatus.errorCode), paramWyErrorStatus.errorMsg });
   }
 }
 

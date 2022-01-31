@@ -1,43 +1,63 @@
-import java.util.HashMap;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
+import java.util.List;
 
 public class aian
+  implements auqa
 {
-  public int a;
-  public HashMap a = new HashMap();
-  public int b;
-  public HashMap b;
-  public int c;
-  public int d;
-  public int e = 0;
+  public aian(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment, aupt paramaupt, auqc paramauqc, List paramList) {}
   
-  public aian()
+  public void a()
   {
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Aupt.a(new aiao(this));
+    this.jdField_a_of_type_Aupt.show();
   }
   
-  public int a()
+  public void a(aupy paramaupy)
   {
-    return this.jdField_b_of_type_Int + this.c + this.d + this.e;
+    if ((paramaupy != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity().isFinishing())) {
+      switch (paramaupy.a)
+      {
+      }
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Aupt.isShowing()) {
+        this.jdField_a_of_type_Aupt.dismiss();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.v();
+      this.jdField_a_of_type_Auqc.b();
+      return;
+      aupz.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity());
+      continue;
+      aupz.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity());
+      continue;
+      aupz.c(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity());
+    }
   }
   
-  public int b()
+  public void a(aupy paramaupy, int paramInt)
   {
-    return this.jdField_b_of_type_Int;
+    this.jdField_a_of_type_Aupt.a(paramInt);
   }
   
-  public int c()
+  public void b()
   {
-    return this.jdField_b_of_type_Int + this.c;
+    if (this.jdField_a_of_type_Aupt.isShowing()) {
+      this.jdField_a_of_type_Aupt.dismiss();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.v();
+    this.jdField_a_of_type_Auqc.b();
   }
   
-  public int d()
+  public void c()
   {
-    return this.jdField_b_of_type_Int + this.c + this.d;
+    this.jdField_a_of_type_Auqc.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.getActivity(), this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aian
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,40 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
+import android.content.Context;
+import android.graphics.Paint;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class afew
-  extends TroopGiftCallback
+  implements afez
 {
-  public afew(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  private Paint a;
   
-  public void a(long paramLong)
+  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
   {
-    if (paramLong > 0L)
+    azqs.b(paramQQAppInterface, "dc00898", "", "", "0X8008C70", "0X8008C70", ahbf.a(paramInt), 0, "", "", "", "");
+    paramString = assg.a(paramString);
+    if ((paramString != null) && (paramString.length() > 20))
     {
-      NearbyProfileDisplayTribePanel.c(this.a).setText(String.format("获得%d礼物积分", new Object[] { Long.valueOf(paramLong) }));
-      return;
+      QQToast.a(paramContext, alud.a(2131705852), 0).a();
+      azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800932C", "0X800932C", 0, 0, "", "", "", "");
+      return false;
     }
-    NearbyProfileDisplayTribePanel.c(this.a).setText("我的礼物积分");
+    return true;
+  }
+  
+  public boolean a(Context paramContext, String paramString, EditText paramEditText)
+  {
+    if (this.a == null) {
+      this.a = new Paint();
+    }
+    this.a.setTypeface(paramEditText.getTypeface());
+    this.a.setTextSize(paramEditText.getTextSize());
+    return (paramString.length() < 200) && (!paramString.contains("\n")) && ((int)this.a.measureText(paramString) + aepi.a(45.0F, paramContext.getResources()) + paramEditText.getPaddingLeft() < paramEditText.getMeasuredWidth());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afew
  * JD-Core Version:    0.7.0.1
  */

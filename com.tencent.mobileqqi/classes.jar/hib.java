@@ -1,11 +1,18 @@
-import java.util.Comparator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.widget.Workspace.SavedState;
 
 public final class hib
-  implements Comparator
+  implements Parcelable.Creator
 {
-  public int a(hic paramhic1, hic paramhic2)
+  public Workspace.SavedState a(Parcel paramParcel)
   {
-    return (paramhic1.c - paramhic2.c) * 100 + (paramhic1.e - paramhic2.e) * 10 + (paramhic1.d - paramhic2.d);
+    return new Workspace.SavedState(paramParcel, null);
+  }
+  
+  public Workspace.SavedState[] a(int paramInt)
+  {
+    return new Workspace.SavedState[paramInt];
   }
 }
 

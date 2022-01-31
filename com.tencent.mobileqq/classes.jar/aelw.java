@@ -1,36 +1,50 @@
-import android.os.Handler;
-import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter;
-import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter.ViewHolder;
-import com.tencent.pb.now.ilive_feeds_near_anchor.NearAnchorInfo;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.widget.XListView;
 
 public class aelw
-  implements Runnable
+  implements aybr
 {
-  public aelw(NearbyFragmentEnterAdapter paramNearbyFragmentEnterAdapter) {}
+  public aelw(VisitorsActivity paramVisitorsActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (this.a.jdField_a_of_type_JavaUtilList != null)
+    int i = 0;
+    if ((paramBitmap != null) && (paramInt2 == 200))
     {
-      NearbyFragmentEnterAdapter.ViewHolder localViewHolder = this.a.a();
-      if (localViewHolder != null)
+      paramBitmap = this.a.a;
+      if (paramBitmap == null) {
+        break label108;
+      }
+      paramInt2 = paramBitmap.getChildCount();
+    }
+    for (;;)
+    {
+      if (i < paramInt2)
       {
-        Object localObject = this.a;
-        ((NearbyFragmentEnterAdapter)localObject).b += 1;
-        if (this.a.b >= this.a.jdField_a_of_type_JavaUtilList.size()) {
-          this.a.b = 0;
+        Object localObject = paramBitmap.getChildAt(i).getTag();
+        if ((localObject != null) && ((localObject instanceof aemn)))
+        {
+          localObject = (aemn)localObject;
+          if ((((aemn)localObject).b == paramInt1) && (((aemn)localObject).e != null)) {
+            VisitorsActivity.a(this.a, ((aemn)localObject).e, paramInt1);
+          }
         }
-        localObject = (ilive_feeds_near_anchor.NearAnchorInfo)this.a.jdField_a_of_type_JavaUtilList.get(this.a.b);
-        this.a.a(localViewHolder, (ilive_feeds_near_anchor.NearAnchorInfo)localObject);
+        i += 1;
+      }
+      else
+      {
+        return;
+        label108:
+        paramInt2 = 0;
       }
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 1500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aelw
  * JD-Core Version:    0.7.0.1
  */

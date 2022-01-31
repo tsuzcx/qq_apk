@@ -1,25 +1,43 @@
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
-import com.tencent.qphone.base.util.QLog;
+import android.os.SystemClock;
 
-class oxl
-  extends oxo
+public class oxl
 {
-  oxl(oxe paramoxe, VideoCombineHelper.Callback paramCallback, String paramString)
+  final long a;
+  public final String a;
+  long b;
+  public final String b;
+  
+  oxl(String paramString1, String paramString2)
   {
-    super(paramoxe.a);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
   }
   
-  public void b(boolean paramBoolean)
+  oxl(String paramString1, String paramString2, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "watermark doen");
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.jdField_b_of_type_Long = paramLong;
+  }
+  
+  boolean a()
+  {
+    if (this.jdField_b_of_type_Long > 0L) {
+      if (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long <= this.jdField_b_of_type_Long) {}
     }
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.jdField_a_of_type_JavaLangString, paramBoolean, null);
+    while (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long > 300000L)
+    {
+      return true;
+      return false;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oxl
  * JD-Core Version:    0.7.0.1
  */

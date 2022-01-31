@@ -1,34 +1,35 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.VideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.smallscreen.SmallScreenDialogActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class mbm
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public mbm(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  public mbm(SmallScreenDialogActivity paramSmallScreenDialogActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    VideoInfo localVideoInfo = (VideoInfo)VideoFeedsAdapter.a(this.a).get(0);
-    if (VideoFeedsAdapter.a(this.a).getFirstVisiblePosition() == 0)
+    if (paramIntent.getAction().equals("tencent.video.v2q.SmallScreenState"))
     {
-      Object localObject = VideoFeedsAdapter.a(this.a).getChildAt(VideoFeedsAdapter.a(this.a).getHeaderViewsCount());
-      if ((localObject != null) && ((((View)localObject).getTag() instanceof VideoFeedsAdapter.VideoItemHolder)))
-      {
-        localObject = (VideoFeedsAdapter.VideoItemHolder)((View)localObject).getTag();
-        ((VideoFeedsAdapter.VideoItemHolder)localObject).e.setText(localVideoInfo.c);
-        ((VideoFeedsAdapter.VideoItemHolder)localObject).n.setText(localVideoInfo.c);
+      int i = paramIntent.getIntExtra("SmallScreenState", -1);
+      long l = mwd.a(paramIntent);
+      boolean bool = mbt.c(this.a.a.getApp());
+      if ((AudioHelper.e()) || (bool)) {
+        QLog.w(SmallScreenDialogActivity.a(this.a), 1, "Receiver ACTION_SMALL_SCREEN_STATE, isFloatWindowOpAllowed[" + bool + "], state[" + i + "], seq[" + l + "]");
+      }
+      if (bool) {
+        this.a.finish();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mbm
  * JD-Core Version:    0.7.0.1
  */

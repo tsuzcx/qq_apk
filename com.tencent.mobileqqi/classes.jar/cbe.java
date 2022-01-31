@@ -1,19 +1,20 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatForEnterpriseActivity;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
 
 public class cbe
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public cbe(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public cbe(ChatForEnterpriseActivity paramChatForEnterpriseActivity, PublicAccountDataManager paramPublicAccountDataManager) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PreferenceManager.getDefaultSharedPreferences(this.a.b.getApplication()).edit().putBoolean("setting_aio_realtime_bg_open" + this.a.b.a(), paramBoolean).commit();
+    ChatForEnterpriseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatForEnterpriseActivity).mIsAgreeSyncLbs = true;
+    ChatForEnterpriseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatForEnterpriseActivity).mIsSyncLbsSelected = true;
+    this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountDataManager.a(ChatForEnterpriseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatForEnterpriseActivity));
+    ChatForEnterpriseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatForEnterpriseActivity, 1, null);
+    ChatForEnterpriseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatForEnterpriseActivity);
   }
 }
 

@@ -1,20 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelViewNew;
 
 public class ydc
-  implements DialogInterface.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public ydc(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public ydc(TopPanelViewNew paramTopPanelViewNew) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ShortVideoPlayActivity.b(this.a);
+    this.a.clearAnimation();
+    this.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ydc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.automator.step.GetGeneralSettings;
+import com.tencent.mobileqq.config.ConfigManager;
 
 public class fmn
-  extends FriendListObserver
 {
-  private fmn(GetGeneralSettings paramGetGeneralSettings) {}
+  public byte a;
+  public String a;
+  public byte b;
+  public String b;
   
-  protected void c(boolean paramBoolean1, boolean paramBoolean2)
+  public fmn(ConfigManager paramConfigManager)
   {
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      GetGeneralSettings.a(this.a).d = 3;
-      this.a.a(7);
-      return;
-    }
-    this.a.a(6);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Byte = 0;
+    this.jdField_b_of_type_Byte = 0;
+    this.jdField_b_of_type_JavaLangString = "";
   }
 }
 

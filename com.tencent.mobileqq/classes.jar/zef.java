@@ -1,32 +1,56 @@
-import com.tencent.mobileqq.app.ContactSorter;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.SpecialCareInfo;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.Comparator;
+import android.app.Activity;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
+import org.json.JSONObject;
 
 public class zef
-  implements Comparator
 {
-  public zef(FriendsManager paramFriendsManager) {}
+  public zef(NewerGuidePlugin paramNewerGuidePlugin, JSONObject paramJSONObject, Activity paramActivity) {}
   
-  private String a(SpecialCareInfo paramSpecialCareInfo)
+  @QQPermissionDenied(1)
+  public void deniedReadContacts()
   {
-    Friends localFriends = this.a.a(paramSpecialCareInfo.uin);
-    if (localFriends == null) {
-      return paramSpecialCareInfo.uin;
+    if (QLog.isColorLevel()) {
+      QLog.d("NewerGuidePlugin", 2, "deniedReadContacts");
     }
-    return ContactUtils.a(localFriends) + localFriends.uin;
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respRecommend", new String[] { localJSONObject.toString() });
+      bdjz.showPermissionSettingDialog(this.jdField_a_of_type_AndroidAppActivity, alud.a(2131707823));
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("NewerGuidePlugin", 1, "deniedReadContacts fail.", localException);
+      }
+    }
   }
   
-  public int a(SpecialCareInfo paramSpecialCareInfo1, SpecialCareInfo paramSpecialCareInfo2)
+  @QQPermissionGrant(1)
+  public void grandReadContacts()
   {
-    return ContactSorter.a(a(paramSpecialCareInfo1), a(paramSpecialCareInfo2));
+    if (QLog.isColorLevel()) {
+      QLog.d("NewerGuidePlugin", 2, "grandReadContacts");
+    }
+    try
+    {
+      NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, this.jdField_a_of_type_OrgJsonJSONObject);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("NewerGuidePlugin", 1, "grandReadContacts fail.", localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zef
  * JD-Core Version:    0.7.0.1
  */

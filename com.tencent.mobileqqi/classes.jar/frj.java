@@ -1,56 +1,33 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.service.profile.ProfileUtil;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.RecentFileAdapter.ItemHolder;
+import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
 
-public final class frj
-  extends Thread
+class frj
+  implements View.OnClickListener
 {
-  public frj(QQAppInterface paramQQAppInterface) {}
+  frj(fri paramfri, View paramView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Card localCard = ProfileCardUtil.a(this.a, this.a.a());
-    if (localCard != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("SPLASH_ConfigServlet_birth", 2, "card!=null");
-      }
-      j = (int)localCard.lBirthday;
-      i = ProfileUtil.c(j);
-      j = ProfileUtil.d(j);
-      SharedPreUtils.b(this.a.a(), ConfigServlet.a(i, j));
-      i = ConfigServlet.a(new SimpleDateFormat("MM-dd").format(new Date()), ConfigServlet.a(i, j));
-      if ((i >= 0) && (i <= 3))
-      {
-        ConfigServlet.a(this.a, 3);
-        if (QLog.isColorLevel()) {
-          QLog.i("SPLASH_ConfigServlet_birth", 2, "birthday coming soon,date diff is " + i);
-        }
-      }
+    if ((FMRecentFileActivity.a(this.jdField_a_of_type_Fri.a) != null) && (FMRecentFileActivity.a(this.jdField_a_of_type_Fri.a).isShowing())) {
+      FMRecentFileActivity.a(this.jdField_a_of_type_Fri.a).dismiss();
     }
-    while (!QLog.isColorLevel())
-    {
-      int j;
-      int i;
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.i("SPLASH_ConfigServlet_birth", 2, "not birthday date diff is " + i);
-      return;
+    paramView = ((RecentFileAdapter.ItemHolder)this.jdField_a_of_type_AndroidViewView.getTag()).a;
+    if (this.jdField_a_of_type_Fri.a.b.a().b(paramView.nSessionId)) {
+      this.jdField_a_of_type_Fri.a.a.setVisible();
     }
-    QLog.i("SPLASH_ConfigServlet_birth", 2, "card===null");
+    FMRecentFileActivity.a(this.jdField_a_of_type_Fri.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     frj
  * JD-Core Version:    0.7.0.1
  */

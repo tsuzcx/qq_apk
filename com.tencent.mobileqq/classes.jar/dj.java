@@ -1,29 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.dataline.util.PrinterSessionAdapter;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.PrinterHandler;
-import com.tencent.mobileqq.data.PrinterItemMsgRecord;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.dataline.mpfile.MpfileTaskInfo;
 
-class dj
-  implements DialogInterface.OnClickListener
+public final class dj
+  implements Parcelable.Creator<MpfileTaskInfo>
 {
-  dj(di paramdi) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public MpfileTaskInfo a(Parcel paramParcel)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataPrinterItemMsgRecord.status < 10) {
-      this.a.jdField_a_of_type_ComDatalineUtilPrinterSessionAdapter.a.a(0, this.a.jdField_a_of_type_ComTencentMobileqqDataPrinterItemMsgRecord.uSessionID, true);
-    }
-    this.a.jdField_a_of_type_ComDatalineUtilPrinterSessionAdapter.a.a.a(this.a.jdField_a_of_type_ComTencentMobileqqDataPrinterItemMsgRecord);
-    this.a.jdField_a_of_type_ComDatalineUtilPrinterSessionAdapter.b();
-    this.a.jdField_a_of_type_ComDatalineUtilPrinterSessionAdapter.notifyDataSetChanged();
-    paramDialogInterface.dismiss();
+    MpfileTaskInfo localMpfileTaskInfo = new MpfileTaskInfo();
+    localMpfileTaskInfo.jdField_f_of_type_Int = paramParcel.readInt();
+    localMpfileTaskInfo.jdField_g_of_type_Int = paramParcel.readInt();
+    localMpfileTaskInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.jdField_g_of_type_JavaLangString = paramParcel.readString();
+    localMpfileTaskInfo.h = paramParcel.readString();
+    localMpfileTaskInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localMpfileTaskInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localMpfileTaskInfo.jdField_c_of_type_Long = paramParcel.readLong();
+    localMpfileTaskInfo.jdField_d_of_type_Long = paramParcel.readLong();
+    localMpfileTaskInfo.jdField_e_of_type_Long = paramParcel.readLong();
+    localMpfileTaskInfo.jdField_f_of_type_Long = paramParcel.readLong();
+    localMpfileTaskInfo.jdField_g_of_type_Long = paramParcel.readLong();
+    return localMpfileTaskInfo;
+  }
+  
+  public MpfileTaskInfo[] a(int paramInt)
+  {
+    return new MpfileTaskInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dj
  * JD-Core Version:    0.7.0.1
  */

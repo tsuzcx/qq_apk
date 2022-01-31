@@ -1,46 +1,22 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.ImageUtil;
-import com.tencent.mobileqq.jsp.QQApiPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
 public class adwn
-  implements Runnable
+  implements View.OnClickListener
 {
-  public adwn(QQApiPlugin paramQQApiPlugin, String paramString1, String paramString2, String paramString3, ApplicationInfo paramApplicationInfo, Activity paramActivity) {}
+  public adwn(SelectedAndSearchBar paramSelectedAndSearchBar, View.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQApi", 2, "shareMsgToSina download image:" + this.jdField_a_of_type_JavaLangString);
-    }
-    String str = ImageUtil.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQApi", 2, "shareMsgToSina path:" + str);
-    }
-    Intent localIntent = new Intent("android.intent.action.SEND");
-    localIntent.setFlags(268435456);
-    localIntent.setType("image/*");
-    localIntent.putExtra("android.intent.extra.TEXT", this.b + this.c);
-    if (!TextUtils.isEmpty(str)) {
-      localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(str)));
-    }
-    localIntent.setPackage(this.jdField_a_of_type_AndroidContentPmApplicationInfo.packageName);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adwo(this));
-    if (QLog.isColorLevel()) {
-      QLog.d("QQApi", 2, "shareMsgToSina start weibo!");
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adwn
  * JD-Core Version:    0.7.0.1
  */

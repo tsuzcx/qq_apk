@@ -1,15 +1,50 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
 
-public class anfl
-  implements Runnable
+public abstract class anfl
+  implements anfw
 {
-  public anfl(TroopHomeworkHelper.UploadFileTask paramUploadFileTask) {}
+  public int a;
+  protected Context a;
+  protected AppInterface a;
+  protected int b;
   
-  public void run()
+  public anfl()
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), "上传的语音、图片、视频数量达到了今日上限。", 0).a();
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  public void a(Context paramContext, AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void g()
+  {
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void h()
+  {
+    this.jdField_a_of_type_Int = 3;
+  }
+  
+  public void i() {}
+  
+  public void j()
+  {
+    this.jdField_a_of_type_Int = 5;
   }
 }
 

@@ -1,17 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
 
 public class aejd
-  implements DialogInterface.OnClickListener
+  extends altm
 {
-  public aejd(AIOShareActionSheet paramAIOShareActionSheet) {}
+  public aejd(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    paramDialogInterface.dismiss();
-    ReportController.b(this.a.a, "CliOper", "", "", AIOShareActionSheet.b, AIOShareActionSheet.b, 0, 0, "", "", "", "");
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a.a(paramString) != null)) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    {
+      paramString = this.a.a.a(paramString);
+      if (paramString != null) {
+        break label28;
+      }
+    }
+    label28:
+    Friends localFriends;
+    do
+    {
+      return;
+      localFriends = ((alto)this.a.app.getManager(51)).e(paramString.a);
+    } while (localFriends == null);
+    this.a.a(paramString, localFriends);
   }
 }
 

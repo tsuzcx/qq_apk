@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0xb3$PushAddFrdNotify
-  extends MessageMicro
+  extends MessageMicro<PushAddFrdNotify>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_fuin_nick = PBField.initBytes(ByteStringMicro.EMPTY);

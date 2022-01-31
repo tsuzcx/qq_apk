@@ -1,35 +1,38 @@
-import android.app.Activity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.fragment.SelectMemberContactSearchFragment;
-import com.tencent.mobileqq.search.util.SearchUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class ahtq
-  implements View.OnTouchListener
 {
-  public ahtq(SelectMemberContactSearchFragment paramSelectMemberContactSearchFragment) {}
+  public PublicAccountInfo a;
+  public String a;
+  public String b = "";
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ahtq(PublicAccountInfo paramPublicAccountInfo)
   {
-    if ((!SearchUtils.a(SelectMemberContactSearchFragment.a(this.a))) && (!SelectMemberContactSearchFragment.a(this.a)) && (paramMotionEvent.getAction() == 1))
-    {
-      paramView = this.a.getActivity();
-      if (paramView != null) {
-        paramView.finish();
-      }
-      return false;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    this.jdField_a_of_type_JavaLangString = str;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.b = str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahtq
  * JD-Core Version:    0.7.0.1
  */

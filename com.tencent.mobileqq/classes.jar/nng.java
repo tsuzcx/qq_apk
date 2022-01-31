@@ -1,24 +1,25 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibilityDialog;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public class nng
-  implements ViewPager.OnPageChangeListener
+class nng
+  implements DialogInterface.OnCancelListener
 {
-  public nng(MyVideoVisibilityDialog paramMyVideoVisibilityDialog) {}
+  nng(nmx paramnmx, JsResult paramJsResult, Context paramContext) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.a.setSelectedTab(paramInt, true);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    if (this.jdField_a_of_type_Nmx.a > 2) {
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nng
  * JD-Core Version:    0.7.0.1
  */

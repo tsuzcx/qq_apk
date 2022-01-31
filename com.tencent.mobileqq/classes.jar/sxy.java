@@ -1,37 +1,44 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.BiuObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
 import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 public class sxy
-  extends CardObserver
+  extends oxe
 {
-  public sxy(Leba paramLeba) {}
+  final int jdField_a_of_type_Int;
+  final String jdField_a_of_type_JavaLangString;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public sxy(sxe paramsxe, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba", 2, String.format(Locale.getDefault(), "onGetCampusLebaSwitch isSuc: %b cur: %b pre: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
-    }
-    if ((paramBoolean1) && (paramBoolean2 != paramBoolean3)) {
-      this.a.a.sendEmptyMessage(11340002);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public void a(long paramLong, int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba", 2, String.format(Locale.getDefault(), "onGetWholePeopleVoteLebaSwitch isSuc: %b cur: %b pre: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
+    super.a(paramLong, paramInt, paramString);
+    QLog.d("PublicAccountH5AbilityPlugin", 2, "[onBiuResult] " + paramLong + " " + paramInt + " errorMsg");
+    try
+    {
+      paramString = new JSONObject();
+      paramString.put("feedsId", String.valueOf(paramLong));
+      paramString.put("retCode", paramInt);
+      paramString.put("feedsType", this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Sxe.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      ThreadManager.getUIHandler().post(new PublicAccountH5AbilityPlugin.BiuObserver.1(this));
+      return;
     }
-    if ((paramBoolean1) && (paramBoolean2 != paramBoolean3)) {
-      this.a.a.sendEmptyMessage(11340002);
+    catch (Exception paramString)
+    {
+      QLog.e("PublicAccountH5AbilityPlugin", 1, "[onBiuResult] ", paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sxy
  * JD-Core Version:    0.7.0.1
  */

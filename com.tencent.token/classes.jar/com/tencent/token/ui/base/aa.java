@@ -1,21 +1,18 @@
 package com.tencent.token.ui.base;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 
-final class aa
-  implements View.OnClickListener
+public class aa
 {
-  aa(ErrorView paramErrorView) {}
+  private static final Handler a = new ac(null);
   
-  public final void onClick(View paramView)
+  public static void a(Runnable paramRunnable)
   {
-    if (ErrorView.a(this.a) != null)
-    {
-      paramView.setTag(this.a.getTag());
-      ErrorView.a(this.a).onClick(paramView);
-    }
-    this.a.setVisibility(8);
+    Message localMessage = new Message();
+    localMessage.what = 1000;
+    localMessage.obj = paramRunnable;
+    a.sendMessageDelayed(localMessage, 16L);
   }
 }
 

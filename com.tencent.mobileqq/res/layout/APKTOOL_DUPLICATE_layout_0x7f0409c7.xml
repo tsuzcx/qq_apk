@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="18.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bc3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="豆豆宝贝" android:maxLines="1" />
-    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bc4" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021a7e" android:paddingTop="22.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2岁10个月" android:maxLines="1" />
-</LinearLayout>

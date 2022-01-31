@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/cdd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" />
+    <com.tencent.ad.tangram.views.canvas.components.fixedbutton.GdtCanvasFixedButtonComponentView android:id="@id/csb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.ad.tangram.views.canvas.components.fixedbutton.GdtCanvasFixedButtonComponentView android:id="@id/cs3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:elevation="10.0dip" android:stateListAnimator="@null" android:outlineProvider="bounds" />
+    <FrameLayout android:gravity="center" android:id="@id/lc8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/cdd" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_alignParentTop="true">
+        <ImageView android:id="@id/fir" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/close" android:clickable="true" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_alignParentLeft="true">
+            <ImageView android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip" android:src="@drawable/cns" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/ljm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+</RelativeLayout>

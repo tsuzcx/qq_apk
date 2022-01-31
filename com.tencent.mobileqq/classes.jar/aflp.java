@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.MomentDataChangeObserver;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceText;
 
-public class aflp
-  implements Runnable
+class aflp
+  implements DialogInterface.OnClickListener
 {
-  public aflp(NearbyMomentManager paramNearbyMomentManager, String paramString) {}
+  aflp(aflo paramaflo, MessageForDeviceText paramMessageForDeviceText) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Iterator localIterator = NearbyMomentManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager).iterator();
-    while (localIterator.hasNext()) {
-      ((NearbyMomentManager.MomentDataChangeObserver)localIterator.next()).b(this.jdField_a_of_type_JavaLangString);
-    }
+    ((zxz)this.jdField_a_of_type_Aflo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a(this.jdField_a_of_type_Aflo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aflo.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aflo.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceText);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aflp
  * JD-Core Version:    0.7.0.1
  */

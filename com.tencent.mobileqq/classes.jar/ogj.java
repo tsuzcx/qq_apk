@@ -1,36 +1,40 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoPoiSearch;
-import com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import com.tencent.util.InputMethodUtil;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ogj
-  implements AbsListView.OnScrollListener
+  implements rjw
 {
-  int jdField_a_of_type_Int = 0;
+  private WeakReference<ReadInJoyArticleBottomVideoView> a;
   
-  public ogj(EditVideoPoiSearch paramEditVideoPoiSearch) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public ogj(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView)
   {
-    if (paramInt == 1) {
-      InputMethodUtil.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a().a());
-    }
-    while ((paramInt != 0) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a.size())) {
-      return;
-    }
-    EditVideoPoiSearch.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch);
+    this.a = new WeakReference(paramReadInJoyArticleBottomVideoView);
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public List<rjx> a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+    ReadInJoyArticleBottomVideoView localReadInJoyArticleBottomVideoView = (ReadInJoyArticleBottomVideoView)this.a.get();
+    ArrayList localArrayList = new ArrayList();
+    if (localReadInJoyArticleBottomVideoView != null) {
+      localArrayList.add(new rjx(ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView).d, "", 5, (int)ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView).a));
+    }
+    return localArrayList;
+  }
+  
+  public boolean a()
+  {
+    ReadInJoyArticleBottomVideoView localReadInJoyArticleBottomVideoView = (ReadInJoyArticleBottomVideoView)this.a.get();
+    if (localReadInJoyArticleBottomVideoView == null) {
+      return false;
+    }
+    return bdin.h(ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ogj
  * JD-Core Version:    0.7.0.1
  */

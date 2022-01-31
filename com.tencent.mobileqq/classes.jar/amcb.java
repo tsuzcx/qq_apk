@@ -1,51 +1,68 @@
-import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.widget.HorizontalListView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.SVIPHandler.1;
+import com.tencent.mobileqq.bubble.BubbleDiyEntity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class amcb
-  extends amci
-  implements Runnable
+  implements alpg
 {
-  private amcb(HorizontalListView paramHorizontalListView)
-  {
-    super(paramHorizontalListView, null);
-  }
+  public amcb(SVIPHandler.1 param1, anwm paramanwm) {}
   
-  public void run()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (this.a.c()) {
-      bool1 = ((View)this.a.getParent()).performLongClick();
-    }
-    while (bool1)
+    try
     {
-      this.a.p = -1;
-      HorizontalListView.a(this.a);
-      return;
-      int i = HorizontalListView.b(this.a);
-      View localView = this.a.getChildAt(i - this.a.getFirstVisiblePosition());
-      bool1 = bool2;
-      if (localView != null)
+      String str1 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler$1.this$0.b());
+      if ((paramObject instanceof List))
       {
-        i = HorizontalListView.b(this.a);
-        long l = this.a.a.getItemId(HorizontalListView.b(this.a));
-        bool1 = bool2;
-        if (a())
+        paramObject = (List)paramObject;
+        if (paramObject.size() > 0)
         {
-          bool1 = bool2;
-          if (!this.a.b) {
-            bool1 = this.a.a(localView, i, l);
+          paramObject = paramObject.iterator();
+          while (paramObject.hasNext())
+          {
+            Object localObject = (BubbleDiyEntity)paramObject.next();
+            String str2;
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topLeftId))
+            {
+              str2 = "BubbleDiyFetcher_" + str1 + "_TL_" + ((BubbleDiyEntity)localObject).topLeftId;
+              this.jdField_a_of_type_Anwm.b.add(str2);
+            }
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topRightId))
+            {
+              str2 = "BubbleDiyFetcher_" + str1 + "_TR_" + ((BubbleDiyEntity)localObject).topRightId;
+              this.jdField_a_of_type_Anwm.b.add(str2);
+            }
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomRightId))
+            {
+              str2 = "BubbleDiyFetcher_" + str1 + "_BR_" + ((BubbleDiyEntity)localObject).bottomRightId;
+              this.jdField_a_of_type_Anwm.b.add(str2);
+            }
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomLeftId))
+            {
+              localObject = "BubbleDiyFetcher_" + str1 + "_BL_" + ((BubbleDiyEntity)localObject).bottomLeftId;
+              this.jdField_a_of_type_Anwm.b.add(localObject);
+            }
           }
         }
       }
+      return;
     }
-    this.a.p = 2;
+    catch (Exception paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SVIPHandler", 2, paramObject.getMessage());
+      }
+    }
+    this.jdField_a_of_type_Anwm.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amcb
  * JD-Core Version:    0.7.0.1
  */

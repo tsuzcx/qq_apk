@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.filemanager.activity.recentfile;
 
-import actg;
-import acth;
 import android.content.Context;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
+import aqni;
+import aqqv;
+import aqqx;
+import arsq;
+import arsu;
+import arth;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
-import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,40 +19,40 @@ import java.util.List;
 public class QfileRecentAppFileTabView
   extends QfileBaseRecentFileTabView
 {
-  private IClickListener_Ver51 a;
+  private arsq a;
   
   public QfileRecentAppFileTabView(Context paramContext)
   {
     super(paramContext);
-    d();
+    f();
     setEditbarButton(false, true, true, true, true);
   }
   
   public QfileRecentAppFileTabView(Context paramContext, String paramString)
   {
     super(paramContext, paramString);
-    d();
+    f();
     setEditbarButton(false, true, true, true, true);
   }
   
-  private void g()
+  private void k()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.c()) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a().I();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.c()) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().I();
     }
-    while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 != null)
+    while (this.jdField_a_of_type_Arsq != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Arsq);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a().N();
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().N();
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = new actg(this);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51);
+    this.jdField_a_of_type_Arsq = new aqqv(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Arsq);
   }
   
-  protected QfileBaseExpandableListAdapter a()
+  protected aqni a()
   {
-    return new QfileRecentFileBaseExpandableListAdapter(a(), this.jdField_a_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.c);
+    return new aqqx(a(), this.jdField_a_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.c);
   }
   
   protected void a()
@@ -64,7 +64,7 @@ public class QfileRecentAppFileTabView
       FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
       if ((!localFileManagerEntity.bDelInFM) && (localFileManagerEntity.nFileType == 5))
       {
-        String str = QfileTimeUtils.b(localFileManagerEntity.srvTime);
+        String str = arth.a(localFileManagerEntity.srvTime);
         if (!this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
           this.jdField_a_of_type_JavaUtilLinkedHashMap.put(str, new ArrayList());
         }
@@ -88,12 +88,12 @@ public class QfileRecentAppFileTabView
       this.jdField_a_of_type_JavaUtilList.add(paramFileManagerEntity);
       Collections.sort(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilComparator);
     }
-    a(new acth(this, paramFileManagerEntity));
+    a(new QfileRecentAppFileTabView.2(this, paramFileManagerEntity));
   }
   
   protected boolean b(FileManagerEntity paramFileManagerEntity)
   {
-    Object localObject = QfileTimeUtils.b(paramFileManagerEntity.srvTime);
+    Object localObject = arth.a(paramFileManagerEntity.srvTime);
     if (!this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(localObject))
     {
       QLog.e(jdField_a_of_type_JavaLangString, 1, "delRecentFileRecords, fileEntities find, but recentRecords not find!");
@@ -112,7 +112,7 @@ public class QfileRecentAppFileTabView
     }
   }
   
-  public void c(ArrayList paramArrayList)
+  public void c(ArrayList<FileManagerEntity> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0)) {}
     for (;;)
@@ -129,12 +129,12 @@ public class QfileRecentAppFileTabView
   {
     super.j();
     setEditbarButton(false, true, true, true, true);
-    g();
+    k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAppFileTabView
  * JD-Core Version:    0.7.0.1
  */

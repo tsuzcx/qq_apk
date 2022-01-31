@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class group_activity$GroupAct
-  extends MessageMicro
+  extends MessageMicro<GroupAct>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 50, 58, 66, 72, 80 }, new String[] { "uint32_act_id", "string_title", "string_des", "string_url", "uint32_jumptype", "string_jumpparam", "string_iconurl", "string_btntext", "uint32_start_time", "uint32_end_time" }, new Object[] { Integer.valueOf(0), "", "", "", Integer.valueOf(0), "", "", "", Integer.valueOf(0), Integer.valueOf(0) }, GroupAct.class);
   public final PBStringField string_btntext = PBField.initString("");
@@ -23,7 +23,7 @@ public final class group_activity$GroupAct
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.qun.group_activity.group_activity.GroupAct
  * JD-Core Version:    0.7.0.1
  */

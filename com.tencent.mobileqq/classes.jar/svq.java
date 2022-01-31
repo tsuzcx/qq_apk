@@ -1,35 +1,16 @@
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.qphone.base.util.QLog;
-
-public class svq
-  extends FriendListObserver
+class svq
+  implements syx
 {
-  public svq(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  svq(svp paramsvp, int paramInt1, int paramInt2) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void a(boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
-      paramString = ((FriendsManager)this.a.app.getManager(50)).c(this.a.a + "");
-      if (paramString != null)
-      {
-        this.a.e = paramString.name;
-        JoinDiscussionActivity.a(this.a);
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("IphoneTitleBarActivity", 2, "get owner name failed");
+    svl.a(this.jdField_a_of_type_Svp.a, this.jdField_a_of_type_Int, this.b, false, Boolean.valueOf(paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     svq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,25 @@
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.VideoControlUI;
 
-class mmd
-  implements Runnable
+public class mmd
+  implements View.OnTouchListener
 {
-  mmd(mmc parammmc) {}
+  public mmd(VideoControlUI paramVideoControlUI) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    FastWebActivity.a(this.a.a).notifyDataSetChanged();
+    if (this.a.a != null) {
+      return this.a.a.onTouchEvent(paramMotionEvent);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mmd
  * JD-Core Version:    0.7.0.1
  */

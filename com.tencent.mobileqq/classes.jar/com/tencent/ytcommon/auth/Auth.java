@@ -2,184 +2,192 @@ package com.tencent.ytcommon.auth;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import android.os.Looper;
+import android.os.Build.VERSION;
+import android.util.Log;
 import java.io.File;
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.LineNumberReader;
 
 public class Auth
 {
-  private static final String DAT_SUFFIX = "SDK.dat";
-  private static final String LICENCE_SUFFIX = "SDK.licence";
-  private static final String SDK_NAME = "YoutuFaceTrack";
-  private static final String SDK_PREFIX = "YT";
-  private static final String TAG = "log_print_java";
+  private static final String LIC_FILE_NAME = ".youtu_common.lic";
+  private static final String TAG = "youtu-common";
   private static long handle = 0L;
-  private static boolean isReportStarted = false;
-  private static String licenceStr = "";
-  private static HttpUtil.HttpResponseListener mListener = new HttpUtil.HttpResponseListener()
-  {
-    public void onFail(int paramAnonymousInt)
-    {
-      try
-      {
-        Log.d("log_print_java", "http request error : " + paramAnonymousInt);
-        Log.d("log_print_java", "handle: " + Auth.handle);
-        Auth.nativeUpdateFromServer(Auth.handle, null);
-        return;
-      }
-      catch (Exception localException) {}
-    }
-    
-    public void onSuccess(String paramAnonymousString)
-    {
-      try
-      {
-        Log.d("log_print_java", "response: " + paramAnonymousString);
-        Log.d("log_print_java", "handle: " + Auth.handle);
-        Auth.nativeUpdateFromServer(Auth.handle, paramAnonymousString);
-        return;
-      }
-      catch (Exception paramAnonymousString) {}
-    }
-  };
-  private static Timer timerFlush;
-  private static Timer timerReport;
-  private long nativePtr;
+  private static String licensePath = "";
   
   public static boolean check()
   {
     boolean bool = nativeCheck(handle);
-    android.util.Log.d("sdk", "--------------check");
+    Log.d("sdk", "--------------check");
     return bool;
   }
+  
+  public static int getAuthResult()
+  {
+    if (handle != 0L) {
+      return getCurrentAuthStatus(handle);
+    }
+    Log.w("sdk", "you should call YTCommonInterface.initAuth() first");
+    return -1;
+  }
+  
+  private static native int getCurrentAuthStatus(long paramLong);
+  
+  public static long getEndTime()
+  {
+    return nativeGetEndTime(handle);
+  }
+  
+  public static native String getFailedReason(int paramInt);
   
   public static long getHandle()
   {
     return handle;
   }
   
-  private static native int getIsNeedReport(long paramLong);
-  
-  private static native String getReportContent();
-  
-  public static void init(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
+  public static String getLicensePath()
   {
-    Log.d("log_print_java", "start init");
-    String str = paramContext.getFilesDir().getPath() + "/" + "YT" + "YoutuFaceTrack" + "SDK.dat";
-    Log.d("log_print_java", "path: " + str);
-    handle = nativeInitN(paramContext, paramInt, paramString, paramContext.getAssets(), str);
-    Log.d("log_print_java", "handleinit: " + handle);
-    if (getIsNeedReport(handle) == 0)
-    {
-      Log.d("log_print_java", "no need to report");
-      return;
-    }
-    Log.d("log_print_java", "need report");
-    startTimer();
+    return licensePath;
   }
   
-  private static boolean isInMainThread()
+  private static String getSerial()
   {
-    return Looper.myLooper() == Looper.getMainLooper();
+    String str2 = "";
+    try
+    {
+      LineNumberReader localLineNumberReader = new LineNumberReader(new InputStreamReader(Runtime.getRuntime().exec("cat /proc/cpuinfo").getInputStream()));
+      int i = 1;
+      for (;;)
+      {
+        String str1 = str2;
+        if (i < 100)
+        {
+          String str3 = localLineNumberReader.readLine();
+          str1 = str2;
+          if (str3 != null)
+          {
+            if (str3.indexOf("Serial") <= -1) {
+              break label88;
+            }
+            str1 = str3.substring(str3.indexOf(":") + 1, str3.length()).trim();
+          }
+        }
+        return str1;
+        label88:
+        i += 1;
+      }
+      return "";
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+    }
+  }
+  
+  public static int getVersion()
+  {
+    return nativeGetVersion();
+  }
+  
+  public static int init(Context paramContext, String paramString, int paramInt)
+  {
+    boolean bool1 = false;
+    YTLog.d("youtu-common", "start init");
+    if ((Build.VERSION.SDK_INT >= 23) && (paramContext.checkSelfPermission("android.permission.READ_PHONE_STATE") != 0)) {}
+    for (;;)
+    {
+      if (paramInt == 0) {}
+      for (;;)
+      {
+        try
+        {
+          InputStream localInputStream = paramContext.getAssets().open(paramString, 0);
+          if (localInputStream == null) {
+            return -10;
+          }
+          localInputStream.close();
+          handle = nativeInitN(paramContext, paramInt, paramString, paramContext.getAssets(), paramString, bool1);
+          YTLog.d("youtu-common", "handleinit: " + handle);
+          return getCurrentAuthStatus(handle);
+        }
+        catch (Exception paramContext)
+        {
+          boolean bool2;
+          return -10;
+        }
+        if (paramInt == 2)
+        {
+          bool2 = new File(paramString).exists();
+          if (!bool2) {
+            return -10;
+          }
+        }
+      }
+      bool1 = true;
+    }
+  }
+  
+  public static int init(Context paramContext, String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    if (licensePath.isEmpty())
+    {
+      licensePath = paramContext.getFilesDir().getPath() + File.separator + ".youtu_common.lic";
+      if ((Build.VERSION.SDK_INT < 23) || (paramContext.checkSelfPermission("android.permission.READ_PHONE_STATE") == 0)) {
+        break label207;
+      }
+    }
+    label200:
+    label207:
+    for (boolean bool = false;; bool = true)
+    {
+      int i = (int)nativeGetLicense(paramContext, paramString1, paramString2, getLicensePath(), paramInt, bool, paramString3);
+      paramInt = i;
+      if (i == 0)
+      {
+        handle = nativeInitN(paramContext, 2, getLicensePath(), paramContext.getAssets(), getLicensePath(), bool);
+        if (getCurrentAuthStatus(handle) == 0) {
+          break label200;
+        }
+        i = (int)nativeGetLicense(paramContext, paramString1, paramString2, getLicensePath(), 1, bool, paramString3);
+        paramInt = i;
+        if (i == 0)
+        {
+          handle = nativeInitN(paramContext, 2, getLicensePath(), paramContext.getAssets(), getLicensePath(), bool);
+          paramInt = getCurrentAuthStatus(handle);
+        }
+      }
+      return paramInt;
+      if ((Build.VERSION.SDK_INT < 23) || (paramContext.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0)) {
+        break;
+      }
+      Log.e("youtu-common", "WRITE_EXTERNAL_STORAGE permission required.");
+      return 2004;
+      return getCurrentAuthStatus(handle);
+    }
   }
   
   private static native boolean nativeCheck(long paramLong);
   
-  private static native long nativeFlush();
+  private static native long nativeGetEndTime(long paramLong);
   
-  private static native long nativeInitN(Context paramContext, int paramInt, String paramString1, AssetManager paramAssetManager, String paramString2);
+  private static native long nativeGetLicense(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, boolean paramBoolean, String paramString4);
   
-  private static native int nativePreInitAndCheck(byte[] paramArrayOfByte, int paramInt, String paramString1, String paramString2, String paramString3);
+  private static native int nativeGetVersion();
   
-  private static native long nativeUpdateFromServer(long paramLong, String paramString);
+  private static native long nativeInitN(Context paramContext, int paramInt, String paramString1, AssetManager paramAssetManager, String paramString2, boolean paramBoolean);
   
-  public static int preCheckAndInitWithLicenceStr(Context paramContext, String paramString)
+  private static native int nativeSetSerial(String paramString);
+  
+  public static void setLicensePath(String paramString)
   {
-    licenceStr = paramString;
-    try
-    {
-      paramString = paramString.getBytes();
-      i = paramString.length;
-      if (i <= 0) {
-        throw new IOException("licence error");
-      }
-    }
-    catch (IOException paramContext)
-    {
-      paramContext.printStackTrace();
-      return -1;
-    }
-    String str1 = paramContext.getFilesDir().getPath() + "/" + "YT" + "YoutuFaceTrack" + "SDK.dat";
-    String str2 = paramContext.getPackageName();
-    paramContext = StatisticsUtils.getDeviceUid(paramContext);
-    Log.d("log_print_java", "Package name: " + str2);
-    Log.d("log_print_java", "Device id: " + paramContext);
-    int i = nativePreInitAndCheck(paramString, i, str2, paramContext, str1);
-    return i;
-  }
-  
-  public static void report(String paramString)
-  {
-    if (isInMainThread())
-    {
-      new Thread(new Runnable()
-      {
-        public void run()
-        {
-          try
-          {
-            HttpUtil.post("https://api.youtu.qq.com/auth/report", this.val$data, Auth.mListener);
-            return;
-          }
-          catch (IOException localIOException) {}
-        }
-      }).start();
-      return;
-    }
-    try
-    {
-      HttpUtil.post("https://api.youtu.qq.com/auth/report", paramString, mListener);
-      return;
-    }
-    catch (IOException paramString) {}
-  }
-  
-  private static void startTimer()
-  {
-    Log.d("log_print_java", "start timer");
-    if (isReportStarted) {
-      return;
-    }
-    Object localObject = new TimerTask()
-    {
-      public void run()
-      {
-        String str = Auth.access$000();
-        if (str != "") {
-          Auth.report(str);
-        }
-      }
-    };
-    timerReport = new Timer(true);
-    timerReport.schedule((TimerTask)localObject, 600000L, 600000L);
-    localObject = new TimerTask()
-    {
-      public void run()
-      {
-        Log.d("log_print_java", "flush in java ");
-        Auth.access$100();
-      }
-    };
-    timerFlush = new Timer(true);
-    timerFlush.schedule((TimerTask)localObject, 600000L, 600000L);
-    isReportStarted = true;
+    licensePath = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ytcommon.auth.Auth
  * JD-Core Version:    0.7.0.1
  */

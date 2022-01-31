@@ -1,21 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class tfn
-  implements DialogInterface.OnCancelListener
+  implements View.OnTouchListener
 {
-  tfn(tfl paramtfl) {}
+  tfn(tfk paramtfk) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a.setResult(4003);
-    this.a.a.finish();
+    tfk.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tfn
  * JD-Core Version:    0.7.0.1
  */

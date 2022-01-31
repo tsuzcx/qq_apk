@@ -1,35 +1,17 @@
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class akdy
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public akdy(QQCustomDialog paramQQCustomDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  public akdy(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    QQCustomDialog localQQCustomDialog;
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
-    {
-      paramCompoundButton = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-      localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-      if (!paramBoolean) {
-        break label34;
-      }
-    }
-    label34:
-    for (int i = 1;; i = 0)
-    {
-      paramCompoundButton.onClick(localQQCustomDialog, i);
-      return;
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akdy
  * JD-Core Version:    0.7.0.1
  */

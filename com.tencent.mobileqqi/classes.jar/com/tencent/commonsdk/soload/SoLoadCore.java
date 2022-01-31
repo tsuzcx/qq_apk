@@ -88,13 +88,13 @@ public class SoLoadCore
     //   3: aconst_null
     //   4: astore 4
     //   6: aconst_null
-    //   7: astore 5
+    //   7: astore 12
     //   9: aconst_null
     //   10: astore 10
     //   12: aconst_null
     //   13: astore 9
     //   15: aconst_null
-    //   16: astore 12
+    //   16: astore 5
     //   18: aconst_null
     //   19: astore 11
     //   21: aload_0
@@ -122,17 +122,17 @@ public class SoLoadCore
     //   65: aload_1
     //   66: invokevirtual 100	java/util/zip/ZipFile:close	()V
     //   69: return
-    //   70: aload 12
+    //   70: aload 5
     //   72: astore 6
-    //   74: aload 5
+    //   74: aload 12
     //   76: astore 7
     //   78: aload_1
     //   79: aload_0
     //   80: invokevirtual 104	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   83: astore_0
-    //   84: aload 12
+    //   84: aload 5
     //   86: astore 6
-    //   88: aload 5
+    //   88: aload 12
     //   90: astore 7
     //   92: aload_0
     //   93: astore 4
@@ -291,7 +291,7 @@ public class SoLoadCore
     //   138	11	3	i	int
     //   4	331	4	localObject1	Object
     //   357	6	4	localIOException1	IOException
-    //   7	320	5	localObject2	Object
+    //   16	311	5	localObject2	Object
     //   346	14	5	localIOException2	IOException
     //   364	1	5	localIOException3	IOException
     //   72	15	6	localObject3	Object
@@ -303,7 +303,7 @@ public class SoLoadCore
     //   13	195	9	localFile	File
     //   10	303	10	localObject7	Object
     //   19	330	11	localObject8	Object
-    //   16	69	12	localObject9	Object
+    //   7	82	12	localObject9	Object
     // Exception table:
     //   from	to	target	type
     //   131	139	155	java/io/IOException
@@ -683,7 +683,7 @@ public class SoLoadCore
           } while (localLong == null);
           l = localLong.longValue();
         } while (l <= 0L);
-        paramContext = paramContext.getFilesDir() + "/" + "soconfigs";
+        paramContext = paramContext.getFilesDir() + "/soconfigs";
         paramContext = new File(paramContext + "/" + paramString + ".cfg");
       } while ((!paramContext.exists()) || (!paramContext.isFile()));
       paramContext = readConfig(paramContext);
@@ -1229,7 +1229,7 @@ public class SoLoadCore
         }
       }
     }
-    localObject1 = paramContext.getFilesDir() + "/" + "soconfigs";
+    localObject1 = paramContext.getFilesDir() + "/soconfigs";
     new File((String)localObject1).mkdirs();
     paramString = (String)localObject1 + "/" + paramString + ".cfg";
     j = i | 0x20000;
@@ -1296,7 +1296,7 @@ public class SoLoadCore
       j |= 0x40;
       i = j;
       if (paramString == null) {
-        break label729;
+        break label723;
       }
       l2 = getCRC32Value(paramString);
       j |= 0x20;
@@ -1306,7 +1306,7 @@ public class SoLoadCore
       j |= 0x10;
       i = j;
       if (!loadAndSave(paramString, l2, (File)localObject1)) {
-        break label729;
+        break label723;
       }
       return j | 0x2;
       j = i;
@@ -1322,7 +1322,7 @@ public class SoLoadCore
       paramString.delete();
       i = j;
     }
-    label729:
+    label723:
     paramContext = releaseFromApk(getApkPath(paramContext), str1, (String)localObject2);
     l2 = getCRC32Value(paramContext);
     j = i | 0x8;
@@ -1597,9 +1597,10 @@ public class SoLoadCore
     }
     new File((String)localObject1).mkdirs();
     paramString3 = null;
-    Object localObject2 = "lib/" + getPlatformString() + "/";
+    String str = "lib/" + getPlatformString() + "/";
     paramString2 = "lib/" + getPlatformString() + "/" + paramString2;
     MyZipEntry localMyZipEntry;
+    Object localObject2;
     try
     {
       paramString1 = new MyZipFile(new File(paramString1), paramString2);
@@ -1615,25 +1616,29 @@ public class SoLoadCore
         paramString2.printStackTrace();
       }
       localMyZipEntry = paramString1.getDesEntry();
+      localObject2 = localMyZipEntry.getName();
+      if ((localObject2 == null) || (((String)localObject2).contains("../"))) {
+        return null;
+      }
       paramString2 = paramString3;
       if (localMyZipEntry == null) {
-        break label313;
+        break label329;
       }
     }
     paramString2 = paramString3;
     int i;
-    if (localMyZipEntry.getName().contains((CharSequence)localObject2))
+    if (((String)localObject2).contains(str))
     {
       paramString2 = paramString3;
-      if (localMyZipEntry.getName().endsWith(".so"))
+      if (((String)localObject2).endsWith(".so"))
       {
-        paramString3 = localMyZipEntry.getName();
-        i = paramString3.lastIndexOf('/');
-        paramString2 = paramString3;
+        paramString2 = (String)localObject2;
+        i = paramString2.lastIndexOf('/');
+        paramString3 = paramString2;
         if (i != -1) {
-          paramString2 = paramString3.substring(i + 1);
+          paramString3 = paramString2.substring(i + 1);
         }
-        paramString3 = new File((String)localObject1 + paramString2);
+        paramString3 = new File((String)localObject1 + paramString3);
         if (paramString3.exists()) {
           paramString3.delete();
         }
@@ -1661,11 +1666,11 @@ public class SoLoadCore
     }
     catch (IOException paramString1)
     {
-      label307:
-      break label307;
+      label323:
+      break label323;
     }
     paramString2 = paramString3;
-    label313:
+    label329:
     return paramString2;
   }
   
@@ -1683,7 +1688,7 @@ public class SoLoadCore
         l1 = ((Long)assestCrcConfigs.get("armeabi/" + str1)).longValue();
       }
     }
-    paramString = paramContext.getFilesDir() + "/" + "soconfigs";
+    paramString = paramContext.getFilesDir() + "/soconfigs";
     new File(paramString).mkdirs();
     File localFile = new File(paramString + "/" + str1 + ".cfg");
     if ((localFile.exists()) && (localFile.isFile()))
@@ -1779,47 +1784,47 @@ public class SoLoadCore
     //   19: aload_1
     //   20: invokevirtual 428	java/io/File:createNewFile	()Z
     //   23: pop
-    //   24: new 644	java/io/BufferedWriter
+    //   24: new 646	java/io/BufferedWriter
     //   27: dup
-    //   28: new 646	java/io/OutputStreamWriter
+    //   28: new 648	java/io/OutputStreamWriter
     //   31: dup
     //   32: new 108	java/io/FileOutputStream
     //   35: dup
     //   36: aload_1
     //   37: invokespecial 111	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   40: invokespecial 647	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;)V
-    //   43: invokespecial 650	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
+    //   40: invokespecial 649	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;)V
+    //   43: invokespecial 652	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
     //   46: astore_1
     //   47: aload_1
     //   48: new 295	java/lang/StringBuilder
     //   51: dup
     //   52: invokespecial 296	java/lang/StringBuilder:<init>	()V
-    //   55: ldc_w 652
+    //   55: ldc_w 654
     //   58: invokevirtual 300	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   61: aload_0
     //   62: getfield 408	com/tencent/commonsdk/soload/ConfigStruct:mCrcvalue	J
-    //   65: invokevirtual 655	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   65: invokevirtual 657	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   68: invokevirtual 308	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   71: invokevirtual 657	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   71: invokevirtual 659	java/io/BufferedWriter:write	(Ljava/lang/String;)V
     //   74: aload_1
-    //   75: invokevirtual 660	java/io/BufferedWriter:newLine	()V
+    //   75: invokevirtual 662	java/io/BufferedWriter:newLine	()V
     //   78: aload_1
     //   79: new 295	java/lang/StringBuilder
     //   82: dup
     //   83: invokespecial 296	java/lang/StringBuilder:<init>	()V
-    //   86: ldc_w 662
+    //   86: ldc_w 664
     //   89: invokevirtual 300	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   92: aload_0
     //   93: getfield 411	com/tencent/commonsdk/soload/ConfigStruct:mSopath	Ljava/lang/String;
     //   96: invokevirtual 300	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   99: invokevirtual 308	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   102: invokevirtual 657	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   102: invokevirtual 659	java/io/BufferedWriter:write	(Ljava/lang/String;)V
     //   105: iconst_1
     //   106: istore_2
     //   107: aload_1
     //   108: ifnull +68 -> 176
     //   111: aload_1
-    //   112: invokevirtual 663	java/io/BufferedWriter:close	()V
+    //   112: invokevirtual 665	java/io/BufferedWriter:close	()V
     //   115: iload_2
     //   116: ireturn
     //   117: astore_0
@@ -1833,7 +1838,7 @@ public class SoLoadCore
     //   128: aload_0
     //   129: ifnull -14 -> 115
     //   132: aload_0
-    //   133: invokevirtual 663	java/io/BufferedWriter:close	()V
+    //   133: invokevirtual 665	java/io/BufferedWriter:close	()V
     //   136: iconst_0
     //   137: ireturn
     //   138: astore_0
@@ -1847,7 +1852,7 @@ public class SoLoadCore
     //   148: aload_1
     //   149: ifnull +7 -> 156
     //   152: aload_1
-    //   153: invokevirtual 663	java/io/BufferedWriter:close	()V
+    //   153: invokevirtual 665	java/io/BufferedWriter:close	()V
     //   156: aload_0
     //   157: athrow
     //   158: astore_1

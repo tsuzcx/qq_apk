@@ -1,24 +1,29 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.model.TroopInfoManager;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.IStatusListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class ggz
-  extends Handler
+  implements IStatusListener
 {
-  public ggz(TroopInfoManager paramTroopInfoManager, Looper paramLooper)
+  public ggz(EditActivity paramEditActivity) {}
+  
+  public void a(int paramInt, RichStatus paramRichStatus)
   {
-    super(paramLooper);
+    if (paramInt != 100)
+    {
+      EditActivity.a(this.a, null);
+      EditActivity.a(this.a, null);
+    }
+    EditActivity.b(this.a, true);
   }
   
-  public void handleMessage(Message paramMessage)
-  {
-    TroopInfoManager.c(this.a);
-  }
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     ggz
  * JD-Core Version:    0.7.0.1
  */

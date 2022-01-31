@@ -1,27 +1,77 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import android.view.View.OnClickListener;
+import java.lang.ref.WeakReference;
 
 public class mdg
-  implements Animation.AnimationListener
+  extends mdh
 {
-  public mdg(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  WeakReference<View.OnClickListener> a = null;
+  int f = 0;
+  int g = 0;
+  int h = -1;
+  int i = -1;
+  int j = -1;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public mdg(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, int paramInt5, int paramInt6, View.OnClickListener paramOnClickListener)
   {
-    paramAnimation = (ImageView)this.a.findViewById(2131365588);
-    ImageView localImageView = (ImageView)this.a.findViewById(2131365589);
-    VideoFeedsPlayActivity.a(this.a, localImageView, paramAnimation, 100L, 240L);
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
+    this.f = paramInt5;
+    this.g = paramInt6;
+    if (paramOnClickListener != null) {
+      this.a = new WeakReference(paramOnClickListener);
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public int a()
+  {
+    return 3;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public View.OnClickListener a()
+  {
+    if ((this.a == null) || (this.a.isEnqueued())) {
+      return null;
+    }
+    return (View.OnClickListener)this.a.get();
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener != null)
+    {
+      this.a = new WeakReference(paramOnClickListener);
+      return;
+    }
+    this.a = null;
+  }
+  
+  public int f()
+  {
+    return this.f;
+  }
+  
+  public int g()
+  {
+    return this.g;
+  }
+  
+  public int h()
+  {
+    return this.h;
+  }
+  
+  public int i()
+  {
+    return this.i;
+  }
+  
+  public int j()
+  {
+    return this.j;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mdg
  * JD-Core Version:    0.7.0.1
  */

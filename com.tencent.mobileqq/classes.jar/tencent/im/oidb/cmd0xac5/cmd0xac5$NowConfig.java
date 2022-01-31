@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class cmd0xac5$NowConfig
-  extends MessageMicro
+  extends MessageMicro<NowConfig>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_live_boardcast_gif_url = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,7 +20,7 @@ public final class cmd0xac5$NowConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xac5.cmd0xac5.NowConfig
  * JD-Core Version:    0.7.0.1
  */

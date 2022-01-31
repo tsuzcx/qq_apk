@@ -1,16 +1,24 @@
 package com.tencent.token.ui;
 
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.AlphaAnimation;
 
-final class jg
-  implements View.OnClickListener
+class jg
+  implements Runnable
 {
-  jg(FaceRegCameraActivity paramFaceRegCameraActivity) {}
+  private View b;
   
-  public final void onClick(View paramView)
+  public jg(FaceStartVryCameraActivity paramFaceStartVryCameraActivity, View paramView)
   {
-    this.a.finish();
+    this.b = paramView;
+    FaceStartVryCameraActivity.access$3402(paramFaceStartVryCameraActivity, new AlphaAnimation(1.0F, 0.0F));
+    FaceStartVryCameraActivity.access$3400(paramFaceStartVryCameraActivity).setDuration(500L);
+    FaceStartVryCameraActivity.access$3400(paramFaceStartVryCameraActivity).setAnimationListener(new jh(this, paramFaceStartVryCameraActivity));
+  }
+  
+  public void run()
+  {
+    this.b.startAnimation(FaceStartVryCameraActivity.access$3400(this.a));
   }
 }
 

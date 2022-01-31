@@ -1,28 +1,42 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-
-class sfu
-  implements Runnable
+public class sfu
 {
-  sfu(sft paramsft, boolean paramBoolean1, boolean paramBoolean2) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void run()
+  public sfu(String paramString)
   {
-    if (this.jdField_a_of_type_Boolean)
+    this.a = paramString;
+  }
+  
+  public void a(String paramString)
+  {
+    this.d = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == this) {}
+    do
     {
-      this.jdField_a_of_type_Sft.a.a.a.a(15, 2);
-      this.jdField_a_of_type_Sft.a.a.a.a(15, null);
-    }
-    while (!this.b) {
-      return;
-    }
-    this.jdField_a_of_type_Sft.a.a.a.a(15, 0);
-    this.jdField_a_of_type_Sft.a.a.a.a(15, null);
+      return true;
+      if ((paramObject instanceof sfu)) {
+        return false;
+      }
+      paramObject = (sfu)paramObject;
+    } while ((this.b != null) && (this.b.equals(paramObject.b)) && (this.c != null) && (this.c.equals(paramObject.c)));
+    return false;
+  }
+  
+  public String toString()
+  {
+    return " bid :" + this.b + " localPath:" + this.c + "  ";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sfu
  * JD-Core Version:    0.7.0.1
  */

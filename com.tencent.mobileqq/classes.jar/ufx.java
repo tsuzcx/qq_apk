@@ -1,38 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
-import com.tencent.open.appcircle.st.AppCircleReportManager;
-import com.tencent.open.appcircle.st.STUtils;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.ToastUtil;
-import com.tencent.open.downloadnew.MyAppApi;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StTagInfo;
 
-public class ufx
-  implements DialogInterface.OnClickListener
+class ufx
+  implements View.OnClickListener
 {
-  public ufx(UpgradeActivity paramUpgradeActivity) {}
+  ufx(ufw paramufw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    LogUtility.b("qqBaseActivity", STUtils.a(10010, 1, 3, 200));
-    AppCircleReportManager.a().a(17, STUtils.a(10010, 1, 3, 200));
-    if (!MyAppApi.a().b()) {
-      ToastUtil.a().a("应用宝未安装，请重新安装应用宝");
-    }
-    for (;;)
-    {
-      ThreadManager.getSubThreadHandler().postDelayed(new ufy(this), 500L);
-      return;
-      NewUpgradeDialog.a(this.a);
-    }
+    tqs.a(this.a.a.tagId.get(), this.a.a.tagName.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ufx
  * JD-Core Version:    0.7.0.1
  */

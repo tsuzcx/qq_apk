@@ -378,7 +378,7 @@ public class DownloadStrictTask
       String str = null;
       BytesBufferPool.BytesBuffer localBytesBuffer = sBytesBufferPool.get();
       long l2 = 0L;
-      long l5 = this.mContentLength;
+      long l6 = this.mContentLength;
       long l4 = System.currentTimeMillis();
       Object localObject1 = localObject2;
       try
@@ -436,20 +436,20 @@ public class DownloadStrictTask
         {
           new ArrayList();
           l1 = l2;
-          long l6 = localFile.length();
+          long l5 = localFile.length();
           for (;;)
           {
             l1 = l2;
             paramInt = paramHttpResponse.read(localBytesBuffer.data, 0, localBytesBuffer.data.length);
             if (paramInt <= 0)
             {
-              if (l5 <= 0L)
+              if (l6 <= 0L)
               {
                 l1 = l2;
-                notifyDownloadProgress(this.mUrlKey, l5 + l6, 1.0F);
+                notifyDownloadProgress(this.mUrlKey, l6 + l5, 1.0F);
               }
               l1 = l2;
-              paramDownloadResult.getContent().size = (l2 + l6);
+              paramDownloadResult.getContent().size = (l2 + l5);
               if (paramHttpResponse != null) {
                 paramHttpResponse.close();
               }
@@ -468,31 +468,34 @@ public class DownloadStrictTask
             l1 = l3;
             paramDownloadResult.getContent().size = l3;
             l2 = l3;
-            if (l5 > 0L)
+            if (l6 > 0L)
             {
               l1 = l3;
-              notifyDownloadProgress(this.mUrlKey, l5 + l6, (float)(l3 + l6) / (float)(l5 + l6));
+              notifyDownloadProgress(this.mUrlKey, l6 + l5, (float)(l3 + l5) / (float)(l6 + l5));
               l2 = l3;
             }
           }
-          if (paramHttpResponse == null) {
-            break label632;
+          if (localObject1 == null) {
+            break label637;
           }
         }
-        finally {}
+        finally
+        {
+          localObject1 = paramHttpResponse;
+        }
       }
       finally
       {
         for (;;)
         {
           long l1 = l2;
-          paramHttpResponse = (HttpResponse)localObject1;
           paramJobContext = str;
+          paramDownloadResult = paramHttpResponse;
         }
       }
     }
-    paramHttpResponse.close();
-    label632:
+    ((InputStream)localObject1).close();
+    label637:
     if (paramJobContext != null) {
       paramJobContext.close();
     }

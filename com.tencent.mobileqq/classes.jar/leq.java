@@ -1,21 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import java.util.HashMap;
 
-public class leq
-  implements CompoundButton.OnCheckedChangeListener
+class leq
 {
-  public leq(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  HashMap<Integer, les> a = new HashMap();
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public String toString()
   {
-    ReadInJoySettingActivity.b(this.a, paramBoolean);
-    ReadInJoySettingActivity.a(this.a, ReadInJoySettingActivity.b(this.a));
+    return "size[" + this.a.size() + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     leq
  * JD-Core Version:    0.7.0.1
  */

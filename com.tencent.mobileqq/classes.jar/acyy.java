@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.12.2;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 
 public class acyy
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public acyy(ThumbDownloadManager paramThumbDownloadManager, long paramLong, String paramString1, String paramString2) {}
+  public acyy(FriendProfileCardActivity.12.2 param2) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ThumbDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbDownloadManager, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b)) {
-      ThumbDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbDownloadManager);
-    }
+    this.a.jdField_a_of_type_Alpk.h();
+    this.a.jdField_a_of_type_Alpk.a(this.a.jdField_a_of_type_Acyw.a.a.a.a, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acyy
  * JD-Core Version:    0.7.0.1
  */

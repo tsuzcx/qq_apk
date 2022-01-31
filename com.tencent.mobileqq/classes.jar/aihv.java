@@ -1,44 +1,98 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.StructingMsgViewHolder;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.portal.PortalManager;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
-class aihv
-  implements Runnable
+public class aihv
+  extends BaseAdapter
 {
-  aihv(aiht paramaiht, StructingMsgItemBuilder.StructingMsgViewHolder paramStructingMsgViewHolder, QQAppInterface paramQQAppInterface) {}
+  private static final String jdField_a_of_type_JavaLangString = aihv.class.getSimpleName();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private bhsl jdField_a_of_type_Bhsl;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<aigz> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void run()
+  public aihv(Context paramContext, bhsl parambhsl, QQAppInterface paramQQAppInterface)
   {
-    int i = 1;
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PortalManager", 4, "qiang hong bao lala ......struct msg getView report.........");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bhsl = parambhsl;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "loadHistory, keyword = " + paramString);
     }
-    String str2 = "";
-    String str1;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null)) {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+    if (paramString == null) {
+      return;
+    }
+    String[] arrayOfString = bdhf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (arrayOfString != null)
+    {
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
       {
-        str1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-        str2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin;
+        String str = arrayOfString[i];
+        if (a(str, paramString)) {
+          this.jdField_a_of_type_JavaUtilList.add(new aigz(str));
+        }
+        i += 1;
       }
+    }
+    notifyDataSetChanged();
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "loadHistory, keyword = " + paramString + ", histories = " + this.jdField_a_of_type_JavaUtilList.toString());
+    }
+    this.jdField_a_of_type_Bhsl.sendEmptyMessage(3);
+  }
+  
+  boolean a(String paramString1, String paramString2)
+  {
+    return paramString1.toLowerCase(Locale.US).contains(paramString2.toLowerCase(Locale.US));
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    aigz localaigz = (aigz)getItem(paramInt);
+    View localView;
+    if (paramView == null)
+    {
+      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559256, null);
+      paramView = new aihx(null);
+      paramView.a = ((TextView)localView.findViewById(2131377606));
+      localView.setTag(paramView);
+      paramViewGroup = paramView;
     }
     for (;;)
     {
-      PortalManager localPortalManager = (PortalManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(78);
-      if (localPortalManager != null) {}
-      for (int j = localPortalManager.a();; j = -1)
-      {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004FFA", "0X8004FFA", 0, 0, "" + j, "" + i, "" + str1, str2);
-        return;
-        i = 2;
-        break;
-      }
-      str1 = "";
-      i = 0;
+      paramViewGroup.a.setText(localaigz.jdField_a_of_type_JavaLangString);
+      return localView;
+      paramViewGroup = (aihx)paramView.getTag();
+      localView = paramView;
     }
   }
 }

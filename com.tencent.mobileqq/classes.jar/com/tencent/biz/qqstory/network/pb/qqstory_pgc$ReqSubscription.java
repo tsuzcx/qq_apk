@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_pgc$ReqSubscription
-  extends MessageMicro
+  extends MessageMicro<ReqSubscription>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field from = PBField.initUInt32(0);
@@ -26,7 +26,7 @@ public final class qqstory_pgc$ReqSubscription
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_pgc.ReqSubscription
  * JD-Core Version:    0.7.0.1
  */

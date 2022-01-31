@@ -1,21 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
 
-public class aggs
-  implements DialogInterface.OnClickListener
+class aggs
+  implements Animation.AnimationListener
 {
-  public aggs(ScanTorchActivity paramScanTorchActivity) {}
+  aggs(aggq paramaggq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.startActivity(new Intent("android.settings.LOCATION_SOURCE_SETTINGS"));
+    if (aggq.a(this.a) != null) {
+      aggq.a(this.a).setVisibility(8);
+    }
+    if (aggq.a(this.a) != null) {
+      aggq.a(this.a).c();
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aggs
  * JD-Core Version:    0.7.0.1
  */

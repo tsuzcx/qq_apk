@@ -1,54 +1,29 @@
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.model.IContactSearchModel;
-import com.tencent.mobileqq.search.model.TroopBatchAddFrdsSearchModelMember;
-import com.tencent.mobileqq.search.searchengine.TroopBatchAddFrdsMultipleSearchEngine;
-import java.util.Comparator;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
 
-public class ahwp
-  implements Comparator
+class ahwp
+  implements ViewPager.OnPageChangeListener
 {
-  public ahwp(TroopBatchAddFrdsMultipleSearchEngine paramTroopBatchAddFrdsMultipleSearchEngine) {}
+  ahwp(ahwo paramahwo) {}
   
-  public int a(IContactSearchModel paramIContactSearchModel1, IContactSearchModel paramIContactSearchModel2)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    int i = -1;
-    paramIContactSearchModel1 = (TroopBatchAddFrdsSearchModelMember)paramIContactSearchModel1;
-    paramIContactSearchModel2 = (TroopBatchAddFrdsSearchModelMember)paramIContactSearchModel2;
-    FriendsManager localFriendsManager = (FriendsManager)this.a.a.getManager(50);
-    boolean bool1 = localFriendsManager.b((String)paramIContactSearchModel1.a());
-    boolean bool2 = localFriendsManager.b((String)paramIContactSearchModel2.a());
-    if ((!bool1) && (!bool2))
+    EmoticonFromGroupEntity localEmoticonFromGroupEntity = ahwo.a(this.a).a(paramInt);
+    if (localEmoticonFromGroupEntity != null)
     {
-      bool1 = localFriendsManager.c((String)paramIContactSearchModel1.a());
-      bool2 = localFriendsManager.c((String)paramIContactSearchModel2.a());
-      if ((!bool1) && (!bool2)) {
-        return paramIContactSearchModel2.e() - paramIContactSearchModel1.e();
-      }
-      if (bool1 != bool2)
-      {
-        if (bool2) {
-          return -1;
-        }
-        return 1;
-      }
-      return paramIContactSearchModel2.e() - paramIContactSearchModel1.e();
+      ahwo.a(this.a, localEmoticonFromGroupEntity);
+      ahwo.b(this.a, localEmoticonFromGroupEntity);
     }
-    if (bool1 != bool2)
-    {
-      if (bool2) {}
-      for (;;)
-      {
-        return i;
-        i = 1;
-      }
-    }
-    return paramIContactSearchModel2.e() - paramIContactSearchModel1.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahwp
  * JD-Core Version:    0.7.0.1
  */

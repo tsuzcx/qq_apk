@@ -1,24 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.QZoneShareData;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
 
-public class amze
-  implements DialogInterface.OnClickListener
+public final class amze
+  implements Parcelable.Creator<ArConfigInfo>
 {
-  public amze(QZoneShareActivity paramQZoneShareActivity, Activity paramActivity, QZoneShareData paramQZoneShareData) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ArConfigInfo a(Parcel paramParcel)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_CooperationQzoneQZoneShareData, false);
-    this.jdField_a_of_type_AndroidAppActivity.setResult(0);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    return new ArConfigInfo(paramParcel);
+  }
+  
+  public ArConfigInfo[] a(int paramInt)
+  {
+    return new ArConfigInfo[paramInt];
   }
 }
 

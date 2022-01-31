@@ -1,80 +1,96 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter.gesture;
 
 import android.graphics.Bitmap;
+import android.graphics.PointF;
 import android.opengl.GLES20;
-import com.tencent.filter.Param.IntParam;
-import com.tencent.filter.Param.TextureBitmapParam;
-import com.tencent.filter.Param.TextureParam;
+import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.aekit.openrender.UniformParam.IntParam;
+import com.tencent.aekit.openrender.UniformParam.TextureBitmapParam;
+import com.tencent.aekit.openrender.UniformParam.TextureParam;
+import com.tencent.aekit.openrender.internal.VideoFilterBase;
+import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.mobileqq.shortvideo.gesture.GestureKeyInfo;
 import com.tencent.mobileqq.shortvideo.gesture.GestureMgrRecognize;
 import com.tencent.sveffects.SLog;
-import com.tencent.ttpic.cache.ImageMemoryManager;
-import com.tencent.ttpic.config.MediaConfig;
-import com.tencent.ttpic.filter.VideoFilterBase;
-import com.tencent.ttpic.gles.GlUtil;
-import com.tencent.ttpic.model.StickerItem;
+import com.tencent.ttpic.baseutils.audio.PlayerUtil;
+import com.tencent.ttpic.baseutils.audio.PlayerUtil.Player;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import com.tencent.ttpic.openapi.PTDetectInfo;
+import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
+import com.tencent.ttpic.openapi.config.MediaConfig;
+import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
+import com.tencent.ttpic.openapi.shader.ShaderManager;
+import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.AlgoUtils;
-import com.tencent.ttpic.util.AudioUtils;
-import com.tencent.ttpic.util.AudioUtils.Player;
-import com.tencent.ttpic.util.VideoBitmapUtil;
-import com.tencent.ttpic.util.VideoFilterUtil;
-import com.tencent.ttpic.util.VideoGlobalContext;
-import com.tencent.ttpic.util.VideoMaterialUtil;
 import java.io.File;
 import java.util.List;
-import java.util.Map;
 
 public class StaticGestureFilter
   extends VideoFilterBase
 {
-  protected int a;
-  protected long a;
-  protected Param.TextureBitmapParam a;
-  private AudioUtils.Player jdField_a_of_type_ComTencentTtpicUtilAudioUtils$Player;
-  protected String a;
-  private boolean jdField_a_of_type_Boolean = false;
-  float[] jdField_a_of_type_ArrayOfFloat = { -1.0F, 1.0F, 1.0F, -1.0F };
-  private int[] jdField_a_of_type_ArrayOfInt = new int[1];
-  public int b;
-  private long jdField_b_of_type_Long = 0L;
-  private String jdField_b_of_type_JavaLangString = "qheart";
-  private boolean jdField_b_of_type_Boolean = false;
-  public int c;
-  private boolean c;
-  public int d = -1;
-  private int e = -1;
-  private int f = -1;
-  private int g = 0;
+  public static final String TAG = "StaticGestureFilter";
+  protected long frameStartTime;
+  private boolean havePlayEnd = false;
+  private boolean initialized = false;
+  private StickerItem item;
+  private int lastDecodeImageIndex = -1;
+  private int lastImageIndex = -1;
+  private boolean mAlwayslastFrame = false;
+  public int mGestureAnimGapTime = -1;
+  public int mGestureAnimType = -1;
+  public int mGesturePointIndex = -1;
+  private String mGestureType = "qheart";
+  private int mItemCount = 0;
+  private long mLastReconizeTime = 0L;
+  private PlayerUtil.Player mPlayer;
+  protected UniformParam.TextureBitmapParam mTextureParam;
+  protected String materialId;
+  protected int playCount = 0;
+  float[] postion = { -1.0F, 1.0F, 1.0F, -1.0F };
+  private int[] tex = new int[1];
   
   public StaticGestureFilter(StickerItem paramStickerItem, String paramString)
   {
-    super(VideoFilterUtil.VERTEX_SHADER_COMMON, VideoFilterUtil.FRAGMENT_SHADER_COMMON, null);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
+    super(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.STICKER_NORMAL));
     this.dataPath = paramString;
     paramStickerItem.playCount = 1;
-    this.jdField_a_of_type_JavaLangString = VideoMaterialUtil.getMaterialId(paramString);
-    a(paramStickerItem, 0);
-    setDrawPartial(true);
+    this.materialId = VideoMaterialUtil.getMaterialId(paramString);
+    setCurrentItem(paramStickerItem, 0);
     initParams();
   }
   
-  private int a(int paramInt)
+  public static void filterLog(String paramString)
+  {
+    if (SLog.isEnable()) {
+      SLog.i("StaticGestureFilter", paramString);
+    }
+  }
+  
+  private int getCount(long paramLong)
+  {
+    if (this.item.playCount == 0) {}
+    int i = (int)((paramLong - this.frameStartTime) / Math.max(this.item.frameDuration, 1.0D));
+    if (i >= this.item.frames * (this.playCount + 1)) {
+      this.playCount += 1;
+    }
+    return i % Math.max(this.item.frames, 1);
+  }
+  
+  private int getNextFrame(int paramInt)
   {
     boolean bool2 = true;
-    Object localObject = ImageMemoryManager.getInstance().loadImage(this.item.id, paramInt);
+    Object localObject = VideoMemoryManager.getInstance().loadImage(this.item.id, paramInt);
     if (localObject == null)
     {
       localObject = this.dataPath + File.separator + this.item.subFolder + File.separator + this.item.id + "_" + paramInt + ".png";
-      localObject = VideoBitmapUtil.decodeSampleBitmap(VideoGlobalContext.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
+      localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
     }
     for (paramInt = 1;; paramInt = 0)
     {
-      if (VideoBitmapUtil.isLegal((Bitmap)localObject))
+      if (BitmapUtils.isLegal((Bitmap)localObject))
       {
-        GlUtil.loadTexture(this.jdField_a_of_type_ArrayOfInt[0], (Bitmap)localObject);
+        GlUtil.loadTexture(this.tex[0], (Bitmap)localObject);
         if (paramInt != 0) {
           ((Bitmap)localObject).recycle();
         }
@@ -85,58 +101,41 @@ public class StaticGestureFilter
         if (paramInt == 0) {}
         for (;;)
         {
-          a(bool2 + ", updateTexture:" + bool1);
-          return this.jdField_a_of_type_ArrayOfInt[0];
+          filterLog(bool2 + ", updateTexture:" + bool1);
+          return this.tex[0];
           bool2 = false;
         }
       }
     }
   }
   
-  private int a(long paramLong)
+  private void resetAnimationStatus(long paramLong)
   {
-    if (this.item.playCount == 0) {}
-    int i = (int)((paramLong - this.jdField_a_of_type_Long) / Math.max(this.item.frameDuration, 1.0D));
-    if (i >= this.item.frames * (this.jdField_a_of_type_Int + 1)) {
-      this.jdField_a_of_type_Int += 1;
-    }
-    return i % Math.max(this.item.frames, 1);
+    this.havePlayEnd = false;
+    this.frameStartTime = paramLong;
+    this.mAlwayslastFrame = false;
+    this.mItemCount = -1;
+    this.lastImageIndex = -1;
+    this.lastDecodeImageIndex = -1;
   }
   
-  private void a(long paramLong)
+  private void updateTextureParam(long paramLong)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_c_of_type_Boolean = false;
-    this.g = -1;
-    this.e = -1;
-    this.f = -1;
-  }
-  
-  public static void a(String paramString)
-  {
-    if (SLog.a()) {
-      SLog.c("StaticGestureFilter", paramString);
-    }
-  }
-  
-  private void b(long paramLong)
-  {
-    int i = a(paramLong);
-    if (i == this.e)
+    int i = getCount(paramLong);
+    if (i == this.lastImageIndex)
     {
-      a("updateTextureParam return! + lastImageIndex:" + this.e + ";count is" + i + ":timestamp:=" + paramLong + ":framestartTimes " + this.jdField_a_of_type_Long);
+      filterLog("updateTextureParam return! + lastImageIndex:" + this.lastImageIndex + ";count is" + i + ":timestamp:=" + paramLong + ":framestartTimes " + this.frameStartTime);
       return;
     }
-    a("updateTextureParam" + i);
-    addParam(new Param.TextureParam("inputImageTexture2", a(i), 33986));
-    this.e = i;
+    filterLog("updateTextureParam" + i);
+    addParam(new UniformParam.TextureParam("inputImageTexture2", getNextFrame(i), 33986));
+    this.lastImageIndex = i;
   }
   
   public void ApplyGLSLFilter()
   {
     super.ApplyGLSLFilter();
-    GLES20.glGenTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+    GLES20.glGenTextures(this.tex.length, this.tex, 0);
   }
   
   public void OnDrawFrameGLSL()
@@ -144,78 +143,71 @@ public class StaticGestureFilter
     super.OnDrawFrameGLSL();
   }
   
-  public String a()
-  {
-    return "mGestureAnimType:=" + this.jdField_b_of_type_Int + ";" + this.jdField_c_of_type_Int + ";" + this.d;
-  }
-  
-  public void a()
+  public void adjustPosition()
   {
     setPositions(AlgoUtils.calPositions(0.0F, 100.0F, 100.0F, 0.0F, 100, 100));
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public boolean canUseBlendMode()
   {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.d = paramInt3;
-  }
-  
-  public void a(StickerItem paramStickerItem, int paramInt)
-  {
-    this.item = paramStickerItem;
-    this.e = -1;
-    this.f = -1;
-    this.jdField_a_of_type_Int = 0;
-    this.g = 0;
-    this.jdField_c_of_type_Boolean = false;
-    c();
-    ImageMemoryManager.getInstance().reset(paramStickerItem.id);
-    a("currentItem id:" + this.item.id);
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return paramLong - this.jdField_a_of_type_Long > this.item.frames * this.item.frameDuration;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentFilterParam$TextureBitmapParam != null)
-    {
-      this.jdField_a_of_type_ComTencentFilterParam$TextureBitmapParam.clear();
-      this.jdField_a_of_type_ComTencentFilterParam$TextureBitmapParam = null;
-    }
-    setPositions(VideoFilterUtil.EMPTY_POSITIONS);
-    this.jdField_a_of_type_Boolean = false;
-    this.e = -1;
-    this.f = -1;
-    this.jdField_c_of_type_Boolean = false;
-    a("clearTextureParam!");
-  }
-  
-  public void c()
-  {
-    a("destroyAudio!");
-    AudioUtils.destroyPlayer(this.jdField_a_of_type_ComTencentTtpicUtilAudioUtils$Player);
-    this.jdField_a_of_type_ComTencentTtpicUtilAudioUtils$Player = null;
+    return true;
   }
   
   public void clearGLSLSelf()
   {
-    a("clearGLSLSelf!");
-    b();
-    c();
-    this.jdField_b_of_type_Long = 0L;
+    if (SLog.isEnable()) {
+      SLog.d("GestureTEST", "StaticGestureFilter clearGLSLSelf");
+    }
+    filterLog("clearGLSLSelf!");
+    clearTextureParam();
+    destroyAudio();
+    this.mLastReconizeTime = 0L;
     super.clearGLSLSelf();
-    GLES20.glDeleteTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+    GLES20.glDeleteTextures(this.tex.length, this.tex, 0);
+  }
+  
+  public void clearTextureParam()
+  {
+    if (this.mTextureParam != null)
+    {
+      this.mTextureParam.clear();
+      this.mTextureParam = null;
+    }
+    setPositions(GlUtil.EMPTY_POSITIONS);
+    this.initialized = false;
+    this.lastImageIndex = -1;
+    this.lastDecodeImageIndex = -1;
+    this.mAlwayslastFrame = false;
+    filterLog("clearTextureParam!");
+  }
+  
+  public void destroyAudio()
+  {
+    filterLog("destroyAudio!");
+    PlayerUtil.destroyPlayer(this.mPlayer);
+    this.mPlayer = null;
+  }
+  
+  public boolean hasAnimationEnd(long paramLong)
+  {
+    return paramLong - this.frameStartTime > this.item.frames * this.item.frameDuration;
+  }
+  
+  public boolean haveAnimationStart()
+  {
+    return this.frameStartTime != 0L;
   }
   
   public void initParams()
   {
-    addParam(new Param.IntParam("texNeedTransform", -1));
-    addParam(new Param.IntParam("blendMode", this.item.blendMode));
-    addParam(new Param.TextureParam("inputImageTexture2", 0, 33986));
+    addParam(new UniformParam.IntParam("texNeedTransform", -1));
+    addParam(new UniformParam.IntParam("blendMode", this.item.blendMode));
+    addParam(new UniformParam.TextureParam("inputImageTexture2", 0, 33986));
+  }
+  
+  public String printControllerInfo()
+  {
+    return "mGestureAnimType:=" + this.mGestureAnimType + ";" + this.mGestureAnimGapTime + ";" + this.mGesturePointIndex;
   }
   
   public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
@@ -223,26 +215,52 @@ public class StaticGestureFilter
     return super.renderTexture(paramInt1, paramInt2, paramInt3);
   }
   
+  public void setControllerInfo(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.mGestureAnimType = paramInt1;
+    this.mGestureAnimGapTime = paramInt2;
+    this.mGesturePointIndex = paramInt3;
+  }
+  
+  public void setCurrentItem(StickerItem paramStickerItem, int paramInt)
+  {
+    this.item = paramStickerItem;
+    this.lastImageIndex = -1;
+    this.lastDecodeImageIndex = -1;
+    this.playCount = 0;
+    this.mItemCount = 0;
+    this.mAlwayslastFrame = false;
+    destroyAudio();
+    VideoMemoryManager.getInstance().reset(paramStickerItem.id);
+    filterLog("currentItem id:" + this.item.id);
+  }
+  
   public boolean setRenderMode(int paramInt)
   {
     return super.setRenderMode(paramInt);
   }
   
-  public void updatePreview(List paramList, float[] paramArrayOfFloat, Map paramMap, float paramFloat, long paramLong)
+  protected void updatePositions(List<PointF> paramList, float[] paramArrayOfFloat, float paramFloat) {}
+  
+  public void updatePreview(Object paramObject)
   {
     int j = 1;
-    if ((this.item.triggerType == 1001) && (this.item.type == 1)) {}
+    if ((paramObject instanceof PTDetectInfo)) {}
+    for (paramObject = (PTDetectInfo)paramObject; paramObject == null; paramObject = null) {
+      return;
+    }
+    if ((this.item.getTriggerTypeInt() == 1001) && (this.item.type == 1)) {}
     for (int i = 1;; i = 0)
     {
       if (i == 0)
       {
-        paramList = GestureMgrRecognize.a().a();
-        if ((paramList != null) && (paramList.jdField_a_of_type_Boolean) && (paramList.jdField_a_of_type_JavaLangString.equalsIgnoreCase(GestureFilterManager.jdField_a_of_type_JavaLangString)))
+        GestureKeyInfo localGestureKeyInfo = GestureMgrRecognize.getInstance().getGestureInfo();
+        if ((localGestureKeyInfo != null) && (localGestureKeyInfo.vaild) && (localGestureKeyInfo.type.equalsIgnoreCase(GestureFilterManager.sGestureType)))
         {
-          if (this.jdField_b_of_type_Long == 0L) {
-            this.jdField_a_of_type_Long = paramLong;
+          if (this.mLastReconizeTime == 0L) {
+            this.frameStartTime = paramObject.timestamp;
           }
-          this.jdField_b_of_type_Long = paramLong;
+          this.mLastReconizeTime = paramObject.timestamp;
           i = j;
         }
       }
@@ -250,25 +268,25 @@ public class StaticGestureFilter
       {
         if (i != 0)
         {
-          if (a(paramLong)) {
-            a(paramLong);
+          if (hasAnimationEnd(paramObject.timestamp)) {
+            resetAnimationStatus(paramObject.timestamp);
           }
-          a();
-          b(paramLong);
-        }
-        do
-        {
+          adjustPosition();
+          updateTextureParam(paramObject.timestamp);
           return;
-          if ((a(paramLong)) || (this.jdField_a_of_type_Long == 0L))
-          {
-            b();
-            this.jdField_a_of_type_Long = 0L;
-            this.jdField_b_of_type_Long = 0L;
-            return;
-          }
-          a();
-          b(paramLong);
-        } while (!SLog.a());
+        }
+        if ((hasAnimationEnd(paramObject.timestamp)) || (this.frameStartTime == 0L))
+        {
+          clearTextureParam();
+          this.frameStartTime = 0L;
+          this.mLastReconizeTime = 0L;
+          return;
+        }
+        adjustPosition();
+        updateTextureParam(paramObject.timestamp);
+        if (!SLog.isEnable()) {
+          break;
+        }
         SLog.d("StaticGestureFilter", "updatePreview continue");
         return;
         i = 0;
@@ -279,12 +297,12 @@ public class StaticGestureFilter
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
   {
     super.updateVideoSize(paramInt1, paramInt2, paramDouble);
-    setPositions(VideoFilterUtil.EMPTY_POSITIONS);
+    setPositions(GlUtil.EMPTY_POSITIONS);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ptvfilter.gesture.StaticGestureFilter
  * JD-Core Version:    0.7.0.1
  */

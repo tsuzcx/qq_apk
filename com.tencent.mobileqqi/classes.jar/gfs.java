@@ -1,23 +1,14 @@
-import com.tencent.mobileqq.data.TroopAssistantData;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.qcall.QCallFacade;
 
 public class gfs
-  implements Comparator
+  extends FriendListObserver
 {
-  public gfs(TroopAssistantManager paramTroopAssistantManager) {}
+  public gfs(QCallFacade paramQCallFacade) {}
   
-  public int a(TroopAssistantData paramTroopAssistantData1, TroopAssistantData paramTroopAssistantData2)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    long l1 = Math.max(paramTroopAssistantData1.lastmsgtime, paramTroopAssistantData1.lastdrafttime);
-    long l2 = Math.max(paramTroopAssistantData2.lastmsgtime, paramTroopAssistantData2.lastdrafttime);
-    if (l1 < l2) {
-      return 1;
-    }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    this.a.a(String.valueOf(paramObject));
   }
 }
 

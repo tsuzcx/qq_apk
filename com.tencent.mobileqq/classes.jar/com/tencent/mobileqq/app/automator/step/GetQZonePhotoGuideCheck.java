@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import axbg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager;
 
 public class GetQZonePhotoGuideCheck
   extends AsyncStep
 {
   public static boolean a;
   
-  protected int a()
+  public int a()
   {
     jdField_a_of_type_Boolean = true;
-    QzoneAlbumRedTouchManager localQzoneAlbumRedTouchManager = (QzoneAlbumRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.getManager(103);
-    if (localQzoneAlbumRedTouchManager != null) {
-      localQzoneAlbumRedTouchManager.c();
+    axbg localaxbg = (axbg)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(104);
+    if (localaxbg != null) {
+      localaxbg.c();
     }
     return 7;
   }

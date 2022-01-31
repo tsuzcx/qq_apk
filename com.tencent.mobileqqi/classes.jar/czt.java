@@ -1,36 +1,35 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.view.ScaleGestureDetector;
+import com.tencent.mobileqq.activity.PortraitImageview;
+import com.tencent.mobileqq.activity.PortraitImageview.SimpleOnScaleGestureListener;
 
 public class czt
-  implements View.OnFocusChangeListener
+  extends PortraitImageview.SimpleOnScaleGestureListener
 {
-  public czt(LoginActivity paramLoginActivity) {}
+  public czt(PortraitImageview paramPortraitImageview) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (true == paramBoolean)
-    {
-      if (this.a.a.isPopupShowing()) {
-        this.a.a.dismissDropDown();
+    if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.isInProgress())) {
+      try
+      {
+        float f1 = this.a.a();
+        float f2 = paramScaleGestureDetector.getScaleFactor();
+        f1 = Math.min(this.a.e(), Math.max(f1 * f2, 0.1F));
+        this.a.a(f1, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
+        this.a.invalidate();
+        return true;
       }
-      if ((this.a.b != null) && (this.a.a.getText().length() > 0)) {
-        this.a.b.setVisibility(0);
+      catch (IllegalArgumentException paramScaleGestureDetector)
+      {
+        paramScaleGestureDetector.printStackTrace();
       }
-      this.a.a.setSelection(this.a.a.getText().length());
     }
-    while ((this.a.b == null) || (!this.a.b.isShown())) {
-      return;
-    }
-    this.a.b.setVisibility(8);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     czt
  * JD-Core Version:    0.7.0.1
  */

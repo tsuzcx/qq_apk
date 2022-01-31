@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.util;
 
-import com.tencent.mobileqq.persistence.Entity;
+import awge;
 import com.tencent.mobileqq.statistics.Reporting;
 
 public class PAReportInfo
-  extends Entity
+  extends awge
   implements Cloneable
 {
   public String actionName;
@@ -51,7 +51,7 @@ public class PAReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PAReportInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package com.tencent.mobileqq.widget;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
+import bern;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -11,29 +12,29 @@ public class PaParticleView
 {
   int jdField_a_of_type_Int;
   protected Paint a;
-  ArrayList jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<bern> jdField_a_of_type_JavaUtilArrayList;
   Random jdField_a_of_type_JavaUtilRandom;
   public int b;
   public int c;
   protected int d;
   public int e;
   
-  private void a(PaWeatherPaticle paramPaWeatherPaticle)
+  private void a(bern parambern)
   {
     if (this.e == 0) {
-      if ((paramPaWeatherPaticle.jdField_a_of_type_Float > this.b) || (paramPaWeatherPaticle.b > this.c)) {
-        paramPaWeatherPaticle.b = 0.0F;
+      if ((parambern.jdField_a_of_type_Float > this.b) || (parambern.b > this.c)) {
+        parambern.b = 0.0F;
       }
     }
-    for (paramPaWeatherPaticle.jdField_a_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.b);; paramPaWeatherPaticle.jdField_a_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.b))
+    for (parambern.jdField_a_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.b);; parambern.jdField_a_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.b))
     {
       do
       {
-        paramPaWeatherPaticle.jdField_a_of_type_Float += paramPaWeatherPaticle.d;
-        paramPaWeatherPaticle.b += paramPaWeatherPaticle.c;
+        parambern.jdField_a_of_type_Float += parambern.d;
+        parambern.b += parambern.c;
         return;
-      } while ((paramPaWeatherPaticle.jdField_a_of_type_Float <= this.b) && (paramPaWeatherPaticle.b >= this.e));
-      paramPaWeatherPaticle.b = this.c;
+      } while ((parambern.jdField_a_of_type_Float <= this.b) && (parambern.b >= this.e));
+      parambern.b = this.c;
     }
   }
   
@@ -45,9 +46,9 @@ public class PaParticleView
       int i = 0;
       while (i < this.jdField_a_of_type_Int)
       {
-        PaWeatherPaticle localPaWeatherPaticle = (PaWeatherPaticle)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        a(localPaWeatherPaticle);
-        paramCanvas.drawBitmap(localPaWeatherPaticle.jdField_a_of_type_AndroidGraphicsBitmap, localPaWeatherPaticle.jdField_a_of_type_Float, localPaWeatherPaticle.b, this.jdField_a_of_type_AndroidGraphicsPaint);
+        bern localbern = (bern)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        a(localbern);
+        paramCanvas.drawBitmap(localbern.jdField_a_of_type_AndroidGraphicsBitmap, localbern.jdField_a_of_type_Float, localbern.b, this.jdField_a_of_type_AndroidGraphicsPaint);
         i += 1;
       }
     }
@@ -56,7 +57,7 @@ public class PaParticleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PaParticleView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,69 +1,56 @@
-import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ar.ARNativeBridge;
-import com.tencent.mobileqq.earlydownload.EarlyDownloadManager.EarlyDownLoadListener;
-import com.tencent.mobileqq.earlydownload.handler.ArNativeSoDownloadHandler;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class xku
-  implements EarlyDownloadManager.EarlyDownLoadListener
+public abstract class xku
 {
-  public xku(RecentOptPopBar paramRecentOptPopBar, ArNativeSoDownloadHandler paramArNativeSoDownloadHandler) {}
+  protected final int a;
+  protected Context a;
+  protected final String a;
+  protected xkv a;
+  protected boolean a;
+  protected boolean b;
   
-  public void a(XmlData paramXmlData)
+  public xku(Context paramContext, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentOptPopBar", 2, "ArMap, ArNativeSoDownloadHandler, onDownloadBegin, data=" + paramXmlData);
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(XmlData paramXmlData, long paramLong1, long paramLong2)
+  public abstract int a();
+  
+  public abstract int a(int paramInt);
+  
+  public abstract View a(int paramInt, ViewGroup paramViewGroup);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, View paramView);
+  
+  public void a(xkv paramxkv)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentOptPopBar", 2, "ArMap, onDownloadProgress, onDownloadBegin, data=" + paramXmlData + ", cur=" + paramLong1 + ", total=" + paramLong2);
-    }
+    this.jdField_a_of_type_Xkv = paramxkv;
   }
   
-  public void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentOptPopBar", 2, "ArMap, ArNativeSoDownloadHandler, onDownloadFinish, data=" + paramXmlData + ", result=" + paramBoolean1 + ", errCode=" + paramInt + ", delRes=" + paramBoolean2 + ", filePath=" + paramString);
-    }
-    if (!paramBoolean1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptPopBar.a.runOnUiThread(new xkv(this));
-      this.jdField_a_of_type_ComTencentMobileqqEarlydownloadHandlerArNativeSoDownloadHandler.b(this);
-      return;
-    }
-    if (!ARNativeBridge.loadNativeLibrary())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptPopBar.a.runOnUiThread(new xkw(this));
-      QLog.d("RecentOptPopBar", 1, "ArMap, ArNativeSoDownloadHandler, onDownloadFinish, loadNativeLibrary failed");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptPopBar.a.runOnUiThread(new xkx(this));
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("RecentOptPopBar", 2, "ArMap, ArNativeSoDownloadHandler, load so success");
-      }
-      RecentOptPopBar.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptPopBar);
-    }
+    this.b = paramBoolean;
   }
   
-  public void b(XmlData paramXmlData)
+  public int b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentOptPopBar", 2, "ArMap, ArNativeSoDownloadHandler, onDownloadCancel, data=" + paramXmlData);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqEarlydownloadHandlerArNativeSoDownloadHandler.b(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptPopBar.a.runOnUiThread(new xky(this));
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xku
  * JD-Core Version:    0.7.0.1
  */

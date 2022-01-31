@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class Submsgtype0x71$RedTypeInfo
-  extends MessageMicro
+  extends MessageMicro<RedTypeInfo>
 {
   public static final int STR_RED_CONTENT_FIELD_NUMBER = 2;
   public static final int STR_RED_DESC_FIELD_NUMBER = 3;

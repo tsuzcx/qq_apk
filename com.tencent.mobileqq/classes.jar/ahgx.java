@@ -1,54 +1,28 @@
-import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter;
-import com.tencent.mobileqq.richmedia.capture.view.PtvTemplateItemView;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GridView;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.List;
 
-class ahgx
-  implements Runnable
+public class ahgx
+  extends oxe
 {
-  ahgx(ahgv paramahgv, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt) {}
+  public ahgx(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void run()
+  public void f(boolean paramBoolean, List<ChannelInfo> paramList)
   {
-    int j = this.jdField_a_of_type_Ahgv.a.jdField_a_of_type_ComTencentWidgetGridView.getFirstVisiblePosition();
-    int k = this.jdField_a_of_type_Ahgv.a.jdField_a_of_type_ComTencentWidgetGridView.getLastVisiblePosition();
-    int i = j;
-    Object localObject;
-    if (i <= k)
+    if (paramBoolean)
     {
-      if (i < 0) {}
-      do
+      if ((paramList != null) && (!paramList.isEmpty()))
       {
-        i += 1;
-        break;
-        localObject = (PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_Ahgv.a.jdField_a_of_type_JavaUtilArrayList.get(i);
-      } while ((localObject == null) || (!((PtvTemplateManager.PtvTemplateInfo)localObject).id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)));
-      if (QLog.isColorLevel()) {
-        QLog.i("CapturePtvTemplateManager", 2, "onProgressUpdate index: " + i + " progress: " + this.jdField_a_of_type_Int);
+        this.a.c.clear();
+        this.a.c.addAll(paramList);
       }
-      ((PtvTemplateManager.PtvTemplateInfo)localObject).downloading = true;
-      localObject = this.jdField_a_of_type_Ahgv.a.jdField_a_of_type_ComTencentWidgetGridView.getChildAt(i - j);
-      if ((localObject instanceof PtvTemplateItemView))
-      {
-        localObject = (PtvTemplateItemView)localObject;
-        if (this.jdField_a_of_type_Int != 100) {
-          break label193;
-        }
-      }
-    }
-    label193:
-    for (i = 99;; i = this.jdField_a_of_type_Int)
-    {
-      ((PtvTemplateItemView)localObject).a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, i);
-      return;
+      ClassificationSearchActivity.b(this.a, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahgx
  * JD-Core Version:    0.7.0.1
  */

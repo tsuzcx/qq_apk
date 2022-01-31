@@ -1,49 +1,39 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.RecentFileAdapter;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
-import com.tencent.widget.BubblePopupWindow;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.qphone.base.util.QLog;
 
-public class fuu
-  implements SlideDetectListView.OnSlideListener
+class fuu
+  implements Runnable
 {
-  public fuu(FMActivity paramFMActivity) {}
+  fuu(fut paramfut) {}
   
-  public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
-      this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
-    }
-    if (!this.a.f())
+    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  progress make  thread start. . .");
+    this.a.a(false);
+    for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.a(Integer.valueOf(-1));
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
-      paramView.setPressed(false);
-      return;
+      if (!this.a.b()) {}
+      try
+      {
+        Thread.sleep(1000L);
+        boolean bool = this.a.b();
+        if (bool)
+        {
+          this.a.a(true);
+          QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  progress make  thread exit. . .");
+          return;
+        }
+        Message localMessage = new Message();
+        localMessage.what = 1;
+        this.a.a.a.sendMessage(localMessage);
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
+      }
     }
-    paramSlideDetectListView = paramView.findViewById(2131230987);
-    paramView = (FileManagerEntity)this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.getItem(paramInt);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.a(paramView);
-    this.a.jdField_a_of_type_Long = paramView.nSessionId;
-    if (paramSlideDetectListView != null)
-    {
-      ((Button)paramSlideDetectListView.findViewById(2131231699)).setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-      ((ShaderAnimLayout)paramSlideDetectListView).a();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setDeleteAreaDim(paramSlideDetectListView.getLayoutParams().width, paramSlideDetectListView.getLayoutParams().height);
-    }
-    FMActivity.a(this.a);
-  }
-  
-  public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
-  {
-    paramView.findViewById(2131230987);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.a(null);
-    FMActivity.a(this.a);
   }
 }
 

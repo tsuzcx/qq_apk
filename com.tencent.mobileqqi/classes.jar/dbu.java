@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity.NativeChromeClient;
 
-class dbu
-  implements DialogInterface.OnClickListener
+public class dbu
+  implements Runnable
 {
-  dbu(dbt paramdbt) {}
+  public dbu(QQBrowserActivity.NativeChromeClient paramNativeChromeClient, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity$NativeChromeClient.a.setTitle(this.jdField_a_of_type_JavaLangString);
   }
 }
 

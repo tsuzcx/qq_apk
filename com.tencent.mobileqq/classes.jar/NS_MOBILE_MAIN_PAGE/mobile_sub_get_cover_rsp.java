@@ -11,20 +11,20 @@ import java.util.Map;
 public final class mobile_sub_get_cover_rsp
   extends JceStruct
 {
-  static Map cache_MulRelsotionUrl;
+  static Map<String, String> cache_MulRelsotionUrl;
   static CoverPackageInfo cache_packageInfo;
-  static ArrayList cache_vecUrls;
-  public Map MulRelsotionUrl;
+  static ArrayList<Map<Integer, String>> cache_vecUrls;
+  public Map<String, String> MulRelsotionUrl;
   public String cover = "";
   public String id = "";
   public CoverPackageInfo packageInfo;
   public int photoWallCombinePic;
   public String type = "";
-  public ArrayList vecUrls;
+  public ArrayList<Map<Integer, String>> vecUrls;
   
   public mobile_sub_get_cover_rsp() {}
   
-  public mobile_sub_get_cover_rsp(String paramString1, String paramString2, Map paramMap, CoverPackageInfo paramCoverPackageInfo, ArrayList paramArrayList, String paramString3, int paramInt)
+  public mobile_sub_get_cover_rsp(String paramString1, String paramString2, Map<String, String> paramMap, CoverPackageInfo paramCoverPackageInfo, ArrayList<Map<Integer, String>> paramArrayList, String paramString3, int paramInt)
   {
     this.cover = paramString1;
     this.type = paramString2;

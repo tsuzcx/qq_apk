@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.intervideo.now.NowDataReporter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import mqq.app.AppActivity;
 
 public class aduu
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aduu(NowDataReporter paramNowDataReporter, long paramLong) {}
+  public aduu(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, AppActivity paramAppActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowDataReporter.a(this.jdField_a_of_type_Long);
+    if (paramInt == 1)
+    {
+      RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, true);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.a.a(this.jdField_a_of_type_MqqAppAppActivity, false)) {
+        RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).b();
+      }
+    }
   }
 }
 

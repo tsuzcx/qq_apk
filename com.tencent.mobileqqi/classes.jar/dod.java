@@ -1,15 +1,16 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SnapScreenActivity;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.ExpandableListView.OnGroupClickListener;
 
 public class dod
-  implements View.OnClickListener
+  implements ExpandableListView.OnGroupClickListener
 {
-  public dod(SnapScreenActivity paramSnapScreenActivity) {}
+  public dod(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void onClick(View paramView)
+  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a.a(false);
+    return true;
   }
 }
 

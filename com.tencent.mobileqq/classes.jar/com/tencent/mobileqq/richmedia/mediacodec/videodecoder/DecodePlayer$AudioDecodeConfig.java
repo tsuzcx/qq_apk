@@ -2,31 +2,36 @@ package com.tencent.mobileqq.richmedia.mediacodec.videodecoder;
 
 public class DecodePlayer$AudioDecodeConfig
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public boolean b;
-  public long c = 0L;
+  public String audioFilePath;
+  public long endTimeMs = 0L;
+  public boolean mMuteAudio = false;
+  public boolean repeat = true;
+  public int speedType = 0;
+  public long startTimeMs = 0L;
+  public long videoDurationMs = 0L;
   
-  public DecodePlayer$AudioDecodeConfig()
+  public void copyFrom(AudioDecodeConfig paramAudioDecodeConfig)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
+    if (paramAudioDecodeConfig == null) {
+      throw new NullPointerException();
+    }
+    this.audioFilePath = paramAudioDecodeConfig.audioFilePath;
+    this.repeat = paramAudioDecodeConfig.repeat;
+    this.speedType = paramAudioDecodeConfig.speedType;
+    this.mMuteAudio = paramAudioDecodeConfig.mMuteAudio;
+    this.startTimeMs = paramAudioDecodeConfig.startTimeMs;
+    this.endTimeMs = paramAudioDecodeConfig.endTimeMs;
+    this.videoDurationMs = paramAudioDecodeConfig.videoDurationMs;
   }
   
   public String toString()
   {
-    return "AudioDecodeConfig=[audioFilePath:" + this.jdField_a_of_type_JavaLangString + " repeat:" + this.jdField_a_of_type_Boolean + " speedType:" + this.jdField_a_of_type_Int + " mMuteAudio:" + this.jdField_b_of_type_Boolean + " startTimeMs:" + this.jdField_a_of_type_Long + " endTimeMs:" + this.jdField_b_of_type_Long + " videoDuration:" + this.c + "]";
+    return "AudioDecodeConfig=[audioFilePath:" + this.audioFilePath + " repeat:" + this.repeat + " speedType:" + this.speedType + " mMuteAudio:" + this.mMuteAudio + " startTimeMs:" + this.startTimeMs + " endTimeMs:" + this.endTimeMs + " videoDuration:" + this.videoDurationMs + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.videodecoder.DecodePlayer.AudioDecodeConfig
  * JD-Core Version:    0.7.0.1
  */

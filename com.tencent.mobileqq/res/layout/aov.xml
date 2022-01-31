@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.location.window.CanBackFrameLayout android:layout_gravity="center_horizontal" android:id="@id/bk4" android:background="#4d000000" android:paddingTop="26.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:layout_gravity="center" android:layout_width="@dimen/md" android:layout_height="wrap_content" layout="@layout/jn" />
+</com.tencent.mobileqq.location.window.CanBackFrameLayout>

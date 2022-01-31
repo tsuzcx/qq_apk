@@ -1,27 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
-import com.tencent.mobileqq.medalwall.ParticleSystem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aefr
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public aefr(MedalGuideView paramMedalGuideView) {}
+  public aefr(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    MedalGuideView.a(this.a, f);
-    if (this.a.a != null)
-    {
-      this.a.a.a(f);
-      if (f <= 0.05F) {
-        this.a.a.b();
-      }
-    }
-    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
-    }
+    this.a.a.setText("");
   }
 }
 

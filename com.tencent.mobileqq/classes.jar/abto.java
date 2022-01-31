@@ -1,15 +1,14 @@
-import android.net.Uri;
-import android.provider.ContactsContract.CommonDataKinds.Phone;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class abto
 {
-  public static final Uri a;
-  public static final String[] a;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  boolean jdField_a_of_type_Boolean;
   
-  static
+  public abto(MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    jdField_a_of_type_AndroidNetUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "data1", "display_name", "contact_id", "raw_contact_id" };
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

@@ -1,27 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.Process;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.language.SelectLanguageActivity;
 
-public final class ehi
-  extends Handler
+public class ehi
+  implements View.OnClickListener
 {
-  public void handleMessage(Message paramMessage)
+  public ehi(SelectLanguageActivity paramSelectLanguageActivity) {}
+  
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PEAK", 2, "self-destory BOOM!!!!");
-    }
-    Process.killProcess(Process.myPid());
+    SelectLanguageActivity.a(this.a, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ehi
  * JD-Core Version:    0.7.0.1
  */

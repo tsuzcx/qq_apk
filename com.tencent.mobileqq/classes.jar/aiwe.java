@@ -1,14 +1,9 @@
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-
 public class aiwe
-  implements Runnable
 {
-  public aiwe(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
-  
-  public void run()
-  {
-    this.a.l = false;
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

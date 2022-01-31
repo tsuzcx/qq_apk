@@ -48,7 +48,7 @@ public class CustomWidgetUtil
       }
       else
       {
-        paramInt3 = 2130840207;
+        paramInt3 = 2130840209;
         i = 0;
         str = "";
         continue;
@@ -59,7 +59,7 @@ public class CustomWidgetUtil
         }
         else
         {
-          paramInt3 = 2130840210;
+          paramInt3 = 2130840212;
           i = 0;
           str = "";
           continue;
@@ -74,7 +74,7 @@ public class CustomWidgetUtil
             i = paramInt3;
             paramInt3 = j;
             break;
-            paramInt3 = 2130840211;
+            paramInt3 = 2130840213;
           }
           label180:
           int j = 0;
@@ -93,7 +93,7 @@ public class CustomWidgetUtil
             i = paramInt3;
             paramInt3 = j;
             break;
-            paramInt3 = 2130840211;
+            paramInt3 = 2130840213;
           }
           label230:
           j = 0;
@@ -103,7 +103,7 @@ public class CustomWidgetUtil
         }
       }
     }
-    Object localObject = paramTextView.getTag(2131234178);
+    Object localObject = paramTextView.getTag(2131234180);
     if (((localObject == null) && (paramInt3 == 0)) || (((localObject instanceof Integer)) && (((Integer)localObject).intValue() == paramInt3))) {}
     float f1;
     for (;;)
@@ -114,7 +114,7 @@ public class CustomWidgetUtil
           paramTextView.setVisibility(8);
           return;
           paramTextView.setCompoundDrawablesWithIntrinsicBounds(paramInt3, 0, 0, 0);
-          paramTextView.setTag(2131234178, Integer.valueOf(paramInt3));
+          paramTextView.setTag(2131234180, Integer.valueOf(paramInt3));
         }
         else
         {

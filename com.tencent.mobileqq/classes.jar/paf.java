@@ -1,60 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.common.offline.OfflineEnvHelper;
-import com.tencent.biz.viewplugin.ViewPluginLoader;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import org.json.JSONObject;
+import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
 
-public class paf
-  implements AsyncBack
+class paf
+  implements View.OnClickListener
 {
-  public paf(ViewPluginLoader paramViewPluginLoader, QQAppInterface paramQQAppInterface) {}
+  paf(pac parampac, ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViewPluginLoader", 2, "checkUp loaded json = " + paramString + " code = " + paramInt);
-    }
-    if (paramInt == 0)
+    paramView = new Intent(this.jdField_a_of_type_Pac.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mGalleryFeedsInfo.bytes_attachment_jump_url.get().toStringUtf8());
+    this.jdField_a_of_type_Pac.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    paramView = opn.a(this.jdField_a_of_type_Pac.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a(), 3, this.jdField_a_of_type_Pac.a(), (ArticleInfo)this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+    try
     {
-      String str;
-      try
-      {
-        paramString = new JSONObject(paramString).optJSONArray("data").optJSONObject(0);
-        str = paramString.optString("url");
-        paramInt = paramString.optInt("filesize");
-        if ((str != null) && (str.endsWith("patch")))
-        {
-          FileUtils.a(OfflineEnvHelper.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a) + this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a);
-          this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.b();
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
-        return;
-      }
-      if ((!TextUtils.isEmpty(str)) && (paramInt != 0))
-      {
-        this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a(paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
+      paramView.put("exptime", System.currentTimeMillis());
+      paramView.put("proxy_bytes", this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.galleryReprotExdData);
+      paramView.put("operation_id", this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mGalleryFeedsInfo.bytes_operation_id.get().toStringUtf8());
+      opp localopp = new opp(this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+      localopp.e = String.valueOf(this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID);
+      localopp.f = String.valueOf(this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mStrategyId);
+      localopp.g = paramView.toString();
+      localopp.a = String.valueOf(this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.publishUin);
+      localopp.b = "0X8009A7B";
+      localopp.c = "0X8009A7B";
+      opn.a(localopp);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
+    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     paf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,64 +1,16 @@
-import com.tencent.mobileqq.now.enter.NowEnterManager;
-import com.tencent.mobileqq.now.enter.NowHongbaoPushManager;
-import com.tencent.mobileqq.now.enter.NowHongbaoPushManager.Callback;
-import com.tencent.mobileqq.now.enter.NowHongbaoPushManager.Entity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class agap
-  implements Runnable
+class agap
+  implements DialogInterface.OnClickListener
 {
-  public agap(NowHongbaoPushManager paramNowHongbaoPushManager, NowHongbaoPushManager.Entity paramEntity) {}
+  agap(agai paramagai, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool;
-    if (!this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager$Entity.isThisStateNotified(1)) {
-      if (NowHongbaoPushManager.a(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager) != null)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager$Entity.type != 2) {
-          break label174;
-        }
-        bool = NowHongbaoPushManager.a(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager).a(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager.a.c(), this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager.a.d());
-      }
-    }
-    for (;;)
-    {
-      if (bool)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager$Entity.notifyShow();
-        label76:
-        if (QLog.isColorLevel()) {
-          QLog.i("NowHongbaoPushManager", 2, (String)NowHongbaoPushManager.a().get(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager$Entity.type)) + ", 显示---type= " + this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager$Entity.type + ", success = " + bool);
-        }
-      }
-      for (;;)
-      {
-        if ((this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager$Entity.type == 2) || (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager$Entity.type == 3)) {
-          NowHongbaoPushManager.c(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager);
-        }
-        return;
-        label174:
-        if (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager$Entity.type == 3)
-        {
-          bool = NowHongbaoPushManager.a(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager).a(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager.a.b());
-          break;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager$Entity.type != 1) {
-          break label322;
-        }
-        String str = this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager.a.a();
-        bool = NowHongbaoPushManager.a(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager).b(str);
-        break;
-        this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager$Entity.resetNotifyState();
-        break label76;
-        if (QLog.isColorLevel()) {
-          QLog.i("NowHongbaoPushManager", 2, (String)NowHongbaoPushManager.a().get(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager$Entity.type)) + ", 显示(已显示)---type=" + this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager$Entity.type);
-        }
-      }
-      label322:
-      bool = false;
-    }
+    this.jdField_a_of_type_Agai.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    azdd.jdField_a_of_type_Boolean = true;
   }
 }
 

@@ -1,38 +1,28 @@
-import android.widget.Button;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.3;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.3.3.1;
 
 public class anio
-  implements Runnable
+  implements anjx
 {
-  public anio(QIMCameraCaptureUnit paramQIMCameraCaptureUnit, boolean paramBoolean) {}
+  public anio(ArkAppDeviceModule.ObserverMethod.3.3.1 param1) {}
   
-  public void run()
+  public void a(long paramLong)
   {
-    if (!QIMCameraCaptureUnit.c(this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit))
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label73;
-      }
-      if (!QIMCameraCaptureUnit.d(this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit))
-      {
-        this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.c.setVisibility(0);
-        this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.c.setSelected(true);
-        this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.a.c(this.jdField_a_of_type_Boolean);
-        QIMCameraCaptureUnit.c(this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit, false);
-      }
+    ark.VariantWrapper localVariantWrapper = this.a.a.a.jdField_a_of_type_Anii.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
-    return;
-    label73:
-    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.c.setVisibility(8);
-    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.c.setSelected(false);
-    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.a.c(this.jdField_a_of_type_Boolean);
-    QIMCameraCaptureUnit.c(this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit, false);
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    anif.a(this.a.a.a.jdField_a_of_type_Anii.a, this.a.a.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anio
  * JD-Core Version:    0.7.0.1
  */

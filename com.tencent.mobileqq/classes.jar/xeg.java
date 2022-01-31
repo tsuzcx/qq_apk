@@ -1,31 +1,33 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.qwallet.PriceSettingDialog.OnPriceSelectedListener;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper.GoldMsgChatState;
-import com.tencent.mobileqq.activity.qwallet.widget.NumAnim;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class xeg
-  implements PriceSettingDialog.OnPriceSelectedListener
+class xeg
+  extends AnimatorListenerAdapter
 {
-  public xeg(GoldMsgAioState paramGoldMsgAioState, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface) {}
+  xeg(xed paramxed) {}
   
-  public void a(long paramLong)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    GoldMsgChatHelper.GoldMsgChatState localGoldMsgChatState = GoldMsgChatHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    if (localGoldMsgChatState != null) {
-      localGoldMsgChatState.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramLong, 0);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgAioState.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgAioState.a.setText(NumAnim.formatNumber(paramLong / 100.0D, false) + "元");
-    }
+    wxe.b("TextLayer", "scaleAnimator cancel!");
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    wxe.b("TextLayer", "scaleAnimator end!");
+    this.a.p = 1.0F;
+    this.a.c = false;
+    this.a.a.g();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    wxe.b("TextLayer", "scaleAnimator start!");
+    this.a.c = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xeg
  * JD-Core Version:    0.7.0.1
  */

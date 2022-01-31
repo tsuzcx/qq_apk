@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_cmd0x68b$InnerMsg
-  extends MessageMicro
+  extends MessageMicro<InnerMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBEnumField article_content_type = PBField.initEnum(1);
@@ -32,7 +32,7 @@ public final class oidb_cmd0x68b$InnerMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.InnerMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,94 +1,207 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.PASingleItemBuilder;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.newfriend.RecommendListView;
+import com.tencent.mobileqq.data.RecommendContactMsg;
+import com.tencent.mobileqq.widget.MotionViewSetter;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import java.util.HashMap;
+import java.util.List;
 
 public class efb
-  implements View.OnClickListener
+  extends BaseAdapter
 {
-  public efb(PASingleItemBuilder paramPASingleItemBuilder) {}
+  public int a;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater = (LayoutInflater)this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView.getContext().getSystemService("layout_inflater");
+  private MotionViewSetter jdField_a_of_type_ComTencentMobileqqWidgetMotionViewSetter = null;
+  HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  HashMap b = new HashMap();
   
-  public void onClick(View paramView)
+  private efb(RecommendListView paramRecommendListView)
   {
-    efc localefc = (efc)AIOUtils.a(paramView);
-    JumpAction localJumpAction;
-    int i;
-    if (TextUtils.isEmpty(localefc.f))
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(String paramString, Drawable paramDrawable)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
     {
-      paramView = localefc.e;
-      if (TextUtils.isEmpty(paramView)) {
-        break label556;
+      ((ImageView)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).setImageDrawable(paramDrawable);
+      return;
+    }
+    notifyDataSetChanged();
+  }
+  
+  public boolean areAllItemsEnabled()
+  {
+    return true;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < getCount())) {
+      return this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    RecommendContactMsg localRecommendContactMsg;
+    Object localObject;
+    if (paramView == null)
+    {
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903932, paramViewGroup, false);
+      paramViewGroup = new efc();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231773));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131233362));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131232840));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131234362));
+      paramViewGroup.c = ((TextView)paramView.findViewById(2131234363));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramView.findViewById(2131230987));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131230988));
+      paramView.setTag(paramViewGroup);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataRecommendContactMsg = ((RecommendContactMsg)this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView.jdField_a_of_type_JavaUtilList.get(paramInt));
+      localRecommendContactMsg = paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataRecommendContactMsg;
+      if (RecommendListView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView) == 0)
+      {
+        if (RecommendListView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView) == null) {
+          RecommendListView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView, new efa(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView));
+        }
+        paramView.setOnClickListener(RecommendListView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView));
       }
-      localJumpAction = JumpParser.a(PASingleItemBuilder.a(this.a), PASingleItemBuilder.a(this.a), paramView);
-      if (localJumpAction != null) {
-        break label346;
+      if ((localRecommendContactMsg.source == null) || (localRecommendContactMsg.source.length() <= 0)) {
+        break label508;
       }
-      if (localefc.jdField_a_of_type_Long != 0L) {
-        break label260;
+      RecommendListView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView, paramViewGroup, localRecommendContactMsg.uin, 0, 1);
+      paramViewGroup.b.setText(localRecommendContactMsg.source);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localRecommendContactMsg.nickName);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView.jdField_a_of_type_JavaLangString == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView.jdField_a_of_type_JavaLangString = localRecommendContactMsg.uin;
       }
-      i = 0;
-      label66:
-      if (i == 0) {
-        break label294;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView.jdField_a_of_type_Long == 0L) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView.jdField_a_of_type_Long = localRecommendContactMsg.timeStamp;
       }
-      if (PASingleItemBuilder.a(PASingleItemBuilder.b(this.a), PASingleItemBuilder.b(this.a), localefc.jdField_a_of_type_JavaLangString, localefc.jdField_a_of_type_Long, paramView)) {
-        break label265;
+      if (paramInt > this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView.jdField_b_of_type_Int)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView.jdField_b_of_type_Int = paramInt;
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView.jdField_b_of_type_JavaLangString = localRecommendContactMsg.uin;
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView.jdField_b_of_type_Long = localRecommendContactMsg.timeStamp;
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView;
+        ((RecommendListView)localObject).jdField_a_of_type_Int += 1;
       }
-      PASingleItemBuilder.a(PASingleItemBuilder.c(this.a), PASingleItemBuilder.c(this.a), localefc.jdField_a_of_type_JavaLangString, localefc.b, localefc.c, PASingleItemBuilder.a(this.a).jdField_a_of_type_JavaLangString, PASingleItemBuilder.b(this.a).d);
+      if (RecommendListView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView) != 0) {
+        break label706;
+      }
+      if (localRecommendContactMsg.isRead) {
+        paramView.setBackgroundResource(2130837850);
+      }
+      label385:
+      if (localRecommendContactMsg.friendStatus != 2) {
+        break label726;
+      }
+      paramViewGroup.d.setVisibility(4);
+      paramViewGroup.c.setVisibility(0);
+      paramViewGroup.c.setText(2131561611);
     }
     for (;;)
     {
-      PublicAccountHandler.a(PASingleItemBuilder.k(this.a), PASingleItemBuilder.l(this.a).jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_32", "singlepic_allclick");
-      paramView = localefc.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-      if ((paramView instanceof MessageForPubAccount))
-      {
-        paramView = (MessageForPubAccount)paramView;
-        if ((paramView.mPAMessage != null) && (paramView.mPAMessage.mMsgId > 0L)) {
-          ReportController.b(PASingleItemBuilder.m(this.a), "P_CliOper", "Pb_account_lifeservice", paramView.frienduin, "mp_msg_sys_14", "msg_click", 0, 1, 0, Long.toString(paramView.mPAMessage.mMsgId), "", "", "");
-        }
+      if (this.jdField_a_of_type_Int != paramInt) {
+        break label804;
       }
-      return;
-      paramView = localefc.f;
+      paramViewGroup.d.setVisibility(8);
+      paramViewGroup.c.setVisibility(8);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout.b();
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetMotionViewSetter != null) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetMotionViewSetter.setMotionView(paramView, paramInt);
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(RecommendListView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setTag(Integer.valueOf(paramInt));
+      return paramView;
+      paramViewGroup = (efc)paramView.getTag();
       break;
-      label260:
-      i = 1;
-      break label66;
-      label265:
-      PublicAccountHandler.a(PASingleItemBuilder.d(this.a), PASingleItemBuilder.c(this.a).jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_34", "singlepic_appclick");
-      continue;
-      label294:
-      PASingleItemBuilder.a(PASingleItemBuilder.e(this.a), PASingleItemBuilder.d(this.a), localefc.jdField_a_of_type_JavaLangString, localefc.b, localefc.c, PASingleItemBuilder.d(this.a).jdField_a_of_type_JavaLangString, PASingleItemBuilder.e(this.a).d);
-      continue;
-      label346:
-      if (TextUtils.isEmpty(localJumpAction.a()))
+      label508:
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(localRecommendContactMsg.mobileNo))
       {
-        if (!PASingleItemBuilder.a(PASingleItemBuilder.f(this.a), PASingleItemBuilder.e(this.a), localefc.jdField_a_of_type_JavaLangString, localefc.jdField_a_of_type_Long, paramView)) {
-          PASingleItemBuilder.a(PASingleItemBuilder.g(this.a), PASingleItemBuilder.f(this.a), localefc.jdField_a_of_type_JavaLangString, localefc.b, localefc.c, PASingleItemBuilder.f(this.a).jdField_a_of_type_JavaLangString, PASingleItemBuilder.g(this.a).d);
-        } else {
-          PublicAccountHandler.a(PASingleItemBuilder.h(this.a), PASingleItemBuilder.h(this.a).jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_34", "singlepic_appclick");
+        this.jdField_a_of_type_JavaUtilHashMap.put(localRecommendContactMsg.mobileNo, paramViewGroup.jdField_a_of_type_AndroidWidgetImageView);
+        this.b.put(Integer.valueOf(paramView.getId()), localRecommendContactMsg.mobileNo);
+      }
+      for (;;)
+      {
+        localObject = localRecommendContactMsg.nationCode + localRecommendContactMsg.mobileCode;
+        RecommendListView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView, paramViewGroup, (String)localObject, 0, 11);
+        paramViewGroup.b.setText(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView.getContext().getResources().getString(2131558943));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localRecommendContactMsg.contactName);
+        break;
+        if (this.b.containsKey(Integer.valueOf(paramView.getId())))
+        {
+          localObject = (String)this.b.get(Integer.valueOf(paramView.getId()));
+          if ((localObject != null) && (!((String)localObject).equals(localRecommendContactMsg.mobileNo))) {
+            this.jdField_a_of_type_JavaUtilHashMap.remove(localObject);
+          }
         }
       }
-      else if (!localJumpAction.b()) {
-        PASingleItemBuilder.a(PASingleItemBuilder.i(this.a), PASingleItemBuilder.g(this.a), localefc.jdField_a_of_type_JavaLangString, localefc.b, localefc.c, PASingleItemBuilder.i(this.a).jdField_a_of_type_JavaLangString, PASingleItemBuilder.j(this.a).d);
-      } else {
-        PublicAccountHandler.a(PASingleItemBuilder.j(this.a), PASingleItemBuilder.k(this.a).jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_33", "singlepic_mqqclick");
+      label706:
+      if (RecommendListView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView) != 1) {
+        break label385;
+      }
+      paramView.setBackgroundResource(2130837850);
+      break label385;
+      label726:
+      if (localRecommendContactMsg.friendStatus == 1)
+      {
+        paramViewGroup.d.setVisibility(4);
+        paramViewGroup.c.setVisibility(0);
+        paramViewGroup.c.setText(2131561687);
+      }
+      else
+      {
+        paramViewGroup.d.setVisibility(0);
+        paramViewGroup.d.setTag(localRecommendContactMsg);
+        paramViewGroup.c.setVisibility(8);
+        paramViewGroup.d.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView);
       }
     }
-    label556:
-    PASingleItemBuilder.a(PASingleItemBuilder.l(this.a), PASingleItemBuilder.h(this.a), localefc.jdField_a_of_type_JavaLangString, localefc.b, localefc.c, PASingleItemBuilder.m(this.a).jdField_a_of_type_JavaLangString, PASingleItemBuilder.n(this.a).d);
+    label804:
+    paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout.c();
+    paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(null);
+    paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setTag(null);
+    return paramView;
+  }
+  
+  public boolean isEnabled(int paramInt)
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     efb
  * JD-Core Version:    0.7.0.1
  */

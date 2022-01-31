@@ -1,23 +1,14 @@
-import com.tencent.mobileqq.richmedia.conn.ConnManager;
-import com.tencent.mobileqq.richmedia.conn.HostInfo;
-import com.tencent.mobileqq.richmedia.server.ChannelStateManager;
-import com.tencent.mobileqq.richmedia.server.PeakAudioTransHandler;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class ahnb
-  implements Runnable
+  extends ahlp
 {
-  public ahnb(ConnManager paramConnManager, PeakAudioTransHandler paramPeakAudioTransHandler, long paramLong, HostInfo paramHostInfo) {}
-  
-  public void run()
-  {
-    ConnManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager).b(12);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaServerPeakAudioTransHandler.a(1, true, new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo.d), Integer.valueOf(2000), this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo });
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaServerPeakAudioTransHandler.a(this.jdField_a_of_type_Long, true);
-  }
+  public long a;
+  public structmsg.StructMsg a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahnb
  * JD-Core Version:    0.7.0.1
  */

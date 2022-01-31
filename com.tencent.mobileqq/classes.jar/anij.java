@@ -1,48 +1,26 @@
-import android.app.Activity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.qq.im.QIMCameraCaptureUnit;
-import dov.com.qq.im.setting.ICameraEntrance;
-import dov.com.qq.im.setting.IQIMCameraContainer;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class anij
-  implements Runnable
+class anij
+  implements anju
 {
-  public anij(QIMCameraCaptureUnit paramQIMCameraCaptureUnit, int paramInt) {}
+  anij(anii paramanii, long paramLong) {}
   
-  public void run()
+  public void a(long paramLong)
   {
-    switch (this.jdField_a_of_type_Int)
-    {
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Anii.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          QQToast.a(BaseApplicationImpl.getApplication(), "录制出现异常，请重试", 1).a();
-          Activity localActivity = this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a();
-          if ((localActivity != null) && (!localActivity.isFinishing())) {
-            this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.jdField_a_of_type_DovComQqImSettingICameraEntrance.a(2);
-          }
-        } while (!this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.jdField_a_of_type_Boolean);
-        this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.x();
-        return;
-        QQToast.a(BaseApplicationImpl.getContext(), "拍摄时间过短，请重新拍摄。", 0).a();
-        this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.e();
-      } while (!this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.w();
-      return;
-      QQToast.a(BaseApplicationImpl.getContext(), "拍照出现异常，请重试", 0).a();
-    } while (!this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.w();
+  }
+  
+  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    anif.a(this.jdField_a_of_type_Anii.a, this.jdField_a_of_type_Long, paramBoolean, "Motion", paramFloat1, paramFloat2, paramFloat3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anij
  * JD-Core Version:    0.7.0.1
  */

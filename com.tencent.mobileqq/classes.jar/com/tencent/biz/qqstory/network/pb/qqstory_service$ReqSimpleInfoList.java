@@ -8,10 +8,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 
 public final class qqstory_service$ReqSimpleInfoList
-  extends MessageMicro
+  extends MessageMicro<ReqSimpleInfoList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatField vid_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> vid_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
   
   static
   {
@@ -21,7 +21,7 @@ public final class qqstory_service$ReqSimpleInfoList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqSimpleInfoList
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,116 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import com.tencent.mobileqq.international.LocaleString;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import mqq.observer.AccountObserver;
 
-class dgz
-  implements DialogInterface.OnClickListener
+public class dgz
+  extends AccountObserver
 {
-  dgz(dgy paramdgy) {}
+  public dgz(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onRegisterCommitSmsCodeResp(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterCommitSmsCodeResp");
     }
+    if (this.a.isFinishing()) {}
     do
     {
       return;
-      this.a.jdField_a_of_type_Dgx.a.b.a().a(this.a.jdField_a_of_type_Dgx.a.b(), 0, this.a.jdField_a_of_type_Long);
-      this.a.jdField_a_of_type_Dgx.a.b();
+      this.a.g();
+      if ((!paramBoolean) || (paramInt != 0)) {
+        try
+        {
+          paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
+          Object localObject = paramArrayOfByte;
+          if (TextUtils.isEmpty(paramArrayOfByte)) {
+            localObject = this.a.getString(2131561658);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterCommitSmsCodeResp error=" + (String)localObject);
+          }
+          paramArrayOfByte = LocaleString.i(this.a.getBaseContext(), (String)localObject);
+          this.a.a(paramArrayOfByte, 1);
+          return;
+        }
+        catch (UnsupportedEncodingException paramArrayOfByte)
+        {
+          for (;;)
+          {
+            paramArrayOfByte.printStackTrace();
+            paramArrayOfByte = null;
+          }
+        }
+      }
+      if (paramInt == 0) {
+        this.a.s_();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterCommitSmsCodeResp code = " + paramInt);
+  }
+  
+  public void onRegisterSendResendSmsreqResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
+  {
+    Object localObject = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterSendResendSmsreqResp");
+    }
+    if (this.a.isFinishing()) {
       return;
-    } while (this.a.jdField_a_of_type_Dgx.a.jdField_a_of_type_Dgx.getCount() <= 0);
-    this.a.jdField_a_of_type_Dgx.a.b.a().a(this.a.jdField_a_of_type_Dgx.a.b(), 0);
-    this.a.jdField_a_of_type_Dgx.a.jdField_a_of_type_Dgx.changeCursor(this.a.jdField_a_of_type_Dgx.getCursor());
+    }
+    this.a.g();
+    if (!paramBoolean) {
+      try
+      {
+        paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
+        localObject = paramArrayOfByte;
+        if (TextUtils.isEmpty(paramArrayOfByte)) {
+          localObject = this.a.getString(2131561658);
+        }
+        this.a.a((String)localObject, 1);
+        return;
+      }
+      catch (UnsupportedEncodingException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          paramArrayOfByte.printStackTrace();
+          paramArrayOfByte = null;
+        }
+      }
+    }
+    if (paramArrayOfByte != null) {}
+    try
+    {
+      localObject = new String(paramArrayOfByte, "utf-8");
+      if (QLog.isColorLevel()) {
+        QLog.d("RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterSendResendSmsreqResp code = " + paramInt1 + ";strMsg = " + (String)localObject + ";next_chk_time =" + paramInt2 + ";total_time_over =" + paramInt3);
+      }
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+        continue;
+        if (paramInt1 == 5)
+        {
+          paramInt1 = paramInt2;
+          if (paramInt2 <= 60) {
+            paramInt1 = 60;
+          }
+          RegisterVerifyCodeActivity.a(this.a, paramInt1);
+        }
+      }
+    }
+    if (paramInt1 == 0)
+    {
+      RegisterVerifyCodeActivity.a(this.a, 60);
+      RegisterVerifyCodeActivity.a(this.a, RegisterVerifyCodeActivity.c(this.a));
+      return;
+    }
   }
 }
 

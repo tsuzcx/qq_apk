@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.qzone.widget.LinerLayoutForListViewItem android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080ccc" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207bb" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:qzone="http://schemas.android.com/apk/res/com.tencent.mobileqqi">
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f080ccd" android:background="#ffd7d7d7" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginRight="9.0dip" android:layout_marginBottom="9.0dip">
-        <com.qzone.widget.AvatarImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080d62" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginTop="9.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02078f" qzone:avatarSize="38.0dip" />
-        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="14.0dip" android:layout_weight="1.0">
-            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="4.0dip">
-                <com.qzone.widget.textwidget.CellTextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0167" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0099" android:ellipsize="end" android:gravity="top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080d63" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="飛翔的小球球XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx" android:singleLine="true" android:layout_weight="1.0" />
-                <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0164" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00cd" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080d64" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d054d" android:singleLine="true" />
-            </LinearLayout>
-            <com.qzone.widget.textwidget.CellTextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0164" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00cc" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080d65" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="说的好像真的一样" android:lineSpacingExtra="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0171" />
-            <TextView android:textSize="11.0sp" android:textColor="#ffa9a9a9" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080d66" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="昨天23:55" android:singleLine="true" />
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f08010f" android:visibility="invisible" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b3f" android:background="#7f000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b40" android:background="@drawable/skin_conversation_options_bg" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <LinearLayout android:gravity="center" android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080d5f" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207c7" android:clickable="true" android:layout_width="60.0dip" android:layout_height="fill_parent" android:layout_weight="0.33">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b42" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207ec" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0147" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b43" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0aeb" />
         </LinearLayout>
-        <com.qzone.widget.FeedImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080d67" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01d9" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01d9" android:layout_marginTop="9.0dip" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0d0b29" />
+        <ImageView android:background="@drawable/skin_conversation_options_bg_line" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+        <LinearLayout android:gravity="center" android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080d60" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207c7" android:clickable="true" android:layout_width="60.0dip" android:layout_height="fill_parent" android:layout_weight="0.33">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080d61" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207ee" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0147" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080d62" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0aec" />
+        </LinearLayout>
+        <ImageView android:background="@drawable/skin_conversation_options_bg_line" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+        <LinearLayout android:gravity="center" android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080d63" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207c7" android:clickable="true" android:layout_width="60.0dip" android:layout_height="fill_parent" android:layout_weight="0.33">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b45" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207ed" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0147" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b46" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0aed" />
+        </LinearLayout>
     </LinearLayout>
-</com.qzone.widget.LinerLayoutForListViewItem>
+</RelativeLayout>

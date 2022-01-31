@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Oidb_0x5cf$UnDecide
-  extends MessageMicro
+  extends MessageMicro<UnDecide>
 {
   public static final int RPT_STR_WORDING_FIELD_NUMBER = 11;
   public static final int STR_ADD_SOURCE_FIELD_NUMBER = 13;
@@ -26,7 +26,7 @@ public final class Oidb_0x5cf$UnDecide
   public static final int UINT64_GROUP_CODE_FIELD_NUMBER = 14;
   public static final int UINT64_UIN_FIELD_NUMBER = 1;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 90, 98, 106, 112 }, new String[] { "uint64_uin", "uint64_fuin", "uint32_flag", "uint32_ackflag", "uint32_reqtype", "uint32_groupid", "uint32_sourceid", "uint32_sourcesubid", "uint32_time", "uint32_count", "rpt_str_wording", "str_mainemailaccount", "str_add_source", "uint64_group_code" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", "", Long.valueOf(0L) }, UnDecide.class);
-  public final PBRepeatField rpt_str_wording = PBField.initRepeat(PBStringField.__repeatHelper__);
+  public final PBRepeatField<String> rpt_str_wording = PBField.initRepeat(PBStringField.__repeatHelper__);
   public final PBStringField str_add_source = PBField.initString("");
   public final PBStringField str_mainemailaccount = PBField.initString("");
   public final PBUInt32Field uint32_ackflag = PBField.initUInt32(0);
@@ -43,7 +43,7 @@ public final class Oidb_0x5cf$UnDecide
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5cf.Oidb_0x5cf.UnDecide
  * JD-Core Version:    0.7.0.1
  */

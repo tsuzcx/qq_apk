@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class appoint_define$PublisherInfo
-  extends MessageMicro
+  extends MessageMicro<PublisherInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_nickname = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -45,7 +45,7 @@ public final class appoint_define$PublisherInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     appoint.define.appoint_define.PublisherInfo
  * JD-Core Version:    0.7.0.1
  */

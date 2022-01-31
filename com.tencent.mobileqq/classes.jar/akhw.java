@@ -1,13 +1,23 @@
-import com.tencent.mobileqq.vas.SonicTemplateUpdateManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import java.lang.ref.WeakReference;
 
-public class akhw
-  implements Runnable
+class akhw
+  implements View.OnClickListener
 {
-  public akhw(SonicTemplateUpdateManager paramSonicTemplateUpdateManager) {}
+  private WeakReference<akhs> a;
   
-  public void run()
+  public akhw(akhs paramakhs)
   {
-    this.a.b();
+    this.a = new WeakReference(paramakhs);
+  }
+  
+  public void onClick(View paramView)
+  {
+    akhs localakhs = (akhs)this.a.get();
+    if (localakhs != null) {
+      localakhs.onClick(paramView);
+    }
   }
 }
 

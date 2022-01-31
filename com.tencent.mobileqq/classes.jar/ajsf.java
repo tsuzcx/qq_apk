@@ -1,31 +1,6 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.text.TextPaint;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.FollowImageTextView;
-
-public class ajsf
-  extends TextView
+public abstract interface ajsf
 {
-  public ajsf(FollowImageTextView paramFollowImageTextView, Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  protected void onDraw(Canvas paramCanvas)
-  {
-    if (FollowImageTextView.a(this.a))
-    {
-      super.onDraw(paramCanvas);
-      return;
-    }
-    Object localObject = getPaint();
-    ((TextPaint)localObject).setColor(getCurrentTextColor());
-    ((TextPaint)localObject).drawableState = getDrawableState();
-    localObject = FollowImageTextView.a(this.a);
-    ((ajsh)localObject).a(FollowImageTextView.a(this.a) - 1);
-    ((ajsh)localObject).a(paramCanvas);
-  }
+  public abstract void j();
 }
 
 

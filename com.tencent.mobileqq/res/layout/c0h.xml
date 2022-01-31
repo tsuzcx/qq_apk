@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/ks" android:layout_width="fill_parent" android:layout_height="60.0dip" android:minHeight="60.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/azi" android:focusable="false" android:clickable="false" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:scaleType="fitXY" android:layout_centerVertical="true" android:contentDescription="@null" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/azj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="1.0dip" android:layout_toRightOf="@id/azi" android:layout_centerVertical="true">
+        <com.tencent.mobileqq.troop.widget.SingleLineHotwordTextView android:textSize="18.0dip" android:textColor="@color/fl" android:ellipsize="middle" android:id="@id/azk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:maxLines="1" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/e7" android:ellipsize="middle" android:id="@id/azl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="100.0dip" android:maxLines="1" android:layout_below="@id/azk" android:layout_alignBottom="@id/b02" />
+        <View android:id="@id/azm" android:background="#33333333" android:layout_width="1.0px" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="6.0dip" android:layout_toRightOf="@id/azl" android:layout_below="@id/azk" android:layout_alignTop="@id/azl" android:layout_alignBottom="@id/azl" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/e7" android:id="@id/b02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" android:maxLines="1" android:drawableLeft="@color/f5" android:layout_toRightOf="@id/azm" android:layout_below="@id/azk" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/e7" android:ellipsize="middle" android:id="@id/b01" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/b02" android:layout_below="@id/azk" />
+    </RelativeLayout>
+    <View android:background="@color/e8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignLeft="@id/azj" android:layout_alignParentBottom="true" />
+</RelativeLayout>

@@ -1,35 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.streamtransfile.StreamDataManager;
-import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
+import com.tencent.widget.AdapterView;
 
 public class aios
-  implements Runnable
+  implements bhuw
 {
-  public aios(BuddyTransfileProcessor paramBuddyTransfileProcessor, String paramString, short paramShort, long paramLong, Bundle paramBundle, boolean paramBoolean) {}
+  public aios(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity) {}
   
-  public void run()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    FileMsg localFileMsg;
-    if ((StreamDataManager.b(this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.c) != 0) && (!this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.e))
+    if (QzonePhotoPreviewActivity.a(this.a))
     {
-      localFileMsg = this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg;
-      BuddyTransfileProcessor localBuddyTransfileProcessor = this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor;
-      long l = System.nanoTime();
-      localBuddyTransfileProcessor.k = l;
-      localFileMsg.g = l;
-      this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.e = true;
+      this.a.getActivity().finish();
+      bdfa.anim(this.a.getActivity(), true, false);
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, BuddyTransfileProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor), this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.c, this.jdField_a_of_type_Short, BuddyTransfileProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor), BuddyTransfileProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor), this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.q, this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.r, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), true, NetworkUtil.b(this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()), 2, 0, StreamDataManager.a(this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.c, this.jdField_a_of_type_Short));
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      localFileMsg = this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg;
-      localFileMsg.e += StreamDataManager.a(this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.c, this.jdField_a_of_type_Short);
-    }
+    this.a.a();
   }
 }
 

@@ -1,26 +1,27 @@
-import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.teamwork.TeamWorkConvertUtils;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
 public class adfw
-  implements View.OnClickListener
+  implements View.OnFocusChangeListener
 {
-  public adfw(SimpleFileViewer paramSimpleFileViewer, QQAppInterface paramQQAppInterface, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  public adfw(Leba paramLeba) {}
   
-  public void onClick(View paramView)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008A32", "0X8008A32", 0, 0, "", "", "", "");
-    SimpleFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer, TeamWorkConvertUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a.getString(2131439140), false));
+    if (paramBoolean)
+    {
+      paramView.clearFocus();
+      aysc.a(null, 0, 21, "0X8009D15", 0, 0, null, null);
+      UniteSearchActivity.a(this.a.a(), null, 21, 0L, null, 3);
+      azqs.b(this.a.a, "CliOper", "", "", "0x8004B21", "0x8004B21", 0, 0, "", "", "", "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adfw
  * JD-Core Version:    0.7.0.1
  */

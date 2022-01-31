@@ -1,22 +1,14 @@
-import android.graphics.Bitmap;
-import com.tencent.av.ui.MultiVideoMembersHolderUI;
+import com.tencent.biz.pubaccount.assistant.PubAccountAssistantActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class bkp
+  extends FriendListObserver
 {
-  public long a;
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public boolean b = false;
-  public boolean c = false;
-  public boolean d = false;
+  public bkp(PubAccountAssistantActivity paramPubAccountAssistantActivity) {}
   
-  public bkp(MultiVideoMembersHolderUI paramMultiVideoMembersHolderUI)
+  protected void a()
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.a.b();
   }
 }
 

@@ -3,8 +3,8 @@ package com.tencent.biz.webviewplugin;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
+import begz;
 import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 
 public class PayJsPlugin$MyResultRecevicer
@@ -21,7 +21,9 @@ public class PayJsPlugin$MyResultRecevicer
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    if (QLog.isColorLevel()) {
+    if (QLog.isColorLevel())
+    {
+      QLog.i("JsBridge.JsHandle.PayJsHandler", 2, "MyResultRecevicer receive = " + this);
       QLog.i("JsBridge.JsHandle.PayJsHandler", 2, "resultCode = " + paramInt + " resultData = " + paramBundle);
     }
     if ((this.a == null) || (paramBundle == null)) {}
@@ -74,7 +76,7 @@ public class PayJsPlugin$MyResultRecevicer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.PayJsPlugin.MyResultRecevicer
  * JD-Core Version:    0.7.0.1
  */

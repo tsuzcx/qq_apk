@@ -1,35 +1,35 @@
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.profile.upload.task.VipBaseUpsImageUploadTask;
-import com.tencent.upload.uinterface.data.UpsImageUploadResult;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.qqcircle.widgets.QCircleFollowView;
+import feedcloud.FeedCloudMeta.StNotice;
+import feedcloud.FeedCloudMeta.StOperation;
+import feedcloud.FeedCloudMeta.StUser;
 
 public class uhd
-  extends VipBaseUpsImageUploadTask
+  extends ugz
 {
-  public uhd(VipProfileCardDiyActivity paramVipProfileCardDiyActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3, boolean paramBoolean)
+  private QCircleFollowView a;
+  
+  public uhd(int paramInt)
   {
-    super(paramLong, paramString1, paramArrayOfByte, paramString2);
+    super(paramInt);
   }
   
-  public void a(int paramInt, Object... paramVarArgs)
+  void b(Context paramContext, View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-    case 1001: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
-      } while (a() == null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a(), this.jdField_a_of_type_Boolean);
-      return;
+    this.a = ((QCircleFollowView)paramView.findViewById(2131373166));
+  }
+  
+  void b(FeedCloudMeta.StNotice paramStNotice, int paramInt)
+  {
+    if (paramStNotice.operation.opUser.get() != null) {
+      this.a.setUserData((FeedCloudMeta.StUser)paramStNotice.operation.opUser.get());
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uhd
  * JD-Core Version:    0.7.0.1
  */

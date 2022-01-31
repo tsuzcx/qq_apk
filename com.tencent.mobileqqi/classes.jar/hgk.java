@@ -1,77 +1,42 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.AsyncTask;
-import android.os.SystemClock;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.PerformanceReportUtils;
-import com.tencent.mobileqq.utils.QQUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.manager.ServerConfigManager.ConfigType;
+import android.graphics.Rect;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.CustomedTabWidget;
+import java.lang.ref.WeakReference;
 
-public final class hgk
-  extends AsyncTask
+public class hgk
+  extends Handler
 {
-  public hgk(String paramString, int paramInt) {}
+  private WeakReference a;
   
-  protected Void a(Void... paramVarArgs)
+  public hgk(CustomedTabWidget paramCustomedTabWidget)
   {
-    paramVarArgs = QQUtils.a(ServerConfigManager.ConfigType.common, PerformanceReportUtils.i());
-    if (QLog.isDevelopLevel()) {
-      QLog.d(PerformanceReportUtils.b(), 4, "reportFPS openStr ：" + paramVarArgs);
+    this.a = new WeakReference(paramCustomedTabWidget);
+  }
+  
+  public void handleMessage(Message arg1)
+  {
+    CustomedTabWidget localCustomedTabWidget = (CustomedTabWidget)this.a.get();
+    if (localCustomedTabWidget == null) {
+      return;
     }
-    if ((paramVarArgs == null) || (!"1".equals(paramVarArgs))) {}
-    for (;;)
+    if (localCustomedTabWidget.jdField_a_of_type_Float < 0.0F) {
+      localCustomedTabWidget.invalidate((int)(localCustomedTabWidget.b.left + localCustomedTabWidget.jdField_a_of_type_Float), localCustomedTabWidget.b.top, localCustomedTabWidget.b.right, localCustomedTabWidget.b.bottom);
+    }
+    synchronized (localCustomedTabWidget.jdField_a_of_type_Hgk)
     {
-      return null;
-      long l1;
-      try
+      Rect localRect = localCustomedTabWidget.b;
+      localRect.left = ((int)(localRect.left + localCustomedTabWidget.jdField_a_of_type_Float));
+      localRect = localCustomedTabWidget.b;
+      localRect.right = ((int)(localRect.right + localCustomedTabWidget.jdField_a_of_type_Float));
+      if ((localCustomedTabWidget.jdField_a_of_type_AndroidGraphicsRect.left - localCustomedTabWidget.b.left) / localCustomedTabWidget.jdField_a_of_type_Float >= 1.0F)
       {
-        paramVarArgs = PerformanceReportUtils.a();
-        if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Int > 0))
-        {
-          if ((this.jdField_a_of_type_Int >= 60) && (QLog.isDevelopLevel())) {
-            QLog.e(PerformanceReportUtils.b(), 4, "reportFPS  fps error fpsvalue :" + this.jdField_a_of_type_Int);
-          }
-          long l2 = paramVarArgs.getLong(this.jdField_a_of_type_JavaLangString, 0L);
-          l1 = PerformanceReportUtils.a();
-          Object localObject = QQUtils.a(ServerConfigManager.ConfigType.common, PerformanceReportUtils.j());
-          if (localObject != null) {}
-          try
-          {
-            if (QLog.isDevelopLevel()) {
-              QLog.d(PerformanceReportUtils.b(), 4, "reportFPS  server time：" + (String)localObject);
-            }
-            l1 = Long.valueOf((String)localObject).longValue();
-            l1 *= 1000L;
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              l1 = PerformanceReportUtils.a();
-            }
-          }
-          if (QLog.isDevelopLevel()) {
-            QLog.d(PerformanceReportUtils.b(), 4, "reportFPS report_time ：" + l1 + ",lastRp" + l2 + ",reportFPS fpsvalue：" + this.jdField_a_of_type_Int);
-          }
-          if ((l2 == 0L) || (SystemClock.uptimeMillis() < l2) || (SystemClock.uptimeMillis() - l2 >= l1))
-          {
-            localObject = new HashMap();
-            ((HashMap)localObject).put("param_FPS", String.valueOf(this.jdField_a_of_type_Int));
-            if (QLog.isDevelopLevel()) {
-              QLog.d(PerformanceReportUtils.b(), 4, "reportFPS real report  fpsvalue：" + this.jdField_a_of_type_Int);
-            }
-            StatisticCollector.a(BaseApplication.getContext()).a(QQUtils.a(), this.jdField_a_of_type_JavaLangString, PerformanceReportUtils.a(this.jdField_a_of_type_JavaLangString), 0L, 0L, (HashMap)localObject, PerformanceReportUtils.h());
-            paramVarArgs.edit().putLong(this.jdField_a_of_type_JavaLangString, SystemClock.uptimeMillis()).commit();
-            return null;
-          }
-        }
+        sendEmptyMessage(0);
+        return;
+        localCustomedTabWidget.invalidate(localCustomedTabWidget.b.left, localCustomedTabWidget.b.top, (int)(localCustomedTabWidget.b.right + localCustomedTabWidget.jdField_a_of_type_Float), localCustomedTabWidget.b.bottom);
       }
-      catch (Exception paramVarArgs) {}
     }
-    return null;
+    localObject.b.set(localObject.jdField_a_of_type_AndroidGraphicsRect.left, localObject.jdField_a_of_type_AndroidGraphicsRect.top, localObject.jdField_a_of_type_AndroidGraphicsRect.right, localObject.jdField_a_of_type_AndroidGraphicsRect.bottom);
   }
 }
 

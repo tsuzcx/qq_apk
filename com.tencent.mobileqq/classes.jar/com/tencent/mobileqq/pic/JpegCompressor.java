@@ -3,10 +3,7 @@ package com.tencent.mobileqq.pic;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Color;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public final class JpegCompressor
 {
@@ -47,9 +44,8 @@ public final class JpegCompressor
   private native int compressCb(long paramLong, Bitmap paramBitmap);
   
   public static void compressJpeg(Bitmap paramBitmap, String paramString, JpegCompressOptions paramJpegCompressOptions)
-    throws Exception
   {
-    JpegCompressor localJpegCompressor = new JpegCompressor(new JpegDataDestImpl(paramString));
+    JpegCompressor localJpegCompressor = new JpegCompressor(new JpegCompressor.JpegDataDestImpl(paramString));
     paramString = paramJpegCompressOptions;
     if (paramJpegCompressOptions == null) {
       paramString = JpegCompressOptions.DEFAULT;
@@ -72,231 +68,229 @@ public final class JpegCompressor
   public static float getJpegQuality(String paramString)
   {
     // Byte code:
-    //   0: fconst_0
-    //   1: fstore_2
-    //   2: getstatic 24	com/tencent/mobileqq/pic/JpegCompressor:soLoadStatus	Z
-    //   5: ifne +8 -> 13
-    //   8: bipush 50
-    //   10: invokestatic 103	com/tencent/mobileqq/pic/JpegError:throwException	(I)V
-    //   13: iconst_0
-    //   14: istore 4
-    //   16: aconst_null
-    //   17: astore 7
-    //   19: aconst_null
-    //   20: astore 8
-    //   22: aconst_null
-    //   23: astore 5
-    //   25: aconst_null
-    //   26: astore 6
-    //   28: new 105	java/io/BufferedInputStream
-    //   31: dup
-    //   32: new 107	java/io/FileInputStream
-    //   35: dup
-    //   36: new 109	java/io/File
+    //   0: getstatic 21	com/tencent/mobileqq/pic/JpegCompressor:soLoadStatus	Z
+    //   3: ifne +8 -> 11
+    //   6: bipush 50
+    //   8: invokestatic 99	com/tencent/mobileqq/pic/JpegError:throwException	(I)V
+    //   11: new 101	java/io/BufferedInputStream
+    //   14: dup
+    //   15: new 103	java/io/FileInputStream
+    //   18: dup
+    //   19: new 105	java/io/File
+    //   22: dup
+    //   23: aload_0
+    //   24: invokespecial 106	java/io/File:<init>	(Ljava/lang/String;)V
+    //   27: invokespecial 109	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   30: invokespecial 112	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   33: astore_3
+    //   34: aload_3
+    //   35: astore_0
+    //   36: new 114	java/io/ByteArrayOutputStream
     //   39: dup
-    //   40: aload_0
-    //   41: invokespecial 110	java/io/File:<init>	(Ljava/lang/String;)V
-    //   44: invokespecial 113	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   47: invokespecial 116	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   50: astore_0
-    //   51: new 118	java/io/ByteArrayOutputStream
-    //   54: dup
-    //   55: sipush 1000
-    //   58: invokespecial 120	java/io/ByteArrayOutputStream:<init>	(I)V
-    //   61: astore 5
-    //   63: sipush 1000
-    //   66: newarray byte
-    //   68: astore 6
-    //   70: aload_0
-    //   71: aload 6
-    //   73: invokevirtual 124	java/io/BufferedInputStream:read	([B)I
-    //   76: istore_3
-    //   77: iload_3
-    //   78: iconst_m1
-    //   79: if_icmpne +45 -> 124
-    //   82: aload 5
-    //   84: invokevirtual 125	java/io/ByteArrayOutputStream:close	()V
-    //   87: aload 5
-    //   89: invokevirtual 129	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   92: astore 5
-    //   94: aload 5
-    //   96: aload 5
-    //   98: arraylength
-    //   99: invokestatic 133	com/tencent/mobileqq/pic/JpegCompressor:getQuality	([BI)F
-    //   102: fstore_1
-    //   103: aload_0
-    //   104: ifnull +211 -> 315
-    //   107: aload_0
-    //   108: invokevirtual 134	java/io/BufferedInputStream:close	()V
-    //   111: iload 4
-    //   113: istore_3
-    //   114: iload_3
-    //   115: ifeq +7 -> 122
-    //   118: iload_3
-    //   119: invokestatic 103	com/tencent/mobileqq/pic/JpegError:throwException	(I)V
-    //   122: fload_1
-    //   123: freturn
-    //   124: aload 5
-    //   126: aload 6
-    //   128: iconst_0
-    //   129: iload_3
-    //   130: invokevirtual 138	java/io/ByteArrayOutputStream:write	([BII)V
-    //   133: goto -63 -> 70
-    //   136: astore 6
-    //   138: aload_0
-    //   139: astore 5
-    //   141: aload 6
-    //   143: invokevirtual 139	java/io/FileNotFoundException:printStackTrace	()V
-    //   146: iload 4
-    //   148: istore_3
-    //   149: fload_2
-    //   150: fstore_1
-    //   151: aload_0
-    //   152: ifnull -38 -> 114
-    //   155: aload_0
-    //   156: invokevirtual 134	java/io/BufferedInputStream:close	()V
-    //   159: iload 4
-    //   161: istore_3
-    //   162: fload_2
-    //   163: fstore_1
-    //   164: goto -50 -> 114
-    //   167: astore_0
-    //   168: iload 4
-    //   170: istore_3
-    //   171: fload_2
-    //   172: fstore_1
-    //   173: goto -59 -> 114
-    //   176: astore 6
-    //   178: aload 7
-    //   180: astore_0
-    //   181: aload_0
-    //   182: astore 5
-    //   184: aload 6
-    //   186: invokevirtual 140	java/io/IOException:printStackTrace	()V
-    //   189: iload 4
-    //   191: istore_3
-    //   192: fload_2
-    //   193: fstore_1
-    //   194: aload_0
-    //   195: ifnull -81 -> 114
-    //   198: aload_0
-    //   199: invokevirtual 134	java/io/BufferedInputStream:close	()V
-    //   202: iload 4
-    //   204: istore_3
-    //   205: fload_2
-    //   206: fstore_1
-    //   207: goto -93 -> 114
-    //   210: astore_0
-    //   211: iload 4
-    //   213: istore_3
-    //   214: fload_2
-    //   215: fstore_1
-    //   216: goto -102 -> 114
-    //   219: astore_0
-    //   220: aload 8
-    //   222: astore_0
-    //   223: bipush 52
-    //   225: istore 4
-    //   227: iload 4
-    //   229: istore_3
-    //   230: fload_2
-    //   231: fstore_1
+    //   40: sipush 1000
+    //   43: invokespecial 116	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   46: astore 4
+    //   48: aload_3
+    //   49: astore_0
+    //   50: sipush 1000
+    //   53: newarray byte
+    //   55: astore 5
+    //   57: aload_3
+    //   58: astore_0
+    //   59: aload_3
+    //   60: aload 5
+    //   62: invokevirtual 120	java/io/BufferedInputStream:read	([B)I
+    //   65: istore_2
+    //   66: iload_2
+    //   67: iconst_m1
+    //   68: if_icmpeq +48 -> 116
+    //   71: aload_3
+    //   72: astore_0
+    //   73: aload 4
+    //   75: aload 5
+    //   77: iconst_0
+    //   78: iload_2
+    //   79: invokevirtual 124	java/io/ByteArrayOutputStream:write	([BII)V
+    //   82: goto -25 -> 57
+    //   85: astore 4
+    //   87: aload_3
+    //   88: astore_0
+    //   89: aload 4
+    //   91: invokevirtual 125	java/io/FileNotFoundException:printStackTrace	()V
+    //   94: aload_3
+    //   95: ifnull +176 -> 271
+    //   98: aload_3
+    //   99: invokevirtual 126	java/io/BufferedInputStream:close	()V
+    //   102: iconst_0
+    //   103: istore_2
+    //   104: fconst_0
+    //   105: fstore_1
+    //   106: iload_2
+    //   107: ifeq +7 -> 114
+    //   110: iload_2
+    //   111: invokestatic 99	com/tencent/mobileqq/pic/JpegError:throwException	(I)V
+    //   114: fload_1
+    //   115: freturn
+    //   116: aload_3
+    //   117: astore_0
+    //   118: aload 4
+    //   120: invokevirtual 127	java/io/ByteArrayOutputStream:close	()V
+    //   123: aload_3
+    //   124: astore_0
+    //   125: aload 4
+    //   127: invokevirtual 131	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   130: astore 4
+    //   132: aload_3
+    //   133: astore_0
+    //   134: aload 4
+    //   136: aload 4
+    //   138: arraylength
+    //   139: invokestatic 135	com/tencent/mobileqq/pic/JpegCompressor:getQuality	([BI)F
+    //   142: fstore_1
+    //   143: aload_3
+    //   144: ifnull +134 -> 278
+    //   147: aload_3
+    //   148: invokevirtual 126	java/io/BufferedInputStream:close	()V
+    //   151: iconst_0
+    //   152: istore_2
+    //   153: goto -47 -> 106
+    //   156: astore_0
+    //   157: iconst_0
+    //   158: istore_2
+    //   159: goto -53 -> 106
+    //   162: astore_0
+    //   163: iconst_0
+    //   164: istore_2
+    //   165: fconst_0
+    //   166: fstore_1
+    //   167: goto -61 -> 106
+    //   170: astore 4
+    //   172: aconst_null
+    //   173: astore_3
+    //   174: aload_3
+    //   175: astore_0
+    //   176: aload 4
+    //   178: invokevirtual 136	java/io/IOException:printStackTrace	()V
+    //   181: aload_3
+    //   182: ifnull +89 -> 271
+    //   185: aload_3
+    //   186: invokevirtual 126	java/io/BufferedInputStream:close	()V
+    //   189: iconst_0
+    //   190: istore_2
+    //   191: fconst_0
+    //   192: fstore_1
+    //   193: goto -87 -> 106
+    //   196: astore_0
+    //   197: iconst_0
+    //   198: istore_2
+    //   199: fconst_0
+    //   200: fstore_1
+    //   201: goto -95 -> 106
+    //   204: astore_0
+    //   205: aconst_null
+    //   206: astore_3
+    //   207: bipush 52
+    //   209: istore_2
+    //   210: aload_3
+    //   211: ifnull +55 -> 266
+    //   214: aload_3
+    //   215: invokevirtual 126	java/io/BufferedInputStream:close	()V
+    //   218: fconst_0
+    //   219: fstore_1
+    //   220: goto -114 -> 106
+    //   223: astore_0
+    //   224: fconst_0
+    //   225: fstore_1
+    //   226: goto -120 -> 106
+    //   229: astore_3
+    //   230: aconst_null
+    //   231: astore_0
     //   232: aload_0
-    //   233: ifnull -119 -> 114
+    //   233: ifnull +7 -> 240
     //   236: aload_0
-    //   237: invokevirtual 134	java/io/BufferedInputStream:close	()V
-    //   240: iload 4
-    //   242: istore_3
-    //   243: fload_2
-    //   244: fstore_1
-    //   245: goto -131 -> 114
-    //   248: astore_0
-    //   249: iload 4
-    //   251: istore_3
-    //   252: fload_2
-    //   253: fstore_1
-    //   254: goto -140 -> 114
-    //   257: astore_0
-    //   258: aload 5
-    //   260: ifnull +8 -> 268
-    //   263: aload 5
-    //   265: invokevirtual 134	java/io/BufferedInputStream:close	()V
-    //   268: aload_0
-    //   269: athrow
-    //   270: astore_0
-    //   271: iload 4
-    //   273: istore_3
-    //   274: goto -160 -> 114
-    //   277: astore 5
-    //   279: goto -11 -> 268
-    //   282: astore 6
-    //   284: aload_0
-    //   285: astore 5
-    //   287: aload 6
-    //   289: astore_0
-    //   290: goto -32 -> 258
-    //   293: astore 5
-    //   295: goto -72 -> 223
-    //   298: astore 6
-    //   300: goto -119 -> 181
-    //   303: astore 5
-    //   305: aload 6
-    //   307: astore_0
-    //   308: aload 5
-    //   310: astore 6
-    //   312: goto -174 -> 138
-    //   315: iload 4
-    //   317: istore_3
-    //   318: goto -204 -> 114
+    //   237: invokevirtual 126	java/io/BufferedInputStream:close	()V
+    //   240: aload_3
+    //   241: athrow
+    //   242: astore_0
+    //   243: goto -3 -> 240
+    //   246: astore_3
+    //   247: goto -15 -> 232
+    //   250: astore_0
+    //   251: goto -44 -> 207
+    //   254: astore 4
+    //   256: goto -82 -> 174
+    //   259: astore 4
+    //   261: aconst_null
+    //   262: astore_3
+    //   263: goto -176 -> 87
+    //   266: fconst_0
+    //   267: fstore_1
+    //   268: goto -162 -> 106
+    //   271: iconst_0
+    //   272: istore_2
+    //   273: fconst_0
+    //   274: fstore_1
+    //   275: goto -169 -> 106
+    //   278: iconst_0
+    //   279: istore_2
+    //   280: goto -174 -> 106
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	321	0	paramString	String
-    //   102	152	1	f1	float
-    //   1	252	2	f2	float
-    //   76	242	3	i	int
-    //   14	302	4	j	int
-    //   23	241	5	localObject1	Object
-    //   277	1	5	localIOException1	IOException
-    //   285	1	5	str	String
-    //   293	1	5	localUnsatisfiedLinkError	UnsatisfiedLinkError
-    //   303	6	5	localFileNotFoundException1	java.io.FileNotFoundException
-    //   26	101	6	arrayOfByte	byte[]
-    //   136	6	6	localFileNotFoundException2	java.io.FileNotFoundException
-    //   176	9	6	localIOException2	IOException
-    //   282	6	6	localObject2	Object
-    //   298	8	6	localIOException3	IOException
-    //   310	1	6	localFileNotFoundException3	java.io.FileNotFoundException
-    //   17	162	7	localObject3	Object
-    //   20	201	8	localObject4	Object
+    //   0	283	0	paramString	String
+    //   105	170	1	f	float
+    //   65	215	2	i	int
+    //   33	182	3	localBufferedInputStream	java.io.BufferedInputStream
+    //   229	12	3	localObject1	Object
+    //   246	1	3	localObject2	Object
+    //   262	1	3	localObject3	Object
+    //   46	28	4	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   85	41	4	localFileNotFoundException1	java.io.FileNotFoundException
+    //   130	7	4	arrayOfByte1	byte[]
+    //   170	7	4	localIOException1	java.io.IOException
+    //   254	1	4	localIOException2	java.io.IOException
+    //   259	1	4	localFileNotFoundException2	java.io.FileNotFoundException
+    //   55	21	5	arrayOfByte2	byte[]
     // Exception table:
     //   from	to	target	type
-    //   51	70	136	java/io/FileNotFoundException
-    //   70	77	136	java/io/FileNotFoundException
-    //   82	103	136	java/io/FileNotFoundException
-    //   124	133	136	java/io/FileNotFoundException
-    //   155	159	167	java/io/IOException
-    //   28	51	176	java/io/IOException
-    //   198	202	210	java/io/IOException
-    //   28	51	219	java/lang/UnsatisfiedLinkError
-    //   236	240	248	java/io/IOException
-    //   28	51	257	finally
-    //   141	146	257	finally
-    //   184	189	257	finally
-    //   107	111	270	java/io/IOException
-    //   263	268	277	java/io/IOException
-    //   51	70	282	finally
-    //   70	77	282	finally
-    //   82	103	282	finally
-    //   124	133	282	finally
-    //   51	70	293	java/lang/UnsatisfiedLinkError
-    //   70	77	293	java/lang/UnsatisfiedLinkError
-    //   82	103	293	java/lang/UnsatisfiedLinkError
-    //   124	133	293	java/lang/UnsatisfiedLinkError
-    //   51	70	298	java/io/IOException
-    //   70	77	298	java/io/IOException
-    //   82	103	298	java/io/IOException
-    //   124	133	298	java/io/IOException
-    //   28	51	303	java/io/FileNotFoundException
+    //   36	48	85	java/io/FileNotFoundException
+    //   50	57	85	java/io/FileNotFoundException
+    //   59	66	85	java/io/FileNotFoundException
+    //   73	82	85	java/io/FileNotFoundException
+    //   118	123	85	java/io/FileNotFoundException
+    //   125	132	85	java/io/FileNotFoundException
+    //   134	143	85	java/io/FileNotFoundException
+    //   147	151	156	java/io/IOException
+    //   98	102	162	java/io/IOException
+    //   11	34	170	java/io/IOException
+    //   185	189	196	java/io/IOException
+    //   11	34	204	java/lang/UnsatisfiedLinkError
+    //   214	218	223	java/io/IOException
+    //   11	34	229	finally
+    //   236	240	242	java/io/IOException
+    //   36	48	246	finally
+    //   50	57	246	finally
+    //   59	66	246	finally
+    //   73	82	246	finally
+    //   89	94	246	finally
+    //   118	123	246	finally
+    //   125	132	246	finally
+    //   134	143	246	finally
+    //   176	181	246	finally
+    //   36	48	250	java/lang/UnsatisfiedLinkError
+    //   50	57	250	java/lang/UnsatisfiedLinkError
+    //   59	66	250	java/lang/UnsatisfiedLinkError
+    //   73	82	250	java/lang/UnsatisfiedLinkError
+    //   118	123	250	java/lang/UnsatisfiedLinkError
+    //   125	132	250	java/lang/UnsatisfiedLinkError
+    //   134	143	250	java/lang/UnsatisfiedLinkError
+    //   36	48	254	java/io/IOException
+    //   50	57	254	java/io/IOException
+    //   59	66	254	java/io/IOException
+    //   73	82	254	java/io/IOException
+    //   118	123	254	java/io/IOException
+    //   125	132	254	java/io/IOException
+    //   134	143	254	java/io/IOException
+    //   11	34	259	java/io/FileNotFoundException
   }
   
   private static native float getQuality(byte[] paramArrayOfByte, int paramInt);
@@ -305,7 +299,7 @@ public final class JpegCompressor
   
   public static void jpegcompressLoadSo()
   {
-    if ((!soLoadStatus) && (JpegSoLoad.LoadJpegExtractedSo("jpegc_above665") == 0))
+    if ((!soLoadStatus) && (JpegSoLoad.LoadJpegExtractedSo("jpegc_above820", BaseApplication.getContext()) == 0))
     {
       int i = Color.argb(255, 0, 1, 2);
       Object localObject = Bitmap.Config.ARGB_8888;
@@ -336,7 +330,6 @@ public final class JpegCompressor
   }
   
   public int compress(Bitmap paramBitmap, byte[] paramArrayOfByte)
-    throws Exception
   {
     if (!soLoadStatus) {
       JpegError.throwException(50);
@@ -362,7 +355,6 @@ public final class JpegCompressor
   }
   
   public int compress(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte2)
-    throws Exception
   {
     if (!soLoadStatus) {
       JpegError.throwException(50);
@@ -373,27 +365,26 @@ public final class JpegCompressor
     }
     for (;;)
     {
-      if (paramInt1 * paramInt2 * i > paramArrayOfByte1.length) {
+      if (i * (paramInt1 * paramInt2) > paramArrayOfByte1.length) {
         JpegError.throwException(4);
       }
-      long l1 = 0L;
       try
       {
-        long l2 = compressByteArray(this.nativePtr, paramArrayOfByte1, paramInt1, paramInt2, paramInt3, paramArrayOfByte2);
-        l1 = l2;
-        paramInt1 = (int)(0xFFFFFFFF & l1);
+        l = compressByteArray(this.nativePtr, paramArrayOfByte1, paramInt1, paramInt2, paramInt3, paramArrayOfByte2);
+        paramInt1 = (int)(0xFFFFFFFF & l);
       }
       catch (UnsatisfiedLinkError paramArrayOfByte1)
       {
         for (;;)
         {
           paramInt1 = 52;
+          long l = 0L;
         }
       }
       if (paramInt1 != 0) {
         JpegError.throwException(paramInt1);
       }
-      return (int)(l1 >> 32 & 0xFFFFFFFF);
+      return (int)(l >> 32 & 0xFFFFFFFF);
       i = 4;
       continue;
       i = 1;
@@ -401,7 +392,6 @@ public final class JpegCompressor
   }
   
   public void compress(Bitmap paramBitmap)
-    throws Exception
   {
     if (!soLoadStatus) {
       JpegError.throwException(50);
@@ -433,7 +423,6 @@ public final class JpegCompressor
   }
   
   public void finalize()
-    throws Throwable
   {
     try
     {
@@ -470,62 +459,10 @@ public final class JpegCompressor
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError) {}
   }
-  
-  private static class JpegDataDestImpl
-    implements JpegDataDest
-  {
-    private FileOutputStream writer = null;
-    
-    public JpegDataDestImpl(String paramString)
-    {
-      paramString = new File(paramString);
-      try
-      {
-        if (paramString.exists()) {
-          paramString.delete();
-        }
-        paramString.createNewFile();
-        this.writer = new FileOutputStream(paramString);
-        return;
-      }
-      catch (IOException paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-    
-    public void dataArrived(ByteBuffer paramByteBuffer, boolean paramBoolean, Object paramObject)
-    {
-      try
-      {
-        paramObject = new byte[paramByteBuffer.capacity()];
-        paramByteBuffer.get(paramObject);
-        this.writer.write(paramObject, 0, paramObject.length);
-        if (!paramBoolean) {}
-      }
-      catch (Exception paramByteBuffer)
-      {
-        for (;;)
-        {
-          try
-          {
-            this.writer.close();
-            return;
-          }
-          catch (IOException paramByteBuffer)
-          {
-            paramByteBuffer.printStackTrace();
-          }
-          paramByteBuffer = paramByteBuffer;
-          paramByteBuffer.printStackTrace();
-        }
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.pic.JpegCompressor
  * JD-Core Version:    0.7.0.1
  */

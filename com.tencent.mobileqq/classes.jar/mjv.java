@@ -1,36 +1,38 @@
-import android.annotation.SuppressLint;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
 
-public class mjv
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class mjv
+  implements DialogInterface.OnClickListener
 {
-  public mjv(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
+  mjv(mju parammju) {}
   
-  @SuppressLint({"NewApi"})
-  public void onGlobalLayout()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    for (;;)
+    mjs.a(this.a.a, false);
+    if (paramInt == 1)
     {
-      ReadinjoySlidingIndicator.a(this.a, ReadinjoySlidingIndicator.a(this.a));
-      View localView = ReadinjoySlidingIndicator.a(this.a).getChildAt(ReadinjoySlidingIndicator.a(this.a));
-      ReadinjoySlidingIndicator.a(this.a, localView.getLeft());
-      this.a.invalidate();
-      return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      azqs.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
+      this.a.a.c();
+      if (!mww.a(mjs.a(this.a.a))) {
+        mjs.a(this.a.a).a(mjs.a(this.a.a));
+      }
     }
+    while (paramInt != 0)
+    {
+      return;
+      mjs.a(this.a.a).b(mjs.a(this.a.a));
+      return;
+    }
+    mjs.a(this.a.a, mjs.a(this.a.a).a().v);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mjv
  * JD-Core Version:    0.7.0.1
  */

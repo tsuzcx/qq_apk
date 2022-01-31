@@ -1,60 +1,99 @@
-import android.os.Environment;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class andw
 {
-  private static final File a;
-  public static String a;
-  private static File b;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  private andr jdField_a_of_type_Andr;
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  Object jdField_a_of_type_JavaLangObject = new Object();
+  long b;
   
-  static
+  public andw(AppInterface paramAppInterface)
   {
-    jdField_a_of_type_JavaLangString = Environment.getExternalStorageDirectory().getAbsolutePath();
-    jdField_a_of_type_JavaIoFile = new File(jdField_a_of_type_JavaLangString + File.separator + "Android" + File.separator + "data");
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Andr = new andr(paramAppInterface);
   }
   
-  public static File a()
+  private int a(long paramLong, int paramInt)
   {
-    try
+    this.jdField_a_of_type_Long = Math.max(paramLong, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Int = Math.max(paramInt, this.jdField_a_of_type_Int);
+    if (this.b == 0L) {
+      return this.jdField_a_of_type_Int;
+    }
+    return Math.max((int)(100L * paramLong / this.b), this.jdField_a_of_type_Int);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Andr != null) {
+      this.jdField_a_of_type_Andr.a();
+    }
+  }
+  
+  public void a(ArrayList<andv> paramArrayList, andz paramandz)
+  {
+    QLog.i("AREngine_ARResourceManagerTools", 1, "startDowdLoad");
+    this.b = 0L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 0;
+    if (paramArrayList.size() < 1) {
+      return;
+    }
+    Object localObject = paramArrayList.iterator();
+    andv localandv;
+    while (((Iterator)localObject).hasNext())
     {
-      File localFile1 = a(BaseApplicationImpl.getContext().getPackageName());
-      boolean bool = localFile1.exists();
-      if (!bool) {
-        try
-        {
-          new File(jdField_a_of_type_JavaIoFile, ".nomedia").createNewFile();
-          if (!localFile1.mkdirs())
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("InnerEnvironment", 2, "Unable to create external cache directory");
-            }
-            return null;
-          }
-        }
-        catch (IOException localIOException)
-        {
-          for (;;)
-          {
-            localIOException.printStackTrace();
-          }
-        }
+      localandv = (andv)((Iterator)localObject).next();
+      this.b = Math.max(this.b, localandv.jdField_a_of_type_Long);
+    }
+    if (paramandz != null) {
+      paramandz.a();
+    }
+    localObject = (ArrayList)paramArrayList.clone();
+    QLog.i("AREngine_ARResourceManagerTools", 1, "startDowdLoad size is " + ((ArrayList)localObject).size());
+    int i = 0;
+    label129:
+    if (i < paramArrayList.size())
+    {
+      if (((andv)paramArrayList.get(i)).jdField_a_of_type_Int == 4) {
+        break label187;
+      }
+      this.jdField_a_of_type_Andr.a((andv)paramArrayList.get(i), new andx(this, paramandz, paramArrayList, (ArrayList)localObject));
+    }
+    for (;;)
+    {
+      i += 1;
+      break label129;
+      break;
+      label187:
+      if (((andv)paramArrayList.get(i)).jdField_a_of_type_Int == 4)
+      {
+        nbv.a();
+        localandv = (andv)paramArrayList.get(i);
+        nbv.a(((andv)paramArrayList.get(i)).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new andy(this, paramandz, (ArrayList)localObject, localandv), true, 0, true);
       }
     }
-    finally {}
-    return localFile2;
   }
   
-  public static File a(String paramString)
+  public void b()
   {
-    if (b != null) {
-      return b;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      a();
+      return;
     }
-    b = new File(jdField_a_of_type_JavaIoFile, paramString + File.separator + "qzone");
-    return b;
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Andr != null) {
+      this.jdField_a_of_type_Andr.b();
+    }
   }
 }
 

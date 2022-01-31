@@ -1,30 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.CreateCommentObserver;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils.CreateCommentInterface;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-
-public final class ljv
-  implements ArticleCommentModule.CreateCommentObserver
+public class ljv
 {
-  public ljv(ReadInJoyCommentUtils.CreateCommentInterface paramCreateCommentInterface) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public String c = "";
   
-  public void a(ArticleInfo paramArticleInfo, String paramString1, int paramInt, String paramString2)
+  public ljv()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyCommentUtils", 2, "comment id = " + paramString1 + "err code = " + paramInt + "err msg " + paramString2);
-    }
-    this.a.a(paramString1, paramInt, paramString2);
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 30;
+    this.jdField_b_of_type_Int = 3;
   }
   
-  public void a(ArticleInfo paramArticleInfo, String paramString, CommentInfo paramCommentInfo)
+  public String toString()
   {
-    this.a.a(paramString, paramCommentInfo);
+    return "id[" + this.jdField_a_of_type_JavaLangString + "], text[" + this.jdField_b_of_type_JavaLangString + "], date[" + this.jdField_a_of_type_Long + "->" + this.jdField_b_of_type_Long + "], imageUrl[" + this.c + "], callTimeLen[" + this.jdField_a_of_type_Int + "], showTimeLen[" + this.jdField_b_of_type_Int + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ljv
  * JD-Core Version:    0.7.0.1
  */

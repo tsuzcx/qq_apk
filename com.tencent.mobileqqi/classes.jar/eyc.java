@@ -1,26 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.voip.VoipDetailActivity;
-import com.tencent.mobileqq.activity.voip.VoipDetailActivity.VoipQQLabel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.adapter.ForwardFriendListAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.utils.QQUtils;
 
 public class eyc
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public eyc(VoipDetailActivity.VoipQQLabel paramVoipQQLabel, VoipDetailActivity paramVoipDetailActivity) {}
+  public eyc(ForwardFriendListAdapter paramForwardFriendListAdapter, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (VoipDetailActivity.VoipQQLabel.a(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipDetailActivity$VoipQQLabel))
+    switch (paramInt)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipDetailActivity$VoipQQLabel.c();
+    default: 
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipDetailActivity$VoipQQLabel.b();
+    paramDialogInterface = ((FriendManager)this.jdField_a_of_type_ComTencentMobileqqAdapterForwardFriendListAdapter.a.getManager(8)).a(this.jdField_a_of_type_JavaLangString);
+    QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardFriendListAdapter.a, this.jdField_a_of_type_JavaLangString, paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eyc
  * JD-Core Version:    0.7.0.1
  */

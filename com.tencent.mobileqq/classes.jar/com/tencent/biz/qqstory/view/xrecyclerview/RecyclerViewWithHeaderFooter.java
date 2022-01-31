@@ -10,14 +10,16 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import xwy;
+import xxc;
 
 public class RecyclerViewWithHeaderFooter
   extends RecyclerView
 {
-  private RecyclerViewHeaderViewAdapter.ContentDataObserver jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewHeaderViewAdapter$ContentDataObserver;
-  private final List jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private xxc jdField_a_of_type_Xxc;
   public boolean a;
-  private final List b = new ArrayList();
+  private final List<View> b = new ArrayList();
   
   public RecyclerViewWithHeaderFooter(Context paramContext)
   {
@@ -35,11 +37,6 @@ public class RecyclerViewWithHeaderFooter
   }
   
   public void a(View paramView)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramView);
-  }
-  
-  public void b(View paramView)
   {
     this.b.add(paramView);
   }
@@ -76,17 +73,17 @@ public class RecyclerViewWithHeaderFooter
     }
     else
     {
-      localObject = new RecyclerViewHeaderViewAdapter(paramAdapter);
+      localObject = new xwy(paramAdapter);
       paramAdapter = this.jdField_a_of_type_JavaUtilList.iterator();
       while (paramAdapter.hasNext()) {
-        ((RecyclerViewHeaderViewAdapter)localObject).a((View)paramAdapter.next());
+        ((xwy)localObject).a((View)paramAdapter.next());
       }
       paramAdapter = this.b.iterator();
       while (paramAdapter.hasNext()) {
-        ((RecyclerViewHeaderViewAdapter)localObject).b((View)paramAdapter.next());
+        ((xwy)localObject).b((View)paramAdapter.next());
       }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewHeaderViewAdapter$ContentDataObserver != null) {
-        ((RecyclerViewHeaderViewAdapter)localObject).a(this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewHeaderViewAdapter$ContentDataObserver);
+      if (this.jdField_a_of_type_Xxc != null) {
+        ((xwy)localObject).a(this.jdField_a_of_type_Xxc);
       }
     }
     super.setAdapter((RecyclerView.Adapter)localObject);
@@ -94,7 +91,7 @@ public class RecyclerViewWithHeaderFooter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.xrecyclerview.RecyclerViewWithHeaderFooter
  * JD-Core Version:    0.7.0.1
  */

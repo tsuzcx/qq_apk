@@ -1,36 +1,27 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
-import com.tencent.mobileqq.search.adapter.BaseMvpMessageAdapter;
-import com.tencent.mobileqq.search.fragment.MessageSearchDetailFragment;
-import com.tencent.mobileqq.search.presenter.IPresenter;
-import com.tencent.mobileqq.search.presenter.SearchResultPresenter;
-import com.tencent.mobileqq.search.view.IView;
-import com.tencent.mobileqq.search.view.SearchResultView;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.widget.ListView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
 
 public class ahtk
-  extends BaseMvpMessageAdapter
+  implements Handler.Callback
 {
-  public ahtk(MessageSearchDetailFragment paramMessageSearchDetailFragment, ListView paramListView, FaceDecoder paramFaceDecoder, FullMessageSearchResult.SearchResultItem paramSearchResultItem, String paramString, QQAppInterface paramQQAppInterface)
-  {
-    super(paramListView, paramFaceDecoder, paramSearchResultItem, paramString, paramQQAppInterface);
-  }
+  public ahtk(PublicAccountFragment paramPublicAccountFragment) {}
   
-  protected IPresenter a(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    return new SearchResultPresenter(MessageSearchDetailFragment.a(this.a));
-  }
-  
-  protected IView a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new SearchResultView(paramViewGroup, 2130971542);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.i();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahtk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,67 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.webviewplugin.Ad;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.FriendInfo;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class bum
-  implements Runnable
+  extends FriendListObserver
 {
-  public bum(Ad paramAd) {}
+  public bum(AddRequestActivity paramAddRequestActivity) {}
   
-  public void run()
+  protected void a(String paramString, boolean paramBoolean)
   {
-    if ((this.a.jdField_b_of_type_ComTencentBizPubaccountCustomWebView != null) && (this.a.d) && (Ad.a(this.a)) && (this.a.jdField_b_of_type_ComTencentBizPubaccountCustomWebView.getView().getScrollY() > 0))
+    Card localCard;
+    if ((paramBoolean) && (AddRequestActivity.a(this.a) != null) && (AddRequestActivity.a(this.a).equals(paramString)))
     {
-      this.a.h();
-      this.a.jdField_b_of_type_ComTencentBizPubaccountCustomWebView.removeCallbacks(this.a.jdField_b_of_type_JavaLangRunnable);
-      this.a.jdField_b_of_type_ComTencentBizPubaccountCustomWebView.postDelayed(this.a.jdField_b_of_type_JavaLangRunnable, 10000L);
+      localCard = ((FriendManager)this.a.b.getManager(8)).a(paramString);
+      if (localCard != null)
+      {
+        if ((AddRequestActivity.a(this.a) == null) || (AddRequestActivity.a(this.a).msg == null) || (!AddRequestActivity.a(this.a).msg.friend_info.has()) || (AddRequestActivity.a(this.a).msg.friend_info.msg_joint_friend.has() != true)) {
+          break label215;
+        }
+        AddRequestActivity.b(this.a).setText(AddRequestActivity.a(this.a).msg.friend_info.msg_joint_friend.get());
+        AddRequestActivity.b(this.a).setVisibility(0);
+      }
     }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.AddRequestActivity", 2, "Card find Uin :" + paramString + "age:" + localCard.age + "gender:" + localCard.shGender);
+      }
+      return;
+      label215:
+      AddRequestActivity.b(this.a).setVisibility(8);
+      this.a.a();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (!paramBoolean)
+    {
+      if (AddRequestActivity.a(this.a) != null) {
+        AddRequestActivity.a(this.a).dismiss();
+      }
+      this.a.a(2130837949, this.a.getString(2131561435));
+      return;
+    }
+    if (AddRequestActivity.a(this.a) != null) {
+      AddRequestActivity.a(this.a).dismiss();
+    }
+    this.a.a(2130837960, this.a.getString(2131561910));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bum
  * JD-Core Version:    0.7.0.1
  */

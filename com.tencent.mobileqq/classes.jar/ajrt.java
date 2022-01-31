@@ -1,66 +1,32 @@
-import android.graphics.BitmapFactory;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.transfile.NearbyImgDownloader;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.mobileqq.troop.widget.BorderURLImageView;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.RunnableUpdateThumb;
 
-class ajrt
-  implements Runnable
+public class ajrt
+  implements Animator.AnimatorListener
 {
-  ajrt(ajrs paramajrs, Setting paramSetting) {}
+  public ajrt(NewFlowCameraActivity.RunnableUpdateThumb paramRunnableUpdateThumb) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataSetting == null) || (this.jdField_a_of_type_ComTencentMobileqqDataSetting.bHeadType == 0))
+    if ((NewFlowCameraActivity.a(this.a.this$0) != null) && (NewFlowCameraActivity.b(this.a.this$0) != null) && (NewFlowCameraActivity.a(this.a.this$0) != null))
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataSetting == null) && (!this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.g))
-      {
-        this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.g = true;
-        if (!this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a()) {
-          this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b, 4, true);
-        }
-      }
-      if (this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
-      try
-      {
-        this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130840543);
-        this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.b(this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.f, this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.c, this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.c);
-        if (this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_AndroidGraphicsBitmap != null)
-        {
-          this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView.setImageBitmap(this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_AndroidGraphicsBitmap);
-          return;
-        }
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(AvatarWallAdapter.jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(localOutOfMemoryError));
-          }
-        }
-        this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView.setImageResource(2130840543);
-        return;
-      }
+      NewFlowCameraActivity.a(this.a.this$0).setVisibility(8);
+      NewFlowCameraActivity.b(this.a.this$0).setImageBitmap(this.a.b);
+      NewFlowCameraActivity.b(this.a.this$0).setVisibility(0);
+      NewFlowCameraActivity.a(this.a.this$0).setText(NewFlowCameraActivity.c(this.a.this$0) + "");
+      NewFlowCameraActivity.a(this.a.this$0).setVisibility(0);
     }
-    try
-    {
-      URLDrawable localURLDrawable = URLDrawable.getDrawable(NearbyImgDownloader.a(this.jdField_a_of_type_Ajrs.jdField_a_of_type_JavaLangString));
-      localURLDrawable.setTag(URLDrawableDecodeHandler.a(this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.c, this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.c, this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.f));
-      localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.b);
-      this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView.setImageDrawable(localURLDrawable);
-      return;
-    }
-    catch (MalformedURLException localMalformedURLException) {}
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

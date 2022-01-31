@@ -10,16 +10,16 @@ public final class GetLastLoginInfoResp
 {
   static int cache_result;
   static LastLoginPageInfo cache_stPageInfo;
-  static ArrayList cache_vecLastLoginInfo;
+  static ArrayList<LastLoginInfo> cache_vecLastLoginInfo;
   public short errorCode;
   public int iRefreshIntervalMin;
   public int result;
   public LastLoginPageInfo stPageInfo;
-  public ArrayList vecLastLoginInfo;
+  public ArrayList<LastLoginInfo> vecLastLoginInfo;
   
   public GetLastLoginInfoResp() {}
   
-  public GetLastLoginInfoResp(int paramInt1, short paramShort, LastLoginPageInfo paramLastLoginPageInfo, ArrayList paramArrayList, int paramInt2)
+  public GetLastLoginInfoResp(int paramInt1, short paramShort, LastLoginPageInfo paramLastLoginPageInfo, ArrayList<LastLoginInfo> paramArrayList, int paramInt2)
   {
     this.result = paramInt1;
     this.errorCode = paramShort;
@@ -61,7 +61,7 @@ public final class GetLastLoginInfoResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     friendlist.GetLastLoginInfoResp
  * JD-Core Version:    0.7.0.1
  */

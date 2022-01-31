@@ -1,31 +1,18 @@
-import android.text.Editable;
-import android.widget.EditText;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-public class amzc
-  implements Runnable
+public final class amzc
+  implements Parcelable.Creator<ArCloudConfigInfo>
 {
-  public amzc(QZoneShareActivity paramQZoneShareActivity) {}
-  
-  public void run()
+  public ArCloudConfigInfo a(Parcel paramParcel)
   {
-    Editable localEditable;
-    if (this.a.a != null)
-    {
-      localEditable = this.a.a.getText();
-      if (localEditable == null) {
-        break label71;
-      }
-    }
-    label71:
-    for (int i = localEditable.length();; i = 0)
-    {
-      this.a.a.setSelection(i);
-      if ((!this.a.isFinishing()) && (!this.a.d)) {
-        this.a.h();
-      }
-      return;
-    }
+    return new ArCloudConfigInfo(paramParcel);
+  }
+  
+  public ArCloudConfigInfo[] a(int paramInt)
+  {
+    return new ArCloudConfigInfo[paramInt];
   }
 }
 

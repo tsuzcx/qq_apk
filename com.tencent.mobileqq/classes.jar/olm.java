@@ -1,30 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.rmw.RMWServiceProxy;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class olm
-  extends Handler
+  implements View.OnClickListener
 {
-  private RMWServiceProxy a;
+  public olm(ReadInJoyCommentListView paramReadInJoyCommentListView) {}
   
-  public olm(RMWServiceProxy paramRMWServiceProxy)
+  public void onClick(View paramView)
   {
-    super(Looper.getMainLooper());
-    this.a = paramRMWServiceProxy;
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    RMWServiceProxy localRMWServiceProxy = this.a;
-    if (localRMWServiceProxy != null) {
-      localRMWServiceProxy.a(Message.obtain(paramMessage));
-    }
+    QLog.d("ReadInJoyCommentListView", 2, "loadmore comment when network not available");
+    ReadInJoyCommentListView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     olm
  * JD-Core Version:    0.7.0.1
  */

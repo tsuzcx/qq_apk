@@ -1,21 +1,18 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.SetTroopAdminsActivity.TroopAdmin;
 
-public class die
-  implements View.OnClickListener
+public final class die
+  implements Parcelable.Creator
 {
-  public die(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
-  
-  public void onClick(View paramView)
+  public SetTroopAdminsActivity.TroopAdmin a(Parcel paramParcel)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.h) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.finish();
-    }
+    return new SetTroopAdminsActivity.TroopAdmin(paramParcel, null);
+  }
+  
+  public SetTroopAdminsActivity.TroopAdmin[] a(int paramInt)
+  {
+    return new SetTroopAdminsActivity.TroopAdmin[paramInt];
   }
 }
 

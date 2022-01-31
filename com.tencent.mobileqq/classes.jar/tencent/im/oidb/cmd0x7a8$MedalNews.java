@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import tencent.im.medal.common.MedalInfo;
 
 public final class cmd0x7a8$MedalNews
-  extends MessageMicro
+  extends MessageMicro<MedalNews>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26 }, new String[] { "uint64_fri_uin", "str_fri_nick", "msg_medal" }, new Object[] { Long.valueOf(0L), "", null }, MedalNews.class);
   public common.MedalInfo msg_medal = new common.MedalInfo();
@@ -17,7 +17,7 @@ public final class cmd0x7a8$MedalNews
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x7a8.MedalNews
  * JD-Core Version:    0.7.0.1
  */

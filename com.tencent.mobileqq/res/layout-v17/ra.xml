@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="bottom" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_alignParentBottom="false" style="@style/p0">
+        <include layout="@layout/rm" />
+        <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:id="@id/er3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/wj" android:layout_marginTop="@dimen/wn" android:layout_marginBottom="@dimen/wn" android:text="验证码已发至手机133****23" style="@style/qr" />
+        </LinearLayout>
+        <LinearLayout android:layout_marginLeft="@dimen/wj" android:layout_marginRight="@dimen/wj" android:layout_marginBottom="10.0dip" style="@style/q6">
+            <EditText android:id="@id/eqz" android:hint="@string/o5j" android:inputType="number" style="@style/qa" />
+            <ImageButton android:id="@id/er0" style="@style/midas_input_cell_button_clear" />
+            <Button android:id="@id/er2" android:text="@string/o52" style="@style/q9" />
+        </LinearLayout>
+        <TextView android:id="@id/er5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/wj" android:text="@string/o53" style="@style/qt" />
+        <Button android:id="@id/er4" android:layout_marginTop="30.0dip" android:text="@string/o4s" style="@style/oy" />
+        <TextView android:gravity="center" android:id="@id/eqy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/wo" android:text="@string/o4_" android:textAlignment="center" style="@style/qu" />
+    </LinearLayout>
+    <com.tenpay.api.MyKeyboardWindow android:id="@id/er1" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

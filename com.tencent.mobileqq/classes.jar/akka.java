@@ -1,40 +1,127 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import java.util.List;
+import mqq.util.WeakReference;
 
-public final class akka
-  extends SosoInterface.OnLocationListener
+final class akka
+  extends altm
 {
-  public akka(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, boolean paramBoolean3, boolean paramBoolean4, String paramString, SharedPreferences paramSharedPreferences, long paramLong2)
+  WeakReference<akjt> a;
+  
+  akka(akjt paramakjt)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong1, paramBoolean3, paramBoolean4, paramString);
+    this.a = new WeakReference(paramakjt);
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
-    if (paramInt == 0)
+    akjt localakjt;
+    if (paramBoolean)
     {
-      d1 = paramSosoLbsInfo.a.a;
-      d2 = paramSosoLbsInfo.a.b;
-      paramSosoLbsInfo = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      paramSosoLbsInfo.putFloat("search_lbs_logitude", (float)d2);
-      paramSosoLbsInfo.putFloat("search_lbs_latitude", (float)d1);
-      paramSosoLbsInfo.putLong("search_lbs_timestamp", this.jdField_a_of_type_Long);
-      paramSosoLbsInfo.commit();
+      localakjt = (akjt)this.a.get();
+      if (localakjt == null) {
+        break label71;
+      }
+      paramString = akjt.a(localakjt, paramString);
       if (QLog.isColorLevel()) {
-        QLog.i("SSOHttpUtils", 2, "Soso location info lat: " + d1 + ",lon:" + d2);
+        QLog.d("MayKnowAdapter", 2, "onCancelMayKnowRecommend target：" + paramString);
+      }
+      if (paramString != null) {
+        akjt.a(localakjt, paramString);
       }
     }
-    while (!QLog.isColorLevel())
+    else
     {
-      double d1;
-      double d2;
       return;
     }
-    QLog.i("SSOHttpUtils", 2, "Soso location failed error = " + paramInt);
+    akjt.a(localakjt);
+    return;
+    label71:
+    QLog.d("MayKnowAdapter", 1, "onCancelMayKnowRecommend  adapter is null!");
+  }
+  
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramBoolean)
+    {
+      paramBundle = (akjt)this.a.get();
+      if (paramBundle != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MayKnowAdapter", 2, "onGetMayKnowRecommend ");
+        }
+        akjt.a(paramBundle);
+      }
+    }
+    else
+    {
+      return;
+    }
+    QLog.d("MayKnowAdapter", 1, "onGetMayKnowRecommend adapter is null!");
+  }
+  
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  {
+    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("MayKnowAdapter", 2, "onMayKnowListPushAdd");
+    }
+    if (paramBoolean)
+    {
+      paramList = (akjt)this.a.get();
+      if (paramList != null) {
+        akjt.a(paramList);
+      }
+    }
+    else
+    {
+      return;
+    }
+    QLog.d("MayKnowAdapter", 1, "onMayKnowListPushAdd adapter is null!");
+  }
+  
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  {
+    super.onMayKnowListPushDel(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("MayKnowAdapter", 2, "onMayKnowListPushDel");
+    }
+    if (paramBoolean)
+    {
+      paramList = (akjt)this.a.get();
+      if (paramList != null) {
+        akjt.a(paramList);
+      }
+    }
+    else
+    {
+      return;
+    }
+    QLog.d("MayKnowAdapter", 1, "onMayKnowListPushDel adapter is null!");
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      akjt localakjt = (akjt)this.a.get();
+      if (localakjt == null) {
+        break label60;
+      }
+      if (akjt.a(localakjt) != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MayKnowAdapter", 2, "onMayknowStateChanged");
+        }
+        localakjt.notifyDataSetChanged();
+        akjt.a(localakjt).postDelayed(localakjt.a, 1600L);
+      }
+    }
+    return;
+    label60:
+    QLog.d("MayKnowAdapter", 1, "onMayknowStateChanged adapter is null!");
   }
 }
 

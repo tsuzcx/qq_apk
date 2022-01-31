@@ -2,6 +2,8 @@ package com.tencent.mobileqq.activity.qwallet.report;
 
 import VACDReport.ReportHeader;
 import VACDReport.ReportItem;
+import ajei;
+import ajeu;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +12,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletSetting;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -27,7 +27,7 @@ public class VACDReportReceiver
     Object localObject1;
     if ((paramReportItem != null) && (!TextUtils.isEmpty(paramReportItem.failReason)) && (paramReportItem.step != null) && (paramReportItem.step.equals("crash")) && ((paramReportItem.result == 668814) || (paramReportItem.result == 668815)))
     {
-      localObject1 = QWalletTools.a();
+      localObject1 = ajeu.a();
       if (localObject1 != null) {
         break label60;
       }
@@ -89,14 +89,14 @@ public class VACDReportReceiver
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject instanceof QQAppInterface))
     {
-      localObject = (VACDReportMgr)((QQAppInterface)localObject).getManager(147);
+      localObject = (ajei)((QQAppInterface)localObject).getManager(148);
       if (localObject == null) {
         return;
       }
       if (!"vacdReport_step:start".equals(str)) {
         break label157;
       }
-      ((VACDReportMgr)localObject).a(paramIntent.getStringExtra("vacdReport_extra:sKey"), (ReportHeader)paramIntent.getSerializableExtra("vacdReport_extra:header"), localReportItem);
+      ((ajei)localObject).a(paramIntent.getStringExtra("vacdReport_extra:sKey"), (ReportHeader)paramIntent.getSerializableExtra("vacdReport_extra:header"), localReportItem);
     }
     for (;;)
     {
@@ -104,11 +104,11 @@ public class VACDReportReceiver
       return;
       label157:
       if ("vacdReport_step:add".equals(str)) {
-        ((VACDReportMgr)localObject).a(l, paramIntent.getStringExtra("vacdReport_extra:sKey"), localReportItem);
+        ((ajei)localObject).a(l, paramIntent.getStringExtra("vacdReport_extra:sKey"), localReportItem);
       } else if ("vacdReport_step:end".equals(str)) {
-        ((VACDReportMgr)localObject).a(l, localReportItem);
+        ((ajei)localObject).a(l, localReportItem);
       } else if ("vacdReport_step:single".equals(str)) {
-        ((VACDReportMgr)localObject).b(paramIntent.getStringExtra("vacdReport_extra:sKey"), (ReportHeader)paramIntent.getSerializableExtra("vacdReport_extra:header"), localReportItem);
+        ((ajei)localObject).b(paramIntent.getStringExtra("vacdReport_extra:sKey"), (ReportHeader)paramIntent.getSerializableExtra("vacdReport_extra:header"), localReportItem);
       }
     }
   }
@@ -116,21 +116,16 @@ public class VACDReportReceiver
   public void a(Bundle paramBundle)
   {
     if (paramBundle == null) {}
-    QQAppInterface localQQAppInterface;
     boolean bool;
     do
     {
       do
       {
         return;
-        localQQAppInterface = QWalletTools.a();
-      } while (localQQAppInterface == null);
+      } while (ajeu.a() == null);
       bool = paramBundle.getBoolean("isRealName", false);
-      if (QLog.isColorLevel()) {
-        QLog.i("VACDReport", 2, "onRealName isRealName:" + bool);
-      }
-    } while (!bool);
-    QWalletSetting.a(localQQAppInterface.getCurrentAccountUin(), "goldmsg_has_right", true);
+    } while (!QLog.isColorLevel());
+    QLog.i("VACDReport", 2, "onRealName isRealName:" + bool);
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -151,7 +146,7 @@ public class VACDReportReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.report.VACDReportReceiver
  * JD-Core Version:    0.7.0.1
  */

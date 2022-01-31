@@ -27,7 +27,7 @@ import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqconnect.wtlogin.Login;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import hnp;
+import hjl;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -78,7 +78,7 @@ public class QuickLoginAuthorityActivity
     this.jdField_a_of_type_MqqManagerWtloginManager = null;
     this.jdField_a_of_type_ArrayOfByte = null;
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new hnp(this);
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new hjl(this);
   }
   
   public void a(int paramInt, byte[] paramArrayOfByte, String paramString1, String paramString2)
@@ -208,14 +208,14 @@ public class QuickLoginAuthorityActivity
   protected void d()
   {
     this.k.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232095));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232098));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131232093));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131232096));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232090));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232092));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232091));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131232096));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232093));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232095));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232094));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131232099));
     this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
     e();
   }
@@ -283,7 +283,7 @@ public class QuickLoginAuthorityActivity
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838016);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838018);
   }
   
   protected void i()
@@ -559,7 +559,7 @@ public class QuickLoginAuthorityActivity
   {
     super.onCreate(paramBundle);
     QLog.d(jdField_b_of_type_JavaLangString, 2, "onCreate:");
-    super.setContentView(2130903326);
+    super.setContentView(2130903328);
     this.k.setText(2131561690);
     super.setTitle(2131562740);
     d();

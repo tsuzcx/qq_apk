@@ -33,13 +33,13 @@ public class MessageForSafeGrayTips
     }
   }
   
-  protected void postRead()
+  public void postRead()
   {
     this.msgId = getLogicMsgID(getId(), this.versionCode);
     parse();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     QLog.d(this.TAG, 2, "prewrite versionCode:" + this.versionCode);
     if (this.versionCode < 3) {
@@ -53,7 +53,7 @@ public class MessageForSafeGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForSafeGrayTips
  * JD-Core Version:    0.7.0.1
  */

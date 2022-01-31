@@ -1,20 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class yym
-  implements DialogInterface.OnClickListener
+class yym
+  implements Animator.AnimatorListener
 {
-  public yym(ApolloPanel paramApolloPanel) {}
+  yym(yyk paramyyk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.m();
+    if (yyk.a(this.a) != null) {
+      yyk.a(this.a).a();
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (yyk.a(this.a) != null) {
+      yyk.a(this.a).a();
+    }
+    if (yyk.a(this.a) != null)
+    {
+      yyk.a(yyk.a(this.a), null);
+      yyk.a(this.a).a();
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (yyk.a(this.a) != null) {
+      yyk.a(this.a).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yym
  * JD-Core Version:    0.7.0.1
  */

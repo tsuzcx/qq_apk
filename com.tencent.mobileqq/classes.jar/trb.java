@@ -1,49 +1,29 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.mobileqq.activity.ScoreQAVFragment.OnItemClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
-import mqq.app.MobileQQ;
+import com.tencent.TMG.utils.QLog;
+import feedcloud.FeedCloudWrite.StDoLikeRsp;
 
-public class trb
-  extends RecyclerView.Adapter
+final class trb
+  implements zac<FeedCloudWrite.StDoLikeRsp>
 {
-  ScoreQAVFragment.OnItemClickListener jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener;
+  trb(zac paramzac) {}
   
-  public trb(ScoreQAVFragment paramScoreQAVFragment) {}
-  
-  public trc a(ViewGroup paramViewGroup, int paramInt)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoLikeRsp paramStDoLikeRsp)
   {
-    return new trc(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()).inflate(2130969351, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener);
-  }
-  
-  public void a(ScoreQAVFragment.OnItemClickListener paramOnItemClickListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener = paramOnItemClickListener;
-  }
-  
-  public void a(trc paramtrc, int paramInt)
-  {
-    paramtrc.a.setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.get(paramInt));
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.a(paramInt))
-    {
-      paramtrc.a.setSelected(true);
-      return;
+    if ((paramBoolean) && (paramLong == 0L)) {
+      QLog.d("doubleclicklike", 3, " success");
     }
-    paramtrc.a.setSelected(false);
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.size();
+    for (;;)
+    {
+      if (this.a != null) {
+        this.a.a(paramBoolean, paramLong, paramString, paramStDoLikeRsp);
+      }
+      return;
+      QLog.d("doubleclicklike", 3, " failed：" + paramLong);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trb
  * JD-Core Version:    0.7.0.1
  */

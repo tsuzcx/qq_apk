@@ -1,17 +1,22 @@
 package com.tencent.token.ui;
 
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.core.bean.DeviceInfo;
+import com.tencent.token.ui.base.CommonActionSheetDialog;
 
-final class ua
+class ua
   implements View.OnClickListener
 {
-  ua(PCMobileQQVerifyedDevicesActivity paramPCMobileQQVerifyedDevicesActivity, DeviceInfo paramDeviceInfo) {}
+  ua(RealNameActivity paramRealNameActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    new ub(this.b, this.b, this.a).show();
+    RealNameActivity.access$302(this.a, 2);
+    paramView = this.a.getResources().getString(2131230988);
+    String str = this.a.getResources().getString(2131230989);
+    this.a.dialog = new CommonActionSheetDialog(this.a, 2131362182, this.a.listener, new String[] { paramView, str });
+    this.a.dialog.show();
   }
 }
 

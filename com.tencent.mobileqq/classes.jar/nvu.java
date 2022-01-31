@@ -1,23 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class nvu
-  implements Parcelable.Creator
+class nvu
+  implements View.OnClickListener
 {
-  public CardItem.CardVideoInfo a(Parcel paramParcel)
-  {
-    return new CardItem.CardVideoInfo(paramParcel);
-  }
+  nvu(nvp paramnvp) {}
   
-  public CardItem.CardVideoInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new CardItem.CardVideoInfo[paramInt];
+    QLog.i("DailyHeaderViewController", 1, "[onClick] clickToGrantPermission");
+    paramView = (BaseActivity)paramView.getContext();
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      if (paramView.shouldShowRequestPermissionRationale("android.permission.ACCESS_FINE_LOCATION"))
+      {
+        nvp.a(this.a, true);
+        return;
+      }
+      paramView.requestPermissions(new nvv(this, paramView), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      return;
+    }
+    nvp.a(this.a, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.apollo.view.QQFrameZipDecoder;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 
-public class yzt
-  implements Runnable
+class yzt
+  implements Downloader.DownloadListener
 {
-  public yzt(QQFrameZipDecoder paramQQFrameZipDecoder, DownloadTask paramDownloadTask) {}
+  yzt(yzr paramyzr, yzb paramyzb, String paramString) {}
   
-  public void run()
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult) {}
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    DownloaderFactory.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask, null);
+    yzr.a(this.jdField_a_of_type_Yzr, this.jdField_a_of_type_Yzb, yzo.a().b(this.jdField_a_of_type_JavaLangString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yzt
  * JD-Core Version:    0.7.0.1
  */

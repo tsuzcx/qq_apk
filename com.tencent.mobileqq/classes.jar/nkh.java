@@ -1,20 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playmode.child.NewDiscoverBannerPlayMode;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class nkh
-  implements DialogInterface.OnDismissListener
+  implements bhuk
 {
-  public nkh(NewDiscoverBannerPlayMode paramNewDiscoverBannerPlayMode) {}
+  public nkh(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.s();
+    if (this.a.o) {
+      return;
+    }
+    this.a.o = true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.a.dismiss();
+      return;
+      this.a.q();
+      continue;
+      this.a.E();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nkh
  * JD-Core Version:    0.7.0.1
  */

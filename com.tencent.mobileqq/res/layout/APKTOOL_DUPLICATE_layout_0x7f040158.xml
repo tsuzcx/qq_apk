@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09ad" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="30.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0578" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09ae" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginTop="8.0dip" android:maxWidth="100.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" />
-    <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0578" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09af" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginTop="8.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a09ae" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09b0" android:layout_width="10.0dip" android:layout_height="12.0dip" android:layout_marginTop="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204e2" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-</RelativeLayout>

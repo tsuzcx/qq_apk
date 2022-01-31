@@ -3,17 +3,18 @@ package cooperation.qzone.model;
 import NS_MOBILE_MATERIAL.MaterialFile;
 import NS_MOBILE_MATERIAL.MaterialItem;
 import NS_MOBILE_PHOTO.Album;
-import amui;
 import android.content.res.Resources;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import bjko;
+import bjkp;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class BusinessAlbumInfo
   extends BaseBusinessAlbumInfo
 {
-  public static final Parcelable.Creator CREATOR = new amui();
+  public static final Parcelable.Creator<BusinessAlbumInfo> CREATOR = new bjko();
   
   private BusinessAlbumInfo(Parcel paramParcel)
   {
@@ -36,6 +37,7 @@ public class BusinessAlbumInfo
       this.jdField_d_of_type_JavaLangString = paramParcel.readString();
       this.g = paramParcel.readInt();
       this.h = paramParcel.readInt();
+      this.i = paramParcel.readInt();
       return;
       bool = false;
     }
@@ -84,6 +86,7 @@ public class BusinessAlbumInfo
       localBusinessAlbumInfo.f = paramAlbum.allow_share;
       localBusinessAlbumInfo.jdField_d_of_type_JavaLangString = a(paramAlbum);
       localBusinessAlbumInfo.g = paramAlbum.is_share;
+      localBusinessAlbumInfo.i = paramAlbum.sort_type;
       return localBusinessAlbumInfo;
       bool = false;
     }
@@ -151,17 +154,17 @@ public class BusinessAlbumInfo
     while (i == 0)
     {
       return null;
-      i = 2131432933;
+      i = 2131718336;
       continue;
-      i = 2131432934;
+      i = 2131718337;
       continue;
-      i = 2131432472;
+      i = 2131718083;
       continue;
-      i = 2131432473;
+      i = 2131718081;
       continue;
-      i = 2131432474;
+      i = 2131718086;
       continue;
-      i = 2131432475;
+      i = 2131718082;
     }
     return BaseApplication.getContext().getResources().getString(i);
   }
@@ -182,7 +185,7 @@ public class BusinessAlbumInfo
   
   public String c()
   {
-    return BusinessAlbumInfo.Privacy.a(this.jdField_b_of_type_Int);
+    return bjkp.a(this.jdField_b_of_type_Int);
   }
   
   public int describeContents()
@@ -224,7 +227,7 @@ public class BusinessAlbumInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.BusinessAlbumInfo
  * JD-Core Version:    0.7.0.1
  */

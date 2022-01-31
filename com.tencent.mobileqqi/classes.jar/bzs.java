@@ -1,102 +1,80 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
 import java.util.ArrayList;
 
 public class bzs
-  extends FriendListObserver
+  implements View.OnKeyListener, TextView.OnEditorActionListener
 {
-  public bzs(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  private bzs(ChatActivity paramChatActivity) {}
   
-  protected void a(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramBundle != null) {
-      AddFriendLogicActivity.a(this.a, paramBundle.getInt("safety_flag"));
-    }
-    if ((!paramBoolean) || (AddFriendLogicActivity.a(this.a) == 0) || (paramInt != 147))
+    if (paramInt == 4)
     {
-      AddFriendLogicActivity.a(this.a);
-      return;
-    }
-    AntiFraudConfigFileUtil.a().a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "SecWarningCfg");
-    try
-    {
-      AddFriendLogicActivity.a(this.a, DialogUtil.a(this.a, 230, "", "", this.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.a.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener));
-      AddFriendLogicActivity.b(this.a);
-      AddFriendLogicActivity.a(this.a).setOnDismissListener(this.a.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
-      AddFriendLogicActivity.a(this.a).show();
-      ReportController.b(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Safe_AntiFraud", this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), "AlertDialog", "Display", 0, AddFriendLogicActivity.a(this.a), "", "", "", "");
-      return;
-    }
-    catch (Exception paramBundle)
-    {
+      paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+      if (paramTextView.length() > 0)
+      {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1) {
+          break label118;
+        }
+        paramTextView = new ArrayList();
+        paramKeyEvent = AtTroopMemberSpan.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getEditableText(), paramTextView);
+        ChatActivityFacade.a(this.a.b, this.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramKeyEvent, paramTextView);
+      }
       for (;;)
       {
-        paramBundle.printStackTrace();
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+        ChatActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.c, -1);
+        return true;
+        label118:
+        ChatActivityFacade.a(this.a.b, this.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramTextView, null);
       }
     }
+    return false;
   }
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    }
-    if (paramBoolean)
+    if (paramKeyEvent.getKeyCode() == 66)
     {
-      int i = paramBundle.getInt("friend_setting");
-      ArrayList localArrayList = paramBundle.getStringArrayList("user_question");
-      paramBundle = Boolean.valueOf(paramBundle.getBoolean("contact_bothway"));
-      if (QLog.isColorLevel()) {
-        QLog.d("AddFriendLogicActivity", 2, "onUpdateAddFriendSetting | setting = " + i + " | bothway = " + paramBundle);
-      }
-      if ((paramBundle.booleanValue()) && (i != 0))
+      if (paramKeyEvent.getAction() == 1)
       {
-        if (this.a.u == 3006) {
-          this.a.v = 2;
+        paramKeyEvent = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+        if ((this.a.c) && (paramKeyEvent.length() > 0))
+        {
+          if ((!paramKeyEvent.endsWith("\r")) && (!paramKeyEvent.endsWith("\n"))) {
+            break label94;
+          }
+          paramView = paramKeyEvent.substring(0, paramKeyEvent.length() - 1);
         }
-        this.a.a(i, paramBundle.booleanValue(), localArrayList, AutoRemarkActivity.class);
-        return;
       }
-      switch (i)
+      for (;;)
       {
-      default: 
-        return;
-      case 0: 
-        this.a.a(i, paramBundle.booleanValue(), localArrayList, AutoRemarkActivity.class);
-        return;
-      case 1: 
-      case 3: 
-      case 4: 
-        this.a.a(i, paramBundle.booleanValue(), localArrayList, AddFriendVerifyActivity.class);
-        return;
+        if (paramView.length() > 0) {
+          this.a.b();
+        }
+        return true;
+        label94:
+        paramView = paramKeyEvent;
+        if (paramKeyEvent.endsWith("\r\n")) {
+          paramView = paramKeyEvent.substring(0, paramKeyEvent.length() - 2);
+        }
       }
-      paramBundle = this.a.getIntent().getStringExtra("nick_name");
-      if ((paramBundle == null) || (paramBundle.length() == 0)) {
-        this.a.getString(2131561597);
-      }
-      QQToast.a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), 2131563292, 0).b(this.a.d());
-      this.a.finish();
-      return;
     }
-    QQToast.a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), 2131562782, 0).b(this.a.d());
-    this.a.finish();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bzs
  * JD-Core Version:    0.7.0.1
  */

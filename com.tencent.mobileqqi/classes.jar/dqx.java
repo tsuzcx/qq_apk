@@ -1,25 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import android.app.Dialog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-class dqx
-  implements DialogInterface.OnClickListener
+public class dqx
+  implements Animation.AnimationListener
 {
-  dqx(dqv paramdqv, SubAccountBackProtocData paramSubAccountBackProtocData) {}
+  public dqx(TroopMemberListActivity paramTroopMemberListActivity, TranslateAnimation paramTranslateAnimation, Dialog paramDialog) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramInt == 1) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData.c)))
-    {
-      paramDialogInterface = new Intent(this.jdField_a_of_type_Dqv.a, SubLoginActivity.class);
-      paramDialogInterface.putExtra("subuin", this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData.c);
-      this.jdField_a_of_type_Dqv.a.startActivity(paramDialogInterface);
+    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation) {
+      this.jdField_a_of_type_AndroidAppDialog.show();
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

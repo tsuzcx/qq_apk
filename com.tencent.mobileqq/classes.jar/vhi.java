@@ -1,35 +1,33 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetLocation;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class vhi
-  implements View.OnClickListener
+  extends uro
 {
-  public vhi(StructingMsgItemBuilder paramStructingMsgItemBuilder, AbsShareMsg paramAbsShareMsg) {}
+  public final String a;
+  public final String c;
+  public final String d;
+  public final String e;
+  public final String f;
   
-  public void onClick(View paramView)
+  public vhi(qqstory_service.RspGetLocation paramRspGetLocation)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgActionData;
-    int i = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.uinType;
-    if (!TextUtils.isEmpty(paramView))
-    {
-      paramView = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, paramView);
-      if (paramView != null)
-      {
-        paramView.a("webview");
-        paramView.a("uin_type", i + "");
-        paramView.b();
-      }
-    }
+    this.a = paramRspGetLocation.country.get().toStringUtf8();
+    this.c = paramRspGetLocation.province.get().toStringUtf8();
+    this.d = paramRspGetLocation.city.get().toStringUtf8();
+    this.e = paramRspGetLocation.district.get().toStringUtf8();
+    this.f = paramRspGetLocation.street.get().toStringUtf8();
+  }
+  
+  public String toString()
+  {
+    return "GetLocationResponse{mCountry='" + this.a + '\'' + ", mProvince='" + this.c + '\'' + ", mCity='" + this.d + '\'' + ", mDistrict='" + this.e + '\'' + ", mStreet='" + this.f + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vhi
  * JD-Core Version:    0.7.0.1
  */

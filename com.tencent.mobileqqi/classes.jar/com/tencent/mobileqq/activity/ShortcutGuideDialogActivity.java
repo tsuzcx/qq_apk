@@ -11,9 +11,9 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.util.FaceDrawable;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
-import dnx;
-import dny;
-import dnz;
+import dig;
+import dih;
+import dii;
 
 public class ShortcutGuideDialogActivity
   extends BaseActivity
@@ -26,11 +26,11 @@ public class ShortcutGuideDialogActivity
   {
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setDividerGone();
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(getString(2131561592), new dny(this)).setNegativeButton(getString(2131561746), new dnx(this));
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new dnz(this));
-    View localView = getLayoutInflater().inflate(2130903628, null);
-    ImageView localImageView = (ImageView)localView.findViewById(2131233162);
-    TextView localTextView = (TextView)localView.findViewById(2131233163);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(getString(2131561592), new dih(this)).setNegativeButton(getString(2131561746), new dig(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new dii(this));
+    View localView = getLayoutInflater().inflate(2130903630, null);
+    ImageView localImageView = (ImageView)localView.findViewById(2131233164);
+    TextView localTextView = (TextView)localView.findViewById(2131233165);
     localImageView.setImageDrawable(FaceDrawable.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.jdField_a_of_type_JavaLangString));
     localTextView.setText(String.format(getString(2131562226), new Object[] { this.jdField_b_of_type_JavaLangString }));
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.addView(localView);

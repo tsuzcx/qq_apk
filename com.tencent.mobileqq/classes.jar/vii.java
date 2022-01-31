@@ -1,24 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class vii
-  implements View.OnClickListener
+  implements vih
 {
-  public vii(StructingMsgItemBuilder paramStructingMsgItemBuilder, BaseChatPie paramBaseChatPie, AbsShareMsg paramAbsShareMsg) {}
+  public void a() {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    paramView = ((PublicAccountChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg);
-    ((PublicAccountChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(paramView);
+    if (paramInt == 6) {
+      QQToast.a(BaseApplicationImpl.getContext(), 2131690089, 0).a();
+    }
   }
+  
+  public void b() {}
+  
+  public void b(int paramInt) {}
+  
+  public void c() {}
+  
+  public void c(int paramInt)
+  {
+    QQToast.a(BaseApplication.getContext(), alud.a(2131708236), 0).a();
+  }
+  
+  public void d() {}
+  
+  public void d(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vii
  * JD-Core Version:    0.7.0.1
  */

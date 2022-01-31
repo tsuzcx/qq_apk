@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class QPSingleUpdateProto$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int BYTES_PACKET_HASH_FIELD_NUMBER = 5;
   public static final int BYTES_PACKET_URL_FIELD_NUMBER = 4;
@@ -21,7 +21,7 @@ public final class QPSingleUpdateProto$RspBody
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_packet_hash = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_packet_url = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_file_item_list = PBField.initRepeatMessage(QPSingleUpdateProto.FileItem.class);
+  public final PBRepeatMessageField<QPSingleUpdateProto.FileItem> rpt_file_item_list = PBField.initRepeatMessage(QPSingleUpdateProto.FileItem.class);
   public final PBUInt32Field uint32_download_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_force_download = PBField.initUInt32(0);
   public final PBUInt32Field uint32_getphonenumber_flag = PBField.initUInt32(0);
@@ -36,7 +36,7 @@ public final class QPSingleUpdateProto$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqprotect.singleupdate.QPSingleUpdateProto.RspBody
  * JD-Core Version:    0.7.0.1
  */

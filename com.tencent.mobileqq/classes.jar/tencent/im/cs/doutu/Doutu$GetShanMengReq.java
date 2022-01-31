@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Doutu$GetShanMengReq
-  extends MessageMicro
+  extends MessageMicro<GetShanMengReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_md5 = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -31,7 +31,7 @@ public final class Doutu$GetShanMengReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.doutu.Doutu.GetShanMengReq
  * JD-Core Version:    0.7.0.1
  */

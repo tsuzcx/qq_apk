@@ -6,13 +6,7 @@ import java.util.Comparator;
 public class StructField
   extends JceField
 {
-  private static final Comparator<JceField> tagComp = new Comparator()
-  {
-    public int compare(JceField paramAnonymousJceField1, JceField paramAnonymousJceField2)
-    {
-      return paramAnonymousJceField1.getTag() - paramAnonymousJceField2.getTag();
-    }
-  };
+  private static final Comparator tagComp = new StructField.1();
   private JceField[] data;
   
   StructField(JceField[] paramArrayOfJceField, int paramInt)

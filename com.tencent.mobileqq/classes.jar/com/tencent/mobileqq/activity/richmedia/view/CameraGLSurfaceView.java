@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
+import ajtl;
+import ajwp;
+import ajwx;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -14,29 +17,28 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
+import azhg;
+import azif;
 import com.tencent.maxvideo.common.AVIOStruct;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoClipSpec;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
-import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext.VFrameData;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-import xxm;
-import xxn;
+import mqq.os.MqqHandler;
 
 public class CameraGLSurfaceView
   extends GLSurfaceView
   implements GLSurfaceView.Renderer, Handler.Callback
 {
   private int jdField_a_of_type_Int;
+  ajwp jdField_a_of_type_Ajwp;
+  public ajwx a;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  public CameraGLSurfaceView.CaptureListener a;
-  public GLSurfaceUtil a;
   private PreviewContext jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext;
   private String jdField_a_of_type_JavaLangString;
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
@@ -76,14 +78,14 @@ public class CameraGLSurfaceView
       a("beginRenderFileCacheData: lost frame");
       return -1;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewGLSurfaceUtil.jdField_a_of_type_JavaNioByteBuffer != null)
+    if (this.jdField_a_of_type_Ajwx.jdField_a_of_type_JavaNioByteBuffer != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewGLSurfaceUtil.jdField_a_of_type_JavaNioByteBuffer.position(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewGLSurfaceUtil.b.position(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewGLSurfaceUtil.jdField_c_of_type_JavaNioByteBuffer.position(0);
+      this.jdField_a_of_type_Ajwx.jdField_a_of_type_JavaNioByteBuffer.position(0);
+      this.jdField_a_of_type_Ajwx.b.position(0);
+      this.jdField_a_of_type_Ajwx.jdField_c_of_type_JavaNioByteBuffer.position(0);
       return 0;
     }
-    a("handleMessage:beginRenderFileCacheData:panelY=" + this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewGLSurfaceUtil.jdField_a_of_type_JavaNioByteBuffer);
+    a("handleMessage:beginRenderFileCacheData:panelY=" + this.jdField_a_of_type_Ajwx.jdField_a_of_type_JavaNioByteBuffer);
     return -2;
   }
   
@@ -144,7 +146,7 @@ public class CameraGLSurfaceView
     this.jdField_g_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandlerThread = null;
     this.jdField_a_of_type_AndroidOsHandler = null;
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewGLSurfaceUtil = new GLSurfaceUtil();
+    this.jdField_a_of_type_Ajwx = new ajwx();
   }
   
   private void c()
@@ -163,14 +165,14 @@ public class CameraGLSurfaceView
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewGLSurfaceUtil.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Ajwx.jdField_a_of_type_Int = 0;
     this.jdField_c_of_type_Boolean = false;
   }
   
   private void e()
   {
     this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(1);
-    this.jdField_d_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewGLSurfaceUtil.a(this.jdField_d_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewGLSurfaceUtil.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewGLSurfaceUtil.b, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewGLSurfaceUtil.jdField_c_of_type_JavaNioByteBuffer);
+    this.jdField_d_of_type_Boolean = this.jdField_a_of_type_Ajwx.a(this.jdField_d_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Ajwx.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_Ajwx.b, this.jdField_a_of_type_Ajwx.jdField_c_of_type_JavaNioByteBuffer);
     int j = GLES20.glGetError();
     if (j != 0) {
       a("glDrawFrame:err=" + j);
@@ -211,7 +213,7 @@ public class CameraGLSurfaceView
         a("handleMessage:[RenderModeCheck-Recorder][May Lost Frame] mode=" + j);
       }
     }
-    label339:
+    label342:
     do
     {
       do
@@ -225,25 +227,25 @@ public class CameraGLSurfaceView
         }
         for (;;)
         {
-          j = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewGLSurfaceUtil.a(this.jdField_g_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.h, arrayOfByte);
+          j = this.jdField_a_of_type_Ajwx.a(this.jdField_g_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.h, arrayOfByte);
           if ((paramMessage.arg2 == 1) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext != null)) {
             this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.addUserBufferRecycle(arrayOfByte);
           }
           if (j != 0) {
-            break label339;
+            break label342;
           }
           requestRender();
           long l = SystemClock.elapsedRealtime();
           a("handleMessage:requestRender  renderTime=" + l);
           if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext != null) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.notifyFirstFrame)) {
-            post(new xxn(this));
+            ThreadManager.getUIHandler().post(new CameraGLSurfaceView.2(this));
           }
           if (paramMessage.arg1 != 1) {
             break;
           }
           try
           {
-            paramMessage = ((PreviewContext.VFrameData)paramMessage.obj).jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct;
+            paramMessage = ((azif)paramMessage.obj).jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct;
             if (l != 0L)
             {
               a("handleMessage:writeVideoFrame  renderTime=" + l + " oldtime=" + paramMessage.vFrameTime + " diff=" + (l - paramMessage.vFrameTime));
@@ -261,7 +263,7 @@ public class CameraGLSurfaceView
           a("handleMessage:writeVideoFrame  error=" + j);
           return true;
           if (paramMessage.arg1 == 1) {
-            arrayOfByte = ((PreviewContext.VFrameData)paramMessage.obj).jdField_a_of_type_ArrayOfByte;
+            arrayOfByte = ((azif)paramMessage.obj).jdField_a_of_type_ArrayOfByte;
           }
         }
         a("handleMessage:byteBufferProcessFrame  error=" + j);
@@ -287,8 +289,8 @@ public class CameraGLSurfaceView
       if ((this.jdField_f_of_type_Boolean) && (this.jdField_a_of_type_JavaLangString != null))
       {
         paramGL10 = a(0, 0, getWidth(), getHeight(), paramGL10);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView$CaptureListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView$CaptureListener.a(paramGL10);
+        if (this.jdField_a_of_type_Ajwp != null) {
+          this.jdField_a_of_type_Ajwp.a(paramGL10);
         }
         this.jdField_f_of_type_Boolean = false;
         this.jdField_a_of_type_JavaLangString = null;
@@ -320,28 +322,28 @@ public class CameraGLSurfaceView
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewGLSurfaceUtil.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Ajwx.jdField_a_of_type_Boolean = true;
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewGLSurfaceUtil.a(getContext())) {
+    if (!this.jdField_a_of_type_Ajwx.a(getContext())) {
       this.jdField_b_of_type_Boolean = false;
     }
     this.jdField_c_of_type_Boolean = true;
     this.jdField_d_of_type_Boolean = false;
   }
   
-  public void setCaptureListener(CameraGLSurfaceView.CaptureListener paramCaptureListener)
+  public void setCaptureListener(ajwp paramajwp)
   {
-    queueEvent(new xxm(this, paramCaptureListener));
+    queueEvent(new CameraGLSurfaceView.1(this, paramajwp));
   }
   
-  public void setPreviewSize(int paramInt1, int paramInt2, RMVideoClipSpec paramRMVideoClipSpec)
+  public void setPreviewSize(int paramInt1, int paramInt2, ajtl paramajtl)
   {
     this.jdField_c_of_type_Int = paramInt1;
     this.jdField_d_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Int = paramRMVideoClipSpec.jdField_c_of_type_Int;
-    this.jdField_b_of_type_Int = paramRMVideoClipSpec.jdField_d_of_type_Int;
-    this.jdField_e_of_type_Int = paramRMVideoClipSpec.jdField_e_of_type_Int;
-    this.jdField_f_of_type_Int = paramRMVideoClipSpec.jdField_f_of_type_Int;
+    this.jdField_a_of_type_Int = paramajtl.jdField_c_of_type_Int;
+    this.jdField_b_of_type_Int = paramajtl.jdField_d_of_type_Int;
+    this.jdField_e_of_type_Int = paramajtl.jdField_e_of_type_Int;
+    this.jdField_f_of_type_Int = paramajtl.jdField_f_of_type_Int;
     if (this.jdField_a_of_type_Int % 2 != 0) {
       this.jdField_a_of_type_Int -= 1;
     }
@@ -354,8 +356,8 @@ public class CameraGLSurfaceView
     if (this.jdField_f_of_type_Int % 2 != 0) {
       this.jdField_f_of_type_Int -= 1;
     }
-    this.jdField_g_of_type_Int = CameraControl.a().a();
-    paramInt1 = CameraControl.a().b();
+    this.jdField_g_of_type_Int = azhg.a().a();
+    paramInt1 = azhg.a().b();
     if (paramInt1 <= 0) {
       this.h = 270;
     }
@@ -364,22 +366,22 @@ public class CameraGLSurfaceView
       if (QLog.isColorLevel()) {
         QLog.d("CameraGLSurfaceView", 2, "setPreviewSize:mVideoClipDegree=" + this.h);
       }
-      GLSurfaceUtil.jdField_c_of_type_Boolean = false;
+      ajwx.jdField_c_of_type_Boolean = false;
       try
       {
         initTotalBufferSize(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.jdField_g_of_type_Int);
-        GLSurfaceUtil.jdField_c_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewGLSurfaceUtil.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewGLSurfaceUtil.jdField_d_of_type_Boolean = false;
+        ajwx.jdField_c_of_type_Boolean = true;
+        this.jdField_a_of_type_Ajwx.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_Ajwx.jdField_d_of_type_Boolean = false;
         this.jdField_e_of_type_Boolean = true;
         return;
         this.h = paramInt1;
       }
-      catch (UnsatisfiedLinkError paramRMVideoClipSpec)
+      catch (UnsatisfiedLinkError paramajtl)
       {
         for (;;)
         {
-          GLSurfaceUtil.jdField_c_of_type_Boolean = false;
+          ajwx.jdField_c_of_type_Boolean = false;
         }
       }
     }
@@ -404,7 +406,7 @@ public class CameraGLSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

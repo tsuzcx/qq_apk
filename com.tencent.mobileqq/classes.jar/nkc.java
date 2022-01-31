@@ -1,26 +1,35 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playmode.child.NewDiscoverBannerPlayMode;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class nkc
-  implements View.OnClickListener
+  implements bhuk
 {
-  public nkc(NewDiscoverBannerPlayMode paramNewDiscoverBannerPlayMode) {}
+  public nkc(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    ThreadManager.post(new nkd(this), 8, null, true);
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+    if (this.a.o) {
+      return;
+    }
+    this.a.o = true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.a.dismiss();
+      return;
+      this.a.q();
+      continue;
+      this.a.E();
+      continue;
+      this.a.G();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nkc
  * JD-Core Version:    0.7.0.1
  */

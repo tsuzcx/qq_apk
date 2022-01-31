@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.armap.wealthgod.ARMapSplashView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1eaa" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1eab" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1eac" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0212a9" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d070b" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d070c" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d070d" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d070e" />
-    </LinearLayout>
-</FrameLayout>

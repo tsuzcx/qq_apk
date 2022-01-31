@@ -1,49 +1,82 @@
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.mobileqq.filemanager.app.UniformDownload;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView;
+import com.tencent.mobileqq.widget.MyGridView;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-class acun
-  implements Runnable
+public class acun
+  extends MqqHandler
 {
-  acun(acum paramacum, String paramString, long paramLong) {}
+  public acun(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Acum.jdField_a_of_type_ComTencentMobileqqFilemanagerAppUniformDownload.a, UniformDownloadActivity.class);
-    String str1 = this.jdField_a_of_type_Acum.jdField_a_of_type_AndroidOsBundle.getString("param_content_memo");
-    String str2 = this.jdField_a_of_type_Acum.jdField_a_of_type_AndroidOsBundle.getString("param_icon_path");
-    String str3 = this.jdField_a_of_type_Acum.jdField_a_of_type_AndroidOsBundle.getString("param_mime_type");
-    if (str1 != null) {
-      localIntent.putExtra(UniformDownloadActivity.h, str1);
-    }
-    if (str2 != null) {
-      localIntent.putExtra(UniformDownloadActivity.g, str2);
-    }
-    boolean bool = this.jdField_a_of_type_Acum.jdField_a_of_type_AndroidOsBundle.getBoolean("param_isqbdownload", false);
-    localIntent.putExtra(UniformDownloadActivity.i, bool);
-    localIntent.putExtra(UniformDownloadActivity.b, this.jdField_a_of_type_Acum.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra(UniformDownloadActivity.d, this.jdField_a_of_type_JavaLangString);
-    localIntent.setFlags(536870912);
-    if (this.jdField_a_of_type_Acum.jdField_a_of_type_Long != 0L) {}
-    for (long l = this.jdField_a_of_type_Acum.jdField_a_of_type_Long;; l = this.jdField_a_of_type_Long)
+    switch (paramMessage.what)
     {
-      localIntent.putExtra(UniformDownloadActivity.e, l);
-      localIntent.putExtra(UniformDownloadActivity.j, str3);
-      if (this.jdField_a_of_type_Acum.b == 1L) {
-        localIntent.putExtra(UniformDownloadActivity.c, this.jdField_a_of_type_Acum.b);
-      }
-      localIntent.putExtra("fromArkAppDownload", this.jdField_a_of_type_Acum.jdField_a_of_type_AndroidOsBundle.getBoolean("fromArkAppDownload", false));
-      this.jdField_a_of_type_Acum.jdField_a_of_type_ComTencentMobileqqFilemanagerAppUniformDownload.a.startActivity(localIntent);
-      this.jdField_a_of_type_Acum.jdField_a_of_type_ComTencentMobileqqFilemanagerAppUniformDownload.a.overridePendingTransition(0, 0);
-      return;
     }
+    label424:
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing())) {
+            DiscussionInfoCardActivity.a(this.a).dismiss();
+          }
+          paramMessage = new Intent();
+          paramMessage.putExtra("isNeedFinish", true);
+          this.a.setResult(-1, paramMessage);
+          this.a.finish();
+          return;
+        } while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing()));
+        DiscussionInfoCardActivity.a(this.a).dismiss();
+        return;
+        if (DiscussionInfoCardActivity.a(this.a) == 3000)
+        {
+          if (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) {
+            DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
+          }
+        }
+        else
+        {
+          paramMessage = (ArrayList)paramMessage.obj;
+          int i = paramMessage.size();
+          DiscussionInfoCardActivity.a(this.a).setText(alud.a(2131703736) + i + alud.a(2131703737));
+          DiscussionInfoCardActivity.a(this.a).setPadding(DiscussionInfoCardActivity.b(this.a), DiscussionInfoCardActivity.c(this.a), DiscussionInfoCardActivity.d(this.a), DiscussionInfoCardActivity.e(this.a));
+          DiscussionInfoCardActivity.a(this.a, paramMessage);
+          if (DiscussionInfoCardActivity.a(this.a) != null) {
+            break label424;
+          }
+          DiscussionInfoCardActivity.a(this.a, new acuo(this.a));
+          DiscussionInfoCardActivity.a(this.a).setAdapter(DiscussionInfoCardActivity.a(this.a));
+        }
+        for (;;)
+        {
+          removeMessages(0);
+          return;
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView.setText(this.a.getString(2131694612));
+          if (!AppSetting.c) {
+            break;
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView.setContentDescription(alud.a(2131703742) + this.a.getString(2131694612) + alud.a(2131703734));
+          break;
+          DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+        }
+      } while (DiscussionInfoCardActivity.a(this.a) != 0);
+      paramMessage = (String)paramMessage.obj;
+    } while ((DiscussionInfoCardActivity.a(this.a) == null) || (paramMessage == null) || (!DiscussionInfoCardActivity.a(this.a).equals(paramMessage)));
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acun
  * JD-Core Version:    0.7.0.1
  */

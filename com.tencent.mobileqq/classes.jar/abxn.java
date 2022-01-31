@@ -1,31 +1,49 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.NearbyProcessMonitor;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tencent.mobileqq.Doraemon.impl.webview.VerifyUrlJobSegment.UrlNotauthorizedError;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class abxn
-  implements Handler.Callback
+class abxn
+  extends SimpleObserver<auef>
 {
-  private String a;
+  abxn(abxj paramabxj, abxt paramabxt) {}
   
-  public abxn(String paramString)
+  public void a(auef paramauef)
   {
-    this.a = paramString;
+    abxt localabxt = this.jdField_a_of_type_Abxt;
+    if (paramauef.c == 1) {}
+    for (int i = 2;; i = 3)
+    {
+      localabxt.a(paramauef, i);
+      return;
+    }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void onError(@NonNull Error paramError)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI.permissionHelper", 2, "onError: " + paramError.getMessage());
     }
-    NearbyProcessMonitor.a(this.a, 1);
-    return true;
+    int i;
+    if ((paramError instanceof VerifyUrlJobSegment.UrlNotauthorizedError)) {
+      i = 4;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Abxt.a(null, i);
+      return;
+      if ((paramError instanceof AppInfoError)) {
+        i = ((AppInfoError)paramError).type;
+      } else {
+        i = 0;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxn
  * JD-Core Version:    0.7.0.1
  */

@@ -11,8 +11,8 @@ public final class RspGetNearbyGroupArea
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList cache_vGroupArea;
-  public ArrayList vGroupArea;
+  static ArrayList<GroupArea> cache_vGroupArea;
+  public ArrayList<GroupArea> vGroupArea;
   
   static
   {
@@ -26,7 +26,7 @@ public final class RspGetNearbyGroupArea
   
   public RspGetNearbyGroupArea() {}
   
-  public RspGetNearbyGroupArea(ArrayList paramArrayList)
+  public RspGetNearbyGroupArea(ArrayList<GroupArea> paramArrayList)
   {
     this.vGroupArea = paramArrayList;
   }
@@ -76,7 +76,7 @@ public final class RspGetNearbyGroupArea
     return "NearbyGroup.RspGetNearbyGroupArea";
   }
   
-  public ArrayList getVGroupArea()
+  public ArrayList<GroupArea> getVGroupArea()
   {
     return this.vGroupArea;
   }
@@ -105,7 +105,7 @@ public final class RspGetNearbyGroupArea
     this.vGroupArea = ((ArrayList)paramJceInputStream.read(cache_vGroupArea, 0, false));
   }
   
-  public void setVGroupArea(ArrayList paramArrayList)
+  public void setVGroupArea(ArrayList<GroupArea> paramArrayList)
   {
     this.vGroupArea = paramArrayList;
   }
@@ -119,7 +119,7 @@ public final class RspGetNearbyGroupArea
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NearbyGroup.RspGetNearbyGroupArea
  * JD-Core Version:    0.7.0.1
  */

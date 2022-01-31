@@ -1,22 +1,36 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.RecentFileAdapter;
+import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class fqj
-  extends Handler
+  implements View.OnClickListener
 {
-  public fqj(LocationSelectActivity paramLocationSelectActivity) {}
+  public fqj(FMActivity paramFMActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (paramMessage.what == 1000) {
-      this.a.a(((Boolean)((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[0]).booleanValue(), (String[])((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[1]);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
     }
+    if ((((Button)paramView.findViewById(2131231701)).getTag() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.a(null);
+    }
+    if (this.a.b.a().b(this.a.jdField_a_of_type_Long)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.a(Integer.valueOf(-1));
+    FMActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fqj
  * JD-Core Version:    0.7.0.1
  */

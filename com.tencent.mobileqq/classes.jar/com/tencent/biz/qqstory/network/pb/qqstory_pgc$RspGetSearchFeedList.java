@@ -10,12 +10,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_pgc$RspGetSearchFeedList
-  extends MessageMicro
+  extends MessageMicro<RspGetSearchFeedList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatMessageField feed_list = PBField.initRepeatMessage(qqstory_pgc.UserInfo.class);
+  public final PBRepeatMessageField<qqstory_pgc.UserInfo> feed_list = PBField.initRepeatMessage(qqstory_pgc.UserInfo.class);
   public final PBUInt32Field is_end = PBField.initUInt32(0);
-  public final PBRepeatField key_word_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> key_word_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBBytesField next_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public qqstory_pgc.ErrorInfo result = new qqstory_pgc.ErrorInfo();
   public final PBUInt32Field result_type = PBField.initUInt32(0);
@@ -29,7 +29,7 @@ public final class qqstory_pgc$RspGetSearchFeedList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_pgc.RspGetSearchFeedList
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,28 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 
 public class dcu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public dcu(MySelfTroopMemberCard paramMySelfTroopMemberCard, String paramString) {}
+  public dcu(QQMapActivity paramQQMapActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_e_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.f = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_e_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.f);
+    if (this.a.a == null)
+    {
+      this.a.a = ((ActionSheet)ActionSheetHelper.a(this.a, null));
+      this.a.a.c(2131560772);
+      this.a.a.d(2131561746);
+      this.a.a.a(new dcv(this));
+    }
+    if (!this.a.a.isShowing()) {
+      this.a.a.show();
+    }
+    ReportController.a(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_menu", 0, 0, "", "", "", "");
   }
 }
 

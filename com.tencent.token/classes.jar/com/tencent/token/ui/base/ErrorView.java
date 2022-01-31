@@ -17,7 +17,7 @@ public class ErrorView
   private View.OnClickListener d;
   private int e = 0;
   private boolean f = false;
-  private View.OnClickListener g = new aa(this);
+  private View.OnClickListener g = new x(this);
   
   public ErrorView(Context paramContext)
   {
@@ -31,10 +31,10 @@ public class ErrorView
     this.a = paramContext;
   }
   
-  private void a()
+  private void c()
   {
     if (this.f) {}
-    for (int i = 2130903079;; i = 2130903078)
+    for (int i = 2130968644;; i = 2130968643)
     {
       this.b = ((LayoutInflater)this.a.getSystemService("layout_inflater"));
       this.c = this.b.inflate(i, null);
@@ -45,7 +45,22 @@ public class ErrorView
     }
   }
   
-  public final void a(int paramInt)
+  public void a()
+  {
+    setVisibility(0);
+  }
+  
+  public void b()
+  {
+    setVisibility(8);
+  }
+  
+  public void setAction(View.OnClickListener paramOnClickListener)
+  {
+    this.d = paramOnClickListener;
+  }
+  
+  public void setErrorType(int paramInt)
   {
     if (paramInt == this.e) {
       return;
@@ -55,16 +70,11 @@ public class ErrorView
     {
     default: 
       this.f = false;
-      a();
+      c();
       return;
     }
     this.f = true;
-    a();
-  }
-  
-  public final void a(View.OnClickListener paramOnClickListener)
-  {
-    this.d = paramOnClickListener;
+    c();
   }
 }
 

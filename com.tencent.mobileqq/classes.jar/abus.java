@@ -1,99 +1,94 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.pic.ReportInfo;
+import android.content.Context;
+import java.io.File;
+import java.util.ArrayList;
 
-public final class abus
-  implements Parcelable.Creator
+public abstract class abus
 {
-  public MessageForPic a(Parcel paramParcel)
+  public static String a;
+  public abut a;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  
+  static
   {
-    boolean bool2 = true;
-    MessageForPic localMessageForPic = new MessageForPic();
-    localMessageForPic.path = paramParcel.readString();
-    localMessageForPic.size = paramParcel.readLong();
-    localMessageForPic.type = paramParcel.readInt();
-    if (paramParcel.readInt() == 1)
-    {
-      bool1 = true;
-      localMessageForPic.isRead = bool1;
-      localMessageForPic.uuid = paramParcel.readString();
-      localMessageForPic.groupFileID = paramParcel.readLong();
-      localMessageForPic.md5 = paramParcel.readString();
-      localMessageForPic.serverStoreSource = paramParcel.readString();
-      localMessageForPic.thumbMsgUrl = paramParcel.readString();
-      localMessageForPic.bigThumbMsgUrl = paramParcel.readString();
-      localMessageForPic.thumbWidth = paramParcel.readInt();
-      localMessageForPic.thumbHeight = paramParcel.readInt();
-      localMessageForPic.bigMsgUrl = paramParcel.readString();
-      localMessageForPic.rawMsgUrl = paramParcel.readString();
-      localMessageForPic.fileSizeFlag = paramParcel.readInt();
-      localMessageForPic.picExtraFlag = paramParcel.readInt();
-      if (paramParcel.readInt() != 1) {
-        break label450;
-      }
-      bool1 = true;
-      label172:
-      localMessageForPic.isMixed = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label455;
-      }
-      bool1 = true;
-      label188:
-      localMessageForPic.isShareAppActionMsg = bool1;
-      localMessageForPic.action = paramParcel.readString();
-      localMessageForPic.shareAppID = paramParcel.readLong();
-      localMessageForPic.actMsgContentValue = paramParcel.readString();
-      localMessageForPic.localUUID = paramParcel.readString();
-      localMessageForPic.subMsgId = paramParcel.readInt();
-      localMessageForPic.isReport = paramParcel.readInt();
-      localMessageForPic.subVersion = paramParcel.readInt();
-      localMessageForPic.busiType = paramParcel.readInt();
-      localMessageForPic.width = paramParcel.readLong();
-      localMessageForPic.height = paramParcel.readLong();
-      localMessageForPic.imageType = paramParcel.readInt();
-      localMessageForPic.frienduin = paramParcel.readString();
-      localMessageForPic.selfuin = paramParcel.readString();
-      localMessageForPic.senderuin = paramParcel.readString();
-      localMessageForPic.istroop = paramParcel.readInt();
-      localMessageForPic.versionCode = paramParcel.readInt();
-      localMessageForPic.uniseq = paramParcel.readLong();
-      localMessageForPic.issend = paramParcel.readInt();
-      localMessageForPic.time = paramParcel.readLong();
-      localMessageForPic.msgtype = paramParcel.readInt();
-      localMessageForPic.preDownState = paramParcel.readInt();
-      localMessageForPic.preDownNetworkType = paramParcel.readInt();
-      localMessageForPic.previewed = paramParcel.readInt();
-      localMessageForPic.mNotPredownloadReason = paramParcel.readInt();
-      localMessageForPic.reportInfo = ((ReportInfo)paramParcel.readParcelable(ReportInfo.class.getClassLoader()));
-      if (paramParcel.readByte() == 0) {
-        break label460;
-      }
-    }
-    label450:
-    label455:
-    label460:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localMessageForPic.sync2Story = bool1;
-      return localMessageForPic;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label172;
-      bool1 = false;
-      break label188;
-    }
+    jdField_a_of_type_JavaLangString = File.separator;
   }
   
-  public MessageForPic[] a(int paramInt)
+  public static ArrayList<String> a(String paramString1, String paramString2)
   {
-    return new MessageForPic[paramInt];
+    ArrayList localArrayList = new ArrayList();
+    if (paramString2.equals("Native"))
+    {
+      localArrayList.add(paramString1 + ".cfg");
+      localArrayList.add("lib" + paramString1 + ".so");
+      localArrayList.add(paramString1 + ".subpatch");
+      return localArrayList;
+    }
+    if (paramString2.equals("DVM"))
+    {
+      localArrayList.add(paramString1 + ".cfg");
+      localArrayList.add(paramString1 + ".jar");
+      return localArrayList;
+    }
+    return null;
   }
+  
+  public static abus b(String paramString, abut paramabut)
+  {
+    String str = paramabut.f;
+    if (str.equals("Native"))
+    {
+      paramString = abun.a(paramString, paramabut);
+      if (paramString == null) {
+        return null;
+      }
+    }
+    else
+    {
+      abui.a("KingKongPatchInfo", "Unsupported patch type : " + str);
+      return null;
+    }
+    if ((!paramString.c.equals(paramabut.jdField_a_of_type_JavaLangString)) || (!paramString.d.equals(paramabut.b)) || (!paramString.e.equals(paramabut.f)) || (!paramString.e.equals("Native")))
+    {
+      abui.a("KingKongPatchInfo", "Patch name, version or type mismatch : " + paramString.c + ", " + paramString.d + ", " + paramString.e);
+      return null;
+    }
+    paramString.jdField_a_of_type_Abut = paramabut;
+    return paramString;
+  }
+  
+  public static ArrayList<String> b(String paramString1, String paramString2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramString2.equals("Native"))
+    {
+      localArrayList.add(paramString1 + ".cfg");
+      localArrayList.add("lib" + paramString1 + ".so");
+      localArrayList.add(paramString1 + ".subpatch");
+    }
+    while (!paramString2.equals("DVM")) {
+      return localArrayList;
+    }
+    localArrayList.add(paramString1 + ".cfg");
+    localArrayList.add(paramString1 + ".jar");
+    localArrayList.add(paramString1 + ".dex");
+    return localArrayList;
+  }
+  
+  public abstract int a(Context paramContext);
+  
+  public String a()
+  {
+    return this.b + jdField_a_of_type_JavaLangString + this.c + ".cfg";
+  }
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abus
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.widget.TroopMemberListSlideItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a34a0" android:layout_width="fill_parent" android:layout_height="46.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040c02" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c001e" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a34a1" android:background="#ffff3b2f" android:layout_width="90.0dip" android:layout_height="fill_parent" android:layout_marginBottom="1.0px" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b169f" />
-</com.tencent.mobileqq.widget.TroopMemberListSlideItem>

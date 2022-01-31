@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.base.preference.IconSwitchKeyValuePreference android:title="@string/e9e" android:key="settings_account_info" android:layout="@layout/afi" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/ecl" android:key="settings_notification_preference" android:layout="@layout/afi" />
+    <Preference android:title="@string/e9h" android:key="settings_active_time" android:layout="@layout/afi" />
+    <Preference android:title="@string/e_a" android:key="settings_chatting" android:layout="@layout/afi" />
+    <IconPreference android:title="@string/e9b" android:key="settings_about_privacy" android:layout="@layout/afi" />
+    <Preference android:title="@string/e99" android:key="settings_about_device" android:layout="@layout/afi" />
+    <IconPreference android:title="@string/e9d" android:key="settings_about_system" android:layout="@layout/afi" />
+    <PreferenceSmallCategory />
+    <IconPreference android:title="@string/e9a" android:key="settings_about_micromsg" />
+    <Preference android:title="@string/ea3" android:key="settings_feedback" android:layout="@layout/afi" />
+    <PreferenceSmallCategory />
+    <IconPreference android:title="@string/ehb" android:key="settings_welab" android:layout="@layout/afi" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/efg" android:key="settings_switch_account" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/eb2" android:key="settings_logout" android:layout="@layout/afi" />
+    <PreferenceCategory />
+    <PreferenceSmallCategory />
+    <Preference android:title="Redesign" android:key="settings_redesign" android:layout="@layout/afi" />
+    <PreferenceCategory />
+</PreferenceScreen>

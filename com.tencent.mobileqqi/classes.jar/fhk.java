@@ -1,8 +1,15 @@
+import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler;
+
 public class fhk
 {
-  public int a;
+  public long a;
   public String a;
-  public boolean a;
+  
+  public fhk(TroopQZoneUploadAlbumHandler paramTroopQZoneUploadAlbumHandler, String paramString, long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+  }
 }
 
 

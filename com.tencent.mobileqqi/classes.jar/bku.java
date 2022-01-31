@@ -1,13 +1,37 @@
-import com.tencent.av.ui.VideoControlUI;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.assistant.PubAccountAssistantSettingActivity;
+import com.tencent.biz.pubaccount.assistant.PubAccountAssistantSettingAdapter;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class bku
-  implements Runnable
+  extends PublicAccountObserver
 {
-  public bku(VideoControlUI paramVideoControlUI) {}
+  public bku(PubAccountAssistantSettingActivity paramPubAccountAssistantSettingActivity) {}
   
-  public void run()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.a.u();
+    if (paramBoolean)
+    {
+      Object localObject = (PublicAccountDataManager)this.a.b.getManager(51);
+      PubAccountAssistantSettingActivity.a(this.a, ((PublicAccountDataManager)localObject).a());
+      localObject = PubAccountAssistantSettingActivity.a(this.a).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (((PublicAccountInfo)((Iterator)localObject).next()).mShowMsgFlag == -1) {
+          ((Iterator)localObject).remove();
+        }
+      }
+      if ((PubAccountAssistantSettingActivity.a(this.a) != null) && (PubAccountAssistantSettingActivity.a(this.a).size() > 0)) {
+        Collections.sort(PubAccountAssistantSettingActivity.a(this.a), PubAccountAssistantSettingActivity.a(this.a));
+      }
+      PubAccountAssistantSettingActivity.a(this.a).a(PubAccountAssistantSettingActivity.a(this.a));
+      PubAccountAssistantSettingActivity.a(this.a).sendEmptyMessage(0);
+    }
   }
 }
 

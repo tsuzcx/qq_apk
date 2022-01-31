@@ -1,27 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.EncryptUinInfo;
 
-public class nns
-  extends Handler
+public final class nns
+  implements Parcelable.Creator<EncryptUinInfo>
 {
-  public nns(ProgressControler paramProgressControler, Looper paramLooper)
+  public EncryptUinInfo a(Parcel paramParcel)
   {
-    super(paramLooper);
+    return new EncryptUinInfo(paramParcel);
   }
   
-  public void handleMessage(Message paramMessage)
+  public EncryptUinInfo[] a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.a.a(this.a.jdField_a_of_type_Int, this.a.c);
+    return new EncryptUinInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nns
  * JD-Core Version:    0.7.0.1
  */

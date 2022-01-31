@@ -1,31 +1,59 @@
-import android.app.Activity;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.PttItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPtt;
-import cooperation.qqfav.QfavBuilder;
-import cooperation.qqfav.QfavReport;
-import cooperation.qqfav.widget.QfavMicroPhoneDialog.Listener;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqIconPostfix;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class vdf
-  implements QfavMicroPhoneDialog.Listener
+  extends uub
 {
-  public vdf(PttItemBuilder paramPttItemBuilder, MessageForPtt paramMessageForPtt) {}
+  private ArrayList<String> a;
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public vdf(ArrayList<String> paramArrayList)
   {
-    QfavBuilder.a(paramString1, paramInt, paramString2).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt).a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.length() > 0)) {}
-    for (paramInt = 1;; paramInt = 0)
+    this.a = paramArrayList;
+  }
+  
+  public String a()
+  {
+    return uqn.a("StorySvc.batch_get_user_icon_info");
+  }
+  
+  public uuc a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspIconPostfix localRspIconPostfix = new qqstory_service.RspIconPostfix();
+    try
     {
-      QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_AddFav", 4, 0, 6, paramInt, "", "");
-      return;
+      localRspIconPostfix.mergeFrom(paramArrayOfByte);
+      return new vdg(localRspIconPostfix);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wxe.d("GetUserIconHandler", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqIconPostfix localReqIconPostfix = new qqstory_service.ReqIconPostfix();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if (!TextUtils.isEmpty(str)) {
+        localReqIconPostfix.union_id_list.add(ByteStringMicro.copyFromUtf8(str));
+      }
+    }
+    return localReqIconPostfix.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vdf
  * JD-Core Version:    0.7.0.1
  */

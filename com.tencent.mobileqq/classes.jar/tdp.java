@@ -1,20 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.event.WSCommentShowEvent;
 
-public class tdp
-  implements DialogInterface.OnClickListener
+class tdp
+  implements View.OnClickListener
 {
-  public tdp(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
+  tdp(tdn paramtdn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    tdn.a(this.a);
+    tff.a().a(new WSCommentShowEvent(false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tdp
  * JD-Core Version:    0.7.0.1
  */

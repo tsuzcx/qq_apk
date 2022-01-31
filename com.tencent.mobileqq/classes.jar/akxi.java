@@ -1,37 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.WebViewProgressBarController;
-import mqq.util.WeakReference;
+import com.tencent.TMG.sdk.AVCallback;
 
-public class akxi
-  extends Handler
+class akxi
+  implements AVCallback
 {
-  final WeakReference a;
+  akxi(akxb paramakxb) {}
   
-  public akxi(WebViewProgressBarController paramWebViewProgressBarController)
-  {
-    super(Looper.getMainLooper());
-    this.a = new WeakReference(paramWebViewProgressBarController);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    WebViewProgressBarController localWebViewProgressBarController = (WebViewProgressBarController)this.a.get();
-    if (localWebViewProgressBarController == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    localWebViewProgressBarController.e();
-  }
+  public void onComplete(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akxi
  * JD-Core Version:    0.7.0.1
  */

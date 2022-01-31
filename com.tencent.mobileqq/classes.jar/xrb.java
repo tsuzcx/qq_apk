@@ -1,32 +1,18 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
-import com.tencent.qphone.base.util.QLog;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
-public class xrb
-  implements Camera.AutoFocusCallback
+final class xrb
+  extends ThreadLocal<DateFormat>
 {
-  public xrb(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  protected DateFormat a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".photo", 2, "single tap focus " + paramBoolean);
-    }
-    NewFlowCameraReporter.a(paramBoolean);
-    if (paramBoolean)
-    {
-      NewFlowCameraActivity.h(this.a, true);
-      return;
-    }
-    this.a.a.f();
+    return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xrb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
 
 public class aiot
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aiot(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
+  public aiot(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQToast.a(BaseApplicationImpl.sApplication, "WebP格式的图片不支持原图发送，请使用标清质量来发送。", 1).a();
+    paramView = QzonePhotoPreviewActivity.a(this.a);
+    paramView.putExtra("PhotoConst.send_changtu", true);
+    paramView.putExtra("PhotoConst.KEY_SHOW_TYPE", 1);
+    paramView.putExtra("PhotoConst.KEY_SHOW_ORIGIN_TYPE", 1);
+    PhotoUtils.a(this.a.getActivity(), QzonePhotoPreviewActivity.a(this.a), this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_Int, false);
   }
 }
 

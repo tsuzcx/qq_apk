@@ -1,53 +1,87 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.troopgift.TroopGiftAioPanelData;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.nearby.gift.NearbyGiftPanelDialog;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
-import com.tencent.mobileqq.troop.utils.TroopGiftManager;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderInterface;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.media.AudioManager;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class aeps
-  extends TroopGiftCallback
+  extends BroadcastReceiver
 {
-  public aeps(NearbyGiftPanelDialog paramNearbyGiftPanelDialog, TroopGiftManager paramTroopGiftManager, long paramLong, AIOAnimationControlManager paramAIOAnimationControlManager, int paramInt) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long = 0L;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  long b = 0L;
   
-  public void a(int paramInt, String paramString)
+  public aeps(AudioPlayer paramAudioPlayer, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(NearbyGiftPanelDialog.a(), 2, "onError() time =  " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", errorCode = " + paramInt + ", errorMsg = " + paramString);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(String paramString, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftManager.a(NearbyGiftPanelDialog.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog));
+    long l = SystemClock.uptimeMillis();
+    int i = paramIntent.getIntExtra("android.media.extra.SCO_AUDIO_STATE", -1);
     if (QLog.isColorLevel()) {
-      QLog.d(NearbyGiftPanelDialog.a(), 2, "onGetExtraData() time =  " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", configURL = " + paramString + ", version:" + paramInt + ", oldVersion:" + i);
+      QLog.d("AudioPlayer", 2, "onReceive ACTION_SCO_AUDIO_STATE_UPDATED = " + i + " " + this.jdField_a_of_type_JavaLangString + ", time=" + l);
     }
-    if ((paramInt <= i) && (TroopGiftAioPanelData.a(NearbyGiftPanelDialog.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog), NearbyGiftPanelDialog.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog)) != null)) {}
-    while (TextUtils.isEmpty(paramString)) {
-      return;
+    if (1 == i) {
+      if (this.b == 0L)
+      {
+        this.b = l;
+        AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer));
+        AudioPlayer.b = true;
+        if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a()) {
+          AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        }
+      }
     }
-    Object localObject = new File(AppConstants.ba);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
-    }
-    localObject = AppConstants.ba + "troopGiftConfig.tmp";
-    paramString = new DownloadTask(paramString, new File((String)localObject));
-    paramString.b = 3;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("filePath", (String)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a().a(paramString, new aept(this, paramInt), localBundle);
+    do
+    {
+      do
+      {
+        return;
+        if (2 == i)
+        {
+          this.jdField_a_of_type_Boolean = true;
+          return;
+        }
+      } while (i != 0);
+      if (this.jdField_a_of_type_Long == 0L)
+      {
+        this.jdField_a_of_type_Long = l;
+        return;
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.d();
+      }
+      if (((this.b != 0L) && (l - this.b <= 2000L)) || (l - this.jdField_a_of_type_Long <= 1000L))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AudioPlayer", 2, "sco disconnected quickly.");
+        }
+        AudioPlayer.b(true);
+        if ((AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer)) && (!AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer).isBluetoothA2dpOn())) {
+          AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, false);
+        }
+        if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a())
+        {
+          AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+          return;
+        }
+        AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, 0);
+        return;
+      }
+    } while (!this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a());
+    AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer).a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeps
  * JD-Core Version:    0.7.0.1
  */

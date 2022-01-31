@@ -1,28 +1,21 @@
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class akdz
-  implements CompoundButton.OnCheckedChangeListener
+  implements arrh
 {
-  public akdz(QQCustomDialog paramQQCustomDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  public akdz(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a()
   {
-    paramCompoundButton = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      paramCompoundButton.onClick(localQQCustomDialog, i);
-      return;
-    }
+    ShortVideoPreviewActivity.b(this.a);
+    this.a.setResult(-1);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akdz
  * JD-Core Version:    0.7.0.1
  */

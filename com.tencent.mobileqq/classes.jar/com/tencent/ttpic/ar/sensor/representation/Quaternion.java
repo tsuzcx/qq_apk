@@ -28,7 +28,7 @@ public class Quaternion
     this.matrix.setY2(f2 * f3 * 2.0F + f4 * f1 * 2.0F);
     this.matrix.setY3(0.0F);
     this.matrix.setZ0(f1 * f3 * 2.0F + f4 * f2 * 2.0F);
-    this.matrix.setZ1(f2 * f3 * 2.0F - f4 * f1 * 2.0F);
+    this.matrix.setZ1(f3 * f2 * 2.0F - f4 * f1 * 2.0F);
     this.matrix.setZ2(1.0F - f1 * f1 * 2.0F - f2 * f2 * 2.0F);
     this.matrix.setZ3(0.0F);
     this.matrix.setW0(0.0F);
@@ -51,8 +51,8 @@ public class Quaternion
     int i5;
     int i6;
     float f1;
-    float f4;
     float f2;
+    float f4;
     float f3;
     if (this.matrix.size() == 16) {
       if (this.matrix.isColumnMajor())
@@ -69,20 +69,20 @@ public class Quaternion
         i6 = arrayOfInt[8];
         f1 = arrayOfFloat[k] + arrayOfFloat[i2] + arrayOfFloat[i6];
         if (f1 <= 0.0F) {
-          break label237;
+          break label232;
         }
-        f4 = (float)Math.sqrt(f1 + 1.0D) * 2.0F;
-        f1 = 0.25F * f4;
-        f2 = (arrayOfFloat[i5] - arrayOfFloat[i3]) / f4;
-        f3 = (arrayOfFloat[n] - arrayOfFloat[i4]) / f4;
-        f4 = (arrayOfFloat[i1] - arrayOfFloat[m]) / f4;
+        f2 = 2.0F * (float)Math.sqrt(f1 + 1.0D);
+        f1 = 0.25F * f2;
+        f4 = (arrayOfFloat[i5] - arrayOfFloat[i3]) / f2;
+        f3 = (arrayOfFloat[n] - arrayOfFloat[i4]) / f2;
+        f2 = (arrayOfFloat[i1] - arrayOfFloat[m]) / f2;
       }
     }
     for (;;)
     {
-      setX(f2);
+      setX(f4);
       setY(f3);
-      setZ(f4);
+      setZ(f2);
       setW(f1);
       return;
       arrayOfInt = MatrixF4x4.matIndRow16_3x3;
@@ -94,47 +94,50 @@ public class Quaternion
       }
       arrayOfInt = MatrixF4x4.matIndRow9_3x3;
       break;
-      label237:
+      label232:
       int i;
       if (arrayOfFloat[k] > arrayOfFloat[i2])
       {
         i = 1;
-        label254:
+        label249:
         if (arrayOfFloat[k] <= arrayOfFloat[i6]) {
-          break label370;
+          break label364;
         }
       }
-      label370:
+      float f5;
+      label364:
       for (int j = 1;; j = 0)
       {
         if ((i & j) == 0) {
-          break label376;
+          break label370;
         }
-        f4 = (float)Math.sqrt(1.0D + arrayOfFloat[k] - arrayOfFloat[i2] - arrayOfFloat[i6]) * 2.0F;
-        f1 = (arrayOfFloat[i5] - arrayOfFloat[i3]) / f4;
-        f2 = 0.25F * f4;
-        f3 = (arrayOfFloat[m] + arrayOfFloat[i1]) / f4;
-        f4 = (arrayOfFloat[n] + arrayOfFloat[i4]) / f4;
+        f2 = 2.0F * (float)Math.sqrt(1.0D + arrayOfFloat[k] - arrayOfFloat[i2] - arrayOfFloat[i6]);
+        f1 = (arrayOfFloat[i5] - arrayOfFloat[i3]) / f2;
+        f4 = 0.25F * f2;
+        f3 = (arrayOfFloat[m] + arrayOfFloat[i1]) / f2;
+        f5 = arrayOfFloat[n];
+        f2 = (arrayOfFloat[i4] + f5) / f2;
         break;
         i = 0;
-        break label254;
+        break label249;
       }
-      label376:
+      label370:
       if (arrayOfFloat[i2] > arrayOfFloat[i6])
       {
-        f4 = (float)Math.sqrt(1.0D + arrayOfFloat[i2] - arrayOfFloat[k] - arrayOfFloat[i6]) * 2.0F;
-        f1 = (arrayOfFloat[n] - arrayOfFloat[i4]) / f4;
-        f2 = (arrayOfFloat[m] + arrayOfFloat[i1]) / f4;
-        f3 = 0.25F * f4;
-        f4 = (arrayOfFloat[i3] + arrayOfFloat[i5]) / f4;
+        f2 = 2.0F * (float)Math.sqrt(1.0D + arrayOfFloat[i2] - arrayOfFloat[k] - arrayOfFloat[i6]);
+        f1 = (arrayOfFloat[n] - arrayOfFloat[i4]) / f2;
+        f4 = (arrayOfFloat[m] + arrayOfFloat[i1]) / f2;
+        f3 = 0.25F * f2;
+        f5 = arrayOfFloat[i3];
+        f2 = (arrayOfFloat[i5] + f5) / f2;
       }
       else
       {
-        f4 = (float)Math.sqrt(1.0D + arrayOfFloat[i6] - arrayOfFloat[k] - arrayOfFloat[i2]) * 2.0F;
-        f1 = (arrayOfFloat[i1] - arrayOfFloat[m]) / f4;
-        f2 = (arrayOfFloat[n] + arrayOfFloat[i4]) / f4;
-        f3 = (arrayOfFloat[i3] + arrayOfFloat[i5]) / f4;
-        f4 = 0.25F * f4;
+        f2 = 2.0F * (float)Math.sqrt(1.0D + arrayOfFloat[i6] - arrayOfFloat[k] - arrayOfFloat[i2]);
+        f1 = (arrayOfFloat[i1] - arrayOfFloat[m]) / f2;
+        f4 = (arrayOfFloat[n] + arrayOfFloat[i4]) / f2;
+        f3 = (arrayOfFloat[i3] + arrayOfFloat[i5]) / f2;
+        f2 *= 0.25F;
       }
     }
   }
@@ -240,7 +243,8 @@ public class Quaternion
     double d = Math.sin(Math.toRadians(paramFloat / 2.0F));
     setX(paramVector3f.getX() * (float)d);
     setY(paramVector3f.getY() * (float)d);
-    setZ(paramVector3f.getZ() * (float)d);
+    float f = paramVector3f.getZ();
+    setZ((float)d * f);
     setW((float)Math.cos(Math.toRadians(paramFloat / 2.0F)));
     this.dirty = true;
   }
@@ -250,7 +254,8 @@ public class Quaternion
     double d = paramDouble / 2.0D;
     setX(paramVector3f.getX() * (float)d);
     setY(paramVector3f.getY() * (float)d);
-    setZ(paramVector3f.getZ() * (float)d);
+    float f = paramVector3f.getZ();
+    setZ((float)d * f);
     setW((float)paramDouble / 2.0F);
     this.dirty = true;
   }
@@ -278,7 +283,7 @@ public class Quaternion
     setW((float)(d7 * d5 - d8 * d6));
     setX((float)(d7 * d6 + d8 * d5));
     setY((float)(d2 * d3 * d5 + d1 * d4 * d6));
-    setZ((float)(d1 * d4 * d5 - d2 * d3 * d6));
+    setZ((float)(d4 * d1 * d5 - d2 * d3 * d6));
     this.dirty = true;
   }
   
@@ -291,21 +296,22 @@ public class Quaternion
   
   public void slerp(Quaternion paramQuaternion1, Quaternion paramQuaternion2, float paramFloat)
   {
-    float f = dotProduct(paramQuaternion1);
-    if (f < 0.0F)
+    float f2 = dotProduct(paramQuaternion1);
+    float f1 = f2;
+    Quaternion localQuaternion = paramQuaternion1;
+    if (f2 < 0.0F)
     {
       if (this.tmpQuaternion == null) {
         this.tmpQuaternion = new Quaternion();
       }
-      Quaternion localQuaternion = this.tmpQuaternion;
-      f = -f;
+      localQuaternion = this.tmpQuaternion;
+      f1 = -f2;
       localQuaternion.points[0] = (-paramQuaternion1.points[0]);
       localQuaternion.points[1] = (-paramQuaternion1.points[1]);
       localQuaternion.points[2] = (-paramQuaternion1.points[2]);
       localQuaternion.points[3] = (-paramQuaternion1.points[3]);
-      paramQuaternion1 = localQuaternion;
     }
-    while (Math.abs(f) >= 1.0D)
+    if (Math.abs(f1) >= 1.0D)
     {
       paramQuaternion2.points[0] = this.points[0];
       paramQuaternion2.points[1] = this.points[1];
@@ -313,14 +319,16 @@ public class Quaternion
       paramQuaternion2.points[3] = this.points[3];
       return;
     }
-    double d2 = Math.sqrt(1.0D - f * f);
-    double d3 = Math.acos(f);
+    double d2 = Math.sqrt(1.0D - f1 * f1);
+    double d3 = Math.acos(f1);
     double d1 = Math.sin((1.0F - paramFloat) * d3) / d2;
-    d2 = Math.sin(paramFloat * d3) / d2;
-    paramQuaternion2.points[3] = ((float)(this.points[3] * d1 + paramQuaternion1.points[3] * d2));
-    paramQuaternion2.points[0] = ((float)(this.points[0] * d1 + paramQuaternion1.points[0] * d2));
-    paramQuaternion2.points[1] = ((float)(this.points[1] * d1 + paramQuaternion1.points[1] * d2));
-    paramQuaternion2.points[2] = ((float)(this.points[2] * d1 + paramQuaternion1.points[2] * d2));
+    d2 = Math.sin(d3 * paramFloat) / d2;
+    paramQuaternion2.points[3] = ((float)(this.points[3] * d1 + localQuaternion.points[3] * d2));
+    paramQuaternion2.points[0] = ((float)(this.points[0] * d1 + localQuaternion.points[0] * d2));
+    paramQuaternion2.points[1] = ((float)(this.points[1] * d1 + localQuaternion.points[1] * d2));
+    paramQuaternion1 = paramQuaternion2.points;
+    d3 = this.points[2];
+    paramQuaternion1[2] = ((float)(d2 * localQuaternion.points[2] + d1 * d3));
   }
   
   public void subQuat(Quaternion paramQuaternion)
@@ -343,23 +351,23 @@ public class Quaternion
       normalise();
     }
     float f4 = (float)Math.toDegrees(Math.acos(getW()));
-    float f3 = (float)Math.sqrt(1.0F - getW() * getW());
-    float f1;
+    float f1 = (float)Math.sqrt(1.0F - getW() * getW());
+    float f3;
     float f2;
-    if (f3 < 0.001D)
+    if (f1 < 0.001D)
     {
-      f1 = this.points[0];
+      f3 = this.points[0];
       f2 = this.points[1];
     }
-    for (f3 = this.points[2];; f3 = this.points[2] / f3)
+    for (f1 = this.points[2];; f1 = this.points[2] / f1)
     {
-      paramVector4f.points[0] = f1;
+      paramVector4f.points[0] = f3;
       paramVector4f.points[1] = f2;
-      paramVector4f.points[2] = f3;
+      paramVector4f.points[2] = f1;
       paramVector4f.points[3] = (2.0F * f4);
       return;
-      f1 = this.points[0] / f3;
-      f2 = this.points[1] / f3;
+      f3 = this.points[0] / f1;
+      f2 = this.points[1] / f1;
     }
   }
   
@@ -375,7 +383,7 @@ public class Quaternion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.ar.sensor.representation.Quaternion
  * JD-Core Version:    0.7.0.1
  */

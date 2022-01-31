@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
-public class ahxy
-  implements Runnable
+class ahxy
+  extends BroadcastReceiver
 {
-  public ahxy(QZoneManagerImp paramQZoneManagerImp) {}
+  ahxy(ahxx paramahxx) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QZoneManagerImp.a(this.a);
-    QZoneManagerImp.a(this.a, QZoneManagerImp.b(this.a));
-    if (QLog.isColorLevel()) {
-      QLog.d("UndealCount.QZoneManagerImp.", 2, "QZoneManagerImp init notifyQQTab type:" + Long.toBinaryString(QZoneManagerImp.a(this.a)));
+    if (paramIntent.getBooleanExtra("recording_time_out", false))
+    {
+      QQToast.a(this.a.mRuntime.a(), 2131699382, 0).a();
+      QLog.e("FaceUnblockCameraJsApiPlugin", 1, "FaceUnlock record timeout!");
+      return;
     }
+    paramContext = paramIntent.getStringExtra("target_media_url");
+    ahxx.a(this.a, paramContext);
   }
 }
 

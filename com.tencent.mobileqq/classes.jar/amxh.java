@@ -1,30 +1,53 @@
-import android.content.Context;
-import cooperation.qzone.plugin.IQZonePluginManager.OnPluginReadyListener;
-import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
-import cooperation.qzone.plugin.OnQZonePluginInstallListner.Stub;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
+import com.tencent.qphone.base.util.QLog;
 
 class amxh
-  extends OnQZonePluginInstallListner.Stub
+  implements andm
 {
-  amxh(amxg paramamxg, IQZonePluginManager.OnPluginReadyListener paramOnPluginReadyListener, Context paramContext, IQZonePluginManager.PluginParams paramPluginParams) {}
+  amxh(amxf paramamxf, ARCommonConfigInfo.NativeSoRes paramNativeSoRes) {}
   
-  public void a(String paramString) {}
-  
-  public void a(String paramString, float paramFloat, long paramLong) {}
-  
-  public void a(String paramString, int paramInt)
+  public void a()
   {
-    if (paramInt == 2)
-    {
-      this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams);
-      return;
+    andm localandm = amxf.a(this.jdField_a_of_type_Amxf, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localandm != null) {
+      localandm.a();
     }
-    this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener.a(false, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams);
   }
   
-  public void b(String paramString)
+  public void a(long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams);
+    andm localandm = amxf.a(this.jdField_a_of_type_Amxf, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localandm != null) {
+      localandm.a(paramLong1, paramLong2);
+    }
+  }
+  
+  public void a(boolean paramBoolean, andn paramandn)
+  {
+    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a + ", filename = " + paramandn.c + ", url = " + paramandn.a);
+    if (paramBoolean) {
+      if (!amxf.a(this.jdField_a_of_type_Amxf, paramandn.c, paramandn.b))
+      {
+        amxf.a(this.jdField_a_of_type_Amxf, paramandn.c);
+        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
+      }
+    }
+    andm localandm;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Amxf.a(paramandn.d, paramandn.c, paramandn.b) == 0) {}
+      localandm = amxf.a(this.jdField_a_of_type_Amxf, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    } while (localandm == null);
+    localandm.a(paramBoolean, paramandn);
+  }
+  
+  public void b()
+  {
+    andm localandm = amxf.a(this.jdField_a_of_type_Amxf, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localandm != null) {
+      localandm.b();
+    }
   }
 }
 

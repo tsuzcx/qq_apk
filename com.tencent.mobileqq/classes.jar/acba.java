@@ -1,58 +1,26 @@
-import android.os.Bundle;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.vip.IPCDownloadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class acba
-  extends IPCDownloadListener
+  implements DialogInterface.OnDismissListener
 {
-  public acba(MessengerService paramMessengerService) {}
+  public acba(AccountManageActivity paramAccountManageActivity) {}
   
-  public void a(long paramLong, int paramInt, Bundle paramBundle)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.a != null) {}
-    try
-    {
-      Message localMessage = Message.obtain(null, 5);
-      paramBundle.putInt("id", (int)paramLong);
-      paramBundle.putInt("result", paramInt);
-      localMessage.setData(paramBundle);
-      this.a.a.send(localMessage);
-      return;
+    if ((paramDialogInterface != null) && ((paramDialogInterface instanceof Dialog))) {
+      ((Dialog)paramDialogInterface).setOnDismissListener(null);
     }
-    catch (Exception paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
-    }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    Message localMessage;
-    if (this.a.a != null)
-    {
-      localMessage = Message.obtain(null, 5);
-      localMessage.setData(paramBundle);
-    }
-    try
-    {
-      this.a.a.send(localMessage);
-      return;
-    }
-    catch (RemoteException paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
+    if (paramDialogInterface == this.a.c) {
+      this.a.c = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acba
  * JD-Core Version:    0.7.0.1
  */

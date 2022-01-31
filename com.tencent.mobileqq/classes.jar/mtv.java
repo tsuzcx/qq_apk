@@ -1,43 +1,67 @@
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
-import java.util.Comparator;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 
 public class mtv
-  implements Comparator
 {
-  public mtv(TroopBarAssistantManager paramTroopBarAssistantManager) {}
-  
-  public int a(TroopBarData paramTroopBarData1, TroopBarData paramTroopBarData2)
+  public static Drawable a(Resources paramResources, int paramInt)
   {
-    long l1 = Math.max(paramTroopBarData1.mLastMsgTime, paramTroopBarData1.mLastDraftTime);
-    long l2 = Math.max(paramTroopBarData2.mLastMsgTime, paramTroopBarData2.mLastDraftTime);
-    if ((paramTroopBarData2.mIsSticky) && (!paramTroopBarData1.mIsSticky)) {}
-    do
+    return a(paramResources, paramInt, 2131165944, true, 2130841651, 2131165947, null);
+  }
+  
+  private static Drawable a(Resources paramResources, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4, Drawable paramDrawable)
+  {
+    Drawable localDrawable = paramResources.getDrawable(paramInt1);
+    Object localObject;
+    if (paramBoolean)
     {
-      do
-      {
-        return 1;
-        if ((!paramTroopBarData2.mIsSticky) && (paramTroopBarData1.mIsSticky)) {
-          return -1;
-        }
-        if ((!paramTroopBarData2.mIsSticky) || (!paramTroopBarData1.mIsSticky)) {
-          break;
-        }
-      } while (paramTroopBarData2.mLastStickyTime > paramTroopBarData1.mLastStickyTime);
-      if (paramTroopBarData2.mLastStickyTime == paramTroopBarData1.mLastStickyTime) {
-        return 0;
+      localObject = mwj.a(paramResources, paramInt1, paramInt2);
+      ((Drawable)localObject).setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+      localDrawable = paramResources.getDrawable(paramInt3);
+      paramResources = mwj.a(paramResources, paramInt3, paramInt4);
+      paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+      if (paramDrawable != null) {
+        break label138;
       }
-      return -1;
-    } while (l1 < l2);
-    if (l1 == l2) {
-      return 0;
+      paramResources = new LayerDrawable(new Drawable[] { paramResources, localObject });
+      paramResources.setLayerInset(0, 0, 0, 0, 0);
+      paramResources.setLayerInset(1, 0, 0, 0, 0);
     }
-    return -1;
+    for (;;)
+    {
+      paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+      return paramResources;
+      localObject = localDrawable;
+      break;
+      label138:
+      paramResources = new LayerDrawable(new Drawable[] { paramResources, localObject, paramDrawable });
+      paramResources.setLayerInset(0, 0, 0, 0, 0);
+      paramResources.setLayerInset(1, 0, 0, 0, 0);
+      paramResources.setLayerInset(2, 0, 0, 0, 0);
+    }
+  }
+  
+  public static Drawable a(Resources paramResources, int paramInt, Drawable paramDrawable, boolean paramBoolean)
+  {
+    return a(paramResources, paramInt, 2131165944, paramBoolean, 2130841651, 2131165947, paramDrawable);
+  }
+  
+  public static Drawable a(Resources paramResources, int paramInt, boolean paramBoolean)
+  {
+    return a(paramResources, paramInt, 2131165944, paramBoolean, 2130841651, 2131165947, null);
+  }
+  
+  public static Drawable b(Resources paramResources, int paramInt)
+  {
+    Drawable localDrawable = paramResources.getDrawable(paramInt);
+    paramResources = mwj.a(paramResources, paramInt, 2131165944);
+    paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+    return paramResources;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mtv
  * JD-Core Version:    0.7.0.1
  */

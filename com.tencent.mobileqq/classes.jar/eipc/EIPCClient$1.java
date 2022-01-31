@@ -1,102 +1,60 @@
 package eipc;
 
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.Process;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Bundle;
+import android.os.RemoteException;
 import mqq.app.MobileQQ;
 
 class EIPCClient$1
-  implements ServiceConnection
+  implements EIPClientConnectListener
 {
-  EIPCClient$1(EIPCClient paramEIPCClient) {}
+  EIPCClient$1(EIPCClient paramEIPCClient, Bundle paramBundle, String paramString1, String paramString2, EIPCResultCallback paramEIPCResultCallback) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void connectFailed()
   {
-    if (paramIBinder != null) {
-      try
-      {
-        if ((paramIBinder.isBinderAlive()) && (paramIBinder.pingBinder()))
-        {
-          Object localObject = EIPCChannel.Stub.asInterface(paramIBinder);
-          int i = ((EIPCChannel)localObject).setClient(MobileQQ.processName, Process.myPid(), this.a.channel, this.a.c);
-          paramComponentName = ((EIPCChannel)localObject).getProcName();
-          this.a.d = new EIPCConnection((EIPCChannel)localObject, ((EIPCChannel)localObject).getProcName());
-          this.a.d.e = i;
-          this.a.d.c = this.a;
-          this.a.d.a = "EIPCServer";
-          localObject = this.a.guardServerProcList.iterator();
-          while (((Iterator)localObject).hasNext()) {
-            if (TextUtils.equals(paramComponentName, (String)((Iterator)localObject).next()))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("EIPCConst", 2, MobileQQ.processName + " guard " + paramComponentName);
-              }
-              paramComponentName = new EIPCClient.ClientDeathRecipient();
-              paramComponentName.eipcClient = this.a;
-              paramComponentName.binder = paramIBinder;
-              paramComponentName.connection = this.a.d;
-              paramIBinder.linkToDeath(paramComponentName, 0);
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("EIPCConst", 2, "EIPCClient onServiceConnected success, " + this.a.d);
-          }
-          paramComponentName = this.a.e.iterator();
-          while (paramComponentName.hasNext())
-          {
-            paramIBinder = (EIPClientConnectListener)paramComponentName.next();
-            if (paramIBinder != null) {
-              paramIBinder.connectSuccess(this.a.d);
-            }
-          }
-        }
-        if (!QLog.isColorLevel()) {
-          break label357;
-        }
-      }
-      catch (Exception paramComponentName)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("EIPCConst", 2, "EIPCClient onServiceConnected but failed", paramComponentName);
-        }
-      }
-    } else {
-      QLog.d("EIPCConst", 2, "EIPCClient onServiceConnected but failed");
+    if (this.val$callback != null) {
+      this.val$callback.onCallback(EIPCResult.createResult(-2, null));
     }
-    label357:
-    paramComponentName = this.a.e.iterator();
-    while (paramComponentName.hasNext())
-    {
-      paramIBinder = (EIPClientConnectListener)paramComponentName.next();
-      if (paramIBinder != null)
-      {
-        paramIBinder.connectFailed();
-        continue;
-        this.a.e.clear();
-        this.a.notifyBind(this.a.d);
-        return;
-      }
-    }
-    this.a.e.clear();
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void connectSuccess(EIPCConnection paramEIPCConnection)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EIPCConst", 2, "EIPCClient onServiceDisconnected");
-    }
-    paramComponentName = this.a.d;
-    if (paramComponentName != null)
+    paramEIPCConnection = null;
+    for (;;)
     {
-      paramComponentName.b = false;
-      this.a.notifyUnbind(paramComponentName);
+      try
+      {
+        if (this.val$params != null) {
+          this.val$params.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
+        }
+        localEIPCConnection = this.this$0.mServerConnection;
+        if (localEIPCConnection != null) {
+          continue;
+        }
+        paramEIPCConnection = EIPCResult.createResult(-1, null);
+      }
+      catch (RemoteException paramEIPCConnection)
+      {
+        EIPCConnection localEIPCConnection;
+        paramEIPCConnection.printStackTrace();
+        paramEIPCConnection = EIPCResult.createExceptionResult(paramEIPCConnection);
+        continue;
+      }
+      catch (Throwable paramEIPCConnection)
+      {
+        paramEIPCConnection.printStackTrace();
+        paramEIPCConnection = EIPCResult.createExceptionResult(paramEIPCConnection);
+        continue;
+      }
+      if ((paramEIPCConnection != null) && (this.val$callback != null)) {
+        this.val$callback.onCallback(paramEIPCConnection);
+      }
+      return;
+      if (!localEIPCConnection.isAvailable()) {
+        paramEIPCConnection = EIPCResult.createResult(-2, null);
+      } else {
+        localEIPCConnection.callModuleAsync(this.val$module, this.val$action, this.val$params, this.val$callback);
+      }
     }
-    this.a.d = null;
   }
 }
 

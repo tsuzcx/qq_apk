@@ -1,52 +1,51 @@
-import android.graphics.drawable.Drawable;
-import android.os.Message;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.data.TroopAioMsgNavigateBar;
-import com.tencent.mobileqq.widget.ScrollerRunnable;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 class akwt
-  implements Animation.AnimationListener
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_Akws.jdField_a_of_type_AndroidViewView.getBackground();
+  akwt(akwn paramakwn) {}
   
-  akwt(akws paramakws) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAudioFocusChange(int paramInt)
   {
-    if (this.jdField_a_of_type_Akws.jdField_a_of_type_AndroidViewView.getParent() != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("CmGameAudioPlayer", 2, new Object[] { "[onAudioFocusChange],focusChange:", Integer.valueOf(paramInt) });
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_Akws.jdField_a_of_type_AndroidViewView.clearAnimation();
-      if (QLog.isColorLevel()) {
-        QLog.i("ScrollerRunnable", 2, "onAnimationEnd-->clearAnimation");
+      JSONObject localJSONObject;
+      try
+      {
+        localJSONObject = new JSONObject();
+        if (paramInt != 1) {
+          break label105;
+        }
+        localJSONObject.put("event", 2);
+        akyg localakyg = akwd.a(akwn.a(this.a));
+        if ((localakyg == null) || (localakyg.a() == null)) {
+          break label104;
+        }
+        akwd.a().callbackFromRequest(localakyg.a().getLuaState(), 0, "sc.audio_event.local", localJSONObject.toString());
+        return;
       }
-    }
-    this.jdField_a_of_type_Akws.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    if (QLog.isColorLevel()) {
-      QLog.i("ScrollerRunnable", 2, "onAnimationEnd:" + hashCode() + "," + this.jdField_a_of_type_Akws.jdField_a_of_type_AndroidViewView.hashCode() + "," + this.jdField_a_of_type_Akws.jdField_a_of_type_AndroidViewView.getParent());
-    }
-    if ((TroopAioMsgNavigateBar.a(ScrollerRunnable.a(this.jdField_a_of_type_Akws.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable))) && (ScrollerRunnable.a(this.jdField_a_of_type_Akws.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable) != null)) {
-      ScrollerRunnable.a(this.jdField_a_of_type_Akws.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable).obtainMessage(50).sendToTarget();
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_Akws.jdField_a_of_type_AndroidViewView.setBackgroundResource(17170443);
-    if (QLog.isColorLevel()) {
-      QLog.i("ScrollerRunnable", 2, "onAnimationStart:" + hashCode() + "," + this.jdField_a_of_type_Akws.jdField_a_of_type_AndroidViewView.hashCode() + "," + this.jdField_a_of_type_Akws.jdField_a_of_type_AndroidViewView.getParent());
+      catch (Throwable localThrowable) {}
+      localJSONObject.put("event", 1);
+      continue;
+      label104:
+      return;
+      label105:
+      if (paramInt != -1) {
+        if (paramInt != -2) {}
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akwt
  * JD-Core Version:    0.7.0.1
  */

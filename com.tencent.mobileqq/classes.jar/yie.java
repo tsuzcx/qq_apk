@@ -1,25 +1,17 @@
-import com.tencent.mobileqq.adapter.RecommendFriendAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.MayknowRecommendManager;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public class yie
-  extends FriendListObserver
+class yie
+  extends RecyclerView.ViewHolder
 {
-  public yie(RecommendFriendAdapter paramRecommendFriendAdapter) {}
-  
-  protected void onMayknowStateChanged(boolean paramBoolean)
+  public yie(yib paramyib, View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendAdapter", 2, "onStatesChanged ");
-    }
-    RecommendFriendAdapter.a(this.a, RecommendFriendAdapter.a(this.a).a());
-    this.a.notifyDataSetChanged();
+    super(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yie
  * JD-Core Version:    0.7.0.1
  */

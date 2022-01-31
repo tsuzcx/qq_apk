@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class NowNearbyVideoCommentProto$GetCommentListReq
-  extends MessageMicro
+  extends MessageMicro<GetCommentListReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40 }, new String[] { "feed_type", "feed_id", "page", "count", "filter" }, new Object[] { Long.valueOf(0L), "", Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L) }, GetCommentListReq.class);
   public final PBUInt64Field count = PBField.initUInt64(0L);
@@ -18,7 +18,7 @@ public final class NowNearbyVideoCommentProto$GetCommentListReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.NowNearbyVideoCommentProto.GetCommentListReq
  * JD-Core Version:    0.7.0.1
  */

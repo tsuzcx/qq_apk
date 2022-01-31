@@ -1,99 +1,114 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Environment;
+import android.text.TextUtils;
+import java.io.File;
 
-public final class dz
-  extends bm
+public class dz
 {
-  private long c;
-  private int d;
+  private static dz c;
+  private String a;
+  private ea b;
   
-  protected final String a()
+  public static dz f()
   {
-    Object localObject1 = null;
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    for (String str = ax.c; str == null; str = null)
-    {
-      this.a.a(104, null, null);
-      return null;
-    }
+    if (c == null) {}
     try
     {
-      Object localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("uin", this.c);
-      int i = af.a + 1;
-      af.a = i;
-      this.d = i;
-      ((JSONObject)localObject2).put("seq_id", this.d);
-      ((JSONObject)localObject2).put("op_time", ag.c().r() / 1000L);
-      localObject2 = ((JSONObject)localObject2).toString();
-      e.a("plain:" + (String)localObject2);
-      localObject2 = s.b(((String)localObject2).getBytes());
-      localObject1 = localObject2;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        e.c("JSONException:" + localJSONException.getMessage());
+      if (c == null) {
+        c = new dz();
       }
+      return c;
     }
-    str = "?aq_base_sid=" + str + "&data=" + localObject1;
-    return b.c() + "/cn/mbtoken3/mbtoken3_query_real_uin_v2" + str;
+    finally {}
   }
   
-  protected final void a(fs paramfs)
+  private String h()
   {
-    this.c = ((Long)paramfs.c.get("param.uinhash")).longValue();
+    if (TextUtils.isEmpty(this.a)) {
+      this.a = (Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "qqpimdownload" + File.separator);
+    }
+    return this.a;
   }
   
-  protected final void a(JSONObject paramJSONObject)
+  public void a()
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
-    {
-      paramJSONObject = paramJSONObject.getString("info");
-      this.a.a(i, paramJSONObject, paramJSONObject);
+    if (this.b == null) {
       return;
     }
-    paramJSONObject = s.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
-    {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      i = paramJSONObject.getInt("seq_id");
-      if (i != this.d)
-      {
-        this.a.a(10030, null, null);
-        paramJSONObject = new StringBuilder().append("parseJSON error seq is wrong seq=").append(i).append(",right = ");
-        af.a();
-        e.c(af.b());
-        return;
-      }
-      this.a.a = 0;
-      QQUser localQQUser = ax.a().c(this.c);
-      if (localQQUser == null)
-      {
-        this.a.a(10000, null, null);
-        return;
-      }
-      localQQUser.mRealUin = paramJSONObject.getLong("real_uin");
-      localQQUser.mMobileMask = paramJSONObject.getString("mobile");
+    this.b.a();
+  }
+  
+  public void a(dy paramdy)
+  {
+    a("http://qqwx.qq.com/s?aid=index&p=11&c=106613&vt=1&pf=0", null, null, paramdy);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, dy paramdy)
+  {
+    String str = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      str = h();
+    }
+    paramString2 = paramString3;
+    if (TextUtils.isEmpty(paramString3)) {
+      paramString2 = b();
+    }
+    this.b = new ea(new ed(paramString1, str, paramString2), paramdy);
+  }
+  
+  public String b()
+  {
+    return "qqpim_6.9.20.247000_106613.apk";
+  }
+  
+  public void b(dy paramdy)
+  {
+    a("http://qqwx.qq.com/s?aid=index&p=11&c=106613&vt=1&pf=0", null, null, paramdy);
+  }
+  
+  public void c()
+  {
+    if (this.b == null) {
       return;
     }
-    e.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.i().getString(2131361799));
+    this.b.b();
+  }
+  
+  public boolean d()
+  {
+    try
+    {
+      boolean bool = new File(h(), b()).exists();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return false;
+  }
+  
+  public String e()
+  {
+    try
+    {
+      String str = new File(h(), b()).getAbsolutePath();
+      return str;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return "";
+  }
+  
+  public boolean g()
+  {
+    if (this.b == null) {
+      return false;
+    }
+    return this.b.c();
   }
 }
 

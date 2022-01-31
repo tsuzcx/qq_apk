@@ -1,29 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.bless.BlessResultActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.view.View;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
 
-public class wfe
-  implements Runnable
+public abstract class wfe
 {
-  public wfe(BlessResultActivity paramBlessResultActivity) {}
+  public int a;
   
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "VideoRedbag, BlessResultActivity doOnResume, sendRealNameCheckReq");
-    }
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      RedBagVideoManager.a((QQAppInterface)localAppRuntime);
-    }
-  }
+  public abstract void a(VideoCollectionItem paramVideoCollectionItem, View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wfe
  * JD-Core Version:    0.7.0.1
  */

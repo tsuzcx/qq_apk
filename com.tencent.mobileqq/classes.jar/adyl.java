@@ -1,30 +1,27 @@
-import android.view.MotionEvent;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.leba.LebaFeedsAdapter;
 
 public class adyl
-  implements View.OnTouchListener
+  extends RecyclerView.ItemDecoration
 {
-  public adyl(LebaFeedsAdapter paramLebaFeedsAdapter) {}
+  private int jdField_a_of_type_Int;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public adyl(adyd paramadyd, int paramInt)
   {
-    if (LebaFeedsAdapter.a(this.a) != 4) {
-      return false;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    paramRect.right = this.jdField_a_of_type_Int;
+    paramRect.bottom = this.jdField_a_of_type_Int;
+    paramRect.left = this.jdField_a_of_type_Int;
+    if (paramRecyclerView.getChildPosition(paramView) != 0) {
+      paramRect.right = this.jdField_a_of_type_Int;
     }
-    switch (paramMotionEvent.getAction())
-    {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      LebaFeedsAdapter.a(this.a).setAlpha(0.5F);
-      return false;
-    }
-    LebaFeedsAdapter.a(this.a).setAlpha(1.0F);
-    return false;
   }
 }
 

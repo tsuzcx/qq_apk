@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Oidb_0x5cf$DelDecideInfo
-  extends MessageMicro
+  extends MessageMicro<DelDecideInfo>
 {
   public static final int UINT32_REQ_TYPE_FIELD_NUMBER = 3;
   public static final int UINT32_TIME_FIELD_NUMBER = 2;
@@ -19,7 +19,7 @@ public final class Oidb_0x5cf$DelDecideInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5cf.Oidb_0x5cf.DelDecideInfo
  * JD-Core Version:    0.7.0.1
  */

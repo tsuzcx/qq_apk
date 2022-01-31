@@ -1,28 +1,49 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.TroopBarPageEntity;
-import com.tencent.mobileqq.troop.data.TroopBarPostLayoutBanner;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import android.media.MediaPlayer;
+import com.tencent.mobileqq.troop.widget.VideoViewX;
+import com.tencent.qphone.base.util.QLog;
 
 public class gzq
-  implements Runnable
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public gzq(TroopBarPostLayoutBanner paramTroopBarPostLayoutBanner, View paramView) {}
+  public gzq(VideoViewX paramVideoViewX) {}
   
-  public void run()
+  public void onAudioFocusChange(int paramInt)
   {
-    Object localObject2 = this.jdField_a_of_type_AndroidViewView.getContext();
-    Object localObject1 = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((!(localObject2 instanceof BaseActivity)) || (!(localObject1 instanceof View))) {
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+    case -2: 
+    case -1: 
+    case -3: 
+      do
+      {
+        return;
+        if (this.a.a())
+        {
+          this.a.c = true;
+          this.a.b();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(VideoViewX.a(this.a), 2, "onAudioFocusChange,loss focus");
+        }
+        this.a.b = false;
+        return;
+      } while ((this.a.a()) && (!QLog.isColorLevel()));
+      QLog.d(VideoViewX.a(this.a), 2, "onAudioFocusChange,temporarily lost audio focus");
       return;
     }
-    localObject1 = (TroopBarPageEntity)((View)localObject1).getTag(2131230860);
-    localObject2 = (BaseActivity)localObject2;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("bid", ((TroopBarPageEntity)localObject1).id);
-    TroopBarUtils.a((BaseActivity)localObject2, localBundle, "http://xiaoqu.qq.com/cgi-bin/bar/sign", 1, null, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPostLayoutBanner.a);
-    TroopBarUtils.a("Clk_sign", ((TroopBarPageEntity)localObject1).id, "");
+    if (VideoViewX.a(this.a) != null) {
+      VideoViewX.a(this.a).setVolume(1.0F, 1.0F);
+    }
+    if ((!this.a.a()) && (this.a.c)) {
+      this.a.a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(VideoViewX.a(this.a), 2, "onAudioFocusChange,gain focus");
+    }
+    this.a.b = true;
   }
 }
 

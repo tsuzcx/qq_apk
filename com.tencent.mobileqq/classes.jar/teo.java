@@ -1,27 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.PCActiveNoticeActiviy;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import java.util.List;
 
-public class teo
-  implements DialogInterface.OnKeyListener
+public abstract interface teo<T>
 {
-  public teo(PCActiveNoticeActiviy paramPCActiveNoticeActiviy) {}
+  public abstract void a(boolean paramBoolean1, List<T> paramList, boolean paramBoolean2);
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4)
-    {
-      SettingCloneUtil.writeValue(this.a, PCActiveNoticeActiviy.a(this.a), null, "pcactive_notice_key", false);
-      this.a.finish();
-    }
-    return false;
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     teo
  * JD-Core Version:    0.7.0.1
  */

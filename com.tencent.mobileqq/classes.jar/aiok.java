@@ -1,274 +1,253 @@
+import android.content.Intent;
+import android.graphics.Rect;
 import android.os.AsyncTask;
-import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
-import android.support.v4.util.MQLruCache;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.theme.ThemeDownloader;
-import com.tencent.mobileqq.theme.ThemeReporter;
-import com.tencent.mobileqq.theme.ThemeSwitchManager;
-import com.tencent.mobileqq.theme.ThemeSwitchUtil;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.os.Message;
+import android.os.StatFs;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.RegionView;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.theme.SkinEngine;
 import java.io.File;
-import java.lang.ref.WeakReference;
-import mqq.app.AppRuntime;
+import java.util.ArrayList;
 
 public class aiok
-  extends AsyncTask
+  extends AsyncTask<Void, Void, String>
 {
-  aiok(ThemeSwitchManager paramThemeSwitchManager) {}
+  private aiok(PhotoCropActivity paramPhotoCropActivity) {}
   
-  protected Bundle a(Object... paramVarArgs)
+  /* Error */
+  private String a(android.graphics.Bitmap paramBitmap)
   {
-    Bundle localBundle = new Bundle();
-    if ((this.a.jdField_b_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_b_of_type_JavaLangRefWeakReference.get() == null)) {}
-    for (paramVarArgs = null; paramVarArgs == null; paramVarArgs = (AppRuntime)this.a.jdField_b_of_type_JavaLangRefWeakReference.get())
-    {
-      QLog.e("ThemeSwitchManager", 1, "doInBackground mRuntime==null");
-      localBundle.putBoolean("result", false);
-      localBundle.putString("message", "mRuntime=null");
-      localBundle.putInt("errCode", -8);
-      return localBundle;
-    }
-    QLog.d("ThemeSwitchManager", 1, "doInBackground intend to set themeID:" + this.a.jdField_a_of_type_JavaLangString + ", version:" + this.a.jdField_b_of_type_JavaLangString + ", from:" + this.a.c);
-    if (this.a.jdField_a_of_type_JavaLangString.equals("1000")) {
-      try
-      {
-        Thread.sleep(800L);
-        localBundle.putString("message", "doInBackground DEFAULT_THEME_ID");
-        localBundle.putBoolean("result", true);
-        return localBundle;
-      }
-      catch (Exception paramVarArgs)
-      {
-        for (;;)
-        {
-          QLog.e("ThemeSwitchManager", 1, "doInBackground sleep Exception0:" + paramVarArgs.getMessage());
-        }
-      }
-    }
-    if (TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString))
-    {
-      QLog.e("ThemeSwitchManager", 2, "doInBackground version=null, themeId=" + this.a.jdField_a_of_type_JavaLangString);
-      localBundle.putBoolean("result", false);
-      localBundle.putString("message", "version=null");
-      localBundle.putInt("errCode", -54);
-      return localBundle;
-    }
-    Object localObject1;
-    Object localObject3;
-    String str;
-    File localFile;
-    int i;
-    try
-    {
-      localObject1 = ThemeUtil.getThemeInfo(paramVarArgs.getApplication(), this.a.jdField_a_of_type_JavaLangString);
-      if ((localObject1 != null) || (this.a.jdField_a_of_type_ComTencentMobileqqThemeThemeUtil$ThemeInfo == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(this.a.jdField_a_of_type_ComTencentMobileqqThemeThemeUtil$ThemeInfo.themeId))) {
-        break label1384;
-      }
-      localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqThemeThemeUtil$ThemeInfo;
-      if (localObject1 == null)
-      {
-        QLog.e("ThemeSwitchManager", 2, "doInBackground themeInfo=null, themeId=" + this.a.jdField_a_of_type_JavaLangString);
-        localBundle.putBoolean("result", false);
-        localBundle.putString("message", "themeInfo = null");
-        localBundle.putInt("errCode", -53);
-        return localBundle;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ThemeSwitchManager", 1, "doInBackground set theme,themeId=" + this.a.jdField_a_of_type_JavaLangString + ",version=" + this.a.jdField_b_of_type_JavaLangString + ", from:" + this.a.c);
-      }
-      localObject3 = ThemeUtil.getThemeResourcePath(paramVarArgs.getApplication(), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString);
-      str = ThemeUtil.getThemeDownloadFilePath(paramVarArgs.getApplication(), this.a.jdField_a_of_type_JavaLangString, "20000000");
-      localFile = new File(str);
-      localObject2 = new File((String)localObject3);
-      if (!((File)localObject2).exists()) {
-        break label1226;
-      }
-      i = ThemeUtil.getFileNumInFile((File)localObject2);
-      if ((i > 0) && (i >= ((ThemeUtil.ThemeInfo)localObject1).fileNum))
-      {
-        localBundle.putString("themePath", ThemeUtil.getThemeResourcePath(paramVarArgs.getApplication(), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString));
-        try
-        {
-          Thread.sleep(500L);
-          localBundle.putString("message", "doInBackground already THEME_STATUS_COMPLETE,  fileNum:" + i);
-          localBundle.putBoolean("result", true);
-          if ((!QLog.isColorLevel()) && (i == ((ThemeUtil.ThemeInfo)localObject1).fileNum)) {
-            break label1387;
-          }
-          QLog.d("ThemeSwitchManager", 1, "doInBackground THEME_STATUS_COMPLETE ok fileNum:" + i + ", themeInfo.fileNum=" + ((ThemeUtil.ThemeInfo)localObject1).fileNum + ", themeResDir:" + localObject2);
-        }
-        catch (Exception paramVarArgs)
-        {
-          for (;;)
-          {
-            QLog.d("ThemeSwitchManager", 2, "doInBackground THEME_STATUS_COMPLETE sleep Exception1:" + paramVarArgs.getMessage());
-          }
-        }
-      }
-      ThemeReporter.a(paramVarArgs, "theme_detail", this.a.c, 155, -1, -3, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString, this.a.d, "");
-    }
-    catch (Exception paramVarArgs)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ThemeSwitchManager", 2, "doInBackground Exception:" + paramVarArgs.getMessage());
-      }
-      localBundle.putString("message", "doInBackground Exception error");
-      localBundle.putBoolean("result", false);
-      localBundle.putInt("errCode", -35);
-      if (QLog.isColorLevel()) {
-        QLog.i("ThemeSwitchManager", 2, "doInBackground fail");
-      }
-      return localBundle;
-    }
-    QLog.e("ThemeSwitchManager", 1, "doInBackground THEME_STATUS_COMPLETE fileNum Error, themeInfo.fileNum:" + ((ThemeUtil.ThemeInfo)localObject1).fileNum + ", fileNum:" + i + ",themeId:" + ((ThemeUtil.ThemeInfo)localObject1).themeId + ",version:" + ((ThemeUtil.ThemeInfo)localObject1).version + ", from:" + this.a.c);
-    label949:
-    if ((localFile.exists()) && (localFile.length() > 0L)) {
-      if (QLog.isColorLevel())
-      {
-        localObject3 = new StringBuilder().append("doInBackground themePkgFile is exists,themeZipPath=").append(str);
-        if (localObject1 == null) {
-          break label1393;
-        }
-      }
-    }
-    label1226:
-    label1384:
-    label1387:
-    label1390:
-    label1393:
-    for (Object localObject2 = ",status=" + ((ThemeUtil.ThemeInfo)localObject1).status + ", themeInfo.size=" + ((ThemeUtil.ThemeInfo)localObject1).size;; localObject2 = "themeInfo=null")
-    {
-      QLog.d("ThemeSwitchManager", 2, (String)localObject2);
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putString("themeId", ((ThemeUtil.ThemeInfo)localObject1).themeId);
-      ((Bundle)localObject2).putString("version", ((ThemeUtil.ThemeInfo)localObject1).version);
-      ((Bundle)localObject2).putBoolean("isVoiceTheme", ((ThemeUtil.ThemeInfo)localObject1).isVoiceTheme);
-      ((Bundle)localObject2).putLong("size", ((ThemeUtil.ThemeInfo)localObject1).size);
-      localObject1 = new ThemeDownloader(paramVarArgs, this.a.c);
-      boolean bool = ((ThemeDownloader)localObject1).a(paramVarArgs.getApplication(), (Bundle)localObject2, null);
-      ((ThemeDownloader)localObject1).a();
-      if (bool)
-      {
-        this.a.jdField_b_of_type_JavaLangString = ((Bundle)localObject2).getString("version");
-        localBundle.putString("themePath", ThemeUtil.getThemeResourcePath(paramVarArgs.getApplication(), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString));
-        localBundle.putString("message", "doInBackground unzip ok");
-        localBundle.putBoolean("result", true);
-        if (!QLog.isColorLevel()) {
-          break label1390;
-        }
-        QLog.d("ThemeSwitchManager", 1, "doInBackground unzip ThemeZip ok");
-        break label1390;
-        QLog.e("ThemeSwitchManager", 1, "doInBackground THEME_STATUS_COMPLETE themeResPath not exists,themeResPath=" + (String)localObject3);
-        break label949;
-      }
-      QLog.e("ThemeSwitchManager", 1, "doInBackground unzip error, themeZipPath:" + str);
-      localBundle.putString("message", "doInBackground unzip fail");
-      localBundle.putBoolean("result", false);
-      localBundle.putInt("errCode", -30);
-      break label1390;
-      QLog.e("ThemeSwitchManager", 1, "doInBackground theme RES error, themeZipPath:" + str + ", exists:" + localFile.exists());
-      localBundle.putString("message", "doInBackground RES error");
-      localBundle.putBoolean("result", false);
-      localBundle.putInt("errCode", -29);
-      break label1390;
-      break;
-      return localBundle;
-      return localBundle;
-    }
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: aload_1
+    //   4: ifnonnull +8 -> 12
+    //   7: aload 5
+    //   9: astore_2
+    //   10: aload_2
+    //   11: areturn
+    //   12: new 23	java/io/File
+    //   15: dup
+    //   16: aload_0
+    //   17: getfield 11	aiok:a	Lcom/tencent/mobileqq/activity/photo/PhotoCropActivity;
+    //   20: getfield 28	com/tencent/mobileqq/activity/photo/PhotoCropActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   23: invokespecial 31	java/io/File:<init>	(Ljava/lang/String;)V
+    //   26: astore_2
+    //   27: aload_2
+    //   28: invokevirtual 35	java/io/File:exists	()Z
+    //   31: ifne +14 -> 45
+    //   34: aload_0
+    //   35: getfield 11	aiok:a	Lcom/tencent/mobileqq/activity/photo/PhotoCropActivity;
+    //   38: getfield 28	com/tencent/mobileqq/activity/photo/PhotoCropActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   41: invokestatic 40	bdhj:a	(Ljava/lang/String;)Ljava/io/File;
+    //   44: pop
+    //   45: new 42	java/io/BufferedOutputStream
+    //   48: dup
+    //   49: new 44	java/io/FileOutputStream
+    //   52: dup
+    //   53: aload_2
+    //   54: invokespecial 47	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   57: invokespecial 50	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   60: astore_3
+    //   61: aload_3
+    //   62: astore_2
+    //   63: aload_1
+    //   64: getstatic 56	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   67: aload_0
+    //   68: getfield 11	aiok:a	Lcom/tencent/mobileqq/activity/photo/PhotoCropActivity;
+    //   71: getfield 60	com/tencent/mobileqq/activity/photo/PhotoCropActivity:jdField_b_of_type_Int	I
+    //   74: aload_3
+    //   75: invokevirtual 66	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   78: pop
+    //   79: aload_3
+    //   80: astore_2
+    //   81: aload_0
+    //   82: getfield 11	aiok:a	Lcom/tencent/mobileqq/activity/photo/PhotoCropActivity;
+    //   85: getfield 28	com/tencent/mobileqq/activity/photo/PhotoCropActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   88: astore_1
+    //   89: aload_1
+    //   90: astore_2
+    //   91: aload_3
+    //   92: ifnull -82 -> 10
+    //   95: aload_3
+    //   96: invokevirtual 69	java/io/BufferedOutputStream:close	()V
+    //   99: aload_1
+    //   100: areturn
+    //   101: astore_3
+    //   102: aload_1
+    //   103: astore_2
+    //   104: invokestatic 74	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   107: ifeq -97 -> 10
+    //   110: ldc 76
+    //   112: iconst_2
+    //   113: ldc 78
+    //   115: aload_3
+    //   116: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   119: aload_1
+    //   120: areturn
+    //   121: astore 4
+    //   123: aconst_null
+    //   124: astore_1
+    //   125: aload_1
+    //   126: astore_2
+    //   127: invokestatic 74	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   130: ifeq +15 -> 145
+    //   133: aload_1
+    //   134: astore_2
+    //   135: ldc 76
+    //   137: iconst_2
+    //   138: ldc 78
+    //   140: aload 4
+    //   142: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   145: aload 5
+    //   147: astore_2
+    //   148: aload_1
+    //   149: ifnull -139 -> 10
+    //   152: aload_1
+    //   153: invokevirtual 69	java/io/BufferedOutputStream:close	()V
+    //   156: aconst_null
+    //   157: areturn
+    //   158: astore_1
+    //   159: aload 5
+    //   161: astore_2
+    //   162: invokestatic 74	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   165: ifeq -155 -> 10
+    //   168: ldc 76
+    //   170: iconst_2
+    //   171: ldc 78
+    //   173: aload_1
+    //   174: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   177: aconst_null
+    //   178: areturn
+    //   179: astore_1
+    //   180: aconst_null
+    //   181: astore_2
+    //   182: aload_2
+    //   183: ifnull +7 -> 190
+    //   186: aload_2
+    //   187: invokevirtual 69	java/io/BufferedOutputStream:close	()V
+    //   190: aload_1
+    //   191: athrow
+    //   192: astore_2
+    //   193: invokestatic 74	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   196: ifeq -6 -> 190
+    //   199: ldc 76
+    //   201: iconst_2
+    //   202: ldc 78
+    //   204: aload_2
+    //   205: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   208: goto -18 -> 190
+    //   211: astore_1
+    //   212: goto -30 -> 182
+    //   215: astore 4
+    //   217: aload_3
+    //   218: astore_1
+    //   219: goto -94 -> 125
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	222	0	this	aiok
+    //   0	222	1	paramBitmap	android.graphics.Bitmap
+    //   9	178	2	localObject1	Object
+    //   192	13	2	localIOException1	java.io.IOException
+    //   60	36	3	localBufferedOutputStream	java.io.BufferedOutputStream
+    //   101	117	3	localIOException2	java.io.IOException
+    //   121	20	4	localIOException3	java.io.IOException
+    //   215	1	4	localIOException4	java.io.IOException
+    //   1	159	5	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   95	99	101	java/io/IOException
+    //   27	45	121	java/io/IOException
+    //   45	61	121	java/io/IOException
+    //   152	156	158	java/io/IOException
+    //   27	45	179	finally
+    //   45	61	179	finally
+    //   186	190	192	java/io/IOException
+    //   63	79	211	finally
+    //   81	89	211	finally
+    //   127	133	211	finally
+    //   135	145	211	finally
+    //   63	79	215	java/io/IOException
+    //   81	89	215	java/io/IOException
   }
   
-  protected void onPostExecute(Object paramObject)
+  protected String a(Void... paramVarArgs)
   {
-    if ((paramObject == null) || (!(paramObject instanceof Bundle)))
-    {
-      QLog.e("ThemeSwitchManager", 1, "onPostExecute result Error, result:" + paramObject);
-      return;
-    }
-    Bundle localBundle = (Bundle)paramObject;
-    if ((this.a.jdField_b_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_b_of_type_JavaLangRefWeakReference.get() == null)) {}
-    for (paramObject = null; paramObject == null; paramObject = (AppRuntime)this.a.jdField_b_of_type_JavaLangRefWeakReference.get())
-    {
-      QLog.e("ThemeSwitchManager", 1, "onPostExecute mRuntime==null");
-      return;
-    }
-    boolean bool2 = localBundle.getBoolean("result", false);
-    int i;
-    boolean bool1;
-    if (localBundle.getInt("errCode") == 0)
-    {
-      i = 23;
-      if (QLog.isColorLevel()) {
-        QLog.d("ThemeSwitchManager", 2, "onPostExecute result: " + bool2 + ", errCode:" + localBundle.getInt("errCode") + ", msg:" + localBundle.getString("message") + ", theme:" + this.a.jdField_a_of_type_JavaLangString + ", version:" + this.a.jdField_b_of_type_JavaLangString + ", mFrom:" + this.a.c);
-      }
-      if (!bool2) {
-        break label858;
-      }
-      this.a.a();
-      Object localObject = ThemeUtil.getCurrentThemeInfo();
-      String str = localBundle.getString("themePath");
-      bool1 = SkinEngine.getInstances().setSkinRootPath(paramObject.getApplication(), str);
-      QLog.d("ThemeSwitchManager", 2, "onPostExecute setSkinRootPath: " + str + ", themeid:" + this.a.jdField_a_of_type_JavaLangString + ", version:" + this.a.jdField_b_of_type_JavaLangString + ", mFrom:" + this.a.c + ", setSkinSuccess=" + bool1);
-      if (!bool1) {
-        break label778;
-      }
-      if (BaseApplicationImpl.sImageCache != null) {
-        BaseApplicationImpl.sImageCache.evictAll();
-      }
-      str = ((Bundle)localObject).getString("themeId");
-      localObject = ((Bundle)localObject).getString("version");
-      QLog.d("ThemeSwitchManager", 1, "onPostExecute currentTheme currThemeId=" + str + ", currVersion=" + (String)localObject + ", change to themeId=" + this.a.jdField_a_of_type_JavaLangString + ", mVersion=" + this.a.jdField_b_of_type_JavaLangString);
-      if (!str.equals("1103")) {
-        ThemeSwitchUtil.a(paramObject, str, (String)localObject);
-      }
-      ThemeUtil.setCurrentThemeIdVersion(paramObject, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString);
-      ThemeReporter.a(paramObject, "theme_detail", this.a.c, 155, NetworkUtil.a(null), 23, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString, this.a.d, "");
+    if (new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() <= 1) {
+      paramVarArgs = "sdcardfull";
     }
     for (;;)
     {
-      if ((bool2) && (bool1)) {
-        break label970;
+      return paramVarArgs;
+      try
+      {
+        if (this.a.jdField_b_of_type_Boolean) {}
+        for (paramVarArgs = this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView.b();; paramVarArgs = this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView.a())
+        {
+          String str = a(paramVarArgs);
+          if (QLog.isColorLevel()) {
+            QLog.i("PhotoCropActivity", 2, String.format("store to %s", new Object[] { str }));
+          }
+          paramVarArgs = str;
+          if (!this.a.jdField_b_of_type_Boolean) {
+            break;
+          }
+          paramVarArgs = this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView.a();
+          paramVarArgs = aiqe.a(paramVarArgs.left, paramVarArgs.top, paramVarArgs.right, paramVarArgs.bottom);
+          this.a.getIntent().putExtra("key_clip_info", paramVarArgs);
+          return str;
+        }
+        return "oom";
       }
-      int j = i;
-      if (i > -1) {
-        j = -1;
+      catch (OutOfMemoryError paramVarArgs)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("PhotoCropActivity", 2, paramVarArgs.getMessage());
+        }
       }
-      this.a.a(j, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString, 65);
-      QLog.e("ThemeSwitchManager", 1, "onPostExecute result Error: " + bool2 + ", errCode:" + localBundle.getInt("errCode") + ", msg:" + localBundle.getString("message") + ", theme:" + this.a.jdField_a_of_type_JavaLangString + ", version:" + this.a.jdField_b_of_type_JavaLangString + ", mFrom:" + this.a.c + ", errCode:" + j);
-      ThemeReporter.a(paramObject, "theme_detail", this.a.c, 155, NetworkUtil.a(null), j, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString, this.a.d, "");
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(201);
-      return;
-      i = localBundle.getInt("errCode");
-      break;
-      label778:
-      i = -24;
-      QLog.e("ThemeSwitchManager", 1, "onPostExecute setSkinSuccess: " + bool1 + ", theme:" + this.a.jdField_a_of_type_JavaLangString + ", version:" + this.a.jdField_b_of_type_JavaLangString + ", mFrom:" + this.a.c);
-      continue;
-      label858:
-      QLog.e("ThemeSwitchManager", 1, "onPostExecute result: " + bool2 + ", errCode:" + localBundle.getInt("errCode") + ", msg:" + localBundle.getString("message") + ", theme:" + this.a.jdField_a_of_type_JavaLangString + ", version:" + this.a.jdField_b_of_type_JavaLangString + ", mFrom:" + this.a.c);
-      bool1 = false;
     }
-    label970:
-    if ((paramObject instanceof QQAppInterface)) {
-      ThreadManager.post(new aiol(this, paramObject), 8, null, true);
-    }
-    this.a.a(1, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString, 66);
-    ThemeReporter.a(paramObject, "theme_detail", this.a.c, 155, NetworkUtil.a(null), 23, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString, this.a.d, "");
   }
   
-  protected void onPreExecute()
+  protected void a(String paramString)
   {
-    if (this.a.jdField_b_of_type_Boolean) {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(200);
+    if (("oom".equals(paramString)) || (paramString == null))
+    {
+      QQToast.a(this.a, 2131695247, 0).a();
+      return;
     }
-    super.onPreExecute();
+    if ("sdcardfull".equals(paramString))
+    {
+      QQToast.a(this.a, 2131695248, 0).a();
+      return;
+    }
+    Object localObject = new ArrayList();
+    ((ArrayList)localObject).add(paramString);
+    if ("FROM_SDK_AVATAR_SET_IMAGE".equals(this.a.jdField_b_of_type_JavaLangString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoCropActivity", 2, "StoreFileTask");
+      }
+      localObject = this.a.getIntent();
+      if (bddf.a(this.a.app, paramString, (Intent)localObject))
+      {
+        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 1002));
+        return;
+      }
+      ((Intent)localObject).putExtra("key_from_sdk_set_avatar_result", false);
+      this.a.setResult(-1, (Intent)localObject);
+      this.a.finish();
+      return;
+    }
+    if (100 == this.a.jdField_a_of_type_Int)
+    {
+      this.a.getIntent().putExtra("PhotoConst.SYNCQZONE", this.a.d);
+      this.a.getIntent().putExtra("PhotoConst.SYNCQZONE_CHECKSTATE", this.a.i);
+    }
+    PhotoUtils.a(this.a, this.a.getIntent(), (ArrayList)localObject, 0, false);
   }
 }
 

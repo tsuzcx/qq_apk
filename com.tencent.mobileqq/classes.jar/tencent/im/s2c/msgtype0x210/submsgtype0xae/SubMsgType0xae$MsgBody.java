@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SubMsgType0xae$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26 }, new String[] { "uint32_type", "msg_people_may_konw", "msg_persons_may_know" }, new Object[] { Integer.valueOf(0), null, null }, MsgBody.class);
   public SubMsgType0xae.PushPeopleMayKnow msg_people_may_konw = new SubMsgType0xae.PushPeopleMayKnow();

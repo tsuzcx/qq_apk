@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205cd" android:layout_width="0.0dip" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080912" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080913" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020600" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00a7" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0070" android:src="@drawable/common_loading2" android:scaleType="center" />
-    </LinearLayout>
-    <com.tencent.mobileqq.widget.ProfileCardMoreInfoView android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080914" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0070" />
-    <View android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00aa" />
+    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b005e" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0139" android:id="@id/txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="6.0dip" />
 </LinearLayout>

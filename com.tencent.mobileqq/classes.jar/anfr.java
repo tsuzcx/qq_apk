@@ -1,32 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 
-public class anfr
-  implements ActionSheet.OnButtonClickListener
+public final class anfr
+  implements Parcelable.Creator<ArVideoResourceInfo>
 {
-  public anfr(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public ArVideoResourceInfo a(Parcel paramParcel)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
-      return;
-      TroopHWJsPlugin localTroopHWJsPlugin = this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin;
-      if (this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.mRuntime == null) {}
-      for (paramView = null;; paramView = this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.mRuntime.a())
-      {
-        localTroopHWJsPlugin.c = TroopHWJsPlugin.a(paramView, 2);
-        break;
-      }
-      this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.jdField_a_of_type_Int);
-    }
+    return new ArVideoResourceInfo(paramParcel);
+  }
+  
+  public ArVideoResourceInfo[] a(int paramInt)
+  {
+    return new ArVideoResourceInfo[paramInt];
   }
 }
 

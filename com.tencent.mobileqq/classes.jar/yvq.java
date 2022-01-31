@@ -1,26 +1,22 @@
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
 public class yvq
-  implements Comparator
+  implements AdapterView.OnItemClickListener
 {
-  public yvq(ApolloDaoManager paramApolloDaoManager) {}
+  public yvq(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramApolloActionData2.version == paramApolloActionData1.version) {
-      return 0;
-    }
-    if (paramApolloActionData2.version > paramApolloActionData1.version) {
-      return 1;
-    }
-    return -1;
+    this.a.onTabSelected(0, paramInt);
+    paramView.setSelected(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yvq
  * JD-Core Version:    0.7.0.1
  */

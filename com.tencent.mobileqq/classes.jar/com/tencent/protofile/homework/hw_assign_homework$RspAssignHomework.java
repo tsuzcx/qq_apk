@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class hw_assign_homework$RspAssignHomework
-  extends MessageMicro
+  extends MessageMicro<RspAssignHomework>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16 }, new String[] { "errinfo", "hw_id" }, new Object[] { null, Long.valueOf(0L) }, RspAssignHomework.class);
   public hw_assign_homework.ErrorInfo errinfo = new hw_assign_homework.ErrorInfo();
@@ -14,7 +14,7 @@ public final class hw_assign_homework$RspAssignHomework
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.protofile.homework.hw_assign_homework.RspAssignHomework
  * JD-Core Version:    0.7.0.1
  */

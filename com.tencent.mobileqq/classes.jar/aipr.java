@@ -1,40 +1,63 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
+import android.os.Message;
+import com.tencent.mobileqq.activity.photo.SendWebPicActivity;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class aipr
-  extends aipl
+  extends bayj
 {
-  private int a;
+  public aipr(SendWebPicActivity paramSendWebPicActivity) {}
   
-  public aipr(ForwardSdkShareProcessor paramForwardSdkShareProcessor)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramForwardSdkShareProcessor);
-    this.jdField_a_of_type_JavaLangString = "ImageUploadStep";
-  }
-  
-  protected boolean a()
-  {
-    return ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).get();
-  }
-  
-  protected void d()
-  {
+    bass localbass = (bass)paramMessage.obj;
+    if ((localbass == null) || (localbass.b != 24) || (localbass.c != 51)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (localbass.f.equals(SendWebPicActivity.a(this.a)));
+      switch (paramMessage.what)
+      {
+      case 1004: 
+      default: 
+        return;
+      case 1003: 
+        if (QLog.isColorLevel()) {
+          QLog.d("SendWebPicActivity", 2, "mPicTransProcessorHandler send finished!" + SendWebPicActivity.a(this.a));
+        }
+        break;
+      }
+    } while (SendWebPicActivity.a(this.a));
+    paramMessage = new Bdh_extinfo.UploadPicExtInfo();
+    try
+    {
+      paramMessage.mergeFrom(localbass.a, 0, localbass.a.length);
+      SendWebPicActivity.a(this.a, true);
+      SendWebPicActivity.a(this.a, localbass.f);
+      SendWebPicActivity.b(this.a, paramMessage.bytes_file_resid.get().toStringUtf8());
+      SendWebPicActivity.c(this.a, paramMessage.bytes_download_url.get().toStringUtf8());
+      if (QLog.isColorLevel()) {
+        QLog.d("SendWebPicActivity", 2, "mPicTransProcessorHandler mUuid=" + SendWebPicActivity.b(this.a) + ", mImageMd5=" + SendWebPicActivity.a(this.a) + ", mImageUrl=" + SendWebPicActivity.c(this.a));
+      }
+      SendWebPicActivity.a(this.a).sendEmptyMessage(1001);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      for (;;)
+      {
+        localInvalidProtocolBufferMicroException.printStackTrace();
+      }
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "ImageUploadStep|process|ready=" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) + ",remoteUrl=" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) + " ,localUrl=" + ForwardSdkShareProcessor.b(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
+      QLog.d("SendWebPicActivity", 2, "mPicTransProcessorHandler send error:" + localbass.g);
     }
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      f();
-      return;
-    }
-    if (ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).get())
-    {
-      b();
-      return;
-    }
-    ThreadManager.post(new aips(this), 8, null, true);
+    SendWebPicActivity.a(this.a).sendEmptyMessage(1003);
   }
 }
 

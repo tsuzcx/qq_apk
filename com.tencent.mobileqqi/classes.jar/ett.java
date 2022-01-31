@@ -1,265 +1,129 @@
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.adapter.CharDividedFacePreloadBaseAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.voip.VoipDialInterface;
+import com.tencent.mobileqq.activity.voip.VoipErrorCodeEnum;
+import com.tencent.mobileqq.activity.voip.VoipGetUid.ResponseBody;
+import com.tencent.mobileqq.activity.voip.VoipSSOInterface;
+import com.tencent.mobileqq.pb.PBFloatField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.voip.VoipSIPInterface;
 
 public class ett
-  extends CharDividedFacePreloadBaseAdapter
+  extends Handler
 {
-  private LinkedHashMap jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+  public ett(VoipDialInterface paramVoipDialInterface) {}
   
-  public ett(ContactsInnerFrame paramContactsInnerFrame, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramContext, paramQQAppInterface, paramXListView, paramBoolean);
-  }
-  
-  @SuppressLint({"DefaultLocale"})
-  private void c()
-  {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberContactsInnerFrame.jdField_a_of_type_JavaUtilList == null) {}
-    for (;;)
+    switch (paramMessage.what)
     {
-      return;
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberContactsInnerFrame.jdField_a_of_type_JavaUtilList.iterator();
-      label77:
-      int i;
-      if (((Iterator)localObject2).hasNext())
-      {
-        PhoneContact localPhoneContact = (PhoneContact)((Iterator)localObject2).next();
-        if ((localPhoneContact.pinyinFirst == null) || (localPhoneContact.pinyinFirst.length() == 0))
-        {
-          localObject1 = "#";
-          i = ((String)localObject1).charAt(0);
-          if (((65 > i) || (i > 90)) && ((97 > i) || (i > 122))) {
-            break label182;
-          }
-        }
-        label182:
-        for (localObject1 = ((String)localObject1).toUpperCase();; localObject1 = "#")
-        {
-          if (this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject1) == null) {
-            this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject1, new ArrayList());
-          }
-          ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject1)).add(localPhoneContact);
-          break;
-          localObject1 = localPhoneContact.pinyinFirst.substring(0, 1);
-          break label77;
-        }
-      }
-      Object localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap;
-      this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-      for (char c = 'A'; c <= 'Z'; c = (char)(c + '\001')) {
-        if (((LinkedHashMap)localObject1).get(String.valueOf(c)) != null) {
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(String.valueOf(c), ((LinkedHashMap)localObject1).get(String.valueOf(c)));
-        }
-      }
-      if (((LinkedHashMap)localObject1).get("#") != null) {
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.put("#", ((LinkedHashMap)localObject1).get("#"));
-      }
-      ((LinkedHashMap)localObject1).clear();
-      this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().size()];
-      this.jdField_a_of_type_ArrayOfJavaLangString = new String[this.jdField_a_of_type_ArrayOfInt.length];
-      localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-      if (this.jdField_a_of_type_ArrayOfInt.length != 0)
-      {
-        this.jdField_a_of_type_ArrayOfInt[0] = 0;
-        i = 1;
-        while (i < this.jdField_a_of_type_ArrayOfInt.length)
-        {
-          localObject2 = this.jdField_a_of_type_ArrayOfInt;
-          int j = localObject2[i];
-          int k = this.jdField_a_of_type_ArrayOfInt[(i - 1)];
-          localObject2[i] = (((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(((Iterator)localObject1).next())).size() + k + 1 + j);
-          i += 1;
-        }
-        localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-        i = 0;
-        while (((Iterator)localObject1).hasNext())
-        {
-          this.jdField_a_of_type_ArrayOfJavaLangString[i] = ((String)((Iterator)localObject1).next());
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  public int a()
-  {
-    return 2130903268;
-  }
-  
-  public int a(String paramString)
-  {
-    int i;
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
-    {
-      i = 0;
-      if (i >= this.jdField_a_of_type_ArrayOfJavaLangString.length) {
-        break label53;
-      }
-      if (!this.jdField_a_of_type_ArrayOfJavaLangString[i].equals(paramString)) {}
-    }
-    for (;;)
-    {
-      if (i >= 0)
-      {
-        return this.jdField_a_of_type_ArrayOfInt[i];
-        i += 1;
-        break;
-      }
-      return -1;
-      return -1;
-      label53:
-      i = -1;
-    }
-  }
-  
-  protected Object a(int paramInt)
-  {
-    return null;
-  }
-  
-  public void a()
-  {
-    c();
-    super.notifyDataSetChanged();
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    paramInt = i;
-    if (i < 0) {
-      paramInt = -(i + 1) - 1;
-    }
-    if ((this.jdField_a_of_type_ArrayOfJavaLangString.length == 0) && (paramInt < 0))
-    {
-      ((TextView)paramView).setVisibility(8);
-      return;
-    }
-    ((TextView)paramView).setText(this.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt) >= 0;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ArrayOfInt.length == 0) {
-      return 0;
-    }
-    int i = this.jdField_a_of_type_ArrayOfInt[(this.jdField_a_of_type_ArrayOfInt.length - 1)];
-    return ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_a_of_type_ArrayOfJavaLangString.length - 1)])).size() + i + 1;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    if (i >= 0) {
-      return null;
-    }
-    i = -(i + 1) - 1;
-    return (PhoneContact)((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i])).get(paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    View localView = paramView;
-    if (paramView == null)
-    {
-      localView = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberContactsInnerFrame.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903962, paramViewGroup, false);
-      paramView = new etu(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberContactsInnerFrame, null);
-      localView.setTag(paramView);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131231566));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231565));
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)localView.findViewById(2131230943));
-      paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131230940));
-      paramView.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231000));
-    }
-    paramView = (etu)localView.getTag();
-    if (i < 0)
-    {
-      i = -(i + 1) - 1;
-      paramViewGroup = (PhoneContact)((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i])).get(paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      if (!paramViewGroup.uin.equals("0"))
-      {
-        paramView.jdField_a_of_type_JavaLangString = paramViewGroup.uin;
-        paramView.b = 1;
-        paramView.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(paramView.jdField_a_of_type_JavaLangString, 1, (byte)0));
-        paramView.jdField_c_of_type_AndroidWidgetTextView.setText(paramViewGroup.name);
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberContactsInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(paramView.jdField_a_of_type_JavaLangString)) {
-          break label438;
-        }
-        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-        label277:
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberContactsInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberContactsInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a.contains(paramViewGroup.uin))) {
-          break label449;
-        }
-        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
-        label318:
-        if (paramView.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
-        {
-          if (!paramView.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-            break label460;
-          }
-          localView.setContentDescription(paramViewGroup.name + "已选中,双击取消");
-        }
-      }
+    case 2: 
+    default: 
+    case 100: 
+    case 1: 
+    case 3: 
+    case 4: 
+    case 5: 
+    case 6: 
       for (;;)
       {
-        paramView.jdField_a_of_type_ComTencentMobileqqDataPhoneContact = paramViewGroup;
-        localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberContactsInnerFrame);
-        return localView;
-        paramView.jdField_a_of_type_JavaLangString = (paramViewGroup.nationCode + paramViewGroup.mobileCode);
-        paramView.b = 11;
-        paramView.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(paramView.jdField_a_of_type_JavaLangString, 11, (byte)0));
-        break;
-        label438:
-        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-        break label277;
-        label449:
-        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
-        break label318;
-        label460:
-        localView.setContentDescription(paramViewGroup.name + "未选中,双击选中");
+        super.handleMessage(paramMessage);
+        return;
+        QLog.d(VoipDialInterface.a, 4, "cuiyl begin exchange uid");
+        VoipDialInterface.a(this.a).a(VoipDialInterface.a(this.a));
+        continue;
+        VoipDialInterface.b(this.a);
+        localObject = new Intent();
+        ((Intent)localObject).putExtra("value", VoipErrorCodeEnum.VOIP_INIT_FAIL.ordinal());
+        ((Intent)localObject).setAction(VoipDialInterface.jdField_b_of_type_JavaLangString);
+        BaseApplication.getContext().sendBroadcast((Intent)localObject);
+        this.a.a(-1);
+        this.a.b();
+        continue;
+        VoipDialInterface.b(this.a);
+        localObject = new Intent();
+        ((Intent)localObject).setAction(VoipDialInterface.jdField_b_of_type_JavaLangString);
+        ((Intent)localObject).putExtra("value", VoipErrorCodeEnum.VOIP_GETUID_FAIL.ordinal());
+        BaseApplication.getContext().sendBroadcast((Intent)localObject);
+        this.a.a(-1);
+        this.a.b();
+        continue;
+        QLog.d(VoipDialInterface.a, 4, "cuiyl getuid success");
+        localObject = (VoipGetUid.ResponseBody)paramMessage.obj;
+        if (((VoipGetUid.ResponseBody)localObject).extern_sign.get() == 0)
+        {
+          VoipDialInterface.b(this.a);
+          Intent localIntent = new Intent();
+          localIntent.setAction(VoipDialInterface.jdField_b_of_type_JavaLangString);
+          localIntent.putExtra("cash", ((VoipGetUid.ResponseBody)localObject).cash.get());
+          localIntent.putExtra("value", VoipErrorCodeEnum.VOIP_BALANCE_NOTENOUGH.ordinal());
+          BaseApplication.getContext().sendBroadcast(localIntent);
+          this.a.a(-1);
+        }
+        else
+        {
+          VoipDialInterface.a(this.a, ((VoipGetUid.ResponseBody)localObject).domain.get());
+          VoipDialInterface.d = VoipDialInterface.a(this.a).RegAccount(((VoipGetUid.ResponseBody)localObject).user.get(), ((VoipGetUid.ResponseBody)localObject).password.get(), VoipDialInterface.b(this.a));
+          if (VoipDialInterface.d == VoipDialInterface.jdField_b_of_type_Int)
+          {
+            VoipDialInterface.a(this.a).sendEmptyMessage(VoipErrorCodeEnum.VOIP_REG_FAIL.ordinal());
+          }
+          else
+          {
+            VoipDialInterface.a(this.a).sendEmptyMessage(VoipErrorCodeEnum.VOIP_REG_SUCCESS.ordinal());
+            continue;
+            VoipDialInterface.b(this.a);
+            localObject = new Intent();
+            ((Intent)localObject).setAction(VoipDialInterface.jdField_b_of_type_JavaLangString);
+            ((Intent)localObject).putExtra("value", VoipErrorCodeEnum.VOIP_REG_FAIL.ordinal());
+            BaseApplication.getContext().sendBroadcast((Intent)localObject);
+            this.a.a(-1);
+            this.a.b();
+            continue;
+            QLog.d(VoipDialInterface.a, 4, "cuiyl begin call");
+            if (VoipDialInterface.d != VoipDialInterface.jdField_b_of_type_Int) {
+              VoipDialInterface.a(this.a, VoipDialInterface.a(this.a).MakeCall(VoipDialInterface.d, VoipDialInterface.a(this.a), VoipDialInterface.b(this.a)));
+            }
+          }
+        }
       }
     }
-    paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    paramViewGroup = String.valueOf(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup);
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(String.format(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberContactsInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131561783), new Object[] { paramViewGroup.toLowerCase() }));
-    return localView;
+    Object localObject = new Intent();
+    ((Intent)localObject).setAction(VoipDialInterface.jdField_b_of_type_JavaLangString);
+    switch (paramMessage.arg1)
+    {
+    case 2: 
+    case 3: 
+    default: 
+      ((Intent)localObject).putExtra("value", VoipErrorCodeEnum.VOIP_STATE_UNKNOWN.ordinal());
+    }
+    for (;;)
+    {
+      BaseApplication.getContext().sendBroadcast((Intent)localObject);
+      break;
+      VoipDialInterface.a(this.a, 0L);
+      VoipDialInterface.a(this.a).postDelayed(VoipDialInterface.a(this.a), 1L);
+      QLog.d(VoipDialInterface.a, 4, "cuiyl calling");
+      ((Intent)localObject).putExtra("value", VoipErrorCodeEnum.VOIP_STATE_CALLING.ordinal());
+      continue;
+      QLog.d(VoipDialInterface.a, 4, "cuiyl connecting");
+      ((Intent)localObject).putExtra("value", VoipErrorCodeEnum.VOIP_STATE_CONNECTING.ordinal());
+      continue;
+      QLog.d(VoipDialInterface.a, 4, "cuiyl connected");
+      ((Intent)localObject).putExtra("value", VoipErrorCodeEnum.VOIP_STATE_CONNECTED.ordinal());
+      this.a.b();
+      continue;
+      QLog.d(VoipDialInterface.a, 4, "cuiyl disconnected");
+      ((Intent)localObject).putExtra("value", VoipErrorCodeEnum.VOIP_STATE_DISCONNECTED.ordinal());
+      VoipDialInterface.b(this.a);
+      this.a.a(-1);
+      this.a.b();
+    }
   }
 }
 

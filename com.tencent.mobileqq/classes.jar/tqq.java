@@ -1,18 +1,32 @@
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import org.json.JSONObject;
 
-class tqq
-  implements Runnable
+public class tqq
+  extends JSONObject
 {
-  tqq(tqp paramtqp) {}
-  
-  public void run()
+  public tqq(tqp paramtqp, String paramString)
   {
-    RegisterVerifyCodeActivity.a(this.a.a.a, true);
+    super(paramString);
+  }
+  
+  public int getInt(String paramString)
+  {
+    if (!has(paramString)) {
+      return 0;
+    }
+    return super.getInt(paramString);
+  }
+  
+  public String getString(String paramString)
+  {
+    if (!has(paramString)) {
+      return "";
+    }
+    return super.getString(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tqq
  * JD-Core Version:    0.7.0.1
  */

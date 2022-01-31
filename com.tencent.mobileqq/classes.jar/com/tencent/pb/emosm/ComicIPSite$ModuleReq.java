@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class ComicIPSite$ModuleReq
-  extends MessageMicro
+  extends MessageMicro<ModuleReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40 }, new String[] { "platform", "mqqver", "uin", "moduleInfo", "sub_cmd" }, new Object[] { Long.valueOf(0L), "", Long.valueOf(0L), null, Integer.valueOf(0) }, ModuleReq.class);
   public ComicIPSite.ModuleInfo moduleInfo = new ComicIPSite.ModuleInfo();
@@ -19,7 +19,7 @@ public final class ComicIPSite$ModuleReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.emosm.ComicIPSite.ModuleReq
  * JD-Core Version:    0.7.0.1
  */

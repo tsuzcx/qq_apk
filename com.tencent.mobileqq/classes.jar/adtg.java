@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 
-public final class adtg
-  implements Parcelable.Creator
+public class adtg
+  implements DialogInterface.OnDismissListener
 {
-  public IVPluginInfo a(Parcel paramParcel)
-  {
-    return new IVPluginInfo(paramParcel);
-  }
+  public adtg(QQTranslucentBrowserActivity paramQQTranslucentBrowserActivity) {}
   
-  public IVPluginInfo[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new IVPluginInfo[paramInt];
+    this.a.finish();
   }
 }
 

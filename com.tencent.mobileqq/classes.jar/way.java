@@ -1,40 +1,47 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.activity.aio.tips.GamePartyTipsBar;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gameparty.GamePartyManager;
-import com.tencent.mobileqq.gameparty.GamePartyObserver;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class way
-  extends GamePartyObserver
+class way
+  implements View.OnLongClickListener
 {
-  public way(TroopChatPie paramTroopChatPie) {}
+  way(wax paramwax) {}
   
-  protected void a()
+  public boolean onLongClick(View paramView)
   {
-    if (((GamePartyManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      TroopChatPie.b(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar, new Object[0]);
+    int i = 0;
+    paramView = (uvt)uwa.a(10);
+    boolean bool;
+    if (!((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue())
+    {
+      bool = true;
+      paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
+      paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
+      if (paramView != null)
+      {
+        paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
+        if (paramView != null) {
+          if (!bool) {
+            break label90;
+          }
+        }
+      }
     }
-  }
-  
-  protected void b()
-  {
-    if (((GamePartyManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar.a();
-    }
-  }
-  
-  protected void c()
-  {
-    if ((((GamePartyManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (TroopChatPie.c(this.a).a() == 14)) {
-      TroopChatPie.d(this.a).a();
+    for (;;)
+    {
+      paramView.a(i);
+      return true;
+      bool = false;
+      break;
+      label90:
+      i = 8;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     way
  * JD-Core Version:    0.7.0.1
  */

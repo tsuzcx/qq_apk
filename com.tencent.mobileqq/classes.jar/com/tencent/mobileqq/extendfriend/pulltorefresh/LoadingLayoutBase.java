@@ -5,10 +5,11 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
+import aqgl;
 
 public abstract class LoadingLayoutBase
   extends FrameLayout
-  implements ILoadingLayout
+  implements aqgl
 {
   public LoadingLayoutBase(Context paramContext)
   {
@@ -27,15 +28,15 @@ public abstract class LoadingLayoutBase
   
   public abstract int a();
   
-  public abstract void a();
-  
   public abstract void a(float paramFloat);
   
-  public abstract void b();
-  
-  public abstract void c();
-  
   public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void h();
   
   public final void setHeight(int paramInt)
   {
@@ -59,7 +60,7 @@ public abstract class LoadingLayoutBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.pulltorefresh.LoadingLayoutBase
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,28 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.AppRuntime;
 
-public class rre
-  implements Runnable
+class rre
+  extends amck
 {
-  public rre(BaseChatPie paramBaseChatPie) {}
+  rre(rqj paramrqj) {}
   
-  public void run()
+  protected void a()
   {
-    this.a.a.setSelectionFromBottom(this.a.a.getCount() - 1, 0);
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    if (pid.a(this.a.a(), str) < qlx.d)
+    {
+      this.a.a.c(6);
+      return;
+    }
+    QQToast.a(this.a.a(), 0, this.a.a().getString(2131719066), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rre
  * JD-Core Version:    0.7.0.1
  */

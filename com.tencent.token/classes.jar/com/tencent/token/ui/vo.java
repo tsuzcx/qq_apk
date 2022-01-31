@@ -1,41 +1,15 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.token.cw;
 
-final class vo
-  implements View.OnClickListener
+class vo
+  implements Runnable
 {
-  vo(RealNameGuidActivity paramRealNameGuidActivity) {}
+  vo(vn paramvn) {}
   
-  public final void onClick(View paramView)
+  public void run()
   {
-    switch (paramView.getId())
-    {
-    case 2131296989: 
-    case 2131296990: 
-    case 2131296991: 
-    default: 
-      return;
-    case 2131296992: 
-      paramView = new Intent(this.a, FacePwdIndexActivity.class);
-      this.a.startActivity(paramView);
-      return;
-    case 2131296986: 
-      paramView = new Intent(this.a, RealNameDetailActivity.class);
-      paramView.putExtra("index", 0);
-      this.a.startActivity(paramView);
-      return;
-    case 2131296987: 
-      paramView = new Intent(this.a, RealNameDetailActivity.class);
-      paramView.putExtra("index", 2);
-      this.a.startActivity(paramView);
-      return;
-    }
-    paramView = new Intent(this.a, RealNameDetailActivity.class);
-    paramView.putExtra("index", 1);
-    this.a.startActivity(paramView);
+    cw.a().a(0L, RealNameSmsContentTipActivity.access$100(this.a.a.a), 2, "", "", this.a.a.a.mFaceData, RealNameSmsContentTipActivity.access$300(this.a.a.a, this.a.a.a.mFrontData), RealNameSmsContentTipActivity.access$300(this.a.a.a, this.a.a.a.mBackData), this.a.a.a.frontphotoinfo, this.a.a.a.backphotoinfo, this.a.a.a.mHandler);
   }
 }
 

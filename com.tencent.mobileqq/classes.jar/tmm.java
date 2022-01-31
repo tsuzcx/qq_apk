@@ -1,82 +1,174 @@
-import android.os.Bundle;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.activity.weather.WeatherManager.WeatherUpdaterListener;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
 public class tmm
-  implements WeatherManager.WeatherUpdaterListener
+  implements thf
 {
-  public tmm(QQSettingMe paramQQSettingMe) {}
+  private tnc jdField_a_of_type_Tnc;
+  private tne jdField_a_of_type_Tne;
+  private tnk jdField_a_of_type_Tnk;
   
-  public void a(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private WSPlayerManager a()
   {
-    if (this.a.c)
+    if ((this.jdField_a_of_type_Tnk != null) && (this.jdField_a_of_type_Tnk.a() != null)) {
+      return this.jdField_a_of_type_Tnk.a().a();
+    }
+    return null;
+  }
+  
+  public void a(thl paramthl) {}
+  
+  public void a(thl paramthl, int paramInt1, int paramInt2, String paramString)
+  {
+    if (this.jdField_a_of_type_Tnc != null)
     {
-      if (!paramBoolean) {
-        break label343;
-      }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (ApolloManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "drawer", null) <= 0) || (!ApolloManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, Boolean.valueOf(false)))) {
-        break label72;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "weatherUpdateResult update but show cmShow");
+      this.jdField_a_of_type_Tnc.h();
+      this.jdField_a_of_type_Tnc.a(paramString);
+    }
+  }
+  
+  public void a(thl paramthl, int paramInt, boolean paramBoolean) {}
+  
+  public void a(thl paramthl, long paramLong1, long paramLong2)
+  {
+    if ((this.jdField_a_of_type_Tne != null) && (!this.jdField_a_of_type_Tne.a()))
+    {
+      if (paramLong2 == 0L) {
+        this.jdField_a_of_type_Tne.a(0.0F);
       }
     }
-    label72:
-    label343:
-    int i;
-    do
-    {
-      String str1;
-      String str2;
-      do
-      {
-        do
-        {
-          return;
-          paramInt = paramBundle.getInt("show_flag");
-          if (QLog.isColorLevel()) {
-            QLog.d("QQSettingRedesign", 2, "onWeatherUpdateResult show_flag:" + paramInt);
-          }
-          if (paramInt == 0)
-          {
-            this.a.b.setVisibility(8);
-            this.a.b.setClickable(false);
-            this.a.h.setVisibility(4);
-            return;
-          }
-        } while (paramInt != 1);
-        str1 = paramBundle.getString("KEY_TEMPER");
-        str2 = paramBundle.getString("o_wea_code");
-        paramBundle = paramBundle.getString("area_name");
-        if (QLog.isColorLevel()) {
-          QLog.d("QQSettingRedesign", 2, "onWeatherUpdateResult temp:" + str1 + " o_wea_code:" + str2 + " area_name:" + paramBundle);
-        }
-      } while ((str1 == null) || (str1.equals("")) || (paramBundle == null) || (paramBundle.equals("")));
-      this.a.b.setVisibility(0);
-      this.a.h.setVisibility(0);
-      this.a.b.setClickable(true);
-      this.a.e.setText(str1);
-      this.a.h.setText(paramBundle);
-      this.a.g.setText("o");
-      QQSettingMe.b(this.a, str1);
-      QQSettingMe.c(this.a, str2);
+    else {
       return;
-      i = paramBundle.getInt("uint32_result");
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "onWeatherUpdateResult resultCode:" + i);
+    }
+    float f = (float)paramLong1 / (float)paramLong2;
+    this.jdField_a_of_type_Tne.a(f);
+  }
+  
+  public void a(thl paramthl, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Tne != null)
+    {
+      tlo.b("WS_VIDEO_ProgressBar", "WSVerticalPlayerUIDelegate onVideoInitiate() show");
+      this.jdField_a_of_type_Tne.f();
+    }
+  }
+  
+  public void a(thl paramthl, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((this.jdField_a_of_type_Tnc != null) && (paramBoolean1) && (paramBoolean2)) {
+      this.jdField_a_of_type_Tnc.a(8, 400);
+    }
+  }
+  
+  public void a(tnk paramtnk)
+  {
+    this.jdField_a_of_type_Tnk = paramtnk;
+    if (paramtnk != null)
+    {
+      this.jdField_a_of_type_Tnc = paramtnk.a();
+      this.jdField_a_of_type_Tne = paramtnk.a();
+    }
+  }
+  
+  public boolean a(thl paramthl)
+  {
+    return false;
+  }
+  
+  public void b(thl paramthl) {}
+  
+  public void c(thl paramthl)
+  {
+    tlo.b("WS_VIDEO_VerticalUIDelegate", "WSVerticalPlayerUIDelegate onVideoViewLayoutSwitched()");
+    if (this.jdField_a_of_type_Tnc != null) {
+      this.jdField_a_of_type_Tnc.a(8, 200);
+    }
+  }
+  
+  public void d(thl paramthl)
+  {
+    if (this.jdField_a_of_type_Tnc != null)
+    {
+      this.jdField_a_of_type_Tnc.a(8, 400);
+      this.jdField_a_of_type_Tnc.b(8);
+      this.jdField_a_of_type_Tnc.h();
+      this.jdField_a_of_type_Tnc.i();
+    }
+    if (this.jdField_a_of_type_Tne != null)
+    {
+      tlo.b("WS_VIDEO_ProgressBar", "WSVerticalPlayerUIDelegate onVideoStart() hide");
+      this.jdField_a_of_type_Tne.g();
+    }
+  }
+  
+  public void e(thl paramthl)
+  {
+    if (this.jdField_a_of_type_Tnc != null) {
+      this.jdField_a_of_type_Tnc.b(0);
+    }
+  }
+  
+  public void f(thl paramthl)
+  {
+    if (this.jdField_a_of_type_Tnc != null)
+    {
+      this.jdField_a_of_type_Tnc.b(8);
+      this.jdField_a_of_type_Tnc.i();
+    }
+  }
+  
+  public void g(thl paramthl)
+  {
+    if (this.jdField_a_of_type_Tnc != null)
+    {
+      this.jdField_a_of_type_Tnc.h();
+      this.jdField_a_of_type_Tnc.a(0, 100);
+      this.jdField_a_of_type_Tnc.b(8);
+    }
+    if (this.jdField_a_of_type_Tne != null) {
+      this.jdField_a_of_type_Tne.g();
+    }
+  }
+  
+  public void h(thl paramthl)
+  {
+    if (this.jdField_a_of_type_Tnc != null)
+    {
+      this.jdField_a_of_type_Tnc.g();
+      paramthl = a();
+      if ((paramthl != null) && (paramthl.b())) {
+        this.jdField_a_of_type_Tnc.b(8);
       }
-    } while ((paramInt != 6666) || (i != 191005));
-    SosoInterface.a(new tmn(this, 0, true, true, 60000L, true, false, "QQSettingRedesign"));
+    }
+  }
+  
+  public void i(thl paramthl)
+  {
+    if (this.jdField_a_of_type_Tne != null)
+    {
+      tlo.b("WS_VIDEO_ProgressBar", "WSVerticalPlayerUIDelegate onVideoBufferEnd() hide");
+      this.jdField_a_of_type_Tne.g();
+    }
+    if (this.jdField_a_of_type_Tnc != null)
+    {
+      this.jdField_a_of_type_Tnc.h();
+      paramthl = a();
+      if ((paramthl != null) && (paramthl.b())) {
+        this.jdField_a_of_type_Tnc.b(0);
+      }
+    }
+  }
+  
+  public void j(thl paramthl)
+  {
+    if (this.jdField_a_of_type_Tnc != null) {
+      this.jdField_a_of_type_Tnc.a(0, 100);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tmm
  * JD-Core Version:    0.7.0.1
  */

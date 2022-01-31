@@ -1,17 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class anlc
-  implements DialogInterface.OnClickListener
+class anlc
+  extends annk
 {
-  public anlc(QIMPtvTemplateAdapter paramQIMPtvTemplateAdapter) {}
+  anlc(anlb paramanlb, String paramString1, String paramString2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject)
+  {
+    if (!paramBoolean)
+    {
+      QLog.i("ArkApp", 1, "ArkAppSchemeCenter.AppSchemeHandler.get packagename failed.");
+      return;
+    }
+    anlb.a((anlb)paramObject, paramString2, this.jdField_a_of_type_JavaLangString, this.b, paramString1);
+    BaseApplication.getContext().getSharedPreferences("arkappid2pkname_entry", 4).edit().putString(paramString2, paramString1).commit();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlc
  * JD-Core Version:    0.7.0.1
  */

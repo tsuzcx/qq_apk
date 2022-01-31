@@ -1,24 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.ark.image.ChooseImageIPCModule.2;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class anqr
-  implements Runnable
+  extends bead
 {
-  public anqr(CropVideoActivity paramCropVideoActivity) {}
+  public anqr(ChooseImageIPCModule.2 param2, String paramString) {}
   
-  public void run()
+  public void onDone(beae parambeae)
   {
-    CropVideoActivity.a(this.a, CropVideoActivity.g(this.a) + 10);
-    Message localMessage = new Message();
-    localMessage.what = 1;
-    localMessage.arg1 = CropVideoActivity.g(this.a);
-    this.a.a.sendMessage(localMessage);
+    super.onDone(parambeae);
+    QLog.d("ArkApp.ChooseImageIPCModule", 1, String.format("ArkMultiProc.download finish, url=%s, err=%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(parambeae.a) }));
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("code", parambeae.a);
+    parambeae = EIPCResult.createResult(0, localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqArkImageChooseImageIPCModule$2.this$0.callbackResult(this.jdField_a_of_type_ComTencentMobileqqArkImageChooseImageIPCModule$2.a, parambeae);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anqr
  * JD-Core Version:    0.7.0.1
  */

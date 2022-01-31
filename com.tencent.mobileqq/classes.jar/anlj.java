@@ -1,30 +1,26 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import dov.com.qq.im.capture.data.CaptureComboManager;
-import dov.com.qq.im.capture.data.CaptureSet;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
 
 public class anlj
-  implements Handler.Callback
+  implements DialogInterface.OnClickListener
 {
-  public anlj(CaptureComboManager paramCaptureComboManager) {}
+  public anlj(ArkAppSchemeCenter.TelSchemeHandler.1 param1, bdjz parambdjz) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
+    if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {}
+    try
     {
+      this.jdField_a_of_type_Bdjz.dismiss();
+      return;
     }
-    for (;;)
-    {
-      return false;
-      if ((paramMessage.obj instanceof CaptureSet)) {
-        paramMessage = (CaptureSet)paramMessage.obj;
-      }
-    }
+    catch (Exception paramDialogInterface) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,20 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.ProtoServlet;
-import com.tencent.ims.signature.SignatureReport;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.app.StartAppCheckHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import mqq.app.NewIntent;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
 
 public class fle
-  extends Handler
+  implements TextWatcher
 {
-  public fle(StartAppCheckHandler paramStartAppCheckHandler, Looper paramLooper)
+  public fle(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    super(paramLooper);
+    this.a.b = true;
   }
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    case 2: 
-    default: 
-      return;
-    case 1: 
-      Object localObject;
-      if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface != null))
-      {
-        localObject = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), ProtoServlet.class);
-        ((NewIntent)localObject).putExtra("data", ((flj)paramMessage.obj).a.toByteArray());
-        ((NewIntent)localObject).putExtra("cmd", "SecCheckSigSvc.UploadReq");
-        ((NewIntent)localObject).setObserver(this.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.startServlet((NewIntent)localObject);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_Boolean = false;
-        this.a.jdField_a_of_type_Flj = null;
-        return;
-        localObject = this.a.a("SecCheckSigSvc.UploadReq");
-        ((ToServiceMsg)localObject).putWupBuffer(((flj)paramMessage.obj).a.toByteArray());
-        this.a.b((ToServiceMsg)localObject);
-      }
-    }
-    new Thread(this.a.jdField_a_of_type_JavaLangRunnable).start();
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

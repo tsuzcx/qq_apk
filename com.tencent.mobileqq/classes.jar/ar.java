@@ -1,21 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.utils.FileUtils;
 
 public class ar
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ar(LiteActivity paramLiteActivity, MessageForPic paramMessageForPic) {}
+  public ar(LiteActivity paramLiteActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.md5 = FileUtils.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.path);
-    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.runOnUiThread(new as(this));
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ar
  * JD-Core Version:    0.7.0.1
  */

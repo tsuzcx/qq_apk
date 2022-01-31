@@ -1,17 +1,21 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.JumpAction;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.CustomAlertDialog;
+import com.tencent.mobileqq.widget.CustomAlertDialog.OnOptionMenuClick;
+import java.util.HashMap;
+import java.util.List;
 
-public class hgh
-  implements Handler.Callback
+class hgh
+  implements View.OnClickListener
 {
-  public hgh(JumpAction paramJumpAction) {}
+  hgh(hgg paramhgg, int paramInt) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    ((BaseActivity)JumpAction.a(this.a)).finish();
-    return true;
+    if (this.jdField_a_of_type_Hgg.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.a != null) {
+      this.jdField_a_of_type_Hgg.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.a.a(((Integer)((HashMap)this.jdField_a_of_type_Hgg.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).get("commandId")).intValue());
+    }
+    this.jdField_a_of_type_Hgg.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.dismiss();
   }
 }
 

@@ -3,16 +3,15 @@ package com.tencent.ark;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteStatement;
 import java.util.ArrayList;
 
 public class SQLiteHandler
 {
   protected static final ArkEnvironmentManager ENV = ;
-  private static final String TAG = "ark.SQLiteHandler";
+  private static final String TAG = "ArkApp.SQLiteHandler";
   
-  public static boolean closeDB(DBInstanse paramDBInstanse)
+  public static boolean closeDB(SQLiteHandler.DBInstanse paramDBInstanse)
   {
     if ((paramDBInstanse != null) && (paramDBInstanse.db != null)) {
       try
@@ -22,13 +21,13 @@ public class SQLiteHandler
       }
       catch (Exception paramDBInstanse)
       {
-        ENV.logE("ark.SQLiteHandler", String.format("Failed to find closeDB %s", new Object[] { paramDBInstanse.toString() }));
+        ENV.logE("ArkApp.SQLiteHandler", String.format("Failed to find closeDB %s", new Object[] { paramDBInstanse.toString() }));
       }
     }
     return false;
   }
   
-  public static boolean closeStatement(DBStatement paramDBStatement)
+  public static boolean closeStatement(SQLiteHandler.DBStatement paramDBStatement)
   {
     if (paramDBStatement != null) {
       try
@@ -50,37 +49,37 @@ public class SQLiteHandler
       }
       catch (Exception paramDBStatement)
       {
-        ENV.logE("ark.SQLiteHandler", String.format("Failed to find closeStatement %s", new Object[] { paramDBStatement.toString() }));
+        ENV.logE("ArkApp.SQLiteHandler", String.format("Failed to find closeStatement %s", new Object[] { paramDBStatement.toString() }));
       }
     }
     return false;
   }
   
-  public static DBInstanse createDB(String paramString)
+  public static SQLiteHandler.DBInstanse createDB(String paramString)
   {
     try
     {
       paramString = SQLiteDatabase.openOrCreateDatabase(paramString, null);
       if ((paramString != null) && (paramString.isOpen()))
       {
-        DBInstanse localDBInstanse = new DBInstanse();
+        SQLiteHandler.DBInstanse localDBInstanse = new SQLiteHandler.DBInstanse();
         localDBInstanse.db = paramString;
         return localDBInstanse;
       }
     }
     catch (Exception paramString)
     {
-      ENV.logE("ark.SQLiteHandler", String.format("Failed to find createDB %s", new Object[] { paramString.toString() }));
+      ENV.logE("ArkApp.SQLiteHandler", String.format("Failed to find createDB %s", new Object[] { paramString.toString() }));
     }
     return null;
   }
   
-  public static DBStatement createStatement(DBInstanse paramDBInstanse, String paramString, boolean paramBoolean)
+  public static SQLiteHandler.DBStatement createStatement(SQLiteHandler.DBInstanse paramDBInstanse, String paramString, boolean paramBoolean)
   {
     if (paramDBInstanse != null) {
       try
       {
-        DBStatement localDBStatement = new DBStatement();
+        SQLiteHandler.DBStatement localDBStatement = new SQLiteHandler.DBStatement();
         localDBStatement.db = paramDBInstanse.db;
         localDBStatement.isQuery = paramBoolean;
         if (paramBoolean)
@@ -94,35 +93,35 @@ public class SQLiteHandler
       }
       catch (Exception paramDBInstanse)
       {
-        ENV.logE("ark.SQLiteHandler", String.format("Failed to find createStatement %s", new Object[] { paramDBInstanse.toString() }));
+        ENV.logE("ArkApp.SQLiteHandler", String.format("Failed to find createStatement %s", new Object[] { paramDBInstanse.toString() }));
       }
     }
     return null;
   }
   
-  public static boolean execSQL(DBInstanse paramDBInstanse, String paramString)
+  public static boolean execSQL(SQLiteHandler.DBInstanse paramDBInstanse, String paramString)
   {
     if (paramDBInstanse != null) {
       try
       {
-        ENV.logD("ark.SQLiteHandler", String.format("execSQL  %s", new Object[] { paramString }));
+        ENV.logD("ArkApp.SQLiteHandler", String.format("execSQL  %s", new Object[] { paramString }));
         paramDBInstanse.db.execSQL(paramString);
         return true;
       }
       catch (Exception paramDBInstanse)
       {
-        ENV.logE("ark.SQLiteHandler", String.format("Failed to find execSQL %s", new Object[] { paramDBInstanse.toString() }));
+        ENV.logE("ArkApp.SQLiteHandler", String.format("Failed to find execSQL %s", new Object[] { paramDBInstanse.toString() }));
       }
     }
     return false;
   }
   
-  public static boolean moveToNext(DBStatement paramDBStatement)
+  public static boolean moveToNext(SQLiteHandler.DBStatement paramDBStatement)
   {
     return paramDBStatement.cursor.moveToNext();
   }
   
-  public static byte[] queryGetBlobField(DBStatement paramDBStatement, int paramInt, byte[] paramArrayOfByte)
+  public static byte[] queryGetBlobField(SQLiteHandler.DBStatement paramDBStatement, int paramInt, byte[] paramArrayOfByte)
   {
     byte[] arrayOfByte = paramArrayOfByte;
     if (paramDBStatement != null)
@@ -141,12 +140,12 @@ public class SQLiteHandler
     }
     catch (Exception paramDBStatement)
     {
-      ENV.logE("ark.SQLiteHandler", String.format("Failed to find queryGetBlobField %s", new Object[] { paramDBStatement.toString() }));
+      ENV.logE("ArkApp.SQLiteHandler", String.format("Failed to find queryGetBlobField %s", new Object[] { paramDBStatement.toString() }));
     }
     return paramArrayOfByte;
   }
   
-  public static double queryGetDoubleField(DBStatement paramDBStatement, int paramInt, double paramDouble)
+  public static double queryGetDoubleField(SQLiteHandler.DBStatement paramDBStatement, int paramInt, double paramDouble)
   {
     double d = paramDouble;
     if (paramDBStatement != null)
@@ -165,12 +164,12 @@ public class SQLiteHandler
     }
     catch (Exception paramDBStatement)
     {
-      ENV.logE("ark.SQLiteHandler", String.format("Failed to find queryGetDoubleField %s", new Object[] { paramDBStatement.toString() }));
+      ENV.logE("ArkApp.SQLiteHandler", String.format("Failed to find queryGetDoubleField %s", new Object[] { paramDBStatement.toString() }));
     }
     return paramDouble;
   }
   
-  public static long queryGetLongField(DBStatement paramDBStatement, int paramInt, long paramLong)
+  public static long queryGetLongField(SQLiteHandler.DBStatement paramDBStatement, int paramInt, long paramLong)
   {
     long l = paramLong;
     if (paramDBStatement != null)
@@ -189,12 +188,12 @@ public class SQLiteHandler
     }
     catch (Exception paramDBStatement)
     {
-      ENV.logE("ark.SQLiteHandler", String.format("Failed to find queryGetLongField %s", new Object[] { paramDBStatement.toString() }));
+      ENV.logE("ArkApp.SQLiteHandler", String.format("Failed to find queryGetLongField %s", new Object[] { paramDBStatement.toString() }));
     }
     return paramLong;
   }
   
-  public static String queryGetStrField(DBStatement paramDBStatement, int paramInt, String paramString)
+  public static String queryGetStrField(SQLiteHandler.DBStatement paramDBStatement, int paramInt, String paramString)
   {
     String str = paramString;
     if (paramDBStatement != null)
@@ -213,12 +212,12 @@ public class SQLiteHandler
     }
     catch (Exception paramDBStatement)
     {
-      ENV.logE("ark.SQLiteHandler", String.format("Failed to find queryGetStrField %s", new Object[] { paramDBStatement.toString() }));
+      ENV.logE("ArkApp.SQLiteHandler", String.format("Failed to find queryGetStrField %s", new Object[] { paramDBStatement.toString() }));
     }
     return paramString;
   }
   
-  public static boolean statementBindBlob(DBStatement paramDBStatement, byte[] paramArrayOfByte)
+  public static boolean statementBindBlob(SQLiteHandler.DBStatement paramDBStatement, byte[] paramArrayOfByte)
   {
     if (paramDBStatement != null) {
       try
@@ -234,13 +233,13 @@ public class SQLiteHandler
       }
       catch (Exception paramDBStatement)
       {
-        ENV.logE("ark.SQLiteHandler", String.format("Failed to find statementBindBlob %s", new Object[] { paramDBStatement.toString() }));
+        ENV.logE("ArkApp.SQLiteHandler", String.format("Failed to find statementBindBlob %s", new Object[] { paramDBStatement.toString() }));
       }
     }
     return false;
   }
   
-  public static boolean statementBindDouble(DBStatement paramDBStatement, double paramDouble)
+  public static boolean statementBindDouble(SQLiteHandler.DBStatement paramDBStatement, double paramDouble)
   {
     if (paramDBStatement != null) {
       try
@@ -258,13 +257,13 @@ public class SQLiteHandler
       }
       catch (Exception paramDBStatement)
       {
-        ENV.logE("ark.SQLiteHandler", String.format("Failed to find statementBindDouble %s", new Object[] { paramDBStatement.toString() }));
+        ENV.logE("ArkApp.SQLiteHandler", String.format("Failed to find statementBindDouble %s", new Object[] { paramDBStatement.toString() }));
       }
     }
     return false;
   }
   
-  public static boolean statementBindLong(DBStatement paramDBStatement, long paramLong)
+  public static boolean statementBindLong(SQLiteHandler.DBStatement paramDBStatement, long paramLong)
   {
     if (paramDBStatement != null) {
       try
@@ -282,13 +281,13 @@ public class SQLiteHandler
       }
       catch (Exception paramDBStatement)
       {
-        ENV.logE("ark.SQLiteHandler", String.format("Failed to find statementBindLong %s", new Object[] { paramDBStatement.toString() }));
+        ENV.logE("ArkApp.SQLiteHandler", String.format("Failed to find statementBindLong %s", new Object[] { paramDBStatement.toString() }));
       }
     }
     return false;
   }
   
-  public static boolean statementBindStr(DBStatement paramDBStatement, String paramString)
+  public static boolean statementBindStr(SQLiteHandler.DBStatement paramDBStatement, String paramString)
   {
     try
     {
@@ -305,12 +304,12 @@ public class SQLiteHandler
     }
     catch (Exception paramDBStatement)
     {
-      ENV.logE("ark.SQLiteHandler", String.format("Failed to find statementBindStr %s", new Object[] { paramDBStatement.toString() }));
+      ENV.logE("ArkApp.SQLiteHandler", String.format("Failed to find statementBindStr %s", new Object[] { paramDBStatement.toString() }));
     }
     return false;
   }
   
-  public static boolean statementExec(DBStatement paramDBStatement)
+  public static boolean statementExec(SQLiteHandler.DBStatement paramDBStatement)
   {
     if (paramDBStatement != null) {}
     try
@@ -318,7 +317,7 @@ public class SQLiteHandler
       if (paramDBStatement.isQuery)
       {
         if (ENV.mIsDebug) {
-          ENV.logD("ark.SQLiteHandler", String.format("statementExec is query %s", new Object[] { paramDBStatement.querySql }));
+          ENV.logD("ArkApp.SQLiteHandler", String.format("statementExec is query %s", new Object[] { paramDBStatement.querySql }));
         }
         String[] arrayOfString = new String[paramDBStatement.queryParams.size()];
         arrayOfString = (String[])paramDBStatement.queryParams.toArray(arrayOfString);
@@ -331,9 +330,9 @@ public class SQLiteHandler
           paramDBStatement.db.endTransaction();
           return bool;
         }
-        catch (SQLiteException paramDBStatement)
+        catch (Exception paramDBStatement)
         {
-          ENV.logE("ark.SQLiteHandler", String.format("ark.SQLiteHandler.statementExec.finally %s", new Object[] { paramDBStatement.toString() }));
+          ENV.logE("ArkApp.SQLiteHandler", String.format("ark.SQLiteHandler.statementExec.finally %s", new Object[] { paramDBStatement.toString() }));
           return bool;
         }
       }
@@ -346,11 +345,11 @@ public class SQLiteHandler
         paramDBStatement.db.endTransaction();
         return true;
       }
-      catch (SQLiteException paramDBStatement)
+      catch (Exception paramDBStatement)
       {
         for (;;)
         {
-          ENV.logE("ark.SQLiteHandler", String.format("ark.SQLiteHandler.statementExec.finally %s", new Object[] { paramDBStatement.toString() }));
+          ENV.logE("ArkApp.SQLiteHandler", String.format("ark.SQLiteHandler.statementExec.finally %s", new Object[] { paramDBStatement.toString() }));
         }
       }
       try
@@ -358,11 +357,11 @@ public class SQLiteHandler
         paramDBStatement.db.endTransaction();
         throw localObject;
       }
-      catch (SQLiteException paramDBStatement)
+      catch (Exception paramDBStatement)
       {
         for (;;)
         {
-          ENV.logE("ark.SQLiteHandler", String.format("ark.SQLiteHandler.statementExec.finally %s", new Object[] { paramDBStatement.toString() }));
+          ENV.logE("ArkApp.SQLiteHandler", String.format("ark.SQLiteHandler.statementExec.finally %s", new Object[] { paramDBStatement.toString() }));
         }
       }
     }
@@ -374,11 +373,11 @@ public class SQLiteHandler
         paramDBStatement.db.endTransaction();
         return false;
       }
-      catch (SQLiteException paramDBStatement)
+      catch (Exception paramDBStatement)
       {
         for (;;)
         {
-          ENV.logE("ark.SQLiteHandler", String.format("ark.SQLiteHandler.statementExec.finally %s", new Object[] { paramDBStatement.toString() }));
+          ENV.logE("ArkApp.SQLiteHandler", String.format("ark.SQLiteHandler.statementExec.finally %s", new Object[] { paramDBStatement.toString() }));
         }
       }
     }
@@ -386,15 +385,15 @@ public class SQLiteHandler
     {
       for (;;)
       {
-        ENV.logE("ark.SQLiteHandler", String.format("ark.SQLiteHandler.statementExec %s", new Object[] { localException.toString() }));
+        ENV.logE("ArkApp.SQLiteHandler", String.format("ark.SQLiteHandler.statementExec %s", new Object[] { localException.toString() }));
         if (!paramDBStatement.isQuery) {
           try
           {
             paramDBStatement.db.endTransaction();
           }
-          catch (SQLiteException paramDBStatement)
+          catch (Exception paramDBStatement)
           {
-            ENV.logE("ark.SQLiteHandler", String.format("ark.SQLiteHandler.statementExec.finally %s", new Object[] { paramDBStatement.toString() }));
+            ENV.logE("ArkApp.SQLiteHandler", String.format("ark.SQLiteHandler.statementExec.finally %s", new Object[] { paramDBStatement.toString() }));
           }
         }
       }
@@ -405,26 +404,26 @@ public class SQLiteHandler
     }
   }
   
-  public static class DBInstanse
+  public static boolean statementReset(SQLiteHandler.DBStatement paramDBStatement)
   {
-    SQLiteDatabase db;
-  }
-  
-  public static class DBStatement
-  {
-    protected Cursor cursor;
-    SQLiteDatabase db;
-    protected int index = 1;
-    protected boolean isQuery = false;
-    protected boolean queryHasRow = false;
-    protected ArrayList<String> queryParams;
-    protected String querySql;
-    protected SQLiteStatement stmt;
+    if (paramDBStatement == null) {
+      return false;
+    }
+    try
+    {
+      paramDBStatement.index = 1;
+      return true;
+    }
+    catch (Exception paramDBStatement)
+    {
+      ENV.logE("ArkApp.SQLiteHandler", String.format("ark.SQLiteHandler.statementReset %s", new Object[] { paramDBStatement.toString() }));
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.ark.SQLiteHandler
  * JD-Core Version:    0.7.0.1
  */

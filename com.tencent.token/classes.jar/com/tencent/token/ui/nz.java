@@ -1,17 +1,31 @@
 package com.tencent.token.ui;
 
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.token.core.bean.f;
+import com.tencent.token.cw;
 
-final class nz
+class nz
+  implements DialogInterface.OnClickListener
 {
-  TextView a;
-  TextView b;
-  RelativeLayout c;
-  ImageView d;
+  nz(nw paramnw) {}
   
-  private nz(nx paramnx, byte paramByte) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    nu.c(this.a.a).f.d = true;
+    nu.a(this.a.a, nu.c(this.a.a));
+    int i = nw.a(this.a).f.a;
+    if (nw.a(this.a).f.c) {}
+    for (paramInt = 0;; paramInt = 1)
+    {
+      paramDialogInterface = cw.a();
+      String str = nu.a(this.a.a).mA2;
+      Handler localHandler = nu.a(this.a.a).mHandler;
+      paramDialogInterface.a(0L, new int[] { i, 71 }, new int[] { paramInt, 1 }, str, localHandler);
+      return;
+    }
+  }
 }
 
 

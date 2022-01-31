@@ -1,31 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Book;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import msf.msgsvc.msg_svc.RoutingHead;
 
-public final class abtv
-  implements Parcelable.Creator
+public abstract interface abtv
 {
-  public IPSiteModel.Book a(Parcel paramParcel)
-  {
-    IPSiteModel.Book localBook = new IPSiteModel.Book();
-    localBook.cover = paramParcel.readString();
-    localBook.desc = paramParcel.readString();
-    localBook.id = paramParcel.readString();
-    localBook.jumpUrl = paramParcel.readString();
-    localBook.name = paramParcel.readString();
-    localBook.recommDesc = paramParcel.readString();
-    localBook.authorName = paramParcel.readString();
-    return localBook;
-  }
+  public abstract int a();
   
-  public IPSiteModel.Book[] a(int paramInt)
-  {
-    return new IPSiteModel.Book[paramInt];
-  }
+  public abstract boolean a();
+  
+  public abstract boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface);
+  
+  public abstract int b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abtv
  * JD-Core Version:    0.7.0.1
  */

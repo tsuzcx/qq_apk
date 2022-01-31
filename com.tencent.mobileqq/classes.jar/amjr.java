@@ -1,53 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.emoticon.VipComicEmoticonUploadManager;
-import tencent.im.msg.im_msg_body.RichText;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.app.icebreaking.AIOIceBreakShow;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class amjr
-  implements UpCallBack
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public amjr(VipComicEmoticonUploadManager paramVipComicEmoticonUploadManager) {}
+  public amjr(AIOIceBreakShow paramAIOIceBreakShow) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return null;
-  }
-  
-  public void a(UpCallBack.SendResult paramSendResult) {}
-  
-  public void b(UpCallBack.SendResult paramSendResult)
-  {
-    if ((paramSendResult == null) || (this.a.a == null)) {
+    if (AIOIceBreakShow.a(this.a) == null) {
       return;
     }
-    if (paramSendResult.jdField_a_of_type_Int == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VipComicEmoticonUploader", 2, "Upload finish, id=" + paramSendResult.c);
-      }
-      localBundle = new Bundle();
-      localBundle.putInt("result", 0);
-      localBundle.putString("id", paramSendResult.c);
-      this.a.a.onInvokeFinish(localBundle);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("VipComicEmoticonUploader", 2, "Upload error");
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result", 1);
-    localBundle.putInt("errCode", paramSendResult.b);
-    localBundle.putString("errMsg", paramSendResult.jdField_a_of_type_JavaLangString);
-    this.a.a.onInvokeFinish(localBundle);
+    int i = ((Integer)paramValueAnimator.getAnimatedValue("alpha")).intValue();
+    int j = ((Integer)paramValueAnimator.getAnimatedValue("height")).intValue();
+    AIOIceBreakShow.a(this.a).setAlpha(i / 100.0F);
+    paramValueAnimator = AIOIceBreakShow.a(this.a).a();
+    ((AbsListView.LayoutParams)paramValueAnimator.getLayoutParams()).height = j;
+    paramValueAnimator.requestLayout();
+    AIOIceBreakShow.a(this.a).scrollTo(0, j - AIOIceBreakShow.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjr
  * JD-Core Version:    0.7.0.1
  */

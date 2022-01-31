@@ -1,49 +1,74 @@
 package com.tencent.token;
 
-import android.content.ContentValues;
-import com.tencent.kingkong.Cursor;
-import com.tencent.kingkong.database.SQLiteDatabase;
+import java.util.Hashtable;
 
 public class gi
-  implements go
 {
-  public String a;
-  public String b;
+  Hashtable a = new Hashtable();
+  public String b = "";
+  long c = 0L;
+  long d = 0L;
+  final boolean e;
+  private final String f;
+  private String g = "GET";
+  private int h = 0;
+  private final gj i;
+  private final byte[] j;
   
-  public final go a(Cursor paramCursor)
+  public gi(String paramString, byte[] paramArrayOfByte, gj paramgj, boolean paramBoolean)
   {
-    gi localgi = new gi();
-    localgi.a = paramCursor.getString(paramCursor.getColumnIndex("uinhash"));
-    localgi.b = paramCursor.getString(paramCursor.getColumnIndex("filename"));
-    return localgi;
+    this.f = paramString;
+    this.i = paramgj;
+    if (paramArrayOfByte == null) {
+      this.j = null;
+    }
+    for (;;)
+    {
+      this.e = paramBoolean;
+      return;
+      this.j = new byte[paramArrayOfByte.length];
+      System.arraycopy(paramArrayOfByte, 0, this.j, 0, this.j.length);
+    }
   }
   
-  public final String a()
+  public String a()
   {
-    return "qqface";
+    return this.f;
   }
   
-  public final void a(SQLiteDatabase paramSQLiteDatabase)
+  void a(int paramInt)
   {
-    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS qqface(uinhash TEXT PRIMARY KEY,filename TEXT);");
+    this.h = paramInt;
   }
   
-  public final long b(SQLiteDatabase paramSQLiteDatabase)
+  public void a(String paramString)
   {
-    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS qqface(uinhash TEXT PRIMARY KEY,filename TEXT);");
-    new ContentValues();
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("uinhash", this.a);
-    localContentValues.put("filename", this.b);
-    return paramSQLiteDatabase.insert("qqface", null, localContentValues);
+    this.g = paramString;
   }
   
-  public final ContentValues b()
+  public gj b()
   {
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("uinhash", this.a);
-    localContentValues.put("filename", this.b);
-    return localContentValues;
+    return this.i;
+  }
+  
+  public byte[] c()
+  {
+    if (this.j == null) {
+      return null;
+    }
+    byte[] arrayOfByte = new byte[this.j.length];
+    System.arraycopy(this.j, 0, arrayOfByte, 0, arrayOfByte.length);
+    return arrayOfByte;
+  }
+  
+  public int d()
+  {
+    return this.h;
+  }
+  
+  public String e()
+  {
+    return this.g;
   }
 }
 

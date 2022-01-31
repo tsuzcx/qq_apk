@@ -1,110 +1,74 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.util.PADetailReportUtil;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity.JumpSrcConstants;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.search.util.SearchUtils;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
-import cooperation.qzone.widget.QzoneSearchResultView;
-import java.util.Map;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class wjc
-  implements View.OnClickListener
+class wjc
+  implements urr<vex, vey>
 {
-  wjc(SearchContactsFragment paramSearchContactsFragment) {}
+  wjc(wjb paramwjb) {}
   
-  public void onClick(View paramView)
+  public void a(@NonNull vex paramvex, @Nullable vey arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    paramView = paramView.getTag();
-    wjd localwjd;
-    int i;
-    if ((paramView != null) && ((paramView instanceof wjd)))
+    wxe.a("Q.qqstory.home.data:VideoListPageLoader", "get video list with home pb return:%s", paramErrorMessage.toString());
+    if (wjb.a(this.a))
     {
-      localwjd = (wjd)paramView;
-      if ((localwjd.b != 80000003) || (SearchContactsFragment.c(this.a) == null)) {
-        break label287;
-      }
-      this.a.a(SearchContactsFragment.c(this.a), SearchContactsFragment.a(this.a), SearchContactsFragment.b(this.a));
-      Integer localInteger = (Integer)SearchContactsFragment.a(this.a).get(Integer.valueOf(localwjd.b));
-      Object localObject = null;
-      paramView = (View)localObject;
-      if (localwjd.a != null)
-      {
-        paramView = (View)localObject;
-        if (localwjd.a.uin != null) {
-          paramView = String.valueOf(localwjd.a.uin.get());
-        }
-      }
-      int j = localwjd.b;
-      if (localInteger == null) {
-        break label354;
-      }
-      i = localInteger.intValue();
-      label155:
-      SearchUtils.a(j, i, 0, true, paramView, this.a.jdField_a_of_type_JavaLangString, SearchContactsFragment.c());
-      if (localwjd.b != 80000002) {
-        break label405;
-      }
-      localObject = this.a.getActivity();
-      if ((localObject != null) && ((localObject instanceof SearchBaseActivity)))
-      {
-        i = ((SearchBaseActivity)localObject).a();
-        if (SearchContactsFragment.c() != 12) {
-          break label359;
-        }
-        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006571", "0X8006571", 0, 1, 0, "0", SearchBaseActivity.JumpSrcConstants.a(i), paramView, this.a.jdField_a_of_type_JavaLangString);
-        localObject = PADetailReportUtil.a();
-        if (localInteger == null) {
-          break label400;
-        }
-        i = localInteger.intValue();
-        ((PADetailReportUtil)localObject).a(2, paramView, i, SearchContactsFragment.c());
-      }
-    }
-    label287:
-    label354:
-    label359:
-    while (localwjd.b != 80000003) {
-      for (;;)
-      {
-        return;
-        if (localwjd.b == 80000004)
-        {
-          QzoneSearchResultView.a(this.a.getActivity(), localwjd.jdField_c_of_type_JavaLangString);
-          break;
-        }
-        paramView = this.a;
-        i = localwjd.b;
-        if (localwjd.jdField_c_of_type_Int == 2) {}
-        for (boolean bool = true;; bool = false)
-        {
-          paramView.a(i, bool);
-          break;
-        }
-        i = 0;
-        break label155;
-        PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D20", "0X8005D20", 0, 0, "0", SearchBaseActivity.JumpSrcConstants.a(i), this.a.jdField_a_of_type_JavaLangString, "", false);
-        continue;
-        i = 0;
-      }
-    }
-    label400:
-    label405:
-    if (SearchContactsFragment.c() == 12)
-    {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800658A", "0X800658A", 0, 0, "0", "", this.a.jdField_a_of_type_JavaLangString, "0");
+      wxe.c("Q.qqstory.home.data:VideoListPageLoader", "don't nothing after terminate");
       return;
     }
-    PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D95", "0X8005D95", 0, 0, "0", "", this.a.jdField_a_of_type_JavaLangString, "0", false);
+    paramvex = new wje(paramErrorMessage, wjb.a(this.a));
+    paramvex.d = this.a.jdField_a_of_type_Boolean;
+    if ((??? == null) || (paramErrorMessage.isFail()) || (???.jdField_a_of_type_JavaUtilList.size() == 0))
+    {
+      wxe.a("Q.qqstory.home.data:VideoListPageLoader", "get video list with home pb fail feedId:%s", wjb.a(this.a));
+      wjb.a(this.a, paramvex);
+      return;
+    }
+    ??? = (wqn)???.jdField_a_of_type_JavaUtilList.get(0);
+    if (!(??? instanceof wqp))
+    {
+      paramvex.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(940001, alud.a(2131716702));
+      wjb.a(this.a, paramvex);
+      xqq.a(???.a().toString() + " is not a video feed", new Object[0]);
+      return;
+    }
+    ??? = (wqp)???;
+    wjb.a(this.a, ???.a().mVideoNextCookie);
+    wjb.a(this.a, ???.a().mVideoPullType);
+    wjb.b(this.a, ???.a().mVideoSeq);
+    paramvex.jdField_a_of_type_Boolean = ???.a().mIsVideoEnd;
+    paramvex.jdField_a_of_type_JavaUtilList = ???.a();
+    paramvex.c = true;
+    if ((!paramvex.jdField_a_of_type_Boolean) && (TextUtils.isEmpty(wjb.b(this.a)))) {
+      paramvex.jdField_a_of_type_Boolean = true;
+    }
+    paramvex.b = ???.a().getOwner().getUnionId();
+    paramvex.jdField_a_of_type_JavaUtilList = ((woy)uwa.a(11)).a(wjb.a(this.a), paramvex.jdField_a_of_type_JavaUtilList, paramvex.c);
+    paramvex.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo = new FeedVideoInfo(wjb.a(this.a), wjb.b(this.a), wjb.a(this.a), wjb.b(this.a), paramvex.jdField_a_of_type_Boolean);
+    ??? = new ArrayList(paramvex.jdField_a_of_type_JavaUtilList.size());
+    paramErrorMessage = paramvex.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramErrorMessage.hasNext()) {
+      ???.add(((StoryVideoItem)paramErrorMessage.next()).mVid);
+    }
+    vdm.a(???);
+    synchronized (this.a)
+    {
+      this.a.b = true;
+      wjb.a(this.a, paramvex);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wjc
  * JD-Core Version:    0.7.0.1
  */

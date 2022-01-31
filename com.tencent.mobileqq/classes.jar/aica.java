@@ -1,56 +1,43 @@
-import android.graphics.Rect;
-import android.hardware.Camera;
-import android.hardware.Camera.Parameters;
-import android.hardware.Camera.PictureCallback;
-import android.hardware.Camera.Size;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
-import com.tencent.mobileqq.activity.richmedia.view.CameraCover.PictureCallback;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class aica
-  implements Camera.PictureCallback
+  implements View.OnClickListener
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  public aica(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public aica(CameraControl paramCameraControl, int paramInt1, File paramFile, Rect paramRect, CameraCover.PictureCallback paramPictureCallback, boolean paramBoolean, int paramInt2) {}
-  
-  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(CameraControl.b, 2, "onJpegTaken");
-    }
-    NewFlowCameraReporter.a("inner pic taken");
-    try
+    Intent localIntent = new Intent();
+    localIntent.putExtra("troop_uin", this.a.c);
+    List localList = (List)this.a.jdField_a_of_type_Aidh.a.get(ChatHistoryTroopMemberFragment.a(this.a));
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < localList.size())
     {
-      paramCamera = paramCamera.getParameters().getPictureSize();
-      if (paramCamera == null)
-      {
-        QLog.e(CameraControl.b, 1, "null picSize");
-        return;
-      }
+      localArrayList.add(((aidf)localList.get(i)).a);
+      i += 1;
     }
-    catch (Exception paramCamera)
-    {
-      do
-      {
-        for (;;)
-        {
-          paramCamera.printStackTrace();
-          paramCamera = null;
-        }
-        QLog.i(CameraControl.b, 1, "[onPictureTaken] picSize(" + paramCamera.width + "," + paramCamera.height + ") orientation=" + this.jdField_a_of_type_Int);
-      } while (paramArrayOfByte == null);
-      this.jdField_a_of_type_AndroidOsHandler.post(new aicb(this, paramArrayOfByte, paramCamera));
-    }
+    localIntent.putExtra("members_uin", localArrayList);
+    PublicFragmentActivity.a(paramView.getContext(), localIntent, TroopMemberHistoryFragment.class);
+    paramView = ((TroopManager)this.a.getActivity().app.getManager(52)).b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b.getCurrentAccountUin());
+    bdes.a("Grp_edu", "teachermsg", "showall", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bdes.a(paramView) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aica
  * JD-Core Version:    0.7.0.1
  */

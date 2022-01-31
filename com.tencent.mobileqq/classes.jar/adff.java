@@ -1,27 +1,26 @@
-import android.os.Handler;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class adff
-  implements Runnable
+public class adff
+  extends BroadcastReceiver
 {
-  adff(adfe paramadfe) {}
+  public adff(JumpActivity paramJumpActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.a.a.b == true) && (this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)) {
-      this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
-    }
-    this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.d(VideoFilePresenter.a(this.a.a));
-    if (VideoFilePresenter.a(this.a.a) != null) {
-      VideoFilePresenter.a(this.a.a).postDelayed(this.a.a.jdField_a_of_type_JavaLangRunnable, 100L);
+    if (!this.a.isFinishing())
+    {
+      this.a.finish();
+      QLog.i("JumpAction", 1, "JumpActivity has finished by broadcastReceiver.");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adff
  * JD-Core Version:    0.7.0.1
  */

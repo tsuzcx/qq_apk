@@ -1,14 +1,27 @@
 package com.tencent.token.utils;
 
-final class aa
+import android.os.Process;
+
+class aa
+  extends af
 {
-  final UserTask a;
-  final Object[] b;
-  
-  aa(UserTask paramUserTask, Object... paramVarArgs)
+  aa(UserTask paramUserTask)
   {
-    this.a = paramUserTask;
-    this.b = paramVarArgs;
+    super(null);
+  }
+  
+  public Object call()
+  {
+    try
+    {
+      Process.setThreadPriority(10);
+      label5:
+      return this.a.a(this.b);
+    }
+    catch (SecurityException localSecurityException)
+    {
+      break label5;
+    }
   }
 }
 

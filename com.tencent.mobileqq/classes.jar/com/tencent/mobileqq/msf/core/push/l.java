@@ -1,21 +1,29 @@
 package com.tencent.mobileqq.msf.core.push;
 
-import android.os.Handler;
-import android.os.Message;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class l
-  extends Handler
+  extends BroadcastReceiver
 {
-  l(f paramf) {}
+  l(g paramg) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramMessage.what)
+    if (paramIntent == null) {}
+    do
     {
-    default: 
       return;
-    }
-    this.a.p();
+      paramContext = paramIntent.getAction();
+      QLog.d("PCActivePush", 1, "onReceive action: " + paramContext);
+    } while (!"com.tencent.mobileqq.broadcast.pcactiveQQ".equals(paramContext));
+    paramContext = paramIntent.getStringExtra("uin");
+    int i = paramIntent.getIntExtra("retryIndex", 1);
+    g.a(this.a).compareAndSet(false, true);
+    g.a(this.a, paramContext, i);
   }
 }
 

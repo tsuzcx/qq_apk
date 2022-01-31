@@ -1,76 +1,45 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.support.v7.app.ActionBar;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import java.util.ArrayList;
 
 public class enk
-  extends Handler
+  implements AdapterView.OnItemSelectedListener
 {
-  public enk(MainAssistObserver paramMainAssistObserver, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public enk(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(AdapterView paramAdapterView) {}
+  
+  public void a_(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b.isLogin())) {}
-    do
+    this.a.jdField_b_of_type_Int = paramInt;
+    if (this.a.jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(this.a.jdField_b_of_type_Int)))
     {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        }
-        paramMessage = paramMessage.getData();
-      } while (paramMessage == null);
-      int i = paramMessage.getInt("result");
-      if ((i == -1) || (i == -2))
-      {
-        if (i == -1) {
-          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131562823);
-        }
-        for (String str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563058);; str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563057))
-        {
-          try
-          {
-            if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
-            {
-              if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-                this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-              }
-              this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-            }
-            this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230, paramMessage, str, new enl(this), null);
-            this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new enm(this));
-            this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new enn(this));
-            this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-            return;
-          }
-          catch (Exception paramMessage) {}
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          paramMessage.printStackTrace();
-          return;
-          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563056);
-        }
+      this.a.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 1) {
+        break label135;
       }
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt + 1 + " / " + this.a.jdField_a_of_type_JavaUtilArrayList.size());
+    }
+    for (;;)
+    {
+      this.a.getSupportActionBar().setTitle(this.a.jdField_a_of_type_AndroidWidgetTextView.getText());
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+      break;
+      label135:
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.getResources().getString(2131562660));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     enk
  * JD-Core Version:    0.7.0.1
  */

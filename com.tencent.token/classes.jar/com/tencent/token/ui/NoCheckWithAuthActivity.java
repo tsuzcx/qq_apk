@@ -4,47 +4,36 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import com.tencent.token.ag;
-import com.tencent.token.ax;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.UpgradeDeterminResult;
-import com.tencent.token.core.push.a;
-import com.tencent.token.utils.k;
-import com.tencent.token.utils.s;
+import com.tencent.token.cx;
+import com.tencent.token.do;
 
 public class NoCheckWithAuthActivity
   extends BaseActivity
 {
   private boolean bindMobileSucc;
   private boolean bindTokenSucc = false;
-  private View.OnClickListener mCompleteButtonListener = new si(this);
-  private Handler mHandler = new sf(this);
+  private Handler mHandler = new rl(this);
   private boolean mIsActiveSuccess = false;
   private UpgradeDeterminResult mUpDetermin = null;
   private QQUser mUser = null;
   
   private void init()
   {
-    findViewById(2131296458).setOnClickListener(new sg(this));
-    findViewById(2131296459).setOnClickListener(new sh(this));
+    findViewById(2131558743).setOnClickListener(new rm(this));
+    findViewById(2131558744).setOnClickListener(new rn(this));
   }
   
   private void setActiveSucc(boolean paramBoolean)
   {
-    ag localag = ag.c();
-    localag.i();
-    localag.n();
-    this.mIsActiveSuccess = true;
-    setContentView(2130903050);
-    setBackArrowHide();
-    setTitle(2131361842);
-    ax.a().f(this.mUser.mRealUin);
-    ((Button)findViewById(2131296398)).setOnClickListener(this.mCompleteButtonListener);
-    ((ImageView)findViewById(2131296395)).setImageDrawable(k.a(this.mUser.mRealUin + "", s.f(this.mUser.mRealUin) + " "));
-    a.a().a(8);
+    Object localObject = cx.c();
+    ((cx)localObject).i();
+    ((cx)localObject).n();
+    localObject = new Intent(this, VerifySuccActivity.class);
+    ((Intent)localObject).putExtra("mRealUin", this.mUser.mRealUin);
+    startActivity((Intent)localObject);
+    finish();
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -54,7 +43,10 @@ public class NoCheckWithAuthActivity
     this.bindMobileSucc = getIntent().getBooleanExtra("bindMobileSucc", false);
     if (this.bindTokenSucc)
     {
-      setActiveSucc(this.bindMobileSucc);
+      this.mUser = do.a().e();
+      if (this.mUser == null) {
+        finish();
+      }
       return;
     }
     this.mUser = ((QQUser)getIntent().getSerializableExtra("intent.qquser"));
@@ -64,7 +56,7 @@ public class NoCheckWithAuthActivity
       finish();
       return;
     }
-    setContentView(2130903061);
+    setContentView(2130968624);
     init();
   }
 }

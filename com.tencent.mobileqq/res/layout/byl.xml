@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="13.0dip" android:textColor="@color/skin_gray2" android:gravity="center|left" android:id="@id/k1f" android:background="@drawable/skin_group_list_sub_entry" android:paddingLeft="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="25.0dip" android:singleLine="true" android:layout_alignParentLeft="true" />
+    <include android:id="@id/jzo" layout="@layout/byk" />
+</RelativeLayout>

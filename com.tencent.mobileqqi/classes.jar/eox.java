@@ -1,65 +1,44 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.phone.BindNumberBusinessActivity;
-import com.tencent.mobileqq.activity.phone.RebindActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.RecentOptionBar;
 
 public class eox
-  extends ContactBindObserver
+  implements View.OnClickListener
 {
-  public eox(BindNumberBusinessActivity paramBindNumberBusinessActivity) {}
+  private long jdField_a_of_type_Long;
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public eox(RecentOptionBar paramRecentOptionBar) {}
+  
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.a.d();
-    int i;
-    if (paramBoolean)
+    long l = System.currentTimeMillis();
+    if (Math.abs(l - this.jdField_a_of_type_Long) < 500L) {
+      return;
+    }
+    this.jdField_a_of_type_Long = l;
+    boolean bool = false;
+    switch (paramView.getId())
     {
-      i = paramBundle.getInt("k_result");
-      if ((i == 104) || (i == 0)) {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-      }
+    default: 
+      bool = true;
     }
     for (;;)
     {
-      this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(BindNumberBusinessActivity.b(this.a));
-      BindNumberBusinessActivity.b(this.a, null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptionBar.a(bool);
       return;
-      if (i == 107)
-      {
-        Intent localIntent = new Intent(this.a, RebindActivity.class);
-        localIntent.putExtra("k_uin", paramBundle.getString("k_uin"));
-        localIntent.putExtra("k_number", this.a.c);
-        localIntent.putExtra("k_country_code", this.a.jdField_b_of_type_JavaLangString);
-        localIntent.putExtra("kBindType", BindNumberBusinessActivity.a(this.a));
-        if ((localIntent != null) && (!this.a.isFinishing()))
-        {
-          localIntent.addFlags(536870912);
-          this.a.startActivityForResult(localIntent, 2);
-        }
-      }
-      else if (i == 106)
-      {
-        this.a.setResult(-1);
-        this.a.finish();
-      }
-      else
-      {
-        this.a.b(a(i));
-        this.a.finish();
-        continue;
-        this.a.b(2131562782);
-      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptionBar.c();
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptionBar.e();
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptionBar.b();
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptionBar.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eox
  * JD-Core Version:    0.7.0.1
  */

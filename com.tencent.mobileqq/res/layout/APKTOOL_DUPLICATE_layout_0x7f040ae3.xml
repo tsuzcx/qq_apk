@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.qzone.widget.util.StoryFeedBannerContainer android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:paddingLeft="7.5dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0730" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_marginTop="7.5dip" android:text="错过的动态" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0417" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="7.5dip" android:layout_marginRight="14.5dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e69" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <com.tencent.widget.HorizontalListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3154" android:background="@null" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="95.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0730" />
-</com.qzone.widget.util.StoryFeedBannerContainer>

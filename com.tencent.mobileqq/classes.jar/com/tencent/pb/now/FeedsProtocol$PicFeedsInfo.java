@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class FeedsProtocol$PicFeedsInfo
-  extends MessageMicro
+  extends MessageMicro<PicFeedsInfo>
 {
   public static final int FEED_SOURCE_ANDROID = 2;
   public static final int FEED_SOURCE_IOS = 1;
@@ -30,8 +30,8 @@ public final class FeedsProtocol$PicFeedsInfo
   public final PBUInt32Field is_listen = PBField.initUInt32(0);
   public FeedsProtocol.LbsInfo lbs_info = new FeedsProtocol.LbsInfo();
   public final PBUInt32Field like_num = PBField.initUInt32(0);
-  public final PBRepeatMessageField pic_infos = PBField.initRepeatMessage(FeedsProtocol.PicInfo.class);
-  public final PBRepeatMessageField rpt_msg_rich_title = PBField.initRepeatMessage(FeedsProtocol.RichTitleElement.class);
+  public final PBRepeatMessageField<FeedsProtocol.PicInfo> pic_infos = PBField.initRepeatMessage(FeedsProtocol.PicInfo.class);
+  public final PBRepeatMessageField<FeedsProtocol.RichTitleElement> rpt_msg_rich_title = PBField.initRepeatMessage(FeedsProtocol.RichTitleElement.class);
   public final PBBytesField share_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public FeedsProtocol.UserInfo user_info = new FeedsProtocol.UserInfo();
   public final PBUInt32Field view_times = PBField.initUInt32(0);
@@ -45,7 +45,7 @@ public final class FeedsProtocol$PicFeedsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.FeedsProtocol.PicFeedsInfo
  * JD-Core Version:    0.7.0.1
  */

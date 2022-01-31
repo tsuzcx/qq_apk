@@ -1,14 +1,8 @@
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import java.util.List;
 
-public class aiyz
-  implements Runnable
+public abstract interface aiyz
 {
-  public aiyz(TroopBarReplyActivity paramTroopBarReplyActivity) {}
-  
-  public void run()
-  {
-    TroopBarReplyActivity.a(this.a, 5);
-  }
+  public abstract void a(boolean paramBoolean, List<String> paramList);
 }
 
 

@@ -1,37 +1,61 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter;
-import java.io.Serializable;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 
 class msl
-  implements Runnable
+  implements lip
 {
-  msl(msi parammsi, Serializable paramSerializable) {}
+  msl(msk parammsk) {}
   
-  public void run()
+  public boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    SubscriptFeedsActivity localSubscriptFeedsActivity;
-    if ((this.jdField_a_of_type_JavaIoSerializable != null) && (SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a) != null))
+    boolean bool2 = true;
+    if (11 != paramInt1) {}
+    do
     {
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a, (ArrayList)this.jdField_a_of_type_JavaIoSerializable);
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a).b(SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a));
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a).a = true;
-      localSubscriptFeedsActivity = this.jdField_a_of_type_Msi.a;
-      if (SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a).f != 1) {
-        break label110;
-      }
+      return false;
+      QLog.w(this.a.i, 1, "onC2CDataCome, subType[" + paramInt2 + "], mPeerSupportRedBag[" + this.a.jdField_a_of_type_Int + "], mPeerSendMode[" + this.a.jdField_a_of_type_Boolean + "]");
+      paramArrayOfByte = this.a.a();
+    } while (paramArrayOfByte == null);
+    boolean bool1;
+    switch (paramInt2)
+    {
+    default: 
+      bool1 = false;
     }
-    label110:
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      SubscriptFeedsActivity.a(localSubscriptFeedsActivity, false, false, bool);
-      return;
+      return bool1;
+      this.a.jdField_a_of_type_Int = 2;
+      paramArrayOfByte.b("AbilityResDownloading");
+      bool1 = bool2;
+      continue;
+      this.a.jdField_a_of_type_Int = 1;
+      paramArrayOfByte.b("AbilityEnable");
+      bool1 = bool2;
+      continue;
+      this.a.jdField_a_of_type_Int = 0;
+      paramArrayOfByte.b("AbilityDisable");
+      bool1 = bool2;
+      continue;
+      this.a.jdField_a_of_type_Boolean = true;
+      bool1 = bool2;
+      if (this.a.jdField_a_of_type_Int != 1)
+      {
+        this.a.jdField_a_of_type_Int = 1;
+        paramArrayOfByte.b("Enter_SendMode");
+        bool1 = bool2;
+        continue;
+        this.a.jdField_a_of_type_Boolean = false;
+        bool1 = bool2;
+        continue;
+        paramArrayOfByte.a(this.a.b);
+        bool1 = bool2;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msl
  * JD-Core Version:    0.7.0.1
  */

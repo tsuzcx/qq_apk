@@ -1,17 +1,28 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.arcard.ARCardShareHelper;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import com.tencent.ad.tangram.dialog.AdProgressDialogAdapter;
 
-class aami
-  implements Runnable
+public class aami
+  implements AdProgressDialogAdapter
 {
-  aami(aamf paramaamf) {}
+  private bety a;
   
-  public void run()
+  public void dismiss()
   {
-    boolean bool = ARCardShareHelper.a(this.a.a);
-    String str = ARCardShareHelper.b(this.a.a);
-    ThreadManager.getUIHandler().post(new aamj(this, bool, str));
+    if ((this.a != null) && (this.a.isShowing()))
+    {
+      this.a.dismiss();
+      this.a = null;
+    }
+  }
+  
+  public void show(Context paramContext, int paramInt)
+  {
+    if ((this.a == null) && (paramContext != null) && (paramContext.getResources() != null)) {
+      this.a = new bety(paramContext, paramInt);
+    }
+    if (this.a != null) {
+      this.a.show();
+    }
   }
 }
 

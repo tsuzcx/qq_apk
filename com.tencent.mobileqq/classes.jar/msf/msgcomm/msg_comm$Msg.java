@@ -5,7 +5,7 @@ import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import tencent.im.msg.im_msg_body.MsgBody;
 
 public final class msg_comm$Msg
-  extends MessageMicro
+  extends MessageMicro<Msg>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34 }, new String[] { "msg_head", "content_head", "msg_body", "appshare_info" }, new Object[] { null, null, null, null }, Msg.class);
   public msg_comm.AppShareInfo appshare_info = new msg_comm.AppShareInfo();
@@ -15,7 +15,7 @@ public final class msg_comm$Msg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msf.msgcomm.msg_comm.Msg
  * JD-Core Version:    0.7.0.1
  */

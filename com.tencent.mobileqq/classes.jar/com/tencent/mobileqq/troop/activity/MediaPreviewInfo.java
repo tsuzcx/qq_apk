@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aiun;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager;
+import antx;
+import bbgj;
 import org.json.JSONObject;
 
 public class MediaPreviewInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aiun();
+  public static final Parcelable.Creator<MediaPreviewInfo> CREATOR = new bbgj();
   public int a;
   public String a;
   public String b;
@@ -29,7 +29,7 @@ public class MediaPreviewInfo
       this.jdField_a_of_type_Int = paramJSONObject.optInt("type", -1);
       this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("image");
       this.b = paramJSONObject.optString("video");
-      this.c = DynamicAvatarDownloadManager.b(this.b);
+      this.c = antx.b(this.b);
     }
   }
   
@@ -53,7 +53,7 @@ public class MediaPreviewInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.MediaPreviewInfo
  * JD-Core Version:    0.7.0.1
  */

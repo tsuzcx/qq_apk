@@ -1,16 +1,14 @@
 package cooperation.qzone.thread;
 
-import anae;
-import anaf;
-import anag;
-import anah;
-import anai;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
 import android.os.SystemClock;
+import bjtm;
+import bjtn;
+import bjto;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -18,16 +16,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class BaseHandler
   extends Handler
 {
-  public static ThreadLocal InitalPriority = new anaf();
+  static ThreadLocal<Integer> InitalPriority = new bjtn();
   private static final String TAG = "BaseHandler";
   private static final long Time_Lv1 = 20L;
   private static final long Time_Lv2 = 100L;
   private static final long Time_Lv3 = 500L;
   public static volatile boolean isBusy;
-  public static ThreadLocal isRegulated = new anag();
-  public static AtomicInteger regulalteCount = new AtomicInteger(0);
-  static Runnable regultorPriority = new anah();
-  static Runnable resetPriority = new anai();
+  public static ThreadLocal<Boolean> isRegulated = new bjto();
+  static AtomicInteger regulalteCount = new AtomicInteger(0);
+  static Runnable regultorPriority = new BaseHandler.4();
+  static Runnable resetPriority = new BaseHandler.5();
   private Handler.Callback mCallbackEx;
   
   public BaseHandler() {}
@@ -36,7 +34,7 @@ public class BaseHandler
   {
     super(paramLooper);
     if (Looper.getMainLooper() != paramLooper) {
-      paramLooper.setMessageLogging(new anae(this));
+      paramLooper.setMessageLogging(new bjtm(this));
     }
   }
   
@@ -259,7 +257,7 @@ public class BaseHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.thread.BaseHandler
  * JD-Core Version:    0.7.0.1
  */

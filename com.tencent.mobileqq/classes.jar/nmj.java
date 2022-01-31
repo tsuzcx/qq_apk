@@ -1,28 +1,28 @@
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler;
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
 
 public class nmj
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+  extends AnimatorListenerAdapter
 {
-  public nmj(BatchGetVideoInfoHandler paramBatchGetVideoInfoHandler, BatchGetVideoInfo paramBatchGetVideoInfo) {}
+  public nmj(AdControlView paramAdControlView) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.b(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.f);
+    super.onAnimationCancel(paramAnimator);
+    this.a.b = false;
   }
   
-  public void a(ArrayList paramArrayList)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.f, paramArrayList);
+    super.onAnimationEnd(paramAnimator);
+    this.a.b = false;
+    this.a.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nmj
  * JD-Core Version:    0.7.0.1
  */

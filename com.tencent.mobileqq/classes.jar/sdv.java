@@ -1,35 +1,35 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.ViewPagerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager;
 
-class sdv
-  implements Runnable
+public class sdv
+  extends Handler
 {
-  sdv(sdu paramsdu, ArrayList paramArrayList) {}
-  
-  public void run()
+  public sdv(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController, Looper paramLooper)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
-    View localView;
-    do
-    {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (ReadInJoyDiandianHeaderController.a(this.a)) {}
+    while (ReadInJoyDiandianHeaderController.a(this.a).getCount() <= 1) {
       return;
-      localView = this.jdField_a_of_type_Sdu.a.a[33];
-    } while (localView == null);
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-      localView.setVisibility(8);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Sdu.a.a(33, localView, this.jdField_a_of_type_JavaUtilArrayList, true, true);
-      return;
-      localView.setVisibility(0);
-    }
+    paramMessage = this.a;
+    paramMessage.jdField_a_of_type_Int += 1;
+    this.a.jdField_a_of_type_Int %= ReadInJoyDiandianHeaderController.a(this.a).getCount();
+    ReadInJoyDiandianHeaderController.a(this.a).setCurrentItem(this.a.jdField_a_of_type_Int, true);
+    nrt.a(null, "", "0X8009827", "0X8009827", 0, 0, "", "", "", "", false);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 3000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sdv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@drawable/skin_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.GestureSelectGridView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b7e" android:fadingEdge="none" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:numColumns="4" />
-    <TextView android:textSize="16.0dip" android:textColor="#ff777777" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b7f" android:focusable="true" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0338" android:drawableTop="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021002" android:drawablePadding="20.0dip" android:layout_centerInParent="true" />
-</RelativeLayout>

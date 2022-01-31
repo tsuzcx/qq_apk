@@ -8,17 +8,14 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.RejectedExecutionException;
 
@@ -34,9 +31,11 @@ public class ApngImage
   private static final int IMAGE_INFO_INDEX_FRAMECOUNT = 2;
   private static final int IMAGE_INFO_INDEX_FRAMEDELAY = 4;
   private static final int IMAGE_INFO_INDEX_HEIGHT = 1;
+  private static final int IMAGE_INFO_INDEX_PLAYCOUNT = 6;
   private static final int IMAGE_INFO_INDEX_WIDTH = 0;
   private static int IMAGE_SIZE_DISABLE_DOUBLE_BUFFER = 262144;
   public static final String KEY_DECRYPTTYPE = "key_decryptType";
+  public static final String KEY_DENSITY = "key_density";
   public static final String KEY_DOUBLE_BITMAP = "key_double_bitmap";
   public static final String KEY_DRAW_ROUND = "key_draw_round";
   public static final String KEY_GET_RESET_LOOP = "key_get_reset_loop";
@@ -45,6 +44,7 @@ public class ApngImage
   public static final String KEY_STOP_ON_FIRST = "key_stop_on_first";
   public static final String KEY_TAGID_ARR = "key_tagId_arr";
   public static final String KEY_TAGNAME = "key_name";
+  public static final String KEY_USE_FILE_LOOP = "key_use_file_loop";
   public static final String KEY_USE_RECT = "key_use_rect";
   private static final int PENDING_ACTION_CAPACITY = 100;
   private static final String TAG = "ApngImage";
@@ -52,23 +52,7 @@ public class ApngImage
   private static ArgumentsRunnable<WeakReference<ApngImage>> sAccumulativeRunnable;
   private static Handler sHandler;
   protected static boolean sPaused = false;
-  protected static final ArrayList<WeakReference<ApngImage>> sPendingActions = new ArrayList(105)
-  {
-    private void ensureCapacity()
-    {
-      int i = size();
-      if (i > 100) {
-        removeRange(0, i - 100 - 1);
-      }
-    }
-    
-    public boolean add(WeakReference<ApngImage> paramAnonymousWeakReference)
-    {
-      boolean bool = super.add(paramAnonymousWeakReference);
-      ensureCapacity();
-      return bool;
-    }
-  };
+  protected static final ArrayList<WeakReference<ApngImage>> sPendingActions = new ApngImage.1(105);
   public int apngLoop;
   private boolean cacheFirstFrame;
   private CopyOnWriteArrayList<WeakReference<AnimationCallback>> callbacks = new CopyOnWriteArrayList();
@@ -77,7 +61,6 @@ public class ApngImage
   public int currentApngLoop;
   protected int currentFrameDelay;
   int decryptType;
-  Rect drawRect;
   protected File file;
   public Bitmap firstFrame;
   public int height = 0;
@@ -85,33 +68,34 @@ public class ApngImage
   protected int mDensity = 160;
   public boolean mDoubleBitmap;
   public boolean mDrawRoundCorner;
-  private int mFrameCount = 0;
-  public boolean mGetResetLoop;
-  int[] mImageInfo = new int[6];
+  public int mFrameCount = 0;
+  public boolean mGetResetLoop = true;
+  int[] mImageInfo = new int[7];
   boolean mIsInPendingAction = false;
   protected ArrayList<WeakReference<ApngDrawable.OnPlayRepeatListener>> mListener = new ArrayList();
   String mName;
+  private long mNextFrameTime;
   public boolean mOnceAndClear;
+  protected boolean mPaused = false;
   public boolean mStopOnFirstFrame;
-  int[] mTagIDArr = { 0 };
+  private boolean mSupportGlobalPasued = true;
+  int[] mTagIDArr;
+  public boolean mUseFileLoop;
   long nativeFrameInfoInstance;
   long nativeImageInstance;
   private Bitmap nextFrame;
   private boolean onlyOneFrame = false;
   private Paint paint = new Paint();
   private Paint paintTransparentBlack = new Paint();
-  boolean useRect;
   public int width = 0;
   
   public ApngImage(File paramFile, boolean paramBoolean)
-    throws IOException
   {
     this.file = paramFile;
     init(paramBoolean);
   }
   
   public ApngImage(File paramFile, boolean paramBoolean, Bundle paramBundle)
-    throws IOException
   {
     if (paramBundle != null)
     {
@@ -124,20 +108,21 @@ public class ApngImage
       bool1 = bool2;
       if (!this.mDrawRoundCorner) {
         if (!paramBundle.getBoolean("key_double_bitmap", false)) {
-          break label272;
+          break label290;
         }
       }
     }
-    label272:
+    label290:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.mDoubleBitmap = bool1;
       this.mStopOnFirstFrame = paramBundle.getBoolean("key_stop_on_first", false);
+      this.mUseFileLoop = paramBundle.getBoolean("key_use_file_loop", false);
+      setDensity(paramBundle.getInt("key_density", this.mDensity));
       int[] arrayOfInt = paramBundle.getIntArray("key_tagId_arr");
       if ((arrayOfInt != null) && (arrayOfInt.length > 0)) {
         this.mTagIDArr = paramBundle.getIntArray("key_tagId_arr");
       }
-      this.useRect = paramBundle.getBoolean("key_use_rect", false);
       this.file = paramFile;
       init(paramBoolean);
       return;
@@ -146,26 +131,29 @@ public class ApngImage
   
   private void getImageInfo(File paramFile)
   {
-    paramFile = paramFile.getAbsolutePath();
-    if ((this.mImageInfo == null) || (this.mImageInfo.length != 6)) {
-      this.mImageInfo = new int[6];
-    }
-    this.nativeImageInstance = nativeStartDecode(paramFile, this.mImageInfo, this.decryptType);
+    this.nativeImageInstance = nativeStartDecode(paramFile.getAbsolutePath(), this.mImageInfo, this.decryptType);
     if (this.mImageInfo[5] == 0)
     {
       this.width = this.mImageInfo[0];
       this.height = this.mImageInfo[1];
       this.mFrameCount = this.mImageInfo[2];
+      if (this.mUseFileLoop) {
+        this.apngLoop = this.mImageInfo[6];
+      }
       if (QLog.isColorLevel()) {
         QLog.d("ApngImage", 2, "start decode success width = " + this.width + " height = " + this.height + " frameCount = " + this.mFrameCount);
       }
-      return;
+      if ((this.width <= 0) || (this.height <= 0) || (this.mFrameCount <= 0)) {
+        throw new RuntimeException("bad apng, w=" + this.width + " h=" + this.height + " frames=" + this.mFrameCount);
+      }
     }
-    QLog.e("ApngImage", 1, "start decode error: " + this.mImageInfo[5]);
+    else
+    {
+      throw new RuntimeException("start decode error: " + this.mImageInfo[5]);
+    }
   }
   
   private void init(boolean paramBoolean)
-    throws IOException
   {
     this.paint.setAntiAlias(true);
     this.paintTransparentBlack.setAntiAlias(true);
@@ -173,7 +161,7 @@ public class ApngImage
     this.cacheFirstFrame = paramBoolean;
     getImageInfo(this.file);
     initBitmap();
-    if (!getNextFrame()) {
+    if ((!getNextFrame()) || (this.mFrameCount == 1)) {
       this.onlyOneFrame = true;
     }
     applyNextFrame();
@@ -349,36 +337,31 @@ public class ApngImage
     int i = 0;
     for (;;)
     {
-      Object localObject;
-      int j;
       try
       {
         if (i < this.callbacks.size())
         {
-          localObject = (WeakReference)this.callbacks.get(i);
+          Object localObject = (WeakReference)this.callbacks.get(i);
           if ((localObject == null) || (((WeakReference)localObject).get() == null))
           {
             localObject = this.callbacks;
-            j = i - 1;
+            int j = i - 1;
+            ((CopyOnWriteArrayList)localObject).remove(i);
+            i = j;
           }
+          else
+          {
+            ((AnimationCallback)((WeakReference)localObject).get()).scheduleSelf(paramRunnable, paramLong);
+          }
+        }
+        else
+        {
+          return;
         }
       }
       finally {}
-      try
-      {
-        ((CopyOnWriteArrayList)localObject).remove(i);
-        i = j;
-        i += 1;
-      }
-      finally
-      {
-        break;
-      }
-      ((AnimationCallback)((WeakReference)localObject).get()).scheduleSelf(paramRunnable, paramLong);
-      continue;
-      return;
+      i += 1;
     }
-    throw paramRunnable;
   }
   
   public void addCallBack(AnimationCallback paramAnimationCallback)
@@ -452,11 +435,9 @@ public class ApngImage
     addToPendingActions(this);
   }
   
-  public void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean)
+  public void draw(Canvas paramCanvas, Rect paramRect1, Rect paramRect2, Paint paramPaint, boolean paramBoolean)
   {
-    Bitmap localBitmap1 = null;
-    Object localObject = null;
-    if ((paramCanvas == null) || (paramRect == null)) {}
+    if ((paramCanvas == null) || (paramRect2 == null)) {}
     do
     {
       do
@@ -472,38 +453,23 @@ public class ApngImage
           break;
         }
       } while (this.firstFrame == null);
-      localBitmap1 = this.firstFrame;
-      if (this.useRect) {
-        localObject = this.drawRect;
-      }
-      paramCanvas.drawBitmap(localBitmap1, (Rect)localObject, paramRect, paramPaint);
+      paramCanvas.drawBitmap(this.firstFrame, paramRect1, paramRect2, paramPaint);
       return;
-      if (this.curFrame != null)
-      {
-        Bitmap localBitmap2 = this.curFrame;
-        localObject = localBitmap1;
-        if (this.useRect) {
-          localObject = this.drawRect;
-        }
-        paramCanvas.drawBitmap(localBitmap2, (Rect)localObject, paramRect, paramPaint);
+      if (this.curFrame != null) {
+        paramCanvas.drawBitmap(this.curFrame, paramRect1, paramRect2, paramPaint);
       }
       if (!getIsEnable()) {
-        break label211;
+        break label154;
       }
       if ((this.apngLoop <= 0) || (this.apngLoop > this.currentApngLoop)) {
         break;
       }
-      if ((this.mStopOnFirstFrame) && (this.mImageInfo[3] == this.mFrameCount - 1))
-      {
-        executeNewTask();
-        return;
-      }
-    } while (this.mOnceAndClear);
-    addToPendingActions(this);
+    } while ((!this.mStopOnFirstFrame) || (this.mImageInfo[3] != this.mFrameCount - 1));
+    executeNewTask();
     return;
     executeNewTask();
     return;
-    label211:
+    label154:
     addToPendingActions(this);
   }
   
@@ -511,28 +477,44 @@ public class ApngImage
   
   protected void executeNewTask()
   {
-    long l1;
-    long l2;
+    int i;
+    long l;
     if (this.mDecodeNextFrameEnd)
     {
       this.mDecodeNextFrameEnd = false;
-      l1 = SystemClock.uptimeMillis();
-      l2 = getDelay();
+      i = getDelay();
+      l = SystemClock.uptimeMillis();
+      if (this.mNextFrameTime != 0L) {
+        break label75;
+      }
+      this.mNextFrameTime = l;
     }
-    try
+    for (;;)
     {
-      Utils.executeAsyncTaskOnSerialExcuter(new DecodeNextFrameAsyncTask(l1 + l2), new Void[] { (Void)null });
-      return;
-    }
-    catch (RejectedExecutionException localRejectedExecutionException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("URLDrawable_", 2, "executeNewTask()", localRejectedExecutionException);
+      l = this.mNextFrameTime;
+      this.mNextFrameTime = (i + l);
+      try
+      {
+        Utils.executeAsyncTaskOnSerialExcuter(new ApngImage.DecodeNextFrameAsyncTask(this, this.mNextFrameTime), new Void[] { (Void)null });
+        return;
+        label75:
+        if (this.mNextFrameTime + i * 2 <= l)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("URLDrawable_", 2, "executeNewTask reset " + this.mName + ":" + this.mNextFrameTime + "," + i + "," + l);
+          }
+          this.mNextFrameTime = l;
+        }
+      }
+      catch (RejectedExecutionException localRejectedExecutionException)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.e("URLDrawable_", 2, "executeNewTask()", localRejectedExecutionException);
+      }
     }
   }
   
   protected void finalize()
-    throws Throwable
   {
     try
     {
@@ -590,12 +572,15 @@ public class ApngImage
   
   final boolean getIsEnable()
   {
-    if (sPaused) {}
+    if (this.mPaused) {}
     for (;;)
     {
       return false;
-      if (this.mTagIDArr != null)
+      if ((!this.mSupportGlobalPasued) || (!sPaused))
       {
+        if (this.mTagIDArr == null) {
+          break;
+        }
         int i = 0;
         while (i < this.mTagIDArr.length)
         {
@@ -606,11 +591,12 @@ public class ApngImage
         }
       }
     }
+    return true;
   }
   
   public int getLoopCount()
   {
-    return this.mFrameCount;
+    return this.mImageInfo[6];
   }
   
   protected boolean getNextFrame()
@@ -667,8 +653,8 @@ public class ApngImage
   {
     if (sHandler == null)
     {
-      sHandler = new Handler();
-      sAccumulativeRunnable = new DoAccumulativeRunnable(null);
+      sHandler = new Handler(Looper.getMainLooper());
+      sAccumulativeRunnable = new ApngImage.DoAccumulativeRunnable(null);
     }
   }
   
@@ -705,9 +691,6 @@ public class ApngImage
           QLog.d("ApngImage", 2, "apng mFrameCount:" + this.mFrameCount + ", current:" + this.mImageInfo[3]);
         }
         this.currentApngLoop += 1;
-        if (this.currentApngLoop < this.apngLoop) {
-          return;
-        }
         synchronized (this.mListener)
         {
           int i = this.mListener.size() - 1;
@@ -735,6 +718,11 @@ public class ApngImage
     }
   }
   
+  public void pause()
+  {
+    this.mPaused = true;
+  }
+  
   public void reDraw()
   {
     invalidateSelf();
@@ -743,43 +731,34 @@ public class ApngImage
   
   public void removeCallBack(AnimationCallback paramAnimationCallback)
   {
-    localCopyOnWriteArrayList = this.callbacks;
+    CopyOnWriteArrayList localCopyOnWriteArrayList = this.callbacks;
     int i = 0;
-    Object localObject;
     for (;;)
     {
-      int j;
       try
       {
         if (i < this.callbacks.size())
         {
-          localObject = (WeakReference)this.callbacks.get(i);
+          Object localObject = (WeakReference)this.callbacks.get(i);
           if ((localObject == null) || (((WeakReference)localObject).get() == null))
           {
             localObject = this.callbacks;
-            j = i - 1;
+            int j = i - 1;
+            ((CopyOnWriteArrayList)localObject).remove(i);
+            i = j;
           }
+          else if (((WeakReference)localObject).get() == paramAnimationCallback)
+          {
+            this.callbacks.remove(i);
+          }
+        }
+        else
+        {
+          return;
         }
       }
       finally {}
-      try
-      {
-        ((CopyOnWriteArrayList)localObject).remove(i);
-        i = j;
-      }
-      finally
-      {
-        continue;
-        continue;
-      }
       i += 1;
-    }
-    if (((WeakReference)localObject).get() == paramAnimationCallback)
-    {
-      paramAnimationCallback = this.callbacks;
-      paramAnimationCallback.remove(i);
-      return;
-      return;
     }
   }
   
@@ -813,6 +792,22 @@ public class ApngImage
     reDraw();
   }
   
+  public void resume()
+  {
+    this.mPaused = false;
+    int i = sPendingActions.size() - 1;
+    while (i >= 0)
+    {
+      ApngImage localApngImage = (ApngImage)((WeakReference)sPendingActions.get(i)).get();
+      if ((localApngImage == this) && (localApngImage.getIsEnable()))
+      {
+        sPendingActions.remove(i);
+        localApngImage.reDraw();
+      }
+      i -= 1;
+    }
+  }
+  
   public void run()
   {
     sAccumulativeRunnable.add(new WeakReference[] { new WeakReference(this) });
@@ -826,108 +821,40 @@ public class ApngImage
   public void setOnPlayRepeatListener(ApngDrawable.OnPlayRepeatListener paramOnPlayRepeatListener)
   {
     ArrayList localArrayList;
-    int k;
     int i;
     if (paramOnPlayRepeatListener != null)
     {
       localArrayList = this.mListener;
-      k = 0;
       i = 0;
     }
     for (;;)
     {
-      int j = k;
       try
       {
         if (i < this.mListener.size())
         {
           if (((WeakReference)this.mListener.get(i)).get() != paramOnPlayRepeatListener) {
-            break label83;
+            break label78;
           }
-          j = 1;
+          i = 1;
+          if (i == 0) {
+            this.mListener.add(new WeakReference(paramOnPlayRepeatListener));
+          }
+          return;
         }
-        if (j == 0) {
-          this.mListener.add(new WeakReference(paramOnPlayRepeatListener));
-        }
-        return;
       }
       finally {}
+      i = 0;
+      continue;
       return;
-      label83:
+      label78:
       i += 1;
     }
   }
   
-  class DecodeNextFrameAsyncTask
-    extends AsyncTask<Void, Void, Object>
+  public void setSupportGlobalPasued(boolean paramBoolean)
   {
-    long nextFrameDrawingTime;
-    
-    public DecodeNextFrameAsyncTask(long paramLong)
-    {
-      this.nextFrameDrawingTime = paramLong;
-    }
-    
-    protected Object doInBackground(Void... paramVarArgs)
-    {
-      try
-      {
-        boolean bool = ApngImage.this.getNextFrame();
-        ApngImage.this.onDecodeNextFrameSuccessed(bool, this.nextFrameDrawingTime);
-        return null;
-      }
-      catch (Throwable paramVarArgs) {}
-      return paramVarArgs;
-    }
-    
-    protected void onCancelled()
-    {
-      ApngImage.this.onDecodeNextFrameCanceled();
-    }
-    
-    protected void onPostExecute(Object paramObject)
-    {
-      if ((paramObject instanceof Throwable)) {
-        ApngImage.this.onDecodeNextFrameFailed((Throwable)paramObject);
-      }
-    }
-  }
-  
-  private class DoAccumulativeRunnable
-    extends ArgumentsRunnable<WeakReference<ApngImage>>
-  {
-    private long lastRefreshTime = 0L;
-    
-    private DoAccumulativeRunnable() {}
-    
-    protected void run(List<WeakReference<ApngImage>> paramList)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        Object localObject = (WeakReference)paramList.next();
-        if (localObject != null)
-        {
-          localObject = (ApngImage)((WeakReference)localObject).get();
-          if (localObject != null) {
-            ((ApngImage)localObject).doApplyNextFrame();
-          }
-        }
-      }
-      this.lastRefreshTime = SystemClock.uptimeMillis();
-    }
-    
-    protected void submit()
-    {
-      long l = SystemClock.uptimeMillis();
-      if ((this.lastRefreshTime == 0L) || (l - this.lastRefreshTime > 25L))
-      {
-        run();
-        this.lastRefreshTime = l;
-        return;
-      }
-      ApngImage.sHandler.postDelayed(this, 25L - (l - this.lastRefreshTime));
-    }
+    this.mSupportGlobalPasued = paramBoolean;
   }
 }
 

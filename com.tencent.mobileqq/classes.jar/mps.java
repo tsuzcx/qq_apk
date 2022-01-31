@@ -1,23 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoInfo.ChannelInfo;
-
-public final class mps
-  implements Parcelable.Creator
+public abstract interface mps
 {
-  public FastWebVideoInfo.ChannelInfo a(Parcel paramParcel)
-  {
-    return new FastWebVideoInfo.ChannelInfo(paramParcel);
-  }
-  
-  public FastWebVideoInfo.ChannelInfo[] a(int paramInt)
-  {
-    return new FastWebVideoInfo.ChannelInfo[paramInt];
-  }
+  public abstract void a(long paramLong, int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mps
  * JD-Core Version:    0.7.0.1
  */

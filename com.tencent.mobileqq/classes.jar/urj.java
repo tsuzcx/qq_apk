@@ -1,38 +1,36 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleResHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.util.SparseIntArray;
+import mqq.app.MSFServlet;
 
 public class urj
-  implements Runnable
 {
-  public urj(DoodleMsgLayout paramDoodleMsgLayout, int paramInt) {}
-  
-  public void run()
+  public static void a(SparseIntArray paramSparseIntArray)
   {
-    QLog.d("DoodleMsgLayout", 2, "setDoodleContent start create drawable:" + this.jdField_a_of_type_Int);
-    if (!DoodleResHelper.a().b(1, this.jdField_a_of_type_Int)) {
-      DoodleResHelper.a().b(1, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout);
-    }
-    Drawable localDrawable;
-    do
+    int[][] arrayOfInt = uqz.a;
+    int j = arrayOfInt.length;
+    int i = 0;
+    if (i < j)
     {
-      return;
-      localDrawable = DoodleResHelper.a().a(2, this.jdField_a_of_type_Int, true);
-      if (localDrawable != null) {
-        ((URLDrawable)localDrawable).startDownload();
+      int[] arrayOfInt1 = arrayOfInt[i];
+      int k = arrayOfInt1[0];
+      int m = arrayOfInt1[1];
+      if (k != -1) {
+        paramSparseIntArray.put(uqn.a(k), m);
       }
-    } while (this.jdField_a_of_type_Int != DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout));
-    new Handler(Looper.getMainLooper()).post(new urk(this, localDrawable));
-    QLog.d("DoodleMsgLayout", 2, "setDoodleContent finish create drawable:" + this.jdField_a_of_type_Int);
+      for (;;)
+      {
+        i += 1;
+        break;
+        paramSparseIntArray.put(m, m);
+      }
+    }
   }
+  
+  public static void a(MSFServlet paramMSFServlet, Intent paramIntent, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     urj
  * JD-Core Version:    0.7.0.1
  */

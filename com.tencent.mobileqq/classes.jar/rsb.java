@@ -1,38 +1,29 @@
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.photo.PeakService;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import org.jetbrains.annotations.NotNull;
 
 public class rsb
-  implements Runnable
 {
-  public rsb(BaseChatPie paramBaseChatPie) {}
-  
-  public void run()
+  public static sks a(Context paramContext, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "start preload peak process");
-    }
-    Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, PeakService.class);
-    if (VideoEnvironment.d(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      localIntent.putExtra("ServiceAction", 2);
-    }
-    try
-    {
-      this.a.jdField_a_of_type_AndroidContentContext.startService(localIntent);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("Q.aio.BaseChatPie", 1, "onShow_otherThings startService ", localException);
-    }
+    paramContext = new sks(paramContext, 2131755801);
+    paramContext.setContentView(2131562535);
+    paramContext.setTitle(null);
+    paramContext.setMessage(paramString1);
+    paramContext.a(paramString2);
+    paramContext.setCanceledOnTouchOutside(true);
+    return paramContext;
+  }
+  
+  public static void a(@NotNull Context paramContext)
+  {
+    rsc localrsc = new rsc(paramContext);
+    bgow.a(paramContext, 230, null, paramContext.getResources().getString(2131718755), localrsc, localrsc).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rsb
  * JD-Core Version:    0.7.0.1
  */

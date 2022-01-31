@@ -1,19 +1,17 @@
-import android.content.Context;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.vas.ColorRingPlayer;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.vas.avatar.VasAvatar;
 
 public class akhj
-  extends QQCustomDialog
 {
-  public akhj(ColorRingPlayer paramColorRingPlayer, Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public VasAvatar a;
+  public ImageView b;
   
-  public void onBackPressed()
-  {
-    super.onBackPressed();
-  }
+  public akhj(akhi paramakhi) {}
 }
 
 

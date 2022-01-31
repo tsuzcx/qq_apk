@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
 
-public class sit
-  implements Runnable
+public abstract interface sit
 {
-  public sit(Conversation paramConversation) {}
+  public abstract void a(View paramView, int paramInt, long paramLong);
   
-  public void run()
-  {
-    if (this.a.a != null) {
-      this.a.a.f(false);
-    }
-  }
+  public abstract void b(View paramView, int paramInt, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sit
  * JD-Core Version:    0.7.0.1
  */

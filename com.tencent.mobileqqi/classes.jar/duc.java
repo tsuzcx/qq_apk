@@ -1,31 +1,21 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class duc
-  implements Runnable
+  implements DialogInterface.OnKeyListener
 {
-  public duc(TroopAssistantActivity paramTroopAssistantActivity, List paramList) {}
+  public duc(UpgradeActivity paramUpgradeActivity) {}
   
-  public void run()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    RecentAdapter localRecentAdapter;
-    if ((TroopAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity).a() == -1) && (TroopAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity) != null))
+    if (paramInt == 4)
     {
-      localRecentAdapter = TroopAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity);
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.b) {
-        break label71;
-      }
+      this.a.finish();
+      this.a.e();
     }
-    label71:
-    for (int i = 3;; i = 4)
-    {
-      localRecentAdapter.a(i);
-      TroopAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity).a(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.i();
-      return;
-    }
+    return false;
   }
 }
 

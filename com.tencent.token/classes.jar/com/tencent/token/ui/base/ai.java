@@ -4,19 +4,19 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.token.ui.ModifyQQPwdActivity;
-import com.tencent.token.ui.pv;
+import com.tencent.token.ui.pg;
 
-final class ai
+class ai
   implements DialogInterface.OnClickListener
 {
   ai(af paramaf) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
     this.a.a.dismiss();
     paramDialogInterface = new Intent(GameLoginSndConfirmDialog.c(this.a.a), ModifyQQPwdActivity.class);
-    pv.a().a(GameLoginSndConfirmDialog.c(this.a.a), paramDialogInterface, pv.b);
+    pg.a().a(GameLoginSndConfirmDialog.c(this.a.a), paramDialogInterface, pg.b);
   }
 }
 

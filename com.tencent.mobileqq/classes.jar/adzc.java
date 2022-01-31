@@ -1,39 +1,17 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.leba.LebaFeedsVideoSdkInstaller;
-import com.tencent.mobileqq.leba.LebaFeedsVideoSdkInstaller.OnVideoPluginInstallListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 
 public class adzc
-  implements Handler.Callback
 {
-  public adzc(LebaFeedsVideoSdkInstaller paramLebaFeedsVideoSdkInstaller) {}
+  public int a;
+  String jdField_a_of_type_JavaLangString;
+  public boolean a;
   
-  public boolean handleMessage(Message paramMessage)
+  public adzc(SoundAndVibrateActivity paramSoundAndVibrateActivity, int paramInt, String paramString, boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 0: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return true;
-          LebaFeedsVideoSdkInstaller.a(this.a, false);
-          LebaFeedsVideoSdkInstaller.a(this.a).removeMessages(0);
-        } while (LebaFeedsVideoSdkInstaller.a(this.a) == null);
-        LebaFeedsVideoSdkInstaller.a(this.a).c(true);
-        return true;
-        LebaFeedsVideoSdkInstaller.a(this.a, false);
-        LebaFeedsVideoSdkInstaller.a(this.a).removeMessages(1);
-      } while (LebaFeedsVideoSdkInstaller.a(this.a) == null);
-      LebaFeedsVideoSdkInstaller.a(this.a).c(false);
-      return true;
-    }
-    LebaFeedsVideoSdkInstaller.a(this.a, true);
-    return true;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

@@ -1,31 +1,46 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.MyStorys;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
-import com.tencent.biz.qqstory.utils.UIUtils;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusInnerData;
+import java.util.regex.Pattern;
+import org.json.JSONObject;
 
 public class obo
-  implements Runnable
 {
-  public obo(NewMyStorySegment paramNewMyStorySegment, TextView paramTextView, View paramView, ImageView paramImageView) {}
+  public int a;
+  public String a;
+  public Pattern a;
+  public JSONObject a;
+  public String b = "";
+  public String c = "";
   
-  public void run()
+  public obo(ProteusInnerData paramProteusInnerData, int paramInt, String paramString1, String paramString2, String paramString3, JSONObject paramJSONObject, Pattern paramPattern)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment, NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment), this.jdField_a_of_type_AndroidViewView.getWidth() - this.jdField_a_of_type_AndroidWidgetImageView.getWidth() - UIUtils.a(NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment), 70.0F), this.jdField_a_of_type_AndroidWidgetTextView.getPaint()));
-    if (NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment).f > 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-65536);
-      return;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = paramInt;
+    if (!TextUtils.isEmpty(paramString1)) {
+      this.jdField_a_of_type_JavaLangString = paramString1;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(NewMyStorySegment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment).getResources().getColor(2131494277));
+    if (!TextUtils.isEmpty(paramString2)) {
+      this.b = paramString2;
+    }
+    if (!TextUtils.isEmpty(paramString3)) {
+      this.c = paramString3;
+    }
+    if (paramJSONObject != null) {
+      this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    }
+    if (paramPattern != null) {
+      this.jdField_a_of_type_JavaUtilRegexPattern = paramPattern;
+    }
+  }
+  
+  public String toString()
+  {
+    return "InnerFormItem[" + this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     obo
  * JD-Core Version:    0.7.0.1
  */

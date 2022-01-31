@@ -10,81 +10,82 @@ import com.tencent.sveffects.SLog;
 public class EglHandlerThread
   extends HandlerThread
 {
-  private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private EglCore jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglCore;
-  private EglSurfaceBase jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglSurfaceBase;
-  private boolean jdField_a_of_type_Boolean = false;
+  private static final String TAG = "EglHandlerThread";
+  private EglCore eglCore;
+  private EglSurfaceBase eglSurfaceBase;
+  private Handler handler;
+  private boolean initSuccess = false;
+  private EGLContext sharedContext;
   
   public EglHandlerThread(String paramString, EGLContext paramEGLContext)
   {
     super(paramString);
-    this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
+    this.sharedContext = paramEGLContext;
   }
   
-  private void a()
+  public Handler getHandler()
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglSurfaceBase != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglSurfaceBase.a();
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglSurfaceBase = null;
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglCore == null);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglCore.a();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglCore = null;
+    return this.handler;
   }
   
-  public Handler a()
+  public boolean isInitSuccess()
   {
-    return this.jdField_a_of_type_AndroidOsHandler;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return this.initSuccess;
   }
   
   protected void onLooperPrepared()
   {
     super.onLooperPrepared();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(getLooper());
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglCore = new EglCore(this.jdField_a_of_type_AndroidOpenglEGLContext, 1);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglSurfaceBase = new EglSurfaceBase(this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglCore);
+    this.handler = new Handler(getLooper());
+    this.eglCore = new EglCore(this.sharedContext, 1);
+    this.eglSurfaceBase = new EglSurfaceBase(this.eglCore);
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglSurfaceBase.a(64, 64);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglSurfaceBase.b();
-      this.jdField_a_of_type_Boolean = true;
+      this.eglSurfaceBase.createOffscreenSurface(64, 64);
+      this.eglSurfaceBase.makeCurrent();
+      this.initSuccess = true;
       return;
     }
     catch (Exception localException)
     {
-      this.jdField_a_of_type_Boolean = false;
-      SLog.a("EglHandlerThread", localException);
+      this.initSuccess = false;
+      SLog.e("EglHandlerThread", localException);
     }
   }
   
   public boolean quit()
   {
     boolean bool = super.quit();
-    a();
+    release();
     return bool;
   }
   
   public boolean quitSafely()
   {
     boolean bool = super.quitSafely();
-    a();
+    release();
     return bool;
+  }
+  
+  public void release()
+  {
+    if (!this.initSuccess) {}
+    do
+    {
+      return;
+      if (this.eglSurfaceBase != null)
+      {
+        this.eglSurfaceBase.releaseEglSurface();
+        this.eglSurfaceBase = null;
+      }
+    } while (this.eglCore == null);
+    this.eglCore.release();
+    this.eglCore = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.eglwraper.EglHandlerThread
  * JD-Core Version:    0.7.0.1
  */

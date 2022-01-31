@@ -1,17 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkShareJumpActivity;
-
-public class amnx
-  implements DialogInterface.OnClickListener
+public abstract interface amnx
 {
-  public amnx(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
+  public abstract void a(String paramString);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.finish();
-  }
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void b(String paramString, int paramInt);
 }
 
 

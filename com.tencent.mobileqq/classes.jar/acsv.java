@@ -1,32 +1,20 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acsv
-  implements View.OnLongClickListener
+  implements babe
 {
-  public acsv(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public acsv(Conversation paramConversation) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if ((paramView == null) || (QfileBaseRecentFileTabView.a(this.a))) {
-      return false;
+    if (this.a.a != null) {
+      this.a.a.b();
     }
-    paramView.setSelected(true);
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131362740, paramView.getContext().getString(2131434041));
-    ApolloUtil.a(paramView, QfileBaseRecentFileTabView.n(this.a), localQQCustomMenu);
-    this.a.a = BubbleContextMenu.a(paramView, localQQCustomMenu, new acsw(this, paramView), new acsy(this, paramView));
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acsv
  * JD-Core Version:    0.7.0.1
  */

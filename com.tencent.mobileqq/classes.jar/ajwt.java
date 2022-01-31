@@ -1,31 +1,8 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopManager.ITroopMemberInfoCallBack;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.trooponline.TroopOnlineMemberListAdapter;
-import com.tencent.mobileqq.trooponline.TroopOnlineMemberListAdapter.ViewHolder;
-
-public class ajwt
-  implements TroopManager.ITroopMemberInfoCallBack
+public abstract interface ajwt
 {
-  public TroopOnlineMemberListAdapter.ViewHolder a;
+  public abstract int a(CharSequence paramCharSequence, int paramInt1, int paramInt2);
   
-  private ajwt(TroopOnlineMemberListAdapter paramTroopOnlineMemberListAdapter) {}
-  
-  public void a(TroopMemberInfo paramTroopMemberInfo)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter$ViewHolder != null) && (paramTroopMemberInfo != null) && (TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter$ViewHolder.jdField_a_of_type_JavaLangString, paramTroopMemberInfo.memberuin)))
-    {
-      paramTroopMemberInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter.a.getManager(51)).a(paramTroopMemberInfo.troopuin, paramTroopMemberInfo.memberuin);
-      this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter$ViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopMemberInfo);
-      if (AppSetting.b) {
-        TroopOnlineMemberListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter, this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter$ViewHolder);
-      }
-    }
-  }
+  public abstract int b(CharSequence paramCharSequence, int paramInt1, int paramInt2);
 }
 
 

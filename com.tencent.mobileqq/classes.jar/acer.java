@@ -1,63 +1,24 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
 
 public class acer
-  implements Runnable
+  implements View.OnClickListener
 {
-  public acer(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public acer(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "preloadWebProcess");
-    }
-    try
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-        return;
-      }
-      WebProcessManager localWebProcessManager = (WebProcessManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(12);
-      if (localWebProcessManager != null)
-      {
-        SharedPreferences localSharedPreferences = this.a.jdField_a_of_type_AndroidContentContext.getSharedPreferences("emoticon_panel_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-        long l = localSharedPreferences.getLong("sp_key_market_open_time", 0L);
-        if (System.currentTimeMillis() - l < 2592000000L)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("EmoticonMainPanel", 2, "preloadWebProcess, startWebProcess for market open strategy");
-          }
-          localWebProcessManager.a(-1, new aces(this));
-          return;
-        }
-        l = localSharedPreferences.getLong("sp_key_send_h5_magic_face_time", 0L);
-        if (System.currentTimeMillis() - l >= 2592000000L) {
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("EmoticonMainPanel", 2, "preloadWebProcess, startWebProcess for h5 magic send strategy");
-        }
-        localWebProcessManager.a(-1, new acet(this));
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("EmoticonMainPanel", 1, "preloadWebProcess, exception=" + MsfSdkUtils.getStackTraceString(localException));
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "preloadWebProcess, web process alive already");
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("start_from", 2);
+    ColorNoteSettingFragment.a(paramView.getContext(), ColorNoteSettingFragment.class, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acer
  * JD-Core Version:    0.7.0.1
  */

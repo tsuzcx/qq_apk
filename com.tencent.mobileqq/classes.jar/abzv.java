@@ -1,66 +1,75 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.FavEmoRoamingHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
-import com.tencent.mobileqq.emoticon.EmojiListenerManager;
-import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
-import com.tencent.mobileqq.model.EmoticonManager;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.widget.EditText;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import org.json.JSONObject;
 
 public class abzv
-  extends EmoticonPackageDownloadListener
+  implements abwu
 {
-  public abzv(FavroamingManager paramFavroamingManager) {}
+  EditText a;
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  public abzv() {}
+  
+  public abzv(EditText paramEditText)
   {
-    super.a(paramEmoticonPackage, paramInt);
-    EmojiListenerManager.a().b(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener);
-    Object localObject = (FavroamingDBManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(148);
-    EmoticonManager localEmoticonManager = (EmoticonManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13);
-    List localList = ((FavroamingDBManager)localObject).c(paramEmoticonPackage.epId);
-    if ((localList == null) || (localList.size() <= 0)) {}
-    do
+    this.a = paramEditText;
+  }
+  
+  private void a(String paramString)
+  {
+    if (this.a == null) {}
+    for (boolean bool = true;; bool = false)
     {
+      a(paramString, bool);
       return;
-      paramEmoticonPackage = new ArrayList();
-      int i = 0;
-      if (i < localList.size())
-      {
-        CustomEmotionData localCustomEmotionData = (CustomEmotionData)localList.get(i);
-        if (localEmoticonManager.a(localCustomEmotionData.emoPath, localCustomEmotionData.eId) == null)
-        {
-          localCustomEmotionData.RomaingType = "needDel";
-          ((FavroamingDBManager)localObject).b(localCustomEmotionData);
-          if (!TextUtils.isEmpty(localCustomEmotionData.resid)) {
-            paramEmoticonPackage.add(localCustomEmotionData.resid);
-          }
-        }
-        FavroamingManager localFavroamingManager = this.a;
-        if (paramInt == 0) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localFavroamingManager.a(localCustomEmotionData, bool);
-          i += 1;
-          break;
-        }
-      }
-      localObject = (FavEmoRoamingHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(72);
-    } while ((localObject == null) || (paramEmoticonPackage.size() <= 0));
-    if (QLog.isColorLevel()) {
-      QLog.d("FavroamingManager", 2, "delResId: " + paramEmoticonPackage);
     }
-    ((FavEmoRoamingHandler)localObject).a(paramEmoticonPackage, false);
+  }
+  
+  private void a(String paramString, boolean paramBoolean)
+  {
+    QLog.d("DoraemonOpenAPI.test", 2, paramString);
+    if (this.a != null) {
+      this.a.append(paramString);
+    }
+    if (paramBoolean) {
+      QQToast.a(BaseApplicationImpl.getApplication(), paramString, 0).a();
+    }
+  }
+  
+  public void onComplete()
+  {
+    a("onComplete\n");
+  }
+  
+  public void onFailure(int paramInt, String paramString)
+  {
+    a("onFailure code=" + paramInt + " msg=" + paramString + "\n");
+  }
+  
+  public void onPermission(int paramInt)
+  {
+    a("onPermission " + paramInt + "\n", true);
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    a("onSuccess " + paramJSONObject + "\n", true);
+    if (this.a != null) {
+      new AlertDialog.Builder(this.a.getContext()).setTitle("onSuccess").setMessage(paramJSONObject.toString()).setNegativeButton(alud.a(2131715241), null).create().show();
+    }
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject)
+  {
+    a("onTrigger\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzv
  * JD-Core Version:    0.7.0.1
  */

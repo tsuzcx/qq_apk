@@ -9,11 +9,11 @@ import java.util.Map;
 public final class mobile_ranking_feeds_req
   extends JceStruct
 {
-  static Map cache_mapEx = new HashMap();
-  static Map cache_stMapRanking;
+  static Map<String, String> cache_mapEx = new HashMap();
+  static Map<Integer, byte[]> cache_stMapRanking;
   public int iOperaType = 1;
-  public Map mapEx;
-  public Map stMapRanking;
+  public Map<String, String> mapEx;
+  public Map<Integer, byte[]> stMapRanking;
   public long uin;
   
   static
@@ -27,12 +27,12 @@ public final class mobile_ranking_feeds_req
   
   public mobile_ranking_feeds_req() {}
   
-  public mobile_ranking_feeds_req(long paramLong, int paramInt, Map paramMap1, Map paramMap2)
+  public mobile_ranking_feeds_req(long paramLong, int paramInt, Map<String, String> paramMap, Map<Integer, byte[]> paramMap1)
   {
     this.uin = paramLong;
     this.iOperaType = paramInt;
-    this.mapEx = paramMap1;
-    this.stMapRanking = paramMap2;
+    this.mapEx = paramMap;
+    this.stMapRanking = paramMap1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -57,7 +57,7 @@ public final class mobile_ranking_feeds_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_ranking_feeds_req
  * JD-Core Version:    0.7.0.1
  */

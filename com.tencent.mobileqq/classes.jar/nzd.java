@@ -1,38 +1,28 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.LruCache;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.URLImageLoader;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.URLImageLoader.Config;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.common.InfoPrinter;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import java.lang.ref.WeakReference;
 
 public class nzd
-  extends LruCache
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public nzd(URLImageLoader paramURLImageLoader, int paramInt)
+  private WeakReference<nwi> a;
+  
+  public nzd(nwi paramnwi)
   {
-    super(paramInt);
+    this.a = new WeakReference(paramnwi);
   }
   
-  protected int a(URLImageLoader.Config paramConfig, Drawable paramDrawable)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if ((paramDrawable instanceof BitmapDrawable))
-    {
-      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramDrawable != null)
-      {
-        int i = paramDrawable.getRowBytes();
-        i = paramDrawable.getHeight() * i;
-        InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramConfig, " size=", Integer.valueOf(i) });
-        return i;
-      }
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((nwi)this.a.get()).a(true);
     }
-    return 524288;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nzd
  * JD-Core Version:    0.7.0.1
  */

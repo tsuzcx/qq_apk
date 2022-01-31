@@ -1,45 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
-import com.tencent.open.base.LogUtility;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class akdd
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public akdd(NewUpgradeDialog paramNewUpgradeDialog) {}
+  public akdd(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onClick(View paramView)
-  {
-    switch (NewUpgradeDialog.a(this.a))
-    {
-    default: 
-      return;
-    case 1: 
-      LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_INIT");
-      NewUpgradeDialog.a(this.a);
-      return;
-    case 4: 
-      NewUpgradeDialog.b(this.a);
-      LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_COMPLETE");
-      return;
-    case 10: 
-      LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_CANCEL");
-      return;
-    case 3: 
-      NewUpgradeDialog.c(this.a);
-      LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_PAUSE");
-      return;
-    case 2: 
-      this.a.c();
-      LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_DOWNLOADING");
-      return;
-    }
-    LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_WAIT");
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akdd
  * JD-Core Version:    0.7.0.1
  */

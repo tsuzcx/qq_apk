@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_gravity="bottom" android:background="#80000000" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/la0" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.av.ui.beauty.BeautySeekView android:id="@id/a7n" android:layout_width="0.0dip" android:layout_height="88.0dip" android:layout_weight="1.0" />
+        <ImageView android:id="@id/la5" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/hrf" android:scaleType="fitCenter" android:contentDescription="@string/iw5" />
+    </LinearLayout>
+    <TextView android:id="@id/a7l" android:background="#1affffff" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_below="@id/la0" />
+    <HorizontalScrollView android:id="@id/lye" android:background="@color/ajr" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="85.0dip" android:fillViewport="true" android:layout_below="@id/a7l" android:layout_centerHorizontal="true">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ff9" android:layout_width="wrap_content" android:layout_height="85.0dip" android:layout_alignParentRight="true" />
+    </HorizontalScrollView>
+</merge>

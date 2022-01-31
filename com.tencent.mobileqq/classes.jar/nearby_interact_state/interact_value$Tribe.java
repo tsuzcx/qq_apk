@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class interact_value$Tribe
-  extends MessageMicro
+  extends MessageMicro<Tribe>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_cid = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -36,7 +36,7 @@ public final class interact_value$Tribe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nearby_interact_state.interact_value.Tribe
  * JD-Core Version:    0.7.0.1
  */

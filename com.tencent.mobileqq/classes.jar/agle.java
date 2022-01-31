@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.pic.PicPreDownloader;
-import com.tencent.mobileqq.pic.StructMsgPicPreDelegate;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 
-public class agle
-  implements Runnable
+public abstract interface agle
 {
-  public agle(PicPreDownloader paramPicPreDownloader, MessageForStructing paramMessageForStructing) {}
+  public abstract boolean a(PhotoListPanel paramPhotoListPanel);
   
-  public void run()
-  {
-    StructMsgPicPreDelegate.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.a);
-  }
+  public abstract boolean b(PhotoListPanel paramPhotoListPanel);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agle
  * JD-Core Version:    0.7.0.1
  */

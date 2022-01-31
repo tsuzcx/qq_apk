@@ -1,21 +1,13 @@
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class rmm
-  implements Runnable
+public abstract interface rmm
 {
-  public rmm(AssociatedAccountActivity paramAssociatedAccountActivity) {}
-  
-  public void run()
-  {
-    if (this.a.a != null) {
-      this.a.a.springBackOverScrollHeaderView();
-    }
-  }
+  public abstract View a(ViewGroup paramViewGroup);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rmm
  * JD-Core Version:    0.7.0.1
  */

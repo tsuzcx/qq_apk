@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;
 import com.tencent.qphone.base.util.QLog;
-import dhw;
+import dcf;
 
 public class QQLSUnlockActivity
   extends Activity
@@ -16,7 +16,7 @@ public class QQLSUnlockActivity
     if (QLog.isColorLevel()) {
       QLog.d("QQLSActivity", 2, "enter QQLSUnlockActivity");
     }
-    new dhw(this).start();
+    new dcf(this).start();
   }
 }
 

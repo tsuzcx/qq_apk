@@ -14,8 +14,8 @@ import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import eqj;
-import eqk;
+import elv;
+import elw;
 
 public class SettingActivity2
   extends DialogBaseActivity
@@ -33,10 +33,10 @@ public class SettingActivity2
   {
     setTitle(2131562573);
     this.k.setText(getResources().getString(2131558983));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131232050));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131232053));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
     f();
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232051));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232054));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -44,7 +44,7 @@ public class SettingActivity2
   {
     if ((1 != this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager.b()) && (2 != this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager.b()))
     {
-      findViewById(2131232050).setVisibility(0);
+      findViewById(2131232053).setVisibility(0);
       Object localObject = this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager.a();
       localObject = ((RespondQueryQQBindingStat)localObject).nationCode + " " + ((RespondQueryQQBindingStat)localObject).mobileNo;
       int i = ((String)localObject).length();
@@ -52,7 +52,7 @@ public class SettingActivity2
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText((CharSequence)localObject);
       return;
     }
-    findViewById(2131232050).setVisibility(8);
+    findViewById(2131232053).setVisibility(8);
   }
   
   private void g()
@@ -80,7 +80,7 @@ public class SettingActivity2
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903311);
+    setContentView(2130903313);
     e();
     this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2$UiHandler = new SettingActivity2.UiHandler(this);
     this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(SettingActivity2.class, this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2$UiHandler);
@@ -111,7 +111,7 @@ public class SettingActivity2
     {
     default: 
       throw new RuntimeException("unknown id: " + i);
-    case 2131232050: 
+    case 2131232053: 
       if (1 == this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager.b())
       {
         h();
@@ -125,7 +125,7 @@ public class SettingActivity2
       paramView = (ActionSheet)ActionSheetHelper.a(this, null);
       paramView.a(2131563090, 1);
       paramView.setCanceledOnTouchOutside(true);
-      paramView.a(new eqj(this, paramView));
+      paramView.a(new elv(this, paramView));
       paramView.d(2131561746);
       paramView.show();
       return;
@@ -134,7 +134,7 @@ public class SettingActivity2
     paramView.a(2131561621);
     paramView.setCanceledOnTouchOutside(true);
     paramView.a(2131562545, 3);
-    paramView.a(new eqk(this, paramView));
+    paramView.a(new elw(this, paramView));
     paramView.d(2131561746);
     paramView.show();
   }

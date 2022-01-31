@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class DownloadChooseRsp
   extends JceStruct
 {
-  static ArrayList cache_vecResInfo = new ArrayList();
-  public ArrayList vecResInfo;
+  static ArrayList<ResInfo> cache_vecResInfo = new ArrayList();
+  public ArrayList<ResInfo> vecResInfo;
   
   static
   {

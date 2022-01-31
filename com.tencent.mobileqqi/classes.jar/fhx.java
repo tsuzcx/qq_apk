@@ -1,15 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.app.MQPIntChkHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetConfig;
+import com.tencent.mobileqq.config.ResourcePluginListener;
 
 public class fhx
-  implements DialogInterface.OnDismissListener
+  extends ResourcePluginListener
 {
-  public fhx(MQPIntChkHandler paramMQPIntChkHandler) {}
+  private fhx(GetConfig paramGetConfig) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(byte paramByte)
   {
-    MQPIntChkHandler.a(this.a, false);
+    if (GetConfig.a(this.a) == 38)
+    {
+      if ((paramByte != 2) && (paramByte == 3)) {}
+      GetConfig.a(this.a).a.c(GetConfig.a(this.a));
+      this.a.a(7);
+    }
+  }
+  
+  public void b(byte paramByte)
+  {
+    if ((paramByte != 2) && (paramByte == 3)) {}
+    GetConfig.b(this.a).a.d(this);
   }
 }
 

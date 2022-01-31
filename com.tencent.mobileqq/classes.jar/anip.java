@@ -1,22 +1,26 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class anip
-  extends AnimatorListenerAdapter
+class anip
+  implements anjx
 {
-  public anip(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
+  anip(anii paramanii, long paramLong) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(long paramLong)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.a.f();
-    this.a.e();
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Anii.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    anif.a(this.jdField_a_of_type_Anii.a, this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anip
  * JD-Core Version:    0.7.0.1
  */

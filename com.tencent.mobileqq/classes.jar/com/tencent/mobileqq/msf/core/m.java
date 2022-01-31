@@ -1,10 +1,8 @@
 package com.tencent.mobileqq.msf.core;
 
-import com.tencent.mobileqq.msf.core.a.a;
-import com.tencent.mobileqq.msf.core.c.d;
+import com.tencent.mobileqq.msf.core.c.e;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.Arrays;
 import java.util.Calendar;
 
 final class m
@@ -12,72 +10,39 @@ final class m
 {
   public void run()
   {
-    int k = 3;
-    Object localObject = new File(QLog.getLogPath());
-    Calendar localCalendar;
-    int i;
-    if (((File)localObject).exists())
+    File localFile = new File(QLog.getLogPath());
+    try
     {
-      localObject = ((File)localObject).listFiles();
-      if ((localObject == null) || (localObject.length == 0)) {
-        return;
-      }
-      Arrays.sort((Object[])localObject, new n(this));
-      localCalendar = Calendar.getInstance();
-      try
-      {
-        String str = a.h();
-        if ((str == null) || (str.length() <= 0)) {
-          break label237;
-        }
-        i = Integer.parseInt(str);
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-          i = 3;
-        }
-      }
-      j = k;
-      if (i >= 1) {
-        if (i <= 14) {
-          break label305;
-        }
-      }
+      h.j();
     }
-    label305:
-    for (int j = k;; j = i)
+    catch (Throwable localThrowable2)
     {
-      localCalendar.add(6, j - j * 2);
-      long l = localCalendar.getTimeInMillis();
-      j = localObject.length;
-      i = 0;
-      while (i < j)
+      for (;;)
       {
-        localCalendar = localObject[i];
-        if (QLog.isColorLevel()) {
-          QLog.d(h.a, 2, "found log file " + localCalendar.getName());
-        }
-        if (l > localCalendar.lastModified())
+        try
         {
-          localCalendar.delete();
-          if (QLog.isColorLevel()) {
-            QLog.d(h.a, 2, "del expires log " + localCalendar.getName());
+          boolean bool = h.b(localFile);
+          if (!bool) {
+            continue;
           }
+          return;
         }
-        i += 1;
+        catch (Throwable localThrowable1)
+        {
+          localThrowable1.printStackTrace();
+          QLog.e(h.b, 1, "run: failed. ", localThrowable1);
+          Calendar localCalendar = Calendar.getInstance();
+          localCalendar.set(6, localCalendar.get(6) - 7);
+          localCalendar.set(11, 0);
+          localCalendar.set(12, 0);
+          localCalendar.set(13, 0);
+          localCalendar.set(14, 0);
+          e.b(localCalendar.getTimeInMillis());
+        }
+        localThrowable2 = localThrowable2;
+        localThrowable2.printStackTrace();
+        QLog.e(h.b, 1, "run: failed. ", localThrowable2);
       }
-      label237:
-      localObject = Calendar.getInstance();
-      ((Calendar)localObject).set(6, ((Calendar)localObject).get(6) - 7);
-      ((Calendar)localObject).set(11, 0);
-      ((Calendar)localObject).set(12, 0);
-      ((Calendar)localObject).set(13, 0);
-      ((Calendar)localObject).set(14, 0);
-      d.b(((Calendar)localObject).getTimeInMillis());
-      return;
     }
   }
 }

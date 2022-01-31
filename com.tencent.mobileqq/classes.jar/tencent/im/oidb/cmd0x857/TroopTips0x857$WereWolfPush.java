@@ -11,16 +11,16 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class TroopTips0x857$WereWolfPush
-  extends MessageMicro
+  extends MessageMicro<WereWolfPush>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_judge_nickname = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_judge_words = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field enum_game_state = PBField.initUInt32(0);
   public final PBUInt32Field enum_operation = PBField.initUInt32(0);
-  public final PBRepeatField rpt_dead_users = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
-  public final PBRepeatMessageField rpt_roles = PBField.initRepeatMessage(TroopTips0x857.WereWolfPush.Role.class);
-  public final PBRepeatField rpt_voted_tie_users = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> rpt_dead_users = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatMessageField<TroopTips0x857.WereWolfPush.Role> rpt_roles = PBField.initRepeatMessage(TroopTips0x857.WereWolfPush.Role.class);
+  public final PBRepeatField<Long> rpt_voted_tie_users = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt32Field uint32_game_result = PBField.initUInt32(0);
   public final PBUInt32Field uint32_game_round = PBField.initUInt32(0);
   public final PBUInt32Field uint32_kill_confirmed = PBField.initUInt32(0);
@@ -41,7 +41,7 @@ public final class TroopTips0x857$WereWolfPush
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x857.TroopTips0x857.WereWolfPush
  * JD-Core Version:    0.7.0.1
  */

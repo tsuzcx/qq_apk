@@ -1,49 +1,16 @@
-import java.util.HashMap;
+import com.qq.taf.jce.JceOutputStream;
+import com.tencent.mobileqq.transfile.CommenTransFileProcessor;
+import java.util.TimerTask;
 
 public class gnc
+  extends TimerTask
 {
-  private static HashMap a = new HashMap();
+  public gnc(CommenTransFileProcessor paramCommenTransFileProcessor, JceOutputStream paramJceOutputStream) {}
   
-  public static String a(long paramLong)
+  public void run()
   {
-    try
-    {
-      String str = (String)a.get(String.valueOf(paramLong));
-      return str;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static void a(long paramLong)
-  {
-    try
-    {
-      a.remove(String.valueOf(paramLong));
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static void a(long paramLong, String paramString)
-  {
-    try
-    {
-      a.put(String.valueOf(paramLong), paramString);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    byte[] arrayOfByte = this.jdField_a_of_type_ComQqTafJceJceOutputStream.toByteArray();
+    CommenTransFileProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileCommenTransFileProcessor, this.jdField_a_of_type_ComTencentMobileqqTransfileCommenTransFileProcessor.a, arrayOfByte);
   }
 }
 

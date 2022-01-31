@@ -1,54 +1,35 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.richstatus.ISameStatusListener;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mobileqq.testassister.activity.ShareAppLogActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class gmn
-  extends AsyncTask
+  implements Runnable
 {
-  public gmn(StatusManager paramStatusManager) {}
+  public gmn(ShareAppLogActivity paramShareAppLogActivity) {}
   
-  protected ArrayList a(Void... paramVarArgs)
+  public void run()
   {
-    return this.a.a();
-  }
-  
-  protected void a(ArrayList paramArrayList)
-  {
-    StatusManager.b(this.a, paramArrayList);
-    StatusManager.b(this.a, null);
-    if (StatusManager.c(this.a) != null)
+    try
     {
-      paramArrayList = this.a.a(StatusManager.b(this.a), StatusManager.c(this.a), StatusManager.b(this.a));
-      StatusManager.a(this.a, null);
-      if (StatusManager.c(this.a) != null)
+      if (ShareAppLogActivity.a(this.a) == null)
       {
-        Iterator localIterator = StatusManager.c(this.a).iterator();
-        if (localIterator.hasNext())
-        {
-          ISameStatusListener localISameStatusListener = (ISameStatusListener)localIterator.next();
-          int i = StatusManager.b(this.a);
-          if ((StatusManager.a(this.a) != null) && (StatusManager.a(this.a).length > 1)) {}
-          for (boolean bool = true;; bool = false)
-          {
-            localISameStatusListener.a(true, true, i, paramArrayList, bool);
-            break;
-          }
-        }
+        ShareAppLogActivity.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
+        ShareAppLogActivity.a(this.a).b(2131562645);
+      }
+      ShareAppLogActivity.a(this.a).show();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
       }
     }
-  }
-  
-  protected void onCancelled()
-  {
-    StatusManager.b(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gmn
  * JD-Core Version:    0.7.0.1
  */

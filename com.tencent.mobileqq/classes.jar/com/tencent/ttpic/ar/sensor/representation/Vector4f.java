@@ -59,24 +59,7 @@ public class Vector4f
   
   public boolean compareTo(Vector4f paramVector4f)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.points[0] == paramVector4f.points[0])
-    {
-      bool1 = bool2;
-      if (this.points[1] == paramVector4f.points[1])
-      {
-        bool1 = bool2;
-        if (this.points[2] == paramVector4f.points[2])
-        {
-          bool1 = bool2;
-          if (this.points[3] == paramVector4f.points[3]) {
-            bool1 = true;
-          }
-        }
-      }
-    }
-    return bool1;
+    return (this.points[0] == paramVector4f.points[0]) && (this.points[1] == paramVector4f.points[1]) && (this.points[2] == paramVector4f.points[2]) && (this.points[3] == paramVector4f.points[3]);
   }
   
   public void copyFromV3f(Vector3f paramVector3f, float paramFloat)
@@ -261,7 +244,7 @@ public class Vector4f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.ar.sensor.representation.Vector4f
  * JD-Core Version:    0.7.0.1
  */

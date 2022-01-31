@@ -1,16 +1,8 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
-import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 
-public class ajlm
-  implements Runnable
+public abstract interface ajlm
 {
-  public ajlm(HWReciteItem paramHWReciteItem, HWReciteInfo paramHWReciteInfo) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.a.a();
-  }
+  public abstract void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout);
 }
 
 

@@ -9,7 +9,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 final class HandlerPoster
   extends AbsEventBatcher<PendingPost>
 {
-  private final CopyOnWriteArraySet<PosterRunner> mPosterRunners = new CopyOnWriteArraySet();
+  private final CopyOnWriteArraySet<HandlerPoster.PosterRunner> mPosterRunners = new CopyOnWriteArraySet();
   
   HandlerPoster(Looper paramLooper, int paramInt)
   {
@@ -21,14 +21,14 @@ final class HandlerPoster
     Iterator localIterator = this.mPosterRunners.iterator();
     while (localIterator.hasNext())
     {
-      PosterRunner localPosterRunner = (PosterRunner)localIterator.next();
+      HandlerPoster.PosterRunner localPosterRunner = (HandlerPoster.PosterRunner)localIterator.next();
       if (localPosterRunner.acceptTag(paramObject)) {
         localPosterRunner.run(paramString, paramDispatchable);
       }
     }
   }
   
-  void addPosterRunner(PosterRunner paramPosterRunner)
+  void addPosterRunner(HandlerPoster.PosterRunner paramPosterRunner)
   {
     this.mPosterRunners.add(paramPosterRunner);
   }
@@ -49,21 +49,14 @@ final class HandlerPoster
     PendingPost.releasePendingPost(paramPendingPost);
   }
   
-  void removePosterRunner(PosterRunner paramPosterRunner)
+  void removePosterRunner(HandlerPoster.PosterRunner paramPosterRunner)
   {
     this.mPosterRunners.remove(paramPosterRunner);
-  }
-  
-  public static abstract interface PosterRunner
-  {
-    public abstract boolean acceptTag(Object paramObject);
-    
-    public abstract void run(@NonNull String paramString, @NonNull Dispatcher.Dispatchable paramDispatchable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tribe.async.dispatch.HandlerPoster
  * JD-Core Version:    0.7.0.1
  */

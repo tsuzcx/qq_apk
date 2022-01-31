@@ -1,44 +1,23 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment;
-import java.util.ArrayList;
-import javax.annotation.Nonnull;
+import android.widget.TextView;
+import com.tencent.widget.AbsListView;
 
-public class ahey
-  extends FragmentPagerAdapter
+class ahey
+  implements bhtv
 {
-  private ArrayList jdField_a_of_type_JavaUtilArrayList;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private ArrayList b;
+  ahey(ahex paramahex) {}
   
-  private ahey(FragmentManager paramFragmentManager)
+  private boolean a(AbsListView paramAbsListView)
   {
-    super(paramFragmentManager);
+    return (paramAbsListView.getChildAt(paramAbsListView.getChildCount() - 1) == this.a.a) && (this.a.a.getBottom() == this.a.a.getBottom());
   }
   
-  public void a(@Nonnull ArrayList paramArrayList1, @Nonnull ArrayList paramArrayList2, @Nonnull String[] paramArrayOfString)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList1;
-    this.b = paramArrayList2;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-  }
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public int getCount()
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    return 2;
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return ReceiptMessageReadMemberListFragment.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ArrayOfJavaLangString[1]);
-    case 0: 
-      return ReceiptMessageReadMemberListFragment.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    if ((paramInt == 0) && (a(paramAbsListView))) {
+      this.a.d();
     }
-    return ReceiptMessageReadMemberListFragment.a(this.b, this.jdField_a_of_type_ArrayOfJavaLangString[1]);
   }
 }
 

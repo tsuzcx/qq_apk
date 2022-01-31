@@ -1,35 +1,17 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class eau
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public eau(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public eau(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void run()
-  {
-    try
-    {
-      if ((VerifyPhoneNumActivity.a(this.a) != null) && (VerifyPhoneNumActivity.a(this.a).isShowing()))
-      {
-        VerifyPhoneNumActivity.a(this.a).dismiss();
-        VerifyPhoneNumActivity.a(this.a).cancel();
-      }
-      VerifyPhoneNumActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eau
  * JD-Core Version:    0.7.0.1
  */

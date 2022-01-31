@@ -1,26 +1,33 @@
-import com.tencent.biz.qqstory.playvideo.TVKPreloader;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadListener;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArraySet;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
+import java.net.URL;
 
 class nok
-  implements Runnable
+  implements tpv
 {
-  nok(noj paramnoj, TVKPreloader.PreloadItem paramPreloadItem) {}
+  nok(noj paramnoj, View paramView, ResizeURLImageView paramResizeURLImageView) {}
   
-  public void run()
+  public void a(URL paramURL, int paramInt) {}
+  
+  public void a(URL paramURL, Throwable paramThrowable)
   {
-    Iterator localIterator = TVKPreloader.a().iterator();
-    while (localIterator.hasNext()) {
-      ((TVKPreloader.PreloadListener)localIterator.next()).b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem);
-    }
-    TVKPreloader.a(true);
+    this.jdField_a_of_type_Noj.a = 3;
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131369770).setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131365980).setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131365980).setOnClickListener(new nol(this));
+  }
+  
+  public void a(URL paramURL, sfc paramsfc)
+  {
+    this.jdField_a_of_type_Noj.a = 2;
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131369770).setVisibility(8);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewResizeURLImageView.setPublicAccountImageDownListener(null);
+    noj.a(this.jdField_a_of_type_Noj, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nok
  * JD-Core Version:    0.7.0.1
  */

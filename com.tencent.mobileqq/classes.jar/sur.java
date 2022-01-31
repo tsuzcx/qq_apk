@@ -1,62 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.app.Activity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import java.lang.ref.WeakReference;
 
-public class sur
-  implements DialogInterface.OnClickListener
+class sur
+  implements Animation.AnimationListener
 {
-  public sur(GroupManagerActivity paramGroupManagerActivity) {}
+  sur(suk paramsuk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramDialogInterface = GroupManagerActivity.a(this.a).getInputValue();
-    if (paramDialogInterface.equals("")) {
-      paramDialogInterface = this.a.getResources().getString(2131436511);
-    }
-    for (;;)
-    {
-      if (GroupManagerActivity.a(this.a) == 0) {
-        if (this.a.a.size() > 0)
-        {
-          b = (byte)(((Groups)this.a.a.get(this.a.a.size() - 1)).seqid + 1);
-          GroupManagerActivity.a(this.a, this.a.a(b, paramDialogInterface));
-          if (QLog.isColorLevel()) {
-            QLog.d("GroupManagerActivity", 2, "AddFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
-          }
-          if (GroupManagerActivity.a(this.a)) {
-            this.a.a(2131435543);
-          }
-          ReportController.b(this.a.app, "CliOper", "", "", "category", "Add_category", 0, 0, "", "", "", "");
-        }
-      }
-      while (1 != GroupManagerActivity.a(this.a)) {
-        for (;;)
-        {
-          return;
-          byte b = 1;
-        }
-      }
-      GroupManagerActivity.a(this.a, this.a.b((byte)GroupManagerActivity.a(this.a).group_id, paramDialogInterface));
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupManagerActivity", 2, "EditeFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
-      }
-      if (GroupManagerActivity.a(this.a)) {
-        this.a.a(2131435545);
-      }
-      ReportController.b(this.a.app, "CliOper", "", "", "category", "Name_category", 0, 0, "", "", "", "");
-      return;
+    this.a.jdField_a_of_type_AndroidViewViewStub.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    ((ViewGroup)this.a.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.a.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if ((this.a.b > 0) && (this.a.c > 0)) {
+      ((ImageView)((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131372440)).setLayoutParams(new LinearLayout.LayoutParams(this.a.c, this.a.b));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sur
  * JD-Core Version:    0.7.0.1
  */

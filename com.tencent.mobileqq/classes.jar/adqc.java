@@ -1,60 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
 public class adqc
-  extends BroadcastReceiver
+  implements axqc
 {
-  private final String jdField_a_of_type_JavaLangString = "reason";
-  private final String b = "homekey";
+  public adqc(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public adqc(HotPicPageView paramHotPicPageView) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(float paramFloat)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("HotPicManagerHotPicPageView", 2, "onReceive ===>" + paramContext);
-    }
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext)) {
-      HotPicPageView.b = true;
-    }
-    label49:
-    do
+    if (paramFloat < 0.0F)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            break label49;
-            break label49;
-            do
-            {
-              return;
-            } while ("android.intent.action.SCREEN_ON".equals(paramContext));
-            if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
-            {
-              HotPicPageView.b = true;
-              return;
-            }
-          } while (("tencent.av.v2q.StopVideoChat".equals(paramContext)) || (!paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")));
-          paramContext = paramIntent.getStringExtra("reason");
-          if (paramContext != null) {
-            break;
-          }
-        } while ((this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a == null) || (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a.a != 3));
-        paramContext = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a.a();
-      } while (paramContext == null);
-      paramContext.d();
+      this.a.a(this.a.getString(2131694580));
       return;
-    } while (!paramContext.equals("homekey"));
-    HotPicPageView.b = true;
+    }
+    if (paramFloat > 175.0F)
+    {
+      this.a.a(this.a.getString(2131694579));
+      return;
+    }
+    QQIdentiferActivity.a(this.a).setText("");
   }
 }
 

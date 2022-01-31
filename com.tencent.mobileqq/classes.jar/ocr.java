@@ -1,70 +1,49 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.util.LruCache;
-import com.tencent.biz.qqstory.takevideo.EditGifImage;
-import com.tencent.biz.qqstory.takevideo.EditGifImage.AntiShakeTask;
-import com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
-import cooperation.qzone.util.GifAntishakeModule;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class ocr
-  implements Runnable
 {
-  public ocr(EditGifImage paramEditGifImage, LruCache paramLruCache) {}
+  public static HashSet<String> a = new HashSet();
   
-  public void run()
+  public static void a()
   {
-    if (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.b)
-    {
-      if ((!(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a instanceof EditLocalGifSource)) || (((EditLocalGifSource)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a).a == null) || (((EditLocalGifSource)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a).a.size() <= 0)) {
-        break label284;
-      }
-      ArrayList localArrayList = ((EditLocalGifSource)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a).a;
-      if (!GifAntishakeModule.a().a(localArrayList, this.jdField_a_of_type_AndroidUtilLruCache)) {
-        break label247;
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.c = true;
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(996);
-      if ((this.jdField_a_of_type_AndroidUtilLruCache != null) && (this.jdField_a_of_type_AndroidUtilLruCache.size() == localArrayList.size()))
-      {
-        localArrayList = new ArrayList();
-        int i = 0;
-        while (i < this.jdField_a_of_type_AndroidUtilLruCache.size())
-        {
-          BitmapDrawable localBitmapDrawable = (BitmapDrawable)this.jdField_a_of_type_AndroidUtilLruCache.get(Integer.valueOf(i));
-          if (localBitmapDrawable != null) {
-            localArrayList.add(localBitmapDrawable.getBitmap());
-          }
-          i += 1;
-        }
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage$AntiShakeTask = new EditGifImage.AntiShakeTask(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage);
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage$AntiShakeTask.execute(new ArrayList[] { localArrayList });
-      }
-    }
-    label247:
+    a.clear();
+  }
+  
+  public static void a(int paramInt, rjg paramrjg)
+  {
+    if (paramrjg == null) {}
+    rjk localrjk;
+    AdvertisementInfo localAdvertisementInfo;
     do
     {
       do
       {
         return;
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.c = false;
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(997);
-      } while (!QLog.isColorLevel());
-      QLog.d("QzoneVision", 2, "MSG_CANNOT_ANTISHAKE");
-      return;
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.c = false;
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(997);
-    } while (!QLog.isColorLevel());
-    label284:
-    QLog.d("QzoneVision", 2, "MSG_CANNOT_ANTISHAKE");
+        localrjk = paramrjg.a();
+        paramrjg = paramrjg.a();
+      } while ((paramrjg == null) || (localrjk == null) || (!(localrjk.a instanceof AdvertisementInfo)));
+      localAdvertisementInfo = (AdvertisementInfo)localrjk.a;
+    } while (paramInt < localAdvertisementInfo.mC2SReportTriggerTime / 1000);
+    a(paramrjg, localAdvertisementInfo, localrjk);
+  }
+  
+  public static boolean a(Activity paramActivity, AdvertisementInfo paramAdvertisementInfo, rjk paramrjk)
+  {
+    if ((paramrjk == null) || (paramActivity == null) || (paramAdvertisementInfo == null)) {}
+    while ((!(paramrjk.a instanceof AdvertisementInfo)) || (!paramrjk.b) || (a.contains(paramAdvertisementInfo.mAdTraceId)) || (paramAdvertisementInfo.mC2SVideoPlayUrl == null) || (paramAdvertisementInfo.mC2SVideoPlayUrl.size() <= 0)) {
+      return false;
+    }
+    noy.a(new obk().a(paramActivity).a(noy.E).b(noy.L).a(paramAdvertisementInfo).a());
+    a.add(paramAdvertisementInfo.mAdTraceId);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ocr
  * JD-Core Version:    0.7.0.1
  */

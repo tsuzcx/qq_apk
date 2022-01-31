@@ -1,24 +1,49 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayoutNew2;
-import com.tencent.widget.SingleLineTextView;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
 public class aijl
+  implements aijo
 {
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public SingleLineTextView a;
-  public RelativeLayout b;
-  public TextView b;
-  public RelativeLayout c;
+  public aijl(MiniMsgTabFragment paramMiniMsgTabFragment) {}
   
-  public aijl(StructMsgItemLayoutNew2 paramStructMsgItemLayoutNew2) {}
+  public void a(RecentBaseData paramRecentBaseData)
+  {
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if (paramRecentBaseData.a().equals("0"))
+    {
+      MiniMsgTabFragment.a(this.a).findViewById(2131378103).performClick();
+      return;
+    }
+    MiniChatActivity.a(localFragmentActivity, paramRecentBaseData.a(), paramRecentBaseData.a(), paramRecentBaseData.b(), false, MiniMsgTabFragment.b(this.a));
+    aiiu.a("0X8009C2D");
+    if (MiniMsgTabFragment.a(this.a) == null) {
+      MiniMsgTabFragment.a(this.a, AnimationUtils.loadAnimation(this.a.getActivity(), 2130771995));
+    }
+    MiniMsgTabFragment.b(this.a).startAnimation(MiniMsgTabFragment.a(this.a));
+    MiniMsgTabFragment.a(this.a).setAnimationListener(new aijm(this, localFragmentActivity));
+    MiniMsgTabFragment.b(this.a).setVisibility(8);
+    int i = paramRecentBaseData.a();
+    if (abti.d(i)) {
+      i = 1;
+    }
+    for (;;)
+    {
+      azqs.b(null, "dc00898", "", "", "0X800A0F7", "0X800A0F7", MiniMsgTabFragment.b(this.a), 1, "" + i, "", "", "");
+      return;
+      if (i == 1) {
+        i = 2;
+      } else if (i == 3000) {
+        i = 4;
+      } else {
+        i = 5;
+      }
+    }
+  }
 }
 
 

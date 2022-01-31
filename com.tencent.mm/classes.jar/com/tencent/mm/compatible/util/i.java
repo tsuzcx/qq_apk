@@ -1,0 +1,36 @@
+package com.tencent.mm.compatible.util;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.security.PrivilegedAction;
+
+public final class i
+  implements PrivilegedAction
+{
+  private String etj;
+  private String etk;
+  
+  public i(String paramString)
+  {
+    this.etj = paramString;
+  }
+  
+  public final Object run()
+  {
+    AppMethodBeat.i(93097);
+    String str = System.getProperty(this.etj);
+    if (str == null)
+    {
+      str = this.etk;
+      AppMethodBeat.o(93097);
+      return str;
+    }
+    AppMethodBeat.o(93097);
+    return str;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+ * Qualified Name:     com.tencent.mm.compatible.util.i
+ * JD-Core Version:    0.7.0.1
+ */

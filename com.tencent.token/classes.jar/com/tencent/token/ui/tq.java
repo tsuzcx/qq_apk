@@ -1,27 +1,19 @@
 package com.tencent.token.ui;
 
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.fo;
 
-final class tq
+class tq
   implements View.OnClickListener
 {
-  tq(OpreateMsgActivity paramOpreateMsgActivity) {}
+  tq(RealNameActivity paramRealNameActivity, Dialog paramDialog) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    if (this.a.isListEdit())
-    {
-      this.a.hideListEdit();
-      OpreateMsgActivity.access$200(this.a).c();
-      this.a.mAdapter.notifyDataSetChanged();
+    if (this.a.isShowing()) {
+      this.a.dismiss();
     }
-    while (OpreateMsgActivity.access$200(this.a).g() <= 0) {
-      return;
-    }
-    this.a.showListEdit();
-    this.a.mAdapter.notifyDataSetChanged();
   }
 }
 

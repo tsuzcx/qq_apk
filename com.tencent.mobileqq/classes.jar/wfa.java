@@ -1,28 +1,29 @@
-import com.tencent.mobileqq.activity.bless.BlessManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class wfa
-  implements Runnable
+class wfa
+  extends SimpleJob<Object>
 {
-  public wfa(BlessManager paramBlessManager) {}
-  
-  public void run()
+  wfa(wez paramwez, String paramString)
   {
-    if (BlessManager.a(this.a) != null)
-    {
-      if (!BlessManager.a(this.a))
-      {
-        BlessManager.b(this.a, BlessManager.a(this.a, BlessManager.a(this.a), false));
-        BlessManager.a(this.a, BlessManager.a(this.a));
-        BlessManager.a(this.a, BlessManager.a(this.a), true);
-      }
-      return;
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    if (this.a.a == null) {
+      this.a.a = new wfc(this.a, this.a.c);
     }
-    BlessManager.a(this.a, false);
+    this.a.d = "";
+    wez.a(this.a);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wfa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,53 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.search.FileEntitySearchResultModel;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchFragment;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchResultPresenter;
-import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
-import com.tencent.mobileqq.search.presenter.IPresenter;
-import com.tencent.mobileqq.search.view.IView;
-import com.tencent.mobileqq.search.view.SearchResultView;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.data.Card;
 
 public class adax
-  extends BaseMvpFaceAdapter
+  implements bhuk
 {
-  public adax(FileSearchFragment paramFileSearchFragment, ListView paramListView, FaceDecoder paramFaceDecoder, List paramList, String paramString, QQAppInterface paramQQAppInterface)
+  public adax(FriendProfileCardActivity paramFriendProfileCardActivity, String paramString1, String paramString2, int paramInt, boolean paramBoolean, bhuf parambhuf) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    super(paramListView, paramFaceDecoder);
-    if (paramList == null) {
-      return;
-    }
-    if (paramList.size() == 1)
+    int i = 60;
+    if (paramInt == 0)
     {
-      paramFileSearchFragment = (FileEntitySearchResultModel)paramList.get(0);
-      if (paramFileSearchFragment.jdField_a_of_type_JavaUtilList.size() > 1)
+      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, EditInfoActivity.class);
+      paramView.putExtra("title", this.jdField_a_of_type_JavaLangString);
+      paramView.putExtra("default_text", this.b);
+      paramView.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataCard.uin);
+      paramView.putExtra("edit_action", this.jdField_a_of_type_Int);
+      paramView.putExtra("max_limit_mode", 1);
+      paramView.putExtra("edit_type", 2);
+      if (this.jdField_a_of_type_Boolean)
       {
-        paramListView = new ArrayList();
-        paramFaceDecoder = paramFileSearchFragment.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramFaceDecoder.hasNext())
-        {
-          paramList = (FileManagerEntity)paramFaceDecoder.next();
-          paramString = new FileEntitySearchResultModel();
-          paramString.jdField_a_of_type_JavaLangString = paramFileSearchFragment.jdField_a_of_type_JavaLangString;
-          paramString.jdField_a_of_type_JavaUtilList.add(paramList);
-          paramListView.add(paramString);
-        }
-        a(paramListView);
-        return;
+        paramView.putExtra("max_num", 60);
+        paramView.putExtra("isTroopNick", true);
+        paramView.putExtra("troopUin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivityForResult(paramView, 1034);
       }
     }
-    a(paramList);
-  }
-  
-  protected IPresenter a(int paramInt)
-  {
-    return new FileSearchResultPresenter(FileSearchFragment.a(this.a));
-  }
-  
-  protected IView a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new SearchResultView(paramViewGroup, 2130971537);
+    else
+    {
+      if (this.jdField_a_of_type_Bhuf != null) {
+        this.jdField_a_of_type_Bhuf.dismiss();
+      }
+      return;
+    }
+    if (this.jdField_a_of_type_Int == 2) {}
+    for (paramInt = i;; paramInt = 36)
+    {
+      paramView.putExtra("max_num", paramInt);
+      paramView.putExtra("support_emotion", true);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adax
  * JD-Core Version:    0.7.0.1
  */

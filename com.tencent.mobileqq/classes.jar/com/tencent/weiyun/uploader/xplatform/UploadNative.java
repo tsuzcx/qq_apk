@@ -7,13 +7,7 @@ import com.tencent.weiyun.utils.Singleton;
 public final class UploadNative
 {
   private static final String TAG = "UploadNative";
-  private static Singleton<UploadNative, Void> sInstance = new Singleton()
-  {
-    protected UploadNative create(Void paramAnonymousVoid)
-    {
-      return new UploadNative();
-    }
-  };
+  private static Singleton<UploadNative, Void> sInstance = new UploadNative.1();
   private static boolean sIsLoaded = false;
   private boolean mIsInit = false;
   
@@ -29,50 +23,54 @@ public final class UploadNative
   
   private static boolean loadLibrary(String paramString)
   {
+    bool2 = true;
+    bool3 = true;
+    bool1 = true;
     if (sIsLoaded) {
       return true;
     }
-    boolean bool4 = false;
-    boolean bool3 = false;
-    bool1 = bool3;
-    bool2 = bool4;
     for (;;)
     {
       try
       {
-        if (!TextUtils.isEmpty(paramString)) {
-          continue;
+        if (TextUtils.isEmpty(paramString)) {
+          System.loadLibrary("wlc_upload_uni_v1.0.1");
         }
-        bool1 = bool3;
-        bool2 = bool4;
-        System.loadLibrary("wlc_upload_uni_v1.0.1");
-        bool1 = true;
-        bool2 = true;
-        bool3 = true;
-        XpLog.v("UploadNative", "System.loadLibrary wlc_upload_uni_v1.0.1 finish.");
-        bool1 = bool3;
       }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
       {
-        XpLog.e("UploadNative", "System.loadLibrary failed..", localUnsatisfiedLinkError);
+        bool1 = false;
+        XpLog.e("UploadNative", "System.loadLibrary failed..", localUnsatisfiedLinkError1);
         continue;
       }
-      catch (Exception localException)
+      catch (Exception localException1)
       {
-        XpLog.e("UploadNative", "System.loadLibrary failed..", localException);
+        bool1 = false;
+        XpLog.e("UploadNative", "System.loadLibrary failed..", localException1);
+        continue;
+      }
+      try
+      {
+        XpLog.v("UploadNative", "System.loadLibrary wlc_upload_uni_v1.0.1 finish.");
+        XpLog.i("UploadNative", "loadLibrary libwlc_upload_uni_v1.0.1.so result " + bool1 + ", path=" + paramString);
+        sIsLoaded = bool1;
+        return bool1;
+      }
+      catch (Exception localException2)
+      {
+        bool1 = bool3;
+        continue;
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
+      {
         bool1 = bool2;
         continue;
       }
-      XpLog.i("UploadNative", "loadLibrary libwlc_upload_uni_v1.0.1.so result " + bool1 + ", path=" + paramString);
-      sIsLoaded = bool1;
-      return bool1;
-      bool1 = bool3;
-      bool2 = bool4;
       System.load(paramString);
     }
   }
   
-  private native Object[] nativeCalSliceSha1(String paramString, CanceledFlag paramCanceledFlag);
+  private native Object[] nativeCalSliceSha1(String paramString, UploadNative.CanceledFlag paramCanceledFlag);
   
   private native String nativeCreateXpUploadTask(long paramLong1, String paramString1, long paramLong2, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, String[] paramArrayOfString, long[] paramArrayOfLong);
   
@@ -96,40 +94,32 @@ public final class UploadNative
   
   private native void nativeVipSpeedUp();
   
-  public String[] calSliceSha1(String paramString, CanceledFlag paramCanceledFlag)
+  public String[] calSliceSha1(String paramString, UploadNative.CanceledFlag paramCanceledFlag)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
+    int j = 0;
+    if (TextUtils.isEmpty(paramString)) {
       XpLog.w("UploadNative", "calSliceSha1: the param filePath should be valid.");
-      paramString = null;
     }
-    Object[] arrayOfObject;
     do
     {
-      return paramString;
-      Object localObject = null;
+      return null;
       if (!this.mIsInit) {
         break;
       }
-      arrayOfObject = nativeCalSliceSha1(paramString, paramCanceledFlag);
-      paramString = localObject;
-    } while (arrayOfObject == null);
-    paramCanceledFlag = new String[arrayOfObject.length];
-    int k = arrayOfObject.length;
-    int j = 0;
+      paramString = nativeCalSliceSha1(paramString, paramCanceledFlag);
+    } while (paramString == null);
+    paramCanceledFlag = new String[paramString.length];
+    int k = paramString.length;
     int i = 0;
-    for (;;)
+    while (j < k)
     {
-      paramString = paramCanceledFlag;
-      if (j >= k) {
-        break;
-      }
-      paramCanceledFlag[i] = ((String)arrayOfObject[j]);
+      paramCanceledFlag[i] = ((String)paramString[j]);
       j += 1;
       i += 1;
     }
     XpLog.e("UploadNative", "UploadSdk hasn't be init.");
     return null;
+    return paramCanceledFlag;
   }
   
   public String createUploadTask(long paramLong1, String paramString1, long paramLong2, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, String[] paramArrayOfString, long[] paramArrayOfLong)
@@ -299,32 +289,10 @@ public final class UploadNative
       XpLog.e("UploadNative", "UploadSdk hasn't be init.");
     }
   }
-  
-  public static final class CanceledFlag
-  {
-    private volatile boolean isCanceled;
-    
-    private CanceledFlag() {}
-    
-    public CanceledFlag(boolean paramBoolean)
-    {
-      this.isCanceled = paramBoolean;
-    }
-    
-    public boolean isCanceled()
-    {
-      return this.isCanceled;
-    }
-    
-    public void setCanceled(boolean paramBoolean)
-    {
-      this.isCanceled = paramBoolean;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.weiyun.uploader.xplatform.UploadNative
  * JD-Core Version:    0.7.0.1
  */

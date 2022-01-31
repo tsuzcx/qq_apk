@@ -1,115 +1,151 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager;
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager.UrlToUUIDCallback;
-import com.tencent.mobileqq.ac.ArticleCenter.GetVidByUrlResponse;
-import com.tencent.mobileqq.ac.ArticleCenter.RetInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import com.tencent.av.app.VideoAppInterface;
 
 public class llc
-  implements BusinessObserver
+  extends ljg
 {
-  public llc(ThirdVideoManager paramThirdVideoManager, long paramLong, NewIntent paramNewIntent, ThirdVideoManager.UrlToUUIDCallback paramUrlToUUIDCallback, String paramString) {}
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private lle jdField_a_of_type_Lle;
+  private lld[] jdField_a_of_type_ArrayOfLld = new lld[14];
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public llc(VideoAppInterface paramVideoAppInterface)
+  {
+    super(paramVideoAppInterface);
+    this.jdField_a_of_type_Lle = new lle(paramVideoAppInterface);
+  }
+  
+  private lld a(int paramInt)
+  {
+    Object localObject1 = this.jdField_a_of_type_ArrayOfLld[paramInt];
+    if (localObject1 != null) {
+      return localObject1;
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      lld locallld = this.jdField_a_of_type_ArrayOfLld[paramInt];
+      localObject1 = locallld;
+      if (locallld == null)
+      {
+        locallld = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt);
+        localObject1 = locallld;
+        if (locallld != null)
+        {
+          this.jdField_a_of_type_ArrayOfLld[paramInt] = locallld;
+          localObject1 = locallld;
+        }
+      }
+      return localObject1;
+    }
+  }
+  
+  private lld a(VideoAppInterface paramVideoAppInterface, int paramInt)
   {
     long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID time : " + (l1 - l2));
-    }
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    if (!paramBoolean)
+    Object localObject = null;
+    switch (paramInt)
     {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback.a(this.jdField_a_of_type_JavaLangString, "error");
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID notSuccess!");
-      }
+    default: 
+      localObject = this.jdField_a_of_type_Lle;
     }
-    label299:
-    do
+    for (;;)
     {
-      do
+      if (localObject != null) {
+        ((lld)localObject).a();
+      }
+      long l2 = System.currentTimeMillis();
+      lek.c("EffectSupportManager", "create Manager,cost time:" + (l2 - l1));
+      return localObject;
+      localObject = new llh(paramVideoAppInterface);
+      continue;
+      localObject = new llf(paramVideoAppInterface);
+      continue;
+      localObject = new llg(paramVideoAppInterface);
+    }
+  }
+  
+  public int a(int paramInt, String paramString)
+  {
+    int i = 1;
+    lld locallld = a(paramInt);
+    paramInt = i;
+    if (locallld != null) {
+      paramInt = locallld.a(paramString);
+    }
+    return paramInt;
+  }
+  
+  protected void a() {}
+  
+  public void a(int paramInt)
+  {
+    int i = 0;
+    while (i < 14)
+    {
+      if ((paramInt == 255) || (paramInt == i))
       {
-        do
-        {
-          for (;;)
-          {
-            return;
-            paramBundle = paramBundle.getByteArray("data");
-            if ((paramBundle == null) || (paramBundle.length <= 0))
-            {
-              if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback != null) {
-                this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback.a(this.jdField_a_of_type_JavaLangString, "error");
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID empty data!");
-              }
-            }
-            else
-            {
-              try
-              {
-                localObject = new ArticleCenter.GetVidByUrlResponse();
-                ((ArticleCenter.GetVidByUrlResponse)localObject).mergeFrom(paramBundle);
-                if (((ArticleCenter.GetVidByUrlResponse)localObject).ret_info.ret_code.get() == 0) {
-                  break label299;
-                }
-                if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback != null) {
-                  this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback.a(this.jdField_a_of_type_JavaLangString, "error");
-                }
-                if (QLog.isColorLevel())
-                {
-                  QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID error:" + ((ArticleCenter.GetVidByUrlResponse)localObject).ret_info.ret_code.get() + ", " + ((ArticleCenter.GetVidByUrlResponse)localObject).ret_info.err_info.get());
-                  return;
-                }
-              }
-              catch (Exception paramBundle)
-              {
-                if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback != null) {
-                  this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback.a(this.jdField_a_of_type_JavaLangString, "error");
-                }
-              }
-            }
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID exception!");
-        return;
-        paramBundle = ((ArticleCenter.GetVidByUrlResponse)localObject).vid.get();
-        if (paramBundle == null) {
-          break;
+        lld locallld = a(i);
+        if (locallld != null) {
+          locallld.b();
         }
-        Object localObject = paramBundle.toStringUtf8();
-        paramBundle = (Bundle)localObject;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback != null)
-        {
-          paramBundle = (Bundle)localObject;
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            paramBundle = "error";
-          }
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback.a(this.jdField_a_of_type_JavaLangString, paramBundle);
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID vid:" + paramBundle);
-      return;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback.a(this.jdField_a_of_type_JavaLangString, "error");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID null vid!");
+      i += 1;
+    }
+  }
+  
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  {
+    lek.c("EffectSupportManager", "EffectFaceSupportManager onSessionStatusChanged " + paramInt);
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return;
+    case 1: 
+      a(255);
+      return;
+    }
+    b();
+  }
+  
+  public boolean a(int paramInt1, int paramInt2, String paramString)
+  {
+    lld locallld = a(paramInt1);
+    if (locallld != null) {
+      return locallld.a(paramInt2, paramString);
+    }
+    return false;
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    boolean bool = true;
+    lld locallld = a(paramInt);
+    if (locallld != null) {
+      bool = locallld.a(paramString);
+    }
+    return bool;
+  }
+  
+  protected boolean a(String paramString)
+  {
+    return true;
+  }
+  
+  public void b()
+  {
+    int i = 0;
+    while (i < 14)
+    {
+      lld locallld = a(i);
+      if (locallld != null) {
+        locallld.c();
+      }
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     llc
  * JD-Core Version:    0.7.0.1
  */

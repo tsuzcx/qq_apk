@@ -1,29 +1,25 @@
 package com.tencent.token.ui;
 
-import android.app.AlertDialog.Builder;
-import android.app.Dialog;
-import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.token.utils.t;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
+import com.tencent.token.cv;
+import com.tencent.token.utils.w;
 
-final class qx
+class qx
   implements View.OnClickListener
 {
-  qx(NetActiveSetDirBySeqActivity paramNetActiveSetDirBySeqActivity) {}
+  qx(qv paramqv) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    t.a(this.a);
-    NetActiveSetDirBySeqActivity.access$102(this.a, NetActiveSetDirBySeqActivity.access$200(this.a).getText().toString());
-    if ((NetActiveSetDirBySeqActivity.access$100(this.a) != null) && (NetActiveSetDirBySeqActivity.access$100(this.a).length() != 0))
+    NetActiveVryOtherListActivity.access$302(this.a.a, true);
+    if (NetActiveVryOtherListActivity.access$200(this.a.a).a())
     {
-      NetActiveSetDirBySeqActivity.access$302(this.a, new AlertDialog.Builder(this.a).setTitle(this.a.getResources().getString(2131362104)).setMessage(NetActiveSetDirBySeqActivity.access$100(this.a) + this.a.getResources().getString(2131361848)).setPositiveButton(this.a.getResources().getString(2131361853), new qz(this)).setNegativeButton(this.a.getResources().getString(2131361852), new qy(this)).create());
-      NetActiveSetDirBySeqActivity.access$300(this.a).show();
+      w.a(this.a.a, String.format(this.a.a.getString(2131230845), new Object[] { cv.a().b() }), this.a.a.getString(2131231449), false, 10);
       return;
     }
-    this.a.showToast(2131361947);
+    w.a(this.a.a, String.format(this.a.a.getString(2131230846), new Object[] { cv.a().b() }), this.a.a.getString(2131231449), false, 10);
   }
 }
 

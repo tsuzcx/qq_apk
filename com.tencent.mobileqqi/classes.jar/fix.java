@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.message.BaseMessageProcessorForTroopAndDisc;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-class fix
-  implements Runnable
+public class fix
+  implements Comparator
 {
-  fix(fiw paramfiw) {}
+  public fix(BaseMessageProcessorForTroopAndDisc paramBaseMessageProcessorForTroopAndDisc) {}
   
-  public void run()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    this.a.a.a();
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
   }
 }
 

@@ -1,29 +1,25 @@
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.NearbyActivity;
 
-class adjm
-  implements FMDialogUtil.FMDialogInterface
+public class adjm
+  extends Handler
 {
-  adjm(adjk paramadjk) {}
+  public adjm(NearbyActivity paramNearbyActivity) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    ArrayList localArrayList = FMDataCache.b();
-    Intent localIntent = new Intent();
-    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
-    SendBottomBar.a(this.a.a).setResult(-1, localIntent);
-    SendBottomBar.a(this.a.a).finish();
+    if (!this.a.c)
+    {
+      this.a.g();
+      this.a.b.removeMessages(this.a.i);
+      sendEmptyMessageDelayed(this.a.i, this.a.n);
+    }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adjm
  * JD-Core Version:    0.7.0.1
  */

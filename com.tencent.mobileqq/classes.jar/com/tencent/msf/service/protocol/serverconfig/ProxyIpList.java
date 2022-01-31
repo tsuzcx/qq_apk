@@ -9,8 +9,8 @@ public final class ProxyIpList
   extends JceStruct
 {
   static ArrayList cache_vIplist;
-  public long uService_type;
-  public ArrayList vIplist;
+  public long uService_type = 0L;
+  public ArrayList vIplist = null;
   
   public ProxyIpList() {}
   

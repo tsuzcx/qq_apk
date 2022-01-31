@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.utils;
 
-import him;
+import hef;
 
 public class UIThreadPool
 {
-  private static him a;
+  private static hef a;
   
   public static void a(Runnable paramRunnable)
   {
@@ -12,7 +12,7 @@ public class UIThreadPool
       return;
     }
     if (a == null) {
-      a = new him(3, 10L);
+      a = new hef(3, 10L);
     }
     a.execute(paramRunnable);
   }

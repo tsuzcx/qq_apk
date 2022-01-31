@@ -1,16 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.global.h;
 
-final class abm
-  implements DialogInterface.OnClickListener
+class abm
+  implements View.OnClickListener
 {
-  abm(StartPwdGestureForgetActivity paramStartPwdGestureForgetActivity) {}
+  abm(UtilsAccountLockActivity paramUtilsAccountLockActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    h.c("retry: ");
+    this.a.queryAccountLockStatus();
   }
 }
 

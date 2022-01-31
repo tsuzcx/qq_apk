@@ -1,87 +1,159 @@
-import android.content.Context;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.activity.AssistantSettingActivity.1.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.HeightAdaptableListView;
+import java.util.Locale;
+import java.util.Map;
 
-class aceh
-  implements Runnable
+public class aceh
+  extends alpq
 {
-  aceh(aceg paramaceg, EmoticonPackage paramEmoticonPackage, int paramInt) {}
+  public aceh(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
+  protected void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject = this.jdField_a_of_type_Aceg.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter;
-    if (localObject != null) {
-      ((EmotionPanelViewPagerAdapter)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
+    if ((paramBoolean1) && (!this.a.isFinishing())) {
+      AssistantSettingActivity.a(this.a, this.a.f.a(), paramBoolean2);
     }
-    if (((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x2) > 0) && (this.jdField_a_of_type_Int == 0))
+  }
+  
+  protected void onGetCommonSwitchFromDetailInfo(boolean paramBoolean, short[] paramArrayOfShort, Map<Short, Short> paramMap)
+  {
+    if ((paramBoolean) && (AssistantSettingActivity.a(this.a) != null) && (this.a.jdField_a_of_type_Acfg != null) && (this.a.jdField_a_of_type_Acfg.a(paramArrayOfShort)))
     {
-      this.jdField_a_of_type_Aceg.a.j = false;
-      this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags &= 0xFFFFFFFD;
-      this.jdField_a_of_type_Aceg.a.c(EmoticonMainPanel.c);
-    }
-    label86:
-    do
-    {
-      do
-      {
-        break label86;
-        do
-        {
-          return;
-        } while ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.jobType == 3) || (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.jobType == 5));
-        if (this.jdField_a_of_type_Int != 0) {
-          break;
-        }
-        if (this.jdField_a_of_type_Aceg.a.b.contains(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage))
-        {
-          this.jdField_a_of_type_Aceg.a.b.remove(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage);
-          return;
-        }
-        this.jdField_a_of_type_Aceg.a.jdField_g_of_type_Boolean = false;
-        this.jdField_a_of_type_Aceg.a.j = false;
-        this.jdField_a_of_type_Aceg.a.i = false;
-      } while ((this.jdField_a_of_type_Aceg.a.getVisibility() != 0) || (this.jdField_a_of_type_Aceg.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null));
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonMainPanel", 2, "Emoticon pkg downloaded in panel, refresh");
+      if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+        com.tencent.TMG.utils.QLog.i("AssistantSettingActivity", 0, "onGetCommonSwitchFromDetailInfo");
       }
-      localObject = this.jdField_a_of_type_Aceg.a.jdField_a_of_type_JavaUtilList;
-    } while (localObject == null);
-    int i = 0;
-    label249:
-    if (i < ((List)localObject).size())
-    {
-      EmoticonPackage localEmoticonPackage = ((EmotionPanelInfo)((List)localObject).get(i)).jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
-      if ((localEmoticonPackage == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId.equals(localEmoticonPackage.epId))) {}
+      AssistantSettingActivity.a(this.a).a();
     }
-    for (;;)
+  }
+  
+  protected void onGetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+      com.tencent.qphone.base.util.QLog.i("AssistantSettingActivity", 2, "onGetConnectionsSwitch:" + paramBoolean + " " + paramInt1 + " " + paramInt2);
+    }
+    AssistantSettingActivity localAssistantSettingActivity;
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_Aceg.a.c(i);
-      this.jdField_a_of_type_Aceg.a.h = false;
+      localAssistantSettingActivity = this.a;
+      if (this.a.jdField_a_of_type_Ahuf.c()) {
+        break label81;
+      }
+    }
+    label81:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      AssistantSettingActivity.b(localAssistantSettingActivity, paramBoolean);
       return;
-      i += 1;
-      break label249;
-      if (this.jdField_a_of_type_Int == 11000)
-      {
-        QQToast.a(this.jdField_a_of_type_Aceg.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aceg.a.jdField_a_of_type_AndroidContentContext.getString(2131436304), 1).b(this.jdField_a_of_type_Aceg.a.jdField_g_of_type_Int);
-        return;
-      }
-      if (this.jdField_a_of_type_Int != 11001) {
-        break;
-      }
-      QQToast.a(this.jdField_a_of_type_Aceg.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aceg.a.jdField_a_of_type_AndroidContentContext.getString(2131436303), 1).b(this.jdField_a_of_type_Aceg.a.jdField_g_of_type_Int);
+    }
+  }
+  
+  protected void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!this.a.isFinishing()) {
+      AssistantSettingActivity.a(this.a, this.a.f.a(), paramBoolean2);
+    }
+  }
+  
+  protected void onSetCommonSwitchFromDetailInfo(boolean paramBoolean, short paramShort1, short paramShort2)
+  {
+    boolean bool2 = true;
+    if (this.a.jdField_a_of_type_Acfg == null) {}
+    for (ahua localahua = null; localahua == null; localahua = this.a.jdField_a_of_type_Acfg.a(paramShort1)) {
       return;
-      i = 0;
+    }
+    if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+      com.tencent.TMG.utils.QLog.i("AssistantSettingActivity", 0, String.format(Locale.getDefault(), "onSetCommonSwitchFromDetailInfo [%s, %s, %s]", new Object[] { Boolean.valueOf(paramBoolean), Short.valueOf(paramShort1), Short.valueOf(paramShort2) }));
+    }
+    boolean bool1;
+    if (paramShort2 == 1)
+    {
+      bool1 = true;
+      label91:
+      if ((paramBoolean) || (bool1 != localahua.e)) {
+        break label148;
+      }
+      if (localahua.e) {
+        break label150;
+      }
+    }
+    label148:
+    label150:
+    for (paramBoolean = bool2;; paramBoolean = false)
+    {
+      localahua.e = paramBoolean;
+      this.a.jdField_a_of_type_ComTencentWidgetHeightAdaptableListView.post(new AssistantSettingActivity.1.1(this, bool1));
+      return;
+      bool1 = false;
+      break label91;
+      break;
+    }
+  }
+  
+  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    boolean bool = true;
+    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+      com.tencent.qphone.base.util.QLog.i("AssistantSettingActivity", 2, "onSetConnectionsSwitch:" + paramBoolean + " " + paramInt1 + " " + paramInt2);
+    }
+    AssistantSettingActivity localAssistantSettingActivity;
+    if (!paramBoolean)
+    {
+      AssistantSettingActivity.a(this.a, 2131719884, 1);
+      localAssistantSettingActivity = this.a;
+      if (this.a.jdField_a_of_type_Ahuf.c()) {
+        break label95;
+      }
+    }
+    label95:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      AssistantSettingActivity.b(localAssistantSettingActivity, paramBoolean);
+      return;
+    }
+  }
+  
+  protected void onSetEmotionRecSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((this.a.isFinishing()) || (this.a.app == null)) {
+      return;
+    }
+    if (!paramBoolean1)
+    {
+      AssistantSettingActivity.a(this.a, 2131719884, 1);
+      AssistantSettingActivity.a(this.a, agyv.a(this.a.app).b(), AssistantSettingActivity.a(this.a));
+      return;
+    }
+    AssistantSettingActivity.a(this.a, paramBoolean2, AssistantSettingActivity.a(this.a));
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean2) {}
+    for (String str = "1";; str = "2")
+    {
+      azqs.b(localQQAppInterface, "dc00898", "", "", "0X800A223", "0X800A223", 0, 0, str, "", "", "");
+      return;
+    }
+  }
+  
+  protected void onSetPttAutoToTxtSwitch(boolean paramBoolean, Object paramObject)
+  {
+    if (!paramBoolean)
+    {
+      QQToast.a(BaseApplication.getContext(), 1, alud.a(2131701162), 0).b(this.a.getTitleBarHeight());
+      paramBoolean = ((Boolean)paramObject).booleanValue();
+      AssistantSettingActivity.a(this.a, true);
+      this.a.e.setChecked(paramBoolean);
+      AssistantSettingActivity.a(this.a, paramBoolean);
+      AssistantSettingActivity.a(this.a, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aceh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-
 class tfo
-  implements DialogInterface.OnClickListener
+  implements tkr
 {
-  tfo(tfl paramtfl) {}
+  tfo(tfk paramtfk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString)
   {
-    this.a.a.setResult(4004);
-    this.a.a.finish();
+    tlo.b("WSFollowFeedHolder", "[onUserClick] uid: " + paramString);
+    paramString = "weishi://profile?person_id=" + paramString;
+    tlf.a(tfk.a(this.a).a(), paramString, 700, tfk.a(this.a), "content");
+    tfk.a(this.a, "content");
+  }
+  
+  public void b(String paramString)
+  {
+    tlo.b("WSFollowFeedHolder", "[onTopicClick] tid: " + paramString);
+    paramString = "weishi://topic?topic_id=" + paramString;
+    tlf.a(tfk.a(this.a).a(), paramString, 700, tfk.a(this.a), "content");
+    tfk.a(this.a, "content");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tfo
  * JD-Core Version:    0.7.0.1
  */

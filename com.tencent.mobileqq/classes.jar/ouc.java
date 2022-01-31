@@ -1,31 +1,46 @@
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class ouc
-  implements Runnable
+public class ouc
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  ouc(oub paramoub, boolean paramBoolean, String paramString) {}
-  
-  public void run()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-      localIntent.setData(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_Oub.a.sendBroadcast(localIntent);
-      QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_Oub.a.getString(2131430001, new Object[] { this.jdField_a_of_type_JavaLangString }), 1).b(this.jdField_a_of_type_Oub.a.getTitleBarHeight());
-      return;
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoFloatWindowConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    paramString = osq.a(paramString);
+    if ((String)paramString.get("readinjoy_tinyvideo_window_switch") != null) {
+      bkbq.b((String)paramString.get("readinjoy_tinyvideo_window_switch"));
     }
-    QRUtils.a(1, 2131430002);
+    paramString = (String)paramString.get("readinjoy_tinyvideo_autoplay_nextvideo");
+    if (paramString != null) {}
+    try
+    {
+      bkbq.d(Integer.parseInt(paramString));
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bkbq.b(null);
+    bkbq.d(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ouc
  * JD-Core Version:    0.7.0.1
  */

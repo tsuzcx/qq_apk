@@ -1,23 +1,12 @@
-import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
-import java.io.File;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class aifg
-  implements Comparator
+class aifg
+  implements DialogInterface.OnCancelListener
 {
-  public aifg(MigrateSubscribeDB paramMigrateSubscribeDB) {}
+  aifg(aife paramaife) {}
   
-  public int a(File paramFile1, File paramFile2)
-  {
-    long l = paramFile2.lastModified() - paramFile1.lastModified();
-    if (l > 0L) {
-      return 1;
-    }
-    if (l == 0L) {
-      return 0;
-    }
-    return -1;
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

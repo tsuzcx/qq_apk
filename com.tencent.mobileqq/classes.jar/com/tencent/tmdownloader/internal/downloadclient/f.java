@@ -1,13 +1,13 @@
 package com.tencent.tmdownloader.internal.downloadclient;
 
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
 import com.tencent.tmassistantsdk.internal.b.b;
 import com.tencent.tmassistantsdk.internal.openSDK.param.a;
 import com.tencent.tmassistantsdk.internal.openSDK.param.jce.SubScribeSDKDownloadTaskByViaRequest;
 import com.tencent.tmassistantsdk.internal.openSDK.param.jce.SyncSDKDownloadTaskRequest;
 import com.tencent.tmdownloader.e;
-import com.tencent.tmdownloader.t;
+import com.tencent.tmdownloader.u;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +27,7 @@ class f
   
   public void a(TMAssistantDownloadTaskInfo paramTMAssistantDownloadTaskInfo)
   {
-    r.c(c.b(), "onSyncSDKDownloadInfo......");
+    ab.c(c.b(), "onSyncSDKDownloadInfo......");
     if (paramTMAssistantDownloadTaskInfo == null) {}
     for (;;)
     {
@@ -74,7 +74,7 @@ class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.downloadclient.f
  * JD-Core Version:    0.7.0.1
  */

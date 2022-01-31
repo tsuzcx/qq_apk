@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.now.enter.NowFestivalEnterFragment;
-import com.tencent.mobileqq.now.enter.widget.NowAnswerPreloadManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agaj
-  implements Runnable
+class agaj
+  implements beqw
 {
-  public agaj(NowFestivalEnterFragment paramNowFestivalEnterFragment) {}
+  agaj(agai paramagai, agas paramagas) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    NowAnswerPreloadManager.a(true);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Agas.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Agas.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Agas.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setDrawStatus(2);
+    }
   }
 }
 

@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import java.util.Comparator;
 
-public class svc
-  implements View.OnClickListener
+final class svc
+  implements Comparator<svh>
 {
-  public svc(HongbaoShowerActivity paramHongbaoShowerActivity) {}
-  
-  public void onClick(View paramView)
+  public int a(svh paramsvh1, svh paramsvh2)
   {
-    HongbaoShowerActivity.a(this.a);
+    int j = paramsvh1.a - paramsvh2.a;
+    int i = j;
+    if (j == 0) {
+      i = paramsvh1.b - paramsvh2.b;
+    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     svc
  * JD-Core Version:    0.7.0.1
  */

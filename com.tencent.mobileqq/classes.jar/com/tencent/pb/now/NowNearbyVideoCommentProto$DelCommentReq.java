@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class NowNearbyVideoCommentProto$DelCommentReq
-  extends MessageMicro
+  extends MessageMicro<DelCommentReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField biz_date = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -26,7 +26,7 @@ public final class NowNearbyVideoCommentProto$DelCommentReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.NowNearbyVideoCommentProto.DelCommentReq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,65 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout20;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aijc
-  extends PublicAccountObserver
+  extends aokh
 {
-  aijb jdField_a_of_type_Aijb = null;
-  
-  public aijc(StructMsgItemLayout20 paramStructMsgItemLayout20, aijb paramaijb)
+  public static aijb a()
   {
-    this.jdField_a_of_type_Aijb = paramaijb;
+    return (aijb)aoks.a().a(470);
   }
   
-  public void a(boolean paramBoolean, String paramString)
+  public int a()
   {
-    if (this.jdField_a_of_type_Aijb != null)
-    {
-      this.jdField_a_of_type_Aijb.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_Aijb.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (paramBoolean)
-      {
-        this.jdField_a_of_type_Aijb.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
-        this.jdField_a_of_type_Aijb.jdField_a_of_type_AndroidWidgetTextView.setText("已关注");
-        this.jdField_a_of_type_Aijb.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-      }
+    return 470;
+  }
+  
+  @NonNull
+  public aijb a(int paramInt)
+  {
+    return new aijb();
+  }
+  
+  @Nullable
+  public aijb a(aoko[] paramArrayOfaoko)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfaoko[0].a);
     }
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aijb.a(paramArrayOfaoko);
+    }
+    return null;
+  }
+  
+  public Class<aijb> a()
+  {
+    return aijb.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("mini_msg_config", 0, "onUpdate " + paramObject);
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

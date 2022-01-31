@@ -1,31 +1,28 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class tku
-  implements Runnable
+final class tku
+  extends ClickableSpan
 {
-  public tku(QQSettingMe paramQQSettingMe) {}
+  tku(tkr paramtkr, String paramString) {}
   
-  public void run()
+  public void onClick(@NonNull View paramView)
   {
-    boolean bool = ApolloGameUtil.a(this.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, new Object[] { "[updateCmshowStatus] isApolloUser=", Boolean.valueOf(bool) });
+    if (this.jdField_a_of_type_Tkr != null) {
+      this.jdField_a_of_type_Tkr.b(this.jdField_a_of_type_JavaLangString);
     }
-    if (bool) {
-      this.a.m();
-    }
-    this.a.c();
-    if (bool) {
-      this.a.d();
-    }
-    this.a.e();
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tku
  * JD-Core Version:    0.7.0.1
  */

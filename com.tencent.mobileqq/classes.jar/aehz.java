@@ -1,47 +1,21 @@
-import com.tencent.mobileqq.data.EmoticonTab;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
+import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
 
 public class aehz
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aehz(EmoticonManager paramEmoticonManager) {}
+  public aehz(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str;
-    synchronized (this.a)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(EmoticonTab.class.getSimpleName());
-      EntityTransaction localEntityTransaction = this.a.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a();
-      try
-      {
-        localEntityTransaction.a();
-        Iterator localIterator1 = this.a.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator1.hasNext())
-        {
-          str = (String)localIterator1.next();
-          EmoticonManager.a(this.a, str, true, false);
-          continue;
-          localObject1 = finally;
-        }
-      }
-      finally
-      {
-        localEntityTransaction.b();
-      }
-    }
-    Iterator localIterator2 = this.a.b.iterator();
-    while (localIterator2.hasNext())
-    {
-      str = (String)localIterator2.next();
-      EmoticonManager.a(this.a, str, false, true);
-    }
-    localObject1.c();
-    localObject1.b();
+    paramView = new Intent(this.a, CountrySelectActivity.class);
+    paramView.putExtra("key_country_code", this.a.a.mLocationCountyCode);
+    paramView.putExtra("key_no_limit_allow", true);
+    this.a.startActivityForResult(paramView, 111);
   }
 }
 

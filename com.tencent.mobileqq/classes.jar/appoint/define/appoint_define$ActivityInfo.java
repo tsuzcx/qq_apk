@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class appoint_define$ActivityInfo
-  extends MessageMicro
+  extends MessageMicro<ActivityInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 48, 58, 64, 72, 80, 90, 96 }, new String[] { "id", "name", "cover", "url", "start_time", "end_time", "loc_name", "enroll", "create_uin", "create_time", "organizer_info", "uint64_flag" }, new Object[] { "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), "", Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), null, Long.valueOf(0L) }, ActivityInfo.class);
   public final PBStringField cover = PBField.initString("");
@@ -26,7 +26,7 @@ public final class appoint_define$ActivityInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     appoint.define.appoint_define.ActivityInfo
  * JD-Core Version:    0.7.0.1
  */

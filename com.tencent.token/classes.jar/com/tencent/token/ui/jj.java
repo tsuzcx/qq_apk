@@ -1,18 +1,26 @@
 package com.tencent.token.ui;
 
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.token.cz;
+import com.tencent.token.global.RqdApplication;
 
-final class jj
-  implements View.OnClickListener
+class jj
+  implements Animation.AnimationListener
 {
-  jj(FaceRegConfirmActivity paramFaceRegConfirmActivity) {}
+  jj(ji paramji, FaceStartVryCameraActivity paramFaceStartVryCameraActivity) {}
   
-  public final void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.setResult(10);
-    this.a.finish();
+    ji.a(this.b).setVisibility(4);
+    ji.b(this.b).startAnimation(FaceStartVryCameraActivity.access$3000(this.b.a));
+    cz.a(RqdApplication.l()).a();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

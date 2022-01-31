@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.armap;
 
+import aepi;
+import alud;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -7,7 +9,6 @@ import android.graphics.Paint.FontMetrics;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.Random;
 
 public class ScanSuccessView
@@ -17,7 +18,7 @@ public class ScanSuccessView
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  String jdField_a_of_type_JavaLangString = "识别成功...";
+  String jdField_a_of_type_JavaLangString = alud.a(2131713912);
   boolean jdField_a_of_type_Boolean = true;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -93,7 +94,7 @@ public class ScanSuccessView
     this.jdField_g_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_g_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_g_of_type_AndroidGraphicsPaint.setARGB(255, 255, 255, 255);
-    this.jdField_h_of_type_Int = AIOUtils.a(18.0F, getResources());
+    this.jdField_h_of_type_Int = aepi.a(18.0F, getResources());
     this.jdField_g_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_h_of_type_Int);
     Paint.FontMetrics localFontMetrics = this.jdField_f_of_type_AndroidGraphicsPaint.getFontMetrics();
     this.i = ((int)Math.ceil(localFontMetrics.descent - localFontMetrics.ascent));
@@ -113,34 +114,22 @@ public class ScanSuccessView
       if (this.jdField_g_of_type_Int % 2 == 0) {}
       this.jdField_a_of_type_Int = (getWidth() / 2);
       this.jdField_b_of_type_Int = (getHeight() / 2);
-      if (this.jdField_a_of_type_AndroidGraphicsRectF.left != this.jdField_a_of_type_Int - this.jdField_b_of_type_Float * this.j)
-      {
-        this.jdField_a_of_type_AndroidGraphicsRectF.left = (this.jdField_a_of_type_Int - this.jdField_b_of_type_Float * this.j);
-        this.jdField_a_of_type_AndroidGraphicsRectF.top = (this.jdField_b_of_type_Int - this.jdField_b_of_type_Float * this.j);
-        this.jdField_a_of_type_AndroidGraphicsRectF.right = (this.jdField_a_of_type_Int + this.jdField_b_of_type_Float * this.j);
-        this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (this.jdField_b_of_type_Int + this.jdField_b_of_type_Float * this.j);
-      }
-      if (this.jdField_b_of_type_AndroidGraphicsRectF.left != this.jdField_a_of_type_Int - this.jdField_c_of_type_Float * this.j)
-      {
-        this.jdField_b_of_type_AndroidGraphicsRectF.left = (this.jdField_a_of_type_Int - this.jdField_c_of_type_Float * this.j);
-        this.jdField_b_of_type_AndroidGraphicsRectF.top = (this.jdField_b_of_type_Int - this.jdField_c_of_type_Float * this.j);
-        this.jdField_b_of_type_AndroidGraphicsRectF.right = (this.jdField_a_of_type_Int + this.jdField_c_of_type_Float * this.j);
-        this.jdField_b_of_type_AndroidGraphicsRectF.bottom = (this.jdField_b_of_type_Int + this.jdField_c_of_type_Float * this.j);
-      }
-      if (this.jdField_c_of_type_AndroidGraphicsRectF.left != (this.jdField_a_of_type_Int - this.jdField_d_of_type_Float) * this.j)
-      {
-        this.jdField_c_of_type_AndroidGraphicsRectF.left = (this.jdField_a_of_type_Int - this.jdField_d_of_type_Float * this.j);
-        this.jdField_c_of_type_AndroidGraphicsRectF.top = (this.jdField_b_of_type_Int - this.jdField_d_of_type_Float * this.j);
-        this.jdField_c_of_type_AndroidGraphicsRectF.right = (this.jdField_a_of_type_Int + this.jdField_d_of_type_Float * this.j);
-        this.jdField_c_of_type_AndroidGraphicsRectF.bottom = (this.jdField_b_of_type_Int + this.jdField_d_of_type_Float * this.j);
-      }
-      if (this.jdField_d_of_type_AndroidGraphicsRectF.left != this.jdField_a_of_type_Int - this.jdField_e_of_type_Float * this.j)
-      {
-        this.jdField_d_of_type_AndroidGraphicsRectF.left = (this.jdField_a_of_type_Int - this.jdField_e_of_type_Float * this.j);
-        this.jdField_d_of_type_AndroidGraphicsRectF.top = (this.jdField_b_of_type_Int - this.jdField_e_of_type_Float * this.j);
-        this.jdField_d_of_type_AndroidGraphicsRectF.right = (this.jdField_a_of_type_Int + this.jdField_e_of_type_Float * this.j);
-        this.jdField_d_of_type_AndroidGraphicsRectF.bottom = (this.jdField_b_of_type_Int + this.jdField_e_of_type_Float * this.j);
-      }
+      this.jdField_a_of_type_AndroidGraphicsRectF.left = (this.jdField_a_of_type_Int - this.jdField_b_of_type_Float * this.j);
+      this.jdField_a_of_type_AndroidGraphicsRectF.top = (this.jdField_b_of_type_Int - this.jdField_b_of_type_Float * this.j);
+      this.jdField_a_of_type_AndroidGraphicsRectF.right = (this.jdField_a_of_type_Int + this.jdField_b_of_type_Float * this.j);
+      this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (this.jdField_b_of_type_Int + this.jdField_b_of_type_Float * this.j);
+      this.jdField_b_of_type_AndroidGraphicsRectF.left = (this.jdField_a_of_type_Int - this.jdField_c_of_type_Float * this.j);
+      this.jdField_b_of_type_AndroidGraphicsRectF.top = (this.jdField_b_of_type_Int - this.jdField_c_of_type_Float * this.j);
+      this.jdField_b_of_type_AndroidGraphicsRectF.right = (this.jdField_a_of_type_Int + this.jdField_c_of_type_Float * this.j);
+      this.jdField_b_of_type_AndroidGraphicsRectF.bottom = (this.jdField_b_of_type_Int + this.jdField_c_of_type_Float * this.j);
+      this.jdField_c_of_type_AndroidGraphicsRectF.left = (this.jdField_a_of_type_Int - this.jdField_d_of_type_Float * this.j);
+      this.jdField_c_of_type_AndroidGraphicsRectF.top = (this.jdField_b_of_type_Int - this.jdField_d_of_type_Float * this.j);
+      this.jdField_c_of_type_AndroidGraphicsRectF.right = (this.jdField_a_of_type_Int + this.jdField_d_of_type_Float * this.j);
+      this.jdField_c_of_type_AndroidGraphicsRectF.bottom = (this.jdField_b_of_type_Int + this.jdField_d_of_type_Float * this.j);
+      this.jdField_d_of_type_AndroidGraphicsRectF.left = (this.jdField_a_of_type_Int - this.jdField_e_of_type_Float * this.j);
+      this.jdField_d_of_type_AndroidGraphicsRectF.top = (this.jdField_b_of_type_Int - this.jdField_e_of_type_Float * this.j);
+      this.jdField_d_of_type_AndroidGraphicsRectF.right = (this.jdField_a_of_type_Int + this.jdField_e_of_type_Float * this.j);
+      this.jdField_d_of_type_AndroidGraphicsRectF.bottom = (this.jdField_b_of_type_Int + this.jdField_e_of_type_Float * this.j);
       this.jdField_e_of_type_AndroidGraphicsRectF.left = (this.jdField_a_of_type_Int - this.jdField_f_of_type_Float * this.j - this.jdField_g_of_type_Int % 10);
       this.jdField_e_of_type_AndroidGraphicsRectF.top = (this.jdField_b_of_type_Int - this.jdField_f_of_type_Float * this.j - this.jdField_g_of_type_Int % 10);
       this.jdField_e_of_type_AndroidGraphicsRectF.right = (this.jdField_a_of_type_Int + this.jdField_f_of_type_Float * this.j + this.jdField_g_of_type_Int % 10);
@@ -207,7 +196,7 @@ public class ScanSuccessView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ScanSuccessView
  * JD-Core Version:    0.7.0.1
  */

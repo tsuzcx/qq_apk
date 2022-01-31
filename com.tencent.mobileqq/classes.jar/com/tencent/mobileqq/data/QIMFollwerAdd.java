@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhs;
 
 public class QIMFollwerAdd
-  extends Entity
+  extends awge
 {
   public long careSCount;
   public long fansCount;
@@ -15,13 +15,13 @@ public class QIMFollwerAdd
   public String smartRemark = "";
   public String source = "";
   public long totalNum;
-  @unique
+  @awhs
   public long uin;
   public long upTime;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.QIMFollwerAdd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,41 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import cooperation.qzone.thread.QzoneThreadMonitor;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.util.QZoneExceptionReport;
-import cooperation.qzone.util.exception.QZoneStartupFailException;
-import java.util.concurrent.ConcurrentHashMap;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 
-public class anaj
-  extends Handler
+class anaj
+  implements SensorEventListener
 {
-  public anaj(QzoneThreadMonitor paramQzoneThreadMonitor, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  anaj(anai paramanai) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    double d1 = 1.0D;
+    if (1 != paramSensorEvent.sensor.getType()) {
       return;
     }
-    anal localanal = (anal)paramMessage.obj;
-    if (!QzoneThreadMonitor.access$000(this.a).containsKey(localanal.jdField_a_of_type_JavaLangString))
+    paramSensorEvent = paramSensorEvent.values;
+    float f1 = paramSensorEvent[0];
+    float f2 = paramSensorEvent[1];
+    double d2 = Math.sqrt(f1 * f1 + f2 * f2);
+    d2 = f2 / d2;
+    if (d2 > 1.0D) {}
+    for (;;)
     {
-      QZLog.w("QzoneThreadMonitor", 1, new Object[] { "massage has been canceled. id=", localanal.jdField_a_of_type_JavaLangString });
+      d2 = Math.acos(d1);
+      d1 = d2;
+      if (f1 < 0.0F) {
+        d1 = 6.283185307179586D - d2;
+      }
+      int i = (int)(d1 * 57.295779513082323D);
+      anai.a(this.a, (i + 45) / 90 * 90);
       return;
-    }
-    if (paramMessage.arg1 >= 10)
-    {
-      QZLog.w("QzoneThreadMonitor", 1, new Object[] { "stack check for too many times. id=", localanal.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    Object localObject = QzoneThreadMonitor.access$100(QzoneHandlerThreadFactory.getHandlerThreadLooper(localanal.jdField_b_of_type_JavaLangString).getThread().getStackTrace(), localanal.jdField_b_of_type_JavaLangString + " id=" + localanal.jdField_a_of_type_JavaLangString + ": ");
-    QZLog.w("QzoneThreadMonitor", 1, new Object[] { "[stack] ", localanal.jdField_b_of_type_JavaLangString, " id=", localanal.jdField_a_of_type_JavaLangString, " what=", Integer.valueOf(localanal.jdField_a_of_type_Int), " msg.target=", localanal.c, " msg.callback=", localanal.d });
-    QZLog.w("QzoneThreadMonitor", 1, new Object[] { localObject });
-    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "report_backgroudmonitor", "0").equals("1")) {
-      QZoneExceptionReport.a(new QZoneStartupFailException(new Throwable((String)localObject)), ((String)localObject).toString());
-    }
-    paramMessage = Message.obtain(QzoneThreadMonitor.access$200(this.a), 1, paramMessage.arg1 + 1, 0, localanal);
-    localObject = QzoneThreadMonitor.access$200(this.a);
-    if (localanal.jdField_b_of_type_Int == 1) {}
-    for (long l = 500L;; l = 250L)
-    {
-      ((Handler)localObject).sendMessageDelayed(paramMessage, l);
-      return;
+      if (d2 < -1.0D) {
+        d1 = -1.0D;
+      } else {
+        d1 = d2;
+      }
     }
   }
 }

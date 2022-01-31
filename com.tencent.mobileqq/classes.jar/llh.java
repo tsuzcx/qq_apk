@@ -1,30 +1,116 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.text.TextUtils;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 
 public class llh
-  implements Runnable
+  extends lld
 {
-  public llh(KandianMergeManager paramKandianMergeManager, int paramInt) {}
+  boolean a;
+  int c = -1;
+  int d = -1;
   
-  public void run()
+  public llh(VideoAppInterface paramVideoAppInterface)
   {
-    Object localObject = ReadInJoyHelper.a(KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager), true, false);
-    if (localObject != null)
+    super(paramVideoAppInterface);
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public int a(String paramString)
+  {
+    int j = 0;
+    int i;
+    if ("750".equalsIgnoreCase(paramString)) {
+      i = this.c;
+    }
+    for (;;)
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      if (localObject != null)
+      lek.c("SupportZimu", "isSupportPeer:" + paramString + "|" + i);
+      return i;
+      if ("735".equalsIgnoreCase(paramString))
       {
-        ((SharedPreferences.Editor)localObject).putInt("kandian_follow_data_length", this.jdField_a_of_type_Int);
-        ReadInJoyHelper.a((SharedPreferences.Editor)localObject, true);
+        i = this.d;
+      }
+      else
+      {
+        i = j;
+        if ("live".equalsIgnoreCase(paramString))
+        {
+          i = j;
+          if (this.jdField_a_of_type_Boolean) {
+            i = 1;
+          }
+        }
       }
     }
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    lek.c("SupportZimu", "onReceiveSupportMessage type:" + paramInt + "|" + paramString);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      String[] arrayOfString = paramString.split("\\|");
+      paramString = null;
+      if (arrayOfString.length > 0) {
+        paramString = arrayOfString[0];
+      }
+      switch (paramInt)
+      {
+      }
+      while (("SUPPORT_TRUE".equalsIgnoreCase(paramString)) || ("SUPPORT_FALSE".equalsIgnoreCase(paramString)))
+      {
+        return true;
+        if ("SUPPORT_TRUE".equalsIgnoreCase(paramString))
+        {
+          this.c = 1;
+        }
+        else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString))
+        {
+          this.c = 0;
+          continue;
+          if ("SUPPORT_TRUE".equalsIgnoreCase(paramString))
+          {
+            this.d = 1;
+          }
+          else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString))
+          {
+            this.d = 0;
+            continue;
+            if ("SUPPORT_TRUE".equalsIgnoreCase(paramString)) {
+              this.jdField_a_of_type_Boolean = true;
+            } else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString)) {
+              this.jdField_a_of_type_Boolean = false;
+            }
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    VideoController localVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    localVideoController.a(12, "SUPPORT_TRUE");
+    localVideoController.a(13, "SUPPORT_TRUE");
+    lek.c("SupportZimu", "sendSupportMsg");
+  }
+  
+  public void c()
+  {
+    this.c = -1;
+    this.d = -1;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     llh
  * JD-Core Version:    0.7.0.1
  */

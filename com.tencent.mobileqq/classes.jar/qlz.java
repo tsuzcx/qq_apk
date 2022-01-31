@@ -1,33 +1,70 @@
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.views.canvas.components.form.textbox.GdtCanvasFormItemTextBoxView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.articlesummary.feeds_info.AccountProfile;
 
 public class qlz
-  implements TextView.OnEditorActionListener
 {
-  public qlz(GdtCanvasFormItemTextBoxView paramGdtCanvasFormItemTextBoxView) {}
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public static qlz a(feeds_info.AccountProfile paramAccountProfile)
   {
-    if (paramInt == 6)
-    {
-      GdtLog.b("GdtCanvasFormItemTextBoxView", "onEditorActionDone " + GdtCanvasFormItemTextBoxView.b(this.a));
-      GdtCanvasFormItemTextBoxView.a(this.a).clearFocus();
-      GdtCanvasFormItemTextBoxView.a(paramTextView);
+    Object localObject;
+    if (paramAccountProfile == null) {
+      localObject = null;
     }
-    for (;;)
+    qlz localqlz;
+    do
     {
-      return false;
-      GdtLog.b("GdtCanvasFormItemTextBoxView", "onEditorAction " + paramInt + " " + GdtCanvasFormItemTextBoxView.c(this.a));
+      return localObject;
+      localqlz = new qlz();
+      localqlz.jdField_a_of_type_Long = paramAccountProfile.uint64_uin.get();
+      localqlz.jdField_a_of_type_Int = paramAccountProfile.uint32_account_type.get();
+      if (paramAccountProfile.bytes_desc.has()) {
+        localqlz.c = paramAccountProfile.bytes_desc.get().toStringUtf8();
+      }
+      if (paramAccountProfile.bytes_profile_photo_url.has()) {
+        localqlz.b = paramAccountProfile.bytes_profile_photo_url.get().toStringUtf8();
+      }
+      if (paramAccountProfile.bytes_nick.has()) {
+        localqlz.jdField_a_of_type_JavaLangString = paramAccountProfile.bytes_nick.get().toStringUtf8();
+      }
+      localObject = localqlz;
+    } while (!paramAccountProfile.bytes_home_page_url.has());
+    localqlz.d = paramAccountProfile.bytes_home_page_url.get().toStringUtf8();
+    return localqlz;
+  }
+  
+  public feeds_info.AccountProfile a()
+  {
+    feeds_info.AccountProfile localAccountProfile = new feeds_info.AccountProfile();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localAccountProfile.bytes_nick.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
     }
+    if (!TextUtils.isEmpty(this.b)) {
+      localAccountProfile.bytes_profile_photo_url.set(ByteStringMicro.copyFromUtf8(this.b));
+    }
+    if (!TextUtils.isEmpty(this.c)) {
+      localAccountProfile.bytes_desc.set(ByteStringMicro.copyFromUtf8(this.c));
+    }
+    if (!TextUtils.isEmpty(this.d)) {
+      localAccountProfile.bytes_home_page_url.set(ByteStringMicro.copyFromUtf8(this.d));
+    }
+    localAccountProfile.uint32_account_type.set(this.jdField_a_of_type_Int);
+    localAccountProfile.uint64_uin.set(this.jdField_a_of_type_Long);
+    return localAccountProfile;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qlz
  * JD-Core Version:    0.7.0.1
  */

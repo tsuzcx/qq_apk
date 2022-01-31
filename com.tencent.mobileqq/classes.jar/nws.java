@@ -1,43 +1,67 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.channel.CmdTaskManger;
-import com.tencent.biz.qqstory.channel.NetworkRequest;
-import com.tencent.biz.qqstory.network.request.GetProfileFeedIdListRequest;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.FeedIdListCache;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.GetFeedIdListResult;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.biz.widgets.TabLayout;
+import com.tencent.qphone.base.util.QLog;
 
-public class nws
-  extends JobSegment
+class nws
+  implements ViewPager.OnPageChangeListener
 {
-  private FeedListPageLoaderBase.FeedIdListCache a;
+  nws(nwm paramnwm) {}
   
-  public nws(@NonNull FeedListPageLoaderBase.FeedIdListCache paramFeedIdListCache)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    this.a = paramFeedIdListCache;
+    QLog.d("ReadInJoyChannelViewPagerController", 2, "on page scroll state: " + paramInt);
+    nwm.b(this.a, paramInt);
+    if (paramInt == 0)
+    {
+      QLog.d("ReadInJoyChannelViewPagerController", 2, "page scroll state changed notify");
+      nwm.b(this.a);
+      nwm.a(this.a).a();
+    }
   }
   
-  protected void a(JobContext paramJobContext, Integer paramInteger)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    Object localObject = this.a.a(paramInteger.intValue(), 5);
-    if ((((FeedListPageLoaderBase.GetFeedIdListResult)localObject).a.size() > 0) || (((FeedListPageLoaderBase.GetFeedIdListResult)localObject).b))
+    if (!nwm.a(this.a)) {
+      nwm.a(this.a, paramInt1, paramFloat, paramInt2);
+    }
+    TabChannelCoverInfo localTabChannelCoverInfo = this.a.a();
+    if ((paramInt1 >= nwm.jdField_a_of_type_Int) && (localTabChannelCoverInfo != null)) {
+      nwm.b(this.a, localTabChannelCoverInfo);
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    QLog.d("ReadInJoyChannelViewPagerController", 1, new Object[] { "onPageSelected position = ", Integer.valueOf(paramInt) });
+    TabChannelCoverInfo localTabChannelCoverInfo = this.a.a();
+    nwm.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo = localTabChannelCoverInfo;
+    if (localTabChannelCoverInfo != null) {
+      nwm.a(localTabChannelCoverInfo.mChannelCoverId);
+    }
+    if (nwm.a(this.a) == 0) {
+      nwm.a(this.a, paramInt);
+    }
+    nwm.b(this.a, paramInt);
+    nwm.a(this.a, paramInt);
+    QLog.d("ReadInJoyChannelViewPagerController", 2, "page selected notify");
+    if (nwm.a(this.a) == 0) {
+      nwm.b(this.a);
+    }
+    if ((localTabChannelCoverInfo != null) && (localTabChannelCoverInfo.mChannelCoverId == 0)) {}
+    for (boolean bool = true;; bool = false)
     {
-      SLog.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
-      notifyResult(localObject);
+      nwm.a(bool);
+      nwm.c(this.a);
+      nwm.a(this.a, nwm.c());
+      QLog.d("ReadInJoyChannelViewPagerController", 1, new Object[] { "selected channel cover info =", nwm.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo });
       return;
     }
-    localObject = new GetProfileFeedIdListRequest();
-    ((GetProfileFeedIdListRequest)localObject).a = this.a.a();
-    ((GetProfileFeedIdListRequest)localObject).b = QQStoryContext.a().b();
-    CmdTaskManger.a().a((NetworkRequest)localObject, new nwt(this, paramJobContext, paramInteger));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nws
  * JD-Core Version:    0.7.0.1
  */

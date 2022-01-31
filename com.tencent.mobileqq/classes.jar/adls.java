@@ -1,121 +1,141 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
-import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout2;
-import com.tencent.mobileqq.structmsg.widget.HeightLimitedLinearLayout;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity.22.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class adls
+  extends alpq
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  View jdField_a_of_type_AndroidViewView;
-  HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap(1);
+  public adls(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public adls(ForwardSdkBaseOption paramForwardSdkBaseOption, Context paramContext)
+  protected void onGetCareBarEnable(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super.onGetCareBarEnable(paramBoolean1, paramBoolean2);
+    if (QLog.isColorLevel()) {
+      QLog.i("IphoneTitleBarActivity", 2, "onGetCareBarEnable: invoked.  barEnable: " + paramBoolean2);
+    }
+    NotifyPushSettingActivity.j(this.a).setChecked(paramBoolean2);
   }
   
-  public View a()
+  protected void onGetHelloLiveMessageState(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.a instanceof StructMsgForImageShare)) {
-      return this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.a.getPreDialogView(this.jdField_a_of_type_AndroidContentContext, null);
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.a instanceof StructMsgForAudioShare)) {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.a.getPreDialogView(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView);
-    }
-    for (;;)
+    if (paramBoolean1)
     {
-      return this.jdField_a_of_type_AndroidViewView;
-      HeightLimitedLinearLayout localHeightLimitedLinearLayout = new HeightLimitedLinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      localHeightLimitedLinearLayout.setOrientation(1);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.gravity = 1;
-      localHeightLimitedLinearLayout.setLayoutParams(localLayoutParams);
-      localHeightLimitedLinearLayout.setMaxHeight(this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels >> 1);
-      this.jdField_a_of_type_AndroidViewView = localHeightLimitedLinearLayout;
-      a();
+      Message localMessage = NotifyPushSettingActivity.a(this.a).obtainMessage();
+      localMessage.what = 10003;
+      localMessage.obj = Boolean.valueOf(paramBoolean2);
+      NotifyPushSettingActivity.a(this.a).sendMessage(localMessage);
+      QLog.i("CardObserver_onGetHelloLiveMessageState", 1, "Succeeded to Get hello live message State with Msg");
+      return;
     }
+    QLog.i("CardObserver_onGetHelloLiveMessageState", 1, "Failed to Get  hello live message State with Msg");
   }
   
-  void a()
+  protected void onGetPCActiveState(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.a == null) || (this.jdField_a_of_type_AndroidViewView == null)) {}
-    label295:
-    label296:
-    for (;;)
+    if (paramBoolean1)
+    {
+      Message localMessage = NotifyPushSettingActivity.a(this.a).obtainMessage();
+      localMessage.what = 10000;
+      localMessage.obj = Boolean.valueOf(paramBoolean2);
+      NotifyPushSettingActivity.a(this.a).sendMessage(localMessage);
+      QLog.i("CardObserver_onGetPCActiveState", 1, "Succeeded to Get PC Active State with Msg");
+      return;
+    }
+    QLog.i("CardObserver_onGetPCActiveState", 1, "Failed to Get PC Active State with Msg");
+  }
+  
+  protected void onSetCareBarEnable(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    super.onSetCareBarEnable(paramBoolean1, paramBoolean2);
+  }
+  
+  protected void onSetHelloLiveMessageState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
+  {
+    if (paramBoolean1)
+    {
+      SettingCloneUtil.writeValue(this.a, this.a.a, null, "qqsetting_hello_live_message", paramBoolean2);
+      QLog.i("CardObserver_onSetHelloLiveMessage", 1, "Set the hell live mesaage result " + paramBoolean1);
+      return;
+    }
+    Message localMessage = NotifyPushSettingActivity.a(this.a).obtainMessage();
+    localMessage.what = 10002;
+    localMessage.obj = paramString2;
+    NotifyPushSettingActivity.a(this.a).sendMessage(localMessage);
+    QQToast.a(this.a, paramString1, 0).b(5);
+    QLog.i("SetHelloLiveMessage_Failure", 1, "Failed to HelloLiveMessage State " + paramString1);
+  }
+  
+  protected void onSetNotDisturb(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    super.onSetNotDisturb(paramBoolean, paramString1, paramString2);
+    if (!"not_disturb_from_notify_push_setting_activity".equals(paramString2)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("IphoneTitleBarActivity", 4, "onSetNotDisturb NOT FROM THIS" + paramString2);
+      }
+    }
+    do
     {
       return;
-      if ((this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.a instanceof StructMsgForImageShare))
+      NotifyPushSettingActivity.a(this.a).set(false);
+      if (!paramBoolean)
       {
-        QLog.w("ForwardOption.ForwardSdkBaseOption", 1, "updateStructView|StructMsgForImageShare not supported！");
+        ThreadManagerV2.getUIHandlerV2().post(new NotifyPushSettingActivity.22.1(this, paramString1));
         return;
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.a instanceof StructMsgForAudioShare))
+      paramString1 = this.a.app.getHandler(Conversation.class);
+    } while (paramString1 == null);
+    Conversation.a(paramString1, this.a);
+  }
+  
+  protected void onSetPCActiveState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
+  {
+    if (paramBoolean1)
+    {
+      SettingCloneUtil.writeValue(this.a, this.a.a, null, "qqsetting_pcactive_key", paramBoolean2);
+      QLog.i("CardObserver_onSetPCActiveState", 1, "Set the PC Active State " + paramBoolean1);
+      return;
+    }
+    Message localMessage = NotifyPushSettingActivity.a(this.a).obtainMessage();
+    localMessage.what = 10001;
+    localMessage.obj = paramString2;
+    NotifyPushSettingActivity.a(this.a).sendMessage(localMessage);
+    QQToast.a(this.a, paramString1, 0).b(5);
+    QLog.i("SetPCActiveState_Failure", 1, "Failed to set PC Active State " + paramString1);
+  }
+  
+  protected void onSetShowPushNotice(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      SettingCloneUtil.writeValue(this.a, this.a.a, null, "qqsetting_show_push_message", paramBoolean2);
+      QLog.i("CardObserver_onSetShowPushNotice", 1, "Set show push notice");
+      if (paramBoolean2) {}
+      for (localObject = "0X8009520";; localObject = "0X800951F")
       {
-        this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.a.getPreDialogView(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView);
+        azqs.b(null, "dc00898", "", "", (String)localObject, (String)localObject, 0, 1, "", "", "", "");
         return;
-      }
-      Object localObject1 = new Bundle();
-      ((Bundle)localObject1).putBoolean("pre_dialog", true);
-      Object localObject2 = new ArrayList(1);
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.a.getStructMsgItemLists().iterator();
-      int i = 0;
-      label116:
-      if (localIterator.hasNext())
-      {
-        AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)localIterator.next();
-        View localView1 = (View)this.jdField_a_of_type_JavaUtilHashMap.get(localAbsStructMsgElement);
-        View localView2 = localAbsStructMsgElement.a(this.jdField_a_of_type_AndroidContentContext, localView1, (Bundle)localObject1);
-        if ((localView2 != null) && ((localAbsStructMsgElement instanceof StructMsgItemLayout2)))
-        {
-          TextView localTextView = (TextView)localView2.findViewById(2131361926);
-          if (localTextView != null) {
-            localTextView.setTextColor(-8355712);
-          }
-        }
-        if ((localView2 == null) || (localView2 == localView1)) {
-          break label295;
-        }
-        this.jdField_a_of_type_JavaUtilHashMap.put(localAbsStructMsgElement, localView2);
-        ((List)localObject2).add(localView2);
-        i = 1;
-      }
-      for (;;)
-      {
-        break label116;
-        if (i == 0) {
-          break label296;
-        }
-        ((ViewGroup)this.jdField_a_of_type_AndroidViewView).removeAllViewsInLayout();
-        localObject1 = ((List)localObject2).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (View)((Iterator)localObject1).next();
-          ((ViewGroup)this.jdField_a_of_type_AndroidViewView).addView((View)localObject2);
-        }
-        break;
       }
     }
+    Object localObject = NotifyPushSettingActivity.a(this.a).obtainMessage();
+    ((Message)localObject).what = 10004;
+    ((Message)localObject).obj = Boolean.valueOf(paramBoolean2);
+    NotifyPushSettingActivity.a(this.a).sendMessage((Message)localObject);
+    QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131719884), 0).b(5);
+    QLog.i("onSetShowPushNotice_Failure", 1, "Failed to set push notice");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adls
  * JD-Core Version:    0.7.0.1
  */

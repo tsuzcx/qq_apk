@@ -1,50 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.remind.TimeHelper;
-import com.tencent.mobileqq.remind.widget.IosTimepicker.FormatDataListener;
-import com.tencent.mobileqq.remind.widget.WheelView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
-public final class ahga
-  implements IosTimepicker.FormatDataListener
+public class ahga
+  extends Handler
 {
-  public long a(WheelView[] paramArrayOfWheelView, int[] paramArrayOfInt)
+  public ahga(AddContactsActivity paramAddContactsActivity) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    Object localObject2 = null;
-    if ((paramArrayOfInt.length != 3) || (paramArrayOfWheelView.length != 3)) {
-      return -1L;
-    }
-    String str2;
-    if (AppSetting.b)
+    switch (paramMessage.what)
     {
-      str2 = TimeHelper.a(paramArrayOfInt[0]);
-      if ((paramArrayOfInt[1] < 0) || (paramArrayOfInt[1] >= TimeHelper.a.length)) {
-        break label197;
-      }
+    default: 
+      return;
+    case 0: 
+      this.a.jdField_a_of_type_Ahhc.b();
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
     }
-    label197:
-    for (String str1 = TimeHelper.a[paramArrayOfInt[1]];; str1 = null)
-    {
-      Object localObject1 = localObject2;
-      if (paramArrayOfInt[2] >= 0)
-      {
-        localObject1 = localObject2;
-        if (paramArrayOfInt[2] < TimeHelper.b.length) {
-          localObject1 = TimeHelper.b[paramArrayOfInt[2]];
-        }
-      }
-      if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
-      {
-        str1 = "当前选中时间" + str2 + str1 + "时" + (String)localObject1 + "分";
-        int j = paramArrayOfWheelView.length;
-        int i = 0;
-        while (i < j)
-        {
-          paramArrayOfWheelView[i].setContentDescription(str1);
-          i += 1;
-        }
-      }
-      return TimeHelper.a(paramArrayOfInt[0], paramArrayOfInt[1], paramArrayOfInt[2]);
-    }
+    swe.a().a(300);
   }
 }
 

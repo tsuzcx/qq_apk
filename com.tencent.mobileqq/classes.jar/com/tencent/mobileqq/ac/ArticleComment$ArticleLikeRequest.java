@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ArticleComment$ArticleLikeRequest
-  extends MessageMicro
+  extends MessageMicro<ArticleLikeRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField article_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -25,7 +25,7 @@ public final class ArticleComment$ArticleLikeRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ac.ArticleComment.ArticleLikeRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,40 @@
-import android.app.Activity;
-import android.graphics.Color;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
-import com.tencent.widget.ActionSheet;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
+import java.util.Queue;
 
-public class uzr
-  extends ClickableSpan
+class uzr
+  extends SimpleJob<Void>
 {
-  public uzr(GrayTipsItemBuilder paramGrayTipsItemBuilder, int paramInt) {}
-  
-  public void onClick(View paramView)
+  uzr(uzq paramuzq, String paramString, Context paramContext, List paramList)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a instanceof Activity))
-    {
-      paramView = ActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a);
-      paramView.b(2131436688);
-      paramView.c(2131433015);
-      paramView.a(new uzs(this, paramView));
-      paramView.show();
-      BaseChatPie localBaseChatPie = ((FragmentActivity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a).getChatFragment().a();
-      if ((localBaseChatPie instanceof DiscussChatPie)) {
-        ((DiscussChatPie)localBaseChatPie).a = paramView;
-      }
-    }
+    super(paramString);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    if (!uzq.a(this.jdField_a_of_type_Uzq, this.jdField_a_of_type_AndroidContentContext)) {
+      QLog.i("MsgTabStoryVideoPreloader", 2, "当前网络状态, 不启动预下载");
+    }
+    do
+    {
+      return null;
+      QLog.i("MsgTabStoryVideoPreloader", 2, "启动消息TAB节点预加载器");
+      paramJobContext = uzq.a(this.jdField_a_of_type_Uzq, this.jdField_a_of_type_JavaUtilList);
+    } while ((paramJobContext.isEmpty()) || (!this.jdField_a_of_type_Uzq.a()));
+    uzq.a(this.jdField_a_of_type_Uzq);
+    uzq.a(this.jdField_a_of_type_Uzq, paramJobContext);
+    this.jdField_a_of_type_Uzq.b();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uzr
  * JD-Core Version:    0.7.0.1
  */

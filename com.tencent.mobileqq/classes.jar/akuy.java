@@ -1,24 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.MusicPendantView;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingFragment;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
 
 public class akuy
-  implements View.OnClickListener
+  extends akve
 {
-  public akuy(MusicPendantView paramMusicPendantView) {}
+  public akuy(CmGameLoadingFragment paramCmGameLoadingFragment) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, Object paramObject)
   {
-    if (paramView == null) {
-      return;
+    if (CmGameLoadingFragment.a(this.a) != null) {
+      CmGameLoadingFragment.a(this.a).a(paramBoolean, paramLong);
     }
-    ThreadManager.post(new akuz(this), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akuy
  * JD-Core Version:    0.7.0.1
  */

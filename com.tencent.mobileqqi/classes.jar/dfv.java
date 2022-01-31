@@ -1,29 +1,18 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
-public class dfv
-  extends MessageObserver
+class dfv
+  implements Runnable
 {
-  public dfv(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  dfv(dfu paramdfu) {}
   
-  protected void b(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
-      this.a.a(paramBoolean, false);
-    }
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
-      this.a.a(paramBoolean, true);
-    }
+    RegisterPhoneNumActivity.a(this.a.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dfv
  * JD-Core Version:    0.7.0.1
  */

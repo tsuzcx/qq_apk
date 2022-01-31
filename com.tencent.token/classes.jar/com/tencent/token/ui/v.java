@@ -1,19 +1,18 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.af;
-import com.tencent.token.ag;
+import com.tencent.token.ui.base.GuideQQPimSecureTipsView;
+import com.tmsdk.TMSDKContext;
 
-final class v
+class v
   implements Runnable
 {
-  v(AccountPageActivity paramAccountPageActivity) {}
+  v(u paramu) {}
   
-  public final void run()
+  public void run()
   {
-    if (ag.c().g()) {
-      return;
-    }
-    af.a().e(this.a.mHandler);
+    AccountPageActivity.access$3400(this.a.a).setDownloadUrl("http://qqwx.qq.com/s?aid=index&p=1&c=107014&vt=1&pf=0");
+    AccountPageActivity.access$3400(this.a.a).setVisibility(0);
+    TMSDKContext.saveActionData(1150102);
   }
 }
 

@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
+import alud;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.emosm.DataFactory;
+import apmh;
+import apml;
+import begz;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,7 +36,7 @@ public class BubbleJsPlugin
     this.mReqBundle.clear();
     this.mReqBundle.putInt("id", i);
     this.mReqBundle.putInt("textId", j);
-    super.sendRemoteReq(DataFactory.a("diy_setup", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+    super.sendRemoteReq(apml.a("diy_setup", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
     startDownload(paramJSONObject, "");
     if (QLog.isColorLevel()) {
       QLog.d("BubbleJsPlugin", 2, paramJSONObject.toString());
@@ -47,7 +48,7 @@ public class BubbleJsPlugin
     return 2147483712L;
   }
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     boolean bool2 = true;
     if (QLog.isColorLevel()) {
@@ -133,7 +134,7 @@ public class BubbleJsPlugin
     throw new Exception(" unsupport method name " + paramString3);
   }
   
-  protected void onCreate()
+  public void onCreate()
   {
     this.mReqBundle = new Bundle();
     super.onCreate();
@@ -323,13 +324,13 @@ public class BubbleJsPlugin
       localJSONObject.put("status", 3);
       localJSONObject.put("progress", 100);
       paramJSONObject.put("result", 0);
-      paramJSONObject.put("message", "本地已存在");
+      paramJSONObject.put("message", alud.a(2131701592));
       super.callJs(paramString + "(" + paramJSONObject.toString() + ");");
       return;
     }
     this.mReqBundle.clear();
     this.mReqBundle.putInt("id", i);
-    super.sendRemoteReq(DataFactory.a("queryBubbleInfo", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+    super.sendRemoteReq(apml.a("queryBubbleInfo", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
   }
   
   public void queryLocal(JSONObject paramJSONObject, String paramString)
@@ -337,7 +338,7 @@ public class BubbleJsPlugin
     if (QLog.isColorLevel()) {
       QLog.i("BubbleJsPlugin", 2, "queryLocal " + paramJSONObject.toString());
     }
-    paramString = DataFactory.a("queryLocal", paramString, this.mOnRemoteResp.key, new Bundle());
+    paramString = apml.a("queryLocal", paramString, this.mOnRemoteResp.key, new Bundle());
     if (paramJSONObject != null) {}
     try
     {
@@ -375,7 +376,7 @@ public class BubbleJsPlugin
       i = paramJSONObject.optInt("voiceprintId", 0);
       this.mReqBundle.putInt("voiceprintId", i);
     }
-    super.sendRemoteReq(DataFactory.a("setup", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+    super.sendRemoteReq(apml.a("setup", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
   }
   
   public void startDownload(JSONObject paramJSONObject, String paramString)
@@ -386,7 +387,7 @@ public class BubbleJsPlugin
     }
     this.mReqBundle.clear();
     this.mReqBundle.putInt("id", i);
-    super.sendRemoteReq(DataFactory.a("bubble_startDownLoad", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+    super.sendRemoteReq(apml.a("bubble_startDownLoad", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
   }
   
   public void stopDownload(JSONObject paramJSONObject, String paramString)
@@ -397,12 +398,12 @@ public class BubbleJsPlugin
     }
     this.mReqBundle.clear();
     this.mReqBundle.putInt("id", i);
-    super.sendRemoteReq(DataFactory.a("bubble_StopDownLoad", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+    super.sendRemoteReq(apml.a("bubble_StopDownLoad", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.BubbleJsPlugin
  * JD-Core Version:    0.7.0.1
  */

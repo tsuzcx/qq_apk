@@ -1,38 +1,69 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
-import com.tencent.mobileqq.utils.PackageUtil;
+import android.content.Context;
+import android.content.res.AssetManager;
 import com.tencent.qphone.base.util.QLog;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
-class sfy
-  implements Runnable
+public class sfy
+  implements sfz
 {
-  sfy(sfs paramsfs) {}
+  private AssetManager jdField_a_of_type_AndroidContentResAssetManager;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void run()
+  public sfy(Context paramContext, String paramString)
   {
-    UpgradeTIMWrapper localUpgradeTIMWrapper = UpgradeTIMWrapper.a(this.a.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, new Object[] { "UpgradeTIMWrapper MSG_TIM_UPGRADE_BAR_SHOW, tips on: ", Boolean.valueOf(localUpgradeTIMWrapper.a()) });
-    }
-    if (!localUpgradeTIMWrapper.a()) {
-      this.a.a.a(1134058, 0L, true);
-    }
-    do
+    this.jdField_a_of_type_AndroidContentResAssetManager = paramContext.getAssets();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public InputStream a(String paramString)
+  {
+    return this.jdField_a_of_type_AndroidContentResAssetManager.open(this.jdField_a_of_type_JavaLangString + "/" + paramString);
+  }
+  
+  public List<String> a()
+  {
+    try
     {
-      return;
-      if (PackageUtil.a(this.a.a.a.getApp(), "com.tencent.tim"))
-      {
-        this.a.a.a(1134058, 0L, true);
-        return;
+      localList = sgi.a(this.jdField_a_of_type_AndroidContentResAssetManager, this.jdField_a_of_type_JavaLangString);
+      if (localList == null) {
+        break label28;
       }
-    } while ((UpgradeTIMWrapper.b()) || (Conversation.a(this.a.a) != null));
-    this.a.a.a(new sfz(this, localUpgradeTIMWrapper));
+    }
+    catch (Exception localException)
+    {
+      label28:
+      do
+      {
+        List localList;
+        QLog.d("ReadAssetFile", 1, "tryLoadTemplateFromAssets fileList size: ", localException);
+        arrayOfString = this.jdField_a_of_type_AndroidContentResAssetManager.list(this.jdField_a_of_type_JavaLangString);
+        localArrayList = new ArrayList();
+        localObject = localArrayList;
+      } while (arrayOfString == null);
+      j = arrayOfString.length;
+      i = 0;
+    }
+    return localList;
+    for (;;)
+    {
+      String[] arrayOfString;
+      ArrayList localArrayList;
+      int j;
+      int i;
+      Object localObject = localArrayList;
+      if (i >= j) {
+        break;
+      }
+      localArrayList.add(arrayOfString[i]);
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sfy
  * JD-Core Version:    0.7.0.1
  */

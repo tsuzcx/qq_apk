@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class antiphishingAlertQuery$RequestPack
-  extends MessageMicro
+  extends MessageMicro<RequestPack>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 56, 64, 72, 80, 88 }, new String[] { "u32_app_type", "str_url", "i32_xoffset", "i32_yoffset", "u32_ctrl_width", "u32_ctrl_height", "u64_input_uin", "u32_account_type", "u32_cli_url_ver", "u32_seq", "u32_proto_ver" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, RequestPack.class);
   public final PBInt32Field i32_xoffset = PBField.initInt32(0);
@@ -26,7 +26,7 @@ public final class antiphishingAlertQuery$RequestPack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.antiphishingAlertQuery.RequestPack
  * JD-Core Version:    0.7.0.1
  */

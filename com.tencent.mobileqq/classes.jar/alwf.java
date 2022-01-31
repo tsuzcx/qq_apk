@@ -1,37 +1,31 @@
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.EditText;
-import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.qphone.base.util.QLog;
 
-public class alwf
-  implements TextWatcher
+class alwf
+  implements bhuk
 {
-  public alwf(Login paramLogin) {}
+  alwf(alwd paramalwd, bhuf parambhuf) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramCharSequence.length() == 0) {
-      this.a.a.setVisibility(4);
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      this.a.jdField_b_of_type_Boolean = false;
-      this.a.jdField_b_of_type_AndroidWidgetEditText.setText("");
+      this.jdField_a_of_type_Bhuf.e();
       return;
-      if (paramInt3 < 2) {
-        this.a.a.setVisibility(0);
+      if (QLog.isColorLevel()) {
+        QLog.i("MayknowRecommendManager", 2, " onMsgTabRecommendBClick recommend_item_menu hide clicked");
       }
+      this.jdField_a_of_type_Alwd.h();
+      azqs.b(null, "dc00899", "Grp_recom", "", "msg_tab", "clk_hide", 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alwf
  * JD-Core Version:    0.7.0.1
  */

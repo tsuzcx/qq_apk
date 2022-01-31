@@ -2,15 +2,16 @@ package com.tencent.token.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.token.cw;
 
-final class vz
+class vz
   implements DialogInterface.OnClickListener
 {
-  vz(vu paramvu) {}
+  vz(vy paramvy) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.finish();
+    cw.a().a(RealNameStep0VerifyMobileDownActivity.access$200(this.a.a));
   }
 }
 

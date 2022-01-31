@@ -1,70 +1,176 @@
-import android.os.Handler;
-import com.tencent.mobileqq.utils.VoicePlayer;
-import com.tencent.mobileqq.utils.VoicePlayer.VoicePlayerListener;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.io.File;
+import mqq.app.AppActivity;
+import mqq.manager.Manager;
+import mqq.observer.BusinessObserver;
 
 public class akgu
-  implements Runnable
+  implements Manager, BusinessObserver
 {
-  int jdField_a_of_type_Int = 0;
+  public static String a;
+  private akgv jdField_a_of_type_Akgv;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private boolean jdField_a_of_type_Boolean;
   
-  public akgu(VoicePlayer paramVoicePlayer) {}
-  
-  public void run()
+  public akgu(QQAppInterface paramQQAppInterface)
   {
-    if ((VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == 4) || (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == 5) || (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == 6) || (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == 8)) {
-      this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    paramQQAppInterface = BaseApplicationImpl.getContext();
+    jdField_a_of_type_JavaLangString = paramQQAppInterface.getFilesDir().getAbsoluteFile() + File.separator + "WeatherResource";
+    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("weather_resources", 0);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this);
+  }
+  
+  public long a()
+  {
+    long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_weather_res_version", 0L);
+    if (QLog.isColorLevel()) {
+      QLog.d("weatherManager", 2, "getConfigVersion version=" + l);
     }
+    return l;
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("weatherManager", 2, "updateResourceVersion version=" + paramLong);
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_weather_res_version", paramLong).commit();
+  }
+  
+  public void a(akgv paramakgv)
+  {
+    this.jdField_a_of_type_Akgv = paramakgv;
+  }
+  
+  public void a(AppActivity paramAppActivity)
+  {
+    if ((alvw.c()) && (!this.jdField_a_of_type_Boolean))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("weatherManager", 2, "updateWeatherInfo  from  LocaleManager.isLocaleUpdatedByUser()");
+      }
+      this.jdField_a_of_type_Boolean = true;
+      akgw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramAppActivity);
+    }
+    Long localLong;
     do
     {
       return;
-      if (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == 3)
-      {
-        this.jdField_a_of_type_Int = VoicePlayer.b(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer);
-        return;
+      localLong = Long.valueOf(BaseApplicationImpl.getContext().getSharedPreferences("public_account_weather", 0).getLong("drawer_last_success_time", 0L));
+      if (QLog.isColorLevel()) {
+        QLog.d("weatherManager", 2, "updateWeatherInfo successTime:" + localLong + ",currentTime:" + System.currentTimeMillis());
       }
-    } while (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == null);
-    int k = VoicePlayer.c(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer);
-    int i = VoicePlayer.b(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer);
-    if (i < this.jdField_a_of_type_Int) {
-      i = this.jdField_a_of_type_Int;
+    } while (Math.abs(System.currentTimeMillis() - localLong.longValue()) <= 3600000L);
+    akgw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramAppActivity);
+  }
+  
+  public boolean a(long paramLong, String paramString)
+  {
+    boolean bool = true;
+    try
+    {
+      bdhb.a(jdField_a_of_type_JavaLangString, false);
+      bdhb.a(paramString, jdField_a_of_type_JavaLangString, false);
+      if (bool)
+      {
+        a(paramLong);
+        return bool;
+      }
+    }
+    catch (Exception paramString)
+    {
+      do
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.e("weatherManager", 2, "pareseRulesFromZip : delete and uncompress Exception=>", paramString);
+          }
+          bool = false;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("weatherManager", 2, "pareseRulesFromZip : delete and uncompressZip failure, parse from Res");
+    }
+    return bool;
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this);
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramBundle == null) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("weatherManager", 2, new Object[] { "WeatherManager onReceive type:" + paramInt, ",bundle:", paramBundle });
+      }
+    } while ((paramInt != 6666) && (paramInt != 8888));
+    int j;
+    SharedPreferences.Editor localEditor;
+    if (paramBoolean)
+    {
+      String str1 = paramBundle.getString("KEY_TEMPER");
+      String str2 = paramBundle.getString("area_info");
+      int i = paramBundle.getInt("adcode");
+      String str3 = paramBundle.getString("o_wea_code");
+      j = paramBundle.getInt("show_flag");
+      if (QLog.isColorLevel()) {
+        QLog.d("WeatherSetting", 2, "onReceive show_flag:" + j + ",temp:" + str1 + ",area_name" + str2 + "adcode" + i + ",o_wea_code" + str3);
+      }
+      localEditor = BaseApplicationImpl.getContext().getSharedPreferences("public_account_weather", 0).edit();
+      if (j != 1) {
+        break label421;
+      }
+      if ((str1 != null) && (!str1.equals("")) && (!TextUtils.isEmpty(str2)))
+      {
+        Long localLong = Long.valueOf(System.currentTimeMillis());
+        localEditor.putLong("pa_send_time", localLong.longValue());
+        localEditor.putString("cur_temp", str1);
+        localEditor.putString("cur_code", str3);
+        localEditor.putString("cur_city", str2);
+        localEditor.putInt("cur_adcode", i);
+        localEditor.putBoolean("show_flag", true);
+        localEditor.putLong("drawer_last_success_time", localLong.longValue());
+        localEditor.putString("drawer_cur_city", str2);
+        localEditor.putString("drawer_cur_temp", str1);
+        localEditor.putInt("drawer_cur_adcode", i);
+        localEditor.putString("drawer_cur_code", str3);
+        localEditor.putBoolean("drawer_show_flag", true);
+      }
     }
     for (;;)
     {
-      int j = k;
-      if (this.jdField_a_of_type_Int != 0)
-      {
-        j = k;
-        if (this.jdField_a_of_type_Int == i)
-        {
-          j = k;
-          if (this.jdField_a_of_type_Int > k - 200)
-          {
-            QLog.d("Q.profilecard.VoicePlayer", 2, "change duration from " + i + " to " + i);
-            j = i;
-          }
-        }
-      }
-      if (i > this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_Int = i;
-      }
-      Iterator localIterator = VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer).iterator();
-      while (localIterator.hasNext()) {
-        ((VoicePlayer.VoicePlayerListener)localIterator.next()).a(VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer), j, i);
-      }
-      if (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == null) {
+      localEditor.commit();
+      if (this.jdField_a_of_type_Akgv == null) {
         break;
       }
-      VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer).postDelayed(this, 50L);
+      this.jdField_a_of_type_Akgv.a(paramInt, paramBoolean, paramBundle);
       return;
+      label421:
+      if (j == 0) {
+        localEditor.putBoolean("show_flag", false);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akgu
  * JD-Core Version:    0.7.0.1
  */

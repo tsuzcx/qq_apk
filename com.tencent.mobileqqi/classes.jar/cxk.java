@@ -1,32 +1,28 @@
-import android.text.format.DateFormat;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.utils.StringUtil;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
-class cxk
-  implements Runnable
+public class cxk
+  implements DialogInterface.OnClickListener
 {
-  cxk(cxi paramcxi) {}
+  public cxk(NotificationActivity paramNotificationActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str1 = StringUtil.a(this.a.a.c, 0, 32);
-    String str2 = StringUtil.a(this.a.a.e, 0, 32);
-    if (this.a.a.jdField_a_of_type_JavaUtilList != null) {
-      this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + String.format(this.a.a.getString(2131559084), new Object[] { Integer.valueOf(this.a.a.jdField_a_of_type_JavaUtilList.size()) }));
-    }
-    for (;;)
-    {
-      this.a.a.jdField_b_of_type_AndroidWidgetTextView.setText(this.a.a.getString(2131559085, new Object[] { str2, DateFormat.format("yy-M-d", this.a.a.jdField_b_of_type_Long) }));
-      return;
-      this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
-    }
+    paramDialogInterface = new Intent("qqplayer_exit_action");
+    this.a.sendBroadcast(paramDialogInterface);
+    paramDialogInterface = new Bundle();
+    paramDialogInterface.putString("password", null);
+    this.a.startActivity(new Intent(this.a, LoginActivity.class).putExtras(paramDialogInterface).addFlags(67108864));
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     cxk
  * JD-Core Version:    0.7.0.1
  */

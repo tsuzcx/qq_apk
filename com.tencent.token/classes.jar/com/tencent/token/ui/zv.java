@@ -1,21 +1,18 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.core.bean.UtilFucntionItem;
-import com.tencent.token.utils.s;
 
-final class zv
+class zv
   implements View.OnClickListener
 {
-  zv(SettingPageActivity paramSettingPageActivity, UtilFucntionItem paramUtilFucntionItem) {}
+  zv(StartPwdGestureIndexActivity paramStartPwdGestureIndexActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    SettingPageActivity.mShowQueryNew = false;
-    if ((this.a.d() != null) && (!this.a.d().isEmpty())) {
-      s.b(this.b, this.a.d(), this.a.c());
-    }
+    paramView = new Intent(this.a, StartPwdGestureSelActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 

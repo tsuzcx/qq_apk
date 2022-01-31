@@ -10,12 +10,12 @@ public class GifIOException
   
   GifIOException(int paramInt)
   {
-    this(GifError.a(paramInt));
+    this(GifError.fromCode(paramInt));
   }
   
   private GifIOException(GifError paramGifError)
   {
-    super(paramGifError.a());
+    super(paramGifError.getFormattedDescription());
     this.reason = paramGifError;
   }
   
@@ -29,7 +29,7 @@ public class GifIOException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.gif.GifIOException
  * JD-Core Version:    0.7.0.1
  */

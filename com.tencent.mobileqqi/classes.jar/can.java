@@ -1,29 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class can
-  implements View.OnClickListener
+class can
+  implements Runnable
 {
-  public can(AddRequestActivity paramAddRequestActivity) {}
+  can(cam paramcam, List paramList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (paramView == this.a.jdField_a_of_type_AndroidWidgetButton)
-    {
-      if (this.a.d != -1011) {
-        break label104;
-      }
-      this.a.a(AddRequestActivity.a(this.a), this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ArrayOfByte, this.a.q, AddRequestActivity.b(this.a), AddRequestActivity.c(this.a));
-    }
-    for (;;)
-    {
-      ReportController.b(this.a.b, "CliOper", "", "", "frd_recommend", "Frd_accept", 0, 0, "1", "", "", "");
-      return;
-      label104:
-      this.a.a(AddRequestActivity.a(this.a), AddRequestActivity.b(this.a), 0, null, AddRequestActivity.c(this.a));
-    }
+    ChatBackgroundSettingActivity.a(this.jdField_a_of_type_Cam.a).clear();
+    ChatBackgroundSettingActivity.a(this.jdField_a_of_type_Cam.a).addAll(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Cam.a.e();
+    this.jdField_a_of_type_Cam.a.a.notifyDataSetChanged();
   }
 }
 

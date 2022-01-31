@@ -1,23 +1,23 @@
-import android.net.Uri;
-import android.provider.ContactsContract.CommonDataKinds.Phone;
+import com.tencent.mobileqq.filemanager.activity.FileAssistantActivity;
 
-public class frq
+class frq
+  implements Runnable
 {
-  public static final int a = 0;
-  public static final Uri a;
-  public static final String[] a;
-  public static final int b = 2;
-  public static final int c = 3;
+  frq(frp paramfrp, boolean paramBoolean) {}
   
-  static
+  public void run()
   {
-    jdField_a_of_type_AndroidNetUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "data1", "display_name", "contact_id", "raw_contact_id" };
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      FileAssistantActivity.c(this.jdField_a_of_type_Frp.a);
+      return;
+    }
+    FileAssistantActivity.d(this.jdField_a_of_type_Frp.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     frq
  * JD-Core Version:    0.7.0.1
  */

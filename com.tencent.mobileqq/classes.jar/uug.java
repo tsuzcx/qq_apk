@@ -1,17 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ArkAppBabyQNoResultBuilder;
+import android.view.View;
 
-public class uug
-  implements DialogInterface.OnClickListener
+public abstract interface uug
 {
-  public uug(ArkAppBabyQNoResultBuilder paramArkAppBabyQNoResultBuilder) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void b(View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uug
  * JD-Core Version:    0.7.0.1
  */

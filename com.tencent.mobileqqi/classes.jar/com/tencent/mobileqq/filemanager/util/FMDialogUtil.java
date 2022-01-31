@@ -7,9 +7,9 @@ import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
-import gch;
-import gci;
-import gcj;
+import fxv;
+import fxw;
+import fxx;
 
 public class FMDialogUtil
 {
@@ -27,15 +27,15 @@ public class FMDialogUtil
   
   public static void a(Context paramContext, String paramString, int paramInt, FMDialogUtil.FMDialogInterface paramFMDialogInterface)
   {
-    gch localgch = new gch(paramFMDialogInterface);
-    paramFMDialogInterface = new gci(paramFMDialogInterface);
+    fxv localfxv = new fxv(paramFMDialogInterface);
+    paramFMDialogInterface = new fxw(paramFMDialogInterface);
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new gcj(paramContext, paramString, paramInt, localgch, paramFMDialogInterface));
+      new Handler(localLooper).post(new fxx(paramContext, paramString, paramInt, localfxv, paramFMDialogInterface));
       return;
     }
-    DialogUtil.a(paramContext, 230, paramString, paramContext.getString(paramInt), 2131558705, 2131558706, localgch, paramFMDialogInterface).show();
+    DialogUtil.a(paramContext, 230, paramString, paramContext.getString(paramInt), 2131558705, 2131558706, localfxv, paramFMDialogInterface).show();
   }
 }
 

@@ -1,86 +1,71 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class vzt
-  implements Runnable
+public class vzt
+  extends QQUIEventReceiver<vzl, vmb>
 {
-  vzt(vzs paramvzs, List paramList) {}
-  
-  public void run()
+  public vzt(@NonNull vzl paramvzl)
   {
-    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_Vzs.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    TroopInfo localTroopInfo = localTroopManager.a(this.jdField_a_of_type_Vzs.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    if (localTroopInfo == null) {}
-    label77:
-    do
+    super(paramvzl);
+  }
+  
+  public void a(@NonNull vzl paramvzl, @NonNull vmb paramvmb)
+  {
+    if (TextUtils.equals(String.valueOf(paramvzl.hashCode()), paramvmb.jdField_a_of_type_JavaLangString)) {
+      b(paramvzl, paramvmb);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vmb.class;
+  }
+  
+  public void b(vzl paramvzl, vmb paramvmb)
+  {
+    paramvzl = ((StoryPlayerGroupHolder)paramvzl.a()).a();
+    if (paramvzl != null) {
+      paramvzl.c(false);
+    }
+    if (paramvmb.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
+      return;
+    }
+    boolean bool = vls.a(paramvmb.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    switch (paramvmb.jdField_a_of_type_Int)
     {
-      do
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      QQToast.a(BaseApplicationImpl.getContext(), 1, alud.a(2131701556), 0).a();
+      return;
+    case 2: 
+      if (bool) {}
+      for (paramvzl = "2";; paramvzl = "1")
       {
+        wxj.a("play_video", "down_suc", 0, 0, new String[] { paramvzl, "", "", paramvmb.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+        QQToast.a(BaseApplicationImpl.getContext(), 2, uqn.a(2131700100), 0).a();
         return;
-      } while (StringUtil.a(localTroopInfo.troopowneruin));
-      StringBuilder localStringBuilder = new StringBuilder();
-      int i;
-      int j;
-      oidb_0x899.memberlist localmemberlist;
-      if (this.jdField_a_of_type_JavaUtilList == null)
-      {
-        i = 0;
-        j = 0;
-        if (j >= i) {
-          break label198;
-        }
-        localmemberlist = (oidb_0x899.memberlist)this.jdField_a_of_type_JavaUtilList.get(j);
-        if ((localmemberlist != null) && (localmemberlist.uint64_member_uin.has())) {
-          break label133;
-        }
       }
-      for (;;)
-      {
-        j += 1;
-        break label77;
-        i = this.jdField_a_of_type_JavaUtilList.size();
-        break;
-        long l = localmemberlist.uint64_member_uin.get();
-        int k = localmemberlist.uint32_privilege.get();
-        if (l != 0L) {
-          if (k == 2) {
-            localStringBuilder.append(l).append("|");
-          } else if (k == 1) {
-            localTroopInfo.troopowneruin = String.valueOf(l);
-          }
-        }
-      }
-      localTroopInfo.Administrator = localStringBuilder.toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.TroopChatPie", 2, "onOIDB0X899_0_Ret: toopUin=" + this.jdField_a_of_type_Vzs.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a + ", admin=" + localTroopInfo.Administrator + ", owner=" + localTroopInfo.troopowneruin);
-      }
-      localTroopManager.b(localTroopInfo);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.aio.TroopChatPie", 2, localTroopInfo.Administrator);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("troop_gag", 2, "onOIDB0X899_0_Ret, sendEmptyMessage-TIMER_ID, hasDestory=" + TroopChatPie.b(this.jdField_a_of_type_Vzs.a));
-      }
-    } while (TroopChatPie.c(this.jdField_a_of_type_Vzs.a));
-    label133:
-    label198:
-    this.jdField_a_of_type_Vzs.a.b.removeMessages(1);
-    this.jdField_a_of_type_Vzs.a.b.sendEmptyMessage(1);
+    }
+    if (bool) {}
+    for (paramvzl = "2";; paramvzl = "1")
+    {
+      wxj.a("play_video", "down_fail", 0, 0, new String[] { paramvzl, "", "", paramvmb.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      QQToast.a(BaseApplicationImpl.getContext(), 1, alud.a(2131701557), 0).a();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vzt
  * JD-Core Version:    0.7.0.1
  */

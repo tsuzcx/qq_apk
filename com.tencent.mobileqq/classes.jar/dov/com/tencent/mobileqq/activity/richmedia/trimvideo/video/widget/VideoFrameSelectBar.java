@@ -9,18 +9,24 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
-import com.tencent.mobileqq.utils.ViewUtils;
+import bdoo;
+import bnid;
+import bnie;
+import bnig;
+import bnii;
+import bnij;
+import bnik;
 
 public class VideoFrameSelectBar
   extends View
-  implements FrameParent, FramesProcessor.OnMoveListener, RangeProcessor.OnRangeChangeListener
+  implements bnid, bnig, bnij
 {
-  private static final int jdField_a_of_type_Int = ViewUtils.a(13.0F);
+  private static final int jdField_a_of_type_Int = bdoo.a(13.0F);
   private float jdField_a_of_type_Float;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private FramesProcessor jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor;
-  private RangeProcessor jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor;
-  private VideoFrameSelectBar.OnFramesClipChangeListener jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetVideoFrameSelectBar$OnFramesClipChangeListener;
+  private bnie jdField_a_of_type_Bnie;
+  private bnii jdField_a_of_type_Bnii;
+  private bnik jdField_a_of_type_Bnik;
   private String jdField_a_of_type_JavaLangString = "";
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
@@ -49,12 +55,12 @@ public class VideoFrameSelectBar
   private final void a(MotionEvent paramMotionEvent)
   {
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor.a(paramMotionEvent);
+      this.jdField_a_of_type_Bnii.a(paramMotionEvent);
     }
     while (!this.jdField_b_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor.a(paramMotionEvent);
+    this.jdField_a_of_type_Bnie.a(paramMotionEvent);
   }
   
   private void c()
@@ -68,8 +74,8 @@ public class VideoFrameSelectBar
   {
     this.jdField_a_of_type_JavaLangString = String.format("%.1f''", new Object[] { Float.valueOf(this.f / 1000.0F) });
     this.g = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetVideoFrameSelectBar$OnFramesClipChangeListener != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetVideoFrameSelectBar$OnFramesClipChangeListener.a(this.f);
+    if (this.jdField_a_of_type_Bnik != null) {
+      this.jdField_a_of_type_Bnik.a(this.f);
     }
   }
   
@@ -85,14 +91,14 @@ public class VideoFrameSelectBar
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    this.e = a((int)(paramFloat1 - this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor.b()));
+    this.e = a((int)(paramFloat1 - this.jdField_a_of_type_Bnii.b()));
     this.f = a(paramFloat2 - paramFloat1);
     d();
-    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor.a((int)paramFloat1);
-    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor.b((int)paramFloat2);
+    this.jdField_a_of_type_Bnie.a((int)paramFloat1);
+    this.jdField_a_of_type_Bnie.b((int)paramFloat2);
     invalidate();
-    if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetVideoFrameSelectBar$OnFramesClipChangeListener != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetVideoFrameSelectBar$OnFramesClipChangeListener.a((int)a(), (int)b());
+    if (this.jdField_a_of_type_Bnik != null) {
+      this.jdField_a_of_type_Bnik.a((int)a(), (int)b());
     }
   }
   
@@ -100,11 +106,11 @@ public class VideoFrameSelectBar
   {
     this.d = a(paramFloat1);
     d();
-    if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor.a(paramFloat2, paramFloat3);
+    if (this.jdField_a_of_type_Bnii != null) {
+      this.jdField_a_of_type_Bnii.a(paramFloat2, paramFloat3);
     }
-    if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetVideoFrameSelectBar$OnFramesClipChangeListener != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetVideoFrameSelectBar$OnFramesClipChangeListener.a((int)a(), (int)b());
+    if (this.jdField_a_of_type_Bnik != null) {
+      this.jdField_a_of_type_Bnik.a((int)a(), (int)b());
     }
   }
   
@@ -125,29 +131,29 @@ public class VideoFrameSelectBar
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor == null) || (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor == null)) {
+    if ((this.jdField_a_of_type_Bnii == null) || (this.jdField_a_of_type_Bnie == null)) {
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(40.0F);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
     paramCanvas.translate(0.0F, jdField_a_of_type_Int + 50);
-    if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor.a(paramCanvas);
+    if (this.jdField_a_of_type_Bnie != null) {
+      this.jdField_a_of_type_Bnie.a(paramCanvas);
     }
-    if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor.a(paramCanvas);
+    if (this.jdField_a_of_type_Bnii != null) {
+      this.jdField_a_of_type_Bnii.a(paramCanvas);
     }
     paramCanvas.translate(0.0F, -jdField_a_of_type_Int - 50);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor == null) || (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor == null))
+    if ((this.jdField_a_of_type_Bnii == null) || (this.jdField_a_of_type_Bnie == null))
     {
       setMeasuredDimension(0, 0);
       return;
     }
-    setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), (int)(50.0F + this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor.a() + jdField_a_of_type_Int));
+    setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), (int)(50.0F + this.jdField_a_of_type_Bnii.a() + jdField_a_of_type_Int));
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -156,7 +162,7 @@ public class VideoFrameSelectBar
     for (;;)
     {
       return false;
-      if ((this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor != null) && (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor != null))
+      if ((this.jdField_a_of_type_Bnii != null) && (this.jdField_a_of_type_Bnie != null))
       {
         switch (paramMotionEvent.getAction() & 0xFF)
         {
@@ -166,7 +172,7 @@ public class VideoFrameSelectBar
           return true;
           this.jdField_a_of_type_Float = paramMotionEvent.getX();
           this.jdField_b_of_type_Float = paramMotionEvent.getY();
-          this.jdField_a_of_type_Boolean = this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetRangeProcessor.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float - 50.0F);
+          this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Bnii.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float - 50.0F);
           this.jdField_b_of_type_Boolean = false;
           if ((!this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean)) {
             return super.onTouchEvent(paramMotionEvent);
@@ -221,14 +227,14 @@ public class VideoFrameSelectBar
     super.postInvalidate();
   }
   
-  public void setOnFramesClipChangeListener(VideoFrameSelectBar.OnFramesClipChangeListener paramOnFramesClipChangeListener)
+  public void setOnFramesClipChangeListener(bnik parambnik)
   {
-    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetVideoFrameSelectBar$OnFramesClipChangeListener = paramOnFramesClipChangeListener;
+    this.jdField_a_of_type_Bnik = parambnik;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar
  * JD-Core Version:    0.7.0.1
  */

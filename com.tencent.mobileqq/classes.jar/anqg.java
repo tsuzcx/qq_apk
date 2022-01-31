@@ -1,31 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView;
-import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView.VideoSegmentPickerListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
-import java.lang.ref.WeakReference;
+import android.widget.TextView;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment.6.1;
 
 public class anqg
-  implements View.OnClickListener
+  extends anqj
 {
-  public anqg(VideoSegmentPickerProviderView paramVideoSegmentPickerProviderView) {}
+  public anqg(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    VideoSegmentPickerProviderView.a(this.a).a.a();
-    if (VideoSegmentPickerProviderView.a(this.a) != null)
+    if (ArkIDESettingFragment.a(this.a) != null)
     {
-      paramView = (VideoSegmentPickerProviderView.VideoSegmentPickerListener)VideoSegmentPickerProviderView.a(this.a).get();
-      if (paramView != null) {
-        paramView.a(0L, 0L);
-      }
+      TextView localTextView = ArkIDESettingFragment.a(this.a);
+      ArkAppCenter.a().postToMainThread(new ArkIDESettingFragment.6.1(this, paramInt, localTextView));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anqg
  * JD-Core Version:    0.7.0.1
  */

@@ -7,46 +7,46 @@ import android.os.Looper;
 
 public class GlobalHandlerThread
 {
-  private static volatile GlobalHandlerThread jdField_a_of_type_ComTencentComponentNetworkDownloaderGlobalHandlerThread = null;
-  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private static final byte[] INSTANCE_LOCK = new byte[0];
+  private static volatile GlobalHandlerThread mInstance = null;
+  private Handler mHandler;
+  private HandlerThread mWorkThread;
   
   private GlobalHandlerThread(Context paramContext)
   {
     try
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("download_async");
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+      this.mWorkThread = new HandlerThread("download_async");
+      this.mWorkThread.start();
+      this.mHandler = new Handler(this.mWorkThread.getLooper());
       return;
     }
     catch (Exception paramContext)
     {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+      this.mHandler = new Handler(Looper.getMainLooper());
     }
   }
   
-  public static GlobalHandlerThread a(Context paramContext)
+  public static GlobalHandlerThread getInstance(Context paramContext)
   {
-    if (jdField_a_of_type_ComTencentComponentNetworkDownloaderGlobalHandlerThread == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    if (mInstance == null) {}
+    synchronized (INSTANCE_LOCK)
     {
-      if (jdField_a_of_type_ComTencentComponentNetworkDownloaderGlobalHandlerThread == null) {
-        jdField_a_of_type_ComTencentComponentNetworkDownloaderGlobalHandlerThread = new GlobalHandlerThread(paramContext);
+      if (mInstance == null) {
+        mInstance = new GlobalHandlerThread(paramContext);
       }
-      return jdField_a_of_type_ComTencentComponentNetworkDownloaderGlobalHandlerThread;
+      return mInstance;
     }
   }
   
-  public Handler a()
+  public Handler getHandler()
   {
-    return this.jdField_a_of_type_AndroidOsHandler;
+    return this.mHandler;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.GlobalHandlerThread
  * JD-Core Version:    0.7.0.1
  */

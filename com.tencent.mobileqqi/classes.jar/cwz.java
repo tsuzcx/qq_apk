@@ -1,13 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.IndividuationSetActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
 
-public class cwz
-  implements View.OnClickListener
+class cwz
+  implements Runnable
 {
-  public cwz(IndividuationSetActivity paramIndividuationSetActivity) {}
+  cwz(cwy paramcwy, String paramString) {}
   
-  public void onClick(View paramView) {}
+  public void run()
+  {
+    this.jdField_a_of_type_Cwy.a.b = true;
+    this.jdField_a_of_type_Cwy.a.d = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Cwy.a.a.setText(this.jdField_a_of_type_Cwy.a.d);
+  }
 }
 
 

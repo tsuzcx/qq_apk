@@ -1,12 +1,12 @@
-public class aids
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+
+public abstract interface aids
 {
-  public int a = -1;
-  public boolean a;
-  public int b;
+  public abstract boolean a(FileManagerEntity paramFileManagerEntity);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aids
  * JD-Core Version:    0.7.0.1
  */

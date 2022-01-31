@@ -1,31 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.data.CardProfile;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
 
-public class uhp
-  implements View.OnClickListener
+class uhp
+  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  public uhp(VisitorsActivity paramVisitorsActivity) {}
+  uhp(uho paramuho) {}
   
-  public void onClick(View paramView)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if ((paramView.getTag() instanceof uil))
-    {
-      paramView = (uil)paramView.getTag();
-      ReportController.a(this.a.app, "CliOper", "", "", "0X800444A", "0X800444A", 0, 0, "", "", "", "");
-      VisitorsActivity.a(this.a, (CardProfile)paramView.a);
+    float f = paramScaleGestureDetector.getScaleFactor();
+    if ((Float.isNaN(f)) || (Float.isInfinite(f))) {
+      return false;
     }
-    while (!(paramView.getTag() instanceof uin)) {
-      return;
+    if (f >= 0.0F) {
+      uho.a(this.a).a(f, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
     }
-    this.a.a();
+    return true;
   }
+  
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return true;
+  }
+  
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uhp
  * JD-Core Version:    0.7.0.1
  */

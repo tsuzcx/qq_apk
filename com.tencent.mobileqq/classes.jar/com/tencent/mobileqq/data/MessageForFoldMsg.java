@@ -53,7 +53,7 @@ public class MessageForFoldMsg
     return false;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     boolean bool = true;
     if (this.istroop != 1)
@@ -92,7 +92,7 @@ public class MessageForFoldMsg
     }
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     int i = 1;
     if (this.istroop != 1)
@@ -118,7 +118,7 @@ public class MessageForFoldMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForFoldMsg
  * JD-Core Version:    0.7.0.1
  */

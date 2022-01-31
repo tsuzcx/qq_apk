@@ -1,55 +1,47 @@
 package com.tencent.mobileqq.dinifly.model.animatable;
 
-import com.tencent.mobileqq.dinifly.animation.Keyframe;
+import com.tencent.mobileqq.dinifly.value.Keyframe;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public abstract class BaseAnimatableValue<V, O>
+abstract class BaseAnimatableValue<V, O>
   implements AnimatableValue<V, O>
 {
-  final V initialValue;
   final List<Keyframe<V>> keyframes;
   
   BaseAnimatableValue(V paramV)
   {
-    this(Collections.emptyList(), paramV);
+    this(Collections.singletonList(new Keyframe(paramV)));
   }
   
-  BaseAnimatableValue(List<Keyframe<V>> paramList, V paramV)
+  BaseAnimatableValue(List<Keyframe<V>> paramList)
   {
     this.keyframes = paramList;
-    this.initialValue = paramV;
   }
   
-  O convertType(V paramV)
+  public List<Keyframe<V>> getKeyframes()
   {
-    return paramV;
+    return this.keyframes;
   }
   
-  public O getInitialValue()
+  public boolean isStatic()
   {
-    return convertType(this.initialValue);
-  }
-  
-  public boolean hasAnimation()
-  {
-    return !this.keyframes.isEmpty();
+    return (this.keyframes.isEmpty()) || ((this.keyframes.size() == 1) && (((Keyframe)this.keyframes.get(0)).isStatic()));
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("parseInitialValue=").append(this.initialValue);
     if (!this.keyframes.isEmpty()) {
-      localStringBuilder.append(", values=").append(Arrays.toString(this.keyframes.toArray()));
+      localStringBuilder.append("values=").append(Arrays.toString(this.keyframes.toArray()));
     }
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.animatable.BaseAnimatableValue
  * JD-Core Version:    0.7.0.1
  */

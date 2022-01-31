@@ -1,28 +1,22 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.util.VersionUtils;
+import android.animation.ValueAnimator;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
 
 public class xik
-  implements View.OnClickListener
+  extends xgc
 {
-  public xik(BannerManager paramBannerManager) {}
+  public xik(ElasticImageView paramElasticImageView) {}
   
-  public void onClick(View paramView)
+  public void a(ValueAnimator paramValueAnimator)
   {
-    if (VersionUtils.e())
-    {
-      BannerManager.a(this.a).startActivity(new Intent("android.settings.SETTINGS"));
-      return;
-    }
-    BannerManager.a(this.a).startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
+    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    ElasticImageView.a(this.a, this.a.d);
+    wxe.b("ElasticImageView", "updateAnimator:" + this.a.d);
+    ElasticImageView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xik
  * JD-Core Version:    0.7.0.1
  */

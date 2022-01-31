@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.search.activity.VADActivity;
-import com.tencent.mobileqq.search.searchengine.ApproximateSearchEngine;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
-
-public class ahsn
-  implements Runnable
+class ahsn
+  implements ahvu
 {
-  public ahsn(VADActivity paramVADActivity, ApproximateSearchEngine paramApproximateSearchEngine, SearchRequest paramSearchRequest) {}
+  ahsn(ahsi paramahsi) {}
   
-  public void run()
+  public long a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineApproximateSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest);
+    return ahsi.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahsn
  * JD-Core Version:    0.7.0.1
  */

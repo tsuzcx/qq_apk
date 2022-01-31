@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-
-class shm
-  implements Runnable
+public abstract interface shm
 {
-  shm(shl paramshl, String paramString) {}
+  public abstract void a();
   
-  public void run()
-  {
-    if (this.jdField_a_of_type_Shl.a.a != null) {
-      this.jdField_a_of_type_Shl.a.a.a(this.jdField_a_of_type_JavaLangString, 3000);
-    }
-  }
+  public abstract void a(float paramFloat);
+  
+  public abstract void b(float paramFloat);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     shm
  * JD-Core Version:    0.7.0.1
  */

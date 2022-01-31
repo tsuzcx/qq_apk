@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.nearby.NearbyLikeLimitManager.onDoVoteListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afds
-  implements NearbyLikeLimitManager.onDoVoteListener
+class afds
+  implements DialogInterface.OnClickListener
 {
-  public afds(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  afds(afdq paramafdq, ChatMessage paramChatMessage) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.c(paramBoolean);
-    this.a.t = paramBoolean;
+    this.jdField_a_of_type_Afdq.d(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afds
  * JD-Core Version:    0.7.0.1
  */

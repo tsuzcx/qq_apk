@@ -19,13 +19,13 @@ import com.tencent.mobileqq.webviewplugin.WebViewPlugin;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import ihl;
-import ihm;
-import ihn;
-import iho;
-import ihp;
-import ihq;
-import ihr;
+import icr;
+import ics;
+import ict;
+import icu;
+import icv;
+import icw;
+import icx;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -190,7 +190,7 @@ public class QzoneWebMusicJsPlugin
         paramJsBridgeListener = this.mRuntime.a();
         if ((paramJsBridgeListener != null) && (needPlayTips()))
         {
-          showPlayTips(paramJsBridgeListener, new ihl(this, paramVarArgs), new ihm(this));
+          showPlayTips(paramJsBridgeListener, new icr(this, paramVarArgs), new ics(this));
           this.isFlowWarningVisible = true;
         }
         for (;;)
@@ -204,7 +204,7 @@ public class QzoneWebMusicJsPlugin
         paramJsBridgeListener = this.mRuntime.a();
         if ((paramJsBridgeListener != null) && (needPlayTips()))
         {
-          showPlayTips(paramJsBridgeListener, new ihn(this, paramVarArgs), new iho(this));
+          showPlayTips(paramJsBridgeListener, new ict(this, paramVarArgs), new icu(this));
           this.isFlowWarningVisible = true;
         }
         for (;;)
@@ -323,7 +323,7 @@ public class QzoneWebMusicJsPlugin
         paramString = this.mRuntime.a();
       } while ((paramString == null) || (paramString.isFinishing()) || (this.isShowing) || (!bool) || (!needPlayTips()));
       pausePlay();
-      showPlayTips(paramString, new ihq(this), new ihr(this));
+      showPlayTips(paramString, new icw(this), new icx(this));
       this.isShowing = true;
       return;
       if (paramString.equals("cmd.getPlayMode"))
@@ -535,7 +535,7 @@ public class QzoneWebMusicJsPlugin
           ((TextView)localObject).setVisibility(0);
           ((TextView)localObject).setTextColor(Color.parseColor("#" + str));
           ((TextView)localObject).setText(paramString);
-          ((TextView)localObject).setOnClickListener(new ihp(this));
+          ((TextView)localObject).setOnClickListener(new icv(this));
           return;
         }
         catch (Exception paramString)

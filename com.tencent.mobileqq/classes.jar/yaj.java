@@ -1,24 +1,25 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 
-public class yaj
-  implements ChatActivityUtils.StartVideoListener
+public abstract class yaj
+  implements DialogInterface.OnCancelListener, DialogInterface.OnClickListener
 {
-  public yaj(SelectMemberActivity paramSelectMemberActivity) {}
+  public abstract void a();
   
-  public void a() {}
-  
-  public void b() {}
-  
-  public void c()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.g = 2;
-    this.a.finish();
+    a();
+  }
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yaj
  * JD-Core Version:    0.7.0.1
  */

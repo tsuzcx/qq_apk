@@ -20,6 +20,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
+import oicq.wlogin_sdk.request.WtloginHelper;
 
 public class d
 {
@@ -143,12 +144,12 @@ public class d
       if (str != null)
       {
         l = Long.parseLong(str);
-        if ((l1 < l) || (l1 - l >= com.tencent.mobileqq.msf.core.a.a.D())) {}
+        if ((l1 < l) || (l1 - l >= com.tencent.mobileqq.msf.core.a.a.E())) {}
       }
     }
     else
     {
-      while ((l1 >= l) && (l1 - l < com.tencent.mobileqq.msf.core.a.a.D()))
+      while ((l1 >= l) && (l1 - l < com.tencent.mobileqq.msf.core.a.a.E()))
       {
         String str;
         return;
@@ -250,7 +251,7 @@ public class d
     Object localObject4 = this.e.d();
     Object localObject2 = new ArrayList();
     Object localObject3 = localObject4;
-    if (com.tencent.mobileqq.msf.core.a.a.ai())
+    if (com.tencent.mobileqq.msf.core.a.a.aj())
     {
       localObject4 = ((ArrayList)localObject4).iterator();
       if (((Iterator)localObject4).hasNext())
@@ -260,13 +261,18 @@ public class d
           ((List)localObject2).add(localObject3);
         }
         if (!((SimpleAccount)localObject3).getUin().equals(this.e.i())) {
-          break label661;
+          break label707;
         }
         localObject1 = localObject3;
       }
     }
-    label402:
-    label661:
+    label395:
+    label436:
+    label694:
+    label699:
+    label702:
+    label704:
+    label707:
     for (;;)
     {
       break;
@@ -274,7 +280,7 @@ public class d
       {
         Collections.sort((List)localObject2, new f(this));
         if (((List)localObject2).size() <= m) {
-          break label658;
+          break label704;
         }
         localObject2 = ((List)localObject2).subList(0, m);
       }
@@ -302,16 +308,16 @@ public class d
           {
             localObject2 = ((SimpleAccount)((Iterator)localObject1).next()).getUin();
             if (!this.e.g((String)localObject2)) {
-              break label653;
+              break label699;
             }
             long l4 = b((String)localObject2);
-            long l2 = com.tencent.mobileqq.msf.core.a.a.ag();
+            long l2 = com.tencent.mobileqq.msf.core.a.a.ah();
             long l1 = l2;
             if (l2 <= 0L) {
               l1 = 604800000L;
             }
             if (l3 - l4 <= l1 + d()) {
-              break label648;
+              break label694;
             }
             i1 = 1;
             localObject3 = new g(this, (String)localObject2);
@@ -319,19 +325,24 @@ public class d
             n.postDelayed((Runnable)localObject3, l1);
             l4 = d((String)localObject2);
             long l5 = c((String)localObject2);
-            l2 = com.tencent.mobileqq.msf.core.a.a.ah();
+            l2 = com.tencent.mobileqq.msf.core.a.a.ai();
             l1 = l2;
             if (l2 <= 0L) {
               l1 = 21600000L;
             }
-            if ((!h) || (l3 - l5 > l1) || (this.e.a.getWtLoginCenter().b((String)localObject2)))
+            if ((TextUtils.isEmpty(m.a((String)localObject2))) && (!l.e.IsNeedLoginWithPasswd((String)localObject2, 16L).booleanValue()))
             {
+              i2 = 1;
+              if ((h) && (l3 - l5 <= l1) && (!this.e.a.getWtLoginCenter().b((String)localObject2)) && (i2 == 0)) {
+                break label665;
+              }
               bool1 = true;
+              l.e.SetUinDeviceToken(true);
               if (l3 <= l4 - 1800000L) {
-                break label625;
+                break label671;
               }
               bool2 = true;
-              label417:
+              label458:
               QLog.d("MSF.C.TokenChecker", 1, "checkToken for " + MsfSdkUtils.getShortUin((String)localObject2) + " now: " + l3 + " lastCheckWebviewKeyTime: " + l5 + " needChangeToken: " + bool1 + " isInstant:" + bool2);
               i2 = i1;
               if (bool1)
@@ -348,11 +359,11 @@ public class d
             for (;;)
             {
               if (i2 == 0) {
-                break label656;
+                break label702;
               }
               try
               {
-                Thread.sleep(com.tencent.mobileqq.msf.core.a.a.E());
+                Thread.sleep(com.tencent.mobileqq.msf.core.a.a.F());
               }
               catch (Throwable localThrowable)
               {
@@ -364,11 +375,12 @@ public class d
               QLog.d("MSF.C.TokenChecker", 2, "checkToken, no active account");
             }
             return;
+            i2 = 0;
+            break label395;
             bool1 = false;
-            break label402;
-            label625:
+            break label436;
             bool2 = false;
-            break label417;
+            break label458;
             h = true;
             MsfStore.getNativeConfigStore().n_setConfig("_new_version_never_change_token", String.valueOf(true));
             return;

@@ -10,54 +10,76 @@ import java.util.Map;
 public final class s_picdata
   extends JceStruct
 {
-  static Map cache_busi_param;
+  static Map<String, byte[]> cache_binaryExtInfo;
+  static Map<Integer, String> cache_busi_param;
   static s_imgcrop cache_cropinfo;
-  static ArrayList cache_facelist;
+  static ArrayList<stFaceItem> cache_facelist;
+  static ArrayList<stFaceItem> cache_facelist_info;
   static stPoi cache_geo;
-  static cell_music cache_musicdata = new cell_music();
+  static s_LabelInfo cache_label_info;
+  static Map<Integer, String> cache_mapExifInfo;
+  static Map<String, String> cache_mapExtern;
+  static Map<Integer, String> cache_mapOcrInfo;
+  static cell_music cache_musicdata;
   static cell_operation cache_operation;
-  static ArrayList cache_photoTag;
-  static Map cache_photourl = new HashMap();
+  static ArrayList<stPhotoTag> cache_photoTag;
+  static Map<Integer, s_picurl> cache_photourl = new HashMap();
   static s_pic_host cache_pic_host_nick;
   static stPoi cache_poi;
+  static Map<Integer, String> cache_shouzhang_extend_map;
+  static ArrayList<showdrying_taginfo> cache_vecShowDryingTagInfo;
   static cell_video cache_videodata;
   public String albumid = "";
   public String audio_summary = "";
-  public long batch_id;
-  public Map busi_param;
+  public long batchid;
+  public Map<String, byte[]> binaryExtInfo;
+  public Map<Integer, String> busi_param;
   public String clientkey = "";
   public int commentcount;
   public s_imgcrop cropinfo;
   public String curlikekey = "";
   public String desc = "";
-  public ArrayList facelist;
+  public ArrayList<stFaceItem> facelist;
+  public ArrayList<stFaceItem> facelist_info;
+  public String fashion_tag_key = "";
   public int flag;
   public stPoi geo;
   public boolean isAutoPlayGif;
   public boolean isCoverPic;
   public int isIndependentUgc;
   public boolean ismylike;
+  public s_LabelInfo label_info;
   public int likecount;
   public String lloc = "";
   public String luckyMoneyDesc = "";
+  public Map<Integer, String> mapExifInfo;
+  public Map<String, String> mapExtern;
+  public Map<Integer, String> mapOcrInfo;
   public long modifytime;
   public cell_music musicdata;
   public cell_operation operation;
   public byte opmask = 7;
   public int opsynflag;
   public String orglikekey = "";
-  public ArrayList photoTag;
-  public Map photourl;
+  public long origin_height;
+  public long origin_phototype;
+  public long origin_size;
+  public long origin_width;
+  public ArrayList<stPhotoTag> photoTag;
+  public Map<Integer, s_picurl> photourl;
   public s_pic_host pic_host_nick;
   public int piccategory;
   public String picname = "";
   public stPoi poi;
+  public String quankey = "";
   public int raw;
   public int shoottime;
+  public Map<Integer, String> shouzhang_extend_map;
   public String sloc = "";
   public int type;
   public long uUploadTime;
   public long uploadUin;
+  public ArrayList<showdrying_taginfo> vecShowDryingTagInfo;
   public cell_video videodata;
   public int videoflag;
   
@@ -79,21 +101,41 @@ public final class s_picdata
     cache_pic_host_nick = new s_pic_host();
     cache_geo = new stPoi();
     cache_operation = new cell_operation();
+    cache_musicdata = new cell_music();
+    cache_binaryExtInfo = new HashMap();
+    localObject = (byte[])new byte[1];
+    ((byte[])localObject)[0] = 0;
+    cache_binaryExtInfo.put("", localObject);
+    cache_vecShowDryingTagInfo = new ArrayList();
+    localObject = new showdrying_taginfo();
+    cache_vecShowDryingTagInfo.add(localObject);
+    cache_shouzhang_extend_map = new HashMap();
+    cache_shouzhang_extend_map.put(Integer.valueOf(0), "");
+    cache_label_info = new s_LabelInfo();
+    cache_facelist_info = new ArrayList();
+    localObject = new stFaceItem();
+    cache_facelist_info.add(localObject);
+    cache_mapOcrInfo = new HashMap();
+    cache_mapOcrInfo.put(Integer.valueOf(0), "");
+    cache_mapExifInfo = new HashMap();
+    cache_mapExifInfo.put(Integer.valueOf(0), "");
+    cache_mapExtern = new HashMap();
+    cache_mapExtern.put("", "");
   }
   
   public s_picdata() {}
   
-  public s_picdata(String paramString1, String paramString2, String paramString3, Map paramMap1, int paramInt1, boolean paramBoolean1, int paramInt2, int paramInt3, Map paramMap2, String paramString4, int paramInt4, int paramInt5, long paramLong1, long paramLong2, String paramString5, String paramString6, String paramString7, s_imgcrop params_imgcrop, long paramLong3, int paramInt6, int paramInt7, stPoi paramstPoi1, ArrayList paramArrayList1, int paramInt8, boolean paramBoolean2, ArrayList paramArrayList2, byte paramByte, String paramString8, int paramInt9, int paramInt10, cell_video paramcell_video, boolean paramBoolean3, s_pic_host params_pic_host, String paramString9, stPoi paramstPoi2, cell_operation paramcell_operation, cell_music paramcell_music, String paramString10, long paramLong4)
+  public s_picdata(String paramString1, String paramString2, String paramString3, Map<Integer, s_picurl> paramMap, int paramInt1, boolean paramBoolean1, int paramInt2, int paramInt3, Map<Integer, String> paramMap1, String paramString4, int paramInt4, int paramInt5, long paramLong1, long paramLong2, String paramString5, String paramString6, String paramString7, s_imgcrop params_imgcrop, long paramLong3, int paramInt6, int paramInt7, stPoi paramstPoi1, ArrayList<stFaceItem> paramArrayList1, int paramInt8, boolean paramBoolean2, ArrayList<stPhotoTag> paramArrayList, byte paramByte, String paramString8, int paramInt9, int paramInt10, cell_video paramcell_video, boolean paramBoolean3, s_pic_host params_pic_host, String paramString9, stPoi paramstPoi2, cell_operation paramcell_operation, cell_music paramcell_music, String paramString10, long paramLong4, String paramString11, long paramLong5, long paramLong6, long paramLong7, long paramLong8, Map<String, byte[]> paramMap2, ArrayList<showdrying_taginfo> paramArrayList2, String paramString12, Map<Integer, String> paramMap3, s_LabelInfo params_LabelInfo, ArrayList<stFaceItem> paramArrayList3, Map<Integer, String> paramMap4, Map<Integer, String> paramMap5, Map<String, String> paramMap6)
   {
     this.picname = paramString1;
     this.sloc = paramString2;
     this.lloc = paramString3;
-    this.photourl = paramMap1;
+    this.photourl = paramMap;
     this.type = paramInt1;
     this.ismylike = paramBoolean1;
     this.likecount = paramInt2;
     this.commentcount = paramInt3;
-    this.busi_param = paramMap2;
+    this.busi_param = paramMap1;
     this.clientkey = paramString4;
     this.isIndependentUgc = paramInt4;
     this.opsynflag = paramInt5;
@@ -110,7 +152,7 @@ public final class s_picdata
     this.facelist = paramArrayList1;
     this.raw = paramInt8;
     this.isAutoPlayGif = paramBoolean2;
-    this.photoTag = paramArrayList2;
+    this.photoTag = paramArrayList;
     this.opmask = paramByte;
     this.albumid = paramString8;
     this.piccategory = paramInt9;
@@ -123,7 +165,21 @@ public final class s_picdata
     this.operation = paramcell_operation;
     this.musicdata = paramcell_music;
     this.audio_summary = paramString10;
-    this.batch_id = paramLong4;
+    this.batchid = paramLong4;
+    this.quankey = paramString11;
+    this.origin_size = paramLong5;
+    this.origin_width = paramLong6;
+    this.origin_height = paramLong7;
+    this.origin_phototype = paramLong8;
+    this.binaryExtInfo = paramMap2;
+    this.vecShowDryingTagInfo = paramArrayList2;
+    this.fashion_tag_key = paramString12;
+    this.shouzhang_extend_map = paramMap3;
+    this.label_info = params_LabelInfo;
+    this.facelist_info = paramArrayList3;
+    this.mapOcrInfo = paramMap4;
+    this.mapExifInfo = paramMap5;
+    this.mapExtern = paramMap6;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -166,7 +222,21 @@ public final class s_picdata
     this.operation = ((cell_operation)paramJceInputStream.read(cache_operation, 35, false));
     this.musicdata = ((cell_music)paramJceInputStream.read(cache_musicdata, 36, false));
     this.audio_summary = paramJceInputStream.readString(37, false);
-    this.batch_id = paramJceInputStream.read(this.batch_id, 38, false);
+    this.batchid = paramJceInputStream.read(this.batchid, 38, false);
+    this.quankey = paramJceInputStream.readString(39, false);
+    this.origin_size = paramJceInputStream.read(this.origin_size, 40, false);
+    this.origin_width = paramJceInputStream.read(this.origin_width, 41, false);
+    this.origin_height = paramJceInputStream.read(this.origin_height, 42, false);
+    this.origin_phototype = paramJceInputStream.read(this.origin_phototype, 43, false);
+    this.binaryExtInfo = ((Map)paramJceInputStream.read(cache_binaryExtInfo, 44, false));
+    this.vecShowDryingTagInfo = ((ArrayList)paramJceInputStream.read(cache_vecShowDryingTagInfo, 45, false));
+    this.fashion_tag_key = paramJceInputStream.readString(46, false);
+    this.shouzhang_extend_map = ((Map)paramJceInputStream.read(cache_shouzhang_extend_map, 47, false));
+    this.label_info = ((s_LabelInfo)paramJceInputStream.read(cache_label_info, 48, false));
+    this.facelist_info = ((ArrayList)paramJceInputStream.read(cache_facelist_info, 49, false));
+    this.mapOcrInfo = ((Map)paramJceInputStream.read(cache_mapOcrInfo, 50, false));
+    this.mapExifInfo = ((Map)paramJceInputStream.read(cache_mapExifInfo, 51, false));
+    this.mapExtern = ((Map)paramJceInputStream.read(cache_mapExtern, 52, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -251,12 +321,46 @@ public final class s_picdata
     if (this.audio_summary != null) {
       paramJceOutputStream.write(this.audio_summary, 37);
     }
-    paramJceOutputStream.write(this.batch_id, 38);
+    paramJceOutputStream.write(this.batchid, 38);
+    if (this.quankey != null) {
+      paramJceOutputStream.write(this.quankey, 39);
+    }
+    paramJceOutputStream.write(this.origin_size, 40);
+    paramJceOutputStream.write(this.origin_width, 41);
+    paramJceOutputStream.write(this.origin_height, 42);
+    paramJceOutputStream.write(this.origin_phototype, 43);
+    if (this.binaryExtInfo != null) {
+      paramJceOutputStream.write(this.binaryExtInfo, 44);
+    }
+    if (this.vecShowDryingTagInfo != null) {
+      paramJceOutputStream.write(this.vecShowDryingTagInfo, 45);
+    }
+    if (this.fashion_tag_key != null) {
+      paramJceOutputStream.write(this.fashion_tag_key, 46);
+    }
+    if (this.shouzhang_extend_map != null) {
+      paramJceOutputStream.write(this.shouzhang_extend_map, 47);
+    }
+    if (this.label_info != null) {
+      paramJceOutputStream.write(this.label_info, 48);
+    }
+    if (this.facelist_info != null) {
+      paramJceOutputStream.write(this.facelist_info, 49);
+    }
+    if (this.mapOcrInfo != null) {
+      paramJceOutputStream.write(this.mapOcrInfo, 50);
+    }
+    if (this.mapExifInfo != null) {
+      paramJceOutputStream.write(this.mapExifInfo, 51);
+    }
+    if (this.mapExtern != null) {
+      paramJceOutputStream.write(this.mapExtern, 52);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_picdata
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
-import java.lang.ref.WeakReference;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class xfz
-  extends xgc
+final class xfz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public xfz(PreloadResource paramPreloadResource, WeakReference paramWeakReference, PreloadModule paramPreloadModule) {}
+  xfz(xgb paramxgb) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    PreloadManager localPreloadManager = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((PreloadManager.a(localPreloadManager)) && (localPreloadManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource))) {
-      localPreloadManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule, null);
+    if (this.a != null) {
+      this.a.a(paramValueAnimator);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xfz
  * JD-Core Version:    0.7.0.1
  */

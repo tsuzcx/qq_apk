@@ -1,48 +1,76 @@
-import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCConnector;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
+import android.graphics.PointF;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.List;
 
 public class xge
-  implements EIPClientConnectListener
+  implements xea
 {
-  public xge(QWalletIPCConnector paramQWalletIPCConnector, long paramLong) {}
+  public xge(DoodleEditView paramDoodleEditView) {}
   
-  public void connectFailed()
+  public void a(xiq paramxiq)
   {
-    QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector, false);
-    QWalletIPCConnector.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector, false);
-    synchronized (QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector))
+    if ((paramxiq instanceof xed))
     {
-      QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletIPCConnector", 2, "connectFailed:" + QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector));
+      paramxiq = (xeb)DoodleEditView.a(this.a).a("TextLayer");
+      if (paramxiq != null) {
+        paramxiq.a();
       }
-      return;
     }
+    this.a.a.b();
   }
   
-  public void connectSuccess(EIPCConnection arg1)
+  public void a(xiq paramxiq, int paramInt1, int paramInt2)
   {
-    long l = System.currentTimeMillis();
-    if (??? != null) {
-      QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector, ???.procName);
-    }
-    QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector, true);
-    QWalletIPCConnector.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector, false);
-    synchronized (QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector))
+    if ((paramxiq instanceof xed))
     {
-      QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletIPCConnector", 2, "connectSuccess:" + QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector) + "|" + (l - this.jdField_a_of_type_Long));
+      wxe.b("DoodleEditView", "click the TextItem:" + paramxiq);
+      paramxiq = (xeb)DoodleEditView.a(this.a).a("TextLayer");
+      this.a.a.b();
+      if ((paramxiq != null) && (paramxiq.a != null))
+      {
+        paramxiq.d();
+        paramxiq.a.a();
       }
-      return;
+    }
+    xdn localxdn;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (!(paramxiq instanceof xdr));
+        wxe.b("DoodleEditView", "click the FaceAndTextItem:" + paramxiq);
+        paramxiq.d = false;
+        localxdn = (xdn)DoodleEditView.a(this.a).a("FaceLayer");
+        xdr localxdr = (xdr)paramxiq;
+        if (localxdn != null) {
+          localxdn.jdField_a_of_type_JavaUtilList.add(localxdr);
+        }
+        this.a.a.b();
+        this.a.setVisibility(8);
+      } while (DoodleEditView.a(this.a) == null);
+      if (!(paramxiq instanceof xdo)) {
+        break;
+      }
+    } while ((localxdn == null) || (localxdn.jdField_a_of_type_Xdu == null));
+    localxdn.jdField_a_of_type_Xdu.a((xdo)paramxiq);
+    return;
+    DoodleEditView.a(this.a).a(paramxiq);
+  }
+  
+  public void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3)
+  {
+    if (DoodleEditView.a(this.a) != null) {
+      DoodleEditView.a(this.a).a(paramBoolean1, paramFloat, paramInt1, paramInt2, paramPointF, paramBoolean2, paramInt3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xge
  * JD-Core Version:    0.7.0.1
  */

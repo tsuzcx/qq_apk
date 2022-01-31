@@ -1,23 +1,41 @@
-import com.tencent.mobileqq.activity.selectmember.RenMaiQuanMemberListInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.CircleManager;
-import com.tencent.mobileqq.service.circle.IGroupObserver;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class euy
-  implements IGroupObserver
+  implements View.OnTouchListener
 {
-  public euy(RenMaiQuanMemberListInnerFrame paramRenMaiQuanMemberListInnerFrame) {}
+  public euy(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramInt == 2) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.k();
-    }
-    if (paramBoolean)
+    if (paramMotionEvent.getAction() == 0)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaUtilArrayList, false);
-      this.a.jdField_a_of_type_Euz.notifyDataSetChanged();
+      paramView = new int[2];
+      VoipDialInterfaceActivity.b(this.a).getLocationInWindow(paramView);
+      paramMotionEvent = new int[2];
+      VoipDialInterfaceActivity.b(this.a).getLocationOnScreen(paramMotionEvent);
+      paramMotionEvent = new int[2];
+      VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
+      VoipDialInterfaceActivity.e(this.a).offsetTopAndBottom(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.b(this.a).getHeight() / 2 - VoipDialInterfaceActivity.e(this.a).getHeight() / 2);
+      VoipDialInterfaceActivity.e(this.a).offsetLeftAndRight(paramView[0] + VoipDialInterfaceActivity.b(this.a).getWidth() / 2 - VoipDialInterfaceActivity.e(this.a).getWidth() / 2);
+      VoipDialInterfaceActivity.e(this.a).setVisibility(0);
     }
+    while (paramMotionEvent.getAction() != 1) {
+      return false;
+    }
+    paramView = new int[2];
+    VoipDialInterfaceActivity.b(this.a).getLocationInWindow(paramView);
+    paramMotionEvent = new int[2];
+    VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
+    VoipDialInterfaceActivity.e(this.a).offsetTopAndBottom(-(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.b(this.a).getHeight() / 2 - VoipDialInterfaceActivity.e(this.a).getHeight() / 2));
+    VoipDialInterfaceActivity.e(this.a).offsetLeftAndRight(-(paramView[0] + VoipDialInterfaceActivity.b(this.a).getWidth() / 2 - VoipDialInterfaceActivity.e(this.a).getWidth() / 2));
+    VoipDialInterfaceActivity.e(this.a).setVisibility(4);
+    VoipDialInterfaceActivity.c(this.a).invalidate();
+    return false;
   }
 }
 

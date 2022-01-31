@@ -1,218 +1,373 @@
 package com.tencent.token;
 
-import android.content.ContentValues;
-import android.content.Context;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.token.core.bean.RealNameRegResult;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.ui.ct;
-import com.tencent.token.utils.s;
-import java.util.HashMap;
+import android.os.Looper;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.core.bean.SafeMsgItem;
+import com.tencent.token.global.f;
+import com.tencent.token.global.h;
+import com.tencent.token.ui.LoginMsgActivity;
+import com.tencent.token.utils.w;
+import com.tencent.token.utils.x;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class er
-  extends bm
+public class er
 {
-  public static String h;
-  public static String i;
-  public long c;
-  public long d;
-  public int e;
-  public String f;
-  public String g;
-  private int j;
-  private byte[] k;
-  private byte[] l;
-  private byte[] m;
-  private byte[] n;
-  private byte[] o;
-  private RealNameRegResult p;
+  public gb a = null;
+  public boolean b;
+  long c = 0L;
+  public int d = -1;
+  public long e = 0L;
+  private List f = null;
+  private int g = 0;
+  private boolean h = false;
   
-  protected final String a()
+  public er(String paramString)
   {
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    for (String str = ax.c; str == null; str = null)
-    {
-      this.a.a(104, null, null);
-      return null;
-    }
-    return com.tencent.token.global.b.c() + "/cn/mbtoken3/mbtoken3_realname_reg";
+    this.a = new gb(paramString);
   }
   
-  protected final void a(fs paramfs)
+  private void a(List paramList)
   {
-    this.c = ((Long)paramfs.c.get("param.uinhash")).longValue();
-    this.d = ((Long)paramfs.c.get("param.realuin")).longValue();
-    this.f = ((String)paramfs.c.get("param.realname"));
-    this.g = ((String)paramfs.c.get("param.idnumber"));
-    this.j = ((Integer)paramfs.c.get("param.optype")).intValue();
-    this.k = ((byte[])paramfs.c.get("param.facedata"));
-    this.l = ((byte[])paramfs.c.get("param.frontdata"));
-    this.m = ((byte[])paramfs.c.get("param.backdata"));
-    this.n = ((byte[])paramfs.c.get("param.prontphotoinfo"));
-    this.o = ((byte[])paramfs.c.get("param.backphotoinfo"));
-    this.e = paramfs.j;
+    l();
+    this.f.clear();
+    if (paramList != null) {
+      this.f.addAll(paramList);
+    }
   }
   
-  protected final void a(JSONObject paramJSONObject)
+  private void l()
   {
-    int i1 = paramJSONObject.getInt("err");
-    String str;
-    if (i1 != 0)
-    {
-      str = paramJSONObject.getString("info");
-      paramJSONObject = s.d(paramJSONObject.getString("data"));
-      if (paramJSONObject == null) {}
+    if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) {
+      return;
+    }
+    h.c("should run in mainthread");
+    h.d("should run in mainthread");
+  }
+  
+  public int a(int paramInt)
+  {
+    this.b = false;
+    int i = paramInt;
+    if (this.d > -1) {
+      i = Math.max(paramInt, this.d);
     }
     try
     {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      h = paramJSONObject.getString("hint_title");
-      i = paramJSONObject.getString("hint_content");
-      label66:
-      a(i1, str);
-      return;
-      paramJSONObject = s.d(paramJSONObject.getString("data"));
-      if (paramJSONObject != null)
+      ArrayList localArrayList = new ArrayList();
+      Object localObject = do.a().e();
+      if ((localObject == null) || (i <= 0))
       {
-        paramJSONObject = new JSONObject(new String(paramJSONObject));
-        e.a("ProtoRealNameReg json=" + paramJSONObject);
-        i1 = paramJSONObject.getInt("seq_id");
-        if (i1 != this.e)
-        {
-          this.a.a(10030, null, null);
-          e.c("parseJSON error seq is wrong seq=" + i1 + ",right = " + this.e);
-          return;
-        }
-        this.p = new RealNameRegResult(paramJSONObject);
-        this.a.a = 0;
-        return;
+        a(null);
+        return 0;
       }
-      e.c("parseJSON error decodeData=" + paramJSONObject);
-      a(10022, RqdApplication.i().getString(2131361799));
-      return;
+      long l2 = ((QQUser)localObject).mUin;
+      long l1 = l2;
+      if (!((QQUser)localObject).mIsBinded)
+      {
+        l1 = l2;
+        if (((QQUser)localObject).mUin == ((QQUser)localObject).mRealUin) {
+          l1 = w.f(((QQUser)localObject).mRealUin);
+        }
+      }
+      localObject = this.a.a(l1, i + 1);
+      if (localObject != null)
+      {
+        if (((List)localObject).size() > i)
+        {
+          this.b = true;
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localArrayList.add(((List)localObject).get(paramInt));
+            paramInt += 1;
+          }
+        }
+        localArrayList.addAll((Collection)localObject);
+      }
+      a(localArrayList);
+      paramInt = g();
+      return paramInt;
     }
-    catch (Exception paramJSONObject)
+    catch (Exception localException)
     {
-      break label66;
+      h.c("Exception:" + localException.toString());
+      a(null);
     }
+    return 0;
   }
   
-  public final fs b(fs paramfs)
+  public SafeMsgItem a()
   {
-    int i1 = paramfs.j;
-    paramfs.m = 1;
-    paramfs.n = new ContentValues(3);
-    Object localObject2 = paramfs.n;
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    for (Object localObject1 = ax.c;; localObject1 = null)
+    try
     {
-      ((ContentValues)localObject2).put("aq_base_sid", (String)localObject1);
-      paramfs.n.put("uin", Long.valueOf(this.c));
-      localObject1 = new JSONObject();
+      Object localObject = do.a().e();
+      if (localObject == null) {
+        return null;
+      }
+      if ((this.e != 0L) && (this.e != ((QQUser)localObject).mRealUin))
+      {
+        k();
+        com.tencent.token.ui.AccountPageActivity.mNeedShowIpcMsg = false;
+      }
+      long l2 = ((QQUser)localObject).mUin;
+      long l1 = l2;
+      if (!((QQUser)localObject).mIsBinded)
+      {
+        l1 = l2;
+        if (((QQUser)localObject).mUin == ((QQUser)localObject).mRealUin) {
+          l1 = w.f(((QQUser)localObject).mRealUin);
+        }
+      }
+      localObject = this.a.a(l1, 1);
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        localObject = (SafeMsgItem)((List)localObject).get(0);
+        return localObject;
+      }
+      return null;
+    }
+    catch (Exception localException) {}
+    return null;
+  }
+  
+  public f a(JSONObject paramJSONObject, long paramLong, int paramInt)
+  {
+    f localf = new f();
+    long l1 = x.a(paramInt, paramLong);
+    for (;;)
+    {
+      int i;
+      long l2;
       try
       {
-        ((JSONObject)localObject1).put("real_uin", this.d);
-        ((JSONObject)localObject1).put("realname", this.f);
-        ((JSONObject)localObject1).put("id_number", this.g);
-        ((JSONObject)localObject1).put("op_type", this.j);
-        e.a("doRealNameReg common_data=" + ((JSONObject)localObject1).toString());
-        if (this.k != null)
+        i = paramJSONObject.getInt("is_have_msg");
+        m = paramJSONObject.getInt("rsp_msg_num");
+        JSONArray localJSONArray = paramJSONObject.getJSONArray("msgs");
+        if ((i <= 0) || (m <= 0)) {
+          break label508;
+        }
+        bool = true;
+        this.h = bool;
+        h.a("is need again=" + i + ", msg cnt=" + m);
+        if ((m > 0) && (localJSONArray != null))
         {
-          localObject2 = com.tencent.token.utils.b.a(this.k);
-          ((JSONObject)localObject1).put("face_data", localObject2);
-          e.a("doRealNameReg face_data=" + ((String)localObject2).length());
-        }
-        if (this.l != null)
-        {
-          localObject2 = com.tencent.token.utils.b.a(this.l);
-          ((JSONObject)localObject1).put("id_photo_front", localObject2);
-          e.a("doRealNameReg front_data=" + ((String)localObject2).length());
-        }
-        if (this.m != null)
-        {
-          localObject2 = com.tencent.token.utils.b.a(this.m);
-          ((JSONObject)localObject1).put("id_photo_back", localObject2);
-          e.a("doRealNameReg back_data=" + ((String)localObject2).length());
-        }
-        if (this.n != null) {
-          ((JSONObject)localObject1).put("id_photo_info_front", com.tencent.token.utils.b.a(this.n));
-        }
-        if (this.o != null) {
-          ((JSONObject)localObject1).put("id_photo_info_back", com.tencent.token.utils.b.a(this.o));
-        }
-        ((JSONObject)localObject1).put("token_seq", ag.c().k());
-        ((JSONObject)localObject1).put("guid", s.a(x.a(RqdApplication.i()).c()));
-        ((JSONObject)localObject1).put("seq_id", i1);
-        ((JSONObject)localObject1).put("op_time", (int)(ag.c().r() / 1000L));
-        ((JSONObject)localObject1).put("vendor_id", Build.MANUFACTURER);
-        ((JSONObject)localObject1).put("android_id", s.a(RqdApplication.i()));
-        ((JSONObject)localObject1).put("imei", s.b(RqdApplication.i()));
-        ((JSONObject)localObject1).put("mac", s.c(RqdApplication.i()));
-        ((JSONObject)localObject1).put("device_model", Build.MODEL);
-        ((JSONObject)localObject1).put("sys_ver", Build.VERSION.RELEASE);
-        ((JSONObject)localObject1).put("face_detect_time", cv.e);
-        ((JSONObject)localObject1).put("face_detect_frame", cv.g);
-        ((JSONObject)localObject1).put("face_model_init_time", cv.f);
-        ((JSONObject)localObject1).put("vivo_model_init_time", cv.h);
-        ((JSONObject)localObject1).put("vivo_reg_action1_time", cv.i);
-        ((JSONObject)localObject1).put("vivo_reg_action2_time", cv.j);
-        ((JSONObject)localObject1).put("vivo_reg_action1_frame", cv.k);
-        ((JSONObject)localObject1).put("vivo_reg_action2_frame", cv.l);
-        ((JSONObject)localObject1).put("vivo_ver_action_time", cv.m);
-        ((JSONObject)localObject1).put("vivo_ver_action_frame", cv.n);
-        ((JSONObject)localObject1).put("vivo_reg_action1_type", ei.c);
-        ((JSONObject)localObject1).put("vivo_reg_action2_type", ei.d);
-        ((JSONObject)localObject1).put("vivo_ver_action_type", ei.e);
-        ((JSONObject)localObject1).put("id_photo_front_time", ct.b);
-        ((JSONObject)localObject1).put("id_photo_front_frame", ct.a);
-        ((JSONObject)localObject1).put("id_photo_back_time", ct.d);
-        ((JSONObject)localObject1).put("id_photo_back_frame", ct.c);
-        localObject2 = s.e(RqdApplication.i());
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          ((JSONObject)localObject1).put("route_name", localObject2);
-        }
-        localObject2 = s.d(RqdApplication.i());
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          ((JSONObject)localObject1).put("route_mac", localObject2);
+          c(m);
+          this.a.c(paramLong);
+          j = 0;
+          i = 0;
+          if (i >= localJSONArray.length()) {
+            continue;
+          }
+          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+          if (localJSONObject == null) {
+            break label514;
+          }
+          bool = true;
+          h.a(bool);
+          SafeMsgItem localSafeMsgItem = new SafeMsgItem();
+          localSafeMsgItem.mUin = paramLong;
+          if (!localSafeMsgItem.a(localJSONObject)) {
+            h.c("object item parse failed: " + i);
+          }
+          if ((this.d == -1) && (localSafeMsgItem.q()))
+          {
+            a(LoginMsgActivity.mNewMsgCntSetByAccount + i + 1, do.a().e().mRealUin);
+            if (paramInt == 1) {
+              com.tencent.token.ui.AccountPageActivity.mNeedShowIpcMsg = true;
+            }
+            h.c("setlist got IPC msg,index = " + (LoginMsgActivity.mNewMsgCntSetByAccount + i + 1));
+          }
+          if (this.a.a(localSafeMsgItem))
+          {
+            int k = j + 1;
+            j = k;
+            l2 = l1;
+            if (localSafeMsgItem.mTime + 1L > l1)
+            {
+              l2 = localSafeMsgItem.mTime + 1L;
+              j = k;
+            }
+          }
+          else
+          {
+            h.d("msg store to db is wrong" + localJSONObject);
+            l2 = l1;
+          }
         }
       }
-      catch (Exception localException)
+      catch (JSONException paramJSONObject)
       {
-        for (;;)
+        int m;
+        int j;
+        localf.a(10020, "JSONException:" + paramJSONObject.toString());
+        localf.c();
+        return localf;
+        if (j != m)
         {
-          localException.printStackTrace();
+          c(j);
+          h.c("msg cnt is wrong");
+          h.d("msg cnt is wrong" + paramJSONObject);
         }
+        x.a(paramInt, paramLong, l1);
+        localf.c();
+        return localf;
       }
-      localObject1 = com.tencent.token.utils.b.a(s.c(((JSONObject)localObject1).toString().getBytes())).replace('+', '-').replace('=', '_');
-      e.a("doRealNameReg data = " + ((String)localObject1).length());
-      paramfs.n.put("data", (String)localObject1);
-      return paramfs;
+      catch (Exception paramJSONObject)
+      {
+        localf.a(10021, "JSONException:" + paramJSONObject.toString());
+        continue;
+      }
+      i += 1;
+      l1 = l2;
+      continue;
+      label508:
+      boolean bool = false;
+      continue;
+      label514:
+      bool = false;
     }
   }
   
-  protected final void b()
+  public void a(int paramInt, long paramLong)
   {
-    if (!this.b.e)
+    this.d = paramInt;
+    this.e = paramLong;
+  }
+  
+  public void a(long paramLong)
+  {
+    l();
+    if (paramLong != 0L)
     {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.p;
-      localMessage.sendToTarget();
-      this.b.e = true;
+      this.a.a(paramLong);
+      this.f.clear();
     }
+  }
+  
+  public void a(SafeMsgItem paramSafeMsgItem)
+  {
+    paramSafeMsgItem.mIsRead = true;
+    this.a.d(paramSafeMsgItem.a());
+  }
+  
+  public SafeMsgItem b(int paramInt)
+  {
+    int i = this.f.size();
+    if ((paramInt < 0) || (paramInt >= i)) {
+      return null;
+    }
+    return (SafeMsgItem)this.f.get(paramInt);
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.f.iterator();
+    while (localIterator.hasNext()) {
+      ((SafeMsgItem)localIterator.next()).mIsChecked = true;
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    this.c = paramLong;
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.f.iterator();
+    while (localIterator.hasNext()) {
+      ((SafeMsgItem)localIterator.next()).mIsChecked = false;
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    this.g = paramInt;
+  }
+  
+  public boolean d()
+  {
+    Iterator localIterator = this.f.iterator();
+    while (localIterator.hasNext()) {
+      if (!((SafeMsgItem)localIterator.next()).mIsChecked) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  public int e()
+  {
+    Iterator localIterator = this.f.iterator();
+    int i = 0;
+    if (localIterator.hasNext())
+    {
+      if (((SafeMsgItem)localIterator.next()).mIsChecked) {
+        i += 1;
+      }
+      for (;;)
+      {
+        break;
+      }
+    }
+    return i;
+  }
+  
+  public void f()
+  {
+    l();
+    Iterator localIterator = this.f.iterator();
+    while (localIterator.hasNext())
+    {
+      SafeMsgItem localSafeMsgItem = (SafeMsgItem)localIterator.next();
+      if ((localSafeMsgItem != null) && (localSafeMsgItem.mIsChecked))
+      {
+        this.a.b(localSafeMsgItem.a());
+        localIterator.remove();
+      }
+    }
+  }
+  
+  public int g()
+  {
+    return this.f.size();
+  }
+  
+  public int h()
+  {
+    return this.g;
+  }
+  
+  public boolean i()
+  {
+    boolean bool2 = false;
+    QQUser localQQUser = do.a().e();
+    boolean bool1 = bool2;
+    if (localQQUser != null)
+    {
+      bool1 = bool2;
+      if (localQQUser.mUin == this.c) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public boolean j()
+  {
+    return this.h;
+  }
+  
+  public void k()
+  {
+    this.d = -1;
+    this.e = 0L;
   }
 }
 

@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
-import com.tencent.mobileqq.shortvideo.util.TextureDataPipe.OnFrameAvailableListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public class xxb
-  implements TextureDataPipe.OnFrameAvailableListener
+class xxb
+  extends RecyclerView.ViewHolder
 {
-  public xxb(CameraFilterGLView paramCameraFilterGLView) {}
-  
-  public void a()
+  xxb(xwy paramxwy, View paramView)
   {
-    CameraFilterGLView.b(this.a);
+    super(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xxb
  * JD-Core Version:    0.7.0.1
  */

@@ -13,20 +13,6 @@ public abstract interface URLDrawableDownListener
   public abstract void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt);
   
   public abstract void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable);
-  
-  public static class Adapter
-    implements URLDrawableDownListener
-  {
-    public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-    
-    public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-    
-    public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-    
-    public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-    
-    public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable) {}
-  }
 }
 
 

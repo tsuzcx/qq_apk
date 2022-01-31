@@ -1,26 +1,36 @@
-import android.widget.Button;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
-import com.tencent.mobileqq.util.Utils;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.mobileqq.activity.PublicAccountChatActivity;
+import java.util.List;
+import mqq.observer.BusinessObserver;
 
 public class dba
-  implements Runnable
+  implements BusinessObserver
 {
-  public dba(LoginVerifyCodeActivity paramLoginVerifyCodeActivity, String paramString1, String paramString2) {}
+  public dba(PublicAccountChatActivity paramPublicAccountChatActivity) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    String str = Utils.c(this.jdField_a_of_type_JavaLangString, this.b);
-    if ((str != null) && (str.length() > 0) && (LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity) != null))
+    if (paramBundle != null)
     {
-      LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity).setText(str);
-      LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity).setEnabled(true);
+      paramInt = paramBundle.getInt("update_type");
+      if (paramInt != 2) {}
     }
+    do
+    {
+      return;
+      if (paramInt == 1) {
+        PublicAccountChatActivity.a(this.a).a();
+      }
+      paramBundle = PublicAccountChatActivity.a(this.a).a(this.a.b, this.a.c());
+      PublicAccountChatActivity.a(this.a, paramBundle);
+    } while ((paramBundle == null) || (paramBundle.isEmpty()));
+    this.a.d(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dba
  * JD-Core Version:    0.7.0.1
  */

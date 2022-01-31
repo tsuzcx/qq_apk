@@ -1,18 +1,39 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry;
 
-public class anfz
-  implements Runnable
+class anfz
+  extends Handler
 {
-  public anfz(TroopHWJsPlugin.UploadMediaEntry paramUploadMediaEntry) {}
-  
-  public void run()
+  public anfz(anfy paramanfy, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopHWJsPlugin", 2, "start upload!id = " + this.a.jdField_a_of_type_Int + " type = " + this.a.b);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
-    this.a.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a();
+    do
+    {
+      return;
+      anfy.a(this.a);
+      return;
+      if (anfy.a(this.a))
+      {
+        anfy.a(this.a, false);
+        anet.a();
+      }
+      try
+      {
+        anfy.b(this.a);
+        return;
+      }
+      catch (Throwable paramMessage) {}
+    } while (!QLog.isColorLevel());
+    QLog.i("QRSession", 2, paramMessage.getMessage(), paramMessage);
   }
 }
 

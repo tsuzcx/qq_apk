@@ -1,24 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.Switch;
 
-class oag
-  extends SimpleJob
+public class oag
+  implements CompoundButton.OnCheckedChangeListener
 {
-  oag(oaf paramoaf, String paramString) {}
+  public oag(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    FeedSegment.a(this.jdField_a_of_type_Oaf.a.a).a(this.jdField_a_of_type_JavaLangString);
-    return null;
+    paramCompoundButton = this.a;
+    if (!paramBoolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ReadInJoySettingActivity.a(paramCompoundButton, bool);
+      if ((!ReadInJoySettingActivity.a(this.a).isPressed()) || (this.a.c)) {
+        break label75;
+      }
+      if (paramBoolean) {
+        break;
+      }
+      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
+      return;
+    }
+    ReadInJoySettingActivity.a(this.a).show();
+    return;
+    label75:
+    this.a.c = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oag
  * JD-Core Version:    0.7.0.1
  */

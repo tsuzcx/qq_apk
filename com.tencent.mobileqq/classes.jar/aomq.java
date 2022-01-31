@@ -1,131 +1,228 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aomq
-  extends PagerAdapter
+  implements aokj<String>
 {
-  public final SparseArray a;
-  public ArrayList a;
-  public final Map a;
+  protected String a;
+  public ArrayList<String> a;
+  public ConcurrentHashMap<String, anon> a;
+  public boolean a;
+  public String b;
+  public ArrayList<String> b;
+  public ConcurrentHashMap<String, ArrayList<String>> b;
+  public boolean b;
+  public ArrayList<String> c;
+  public boolean c;
   
-  public aomq(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager)
+  public aomq()
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(8);
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public int a()
+  public void a(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    if (i > 0) {
-      return paramInt % i;
-    }
-    return -1;
-  }
-  
-  @Nullable
-  public View a(int paramInt)
-  {
-    return (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-  }
-  
-  public FilterCategoryItem a(int paramInt)
-  {
-    paramInt = a(paramInt);
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (FilterCategoryItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager.a);
-    notifyDataSetChanged();
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "destroyItem position: " + paramInt);
-    }
-    View localView = (View)paramObject;
-    localView.removeCallbacks((Runnable)localView.getTag());
-    localView.clearAnimation();
-    paramViewGroup.removeView(localView);
-    paramObject = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localView.getClass());
-    paramViewGroup = paramObject;
-    if (paramObject == null)
+    boolean bool2 = false;
+    if (TextUtils.isEmpty(paramString))
     {
-      paramViewGroup = new LinkedList();
-      this.jdField_a_of_type_JavaUtilMap.put(localView.getClass(), paramViewGroup);
+      ArkAppCenter.c("ArkPlatformConfig", "onParse,fileOrRes is null");
+      return;
     }
-    paramViewGroup.offer(localView);
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size() * 100;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "instantiateItem position: " + paramInt);
-    }
-    Object localObject1 = a(paramInt);
-    if (localObject1 == null)
+    this.jdField_a_of_type_JavaLangString = paramString;
+    int i;
+    Object localObject2;
+    boolean bool1;
+    label127:
+    Object localObject3;
+    label181:
+    label253:
+    int j;
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("VideoFilterViewPager", 2, "instantiateItem find data is null!");
-      }
-      return null;
-    }
-    localObject1 = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localObject1.getClass());
-    if (localObject1 != null) {}
-    for (localObject1 = (View)((Queue)localObject1).poll();; localObject1 = null)
-    {
-      Object localObject2 = localObject1;
-      if (localObject1 == null)
+      paramString = new JSONObject(paramString);
+      localObject1 = paramString.optJSONArray("ark_force_update_app_list");
+      if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
       {
-        localObject2 = ((LayoutInflater)this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager.getContext().getSystemService("layout_inflater")).inflate(2130968736, null);
-        ((View)localObject2).setVisibility(8);
+        i = 0;
+        if (i < ((JSONArray)localObject1).length())
+        {
+          localObject2 = ((JSONArray)localObject1).optString(i);
+          if (TextUtils.isEmpty((CharSequence)localObject2)) {
+            break label937;
+          }
+          this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+          QLog.d("ArkPlatformConfig", 1, new Object[] { "get config update app=", localObject2 });
+          break label937;
+        }
       }
-      paramViewGroup.addView((View)localObject2);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
-      return localObject2;
+      if (paramString.optInt("ark_url_check_enable", 1) != 1) {
+        break label951;
+      }
+      bool1 = true;
+      this.jdField_a_of_type_Boolean = bool1;
+      QLog.d("ArkPlatformConfig", 1, new Object[] { "mIsUrlCheckEnable = ", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+      localObject1 = paramString.optJSONArray("ark_url_check_disable_apps");
+      if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
+      {
+        i = 0;
+        if (i < ((JSONArray)localObject1).length())
+        {
+          localObject2 = ((JSONArray)localObject1).optString(i);
+          if (TextUtils.isEmpty((CharSequence)localObject2)) {
+            break label944;
+          }
+          this.jdField_b_of_type_JavaUtilArrayList.add(localObject2);
+          QLog.d("ArkPlatformConfig", 1, new Object[] { "get config disable app=", localObject2 });
+          break label944;
+        }
+      }
+      if (paramString.optInt("ark_memory_optimize", 0) != 1) {
+        break label964;
+      }
+      bool1 = true;
+      this.jdField_b_of_type_Boolean = bool1;
+      QLog.d("ArkPlatformConfig", 1, new Object[] { "mIsOptimizeEnable = ", Boolean.valueOf(this.jdField_b_of_type_Boolean) });
+      this.jdField_b_of_type_JavaLangString = paramString.optString("ark_toast_info_config", "");
+      QLog.d("ArkPlatformConfig", 1, new Object[] { "mToastStr = ", this.jdField_b_of_type_JavaLangString });
+      localObject1 = paramString.optJSONArray("predownload_cfg_list");
+      if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
+      {
+        i = 0;
+        label341:
+        if (i < ((JSONArray)localObject1).length())
+        {
+          localObject3 = ((JSONArray)localObject1).getJSONObject(i);
+          localObject2 = ((JSONObject)localObject3).optString("app_name");
+          j = ((JSONObject)localObject3).optInt("preload");
+          if (!TextUtils.isEmpty((CharSequence)localObject2))
+          {
+            localObject3 = new anon();
+            ((anon)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject2);
+            ((anon)localObject3).jdField_a_of_type_Int = j;
+            QLog.d("ArkPlatformConfig", 1, "onParse predownload_cfg_list name = " + (String)localObject2 + ", preload = " + j);
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject2, localObject3);
+          }
+          else
+          {
+            QLog.d("ArkPlatformConfig", 1, "onParse predownload_cfg_list app_name is empty");
+          }
+        }
+      }
     }
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return ((paramObject instanceof View)) && (paramObject == paramView);
+    catch (JSONException paramString)
+    {
+      QLog.e("ArkPlatformConfig", 1, "onParse error e = ", paramString);
+      return;
+    }
+    QLog.d("ArkPlatformConfig", 1, new Object[] { "onParse mPreDownload list size =", Integer.valueOf(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size()) });
+    Object localObject1 = paramString.optJSONObject("app_global_url_config");
+    if (localObject1 != null)
+    {
+      localObject2 = ((JSONObject)localObject1).optJSONArray("white");
+      if (localObject2 != null)
+      {
+        j = ((JSONArray)localObject2).length();
+        localObject3 = new ArrayList();
+        i = 0;
+        label546:
+        if (i < j)
+        {
+          String str = ((JSONArray)localObject2).optString(i, "");
+          if (TextUtils.isEmpty(str)) {
+            break label970;
+          }
+          QLog.d("ArkPlatformConfig", 1, "onParse white url = " + str);
+          ((ArrayList)localObject3).add(str);
+          break label970;
+        }
+        QLog.d("ArkPlatformConfig", 1, new Object[] { "white list size =", Integer.valueOf(((ArrayList)localObject3).size()) });
+        this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put("white", localObject3);
+      }
+      localObject1 = ((JSONObject)localObject1).optJSONArray("black");
+      if (localObject1 != null)
+      {
+        j = ((JSONArray)localObject1).length();
+        localObject2 = new ArrayList();
+        i = 0;
+        label672:
+        if (i < j)
+        {
+          localObject3 = ((JSONArray)localObject1).optString(i, "");
+          if (TextUtils.isEmpty((CharSequence)localObject3)) {
+            break label977;
+          }
+          QLog.d("ArkPlatformConfig", 1, "onParse black url = " + (String)localObject3);
+          ((ArrayList)localObject2).add(localObject3);
+          break label977;
+        }
+        QLog.d("ArkPlatformConfig", 1, "black list size = " + ((ArrayList)localObject2).size());
+        this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put("black", localObject2);
+      }
+    }
+    QLog.d("ArkPlatformConfig", 1, "mGlobalUrlConfig list size = " + this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+    localObject1 = paramString.optJSONArray("ark_download_ctrl_disable_list");
+    if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0)) {
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i < ((JSONArray)localObject1).length())
+      {
+        localObject2 = ((JSONArray)localObject1).optString(i);
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          this.jdField_c_of_type_JavaUtilArrayList.add(localObject2);
+        }
+      }
+      else
+      {
+        QLog.d("ArkPlatformConfig", 1, new Object[] { "ark.dctrl get config disable download ctrl apps=", this.jdField_c_of_type_JavaUtilArrayList.toString() });
+        bool1 = bool2;
+        if (paramString.optInt("ark_vip_report_enable", 1) == 1) {
+          bool1 = true;
+        }
+        this.jdField_c_of_type_Boolean = bool1;
+        QLog.d("ArkPlatformConfig", 1, new Object[] { "ark VipReport enable=", Boolean.valueOf(this.jdField_c_of_type_Boolean) });
+        return;
+        label937:
+        i += 1;
+        break;
+        label944:
+        i += 1;
+        break label181;
+        label951:
+        bool1 = false;
+        break label127;
+        i += 1;
+        break label341;
+        label964:
+        bool1 = false;
+        break label253;
+        label970:
+        i += 1;
+        break label546;
+        label977:
+        i += 1;
+        break label672;
+      }
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomq
  * JD-Core Version:    0.7.0.1
  */

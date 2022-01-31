@@ -1,85 +1,181 @@
-import android.os.Process;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.MemoryConfigs;
-import com.tencent.mobileqq.app.MemoryManager;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.1;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.2;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.3;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.4;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.5;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.6;
+import com.tencent.biz.videostory.network.observer.VSDispatchObserver.7;
+import com.tencent.biz.videostory.network.request.VSBaseRequest;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.observer.BusinessObserver;
 
 public class zab
-  extends zeq
+  implements BusinessObserver
 {
-  protected void a()
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private final ConcurrentHashMap<Integer, ConcurrentHashMap<Integer, zac>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  
+  private void a(int paramInt, Bundle paramBundle, boolean paramBoolean)
   {
-    super.a();
-    MemoryManager.a().a(0, 0, this.c, this.d, 0L, GuardManager.c * 50, 2);
-    float f2 = MemoryManager.a().a();
-    float f1;
-    if (MemoryConfigs.a().d > 0.0F)
+    Object localObject2 = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    if (localObject2 == null)
     {
-      f1 = MemoryConfigs.a().d;
-      if ((f2 >= f1) && (MemoryConfigs.a().c) && (this.a.a == null))
-      {
-        MemoryManager.a().a(2L);
-        System.exit(-1);
-      }
-      if (this.d != GuardManager.c * 50 - 1) {
-        break label252;
-      }
-      l = MemoryManager.a(Process.myPid());
-      localHashMap = new HashMap();
-      localHashMap.put("qqUsedMemory", String.valueOf(l / 1024L));
-      localHashMap.put("ramSize", String.valueOf(DeviceInfoUtil.e() / 1024L));
-      localHashMap.put("heapSize", String.valueOf(Runtime.getRuntime().totalMemory() / 1024L));
-      localHashMap.put("maxHeapSize", String.valueOf(Runtime.getRuntime().maxMemory() / 1024L));
-      this.a.a("GM_reborn", localHashMap);
-      if (QLog.isColorLevel()) {
-        QLog.d("GuardManager", 2, "suicide to free memory! suicide_factor=" + GuardManager.c);
-      }
-    }
-    label252:
-    while (((this.d != GuardManager.c * 50) && (this.d != GuardManager.c * 50 + 1)) || (this.a.a != null))
-    {
-      long l;
-      HashMap localHashMap;
+      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: cmdCallback has All Removed");
       return;
-      f1 = 0.95F;
-      break;
     }
-    System.exit(-1);
+    VSBaseRequest localVSBaseRequest = (VSBaseRequest)paramBundle.getSerializable("key_request_data");
+    if (localVSBaseRequest == null)
+    {
+      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: request is null");
+      return;
+    }
+    if (((ConcurrentHashMap)localObject2).get(Integer.valueOf(localVSBaseRequest.getCurrentSeq())) == null)
+    {
+      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: CmdName:" + localVSBaseRequest.getCmdName() + " | TraceId:" + localVSBaseRequest.getTraceId() + " | cmdCallback SeqId:" + localVSBaseRequest.getCurrentSeq() + " is Null or has Removed");
+      return;
+    }
+    Object localObject1 = (FromServiceMsg)paramBundle.getParcelable("key_response_msg");
+    long l1 = paramBundle.getLong("key_send_timestamp");
+    paramBundle = (zac)((ConcurrentHashMap)localObject2).remove(Integer.valueOf(localVSBaseRequest.getCurrentSeq()));
+    if (paramBundle == null)
+    {
+      QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: onReceive: CmdName:" + localVSBaseRequest.getCmdName() + " | TraceId:" + localVSBaseRequest.getTraceId() + " | cmdCallback SeqId:" + localVSBaseRequest.getCurrentSeq() + " onVSRspCallBack is Null or removed");
+      return;
+    }
+    if (localObject1 != null)
+    {
+      long l2;
+      MessageMicro localMessageMicro;
+      try
+      {
+        localObject2 = localVSBaseRequest.parseResponseWrapper(bdpd.b(((FromServiceMsg)localObject1).getWupBuffer()));
+        l2 = ((Long)localObject2[0]).longValue();
+        localObject1 = (String)localObject2[1];
+        localObject2 = ((ByteStringMicro)localObject2[2]).toByteArray();
+        localMessageMicro = localVSBaseRequest.decode((byte[])localObject2);
+        if (localMessageMicro == null)
+        {
+          a().post(new VSDispatchObserver.2(this, paramBundle, l2, (String)localObject1, localVSBaseRequest, l1));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        a().post(new VSDispatchObserver.4(this, paramBundle, localVSBaseRequest, l1, localException));
+        return;
+      }
+      a().post(new VSDispatchObserver.3(this, paramBoolean, l2, localVSBaseRequest, (byte[])localObject2, paramBundle, localException, localMessageMicro, l1));
+      return;
+    }
+    a().post(new VSDispatchObserver.5(this, paramBundle, localVSBaseRequest, l1));
   }
   
-  protected void a(String paramString)
+  private void a(VSBaseRequest paramVSBaseRequest, byte[] paramArrayOfByte)
   {
-    this.a.a(3, paramString);
+    if (bdnn.a(paramVSBaseRequest.getRequestKey()))
+    {
+      wxe.d("VSNetworkHelper| Protocol Cache", "requestKey is empty");
+      return;
+    }
+    ThreadManagerV2.executeOnFileThread(new VSDispatchObserver.6(this, paramVSBaseRequest, paramArrayOfByte));
   }
   
-  protected void b()
+  public Handler a()
   {
-    this.a.a(4, "fake_p_msg");
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    }
+    return this.jdField_a_of_type_AndroidOsHandler;
   }
   
-  protected void b(String paramString)
+  public void a()
   {
-    super.b(paramString);
-    this.a.c(false);
-    if (!"trick_p_msg".equals(paramString)) {
-      this.a.a(false, new String[] { paramString });
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        int i = ((Integer)localIterator.next()).intValue();
+        ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
+        if (localConcurrentHashMap != null) {
+          localConcurrentHashMap.clear();
+        }
+      }
     }
-    long l = MemoryManager.a(Process.myPid());
-    if (zeo.a().a(l) != 2) {
-      this.a.c();
+    finally {}
+  }
+  
+  public void a(Context paramContext)
+  {
+    a(paramContext, -1);
+  }
+  
+  public void a(Context paramContext, int paramInt)
+  {
+    if (paramContext == null) {}
+    while (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramContext.hashCode())) == null) {
+      return;
     }
-    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(2, zeo.a().a, 0L);
-    CoreService.stopCoreService();
+    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramContext.hashCode()));
+    if ((localConcurrentHashMap != null) && (paramInt == -1))
+    {
+      localConcurrentHashMap.clear();
+      QLog.i("VSNetworkHelper", 1, String.format("cancel Request Context Success contextHashcode:%d, seq:%d", new Object[] { Integer.valueOf(paramContext.hashCode()), Integer.valueOf(paramInt) }));
+      return;
+    }
+    if ((localConcurrentHashMap != null) && (localConcurrentHashMap.remove(Integer.valueOf(paramInt)) != null))
+    {
+      QLog.i("VSNetworkHelper", 1, String.format("cancel Request Seq Success contextHashcode:%d, seq:%d", new Object[] { Integer.valueOf(paramContext.hashCode()), Integer.valueOf(paramInt) }));
+      return;
+    }
+    QLog.w("VSNetworkHelper", 1, String.format("cancel Request failed not found request callback contextHashcode:%d, seq:%d", new Object[] { Integer.valueOf(paramContext.hashCode()), Integer.valueOf(paramInt) }));
+  }
+  
+  public void a(VSBaseRequest paramVSBaseRequest, MessageMicro paramMessageMicro)
+  {
+    a().post(new VSDispatchObserver.7(this, paramVSBaseRequest, paramMessageMicro));
+  }
+  
+  public void a(VSBaseRequest paramVSBaseRequest, zac paramzac)
+  {
+    ConcurrentHashMap localConcurrentHashMap2 = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramVSBaseRequest.getContextHashCode()));
+    ConcurrentHashMap localConcurrentHashMap1 = localConcurrentHashMap2;
+    if (localConcurrentHashMap2 == null)
+    {
+      localConcurrentHashMap1 = new ConcurrentHashMap();
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramVSBaseRequest.getContextHashCode()), localConcurrentHashMap1);
+    }
+    try
+    {
+      localConcurrentHashMap1.put(Integer.valueOf(paramVSBaseRequest.getNewSeq()), paramzac);
+      return;
+    }
+    catch (Exception paramVSBaseRequest)
+    {
+      paramVSBaseRequest.printStackTrace();
+      QLog.e("VSNetworkHelper", 1, "setCallBack exception occur!" + paramVSBaseRequest.toString());
+    }
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    ThreadManagerV2.excute(new VSDispatchObserver.1(this, paramInt, paramBundle, paramBoolean), 16, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zab
  * JD-Core Version:    0.7.0.1
  */

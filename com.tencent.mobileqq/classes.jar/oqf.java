@@ -1,22 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.view.StoryImageDialog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class oqf
-  implements View.OnClickListener
+class oqf
+  implements ViewBase.OnClickListener
 {
-  public oqf(StoryImageDialog paramStoryImageDialog) {}
+  oqf(oqd paramoqd) {}
   
-  public void onClick(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    StoryReportor.a("home_page", "guide_close", 0, 0, new String[0]);
-    this.a.dismiss();
+    qki.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, "0X8009B77");
+    ors.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.jump_url);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oqf
  * JD-Core Version:    0.7.0.1
  */

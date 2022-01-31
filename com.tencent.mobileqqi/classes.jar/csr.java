@@ -1,45 +1,22 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ForwardOperations;
-import java.lang.ref.WeakReference;
-import mqq.observer.SSOAccountObserver;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
+import java.util.List;
 
-public class csr
-  extends SSOAccountObserver
+class csr
+  implements Runnable
 {
-  WeakReference a;
+  csr(csq paramcsq, List paramList) {}
   
-  public csr(ForwardOperations paramForwardOperations)
+  public void run()
   {
-    this.a = new WeakReference(paramForwardOperations);
-  }
-  
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    paramString = (ForwardOperations)this.a.get();
-    if ((paramString != null) && (!paramString.c) && (ForwardOperations.a(paramString) != null)) {
-      ForwardOperations.a(paramString).sendEmptyMessage(0);
-    }
-  }
-  
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
-  {
-    if (paramInt == 4096) {}
-    for (paramString = new String(paramArrayOfByte);; paramString = null)
-    {
-      paramArrayOfByte = (ForwardOperations)this.a.get();
-      if (paramArrayOfByte != null)
-      {
-        paramArrayOfByte.v = paramString;
-        paramArrayOfByte.c = true;
-      }
-      return;
+    if (LebaListMgrActivity.a(this.jdField_a_of_type_Csq.a) != null) {
+      LebaListMgrActivity.a(this.jdField_a_of_type_Csq.a).a(this.jdField_a_of_type_JavaUtilList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     csr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,23 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import mqq.os.MqqHandler;
 
-class adzm
-  implements Runnable
+public class adzm
+  extends MqqHandler
 {
-  adzm(adzl paramadzl, Bitmap paramBitmap) {}
+  public adzm(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Adzl.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1981: 
+      this.a.finish();
+      return;
+    }
+    this.a.f();
   }
 }
 

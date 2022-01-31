@@ -1,30 +1,15 @@
-import com.tencent.open.appcommon.CallBackEvent;
-import com.tencent.open.appcommon.now.download.js.DownloadCallbackWebImpl;
-import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.WebView;
-
 public class alet
-  implements Runnable
 {
-  public alet(DownloadCallbackWebImpl paramDownloadCallbackWebImpl, WebView paramWebView, String paramString) {}
-  
-  public void run()
-  {
-    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (this.jdField_a_of_type_JavaLangString != null) && (CallBackEvent.a().a())) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      LogUtility.a("DownloadCallbackWebImpl", "doJsCallBack >>> ", localException);
-    }
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alet
  * JD-Core Version:    0.7.0.1
  */

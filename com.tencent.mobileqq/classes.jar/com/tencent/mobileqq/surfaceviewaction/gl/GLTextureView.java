@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import ailf;
 import android.content.Context;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLSurfaceView.Renderer;
@@ -8,6 +7,7 @@ import android.opengl.GLUtils;
 import android.util.AttributeSet;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
+import bael;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -26,11 +26,11 @@ public class GLTextureView
   implements TextureView.SurfaceTextureListener
 {
   private int jdField_a_of_type_Int = 16;
-  private ailf jdField_a_of_type_Ailf;
   private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
   private GLSurfaceView.Renderer jdField_a_of_type_AndroidOpenglGLSurfaceView$Renderer;
+  private GLTextureView.RenderThreadRunnable jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlGLTextureView$RenderThreadRunnable;
   private Object jdField_a_of_type_JavaLangObject = new Object();
-  private List jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+  private List<bael> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
   private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
   private EGLConfig jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig;
   private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
@@ -39,7 +39,7 @@ public class GLTextureView
   private GL10 jdField_a_of_type_JavaxMicroeditionKhronosOpenglesGL10;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
-  private List jdField_b_of_type_JavaUtilList = new LinkedList();
+  private List<Runnable> jdField_b_of_type_JavaUtilList = new LinkedList();
   private volatile boolean jdField_b_of_type_Boolean;
   private int c;
   
@@ -66,7 +66,7 @@ public class GLTextureView
     if (paramRenderer != null) {}
     try
     {
-      if ((this.jdField_a_of_type_Ailf != null) && (this.jdField_a_of_type_Ailf.jdField_a_of_type_Boolean))
+      if ((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlGLTextureView$RenderThreadRunnable != null) && (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlGLTextureView$RenderThreadRunnable.jdField_a_of_type_Boolean))
       {
         paramRenderer.onSurfaceCreated(this.jdField_a_of_type_JavaxMicroeditionKhronosOpenglesGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig);
         paramRenderer.onSurfaceChanged(this.jdField_a_of_type_JavaxMicroeditionKhronosOpenglesGL10, this.c, this.jdField_b_of_type_Int);
@@ -110,10 +110,19 @@ public class GLTextureView
   
   private void d()
   {
-    int i = this.jdField_a_of_type_JavaxMicroeditionKhronosOpenglesGL10.glGetError();
-    if ((i != 0) && (QLog.isColorLevel())) {
-      QLog.e("GLTextureView", 2, "GL error = 0x" + Integer.toHexString(i));
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosOpenglesGL10 != null)
+    {
+      i = this.jdField_a_of_type_JavaxMicroeditionKhronosOpenglesGL10.glGetError();
+      if ((i != 0) && (QLog.isColorLevel())) {
+        QLog.e("GLTextureView", 2, "GL error = 0x" + Integer.toHexString(i));
+      }
     }
+    while (!QLog.isColorLevel())
+    {
+      int i;
+      return;
+    }
+    QLog.e("GLTextureView", 2, "mGl == null");
   }
   
   private void e()
@@ -173,15 +182,15 @@ public class GLTextureView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Ailf != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlGLTextureView$RenderThreadRunnable != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("GLTextureView", 2, "Stopping and joining GLTextureView");
       }
       try
       {
-        this.jdField_a_of_type_Ailf.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Ailf = null;
+        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlGLTextureView$RenderThreadRunnable.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlGLTextureView$RenderThreadRunnable = null;
         return;
       }
       finally {}
@@ -193,15 +202,15 @@ public class GLTextureView
     if (QLog.isColorLevel()) {
       QLog.d("GLTextureView", 2, "Starting GLTextureView thread");
     }
-    this.jdField_a_of_type_Ailf = new ailf(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlGLTextureView$RenderThreadRunnable = new GLTextureView.RenderThreadRunnable(this, null);
     this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = paramSurfaceTexture;
     setDimensions(paramInt1, paramInt2);
-    ThreadManager.post(this.jdField_a_of_type_Ailf, 10, null, true);
+    ThreadManager.post(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlGLTextureView$RenderThreadRunnable, 10, null, true);
   }
   
-  public void a(GLTextureView.OnSurfaceChangedListener paramOnSurfaceChangedListener)
+  public void a(bael parambael)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramOnSurfaceChangedListener);
+    this.jdField_a_of_type_JavaUtilList.add(parambael);
   }
   
   public void a(Runnable paramRunnable)
@@ -213,25 +222,28 @@ public class GLTextureView
     }
   }
   
-  public void b(GLTextureView.OnSurfaceChangedListener paramOnSurfaceChangedListener)
+  public void b(bael parambael)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(paramOnSurfaceChangedListener);
+    this.jdField_a_of_type_JavaUtilList.remove(parambael);
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
+    QLog.i("GLTextureView", 1, "onSurfaceTextureAvailable");
     a(paramSurfaceTexture, paramInt1, paramInt2);
     setAlpha(0.0F);
   }
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
+    QLog.i("GLTextureView", 1, "onSurfaceTextureDestroyed");
     a();
     return false;
   }
   
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
+    QLog.i("GLTextureView", 1, "onSurfaceTextureSizeChanged");
     setDimensions(paramInt1, paramInt2);
     if (this.jdField_a_of_type_AndroidOpenglGLSurfaceView$Renderer != null) {
       this.jdField_a_of_type_AndroidOpenglGLSurfaceView$Renderer.onSurfaceChanged(this.jdField_a_of_type_JavaxMicroeditionKhronosOpenglesGL10, paramInt1, paramInt2);
@@ -259,7 +271,7 @@ public class GLTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.GLTextureView
  * JD-Core Version:    0.7.0.1
  */

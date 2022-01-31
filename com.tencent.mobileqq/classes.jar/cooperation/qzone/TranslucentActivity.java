@@ -1,52 +1,57 @@
 package cooperation.qzone;
 
-import amto;
+import alud;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
 import android.content.res.Resources;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
+import bety;
+import biqn;
+import biqw;
+import bjgz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.PluginParams;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AndroidOreoUtils;
 
 public class TranslucentActivity
   extends Activity
 {
   private void a(Intent paramIntent)
   {
-    QQProgressDialog localQQProgressDialog;
-    if (!((IPluginManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(26)).isPlugininstalled("qzone_plugin.apk"))
+    bety localbety;
+    if (!((biqn)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(27)).isPlugininstalled("qzone_plugin.apk"))
     {
-      localQQProgressDialog = new QQProgressDialog(this, getResources().getDimensionPixelSize(2131558448));
-      localQQProgressDialog.a("正在加载...");
-      localQQProgressDialog.setOnDismissListener(new amto(this));
+      localbety = new bety(this, getResources().getDimensionPixelSize(2131298914));
+      localbety.a(alud.a(2131715464));
+      localbety.setOnDismissListener(new bjgz(this));
     }
     for (;;)
     {
       String str = QzonePluginProxyActivity.a(paramIntent);
       paramIntent.putExtra("userQqResources", 2);
-      IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-      localPluginParams.jdField_b_of_type_JavaLangString = "qzone_plugin.apk";
-      localPluginParams.d = "QZone";
-      localPluginParams.jdField_a_of_type_JavaLangString = "";
-      localPluginParams.e = str;
-      localPluginParams.jdField_a_of_type_JavaLangClass = QzonePluginProxyActivity.class;
-      localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-      localPluginParams.jdField_b_of_type_Int = -1;
-      localPluginParams.jdField_a_of_type_AndroidAppDialog = localQQProgressDialog;
-      localPluginParams.c = 10000;
-      localPluginParams.f = null;
-      IPluginManager.a(this, localPluginParams);
-      if (localQQProgressDialog == null) {
+      biqw localbiqw = new biqw(0);
+      localbiqw.jdField_b_of_type_JavaLangString = "qzone_plugin.apk";
+      localbiqw.d = "QZone";
+      localbiqw.jdField_a_of_type_JavaLangString = "";
+      localbiqw.e = str;
+      localbiqw.jdField_a_of_type_JavaLangClass = QzonePluginProxyActivity.class;
+      localbiqw.jdField_a_of_type_AndroidContentIntent = paramIntent;
+      localbiqw.jdField_b_of_type_Int = -1;
+      localbiqw.jdField_a_of_type_AndroidAppDialog = localbety;
+      localbiqw.c = 10000;
+      localbiqw.f = null;
+      biqn.a(this, localbiqw);
+      if (localbety == null) {
         finish();
       }
       return;
-      localQQProgressDialog = null;
+      localbety = null;
     }
   }
   
@@ -57,6 +62,12 @@ public class TranslucentActivity
   
   public void onCreate(Bundle paramBundle)
   {
+    AndroidOreoUtils localAndroidOreoUtils = new AndroidOreoUtils(this);
+    if ((Build.VERSION.SDK_INT == 26) && (getApplicationInfo().targetSdkVersion >= 27) && (localAndroidOreoUtils.isTranslucentOrFloating()))
+    {
+      boolean bool = localAndroidOreoUtils.fixOrientation();
+      QLog.i("TranslucentActivity", 1, "onCreate fixOrientation when Oreo, result = " + bool);
+    }
     super.onCreate(paramBundle);
     paramBundle = super.getIntent();
     if (!TextUtils.isEmpty(QzonePluginProxyActivity.a(paramBundle))) {
@@ -66,7 +77,7 @@ public class TranslucentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.TranslucentActivity
  * JD-Core Version:    0.7.0.1
  */

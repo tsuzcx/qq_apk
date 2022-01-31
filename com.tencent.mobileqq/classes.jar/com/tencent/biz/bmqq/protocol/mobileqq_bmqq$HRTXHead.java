@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class mobileqq_bmqq$HRTXHead
-  extends MessageMicro
+  extends MessageMicro<HRTXHead>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8 }, new String[] { "uint64_qquin" }, new Object[] { Long.valueOf(0L) }, HRTXHead.class);
   public final PBUInt64Field uint64_qquin = PBField.initUInt64(0L);

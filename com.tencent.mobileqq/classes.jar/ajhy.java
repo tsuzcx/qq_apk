@@ -1,117 +1,65 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.RecyclerView.Adapter;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.AudioInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.EditItemInfoFactory;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.LinkedList;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
 
-public class ajhy
-  extends Handler
+public final class ajhy
 {
-  WeakReference a;
+  public final int a;
+  @NonNull
+  public final ajhw a;
+  @NonNull
+  public final String a;
+  public final int b;
+  @NonNull
+  public final String b;
   
-  public ajhy(SubmitHomeWorkFragment paramSubmitHomeWorkFragment, Looper paramLooper)
+  public ajhy(int paramInt1, @NonNull String paramString1, int paramInt2, @NonNull String paramString2, @NonNull ajhw paramajhw)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramSubmitHomeWorkFragment);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Ajhw = paramajhw;
   }
   
-  void a(SubmitHomeWorkFragment paramSubmitHomeWorkFragment)
+  public boolean equals(Object paramObject)
   {
-    if ((SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment) == null) || (SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment) == null)) {}
+    boolean bool2 = false;
+    boolean bool1;
+    if (this == paramObject) {
+      bool1 = true;
+    }
     do
     {
       do
       {
-        return;
-        if (SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment).isEmpty())
+        do
         {
-          SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment).setVisibility(8);
-          SubmitHomeWorkFragment.b(paramSubmitHomeWorkFragment).a();
-          SubmitHomeWorkFragment.b(paramSubmitHomeWorkFragment).setHint(paramSubmitHomeWorkFragment.getActivity().getString(2131430649));
-          SubmitHomeWorkFragment.b(paramSubmitHomeWorkFragment).getAdapter().notifyDataSetChanged();
-          return;
-        }
-      } while (SubmitHomeWorkFragment.b(paramSubmitHomeWorkFragment));
-      SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment).b();
-      Iterator localIterator = SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment).iterator();
-      while (localIterator.hasNext())
-      {
-        JSONObject localJSONObject = (JSONObject)localIterator.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("SubmitHomeWorkFragment", 2, "insert special item: " + localJSONObject.optString("type"));
-        }
-        SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment).a(EditItemInfoFactory.a(localJSONObject));
-      }
-      SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment, true);
-    } while (SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment) != null);
-    SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment, SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment).a());
+          do
+          {
+            do
+            {
+              return bool1;
+              bool1 = bool2;
+            } while (paramObject == null);
+            bool1 = bool2;
+          } while (getClass() != paramObject.getClass());
+          paramObject = (ajhy)paramObject;
+          bool1 = bool2;
+        } while (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int);
+        bool1 = bool2;
+      } while (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int);
+      bool1 = bool2;
+    } while (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
+    return this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString);
   }
   
-  public void handleMessage(Message paramMessage)
+  public int hashCode()
   {
-    super.handleMessage(paramMessage);
-    SubmitHomeWorkFragment localSubmitHomeWorkFragment = (SubmitHomeWorkFragment)this.a.get();
-    if ((localSubmitHomeWorkFragment == null) || (!localSubmitHomeWorkFragment.isAdded())) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 3: 
-      SubmitHomeWorkFragment.b(localSubmitHomeWorkFragment, true);
-      SubmitHomeWorkFragment.a(localSubmitHomeWorkFragment).b(false);
-      return;
-    case 513: 
-      a(localSubmitHomeWorkFragment);
-      return;
-    case 101: 
-      SubmitHomeWorkFragment.b(localSubmitHomeWorkFragment, false);
-      SubmitHomeWorkFragment.d(localSubmitHomeWorkFragment);
-      return;
-    }
-    int i = (int)SubmitHomeWorkFragment.a(localSubmitHomeWorkFragment).a();
-    if (i < 1000)
-    {
-      QQToast.a(localSubmitHomeWorkFragment.getActivity(), "录音不能小于1秒,录制失败", 0).a();
-      SubmitHomeWorkFragment.a(localSubmitHomeWorkFragment).b();
-      return;
-    }
-    if (!NetworkUtil.d(localSubmitHomeWorkFragment.getActivity()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SubmitHomeWorkFragment", 2, "no network toast");
-      }
-      QQToast.a(localSubmitHomeWorkFragment.getActivity(), 2131430298, 0).a();
-      SubmitHomeWorkFragment.b(localSubmitHomeWorkFragment, false);
-      SubmitHomeWorkFragment.d(localSubmitHomeWorkFragment);
-      return;
-    }
-    paramMessage = paramMessage.obj.toString();
-    File localFile = new File(paramMessage);
-    if (localFile.exists()) {}
-    for (long l = localFile.length();; l = 0L)
-    {
-      paramMessage = new AudioInfo(paramMessage, null, i / 1000, (int)l, SubmitHomeWorkFragment.b(localSubmitHomeWorkFragment));
-      SubmitHomeWorkFragment.b(localSubmitHomeWorkFragment).a(paramMessage);
-      SubmitHomeWorkFragment.b(localSubmitHomeWorkFragment, false);
-      SubmitHomeWorkFragment.d(localSubmitHomeWorkFragment);
-      return;
-    }
+    return ((this.jdField_a_of_type_Int * 31 + this.jdField_a_of_type_JavaLangString.hashCode()) * 31 + this.jdField_b_of_type_Int) * 31 + this.jdField_b_of_type_JavaLangString.hashCode();
+  }
+  
+  public String toString()
+  {
+    return "MessageToShowBanner{bannerLev=" + this.jdField_a_of_type_Int + ", businessCategory='" + this.jdField_a_of_type_JavaLangString + '\'' + ", iconIdx=" + this.jdField_b_of_type_Int + ", wording='" + this.jdField_b_of_type_JavaLangString + '\'' + ", callback=" + this.jdField_a_of_type_Ajhw + '}';
   }
 }
 

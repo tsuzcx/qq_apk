@@ -1,39 +1,23 @@
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnInfoListener;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTextureImpl;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnInfoListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
 
-public class nqc
-  implements IMediaPlayer.OnInfoListener
+class nqc
+  implements View.OnClickListener
 {
-  public nqc(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnInfoListener paramOnInfoListener) {}
+  nqc(nqb paramnqb) {}
   
-  public boolean a_(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    int i;
-    if (paramInt1 == 3) {
-      i = 1;
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView$OnInfoListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTextureImpl, i, Integer.valueOf(paramInt2));
-      if (paramInt1 == 701)
-      {
-        i = 2;
-      }
-      else
-      {
-        i = paramInt1;
-        if (paramInt1 == 702) {
-          i = 3;
-        }
-      }
-    }
+    RIJRedPacketManager.a().a(paramView.getContext(), 2, 0, 0);
+    PublicAccountBrowser.a(this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser).b(2, PublicAccountBrowser.a(this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser), this.a.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nqc
  * JD-Core Version:    0.7.0.1
  */

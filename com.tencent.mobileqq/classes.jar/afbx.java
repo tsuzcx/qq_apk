@@ -1,27 +1,10 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.nearby.profilecard.InterestGuide;
-import com.tencent.mobileqq.statistics.ReportController;
-
-public class afbx
-  implements Runnable
+public abstract interface afbx
 {
-  public afbx(InterestGuide paramInterestGuide) {}
-  
-  public void run()
-  {
-    NearbySPUtil.a(this.a.jdField_a_of_type_JavaLangString, "interest_guide_key", Boolean.FALSE);
-    Context localContext = this.a.jdField_a_of_type_AndroidViewView.getContext();
-    if ((localContext instanceof BaseActivity)) {
-      ReportController.b(((BaseActivity)localContext).app, "dc00898", "", "", "0X8006991", "0X8006991", 0, 0, "", "", "", "");
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afbx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,72 @@
-import com.tencent.biz.qqstory.model.lbs.BasicLocation;
-import com.tencent.biz.qqstory.model.lbs.LbsManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class ndw
-  extends SosoInterface.OnLocationListener
+final class ndw
+  implements BusinessObserver
 {
-  public ndw(LbsManager paramLbsManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  ndw(Context paramContext, QQAppInterface paramQQAppInterface, bety parambety, SessionInfo paramSessionInfo, String paramString) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    SLog.b("LbsManager", "onLocationFinish.");
-    boolean bool;
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    if (QLog.isColorLevel()) {
+      QLog.d("CrmUtils", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
+    if (paramBoolean)
     {
-      bool = true;
-      if (!bool) {
-        break label114;
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
       }
-      this.a.b = BasicLocation.a(paramSosoLbsInfo.a);
-      SLog.a("LbsManager", "onLocationFinish success, [longitude=%s, latitude=%s]", Integer.valueOf(this.a.b.b), Integer.valueOf(this.a.b.a));
     }
     for (;;)
     {
-      if (!LbsManager.a(this.a)) {
-        this.a.a(bool, this.a.b);
+      try
+      {
+        localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
+        if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
+        {
+          paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
+          ndv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle);
+          ndv.a(this.jdField_a_of_type_Bety);
+          if (QLog.isDevelopLevel()) {
+            QLog.d("IVR_TS_CrmUtils", 4, "<<<end getDetail, ts=" + System.currentTimeMillis());
+          }
+          ndv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, paramBundle, this.jdField_a_of_type_JavaLangString);
+          ndv.a(this.jdField_a_of_type_Bety);
+          return;
+        }
       }
-      this.a.a = false;
-      return;
-      bool = false;
-      break;
-      label114:
-      SLog.d("LbsManager", "onLocationFinish errorCode = %d", new Object[] { Integer.valueOf(paramInt) });
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        ndv.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+        ndv.a(this.jdField_a_of_type_Bety);
+        return;
+      }
+      ndv.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+      continue;
+      ndv.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+      continue;
+      ndv.a(this.jdField_a_of_type_AndroidContentContext, 2131695729);
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ndw
  * JD-Core Version:    0.7.0.1
  */

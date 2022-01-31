@@ -2,10 +2,10 @@ package com.tencent.token.utils;
 
 import android.content.Context;
 import android.os.Environment;
-import android.os.StatFs;
 import android.text.TextUtils;
 import com.tencent.token.global.RqdApplication;
 import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -19,29 +19,15 @@ import java.io.Writer;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-public final class i
+public class i
 {
-  private static long a(String paramString)
-  {
-    try
-    {
-      StatFs localStatFs = new StatFs(paramString);
-      localStatFs.restat(paramString);
-      long l = localStatFs.getBlockSize();
-      int i = localStatFs.getAvailableBlocks();
-      return l * i;
-    }
-    catch (IllegalArgumentException paramString) {}
-    return 0L;
-  }
-  
   public static String a(byte[] paramArrayOfByte, String paramString)
   {
     Object localObject = Environment.getExternalStorageState();
     try
     {
       if ("mounted".equals(localObject)) {}
-      for (paramString = new File(Environment.getExternalStorageDirectory(), paramString);; paramString = new File(RqdApplication.i().getFilesDir(), paramString))
+      for (paramString = new File(Environment.getExternalStorageDirectory(), paramString);; paramString = new File(RqdApplication.l().getFilesDir(), paramString))
       {
         if (!paramString.exists()) {
           paramString.createNewFile();
@@ -56,7 +42,7 @@ public final class i
     catch (Exception paramArrayOfByte) {}
   }
   
-  private static void a(ZipOutputStream paramZipOutputStream, File paramFile, String paramString, byte[] paramArrayOfByte)
+  public static void a(ZipOutputStream paramZipOutputStream, File paramFile, String paramString, byte[] paramArrayOfByte)
   {
     int i = 0;
     if ((paramZipOutputStream == null) || (paramFile == null)) {
@@ -116,29 +102,6 @@ public final class i
     }
   }
   
-  public static boolean a()
-  {
-    if ("mounted".equals(Environment.getExternalStorageState())) {}
-    for (File localFile = new File(Environment.getExternalStorageDirectory(), "video");; localFile = new File(RqdApplication.i().getFilesDir(), "video")) {
-      try
-      {
-        localFile.mkdirs();
-        localFile = File.createTempFile("tmppp", null, localFile);
-        if (localFile.exists()) {
-          break;
-        }
-        return false;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return false;
-      }
-    }
-    localException.delete();
-    return true;
-  }
-  
   public static boolean a(File paramFile)
   {
     int i = 0;
@@ -172,7 +135,12 @@ public final class i
     return paramFile.delete();
   }
   
-  private static boolean a(Object paramObject)
+  public static boolean a(File paramFile1, File paramFile2)
+  {
+    return a(new File[] { paramFile1 }, paramFile2);
+  }
+  
+  public static boolean a(Object paramObject)
   {
     if (paramObject == null) {}
     for (;;)
@@ -217,103 +185,189 @@ public final class i
     //   0: aconst_null
     //   1: astore 4
     //   3: aload_0
-    //   4: ifnull +12 -> 16
+    //   4: ifnull +13 -> 17
     //   7: aload_0
     //   8: arraylength
-    //   9: ifle +7 -> 16
-    //   12: aload_1
-    //   13: ifnonnull +5 -> 18
-    //   16: iconst_0
-    //   17: ireturn
-    //   18: sipush 4096
-    //   21: newarray byte
-    //   23: astore 5
-    //   25: new 123	java/util/zip/ZipOutputStream
-    //   28: dup
-    //   29: new 200	java/io/BufferedOutputStream
-    //   32: dup
-    //   33: new 63	java/io/FileOutputStream
-    //   36: dup
-    //   37: aload_1
-    //   38: iconst_0
-    //   39: invokespecial 203	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   42: invokespecial 206	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   45: invokespecial 207	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   48: astore_1
-    //   49: aload_0
-    //   50: arraylength
-    //   51: istore_3
-    //   52: iconst_0
-    //   53: istore_2
-    //   54: iload_2
-    //   55: iload_3
-    //   56: if_icmpge +20 -> 76
-    //   59: aload_1
-    //   60: aload_0
-    //   61: iload_2
-    //   62: aaload
-    //   63: aconst_null
-    //   64: aload 5
-    //   66: invokestatic 159	com/tencent/token/utils/i:a	(Ljava/util/zip/ZipOutputStream;Ljava/io/File;Ljava/lang/String;[B)V
-    //   69: iload_2
-    //   70: iconst_1
-    //   71: iadd
-    //   72: istore_2
-    //   73: goto -19 -> 54
-    //   76: aload_1
-    //   77: invokevirtual 210	java/util/zip/ZipOutputStream:flush	()V
-    //   80: aload_1
-    //   81: invokevirtual 213	java/util/zip/ZipOutputStream:closeEntry	()V
-    //   84: aload_1
-    //   85: invokestatic 136	com/tencent/token/utils/i:a	(Ljava/lang/Object;)Z
-    //   88: pop
-    //   89: iconst_1
-    //   90: ireturn
-    //   91: astore_0
-    //   92: aconst_null
-    //   93: astore_1
-    //   94: aload_1
-    //   95: invokestatic 136	com/tencent/token/utils/i:a	(Ljava/lang/Object;)Z
-    //   98: pop
-    //   99: iconst_0
-    //   100: ireturn
-    //   101: astore_0
-    //   102: aload 4
-    //   104: astore_1
-    //   105: aload_1
-    //   106: invokestatic 136	com/tencent/token/utils/i:a	(Ljava/lang/Object;)Z
-    //   109: pop
-    //   110: aload_0
-    //   111: athrow
-    //   112: astore_0
-    //   113: goto -8 -> 105
-    //   116: astore_0
-    //   117: goto -23 -> 94
+    //   9: iconst_1
+    //   10: if_icmplt +7 -> 17
+    //   13: aload_1
+    //   14: ifnonnull +5 -> 19
+    //   17: iconst_0
+    //   18: ireturn
+    //   19: sipush 4096
+    //   22: newarray byte
+    //   24: astore 5
+    //   26: new 105	java/util/zip/ZipOutputStream
+    //   29: dup
+    //   30: new 172	java/io/BufferedOutputStream
+    //   33: dup
+    //   34: new 41	java/io/FileOutputStream
+    //   37: dup
+    //   38: aload_1
+    //   39: iconst_0
+    //   40: invokespecial 175	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   43: invokespecial 178	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   46: invokespecial 179	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   49: astore_1
+    //   50: aload_0
+    //   51: arraylength
+    //   52: istore_3
+    //   53: iconst_0
+    //   54: istore_2
+    //   55: iload_2
+    //   56: iload_3
+    //   57: if_icmpge +20 -> 77
+    //   60: aload_1
+    //   61: aload_0
+    //   62: iload_2
+    //   63: aaload
+    //   64: aconst_null
+    //   65: aload 5
+    //   67: invokestatic 142	com/tencent/token/utils/i:a	(Ljava/util/zip/ZipOutputStream;Ljava/io/File;Ljava/lang/String;[B)V
+    //   70: iload_2
+    //   71: iconst_1
+    //   72: iadd
+    //   73: istore_2
+    //   74: goto -19 -> 55
+    //   77: aload_1
+    //   78: invokevirtual 182	java/util/zip/ZipOutputStream:flush	()V
+    //   81: aload_1
+    //   82: invokevirtual 185	java/util/zip/ZipOutputStream:closeEntry	()V
+    //   85: aload_1
+    //   86: invokestatic 118	com/tencent/token/utils/i:a	(Ljava/lang/Object;)Z
+    //   89: pop
+    //   90: iconst_1
+    //   91: ireturn
+    //   92: astore_0
+    //   93: aconst_null
+    //   94: astore_0
+    //   95: aload_0
+    //   96: invokestatic 118	com/tencent/token/utils/i:a	(Ljava/lang/Object;)Z
+    //   99: pop
+    //   100: iconst_0
+    //   101: ireturn
+    //   102: astore_0
+    //   103: aload 4
+    //   105: astore_1
+    //   106: aload_1
+    //   107: invokestatic 118	com/tencent/token/utils/i:a	(Ljava/lang/Object;)Z
+    //   110: pop
+    //   111: aload_0
+    //   112: athrow
+    //   113: astore_0
+    //   114: goto -8 -> 106
+    //   117: astore_0
+    //   118: aload_1
+    //   119: astore_0
+    //   120: goto -25 -> 95
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	120	0	paramArrayOfFile	File[]
-    //   0	120	1	paramFile	File
-    //   53	20	2	i	int
-    //   51	6	3	j	int
-    //   1	102	4	localObject	Object
-    //   23	42	5	arrayOfByte	byte[]
+    //   0	123	0	paramArrayOfFile	File[]
+    //   0	123	1	paramFile	File
+    //   54	20	2	i	int
+    //   52	6	3	j	int
+    //   1	103	4	localObject	Object
+    //   24	42	5	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   18	49	91	java/io/IOException
-    //   18	49	101	finally
-    //   49	52	112	finally
-    //   59	69	112	finally
-    //   76	84	112	finally
-    //   49	52	116	java/io/IOException
-    //   59	69	116	java/io/IOException
-    //   76	84	116	java/io/IOException
+    //   19	50	92	java/io/IOException
+    //   19	50	102	finally
+    //   50	53	113	finally
+    //   60	70	113	finally
+    //   77	85	113	finally
+    //   50	53	117	java/io/IOException
+    //   60	70	117	java/io/IOException
+    //   77	85	117	java/io/IOException
   }
   
-  public static long b()
+  public static byte[] a(String paramString)
   {
-    if ("mounted".equals(Environment.getExternalStorageState())) {}
-    for (File localFile = new File(Environment.getExternalStorageDirectory(), "video");; localFile = new File(RqdApplication.i().getFilesDir(), "video")) {
-      return a(localFile.getAbsolutePath());
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    byte[] arrayOfByte = new byte[1024];
+    try
+    {
+      paramString = new File(paramString);
+      if ((paramString.exists()) && (paramString.isFile()))
+      {
+        paramString = new FileInputStream(paramString);
+        while (paramString.read(arrayOfByte) != -1) {
+          localByteArrayOutputStream.write(arrayOfByte);
+        }
+      }
+      try
+      {
+        localIOException1.close();
+        throw paramString;
+      }
+      catch (IOException localIOException2)
+      {
+        for (;;)
+        {
+          localIOException2.printStackTrace();
+        }
+      }
+    }
+    catch (Exception paramString)
+    {
+      paramString = paramString;
+      try
+      {
+        localByteArrayOutputStream.close();
+        return null;
+      }
+      catch (IOException paramString)
+      {
+        paramString.printStackTrace();
+        return null;
+      }
+      paramString.close();
+      paramString = localByteArrayOutputStream.toByteArray();
+      try
+      {
+        localByteArrayOutputStream.close();
+        return paramString;
+      }
+      catch (IOException localIOException1)
+      {
+        localIOException1.printStackTrace();
+        return paramString;
+      }
+      try
+      {
+        localIOException1.close();
+        return null;
+      }
+      catch (IOException paramString)
+      {
+        paramString.printStackTrace();
+        return null;
+      }
+    }
+    finally {}
+  }
+  
+  public static void b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramString = new File(paramString);
+        if ((paramString.exists()) && (paramString.isFile()) && (!paramString.delete()))
+        {
+          paramString.deleteOnExit();
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
   }
 }

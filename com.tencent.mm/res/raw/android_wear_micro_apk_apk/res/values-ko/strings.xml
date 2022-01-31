@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">사용 설정</string>
+    <string name="b">Google Play 서비스를 사용하도록 설정해야 %1$s이(가) 작동합니다.</string>
+    <string name="c">Google Play 서비스 사용</string>
+    <string name="d">설치</string>
+    <string name="e">기기에 Google Play 서비스가 설치되어 있어야 %1$s이(가) 실행됩니다.</string>
+    <string name="f">Google Play 서비스 설치</string>
+    <string name="g">Google Play 서비스 오류</string>
+    <string name="h">%1$s에서 Google Play 서비스를 사용하는 데 문제가 있습니다. 다시 시도하세요.</string>
+    <string name="i">%1$s은(는) Google Play 서비스 없이는 실행되지 않으나, 기기에서 Google Play 서비스를 지원하지 않습니다.</string>
+    <string name="j">업데이트</string>
+    <string name="k">Google Play 서비스를 업데이트해야 %1$s이(가) 실행됩니다.</string>
+    <string name="l">Google Play 서비스 업데이트</string>
+    <string name="m">현재 업데이트 중인 Google Play 서비스가 있어야 %1$s이(가) 실행됩니다.</string>
+    <string name="n">새 버전의 Google Play 서비스가 필요합니다. 곧 자동으로 업데이트됩니다.</string>
+    <string name="o">스마트폰에서 열기</string>
+    <string name="p">로그인</string>
+    <string name="q">Google 계정으로 로그인</string>
+    <string name="r">999+</string>
+    <string name="s">WeChat</string>
+    <string name="t">종료</string>
+    <string name="u">Ali</string>
+    <string name="v">Mr. Luo History</string>
+    <string name="w">Kiss</string>
+    <string name="x">Robot Six</string>
+    <string name="y">이 스티커가 다운로드 중입니다...</string>
+    <string name="z">심박동수 보내기</string>
+    <string name="a0">워치:%d분당 횟수를 통한 심박동수 측정</string>
+    <string name="a1">이미지를 불러올 수 없음</string>
+    <string name="a2">소스를 불러올 수 없음. 휴대폰에서 WeChat을 재시작하고. 눌러서 다시 시도하세요.</string>
+    <string name="a3">휴대폰과 워치가 연결되었는지 확인하세요. 휴대폰 WeChat에 로그인하였습니다. 눌러서 다시 시도하세요.</string>
+    <string name="a4">로그인할 수 없습니다. 휴대폰에서 WeChat을 재시작하고. 눌러서 다시 시도하세요.</string>
+    <string name="a5">￥%s</string>
+    <string name="a6">CNY</string>
+    <string name="a7">"다음 번엔
+행운을 빕니다"</string>
+    <string name="a8">수락</string>
+    <string name="a9">무시</string>
+    <string name="a_">알림</string>
+    <string name="aa">휴대폰에서 열기</string>
+    <string name="ab">문자</string>
+    <string name="ac">다시 보내기</string>
+    <string name="ad">결제</string>
+    <string name="ae">아마도</string>
+    <string name="af">아니요</string>
+    <string name="ag">예</string>
+    <string name="ah">보내기</string>
+    <string name="ai">스티커 갤러리</string>
+    <string name="aj">문자</string>
+    <string name="ak">음성</string>
+    <string name="al">답장</string>
+    <string name="am">메시지 작성...</string>
+    <string name="an">%d</string>
+    <string name="ao">"인식 오류
+다시 누르고 말하세요"</string>
+    <string name="ap">텍스트로 변환 중</string>
+    <string name="aq">%d</string>
+    <string name="ar">보내는 중</string>
+    <string name="as">"메시지가 너무 짧습니다
+다시 누르고 말하세요"</string>
+    <string name="at">1300  1030  7150  9660  79</string>
+    <string name="au">이미지 불러오는 중</string>
+    <string name="av">불러오는 중...</string>
+    <string name="aw">소스 불러오는 중</string>
+    <string name="ax">로그인 중</string>
+    <string name="ay">휴대폰에서 결제 페이지 열림</string>
+    <string name="az">기기에서 소리 재생을 지원하지 않습니다.</string>
+    <string name="b0">환영합니다. WeChat입니다.</string>
+</resources>

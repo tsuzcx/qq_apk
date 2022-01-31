@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.troop.data.TroopMessageManager;
-import java.util.Map;
+import com.tencent.mobileqq.util.InfiniteTaskThreadPool;
+import java.util.concurrent.ThreadFactory;
 
-class hau
-  implements Runnable
+public class hau
+  implements ThreadFactory
 {
-  hau(hat paramhat) {}
-  
-  public void run()
+  public Thread newThread(Runnable paramRunnable)
   {
-    if (TroopMessageManager.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager).b.containsKey(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
-      TroopMessageManager.c(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager).b.remove(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
-    }
+    InfiniteTaskThreadPool.a();
+    paramRunnable = new Thread(paramRunnable, "InfiniteTaskThread_" + InfiniteTaskThreadPool.b());
+    paramRunnable.setDaemon(true);
+    return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hau
  * JD-Core Version:    0.7.0.1
  */

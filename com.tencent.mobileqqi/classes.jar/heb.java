@@ -1,23 +1,17 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
-import com.tencent.mobileqq.troop.widget.VideoViewX;
-import com.tencent.mobileqq.troop.widget.VideoViewX.OnSeekListener;
-
 public class heb
-  implements MediaPlayer.OnSeekCompleteListener
 {
-  public heb(VideoViewX paramVideoViewX) {}
+  public int a;
+  public String a;
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  public heb()
   {
-    if (VideoViewX.a(this.a) != null) {
-      VideoViewX.a(this.a).i();
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     heb
  * JD-Core Version:    0.7.0.1
  */

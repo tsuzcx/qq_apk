@@ -1,22 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubaccountUgActivity;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-class dtk
-  implements DialogInterface.OnClickListener
+public class dtk
+  implements View.OnClickListener
 {
-  dtk(dtj paramdtj) {}
+  public dtk(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
-    {
-      this.a.a.d();
-      this.a.a.f = true;
-      SubAccountAssistantManager.a().a(this.a.a.b);
-      this.a.a.f();
-    }
+    this.a.a.setText("");
   }
 }
 

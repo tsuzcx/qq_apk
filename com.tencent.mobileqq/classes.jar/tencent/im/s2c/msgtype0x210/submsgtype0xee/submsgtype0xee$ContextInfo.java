@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0xee$ContextInfo
-  extends MessageMicro
+  extends MessageMicro<ContextInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_brief = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -19,7 +19,7 @@ public final class submsgtype0xee$ContextInfo
   public final PBBytesField bytes_title = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_video_brief = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBEnumField enum_context_type = PBField.initEnum(0);
-  public final PBRepeatMessageField rpt_msg_pic_list = PBField.initRepeatMessage(submsgtype0xee.PictureInfo.class);
+  public final PBRepeatMessageField<submsgtype0xee.PictureInfo> rpt_msg_pic_list = PBField.initRepeatMessage(submsgtype0xee.PictureInfo.class);
   public final PBUInt64Field uint64_id = PBField.initUInt64(0L);
   
   static

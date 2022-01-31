@@ -1,10 +1,13 @@
 package com.tencent.token;
 
-import java.util.Comparator;
-
-final class fh
-  implements Comparator
-{}
+public abstract interface fh
+{
+  public abstract void a();
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void b();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

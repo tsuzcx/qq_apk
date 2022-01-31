@@ -1,16 +1,14 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.biz.qrcode.activity.ScannerActivity.QQDialogCancelListener;
 
 public class bnc
-  implements View.OnClickListener
+  extends ScannerActivity.QQDialogCancelListener
 {
-  public bnc(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
+  public bnc(ScannerActivity paramScannerActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    this.a.d();
   }
 }
 

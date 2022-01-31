@@ -8,10 +8,15 @@ public class b
   public static int _seq = 0;
   public static c _status = new c();
   public static int _version = 50;
+  public static final int reservedBufTypeClientType = 1;
+  public static final int reservedBufTypeUin = 2;
   public int _cmd = 0;
   public int _head_len = 43;
   public int _role = 114;
   public int _sub_cmd = 0;
+  public int ptCldPkgHeadLen = 14;
+  public int ptDBPkgHeadLen = 28;
+  public int stxLen = 1;
   
   protected int fill_staff(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
   {
@@ -23,15 +28,15 @@ public class b
   
   protected byte[] getAppInfo(long paramLong1, long paramLong2)
   {
-    byte[] arrayOfByte = new byte[28 + (t.C.length + 2 + 2 + t.E.length + 2 + t.F.length)];
+    byte[] arrayOfByte = new byte[28 + (t.E.length + 2 + 2 + t.G.length + 2 + t.H.length)];
     util.int64_to_buf32(arrayOfByte, 0, 5L);
     util.int64_to_buf32(arrayOfByte, 4, paramLong1);
     util.int64_to_buf32(arrayOfByte, 8, paramLong2);
-    System.arraycopy(t.y, 0, arrayOfByte, 12, t.y.length);
-    int i = t.y.length;
-    i = fill_staff(arrayOfByte, t.C, i + 12);
-    i = fill_staff(arrayOfByte, t.E, i);
-    fill_staff(arrayOfByte, t.F, i);
+    System.arraycopy(t.A, 0, arrayOfByte, 12, t.A.length);
+    int i = t.A.length;
+    i = fill_staff(arrayOfByte, t.E, i + 12);
+    i = fill_staff(arrayOfByte, t.G, i);
+    fill_staff(arrayOfByte, t.H, i);
     return arrayOfByte;
   }
   

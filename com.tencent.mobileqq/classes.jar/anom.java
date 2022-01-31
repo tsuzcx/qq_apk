@@ -1,20 +1,23 @@
-import dov.com.qq.im.capture.text.SupernaturalTextItem;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class anom
+class anom
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public int a;
-  public String a;
-  public int b = 0;
+  anom(anol paramanol, String paramString) {}
   
-  private anom(SupernaturalTextItem paramSupernaturalTextItem)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
+    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling onReleaseAndReload onGetAppPathByName app=" + this.jdField_a_of_type_JavaLangString + ",retcode=" + paramInt + ",msg=" + paramString);
+    if ((paramInt == 0) && (paramAppPathInfo != null) && (paramAppPathInfo.path != null)) {
+      anoj.a(this.jdField_a_of_type_Anol.a, this.jdField_a_of_type_JavaLangString, paramAppPathInfo.path, anoj.a(this.jdField_a_of_type_Anol.a), 2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anom
  * JD-Core Version:    0.7.0.1
  */

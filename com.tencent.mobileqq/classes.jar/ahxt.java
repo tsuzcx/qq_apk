@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.servlet.CliNotifyPush;
+import android.animation.ValueAnimator;
+import android.widget.ProgressBar;
 
 public class ahxt
-  implements Runnable
 {
-  public ahxt(CliNotifyPush paramCliNotifyPush) {}
-  
-  public void run()
+  public static ValueAnimator a(ProgressBar paramProgressBar, int paramInt)
   {
-    CliNotifyPush.a(this.a);
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, paramInt }).setDuration(500L);
+    localValueAnimator.addUpdateListener(new ahxu(paramProgressBar));
+    return localValueAnimator;
   }
 }
 

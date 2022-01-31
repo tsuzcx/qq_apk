@@ -1,8 +1,19 @@
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteCursorDriver;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
+import android.database.sqlite.SQLiteQuery;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 
-public abstract interface fni
+public class fni
+  implements SQLiteDatabase.CursorFactory
 {
-  public abstract ToServiceMsg a();
+  private fni(QQEntityManagerFactory paramQQEntityManagerFactory) {}
+  
+  public Cursor newCursor(SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
+  {
+    return new fnj(this, paramSQLiteDatabase, paramSQLiteCursorDriver, paramString, paramSQLiteQuery);
+  }
 }
 
 

@@ -165,7 +165,7 @@ public final class s
     //   42: invokevirtual 250	java/io/BufferedInputStream:read	([B)I
     //   45: istore_1
     //   46: iload_1
-    //   47: ifle +49 -> 96
+    //   47: ifle +58 -> 105
     //   50: aload_2
     //   51: astore_0
     //   52: aload_3
@@ -185,65 +185,70 @@ public final class s
     //   75: aload_3
     //   76: invokevirtual 126	java/lang/Throwable:printStackTrace	()V
     //   79: aload_2
-    //   80: ifnull -76 -> 4
-    //   83: aload_2
-    //   84: invokevirtual 256	java/io/BufferedInputStream:close	()V
-    //   87: aconst_null
-    //   88: areturn
-    //   89: astore_0
-    //   90: aload_0
-    //   91: invokevirtual 126	java/lang/Throwable:printStackTrace	()V
-    //   94: aconst_null
-    //   95: areturn
-    //   96: aload_2
-    //   97: astore_0
-    //   98: aload_3
-    //   99: invokevirtual 259	java/io/ByteArrayOutputStream:flush	()V
-    //   102: aload_2
-    //   103: astore_0
-    //   104: aload_3
-    //   105: invokevirtual 263	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   108: astore_3
-    //   109: aload_2
-    //   110: invokevirtual 256	java/io/BufferedInputStream:close	()V
+    //   80: astore_0
+    //   81: invokestatic 258	com/tencent/bugly/proguard/u:a	()Lcom/tencent/bugly/proguard/u;
+    //   84: iconst_1
+    //   85: invokevirtual 260	com/tencent/bugly/proguard/u:b	(Z)V
+    //   88: aload_2
+    //   89: ifnull -85 -> 4
+    //   92: aload_2
+    //   93: invokevirtual 263	java/io/BufferedInputStream:close	()V
+    //   96: aconst_null
+    //   97: areturn
+    //   98: astore_0
+    //   99: aload_0
+    //   100: invokevirtual 126	java/lang/Throwable:printStackTrace	()V
+    //   103: aconst_null
+    //   104: areturn
+    //   105: aload_2
+    //   106: astore_0
+    //   107: aload_3
+    //   108: invokevirtual 266	java/io/ByteArrayOutputStream:flush	()V
+    //   111: aload_2
+    //   112: astore_0
     //   113: aload_3
-    //   114: areturn
-    //   115: astore_0
-    //   116: aload_0
-    //   117: invokevirtual 126	java/lang/Throwable:printStackTrace	()V
-    //   120: aload_3
-    //   121: areturn
-    //   122: astore_2
-    //   123: aconst_null
+    //   114: invokevirtual 270	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   117: astore_3
+    //   118: aload_2
+    //   119: invokevirtual 263	java/io/BufferedInputStream:close	()V
+    //   122: aload_3
+    //   123: areturn
     //   124: astore_0
     //   125: aload_0
-    //   126: ifnull +7 -> 133
-    //   129: aload_0
-    //   130: invokevirtual 256	java/io/BufferedInputStream:close	()V
-    //   133: aload_2
-    //   134: athrow
-    //   135: astore_0
-    //   136: aload_0
-    //   137: invokevirtual 126	java/lang/Throwable:printStackTrace	()V
-    //   140: goto -7 -> 133
-    //   143: astore_2
-    //   144: goto -19 -> 125
-    //   147: astore_3
-    //   148: aconst_null
-    //   149: astore_2
-    //   150: goto -86 -> 64
+    //   126: invokevirtual 126	java/lang/Throwable:printStackTrace	()V
+    //   129: aload_3
+    //   130: areturn
+    //   131: astore_2
+    //   132: aconst_null
+    //   133: astore_0
+    //   134: aload_0
+    //   135: ifnull +7 -> 142
+    //   138: aload_0
+    //   139: invokevirtual 263	java/io/BufferedInputStream:close	()V
+    //   142: aload_2
+    //   143: athrow
+    //   144: astore_0
+    //   145: aload_0
+    //   146: invokevirtual 126	java/lang/Throwable:printStackTrace	()V
+    //   149: goto -7 -> 142
+    //   152: astore_2
+    //   153: goto -19 -> 134
+    //   156: astore_3
+    //   157: aconst_null
+    //   158: astore_2
+    //   159: goto -95 -> 64
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	153	0	paramHttpURLConnection	HttpURLConnection
+    //   0	162	0	paramHttpURLConnection	HttpURLConnection
     //   45	12	1	i	int
-    //   17	93	2	localBufferedInputStream	java.io.BufferedInputStream
-    //   122	12	2	localObject1	Object
-    //   143	1	2	localObject2	Object
-    //   149	1	2	localObject3	Object
+    //   17	102	2	localBufferedInputStream	java.io.BufferedInputStream
+    //   131	12	2	localObject1	Object
+    //   152	1	2	localObject2	Object
+    //   158	1	2	localObject3	Object
     //   27	26	3	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   63	42	3	localThrowable1	Throwable
-    //   108	13	3	arrayOfByte1	byte[]
-    //   147	1	3	localThrowable2	Throwable
+    //   63	51	3	localThrowable1	Throwable
+    //   117	13	3	arrayOfByte1	byte[]
+    //   156	1	3	localThrowable2	Throwable
     //   35	19	4	arrayOfByte2	byte[]
     // Exception table:
     //   from	to	target	type
@@ -251,21 +256,22 @@ public final class s
     //   30	37	63	java/lang/Throwable
     //   39	46	63	java/lang/Throwable
     //   52	60	63	java/lang/Throwable
-    //   98	102	63	java/lang/Throwable
-    //   104	109	63	java/lang/Throwable
-    //   83	87	89	java/lang/Throwable
-    //   109	113	115	java/lang/Throwable
-    //   6	18	122	finally
-    //   129	133	135	java/lang/Throwable
-    //   20	28	143	finally
-    //   30	37	143	finally
-    //   39	46	143	finally
-    //   52	60	143	finally
-    //   66	73	143	finally
-    //   75	79	143	finally
-    //   98	102	143	finally
-    //   104	109	143	finally
-    //   6	18	147	java/lang/Throwable
+    //   107	111	63	java/lang/Throwable
+    //   113	118	63	java/lang/Throwable
+    //   92	96	98	java/lang/Throwable
+    //   118	122	124	java/lang/Throwable
+    //   6	18	131	finally
+    //   138	142	144	java/lang/Throwable
+    //   20	28	152	finally
+    //   30	37	152	finally
+    //   39	46	152	finally
+    //   52	60	152	finally
+    //   66	73	152	finally
+    //   75	79	152	finally
+    //   81	88	152	finally
+    //   107	111	152	finally
+    //   113	118	152	finally
+    //   6	18	156	java/lang/Throwable
   }
   
   public final byte[] a(String paramString, byte[] paramArrayOfByte, v paramv, Map<String, String> paramMap)
@@ -299,7 +305,7 @@ public final class s
     int n;
     for (;;)
     {
-      localObject1 = b.f(this.c);
+      localObject1 = b.c(this.c);
       if (localObject1 != null) {
         break label213;
       }

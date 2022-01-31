@@ -1,51 +1,68 @@
-import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.ReportWatchVideoEntry;
 
-public abstract class uvr
+public class uvr
 {
-  protected int a;
-  protected String a;
-  protected vaj a;
-  protected int b;
-  protected String b;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
   
-  public int a()
+  public uvr() {}
+  
+  public uvr(String paramString1, String paramString2, boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
   {
-    return this.jdField_b_of_type_Int;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public String a()
+  public ReportWatchVideoEntry a()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    ReportWatchVideoEntry localReportWatchVideoEntry = new ReportWatchVideoEntry();
+    localReportWatchVideoEntry.vid = this.jdField_a_of_type_JavaLangString;
+    localReportWatchVideoEntry.videoUnionId = this.jdField_b_of_type_JavaLangString;
+    localReportWatchVideoEntry.isLiveVideo = this.jdField_a_of_type_Boolean;
+    localReportWatchVideoEntry.createTime = this.jdField_a_of_type_Long;
+    localReportWatchVideoEntry.source = this.jdField_a_of_type_Int;
+    localReportWatchVideoEntry.vidType = this.jdField_b_of_type_Int;
+    return localReportWatchVideoEntry;
   }
   
-  public abstract void a();
-  
-  public void a(int paramInt)
+  public void a(ReportWatchVideoEntry paramReportWatchVideoEntry)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramReportWatchVideoEntry.vid;
+    this.jdField_b_of_type_JavaLangString = paramReportWatchVideoEntry.videoUnionId;
+    this.jdField_a_of_type_Boolean = paramReportWatchVideoEntry.isLiveVideo;
+    this.jdField_a_of_type_Long = paramReportWatchVideoEntry.createTime;
+    this.jdField_a_of_type_Int = paramReportWatchVideoEntry.source;
+    this.jdField_b_of_type_Int = paramReportWatchVideoEntry.vidType;
   }
   
-  public void a(vaj paramvaj)
+  public boolean equals(Object paramObject)
   {
-    this.jdField_a_of_type_Vaj = paramvaj;
-  }
-  
-  public boolean a(String paramString)
-  {
-    a();
-    if (TextUtils.isEmpty(paramString)) {
+    if (this == paramObject) {
+      return true;
+    }
+    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
       return false;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = -1;
-    return true;
+    paramObject = (uvr)paramObject;
+    return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
   }
   
-  public abstract boolean b(String paramString);
+  public String toString()
+  {
+    return "InnerVideoItem { mVid=" + this.jdField_a_of_type_JavaLangString + " mVideoUid=" + this.jdField_b_of_type_JavaLangString + " mIsLiveVideo=" + this.jdField_a_of_type_Boolean + " mCreateTime=" + this.jdField_a_of_type_Long + " mSource=" + this.jdField_a_of_type_Int + " mVidType=" + this.jdField_b_of_type_Int + "}";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uvr
  * JD-Core Version:    0.7.0.1
  */

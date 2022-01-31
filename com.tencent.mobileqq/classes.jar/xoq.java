@@ -1,58 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.widget.ImageView;
 
-public class xoq
-  implements View.OnTouchListener
+class xoq
 {
-  public xoq(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ImageView b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getAction();
-    paramMotionEvent.getX();
-    float f = paramMotionEvent.getY();
-    if (i == 0) {
-      this.a.b.setText(null);
-    }
-    do
-    {
-      return false;
-      if (i == 2)
-      {
-        if (f < this.a.a * -1)
-        {
-          this.a.a(false, false);
-          return true;
-        }
-        this.a.a(true, false);
-        return true;
-      }
-      if (i == 3)
-      {
-        this.a.a(false, true);
-        return false;
-      }
-    } while (i != 1);
-    if (f < this.a.a * -1)
-    {
-      this.a.l = false;
-      this.a.a(false, true);
-    }
-    for (;;)
-    {
-      this.a.b.setText(2131438163);
-      return false;
-      this.a.l = true;
-      this.a.a(true, true);
-    }
-  }
+  xoq(xop paramxop) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xoq
  * JD-Core Version:    0.7.0.1
  */

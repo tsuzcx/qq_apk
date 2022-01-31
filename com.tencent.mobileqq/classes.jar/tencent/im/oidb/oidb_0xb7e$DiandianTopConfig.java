@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0xb7e$DiandianTopConfig
-  extends MessageMicro
+  extends MessageMicro<DiandianTopConfig>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_jump_url = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -31,7 +31,7 @@ public final class oidb_0xb7e$DiandianTopConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xb7e.DiandianTopConfig
  * JD-Core Version:    0.7.0.1
  */

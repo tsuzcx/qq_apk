@@ -1,29 +1,22 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
 
 public class xac
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public xac(PayCodeEntryActivity paramPayCodeEntryActivity) {}
+  public xac(EditVideoGuide paramEditVideoGuide) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a("payCodeEntry.contractLink", "actQQWlxclick", "0004");
-    paramView = new Intent();
-    paramView.setClass(this.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://wlx.tenpay.com/traffic/protocol/protocol_list.html?_wv=3");
-    paramView.putExtra("hide_operation_bar", true);
-    paramView.putExtra("hide_more_button", true);
-    paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
-    this.a.startActivity(paramView);
+    this.a.jdField_a_of_type_Int = 3;
+    this.a.b = 3;
+    this.a.jdField_a_of_type_Xan.a(14);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xac
  * JD-Core Version:    0.7.0.1
  */

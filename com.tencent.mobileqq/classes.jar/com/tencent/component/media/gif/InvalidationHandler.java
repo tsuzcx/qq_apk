@@ -9,17 +9,17 @@ import java.lang.ref.WeakReference;
 public class InvalidationHandler
   extends Handler
 {
-  private final WeakReference a;
+  private final WeakReference<Drawable> mDrawableRef;
   
   public InvalidationHandler(Drawable paramDrawable)
   {
     super(Looper.getMainLooper());
-    this.a = new WeakReference(paramDrawable);
+    this.mDrawableRef = new WeakReference(paramDrawable);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    paramMessage = (Drawable)this.a.get();
+    paramMessage = (Drawable)this.mDrawableRef.get();
     if (paramMessage != null) {
       paramMessage.invalidateSelf();
     }
@@ -27,7 +27,7 @@ public class InvalidationHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.gif.InvalidationHandler
  * JD-Core Version:    0.7.0.1
  */

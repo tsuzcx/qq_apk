@@ -1,24 +1,26 @@
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
 
 class abzy
-  implements Runnable
+  implements View.OnClickListener
 {
-  abzy(abzx paramabzx, List paramList) {}
+  abzy(abzw paramabzw, View.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FavEmoRoamingObserver", 2, "start upload and download fav");
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null)
+    {
+      QLog.e("SdkAuthDialog", 1, "negativeListener is null");
+      return;
     }
-    this.jdField_a_of_type_Abzx.a.a(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Abzx.a.c();
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    azqs.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "2", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzy
  * JD-Core Version:    0.7.0.1
  */

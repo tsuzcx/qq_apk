@@ -1,33 +1,22 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.StrangerObserver;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StUser;
 
 public class ucy
-  extends StrangerObserver
+  implements ucd
 {
-  public ucy(TroopRequestActivity paramTroopRequestActivity) {}
+  public ucy(QCircleFeedCommentWidget paramQCircleFeedCommentWidget, FeedCloudMeta.StComment paramStComment) {}
   
-  public void a(boolean paramBoolean, PBRepeatMessageField paramPBRepeatMessageField)
+  public void a()
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getApplicationContext().getResources().getString(2131436918), 0).a();
-      this.a.c.setVisibility(8);
-      return;
-    }
-    QQToast.a(this.a.getApplicationContext(), 1, this.a.getApplicationContext().getResources().getString(2131436917), 0).a();
+    tzs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser.id.get(), QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a, QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget), 44);
+    tqs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.postUser.id.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ucy
  * JD-Core Version:    0.7.0.1
  */

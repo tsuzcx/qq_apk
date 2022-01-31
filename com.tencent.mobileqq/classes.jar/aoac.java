@@ -1,45 +1,80 @@
-import android.util.Log;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView.EGLContextFactory;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.view.View;
 
-public class aoac
-  implements GLTextureView.EGLContextFactory
+public final class aoac
 {
-  private int jdField_a_of_type_Int = 12440;
-  
-  private aoac(GLTextureView paramGLTextureView) {}
-  
-  public EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public static void a(View paramView, float paramFloat)
   {
-    int[] arrayOfInt = new int[3];
-    arrayOfInt[0] = this.jdField_a_of_type_Int;
-    arrayOfInt[1] = GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView);
-    arrayOfInt[2] = 12344;
-    EGLContext localEGLContext = EGL10.EGL_NO_CONTEXT;
-    if (GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) != 0) {}
-    for (;;)
+    if (aoab.a)
     {
-      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
-      arrayOfInt = null;
+      aoab.a(paramView).a(paramFloat);
+      return;
     }
+    aoad.c(paramView, paramFloat);
   }
   
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  public static void b(View paramView, float paramFloat)
   {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
+    if (aoab.a)
     {
-      Log.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
-      aoae.a("eglDestroyContex", paramEGL10.eglGetError());
+      aoab.a(paramView).d(paramFloat);
+      return;
     }
+    aoad.d(paramView, paramFloat);
+  }
+  
+  public static void c(View paramView, float paramFloat)
+  {
+    if (aoab.a)
+    {
+      aoab.a(paramView).e(paramFloat);
+      return;
+    }
+    aoad.e(paramView, paramFloat);
+  }
+  
+  public static void d(View paramView, float paramFloat)
+  {
+    if (aoab.a)
+    {
+      aoab.a(paramView).b(paramFloat);
+      return;
+    }
+    aoad.a(paramView, paramFloat);
+  }
+  
+  public static void e(View paramView, float paramFloat)
+  {
+    if (aoab.a)
+    {
+      aoab.a(paramView).c(paramFloat);
+      return;
+    }
+    aoad.b(paramView, paramFloat);
+  }
+  
+  public static void f(View paramView, float paramFloat)
+  {
+    if (aoab.a)
+    {
+      aoab.a(paramView).g(paramFloat);
+      return;
+    }
+    aoad.f(paramView, paramFloat);
+  }
+  
+  public static void g(View paramView, float paramFloat)
+  {
+    if (aoab.a)
+    {
+      aoab.a(paramView).h(paramFloat);
+      return;
+    }
+    aoad.g(paramView, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoac
  * JD-Core Version:    0.7.0.1
  */

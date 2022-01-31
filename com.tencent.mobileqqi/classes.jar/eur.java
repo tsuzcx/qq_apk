@@ -1,63 +1,41 @@
-import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.international.LocaleString;
-import java.util.List;
+import android.view.View.OnTouchListener;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class eur
-  extends BaseAdapter
+  implements View.OnTouchListener
 {
-  private eur(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  public eur(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public int getCount()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.a.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())) {
-      return this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if ((paramView != null) && (paramView.getTag() != null))
+    if (paramMotionEvent.getAction() == 0)
     {
-      euu localeuu = (euu)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = localeuu;
+      paramView = new int[2];
+      this.a.e.getLocationInWindow(paramView);
+      paramMotionEvent = new int[2];
+      this.a.e.getLocationOnScreen(paramMotionEvent);
+      paramMotionEvent = new int[2];
+      VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
+      VoipDialInterfaceActivity.d(this.a).offsetTopAndBottom(paramView[1] - paramMotionEvent[1] + this.a.e.getHeight() / 2 - VoipDialInterfaceActivity.d(this.a).getHeight() / 2);
+      VoipDialInterfaceActivity.d(this.a).offsetLeftAndRight(paramView[0] + this.a.e.getWidth() / 2 - VoipDialInterfaceActivity.d(this.a).getWidth() / 2);
+      VoipDialInterfaceActivity.d(this.a).setVisibility(0);
     }
-    for (;;)
-    {
-      LocaleString.a(((Groups)getItem(paramInt)).group_name, paramView.a);
-      paramView.a.setContentDescription(((Groups)getItem(paramInt)).group_name + ",双击进入分组选择");
-      if (paramInt != 0) {
-        break;
-      }
-      paramView.a.setOnClickListener(new eus(this));
-      return paramViewGroup;
-      paramView = new euu(this, null);
-      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903961, this.a.jdField_a_of_type_ComTencentWidgetXListView, false);
-      paramView.a = ((Button)paramViewGroup.findViewById(2131232177));
-      paramViewGroup.setTag(paramView);
+    while (paramMotionEvent.getAction() != 1) {
+      return false;
     }
-    paramView.a.setOnClickListener(new eut(this, paramInt));
-    return paramViewGroup;
+    paramView = new int[2];
+    this.a.e.getLocationInWindow(paramView);
+    paramMotionEvent = new int[2];
+    VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
+    VoipDialInterfaceActivity.d(this.a).offsetTopAndBottom(-(paramView[1] - paramMotionEvent[1] + this.a.e.getHeight() / 2 - VoipDialInterfaceActivity.d(this.a).getHeight() / 2));
+    VoipDialInterfaceActivity.d(this.a).offsetLeftAndRight(-(paramView[0] + this.a.e.getWidth() / 2 - VoipDialInterfaceActivity.d(this.a).getWidth() / 2));
+    VoipDialInterfaceActivity.d(this.a).setVisibility(4);
+    VoipDialInterfaceActivity.c(this.a).invalidate();
+    return false;
   }
 }
 

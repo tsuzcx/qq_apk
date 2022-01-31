@@ -1,14 +1,15 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
-public class aihn
-  implements Runnable
+class aihn
+  implements View.OnClickListener
 {
-  public aihn(StructMsgForAudioShare paramStructMsgForAudioShare, URLImageView paramURLImageView) {}
+  aihn(aihl paramaihl) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130842745);
+    this.a.a.setText("");
   }
 }
 

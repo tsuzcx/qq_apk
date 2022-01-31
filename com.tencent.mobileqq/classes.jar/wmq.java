@@ -1,42 +1,49 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contacts.base.CardViewController;
-import java.util.HashMap;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wmq
-  extends AsyncTask
+  extends QQUIEventReceiver<wml, uow>
 {
-  public wmq(CardViewController paramCardViewController, String paramString, wmu paramwmu) {}
-  
-  protected HashMap a(Void... paramVarArgs)
+  public wmq(wml paramwml)
   {
-    paramVarArgs = null;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      paramVarArgs = CardViewController.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController, this.jdField_a_of_type_JavaLangString);
-    }
-    return paramVarArgs;
+    super(paramwml);
   }
   
-  protected void a(HashMap paramHashMap)
+  public void a(@NonNull wml paramwml, @NonNull uow paramuow)
   {
-    if (paramHashMap == null) {
-      return;
-    }
-    String str = (String)paramHashMap.get("displayedStr ");
-    paramHashMap = (String)paramHashMap.get("displayingStr ");
-    CardViewController.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController, str);
-    CardViewController.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController, paramHashMap);
-    if (this.jdField_a_of_type_Wmu != null)
+    if (paramuow.a.isSuccess())
     {
-      this.jdField_a_of_type_Wmu.a();
-      return;
+      if (!paramuow.a()) {
+        break label25;
+      }
+      wxe.c("Q.qqstory.memories.ProfileFeedPresenter", "ignore this upload status event, because it's a troop video.");
     }
-    CardViewController.d(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController);
+    label25:
+    do
+    {
+      do
+      {
+        return;
+        if (paramuow.c())
+        {
+          wxe.b("Q.qqstory.memories.ProfileFeedPresenter", "receive share group video upload status change event. %s.", paramuow.toString());
+          return;
+        }
+      } while (!paramuow.b());
+      wxe.a("Q.qqstory.memories.ProfileFeedPresenter", "receive personal video upload status change event. %s. start to refresh year node list", paramuow.toString());
+    } while (paramuow.b == null);
+    wml.a(paramwml, true);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uow.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wmq
  * JD-Core Version:    0.7.0.1
  */

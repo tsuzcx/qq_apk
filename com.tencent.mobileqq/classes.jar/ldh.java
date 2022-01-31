@@ -1,20 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.mobileqq.util.SystemUtil;
+import org.apache.http.Header;
+import org.json.JSONObject;
 
-public class ldh
-  implements Runnable
+class ldh
+  extends lcn
 {
-  public ldh(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity, int paramInt) {}
+  ldh(lde paramlde, lcn paramlcn) {}
   
-  public void run()
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
   {
-    SystemUtil.b();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.runOnUiThread(new ldi(this));
+    this.jdField_a_of_type_Lcn.a(paramInt, paramArrayOfHeader, paramJSONObject);
+  }
+  
+  public void a(Throwable paramThrowable, String paramString)
+  {
+    this.jdField_a_of_type_Lcn.a(paramThrowable, paramString);
+    super.a(paramThrowable, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ldh
  * JD-Core Version:    0.7.0.1
  */

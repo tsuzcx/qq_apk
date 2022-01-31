@@ -1,51 +1,74 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituPicAdapter;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituPicData;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class wdz
-  extends Handler
+class wdz
+  implements URLDrawable.URLDrawableListener
 {
-  public wdz(ZhituManager paramZhituManager, Looper paramLooper)
+  private final int jdField_a_of_type_Int;
+  private final URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private final String jdField_a_of_type_JavaLangString;
+  private final int b;
+  
+  public wdz(wdy paramwdy, @NonNull String paramString, int paramInt1, int paramInt2, URLDrawable paramURLDrawable)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    switch (paramMessage.what)
+    wdy.a(this.jdField_a_of_type_Wdy).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    wdy.a(this.jdField_a_of_type_Wdy).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    wxe.d("story.icon.ShareGroupIconManager", "download url failed. %s", new Object[] { this.jdField_a_of_type_JavaLangString });
+    paramURLDrawable = (HashSet)wdy.a(this.jdField_a_of_type_Wdy).remove(this.jdField_a_of_type_JavaLangString);
+    if (paramURLDrawable != null)
     {
+      paramURLDrawable = paramURLDrawable.iterator();
+      while (paramURLDrawable.hasNext()) {
+        ((wec)paramURLDrawable.next()).a(this.jdField_a_of_type_JavaLangString, paramThrowable);
+      }
     }
-    int i;
-    do
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    wdy.a(this.jdField_a_of_type_Wdy).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    wxe.a("story.icon.ShareGroupIconManager", "download url success. %s", this.jdField_a_of_type_JavaLangString);
+    Bitmap localBitmap = wdy.a(this.jdField_a_of_type_Wdy, paramURLDrawable, this.jdField_a_of_type_Int, this.b);
+    if (localBitmap != null)
     {
-      do
+      paramURLDrawable = (HashSet)wdy.a(this.jdField_a_of_type_Wdy).remove(this.jdField_a_of_type_JavaLangString);
+      if (paramURLDrawable != null)
       {
-        return;
-        paramMessage = (ZhituPicData)paramMessage.obj;
-        if (QLog.isColorLevel()) {
-          QLog.d("ZhituManager", 2, ZhituManager.a(paramMessage.d, "main handler", paramMessage.a, "all img process is finished, now is in main thread"));
+        paramURLDrawable = paramURLDrawable.iterator();
+        while (paramURLDrawable.hasNext()) {
+          ((wec)paramURLDrawable.next()).a(this.jdField_a_of_type_JavaLangString, localBitmap);
         }
-        this.a.d(paramMessage);
-        return;
-        i = paramMessage.arg1;
-        paramMessage = (String)paramMessage.obj;
-        if (paramMessage.equals(this.a.a())) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ZhituManager", 2, ZhituManager.a(paramMessage, "main handler", "reqKey is outdated, skip"));
-      return;
-    } while (this.a.a == null);
-    this.a.a.a(i, paramMessage);
+      }
+    }
+    else
+    {
+      wxe.e("story.icon.ShareGroupIconManager", "download url success directly. but OOM occur !");
+      onLoadFialed(paramURLDrawable, new Throwable("getBitmapFromDrawable failed"));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wdz
  * JD-Core Version:    0.7.0.1
  */

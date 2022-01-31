@@ -1,39 +1,51 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.views.RoundBorderImageView;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import java.util.List;
 
-class vbq
-  implements Runnable
+public class vbq
+  extends vbo
 {
-  vbq(vbp paramvbp) {}
+  public int a;
   
-  public void run()
+  public vbq(ViewGroup paramViewGroup, int paramInt)
   {
-    Object localObject = (EmoticonManager)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.a.getManager(13);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a != null) {
-      ((EmoticonManager)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.epId);
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a != null) {
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.b, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.a.getAccount(), 12, String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.epId), false, false);
-    }
-    QQAppInterface localQQAppInterface = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.a;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a == null) {}
-    for (localObject = "";; localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.epId)
+    super(paramViewGroup, 2131561509);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(uyg paramuyg)
+  {
+    super.a(paramuyg);
+    switch (this.jdField_a_of_type_Int)
     {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007188", 0, 0, (String)localObject, "", "", "");
+    default: 
+      xqq.a(alud.a(2131707996), new Object[0]);
       return;
+    case 3: 
+      this.itemView.setTag(Integer.valueOf(3));
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(paramuyg.c, false);
+      String str = xsj.b(paramuyg.g);
+      if (!TextUtils.isEmpty(str)) {
+        b(str);
+      }
+      while ((paramuyg.a == null) || (paramuyg.a.isEmpty()))
+      {
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a(1, 1 - paramuyg.b);
+        return;
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a.setImageResource(2130846185);
+      }
     }
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(alud.a(2131707995), false);
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a.setImageResource(2130846182);
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a.b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vbq
  * JD-Core Version:    0.7.0.1
  */

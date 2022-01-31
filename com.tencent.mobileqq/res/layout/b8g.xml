@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/hfs" android:layout_width="fill_parent" android:layout_height="fill_parent" android:splitMotionEvents="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.copyabletextview.FloatMenuRelativeLayout android:orientation="vertical" android:id="@id/c40" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/azw">
+        <com.tencent.mobileqq.widget.WebViewProgressBar android:id="@id/h8l" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="3.0dip" />
+        <com.tencent.biz.ui.RefreshView android:layout_gravity="bottom" android:id="@id/h8y" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="50.0dip" />
+        <include android:id="@id/d8n" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/hg" />
+        <FrameLayout android:id="@id/hjk" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.qzone.detail.ui.component.StickyNoteFeedDetailSkinBgListView android:scrollbarThumbVertical="@drawable/axv" android:scrollbarStyle="insideOverlay" android:id="@id/elh" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
+        </FrameLayout>
+    </com.qzone.widget.copyabletextview.FloatMenuRelativeLayout>
+    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/l7q" android:background="@null" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/b90" />
+    </LinearLayout>
+    <FrameLayout android:id="@id/ha2" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <FrameLayout android:id="@id/ha0" android:layout_width="fill_parent" android:layout_height="@dimen/azw" />
+        <FrameLayout android:id="@id/h_w" android:background="@drawable/gfk" android:layout_width="fill_parent" android:layout_height="@dimen/azy" />
+        <include android:id="@id/ha1" android:background="@null" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_marginTop="@dimen/b01" layout="@layout/qzone_custom_commen_title" />
+    </FrameLayout>
+</FrameLayout>

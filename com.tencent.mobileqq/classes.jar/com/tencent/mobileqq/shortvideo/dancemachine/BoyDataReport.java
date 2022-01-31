@@ -4,28 +4,22 @@ import java.util.ArrayList;
 
 public class BoyDataReport
 {
-  public long a;
-  public ArrayList a;
-  public boolean a;
-  public long b;
+  public ArrayList<BoyDataReport.BoyItem> mBoyData = new ArrayList();
+  public long mGameDuration;
+  public long mGameTotalScore;
+  public boolean mHasReported = false;
   
-  public BoyDataReport()
+  public void clear()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
-    this.jdField_a_of_type_Boolean = false;
+    this.mBoyData.clear();
+    this.mGameDuration = 0L;
+    this.mGameTotalScore = 0L;
+    this.mHasReported = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport
  * JD-Core Version:    0.7.0.1
  */

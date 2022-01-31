@@ -1,140 +1,254 @@
 package c.t.m.g;
 
-import android.os.Bundle;
-import com.tencent.map.geolocation.TencentPoi;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.eclipse.jdt.annotation.Nullable;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Message;
+import android.telephony.CellLocation;
+import android.telephony.PhoneStateListener;
+import android.telephony.ServiceState;
+import android.telephony.SignalStrength;
+import android.telephony.TelephonyManager;
+import android.telephony.gsm.GsmCellLocation;
 
 final class eg
+  extends PhoneStateListener
 {
-  public int a;
-  public final ArrayList<TencentPoi> b = new ArrayList();
-  public ek c;
+  volatile boolean a;
+  final ea b;
+  CellLocation c = null;
+  HandlerThread d;
+  Handler e;
+  private SignalStrength f = null;
+  private ServiceState g = null;
+  private long h;
   
-  eg() {}
-  
-  public eg(JSONObject paramJSONObject)
-    throws JSONException
+  public eg(ea paramea)
   {
-    this.a = paramJSONObject.optInt("stat");
-    if (paramJSONObject.has("subnation")) {
-      this.c = new ek(paramJSONObject.optJSONObject("subnation"));
-    }
+    this.b = paramea;
+  }
+  
+  private void b()
+  {
+    if (!this.a) {}
     for (;;)
     {
-      paramJSONObject = paramJSONObject.optJSONArray("poilist");
-      if (paramJSONObject != null) {
-        try
+      return;
+      if (this.c != null)
+      {
+        long l = System.currentTimeMillis();
+        if (l - this.h > 2000L) {}
+        for (int i = 1; i != 0; i = 0)
         {
-          int j = paramJSONObject.length();
-          int i = 0;
-          for (;;)
+          this.h = l;
+          c();
+          return;
+        }
+      }
+    }
+  }
+  
+  private void c()
+  {
+    eu localeu = eu.a(this.b, this.c, this.f);
+    try
+    {
+      if ((this.e != null) && (localeu != null))
+      {
+        eg.b localb = new eg.b(this.b);
+        localb.a = localeu;
+        this.e.post(localb);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public final void a()
+  {
+    if (!this.a) {
+      return;
+    }
+    this.a = false;
+    a(0);
+    try
+    {
+      if (this.e != null)
+      {
+        this.e.removeCallbacksAndMessages(null);
+        this.e = null;
+      }
+      this.d.quit();
+      this.d = null;
+      this.c = null;
+      this.f = null;
+      this.g = null;
+      this.h = 0L;
+      new StringBuilder("unregister system cell provider:").append(Thread.currentThread().getName());
+      return;
+    }
+    finally {}
+  }
+  
+  final void a(int paramInt)
+  {
+    TelephonyManager localTelephonyManager = this.b.f;
+    try
+    {
+      localTelephonyManager.listen(this, paramInt);
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  final boolean a(CellLocation paramCellLocation)
+  {
+    if (paramCellLocation == null) {
+      return false;
+    }
+    try
+    {
+      GsmCellLocation localGsmCellLocation = (GsmCellLocation)paramCellLocation;
+      if (localGsmCellLocation.getCid() == 0)
+      {
+        int i = localGsmCellLocation.getLac();
+        if (i == 0) {
+          return false;
+        }
+      }
+    }
+    catch (ClassCastException localClassCastException)
+    {
+      if (fj.a(paramCellLocation) < 0) {
+        return false;
+      }
+      if (fj.a(this.c, paramCellLocation)) {
+        return false;
+      }
+      paramCellLocation = eu.a(this.b, paramCellLocation, null);
+      if (paramCellLocation == null) {}
+      for (boolean bool = true; bool; bool = fj.a(paramCellLocation)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public final void onCellLocationChanged(CellLocation paramCellLocation)
+  {
+    super.onCellLocationChanged(paramCellLocation);
+    try
+    {
+      if (a(paramCellLocation))
+      {
+        this.c = paramCellLocation;
+        b();
+        return;
+      }
+      new StringBuilder("onCellLocationChanged: illegal cell or same cell ").append(paramCellLocation);
+      return;
+    }
+    catch (Throwable paramCellLocation) {}
+  }
+  
+  public final void onServiceStateChanged(ServiceState paramServiceState)
+  {
+    int j = 1;
+    int m = 0;
+    super.onServiceStateChanged(paramServiceState);
+    if (paramServiceState == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        ServiceState localServiceState = this.g;
+        if ((localServiceState != null) && (localServiceState.getState() == paramServiceState.getState())) {
+          continue;
+        }
+        this.g = paramServiceState;
+        if (!this.a) {
+          continue;
+        }
+        int i;
+        boolean bool;
+        if (this.g != null) {
+          if (this.g.getState() == 0)
           {
-            if (i < j)
-            {
-              ej localej = new ej(paramJSONObject.getJSONObject(i));
-              this.b.add(localej);
-              i += 1;
-              continue;
-              if (paramJSONObject.has("results"))
-              {
-                this.c = a(paramJSONObject.optJSONArray("results"));
-                break;
-              }
-              this.c = ek.a;
-              f.a.b("DetailsData", "DetailsData: unknown json " + paramJSONObject.toString());
+            i = 1;
+            paramServiceState = this.b.f;
+            bool = fj.a(this.b.a);
+            if (paramServiceState == null) {
+              break label175;
             }
+            if (paramServiceState.getSimState() != 5) {
+              break label164;
+            }
+            break label177;
           }
         }
-        catch (JSONException paramJSONObject)
+        for (;;)
         {
-          f.a.a("DetailsData", "json error", paramJSONObject);
+          paramServiceState = new Message();
+          paramServiceState.what = 12999;
+          paramServiceState.arg1 = 12003;
+          paramServiceState.arg2 = k;
+          this.b.b(paramServiceState);
+          return;
+          i = this.g.getState();
+          if (i == 1)
+          {
+            i = 0;
+            break;
+          }
+          i = -1;
+          break;
+          label164:
+          j = 0;
+          label175:
+          label177:
+          do
+          {
+            k = i;
+            break;
+            j = 0;
+            k = m;
+            if (bool) {
+              break;
+            }
+          } while (j != 0);
+          int k = m;
         }
+        return;
       }
+      catch (Throwable paramServiceState) {}
     }
   }
   
-  private static ek a(@Nullable JSONArray paramJSONArray)
+  public final void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
   {
-    int i = 2;
-    if (paramJSONArray == null) {
-      localObject1 = null;
-    }
-    ek localek;
-    int j;
-    Object localObject2;
-    do
+    super.onSignalStrengthsChanged(paramSignalStrength);
+    if (paramSignalStrength == null) {}
+    for (;;)
     {
-      return localObject1;
-      localek = ek.a(ek.a);
-      j = paramJSONArray.length();
-      if (j > 0)
+      return;
+      try
       {
-        localObject1 = paramJSONArray.optJSONObject(0);
-        localek.b = ((JSONObject)localObject1).optString("n");
-        localek.e = ((JSONObject)localObject1).optString("p");
-        localek.f = ((JSONObject)localObject1).optString("c");
-        localek.g = ((JSONObject)localObject1).optString("d");
-        localek.d = ((JSONObject)localObject1).optString("adcode");
-      }
-      if (j > 1)
-      {
-        localObject1 = paramJSONArray.optJSONObject(1);
-        localObject2 = ((JSONObject)localObject1).optString("address_name");
-        localek.l.putString("addrdesp.name", (String)localObject2);
-        localObject2 = ((JSONObject)localObject1).optJSONObject("landmark");
-        localObject1 = ((JSONObject)localObject1).optJSONObject("second_landmark");
-        if (localObject2 != null) {
-          localek.l.putParcelable("addrdesp.landmark", new ef((JSONObject)localObject2));
-        }
-        if (localObject1 != null) {
-          localek.l.putParcelable("addrdesp.second_landmark", new ef((JSONObject)localObject1));
+        SignalStrength localSignalStrength = this.f;
+        int i = this.b.b.a;
+        if ((localSignalStrength == null) || (fj.a(i, localSignalStrength, paramSignalStrength)))
+        {
+          this.f = paramSignalStrength;
+          b();
+          return;
         }
       }
-      localObject1 = localek;
-    } while (j <= 2);
-    Object localObject1 = new ArrayList();
-    if (i < j)
-    {
-      localObject2 = new ef(paramJSONArray.optJSONObject(i));
-      ((ArrayList)localObject1).add(localObject2);
-      if ("ST".equals(((ef)localObject2).b)) {
-        localek.j = ((ef)localObject2).a;
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ("ST_NO".equals(((ef)localObject2).b)) {
-          localek.k = ((ef)localObject2).a;
-        }
-      }
+      catch (Throwable paramSignalStrength) {}
     }
-    localek.l.putParcelableArrayList("addrdesp.results", (ArrayList)localObject1);
-    return localek;
-  }
-  
-  public final String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("DetailsData{");
-    localStringBuilder.append("subnation=").append(this.c).append(",");
-    localStringBuilder.append("poilist=[");
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      localStringBuilder.append((TencentPoi)localIterator.next()).append(",");
-    }
-    localStringBuilder.append("]");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.eg
  * JD-Core Version:    0.7.0.1
  */

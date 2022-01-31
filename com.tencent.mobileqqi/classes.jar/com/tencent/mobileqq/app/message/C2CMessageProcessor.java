@@ -6,7 +6,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Pair;
-import com.tencent.av.VideoConstants;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.XMLMessageUtils;
 import com.tencent.mobileqq.app.FriendsManagerImp;
@@ -44,8 +43,8 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MsgAutoMonitorUtil;
-import fnl;
-import fnm;
+import fiz;
+import fja;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -632,7 +631,7 @@ public class C2CMessageProcessor
     //   402: aload_0
     //   403: getfield 305	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
     //   406: iconst_0
-    //   407: putfield 512	com/tencent/mobileqq/app/MessageHandler:bK	I
+    //   407: putfield 512	com/tencent/mobileqq/app/MessageHandler:bN	I
     //   410: aload 21
     //   412: getfield 516	msf/msgsvc/msg_svc$PbGetMsgResp:sync_flag	Lcom/tencent/mobileqq/pb/PBEnumField;
     //   415: invokevirtual 519	com/tencent/mobileqq/pb/PBEnumField:has	()Z
@@ -822,10 +821,10 @@ public class C2CMessageProcessor
     //   853: iconst_1
     //   854: if_icmple +15 -> 869
     //   857: aload_3
-    //   858: new 571	fnk
+    //   858: new 571	fiy
     //   861: dup
     //   862: aload_0
-    //   863: invokespecial 574	fnk:<init>	(Lcom/tencent/mobileqq/app/message/C2CMessageProcessor;)V
+    //   863: invokespecial 574	fiy:<init>	(Lcom/tencent/mobileqq/app/message/C2CMessageProcessor;)V
     //   866: invokestatic 580	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   869: aload_0
     //   870: getfield 30	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
@@ -1574,7 +1573,7 @@ public class C2CMessageProcessor
       break label1387;
       if (!localArrayList.isEmpty())
       {
-        Collections.sort(localArrayList, new fnl(this));
+        Collections.sort(localArrayList, new fiz(this));
         l1 = ((MessageRecord)localArrayList.get(0)).time;
         long l2 = Math.min(paramToServiceMsg.extraData.getLong("lEndTime"), ((MessageRecord)localArrayList.get(localArrayList.size() - 1)).time + 5L);
         i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(str, 0, l1, l2);
@@ -1717,7 +1716,7 @@ public class C2CMessageProcessor
     label441:
     if (paramObject.size() > 0)
     {
-      Collections.sort(paramObject, new fnm(this));
+      Collections.sort(paramObject, new fja(this));
       l1 = ((MessageRecord)paramObject.get(0)).time;
       paramToServiceMsg = paramObject;
       for (;;)
@@ -1909,7 +1908,7 @@ public class C2CMessageProcessor
           for (;;)
           {
             if (!paramMsg.hasNext()) {
-              break label2115;
+              break label2074;
             }
             paramPBDecodeContext = (MessageRecord)paramMsg.next();
             if (paramPBDecodeContext != null)
@@ -1944,7 +1943,7 @@ public class C2CMessageProcessor
                 }
               }
               if (!localDecodeProtoPkgContext.f) {
-                break label2103;
+                break label2062;
               }
               paramPBDecodeContext.issend = 2;
               paramPBDecodeContext.isread = true;
@@ -2022,64 +2021,22 @@ public class C2CMessageProcessor
                 MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, paramMsg, localDecodeProtoPkgContext.jdField_a_of_type_Boolean, localDecodeProtoPkgContext.f);
                 i = n;
               }
-              else if (i2 == 519)
-              {
-                i = n;
-                if (!localDecodeProtoPkgContext.jdField_d_of_type_Boolean)
-                {
-                  i = n;
-                  if (VideoConstants.jdField_a_of_type_Boolean)
-                  {
-                    MessageProtoCodec.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, paramMsg, localDecodeProtoPkgContext.jdField_a_of_type_Boolean, localDecodeProtoPkgContext.f);
-                    i = n;
-                  }
-                }
-              }
               else
               {
-                if (SystemMsg.isSystemMessage(i2))
+                i = n;
+                if (i2 != 519)
                 {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("Q.systemmsg.", 2, "friend system msg notify");
-                  }
-                  i = 0;
-                  if ((i2 == 188) || (i2 == 189)) {
-                    i = 1;
-                  }
-                  if ((!localDecodeProtoPkgContext.jdField_c_of_type_Boolean) && (i == 0)) {
-                    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a().a(2);
-                  }
-                  localDecodeProtoPkgContext.jdField_e_of_type_Long = 9998L;
-                  MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, paramMsg, localDecodeProtoPkgContext.jdField_a_of_type_Boolean, localDecodeProtoPkgContext.f, localDecodeProtoPkgContext.jdField_d_of_type_Boolean);
-                  if (i != 0) {
-                    SystemMsgController.a().b(l2, l5, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-                  }
-                  for (;;)
+                  if (SystemMsg.isSystemMessage(i2))
                   {
-                    return localArrayList;
-                    paramMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler;
-                    if (!MessageHandler.jdField_c_of_type_Boolean) {
-                      SystemMsgController.a().a(l2, l5, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-                    } else {
-                      FriendSystemMsgController.a().a(l2, l5, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+                    if (QLog.isColorLevel()) {
+                      QLog.d("Q.systemmsg.", 2, "friend system msg notify");
                     }
-                  }
-                }
-                if (a(i2))
-                {
-                  a(paramPBDecodeContext, paramMsg, localDecodeProtoPkgContext.jdField_d_of_type_Boolean);
-                  i = n;
-                }
-                else
-                {
-                  if (SystemMsg.isTroopSystemMessage(i2))
-                  {
                     i = 0;
-                    if ((i2 == 85) || (i2 == 36)) {
+                    if ((i2 == 188) || (i2 == 189)) {
                       i = 1;
                     }
                     if ((!localDecodeProtoPkgContext.jdField_c_of_type_Boolean) && (i == 0)) {
-                      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a().a(3);
+                      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a().a(2);
                     }
                     localDecodeProtoPkgContext.jdField_e_of_type_Long = 9998L;
                     MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, paramMsg, localDecodeProtoPkgContext.jdField_a_of_type_Boolean, localDecodeProtoPkgContext.f, localDecodeProtoPkgContext.jdField_d_of_type_Boolean);
@@ -2089,17 +2046,50 @@ public class C2CMessageProcessor
                     for (;;)
                     {
                       return localArrayList;
-                      GroupSystemMsgController.a().a(l2, l5, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+                      paramMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler;
+                      if (!MessageHandler.jdField_c_of_type_Boolean) {
+                        SystemMsgController.a().a(l2, l5, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+                      } else {
+                        FriendSystemMsgController.a().a(l2, l5, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+                      }
                     }
                   }
-                  if (i2 != 528) {
-                    break label1893;
-                  }
-                  i = n;
-                  if (!localDecodeProtoPkgContext.jdField_d_of_type_Boolean)
+                  if (a(i2))
                   {
-                    MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, localDecodeProtoPkgContext.jdField_a_of_type_Long, paramMsg, localDecodeProtoPkgContext.h);
+                    a(paramPBDecodeContext, paramMsg, localDecodeProtoPkgContext.jdField_d_of_type_Boolean);
                     i = n;
+                  }
+                  else
+                  {
+                    if (SystemMsg.isTroopSystemMessage(i2))
+                    {
+                      i = 0;
+                      if ((i2 == 85) || (i2 == 36)) {
+                        i = 1;
+                      }
+                      if ((!localDecodeProtoPkgContext.jdField_c_of_type_Boolean) && (i == 0)) {
+                        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a().a(3);
+                      }
+                      localDecodeProtoPkgContext.jdField_e_of_type_Long = 9998L;
+                      MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, paramMsg, localDecodeProtoPkgContext.jdField_a_of_type_Boolean, localDecodeProtoPkgContext.f, localDecodeProtoPkgContext.jdField_d_of_type_Boolean);
+                      if (i != 0) {
+                        SystemMsgController.a().b(l2, l5, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+                      }
+                      for (;;)
+                      {
+                        return localArrayList;
+                        GroupSystemMsgController.a().a(l2, l5, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+                      }
+                    }
+                    if (i2 != 528) {
+                      break label1852;
+                    }
+                    i = n;
+                    if (!localDecodeProtoPkgContext.jdField_d_of_type_Boolean)
+                    {
+                      MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, localDecodeProtoPkgContext.jdField_a_of_type_Long, paramMsg, localDecodeProtoPkgContext.h);
+                      i = n;
+                    }
                   }
                 }
               }
@@ -2121,8 +2111,9 @@ public class C2CMessageProcessor
         if (((TempSessionInfo)localObject).b == -1)
         {
           i = 0;
+          label1902:
           if (i == 0) {
-            break label2130;
+            break label2089;
           }
           i = ((TempSessionInfo)localObject).b;
           MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, paramPBDecodeContext, paramMsg, (TempSessionInfo)localObject, localDecodeProtoPkgContext);
@@ -2130,9 +2121,8 @@ public class C2CMessageProcessor
       }
       for (;;)
       {
-        label1893:
+        label1852:
         localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler;
-        label1943:
         l4 = localDecodeProtoPkgContext.jdField_e_of_type_Long;
         boolean bool2 = localDecodeProtoPkgContext.jdField_a_of_type_Boolean;
         boolean bool3 = localDecodeProtoPkgContext.jdField_b_of_type_Boolean;
@@ -2145,22 +2135,22 @@ public class C2CMessageProcessor
           {
             i = n;
             if (((TempSessionInfo)localObject).b != 1004) {
-              break label1943;
+              break label1902;
             }
           }
           localDecodeProtoPkgContext.jdField_b_of_type_Long = ((TempSessionInfo)localObject).jdField_c_of_type_Long;
           i = n;
-          break label1943;
+          break label1902;
         }
         paramPBDecodeContext.extStr = "";
         break label885;
-        label2103:
+        label2062:
         paramPBDecodeContext.isread = localDecodeProtoPkgContext.jdField_a_of_type_Boolean;
         break label1021;
-        label2115:
+        label2074:
         MsgAutoMonitorUtil.a().f(System.currentTimeMillis() - l1);
         return localArrayList;
-        label2130:
+        label2089:
         i = 0;
       }
       j = 0;

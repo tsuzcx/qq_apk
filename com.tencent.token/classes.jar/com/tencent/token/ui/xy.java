@@ -1,39 +1,50 @@
 package com.tencent.token.ui;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.token.utils.s;
+import android.os.Message;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.token.global.h;
+import com.tencent.token.ui.base.cm;
 
-final class xy
-  extends BroadcastReceiver
+class xy
+  extends cb
 {
-  xy(RealNameStep1InputNameIdActivity paramRealNameStep1InputNameIdActivity) {}
-  
-  public final void onReceive(Context paramContext, Intent paramIntent)
+  xy(RealNameTakeIDPhotoActivity paramRealNameTakeIDPhotoActivity)
   {
-    if ("android.net.conn.CONNECTIVITY_CHANGE".equals(paramIntent.getAction()))
+    super(paramRealNameTakeIDPhotoActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      paramContext = (TextView)this.a.findViewById(2131296784);
-      if (paramContext != null) {
-        break label30;
-      }
     }
-    label30:
     do
     {
+      do
+      {
+        return;
+        Intent localIntent = new Intent(this.a, TakeIDPhotoComfirmActivity.class);
+        localIntent.putExtra("data", (String)paramMessage.obj);
+        localIntent.putExtra("flag", paramMessage.arg1);
+        localIntent.putExtra("scene", RealNameTakeIDPhotoActivity.access$600(this.a));
+        this.a.startActivityForResult(localIntent, 300);
+        h.a("startActivity msg.arg1=" + paramMessage.arg1 + "msg.what=" + paramMessage.what);
+        return;
+        this.a.showToast(2131231281);
+        this.a.finish();
+        return;
+      } while (RealNameTakeIDPhotoActivity.access$500(this.a) == null);
+      RealNameTakeIDPhotoActivity.access$500(this.a).b();
       return;
-      paramContext.setText(2131362643);
-    } while (RealNameStep1InputNameIdActivity.access$800(this.a) == null);
-    if (!s.a())
-    {
-      RealNameStep1InputNameIdActivity.access$800(this.a).setVisibility(0);
-      RealNameStep1InputNameIdActivity.access$800(this.a).findViewById(2131296785).setOnClickListener(new xz(this));
-      return;
-    }
-    RealNameStep1InputNameIdActivity.access$800(this.a).setVisibility(8);
+    } while ((RealNameTakeIDPhotoActivity.access$100(this.a) != 2) || (RealNameTakeIDPhotoActivity.access$700(this.a) == null));
+    RealNameTakeIDPhotoActivity.access$700(this.a).setImageResource(2130837902);
+    paramMessage = new cm(270.0F, 360.0F, this.a.width / 2, this.a.height / 2, 310.0F, false);
+    paramMessage.setDuration(400L);
+    paramMessage.setFillAfter(true);
+    paramMessage.setAnimationListener(new xz(this));
+    RealNameTakeIDPhotoActivity.access$700(this.a).startAnimation(paramMessage);
   }
 }
 

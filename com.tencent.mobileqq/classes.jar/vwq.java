@@ -1,21 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-
-class vwq
-  implements DialogInterface.OnClickListener
+public class vwq
 {
-  vwq(vwp paramvwp, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Vwp.a.a.a(4, 0, 0, this.jdField_a_of_type_Int);
-  }
+  @xrk(a="clipNo")
+  int jdField_a_of_type_Int;
+  @xrk(a="fileSize")
+  long jdField_a_of_type_Long;
+  @xrk(a="errorMsg")
+  String jdField_a_of_type_JavaLangString;
+  @xrk(a="speedKBS")
+  int b;
+  @xrk(a="offset")
+  int c;
+  @xrk(a="callBackType")
+  int d;
+  @xrk(a="errorCode")
+  int e;
+  @xrk(a="errorDetailCode")
+  int f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vwq
  * JD-Core Version:    0.7.0.1
  */

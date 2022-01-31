@@ -11,11 +11,16 @@ public class MessageForConfessNews
   public static final String TAG = "MessageForConfessNews";
   public long confessTime;
   public int nBGType;
+  public int nBizType;
+  public int nConfessNum;
   public int nConfessorSex;
+  public int nGetConfessSex;
+  public int nRecNickType;
   public int nTopicId;
   public String strConfessorDesc;
   public String strConfessorNick;
   public String strConfessorUin;
+  public String strGroupUin;
   public String strRecNick;
   public String strRecUin;
   
@@ -39,13 +44,17 @@ public class MessageForConfessNews
       this.strConfessorDesc = localJSONObject.optString("strConfessorDesc");
       this.strConfessorNick = localJSONObject.optString("strConfessorNick");
       this.confessTime = localJSONObject.optLong("confessTime");
-      if (QLog.isDevelopLevel()) {
-        QLog.i("MessageForConfessNews", 4, String.format(Locale.getDefault(), "doParse: %s", new Object[] { this.msg }));
+      this.strGroupUin = localJSONObject.optString("strGroupUin");
+      this.nRecNickType = localJSONObject.optInt("nRecNickType");
+      if (localJSONObject.has("nConfessNum")) {
+        this.nConfessNum = localJSONObject.optInt("nConfessNum");
       }
-      if ((this.istroop == 1033) || (this.istroop == 0)) {
-        this.isread = true;
+      if (localJSONObject.has("nBizType")) {
+        this.nBizType = localJSONObject.optInt("nBizType");
       }
-      return;
+      if (localJSONObject.has("nGetConfessSex")) {
+        this.nGetConfessSex = localJSONObject.optInt("nGetConfessSex");
+      }
     }
     catch (JSONException localJSONException)
     {
@@ -56,11 +65,17 @@ public class MessageForConfessNews
         }
       }
     }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("MessageForConfessNews", 4, String.format(Locale.getDefault(), "doParse: %s", new Object[] { this.msg }));
+    }
+    if ((this.istroop == 1033) || (this.istroop == 0) || (this.istroop == 1)) {
+      this.isread = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForConfessNews
  * JD-Core Version:    0.7.0.1
  */

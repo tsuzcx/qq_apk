@@ -1,30 +1,17 @@
 package com.tencent.token.ui.base;
 
-import android.app.Activity;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.utils.UserTask;
-
 final class cw
-  implements View.OnClickListener
+  implements Runnable
 {
-  cw(SecondVerifyDialog paramSecondVerifyDialog) {}
+  private cw(SwitchButton paramSwitchButton) {}
   
-  public final void onClick(View paramView)
+  public void run()
   {
-    if (SecondVerifyDialog.a(this.a)) {
+    if (!SwitchButton.a(this.a)) {
       return;
     }
-    SecondVerifyDialog.a(this.a, true);
-    if (this.a.a != null)
-    {
-      this.a.a.dismiss();
-      this.a.a = null;
-    }
-    this.a.a = new ProDialog(SecondVerifyDialog.b(this.a), SecondVerifyDialog.b(this.a).getResources().getString(2131361918));
-    this.a.a.show();
-    new cx(this).a(new String[] { "" });
+    SwitchButton.b(this.a);
+    aa.a(this);
   }
 }
 

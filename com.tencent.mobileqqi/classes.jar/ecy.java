@@ -1,37 +1,39 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.CircleMemberListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XListView;
 
 public class ecy
-  implements Animation.AnimationListener
+  extends Handler
 {
-  public ecy(PressToSpeakPanel paramPressToSpeakPanel) {}
+  public ecy(CircleMemberListActivity paramCircleMemberListActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationEnd is called,time is:" + System.currentTimeMillis());
+    int i;
+    int j;
+    if (paramMessage.what == 1000)
+    {
+      i = CircleMemberListActivity.a(this.a).q();
+      j = CircleMemberListActivity.a(this.a).r();
+      if (i <= 0) {
+        break label63;
+      }
+      i -= 1;
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationRepeat is called,time is:" + System.currentTimeMillis());
-    }
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationStart is called,time is:" + System.currentTimeMillis());
+    for (;;)
+    {
+      this.a.b.a(new ecz(this, i, j - 1));
+      return;
+      label63:
+      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ecy
  * JD-Core Version:    0.7.0.1
  */

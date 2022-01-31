@@ -1,21 +1,42 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ScreenShot;
-import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
-import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.bubble.BubbleManager.LruLinkedHashMap;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class fku
-  implements View.OnClickListener
+  extends DownloadListener
 {
-  public fku(ScreenShot paramScreenShot) {}
-  
-  public void onClick(View paramView)
+  public fku(BubbleManager paramBubbleManager, String paramString1, String paramString2)
   {
-    this.a.jdField_a_of_type_Fky.a(false);
-    if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
-      KapalaiAdapterUtil.a().b(this.a.jdField_a_of_type_AndroidViewWindow);
+    super(paramString1, paramString2);
+  }
+  
+  public void c(DownloadTask paramDownloadTask)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(BubbleManager.jdField_a_of_type_JavaLangString, 2, "bubbleConfigDownloadListener.onDone|task=" + paramDownloadTask);
     }
+    Object localObject = this.a.a(paramDownloadTask.k, false).getAbsolutePath() + File.separatorChar + "config.json";
+    File localFile = new File(this.a.a(paramDownloadTask.k, true), "config.json");
+    if (!localFile.exists()) {}
+    do
+    {
+      return;
+      FileUtils.a(localFile, new File(this.a.a(paramDownloadTask.k, false), "config.json"));
+      localFile.delete();
+      if (QLog.isColorLevel()) {
+        QLog.d(BubbleManager.jdField_a_of_type_JavaLangString, 2, "bubbleConfigDownloadListener.onDone|bubbleId=" + paramDownloadTask.k + ",copy temp file to formal dir finish");
+      }
+      localObject = BubbleManager.a(this.a, paramDownloadTask.k, (String)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d(BubbleManager.jdField_a_of_type_JavaLangString, 2, "bubbleConfigDownloadListener.onDone|bubbleId=" + paramDownloadTask.k + ",createBubbleConfig bubbleConfig=" + localObject);
+      }
+    } while (localObject == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager$LruLinkedHashMap.put(Integer.valueOf(paramDownloadTask.k), localObject);
+    this.a.a(paramDownloadTask.k, "json");
   }
 }
 

@@ -1,56 +1,31 @@
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
-public class tmw
-  extends FriendListObserver
+public abstract class tmw<T>
+  extends biej<T>
 {
-  public tmw(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
+  public WSVerticalPageFragment a;
+  public T a;
+  public tcl<T> a;
   
-  protected void onSetGeneralSettingsC2CRoaming(boolean paramBoolean, Map paramMap)
+  public tmw(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("SecuritySettingActivity", 2, "onSetGeneralSettingsC2CRoaming issuc =" + paramBoolean);
-    }
-    this.a.e();
-    if (paramBoolean)
-    {
-      QQToast.a(this.a.getApplicationContext(), 2, 2131434994, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    if (QQSettingMsgHistoryActivity.a(this.a) != null)
-    {
-      QQSettingMsgHistoryActivity.a(this.a).setOnCheckedChangeListener(null);
-      paramMap = QQSettingMsgHistoryActivity.a(this.a);
-      if (this.a.app.e() != 1) {
-        break label159;
-      }
-    }
-    label159:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      paramMap.setChecked(paramBoolean);
-      QQSettingMsgHistoryActivity.a(this.a).setOnCheckedChangeListener(this.a);
-      QQToast.a(this.a.getApplicationContext(), 2131434995, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
+    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
+    this.jdField_a_of_type_Tcl = a();
   }
   
-  protected void onSetMessageRaoam(boolean paramBoolean)
+  public abstract tcl<T> a();
+  
+  public void a(T paramT)
   {
-    if (paramBoolean) {
-      QQSettingMsgHistoryActivity.b(this.a);
-    }
+    super.a(paramT);
+    this.jdField_a_of_type_JavaLangObject = paramT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tmw
  * JD-Core Version:    0.7.0.1
  */

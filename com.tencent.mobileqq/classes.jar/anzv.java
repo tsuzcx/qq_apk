@@ -1,32 +1,43 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
+import android.os.AsyncTask;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.io.IOException;
 
 public class anzv
-  implements Runnable
+  extends AsyncTask<Void, Void, String>
 {
-  public anzv(DoodleTextureView paramDoodleTextureView) {}
+  public anzv(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void run()
+  protected String a(Void... paramVarArgs)
   {
-    if (this.a.a != null)
+    try
     {
-      this.a.a.g();
-      PersonalityOperator localPersonalityOperator = (PersonalityOperator)this.a.a.a(102);
-      if (localPersonalityOperator != null) {
-        localPersonalityOperator.b();
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
+      if (paramVarArgs != null)
+      {
+        bdhj.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramVarArgs);
+        return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131695351) + " " + paramVarArgs;
       }
-      this.a.a = null;
+      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131695350);
+      return paramVarArgs;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DoodleTextureView", 2, "onDestroy end");
+    catch (IOException paramVarArgs)
+    {
+      return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131695350);
     }
+    catch (OutOfMemoryError paramVarArgs) {}
+    return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131695350);
+  }
+  
+  protected void a(String paramString)
+  {
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anzv
  * JD-Core Version:    0.7.0.1
  */

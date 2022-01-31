@@ -1,26 +1,23 @@
-import com.tencent.biz.qqstory.newshare.callback.OnPlayModeShareListener;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 
 public class nll
-  extends OnPlayModeShareListener
+  implements View.OnClickListener
 {
-  public nll(ShareGroupHotSortPlayMode paramShareGroupHotSortPlayMode, VideoPlayModeBase paramVideoPlayModeBase, ShareGroupItem paramShareGroupItem)
-  {
-    super(paramVideoPlayModeBase);
-  }
+  public nll(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    super.a(paramInt);
-    StoryReportor.a("share_story", "single_suc", 0, paramInt, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nll
  * JD-Core Version:    0.7.0.1
  */

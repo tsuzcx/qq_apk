@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/jqf" android:background="#00000000" android:layout_width="fill_parent" android:layout_height="30.0dip" />
+    <RelativeLayout android:id="@id/bja" android:background="@drawable/sh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/jqf">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/f5n" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="64.0dip" android:layout_centerHorizontal="true">
+            <TextView android:textSize="18.0dip" android:textColor="#ff000000" android:id="@id/f5e" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <com.tencent.image.URLImageView android:id="@id/a14" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="8.0dip" />
+        </LinearLayout>
+        <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:id="@id/j6x" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="12345个粉丝" android:layout_below="@id/f5n" android:layout_centerHorizontal="true" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:layout_below="@id/content">
+            <LinearLayout android:orientation="horizontal" android:id="@id/aew" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/dialogLeftBtn" android:background="@drawable/common_dialog_btn_left" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/ly" android:layout_weight="1.0">
+                    <ImageView android:id="@id/icon" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                    <TextView android:textSize="@dimen/aei" android:textColor="#ff000000" android:gravity="center" android:id="@id/jfb" android:layout_width="wrap_content" android:layout_height="@dimen/ly" android:singleLine="true" />
+                </LinearLayout>
+                <View android:id="@id/bmt" android:background="@color/i5" android:layout_width="@dimen/m2" android:layout_height="@dimen/ly" />
+                <TextView android:textSize="@dimen/aei" android:textColor="#ff000000" android:gravity="center" android:id="@id/dialogRightBtn" android:background="@drawable/common_dialog_btn_right" android:layout_width="fill_parent" android:layout_height="@dimen/ly" android:text="@string/r73" android:singleLine="true" android:layout_weight="1.0" />
+            </LinearLayout>
+        </FrameLayout>
+        <com.tencent.mobileqq.troop.widget.EllipsizingTextView android:textSize="14.0dip" android:textColor="#ff777777" android:ellipsize="end" android:id="@id/content" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="29.0dip" android:layout_marginTop="7.0dip" android:layout_marginRight="29.0dip" android:maxLines="3" android:singleLine="false" android:layout_below="@id/j6x" android:lineSpacingExtra="2.0dip" />
+        <View android:id="@id/e_1" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="24.0dip" android:layout_below="@id/content" />
+        <ImageView android:id="@id/ir0" android:clickable="true" android:layout_width="27.0dip" android:layout_height="27.0dip" android:layout_marginTop="14.0dip" android:layout_marginRight="14.0dip" android:src="@drawable/aln" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:contentDescription="@string/bbp" />
+    </RelativeLayout>
+    <com.tencent.image.URLImageView android:id="@id/a2o" android:padding="3.0dip" android:visibility="gone" android:layout_width="73.0dip" android:layout_height="73.0dip" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

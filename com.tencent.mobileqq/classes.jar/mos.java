@@ -1,17 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
+import com.tencent.av.ui.beauty.QavBeautyMenuPanel;
 
 public class mos
-  implements View.OnClickListener
+  implements ahvo
 {
-  public mos(FastWebVideoFeedsListView paramFastWebVideoFeedsListView) {}
+  public mos(QavBeautyMenuPanel paramQavBeautyMenuPanel) {}
   
-  public void onClick(View paramView) {}
+  public int a(int paramInt, boolean paramBoolean)
+  {
+    this.a.setCurSelTab(paramInt, paramBoolean, 1);
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mos
  * JD-Core Version:    0.7.0.1
  */

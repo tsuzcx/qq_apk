@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.activity.MayKnowManActivity;
-import com.tencent.mobileqq.app.LBSObserver;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
 
-public class dbj
-  extends LBSObserver
+class dbj
+  implements View.OnClickListener
 {
-  public dbj(MayKnowManActivity paramMayKnowManActivity) {}
+  dbj(dbg paramdbg, SharedPreferences paramSharedPreferences, String paramString) {}
   
-  protected void a(boolean paramBoolean, List paramList, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.runOnUiThread(new dbk(this, paramBoolean, paramList, paramInt));
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
+    this.jdField_a_of_type_Dbg.a.a.sendEmptyMessageDelayed(1010, 1000L);
   }
 }
 

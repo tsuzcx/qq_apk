@@ -1,84 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.recent.RecentUtil;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ConversationFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.mobileqq.dating.MsgBoxProtocol.LastFeedObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tribe.async.async.JobSegment;
 
-public class abxm
-  extends MsgBoxProtocol.LastFeedObserver
+class abxm
+  extends auei<JobSegment>
 {
-  public abxm(MsgBoxListActivity paramMsgBoxListActivity) {}
-  
-  protected void a(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
+  abxm(abxl paramabxl, JobSegment paramJobSegment)
   {
-    if (!paramBoolean1) {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.msg_box", 2, "onGetInteractLastFeed = false");
-      }
-    }
-    for (;;)
-    {
-      return;
-      if (paramBoolean2) {
-        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 1);
-      }
-      while (!this.a.isFinishing())
-      {
-        this.a.a();
-        return;
-        if (this.a.app.a().isInMsgBoxRecentList(AppConstants.ag, this.a.jdField_a_of_type_Int))
-        {
-          paramInt = this.a.app.a().a(AppConstants.ag, this.a.jdField_a_of_type_Int);
-          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, AppConstants.ag, this.a.app.getCurrentAccountUin());
-          if (paramInt > 0)
-          {
-            RecentUtil.b(this.a.app, AppConstants.ag, this.a.jdField_a_of_type_Int);
-            this.a.app.a().a(AppConstants.ag, this.a.jdField_a_of_type_Int, true, true);
-          }
-        }
-      }
-    }
+    super(paramJobSegment);
   }
   
-  protected void b(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
+  public void a(JobSegment paramJobSegment, boolean paramBoolean, auef paramauef)
   {
-    if (!paramBoolean1) {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.msg_box", 2, "onGetInteractLastFeed = false");
-      }
-    }
-    for (;;)
+    if (paramBoolean)
     {
+      abxl.a(this.a, paramauef);
       return;
-      if (paramBoolean2) {
-        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 2);
-      }
-      while (!this.a.isFinishing())
-      {
-        this.a.a();
-        return;
-        if (this.a.app.a().isInMsgBoxRecentList(AppConstants.ah, this.a.jdField_a_of_type_Int))
-        {
-          paramInt = this.a.app.a().a(AppConstants.ah, this.a.jdField_a_of_type_Int);
-          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, AppConstants.ah, this.a.app.getCurrentAccountUin());
-          if (paramInt > 0)
-          {
-            RecentUtil.b(this.a.app, AppConstants.ah, this.a.jdField_a_of_type_Int);
-            this.a.app.a().a(AppConstants.ah, this.a.jdField_a_of_type_Int, true, true);
-          }
-        }
-      }
     }
+    abxl.a(this.a, new AppInfoError(5, "appInfo error"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxm
  * JD-Core Version:    0.7.0.1
  */

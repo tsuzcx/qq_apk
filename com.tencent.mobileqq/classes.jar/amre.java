@@ -1,17 +1,21 @@
-import cooperation.qzone.CloseGuard.Reporter;
-import cooperation.qzone.util.QZLog;
+import com.tencent.qphone.base.util.QLog;
 
-public final class amre
-  implements CloseGuard.Reporter
+public class amre
 {
-  public void a(String paramString, Throwable paramThrowable)
+  public static boolean a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    QZLog.e("QZLog", paramString, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.d("LinkStarDebugProcessor.", 2, "handleLinkStarNotifyPush. linkStarMsgType=" + paramInt + " reservedData=" + paramArrayOfByte1 + " data=" + paramArrayOfByte2);
+    }
+    switch (paramInt)
+    {
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amre
  * JD-Core Version:    0.7.0.1
  */

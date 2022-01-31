@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x8dd$SelfInfo
-  extends MessageMicro
+  extends MessageMicro<SelfInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_birthday = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -40,7 +40,7 @@ public final class oidb_0x8dd$SelfInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8dd.oidb_0x8dd.SelfInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,31 @@
 package com.tencent.token;
 
-import android.graphics.Bitmap;
-import com.tencent.token.core.bean.ConfigResult;
-import com.tencent.token.global.d;
-import com.tencent.token.utils.t;
-import java.util.HashMap;
-import org.json.JSONObject;
-
-public final class ed
-  extends bm
+public class ed
 {
-  private ConfigResult c;
+  private String a;
+  private String b;
+  private String c;
   
-  protected final String a()
+  public ed(String paramString1, String paramString2, String paramString3)
   {
-    if (this.c == null) {
-      return null;
-    }
-    return this.c.mStartUpImgUrl;
+    this.b = paramString1;
+    this.c = paramString2;
+    this.a = paramString3;
   }
   
-  protected final void a(fs paramfs)
+  public String a()
   {
-    this.c = ((ConfigResult)paramfs.c.get("param.startup.img.result"));
+    return this.a;
   }
   
-  protected final void a(JSONObject paramJSONObject)
+  public String b()
   {
-    this.c.mStartUpImg = ((Bitmap)paramJSONObject.get("startup_img"));
-    if ((this.c.mStartUpImg == null) || (this.c.mStartUpImg.getWidth() == 0) || (this.c.mStartUpImg.getHeight() == 0))
-    {
-      this.a.a(10000, null, null);
-      return;
-    }
-    this.a.a = 0;
-    t.a(this.c);
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
   }
 }
 

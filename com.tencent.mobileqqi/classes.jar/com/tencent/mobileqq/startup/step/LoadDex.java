@@ -12,7 +12,7 @@ public class LoadDex
       return true;
     }
     boolean bool1;
-    if (this.w == 1)
+    if (this.x == 1)
     {
       bool1 = true;
       label34:

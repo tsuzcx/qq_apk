@@ -1,6 +1,6 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.global.e;
+import com.tencent.token.global.h;
 import java.io.Serializable;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -49,7 +49,7 @@ public class SafeMsgItem
   public long mUin;
   public String mUri;
   
-  private static int a(String paramString)
+  private int d(String paramString)
   {
     try
     {
@@ -64,12 +64,27 @@ public class SafeMsgItem
     return 0;
   }
   
-  public final int a()
+  public long a()
   {
-    return a(this.mIP);
+    return this.mId;
   }
   
-  public final boolean a(JSONObject paramJSONObject)
+  public void a(int paramInt)
+  {
+    this.mFlag = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.mId = paramLong;
+  }
+  
+  public void a(String paramString)
+  {
+    this.mTitle = paramString;
+  }
+  
+  public boolean a(JSONObject paramJSONObject)
   {
     try
     {
@@ -121,9 +136,129 @@ public class SafeMsgItem
     }
     catch (JSONException paramJSONObject)
     {
-      e.c("JSONException: " + paramJSONObject.getMessage());
+      h.c("JSONException: " + paramJSONObject.getMessage());
     }
     return false;
+  }
+  
+  public int b()
+  {
+    return this.mFlag;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.mTypea = paramInt;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.mTime = paramLong;
+  }
+  
+  public void b(String paramString)
+  {
+    this.mContent = paramString;
+  }
+  
+  public String c()
+  {
+    return this.mTitle;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.mTypeb = paramInt;
+  }
+  
+  public void c(String paramString)
+  {
+    this.mUri = paramString;
+  }
+  
+  public String d()
+  {
+    return this.mContent;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.mTypec = paramInt;
+  }
+  
+  public long e()
+  {
+    return this.mTime;
+  }
+  
+  public int f()
+  {
+    return this.mTypea;
+  }
+  
+  public int g()
+  {
+    return this.mTypeb;
+  }
+  
+  public int h()
+  {
+    return this.mTypec;
+  }
+  
+  public String i()
+  {
+    return this.mTable;
+  }
+  
+  public String j()
+  {
+    return this.mUri;
+  }
+  
+  public int k()
+  {
+    return d(this.mIP);
+  }
+  
+  public int l()
+  {
+    return this.mLoc_country_id;
+  }
+  
+  public int m()
+  {
+    return this.mLoc_prov_id;
+  }
+  
+  public int n()
+  {
+    return this.mLoc_city_id;
+  }
+  
+  public String o()
+  {
+    return this.mMsgVersion;
+  }
+  
+  public boolean p()
+  {
+    return (this.mFlag & 0x80) == 128;
+  }
+  
+  public boolean q()
+  {
+    return (this.mFlag & 0x4) == 4;
+  }
+  
+  public boolean r()
+  {
+    return (this.mFlag & 0x100) == 256;
+  }
+  
+  public boolean s()
+  {
+    return (this.mFlag & 0x1) == 1;
   }
 }
 

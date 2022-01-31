@@ -9,14 +9,14 @@ import java.util.Map;
 public final class RespGetDiscussInteRemark
   extends JceStruct
 {
-  static Map cache_InteRemarks;
+  static Map<Long, InteRemarkInfo> cache_InteRemarks;
   public String DiscussName = "";
   public long DiscussUin;
-  public Map InteRemarks;
+  public Map<Long, InteRemarkInfo> InteRemarks;
   
   public RespGetDiscussInteRemark() {}
   
-  public RespGetDiscussInteRemark(long paramLong, Map paramMap, String paramString)
+  public RespGetDiscussInteRemark(long paramLong, Map<Long, InteRemarkInfo> paramMap, String paramString)
   {
     this.DiscussUin = paramLong;
     this.InteRemarks = paramMap;

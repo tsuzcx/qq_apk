@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/fxy" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ImageView android:id="@id/bcs" android:background="@drawable/clw" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <RelativeLayout android:gravity="center_vertical" android:id="@id/iyn" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+                <TextView android:textColor="@color/al3" android:gravity="center" android:id="@id/iyl" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:maxWidth="88.0dip" android:minWidth="40.0dip" android:text="@string/button_back" android:singleLine="true" android:includeFontPadding="false" android:drawableLeft="@drawable/clt" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+                <TextView android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:id="@id/iym" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:text="@string/b3_" android:singleLine="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+            </RelativeLayout>
+        </FrameLayout>
+    </LinearLayout>
+</ScrollView>

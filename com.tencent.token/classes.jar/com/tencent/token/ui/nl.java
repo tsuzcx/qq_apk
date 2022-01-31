@@ -3,29 +3,17 @@ package com.tencent.token.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.af;
 
-final class nl
+class nl
   implements View.OnClickListener
 {
-  nl(JLFinditemsResult paramJLFinditemsResult) {}
+  nl(LoginMsgChangePwdActivity paramLoginMsgChangePwdActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    if (JLFinditemsResult.access$000(this.a) == -1)
-    {
-      af.a().a(0L, JLFinditemsResult.access$100(this.a), JLFinditemsResult.access$200(this.a), JLFinditemsResult.access$300(this.a), JLFinditemsResult.access$400(this.a), JLFinditemsResult.access$500(this.a), JLFinditemsResult.access$600(this.a), JLFinditemsResult.access$700(this.a), JLFinditemsResult.access$800(this.a));
-      return;
-    }
-    if (JLFinditemsResult.access$000(this.a) == 0)
-    {
-      paramView = new Intent(this.a, JLAppealListActivity.class);
-      this.a.startActivity(paramView);
-      return;
-    }
-    paramView = new Intent(this.a, FindItemsActivity.class);
-    paramView.addFlags(67108864);
-    this.a.startActivity(paramView);
+    paramView = new Intent(this.a, ModifyQQPwdActivity.class);
+    paramView.putExtra("page_id", 2);
+    pg.a().a(this.a, paramView, pg.b);
   }
 }
 

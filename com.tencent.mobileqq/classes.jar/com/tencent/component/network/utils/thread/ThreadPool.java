@@ -16,9 +16,10 @@ public class ThreadPool
   public static final int MODE_CPU = 1;
   public static final int MODE_NETWORK = 2;
   public static final int MODE_NONE = 0;
-  ThreadPool.ResourceCounter jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$ResourceCounter = new ThreadPool.ResourceCounter(2);
-  private final Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
-  ThreadPool.ResourceCounter b = new ThreadPool.ResourceCounter(DownloaderImpl.THREAD_POOL_SIZE);
+  private static final String TAG = "ThreadPool";
+  ThreadPool.ResourceCounter mCpuCounter = new ThreadPool.ResourceCounter(2);
+  private final Executor mExecutor;
+  ThreadPool.ResourceCounter mNetworkCounter = new ThreadPool.ResourceCounter(DownloaderImpl.THREAD_POOL_SIZE);
   
   public ThreadPool()
   {
@@ -30,7 +31,7 @@ public class ThreadPool
     this(paramString, paramInt, paramInt, new LinkedBlockingQueue());
   }
   
-  public ThreadPool(String paramString, int paramInt1, int paramInt2, BlockingQueue paramBlockingQueue)
+  public ThreadPool(String paramString, int paramInt1, int paramInt2, BlockingQueue<Runnable> paramBlockingQueue)
   {
     if (paramInt1 <= 0) {
       paramInt1 = 1;
@@ -42,8 +43,8 @@ public class ThreadPool
       }
       for (;;)
       {
-        this.b.value = paramInt2;
-        this.jdField_a_of_type_JavaUtilConcurrentExecutor = new ThreadPoolExecutor(paramInt1, paramInt2, 10L, TimeUnit.SECONDS, paramBlockingQueue, new PriorityThreadFactory(paramString, 10));
+        this.mNetworkCounter.value = paramInt2;
+        this.mExecutor = new SmartThreadExecutor(new ThreadPoolExecutor(paramInt1, paramInt2, 10L, TimeUnit.SECONDS, paramBlockingQueue, new PriorityThreadFactory(paramString, 10)));
         return;
       }
     }
@@ -54,27 +55,27 @@ public class ThreadPool
     if (paramExecutor != null) {}
     for (;;)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentExecutor = paramExecutor;
+      this.mExecutor = new SmartThreadExecutor(paramExecutor);
       return;
       paramExecutor = new ThreadPoolExecutor(2, 2, 10L, TimeUnit.SECONDS, new PriorityBlockingQueue(), new PriorityThreadFactory("thread_pool", 10));
     }
   }
   
-  public Future submit(ThreadPool.Job paramJob)
+  public <T> Future<T> submit(ThreadPool.Job<T> paramJob)
   {
     return submit(paramJob, null);
   }
   
-  public Future submit(ThreadPool.Job paramJob, FutureListener paramFutureListener)
+  public <T> Future<T> submit(ThreadPool.Job<T> paramJob, FutureListener<T> paramFutureListener)
   {
     paramJob = new ThreadPool.Worker(this, paramJob, paramFutureListener);
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(paramJob);
+    this.mExecutor.execute(paramJob);
     return paramJob;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.utils.thread.ThreadPool
  * JD-Core Version:    0.7.0.1
  */

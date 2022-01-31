@@ -1,25 +1,26 @@
-import android.database.DataSetObserver;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import android.os.Bundle;
+import android.os.IInterface;
+import com.tencent.av.service.RecvGVideoLevelInfo;
+import com.tencent.av.service.RecvMsg;
 
-public class lzd
-  extends DataSetObserver
+public abstract interface lzd
+  extends IInterface
 {
-  public lzd(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
+  public abstract Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle);
   
-  public void onChanged()
-  {
-    if (ReadInJoyVideoTagSelectionFragment.a(this.a).getCount() > 0)
-    {
-      ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(0);
-      return;
-    }
-    ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(8);
-  }
+  public abstract void a(RecvMsg paramRecvMsg);
+  
+  public abstract void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte);
+  
+  public abstract void a(String paramString, int paramInt, byte[] paramArrayOfByte);
+  
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3);
+  
+  public abstract void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lzd
  * JD-Core Version:    0.7.0.1
  */

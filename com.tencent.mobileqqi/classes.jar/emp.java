@@ -1,15 +1,22 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.language.SelectLanguageActivity;
+import com.tencent.mobileqq.activity.photo.PhotoCropAction;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class emp
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public emp(SelectLanguageActivity paramSelectLanguageActivity) {}
+  public emp(PhotoCropAction paramPhotoCropAction, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    SelectLanguageActivity.a(this.a, 8);
+    if (paramInt != this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction.jdField_a_of_type_ArrayOfJavaLangString.length)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction.a(paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.d();
+    }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 

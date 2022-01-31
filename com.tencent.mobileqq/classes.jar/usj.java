@@ -1,35 +1,56 @@
-import com.tencent.mobileqq.activity.aio.doodle.LineLayer;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDelFeedComment;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDelFeedComment;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class usj
-  implements Runnable
+  extends uub
 {
-  public final String a;
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  uud jdField_a_of_type_Uud;
   
-  public usj(LineLayer paramLineLayer)
+  public usj(CommentEntry paramCommentEntry, uud paramuud)
   {
-    this.jdField_a_of_type_JavaLangString = (AppConstants.bM + "temp" + File.separator);
+    this.jdField_a_of_type_JavaLangString = paramCommentEntry.feedId;
+    this.jdField_a_of_type_Int = paramCommentEntry.commentId;
+    this.jdField_a_of_type_Uud = paramuud;
   }
   
-  public void run()
+  public String a()
   {
+    return usf.b;
+  }
+  
+  public uuc a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspDelFeedComment localRspDelFeedComment = new qqstory_service.RspDelFeedComment();
     try
     {
-      FileUtils.a(this.jdField_a_of_type_JavaLangString, true);
-      return;
+      localRspDelFeedComment.mergeFrom(paramArrayOfByte);
+      return new usk(localRspDelFeedComment, this.jdField_a_of_type_Uud);
     }
-    catch (Exception localException)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      QLog.d("ClearTempFileJobdownloading", 2, "makedir execption: " + localException);
+      wxe.d("Q.qqstory:FeedCommentDataProvider", "" + paramArrayOfByte);
     }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqDelFeedComment localReqDelFeedComment = new qqstory_service.ReqDelFeedComment();
+    localReqDelFeedComment.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    localReqDelFeedComment.comment_id.set(this.jdField_a_of_type_Int);
+    return localReqDelFeedComment.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     usj
  * JD-Core Version:    0.7.0.1
  */

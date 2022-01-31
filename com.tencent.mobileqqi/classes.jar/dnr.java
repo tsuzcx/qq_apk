@@ -1,33 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.SetTroopAdminsActivity;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.SubaccountUgActivity;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
 
 public class dnr
-  extends Handler
+  implements View.OnClickListener
 {
-  public dnr(SetTroopAdminsActivity paramSetTroopAdminsActivity) {}
+  public dnr(SubaccountUgActivity paramSubaccountUgActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1: 
-    case 2: 
-      do
-      {
-        return;
-        SetTroopAdminsActivity.a(this.a);
-        SetTroopAdminsActivity.a(this.a).clear();
-        SetTroopAdminsActivity.a(this.a).addAll((ArrayList)paramMessage.obj);
-        SetTroopAdminsActivity.a(this.a).notifyDataSetChanged();
-        SetTroopAdminsActivity.a(this.a);
-      } while (SetTroopAdminsActivity.b(this.a));
-      SetTroopAdminsActivity.c(this.a);
-      return;
-    }
-    SetTroopAdminsActivity.d(this.a);
+    paramView = new Intent(this.a.a(), QQBrowserActivity.class);
+    paramView.putExtra("uin", this.a.a.a(this.a.b));
+    paramView.putExtra("reqType", 3);
+    paramView.putExtra("url", "https://aq.qq.com/cn2/findpsw/mobile_web_find_input_account?source_id=2756");
+    this.a.startActivity(paramView);
   }
 }
 

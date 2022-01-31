@@ -5,9 +5,15 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public abstract interface IMsfProxy
 {
+  public abstract int getMsfConnectedIPFamily();
+  
+  public abstract int getMsfConnectedNetType();
+  
   public abstract void init(MsfServiceSdk paramMsfServiceSdk);
   
   public abstract void initMsfService();
+  
+  public abstract int onProcessViewableChanged(boolean paramBoolean, long paramLong, String paramString);
   
   public abstract int registerMsfService(boolean paramBoolean1, boolean paramBoolean2);
   
@@ -16,6 +22,8 @@ public abstract interface IMsfProxy
   public abstract int sendMsg(ToServiceMsg paramToServiceMsg);
   
   public abstract boolean serviceConnected();
+  
+  public abstract void startMsfService();
   
   public abstract void stopMsfService();
   

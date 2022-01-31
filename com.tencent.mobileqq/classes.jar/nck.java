@@ -1,22 +1,14 @@
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment.InputViewHideListener;
-
-public class nck
-  implements Runnable
+public abstract interface nck
 {
-  public nck(StoryInputBarView paramStoryInputBarView) {}
+  public abstract void a(Runnable paramRunnable);
   
-  public void run()
-  {
-    if (StoryInputBarView.a(this.a) != null) {
-      StoryInputBarView.a(this.a).e();
-    }
-    StoryInputBarView.b(this.a);
-  }
+  public abstract void b(Runnable paramRunnable);
+  
+  public abstract void c(Runnable paramRunnable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nck
  * JD-Core Version:    0.7.0.1
  */

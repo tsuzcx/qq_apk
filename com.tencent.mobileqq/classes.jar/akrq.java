@@ -1,23 +1,18 @@
 import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
 
-public class akrq
-  implements Runnable
+public abstract interface akrq
 {
-  public akrq(WebViewJumpPlugin paramWebViewJumpPlugin) {}
+  public abstract int a();
   
-  public void run()
-  {
-    Activity localActivity = this.a.mRuntime.a();
-    if ((localActivity != null) && (!localActivity.isFinishing())) {
-      localActivity.finish();
-    }
-  }
+  public abstract akrw a(long paramLong, String paramString1, String paramString2);
+  
+  public abstract void a();
+  
+  public abstract boolean a(Activity paramActivity);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akrq
  * JD-Core Version:    0.7.0.1
  */

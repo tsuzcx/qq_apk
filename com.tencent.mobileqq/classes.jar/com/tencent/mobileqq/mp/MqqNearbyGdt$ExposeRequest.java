@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class MqqNearbyGdt$ExposeRequest
-  extends MessageMicro
+  extends MessageMicro<ExposeRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40 }, new String[] { "resolution", "apurl", "qua", "platform_type", "ad_source" }, new Object[] { "", "", "", Integer.valueOf(0), Integer.valueOf(0) }, ExposeRequest.class);
   public final PBInt32Field ad_source = PBField.initInt32(0);
@@ -18,7 +18,7 @@ public final class MqqNearbyGdt$ExposeRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mp.MqqNearbyGdt.ExposeRequest
  * JD-Core Version:    0.7.0.1
  */

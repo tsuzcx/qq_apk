@@ -1,54 +1,17 @@
 package com.tencent.token;
 
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.utils.s;
-import java.util.HashMap;
-import org.json.JSONObject;
+import java.util.TimerTask;
+import oicq.wlogin_sdk.request.WtloginListener;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public final class cr
-  extends bm
+class cr
+  extends TimerTask
 {
-  public String c;
-  public long d;
+  cr(cp paramcp) {}
   
-  protected final String a()
+  public void run()
   {
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    for (String str1 = ax.c; str1 == null; str1 = null)
-    {
-      this.a.a(104, null, null);
-      return null;
-    }
-    String str2 = s.a(new Object[] { "qqtoken_code", this.c });
-    if (str2 == null)
-    {
-      this.a.a(10000, "encrypt qqtoken code failed", null);
-      return null;
-    }
-    str1 = "?uin=" + this.d + "&sess_id=" + str1 + "&data=" + str2;
-    return b.c() + "/cn/mbtoken3/mbtoken3_verify_qqtoken" + str1;
-  }
-  
-  protected final void a(fs paramfs)
-  {
-    this.d = ((Long)paramfs.c.get("param.realuin")).longValue();
-    this.c = ((String)paramfs.c.get("param.qqtoken"));
-  }
-  
-  protected final void a(JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
-    {
-      paramJSONObject = paramJSONObject.getString("info");
-      this.a.a(i, paramJSONObject, paramJSONObject);
-      return;
-    }
-    this.a.a = 0;
+    this.a.e.OnGetStWithoutPasswd(null, 0L, 0L, 0, 0L, null, 8192, new ErrMsg());
   }
 }
 

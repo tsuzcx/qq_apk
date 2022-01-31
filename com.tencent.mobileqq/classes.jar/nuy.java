@@ -1,27 +1,64 @@
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.biz.qqstory.storyHome.atvideo.model.AtVideoTextWatcher;
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopWebActivity;
+import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import java.util.Iterator;
+import java.util.List;
 
-class nuy
-  implements Runnable
+public class nuy
+  extends BroadcastReceiver
 {
-  nuy(nux paramnux) {}
+  public nuy(ShopWebViewFragment paramShopWebViewFragment) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(DetailCommentHelper.a(this.a.a), DetailCommentHelper.a(this.a.a), this.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, DetailCommentHelper.a(this.a.a).a);
-    DetailCommentHelper localDetailCommentHelper = this.a.a;
-    if (this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null) {}
-    for (boolean bool = true;; bool = false)
+    if (paramIntent == null) {}
+    do
     {
-      DetailCommentHelper.a(localDetailCommentHelper, bool);
-      return;
-    }
+      Object localObject;
+      do
+      {
+        do
+        {
+          return;
+          paramContext = paramIntent.getAction();
+          localObject = paramIntent.getStringExtra("uin");
+          Bitmap localBitmap = (Bitmap)paramIntent.getParcelableExtra("bitmap");
+          if (!"action_decode_finish".equals(paramContext)) {
+            break;
+          }
+          if ((this.a.jdField_a_of_type_Nun != null) && (!TextUtils.isEmpty((CharSequence)localObject)) && (localBitmap != null)) {
+            this.a.jdField_a_of_type_Nun.a((String)localObject, localBitmap);
+          }
+        } while (this.a.jdField_a_of_type_Nut == null);
+        this.a.jdField_a_of_type_Nut.a((String)localObject);
+        return;
+      } while (!"action_on_shop_msg_receive".equals(paramContext));
+      this.a.jdField_a_of_type_JavaUtilList = paramIntent.getParcelableArrayListExtra("datas");
+      paramContext = this.a.getActivity();
+      if ((paramContext instanceof EcshopWebActivity)) {
+        ((EcshopWebActivity)paramContext).jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_JavaUtilList;
+      }
+      paramContext = paramIntent.getStringExtra("uin");
+      paramIntent = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramIntent.hasNext())
+      {
+        localObject = (RecentShopParcel)paramIntent.next();
+        if ((!TextUtils.isEmpty(((RecentShopParcel)localObject).a)) && (((RecentShopParcel)localObject).a.equals(paramContext))) {
+          ((RecentShopParcel)localObject).b += 1;
+        }
+      }
+    } while ((this.a.b != 1) || (this.a.jdField_a_of_type_Nut == null));
+    this.a.jdField_a_of_type_Nut.a(this.a.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nuy
  * JD-Core Version:    0.7.0.1
  */

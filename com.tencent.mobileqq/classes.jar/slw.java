@@ -1,49 +1,43 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.util.TypedValue;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
 
 public class slw
-  implements View.OnClickListener
 {
-  public slw(EditInfoActivity paramEditInfoActivity) {}
+  public float a;
+  public int a;
+  public String a;
+  public float b;
+  public int b;
+  public float c;
+  public int c;
+  public float d;
+  public int d;
   
-  public void onClick(View paramView)
+  public slw(TickerView paramTickerView, Resources paramResources)
   {
-    paramView = this.a;
-    if (!this.a.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.jdField_a_of_type_Boolean = bool;
-      if (!this.a.jdField_a_of_type_Boolean) {
-        break;
-      }
-      this.a.d();
-      if (this.a.getIntent().getBooleanExtra("key_need_hide_couser_when_emoj", false)) {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-      }
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837627);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("键盘");
-      if ((!this.a.b) && (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null)) {
-        this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      }
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
-    if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844545);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("表情");
-    this.a.a();
+    this.jdField_c_of_type_Int = -16777216;
+    this.jdField_d_of_type_Float = TypedValue.applyDimension(2, 12.0F, paramResources.getDisplayMetrics());
+    this.jdField_a_of_type_Int = 8388611;
+  }
+  
+  public void a(TypedArray paramTypedArray)
+  {
+    this.jdField_a_of_type_Int = paramTypedArray.getInt(4, this.jdField_a_of_type_Int);
+    this.jdField_b_of_type_Int = paramTypedArray.getColor(6, this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_Float = paramTypedArray.getFloat(7, this.jdField_a_of_type_Float);
+    this.jdField_b_of_type_Float = paramTypedArray.getFloat(8, this.jdField_b_of_type_Float);
+    this.jdField_c_of_type_Float = paramTypedArray.getFloat(9, this.jdField_c_of_type_Float);
+    this.jdField_a_of_type_JavaLangString = paramTypedArray.getString(5);
+    this.jdField_c_of_type_Int = paramTypedArray.getColor(3, this.jdField_c_of_type_Int);
+    this.jdField_d_of_type_Float = paramTypedArray.getDimension(1, this.jdField_d_of_type_Float);
+    this.jdField_d_of_type_Int = paramTypedArray.getInt(2, this.jdField_d_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     slw
  * JD-Core Version:    0.7.0.1
  */

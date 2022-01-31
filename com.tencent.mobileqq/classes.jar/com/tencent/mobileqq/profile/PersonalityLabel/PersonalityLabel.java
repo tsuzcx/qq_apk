@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import agnj;
-import agnk;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import awpb;
+import awpc;
+import bdiw;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.ParcelableUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,13 +21,13 @@ import tencent.im.oidb.cmd0x8f0.cmd0x8f0.RspBody;
 public class PersonalityLabel
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new agnj();
+  public static final Parcelable.Creator<PersonalityLabel> CREATOR = new awpb();
   public static int CURRENT_VERSION = 2;
   public static final String TAG = "PersonalityLabel";
   public int isCloseByUser;
   public long lastPraiseUin;
   public int maxPhotoCount;
-  public List personalityLabelInfos;
+  public List<PersonalityLabelInfo> personalityLabelInfos;
   public int photoCount;
   public int praiseCount;
   public int remainCount;
@@ -104,7 +104,7 @@ public class PersonalityLabel
       if (QLog.isDevelopLevel()) {
         QLog.i("PersonalityLabel", 2, "before unmarsh:" + this.personalityLabelInfos.toString());
       }
-      Collections.sort(this.personalityLabelInfos, new agnk(this));
+      Collections.sort(this.personalityLabelInfos, new awpc(this));
       if (QLog.isDevelopLevel()) {
         QLog.i("PersonalityLabel", 2, "after unmarsh:" + this.personalityLabelInfos.toString());
       }
@@ -120,13 +120,13 @@ public class PersonalityLabel
     do
     {
       return paramArrayOfByte;
-      localPersonalityLabel = (PersonalityLabel)ParcelableUtil.a(paramArrayOfByte, CREATOR);
+      localPersonalityLabel = (PersonalityLabel)bdiw.a(paramArrayOfByte, CREATOR);
       paramArrayOfByte = localPersonalityLabel;
-    } while (!QLog.isDevelopLevel());
+    } while (!QLog.isColorLevel());
     if ("convertFromBytes:" + localPersonalityLabel == null) {}
     for (paramArrayOfByte = "null";; paramArrayOfByte = localPersonalityLabel.toString())
     {
-      QLog.i("PersonalityLabel", 4, paramArrayOfByte);
+      QLog.i("PersonalityLabel", 2, paramArrayOfByte);
       return localPersonalityLabel;
     }
   }
@@ -237,6 +237,15 @@ public class PersonalityLabel
         }
       }
     }
+    catch (Exception paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("PersonalityLabel", 2, "convertFromPbBytes failed.", paramArrayOfByte);
+        }
+      }
+    }
   }
   
   public static byte[] convertToBytes(PersonalityLabel paramPersonalityLabel)
@@ -246,7 +255,7 @@ public class PersonalityLabel
       if (QLog.isDevelopLevel()) {
         QLog.i("PersonalityLabel", 4, "convertToBytes:" + paramPersonalityLabel.toString());
       }
-      return ParcelableUtil.a(paramPersonalityLabel);
+      return bdiw.a(paramPersonalityLabel);
     }
     return null;
   }
@@ -385,7 +394,7 @@ public class PersonalityLabel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel
  * JD-Core Version:    0.7.0.1
  */

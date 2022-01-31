@@ -1,22 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 
 public class anxc
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public anxc(FaceLayer.FaceItem paramFaceItem) {}
+  public final int a;
+  public final Rect a;
+  public final BitmapDrawable a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public anxc(BitmapDrawable paramBitmapDrawable, int paramInt, Rect paramRect)
   {
-    this.a.w = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.k();
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = paramBitmapDrawable;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anxc
  * JD-Core Version:    0.7.0.1
  */

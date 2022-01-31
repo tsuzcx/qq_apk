@@ -1,20 +1,32 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.Groups;
+import org.json.JSONObject;
 
-class ybs
+public class ybs
+  extends JSONObject
 {
-  int jdField_a_of_type_Int;
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  Groups jdField_a_of_type_ComTencentMobileqqDataGroups;
-  TextView b;
+  public ybs(ybq paramybq, String paramString)
+  {
+    super(paramString);
+  }
   
-  ybs(ybq paramybq) {}
+  public int getInt(String paramString)
+  {
+    if (!has(paramString)) {
+      return 0;
+    }
+    return super.getInt(paramString);
+  }
+  
+  public String getString(String paramString)
+  {
+    if (!has(paramString)) {
+      return "";
+    }
+    return super.getString(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ybs
  * JD-Core Version:    0.7.0.1
  */

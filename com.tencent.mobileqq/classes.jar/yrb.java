@@ -1,20 +1,12 @@
-import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel.IRequestHandler;
-import java.util.Comparator;
+import android.os.Bundle;
 
-public class yrb
-  implements Comparator
+public abstract interface yrb
 {
-  public yrb(CmGameCmdChannel paramCmGameCmdChannel) {}
-  
-  public int a(CmGameCmdChannel.IRequestHandler paramIRequestHandler1, CmGameCmdChannel.IRequestHandler paramIRequestHandler2)
-  {
-    return paramIRequestHandler1.a() - paramIRequestHandler2.a();
-  }
+  public abstract void callback(Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yrb
  * JD-Core Version:    0.7.0.1
  */

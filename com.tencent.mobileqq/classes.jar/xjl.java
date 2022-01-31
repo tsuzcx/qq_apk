@@ -1,17 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-
-public class xjl
-  implements View.OnClickListener
+public abstract interface xjl<ERROR_TYPE, DATA_TYPE>
 {
-  public xjl(BannerManager paramBannerManager) {}
-  
-  public void onClick(View paramView) {}
+  public abstract Void a(ERROR_TYPE paramERROR_TYPE, DATA_TYPE paramDATA_TYPE);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xjl
  * JD-Core Version:    0.7.0.1
  */

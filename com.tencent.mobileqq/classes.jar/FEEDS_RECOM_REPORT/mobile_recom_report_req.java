@@ -10,14 +10,14 @@ public final class mobile_recom_report_req
 {
   static int cache_op_module = 0;
   static int cache_op_type = 0;
-  static ArrayList cache_vec_record_cookie = new ArrayList();
+  static ArrayList<String> cache_vec_record_cookie = new ArrayList();
   public String cookie = "";
   public short feeds_type;
   public int op_module;
   public int op_type;
   public int position_index;
   public long uin;
-  public ArrayList vec_record_cookie;
+  public ArrayList<String> vec_record_cookie;
   
   static
   {
@@ -26,7 +26,7 @@ public final class mobile_recom_report_req
   
   public mobile_recom_report_req() {}
   
-  public mobile_recom_report_req(long paramLong, int paramInt1, short paramShort, int paramInt2, int paramInt3, String paramString, ArrayList paramArrayList)
+  public mobile_recom_report_req(long paramLong, int paramInt1, short paramShort, int paramInt2, int paramInt3, String paramString, ArrayList<String> paramArrayList)
   {
     this.uin = paramLong;
     this.op_module = paramInt1;

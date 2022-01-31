@@ -1,17 +1,32 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.lightReply.FacePicDectect.FaceDetectFinishedListener;
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
 public class aebx
-  implements FacePicDectect.FaceDetectFinishedListener
+  implements biab
 {
-  public aebx(LightReplyMenuManager paramLightReplyMenuManager, Context paramContext, boolean paramBoolean, String paramString) {}
+  public aebx(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void a(int paramInt)
+  public void a(biaa parambiaa)
   {
-    ThreadManager.getUIHandler().post(new aeby(this, paramInt));
+    boolean bool = false;
+    switch (parambiaa.a)
+    {
+    default: 
+      return;
+    case 0: 
+      parambiaa = this.a;
+      if (!this.a.d) {
+        bool = true;
+      }
+      parambiaa.d = bool;
+      auam.a().b(this.a.app, this.a.d);
+      return;
+    }
+    parambiaa = new Intent(this.a, TroopAssisSettingActivity.class);
+    parambiaa.setFlags(67108864);
+    this.a.startActivity(parambiaa);
+    azqs.b(this.a.app, "P_CliOper", "Grp_msg", "", "help_list", "Clk_set", 0, 0, "", "", "", "");
   }
 }
 

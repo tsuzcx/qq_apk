@@ -1,23 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.GiftPackageGialog.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
 
 public class oex
-  implements DialogInterface.OnDismissListener
+  implements ofd
 {
-  public oex(EditVideoGuide paramEditVideoGuide) {}
+  oex(oev paramoev) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(GiftServiceBean paramGiftServiceBean)
   {
-    this.a.jdField_a_of_type_Int = 2;
-    this.a.b = 2;
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(5);
+    String str = oev.b(this.a).getText().toString();
+    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!str.equals(paramGiftServiceBean.t)))
+    {
+      oev.b(this.a, paramGiftServiceBean);
+      oev.b(this.a).setText(paramGiftServiceBean.t);
+      if (oev.a(this.a)) {
+        oev.c(this.a, null);
+      }
+      oev.c(this.a).setText("");
+      if (oev.c(this.a) != null) {
+        oev.c(this.a).clear();
+      }
+      oev.a(this.a);
+      ThreadManager.executeOnNetWorkThread(new GiftPackageGialog.2.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oex
  * JD-Core Version:    0.7.0.1
  */

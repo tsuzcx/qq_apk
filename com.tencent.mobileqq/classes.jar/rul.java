@@ -1,21 +1,21 @@
-import android.widget.CursorAdapter;
-import com.tencent.mobileqq.activity.BaseSystemActivity;
+import com.tencent.widget.AbsListView;
 
-public class rul
-  implements Runnable
+class rul
+  extends pdi
 {
-  public rul(BaseSystemActivity paramBaseSystemActivity) {}
-  
-  public void run()
+  rul(ruk paramruk, String paramString, AbsListView paramAbsListView, int paramInt)
   {
-    if (this.a.a.getCursor() != null) {
-      this.a.b();
-    }
+    super(paramString);
+  }
+  
+  public void a(pdc parampdc)
+  {
+    parampdc.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rul
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,12 @@
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
 
-public class skc
-  extends CardObserver
+public abstract interface skc
 {
-  public skc(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
-    {
-      if ((paramBoolean) && (paramObject != null) && (DiscussionInfoCardActivity.a(this.a) != null)) {
-        DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
-      }
-      return;
-    }
-  }
+  public abstract void a(SelectPositionModule.PositionData paramPositionData);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     skc
  * JD-Core Version:    0.7.0.1
  */

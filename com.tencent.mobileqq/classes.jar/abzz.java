@@ -1,63 +1,26 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.vas.VasReportUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.TMG.utils.QLog;
 
-public class abzz
-  extends TransProcessorHandler
+class abzz
+  implements DialogInterface.OnCancelListener
 {
-  public abzz(FavroamingManager paramFavroamingManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  abzz(abzw paramabzw, DialogInterface.OnCancelListener paramOnCancelListener) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((localFileMsg == null) || (localFileMsg.c != 9)) {}
-    do
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener == null)
     {
-      return;
-      switch (paramMessage.what)
-      {
-      case 1002: 
-      default: 
-        return;
-      case 1001: 
-        if (QLog.isColorLevel()) {
-          QLog.d("FavroamingManager", 2, "start uploadFace favEmoticon");
-        }
-        break;
-      }
-    } while (FavroamingManager.b().incrementAndGet() < FavroamingManager.b());
-    FavroamingManager.a(this.a);
-    return;
-    if (QLog.isColorLevel()) {
-      QLog.d("FavroamingManager", 2, "finish uploadFace favEmoticon resId=" + localFileMsg.g);
-    }
-    ThreadManager.post(new acaa(this, localFileMsg), 5, null, false);
-    return;
-    QLog.i("FavroamingManager", 1, "upload fav error:" + localFileMsg.g);
-    if (this.a.a != null) {}
-    for (int i = NetworkUtil.b(this.a.a.getApplication());; i = -1)
-    {
-      VasReportUtils.a("emotionType", "emotionActionFav", "4", "", "", i + "", localFileMsg.g, "", "", "");
-      return;
-      QLog.i("FavroamingManager", 1, "upload fav cancel:" + localFileMsg.g);
+      QLog.e("SdkAuthDialog", 1, "cancelListener is null");
       return;
     }
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener.onCancel(paramDialogInterface);
+    azqs.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "1", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzz
  * JD-Core Version:    0.7.0.1
  */

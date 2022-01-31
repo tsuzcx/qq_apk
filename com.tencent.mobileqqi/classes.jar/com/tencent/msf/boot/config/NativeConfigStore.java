@@ -1,6 +1,7 @@
 package com.tencent.msf.boot.config;
 
 import android.content.Context;
+import android.telephony.TelephonyManager;
 import com.tencent.mobileqq.msf.core.c;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -23,6 +24,20 @@ public class NativeConfigStore
   public NativeConfigStore(Context paramContext)
   {
     this.context = paramContext;
+  }
+  
+  public static String getConfigIMEI()
+  {
+    try
+    {
+      String str = ((TelephonyManager)BaseApplication.getContext().getSystemService("phone")).getDeviceId();
+      return str;
+    }
+    catch (Exception localException)
+    {
+      QLog.w(tag, 1, "get imei failed ", localException);
+    }
+    return "";
   }
   
   public static void loadSo()
@@ -60,14 +75,14 @@ public class NativeConfigStore
     //   1: monitorenter
     //   2: aload_0
     //   3: getfield 37	com/tencent/msf/boot/config/NativeConfigStore:loadSaveRootSucc	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   6: invokevirtual 45	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   6: invokevirtual 76	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   9: ifne +21 -> 30
     //   12: getstatic 20	com/tencent/msf/boot/config/NativeConfigStore:tag	Ljava/lang/String;
     //   15: iconst_1
-    //   16: ldc 102
-    //   18: invokestatic 105	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   16: ldc 118
+    //   18: invokestatic 121	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   21: iconst_0
-    //   22: anewarray 72	java/lang/String
+    //   22: anewarray 94	java/lang/String
     //   25: astore_1
     //   26: aload_0
     //   27: monitorexit
@@ -75,7 +90,7 @@ public class NativeConfigStore
     //   29: areturn
     //   30: aload_0
     //   31: aload_1
-    //   32: invokevirtual 107	com/tencent/msf/boot/config/NativeConfigStore:getConfigList	(Ljava/lang/String;)[Ljava/lang/String;
+    //   32: invokevirtual 123	com/tencent/msf/boot/config/NativeConfigStore:getConfigList	(Ljava/lang/String;)[Ljava/lang/String;
     //   35: astore_1
     //   36: goto -10 -> 26
     //   39: astore_1
@@ -101,18 +116,18 @@ public class NativeConfigStore
     //   1: monitorenter
     //   2: aload_0
     //   3: getfield 37	com/tencent/msf/boot/config/NativeConfigStore:loadSaveRootSucc	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   6: invokevirtual 45	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   6: invokevirtual 76	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   9: ifne +15 -> 24
     //   12: getstatic 20	com/tencent/msf/boot/config/NativeConfigStore:tag	Ljava/lang/String;
     //   15: iconst_1
-    //   16: ldc 102
-    //   18: invokestatic 105	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   16: ldc 118
+    //   18: invokestatic 121	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   21: aload_0
     //   22: monitorexit
     //   23: return
     //   24: aload_0
     //   25: aload_1
-    //   26: invokevirtual 112	com/tencent/msf/boot/config/NativeConfigStore:removeConfig	(Ljava/lang/String;)V
+    //   26: invokevirtual 128	com/tencent/msf/boot/config/NativeConfigStore:removeConfig	(Ljava/lang/String;)V
     //   29: goto -8 -> 21
     //   32: astore_1
     //   33: aload_0
@@ -137,19 +152,19 @@ public class NativeConfigStore
     //   1: monitorenter
     //   2: aload_0
     //   3: getfield 37	com/tencent/msf/boot/config/NativeConfigStore:loadSaveRootSucc	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   6: invokevirtual 45	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   6: invokevirtual 76	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   9: ifne +15 -> 24
     //   12: getstatic 20	com/tencent/msf/boot/config/NativeConfigStore:tag	Ljava/lang/String;
     //   15: iconst_1
-    //   16: ldc 102
-    //   18: invokestatic 105	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   16: ldc 118
+    //   18: invokestatic 121	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   21: aload_0
     //   22: monitorexit
     //   23: return
     //   24: aload_0
     //   25: aload_1
     //   26: aload_2
-    //   27: invokevirtual 117	com/tencent/msf/boot/config/NativeConfigStore:setConfig	(Ljava/lang/String;Ljava/lang/String;)V
+    //   27: invokevirtual 133	com/tencent/msf/boot/config/NativeConfigStore:setConfig	(Ljava/lang/String;Ljava/lang/String;)V
     //   30: goto -9 -> 21
     //   33: astore_1
     //   34: aload_0

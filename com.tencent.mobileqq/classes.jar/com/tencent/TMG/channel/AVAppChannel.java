@@ -11,7 +11,7 @@ public abstract class AVAppChannel
   
   public abstract long getTinyId();
   
-  public boolean identifierToTinyId(String paramString1, String paramString2, String[] paramArrayOfString, IdToIdCallback paramIdToIdCallback)
+  public boolean identifierToTinyId(String paramString1, String paramString2, String[] paramArrayOfString, AVAppChannel.IdToIdCallback paramIdToIdCallback)
   {
     paramString1 = new long[paramArrayOfString.length];
     int i = 0;
@@ -26,17 +26,17 @@ public abstract class AVAppChannel
   
   public abstract boolean loginWithParam(AVContext.StartParam paramStartParam);
   
-  public abstract boolean requestAppCmd(byte[] paramArrayOfByte, int paramInt, CsCmdCallback paramCsCmdCallback);
+  public abstract boolean requestAppCmd(byte[] paramArrayOfByte, int paramInt, AVAppChannel.CsCmdCallback paramCsCmdCallback);
   
-  public abstract boolean requestAppCmd(byte[] paramArrayOfByte, CsCmdCallback paramCsCmdCallback);
+  public abstract boolean requestAppCmd(byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback);
   
-  public abstract boolean requestCmd(String paramString, byte[] paramArrayOfByte, CsCmdCallback paramCsCmdCallback);
+  public abstract boolean requestCmd(String paramString, byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback);
   
-  public abstract boolean requestInfoCmd(byte[] paramArrayOfByte, CsCmdCallback paramCsCmdCallback);
+  public abstract boolean requestInfoCmd(byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback);
   
-  public abstract boolean requestReportCmd(int paramInt, byte[] paramArrayOfByte, CsCmdCallback paramCsCmdCallback);
+  public abstract boolean requestReportCmd(int paramInt, byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback);
   
-  public boolean tinyIdToIdentifier(long[] paramArrayOfLong, IdToIdCallback paramIdToIdCallback)
+  public boolean tinyIdToIdentifier(long[] paramArrayOfLong, AVAppChannel.IdToIdCallback paramIdToIdCallback)
   {
     String[] arrayOfString = new String[paramArrayOfLong.length];
     int i = 0;
@@ -48,24 +48,10 @@ public abstract class AVAppChannel
     paramIdToIdCallback.onSuccess(arrayOfString, paramArrayOfLong);
     return true;
   }
-  
-  public static abstract interface CsCmdCallback
-  {
-    public abstract void onError(int paramInt, String paramString);
-    
-    public abstract void onSuccess(byte[] paramArrayOfByte);
-  }
-  
-  public static abstract interface IdToIdCallback
-  {
-    public abstract void onError(int paramInt, String paramString);
-    
-    public abstract void onSuccess(String[] paramArrayOfString, long[] paramArrayOfLong);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.TMG.channel.AVAppChannel
  * JD-Core Version:    0.7.0.1
  */

@@ -10,11 +10,11 @@ public final class b
 {
   static ArrayList f;
   static byte[] g;
-  public short a;
-  public ArrayList b;
-  public byte[] c;
-  public long d;
-  public long e;
+  public short a = 0;
+  public ArrayList b = null;
+  public byte[] c = null;
+  public long d = 0L;
+  public long e = 0L;
   
   public b() {}
   

@@ -1,41 +1,61 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.ark.ArkMediaPlayer;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.smtt.sdk.WebView;
 
-public class zep
-  extends BroadcastReceiver
+class zep
+  implements ndj
 {
-  public zep(GuardManager paramGuardManager) {}
+  zep(zej paramzej) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("GuardManager", 2, paramContext);
-    }
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    Object localObject = this.a.mRuntime.a();
+    if (localObject == null) {}
+    for (;;)
     {
-      if (this.a.jdField_a_of_type_Long > 0L) {
-        this.a.a(false);
-      }
-      ArkMediaPlayer.b();
-    }
-    while (!"android.intent.action.SCREEN_ON".equals(paramContext)) {
       return;
+      begg localbegg = this.a.mRuntime.a(this.a.mRuntime.a());
+      if ((localbegg != null) && ((localbegg instanceof belh)) && (((belh)localbegg).b() != localObject))
+      {
+        localObject = this.a.mRuntime.a();
+        if (localObject != null) {
+          try
+          {
+            localbegg = this.a.mRuntime.a(this.a.mRuntime.a());
+            if ((localbegg instanceof belt))
+            {
+              ((WebView)localObject).loadUrl(((belt)localbegg).b());
+              return;
+            }
+          }
+          catch (Exception localException)
+          {
+            localException.printStackTrace();
+          }
+        }
+      }
     }
-    if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.jdField_a_of_type_JavaLangString != null)) {
-      this.a.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    }
-    ArkMediaPlayer.a();
+  }
+  
+  public void loaded(String paramString, int paramInt)
+  {
+    paramString = this.a.a.obtainMessage();
+    paramString.arg1 = 5;
+    paramString.arg2 = paramInt;
+    this.a.a.sendMessage(paramString);
+  }
+  
+  public void progress(int paramInt)
+  {
+    Message localMessage = this.a.a.obtainMessage();
+    localMessage.arg1 = 4;
+    localMessage.arg2 = paramInt;
+    this.a.a.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zep
  * JD-Core Version:    0.7.0.1
  */

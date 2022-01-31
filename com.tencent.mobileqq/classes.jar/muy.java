@@ -1,33 +1,48 @@
-import com.tencent.biz.pubaccount.util.PubAccountHttpDownloader;
-import java.io.FilterOutputStream;
-import java.io.OutputStream;
+import android.telephony.PhoneStateListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
-public class muy
-  extends FilterOutputStream
+class muy
+  extends PhoneStateListener
 {
-  public int a;
+  muy(muv parammuv) {}
   
-  public muy(PubAccountHttpDownloader paramPubAccountHttpDownloader, OutputStream paramOutputStream)
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    super(paramOutputStream);
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void write(int paramInt)
-  {
-    this.jdField_a_of_type_Int += 1;
-    this.out.write(paramInt);
-  }
-  
-  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int += paramInt2;
-    this.out.write(paramArrayOfByte, paramInt1, paramInt2);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      super.onCallStateChanged(paramInt, paramString);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged CALL_STATE_IDLE  mIsCalling:  " + this.a.jdField_a_of_type_Boolean);
+      }
+      if (this.a.jdField_a_of_type_Boolean)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged isCallingRunnable mIsCalling: " + this.a.jdField_a_of_type_Boolean);
+        }
+        ThreadManager.post(this.a.jdField_a_of_type_JavaLangRunnable, 8, null, false);
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged CALL_STATE_RINGING or CALL_STATE_OFFHOOK");
+        }
+        if (!this.a.jdField_a_of_type_Boolean)
+        {
+          this.a.jdField_a_of_type_Boolean = true;
+          if (this.a.jdField_a_of_type_Muw != null) {
+            this.a.jdField_a_of_type_Muw.a(true);
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     muy
  * JD-Core Version:    0.7.0.1
  */

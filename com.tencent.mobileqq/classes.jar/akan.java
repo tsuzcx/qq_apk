@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.FaceScoreCallBack;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
-public final class akan
-  extends FaceScoreCallBack
+public class akan
+  implements DialogInterface.OnClickListener
 {
-  public akan(BaseActivity paramBaseActivity, String paramString1, String paramString2, int paramInt, QQProgressDialog paramQQProgressDialog) {}
+  public akan(SelectMemberActivity paramSelectMemberActivity, ArrayList paramArrayList) {}
   
-  public void a(long paramLong1, long paramLong2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, String.valueOf(paramLong2), this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+    paramDialogInterface.dismiss();
+    ((amdu)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app.a(20)).b(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c, this.jdField_a_of_type_JavaUtilArrayList, "");
+    SelectMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b.show();
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d("Clk_invite");
   }
 }
 

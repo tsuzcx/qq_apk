@@ -1,16 +1,37 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.QQProxyForQlink;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 
-public class amnb
-  implements Runnable
+class amnb
+  implements View.OnTouchListener
 {
-  public amnb(QQProxyForQlink paramQQProxyForQlink) {}
+  amnb(ammy paramammy, ImageView paramImageView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.i("QQProxyForQlink", 1, "[QLINK]-QQ UI_LOG:QQProxyForQlink. onAppInit....");
-    QQProxyForQlink.a(this.a);
-    QQProxyForQlink.b(this.a);
+    int i;
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
+    {
+      if (paramMotionEvent.getAction() != 1) {
+        break label45;
+      }
+      i = 255;
+      if (Build.VERSION.SDK_INT < 16) {
+        break label51;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
+    }
+    for (;;)
+    {
+      return false;
+      label45:
+      i = 127;
+      break;
+      label51:
+      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
+    }
   }
 }
 

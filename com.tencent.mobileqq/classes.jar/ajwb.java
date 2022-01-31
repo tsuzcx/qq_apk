@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
-
-class ajwb
-  implements FrameSprite.OnFrameEndListener
+public abstract interface ajwb
 {
-  ajwb(ajwa paramajwa) {}
+  public abstract int a(int paramInt1, int paramInt2, ajvu paramajvu);
   
-  public void a()
-  {
-    this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a();
-    if (this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null) {
-      this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

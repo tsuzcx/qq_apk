@@ -1,50 +1,189 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.activities.PrinterActivity;
-import com.dataline.util.ItemHolder;
-import com.dataline.util.PrinterSessionAdapter;
-import com.tencent.mobileqq.data.PrinterItemMsgRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class df
-  implements View.OnClickListener
 {
-  public df(PrinterSessionAdapter paramPrinterSessionAdapter) {}
+  private alqv jdField_a_of_type_Alqv;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public de a;
+  private di jdField_a_of_type_Di;
+  private List<de> jdField_a_of_type_JavaUtilList;
+  private zto jdField_a_of_type_Zto;
   
-  public void onClick(View paramView)
+  public df(QQAppInterface paramQQAppInterface)
   {
-    Object localObject = (PrinterItemMsgRecord)((ItemHolder)paramView.getTag()).a();
-    if (localObject != null)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Alqv = new dg(this);
+    this.jdField_a_of_type_Zto = new dh(this);
+  }
+  
+  public static DeviceInfo a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    if (paramLong != 0L)
     {
-      paramView = FileManagerUtil.a((PrinterItemMsgRecord)localObject);
-      ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
-      localForwardFileInfo.b(10009);
-      localForwardFileInfo.d(6);
-      localForwardFileInfo.b(paramView.nSessionId);
-      localForwardFileInfo.d(paramView.fileName);
-      localForwardFileInfo.c(((PrinterItemMsgRecord)localObject).uSessionID);
-      localForwardFileInfo.d(paramView.fileSize);
-      localForwardFileInfo.a(paramView.getFilePath());
-      localObject = new Intent(this.a.a.getApplicationContext(), FileBrowserActivity.class);
-      if ((paramView.nFileType == 0) || (paramView.nFileType == 1))
+      paramQQAppInterface = (ztp)paramQQAppInterface.a(51);
+      if (paramQQAppInterface.a())
       {
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(String.valueOf(paramView.nSessionId));
-        ((Intent)localObject).putStringArrayListExtra("Aio_SessionId_ImageList", localArrayList);
+        DeviceInfo[] arrayOfDeviceInfo = paramQQAppInterface.a();
+        if (arrayOfDeviceInfo != null)
+        {
+          int j = arrayOfDeviceInfo.length;
+          int i = 0;
+          while (i < j)
+          {
+            DeviceInfo localDeviceInfo = arrayOfDeviceInfo[i];
+            if ((paramQQAppInterface.c(localDeviceInfo.din)) && (paramQQAppInterface.a(localDeviceInfo.din, 17)) && (paramLong == localDeviceInfo.din)) {
+              return localDeviceInfo;
+            }
+            i += 1;
+          }
+        }
       }
-      ((Intent)localObject).putExtra("fileinfo", localForwardFileInfo);
-      this.a.a.startActivityForResult((Intent)localObject, 102);
     }
+    return null;
+  }
+  
+  private void a(int paramInt)
+  {
+    a();
+    if (this.jdField_a_of_type_Di != null) {
+      this.jdField_a_of_type_Di.a(paramInt);
+    }
+  }
+  
+  public de a()
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    str = bdea.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), str + "_last_printer");
+    a();
+    return b(str);
+  }
+  
+  public de a(long paramLong)
+  {
+    if ((paramLong != 0L) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        de localde = (de)localIterator.next();
+        if (localde.jdField_a_of_type_Long == paramLong) {
+          return localde;
+        }
+      }
+    }
+    return null;
+  }
+  
+  public de a(String paramString)
+  {
+    dd localdd = null;
+    if (paramString != null)
+    {
+      localdd = new dd();
+      localdd.jdField_a_of_type_Int = 1;
+      localdd.jdField_a_of_type_Long = 0L;
+      localdd.jdField_a_of_type_JavaLangString = paramString;
+      localdd.c = true;
+      localdd.b = true;
+      localdd.jdField_a_of_type_Boolean = true;
+    }
+    return localdd;
+  }
+  
+  public List<de> a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    Object localObject = (alqo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
+    if (((alqo)localObject).a.jdField_a_of_type_JavaUtilList != null)
+    {
+      localObject = ((alqo)localObject).a.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        de localde = a((String)((Iterator)localObject).next());
+        this.jdField_a_of_type_JavaUtilList.add(localde);
+      }
+    }
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Alqv);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Zto);
+    }
+    this.jdField_a_of_type_Di = null;
+  }
+  
+  public void a(di paramdi)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Alqv);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Zto);
+    }
+    this.jdField_a_of_type_Di = paramdi;
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString == null) {
+      return;
+    }
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    bdea.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), str + "_last_printer", paramString);
+  }
+  
+  public boolean a()
+  {
+    return ((ambq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(10)).a() != 0;
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramString != null)
+    {
+      int i = arrr.a(paramString);
+      if ((i != 3) && (i != 0) && (i != 7) && (i != 6) && (i != 9))
+      {
+        bool1 = bool2;
+        if (i != 10) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public de b(String paramString)
+  {
+    if ((paramString != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        de localde = (de)localIterator.next();
+        if (localde.jdField_a_of_type_JavaLangString.equals(paramString)) {
+          return localde;
+        }
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     df
  * JD-Core Version:    0.7.0.1
  */

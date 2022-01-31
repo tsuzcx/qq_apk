@@ -8,8 +8,8 @@ import android.text.Selection;
 import android.text.Spannable;
 import android.widget.TextView;
 import com.tencent.mobileqq.widget.ClearableEditText;
-import hhi;
-import hhj;
+import hdb;
+import hdc;
 import java.lang.ref.SoftReference;
 import java.util.Timer;
 
@@ -64,7 +64,7 @@ public class QQCustomDialogWtihInput
     }
     this.rBtn.setText(paramInt);
     this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new hhi(this, paramOnClickListener));
+    this.rBtn.setOnClickListener(new hdb(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }
@@ -76,7 +76,7 @@ public class QQCustomDialogWtihInput
     if ((localEditable instanceof Spannable)) {
       Selection.setSelection((Spannable)localEditable, localEditable.length());
     }
-    new Timer().schedule(new hhj(this), 200L);
+    new Timer().schedule(new hdc(this), 200L);
   }
 }
 

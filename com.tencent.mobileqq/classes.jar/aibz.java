@@ -1,131 +1,46 @@
-import android.media.AudioRecord;
-import android.os.Process;
-import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
-import com.tencent.mobileqq.shortvideo.mediadevice.Lock;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aibz
-  extends Thread
+  implements View.OnClickListener
 {
-  public aibz(AudioCapture paramAudioCapture) {}
+  public aibz(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.b();
-    int i = 0;
-    int j;
-    label86:
-    int m;
-    if (this.a.jdField_a_of_type_Boolean)
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.i) && (!ChatHistoryTroopMemberFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment)))
     {
-      for (;;)
+      if (((this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 11) && (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.a > 0)) || (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 3))
       {
-        synchronized (this.a.jdField_a_of_type_JavaLangObject)
-        {
-          try
-          {
-            this.a.jdField_a_of_type_JavaLangObject.wait();
-            if (!this.a.jdField_a_of_type_Boolean) {
-              break;
-            }
-            this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-            this.a.jdField_b_of_type_Long = System.currentTimeMillis();
-            Process.setThreadPriority(-19);
-            k = 1;
-            j = i;
-            i = k;
-            if (!Lock.jdField_a_of_type_Boolean) {
-              break label542;
-            }
-            if ((this.a.jdField_a_of_type_AndroidMediaAudioRecord == null) || (this.a.jdField_a_of_type_ArrayOfByte == null) || (this.a.jdField_b_of_type_ArrayOfByte == null)) {
-              continue;
-            }
-            this.a.jdField_b_of_type_Long = System.currentTimeMillis();
-            if (this.a.e < this.a.f) {
-              break label273;
-            }
-            m = 0;
-            k = m;
-            if (this.a.jdField_a_of_type_AndroidMediaAudioRecord != null)
-            {
-              k = m;
-              if (this.a.jdField_a_of_type_ArrayOfByte != null) {
-                k = this.a.jdField_a_of_type_AndroidMediaAudioRecord.read(this.a.jdField_a_of_type_ArrayOfByte, 0, this.a.f);
-              }
-            }
-            this.a.b(k);
-            if (i != 0)
-            {
-              i = 0;
-              continue;
-            }
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            localInterruptedException.printStackTrace();
-          }
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().getIntent();
+        paramView.putExtra("member_uin", "0");
+        paramView.putExtra("member_display_name", this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().setResult(-1, paramView);
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().finish();
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 11) {
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800621D", "0X800621D", 0, 0, "", "", "", "");
         }
-        this.a.c(this.a.jdField_a_of_type_ArrayOfByte, k, System.currentTimeMillis() - this.a.jdField_a_of_type_Long, true, 4);
+        return;
       }
-      label273:
-      if ((this.a.jdField_a_of_type_AndroidMediaAudioRecord == null) || (this.a.jdField_a_of_type_ArrayOfByte == null)) {
-        break label662;
-      }
-    }
-    label662:
-    for (int k = this.a.jdField_a_of_type_AndroidMediaAudioRecord.read(this.a.jdField_a_of_type_ArrayOfByte, 0, this.a.e);; k = 0)
-    {
-      this.a.b(k);
-      if (k <= 0) {
-        break label86;
-      }
-      if (i != 0)
-      {
-        i = 0;
-        break label86;
-      }
-      if (j + k > this.a.f)
-      {
-        System.arraycopy(this.a.jdField_a_of_type_ArrayOfByte, 0, this.a.jdField_b_of_type_ArrayOfByte, j, this.a.f - j);
-        m = AudioCapture.a(this.a, this.a.jdField_b_of_type_ArrayOfByte, this.a.f);
-        int n = this.a.f - m;
-        this.a.c(this.a.jdField_b_of_type_ArrayOfByte, n, System.currentTimeMillis() - this.a.jdField_a_of_type_Long, true, 4);
-        if (m > 0) {
-          System.arraycopy(this.a.jdField_b_of_type_ArrayOfByte, n, this.a.jdField_b_of_type_ArrayOfByte, 0, m);
-        }
-        j = this.a.f - j;
-        k -= j;
-        System.arraycopy(this.a.jdField_a_of_type_ArrayOfByte, j, this.a.jdField_b_of_type_ArrayOfByte, m, k);
-        j = m + k;
-      }
-      for (;;)
-      {
-        break;
-        System.arraycopy(this.a.jdField_a_of_type_ArrayOfByte, 0, this.a.jdField_b_of_type_ArrayOfByte, j, k);
-        j += k;
-      }
-      label542:
-      i = AudioCapture.a(this.a, this.a.jdField_b_of_type_ArrayOfByte, j);
-      j -= i;
-      this.a.c(this.a.jdField_b_of_type_ArrayOfByte, j, System.currentTimeMillis() - this.a.jdField_a_of_type_Long, false, 9);
-      if (i > 0)
-      {
-        System.arraycopy(this.a.jdField_b_of_type_ArrayOfByte, j, this.a.jdField_b_of_type_ArrayOfByte, 0, i);
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AudioCapture", 2, "AudioNoiseSuppression[QQ]: leftLen=" + i);
-      }
-      i = 0;
-      break;
-      this.a.b();
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), alud.a(2131702052), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
       return;
     }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.h))
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.h, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), alud.a(2131702016), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aibz
  * JD-Core Version:    0.7.0.1
  */

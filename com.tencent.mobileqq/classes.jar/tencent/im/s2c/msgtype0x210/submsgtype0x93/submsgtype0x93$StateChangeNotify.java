@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0x93$StateChangeNotify
-  extends MessageMicro
+  extends MessageMicro<StateChangeNotify>
 {
   public static final int MSG_TYPE_ADD_COMMENT = 2;
   public static final int MSG_TYPE_CANCEL_INGORE = 5;
@@ -24,7 +24,7 @@ public final class submsgtype0x93$StateChangeNotify
   public final PBBytesField bytes_feeds_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBEnumField enum_msg_type = PBField.initEnum(1);
   public submsgtype0x93.SourceID msg_source_id = new submsgtype0x93.SourceID();
-  public final PBRepeatMessageField rpt_msg_lite_mail_index = PBField.initRepeatMessage(submsgtype0x93.LiteMailIndexInfo.class);
+  public final PBRepeatMessageField<submsgtype0x93.LiteMailIndexInfo> rpt_msg_lite_mail_index = PBField.initRepeatMessage(submsgtype0x93.LiteMailIndexInfo.class);
   public final PBUInt64Field uint64_req_uin = PBField.initUInt64(0L);
   
   static

@@ -14,6 +14,7 @@ public class UseDynamicPluginLoaderInstalledPlugin
   public static final String DYNAMIC_PLUGIN_LOADER_VERSION = "DYNAMIC_PLUGIN_LOADER_VERSION";
   public static final String DYNAMIC_PLUGIN_PLUGIN_FILE_TYPE = "DYNAMIC_PLUGIN_PLUGIN_FILE_TYPE";
   private static final long serialVersionUID = 8964590057389188960L;
+  public String defaultPluginHash;
   public final File dynamicPluginContainerFile;
   public final String dynamicPluginContainerVersion;
   public final String dynamicPluginLoaderClassname;
@@ -36,6 +37,11 @@ public class UseDynamicPluginLoaderInstalledPlugin
   
   public UseDynamicPluginLoaderInstalledPlugin(String paramString1, String paramString2, File paramFile1, String paramString3, String paramString4, File paramFile2, File paramFile3, String paramString5, String[] paramArrayOfString, File paramFile4, int paramInt)
   {
+    this(paramString1, paramString2, paramFile1, paramString3, paramString4, paramFile2, paramFile3, paramString5, paramArrayOfString, paramFile4, paramInt, null);
+  }
+  
+  public UseDynamicPluginLoaderInstalledPlugin(String paramString1, String paramString2, File paramFile1, String paramString3, String paramString4, File paramFile2, File paramFile3, String paramString5, String[] paramArrayOfString, File paramFile4, int paramInt, String paramString6)
+  {
     super(paramString1, paramString2, paramFile1, paramInt);
     this.dynamicPluginLoaderVersion = paramString3;
     this.dynamicPluginContainerVersion = paramString4;
@@ -44,6 +50,7 @@ public class UseDynamicPluginLoaderInstalledPlugin
     this.dynamicPluginLoaderClassname = paramString5;
     this.dynamicPluginLoaderInterfacePackageNames = paramArrayOfString;
     this.pluginUnpackDir = paramFile4;
+    this.defaultPluginHash = paramString6;
   }
   
   public boolean equals(Object paramObject)
@@ -106,7 +113,7 @@ public class UseDynamicPluginLoaderInstalledPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.hydevteam.pluginframework.installedplugin.UseDynamicPluginLoaderInstalledPlugin
  * JD-Core Version:    0.7.0.1
  */

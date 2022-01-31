@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhs;
 
 public class ActivityDAUInfo
-  extends Entity
+  extends awge
 {
-  @unique
+  @awhs
   public String activityName;
   public int count;
   public int displayCount;
@@ -19,7 +19,7 @@ public class ActivityDAUInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.ActivityDAUInfo
  * JD-Core Version:    0.7.0.1
  */

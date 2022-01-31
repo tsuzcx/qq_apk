@@ -1,20 +1,14 @@
-import android.app.Activity;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.downloadnew.MyAppApi;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class alhx
-  implements Runnable
+final class alhx
+  implements EIPCResultCallback
 {
-  public alhx(MyAppApi paramMyAppApi, String paramString, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_AndroidAppActivity);
-  }
+  public void onCallback(EIPCResult paramEIPCResult) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alhx
  * JD-Core Version:    0.7.0.1
  */

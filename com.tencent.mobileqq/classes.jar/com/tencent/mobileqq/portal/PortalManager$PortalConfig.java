@@ -9,7 +9,7 @@ public class PortalManager$PortalConfig
 {
   public String actEndWording;
   public String activityTime;
-  List awardConfigList = new ArrayList();
+  List<PortalManager.AwardConfig> awardConfigList = new ArrayList();
   public String bgImg;
   public String bgMd5;
   public int cardCnt;
@@ -31,7 +31,7 @@ public class PortalManager$PortalConfig
   public boolean isHit;
   public String leftCloudImageMD5;
   public String leftCloudImageUrl;
-  List logoList = new ArrayList();
+  List<PortalManager.LogoConfig> logoList = new ArrayList();
   public int mode;
   public String nextActTime;
   public long realBegin;
@@ -109,7 +109,7 @@ public class PortalManager$PortalConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.portal.PortalManager.PortalConfig
  * JD-Core Version:    0.7.0.1
  */

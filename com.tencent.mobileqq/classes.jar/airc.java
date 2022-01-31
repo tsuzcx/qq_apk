@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.transfile.ShortVideoForwardProcessor;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class airc
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  airc(aira paramaira, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  airc(aira paramaira, Runnable paramRunnable) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Aira.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

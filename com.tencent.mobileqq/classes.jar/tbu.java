@@ -1,22 +1,18 @@
-import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnErrorListener;
-import com.tencent.mobileqq.activity.MakeVideoActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLImageView;
 
-public class tbu
-  implements MediaRecorder.OnErrorListener
+class tbu
+  implements svw
 {
-  public tbu(MakeVideoActivity paramMakeVideoActivity) {}
+  tbu(tbq paramtbq, String paramString) {}
   
-  public void onError(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
+  public void a()
   {
-    paramMediaRecorder = "(code = " + paramInt1 + ", extra = " + paramInt2 + ")";
-    QLog.w(this.a.a, 1, "MakeVideoActivity error " + paramMediaRecorder);
+    tbq.a(this.jdField_a_of_type_Tbq).setImageDrawable(tbq.a(this.jdField_a_of_type_Tbq, this.jdField_a_of_type_JavaLangString, true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tbu
  * JD-Core Version:    0.7.0.1
  */

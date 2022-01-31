@@ -1,34 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadListener;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 class aewh
-  implements Runnable
+  implements OnCompositionLoadedListener
 {
-  aewh(aewg paramaewg, VideoFeedsUploader.UploadInfo paramUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult) {}
+  aewh(aewe paramaewe) {}
   
-  public void run()
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    NearbyMomentManager localNearbyMomentManager = (NearbyMomentManager)this.jdField_a_of_type_Aewg.a.a.getManager(262);
-    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.jdField_a_of_type_Int == 0)) {
-      localNearbyMomentManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.e);
-    }
-    for (;;)
-    {
-      if (VideoFeedsUploader.a(this.jdField_a_of_type_Aewg.a) != null) {
-        VideoFeedsUploader.a(this.jdField_a_of_type_Aewg.a).a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo, this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult);
-      }
-      return;
-      localNearbyMomentManager.d(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.jdField_a_of_type_JavaLangString);
-    }
+    aewe.a(this.a, paramLottieComposition);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aewh
  * JD-Core Version:    0.7.0.1
  */

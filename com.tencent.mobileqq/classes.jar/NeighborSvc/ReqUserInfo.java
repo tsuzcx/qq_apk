@@ -14,36 +14,36 @@ public final class ReqUserInfo
   static int cache_eListType;
   static int cache_eLocalInfo;
   static GPS cache_stGps;
-  static ArrayList cache_vCells;
+  static ArrayList<Cell> cache_vCells;
   static byte[] cache_vLBSKeyData;
-  static ArrayList cache_vMacs;
-  static ArrayList cache_vSOSOCells;
-  static ArrayList cache_vSOSOMac;
+  static ArrayList<Long> cache_vMacs;
+  static ArrayList<SOSO_Cell> cache_vSOSOCells;
+  static ArrayList<SOSO_Wifi> cache_vSOSOMac;
   public int eListType = ListType.ListType_Normal.value();
   public int eLocalInfo = LocalInfoType.LocalInfoType_Decode.value();
   public GPS stGps;
   public String strAuthName = "";
   public String strAuthPassword = "";
-  public ArrayList vCells;
+  public ArrayList<Cell> vCells;
   public byte[] vLBSKeyData;
-  public ArrayList vMacs;
-  public ArrayList vSOSOCells;
-  public ArrayList vSOSOMac;
+  public ArrayList<Long> vMacs;
+  public ArrayList<SOSO_Cell> vSOSOCells;
+  public ArrayList<SOSO_Wifi> vSOSOMac;
   
   public ReqUserInfo() {}
   
-  public ReqUserInfo(GPS paramGPS, ArrayList paramArrayList1, ArrayList paramArrayList2, String paramString1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte, ArrayList paramArrayList3, ArrayList paramArrayList4)
+  public ReqUserInfo(GPS paramGPS, ArrayList<Long> paramArrayList, ArrayList<Cell> paramArrayList1, String paramString1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte, ArrayList<SOSO_Wifi> paramArrayList2, ArrayList<SOSO_Cell> paramArrayList3)
   {
     this.stGps = paramGPS;
-    this.vMacs = paramArrayList1;
-    this.vCells = paramArrayList2;
+    this.vMacs = paramArrayList;
+    this.vCells = paramArrayList1;
     this.strAuthName = paramString1;
     this.strAuthPassword = paramString2;
     this.eListType = paramInt1;
     this.eLocalInfo = paramInt2;
     this.vLBSKeyData = paramArrayOfByte;
-    this.vSOSOMac = paramArrayList3;
-    this.vSOSOCells = paramArrayList4;
+    this.vSOSOMac = paramArrayList2;
+    this.vSOSOCells = paramArrayList3;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -114,7 +114,7 @@ public final class ReqUserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NeighborSvc.ReqUserInfo
  * JD-Core Version:    0.7.0.1
  */

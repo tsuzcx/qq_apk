@@ -1,12 +1,21 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
-public abstract interface gky
+public class gky
+  implements View.OnLongClickListener
 {
-  public abstract void a(String paramString1, String paramString2, Bitmap paramBitmap, int paramInt);
+  public gky(StructMsgForGeneralShare paramStructMsgForGeneralShare, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
+  
+  public boolean onLongClick(View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onLongClick(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gky
  * JD-Core Version:    0.7.0.1
  */

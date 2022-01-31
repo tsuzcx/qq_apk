@@ -1,60 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebAnimationUtils.1;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebAnimationUtils.2;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebAnimationUtils.3;
 
 public class sce
-  extends CardObserver
 {
-  public sce(ChatSettingActivity paramChatSettingActivity) {}
-  
-  protected void a(boolean paramBoolean, Object paramObject)
+  public static void a(Activity paramActivity)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
-    {
-      if ((paramBoolean) && (paramObject != null))
-      {
-        if ((ChatSettingActivity.a(this.a) == 0) && (ChatSettingActivity.b(this.a).equals(paramObject.uin)))
-        {
-          String str = ContactUtils.a(this.a.app, ChatSettingActivity.b(this.a));
-          if ((!TextUtils.isEmpty(str)) && (!str.equals(ChatSettingActivity.f(this.a)))) {
-            ChatSettingActivity.c(this.a, str);
-          }
-        }
-        if ((this.a.f != null) && (!TextUtils.isEmpty(ChatSettingActivity.b(this.a))) && (ChatSettingActivity.b(this.a).equals(paramObject.uin))) {
-          ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a, ChatSettingActivity.b(this.a)), this.a.f);
-        }
-      }
+    if (paramActivity == null) {
       return;
     }
+    TextView localTextView1 = (TextView)paramActivity.findViewById(2131368624);
+    TextView localTextView2 = (TextView)paramActivity.findViewById(2131368630);
+    ImageView localImageView = (ImageView)paramActivity.findViewById(2131368629);
+    new Handler().postDelayed(new FastWebAnimationUtils.1(paramActivity, localTextView1), 500L);
+    new Handler().postDelayed(new FastWebAnimationUtils.2(localTextView2, paramActivity), 2500L);
+    new Handler().postDelayed(new FastWebAnimationUtils.3(paramActivity, localTextView2, localImageView), 4200L);
   }
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  private static AnimationSet b(View paramView, Context paramContext)
   {
-    if ((paramBoolean1) && (this.a.b != null) && (paramBoolean2 != this.a.b.a()))
-    {
-      this.a.b.setOnCheckedChangeListener(null);
-      this.a.b.setChecked(paramBoolean2);
-      this.a.b.setOnCheckedChangeListener(this.a);
-    }
-  }
-  
-  protected void c(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (this.a.b != null) && (paramBoolean2 != this.a.b.a()))
-    {
-      this.a.b.setOnCheckedChangeListener(null);
-      this.a.b.setChecked(paramBoolean2);
-      this.a.b.setOnCheckedChangeListener(this.a);
-    }
+    paramView = new TranslateAnimation(0.0F, -(paramView.getX() - bdoo.b(40.0F)), 0.0F, 0.0F);
+    paramView.setFillAfter(true);
+    paramView.setDuration(200L);
+    paramContext = (AlphaAnimation)AnimationUtils.loadAnimation(paramContext, 2130772182);
+    AnimationSet localAnimationSet = new AnimationSet(false);
+    localAnimationSet.addAnimation(paramContext);
+    localAnimationSet.addAnimation(paramView);
+    localAnimationSet.setFillAfter(true);
+    return localAnimationSet;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sce
  * JD-Core Version:    0.7.0.1
  */

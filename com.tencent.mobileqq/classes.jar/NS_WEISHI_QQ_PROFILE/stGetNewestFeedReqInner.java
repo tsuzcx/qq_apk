@@ -9,9 +9,9 @@ import java.util.Map;
 public final class stGetNewestFeedReqInner
   extends JceStruct
 {
-  static Map cache_mapExtern = new HashMap();
+  static Map<String, String> cache_mapExtern = new HashMap();
   public int cache_update_time;
-  public Map mapExtern;
+  public Map<String, String> mapExtern;
   public long uin;
   
   static
@@ -21,7 +21,7 @@ public final class stGetNewestFeedReqInner
   
   public stGetNewestFeedReqInner() {}
   
-  public stGetNewestFeedReqInner(long paramLong, int paramInt, Map paramMap)
+  public stGetNewestFeedReqInner(long paramLong, int paramInt, Map<String, String> paramMap)
   {
     this.uin = paramLong;
     this.cache_update_time = paramInt;

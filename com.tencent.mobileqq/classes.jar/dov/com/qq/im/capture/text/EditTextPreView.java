@@ -9,13 +9,14 @@ import android.view.MotionEvent;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import blxn;
 
 public class EditTextPreView
   extends ImageView
 {
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private blxn jdField_a_of_type_Blxn;
   private DynamicTextItem jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
-  private EditTextPreView.OnClickListener jdField_a_of_type_DovComQqImCaptureTextEditTextPreView$OnClickListener;
   
   public EditTextPreView(Context paramContext)
   {
@@ -67,16 +68,16 @@ public class EditTextPreView
     {
       return super.onTouchEvent(paramMotionEvent);
       return true;
-    } while ((this.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView$OnClickListener == null) || (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem == null));
+    } while ((this.jdField_a_of_type_Blxn == null) || (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem == null));
     int i = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a(paramMotionEvent, getWidth(), getHeight(), null, null);
     if (i > -1)
     {
       setText(i, this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a(i));
       this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a(i, true);
       this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a(i, this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a(i));
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a(i);
+      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b(i);
     }
-    this.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView$OnClickListener.a(this, this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem, i);
+    this.jdField_a_of_type_Blxn.a(this, this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem, i);
     return true;
   }
   
@@ -86,9 +87,9 @@ public class EditTextPreView
     throw new UnsupportedOperationException("unSupport normal click listener, use EditTextPreView.OnClickListener instead");
   }
   
-  public void setOnClickListener(@Nullable EditTextPreView.OnClickListener paramOnClickListener)
+  public void setOnClickListener(@Nullable blxn paramblxn)
   {
-    this.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_Blxn = paramblxn;
   }
   
   public void setPreViewDrawer(DynamicTextItem paramDynamicTextItem)
@@ -109,7 +110,7 @@ public class EditTextPreView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.text.EditTextPreView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,25 @@
-import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
-import cooperation.qzone.share.WXShareFromQZHelper;
-import cooperation.qzone.video.QzoneLiveVideoInterface;
-import cooperation.qzone.webviewplugin.QzoneWidgetAIJsPlugin;
+import java.io.File;
+import java.io.FileFilter;
 
-public class andp
-  implements Runnable
+final class andp
+  implements FileFilter
 {
-  public andp(QzoneWidgetAIJsPlugin paramQzoneWidgetAIJsPlugin, int paramInt, String paramString1, String paramString2) {}
-  
-  public void run()
+  public boolean accept(File paramFile)
   {
-    Activity localActivity = this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneWidgetAIJsPlugin.a.mRuntime.a();
-    if (localActivity == null) {
-      return;
-    }
-    WXShareFromQZHelper localWXShareFromQZHelper2;
-    if ((1 == this.jdField_a_of_type_Int) || (2 == this.jdField_a_of_type_Int))
+    paramFile = paramFile.getName();
+    if (paramFile.startsWith("cpu"))
     {
-      localWXShareFromQZHelper2 = WXShareFromQZHelper.a();
-      localWXShareFromQZHelper1 = localWXShareFromQZHelper2;
-      if (localWXShareFromQZHelper2 == null)
+      int i = 3;
+      while (i < paramFile.length())
       {
-        localWXShareFromQZHelper1 = localWXShareFromQZHelper2;
-        if (localWXShareFromQZHelper2.a()) {
-          WXShareFromQZHelper.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneWidgetAIJsPlugin.a.mRuntime.a());
+        if ((paramFile.charAt(i) < '0') || (paramFile.charAt(i) > '9')) {
+          return false;
         }
+        i += 1;
       }
+      return true;
     }
-    for (WXShareFromQZHelper localWXShareFromQZHelper1 = localWXShareFromQZHelper2;; localWXShareFromQZHelper1 = null)
-    {
-      switch (this.jdField_a_of_type_Int)
-      {
-      default: 
-        return;
-      case 1: 
-        localWXShareFromQZHelper1.a(this.jdField_a_of_type_JavaLangString, null, 0);
-        return;
-      case 2: 
-        localWXShareFromQZHelper1.a(this.jdField_a_of_type_JavaLangString, null, 1);
-        return;
-      case 3: 
-        QzoneLiveVideoInterface.shareToQQ(localActivity, null, null, null, null, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      QZoneHelper.a(localActivity, QZoneHelper.UserInfo.a(), this.jdField_a_of_type_JavaLangString, "说说", this.b, -1);
-      return;
-    }
+    return false;
   }
 }
 

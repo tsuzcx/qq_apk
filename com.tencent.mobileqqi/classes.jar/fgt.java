@@ -1,19 +1,28 @@
-import com.tencent.mobileqq.app.Frame;
-import com.tencent.mobileqq.app.FrameActivity;
-import java.util.Collection;
-import java.util.Iterator;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.StartAppCheckHandler;
+import java.util.Queue;
 
 public class fgt
-  implements Runnable
+  extends Handler
 {
-  public fgt(FrameActivity paramFrameActivity, Collection paramCollection) {}
-  
-  public void run()
+  public fgt(StartAppCheckHandler paramStartAppCheckHandler, Looper paramLooper)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilCollection.iterator();
-    while (localIterator.hasNext()) {
-      ((Frame)localIterator.next()).b();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
+    paramMessage = (fgw)paramMessage.obj;
+    this.a.a.remove(paramMessage);
+    paramMessage.jdField_a_of_type_AndroidContentContext.startActivity(paramMessage.jdField_a_of_type_AndroidContentIntent);
   }
 }
 

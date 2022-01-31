@@ -1,28 +1,25 @@
-import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnInfoListener;
-import com.tencent.mobileqq.activity.MakeVideoActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
-public class tbt
-  implements MediaRecorder.OnInfoListener
+class tbt
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public tbt(MakeVideoActivity paramMakeVideoActivity) {}
+  tbt(tbs paramtbs) {}
   
-  public void onInfo(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt1)
+    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
+    if (paramBoolean) {}
+    for (String str = "success";; str = "fail")
     {
-    default: 
-      QLog.i(this.a.a, 4, "start|onInfo|what=" + paramInt1 + ",extra=" + paramInt2);
+      tlo.d("WSPublisherDialog", str + ", bundle: " + paramBundle.toString());
       return;
     }
-    QLog.i(this.a.a, 4, "start|onInfo|max file size reached.extra=" + paramInt2);
-    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tbt
  * JD-Core Version:    0.7.0.1
  */

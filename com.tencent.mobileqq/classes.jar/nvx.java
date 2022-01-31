@@ -1,26 +1,29 @@
-import com.tencent.biz.qqstory.model.DiscoverManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader;
-import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
+import com.tencent.qphone.base.util.QLog;
 
-public class nvx
-  implements Runnable
+class nvx
+  extends oxe
 {
-  public nvx(DiscoverPresenter paramDiscoverPresenter) {}
+  nvx(nvp paramnvp) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    byte[] arrayOfByte = ((DiscoverManager)SuperManager.a(22)).a(DiscoverPresenter.a(this.a));
-    if (arrayOfByte != null)
+    QLog.i("DailyHeaderViewController", 1, "[onDailyDynamicHeaderDataUpdated] " + paramBoolean);
+    if (!paramBoolean)
     {
-      DiscoverPresenter.a(this.a, arrayOfByte);
-      DiscoverPresenter.a(this.a).a();
+      if ((nvp.a(this.a) == -1) || (nvp.a(this.a) == 0))
+      {
+        nvp.a(this.a, 0);
+        return;
+      }
+      nvp.a(this.a, 4);
+      return;
     }
+    nvp.a(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvx
  * JD-Core Version:    0.7.0.1
  */

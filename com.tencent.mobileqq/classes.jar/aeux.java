@@ -1,23 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.utils.UITools;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
-
-public class aeux
-  implements View.OnTouchListener
+public abstract interface aeux
 {
-  public aeux(SmallVideoSendFragment paramSmallVideoSendFragment) {}
+  public static final aeuy a = new aeuy();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if ((SmallVideoSendFragment.a(this.a)) && (paramMotionEvent.getY() > UITools.a(this.a.a(), 131.0F))) {}
-    return false;
-  }
+  public abstract int a(long paramLong, aeuy paramaeuy);
+  
+  public abstract int a(aeuy paramaeuy, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract aeux a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeux
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,23 @@
-import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import java.lang.ref.WeakReference;
 
 public class adsy
-  implements Runnable
+  implements zif
 {
-  public adsy(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager) {}
+  WeakReference<QQSettingMe> a;
   
-  public void run()
+  public adsy(QQSettingMe paramQQSettingMe)
   {
-    ImaxAdVideoPreloadManager.a(this.a, 2);
+    this.a = new WeakReference(paramQQSettingMe);
+  }
+  
+  public int a()
+  {
+    QQSettingMe localQQSettingMe = (QQSettingMe)this.a.get();
+    if (localQQSettingMe != null) {
+      return localQQSettingMe.a();
+    }
+    return 0;
   }
 }
 

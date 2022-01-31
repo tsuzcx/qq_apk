@@ -1,14 +1,12 @@
 package com.tencent.mobileqq.app.automator.step;
 
 import com.tencent.mobileqq.app.automator.AsyncStep;
-import com.tencent.open.appcircle.module.GetAppCircleConfigEngine;
 
 public class AppNewsAlert
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
-    GetAppCircleConfigEngine.a().a();
     return super.a();
   }
 }

@@ -1,0 +1,38 @@
+{
+    "ReadInjoy_article_text_cell": {
+        "view_type": "container",
+        "direction": "vertical",
+        "height": {
+            
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+            {
+                "view_type": "UILabel",
+                "view_id": "id_article_paragraph",
+                "margin_left":"15",
+                "margin_right":"15",
+                "margin_top":"16",
+                "height":{
+                    "type": "wrap_content"
+                },
+                "width":{
+                    "type":"relative",
+                    "value":"345"
+                },
+                "attributes":{
+                    "setRichText:": "$id_attribute_text",
+                    "setNumberOfLinesString:":"0",
+                    "setTextColorString:":"#262626",
+                    "setTextAlignmentString:": "$text_align",
+                     "setFontSizeString:": "$attribute_text_size",
+                     "setLineSpace:":"13"
+                }
+            }
+        ]
+    }
+}

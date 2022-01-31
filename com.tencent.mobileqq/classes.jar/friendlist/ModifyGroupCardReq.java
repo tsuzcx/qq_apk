@@ -8,15 +8,15 @@ import java.util.ArrayList;
 public final class ModifyGroupCardReq
   extends JceStruct
 {
-  static ArrayList cache_vecUinInfo;
+  static ArrayList<stUinInfo> cache_vecUinInfo;
   public long dwGroupCode;
   public long dwNewSeq;
   public long dwZero;
-  public ArrayList vecUinInfo;
+  public ArrayList<stUinInfo> vecUinInfo;
   
   public ModifyGroupCardReq() {}
   
-  public ModifyGroupCardReq(long paramLong1, long paramLong2, long paramLong3, ArrayList paramArrayList)
+  public ModifyGroupCardReq(long paramLong1, long paramLong2, long paramLong3, ArrayList<stUinInfo> paramArrayList)
   {
     this.dwZero = paramLong1;
     this.dwGroupCode = paramLong2;
@@ -48,7 +48,7 @@ public final class ModifyGroupCardReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     friendlist.ModifyGroupCardReq
  * JD-Core Version:    0.7.0.1
  */

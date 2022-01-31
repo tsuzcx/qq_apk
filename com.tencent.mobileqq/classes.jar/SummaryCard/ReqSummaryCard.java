@@ -11,13 +11,14 @@ public final class ReqSummaryCard
   static int cache_eAddFriendSource;
   static int cache_eComeFrom = 0;
   static UserLocaleInfo cache_stLocaleInfo;
-  static ArrayList cache_vReq0x5ebFieldId;
+  static ArrayList<Integer> cache_vReq0x5ebFieldId;
+  static byte[] cache_vReqKandianInfo;
   static byte[] cache_vReqLastGameInfo;
   static byte[] cache_vReqStarInfo;
   static byte[] cache_vReqTemplateInfo;
   static byte[] cache_vSecureSig;
   static byte[] cache_vSeed = (byte[])new byte[1];
-  static ArrayList cache_vvReqServices;
+  static ArrayList<byte[]> cache_vvReqServices;
   public byte bIsFriend;
   public byte bReqCommLabel;
   public byte bReqExtendCard;
@@ -34,13 +35,15 @@ public final class ReqSummaryCard
   public String strSearchName = "";
   public long uLikeSource;
   public long uQzoneFeedTimestamp;
-  public ArrayList vReq0x5ebFieldId;
+  public long uRichCardNameVer;
+  public ArrayList<Integer> vReq0x5ebFieldId;
+  public byte[] vReqKandianInfo;
   public byte[] vReqLastGameInfo;
   public byte[] vReqStarInfo;
   public byte[] vReqTemplateInfo;
   public byte[] vSecureSig;
   public byte[] vSeed;
-  public ArrayList vvReqServices;
+  public ArrayList<byte[]> vvReqServices;
   
   static
   {
@@ -61,11 +64,13 @@ public final class ReqSummaryCard
     cache_stLocaleInfo = new UserLocaleInfo();
     cache_vReq0x5ebFieldId = new ArrayList();
     cache_vReq0x5ebFieldId.add(Integer.valueOf(0));
+    cache_vReqKandianInfo = (byte[])new byte[1];
+    ((byte[])cache_vReqKandianInfo)[0] = 0;
   }
   
   public ReqSummaryCard() {}
   
-  public ReqSummaryCard(long paramLong1, int paramInt1, long paramLong2, byte paramByte1, long paramLong3, long paramLong4, byte[] paramArrayOfByte1, String paramString, long paramLong5, int paramInt2, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, ArrayList paramArrayList1, long paramLong6, long paramLong7, UserLocaleInfo paramUserLocaleInfo, byte paramByte2, ArrayList paramArrayList2, byte paramByte3, byte paramByte4, byte paramByte5)
+  public ReqSummaryCard(long paramLong1, int paramInt1, long paramLong2, byte paramByte1, long paramLong3, long paramLong4, byte[] paramArrayOfByte1, String paramString, long paramLong5, int paramInt2, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, ArrayList<byte[]> paramArrayList, long paramLong6, long paramLong7, UserLocaleInfo paramUserLocaleInfo, byte paramByte2, ArrayList<Integer> paramArrayList1, byte paramByte3, byte paramByte4, byte paramByte5, byte[] paramArrayOfByte6, long paramLong8)
   {
     this.lUIN = paramLong1;
     this.eComeFrom = paramInt1;
@@ -81,15 +86,17 @@ public final class ReqSummaryCard
     this.vReqLastGameInfo = paramArrayOfByte3;
     this.vReqTemplateInfo = paramArrayOfByte4;
     this.vReqStarInfo = paramArrayOfByte5;
-    this.vvReqServices = paramArrayList1;
+    this.vvReqServices = paramArrayList;
     this.lTinyId = paramLong6;
     this.uLikeSource = paramLong7;
     this.stLocaleInfo = paramUserLocaleInfo;
     this.bReqMedalWallInfo = paramByte2;
-    this.vReq0x5ebFieldId = paramArrayList2;
+    this.vReq0x5ebFieldId = paramArrayList1;
     this.bReqNearbyGodInfo = paramByte3;
     this.bReqCommLabel = paramByte4;
     this.bReqExtendCard = paramByte5;
+    this.vReqKandianInfo = paramArrayOfByte6;
+    this.uRichCardNameVer = paramLong8;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -117,6 +124,8 @@ public final class ReqSummaryCard
     this.bReqNearbyGodInfo = paramJceInputStream.read(this.bReqNearbyGodInfo, 20, false);
     this.bReqCommLabel = paramJceInputStream.read(this.bReqCommLabel, 21, false);
     this.bReqExtendCard = paramJceInputStream.read(this.bReqExtendCard, 22, false);
+    this.vReqKandianInfo = ((byte[])paramJceInputStream.read(cache_vReqKandianInfo, 23, false));
+    this.uRichCardNameVer = paramJceInputStream.read(this.uRichCardNameVer, 24, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -162,6 +171,10 @@ public final class ReqSummaryCard
     paramJceOutputStream.write(this.bReqNearbyGodInfo, 20);
     paramJceOutputStream.write(this.bReqCommLabel, 21);
     paramJceOutputStream.write(this.bReqExtendCard, 22);
+    if (this.vReqKandianInfo != null) {
+      paramJceOutputStream.write(this.vReqKandianInfo, 23);
+    }
+    paramJceOutputStream.write(this.uRichCardNameVer, 24);
   }
 }
 

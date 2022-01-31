@@ -1,33 +1,62 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.troop.utils.TroopBindPubAccountProtocol.RequestPublicAccountObserver;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 public class sdt
-  extends TroopBindPubAccountProtocol.RequestPublicAccountObserver
 {
-  public sdt(ChatSettingForTroop paramChatSettingForTroop) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
+  private boolean jdField_a_of_type_Boolean = true;
+  private String b = "utf-8";
   
-  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
+  public sdt(String paramString)
   {
-    if (paramBoolean)
-    {
-      Message localMessage = Message.obtain();
-      localMessage.what = 17;
-      Bundle localBundle = new Bundle();
-      localBundle.putString("uinname", paramAccountDetail.name);
-      localBundle.putString("extra_type", paramAccountDetail.summary);
-      localBundle.putLong("uin", paramLong);
-      localMessage.setData(localBundle);
-      this.a.a.sendMessage(localMessage);
+    this(paramString, "utf-8");
+  }
+  
+  public sdt(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    a();
+    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  private void a()
+  {
+    if (!this.jdField_a_of_type_JavaLangString.endsWith("?")) {
+      this.jdField_a_of_type_JavaLangString += "?";
     }
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
+  }
+  
+  public sdt a(String paramString1, String paramString2)
+  {
+    try
+    {
+      if (!this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_JavaLangStringBuilder.append("&");
+      }
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaLangStringBuilder.append(paramString1);
+      this.jdField_a_of_type_JavaLangStringBuilder.append("=");
+      this.jdField_a_of_type_JavaLangStringBuilder.append(URLEncoder.encode(paramString2, this.b));
+      return this;
+    }
+    catch (UnsupportedEncodingException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sdt
  * JD-Core Version:    0.7.0.1
  */

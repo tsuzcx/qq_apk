@@ -1,56 +1,27 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.ApolloPanelManager.PanelClickCallback;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
 
 public class yyr
-  implements ApolloPanelManager.PanelClickCallback
+  implements yyv
 {
-  public yyr(ApolloPanel paramApolloPanel) {}
+  private float jdField_a_of_type_Float = 0.8F;
+  private yyp jdField_a_of_type_Yyp = yyp.a(1);
+  private float jdField_b_of_type_Float = 0.2F;
+  private yyp jdField_b_of_type_Yyp = yyp.b(1);
   
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public void a(View paramView, float paramFloat)
   {
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(String.valueOf(paramInt));
-    if (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0)
-    {
-      if ((!paramBoolean2) || (paramInt >= 5)) {
-        break label110;
-      }
-      this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      if (!paramBoolean1) {
-        break label94;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      ThreadManager.getUIHandler().removeCallbacks(ApolloPanel.a(this.a));
-    }
-    label94:
-    label110:
-    do
-    {
-      do
-      {
-        ThreadManager.getUIHandler().postDelayed(ApolloPanel.a(this.a), 5000L);
-        do
-        {
-          return;
-        } while (paramInt <= 0);
-        this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        return;
-        this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      } while ((paramInt != 0) || (!paramBoolean1));
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    } while ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a == null));
-    ApolloPanel.a(this.a, this.a.jdField_b_of_type_AndroidWidgetLinearLayout, 51, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getString(2131438231), 2);
+    this.jdField_a_of_type_Yyp.a(paramView);
+    this.jdField_b_of_type_Yyp.a(paramView);
+    paramFloat = Math.abs(paramFloat);
+    float f = this.jdField_a_of_type_Float;
+    paramFloat = (1.0F - paramFloat) * this.jdField_b_of_type_Float + f;
+    paramView.setScaleX(paramFloat);
+    paramView.setScaleY(paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yyr
  * JD-Core Version:    0.7.0.1
  */

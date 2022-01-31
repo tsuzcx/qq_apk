@@ -13,9 +13,9 @@ import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import gav;
-import gaw;
-import gax;
+import fwj;
+import fwk;
+import fwl;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -33,7 +33,7 @@ public class ThumbDownLoader
   static final String jdField_a_of_type_JavaLangString = AppConstants.as + ".thumbnails/";
   private static final String jdField_b_of_type_JavaLangString = "ThumbDownLoader<FileAssistant>";
   public QQAppInterface a;
-  private FileTransferObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new gaw(this);
+  private FileTransferObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new fwk(this);
   private LinkedHashMap jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   List jdField_a_of_type_JavaUtilList = null;
   private final int jdField_b_of_type_Int = 5;
@@ -52,14 +52,14 @@ public class ThumbDownLoader
     }
   }
   
-  private void a(gax paramgax, long paramLong)
+  private void a(fwl paramfwl, long paramLong)
   {
-    if (paramgax.jdField_a_of_type_JavaIoFileOutputStream == null) {}
+    if (paramfwl.jdField_a_of_type_JavaIoFileOutputStream == null) {}
     try
     {
-      QLog.i("ThumbDownLoader<FileAssistant>", 1, "nSessionId[" + String.valueOf(paramgax.jdField_a_of_type_Long) + "],tmpname[" + String.valueOf(paramgax.jdField_c_of_type_JavaLangString) + "]");
-      paramgax.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(paramgax.jdField_c_of_type_JavaLangString, true);
-      HttpMsg localHttpMsg = new HttpMsg(paramgax.jdField_a_of_type_JavaLangString, null, this, true);
+      QLog.i("ThumbDownLoader<FileAssistant>", 1, "nSessionId[" + String.valueOf(paramfwl.jdField_a_of_type_Long) + "],tmpname[" + String.valueOf(paramfwl.jdField_c_of_type_JavaLangString) + "]");
+      paramfwl.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(paramfwl.jdField_c_of_type_JavaLangString, true);
+      HttpMsg localHttpMsg = new HttpMsg(paramfwl.jdField_a_of_type_JavaLangString, null, this, true);
       String str = "gprs";
       if (NetworkUtil.b(BaseApplication.getContext()) == 1) {
         str = "wifi";
@@ -67,26 +67,26 @@ public class ThumbDownLoader
       localHttpMsg.a("Net-type", str);
       localHttpMsg.a("Range", "bytes=0-");
       localHttpMsg.b(5);
-      localHttpMsg.a("Cookie", "FTN5K=" + paramgax.jdField_d_of_type_JavaLangString);
+      localHttpMsg.a("Cookie", "FTN5K=" + paramfwl.jdField_d_of_type_JavaLangString);
       localHttpMsg.a(true);
       localHttpMsg.jdField_d_of_type_Int = 0;
       localHttpMsg.jdField_e_of_type_Int = 3000;
       localHttpMsg.ad = String.valueOf(paramLong);
-      QLog.d("ThumbDownLoader<FileAssistant>", 1, "Id[" + String.valueOf(paramLong) + "]" + "nSessionId[" + String.valueOf(paramgax.jdField_a_of_type_Long) + "]" + "recv http data RANGE[" + String.valueOf("bytes=0-") + "], peerType[" + String.valueOf(localHttpMsg.jdField_e_of_type_Int) + "]");
+      QLog.d("ThumbDownLoader<FileAssistant>", 1, "Id[" + String.valueOf(paramLong) + "]" + "nSessionId[" + String.valueOf(paramfwl.jdField_a_of_type_Long) + "]" + "recv http data RANGE[" + String.valueOf("bytes=0-") + "], peerType[" + String.valueOf(localHttpMsg.jdField_e_of_type_Int) + "]");
       localHttpMsg.a("Accept-Encoding", "identity");
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localHttpMsg);
-      paramgax.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = localHttpMsg;
+      paramfwl.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = localHttpMsg;
       return;
     }
     catch (FileNotFoundException localFileNotFoundException)
     {
-      QLog.e("ThumbDownLoader<FileAssistant>", 2, "new FileOutputStream exception!!! info:" + paramgax.toString());
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramgax.jdField_a_of_type_Long, "actFileDiscThumb", paramgax.jdField_e_of_type_Long, paramgax.jdField_a_of_type_JavaLangString, paramgax.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, paramgax.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, 9003L, "FileNotFoundException", 0L, 0L, 0L, paramgax.jdField_a_of_type_JavaLangString, "", 0, "FileNotFoundException", "");
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramgax.jdField_a_of_type_Long, "actFileDiscThumbDetail", paramgax.jdField_e_of_type_Long, paramgax.jdField_a_of_type_JavaLangString, paramgax.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, paramgax.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, 9003L, "FileNotFoundException", 0L, 0L, 0L, paramgax.jdField_a_of_type_JavaLangString, "", 0, "size error", "");
+      QLog.e("ThumbDownLoader<FileAssistant>", 2, "new FileOutputStream exception!!! info:" + paramfwl.toString());
+      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramfwl.jdField_a_of_type_Long, "actFileDiscThumb", paramfwl.jdField_e_of_type_Long, paramfwl.jdField_a_of_type_JavaLangString, paramfwl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, paramfwl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, 9003L, "FileNotFoundException", 0L, 0L, 0L, paramfwl.jdField_a_of_type_JavaLangString, "", 0, "FileNotFoundException", "");
+      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramfwl.jdField_a_of_type_Long, "actFileDiscThumbDetail", paramfwl.jdField_e_of_type_Long, paramfwl.jdField_a_of_type_JavaLangString, paramfwl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, paramfwl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, 9003L, "FileNotFoundException", 0L, 0L, 0L, paramfwl.jdField_a_of_type_JavaLangString, "", 0, "size error", "");
       localFileNotFoundException.printStackTrace();
       synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
       {
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(Long.valueOf(paramgax.jdField_d_of_type_Long));
+        this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(Long.valueOf(paramfwl.jdField_d_of_type_Long));
         a(null);
         return;
       }
@@ -97,7 +97,7 @@ public class ThumbDownLoader
   {
     if (this.jdField_b_of_type_JavaUtilList.size() < 2)
     {
-      Thread localThread = new Thread(new gav(this));
+      Thread localThread = new Thread(new fwj(this));
       this.jdField_b_of_type_JavaUtilList.add(localThread);
       localThread.start();
       QLog.i("ThumbDownLoader<FileAssistant>", 2, "thread less 2,created one new thread! threadDownList.size(" + String.valueOf(this.jdField_b_of_type_JavaUtilList.size()) + ")");
@@ -157,7 +157,7 @@ public class ThumbDownLoader
       while (((Iterator)localObject2).hasNext())
       {
         Long localLong = (Long)((Iterator)localObject2).next();
-        if (((gax)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localLong)).jdField_a_of_type_Long == paramFileManagerEntity.nSessionId)
+        if (((fwl)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localLong)).jdField_a_of_type_Long == paramFileManagerEntity.nSessionId)
         {
           QLog.i("ThumbDownLoader<FileAssistant>", 2, "nSessionId[" + String.valueOf(paramFileManagerEntity.nSessionId) + "] is downloading, return! cacheDowload size(" + String.valueOf(this.jdField_a_of_type_JavaUtilList.size()) + ")");
           return null;
@@ -173,7 +173,7 @@ public class ThumbDownLoader
         if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
           break;
         }
-        if (((gax)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Long == paramFileManagerEntity.nSessionId)
+        if (((fwl)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Long == paramFileManagerEntity.nSessionId)
         {
           QLog.i("ThumbDownLoader<FileAssistant>", 2, "nSessionId[" + String.valueOf(paramFileManagerEntity.nSessionId) + "] is in download list, return! cacheDowload size(" + String.valueOf(this.jdField_a_of_type_JavaUtilList.size()) + ")");
           return null;
@@ -182,17 +182,17 @@ public class ThumbDownLoader
       finally {}
       i += 1;
     }
-    Object localObject2 = new gax(this);
-    ((gax)localObject2).jdField_b_of_type_JavaLangString = str;
-    ((gax)localObject2).jdField_c_of_type_JavaLangString = (str + ".tmp");
-    ((gax)localObject2).jdField_a_of_type_Long = paramFileManagerEntity.nSessionId;
-    ((gax)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
-    ((gax)localObject2).jdField_a_of_type_Int = paramInt;
+    Object localObject2 = new fwl(this);
+    ((fwl)localObject2).jdField_b_of_type_JavaLangString = str;
+    ((fwl)localObject2).jdField_c_of_type_JavaLangString = (str + ".tmp");
+    ((fwl)localObject2).jdField_a_of_type_Long = paramFileManagerEntity.nSessionId;
+    ((fwl)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
+    ((fwl)localObject2).jdField_a_of_type_Int = paramInt;
     long l = jdField_a_of_type_Long;
     jdField_a_of_type_Long = 1L + l;
-    ((gax)localObject2).jdField_d_of_type_Long = l;
+    ((fwl)localObject2).jdField_d_of_type_Long = l;
     this.jdField_a_of_type_JavaUtilList.add(localObject2);
-    QLog.i("ThumbDownLoader<FileAssistant>", 2, "add download discFile Thumb task," + ((gax)localObject2).toString());
+    QLog.i("ThumbDownLoader<FileAssistant>", 2, "add download discFile Thumb task," + ((fwl)localObject2).toString());
     b();
     return null;
   }
@@ -217,7 +217,7 @@ public class ThumbDownLoader
     //   22: lload 4
     //   24: invokestatic 250	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   27: invokevirtual 372	java/util/LinkedHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   30: checkcast 93	gax
+    //   30: checkcast 93	fwl
     //   33: astore 9
     //   35: aload 10
     //   37: monitorexit
@@ -226,17 +226,17 @@ public class ThumbDownLoader
     //   42: aload_0
     //   43: getfield 69	com/tencent/mobileqq/filemanager/core/ThumbDownLoader:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   46: aload 9
-    //   48: getfield 99	gax:jdField_a_of_type_Long	J
+    //   48: getfield 99	fwl:jdField_a_of_type_Long	J
     //   51: ldc 212
     //   53: aload 9
-    //   55: getfield 214	gax:jdField_e_of_type_Long	J
+    //   55: getfield 214	fwl:jdField_e_of_type_Long	J
     //   58: aload 9
-    //   60: getfield 129	gax:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   60: getfield 129	fwl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   63: aload 9
-    //   65: getfield 217	gax:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
+    //   65: getfield 217	fwl:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
     //   68: getfield 222	com/tencent/mobileqq/filemanager/data/FileManagerEntity:peerUin	Ljava/lang/String;
     //   71: aload 9
-    //   73: getfield 217	gax:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
+    //   73: getfield 217	fwl:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
     //   76: getfield 225	com/tencent/mobileqq/filemanager/data/FileManagerEntity:Uuid	Ljava/lang/String;
     //   79: ldc2_w 401
     //   82: ldc_w 404
@@ -244,7 +244,7 @@ public class ThumbDownLoader
     //   86: lconst_0
     //   87: lconst_0
     //   88: aload 9
-    //   90: getfield 129	gax:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   90: getfield 129	fwl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   93: ldc 231
     //   95: iconst_0
     //   96: ldc_w 404
@@ -253,30 +253,30 @@ public class ThumbDownLoader
     //   104: aload_0
     //   105: getfield 69	com/tencent/mobileqq/filemanager/core/ThumbDownLoader:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   108: aload 9
-    //   110: getfield 99	gax:jdField_a_of_type_Long	J
+    //   110: getfield 99	fwl:jdField_a_of_type_Long	J
     //   113: ldc 238
     //   115: aload 9
-    //   117: getfield 214	gax:jdField_e_of_type_Long	J
+    //   117: getfield 214	fwl:jdField_e_of_type_Long	J
     //   120: aload 9
-    //   122: getfield 129	gax:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   122: getfield 129	fwl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   125: aload 9
-    //   127: getfield 217	gax:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
+    //   127: getfield 217	fwl:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
     //   130: getfield 222	com/tencent/mobileqq/filemanager/data/FileManagerEntity:peerUin	Ljava/lang/String;
     //   133: aload 9
-    //   135: getfield 217	gax:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
+    //   135: getfield 217	fwl:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
     //   138: getfield 225	com/tencent/mobileqq/filemanager/data/FileManagerEntity:Uuid	Ljava/lang/String;
     //   141: ldc2_w 401
     //   144: ldc_w 404
     //   147: aload 9
-    //   149: getfield 405	gax:jdField_e_of_type_Int	I
+    //   149: getfield 405	fwl:jdField_e_of_type_Int	I
     //   152: i2l
     //   153: aload 9
-    //   155: getfield 407	gax:jdField_c_of_type_Long	J
+    //   155: getfield 407	fwl:jdField_c_of_type_Long	J
     //   158: aload 9
-    //   160: getfield 386	gax:jdField_a_of_type_Int	I
+    //   160: getfield 386	fwl:jdField_a_of_type_Int	I
     //   163: i2l
     //   164: aload 9
-    //   166: getfield 129	gax:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   166: getfield 129	fwl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   169: ldc 231
     //   171: iconst_0
     //   172: ldc_w 404
@@ -292,7 +292,7 @@ public class ThumbDownLoader
     //   194: dup
     //   195: iconst_0
     //   196: aload 9
-    //   198: getfield 217	gax:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
+    //   198: getfield 217	fwl:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
     //   201: aastore
     //   202: invokevirtual 300	com/tencent/mobileqq/filemanager/core/FileManagerNotifyCenter:a	(ZILjava/lang/Object;)V
     //   205: aload_0
@@ -303,7 +303,7 @@ public class ThumbDownLoader
     //   212: aload_0
     //   213: getfield 54	com/tencent/mobileqq/filemanager/core/ThumbDownLoader:jdField_a_of_type_JavaUtilLinkedHashMap	Ljava/util/LinkedHashMap;
     //   216: aload 9
-    //   218: getfield 245	gax:jdField_d_of_type_Long	J
+    //   218: getfield 245	fwl:jdField_d_of_type_Long	J
     //   221: invokestatic 250	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   224: invokevirtual 254	java/util/LinkedHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   227: pop
@@ -311,7 +311,7 @@ public class ThumbDownLoader
     //   229: monitorexit
     //   230: aload_0
     //   231: aconst_null
-    //   232: invokevirtual 257	com/tencent/mobileqq/filemanager/core/ThumbDownLoader:a	(Lgax;)V
+    //   232: invokevirtual 257	com/tencent/mobileqq/filemanager/core/ThumbDownLoader:a	(Lfwl;)V
     //   235: return
     //   236: astore_1
     //   237: aload 10
@@ -325,10 +325,10 @@ public class ThumbDownLoader
     //   246: athrow
     //   247: aload_1
     //   248: aload 9
-    //   250: getfield 205	gax:jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg	Lcom/tencent/mobileqq/utils/httputils/HttpMsg;
+    //   250: getfield 205	fwl:jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg	Lcom/tencent/mobileqq/utils/httputils/HttpMsg;
     //   253: if_acmpne -18 -> 235
     //   256: aload 9
-    //   258: getfield 410	gax:jdField_a_of_type_ArrayOfInt	[I
+    //   258: getfield 410	fwl:jdField_a_of_type_ArrayOfInt	[I
     //   261: astore_1
     //   262: aload_1
     //   263: monitorenter
@@ -343,12 +343,12 @@ public class ThumbDownLoader
     //   280: sipush 200
     //   283: if_icmpne +782 -> 1065
     //   286: aload 9
-    //   288: getfield 96	gax:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
+    //   288: getfield 96	fwl:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
     //   291: aload_2
     //   292: invokevirtual 415	com/tencent/mobileqq/utils/httputils/HttpMsg:a	()[B
     //   295: invokevirtual 419	java/io/FileOutputStream:write	([B)V
     //   298: aload 9
-    //   300: getfield 421	gax:jdField_b_of_type_Long	J
+    //   300: getfield 421	fwl:jdField_b_of_type_Long	J
     //   303: lconst_0
     //   304: lcmp
     //   305: ifne +68 -> 373
@@ -363,7 +363,7 @@ public class ThumbDownLoader
     //   324: ldc_w 426
     //   327: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   330: aload 9
-    //   332: getfield 99	gax:jdField_a_of_type_Long	J
+    //   332: getfield 99	fwl:jdField_a_of_type_Long	J
     //   335: invokestatic 105	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   338: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   341: ldc_w 428
@@ -377,122 +377,122 @@ public class ThumbDownLoader
     //   363: invokestatic 121	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   366: aload 9
     //   368: lload 6
-    //   370: putfield 421	gax:jdField_b_of_type_Long	J
+    //   370: putfield 421	fwl:jdField_b_of_type_Long	J
     //   373: aload 9
     //   375: aload_2
     //   376: invokevirtual 415	com/tencent/mobileqq/utils/httputils/HttpMsg:a	()[B
     //   379: arraylength
-    //   380: putfield 405	gax:jdField_e_of_type_Int	I
+    //   380: putfield 405	fwl:jdField_e_of_type_Int	I
     //   383: aload 9
     //   385: aload 9
-    //   387: getfield 407	gax:jdField_c_of_type_Long	J
+    //   387: getfield 407	fwl:jdField_c_of_type_Long	J
     //   390: aload 9
-    //   392: getfield 405	gax:jdField_e_of_type_Int	I
+    //   392: getfield 405	fwl:jdField_e_of_type_Int	I
     //   395: i2l
     //   396: ladd
-    //   397: putfield 407	gax:jdField_c_of_type_Long	J
+    //   397: putfield 407	fwl:jdField_c_of_type_Long	J
     //   400: aload 9
-    //   402: getfield 407	gax:jdField_c_of_type_Long	J
+    //   402: getfield 407	fwl:jdField_c_of_type_Long	J
     //   405: aload 9
-    //   407: getfield 421	gax:jdField_b_of_type_Long	J
+    //   407: getfield 421	fwl:jdField_b_of_type_Long	J
     //   410: lcmp
     //   411: iflt +654 -> 1065
     //   414: aload 9
     //   416: aconst_null
-    //   417: putfield 205	gax:jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg	Lcom/tencent/mobileqq/utils/httputils/HttpMsg;
+    //   417: putfield 205	fwl:jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg	Lcom/tencent/mobileqq/utils/httputils/HttpMsg;
     //   420: aload 9
-    //   422: getfield 96	gax:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
+    //   422: getfield 96	fwl:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
     //   425: ifnull +30 -> 455
     //   428: aload 9
-    //   430: getfield 96	gax:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
+    //   430: getfield 96	fwl:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
     //   433: invokevirtual 431	java/io/FileOutputStream:flush	()V
     //   436: aload 9
-    //   438: getfield 96	gax:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
+    //   438: getfield 96	fwl:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
     //   441: invokevirtual 435	java/io/FileOutputStream:getFD	()Ljava/io/FileDescriptor;
     //   444: invokevirtual 440	java/io/FileDescriptor:sync	()V
     //   447: aload 9
-    //   449: getfield 96	gax:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
+    //   449: getfield 96	fwl:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
     //   452: invokevirtual 443	java/io/FileOutputStream:close	()V
     //   455: aload 9
     //   457: aconst_null
-    //   458: putfield 96	gax:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
+    //   458: putfield 96	fwl:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
     //   461: new 72	java/io/File
     //   464: dup
     //   465: aload 9
-    //   467: getfield 110	gax:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   467: getfield 110	fwl:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   470: invokespecial 78	java/io/File:<init>	(Ljava/lang/String;)V
     //   473: new 72	java/io/File
     //   476: dup
     //   477: aload 9
-    //   479: getfield 382	gax:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   479: getfield 382	fwl:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   482: invokespecial 78	java/io/File:<init>	(Ljava/lang/String;)V
     //   485: invokestatic 446	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/io/File;Ljava/io/File;)Z
     //   488: ifne +469 -> 957
     //   491: aload_0
     //   492: getfield 69	com/tencent/mobileqq/filemanager/core/ThumbDownLoader:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   495: aload 9
-    //   497: getfield 99	gax:jdField_a_of_type_Long	J
+    //   497: getfield 99	fwl:jdField_a_of_type_Long	J
     //   500: ldc 212
     //   502: aload 9
-    //   504: getfield 214	gax:jdField_e_of_type_Long	J
+    //   504: getfield 214	fwl:jdField_e_of_type_Long	J
     //   507: aload 9
-    //   509: getfield 129	gax:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   509: getfield 129	fwl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   512: aload 9
-    //   514: getfield 217	gax:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
+    //   514: getfield 217	fwl:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
     //   517: getfield 222	com/tencent/mobileqq/filemanager/data/FileManagerEntity:peerUin	Ljava/lang/String;
     //   520: aload 9
-    //   522: getfield 217	gax:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
+    //   522: getfield 217	fwl:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
     //   525: getfield 225	com/tencent/mobileqq/filemanager/data/FileManagerEntity:Uuid	Ljava/lang/String;
     //   528: ldc2_w 226
     //   531: ldc_w 448
     //   534: aload 9
-    //   536: getfield 405	gax:jdField_e_of_type_Int	I
+    //   536: getfield 405	fwl:jdField_e_of_type_Int	I
     //   539: i2l
     //   540: aload 9
-    //   542: getfield 407	gax:jdField_c_of_type_Long	J
+    //   542: getfield 407	fwl:jdField_c_of_type_Long	J
     //   545: aload 9
-    //   547: getfield 386	gax:jdField_a_of_type_Int	I
+    //   547: getfield 386	fwl:jdField_a_of_type_Int	I
     //   550: i2l
     //   551: aload 9
-    //   553: getfield 129	gax:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   553: getfield 129	fwl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   556: aload_2
     //   557: getfield 451	com/tencent/mobileqq/utils/httputils/HttpMsg:ag	Ljava/lang/String;
     //   560: aload 9
-    //   562: getfield 452	gax:jdField_b_of_type_Int	I
+    //   562: getfield 452	fwl:jdField_b_of_type_Int	I
     //   565: ldc_w 448
     //   568: ldc 231
     //   570: invokestatic 236	com/tencent/mobileqq/filemanager/util/FileManagerUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;JLjava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;JJJLjava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
     //   573: aload_0
     //   574: getfield 69	com/tencent/mobileqq/filemanager/core/ThumbDownLoader:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   577: aload 9
-    //   579: getfield 99	gax:jdField_a_of_type_Long	J
+    //   579: getfield 99	fwl:jdField_a_of_type_Long	J
     //   582: ldc 238
     //   584: aload 9
-    //   586: getfield 214	gax:jdField_e_of_type_Long	J
+    //   586: getfield 214	fwl:jdField_e_of_type_Long	J
     //   589: aload 9
-    //   591: getfield 129	gax:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   591: getfield 129	fwl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   594: aload 9
-    //   596: getfield 217	gax:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
+    //   596: getfield 217	fwl:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
     //   599: getfield 222	com/tencent/mobileqq/filemanager/data/FileManagerEntity:peerUin	Ljava/lang/String;
     //   602: aload 9
-    //   604: getfield 217	gax:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
+    //   604: getfield 217	fwl:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
     //   607: getfield 225	com/tencent/mobileqq/filemanager/data/FileManagerEntity:Uuid	Ljava/lang/String;
     //   610: ldc2_w 226
     //   613: ldc_w 448
     //   616: aload 9
-    //   618: getfield 405	gax:jdField_e_of_type_Int	I
+    //   618: getfield 405	fwl:jdField_e_of_type_Int	I
     //   621: i2l
     //   622: aload 9
-    //   624: getfield 407	gax:jdField_c_of_type_Long	J
+    //   624: getfield 407	fwl:jdField_c_of_type_Long	J
     //   627: aload 9
-    //   629: getfield 386	gax:jdField_a_of_type_Int	I
+    //   629: getfield 386	fwl:jdField_a_of_type_Int	I
     //   632: i2l
     //   633: aload 9
-    //   635: getfield 129	gax:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   635: getfield 129	fwl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   638: aload_2
     //   639: getfield 451	com/tencent/mobileqq/utils/httputils/HttpMsg:ag	Ljava/lang/String;
     //   642: aload 9
-    //   644: getfield 453	gax:jdField_d_of_type_Int	I
+    //   644: getfield 453	fwl:jdField_d_of_type_Int	I
     //   647: ldc_w 448
     //   650: ldc 231
     //   652: invokestatic 236	com/tencent/mobileqq/filemanager/util/FileManagerUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;JLjava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;JJJLjava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
@@ -508,7 +508,7 @@ public class ThumbDownLoader
     //   673: dup
     //   674: iconst_0
     //   675: aload 9
-    //   677: getfield 217	gax:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
+    //   677: getfield 217	fwl:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
     //   680: aastore
     //   681: invokevirtual 300	com/tencent/mobileqq/filemanager/core/FileManagerNotifyCenter:a	(ZILjava/lang/Object;)V
     //   684: aload_0
@@ -519,7 +519,7 @@ public class ThumbDownLoader
     //   691: aload_0
     //   692: getfield 54	com/tencent/mobileqq/filemanager/core/ThumbDownLoader:jdField_a_of_type_JavaUtilLinkedHashMap	Ljava/util/LinkedHashMap;
     //   695: aload 9
-    //   697: getfield 245	gax:jdField_d_of_type_Long	J
+    //   697: getfield 245	fwl:jdField_d_of_type_Long	J
     //   700: invokestatic 250	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   703: invokevirtual 254	java/util/LinkedHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   706: pop
@@ -533,70 +533,70 @@ public class ThumbDownLoader
     //   714: ifeq -479 -> 235
     //   717: aload_0
     //   718: aconst_null
-    //   719: invokevirtual 257	com/tencent/mobileqq/filemanager/core/ThumbDownLoader:a	(Lgax;)V
+    //   719: invokevirtual 257	com/tencent/mobileqq/filemanager/core/ThumbDownLoader:a	(Lfwl;)V
     //   722: return
     //   723: astore 10
     //   725: aload_0
     //   726: getfield 69	com/tencent/mobileqq/filemanager/core/ThumbDownLoader:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   729: aload 9
-    //   731: getfield 99	gax:jdField_a_of_type_Long	J
+    //   731: getfield 99	fwl:jdField_a_of_type_Long	J
     //   734: ldc 212
     //   736: aload 9
-    //   738: getfield 214	gax:jdField_e_of_type_Long	J
+    //   738: getfield 214	fwl:jdField_e_of_type_Long	J
     //   741: aload 9
-    //   743: getfield 129	gax:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   743: getfield 129	fwl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   746: aload 9
-    //   748: getfield 217	gax:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
+    //   748: getfield 217	fwl:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
     //   751: getfield 222	com/tencent/mobileqq/filemanager/data/FileManagerEntity:peerUin	Ljava/lang/String;
     //   754: aload 9
-    //   756: getfield 217	gax:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
+    //   756: getfield 217	fwl:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
     //   759: getfield 225	com/tencent/mobileqq/filemanager/data/FileManagerEntity:Uuid	Ljava/lang/String;
     //   762: ldc2_w 226
     //   765: ldc_w 455
     //   768: lconst_0
     //   769: aload 9
-    //   771: getfield 407	gax:jdField_c_of_type_Long	J
+    //   771: getfield 407	fwl:jdField_c_of_type_Long	J
     //   774: aload 9
-    //   776: getfield 386	gax:jdField_a_of_type_Int	I
+    //   776: getfield 386	fwl:jdField_a_of_type_Int	I
     //   779: i2l
     //   780: aload 9
-    //   782: getfield 129	gax:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   782: getfield 129	fwl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   785: aload_2
     //   786: getfield 451	com/tencent/mobileqq/utils/httputils/HttpMsg:ag	Ljava/lang/String;
     //   789: aload 9
-    //   791: getfield 452	gax:jdField_b_of_type_Int	I
+    //   791: getfield 452	fwl:jdField_b_of_type_Int	I
     //   794: ldc_w 455
     //   797: ldc 231
     //   799: invokestatic 236	com/tencent/mobileqq/filemanager/util/FileManagerUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;JLjava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;JJJLjava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
     //   802: aload_0
     //   803: getfield 69	com/tencent/mobileqq/filemanager/core/ThumbDownLoader:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   806: aload 9
-    //   808: getfield 99	gax:jdField_a_of_type_Long	J
+    //   808: getfield 99	fwl:jdField_a_of_type_Long	J
     //   811: ldc 238
     //   813: aload 9
-    //   815: getfield 214	gax:jdField_e_of_type_Long	J
+    //   815: getfield 214	fwl:jdField_e_of_type_Long	J
     //   818: aload 9
-    //   820: getfield 129	gax:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   820: getfield 129	fwl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   823: aload 9
-    //   825: getfield 217	gax:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
+    //   825: getfield 217	fwl:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
     //   828: getfield 222	com/tencent/mobileqq/filemanager/data/FileManagerEntity:peerUin	Ljava/lang/String;
     //   831: aload 9
-    //   833: getfield 217	gax:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
+    //   833: getfield 217	fwl:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
     //   836: getfield 225	com/tencent/mobileqq/filemanager/data/FileManagerEntity:Uuid	Ljava/lang/String;
     //   839: ldc2_w 226
     //   842: ldc_w 455
     //   845: lconst_0
     //   846: aload 9
-    //   848: getfield 407	gax:jdField_c_of_type_Long	J
+    //   848: getfield 407	fwl:jdField_c_of_type_Long	J
     //   851: aload 9
-    //   853: getfield 386	gax:jdField_a_of_type_Int	I
+    //   853: getfield 386	fwl:jdField_a_of_type_Int	I
     //   856: i2l
     //   857: aload 9
-    //   859: getfield 129	gax:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   859: getfield 129	fwl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   862: aload_2
     //   863: getfield 451	com/tencent/mobileqq/utils/httputils/HttpMsg:ag	Ljava/lang/String;
     //   866: aload 9
-    //   868: getfield 453	gax:jdField_d_of_type_Int	I
+    //   868: getfield 453	fwl:jdField_d_of_type_Int	I
     //   871: ldc_w 455
     //   874: ldc 231
     //   876: invokestatic 236	com/tencent/mobileqq/filemanager/util/FileManagerUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;JLjava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;JJJLjava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
@@ -640,42 +640,42 @@ public class ThumbDownLoader
     //   957: aload_0
     //   958: getfield 69	com/tencent/mobileqq/filemanager/core/ThumbDownLoader:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   961: aload 9
-    //   963: getfield 99	gax:jdField_a_of_type_Long	J
+    //   963: getfield 99	fwl:jdField_a_of_type_Long	J
     //   966: ldc 212
     //   968: invokestatic 469	java/lang/System:currentTimeMillis	()J
     //   971: aload 9
-    //   973: getfield 214	gax:jdField_e_of_type_Long	J
+    //   973: getfield 214	fwl:jdField_e_of_type_Long	J
     //   976: lsub
     //   977: aload 9
-    //   979: getfield 129	gax:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   979: getfield 129	fwl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   982: aload 9
-    //   984: getfield 217	gax:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
+    //   984: getfield 217	fwl:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
     //   987: getfield 222	com/tencent/mobileqq/filemanager/data/FileManagerEntity:peerUin	Ljava/lang/String;
     //   990: aload 9
-    //   992: getfield 217	gax:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
+    //   992: getfield 217	fwl:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
     //   995: getfield 225	com/tencent/mobileqq/filemanager/data/FileManagerEntity:Uuid	Ljava/lang/String;
     //   998: aload 9
-    //   1000: getfield 405	gax:jdField_e_of_type_Int	I
+    //   1000: getfield 405	fwl:jdField_e_of_type_Int	I
     //   1003: i2l
     //   1004: aload 9
-    //   1006: getfield 407	gax:jdField_c_of_type_Long	J
+    //   1006: getfield 407	fwl:jdField_c_of_type_Long	J
     //   1009: aload 9
-    //   1011: getfield 386	gax:jdField_a_of_type_Int	I
+    //   1011: getfield 386	fwl:jdField_a_of_type_Int	I
     //   1014: i2l
     //   1015: aload 9
-    //   1017: getfield 452	gax:jdField_b_of_type_Int	I
+    //   1017: getfield 452	fwl:jdField_b_of_type_Int	I
     //   1020: aconst_null
     //   1021: invokestatic 347	com/tencent/mobileqq/filemanager/util/FileManagerUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;JLjava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;JJJILjava/lang/String;)V
     //   1024: aload 9
-    //   1026: getfield 217	gax:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
+    //   1026: getfield 217	fwl:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
     //   1029: aload 9
-    //   1031: getfield 382	gax:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   1031: getfield 382	fwl:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   1034: putfield 332	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strThumbPath	Ljava/lang/String;
     //   1037: aload_0
     //   1038: getfield 69	com/tencent/mobileqq/filemanager/core/ThumbDownLoader:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1041: invokevirtual 335	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/filemanager/core/FileManagerDataCenter;
     //   1044: aload 9
-    //   1046: getfield 217	gax:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
+    //   1046: getfield 217	fwl:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
     //   1049: invokevirtual 340	com/tencent/mobileqq/filemanager/core/FileManagerDataCenter:c	(Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;)V
     //   1052: iconst_1
     //   1053: istore 8
@@ -696,7 +696,7 @@ public class ThumbDownLoader
     //   7	910	4	l1	long
     //   312	57	6	l2	long
     //   656	398	8	bool	boolean
-    //   33	1012	9	localgax	gax
+    //   33	1012	9	localfwl	fwl
     //   1058	5	9	localObject	Object
     //   13	225	10	localLinkedHashMap	LinkedHashMap
     //   723	157	10	localException	java.lang.Exception
@@ -726,11 +726,11 @@ public class ThumbDownLoader
     //   1060	1062	1058	finally
   }
   
-  public void a(gax arg1)
+  public void a(fwl arg1)
   {
     QLog.i("ThumbDownLoader<FileAssistant>", 2, "bengin download discFile thumb,cacheDowload.size(" + String.valueOf(this.jdField_a_of_type_JavaUtilList.size()) + ")");
     ??? = ???;
-    gax localgax;
+    fwl localfwl;
     if (??? == null)
     {
       synchronized (this.jdField_a_of_type_JavaUtilList)
@@ -748,15 +748,15 @@ public class ThumbDownLoader
           }
         }
       }
-      localgax = (gax)this.jdField_a_of_type_JavaUtilList.get(0);
-      this.jdField_a_of_type_JavaUtilList.remove(localgax);
-      QLog.i("ThumbDownLoader<FileAssistant>", 2, "get download discFile thumb info," + localgax.toString());
+      localfwl = (fwl)this.jdField_a_of_type_JavaUtilList.get(0);
+      this.jdField_a_of_type_JavaUtilList.remove(localfwl);
+      QLog.i("ThumbDownLoader<FileAssistant>", 2, "get download discFile thumb info," + localfwl.toString());
     }
     synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
     {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Long.valueOf(localgax.jdField_d_of_type_Long), localgax);
-      localgax.jdField_e_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localgax.jdField_d_of_type_Long, localgax.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, Long.parseLong(localgax.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), localgax.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver);
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Long.valueOf(localfwl.jdField_d_of_type_Long), localfwl);
+      localfwl.jdField_e_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localfwl.jdField_d_of_type_Long, localfwl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, Long.parseLong(localfwl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), localfwl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver);
       return;
     }
   }
@@ -784,7 +784,7 @@ public class ThumbDownLoader
       {
         synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
         {
-          localObject1 = (gax)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Long.valueOf(l1));
+          localObject1 = (fwl)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Long.valueOf(l1));
           if (localObject1 == null)
           {
             QLog.w("ThumbDownLoader<FileAssistant>", 1, "get mapDowload task fail, may be is success taskid[" + String.valueOf(l1) + "]");
@@ -792,7 +792,7 @@ public class ThumbDownLoader
             return;
           }
         }
-        QLog.i("ThumbDownLoader<FileAssistant>", 1, "handleError....., info:" + ((gax)localObject1).toString());
+        QLog.i("ThumbDownLoader<FileAssistant>", 1, "handleError....., info:" + ((fwl)localObject1).toString());
         long l2;
         String str1;
         String str2;
@@ -803,39 +803,39 @@ public class ThumbDownLoader
         if (!NetworkUtil.e(BaseApplication.getContext()))
         {
           localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          l1 = ((gax)localObject1).jdField_a_of_type_Long;
-          l2 = ((gax)localObject1).jdField_e_of_type_Long;
-          ??? = ((gax)localObject1).jdField_a_of_type_JavaLangString;
-          str1 = ((gax)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-          str2 = ((gax)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-          l3 = ((gax)localObject1).jdField_e_of_type_Int;
-          l4 = ((gax)localObject1).jdField_c_of_type_Long;
-          l5 = ((gax)localObject1).jdField_a_of_type_Int;
-          str3 = ((gax)localObject1).jdField_a_of_type_JavaLangString;
+          l1 = ((fwl)localObject1).jdField_a_of_type_Long;
+          l2 = ((fwl)localObject1).jdField_e_of_type_Long;
+          ??? = ((fwl)localObject1).jdField_a_of_type_JavaLangString;
+          str1 = ((fwl)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
+          str2 = ((fwl)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
+          l3 = ((fwl)localObject1).jdField_e_of_type_Int;
+          l4 = ((fwl)localObject1).jdField_c_of_type_Long;
+          l5 = ((fwl)localObject1).jdField_a_of_type_Int;
+          str3 = ((fwl)localObject1).jdField_a_of_type_JavaLangString;
           if (paramHttpMsg2 != null) {
             ??? = paramHttpMsg2.ag;
           }
           for (;;)
           {
-            FileManagerUtil.a((QQAppInterface)localObject2, l1, "actFileDiscThumb", l2, (String)???, str1, str2, 9004L, "no network", l3, l4, l5, str3, ???, ((gax)localObject1).jdField_b_of_type_Int, "no network", "");
+            FileManagerUtil.a((QQAppInterface)localObject2, l1, "actFileDiscThumb", l2, (String)???, str1, str2, 9004L, "no network", l3, l4, l5, str3, ???, ((fwl)localObject1).jdField_b_of_type_Int, "no network", "");
             localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-            l1 = ((gax)localObject1).jdField_a_of_type_Long;
-            l2 = ((gax)localObject1).jdField_e_of_type_Long;
-            ??? = ((gax)localObject1).jdField_a_of_type_JavaLangString;
-            str1 = ((gax)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-            str2 = ((gax)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-            l3 = ((gax)localObject1).jdField_e_of_type_Int;
-            l4 = ((gax)localObject1).jdField_c_of_type_Long;
-            l5 = ((gax)localObject1).jdField_a_of_type_Int;
-            str3 = ((gax)localObject1).jdField_a_of_type_JavaLangString;
+            l1 = ((fwl)localObject1).jdField_a_of_type_Long;
+            l2 = ((fwl)localObject1).jdField_e_of_type_Long;
+            ??? = ((fwl)localObject1).jdField_a_of_type_JavaLangString;
+            str1 = ((fwl)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
+            str2 = ((fwl)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
+            l3 = ((fwl)localObject1).jdField_e_of_type_Int;
+            l4 = ((fwl)localObject1).jdField_c_of_type_Long;
+            l5 = ((fwl)localObject1).jdField_a_of_type_Int;
+            str3 = ((fwl)localObject1).jdField_a_of_type_JavaLangString;
             if (paramHttpMsg2 != null)
             {
               ??? = paramHttpMsg2.ag;
-              FileManagerUtil.a((QQAppInterface)localObject2, l1, "actFileDiscThumbDetail", l2, (String)???, str1, str2, 9004L, "no network", l3, l4, l5, str3, ???, ((gax)localObject1).jdField_d_of_type_Int, "no network", "");
+              FileManagerUtil.a((QQAppInterface)localObject2, l1, "actFileDiscThumbDetail", l2, (String)???, str1, str2, 9004L, "no network", l3, l4, l5, str3, ???, ((fwl)localObject1).jdField_d_of_type_Int, "no network", "");
             }
             synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
             {
-              this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(Long.valueOf(((gax)localObject1).jdField_d_of_type_Long));
+              this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(Long.valueOf(((fwl)localObject1).jdField_d_of_type_Long));
               a(null);
               return;
               ??? = "respose null";
@@ -850,82 +850,82 @@ public class ThumbDownLoader
         String str4;
         if (??? == null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 50, new Object[] { ((gax)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity });
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 50, new Object[] { ((fwl)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity });
           ??? = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          l1 = ((gax)localObject1).jdField_a_of_type_Long;
-          l2 = ((gax)localObject1).jdField_e_of_type_Long;
-          str1 = ((gax)localObject1).jdField_a_of_type_JavaLangString;
-          str2 = ((gax)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-          str3 = ((gax)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
+          l1 = ((fwl)localObject1).jdField_a_of_type_Long;
+          l2 = ((fwl)localObject1).jdField_e_of_type_Long;
+          str1 = ((fwl)localObject1).jdField_a_of_type_JavaLangString;
+          str2 = ((fwl)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
+          str3 = ((fwl)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
           l3 = i;
-          l4 = ((gax)localObject1).jdField_e_of_type_Int;
-          l5 = ((gax)localObject1).jdField_c_of_type_Long;
-          l6 = ((gax)localObject1).jdField_a_of_type_Int;
-          str4 = ((gax)localObject1).jdField_a_of_type_JavaLangString;
+          l4 = ((fwl)localObject1).jdField_e_of_type_Int;
+          l5 = ((fwl)localObject1).jdField_c_of_type_Long;
+          l6 = ((fwl)localObject1).jdField_a_of_type_Int;
+          str4 = ((fwl)localObject1).jdField_a_of_type_JavaLangString;
           if (paramHttpMsg2 == null) {
             break label1046;
           }
           ??? = paramHttpMsg2.ag;
           label590:
-          FileManagerUtil.a((QQAppInterface)???, l1, "actFileDiscThumb", l2, str1, str2, str3, l3, (String)localObject2, l4, l5, l6, str4, ???, ((gax)localObject1).jdField_b_of_type_Int, (String)localObject2, "");
+          FileManagerUtil.a((QQAppInterface)???, l1, "actFileDiscThumb", l2, str1, str2, str3, l3, (String)localObject2, l4, l5, l6, str4, ???, ((fwl)localObject1).jdField_b_of_type_Int, (String)localObject2, "");
           ??? = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          l1 = ((gax)localObject1).jdField_a_of_type_Long;
-          l2 = ((gax)localObject1).jdField_e_of_type_Long;
-          str1 = ((gax)localObject1).jdField_a_of_type_JavaLangString;
-          str2 = ((gax)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-          str3 = ((gax)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
+          l1 = ((fwl)localObject1).jdField_a_of_type_Long;
+          l2 = ((fwl)localObject1).jdField_e_of_type_Long;
+          str1 = ((fwl)localObject1).jdField_a_of_type_JavaLangString;
+          str2 = ((fwl)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
+          str3 = ((fwl)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
           l3 = i;
-          l4 = ((gax)localObject1).jdField_e_of_type_Int;
-          l5 = ((gax)localObject1).jdField_c_of_type_Long;
-          l6 = ((gax)localObject1).jdField_a_of_type_Int;
-          str4 = ((gax)localObject1).jdField_a_of_type_JavaLangString;
+          l4 = ((fwl)localObject1).jdField_e_of_type_Int;
+          l5 = ((fwl)localObject1).jdField_c_of_type_Long;
+          l6 = ((fwl)localObject1).jdField_a_of_type_Int;
+          str4 = ((fwl)localObject1).jdField_a_of_type_JavaLangString;
           if (paramHttpMsg2 == null) {
             break label1053;
           }
           ??? = paramHttpMsg2.ag;
-          FileManagerUtil.a((QQAppInterface)???, l1, "actFileDiscThumbDetail", l2, str1, str2, str3, l3, (String)localObject2, l4, l5, l6, str4, ???, ((gax)localObject1).jdField_d_of_type_Int, (String)localObject2, "");
+          FileManagerUtil.a((QQAppInterface)???, l1, "actFileDiscThumbDetail", l2, str1, str2, str3, l3, (String)localObject2, l4, l5, l6, str4, ???, ((fwl)localObject1).jdField_d_of_type_Int, (String)localObject2, "");
         }
         synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
         {
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(Long.valueOf(((gax)localObject1).jdField_d_of_type_Long));
+          this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(Long.valueOf(((fwl)localObject1).jdField_d_of_type_Long));
           a(null);
           return;
           if (!paramHttpMsg2.d()) {
             break label475;
           }
-          if (((gax)localObject1).jdField_b_of_type_Int < 5)
+          if (((fwl)localObject1).jdField_b_of_type_Int < 5)
           {
-            ((gax)localObject1).jdField_b_of_type_Int += 1;
-            if ((paramHttpMsg2.h == 9056) && (((gax)localObject1).jdField_c_of_type_Int < 3))
+            ((fwl)localObject1).jdField_b_of_type_Int += 1;
+            if ((paramHttpMsg2.h == 9056) && (((fwl)localObject1).jdField_c_of_type_Int < 3))
             {
-              ((gax)localObject1).jdField_b_of_type_Int -= 1;
-              ((gax)localObject1).jdField_c_of_type_Int += 1;
+              ((fwl)localObject1).jdField_b_of_type_Int -= 1;
+              ((fwl)localObject1).jdField_c_of_type_Int += 1;
               i = 9056;
             }
             for (;;)
             {
               ??? = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-              l1 = ((gax)localObject1).jdField_a_of_type_Long;
-              l2 = ((gax)localObject1).jdField_e_of_type_Long;
-              str1 = ((gax)localObject1).jdField_a_of_type_JavaLangString;
-              str2 = ((gax)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-              str3 = ((gax)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
+              l1 = ((fwl)localObject1).jdField_a_of_type_Long;
+              l2 = ((fwl)localObject1).jdField_e_of_type_Long;
+              str1 = ((fwl)localObject1).jdField_a_of_type_JavaLangString;
+              str2 = ((fwl)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
+              str3 = ((fwl)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
               l3 = i;
-              l4 = ((gax)localObject1).jdField_e_of_type_Int;
-              l5 = ((gax)localObject1).jdField_c_of_type_Long;
-              l6 = ((gax)localObject1).jdField_a_of_type_Int;
-              str4 = ((gax)localObject1).jdField_a_of_type_JavaLangString;
+              l4 = ((fwl)localObject1).jdField_e_of_type_Int;
+              l5 = ((fwl)localObject1).jdField_c_of_type_Long;
+              l6 = ((fwl)localObject1).jdField_a_of_type_Int;
+              str4 = ((fwl)localObject1).jdField_a_of_type_JavaLangString;
               if (paramHttpMsg2 != null)
               {
                 ??? = paramHttpMsg2.ag;
-                FileManagerUtil.a((QQAppInterface)???, l1, "actFileDiscThumbDetail", l2, str1, str2, str3, l3, (String)localObject2, l4, l5, l6, str4, ???, ((gax)localObject1).jdField_d_of_type_Int, (String)localObject2, "");
+                FileManagerUtil.a((QQAppInterface)???, l1, "actFileDiscThumbDetail", l2, str1, str2, str3, l3, (String)localObject2, l4, l5, l6, str4, ???, ((fwl)localObject1).jdField_d_of_type_Int, (String)localObject2, "");
               }
               synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
               {
-                this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(Long.valueOf(((gax)localObject1).jdField_d_of_type_Long));
-                a((gax)localObject1);
+                this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(Long.valueOf(((fwl)localObject1).jdField_d_of_type_Long));
+                a((fwl)localObject1);
                 return;
-                ((gax)localObject1).jdField_c_of_type_Int = 0;
+                ((fwl)localObject1).jdField_c_of_type_Int = 0;
                 continue;
                 ??? = "respose null";
               }

@@ -2,15 +2,19 @@ package com.tencent.token.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.token.do;
 
-final class acw
+class acw
   implements View.OnClickListener
 {
-  acw(UnbindUinActivity paramUnbindUinActivity) {}
+  acw(UtilsMailProtectActivity paramUtilsMailProtectActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.removeTimeTask();
+    if (do.a().e() == null) {
+      return;
+    }
+    UtilsMailProtectActivity.access$000(this.a);
   }
 }
 

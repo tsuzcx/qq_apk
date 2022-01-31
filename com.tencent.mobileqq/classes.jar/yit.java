@@ -1,18 +1,38 @@
-import com.tencent.mobileqq.adapter.TroopListAdapter2;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.component.extendsadapter.ComponentRvInnerView;
 
-class yit
-  implements Runnable
+public class yit
+  extends yhw
 {
-  yit(yis paramyis, String paramString) {}
+  public yit(ComponentRvInnerView paramComponentRvInnerView) {}
   
-  public void run()
+  public yis a(ViewGroup paramViewGroup, int paramInt)
   {
-    TroopListAdapter2.a(this.jdField_a_of_type_Yis.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2, this.jdField_a_of_type_Yis.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$TroopListItem, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Yis.jdField_a_of_type_Boolean);
+    if (ComponentRvInnerView.a(this.a) != null) {
+      return ComponentRvInnerView.a(this.a).a(paramViewGroup, paramInt);
+    }
+    return null;
+  }
+  
+  public int getItemCount()
+  {
+    if (ComponentRvInnerView.a(this.a) != null) {
+      return ComponentRvInnerView.a(this.a).a();
+    }
+    return 0;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((!bhrz.a(paramInt, this.mDataList)) && (ComponentRvInnerView.a(this.a) != null)) {
+      ComponentRvInnerView.a(this.a).a(paramViewHolder, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yit
  * JD-Core Version:    0.7.0.1
  */

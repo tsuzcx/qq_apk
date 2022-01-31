@@ -1,35 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.YybHandleUtil;
-import com.tencent.open.downloadnew.common.DownloadDBHelper;
-import java.io.File;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-public final class aljc
-  implements Runnable
+class aljc
+  implements Comparator<ApolloActionData>
 {
-  public void run()
+  aljc(aliw paramaliw) {}
+  
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    Object localObject = DownloadDBHelper.a().a("com.tencent.android.qqdownloader");
-    String str = "";
-    if (localObject != null) {
-      str = ((DownloadInfo)localObject).k;
+    if (paramApolloActionData2.version == paramApolloActionData1.version) {
+      return 0;
     }
-    if (!TextUtils.isEmpty(str))
-    {
-      localObject = new File(str);
-      LogUtility.c(YybHandleUtil.a, "---localFilePath = " + str);
-      if ((localObject != null) && (((File)localObject).exists()))
-      {
-        LogUtility.c(YybHandleUtil.a, "---delete apk ");
-        ((File)localObject).delete();
-      }
+    if (paramApolloActionData2.version > paramApolloActionData1.version) {
+      return 1;
     }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aljc
  * JD-Core Version:    0.7.0.1
  */

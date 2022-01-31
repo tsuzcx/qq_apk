@@ -1,30 +1,43 @@
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
-import com.tencent.widget.ExpandableListView.OnGroupExpandListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class acpg
-  implements ExpandableListView.OnGroupExpandListener
+  implements bhuk
 {
-  public acpg(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public acpg(ChatSettingForTroop paramChatSettingForTroop, bhuf parambhuf) {}
   
-  public void a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramInt == this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null))
+    paramView = this.jdField_a_of_type_Bhuf.a(paramInt);
+    if (paramView != null)
     {
-      if (!this.a.a()) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
+      paramInt = paramView.c;
+      switch (paramInt)
+      {
       }
     }
-    else {
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
       return;
+      paramInt = -1;
+      break;
+      ChatSettingForTroop.e(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
+      bdes.a("Grp_set_new", "grpData_admin", "clk_quitgrp", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bdes.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData) });
+      continue;
+      bcpx.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app);
+      continue;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bcxl != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bcxl.f();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bcxl = bcpx.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpg
  * JD-Core Version:    0.7.0.1
  */

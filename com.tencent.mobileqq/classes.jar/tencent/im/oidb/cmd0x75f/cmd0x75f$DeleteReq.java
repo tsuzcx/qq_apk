@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class cmd0x75f$DeleteReq
-  extends MessageMicro
+  extends MessageMicro<DeleteReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_msg_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,7 +20,7 @@ public final class cmd0x75f$DeleteReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x75f.cmd0x75f.DeleteReq
  * JD-Core Version:    0.7.0.1
  */

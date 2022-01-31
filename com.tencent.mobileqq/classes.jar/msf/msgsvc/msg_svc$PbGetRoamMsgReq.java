@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_svc$PbGetRoamMsgReq
-  extends MessageMicro
+  extends MessageMicro<PbGetRoamMsgReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field begin_msgtime = PBField.initUInt64(0L);
@@ -32,7 +32,7 @@ public final class msg_svc$PbGetRoamMsgReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msf.msgsvc.msg_svc.PbGetRoamMsgReq
  * JD-Core Version:    0.7.0.1
  */

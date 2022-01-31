@@ -1,40 +1,16 @@
 package com.tencent.token.ui;
 
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.core.bean.g;
-import com.tencent.token.global.d;
-import com.tencent.token.utils.UserTask;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class ky
-  extends UserTask
+class ky
+  implements DialogInterface.OnClickListener
 {
-  private g c = null;
+  ky(GetBarcodeVerifyMsgActivity paramGetBarcodeVerifyMsgActivity) {}
   
-  ky(kx paramkx, lb paramlb) {}
-  
-  private void a(d paramd)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.c == null) {
-      return;
-    }
-    d.a(kx.b(this.b).getResources(), paramd);
-    kx.b(this.b).showTipDialog(2131361919, paramd.c);
-  }
-  
-  public final void a()
-  {
-    if (this.c == null) {}
-    do
-    {
-      return;
-      this.c.e = false;
-      localObject = new d((byte)0);
-      ((d)localObject).a(10024, null, null);
-      a((d)localObject);
-    } while (kx.a(this.b) == null);
-    Object localObject = kx.a(this.b).obtainMessage(3017);
-    kx.a(this.b).sendMessage((Message)localObject);
+    this.a.finish();
   }
 }
 

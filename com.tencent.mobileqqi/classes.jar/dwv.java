@@ -1,23 +1,20 @@
-import android.app.Dialog;
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
 
 public class dwv
-  implements AdapterView.OnItemClickListener
+  implements Runnable
 {
-  public dwv(TroopMemberListActivity paramTroopMemberListActivity, Dialog paramDialog) {}
+  public dwv(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a(paramAdapterView, paramView, paramInt);
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(2, 300, new Object[] { this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, Integer.valueOf(0) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dwv
  * JD-Core Version:    0.7.0.1
  */

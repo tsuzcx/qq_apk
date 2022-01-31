@@ -1,20 +1,20 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 
-public final class zfb
-  implements DialogInterface.OnDismissListener
+class zfb
+  implements View.OnClickListener
 {
-  public zfb(Activity paramActivity, int paramInt) {}
+  zfb(zfa paramzfa) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(this.jdField_a_of_type_Int);
+    this.a.b.setClickable(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zfb
  * JD-Core Version:    0.7.0.1
  */

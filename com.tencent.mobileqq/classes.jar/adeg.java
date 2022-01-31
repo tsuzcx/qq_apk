@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.MusicFileViewer;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class adeg
-  implements Runnable
+  extends WebViewClient
 {
-  public adeg(MusicFilePresenter paramMusicFilePresenter, String paramString, int paramInt) {}
+  public adeg(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
   
-  public void run()
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterMusicFilePresenter.a.b(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterMusicFilePresenter.a.c(this.jdField_a_of_type_Int);
+    if (this.a.a(paramString)) {}
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adeg
  * JD-Core Version:    0.7.0.1
  */

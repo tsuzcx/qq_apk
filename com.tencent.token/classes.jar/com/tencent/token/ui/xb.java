@@ -1,33 +1,33 @@
 package com.tencent.token.ui;
 
 import android.content.Intent;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.global.RqdApplication;
+import android.view.WindowManager;
+import com.tencent.token.ch;
 
-final class xb
+class xb
   implements View.OnClickListener
 {
-  xb(wy paramwy) {}
+  xb(wp paramwp) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(this.a.a, IndexActivity.class);
-    paramView.addFlags(67108864);
-    if (this.a.a.mSourceId == 1)
+    this.a.a.dismiss();
+    ch.a().a(System.currentTimeMillis(), 93);
+    paramView = new DisplayMetrics();
+    this.a.a.getWindowManager().getDefaultDisplay().getMetrics(paramView);
+    if (RealNameStep1InputNameIdActivity.access$100(this.a.a))
     {
-      paramView.putExtra("index_from", 25);
-      RqdApplication.f();
-    }
-    for (;;)
-    {
-      paramView.putExtra("ish5zzb", RealNameStep0VerifyMobileUpActivity.access$600(this.a.a));
-      this.a.a.startActivity(paramView);
-      this.a.a.finish();
+      paramView = new Intent(this.a.a, DetectIDPhotoActivity.class);
+      this.a.a.startActivityForResult(paramView, 2);
       return;
-      paramView.putExtra("index_from", 16);
-      RqdApplication.f();
     }
+    paramView = new Intent(this.a.a, RealNameTakeIDPhotoActivity.class);
+    paramView.putExtra("scene", 2);
+    this.a.a.startActivityForResult(paramView, 2);
   }
 }
 

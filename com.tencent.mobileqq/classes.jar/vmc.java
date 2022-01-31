@@ -1,29 +1,60 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
-import com.tencent.qphone.base.util.QLog;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tribe.async.dispatch.Dispatcher;
+import java.io.File;
 
-class vmc
-  implements Runnable
+public class vmc
+  implements xtk
 {
-  vmc(vmb paramvmb, boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
+  public long a;
+  public StoryVideoItem a;
+  public String a;
+  public String b;
   
-  public void run()
+  public vmc(String paramString1, StoryVideoItem paramStoryVideoItem, String paramString2)
   {
-    if (vma.a(this.jdField_a_of_type_Vmb.a) != null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("peak_pgjpeg", 4, "IAIOImageProviderCallBack.notifyImageResult():isPart " + this.jdField_a_of_type_Boolean);
-      }
-      ((AIOGalleryScene)vma.b(this.jdField_a_of_type_Vmb.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-    }
-    if (this.jdField_a_of_type_Vmb.a.a != null) {
-      ((AIOImageListScene)this.jdField_a_of_type_Vmb.a.a).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    this.b = paramString2;
+  }
+  
+  public void onFailure(String paramString)
+  {
+    paramString = new vmb(this.b, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    umc.a().dispatch(paramString);
+    wxj.a("play_video", "down_fail", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    wxj.a("play_video", "down_watermark", 0, 1, new String[0]);
+  }
+  
+  public void onFinish(boolean paramBoolean) {}
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
+  {
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    vmb localvmb = new vmb(this.b, 0, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    umc.a().dispatch(localvmb);
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    paramString = new vmb(this.b, 2, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    paramString.b = this.jdField_a_of_type_JavaLangString;
+    umc.a().dispatch(paramString);
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    long l3 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoDuration;
+    wxj.a("play_video", "down_suc", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    wxj.a("play_video", "down_watermark_time", 0, 0, new String[] { String.valueOf(l1 - l2), String.valueOf(l3) });
+    wxj.a("play_video", "down_watermark", 0, 0, new String[0]);
+    xrg.a(BaseApplication.getContext(), new File(this.jdField_a_of_type_JavaLangString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmc
  * JD-Core Version:    0.7.0.1
  */

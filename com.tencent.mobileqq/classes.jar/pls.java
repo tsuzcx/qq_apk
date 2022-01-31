@@ -1,24 +1,35 @@
+import android.app.Activity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+
 class pls
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  pls(plr paramplr, Runnable paramRunnable) {}
+  pls(plq paramplq, View paramView, boolean paramBoolean, Activity paramActivity, ArticleInfo paramArticleInfo) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    try
+    if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+      if (this.jdField_a_of_type_Boolean) {
+        plq.a(this.jdField_a_of_type_Plq, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, false);
+      }
+    }
+    else {
       return;
     }
-    finally
-    {
-      this.jdField_a_of_type_Plr.a();
-    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pls
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,15 @@
-import com.tencent.mobileqq.app.EmoticonManagerImp;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmoticonController;
-import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.app.ScreenShot;
 
-public class fgn
-  extends EmoticonPackageDownloadListener
+class fgn
+  implements View.OnLongClickListener
 {
-  public fgn(EmoticonManagerImp paramEmoticonManagerImp) {}
+  fgn(fgm paramfgm, ScreenShot paramScreenShot) {}
   
-  public void onJsonComplete(EmoticonPackage paramEmoticonPackage, int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    if (paramInt == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("EmoticonManagerImp", 2, "json is complete,result ok: " + paramEmoticonPackage.epId);
-      }
-      EmoticonPackage localEmoticonPackage = (EmoticonPackage)EmoticonManagerImp.a(this.a).get(paramEmoticonPackage.epId);
-      if (localEmoticonPackage != null)
-      {
-        localEmoticonPackage.name = paramEmoticonPackage.name;
-        localEmoticonPackage.mark = paramEmoticonPackage.mark;
-        localEmoticonPackage.mobileFeetype = paramEmoticonPackage.mobileFeetype;
-        localEmoticonPackage.downloadCount = paramEmoticonPackage.downloadCount;
-        this.a.a(localEmoticonPackage);
-        this.a.a(localEmoticonPackage.epId);
-        EmoticonController.a(EmoticonManagerImp.a(this.a)).f(paramEmoticonPackage);
-      }
-    }
+    return false;
   }
 }
 

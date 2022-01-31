@@ -1,97 +1,94 @@
 package com.tencent.mobileqq.flashchat;
 
-import adjs;
+import alof;
+import amca;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
 import android.util.SparseArray;
+import aoks;
+import aolc;
+import aonn;
+import arwb;
+import arwc;
+import arwd;
+import arwe;
+import arwj;
+import arwq;
+import azqs;
+import bdhb;
+import bdzf;
 import com.tencent.ark.ArkDispatchTask;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.zip.QZipFile;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SVIPHandler;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Content;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.mobileqq.config.QStorageSafeDeleteException;
 import com.tencent.mobileqq.data.ArkFlashChatMessage;
+import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
 import com.tencent.mobileqq.data.MessageForHiBoom;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageForScribble;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.olympic.utils.OlympicUtil;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.zip.ZipFile;
-import mqq.app.MobileQQ;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.NewIntent;
 import mqq.manager.Manager;
-import org.json.JSONObject;
+import syb;
 
 public class FlashChatManager
   implements Manager
 {
-  public static final Handler a;
-  public static SparseArray a;
-  public static SparseArray b;
+  public static SparseArray<Integer> b;
+  public static SparseArray<Long> c;
+  public SparseArray<String> a;
+  aolc jdField_a_of_type_Aolc = aolc.a("flashchat");
+  public arwd a;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   MessageForArkFlashChat jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat = null;
-  public FlashChatManager.GlobalConfig a;
   String jdField_a_of_type_JavaLangString;
-  public ArrayList a;
-  public ConcurrentHashMap a;
+  public ArrayList<FlashChatItem> a;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public ConcurrentHashMap<Long, Long> a;
+  public CopyOnWriteArrayList<MessageForArkFlashChat> a;
+  public AtomicBoolean a;
   public boolean a;
   int[] jdField_a_of_type_ArrayOfInt = { 3, 4, 2, 1, 0 };
-  public ArrayList[] a;
-  public ArrayList b;
-  public ConcurrentHashMap b;
+  public ConcurrentHashMap<String, String> b;
   boolean b;
-  public ConcurrentHashMap c;
+  public ConcurrentHashMap<String, String> c;
   boolean c;
   private boolean d;
-  
-  static
-  {
-    jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new adjs());
-  }
   
   public FlashChatManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager$GlobalConfig = new FlashChatManager.GlobalConfig();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Arwd = new arwd();
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_c_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ArrayOfJavaUtilArrayList = new ArrayList[2];
-  }
-  
-  public static int a(QQAppInterface paramQQAppInterface)
-  {
-    return a(paramQQAppInterface).getInt("k_flashchat_config_v" + paramQQAppInterface.getCurrentAccountUin(), 0);
+    ThreadManager.post(new FlashChatManager.1(this), 8, null, true);
   }
   
   public static final int a(MessageRecord paramMessageRecord)
@@ -114,16 +111,11 @@ public class FlashChatManager
     return -1;
   }
   
-  public static SharedPreferences a(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApplication().getSharedPreferences("sp_flashchat_" + paramQQAppInterface.c(), 0);
-  }
-  
   public static String a(QQAppInterface paramQQAppInterface, FlashChatItem paramFlashChatItem)
   {
     int i = 0;
-    int j = ((SVIPHandler)paramQQAppInterface.a(13)).j();
-    switch (paramFlashChatItem.jdField_b_of_type_Int)
+    int j = ((amca)paramQQAppInterface.a(13)).g();
+    switch (paramFlashChatItem.feedType)
     {
     default: 
       i = 1;
@@ -134,7 +126,7 @@ public class FlashChatManager
       if (i == 0)
       {
         paramQQAppInterface = "LTMCLUB";
-        if (paramFlashChatItem.jdField_b_of_type_Int == 5) {
+        if (paramFlashChatItem.feedType == 5) {
           paramQQAppInterface = "CJCLUBT";
         }
       }
@@ -149,11 +141,6 @@ public class FlashChatManager
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    a(paramQQAppInterface).edit().putInt("k_flashchat_config_v" + paramQQAppInterface.getCurrentAccountUin(), paramInt).commit();
-  }
-  
   /* Error */
   private void a(String paramString1, String paramString2)
   {
@@ -166,56 +153,56 @@ public class FlashChatManager
     //   7: astore 11
     //   9: aconst_null
     //   10: astore 6
-    //   12: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   12: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   15: ifeq +37 -> 52
-    //   18: ldc 172
+    //   18: ldc 147
     //   20: iconst_2
-    //   21: new 81	java/lang/StringBuilder
+    //   21: new 149	java/lang/StringBuilder
     //   24: dup
-    //   25: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   28: ldc 174
-    //   30: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: invokespecial 150	java/lang/StringBuilder:<init>	()V
+    //   28: ldc 152
+    //   30: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   33: aload_1
-    //   34: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: ldc 176
-    //   39: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: ldc 158
+    //   39: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: aload_2
-    //   43: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   49: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   52: new 181	java/io/File
+    //   43: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   49: invokestatic 165	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   52: new 167	java/io/File
     //   55: dup
-    //   56: new 81	java/lang/StringBuilder
+    //   56: new 149	java/lang/StringBuilder
     //   59: dup
-    //   60: invokespecial 82	java/lang/StringBuilder:<init>	()V
+    //   60: invokespecial 150	java/lang/StringBuilder:<init>	()V
     //   63: aload_2
-    //   64: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: getstatic 184	java/io/File:separator	Ljava/lang/String;
-    //   70: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   76: invokespecial 187	java/io/File:<init>	(Ljava/lang/String;)V
+    //   64: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: getstatic 170	java/io/File:separator	Ljava/lang/String;
+    //   70: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   76: invokespecial 173	java/io/File:<init>	(Ljava/lang/String;)V
     //   79: astore 7
     //   81: aload 7
-    //   83: invokevirtual 190	java/io/File:exists	()Z
+    //   83: invokevirtual 176	java/io/File:exists	()Z
     //   86: ifne +9 -> 95
     //   89: aload 7
-    //   91: invokevirtual 193	java/io/File:mkdirs	()Z
+    //   91: invokevirtual 179	java/io/File:mkdirs	()Z
     //   94: pop
     //   95: aload 11
     //   97: astore 8
     //   99: aload 10
     //   101: astore 7
-    //   103: new 195	com/tencent/commonsdk/zip/QZipFile
+    //   103: new 181	com/tencent/commonsdk/zip/QZipFile
     //   106: dup
     //   107: aload_1
-    //   108: invokespecial 196	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/lang/String;)V
+    //   108: invokespecial 182	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/lang/String;)V
     //   111: astore 12
     //   113: aload 11
     //   115: astore 8
     //   117: aload 10
     //   119: astore 7
     //   121: aload 12
-    //   123: invokevirtual 202	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
+    //   123: invokevirtual 188	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
     //   126: astore 13
     //   128: aload 11
     //   130: astore 8
@@ -231,22 +218,22 @@ public class FlashChatManager
     //   150: aload_1
     //   151: astore 7
     //   153: aload 13
-    //   155: invokeinterface 207 1 0
+    //   155: invokeinterface 193 1 0
     //   160: ifeq +518 -> 678
     //   163: aload 6
     //   165: astore 8
     //   167: aload_1
     //   168: astore 7
     //   170: aload 13
-    //   172: invokeinterface 211 1 0
-    //   177: checkcast 213	java/util/zip/ZipEntry
+    //   172: invokeinterface 197 1 0
+    //   177: checkcast 199	java/util/zip/ZipEntry
     //   180: astore 14
     //   182: aload 6
     //   184: astore 8
     //   186: aload_1
     //   187: astore 7
     //   189: aload 14
-    //   191: invokevirtual 216	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   191: invokevirtual 202	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
     //   194: astore 9
     //   196: aload 9
     //   198: ifnull -52 -> 146
@@ -255,53 +242,53 @@ public class FlashChatManager
     //   205: aload_1
     //   206: astore 7
     //   208: aload 9
-    //   210: ldc 218
-    //   212: invokevirtual 224	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   210: ldc 204
+    //   212: invokevirtual 210	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   215: ifne -69 -> 146
     //   218: aload 6
     //   220: astore 8
     //   222: aload_1
     //   223: astore 7
-    //   225: new 81	java/lang/StringBuilder
+    //   225: new 149	java/lang/StringBuilder
     //   228: dup
-    //   229: invokespecial 82	java/lang/StringBuilder:<init>	()V
+    //   229: invokespecial 150	java/lang/StringBuilder:<init>	()V
     //   232: aload_2
-    //   233: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   236: getstatic 184	java/io/File:separator	Ljava/lang/String;
-    //   239: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   233: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   236: getstatic 170	java/io/File:separator	Ljava/lang/String;
+    //   239: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   242: aload 9
-    //   244: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   247: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   244: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   247: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   250: astore 11
     //   252: aload 6
     //   254: astore 8
     //   256: aload_1
     //   257: astore 7
     //   259: aload 14
-    //   261: invokevirtual 227	java/util/zip/ZipEntry:isDirectory	()Z
+    //   261: invokevirtual 213	java/util/zip/ZipEntry:isDirectory	()Z
     //   264: ifeq +52 -> 316
     //   267: aload 6
     //   269: astore 8
     //   271: aload_1
     //   272: astore 7
-    //   274: new 181	java/io/File
+    //   274: new 167	java/io/File
     //   277: dup
     //   278: aload 11
-    //   280: invokespecial 187	java/io/File:<init>	(Ljava/lang/String;)V
+    //   280: invokespecial 173	java/io/File:<init>	(Ljava/lang/String;)V
     //   283: astore 9
     //   285: aload 6
     //   287: astore 8
     //   289: aload_1
     //   290: astore 7
     //   292: aload 9
-    //   294: invokevirtual 190	java/io/File:exists	()Z
+    //   294: invokevirtual 176	java/io/File:exists	()Z
     //   297: ifne +434 -> 731
     //   300: aload 6
     //   302: astore 8
     //   304: aload_1
     //   305: astore 7
     //   307: aload 9
-    //   309: invokevirtual 230	java/io/File:mkdir	()Z
+    //   309: invokevirtual 216	java/io/File:mkdir	()Z
     //   312: pop
     //   313: goto +418 -> 731
     //   316: aload 6
@@ -309,8 +296,8 @@ public class FlashChatManager
     //   320: aload_1
     //   321: astore 7
     //   323: aload 11
-    //   325: getstatic 184	java/io/File:separator	Ljava/lang/String;
-    //   328: invokevirtual 234	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   325: getstatic 170	java/io/File:separator	Ljava/lang/String;
+    //   328: invokevirtual 220	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
     //   331: istore_3
     //   332: aload 6
     //   334: astore 8
@@ -319,7 +306,7 @@ public class FlashChatManager
     //   339: aload 11
     //   341: iconst_0
     //   342: iload_3
-    //   343: invokevirtual 238	java/lang/String:substring	(II)Ljava/lang/String;
+    //   343: invokevirtual 224	java/lang/String:substring	(II)Ljava/lang/String;
     //   346: astore 9
     //   348: aload 6
     //   350: astore 8
@@ -329,84 +316,84 @@ public class FlashChatManager
     //   357: iload_3
     //   358: iconst_1
     //   359: iadd
-    //   360: invokevirtual 241	java/lang/String:substring	(I)Ljava/lang/String;
-    //   363: ldc 243
-    //   365: invokevirtual 247	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   360: invokevirtual 227	java/lang/String:substring	(I)Ljava/lang/String;
+    //   363: ldc 229
+    //   365: invokevirtual 233	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   368: ifne -222 -> 146
     //   371: aload 6
     //   373: astore 8
     //   375: aload_1
     //   376: astore 7
-    //   378: new 181	java/io/File
+    //   378: new 167	java/io/File
     //   381: dup
     //   382: aload 9
-    //   384: invokespecial 187	java/io/File:<init>	(Ljava/lang/String;)V
+    //   384: invokespecial 173	java/io/File:<init>	(Ljava/lang/String;)V
     //   387: astore 9
     //   389: aload 6
     //   391: astore 8
     //   393: aload_1
     //   394: astore 7
     //   396: aload 9
-    //   398: invokevirtual 190	java/io/File:exists	()Z
+    //   398: invokevirtual 176	java/io/File:exists	()Z
     //   401: ifne +16 -> 417
     //   404: aload 6
     //   406: astore 8
     //   408: aload_1
     //   409: astore 7
     //   411: aload 9
-    //   413: invokevirtual 230	java/io/File:mkdir	()Z
+    //   413: invokevirtual 216	java/io/File:mkdir	()Z
     //   416: pop
     //   417: aload 6
     //   419: astore 8
     //   421: aload_1
     //   422: astore 7
-    //   424: new 181	java/io/File
+    //   424: new 167	java/io/File
     //   427: dup
-    //   428: new 81	java/lang/StringBuilder
+    //   428: new 149	java/lang/StringBuilder
     //   431: dup
-    //   432: invokespecial 82	java/lang/StringBuilder:<init>	()V
+    //   432: invokespecial 150	java/lang/StringBuilder:<init>	()V
     //   435: aload 11
-    //   437: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   440: ldc 249
-    //   442: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   445: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   448: invokespecial 187	java/io/File:<init>	(Ljava/lang/String;)V
+    //   437: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   440: ldc 235
+    //   442: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   445: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   448: invokespecial 173	java/io/File:<init>	(Ljava/lang/String;)V
     //   451: astore 9
     //   453: aload 6
     //   455: astore 8
     //   457: aload_1
     //   458: astore 7
-    //   460: new 181	java/io/File
+    //   460: new 167	java/io/File
     //   463: dup
     //   464: aload 11
-    //   466: invokespecial 187	java/io/File:<init>	(Ljava/lang/String;)V
+    //   466: invokespecial 173	java/io/File:<init>	(Ljava/lang/String;)V
     //   469: astore 11
     //   471: aload 6
     //   473: astore 8
     //   475: aload_1
     //   476: astore 7
     //   478: aload 9
-    //   480: invokevirtual 190	java/io/File:exists	()Z
+    //   480: invokevirtual 176	java/io/File:exists	()Z
     //   483: ifeq +16 -> 499
     //   486: aload 6
     //   488: astore 8
     //   490: aload_1
     //   491: astore 7
     //   493: aload 9
-    //   495: invokevirtual 252	java/io/File:delete	()Z
+    //   495: invokevirtual 238	java/io/File:delete	()Z
     //   498: pop
     //   499: aload 6
     //   501: astore 8
     //   503: aload_1
     //   504: astore 7
-    //   506: new 254	java/io/FileOutputStream
+    //   506: new 240	java/io/FileOutputStream
     //   509: dup
     //   510: aload 9
-    //   512: invokespecial 257	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   512: invokespecial 243	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   515: astore 6
     //   517: aload 12
     //   519: aload 14
-    //   521: invokevirtual 261	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   521: invokevirtual 247	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   524: astore 7
     //   526: lconst_0
     //   527: lstore 4
@@ -417,7 +404,7 @@ public class FlashChatManager
     //   536: iconst_0
     //   537: aload 10
     //   539: arraylength
-    //   540: invokevirtual 267	java/io/InputStream:read	([BII)I
+    //   540: invokevirtual 253	java/io/InputStream:read	([BII)I
     //   543: istore_3
     //   544: iload_3
     //   545: iconst_m1
@@ -433,7 +420,7 @@ public class FlashChatManager
     //   561: aload 10
     //   563: iconst_0
     //   564: iload_3
-    //   565: invokevirtual 271	java/io/FileOutputStream:write	([BII)V
+    //   565: invokevirtual 257	java/io/FileOutputStream:write	([BII)V
     //   568: goto -39 -> 529
     //   571: astore_2
     //   572: aload 6
@@ -445,25 +432,25 @@ public class FlashChatManager
     //   581: aload 8
     //   583: ifnull +8 -> 591
     //   586: aload 8
-    //   588: invokevirtual 274	java/io/FileOutputStream:close	()V
+    //   588: invokevirtual 260	java/io/FileOutputStream:close	()V
     //   591: aload 7
     //   593: ifnull +8 -> 601
     //   596: aload 7
-    //   598: invokevirtual 275	java/io/InputStream:close	()V
+    //   598: invokevirtual 261	java/io/InputStream:close	()V
     //   601: aload_1
     //   602: athrow
     //   603: aload 7
     //   605: astore_1
     //   606: aload 6
-    //   608: invokevirtual 278	java/io/FileOutputStream:flush	()V
+    //   608: invokevirtual 264	java/io/FileOutputStream:flush	()V
     //   611: aload 7
     //   613: astore_1
     //   614: aload 6
-    //   616: invokevirtual 274	java/io/FileOutputStream:close	()V
+    //   616: invokevirtual 260	java/io/FileOutputStream:close	()V
     //   619: aload 7
     //   621: astore_1
     //   622: aload 7
-    //   624: invokevirtual 275	java/io/InputStream:close	()V
+    //   624: invokevirtual 261	java/io/InputStream:close	()V
     //   627: aconst_null
     //   628: astore 7
     //   630: aconst_null
@@ -474,11 +461,11 @@ public class FlashChatManager
     //   638: astore 6
     //   640: aload 9
     //   642: aload 11
-    //   644: invokestatic 283	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/io/File;Ljava/io/File;)Z
+    //   644: invokestatic 269	bdhb:b	(Ljava/io/File;Ljava/io/File;)Z
     //   647: ifne +94 -> 741
     //   650: aload 9
     //   652: aload 11
-    //   654: invokestatic 285	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/io/File;Ljava/io/File;)Z
+    //   654: invokestatic 271	bdhb:a	(Ljava/io/File;Ljava/io/File;)Z
     //   657: pop
     //   658: aload 7
     //   660: astore_1
@@ -494,27 +481,27 @@ public class FlashChatManager
     //   678: aload 6
     //   680: ifnull +8 -> 688
     //   683: aload 6
-    //   685: invokevirtual 274	java/io/FileOutputStream:close	()V
+    //   685: invokevirtual 260	java/io/FileOutputStream:close	()V
     //   688: aload_1
     //   689: ifnull +7 -> 696
     //   692: aload_1
-    //   693: invokevirtual 275	java/io/InputStream:close	()V
+    //   693: invokevirtual 261	java/io/InputStream:close	()V
     //   696: return
     //   697: astore_2
     //   698: aload_2
-    //   699: invokevirtual 288	java/io/IOException:printStackTrace	()V
+    //   699: invokevirtual 274	java/io/IOException:printStackTrace	()V
     //   702: goto -14 -> 688
     //   705: astore_1
     //   706: aload_1
-    //   707: invokevirtual 288	java/io/IOException:printStackTrace	()V
+    //   707: invokevirtual 274	java/io/IOException:printStackTrace	()V
     //   710: return
     //   711: astore_2
     //   712: aload_2
-    //   713: invokevirtual 288	java/io/IOException:printStackTrace	()V
+    //   713: invokevirtual 274	java/io/IOException:printStackTrace	()V
     //   716: goto -125 -> 591
     //   719: astore_2
     //   720: aload_2
-    //   721: invokevirtual 288	java/io/IOException:printStackTrace	()V
+    //   721: invokevirtual 274	java/io/IOException:printStackTrace	()V
     //   724: goto -123 -> 601
     //   727: astore_1
     //   728: goto -147 -> 581
@@ -544,7 +531,7 @@ public class FlashChatManager
     //   4	647	9	localObject4	Object
     //   1	561	10	arrayOfByte	byte[]
     //   7	646	11	localObject5	Object
-    //   111	407	12	localQZipFile	QZipFile
+    //   111	407	12	localQZipFile	com.tencent.commonsdk.zip.QZipFile
     //   126	45	13	localEnumeration	java.util.Enumeration
     //   180	340	14	localZipEntry	java.util.zip.ZipEntry
     // Exception table:
@@ -600,8 +587,8 @@ public class FlashChatManager
     paramContext.startActivity(localIntent);
     if (paramMessageRecord != null)
     {
-      PublicAccountUtil.a(paramMessageRecord, localIntent, paramString1);
-      ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramString1, "", "", "");
+      syb.a(paramMessageRecord, localIntent, paramString1);
+      azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramString1, "", "", "");
     }
     return true;
   }
@@ -610,138 +597,138 @@ public class FlashChatManager
   public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, QQAppInterface paramQQAppInterface)
   {
     // Byte code:
-    //   0: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +49 -> 52
-    //   6: ldc 172
+    //   6: ldc 147
     //   8: iconst_2
-    //   9: new 81	java/lang/StringBuilder
+    //   9: new 149	java/lang/StringBuilder
     //   12: dup
-    //   13: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   16: ldc_w 355
-    //   19: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13: invokespecial 150	java/lang/StringBuilder:<init>	()V
+    //   16: ldc_w 341
+    //   19: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   22: aload_1
-    //   23: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: ldc_w 357
-    //   29: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: ldc_w 343
+    //   29: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   32: aload_2
-    //   33: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: ldc_w 359
-    //   39: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: ldc_w 345
+    //   39: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: aload_3
-    //   43: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   49: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   43: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   49: invokestatic 165	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   52: aload_2
     //   53: aload_3
-    //   54: invokestatic 362	com/tencent/mobileqq/flashchat/FlashChatManager:a	(Ljava/lang/String;Ljava/lang/String;)[Ljava/lang/String;
+    //   54: invokestatic 348	com/tencent/mobileqq/flashchat/FlashChatManager:a	(Ljava/lang/String;Ljava/lang/String;)[Ljava/lang/String;
     //   57: astore_1
     //   58: aload_0
-    //   59: invokevirtual 366	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
+    //   59: invokevirtual 352	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
     //   62: astore_2
     //   63: aload_2
     //   64: aload_1
     //   65: iconst_0
     //   66: aaload
     //   67: iconst_1
-    //   68: invokevirtual 372	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
+    //   68: invokevirtual 358	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
     //   71: ifnull +171 -> 242
     //   74: aload_2
     //   75: aload_1
     //   76: iconst_0
     //   77: aaload
-    //   78: invokevirtual 376	android/content/pm/PackageManager:getLaunchIntentForPackage	(Ljava/lang/String;)Landroid/content/Intent;
+    //   78: invokevirtual 362	android/content/pm/PackageManager:getLaunchIntentForPackage	(Ljava/lang/String;)Landroid/content/Intent;
     //   81: astore_2
     //   82: aload_2
     //   83: ifnonnull +5 -> 88
     //   86: iconst_0
     //   87: ireturn
     //   88: aload_2
-    //   89: ldc_w 377
-    //   92: invokevirtual 381	android/content/Intent:addFlags	(I)Landroid/content/Intent;
+    //   89: ldc_w 363
+    //   92: invokevirtual 367	android/content/Intent:addFlags	(I)Landroid/content/Intent;
     //   95: pop
     //   96: aload_1
     //   97: iconst_1
     //   98: aaload
-    //   99: invokestatic 296	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   99: invokestatic 282	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   102: ifne +14 -> 116
     //   105: aload_2
     //   106: aload_1
     //   107: iconst_1
     //   108: aaload
-    //   109: invokestatic 387	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   112: invokevirtual 391	android/content/Intent:setData	(Landroid/net/Uri;)Landroid/content/Intent;
+    //   109: invokestatic 373	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   112: invokevirtual 377	android/content/Intent:setData	(Landroid/net/Uri;)Landroid/content/Intent;
     //   115: pop
     //   116: aload 4
     //   118: bipush 23
-    //   120: invokevirtual 132	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
-    //   123: checkcast 393	com/tencent/mobileqq/app/StartAppCheckHandler
+    //   120: invokevirtual 120	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lalpd;
+    //   123: checkcast 379	amcw
     //   126: astore_3
     //   127: aload_2
-    //   128: ldc_w 395
-    //   131: ldc_w 397
-    //   134: invokevirtual 318	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   128: ldc_w 381
+    //   131: ldc_w 383
+    //   134: invokevirtual 304	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   137: pop
     //   138: aload_2
-    //   139: ldc_w 399
-    //   142: ldc_w 337
-    //   145: invokevirtual 318	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   139: ldc_w 385
+    //   142: ldc_w 323
+    //   145: invokevirtual 304	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   148: pop
     //   149: aload_2
-    //   150: ldc_w 401
-    //   153: ldc_w 403
-    //   156: invokevirtual 318	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   150: ldc_w 387
+    //   153: ldc_w 389
+    //   156: invokevirtual 304	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   159: pop
     //   160: aload_2
-    //   161: ldc_w 405
-    //   164: ldc_w 407
-    //   167: invokevirtual 318	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   161: ldc_w 391
+    //   164: ldc_w 393
+    //   167: invokevirtual 304	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   170: pop
     //   171: aload_2
-    //   172: ldc_w 409
+    //   172: ldc_w 395
     //   175: aload_0
-    //   176: invokevirtual 413	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   179: invokevirtual 416	java/lang/Class:getName	()Ljava/lang/String;
-    //   182: invokevirtual 318	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   176: invokevirtual 399	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   179: invokevirtual 402	java/lang/Class:getName	()Ljava/lang/String;
+    //   182: invokevirtual 304	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   185: pop
     //   186: aload_3
     //   187: aload_1
     //   188: iconst_0
     //   189: aaload
-    //   190: invokevirtual 419	java/lang/String:trim	()Ljava/lang/String;
+    //   190: invokevirtual 405	java/lang/String:trim	()Ljava/lang/String;
     //   193: aload_0
     //   194: aload_2
-    //   195: invokevirtual 422	com/tencent/mobileqq/app/StartAppCheckHandler:b	(Ljava/lang/String;Landroid/content/Context;Landroid/content/Intent;)V
+    //   195: invokevirtual 408	amcw:b	(Ljava/lang/String;Landroid/content/Context;Landroid/content/Intent;)V
     //   198: iconst_1
     //   199: ireturn
     //   200: astore_1
-    //   201: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   201: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   204: ifeq +13 -> 217
-    //   207: ldc_w 424
+    //   207: ldc_w 410
     //   210: iconst_2
-    //   211: ldc_w 426
-    //   214: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   211: ldc_w 412
+    //   214: invokestatic 165	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   217: aload_0
     //   218: aload_2
-    //   219: invokevirtual 326	android/content/Context:startActivity	(Landroid/content/Intent;)V
+    //   219: invokevirtual 312	android/content/Context:startActivity	(Landroid/content/Intent;)V
     //   222: goto -24 -> 198
     //   225: astore_0
-    //   226: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   226: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   229: ifeq +13 -> 242
-    //   232: ldc 172
+    //   232: ldc 147
     //   234: iconst_2
     //   235: aload_0
-    //   236: invokevirtual 429	android/content/pm/PackageManager$NameNotFoundException:getMessage	()Ljava/lang/String;
-    //   239: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   236: invokevirtual 415	android/content/pm/PackageManager$NameNotFoundException:getMessage	()Ljava/lang/String;
+    //   239: invokestatic 165	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   242: iconst_0
     //   243: ireturn
     //   244: astore_0
-    //   245: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   245: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   248: ifeq -6 -> 242
-    //   251: ldc 172
+    //   251: ldc 147
     //   253: iconst_2
     //   254: aload_0
-    //   255: invokevirtual 430	java/lang/RuntimeException:getMessage	()Ljava/lang/String;
-    //   258: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   255: invokevirtual 416	java/lang/RuntimeException:getMessage	()Ljava/lang/String;
+    //   258: invokestatic 165	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   261: goto -19 -> 242
     // Local variable table:
     //   start	length	slot	name	signature
@@ -794,15 +781,52 @@ public class FlashChatManager
   
   public static String b(String paramString)
   {
+    String str;
+    if (TextUtils.isEmpty(paramString))
+    {
+      str = "";
+      return str;
+    }
+    int k = paramString.length() - 1;
+    int i = 0;
+    while ((i <= k) && (paramString.charAt(i) == ' ')) {
+      i += 1;
+    }
+    for (;;)
+    {
+      int j;
+      if ((j >= i) && (paramString.charAt(j) == ' '))
+      {
+        j -= 1;
+      }
+      else
+      {
+        if (i == 0)
+        {
+          str = paramString;
+          if (j == k) {
+            break;
+          }
+        }
+        if (i <= j) {
+          return paramString.substring(i, j + 1);
+        }
+        return "";
+        j = k;
+      }
+    }
+  }
+  
+  public static String c(String paramString)
+  {
     return paramString.substring(0, paramString.lastIndexOf("."));
   }
   
-  public ArkFlashChatMessage a(String paramString)
+  public ArkFlashChatMessage a(String paramString, int paramInt1, int paramInt2)
   {
-    int i = -1;
     ArkFlashChatMessage localArkFlashChatMessage = null;
     Object localObject3;
-    if (!a()) {
+    if (!a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
       localObject3 = localArkFlashChatMessage;
     }
     do
@@ -814,19 +838,11 @@ public class FlashChatManager
       } while (paramString == null);
       localObject3 = localArkFlashChatMessage;
     } while (TextUtils.isEmpty(paramString.trim()));
-    Object localObject1 = b();
-    if (localObject1 != null) {}
     for (;;)
     {
       try
       {
-        localObject1 = ((String)localObject1).split(":");
-        if (localObject1.length != 2) {
-          break label293;
-        }
-        i = Integer.valueOf(localObject1[0]).intValue();
-        j = Integer.valueOf(localObject1[1]).intValue();
-        localObject1 = this.jdField_a_of_type_ArrayOfJavaUtilArrayList[i];
+        localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
         if (localObject1 == null) {
           continue;
         }
@@ -835,7 +851,7 @@ public class FlashChatManager
           continue;
         }
         localObject1 = (FlashChatItem)((Iterator)localObject3).next();
-        if ((localObject1 == null) || (((FlashChatItem)localObject1).jdField_a_of_type_Int != j)) {
+        if ((localObject1 == null) || (((FlashChatItem)localObject1).id != paramInt2)) {
           continue;
         }
         localObject3 = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FlashChatItem)localObject1);
@@ -845,6 +861,7 @@ public class FlashChatManager
       }
       catch (Exception localException)
       {
+        Object localObject1;
         localException.printStackTrace();
         Object localObject2 = null;
         continue;
@@ -854,11 +871,11 @@ public class FlashChatManager
         break;
       }
       localArkFlashChatMessage = new ArkFlashChatMessage();
-      localArkFlashChatMessage.appMinVersion = ((FlashChatItem)localObject1).jdField_e_of_type_JavaLangString;
-      localArkFlashChatMessage.appName = ((FlashChatItem)localObject1).jdField_a_of_type_JavaLangString;
-      localArkFlashChatMessage.appView = ((FlashChatItem)localObject1).jdField_d_of_type_JavaLangString;
-      localArkFlashChatMessage.appDesc = ((FlashChatItem)localObject1).jdField_b_of_type_JavaLangString;
-      localArkFlashChatMessage.appResId = ((FlashChatItem)localObject1).jdField_a_of_type_Int;
+      localArkFlashChatMessage.appMinVersion = ((FlashChatItem)localObject1).ver;
+      localArkFlashChatMessage.appName = ((FlashChatItem)localObject1).appName;
+      localArkFlashChatMessage.appView = ((FlashChatItem)localObject1).mainView;
+      localArkFlashChatMessage.appDesc = ((FlashChatItem)localObject1).name;
+      localArkFlashChatMessage.appResId = ((FlashChatItem)localObject1).id;
       localArkFlashChatMessage.promptText = paramString;
       localArkFlashChatMessage.config = "config";
       localObject3 = localArkFlashChatMessage;
@@ -869,27 +886,36 @@ public class FlashChatManager
       return localArkFlashChatMessage;
       a("");
       localObject1 = null;
-      continue;
-      label293:
-      int j = -1;
     }
   }
   
   public String a()
   {
-    StringBuilder localStringBuilder;
+    int i;
     if (this.jdField_a_of_type_JavaLangString == null)
     {
       localObject = BaseApplicationImpl.getContext();
+      i = 0;
+    }
+    try
+    {
       boolean bool = "mounted".equals(Environment.getExternalStorageState());
-      localStringBuilder = new StringBuilder();
-      if (!bool) {
-        break label87;
+      i = bool;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        StringBuilder localStringBuilder;
+        localException.printStackTrace();
+        continue;
+        localObject = ((Context)localObject).getFilesDir().getAbsolutePath();
       }
     }
-    label87:
-    for (Object localObject = AppConstants.aJ;; localObject = ((Context)localObject).getCacheDir().getAbsolutePath())
+    localStringBuilder = new StringBuilder();
+    if (i != 0)
     {
+      localObject = bdzf.a(alof.aX);
       this.jdField_a_of_type_JavaLangString = ((String)localObject + File.separator + "flashchat" + File.separator);
       new File(this.jdField_a_of_type_JavaLangString).mkdirs();
       return this.jdField_a_of_type_JavaLangString;
@@ -898,64 +924,68 @@ public class FlashChatManager
   
   public String a(int paramInt, String paramString1, String paramString2)
   {
-    Object localObject2 = null;
-    Object localObject3 = null;
-    FlashChatManager.FlashPackCfg localFlashPackCfg = FlashChatManager.FlashPackCfg.a(FileUtils.a(new File(a("flashchat." + paramInt + ".cfg"))));
+    Object localObject1 = (String)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localObject1 != null) {
+      return localObject1;
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("FlashChat", 2, "getAppPathByNameFromLocal " + localFlashPackCfg);
+      QLog.d("FlashChat", 2, "getAppPathByNameFromLocal " + paramInt + " path " + (String)localObject1 + " version" + paramString2 + " name" + paramString1);
     }
-    if (localFlashPackCfg == null) {
-      localObject1 = localObject3;
-    }
-    do
+    localObject1 = arwc.a(bdhb.a(new File(a("flashchat." + paramInt + ".cfg"))));
+    if (localObject1 == null)
     {
-      do
+      if (QLog.isColorLevel()) {
+        QLog.d("FlashChat", 2, "getAppPathByNameFromLocal cfg not exist ...");
+      }
+      return null;
+    }
+    Object localObject2 = a() + c(((arwc)localObject1).jdField_b_of_type_JavaLangString) + File.separator + paramString1;
+    if (QLog.isColorLevel()) {
+      QLog.d("FlashChat", 2, "getAppPathByNameFromLocal installPath: " + (String)localObject2 + "cfg info : " + localObject1);
+    }
+    localObject1 = new File((String)localObject2);
+    if (!((File)localObject1).exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FlashChat", 2, "getAppPathByNameFromLocal appDir not exist ...");
+      }
+      return null;
+    }
+    localObject2 = ((File)localObject1).listFiles();
+    int i;
+    if (localObject2 != null)
+    {
+      int j = localObject2.length;
+      i = 0;
+      label291:
+      if (i < j)
       {
-        return localObject1;
-        localObject1 = localObject3;
-      } while (!new File(a(localFlashPackCfg.jdField_b_of_type_JavaLangString)).exists());
-      paramString1 = new File(a() + b(localFlashPackCfg.jdField_b_of_type_JavaLangString) + File.separator + paramString1);
-      localObject1 = localObject3;
-    } while (!paramString1.exists());
-    Object localObject1 = paramString1.listFiles();
-    int i = localObject1.length;
-    paramInt = 0;
-    label192:
-    if (paramInt < i)
-    {
-      paramString1 = localObject1[paramInt];
-      if ((!paramString1.getName().endsWith(".app")) || (!paramString1.getName().contains(paramString2))) {}
+        localObject1 = localObject2[i];
+        if ((!((File)localObject1).isFile()) || (!((File)localObject1).getName().endsWith(".app")) || (!((File)localObject1).getName().contains(paramString2))) {}
+      }
     }
     for (;;)
     {
-      localObject1 = localObject3;
-      if (paramString1 == null) {
-        break;
-      }
-      try
+      if (localObject1 == null)
       {
-        new QZipFile(paramString1).close();
-        paramString2 = paramString1.getAbsolutePath();
-        paramString1 = paramString2;
-      }
-      catch (Exception paramString2)
-      {
-        for (;;)
-        {
-          paramString1.delete();
-          paramString2.printStackTrace();
-          paramString1 = localObject2;
+        if (QLog.isColorLevel()) {
+          QLog.d("FlashChat", 2, "getAppPathByNameFromLocal appFile not exist ...");
         }
+        return null;
+        i += 1;
+        break label291;
       }
-      localObject1 = paramString1;
+      localObject2 = ((File)localObject1).getAbsolutePath();
+      if (localObject2 != null) {
+        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
+      }
+      localObject1 = localObject2;
       if (!QLog.isColorLevel()) {
         break;
       }
-      QLog.d("FlashChat", 2, "getAppPathByNameFromLocal path " + paramString1);
-      return paramString1;
-      paramInt += 1;
-      break label192;
-      paramString1 = null;
+      QLog.d("FlashChat", 2, "getAppPathByNameFromLocal " + paramInt + " path " + (String)localObject2 + " version" + paramString2 + " name" + paramString1);
+      return localObject2;
+      localObject1 = null;
     }
   }
   
@@ -964,108 +994,77 @@ public class FlashChatManager
     return a() + paramString;
   }
   
-  public ArrayList a()
+  public ArrayList<FlashChatItem> a()
   {
     if (QLog.isColorLevel()) {
       QLog.d("FlashChat", 2, "getItemList");
     }
-    if (this.jdField_b_of_type_JavaUtilArrayList == null)
+    if (this.jdField_a_of_type_JavaUtilArrayList == null)
     {
       ArrayList localArrayList = new ArrayList();
-      localArrayList.add(FlashChatItem.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem);
+      localArrayList.add(FlashChatItem.sDefaultItem);
       return localArrayList;
     }
-    return this.jdField_b_of_type_JavaUtilArrayList;
+    return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ArrayOfJavaUtilArrayList[0] = a();
-    this.jdField_a_of_type_ArrayOfJavaUtilArrayList[1] = a();
+    this.jdField_a_of_type_Boolean = true;
+    b();
+    if (QLog.isColorLevel()) {
+      QLog.d("FlashChat", 2, "initAndGetSwitch " + this.jdField_a_of_type_Arwd.jdField_a_of_type_JavaLangString + " u " + this.jdField_a_of_type_Boolean);
+    }
+    if ((jdField_b_of_type_AndroidUtilSparseArray == null) || (jdField_c_of_type_AndroidUtilSparseArray == null))
+    {
+      SparseArray localSparseArray1 = new SparseArray();
+      SparseArray localSparseArray2 = new SparseArray();
+      SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("sp_flashchat_source", 0);
+      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      int j = arrayOfInt.length;
+      int i = 0;
+      while (i < j)
+      {
+        int k = arrayOfInt[i];
+        int m = localSharedPreferences.getInt("use_count_" + k, 0);
+        long l = localSharedPreferences.getLong("use_lasttime_" + k, 0L);
+        localSparseArray1.put(k, Integer.valueOf(m));
+        localSparseArray2.put(k, Long.valueOf(l));
+        i += 1;
+      }
+      jdField_b_of_type_AndroidUtilSparseArray = localSparseArray1;
+      jdField_c_of_type_AndroidUtilSparseArray = localSparseArray2;
+    }
+    ((arwb)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(109)).a();
   }
   
   public void a(int paramInt)
   {
-    VasQuickUpdateManager localVasQuickUpdateManager = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(183);
+    VasQuickUpdateManager localVasQuickUpdateManager = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(184);
     String str = "flashchat." + paramInt + ".cfg";
     this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, String.valueOf(paramInt));
-    localVasQuickUpdateManager.a(1002L, str, "initChatResource");
+    localVasQuickUpdateManager.downloadItem(1002L, str, "initChatResource");
   }
   
   public void a(Context paramContext, MessageRecord paramMessageRecord)
   {
-    FlashChatManager.GlobalConfig localGlobalConfig = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager$GlobalConfig;
-    String str1 = localGlobalConfig.jdField_c_of_type_JavaLangString;
-    String str2 = localGlobalConfig.jdField_f_of_type_JavaLangString;
-    String str3 = localGlobalConfig.jdField_g_of_type_JavaLangString;
+    arwd localarwd = this.jdField_a_of_type_Arwd;
+    String str1 = localarwd.jdField_c_of_type_JavaLangString;
+    String str2 = localarwd.jdField_f_of_type_JavaLangString;
+    String str3 = localarwd.jdField_g_of_type_JavaLangString;
     if (QLog.isColorLevel()) {
       QLog.d("FlashChat", 2, "clickQIMSource clickAppMsg url = " + str1 + ", actionData = " + str2 + ", actionDataA = " + str3 + paramMessageRecord);
     }
     if (a(paramContext, str1, str2, str3, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
-    while (!a(paramContext, str1, localGlobalConfig.jdField_b_of_type_JavaLangString, paramMessageRecord)) {
+    while (!a(paramContext, str1, localarwd.jdField_b_of_type_JavaLangString, paramMessageRecord)) {
       return;
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig)
+  public void a(ChatMessage paramChatMessage)
   {
-    int i = a(paramQQAppInterface);
-    int j = paramConfig.version.get();
-    if (QLog.isColorLevel()) {
-      QLog.i("FlashChat", 2, "handleFlashChatConfig l :" + i + " s : " + j);
-    }
-    if (i != j)
-    {
-      if ((paramConfig.msg_content_list == null) || (paramConfig.msg_content_list.size() <= 0)) {
-        break label253;
-      }
-      paramConfig = (ConfigurationService.Content)paramConfig.msg_content_list.get(0);
-      if (paramConfig == null) {
-        break label253;
-      }
-      if (paramConfig.compress.get() != 1) {
-        break label239;
-      }
-      paramConfig = OlympicUtil.a(paramConfig.content.get().toByteArray());
-      if (paramConfig == null) {
-        break label277;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        paramConfig = new String(paramConfig, "UTF-8");
-        if (paramConfig == null) {
-          break label253;
-        }
-        QLog.i("FlashChat", 1, "handleFlashChatConfig content" + paramConfig);
-        String str = c();
-        if (!FileUtils.a(str, paramConfig))
-        {
-          FileUtils.d(str);
-          FileUtils.a(str, paramConfig);
-        }
-        a(paramQQAppInterface, j);
-        c(paramConfig);
-        return;
-      }
-      catch (Exception paramConfig)
-      {
-        QLog.e("FlashChat", 1, "handleFlashChatConfig|uncompress failed" + paramConfig);
-        paramConfig = null;
-        continue;
-      }
-      label239:
-      paramConfig = paramConfig.content.get().toStringUtf8();
-      continue;
-      label253:
-      QLog.i("FlashChat", 1, "handleFlashChatConfig content empty");
-      FileUtils.d(c());
-      a(paramQQAppInterface, j);
-      return;
-      label277:
-      paramConfig = null;
+    if (((paramChatMessage instanceof MessageForArkFlashChat)) && (!paramChatMessage.isread)) {
+      a((MessageForArkFlashChat)paramChatMessage);
     }
   }
   
@@ -1090,58 +1089,173 @@ public class FlashChatManager
   
   public void a(Long paramLong)
   {
-    ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    paramLong = new FlashChatManager.StopTask(localArrayList, paramLong);
-    ArkDispatchTask.getInstance().send(paramLong);
-  }
-  
-  public void a(String paramString)
-  {
-    a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).edit().putString("flashchat_sel_0", paramString).commit();
-  }
-  
-  public void a(ArrayList paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlashChat", 2, "onGetFlashItems begin");
-    }
-    if (paramArrayList != null)
+    Object localObject = (CopyOnWriteArrayList)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clone();
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    if (localObject == null) {}
+    for (;;)
     {
-      paramArrayList.add(0, FlashChatItem.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem);
-      this.jdField_b_of_type_JavaUtilArrayList = paramArrayList;
-      this.jdField_a_of_type_ArrayOfJavaUtilArrayList[0] = this.jdField_b_of_type_JavaUtilArrayList;
-      this.jdField_a_of_type_ArrayOfJavaUtilArrayList[1] = this.jdField_b_of_type_JavaUtilArrayList;
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
+      return;
+      localObject = ((CopyOnWriteArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        FlashChatItem localFlashChatItem = (FlashChatItem)paramArrayList.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("FlashChat", 2, "onGetFlashItems item = " + localFlashChatItem);
+        MessageForArkFlashChat localMessageForArkFlashChat = (MessageForArkFlashChat)((Iterator)localObject).next();
+        if ((paramLong == null) || (paramLong.longValue() != localMessageForArkFlashChat.uniseq))
+        {
+          String str = localMessageForArkFlashChat.ark_app_message.appName;
+          ArkAppCenter.a().post(str, new FlashChatManager.2(this, localMessageForArkFlashChat));
         }
       }
     }
   }
   
-  void a(boolean paramBoolean)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).edit().putBoolean("flashchat_switch", paramBoolean).commit();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.notifyObservers(FlashChatObserver.class, 969, true, null);
+    this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString);
+  }
+  
+  public void a(String arg1, int paramInt)
+  {
+    int i = -1;
+    if (QLog.isColorLevel()) {
+      QLog.d("FlashChat", 2, "parseJson isMainThread scid " + ??? + " errCode " + paramInt);
+    }
+    if (??? != null)
+    {
+      if (!???.endsWith(".cfg")) {
+        break label227;
+      }
+      str1 = (String)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(???);
+      if (paramInt == 0) {}
+    }
+    else
+    {
+      try
+      {
+        i = Integer.valueOf(str1).intValue();
+        paramInt = i;
+      }
+      catch (Exception ???)
+      {
+        for (;;)
+        {
+          QLog.e("FlashChat", 2, "onCompleteDownload" + paramInt, ???);
+          paramInt = -1;
+        }
+      }
+      ??? = new Bundle();
+      ???.putInt("resourceId", paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.notifyObservers(arwe.class, 968, false, ???);
+    }
+    label227:
+    while (!???.endsWith(".zip"))
+    {
+      do
+      {
+        return;
+        ??? = arwc.a(bdhb.a(new File(a(???))));
+      } while ((??? == null) || (???.jdField_b_of_type_JavaLangString == null) || (str1 == null));
+      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(???.jdField_b_of_type_JavaLangString, str1);
+      ((VasQuickUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(184)).downloadItem(1002L, ???.jdField_b_of_type_JavaLangString, "FlashChatManager");
+      return;
+    }
+    Object localObject3 = (String)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(???);
+    if (paramInt != 0)
+    {
+      try
+      {
+        int j = Integer.valueOf((String)localObject3).intValue();
+        paramInt = j;
+      }
+      catch (Exception ???)
+      {
+        for (;;)
+        {
+          QLog.e("FlashChat", 2, "onCompleteDownload" + paramInt, ???);
+          paramInt = i;
+        }
+      }
+      ??? = new Bundle();
+      ???.putInt("resourceId", paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.notifyObservers(arwe.class, 968, false, ???);
+      return;
+    }
+    String str1 = a(???);
+    ??? = c(???);
+    String str2 = a() + ??? + File.separator;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    synchronized (str2.intern())
+    {
+      localFile = new File(str2);
+      try
+      {
+        a(str1, str2);
+        paramInt = Integer.valueOf((String)localObject3).intValue();
+        localObject3 = new Bundle();
+        ((Bundle)localObject3).putInt("resourceId", paramInt);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.notifyObservers(arwe.class, 968, true, (Bundle)localObject3);
+        new File(str1).delete();
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          localException.printStackTrace();
+          if (0 != 0) {
+            throw new NullPointerException();
+          }
+          if (localFile != null) {
+            localFile.delete();
+          }
+          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        }
+      }
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      }
+      return;
+    }
+  }
+  
+  public void a(ArrayList<FlashChatItem> paramArrayList, boolean paramBoolean, byte[] paramArrayOfByte)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FlashChat", 2, "onGetFlashItems begin " + paramBoolean);
+    }
+    if (paramArrayList != null)
+    {
+      if (paramBoolean) {
+        this.jdField_a_of_type_Aolc.a("FlashItems", paramArrayList);
+      }
+      paramArrayList.add(0, FlashChatItem.sDefaultItem);
+      this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        paramArrayOfByte = (FlashChatItem)paramArrayList.next();
+        if (QLog.isColorLevel()) {
+          QLog.i("FlashChat", 2, "onGetFlashItems item = " + paramArrayOfByte);
+        }
+        if ((paramArrayOfByte.id != -100001) && (paramArrayOfByte.id != -100000)) {
+          a(paramArrayOfByte.id, paramArrayOfByte.appName, paramArrayOfByte.ver);
+        }
+      }
+    }
   }
   
   public boolean a()
   {
+    b();
     if (QLog.isColorLevel()) {
-      QLog.d("FlashChat", 2, "isSwitchCombine g " + this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager$GlobalConfig.jdField_a_of_type_JavaLangString + " u " + this.jdField_a_of_type_Boolean);
+      QLog.d("FlashChat", 2, "isSwitchUser g " + this.jdField_a_of_type_Arwd.jdField_a_of_type_JavaLangString + " u " + this.jdField_a_of_type_Boolean);
     }
-    return (c()) && (this.jdField_a_of_type_Boolean);
+    return this.jdField_a_of_type_Boolean;
   }
   
   public boolean a(int paramInt, MessageRecord paramMessageRecord)
   {
-    SparseArray localSparseArray2 = jdField_a_of_type_AndroidUtilSparseArray;
-    SparseArray localSparseArray1 = jdField_b_of_type_AndroidUtilSparseArray;
+    SparseArray localSparseArray2 = jdField_b_of_type_AndroidUtilSparseArray;
+    SparseArray localSparseArray1 = jdField_c_of_type_AndroidUtilSparseArray;
     Object localObject1;
     Object localObject2;
     int j;
@@ -1198,29 +1312,54 @@ public class FlashChatManager
           localSparseArray2.put(paramInt, Integer.valueOf(j + 1));
           localSparseArray1.put(paramInt, Long.valueOf(l1));
           paramMessageRecord.saveExtInfoToExtStr("qim_source", "1");
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008278", "0X8008278", paramInt, 0, "", "", "", "");
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008278", "0X8008278", paramInt, 0, "", "", "", "");
         }
-        jdField_a_of_type_AndroidUtilSparseArray = localSparseArray2;
-        jdField_b_of_type_AndroidUtilSparseArray = localSparseArray1;
+        jdField_b_of_type_AndroidUtilSparseArray = localSparseArray2;
+        jdField_c_of_type_AndroidUtilSparseArray = localSparseArray1;
         return bool;
-        i = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager$GlobalConfig.jdField_b_of_type_Int;
+        i = this.jdField_a_of_type_Arwd.jdField_b_of_type_Int;
         l1 = 0L;
         break;
-        i = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager$GlobalConfig.jdField_c_of_type_Int;
+        i = this.jdField_a_of_type_Arwd.jdField_c_of_type_Int;
         l1 = 0L;
         break;
-        i = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager$GlobalConfig.jdField_a_of_type_Int;
+        i = this.jdField_a_of_type_Arwd.jdField_a_of_type_Int;
         l1 = 0L;
         break;
-        i = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager$GlobalConfig.jdField_d_of_type_Int;
-        l1 = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager$GlobalConfig.jdField_f_of_type_Int;
+        i = this.jdField_a_of_type_Arwd.d;
+        l1 = this.jdField_a_of_type_Arwd.jdField_f_of_type_Int;
         l1 *= 1000L;
         break;
-        i = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager$GlobalConfig.jdField_e_of_type_Int;
-        l1 = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager$GlobalConfig.jdField_g_of_type_Int;
+        i = this.jdField_a_of_type_Arwd.e;
+        l1 = this.jdField_a_of_type_Arwd.jdField_g_of_type_Int;
         l1 *= 1000L;
         break;
       }
+    }
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface)
+  {
+    if (!arwq.a(paramQQAppInterface).b(paramQQAppInterface)) {}
+    do
+    {
+      return false;
+      paramQQAppInterface = arwq.a(paramQQAppInterface).a(paramQQAppInterface);
+    } while ((paramQQAppInterface == null) || (paramQQAppInterface.size() <= 0));
+    paramQQAppInterface = paramQQAppInterface.iterator();
+    boolean bool = false;
+    if (paramQQAppInterface.hasNext())
+    {
+      if (((Integer)paramQQAppInterface.next()).intValue() != 1) {
+        break label72;
+      }
+      bool = true;
+    }
+    label72:
+    for (;;)
+    {
+      break;
+      return bool;
     }
   }
   
@@ -1231,38 +1370,62 @@ public class FlashChatManager
   
   public String b()
   {
-    return a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).getString("flashchat_sel_0", "");
+    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = null;
+    }
+    return str1;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).getBoolean("flashchat_switch", true);
-    c();
-    if (QLog.isColorLevel()) {
-      QLog.d("FlashChat", 2, "initAndGetSwitch " + this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager$GlobalConfig.jdField_a_of_type_JavaLangString + " u " + this.jdField_a_of_type_Boolean);
-    }
-    if ((jdField_a_of_type_AndroidUtilSparseArray == null) || (jdField_b_of_type_AndroidUtilSparseArray == null))
+    if (this.d) {}
+    for (;;)
     {
-      SparseArray localSparseArray1 = new SparseArray();
-      SparseArray localSparseArray2 = new SparseArray();
-      SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("sp_flashchat_source", 0);
-      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      int j = arrayOfInt.length;
-      int i = 0;
-      while (i < j)
+      return;
+      this.d = true;
+      Object localObject1 = (aonn)aoks.a().a(168);
+      if (localObject1 == null)
       {
-        int k = arrayOfInt[i];
-        int m = localSharedPreferences.getInt("use_count_" + k, 0);
-        long l = localSharedPreferences.getLong("use_lasttime_" + k, 0L);
-        localSparseArray1.put(k, Integer.valueOf(m));
-        localSparseArray2.put(k, Long.valueOf(l));
-        i += 1;
+        localObject1 = "";
+        b((String)localObject1);
       }
-      jdField_a_of_type_AndroidUtilSparseArray = localSparseArray1;
-      jdField_b_of_type_AndroidUtilSparseArray = localSparseArray2;
+      try
+      {
+        localObject1 = (ArrayList)this.jdField_a_of_type_Aolc.a("FlashItems", ArrayList.class, 0);
+        a((ArrayList)localObject1, false, null);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        StringBuilder localStringBuilder = new StringBuilder().append("loadFromCacheOnce ");
+        if (localObject1 != null)
+        {
+          localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
+          QLog.i("FlashChat", 2, localObject1);
+          return;
+          localObject1 = ((aonn)localObject1).jdField_a_of_type_JavaLangString;
+        }
+      }
+      catch (QStorageInstantiateException localQStorageInstantiateException)
+      {
+        for (;;)
+        {
+          QLog.i("FlashChat", 1, "loadFromCacheOnce", localQStorageInstantiateException);
+          Object localObject2 = null;
+        }
+      }
+      catch (QStorageSafeDeleteException localQStorageSafeDeleteException)
+      {
+        for (;;)
+        {
+          QLog.i("FlashChat", 1, "loadFromCacheOnce", localQStorageSafeDeleteException);
+          String str = null;
+          continue;
+          str = "null";
+        }
+      }
     }
-    a();
-    ((FlashChatHanlder)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(109)).b();
   }
   
   public void b(MessageForArkFlashChat paramMessageForArkFlashChat)
@@ -1270,86 +1433,43 @@ public class FlashChatManager
     if ((Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramMessageForArkFlashChat.uniseq)) == null) {
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramMessageForArkFlashChat.uniseq), Long.valueOf(System.currentTimeMillis()));
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramMessageForArkFlashChat);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramMessageForArkFlashChat);
   }
   
   public void b(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("FlashChat", 2, "parseJson isMainThread scid " + paramString);
-    }
-    if (paramString != null)
-    {
-      if (!paramString.endsWith(".cfg")) {
-        break label132;
-      }
-      ??? = (String)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      paramString = FlashChatManager.FlashPackCfg.a(FileUtils.a(new File(a(paramString))));
-      if ((paramString != null) && (paramString.jdField_b_of_type_JavaLangString != null) && (??? != null))
-      {
-        this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString.jdField_b_of_type_JavaLangString, ???);
-        ((VasQuickUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(183)).a(1002L, paramString.jdField_b_of_type_JavaLangString, "FlashChatManager");
-      }
-    }
-    label132:
-    while (!paramString.endsWith(".zip")) {
-      return;
-    }
-    String str3 = a(paramString);
-    ??? = b(paramString);
-    String str2 = a() + ??? + File.separator;
-    new StringBuilder().append(a()).append(???).append("tmp").append(File.separator).toString();
-    File localFile;
-    synchronized (str2.intern())
-    {
-      localFile = new File(str2);
+      QLog.i("FlashChat", 2, "loadConfig l :" + paramString);
     }
     try
     {
-      a(str3, str2);
-      int i = Integer.valueOf((String)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).intValue();
-      paramString = new Bundle();
-      paramString.putInt("resourceId", i);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.notifyObservers(FlashChatObserver.class, 968, true, paramString);
+      this.jdField_a_of_type_Arwd = ((arwd)aolc.a(paramString, arwd.class));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.notifyObservers(arwe.class, 969, true, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.notifyObservers(arwe.class, 970, true, null);
       return;
-      paramString = finally;
-      throw paramString;
     }
-    catch (Exception paramString)
+    catch (QStorageInstantiateException localQStorageInstantiateException)
     {
       for (;;)
       {
-        paramString = paramString;
-        paramString.printStackTrace();
-        if (0 != 0) {
-          throw new NullPointerException();
-        }
-        if (localFile != null) {
-          localFile.delete();
-        }
+        QLog.i("FlashChat", 1, "loadConfig l :" + paramString, localQStorageInstantiateException);
       }
     }
-    finally {}
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlashChat", 2, "setTurnOn isChecked " + paramBoolean);
-    }
-    ((FlashChatHanlder)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(109)).a(paramBoolean);
   }
   
   public boolean b()
   {
-    c();
-    if (QLog.isColorLevel()) {
-      QLog.d("FlashChat", 2, "isSwitchUser g " + this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager$GlobalConfig.jdField_a_of_type_JavaLangString + " u " + this.jdField_a_of_type_Boolean);
+    boolean bool2 = false;
+    arwd localarwd = this.jdField_a_of_type_Arwd;
+    boolean bool1 = bool2;
+    if (localarwd != null)
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(localarwd.jdField_g_of_type_JavaLangString)) {
+        bool1 = true;
+      }
     }
-    if (MobileQQ.processName.startsWith("com.tencent.mobileqq")) {
-      return TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager$GlobalConfig.jdField_a_of_type_JavaLangString, "1");
-    }
-    return this.jdField_a_of_type_Boolean;
+    return bool1;
   }
   
   public boolean b(MessageForArkFlashChat paramMessageForArkFlashChat)
@@ -1360,115 +1480,48 @@ public class FlashChatManager
   
   public String c()
   {
-    String str = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath() + File.separator + "flashchat" + File.separator;
-    new File(str).mkdirs();
-    return str + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "config.xml";
-  }
-  
-  public void c()
-  {
-    if (this.d) {
-      return;
-    }
-    this.d = true;
-    c(FileUtils.a(new File(c())));
-  }
-  
-  public void c(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FlashChat", 2, "loadConfig l :" + paramString);
-    }
-    FlashChatManager.GlobalConfig localGlobalConfig = new FlashChatManager.GlobalConfig();
-    try
-    {
-      paramString = new JSONObject(paramString);
-      localGlobalConfig.jdField_a_of_type_JavaLangString = paramString.optString("entry", "1");
-      localGlobalConfig.jdField_b_of_type_JavaLangString = paramString.optString("name", null);
-      localGlobalConfig.jdField_d_of_type_JavaLangString = paramString.optString("icon", null);
-      localGlobalConfig.jdField_f_of_type_JavaLangString = paramString.optString("actionI", null);
-      localGlobalConfig.jdField_g_of_type_JavaLangString = paramString.optString("actionA", null);
-      localGlobalConfig.jdField_c_of_type_JavaLangString = paramString.optString("url", null);
-      localGlobalConfig.jdField_a_of_type_Int = paramString.optInt("scC", 2);
-      localGlobalConfig.jdField_b_of_type_Int = paramString.optInt("hiC", 2);
-      localGlobalConfig.jdField_c_of_type_Int = paramString.optInt("flC", 2);
-      localGlobalConfig.jdField_d_of_type_Int = paramString.optInt("piC", 3);
-      localGlobalConfig.jdField_e_of_type_Int = paramString.optInt("tvC", 3);
-      localGlobalConfig.h = paramString.optString("recordRule", "1");
-      localGlobalConfig.jdField_f_of_type_Int = paramString.optInt("pIn", 60);
-      localGlobalConfig.jdField_g_of_type_Int = paramString.optInt("tvI", 60);
-      localGlobalConfig.jdField_a_of_type_Boolean = "1".equals(paramString.optString("qimNotifyEnable", "0"));
-      localGlobalConfig.jdField_b_of_type_Boolean = "1".equals(paramString.optString("qimPopUpEnable", "0"));
-      localGlobalConfig.i = paramString.optString("qimNotifySource", "");
-      localGlobalConfig.jdField_e_of_type_JavaLangString = paramString.optString("qimNotifyLogo", "");
-      this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager$GlobalConfig = localGlobalConfig;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.notifyObservers(FlashChatObserver.class, 969, true, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.notifyObservers(FlashChatObserver.class, 970, true, null);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        QLog.e("FlashChat", 1, "handleFlashChatConfig failed" + paramString);
-      }
-    }
-  }
-  
-  public boolean c()
-  {
-    return false;
-  }
-  
-  public String d()
-  {
-    FlashChatManager.GlobalConfig localGlobalConfig = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager$GlobalConfig;
-    if (localGlobalConfig != null) {
-      return localGlobalConfig.i;
+    arwd localarwd = this.jdField_a_of_type_Arwd;
+    if (localarwd != null) {
+      return localarwd.i;
     }
     return "";
   }
   
-  public void d()
+  public void c()
   {
     if (QLog.isColorLevel()) {
       QLog.d("FlashChat", 2, "requestAIOFlashItems");
     }
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), FlashChatServlet.class);
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), arwj.class);
     localNewIntent.putExtra("req_type", 1);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
   }
   
-  public boolean d()
+  public boolean c()
   {
-    boolean bool2 = false;
-    FlashChatManager.GlobalConfig localGlobalConfig = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager$GlobalConfig;
-    boolean bool1 = bool2;
-    if (localGlobalConfig != null)
-    {
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(localGlobalConfig.jdField_g_of_type_JavaLangString)) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public boolean e()
-  {
-    FlashChatManager.GlobalConfig localGlobalConfig = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager$GlobalConfig;
-    if (localGlobalConfig != null) {
-      return localGlobalConfig.jdField_a_of_type_Boolean;
+    arwd localarwd = this.jdField_a_of_type_Arwd;
+    if (localarwd != null) {
+      return localarwd.jdField_a_of_type_Boolean;
     }
     return false;
   }
   
-  public boolean f()
+  public boolean c(MessageForArkFlashChat paramMessageForArkFlashChat)
   {
-    FlashChatManager.GlobalConfig localGlobalConfig = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager$GlobalConfig;
-    if (localGlobalConfig != null) {
-      return localGlobalConfig.jdField_b_of_type_Boolean;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      if (((MessageForArkFlashChat)localIterator.next()).uniseq == paramMessageForArkFlashChat.uniseq) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean d()
+  {
+    arwd localarwd = this.jdField_a_of_type_Arwd;
+    if (localarwd != null) {
+      return localarwd.jdField_b_of_type_Boolean;
     }
     return false;
   }
@@ -1478,8 +1531,8 @@ public class FlashChatManager
     this.d = false;
     this.jdField_b_of_type_Boolean = false;
     SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("sp_flashchat_source", 0).edit();
-    SparseArray localSparseArray1 = jdField_a_of_type_AndroidUtilSparseArray;
-    SparseArray localSparseArray2 = jdField_b_of_type_AndroidUtilSparseArray;
+    SparseArray localSparseArray1 = jdField_b_of_type_AndroidUtilSparseArray;
+    SparseArray localSparseArray2 = jdField_c_of_type_AndroidUtilSparseArray;
     if (localSparseArray1 != null)
     {
       int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
@@ -1506,7 +1559,7 @@ public class FlashChatManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatManager
  * JD-Core Version:    0.7.0.1
  */

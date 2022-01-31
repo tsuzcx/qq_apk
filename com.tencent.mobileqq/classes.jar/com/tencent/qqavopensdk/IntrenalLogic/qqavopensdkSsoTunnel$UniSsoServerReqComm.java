@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class qqavopensdkSsoTunnel$UniSsoServerReqComm
-  extends MessageMicro
+  extends MessageMicro<UniSsoServerReqComm>
 {
   public static final int MQQVER_FIELD_NUMBER = 3;
   public static final int OSVER_FIELD_NUMBER = 2;
@@ -19,7 +19,7 @@ public final class qqavopensdkSsoTunnel$UniSsoServerReqComm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqavopensdk.IntrenalLogic.qqavopensdkSsoTunnel.UniSsoServerReqComm
  * JD-Core Version:    0.7.0.1
  */

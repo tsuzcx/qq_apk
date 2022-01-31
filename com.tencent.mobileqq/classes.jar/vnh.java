@@ -1,16 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.QQStoryWarningActivity;
 
-class vnh
-  implements DialogInterface.OnClickListener
+public class vnh
+  implements View.OnClickListener
 {
-  vnh(vnf paramvnf) {}
+  public vnh(QQStoryWarningActivity paramQQStoryWarningActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    this.a.superFinish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vnh
  * JD-Core Version:    0.7.0.1
  */

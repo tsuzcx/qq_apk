@@ -1,6 +1,5 @@
 package mqq.os;
 
-import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
@@ -20,7 +19,7 @@ public class MqqHandler
   boolean beRegulatoring = false;
   Handler.Callback mCallback;
   final Looper mLooper;
-  private NativeHandler mNativeHandler;
+  private MqqHandler.NativeHandler mNativeHandler;
   MessageQueue mQueue;
   MqqMessageQueue mSubQueue;
   
@@ -68,7 +67,7 @@ public class MqqHandler
         this.beInjected = false;
         continue;
       }
-      this.mNativeHandler = new NativeHandler(paramLooper, paramCallback);
+      this.mNativeHandler = new MqqHandler.NativeHandler(paramLooper, paramCallback);
       this.mNativeHandler.mParentHandler = this;
       return;
       if ((this.mLooper != Looper.getMainLooper()) && (sRegulatorCallback != null)) {
@@ -177,6 +176,13 @@ public class MqqHandler
   public final Message obtainMessage(int paramInt, Object paramObject)
   {
     return Message.obtain(this.mNativeHandler, paramInt, paramObject);
+  }
+  
+  public Message obtainMessage(int paramInt, Runnable paramRunnable)
+  {
+    paramRunnable = Message.obtain(this.mNativeHandler, paramRunnable);
+    paramRunnable.what = paramInt;
+    return paramRunnable;
   }
   
   public final boolean post(Runnable paramRunnable)
@@ -328,22 +334,6 @@ public class MqqHandler
     localStringBuffer.append(Integer.toHexString(System.identityHashCode(this)));
     localStringBuffer.append("}");
     return localStringBuffer.toString();
-  }
-  
-  private static class NativeHandler
-    extends Handler
-  {
-    MqqHandler mParentHandler;
-    
-    public NativeHandler(Looper paramLooper, Handler.Callback paramCallback)
-    {
-      super(paramCallback);
-    }
-    
-    public void dispatchMessage(Message paramMessage)
-    {
-      this.mParentHandler.dispatchMessage(paramMessage);
-    }
   }
 }
 

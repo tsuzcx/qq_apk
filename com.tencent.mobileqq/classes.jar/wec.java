@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
+import android.graphics.Bitmap;
 
-public class wec
-  implements Runnable
+public abstract interface wec
 {
-  public wec(ZhituManager paramZhituManager, ZhituResponse paramZhituResponse, String paramString1, int paramInt, String paramString2) {}
+  public abstract void a(String paramString, Bitmap paramBitmap);
   
-  public void run()
-  {
-    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager, this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituResponse, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
-  }
+  public abstract void a(String paramString, Throwable paramThrowable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wec
  * JD-Core Version:    0.7.0.1
  */

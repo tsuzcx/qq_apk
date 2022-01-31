@@ -1,108 +1,78 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayBasePanel;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public class afcj
-  extends FriendListObserver
+class afcj
+  implements bepk
 {
-  public afcj(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  afcj(afcg paramafcg) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    boolean bool = this.a.g;
-    FriendsManager localFriendsManager = (FriendsManager)this.a.app.getManager(50);
-    if (localFriendsManager != null) {
-      bool = localFriendsManager.b(NearbyPeopleProfileActivity.a(this.a).uin);
+    if ((!afcg.a(this.a)) && (paramInt == 1)) {
+      this.a.a();
     }
-    for (;;)
+  }
+  
+  public void a(int paramInt, float paramFloat)
+  {
+    if (afcg.a(this.a)) {
+      this.a.a(paramInt, paramFloat);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    afcg.a(this.a);
+    if (afcg.a(this.a)) {
+      this.a.b(paramInt);
+    }
+  }
+  
+  public void f()
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.an();
+    }
+    if (afcg.a(this.a)) {
+      this.a.f();
+    }
+    if (!alaz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
+    for (int i = 1;; i = 0)
     {
-      if (bool != this.a.g)
-      {
-        this.a.g = bool;
-        this.a.runOnUiThread(new afck(this));
+      if (i != 0) {
+        alaz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "intimate", true);
       }
       return;
     }
   }
   
-  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
+  public void g()
   {
-    if ((paramSetting == null) || (NearbyPeopleProfileActivity.a(this.a) == null) || (!NearbyPeopleProfileActivity.a(this.a).uin.equals(paramSetting.uin))) {
-      return;
-    }
-    if ((paramSetting.bFaceFlags & 0x20) != 0) {
-      this.a.l = 0;
-    }
-    for (;;)
-    {
-      this.a.b = paramSetting.url;
-      if (NearbyPeopleProfileActivity.a(this.a) != null) {
-        NearbyPeopleProfileActivity.a(this.a).k();
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("Q.nearby_people_card.", 2, "onGetHeadInfo mheadSize is: " + this.a.l + " mGetHeadUrl is: " + this.a.b);
-      return;
-      if ((paramSetting.bFaceFlags & 0x10) != 0) {
-        this.a.l = 640;
-      } else if ((paramSetting.bFaceFlags & 0x8) != 0) {
-        this.a.l = 140;
-      } else if ((paramSetting.bFaceFlags & 0x4) != 0) {
-        this.a.l = 100;
-      } else {
-        this.a.l = 40;
-      }
+    if (afcg.a(this.a)) {
+      this.a.g();
     }
   }
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  public void h()
   {
-    if ((!paramBoolean1) || (!paramBoolean2) || (!paramBoolean3) || (TextUtils.isEmpty(paramString))) {}
-    while ((this.a.e != 3) || (this.a.g) || (NearbyPeopleProfileActivity.a(this.a) == null) || (!paramString.equals(NearbyPeopleProfileActivity.a(this.a).uin))) {
-      return;
+    if (afcg.a(this.a)) {
+      this.a.h();
     }
-    a();
   }
   
-  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
+  public void i()
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
-    while ((this.a.e != 3) || (this.a.g) || (NearbyPeopleProfileActivity.a(this.a) == null) || (!paramString.equals(NearbyPeopleProfileActivity.a(this.a).uin))) {
-      return;
+    afcg.b(this.a);
+    if (afcg.a(this.a)) {
+      this.a.i();
     }
-    a();
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((!paramBoolean1) || (!paramBoolean2)) {}
-    while ((this.a.e != 3) || (NearbyPeopleProfileActivity.a(this.a) == null) || (TextUtils.isEmpty(NearbyPeopleProfileActivity.a(this.a).uin))) {
-      return;
-    }
-    a();
-  }
-  
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onUpdateStangerHead: " + paramBoolean1 + "isStrangerHead: " + paramBoolean2);
-    }
-    if ((paramBoolean1) && (!TextUtils.isEmpty(paramString)) && (NearbyPeopleProfileActivity.a(this.a) != null) && (paramString.equals(NearbyPeopleProfileActivity.a(this.a).uin)) && (paramBoolean2) && ((this.a.l == 640) || (this.a.l == 0)) && (!TextUtils.isEmpty(this.a.b)) && (!this.a.h)) {
-      this.a.a(paramString, this.a.l, this.a.b, true);
+    if (alaz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+      alaz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "intimate", false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afcj
  * JD-Core Version:    0.7.0.1
  */

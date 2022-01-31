@@ -1,21 +1,25 @@
-import android.os.Handler;
-import com.tencent.mobileqq.secspy.SecSpyFileManager;
-import com.tencent.mobileqq.secspy.SecSpyFileManager.UploadProgressInfo;
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahxa
-  implements Runnable
+class ahxa
+  implements DialogInterface.OnClickListener
 {
-  public ahxa(SecSpyFileManager paramSecSpyFileManager, SecSpyFileManager.UploadProgressInfo paramUploadProgressInfo, long paramLong) {}
+  ahxa(ahww paramahww) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (SecSpyFileManager.UploadProgressInfo.a(this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$UploadProgressInfo)) {
+    try
+    {
+      paramDialogInterface.dismiss();
+      ahww.a(this.a, ahww.a(this.a), Long.valueOf(ahww.a(this.a)).longValue());
+      ahww.a(this.a);
       return;
     }
-    float f = SecSpyFileManager.UploadProgressInfo.a(this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$UploadProgressInfo) / SecSpyFileManager.UploadProgressInfo.b(this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$UploadProgressInfo);
-    this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager.a(this.jdField_a_of_type_Long, 3, new Object[] { Integer.valueOf((int)(f * 100.0F)) });
-    this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager.a.a().postDelayed(this, 20000L);
+    catch (Exception paramDialogInterface)
+    {
+      QLog.e("SDKEmotionSettingManager", 1, "setNegativeButton cancel error");
+    }
   }
 }
 

@@ -9,9 +9,9 @@ public class QZoneObserver
   public static final int a = 1000;
   public static final int b = 1001;
   
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {

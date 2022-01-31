@@ -1,29 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.ReportR5Builder;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnLastReadRefreshListener;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class lsj
-  implements View.OnClickListener
+class lsj
+  extends Handler
 {
-  public lsj(ReadInJoyFooterPresenter paramReadInJoyFooterPresenter) {}
+  WeakReference<lsi> a;
   
-  public void onClick(View paramView)
+  lsj(Looper paramLooper, lsi paramlsi)
   {
-    paramView = new ReadInJoyUtils.ReportR5Builder().g().a().d().a(ReadInJoyFooterPresenter.a(this.a).e()).e().f().c().a();
-    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066FD", "0X80066FD", 0, 0, ReadInJoyHelper.a(), "", "", paramView, false);
-    if (ReadInJoyFooterPresenter.a(this.a) != null) {
-      ReadInJoyFooterPresenter.a(this.a).a();
+    super(paramLooper);
+    this.a = new WeakReference(paramlsi);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    lsi locallsi = (lsi)this.a.get();
+    if (locallsi != null) {
+      locallsi.a(paramMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lsj
  * JD-Core Version:    0.7.0.1
  */

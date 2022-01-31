@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/lk" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.multitalk.ui.widget.MultiTalkVideoView android:id="@id/d6n" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/d6o" android:background="#dd1f2127" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/d6p" android:background="@drawable/ww" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <TextView android:textSize="@dimen/ko" android:textColor="@color/a6q" android:gravity="center" android:id="@id/d6q" android:background="#dd1f2127" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/d6s" />
+    <ImageView android:id="@id/d6r" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/ber" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/d6s" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:src="@raw/multitalk_network_mark" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

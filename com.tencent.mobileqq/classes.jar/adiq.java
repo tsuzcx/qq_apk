@@ -1,82 +1,33 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBaby.IUniformDownloaderAppBabyListener;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class adiq
+  implements beud
 {
-  int jdField_a_of_type_Int;
-  public final long a;
-  public UniformDownloaderAppBaby.IUniformDownloaderAppBabyListener a;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  final String jdField_a_of_type_JavaLangString;
-  public int b;
-  public final long b;
-  Object b;
-  long jdField_c_of_type_Long;
-  Object jdField_c_of_type_JavaLangObject = new Object();
-  long d;
+  public adiq(MainFragment paramMainFragment) {}
   
-  public adiq(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk, long paramLong1, String paramString, long paramLong2)
+  public void a()
   {
-    this.jdField_b_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_c_of_type_Long = 0L;
-    this.d = 0L;
-    this.jdField_b_of_type_Int = -1;
-  }
-  
-  public long a()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    int i = GesturePWDUtils.getGesturePWDState(MainFragment.a(this.a).getApp(), MainFragment.a(this.a).getCurrentAccountUin());
+    int j = GesturePWDUtils.getGesturePWDMode(MainFragment.a(this.a).getApp(), MainFragment.a(this.a).getCurrentAccountUin());
+    if ((i == 2) && (j == 20))
     {
-      long l = this.jdField_c_of_type_Long;
-      return l;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      QLog.i(UniformDownloaderAppBabySdk.jdField_a_of_type_JavaLangString, 1, "[UniformDL] setStatus:" + this.jdField_a_of_type_Int + " -> " + paramInt + "url:" + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Int = paramInt;
-      return;
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_c_of_type_Long = paramLong;
-      return;
-    }
-  }
-  
-  public long b()
-  {
-    synchronized (this.jdField_c_of_type_JavaLangObject)
-    {
-      long l = this.d;
-      return l;
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    synchronized (this.jdField_c_of_type_JavaLangObject)
-    {
-      this.d = paramLong;
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("mainactivity", 2, "gesturepwd manual move.");
+      }
+      ((SplashActivity)this.a.getActivity()).startUnlockActivity();
+      this.a.getActivity().overridePendingTransition(2130771997, 2130771990);
+      MainFragment.a(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adiq
  * JD-Core Version:    0.7.0.1
  */

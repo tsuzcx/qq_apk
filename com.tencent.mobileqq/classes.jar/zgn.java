@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class zgn
-  implements Runnable
+class zgn
+  extends Handler
 {
-  public zgn(MessageHandler paramMessageHandler) {}
-  
-  public void run()
+  zgn(zgm paramzgm, Looper paramLooper)
   {
-    FileUtils.a(AIOShareActionSheet.a, true);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((paramMessage.what == 203) && ((paramMessage.obj instanceof Bundle)))
+    {
+      paramMessage = (Bundle)paramMessage.obj;
+      zgm.a(this.a, paramMessage);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zgn
  * JD-Core Version:    0.7.0.1
  */

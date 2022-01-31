@@ -1,64 +1,16 @@
-import android.view.WindowManager.BadTokenException;
-import android.view.accessibility.AccessibilityManager;
-import android.view.accessibility.AccessibilityManager.AccessibilityStateChangeListener;
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
-import java.lang.reflect.Field;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
-public final class advn
-  implements HookMethodCallback
+public class advn
+  implements DialogInterface.OnClickListener
 {
-  public advn(Class paramClass) {}
+  public advn(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMethodHookParam.throwable == null) {
-      return;
-    }
-    Object localObject;
-    if (paramMethodHookParam.throwable.getCause() != null) {
-      localObject = paramMethodHookParam.throwable.getCause();
-    }
-    while ((localObject instanceof WindowManager.BadTokenException)) {
-      try
-      {
-        localObject = this.a.getDeclaredField("mAccessibilityInteractionConnectionManager");
-        ((Field)localObject).setAccessible(true);
-        localObject = ((Field)localObject).get(paramMethodHookParam.thisObject);
-        Field localField = this.a.getDeclaredField("mAccessibilityManager");
-        localField.setAccessible(true);
-        ((AccessibilityManager)localField.get(paramMethodHookParam.thisObject)).removeAccessibilityStateChangeListener((AccessibilityManager.AccessibilityStateChangeListener)localObject);
-        return;
-      }
-      catch (NoSuchFieldException paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-        return;
-        localObject = paramMethodHookParam.throwable;
-      }
-      catch (IllegalArgumentException paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-        return;
-      }
-      catch (IllegalAccessException paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-        return;
-      }
-      catch (Exception paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-        return;
-      }
-      catch (Error paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-      }
-    }
+    this.a.a(this.a.b);
   }
-  
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 

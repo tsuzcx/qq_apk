@@ -1,795 +1,251 @@
-import android.os.IBinder;
-import android.os.Parcel;
-import com.tencent.mobileqq.music.IQQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 public class aejq
-  implements IQQPlayerService
+  extends akis
 {
-  private IBinder a;
+  protected LayoutInflater a;
+  public ArrayList<aejp> a;
   
-  public aejq(IBinder paramIBinder)
+  public aejq(Context paramContext, ArrayList<String> paramArrayList)
   {
-    this.a = paramIBinder;
-  }
-  
-  public int a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
+    super(paramArrayList, paramContext.app, paramContext.a, 1, true);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramArrayList.getSystemService("layout_inflater"));
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    aejp localaejp;
+    int i;
+    ArrayList localArrayList;
+    int j;
+    label71:
+    Object localObject;
+    if (localaejp == null)
     {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerService");
-      this.a.transact(9, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      return i;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  /* Error */
-  public android.content.Intent a()
-  {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore_3
-    //   8: aload_2
-    //   9: ldc 25
-    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: aload_0
-    //   15: getfield 15	aejq:a	Landroid/os/IBinder;
-    //   18: bipush 18
-    //   20: aload_2
-    //   21: aload_3
-    //   22: iconst_0
-    //   23: invokeinterface 35 5 0
-    //   28: pop
-    //   29: aload_3
-    //   30: invokevirtual 38	android/os/Parcel:readException	()V
-    //   33: aload_3
-    //   34: invokevirtual 41	android/os/Parcel:readInt	()I
-    //   37: ifeq +26 -> 63
-    //   40: getstatic 51	android/content/Intent:CREATOR	Landroid/os/Parcelable$Creator;
-    //   43: aload_3
-    //   44: invokeinterface 57 2 0
-    //   49: checkcast 47	android/content/Intent
-    //   52: astore_1
-    //   53: aload_3
-    //   54: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   57: aload_2
-    //   58: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   61: aload_1
-    //   62: areturn
-    //   63: aconst_null
-    //   64: astore_1
-    //   65: goto -12 -> 53
-    //   68: astore_1
-    //   69: aload_3
-    //   70: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   73: aload_2
-    //   74: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   77: aload_1
-    //   78: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	79	0	this	aejq
-    //   52	13	1	localIntent	android.content.Intent
-    //   68	10	1	localObject	Object
-    //   3	71	2	localParcel1	Parcel
-    //   7	63	3	localParcel2	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   8	53	68	finally
-  }
-  
-  /* Error */
-  public android.os.Bundle a()
-  {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore_3
-    //   8: aload_2
-    //   9: ldc 25
-    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: aload_0
-    //   15: getfield 15	aejq:a	Landroid/os/IBinder;
-    //   18: bipush 20
-    //   20: aload_2
-    //   21: aload_3
-    //   22: iconst_0
-    //   23: invokeinterface 35 5 0
-    //   28: pop
-    //   29: aload_3
-    //   30: invokevirtual 38	android/os/Parcel:readException	()V
-    //   33: aload_3
-    //   34: invokevirtual 41	android/os/Parcel:readInt	()I
-    //   37: ifeq +26 -> 63
-    //   40: getstatic 61	android/os/Bundle:CREATOR	Landroid/os/Parcelable$Creator;
-    //   43: aload_3
-    //   44: invokeinterface 57 2 0
-    //   49: checkcast 60	android/os/Bundle
-    //   52: astore_1
-    //   53: aload_3
-    //   54: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   57: aload_2
-    //   58: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   61: aload_1
-    //   62: areturn
-    //   63: aconst_null
-    //   64: astore_1
-    //   65: goto -12 -> 53
-    //   68: astore_1
-    //   69: aload_3
-    //   70: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   73: aload_2
-    //   74: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   77: aload_1
-    //   78: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	79	0	this	aejq
-    //   52	13	1	localBundle	android.os.Bundle
-    //   68	10	1	localObject	Object
-    //   3	71	2	localParcel1	Parcel
-    //   7	63	3	localParcel2	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   8	53	68	finally
-  }
-  
-  /* Error */
-  public SongInfo a()
-  {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore_3
-    //   8: aload_2
-    //   9: ldc 25
-    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: aload_0
-    //   15: getfield 15	aejq:a	Landroid/os/IBinder;
-    //   18: bipush 13
-    //   20: aload_2
-    //   21: aload_3
-    //   22: iconst_0
-    //   23: invokeinterface 35 5 0
-    //   28: pop
-    //   29: aload_3
-    //   30: invokevirtual 38	android/os/Parcel:readException	()V
-    //   33: aload_3
-    //   34: invokevirtual 41	android/os/Parcel:readInt	()I
-    //   37: ifeq +26 -> 63
-    //   40: getstatic 65	com/tencent/mobileqq/music/SongInfo:CREATOR	Landroid/os/Parcelable$Creator;
-    //   43: aload_3
-    //   44: invokeinterface 57 2 0
-    //   49: checkcast 64	com/tencent/mobileqq/music/SongInfo
-    //   52: astore_1
-    //   53: aload_3
-    //   54: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   57: aload_2
-    //   58: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   61: aload_1
-    //   62: areturn
-    //   63: aconst_null
-    //   64: astore_1
-    //   65: goto -12 -> 53
-    //   68: astore_1
-    //   69: aload_3
-    //   70: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   73: aload_2
-    //   74: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   77: aload_1
-    //   78: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	79	0	this	aejq
-    //   52	13	1	localSongInfo	SongInfo
-    //   68	10	1	localObject	Object
-    //   3	71	2	localParcel1	Parcel
-    //   7	63	3	localParcel2	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   8	53	68	finally
-  }
-  
-  public String a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerService");
-      this.a.transact(23, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      String str = localParcel2.readString();
-      return str;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public String a(int paramInt, String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerService");
-      localParcel1.writeInt(paramInt);
-      localParcel1.writeString(paramString);
-      this.a.transact(22, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      paramString = localParcel2.readString();
-      return paramString;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerService");
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerService");
-      localParcel1.writeInt(paramInt);
-      this.a.transact(5, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  /* Error */
-  public void a(android.content.Intent paramIntent)
-  {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore_3
-    //   8: aload_2
-    //   9: ldc 25
-    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: aload_1
-    //   15: ifnull +42 -> 57
-    //   18: aload_2
-    //   19: iconst_1
-    //   20: invokevirtual 74	android/os/Parcel:writeInt	(I)V
-    //   23: aload_1
-    //   24: aload_2
-    //   25: iconst_0
-    //   26: invokevirtual 82	android/content/Intent:writeToParcel	(Landroid/os/Parcel;I)V
-    //   29: aload_0
-    //   30: getfield 15	aejq:a	Landroid/os/IBinder;
-    //   33: bipush 17
-    //   35: aload_2
-    //   36: aload_3
-    //   37: iconst_0
-    //   38: invokeinterface 35 5 0
-    //   43: pop
-    //   44: aload_3
-    //   45: invokevirtual 38	android/os/Parcel:readException	()V
-    //   48: aload_3
-    //   49: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   52: aload_2
-    //   53: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   56: return
-    //   57: aload_2
-    //   58: iconst_0
-    //   59: invokevirtual 74	android/os/Parcel:writeInt	(I)V
-    //   62: goto -33 -> 29
-    //   65: astore_1
-    //   66: aload_3
-    //   67: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   70: aload_2
-    //   71: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   74: aload_1
-    //   75: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	76	0	this	aejq
-    //   0	76	1	paramIntent	android.content.Intent
-    //   3	68	2	localParcel1	Parcel
-    //   7	60	3	localParcel2	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   8	14	65	finally
-    //   18	29	65	finally
-    //   29	48	65	finally
-    //   57	62	65	finally
-  }
-  
-  /* Error */
-  public void a(android.os.Bundle paramBundle)
-  {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore_3
-    //   8: aload_2
-    //   9: ldc 25
-    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: aload_1
-    //   15: ifnull +42 -> 57
-    //   18: aload_2
-    //   19: iconst_1
-    //   20: invokevirtual 74	android/os/Parcel:writeInt	(I)V
-    //   23: aload_1
-    //   24: aload_2
-    //   25: iconst_0
-    //   26: invokevirtual 84	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
-    //   29: aload_0
-    //   30: getfield 15	aejq:a	Landroid/os/IBinder;
-    //   33: bipush 19
-    //   35: aload_2
-    //   36: aload_3
-    //   37: iconst_0
-    //   38: invokeinterface 35 5 0
-    //   43: pop
-    //   44: aload_3
-    //   45: invokevirtual 38	android/os/Parcel:readException	()V
-    //   48: aload_3
-    //   49: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   52: aload_2
-    //   53: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   56: return
-    //   57: aload_2
-    //   58: iconst_0
-    //   59: invokevirtual 74	android/os/Parcel:writeInt	(I)V
-    //   62: goto -33 -> 29
-    //   65: astore_1
-    //   66: aload_3
-    //   67: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   70: aload_2
-    //   71: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   74: aload_1
-    //   75: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	76	0	this	aejq
-    //   0	76	1	paramBundle	android.os.Bundle
-    //   3	68	2	localParcel1	Parcel
-    //   7	60	3	localParcel2	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   8	14	65	finally
-    //   18	29	65	finally
-    //   29	48	65	finally
-    //   57	62	65	finally
-  }
-  
-  /* Error */
-  public void a(com.tencent.mobileqq.music.IQQPlayerCallback paramIQQPlayerCallback)
-  {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore_3
-    //   8: aload_2
-    //   9: ldc 25
-    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: aload_1
-    //   15: ifnull +43 -> 58
-    //   18: aload_1
-    //   19: invokeinterface 91 1 0
-    //   24: astore_1
-    //   25: aload_2
-    //   26: aload_1
-    //   27: invokevirtual 94	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
-    //   30: aload_0
-    //   31: getfield 15	aejq:a	Landroid/os/IBinder;
-    //   34: bipush 24
-    //   36: aload_2
-    //   37: aload_3
-    //   38: iconst_0
-    //   39: invokeinterface 35 5 0
-    //   44: pop
-    //   45: aload_3
-    //   46: invokevirtual 38	android/os/Parcel:readException	()V
-    //   49: aload_3
-    //   50: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   53: aload_2
-    //   54: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   57: return
-    //   58: aconst_null
-    //   59: astore_1
-    //   60: goto -35 -> 25
-    //   63: astore_1
-    //   64: aload_3
-    //   65: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   68: aload_2
-    //   69: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   72: aload_1
-    //   73: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	74	0	this	aejq
-    //   0	74	1	paramIQQPlayerCallback	com.tencent.mobileqq.music.IQQPlayerCallback
-    //   3	66	2	localParcel1	Parcel
-    //   7	58	3	localParcel2	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   8	14	63	finally
-    //   18	25	63	finally
-    //   25	49	63	finally
-  }
-  
-  public void a(String paramString, SongInfo[] paramArrayOfSongInfo, int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerService");
-      localParcel1.writeString(paramString);
-      localParcel1.writeTypedArray(paramArrayOfSongInfo, 0);
-      localParcel1.writeInt(paramInt);
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool = false;
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerService");
-      this.a.transact(8, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      if (i != 0) {
-        bool = true;
+      i = 0;
+      localArrayList = new ArrayList();
+      paramArrayList = new ArrayList();
+      j = 0;
+      if (j >= i) {
+        break label272;
       }
-      return bool;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool = false;
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerService");
-      localParcel1.writeString(paramString);
-      this.a.transact(21, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      if (i != 0) {
-        bool = true;
+      localObject = (String)localaejp.get(j);
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (Pattern.matches("\\d{5,}+\\|+\\d{1,}", (CharSequence)localObject))) {
+        break label125;
       }
-      return bool;
     }
-    finally
+    for (;;)
     {
-      localParcel2.recycle();
-      localParcel1.recycle();
+      j += 1;
+      break label71;
+      i = localaejp.size();
+      break;
+      label125:
+      int k = ((String)localObject).indexOf('|');
+      String str = ((String)localObject).substring(0, k);
+      k = Integer.parseInt(((String)localObject).substring(k + 1));
+      if ((!TextUtils.isEmpty(str)) && ((k & 0x1) == 1))
+      {
+        localObject = new aejp();
+        ((aejp)localObject).jdField_a_of_type_Int = 1;
+        ((aejp)localObject).jdField_a_of_type_JavaLangString = str;
+        ((aejp)localObject).jdField_b_of_type_Int = k;
+        localArrayList.add(localObject);
+      }
+      else if ((!TextUtils.isEmpty(str)) && ((k & 0x1) == 0))
+      {
+        localObject = new aejp();
+        ((aejp)localObject).jdField_a_of_type_Int = 1;
+        ((aejp)localObject).jdField_a_of_type_JavaLangString = str;
+        ((aejp)localObject).jdField_b_of_type_Int = k;
+        paramArrayList.add(localObject);
+      }
+    }
+    label272:
+    if (localArrayList.size() > 0)
+    {
+      localaejp = new aejp();
+      localaejp.jdField_a_of_type_Int = 0;
+      localaejp.jdField_b_of_type_Int = 1;
+      this.jdField_a_of_type_JavaUtilArrayList.add(0, localaejp);
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
+    }
+    if (paramArrayList.size() > 0)
+    {
+      localaejp = new aejp();
+      localaejp.jdField_a_of_type_Int = 0;
+      localaejp.jdField_b_of_type_Int = 0;
+      this.jdField_a_of_type_JavaUtilArrayList.add(localaejp);
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    }
+    ThreadManager.post(new TroopTransferActivity.TroopMemberListAdapter.1(this, paramContext), 8, null, false);
+  }
+  
+  public aejp a(String paramString)
+  {
+    Object localObject = null;
+    int i = 0;
+    if ((localObject == null) && (i < this.jdField_a_of_type_JavaUtilArrayList.size()))
+    {
+      aejp localaejp = (aejp)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if ((localaejp == null) || (!bdeu.a(localaejp.jdField_a_of_type_JavaLangString, paramString))) {
+        break label61;
+      }
+      localObject = localaejp;
+    }
+    label61:
+    for (;;)
+    {
+      i += 1;
+      break;
+      return localObject;
     }
   }
   
-  public SongInfo[] a()
+  public List<aejp> a()
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramInt >= 0)
     {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerService");
-      this.a.transact(16, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      SongInfo[] arrayOfSongInfo = (SongInfo[])localParcel2.createTypedArray(SongInfo.CREATOR);
-      return arrayOfSongInfo;
+      localObject1 = localObject2;
+      if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        localObject1 = (aejp)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      }
     }
-    finally
+    return localObject1;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    aejp localaejp = (aejp)getItem(paramInt);
+    if ((localaejp != null) && (localaejp.jdField_a_of_type_Int == 0)) {
+      return 0;
+    }
+    if ((localaejp != null) && (localaejp.jdField_a_of_type_Int == 1)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int i = getItemViewType(paramInt);
+    aejp localaejp = (aejp)getItem(paramInt);
+    if (i == 0) {
+      if (paramView == null)
+      {
+        paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559236, paramViewGroup, false);
+        paramView = new aejr(null);
+        paramView.c = null;
+        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup);
+        paramViewGroup.setTag(paramView);
+        paramView.jdField_a_of_type_Aejp = localaejp;
+        if ((localaejp == null) || (localaejp.jdField_b_of_type_Int != 1)) {
+          break label135;
+        }
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131694196);
+      }
+    }
+    label256:
+    for (;;)
     {
-      localParcel2.recycle();
-      localParcel1.recycle();
+      if ((paramView != null) && (paramView.jdField_a_of_type_AndroidWidgetTextView != null)) {
+        paramViewGroup.setContentDescription(paramView.jdField_a_of_type_AndroidWidgetTextView.getText());
+      }
+      return paramViewGroup;
+      Object localObject = (aejr)paramView.getTag();
+      paramViewGroup = paramView;
+      paramView = (View)localObject;
+      break;
+      label135:
+      if ((localaejp != null) && (localaejp.jdField_b_of_type_Int == 0))
+      {
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131721001);
+      }
+      else
+      {
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText("");
+        continue;
+        if (i == 1)
+        {
+          if (paramView == null)
+          {
+            paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562773, paramViewGroup, false);
+            paramView.findViewById(2131378651).setVisibility(8);
+            paramView.findViewById(2131363618).setVisibility(8);
+            paramViewGroup = new aejr(null);
+            paramViewGroup.c = ((ImageView)paramView.findViewById(2131368796));
+            paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378896));
+            paramView.setTag(paramViewGroup);
+            paramViewGroup.jdField_a_of_type_Aejp = localaejp;
+            if (localaejp == null) {
+              break label345;
+            }
+            localObject = localaejp.jdField_a_of_type_JavaLangString;
+            label274:
+            if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals("0"))) {
+              break label351;
+            }
+            paramViewGroup.c.setImageDrawable(bdhj.b());
+            label302:
+            if (localaejp == null) {
+              break label377;
+            }
+          }
+          label345:
+          label351:
+          label377:
+          for (localObject = localaejp.jdField_b_of_type_JavaLangString;; localObject = "")
+          {
+            paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+            localObject = paramView;
+            paramView = paramViewGroup;
+            paramViewGroup = (ViewGroup)localObject;
+            break;
+            paramViewGroup = (aejr)paramView.getTag();
+            break label256;
+            localObject = null;
+            break label274;
+            paramViewGroup.jdField_a_of_type_JavaLangString = ((String)localObject);
+            paramViewGroup.c.setImageBitmap(a(1, localaejp.jdField_a_of_type_JavaLangString));
+            break label302;
+          }
+        }
+        localObject = null;
+        paramViewGroup = paramView;
+        paramView = (View)localObject;
+      }
     }
   }
   
-  public IBinder asBinder()
+  public int getViewTypeCount()
   {
-    return this.a;
-  }
-  
-  public int b()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerService");
-      this.a.transact(10, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      return i;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void b()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerService");
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  /* Error */
-  public void b(com.tencent.mobileqq.music.IQQPlayerCallback paramIQQPlayerCallback)
-  {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore_3
-    //   8: aload_2
-    //   9: ldc 25
-    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: aload_1
-    //   15: ifnull +43 -> 58
-    //   18: aload_1
-    //   19: invokeinterface 91 1 0
-    //   24: astore_1
-    //   25: aload_2
-    //   26: aload_1
-    //   27: invokevirtual 94	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
-    //   30: aload_0
-    //   31: getfield 15	aejq:a	Landroid/os/IBinder;
-    //   34: bipush 25
-    //   36: aload_2
-    //   37: aload_3
-    //   38: iconst_0
-    //   39: invokeinterface 35 5 0
-    //   44: pop
-    //   45: aload_3
-    //   46: invokevirtual 38	android/os/Parcel:readException	()V
-    //   49: aload_3
-    //   50: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   53: aload_2
-    //   54: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   57: return
-    //   58: aconst_null
-    //   59: astore_1
-    //   60: goto -35 -> 25
-    //   63: astore_1
-    //   64: aload_3
-    //   65: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   68: aload_2
-    //   69: invokevirtual 44	android/os/Parcel:recycle	()V
-    //   72: aload_1
-    //   73: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	74	0	this	aejq
-    //   0	74	1	paramIQQPlayerCallback	com.tencent.mobileqq.music.IQQPlayerCallback
-    //   3	66	2	localParcel1	Parcel
-    //   7	58	3	localParcel2	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   8	14	63	finally
-    //   18	25	63	finally
-    //   25	49	63	finally
-  }
-  
-  public int c()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerService");
-      this.a.transact(11, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      return i;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void c()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerService");
-      this.a.transact(4, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public int d()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerService");
-      this.a.transact(12, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      return i;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void d()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerService");
-      this.a.transact(6, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public int e()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerService");
-      this.a.transact(14, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      return i;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void e()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerService");
-      this.a.transact(7, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public int f()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerService");
-      this.a.transact(15, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      return i;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public int g()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerService");
-      this.a.transact(26, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      return i;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    return 2;
   }
 }
 

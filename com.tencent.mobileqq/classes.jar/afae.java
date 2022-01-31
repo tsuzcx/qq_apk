@@ -1,28 +1,30 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
 public class afae
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public afae(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public afae(DoodlePanel paramDoodlePanel) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131370584).setAlpha(0.5F);
-    }
-    for (;;)
+    switch (paramInt)
     {
-      return false;
-      this.a.a.findViewById(2131370584).setAlpha(1.0F);
+    case 0: 
+    default: 
+      return;
     }
+    if (DoodlePanel.a(this.a) != null) {
+      DoodlePanel.a(this.a).a(false, false);
+    }
+    DoodlePanel.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afae
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,54 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.database.Cursor;
+import android.os.Parcel;
+import com.tencent.open.base.http.HttpCacheData;
+import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
+import com.tencent.open.component.cache.database.DbCacheData.Structure;
 
-class hlu
-  implements Animation.AnimationListener
+public final class hlu
+  implements DbCacheData.DbCreator
 {
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_Hlt.a.getBackground();
-  
-  hlu(hlt paramhlt) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a()
   {
-    this.jdField_a_of_type_Hlt.a.clearAnimation();
-    this.jdField_a_of_type_Hlt.a.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    return 1;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public HttpCacheData a(Cursor paramCursor)
   {
-    this.jdField_a_of_type_Hlt.a.setBackgroundResource(17170443);
+    try
+    {
+      String str1 = paramCursor.getString(paramCursor.getColumnIndex("urlKey"));
+      String str2 = paramCursor.getString(paramCursor.getColumnIndex("ETag"));
+      long l1 = paramCursor.getLong(paramCursor.getColumnIndex("lastModify"));
+      long l2 = paramCursor.getLong(paramCursor.getColumnIndex("cacheTime"));
+      Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("response"));
+      paramCursor = Parcel.obtain();
+      paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
+      paramCursor.setDataPosition(0);
+      localObject = paramCursor.readString();
+      paramCursor.recycle();
+      paramCursor = new HttpCacheData(str1, str2, l1, l2, (String)localObject);
+      return paramCursor;
+    }
+    catch (Exception paramCursor)
+    {
+      paramCursor.printStackTrace();
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public DbCacheData.Structure[] a()
+  {
+    return new DbCacheData.Structure[] { new DbCacheData.Structure("urlKey", "TEXT"), new DbCacheData.Structure("ETag", "TEXT"), new DbCacheData.Structure("lastModify", "INTEGER"), new DbCacheData.Structure("cacheTime", "INTEGER"), new DbCacheData.Structure("response", "BLOB") };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hlu
  * JD-Core Version:    0.7.0.1
  */

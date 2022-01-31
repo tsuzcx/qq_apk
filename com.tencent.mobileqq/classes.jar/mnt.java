@@ -1,79 +1,106 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ArticleTopicData.TopicInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.PointF;
+import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.qphone.base.util.QLog;
 
-public final class mnt
-  implements Parcelable.Creator
+public class mnt
+  implements lst
 {
-  public FastWebArticleInfo a(Parcel paramParcel)
+  private int jdField_a_of_type_Int;
+  private int b;
+  private int c;
+  private int d;
+  private int e;
+  
+  private mnt(VideoLayerUI paramVideoLayerUI) {}
+  
+  public void a(lss paramlss)
   {
-    int i = 0;
-    boolean bool2 = true;
-    FastWebArticleInfo localFastWebArticleInfo = new FastWebArticleInfo();
-    localFastWebArticleInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localFastWebArticleInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localFastWebArticleInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localFastWebArticleInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localFastWebArticleInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localFastWebArticleInfo.d = paramParcel.readString();
-    localFastWebArticleInfo.e = paramParcel.readString();
-    localFastWebArticleInfo.f = paramParcel.readString();
-    localFastWebArticleInfo.h = paramParcel.readString();
-    localFastWebArticleInfo.g = paramParcel.readString();
-    localFastWebArticleInfo.j = paramParcel.readString();
-    localFastWebArticleInfo.i = paramParcel.readString();
-    localFastWebArticleInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localFastWebArticleInfo.k = paramParcel.readString();
-    if (paramParcel.readInt() == 1)
-    {
-      bool1 = true;
-      localFastWebArticleInfo.jdField_a_of_type_Boolean = bool1;
-      localFastWebArticleInfo.l = paramParcel.readString();
-      localFastWebArticleInfo.jdField_c_of_type_Long = paramParcel.readLong();
-      if (paramParcel.readInt() != 1) {
-        break label277;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "onMoveEnd");
     }
-    ArrayList localArrayList;
-    label277:
-    for (boolean bool1 = bool2;; bool1 = false)
+    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_Mll.a() == 2) {
+      return;
+    }
+    PointF localPointF = paramlss.a();
+    int i = (int)localPointF.x;
+    int j = (int)localPointF.y;
+    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.q == 0) {
+      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMgp[0].a(i, j, true);
+    }
+    for (;;)
     {
-      localFastWebArticleInfo.jdField_b_of_type_Boolean = bool1;
-      int j = paramParcel.readInt();
-      if (j < 0) {
-        break label293;
-      }
-      localArrayList = new ArrayList();
-      while (i < j)
+      llm.a(false);
+      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(Integer.valueOf(6503), Boolean.valueOf(false));
+      return;
+      if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.q == 1) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h()))
       {
-        ArticleTopicData.TopicInfo localTopicInfo = new ArticleTopicData.TopicInfo();
-        localTopicInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-        localTopicInfo.jdField_a_of_type_Long = paramParcel.readLong();
-        localTopicInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-        localArrayList.add(localTopicInfo);
-        i += 1;
+        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.b(i, j);
+        this.c = ((int)paramlss.a());
+        this.d = ((int)paramlss.b());
+        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(this.e, this.jdField_a_of_type_Int, this.b, this.c, this.d);
+        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.n(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t);
       }
-      bool1 = false;
-      break;
     }
-    localFastWebArticleInfo.jdField_a_of_type_JavaUtilList = localArrayList;
-    return localFastWebArticleInfo;
-    label293:
-    localFastWebArticleInfo.jdField_a_of_type_JavaUtilList = null;
-    return localFastWebArticleInfo;
   }
   
-  public FastWebArticleInfo[] a(int paramInt)
+  public boolean a(lss paramlss)
   {
-    return new FastWebArticleInfo[paramInt];
+    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_Mll.a() == 2) {
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "onMove");
+    }
+    paramlss = paramlss.a();
+    int i = (int)paramlss.x;
+    int j = (int)paramlss.y;
+    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.q == 0) {
+      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMgp[0].a(i, j, false);
+    }
+    for (;;)
+    {
+      return true;
+      if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.q == 1) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h()))
+      {
+        if ((Math.abs(i) > 5) || (Math.abs(j) > 5)) {
+          VideoLayerUI.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, true);
+        }
+        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.b(i, j);
+      }
+    }
+  }
+  
+  public boolean b(lss paramlss)
+  {
+    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.q == 0)
+    {
+      paramlss = paramlss.a();
+      int i = (int)paramlss.x;
+      int j = (int)paramlss.y;
+      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMgp[0].a(i, j, false);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 1, "onMoveBegin, mTargetIndex[" + this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.q + "], startX[" + this.jdField_a_of_type_Int + "], startY[" + this.b + "], startPosition[" + this.e + "], mTopOffset[" + this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.n + "], mBottomOffset[" + this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.o + "], mRecordCtrlBottom[" + this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.i + "]");
+        QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "onMoveBegin");
+      }
+      llm.a(true);
+      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(Integer.valueOf(6503), Boolean.valueOf(true));
+      return true;
+      if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.q == 1) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h()))
+      {
+        this.jdField_a_of_type_Int = ((int)paramlss.a());
+        this.b = ((int)paramlss.b());
+        this.e = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mnt
  * JD-Core Version:    0.7.0.1
  */

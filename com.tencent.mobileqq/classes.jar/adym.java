@@ -1,30 +1,39 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.leba.LebaFeedsAdapter;
-import com.tencent.mobileqq.leba.view.LebaFPSXListView;
-import com.tencent.mobileqq.leba.view.LebaFeedsViewBase;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adym
-  implements ValueAnimator.AnimatorUpdateListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adym(LebaFeedsAdapter paramLebaFeedsAdapter, LebaFeedsViewBase paramLebaFeedsViewBase, int paramInt) {}
+  public adym(SoundAndVibrateActivity paramSoundAndVibrateActivity, String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i <= 240)
+    if (NotifyPushSettingActivity.a())
     {
-      float f = i / 240.0F;
-      this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaFeedsViewBase.setAlpha(1.0F - f);
+      SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setChecked(false);
+      SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setVisibility(8);
+      SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.getString(2131719358), "qqsetting_notify_showcontent_key", paramBoolean);
+      if (!paramBoolean) {
+        break label124;
+      }
     }
-    do
+    label124:
+    for (int i = 1;; i = 0)
     {
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
       return;
-      paramValueAnimator = this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaFeedsViewBase.getLayoutParams();
-    } while (paramValueAnimator == null);
-    paramValueAnimator.height = (this.jdField_a_of_type_Int - (int)((i - 240) / 120.0F * this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaFeedsViewBase.setLayoutParams(paramValueAnimator);
-    LebaFeedsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsAdapter).requestLayout();
+      if (paramBoolean)
+      {
+        SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setVisibility(0);
+        break;
+      }
+      SoundAndVibrateActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity).setVisibility(8);
+      break;
+    }
   }
 }
 

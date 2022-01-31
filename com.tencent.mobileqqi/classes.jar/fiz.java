@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.app.message.C2CMessageProcessor;
+import com.tencent.mobileqq.data.MessageRecord;
 import java.util.Comparator;
 
 public class fiz
   implements Comparator
 {
-  public fiz(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public fiz(C2CMessageProcessor paramC2CMessageProcessor) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    if (paramMessageRecord1.time > paramMessageRecord2.time) {
+      return 1;
+    }
+    return -1;
   }
 }
 

@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public final class stRecommandAlbum
   extends JceStruct
 {
-  static ArrayList cache_recommandAlbumVec = new ArrayList();
-  static ArrayList cache_recommandAlbumVecEx;
+  static ArrayList<Album> cache_recommandAlbumVec = new ArrayList();
+  static ArrayList<stRecommandAlbumEx> cache_recommandAlbumVecEx;
   public boolean hasMore;
-  public ArrayList recommandAlbumVec;
-  public ArrayList recommandAlbumVecEx;
+  public ArrayList<Album> recommandAlbumVec;
+  public ArrayList<stRecommandAlbumEx> recommandAlbumVecEx;
   public String summary = "";
   
   static
@@ -26,12 +26,12 @@ public final class stRecommandAlbum
   
   public stRecommandAlbum() {}
   
-  public stRecommandAlbum(ArrayList paramArrayList1, String paramString, boolean paramBoolean, ArrayList paramArrayList2)
+  public stRecommandAlbum(ArrayList<Album> paramArrayList, String paramString, boolean paramBoolean, ArrayList<stRecommandAlbumEx> paramArrayList1)
   {
-    this.recommandAlbumVec = paramArrayList1;
+    this.recommandAlbumVec = paramArrayList;
     this.summary = paramString;
     this.hasMore = paramBoolean;
-    this.recommandAlbumVecEx = paramArrayList2;
+    this.recommandAlbumVecEx = paramArrayList1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

@@ -1,129 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ajgs
-  extends TroopObserver
+class ajgs
+  implements View.OnClickListener
 {
-  public ajgs(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  ajgs(ajgb paramajgb) {}
   
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  public void onClick(View paramView)
   {
-    super.a(paramBoolean, paramString1, paramString2, paramInt, paramString3, paramString4);
-    if (QLog.isColorLevel()) {
-      QLog.d("PublishHomeWorkFragment", 2, "onGetHomeworkTroopIdentity: isSuccess:" + paramBoolean + ", identity:" + paramInt + ", course:" + paramString3);
-    }
-    if (!PublishHomeWorkFragment.a(this.a))
+    if ((this.a.c != null) && ("1600000104".equals(this.a.c.trim())))
     {
-      if (!PublishHomeWorkFragment.b(this.a)) {
-        PublishHomeWorkFragment.a(this.a, paramString3);
+      if (this.a.jdField_b_of_type_Long == 77313L) {
+        this.a.jdField_b_of_type_Boolean = true;
       }
-      switch (paramInt)
-      {
-      default: 
-        PublishHomeWorkFragment.a(this.a, "");
-        PublishHomeWorkFragment.a(this.a, false);
-        PublishHomeWorkFragment.b(this.a, paramString3);
-        PublishHomeWorkFragment.c(this.a, paramString4);
-        if (PublishHomeWorkFragment.a(this.a) == null)
-        {
-          paramString2 = "";
-          label176:
-          paramString4 = PublishHomeWorkFragment.b(this.a);
-          if (!PublishHomeWorkFragment.c(this.a)) {
-            break label496;
-          }
-          if (PublishHomeWorkFragment.c(this.a) != null) {
-            break label485;
-          }
-          paramString1 = "";
-          label208:
-          TroopReportor.a("Grp_edu", "homework", "CreateHw_Show", 0, 0, new String[] { paramString2, paramString4, paramString1 });
-          if (!paramBoolean) {
-            break label523;
-          }
-          PublishHomeWorkFragment.d(this.a, paramString3);
-          if (PublishHomeWorkFragment.e(this.a) == null) {
-            PublishHomeWorkFragment.d(this.a, "");
-          }
-          if (!TextUtils.isEmpty(PublishHomeWorkFragment.e(this.a)))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("PublishHomeWorkFragment", 2, "检测到你是" + PublishHomeWorkFragment.e(this.a) + "老师，将按照需求定制入口");
-            }
-            paramString1 = this.a.a(PublishHomeWorkFragment.e(this.a));
-            if (paramString1 != null)
-            {
-              PublishHomeWorkFragment.a(this.a).clear();
-              PublishHomeWorkFragment.a(this.a).addAll(paramString1);
-            }
-          }
-        }
-        break;
-      }
+      this.a.c();
     }
-    for (;;)
+    do
     {
-      QLog.i("PublishHomeWorkFragment", 1, "init data success");
-      PublishHomeWorkFragment.b(this.a);
       return;
-      PublishHomeWorkFragment.a(this.a, "classteacher");
-      PublishHomeWorkFragment.a(this.a, true);
-      break;
-      PublishHomeWorkFragment.a(this.a, "teacher");
-      PublishHomeWorkFragment.a(this.a, true);
-      break;
-      PublishHomeWorkFragment.a(this.a, "parent");
-      PublishHomeWorkFragment.a(this.a, false);
-      break;
-      PublishHomeWorkFragment.a(this.a, "student");
-      PublishHomeWorkFragment.a(this.a, false);
-      break;
-      paramString2 = PublishHomeWorkFragment.a(this.a);
-      break label176;
-      label485:
-      paramString1 = PublishHomeWorkFragment.c(this.a);
-      break label208;
-      label496:
-      if (PublishHomeWorkFragment.d(this.a) == null)
-      {
-        paramString1 = "";
-        break label208;
-      }
-      paramString1 = PublishHomeWorkFragment.d(this.a);
-      break label208;
-      label523:
-      QQToast.a(this.a.getActivity(), "获取教师身份失败", 0).a();
-    }
-  }
-  
-  public void b(boolean paramBoolean, long paramLong, int paramInt)
-  {
-    super.b(paramBoolean, paramLong, paramInt);
-    this.a.b();
-    if (paramBoolean)
-    {
-      PublishHomeWorkFragment.a(this.a);
-      return;
-    }
-    if (paramInt == 10022)
-    {
-      PublishHomeWorkFragment.a(this.a, 1, null, null);
-      return;
-    }
-    if (paramInt == 1002)
-    {
-      PublishHomeWorkFragment.a(this.a, 2, null, null);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("PublishHomeWorkFragment", 2, "UPLOAD_ERROR_UNKNOWN_ERROR: server error " + paramInt);
-    }
-    PublishHomeWorkFragment.a(this.a, 3, null, null);
+      paramView = new Intent(ajgb.a(this.a), QRLoginMgrActivity.class);
+      paramView.putExtra("loginInfo", this.a.jdField_b_of_type_JavaLangString);
+      paramView.putExtra("appType", this.a.jdField_b_of_type_Int);
+      paramView.putExtra("subappid", this.a.a);
+      paramView.putExtra("clientType", this.a.jdField_b_of_type_Long);
+      ajgb.a(this.a).startActivity(paramView);
+      azqs.a(ajgb.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 10, 0, "", "", "", "");
+    } while (this.a.jdField_b_of_type_Long != 77313L);
+    azqs.b(ajgb.a(this.a).app, "dc00898", "", "", "0X8008880", "0X8008880", 0, 0, "", "", "", "");
   }
 }
 

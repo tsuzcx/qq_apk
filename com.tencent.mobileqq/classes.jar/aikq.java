@@ -1,31 +1,37 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
+import QC.CommonRsp;
+import QC.FaceRsp;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class aikq
-  implements Runnable
+  extends amcd
 {
-  public aikq(SubAccountControll paramSubAccountControll) {}
+  public aikq(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, FaceRsp paramFaceRsp)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    if (paramFaceRsp != null)
     {
-      localStringBuilder = new StringBuilder().append("launchTimedMsgTask() run. startAllSubMessageAccountMsg(false) app.isRunning=");
-      if (this.a.a != null) {
-        break label82;
+      int i = paramFaceRsp.authRet;
+      localObject = "null";
+      if (paramFaceRsp.stRet != null) {
+        localObject = "ret:" + paramFaceRsp.stRet.ret + " auth:" + paramFaceRsp.authRet + " url:" + paramFaceRsp.url;
+      }
+      QLog.d("AvatarPendantActivity", 2, "onSetFace: " + paramBoolean + "," + (String)localObject);
+      if (i == 0) {
+        this.a.r = 0;
       }
     }
-    label82:
-    for (Object localObject = "null";; localObject = Boolean.valueOf(this.a.a.isRunning()))
+    else
     {
-      QLog.d("SUB_ACCOUNT", 2, localObject);
-      if ((this.a.a != null) && (this.a.a.isRunning())) {
-        this.a.a.f(false);
-      }
       return;
     }
+    this.a.r = 1;
+    Object localObject = new Intent(this.a, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", paramFaceRsp.url);
+    this.a.startActivity((Intent)localObject);
   }
 }
 

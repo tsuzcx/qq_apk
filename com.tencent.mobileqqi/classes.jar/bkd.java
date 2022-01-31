@@ -1,28 +1,14 @@
-import com.tencent.av.ui.MultiVideoCtrlLayerUI;
-import com.tencent.av.utils.TipsManager;
-import com.tencent.av.utils.TipsManager.TYPE;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import org.json.JSONObject;
 
 public class bkd
   implements Runnable
 {
-  bkd(MultiVideoCtrlLayerUI paramMultiVideoCtrlLayerUI) {}
+  public bkd(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
-    {
-      this.a.w();
-      if (this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager != null)
-      {
-        this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(TipsManager.TYPE.TYPE_REQUEST_REMOTE_VIDEO.ordinal());
-        this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(TipsManager.TYPE.TYPE_REQUEST_REMOTE_VIDEO_FAIL, true);
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("MultiVideoCtrlLayerUI", 2, "RequestVideoTimeOutRunnable, mVideoController = null!!!");
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.b(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

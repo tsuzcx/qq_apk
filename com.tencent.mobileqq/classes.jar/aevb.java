@@ -1,25 +1,24 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.send.capturepart.StoryLocalPublishPart;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class aevb
-  implements ProviderContainerView.ContainerViewListener
+class aevb
+  extends AnimatorListenerAdapter
 {
-  public aevb(StoryLocalPublishPart paramStoryLocalPublishPart) {}
+  aevb(aeva paramaeva) {}
   
-  public void a(View paramView, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
     this.a.d();
   }
   
-  public void y_()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.c();
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aevb
  * JD-Core Version:    0.7.0.1
  */

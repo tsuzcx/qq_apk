@@ -1,27 +1,16 @@
-import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
-import com.tencent.mobileqq.activity.aio.doodle.PathDrawer;
-import java.util.List;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class usp
-  implements uss
+public abstract interface usp
 {
-  public usp(LoadDataJob paramLoadDataJob, List paramList) {}
+  public abstract void a(ust paramust, View paramView, String paramString);
   
-  public void a(PathDrawer paramPathDrawer)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramPathDrawer);
-      if (this.jdField_a_of_type_JavaUtilList.size() == LoadDataJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob)) {
-        this.jdField_a_of_type_JavaUtilList.notifyAll();
-      }
-      return;
-    }
-  }
+  public abstract void a(ust paramust, ViewGroup paramViewGroup, View paramView, int paramInt, CommentEntry paramCommentEntry);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     usp
  * JD-Core Version:    0.7.0.1
  */

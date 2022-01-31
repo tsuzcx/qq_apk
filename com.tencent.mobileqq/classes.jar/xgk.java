@@ -1,32 +1,30 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule;
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class xgk
-  implements ConditionSearchManager.IConfigListener
+  implements xdy
 {
-  public xgk(QWalletIPCModule paramQWalletIPCModule, Bundle paramBundle, int paramInt, ResultReceiver paramResultReceiver, ConditionSearchManager paramConditionSearchManager) {}
+  public xgk(DoodleLayout paramDoodleLayout) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(Bitmap paramBitmap, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("updateResult", this.jdField_a_of_type_Int);
-    if (paramBoolean) {
-      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", 1);
+    if (this.a.a != null) {
+      this.a.a.a(paramBitmap, paramBoolean);
     }
-    for (;;)
+  }
+  
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (this.a.a != null)
     {
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.d(this);
-      return;
-      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", -1);
+      wxe.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
+      this.a.a.a(paramArrayOfByte);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgk
  * JD-Core Version:    0.7.0.1
  */

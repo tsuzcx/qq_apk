@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class acyg
-  extends acxu
+class acyg
+  implements View.OnClickListener
 {
-  public acyg(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  acyg(acye paramacye) {}
   
-  protected String a()
+  public void onClick(View paramView)
   {
-    return "StateSaveToWeiYunByPC";
+    acye.a(this.a).a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acyg
  * JD-Core Version:    0.7.0.1
  */

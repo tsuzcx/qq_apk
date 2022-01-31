@@ -1,13 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1.1.1;
+import com.tencent.mobileqq.widget.AnimationView;
 
 public class aivv
-  implements DialogInterface.OnClickListener
+  extends bewx
 {
-  public aivv(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
+  public aivv(RedPacketKSongFragment.10.1 param1) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (!this.a.a.a.c())
+    {
+      if (paramBoolean) {
+        this.a.a.a.a.post(new RedPacketKSongFragment.10.1.1.1(this));
+      }
+    }
+    else {
+      return;
+    }
+    this.a.a.a.g();
+  }
 }
 
 

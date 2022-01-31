@@ -260,7 +260,7 @@ public class Entry
       label792:
       paramArrayOfByte1 = paramMethodInfo[paramInt2];
       i = arrayOfInt[paramInt2];
-      localObject[paramInt2] = wrapArgument(paramArrayOfByte1, paramInt1, Arrays.copyOfRange(arrayOfByte, i, i + getTypeLength(paramArrayOfByte1)));
+      localObject[paramInt2] = wrapArgument(paramArrayOfByte1, paramInt1, Arrays.copyOfRange(arrayOfByte, i, getTypeLength(paramArrayOfByte1) + i));
       paramInt2 += 1;
       break label141;
       label837:
@@ -529,7 +529,7 @@ public class Entry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     me.weishu.epic.art.entry.Entry
  * JD-Core Version:    0.7.0.1
  */

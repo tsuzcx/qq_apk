@@ -1,18 +1,13 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
 public class syw
-  implements Runnable
+  extends ShareActionSheetBuilder.ActionSheetItem
 {
-  public syw(LebaListMgrActivity paramLebaListMgrActivity) {}
-  
-  public void run()
-  {
-    LebaListMgrActivity.a(this.a, true);
-  }
+  public boolean a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     syw
  * JD-Core Version:    0.7.0.1
  */

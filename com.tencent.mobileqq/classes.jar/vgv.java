@@ -1,23 +1,39 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspAddGroupVideo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class vgv
-  implements Animator.AnimatorListener
+  extends uro
 {
-  public vgv(SixCombolEffectView paramSixCombolEffectView) {}
+  private final qqstory_group.RspAddGroupVideo a;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public vgv(qqstory_group.RspAddGroupVideo paramRspAddGroupVideo)
+  {
+    super(paramRspAddGroupVideo.result);
+    this.a = paramRspAddGroupVideo;
+  }
   
-  public void onAnimationEnd(Animator paramAnimator) {}
+  public List<vgw> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.a.group_feed_list.get().iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(new vgw((qqstory_group.GroupFeed)localIterator.next()));
+    }
+    return localArrayList;
+  }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public String toString()
+  {
+    return "AddGroupVideoResponse{mRspAddGroupVideo=" + a() + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vgv
  * JD-Core Version:    0.7.0.1
  */

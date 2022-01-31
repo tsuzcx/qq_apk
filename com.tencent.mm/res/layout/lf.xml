@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout style="@style/q1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/amw" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" style="@style/mn" />
+</RelativeLayout>

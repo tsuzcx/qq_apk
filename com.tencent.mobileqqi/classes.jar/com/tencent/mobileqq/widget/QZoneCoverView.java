@@ -22,8 +22,8 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.model.CoverCacheData;
 import cooperation.qzone.util.ImageFilePathUtil;
-import hlp;
-import hlq;
+import hhl;
+import hhm;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -199,7 +199,7 @@ public class QZoneCoverView
           if (QLog.isColorLevel()) {
             QLog.i("Q.qzonecover.", 2, "change custom mCurLoadingOrShowingUrl = " + this.jdField_d_of_type_JavaLangString);
           }
-          new hlq(this).start();
+          new hhm(this).start();
         }
         return;
         if (this.B != 5)
@@ -218,7 +218,7 @@ public class QZoneCoverView
     }
     try
     {
-      localObject1 = getResources().getDrawable(2130839279);
+      localObject1 = getResources().getDrawable(2130839281);
       a((Drawable)localObject1, 0);
       if ((localObject1 != null) && (Utils.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount())))
       {
@@ -691,7 +691,7 @@ public class QZoneCoverView
           break label167;
         }
         if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839045);
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839047);
         }
         localObject1 = URLDrawable.getDrawable((URL)localObject1, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
         if (localObject1 != null)
@@ -936,7 +936,7 @@ public class QZoneCoverView
     for (Object localObject = (QZoneCoverView.PhotoInfo)this.jdField_c_of_type_JavaUtilLinkedList.remove(0);; localObject = null)
     {
       if (localObject != null) {
-        new hlp(this, (QZoneCoverView.PhotoInfo)localObject).start();
+        new hhl(this, (QZoneCoverView.PhotoInfo)localObject).start();
       }
       for (;;)
       {

@@ -1,22 +1,27 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout.PresenceInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class adrj
   implements View.OnClickListener
 {
-  public adrj(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
+  public adrj(QQMapActivity paramQQMapActivity) {}
   
   public void onClick(View paramView)
   {
-    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
-    if (this.a.a == null) {
-      return;
+    if (!bdin.d(this.a)) {
+      this.a.x();
     }
-    this.a.a.a(3, paramView);
-    QLog.d("HotVideoRelativeLayout", 2, "click mute view");
+    for (;;)
+    {
+      zgv.a("see_streetview");
+      return;
+      if (bdin.a(this.a)) {
+        this.a.p();
+      } else {
+        bdgm.a(this.a, 230).setTitle(this.a.getString(2131690071)).setMessage(2131695059).setPositiveButton(2131691090, new adrl(this)).setNegativeButton(2131690648, new adrk(this)).show();
+      }
+    }
   }
 }
 

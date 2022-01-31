@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
+import com.tencent.mobileqq.activity.selectable.TextPreviewMenu;
+import java.util.List;
 
 public class ajyh
+  extends banl
 {
-  public final int a;
-  public final long a;
-  public final String a;
-  public final long b;
-  public final String b;
+  public ajyh(TextPreviewMenu paramTextPreviewMenu) {}
   
-  public ajyh(UnifiedDebugManager paramUnifiedDebugManager, String paramString1, int paramInt, long paramLong1, long paramLong2, String paramString2)
+  protected void a(boolean paramBoolean, List<String> paramList)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
+    TextPreviewMenu.b(this.a);
+    TextPreviewMenu.a(this.a, paramList);
   }
 }
 

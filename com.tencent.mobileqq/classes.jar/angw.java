@@ -1,37 +1,11 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Process;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.weiyun.ResponseHandler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class angw
-  extends Handler
+  implements awbg
 {
-  public angw(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public angw(ARScanEntryView paramARScanEntryView) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 0) {
-      ResponseHandler.a(0);
-    }
-    while ((paramMessage.what != 1) || (!ResponseHandler.a()) || (TextUtils.isEmpty(ResponseHandler.a())) || (TextUtils.isEmpty(ResponseHandler.b()))) {
-      return;
-    }
-    String str1 = ResponseHandler.a();
-    String str2 = ResponseHandler.b();
-    int i = ResponseHandler.a();
-    int j = ResponseHandler.b();
-    String str3 = ResponseHandler.a(BaseApplicationImpl.getApplication());
-    Process.setThreadPriority(10);
-    ResponseHandler.a((QQAppInterface)paramMessage.obj, str1, str2, i, j, str3);
-    ResponseHandler.b();
-  }
+  public void a(boolean paramBoolean) {}
 }
 
 

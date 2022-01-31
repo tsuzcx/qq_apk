@@ -5,12 +5,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.qphone.base.util.QLog;
-import ihz;
+import idf;
 
 public class SendMsg
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ihz();
+  public static final Parcelable.Creator CREATOR = new idf();
   private static final String tag = "SendMsg";
   public IActionListener actionListener;
   public final Bundle extraData = new Bundle();

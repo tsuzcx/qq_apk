@@ -1,34 +1,26 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageView;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class brs
-  extends Handler
+  implements View.OnClickListener
 {
-  public brs(QRCardActivity paramQRCardActivity) {}
+  public brs(AccountManageActivity paramAccountManageActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
+    ReportController.b(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Quit", "Setting_Quit", 0, 0, "2", "", "", "");
+    this.a.a(this.a.a(), this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
+    if ((this.a.jdField_b_of_type_AndroidAppDialog != null) && (this.a.jdField_b_of_type_AndroidAppDialog.isShowing())) {
+      this.a.jdField_b_of_type_AndroidAppDialog.dismiss();
     }
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.a.jdField_a_of_type_Boolean) || (!(paramMessage.obj instanceof Bitmap)));
-      paramMessage = (Bitmap)paramMessage.obj;
-    } while (paramMessage == null);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     brs
  * JD-Core Version:    0.7.0.1
  */

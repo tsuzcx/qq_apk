@@ -1,12 +1,11 @@
 package com.tencent.token.core.push;
 
-public final class l
-  extends c
+public class l
+  extends h
 {
-  long m;
+  byte[] m;
   long n;
   byte[] o;
-  byte[] p;
 }
 
 

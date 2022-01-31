@@ -19,13 +19,13 @@ public class Update
   extends Step
   implements Handler.Callback
 {
-  private static final int A = 4;
-  private static final int C = 6000;
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 4, 20, 21 };
-  private static final int x = 1;
-  private static final int y = 2;
-  private static final int z = 3;
-  private int B;
+  private static final int A = 3;
+  private static final int B = 4;
+  private static final int D = 6000;
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 5, 21, 22 };
+  private static final int y = 1;
+  private static final int z = 2;
+  private int C;
   private double jdField_a_of_type_Double;
   private long jdField_a_of_type_Long;
   private Handler jdField_a_of_type_AndroidOsHandler;
@@ -35,7 +35,7 @@ public class Update
   
   private int a()
   {
-    double d2 = (System.currentTimeMillis() - this.jdField_a_of_type_Long) * 1.0D / 6000.0D * (this.B - 10);
+    double d2 = (System.currentTimeMillis() - this.jdField_a_of_type_Long) * 1.0D / 6000.0D * (this.C - 10);
     double d1;
     if (d2 < this.jdField_a_of_type_Double)
     {
@@ -50,10 +50,10 @@ public class Update
     {
       return (int)this.jdField_a_of_type_Double;
       d1 = d2;
-      if (d2 <= this.B - 10) {
+      if (d2 <= this.C - 10) {
         break;
       }
-      d1 = this.jdField_a_of_type_Double + (this.B - this.jdField_a_of_type_Double) * 1.0D / 5.0D;
+      d1 = this.jdField_a_of_type_Double + (this.C - this.jdField_a_of_type_Double) * 1.0D / 5.0D;
       break;
       label104:
       if (this.jdField_a_of_type_Double > 100.0D) {
@@ -104,20 +104,20 @@ public class Update
             return true;
             localObject = this.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector.a;
           } while (!(localObject instanceof InstallActivity));
-          paramMessage = ((Activity)localObject).findViewById(2131234509);
-          localObject = (RelativeLayout)((Activity)localObject).findViewById(2131234508);
+          paramMessage = ((Activity)localObject).findViewById(2131234511);
+          localObject = (RelativeLayout)((Activity)localObject).findViewById(2131234510);
         } while ((paramMessage == null) || (localObject == null));
         paramMessage.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(this.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector.a.getApplicationContext(), 2130903983, null));
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(this.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector.a.getApplicationContext(), 2130903985, null));
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-        this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131234511));
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131234512));
+        this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131234513));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131234514));
         this.jdField_a_of_type_AndroidWidgetTextView.setText("升级中，请耐心等待...");
         ((RelativeLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
         this.jdField_a_of_type_Long = System.currentTimeMillis();
         this.jdField_a_of_type_Double = 0.0D;
-        this.B = 90;
+        this.C = 90;
         return true;
         i = a();
         if (this.jdField_a_of_type_AndroidWidgetProgressBar == null) {
@@ -139,7 +139,7 @@ public class Update
     case 3: 
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
       this.jdField_a_of_type_Double = 90.0D;
-      this.B = 100;
+      this.C = 100;
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(4, 6000L);
       return true;

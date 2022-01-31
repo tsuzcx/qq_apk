@@ -1,14 +1,50 @@
-import android.widget.Button;
-import com.tencent.biz.eqq.EnterpriseDetailActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.common.util.LoadedBack2;
+import com.tencent.biz.webviewplugin.OfflinePlugin;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
+import com.tencent.smtt.sdk.WebView;
 
 public class bot
-  implements Runnable
+  implements LoadedBack2
 {
-  public bot(EnterpriseDetailActivity paramEnterpriseDetailActivity) {}
+  public bot(OfflinePlugin paramOfflinePlugin) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a.setEnabled(true);
+    Object localObject = this.a.mRuntime.a();
+    if (localObject == null) {}
+    WebView localWebView;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (!(localObject instanceof QQBrowserActivity));
+        localObject = (QQBrowserActivity)localObject;
+      } while (QQBrowserActivity.a == localObject);
+      localWebView = this.a.mRuntime.a();
+    } while (localWebView == null);
+    localWebView.loadUrl(((QQBrowserActivity)localObject).I);
+  }
+  
+  public void a(int paramInt)
+  {
+    Message localMessage = this.a.a.obtainMessage();
+    localMessage.arg1 = 5;
+    localMessage.arg2 = paramInt;
+    this.a.a.sendMessage(localMessage);
+  }
+  
+  public void b(int paramInt)
+  {
+    Message localMessage = this.a.a.obtainMessage();
+    localMessage.arg1 = 4;
+    localMessage.arg2 = paramInt;
+    this.a.a.sendMessage(localMessage);
   }
 }
 

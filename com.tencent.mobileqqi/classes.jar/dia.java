@@ -1,13 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SetTroopAdminsActivity;
+import java.util.ArrayList;
 
 public class dia
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public dia(QQMapActivity paramQQMapActivity) {}
+  public dia(SetTroopAdminsActivity paramSetTroopAdminsActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+    case 1: 
+    case 2: 
+      do
+      {
+        return;
+        SetTroopAdminsActivity.a(this.a);
+        SetTroopAdminsActivity.a(this.a).clear();
+        SetTroopAdminsActivity.a(this.a).addAll((ArrayList)paramMessage.obj);
+        SetTroopAdminsActivity.a(this.a).notifyDataSetChanged();
+        SetTroopAdminsActivity.a(this.a);
+      } while (SetTroopAdminsActivity.b(this.a));
+      SetTroopAdminsActivity.c(this.a);
+      return;
+    }
+    SetTroopAdminsActivity.d(this.a);
+  }
 }
 
 

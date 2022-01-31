@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class MqqLbsPack$PoiInfo
-  extends MessageMicro
+  extends MessageMicro<PoiInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_addr = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -27,7 +27,7 @@ public final class MqqLbsPack$PoiInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.lbspack.MqqLbsPack.PoiInfo
  * JD-Core Version:    0.7.0.1
  */

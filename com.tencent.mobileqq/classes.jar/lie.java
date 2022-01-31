@@ -1,29 +1,39 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoCompositeManager;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
 
 public class lie
-  extends ExecuteBinResponseCallback
 {
-  public lie(ReadInJoyVideoCompositeManager paramReadInJoyVideoCompositeManager, PublishVideoEntry paramPublishVideoEntry, String paramString) {}
+  public int a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public int b;
+  public Bitmap b;
+  public String b;
+  public boolean b;
+  public int c = -1;
+  public Bitmap c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
+  public String e;
+  public boolean e;
+  public String f;
+  public boolean f;
+  public String g;
+  public boolean g;
   
-  public void a(String paramString)
+  public lie(lid paramlid)
   {
-    ReadInJoyVideoCompositeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoCompositeManager, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_JavaLangString + ".doodle.mp4");
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.readinjoy.videocapture.ReadInJoyVideoCompositeManager", 2, "compositeVideo->combineDoodle: " + paramString);
-    }
-    ReadInJoyVideoCompositeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoCompositeManager, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, 999, "本地视频合成涂鸦是出错！");
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_d_of_type_Boolean = true;
+    this.jdField_d_of_type_Int = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lie
  * JD-Core Version:    0.7.0.1
  */

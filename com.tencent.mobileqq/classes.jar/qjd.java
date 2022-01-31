@@ -1,19 +1,16 @@
-import com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment;
-import com.tencent.open.downloadnew.MyAppApi;
-
-public class qjd
-  implements Runnable
+class qjd
+  extends qio
 {
-  public qjd(GameCenterActivity.GameCenterFragment paramGameCenterFragment) {}
+  qjd(qja paramqja) {}
   
-  public void run()
+  public int a()
   {
-    MyAppApi.a();
+    return -15550475;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qjd
  * JD-Core Version:    0.7.0.1
  */

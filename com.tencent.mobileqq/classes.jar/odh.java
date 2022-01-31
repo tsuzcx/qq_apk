@@ -1,40 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.biz.qqstory.takevideo.EditPicQzonePublishActivity;
-import com.tencent.mobileqq.activity.richmedia.QzoneSyncQQStoryTool;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class odh
-  implements View.OnClickListener
+  implements aavr
 {
-  public odh(EditPicQzonePublishActivity paramEditPicQzonePublishActivity, long paramLong) {}
-  
-  public void onClick(View paramView)
+  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    boolean bool = true;
-    if (EditPicQzonePublishActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity))
+    if (paramLong == 8589934598L)
     {
-      EditPicQzonePublishActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity).setSelected(false);
-      paramView = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity;
-      if (EditPicQzonePublishActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity)) {
-        break label73;
+      if (QLog.isColorLevel()) {
+        QLog.d("GameWebReportLoad", 2, "handleEvent type=" + paramLong);
       }
+      paramString = new Bundle();
+      yqz.a().a(140, paramString);
     }
-    for (;;)
-    {
-      EditPicQzonePublishActivity.b(paramView, bool);
-      QzoneSyncQQStoryTool.a(this.jdField_a_of_type_Long, EditPicQzonePublishActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity));
-      return;
-      EditPicQzonePublishActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity).setSelected(true);
-      break;
-      label73:
-      bool = false;
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     odh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class acuy
-  implements Runnable
 {
-  public acuy(FileManagerDataCenter paramFileManagerDataCenter) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void run()
-  {
-    if ((this.a.a != null) && (this.a.a.getApp() != null) && (FileManagerDataCenter.a(this.a) != null)) {
-      this.a.a.getApp().unregisterReceiver(FileManagerDataCenter.a(this.a));
-    }
-    FileManagerDataCenter.a(this.a, null);
-  }
+  private acuy(DiscussionMemberActivity paramDiscussionMemberActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acuy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout style="@style/t"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" style="@style/t">
+        <LinearLayout android:id="@id/b8" style="@style/u" />
+        <LinearLayout android:id="@id/b9" style="@style/u" />
+        <LinearLayout android:id="@id/b_" style="@style/u" />
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.wear.app.ui.widget.WearTextView android:text="@string/ai" android:drawableLeft="@drawable/bu" style="@style/w" />
+        <com.tencent.mm.wear.app.ui.widget.WearTextView android:text="@string/ak" android:drawableLeft="@drawable/bw" style="@style/w" />
+        <com.tencent.mm.wear.app.ui.widget.WearTextView android:text="@string/aj" android:drawableLeft="@drawable/bv" style="@style/w" />
+    </LinearLayout>
+</FrameLayout>

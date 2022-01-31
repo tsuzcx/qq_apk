@@ -1,24 +1,17 @@
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.widgets.ShareResultDialog;
 
-public class pel
-  implements View.OnClickListener
+final class pel
+  implements DialogInterface.OnClickListener
 {
-  public pel(ShareResultDialog paramShareResultDialog, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog, -2);
-    }
-    this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.dismiss();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pel
  * JD-Core Version:    0.7.0.1
  */

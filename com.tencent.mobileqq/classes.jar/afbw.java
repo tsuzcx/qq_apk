@@ -1,28 +1,32 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.nearby.profilecard.AnchorDisplayAdapter;
-import tencent.im.oidb.cmd0xac5.cmd0xac5.NowFollowAnchor;
-
 public class afbw
+  extends afbz
 {
   public int a;
-  public View a;
-  public TextView a;
-  public URLImageView a;
-  public cmd0xac5.NowFollowAnchor a;
-  public View b;
-  public URLImageView b;
-  public View c;
-  public View d;
-  public View e;
-  public View f;
+  public int b;
   
-  public afbw(AnchorDisplayAdapter paramAnchorDisplayAdapter) {}
+  public afbw(int paramInt1, int paramInt2)
+  {
+    this.b = paramInt1;
+    this.a = paramInt2;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
+    {
+      do
+      {
+        return false;
+      } while (!(paramObject instanceof afbw));
+      paramObject = (afbw)paramObject;
+    } while ((this.b != paramObject.b) || (this.a != paramObject.a));
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afbw
  * JD-Core Version:    0.7.0.1
  */

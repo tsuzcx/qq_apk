@@ -1,85 +1,44 @@
-import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.StatisticConstants;
-import com.tencent.mobileqq.data.QQAlbumInfo;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.widget.StoryCoverView;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
 
-public class wvt
-  implements Runnable
+class wvt
+  extends wrj
 {
-  public wvt(AlbumListAdapter paramAlbumListAdapter) {}
+  wvt(wvq paramwvq, boolean paramBoolean) {}
   
-  public void run()
+  public void a(int paramInt, View paramView, Object paramObject, wtq paramwtq)
   {
-    int i6 = 0;
-    int i5 = 0;
-    int i4 = 0;
-    int j = 0;
-    int i = 0;
-    int i3 = 0;
-    int i2 = 0;
-    int i1 = 0;
-    int n = 0;
-    int m = 0;
-    int k = 0;
-    Object localObject = new ArrayList(this.a.a.size());
-    ((List)localObject).addAll(this.a.a);
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      QQAlbumInfo localQQAlbumInfo = (QQAlbumInfo)((Iterator)localObject).next();
-      if ((localQQAlbumInfo != null) && (localQQAlbumInfo.mCoverInfo != null))
-      {
-        String str2 = FileUtil.b(localQQAlbumInfo.mCoverInfo.path);
-        String str1 = localQQAlbumInfo.name;
-        if ((str2 != null) && (str1 != null) && (!str1.equals("最近照片")) && (!str1.equals("空间照片")))
-        {
-          str2 = str2.toLowerCase(Locale.US);
-          str1 = str1.toLowerCase(Locale.US);
-          if (str2.contains("/tencent/"))
-          {
-            if (str2.contains("/qq_collection/")) {
-              i3 += localQQAlbumInfo.mMediaFileCount;
-            } else if ((str1.equals("qq_images")) || (str2.contains("/mobileqq/photo")) || (str2.contains("/mobileqq/diskcache"))) {
-              i2 += localQQAlbumInfo.mMediaFileCount;
-            } else if (str1.equals("qqfile_recv")) {
-              i1 += localQQAlbumInfo.mMediaFileCount;
-            } else if (str1.equals("qq_favorite")) {
-              m += localQQAlbumInfo.mMediaFileCount;
-            } else if (str2.contains("/zebra/cache")) {
-              n += 1;
-            } else if ((str1.equals("weixin")) || (str1.equals("wechat")) || (str1.equals("micromsg"))) {
-              k += localQQAlbumInfo.mMediaFileCount;
-            } else if (StatisticConstants.a(str2)) {
-              j += localQQAlbumInfo.mMediaFileCount;
-            } else {
-              i += localQQAlbumInfo.mMediaFileCount;
-            }
-          }
-          else if (str1.equals("qq_screenshot")) {
-            i5 += localQQAlbumInfo.mMediaFileCount;
-          } else if ((str2.contains("screenshot")) || (str2.contains("截屏")) || (str2.contains("截图")) || (str2.equals("screen_cap")) || (str2.equals("ScreenCapture"))) {
-            i4 += localQQAlbumInfo.mMediaFileCount;
-          } else if ((str1.contains("camera")) || (str1.equals("dcim")) || (str1.equals("100MEDIA")) || (str1.equals("100ANDRO")) || (str1.contains("相机")) || (str1.contains("照片")) || (str1.contains("相片"))) {
-            i6 += localQQAlbumInfo.mMediaFileCount;
-          } else if (StatisticConstants.a(str2)) {
-            j += localQQAlbumInfo.mMediaFileCount;
-          } else {
-            i += localQQAlbumInfo.mMediaFileCount;
-          }
-        }
-      }
+    if (paramView == paramwtq.a()) {
+      wvq.a(this.jdField_a_of_type_Wvq, paramInt, (StoryVideoItem)wvq.a(this.jdField_a_of_type_Wvq).a().get(paramInt), paramView);
     }
-    StatisticConstants.a(i6, i5, i4, j, i, i3, i2, i1, n, m, k);
+    do
+    {
+      return;
+      if (paramView == paramwtq.a(2131373820))
+      {
+        paramView = (StoryCoverView)paramwtq.a(2131373819);
+        if (this.jdField_a_of_type_Boolean)
+        {
+          wvq.a(this.jdField_a_of_type_Wvq, paramInt, (StoryVideoItem)wvq.a(this.jdField_a_of_type_Wvq).a().get(paramInt), paramView);
+          return;
+        }
+        wvq.b(this.jdField_a_of_type_Wvq, paramInt, (StoryVideoItem)wvq.a(this.jdField_a_of_type_Wvq).a().get(paramInt), paramView);
+        return;
+      }
+      if ((paramView == paramwtq.a(2131373875)) || (paramView == paramwtq.a(2131373822)))
+      {
+        wvq.a(this.jdField_a_of_type_Wvq, paramInt, (StoryVideoItem)wvq.a(this.jdField_a_of_type_Wvq).a().get(paramInt));
+        return;
+      }
+    } while (paramView != paramwtq.a(2131373871));
+    this.jdField_a_of_type_Wvq.a(paramwtq, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wvt
  * JD-Core Version:    0.7.0.1
  */

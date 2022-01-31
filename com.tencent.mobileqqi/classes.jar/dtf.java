@@ -1,18 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SubaccountUgActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.model.FriendManager;
 
-class dtf
-  implements DialogInterface.OnClickListener
+public class dtf
+  extends FriendListObserver
 {
-  dtf(dte paramdte) {}
+  public dtf(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    paramDialogInterface = new Intent(this.a.a.a(), SubaccountUgActivity.class);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    {
+      paramString = this.a.a.a(paramString);
+      if (paramString != null) {
+        break label28;
+      }
+    }
+    label28:
+    Friends localFriends;
+    do
+    {
+      return;
+      localFriends = ((FriendManager)this.a.b.getManager(8)).c(paramString.a);
+    } while (localFriends == null);
+    this.a.a(paramString, localFriends);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a.a(paramString) != null)) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

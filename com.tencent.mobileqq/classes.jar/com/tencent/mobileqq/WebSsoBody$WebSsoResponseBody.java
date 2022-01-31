@@ -7,13 +7,8 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class WebSsoBody$WebSsoResponseBody
-  extends MessageMicro
+  extends MessageMicro<WebSsoResponseBody>
 {
-  public static final int CONTROLDATA_FIELD_NUMBER = 5;
-  public static final int DATA_FIELD_NUMBER = 4;
-  public static final int RET_FIELD_NUMBER = 3;
-  public static final int TYPE_FIELD_NUMBER = 2;
-  public static final int VERSION_FIELD_NUMBER = 1;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42 }, new String[] { "version", "type", "ret", "data", "controlData" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", null }, WebSsoResponseBody.class);
   public WebSsoBody.WebSsoControlData controlData = new WebSsoBody.WebSsoControlData();
   public final PBStringField data = PBField.initString("");
@@ -23,7 +18,7 @@ public final class WebSsoBody$WebSsoResponseBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody
  * JD-Core Version:    0.7.0.1
  */

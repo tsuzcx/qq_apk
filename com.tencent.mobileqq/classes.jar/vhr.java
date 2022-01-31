@@ -1,56 +1,44 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.PublicAccountServlet;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.mp.mobileqq_mp.SubscribeRequest;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetTagList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.widget.PopupMenuDialog.MenuItem;
-import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
-import mqq.app.NewIntent;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class vhr
-  implements PopupMenuDialog.OnClickActionListener
+  extends uro
 {
-  public vhr(StructingMsgItemBuilder paramStructingMsgItemBuilder, ChatMessage paramChatMessage, Activity paramActivity, AbsStructMsg paramAbsStructMsg) {}
+  public final String a;
+  public final List<xoe> a;
+  public final int b;
   
-  public void a(PopupMenuDialog.MenuItem paramMenuItem)
+  public vhr(qqstory_service.RspGetTagList paramRspGetTagList)
   {
-    if (StructingMsgItemBuilder.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {
-      return;
-    }
-    String str = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("msg_template_id");
-    int i = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop;
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_AndroidAppActivity, PublicAccountServlet.class);
-    localNewIntent.putExtra("cmd", "PubAccountFollowSvc.subscribe");
-    mobileqq_mp.SubscribeRequest localSubscribeRequest = new mobileqq_mp.SubscribeRequest();
-    localSubscribeRequest.msg_id.set(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.msgId);
-    localSubscribeRequest.index.set(paramMenuItem.a);
-    long l1 = 0L;
-    try
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    Object localObject = paramRspGetTagList.tag_list.get();
+    if (localObject != null)
     {
-      long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin);
-      l1 = l2;
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        qqstory_struct.TagItem localTagItem = (qqstory_struct.TagItem)((Iterator)localObject).next();
+        this.jdField_a_of_type_JavaUtilList.add(new xoe(localTagItem));
+      }
     }
-    catch (Exception paramMenuItem)
-    {
-      label108:
-      break label108;
-    }
-    localSubscribeRequest.template_id.set(str);
-    localSubscribeRequest.puin.set(l1);
-    localNewIntent.setObserver(new vhs(this, str));
-    localNewIntent.putExtra("data", localSubscribeRequest.toByteArray());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a.startServlet(localNewIntent);
-    StructingMsgItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, true);
+    this.b = paramRspGetTagList.is_end.get();
+    this.jdField_a_of_type_JavaLangString = paramRspGetTagList.next_cookie.get();
+  }
+  
+  public String toString()
+  {
+    return "GetTagListResponse{mTagItems=" + this.jdField_a_of_type_JavaUtilList + ", mIsEnd=" + this.b + ", mNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vhr
  * JD-Core Version:    0.7.0.1
  */

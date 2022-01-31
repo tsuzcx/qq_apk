@@ -1,23 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import UserGrowth.stSimpleGetFeedDetailReq;
+import UserGrowth.stSimpleGetFeedDetailRsp;
 
 public class tkg
-  implements DialogInterface.OnDismissListener
+  extends thb<stSimpleGetFeedDetailRsp>
 {
-  public tkg(QQMapActivity paramQQMapActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public tkg(String paramString)
   {
-    if ((this.a.l) && (!this.a.m) && (!this.a.k)) {
-      this.a.finish();
-    }
-    this.a.m = false;
+    super("SimpleGetFeedDetail");
+    stSimpleGetFeedDetailReq localstSimpleGetFeedDetailReq = new stSimpleGetFeedDetailReq();
+    localstSimpleGetFeedDetailReq.feedid = paramString;
+    this.a = localstSimpleGetFeedDetailReq;
+    tlo.b("SimpleGetFeedDetailRequest", "stSimpleGetFeedDetailReq = " + localstSimpleGetFeedDetailReq.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tkg
  * JD-Core Version:    0.7.0.1
  */

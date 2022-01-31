@@ -1,42 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity.2;
 
-public final class adum
-  implements Runnable
+public class adum
+  implements DialogInterface.OnClickListener
 {
-  public adum(String paramString) {}
+  public adum(RegisterNewBaseActivity.2 param2) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.a).openConnection();
-      if (localHttpURLConnection != null)
-      {
-        localHttpURLConnection.setDoOutput(true);
-        localHttpURLConnection.setRequestMethod("POST");
-        localHttpURLConnection.setRequestProperty("Accept-Charset", "utf-8");
-        localHttpURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        if (localHttpURLConnection.getResponseCode() == 200)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("Monitor", 2, " report to monitor success,URL = " + this.a);
-          }
-        }
-        else if (QLog.isColorLevel())
-        {
-          QLog.i("Monitor", 2, " report to monitor failed,URL = " + this.a);
-          return;
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("Monitor", 2, localException, new Object[0]);
-      }
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

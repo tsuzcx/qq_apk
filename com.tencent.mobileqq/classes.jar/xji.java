@@ -1,69 +1,35 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.recent.Banner;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.struct.PushBanner;
-import com.tencent.mobileqq.widget.ADView;
-import java.util.LinkedList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 public class xji
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public xji(BannerManager paramBannerManager) {}
+  public xji(xjg paramxjg) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    BannerManager.a(this.a).getSharedPreferences("mobileQQ", 0).edit().putBoolean("push_banner_display" + BannerManager.a(this.a).app.getAccount(), false).commit();
-    paramView = BannerManager.a(this.a)[17];
-    ADView localADView;
-    if ((paramView != null) && (paramView.a != null))
-    {
-      localADView = (ADView)paramView.a.findViewById(2131365693);
-      if (localADView == null) {
-        break label258;
-      }
+    String str = xrc.a(paramEditable.toString(), 30);
+    if (str.length() < paramEditable.length()) {
+      paramEditable.replace(0, paramEditable.length(), str);
     }
-    label258:
-    for (paramView = localADView.a(0);; paramView = null)
-    {
-      if (paramView != null)
-      {
-        int j = paramView.getChildCount();
-        LinkedList localLinkedList = new LinkedList();
-        int i = 0;
-        while (i < j)
-        {
-          View localView = paramView.getChildAt(i);
-          if (localView != null) {
-            localLinkedList.add((PushBanner)localView.getTag());
-          }
-          i += 1;
-        }
-        ThreadManager.getFileThreadHandler().post(new xjj(this, j, localLinkedList));
-        if (localADView != null) {
-          localADView.h();
-        }
-      }
-      this.a.a(17, 0);
-      this.a.a(-1, null);
-      this.a.e = false;
-      ReportController.b(BannerManager.a(this.a).app, "dc00898", "", "", "0X80087C3", "0X80087C3", 0, 0, "", "", "", "");
-      return;
+    this.a.jdField_a_of_type_JavaLangString = paramEditable.toString();
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    paramCharSequence = paramCharSequence.toString();
+    this.a.jdField_a_of_type_JavaLangString = paramCharSequence;
+    wxe.b("Q.qqstory.record.label.QQStoryAddVideoLabelView", "keyword = " + this.a.jdField_a_of_type_JavaLangString);
+    if (this.a.jdField_a_of_type_Xjj != null) {
+      this.a.jdField_a_of_type_Xjj.a(this.a.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xji
  * JD-Core Version:    0.7.0.1
  */

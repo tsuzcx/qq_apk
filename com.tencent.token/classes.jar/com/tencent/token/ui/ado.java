@@ -1,33 +1,63 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
-import com.tencent.token.ax;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.x;
+import android.content.Intent;
+import android.os.Message;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.token.eq;
+import com.tencent.token.global.f;
 
-final class ado
-  implements DialogInterface.OnClickListener
+class ado
+  extends cb
 {
-  ado(UtilsActivity paramUtilsActivity) {}
-  
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  ado(UtilsMbInfoItemActivity paramUtilsMbInfoItemActivity)
   {
-    paramDialogInterface = ax.a().e();
-    if (paramDialogInterface == null) {
+    super(paramUtilsMbInfoItemActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a.isFinishing()) {
       return;
     }
-    paramDialogInterface = "" + paramDialogInterface.mRealUin;
-    x localx = x.a(RqdApplication.i());
-    if (!localx.b(paramDialogInterface, 523005425L))
+    this.a.dismissDialog();
+    switch (paramMessage.what)
     {
-      localx.a(paramDialogInterface, this.a.mHandler, 523005425L);
-      this.a.showProDialog(this.a, 2131361808, 2131361817, null);
+    default: 
       return;
+    case 3011: 
+      if (paramMessage.arg1 == 0)
+      {
+        UtilsMbInfoItemActivity.access$000(this.a).setVisibility(8);
+        UtilsMbInfoItemActivity.access$100(this.a).setVisibility(0);
+        this.a.mBackArrow.setVisibility(4);
+        UtilsMbInfoItemActivity.access$202(this.a, true);
+        eq.a().b();
+        AccountPageActivity.mNeedRefreshEval = true;
+      }
+      break;
     }
-    this.a.showUserDialog(2131362364, this.a.getResources().getString(2131362365), 2131361800, new adp(this));
+    while (paramMessage.arg1 == 0)
+    {
+      paramMessage = new Intent(this.a, UtilsMbInfoFeedbackMobileUsingSuccActivity.class);
+      this.a.startActivity(paramMessage);
+      eq.a().b();
+      AccountPageActivity.mNeedRefreshEval = true;
+      this.a.finish();
+      return;
+      UtilsMbInfoItemActivity.access$000(this.a).setVisibility(0);
+      UtilsMbInfoItemActivity.access$100(this.a).setVisibility(8);
+      f localf = (f)paramMessage.obj;
+      if ((localf.c == null) || (localf.c.length() == 0)) {
+        f.a(this.a.getResources(), localf);
+      }
+      this.a.showUserDialog(2131230843, localf.c, 2131230897, null);
+    }
+    paramMessage = (f)paramMessage.obj;
+    if ((paramMessage.c == null) || (paramMessage.c.length() == 0)) {
+      f.a(this.a.getResources(), paramMessage);
+    }
+    this.a.showUserDialog(2131230843, paramMessage.c, 2131230897, null);
   }
 }
 

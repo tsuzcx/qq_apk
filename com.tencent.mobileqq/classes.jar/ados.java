@@ -1,25 +1,16 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
-public final class ados
-  implements Runnable
+public class ados
+  implements View.OnClickListener
 {
-  public ados(Context paramContext) {}
+  public ados(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("mqq.intent.action.QQ_FOREGROUND");
-    try
-    {
-      this.a.sendBroadcast(localIntent);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.i("GESTUREPWDUTILS", 1, localException.toString(), localException);
-    }
+    this.a.a.dismiss();
   }
 }
 

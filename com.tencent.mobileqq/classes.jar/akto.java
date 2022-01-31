@@ -1,66 +1,42 @@
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView.DisplayRuleDef;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
+import com.tencent.qphone.base.util.QLog;
 
-public final class akto
-  implements AnyScaleTypeImageView.DisplayRuleDef
+public class akto
 {
-  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  public String a;
+  
+  public akto(String paramString)
   {
-    float f1 = 0.0F;
-    Matrix localMatrix = new Matrix();
-    if (paramDrawable == null) {
-      return localMatrix;
-    }
-    int i = paramDrawable.getIntrinsicWidth();
-    int j = paramDrawable.getIntrinsicHeight();
-    if (i == j)
+    this.a = paramString;
+  }
+  
+  public void a(albr paramalbr, Context paramContext, QQAppInterface paramQQAppInterface, String paramString)
+  {
+    int i = aknx.a(paramQQAppInterface);
+    if ((paramalbr == null) || (paramContext == null) || (paramQQAppInterface == null) || (i == 1)) {}
+    SharedPreferences localSharedPreferences;
+    do
     {
-      f1 = paramInt2 / j;
-      localMatrix.setScale(f1, f1);
-      return localMatrix;
+      return;
+      paramContext = "apollo_friend_profile_drawer_first" + paramQQAppInterface.getCurrentAccountUin();
+      localSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
+    } while (!localSharedPreferences.getBoolean(paramContext, true));
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileBubble", 2, "onBubbleShow first");
     }
-    float f2;
-    if ((i <= paramInt1) || (j <= paramInt2))
-    {
-      f2 = paramInt1 - i;
-      f1 = paramInt2 - j;
-      if (f1 < 0.0F) {}
-      for (f1 *= 0.1F;; f1 *= 0.5F)
-      {
-        localMatrix.postTranslate((int)(f2 * 0.5F + 0.5F), (int)(f1 + 0.5F));
-        break;
-      }
-    }
-    float f3;
-    if (i * paramInt2 > paramInt1 * j)
-    {
-      f3 = paramInt2 / j;
-      f2 = (paramInt1 - i * f3) * 0.5F;
-    }
-    for (;;)
-    {
-      localMatrix.setScale(f3, f3);
-      localMatrix.postTranslate((int)(f2 + 0.5F), (int)(f1 + 0.5F));
-      break;
-      f3 = paramInt1 / i;
-      f1 = (paramInt2 - j) * f3;
-      if (f1 < 0.0F)
-      {
-        f2 = 0.0F;
-        f1 *= 0.1F;
-      }
-      else
-      {
-        f2 = 0.0F;
-        f1 *= 0.5F;
-      }
-    }
+    albi.a(paramalbr, paramString, 3, 0);
+    localSharedPreferences.edit().putBoolean(paramContext, false).commit();
+    VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "Guide_bubbles_show", 0, 0, new String[] { "", "", "", this.a });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akto
  * JD-Core Version:    0.7.0.1
  */

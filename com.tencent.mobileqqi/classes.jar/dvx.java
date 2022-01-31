@@ -1,22 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberCardActivity;
-import com.tencent.mobileqq.data.TroopMemberCard;
+import com.tencent.mobileqq.activity.aio.PanelAdapter2;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
 
 public class dvx
-  implements View.OnClickListener
+  implements Runnable
 {
-  public dvx(TroopMemberCardActivity paramTroopMemberCardActivity) {}
+  public dvx(PlusPanel paramPlusPanel) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a(this.a.c, this.a.d, this.a.e, this.a.a.isFriend);
-    this.a.f("Clk_head");
+    int i = 0;
+    while (i < PlusPanel.a(this.a).getCount()) {
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dvx
  * JD-Core Version:    0.7.0.1
  */

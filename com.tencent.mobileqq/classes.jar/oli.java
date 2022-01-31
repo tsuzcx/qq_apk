@@ -1,38 +1,32 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.publish.GenerateVideoManifestSegment;
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class oli
-  implements Runnable
+  implements oil
 {
-  public oli(GenerateVideoManifestSegment paramGenerateVideoManifestSegment, RMVideoStateMgr paramRMVideoStateMgr) {}
+  public oli(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
   
-  public void run()
+  public void a(oio paramoio)
   {
-    try
+    StringBuilder localStringBuilder = new StringBuilder().append("onBiuAndCommentSend fragment");
+    if (paramoio == null) {}
+    for (Object localObject = "null";; localObject = Integer.valueOf(paramoio.a()))
     {
-      SLog.a("Q.qqstory.publish.edit.GenerateVideoManifestSegment", "Async, mVideoFileDir:%s, before call AVideoCodec.recordSubmit()", this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString);
-      RecordManager.a().a().recordSubmit();
+      QLog.d("ReadInJoyCommentListFragment", 1, localObject);
+      if ((paramoio == null) || (paramoio.a() != 0)) {
+        break;
+      }
+      oik.a(paramoio.b(), paramoio.a(), paramoio.c(), paramoio.b(), paramoio.a(), paramoio.c(), paramoio.d(), paramoio.a());
       return;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      SLog.e("Q.qqstory.publish.edit.GenerateVideoManifestSegment", "Async, mVideoFileDir:%s, call AVideoCodec.recordSubmit() error = %s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString, localUnsatisfiedLinkError });
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.notifyAll();
-        return;
-      }
-    }
+    QQToast.a(BaseApplication.getContext(), 1, alud.a(2131713279), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oli
  * JD-Core Version:    0.7.0.1
  */

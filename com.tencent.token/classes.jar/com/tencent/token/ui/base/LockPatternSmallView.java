@@ -11,7 +11,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.WindowManager;
-import com.tencent.token.utils.t;
+import com.tencent.token.utils.x;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,7 +19,7 @@ import java.util.List;
 
 public class LockPatternSmallView
   extends View
-  implements cb
+  implements bu
 {
   LockPatternView a;
   public int b = 1;
@@ -38,6 +38,11 @@ public class LockPatternSmallView
   private Activity o;
   private int p;
   
+  public LockPatternSmallView(Context paramContext)
+  {
+    this(paramContext, null);
+  }
+  
   public LockPatternSmallView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
@@ -47,19 +52,51 @@ public class LockPatternSmallView
     this.o.getWindowManager().getDefaultDisplay().getMetrics(paramContext);
     this.p = paramContext.widthPixels;
     int i1 = this.p * 14 / 320;
-    this.h = t.a(getResources(), 2130837928, i1);
-    this.i = t.a(getResources(), 2130837927, i1);
-    this.j = t.a(getResources(), 2130837929, i1);
-    this.k = t.a(getResources(), 2130837930, i1);
+    this.h = x.a(getResources(), 2130837990, i1);
+    this.i = x.a(getResources(), 2130837989, i1);
+    this.j = x.a(getResources(), 2130837991, i1);
+    this.k = x.a(getResources(), 2130837992, i1);
     this.l = this.h.getWidth();
     this.m = this.h.getHeight();
   }
   
-  public final void a()
+  private void a(Canvas paramCanvas, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if (this.b != 1) {
-      return;
+    Bitmap localBitmap;
+    if (!paramBoolean) {
+      localBitmap = this.h;
     }
+    for (;;)
+    {
+      int i2 = this.l;
+      int i1 = this.m;
+      float f1 = this.f;
+      float f2 = this.g;
+      i2 = (int)((f1 - i2) / 2.0F);
+      i1 = (int)((f2 - i1) / 2.0F);
+      paramCanvas.drawBitmap(localBitmap, i2 + paramInt1, i1 + paramInt2, this.c);
+      return;
+      if (this.b != 3)
+      {
+        if (this.e == LockPatternView.DisplayMode.Wrong) {
+          localBitmap = this.k;
+        } else {
+          localBitmap = this.i;
+        }
+      }
+      else
+      {
+        if (this.b != 3) {
+          break;
+        }
+        localBitmap = this.j;
+      }
+    }
+    throw new IllegalStateException("unknown display mode " + this.e);
+  }
+  
+  private void c()
+  {
     int i1 = 0;
     while (i1 < 3)
     {
@@ -71,50 +108,52 @@ public class LockPatternSmallView
       }
       i1 += 1;
     }
-    this.n = this.a.b();
-    this.e = this.a.c();
+  }
+  
+  public void a()
+  {
+    if (this.b != 1) {
+      return;
+    }
+    c();
+    this.n = this.a.getPattern();
+    this.e = this.a.getDispalyMode();
     invalidate();
   }
   
-  public final void a(LockPatternView.DisplayMode paramDisplayMode)
-  {
-    this.e = paramDisplayMode;
-    postInvalidate();
-  }
-  
-  public final void a(LockPatternView paramLockPatternView)
+  public void a(LockPatternView paramLockPatternView)
   {
     this.a = paramLockPatternView;
     paramLockPatternView.a(this);
   }
   
-  public final void a(List paramList)
+  public void a(List paramList)
+  {
+    if (this.b != 1) {
+      return;
+    }
+    this.n = this.a.getPattern();
+    this.e = this.a.getDispalyMode();
+    invalidate();
+  }
+  
+  public void b()
+  {
+    if (this.b != 1) {
+      return;
+    }
+    this.n = this.a.getPattern();
+    this.e = this.a.getDispalyMode();
+    invalidate();
+  }
+  
+  public void b(List paramList)
   {
     if (this.b == 2) {
       return;
     }
-    this.n = this.a.b();
-    this.e = this.a.c();
-    invalidate();
-  }
-  
-  public final void b()
-  {
-    if (this.b != 1) {
-      return;
-    }
-    this.n = this.a.b();
-    this.e = this.a.c();
-    invalidate();
-  }
-  
-  public final void c()
-  {
-    if (this.b != 1) {
-      return;
-    }
-    this.n = this.a.b();
-    this.e = this.a.c();
+    this.n = this.a.getPattern();
+    this.e = this.a.getDispalyMode();
     invalidate();
   }
   
@@ -131,8 +170,8 @@ public class LockPatternSmallView
     localObject = ((ArrayList)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      ca localca = (ca)((Iterator)localObject).next();
-      this.d[localca.a()][localca.b()] = 1;
+      bt localbt = (bt)((Iterator)localObject).next();
+      this.d[localbt.a()][localbt.b()] = 1;
     }
     int i3 = getPaddingTop();
     int i4 = getPaddingLeft();
@@ -142,42 +181,10 @@ public class LockPatternSmallView
       float f3 = i3;
       float f4 = i1;
       int i2 = 0;
-      if (i2 < 3)
+      while (i2 < 3)
       {
-        int i5 = (int)(i4 + i2 * f1);
-        int i6 = (int)(f3 + f4 * f2);
-        if (arrayOfBoolean[i1][i2] == 0) {
-          localObject = this.h;
-        }
-        for (;;)
-        {
-          int i8 = this.l;
-          int i7 = this.m;
-          float f5 = this.f;
-          float f6 = this.g;
-          i8 = (int)((f5 - i8) / 2.0F);
-          i7 = (int)((f6 - i7) / 2.0F);
-          paramCanvas.drawBitmap((Bitmap)localObject, i5 + i8, i6 + i7, this.c);
-          i2 += 1;
-          break;
-          if (this.b != 3)
-          {
-            if (this.e == LockPatternView.DisplayMode.Wrong) {
-              localObject = this.k;
-            } else {
-              localObject = this.i;
-            }
-          }
-          else
-          {
-            if (this.b != 3) {
-              break label304;
-            }
-            localObject = this.j;
-          }
-        }
-        label304:
-        throw new IllegalStateException("unknown display mode " + this.e);
+        a(paramCanvas, (int)(i4 + i2 * f1), (int)(f4 * f2 + f3), arrayOfBoolean[i1][i2]);
+        i2 += 1;
       }
       i1 += 1;
     }
@@ -193,6 +200,12 @@ public class LockPatternSmallView
   {
     this.f = ((paramInt1 - getPaddingLeft() - getPaddingRight()) / 3.0F);
     this.g = ((paramInt2 - getPaddingTop() - getPaddingBottom()) / 3.0F);
+  }
+  
+  public void setDisplayMode(LockPatternView.DisplayMode paramDisplayMode)
+  {
+    this.e = paramDisplayMode;
+    postInvalidate();
   }
 }
 

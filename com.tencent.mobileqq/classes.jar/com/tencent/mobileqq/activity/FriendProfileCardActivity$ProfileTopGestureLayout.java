@@ -27,7 +27,7 @@ public class FriendProfileCardActivity$ProfileTopGestureLayout
         return false;
       }
     }
-    else if (((this.a.a instanceof ProfileTagView)) && (((ProfileTagView)this.a.a).h))
+    else if (((this.a.a instanceof ProfileTagView)) && (((ProfileTagView)this.a.a).f))
     {
       return false;
     }
@@ -36,7 +36,7 @@ public class FriendProfileCardActivity$ProfileTopGestureLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileCardActivity.ProfileTopGestureLayout
  * JD-Core Version:    0.7.0.1
  */

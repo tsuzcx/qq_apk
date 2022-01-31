@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.dinifly.model;
 
 import android.support.annotation.Nullable;
-import android.support.v4.util.Pair;
+import android.support.annotation.RestrictTo;
+import android.util.Pair;
 
+@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
 public class MutablePair<T>
 {
   @Nullable
@@ -60,7 +62,7 @@ public class MutablePair<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.MutablePair
  * JD-Core Version:    0.7.0.1
  */

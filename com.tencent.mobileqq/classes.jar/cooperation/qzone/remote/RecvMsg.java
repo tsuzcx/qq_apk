@@ -1,16 +1,16 @@
 package cooperation.qzone.remote;
 
-import amyh;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bjqr;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecvMsg
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new amyh();
+  public static final Parcelable.Creator<RecvMsg> CREATOR = new bjqr();
   public static final String SSOSEQ_KEY = "_ssoSeqKey";
   private static final String tag = "RecvMsg";
   public Bundle extraData = new Bundle();
@@ -100,48 +100,48 @@ public class RecvMsg
     // Byte code:
     //   0: aload_0
     //   1: aload_1
-    //   2: invokevirtual 104	android/os/Parcel:readInt	()I
-    //   5: putfield 45	cooperation/qzone/remote/RecvMsg:reqSeq	I
+    //   2: invokevirtual 105	android/os/Parcel:readInt	()I
+    //   5: putfield 46	cooperation/qzone/remote/RecvMsg:reqSeq	I
     //   8: aload_0
     //   9: aload_1
-    //   10: invokevirtual 104	android/os/Parcel:readInt	()I
-    //   13: putfield 43	cooperation/qzone/remote/RecvMsg:resultCode	I
+    //   10: invokevirtual 105	android/os/Parcel:readInt	()I
+    //   13: putfield 44	cooperation/qzone/remote/RecvMsg:resultCode	I
     //   16: aload_0
     //   17: aload_1
-    //   18: invokevirtual 107	android/os/Parcel:readString	()Ljava/lang/String;
-    //   21: putfield 47	cooperation/qzone/remote/RecvMsg:serviceCmd	Ljava/lang/String;
+    //   18: invokevirtual 108	android/os/Parcel:readString	()Ljava/lang/String;
+    //   21: putfield 48	cooperation/qzone/remote/RecvMsg:serviceCmd	Ljava/lang/String;
     //   24: aload_0
     //   25: aload_1
-    //   26: invokevirtual 107	android/os/Parcel:readString	()Ljava/lang/String;
-    //   29: putfield 109	cooperation/qzone/remote/RecvMsg:tmpFileName	Ljava/lang/String;
+    //   26: invokevirtual 108	android/os/Parcel:readString	()Ljava/lang/String;
+    //   29: putfield 110	cooperation/qzone/remote/RecvMsg:tmpFileName	Ljava/lang/String;
     //   32: aload_0
-    //   33: getfield 40	cooperation/qzone/remote/RecvMsg:extraData	Landroid/os/Bundle;
-    //   36: invokevirtual 112	android/os/Bundle:clear	()V
+    //   33: getfield 41	cooperation/qzone/remote/RecvMsg:extraData	Landroid/os/Bundle;
+    //   36: invokevirtual 113	android/os/Bundle:clear	()V
     //   39: aload_1
     //   40: aload_0
-    //   41: invokevirtual 116	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   44: invokevirtual 122	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
-    //   47: invokevirtual 126	android/os/Parcel:readBundle	(Ljava/lang/ClassLoader;)Landroid/os/Bundle;
+    //   41: invokevirtual 117	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   44: invokevirtual 123	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
+    //   47: invokevirtual 127	android/os/Parcel:readBundle	(Ljava/lang/ClassLoader;)Landroid/os/Bundle;
     //   50: astore_1
     //   51: aload_1
-    //   52: invokestatic 132	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   55: invokestatic 138	cooperation/qzone/QzonePluginProxyActivity:a	(Landroid/content/Context;)Ljava/lang/ClassLoader;
-    //   58: invokevirtual 142	android/os/Bundle:setClassLoader	(Ljava/lang/ClassLoader;)V
+    //   52: invokestatic 133	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   55: invokestatic 139	cooperation/qzone/QzonePluginProxyActivity:a	(Landroid/content/Context;)Ljava/lang/ClassLoader;
+    //   58: invokevirtual 143	android/os/Bundle:setClassLoader	(Ljava/lang/ClassLoader;)V
     //   61: aload_0
-    //   62: getfield 40	cooperation/qzone/remote/RecvMsg:extraData	Landroid/os/Bundle;
+    //   62: getfield 41	cooperation/qzone/remote/RecvMsg:extraData	Landroid/os/Bundle;
     //   65: aload_1
-    //   66: invokevirtual 146	android/os/Bundle:putAll	(Landroid/os/Bundle;)V
+    //   66: invokevirtual 147	android/os/Bundle:putAll	(Landroid/os/Bundle;)V
     //   69: return
     //   70: astore_2
     //   71: aload_2
-    //   72: invokevirtual 149	java/lang/Exception:printStackTrace	()V
+    //   72: invokevirtual 150	java/lang/Exception:printStackTrace	()V
     //   75: goto -14 -> 61
     //   78: astore_1
-    //   79: ldc 17
+    //   79: ldc 18
     //   81: iconst_1
-    //   82: ldc 151
+    //   82: ldc 152
     //   84: aload_1
-    //   85: invokestatic 157	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   85: invokestatic 158	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   88: aload_1
     //   89: athrow
     // Local variable table:
@@ -230,7 +230,7 @@ public class RecvMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.remote.RecvMsg
  * JD-Core Version:    0.7.0.1
  */

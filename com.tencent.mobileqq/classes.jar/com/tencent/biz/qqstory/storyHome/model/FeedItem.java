@@ -2,23 +2,26 @@ package com.tencent.biz.qqstory.storyHome.model;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.Copyable;
 import com.tencent.biz.qqstory.database.FeedEntry;
 import com.tencent.biz.qqstory.model.BaseUIItem;
-import com.tencent.biz.qqstory.model.item.FeedFeatureItem;
-import com.tencent.biz.qqstory.model.item.IFeedOwner;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.AssertUtils;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import ulj;
+import uxd;
+import uxe;
+import woy;
+import wqn;
+import wxe;
+import xqq;
 
-public abstract class FeedItem
+public abstract class FeedItem<T extends wqn, E extends uxe>
   extends BaseUIItem
-  implements Copyable
+  implements ulj
 {
   public static final int BANNER_FEED_ITEM = 5;
+  public static final String FAKE_START = "fake-";
   public static final int GENERAL_FEED_ITEM = 1;
   public static final int GENERAL_RECOMMEND_FEED_ITEM = 3;
   public static final int HOT_RECOMMEND_FEED_ITEM = 7;
@@ -28,6 +31,7 @@ public abstract class FeedItem
   public String date;
   public long dateTimeMillis;
   public String feedId;
+  public int feedSourceTagType;
   @Deprecated
   public String ownerId;
   public final int type = assignType();
@@ -38,7 +42,7 @@ public abstract class FeedItem
     {
     case 4: 
     default: 
-      AssertUtils.a("It can not create the illegal type:%s feed!", new Object[] { Integer.valueOf(paramInt) });
+      wxe.e("Q.qqstory", "It can not create the illegal type:%s feed!", new Object[] { Integer.valueOf(paramInt) });
       return null;
     case 1: 
       return new GeneralFeedItem();
@@ -54,9 +58,14 @@ public abstract class FeedItem
     return new HotRecommendFeedItem();
   }
   
-  protected abstract int assignType();
+  public static boolean isFakeFeedId(String paramString)
+  {
+    return (paramString != null) && (paramString.startsWith("fake-"));
+  }
   
-  public abstract void convertFromFeedFeature(FeedFeatureItem paramFeedFeatureItem);
+  public abstract int assignType();
+  
+  public abstract void convertFromFeedFeature(uxd paramuxd);
   
   public void copy(Object paramObject)
   {
@@ -66,6 +75,7 @@ public abstract class FeedItem
     if (!TextUtils.isEmpty(paramObject.date)) {
       setDate(paramObject.date);
     }
+    this.feedSourceTagType = paramObject.feedSourceTagType;
   }
   
   public void covertFromEntry(FeedEntry paramFeedEntry)
@@ -76,7 +86,7 @@ public abstract class FeedItem
     }
     for (;;)
     {
-      AssertUtils.a(bool, "type类型不对应");
+      xqq.a(bool, "type类型不对应");
       this.feedId = paramFeedEntry.feedId;
       setDate(paramFeedEntry.date);
       this.ownerId = paramFeedEntry.ownerId;
@@ -84,15 +94,16 @@ public abstract class FeedItem
       try
       {
         readFromLocalByte(paramFeedEntry.extraInfo);
+        this.feedSourceTagType = paramFeedEntry.feedSourceTagType;
         onCovertFromEntry();
         return;
         bool = false;
       }
-      catch (InvalidProtocolBufferMicroException paramFeedEntry)
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         for (;;)
         {
-          SLog.b("Q.qqstory", "invalid pb", paramFeedEntry);
+          wxe.b("Q.qqstory", "invalid pb", localInvalidProtocolBufferMicroException);
         }
       }
     }
@@ -109,6 +120,7 @@ public abstract class FeedItem
     localFeedEntry.type = this.type;
     localFeedEntry.ownerId = this.ownerId;
     localFeedEntry.extraInfo = covertToByte();
+    localFeedEntry.feedSourceTagType = this.feedSourceTagType;
     return localFeedEntry;
   }
   
@@ -129,18 +141,18 @@ public abstract class FeedItem
     return false;
   }
   
-  public StoryHomeFeed generateAndPackageHomeFeedFromDB()
+  public T generateAndPackageHomeFeedFromDB()
   {
-    StoryHomeFeed localStoryHomeFeed = generateHomeFeed();
-    localStoryHomeFeed.b();
-    return localStoryHomeFeed;
+    wqn localwqn = generateHomeFeed();
+    localwqn.b();
+    return localwqn;
   }
   
   @NonNull
-  public abstract StoryHomeFeed generateHomeFeed();
+  public abstract T generateHomeFeed();
   
   @NonNull
-  public abstract IFeedOwner getOwner();
+  public abstract E getOwner();
   
   public int hashCode()
   {
@@ -166,30 +178,30 @@ public abstract class FeedItem
   {
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = FeedManager.a().format(new Date());
+      str = woy.a().format(new Date());
     }
     this.date = str;
     try
     {
-      this.dateTimeMillis = FeedManager.a().parse(str).getTime();
+      this.dateTimeMillis = woy.a().parse(str).getTime();
       return;
     }
     catch (ParseException paramString)
     {
-      SLog.c("Q.qqstory.home", "parse date", paramString);
+      wxe.c("Q.qqstory.home", "parse date", paramString);
     }
   }
   
   public String toString()
   {
-    return "FeedItem{type=" + this.type + ", feedId='" + this.feedId + '\'' + ", ownerId='" + this.ownerId + '\'' + ", date='" + this.date + '\'' + ", dateTimeMillis=" + this.dateTimeMillis + '}';
+    return "FeedItem{type=" + this.type + ", feedId='" + this.feedId + '\'' + ", ownerId='" + this.ownerId + '\'' + ", date='" + this.date + '\'' + ", dateTimeMillis=" + this.dateTimeMillis + ", feedSourceTagType=" + this.feedSourceTagType + '}';
   }
   
   protected void writeParcel() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.FeedItem
  * JD-Core Version:    0.7.0.1
  */

@@ -56,8 +56,8 @@ class Trampoline
   {
     Logger.d("Trampoline", "create trampoline." + this.segments);
     byte[] arrayOfByte1 = new byte[getSize()];
-    int i = 0;
     Object localObject = this.segments.iterator();
+    int i = 0;
     for (;;)
     {
       if (!((Iterator)localObject).hasNext())
@@ -125,7 +125,6 @@ class Trampoline
   }
   
   protected void finalize()
-    throws Throwable
   {
     free();
     super.finalize();
@@ -151,7 +150,7 @@ class Trampoline
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     me.weishu.epic.art.Trampoline
  * JD-Core Version:    0.7.0.1
  */

@@ -1,85 +1,43 @@
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
+import com.tencent.biz.qqstory.network.handler.GetUserIconHandler.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
-public final class vde
-  implements INetEngine.INetEngineListener
+public class vde
 {
-  public vde(String paramString1, String paramString2) {}
+  private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  public static boolean a;
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public static void a(String paramString)
   {
-    if (paramNetResp.jdField_a_of_type_Int == 3)
+    synchronized (jdField_a_of_type_JavaUtilArrayList)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeEmo", 2, "pe res download repeating ");
-      }
-      return;
-    }
-    boolean bool;
-    if (paramNetResp.jdField_a_of_type_Int == 0)
-    {
-      paramNetResp = paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c;
-      String str1 = FileUtils.b(paramNetResp);
-      String str2 = this.a;
-      if ((str1 != null) && (str1.equalsIgnoreCase(this.b)))
+      if (!jdField_a_of_type_JavaUtilSet.contains(paramString))
       {
-        try
-        {
-          FileUtils.a(paramNetResp, str2, false);
-          bool = true;
-        }
-        catch (IOException localIOException)
-        {
-          for (;;)
-          {
-            label78:
-            if (QLog.isColorLevel()) {
-              QLog.d("PokeEmo", 2, "downloadRes.onResp download succ but unzip is failed");
-            }
-            bool = false;
-          }
-        }
-        FileUtils.d(paramNetResp);
-        if (!bool) {
-          break label184;
-        }
-        SharedPreUtils.a(true);
-        PokeItemHelper.b = true;
+        jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        jdField_a_of_type_JavaUtilSet.add(paramString);
       }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeEmo", 2, "downloadRes.onResp download result = " + bool);
+      if (!jdField_a_of_type_Boolean)
+      {
+        jdField_a_of_type_Boolean = true;
+        ThreadManager.post(new GetUserIconHandler.1(), 5, null, true);
       }
-      PokeItemHelper.c = false;
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeEmo", 2, "downloadRes.onResp download succ but md5 is mismatched");
-      }
-      bool = false;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeEmo", 2, "downloadRes.onResp failed ");
-      }
-      bool = false;
-      break label78;
-      label184:
-      PokeItemHelper.n += 1;
     }
+  }
+  
+  public static void a(ArrayList<String> paramArrayList)
+  {
+    paramArrayList = new vdf(paramArrayList);
+    vdg localvdg = new vdg();
+    utz.a().a(paramArrayList, localvdg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vde
  * JD-Core Version:    0.7.0.1
  */

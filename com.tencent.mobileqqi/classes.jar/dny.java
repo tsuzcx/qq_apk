@@ -1,24 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ShortcutGuideDialogActivity;
-import com.tencent.mobileqq.utils.QQUtils;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ThemeSwitchDlgActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.theme.NightModeLogic;
 
 public class dny
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public dny(ShortcutGuideDialogActivity paramShortcutGuideDialogActivity) {}
+  public dny(ThemeSwitchDlgActivity paramThemeSwitchDlgActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    QQUtils.a(this.a.b, ShortcutGuideDialogActivity.a(this.a), ShortcutGuideDialogActivity.b(this.a), this.a.d(), new Handler(), 500, "1");
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    ThemeSwitchDlgActivity.a(this.a, true);
+    ThemeSwitchDlgActivity.a(this.a, new NightModeLogic(this.a.getAppRuntime(), this.a));
+    ThemeSwitchDlgActivity.a(this.a).registerModeCallback(new dnz(this));
+    if ((ThemeSwitchDlgActivity.a(this.a) != null) && (ThemeSwitchDlgActivity.a(this.a).isShowing()))
+    {
+      ThemeSwitchDlgActivity.a(this.a).dismiss();
+      ThemeSwitchDlgActivity.a(this.a, null);
+    }
+    ThemeSwitchDlgActivity.a(this.a).setupNightTheme();
+    ReportController.b(ThemeSwitchDlgActivity.a(this.a), "CliOper", "", "", "Setting_tab", "Night_mode_us", 0, 0, "1", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dny
  * JD-Core Version:    0.7.0.1
  */

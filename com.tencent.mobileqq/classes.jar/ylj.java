@@ -1,22 +1,38 @@
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.utils.ApolloHttpCallBack;
+import android.content.Context;
+import java.io.IOException;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+import org.json.JSONObject;
 
-public final class ylj
-  extends ApolloHttpCallBack
+final class ylj
+  implements Callback
 {
-  public ylj(View paramView, long paramLong) {}
+  ylj(Context paramContext, ylk paramylk) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void onFailure(Call paramCall, IOException paramIOException)
   {
-    if ((this.jdField_a_of_type_AndroidViewView instanceof ApolloSurfaceView)) {
-      ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).queueEvent(new ylk(this, paramArrayOfByte, paramInt));
+    yli.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ylk, "Jbq0Dm55FudiaTa26UjP071XduhCyIKRYaK6MCcYzZA");
+  }
+  
+  public void onResponse(Call paramCall, Response paramResponse)
+  {
+    try
+    {
+      paramCall = new JSONObject(paramResponse.body().string()).optString("key");
+      yli.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ylk, paramCall);
+      return;
+    }
+    catch (Throwable paramCall)
+    {
+      paramCall.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ylj
  * JD-Core Version:    0.7.0.1
  */

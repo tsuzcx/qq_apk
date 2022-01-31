@@ -1,5 +1,10 @@
 package com.tencent.mobileqq.activity;
 
+import aeeb;
+import aeec;
+import alud;
+import amdu;
+import ameq;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,41 +19,37 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import bdgm;
+import bdhj;
+import bdjz;
+import bety;
+import bjdt;
+import bjea;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopObserver;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
 import cooperation.troop.TroopFileProxyActivity;
 import java.util.List;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.AppInfo;
 import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.RspBody;
-import tyw;
-import tyx;
 
 public class TroopLowCreditLevelNotifyActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
+  protected ameq a;
   public Context a;
   protected Button a;
   protected ImageView a;
   protected LinearLayout a;
   protected TextView a;
-  protected TroopObserver a;
-  protected QQProgressDialog a;
+  protected bety a;
   public String a;
   public View[] a;
   public boolean[] a;
@@ -63,16 +64,16 @@ public class TroopLowCreditLevelNotifyActivity
     this.jdField_a_of_type_ArrayOfBoolean = new boolean[4];
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new tyx(this);
+    this.jdField_a_of_type_Ameq = new aeec(this);
   }
   
   private String a(String paramString, long paramLong)
   {
     String str = this.app.getCurrentAccountUin();
-    Object localObject = (TroopManager)this.app.getManager(51);
+    Object localObject = (TroopManager)this.app.getManager(52);
     if (localObject != null)
     {
-      localObject = ((TroopManager)localObject).a(this.jdField_a_of_type_JavaLangString);
+      localObject = ((TroopManager)localObject).b(this.jdField_a_of_type_JavaLangString);
       if (localObject != null) {
         if ((((TroopInfo)localObject).dwAdditionalFlag & 1L) == 1L) {
           localObject = "0";
@@ -81,7 +82,7 @@ public class TroopLowCreditLevelNotifyActivity
     }
     for (;;)
     {
-      paramString = paramString.replace("$GCODE$", this.jdField_a_of_type_JavaLangString).replace("$CLIENTVER$", "android7.6.3").replace("$UIN$", str).replace("$LANG$", "zh_CN").replace("$GROUPAPPID$", Long.toString(paramLong)).replace("$ROLE$", (CharSequence)localObject).replace("$ENTERSOURCE$", "1");
+      paramString = paramString.replace("$GCODE$", this.jdField_a_of_type_JavaLangString).replace("$CLIENTVER$", "android8.3.5").replace("$UIN$", str).replace("$LANG$", "zh_CN").replace("$GROUPAPPID$", Long.toString(paramLong)).replace("$ROLE$", (CharSequence)localObject).replace("$ENTERSOURCE$", "1");
       return paramString + "&credit=1";
       if ((((TroopInfo)localObject).dwCmdUinUinFlag & 1L) == 1L) {
         localObject = "1";
@@ -94,23 +95,23 @@ public class TroopLowCreditLevelNotifyActivity
   private void e()
   {
     this.jdField_a_of_type_AndroidContentContext = this;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363867));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363690));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364631));
-    this.c = ((TextView)findViewById(2131375313));
-    this.d = ((TextView)findViewById(2131375314));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131366347));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131375315));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378369));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378468));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378515));
+    this.c = ((TextView)findViewById(2131369884));
+    this.d = ((TextView)findViewById(2131370676));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368482));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131377219));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    setTitle(2131430678);
-    this.c.setText(2131430679);
-    this.d.setText(2131430680);
+    setTitle(2131697986);
+    this.c.setText(2131697994);
+    this.d.setText(2131697993);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    a(2131430681, 2131430687, this.jdField_a_of_type_ArrayOfBoolean[0], 0);
-    a(2131430682, 2131430687, this.jdField_a_of_type_ArrayOfBoolean[1], 1);
-    a(2131430683, 2131430686, this.jdField_a_of_type_ArrayOfBoolean[2], 2);
-    a(2131430684, 2131430685, this.jdField_a_of_type_ArrayOfBoolean[3], 3);
+    a(2131698034, 2131697944, this.jdField_a_of_type_ArrayOfBoolean[0], 0);
+    a(2131698030, 2131697944, this.jdField_a_of_type_ArrayOfBoolean[1], 1);
+    a(2131698031, 2131697942, this.jdField_a_of_type_ArrayOfBoolean[2], 2);
+    a(2131698033, 2131697943, this.jdField_a_of_type_ArrayOfBoolean[3], 3);
     Bitmap localBitmap = this.app.a(this.jdField_a_of_type_JavaLangString, (byte)3, false, false);
     if (localBitmap != null) {
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
@@ -119,7 +120,7 @@ public class TroopLowCreditLevelNotifyActivity
     {
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
       return;
-      localBitmap = ImageUtil.a();
+      localBitmap = bdhj.a();
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
@@ -127,7 +128,7 @@ public class TroopLowCreditLevelNotifyActivity
   
   public oidb_0xaf4.AppInfo a(long paramLong)
   {
-    Object localObject1 = ((TroopManager)this.app.getManager(51)).a(this.jdField_a_of_type_JavaLangString);
+    Object localObject1 = ((TroopManager)this.app.getManager(52)).a(this.jdField_a_of_type_JavaLangString);
     if (localObject1 != null) {}
     for (;;)
     {
@@ -176,18 +177,18 @@ public class TroopLowCreditLevelNotifyActivity
   
   public void a()
   {
-    Object localObject = (TroopManager)this.app.getManager(51);
+    Object localObject = (TroopManager)this.app.getManager(52);
     int i;
     int j;
     if (localObject != null)
     {
-      localObject = ((TroopManager)localObject).a(this.jdField_a_of_type_JavaLangString);
+      localObject = ((TroopManager)localObject).b(this.jdField_a_of_type_JavaLangString);
       if (localObject != null) {
         if ((((TroopInfo)localObject).dwAdditionalFlag & 1L) == 1L)
         {
           i = 1;
           if ((((TroopInfo)localObject).dwCmdUinUinFlag & 1L) != 1L) {
-            break label130;
+            break label133;
           }
           j = 1;
         }
@@ -198,13 +199,13 @@ public class TroopLowCreditLevelNotifyActivity
       label56:
       if ((i == 0) && (j == 0))
       {
-        localObject = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setTitle(getString(2131434781)).setMessage("错误，仅群主和管理员能访问");
-        ((QQCustomDialog)localObject).setPositiveButton(2131430693, new tyw(this));
-        ((QQCustomDialog)localObject).setNegativeButton("", null);
-        ((QQCustomDialog)localObject).setCancelable(false);
-        ((QQCustomDialog)localObject).show();
+        localObject = bdgm.a(this.jdField_a_of_type_AndroidContentContext, 230).setTitle(getString(2131720808)).setMessage(alud.a(2131715874));
+        ((bdjz)localObject).setPositiveButton(2131697988, new aeeb(this));
+        ((bdjz)localObject).setNegativeButton("", null);
+        ((bdjz)localObject).setCancelable(false);
+        ((bdjz)localObject).show();
       }
-      label130:
+      label133:
       do
       {
         return;
@@ -212,12 +213,12 @@ public class TroopLowCreditLevelNotifyActivity
         break;
         j = 0;
         break label56;
-        localObject = (TroopHandler)this.app.a(20);
+        localObject = (amdu)this.app.a(20);
       } while (localObject == null);
       if (QLog.isColorLevel()) {
         QLog.i("troop.credit.act", 2, "getTroopCreditInfo:" + this.jdField_a_of_type_JavaLangString);
       }
-      ((TroopHandler)localObject).d(this.jdField_a_of_type_JavaLangString, true);
+      ((amdu)localObject).d(this.jdField_a_of_type_JavaLangString, true);
       c();
       return;
       j = 0;
@@ -227,10 +228,10 @@ public class TroopLowCreditLevelNotifyActivity
   
   public void a(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971671, null);
-    TextView localTextView1 = (TextView)localView.findViewById(2131365321);
-    TextView localTextView2 = (TextView)localView.findViewById(2131375312);
-    TextView localTextView3 = (TextView)localView.findViewById(2131369199);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562761, null);
+    TextView localTextView1 = (TextView)localView.findViewById(2131368577);
+    TextView localTextView2 = (TextView)localView.findViewById(2131368525);
+    TextView localTextView3 = (TextView)localView.findViewById(2131368572);
     localTextView1.setText(paramInt1);
     localTextView2.setText(paramInt2);
     if (paramBoolean) {
@@ -265,10 +266,10 @@ public class TroopLowCreditLevelNotifyActivity
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return false;
     }
-    Object localObject = (TroopManager)this.app.getManager(51);
+    Object localObject = (TroopManager)this.app.getManager(52);
     if (localObject != null)
     {
-      localObject = ((TroopManager)localObject).a(this.jdField_a_of_type_JavaLangString);
+      localObject = ((TroopManager)localObject).b(this.jdField_a_of_type_JavaLangString);
       if (localObject != null)
       {
         this.jdField_b_of_type_JavaLangString = ((TroopInfo)localObject).getTroopName();
@@ -341,22 +342,22 @@ public class TroopLowCreditLevelNotifyActivity
   
   protected void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this);
+    if (this.jdField_a_of_type_Bety == null) {
+      this.jdField_a_of_type_Bety = new bety(this);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131430695);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(getTitleBarHeight());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    this.jdField_a_of_type_Bety.c(2131697992);
+    this.jdField_a_of_type_Bety.b(getTitleBarHeight());
+    this.jdField_a_of_type_Bety.show();
   }
   
   public void d()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
+      this.jdField_a_of_type_Bety.dismiss();
     }
   }
   
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     int i = -1;
     if (paramInt2 == -1) {
@@ -370,7 +371,7 @@ public class TroopLowCreditLevelNotifyActivity
     {
       if (paramInt1 >= 0)
       {
-        this.jdField_a_of_type_ArrayOfAndroidViewView[paramInt1].findViewById(2131369199).setVisibility(0);
+        this.jdField_a_of_type_ArrayOfAndroidViewView[paramInt1].findViewById(2131368572).setVisibility(0);
         this.jdField_a_of_type_ArrayOfBoolean[paramInt1] = true;
       }
       if (!b()) {
@@ -389,7 +390,7 @@ public class TroopLowCreditLevelNotifyActivity
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     if (QLog.isColorLevel()) {
@@ -400,26 +401,26 @@ public class TroopLowCreditLevelNotifyActivity
       finish();
       return false;
     }
-    super.setContentView(2130971672);
+    super.setContentView(2131562762);
     e();
-    addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
+    addObserver(this.jdField_a_of_type_Ameq);
     a();
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
-    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
+    removeObserver(this.jdField_a_of_type_Ameq);
     b();
   }
   
   public void onClick(View paramView)
   {
     Object localObject;
-    if (paramView.getId() == 2131375315)
+    if (paramView.getId() == 2131377219)
     {
-      paramView = "http://qqweb.qq.com/m/business/qunlevel/index.html?gc=" + this.jdField_a_of_type_JavaLangString + "&from=0&_wv=1027";
+      paramView = "https://qqweb.qq.com/m/business/qunlevel/index.html?gc=" + this.jdField_a_of_type_JavaLangString + "&from=0&_wv=1027";
       localObject = new Intent(this, QQBrowserActivity.class);
       ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
       ((Intent)localObject).putExtra("url", paramView);
@@ -432,12 +433,12 @@ public class TroopLowCreditLevelNotifyActivity
       return;
       if (paramView == this.jdField_a_of_type_ArrayOfAndroidViewView[0])
       {
-        paramView = (TroopManager)this.app.getManager(51);
+        paramView = (TroopManager)this.app.getManager(52);
         if (paramView == null) {
           break label348;
         }
       }
-      for (paramView = paramView.a(this.jdField_a_of_type_JavaLangString);; paramView = null)
+      for (paramView = paramView.b(this.jdField_a_of_type_JavaLangString);; paramView = null)
       {
         if (paramView == null) {
           break label351;
@@ -458,7 +459,7 @@ public class TroopLowCreditLevelNotifyActivity
             QLog.i("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "onClick, appInfo for announce is null, req from server");
           }
           c();
-          paramView = (TroopHandler)this.app.a(20);
+          paramView = (amdu)this.app.a(20);
           if (paramView == null) {
             break;
           }
@@ -476,10 +477,10 @@ public class TroopLowCreditLevelNotifyActivity
         if (paramView != this.jdField_a_of_type_ArrayOfAndroidViewView[3]) {
           break;
         }
-        paramView = QZoneHelper.UserInfo.a();
+        paramView = bjea.a();
         paramView.jdField_a_of_type_JavaLangString = this.app.getCurrentAccountUin();
         paramView.jdField_b_of_type_JavaLangString = this.app.getCurrentNickname();
-        QZoneHelper.a(this, paramView, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 3, 1003, "qunnotice");
+        bjdt.a(this, paramView, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 3, 1003, "qunnotice");
         return;
       }
     }
@@ -487,7 +488,7 @@ public class TroopLowCreditLevelNotifyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity
  * JD-Core Version:    0.7.0.1
  */

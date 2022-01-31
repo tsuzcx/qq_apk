@@ -1,22 +1,39 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.FraudTipsBar;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.qphone.base.util.QLog;
 
-class rsv
-  implements Runnable
+public class rsv
+  extends AnimatorListenerAdapter
 {
-  rsv(rst paramrst, long paramLong) {}
+  public rsv(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((this.jdField_a_of_type_Rst.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar != null) && (this.jdField_a_of_type_Long == Long.parseLong(this.jdField_a_of_type_Rst.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))) {
-      this.jdField_a_of_type_Rst.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar.a();
+    super.onAnimationEnd(paramAnimator);
+    ReadInJoyListViewGroup.a(this.a).setLayerType(0, null);
+    ReadInJoyListViewGroup.a(this.a).setVisibility(8);
+    this.a.a.setAlpha(1.0F);
+    if (ReadInJoyListViewGroup.a(this.a) != null) {
+      ReadInJoyListViewGroup.a(this.a).i();
     }
+    ReadInJoyListViewGroup.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.videoanimation", 2, "trans animation end");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rsv
  * JD-Core Version:    0.7.0.1
  */

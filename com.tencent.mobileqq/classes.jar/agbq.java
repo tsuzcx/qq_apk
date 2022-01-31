@@ -1,23 +1,41 @@
-import com.tencent.mobileqq.ar.arengine.ARCloudReqInfo;
-import com.tencent.mobileqq.ocr.OcrControl;
-import com.tencent.mobileqq.ocr.OcrControl.OcrCallback;
-import java.util.HashMap;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.qphone.base.util.QLog;
 
 public class agbq
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public agbq(OcrControl paramOcrControl, String paramString) {}
+  public agbq(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (((ARCloudReqInfo)this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl.a.get(this.jdField_a_of_type_JavaLangString) != null) && (OcrControl.a(this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl) != null)) {
-      OcrControl.a(this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl).a();
+    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {
+      return;
     }
+    SixCombolEffectView.a(this.a).start();
+    this.a.a();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (SixCombolEffectView.a(this.a)) {}
+    do
+    {
+      return;
+      SixCombolEffectView.jdField_a_of_type_Int = 1;
+    } while (!QLog.isColorLevel());
+    QLog.w("SixCombolEffectView", 2, "Animation 1 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agbq
  * JD-Core Version:    0.7.0.1
  */

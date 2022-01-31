@@ -1,22 +1,31 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 public class aecd
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aecd(LightReplyMenuManager paramLightReplyMenuManager) {}
+  public aecd(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a != null)
+    int i = 0;
+    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.size() == 0)) {}
+    for (;;)
     {
-      this.a.a.setVisibility(8);
-      LightReplyMenuManager.a(this.a, null);
-      this.a.a = null;
-      this.a.b = false;
-      this.a.c = false;
-      LightReplyMenuManager.a(this.a, false);
-      this.a.e();
+      return;
+      azqs.b(this.a.app, "dc00899", "Grp_msg", "", "helper-guide", "Clk_confirm", 0, 0, "", "", "", "");
+      this.a.jdField_a_of_type_Bdmq = ((bdmq)this.a.app.getManager(31));
+      this.a.b.setCompoundDrawablesWithIntrinsicBounds(2130839225, 0, 0, 0);
+      while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+      {
+        paramView = String.valueOf(this.a.jdField_a_of_type_JavaUtilList.get(i));
+        this.a.a(paramView, 4);
+        i += 1;
+      }
     }
   }
 }

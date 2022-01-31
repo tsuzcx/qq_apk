@@ -1,20 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.os.IInterface;
 
-public class amzj
-  extends BroadcastReceiver
+public abstract interface amzj
+  extends IInterface
 {
-  public amzj(QZoneShareActivity paramQZoneShareActivity) {}
+  public abstract void a(int paramInt);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("com.tencent.qq.shareupdate".equals(paramIntent.getAction())) {
-      ThreadManager.postImmediately(new amzk(this), null, true);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 

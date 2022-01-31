@@ -1,48 +1,61 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinHandler;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RspBody;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
-
 public class lwy
-  extends ProtoUtils.TroopProtocolObserver
+  extends lwt
 {
-  public lwy(ReadInJoySkinHandler paramReadInJoySkinHandler) {}
+  public boolean a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(long paramLong)
   {
-    boolean bool = true;
-    paramBundle = new oidb_0x5bd.RspBody();
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
+    paramLong -= this.jdField_a_of_type_Long;
+    int j = 0;
+    float f2 = 1.0F;
+    int i;
+    float f1;
+    if (paramLong <= 500L)
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoySkinHandler", 2, "errorCode = " + paramInt + ", rspBody.msg_next_guide_info.has = " + paramBundle.msg_next_guide_info.has());
-      }
-      paramArrayOfByte = this.a;
-      if (paramInt == 0) {}
-      for (;;)
-      {
-        paramArrayOfByte.a(1, bool, new Object[] { paramBundle.msg_current_skin_info.get(), paramBundle.msg_next_guide_info.get(), paramBundle.msg_operation_guide_info.get(), paramBundle.msg_operation_refresh_info.get() });
-        return;
-        bool = false;
-      }
+      i = 0;
+      f1 = f2;
+    }
+    for (;;)
+    {
+      a(i);
+      b(f1);
       return;
+      if ((paramLong > 500L) && (paramLong < 1167L))
+      {
+        i = (int)(255L * (paramLong - 500L) / 667L);
+        f1 = (0.5F * (float)(paramLong + 1167L) - 500.0F) / 667.0F;
+      }
+      else if (((paramLong >= 1167L) && (paramLong <= 2167L)) || (!this.jdField_a_of_type_Boolean))
+      {
+        i = 255;
+        f1 = f2;
+      }
+      else
+      {
+        f1 = f2;
+        i = j;
+        if (paramLong > 2167L)
+        {
+          f1 = f2;
+          i = j;
+          if (paramLong < 2500L)
+          {
+            i = (int)((paramLong - 2500L) * 255L / -333L);
+            f1 = f2;
+          }
+        }
+      }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    a(paramInt1 * 5 / 1500, paramInt2 - paramInt1 * 752 / 750, paramInt1 * 1495 / 1500, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lwy
  * JD-Core Version:    0.7.0.1
  */

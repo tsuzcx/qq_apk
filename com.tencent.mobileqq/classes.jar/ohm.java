@@ -1,20 +1,12 @@
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import org.jetbrains.annotations.NotNull;
 
-class ohm
-  implements Runnable
+public abstract interface ohm
 {
-  ohm(ohk paramohk) {}
-  
-  public void run()
-  {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$Mp4VideoFragmentInfo.b = null;
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$Mp4VideoFragmentInfo.a = true;
-    HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_Ohj.a, this.a.jdField_a_of_type_Ohj.a.a);
-  }
+  public abstract void a(@NotNull String paramString1, @NotNull String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ohm
  * JD-Core Version:    0.7.0.1
  */

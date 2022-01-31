@@ -6,11 +6,11 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class SubMsgType0x8d$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "rpt_msg_notify_infos", "red_spot_notify_body" }, new Object[] { null, null }, MsgBody.class);
   public SubMsgType0x8d.RedSpotNotifyBody red_spot_notify_body = new SubMsgType0x8d.RedSpotNotifyBody();
-  public final PBRepeatMessageField rpt_msg_notify_infos = PBField.initRepeatMessage(SubMsgType0x8d.NotifyBody.class);
+  public final PBRepeatMessageField<SubMsgType0x8d.NotifyBody> rpt_msg_notify_infos = PBField.initRepeatMessage(SubMsgType0x8d.NotifyBody.class);
 }
 
 

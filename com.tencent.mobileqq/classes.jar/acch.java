@@ -1,47 +1,34 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class acch
-  extends WtloginObserver
+public class acch
+  implements View.OnTouchListener
 {
-  acch(acbg paramacbg, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public acch(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool2 = true;
-    paramWUserSigInfo = new Bundle();
-    if ((paramInt == 0) && (paramDevlockInfo != null))
+    switch (paramMotionEvent.getAction() & 0xFF)
     {
-      if (paramDevlockInfo.DevSetup != 1) {
-        break label90;
-      }
-      bool1 = true;
-      paramWUserSigInfo.putBoolean("auth_dev_open", bool1);
-      if (paramDevlockInfo.AllowSet != 1) {
-        break label96;
-      }
     }
-    label90:
-    label96:
-    for (boolean bool1 = bool2;; bool1 = false)
+    do
     {
-      paramWUserSigInfo.putBoolean("allow_set", bool1);
-      paramWUserSigInfo.putString("phone_num", paramDevlockInfo.Mobile);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramWUserSigInfo);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      bool1 = false;
-      break;
-    }
+      return false;
+      paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+    } while (!paramView.isActive());
+    paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acch
  * JD-Core Version:    0.7.0.1
  */

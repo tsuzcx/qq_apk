@@ -1,21 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.observer.GameCenterObserver;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
-public class soy
-  extends GameCenterObserver
+class soy
+  implements quv
 {
-  public soy(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  soy(sox paramsox, String paramString) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(@NotNull List<UgcVideo> paramList)
   {
-    ThreadManager.post(new soz(this), 5, null, false);
+    BridgeModule.access$1000(this.jdField_a_of_type_Sox.a, 0L, paramList, this.jdField_a_of_type_JavaLangString, 0, "", true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     soy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,21 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.AssociatedAccountOptPopBar;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class aikh
   implements DialogInterface.OnClickListener
 {
-  public aikh(AssociatedAccountOptPopBar paramAssociatedAccountOptPopBar) {}
+  public aikh(AvatarPendantActivity paramAvatarPendantActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountOptPopBar", 2, "onAccoutChangeFailed -> LoginActivity");
+    if (!this.a.a()) {
+      ((bdug)this.a.app.a(71)).a(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Bdrg.a, -1);
     }
-    paramDialogInterface = new Intent();
-    paramDialogInterface.setPackage(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getPackageName());
-    paramDialogInterface.setClass(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, LoginActivity.class);
-    paramDialogInterface.putExtra("is_change_account", true);
-    paramDialogInterface.putExtra("uin", this.a.jdField_a_of_type_JavaLangString);
-    paramDialogInterface.putExtra("befault_uin", this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin());
-    this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramDialogInterface);
-    this.a.jdField_a_of_type_JavaLangString = null;
+    VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "faceAddon", "0X80088EE", "", 1, 0, 0, null, "", "");
+    azqs.b(this.a.app, "CliOper", "", "", "0X8005FDB", "0X8005FDB", 0, 0, String.valueOf(this.a.jdField_a_of_type_Long), "", "", "");
   }
 }
 

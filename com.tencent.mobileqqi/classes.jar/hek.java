@@ -1,35 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.util.FaceDecodeTask;
-import com.tencent.mobileqq.util.FaceDecodeTask.DecodeCompletionListener;
+import com.tencent.mobileqq.utils.ZebraBlacklistUtils;
+import com.tencent.mobileqq.utils.ZebraBlacklistUtils.JceRequestCallback;
 
-public final class hek
-  extends Handler
+public class hek
+  implements ZebraBlacklistUtils.JceRequestCallback
 {
-  public hek(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public hek(ZebraBlacklistUtils paramZebraBlacklistUtils) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a() {}
+  
+  public void a(byte[] paramArrayOfByte)
   {
-    if (paramMessage == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (paramMessage.what != FaceDecodeTask.a());
-      paramMessage = (FaceDecodeTask)paramMessage.obj;
-    } while ((paramMessage == null) || (FaceDecodeTask.a(paramMessage) == null) || (FaceDecodeTask.a(paramMessage) == null));
-    if (FaceDecodeTask.a(paramMessage))
-    {
-      FaceDecodeTask.a(paramMessage).b = 2;
-      FaceDecodeTask.a(paramMessage).a(FaceDecodeTask.a(paramMessage), FaceDecodeTask.a(paramMessage));
-      return;
-    }
-    FaceDecodeTask.a(paramMessage).a(FaceDecodeTask.a(paramMessage), FaceDecodeTask.a(paramMessage));
+    ZebraBlacklistUtils.a(this.a, paramArrayOfByte);
   }
 }
 

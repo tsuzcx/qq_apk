@@ -1,32 +1,19 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo2.GetFirstMediaThumbnailFunction;
-import com.tencent.biz.qqstory.takevideo2.StoryLocalPublishPart;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class omn
-  extends SimpleJob
+class omn
+  implements DialogInterface.OnClickListener
 {
-  public omn(StoryLocalPublishPart paramStoryLocalPublishPart, View paramView) {}
+  omn(oml paramoml) {}
   
-  protected Bitmap a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new GetFirstMediaThumbnailFunction(this.jdField_a_of_type_AndroidViewView.getContext()).a();
-  }
-  
-  protected void a(@Nullable Bitmap paramBitmap)
-  {
-    new Handler(Looper.getMainLooper()).post(new omo(this, paramBitmap));
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     omn
  * JD-Core Version:    0.7.0.1
  */

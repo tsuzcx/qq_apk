@@ -1,34 +1,52 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.FriendManager;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class dbz
-  extends FriendListObserver
+  implements View.OnTouchListener
 {
-  public dbz(ModifyFriendInfoActivity paramModifyFriendInfoActivity) {}
+  public dbz(QQLSActivity paramQQLSActivity) {}
   
-  protected void a(String paramString, byte paramByte1, byte paramByte2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramString != null) && (paramString.equals(this.a.jdField_a_of_type_JavaLangString)))
-    {
-      this.a.jdField_a_of_type_Int = paramByte1;
-      return;
+    if (paramMotionEvent.getAction() == 0) {
+      if (Build.VERSION.SDK_INT < 16) {
+        if (QQLSActivity.a(this.a) != null) {
+          QQLSActivity.a(this.a, QQLSActivity.a(this.a));
+        }
+      }
     }
-    this.a.c();
-  }
-  
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
-  {
-    if (paramBoolean)
+    while (paramMotionEvent.getAction() != 1)
     {
-      this.a.c = paramString2;
-      paramString1 = (FriendManager)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8);
-      this.a.jdField_b_of_type_JavaLangString = paramString1.a(this.a.jdField_a_of_type_JavaLangString);
-      return;
+      return false;
+      if ((QQLSActivity.a(this.a) != null) && (QQLSActivity.b(this.a) != null) && (QQLSActivity.a(this.a, QQLSActivity.b(this.a), QQLSActivity.a(this.a), paramMotionEvent)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQLSActivity", 2, "singlelist  click doble");
+        }
+        if (QQLSActivity.a(this.a) != null)
+        {
+          QQLSActivity.a(this.a, QQLSActivity.a(this.a));
+          QQLSActivity.a(this.a, true);
+        }
+      }
+      for (;;)
+      {
+        QQLSActivity.a(this.a, MotionEvent.obtain(paramMotionEvent));
+        return false;
+        if (QLog.isColorLevel()) {
+          QLog.e("QQLSActivity", 2, "singlelist  click once");
+        }
+        paramView = QQLSActivity.a(this.a).obtainMessage(0);
+        QQLSActivity.a(this.a).sendMessageDelayed(paramView, 500L);
+      }
     }
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(this.a.c);
+    QQLSActivity.b(this.a, MotionEvent.obtain(paramMotionEvent));
+    return false;
   }
 }
 

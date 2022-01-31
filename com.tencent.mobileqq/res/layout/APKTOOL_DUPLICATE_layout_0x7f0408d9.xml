@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingLeft="12.0dip" android:paddingTop="20.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a096a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="今天" />
-    <com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27e1" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="162.0dip" android:layout_marginTop="10.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a096a" />
-</RelativeLayout>

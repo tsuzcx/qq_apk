@@ -1,0 +1,65 @@
+{
+    "view_type":"UIView",
+    "view_id":"id_jump_channel_bar",
+    "event_type": "cmd_jump_channel_bar_click",
+    "layout_type":"layout_relative",
+    "height":{
+        "type":"absolutely",
+        "value":"46"
+    },
+    "width":{
+        "type":"relative",
+        "value":"375"
+    },
+    "attributes":{
+        "setAttatchInfo:":"-1"
+    },
+    "subviews":[
+        {
+            "view_type":"UIView",
+            "view_id":"id_jump_channel_separator",
+            "margin_left": "12",
+            "height": {
+                "type": "absolutely",
+                "value": "0.5"
+            },
+            "width": {
+                "type": "relative",
+                "value": "351"
+            },
+            "attributes": {
+                "setBackgroundColorString:": "#E6E6E6"
+            }
+        },
+        {
+            "view_type":"container",
+            "direction":"horizontal",
+            "align_parent_center": "YES",
+            "height":{
+                "type":"absolutely",
+                "value":"18"
+            },
+            "width":{
+                "type":"wrap_content"
+            },
+            "subviews":[
+                {
+                    "view_type":"UILabel",
+                    "view_id":"id_jump_channel_name",
+                    "height":{
+                        "type":"absolutely",
+                        "value":"18"
+                    },
+                    "width":{
+                        "type":"wrap_content"
+                    },
+                    "attributes":{
+                        "setText:":"-1",
+                        "setTextColorString:":"#4799DF",
+                        "setFontSizeString:":"14"
+                    }
+                }
+            ]
+        }
+    ]
+}

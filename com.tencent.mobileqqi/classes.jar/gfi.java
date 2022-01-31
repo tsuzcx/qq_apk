@@ -1,28 +1,55 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.DataTag;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profile.view.QzonePhotoView;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 
-class gfi
-  implements Runnable
+public class gfi
+  implements View.OnClickListener
 {
-  gfi(gfh paramgfh, String paramString) {}
+  private static final long jdField_a_of_type_Long = 1000L;
+  private long b = 0L;
   
-  public void run()
+  public gfi(QzonePhotoView paramQzonePhotoView) {}
+  
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Gfh.jdField_a_of_type_Int == 1)
+    long l = System.currentTimeMillis();
+    if (Math.abs(l - this.b) < 1000L) {}
+    do
     {
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        break label48;
+      do
+      {
+        do
+        {
+          return;
+          this.b = l;
+        } while ((paramView == null) || (!(paramView.getTag() instanceof DataTag)));
+        paramView = (DataTag)paramView.getTag();
+      } while (paramView == null);
+      int i = paramView.C;
+      paramView = QzonePhotoView.a(this.a).a.a;
+      switch (i)
+      {
+      default: 
+        return;
       }
-      MagicfaceViewController.a(this.jdField_a_of_type_Gfh.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).setVisibility(8);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Gfh.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-      return;
-      label48:
-      MagicfaceViewController.a(this.jdField_a_of_type_Gfh.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).setVisibility(0);
-    }
+      if (QLog.isColorLevel()) {
+        QLog.i("ProfileCard.QzonePhotoView", 2, "View.OnClickListener click type is photo wall view");
+      }
+      paramView = this.a.a();
+    } while (paramView == null);
+    paramView.type = "PhotoWallCover";
+    QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.a();
+    localUserInfo.a = this.a.a.a();
+    localUserInfo.b = this.a.a.e();
+    localUserInfo.c = this.a.a.getSid();
+    QZoneHelper.b(QzonePhotoView.a(this.a), localUserInfo, paramView, 1008);
   }
 }
 

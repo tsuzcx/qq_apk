@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class oidb_0x9ab$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int ITEM_FIELD_NUMBER = 2;
   public static final int LIST_FIELD_NUMBER = 1;
@@ -14,7 +14,7 @@ public final class oidb_0x9ab$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x9ab.oidb_0x9ab.RspBody
  * JD-Core Version:    0.7.0.1
  */

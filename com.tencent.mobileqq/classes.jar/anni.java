@@ -1,24 +1,16 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import dov.com.qq.im.capture.poi.FacePoiSearchUI;
-
-public class anni
-  implements TextWatcher
+class anni
+  implements annl
 {
-  public anni(FacePoiSearchUI paramFacePoiSearchUI) {}
+  anni(annc paramannc) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(anno paramanno, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    FacePoiSearchUI.a(this.a);
+    this.a.a((annp)paramanno, paramBoolean, paramArrayOfByte);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anni
  * JD-Core Version:    0.7.0.1
  */

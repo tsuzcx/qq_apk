@@ -1,21 +1,28 @@
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class vnp
-  implements Runnable
+public class vnp
+  extends QQUIEventReceiver<StoryPlayerActivity, vno>
 {
-  vnp(vno paramvno) {}
-  
-  public void run()
+  public vnp(@NonNull StoryPlayerActivity paramStoryPlayerActivity)
   {
-    this.a.a.b(2131435874);
-    ReportController.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
-    this.a.a.b();
+    super(paramStoryPlayerActivity);
+  }
+  
+  public void a(@NonNull StoryPlayerActivity paramStoryPlayerActivity, @NonNull vno paramvno)
+  {
+    paramStoryPlayerActivity.b = paramvno.a;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vno.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vnp
  * JD-Core Version:    0.7.0.1
  */

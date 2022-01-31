@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class WeiyunPB$OfflineFileInfo
-  extends MessageMicro
+  extends MessageMicro<OfflineFileInfo>
 {
   public static final int BYTES_10M_MD5_FIELD_NUMBER = 100;
   public static final int BYTES_UUID_FIELD_NUMBER = 6;
@@ -41,7 +41,7 @@ public final class WeiyunPB$OfflineFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.OfflineFileInfo
  * JD-Core Version:    0.7.0.1
  */

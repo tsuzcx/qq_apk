@@ -1,40 +1,19 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGameAdComManager.2;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGameAdComManager.2.1;
 
 public class rda
-  implements Runnable
+  implements ofa
 {
-  public rda(LiteTransferWrapper paramLiteTransferWrapper, boolean paramBoolean) {}
+  public rda(VideoFeedsGameAdComManager.2.1 param1) {}
   
-  public void run()
+  public void a()
   {
-    try
-    {
-      if (LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) != 0L)
-      {
-        QLog.i("dataline.LiteTTransferWrapper", 1, "destryOperator mLiteTransferOperator:" + LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) + " threadId:" + Thread.currentThread().getId());
-        long l = LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper);
-        LiteTransferWrapper.access$202(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, 0L);
-        this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.destryOperator(l, this.jdField_a_of_type_Boolean);
-      }
-      LiteTransferWrapper.access$002(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, null);
-      LiteTransferWrapper.access$102(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, null);
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("dataline.LiteTTransferWrapper", 2, "cannot endLiteTransfer, load litetranfer library error?" + QLog.getStackTraceString(localUnsatisfiedLinkError));
-        }
-      }
-    }
+    this.a.a.this$0.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rda
  * JD-Core Version:    0.7.0.1
  */

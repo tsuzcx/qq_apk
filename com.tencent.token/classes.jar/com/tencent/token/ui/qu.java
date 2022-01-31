@@ -1,61 +1,48 @@
 package com.tencent.token.ui;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Message;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cx;
+import com.tencent.token.global.f;
 
-final class qu
-  extends bo
+class qu
+  extends cb
 {
-  qu(NetActiveSetDirBySeqActivity paramNetActiveSetDirBySeqActivity)
+  qu(NetActiveVryOtherListActivity paramNetActiveVryOtherListActivity)
   {
-    super(paramNetActiveSetDirBySeqActivity);
+    super(paramNetActiveVryOtherListActivity);
   }
   
-  public final void handleMessage(Message paramMessage)
+  public void handleMessage(Message paramMessage)
   {
-    boolean bool = true;
-    if (this.a.isFinishing()) {
-      return;
-    }
     switch (paramMessage.what)
     {
     default: 
       return;
-    case 3003: 
-      this.a.dismissDialog();
-      if (paramMessage.arg1 == 0)
-      {
-        paramMessage = new Intent(this.a, UtilsModSetMobileStep1Activity.class);
-        paramMessage.putExtra("op_type", 1);
-        paramMessage.putExtra("title", this.a.getResources().getString(2131361846));
-        paramMessage.putExtra("page_id", 10);
-        this.a.startActivity(paramMessage);
-        return;
+    }
+    if (paramMessage.arg1 == 0)
+    {
+      paramMessage = cx.c();
+      paramMessage.i();
+      paramMessage.n();
+      paramMessage = NetActiveVryOtherListActivity.access$100(this.a).mRealUin + "";
+      Intent localIntent = new Intent(this.a, VerifySuccActivity.class);
+      localIntent.putExtra("mRealUin", Long.parseLong(paramMessage));
+      localIntent.putExtra("mMobile", "");
+      localIntent.putExtra("isHaveMobie", false);
+      localIntent.putExtra("bindMobileSucc", true);
+      if ((NetActiveVryOtherListActivity.access$200(this.a) != null) && (NetActiveVryOtherListActivity.access$200(this.a).c() == 2)) {
+        localIntent.putExtra("mSourceId", 1);
       }
-      break;
-    case 3026: 
-      this.a.dismissDialog();
-      if (paramMessage.arg1 == 0)
-      {
-        if (paramMessage.arg2 == 1) {}
-        for (;;)
-        {
-          NetActiveSetDirBySeqActivity.access$000(this.a, bool);
-          return;
-          bool = false;
-        }
-      }
-      paramMessage = (d)paramMessage.obj;
-      d.a(this.a.getResources(), paramMessage);
-      e.c("query up flow failed:" + paramMessage.a + "-" + paramMessage.b + "-" + paramMessage.c);
-      this.a.showUserDialog(2131361831, paramMessage.c, 2131361800, null);
+      this.a.startActivity(localIntent);
+      this.a.finish();
       return;
     }
-    paramMessage = (d)paramMessage.obj;
-    this.a.showToast(paramMessage.c);
+    paramMessage = (f)paramMessage.obj;
+    f.a(this.a.getResources(), paramMessage);
+    this.a.showUserDialog(2131230779, paramMessage.c, 2131230897, null);
   }
 }
 

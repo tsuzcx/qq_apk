@@ -1,36 +1,36 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import amik;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import baub;
+import baue;
+import bauf;
+import baug;
+import bave;
+import bavf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-import zrf;
 
 public class MonitorSocketDownload
   extends AsyncStep
-  implements INetEngine.INetEngineListener
+  implements baug
 {
-  protected static INetEngine.IBreakDownFix a;
-  private long jdField_a_of_type_Long;
-  private final String jdField_a_of_type_JavaLangString = "http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorconfig.txt";
+  protected static bauf a;
+  private long a;
+  private final String b = "http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorconfig.txt";
   private final String c = "http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorversion.txt";
   private int d = -1;
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new zrf();
+    jdField_a_of_type_Bauf = new amik();
   }
   
   private int b()
@@ -47,14 +47,14 @@ public class MonitorSocketDownload
         }
         String str = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath() + "/com.tencent.mobileqq_checkurl";
         localObject = ((QQAppInterface)localObject).getNetEngine(0);
-        HttpNetReq localHttpNetReq = new HttpNetReq();
-        localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = this;
-        localHttpNetReq.jdField_a_of_type_JavaLangString = "http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorversion.txt";
-        localHttpNetReq.jdField_a_of_type_Int = 0;
-        localHttpNetReq.c = str;
-        localHttpNetReq.e = 0;
-        localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix;
-        ((INetEngine)localObject).a(localHttpNetReq);
+        baub localbaub = new baub();
+        localbaub.jdField_a_of_type_Baug = this;
+        localbaub.jdField_a_of_type_JavaLangString = "http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorversion.txt";
+        localbaub.jdField_a_of_type_Int = 0;
+        localbaub.c = str;
+        localbaub.e = 0;
+        localbaub.jdField_a_of_type_Bauf = jdField_a_of_type_Bauf;
+        ((baue)localObject).a(localbaub);
         if (QLog.isColorLevel()) {
           QLog.d("MonitorSocketDownload", 2, "send request to check version and decide whether to download MS config");
         }
@@ -77,14 +77,14 @@ public class MonitorSocketDownload
     {
       String str = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath() + "/monitor_config.properties";
       localObject = ((QQAppInterface)localObject).getNetEngine(0);
-      HttpNetReq localHttpNetReq = new HttpNetReq();
-      localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = this;
-      localHttpNetReq.jdField_a_of_type_JavaLangString = "http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorconfig.txt";
-      localHttpNetReq.jdField_a_of_type_Int = 0;
-      localHttpNetReq.c = str;
-      localHttpNetReq.e = 0;
-      localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix;
-      ((INetEngine)localObject).a(localHttpNetReq);
+      baub localbaub = new baub();
+      localbaub.jdField_a_of_type_Baug = this;
+      localbaub.jdField_a_of_type_JavaLangString = "http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorconfig.txt";
+      localbaub.jdField_a_of_type_Int = 0;
+      localbaub.c = str;
+      localbaub.e = 0;
+      localbaub.jdField_a_of_type_Bauf = jdField_a_of_type_Bauf;
+      ((baue)localObject).a(localbaub);
       if (QLog.isColorLevel()) {
         QLog.d("MonitorSocketDownload", 2, "download MS config");
       }
@@ -96,31 +96,29 @@ public class MonitorSocketDownload
     }
   }
   
-  protected int a()
+  public int a()
   {
     return b();
   }
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public void onResp(bavf parambavf)
   {
-    if (paramNetResp.jdField_a_of_type_Int == 0) {}
+    if (parambavf.jdField_a_of_type_Int == 0) {}
     for (int i = 1;; i = 0)
     {
-      Object localObject = (HttpNetReq)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq;
-      File localFile = new File(((HttpNetReq)localObject).c);
+      Object localObject = (baub)parambavf.jdField_a_of_type_Bave;
+      File localFile = new File(((baub)localObject).c);
       if (i != 0)
       {
-        if (((HttpNetReq)localObject).jdField_a_of_type_JavaLangString.equals("http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorversion.txt"))
+        if (((baub)localObject).jdField_a_of_type_JavaLangString.equals("http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorversion.txt"))
         {
           if (QLog.isColorLevel()) {
             QLog.d("MonitorSocketDownload", 2, "file exists " + localFile.exists());
           }
           try
           {
-            paramNetResp = new BufferedReader(new InputStreamReader(new FileInputStream(localFile)));
-            localObject = paramNetResp.readLine();
+            parambavf = new BufferedReader(new InputStreamReader(new FileInputStream(localFile)));
+            localObject = parambavf.readLine();
             if (localObject != null)
             {
               if (QLog.isColorLevel()) {
@@ -136,19 +134,19 @@ public class MonitorSocketDownload
             }
             for (;;)
             {
-              paramNetResp.close();
+              parambavf.close();
               return;
               label208:
               b();
               this.d = i;
             }
-            if (!((HttpNetReq)localObject).jdField_a_of_type_JavaLangString.equals("http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorconfig.txt")) {
+            if (!((baub)localObject).jdField_a_of_type_JavaLangString.equals("http://dl.url.cn/myapp/iosqq_luaplg/tmp_video/msf/monitor/monitorconfig.txt")) {
               break label471;
             }
           }
-          catch (Exception paramNetResp)
+          catch (Exception parambavf)
           {
-            QLog.d("MonitorSocketDownload", 1, "" + paramNetResp);
+            QLog.d("MonitorSocketDownload", 1, "" + parambavf);
             return;
           }
         }
@@ -160,23 +158,25 @@ public class MonitorSocketDownload
         try
         {
           localObject = new BufferedReader(new InputStreamReader(new FileInputStream(localFile)));
-          for (paramNetResp = ((BufferedReader)localObject).readLine(); paramNetResp != null; paramNetResp = ((BufferedReader)localObject).readLine()) {
-            QLog.d("MonitorSocketDownload", 2, "Banlist: " + paramNetResp + ", used " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + "ms");
+          for (parambavf = ((BufferedReader)localObject).readLine(); parambavf != null; parambavf = ((BufferedReader)localObject).readLine()) {
+            QLog.d("MonitorSocketDownload", 2, "Banlist: " + parambavf + ", used " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + "ms");
           }
           ((BufferedReader)localObject).close();
           return;
         }
-        catch (Exception paramNetResp)
+        catch (Exception parambavf)
         {
-          QLog.d("MonitorSocketDownload", 1, "" + paramNetResp);
+          QLog.d("MonitorSocketDownload", 1, "" + parambavf);
           return;
         }
       }
-      QLog.d("MonitorSocketDownload", 1, "result: " + paramNetResp.jdField_a_of_type_Int);
+      QLog.d("MonitorSocketDownload", 1, "result: " + parambavf.jdField_a_of_type_Int);
       label471:
       return;
     }
   }
+  
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

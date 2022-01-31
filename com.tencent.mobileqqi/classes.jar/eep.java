@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
 
-class eep
-  implements Runnable
+public class eep
+  implements View.OnClickListener
 {
-  eep(eeo parameeo, Emoticon paramEmoticon, String paramString) {}
+  public eep(NewFriendActivity paramNewFriendActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ((ChatActivity)this.jdField_a_of_type_Eeo.a.b).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, 1, this.jdField_a_of_type_JavaLangString, false);
-    ReportController.b(MarketFaceItemBuilder.i(this.jdField_a_of_type_Eeo.a), "CliOper", "", "", "MbJieshou", "MbZidongBofang", 0, 0, "", "", "", "");
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     eep
  * JD-Core Version:    0.7.0.1
  */

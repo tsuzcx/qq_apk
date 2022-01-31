@@ -14,12 +14,12 @@ import com.tencent.mobileqq.structmsg.view.StructMsgItemProgress;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemSummary;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import com.tencent.qphone.base.util.QLog;
-import goy;
-import gpd;
-import gpe;
-import gpf;
-import gpg;
-import gph;
+import gkr;
+import gkw;
+import gkx;
+import gky;
+import gkz;
+import gla;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.util.Iterator;
@@ -28,7 +28,7 @@ import java.util.List;
 public class StructMsgForGeneralShare
   extends AbsShareMsg
 {
-  private static View.OnClickListener a = new gph();
+  private static View.OnClickListener a = new gla();
   
   StructMsgForGeneralShare()
   {
@@ -146,8 +146,8 @@ public class StructMsgForGeneralShare
               localView.setTag(localObject2);
               localView.setClickable(true);
               localView.setOnClickListener((View.OnClickListener)localObject2);
-              localView.setOnLongClickListener(new gpd(this, paramOnLongClickAndTouchListener));
-              localView.setOnTouchListener(new gpe(this, paramOnLongClickAndTouchListener));
+              localView.setOnLongClickListener(new gkw(this, paramOnLongClickAndTouchListener));
+              localView.setOnTouchListener(new gkx(this, paramOnLongClickAndTouchListener));
             }
             ((ViewGroup)localObject1).addView(localView);
           }
@@ -198,8 +198,8 @@ public class StructMsgForGeneralShare
         ((View)localObject2).setTag(localObject1);
         ((View)localObject2).setClickable(true);
         ((View)localObject2).setOnClickListener((View.OnClickListener)localObject1);
-        ((View)localObject2).setOnLongClickListener(new gpf(this, paramOnLongClickAndTouchListener));
-        ((View)localObject2).setOnTouchListener(new gpg(this, paramOnLongClickAndTouchListener));
+        ((View)localObject2).setOnLongClickListener(new gky(this, paramOnLongClickAndTouchListener));
+        ((View)localObject2).setOnTouchListener(new gkz(this, paramOnLongClickAndTouchListener));
       }
     }
     for (;;)
@@ -372,11 +372,11 @@ public class StructMsgForGeneralShare
     }
   }
   
-  protected void toContentXml(goy paramgoy)
+  protected void toContentXml(gkr paramgkr)
   {
     Iterator localIterator = iterator();
     while (localIterator.hasNext()) {
-      ((AbsStructMsgElement)localIterator.next()).a(paramgoy);
+      ((AbsStructMsgElement)localIterator.next()).a(paramgkr);
     }
   }
   

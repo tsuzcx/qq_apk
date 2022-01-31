@@ -8,10 +8,10 @@ import java.util.ArrayList;
 public final class s_tab_list
   extends JceStruct
 {
-  static ArrayList cache_lst_hide;
-  static ArrayList cache_lst_show = new ArrayList();
-  public ArrayList lst_hide;
-  public ArrayList lst_show;
+  static ArrayList<s_tab_list_item> cache_lst_hide;
+  static ArrayList<s_tab_list_item> cache_lst_show = new ArrayList();
+  public ArrayList<s_tab_list_item> lst_hide;
+  public ArrayList<s_tab_list_item> lst_show;
   
   static
   {
@@ -24,7 +24,7 @@ public final class s_tab_list
   
   public s_tab_list() {}
   
-  public s_tab_list(ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public s_tab_list(ArrayList<s_tab_list_item> paramArrayList1, ArrayList<s_tab_list_item> paramArrayList2)
   {
     this.lst_show = paramArrayList1;
     this.lst_hide = paramArrayList2;

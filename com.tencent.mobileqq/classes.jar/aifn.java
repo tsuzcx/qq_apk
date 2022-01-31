@@ -1,26 +1,24 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.app.QFixApplicationImpl;
-import com.tencent.hotpatch.PatchSecurityMode;
-import com.tencent.hotpatch.config.BasePatchConfig;
-import com.tencent.hotpatch.config.PatchConfigManager;
-import com.tencent.hotpatch.utils.PatchSharedPreUtil;
-import com.tencent.mobileqq.startup.step.Rdm;
+import com.tencent.qphone.base.util.QLog;
 
-public class aifn
-  implements Runnable
+class aifn
+  extends ambp
 {
-  public aifn(Rdm paramRdm, String paramString) {}
+  aifn(aiez paramaiez) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if (BaseApplicationImpl.sProcessId == 1) {
-      PatchSecurityMode.a(BaseApplicationImpl.sApplication, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("MainAssistObserver", 2, "RedpointObserver, onUpdateSettingMe");
     }
-    BasePatchConfig localBasePatchConfig = PatchConfigManager.a(BaseApplicationImpl.sApplication, "dex");
-    if ((localBasePatchConfig != null) && (localBasePatchConfig.a(BaseApplicationImpl.sApplication, true))) {
-      PatchSharedPreUtil.b(BaseApplicationImpl.sApplication, this.jdField_a_of_type_JavaLangString, localBasePatchConfig.c, 0);
+    this.a.e();
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MainAssistObserver", 2, "RedpointObserver, onNotifyLebaRedTouch");
     }
-    QFixApplicationImpl.a(BaseApplicationImpl.sApplication);
+    this.a.g();
   }
 }
 

@@ -1,22 +1,43 @@
-import com.tencent.mobileqq.activity.contact.newfriend.PhoneContactAddBuilder;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.newfriend.PhoneContactAddMessage;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class wjr
-  implements Runnable
+class wjr
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public wjr(PhoneContactAddBuilder paramPhoneContactAddBuilder) {}
+  private int jdField_a_of_type_Int;
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void run()
+  wjr(wjq paramwjq) {}
+  
+  public void onGlobalLayout()
   {
-    ((PhoneContactManagerImp)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10)).a(((PhoneContactAddMessage)this.a.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage).a);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new wjs(this));
+    wjq.a(this.jdField_a_of_type_Wjq).getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
+    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
+    if (i != this.jdField_a_of_type_Int)
+    {
+      int j = wjq.a(this.jdField_a_of_type_Wjq).getRootView().getHeight();
+      if (j - i <= j / 4) {
+        break label79;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      wjq.a(this.jdField_a_of_type_Wjq);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = i;
+      return;
+      label79:
+      if (this.jdField_a_of_type_Boolean) {
+        wjq.b(this.jdField_a_of_type_Wjq);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wjr
  * JD-Core Version:    0.7.0.1
  */

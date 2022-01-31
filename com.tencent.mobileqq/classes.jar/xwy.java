@@ -1,90 +1,123 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Matrix;
-import android.media.MediaMetadataRetriever;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FrameAdapter;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FramesProcessor.Frame;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ConcurrentHashMap;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import java.util.ArrayList;
+import java.util.List;
 
-public class xwy
-  implements Runnable
+public class xwy<T extends RecyclerView.Adapter>
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  public xwy(VideoFramesRetriever paramVideoFramesRetriever) {}
+  private final T jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
+  private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private xxc jdField_a_of_type_Xxc;
+  private final List<View> b = new ArrayList();
   
-  public void run()
+  public xwy(T paramT)
   {
-    if (VideoFramesRetriever.a(this.a) == null) {
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramT;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.registerAdapterDataObserver(new xwz(this));
+  }
+  
+  private boolean a(int paramInt)
+  {
+    return (paramInt >= -1000) && (paramInt < this.jdField_a_of_type_JavaUtilList.size() - 1000);
+  }
+  
+  private boolean b(int paramInt)
+  {
+    return (paramInt >= -2000) && (paramInt < this.b.size() - 2000);
+  }
+  
+  public xwy a(xxc paramxxc)
+  {
+    this.jdField_a_of_type_Xxc = paramxxc;
+    return this;
+  }
+  
+  public void a(@NonNull View paramView)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramView);
+  }
+  
+  public void b(@NonNull View paramView)
+  {
+    this.b.add(paramView);
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount() + this.b.size();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+      return paramInt - 1000;
+    }
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount()) {
+      return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemViewType(paramInt - this.jdField_a_of_type_JavaUtilList.size());
+    }
+    return paramInt - 2000 - this.jdField_a_of_type_JavaUtilList.size() - this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
+        localObject1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
+      }
+      localObject2 = localObject1;
+      if (localObject1 == null)
+      {
+        localObject2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
+        paramViewHolder.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      }
+      ((StaggeredGridLayoutManager.LayoutParams)localObject2).setFullSpan(true);
       return;
     }
-    for (;;)
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount())
     {
-      Object localObject2;
-      try
-      {
-        long l = System.currentTimeMillis();
-        xwz localxwz;
-        localObject2 = VideoFramesRetriever.a(this.a).getFrameAtTime((localxwz.jdField_a_of_type_Int + localxwz.b) / 2 * 1000L);
-        if (localObject2 == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("VideoFramesRetriever", 2, "getThumbnail Failed");
-          }
-          if ((VideoFramesRetriever.a(this.a)) || (VideoFramesRetriever.a(this.a) == null)) {
-            break;
-          }
-          localxwz = (xwz)VideoFramesRetriever.a(this.a).take();
-          if (!VideoFramesRetriever.a(this.a)) {
-            continue;
-          }
-          return;
-        }
-        if (((Bitmap)localObject2).getWidth() > ((Bitmap)localObject2).getHeight())
-        {
-          i = 1;
-          if (i == 0) {
-            break label338;
-          }
-          f = VideoFramesRetriever.a(this.a) / ((Bitmap)localObject2).getHeight();
-          Object localObject1 = new Matrix();
-          ((Matrix)localObject1).postScale(f, f);
-          if (i == 0) {
-            break label356;
-          }
-          localObject1 = Bitmap.createBitmap((Bitmap)localObject2, (((Bitmap)localObject2).getWidth() - ((Bitmap)localObject2).getHeight()) / 2, 0, ((Bitmap)localObject2).getHeight(), ((Bitmap)localObject2).getHeight(), (Matrix)localObject1, true);
-          ((Bitmap)localObject2).recycle();
-          localObject2 = new FramesProcessor.Frame();
-          ((FramesProcessor.Frame)localObject2).jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject1).copy(Bitmap.Config.RGB_565, true);
-          ((FramesProcessor.Frame)localObject2).jdField_a_of_type_Int = (localxwz.jdField_a_of_type_Int / VideoFramesRetriever.b(this.a));
-          ((Bitmap)localObject1).recycle();
-          QLog.i("VideoFramesRetriever", 1, "end get frame bitmap, cost time=" + (System.currentTimeMillis() - l));
-          VideoFramesRetriever.a(this.a).a((FramesProcessor.Frame)localObject2);
-          VideoFramesRetriever.a(this.a).remove(Integer.valueOf(localxwz.jdField_a_of_type_Int));
-          continue;
-        }
-        int i = 0;
-      }
-      catch (Throwable localThrowable)
-      {
-        localThrowable = localThrowable;
-        QLog.e("VideoFramesRetriever", 2, "FrameFetchRunnable, Exception:", localThrowable);
-        return;
-      }
-      finally {}
-      continue;
-      label338:
-      float f = VideoFramesRetriever.a(this.a) / ((Bitmap)localObject2).getWidth();
-      continue;
-      label356:
-      Bitmap localBitmap = Bitmap.createBitmap((Bitmap)localObject2, 0, (((Bitmap)localObject2).getHeight() - ((Bitmap)localObject2).getWidth()) / 2, ((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getWidth(), localMatrix, true);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt - this.jdField_a_of_type_JavaUtilList.size());
+      return;
     }
+    localObject1 = localObject2;
+    if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
+      localObject1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null)
+    {
+      localObject2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
+      paramViewHolder.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    }
+    ((StaggeredGridLayoutManager.LayoutParams)localObject2).setFullSpan(true);
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (a(paramInt))
+    {
+      paramInt = Math.abs(paramInt + 1000);
+      return new xxa(this, (View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    }
+    if (b(paramInt))
+    {
+      paramInt = Math.abs(paramInt + 2000);
+      return new xxb(this, (View)this.b.get(paramInt));
+    }
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xwy
  * JD-Core Version:    0.7.0.1
  */

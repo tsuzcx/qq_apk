@@ -1,19 +1,17 @@
 package com.tencent.token.ui.base;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.UpgradeDeterminResult;
+import android.widget.ImageView;
 
-final class bm
-  implements View.OnClickListener
+class bm
+  implements Runnable
 {
-  bm(bh parambh, QQUser paramQQUser, UpgradeDeterminResult paramUpgradeDeterminResult) {}
+  bm(LockPatternVerifyView paramLockPatternVerifyView) {}
   
-  public final void onClick(View paramView)
+  public void run()
   {
-    af.a().c(this.a.mRealUin, this.b.a(), "", "", this.c.a);
+    if (LockPatternVerifyView.c(this.a) != null) {
+      LockPatternVerifyView.d(this.a).setImageBitmap(LockPatternVerifyView.c(this.a));
+    }
   }
 }
 

@@ -1,44 +1,71 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.base.download.Downloader;
-import com.tencent.biz.qqstory.model.pendant.FileDownloadTask;
-import com.tencent.biz.qqstory.model.pendant.FileDownloadTask.Output;
-import com.tencent.biz.qqstory.takevideo.music.BlessVoiceChangeManager;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class oku
-  extends FileDownloadTask
 {
-  public oku(BlessVoiceChangeManager paramBlessVoiceChangeManager, Downloader paramDownloader, long paramLong)
+  public int a;
+  public long a;
+  public CharSequence a;
+  public String a;
+  public CharSequence b;
+  
+  public oku(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, String paramString, long paramLong, CharSequence paramCharSequence)
   {
-    super(paramDownloader);
+    this(paramReadInJoyCommentComponentFragment, paramString, paramLong, paramCharSequence, 0);
   }
   
-  protected void a(FileDownloadTask.Output paramOutput)
+  public oku(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
   {
-    if (paramOutput.jdField_a_of_type_Int == 0)
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    paramReadInJoyCommentComponentFragment = paramCharSequence;
+    if (paramCharSequence == null) {
+      paramReadInJoyCommentComponentFragment = "";
+    }
+    this.b = paramReadInJoyCommentComponentFragment;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      long l1 = SystemClock.uptimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
-      if (QLog.isColorLevel()) {
-        QLog.d("FileDownloadTask", 2, "startDownloadVCImage success, cost:" + (l1 - l2));
+      this.jdField_a_of_type_JavaLangCharSequence = BiuNicknameSpan.a(bdgc.b(paramQQAppInterface, this.jdField_a_of_type_JavaLangString, true));
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
+        break label79;
       }
-      BlessVoiceChangeManager.a().sendMessage(Message.obtain(BlessVoiceChangeManager.a(), 1, null));
+      this.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangString;
     }
     for (;;)
     {
-      BlessVoiceChangeManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicBlessVoiceChangeManager);
-      return;
       if (QLog.isColorLevel()) {
-        QLog.d("FileDownloadTask", 2, "startDownloadVCImage error:" + paramOutput.jdField_a_of_type_Int + ", errMsg:" + paramOutput.jdField_a_of_type_JavaLangString);
+        QLog.d("ReadInJoyCommentComponentFragment", 2, "nick name is " + this.jdField_a_of_type_JavaLangCharSequence);
+      }
+      return;
+      label79:
+      if ((int)Math.ceil(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.a.getPaint().measureText(this.jdField_a_of_type_JavaLangCharSequence.toString())) <= 0) {
+        this.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangString;
       }
     }
+  }
+  
+  public String toString()
+  {
+    int i = 0;
+    if (!TextUtils.isEmpty(this.b)) {
+      i = this.b.length();
+    }
+    return "UserBiuInfo {uin=" + this.jdField_a_of_type_JavaLangString + ", nickName=" + this.jdField_a_of_type_JavaLangCharSequence + ", comment=" + this.b + ", length=" + i + ", feedid=" + this.jdField_a_of_type_Long + "}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oku
  * JD-Core Version:    0.7.0.1
  */

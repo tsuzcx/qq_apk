@@ -1,120 +1,140 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyMsgManagerActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetMessageConfigurationResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Typeface;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
-import mqq.observer.BusinessObserver;
 
-public class lll
-  implements BusinessObserver
+public abstract class lll
+  implements mqp
 {
-  public lll(KandianMergeManager paramKandianMergeManager) {}
+  protected int a;
+  protected Bitmap a;
+  protected Canvas a;
+  protected Paint a;
+  protected ljf a;
+  protected mqq a;
+  protected boolean a;
+  protected int b;
+  protected boolean b;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public lll(ljf paramljf, boolean paramBoolean)
   {
-    mobileqq_mp.GetMessageConfigurationResponse localGetMessageConfigurationResponse;
-    if (paramBoolean) {
-      localGetMessageConfigurationResponse = new mobileqq_mp.GetMessageConfigurationResponse();
-    }
-    label263:
-    label295:
-    label310:
-    label324:
-    label325:
-    for (;;)
+    this.jdField_a_of_type_Int = 32;
+    this.jdField_b_of_type_Int = 255;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Ljf = paramljf;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public abstract int a();
+  
+  public int a(long paramLong)
+  {
+    return 0;
+  }
+  
+  Bitmap a()
+  {
+    Object localObject3 = null;
+    Object localObject4 = null;
+    Object localObject1 = null;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Ljf.a))
     {
-      try
+      lek.c("ARZimuItemTask", "TextUtils.isEmpty(mSentenceInfo.src_text) == null");
+      localObject3 = localObject1;
+    }
+    do
+    {
+      for (;;)
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label310;
-        }
-        localGetMessageConfigurationResponse.mergeFrom(paramBundle);
-        if ((!localGetMessageConfigurationResponse.ret_info.has()) || (!localGetMessageConfigurationResponse.ret_info.ret_code.has())) {
-          break label295;
-        }
-        paramInt = localGetMessageConfigurationResponse.ret_info.ret_code.get();
-        if (paramInt != 0) {
-          break label263;
-        }
-        if (!localGetMessageConfigurationResponse.type.has()) {
-          break label324;
-        }
-        paramInt = localGetMessageConfigurationResponse.type.get();
-        if (paramInt != 1) {
-          break label325;
-        }
-        paramBoolean = true;
-        paramBundle = BaseActivity.sTopActivity;
-        if (ReadInJoyHelper.f(KandianMergeManager.a(this.a))) {
-          break label206;
-        }
-        if ((paramBundle instanceof ReadInJoySettingActivity))
+        return localObject3;
+        lek.c("ARZimuItemTask", "build:" + toString());
+        localObject1 = localObject3;
+        Object localObject2 = localObject4;
+        try
         {
-          paramBundle = (ReadInJoySettingActivity)paramBundle;
-          if (paramBundle.a())
-          {
-            QLog.d("KandianMergeManager", 1, "setting: has set kandian status");
-            QLog.d("KandianMergeManager", 1, "result:" + paramInt);
-            return;
-          }
-          this.a.a(paramBoolean);
-          paramBundle.a(paramBoolean);
-          continue;
+          int i = a();
+          localObject1 = localObject3;
+          localObject2 = localObject4;
+          int j = b();
+          localObject1 = localObject3;
+          localObject2 = localObject4;
+          localObject3 = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+          localObject1 = localObject3;
+          localObject2 = localObject3;
+          this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap((Bitmap)localObject3);
+          localObject1 = localObject3;
+          localObject2 = localObject3;
+          a(this.jdField_a_of_type_AndroidGraphicsCanvas, i, j);
+          return localObject3;
         }
-        this.a.a(paramBoolean);
-      }
-      catch (Exception paramBundle)
-      {
-        QLog.d("KandianMergeManager", 1, "failed to handle request Kandian status configuration");
-        return;
-      }
-      continue;
-      label206:
-      if ((paramBundle instanceof ReadinjoyMsgManagerActivity))
-      {
-        paramBundle = (ReadinjoyMsgManagerActivity)paramBundle;
-        if (paramBundle.a())
+        catch (OutOfMemoryError localOutOfMemoryError)
         {
-          QLog.d("KandianMergeManager", 1, "msg manage: has set kandian status");
-        }
-        else
-        {
-          this.a.a(paramBoolean);
-          paramBundle.a(paramBoolean);
-        }
-      }
-      else
-      {
-        this.a.a(paramBoolean);
-        continue;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("KandianMergeManager", 2, "request Kandian status fail code:" + paramInt);
-          return;
+          localObject3 = localObject1;
           if (QLog.isColorLevel())
           {
-            QLog.d("KandianMergeManager", 2, "request Kandian status wrong resp");
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("KandianMergeManager", 2, "request Kandian status fail data null");
-            }
+            QLog.e("ARZimuItemTask", 2, localOutOfMemoryError.getMessage());
+            return localObject1;
           }
         }
-        return;
-        paramBoolean = false;
+        catch (Exception localException)
+        {
+          localObject3 = localOutOfMemoryError;
+        }
       }
+    } while (!QLog.isColorLevel());
+    QLog.e("ARZimuItemTask", 2, localException.getMessage());
+    return localOutOfMemoryError;
+  }
+  
+  protected abstract void a(Canvas paramCanvas, int paramInt1, int paramInt2);
+  
+  public void a(Typeface paramTypeface, int paramInt, mqq parammqq)
+  {
+    if (paramTypeface != null) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(paramTypeface);
     }
+    this.jdField_a_of_type_Mqq = parammqq;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramInt);
+  }
+  
+  public void a(ljf paramljf)
+  {
+    this.jdField_a_of_type_Ljf = paramljf;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public abstract int b();
+  
+  public Bitmap b()
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = a();
+    }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lll
  * JD-Core Version:    0.7.0.1
  */

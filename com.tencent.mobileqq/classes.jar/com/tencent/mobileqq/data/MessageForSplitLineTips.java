@@ -159,13 +159,13 @@ public class MessageForSplitLineTips
     return this.msgData;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     parse();
   }
   
   /* Error */
-  protected void prewrite()
+  public void prewrite()
   {
     // Byte code:
     //   0: new 107	java/io/ByteArrayOutputStream
@@ -345,7 +345,7 @@ public class MessageForSplitLineTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForSplitLineTips
  * JD-Core Version:    0.7.0.1
  */

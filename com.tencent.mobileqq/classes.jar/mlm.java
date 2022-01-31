@@ -1,43 +1,86 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.DialogAppInPushNotification;
+import android.content.Context;
+import com.tencent.av.app.VideoAppInterface;
 
 public class mlm
-  implements View.OnTouchListener
+  extends mll
 {
-  public mlm(DialogAppInPushNotification paramDialogAppInPushNotification, ImageView paramImageView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected mlm(Context paramContext, VideoAppInterface paramVideoAppInterface)
   {
-    int i;
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
+    super(paramContext, paramVideoAppInterface);
+  }
+  
+  public static int a(int paramInt)
+  {
+    return (paramInt << 16) / 1201 >> 6;
+  }
+  
+  private void a(mgp parammgp1, mgp parammgp2, int paramInt)
+  {
+    int i = paramInt >> 1;
+    int j = b(paramInt);
+    parammgp1.a(0, 0, 0, 0);
+    parammgp1.b(0, 0, i, j);
+    parammgp1.d(-15197410);
+    parammgp2.a(0, 0, 0, 0);
+    parammgp2.b(i, 0, paramInt, j);
+    parammgp2.d(-15197410);
+  }
+  
+  public static int b(int paramInt)
+  {
+    return paramInt * 1201 >> 10;
+  }
+  
+  public int a()
+  {
+    return 2;
+  }
+  
+  public void a(lid paramlid, mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4) {}
+  
+  public void a(mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
+  
+  public void a(mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
+  {
+    boolean bool;
+    if (!this.a.getCurrentAccountUin().equals(paramArrayOfmgp[1].a(0)))
     {
-      if (paramMotionEvent.getAction() != 1) {
-        break label45;
+      bool = true;
+      lek.c("ScreenLayoutDoubleScreen", "layoutCommon: " + paramBoolean + "|" + bool);
+      if (!bool) {
+        break label112;
       }
-      i = 255;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label51;
+      if (paramBoolean) {
+        break label94;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
+      paramBoolean = true;
     }
+    label94:
+    label112:
     for (;;)
     {
-      return false;
-      label45:
-      i = 127;
-      break;
-      label51:
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
+      if (paramBoolean)
+      {
+        a(paramArrayOfmgp[1], paramArrayOfmgp[0], paramInt1);
+        return;
+        bool = false;
+        break;
+        paramBoolean = false;
+        continue;
+      }
+      a(paramArrayOfmgp[0], paramArrayOfmgp[1], paramInt1);
+      return;
     }
+  }
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mlm
  * JD-Core Version:    0.7.0.1
  */

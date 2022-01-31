@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.data;
 
-import abvk;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import apfu;
 import java.util.List;
 
 public class VipIPSiteInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abvk();
+  public static final Parcelable.Creator<VipIPSiteInfo> CREATOR = new apfu();
   public int extId;
   public String extStr;
   public String ipContent;
   public String ipDesc;
   public int ipID;
-  public List ipList;
+  public List<Object> ipList;
   public String ipLogo;
   public String ipName;
   public String ipUrl;
@@ -24,7 +24,7 @@ public class VipIPSiteInfo
   
   public VipIPSiteInfo() {}
   
-  public VipIPSiteInfo(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, int paramInt3, String paramString5, String paramString6, String paramString7, List paramList)
+  public VipIPSiteInfo(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, int paramInt3, String paramString5, String paramString6, String paramString7, List<Object> paramList)
   {
     this.ipID = paramInt1;
     this.ipName = paramString1;
@@ -66,7 +66,7 @@ public class VipIPSiteInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.VipIPSiteInfo
  * JD-Core Version:    0.7.0.1
  */

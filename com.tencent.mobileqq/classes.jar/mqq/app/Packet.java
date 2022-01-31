@@ -107,10 +107,9 @@ public class Packet
   
   public ToServiceMsg toMsg()
   {
-    ToServiceMsg localToServiceMsg = null;
     if (this.SSOCommand != null)
     {
-      localToServiceMsg = new ToServiceMsg(null, this.account, this.SSOCommand);
+      ToServiceMsg localToServiceMsg = new ToServiceMsg(null, this.account, this.SSOCommand);
       if (this.timeout > 0L) {
         localToServiceMsg.setTimeout(this.timeout);
       }
@@ -124,8 +123,9 @@ public class Packet
       localToServiceMsg.setAttributes(this.attributes);
       localToServiceMsg.setEnableFastResend(this.autoResend);
       localToServiceMsg.setQuickSend(this.quickSendEnable, this.quickSendStrategy);
+      return localToServiceMsg;
     }
-    return localToServiceMsg;
+    return null;
   }
 }
 

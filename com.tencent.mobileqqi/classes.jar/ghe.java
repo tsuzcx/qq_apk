@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.richstatus.EditActivity;
 
 public class ghe
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public ghe(QQPlayerService paramQQPlayerService, QQPlayerService.QQPlayerCallback paramQQPlayerCallback, int paramInt) {}
+  public ghe(EditActivity paramEditActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback.onPlayStateChanged(this.jdField_a_of_type_Int);
+    this.a.g();
   }
 }
 

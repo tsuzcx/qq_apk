@@ -1,20 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
+import com.tencent.widget.ActionSheet;
 
 public class cyv
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public cyv(LoginActivity paramLoginActivity) {}
+  public cyv(PeopleAroundBaseActivity paramPeopleAroundBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.b();
+    try
+    {
+      PeopleAroundBaseActivity.a(this.a).dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cyv
  * JD-Core Version:    0.7.0.1
  */

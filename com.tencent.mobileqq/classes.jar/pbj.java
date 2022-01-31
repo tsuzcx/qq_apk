@@ -1,48 +1,26 @@
-import com.tencent.biz.webviewplugin.HotchatPlugin;
-import com.tencent.widget.PopupMenuDialog.MenuItem;
-import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
-import org.json.JSONObject;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
 
 public class pbj
-  implements PopupMenuDialog.OnClickActionListener
+  implements Animation.AnimationListener
 {
-  public pbj(HotchatPlugin paramHotchatPlugin, String paramString) {}
+  public pbj(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, TranslateAnimation paramTranslateAnimation) {}
   
-  public void a(PopupMenuDialog.MenuItem paramMenuItem)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    JSONObject localJSONObject = new JSONObject();
-    switch (paramMenuItem.a)
-    {
-    default: 
-      return;
-    case 0: 
-      try
-      {
-        localJSONObject.put("index", 0);
-        this.jdField_a_of_type_ComTencentBizWebviewpluginHotchatPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception paramMenuItem)
-      {
-        paramMenuItem.printStackTrace();
-        return;
-      }
-    }
-    try
-    {
-      localJSONObject.put("index", 1);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginHotchatPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (Exception paramMenuItem)
-    {
-      paramMenuItem.printStackTrace();
-    }
+    ReadInjoyIMAXAdFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pbj
  * JD-Core Version:    0.7.0.1
  */

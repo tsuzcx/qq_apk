@@ -1,21 +1,58 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13.ViewHolder;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.support.v4.util.SparseArrayCompat;
 
 public class aiit
-  implements Runnable
 {
-  public aiit(StructMsgItemLayout13 paramStructMsgItemLayout13, StructMsgForGeneralShare paramStructMsgForGeneralShare, Resources paramResources, StructMsgItemLayout13.ViewHolder paramViewHolder) {}
+  private SparseArrayCompat<SparseArrayCompat<affa>> a = new SparseArrayCompat(15);
+  private SparseArrayCompat<afez> b = new SparseArrayCompat();
   
-  public void run()
+  public aiit(aijq paramaijq)
   {
-    String str = ContactUtils.g(StructMsgItemLayout13.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout13), this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.frienduin, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.author);
-    new Handler(Looper.getMainLooper()).post(new aiiu(this, str));
+    a(1, new aike(paramaijq));
+    a(2, new aijp(paramaijq));
+    a(3, new aiix(paramaijq));
+  }
+  
+  private void a(int paramInt, affa paramaffa)
+  {
+    this.b.put(paramInt, paramaffa);
+    int[] arrayOfInt = paramaffa.a();
+    int j = arrayOfInt.length;
+    int i = 0;
+    while (i < j)
+    {
+      int k = arrayOfInt[i];
+      SparseArrayCompat localSparseArrayCompat2 = (SparseArrayCompat)this.a.get(k);
+      SparseArrayCompat localSparseArrayCompat1 = localSparseArrayCompat2;
+      if (localSparseArrayCompat2 == null)
+      {
+        localSparseArrayCompat1 = new SparseArrayCompat();
+        this.a.put(k, localSparseArrayCompat1);
+      }
+      localSparseArrayCompat1.put(paramInt, paramaffa);
+      i += 1;
+    }
+  }
+  
+  public <T extends afez> T a(int paramInt)
+  {
+    return (afez)this.b.get(paramInt);
+  }
+  
+  public void a(int paramInt)
+  {
+    SparseArrayCompat localSparseArrayCompat = (SparseArrayCompat)this.a.get(paramInt);
+    if (localSparseArrayCompat == null) {}
+    for (;;)
+    {
+      return;
+      int j = localSparseArrayCompat.size();
+      int i = 0;
+      while (i < j)
+      {
+        ((affa)localSparseArrayCompat.valueAt(i)).a(paramInt);
+        i += 1;
+      }
+    }
   }
 }
 

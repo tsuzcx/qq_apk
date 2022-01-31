@@ -1,54 +1,42 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.RemoteException;
-import com.tencent.mobileqq.nearby.ipc.MainProcessInterface;
-import com.tencent.mobileqq.nearby.ipc.MainProcessInterface.Stub;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcess;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.SkinRedPacketStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aerj
-  implements ServiceConnection
+  implements ajal
 {
-  public aerj(NearbyProcess paramNearbyProcess) {}
+  public aerj(CustomizeStrategyFactory.SkinRedPacketStrategy.1 param1) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyIpcMainProcessInterface = MainProcessInterface.Stub.a(paramIBinder);
+    paramPathResult = paramPathResult.folderPath;
+    if (paramInt == 0) {}
     try
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyIpcMainProcessInterface.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface);
+      paramPathResult = paramPathResult + File.separator;
+      this.a.a.specailBackgroundAnimInfo = AnimationView.AnimationInfo.loadFromFolder(paramPathResult + "anim_bg");
       if (QLog.isColorLevel()) {
-        QLog.i("nearby_ipc_log_tag", 2, "nearbyProcess onServiceConnected.");
+        QLog.d("CustomizeStrategyFactory", 2, "TYPE_SPECAIL_ANIM specailBackgroundAnimInfo=" + this.a.a.specailBackgroundAnimInfo);
       }
+      CustomizeStrategyFactory.a().a(this.a.a);
       return;
     }
-    catch (RemoteException paramComponentName)
+    catch (Throwable paramPathResult)
     {
       for (;;)
       {
-        if (QLog.isDevelopLevel()) {
-          paramComponentName.printStackTrace();
-        }
+        paramPathResult.printStackTrace();
       }
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName arg1)
-  {
-    synchronized (NearbyProcess.a(this.a))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyIpcMainProcessInterface = null;
-      if (QLog.isColorLevel()) {
-        QLog.i("nearby_ipc_log_tag", 2, "nearbyProcess onServiceDisConnected.");
-      }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerj
  * JD-Core Version:    0.7.0.1
  */

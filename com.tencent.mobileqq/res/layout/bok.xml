@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/azf" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="12.5dip">
+        <com.qzone.widget.AsyncImageView android:id="@id/chp" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+        <ImageView android:id="@id/ci7" android:visibility="gone" android:layout_width="34.0dip" android:layout_height="34.0dip" android:src="@drawable/fxv" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/qzone_skin_font_panel_default_item_text_color" android:id="@id/chu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/s1w" android:layout_centerInParent="true" />
+        <TextView android:textSize="10.0sp" android:textColor="@color/mb" android:gravity="center" android:id="@id/cho" android:background="@drawable/gji" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-8.0dip" android:layout_marginBottom="7.0dip" android:text="@string/s2_" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        <FrameLayout android:id="@id/chm" android:background="@drawable/aze" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:layout_gravity="center" android:id="@id/chv" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </FrameLayout>
+    </RelativeLayout>
+    <ImageView android:layout_gravity="right" android:id="@id/chy" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginTop="7.5dip" android:layout_marginRight="7.5dip" android:src="@drawable/qzone_skin_font_sel" />
+</FrameLayout>

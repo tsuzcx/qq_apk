@@ -22,8 +22,8 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mtt.MttBrowerWrapper;
 import com.tencent.mobileqq.utils.Patterns;
 import com.tencent.widget.ActionSheet;
-import gqx;
-import gqy;
+import gmq;
+import gmr;
 import java.lang.reflect.Array;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -73,7 +73,7 @@ public class QQText
     jdField_b_of_type_JavaUtilRegexPattern = Pattern.compile("\\d{5,}");
     jdField_a_of_type_ArrayOfJavaLangObject = new Object[0];
     jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-    jdField_a_of_type_AndroidTextSpannable$Factory = new gqx();
+    jdField_a_of_type_AndroidTextSpannable$Factory = new gmq();
     try
     {
       StaticLayout.class.getDeclaredMethod("generate2", new Class[] { CharSequence.class, Integer.TYPE, Integer.TYPE, TextPaint.class, Integer.TYPE, Layout.Alignment.class, Float.TYPE, Float.TYPE, Boolean.TYPE, Boolean.TYPE });
@@ -336,7 +336,7 @@ public class QQText
     }
     for (;;)
     {
-      localActionSheet.a(new gqy(paramString, paramContext, localActionSheet));
+      localActionSheet.a(new gmr(paramString, paramContext, localActionSheet));
       localActionSheet.show();
       return;
       localActionSheet.a(paramString);
@@ -551,7 +551,7 @@ public class QQText
     return localStringBuffer.toString();
   }
   
-  protected void a(View paramView, String paramString)
+  public void a(View paramView, String paramString)
   {
     String str1 = null;
     int i1 = paramString.lastIndexOf("#");

@@ -1,29 +1,49 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomFloatView;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class aeno
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aeno(GameRoomFloatView paramGameRoomFloatView, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static long a(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.b)
+    Calendar localCalendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
+    localCalendar.setTimeInMillis(paramLong);
+    localCalendar.set(11, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    localCalendar.set(14, 0);
+    return localCalendar.getTimeInMillis();
+  }
+  
+  public static String a(long paramLong, String paramString)
+  {
+    try
     {
-      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = i;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-      return;
+      paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE).format(new Date(paramLong));
+      return paramString;
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    catch (Exception paramString) {}
+    return "";
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    return a(paramLong, "yyyy-MM-dd");
+  }
+  
+  private static boolean a(long paramLong, String paramString)
+  {
+    Date localDate = new Date(paramLong);
+    paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE);
+    return paramString.format(localDate).equals(paramString.format(new Date(NetConnInfoCenter.getServerTimeMillis())));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeno
  * JD-Core Version:    0.7.0.1
  */

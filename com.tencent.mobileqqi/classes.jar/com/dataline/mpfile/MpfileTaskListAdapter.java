@@ -16,7 +16,7 @@ import com.tencent.mobileqq.filemanager.data.BaseFileAdapter;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import dy;
+import eg;
 import java.io.File;
 import java.util.List;
 
@@ -75,7 +75,7 @@ public class MpfileTaskListAdapter
   {
     Object localObject = paramView;
     if (paramView == null) {
-      localObject = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903522, null);
+      localObject = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903524, null);
     }
     MpfileTaskInfo localMpfileTaskInfo = (MpfileTaskInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     if (localMpfileTaskInfo != null)
@@ -84,23 +84,23 @@ public class MpfileTaskListAdapter
       if (paramView == null)
       {
         localObject = new MpfileTaskListAdapter.ItemHolder(this);
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903522, paramViewGroup, false);
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131232745));
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903524, paramViewGroup, false);
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131232748));
         ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.b);
         ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setLongClickable(true);
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(new dy(this));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(new eg(this));
         ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localObject);
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131232749));
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131232738));
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232750));
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131232739));
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232747));
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232740));
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131231505));
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232743));
-        ((MpfileTaskListAdapter.ItemHolder)localObject).d = ((TextView)paramView.findViewById(2131231881));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131232752));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131232741));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232753));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131232742));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232750));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232743));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131231506));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232746));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).d = ((TextView)paramView.findViewById(2131231883));
         ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramView.findViewById(2131230987));
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131231699));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131231701));
         paramView.setTag(localObject);
         paramViewGroup = (ViewGroup)localObject;
       }
@@ -112,7 +112,7 @@ public class MpfileTaskListAdapter
         if ((localObject != null) && (FileManagerUtil.a((String)localObject) == 0)) {
           if (new File(localMpfileTaskInfo.e).exists())
           {
-            paramViewGroup.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130838612);
+            paramViewGroup.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130838614);
             paramViewGroup.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setAsyncImage(localMpfileTaskInfo.e);
             localObject = String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131558578), new Object[] { FileUtil.a(localMpfileTaskInfo.jdField_b_of_type_Long) });
             paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
@@ -134,7 +134,7 @@ public class MpfileTaskListAdapter
           if ((MpfileDataCenter.k != null) && (MpfileDataCenter.k.length() > 0))
           {
             localObject = String.format("http://%s:%d/qqmpfile/?action=thumbnail&fileid=%s", new Object[] { MpfileDataCenter.k, Integer.valueOf(MpfileDataCenter.E), localMpfileTaskInfo.jdField_c_of_type_JavaLangString });
-            paramViewGroup.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130838612);
+            paramViewGroup.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130838614);
             paramViewGroup.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setAsyncImage((String)localObject);
             break;
           }

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0x8f$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   public static final int MSG_TYPE_ALL_CONFIRM = 2;
   public static final int MSG_TYPE_CONFIRMED = 1;

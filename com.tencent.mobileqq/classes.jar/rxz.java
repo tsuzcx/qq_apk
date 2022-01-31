@@ -1,14 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-public final class rxz
-  implements DialogInterface.OnClickListener
+public abstract class rxz
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  private static int a = 7;
+  
+  public static int a()
+  {
+    return a;
+  }
+  
+  public static void a(int paramInt)
+  {
+    a = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rxz
  * JD-Core Version:    0.7.0.1
  */

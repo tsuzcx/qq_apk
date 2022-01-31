@@ -1,19 +1,18 @@
-import android.graphics.drawable.Animatable;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.open.applist.WebAppActivity;
 
 public class hlj
   implements Runnable
 {
-  public hlj(QQProgressDialog paramQQProgressDialog) {}
+  public hlj(WebAppActivity paramWebAppActivity) {}
   
   public void run()
   {
-    QQProgressDialog.a(this.a).start();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hlj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,15 @@
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.teamwork.TeamWorkSaveDialog;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
 public class aimp
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aimp(TeamWorkSaveDialog paramTeamWorkSaveDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  public aimp(DialogBaseActivity paramDialogBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkSaveDialog, 1);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkSaveDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkSaveDialog.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView) {}
+    this.a.finish();
   }
 }
 

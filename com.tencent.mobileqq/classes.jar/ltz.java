@@ -1,26 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeNoImageSocial;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
+import android.graphics.Bitmap;
 
 public class ltz
-  implements View.OnClickListener
+  extends lue
 {
-  public ltz(FeedItemCellTypeNoImageSocial paramFeedItemCellTypeNoImageSocial) {}
+  protected Bitmap a;
   
-  public void onClick(View paramView)
+  public ltz(Bitmap paramBitmap)
   {
-    paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
-    if (paramView != null) {
-      paramView.a(null, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {}
+    for (boolean bool = true;; bool = false)
+    {
+      bhsa.a(bool);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      return;
     }
+  }
+  
+  protected Bitmap a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  protected void a(Bitmap paramBitmap) {}
+  
+  public int[] a(lsv paramlsv)
+  {
+    if (!c()) {
+      b(paramlsv);
+    }
+    return this.jdField_a_of_type_ArrayOfInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ltz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,32 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.qcall.PstnManager;
-
-public class rld
-  implements CompoundButton.OnCheckedChangeListener
+class rld
+  implements rjj
 {
-  public rld(AssistantSettingActivity paramAssistantSettingActivity, PstnManager paramPstnManager) {}
+  rld(rlb paramrlb) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(rjk paramrjk, rjn paramrjn, int paramInt1, int paramInt2, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQcallPstnManager.a(paramBoolean);
+    if (paramInt2 == 0) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while ((paramInt2 == 1) || (paramInt2 == 2));
+        if (paramInt2 != 3) {
+          break;
+        }
+        this.a.a(this.a.b(), "video playing", 1);
+      } while (this.a.b());
+      this.a.a(true, "PLAY_STATE_PLAYING");
+      return;
+    } while ((paramInt2 == 4) || (paramInt2 == 5) || (paramInt2 == 6) || (paramInt2 != 7));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rld
  * JD-Core Version:    0.7.0.1
  */

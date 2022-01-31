@@ -1,50 +1,48 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
-import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
-import com.tencent.mobileqq.nearby.ipc.MainProcessInterface.Stub;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.PanelStrategy.1;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class aerf
-  extends MainProcessInterface.Stub
+  implements aerd
 {
-  public aerf(ConnectNearbyProcService paramConnectNearbyProcService) {}
+  public aixs a;
+  public PreloadManager a;
+  private QQAppInterface a;
   
-  public Message a(Message paramMessage)
+  public aerf(QQAppInterface paramQQAppInterface)
   {
-    if (paramMessage == null) {
-      return null;
-    }
-    return ConnectNearbyProcService.a(this.a, paramMessage);
-  }
-  
-  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
-  {
-    if (paramBasicTypeDataParcel == null) {}
-    Object[] arrayOfObject;
-    do
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
+    this.jdField_a_of_type_Aixs = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      return null;
-      if (QLog.isColorLevel()) {
-        QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
-      }
-      arrayOfObject = ConnectNearbyProcService.a(this.a, paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
-    } while (arrayOfObject == null);
-    return new BasicTypeDataParcel(paramBasicTypeDataParcel.jdField_a_of_type_Int, arrayOfObject);
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
+      this.jdField_a_of_type_Aixs = ((aixs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245));
+    }
   }
   
-  public void a(NearbyProcessInterface paramNearbyProcessInterface)
+  public void a() {}
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    ConnectNearbyProcService.a(paramNearbyProcessInterface);
-    if (ConnectNearbyProcService.a(this.a) != null) {
-      ConnectNearbyProcService.a(this.a).a();
+    ThreadManager.post(new CustomizeStrategyFactory.PanelStrategy.1(this, paramRedPacketInfo), 5, null, true);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, agmy paramagmy)
+  {
+    if ((paramRedPacketInfo != null) && ((paramagmy instanceof agna)))
+    {
+      paramagmy = (agna)paramagmy;
+      paramRedPacketInfo.icon = paramagmy.a;
+      paramRedPacketInfo.resPath = paramagmy.b;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerf
  * JD-Core Version:    0.7.0.1
  */

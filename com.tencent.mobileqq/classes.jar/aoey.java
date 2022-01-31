@@ -1,66 +1,28 @@
-import android.graphics.Color;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo.tag.TagItem;
-import com.tencent.biz.qqstory.takevideo.tag.TagItem.TagInfoBase;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenPermissionDialogFragment;
 
 public class aoey
+  implements DialogInterface.OnClickListener
 {
-  public View a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  TextView c;
-  TextView d;
+  public aoey(ColorNoteSmallScreenPermissionDialogFragment paramColorNoteSmallScreenPermissionDialogFragment) {}
   
-  public aoey(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372035));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372036));
-    this.b = ((TextView)paramView.findViewById(2131372037));
-    this.c = ((TextView)paramView.findViewById(2131372039));
-    this.d = ((TextView)paramView.findViewById(2131372038));
-  }
-  
-  private void a(TextView paramTextView, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
+    aofa.d(BaseApplicationImpl.getContext());
+    if (this.a.getActivity() != null)
     {
-      paramTextView.setVisibility(8);
-      return;
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
-    paramTextView.setVisibility(0);
-    paramTextView.setText(paramString);
-  }
-  
-  public void a(TagItem paramTagItem1, TagItem paramTagItem2)
-  {
-    a(this.jdField_a_of_type_AndroidWidgetTextView, paramTagItem1.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase.jdField_a_of_type_JavaLangString);
-    a(this.b, paramTagItem1.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase.b);
-    if (paramTagItem1.jdField_a_of_type_Int <= 0) {
-      this.c.setVisibility(8);
-    }
-    for (;;)
-    {
-      a(this.d, paramTagItem1.jdField_a_of_type_JavaLangString);
-      if (!paramTagItem1.equals(paramTagItem2)) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843751);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFA34B"));
-      return;
-      a(this.c, paramTagItem1.jdField_a_of_type_Int + "人参与");
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843755);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFFFFF"));
+    azqs.b(null, "dc00898", "", "", "0X800AB3C", "0X800AB3C", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoey
  * JD-Core Version:    0.7.0.1
  */

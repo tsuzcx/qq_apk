@@ -1,24 +1,24 @@
 package com.tencent.token.ui.base;
 
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class x
-  implements Animation.AnimationListener
+class x
+  implements View.OnClickListener
 {
-  x(w paramw, DualMsgView paramDualMsgView) {}
+  x(ErrorView paramErrorView) {}
   
-  public final void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.b.a.setVisibility(8);
-    if (DualMsgView.a(this.b.a) != null) {
-      DualMsgView.a(this.b.a).a();
+    if (ErrorView.a(this.a) != null)
+    {
+      paramView.setTag(this.a.getTag());
+      ErrorView.a(this.a).onClick(paramView);
+      this.a.setVisibility(8);
+      return;
     }
+    this.a.setVisibility(8);
   }
-  
-  public final void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public final void onAnimationStart(Animation paramAnimation) {}
 }
 
 

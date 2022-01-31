@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.pluginsdk.ui.chat.ChattingUILayout android:orientation="vertical" android:id="@id/a0e" android:focusable="true" android:focusableInTouchMode="true" android:clickable="true" android:longClickable="true" style="@style/q1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/an5" android:layout="@layout/ab" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/an6" android:layout="@layout/lp" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.pluginsdk.ui.chat.ChattingScrollLayout android:orientation="vertical" android:id="@id/an7" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.pluginsdk.ui.chat.ChattingContent android:id="@id/an8" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <include layout="@layout/ll" />
+            <com.tencent.mm.ui.chatting.view.MMChattingListView android:id="@id/an9" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ViewStub android:id="@id/an_" android:layout="@layout/oi" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ViewStub android:id="@id/ana" android:layout="@layout/ok" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ViewStub android:id="@id/anb" android:layout="@layout/oj" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ViewStub android:id="@id/anc" android:layout="@layout/b1c" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <ViewStub android:id="@id/and" android:layout="@layout/ajg" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <ViewStub android:id="@id/ane" android:layout="@layout/arj" android:inflatedId="@id/anf" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ViewStub android:id="@id/ang" android:layout="@layout/b3x" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ViewStub android:id="@id/anh" android:layout="@layout/b3z" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <LinearLayout android:gravity="center" android:layout_gravity="right" android:id="@id/ani" android:background="@drawable/k4" android:paddingTop="8.0dip" android:paddingRight="14.0dip" android:paddingBottom="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l5">
+                <ImageView android:paddingTop="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@raw/chatting_tips_icon" android:contentDescription="@null" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/a6i" android:id="@id/anj" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/ank" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </com.tencent.mm.pluginsdk.ui.chat.ChattingContent>
+        <com.tencent.mm.pluginsdk.ui.chat.ChatFooter android:id="@id/anl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/a1l" />
+        <ViewStub android:id="@id/anm" android:layout="@layout/lt" android:layout_width="fill_parent" android:layout_height="@dimen/g9" />
+        <ViewStub android:id="@id/ann" android:layout="@layout/ol" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </com.tencent.mm.pluginsdk.ui.chat.ChattingScrollLayout>
+</com.tencent.mm.pluginsdk.ui.chat.ChattingUILayout>

@@ -1,22 +1,17 @@
-import android.os.Handler;
-import com.tencent.mobileqq.armap.FrameBmpCache.EndListener;
-import com.tencent.mobileqq.armap.SdCardImageAnimView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-
 public class agix
-  implements FrameBmpCache.EndListener
 {
-  public agix(ScanTorchActivity paramScanTorchActivity) {}
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
+  boolean c = false;
+  boolean d = false;
+  boolean e = false;
+  boolean f = false;
   
-  public void a(SdCardImageAnimView paramSdCardImageAnimView)
-  {
-    paramSdCardImageAnimView.a();
-    this.a.a.post(new agiy(this));
-  }
+  public agix(aghx paramaghx) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agix
  * JD-Core Version:    0.7.0.1
  */

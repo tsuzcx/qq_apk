@@ -7,6 +7,7 @@ public final class enum_visit_qzone_type
 {
   public static final int _ENUM_VISIT_QZONE_TYPE_CLIENT_ONLINE = 5;
   public static final int _ENUM_VISIT_QZONE_TYPE_DEL_PUSH = 7;
+  public static final int _ENUM_VISIT_QZONE_TYPE_GET_ALERT = 11;
   public static final int _ENUM_VISIT_QZONE_TYPE_HOME_BACK = 2;
   public static final int _ENUM_VISIT_QZONE_TYPE_INIT_APP = 1;
   public static final int _ENUM_VISIT_QZONE_TYPE_ONLINE_DEL_PUSH = 8;
@@ -16,7 +17,7 @@ public final class enum_visit_qzone_type
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_UNDEAL_COUNT.enum_visit_qzone_type
  * JD-Core Version:    0.7.0.1
  */

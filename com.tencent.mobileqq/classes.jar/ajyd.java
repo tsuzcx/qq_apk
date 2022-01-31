@@ -1,16 +1,50 @@
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ajyd
-  implements FilenameFilter
+public abstract interface ajyd
 {
-  public ajyd(UnifiedDebugManager paramUnifiedDebugManager, String paramString) {}
+  public abstract int a();
   
-  public boolean accept(File paramFile, String paramString)
-  {
-    return (paramString.startsWith(this.jdField_a_of_type_JavaLangString)) && (paramString.endsWith(".localstorage"));
-  }
+  public abstract int a(int paramInt1, int paramInt2);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(@NonNull ajyf paramajyf);
+  
+  public abstract void a(ChatMessage paramChatMessage);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract void b(@ColorInt int paramInt);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract void c(@ColorInt int paramInt);
+  
+  public abstract boolean c();
+  
+  public abstract int d();
+  
+  public abstract void d();
 }
 
 

@@ -1,36 +1,48 @@
-import android.os.SystemClock;
-import android.util.Log;
-import com.tencent.mobileqq.lyric.data.Lyric;
-import com.tencent.mobileqq.lyric.widget.LyricViewController;
-import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aeda
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public aeda(LyricViewController paramLyricViewController, int paramInt) {}
+  public aeda(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.b();
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricDataLyric == null) || (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a()))
+    if (paramIntent == null) {}
+    do
     {
-      Log.w("ModuleController", "seek before set lyric");
+      do
+      {
+        return;
+      } while (!"changeGroupTribe".equals(paramIntent.getStringExtra("event")));
+      paramContext = paramIntent.getStringExtra("data");
+    } while (paramContext == null);
+    try
+    {
+      paramContext = new JSONObject(paramContext);
+      this.a.a.tribeId = paramContext.optInt("bid");
+      this.a.a.tribeName = paramContext.optString("bname");
+      this.a.d = true;
+      paramContext = new ArrayList();
+      if (!TextUtils.isEmpty(this.a.a.tribeName)) {
+        paramContext.add(this.a.a.tribeName);
+      }
+      this.a.a(9, paramContext, true, 1, true);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_Long = (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Int);
-    if ((this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.b) && (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_Int > 0))
-    {
-      LyricViewController localLyricViewController = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController;
-      localLyricViewController.jdField_a_of_type_Long -= this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_Int;
-    }
-    LyricViewController.a(this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController);
+    catch (JSONException paramContext) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeda
  * JD-Core Version:    0.7.0.1
  */

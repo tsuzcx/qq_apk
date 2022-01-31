@@ -11,29 +11,29 @@ import java.util.Map;
 public final class CoverItem
   extends JceStruct
 {
-  static Map cache_extendinfo;
-  static ArrayList cache_imageUrls;
-  static ArrayList cache_imageUrls340;
-  static ArrayList cache_packages;
+  static Map<String, String> cache_extendinfo;
+  static ArrayList<String> cache_imageUrls;
+  static ArrayList<String> cache_imageUrls340;
+  static ArrayList<CoverPackageInfo> cache_packages;
   public String description = "";
-  public Map extendinfo;
+  public Map<String, String> extendinfo;
   public String id = "";
-  public ArrayList imageUrls;
-  public ArrayList imageUrls340;
+  public ArrayList<String> imageUrls;
+  public ArrayList<String> imageUrls340;
   public int initIndex;
   public int isFree;
   public int isNew;
   public int isVip;
   public int manyBits;
   public String name = "";
-  public ArrayList packages;
+  public ArrayList<CoverPackageInfo> packages;
   public String size = "";
   public String thumbUrl = "";
   public String type = "";
   
   public CoverItem() {}
   
-  public CoverItem(String paramString1, String paramString2, ArrayList paramArrayList1, String paramString3, int paramInt1, int paramInt2, String paramString4, ArrayList paramArrayList2, String paramString5, int paramInt3, int paramInt4, String paramString6, int paramInt5, Map paramMap, ArrayList paramArrayList3)
+  public CoverItem(String paramString1, String paramString2, ArrayList<String> paramArrayList1, String paramString3, int paramInt1, int paramInt2, String paramString4, ArrayList<CoverPackageInfo> paramArrayList, String paramString5, int paramInt3, int paramInt4, String paramString6, int paramInt5, Map<String, String> paramMap, ArrayList<String> paramArrayList2)
   {
     this.id = paramString1;
     this.type = paramString2;
@@ -42,14 +42,14 @@ public final class CoverItem
     this.isVip = paramInt1;
     this.initIndex = paramInt2;
     this.name = paramString4;
-    this.packages = paramArrayList2;
+    this.packages = paramArrayList;
     this.size = paramString5;
     this.isFree = paramInt3;
     this.isNew = paramInt4;
     this.description = paramString6;
     this.manyBits = paramInt5;
     this.extendinfo = paramMap;
-    this.imageUrls340 = paramArrayList3;
+    this.imageUrls340 = paramArrayList2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

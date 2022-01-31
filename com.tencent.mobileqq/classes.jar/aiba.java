@@ -1,28 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceScoreFilter;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
 
 public class aiba
-  implements Animation.AnimationListener
+  extends alpa
 {
-  public aiba(DanceScoreFilter paramDanceScoreFilter) {}
+  public aiba(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(Object paramObject)
   {
-    DanceScoreFilter.a(this.a).h_(true);
-    if (DanceScoreFilter.a(this.a) != null) {
-      DanceScoreFilter.a(this.a).a(DanceScoreFilter.a(this.a));
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiba
  * JD-Core Version:    0.7.0.1
  */

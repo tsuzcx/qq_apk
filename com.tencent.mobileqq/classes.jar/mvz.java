@@ -1,68 +1,96 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.view.View;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.activity.aio.XMLMessageUtils;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.mobileqq.data.PAMessage.Item;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.os.PowerManager;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.av.VideoController;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-public final class mvz
-  implements ActionSheet.OnButtonClickListener
+class mvz
+  extends BroadcastReceiver
 {
-  public mvz(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean, Context paramContext, ActionSheet paramActionSheet) {}
+  mvz(mvw parammvw) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramInt)
+    String str = paramIntent.getAction();
+    boolean bool3;
+    boolean bool1;
+    int i;
+    if (str.equals("android.intent.action.SCREEN_ON"))
     {
-    }
-    do
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-      if (this.jdField_a_of_type_Boolean) {
-        PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_9", "aio_delete");
+      bool3 = VideoController.a(paramContext);
+      if (Build.VERSION.SDK_INT < 20) {
+        break label437;
       }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-        break;
-        PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_8", "aio_delete");
+      bool1 = ((PowerManager)((Context)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).getSystemService("power")).isInteractive();
+      paramContext = ((WindowManager)((Context)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).getSystemService("window")).getDefaultDisplay();
+      if (paramContext == null) {
+        break label432;
       }
-    } while (!this.jdField_a_of_type_JavaLangString.equals("2010741172"));
-    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-    if (paramView != null)
-    {
-      paramView = XMLMessageUtils.a(paramView);
-      if (paramView != null)
-      {
-        paramView = (PAMessage.Item)paramView.items.get(0);
-        if (paramView.url != null) {
-          PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramView.url);
-        }
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-    if (this.jdField_a_of_type_Boolean) {
-      PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_9", "aio_delete");
+      i = paramContext.getState();
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      break;
-      PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_8", "aio_delete");
+      paramContext = this.a.jdField_a_of_type_JavaLangString;
+      paramIntent = new StringBuilder().append("ACTION_SCREEN_ON, mVideoController[");
+      boolean bool2;
+      if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
+      {
+        bool2 = true;
+        QLog.d(paramContext, 1, bool2 + "], isInteractive[" + bool1 + "], nState[" + i + "], inKeyguardRestrictedInputMode[" + bool3 + "], mIsStarted[" + this.a.d + "]");
+        if (this.a.d)
+        {
+          this.a.jdField_a_of_type_Int = 1;
+          mvw.a(this.a, mvw.a(this.a));
+        }
+      }
+      label313:
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            bool2 = false;
+            break;
+            if (!str.equals("android.intent.action.SCREEN_OFF")) {
+              break label313;
+            }
+            i = paramIntent.getIntExtra("why", 0);
+            QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "ACTION_SCREEN_OFF, why[" + i + "]");
+          } while (this.a.jdField_a_of_type_ComTencentAvVideoController == null);
+          this.a.jdField_a_of_type_ComTencentAvVideoController.a("backgroundReason", "4");
+          lfh.jdField_a_of_type_JavaLangString = "4";
+          return;
+          if (str.equals("android.intent.action.USER_PRESENT"))
+          {
+            QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "ACTION_USER_PRESENT");
+            return;
+          }
+        } while (!str.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"));
+        paramContext = paramIntent.getStringExtra("reason");
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "ACTION_CLOSE_SYSTEM_DIALOGS, reason[" + paramContext + "]");
+      } while ((!"homekey".equalsIgnoreCase(paramContext)) || (!this.a.d));
+      this.a.jdField_a_of_type_Int = 1;
+      mvw.a(this.a, mvw.a(this.a));
+      return;
+      label432:
+      i = 2;
+      continue;
+      label437:
+      i = 2;
+      bool1 = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mvz
  * JD-Core Version:    0.7.0.1
  */

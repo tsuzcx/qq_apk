@@ -11,11 +11,11 @@ public final class RequestCustomSig
 {
   static Map cache_customSigPara;
   static byte[] cache_reserved;
-  public Map customSigPara;
-  public long nlTestFlag;
-  public byte[] reserved;
-  public long ulCustumFlag;
-  public long ulSType;
+  public Map customSigPara = null;
+  public long nlTestFlag = 0L;
+  public byte[] reserved = null;
+  public long ulCustumFlag = 0L;
+  public long ulSType = 0L;
   
   public RequestCustomSig() {}
   

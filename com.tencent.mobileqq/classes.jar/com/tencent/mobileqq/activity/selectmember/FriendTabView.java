@@ -1,31 +1,29 @@
 package com.tencent.mobileqq.activity.selectmember;
 
+import ajzg;
+import ajzh;
+import ajzi;
+import akar;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
-import com.tencent.av.config.ConfigSystemImpl;
 import com.tencent.common.app.InnerFrameManager;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.PinnedFooterExpandableListView;
-import xyx;
-import xyy;
-import xyz;
 
 public class FriendTabView
   extends TroopDiscussionBaseV
   implements View.OnClickListener
 {
-  private SelectMemberBuddyListAdapter jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberBuddyListAdapter;
+  private akar jdField_a_of_type_Akar;
   private PinnedFooterExpandableListView jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView;
   public boolean a;
   boolean b = false;
-  boolean c = false;
-  boolean d = false;
   
   public FriendTabView(SelectMemberActivity paramSelectMemberActivity)
   {
@@ -39,10 +37,10 @@ public class FriendTabView
     super.a();
     if ((this.b) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
     {
-      PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10);
+      PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
       if (localPhoneContactManagerImp != null)
       {
-        int i = localPhoneContactManagerImp.c();
+        int i = localPhoneContactManagerImp.d();
         if ((i != 8) && (i != 9)) {}
       }
     }
@@ -59,51 +57,41 @@ public class FriendTabView
   
   public void a(Bundle paramBundle)
   {
-    boolean bool = true;
     super.a(paramBundle);
-    a(2130969721);
-    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView = ((PinnedFooterExpandableListView)findViewById(2131367589));
+    a(2131560250);
+    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView = ((PinnedFooterExpandableListView)findViewById(2131365862));
     this.jdField_a_of_type_Boolean = false;
     if (QLog.isColorLevel()) {
       QLog.d("FriendTabView", 2, "firstUserClicked is " + this.jdField_a_of_type_Boolean);
     }
-    if (!this.jdField_a_of_type_Boolean)
-    {
+    if (!this.jdField_a_of_type_Boolean) {
       this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setFooterEnable(true);
-      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setListener(new xyx(this));
-      paramBundle = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2130971667, null);
-      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.addHeaderView(paramBundle);
-      paramBundle.findViewById(2131375304).setOnClickListener(new xyy(this));
-      QLog.d("FriendTabView", 2, "----->onCreate");
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberBuddyListAdapter = new SelectMemberBuddyListAdapter(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView, new xyz(this), true);
-      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberBuddyListAdapter);
-      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setSelector(2131492924);
-      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setGroupIndicator(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getResources().getDrawable(2130838660));
-      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setOnScrollListener(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberBuddyListAdapter);
-      paramBundle = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10);
-      if (((paramBundle != null) && (!paramBundle.c()) && (paramBundle.c() == 8)) && (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.f != 10)) {
-        break label300;
-      }
     }
     for (;;)
     {
-      this.c = bool;
-      this.d = ConfigSystemImpl.b(getContext());
+      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setListener(new ajzg(this));
+      paramBundle = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2131562757, null);
+      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.addHeaderView(paramBundle);
+      paramBundle.findViewById(2131363743).setOnClickListener(new ajzh(this));
+      QLog.d("FriendTabView", 2, "----->onCreate");
+      this.jdField_a_of_type_Akar = new akar(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView, new ajzi(this), true);
+      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setAdapter(this.jdField_a_of_type_Akar);
+      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setSelector(2131167140);
+      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setGroupIndicator(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getResources().getDrawable(2130839302));
+      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setOnScrollListener(this.jdField_a_of_type_Akar);
+      paramBundle = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
+      if ((paramBundle != null) && (!paramBundle.c()) && (paramBundle.d() == 8)) {}
       return;
       this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setFooterEnable(false);
-      break;
-      label300:
-      bool = false;
     }
   }
   
   public void b()
   {
     super.b();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberBuddyListAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberBuddyListAdapter.b();
+    if (this.jdField_a_of_type_Akar != null) {
+      this.jdField_a_of_type_Akar.b();
     }
-    this.d = false;
   }
   
   public void b(Bundle paramBundle)
@@ -114,8 +102,8 @@ public class FriendTabView
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberBuddyListAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberBuddyListAdapter.a();
+    if (this.jdField_a_of_type_Akar != null) {
+      this.jdField_a_of_type_Akar.a();
     }
   }
   
@@ -123,7 +111,7 @@ public class FriendTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.FriendTabView
  * JD-Core Version:    0.7.0.1
  */

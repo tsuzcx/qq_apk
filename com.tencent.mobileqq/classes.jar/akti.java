@@ -1,37 +1,91 @@
 import android.content.Context;
-import android.text.ClipboardManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.widget.ContainerView.SelectableTextView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class akti
-  implements View.OnClickListener
 {
-  private String jdField_a_of_type_JavaLangString = "popupClickListener";
+  private aktk a;
   
-  public akti(ContainerView.SelectableTextView paramSelectableTextView) {}
-  
-  public void onClick(View paramView)
+  private boolean a(aktk paramaktk)
   {
-    if (paramView.getId() == 2131375573) {}
-    try
+    if (this.a == null) {}
+    while (paramaktk.a <= this.a.a) {
+      return true;
+    }
+    return false;
+  }
+  
+  public int a(albr paramalbr, int paramInt, AppInterface paramAppInterface, Context paramContext)
+  {
+    if (this.a != null) {
+      return this.a.a(paramalbr, paramInt, paramAppInterface, paramContext);
+    }
+    return -1;
+  }
+  
+  public aktk a()
+  {
+    return this.a;
+  }
+  
+  public void a()
+  {
+    if (this.a != null)
     {
-      ((ClipboardManager)ContainerView.SelectableTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView).getSystemService("clipboard")).setText(ContainerView.SelectableTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView).getText());
-      Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView.getContext(), "已经复制到剪贴板", 0).show();
+      this.a.a();
+      this.a.a = 9999;
+    }
+  }
+  
+  public void a(aktk paramaktk)
+  {
+    if (a(paramaktk))
+    {
+      this.a = paramaktk;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloDrawerContext", 2, "set status success class=" + paramaktk.getClass().getSimpleName());
+      }
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    catch (Exception paramView)
+    QLog.d("ApolloDrawerContext", 2, "set status fail class=" + paramaktk.getClass().getSimpleName());
+  }
+  
+  public void a(albr paramalbr, Context paramContext, QQAppInterface paramQQAppInterface)
+  {
+    if (this.a != null) {
+      this.a.a(paramalbr, paramContext, paramQQAppInterface);
+    }
+  }
+  
+  public void a(albr paramalbr, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (this.a != null) {
+      this.a.a(paramalbr, paramContext, paramQQAppInterface, paramInt);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, albr paramalbr)
+  {
+    if (this.a != null)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(this.jdField_a_of_type_JavaLangString, 2, paramView.toString());
+      this.a.a(paramQQAppInterface, paramalbr);
+      this.a.a = 9999;
+    }
+  }
+  
+  public void b(albr paramalbr, Context paramContext, QQAppInterface paramQQAppInterface)
+  {
+    if (this.a != null) {
+      this.a.b(paramalbr, paramContext, paramQQAppInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akti
  * JD-Core Version:    0.7.0.1
  */

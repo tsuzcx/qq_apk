@@ -9,10 +9,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Pair;
-import com.tencent.av.SharpReport_OffLine;
-import com.tencent.av.VideoController;
-import com.tencent.av.core.AbstractNetChannel;
-import com.tencent.av.utils.VideoMsgTools;
 import com.tencent.biz.pubaccount.util.PAMessageUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.TroopNotificationCache;
@@ -94,7 +90,7 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qlink.QlinkServiceManager;
-import gnk;
+import gjb;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
@@ -102,7 +98,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.zip.Inflater;
@@ -1318,12 +1313,7 @@ public class MessageProtoCodec
     return localRichText1;
   }
   
-  private static void a(long paramLong1, long paramLong2, int paramInt)
-  {
-    SharpReport_OffLine localSharpReport_OffLine = SharpReport_OffLine.a();
-    localSharpReport_OffLine.a(0L, paramLong1, paramLong2);
-    localSharpReport_OffLine.a(paramInt, 2, paramLong2);
-  }
+  private static void a(long paramLong1, long paramLong2, int paramInt) {}
   
   public static void a(MessageHandler paramMessageHandler, long paramLong1, int paramInt1, long paramLong2, int paramInt2)
   {
@@ -3519,79 +3509,25 @@ public class MessageProtoCodec
   
   public static void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
-    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has()) || (paramDecodeProtoPkgContext.a) || (paramDecodeProtoPkgContext.f)) {
+    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has()) || (paramDecodeProtoPkgContext.a) || (paramDecodeProtoPkgContext.f))
+    {
       if (QLog.isColorLevel()) {
         QLog.e("Q.msg.MessageHandler", 2, "<---decodeC2CMsgPkg_Video return null:hasBody:" + paramMsg.msg_body.has() + ",hasMsgContent" + ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has() + ",isReaded:" + paramDecodeProtoPkgContext.a + "syncOther:" + paramDecodeProtoPkgContext.f);
       }
-    }
-    long l1;
-    long l2;
-    long l3;
-    Object localObject;
-    label504:
-    do
-    {
-      int i;
-      HashMap localHashMap;
-      do
-      {
-        do
-        {
-          long l4;
-          do
-          {
-            do
-            {
-              return;
-              l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
-              l4 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_uid.get();
-              long l5 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
-              l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
-              long l6 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get();
-              l3 = Long.valueOf(paramMessageHandler.a.a()).longValue();
-              localObject = l2 + "-" + l6 + "-" + l5 + "-" + l4;
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.msg.MessageHandler", 2, "<---decodeC2CMsgPkg_Video :  key:" + (String)localObject);
-              }
-              localObject = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
-              l4 = MessageCache.a() - l1;
-              i = AbstractNetChannel.a((byte[])localObject);
-              if (VideoController.b() != 1) {
-                break;
-              }
-            } while (!QLog.isColorLevel());
-            QLog.d("svenxu", 2, "Discard video message cause device not support");
-            return;
-            if (l4 < 60L) {
-              break;
-            }
-          } while ((i == 1) && (!QLog.isColorLevel()));
-          QLog.d("svenxu", 2, "Discard video message because of time out " + l4 + " s");
-          return;
-          localHashMap = (HashMap)paramDecodeProtoPkgContext.a(1000);
-          paramDecodeProtoPkgContext = (HashSet)paramDecodeProtoPkgContext.a(1001);
-          if (i != 1) {
-            break label504;
-          }
-          if (VideoController.b() != 2) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("shanezhaiSHARP", 2, "discard video push message because the sdk is lower");
-        return;
-      } while (localHashMap == null);
-      localHashMap.put(Long.valueOf(l2), paramMsg);
       return;
-      if (i != 3) {
-        break;
-      }
-    } while (VideoController.b() == 2);
-    if (paramDecodeProtoPkgContext != null) {
-      paramDecodeProtoPkgContext.add(Long.valueOf(l2));
     }
-    paramMessageHandler.a(l3, (byte[])localObject, l2, (int)l1);
-    return;
-    paramMessageHandler.a(l3, (byte[])localObject, l2, (int)l1);
+    long l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
+    l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_uid.get();
+    long l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
+    long l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
+    long l4 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get();
+    Long.valueOf(paramMessageHandler.a.a()).longValue();
+    paramMessageHandler = l3 + "-" + l4 + "-" + l2 + "-" + l1;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.MessageHandler", 2, "<---decodeC2CMsgPkg_Video :  key:" + paramMessageHandler);
+    }
+    ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
+    MessageCache.a();
   }
   
   public static void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List paramList)
@@ -3691,7 +3627,7 @@ public class MessageProtoCodec
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new gnk(paramMessageHandler, paramMsg));
+      new Handler(localLooper).post(new gjb(paramMessageHandler, paramMsg));
       return;
     }
     ((DataLineHandler)paramMessageHandler.a.a(8)).a(paramMsg);
@@ -3705,84 +3641,36 @@ public class MessageProtoCodec
       }
     }
     long l1;
-    long l4;
-    long l2;
-    long l5;
-    byte[] arrayOfByte1;
     do
     {
       do
       {
-        long l3;
-        String str;
-        int i;
-        int j;
-        do
-        {
-          do
-          {
-            return;
-            l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
-            l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_uid.get();
-            l4 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
-            l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
-            ((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get();
-            str = l4 + "-" + l3;
-            if (QLog.isColorLevel()) {
-              QLog.d("shanezhaiSHARP", 2, "<---decodeC2CMsgPkg_SharpVideo :  key:" + str);
-            }
-            if (!paramMessageHandler.a.a().a(l2, str)) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("shanezhaiSHARP", 2, "msg has been pulled");
-          return;
-          l3 = MessageCache.a();
-          l4 = Long.valueOf(paramMessageHandler.a.a()).longValue();
-          paramMsg = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
-          l5 = l3 - l1;
-          arrayOfByte1 = new byte[4];
-          byte[] arrayOfByte2 = new byte[4];
-          System.arraycopy(paramMsg, 0, arrayOfByte1, 0, 4);
-          System.arraycopy(paramMsg, 4, arrayOfByte2, 0, 4);
-          i = VideoController.a(arrayOfByte1, 4);
-          j = paramMsg.length - 8 - i;
-        } while (j < 0);
-        arrayOfByte1 = new byte[j];
-        System.arraycopy(paramMsg, i + 8, arrayOfByte1, 0, j);
-        paramBoolean1 = AbstractNetChannel.a(arrayOfByte1);
-        if (paramBoolean1)
-        {
-          paramMessageHandler.a.a().a(l2, str, l3);
-          a(l4, l2, 215);
+        return;
+        l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
+        l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_uid.get();
+        long l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
+        long l4 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
+        ((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get();
+        localObject = l3 + "-" + l2;
+        if (QLog.isColorLevel()) {
+          QLog.d("shanezhaiSHARP", 2, "<---decodeC2CMsgPkg_SharpVideo :  key:" + (String)localObject);
         }
-        if (VideoController.b() != 1) {
+        if (!paramMessageHandler.a.a().a(l4, (String)localObject)) {
           break;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("shanezhaiSHARP", 2, "Discard video message cause device not support");
-        }
-      } while (!paramBoolean1);
-      a(l4, l2, 212);
+      } while (!QLog.isColorLevel());
+      QLog.d("shanezhaiSHARP", 2, "msg has been pulled");
       return;
-      if (l5 < 60L) {
-        break;
-      }
-      if (paramBoolean1)
-      {
-        VideoMsgTools.a(paramMessageHandler.a, 0, 6, true, String.valueOf(l2), String.valueOf(l4), false, null, false);
-        a(l4, l2, 208);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("shanezhaiSHARP", 2, "Discard video message because of time out " + l5 + " s");
-    return;
-    if (paramBoolean1) {
-      a(l4, l2, 211);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("shanezhaiSHARP", 2, "===========handleSharpVideoMessageResp 1234========");
-    }
-    paramMessageHandler.a(l4, arrayOfByte1, l2, (int)l1, paramBoolean1);
+      long l2 = MessageCache.a();
+      Long.valueOf(paramMessageHandler.a.a()).longValue();
+      paramMessageHandler = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
+      l1 = l2 - l1;
+      paramMsg = new byte[4];
+      Object localObject = new byte[4];
+      System.arraycopy(paramMessageHandler, 0, paramMsg, 0, 4);
+      System.arraycopy(paramMessageHandler, 4, localObject, 0, 4);
+    } while ((l1 >= 60L) && (!QLog.isColorLevel()));
+    QLog.d("shanezhaiSHARP", 2, "Discard video message because of time out " + l1 + " s");
   }
   
   public static void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)

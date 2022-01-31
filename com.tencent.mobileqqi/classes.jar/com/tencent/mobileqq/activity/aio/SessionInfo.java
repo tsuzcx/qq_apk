@@ -3,12 +3,12 @@ package com.tencent.mobileqq.activity.aio;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ebr;
+import dwp;
 
 public class SessionInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ebr();
+  public static final Parcelable.Creator CREATOR = new dwp();
   public int a;
   public long a;
   public ChatBackground a;

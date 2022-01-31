@@ -15,7 +15,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class hd_video$CmdS2CInviteReqBody
-  extends MessageMicro
+  extends MessageMicro<CmdS2CInviteReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_chat_with_anyone = PBField.initBool(false);
@@ -32,10 +32,10 @@ public final class hd_video$CmdS2CInviteReqBody
   public hd_video.LoginSig msg_login_sig = new hd_video.LoginSig();
   public hd_video_comm.NetAddr msg_punch_addr = new hd_video_comm.NetAddr();
   public hd_video.InviteTempSessionData msg_temp_session = new hd_video.InviteTempSessionData();
-  public final PBRepeatMessageField rpt_msg_ext_contents = PBField.initRepeatMessage(hd_video_comm.ExtContent.class);
-  public final PBRepeatMessageField rpt_msg_interface_list = PBField.initRepeatMessage(hd_video_comm.NetAddr.class);
-  public final PBRepeatMessageField rpt_msg_sip_server_list = PBField.initRepeatMessage(hd_video_comm.SipServerInfo.class);
-  public final PBRepeatField rpt_uint64_uin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatMessageField<hd_video_comm.ExtContent> rpt_msg_ext_contents = PBField.initRepeatMessage(hd_video_comm.ExtContent.class);
+  public final PBRepeatMessageField<hd_video_comm.NetAddr> rpt_msg_interface_list = PBField.initRepeatMessage(hd_video_comm.NetAddr.class);
+  public final PBRepeatMessageField<hd_video_comm.SipServerInfo> rpt_msg_sip_server_list = PBField.initRepeatMessage(hd_video_comm.SipServerInfo.class);
+  public final PBRepeatField<Long> rpt_uint64_uin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBStringField str_interesting_chat_buf = PBField.initString("");
   public final PBStringField str_ticket = PBField.initString("");
   public final PBUInt32Field uint32_business_flag = PBField.initUInt32(0);
@@ -64,7 +64,7 @@ public final class hd_video$CmdS2CInviteReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.longconn.hd_video.CmdS2CInviteReqBody
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import mqq.app.permission.PermissionCallback;
 
-public class byu
-  implements View.OnClickListener
+class byu
+  implements PermissionCallback
 {
-  public byu(AccountManageActivity paramAccountManageActivity) {}
+  byu(byt parambyt) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (!PhoneNumLoginImpl.a().a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.a)) {}
-    while ((this.a.jdField_b_of_type_AndroidAppDialog != null) && (this.a.jdField_b_of_type_AndroidAppDialog.isShowing())) {
-      return;
-    }
-    AccountManageActivity.c(this.a);
+    new PermissionsDialog().a(this.a.a.a.a(), paramInt, paramArrayOfString, new byv(this));
   }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     byu
  * JD-Core Version:    0.7.0.1
  */

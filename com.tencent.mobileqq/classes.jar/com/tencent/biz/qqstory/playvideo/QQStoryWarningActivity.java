@@ -1,15 +1,16 @@
 package com.tencent.biz.qqstory.playvideo;
 
+import alud;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import nnv;
+import vnh;
 
 public class QQStoryWarningActivity
   extends QQStoryBaseActivity
 {
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
@@ -19,11 +20,11 @@ public class QQStoryWarningActivity
     super.setContentViewNoTitle(paramBundle);
     paramBundle.a(0);
     paramBundle.setCloseViewVisibility(true);
-    paramBundle.setOnCloseClickListener(new nnv(this));
+    paramBundle.setOnCloseClickListener(new vnh(this));
     String str = super.getIntent().getExtras().getString("tipsResource");
     if (TextUtils.isEmpty(str))
     {
-      paramBundle.setTipsText("出错啦！");
+      paramBundle.setTipsText(alud.a(2131711518));
       return true;
     }
     paramBundle.setTipsText(str);
@@ -32,7 +33,7 @@ public class QQStoryWarningActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.QQStoryWarningActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,71 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.biz.qqstory.storyHome.memory.controller.QQStoryMemoriesPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.Context;
+import android.view.ViewGroup;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.RainView;
+import com.tencent.qphone.base.util.QLog;
 
 public class nxl
-  extends QQUIEventReceiver
 {
-  public nxl(@NonNull QQStoryMemoriesPresenter paramQQStoryMemoriesPresenter)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private RainView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView;
+  private nxn jdField_a_of_type_Nxn;
+  private boolean jdField_a_of_type_Boolean = true;
+  
+  public nxl(ViewGroup paramViewGroup, Context paramContext)
   {
-    super(paramQQStoryMemoriesPresenter);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Nxn = new nxn(this);
   }
   
-  public void a(@NonNull QQStoryMemoriesPresenter paramQQStoryMemoriesPresenter, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  public void a()
   {
-    if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (TextUtils.equals(paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.getUnionId(), paramQQStoryMemoriesPresenter.jdField_a_of_type_JavaLangString)))
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyRainAnimationController", 2, "rain animation show");
+    }
+    if (this.jdField_a_of_type_AndroidViewViewGroup.findViewWithTag("ReadInJoyRainAnimationController") == null)
     {
-      SLog.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive user info event. %s. from others.", paramUpdateUserInfoEvent);
-      paramQQStoryMemoriesPresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).d();
-      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).b();
-      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).c();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView = new RainView(this.jdField_a_of_type_AndroidContentContext);
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
+      localLayoutParams.gravity = 48;
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView, localLayoutParams);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.setTag("ReadInJoyRainAnimationController");
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.setAnimationEndListener(new nxm(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.a(this.jdField_a_of_type_AndroidViewViewGroup.getWidth(), this.jdField_a_of_type_AndroidViewViewGroup.getTop(), this.jdField_a_of_type_AndroidViewViewGroup.getBottom(), paramString);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_AndroidViewViewGroup.findViewWithTag("ReadInJoyRainAnimationController") != null;
+  }
+  
+  public void b()
+  {
+    if ((a()) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyRainAnimationController", 2, "rain animation hide");
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.n();
+      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView);
     }
   }
   
-  public Class acceptEventClass()
+  public boolean b()
   {
-    return GetUserInfoHandler.UpdateUserInfoEvent.class;
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nxl
  * JD-Core Version:    0.7.0.1
  */

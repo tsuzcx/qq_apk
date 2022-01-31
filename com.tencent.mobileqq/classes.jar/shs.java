@@ -1,36 +1,23 @@
-import android.os.Message;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.model.AspectRatio;
 
-class shs
-  implements Runnable
+public final class shs
+  implements Parcelable.Creator<AspectRatio>
 {
-  shs(shq paramshq, long paramLong) {}
-  
-  public void run()
+  public AspectRatio a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager != null)
-    {
-      this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a();
-      if (this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Long) == 2)
-      {
-        Message localMessage = new Message();
-        localMessage.obj = Long.valueOf(this.jdField_a_of_type_Long);
-        this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(32, localMessage);
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(-1, null);
+    return new AspectRatio(paramParcel);
+  }
+  
+  public AspectRatio[] a(int paramInt)
+  {
+    return new AspectRatio[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     shs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,12 @@
-class aavr
-  implements Runnable
+import java.util.Map;
+
+public abstract interface aavr
 {
-  aavr(aavq paramaavq) {}
-  
-  public void run()
-  {
-    this.a.jdField_a_of_type_Aawb.a(this.a.jdField_a_of_type_Aavu.a);
-  }
+  public abstract boolean a(String paramString, long paramLong, Map<String, Object> paramMap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aavr
  * JD-Core Version:    0.7.0.1
  */

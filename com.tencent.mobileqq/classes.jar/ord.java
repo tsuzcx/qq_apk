@@ -1,18 +1,17 @@
-import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView;
-
 public class ord
-  implements Runnable
 {
-  public ord(QQStoryPullToRefreshListView paramQQStoryPullToRefreshListView) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void run()
+  public String toString()
   {
-    QQStoryPullToRefreshListView.a(this.a);
+    return "appCode = " + this.a + "\nappVersion = " + this.b + "\nappUsedDate = " + this.c + "\n";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ord
  * JD-Core Version:    0.7.0.1
  */

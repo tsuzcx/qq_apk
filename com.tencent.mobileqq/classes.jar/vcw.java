@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.activity.aio.item.PokeItemAnimationManager;
-
-public class vcw
+public abstract interface vcw
 {
-  public int a;
-  public vcy[] a;
-  
-  public vcw(PokeItemAnimationManager paramPokeItemAnimationManager)
-  {
-    this.jdField_a_of_type_Int = -1;
-  }
+  public abstract void a(vcv paramvcv);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vcw
  * JD-Core Version:    0.7.0.1
  */

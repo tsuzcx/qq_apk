@@ -1,29 +1,23 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
+import android.os.Bundle;
 
 public class taq
-  implements Runnable
+  implements alpg
 {
-  public taq(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
+  protected void a(boolean paramBoolean, Bundle paramBundle) {}
   
-  public void run()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((LoginVerifyCodeActivity.a(this.a) == 1) || (this.a.isFinishing()))
+    if (paramObject != null)
     {
-      LoginVerifyCodeActivity.a(this.a).setText(2131434277);
-      LoginVerifyCodeActivity.a(this.a).setEnabled(true);
-      LoginVerifyCodeActivity.a(this.a).setClickable(true);
+      a(paramBoolean, (Bundle)paramObject);
       return;
     }
-    LoginVerifyCodeActivity.b(this.a);
-    LoginVerifyCodeActivity.a(this.a).setText(this.a.getString(2131434277) + "(" + LoginVerifyCodeActivity.a(this.a) + ")");
-    this.a.a.postDelayed(this, 1000L);
+    a(paramBoolean, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     taq
  * JD-Core Version:    0.7.0.1
  */

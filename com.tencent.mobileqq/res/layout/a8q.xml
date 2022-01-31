@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/jqh" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/ibe" android:background="@drawable/skin_header_bar_bg" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+        <TextView android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="96.0dip" android:layout_marginRight="96.0dip" android:text="@null" android:singleLine="true" android:layout_centerInParent="true" style="@style/TitleText" />
+        <com.tencent.widget.SegmentedControlView android:orientation="horizontal" android:id="@id/dt7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:divider="@null" android:checkedButton="@id/dth" android:layout_centerInParent="true" android:dividerPadding="0.0dip" tencent:firstButtonBackground="@drawable/b2x" tencent:lastButtonBackground="@drawable/b2y" tencent:middleButtonBackground="@null" tencent:uniqueButtonBackground="@null">
+            <com.tencent.biz.pubaccount.readinjoy.view.LeftRedDotRadioButton android:textSize="14.0dip" android:gravity="center" android:id="@id/dth" android:background="@null" android:layout_width="60.0dip" android:layout_height="30.0dip" android:button="@null" android:text="@string/c08" style="@style/j4" />
+            <com.tencent.mobileqq.troop.widget.RedDotRadioButton android:textSize="14.0dip" android:gravity="center" android:id="@id/dti" android:background="@null" android:layout_width="60.0dip" android:layout_height="30.0dip" android:button="@null" android:text="@string/pxu" style="@style/j4" />
+        </com.tencent.widget.SegmentedControlView>
+        <TextView android:gravity="center" android:id="@id/ivTitleBtnLeft" android:background="@drawable/top_back_left_selector" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="99.0dip" android:minWidth="40.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+        <ImageView android:id="@id/ivTitleBtnRightImage" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="5.0dip" android:scaleType="center" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

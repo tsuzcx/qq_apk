@@ -1,27 +1,22 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.SplashActivity;
 
-class djo
-  implements Runnable
+public class djo
+  implements DialogInterface.OnDismissListener
 {
-  djo(djn paramdjn) {}
+  public djo(SplashActivity paramSplashActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.b.a().k();
-    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
-    Handler localHandler = this.a.a.b.a(Conversation.class);
-    if (localHandler != null) {
-      localHandler.sendEmptyMessage(1009);
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     djo
  * JD-Core Version:    0.7.0.1
  */

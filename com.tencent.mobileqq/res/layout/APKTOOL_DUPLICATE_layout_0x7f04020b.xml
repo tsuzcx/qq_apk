@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ac"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d2a" android:text="充值数量" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ad" />
-    <EditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d2b" android:hint="请输入充值数量" android:digits="0123456789\n" android:inputType="number" style="@style/APKTOOL_DUPLICATE_style_0x7f0e009b" />
-    <ImageButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d2c" style="@style/midas_input_cell_button_clear" />
-</LinearLayout>

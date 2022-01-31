@@ -1,16 +1,16 @@
 package cooperation.qzone.model;
 
 import LBS_V2_PROTOCOL.GPS_V2;
-import amuo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import common.config.service.QzoneLbsConfig;
+import bilq;
+import bjkv;
 
 public class GpsInfo4LocalImage
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amuo();
+  public static final Parcelable.Creator<GpsInfo4LocalImage> CREATOR = new bjkv();
   public float a;
   public int a;
   public float b;
@@ -71,7 +71,7 @@ public class GpsInfo4LocalImage
       }
     } while (!(paramObject instanceof GpsInfo4LocalImage));
     paramObject = (GpsInfo4LocalImage)paramObject;
-    if ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (a(this.jdField_a_of_type_Float * 1000000.0F, this.b * 1000000.0F, paramObject.jdField_a_of_type_Float * 1000000.0F, paramObject.b * 1000000.0F) <= QzoneLbsConfig.a().a())) {}
+    if ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (a(this.jdField_a_of_type_Float * 1000000.0F, this.b * 1000000.0F, paramObject.jdField_a_of_type_Float * 1000000.0F, paramObject.b * 1000000.0F) <= bilq.a().a())) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }
@@ -90,7 +90,7 @@ public class GpsInfo4LocalImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.GpsInfo4LocalImage
  * JD-Core Version:    0.7.0.1
  */

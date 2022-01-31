@@ -1,19 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.UUID;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ajeg
-  implements DialogInterface.OnClickListener
 {
-  public ajeg(TroopFileItemOperation paramTroopFileItemOperation, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
+  public static final Set<String> a = new HashSet();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.b(this.jdField_a_of_type_JavaUtilUUID);
-    }
+    a.add("SoLoadModule");
   }
 }
 

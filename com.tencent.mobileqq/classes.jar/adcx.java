@@ -1,21 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
 public class adcx
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adcx(DefaultFileModel paramDefaultFileModel) {}
+  public adcx(GeneralSettingActivity paramGeneralSettingActivity, Runnable paramRunnable) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FileManagerUtil.b(this.a.a, this.a.b());
+    if ((paramDialogInterface instanceof bdjz)) {
+      ((bdjz)paramDialogInterface).setOnDismissListener(null);
+    }
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adcx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.widget.RoundImageView android:id="@id/lrb" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="4.0dip" android:layout_marginRight="4.0dip" app:qwRadius="100.0dip" />
+    <ImageView android:id="@id/h91" android:background="@drawable/c0l" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="4.0dip" android:layout_marginRight="4.0dip" />
+</FrameLayout>

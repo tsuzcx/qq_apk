@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x5bd$SkinInfo
-  extends MessageMicro
+  extends MessageMicro<SkinInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -29,7 +29,7 @@ public final class oidb_0x5bd$SkinInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,6 @@
-import com.tencent.mobileqq.troop.data.TroopAioMsgNavigateBar;
-
-public class ajcx
-  implements Runnable
+public abstract interface ajcx
 {
-  public ajcx(TroopAioMsgNavigateBar paramTroopAioMsgNavigateBar) {}
-  
-  public void run()
-  {
-    TroopAioMsgNavigateBar.a(this.a);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,86 +1,144 @@
 package com.tencent.token;
 
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import java.net.URLEncoder;
-import java.util.HashMap;
+import android.content.Context;
+import com.tencent.token.core.bean.a;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.global.c;
+import com.tencent.token.global.f;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.w;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class dl
-  extends bm
+public class dl
 {
-  private long c;
-  private Bundle d;
+  private final String a = "/cn/mbtoken3/mbtoken3_update_dual_msg_status_encrypt";
+  protected List b = new ArrayList();
+  protected long c;
+  int d;
   private int e;
-  private int f;
-  private int g;
-  private String h;
-  private String i;
-  private long j;
-  private long k;
   
-  protected final String a()
+  protected dl(int paramInt)
   {
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    for (String str = ax.c; str == null; str = null)
+    this.e = paramInt;
+  }
+  
+  private String b(a parama, int paramInt)
+  {
+    try
     {
-      this.a.a(104, null, null);
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("app_id", parama.b());
+      localJSONObject.put("msg_type", parama.d());
+      localJSONObject.put("msg_id", parama.a());
+      localJSONObject.put("msg_status", paramInt);
+      localJSONObject.put("uin", parama.c());
+      localJSONObject.put("msg_uin", parama.c());
+      localJSONObject.put("type", this.e);
+      paramInt = cw.a + 1;
+      cw.a = paramInt;
+      this.d = paramInt;
+      localJSONObject.put("seq_id", this.d);
+      localJSONObject.put("op_time", (int)(cx.c().s() / 1000L));
+      parama = localJSONObject.toString();
+      h.a("palin: " + parama);
+      parama = w.b(parama.getBytes());
+      return parama;
+    }
+    catch (JSONException parama)
+    {
+      parama.printStackTrace();
+    }
+    return null;
+  }
+  
+  public a a(int paramInt)
+  {
+    if (this.b == null) {}
+    int i;
+    do
+    {
       return null;
-    }
-    str = "?uin=" + this.c + "&aq_base_sid=" + str + "&role_id=" + this.e + "&role_name=" + URLEncoder.encode(this.h) + "&area_id=" + this.f + "&world_id=" + this.g + "&world_name=" + URLEncoder.encode(this.i) + "&last_login_time=" + this.j / 1000L + "&stolen_time=" + this.k / 1000L;
-    str = b.c() + "/cn/mbtoken3/mbtoken3_jl_appeal" + str;
-    e.b(str);
-    return str;
+      i = b();
+    } while ((paramInt < 0) || (paramInt >= i));
+    return (a)this.b.get(paramInt);
   }
   
-  protected final void a(fs paramfs)
+  public f a(a parama, int paramInt)
   {
-    this.c = ((Long)paramfs.c.get("param.uinhash")).longValue();
-    this.e = ((Integer)paramfs.c.get("param.jl_roleid")).intValue();
-    this.h = ((String)paramfs.c.get("param.jl_rolename"));
-    this.f = ((Integer)paramfs.c.get("param.jl_zoneid")).intValue();
-    this.g = ((Integer)paramfs.c.get("param.jl_serverid")).intValue();
-    this.i = ((String)paramfs.c.get("param.jl_servername"));
-    this.j = ((Long)paramfs.c.get("param.jl_lastlogintime")).longValue();
-    this.k = ((Long)paramfs.c.get("param.jl_stealtime")).longValue();
-  }
-  
-  protected final void a(JSONObject paramJSONObject)
-  {
-    int m = paramJSONObject.getInt("err");
-    if (m != 0)
+    f localf = new f();
+    gk localgk = new gk();
+    Object localObject = do.a();
+    if (parama == null)
     {
-      a(m, paramJSONObject.getString("info"));
-      return;
+      localf.b(10023);
+      return localf;
     }
-    this.d = new Bundle();
-    m = paramJSONObject.getInt("result");
-    String str = paramJSONObject.getString("title");
-    paramJSONObject = paramJSONObject.getString("desc");
-    e.b("submit return result" + m + ",title =" + str + ",desc =" + paramJSONObject);
-    this.d.putInt("result", m);
-    this.d.putString("title", str);
-    this.d.putString("desc", paramJSONObject);
-    this.a.a = 0;
+    parama = b(parama, paramInt);
+    if (parama == null)
+    {
+      localf.a(10000, "encrypt msg status failed");
+      return localf;
+    }
+    parama = "?aq_base_sid=" + ((do)localObject).g() + "&data=" + parama;
+    parama = c.e() + "/cn/mbtoken3/mbtoken3_update_dual_msg_status_encrypt" + parama;
+    localObject = localgk.a(parama);
+    if (localObject == null)
+    {
+      localf.a(localgk.a());
+      h.c("client request url: " + parama + " failed, reason: " + localf.a + ":" + localf.b);
+      return localf;
+    }
+    try
+    {
+      parama = new JSONObject(new String((byte[])localObject));
+      paramInt = parama.getInt("err");
+      if (paramInt != 0)
+      {
+        parama = parama.getString("info");
+        localf.a(paramInt, parama, parama);
+        return localf;
+      }
+    }
+    catch (JSONException parama)
+    {
+      h.c("parse json failed: " + parama.toString());
+      localf.a(10020, "JSONException:" + parama.toString());
+      return localf;
+      parama = w.c(parama.getString("data"));
+      if (parama == null) {
+        break label408;
+      }
+      paramInt = new JSONObject(new String(parama)).getInt("seq_id");
+      if (this.d != paramInt)
+      {
+        localf.b(10030);
+        return localf;
+      }
+    }
+    catch (Exception parama)
+    {
+      h.c("unknown err: " + parama.toString());
+      localf.a(10021, "JSONException:" + parama.toString());
+      return localf;
+    }
+    do.a().m();
+    localf.c();
+    return localf;
+    label408:
+    h.c("parseJSON error decodeData=" + parama);
+    localf.a(10022, RqdApplication.l().getString(2131230925));
+    return localf;
   }
   
-  protected final void b()
+  public int b()
   {
-    if (!this.b.e)
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.d;
-      localMessage.sendToTarget();
-      this.b.e = true;
+    if (this.b == null) {
+      return 0;
     }
+    return this.b.size();
   }
 }
 

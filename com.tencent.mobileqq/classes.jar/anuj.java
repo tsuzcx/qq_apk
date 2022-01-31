@@ -1,24 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import mqq.util.WeakReference;
 
-public class anuj
-  extends SimpleJob
+class anuj
+  implements alrb
 {
-  public anuj(EditVideoPartManager paramEditVideoPartManager, String paramString, int paramInt1, int paramInt2, String[] paramArrayOfString) {}
+  WeakReference<anug> a;
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public anuj(anug paramanug)
   {
-    StoryReportor.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
-    return null;
+    this.a = new WeakReference(paramanug);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    anug localanug = (anug)this.a.get();
+    if (localanug != null) {
+      localanug.a(paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anuj
  * JD-Core Version:    0.7.0.1
  */

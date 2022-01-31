@@ -1,26 +1,20 @@
-import android.content.SharedPreferences;
-import cooperation.readinjoy.ReadInJoyHelper;
-import mqq.app.AppRuntime;
+import com.tencent.qphone.base.util.QLog;
 
-public final class anej
-  implements Runnable
+class anej
+  extends amxo
 {
-  public anej(AppRuntime paramAppRuntime) {}
+  anej(aneh paramaneh, amyk paramamyk) {}
   
-  public void run()
+  public void a()
   {
-    int i = 1;
-    SharedPreferences localSharedPreferences = ReadInJoyHelper.a(this.a, true, true);
-    if (localSharedPreferences == null) {
-      return;
+    aneh.a(this.jdField_a_of_type_Aneh, true);
+    aneh.b(this.jdField_a_of_type_Aneh, false);
+    boolean bool = this.jdField_a_of_type_Amyk.c();
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniRecog.MiniCodeController", 2, String.format("onConnectReady isMiniResConfigReady=%b", new Object[] { Boolean.valueOf(bool) }));
     }
-    if (localSharedPreferences.getBoolean("free_time_refresh_push", true)) {}
-    for (;;)
-    {
-      ReadInJoyHelper.a(i);
-      return;
-      i = 0;
-    }
+    this.jdField_a_of_type_Aneh.a();
+    this.jdField_a_of_type_Aneh.b();
   }
 }
 

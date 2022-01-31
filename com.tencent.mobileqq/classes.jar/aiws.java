@@ -1,30 +1,20 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.TopayManager.5.1;
 
 public class aiws
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public aiws(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public aiws(TopayManager.5.1 param1) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_b_of_type_AndroidViewView == null) {
+    switch (paramInt)
+    {
+    default: 
       return;
     }
-    this.a.jdField_b_of_type_AndroidViewView.post(new aiwt(this));
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (this.a.jdField_b_of_type_AndroidWidgetTextView == null) {
-      return;
-    }
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    paramDialogInterface.dismiss();
   }
 }
 

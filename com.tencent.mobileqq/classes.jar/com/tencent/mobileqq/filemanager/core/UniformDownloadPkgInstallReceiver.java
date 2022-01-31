@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aczz;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -39,12 +38,12 @@ public class UniformDownloadPkgInstallReceiver
     if (QLog.isColorLevel()) {
       QLog.i("UniformDownloadPkgInstallReceiver<FileAssistant>", 1, "[UniformDL] package operate broadcast. action:" + paramContext + " pkgName:" + paramIntent);
     }
-    ThreadManager.executeOnSubThread(new aczz(this, paramContext, paramIntent));
+    ThreadManager.executeOnSubThread(new UniformDownloadPkgInstallReceiver.1(this, paramContext, paramIntent));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.UniformDownloadPkgInstallReceiver
  * JD-Core Version:    0.7.0.1
  */

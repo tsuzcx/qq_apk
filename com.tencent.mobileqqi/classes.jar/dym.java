@@ -1,43 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
 
-public class dym
-  extends Handler
+class dym
+  implements Runnable
 {
-  public dym(TroopRequestActivity paramTroopRequestActivity) {}
+  dym(dyl paramdyl) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      if (TroopRequestActivity.a(this.a) != null) {
-        TroopRequestActivity.a(this.a).dismiss();
-      }
-      QQToast.a(this.a, this.a.getString(2131562880), 0).b(this.a.d());
-      this.a.finish();
-      return;
-    case 1: 
-      this.a.a(true);
-      if (TroopRequestActivity.a(this.a) != null) {
-        TroopRequestActivity.a(this.a).dismiss();
-      }
-      QQToast.a(this.a, this.a.getString(2131561435), 0).b(this.a.d());
-      return;
-    }
-    paramMessage = (String)paramMessage.obj;
-    this.a.a.setText(paramMessage + "");
+    ChatActivityUtils.a(FileItemBuilder.a(this.a.a), 2131563033, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dym
  * JD-Core Version:    0.7.0.1
  */

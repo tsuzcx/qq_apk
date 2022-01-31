@@ -1,15 +1,13 @@
-import cooperation.qzone.video.QzoneVerticalVideoGpuProxyActivity;
-import cooperation.qzone.video.QzoneVerticalVideoPluginProxyActivity;
-import cooperation.qzone.video.QzoneVerticalVideoTransparentActivity;
+import com.tencent.YTFace.model.FaceStatus;
 
 public class anbi
 {
-  public static Class a(String paramString)
+  public int a = 3000;
+  public FaceStatus[] a;
+  
+  public String toString()
   {
-    if (QzoneVerticalVideoPluginProxyActivity.a(QzoneVerticalVideoPluginProxyActivity.a(), paramString)) {
-      return QzoneVerticalVideoTransparentActivity.class;
-    }
-    return QzoneVerticalVideoGpuProxyActivity.class;
+    return "ARCloudRecogReqFaceInfo{timeout = " + this.a + '}';
   }
 }
 

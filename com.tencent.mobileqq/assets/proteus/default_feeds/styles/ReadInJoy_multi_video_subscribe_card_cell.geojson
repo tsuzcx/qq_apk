@@ -1,0 +1,220 @@
+{
+    "ReadInJoy_multi_video_subscribe_card_cell": {
+        "view_type": "UIView",
+        "view_id": "id_subscribe_card_container",
+        "layout_type": "layout_linear",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "match_parent"
+        },
+        "default_visible": "YES",
+        "event_type":"multi_video_column_card_click",
+        "align_parent_center_horizontal": "YES",
+        "subviews": [
+            {
+                "view_id": "id_bg_container",
+                "view_type": "container",
+                "layout_type": "layout_relative",
+                "height": {
+                    "type": "relative",
+                    "value": "298"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "363"
+                },
+                "margin_top": "8",
+                "align_parent_center_horizontal": "YES",
+                "subviews": [
+                    {
+                        "view_id": "id_bg_default",
+                        "view_type": "UIView",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "match_parent"
+                        },
+                        "default_visible": "YES",
+                        "attributes": {
+                            "setBackgroundColorString:": "#e5e5e5"
+                        }
+                    },
+                    {
+                        "view_id": "id_bg_cover_img",
+                        "view_type": "ReadInjoyAsynImageView",
+                        "height": {
+                            "type": "relative",
+                            "value": "204"
+                        },
+                        "width": {
+                            "type": "match_parent"
+                        },
+                        "attributes": {
+                            "setImageWithURLString:lineup:": [
+                                "$bg_cover_img_url",
+                                "$cover_line_up"
+                            ]
+                        }
+                    },
+                    {
+                        "view_id": "id_title_mask",
+                        "view_type": "UIView",
+                        "height": {
+                            "type": "relative",
+                            "value": "204"
+                        },
+                        "width": {
+                            "type": "match_parent"
+                        },
+                        "default_visible": "YES",
+                        "attributes": {
+                            "setGradientWithStartAlpha:endAlpha:color:direction:": [
+                                "0.2",
+                                "0.2",
+                                "#000000",
+                                "1"
+                            ]
+                        }
+                    },
+                    {
+                        "view_id": "id_bottom_gradient_mask",
+                        "view_type": "UIView",
+                        "height": {
+                            "type": "relative",
+                            "value": "53"
+                        },
+                        "width": {
+                            "type": "match_parent"
+                        },
+                        "margin_top": "151",
+                        "attributes": {
+                            "setGradientWithStartAlpha:endAlpha:color:direction:": [
+                                "0",
+                                "1",
+                                "$bottom_color",
+                                "1"
+                            ]
+                        }
+                    },
+                    {
+                        "view_id": "id_bottom_mask",
+                        "view_type": "UIView",
+                        "height": {
+                            "type": "relative",
+                            "value": "94"
+                        },
+                        "width": {
+                            "type": "match_parent"
+                        },
+                        "align_parent_bottom": "YES",
+                        "attributes": {
+                            "setBackgroundColorString:": "$bottom_color"
+                        }
+                    },
+                    {
+                        "view_id": "id_topic_title_icon",
+                        "view_type": "UIImageView",
+                        "height": {
+                            "type": "relative",
+                            "value": "24"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "24"
+                        },
+                        "default_visible": "YES",
+                        "margin_left": "10",
+                        "margin_top": "15",
+                        "attributes": {
+                            "loadImageWithPath:": "$title_icon_url"
+                        }
+                    },
+                    {
+                        "view_id": "id_topic_title_text",
+                        "view_type": "UILabel",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "default_visible": "YES",
+                        "right_of_view": "id_topic_title_icon",
+                        "margin_left": "6",
+                        "margin_top": "16",
+                        "margin_right": "10",
+                        "attributes": {
+                            "setText:": "$topic_title_text",
+                            "setTextColorString:": "#FFFFFF",
+                            "setTextAlignmentString:": "0",
+                            "setBoldFontSizeString:": "20",
+                            "setNumberOfLinesString:": "1"
+                        }
+                    },
+                    {
+                        "view_id": "id_topic_desc_text",
+                        "view_type": "UILabel",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "match_parent"
+                        },
+                        "margin_top": "49",
+                        "margin_left": "10",
+                        "margin_right": "10",
+                        "attributes": {
+                            "setText:lineSpace:": [
+                                "$topic_desc_text",
+                                "2"
+                            ],
+                            "setTextColorString:": "#FFFFFF",
+                            "setFontSizeString:": "12",
+                            "setNumberOfLinesString:": "2"
+                        }
+                    },
+                    {
+                        "view_id": "id_column_list",
+                        "view_type": "ProteusCollectionView",
+                        "height": {
+                            "type": "relative",
+                            "value": "107"
+                        },
+                        "width": {
+                            "type": "match_parent"
+                        },
+                        "margin_bottom": "12",
+                        "align_parent_bottom": "YES",
+                        "attributes": {
+                            "setCellArray:": "$column_data",
+                            "setScrollTypeString:": "0",
+                            "setScrollIndicatorString:": "0",
+                            "setScrollBounceString:": "1",
+                            "setEdgeDragString:": "1",
+                            "setScrollInsetLeft:right:top:bottom:": [
+                                "0",
+                                "6",
+                                "0",
+                                "0"
+                            ],
+                            "setEdgeDragCenterY:type:": ["43","relative"],
+                            "setEdgeDragHeight:type:": ["85","relative"],
+                            "setEdgeDragArrowPath:": "edge_drag_arrow_black",
+                            "setEdgeDragBackgroundColorString:":"#FFFFFF"
+                        }
+                    }
+                ]
+            },
+            {
+                "$includeComponet": "componet/multi_video_tail.geojson"
+            },
+            {
+                "$includeComponet": "componet/separator.geojson"
+            }
+        ]
+    }
+}

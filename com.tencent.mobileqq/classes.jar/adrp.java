@@ -1,27 +1,26 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class adrp
-  implements Runnable
+  implements View.OnClickListener
 {
-  public adrp(PresenceInterfaceImpl paramPresenceInterfaceImpl, String paramString) {}
+  public adrp(QQMapActivity paramQQMapActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a, 232, null, this.jdField_a_of_type_JavaLangString, new adrq(this), null);
-    try
+    if (this.a.a == null)
     {
-      localQQCustomDialog.show();
-      return;
+      this.a.a = ((bhuf)bhus.a(this.a, null));
+      this.a.a.b(2131698445);
+      this.a.a.b(2131692401);
+      this.a.a.c(2131690648);
+      this.a.a.a(new adrq(this));
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("PresenceInterfaceImpl", 2, "show dialog fail");
+    if (!this.a.a.isShowing()) {
+      this.a.a.show();
     }
+    azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_menu", 0, 0, "", "", "", "");
   }
 }
 

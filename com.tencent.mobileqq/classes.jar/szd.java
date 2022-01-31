@@ -1,26 +1,16 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.CircleProgress;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class szd
-  implements Runnable
+class szd
+  implements DialogInterface.OnCancelListener
 {
-  public szd(LikeRankingListActivity paramLikeRankingListActivity, Card paramCard) {}
+  szd(szc paramszc) {}
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqDataCard.strNick);
-    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_c_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.a.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.d.setVisibility(0);
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     szd
  * JD-Core Version:    0.7.0.1
  */

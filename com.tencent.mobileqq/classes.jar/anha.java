@@ -1,26 +1,18 @@
-import cooperation.weiyun.sdk.download.DownloadJobContext.StatusInfo;
-import cooperation.weiyun.sdk.download.WyDownloader.IDownloadStatusListener;
-import cooperation.weiyun.utils.WyReportUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
-public final class anha
-  implements WyDownloader.IDownloadStatusListener
+public class anha
+  implements DialogInterface.OnDismissListener
 {
-  public void a(String paramString) {}
+  public anha(ARScanEntryView paramARScanEntryView) {}
   
-  public void a(String paramString, long paramLong, DownloadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramBoolean)
-    {
-      if (paramStatusInfo.a != 5) {
-        break label25;
-      }
-      WyReportUtils.a(paramString, "actFileWyDown", paramStatusInfo, false, paramLong);
-    }
-    label25:
-    while (paramStatusInfo.a != 4) {
-      return;
-    }
-    WyReportUtils.a(paramString, "actFileWyDown", paramStatusInfo, true, paramLong);
+    ARScanEntryView.a(this.a, null);
+    ARScanEntryView.a(this.a, null);
+    ARScanEntryView.a(this.a).g();
+    ARScanEntryView.a(this.a, true);
   }
 }
 

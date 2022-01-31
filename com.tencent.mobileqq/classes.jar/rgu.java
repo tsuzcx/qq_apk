@@ -1,22 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
 public class rgu
-  implements DialogInterface.OnDismissListener
+  implements View.OnLayoutChangeListener
 {
-  public rgu(AccountManageActivity paramAccountManageActivity) {}
+  public rgu(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (paramDialogInterface == this.a.c) {
-      this.a.c = null;
+    this.a.removeOnLayoutChangeListener(this);
+    if (VideoFeedsRecyclerView.a(this.a) != null) {
+      VideoFeedsRecyclerView.a(this.a).a(VideoFeedsRecyclerView.a(this.a).itemView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rgu
  * JD-Core Version:    0.7.0.1
  */

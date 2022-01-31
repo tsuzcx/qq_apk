@@ -1,17 +1,22 @@
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.biz.ui.RefreshView.OnRefreshListener;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import com.tencent.mobileqq.fragment.NowLiveFragment.NowLiveWebView;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
 public class adoa
-  implements RefreshView.OnRefreshListener
+  implements QQPermissionCallback
 {
-  public adoa(NowLiveFragment paramNowLiveFragment) {}
+  public adoa(ProfileCardMoreActivity paramProfileCardMoreActivity1, ProfileCardMoreActivity paramProfileCardMoreActivity2) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment$NowLiveWebView.x();
-    this.a.jdField_a_of_type_ComTencentBizUiRefreshView.c();
+    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions denied...");
+    bdgm.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions grant...");
+    this.b.g();
   }
 }
 

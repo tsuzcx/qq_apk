@@ -1,13 +1,23 @@
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import Wallet.SkinInfo;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.fragment.UsualHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
 
 public class aiyv
-  implements Runnable
+  implements aizo
 {
-  public aiyv(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  public aiyv(UsualHbFragment paramUsualHbFragment) {}
   
-  public void run()
+  public void a(aize paramaize)
   {
-    this.a.a(true);
+    if ((paramaize.jdField_a_of_type_WalletSkinInfo.skin_id == 0) || (paramaize.jdField_a_of_type_WalletSkinInfo.skin_id == -2))
+    {
+      paramaize = aizd.a(this.a.channel, this.a.a, this.a.mActivity.a(), paramaize.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title);
+      this.a.c.setHint(paramaize);
+      return;
+    }
+    this.a.c.setHint(paramaize.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title);
   }
 }
 

@@ -1,54 +1,20 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class acho
-  implements GestureDetector.OnGestureListener
+  implements DialogInterface.OnClickListener
 {
-  public acho(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  public acho(BaseChatPie paramBaseChatPie) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    int j = 1;
-    if ((paramMotionEvent1 != null) && (paramMotionEvent2 != null)) {
-      if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 50.0F) {
-        break label78;
-      }
-    }
-    label78:
-    for (int i = 1;; i = 0)
-    {
-      if (paramMotionEvent2.getY() - paramMotionEvent1.getY() > 50.0F) {
-        i = j;
-      }
-      for (;;)
-      {
-        if ((i != 0) && (this.a.a != null)) {
-          this.a.a.a();
-        }
-        return false;
-      }
-    }
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
+    paramDialogInterface = new Intent(this.a.a, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", aliu.Y);
+    this.a.a.startActivityForResult(paramDialogInterface, 0);
   }
 }
 

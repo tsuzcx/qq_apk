@@ -1,42 +1,58 @@
-import com.tencent.mobileqq.activity.FriendProfileImageAvatar;
-import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class cur
-  implements Runnable
+  extends WtloginObserver
 {
-  public cur(FriendProfileImageAvatar paramFriendProfileImageAvatar, FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo) {}
+  public cur(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void run()
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    localEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a.a().createEntityManager();
-    if (localEntityManager != null) {}
-    try
+    if (this.a.isFinishing()) {
+      return;
+    }
+    if ((paramInt == 0) && (paramDevlockInfo != null))
     {
-      Setting localSetting = (Setting)localEntityManager.a(Setting.class, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.e);
-      if ((localSetting != null) && ((localSetting.headImgTimestamp != 0L) || (localSetting.updateTimestamp != 0L)))
+      if (QLog.isColorLevel())
       {
-        localSetting.headImgTimestamp = 0L;
-        localSetting.updateTimestamp = 0L;
-        localEntityManager.a(localSetting);
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a.a(localSetting);
+        QLog.d("Q.devlock.LoginInfoActivity", 2, "OnCheckDevLockStatus ret = " + paramInt);
+        QLog.d("Q.devlock.LoginInfoActivity", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
+        QLog.d("Q.devlock.LoginInfoActivity", 2, "DevlockInfo.ProtectIntro:" + paramDevlockInfo.ProtectIntro + "  info.MbGuideType:" + paramDevlockInfo.MbGuideType);
+        QLog.d("Q.devlock.LoginInfoActivity", 2, "DevlockInfo.MbGuideMsg:" + paramDevlockInfo.MbGuideMsg);
+        QLog.d("Q.devlock.LoginInfoActivity", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
+        QLog.d("Q.devlock.LoginInfoActivity", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
+      }
+      LoginInfoActivity.a(this.a, paramDevlockInfo);
+      LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.LoginInfoActivity", 2, "OnCheckDevLockStatus ret = " + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.LoginInfoActivity", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
+      }
+      if (paramDevlockInfo == null) {
+        QLog.d("Q.devlock.LoginInfoActivity", 2, "OnCheckDevLockStatus DevlockInfo is null");
       }
     }
-    catch (Exception localException)
+    LoginInfoActivity.b(this.a);
+    paramDevlockInfo = this.a.getString(2131562568);
+    paramWUserSigInfo = paramDevlockInfo;
+    if (paramErrMsg != null)
     {
-      for (;;)
-      {
-        localEntityManager.a();
+      paramWUserSigInfo = paramDevlockInfo;
+      if (!TextUtils.isEmpty(paramErrMsg.getMessage())) {
+        paramWUserSigInfo = paramErrMsg.getMessage();
       }
     }
-    finally
-    {
-      localEntityManager.a();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a.e(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.b);
+    QQToast.a(this.a.getApplicationContext(), paramWUserSigInfo, 0).b(this.a.d());
   }
 }
 

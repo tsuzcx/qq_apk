@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.component.network.downloader.DownloadResult;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class pjg
-  implements Parcelable.Creator
+class pjg
+  implements View.OnClickListener
 {
-  public DownloadResult a(Parcel paramParcel)
-  {
-    return new DownloadResult(paramParcel);
-  }
+  pjg(pja parampja, String paramString1, String paramString2) {}
   
-  public DownloadResult[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new DownloadResult[paramInt];
+    pja.a(2, this.jdField_a_of_type_JavaLangString);
+    ors.a(pja.a(this.jdField_a_of_type_Pja), this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pjg
  * JD-Core Version:    0.7.0.1
  */

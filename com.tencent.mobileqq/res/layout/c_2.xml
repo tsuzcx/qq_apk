@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/he4" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="end" android:id="@id/ld_" android:visibility="gone" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="10.0dip">
+        <ImageView android:layout_gravity="center" android:id="@id/close" android:background="@drawable/hzi" android:layout_width="18.0dip" android:layout_height="18.0dip" />
+    </FrameLayout>
+    <RelativeLayout android:id="@id/bgg" android:layout_width="fill_parent" android:layout_height="40.0dip">
+        <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:id="@id/f4" android:background="#00000000" android:visibility="gone" android:layout_width="33.0dip" android:layout_height="33.0dip" android:layout_marginLeft="16.0dip" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/yw" android:background="@drawable/hz6" android:visibility="gone" android:layout_width="@dimen/n0" android:layout_height="@dimen/n0" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/aym" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/ef" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="94.0dip" android:maxLines="1" android:layout_toRightOf="@id/f4" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/ayj" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:id="@id/mas" android:background="@drawable/a1x" android:visibility="gone" android:layout_width="68.0dip" android:layout_height="23.0dip" android:layout_marginRight="16.0dip" android:maxLines="1" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

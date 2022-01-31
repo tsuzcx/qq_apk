@@ -1,18 +1,72 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.widget.ImageView;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.token.core.bean.h;
+import com.tencent.token.dr;
+import com.tencent.token.global.f;
+import com.tencent.token.utils.UserTask;
 
-final class kc
-  implements Runnable
+class kc
+  extends UserTask
 {
-  kc(FaceStartVryCameraActivity paramFaceStartVryCameraActivity) {}
+  private h c = null;
   
-  public final void run()
+  kc(kb paramkb, kf paramkf) {}
+  
+  private void b(f paramf)
   {
-    FaceStartVryCameraActivity.access$2002(this.a, FaceStartVryCameraActivity.access$2100(this.a).getHeight());
-    FaceStartVryCameraActivity.access$2202(this.a, FaceStartVryCameraActivity.access$2300(this.a).getHeight() - FaceStartVryCameraActivity.access$2400(this.a).getBottom() - (FaceStartVryCameraActivity.access$2300(this.a).getHeight() - FaceStartVryCameraActivity.access$2500(this.a).getBottom()));
-    FaceStartVryCameraActivity.access$2602(this.a, FaceStartVryCameraActivity.access$2700(this.a).getHeight());
+    if (this.c == null) {
+      return;
+    }
+    f.a(kb.b(this.b).getResources(), paramf);
+    kb.b(this.b).showTipDialog(2131231390, paramf.c);
+  }
+  
+  public f a(h... paramVarArgs)
+  {
+    if ((this.a == null) || (this.a.a() == null)) {
+      return null;
+    }
+    this.c = this.a.a();
+    paramVarArgs = dr.a();
+    h localh = this.c;
+    if (!this.c.c) {}
+    for (boolean bool = true;; bool = false) {
+      return paramVarArgs.a(localh, bool);
+    }
+  }
+  
+  public void a()
+  {
+    if (this.c == null) {}
+    do
+    {
+      return;
+      this.c.e = false;
+      localObject = new f();
+      ((f)localObject).b(10024);
+      b((f)localObject);
+    } while (kb.a(this.b) == null);
+    Object localObject = kb.a(this.b).obtainMessage(3017);
+    kb.a(this.b).sendMessage((Message)localObject);
+  }
+  
+  public void a(f paramf)
+  {
+    if ((this.c == null) || (paramf == null)) {
+      return;
+    }
+    this.c.e = false;
+    if (paramf.b()) {}
+    while ((this.a != null) && (this.a.c() != null) && (this.c.b.equals(this.a.c().getText())))
+    {
+      this.b.a(this.a, true);
+      return;
+      b(paramf);
+    }
+    this.b.notifyDataSetChanged();
   }
 }
 

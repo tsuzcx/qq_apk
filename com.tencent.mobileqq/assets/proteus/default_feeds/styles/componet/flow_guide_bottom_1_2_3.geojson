@@ -1,0 +1,98 @@
+{
+    "view_type": "UIView",
+    "view_id": "id_fg_button",
+    "event_type": "cmd_url_click_card_report",
+    "layout_type": "layout_relative",
+    "height": {
+        "type": "absolutely",
+        "value": "44"
+    },
+    "width": {
+        "type": "match_parent"
+    },
+    "attributes": {
+        "setAttatchInfo:":"$fg_url"
+    },
+    "data_attributes": {
+        "setLocalInfo:": {
+            "click_area":"3"
+        }
+    },
+    "subviews": [
+        {
+            "view_type": "container",
+            "layout_type": "layout_linear",
+            "direction":"horizontal",
+            "height": {
+                "type": "match_parent"
+            },
+            "width": {
+                "type": "wrap_content"
+            },
+            "subviews": [
+                {
+                    "view_type": "ReadInjoyAsynImageView",
+                    "view_id": "id_fg_icon_view",
+                    "align_parent_center_vertical": "YES",
+                    "layout_type": "layout_relative",
+                    "margin_left": "8",
+                    "height": {
+                        "type": "absolutely",
+                        "value": "16"
+                    },
+                    "width": {
+                        "type": "absolutely",
+                        "value": "16"
+                    },
+                    "attributes": {
+                        "setImageWithURLString:lineup:":["$module_bottom_image_url","1"]
+                    }
+                },
+                {
+                    "view_type": "UILabel",
+                    "view_id": "id_fg_title",
+                    "margin_left": "4",
+                    "align_parent_center_vertical": "YES",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "attributes": {
+                        "setTextColorString:": "#262626",
+                        "setFontSizeString:":"14",
+                        "setText:":"$module_bottom_name"
+                    }
+                }
+            ]
+        },
+        {
+            "view_type": "UIButton",
+            "view_id": "id_mid_close_btn",
+            "default_visible":"YES",
+            "event_type": "cmd_dislike_click",
+            "align_parent_right":"YES",
+            "align_parent_center_vertical": "YES",
+            "margin_right": "12",
+            "height": {
+                "type": "absolutely",
+                "value": "18"
+            },
+            "width": {
+                "type": "absolutely",
+                "value": "18"
+            },
+            "attributes": {
+                "setImages:forStates:": [
+                    [
+                        "feeds_dislike"
+                    ],
+                    [
+                        "0"
+                    ]
+                ]
+            }
+        }
+    ]
+}

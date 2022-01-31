@@ -3,12 +3,16 @@ package com.tencent.token.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 
-final class aap
+class aap
   implements DialogInterface.OnClickListener
 {
-  aap(SmsContentTipActivity paramSmsContentTipActivity) {}
+  aap(aao paramaao) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.mActivityType = 3;
+    StartPwdGestureVerifyActivity.access$300(this.a.a);
+  }
 }
 
 

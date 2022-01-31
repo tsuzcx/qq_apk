@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.dating.DatingFilters;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
 public final class abwq
-  implements Parcelable.Creator
+  extends RecyclablePool.Recyclable
 {
-  public DatingFilters a(Parcel paramParcel)
-  {
-    return new DatingFilters(paramParcel, null);
-  }
-  
-  public DatingFilters[] a(int paramInt)
-  {
-    return new DatingFilters[paramInt];
-  }
+  public int a;
+  public long a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwq
  * JD-Core Version:    0.7.0.1
  */

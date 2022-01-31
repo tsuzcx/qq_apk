@@ -1,0 +1,19 @@
+{
+    "view_type": "ReadInJoyExposeReplyCommentView",
+    "view_id": "id_expose_comments_view",
+    "margin_left": "50",
+    "margin_top": "8",
+    "attributes": {
+        "setCornerRadiusString:":"3.0",
+        "setBackgroundColorString:":"#F7F7F7",
+        "setCommentModel:": "$comment_model"
+    },
+    "height": {
+        "type": "wrap_content"
+    },
+    "width": {
+        "type": "relative",
+        "value": "307"
+    }
+}
+

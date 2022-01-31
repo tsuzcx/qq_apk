@@ -1,43 +1,40 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.vashealth.HealthPathTracePlugin;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-public class akjx
-  extends Handler
+class akjx
+  extends Animation
 {
-  public akjx(PathTraceManager paramPathTraceManager, Looper paramLooper)
+  akjx(akjt paramakjt, View paramView, int paramInt) {}
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    super(paramLooper);
+    paramFloat = (float)(paramFloat * (0.5D + Math.sqrt(paramFloat) / 2.0D));
+    this.jdField_a_of_type_AndroidViewView.getLayoutParams().width = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
+    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    if (paramFloat <= 0.4F) {
+      this.jdField_a_of_type_AndroidViewView.setAlpha((0.4F - Math.min(paramFloat, 0.4F)) / 0.4F);
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramFloat > 0.99F) {
+          break;
+        }
+      } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      return;
+    } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean willChangeBounds()
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramMessage = (JSONObject)paramMessage.obj;
-        String str = paramMessage.getString("callback");
-        if (this.a.a != null)
-        {
-          HealthPathTracePlugin localHealthPathTracePlugin = (HealthPathTracePlugin)this.a.a.get();
-          if (localHealthPathTracePlugin != null)
-          {
-            localHealthPathTracePlugin.callJs(str, new String[] { paramMessage.toString() });
-            return;
-          }
-        }
-      }
-      catch (Exception paramMessage) {}
-    }
+    return true;
   }
 }
 

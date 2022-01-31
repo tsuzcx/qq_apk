@@ -1,50 +1,17 @@
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.tribe.fragment.TribeEffectsCameraCaptureFragment;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 public class aisp
-  implements ProviderContainerView.ContainerViewListener
+  extends aira
 {
-  public aisp(TribeEffectsCameraCaptureFragment paramTribeEffectsCameraCaptureFragment) {}
-  
-  public void a(View paramView, int paramInt)
+  protected aisp(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    int j = 1;
-    int k = 1;
-    int i = 1;
-    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 102: 
-      if ("barindex".equals(this.a.jdField_a_of_type_JavaLangString)) {}
-      for (paramInt = i;; paramInt = 2)
-      {
-        ReportController.b(null, "dc00899", "Grp_tribe", "", "video_shoot", "Clk_changeface", paramInt, 0, "", "", "", "");
-        return;
-      }
-    case 103: 
-      if ("barindex".equals(this.a.jdField_a_of_type_JavaLangString)) {}
-      for (paramInt = j;; paramInt = 2)
-      {
-        ReportController.b(null, "dc00899", "Grp_tribe", "", "video_shoot", "Clk_beauty ", paramInt, 0, "", "", "", "");
-        return;
-      }
-    }
-    if ("barindex".equals(this.a.jdField_a_of_type_JavaLangString)) {}
-    for (paramInt = k;; paramInt = 2)
-    {
-      ReportController.b(null, "dc00899", "Grp_tribe", "", "video_shoot", "Clk_filter ", paramInt, 0, "", "", "", "");
-      return;
-    }
+    super(paramNewPhotoListActivity);
   }
   
-  public void y_()
+  public void initData(Intent paramIntent)
   {
-    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+    super.initData(paramIntent);
   }
 }
 

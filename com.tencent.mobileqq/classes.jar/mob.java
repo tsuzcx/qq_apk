@@ -1,16 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-
-public final class mob
-  implements Runnable
+public abstract interface mob
 {
-  public void run()
-  {
-    ReadInJoyLogicEngineEventDispatcher.a().c();
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mob
  * JD-Core Version:    0.7.0.1
  */

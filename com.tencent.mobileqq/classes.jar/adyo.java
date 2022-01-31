@@ -1,37 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.leba.LebaFeedsAdapter;
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 
 public class adyo
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public adyo(LebaFeedsAdapter paramLebaFeedsAdapter) {}
+  public adyo(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("Leba2018.LebaFeedsAdapter", 2, "Broadcast onReceive " + paramContext);
-    }
-    if ("mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) {
-      LebaFeedsAdapter.b(this.a, false);
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
-          break;
-        }
-      } while (LebaFeedsAdapter.a(this.a) == null);
-      LebaFeedsAdapter.a(this.a).d(true);
-      return;
-    } while ((!"tencent.av.v2q.StopVideoChat".equals(paramContext)) || (LebaFeedsAdapter.a(this.a) == null));
-    LebaFeedsAdapter.a(this.a).d(false);
+    SoundAndVibrateActivity.a(this.a, "CHANNEL_ID_SHOW_BADGE");
   }
 }
 

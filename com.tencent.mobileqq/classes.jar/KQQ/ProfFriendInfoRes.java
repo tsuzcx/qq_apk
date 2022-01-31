@@ -10,19 +10,19 @@ import java.util.Map;
 public final class ProfFriendInfoRes
   extends JceStruct
 {
-  static Map cache_mFieldsInfo;
-  static ArrayList cache_vUnGetFields;
+  static Map<Short, byte[]> cache_mFieldsInfo;
+  static ArrayList<Short> cache_vUnGetFields;
   public byte cDataCode;
   public byte cResult;
-  public Map mFieldsInfo;
+  public Map<Short, byte[]> mFieldsInfo;
   public String sSigInfo = "";
   public long uFriendUin;
-  public ArrayList vUnGetFields;
+  public ArrayList<Short> vUnGetFields;
   public short wLevel;
   
   public ProfFriendInfoRes() {}
   
-  public ProfFriendInfoRes(long paramLong, byte paramByte1, byte paramByte2, Map paramMap, ArrayList paramArrayList, String paramString, short paramShort)
+  public ProfFriendInfoRes(long paramLong, byte paramByte1, byte paramByte2, Map<Short, byte[]> paramMap, ArrayList<Short> paramArrayList, String paramString, short paramShort)
   {
     this.uFriendUin = paramLong;
     this.cResult = paramByte1;
@@ -69,7 +69,7 @@ public final class ProfFriendInfoRes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     KQQ.ProfFriendInfoRes
  * JD-Core Version:    0.7.0.1
  */

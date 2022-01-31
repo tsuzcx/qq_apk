@@ -6,15 +6,14 @@ import com.tencent.component.media.ImageManagerEnv;
 import com.tencent.sharpP.SharpPUtils;
 import java.util.HashMap;
 import java.util.Map;
-import phh;
 
 public class ImageTaskBuilder
 {
-  private static Context a = ;
-  public static Map stampMap = new HashMap();
-  public static Map stampMap2 = new HashMap();
+  private static Context mContext = ;
+  public static Map<String, Long> stampMap = new HashMap();
+  public static Map<String, Long> stampMap2 = new HashMap();
   
-  public static phh buildImageTask(ImageKey paramImageKey)
+  public static ImageTask buildImageTask(ImageKey paramImageKey)
   {
     RecycleResourceTask localRecycleResourceTask = null;
     if (paramImageKey.flag == 3) {
@@ -27,9 +26,9 @@ public class ImageTaskBuilder
         return RecycleResourceTask.obtain(UICallbackTask.obtain(FetchCachedImageTask.obtain(MessageQueueDecodeMultiplexTask.obtain(CancelableDecodeImageTask.obtain(paramImageKey)))));
       }
     } while (paramImageKey.flag != 2);
-    if ((paramImageKey.options != null) && (paramImageKey.options.isGifPlayWhileDownloading) && (!SharpPUtils.a(paramImageKey.url)))
+    if ((paramImageKey.options != null) && (paramImageKey.options.isGifPlayWhileDownloading) && (!SharpPUtils.isSharpP(paramImageKey.url)))
     {
-      Log.d("kaedelin", "isSharpp:" + SharpPUtils.a(paramImageKey.url) + " isGifPlayWhileDownloading:" + paramImageKey.options.isGifPlayWhileDownloading + "  hashCodeEx:" + paramImageKey.hashCodeEx() + " url:" + paramImageKey.url);
+      Log.d("kaedelin", "isSharpp:" + SharpPUtils.isSharpP(paramImageKey.url) + " isGifPlayWhileDownloading:" + paramImageKey.options.isGifPlayWhileDownloading + "  hashCodeEx:" + paramImageKey.hashCodeEx() + " url:" + paramImageKey.url);
       return RecycleResourceTask.obtain(UICallbackTask.obtain(FetchCachedImageTask.obtain(MessageQueueDecodeMultiplexTask.obtain(CancelStreamDecodeGifTask.obtain(MessageQueueDownloadMultiplexTask.obtain(DownloadImageTask.obtain(paramImageKey)))))));
     }
     return RecycleResourceTask.obtain(UICallbackTask.obtain(FetchCachedImageTask.obtain(MessageQueueDecodeMultiplexTask.obtain(CancelableDecodeImageTask.obtain(MessageQueueDownloadMultiplexTask.obtain(DownloadImageTask.obtain(paramImageKey)))))));
@@ -37,7 +36,7 @@ public class ImageTaskBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.ImageTaskBuilder
  * JD-Core Version:    0.7.0.1
  */

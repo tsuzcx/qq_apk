@@ -1,20 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.phone.ContactListView;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
+import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
+import com.tencent.mobileqq.data.PhoneContact;
 
 public class epg
-  implements DialogInterface.OnKeyListener
+  extends TroopMemberListActivity.ViewHolder
 {
-  public epg(ContactListView paramContactListView) {}
+  public CheckBox a;
+  public PhoneContact a;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4) {
-      this.a.f();
-    }
-    return false;
-  }
+  private epg(ContactsInnerFrame paramContactsInnerFrame) {}
 }
 
 

@@ -1,39 +1,18 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.aditem.GdtAd;
 
-class aams
-  extends GestureDetector.SimpleOnGestureListener
+public final class aams
+  implements Parcelable.Creator<GdtAd>
 {
-  aams(aamr paramaamr) {}
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public GdtAd a(Parcel paramParcel)
   {
-    try
-    {
-      int i = (int)paramMotionEvent1.getX();
-      int j = (int)paramMotionEvent2.getX();
-      if ((int)paramMotionEvent1.getY() < ScreenUtil.b - ScreenUtil.a(100.0F))
-      {
-        if ((ARGreetingCardListManager.a(this.a.a.a)) && (i - j > 120) && (Math.abs(paramFloat1) > 200.0F))
-        {
-          ARGreetingCardListManager.a(this.a.a.a);
-          return true;
-        }
-        if ((ARGreetingCardListManager.a(this.a.a.a)) && (j - i > 120) && (Math.abs(paramFloat1) > 200.0F))
-        {
-          ARGreetingCardListManager.b(this.a.a.a);
-          return true;
-        }
-      }
-    }
-    catch (Exception paramMotionEvent1)
-    {
-      QLog.e("ARGreetingCardListManager", 1, "GestureDetector onFling fail.", paramMotionEvent1);
-    }
-    return false;
+    return new GdtAd(paramParcel);
+  }
+  
+  public GdtAd[] a(int paramInt)
+  {
+    return new GdtAd[paramInt];
   }
 }
 

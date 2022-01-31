@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.widget.AbsListView;
 
-class vmt
-  implements DialogInterface.OnClickListener
+public class vmt
+  implements bhtv
 {
-  vmt(vmr paramvmr) {}
+  public vmt(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a.b = paramInt1;
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmt
  * JD-Core Version:    0.7.0.1
  */

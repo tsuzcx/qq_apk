@@ -1,22 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.model.NetSearchTemplateSubItem;
-import com.tencent.mobileqq.search.presenter.SearchTemplatePresenter;
-import com.tencent.mobileqq.search.view.NetSearchTemplateSubItemView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.widget.SingleLineTextView;
 
-public class ahuq
-  implements View.OnClickListener
+class ahuq
+  extends akit
 {
-  public ahuq(SearchTemplatePresenter paramSearchTemplatePresenter, NetSearchTemplateSubItem paramNetSearchTemplateSubItem, NetSearchTemplateSubItemView paramNetSearchTemplateSubItemView) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateSubItem.a(this.jdField_a_of_type_ComTencentMobileqqSearchViewNetSearchTemplateSubItemView.a());
-  }
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public MayKnowRecommend a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahuq
  * JD-Core Version:    0.7.0.1
  */

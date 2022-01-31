@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class im_msg$RoutingHead
-  extends MessageMicro
+  extends MessageMicro<RoutingHead>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "c2c", "group" }, new Object[] { null, null }, RoutingHead.class);
   public im_msg.C2C c2c = new im_msg.C2C();

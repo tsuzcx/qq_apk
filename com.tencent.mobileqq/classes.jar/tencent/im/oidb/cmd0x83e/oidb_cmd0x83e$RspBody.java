@@ -9,11 +9,12 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_cmd0x83e$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_comment_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_default_comments = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_result_desc = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_rowkey = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_sub_comment_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field uint32_is_like = PBField.initUInt32(0);
@@ -28,12 +29,13 @@ public final class oidb_cmd0x83e$RspBody
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 58, 66, 72 }, new String[] { "uint64_uin", "uint32_operation", "uint64_feeds_id", "bytes_comment_id", "bytes_rowkey", "uint32_ugc_status", "bytes_default_comments", "bytes_sub_comment_id", "uint32_is_like" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, localByteStringMicro4, Integer.valueOf(0) }, RspBody.class);
+    ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 58, 66, 72, 82 }, new String[] { "uint64_uin", "uint32_operation", "uint64_feeds_id", "bytes_comment_id", "bytes_rowkey", "uint32_ugc_status", "bytes_default_comments", "bytes_sub_comment_id", "uint32_is_like", "bytes_result_desc" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, localByteStringMicro4, Integer.valueOf(0), localByteStringMicro5 }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.RspBody
  * JD-Core Version:    0.7.0.1
  */

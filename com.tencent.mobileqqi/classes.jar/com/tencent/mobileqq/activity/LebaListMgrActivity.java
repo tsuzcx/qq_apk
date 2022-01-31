@@ -13,10 +13,10 @@ import com.tencent.mobileqq.config.LebaConfig;
 import com.tencent.mobileqq.observer.GameCenterObserver;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
-import cym;
-import cyo;
-import cyq;
-import cys;
+import csq;
+import css;
+import csu;
+import csw;
 
 public class LebaListMgrActivity
   extends IphoneTitleBarActivity
@@ -24,23 +24,23 @@ public class LebaListMgrActivity
   private LebaListMgrAdapter jdField_a_of_type_ComTencentMobileqqAdapterLebaListMgrAdapter;
   protected RedTouchObserver a;
   public DownloadIconsListener a;
-  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new cyo(this);
+  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new css(this);
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   
   public LebaListMgrActivity()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppRedTouchObserver = new cyq(this);
-    this.jdField_a_of_type_ComTencentMobileqqConfigDownloadIconsListener = new cys(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppRedTouchObserver = new csu(this);
+    this.jdField_a_of_type_ComTencentMobileqqConfigDownloadIconsListener = new csw(this);
   }
   
   private void d()
   {
     if (this.jdField_a_of_type_ComTencentWidgetXListView == null)
     {
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)View.inflate(this, 2130903585, null));
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)View.inflate(this, 2130903587, null));
       this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
       this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
-      View localView = View.inflate(this, 2130903584, null);
+      View localView = View.inflate(this, 2130903586, null);
       this.jdField_a_of_type_ComTencentWidgetXListView.a(localView);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListMgrAdapter == null) {
@@ -54,7 +54,7 @@ public class LebaListMgrActivity
     }
     this.b.o();
     if (!LebaShowListManager.a().a) {
-      ThreadManager.b(new cym(this));
+      ThreadManager.b(new csq(this));
     }
   }
   

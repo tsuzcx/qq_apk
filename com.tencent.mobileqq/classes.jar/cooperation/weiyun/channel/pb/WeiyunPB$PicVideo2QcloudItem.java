@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class WeiyunPB$PicVideo2QcloudItem
-  extends MessageMicro
+  extends MessageMicro<PicVideo2QcloudItem>
 {
   public static final int BOOL_AUTO_CREATE_USER_FIELD_NUMBER = 8;
   public static final int IMAGE_TYPE_FIELD_NUMBER = 13;
@@ -42,7 +42,7 @@ public final class WeiyunPB$PicVideo2QcloudItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.PicVideo2QcloudItem
  * JD-Core Version:    0.7.0.1
  */

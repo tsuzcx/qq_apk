@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.vas;
 
+import alof;
 import android.content.Context;
+import bdre;
+import bdrg;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -15,13 +17,15 @@ import mqq.manager.Manager;
 public class AvatarPendantManager
   implements Manager
 {
+  public static int a;
   public static volatile boolean b;
   public static volatile boolean c;
   public long a;
   protected AppInterface a;
   protected AvatarPendantManager.PendantInfoLruCache a;
-  List a;
+  List<bdrg> a;
   public boolean a;
+  List<bdre> b;
   
   public AvatarPendantManager(AppInterface paramAppInterface)
   {
@@ -62,7 +66,7 @@ public class AvatarPendantManager
     return localFile;
   }
   
-  public List a()
+  public List<bdrg> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
@@ -79,6 +83,11 @@ public class AvatarPendantManager
     }
   }
   
+  public void a(List<bdre> paramList)
+  {
+    this.b = paramList;
+  }
+  
   public boolean a(long paramLong)
   {
     return this.jdField_a_of_type_Long != paramLong;
@@ -86,11 +95,16 @@ public class AvatarPendantManager
   
   public File b()
   {
-    File localFile = new File(AppConstants.bv);
+    File localFile = new File(alof.bQ);
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
     return localFile;
+  }
+  
+  public List<bdre> b()
+  {
+    return this.b;
   }
   
   public void b()
@@ -128,7 +142,7 @@ public class AvatarPendantManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.AvatarPendantManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.InfoStickerDrawable;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.InfoStickerDrawable.AnimationListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aobp
-  implements Animator.AnimatorListener
+class aobp
+  implements View.OnClickListener
 {
-  public aobp(InfoStickerDrawable paramInfoStickerDrawable) {}
+  aobp(aobo paramaobo, ajgb paramajgb) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (InfoStickerDrawable.a(this.a) != null) {
-      InfoStickerDrawable.a(this.a).a();
-    }
+    this.jdField_a_of_type_Aobo.a(this.jdField_a_of_type_Ajgb);
+    this.jdField_a_of_type_Aobo.a();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aobp
  * JD-Core Version:    0.7.0.1
  */

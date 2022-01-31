@@ -11,20 +11,12 @@ class ResultStream<R>
   {
     AssertUtils.checkNotNull(paramR);
     this.mResult = paramR;
-    attachDataSupplier(new BaseDataPusher()
-    {
-      public void apply(Observer<R> paramAnonymousObserver)
-      {
-        super.apply(paramAnonymousObserver);
-        paramAnonymousObserver.onNext(ResultStream.this.mResult);
-        paramAnonymousObserver.onComplete();
-      }
-    });
+    attachDataSupplier(new ResultStream.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tribe.async.reactive.ResultStream
  * JD-Core Version:    0.7.0.1
  */

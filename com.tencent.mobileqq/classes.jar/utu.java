@@ -1,69 +1,44 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder.Holder;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
 public class utu
-  implements ActionSheet.OnButtonClickListener
+  implements apuc
 {
-  public utu(ApolloItemBuilder paramApolloItemBuilder, ApolloItemBuilder.Holder paramHolder, ApolloActionData paramApolloActionData, ActionSheet paramActionSheet) {}
+  public utu(StoryInputBarView paramStoryInputBarView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(apuf paramapuf)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      return;
-      if (1 == this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder$Holder.f)
-      {
-        paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        paramView.putExtra("url", ApolloConstant.I);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      }
-      else if (2 == this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder$Holder.f)
-      {
-        paramView = new Intent();
-        paramView.putExtra("extra_key_url_append", "&showDialog=1&type=level");
-        ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, paramView, "aio", ApolloConstant.X, null);
-      }
-      else
-      {
-        if (3 == this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder$Holder.f)
-        {
-          paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.url)) {
-            paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.url);
-          }
-          for (;;)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-            break;
-            paramView.putExtra("url", ApolloConstant.J + "&id=" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId);
-          }
-        }
-        if (4 != this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder$Holder.f) {
-          ChatActivityFacade.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder$Holder.a.uniseq);
-        }
-      }
+    if (((paramapuf instanceof apza)) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)) {
+      ((apza)paramapuf).a(QQStoryContext.a(), this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, null);
     }
   }
+  
+  public void a(apuf paramapuf1, apuf paramapuf2, Drawable paramDrawable) {}
+  
+  public boolean a(apuf paramapuf)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
+      banh.a(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+    }
+  }
+  
+  public void b(apuf paramapuf) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     utu
  * JD-Core Version:    0.7.0.1
  */

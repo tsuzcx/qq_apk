@@ -1,43 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ajgk
-  extends Handler
+class ajgk
+  implements View.OnClickListener
 {
-  private WeakReference a;
+  ajgk(ajgb paramajgb) {}
   
-  public ajgk(BeginnerGuideFragment paramBeginnerGuideFragment, Looper paramLooper)
+  public void onClick(View paramView)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramBeginnerGuideFragment);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    BeginnerGuideFragment localBeginnerGuideFragment = (BeginnerGuideFragment)this.a.get();
-    if (localBeginnerGuideFragment == null) {}
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 1110: 
-        if (QLog.isColorLevel()) {
-          QLog.d("BeginnerGuideFragment", 2, "parse config from network success");
-        }
-        break;
-      }
-    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof String)));
-    BeginnerGuideFragment.a(localBeginnerGuideFragment, (String)paramMessage.obj, paramMessage.arg1);
-    return;
-    BeginnerGuideFragment.a(localBeginnerGuideFragment, paramMessage.what);
+    ajgb.a(this.a).app.a().a("0X800474F", 1);
+    bisq.a(ajgb.a(this.a), 4, null);
+    azqs.a(ajgb.a(this.a).app, "dc00898", "", "", "0X8009EE5", "0X8009EE5", 3, 0, "", "", "", "");
   }
 }
 

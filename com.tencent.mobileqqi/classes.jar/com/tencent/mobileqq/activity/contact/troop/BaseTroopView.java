@@ -13,7 +13,7 @@ import com.tencent.mobileqq.activity.Contacts;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.util.WeakReferenceHandler;
-import ekq;
+import efn;
 
 public class BaseTroopView
   extends FrameLayout
@@ -189,7 +189,7 @@ public class BaseTroopView
     int i = this.jdField_b_of_type_AndroidViewView.getVisibility();
     this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(true);
     this.jdField_a_of_type_AndroidAppDialog.show();
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new ekq(this, i));
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new efn(this, i));
   }
 }
 

@@ -1,19 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.MotionEvent;
 
-public class mpa
-  implements Runnable
+class mpa
+  implements mpd
 {
-  public mpa(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
+  mpa(mov parammov) {}
   
-  public void run()
+  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    QQToast.a(FastWebVideoFeedsPlayManager.a(this.a), 1, "无网络连接,请检测网络配置!", 0).a();
+    if (paramBoolean)
+    {
+      if (!this.a.c()) {
+        break label23;
+      }
+      this.a.f();
+    }
+    for (;;)
+    {
+      return false;
+      label23:
+      if (this.a.b()) {
+        this.a.e();
+      } else if (mov.a(this.a) != null) {
+        mov.a(this.a).a(paramMotionEvent);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mpa
  * JD-Core Version:    0.7.0.1
  */

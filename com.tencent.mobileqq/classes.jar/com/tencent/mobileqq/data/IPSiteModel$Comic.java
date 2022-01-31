@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import abtw;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import apeb;
 import java.util.List;
 
 public class IPSiteModel$Comic
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abtw();
-  public List comicRiches;
+  public static final Parcelable.Creator<Comic> CREATOR = new apeb();
+  public List<IPSiteModel.ComicRich> comicRiches;
   public int comicType;
   public String cover;
   public String desc;
@@ -22,7 +22,7 @@ public class IPSiteModel$Comic
   
   public IPSiteModel$Comic() {}
   
-  public IPSiteModel$Comic(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, List paramList)
+  public IPSiteModel$Comic(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, List<IPSiteModel.ComicRich> paramList)
   {
     this.comicType = paramInt;
     this.cover = paramString1;
@@ -60,7 +60,7 @@ public class IPSiteModel$Comic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.IPSiteModel.Comic
  * JD-Core Version:    0.7.0.1
  */

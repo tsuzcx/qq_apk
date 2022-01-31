@@ -1,18 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionBase;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
-public final class ebi
-  implements Parcelable.Creator
+public class ebi
+  implements DialogInterface.OnClickListener
 {
-  public ForwardUtils.SectionBase a(Parcel paramParcel)
-  {
-    return new ForwardUtils.SectionBase(paramParcel);
-  }
+  public ebi(TroopFileItemBuilder paramTroopFileItemBuilder, long paramLong, UUID paramUUID, Activity paramActivity) {}
   
-  public ForwardUtils.SectionBase[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new ForwardUtils.SectionBase[paramInt];
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      TroopFileTransferManager.a(TroopFileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder), this.jdField_a_of_type_Long).a(this.jdField_a_of_type_JavaUtilUUID);
+      return;
+    }
+    new TroopFileItemOperation(this.jdField_a_of_type_Long, TroopFileItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder), this.jdField_a_of_type_AndroidAppActivity).b(this.jdField_a_of_type_JavaUtilUUID);
   }
 }
 

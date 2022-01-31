@@ -8,6 +8,8 @@ public class ThemeConstants
   public static final String BUNDLE_KEY_MESSAGE = "message";
   public static final String BUNDLE_KEY_PAGE_AIO = "pageAIO";
   public static final String BUNDLE_KEY_PAGE_DRAWER = "pageDrawer";
+  public static final String BUNDLE_KEY_PAGE_DYNAMIC = "pageDynamic";
+  public static final String BUNDLE_KEY_PAGE_FRIEND = "pageFriend";
   public static final String BUNDLE_KEY_PAGE_MESSAGE = "pageMessage";
   public static final String BUNDLE_KEY_RESULT_INT = "result_int";
   public static final String BUNDLE_KEY_SERVER_AFTER_DOWNLOAD = "server_after_download";
@@ -33,7 +35,7 @@ public class ThemeConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ThemeConstants
  * JD-Core Version:    0.7.0.1
  */

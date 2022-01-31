@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.aio.item;
 
+import agcz;
 import java.util.ArrayList;
 import java.util.HashMap;
-import vij;
 
-class StructingMsgItemBuilder$CacheMap
-  extends HashMap
+public class StructingMsgItemBuilder$CacheMap
+  extends HashMap<String, ArrayList<agcz>>
 {
   private static final long serialVersionUID = -7873031099646660622L;
   
-  public void add(vij paramvij)
+  public void add(agcz paramagcz)
   {
-    if (paramvij == null) {
+    if (paramagcz == null) {
       return;
     }
-    get(paramvij.a).add(paramvij);
+    get(paramagcz.a).add(paramagcz);
   }
   
-  public ArrayList get(String paramString)
+  public ArrayList<agcz> get(String paramString)
   {
     ArrayList localArrayList2 = (ArrayList)super.get(paramString);
     ArrayList localArrayList1 = localArrayList2;
@@ -29,22 +29,22 @@ class StructingMsgItemBuilder$CacheMap
     return localArrayList1;
   }
   
-  public void remove(vij paramvij)
+  public void remove(agcz paramagcz)
   {
-    if ((paramvij == null) || (paramvij.a == null)) {}
+    if ((paramagcz == null) || (paramagcz.a == null)) {}
     ArrayList localArrayList;
     do
     {
       return;
-      localArrayList = get(paramvij.a);
-      localArrayList.remove(paramvij);
+      localArrayList = get(paramagcz.a);
+      localArrayList.remove(paramagcz);
     } while (!localArrayList.isEmpty());
-    remove(paramvij.a);
+    remove(paramagcz.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.CacheMap
  * JD-Core Version:    0.7.0.1
  */

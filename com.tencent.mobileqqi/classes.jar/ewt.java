@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareActivity;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 
-public class ewt
-  implements DialogInterface.OnClickListener
+class ewt
+  implements View.OnLongClickListener
 {
-  public ewt(QvipSpecialCareActivity paramQvipSpecialCareActivity) {}
+  ewt(ews paramews) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    VipUtils.b(this.a, 3, "mvip.gongneng.mobileqq.tiexintixing.numberandroid");
+    return false;
   }
 }
 

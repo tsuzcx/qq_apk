@@ -2,14 +2,14 @@ package com.tencent.mobileqq.filemanager.fileviewer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import aqwl;
+import biva;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.QfavBuilder;
 
 public class FilePicQFavActivity
   extends IphoneTitleBarActivity
@@ -25,13 +25,13 @@ public class FilePicQFavActivity
       if ((localFileManagerEntity != null) && (-1L != localFileManagerEntity.uniseq))
       {
         this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = ((ChatMessage)this.app.a().b(localFileManagerEntity.peerUin, localFileManagerEntity.peerType, localFileManagerEntity.uniseq));
-        new QfavBuilder(3).a(this.app, this, localFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+        new biva(3).a(this.app, this, localFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
       }
     }
     finish();
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_Long = getIntent().getLongExtra("file_pic_favorites", -1L);
@@ -47,14 +47,14 @@ public class FilePicQFavActivity
     }
   }
   
-  protected void requestWindowFeature(Intent paramIntent)
+  public void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FilePicQFavActivity
  * JD-Core Version:    0.7.0.1
  */

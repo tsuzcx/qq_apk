@@ -1,59 +1,218 @@
-import com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.av.AVFunChat.AVFunChatMessage;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.support.SupportFace.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
 
-public final class llf
-  implements Runnable
+public class llf
+  extends lld
 {
-  public llf(RecentBaseData paramRecentBaseData, QQAppInterface paramQQAppInterface, MessageForStructing paramMessageForStructing) {}
+  private boolean a;
+  private int c = -1;
+  private int d = -1;
+  private int e = -1;
+  private int f = -1;
   
-  public void run()
+  public llf(VideoAppInterface paramVideoAppInterface)
   {
-    String str = "";
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.b == 1) {
-      str = "1";
+    super(paramVideoAppInterface);
+  }
+  
+  private boolean a()
+  {
+    return lsa.b();
+  }
+  
+  private boolean b()
+  {
+    return lsa.d();
+  }
+  
+  private boolean c()
+  {
+    return lsa.c();
+  }
+  
+  private boolean d()
+  {
+    return lsa.d();
+  }
+  
+  public int a(String paramString)
+  {
+    if ("normal".equalsIgnoreCase(paramString)) {
+      return this.c;
     }
-    for (;;)
+    if ("interact".equalsIgnoreCase(paramString)) {
+      return this.d;
+    }
+    if ("SUPPORT_SWITCH_FACE".equalsIgnoreCase(paramString)) {
+      return this.e;
+    }
+    if ("creative".equalsIgnoreCase(paramString)) {
+      return this.f;
+    }
+    return -1;
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      bfvz.a().postDelayed(new SupportFace.1(this), 1100L);
+    }
+    lek.c("SupportFace", "onReceiveSupportMessage type:" + paramInt + "|" + paramString);
+    if (paramString != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq, "extLong", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.extLong));
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg == null) {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.parse();
+      if (!paramString.equals("SUPPORT_TRUE")) {
+        break label122;
       }
-      JSONObject localJSONObject;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg != null) {
-        localJSONObject = new JSONObject();
+      if (paramInt != 1) {
+        break label83;
       }
-      try
+      this.c = 1;
+    }
+    label83:
+    label122:
+    do
+    {
+      return false;
+      if (paramInt == 3)
       {
-        localJSONObject.put("folder_status", WeishiReportUtil.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing));
-        localJSONObject.put("algorithm_id", WeishiReportUtil.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing));
-        localJSONObject.put("reddot_style", str);
-        localJSONObject.put("EnterType", "0");
-        WeishiReportUtil.a(WeishiReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.mStrategyIds, "0X8009290", localJSONObject.toString());
-        return;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.b != 2) {
-          continue;
+        this.c = 1;
+        this.d = 1;
+        return false;
+      }
+      if (paramInt == 14)
+      {
+        this.f = 1;
+        lek.c("SupportFace", "onReceiveSupportMessage  support reason 1:");
+        return false;
+      }
+      return true;
+      if (paramString.equals("SUPPORT_FALSE"))
+      {
+        if (paramInt == 1)
+        {
+          this.c = 0;
+          this.d = 0;
         }
-        str = "0";
-      }
-      catch (JSONException localJSONException)
-      {
         for (;;)
         {
-          localJSONException.printStackTrace();
+          return true;
+          if (paramInt == 3)
+          {
+            this.d = 0;
+          }
+          else if (paramInt == 14)
+          {
+            this.f = 0;
+            lek.c("SupportFace", "onReceiveSupportMessage not support reason 1:");
+          }
         }
       }
+      if (paramString.equals("SUPPORT_SWITCH_FACE"))
+      {
+        if (paramInt == 3) {
+          this.e = 1;
+        }
+        return true;
+      }
+      if (paramString.equals("SUPPORT_CREATIVECOP_TRUE"))
+      {
+        if (paramInt == 14)
+        {
+          this.f = 1;
+          lek.c("SupportFace", "onReceiveSupportMessage  support reason 2:");
+        }
+        return true;
+      }
+    } while (!paramString.equals("SUPPORT_CREATIVECOP_FALSE"));
+    if (paramInt == 14)
+    {
+      this.f = 0;
+      lek.c("SupportFace", "onReceiveSupportMessage  not support reason 2:");
     }
+    return true;
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool = false;
+    lek.d("SupportFace", String.format("isSelfSupport| device info:mode=%s,sdkVersion=%d,cpuFreq=%d,cpuCount=%d,memCapacity=%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_b_of_type_Int), Long.valueOf(this.jdField_b_of_type_Long) }));
+    if ("normal".equalsIgnoreCase(paramString)) {
+      bool = a();
+    }
+    do
+    {
+      return bool;
+      if ("interact".equalsIgnoreCase(paramString)) {
+        return b();
+      }
+      if ("SUPPORT_SWITCH_FACE".equalsIgnoreCase(paramString)) {
+        return d();
+      }
+    } while (!"creative".equalsIgnoreCase(paramString));
+    return c();
+  }
+  
+  public void b()
+  {
+    boolean bool2 = llg.b();
+    if (azdw.a(BaseApplicationImpl.getContext()) == 1) {}
+    boolean bool3;
+    boolean bool4;
+    boolean bool5;
+    boolean bool6;
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      VideoController localVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+      bool3 = a();
+      if ((bool3) && (bool2)) {
+        localVideoController.a(1, "SUPPORT_TRUE");
+      }
+      bool4 = d();
+      if ((bool4) && (bool2)) {
+        localVideoController.a(3, "SUPPORT_SWITCH_FACE");
+      }
+      bool5 = b();
+      if ((bool5) && (bool2)) {
+        localVideoController.a(3, "SUPPORT_TRUE");
+      }
+      bool6 = c();
+      if ((bool6) && (bool1))
+      {
+        AVFunChat.AVFunChatMessage localAVFunChatMessage = new AVFunChat.AVFunChatMessage();
+        localAVFunChatMessage.uint64_type.set(14L);
+        localAVFunChatMessage.enum_operator.set(1);
+        localAVFunChatMessage.str_msg.set("SUPPORT_CREATIVECOP_TRUE");
+        localVideoController.a(14, localAVFunChatMessage);
+      }
+      if ((!bool3) || (!bool4) || (!bool5) || (!bool6)) {
+        break;
+      }
+      return;
+    }
+    QLog.w("SupportFace", 1, "sendSupportMsg, normal[" + bool3 + "], switchfaceStandard[" + bool4 + "], interact[" + bool5 + "], creativePendant[" + bool6 + "], isSOExist[" + bool2 + "],isPagSoExist[" + bool1 + "]");
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.c = -1;
+    this.d = -1;
+    this.e = -1;
+    this.f = -1;
+    lek.c("SupportFace", "SupportFace restore:");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     llf
  * JD-Core Version:    0.7.0.1
  */

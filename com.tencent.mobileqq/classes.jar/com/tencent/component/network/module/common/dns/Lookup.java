@@ -3,22 +3,21 @@ package com.tencent.component.network.module.common.dns;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.SocketTimeoutException;
-import pkn;
 
 public class Lookup
 {
-  private String a = "";
+  private String dnsServerAddress = "";
   
   public Lookup(String paramString)
   {
-    this.a = paramString;
+    this.dnsServerAddress = paramString;
   }
   
-  public InetAddress[] a(String paramString, long paramLong)
+  public InetAddress[] run(String paramString, long paramLong)
   {
     InetAddress[] arrayOfInetAddress = null;
     RequestPacket localRequestPacket = new RequestPacket(paramString);
-    Object localObject1 = localRequestPacket.a();
+    Object localObject1 = localRequestPacket.getQueryData();
     if (localObject1 == null) {
       localObject1 = arrayOfInetAddress;
     }
@@ -27,19 +26,19 @@ public class Lookup
       return localObject1;
       try
       {
-        Object localObject2 = new pkn();
-        ((pkn)localObject2).a(paramLong);
-        localObject2 = ((pkn)localObject2).a(this.a, (byte[])localObject1);
+        Object localObject2 = new UdpClient();
+        ((UdpClient)localObject2).setTimeout(paramLong);
+        localObject2 = ((UdpClient)localObject2).sendrecv(this.dnsServerAddress, (byte[])localObject1);
         localObject1 = arrayOfInetAddress;
         if (localObject2 == null) {
           continue;
         }
         localObject2 = new ResponsePacket(new DNSInput((byte[])localObject2), paramString);
         localObject1 = arrayOfInetAddress;
-        if (((ResponsePacket)localObject2).a() != localRequestPacket.a()) {
+        if (((ResponsePacket)localObject2).getReqId() != localRequestPacket.getReqId()) {
           continue;
         }
-        arrayOfInetAddress = ((ResponsePacket)localObject2).a();
+        arrayOfInetAddress = ((ResponsePacket)localObject2).getByAddress();
         localObject1 = arrayOfInetAddress;
         if (arrayOfInetAddress == null) {
           continue;
@@ -48,7 +47,7 @@ public class Lookup
         if (arrayOfInetAddress.length <= 0) {
           continue;
         }
-        HostCacheManager.a().a(paramString, arrayOfInetAddress, ((ResponsePacket)localObject2).a());
+        HostCacheManager.getInstance().addCache(paramString, arrayOfInetAddress, ((ResponsePacket)localObject2).getExpireTime());
         return arrayOfInetAddress;
       }
       catch (WireParseException paramString)
@@ -65,10 +64,15 @@ public class Lookup
       }
     }
   }
+  
+  public void setDnsAddress(String paramString)
+  {
+    this.dnsServerAddress = paramString;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.module.common.dns.Lookup
  * JD-Core Version:    0.7.0.1
  */

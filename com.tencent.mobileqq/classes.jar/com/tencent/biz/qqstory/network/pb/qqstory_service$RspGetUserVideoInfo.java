@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class qqstory_service$RspGetUserVideoInfo
-  extends MessageMicro
+  extends MessageMicro<RspGetUserVideoInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26 }, new String[] { "result", "video_info", "base_info" }, new Object[] { null, null, null }, RspGetUserVideoInfo.class);
   public qqstory_struct.StoryVideoBasicInfo base_info = new qqstory_struct.StoryVideoBasicInfo();
@@ -13,7 +13,7 @@ public final class qqstory_service$RspGetUserVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserVideoInfo
  * JD-Core Version:    0.7.0.1
  */

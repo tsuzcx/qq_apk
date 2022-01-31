@@ -1,21 +1,28 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qrcode.activity.LoginManagerActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.config.AboutConfig;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class bro
-  extends Thread
+  implements View.OnClickListener
 {
-  public bro(LoginManagerActivity paramLoginManagerActivity, String paramString) {}
+  public bro(AboutActivity paramAboutActivity, ResourcePluginInfo paramResourcePluginInfo, FormSimpleItem paramFormSimpleItem) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Drawable localDrawable = this.jdField_a_of_type_ComTencentBizQrcodeActivityLoginManagerActivity.b.b(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizQrcodeActivityLoginManagerActivity.runOnUiThread(new brp(this, localDrawable));
+    AboutConfig.a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName.equals("com.tx.abouthelp")) {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.b, "CliOper", "", "", "Setting_tab", "Clk_about_help", 0, 0, "", "", "", "");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bro
  * JD-Core Version:    0.7.0.1
  */

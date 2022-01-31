@@ -1,49 +1,43 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig.BannerItem;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerManager;
-import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity;
+import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.TranslucentActivity;
+import org.json.JSONObject;
 
 public class anlg
-  implements Runnable
+  implements anld
 {
-  public anlg(QIMCaptureBannerManager paramQIMCaptureBannerManager) {}
-  
-  public void run()
+  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
   {
-    QIMCaptureBannerConfig localQIMCaptureBannerConfig = QIMCaptureBannerConfig.getBannerConfigFromFile(this.a.a(), QIMCaptureBannerManager.jdField_a_of_type_JavaLangString);
-    if ((localQIMCaptureBannerConfig != null) && (localQIMCaptureBannerConfig.mBannerList.size() > 0))
+    if (paramLong != 0L) {}
+    do
     {
-      ??? = localQIMCaptureBannerConfig.mBannerList.entrySet().iterator();
-      while (((Iterator)???).hasNext())
-      {
-        QIMCaptureBannerConfig.BannerItem localBannerItem = (QIMCaptureBannerConfig.BannerItem)((Map.Entry)((Iterator)???).next()).getValue();
-        long l = NetConnInfoCenter.getServerTimeMillis();
-        if (localBannerItem.mEndTime < l) {
-          ((Iterator)???).remove();
-        }
+      return false;
+      paramJSONObject = BaseActivity.sTopActivity;
+    } while (paramJSONObject == null);
+    paramString3 = new Intent(paramJSONObject, TranslucentActivity.class);
+    paramString3.addFlags(268435456);
+    QzonePluginProxyActivity.a(paramString3, "com.qzone.misc.web.QZoneTranslucentActivity");
+    paramString3.setAction("action_js2qzone");
+    paramString3.putExtra("cmd", "Schema");
+    paramString2 = paramString1;
+    if (paramString1.startsWith("arouse/detailbyurl?base64url"))
+    {
+      paramString2 = paramString1;
+      if (!paramString1.contains("from")) {
+        paramString2 = paramString1 + "&from=aio";
       }
     }
-    synchronized (QIMCaptureBannerManager.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig = localQIMCaptureBannerConfig;
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMCaptureBannerManager", 2, "initBannerFromCache= " + localQIMCaptureBannerConfig);
-      }
-      this.a.a().notifyObservers(CaptureConfigUpdateObserver.class, 6, true, null);
-      return;
-    }
+    paramString3.putExtra("schema", "mqzone://" + paramString2);
+    paramString3.putExtra("from", 2);
+    paramJSONObject.startActivity(paramString3);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,36 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.utils.DialogUtil;
+import android.view.View;
 
-class shb
-  implements Runnable
+public class shb
+  extends psx
 {
-  shb(sha paramsha, String paramString1, String paramString2, String paramString3) {}
+  private final String a;
   
-  public void run()
+  public shb(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    shc localshc = new shc(this);
-    this.jdField_a_of_type_Sha.a.a = DialogUtil.a(this.jdField_a_of_type_Sha.a.a(), 230, this.b, this.c, "退出登录", "立即验证", localshc, localshc);
-    this.jdField_a_of_type_Sha.a.a.setCancelable(false);
-    this.jdField_a_of_type_Sha.a.a.show();
+    super(paramInt1, paramInt2, paramInt3);
+    this.a = paramString;
+  }
+  
+  public shb(String paramString, int paramInt)
+  {
+    super(-12084769, paramInt, 860716207);
+    this.a = paramString;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public void onClick(View paramView)
+  {
+    super.onClick(paramView);
+    ors.a(paramView.getContext(), this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     shb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Animatable;
@@ -13,32 +14,33 @@ import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.util.DisplayUtil;
+import bdaq;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.LayoutParams;
-import mjc;
-import mjd;
+import rru;
+import rut;
+import ruu;
 
 public class ReadInJoyPullToZoomListView
   extends ReadInJoyBaseListView
 {
-  private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new mjc();
-  private static boolean jdField_d_of_type_Boolean;
+  private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new rut();
+  private static boolean e;
   float jdField_a_of_type_Float = -1.0F;
   private View jdField_a_of_type_AndroidViewView;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ReadInJoyPullToZoomListView.OnTopCallback jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView$OnTopCallback;
-  private mjd jdField_a_of_type_Mjd;
+  private ReadInJoyPullToZoomListView.ScalingRunnalable jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView$ScalingRunnalable;
+  private ruu jdField_a_of_type_Ruu;
   float jdField_b_of_type_Float = -1.0F;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   float jdField_c_of_type_Float = 1.401F;
   private TextView jdField_c_of_type_AndroidWidgetTextView;
-  boolean jdField_c_of_type_Boolean;
   float jdField_d_of_type_Float = 1.235F;
+  boolean jdField_d_of_type_Boolean;
   protected int e;
-  private boolean e;
-  private int f;
+  private int jdField_f_of_type_Int;
+  private boolean jdField_f_of_type_Boolean;
   private int g;
   
   public ReadInJoyPullToZoomListView(Context paramContext)
@@ -64,39 +66,50 @@ public class ReadInJoyPullToZoomListView
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramView, localLayoutParams);
     }
-    b();
     c();
+    d();
     if (Build.VERSION.SDK_INT > 10) {
       paramView.setLayerType(0, null);
     }
   }
   
-  private void b()
+  private void b(boolean paramBoolean)
+  {
+    f();
+    rru localrru;
+    if (this.jdField_a_of_type_Rru != null)
+    {
+      localrru = this.jdField_a_of_type_Rru;
+      if (!paramBoolean) {
+        break label31;
+      }
+    }
+    label31:
+    for (int i = 1;; i = 0)
+    {
+      localrru.a(this, i);
+      return;
+    }
+  }
+  
+  private void c()
   {
     if (this.jdField_b_of_type_AndroidWidgetTextView == null)
     {
       TextView localTextView = new TextView(getContext());
       localTextView.setTextColor(-1);
-      localTextView.setText("加载中");
+      localTextView.setText(alud.a(2131713509));
       localTextView.setGravity(17);
       localTextView.setVisibility(8);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
       localLayoutParams.gravity = 49;
-      localLayoutParams.topMargin = DisplayUtil.a(getContext(), 52.0F);
+      localLayoutParams.topMargin = bdaq.a(getContext(), 52.0F);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localTextView, localLayoutParams);
       this.jdField_b_of_type_AndroidWidgetTextView = localTextView;
     }
   }
   
-  private void b(boolean paramBoolean)
-  {
-    e();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListView$RefreshCallback != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListView$RefreshCallback.a(this, paramBoolean);
-    }
-  }
-  
-  private void c()
+  private void d()
   {
     if (this.jdField_c_of_type_AndroidWidgetTextView == null)
     {
@@ -107,13 +120,13 @@ public class ReadInJoyPullToZoomListView
       localTextView.setVisibility(8);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
       localLayoutParams.gravity = 49;
-      localLayoutParams.topMargin = DisplayUtil.a(getContext(), 58.0F);
+      localLayoutParams.topMargin = bdaq.a(getContext(), 58.0F);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localTextView, localLayoutParams);
       this.jdField_c_of_type_AndroidWidgetTextView = localTextView;
     }
   }
   
-  private void d()
+  private void e()
   {
     int i;
     int j;
@@ -128,65 +141,65 @@ public class ReadInJoyPullToZoomListView
     label192:
     for (boolean bool = true;; bool = false)
     {
-      if (bool != this.jdField_e_of_type_Boolean)
+      if (bool != this.jdField_f_of_type_Boolean)
       {
-        this.jdField_e_of_type_Boolean = bool;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView$OnTopCallback != null)
+        this.jdField_f_of_type_Boolean = bool;
+        if (this.jdField_a_of_type_Ruu != null)
         {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView$OnTopCallback.a(this.jdField_e_of_type_Boolean);
+          this.jdField_a_of_type_Ruu.a(this.jdField_f_of_type_Boolean);
           if (QLog.isColorLevel()) {
-            QLog.i("Q.readinjoy.video.PullToZoomListView", 2, "checkIsTopFixed(): mFixed=" + this.jdField_e_of_type_Boolean);
+            QLog.i("Q.readinjoy.video.PullToZoomListView", 2, "checkIsTopFixed(): mFixed=" + this.jdField_f_of_type_Boolean);
           }
         }
       }
-      if ((QLog.isColorLevel()) && (jdField_d_of_type_Boolean)) {
-        QLog.d("Q.readinjoy.video.PullToZoomListView", 2, "checkIsTopFixed(): titleBarBottom=" + j + "， headerBottom=" + i + "， fixed = " + bool + ", mTopFixed=" + this.jdField_e_of_type_Boolean);
+      if ((QLog.isColorLevel()) && (jdField_e_of_type_Boolean)) {
+        QLog.d("Q.readinjoy.video.PullToZoomListView", 2, "checkIsTopFixed(): titleBarBottom=" + j + "， headerBottom=" + i + "， fixed = " + bool + ", mTopFixed=" + this.jdField_f_of_type_Boolean);
       }
       return;
     }
   }
   
-  private void e()
+  private void f()
   {
     if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 8))
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      Drawable localDrawable = getResources().getDrawable(2130838598);
+      Drawable localDrawable = getResources().getDrawable(2130839227);
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(localDrawable, null, null, null);
       ((Animatable)localDrawable).start();
     }
   }
   
-  private void f()
+  private void g()
   {
     if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     }
   }
   
-  private void g()
+  private void h()
   {
     if (this.jdField_c_of_type_AndroidWidgetTextView != null) {
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
     }
   }
   
-  private void h()
+  private void i()
   {
     this.jdField_a_of_type_Float = -1.0F;
     this.jdField_b_of_type_Float = -1.0F;
-    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
   }
   
-  private void i()
+  private void j()
   {
-    if (this.jdField_c_of_type_Boolean)
+    if (this.jdField_d_of_type_Boolean)
     {
       b(false);
       return;
     }
-    this.jdField_a_of_type_Mjd.a(300L);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView$ScalingRunnalable.a(300L);
   }
   
   protected void a(Context paramContext, AttributeSet paramAttributeSet)
@@ -195,19 +208,7 @@ public class ReadInJoyPullToZoomListView
     if (Build.VERSION.SDK_INT >= 9) {
       setOverScrollMode(2);
     }
-    this.jdField_a_of_type_Mjd = new mjd(this);
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
-  {
-    super.a(paramAbsListView, paramInt);
-    d();
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    d();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView$ScalingRunnalable = new ReadInJoyPullToZoomListView.ScalingRunnalable(this);
   }
   
   public void addHeaderView(View paramView)
@@ -222,6 +223,18 @@ public class ReadInJoyPullToZoomListView
     super.addHeaderView(this.jdField_a_of_type_AndroidWidgetFrameLayout, paramObject, paramBoolean);
   }
   
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    super.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    e();
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    super.onScrollStateChanged(paramAbsListView, paramInt);
+    e();
+  }
+  
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     switch (paramMotionEvent.getAction() & 0xFF)
@@ -231,12 +244,12 @@ public class ReadInJoyPullToZoomListView
     {
       return super.onTouchEvent(paramMotionEvent);
       this.jdField_e_of_type_Int = ((int)paramMotionEvent.getRawY());
-      if (!this.jdField_a_of_type_Mjd.a) {
-        this.jdField_a_of_type_Mjd.a();
+      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView$ScalingRunnalable.a) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView$ScalingRunnalable.a();
       }
       this.jdField_a_of_type_Float = paramMotionEvent.getY();
-      this.jdField_b_of_type_Float = (this.jdField_a_of_type_AndroidWidgetFrameLayout.getBottom() / this.f);
-      if ((QLog.isColorLevel()) && (jdField_d_of_type_Boolean))
+      this.jdField_b_of_type_Float = (this.jdField_a_of_type_AndroidWidgetFrameLayout.getBottom() / this.jdField_f_of_type_Int);
+      if ((QLog.isColorLevel()) && (jdField_e_of_type_Boolean))
       {
         QLog.i("Q.readinjoy.video.PullToZoomListView", 2, "onTouchEvent(): ACTION_DOWN ==>  mLastScale = " + this.jdField_b_of_type_Float + "， mHeaderMaxHeight = " + this.g);
         continue;
@@ -244,44 +257,44 @@ public class ReadInJoyPullToZoomListView
         if (this.jdField_a_of_type_Float == -1.0F) {
           this.jdField_a_of_type_Float = paramMotionEvent.getY();
         }
-        if (this.jdField_a_of_type_AndroidWidgetFrameLayout.getBottom() >= this.f)
+        if (this.jdField_a_of_type_AndroidWidgetFrameLayout.getBottom() >= this.jdField_f_of_type_Int)
         {
           ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
-          float f1 = ((paramMotionEvent.getY() - this.jdField_a_of_type_Float + this.jdField_a_of_type_AndroidWidgetFrameLayout.getBottom()) / this.f - this.jdField_b_of_type_Float) / 2.0F + this.jdField_b_of_type_Float;
+          float f1 = ((paramMotionEvent.getY() - this.jdField_a_of_type_Float + this.jdField_a_of_type_AndroidWidgetFrameLayout.getBottom()) / this.jdField_f_of_type_Int - this.jdField_b_of_type_Float) / 2.0F + this.jdField_b_of_type_Float;
           if ((this.jdField_b_of_type_Float <= 1.0D) && (f1 < this.jdField_b_of_type_Float))
           {
-            localLayoutParams.height = this.f;
+            localLayoutParams.height = this.jdField_f_of_type_Int;
             this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(localLayoutParams);
             return super.onTouchEvent(paramMotionEvent);
           }
           this.jdField_b_of_type_Float = Math.min(Math.max(f1, 1.0F), this.jdField_c_of_type_Float);
-          localLayoutParams.height = ((int)(this.f * this.jdField_b_of_type_Float));
+          localLayoutParams.height = ((int)(this.jdField_f_of_type_Int * this.jdField_b_of_type_Float));
           if (localLayoutParams.height <= this.g) {
             this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(localLayoutParams);
           }
           if (this.jdField_b_of_type_Float >= this.jdField_d_of_type_Float) {
-            e();
+            f();
           }
-          for (this.jdField_c_of_type_Boolean = true;; this.jdField_c_of_type_Boolean = false)
+          for (this.jdField_d_of_type_Boolean = true;; this.jdField_d_of_type_Boolean = false)
           {
-            if ((QLog.isColorLevel()) && (jdField_d_of_type_Boolean)) {
-              QLog.d("Q.readinjoy.video.PullToZoomListView", 2, "onTouchEvent(): ACTION_MOVE, f = " + f1 + ", mLastScale=" + this.jdField_b_of_type_Float + ", mEnterRefreshDefer=" + this.jdField_c_of_type_Boolean);
+            if ((QLog.isColorLevel()) && (jdField_e_of_type_Boolean)) {
+              QLog.d("Q.readinjoy.video.PullToZoomListView", 2, "onTouchEvent(): ACTION_MOVE, f = " + f1 + ", mLastScale=" + this.jdField_b_of_type_Float + ", mEnterRefreshDefer=" + this.jdField_d_of_type_Boolean);
             }
             this.jdField_a_of_type_Float = paramMotionEvent.getY();
             return true;
-            f();
+            g();
           }
         }
         this.jdField_a_of_type_Float = paramMotionEvent.getY();
         continue;
-        if ((QLog.isColorLevel()) && (jdField_d_of_type_Boolean)) {
-          QLog.i("Q.readinjoy.video.PullToZoomListView", 2, "onTouchEvent(): ACTION_UP <=====  mEnterRefreshDefer=" + this.jdField_c_of_type_Boolean);
+        if ((QLog.isColorLevel()) && (jdField_e_of_type_Boolean)) {
+          QLog.i("Q.readinjoy.video.PullToZoomListView", 2, "onTouchEvent(): ACTION_UP <=====  mEnterRefreshDefer=" + this.jdField_d_of_type_Boolean);
         }
+        j();
         i();
-        h();
         continue;
         this.jdField_a_of_type_Float = paramMotionEvent.getY();
-        if ((QLog.isColorLevel()) && (jdField_d_of_type_Boolean)) {
+        if ((QLog.isColorLevel()) && (jdField_e_of_type_Boolean)) {
           QLog.w("Q.readinjoy.video.PullToZoomListView", 2, "onTouchEvent(): ACTION_CANCEL xxxx");
         }
       }
@@ -298,18 +311,18 @@ public class ReadInJoyPullToZoomListView
     ((ViewGroup.LayoutParams)localObject).width = paramInt1;
     ((ViewGroup.LayoutParams)localObject).height = paramInt2;
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.f = paramInt2;
-    this.g = ((int)(this.f * this.jdField_c_of_type_Float));
+    this.jdField_f_of_type_Int = paramInt2;
+    this.g = ((int)(this.jdField_f_of_type_Int * this.jdField_c_of_type_Float));
   }
   
-  public void setOnTopCallback(ReadInJoyPullToZoomListView.OnTopCallback paramOnTopCallback)
+  public void setOnTopCallback(ruu paramruu)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView$OnTopCallback = paramOnTopCallback;
+    this.jdField_a_of_type_Ruu = paramruu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyPullToZoomListView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,33 @@
-import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class sxv
-  implements Runnable
+class sxv
+  implements rln
 {
-  public sxv(Leba paramLeba) {}
+  sxv(sxe paramsxe) {}
   
-  public void run()
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    TroopRedTouchManager localTroopRedTouchManager = (TroopRedTouchManager)this.a.a.getManager(69);
-    oidb_0x791.RedDotInfo localRedDotInfo = localTroopRedTouchManager.a(7);
-    this.a.a(new sxw(this, localRedDotInfo, localTroopRedTouchManager));
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("video_vid", paramString1);
+      localJSONObject.put("retCode", paramInt);
+      this.a.callJs(paramString2, new String[] { localJSONObject.toString() });
+      return;
+    }
+    catch (JSONException paramString1)
+    {
+      for (;;)
+      {
+        paramString1.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sxv
  * JD-Core Version:    0.7.0.1
  */

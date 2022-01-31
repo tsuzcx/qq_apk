@@ -9,22 +9,22 @@ import com.tencent.component.media.image.image.Image;
 public class PhotoGifImage
   extends Image
 {
-  private Drawable a;
+  private Drawable mDrawable;
   
   public PhotoGifImage(ImageKey paramImageKey)
   {
     if ((ImageManagerEnv.g().isPreferNewAnimationImp()) && (NewAnimationDrawable.isSuitable(paramImageKey.options.photoList, paramImageKey.options.clipWidth, paramImageKey.options.clipHeight)))
     {
-      this.a = new NewAnimationDrawable(paramImageKey.options);
-      ((NewAnimationDrawable)this.a).setDefaultFrame(ImageManagerEnv.g().getPhotoGifDefaultDrawable());
+      this.mDrawable = new NewAnimationDrawable(paramImageKey.options);
+      ((NewAnimationDrawable)this.mDrawable).setDefaultFrame(ImageManagerEnv.g().getPhotoGifDefaultDrawable());
       return;
     }
-    this.a = new PhotoGifDrawable(paramImageKey);
+    this.mDrawable = new PhotoGifDrawable(paramImageKey);
   }
   
   public Drawable getDrawable()
   {
-    return this.a;
+    return this.mDrawable;
   }
   
   public boolean isRecycled()
@@ -41,7 +41,7 @@ public class PhotoGifImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.photogif.PhotoGifImage
  * JD-Core Version:    0.7.0.1
  */

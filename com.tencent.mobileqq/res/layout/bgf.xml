@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qzone="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/jo9" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <TextView android:textColor="@color/al3" android:gravity="center" android:id="@id/k5r" android:background="@drawable/b5b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:maxWidth="@dimen/b4t" android:minWidth="55.0dip" android:text="@string/rm_" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/al3" android:id="@id/k7k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <com.qzone.widget.dynamicgridview.DynamicGridView android:scrollbarThumbVertical="@drawable/axv" android:scrollbarStyle="insideOverlay" android:gravity="center" android:layout_gravity="center|top" android:id="@id/d0a" android:paddingLeft="12.0dip" android:paddingTop="10.0dip" android:paddingRight="12.0dip" android:paddingBottom="15.0dip" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:scrollingCache="false" android:stretchMode="columnWidth" android:layout_above="@id/agy" android:layout_below="@id/jo9" qzone:stretchable="false" />
+    <Button android:textSize="17.0sp" android:textColor="@color/a6i" android:id="@id/agy" android:background="@drawable/fxk" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="12.0dip" android:text="@string/rlu" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

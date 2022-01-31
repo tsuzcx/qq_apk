@@ -1,71 +1,79 @@
-import android.text.TextUtils;
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgItemLive;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
-public class aiij
-  implements View.OnClickListener
+class aiij
+  implements bhtv
 {
-  public aiij(StructMsgItemLive paramStructMsgItemLive) {}
+  int jdField_a_of_type_Int = 0;
+  int b;
+  int c = 0;
   
-  public void onClick(View paramView)
+  aiij(aiie paramaiie)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if ((!TextUtils.isEmpty(this.a.a.mMsgActionData)) && (this.a.a.mMsgActionData.startsWith("story:"))) {
-      localObject1 = this.a.a.mMsgActionData.substring("story:".length(), this.a.a.mMsgActionData.length() - 1);
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+    this.jdField_b_of_type_Int = paramInt3;
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged, reach bottom, scrollState " + paramInt + " firstVisibleItem: " + this.c + ", lastItem:" + this.jdField_a_of_type_Int + ", totalItemCount = " + this.jdField_b_of_type_Int + ", mIsComplete: " + this.jdField_a_of_type_Aiie.d + ", requesting:" + this.jdField_a_of_type_Aiie.jdField_c_of_type_Boolean + ", mSearchMode: " + this.jdField_a_of_type_Aiie.jdField_b_of_type_Int + ", mCurrentKeyword: " + this.jdField_a_of_type_Aiie.jdField_a_of_type_JavaLangString);
     }
-    for (int i = 1;; i = 2)
+    if (this.jdField_b_of_type_Int == 0) {}
+    do
     {
-      JumpParser.a(localQQAppInterface, paramView.getContext(), (String)localObject1).b();
-      if (QLog.isColorLevel()) {
-        QLog.d("StructMsgQ.qqstory.TAG_NOW_ENTRANCE_ACTION_CONFIG", 2, "actionType:" + i + "|uri:" + (String)localObject1);
-      }
-      return;
-      localObject1 = "0";
-      localObject2 = "-1";
-      String[] arrayOfString1 = this.a.w.substring(this.a.w.indexOf("?") + 1).split("&");
-      i = 0;
-      while (i < arrayOfString1.length)
+      do
       {
-        String[] arrayOfString2 = arrayOfString1[i].split("=");
-        localObject5 = localObject2;
-        Object localObject3 = localObject1;
-        if (arrayOfString2.length == 2)
+        return;
+      } while ((this.jdField_a_of_type_Int != this.jdField_b_of_type_Int) || (paramInt != 0));
+      if ((this.c != 0) && (!this.jdField_a_of_type_Aiie.jdField_c_of_type_Boolean))
+      {
+        this.jdField_a_of_type_Aiie.jdField_c_of_type_Boolean = true;
+        if (this.jdField_a_of_type_Aiie.jdField_b_of_type_Int == 0)
         {
-          if ("roomid".equals(arrayOfString2[0])) {
-            localObject1 = arrayOfString2[1];
+          if (QLog.isColorLevel()) {
+            QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageLocal >>>>> isComplete: " + this.jdField_a_of_type_Aiie.d);
           }
-          localObject5 = localObject2;
-          localObject3 = localObject1;
+          this.jdField_a_of_type_Aiie.jdField_a_of_type_Aieh.a(this.jdField_a_of_type_Aiie.jdField_a_of_type_Long, this.jdField_a_of_type_Aiie.jdField_a_of_type_JavaLangString, 2);
+          this.jdField_a_of_type_Aiie.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Aiie.jdField_a_of_type_AndroidContentContext.getString(2131719589));
+          this.jdField_a_of_type_Aiie.jdField_b_of_type_AndroidViewView.setVisibility(0);
+          this.jdField_a_of_type_Aiie.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131372333).setVisibility(0);
+          this.jdField_a_of_type_Aiie.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+          return;
         }
-        try
+        if (QLog.isColorLevel()) {
+          QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageInCloud >>>>> isComplete: " + this.jdField_a_of_type_Aiie.d);
+        }
+        if (this.jdField_a_of_type_Aiie.d)
         {
-          if ("from".equals(arrayOfString2[0]))
-          {
-            localObject5 = arrayOfString2[1];
-            localObject3 = localObject1;
-          }
+          this.jdField_a_of_type_Aiie.jdField_c_of_type_AndroidWidgetTextView.setText(alud.a(2131715574));
+          this.jdField_a_of_type_Aiie.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131372333).setVisibility(8);
+          this.jdField_a_of_type_Aiie.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+          this.jdField_a_of_type_Aiie.jdField_b_of_type_AndroidViewView.setVisibility(0);
+          return;
         }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          for (;;)
-          {
-            localObject5 = localObject2;
-            Object localObject4 = localObject1;
-          }
-        }
-        i += 1;
-        localObject2 = localObject5;
-        localObject1 = localObject3;
+        this.jdField_a_of_type_Aiie.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Aiie.jdField_a_of_type_AndroidContentContext.getString(2131719588));
+        this.jdField_a_of_type_Aiie.jdField_b_of_type_AndroidViewView.setVisibility(0);
+        this.jdField_a_of_type_Aiie.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131372333).setVisibility(0);
+        this.jdField_a_of_type_Aiie.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        this.jdField_a_of_type_Aiie.jdField_a_of_type_Long = System.currentTimeMillis();
+        return;
       }
-      localObject1 = String.format("mqqapi://now/openroom?src_type=app&version=1&roomid=%s&fromid=%s", new Object[] { localObject1, localObject2 });
-    }
+    } while ((this.c != 0) || (this.jdField_a_of_type_Aiie.jdField_c_of_type_Boolean) || (!this.jdField_a_of_type_Aiie.d) || (this.jdField_a_of_type_Aiie.jdField_b_of_type_Int != 1));
+    this.jdField_a_of_type_Aiie.jdField_c_of_type_AndroidWidgetTextView.setText(alud.a(2131715578));
+    this.jdField_a_of_type_Aiie.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131372333).setVisibility(8);
+    this.jdField_a_of_type_Aiie.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_Aiie.jdField_b_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

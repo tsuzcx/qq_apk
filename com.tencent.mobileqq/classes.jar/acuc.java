@@ -1,34 +1,29 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
-public class acuc
-  implements Runnable
+class acuc
+  implements DialogInterface.OnClickListener
 {
-  public acuc(FileTransferHandler paramFileTransferHandler, String paramString, int paramInt, short paramShort, long paramLong1, long paramLong2) {}
+  acuc(acua paramacua, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    if (localFileManagerEntity != null)
-    {
-      localFileManagerEntity.msgSeq = this.jdField_a_of_type_Short;
-      localFileManagerEntity.msgUid = this.jdField_a_of_type_Long;
-      localFileManagerEntity.msgTime = this.b;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().f(localFileManagerEntity);
-      if (QLog.isColorLevel()) {
-        QLog.d("FileTransferHandler<FileAssistant>", 2, "online change to offline, update offline msg seq , uid and msgTime" + FileManagerUtil.a(localFileManagerEntity));
-      }
-    }
+    DiscussionInfoCardActivity.a(this.jdField_a_of_type_Acua.a).c(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_Acua.a.app.a().a();
+    paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaLangString, 3000));
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("isNeedFinish", true);
+    this.jdField_a_of_type_Acua.a.setResult(-1, paramDialogInterface);
+    this.jdField_a_of_type_Acua.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acuc
  * JD-Core Version:    0.7.0.1
  */

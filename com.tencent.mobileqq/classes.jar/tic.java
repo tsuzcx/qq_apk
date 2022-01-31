@@ -1,23 +1,49 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import NS_KING_INTERFACE.stPostFeedDingRsp;
+import android.os.Handler;
+import android.util.Log;
 
-class tic
-  implements View.OnLongClickListener
+public class tic
+  extends tio
+  implements tgt
 {
-  tic(tib paramtib, long paramLong) {}
+  public static String a = "weishi";
   
-  public boolean onLongClick(View paramView)
+  public static void a(String paramString, boolean paramBoolean, int paramInt, Handler paramHandler)
   {
-    DialogUtil.a(this.jdField_a_of_type_Tib.a, 230).setTitle(this.jdField_a_of_type_Tib.a.getString(2131434941)).setItems(2131296268, new tid(this)).show();
-    return true;
+    int i = 1;
+    if (!paramBoolean)
+    {
+      i = 2;
+      Log.e(a, "此次是取消点赞：---------------");
+    }
+    paramString = new the(new tkm(paramString, i), paramHandler, new tid(paramHandler, paramInt), 4300);
+    tgx.a().a(paramString);
+  }
+  
+  public void a(the paramthe)
+  {
+    if ((paramthe.a instanceof stPostFeedDingRsp))
+    {
+      paramthe = (stPostFeedDingRsp)paramthe.a;
+      if (paramthe == null)
+      {
+        Log.e(a, "服务器失败！！！");
+        return;
+      }
+      if (paramthe.is_ding == 0)
+      {
+        Log.e(a, "没有点赞~~~~~~~~~~~~~~~~");
+        return;
+      }
+      Log.e(a, "已经点赞~~~~~~~~~~~~~~~~");
+      return;
+    }
+    Log.e(a, "真无语！！！");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tic
  * JD-Core Version:    0.7.0.1
  */

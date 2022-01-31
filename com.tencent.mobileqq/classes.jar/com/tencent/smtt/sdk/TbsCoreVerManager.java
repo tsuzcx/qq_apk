@@ -18,8 +18,12 @@ class TbsCoreVerManager
   static final String TBS_CORE_INSTALL_FILE = "tbscoreinstall.txt";
   static final String TBS_CORE_INSTALL_STATUS = "install_status";
   static final String TBS_CORE_INSTALL_VER = "install_core_ver";
+  static final String TBS_CORE_TPATCH_NUM = "tpatch_num";
+  static final String TBS_CORE_TPATCH_STATUS = "tpatch_status";
+  static final String TBS_CORE_TPATCH_VER = "tpatch_ver";
   static final String TBS_CORE_UNZIP_RETRY_NUM = "unzip_retry_num";
   static final String TBS_INCRUPDATE_STATUS = "incrupdate_status";
+  static final String TBS_THIRD_REMOVE_OLD_CORE = "remove_old_core";
   static final String TBS_UNLZMA_STATUS = "unlzma_status";
   private static Context mContext = null;
   private static TbsCoreVerManager mInstance = null;
@@ -45,38 +49,38 @@ class TbsCoreVerManager
     //   0: aconst_null
     //   1: astore_3
     //   2: aload_0
-    //   3: invokevirtual 80	com/tencent/smtt/sdk/TbsCoreVerManager:getTbsCoreInstallFile	()Ljava/io/File;
+    //   3: invokevirtual 92	com/tencent/smtt/sdk/TbsCoreVerManager:getTbsCoreInstallFile	()Ljava/io/File;
     //   6: astore_2
-    //   7: new 82	java/util/Properties
+    //   7: new 94	java/util/Properties
     //   10: dup
-    //   11: invokespecial 83	java/util/Properties:<init>	()V
+    //   11: invokespecial 95	java/util/Properties:<init>	()V
     //   14: astore_1
     //   15: aload_2
     //   16: ifnull +115 -> 131
     //   19: aload_1
     //   20: ifnull +111 -> 131
-    //   23: new 85	java/io/BufferedInputStream
+    //   23: new 97	java/io/BufferedInputStream
     //   26: dup
-    //   27: new 87	java/io/FileInputStream
+    //   27: new 99	java/io/FileInputStream
     //   30: dup
     //   31: aload_2
-    //   32: invokespecial 90	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   35: invokespecial 93	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   32: invokespecial 102	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   35: invokespecial 105	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   38: astore_2
     //   39: aload_1
     //   40: aload_2
-    //   41: invokevirtual 96	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   41: invokevirtual 108	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   44: aload_2
     //   45: ifnull +7 -> 52
     //   48: aload_2
-    //   49: invokevirtual 99	java/io/BufferedInputStream:close	()V
+    //   49: invokevirtual 111	java/io/BufferedInputStream:close	()V
     //   52: aload_1
     //   53: astore_3
     //   54: aload_3
     //   55: areturn
     //   56: astore_2
     //   57: aload_2
-    //   58: invokevirtual 102	java/io/IOException:printStackTrace	()V
+    //   58: invokevirtual 114	java/io/IOException:printStackTrace	()V
     //   61: goto -9 -> 52
     //   64: astore_3
     //   65: aconst_null
@@ -84,18 +88,18 @@ class TbsCoreVerManager
     //   67: aconst_null
     //   68: astore_1
     //   69: aload_3
-    //   70: invokevirtual 103	java/lang/Exception:printStackTrace	()V
+    //   70: invokevirtual 115	java/lang/Exception:printStackTrace	()V
     //   73: aload_1
     //   74: astore_3
     //   75: aload_2
     //   76: ifnull -22 -> 54
     //   79: aload_2
-    //   80: invokevirtual 99	java/io/BufferedInputStream:close	()V
+    //   80: invokevirtual 111	java/io/BufferedInputStream:close	()V
     //   83: aload_1
     //   84: areturn
     //   85: astore_2
     //   86: aload_2
-    //   87: invokevirtual 102	java/io/IOException:printStackTrace	()V
+    //   87: invokevirtual 114	java/io/IOException:printStackTrace	()V
     //   90: aload_1
     //   91: areturn
     //   92: astore_1
@@ -104,12 +108,12 @@ class TbsCoreVerManager
     //   95: aload_2
     //   96: ifnull +7 -> 103
     //   99: aload_2
-    //   100: invokevirtual 99	java/io/BufferedInputStream:close	()V
+    //   100: invokevirtual 111	java/io/BufferedInputStream:close	()V
     //   103: aload_1
     //   104: athrow
     //   105: astore_2
     //   106: aload_2
-    //   107: invokevirtual 102	java/io/IOException:printStackTrace	()V
+    //   107: invokevirtual 114	java/io/IOException:printStackTrace	()V
     //   110: goto -7 -> 103
     //   113: astore_1
     //   114: goto -19 -> 95
@@ -228,7 +232,7 @@ class TbsCoreVerManager
     //   0: aconst_null
     //   1: astore 4
     //   3: aload_0
-    //   4: invokespecial 107	com/tencent/smtt/sdk/TbsCoreVerManager:getTbsCoreInstallProp	()Ljava/util/Properties;
+    //   4: invokespecial 119	com/tencent/smtt/sdk/TbsCoreVerManager:getTbsCoreInstallProp	()Ljava/util/Properties;
     //   7: astore 5
     //   9: aload 4
     //   11: astore_3
@@ -237,43 +241,43 @@ class TbsCoreVerManager
     //   17: aload 5
     //   19: aload_1
     //   20: aload_2
-    //   21: invokevirtual 162	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+    //   21: invokevirtual 174	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
     //   24: pop
     //   25: aload_0
-    //   26: invokevirtual 80	com/tencent/smtt/sdk/TbsCoreVerManager:getTbsCoreInstallFile	()Ljava/io/File;
+    //   26: invokevirtual 92	com/tencent/smtt/sdk/TbsCoreVerManager:getTbsCoreInstallFile	()Ljava/io/File;
     //   29: astore_2
     //   30: aload 4
     //   32: astore_3
     //   33: aload_2
     //   34: ifnull +44 -> 78
-    //   37: new 164	java/io/FileOutputStream
+    //   37: new 176	java/io/FileOutputStream
     //   40: dup
     //   41: aload_2
-    //   42: invokespecial 165	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   42: invokespecial 177	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   45: astore_3
     //   46: aload_3
     //   47: astore_2
     //   48: aload 5
     //   50: aload_3
-    //   51: new 167	java/lang/StringBuilder
+    //   51: new 179	java/lang/StringBuilder
     //   54: dup
-    //   55: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   58: ldc 170
-    //   60: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   58: ldc 182
+    //   60: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   63: aload_1
-    //   64: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: ldc 176
-    //   69: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: invokevirtual 180	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   75: invokevirtual 184	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
+    //   64: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: ldc 188
+    //   69: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   75: invokevirtual 196	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
     //   78: aload_3
     //   79: ifnull +7 -> 86
     //   82: aload_3
-    //   83: invokevirtual 185	java/io/FileOutputStream:close	()V
+    //   83: invokevirtual 197	java/io/FileOutputStream:close	()V
     //   86: return
     //   87: astore_1
     //   88: aload_1
-    //   89: invokevirtual 102	java/io/IOException:printStackTrace	()V
+    //   89: invokevirtual 114	java/io/IOException:printStackTrace	()V
     //   92: return
     //   93: astore_1
     //   94: aconst_null
@@ -281,15 +285,15 @@ class TbsCoreVerManager
     //   96: aload_3
     //   97: astore_2
     //   98: aload_1
-    //   99: invokevirtual 103	java/lang/Exception:printStackTrace	()V
+    //   99: invokevirtual 115	java/lang/Exception:printStackTrace	()V
     //   102: aload_3
     //   103: ifnull -17 -> 86
     //   106: aload_3
-    //   107: invokevirtual 185	java/io/FileOutputStream:close	()V
+    //   107: invokevirtual 197	java/io/FileOutputStream:close	()V
     //   110: return
     //   111: astore_1
     //   112: aload_1
-    //   113: invokevirtual 102	java/io/IOException:printStackTrace	()V
+    //   113: invokevirtual 114	java/io/IOException:printStackTrace	()V
     //   116: return
     //   117: astore_1
     //   118: aconst_null
@@ -297,12 +301,12 @@ class TbsCoreVerManager
     //   120: aload_2
     //   121: ifnull +7 -> 128
     //   124: aload_2
-    //   125: invokevirtual 185	java/io/FileOutputStream:close	()V
+    //   125: invokevirtual 197	java/io/FileOutputStream:close	()V
     //   128: aload_1
     //   129: athrow
     //   130: astore_2
     //   131: aload_2
-    //   132: invokevirtual 102	java/io/IOException:printStackTrace	()V
+    //   132: invokevirtual 114	java/io/IOException:printStackTrace	()V
     //   135: goto -7 -> 128
     //   138: astore_1
     //   139: goto -19 -> 120
@@ -359,6 +363,12 @@ class TbsCoreVerManager
     setStatus("install_status", paramInt2);
   }
   
+  void setTbsCoreTpatchStatus(int paramInt1, int paramInt2)
+  {
+    setStatus("tpatch_ver", paramInt1);
+    setStatus("tpatch_status", paramInt2);
+  }
+  
   void setTbsCoreUnlzmaStatus(int paramInt)
   {
     setStatus("unlzma_status", paramInt);
@@ -371,7 +381,7 @@ class TbsCoreVerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsCoreVerManager
  * JD-Core Version:    0.7.0.1
  */

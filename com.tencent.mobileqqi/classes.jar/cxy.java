@@ -1,23 +1,15 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
-class cxy
-  implements Runnable
+public class cxy
+  implements DialogInterface.OnClickListener
 {
-  cxy(cxx paramcxx, List paramList) {}
+  public cxy(NotificationActivity paramNotificationActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (Leba.a(this.jdField_a_of_type_Cxx.a) != null)
-    {
-      Leba.a(this.jdField_a_of_type_Cxx.a).clear();
-      Leba.a(this.jdField_a_of_type_Cxx.a).addAll(this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_Cxx.a.a != null) {
-        this.jdField_a_of_type_Cxx.a.a.notifyDataSetChanged();
-      }
-      Leba.a(this.jdField_a_of_type_Cxx.a);
-    }
+    this.a.c();
   }
 }
 

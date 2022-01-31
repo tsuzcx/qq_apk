@@ -1,53 +1,37 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ReportUtil;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoControlUI;
 
-class mmj
-  implements Runnable
+public class mmj
+  extends meu
 {
-  mmj(mmi parammmi, long paramLong, List paramList) {}
+  public mmj(VideoControlUI paramVideoControlUI) {}
   
-  public void run()
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
   {
-    FastWebActivity localFastWebActivity = this.jdField_a_of_type_Mmi.a;
-    ArticleInfo localArticleInfo = FastWebActivity.a(this.jdField_a_of_type_Mmi.a);
-    Object localObject;
-    if (FastWebActivity.a(this.jdField_a_of_type_Mmi.a).c()) {
-      localObject = "2";
-    }
-    for (;;)
+    if (this.a.g()) {}
+    do
     {
-      localObject = ReadInJoyUtils.a(localFastWebActivity, localArticleInfo, 0, (String)localObject);
-      try
-      {
-        ((JSONObject)localObject).put("open_speed", this.jdField_a_of_type_Long);
-        ReportUtil.a(FastWebActivity.a(this.jdField_a_of_type_Mmi.a), "0X8008997", ((JSONObject)localObject).toString());
-        FastWebActivity.f(this.jdField_a_of_type_Mmi.a);
-        FastWebActivity.a(this.jdField_a_of_type_Mmi.a, FastWebActivity.a(this.jdField_a_of_type_Mmi.a), FastWebActivity.a(this.jdField_a_of_type_Mmi.a));
-        ReportUtil.a(FastWebActivity.a(this.jdField_a_of_type_Mmi.a), this.jdField_a_of_type_JavaUtilList);
-        FastWebRequestUtil.a(FastWebActivity.a(this.jdField_a_of_type_Mmi.a).mArticleContentUrl, FastWebActivity.a(this.jdField_a_of_type_Mmi.a));
-        return;
-        localObject = "1";
+      return;
+      if (this.a.h()) {
+        break;
       }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-      }
+    } while (!paramBoolean);
+    this.a.b.update(null, new Object[] { Integer.valueOf(110), Long.valueOf(paramLong) });
+    this.a.a.a(paramLong, paramInt);
+  }
+  
+  protected void g(long paramLong)
+  {
+    if (this.a.g()) {}
+    while ((!this.a.h()) || (!this.a.a.b(0))) {
+      return;
     }
+    this.a.a.a(paramLong, 0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mmj
  * JD-Core Version:    0.7.0.1
  */

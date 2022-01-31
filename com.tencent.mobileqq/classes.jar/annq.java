@@ -1,19 +1,16 @@
-import dov.com.qq.im.capture.text.CaptureComboText;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-
-public class annq
-  implements Runnable
+class annq
+  extends anno
 {
-  public annq(CaptureComboText paramCaptureComboText, DoodleLayout paramDoodleLayout) {}
+  public String d;
   
-  public void run()
+  private annq()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(0, Boolean.valueOf(false));
+    super(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     annq
  * JD-Core Version:    0.7.0.1
  */

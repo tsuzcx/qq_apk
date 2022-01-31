@@ -1,14 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-public final class aeph
-  implements DialogInterface.OnClickListener
+class aeph
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  private static aepf a = new aepf("aio_client_module", null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeph
  * JD-Core Version:    0.7.0.1
  */

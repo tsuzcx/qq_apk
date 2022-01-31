@@ -1,59 +1,25 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.tribe.view.TEditText.OnSelectionChangedListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 public class aixg
-  implements TEditText.OnSelectionChangedListener
+  implements PopupWindow.OnDismissListener
 {
-  public aixg(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public aixg(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onDismiss()
   {
-    int k = 1;
-    if (this.a.b.getText().length() <= 0) {}
-    for (;;)
+    RedPacketManager.getInstance().onActiveAccount();
+    if ((TroopUnAccalimedRedPacketList.a(this.a) != null) && (aixj.a(TroopUnAccalimedRedPacketList.a(this.a)) != null))
     {
-      return;
-      if (paramInt1 < 0)
-      {
-        if (paramInt2 > this.a.H.length() + 1) {}
-        for (;;)
-        {
-          this.a.b.setSelection(paramInt2);
-          return;
-          paramInt2 = this.a.H.length() + 1;
-        }
-      }
-      if (paramInt2 < 0)
-      {
-        if (paramInt1 > this.a.H.length() + 1) {}
-        for (;;)
-        {
-          this.a.b.setSelection(paramInt1);
-          return;
-          paramInt1 = this.a.H.length() + 1;
-        }
-      }
-      if (!TextUtils.isEmpty(this.a.H))
-      {
-        int i = 0;
-        int j = paramInt1;
-        if (paramInt1 < this.a.H.length() + 1)
-        {
-          j = this.a.H.length() + 1;
-          i = 1;
-        }
-        if (paramInt2 < this.a.H.length() + 1) {
-          paramInt2 = this.a.H.length() + 1;
-        }
-        for (paramInt1 = k; paramInt1 != 0; paramInt1 = i)
-        {
-          this.a.b.setSelection(j, paramInt2);
-          return;
-        }
-      }
+      aixj.a(TroopUnAccalimedRedPacketList.a(this.a)).clear();
+      TroopUnAccalimedRedPacketList.a(this.a).notifyDataSetChanged();
+    }
+    if ((!TroopUnAccalimedRedPacketList.a(this.a)) && (TroopUnAccalimedRedPacketList.a(this.a) != null)) {
+      ajeu.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.keyback", "", "");
     }
   }
 }

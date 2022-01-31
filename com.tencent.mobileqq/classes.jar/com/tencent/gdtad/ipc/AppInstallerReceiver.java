@@ -1,25 +1,25 @@
 package com.tencent.gdtad.ipc;
 
+import aaqo;
+import aase;
+import aatc;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.gdtad.aditem.GdtBaseAdItem;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.util.GdtAppOpenUtil;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import qkr;
 
 public class AppInstallerReceiver
   extends BroadcastReceiver
 {
-  private Map jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private Map<String, GdtBaseAdItem> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   private boolean jdField_a_of_type_Boolean;
   
   public static AppInstallerReceiver a()
   {
-    return qkr.a;
+    return aaqo.a;
   }
   
   public void a(Context paramContext)
@@ -31,14 +31,14 @@ public class AppInstallerReceiver
       localIntentFilter.addDataScheme("package");
       paramContext.registerReceiver(this, localIntentFilter);
       this.jdField_a_of_type_Boolean = true;
-      GdtLog.a("GdtAppOpenUtil", "regeist AppInstallerReceiver");
+      aase.a("GdtAppOpenUtil", "regeist AppInstallerReceiver");
     }
   }
   
   public void a(GdtBaseAdItem paramGdtBaseAdItem)
   {
     if (paramGdtBaseAdItem != null) {
-      this.jdField_a_of_type_JavaUtilMap.put(paramGdtBaseAdItem.packageName, paramGdtBaseAdItem);
+      this.jdField_a_of_type_JavaUtilMap.put(paramGdtBaseAdItem.a, paramGdtBaseAdItem);
     }
   }
   
@@ -50,10 +50,10 @@ public class AppInstallerReceiver
     }
     for (;;)
     {
-      GdtLog.a("GdtAppOpenUtil", "package added " + paramIntent);
+      aase.a("GdtAppOpenUtil", "package added " + paramIntent);
       if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramIntent))
       {
-        GdtAppOpenUtil.a(paramContext, (GdtBaseAdItem)this.jdField_a_of_type_JavaUtilMap.get(paramIntent));
+        aatc.a(paramContext, (GdtBaseAdItem)this.jdField_a_of_type_JavaUtilMap.get(paramIntent));
         this.jdField_a_of_type_JavaUtilMap.remove(paramIntent);
       }
       return;
@@ -62,7 +62,7 @@ public class AppInstallerReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.ipc.AppInstallerReceiver
  * JD-Core Version:    0.7.0.1
  */

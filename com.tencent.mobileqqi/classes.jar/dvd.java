@@ -1,37 +1,28 @@
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
-import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class dvd
-  extends Thread
+  implements Runnable
 {
-  public dvd(TroopInfoActivity paramTroopInfoActivity) {}
+  public dvd(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
   public void run()
   {
     try
     {
-      Object localObject = BaseApplication.getContext();
-      String str = Long.toString(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.a);
-      GroupCatalogBean localGroupCatalogBean = GroupCatalogTool.a((Context)localObject).a();
-      if ((localGroupCatalogBean != null) && (localGroupCatalogBean.b.equals(str))) {}
-      for (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.i = localGroupCatalogBean.a();; this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.i = ((GroupCatalogBean)localObject).a())
+      if ((VerifyPhoneNumActivity.a(this.a) != null) && (VerifyPhoneNumActivity.a(this.a).isShowing()))
       {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-        return;
-        localObject = GroupCatalogTool.a((Context)localObject).a((Context)localObject, str);
+        VerifyPhoneNumActivity.a(this.a).dismiss();
+        VerifyPhoneNumActivity.a(this.a).cancel();
       }
+      VerifyPhoneNumActivity.a(this.a, null);
       return;
     }
-    catch (Exception localException)
+    catch (Throwable localThrowable)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.troopinfo", 2, localException.toString());
+      for (;;)
+      {
+        localThrowable.printStackTrace();
       }
     }
   }

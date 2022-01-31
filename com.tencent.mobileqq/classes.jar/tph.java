@@ -1,25 +1,27 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
-import mqq.os.MqqHandler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 public class tph
-  extends MqqHandler
+  implements Animation.AnimationListener
 {
-  public tph(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
+  public tph(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.finish();
+    paramAnimation = (ImageView)this.a.findViewById(2131379431);
+    ImageView localImageView = (ImageView)this.a.findViewById(2131379432);
+    PublicAccountImageCollectionMainActivity.a(this.a, localImageView, paramAnimation, 100L, 240L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tph
  * JD-Core Version:    0.7.0.1
  */

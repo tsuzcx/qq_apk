@@ -1,22 +1,61 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.international.activity.FeedbackActivity;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Handler;
+import android.telephony.TelephonyManager;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class bxk
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public bxk(AboutActivity paramAboutActivity) {}
+  public bxk(ChatActivity paramChatActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.startActivity(new Intent(this.a, FeedbackActivity.class));
+    paramContext = paramIntent.getAction();
+    if ("android.net.conn.CONNECTIVITY_CHANGE".equals(paramContext))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatActivity", 2, "readconfirm network change");
+      }
+      paramContext = ((ConnectivityManager)this.a.getSystemService("connectivity")).getActiveNetworkInfo();
+      if ((paramContext != null) && (paramContext.isAvailable()) && (ChatActivity.b(this.a))) {
+        this.a.a.removeMessages(16711689);
+      }
+    }
+    do
+    {
+      do
+      {
+        this.a.a.sendEmptyMessage(16711689);
+        do
+        {
+          return;
+        } while (!"android.intent.action.PHONE_STATE".equals(paramContext));
+        paramContext = (TelephonyManager)this.a.getSystemService("phone");
+        if (paramContext.getCallState() == 1)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ChatActivity", 2, "receive action_phone_state_changed|call_state_ringing");
+          }
+          this.a.d(2);
+        }
+      } while (paramContext.getCallState() != 1);
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatActivity", 2, "receive action_phone_state_changed|call_state_ringing");
+      }
+      paramContext = MediaPlayerManager.a(this.a.b);
+    } while (!paramContext.d());
+    paramContext.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bxk
  * JD-Core Version:    0.7.0.1
  */

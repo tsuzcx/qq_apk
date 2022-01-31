@@ -1,25 +1,28 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.search.presenter.SearchTemplatePresenter;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ahuv
-  implements Runnable
+class ahuv
+  implements ahus
 {
-  public ahuv(SearchTemplatePresenter paramSearchTemplatePresenter, ImageView paramImageView, boolean paramBoolean) {}
+  ahuv(ahuu paramahuu) {}
   
-  public void run()
+  public void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    if (this.jdField_a_of_type_Boolean)
+    ((alwd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159)).c(paramString);
+    if (paramInt == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845494);
+      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845493);
+    if (this.a.jdField_a_of_type_Ahud != null) {
+      this.a.jdField_a_of_type_Ahud.a();
+    }
+    ahuu.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahuv
  * JD-Core Version:    0.7.0.1
  */

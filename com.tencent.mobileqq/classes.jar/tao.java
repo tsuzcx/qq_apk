@@ -1,25 +1,17 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class tao
-  extends MqqHandler
+final class tao
+  implements DialogInterface.OnClickListener
 {
-  public tao(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.finish();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tao
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.widget.GridListView;
 
 public class dvf
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public dvf(TroopInfoActivity paramTroopInfoActivity) {}
+  public dvf(VisitorsActivity paramVisitorsActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = TroopInfoActivity.a(this.a).getInputValue();
-    if ((paramDialogInterface != null) && (!paramDialogInterface.equals("")) && (!paramDialogInterface.equals(this.a.c)))
+    boolean bool = true;
+    paramView = VisitorsActivity.a(this.a);
+    int i = this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.b();
+    if (i == 0)
     {
-      if (!NetworkUtil.e(BaseApplication.getContext())) {
-        break label80;
-      }
-      if (!paramDialogInterface.equals(this.a.a.f))
-      {
-        this.a.p();
-        this.a.b(paramDialogInterface);
+      paramView.setText(2131562286);
+      this.a.b = true;
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setMode(1);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.invalidate();
+      paramView = this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      if (i != 0) {
+        break label128;
       }
     }
-    return;
-    label80:
-    this.a.a(2131562452, 1);
+    for (;;)
+    {
+      paramView.putBoolean("visitor_grid", bool);
+      paramView.commit();
+      return;
+      if (i != 1) {
+        break;
+      }
+      paramView.setText(2131562177);
+      this.a.b = false;
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setMode(0);
+      break;
+      label128:
+      bool = false;
+    }
   }
 }
 

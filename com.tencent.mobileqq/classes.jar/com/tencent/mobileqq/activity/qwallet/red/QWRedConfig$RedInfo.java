@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.red;
 
+import ajeu;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import java.io.Serializable;
 import java.util.Iterator;
@@ -61,8 +61,8 @@ public class QWRedConfig$RedInfo
       localRedInfo.imgType = paramJSONObject.optInt("imgType", 0);
       localRedInfo.goneType = paramJSONObject.optInt("goneType", 0);
       localRedInfo.showPos = paramJSONObject.optInt("showPos", 0);
-      localRedInfo.beginTime = QWalletTools.a(paramJSONObject.optString("beginTime"));
-      localRedInfo.endTime = QWalletTools.a(paramJSONObject.optString("endTime"));
+      localRedInfo.beginTime = ajeu.a(paramJSONObject.optString("beginTime"));
+      localRedInfo.endTime = ajeu.a(paramJSONObject.optString("endTime"));
       if (localRedInfo.endTime == -1L) {}
       for (long l = 9223372036854775807L;; l = localRedInfo.endTime)
       {
@@ -78,7 +78,7 @@ public class QWRedConfig$RedInfo
     }
   }
   
-  public static String transToReportStr(List paramList)
+  public static String transToReportStr(List<RedInfo> paramList)
   {
     JSONArray localJSONArray;
     try
@@ -143,7 +143,7 @@ public class QWRedConfig$RedInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.red.QWRedConfig.RedInfo
  * JD-Core Version:    0.7.0.1
  */

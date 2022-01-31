@@ -1,40 +1,51 @@
-import com.tencent.component.media.gif.NewGifDrawable;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 
-public abstract class pgd
-  implements Runnable
+public abstract interface pgd
 {
-  public final NewGifDrawable b;
+  public abstract int a();
   
-  pgd(NewGifDrawable paramNewGifDrawable)
-  {
-    this.b = paramNewGifDrawable;
-  }
+  public abstract ArticleInfo a();
   
-  public abstract void doWork();
+  public abstract VafContext a();
   
-  public final void run()
-  {
-    try
-    {
-      if (!this.b.isRecycled()) {
-        doWork();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      Thread.UncaughtExceptionHandler localUncaughtExceptionHandler;
-      do
-      {
-        localUncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
-      } while (localUncaughtExceptionHandler == null);
-      localUncaughtExceptionHandler.uncaughtException(Thread.currentThread(), localThrowable);
-    }
-  }
+  public abstract rqj a();
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract ArticleInfo b();
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract boolean c();
+  
+  public abstract int d();
+  
+  public abstract boolean d();
+  
+  public abstract int e();
+  
+  public abstract boolean e();
+  
+  public abstract int f();
+  
+  public abstract boolean f();
+  
+  public abstract int g();
+  
+  public abstract boolean g();
+  
+  public abstract boolean h();
+  
+  public abstract boolean i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pgd
  * JD-Core Version:    0.7.0.1
  */

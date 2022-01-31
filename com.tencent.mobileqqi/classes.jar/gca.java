@@ -1,28 +1,28 @@
-import android.content.ContentValues;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.maproam.widget.RoamLocalSearchBar;
+import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
 
 public class gca
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public gca(FileManagerProxy paramFileManagerProxy, ContentValues paramContentValues, long paramLong) {}
+  public gca(RoamLocalSearchBar paramRoamLocalSearchBar, View paramView1, View paramView2) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerProxy.a(FileManagerEntity.tableName(), this.jdField_a_of_type_AndroidContentContentValues, "nSessionId=?", new String[] { String.valueOf(this.jdField_a_of_type_Long) }, null);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamLocalSearchBar.a.show();
+    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
+    this.b.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gca
  * JD-Core Version:    0.7.0.1
  */

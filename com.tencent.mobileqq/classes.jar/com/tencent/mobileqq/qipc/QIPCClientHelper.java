@@ -3,6 +3,7 @@ package com.tencent.mobileqq.qipc;
 import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCClient;
+import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
 import eipc.EIPCThreadEngine;
 import mqq.app.MobileQQ;
@@ -11,19 +12,18 @@ public class QIPCClientHelper
 {
   public static final int QIPC_CLIENT_ID = 1;
   public static final String TAG = "QIPCClientHelper";
-  static QIPCClientHelper a;
+  static volatile EIPCClient sClient;
+  static QIPCClientHelper sInstance;
   public static EIPCThreadEngine sThreadEngine;
-  public Class adapterService;
-  EIPCClient b = null;
   
   public static QIPCClientHelper getInstance()
   {
     try
     {
-      if (a == null) {
-        a = new QIPCClientHelper();
+      if (sInstance == null) {
+        sInstance = new QIPCClientHelper();
       }
-      QIPCClientHelper localQIPCClientHelper = a;
+      QIPCClientHelper localQIPCClientHelper = sInstance;
       return localQIPCClientHelper;
     }
     finally {}
@@ -34,6 +34,12 @@ public class QIPCClientHelper
     sThreadEngine = paramEIPCThreadEngine;
   }
   
+  @Deprecated
+  public EIPCResult callServer(String paramString1, String paramString2, Bundle paramBundle)
+  {
+    return getClient().callServer(paramString1, paramString2, paramBundle);
+  }
+  
   public void callServer(String paramString1, String paramString2, Bundle paramBundle, EIPCResultCallback paramEIPCResultCallback)
   {
     getClient().callServer(paramString1, paramString2, paramBundle, paramEIPCResultCallback);
@@ -42,31 +48,26 @@ public class QIPCClientHelper
   public void disconnect()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QIPCClientHelper", 2, "disconnect, " + this.b);
+      QLog.d("QIPCClientHelper", 2, "disconnect, " + sClient);
     }
-    if (this.b != null)
+    if (sClient != null)
     {
-      this.b.disConnect();
-      this.b = null;
+      sClient.disConnect();
+      sClient = null;
     }
   }
   
   public EIPCClient getClient()
   {
+    if (sClient == null) {}
     try
     {
-      if (this.b == null)
+      if (sClient == null)
       {
-        Class localClass = this.adapterService;
-        localObject1 = localClass;
-        if (localClass == null) {
-          localObject1 = QIPCService.class;
-        }
-        this.b = new EIPCClient(MobileQQ.sMobileQQ, (Class)localObject1, 1);
-        this.b.registerModule(new QIPCClientModuleCore());
+        sClient = new EIPCClient(MobileQQ.sMobileQQ, 1);
+        sClient.registerModule(new QIPCClientModuleCore());
       }
-      Object localObject1 = this.b;
-      return localObject1;
+      return sClient;
     }
     finally {}
   }

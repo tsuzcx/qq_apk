@@ -1,20 +1,28 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.os.AsyncTask;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-public class ccb
-  implements Runnable
+class ccb
+  extends AsyncTask
 {
-  public ccb(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity, String paramString1, String paramString2) {}
+  ccb(cca paramcca) {}
   
-  public void run()
+  protected Object a(MessageRecord... paramVarArgs)
   {
-    String str = Utils.d(this.jdField_a_of_type_JavaLangString, this.b);
-    if ((str != null) && (str.length() > 0) && (AuthDevVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevVerifyCodeActivity) != null))
-    {
-      AuthDevVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevVerifyCodeActivity).setText(str);
-      AuthDevVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevVerifyCodeActivity).setEnabled(true);
+    this.a.a.b.a().a(paramVarArgs[0], true);
+    return null;
+  }
+  
+  protected void onPostExecute(Object paramObject)
+  {
+    super.onPostExecute(paramObject);
+    ChatHistory.a(this.a.a).removeMessages(1);
+    if ((this.a.a.a != null) && (this.a.a.a.isShowing())) {
+      this.a.a.a.dismiss();
     }
   }
 }

@@ -10,13 +10,13 @@ import android.util.TypedValue;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.LayoutParams;
-import jvr;
+import mhj;
 
 public class MultiMembersAudioIndicator
   extends RadioGroup
   implements ViewPager.OnPageChangeListener
 {
-  ViewPager a;
+  public ViewPager a;
   
   public MultiMembersAudioIndicator(Context paramContext)
   {
@@ -32,21 +32,21 @@ public class MultiMembersAudioIndicator
     super.setGravity(17);
   }
   
-  RadioButton a()
+  public RadioButton a()
   {
-    jvr localjvr = new jvr(this, super.getContext());
-    localjvr.setButtonDrawable(2130840278);
-    localjvr.setGravity(17);
+    mhj localmhj = new mhj(this, super.getContext());
+    localmhj.setButtonDrawable(2130841846);
+    localmhj.setGravity(17);
     Resources localResources = super.getContext().getResources();
     RadioGroup.LayoutParams localLayoutParams = new RadioGroup.LayoutParams((int)TypedValue.applyDimension(1, 10.0F, localResources.getDisplayMetrics()), (int)TypedValue.applyDimension(1, 10.0F, localResources.getDisplayMetrics()));
     localLayoutParams.gravity = 17;
     int i = (int)TypedValue.applyDimension(1, 3.0F, localResources.getDisplayMetrics());
     localLayoutParams.leftMargin = i;
     localLayoutParams.rightMargin = i;
-    localjvr.setLayoutParams(localLayoutParams);
-    localjvr.setClickable(false);
-    localjvr.setFocusable(false);
-    return localjvr;
+    localmhj.setLayoutParams(localLayoutParams);
+    localmhj.setClickable(false);
+    localmhj.setFocusable(false);
+    return localmhj;
   }
   
   public void a()

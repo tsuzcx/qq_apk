@@ -1,32 +1,49 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class vla
-  implements ValueAnimator.AnimatorUpdateListener
+final class vla
+  implements bfah
 {
-  public vla(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  vla(String paramString, vij paramvij, vkr paramvkr) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(BaseResp paramBaseResp)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (ViewGroup.MarginLayoutParams)UnlimitedBladeWorks.a(this.a).getLayoutParams();
-    if (UnlimitedBladeWorks.a(this.a)) {
-      paramValueAnimator.leftMargin = 0;
-    }
-    for (paramValueAnimator.rightMargin = i;; paramValueAnimator.rightMargin = 0)
-    {
-      UnlimitedBladeWorks.a(this.a).setLayoutParams(paramValueAnimator);
+    if (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction)) {
       return;
-      paramValueAnimator.leftMargin = i;
+    }
+    switch (paramBaseResp.errCode)
+    {
+    case -3: 
+    case -1: 
+    default: 
+      if (this.jdField_a_of_type_Vij != null) {
+        this.jdField_a_of_type_Vij.b(this.jdField_a_of_type_Vkr);
+      }
+      break;
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      if (this.jdField_a_of_type_Vij != null)
+      {
+        this.jdField_a_of_type_Vij.a(this.jdField_a_of_type_Vkr);
+        continue;
+        if (this.jdField_a_of_type_Vij != null)
+        {
+          this.jdField_a_of_type_Vij.c(this.jdField_a_of_type_Vkr);
+          continue;
+          if (this.jdField_a_of_type_Vij != null) {
+            this.jdField_a_of_type_Vij.b(this.jdField_a_of_type_Vkr);
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vla
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SttResultPush$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "uint32_sub_cmd", "msg_ptt_resp" }, new Object[] { Integer.valueOf(0), null }, MsgBody.class);
   public SttResultPush.TransPttResp msg_ptt_resp = new SttResultPush.TransPttResp();

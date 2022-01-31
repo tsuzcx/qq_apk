@@ -1,18 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.ui.VideoControlUI;
 
-class mmg
-  implements Runnable
+public class mmg
+  extends Handler
 {
-  mmg(mmf parammmf) {}
-  
-  public void run()
+  public mmg(VideoControlUI paramVideoControlUI, Looper paramLooper)
   {
-    FastWebActivity.d(this.a.a);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    String str = (String)paramMessage.obj;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 256: 
+      mdd.a(this.a.a, 1037, str);
+      return;
+    }
+    mdd.a(this.a.a, 1036, str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mmg
  * JD-Core Version:    0.7.0.1
  */

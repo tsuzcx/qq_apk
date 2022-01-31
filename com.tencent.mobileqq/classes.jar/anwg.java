@@ -1,38 +1,71 @@
-import android.os.Message;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.Mp4VideoFragmentInfo;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
+import android.os.Bundle;
+import android.util.SparseArray;
+import mqq.observer.BusinessObserver;
 
-class anwg
-  implements Runnable
+public class anwg
+  implements BusinessObserver
 {
-  anwg(anwf paramanwf) {}
+  private static anwg jdField_a_of_type_Anwg;
+  private int jdField_a_of_type_Int;
+  private final SparseArray<anwf> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   
-  public void run()
+  public static anwg a()
   {
-    if (this.a.a.jdField_a_of_type_JavaUtilList.size() > 0)
+    if (jdField_a_of_type_Anwg == null) {}
+    try
     {
-      HWEditLocalVideoPlayer.Mp4VideoFragmentInfo localMp4VideoFragmentInfo = (HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)this.a.a.jdField_a_of_type_JavaUtilList.get(0);
-      HWEditLocalVideoPlayer.a(this.a.a, localMp4VideoFragmentInfo);
+      if (jdField_a_of_type_Anwg == null) {
+        jdField_a_of_type_Anwg = new anwg();
+      }
+      return jdField_a_of_type_Anwg;
+    }
+    finally {}
+  }
+  
+  public int a(Context paramContext, anvn paramanvn)
+  {
+    return a(new anwf(paramContext, paramanvn));
+  }
+  
+  public int a(Context paramContext, anvs paramanvs)
+  {
+    return a(new anwf(paramContext, paramanvs));
+  }
+  
+  public int a(anwf paramanwf)
+  {
+    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+    {
+      SparseArray localSparseArray2 = this.jdField_a_of_type_AndroidUtilSparseArray;
+      int i = this.jdField_a_of_type_Int + 1;
+      this.jdField_a_of_type_Int = i;
+      localSparseArray2.append(i, paramanwf);
+      i = this.jdField_a_of_type_Int;
+      return i;
+    }
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("req_id");
+    anwf localanwf = (anwf)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(Message.obtain(null, 8));
-      HWEditLocalVideoPlayer.a(this.a.a, this.a.a.jdField_a_of_type_Int);
-      HWEditLocalVideoPlayer.a(this.a.a).set(true);
-      this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a(true);
+      this.jdField_a_of_type_AndroidUtilSparseArray.delete(i);
       return;
-      SLog.e("Q.qqstory.record.HWEditLocalVideoPlayer", "mFragmentInfos is empty");
+      localanwf.b(paramBoolean, paramBundle.getBoolean("allow_download", true), paramBundle.getInt("err_code", 0), paramBundle.getString("err_msg"), paramBundle.getString("jump_url"));
+      continue;
+      localanwf.b(paramBoolean, paramBundle.getInt("jump", 0), paramBundle.getInt("err_code", 0), paramBundle.getString("err_msg"));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anwg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,49 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils.CreateCommentInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.util.SparseArray;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.EffectMutexManager.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class ljq
-  implements ReadInJoyCommentUtils.CreateCommentInterface
+  extends ljg
 {
-  public ljq(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment, String paramString) {}
+  private volatile SparseArray<ljr> a;
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  protected ljq(VideoAppInterface paramVideoAppInterface)
   {
-    QQToast.a(BaseApplication.getContext(), 1, BaseApplication.getContext().getString(2131438878), 0).a();
+    super(paramVideoAppInterface);
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
-  public void a(String paramString, CommentInfo paramCommentInfo)
+  protected void a() {}
+  
+  public void a(int paramInt, String paramString)
   {
-    ReadInJoyCommentUtils.a(ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment), this.jdField_a_of_type_JavaLangString);
-    QQToast.a(BaseApplication.getContext(), 0, BaseApplication.getContext().getString(2131438877), 0).a();
-    ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment);
-    ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment).notifyDataSetChanged();
-    ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment);
+    if (QLog.isDevelopLevel()) {
+      QLog.w("EffectMutexManager", 1, "notifyMutex, fromMuteKey[" + paramInt + "], data[" + paramString + "]");
+    }
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new EffectMutexManager.1(this, paramInt, paramString));
+  }
+  
+  public void a(int paramInt, ljr paramljr)
+  {
+    if (paramljr == null) {
+      return;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.w("EffectMutexManager", 1, "registerMutexItem, key[" + paramInt + "]");
+    }
+    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramljr);
+  }
+  
+  protected boolean a(String paramString)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ljq
  * JD-Core Version:    0.7.0.1
  */

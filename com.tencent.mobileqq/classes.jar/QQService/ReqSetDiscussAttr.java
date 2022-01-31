@@ -9,13 +9,13 @@ import java.util.Map;
 public final class ReqSetDiscussAttr
   extends JceStruct
 {
-  static Map cache_Attr;
-  public Map Attr;
+  static Map<Integer, MemberAttrInfo> cache_Attr;
+  public Map<Integer, MemberAttrInfo> Attr;
   public long DiscussUin;
   
   public ReqSetDiscussAttr() {}
   
-  public ReqSetDiscussAttr(long paramLong, Map paramMap)
+  public ReqSetDiscussAttr(long paramLong, Map<Integer, MemberAttrInfo> paramMap)
   {
     this.DiscussUin = paramLong;
     this.Attr = paramMap;

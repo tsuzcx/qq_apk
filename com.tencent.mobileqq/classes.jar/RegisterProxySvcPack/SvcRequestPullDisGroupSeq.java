@@ -11,8 +11,8 @@ public final class SvcRequestPullDisGroupSeq
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList cache_vDisInfo;
-  public ArrayList vDisInfo;
+  static ArrayList<PullDisSeqParam> cache_vDisInfo;
+  public ArrayList<PullDisSeqParam> vDisInfo;
   
   static
   {
@@ -26,7 +26,7 @@ public final class SvcRequestPullDisGroupSeq
   
   public SvcRequestPullDisGroupSeq() {}
   
-  public SvcRequestPullDisGroupSeq(ArrayList paramArrayList)
+  public SvcRequestPullDisGroupSeq(ArrayList<PullDisSeqParam> paramArrayList)
   {
     this.vDisInfo = paramArrayList;
   }
@@ -76,7 +76,7 @@ public final class SvcRequestPullDisGroupSeq
     return "RegisterProxySvcPack.SvcRequestPullDisGroupSeq";
   }
   
-  public ArrayList getVDisInfo()
+  public ArrayList<PullDisSeqParam> getVDisInfo()
   {
     return this.vDisInfo;
   }
@@ -105,7 +105,7 @@ public final class SvcRequestPullDisGroupSeq
     this.vDisInfo = ((ArrayList)paramJceInputStream.read(cache_vDisInfo, 0, true));
   }
   
-  public void setVDisInfo(ArrayList paramArrayList)
+  public void setVDisInfo(ArrayList<PullDisSeqParam> paramArrayList)
   {
     this.vDisInfo = paramArrayList;
   }
@@ -117,7 +117,7 @@ public final class SvcRequestPullDisGroupSeq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     RegisterProxySvcPack.SvcRequestPullDisGroupSeq
  * JD-Core Version:    0.7.0.1
  */

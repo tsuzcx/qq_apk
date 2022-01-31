@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0x63$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "uint64_roomid", "uint32_seq", "str_url", "str_data" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), "", "" }, MsgBody.class);
   public final PBStringField str_data = PBField.initString("");

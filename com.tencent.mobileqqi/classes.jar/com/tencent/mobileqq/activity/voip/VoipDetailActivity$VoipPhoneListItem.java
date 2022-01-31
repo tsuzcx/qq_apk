@@ -24,10 +24,10 @@ public class VoipDetailActivity$VoipPhoneListItem
   public VoipDetailActivity$VoipPhoneListItem(VoipDetailActivity paramVoipDetailActivity, Context paramContext, AttributeSet paramAttributeSet, String paramString)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(paramContext).inflate(2130904055, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234674));
+    LayoutInflater.from(paramContext).inflate(2130904057, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234676));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131234672));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131234674));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
   }
   

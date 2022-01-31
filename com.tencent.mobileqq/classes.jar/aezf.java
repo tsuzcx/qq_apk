@@ -1,39 +1,23 @@
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnInfoListener;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnInfoListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTextureImpl;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
 
 public class aezf
-  implements IMediaPlayer.OnInfoListener
+  implements behs
 {
-  public aezf(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnInfoListener paramOnInfoListener) {}
+  public aezf(ConfessHalfScreenActivity.ConfessBrowserFragment paramConfessBrowserFragment) {}
   
-  public boolean a_(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public Object a(int paramInt)
   {
-    int i;
-    if (paramInt1 == 3) {
-      i = 1;
-    }
-    for (;;)
+    switch (paramInt)
     {
-      return this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView$OnInfoListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTextureImpl, i, Integer.valueOf(paramInt2));
-      if (paramInt1 == 701)
-      {
-        i = 2;
-      }
-      else
-      {
-        i = paramInt1;
-        if (paramInt1 == 702) {
-          i = 3;
-        }
-      }
+    default: 
+      return null;
     }
+    return new aezg(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aezf
  * JD-Core Version:    0.7.0.1
  */

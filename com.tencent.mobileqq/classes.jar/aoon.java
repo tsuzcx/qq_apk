@@ -1,55 +1,47 @@
-import com.tencent.biz.common.util.ZipUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
-import java.io.File;
-import java.io.IOException;
+import org.json.JSONObject;
 
-class aoon
-  implements INetEngine.INetEngineListener
+public class aoon
 {
-  aoon(aoom paramaoom) {}
+  public int a = 1;
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public static aoon a(aoko[] paramArrayOfaoko)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Doodle_Strokes_PtvTemplateManager", 2, "onResp url: " + this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUrl + " resultcode: " + paramNetResp.c);
-    }
-    this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUsable = this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo, false);
-    if (this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUsable) {}
-    try
+    aoon localaoon = new aoon();
+    for (;;)
     {
-      ZipUtils.a(new File(PtvTemplateManager.b, this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleName), PtvTemplateManager.c);
-      if (paramNetResp.jdField_a_of_type_Int == 0)
+      int i;
+      try
       {
-        PreDownloadController localPreDownloadController = (PreDownloadController)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(192);
-        if (localPreDownloadController.a()) {
-          localPreDownloadController.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUrl, paramNetResp.jdField_a_of_type_Long);
+        int j = paramArrayOfaoko.length;
+        i = 0;
+        if (i < j)
+        {
+          JSONObject localJSONObject = new JSONObject(paramArrayOfaoko[i].a);
+          if (localJSONObject.has("cameraSwitchOnMessageTab")) {
+            localaoon.a = Integer.valueOf(localJSONObject.optString("cameraSwitchOnMessageTab")).intValue();
+          }
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("MsgTabCameraConfBean", 2, "onParsed switch= " + localaoon.a);
+          }
+          return localaoon;
         }
       }
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
+      catch (Throwable paramArrayOfaoko)
       {
-        if (QLog.isColorLevel()) {
-          localIOException.printStackTrace();
-        }
+        QLog.e("MsgTabCameraConfBean", 1, "MsgTabCameraConfBean parse error, ", paramArrayOfaoko);
+        return localaoon;
       }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoon
  * JD-Core Version:    0.7.0.1
  */

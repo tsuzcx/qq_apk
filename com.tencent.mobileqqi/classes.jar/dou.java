@@ -1,33 +1,32 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
 
 public class dou
-  implements CompoundButton.OnCheckedChangeListener
+  extends Handler
 {
-  public dou(SoundAndVibrateActivity paramSoundAndVibrateActivity, SharedPreferences paramSharedPreferences) {}
+  public dou(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    paramCompoundButton = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    paramCompoundButton.putBoolean("theme_voice_setting_" + this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.b.a(), paramBoolean);
-    paramCompoundButton.commit();
-    paramCompoundButton = this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.b;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "ThemeSound", "SwitchTabSound", 0, i, "", "", "", "");
+    if (!this.a.b.isLogin()) {
       return;
     }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.h();
+      return;
+    }
+    this.a.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dou
  * JD-Core Version:    0.7.0.1
  */

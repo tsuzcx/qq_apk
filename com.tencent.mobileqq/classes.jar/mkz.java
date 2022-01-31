@@ -1,27 +1,35 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBBCircleFragment;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.QavPanelSoundWaveView;
 
-class mkz
-  implements Animation.AnimationListener
+public class mkz
+  extends BroadcastReceiver
 {
-  mkz(mky parammky) {}
+  public mkz(QavPanel paramQavPanel) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.a != null) {
-      PublicFragmentActivity.a(this.a.a, ReadInJoyBBCircleFragment.class);
-    }
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    do
+    {
+      do
+      {
+        return;
+        if (!"android.intent.action.SCREEN_ON".equals(paramIntent.getAction())) {
+          break;
+        }
+      } while ((this.a.a == null) || (!this.a.b) || (this.a.a.getVisibility() != 0));
+      this.a.a.f();
+      return;
+    } while ((!"android.intent.action.SCREEN_OFF".equals(paramIntent.getAction())) || (this.a.a == null));
+    this.a.a.g();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mkz
  * JD-Core Version:    0.7.0.1
  */

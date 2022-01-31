@@ -1,20 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.MusicPendantView;
+import java.util.List;
 
 public class akux
-  implements View.OnClickListener
 {
-  public akux(MusicPendantView paramMusicPendantView) {}
+  public int a;
+  public long a;
+  public String a;
+  public List<String> a;
+  public String b;
   
-  public void onClick(View paramView)
+  public akux(List<String> paramList, int paramInt, String paramString1, long paramLong, String paramString2)
   {
-    this.a.b();
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akux
  * JD-Core Version:    0.7.0.1
  */

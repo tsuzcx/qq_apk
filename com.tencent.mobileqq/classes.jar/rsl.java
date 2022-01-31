@@ -1,25 +1,23 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordAdapter;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
-class rsl
-  implements Runnable
+public class rsl
+  implements oot
 {
-  rsl(rsk paramrsk, List paramList) {}
+  public rsl(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, FastWebActivity paramFastWebActivity, ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    BaseChatPie.a(this.jdField_a_of_type_Rsk.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).b();
-    BaseChatPie.a(this.jdField_a_of_type_Rsk.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).c();
-    BaseChatPie.a(this.jdField_a_of_type_Rsk.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_Rsk.jdField_a_of_type_AndroidTextEditable.toString());
-    BaseChatPie.a(this.jdField_a_of_type_Rsk.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_JavaUtilList);
-    BaseChatPie.a(this.jdField_a_of_type_Rsk.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(0);
+    if (paramInt != 2) {
+      ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rsl
  * JD-Core Version:    0.7.0.1
  */

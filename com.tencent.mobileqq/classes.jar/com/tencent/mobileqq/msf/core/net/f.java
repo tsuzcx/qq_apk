@@ -9,7 +9,6 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedReader;
 import java.io.CharArrayReader;
-import java.io.IOException;
 import java.util.Random;
 import org.apache.http.util.ByteArrayBuffer;
 
@@ -20,7 +19,7 @@ public class f
   boolean a = false;
   boolean b = false;
   Object c = null;
-  private a e = new a();
+  private a e = null;
   private long f = -1L;
   private String g;
   private int h;
@@ -43,7 +42,6 @@ public class f
   }
   
   private int[] a(String paramString)
-    throws IOException
   {
     BufferedReader localBufferedReader = new BufferedReader(new CharArrayReader(paramString.toCharArray()));
     int m = 0;

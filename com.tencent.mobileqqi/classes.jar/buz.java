@@ -1,27 +1,36 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-class buz
-  implements Runnable
+public class buz
+  implements CompoundButton.OnCheckedChangeListener
 {
-  buz(buy parambuy, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap) {}
+  public buz(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Buy.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.isResume()) && (!this.jdField_a_of_type_Buy.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.isFinishing()))
+    AssistantSettingActivity.a(this.a).setContentDescription("摇动手机截屏");
+    paramCompoundButton = this.a.b;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      if ((this.jdField_a_of_type_Buy.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_Buy.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.jdField_a_of_type_Buy.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Shake_screenshot", "Shake_screenshot_switch", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131563437), "qqsetting_screenshot_key", paramBoolean);
+      if (!paramBoolean) {
+        break;
       }
-      this.jdField_a_of_type_Buy.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(this.jdField_a_of_type_Buy.jdField_a_of_type_Int, this.jdField_a_of_type_Buy.jdField_a_of_type_ComTencentBizWebviewpluginShare.b, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.a.y();
+      return;
     }
+    this.a.z();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     buz
  * JD-Core Version:    0.7.0.1
  */

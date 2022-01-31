@@ -1,49 +1,46 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.common.util.NetworkUtil;
-import com.tencent.biz.qqstory.base.preload.PlayingListPreloader;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.IPlayVideoStatusChangeListener;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase.VideoOnErrorListener;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.playvideo.player.IVideoView;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewFactory;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class njd
-  implements View.OnClickListener
+class njd
+  extends altm
 {
-  public njd(VideoPlayModeBase.VideoOnErrorListener paramVideoOnErrorListener) {}
+  njd(nin paramnin) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
-    if (!NetworkUtil.a(VideoPlayModeBase.a()))
-    {
-      QQToast.a(VideoPlayModeBase.a(), 1, 2131430298, 0).a();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-    if (VideoViewFactory.a(BaseApplicationImpl.getContext()).a())
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.e = 0L;
-      this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.d();
-    }
+    if (this.a.jdField_a_of_type_AndroidViewViewGroup == null) {}
+    label134:
     for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryPlaymodeIPlayVideoStatusChangeListener.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.b);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
       return;
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader.a(this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      int j = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildCount();
+      int i = 0;
+      for (;;)
+      {
+        if (i >= j) {
+          break label134;
+        }
+        View localView = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
+        if (((localView.getTag() instanceof String)) && ((localView instanceof ImageView)) && (((String)localView.getTag()).equals(paramString)))
+        {
+          ((ImageView)localView).setImageDrawable(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramString));
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onUpdateTroopHead:" + paramString);
+          return;
+        }
+        i += 1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     njd
  * JD-Core Version:    0.7.0.1
  */

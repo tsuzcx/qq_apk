@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
-class agcl
-  implements Runnable
+public class agcl
+  implements PopupWindow.OnDismissListener
 {
-  agcl(agck paramagck) {}
+  public agcl(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void run()
+  public void onDismiss()
   {
-    ScanOcrActivity.a(this.a.a.a).a(0);
+    StructingMsgItemBuilder.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agcl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,26 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.SeekBar;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
-public class ymy
-  implements Runnable
+class ymy
+  implements yxu
 {
-  public ymy(ApolloTextureView paramApolloTextureView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
+  ymy(ymx paramymx, SeekBar paramSeekBar) {}
   
-  public void run()
+  public void a()
   {
-    ApolloSurfaceView.nativeTouchInput(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender().getSavaWrapper().a, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
+    Message localMessage = Message.obtain();
+    localMessage.what = 1;
+    localMessage.arg1 = this.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    localMessage.arg2 = ((int)this.jdField_a_of_type_Ymx.a.a().b());
+    localMessage.obj = Boolean.valueOf(false);
+    this.jdField_a_of_type_Ymx.a.a().sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ymy
  * JD-Core Version:    0.7.0.1
  */

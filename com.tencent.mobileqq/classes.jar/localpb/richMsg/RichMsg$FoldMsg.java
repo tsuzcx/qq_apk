@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class RichMsg$FoldMsg
-  extends MessageMicro
+  extends MessageMicro<FoldMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field fold_flags = PBField.initUInt32(0);
@@ -28,7 +28,7 @@ public final class RichMsg$FoldMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     localpb.richMsg.RichMsg.FoldMsg
  * JD-Core Version:    0.7.0.1
  */

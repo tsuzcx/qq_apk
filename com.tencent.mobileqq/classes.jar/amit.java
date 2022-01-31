@@ -1,82 +1,32 @@
-import java.util.Map.Entry;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.UpdateDiscuss;
+import com.tencent.qphone.base.util.QLog;
 
 public class amit
-  implements Map.Entry
+  extends alrl
 {
-  private final Object a;
-  private Object b;
+  private amit(UpdateDiscuss paramUpdateDiscuss) {}
   
-  public amit(Map.Entry paramEntry)
+  protected void a(boolean paramBoolean)
   {
-    this.a = paramEntry.getKey();
-    this.b = paramEntry.getValue();
-  }
-  
-  private static boolean a(Object paramObject1, Object paramObject2)
-  {
-    if (paramObject1 == null) {
-      return paramObject2 == null;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "updateDiscussionList: " + paramBoolean);
     }
-    return paramObject1.equals(paramObject2);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (!(paramObject instanceof Map.Entry)) {}
-    do
+    if (!paramBoolean)
     {
-      return false;
-      paramObject = (Map.Entry)paramObject;
-    } while ((!a(this.a, paramObject.getKey())) || (!a(this.b, paramObject.getValue())));
-    return true;
-  }
-  
-  public Object getKey()
-  {
-    return this.a;
-  }
-  
-  public Object getValue()
-  {
-    return this.b;
-  }
-  
-  public int hashCode()
-  {
-    int j = 0;
-    int i;
-    if (this.a == null)
-    {
-      i = 0;
-      if (this.b != null) {
-        break label33;
-      }
+      this.a.a(6);
+      return;
     }
-    for (;;)
-    {
-      return i ^ j;
-      i = this.a.hashCode();
-      break;
-      label33:
-      j = this.b.hashCode();
-    }
-  }
-  
-  public Object setValue(Object paramObject)
-  {
-    Object localObject = this.b;
-    this.b = paramObject;
-    return localObject;
-  }
-  
-  public String toString()
-  {
-    return this.a + "=" + this.b;
+    this.a.a.a.edit().putBoolean("isDiscussionlistok", true).commit();
+    this.a.a.notifyUI(3, true, Integer.valueOf(3));
+    this.a.a(7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amit
  * JD-Core Version:    0.7.0.1
  */

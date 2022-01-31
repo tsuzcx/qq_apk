@@ -1,20 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
+import com.tencent.mobileqq.magicface.view.MagicfaceView;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 
-public class gbb
+class gbb
   implements Runnable
 {
-  public gbb(UniformDownloadMgr paramUniformDownloadMgr, String paramString, Bundle paramBundle) {}
+  gbb(gaz paramgaz, ActionGlobalData paramActionGlobalData) {}
   
   public void run()
   {
-    UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
+    
+    if (this.jdField_a_of_type_Gaz.jdField_a_of_type_Int == 1)
+    {
+      MagicfaceViewController.a(this.jdField_a_of_type_Gaz.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).setBackgroundColor(0);
+      this.jdField_a_of_type_Gaz.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a();
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData != null) && ("gravity".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.h)) && (PreferenceManager.getDefaultSharedPreferences(MagicfaceViewController.a(this.jdField_a_of_type_Gaz.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController)).getBoolean(MagicfaceViewController.a(this.jdField_a_of_type_Gaz.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).getString(2131563437), false))) {
+      MagicfaceViewController.a(this.jdField_a_of_type_Gaz.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).y();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gbb
  * JD-Core Version:    0.7.0.1
  */

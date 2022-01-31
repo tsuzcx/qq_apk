@@ -1,29 +1,32 @@
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
-import java.util.Stack;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.applist.QZoneAppListActivity;
+import com.tencent.open.base.LogUtility;
+import com.tencent.smtt.sdk.WebView;
 
 public class hle
+  implements View.OnClickListener
 {
-  private Stack jdField_a_of_type_JavaUtilStack = new Stack();
+  public hle(QZoneAppListActivity paramQZoneAppListActivity) {}
   
-  public hle(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
-  
-  public AnimationTextView a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
-      return null;
+    LogUtility.b("QZoneAppListActivity", "button onClick!!!");
+    if (TextUtils.isEmpty(QZoneAppListActivity.a(this.a)))
+    {
+      this.a.d();
+      QZoneAppListActivity.a(this.a);
+      QZoneAppListActivity.a(this.a).sendEmptyMessage(3);
+      return;
     }
-    return (AnimationTextView)this.jdField_a_of_type_JavaUtilStack.pop();
-  }
-  
-  public void a(AnimationTextView paramAnimationTextView)
-  {
-    this.jdField_a_of_type_JavaUtilStack.push(paramAnimationTextView);
+    this.a.a.loadUrl("javascript:JsBridge.callback(\"" + QZoneAppListActivity.b(this.a) + "\");void(0);");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hle
  * JD-Core Version:    0.7.0.1
  */

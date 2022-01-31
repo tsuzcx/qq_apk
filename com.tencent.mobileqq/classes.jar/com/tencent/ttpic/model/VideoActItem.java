@@ -2,10 +2,10 @@ package com.tencent.ttpic.model;
 
 import android.graphics.PointF;
 import android.opengl.GLES20;
+import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.filter.BaseFilter;
-import com.tencent.filter.Frame;
-import com.tencent.ttpic.recorder.ActVideoDecoder;
-import com.tencent.ttpic.util.BenchUtil;
+import com.tencent.ttpic.baseutils.fps.BenchUtil;
+import com.tencent.ttpic.openapi.recorder.ActVideoDecoder;
 import java.util.List;
 
 public class VideoActItem
@@ -35,12 +35,18 @@ public class VideoActItem
   
   public int getOrigHeight(int paramInt)
   {
-    return this.decoder.getHeight();
+    if (this.decoder != null) {
+      return this.decoder.getHeight();
+    }
+    return 0;
   }
   
   public int getOrigWidth(int paramInt)
   {
-    return this.decoder.getWidth() / 2;
+    if (this.decoder != null) {
+      return this.decoder.getWidth() / 2;
+    }
+    return 0;
   }
   
   public int getTexture(CanvasItem paramCanvasItem, long paramLong)
@@ -58,21 +64,26 @@ public class VideoActItem
   
   public void reset()
   {
-    this.decoder.reset();
+    if (this.decoder != null) {
+      this.decoder.reset();
+    }
   }
   
-  public void update(Frame paramFrame, long paramLong, List<List<PointF>> paramList, List<float[]> paramList1, double paramDouble, int paramInt)
+  public void update(Frame paramFrame, long paramLong, List<List<PointF>> paramList, List<float[]> paramList1, int paramInt)
   {
     BenchUtil.benchStart(TAG + "[update]");
-    super.update(paramFrame, paramLong, paramList, paramList1, paramDouble, paramInt);
-    this.decoder.decodeFrame(paramLong);
-    this.decoder.updateFrame();
+    super.update(paramFrame, paramLong, paramList, paramList1, paramInt);
+    if (this.decoder != null)
+    {
+      this.decoder.decodeFrame(paramLong);
+      this.decoder.updateFrame();
+    }
     BenchUtil.benchEnd(TAG + "[update]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.model.VideoActItem
  * JD-Core Version:    0.7.0.1
  */

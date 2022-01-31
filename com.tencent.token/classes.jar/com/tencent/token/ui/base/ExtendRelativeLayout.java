@@ -32,24 +32,34 @@ public class ExtendRelativeLayout
       if (paramInt1 < paramInt3)
       {
         localView = getChildAt(paramInt1);
-        if (localView.getVisibility() != 8)
-        {
-          int[] arrayOfInt = ((RelativeLayout.LayoutParams)localView.getLayoutParams()).getRules();
-          if ((arrayOfInt[13] == 0) && (arrayOfInt[15] == 0)) {
-            break label108;
-          }
-        }
+        if (localView.getVisibility() != 8) {}
       }
     }
-    label108:
-    for (paramInt2 = (getPaddingTop() - getPaddingBottom()) / 2;; paramInt2 = 0)
+    label114:
+    for (;;)
     {
-      if (paramInt2 != 0) {
-        localView.offsetTopAndBottom(paramInt2);
-      }
       paramInt1 += 1;
       break;
-      return;
+      int[] arrayOfInt = ((RelativeLayout.LayoutParams)localView.getLayoutParams()).getRules();
+      if ((arrayOfInt[13] != 0) || (arrayOfInt[15] != 0)) {}
+      for (paramInt2 = (getPaddingTop() - getPaddingBottom()) / 2;; paramInt2 = 0)
+      {
+        if (paramInt2 == 0) {
+          break label114;
+        }
+        localView.offsetTopAndBottom(paramInt2);
+        break;
+        return;
+      }
+    }
+  }
+  
+  public void setLayoutConsiderPadding(boolean paramBoolean)
+  {
+    if (this.a != paramBoolean)
+    {
+      this.a = paramBoolean;
+      requestLayout();
     }
   }
 }

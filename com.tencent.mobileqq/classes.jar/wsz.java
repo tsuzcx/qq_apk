@@ -1,49 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AvatarPendantUtil;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.mobileqq.vip.DownloaderInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-
-public class wsz
-  implements Runnable
+public abstract interface wsz
 {
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference b;
+  public abstract Object a();
   
-  public wsz(AvatarPendantActivity paramAvatarPendantActivity, DownloadListener paramDownloadListener, QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDownloadListener);
-    this.b = new WeakReference(paramQQAppInterface);
-  }
+  public abstract String a();
   
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AvatarPendantActivity", 2, "checkAvatarPendantMarketIcon start...");
-    }
-    if ((this.b.get() != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
-    {
-      DownloaderInterface localDownloaderInterface = ((DownloaderFactory)((QQAppInterface)this.b.get()).getManager(46)).a(1);
-      if (localDownloaderInterface.a(AvatarPendantUtil.a) == null)
-      {
-        Object localObject = new File(AvatarPendantUtil.b + "/icon.zip");
-        localObject = new DownloadTask(AvatarPendantUtil.a, (File)localObject);
-        ((DownloadTask)localObject).n = false;
-        Bundle localBundle = new Bundle();
-        localDownloaderInterface.a((DownloadTask)localObject, (DownloadListener)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localBundle);
-      }
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(Object paramObject);
+  
+  public abstract void a(wta paramwta);
+  
+  public abstract void a(wtb paramwtb);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wsz
  * JD-Core Version:    0.7.0.1
  */

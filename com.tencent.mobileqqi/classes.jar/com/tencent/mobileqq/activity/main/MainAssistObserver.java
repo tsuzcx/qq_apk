@@ -32,6 +32,7 @@ import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.MsgTabUnreadListener;
 import com.tencent.mobileqq.app.NewFriendManager;
+import com.tencent.mobileqq.app.PrivacyDeclareHelper.Callback;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SecSigObserver;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -64,31 +65,41 @@ import com.tencent.mobileqq.vaswebviewplugin.ThemeUiPlugin;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.BadgeUtils;
-import emw;
-import emx;
-import emy;
-import emz;
-import ena;
-import enb;
-import enc;
-import end;
-import ene;
-import enf;
-import eni;
-import enj;
-import enk;
-import eno;
-import enp;
-import enq;
-import enr;
-import ens;
-import ent;
-import enu;
-import env;
-import enx;
+import eht;
+import ehu;
+import ehv;
+import ehw;
+import ehx;
+import ehy;
+import ehz;
+import eia;
+import eib;
+import eic;
+import eid;
+import eie;
+import eif;
+import eig;
+import eih;
+import eii;
+import eij;
+import eim;
+import ein;
+import eiu;
+import eiw;
+import eix;
+import eiy;
+import eiz;
+import ejc;
+import ejd;
+import eje;
+import ejg;
+import eji;
+import ejj;
 import java.io.PrintStream;
 import java.util.Timer;
 import mqq.app.AppRuntime;
+import mqq.app.permission.PermissionItem;
+import mqq.app.permission.PermissionManager;
 import mqq.manager.ServerConfigManager;
 import mqq.manager.ServerConfigManager.ConfigType;
 import protocol.KQQConfig.UpgradeInfo;
@@ -96,33 +107,35 @@ import protocol.KQQConfig.UpgradeInfo;
 public class MainAssistObserver
 {
   public int a;
-  Handler jdField_a_of_type_AndroidOsHandler = new enk(this, Looper.getMainLooper());
+  Handler jdField_a_of_type_AndroidOsHandler = new ein(this, Looper.getMainLooper());
   public SplashActivity a;
-  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new ene(this);
+  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new eii(this);
   public FriendListObserver a;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new enr(this);
-  private MsgTabUnreadListener jdField_a_of_type_ComTencentMobileqqAppMsgTabUnreadListener = new enc(this);
-  private SecSigObserver jdField_a_of_type_ComTencentMobileqqAppSecSigObserver = new enf(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new eiz(this);
+  private MsgTabUnreadListener jdField_a_of_type_ComTencentMobileqqAppMsgTabUnreadListener = new eig(this);
+  public PrivacyDeclareHelper.Callback a;
+  private SecSigObserver jdField_a_of_type_ComTencentMobileqqAppSecSigObserver = new eij(this);
   private UpgradeDetailWrapper jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper;
-  private ResourcePluginListener jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new ena(this);
-  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new end(this);
-  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new emz(this);
-  private QZoneObserver jdField_a_of_type_ComTencentMobileqqObserverQZoneObserver = new emy(this);
+  private ResourcePluginListener jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new eid(this);
+  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new eih(this);
+  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new eic(this);
+  private QZoneObserver jdField_a_of_type_ComTencentMobileqqObserverQZoneObserver = new eib(this);
   SdCardChangeListener jdField_a_of_type_ComTencentMobileqqObserverSdCardChangeListener = null;
   public MainAcitivityReportHelper a;
   public QQCustomDialog a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new enj(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new eie(this);
   public boolean a;
   public int b;
-  private ResourcePluginListener b;
+  private ResourcePluginListener jdField_b_of_type_ComTencentMobileqqConfigResourcePluginListener = new eif(this);
+  private QQCustomDialog jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   private int c = 0;
   
   public MainAssistObserver(SplashActivity paramSplashActivity)
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Int = 131072257;
-    this.jdField_b_of_type_ComTencentMobileqqConfigResourcePluginListener = new enb(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new eni(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppPrivacyDeclareHelper$Callback = new eia(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new eim(this);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity = paramSplashActivity;
     this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper = UpgradeController.a().a();
@@ -132,6 +145,25 @@ public class MainAssistObserver
   private void a(int paramInt)
   {
     ((MessageHandler)this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b.a(0)).b(paramInt);
+  }
+  
+  private void a(ejj paramejj)
+  {
+    LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity).inflate(2130903218, null);
+    TextView localTextView = (TextView)localLinearLayout.findViewById(2131231660);
+    Button localButton = (Button)localLinearLayout.findViewById(2131231661);
+    localButton.setEnabled(false);
+    localTextView.setOnClickListener(new ejg(this, localTextView, localButton));
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230);
+    localQQCustomDialog.addView(localLinearLayout);
+    localQQCustomDialog.setTitle(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563352));
+    localQQCustomDialog.setDividerGone();
+    localQQCustomDialog.setCancelable(false);
+    localQQCustomDialog.setBottomLayoutGone();
+    localQQCustomDialog.setCanceledOnTouchOutside(false);
+    localQQCustomDialog.setOnDismissListener(new eji(this));
+    localButton.setOnClickListener(new ehu(this, localTextView, paramejj, localQQCustomDialog));
+    localQQCustomDialog.show();
   }
   
   private boolean a()
@@ -178,42 +210,39 @@ public class MainAssistObserver
     return this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b.a().getSharedPreferences("mobileQQi", 0).getBoolean("individuation_newflag", true);
   }
   
-  private void l()
+  private void m()
   {
-    LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity).inflate(2130903218, null);
-    Object localObject = (RadioGroup)localLinearLayout.findViewById(2131231661);
-    RadioButton localRadioButton1 = (RadioButton)localLinearLayout.findViewById(2131231662);
-    RadioButton localRadioButton2 = (RadioButton)localLinearLayout.findViewById(2131231663);
-    Button localButton = (Button)localLinearLayout.findViewById(2131231664);
+    LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity).inflate(2130903220, null);
+    Object localObject = (RadioGroup)localLinearLayout.findViewById(2131231664);
+    RadioButton localRadioButton1 = (RadioButton)localLinearLayout.findViewById(2131231665);
+    RadioButton localRadioButton2 = (RadioButton)localLinearLayout.findViewById(2131231666);
+    Button localButton = (Button)localLinearLayout.findViewById(2131231663);
     localButton.setEnabled(false);
-    ((RadioGroup)localObject).setOnCheckedChangeListener(new ens(this, localRadioButton1, localRadioButton2, localButton));
+    ((RadioGroup)localObject).setOnCheckedChangeListener(new ejc(this, localRadioButton1, localRadioButton2, localButton));
     localObject = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230);
     ((QQCustomDialog)localObject).addView(localLinearLayout);
     ((QQCustomDialog)localObject).setDividerGone();
     ((QQCustomDialog)localObject).setCancelable(false);
     ((QQCustomDialog)localObject).setBottomLayoutGone();
     ((QQCustomDialog)localObject).setCanceledOnTouchOutside(false);
-    ((QQCustomDialog)localObject).setOnDismissListener(new ent(this, localRadioButton2));
-    localButton.setOnClickListener(new enu(this, localRadioButton1, (QQCustomDialog)localObject, localRadioButton2));
+    ((QQCustomDialog)localObject).setOnDismissListener(new ejd(this, localRadioButton2));
+    localButton.setOnClickListener(new eje(this, localRadioButton1, (QQCustomDialog)localObject, localRadioButton2));
     ((QQCustomDialog)localObject).show();
   }
   
-  private void m()
+  private void n()
   {
-    LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity).inflate(2130903217, null);
-    TextView localTextView = (TextView)localLinearLayout.findViewById(2131231659);
-    Button localButton = (Button)localLinearLayout.findViewById(2131231660);
-    localButton.setEnabled(false);
-    localTextView.setOnClickListener(new env(this, localTextView, localButton));
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230);
-    localQQCustomDialog.addView(localLinearLayout);
-    localQQCustomDialog.setTitle(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563352));
+    QQCustomDialog localQQCustomDialog = DialogUtil.c(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230, null, null, 2131561842, 2131562463, null, null);
+    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = localQQCustomDialog;
+    localQQCustomDialog.setMessage(2131563364);
     localQQCustomDialog.setDividerGone();
     localQQCustomDialog.setCancelable(false);
-    localQQCustomDialog.setBottomLayoutGone();
     localQQCustomDialog.setCanceledOnTouchOutside(false);
-    localQQCustomDialog.setOnDismissListener(new enx(this));
-    localButton.setOnClickListener(new emx(this, localTextView, localQQCustomDialog));
+    ehx localehx = new ehx(this);
+    ehy localehy = new ehy(this);
+    localQQCustomDialog.setOnDismissListener(new ehz(this));
+    localQQCustomDialog.setPositiveButton(2131562463, localehx);
+    localQQCustomDialog.setNegativeButton(2131561842, localehy);
     localQQCustomDialog.show();
   }
   
@@ -264,7 +293,7 @@ public class MainAssistObserver
       System.out.println("SecShell : art L");
       return;
     }
-    k();
+    l();
   }
   
   public void a(int paramInt1, int paramInt2, Object paramObject)
@@ -282,9 +311,6 @@ public class MainAssistObserver
     localIntent.putExtra("logout_intent", true);
     localIntent.putExtra("tab_index", 0);
     localIntent.putExtra("logoutForEUunder16", true);
-    if (paramBoolean) {
-      localIntent.putExtra("isFbLogin", paramBoolean);
-    }
     ThemeUiPlugin.destroy(paramQQAppInterface);
     ChatBackgroundSettingActivity.f();
     BadgeUtils.d(paramQQAppInterface.a(), 0);
@@ -307,6 +333,13 @@ public class MainAssistObserver
     paramActivity.finish();
   }
   
+  public void a(SplashActivity paramSplashActivity)
+  {
+    if (!paramSplashActivity.permissionManager.checkPermission("android.permission.WRITE_EXTERNAL_STORAGE")) {
+      paramSplashActivity.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).requests(new eiu(this, paramSplashActivity));
+    }
+  }
+  
   public boolean a(QQAppInterface paramQQAppInterface)
   {
     SystemUtil.a(BaseApplicationImpl.getContext());
@@ -327,11 +360,11 @@ public class MainAssistObserver
       ReportLog.a(null, "SplashActivity onCreate()");
       localObject = paramQQAppInterface.a();
       if ((localObject != null) && (((String)localObject).length() != 0)) {
-        break label307;
+        break label308;
       }
       localObject = "0";
     }
-    label307:
+    label308:
     for (;;)
     {
       ((ServerConfigManager)paramQQAppInterface.getManager(4)).report((byte)4, "", AppSetting.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, (String)localObject));
@@ -402,7 +435,7 @@ public class MainAssistObserver
   
   public void c()
   {
-    ThreadManager.a().schedule(new emw(this), 500L);
+    ThreadManager.a().schedule(new eht(this), 500L);
   }
   
   public void d()
@@ -420,10 +453,18 @@ public class MainAssistObserver
   
   public void e()
   {
-    new Timer().schedule(new enq(this), 500L);
+    new Timer().schedule(new eiy(this), 500L);
   }
   
   public void f()
+  {
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230).setTitle(null).setMessage(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563349));
+    localQQCustomDialog.setPositiveButton(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563363), new ehv(this));
+    localQQCustomDialog.setNegativeButton(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131561842), new ehw(this));
+    localQQCustomDialog.show();
+  }
+  
+  public void g()
   {
     int j = 1;
     int k = 0;
@@ -511,7 +552,7 @@ public class MainAssistObserver
     }
   }
   
-  public void g()
+  public void h()
   {
     int i;
     int j;
@@ -553,13 +594,13 @@ public class MainAssistObserver
     a(34, 16, Integer.valueOf(0));
   }
   
-  public void h()
+  public void i()
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b == null)) {
       return;
     }
     QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b;
-    f();
+    g();
     Object localObject = (NewFriendManager)localQQAppInterface.getManager(32);
     if ((localQQAppInterface.a() != null) && (localQQAppInterface.a().b(AppConstants.R, 4000))) {}
     for (int i = ((NewFriendManager)localObject).a();; i = 0)
@@ -571,12 +612,12 @@ public class MainAssistObserver
         localObject = new Intent("com.tencent.qqi.syncQQMessage");
         localQQAppInterface.a().sendBroadcast((Intent)localObject);
       }
-      g();
+      h();
       return;
     }
   }
   
-  public void i()
+  public void j()
   {
     if (GesturePWDUtils.getStartFromSplash(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity))
     {
@@ -599,12 +640,12 @@ public class MainAssistObserver
     label167:
     for (Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563130);; localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563043))
     {
-      DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230, str, (String)localObject, 2131561746, 2131562791, new eno(this), new enp(this)).show();
+      DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230, str, (String)localObject, 2131561746, 2131562791, new eiw(this), new eix(this)).show();
       return;
     }
   }
   
-  public void j()
+  public void k()
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b != null))
     {
@@ -622,7 +663,7 @@ public class MainAssistObserver
     }
   }
   
-  public void k()
+  public void l()
   {
     System.out.println("consolidateMethod");
   }

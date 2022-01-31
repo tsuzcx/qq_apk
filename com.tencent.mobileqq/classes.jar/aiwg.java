@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
 
 public class aiwg
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aiwg(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public aiwg(RedPacketPopFragment paramRedPacketPopFragment) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.l = false;
+    paramDialogInterface.dismiss();
   }
 }
 

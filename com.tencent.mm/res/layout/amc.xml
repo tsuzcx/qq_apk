@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:layout_gravity="center" android:id="@id/wj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t" />
+    <com.tencent.mm.pluginsdk.ui.emoji.MMEmojiView android:layout_gravity="center" android:id="@id/bl" android:padding="@dimen/ll" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/hj" />
+</FrameLayout>

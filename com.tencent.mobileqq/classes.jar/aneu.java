@@ -1,21 +1,12 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import cooperation.thirdpay.ThirdPayGate;
-
-public class aneu
-  implements DialogInterface.OnClickListener
+class aneu
 {
-  public aneu(ThirdPayGate paramThirdPayGate, Bundle paramBundle, Activity paramActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("isactivityfinish")) {
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-    }
-  }
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  int b;
+  int c;
+  int d;
+  int e;
+  int f;
 }
 
 

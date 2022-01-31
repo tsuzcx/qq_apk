@@ -13,9 +13,9 @@ import java.util.ArrayList;
 public class MessageObserver
   implements BusinessObserver
 {
-  protected void a() {}
+  public void a() {}
   
-  protected void a(int paramInt1, int paramInt2) {}
+  public void a(int paramInt1, int paramInt2) {}
   
   public void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
@@ -363,81 +363,81 @@ public class MessageObserver
     }
   }
   
-  protected void a(Object paramObject) {}
+  public void a(Object paramObject) {}
   
-  protected void a(String paramString) {}
+  public void a(String paramString) {}
   
-  protected void a(String paramString, int paramInt1, int paramInt2) {}
+  public void a(String paramString, int paramInt1, int paramInt2) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2) {}
+  public void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2) {}
   
   public void a(boolean paramBoolean) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2) {}
+  public void a(boolean paramBoolean, long paramLong1, long paramLong2) {}
   
-  protected void a(boolean paramBoolean, RespTmpChatPicDownload paramRespTmpChatPicDownload) {}
+  public void a(boolean paramBoolean, RespTmpChatPicDownload paramRespTmpChatPicDownload) {}
   
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo) {}
+  public void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo) {}
   
   protected void a(boolean paramBoolean, MessageFactoryReceiver.OffLineFileInfo paramOffLineFileInfo) {}
   
   protected void a(boolean paramBoolean, MessageFactoryReceiver.OffLineFileInfo paramOffLineFileInfo, MessageObserver.StatictisInfo paramStatictisInfo) {}
   
-  protected void a(boolean paramBoolean, MessageFactoryReceiver.UploadStreamStruct paramUploadStreamStruct) {}
+  public void a(boolean paramBoolean, MessageFactoryReceiver.UploadStreamStruct paramUploadStreamStruct) {}
   
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  public void a(boolean paramBoolean, Object paramObject) {}
   
-  protected void a(boolean paramBoolean, String paramString) {}
+  public void a(boolean paramBoolean, String paramString) {}
   
   protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2) {}
   
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4) {}
+  public void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4) {}
   
   public void a(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData) {}
   
   public void a(boolean paramBoolean, String paramString1, String paramString2) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString) {}
+  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString) {}
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, String paramString3, String paramString4, ArrayList paramArrayList) {}
   
   protected void a(boolean paramBoolean, byte[] paramArrayOfByte, MessageObserver.StatictisInfo paramStatictisInfo) {}
   
-  protected void a(boolean paramBoolean, String[] paramArrayOfString) {}
+  public void a(boolean paramBoolean, String[] paramArrayOfString) {}
   
-  protected void b() {}
+  public void b() {}
   
-  protected void b(Object paramObject) {}
+  public void b(Object paramObject) {}
   
-  protected void b(boolean paramBoolean) {}
+  public void b(boolean paramBoolean) {}
   
-  protected void b(boolean paramBoolean, String paramString) {}
+  public void b(boolean paramBoolean, String paramString) {}
   
   public void b(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData) {}
   
-  protected void c() {}
+  public void c() {}
   
-  protected void c(boolean paramBoolean) {}
+  public void c(boolean paramBoolean) {}
   
-  protected void c(boolean paramBoolean, String paramString) {}
+  public void c(boolean paramBoolean, String paramString) {}
   
-  protected void d() {}
+  public void d() {}
   
-  protected void d(boolean paramBoolean) {}
+  public void d(boolean paramBoolean) {}
   
-  protected void d(boolean paramBoolean, String paramString) {}
+  public void d(boolean paramBoolean, String paramString) {}
   
   protected void e() {}
   
-  protected void e(boolean paramBoolean) {}
+  public void e(boolean paramBoolean) {}
   
-  protected void f(boolean paramBoolean) {}
+  public void f(boolean paramBoolean) {}
   
-  protected void g(boolean paramBoolean) {}
+  public void g(boolean paramBoolean) {}
   
-  protected void h(boolean paramBoolean) {}
+  public void h(boolean paramBoolean) {}
   
   protected void i(boolean paramBoolean) {}
 }

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.dinifly;
 
 import android.support.v4.util.ArraySet;
-import android.support.v4.util.Pair;
 import android.util.Log;
+import android.util.Pair;
 import com.tencent.mobileqq.dinifly.utils.MeanCalculator;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,25 +17,11 @@ import java.util.Set;
 public class PerformanceTracker
 {
   private boolean enabled = false;
-  private final Comparator<Pair<String, Float>> floatComparator = new Comparator()
-  {
-    public int compare(Pair<String, Float> paramAnonymousPair1, Pair<String, Float> paramAnonymousPair2)
-    {
-      float f1 = ((Float)paramAnonymousPair1.second).floatValue();
-      float f2 = ((Float)paramAnonymousPair2.second).floatValue();
-      if (f2 > f1) {
-        return 1;
-      }
-      if (f1 > f2) {
-        return -1;
-      }
-      return 0;
-    }
-  };
-  private final Set<FrameListener> frameListeners = new ArraySet();
-  private Map<String, MeanCalculator> layerRenderTimes = new HashMap();
+  private final Comparator<Pair<String, Float>> floatComparator = new PerformanceTracker.1(this);
+  private final Set<PerformanceTracker.FrameListener> frameListeners = new ArraySet();
+  private final Map<String, MeanCalculator> layerRenderTimes = new HashMap();
   
-  public void addFrameListener(FrameListener paramFrameListener)
+  public void addFrameListener(PerformanceTracker.FrameListener paramFrameListener)
   {
     this.frameListeners.add(paramFrameListener);
   }
@@ -93,17 +79,17 @@ public class PerformanceTracker
         this.layerRenderTimes.put(paramString, localMeanCalculator1);
       }
       localMeanCalculator1.add(paramFloat);
-      if (paramString.equals("root"))
+      if (paramString.equals("__container"))
       {
         paramString = this.frameListeners.iterator();
         while (paramString.hasNext()) {
-          ((FrameListener)paramString.next()).onFrameRendered(paramFloat);
+          ((PerformanceTracker.FrameListener)paramString.next()).onFrameRendered(paramFloat);
         }
       }
     }
   }
   
-  public void removeFrameListener(FrameListener paramFrameListener)
+  public void removeFrameListener(PerformanceTracker.FrameListener paramFrameListener)
   {
     this.frameListeners.add(paramFrameListener);
   }
@@ -112,15 +98,10 @@ public class PerformanceTracker
   {
     this.enabled = paramBoolean;
   }
-  
-  public static abstract interface FrameListener
-  {
-    public abstract void onFrameRendered(float paramFloat);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.PerformanceTracker
  * JD-Core Version:    0.7.0.1
  */

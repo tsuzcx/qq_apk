@@ -1,26 +1,31 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.data.NoC2CExtensionInfo;
-import mqq.os.MqqHandler;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
 
-public class roy
-  implements Runnable
+class roy
+  implements Animator.AnimatorListener
 {
-  public roy(BaseChatPie paramBaseChatPie, FriendsManager paramFriendsManager) {}
+  roy(rox paramrox, boolean paramBoolean) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    NoC2CExtensionInfo localNoC2CExtensionInfo = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true);
-    if ((localNoC2CExtensionInfo != null) && (localNoC2CExtensionInfo.audioPanelType != -1) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(40, localNoC2CExtensionInfo.audioPanelType, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int).sendToTarget();
-    }
+    rox.a(this.jdField_a_of_type_Rox, this.jdField_a_of_type_Boolean);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    rox.a(this.jdField_a_of_type_Rox, this.jdField_a_of_type_Boolean);
+    rox.a(this.jdField_a_of_type_Rox);
+    this.jdField_a_of_type_Rox.b.clearAnimation();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     roy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,18 @@
 package cooperation.qzone.report.lp;
 
-import amyr;
-import amys;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.text.TextUtils;
+import bjrf;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 
@@ -20,10 +21,19 @@ public class LpReportManager
   public static final String BASE = "LpReport.";
   private static final int DC00518_SUBTALBE = 48;
   public static final int DC02453_SUBTABLE = 32;
+  public static final int MAX_RUNNING_TASK = 2;
   private static final String TAG = "LpReport.LpReportManager";
   private static LpReportManager lpReportManager;
   private static long startTime = ;
+  ConcurrentLinkedQueue<LpReportManager.ReportRunner> mReportRunners = new ConcurrentLinkedQueue();
+  volatile int mRunningTaskNum = 0;
   private LpReportInfos storedClicks = new LpReportInfos();
+  
+  private void addReportTask(LpReportManager.ReportRunner paramReportRunner)
+  {
+    this.mReportRunners.offer(paramReportRunner);
+    runNext();
+  }
   
   public static boolean fileExists(String paramString)
   {
@@ -89,45 +99,64 @@ public class LpReportManager
       if ((paramBoolean1) && (!LpReportUtils.isNeedReport()))
       {
         LpReportUtils.showToast(paramLpReportInfo, false);
-        if (QLog.isColorLevel()) {
-          QLog.i("LpReport.LpReportManager", 4, "未被抽中：subtype:" + paramInt + " info:" + LpReportUtils.transMapToString(paramLpReportInfo.toMap()));
+        if (!QLog.isColorLevel()) {
+          continue;
         }
+        QLog.i("LpReport.LpReportManager", 4, "未被抽中：subtype:" + paramInt + " info:" + LpReportUtils.transMapToString(paramLpReportInfo.toMap()));
+        return;
       }
-      else
+      LpReportUtils.showToast(paramLpReportInfo, true);
+      if (QLog.isColorLevel()) {
+        QLog.i("LpReport.LpReportManager", 4, "isReportNow:" + paramBoolean2 + " subtype:" + paramInt + " isReportNow:" + paramBoolean2 + " info:" + LpReportUtils.transMapToString(paramLpReportInfo.toMap()));
+      }
+      synchronized (this.storedClicks)
       {
-        LpReportUtils.showToast(paramLpReportInfo, true);
-        if (QLog.isColorLevel()) {
-          QLog.i("LpReport.LpReportManager", 4, "isReportNow:" + paramBoolean2 + " subtype:" + paramInt + " isReportNow:" + paramBoolean2 + " info:" + LpReportUtils.transMapToString(paramLpReportInfo.toMap()));
+        this.storedClicks.addInfo(paramInt, paramLpReportInfo);
+        if (!LpReportUtils.meetCondition(this.storedClicks, startTime)) {
+          continue;
         }
-        synchronized (this.storedClicks)
-        {
-          this.storedClicks.addInfo(paramInt, paramLpReportInfo);
-          if (!paramBoolean2)
-          {
-            if (!LpReportUtils.meetCondition(this.storedClicks, startTime)) {
-              continue;
-            }
-            startReportImediately(3);
-          }
-        }
+        startReportImediately(3);
+        return;
       }
     }
-    startReportImediately(1);
   }
   
   private void reportAsync(int paramInt, LpReportInfo paramLpReportInfo, boolean paramBoolean1, boolean paramBoolean2)
   {
     if ((Looper.myLooper() != null) && (Looper.myLooper() == Looper.getMainLooper()))
     {
-      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new amyr(this, paramInt, paramLpReportInfo, paramBoolean1, paramBoolean2));
+      if (BaseApplicationImpl.sProcessId == 1)
+      {
+        addReportTask(new LpReportManager.ReportRunner(this, paramInt, paramLpReportInfo, paramBoolean1, paramBoolean2));
+        return;
+      }
+      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new LpReportManager.1(this, paramInt, paramLpReportInfo, paramBoolean1, paramBoolean2));
       return;
     }
     report(paramInt, paramLpReportInfo, paramBoolean1, paramBoolean2);
   }
   
+  private void runNext()
+  {
+    if (this.mRunningTaskNum < 2)
+    {
+      LpReportManager.ReportRunner localReportRunner = (LpReportManager.ReportRunner)this.mReportRunners.poll();
+      if (localReportRunner != null)
+      {
+        this.mRunningTaskNum += 1;
+        ThreadManager.excute(localReportRunner, 64, null, true);
+      }
+    }
+  }
+  
   public void reportToDC001831(LpReportInfo_dc01831 paramLpReportInfo_dc01831, boolean paramBoolean1, boolean paramBoolean2)
   {
     reportAsync(13, paramLpReportInfo_dc01831, paramBoolean1, paramBoolean2);
+  }
+  
+  public void reportToDC00307(LpReportInfo_dc00307 paramLpReportInfo_dc00307, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    reportAsync(57, paramLpReportInfo_dc00307, paramBoolean1, paramBoolean2);
   }
   
   public void reportToDC00321(LpReportInfo_dc00321 paramLpReportInfo_dc00321, boolean paramBoolean1, boolean paramBoolean2)
@@ -220,6 +249,44 @@ public class LpReportManager
     reportAsync(47, paramLpReport_Retention_dc03208, paramBoolean1, paramBoolean2);
   }
   
+  public void reportToDC03701(LpReportInfo_dc03701 paramLpReportInfo_dc03701, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    reportAsync(50, paramLpReportInfo_dc03701, paramBoolean1, paramBoolean2);
+  }
+  
+  public void reportToDC03950(LpReportInfo_dc03950 paramLpReportInfo_dc03950, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    reportAsync(56, paramLpReportInfo_dc03950, paramBoolean1, paramBoolean2);
+  }
+  
+  public void reportToDC04021(LpReportInfo_dc04021 paramLpReportInfo_dc04021, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    reportAsync(51, paramLpReportInfo_dc04021, paramBoolean1, paramBoolean2);
+  }
+  
+  public void reportToDC04171(LpReportInfo_dc04171 paramLpReportInfo_dc04171, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    reportAsync(52, paramLpReportInfo_dc04171, paramBoolean1, paramBoolean2);
+  }
+  
+  public void reportToDC04233(LpReportInfo_dc04233 paramLpReportInfo_dc04233, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    reportAsync(53, paramLpReportInfo_dc04233, paramBoolean1, paramBoolean2);
+  }
+  
+  public void reportToPF00034(LpReportInfo_pf00034 paramLpReportInfo_pf00034)
+  {
+    reportToPF00034(paramLpReportInfo_pf00034, false, false);
+  }
+  
+  public void reportToPF00034(LpReportInfo_pf00034 paramLpReportInfo_pf00034, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramLpReportInfo_pf00034 == null) {
+      return;
+    }
+    reportAsync(49, paramLpReportInfo_pf00034, paramBoolean1, paramBoolean2);
+  }
+  
   public void reportToPF00064(LpReportInfo_pf00064 paramLpReportInfo_pf00064)
   {
     reportToPF00064(paramLpReportInfo_pf00064, true, false);
@@ -232,17 +299,24 @@ public class LpReportManager
   
   public void startReportImediately(int paramInt)
   {
-    if ((Looper.myLooper() != null) && (Looper.myLooper() == Looper.getMainLooper()))
-    {
-      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new amys(this, paramInt));
-      return;
+    if ((Looper.myLooper() != null) && (Looper.myLooper() == Looper.getMainLooper())) {
+      if (BaseApplicationImpl.sProcessId == 1) {
+        ThreadManager.excute(new LpReportManager.2(this, paramInt), 64, null, true);
+      }
     }
-    report(paramInt);
+    for (;;)
+    {
+      bjrf.a().a();
+      return;
+      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new LpReportManager.3(this, paramInt));
+      continue;
+      report(paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportManager
  * JD-Core Version:    0.7.0.1
  */

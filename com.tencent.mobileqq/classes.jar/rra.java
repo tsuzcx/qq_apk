@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
-
-public class rra
-  implements Runnable
+class rra
+  extends pdi
 {
-  public rra(BaseChatPie paramBaseChatPie) {}
-  
-  public void run()
+  rra(rqj paramrqj, String paramString)
   {
-    this.a.a.showOverScrollHeader();
+    super(paramString);
+  }
+  
+  public void a(pdc parampdc)
+  {
+    parampdc.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rra
  * JD-Core Version:    0.7.0.1
  */

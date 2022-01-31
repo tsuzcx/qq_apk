@@ -1,19 +1,34 @@
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
 
 public class xym
-  implements Runnable
+  extends Handler
 {
-  public xym(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity, int paramInt) {}
+  public xym(QRCardActivity paramQRCardActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    SosoInterface.a(new xyn(this, 0, false, true, 60000L, false, false, "CreateFaceToFaceDiscussionActivity"));
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.a.jdField_a_of_type_Boolean) || (!(paramMessage.obj instanceof Bitmap)));
+      paramMessage = (Bitmap)paramMessage.obj;
+    } while (paramMessage == null);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(0);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xym
  * JD-Core Version:    0.7.0.1
  */

@@ -1,83 +1,32 @@
-import java.util.LinkedList;
-import java.util.Random;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
 
 public class xwb
+  extends AccessibilityDelegateCompat
 {
-  private int jdField_a_of_type_Int;
-  private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private Random jdField_a_of_type_JavaUtilRandom = new Random();
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private int b;
+  public xwb(LeftTabBarView paramLeftTabBarView) {}
   
-  public xwb(int paramInt1, int paramInt2)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    this.b = paramInt1;
-    if (paramInt2 > 0)
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if (LeftTabBarView.a(this.a, paramView) == LeftTabBarView.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_ArrayOfInt = new int[paramInt2];
-      paramInt1 = 0;
-      while (paramInt1 < paramInt2)
-      {
-        this.jdField_a_of_type_ArrayOfInt[paramInt1] = -1;
-        paramInt1 += 1;
-      }
-    }
-    this.jdField_a_of_type_ArrayOfInt = null;
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_JavaUtilLinkedList.size() == 0)
-    {
-      i = 0;
-      if (i < this.b)
-      {
-        if (a(i)) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          this.jdField_a_of_type_JavaUtilLinkedList.add(Integer.valueOf(i));
-        }
-      }
-    }
-    int i = this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_JavaUtilLinkedList.size()) % this.b;
-    int j = ((Integer)this.jdField_a_of_type_JavaUtilLinkedList.get(i)).intValue();
-    this.jdField_a_of_type_JavaUtilLinkedList.remove(i);
-    a(j);
-    return j;
-  }
-  
-  public void a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > this.jdField_a_of_type_Int))
-    {
-      this.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int] = paramInt;
-      this.jdField_a_of_type_Int += 1;
-      this.jdField_a_of_type_Int %= this.jdField_a_of_type_ArrayOfInt.length;
+      paramAccessibilityNodeInfoCompat.setSelected(bool);
+      return;
     }
   }
   
-  public boolean a(int paramInt)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_a_of_type_ArrayOfInt.length == 0)) {}
-    for (;;)
-    {
-      return false;
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfInt.length)
-      {
-        if (this.jdField_a_of_type_ArrayOfInt[i] == paramInt) {
-          return true;
-        }
-        i += 1;
-      }
-    }
+    super.sendAccessibilityEvent(paramView, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xwb
  * JD-Core Version:    0.7.0.1
  */

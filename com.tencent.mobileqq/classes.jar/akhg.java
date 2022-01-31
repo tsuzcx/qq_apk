@@ -1,50 +1,31 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.vas.ColorRingPlayer;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class akhg
-  implements AudioManager.OnAudioFocusChangeListener
+class akhg
+  implements View.OnClickListener
 {
-  public akhg(ColorRingPlayer paramColorRingPlayer) {}
+  akhg(akhf paramakhf, ailc paramailc, int paramInt) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == -2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorRingPlayer", 2, "transient focus loss.");
-      }
-      synchronized (this.a.a)
-      {
-        if (this.a.a.a == 4) {
-          this.a.a();
-        }
-        return;
-      }
+    paramView = new Intent(this.jdField_a_of_type_Akhf.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_Ailc.b);
+    paramView.putExtra("isShowAd", false);
+    this.jdField_a_of_type_Akhf.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    if ((this.jdField_a_of_type_Akhf.jdField_a_of_type_AndroidContentContext instanceof AvatarPendantActivity)) {
+      ((AvatarPendantActivity)this.jdField_a_of_type_Akhf.jdField_a_of_type_AndroidContentContext).a = -1L;
     }
-    if (paramInt == 1)
+    if (this.jdField_a_of_type_Int == 1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorRingPlayer", 2, "gained focus");
-      }
-      if (this.a.b)
-      {
-        this.a.c();
-        this.a.b = false;
-      }
+      VasWebviewUtil.reportCommercialDrainage("", "faceaddon", "0X8008486", "", 1, 0, 0, "", "", "");
+      return;
     }
-    else if (paramInt == -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorRingPlayer", 2, "Audio focus Loss");
-      }
-      this.a.b();
-      synchronized (this.a.a)
-      {
-        this.a.a.a = 6;
-        return;
-      }
-    }
+    azqs.b(this.jdField_a_of_type_Akhf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006334", "0X8006334", 0, 0, "", "", "", "");
   }
 }
 

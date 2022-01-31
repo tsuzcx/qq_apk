@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.activity.voip.VoipGoogleWalletPayActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class ewl
-  extends TroopObserver
+  implements Runnable
 {
-  public ewl(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public ewl(VoipGoogleWalletPayActivity paramVoipGoogleWalletPayActivity) {}
   
-  protected void a(boolean paramBoolean)
+  public void run()
   {
-    new Thread(new ewm(this)).start();
+    this.a.a.hide();
   }
 }
 

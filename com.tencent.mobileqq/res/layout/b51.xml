@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:clipChildren="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/r1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="25.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/r3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lines="1" />
+            <TextView android:textSize="13.0dip" android:textColor="@color/alc" android:ellipsize="end" android:id="@id/qy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lines="1" />
+        </LinearLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@color/ald" android:ellipsize="end" android:id="@id/pg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:maxLines="2" android:lineSpacingExtra="3.0dip" />
+    </LinearLayout>
+    <com.tencent.biz.qqstory.album.view.RoundCornerLayout android:id="@id/p4" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.biz.qqstory.album.view.AlbumImageView android:layout_gravity="center_horizontal" android:id="@id/p1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <com.tencent.biz.qqstory.album.view.AlbumImageView android:layout_gravity="center_horizontal" android:id="@id/pe" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <ImageView android:id="@id/qa" android:layout_width="fill_parent" android:layout_height="60.0dip" android:src="@drawable/ajz" android:layout_alignParentBottom="true" />
+        <ImageView android:id="@id/p_" android:background="@drawable/fa4" android:visibility="gone" android:layout_width="33.0dip" android:layout_height="33.0dip" android:layout_marginLeft="1.0dip" android:layout_marginTop="1.0dip" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <LinearLayout android:id="@id/p6" android:padding="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+            <ImageView android:background="@drawable/f_z" android:visibility="visible" android:layout_width="16.0dip" android:layout_height="16.0dip" android:scaleType="fitXY" />
+        </LinearLayout>
+        <TextView android:textSize="19.0dip" android:textColor="@color/al3" android:id="@id/qh" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="1.0dip" android:text="@string/r4n" android:layout_above="@id/p7" android:layout_alignParentLeft="true" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/p7" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/r2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8月11日" android:maxLines="1" android:layout_weight="1.0" />
+            <ImageView android:id="@id/pf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/fam" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:id="@id/qj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="10" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/asg" android:paddingBottom="18.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/ash" android:visibility="gone" android:layout_width="100.0dip" android:layout_height="100.0dip" android:scaleType="centerCrop" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/alc" android:gravity="center" android:id="@id/asi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="36.0dip" android:layout_marginRight="36.0dip" />
+        </LinearLayout>
+    </com.tencent.biz.qqstory.album.view.RoundCornerLayout>
+</LinearLayout>

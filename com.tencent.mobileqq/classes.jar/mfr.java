@@ -1,26 +1,23 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 
 class mfr
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  mfr(mfq parammfq, ArrayList paramArrayList) {}
+  mfr(mfp parammfp) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    VideoShareHelper.a(this.jdField_a_of_type_Mfq.a).post(new mfs(this));
+    this.a.a.a().a().au = true;
+    mww.a(this.a.a);
+    mfp.b(this.a);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfr
  * JD-Core Version:    0.7.0.1
  */

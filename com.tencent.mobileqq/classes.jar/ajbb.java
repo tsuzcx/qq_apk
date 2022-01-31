@@ -1,13 +1,23 @@
-import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajbb
-  implements Runnable
+class ajbb
+  implements IRedPacket.OnGetSkinListener
 {
-  public ajbb(ContactListAdapter paramContactListAdapter) {}
+  ajbb(ajaz paramajaz, Bundle paramBundle, ResultReceiver paramResultReceiver) {}
   
-  public void run()
+  public void onGetSkin(RedPacketInfoBase paramRedPacketInfoBase)
   {
-    this.a.notifyDataSetChanged();
+    this.jdField_a_of_type_AndroidOsBundle.putParcelable("key_red_packet_info", paramRedPacketInfoBase);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCModule", 2, "getRedPacketBundle | info resPath = " + paramRedPacketInfoBase.resPath);
+    }
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null) {
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, this.jdField_a_of_type_AndroidOsBundle);
+    }
   }
 }
 

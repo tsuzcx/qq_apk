@@ -9,10 +9,10 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class historyMsg$AioHistoryMsgResponse
-  extends MessageMicro
+  extends MessageMicro<AioHistoryMsgResponse>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatField msg_infos = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> msg_infos = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBUInt64Field puin = PBField.initUInt64(0L);
   public historyMsg.RetInfo ret_info = new historyMsg.RetInfo();
   
@@ -24,7 +24,7 @@ public final class historyMsg$AioHistoryMsgResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mp.historyMsg.AioHistoryMsgResponse
  * JD-Core Version:    0.7.0.1
  */

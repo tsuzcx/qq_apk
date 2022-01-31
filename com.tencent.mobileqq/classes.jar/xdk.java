@@ -1,40 +1,46 @@
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import java.io.File;
 
 public class xdk
-  implements Runnable
+  extends xdh
 {
-  public xdk(CommonHbFragment paramCommonHbFragment) {}
+  private xan a;
   
-  public void run()
+  public void a()
   {
-    if ((CommonHbFragment.b(this.a) == null) || (CommonHbFragment.b(this.a).size() <= 0)) {}
-    View localView;
-    do
+    super.a();
+    if (jdField_b_of_type_Int != 2)
     {
-      do
-      {
-        return;
-        localView = ((View)CommonHbFragment.b(this.a).get(CommonHbFragment.a(this.a).getCurrentItem())).findViewById(2131368025);
-        if (localView != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("CommonHbFragment", 2, "tempView is null");
-      return;
-    } while ((localView.getVisibility() != 0) || (!"1".equals(CommonHbFragment.g(this.a))));
-    if (QLog.isColorLevel()) {
-      QLog.i("CommonHbFragment", 2, "start perform click sub type");
+      String str = new File(this.jdField_b_of_type_JavaLangString).getParent();
+      if (str != null) {
+        bdhb.a(str);
+      }
     }
-    localView.performClick();
+  }
+  
+  public void a(Activity paramActivity, String paramString1, String paramString2, AppInterface paramAppInterface, xan paramxan)
+  {
+    super.a(paramActivity, paramString1, paramString2, paramAppInterface);
+    this.a = paramxan;
+  }
+  
+  protected boolean a(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    if (paramActionSheetItem.action == 2)
+    {
+      if (this.a != null) {
+        this.a.a();
+      }
+      return true;
+    }
+    return super.a(paramActionSheetItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xdk
  * JD-Core Version:    0.7.0.1
  */

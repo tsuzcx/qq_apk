@@ -1,19 +1,16 @@
-import com.dataline.util.PrinterSessionAdapter;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
-
-public class dg
-  implements BubblePopupWindow.OnDismissListener
+class dg
+  extends alqv
 {
-  public dg(PrinterSessionAdapter paramPrinterSessionAdapter) {}
+  dg(df paramdf) {}
   
-  public void a()
+  protected void b()
   {
-    this.a.a = null;
+    df.a(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dg
  * JD-Core Version:    0.7.0.1
  */

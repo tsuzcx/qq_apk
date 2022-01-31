@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.Doraemon.APICallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
 
-public final class rfk
-  implements Runnable
+public class rfk
+  implements DialogInterface.OnClickListener
 {
-  public rfk(APICallback paramAPICallback, int paramInt, String paramString) {}
+  public rfk(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback.a();
+    qyt.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rfk
  * JD-Core Version:    0.7.0.1
  */

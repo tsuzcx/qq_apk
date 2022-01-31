@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public final class bmp4_get_req
   extends JceStruct
 {
-  static ArrayList cache_vec_keys;
-  static ArrayList cache_vec_uins = new ArrayList();
+  static ArrayList<String> cache_vec_keys;
+  static ArrayList<Long> cache_vec_uins = new ArrayList();
   public int bitmap_id = 4;
-  public ArrayList vec_keys;
-  public ArrayList vec_uins;
+  public ArrayList<String> vec_keys;
+  public ArrayList<Long> vec_uins;
   
   static
   {
@@ -23,10 +23,10 @@ public final class bmp4_get_req
   
   public bmp4_get_req() {}
   
-  public bmp4_get_req(ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt)
+  public bmp4_get_req(ArrayList<Long> paramArrayList, ArrayList<String> paramArrayList1, int paramInt)
   {
-    this.vec_uins = paramArrayList1;
-    this.vec_keys = paramArrayList2;
+    this.vec_uins = paramArrayList;
+    this.vec_keys = paramArrayList1;
     this.bitmap_id = paramInt;
   }
   

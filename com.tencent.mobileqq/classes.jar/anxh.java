@@ -1,34 +1,50 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
 
-public class anxh
-  implements ValueAnimator.AnimatorUpdateListener
+class anxh
+  extends AnimatorListenerAdapter
 {
-  public anxh(TextLayer.TextItem paramTextItem) {}
+  anxh(anxd paramanxd, anxn paramanxn) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.a.b == null) {
-      return;
-    }
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.s = (this.a.d + this.a.f * (1.0F - f));
-    this.a.t = (this.a.e + this.a.g * (1.0F - f));
-    this.a.q = (this.a.b + this.a.h * (1.0F - f));
-    this.a.r = (this.a.c + this.a.i * (1.0F - f));
-    if (f == 1.0F)
+    if ((this.jdField_a_of_type_Anxd.d != null) && (this.jdField_a_of_type_Anxd.e != null))
     {
-      this.a.a.b = null;
-      this.a.a.b(4);
+      this.jdField_a_of_type_Anxd.d.setVisibility(4);
+      this.jdField_a_of_type_Anxd.e.setVisibility(0);
+      paramAnimator = (AvatarPendantManager)this.jdField_a_of_type_Anxd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
+      paramAnimator.jdField_a_of_type_Long = -1L;
+      this.jdField_a_of_type_Anxd.a("show pendant, " + this.jdField_a_of_type_Anxd.jdField_a_of_type_Long);
+      paramAnimator.b();
     }
-    TextLayer.b(this.a.a);
+    if (this.jdField_a_of_type_Anxd.c != null) {
+      this.jdField_a_of_type_Anxd.c.setVisibility(0);
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if ((this.jdField_a_of_type_Anxd.d != null) && (this.jdField_a_of_type_Anxd.e != null))
+    {
+      this.jdField_a_of_type_Anxd.d.setVisibility(0);
+      this.jdField_a_of_type_Anxd.e.setVisibility(4);
+      paramAnimator = (AvatarPendantManager)this.jdField_a_of_type_Anxd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
+      this.jdField_a_of_type_Anxd.a("stop show pendant, " + this.jdField_a_of_type_Anxd.jdField_a_of_type_Long);
+      paramAnimator.jdField_a_of_type_Long = this.jdField_a_of_type_Anxd.jdField_a_of_type_Long;
+      paramAnimator.a();
+    }
+    if ((this.jdField_a_of_type_Anxd.c != null) && (TextUtils.isEmpty(this.jdField_a_of_type_Anxn.e))) {
+      this.jdField_a_of_type_Anxd.c.setVisibility(4);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anxh
  * JD-Core Version:    0.7.0.1
  */

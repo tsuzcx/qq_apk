@@ -1,55 +1,33 @@
-import android.content.ContentResolver;
-import android.database.Cursor;
-import android.net.Uri;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qqfav.globalsearch.FavoriteSearchEngine;
-import mqq.app.MobileQQ;
+import android.content.Intent;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ampg
-  implements Runnable
+  implements phj
 {
-  public int a;
-  public long a;
-  public Cursor a;
-  public String a;
-  public boolean a;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int b;
   
-  private ampg(FavoriteSearchEngine paramFavoriteSearchEngine) {}
-  
-  public void run()
+  public ampg(int paramInt1, int paramInt2, String paramString)
   {
-    Object localObject1 = FavoriteSearchEngine.a(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine).getApplication().getContentResolver();
-    ??? = Uri.parse("content://qq.favorites/global_search/" + FavoriteSearchEngine.a(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine).getAccount());
-    try
-    {
-      localObject1 = ((ContentResolver)localObject1).query((Uri)???, null, null, new String[] { this.jdField_a_of_type_JavaLangString, "" + this.jdField_a_of_type_Int, "" + this.jdField_a_of_type_Long, "" + this.jdField_a_of_type_Boolean }, null);
-    }
-    catch (Exception localException)
-    {
-      synchronized (FavoriteSearchEngine.a(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine))
-      {
-        if (FavoriteSearchEngine.a(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine) == Thread.currentThread())
-        {
-          this.jdField_a_of_type_AndroidDatabaseCursor = ((Cursor)localObject1);
-          FavoriteSearchEngine.a(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine).notify();
-        }
-        Object localObject2;
-        while (localObject2 == null)
-        {
-          return;
-          localException = localException;
-          localException.printStackTrace();
-          localObject2 = null;
-          break;
-        }
-        localObject2.close();
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    paramString = new Intent("notify_main_subscribe_follow_state");
+    paramString.putExtra("follow_uin", this.jdField_a_of_type_JavaLangString);
+    paramString.putExtra("follow_uin_position", this.jdField_a_of_type_Int);
+    paramString.putExtra("follow_uin_smooth_dx", this.b);
+    paramString.putExtra("follow_uin_status", paramBoolean);
+    BaseApplication.getContext().sendBroadcast(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampg
  * JD-Core Version:    0.7.0.1
  */

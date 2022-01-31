@@ -1,38 +1,21 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.OldHttpEngine;
-import com.tencent.mobileqq.transfile.OldHttpEngine.OldHttpCommunicatorListner;
-import com.tencent.mobileqq.transfile.RichMediaUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.TimerTask;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Map;
 
-public class aiql
-  extends TimerTask
+class aiql
+  implements aiqj
 {
-  public aiql(OldHttpEngine.OldHttpCommunicatorListner paramOldHttpCommunicatorListner, HttpNetReq paramHttpNetReq) {}
+  aiql(aiqk paramaiqk) {}
   
-  public void run()
+  public void a(long paramLong, float paramFloat, String paramString)
   {
-    boolean bool = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine$OldHttpCommunicatorListner.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      int i;
-      if ((QLog.isColorLevel()) && (this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq != null))
-      {
-        i = this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.g;
-        if (this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.a != 1) {
-          break label71;
-        }
-      }
-      for (;;)
-      {
-        RichMediaUtil.a(i, bool, this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.f, this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.e, "scheduleRetry", "mIsCancelled is true 2");
-        return;
-        label71:
-        bool = false;
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine$OldHttpCommunicatorListner.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine.c(this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine$OldHttpCommunicatorListner.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+    aiqk.a(this.a).put(Long.valueOf(paramLong), Float.valueOf(paramFloat));
+    aiqk.a(this.a).a(paramLong, paramFloat, paramString);
+  }
+  
+  public void b(long paramLong)
+  {
+    QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onDownloadSuccess:" + paramLong);
+    aiqk.a(this.a).b(paramLong);
   }
 }
 

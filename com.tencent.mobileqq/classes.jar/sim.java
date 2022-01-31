@@ -1,39 +1,26 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
+import android.view.ViewTreeObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
-class sim
-  implements Runnable
+public class sim
+  implements siv
 {
-  sim(sil paramsil) {}
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public void run()
+  public sim(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView, int paramInt1, int paramInt2)
   {
-    if (this.a.a.j) {}
-    for (;;)
-    {
-      return;
-      SubAccountControll localSubAccountControll = (SubAccountControll)this.a.a.a.getManager(61);
-      if (localSubAccountControll != null)
-      {
-        ArrayList localArrayList = localSubAccountControll.a("sub.uin.all");
-        int j = localArrayList.size();
-        int i = 0;
-        while (i < j)
-        {
-          Pair localPair = (Pair)localArrayList.get(i);
-          localSubAccountControll.a(this.a.a.a, this.a.a.a(), localPair, new sin(this, localSubAccountControll, localPair));
-          i += 1;
-        }
-      }
-    }
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new sin(this, ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView), paramInt1, paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sim
  * JD-Core Version:    0.7.0.1
  */

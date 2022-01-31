@@ -1,55 +1,50 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.BaseTemplateFactory;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-class pmc
-  extends pmd
+public class pmc
+  implements poa
 {
-  public pmc(plz paramplz, SharedPreferences.Editor paramEditor)
+  private BaseTemplateFactory a;
+  
+  public pmc(VafContext paramVafContext)
   {
-    super(paramEditor, paramplz.a());
+    this.a = paramVafContext.getTemplateFactory();
   }
   
-  public SharedPreferences.Editor clear()
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    if (TextUtils.isEmpty(plz.a(this.a))) {
-      super.clear();
+    if (this.a != null) {
+      return this.a.getTemplateBean(paramJSONObject);
     }
-    for (;;)
-    {
-      return this;
-      Object localObject = this.a.a().getAll();
-      if ((localObject != null) && (!((Map)localObject).isEmpty()))
-      {
-        localObject = ((Map)localObject).keySet().iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          String str = (String)((Iterator)localObject).next();
-          if (plz.a(plz.a(this.a), str)) {
-            super.remove(str);
-          }
-        }
-      }
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    return new pjo().N(paramBaseArticleInfo).C(paramBaseArticleInfo).a();
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pgd parampgd, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView().findViewBaseByName("id_proteus_collection_view");
+    if ((paramContainer instanceof ptw)) {
+      ((ptw)paramContainer).a(parampgd);
     }
   }
   
-  public boolean commit()
+  public boolean a(int paramInt, Container paramContainer, pgd parampgd, ViewBase paramViewBase)
   {
-    if ((plz.a(this.a)) && (Build.VERSION.SDK_INT >= 9))
-    {
-      super.apply();
-      return true;
-    }
-    return super.commit();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pmc
  * JD-Core Version:    0.7.0.1
  */

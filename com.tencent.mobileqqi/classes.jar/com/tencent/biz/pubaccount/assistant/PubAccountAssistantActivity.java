@@ -14,10 +14,10 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bqq;
-import bqr;
-import bqs;
-import bqt;
+import bkm;
+import bkn;
+import bko;
+import bkp;
 import com.tencent.mobileqq.activity.ChatForEnterpriseActivity;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.PublicAccountChatActivity;
@@ -56,8 +56,8 @@ public class PubAccountAssistantActivity
   Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
   private RecentAdapter jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bqt(this);
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new bqs(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new bkp(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new bko(this);
   SlideDetectListView jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView;
   boolean jdField_a_of_type_Boolean;
   public boolean b;
@@ -69,8 +69,8 @@ public class PubAccountAssistantActivity
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232069));
-    this.jdField_a_of_type_AndroidViewView = View.inflate(this, 2130903430, null);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232072));
+    this.jdField_a_of_type_AndroidViewView = View.inflate(this, 2130903432, null);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a(this.jdField_a_of_type_AndroidViewView);
     View localView = getLayoutInflater().inflate(2130903134, null);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b(localView);
@@ -247,7 +247,7 @@ public class PubAccountAssistantActivity
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    setContentView(2130903427);
+    setContentView(2130903429);
     getWindow().setBackgroundDrawable(null);
     d();
     e();
@@ -314,7 +314,7 @@ public class PubAccountAssistantActivity
       } while ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter == null) || (paramMessage.what != 1001));
       try
       {
-        runOnUiThread(new bqq(this, a()));
+        runOnUiThread(new bkm(this, a()));
         return true;
       }
       catch (Exception paramMessage) {}
@@ -366,7 +366,7 @@ public class PubAccountAssistantActivity
     {
       paramObservable = (MessageRecord)paramObject;
       if (!paramObservable.isSendFromLocal()) {
-        runOnUiThread(new bqr(this));
+        runOnUiThread(new bkn(this));
       }
       if ((!paramObservable.isSendFromLocal()) || (paramObservable.msgtype != -2002)) {}
     }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:id="@id/kwo" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="250.0dip" android:layout_marginTop="0.0dip">
+            <com.qzone.widget.AsyncImageView android:id="@id/bb4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        </FrameLayout>
+        <FrameLayout android:id="@id/ha2" android:background="@null" android:layout_width="fill_parent" android:layout_height="@dimen/azx" android:layout_alignParentTop="true">
+            <FrameLayout android:id="@id/ha0" android:layout_width="fill_parent" android:layout_height="@dimen/azw" />
+            <FrameLayout android:id="@id/h_w" android:background="@drawable/gfk" android:layout_width="fill_parent" android:layout_height="@dimen/azy" />
+            <include android:id="@id/ha1" android:background="@null" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_marginTop="@dimen/b01" layout="@layout/qzone_custom_commen_title" />
+        </FrameLayout>
+        <com.qzone.widget.AsyncImageView android:layout_gravity="bottom|center|right" android:id="@id/bbc" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" />
+    </FrameLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_vertical" android:id="@id/jjb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" android:layout_marginBottom="13.0dip">
+            <TextView android:textSize="18.0sp" android:textColor="#ff000000" android:id="@id/jja" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="9.0dip" android:text="@string/scm" />
+            <TextView android:textSize="10.0sp" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center" android:id="@id/bay" android:background="@drawable/fz8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/seg" android:singleLine="true" android:layout_toRightOf="@id/jjb" />
+        </LinearLayout>
+        <CheckBox android:textSize="13.0sp" android:textColor="#ff808080" android:id="@id/iqt" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:checked="false" android:button="@null" android:text="@string/say" android:drawableLeft="@drawable/ay_" android:drawablePadding="5.0dip" android:layout_below="@id/jjb" android:layout_alignParentLeft="true" />
+        <Button android:textSize="18.0sp" android:textColor="@color/a_i" android:gravity="center" android:id="@id/ip6" android:background="@drawable/aya" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_margin="15.0dip" android:text="@string/sdh" android:layout_alignParentBottom="true" />
+        <RelativeLayout android:gravity="center" android:id="@id/hld" android:background="@drawable/geb" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_margin="15.0dip" android:layout_alignParentBottom="true">
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center" android:id="@id/hlg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gk0" />
+                <TextView android:textSize="18.0sp" android:textColor="@color/mb" android:layout_gravity="center" android:id="@id/hlh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/sef" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

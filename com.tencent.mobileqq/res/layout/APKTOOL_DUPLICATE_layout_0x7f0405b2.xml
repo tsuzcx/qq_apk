@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0061" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0051" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c000f" android:gravity="left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a12f2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="false" android:lineSpacingExtra="3.0dip" android:lineSpacingMultiplier="1.0" />
-    <TextView android:textSize="9.0sp" android:gravity="bottom" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b7d" android:layout_width="fill_parent" android:layout_height="20.0dip" android:text="/storage/sdcard/tencent/QQ_FileRecv/" />
-    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0915" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="5.0dip" android:layout_marginLeft="0.0dip" android:layout_marginTop="10.0dip" android:maxHeight="3.0dip" android:max="100" android:progress="30" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020053" android:minHeight="3.0dip" style="?android:attr/progressBarStyleHorizontal" />
-</LinearLayout>

@@ -1,63 +1,107 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.shortvideo.ptvfilter.gesture.GestureFilterManager;
-import com.tencent.mobileqq.shortvideo.ptvfilter.gesture.GestureRecognitionUtils;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.Context;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
 public class xrn
-  implements Runnable
 {
-  public xrn(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2) {}
+  private static String jdField_a_of_type_JavaLangString = "";
+  private static volatile boolean jdField_a_of_type_Boolean;
+  private static String b = "";
   
-  public void run()
+  public static String a(Context paramContext)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b.get() != 4))
+    b(paramContext);
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return AppNetConnInfo.isNetSupport();
+  }
+  
+  public static String b(Context paramContext)
+  {
+    b(paramContext);
+    return b;
+  }
+  
+  private static void b(Context paramContext)
+  {
+    if ((!jdField_a_of_type_Boolean) && (paramContext != null))
     {
-      if (this.jdField_a_of_type_Int != 0) {
-        break label85;
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        break label54;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      paramContext = paramContext.getApplicationContext();
+      jdField_a_of_type_Boolean = true;
+      AppNetConnInfo.registerNetChangeReceiver(paramContext, new xro(paramContext));
+      c(paramContext);
     }
-    label54:
-    label85:
-    do
+  }
+  
+  public static boolean b(Context paramContext)
+  {
+    return AppNetConnInfo.isNetSupport();
+  }
+  
+  public static String c(Context paramContext)
+  {
+    if (paramContext != null) {}
+    for (;;)
     {
-      do
+      try
       {
-        do
+        paramContext = (WifiManager)paramContext.getSystemService("wifi");
+        if (paramContext != null)
         {
-          return;
-        } while (this.b);
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_d_of_type_AndroidViewView.setVisibility(8);
-        return;
-      } while (this.jdField_a_of_type_Int != 1);
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_d_of_type_AndroidViewView.setVisibility(8);
-        return;
+          paramContext = paramContext.getConnectionInfo();
+          if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.getSSID())))
+          {
+            paramContext = paramContext.getSSID().replace("\"", "");
+            return paramContext;
+          }
+        }
       }
-    } while ((this.b) || (NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)));
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_JavaLangString.equalsIgnoreCase(GestureFilterManager.jdField_a_of_type_JavaLangString)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable = GestureRecognitionUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, GestureFilterManager.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_JavaLangString = GestureFilterManager.jdField_a_of_type_JavaLangString;
+      catch (Throwable paramContext)
+      {
+        paramContext.printStackTrace();
+        return "";
+      }
+      paramContext = "";
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_d_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_d_of_type_AndroidWidgetTextView.setText(GestureFilterManager.b);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_d_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  private static void c(Context paramContext)
+  {
+    WifiInfo localWifiInfo;
+    if (paramContext != null)
+    {
+      localWifiInfo = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+      if (localWifiInfo != null)
+      {
+        if (!TextUtils.isEmpty(localWifiInfo.getBSSID())) {
+          break label55;
+        }
+        paramContext = "";
+        jdField_a_of_type_JavaLangString = paramContext;
+        if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
+          break label63;
+        }
+      }
+    }
+    label55:
+    label63:
+    for (paramContext = "";; paramContext = localWifiInfo.getSSID())
+    {
+      b = paramContext;
+      return;
+      paramContext = localWifiInfo.getBSSID();
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xrn
  * JD-Core Version:    0.7.0.1
  */

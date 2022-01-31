@@ -1,34 +1,49 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import MQQ.PayRuleCfg;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import mqq.os.MqqHandler;
+import mqq.manager.TicketManager;
 
 public class adsc
-  implements TVK_SDKMgr.InstallListener
+  extends Handler
 {
-  public adsc(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
-  
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public adsc(QQSettingMe paramQQSettingMe, Looper paramLooper)
   {
-    PresenceInterfaceImpl.a = false;
-    this.a.a("腾讯视频插件加载失败");
-    if (QLog.isColorLevel()) {
-      QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstalledFail");
-    }
+    super(paramLooper);
   }
   
-  public void onInstalledSuccessed()
+  public void handleMessage(Message paramMessage)
   {
-    PresenceInterfaceImpl.a = false;
-    if (!this.a.c)
+    switch (paramMessage.what)
     {
-      ThreadManager.getSubThreadHandler().post(new adsd(this));
-      QLog.d("PresenceInterfaceImpl", 2, "run installSDK here");
+    default: 
+      return;
+    case 0: 
+      this.a.j();
+      return;
+    case 1: 
+      QQSettingMe.a(this.a);
+      return;
+    case 2: 
+      this.a.u();
+      return;
     }
-    QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstall sucess");
+    int i = ((Bundle)paramMessage.obj).getInt("type");
+    QLog.e("QQSettingRedesign", 1, "VipInfoHandler paySuccess " + i);
+    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).payHide == 1))
+    {
+      QQSettingMe.a(this.a).enable = 0;
+      QLog.e("QQSettingRedesign", 1, "VipInfoHandler paySuccess clear bubble");
+      amfs.a(this.a.a.c(), QQSettingMe.a(this.a));
+      sendEmptyMessage(2);
+    }
+    beat.a(this.a.a, "last_pull_pay_rule", 0L);
+    paramMessage = ((TicketManager)this.a.a.getManager(2)).getSkey(this.a.a.getCurrentAccountUin());
+    ((amfs)this.a.a.a(27)).a(paramMessage, this.a.a.c());
   }
 }
 

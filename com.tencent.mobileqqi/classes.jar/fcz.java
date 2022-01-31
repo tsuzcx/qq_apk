@@ -1,56 +1,66 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.rookery.translate.tencent.TranslateRespWrapperFYJ;
+import com.tencent.mobileqq.app.I18nTranslatorHandler;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class fcz
-  extends Handler
+  implements Runnable
 {
-  public fcz(LebaListViewAdapter paramLebaListViewAdapter) {}
+  public fcz(I18nTranslatorHandler paramI18nTranslatorHandler, String paramString, Long paramLong, List paramList) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    localObject1 = new fdb(this.jdField_a_of_type_ComTencentMobileqqAppI18nTranslatorHandler, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangLong, this.jdField_a_of_type_JavaUtilList);
+    localObject3 = Executors.newSingleThreadExecutor();
+    localObject1 = ((ExecutorService)localObject3).submit((Callable)localObject1);
+    try
     {
+      localObject1 = (Boolean)((Future)localObject1).get(20L, TimeUnit.SECONDS);
     }
-    Object localObject;
-    do
+    catch (InterruptedException localInterruptedException)
     {
-      do
+      for (;;)
       {
-        do
-        {
-          return;
-          localObject = paramMessage.obj;
-        } while (!(localObject instanceof View));
-        localObject = (View)localObject;
-        switch (paramMessage.arg1)
-        {
-        default: 
-          ((View)localObject).setBackgroundResource(2130837875);
-          return;
-        case 0: 
-          ((View)localObject).setBackgroundResource(2130837875);
-          return;
-        case 1: 
-          ((View)localObject).setBackgroundResource(2130837880);
-          return;
-        case 2: 
-          ((View)localObject).setBackgroundResource(2130837877);
-          return;
-        }
-        ((View)localObject).setBackgroundResource(2130837879);
-        return;
-        paramMessage = paramMessage.obj;
-      } while ((!(paramMessage instanceof ImageView)) || (TextUtils.isEmpty(this.a.c)));
-      paramMessage = (ImageView)paramMessage;
-      localObject = this.a.a.b(this.a.c);
-    } while (localObject == null);
-    paramMessage.setImageDrawable((Drawable)localObject);
+        localObject1 = Boolean.valueOf(false);
+        localInterruptedException.printStackTrace();
+        ((ExecutorService)localObject3).shutdownNow();
+      }
+    }
+    catch (ExecutionException localExecutionException)
+    {
+      for (;;)
+      {
+        localObject1 = Boolean.valueOf(false);
+        localExecutionException.printStackTrace();
+        ((ExecutorService)localObject3).shutdownNow();
+      }
+    }
+    catch (TimeoutException localTimeoutException)
+    {
+      for (;;)
+      {
+        localObject1 = Boolean.valueOf(false);
+        localTimeoutException.printStackTrace();
+        ((ExecutorService)localObject3).shutdownNow();
+      }
+    }
+    finally
+    {
+      ((ExecutorService)localObject3).shutdownNow();
+    }
+    if (!((Boolean)localObject1).booleanValue())
+    {
+      localObject3 = new TranslateRespWrapperFYJ();
+      ((TranslateRespWrapperFYJ)localObject3).jdField_a_of_type_JavaLangLong = this.jdField_a_of_type_JavaLangLong;
+      ((TranslateRespWrapperFYJ)localObject3).jdField_a_of_type_JavaUtilList = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppI18nTranslatorHandler.a(80002, ((Boolean)localObject1).booleanValue(), localObject3);
+    }
   }
 }
 

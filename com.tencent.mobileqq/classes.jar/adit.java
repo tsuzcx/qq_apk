@@ -1,25 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.MainFragment;
 
 public class adit
-  implements ActionSheet.OnButtonClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public adit(QfileEditBottomBar paramQfileEditBottomBar, ActionSheet paramActionSheet) {}
+  public adit(MainFragment paramMainFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ThreadManager.executeOnFileThread(new adiu(this));
-    if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    }
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adit
  * JD-Core Version:    0.7.0.1
  */

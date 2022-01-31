@@ -1,15 +1,15 @@
 package cooperation.qzone.model;
 
-import amux;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import bjlg;
 
 public class VideoInfo$VideoRemark
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amux();
+  public static final Parcelable.Creator<VideoRemark> CREATOR = new bjlg();
   public int a;
   public String a;
   public int b;
@@ -48,7 +48,7 @@ public class VideoInfo$VideoRemark
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.VideoInfo.VideoRemark
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
+import com.tencent.qphone.base.util.QLog;
 
-public class rkj
-  implements View.OnClickListener
+class rkj
+  implements DialogInterface.OnShowListener
 {
-  public rkj(AddRequestActivity paramAddRequestActivity) {}
+  rkj(rkd paramrkd) {}
   
-  public void onClick(View paramView)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    this.a.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "mDisLikeActionSheet onShow() on VideoChannel");
+    }
+    rkd.a(this.a).getWindow().clearFlags(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rkj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,31 @@
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class snw
-  extends TroopObserver
+class snw
+  implements bhum
 {
-  public snw(ForwardRecentActivity paramForwardRecentActivity) {}
+  snw(snu paramsnu, String paramString) {}
   
-  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
+  public void onDismiss()
   {
-    if (paramBoolean1) {
-      ForwardRecentActivity.b(this.a);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("index", -1);
+      localJSONObject.put("type", 1);
+      if (snu.a(this.jdField_a_of_type_Snu) != null) {
+        ((BridgeModule)snu.a(this.jdField_a_of_type_Snu).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+      }
+      return;
     }
-  }
-  
-  protected void a(boolean paramBoolean1, ArrayList paramArrayList, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramArrayList != null) && (paramArrayList.size() > 0) && (paramBoolean2)) {
-      ForwardRecentActivity.b(this.a);
-    }
+    catch (JSONException localJSONException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     snw
  * JD-Core Version:    0.7.0.1
  */

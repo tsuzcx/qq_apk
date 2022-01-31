@@ -1,36 +1,31 @@
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.mobileqq.transfile.TransferRequest;
+import com.qq.android.dexposed.XC_MethodHook;
+import com.qq.android.dexposed.XC_MethodHook.MethodHookParam;
+import com.tencent.mobileqq.config.QConfigureException;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.VideoSendTaskManager;
-import java.util.HashMap;
 
-class aola
-  implements Runnable
+final class aola
+  extends XC_MethodHook
 {
-  aola(aokz paramaokz, UpCallBack.SendResult paramSendResult) {}
-  
-  public void run()
+  public void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
   {
-    if ((TransferRequest)VideoSendTaskManager.a(this.jdField_a_of_type_Aokz.a).get(aokz.a(this.jdField_a_of_type_Aokz)) != null)
+    try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqPicUpCallBack$SendResult.a != 0) {
-        break label85;
+      paramMethodHookParam = aokv.a();
+      if ((!paramMethodHookParam.contains("QConfigManager.readSync")) && (!paramMethodHookParam.contains("QConfigManager.loadConObj")) && (!paramMethodHookParam.contains("QConfigManager.save")) && (!paramMethodHookParam.contains("android.app.SharedPreferencesImpl"))) {
+        aokv.a(new QConfigureException(paramMethodHookParam), "Can not parse xml beyond QConfigManager when app starting.", "QConfigWatchDog_Xml");
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("PreUploadVideo", 2, "[onSend]ResultOk id=" + aokz.a(this.jdField_a_of_type_Aokz));
-      }
-      this.jdField_a_of_type_Aokz.a(this.jdField_a_of_type_ComTencentMobileqqPicUpCallBack$SendResult);
-    }
-    label85:
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.i("PreUploadVideo", 2, "[onSend]ResultFail id=" + aokz.a(this.jdField_a_of_type_Aokz));
+    catch (Exception paramMethodHookParam)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QConfigWatchDog", 2, "hook xml exception.", paramMethodHookParam);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aola
  * JD-Core Version:    0.7.0.1
  */

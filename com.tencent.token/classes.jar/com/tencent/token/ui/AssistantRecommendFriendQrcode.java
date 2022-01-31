@@ -7,14 +7,14 @@ import android.os.Handler;
 import android.view.View;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
-import com.tencent.token.af;
-import com.tencent.token.p;
+import com.tencent.token.ch;
+import com.tencent.token.cw;
 
 public class AssistantRecommendFriendQrcode
   extends BaseActivity
 {
   private static final int TIMELINE_SUPPORTED_VERSION = 553779201;
-  public Handler mHandler = new ao(this);
+  public Handler mHandler = new ba(this);
   private int mPageId;
   private String mRecommendFriendGroupStr;
   private String mRecommendFriendStr;
@@ -22,14 +22,14 @@ public class AssistantRecommendFriendQrcode
   
   private void showWechatBindDialog()
   {
-    showUserDialog(2131361808, getString(2131362386), 2131361812, 2131361813, new ar(this), null);
+    showUserDialog(2131230843, getString(2131231435), 2131231294, 2131231265, new bd(this), null);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    p.a().a(System.currentTimeMillis(), 41);
-    setContentView(2130903179);
+    ch.a().a(System.currentTimeMillis(), 41);
+    setContentView(2130968737);
     this.mWeChatApi = WXAPIFactory.createWXAPI(this, "wx68451b483ebd18ce", false);
     this.mWeChatApi.registerApp("wx68451b483ebd18ce");
     paramBundle = getIntent().getExtras();
@@ -41,12 +41,12 @@ public class AssistantRecommendFriendQrcode
       }
     }
     label148:
-    for (this.mRecommendFriendStr = getResources().getString(2131362389);; this.mRecommendFriendStr = getResources().getString(2131362387))
+    for (this.mRecommendFriendStr = getResources().getString(2131231447);; this.mRecommendFriendStr = getResources().getString(2131231445))
     {
-      this.mRecommendFriendGroupStr = getResources().getString(2131362388);
-      findViewById(2131296999).setOnClickListener(new ap(this));
-      findViewById(2131297002).setOnClickListener(new aq(this));
-      af.a().c(this.mHandler);
+      this.mRecommendFriendGroupStr = getResources().getString(2131231446);
+      findViewById(2131559187).setOnClickListener(new bb(this));
+      findViewById(2131559190).setOnClickListener(new bc(this));
+      cw.a().c(this.mHandler);
       return;
     }
   }

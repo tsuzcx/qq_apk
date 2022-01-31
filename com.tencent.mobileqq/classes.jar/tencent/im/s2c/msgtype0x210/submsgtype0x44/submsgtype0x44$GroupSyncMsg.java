@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0x44$GroupSyncMsg
-  extends MessageMicro
+  extends MessageMicro<GroupSyncMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_auth_key = PBField.initBytes(ByteStringMicro.EMPTY);

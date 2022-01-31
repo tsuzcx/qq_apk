@@ -1,31 +1,33 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
+import aezw;
+import ajtz;
+import ajua;
+import ajud;
+import ajuh;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
+import azqs;
+import azri;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgTranslator;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
-import xwn;
-import xwo;
 
 public class SubtitleLayout
   extends RelativeLayout
-  implements AudioTranslator.AudioTranslatorListener
+  implements ajud
 {
   public int a;
   private long jdField_a_of_type_Long = -1L;
+  private ajuh jdField_a_of_type_Ajuh;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private BaseAnimDrawer jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer;
   private Random jdField_a_of_type_JavaUtilRandom;
   private Timer jdField_a_of_type_JavaUtilTimer;
   private TimerTask jdField_a_of_type_JavaUtilTimerTask;
@@ -56,19 +58,19 @@ public class SubtitleLayout
       return;
     }
     if (paramBoolean1) {
-      AudioTranslator.a().a(false, false);
+      ajua.a().a(false, false);
     }
     switch (paramInt)
     {
     default: 
-      AudioTranslator.a().a(this, true, paramBoolean2, paramBoolean3);
+      ajua.a().a(this, true, paramBoolean2, paramBoolean3);
       return;
     case 1: 
     case 2: 
-      AudioTranslator.a().a(this, false, paramBoolean2, paramBoolean3);
+      ajua.a().a(this, false, paramBoolean2, paramBoolean3);
       return;
     }
-    AudioTranslator.a().a(this, true, paramBoolean2, paramBoolean3);
+    ajua.a().a(this, true, paramBoolean2, paramBoolean3);
   }
   
   private void b(int paramInt)
@@ -79,7 +81,7 @@ public class SubtitleLayout
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new xwo(this), paramInt);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new SubtitleLayout.2(this), paramInt);
   }
   
   private void g()
@@ -96,7 +98,7 @@ public class SubtitleLayout
     }
     this.jdField_c_of_type_Boolean = false;
     this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_b_of_type_AndroidOsHandler.postDelayed(new xwn(this), 180000L);
+    this.jdField_b_of_type_AndroidOsHandler.postDelayed(new SubtitleLayout.1(this), 180000L);
   }
   
   private void h()
@@ -131,7 +133,7 @@ public class SubtitleLayout
     if (QLog.isColorLevel()) {
       QLog.d("SubtitleLayout", 2, "startDemo begin");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer == null) {}
+    if (this.jdField_a_of_type_Ajuh == null) {}
     while (this.jdField_a_of_type_Boolean) {
       return;
     }
@@ -172,10 +174,10 @@ public class SubtitleLayout
     //   11: getfield 169	com/tencent/mobileqq/activity/richmedia/subtitles/SubtitleLayout:jdField_a_of_type_JavaUtilTimerTask	Ljava/util/TimerTask;
     //   14: ifnonnull +15 -> 29
     //   17: aload_0
-    //   18: new 178	xwp
+    //   18: new 178	com/tencent/mobileqq/activity/richmedia/subtitles/SubtitleLayout$3
     //   21: dup
     //   22: aload_0
-    //   23: invokespecial 179	xwp:<init>	(Lcom/tencent/mobileqq/activity/richmedia/subtitles/SubtitleLayout;)V
+    //   23: invokespecial 179	com/tencent/mobileqq/activity/richmedia/subtitles/SubtitleLayout$3:<init>	(Lcom/tencent/mobileqq/activity/richmedia/subtitles/SubtitleLayout;)V
     //   26: putfield 169	com/tencent/mobileqq/activity/richmedia/subtitles/SubtitleLayout:jdField_a_of_type_JavaUtilTimerTask	Ljava/util/TimerTask;
     //   29: aload_0
     //   30: getfield 167	com/tencent/mobileqq/activity/richmedia/subtitles/SubtitleLayout:jdField_a_of_type_JavaUtilTimer	Ljava/util/Timer;
@@ -251,8 +253,8 @@ public class SubtitleLayout
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer.e();
+      if (this.jdField_a_of_type_Ajuh != null) {
+        this.jdField_a_of_type_Ajuh.e();
       }
       return;
     }
@@ -272,17 +274,17 @@ public class SubtitleLayout
     QLog.d("SubtitleLayout", 2, "setAnimText:" + paramString1 + " " + paramString2);
     try
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer == null) || (this.jdField_b_of_type_Int != 0) || (this.jdField_a_of_type_Int == 0)) {
+      if ((this.jdField_a_of_type_Ajuh == null) || (this.jdField_b_of_type_Int != 0) || (this.jdField_a_of_type_Int == 0)) {
         return;
       }
       if ((this.jdField_a_of_type_Boolean) && ((!this.jdField_c_of_type_Boolean) || (this.d)))
       {
         i();
         a();
-        if ((this.d) && (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer != null))
+        if ((this.d) && (this.jdField_a_of_type_Ajuh != null))
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer.d();
-          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer.a(3);
+          this.jdField_a_of_type_Ajuh.d();
+          this.jdField_a_of_type_Ajuh.a(3);
           this.jdField_b_of_type_Long = 0L;
         }
       }
@@ -292,32 +294,14 @@ public class SubtitleLayout
         long l2 = this.jdField_c_of_type_Long;
         HashMap localHashMap = new HashMap();
         localHashMap.put("pressStartTransCost", String.valueOf(l1 - l2));
-        StatisticCollector.a(BaseApplicationImpl.getApplication()).a(null, "actSubtitlePressTranslate", true, 0L, 0L, localHashMap, null);
+        azri.a(BaseApplicationImpl.getApplication()).a(null, "actSubtitlePressTranslate", true, 0L, 0L, localHashMap, null);
         this.e = false;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer.a(paramLong1, paramLong2, paramString1, paramString2, paramBoolean);
+      this.jdField_a_of_type_Ajuh.a(paramLong1, paramLong2, paramString1, paramString2, paramBoolean);
       k();
       return;
     }
     finally {}
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubtitleLayout", 2, "reset, mode:" + this.jdField_b_of_type_Int + " type:" + this.jdField_a_of_type_Int);
-    }
-    if ((this.jdField_b_of_type_Int != 0) || (this.jdField_a_of_type_Int == 0)) {
-      return;
-    }
-    if (paramBoolean) {
-      a(this.jdField_a_of_type_Int, true, false, true);
-    }
-    a();
-    j();
-    k();
-    setState(this.jdField_c_of_type_Int);
-    this.d = false;
   }
   
   public void a(byte[] paramArrayOfByte)
@@ -326,56 +310,7 @@ public class SubtitleLayout
       return;
     }
     int i = paramArrayOfByte.length;
-    setAnimType(DoodleMsgTranslator.a(paramArrayOfByte, 0), null, paramArrayOfByte, 4, i - 4);
-  }
-  
-  public boolean a()
-  {
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_Int != 0)
-        {
-          bool = true;
-          return bool;
-        }
-      }
-      finally {}
-      boolean bool = false;
-    }
-  }
-  
-  public byte[] a()
-  {
-    Object localObject4 = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("SubtitleLayout", 2, "toBytes begin");
-    }
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer != null)
-        {
-          byte[] arrayOfByte = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer.a();
-          Object localObject3 = localObject4;
-          if (arrayOfByte != null)
-          {
-            localObject3 = localObject4;
-            if (arrayOfByte.length > 0)
-            {
-              localObject3 = new byte[arrayOfByte.length + 4];
-              System.arraycopy(DoodleMsgTranslator.a(this.jdField_a_of_type_Int), 0, localObject3, 0, 4);
-              System.arraycopy(arrayOfByte, 0, localObject3, 4, arrayOfByte.length);
-            }
-          }
-          return localObject3;
-        }
-      }
-      finally {}
-      Object localObject2 = null;
-    }
+    setAnimType(aezw.a(paramArrayOfByte, 0), null, paramArrayOfByte, 4, i - 4);
   }
   
   public void b()
@@ -385,7 +320,7 @@ public class SubtitleLayout
     }
     if (this.jdField_b_of_type_Int == 0)
     {
-      ReportController.b(null, "dc00898", "", "", "0X8008758", "0X8008758", 0, 0, "", "", "", "");
+      azqs.b(null, "dc00898", "", "", "0X8008758", "0X8008758", 0, 0, "", "", "", "");
       if (this.jdField_a_of_type_Boolean) {
         i();
       }
@@ -405,32 +340,15 @@ public class SubtitleLayout
       k();
       try
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer != null)
+        if (this.jdField_a_of_type_Ajuh != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer.d();
-          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer.a(3);
+          this.jdField_a_of_type_Ajuh.d();
+          this.jdField_a_of_type_Ajuh.a(3);
           this.jdField_b_of_type_Long = 0L;
         }
       }
       finally {}
     }
-  }
-  
-  public boolean b()
-  {
-    boolean bool = false;
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer != null)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer.a(true) > 0) {
-          bool = true;
-        }
-        return bool;
-      }
-      return false;
-    }
-    finally {}
   }
   
   public void c()
@@ -442,12 +360,12 @@ public class SubtitleLayout
     m();
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer.a(true);
+      if (this.jdField_a_of_type_Ajuh != null) {
+        this.jdField_a_of_type_Ajuh.a(true);
       }
       if (this.jdField_b_of_type_Int == 0)
       {
-        AudioTranslator.a().a(true, false);
+        ajua.a().a(true, false);
         h();
         i();
       }
@@ -466,8 +384,8 @@ public class SubtitleLayout
       this.jdField_b_of_type_Boolean = false;
       try
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer != null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer.a(false);
+        if (this.jdField_a_of_type_Ajuh != null) {
+          this.jdField_a_of_type_Ajuh.a(false);
         }
         k();
         if ((this.jdField_b_of_type_Int != 0) || (this.d)) {
@@ -493,7 +411,7 @@ public class SubtitleLayout
     if (this.jdField_b_of_type_Int == 0)
     {
       this.d = false;
-      AudioTranslator.a().a(false, false);
+      ajua.a().a(false, false);
       i();
       setState(this.jdField_c_of_type_Int);
     }
@@ -503,10 +421,10 @@ public class SubtitleLayout
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer != null)
+      if (this.jdField_a_of_type_Ajuh != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer.c();
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer = null;
+        this.jdField_a_of_type_Ajuh.c();
+        this.jdField_a_of_type_Ajuh = null;
       }
       this.jdField_a_of_type_Boolean = false;
       if (this.jdField_a_of_type_AndroidOsHandler != null)
@@ -525,13 +443,13 @@ public class SubtitleLayout
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer != null)
+      if (this.jdField_a_of_type_Ajuh != null)
       {
-        this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer.a(paramCanvas, null, -1L);
+        this.jdField_a_of_type_Long = this.jdField_a_of_type_Ajuh.a(paramCanvas, null, -1L);
         int i = 10;
         while ((this.jdField_b_of_type_Int != 0) && (this.jdField_a_of_type_Long < this.jdField_b_of_type_Long) && (this.jdField_a_of_type_Long != -1L) && (this.jdField_a_of_type_Long != -2L) && (i > 0))
         {
-          this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer.a(paramCanvas, null, -1L);
+          this.jdField_a_of_type_Long = this.jdField_a_of_type_Ajuh.a(paramCanvas, null, -1L);
           i -= 1;
         }
       }
@@ -559,16 +477,16 @@ public class SubtitleLayout
       this.jdField_a_of_type_Int = paramInt1;
       if ((this.jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0))
       {
-        AudioTranslator.a().a(true, false);
+        ajua.a().a(true, false);
         h();
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer != null)
+      if (this.jdField_a_of_type_Ajuh != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer.c();
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer = null;
+        this.jdField_a_of_type_Ajuh.c();
+        this.jdField_a_of_type_Ajuh = null;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer = AnimDrawerFactory.a(this.jdField_a_of_type_Int);
-    } while (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer == null);
+      this.jdField_a_of_type_Ajuh = ajtz.a(this.jdField_a_of_type_Int);
+    } while (this.jdField_a_of_type_Ajuh == null);
     if (this.jdField_b_of_type_Int == 0)
     {
       paramInt1 = getWidth();
@@ -576,8 +494,8 @@ public class SubtitleLayout
       if (QLog.isColorLevel()) {
         QLog.d("SubtitleLayout", 2, "subtitlelayout width:" + paramInt1 + " height:" + paramInt2);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer.a(getContext(), paramInt1, paramInt2, 30, false, paramString);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer.a(this.jdField_c_of_type_Int);
+      this.jdField_a_of_type_Ajuh.a(getContext(), paramInt1, paramInt2, 30, false, paramString);
+      this.jdField_a_of_type_Ajuh.a(this.jdField_c_of_type_Int);
       i();
       a();
       j();
@@ -586,15 +504,15 @@ public class SubtitleLayout
       g();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer.a(getContext(), -1.0F, -1.0F, -1, paramArrayOfByte, paramInt2, paramInt3, true);
+    this.jdField_a_of_type_Ajuh.a(getContext(), -1.0F, -1.0F, -1, paramArrayOfByte, paramInt2, paramInt3, true);
   }
   
   public void setState(int paramInt)
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesBaseAnimDrawer.a(paramInt);
+      if (this.jdField_a_of_type_Ajuh != null) {
+        this.jdField_a_of_type_Ajuh.a(paramInt);
       }
       this.jdField_c_of_type_Int = paramInt;
       return;
@@ -612,7 +530,7 @@ public class SubtitleLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout
  * JD-Core Version:    0.7.0.1
  */

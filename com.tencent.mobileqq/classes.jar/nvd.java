@@ -1,46 +1,101 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.KeyboardAndEmojiManager;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
-import com.tencent.mobileqq.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class nvd
-  implements EmoticonCallback
 {
-  public nvd(KeyboardAndEmojiManager paramKeyboardAndEmojiManager) {}
-  
-  public void a(EmoticonInfo paramEmoticonInfo)
+  public static nva a()
   {
-    if (((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) && (KeyboardAndEmojiManager.a(this.a) != null)) {
-      ((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).a(PlayModeUtils.a(), KeyboardAndEmojiManager.a(this.a), KeyboardAndEmojiManager.a(this.a), null);
+    nva localnva2 = nvc.a();
+    nva localnva1 = localnva2;
+    if (localnva2 == null) {
+      localnva1 = new nva();
+    }
+    return localnva1;
+  }
+  
+  public static nvb a(int paramInt)
+  {
+    Object localObject = a().jdField_a_of_type_JavaUtilArrayList;
+    if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
+    {
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        nvb localnvb = (nvb)((Iterator)localObject).next();
+        if (localnvb.jdField_a_of_type_Int == paramInt) {
+          return localnvb;
+        }
+      }
+    }
+    return new nvb();
+  }
+  
+  public static boolean a()
+  {
+    nva localnva = nvc.a();
+    if (localnva == null) {}
+    for (String str = "false";; str = localnva.jdField_a_of_type_Int + "")
+    {
+      QLog.i("EcshopEcshopConfUtil", 2, str);
+      if (localnva != null) {
+        break;
+      }
+      return false;
+    }
+    if (localnva.jdField_a_of_type_Int == 1) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
     }
   }
   
-  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
-  
-  public boolean a(EmoticonInfo paramEmoticonInfo)
+  public static boolean a(nva paramnva)
   {
+    return a(paramnva, 1, 1);
+  }
+  
+  public static boolean a(nva paramnva, int paramInt1, int paramInt2)
+  {
+    if ((paramnva == null) || (paramnva.jdField_a_of_type_JavaUtilArrayList == null) || (paramnva.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
+      return false;
+    }
+    paramnva = paramnva.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramnva.hasNext())
+    {
+      nvb localnvb = (nvb)paramnva.next();
+      if ((localnvb.b == paramInt1) && (localnvb.jdField_a_of_type_Int == paramInt2)) {
+        return true;
+      }
+    }
     return false;
   }
   
-  public void b()
+  public static boolean b()
   {
-    if (KeyboardAndEmojiManager.a(this.a) != null) {
-      TextUtils.a(KeyboardAndEmojiManager.a(this.a));
+    nva localnva = nvc.a();
+    if (localnva == null) {}
+    for (String str = "false";; str = localnva.b + "")
+    {
+      QLog.i("EcshopEcshopConfUtil", 2, str);
+      if (localnva != null) {
+        break;
+      }
+      return false;
+    }
+    if (localnva.b == 1) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
     }
   }
   
-  public void b(EmoticonInfo paramEmoticonInfo) {}
-  
-  public void c() {}
-  
-  public void setting() {}
+  public static boolean c()
+  {
+    return (a()) && (a(nvc.a()));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvd
  * JD-Core Version:    0.7.0.1
  */

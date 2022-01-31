@@ -1,23 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-
-public final class rwe
-  implements DialogInterface.OnClickListener
+public abstract interface rwe
 {
-  public rwe(ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.a != null) {
-      this.a.a();
-    }
-    paramDialogInterface.dismiss();
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rwe
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_cmd0x8f7$ApplyUploadRspBody
-  extends MessageMicro
+  extends MessageMicro<ApplyUploadRspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_file_exist = PBField.initBool(false);
@@ -35,7 +35,7 @@ public final class oidb_cmd0x8f7$ApplyUploadRspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8f7.oidb_cmd0x8f7.ApplyUploadRspBody
  * JD-Core Version:    0.7.0.1
  */

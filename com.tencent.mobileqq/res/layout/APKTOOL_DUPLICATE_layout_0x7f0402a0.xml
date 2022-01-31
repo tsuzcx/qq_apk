@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a032b" android:background="@drawable/top_button_right_selector" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" android:maxWidth="100.0dip" android:minWidth="52.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" tencent:skintype="title_right_view">
-        <com.tencent.widget.FadeIconImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a032c" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </FrameLayout>
-</RelativeLayout>

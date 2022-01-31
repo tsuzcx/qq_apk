@@ -1,33 +1,49 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.item.DeviceTextItemBuilder;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class uwe
-  extends ClickableSpan
+class uwe
+  implements urr<vfk, vfm>
 {
-  public uwe(DeviceTextItemBuilder paramDeviceTextItemBuilder) {}
+  uwe(uwd paramuwd) {}
   
-  public void onClick(View paramView)
+  public void a(@NonNull vfk paramvfk, @Nullable vfm paramvfm, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (!NetworkUtil.d(this.a.a))
+    paramvfk = paramvfk.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramvfk.hasNext())
     {
-      QQToast.a(this.a.a, "当前网络连接不可用，请确认后再使用", 2000).a();
+      localObject = (String)paramvfk.next();
+      uwd.a(this.a).remove(localObject);
+    }
+    paramvfk = new uwf();
+    paramvfk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    if ((paramErrorMessage.isFail()) || (paramvfm == null))
+    {
+      wxe.d("Q.qqstory:TagManager", "request fail for get tag request");
+      umc.a().dispatch(paramvfk);
       return;
     }
-    paramView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140617UV3MZn.html?ADTAG=veda.mobileqq.en");
-    paramView.putExtra("hide_more_button", true);
-    this.a.a.startActivity(paramView);
+    paramErrorMessage = paramvfk.jdField_a_of_type_JavaUtilMap;
+    Object localObject = (uwd)uwa.a(27);
+    paramvfm = paramvfm.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramvfm.hasNext())
+    {
+      vfl localvfl = (vfl)paramvfm.next();
+      ((uwd)localObject).a(localvfl.jdField_a_of_type_JavaLangString, localvfl.jdField_a_of_type_JavaUtilList);
+      paramErrorMessage.put(localvfl.jdField_a_of_type_JavaLangString, localvfl);
+      wxe.a("Q.qqstory:TagManager", "save feedId :%s , %s", localvfl.jdField_a_of_type_JavaLangString, localvfl.jdField_a_of_type_JavaUtilList);
+    }
+    umc.a().dispatch(paramvfk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uwe
  * JD-Core Version:    0.7.0.1
  */

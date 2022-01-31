@@ -1,98 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.ChnToSpell;
+import android.app.Activity;
+import android.view.LayoutInflater;
+import android.view.View;
+import com.tencent.mobileqq.widget.AnimationView;
+import feedcloud.FeedCloudMeta.StFeed;
+import qqcircle.QQCircleFeedBase.StPolyLike;
 
 public class ueq
-  implements Runnable
 {
-  public ueq(TroopTransferActivity paramTroopTransferActivity, Friends paramFriends, TroopTransferActivity.TroopMemberItem paramTroopMemberItem) {}
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private AnimationView jdField_a_of_type_ComTencentMobileqqWidgetAnimationView;
+  private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
+  private QQCircleFeedBase.StPolyLike jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike;
   
-  public void run()
+  public ueq(Activity paramActivity)
   {
-    label166:
-    String str;
-    label187:
-    boolean bool;
-    if (!Utils.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark, this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.j))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.j = this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.m))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.k = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.m, 2);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.l = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.m, 1);
-      }
-    }
-    else
-    {
-      if (!Utils.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name, this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g = this.jdField_a_of_type_ComTencentMobileqqDataFriends.name;
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g)) {
-          break label290;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.h = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g, 2);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.i = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g, 1);
-      }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.j)) {
-        break label311;
-      }
-      str = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.j;
-      if (Utils.a(str, this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.b)) {
-        break label412;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.b = str;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.b)) {
-        break label389;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.c = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.b, 2);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.d = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.b, 1);
-      bool = true;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a(bool);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.k = "";
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.l = "";
-      break;
-      label290:
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.h = "";
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.i = "";
-      break label166;
-      label311:
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.m))
-      {
-        str = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.m;
-        break label187;
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g))
-      {
-        str = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g;
-        break label187;
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.a))
-      {
-        str = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.a;
-        break label187;
-      }
-      str = "";
-      break label187;
-      label389:
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.c = "";
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.d = "";
-      bool = true;
-      continue;
-      label412:
-      bool = false;
-    }
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramActivity).inflate(2131560577, null);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView = ((AnimationView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373209));
+  }
+  
+  public AnimationView a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView;
+  }
+  
+  public QQCircleFeedBase.StPolyLike a()
+  {
+    return this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike;
+  }
+  
+  public void a(FeedCloudMeta.StFeed paramStFeed, QQCircleFeedBase.StPolyLike paramStPolyLike, int paramInt)
+  {
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
+    this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike = paramStPolyLike;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ueq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,18 @@
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-class nkl
-  implements Runnable
+public class nkl
+  implements nhm
 {
-  nkl(nkk paramnkk, UserManager paramUserManager, QQUserUIItem paramQQUserUIItem) {}
+  public nkl(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+    this.a.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nkl
  * JD-Core Version:    0.7.0.1
  */

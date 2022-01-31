@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@android:color/transparent" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/fnr" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="100.0dip">
+        <RelativeLayout android:id="@id/fnv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:layout_alignParentRight="true">
+            <ImageView android:id="@id/fnu" android:background="@drawable/ge1" android:layout_width="110.0dip" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:id="@id/fnw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="29.0dip" android:layout_marginRight="7.0dip" android:text="@string/s2u" android:maxLines="1" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/fnv" android:layout_centerVertical="true">
+            <com.qzone.widget.FlexiableProcessImageView android:id="@id/fnq" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/fux" android:layout_centerVertical="true" />
+            <TextView android:textSize="24.0sp" android:ellipsize="end" android:id="@id/fns" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginTop="22.0dip" android:maxWidth="130.0dip" android:text="@string/s2g" android:maxLines="1" android:layout_toRightOf="@id/fnq" />
+            <ImageView android:id="@id/fnt" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="26.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/gb3" android:minWidth="24.0dip" android:minHeight="24.0dip" android:layout_toRightOf="@id/fns" />
+            <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:id="@id/fnp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginTop="60.0dip" android:layout_marginBottom="20.0dip" android:layout_toRightOf="@id/fnq" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

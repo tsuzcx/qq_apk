@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080793" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a0020" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textAppearance="@style/APKTOOL_DUPLICATE_style_0x7f0e0186" android:textSize="20.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0020" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080794" android:background="@drawable/common_btn_blue" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="14.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="14.0dip" android:layout_marginBottom="25.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d08ab" />
-</LinearLayout>
+    <com.tencent.mobileqq.widget.SlideDetectListView android:id="@id/qb_troop_list_view" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02015c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:cacheColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0a0017" android:divider="@null" />
+    <TextView android:textSize="13.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a013b" android:gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08067e" android:background="@drawable/skin_group_list_sub_entry" android:paddingLeft="10.0dip" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b011d" android:singleLine="true" />
+</RelativeLayout>

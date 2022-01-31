@@ -1,89 +1,86 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.SubAccountSettingActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SubAccountBindObserver;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import mqq.observer.AccountObserver;
 
 public class dml
-  extends AccountObserver
+  extends SubAccountBindObserver
 {
-  public dml(RegisterSendUpSms paramRegisterSendUpSms) {}
+  public dml(SubAccountSettingActivity paramSubAccountSettingActivity) {}
   
-  public void onRegisterQuerySmsStatResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
+  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    Object localObject = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterSendUpSms", 2, "RegisterPhoneNumActivity onRegisterQuerySmsStatResp");
-    }
-    if (this.a.isFinishing()) {}
-    do
+    this.a.e();
+    if (SubAccountSettingActivity.a(this.a))
     {
-      return;
-      if (!paramBoolean)
-      {
-        RegisterSendUpSms.d(this.a);
-        try
+      SubAccountSettingActivity.a(this.a, false);
+      if ((paramBoolean) && (paramSubAccountBackProtocData != null)) {
+        if (paramSubAccountBackProtocData.a())
         {
-          paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
-          localObject = paramArrayOfByte;
-          if (TextUtils.isEmpty(paramArrayOfByte)) {
-            localObject = this.a.getString(2131561658);
-          }
-          this.a.a((String)localObject, 1);
-          return;
-        }
-        catch (UnsupportedEncodingException paramArrayOfByte)
-        {
-          for (;;)
-          {
-            paramArrayOfByte.printStackTrace();
-            paramArrayOfByte = null;
-          }
+          SubAccountAssistantForward.a(this.a.b, this.a.a(), this.a.b.getAccount());
+          this.a.finish();
         }
       }
-      if (paramArrayOfByte != null) {}
-      try
+    }
+    while ((!paramBoolean) || (paramSubAccountBackProtocData == null) || ((SubAccountSettingActivity.a(this.a) != null) && (SubAccountSettingActivity.a(this.a).subuin != null) && (SubAccountSettingActivity.a(this.a).subuin.equals(paramSubAccountBackProtocData.c))))
+    {
+      for (;;)
       {
-        localObject = new String(paramArrayOfByte, "utf-8");
-        if (QLog.isColorLevel()) {
-          QLog.d("RegisterSendUpSms", 2, "RegisterPhoneNumActivity onRegisterQuerySmsStatResp code = " + paramInt1 + ";strMsg = " + (String)localObject + ";next_chk_time =" + paramInt2 + ";total_time_over =" + paramInt3);
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramArrayOfByte.printStackTrace();
-        }
-      }
-      RegisterSendUpSms.d(this.a);
-      if (paramInt1 == 0)
-      {
-        RegisterVerifyCodeActivity.a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.a, this.a.c, this.a.d, this.a.e, RegisterSendUpSms.a(this.a));
-        RegisterSendUpSms.c(this.a);
         return;
+        SubAccountAssistantForward.a(this.a.b, this.a.a(), this.a.b.getAccount());
       }
-    } while (paramInt1 != 4);
-    paramInt1 = paramInt3;
-    if (paramInt3 <= 0) {
-      paramInt1 = 60000;
-    }
-    paramInt3 = paramInt2;
-    if (paramInt2 <= 60) {
-      paramInt3 = 60;
-    }
-    this.a.jdField_b_of_type_AndroidOsHandler.post(new dmm(this, paramInt3));
-    try
-    {
-      this.a.jdField_b_of_type_AndroidOsHandler.postDelayed(new dmn(this), paramInt1 * 1000);
+      this.a.a(this.a.getString(2131562086));
       return;
     }
-    catch (Exception paramArrayOfByte)
+    this.a.a(this.a.getString(2131562520), this.a.getString(2131563026), this.a.getString(2131562540), new dmo(this));
+  }
+  
+  protected void c(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  {
+    String str2;
+    StringBuilder localStringBuilder;
+    if ((QLog.isColorLevel()) && (paramSubAccountBackProtocData != null))
     {
-      paramArrayOfByte.printStackTrace();
+      str2 = SubAccountSettingActivity.a(this.a);
+      localStringBuilder = new StringBuilder().append("onUnBindSubAccount:....SubAccountSettingActivity......unbindSub ............");
+      if (!paramBoolean) {
+        break label156;
+      }
     }
+    label156:
+    for (String str1 = "..success";; str1 = "...failed..")
+    {
+      QLog.d(str2, 2, str1 + " ...errorMsg = " + paramSubAccountBackProtocData.a + "...errorType = " + paramSubAccountBackProtocData.p);
+      this.a.e();
+      if (!paramBoolean) {
+        break;
+      }
+      this.a.b.a().c(AppConstants.O, 7000);
+      this.a.a().setTitle("");
+      SubAccountAssistantForward.a(this.a.b, this.a.a(), this.a.b.getAccount());
+      this.a.finish();
+      return;
+    }
+    switch (paramSubAccountBackProtocData.p)
+    {
+    default: 
+      this.a.a(this.a.getString(2131561771));
+      return;
+    case 1008: 
+      paramSubAccountBackProtocData = this.a.getString(2131562520);
+      str1 = this.a.getString(2131563297);
+      this.a.a(paramSubAccountBackProtocData, str1, new dmm(this));
+      return;
+    }
+    paramSubAccountBackProtocData = this.a.getString(2131562520);
+    str1 = this.a.getString(2131563286);
+    this.a.a(paramSubAccountBackProtocData, str1, new dmn(this));
   }
 }
 

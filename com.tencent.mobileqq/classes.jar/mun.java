@@ -1,21 +1,23 @@
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.utils.InviteBaseData;
 
-class mun
-  implements Runnable
+public final class mun
+  implements Parcelable.Creator<InviteBaseData>
 {
-  mun(mul parammul) {}
-  
-  public void run()
+  public InviteBaseData a(Parcel paramParcel)
   {
-    GalleryShareHelper.a(this.a.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).dismiss();
-    QQToast.a(this.a.jdField_a_of_type_AndroidAppActivity, 1, "分享失败，请稍后重试！", 0).a();
+    return new InviteBaseData(paramParcel);
+  }
+  
+  public InviteBaseData[] a(int paramInt)
+  {
+    return new InviteBaseData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mun
  * JD-Core Version:    0.7.0.1
  */

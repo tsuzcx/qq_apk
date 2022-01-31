@@ -1,17 +1,10 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
 
-class adtn
-  implements Runnable
+public class adtn
+  extends Handler
 {
-  adtn(adtm paramadtm) {}
-  
-  public void run()
-  {
-    if (this.a.a.getActivity() != null) {
-      this.a.a.getActivity().finish();
-    }
-  }
+  public adtn(RecentLoginDevActivity paramRecentLoginDevActivity) {}
 }
 
 

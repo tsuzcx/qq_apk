@@ -10,8 +10,8 @@ public abstract class HttpAsyncTask
   extends AsyncTask
 {
   protected static final String g = "https://openmobile.qq.com/";
-  protected String h = null;
-  protected String i = null;
+  public String h = null;
+  public String i = null;
   
   public HttpAsyncTask(String paramString1, String paramString2)
   {

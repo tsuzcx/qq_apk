@@ -1,17 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.DeviceTextItemBuilder;
-
-public class uwc
-  implements DialogInterface.OnClickListener
+class uwc
 {
-  public uwc(DeviceTextItemBuilder paramDeviceTextItemBuilder) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public static final uwa a = new uwa(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uwc
  * JD-Core Version:    0.7.0.1
  */

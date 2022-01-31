@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin;
-
 public class ancz
-  implements DialogInterface.OnClickListener
 {
-  public ancz(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin, String[] paramArrayOfString) {}
+  public float a;
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String toString()
   {
-    paramDialogInterface.dismiss();
-    QzoneQunFeedJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneQunFeedJsPlugin, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("xMIN:").append(this.a).append(",xMAX:").append(this.b).append(",yMIN:").append(this.c).append(",yMAX:").append(this.d);
+    return localStringBuilder.toString();
   }
 }
 

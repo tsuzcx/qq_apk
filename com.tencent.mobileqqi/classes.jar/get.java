@@ -1,78 +1,125 @@
-import android.content.Context;
-import android.os.Vibrator;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.magicface.magicfaceaction.Action;
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
-import com.tencent.mobileqq.magicface.model.MagicfaceDecoder.MagicPlayListener;
-import com.tencent.mobileqq.magicface.model.MagicfacePlayRes;
-import com.tencent.mobileqq.magicface.service.MagicfacePlayManager;
-import java.util.concurrent.CountDownLatch;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.DownloadInfo;
+import com.tencent.mobileqq.profile.ProfileCardCheckUpdate;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class get
-  implements MagicfaceDecoder.MagicPlayListener
+  implements Runnable
 {
-  public get(Action paramAction) {}
+  public get(ProfileCardCheckUpdate paramProfileCardCheckUpdate, String paramString1, String paramString2) {}
   
-  public void a()
+  public void run()
   {
-    if (Action.a(this.a) == 0)
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.ProfileCardCheckUpdate", 2, "ProfileCardCheckUpdate start downloadProfileCardFile url=" + this.jdField_a_of_type_JavaLangString + ",version=" + this.b);
+    }
+    Object localObject2;
+    Object localObject3;
+    int j;
+    int i;
+    ByteArrayOutputStream localByteArrayOutputStream;
+    try
     {
-      Action.a(this.a);
-      if ((Action.a(this.a).c != null) && (Action.a(this.a).c.length() > 0) && (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.c))
+      SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardCheckUpdate.a.getPreferences();
+      localObject1 = ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardCheckUpdate.a.getApplication());
+      localObject2 = new File((String)localObject1 + ".tmp");
+      localSharedPreferences.edit().putBoolean("is_template_list_loaded", false).commit();
+      localObject3 = new DownloadInfo(this.jdField_a_of_type_JavaLangString, (File)localObject2, 0);
+      j = HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardCheckUpdate.a, (DownloadInfo)localObject3, null, null, "param_XGSummaryCardDownloadFlow", "param_WIFISummaryCardDownloadFlow");
+      if (j == 0)
       {
-        if (Action.a(this.a).e > 0)
+        i = 1;
+        localSharedPreferences.edit().putBoolean("is_template_list_loaded", true).commit();
+        if (i == 0) {
+          break label556;
+        }
+        if (((File)localObject2).exists())
         {
-          MagicfacePlayRes localMagicfacePlayRes = Action.a(this.a);
-          localMagicfacePlayRes.e -= 1;
+          localObject3 = new FileInputStream((File)localObject2);
+          localByteArrayOutputStream = new ByteArrayOutputStream();
+          byte[] arrayOfByte = new byte[4096];
+          for (;;)
+          {
+            i = ((InputStream)localObject3).read(arrayOfByte, 0, 4096);
+            if (i == -1) {
+              break;
+            }
+            localByteArrayOutputStream.write(arrayOfByte, 0, i);
+          }
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.a(Action.a(this.a).c, Action.a(this.a).e);
-      }
-      if (Action.a(this.a).a)
-      {
-        Action.a(this.a, (Vibrator)BaseApplicationImpl.getContext().getSystemService("vibrator"));
-        if (Action.a(this.a).h != -1) {
-          break label199;
-        }
-        Action.a(this.a).vibrate(new long[] { 0L, 1000L }, 0);
+        return;
       }
     }
-    for (;;)
+    catch (Exception localException)
     {
-      Action.b(this.a);
-      return;
-      label199:
-      Action.a(this.a).vibrate(Action.a(this.a).h * 1000);
-    }
-  }
-  
-  public void b()
-  {
-    if (Action.a(this.a)) {
-      Action.a(this.a).countDown();
+      localException.printStackTrace();
     }
     do
     {
-      return;
-      if (this.a.jdField_a_of_type_Int == -1)
+      do
       {
-        if (this.a.jdField_b_of_type_Int == -1)
+        i = 0;
+        break;
+        localObject3 = new String(localByteArrayOutputStream.toByteArray(), "utf-8");
+      } while ((localObject3 == null) || (((String)localObject3).length() <= 0));
+      localObject3 = new JSONObject((String)localObject3);
+      if (!((JSONObject)localObject3).has("template")) {
+        break label521;
+      }
+    } while (((JSONObject)localObject3).optJSONArray("template").length() <= 0);
+    FileUtils.c((String)localObject1 + ".tmp", (String)localObject1);
+    ((File)localObject2).delete();
+    Object localObject1 = new File((String)localObject1).getParentFile().listFiles();
+    if ((localObject1 != null) && (localObject1.length > 0)) {
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i < localObject1.length)
+      {
+        localObject2 = localObject1[i].getName();
+        if ((((String)localObject2).startsWith("qvip_profile_template.json")) && (!((String)localObject2).endsWith("6.0.2")))
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.a(Action.a(this.a));
-          return;
-        }
-        if (this.a.jdField_b_of_type_Int < Action.a(this.a))
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.a(Action.a(this.a));
-          return;
-        }
-        if (this.a.jdField_b_of_type_Int == Action.a(this.a))
-        {
-          Action.a(this.a).countDown();
-          return;
+          FileUtils.d((String)localObject2);
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.profilecard.FrdProfileCard", 2, "delete old file=" + (String)localObject2);
+          }
         }
       }
-    } while (this.a.jdField_b_of_type_Boolean);
-    this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.a(Action.a(this.a));
+      else
+      {
+        localException.edit().putString("cardTemplateVersion", this.b).commit();
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("ProfileCard.ProfileCardCheckUpdate", 2, "ProfileCardCheckUpdate update template list file success version=" + this.b);
+        return;
+        label521:
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("ProfileCard.ProfileCardCheckUpdate", 2, "ProfileCardCheckUpdate download file content error,url=" + this.jdField_a_of_type_JavaLangString);
+        return;
+        label556:
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("ProfileCard.ProfileCardCheckUpdate", 2, "ProfileCardCheckUpdate download error resultCode=" + j + ",url=" + this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      i += 1;
+    }
   }
 }
 

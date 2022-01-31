@@ -1,40 +1,34 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.share.WXShareFromQZHelper.WXShareListener;
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ArLBSActivity;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 
-public class anby
-  implements WXShareFromQZHelper.WXShareListener
+public abstract interface anby
 {
-  public anby(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin) {}
+  public abstract void a();
   
-  public void a(BaseResp paramBaseResp)
-  {
-    int i = 1;
-    int j = paramBaseResp.errCode;
-    if (j == 0)
-    {
-      i = 0;
-      paramBaseResp = "分享成功";
-      QZoneSharePictureJsPlugin.d(this.a, "分享成功");
-    }
-    for (;;)
-    {
-      QZoneSharePictureJsPlugin.a(this.a, QZoneSharePictureJsPlugin.a(this.a), i, paramBaseResp);
-      return;
-      if (j == -2)
-      {
-        paramBaseResp = "取消分享";
-        QZoneSharePictureJsPlugin.d(this.a, "取消分享");
-      }
-      else
-      {
-        paramBaseResp = "分享失败";
-        QLog.e("QZoneSharePictureJsPlugin", 1, "wx share fail:" + j);
-        i = j;
-      }
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, amwo paramamwo, int paramInt2);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(long paramLong, int paramInt, amvm paramamvm, ancs paramancs);
+  
+  public abstract void a(long paramLong, amwo paramamwo);
+  
+  public abstract void a(long paramLong, boolean paramBoolean, amwo paramamwo);
+  
+  public abstract void a(anau paramanau, ArLBSActivity paramArLBSActivity);
+  
+  public abstract void a(ArCloudConfigInfo paramArCloudConfigInfo1, ArCloudConfigInfo paramArCloudConfigInfo2, int paramInt1, int paramInt2, Object paramObject);
+  
+  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, amvj paramamvj);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

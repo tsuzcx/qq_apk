@@ -1,26 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopAssistSetGuideActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class dty
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public dty(TroopAssistSetGuideActivity paramTroopAssistSetGuideActivity) {}
+  public dty(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131234639: 
-      TroopAssistSetGuideActivity.a(this.a);
-      ReportController.b(this.a.b, "CliOper", "", "", "Grp_helper", "Clk_not_set", 0, 0, "", "", "", "");
-      return;
-    }
-    TroopAssistSetGuideActivity.b(this.a);
-    ReportController.b(this.a.b, "CliOper", "", "", "Grp_helper", "Clk_quiet_mode", 0, 0, "", "", "", "");
+    UpgradeActivity.b(this.a);
+    this.a.finish();
   }
 }
 

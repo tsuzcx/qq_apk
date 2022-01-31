@@ -11,7 +11,7 @@ public class ContactBindObserver
   public static final String a = "k_result";
   public static final String b = "k_uin";
   
-  protected String a(int paramInt)
+  public String a(int paramInt)
   {
     if (paramInt == 217) {
       return BaseApplicationImpl.getContext().getString(2131559259);
@@ -30,25 +30,25 @@ public class ContactBindObserver
   
   public void a(boolean paramBoolean) {}
   
-  protected void a(boolean paramBoolean, int paramInt) {}
+  public void a(boolean paramBoolean, int paramInt) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString) {}
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString) {}
   
-  protected void b(boolean paramBoolean) {}
+  public void b(boolean paramBoolean) {}
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
+  public void b(boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void c(boolean paramBoolean) {}
   
-  protected void c(boolean paramBoolean1, boolean paramBoolean2) {}
+  public void c(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected void d(boolean paramBoolean1, boolean paramBoolean2) {}
+  public void d(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected void e(boolean paramBoolean) {}
+  public void e(boolean paramBoolean) {}
   
   protected void f(boolean paramBoolean) {}
   

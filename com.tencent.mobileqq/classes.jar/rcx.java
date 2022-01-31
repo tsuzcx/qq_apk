@@ -1,20 +1,10 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
-
-public class rcx
-  implements Runnable
+class rcx
 {
-  public rcx(LiteTransferWrapper paramLiteTransferWrapper, String paramString1, String paramString2) {}
-  
-  public void run()
-  {
-    if (LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) != 0L) {
-      this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetServicePathToJNI(LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_JavaLangString, this.b);
-    }
-  }
+  private static final rcp a = new rcp(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rcx
  * JD-Core Version:    0.7.0.1
  */

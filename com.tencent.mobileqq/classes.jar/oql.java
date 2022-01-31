@@ -1,26 +1,25 @@
-import android.view.View;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-import com.tencent.biz.qqstory.view.segment.SegmentManager;
-import com.tencent.widget.SwipListView.RightIconMenuListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class oql
-  implements SwipListView.RightIconMenuListener
+class oql
+  implements ViewBase.OnClickListener
 {
-  public oql(SegmentList paramSegmentList) {}
+  oql(oqd paramoqd) {}
   
-  public void a(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    this.a.a.b(paramView);
-  }
-  
-  public void b(View paramView)
-  {
-    this.a.a.c(paramView);
+    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) && (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mNewPolymericInfo != null))
+    {
+      paramViewBase = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mNewPolymericInfo.d;
+      ors.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oql
  * JD-Core Version:    0.7.0.1
  */

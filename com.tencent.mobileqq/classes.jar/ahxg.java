@@ -1,23 +1,39 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendSingleInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public final class ahxg
-  implements Parcelable.Creator
+class ahxg
+  implements apou
 {
-  public FriendSingleInfo a(Parcel paramParcel)
+  ahxg(ahww paramahww, int paramInt) {}
+  
+  public void a(float paramFloat, List<Integer> paramList)
   {
-    return new FriendSingleInfo(paramParcel);
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKEmotionSettingManager", 2, "upLoadEmotions progress=" + paramFloat + ", addEmotionsResults=" + paramList + ", isTimeOut=" + ahww.b(this.jdField_a_of_type_Ahww));
+    }
+    if (!ahww.b(this.jdField_a_of_type_Ahww))
+    {
+      ahww.b(this.jdField_a_of_type_Ahww, paramList);
+      ahww.a(this.jdField_a_of_type_Ahww, this.jdField_a_of_type_Int, paramFloat);
+    }
   }
   
-  public FriendSingleInfo[] a(int paramInt)
+  public void a(List<Integer> paramList)
   {
-    return new FriendSingleInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKEmotionSettingManager", 2, "onUploadFinish , addEmotionsResults=" + paramList + ", isTimeOut=" + ahww.b(this.jdField_a_of_type_Ahww));
+    }
+    if (!ahww.b(this.jdField_a_of_type_Ahww))
+    {
+      ahww.a(this.jdField_a_of_type_Ahww).removeMessages(11);
+      ahww.a(this.jdField_a_of_type_Ahww, this.jdField_a_of_type_Int, paramList);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxg
  * JD-Core Version:    0.7.0.1
  */

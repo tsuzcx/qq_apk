@@ -1,18 +1,27 @@
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 
-class wqu
-  implements Runnable
+public abstract interface wqu
 {
-  wqu(wqs paramwqs, int paramInt, Object paramObject) {}
+  public abstract void a();
   
-  public void run()
-  {
-    this.jdField_a_of_type_Wqs.a.a(39, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangObject);
-  }
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(@NonNull Activity paramActivity);
+  
+  public abstract void a(Bundle paramBundle1, Bundle paramBundle2);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wqu
  * JD-Core Version:    0.7.0.1
  */

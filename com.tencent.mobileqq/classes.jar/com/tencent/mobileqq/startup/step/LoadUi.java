@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.startup.step;
 
-import com.tencent.mobileqq.startup.director.StartupDirector;
+import aznp;
 import mqq.app.AppActivity;
 
 public class LoadUi
-  extends Step
+  extends OnceIfSuccessStep
 {
-  protected boolean a()
+  protected boolean doStep()
   {
-    AppActivity localAppActivity = this.a.a;
+    AppActivity localAppActivity = this.mDirector.a;
     if (localAppActivity != null) {
       localAppActivity.preloadUi();
     }
@@ -17,7 +17,7 @@ public class LoadUi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.LoadUi
  * JD-Core Version:    0.7.0.1
  */

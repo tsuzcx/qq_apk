@@ -6,7 +6,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ZoomButtonsController;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import arrr;
+import aruq;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
@@ -24,7 +25,7 @@ public class FileWebView
   float jdField_a_of_type_Float = 1.0F;
   final int jdField_a_of_type_Int = 80;
   long jdField_a_of_type_Long = 0L;
-  FileWebView.TitilebarEventInterface jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface;
+  aruq jdField_a_of_type_Aruq;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private Timer jdField_a_of_type_JavaUtilTimer;
   boolean jdField_a_of_type_Boolean = false;
@@ -34,24 +35,33 @@ public class FileWebView
   public FileWebView(Context paramContext)
   {
     this(paramContext, null);
-    if (Build.VERSION.SDK_INT >= 11) {
+    if (Build.VERSION.SDK_INT >= 11)
+    {
       removeJavascriptInterface("searchBoxJavaBridge_");
+      removeJavascriptInterface("accessibility");
+      removeJavascriptInterface("accessibilityTraversal");
     }
   }
   
   public FileWebView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    if (Build.VERSION.SDK_INT >= 11) {
+    if (Build.VERSION.SDK_INT >= 11)
+    {
       removeJavascriptInterface("searchBoxJavaBridge_");
+      removeJavascriptInterface("accessibility");
+      removeJavascriptInterface("accessibilityTraversal");
     }
   }
   
   public FileWebView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    if (Build.VERSION.SDK_INT >= 11) {
+    if (Build.VERSION.SDK_INT >= 11)
+    {
       removeJavascriptInterface("searchBoxJavaBridge_");
+      removeJavascriptInterface("accessibility");
+      removeJavascriptInterface("accessibilityTraversal");
     }
     if (Integer.valueOf(Build.VERSION.SDK).intValue() < 11)
     {
@@ -88,7 +98,7 @@ public class FileWebView
   }
   
   /* Error */
-  public boolean a(WebView paramWebView, java.lang.String paramString, FileWebView.JSInterface paramJSInterface)
+  public boolean a(WebView paramWebView, java.lang.String paramString, arup paramarup)
   {
     // Byte code:
     //   0: aload_2
@@ -96,17 +106,17 @@ public class FileWebView
     //   4: iconst_0
     //   5: ireturn
     //   6: aload_2
-    //   7: ldc 121
-    //   9: invokevirtual 127	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   7: ldc 125
+    //   9: invokevirtual 131	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   12: ifne +5 -> 17
     //   15: iconst_0
     //   16: ireturn
     //   17: aload_2
-    //   18: ldc 129
-    //   20: invokevirtual 133	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   18: ldc 133
+    //   20: invokevirtual 137	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   23: astore 6
     //   25: aload_2
-    //   26: invokevirtual 136	java/lang/String:length	()I
+    //   26: invokevirtual 140	java/lang/String:length	()I
     //   29: iconst_1
     //   30: if_icmple +539 -> 569
     //   33: aload 6
@@ -120,52 +130,52 @@ public class FileWebView
     //   45: aload 6
     //   47: iconst_1
     //   48: aaload
-    //   49: ldc 138
-    //   51: ldc 140
-    //   53: invokevirtual 144	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   49: ldc 142
+    //   51: ldc 144
+    //   53: invokevirtual 148	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   56: astore_2
-    //   57: new 146	java/lang/StringBuilder
+    //   57: new 150	java/lang/StringBuilder
     //   60: dup
-    //   61: invokespecial 147	java/lang/StringBuilder:<init>	()V
+    //   61: invokespecial 151	java/lang/StringBuilder:<init>	()V
     //   64: aload_1
-    //   65: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   68: ldc 153
-    //   70: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: invokevirtual 157	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   76: ldc 159
-    //   78: invokevirtual 133	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   81: invokestatic 165	java/util/Arrays:asList	([Ljava/lang/Object;)Ljava/util/List;
+    //   65: invokevirtual 155	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   68: ldc 157
+    //   70: invokevirtual 155	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: invokevirtual 161	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   76: ldc 163
+    //   78: invokevirtual 137	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   81: invokestatic 169	java/util/Arrays:asList	([Ljava/lang/Object;)Ljava/util/List;
     //   84: astore_1
     //   85: aload_1
-    //   86: invokeinterface 170 1 0
+    //   86: invokeinterface 174 1 0
     //   91: iconst_5
     //   92: if_icmpge +5 -> 97
     //   95: iconst_0
     //   96: ireturn
     //   97: aload_1
     //   98: iconst_2
-    //   99: invokeinterface 174 2 0
-    //   104: checkcast 123	java/lang/String
-    //   107: ldc 176
-    //   109: invokevirtual 179	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   99: invokeinterface 178 2 0
+    //   104: checkcast 127	java/lang/String
+    //   107: ldc 180
+    //   109: invokevirtual 183	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   112: ifne +5 -> 117
     //   115: iconst_0
     //   116: ireturn
     //   117: aload_1
     //   118: iconst_3
-    //   119: invokeinterface 174 2 0
-    //   124: checkcast 123	java/lang/String
+    //   119: invokeinterface 178 2 0
+    //   124: checkcast 127	java/lang/String
     //   127: astore 9
     //   129: aconst_null
     //   130: astore 6
     //   132: aload_2
-    //   133: invokestatic 184	com/tencent/mobileqq/filemanager/util/FileManagerUtil:a	(Ljava/lang/String;)Ljava/util/LinkedHashMap;
+    //   133: invokestatic 188	arrr:a	(Ljava/lang/String;)Ljava/util/LinkedHashMap;
     //   136: astore_1
     //   137: aload_1
     //   138: astore 6
     //   140: aload_3
-    //   141: invokevirtual 188	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   144: invokevirtual 192	java/lang/Class:getMethods	()[Ljava/lang/reflect/Method;
+    //   141: invokevirtual 192	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   144: invokevirtual 196	java/lang/Class:getMethods	()[Ljava/lang/reflect/Method;
     //   147: astore 10
     //   149: aload 10
     //   151: arraylength
@@ -184,19 +194,19 @@ public class FileWebView
     //   173: aload_1
     //   174: astore 7
     //   176: aload 8
-    //   178: invokevirtual 197	java/lang/reflect/Method:getName	()Ljava/lang/String;
+    //   178: invokevirtual 201	java/lang/reflect/Method:getName	()Ljava/lang/String;
     //   181: aload 9
-    //   183: invokevirtual 201	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   183: invokevirtual 205	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   186: ifeq +91 -> 277
     //   189: aload 8
-    //   191: invokevirtual 205	java/lang/reflect/Method:getParameterTypes	()[Ljava/lang/Class;
+    //   191: invokevirtual 209	java/lang/reflect/Method:getParameterTypes	()[Ljava/lang/Class;
     //   194: astore_1
     //   195: aload_1
     //   196: astore 7
     //   198: aload_1
     //   199: arraylength
     //   200: aload 6
-    //   202: invokevirtual 208	java/util/LinkedHashMap:size	()I
+    //   202: invokevirtual 212	java/util/LinkedHashMap:size	()I
     //   205: if_icmpne +72 -> 277
     //   208: aload_1
     //   209: astore 7
@@ -205,32 +215,32 @@ public class FileWebView
     //   214: aload_1
     //   215: ifnull +336 -> 551
     //   218: aload 6
-    //   220: invokevirtual 208	java/util/LinkedHashMap:size	()I
+    //   220: invokevirtual 212	java/util/LinkedHashMap:size	()I
     //   223: ifne +66 -> 289
     //   226: aload_1
     //   227: aload_3
     //   228: iconst_0
-    //   229: anewarray 39	java/lang/Object
-    //   232: invokevirtual 212	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   229: anewarray 43	java/lang/Object
+    //   232: invokevirtual 216	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   235: pop
     //   236: iconst_1
     //   237: ireturn
     //   238: astore_1
-    //   239: invokestatic 218	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   239: invokestatic 222	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   242: ifeq +28 -> 270
-    //   245: ldc 220
+    //   245: ldc 224
     //   247: iconst_1
-    //   248: new 146	java/lang/StringBuilder
+    //   248: new 150	java/lang/StringBuilder
     //   251: dup
-    //   252: invokespecial 147	java/lang/StringBuilder:<init>	()V
-    //   255: ldc 222
-    //   257: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   252: invokespecial 151	java/lang/StringBuilder:<init>	()V
+    //   255: ldc 226
+    //   257: invokevirtual 155	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   260: aload_2
-    //   261: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   264: invokevirtual 157	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   267: invokestatic 226	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   261: invokevirtual 155	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   264: invokevirtual 161	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   267: invokestatic 230	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   270: aload_1
-    //   271: invokevirtual 229	java/lang/Exception:printStackTrace	()V
+    //   271: invokevirtual 233	java/lang/Exception:printStackTrace	()V
     //   274: goto -134 -> 140
     //   277: iload 4
     //   279: iconst_1
@@ -240,12 +250,12 @@ public class FileWebView
     //   285: astore_1
     //   286: goto -127 -> 159
     //   289: aload 6
-    //   291: invokevirtual 233	java/util/LinkedHashMap:values	()Ljava/util/Collection;
-    //   294: invokeinterface 239 1 0
+    //   291: invokevirtual 237	java/util/LinkedHashMap:values	()Ljava/util/Collection;
+    //   294: invokeinterface 243 1 0
     //   299: astore_2
     //   300: aload 7
     //   302: arraylength
-    //   303: anewarray 39	java/lang/Object
+    //   303: anewarray 43	java/lang/Object
     //   306: astore 6
     //   308: iconst_0
     //   309: istore 4
@@ -258,123 +268,123 @@ public class FileWebView
     //   322: iload 4
     //   324: aaload
     //   325: iload 4
-    //   327: invokespecial 108	com/tencent/mobileqq/filemanager/widget/FileWebView:a	(Ljava/lang/reflect/Type;I)Ljava/lang/Class;
-    //   330: invokevirtual 240	java/lang/Class:toString	()Ljava/lang/String;
-    //   333: invokevirtual 243	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   327: invokespecial 112	com/tencent/mobileqq/filemanager/widget/FileWebView:a	(Ljava/lang/reflect/Type;I)Ljava/lang/Class;
+    //   330: invokevirtual 244	java/lang/Class:toString	()Ljava/lang/String;
+    //   333: invokevirtual 247	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   336: astore 8
     //   338: aload 8
-    //   340: ldc 245
-    //   342: invokevirtual 249	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   340: ldc 249
+    //   342: invokevirtual 253	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   345: ifne +13 -> 358
     //   348: aload 8
-    //   350: ldc 251
-    //   352: invokevirtual 249	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   350: ldc 255
+    //   352: invokevirtual 253	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   355: ifeq +24 -> 379
     //   358: aload 6
     //   360: iload 4
     //   362: aload_2
     //   363: iload 4
     //   365: aaload
-    //   366: checkcast 123	java/lang/String
-    //   369: invokestatic 255	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   372: invokestatic 258	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   366: checkcast 127	java/lang/String
+    //   369: invokestatic 259	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   372: invokestatic 262	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   375: aastore
     //   376: goto +202 -> 578
     //   379: aload 8
-    //   381: ldc_w 260
-    //   384: invokevirtual 249	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   381: ldc_w 264
+    //   384: invokevirtual 253	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   387: ifeq +42 -> 429
     //   390: aload 6
     //   392: iload 4
     //   394: aload_2
     //   395: iload 4
     //   397: aaload
-    //   398: checkcast 123	java/lang/String
-    //   401: invokestatic 266	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   404: invokestatic 269	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   398: checkcast 127	java/lang/String
+    //   401: invokestatic 270	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   404: invokestatic 273	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   407: aastore
     //   408: goto +170 -> 578
     //   411: astore_1
-    //   412: invokestatic 218	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   412: invokestatic 222	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   415: ifeq +12 -> 427
-    //   418: ldc 220
+    //   418: ldc 224
     //   420: iconst_2
-    //   421: ldc_w 271
-    //   424: invokestatic 226	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   421: ldc_w 275
+    //   424: invokestatic 230	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   427: iconst_0
     //   428: ireturn
     //   429: aload 8
-    //   431: ldc_w 273
-    //   434: invokevirtual 249	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   431: ldc_w 277
+    //   434: invokevirtual 253	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   437: ifeq +36 -> 473
     //   440: aload 6
     //   442: iload 4
     //   444: aload_2
     //   445: iload 4
     //   447: aaload
-    //   448: checkcast 123	java/lang/String
+    //   448: checkcast 127	java/lang/String
     //   451: aastore
     //   452: goto +126 -> 578
     //   455: astore_1
-    //   456: invokestatic 218	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   456: invokestatic 222	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   459: ifeq +12 -> 471
-    //   462: ldc 220
+    //   462: ldc 224
     //   464: iconst_2
-    //   465: ldc_w 275
-    //   468: invokestatic 226	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   465: ldc_w 279
+    //   468: invokestatic 230	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   471: iconst_0
     //   472: ireturn
     //   473: aload 8
-    //   475: ldc_w 277
-    //   478: invokevirtual 249	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   475: ldc_w 281
+    //   478: invokevirtual 253	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   481: ifeq +97 -> 578
     //   484: aload 6
     //   486: iload 4
     //   488: aload_2
     //   489: iload 4
     //   491: aaload
-    //   492: checkcast 123	java/lang/String
-    //   495: invokestatic 282	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
-    //   498: invokestatic 285	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   492: checkcast 127	java/lang/String
+    //   495: invokestatic 286	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
+    //   498: invokestatic 289	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   501: aastore
     //   502: goto +76 -> 578
     //   505: astore_1
-    //   506: invokestatic 218	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   506: invokestatic 222	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   509: ifeq +12 -> 521
-    //   512: ldc 220
+    //   512: ldc 224
     //   514: iconst_2
-    //   515: ldc_w 287
-    //   518: invokestatic 226	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   515: ldc_w 291
+    //   518: invokestatic 230	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   521: iconst_0
     //   522: ireturn
     //   523: aload_1
     //   524: aload_3
     //   525: aload 6
-    //   527: invokevirtual 212	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   527: invokevirtual 216	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   530: pop
     //   531: iconst_1
     //   532: ireturn
     //   533: astore_1
-    //   534: invokestatic 218	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   534: invokestatic 222	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   537: ifeq +12 -> 549
-    //   540: ldc 220
+    //   540: ldc 224
     //   542: iconst_2
-    //   543: ldc_w 289
-    //   546: invokestatic 226	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   543: ldc_w 293
+    //   546: invokestatic 230	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   549: iconst_0
     //   550: ireturn
     //   551: aload_3
     //   552: aload_2
-    //   553: invokeinterface 294 2 0
+    //   553: invokeinterface 298 2 0
     //   558: goto -322 -> 236
     //   561: aload_1
     //   562: astore 7
     //   564: aconst_null
     //   565: astore_1
     //   566: goto -352 -> 214
-    //   569: ldc 140
+    //   569: ldc 144
     //   571: astore_1
-    //   572: ldc 140
+    //   572: ldc 144
     //   574: astore_2
     //   575: goto -518 -> 57
     //   578: iload 4
@@ -387,7 +397,7 @@ public class FileWebView
     //   0	587	0	this	FileWebView
     //   0	587	1	paramWebView	WebView
     //   0	587	2	paramString	java.lang.String
-    //   0	587	3	paramJSInterface	FileWebView.JSInterface
+    //   0	587	3	paramarup	arup
     //   155	428	4	i	int
     //   152	12	5	j	int
     //   23	503	6	localObject1	Object
@@ -449,7 +459,7 @@ public class FileWebView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface == null) {
+    if (this.jdField_a_of_type_Aruq == null) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
     switch (paramMotionEvent.getAction())
@@ -463,7 +473,7 @@ public class FileWebView
       continue;
       if (Calendar.getInstance().getTimeInMillis() - this.jdField_a_of_type_Long < 80L)
       {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.f();
+        this.jdField_a_of_type_Aruq.e();
         return super.dispatchTouchEvent(paramMotionEvent);
       }
       this.c = paramMotionEvent.getY();
@@ -475,22 +485,22 @@ public class FileWebView
         getScale();
         if ((getContentHeight() * getScale() - (getView().getHeight() + getWebScrollY()) < 1.0D) || (i == 0))
         {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.b();
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.d();
+          this.jdField_a_of_type_Aruq.b();
+          this.jdField_a_of_type_Aruq.c();
           return super.dispatchTouchEvent(paramMotionEvent);
         }
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.a();
+        this.jdField_a_of_type_Aruq.a();
       }
       do
       {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.d();
+        this.jdField_a_of_type_Aruq.c();
         break;
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.c();
+        this.jdField_a_of_type_Aruq.f();
       } while (getScrollY() >= 1.0F);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.a(false);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.d();
+      this.jdField_a_of_type_Aruq.a(false);
+      this.jdField_a_of_type_Aruq.c();
       return super.dispatchTouchEvent(paramMotionEvent);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.e();
+      this.jdField_a_of_type_Aruq.d();
     }
   }
   
@@ -505,7 +515,7 @@ public class FileWebView
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface == null) {}
+    if (this.jdField_a_of_type_Aruq == null) {}
     do
     {
       return;
@@ -517,26 +527,26 @@ public class FileWebView
         QLog.d("FileWebView", 4, "contentHeight[" + paramInt1 + "],height[" + paramInt3 + "],scroolY[" + i + "],scale[" + f + "]");
       }
       f = getContentHeight() * getScale() - (getView().getHeight() + getWebScrollY());
-      if ((f < paramInt3 * 2) && (!FileManagerUtil.a())) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.g();
+      if ((f < paramInt3 * 2) && (!arrr.a())) {
+        this.jdField_a_of_type_Aruq.g();
       }
       if (f < 2.5D) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.b();
+        this.jdField_a_of_type_Aruq.b();
       }
     } while ((paramInt2 != 0) || (paramInt4 == 0));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface.a(false);
+    this.jdField_a_of_type_Aruq.a(false);
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (paramInt2 != 0) {
       super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
-  public void setOnCustomScroolChangeListener(FileWebView.TitilebarEventInterface paramTitilebarEventInterface)
+  public void setOnCustomScroolChangeListener(aruq paramaruq)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$TitilebarEventInterface = paramTitilebarEventInterface;
+    this.jdField_a_of_type_Aruq = paramaruq;
   }
   
   public void setOverrideOnCheckIsTextEditor(boolean paramBoolean)
@@ -583,7 +593,7 @@ public class FileWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.FileWebView
  * JD-Core Version:    0.7.0.1
  */

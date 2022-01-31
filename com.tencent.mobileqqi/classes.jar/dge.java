@@ -1,21 +1,28 @@
-import com.tencent.mobileqq.activity.PublicAccountActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class dge
-  extends FriendListObserver
+  implements Runnable
 {
-  public dge(PublicAccountActivity paramPublicAccountActivity) {}
+  public dge(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, String paramString1, String paramString2) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if (paramBoolean) {
-      PublicAccountActivity.a(this.a).sendEmptyMessageDelayed(3, 1200L);
-    }
+    QQCustomDialog localQQCustomDialog = DialogUtil.c(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, 230, null, null, 2131561746, 2131561875, null, null);
+    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
+    localQQCustomDialog.setMessage(this.b);
+    localQQCustomDialog.setDividerGone();
+    dgf localdgf = new dgf(this);
+    dgg localdgg = new dgg(this);
+    localQQCustomDialog.setPositiveButton(2131561875, localdgf);
+    localQQCustomDialog.setNegativeButton(2131561746, localdgg);
+    localQQCustomDialog.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dge
  * JD-Core Version:    0.7.0.1
  */

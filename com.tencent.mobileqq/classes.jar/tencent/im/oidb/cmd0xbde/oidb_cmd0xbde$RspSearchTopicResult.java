@@ -1,0 +1,20 @@
+package tencent.im.oidb.cmd0xbde;
+
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
+import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+
+public final class oidb_cmd0xbde$RspSearchTopicResult
+  extends MessageMicro<RspSearchTopicResult>
+{
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "rpt_msg_tag_info_list", "rpt_msg_search_info_list" }, new Object[] { null, null }, RspSearchTopicResult.class);
+  public final PBRepeatMessageField<oidb_cmd0xbde.SearchInfo> rpt_msg_search_info_list = PBField.initRepeatMessage(oidb_cmd0xbde.SearchInfo.class);
+  public final PBRepeatMessageField<oidb_cmd0xbde.TopicInfo> rpt_msg_tag_info_list = PBField.initRepeatMessage(oidb_cmd0xbde.TopicInfo.class);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     tencent.im.oidb.cmd0xbde.oidb_cmd0xbde.RspSearchTopicResult
+ * JD-Core Version:    0.7.0.1
+ */

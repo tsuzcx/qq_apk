@@ -1,87 +1,25 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ToggleButton;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import com.tencent.mobileqq.profile.view.ProfileLabelPanel.LabelStatusManager;
-import com.tencent.mobileqq.profile.view.ProfileLabelPanelAdapter;
-import java.util.List;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
+import com.tencent.qphone.base.util.QLog;
 
-public class agro
-  extends BaseAdapter
+class agro
+  extends ameq
 {
-  List jdField_a_of_type_JavaUtilList;
+  agro(agrn paramagrn) {}
   
-  private agro(ProfileLabelPanelAdapter paramProfileLabelPanelAdapter) {}
-  
-  public void a(List paramList)
+  protected void d(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    ProfileLabelInfo localProfileLabelInfo;
-    if (paramView == null)
-    {
-      paramView = new ToggleButton(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_AndroidContentContext);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(28.0F * this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_Float)));
-      paramView.setBackgroundResource(2130846147);
-      paramViewGroup = (ToggleButton)paramView;
-      paramViewGroup.setGravity(17);
-      paramViewGroup.setTextSize(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_AndroidContentContext.getResources().getInteger(2131689476));
-      paramViewGroup.setTextColor(Color.parseColor("#777777"));
-      paramViewGroup.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter);
-      localProfileLabelInfo = (ProfileLabelInfo)getItem(paramInt);
-      if (localProfileLabelInfo == null) {
-        break label204;
-      }
-      paramViewGroup.setTag(localProfileLabelInfo);
-      if (localProfileLabelInfo.labelStatus != ProfileLabelInfo.STATUS_CHECKED) {
-        break label198;
-      }
+    if ((this.a.w != 2) && (paramBoolean) && (this.a.b != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin.equals(paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.hasPostRedPoint())) {
+      this.a.b.a(true);
     }
-    label198:
-    for (boolean bool = true;; bool = false)
-    {
-      paramViewGroup.setChecked(bool);
-      paramViewGroup.setText(localProfileLabelInfo.labelName);
-      paramViewGroup.setTextOn(localProfileLabelInfo.labelName);
-      paramViewGroup.setTextOff(localProfileLabelInfo.labelName);
-      if (localProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_CHECKED) {
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a(localProfileLabelInfo, paramViewGroup);
-      }
-      return paramView;
-      paramViewGroup = (ToggleButton)paramView;
-      break;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString + "Q.hotchat.aio_post_red_point", 2, "onBuluoHotChatRedPointComing, troopUin:" + paramString);
     }
-    label204:
-    paramViewGroup.setVisibility(8);
-    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agro
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,29 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
 
-public class ljj
-  implements ActionSheet.OnButtonClickListener
+class ljj
+  implements Observer
 {
-  public ljj(ReadInJoyCommentListAdapter paramReadInJoyCommentListAdapter, CommentInfo paramCommentInfo, ActionSheet paramActionSheet) {}
+  private WeakReference<lji> a;
   
-  public void OnClick(View paramView, int paramInt)
+  ljj(lji paramlji)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a = new WeakReference(paramlji);
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    lji locallji = (lji)this.a.get();
+    if (locallji == null) {
       return;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListAdapter.a.deleteComment(ReadInJoyCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListAdapter), 1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.commentId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.authorUin, null, ReadInJoyCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListAdapter), new ljk(this));
     }
+    lji.a(locallji, paramObservable, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ljj
  * JD-Core Version:    0.7.0.1
  */

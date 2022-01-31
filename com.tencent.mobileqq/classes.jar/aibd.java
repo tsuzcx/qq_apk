@@ -1,21 +1,39 @@
-import com.tencent.av.avgesture.AVGestureWrapper.AVUploadReport;
-import com.tencent.mobileqq.shortvideo.facedancegame.GestureDetectManager;
-import com.tencent.sveffects.Reporter;
-import com.tencent.sveffects.SdkContext;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.widget.XListView;
 
 public class aibd
-  implements AVGestureWrapper.AVUploadReport
+  extends Handler
 {
-  public aibd(GestureDetectManager paramGestureDetectManager) {}
+  public aibd(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void avGestureUploadReport(String paramString1, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    SdkContext.a().a().a("dc00898", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
+    if ((paramMessage.what != 1) || (ChatHistoryTroopFileFragment.a(this.a) == null)) {}
+    for (;;)
+    {
+      return;
+      int i = ChatHistoryTroopFileFragment.a(this.a).getFirstVisiblePosition();
+      while (i <= ChatHistoryTroopFileFragment.a(this.a).getLastVisiblePosition())
+      {
+        paramMessage = ChatHistoryTroopFileFragment.a(this.a).getChildAt(i);
+        if (paramMessage != null)
+        {
+          paramMessage = paramMessage.getTag();
+          if ((paramMessage != null) && ((paramMessage instanceof bbvo))) {
+            ((bbvo)paramMessage).a(this.a.a, ChatHistoryTroopFileFragment.a(this.a));
+          }
+        }
+        i += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aibd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.av.widget.RotateLayout;
 
 public class mnu
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public mnu(FastWebArticleInfo paramFastWebArticleInfo, ArticleInfo paramArticleInfo) {}
+  private mnu(VideoLayerUI paramVideoLayerUI) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ReadInJoyLogicEngine.a().a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleContentUrl, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSubscribeID, 2, new mnv(this));
+    VideoLayerUI.a(this.a).setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mnu
  * JD-Core Version:    0.7.0.1
  */

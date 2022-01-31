@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class Qworkflow$OrdinaryFile
-  extends MessageMicro
+  extends MessageMicro<OrdinaryFile>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_file_md5 = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -32,7 +32,7 @@ public final class Qworkflow$OrdinaryFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.trunk.Qworkflow.Qworkflow.OrdinaryFile
  * JD-Core Version:    0.7.0.1
  */

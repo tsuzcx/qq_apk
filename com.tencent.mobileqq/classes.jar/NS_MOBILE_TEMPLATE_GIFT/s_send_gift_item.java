@@ -11,8 +11,8 @@ public final class s_send_gift_item
   extends JceStruct
 {
   static s_gift_card cache_giftCard = new s_gift_card();
-  static Map cache_mapExt;
-  static ArrayList cache_receiver = new ArrayList();
+  static Map<String, String> cache_mapExt;
+  static ArrayList<Long> cache_receiver = new ArrayList();
   public int arch;
   public String clientIp = "";
   public String content = "";
@@ -22,8 +22,8 @@ public final class s_send_gift_item
   public boolean isBack = true;
   public boolean isPrivate = true;
   public boolean isTiming = true;
-  public Map mapExt;
-  public ArrayList receiver;
+  public Map<String, String> mapExt;
+  public ArrayList<Long> receiver;
   public int recv_source;
   public String s_back_id = "";
   public String sendTime = "";
@@ -38,7 +38,7 @@ public final class s_send_gift_item
   
   public s_send_gift_item() {}
   
-  public s_send_gift_item(s_gift_card params_gift_card, int paramInt1, ArrayList paramArrayList, long paramLong, String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2, boolean paramBoolean3, String paramString3, int paramInt2, String paramString4, String paramString5, int paramInt3, Map paramMap)
+  public s_send_gift_item(s_gift_card params_gift_card, int paramInt1, ArrayList<Long> paramArrayList, long paramLong, String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2, boolean paramBoolean3, String paramString3, int paramInt2, String paramString4, String paramString5, int paramInt3, Map<String, String> paramMap)
   {
     this.giftCard = params_gift_card;
     this.giftType = paramInt1;
@@ -111,7 +111,7 @@ public final class s_send_gift_item
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_TEMPLATE_GIFT.s_send_gift_item
  * JD-Core Version:    0.7.0.1
  */

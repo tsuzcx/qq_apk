@@ -1,21 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class anpl
-  implements ValueAnimator.AnimatorUpdateListener
+class anpl
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public anpl(QIMCircleProgress paramQIMCircleProgress) {}
+  anpl(anpk paramanpk) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onGlobalLayout()
   {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b();
+    anpk.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpl
  * JD-Core Version:    0.7.0.1
  */

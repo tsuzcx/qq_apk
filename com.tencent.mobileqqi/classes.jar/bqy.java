@@ -1,42 +1,18 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.assistant.PubAccountAssistantSettingActivity;
-import com.tencent.biz.pubaccount.assistant.PubAccountAssistantSettingAdapter;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
 
 public class bqy
-  extends PublicAccountObserver
+  implements Runnable
 {
-  public bqy(PubAccountAssistantSettingActivity paramPubAccountAssistantSettingActivity) {}
+  public bqy(LiteTransferWrapper paramLiteTransferWrapper, String paramString1, String paramString2) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      Object localObject = (PublicAccountDataManager)this.a.b.getManager(51);
-      PubAccountAssistantSettingActivity.a(this.a, ((PublicAccountDataManager)localObject).a());
-      localObject = PubAccountAssistantSettingActivity.a(this.a).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (((PublicAccountInfo)((Iterator)localObject).next()).mShowMsgFlag == -1) {
-          ((Iterator)localObject).remove();
-        }
-      }
-      if ((PubAccountAssistantSettingActivity.a(this.a) != null) && (PubAccountAssistantSettingActivity.a(this.a).size() > 0)) {
-        Collections.sort(PubAccountAssistantSettingActivity.a(this.a), PubAccountAssistantSettingActivity.a(this.a));
-      }
-      PubAccountAssistantSettingActivity.a(this.a).a(PubAccountAssistantSettingActivity.a(this.a));
-      PubAccountAssistantSettingActivity.a(this.a).sendEmptyMessage(0);
-    }
+    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetServicePathToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bqy
  * JD-Core Version:    0.7.0.1
  */

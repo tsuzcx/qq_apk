@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
 public class ryn
-  implements DialogInterface.OnClickListener
+  implements sag
 {
-  public ryn(ChatHistory paramChatHistory) {}
+  public ryn(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public BaseData a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+  }
+  
+  public void a()
+  {
+    sdn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ryn
  * JD-Core Version:    0.7.0.1
  */

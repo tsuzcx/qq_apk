@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class IPCDownloadParam
   extends JceStruct
 {
-  static IPCBaseParam a;
+  static IPCBaseParam cache_baseParam;
   public String actionFlag = "";
   public IPCBaseParam baseParam = null;
   public String opList = "";
@@ -27,10 +27,10 @@ public final class IPCDownloadParam
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    if (a == null) {
-      a = new IPCBaseParam();
+    if (cache_baseParam == null) {
+      cache_baseParam = new IPCBaseParam();
     }
-    this.baseParam = ((IPCBaseParam)paramJceInputStream.read(a, 0, true));
+    this.baseParam = ((IPCBaseParam)paramJceInputStream.read(cache_baseParam, 0, true));
     this.opList = paramJceInputStream.readString(1, false);
     this.actionFlag = paramJceInputStream.readString(2, false);
     this.verifyType = paramJceInputStream.readString(3, false);
@@ -56,7 +56,7 @@ public final class IPCDownloadParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCDownloadParam
  * JD-Core Version:    0.7.0.1
  */

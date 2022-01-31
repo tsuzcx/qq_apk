@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Habilitar</string>
+    <string name="b">%1$s no funcionará a menos que habilites los servicios de Google Play.</string>
+    <string name="c">Habilitar servicios de Google Play</string>
+    <string name="d">Instalar</string>
+    <string name="e">%1$s no se ejecutará si los Servicios de Google Play no están instalados en tu dispositivo.</string>
+    <string name="f">Obtener servicios de Google Play</string>
+    <string name="g">Error de Google Play Services</string>
+    <string name="h">%1$s tiene problemas con los servicios de Google Play. Vuelve a intentarlo.</string>
+    <string name="i">%1$s no se ejecutará sin los servicios de Google Play, que no son compatibles con tu dispositivo.</string>
+    <string name="j">Actualizar</string>
+    <string name="k">%1$s no se ejecutará a menos que actualices los servicios de Google Play.</string>
+    <string name="l">Actualizar servicios de Google Play</string>
+    <string name="m">%1$s no se ejecutará sin los servicios de Google Play. La plataforma se está actualizando en este momento.</string>
+    <string name="n">Se necesita una nueva versión de los servicios de Google Play. Se actualizarán automáticamente en breve.</string>
+    <string name="o">Abrir en el teléfono</string>
+    <string name="p">Acceder</string>
+    <string name="q">Acceder con Google</string>
+    <string name="r">999+</string>
+    <string name="t">Salir</string>
+</resources>

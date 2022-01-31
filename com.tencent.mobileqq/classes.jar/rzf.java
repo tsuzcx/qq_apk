@@ -1,51 +1,59 @@
-import android.os.AsyncTask;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.persistence.qslowtable.QSlowTableManager;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.cmd0xc6d.oidb_cmd0xc6d.ModuleInfo;
+import tencent.im.oidb.cmd0xc6d.oidb_cmd0xc6d.TextCardInfo;
 
-class rzf
-  extends AsyncTask
+public class rzf
+  extends oxe
 {
-  rzf(rze paramrze) {}
+  public rzf(FastWebActivity paramFastWebActivity) {}
   
-  protected Object a(MessageRecord... paramVarArgs)
+  public void a(ArrayList<String> paramArrayList, List<oidb_cmd0xc6d.ModuleInfo> paramList, List<oidb_cmd0xc6d.TextCardInfo> paramList1)
   {
-    if (this.a.a.d) {
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager != null) {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager.a(paramVarArgs[0], true);
-      }
-    }
-    for (;;)
+    Object localObject = scq.a(23, paramArrayList);
+    if (FastWebActivity.a(this.a) != null) {}
+    for (paramArrayList = FastWebActivity.a(this.a).innerUniqueID;; paramArrayList = "")
     {
-      if ((paramVarArgs[0] instanceof MessageForApollo)) {
-        SpriteCommFunc.a(this.a.a.app, "chat_history_start_del_msg");
+      if ((TextUtils.isEmpty(paramArrayList)) || (FastWebActivity.a(this.a) == null)) {
+        return;
       }
-      return null;
-      this.a.a.app.a().a(paramVarArgs[0], true);
-    }
-  }
-  
-  protected void onPostExecute(Object paramObject)
-  {
-    super.onPostExecute(paramObject);
-    this.a.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    if ((this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    }
-    if (this.a.a.d) {
-      this.a.a.a(11, false);
+      int i = 0;
+      while (i < ((List)localObject).size())
+      {
+        BaseData localBaseData = (BaseData)((List)localObject).get(i);
+        if ((localBaseData instanceof ProteusItemData)) {
+          scq.a(FastWebActivity.a(this.a), (ProteusItemData)localBaseData, 3, this.a.a);
+        }
+        sdi.b(FastWebActivity.a(this.a), localBaseData, FastWebActivity.a(this.a));
+        i += 1;
+      }
+      localObject = owy.a().a();
+      if (localObject != null) {
+        ((pfo)localObject).a(paramArrayList, FastWebActivity.a(this.a));
+      }
+      if (paramList != null) {
+        sca.a(FastWebActivity.a(this.a), FastWebActivity.a(this.a), FastWebActivity.a(this.a), paramList, FastWebActivity.a(this.a), this.a.a);
+      }
+      if (paramList1 != null) {
+        sca.b(FastWebActivity.a(this.a), FastWebActivity.a(this.a), FastWebActivity.a(this.a), paramList1, FastWebActivity.a(this.a), this.a.a);
+      }
+      if (FastWebActivity.a(this.a) != null) {
+        FastWebActivity.a(this.a).notifyDataSetChanged();
+      }
+      QLog.d(FastWebActivity.a(this.a), 1, "m0xc6dRespObserver,onHandle0xc6dResp");
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rzf
  * JD-Core Version:    0.7.0.1
  */

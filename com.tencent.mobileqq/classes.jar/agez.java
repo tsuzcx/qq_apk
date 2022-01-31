@@ -1,26 +1,17 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.olympic.view.ScannerAnimView.OnScanAnimEndListener;
+import android.widget.TextView;
 
-public class agez
-  implements ScannerAnimView.OnScanAnimEndListener
+class agez
+  extends aepm
 {
-  public agez(ScanTorchActivity paramScanTorchActivity) {}
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  public void a(boolean paramBoolean)
-  {
-    ViewGroup localViewGroup = ScanTorchActivity.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 4)
-    {
-      localViewGroup.setVisibility(i);
-      return;
-    }
-  }
+  agez(agey paramagey) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agez
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
 
-public final class ahhv
-  implements Parcelable.Creator
+public class ahhv
+  implements View.OnClickListener
 {
-  public SegmentKeeper a(Parcel paramParcel)
-  {
-    return new SegmentKeeper(paramParcel);
-  }
+  public ahhv(SearchBaseActivity paramSearchBaseActivity) {}
   
-  public SegmentKeeper[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new SegmentKeeper[paramInt];
+    this.a.setResult(1);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahhv
  * JD-Core Version:    0.7.0.1
  */

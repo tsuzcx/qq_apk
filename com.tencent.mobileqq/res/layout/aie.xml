@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="bottom" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/a83" android:background="#ccffffff" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/ja2" android:layout_width="fill_parent" android:layout_height="@dimen/abr">
+            <RelativeLayout android:id="@id/container_secondary_tab" android:layout_width="fill_parent" android:layout_height="@dimen/abr">
+                <com.tencent.mobileqq.widget.TabBarView android:id="@id/j_7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="54.0dip" />
+                <RelativeLayout android:id="@id/e4b" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                    <ImageView android:id="@id/aid" android:layout_width="18.0dip" android:layout_height="18.0dip" android:scaleType="centerInside" android:layout_centerInParent="true" android:contentDescription="@string/axk" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+        <View android:id="@id/j_2" android:background="#ffbbbbbb" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <RelativeLayout android:id="@id/cvl" android:layout_width="fill_parent" android:layout_height="228.0dip">
+            <ImageView android:id="@id/loading" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/jt" android:layout_centerInParent="true" />
+            <RelativeLayout android:id="@id/b9z" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <com.tencent.biz.troopgift.RadioViewPager android:id="@id/kvw" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <com.tencent.biz.troopgift.RadioViewPager android:id="@id/kvx" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <View android:background="#ffbbbbbb" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <RelativeLayout android:id="@id/flt" android:background="#7fffffff" android:layout_width="fill_parent" android:layout_height="42.0dip">
+            <LinearLayout android:orientation="horizontal" android:id="@id/btw" android:layout_width="130.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                <View android:background="#ffbbbbbb" android:layout_width="1.0px" android:layout_height="fill_parent" />
+                <LinearLayout android:gravity="center" android:layout_width="130.0dip" android:layout_height="fill_parent">
+                    <TextView android:textSize="15.0dip" android:textColor="#ff777777" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/q6v" />
+                    <TextView android:textSize="15.0dip" android:textColor="#ff777777" android:id="@id/btv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="1" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:id="@id/inr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/btw">
+                <TextView android:textSize="15.0dip" android:textColor="#ff777777" android:id="@id/inq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/q6i" android:singleLine="true" />
+                <TextView android:textSize="15.0dip" android:textColor="#ff777777" android:id="@id/inp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="15.0dip" android:singleLine="true" android:drawableRight="@drawable/e42" />
+            </LinearLayout>
+        </RelativeLayout>
+        <TextView android:textSize="15.0dip" android:textColor="#ff777777" android:gravity="center_vertical" android:id="@id/js5" android:background="#ccffffff" android:paddingLeft="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="42.0dip" android:text="@string/q6n" />
+        <View android:background="#ffbbbbbb" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <RelativeLayout android:id="@id/acy" android:background="#7fffffff" android:layout_width="fill_parent" android:layout_height="60.0dip">
+            <TextView android:textColor="#ff777777" android:gravity="center" android:id="@id/j3d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="0" android:drawablePadding="4.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <TextView android:textColor="#ffec9900" android:gravity="center" android:id="@id/cvo" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/j3d" android:layout_centerVertical="true" />
+            <TextView android:textColor="#fff09e0f" android:gravity="center" android:id="@id/i5g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:text="@string/q6s" android:drawablePadding="3.0dip" android:layout_toRightOf="@id/cvo" android:layout_centerVertical="true" />
+            <Button android:textSize="16.0dip" android:textColor="@color/wn" android:id="@id/akz" android:background="@drawable/a6n" android:layout_width="80.0dip" android:layout_height="35.0dip" android:layout_marginRight="15.0dip" android:text="@string/ev7" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <Button android:textSize="16.0dip" android:textColor="@color/wn" android:gravity="center" android:id="@id/ak2" android:background="@drawable/a6m" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="35.0dip" android:layout_marginRight="15.0dip" android:text="@string/ev7" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

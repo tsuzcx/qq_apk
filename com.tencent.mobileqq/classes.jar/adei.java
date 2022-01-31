@@ -1,20 +1,20 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter;
-import java.util.TimerTask;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
 
 public class adei
-  extends TimerTask
+  extends amck
 {
-  public adei(MusicFilePresenter paramMusicFilePresenter) {}
+  public adei(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a.runOnUiThread(new adej(this));
+    if (this.a.jdField_a_of_type_Boolean) {
+      H5MagicPlayerActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, "{code:0}");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adei
  * JD-Core Version:    0.7.0.1
  */

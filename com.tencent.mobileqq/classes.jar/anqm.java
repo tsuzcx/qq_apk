@@ -1,25 +1,21 @@
-import android.graphics.PointF;
-import com.tencent.av.opengl.gesturedetectors.MoveGestureDetector;
-import com.tencent.av.opengl.gesturedetectors.MoveGestureDetector.SimpleOnMoveGestureListener;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
-import dov.com.qq.im.cropvideo.RenderFilter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class anqm
-  extends MoveGestureDetector.SimpleOnMoveGestureListener
+class anqm
+  implements DialogInterface.OnDismissListener
 {
-  public anqm(CropVideoActivity paramCropVideoActivity) {}
+  anqm(anqk paramanqk) {}
   
-  public boolean b(MoveGestureDetector paramMoveGestureDetector)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    float f1 = paramMoveGestureDetector.a().x;
-    float f2 = paramMoveGestureDetector.a().y;
-    CropVideoActivity.a(this.a).a(f1, f2, 0.0F);
-    return true;
+    anqk.a(this.a, false);
+    QLog.d("ark.download.ctrl", 1, "ark.dctrl [showDownloadDialog] onDismiss");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anqm
  * JD-Core Version:    0.7.0.1
  */

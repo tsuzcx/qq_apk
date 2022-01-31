@@ -1,14 +1,12 @@
-import cooperation.qzone.font.FontManager;
-import java.lang.ref.WeakReference;
+import java.util.Comparator;
 
-public class amuh
+public final class amuh
+  implements Comparator<amui>
 {
-  public int a;
-  public String a;
-  public WeakReference a;
-  public int b;
-  
-  private amuh(FontManager paramFontManager) {}
+  public int a(amui paramamui1, amui paramamui2)
+  {
+    return paramamui1.a - paramamui2.a;
+  }
 }
 
 

@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.hardware.Camera;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -34,6 +33,7 @@ import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.mobileqq.utils.FileProvider7Helper;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -51,13 +51,13 @@ import cooperation.qzone.QZoneHelper.UserInfo;
 import cooperation.qzone.QzonePluginProxyActivity;
 import cooperation.qzone.model.BaseBusinessAlbumInfo;
 import cooperation.zebra.ZebraPluginProxyActivity;
-import eri;
-import erj;
-import erk;
-import erl;
-import erm;
-import ero;
-import erq;
+import emu;
+import emv;
+import emw;
+import emx;
+import emy;
+import ena;
+import enc;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -89,11 +89,11 @@ public class PhotoListActivity
   Button jdField_a_of_type_AndroidWidgetButton;
   CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new erj(this);
+  private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new emv(this);
   private CameraView jdField_a_of_type_ComTencentWidgetCameraView;
-  GestureSelectGridView.OnSelectListener jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener = new eri(this);
+  GestureSelectGridView.OnSelectListener jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener = new emu(this);
   public GestureSelectGridView a;
-  public ero a;
+  public ena a;
   public ArrayList a;
   public boolean a;
   public int b;
@@ -145,7 +145,7 @@ public class PhotoListActivity
   {
     this.jdField_c_of_type_Int = 1;
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Ero = null;
+    this.jdField_a_of_type_Ena = null;
     this.q = false;
   }
   
@@ -310,7 +310,7 @@ public class PhotoListActivity
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
     PhotoMagicStickUtils.a(this, paramArrayList, localActionSheet, paramInt1);
     localActionSheet.d(2131561746);
-    localActionSheet.a(new erk(this, paramArrayList, localActionSheet));
+    localActionSheet.a(new emw(this, paramArrayList, localActionSheet));
     localActionSheet.e(paramInt2);
     localActionSheet.show();
   }
@@ -441,9 +441,9 @@ public class PhotoListActivity
   {
     Resources localResources = getResources();
     int i1 = localResources.getDisplayMetrics().widthPixels;
-    this.jdField_k_of_type_Int = localResources.getDimensionPixelSize(2131427458);
-    this.jdField_i_of_type_Int = localResources.getDimensionPixelSize(2131427456);
-    this.jdField_j_of_type_Int = localResources.getDimensionPixelSize(2131427457);
+    this.jdField_k_of_type_Int = localResources.getDimensionPixelSize(2131427461);
+    this.jdField_i_of_type_Int = localResources.getDimensionPixelSize(2131427459);
+    this.jdField_j_of_type_Int = localResources.getDimensionPixelSize(2131427460);
     this.jdField_l_of_type_Int = AIOUtils.a(1.0F, localResources);
     this.jdField_a_of_type_Int = ((i1 - this.jdField_k_of_type_Int * 2 - this.jdField_i_of_type_Int * 2) / 3);
     this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
@@ -466,14 +466,14 @@ public class PhotoListActivity
     {
       localObject = this.jdField_i_of_type_JavaLangString;
       setTitle((CharSequence)localObject);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232062));
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232063));
-      this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131233025));
-      this.jdField_d_of_type_AndroidWidgetButton = ((Button)findViewById(2131232064));
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131233024);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131233020);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233022));
-      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView = ((GestureSelectGridView)findViewById(2131233026));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232065));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232066));
+      this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131233027));
+      this.jdField_d_of_type_AndroidWidgetButton = ((Button)findViewById(2131232067));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131233026);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131233022);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233024));
+      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView = ((GestureSelectGridView)findViewById(2131233028));
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setScrollBarStyle(0);
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setNumColumns(3);
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setColumnWidth(this.jdField_a_of_type_Int);
@@ -483,8 +483,8 @@ public class PhotoListActivity
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setOnIndexChangedListener(this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener);
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setMaximumVelocity((int)(2500.0F * getResources().getDisplayMetrics().density));
-      this.jdField_a_of_type_Ero = new ero(this);
-      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setAdapter(this.jdField_a_of_type_Ero);
+      this.jdField_a_of_type_Ena = new ena(this);
+      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setAdapter(this.jdField_a_of_type_Ena);
       String str = this.jdField_k_of_type_JavaLangString;
       localObject = str;
       if (TextUtils.isEmpty(str))
@@ -520,8 +520,8 @@ public class PhotoListActivity
       if ((this.jdField_p_of_type_Boolean) && (this.jdField_d_of_type_JavaLangString != null))
       {
         this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131233023));
-        this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_b_of_type_AndroidViewView.findViewById(2131233021));
+        this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131233025));
+        this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_b_of_type_AndroidViewView.findViewById(2131233023));
         this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
         this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
         this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
@@ -554,7 +554,7 @@ public class PhotoListActivity
         this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131624405);
         this.jdField_a_of_type_AndroidAppDialog.setCancelable(true);
         this.jdField_a_of_type_AndroidAppDialog.show();
-        this.jdField_a_of_type_AndroidAppDialog.setContentView(2130903317);
+        this.jdField_a_of_type_AndroidAppDialog.setContentView(2130903319);
       }
       return;
     }
@@ -645,7 +645,7 @@ public class PhotoListActivity
     if (this.jdField_l_of_type_Boolean)
     {
       AlbumUtil.jdField_b_of_type_Long = System.currentTimeMillis();
-      AlbumUtil.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_j_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Ero.getCount()));
+      AlbumUtil.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_j_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Ena.getCount()));
       int i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
       if (i1 > 0)
       {
@@ -704,7 +704,7 @@ public class PhotoListActivity
     }
     if (localObject != null)
     {
-      localIntent.putExtra("output", Uri.fromFile(localObject));
+      FileProvider7Helper.setSystemCapture(this, localObject, localIntent);
       startActivityForResult(localIntent, 1);
     }
   }
@@ -748,7 +748,7 @@ public class PhotoListActivity
       }
       for (;;)
       {
-        new erm(this, paramIntent, str, null, bool);
+        new emy(this, paramIntent, str, null, bool);
         return;
         if (this.s) {
           break;
@@ -778,10 +778,10 @@ public class PhotoListActivity
     default: 
     case 2131231456: 
     case 2131231380: 
-    case 2131232062: 
-    case 2131232063: 
-    case 2131233025: 
-    case 2131232064: 
+    case 2131232065: 
+    case 2131232066: 
+    case 2131233027: 
+    case 2131232067: 
       do
       {
         do
@@ -892,13 +892,13 @@ public class PhotoListActivity
         }
         if ((FileManagerUtil.a()) && (i1 != 0))
         {
-          FMDialogUtil.a(this, 2131558759, 2131558756, new erl(this));
+          FMDialogUtil.a(this, 2131558759, 2131558756, new emx(this));
           return;
         }
       }
       l();
       return;
-    case 2131233022: 
+    case 2131233024: 
       paramView = this.jdField_a_of_type_AndroidWidgetCheckBox;
       if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
       for (;;)
@@ -923,7 +923,7 @@ public class PhotoListActivity
     getWindow().setBackgroundDrawable(null);
     try
     {
-      setContentView(2130903595);
+      setContentView(2130903597);
       getWindow().setBackgroundDrawable(null);
       c();
       paramBundle = getIntent();
@@ -953,7 +953,7 @@ public class PhotoListActivity
   {
     AlbumThumbManager.a(this).a();
     super.onDestroy();
-    int i2 = this.jdField_a_of_type_Ero.getCount();
+    int i2 = this.jdField_a_of_type_Ena.getCount();
     int i1 = i2;
     if (this.q)
     {
@@ -1013,7 +1013,7 @@ public class PhotoListActivity
     super.onResume();
     if ((!this.s) && (this.jdField_a_of_type_AndroidOsAsyncTask == null))
     {
-      this.jdField_a_of_type_AndroidOsAsyncTask = new erq(this, null);
+      this.jdField_a_of_type_AndroidOsAsyncTask = new enc(this, null);
       this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Object[0]);
     }
     if ((this.q) && (!this.r)) {

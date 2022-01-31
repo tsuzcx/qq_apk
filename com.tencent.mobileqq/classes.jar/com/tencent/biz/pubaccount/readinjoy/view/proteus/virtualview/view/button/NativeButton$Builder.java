@@ -7,14 +7,14 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBa
 public class NativeButton$Builder
   implements ViewBase.IBuilder
 {
-  public ViewBase a(VafContext paramVafContext)
+  public ViewBase build(VafContext paramVafContext)
   {
     return new NativeButton(paramVafContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton.Builder
  * JD-Core Version:    0.7.0.1
  */

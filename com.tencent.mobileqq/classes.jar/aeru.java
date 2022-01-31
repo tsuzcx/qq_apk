@@ -1,36 +1,30 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 public class aeru
-  implements OverScrollViewListener
 {
-  public aeru(NearbyVisitorListActivity paramNearbyVisitorListActivity) {}
+  public long a;
+  public String a;
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public boolean a()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(this.a.jdField_a_of_type_Long);
+    return !TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
   }
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  @NonNull
+  public String toString()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(this.a.jdField_a_of_type_Long);
-    NearbyVisitorListActivity.a(this.a, true, false);
-    return true;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MutualMarkPushGrayTipInfo{");
+    localStringBuilder.append("notifyTime:").append(this.jdField_a_of_type_Long).append(", ");
+    localStringBuilder.append("grayTipTemplate:").append(this.jdField_a_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(this.a.jdField_a_of_type_Long);
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeru
  * JD-Core Version:    0.7.0.1
  */

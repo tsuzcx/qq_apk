@@ -1,23 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.ArkAdapterItemForTextMsg;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.gdtad.jsbridge.GdtDeviceInfoJsCallHandler.1;
+import java.lang.ref.WeakReference;
 
 public class aark
-  implements View.OnClickListener
+  implements aaru
 {
-  public aark(ArkAdapterItemForTextMsg paramArkAdapterItemForTextMsg, ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter) {}
-  
-  public void onClick(View paramView)
+  public boolean a(aarb paramaarb, String paramString, String... paramVarArgs)
   {
-    ArkAppCenter.a().post(new aarl(this));
+    Object localObject = null;
+    WeakReference localWeakReference = new WeakReference(paramaarb);
+    AdThreadManager.INSTANCE.post(new GdtDeviceInfoJsCallHandler.1(this, localWeakReference, paramVarArgs, paramString), 4);
+    if (paramaarb != null) {}
+    for (paramString = paramaarb.a();; paramString = null)
+    {
+      paramVarArgs = localObject;
+      if (paramaarb != null) {
+        paramVarArgs = paramaarb.a();
+      }
+      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, true, "getDeviceInfo", paramVarArgs);
+      return false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aark
  * JD-Core Version:    0.7.0.1
  */

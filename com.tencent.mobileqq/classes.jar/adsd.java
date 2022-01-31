@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
-class adsd
-  implements Runnable
+public class adsd
+  implements banr
 {
-  adsd(adsc paramadsc) {}
+  public adsd(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  public void onCancel() {}
+  
+  public void onConfirm()
   {
-    this.a.a.a(0, this.a.a.a);
+    QQSettingMe.d(this.a);
   }
 }
 

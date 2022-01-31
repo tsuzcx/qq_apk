@@ -1,35 +1,28 @@
-import android.app.Activity;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.model.QueryCallback;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
 
 public class vcm
-  implements QueryCallback
 {
-  public vcm(PicItemBuilder paramPicItemBuilder, String paramString) {}
+  public int a;
+  public VideoCollectionItem a;
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public vcm(int paramInt, VideoCollectionItem paramVideoCollectionItem)
   {
-    if ((paramEmoticonPackage != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1008) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1000) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 10004) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1001) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1002) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1003) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1004) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1005) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1006))
-    {
-      paramEmoticonPackage = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-      if (paramEmoticonPackage != null) {
-        paramEmoticonPackage.obtainMessage(22, this.jdField_a_of_type_JavaLangString).sendToTarget();
-      }
-      return;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem = paramVideoCollectionItem;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("StateVideoCollectionItem{itemKey=").append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key).append(", operation=");
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (String str = "delete";; str = "update") {
+      return str + '}';
     }
-    EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_JavaLangString, false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vcm
  * JD-Core Version:    0.7.0.1
  */

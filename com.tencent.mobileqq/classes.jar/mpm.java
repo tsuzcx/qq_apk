@@ -1,47 +1,24 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
+import android.database.DataSetObserver;
+import com.tencent.av.ui.funchat.filter.EffectCycleViewPager;
 
-public class mpm
-  implements SeekBar.OnSeekBarChangeListener
+class mpm
+  extends DataSetObserver
 {
-  public mpm(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
+  mpm(mpl parammpl, EffectCycleViewPager paramEffectCycleViewPager) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void onChanged()
   {
-    if ((FastWebVideoFeedsPlayManager.a(this.a) == null) || (!paramBoolean)) {
-      return;
-    }
-    FastWebVideoFeedsPlayManager.b(this.a, System.currentTimeMillis());
-    long l = FastWebVideoFeedsPlayManager.a(this.a).b();
-    double d = paramInt / 100.0D;
-    paramInt = (int)(l * d);
-    VideoFeedsHelper.a(FastWebVideoFeedsPlayManager.a(this.a).a, paramInt);
+    this.jdField_a_of_type_Mpl.notifyDataSetChanged();
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public void onInvalidated()
   {
-    FastWebVideoFeedsPlayManager.d(this.a, true);
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if (FastWebVideoFeedsPlayManager.a(this.a) == null) {
-      return;
-    }
-    FastWebVideoFeedsPlayManager.d(this.a, false);
-    int i = paramSeekBar.getProgress();
-    long l = FastWebVideoFeedsPlayManager.a(this.a).b();
-    i = (int)(i / 100.0D * l);
-    FastWebVideoFeedsPlayManager.a(this.a).a(i);
+    this.jdField_a_of_type_Mpl.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mpm
  * JD-Core Version:    0.7.0.1
  */

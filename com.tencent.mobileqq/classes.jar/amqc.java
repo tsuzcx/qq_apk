@@ -1,88 +1,106 @@
-import android.os.IBinder;
-import cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class amqc
-  implements IQQIndividualityRemoteProxyInterface
 {
-  private IBinder a;
-  
-  public amqc(IBinder paramIBinder)
+  public static String a(String paramString1, String paramString2)
   {
-    this.a = paramIBinder;
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
+    for (;;)
+    {
+      return null;
+      try
+      {
+        paramString1 = bdhb.a(new File(new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config"), paramString1 + paramString2));
+        if ((paramString1 == null) || (paramString1.length <= 0)) {
+          continue;
+        }
+        if (Build.VERSION.SDK_INT <= 8)
+        {
+          paramString1 = new String(paramString1);
+          return paramString1;
+        }
+      }
+      catch (Exception paramString1)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            paramString1.printStackTrace();
+          }
+          paramString1 = null;
+          continue;
+          try
+          {
+            paramString1 = new String(paramString1, "UTF-8");
+          }
+          catch (Exception paramString1)
+          {
+            if (QLog.isDevelopLevel()) {
+              paramString1.printStackTrace();
+            }
+            paramString1 = null;
+          }
+        }
+      }
+    }
   }
   
-  /* Error */
-  public void a(int paramInt, android.os.Bundle paramBundle)
+  public static void a(String paramString1, String paramString2, String paramString3)
   {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_3
-    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore 4
-    //   9: aload_3
-    //   10: ldc 25
-    //   12: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   15: aload_3
-    //   16: iload_1
-    //   17: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   20: aload_2
-    //   21: ifnull +44 -> 65
-    //   24: aload_3
-    //   25: iconst_1
-    //   26: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   29: aload_2
-    //   30: aload_3
-    //   31: iconst_0
-    //   32: invokevirtual 39	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
-    //   35: aload_0
-    //   36: getfield 15	amqc:a	Landroid/os/IBinder;
-    //   39: iconst_1
-    //   40: aload_3
-    //   41: aload 4
-    //   43: iconst_0
-    //   44: invokeinterface 45 5 0
-    //   49: pop
-    //   50: aload 4
-    //   52: invokevirtual 48	android/os/Parcel:readException	()V
-    //   55: aload 4
-    //   57: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   60: aload_3
-    //   61: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   64: return
-    //   65: aload_3
-    //   66: iconst_0
-    //   67: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   70: goto -35 -> 35
-    //   73: astore_2
-    //   74: aload 4
-    //   76: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   79: aload_3
-    //   80: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   83: aload_2
-    //   84: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	85	0	this	amqc
-    //   0	85	1	paramInt	int
-    //   0	85	2	paramBundle	android.os.Bundle
-    //   3	77	3	localParcel1	android.os.Parcel
-    //   7	68	4	localParcel2	android.os.Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   9	20	73	finally
-    //   24	35	73	finally
-    //   35	55	73	finally
-    //   65	70	73	finally
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
+      if (QLog.isColorLevel()) {
+        QLog.i("UpgradeConfigManager", 2, "save Config to file failed，content is empty----" + paramString1);
+      }
+    }
+    do
+    {
+      return;
+      File localFile = new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config");
+      bdhb.a(localFile.getAbsolutePath() + "/", paramString1 + paramString2, paramString3);
+    } while (!QLog.isColorLevel());
+    QLog.i("UpgradeConfigManager", 2, "save Config to file finish.");
   }
   
-  public IBinder asBinder()
+  public static boolean a(String paramString1, String paramString2)
   {
-    return this.a;
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeConfigManager", 2, String.format("deleteUpgradeConfig fileName=%s uin=%s", new Object[] { paramString1, paramString2 }));
+    }
+    File localFile;
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    {
+      localFile = new File(new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config"), paramString1 + paramString2);
+      if (!localFile.exists()) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        bool = localFile.delete();
+        if (QLog.isColorLevel()) {
+          QLog.d("UpgradeConfigManager", 2, String.format("deleteUpgradeConfig fileName=%s uin=%s result=%s", new Object[] { paramString1, paramString2, Boolean.valueOf(bool) }));
+        }
+        return bool;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("UpgradeConfigManager", 2, String.format("deleteUpgradeConfig fail! fileName=%s uin=%s", new Object[] { paramString1, paramString2 }), localException);
+        }
+        bool = false;
+        continue;
+      }
+      boolean bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amqc
  * JD-Core Version:    0.7.0.1
  */

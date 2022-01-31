@@ -1,30 +1,69 @@
-import android.os.Bundle;
-import com.tencent.open.appcommon.js.BaseJsCallBack;
-import cooperation.qappcenter.remote.RemoteServiceProxy;
-import cooperation.qappcenter.remote.SendMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class aldz
-  implements Runnable
+final class aldz
+  extends bead
 {
-  public aldz(BaseJsCallBack paramBaseJsCallBack, String paramString) {}
+  aldz(File paramFile) {}
   
-  public void run()
+  public void onDone(beae parambeae)
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_JavaLangString.equals("1")) {
-      bool = true;
-    }
-    if (BaseJsCallBack.access$000(this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack) != null)
+    super.onDone(parambeae);
+    if ((3 == parambeae.a()) && (this.a.exists())) {}
+    try
     {
-      SendMsg localSendMsg = new SendMsg("changeLoadingTip");
-      localSendMsg.a.putBoolean("showLoadingView", bool);
-      BaseJsCallBack.access$000(this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack).b(localSendMsg);
+      ndr.a(this.a, this.a.getParent() + File.separator);
+      label166:
+      return;
+    }
+    catch (Exception parambeae)
+    {
+      parambeae = parambeae;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error  error->" + parambeae.getMessage());
+      }
+      try
+      {
+        this.a.delete();
+        return;
+      }
+      catch (Exception parambeae)
+      {
+        return;
+      }
+    }
+    catch (OutOfMemoryError parambeae)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + parambeae.getMessage());
+      }
+      try
+      {
+        this.a.delete();
+        return;
+      }
+      catch (Exception parambeae)
+      {
+        return;
+      }
+    }
+    finally
+    {
+      try
+      {
+        this.a.delete();
+        throw parambeae;
+      }
+      catch (Exception localException)
+      {
+        break label166;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aldz
  * JD-Core Version:    0.7.0.1
  */

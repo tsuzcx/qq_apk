@@ -1,85 +1,98 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.biz.common.util.ImageUtil;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class mvm
-  implements Runnable
+class mvm
 {
-  public mvm(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin, String paramString, Bundle paramBundle, QQProgressDialog paramQQProgressDialog) {}
+  int jdField_a_of_type_Int;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  int jdField_c_of_type_Int;
+  String jdField_c_of_type_JavaLangString;
+  String d;
   
-  public void run()
+  private mvm(mvj parammvj)
   {
-    Object localObject = ImageUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.mRuntime.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    int i;
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()))
+    a(null);
+  }
+  
+  mvm(mvj parammvj, String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.d = paramString4;
+  }
+  
+  private void a(mvm parammvm)
+  {
+    if (parammvm != null)
     {
-      i = 1;
-      if (i != 0)
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.a.post(new mvn(this));
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label179;
-        }
-      }
+      this.jdField_a_of_type_JavaLangString = parammvm.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_Int = parammvm.jdField_a_of_type_Int;
+      this.jdField_c_of_type_JavaLangString = parammvm.jdField_c_of_type_JavaLangString;
+      this.jdField_b_of_type_JavaLangString = parammvm.jdField_b_of_type_JavaLangString;
+      this.d = parammvm.d;
+      this.jdField_b_of_type_Int = parammvm.jdField_b_of_type_Int;
+      this.jdField_c_of_type_Int = parammvm.jdField_c_of_type_Int;
+      this.jdField_a_of_type_Boolean = parammvm.jdField_a_of_type_Boolean;
+      return;
     }
-    for (;;)
-    {
-      Bitmap localBitmap;
-      try
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.d = "";
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  private boolean a()
+  {
+    return (this.jdField_a_of_type_Int == 47) || (this.jdField_a_of_type_Int == 42) || (this.jdField_a_of_type_Int == 48) || (this.jdField_a_of_type_Int == 44);
+  }
+  
+  private boolean a(mvm parammvm)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (parammvm != null) {
+      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, parammvm.jdField_a_of_type_JavaLangString))
       {
-        localBitmap = BitmapFactory.decodeFile((String)localObject);
-        if (WXShareHelper.a().a()) {
-          break label153;
+        bool1 = bool2;
+        if (this.jdField_a_of_type_Int != parammvm.jdField_a_of_type_Int)
+        {
+          bool1 = bool2;
+          if (!parammvm.a()) {}
         }
-        i = 2131435319;
-        if (i == -1) {
-          break label168;
-        }
-        QRUtils.a(0, i);
-        localObject = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.mRuntime.a(), PublicAccountBrowser.class);
-        ((Intent)localObject).putExtra("url", "http://weixin.qq.com/download");
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.mRuntime.a().startActivity((Intent)localObject);
-        return;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        localOutOfMemoryError.printStackTrace();
-        return;
-      }
-      i = 0;
-      break;
-      label153:
-      if (!WXShareHelper.a().b())
-      {
-        i = 2131435320;
-        continue;
-        label168:
-        WXShareHelper.a().a(localOutOfMemoryError, localBitmap, 1, true);
-        return;
-        label179:
-        QRUtils.a(1, 2131438472);
       }
       else
       {
-        i = -1;
+        bool1 = true;
       }
+    }
+    return bool1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("NotifyData{sessionId[").append(this.jdField_a_of_type_JavaLangString).append("], id[").append(this.jdField_c_of_type_JavaLangString).append("], type[").append(this.jdField_a_of_type_Int).append("], uinType[").append(this.jdField_b_of_type_Int).append("], name[").append(this.jdField_b_of_type_JavaLangString).append("], extraName[").append(this.d).append("], head[");
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {}
+    for (boolean bool = true;; bool = false) {
+      return bool + "], isHide[" + this.jdField_a_of_type_Boolean + "]}";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mvm
  * JD-Core Version:    0.7.0.1
  */

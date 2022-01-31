@@ -2,22 +2,29 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import baqo;
+import beae;
+import beag;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.OutputStream;
 import java.net.URL;
 
 public class VasApngDownloader
-  extends AbsDownloader
+  extends baqo
 {
+  public VasApngDownloader()
+  {
+    super("VasApngDownloader", BaseApplicationImpl.getApplication());
+  }
+  
   public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
     if (paramDownloadParams == null) {
@@ -32,7 +39,7 @@ public class VasApngDownloader
     {
       paramOutputStream = (Bundle)paramDownloadParams.mExtraInfo;
       if (paramOutputStream == null) {
-        break label413;
+        break label420;
       }
       l = paramOutputStream.getLong("bundle_key_bid", 0L);
       paramOutputStream = paramOutputStream.getString("bundle_key_scid");
@@ -54,7 +61,7 @@ public class VasApngDownloader
       }
       if (i != 0)
       {
-        VasQuickUpdateManager.a(BaseApplicationImpl.sApplication.getRuntime(), l, paramOutputStream, null, true, null);
+        VasQuickUpdateManager.getFileFromLocal(BaseApplicationImpl.sApplication.getRuntime(), l, paramOutputStream, null, true, null);
         if (!QLog.isColorLevel()) {
           break;
         }
@@ -79,7 +86,9 @@ public class VasApngDownloader
         QLog.e("vasapngdownloader", 2, "downloadImage url has no http err, url=" + paramOutputStream + ", path=" + paramURLDrawableHandler);
         return null;
       }
-      i = DownloaderFactory.a(new DownloadTask(paramOutputStream, localFile), BaseApplicationImpl.sApplication.getRuntime());
+      paramDownloadParams = new beae(paramOutputStream, localFile);
+      paramDownloadParams.h = true;
+      i = beag.a(paramDownloadParams, BaseApplicationImpl.sApplication.getRuntime());
       if (i == 0)
       {
         if (localFile.exists()) {
@@ -90,7 +99,7 @@ public class VasApngDownloader
       }
       QLog.e("vasapngdownloader", 1, "downloadImage Error url=" + paramOutputStream + ", path=" + paramURLDrawableHandler + ", ret:" + i);
       return null;
-      label413:
+      label420:
       i = 0;
       paramOutputStream = null;
       l = 0L;
@@ -101,8 +110,7 @@ public class VasApngDownloader
   {
     Object localObject2 = null;
     Object localObject1 = null;
-    paramURLDrawableHandler = localObject2;
-    if (paramFile != null)
+    if (ApngDrawable.isApngFile(paramFile))
     {
       paramURLDrawableHandler = localObject2;
       if (paramFile.exists())
@@ -124,13 +132,19 @@ public class VasApngDownloader
           }
         }
       }
+      return paramURLDrawableHandler;
     }
-    return paramURLDrawableHandler;
+    if (paramFile == null)
+    {
+      QLog.e("vasapngdownloader", 1, "decodeFile error : file == null");
+      return null;
+    }
+    return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.VasApngDownloader
  * JD-Core Version:    0.7.0.1
  */

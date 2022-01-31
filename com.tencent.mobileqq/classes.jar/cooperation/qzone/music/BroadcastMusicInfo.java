@@ -1,11 +1,12 @@
 package cooperation.qzone.music;
 
 import NS_NEXTRADIO_QZONEBGMUSIC.BroadcastForQzone;
-import amvf;
+import alud;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import bjls;
 import com.tencent.mobileqq.music.SongInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,12 +18,12 @@ import org.json.JSONObject;
 public class BroadcastMusicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amvf();
+  public static final Parcelable.Creator<BroadcastMusicInfo> CREATOR = new bjls();
   public BroadcastAudio broadcastAudioUrl;
   public String broadcastID = "";
   public String broadcastName = "";
   public String detailUrl = "";
-  public ArrayList showList;
+  public ArrayList<BroadcastOneShow> showList;
   
   public BroadcastMusicInfo() {}
   
@@ -78,7 +79,7 @@ public class BroadcastMusicInfo
     catch (Exception paramString) {}
   }
   
-  public static List toQusicInfoList(List paramList, boolean paramBoolean)
+  public static List<SongInfo> toQusicInfoList(List<BroadcastMusicInfo> paramList, boolean paramBoolean)
   {
     if ((paramList == null) || (paramList.size() == 0)) {
       return null;
@@ -147,7 +148,7 @@ public class BroadcastMusicInfo
     {
       localObject2 = localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = "订阅暂未放送，请查看其他电台";
+        localObject2 = alud.a(2131701590);
       }
       return localObject2;
     }
@@ -159,10 +160,10 @@ public class BroadcastMusicInfo
     try
     {
       localSongInfo.jdField_a_of_type_Long = Long.parseLong(this.broadcastID);
-      localSongInfo.b = getTitle();
-      localSongInfo.jdField_a_of_type_Int = 9;
-      localSongInfo.e = this.detailUrl;
-      localSongInfo.jdField_a_of_type_JavaLangString = getSongUrl(paramBoolean);
+      localSongInfo.c = getTitle();
+      localSongInfo.jdField_b_of_type_Int = 9;
+      localSongInfo.f = this.detailUrl;
+      localSongInfo.jdField_b_of_type_JavaLangString = getSongUrl(paramBoolean);
       localSongInfo.jdField_a_of_type_CooperationQzoneMusicBroadcastMusicInfo = this;
       return localSongInfo;
     }
@@ -181,7 +182,7 @@ public class BroadcastMusicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.music.BroadcastMusicInfo
  * JD-Core Version:    0.7.0.1
  */

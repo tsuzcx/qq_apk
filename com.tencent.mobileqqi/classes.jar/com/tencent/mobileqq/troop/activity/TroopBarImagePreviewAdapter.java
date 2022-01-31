@@ -17,7 +17,7 @@ import android.widget.ImageView.ScaleType;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.BaseApplication;
-import gwf;
+import gry;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.util.List;
@@ -44,7 +44,7 @@ public class TroopBarImagePreviewAdapter
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
     this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView = paramExtendGridView;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839360);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839362);
     this.jdField_a_of_type_JavaLangCharSequence = BaseApplication.getContext().getText(2131558481);
     this.b = BaseApplication.getContext().getResources().getText(2131561262);
   }
@@ -138,10 +138,10 @@ public class TroopBarImagePreviewAdapter
     int i;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903409, null);
-      paramViewGroup = new gwf();
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131232524));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131232525));
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903411, null);
+      paramViewGroup = new gry();
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131232527));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131232528));
       localView.setTag(paramViewGroup);
       i = this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.a();
       paramView = localView.getLayoutParams();
@@ -155,7 +155,7 @@ public class TroopBarImagePreviewAdapter
         break label188;
       }
       paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130839497);
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130839499);
       paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
@@ -164,7 +164,7 @@ public class TroopBarImagePreviewAdapter
     do
     {
       return localView;
-      paramViewGroup = (gwf)paramView.getTag();
+      paramViewGroup = (gry)paramView.getTag();
       localView = paramView;
       break;
       paramView.width = i;

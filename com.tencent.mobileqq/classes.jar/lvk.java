@@ -1,89 +1,42 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage.Model;
-import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView.PicInfo;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.av.random.RandomWebProtocol;
+import org.json.JSONObject;
 
 public class lvk
-  extends BaseAdapter
+  extends lvi
 {
-  String jdField_a_of_type_JavaLangString;
-  List jdField_a_of_type_JavaUtilList;
-  String jdField_b_of_type_JavaLangString;
-  List jdField_b_of_type_JavaUtilList;
+  boolean jdField_b_of_type_Boolean;
+  int c;
   
-  public lvk()
+  public lvk(RandomWebProtocol paramRandomWebProtocol, lvi paramlvi, String paramString, boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
+    super(paramRandomWebProtocol, paramlvi);
+    this.a = 2;
+    this.c = paramString;
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.c = paramInt;
+    this.d = "[m] RequestMulti";
   }
   
-  public lvk(ComponentContentGridImage.Model paramModel)
+  String a()
   {
-    a(paramModel);
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(ComponentContentGridImage.Model paramModel)
-  {
-    this.jdField_b_of_type_JavaUtilList = paramModel.a();
-    this.jdField_a_of_type_JavaUtilList = paramModel.b();
-    this.jdField_a_of_type_JavaLangString = paramModel.a();
-    this.jdField_b_of_type_JavaLangString = paramModel.b();
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_b_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_b_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramViewGroup.getContext();
-    if (paramView == null)
+    this.a = null;
+    try
     {
-      paramView = new SquareCornerTextImageView(paramViewGroup);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+      this.a = new JSONObject().put("session_type", this.c);
+      return super.a();
     }
-    for (;;)
+    catch (Exception localException)
     {
-      ((SquareCornerTextImageView)paramView).a((SquareCornerTextImageView.PicInfo)this.jdField_b_of_type_JavaUtilList.get(paramInt));
-      return paramView;
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lvk
  * JD-Core Version:    0.7.0.1
  */

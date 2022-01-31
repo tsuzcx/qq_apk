@@ -1,40 +1,23 @@
-import com.tencent.mobileqq.adapter.NewFriendMoreSysMsgAdapter;
-import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
-import com.tencent.widget.SwipTextViewMenuBuilder;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-public class yic
-  extends SwipTextViewMenuBuilder
+class yic
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public yic(NewFriendMoreSysMsgAdapter paramNewFriendMoreSysMsgAdapter, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  yic(yib paramyib) {}
   
-  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
+  public int getSpanSize(int paramInt)
   {
-    paramInt = 0;
-    if ((paramArrayOfSwipRightMenuItem == null) || (paramArrayOfSwipRightMenuItem.length <= 0)) {}
-    for (;;)
-    {
-      return;
-      if (paramArrayOfSwipRightMenuItem.length < 0)
-      {
-        paramArrayOfSwipRightMenuItem[0].b = 0;
-        paramArrayOfSwipRightMenuItem[0].a = 0;
-        paramInt = 1;
-      }
-      while (paramInt < paramArrayOfSwipRightMenuItem.length)
-      {
-        paramArrayOfSwipRightMenuItem[paramInt].b = -1;
-        paramArrayOfSwipRightMenuItem[paramInt].a = -1;
-        paramInt += 1;
-      }
+    paramInt = this.a.a(paramInt);
+    yhy localyhy = this.a.a(paramInt);
+    if (localyhy != null) {
+      return localyhy.getSpanCount(localyhy.getLocalPosition(paramInt));
     }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yic
  * JD-Core Version:    0.7.0.1
  */

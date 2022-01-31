@@ -1,27 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapClickListener;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 public class myu
-  implements Animation.AnimationListener
+  implements TencentMap.OnMapClickListener
 {
-  public myu(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public myu(PoiMapActivity paramPoiMapActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onMapClick(LatLng paramLatLng)
   {
-    paramAnimation = (ImageView)this.a.findViewById(2131365588);
-    ImageView localImageView = (ImageView)this.a.findViewById(2131365589);
-    PublicAccountImageCollectionMainActivity.a(this.a, localImageView, paramAnimation, 100L, 240L);
+    this.a.j();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     myu
  * JD-Core Version:    0.7.0.1
  */

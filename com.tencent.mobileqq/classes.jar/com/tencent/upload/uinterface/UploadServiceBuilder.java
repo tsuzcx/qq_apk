@@ -1,28 +1,26 @@
 package com.tencent.upload.uinterface;
 
 import android.content.Context;
-import com.tencent.upload.b.f;
+import com.tencent.upload.impl.UploadServiceProxy;
+import com.tencent.upload.uinterface.token.ITokenEncryptor;
+import com.tencent.upload.uinterface.token.TokenProvider;
 
 public class UploadServiceBuilder
 {
   public static final IUploadService getInstance()
   {
-    return f.a();
+    return UploadServiceProxy.getInstance();
   }
   
-  public static final IUploadService getMobileLogInstance()
+  public static final void init(Context paramContext, IUploadConfig paramIUploadConfig, IUploadLog paramIUploadLog, IUploadReport paramIUploadReport, IUploadEnv paramIUploadEnv, IUploadSoLoader paramIUploadSoLoader, ITokenEncryptor paramITokenEncryptor)
   {
-    return f.a();
-  }
-  
-  public static final void init(Context paramContext, IUploadConfig paramIUploadConfig, IUploadLog paramIUploadLog, IUploadReport paramIUploadReport, IUploadEnv paramIUploadEnv)
-  {
-    f.a().init(paramContext, paramIUploadConfig, paramIUploadLog, paramIUploadReport, paramIUploadEnv);
+    UploadServiceProxy.getInstance().init(paramContext, paramIUploadConfig, paramIUploadLog, paramIUploadReport, paramIUploadEnv, paramIUploadSoLoader);
+    TokenProvider.getInstance().setTokenEncryptor(paramITokenEncryptor);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.upload.uinterface.UploadServiceBuilder
  * JD-Core Version:    0.7.0.1
  */

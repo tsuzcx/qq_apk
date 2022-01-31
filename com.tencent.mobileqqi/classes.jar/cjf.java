@@ -1,40 +1,19 @@
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareManager;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditActivity;
 
 public class cjf
-  implements QvipSpecialSoundManager.CallBack
+  implements View.OnClickListener
 {
-  public cjf(ChatSettingActivity paramChatSettingActivity) {}
+  public cjf(EditActivity paramEditActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialCareManager.a(ChatSettingActivity.a(this.a)));
-        ChatSettingActivity.a(this.a).setRightText(str);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        ChatSettingActivity.b(this.a);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i(ChatSettingActivity.b(this.a), 2, "loadSpecialSoundConfig fail.");
-      }
-      ChatSettingActivity.a(this.a).setRightText("");
-    }
+    EditActivity.a(this.a).setVisibility(4);
+    EditActivity.a(this.a).setImageResource(2130839369);
+    EditActivity.a(this.a, false);
   }
 }
 

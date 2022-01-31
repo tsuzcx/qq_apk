@@ -1,32 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.biz.qqcircle.requests.QCircleBaseRequest;
+import com.tencent.qphone.base.util.QLog;
 
-public class tyt
-  implements DialogInterface.OnClickListener
+class tyt
+  implements zac<T>
 {
-  public tyt(TroopInfoActivity paramTroopInfoActivity) {}
+  tyt(tys paramtys, String paramString, QCircleBaseRequest paramQCircleBaseRequest, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, long paramLong, String paramString, T paramT)
   {
-    QQAppInterface localQQAppInterface = this.a.app;
-    String str2 = this.a.a.troopUin;
-    if (this.a.a.bOwner) {}
-    for (String str1 = "0";; str1 = "1")
-    {
-      ReportController.b(localQQAppInterface, "P_CliOper", "Grp_manage", "", "manage_grp", "sub_clk", 0, 0, str2, str1, "1", "");
-      paramDialogInterface.dismiss();
-      this.a.i();
-      return;
-    }
+    QLog.d("QCircleBaseListAdapter", 1, this.jdField_a_of_type_JavaLangString + "onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleBaseRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleBaseRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + this.b);
+    this.jdField_a_of_type_Tys.handleResponse(paramBoolean, this.jdField_a_of_type_Boolean, paramLong, this.jdField_a_of_type_JavaLangString, paramString, paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tyt
  * JD-Core Version:    0.7.0.1
  */

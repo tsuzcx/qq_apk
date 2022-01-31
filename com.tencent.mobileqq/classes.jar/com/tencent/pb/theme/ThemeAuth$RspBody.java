@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ThemeAuth$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34 }, new String[] { "uint32_sub_cmd", "msg_subcmd0x1_rsp_auth", "msg_subcmd0x2_rsp_check", "msg_subcmd0x3_rsp_set" }, new Object[] { Integer.valueOf(0), null, null, null }, RspBody.class);
   public ThemeAuth.SubCmd0x1RspAuth msg_subcmd0x1_rsp_auth = new ThemeAuth.SubCmd0x1RspAuth();
@@ -16,7 +16,7 @@ public final class ThemeAuth$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.theme.ThemeAuth.RspBody
  * JD-Core Version:    0.7.0.1
  */

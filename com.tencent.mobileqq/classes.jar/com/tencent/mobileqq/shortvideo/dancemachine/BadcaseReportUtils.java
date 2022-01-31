@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.shortvideo.dancemachine;
 
-import aiai;
 import android.opengl.GLES20;
 import android.os.Build;
 import android.os.SystemClock;
@@ -19,173 +18,117 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class BadcaseReportUtils
 {
-  public static int a;
-  private static long jdField_a_of_type_Long;
-  private static BadcaseReportUtils.BadDataFrame jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$BadDataFrame;
-  private static BadcaseReportUtils.ReportItemData jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$ReportItemData;
-  public static String a;
-  private static Key jdField_a_of_type_JavaSecurityKey = new SecretKeySpec(jdField_a_of_type_ArrayOfByte, "AES");
-  public static boolean a;
-  private static byte[] jdField_a_of_type_ArrayOfByte;
-  private static int jdField_b_of_type_Int;
-  private static long jdField_b_of_type_Long;
-  public static String b;
-  private static boolean jdField_b_of_type_Boolean;
-  private static int c;
-  public static String c;
+  private static final int BACKWARD_RESERVATION_NUM = 3;
+  public static boolean ENABLE_REPORT = false;
+  private static final int FORWARD_RESERVATION_NUM = 1;
+  private static final int SAMPLE_TIME = 26;
+  private static final int TOTAL_TIME = 30;
+  private static Key keySpec = new SecretKeySpec(keyValue, "AES");
+  private static byte[] keyValue;
+  private static BadcaseReportUtils.BadDataFrame sCurrentBadCaseFrame;
+  private static int sCurrentFilterKind;
+  public static String sDanceFilterID;
+  public static String sDanceFilterName;
+  private static boolean sHaveFrameCreated;
+  private static long sLastSampleSuccessTime;
+  public static String sModelData = Build.MODEL;
+  private static long sPlayBeginTimeStamp;
+  private static BadcaseReportUtils.ReportItemData sReportCallback;
+  private static int sReportNumIndex;
+  public static int sTotalReportNumber;
   
   static
   {
-    jdField_c_of_type_JavaLangString = Build.MODEL;
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$BadDataFrame = null;
-    jdField_b_of_type_Boolean = false;
-    jdField_a_of_type_Int = 3;
-    jdField_b_of_type_Int = 0;
-    jdField_a_of_type_Long = 0L;
-    jdField_b_of_type_Long = 0L;
-    jdField_c_of_type_Int = 0;
-    jdField_a_of_type_ArrayOfByte = new byte[] { 22, -35, -45, 25, 98, -55, -45, 10, 35, -45, 25, 26, -95, 25, -35, 48 };
+    ENABLE_REPORT = false;
+    sCurrentBadCaseFrame = null;
+    sHaveFrameCreated = false;
+    sTotalReportNumber = 3;
+    sReportNumIndex = 0;
+    sLastSampleSuccessTime = 0L;
+    sPlayBeginTimeStamp = 0L;
+    sCurrentFilterKind = 0;
+    keyValue = new byte[] { 22, -35, -45, 25, 98, -55, -45, 10, 35, -45, 25, 26, -95, 25, -35, 48 };
   }
   
-  private static ByteBuffer a(int paramInt1, int paramInt2, int paramInt3)
+  public static void collectionBadCaseDetectCost(long paramLong)
   {
-    int[] arrayOfInt1 = new int[1];
-    int[] arrayOfInt2 = new int[1];
-    GLES20.glGetIntegerv(36006, arrayOfInt2, 0);
-    GLES20.glGenFramebuffers(1, arrayOfInt1, 0);
-    GLES20.glBindFramebuffer(36160, arrayOfInt1[0]);
-    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramInt2 * paramInt3 * 4);
-    GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, localByteBuffer);
-    GLES20.glFinish();
-    GLES20.glBindFramebuffer(36160, arrayOfInt2[0]);
-    GLES20.glDeleteFramebuffers(1, arrayOfInt1, 0);
-    return localByteBuffer;
-  }
-  
-  public static void a()
-  {
-    if (!jdField_b_of_type_Boolean)
-    {
-      jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$BadDataFrame = new BadcaseReportUtils.BadDataFrame();
-      jdField_b_of_type_Boolean = true;
-      DanceLog.a("BadcaseReportUtils ", "initCurrentFrame sHaveFrameCreated=true");
+    if (sHaveFrameCreated) {
+      sCurrentBadCaseFrame.timeCost = paramLong;
     }
+    DanceLog.print("BadcaseReportUtils ", "collectionBadCaseDetectCost sHaveFrameCreated=" + sHaveFrameCreated + " detectCost=" + paramLong);
   }
   
-  public static void a(int paramInt)
+  public static void convertDataFormat(BadcaseReportUtils.BadDataFrame paramBadDataFrame)
   {
-    if ((jdField_c_of_type_Int == 0) && (paramInt == 1))
-    {
-      jdField_b_of_type_Long = SystemClock.uptimeMillis();
-      jdField_b_of_type_Int = jdField_a_of_type_Int;
-      jdField_a_of_type_Long = 0L;
-      DanceLog.a("BadcaseReportUtils ", "setCurrentRenderFilterKind enter Play...");
-    }
-    jdField_c_of_type_Int = paramInt;
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3, float[] paramArrayOfFloat)
-  {
-    if (jdField_b_of_type_Boolean)
-    {
-      boolean bool = b();
-      DanceLog.a("BadcaseReportUtils ", "finishCurrentFrame report=" + bool);
-      if (bool)
-      {
-        jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$BadDataFrame.jdField_a_of_type_JavaNioByteBuffer = a(paramInt1, paramInt2, paramInt3);
-        jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$BadDataFrame.jdField_b_of_type_Int = paramInt2;
-        jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$BadDataFrame.jdField_c_of_type_Int = paramInt3;
-        a(paramArrayOfFloat);
-        e();
-        jdField_b_of_type_Int -= 1;
-        jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      }
-    }
-    DanceLog.a("BadcaseReportUtils ", "finishCurrentFrame sHaveFrameCreated=" + jdField_b_of_type_Boolean);
-    b();
-  }
-  
-  public static void a(long paramLong)
-  {
-    if (jdField_b_of_type_Boolean) {
-      jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$BadDataFrame.jdField_a_of_type_Long = paramLong;
-    }
-    DanceLog.a("BadcaseReportUtils ", "collectionBadCaseDetectCost sHaveFrameCreated=" + jdField_b_of_type_Boolean + " detectCost=" + paramLong);
-  }
-  
-  public static void a(BadcaseReportUtils.BadDataFrame paramBadDataFrame)
-  {
-    Object localObject1 = new aiai(paramBadDataFrame.jdField_c_of_type_JavaLangString);
-    Object localObject2 = "" + paramBadDataFrame.jdField_a_of_type_Int;
+    Object localObject1 = new BadcaseReportUtils.BadCaseWriter(paramBadDataFrame.convertedPath);
+    Object localObject2 = "" + paramBadDataFrame.problemType;
     int i = ((String)localObject2).length();
     if (i > 0)
     {
-      ((aiai)localObject1).a("Problem");
-      ((aiai)localObject1).a(i + 1);
-      ((aiai)localObject1).a((String)localObject2);
+      ((BadcaseReportUtils.BadCaseWriter)localObject1).writeCString("Problem");
+      ((BadcaseReportUtils.BadCaseWriter)localObject1).writeBigInt(i + 1);
+      ((BadcaseReportUtils.BadCaseWriter)localObject1).writeCString((String)localObject2);
     }
-    ((aiai)localObject1).a("Picture");
-    ((aiai)localObject1).b(paramBadDataFrame.jdField_b_of_type_JavaLangString);
-    i = jdField_c_of_type_JavaLangString.length();
+    ((BadcaseReportUtils.BadCaseWriter)localObject1).writeCString("Picture");
+    ((BadcaseReportUtils.BadCaseWriter)localObject1).writeFile(paramBadDataFrame.picturePath);
+    i = sModelData.length();
     if (i > 0)
     {
-      ((aiai)localObject1).a("Model");
-      ((aiai)localObject1).a(i + 1);
-      ((aiai)localObject1).a(jdField_c_of_type_JavaLangString);
+      ((BadcaseReportUtils.BadCaseWriter)localObject1).writeCString("Model");
+      ((BadcaseReportUtils.BadCaseWriter)localObject1).writeBigInt(i + 1);
+      ((BadcaseReportUtils.BadCaseWriter)localObject1).writeCString(sModelData);
     }
-    localObject2 = "" + paramBadDataFrame.jdField_a_of_type_JavaLangString;
+    localObject2 = "" + paramBadDataFrame.detectPointData;
     i = ((String)localObject2).length();
     if (i > 0)
     {
-      ((aiai)localObject1).a("Point");
-      ((aiai)localObject1).a(i + 1);
-      ((aiai)localObject1).a((String)localObject2);
+      ((BadcaseReportUtils.BadCaseWriter)localObject1).writeCString("Point");
+      ((BadcaseReportUtils.BadCaseWriter)localObject1).writeBigInt(i + 1);
+      ((BadcaseReportUtils.BadCaseWriter)localObject1).writeCString((String)localObject2);
     }
-    localObject2 = "" + paramBadDataFrame.jdField_a_of_type_Long;
+    localObject2 = "" + paramBadDataFrame.timeCost;
     i = ((String)localObject2).length();
     if (i > 0)
     {
-      ((aiai)localObject1).a("DetectCost");
-      ((aiai)localObject1).a(i + 1);
-      ((aiai)localObject1).a((String)localObject2);
+      ((BadcaseReportUtils.BadCaseWriter)localObject1).writeCString("DetectCost");
+      ((BadcaseReportUtils.BadCaseWriter)localObject1).writeBigInt(i + 1);
+      ((BadcaseReportUtils.BadCaseWriter)localObject1).writeCString((String)localObject2);
     }
-    localObject2 = "" + jdField_b_of_type_JavaLangString;
+    localObject2 = "" + sDanceFilterID;
     i = ((String)localObject2).length();
     if (i > 0)
     {
-      ((aiai)localObject1).a("FilterID");
-      ((aiai)localObject1).a(i + 1);
-      ((aiai)localObject1).a((String)localObject2);
+      ((BadcaseReportUtils.BadCaseWriter)localObject1).writeCString("FilterID");
+      ((BadcaseReportUtils.BadCaseWriter)localObject1).writeBigInt(i + 1);
+      ((BadcaseReportUtils.BadCaseWriter)localObject1).writeCString((String)localObject2);
     }
-    localObject2 = "" + jdField_a_of_type_JavaLangString;
+    localObject2 = "" + sDanceFilterName;
     i = ((String)localObject2).length();
     if (i > 0)
     {
-      ((aiai)localObject1).a("FilterName");
-      ((aiai)localObject1).a(i + 1);
-      ((aiai)localObject1).a((String)localObject2);
+      ((BadcaseReportUtils.BadCaseWriter)localObject1).writeCString("FilterName");
+      ((BadcaseReportUtils.BadCaseWriter)localObject1).writeBigInt(i + 1);
+      ((BadcaseReportUtils.BadCaseWriter)localObject1).writeCString((String)localObject2);
     }
     localObject2 = new StringBuilder();
     i = 0;
     BadcaseReportUtils.BadDataItem localBadDataItem;
-    while (i < paramBadDataFrame.jdField_b_of_type_JavaUtilArrayList.size())
+    while (i < paramBadDataFrame.currentModelCache.size())
     {
-      localBadDataItem = (BadcaseReportUtils.BadDataItem)paramBadDataFrame.jdField_b_of_type_JavaUtilArrayList.get(i);
-      ((StringBuilder)localObject2).append(localBadDataItem.jdField_a_of_type_JavaLangString);
+      localBadDataItem = (BadcaseReportUtils.BadDataItem)paramBadDataFrame.currentModelCache.get(i);
+      ((StringBuilder)localObject2).append(localBadDataItem.boyID);
       ((StringBuilder)localObject2).append(",");
-      ((StringBuilder)localObject2).append(localBadDataItem.jdField_b_of_type_Int);
+      ((StringBuilder)localObject2).append(localBadDataItem.mIndex);
       ((StringBuilder)localObject2).append(",");
       i += 1;
     }
     i = 0;
-    while (i < paramBadDataFrame.jdField_c_of_type_JavaUtilArrayList.size())
+    while (i < paramBadDataFrame.currentMatchCache.size())
     {
-      localBadDataItem = (BadcaseReportUtils.BadDataItem)paramBadDataFrame.jdField_c_of_type_JavaUtilArrayList.get(i);
-      ((StringBuilder)localObject2).append(localBadDataItem.jdField_a_of_type_JavaLangString);
+      localBadDataItem = (BadcaseReportUtils.BadDataItem)paramBadDataFrame.currentMatchCache.get(i);
+      ((StringBuilder)localObject2).append(localBadDataItem.boyID);
       ((StringBuilder)localObject2).append(",");
-      ((StringBuilder)localObject2).append(localBadDataItem.jdField_b_of_type_Int);
+      ((StringBuilder)localObject2).append(localBadDataItem.mIndex);
       ((StringBuilder)localObject2).append(",");
       i += 1;
     }
@@ -194,58 +137,53 @@ public class BadcaseReportUtils
       localObject2 = ((StringBuilder)localObject2).substring(0, ((StringBuilder)localObject2).length() - 1);
       if (((String)localObject2).length() > 0)
       {
-        ((aiai)localObject1).a("boyId");
-        ((aiai)localObject1).a(((String)localObject2).length() + 1);
-        ((aiai)localObject1).a((String)localObject2);
+        ((BadcaseReportUtils.BadCaseWriter)localObject1).writeCString("boyId");
+        ((BadcaseReportUtils.BadCaseWriter)localObject1).writeBigInt(((String)localObject2).length() + 1);
+        ((BadcaseReportUtils.BadCaseWriter)localObject1).writeCString((String)localObject2);
       }
     }
-    ((aiai)localObject1).a();
-    paramBadDataFrame.jdField_a_of_type_Boolean = ((aiai)localObject1).jdField_a_of_type_Boolean;
-    ((aiai)localObject1).b();
-    a(paramBadDataFrame.jdField_b_of_type_JavaLangString);
-    if (paramBadDataFrame.jdField_a_of_type_Boolean)
+    ((BadcaseReportUtils.BadCaseWriter)localObject1).flush();
+    paramBadDataFrame.mDataSuccess = ((BadcaseReportUtils.BadCaseWriter)localObject1).mWriteOK;
+    ((BadcaseReportUtils.BadCaseWriter)localObject1).release();
+    deleteFile(paramBadDataFrame.picturePath);
+    if (paramBadDataFrame.mDataSuccess)
     {
-      paramBadDataFrame.e = (paramBadDataFrame.jdField_c_of_type_JavaLangString + "_enc");
-      localObject1 = new File(paramBadDataFrame.e);
+      paramBadDataFrame.encPath = (paramBadDataFrame.convertedPath + "_enc");
+      localObject1 = new File(paramBadDataFrame.encPath);
       if (((File)localObject1).exists()) {
         ((File)localObject1).delete();
       }
       try
       {
         ((File)localObject1).createNewFile();
-        paramBadDataFrame.jdField_c_of_type_Boolean = b(paramBadDataFrame.jdField_c_of_type_JavaLangString, paramBadDataFrame.e);
-        DanceLog.a("BadcaseReportUtils ", "cryptFile mEncSuccess=" + paramBadDataFrame.jdField_c_of_type_Boolean);
-        a(paramBadDataFrame.jdField_c_of_type_JavaLangString);
-        if (!paramBadDataFrame.jdField_c_of_type_Boolean)
+        paramBadDataFrame.mEncSuccess = cryptFile(paramBadDataFrame.convertedPath, paramBadDataFrame.encPath);
+        DanceLog.print("BadcaseReportUtils ", "cryptFile mEncSuccess=" + paramBadDataFrame.mEncSuccess);
+        deleteFile(paramBadDataFrame.convertedPath);
+        if (!paramBadDataFrame.mEncSuccess)
         {
-          a(paramBadDataFrame.e);
+          deleteFile(paramBadDataFrame.encPath);
           return;
         }
-        paramBadDataFrame.d = (paramBadDataFrame.e + ".zip");
-        boolean bool = a(paramBadDataFrame.e, paramBadDataFrame.d);
-        a(paramBadDataFrame.e);
-        DanceLog.a("BadcaseReportUtils ", "convertDataFormat zipSuccess=" + bool);
-        paramBadDataFrame.jdField_b_of_type_Boolean = bool;
-        if (paramBadDataFrame.jdField_b_of_type_Boolean) {
+        paramBadDataFrame.zipPath = (paramBadDataFrame.encPath + ".zip");
+        boolean bool = zipFiles(paramBadDataFrame.encPath, paramBadDataFrame.zipPath);
+        deleteFile(paramBadDataFrame.encPath);
+        DanceLog.print("BadcaseReportUtils ", "convertDataFormat zipSuccess=" + bool);
+        paramBadDataFrame.mZipSuccess = bool;
+        if (paramBadDataFrame.mZipSuccess) {
           return;
         }
-        a(paramBadDataFrame.d);
+        deleteFile(paramBadDataFrame.zipPath);
         return;
       }
       catch (Exception paramBadDataFrame) {}
     }
     else
     {
-      a(paramBadDataFrame.jdField_c_of_type_JavaLangString);
+      deleteFile(paramBadDataFrame.convertedPath);
     }
   }
   
-  public static void a(BadcaseReportUtils.ReportItemData paramReportItemData)
-  {
-    jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$ReportItemData = paramReportItemData;
-  }
-  
-  public static void a(InputStream paramInputStream, OutputStream paramOutputStream, int paramInt, Key paramKey)
+  public static void crypt(InputStream paramInputStream, OutputStream paramOutputStream, int paramInt, Key paramKey)
   {
     Cipher localCipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
     localCipher.init(paramInt, paramKey);
@@ -286,7 +224,159 @@ public class BadcaseReportUtils
     }
   }
   
-  private static void a(String paramString)
+  /* Error */
+  private static boolean cryptFile(String paramString1, String paramString2)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: aconst_null
+    //   4: astore_3
+    //   5: new 319	java/io/FileInputStream
+    //   8: dup
+    //   9: aload_0
+    //   10: invokespecial 320	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   13: astore_0
+    //   14: new 322	java/io/FileOutputStream
+    //   17: dup
+    //   18: aload_1
+    //   19: invokespecial 323	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   22: astore_1
+    //   23: aload_0
+    //   24: aload_1
+    //   25: getstatic 82	com/tencent/mobileqq/shortvideo/dancemachine/BadcaseReportUtils:keySpec	Ljava/security/Key;
+    //   28: invokestatic 327	com/tencent/mobileqq/shortvideo/dancemachine/BadcaseReportUtils:encrypt	(Ljava/io/InputStream;Ljava/io/OutputStream;Ljava/security/Key;)Z
+    //   31: istore_2
+    //   32: aload_0
+    //   33: ifnull +7 -> 40
+    //   36: aload_0
+    //   37: invokevirtual 330	java/io/FileInputStream:close	()V
+    //   40: aload_1
+    //   41: ifnull +7 -> 48
+    //   44: aload_1
+    //   45: invokevirtual 331	java/io/FileOutputStream:close	()V
+    //   48: iload_2
+    //   49: ireturn
+    //   50: astore_0
+    //   51: aconst_null
+    //   52: astore_1
+    //   53: ldc 94
+    //   55: ldc_w 333
+    //   58: aload_0
+    //   59: invokestatic 336	com/tencent/mobileqq/shortvideo/dancemachine/utils/DanceLog:print	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   62: aload_3
+    //   63: ifnull +7 -> 70
+    //   66: aload_3
+    //   67: invokevirtual 330	java/io/FileInputStream:close	()V
+    //   70: aload_1
+    //   71: ifnull +7 -> 78
+    //   74: aload_1
+    //   75: invokevirtual 331	java/io/FileOutputStream:close	()V
+    //   78: iconst_0
+    //   79: ireturn
+    //   80: astore_0
+    //   81: aconst_null
+    //   82: astore_1
+    //   83: aload 4
+    //   85: astore_3
+    //   86: aload_3
+    //   87: ifnull +7 -> 94
+    //   90: aload_3
+    //   91: invokevirtual 330	java/io/FileInputStream:close	()V
+    //   94: aload_1
+    //   95: ifnull +7 -> 102
+    //   98: aload_1
+    //   99: invokevirtual 331	java/io/FileOutputStream:close	()V
+    //   102: aload_0
+    //   103: athrow
+    //   104: astore_0
+    //   105: goto -65 -> 40
+    //   108: astore_0
+    //   109: iload_2
+    //   110: ireturn
+    //   111: astore_0
+    //   112: goto -42 -> 70
+    //   115: astore_0
+    //   116: goto -38 -> 78
+    //   119: astore_3
+    //   120: goto -26 -> 94
+    //   123: astore_1
+    //   124: goto -22 -> 102
+    //   127: astore 4
+    //   129: aconst_null
+    //   130: astore_1
+    //   131: aload_0
+    //   132: astore_3
+    //   133: aload 4
+    //   135: astore_0
+    //   136: goto -50 -> 86
+    //   139: astore 4
+    //   141: aload_0
+    //   142: astore_3
+    //   143: aload 4
+    //   145: astore_0
+    //   146: goto -60 -> 86
+    //   149: astore_0
+    //   150: goto -64 -> 86
+    //   153: astore 4
+    //   155: aconst_null
+    //   156: astore_1
+    //   157: aload_0
+    //   158: astore_3
+    //   159: aload 4
+    //   161: astore_0
+    //   162: goto -109 -> 53
+    //   165: astore 4
+    //   167: aload_0
+    //   168: astore_3
+    //   169: aload 4
+    //   171: astore_0
+    //   172: goto -119 -> 53
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	175	0	paramString1	String
+    //   0	175	1	paramString2	String
+    //   31	79	2	bool	boolean
+    //   4	87	3	localObject1	Object
+    //   119	1	3	localException1	Exception
+    //   132	37	3	str	String
+    //   1	83	4	localObject2	Object
+    //   127	7	4	localObject3	Object
+    //   139	5	4	localObject4	Object
+    //   153	7	4	localException2	Exception
+    //   165	5	4	localException3	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   5	14	50	java/lang/Exception
+    //   5	14	80	finally
+    //   36	40	104	java/lang/Exception
+    //   44	48	108	java/lang/Exception
+    //   66	70	111	java/lang/Exception
+    //   74	78	115	java/lang/Exception
+    //   90	94	119	java/lang/Exception
+    //   98	102	123	java/lang/Exception
+    //   14	23	127	finally
+    //   23	32	139	finally
+    //   53	62	149	finally
+    //   14	23	153	java/lang/Exception
+    //   23	32	165	java/lang/Exception
+  }
+  
+  public static boolean decrypt(InputStream paramInputStream, OutputStream paramOutputStream, Key paramKey)
+  {
+    try
+    {
+      crypt(paramInputStream, paramOutputStream, 2, paramKey);
+      return true;
+    }
+    catch (Exception paramInputStream)
+    {
+      DanceLog.print("BadcaseReportUtils ", "decrypt false", paramInputStream);
+    }
+    return false;
+  }
+  
+  private static void deleteFile(String paramString)
   {
     paramString = new File(paramString);
     if (paramString.exists()) {
@@ -294,56 +384,94 @@ public class BadcaseReportUtils
     }
   }
   
-  public static void a(List paramList, ResourceManager.Posture paramPosture, int paramInt)
+  public static boolean encrypt(InputStream paramInputStream, OutputStream paramOutputStream, Key paramKey)
   {
-    if (paramPosture == null) {}
-    while (!jdField_b_of_type_Boolean) {
-      return;
-    }
-    if ((((Vec3f)paramList.get(2)).c == 0.0F) && (((Vec3f)paramList.get(3)).c == 0.0F) && (((Vec3f)paramList.get(4)).c == 0.0F) && (((Vec3f)paramList.get(5)).c == 0.0F) && (((Vec3f)paramList.get(6)).c == 0.0F) && (((Vec3f)paramList.get(7)).c == 0.0F))
+    try
     {
-      jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$BadDataFrame.jdField_a_of_type_JavaUtilArrayList.add(new BadcaseReportUtils.BadDataItem(1, paramPosture.jdField_a_of_type_JavaLangString, paramInt));
-      DanceLog.a("BadcaseReportUtils ", "problemClassification USER_PROBLEM");
-      return;
+      crypt(paramInputStream, paramOutputStream, 1, paramKey);
+      return true;
     }
-    Iterator localIterator = paramPosture.b.iterator();
-    label164:
-    while (localIterator.hasNext())
+    catch (Exception paramInputStream)
     {
-      Object localObject = ((MatchTemplateConfig)localIterator.next()).a;
-      if (localObject != null)
+      DanceLog.print("BadcaseReportUtils ", "encrypt false", paramInputStream);
+    }
+    return false;
+  }
+  
+  public static void finishCurrentFrame(int paramInt1, int paramInt2, int paramInt3, float[] paramArrayOfFloat)
+  {
+    if (sHaveFrameCreated)
+    {
+      boolean bool = needDoReport();
+      DanceLog.print("BadcaseReportUtils ", "finishCurrentFrame report=" + bool);
+      if (bool)
       {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          MatchTemplateConfig.KeyPoint localKeyPoint = (MatchTemplateConfig.KeyPoint)((Iterator)localObject).next();
-          if (((Vec3f)paramList.get(localKeyPoint.jdField_a_of_type_Int)).c == 0.0F) {
-            DanceLog.a("BadcaseReportUtils ", "problemClassification point.index=" + localKeyPoint.jdField_a_of_type_Int);
-          }
-        }
+        sCurrentBadCaseFrame.pictureBuffer = readTextureToByteBuffer(paramInt1, paramInt2, paramInt3);
+        sCurrentBadCaseFrame.width = paramInt2;
+        sCurrentBadCaseFrame.height = paramInt3;
+        poseDataSting(paramArrayOfFloat);
+        reportCurrentFrame();
+        sReportNumIndex -= 1;
+        sLastSampleSuccessTime = SystemClock.uptimeMillis();
       }
     }
-    for (int i = 0;; i = 1)
+    DanceLog.print("BadcaseReportUtils ", "finishCurrentFrame sHaveFrameCreated=" + sHaveFrameCreated);
+    releaseCurrentFrame();
+  }
+  
+  public static void initCurrentFrame()
+  {
+    if (!sHaveFrameCreated)
     {
-      if (i != 0)
-      {
-        jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$BadDataFrame.jdField_c_of_type_JavaUtilArrayList.add(new BadcaseReportUtils.BadDataItem(3, paramPosture.jdField_a_of_type_JavaLangString, paramInt));
-        DanceLog.a("BadcaseReportUtils ", "problemClassification MATCH_PROBLEM");
-        break label164;
-      }
-      jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$BadDataFrame.jdField_b_of_type_JavaUtilArrayList.add(new BadcaseReportUtils.BadDataItem(2, paramPosture.jdField_a_of_type_JavaLangString, paramInt));
-      DanceLog.a("BadcaseReportUtils ", "problemClassification MODEL_PROBLEM");
-      d();
-      break label164;
-      break;
+      sCurrentBadCaseFrame = new BadcaseReportUtils.BadDataFrame();
+      sHaveFrameCreated = true;
+      DanceLog.print("BadcaseReportUtils ", "initCurrentFrame sHaveFrameCreated=true");
     }
   }
   
-  private static void a(float[] paramArrayOfFloat)
+  private static void maxBadCaseJudge() {}
+  
+  private static boolean needDoReport()
+  {
+    int i = sCurrentBadCaseFrame.currentModelCache.size();
+    int j = sCurrentBadCaseFrame.currentMatchCache.size();
+    int k = sCurrentBadCaseFrame.currentUserCache.size();
+    DanceLog.print("BadcaseReportUtils ", "finishCurrentFrame needDoReport  modelCaseProblem=" + i + " matchCaseProblem=" + j + " userCaseProblem=" + k);
+    if ((i > 0) || (j > 0)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      DanceLog.print("BadcaseReportUtils ", "finishCurrentFrame needDoReport  haveBadCase=" + bool);
+      if (bool)
+      {
+        if (i / (j + i) <= 1.6F) {
+          break;
+        }
+        sCurrentBadCaseFrame.problemType = 2;
+      }
+      return bool;
+    }
+    sCurrentBadCaseFrame.problemType = 3;
+    return bool;
+  }
+  
+  public static boolean needDoSample()
+  {
+    if ((ENABLE_REPORT) && (sCurrentFilterKind == 1))
+    {
+      long l = SystemClock.uptimeMillis() - sPlayBeginTimeStamp;
+      DanceLog.print("BadcaseReportUtils ", "needDoSample diffTotalTime=" + l + " sReportNumIndex=" + sReportNumIndex);
+      if ((l > 1000L) && (l < 27000L) && (sReportNumIndex > 0)) {
+        return sampleStrategy();
+      }
+    }
+    return false;
+  }
+  
+  private static void poseDataSting(float[] paramArrayOfFloat)
   {
     if (paramArrayOfFloat == null)
     {
-      DanceLog.a("BadcaseReportUtils ", "finishCurrentFrame poseData= null");
+      DanceLog.print("BadcaseReportUtils ", "finishCurrentFrame poseData= null");
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -354,82 +482,177 @@ public class BadcaseReportUtils
       localStringBuilder.append(",");
       i += 1;
     }
-    jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$BadDataFrame.jdField_a_of_type_JavaLangString = localStringBuilder.substring(0, localStringBuilder.length() - 1);
+    sCurrentBadCaseFrame.detectPointData = localStringBuilder.substring(0, localStringBuilder.length() - 1);
   }
   
-  public static boolean a()
+  public static void problemClassification(List<Vec3f> paramList, ResourceManager.Posture paramPosture, int paramInt)
   {
-    if ((jdField_a_of_type_Boolean) && (jdField_c_of_type_Int == 1))
+    if (paramPosture == null) {}
+    while (!sHaveFrameCreated) {
+      return;
+    }
+    if ((((Vec3f)paramList.get(2)).z == 0.0F) && (((Vec3f)paramList.get(3)).z == 0.0F) && (((Vec3f)paramList.get(4)).z == 0.0F) && (((Vec3f)paramList.get(5)).z == 0.0F) && (((Vec3f)paramList.get(6)).z == 0.0F) && (((Vec3f)paramList.get(7)).z == 0.0F))
     {
-      long l = SystemClock.uptimeMillis() - jdField_b_of_type_Long;
-      DanceLog.a("BadcaseReportUtils ", "needDoSample diffTotalTime=" + l + " sReportNumIndex=" + jdField_b_of_type_Int);
-      if ((l > 1000L) && (l < 27000L) && (jdField_b_of_type_Int > 0)) {
-        return c();
+      sCurrentBadCaseFrame.currentUserCache.add(new BadcaseReportUtils.BadDataItem(1, paramPosture.id, paramInt));
+      DanceLog.print("BadcaseReportUtils ", "problemClassification USER_PROBLEM");
+      return;
+    }
+    Iterator localIterator = paramPosture.gestureConfigs.iterator();
+    label164:
+    while (localIterator.hasNext())
+    {
+      Object localObject = ((MatchTemplateConfig)localIterator.next()).keyPoints;
+      if (localObject != null)
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          MatchTemplateConfig.KeyPoint localKeyPoint = (MatchTemplateConfig.KeyPoint)((Iterator)localObject).next();
+          if (((Vec3f)paramList.get(localKeyPoint.index)).z == 0.0F) {
+            DanceLog.print("BadcaseReportUtils ", "problemClassification point.index=" + localKeyPoint.index);
+          }
+        }
       }
     }
+    for (int i = 0;; i = 1)
+    {
+      if (i != 0)
+      {
+        sCurrentBadCaseFrame.currentMatchCache.add(new BadcaseReportUtils.BadDataItem(3, paramPosture.id, paramInt));
+        DanceLog.print("BadcaseReportUtils ", "problemClassification MATCH_PROBLEM");
+        break label164;
+      }
+      sCurrentBadCaseFrame.currentModelCache.add(new BadcaseReportUtils.BadDataItem(2, paramPosture.id, paramInt));
+      DanceLog.print("BadcaseReportUtils ", "problemClassification MODEL_PROBLEM");
+      maxBadCaseJudge();
+      break label164;
+      break;
+    }
+  }
+  
+  private static ByteBuffer readTextureToByteBuffer(int paramInt1, int paramInt2, int paramInt3)
+  {
+    int[] arrayOfInt1 = new int[1];
+    int[] arrayOfInt2 = new int[1];
+    GLES20.glGetIntegerv(36006, arrayOfInt2, 0);
+    GLES20.glGenFramebuffers(1, arrayOfInt1, 0);
+    GLES20.glBindFramebuffer(36160, arrayOfInt1[0]);
+    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramInt2 * paramInt3 * 4);
+    GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, localByteBuffer);
+    GLES20.glFinish();
+    GLES20.glBindFramebuffer(36160, arrayOfInt2[0]);
+    GLES20.glDeleteFramebuffers(1, arrayOfInt1, 0);
+    return localByteBuffer;
+  }
+  
+  public static void registerReport(BadcaseReportUtils.ReportItemData paramReportItemData)
+  {
+    sReportCallback = paramReportItemData;
+  }
+  
+  public static void releaseCurrentFrame()
+  {
+    if (sHaveFrameCreated)
+    {
+      sCurrentBadCaseFrame = null;
+      sHaveFrameCreated = false;
+      DanceLog.print("BadcaseReportUtils ", "releaseCurrentFrame sHaveFrameCreated=false");
+    }
+  }
+  
+  private static void reportCurrentFrame()
+  {
+    DanceLog.print("BadcaseReportUtils ", "reportCurrentFrame...");
+    if (sReportCallback != null) {
+      sReportCallback.itemOK(sCurrentBadCaseFrame);
+    }
+  }
+  
+  public static void resetSamplingParam()
+  {
+    sCurrentFilterKind = 0;
+    sPlayBeginTimeStamp = 0L;
+    sLastSampleSuccessTime = 0L;
+    sReportNumIndex = 0;
+    DanceLog.print("BadcaseReportUtils ", "resetSamplingParam...");
+  }
+  
+  private static boolean sampleStrategy()
+  {
+    if (sLastSampleSuccessTime == 0L) {
+      DanceLog.print("BadcaseReportUtils ", "sampleStrategy sLastSampleSuccessTime=0");
+    }
+    long l1;
+    long l2;
+    do
+    {
+      return true;
+      l1 = (26000.0F / sTotalReportNumber / 2.0F);
+      l2 = SystemClock.uptimeMillis() - sLastSampleSuccessTime;
+      DanceLog.print("BadcaseReportUtils ", "sampleStrategy timeDiff=" + l2 + " sampleInterval=" + l1);
+    } while (l2 > l1);
     return false;
   }
   
-  public static boolean a(InputStream paramInputStream, OutputStream paramOutputStream, Key paramKey)
+  public static void setCurrentRenderFilterKind(int paramInt)
   {
-    try
+    if ((sCurrentFilterKind == 0) && (paramInt == 1))
     {
-      a(paramInputStream, paramOutputStream, 1, paramKey);
-      return true;
+      sPlayBeginTimeStamp = SystemClock.uptimeMillis();
+      sReportNumIndex = sTotalReportNumber;
+      sLastSampleSuccessTime = 0L;
+      DanceLog.print("BadcaseReportUtils ", "setCurrentRenderFilterKind enter Play...");
     }
-    catch (Exception paramInputStream)
-    {
-      DanceLog.a("BadcaseReportUtils ", "encrypt false", paramInputStream);
-    }
-    return false;
+    sCurrentFilterKind = paramInt;
   }
   
   /* Error */
-  public static boolean a(String paramString1, String paramString2)
+  public static boolean zipFiles(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore 8
-    //   3: new 416	java/io/FileOutputStream
+    //   3: new 322	java/io/FileOutputStream
     //   6: dup
-    //   7: new 256	java/io/File
+    //   7: new 236	java/io/File
     //   10: dup
     //   11: aload_1
-    //   12: invokespecial 257	java/io/File:<init>	(Ljava/lang/String;)V
-    //   15: invokespecial 419	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   12: invokespecial 237	java/io/File:<init>	(Ljava/lang/String;)V
+    //   15: invokespecial 545	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   18: astore_1
-    //   19: new 421	java/io/BufferedOutputStream
+    //   19: new 547	java/io/BufferedOutputStream
     //   22: dup
     //   23: aload_1
-    //   24: invokespecial 424	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   24: invokespecial 550	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   27: astore 6
-    //   29: new 426	java/util/zip/ZipOutputStream
+    //   29: new 552	java/util/zip/ZipOutputStream
     //   32: dup
     //   33: aload 6
-    //   35: invokespecial 427	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   35: invokespecial 553	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   38: astore 7
-    //   40: new 256	java/io/File
+    //   40: new 236	java/io/File
     //   43: dup
     //   44: aload_0
-    //   45: invokespecial 257	java/io/File:<init>	(Ljava/lang/String;)V
+    //   45: invokespecial 237	java/io/File:<init>	(Ljava/lang/String;)V
     //   48: astore_0
     //   49: aload_0
-    //   50: invokevirtual 260	java/io/File:exists	()Z
+    //   50: invokevirtual 241	java/io/File:exists	()Z
     //   53: ifeq +369 -> 422
     //   56: aload 7
-    //   58: new 429	java/util/zip/ZipEntry
+    //   58: new 555	java/util/zip/ZipEntry
     //   61: dup
     //   62: aload_0
-    //   63: invokevirtual 432	java/io/File:getName	()Ljava/lang/String;
-    //   66: invokespecial 433	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   69: invokevirtual 437	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
+    //   63: invokevirtual 558	java/io/File:getName	()Ljava/lang/String;
+    //   66: invokespecial 559	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   69: invokevirtual 563	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
     //   72: aload 7
     //   74: bipush 9
-    //   76: invokevirtual 440	java/util/zip/ZipOutputStream:setLevel	(I)V
-    //   79: new 442	java/io/FileInputStream
+    //   76: invokevirtual 566	java/util/zip/ZipOutputStream:setLevel	(I)V
+    //   79: new 319	java/io/FileInputStream
     //   82: dup
     //   83: aload_0
-    //   84: invokespecial 443	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   84: invokespecial 567	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   87: astore 8
     //   89: sipush 8192
     //   92: newarray byte
@@ -438,7 +661,7 @@ public class BadcaseReportUtils
     //   97: aload_0
     //   98: iconst_0
     //   99: sipush 8192
-    //   102: invokevirtual 446	java/io/FileInputStream:read	([BII)I
+    //   102: invokevirtual 570	java/io/FileInputStream:read	([BII)I
     //   105: istore_2
     //   106: iload_2
     //   107: iconst_m1
@@ -447,19 +670,19 @@ public class BadcaseReportUtils
     //   113: aload_0
     //   114: iconst_0
     //   115: iload_2
-    //   116: invokevirtual 447	java/util/zip/ZipOutputStream:write	([BII)V
+    //   116: invokevirtual 571	java/util/zip/ZipOutputStream:write	([BII)V
     //   119: goto -24 -> 95
     //   122: astore_0
     //   123: aload 8
     //   125: ifnull +8 -> 133
     //   128: aload 8
-    //   130: invokevirtual 450	java/io/FileInputStream:close	()V
+    //   130: invokevirtual 330	java/io/FileInputStream:close	()V
     //   133: aload 7
     //   135: ifnull +13 -> 148
     //   138: aload 7
-    //   140: invokevirtual 451	java/util/zip/ZipOutputStream:flush	()V
+    //   140: invokevirtual 572	java/util/zip/ZipOutputStream:flush	()V
     //   143: aload 7
-    //   145: invokevirtual 454	java/util/zip/ZipOutputStream:closeEntry	()V
+    //   145: invokevirtual 575	java/util/zip/ZipOutputStream:closeEntry	()V
     //   148: aload_0
     //   149: athrow
     //   150: astore_0
@@ -472,17 +695,17 @@ public class BadcaseReportUtils
     //   160: aload 6
     //   162: ifnull +8 -> 170
     //   165: aload 6
-    //   167: invokevirtual 455	java/util/zip/ZipOutputStream:close	()V
+    //   167: invokevirtual 576	java/util/zip/ZipOutputStream:close	()V
     //   170: aload_0
     //   171: ifnull +7 -> 178
     //   174: aload_0
-    //   175: invokevirtual 456	java/io/BufferedOutputStream:close	()V
+    //   175: invokevirtual 577	java/io/BufferedOutputStream:close	()V
     //   178: iload_3
     //   179: istore 4
     //   181: aload_1
     //   182: ifnull +10 -> 192
     //   185: aload_1
-    //   186: invokevirtual 457	java/io/FileOutputStream:close	()V
+    //   186: invokevirtual 331	java/io/FileOutputStream:close	()V
     //   189: iload_3
     //   190: istore 4
     //   192: iload 4
@@ -494,31 +717,31 @@ public class BadcaseReportUtils
     //   201: aload 8
     //   203: ifnull +8 -> 211
     //   206: aload 8
-    //   208: invokevirtual 450	java/io/FileInputStream:close	()V
+    //   208: invokevirtual 330	java/io/FileInputStream:close	()V
     //   211: iload 5
     //   213: istore_3
     //   214: aload 7
     //   216: ifnull +16 -> 232
     //   219: aload 7
-    //   221: invokevirtual 451	java/util/zip/ZipOutputStream:flush	()V
+    //   221: invokevirtual 572	java/util/zip/ZipOutputStream:flush	()V
     //   224: aload 7
-    //   226: invokevirtual 454	java/util/zip/ZipOutputStream:closeEntry	()V
+    //   226: invokevirtual 575	java/util/zip/ZipOutputStream:closeEntry	()V
     //   229: iload 5
     //   231: istore_3
     //   232: aload 7
     //   234: ifnull +8 -> 242
     //   237: aload 7
-    //   239: invokevirtual 455	java/util/zip/ZipOutputStream:close	()V
+    //   239: invokevirtual 576	java/util/zip/ZipOutputStream:close	()V
     //   242: aload 6
     //   244: ifnull +8 -> 252
     //   247: aload 6
-    //   249: invokevirtual 456	java/io/BufferedOutputStream:close	()V
+    //   249: invokevirtual 577	java/io/BufferedOutputStream:close	()V
     //   252: iload_3
     //   253: istore 4
     //   255: aload_1
     //   256: ifnull -64 -> 192
     //   259: aload_1
-    //   260: invokevirtual 457	java/io/FileOutputStream:close	()V
+    //   260: invokevirtual 331	java/io/FileOutputStream:close	()V
     //   263: iload_3
     //   264: ireturn
     //   265: astore_0
@@ -534,15 +757,15 @@ public class BadcaseReportUtils
     //   277: aload 7
     //   279: ifnull +8 -> 287
     //   282: aload 7
-    //   284: invokevirtual 455	java/util/zip/ZipOutputStream:close	()V
+    //   284: invokevirtual 576	java/util/zip/ZipOutputStream:close	()V
     //   287: aload 6
     //   289: ifnull +8 -> 297
     //   292: aload 6
-    //   294: invokevirtual 456	java/io/BufferedOutputStream:close	()V
+    //   294: invokevirtual 577	java/io/BufferedOutputStream:close	()V
     //   297: aload_1
     //   298: ifnull +7 -> 305
     //   301: aload_1
-    //   302: invokevirtual 457	java/io/FileOutputStream:close	()V
+    //   302: invokevirtual 331	java/io/FileOutputStream:close	()V
     //   305: aload_0
     //   306: athrow
     //   307: astore_0
@@ -665,217 +888,10 @@ public class BadcaseReportUtils
     //   219	229	401	java/lang/Exception
     //   79	89	415	finally
   }
-  
-  public static void b()
-  {
-    if (jdField_b_of_type_Boolean)
-    {
-      jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$BadDataFrame = null;
-      jdField_b_of_type_Boolean = false;
-      DanceLog.a("BadcaseReportUtils ", "releaseCurrentFrame sHaveFrameCreated=false");
-    }
-  }
-  
-  private static boolean b()
-  {
-    int i = jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$BadDataFrame.jdField_b_of_type_JavaUtilArrayList.size();
-    int j = jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$BadDataFrame.jdField_c_of_type_JavaUtilArrayList.size();
-    int k = jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$BadDataFrame.jdField_a_of_type_JavaUtilArrayList.size();
-    DanceLog.a("BadcaseReportUtils ", "finishCurrentFrame needDoReport  modelCaseProblem=" + i + " matchCaseProblem=" + j + " userCaseProblem=" + k);
-    if ((i > 0) || (j > 0)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      DanceLog.a("BadcaseReportUtils ", "finishCurrentFrame needDoReport  haveBadCase=" + bool);
-      if (bool)
-      {
-        if (i / (j + i) <= 1.6F) {
-          break;
-        }
-        jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$BadDataFrame.jdField_a_of_type_Int = 2;
-      }
-      return bool;
-    }
-    jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$BadDataFrame.jdField_a_of_type_Int = 3;
-    return bool;
-  }
-  
-  /* Error */
-  private static boolean b(String paramString1, String paramString2)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore_3
-    //   5: new 442	java/io/FileInputStream
-    //   8: dup
-    //   9: aload_0
-    //   10: invokespecial 469	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   13: astore_0
-    //   14: new 416	java/io/FileOutputStream
-    //   17: dup
-    //   18: aload_1
-    //   19: invokespecial 470	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   22: astore_1
-    //   23: aload_0
-    //   24: aload_1
-    //   25: getstatic 63	com/tencent/mobileqq/shortvideo/dancemachine/BadcaseReportUtils:jdField_a_of_type_JavaSecurityKey	Ljava/security/Key;
-    //   28: invokestatic 472	com/tencent/mobileqq/shortvideo/dancemachine/BadcaseReportUtils:a	(Ljava/io/InputStream;Ljava/io/OutputStream;Ljava/security/Key;)Z
-    //   31: istore_2
-    //   32: aload_0
-    //   33: ifnull +7 -> 40
-    //   36: aload_0
-    //   37: invokevirtual 450	java/io/FileInputStream:close	()V
-    //   40: aload_1
-    //   41: ifnull +7 -> 48
-    //   44: aload_1
-    //   45: invokevirtual 457	java/io/FileOutputStream:close	()V
-    //   48: iload_2
-    //   49: ireturn
-    //   50: astore_0
-    //   51: aconst_null
-    //   52: astore_1
-    //   53: ldc 108
-    //   55: ldc_w 474
-    //   58: aload_0
-    //   59: invokestatic 412	com/tencent/mobileqq/shortvideo/dancemachine/utils/DanceLog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   62: aload_3
-    //   63: ifnull +7 -> 70
-    //   66: aload_3
-    //   67: invokevirtual 450	java/io/FileInputStream:close	()V
-    //   70: aload_1
-    //   71: ifnull +7 -> 78
-    //   74: aload_1
-    //   75: invokevirtual 457	java/io/FileOutputStream:close	()V
-    //   78: iconst_0
-    //   79: ireturn
-    //   80: astore_0
-    //   81: aconst_null
-    //   82: astore_1
-    //   83: aload 4
-    //   85: astore_3
-    //   86: aload_3
-    //   87: ifnull +7 -> 94
-    //   90: aload_3
-    //   91: invokevirtual 450	java/io/FileInputStream:close	()V
-    //   94: aload_1
-    //   95: ifnull +7 -> 102
-    //   98: aload_1
-    //   99: invokevirtual 457	java/io/FileOutputStream:close	()V
-    //   102: aload_0
-    //   103: athrow
-    //   104: astore_0
-    //   105: goto -65 -> 40
-    //   108: astore_0
-    //   109: iload_2
-    //   110: ireturn
-    //   111: astore_0
-    //   112: goto -42 -> 70
-    //   115: astore_0
-    //   116: goto -38 -> 78
-    //   119: astore_3
-    //   120: goto -26 -> 94
-    //   123: astore_1
-    //   124: goto -22 -> 102
-    //   127: astore 4
-    //   129: aconst_null
-    //   130: astore_1
-    //   131: aload_0
-    //   132: astore_3
-    //   133: aload 4
-    //   135: astore_0
-    //   136: goto -50 -> 86
-    //   139: astore 4
-    //   141: aload_0
-    //   142: astore_3
-    //   143: aload 4
-    //   145: astore_0
-    //   146: goto -60 -> 86
-    //   149: astore_0
-    //   150: goto -64 -> 86
-    //   153: astore 4
-    //   155: aconst_null
-    //   156: astore_1
-    //   157: aload_0
-    //   158: astore_3
-    //   159: aload 4
-    //   161: astore_0
-    //   162: goto -109 -> 53
-    //   165: astore 4
-    //   167: aload_0
-    //   168: astore_3
-    //   169: aload 4
-    //   171: astore_0
-    //   172: goto -119 -> 53
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	175	0	paramString1	String
-    //   0	175	1	paramString2	String
-    //   31	79	2	bool	boolean
-    //   4	87	3	localObject1	Object
-    //   119	1	3	localException1	Exception
-    //   132	37	3	str	String
-    //   1	83	4	localObject2	Object
-    //   127	7	4	localObject3	Object
-    //   139	5	4	localObject4	Object
-    //   153	7	4	localException2	Exception
-    //   165	5	4	localException3	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   5	14	50	java/lang/Exception
-    //   5	14	80	finally
-    //   36	40	104	java/lang/Exception
-    //   44	48	108	java/lang/Exception
-    //   66	70	111	java/lang/Exception
-    //   74	78	115	java/lang/Exception
-    //   90	94	119	java/lang/Exception
-    //   98	102	123	java/lang/Exception
-    //   14	23	127	finally
-    //   23	32	139	finally
-    //   53	62	149	finally
-    //   14	23	153	java/lang/Exception
-    //   23	32	165	java/lang/Exception
-  }
-  
-  public static void c()
-  {
-    jdField_c_of_type_Int = 0;
-    jdField_b_of_type_Long = 0L;
-    jdField_a_of_type_Long = 0L;
-    jdField_b_of_type_Int = 0;
-    DanceLog.a("BadcaseReportUtils ", "resetSamplingParam...");
-  }
-  
-  private static boolean c()
-  {
-    if (jdField_a_of_type_Long == 0L) {
-      DanceLog.a("BadcaseReportUtils ", "sampleStrategy sLastSampleSuccessTime=0");
-    }
-    long l1;
-    long l2;
-    do
-    {
-      return true;
-      l1 = (26000.0F / jdField_a_of_type_Int / 2.0F);
-      l2 = SystemClock.uptimeMillis() - jdField_a_of_type_Long;
-      DanceLog.a("BadcaseReportUtils ", "sampleStrategy timeDiff=" + l2 + " sampleInterval=" + l1);
-    } while (l2 > l1);
-    return false;
-  }
-  
-  private static void d() {}
-  
-  private static void e()
-  {
-    DanceLog.a("BadcaseReportUtils ", "reportCurrentFrame...");
-    if (jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$ReportItemData != null) {
-      jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$ReportItemData.a(jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBadcaseReportUtils$BadDataFrame);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils
  * JD-Core Version:    0.7.0.1
  */

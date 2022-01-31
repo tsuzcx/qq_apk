@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.app;
 
+import aepi;
 import android.annotation.TargetApi;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabaseCorruptException;
 import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import awhg;
+import azri;
+import bhsm;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.persistence.TableNameCache;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.qphone.base.BaseConstants;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MsgAutoMonitorUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -27,16 +27,16 @@ public class SQLiteDatabase
 {
   public static boolean a;
   private long jdField_a_of_type_Long;
-  final android.database.sqlite.SQLiteDatabase jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase;
-  private TableNameCache jdField_a_of_type_ComTencentMobileqqPersistenceTableNameCache;
-  private final Map jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(32);
-  private final Map jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap(32);
+  public final android.database.sqlite.SQLiteDatabase a;
+  private awhg jdField_a_of_type_Awhg;
+  private final Map<String, ArrayList<String>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(32);
+  private final Map<String, ArrayList<String>> jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap(32);
   private boolean jdField_b_of_type_Boolean;
   
-  SQLiteDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, TableNameCache paramTableNameCache, String paramString)
+  public SQLiteDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, awhg paramawhg, String paramString)
   {
     this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase = paramSQLiteDatabase;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceTableNameCache = paramTableNameCache;
+    this.jdField_a_of_type_Awhg = paramawhg;
     if ((TextUtils.isEmpty(paramString)) || (paramString.endsWith("59.db"))) {}
     for (boolean bool = true;; bool = false)
     {
@@ -130,7 +130,7 @@ public class SQLiteDatabase
       try
       {
         l2 = System.currentTimeMillis();
-        if ((!jdField_a_of_type_Boolean) && (!AIOUtils.f)) {
+        if ((!jdField_a_of_type_Boolean) && (!aepi.f)) {
           break label308;
         }
         localStringBuilder = new StringBuilder(32);
@@ -161,7 +161,7 @@ public class SQLiteDatabase
       }
       a("query", paramString1, i);
       paramArrayOfString1 = localCursor;
-      MsgAutoMonitorUtil.a().a(System.currentTimeMillis() - l1);
+      bhsm.a().a(System.currentTimeMillis() - l1);
       return paramArrayOfString1;
       i = 1;
     }
@@ -182,7 +182,7 @@ public class SQLiteDatabase
     return SecurityUtile.a(str);
   }
   
-  private ArrayList a(String paramString)
+  private ArrayList<String> a(String paramString)
   {
     if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
     {
@@ -200,7 +200,7 @@ public class SQLiteDatabase
     return (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(paramString);
   }
   
-  private ArrayList a(String paramString, String[] paramArrayOfString)
+  private ArrayList<String> a(String paramString, String[] paramArrayOfString)
   {
     if (QLog.isColorLevel()) {
       QLog.d("db", 2, paramString);
@@ -259,7 +259,7 @@ public class SQLiteDatabase
     localHashMap.put("OpType", paramString1);
     localHashMap.put("OpTableName", paramString2);
     localHashMap.put("param_FailCode", Integer.toString(paramInt));
-    paramString2 = StatisticCollector.a(BaseApplication.getContext());
+    paramString2 = azri.a(BaseApplication.getContext());
     paramString1 = "DatabaseOperatorResult_" + paramString1;
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
@@ -452,7 +452,7 @@ public class SQLiteDatabase
     return SecurityUtile.a(paramArrayOfByte);
   }
   
-  private ArrayList b(String paramString)
+  private ArrayList<String> b(String paramString)
   {
     if (this.jdField_b_of_type_JavaUtilMap.containsKey(paramString)) {
       return (ArrayList)this.jdField_b_of_type_JavaUtilMap.get(paramString);
@@ -476,11 +476,11 @@ public class SQLiteDatabase
   
   private void f()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqPersistenceTableNameCache.jdField_a_of_type_Boolean) {}
+    if (!this.jdField_a_of_type_Awhg.jdField_a_of_type_Boolean) {}
     try
     {
       String[] arrayOfString = a();
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceTableNameCache.a(arrayOfString);
+      this.jdField_a_of_type_Awhg.a(arrayOfString);
       return;
     }
     catch (Exception localException)
@@ -505,7 +505,7 @@ public class SQLiteDatabase
         i = localCursor.getInt(0);
       }
       localCursor.close();
-      MsgAutoMonitorUtil.a().a(System.currentTimeMillis() - l);
+      bhsm.a().a(System.currentTimeMillis() - l);
       return i;
     }
     catch (Throwable localThrowable)
@@ -514,6 +514,60 @@ public class SQLiteDatabase
       {
         a(localThrowable, "select count() from " + paramString);
         i = j;
+      }
+    }
+  }
+  
+  public int a(String paramString, long paramLong1, long paramLong2, int paramInt)
+  {
+    long l = System.currentTimeMillis();
+    String str2 = "select count() from " + paramString;
+    if (paramLong1 >= 0L) {}
+    label286:
+    Object localObject2;
+    for (String str1 = String.format(" where time >= %d and time <= %d ", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });; localObject2 = null)
+    {
+      Object localObject1 = str1;
+      if (paramInt == -1000)
+      {
+        if (str1 != null) {
+          localObject1 = str1 + " and msgtype = " + paramInt;
+        }
+      }
+      else
+      {
+        str1 = str2;
+        if (localObject1 != null) {
+          str1 = str2 + (String)localObject1;
+        }
+        if (QLog.isDevelopLevel()) {
+          QLog.d("msgbackup_sqliteDB", 4, " getCount sql = " + str1);
+        }
+        localObject1 = a(str1, null);
+        if (localObject1 == null) {
+          break label286;
+        }
+      }
+      for (;;)
+      {
+        try
+        {
+          if (((Cursor)localObject1).moveToFirst())
+          {
+            paramInt = ((Cursor)localObject1).getInt(0);
+            ((Cursor)localObject1).close();
+            bhsm.a().a(System.currentTimeMillis() - l);
+            return paramInt;
+            localObject1 = " where msgtype = " + paramInt;
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          a(localThrowable, "select count() from " + paramString);
+          paramInt = 0;
+          continue;
+        }
+        paramInt = 0;
       }
     }
   }
@@ -527,10 +581,10 @@ public class SQLiteDatabase
     {
       i = this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.update(paramString1, paramContentValues, paramString2, paramArrayOfString);
       l = System.currentTimeMillis() - l;
-      if ((jdField_a_of_type_Boolean) || (AIOUtils.f)) {
+      if ((jdField_a_of_type_Boolean) || (aepi.f)) {
         a("update", paramString1, paramContentValues + ";" + paramString2, paramArrayOfString, l);
       }
-      MsgAutoMonitorUtil.a().a(l);
+      bhsm.a().a(l);
       return i;
     }
     catch (Throwable paramString2)
@@ -558,10 +612,10 @@ public class SQLiteDatabase
     {
       int i = this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.delete(paramString1, paramString2, paramArrayOfString);
       long l2 = System.currentTimeMillis() - l1;
-      if ((jdField_a_of_type_Boolean) || (AIOUtils.f)) {
+      if ((jdField_a_of_type_Boolean) || (aepi.f)) {
         a("delete", paramString1, paramString2 + ";", paramArrayOfString, l2);
       }
-      MsgAutoMonitorUtil.a().a(l2);
+      bhsm.a().a(l2);
       a("delete", paramString1, 0);
       return i;
     }
@@ -574,7 +628,7 @@ public class SQLiteDatabase
     {
       a(paramArrayOfString, paramString2);
       a("delete", paramString1, 1);
-      MsgAutoMonitorUtil.a().a(System.currentTimeMillis() - l1);
+      bhsm.a().a(System.currentTimeMillis() - l1);
       return -1;
     }
   }
@@ -587,10 +641,10 @@ public class SQLiteDatabase
     {
       long l1 = this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.insert(paramString1, paramString2, paramContentValues);
       l2 = System.currentTimeMillis() - l2;
-      if ((jdField_a_of_type_Boolean) || (AIOUtils.f)) {
+      if ((jdField_a_of_type_Boolean) || (aepi.f)) {
         a("insert", paramString1, paramString2 + ";" + paramContentValues, null, l2);
       }
-      MsgAutoMonitorUtil.a().a(l2);
+      bhsm.a().a(l2);
       if (l1 > -1L) {}
       for (i = 0;; i = 1)
       {
@@ -615,49 +669,49 @@ public class SQLiteDatabase
   public Cursor a(String paramString1, String paramString2, String paramString3, String[] paramArrayOfString)
   {
     // Byte code:
-    //   0: invokestatic 116	java/lang/System:currentTimeMillis	()J
+    //   0: invokestatic 117	java/lang/System:currentTimeMillis	()J
     //   3: lstore 5
     //   5: aload_0
     //   6: aload_2
     //   7: aload_3
     //   8: aload 4
-    //   10: invokespecial 119	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
+    //   10: invokespecial 120	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
     //   13: aload_0
-    //   14: getfield 27	com/tencent/mobileqq/app/SQLiteDatabase:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
+    //   14: getfield 28	com/tencent/mobileqq/app/SQLiteDatabase:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
     //   17: aload_1
     //   18: aload 4
-    //   20: invokevirtual 504	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   20: invokevirtual 530	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   23: astore 9
-    //   25: invokestatic 116	java/lang/System:currentTimeMillis	()J
+    //   25: invokestatic 117	java/lang/System:currentTimeMillis	()J
     //   28: lstore 7
-    //   30: getstatic 126	com/tencent/mobileqq/app/SQLiteDatabase:jdField_a_of_type_Boolean	Z
+    //   30: getstatic 127	com/tencent/mobileqq/app/SQLiteDatabase:jdField_a_of_type_Boolean	Z
     //   33: ifne +9 -> 42
-    //   36: getstatic 131	com/tencent/mobileqq/activity/aio/AIOUtils:f	Z
+    //   36: getstatic 132	aepi:f	Z
     //   39: ifeq +40 -> 79
-    //   42: ldc_w 505
+    //   42: ldc_w 531
     //   45: aload_2
-    //   46: new 133	java/lang/StringBuilder
+    //   46: new 134	java/lang/StringBuilder
     //   49: dup
-    //   50: invokespecial 163	java/lang/StringBuilder:<init>	()V
+    //   50: invokespecial 164	java/lang/StringBuilder:<init>	()V
     //   53: aload_1
-    //   54: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   57: ldc 140
-    //   59: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: ldc 141
+    //   59: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   62: aload_3
-    //   63: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   66: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   63: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   66: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   69: aload 4
     //   71: lload 7
     //   73: lload 5
     //   75: lsub
-    //   76: invokestatic 151	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;J)V
+    //   76: invokestatic 152	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;J)V
     //   79: aload 9
     //   81: astore_2
-    //   82: invokestatic 159	com/tencent/util/MsgAutoMonitorUtil:a	()Lcom/tencent/util/MsgAutoMonitorUtil;
-    //   85: invokestatic 116	java/lang/System:currentTimeMillis	()J
+    //   82: invokestatic 160	bhsm:a	()Lbhsm;
+    //   85: invokestatic 117	java/lang/System:currentTimeMillis	()J
     //   88: lload 5
     //   90: lsub
-    //   91: invokevirtual 162	com/tencent/util/MsgAutoMonitorUtil:a	(J)V
+    //   91: invokevirtual 163	bhsm:a	(J)V
     //   94: aload_2
     //   95: areturn
     //   96: astore_3
@@ -666,7 +720,7 @@ public class SQLiteDatabase
     //   99: aload_0
     //   100: aload_3
     //   101: aload_1
-    //   102: invokespecial 170	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/Throwable;Ljava/lang/String;)V
+    //   102: invokespecial 171	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/Throwable;Ljava/lang/String;)V
     //   105: goto -23 -> 82
     //   108: astore_1
     //   109: aload_1
@@ -716,7 +770,7 @@ public class SQLiteDatabase
       }
     }
     finally {}
-    MsgAutoMonitorUtil.a().a(System.currentTimeMillis() - l);
+    bhsm.a().a(System.currentTimeMillis() - l);
     return paramString;
   }
   
@@ -732,8 +786,8 @@ public class SQLiteDatabase
     {
       beginTransactionLog();
       this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.beginTransaction();
-      MsgAutoMonitorUtil.a().a(System.currentTimeMillis() - l);
-      MsgAutoMonitorUtil.a().b(1L);
+      bhsm.a().a(System.currentTimeMillis() - l);
+      bhsm.a().b(1L);
       return;
     }
     catch (Throwable localThrowable)
@@ -747,7 +801,7 @@ public class SQLiteDatabase
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceTableNameCache.a(paramString);
+    this.jdField_a_of_type_Awhg.a(paramString);
   }
   
   public boolean a(String paramString)
@@ -758,10 +812,10 @@ public class SQLiteDatabase
       a(null, paramString);
       this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.execSQL(paramString);
       l = System.currentTimeMillis() - l;
-      if ((jdField_a_of_type_Boolean) || (AIOUtils.f)) {
+      if ((jdField_a_of_type_Boolean) || (aepi.f)) {
         a("execSQL", "", paramString, null, l);
       }
-      MsgAutoMonitorUtil.a().a(l);
+      bhsm.a().a(l);
       return true;
     }
     catch (Throwable localThrowable)
@@ -790,10 +844,10 @@ public class SQLiteDatabase
               a(str, paramString);
               this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.execSQL(paramString, paramArrayOfObject);
               l = System.currentTimeMillis() - l;
-              if ((jdField_a_of_type_Boolean) || (AIOUtils.f)) {
+              if ((jdField_a_of_type_Boolean) || (aepi.f)) {
                 a("execSQL", "", paramString, paramArrayOfObject, l);
               }
-              MsgAutoMonitorUtil.a().a(l);
+              bhsm.a().a(l);
               return true;
             }
           }
@@ -841,7 +895,7 @@ public class SQLiteDatabase
         if (localCursor != null) {
           localCursor.close();
         }
-        MsgAutoMonitorUtil.a().a(System.currentTimeMillis() - l);
+        bhsm.a().a(System.currentTimeMillis() - l);
         return localObject1;
       }
       i += 1;
@@ -856,10 +910,10 @@ public class SQLiteDatabase
     {
       long l1 = this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.replace(paramString1, paramString2, paramContentValues);
       l2 = System.currentTimeMillis() - l2;
-      if ((jdField_a_of_type_Boolean) || (AIOUtils.f)) {
+      if ((jdField_a_of_type_Boolean) || (aepi.f)) {
         a("replace", paramString1, paramString2 + ";" + paramContentValues, null, l2);
       }
-      MsgAutoMonitorUtil.a().a(l2);
+      bhsm.a().a(l2);
       if (l1 > -1L) {}
       for (i = 0;; i = 1)
       {
@@ -888,8 +942,8 @@ public class SQLiteDatabase
     {
       beginTransactionLog();
       this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.beginTransactionNonExclusive();
-      MsgAutoMonitorUtil.a().a(System.currentTimeMillis() - l);
-      MsgAutoMonitorUtil.a().b(1L);
+      bhsm.a().a(System.currentTimeMillis() - l);
+      bhsm.a().b(1L);
       return;
     }
     catch (Throwable localThrowable)
@@ -903,19 +957,19 @@ public class SQLiteDatabase
   
   public void b(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceTableNameCache.b(paramString);
+    this.jdField_a_of_type_Awhg.b(paramString);
   }
   
   public boolean b(String paramString)
   {
     f();
-    return this.jdField_a_of_type_ComTencentMobileqqPersistenceTableNameCache.a(paramString);
+    return this.jdField_a_of_type_Awhg.a(paramString);
   }
   
   public String[] b()
   {
     f();
-    return this.jdField_a_of_type_ComTencentMobileqqPersistenceTableNameCache.a();
+    return this.jdField_a_of_type_Awhg.a();
   }
   
   public void c()
@@ -925,7 +979,7 @@ public class SQLiteDatabase
     {
       QLog.e("db", 1, "SQLiteDatabase close");
       this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.close();
-      MsgAutoMonitorUtil.a().a(System.currentTimeMillis() - l);
+      bhsm.a().a(System.currentTimeMillis() - l);
       return;
     }
     catch (Throwable localThrowable)
@@ -944,7 +998,7 @@ public class SQLiteDatabase
     {
       this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.endTransaction();
       endTransactionLog();
-      MsgAutoMonitorUtil.a().a(System.currentTimeMillis() - l);
+      bhsm.a().a(System.currentTimeMillis() - l);
       return;
     }
     catch (Throwable localThrowable)
@@ -962,7 +1016,7 @@ public class SQLiteDatabase
     try
     {
       this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.setTransactionSuccessful();
-      MsgAutoMonitorUtil.a().a(System.currentTimeMillis() - l);
+      bhsm.a().a(System.currentTimeMillis() - l);
       return;
     }
     catch (Throwable localThrowable)

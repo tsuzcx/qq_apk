@@ -3,8 +3,7 @@ package com.tencent.ttpic.glmodel;
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
-import com.tencent.ttpic.util.Maths;
-import com.tencent.ttpic.util.VideoBitmapUtil;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -32,10 +31,10 @@ public class Sphere
   
   public Sphere(int paramInt, float paramFloat)
   {
-    paramInt = Math.max(1, Math.min(5, paramInt));
-    this.mTotalNumStrips = (Maths.power(2, paramInt - 1) * 5);
-    int m = Maths.power(2, paramInt) * 3;
-    double d3 = 2.094395102393195D / Maths.power(2, paramInt);
+    paramInt = java.lang.Math.max(1, java.lang.Math.min(5, paramInt));
+    this.mTotalNumStrips = (com.tencent.ttpic.baseutils.math.Math.power(2, paramInt - 1) * 5);
+    int m = com.tencent.ttpic.baseutils.math.Math.power(2, paramInt) * 3;
+    double d3 = 2.094395102393195D / com.tencent.ttpic.baseutils.math.Math.power(2, paramInt);
     double d4 = 6.283185307179586D / this.mTotalNumStrips;
     ArrayList localArrayList = new ArrayList();
     paramInt = 0;
@@ -44,18 +43,18 @@ public class Sphere
       Object localObject = new float[m * 3];
       float[] arrayOfFloat1 = new float[m * 2];
       float[] arrayOfFloat2 = new float[m * 3];
+      int k = 0;
+      int j = 0;
       double d2 = 1.570796326794897D;
       double d1 = paramInt * d4;
       int i = 0;
-      int j = 0;
-      int k = 0;
       while (i < m)
       {
         double d5 = paramFloat;
-        double d6 = Math.sin(d2);
-        double d7 = paramFloat * Math.cos(d2);
-        double d8 = Math.sin(d1);
-        double d9 = Math.cos(d1);
+        double d6 = java.lang.Math.sin(d2);
+        double d7 = paramFloat * java.lang.Math.cos(d2);
+        double d8 = java.lang.Math.sin(d1);
+        double d9 = java.lang.Math.cos(d1);
         arrayOfFloat2[k] = (1.0F / this.mTotalNumStrips * paramInt);
         int n = k + 1;
         localObject[k] = ((float)(d7 * d9));
@@ -64,7 +63,7 @@ public class Sphere
         localObject[n] = ((float)(d5 * d6));
         arrayOfFloat2[i1] = (1.0F / this.mTotalNumStrips * paramInt);
         k = i1 + 1;
-        localObject[i1] = ((float)(d7 * d8));
+        localObject[i1] = ((float)(d8 * d7));
         n = j + 1;
         arrayOfFloat1[j] = ((float)(1.0D - d1 / 6.283185307179586D));
         j = n + 1;
@@ -72,10 +71,10 @@ public class Sphere
         d2 -= d3;
         d1 -= d4 / 2.0D;
         d5 = paramFloat;
-        d6 = Math.sin(d2);
-        d7 = paramFloat * Math.cos(d2);
-        d8 = Math.sin(d1);
-        d9 = Math.cos(d1);
+        d6 = java.lang.Math.sin(d2);
+        d7 = paramFloat * java.lang.Math.cos(d2);
+        d8 = java.lang.Math.sin(d1);
+        d9 = java.lang.Math.cos(d1);
         arrayOfFloat2[k] = (1.0F / this.mTotalNumStrips * paramInt);
         n = k + 1;
         localObject[k] = ((float)(d7 * d9));
@@ -84,7 +83,7 @@ public class Sphere
         localObject[n] = ((float)(d5 * d6));
         arrayOfFloat2[i1] = (1.0F / this.mTotalNumStrips * paramInt);
         k = i1 + 1;
-        localObject[i1] = ((float)(d7 * d8));
+        localObject[i1] = ((float)(d8 * d7));
         n = j + 1;
         arrayOfFloat1[j] = ((float)(1.0D - d1 / 6.283185307179586D));
         j = n + 1;
@@ -164,7 +163,7 @@ public class Sphere
     if (this.mTextures[0] <= 0) {
       GLES20.glGenTextures(1, this.mTextures, 0);
     }
-    if (VideoBitmapUtil.isLegal(paramBitmap))
+    if (BitmapUtils.isLegal(paramBitmap))
     {
       GLES20.glBindTexture(3553, this.mTextures[0]);
       GLES20.glTexParameterf(3553, 10241, 9728.0F);
@@ -175,7 +174,7 @@ public class Sphere
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.glmodel.Sphere
  * JD-Core Version:    0.7.0.1
  */

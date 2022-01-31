@@ -1,19 +1,28 @@
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.utils.AudioUtil;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.selectmember.TroopListAdapter.1.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.lang.ref.WeakReference;
 
-public final class akbs
-  implements Runnable
+public class akbs
+  extends nac
 {
-  public akbs(MediaPlayer.OnCompletionListener paramOnCompletionListener) {}
+  akbs(akbr paramakbr) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a.onCompletion(AudioUtil.a);
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
+    if ((paramInt != 0) || (paramArrayOfByte == null) || (localQQAppInterface == null)) {
+      return;
+    }
+    ThreadManager.post(new TroopListAdapter.1.1(this, localQQAppInterface, paramArrayOfByte, paramBundle, new Handler(Looper.getMainLooper())), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,29 @@
-import com.tencent.biz.qqstory.model.SuperManager;
+import android.app.Activity;
+import android.view.View;
 
-public class ncz
+class ncz
+  implements bhuk
 {
-  public static final SuperManager a = new SuperManager(null);
+  ncz(ncv paramncv, Activity paramActivity, String paramString, bhuf parambhuf) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      ncv.b(this.jdField_a_of_type_Ncv, this.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      ncv.a(this.jdField_a_of_type_Ncv, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ncz
  * JD-Core Version:    0.7.0.1
  */

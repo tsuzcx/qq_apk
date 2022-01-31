@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class JDSearch$JdSearchRsp
-  extends MessageMicro
+  extends MessageMicro<JdSearchRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26 }, new String[] { "jd_search_errorcode", "jd_search_errormsg", "jd_search_detail" }, new Object[] { Integer.valueOf(0), "", null }, JdSearchRsp.class);
   public JDSearch.JdSearchDetail jd_search_detail = new JDSearch.JdSearchDetail();
@@ -16,7 +16,7 @@ public final class JDSearch$JdSearchRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.JDSearch.JdSearchRsp
  * JD-Core Version:    0.7.0.1
  */

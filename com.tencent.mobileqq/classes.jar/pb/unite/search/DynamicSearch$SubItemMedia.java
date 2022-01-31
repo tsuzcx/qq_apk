@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class DynamicSearch$SubItemMedia
-  extends MessageMicro
+  extends MessageMicro<SubItemMedia>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField coverUrl = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -24,7 +24,7 @@ public final class DynamicSearch$SubItemMedia
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pb.unite.search.DynamicSearch.SubItemMedia
  * JD-Core Version:    0.7.0.1
  */

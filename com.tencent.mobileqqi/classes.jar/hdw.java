@@ -1,27 +1,50 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnVideoSizeChangedListener;
-import android.view.SurfaceHolder;
-import com.tencent.mobileqq.troop.widget.VideoViewX;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.Intent.ShortcutIconResource;
+import android.content.res.Resources;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.QQUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.BadgeUtils;
 
-public class hdw
-  implements MediaPlayer.OnVideoSizeChangedListener
+public final class hdw
+  implements Runnable
 {
-  public hdw(VideoViewX paramVideoViewX) {}
+  public hdw(Context paramContext, String paramString) {}
   
-  public void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void run()
   {
-    VideoViewX.a(this.a, paramMediaPlayer.getVideoWidth());
-    VideoViewX.b(this.a, paramMediaPlayer.getVideoHeight());
-    if ((VideoViewX.b(this.a) != 0) && (VideoViewX.c(this.a) != 0))
-    {
-      this.a.getHolder().setFixedSize(VideoViewX.b(this.a), VideoViewX.c(this.a));
-      this.a.requestLayout();
+    BadgeUtils.d(this.jdField_a_of_type_AndroidContentContext, 0);
+    boolean bool = QQUtils.a(this.jdField_a_of_type_AndroidContentContext, new String[] { this.jdField_a_of_type_AndroidContentContext.getString(2131561399) });
+    if (QLog.isColorLevel()) {
+      QLog.d(QQUtils.b(), 2, "createShortcut " + bool + ", " + QQUtils.a());
     }
+    if (bool)
+    {
+      if (QQUtils.b() < 3) {
+        ThreadManager.b().postDelayed(this, 1000L);
+      }
+      return;
+    }
+    Intent localIntent1 = new Intent("android.intent.action.MAIN");
+    localIntent1.setComponent(new ComponentName("com.tencent.mobileqqi", this.jdField_a_of_type_JavaLangString));
+    localIntent1.addCategory("android.intent.category.LAUNCHER");
+    localIntent1.addFlags(268435456);
+    localIntent1.addFlags(2097152);
+    Intent localIntent2 = new Intent();
+    localIntent2.putExtra("android.intent.extra.shortcut.INTENT", localIntent1);
+    localIntent2.putExtra("android.intent.extra.shortcut.NAME", this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131561399));
+    localIntent2.putExtra("android.intent.extra.shortcut.ICON_RESOURCE", Intent.ShortcutIconResource.fromContext(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 2130838018));
+    localIntent2.putExtra("duplicate", false);
+    localIntent2.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+    this.jdField_a_of_type_AndroidContentContext.sendOrderedBroadcast(localIntent2, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hdw
  * JD-Core Version:    0.7.0.1
  */

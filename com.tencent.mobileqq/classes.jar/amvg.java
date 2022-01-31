@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastOneShow;
+import com.tencent.mobileqq.ar.ARRelationShipAIOMsg;
 
 public final class amvg
-  implements Parcelable.Creator
+  implements Parcelable.Creator<ARRelationShipAIOMsg>
 {
-  public BroadcastOneShow a(Parcel paramParcel)
+  public ARRelationShipAIOMsg a(Parcel paramParcel)
   {
-    return new BroadcastOneShow(paramParcel);
+    return new ARRelationShipAIOMsg(paramParcel);
   }
   
-  public BroadcastOneShow[] a(int paramInt)
+  public ARRelationShipAIOMsg[] a(int paramInt)
   {
-    return new BroadcastOneShow[paramInt];
+    return new ARRelationShipAIOMsg[paramInt];
   }
 }
 

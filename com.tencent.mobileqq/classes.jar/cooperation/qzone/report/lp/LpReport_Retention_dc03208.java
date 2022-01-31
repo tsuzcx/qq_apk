@@ -1,9 +1,9 @@
 package cooperation.qzone.report.lp;
 
 import android.os.Build;
+import bjdm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.module.common.NetworkState;
-import cooperation.qzone.QUA;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.app.AppRuntime;
@@ -29,7 +29,7 @@ public class LpReport_Retention_dc03208
     this.reserves = paramString2;
   }
   
-  public static void report(String paramString, HashMap paramHashMap)
+  public static void report(String paramString, HashMap<String, String> paramHashMap)
   {
     String str = null;
     if (paramHashMap != null) {
@@ -44,11 +44,11 @@ public class LpReport_Retention_dc03208
     return "function:" + this.function;
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
     LpReportUtils.safePut(localHashMap, "uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
-    LpReportUtils.safePut(localHashMap, "qua", QUA.a());
+    LpReportUtils.safePut(localHashMap, "qua", bjdm.a());
     localHashMap.put("network_type", String.valueOf(LpReportInfo_dc00321.convertNetworkTypeToFitInDc00321(NetworkState.g().getNetworkType())));
     LpReportUtils.safePut(localHashMap, "mobile_type", Build.MODEL);
     localHashMap.put("device", "2");
@@ -62,7 +62,7 @@ public class LpReport_Retention_dc03208
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_Retention_dc03208
  * JD-Core Version:    0.7.0.1
  */

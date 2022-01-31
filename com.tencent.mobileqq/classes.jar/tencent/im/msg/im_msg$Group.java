@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class im_msg$Group
-  extends MessageMicro
+  extends MessageMicro<Group>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26 }, new String[] { "sender", "receiver", "group_info" }, new Object[] { null, null, null }, Group.class);
   public im_common.GroupInfo group_info = new im_common.GroupInfo();

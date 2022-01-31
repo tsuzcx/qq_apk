@@ -2,6 +2,7 @@ package com.tencent.smtt.sdk;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 import com.tencent.smtt.sdk.stat.MttLoader;
 
@@ -34,8 +35,12 @@ class DownLoadListenerAdapter
         paramString2.putExtra("key_reader_sdk_type", 1);
         paramString2.setData(Uri.parse(paramString1));
         this.mWebView.getContext().startActivity(paramString2);
-        return;
       }
+      do
+      {
+        return;
+        paramString2 = this.mWebView.getContext().getApplicationInfo();
+      } while ((paramString2 != null) && ("com.tencent.mm".equals(paramString2.packageName)));
       MttLoader.loadUrl(this.mWebView.getContext(), paramString1, null, null);
       return;
     }
@@ -46,7 +51,7 @@ class DownLoadListenerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.sdk.DownLoadListenerAdapter
  * JD-Core Version:    0.7.0.1
  */

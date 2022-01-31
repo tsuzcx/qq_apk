@@ -1,33 +1,26 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
 
-public class afet
-  implements View.OnClickListener
+class afet
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public afet(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  afet(afeq paramafeq) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    paramView = new Intent(this.a.a, NearbyVisitorListActivity.class);
-    paramView.putExtra("charmlevel", NearbyProfileDisplayTribePanel.a(this.a).charmLevel);
-    paramView.putExtra("download_tribe_app_url", NearbyProfileDisplayTribePanel.a(this.a).tribeAppDownloadPageUrl);
-    paramView.putExtra("is_show_tribeapp_download_layout", NearbyProfileDisplayTribePanel.a(this.a).isAddPicBtnDownloadAppOpen());
-    this.a.a.startActivity(paramView);
-    NearbyProfileDisplayTribePanel.a(this.a, null);
-    ThreadManager.post(new afeu(this), 5, null, false);
-    ReportController.b(this.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_visit", 0, 0, "", "", "", "");
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getLineCount() > 3) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.h()) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.C()) && (!azmk.b()))
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afet
  * JD-Core Version:    0.7.0.1
  */

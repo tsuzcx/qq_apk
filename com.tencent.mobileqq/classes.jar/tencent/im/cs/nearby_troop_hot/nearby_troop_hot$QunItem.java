@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class nearby_troop_hot$QunItem
-  extends MessageMicro
+  extends MessageMicro<QunItem>
 {
   public static final int DESC_FIELD_NUMBER = 3;
   public static final int GPS_FIELD_NUMBER = 4;
@@ -21,7 +21,7 @@ public final class nearby_troop_hot$QunItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.nearby_troop_hot.nearby_troop_hot.QunItem
  * JD-Core Version:    0.7.0.1
  */

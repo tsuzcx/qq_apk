@@ -1,36 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
-import com.tencent.mobileqq.utils.ImageUtil;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aikb
-  extends URLDrawableDecodeHandler
+  extends aijq
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  private int c;
-  
-  public aikb(StructMsgItemVideo paramStructMsgItemVideo, int paramInt1, int paramInt2, int paramInt3)
+  public aikb(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    super(paramContext, paramSessionInfo, paramQQAppInterface);
   }
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  protected void y()
   {
-    if (paramBitmap == null) {
-      return null;
-    }
-    int j = this.c;
-    int k = paramBitmap.getWidth();
-    if (paramBitmap.getHeight() != 0) {}
-    for (int i = paramBitmap.getHeight();; i = this.c)
-    {
-      i = k * j / i;
-      return ImageUtil.b(paramBitmap, this.jdField_a_of_type_Int, i, this.c);
-    }
+    this.a = "MiniPieForNearby";
   }
 }
 

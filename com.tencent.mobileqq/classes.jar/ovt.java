@@ -1,44 +1,36 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
 
-public class ovt
-  implements BusinessObserver
+class ovt
+  implements View.OnClickListener
 {
-  public ovt(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
+  ovt(ovs paramovs) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditUniqueTitleActivity", 2, "setUniqueTitle, onReceive. type=" + paramInt + ", isSuccess=" + paramBoolean);
-    }
-    if (!paramBoolean)
+    int i = ((ovu)paramView.getTag()).getAdapterPosition() - ovs.a(this.a).c();
+    int j = this.a.getItemViewType(i);
+    ArticleInfo localArticleInfo = (ArticleInfo)ovs.a(this.a, i);
+    if (localArticleInfo == null)
     {
-      EditUniqueTitleActivity.a(this.a, -1);
+      QLog.d("ReadInJoyDynamicChannelAdapter", 1, "onItemClick onClick articleInfo is null.");
       return;
     }
-    paramBundle = paramBundle.getByteArray("data");
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-    try
-    {
-      localOIDBSSOPkg.mergeFrom(paramBundle);
-      paramInt = localOIDBSSOPkg.uint32_result.get();
-      EditUniqueTitleActivity.a(this.a, paramInt);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      EditUniqueTitleActivity.a(this.a, -1);
-    }
+    QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onItemClick, position = ", Integer.valueOf(i), ", itemViewType = ", Integer.valueOf(j) });
+    this.a.a(i, paramView);
+    localArticleInfo.invalidateProteusTemplateBean();
+    ors.a = localArticleInfo;
+    owy.a().a(localArticleInfo.mArticleID, System.currentTimeMillis());
+    this.a.notifyItemChanged(i);
+    ors.b(ovs.a(this.a), localArticleInfo, (int)localArticleInfo.mChannelID);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ovt
  * JD-Core Version:    0.7.0.1
  */

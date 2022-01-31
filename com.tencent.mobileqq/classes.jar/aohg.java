@@ -1,70 +1,151 @@
-import android.os.Handler;
-import com.tencent.maxvideo.mediadevice.AVCodec;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.common.GloableValue;
-import java.io.File;
-import java.io.IOException;
+import java.util.List;
 
-class aohg
-  implements Runnable
+public class aohg
+  implements aoim
 {
-  aohg(aohe paramaohe) {}
+  public aohg(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void run()
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoInitState", 2, "[@] delayInit,run start");
+    int j = 1;
+    int i;
+    if (this.a.i == 0) {
+      i = 2;
     }
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (!localRMVideoStateMgr.d())
+    for (;;)
     {
-      RMVideoStateMgr.b(null);
-      if (!localRMVideoStateMgr.d()) {
-        return;
-      }
-    }
-    File localFile = new File(GloableValue.b + File.separator + ".nomedia");
-    if (!localFile.exists()) {}
-    try
-    {
-      localFile.createNewFile();
-      label84:
       if (QLog.isColorLevel()) {
-        QLog.d("RMVideoInitState", 2, "[@] delayInit, post timeout runnable");
+        QLog.d("ConditionSearchFriendActivity", 2, "getColumnCount|pickerType : " + this.a.i + ", count : " + i);
       }
-      localRMVideoStateMgr.a.postDelayed(this.a.a, 20000L);
-      localRMVideoStateMgr.k();
-      localRMVideoStateMgr.l();
-      localRMVideoStateMgr.j();
-      try
-      {
-        AVCodec.get().init();
-        this.a.c = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("RMVideoInitState", 2, "[@] delayInit,run finish");
-        }
-        this.a.g = false;
-        return;
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        for (;;)
+      return i;
+      i = j;
+      if (this.a.i != 3) {
+        if (this.a.i != 1)
         {
-          localUnsatisfiedLinkError.printStackTrace();
-          this.a.c = false;
+          i = j;
+          if (this.a.i != 2) {}
+        }
+        else
+        {
+          i = this.a.h;
         }
       }
     }
-    catch (IOException localIOException)
+  }
+  
+  public int a(int paramInt)
+  {
+    int j = 0;
+    int i;
+    if (this.a.i == 0) {
+      i = alpy.b.length;
+    }
+    for (;;)
     {
-      break label84;
+      if (QLog.isColorLevel()) {
+        QLog.d("ConditionSearchFriendActivity", 2, "getRowCount|pickerType : " + this.a.i + ", column : " + paramInt + ", count : " + i);
+      }
+      return i;
+      if (this.a.i == 3)
+      {
+        i = alpy.c.length;
+      }
+      else if (this.a.i != 1)
+      {
+        i = j;
+        if (this.a.i != 2) {}
+      }
+      else
+      {
+        i = j;
+        if (paramInt < this.a.h)
+        {
+          i = j;
+          if (paramInt >= 0)
+          {
+            i = j;
+            if (this.a.a[paramInt] != null) {
+              i = ((List)this.a.a[paramInt]).size();
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    int i;
+    String str;
+    if (this.a.i == 0)
+    {
+      if (paramInt2 >= 0)
+      {
+        i = paramInt2;
+        if (paramInt2 < alpy.b.length) {}
+      }
+      else
+      {
+        i = 0;
+      }
+      str = alpy.b[i];
+      paramInt2 = i;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ConditionSearchFriendActivity", 2, "getText|pickerType : " + this.a.i + ", column : " + paramInt1 + ", row : " + paramInt2 + ", result : " + str);
+      }
+      return str;
+      if (this.a.i == 3)
+      {
+        if (paramInt2 >= 0)
+        {
+          i = paramInt2;
+          if (paramInt2 < alpy.c.length) {}
+        }
+        else
+        {
+          i = 0;
+        }
+        str = alpy.c[i];
+        paramInt2 = i;
+      }
+      else if (((this.a.i == 1) || (this.a.i == 2)) && (paramInt1 < this.a.a.length) && (this.a.a[paramInt1] != null) && (((List)this.a.a[paramInt1]).size() > 0))
+      {
+        if (paramInt2 >= 0)
+        {
+          i = paramInt2;
+          if (paramInt2 < ((List)this.a.a[paramInt1]).size()) {}
+        }
+        else
+        {
+          i = 0;
+        }
+        if (((BaseAddress)((List)this.a.a[paramInt1]).get(i)).code.equals("0"))
+        {
+          str = ConditionSearchFriendActivity.a();
+          paramInt2 = i;
+        }
+        else
+        {
+          str = ((BaseAddress)((List)this.a.a[paramInt1]).get(i)).name;
+          paramInt2 = i;
+        }
+      }
+      else
+      {
+        str = "";
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aohg
  * JD-Core Version:    0.7.0.1
  */

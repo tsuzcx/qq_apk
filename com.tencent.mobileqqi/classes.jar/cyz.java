@@ -1,20 +1,29 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
 
 public class cyz
-  implements Runnable
+  implements View.OnClickListener
 {
-  public cyz(LoginActivity paramLoginActivity, String paramString) {}
+  public cyz(PeopleAroundBaseActivity paramPeopleAroundBaseActivity, View paramView1, Drawable[] paramArrayOfDrawable, LinearLayout paramLinearLayout, View paramView2) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.a(this.jdField_a_of_type_JavaLangString, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.runOnUiThread(new cza(this, localBitmap));
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable != null) {
+      PeopleAroundBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPeopleAroundBaseActivity).setCompoundDrawables(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[3]);
+    }
+    PeopleAroundBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPeopleAroundBaseActivity).setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeView(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cyz
  * JD-Core Version:    0.7.0.1
  */

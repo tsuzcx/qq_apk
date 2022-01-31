@@ -1,24 +1,29 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mybusiness.MyBusinessManager;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aelh
-  implements Runnable
+  extends awhw
 {
-  public aelh(MyBusinessManager paramMyBusinessManager) {}
+  public aelh(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
-  public void run()
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    RespondQueryQQBindingStat localRespondQueryQQBindingStat = ((PhoneContactManagerImp)this.a.a.getManager(10)).a();
-    String str = "";
-    int i = 0;
-    if (localRespondQueryQQBindingStat != null)
-    {
-      str = localRespondQueryQQBindingStat.mobileNo;
-      i = localRespondQueryQQBindingStat.type;
+    if (QLog.isColorLevel()) {
+      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
     }
-    this.a.a(str, i, "");
+    this.a.a();
+    if (paramBoolean1)
+    {
+      if (paramBoolean2)
+      {
+        VerifyPhoneNumActivity.a(this.a, true);
+        VerifyPhoneNumActivity.c(this.a);
+        return;
+      }
+      VerifyPhoneNumActivity.c(this.a);
+      return;
+    }
+    VerifyPhoneNumActivity.c(this.a);
   }
 }
 

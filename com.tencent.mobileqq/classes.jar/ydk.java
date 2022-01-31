@@ -1,20 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 
 public class ydk
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public ydk(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public ydk(BaseWidgetView paramBaseWidgetView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    if ((this.a.a() != null) && (!this.a.a(paramView)))
+    {
+      this.a.b(this.a.a());
+      this.a.a().onClick(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ydk
  * JD-Core Version:    0.7.0.1
  */

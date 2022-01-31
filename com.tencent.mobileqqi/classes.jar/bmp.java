@@ -1,34 +1,71 @@
-import com.tencent.biz.PoiMapActivity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.biz.qrcode.activity.QRLoginActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import java.util.ArrayList;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class bmp
-  implements AbsListView.OnScrollListener
+  extends WtloginObserver
 {
-  public bmp(PoiMapActivity paramPoiMapActivity) {}
+  public bmp(QRLoginActivity paramQRLoginActivity) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void OnCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
-    if ((paramInt == 0) && (paramAbsListView.r() == paramAbsListView.a() - 1))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("PoiMapActivity", 4, "onScrollStateChanged");
-      }
-      if ((!this.a.f) && (this.a.jdField_d_of_type_Boolean))
-      {
-        this.a.f = true;
-        paramAbsListView = this.a;
-        paramAbsListView.i += 1;
-        if (QLog.isDevelopLevel()) {
-          QLog.i("PoiMapActivity", 4, "onScrollStateChanged mSearchPage:" + this.a.i);
-        }
-        this.a.a(this.a.jdField_d_of_type_Int, this.a.e, this.a.c, "", this.a.i, 20);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QRLoginActivity", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt);
     }
+    paramString = new Message();
+    paramArrayOfByte1 = new Bundle();
+    paramArrayOfByte1.putInt("ret", paramInt);
+    paramArrayOfByte1.putByteArray("errMsg", paramArrayOfByte2);
+    paramString.setData(paramArrayOfByte1);
+    paramString.what = 2;
+    this.a.a.sendMessage(paramString);
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  public void OnException(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QRLoginActivity", 2, "OnException e=" + paramString);
+    }
+    paramString = new Message();
+    paramString.what = 3;
+    this.a.a.sendMessage(paramString);
+  }
+  
+  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QRLoginActivity", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
+    }
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.b = paramString;
+    paramErrMsg = null;
+    paramString = paramErrMsg;
+    if (paramArrayList != null)
+    {
+      paramString = paramErrMsg;
+      if (paramArrayList.size() > 0) {
+        paramString = HexUtil.hexStr2Bytes((String)paramArrayList.get(0));
+      }
+    }
+    paramArrayList = new Message();
+    paramErrMsg = new Bundle();
+    paramErrMsg.putInt("ret", paramInt);
+    paramErrMsg.putByteArray("tlv", paramString);
+    paramErrMsg.putByteArray("appName", paramArrayOfByte1);
+    paramErrMsg.putByteArray("errMsg", paramArrayOfByte2);
+    paramArrayList.setData(paramErrMsg);
+    paramArrayList.what = 1;
+    this.a.a.sendMessage(paramArrayList);
+  }
 }
 
 

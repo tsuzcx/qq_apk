@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.freshnews;
 
-import adoh;
-import adoi;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.text.Editable;
 import android.util.AttributeSet;
 import android.view.ContextMenu;
 import android.widget.EditText;
+import ashw;
+import ashx;
+import ashy;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 
 public class BlockableEditTextView
@@ -40,9 +41,9 @@ public class BlockableEditTextView
   {
     setEditableFactory(TroopBarPublishUtils.a);
     if (Build.VERSION.SDK_INT >= 11) {
-      setCustomSelectionActionModeCallback(new adoh(this));
+      setCustomSelectionActionModeCallback(new ashw(this));
     }
-    addTextChangedListener(new adoi(this));
+    addTextChangedListener(new ashx(this));
   }
   
   private boolean a()
@@ -52,11 +53,11 @@ public class BlockableEditTextView
     if (getEditableText() == null) {
       return false;
     }
-    BlockableEditTextView.BlockAble[] arrayOfBlockAble = (BlockableEditTextView.BlockAble[])getEditableText().getSpans(i, j, BlockableEditTextView.BlockAble.class);
-    if ((arrayOfBlockAble != null) && (arrayOfBlockAble.length > 0) && ((arrayOfBlockAble[0] instanceof BlockableEditTextView.BlockAble)))
+    ashy[] arrayOfashy = (ashy[])getEditableText().getSpans(i, j, ashy.class);
+    if ((arrayOfashy != null) && (arrayOfashy.length > 0) && ((arrayOfashy[0] instanceof ashy)))
     {
-      i = getEditableText().getSpanEnd(arrayOfBlockAble[0]);
-      j = getEditableText().getSpanStart(arrayOfBlockAble[0]);
+      i = getEditableText().getSpanEnd(arrayOfashy[0]);
+      j = getEditableText().getSpanStart(arrayOfashy[0]);
       if ((j >= 0) && (i > j)) {
         return false;
       }
@@ -83,14 +84,14 @@ public class BlockableEditTextView
       {
         do
         {
-          BlockableEditTextView.BlockAble[] arrayOfBlockAble;
+          ashy[] arrayOfashy;
           do
           {
             return;
-            arrayOfBlockAble = (BlockableEditTextView.BlockAble[])getEditableText().getSpans(paramInt1, paramInt2, BlockableEditTextView.BlockAble.class);
-          } while ((arrayOfBlockAble == null) || (arrayOfBlockAble.length <= 0));
-          i = getEditableText().getSpanEnd(arrayOfBlockAble[0]);
-          j = getEditableText().getSpanStart(arrayOfBlockAble[0]);
+            arrayOfashy = (ashy[])getEditableText().getSpans(paramInt1, paramInt2, ashy.class);
+          } while ((arrayOfashy == null) || (arrayOfashy.length <= 0));
+          i = getEditableText().getSpanEnd(arrayOfashy[0]);
+          j = getEditableText().getSpanStart(arrayOfashy[0]);
         } while ((i <= j) || (j < 0));
         if ((paramInt1 == j) && (paramInt2 == j) && (this.jdField_a_of_type_Boolean))
         {
@@ -129,7 +130,7 @@ public class BlockableEditTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.freshnews.BlockableEditTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,17 @@
-import cooperation.qqdataline.ipc.DatalineRemoteManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class amok
-  implements Runnable
+final class amok
+  implements DialogInterface.OnDismissListener
 {
-  public amok(DatalineRemoteManager paramDatalineRemoteManager) {}
-  
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    DatalineRemoteManager.a(this.a);
+    amoj.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amok
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,19 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.ActivityChatItemBuilder;
-
 public class utn
-  extends AbstractChatItemBuilder.ViewHolder
+  extends uli
 {
-  public ImageView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  
-  public utn(ActivityChatItemBuilder paramActivityChatItemBuilder) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     utn
  * JD-Core Version:    0.7.0.1
  */

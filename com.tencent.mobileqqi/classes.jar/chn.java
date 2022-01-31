@@ -1,38 +1,19 @@
-import com.tencent.map.lbsapi.api.SOSOMapLBSApi;
-import com.tencent.map.lbsapi.api.SOSOMapLBSApiListener;
-import com.tencent.map.lbsapi.api.SOSOMapLBSApiResult;
-import com.tencent.mobileqq.activity.ChatForEnterpriseActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.EnterpriseQQHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
-public class chn
-  extends SOSOMapLBSApiListener
+class chn
+  implements View.OnClickListener
 {
-  public chn(ChatForEnterpriseActivity paramChatForEnterpriseActivity, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
+  chn(chm paramchm) {}
   
-  public void onLocationUpdate(SOSOMapLBSApiResult paramSOSOMapLBSApiResult)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.enterprise.ChatForEnterpriseActivity", 2, "onLocationUpdate(): BEGIN");
-    }
-    SOSOMapLBSApi.getInstance().removeLocationUpdate();
-    if (paramSOSOMapLBSApiResult.Address == null) {}
-    for (String str = "";; str = paramSOSOMapLBSApiResult.Address)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.enterprise.ChatForEnterpriseActivity", 2, "onLocationUpdate(): locResult=" + paramSOSOMapLBSApiResult + ", latitude=" + paramSOSOMapLBSApiResult.Latitude + ", longitude=" + paramSOSOMapLBSApiResult.Longitude + ", address=" + str);
-      }
-      ((EnterpriseQQHandler)this.a.b.a(20)).a(this.a.a.a, paramSOSOMapLBSApiResult.Latitude, paramSOSOMapLBSApiResult.Longitude, str);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.enterprise.ChatForEnterpriseActivity", 2, "onLocationUpdate(): END");
-      }
-      return;
-    }
+    paramView = new Intent(this.a.a, DiscussionMemberActivity.class);
+    paramView.putExtra("uin", DiscussionInfoCardActivity.a(this.a.a));
+    this.a.a.startActivity(paramView);
   }
 }
 

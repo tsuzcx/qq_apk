@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
 import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -15,30 +14,26 @@ public class ReportClientInfo
   extends AsyncStep
 {
   private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static HashMap<Long, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
   private static void a(long paramLong, boolean paramBoolean)
   {
-    if (paramBoolean) {}
     try
     {
-      if (!BaseApplicationImpl.isFirstLogin) {
+      if (!a(paramLong)) {
         return;
       }
-      if (a(paramLong))
-      {
-        int i = new Random().nextInt() & 0x7FFFFFFF;
-        new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new SecClientInfoTask(paramLong, 1, i), 5000L);
-        int j = new Random().nextInt(50000);
-        new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new SecClientInfoTask(paramLong, 2, i), j + 120000);
-        i = new Random().nextInt() & 0x7FFFFFFF;
-        j = new Random().nextInt(50000);
-        new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new SecClientInfoTaskEx(paramLong, 1, i), j + 10000);
-        Handler localHandler = new Handler(ThreadManager.getSubThreadLooper());
-        j = new Random().nextInt(50000);
-        localHandler.postDelayed(new SecClientInfoTaskEx(paramLong, 2, i), j + 240000);
-        return;
-      }
+      int i = new Random().nextInt() & 0x7FFFFFFF;
+      new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new SecClientInfoTask(paramLong, 1, i), 10000L);
+      int j = new Random().nextInt(50000);
+      new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new SecClientInfoTask(paramLong, 2, i), j + 120000);
+      i = new Random().nextInt() & 0x7FFFFFFF;
+      j = new Random().nextInt(50000);
+      new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new SecClientInfoTaskEx(paramLong, 1, i), j + 60000);
+      Handler localHandler = new Handler(ThreadManager.getSubThreadLooper());
+      j = new Random().nextInt(50000);
+      localHandler.postDelayed(new SecClientInfoTaskEx(paramLong, 2, i), j + 180000);
+      return;
     }
     catch (Exception localException)
     {
@@ -56,7 +51,7 @@ public class ReportClientInfo
         if (jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong)))
         {
           Long localLong2 = (Long)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-          if (localLong1.longValue() - localLong2.longValue() < 86400000L) {
+          if (localLong1.longValue() - localLong2.longValue() < 43200000L) {
             return false;
           }
         }
@@ -70,9 +65,9 @@ public class ReportClientInfo
     }
   }
   
-  protected int a()
+  public int a()
   {
-    a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.getLongAccountUin(), true);
+    a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getLongAccountUin(), true);
     return 7;
   }
 }

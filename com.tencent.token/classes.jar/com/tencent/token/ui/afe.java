@@ -1,16 +1,24 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.ImageView;
+import com.tencent.token.do;
+import com.tencent.token.utils.k;
+import com.tencent.token.utils.w;
 
-final class afe
-  implements DialogInterface.OnClickListener
+class afe
+  implements Runnable
 {
-  afe(afc paramafc, UtilsMbInfoItemActivity paramUtilsMbInfoItemActivity) {}
+  afe(VerifySuccActivity paramVerifySuccActivity, ImageView paramImageView) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.dismissDialog();
+    BitmapDrawable localBitmapDrawable = k.b(VerifySuccActivity.access$200(this.b) + "", w.f(VerifySuccActivity.access$200(this.b)) + " ");
+    this.a.setImageDrawable(localBitmapDrawable);
+    do.a().f(VerifySuccActivity.access$200(this.b));
+    do.a().a(VerifySuccActivity.access$300(this.b));
+    this.a.forceLayout();
+    this.a.postInvalidate();
   }
 }
 

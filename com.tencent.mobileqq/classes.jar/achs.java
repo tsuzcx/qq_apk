@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class achs
-  implements DialogInterface.OnClickListener
+  implements bicz
 {
-  public achs(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  public achs(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
-    ExtendFriendEditFragment.a(this.a).finish();
+    if (paramBoolean)
+    {
+      BaseChatPie.a(this.a);
+      BaseChatPie.b(this.a);
+    }
   }
 }
 

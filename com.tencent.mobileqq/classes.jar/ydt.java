@@ -1,20 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFollowRcmd;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
 
-public class ydt
-  implements DialogInterface.OnClickListener
+class ydt
+  extends RecyclerView.ViewHolder
 {
-  public ydt(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ydt(ydp paramydp, View paramView)
   {
-    this.a.a();
+    super(paramView);
+  }
+  
+  public void a(CertifiedAccountMeta.StFollowRcmd paramStFollowRcmd, int paramInt)
+  {
+    if ((this.itemView instanceof BlankRecommendItemView))
+    {
+      ((BlankRecommendItemView)this.itemView).setData(paramStFollowRcmd);
+      ((BlankRecommendItemView)this.itemView).setExtraTypeInfo(this.a.getExtraTypeInfo());
+      ((BlankRecommendItemView)this.itemView).setPos(paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ydt
  * JD-Core Version:    0.7.0.1
  */

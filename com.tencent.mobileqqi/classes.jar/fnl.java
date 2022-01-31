@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.app.message.C2CMessageProcessor;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.net.Uri;
 
-public class fnl
-  implements Comparator
+abstract interface fnl
 {
-  public fnl(C2CMessageProcessor paramC2CMessageProcessor) {}
-  
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
-  {
-    if (paramMessageRecord1.time > paramMessageRecord2.time) {
-      return 1;
-    }
-    return -1;
-  }
+  public static final Uri a = Uri.parse("content://qqlite");
+  public static final Uri b = Uri.parse("content://qqlite/external/friendlist");
+  public static final Uri c = Uri.parse("content://qqlite/external/historylist");
 }
 
 

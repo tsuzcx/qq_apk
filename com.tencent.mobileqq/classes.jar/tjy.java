@@ -1,20 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import UserGrowth.stWeishiDengtaReportRsp;
+import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter;
 
-class tjy
-  implements DialogInterface.OnClickListener
+public class tjy
+  implements tgt
 {
-  tjy(tjw paramtjw) {}
+  public tjy(WSStatisticsReporter paramWSStatisticsReporter) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(the paramthe)
   {
-    this.a.a.p();
+    if (!paramthe.a())
+    {
+      tlo.d("beaconData2Server", "BeaconSendRequest onTaskResponse failed code:" + paramthe.jdField_a_of_type_Int + ", msg:" + paramthe.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    if ((paramthe.jdField_a_of_type_JavaLangObject instanceof stWeishiDengtaReportRsp))
+    {
+      paramthe = (stWeishiDengtaReportRsp)paramthe.jdField_a_of_type_JavaLangObject;
+      tlo.b("beaconData2Server", "BeaconSendRequest onTaskResponse succeed: " + paramthe.code + " , " + paramthe.msg);
+      return;
+    }
+    tlo.d("beaconData2Server", "BeaconSendRequest onTaskResponse failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tjy
  * JD-Core Version:    0.7.0.1
  */

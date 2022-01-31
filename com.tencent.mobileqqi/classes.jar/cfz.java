@@ -1,36 +1,21 @@
-import NS_MOBILE_AIONewestFeed.AIONewestFeedRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.observer.QZoneObserver;
+import com.tencent.mobileqq.activity.DetailProfileActivity;
 
-public class cfz
-  extends QZoneObserver
+class cfz
+  implements Runnable
 {
-  public ChatAdapter1 a;
-  public SessionInfo a;
-  public QQAppInterface a;
+  cfz(cfy paramcfy) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 == null)) {
-      return;
-    }
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof AIONewestFeedRsp))) {
-      ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (AIONewestFeedRsp)paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(ChatActivityFacade.a());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+    this.a.a.b(this.a.a.b);
+    this.a.a.a(this.a.a.jdField_a_of_type_Byte);
+    this.a.a.a(this.a.a.jdField_a_of_type_Int);
+    this.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cfz
  * JD-Core Version:    0.7.0.1
  */

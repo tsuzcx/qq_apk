@@ -1,27 +1,23 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.voip.EditTextAutoResizeFont;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.adapter.SubAccountMessageAdapter;
 
 public class eym
-  implements View.OnClickListener
 {
-  public eym(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public DragTextView a;
+  public TextView b;
+  public TextView c;
   
-  public void onClick(View paramView)
-  {
-    if (VoipDialInterfaceActivity.a(this.a).getText().toString().trim().length() >= 0)
-    {
-      VoipDialInterfaceActivity.a(this.a).setCursorVisible(true);
-      VoipDialInterfaceActivity.a(this.a, true);
-    }
-    ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(VoipDialInterfaceActivity.a(this.a).getWindowToken(), 0);
-  }
+  public eym(SubAccountMessageAdapter paramSubAccountMessageAdapter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eym
  * JD-Core Version:    0.7.0.1
  */

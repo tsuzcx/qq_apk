@@ -1,37 +1,44 @@
-import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import java.util.ArrayList;
 
 public class aczd
-  implements Runnable
+  extends bdon
 {
-  public aczd(UniformDownloadMgr paramUniformDownloadMgr) {}
-  
-  public void run()
+  public aczd(FriendProfileCardActivity paramFriendProfileCardActivity, int paramInt)
   {
-    try
-    {
-      if (UniformDownloadMgr.a(this.a) == null)
-      {
-        UniformDownloadMgr.a(this.a, new acze(this));
-        IntentFilter localIntentFilter = new IntentFilter("com.tencent.mobileqq.qfile_unifromdownload");
-        BaseApplicationImpl.getApplication().registerReceiver(UniformDownloadMgr.a(this.a), localIntentFilter);
-        QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr Register UNIDOWNLOAD_BORDCAST");
-        return;
-      }
-      QLog.w("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr onAppInit, but mRecv is already setted");
-      return;
+    super(paramInt);
+  }
+  
+  public void a()
+  {
+    Intent localIntent = new Intent(this.a, CardPicGalleryActivity.class);
+    ArrayList localArrayList = new ArrayList();
+    if (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.b)) {
+      localIntent.putExtra("extra_default", 2130845333);
     }
-    catch (Exception localException)
+    localArrayList.add(this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.b);
+    localIntent.putExtra("extra_mode", 2);
+    localIntent.putExtra("is_from_mine_profile", true);
+    localIntent.putStringArrayListExtra("business_card_pics", localArrayList);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.e == 0) {}
+    for (int i = this.a.jdField_a_of_type_Awqt.a.defaultCardId;; i = 0)
     {
-      localException.printStackTrace();
+      localIntent.putExtra("default_card_id", i);
+      this.a.startActivity(localIntent);
+      this.a.overridePendingTransition(2130772302, 0);
+      this.a.b(1);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aczd
  * JD-Core Version:    0.7.0.1
  */

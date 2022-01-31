@@ -1,23 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class dko
-  implements DialogInterface.OnClickListener
+class dko
+  implements MediaPlayer.OnPreparedListener
 {
-  public dko(RegisterActivity paramRegisterActivity, String paramString1, String paramString2) {}
+  dko(dkl paramdkl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    paramDialogInterface.dismiss();
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.getString(2131559099, new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity);
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, 60000L);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Splash.testCanPlayMp4", 4, "onPrepare");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dko
  * JD-Core Version:    0.7.0.1
  */

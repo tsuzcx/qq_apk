@@ -1,30 +1,18 @@
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
-public class cbi
-  implements Runnable
+class cbi
+  implements DialogInterface.OnCancelListener
 {
-  public cbi(AuthDevActivity paramAuthDevActivity) {}
+  cbi(cbh paramcbh) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    try
-    {
-      if ((AuthDevActivity.a(this.a) != null) && (AuthDevActivity.a(this.a).isShowing()))
-      {
-        AuthDevActivity.a(this.a).dismiss();
-        AuthDevActivity.a(this.a).cancel();
-      }
-      AuthDevActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    this.a.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
   }
 }
 

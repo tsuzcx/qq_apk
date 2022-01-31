@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class nearfield_group$BusiRespHead
-  extends MessageMicro
+  extends MessageMicro<BusiRespHead>
 {
   public static final int INT32_REPLY_CODE_FIELD_NUMBER = 3;
   public static final int INT32_SEQ_FIELD_NUMBER = 2;
@@ -21,7 +21,7 @@ public final class nearfield_group$BusiRespHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.nearfield_group.nearfield_group.BusiRespHead
  * JD-Core Version:    0.7.0.1
  */

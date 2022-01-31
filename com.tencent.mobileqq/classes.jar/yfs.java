@@ -1,33 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoCommentRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class yfs
-  implements Animation.AnimationListener
+class yfs
+  implements zac<CertifiedAccountWrite.StDoCommentRsp>
 {
-  public yfs(SpecailCareListActivity paramSpecailCareListActivity) {}
+  yfs(yfp paramyfp, CertifiedAccountMeta.StComment paramStComment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoCommentRsp paramStDoCommentRsp)
   {
-    this.a.leftView.clearAnimation();
-    this.a.a.clearAnimation();
-    this.a.leftView.setVisibility(4);
-    this.a.a.setVisibility(8);
-    this.a.rightViewText.setClickable(true);
-    this.a.rightViewText.setText("完成");
-    this.a.rightViewText.setContentDescription("完成 按钮");
-    this.a.c = true;
+    umc.a().dispatch(this.jdField_a_of_type_Yfp.a(new Object[] { Integer.valueOf(3), Long.valueOf(paramLong), paramString, paramStDoCommentRsp, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.id.get(), Integer.valueOf(this.jdField_a_of_type_Yfp.hashCode()) }));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yfs
  * JD-Core Version:    0.7.0.1
  */

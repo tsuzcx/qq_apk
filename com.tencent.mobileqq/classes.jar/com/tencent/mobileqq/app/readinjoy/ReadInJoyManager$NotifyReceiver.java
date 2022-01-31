@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import java.util.concurrent.ExecutorService;
-import zwa;
 
 public class ReadInJoyManager$NotifyReceiver
   extends BroadcastReceiver
@@ -13,7 +12,7 @@ public class ReadInJoyManager$NotifyReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ReadInJoyManager.a(this.a).execute(new zwa(this, paramIntent));
+    ReadInJoyManager.a(this.a).execute(new ReadInJoyManager.NotifyReceiver.1(this, paramIntent));
   }
 }
 

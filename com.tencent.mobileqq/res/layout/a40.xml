@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager android:id="@id/kwk" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_centerHorizontal="true" tencent:rvp_view_height_weight="0.424242" tencent:rvp_view_width_weight="1.0" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/ecm" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:layout_alignBottom="@id/kwk" android:layout_centerHorizontal="true" />
+</merge>

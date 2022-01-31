@@ -6,11 +6,12 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SubMsgType0xaa$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "cmd", "msg_gameTeamMsg" }, new Object[] { Integer.valueOf(0), null }, MsgBody.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26 }, new String[] { "cmd", "msg_gameTeamMsg", "msg_onlineDocMsg" }, new Object[] { Integer.valueOf(0), null, null }, MsgBody.class);
   public final PBUInt32Field cmd = PBField.initUInt32(0);
   public SubMsgType0xaa.GameTeam_MsgBody msg_gameTeamMsg = new SubMsgType0xaa.GameTeam_MsgBody();
+  public SubMsgType0xaa.OnlineDoc_MsgBody msg_onlineDocMsg = new SubMsgType0xaa.OnlineDoc_MsgBody();
 }
 
 

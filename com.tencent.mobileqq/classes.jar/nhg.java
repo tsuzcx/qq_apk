@@ -1,23 +1,48 @@
-import com.tencent.biz.qqstory.newshare.job.UrlDrawableDownloadJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
+import com.tencent.qphone.base.util.QLog;
 
-public class nhg
-  extends UrlDrawableDownloadJob
+class nhg
+  implements njx
 {
-  public nhg(ShareModeBase paramShareModeBase, String paramString)
-  {
-    super(paramString);
-  }
+  nhg(ngw paramngw) {}
   
-  public boolean b()
+  public void a(int paramInt)
   {
-    a("WeChatImageJob_in_drawable", a("UrlDrawableDownloadJob_dra"));
-    return true;
+    float f;
+    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.getFirstVisiblePosition() == 0) && (this.a.b))
+    {
+      paramInt = -this.a.b();
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountDetailBaseAdapter", 2, "onEndScroll scrollY = " + paramInt + " ,isScrollUp = " + this.a.e);
+      }
+      f = 150.0F * this.a.jdField_a_of_type_Float;
+      if (paramInt != 0)
+      {
+        if (!this.a.e) {
+          break label127;
+        }
+        if (paramInt <= f) {
+          break label119;
+        }
+        this.a.d(paramInt);
+      }
+    }
+    return;
+    label119:
+    this.a.e();
+    return;
+    label127:
+    if (paramInt > this.a.o - f)
+    {
+      this.a.d(paramInt);
+      return;
+    }
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nhg
  * JD-Core Version:    0.7.0.1
  */

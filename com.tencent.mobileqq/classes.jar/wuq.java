@@ -1,45 +1,34 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
 
-public class wuq
-  extends Handler
+class wuq
+  extends SimpleJob<Void>
 {
-  private WeakReference a;
-  
-  public wuq(DialogBaseActivity paramDialogBaseActivity)
+  wuq(wub paramwub, String paramString, List paramList)
   {
-    this.a = new WeakReference(paramDialogBaseActivity);
+    super(paramString);
   }
   
-  public void handleMessage(Message paramMessage)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    boolean bool = true;
-    DialogBaseActivity localDialogBaseActivity = (DialogBaseActivity)this.a.get();
-    if (localDialogBaseActivity == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    voi.a();
+    paramJobContext = this.jdField_a_of_type_JavaUtilList.toArray();
+    int j = paramJobContext.length;
+    int i = 0;
+    while (i < j)
     {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (;;)
-      {
-        localDialogBaseActivity.a(i, bool);
-        return;
-        bool = false;
-      }
+      voi.a(paramJobContext[i].toString());
+      i += 1;
     }
-    localDialogBaseActivity.finish();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wuq
  * JD-Core Version:    0.7.0.1
  */

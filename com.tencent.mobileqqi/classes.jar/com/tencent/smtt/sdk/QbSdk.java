@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.util.Log;
 import com.tencent.smtt.utils.ReflectionUtils;
 import dalvik.system.DexClassLoader;
 import java.io.File;
@@ -20,10 +19,8 @@ public class QbSdk
   public static final String QB_PACKAGE_NAME = "com.tencent.mtt";
   private static final String SHELL_DEX_FILE = "sdk_shell.jar";
   private static final String SHELL_IMPL_CLASS = "com.tencent.mtt.sdk.shell.SdkShell";
-  public static final int SVNVERSION = 216813;
   public static final int VERSION = 1;
   private static boolean mIsSysWebViewForced = false;
-  public static boolean sIsVersionPrinted = false;
   private static int sQbVersion;
   private static Class<?> sShellClass;
   private static Object sShellObj;
@@ -86,11 +83,6 @@ public class QbSdk
   
   private static boolean init(Context paramContext)
   {
-    if (!sIsVersionPrinted)
-    {
-      Log.e("QbSdk", "svn version is 216813");
-      sIsVersionPrinted = true;
-    }
     if (mIsSysWebViewForced) {
       return false;
     }
@@ -135,8 +127,8 @@ public class QbSdk
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      label266:
-      break label266;
+      label248:
+      break label248;
     }
     return false;
   }

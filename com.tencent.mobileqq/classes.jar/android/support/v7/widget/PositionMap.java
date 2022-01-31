@@ -19,9 +19,9 @@ class PositionMap<E>
   public PositionMap(int paramInt)
   {
     if (paramInt == 0) {
-      this.mKeys = ContainerHelpers.EMPTY_INTS;
+      this.mKeys = PositionMap.ContainerHelpers.EMPTY_INTS;
     }
-    for (this.mValues = ContainerHelpers.EMPTY_OBJECTS;; this.mValues = new Object[paramInt])
+    for (this.mValues = PositionMap.ContainerHelpers.EMPTY_OBJECTS;; this.mValues = new Object[paramInt])
     {
       this.mSize = 0;
       return;
@@ -33,14 +33,14 @@ class PositionMap<E>
   private void gc()
   {
     int m = this.mSize;
-    int j = 0;
     int[] arrayOfInt = this.mKeys;
     Object[] arrayOfObject = this.mValues;
     int i = 0;
-    while (i < m)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
       Object localObject = arrayOfObject[i];
-      int k = j;
+      k = j;
       if (localObject != DELETED)
       {
         if (i != j)
@@ -52,7 +52,6 @@ class PositionMap<E>
         k = j + 1;
       }
       i += 1;
-      j = k;
     }
     this.mGarbage = false;
     this.mSize = j;
@@ -154,23 +153,28 @@ class PositionMap<E>
   
   public PositionMap<E> clone()
   {
-    Object localObject = null;
     try
     {
       PositionMap localPositionMap = (PositionMap)super.clone();
-      localObject = localPositionMap;
-      localPositionMap.mKeys = ((int[])this.mKeys.clone());
-      localObject = localPositionMap;
-      localPositionMap.mValues = ((Object[])this.mValues.clone());
-      return localPositionMap;
+      return localCloneNotSupportedException1;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return localObject;
+    catch (CloneNotSupportedException localCloneNotSupportedException1)
+    {
+      try
+      {
+        localPositionMap.mKeys = ((int[])this.mKeys.clone());
+        localPositionMap.mValues = ((Object[])this.mValues.clone());
+        return localPositionMap;
+      }
+      catch (CloneNotSupportedException localCloneNotSupportedException2) {}
+      localCloneNotSupportedException1 = localCloneNotSupportedException1;
+      return null;
+    }
   }
   
   public void delete(int paramInt)
   {
-    paramInt = ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramInt);
+    paramInt = PositionMap.ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramInt);
     if ((paramInt >= 0) && (this.mValues[paramInt] != DELETED))
     {
       this.mValues[paramInt] = DELETED;
@@ -185,7 +189,7 @@ class PositionMap<E>
   
   public E get(int paramInt, E paramE)
   {
-    paramInt = ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramInt);
+    paramInt = PositionMap.ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramInt);
     if ((paramInt < 0) || (this.mValues[paramInt] == DELETED)) {
       return paramE;
     }
@@ -197,7 +201,7 @@ class PositionMap<E>
     if (this.mGarbage) {
       gc();
     }
-    return ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramInt);
+    return PositionMap.ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramInt);
   }
   
   public int indexOfValue(E paramE)
@@ -228,7 +232,7 @@ class PositionMap<E>
   
   public void put(int paramInt, E paramE)
   {
-    int i = ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramInt);
+    int i = PositionMap.ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramInt);
     if (i >= 0)
     {
       this.mValues[i] = paramE;
@@ -248,7 +252,7 @@ class PositionMap<E>
       if (this.mSize >= this.mKeys.length)
       {
         gc();
-        i = ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramInt) ^ 0xFFFFFFFF;
+        i = PositionMap.ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramInt) ^ 0xFFFFFFFF;
       }
     }
     if (this.mSize >= this.mKeys.length)
@@ -349,41 +353,6 @@ class PositionMap<E>
       gc();
     }
     return this.mValues[paramInt];
-  }
-  
-  static class ContainerHelpers
-  {
-    static final boolean[] EMPTY_BOOLEANS = new boolean[0];
-    static final int[] EMPTY_INTS = new int[0];
-    static final long[] EMPTY_LONGS = new long[0];
-    static final Object[] EMPTY_OBJECTS = new Object[0];
-    
-    static int binarySearch(int[] paramArrayOfInt, int paramInt1, int paramInt2)
-    {
-      int i = 0;
-      int j = paramInt1 - 1;
-      paramInt1 = i;
-      i = j;
-      while (paramInt1 <= i)
-      {
-        j = paramInt1 + i >>> 1;
-        int k = paramArrayOfInt[j];
-        if (k < paramInt2)
-        {
-          paramInt1 = j + 1;
-        }
-        else
-        {
-          i = j;
-          if (k <= paramInt2) {
-            return i;
-          }
-          i = j - 1;
-        }
-      }
-      i = paramInt1 ^ 0xFFFFFFFF;
-      return i;
-    }
   }
 }
 

@@ -1,19 +1,26 @@
 package com.tencent.token.ui.base;
 
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class cr
-  implements AbsListView.OnScrollListener
+class cr
+  implements View.OnClickListener
 {
-  private cr(PullToRefreshListView paramPullToRefreshListView, byte paramByte) {}
+  cr(SecondVerifyDialog paramSecondVerifyDialog) {}
   
-  public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    PullToRefreshListView.a(this.a, paramInt1);
+    this.a.dismiss();
+    if (SecondVerifyDialog.e(this.a) != null)
+    {
+      paramView = new Message();
+      paramView.what = 1013;
+      paramView.arg1 = SecondVerifyDialog.d(this.a);
+      SecondVerifyDialog.e(this.a).sendMessage(paramView);
+    }
   }
-  
-  public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

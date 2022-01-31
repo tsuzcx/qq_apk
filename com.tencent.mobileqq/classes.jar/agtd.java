@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.mobileqq.ptt.LSRecordTextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class agtd
-  implements Runnable
+class agtd
+  implements ywq
 {
-  public agtd(LSRecordPanel paramLSRecordPanel, int paramInt, double paramDouble) {}
+  agtd(agsy paramagsy) {}
   
-  public void run()
+  public void a()
   {
-    int i = AudioPanel.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel.b(i);
-    LSRecordPanel.a(this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel).setText(AudioPanel.a(this.jdField_a_of_type_Double));
+    auzw localauzw = this.a.jdField_a_of_type_Auzw;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 10002) {}
+    for (int i = 8;; i = 6)
+    {
+      localauzw.a(false, true, i);
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    this.a.jdField_a_of_type_Auzw.a();
   }
 }
 

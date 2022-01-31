@@ -1,36 +1,30 @@
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
 
-public class zjm
-  extends zeq
+class zjm
+  extends URLDrawableDownListener.Adapter
 {
-  protected void a()
+  zjm(zjl paramzjl, int paramInt, ViewGroup paramViewGroup) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super.a();
-    if (this.d >= zeo.a().a / 12000L)
-    {
-      CoreService.stopTempService();
-      this.a.c();
-      this.d = 0L;
-    }
+    this.jdField_a_of_type_Zjl.a(this.jdField_a_of_type_Int, false);
   }
   
-  protected void a(String paramString)
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    GuardManager localGuardManager = this.a;
-    if ("com.tencent.mobileqq".equals(paramString)) {}
-    for (int i = 2;; i = 3)
-    {
-      localGuardManager.a(i, paramString);
-      return;
-    }
+    this.jdField_a_of_type_Zjl.b(this.jdField_a_of_type_Int, paramInt / 100);
   }
   
-  protected void b(String paramString)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    super.b(paramString);
-    this.a.b();
-    CoreService.startTempService();
+    this.jdField_a_of_type_Zjl.a(this.jdField_a_of_type_Int, true);
+    paramView = this.jdField_a_of_type_Zjl.a(paramURLDrawable.getURL(), this.jdField_a_of_type_AndroidViewViewGroup);
+    if (paramView != null) {
+      this.jdField_a_of_type_Zjl.a(paramView, paramURLDrawable);
+    }
   }
 }
 

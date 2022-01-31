@@ -1,33 +1,29 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Queue;
 
-public class rjf
-  implements View.OnClickListener
+class rjf
+  extends ntc
 {
-  public rjf(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString) {}
+  private rjf(rja paramrja) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.isShowing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.getWindow() != null)) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.dismiss();
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, -1, this.jdField_a_of_type_JavaLangString);
-      label58:
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a = null;
-      return;
+    super.a(paramBoolean, paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoFullPlayController", 2, "onGetRecommend:" + paramBoolean);
     }
-    catch (Throwable paramView)
+    if (paramBoolean)
     {
-      break label58;
+      paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
+      rja.a(this.a).addAll(rja.a(this.a).a(paramBundle));
+      this.a.f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rjf
  * JD-Core Version:    0.7.0.1
  */

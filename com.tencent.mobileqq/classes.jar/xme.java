@@ -1,39 +1,26 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
 public class xme
-  implements TextWatcher
+  implements Comparator<RecentUser>
 {
-  public xme(LoginView paramLoginView) {}
+  public xme(ShareToActivity paramShareToActivity) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
   {
-    if (paramCharSequence.length() > 0) {
-      if (this.a.b != null) {
-        this.a.b.setVisibility(0);
-      }
+    if (paramRecentUser1.lastmsgtime > paramRecentUser2.lastmsgtime) {
+      return -1;
     }
-    while (paramCharSequence.length() > 4)
-    {
-      this.a.b(paramCharSequence.toString());
-      return;
-      if ((this.a.b != null) && (this.a.b.isShown())) {
-        this.a.b.setVisibility(8);
-      }
+    if (paramRecentUser1.lastmsgtime < paramRecentUser2.lastmsgtime) {
+      return 1;
     }
-    this.a.a.a(false, null);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xme
  * JD-Core Version:    0.7.0.1
  */

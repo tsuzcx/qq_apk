@@ -1,51 +1,20 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.core.OfflinePreviewController;
-import com.tencent.mobileqq.filemanager.data.FMConfig;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 
 public class acws
-  extends FMObserver
+  implements View.OnClickListener
 {
-  public acws(OfflinePreviewController paramOfflinePreviewController) {}
+  public acws(FontSettingActivity paramFontSettingActivity) {}
   
-  protected void b(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6)
+  public void onClick(View paramView)
   {
-    label110:
-    for (;;)
-    {
-      try
-      {
-        if (FMConfig.a)
-        {
-          paramString4 = "183.61.37.13";
-          paramString5 = "443";
-          if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback != null) {
-            this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback.a(paramBoolean, paramString4, paramString5, paramInt1, paramString1, paramString3, paramString2, this.a.jdField_a_of_type_JavaLangString);
-          }
-        }
-        else
-        {
-          if ((paramString4 == null) || (paramString4.length() <= 0)) {
-            break label110;
-          }
-          paramString5 = String.valueOf(paramInt2);
-          continue;
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.e(this.a.b, 2, " callback is null");
-          continue;
-          paramString4 = paramString5;
-        }
-      }
-      finally {}
-    }
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acws
  * JD-Core Version:    0.7.0.1
  */

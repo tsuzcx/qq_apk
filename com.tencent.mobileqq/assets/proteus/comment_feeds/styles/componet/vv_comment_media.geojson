@@ -1,0 +1,37 @@
+{
+    "view_type": "UIView",
+    "view_id": "id_vv_comment_media_view",
+    "layout_type":"layout_relative",
+    "event_type": "cmd_vv_comment_media_click",
+    "visible_depend_on_children":"YES",
+    "margin_left":"65",
+    "margin_top":"4",
+    "padding_bottom":"4",
+    "attributes": {
+        "setAttatchInfo:":"$vv_pic_url"
+    },
+    "height": {
+        "type": "wrap_content"
+    },
+    "width": {
+        "type": "wrap_content"
+    },
+    "subviews":
+    [
+        {
+            "view_type": "PTSGIFImageView",
+            "layout_type":"layout_relative",
+            "view_id": "id_vv_media_thumb",
+            "align_parent_top": "YES",
+            "attributes": {
+                "setModel:": "$comment_gif_img"
+            },
+            "height": {
+                "type": "wrap_content"
+            },
+            "width": {
+                "type": "wrap_content"
+            }
+        }
+    ]
+}

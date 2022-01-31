@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.activity.AddFriendActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.activity.ChatActivity;
 
 public class bzg
-  extends FriendListObserver
+  implements Runnable
 {
-  public bzg(AddFriendActivity paramAddFriendActivity) {}
+  public bzg(ChatActivity paramChatActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if ((this.a.a != null) && (paramBoolean)) {
-      this.a.a.notifyDataSetChanged();
-    }
+    this.a.v();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bzg
  * JD-Core Version:    0.7.0.1
  */

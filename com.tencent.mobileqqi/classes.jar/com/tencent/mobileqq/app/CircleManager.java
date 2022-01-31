@@ -29,16 +29,16 @@ import com.tencent.mobileqq.service.circle.ISwitchObserver;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import fec;
-import fed;
-import fef;
-import feg;
-import feh;
-import fei;
-import fej;
-import fek;
-import fel;
-import fem;
+import ezo;
+import ezp;
+import ezr;
+import ezs;
+import ezt;
+import ezu;
+import ezv;
+import ezw;
+import ezx;
+import ezy;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -98,17 +98,17 @@ public class CircleManager
   private long jdField_a_of_type_Long = 0L;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   private volatile AsyncTask jdField_a_of_type_AndroidOsAsyncTask;
-  private CircleObserver jdField_a_of_type_ComTencentMobileqqAppCircleObserver = new fem(this);
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new fel(this);
+  private CircleObserver jdField_a_of_type_ComTencentMobileqqAppCircleObserver = new ezy(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ezx(this);
   private FriendsManagerImp jdField_a_of_type_ComTencentMobileqqAppFriendsManagerImp;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new fec(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new ezo(this);
   @SuppressLint({"UseSparseArrays"})
   public HashMap a;
   public LinkedList a;
   public ConcurrentHashMap a;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new fed(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new ezp(this);
   private byte[] jdField_a_of_type_ArrayOfByte = null;
   private long jdField_b_of_type_Long = 0L;
   public LinkedList b;
@@ -386,18 +386,18 @@ public class CircleManager
     if (QLog.isColorLevel()) {
       QLog.d("CircleManager", 2, "updateCircle_Local | real do");
     }
-    this.jdField_a_of_type_AndroidOsAsyncTask = new fei(this).execute(new Void[0]);
+    this.jdField_a_of_type_AndroidOsAsyncTask = new ezu(this).execute(new Void[0]);
     return 0;
   }
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new feh(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new ezt(this));
   }
   
   private void b(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new fej(this, paramString));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new ezv(this, paramString));
   }
   
   @SuppressLint({"UseSparseArrays"})
@@ -590,7 +590,7 @@ public class CircleManager
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new fek(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new ezw(this));
   }
   
   /* Error */
@@ -990,15 +990,15 @@ public class CircleManager
   public int a(int paramInt)
   {
     if (paramInt == 1) {
-      return 2130838686;
-    }
-    if (paramInt == 3) {
-      return 2130838687;
-    }
-    if (paramInt == 2) {
       return 2130838688;
     }
-    return 2130840347;
+    if (paramInt == 3) {
+      return 2130838689;
+    }
+    if (paramInt == 2) {
+      return 2130838690;
+    }
+    return 2130840349;
   }
   
   public int a(int paramInt, ArrayList paramArrayList, boolean paramBoolean)
@@ -1025,7 +1025,7 @@ public class CircleManager
             CircleBuddy localCircleBuddy = (CircleBuddy)localIterator.next();
             localCircleBuddy.randomCloseness = (localCircleBuddy.closeness * (((Random)localObject2).nextInt(3) + 5));
           }
-          Collections.sort((List)localObject1, new feg(this));
+          Collections.sort((List)localObject1, new ezs(this));
         }
         finally {}
       }
@@ -1084,7 +1084,7 @@ public class CircleManager
         }
       }
     }
-    Collections.sort(paramArrayList, new fef(this));
+    Collections.sort(paramArrayList, new ezr(this));
     return a();
   }
   

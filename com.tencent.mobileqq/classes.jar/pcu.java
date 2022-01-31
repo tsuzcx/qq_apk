@@ -1,22 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.ReadInJoyWebRenderPlugin;
-import com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils;
-
-public class pcu
-  implements Runnable
+class pcu
+  implements osi
 {
-  public pcu(ReadInJoyWebRenderPlugin paramReadInJoyWebRenderPlugin) {}
+  pcu(pct parampct, pcr parampcr) {}
   
-  public void run()
+  public void a(osl paramosl)
   {
-    if (!TextUtils.isEmpty(ReadInJoyWebRenderPlugin.a(this.a))) {
-      SwiftOfflineDataUtils.a(ReadInJoyWebRenderPlugin.a(this.a));
+    if ((this.jdField_a_of_type_Pcr != null) && (paramosl != null))
+    {
+      pcr localpcr = this.jdField_a_of_type_Pcr;
+      String str = paramosl.b;
+      paramosl = paramosl.a;
+      localpcr.a(new String[] { str }, new String[] { paramosl });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pcu
  * JD-Core Version:    0.7.0.1
  */

@@ -86,7 +86,6 @@ public class UniAttribute
   }
   
   public <T> T get(String paramString)
-    throws ObjectCreateException
   {
     if (this._newData != null) {
       throw new RuntimeException("data is encoded by new version, please use getByClass(String name, T proxy)");
@@ -111,24 +110,23 @@ public class UniAttribute
   }
   
   public <T> T getByClass(String paramString, T paramT)
-    throws ObjectCreateException
   {
-    Object localObject1 = null;
+    Object localObject = null;
     if (this._newData != null) {
       if (this._newData.containsKey(paramString)) {}
     }
     while (!this._data.containsKey(paramString)) {
       for (;;)
       {
-        return localObject1;
+        return localObject;
         if (this.cachedData.containsKey(paramString)) {
           return this.cachedData.get(paramString);
         }
-        localObject1 = (byte[])this._newData.get(paramString);
+        localObject = (byte[])this._newData.get(paramString);
         try
         {
-          paramT = decodeData((byte[])localObject1, paramT);
-          localObject1 = paramT;
+          paramT = decodeData((byte[])localObject, paramT);
+          localObject = paramT;
           if (paramT != null)
           {
             saveDataCache(paramString, paramT);
@@ -144,48 +142,73 @@ public class UniAttribute
     if (this.cachedData.containsKey(paramString)) {
       return this.cachedData.get(paramString);
     }
-    Object localObject2 = (HashMap)this._data.get(paramString);
-    localObject1 = new byte[0];
-    localObject2 = ((HashMap)localObject2).entrySet().iterator();
-    if (((Iterator)localObject2).hasNext())
+    localObject = ((HashMap)this._data.get(paramString)).entrySet().iterator();
+    if (((Iterator)localObject).hasNext())
     {
-      localObject1 = (Map.Entry)((Iterator)localObject2).next();
-      localObject2 = (String)((Map.Entry)localObject1).getKey();
-      localObject1 = (byte[])((Map.Entry)localObject1).getValue();
+      localObject = (Map.Entry)((Iterator)localObject).next();
+      String str = (String)((Map.Entry)localObject).getKey();
     }
-    try
-    {
-      this._is.wrap((byte[])localObject1);
-      this._is.setServerEncoding(this.encodeName);
-      paramT = this._is.read(paramT, 0, true);
-      saveDataCache(paramString, paramT);
-      return paramT;
-    }
-    catch (Exception paramString)
-    {
-      throw new ObjectCreateException(paramString);
+    for (localObject = (byte[])((Map.Entry)localObject).getValue();; localObject = new byte[0]) {
+      try
+      {
+        this._is.wrap((byte[])localObject);
+        this._is.setServerEncoding(this.encodeName);
+        paramT = this._is.read(paramT, 0, true);
+        saveDataCache(paramString, paramT);
+        return paramT;
+      }
+      catch (Exception paramString)
+      {
+        throw new ObjectCreateException(paramString);
+      }
     }
   }
   
   public <T> T getByClass(String paramString, T paramT1, T paramT2)
-    throws ObjectCreateException
   {
     if (this._newData != null) {
       if (this._newData.containsKey(paramString)) {}
     }
-    while (!this._data.containsKey(paramString))
-    {
-      return paramT2;
-      if (this.cachedData.containsKey(paramString)) {
-        return this.cachedData.get(paramString);
+    while (!this._data.containsKey(paramString)) {
+      for (;;)
+      {
+        return paramT2;
+        if (this.cachedData.containsKey(paramString)) {
+          return this.cachedData.get(paramString);
+        }
+        paramT2 = (byte[])this._newData.get(paramString);
+        try
+        {
+          paramT1 = decodeData(paramT2, paramT1);
+          paramT2 = paramT1;
+          if (paramT1 != null)
+          {
+            saveDataCache(paramString, paramT1);
+            return paramT1;
+          }
+        }
+        catch (Exception paramString)
+        {
+          throw new ObjectCreateException(paramString);
+        }
       }
-      paramT2 = (byte[])this._newData.get(paramString);
+    }
+    if (this.cachedData.containsKey(paramString)) {
+      return this.cachedData.get(paramString);
+    }
+    paramT2 = ((HashMap)this._data.get(paramString)).entrySet().iterator();
+    if (paramT2.hasNext())
+    {
+      paramT2 = (Map.Entry)paramT2.next();
+      String str = (String)paramT2.getKey();
+    }
+    for (paramT2 = (byte[])paramT2.getValue();; paramT2 = new byte[0]) {
       try
       {
-        paramT1 = decodeData(paramT2, paramT1);
-        if (paramT1 != null) {
-          saveDataCache(paramString, paramT1);
-        }
+        this._is.wrap(paramT2);
+        this._is.setServerEncoding(this.encodeName);
+        paramT1 = this._is.read(paramT1, 0, true);
+        saveDataCache(paramString, paramT1);
         return paramT1;
       }
       catch (Exception paramString)
@@ -193,34 +216,9 @@ public class UniAttribute
         throw new ObjectCreateException(paramString);
       }
     }
-    if (this.cachedData.containsKey(paramString)) {
-      return this.cachedData.get(paramString);
-    }
-    Object localObject = (HashMap)this._data.get(paramString);
-    paramT2 = new byte[0];
-    localObject = ((HashMap)localObject).entrySet().iterator();
-    if (((Iterator)localObject).hasNext())
-    {
-      paramT2 = (Map.Entry)((Iterator)localObject).next();
-      localObject = (String)paramT2.getKey();
-      paramT2 = (byte[])paramT2.getValue();
-    }
-    try
-    {
-      this._is.wrap(paramT2);
-      this._is.setServerEncoding(this.encodeName);
-      paramT1 = this._is.read(paramT1, 0, true);
-      saveDataCache(paramString, paramT1);
-      return paramT1;
-    }
-    catch (Exception paramString)
-    {
-      throw new ObjectCreateException(paramString);
-    }
   }
   
   public <T> T getJceStruct(String paramString)
-    throws ObjectCreateException
   {
     if (this._newData != null) {
       throw new RuntimeException("data is encoded by new version, please use getJceStruct(String name,T proxy)");
@@ -229,7 +227,6 @@ public class UniAttribute
   }
   
   public <T> T getJceStruct(String paramString, T paramT)
-    throws ObjectCreateException
   {
     if (!this._newData.containsKey(paramString)) {
       paramT = null;
@@ -298,7 +295,6 @@ public class UniAttribute
   }
   
   public <T> T remove(String paramString)
-    throws ObjectCreateException
   {
     if (this._newData != null)
     {
@@ -312,7 +308,6 @@ public class UniAttribute
   }
   
   public <T> T remove(String paramString, T paramT)
-    throws ObjectCreateException
   {
     if (!this._newData.containsKey(paramString)) {
       return null;

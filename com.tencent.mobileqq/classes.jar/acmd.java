@@ -1,37 +1,37 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportObserver;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.widget.TipsBar;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class acmd
-  extends TeamWorkFileImportObserver
+  implements DialogInterface.OnClickListener
 {
-  public acmd(FilePreviewActivity paramFilePreviewActivity) {}
+  public acmd(ChatHistory paramChatHistory) {}
   
-  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramTeamWorkFileImportInfo);
-    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
-      FilePreviewActivity.a(this.a).dismiss();
+    if (bdin.d(BaseApplication.getContext()))
+    {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+      this.a.h();
+      azqs.b(this.a.app, "CliOper", "", "", "AIO", "AIO_chatlog_lately", 0, 0, "", "", "", "");
+      return;
     }
-    if ((paramTeamWorkFileImportInfo != null) && (paramTeamWorkFileImportInfo.d)) {
-      QQToast.a(this.a.app.getApp(), 1, 2131439134, 0).a();
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.jdField_c_of_type_AndroidAppDialog.dismiss();
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-  }
-  
-  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
-  {
-    super.a(paramString, paramTeamWorkFileImportInfo);
-    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
-      FilePreviewActivity.a(this.a).dismiss();
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(0);
+    this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131692398));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acmd
  * JD-Core Version:    0.7.0.1
  */

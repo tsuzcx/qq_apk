@@ -2,7 +2,7 @@ package com.tencent.token.widget;
 
 public abstract interface a
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
 }
 
 

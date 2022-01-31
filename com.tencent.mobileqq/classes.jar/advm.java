@@ -1,12 +1,16 @@
-import com.tencent.mobileqq.intervideo.od.ODProxy;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
 public class advm
+  implements DialogInterface.OnClickListener
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private String b = "";
-  private String c = "";
+  public advm(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public advm(ODProxy paramODProxy) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a(this.a.a);
+  }
 }
 
 

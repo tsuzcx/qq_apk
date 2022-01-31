@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebUiBaseInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebTitleBarInterface;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import begg;
+import begz;
+import bels;
+import bety;
 
 class MQPSecJsPlugin$2
   implements Runnable
@@ -17,12 +17,12 @@ class MQPSecJsPlugin$2
     {
       if ((MQPSecJsPlugin.access$100(this.this$0) == null) && (!this.this$0.activity.isFinishing()))
       {
-        WebUiBaseInterface localWebUiBaseInterface = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
-        if ((localWebUiBaseInterface != null) && ((localWebUiBaseInterface instanceof WebUiUtils.WebTitleBarInterface)))
+        begg localbegg = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
+        if ((localbegg != null) && ((localbegg instanceof bels)))
         {
-          MQPSecJsPlugin.access$102(this.this$0, new QQProgressDialog(this.this$0.activity, ((WebUiUtils.WebTitleBarInterface)localWebUiBaseInterface).b()));
+          MQPSecJsPlugin.access$102(this.this$0, new bety(this.this$0.activity, ((bels)localbegg).b()));
           MQPSecJsPlugin.access$100(this.this$0).setCancelable(false);
-          MQPSecJsPlugin.access$100(this.this$0).c(2131435070);
+          MQPSecJsPlugin.access$100(this.this$0).c(2131695090);
         }
       }
     }
@@ -40,7 +40,7 @@ class MQPSecJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.MQPSecJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

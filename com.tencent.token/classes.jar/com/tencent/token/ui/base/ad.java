@@ -1,23 +1,35 @@
 package com.tencent.token.ui.base;
 
 import android.os.Handler;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.token.global.h;
 
-public final class ad
+class ad
+  implements View.OnClickListener
 {
-  private static final Handler a = new ae();
+  ad(FreezeUinDialog paramFreezeUinDialog, CheckBox paramCheckBox) {}
   
-  private ad()
+  public void onClick(View paramView)
   {
-    throw new UnsupportedOperationException();
-  }
-  
-  public static void a(Runnable paramRunnable)
-  {
-    Message localMessage = new Message();
-    localMessage.what = 1000;
-    localMessage.obj = paramRunnable;
-    a.sendMessageDelayed(localMessage, 16L);
+    this.b.dismiss();
+    if (FreezeUinDialog.a(this.b) != null)
+    {
+      h.a("freeze: msg=4009");
+      paramView = FreezeUinDialog.a(this.b).obtainMessage(4009);
+      if (!this.a.isChecked()) {
+        break label64;
+      }
+      paramView.arg1 = 1;
+    }
+    for (;;)
+    {
+      FreezeUinDialog.a(this.b).sendMessage(paramView);
+      return;
+      label64:
+      paramView.arg2 = 0;
+    }
   }
 }
 

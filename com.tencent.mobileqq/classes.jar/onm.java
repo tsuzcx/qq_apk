@@ -1,26 +1,21 @@
-import android.view.View;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import java.util.List;
 
-public class onm
+class onm
+  extends oob
 {
-  public View a;
-  public View b;
-  
-  public onm(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  onm(omz paramomz, boolean paramBoolean, List paramList)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.b = paramView.findViewById(2131362725);
+    super(paramomz, null);
   }
   
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
+  void a(ooe paramooe)
   {
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new onn(this));
+    paramooe.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, omz.c(this.jdField_a_of_type_Omz), 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     onm
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class RichMsg$ForwardExtra
-  extends MessageMicro
+  extends MessageMicro<ForwardExtra>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 48 }, new String[] { "foward_orgId", "foward_orgUin", "foward_orgUinType", "foward_orgUrl", "foward_thumbPath", "foward_orgFileSizeType" }, new Object[] { Long.valueOf(0L), "", Integer.valueOf(0), "", "", Integer.valueOf(0) }, ForwardExtra.class);
   public final PBInt32Field foward_orgFileSizeType = PBField.initInt32(0);
@@ -20,7 +20,7 @@ public final class RichMsg$ForwardExtra
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     localpb.richMsg.RichMsg.ForwardExtra
  * JD-Core Version:    0.7.0.1
  */

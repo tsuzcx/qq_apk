@@ -1,23 +1,20 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class mst
-  implements Runnable
+class mst
+  implements View.OnTouchListener
 {
-  public mst(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  mst(msr parammsr) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    SubscriptFeedsActivity.a(this.a, SubscriptRecommendController.b(this.a.app));
-    if (PublicAccountUtil.a(this.a.app)) {
-      SubscriptFeedsActivity.a(this.a, true);
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mst
  * JD-Core Version:    0.7.0.1
  */

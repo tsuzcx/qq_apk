@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/gxi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/gxn" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView android:id="@id/gzb" android:paddingBottom="100.0dip" android:focusable="false" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00ffffff" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" android:layout_above="@id/gyg" />
+        <com.tencent.biz.qqstory.comment.StoryInputBarView android:id="@id/gyg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar android:id="@id/l38" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignTop="@id/gxn" />
+    <ImageButton android:id="@id/gyb" android:background="@color/ajr" android:layout_width="85.0dip" android:layout_height="85.0dip" android:layout_marginBottom="15.0dip" android:src="@drawable/fj5" android:scaleType="centerInside" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:fromAlpha="1.0" android:toAlpha="1.0" />
+    <FrameLayout android:paddingRight="20.0dip" android:layout_width="170.0dip" android:layout_height="150.0dip" android:layout_marginBottom="26.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <com.tencent.biz.qqstory.storyHome.StoryRecordButtonAnimationView android:id="@id/s8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+</RelativeLayout>

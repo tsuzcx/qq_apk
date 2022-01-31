@@ -1,90 +1,46 @@
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.richstatus.ActionInfo;
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import com.tencent.mobileqq.widget.StatableBitmapDrawable;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import com.tencent.mobileqq.subaccount.logic.SubAccountGetMessageControll;
+import com.tencent.qphone.base.util.QLog;
 
 public class glp
-  extends BaseAdapter
+  extends MessageObserver
 {
-  private glp(EditActivity paramEditActivity) {}
+  public glp(SubAccountGetMessageControll paramSubAccountGetMessageControll) {}
   
-  public int getCount()
+  public void b(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    return EditActivity.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return EditActivity.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = this.a.getLayoutInflater().inflate(2130903579, null);
-    ImageView localImageView;
-    TextView localTextView;
-    if (paramInt == 3)
+    paramString = SubAccountGetMessageControll.a(this.a);
+    if ((paramBoolean) && (paramSubAccountBackProtocData != null)) {}
+    try
     {
-      paramView.setBackgroundResource(2130837841);
-      paramViewGroup = (Integer)EditActivity.a(this.a).get(paramInt);
-      paramViewGroup = EditActivity.a(this.a).a(paramViewGroup.intValue());
-      if (paramViewGroup == null) {
-        break label247;
-      }
-      localImageView = (ImageView)paramView.findViewById(2131232966);
-      localImageView.setImageDrawable(new StatableBitmapDrawable(this.a.getResources(), EditActivity.a(this.a).a(paramViewGroup.i, 201), false, false));
-      localTextView = (TextView)paramView.findViewById(2131232967);
-      localTextView.setText(paramViewGroup.c);
-      paramView.setTag(Integer.valueOf(paramViewGroup.i));
-      if (paramViewGroup.j != 1) {
-        break label203;
-      }
-      localTextView.setCompoundDrawables(null, null, null, null);
-    }
-    for (;;)
-    {
-      if (!EditActivity.b(this.a)) {
-        break label233;
-      }
-      localImageView.setVisibility(0);
-      localTextView.setVisibility(0);
-      return paramView;
-      if (paramInt == 5)
+      if (!paramSubAccountBackProtocData.a)
       {
-        paramView.setBackgroundResource(2130837842);
-        break;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.subaccount.SubAccountGetMessageControll", 2, "onGetSubAccountMsgNotify： is get msg last finish = false");
+        }
+        return;
       }
-      paramView.setBackgroundResource(2130838954);
-      break;
-      label203:
-      localTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, this.a.getResources().getDrawable(2130837803), null);
-      localTextView.setCompoundDrawablePadding(10);
+      SubAccountGetMessageControll.a(this.a, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.subaccount.SubAccountGetMessageControll", 2, "onGetSubAccountMsgNotify： observer = >onGetSubAccountMsgNotify pushNum =" + SubAccountGetMessageControll.a(this.a));
+      }
+      if (SubAccountGetMessageControll.a(this.a) > 0)
+      {
+        SubAccountGetMessageControll.a(this.a, 0);
+        this.a.a(false);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.subaccount.SubAccountGetMessageControll", 2, "onGetSubAccountMsgNotify： observer = >onGetSubAccountMsgNotify end");
+      }
+      return;
     }
-    label233:
-    localImageView.setVisibility(4);
-    localTextView.setVisibility(4);
-    return paramView;
-    label247:
-    paramView.setTag(Integer.valueOf(-2147483648));
-    return paramView;
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     glp
  * JD-Core Version:    0.7.0.1
  */

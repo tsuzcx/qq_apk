@@ -2,42 +2,43 @@ package com.tencent.mobileqq.search.ftsentity;
 
 import android.content.Context;
 import android.content.Intent;
+import aylk;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 
 public class FTSEntitySearchActivity
   extends BaseSearchActivity
 {
-  static String a;
+  static String d;
   
   public static void a(Context paramContext, String paramString, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = paramString;
+    d = paramString;
     Intent localIntent = new Intent(paramContext, FTSEntitySearchActivity.class);
     localIntent.putExtra("keyword", paramString);
     localIntent.putExtra("extra_key_fts_type", paramInt);
     paramContext.startActivity(localIntent);
   }
   
-  protected BaseSearchFragment a()
+  public BaseSearchFragment a()
   {
-    return FTSEntitySearchFragment.a(jdField_a_of_type_JavaLangString);
+    return FTSEntitySearchFragment.a(d);
   }
   
-  protected String a()
+  public String a()
   {
-    return FTSEntitySearchUtils.b(this, this.jdField_a_of_type_Int);
+    return aylk.b(this, this.a);
   }
   
-  protected void doOnStart()
+  public void doOnStart()
   {
     super.doOnStart();
-    com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent.a = true;
+    bdps.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsentity.FTSEntitySearchActivity
  * JD-Core Version:    0.7.0.1
  */

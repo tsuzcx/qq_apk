@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.nearby.now.model;
 
-import aets;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import avda;
 
 public class MedalItem
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aets();
+  public static final Parcelable.Creator<MedalItem> CREATOR = new avda();
   public int a;
   public long a;
   public String a;
@@ -89,7 +89,7 @@ public class MedalItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.MedalItem
  * JD-Core Version:    0.7.0.1
  */

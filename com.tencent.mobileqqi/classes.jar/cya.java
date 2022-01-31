@@ -1,17 +1,15 @@
-import android.os.Handler;
-import android.view.ViewStub;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.main.CommonLoadingView;
-import com.tencent.mobileqq.activity.main.CommonLoadingView.OnFirstDrawListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class cya
-  implements CommonLoadingView.OnFirstDrawListener
+  implements DialogInterface.OnClickListener
 {
-  public cya(Leba paramLeba, CommonLoadingView paramCommonLoadingView, ViewStub paramViewStub) {}
+  public cya(NotificationActivity paramNotificationActivity) {}
   
-  public void x_()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.post(new cyb(this));
+    this.a.c();
   }
 }
 

@@ -1,32 +1,23 @@
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class ajbl
-  implements View.OnFocusChangeListener
+class ajbl
+  implements ajal
 {
-  public ajbl(NewTroopContactView paramNewTroopContactView) {}
+  ajbl(ajbk paramajbk, File paramFile, AtomicBoolean paramAtomicBoolean) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onResult(int paramInt, PreloadManager.PathResult arg2)
   {
-    if (paramBoolean)
+    if ((paramInt == 0) && (!TextUtils.isEmpty(???.filePath))) {}
+    synchronized (this.jdField_a_of_type_JavaIoFile)
     {
-      paramView = this.a.a();
-      if (paramView != null)
-      {
-        paramView.a(NewTroopContactView.a(this.a), this.a.jdField_a_of_type_JavaUtilArrayList);
-        FragmentTransaction localFragmentTransaction = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCreateActivity.getSupportFragmentManager().beginTransaction();
-        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
-          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
-        }
-        localFragmentTransaction.add(2131363923, paramView);
-        localFragmentTransaction.commitAllowingStateLoss();
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = paramView;
-      }
+      this.jdField_a_of_type_JavaIoFile.notify();
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      return;
+      QLog.e("QWalletPicDownloader", 2, "downloadImage file not succeed, pathRes=" + ???);
     }
   }
 }

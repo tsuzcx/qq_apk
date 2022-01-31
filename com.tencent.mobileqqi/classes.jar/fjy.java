@@ -1,36 +1,36 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.transfile.ProtoReqManager.IProtoRespBack;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Set;
+import tencent.mobileim.structmsg.structmsg.RspHead;
+import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
 
 public class fjy
-  extends FriendListObserver
+  implements ProtoReqManager.IProtoRespBack
 {
-  public fjy(QQAppInterface paramQQAppInterface) {}
+  public fjy(SystemMessageProcessor paramSystemMessageProcessor, long paramLong1, long paramLong2, long paramLong3) {}
   
-  protected void a(String paramString, boolean paramBoolean)
+  public void a(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(QQAppInterface.jdField_a_of_type_JavaLangString + "_friendListObserver", 2, "onUpdateFriendInfo uin:" + paramString + ",isSuccess:" + paramBoolean);
-    }
-    if (this.a.jdField_a_of_type_JavaUtilSet.contains(paramString))
+    try
     {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.c() == 1) && (paramString != null) && (paramString.equals(((QQMessageFacade.Message)this.a.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a().get(0)).frienduin)) && (this.a.isBackground_Pause) && (this.a.e()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(QQAppInterface.jdField_a_of_type_JavaLangString + "_friendListObserver", 2, "update notifcation");
-        }
-        this.a.a((QQMessageFacade.Message)this.a.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a().get(0), false);
+      paramProtoResp = paramProtoResp.a.getWupBuffer();
+      paramProtoReq = new structmsg.RspSystemMsgRead();
+      paramProtoReq.mergeFrom(paramProtoResp);
+      int i = paramProtoReq.head.result.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.", 2, "sendGroupSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
       }
-      this.a.jdField_a_of_type_JavaUtilSet.remove(paramString);
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(QQAppInterface.jdField_a_of_type_JavaLangString + "_friendListObserver", 2, "removeObserver");
+    catch (Exception paramProtoResp)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", paramProtoResp);
     }
-    this.a.c(this);
   }
 }
 

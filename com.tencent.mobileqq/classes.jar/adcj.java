@@ -1,38 +1,36 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadController;
-import com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel;
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class adcj
-  implements IDownloadController
+  implements bhuk
 {
-  public adcj(C2CFileModel paramC2CFileModel) {}
+  public adcj(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, bhuf parambhuf) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a(false, FileModel.a(this.a.a.a()), this.a.b(), new adck(this));
-  }
-  
-  public void b()
-  {
-    this.a.d();
-    int i = this.a.d();
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (i == 0)
+    if (this.jdField_a_of_type_Bhuf != null) {
+      this.jdField_a_of_type_Bhuf.dismiss();
+    }
+    switch (paramInt)
     {
-      localQQAppInterface.a().a(this.a.c());
+    default: 
+      return;
+    case 0: 
+      FriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, 1);
+      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, String.format("https://ti.qq.com/hybrid-h5/school_relation/eduexperience?category=%d&_wv=67108994", new Object[] { Integer.valueOf(3) }));
+      return;
+    case 1: 
+      FriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, 2);
+      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, String.format("https://ti.qq.com/hybrid-h5/school_relation/eduexperience?category=%d&_wv=67108994", new Object[] { Integer.valueOf(2) }));
       return;
     }
-    localQQAppInterface.a().a(this.a.a.a());
+    FriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, 3);
+    FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, String.format("https://ti.qq.com/hybrid-h5/school_relation/eduexperience?category=%d&_wv=67108994", new Object[] { Integer.valueOf(1) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adcj
  * JD-Core Version:    0.7.0.1
  */

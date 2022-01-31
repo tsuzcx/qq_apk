@@ -1,21 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.15.1;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.15.2;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class orv
-  implements ValueAnimator.AnimatorUpdateListener
+public final class orv
+  implements biab
 {
-  public orv(RotateCircleImageView paramRotateCircleImageView) {}
+  orv(BaseActivity paramBaseActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(biaa parambiaa)
   {
-    RotateCircleImageView.b(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    switch (parambiaa.a)
+    {
+    default: 
+      return;
+    case 0: 
+      rvv.a(this.a, new ReadInJoyUtils.15.1(this));
+      return;
+    }
+    rvv.a(this.a, new ReadInJoyUtils.15.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     orv
  * JD-Core Version:    0.7.0.1
  */

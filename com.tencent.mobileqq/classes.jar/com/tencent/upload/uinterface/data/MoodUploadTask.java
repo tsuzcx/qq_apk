@@ -10,11 +10,20 @@ import SLICE_UPLOAD.FileControlReq;
 import SLICE_UPLOAD.FileControlRsp;
 import SLICE_UPLOAD.UploadModel;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.upload.common.Const.UploadRetCode;
-import com.tencent.upload.e.e;
+import com.tencent.upload.common.UploadGlobalConfig;
+import com.tencent.upload.network.session.IUploadSession;
+import com.tencent.upload.network.session.SessionPool;
+import com.tencent.upload.request.UploadRequest;
+import com.tencent.upload.request.UploadResponse;
+import com.tencent.upload.request.impl.BatchControlRequest;
+import com.tencent.upload.request.impl.FileControlRequest;
+import com.tencent.upload.task.TaskState;
 import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadConfig;
 import com.tencent.upload.uinterface.TaskTypeConfig;
+import com.tencent.upload.uinterface.token.TokenProvider;
+import com.tencent.upload.utils.Const.UploadRetCode;
+import com.tencent.upload.utils.ProtocolUtil;
+import com.tencent.upload.utils.UploadLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -30,7 +39,7 @@ public class MoodUploadTask
   public byte[] businessData = null;
   public int iAlbumTypeID = 0;
   public long iBatchID = 0L;
-  public List<PictureInfo> pictureInfoList = null;
+  public List<MoodUploadTask.PictureInfo> pictureInfoList = null;
   public String sAlbumID = "";
   
   public MoodUploadTask()
@@ -68,7 +77,7 @@ public class MoodUploadTask
       Iterator localIterator = this.pictureInfoList.iterator();
       while (localIterator.hasNext())
       {
-        PictureInfo localPictureInfo = (PictureInfo)localIterator.next();
+        MoodUploadTask.PictureInfo localPictureInfo = (MoodUploadTask.PictureInfo)localIterator.next();
         localShuoshuoInfoReq.pic_list.add(toShuoshuoPicInfo(localPictureInfo));
       }
     }
@@ -79,7 +88,7 @@ public class MoodUploadTask
     return localShuoshuoInfoReq;
   }
   
-  private static final ShuoshuoPicInfo toShuoshuoPicInfo(PictureInfo paramPictureInfo)
+  private static final ShuoshuoPicInfo toShuoshuoPicInfo(MoodUploadTask.PictureInfo paramPictureInfo)
   {
     ShuoshuoPicInfo localShuoshuoPicInfo = new ShuoshuoPicInfo();
     localShuoshuoPicInfo.albumid = paramPictureInfo.albumid;
@@ -111,45 +120,38 @@ public class MoodUploadTask
     String str = localObject2.getClass().getSimpleName();
     try
     {
-      localObject2 = e.a(str, localObject2);
+      localObject2 = ProtocolUtil.pack(str, localObject2);
       localObject1 = localObject2;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        com.tencent.upload.common.b.e("MoodUploadTask", localException.toString());
+        UploadLog.e("MoodUploadTask", localException.toString());
       }
     }
     localObject2 = localObject1;
     if (localObject1 == null)
     {
       localObject2 = super.buildExtra();
-      com.tencent.upload.common.b.e("MoodUploadTask", "package ShuoshuoInfoReq error!!!");
+      UploadLog.e("MoodUploadTask", "package ShuoshuoInfoReq error!!!");
     }
     return localObject2;
   }
   
-  protected com.tencent.upload.c.b getControlRequest()
+  public UploadRequest getControlRequest()
   {
-    Object localObject1 = this.vLoginData;
-    Object localObject2 = new AuthToken(2, (byte[])localObject1, this.vLoginKey, com.tencent.upload.common.a.b().getAppId());
-    StringBuilder localStringBuilder = new StringBuilder().append(" vLoginData.size:");
-    if (localObject1 == null) {}
-    for (localObject1 = "null";; localObject1 = Integer.valueOf(localObject1.length))
-    {
-      com.tencent.upload.common.b.c("MoodUploadTask", localObject1 + " vLoginKey.size:" + this.vLoginKey.length);
-      this.mCheckType = CheckType.TYPE_SHA1;
-      this.mChecksum = "";
-      buildEnv();
-      this.mModel = UploadModel.MODEL_NORMAL;
-      this.mStEnv = com.tencent.upload.common.a.g();
-      localObject1 = new com.tencent.upload.c.a.c(this.iUin + "", this.mAppid, (AuthToken)localObject2, this.mChecksum, this.mCheckType, this.mDataLength, this.mStEnv, this.mModel, this.mSessionId, this.mNeedIpRedirect, true, this.iSync);
-      ((com.tencent.upload.c.a.c)localObject1).a(buildExtra());
-      localObject2 = new HashMap();
-      ((Map)localObject2).put("1", (FileControlReq)((com.tencent.upload.c.a.c)localObject1).h());
-      return new com.tencent.upload.c.a.b((Map)localObject2);
-    }
+    Object localObject = TokenProvider.getAuthToken(this.vLoginData, this.vLoginKey);
+    this.mCheckType = CheckType.TYPE_SHA1;
+    this.mChecksum = "";
+    buildEnv();
+    this.mModel = UploadModel.MODEL_NORMAL;
+    this.mStEnv = UploadGlobalConfig.getEnv();
+    localObject = new FileControlRequest(this.iUin + "", this.mAppid, (AuthToken)localObject, this.mChecksum, this.mCheckType, this.mDataLength, this.mStEnv, this.mModel, this.mSessionId, this.mNeedIpRedirect, true, this.iSync, null);
+    ((FileControlRequest)localObject).setExtraParam(buildExtra());
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("1", (FileControlReq)((FileControlRequest)localObject).createJceRequest());
+    return new BatchControlRequest(localHashMap);
   }
   
   public TaskTypeConfig getUploadTaskType()
@@ -157,22 +159,24 @@ public class MoodUploadTask
     return TaskTypeConfig.ImageUploadTaskType;
   }
   
-  protected void onFileControlResponse(JceStruct paramJceStruct, com.tencent.upload.c.c paramc)
+  public void onFileControlResponse(JceStruct paramJceStruct, UploadResponse paramUploadResponse)
   {
     processUploadMoodRsp(((FileControlRsp)((FileBatchControlRsp)paramJceStruct).control_rsp.get("1")).biz_rsp);
   }
   
   public boolean onRun()
   {
-    com.tencent.upload.c.b localb = getControlRequest();
-    this.mSession = this.mSessionPool.c();
-    if (this.mSession == null)
+    UploadRequest localUploadRequest = getControlRequest();
+    IUploadSession localIUploadSession = this.mSessionPool.poll();
+    if (localIUploadSession == null)
     {
-      com.tencent.upload.common.b.e("MoodUploadTask", "MoodUploadTask onRun(), get session return null !");
+      UploadLog.e("MoodUploadTask", "MoodUploadTask onRun(), get session return null !");
       retryPollSession();
       return false;
     }
-    return this.mSession.a(localb, this);
+    this.mSavedSession = localIUploadSession;
+    this.mSession = localIUploadSession;
+    return this.mSession.send(localUploadRequest, this);
   }
   
   public boolean onVerifyUploadFile()
@@ -185,12 +189,12 @@ public class MoodUploadTask
     if (paramArrayOfByte == null)
     {
       onError(Const.UploadRetCode.DATA_UNPACK_FAILED_RETCODE.getCode(), "vRspData invalid");
-      com.tencent.upload.common.b.e("MoodUploadTask", "vRspData == null");
+      UploadLog.e("MoodUploadTask", "vRspData == null");
       return;
     }
     try
     {
-      paramArrayOfByte = (ShuoshuoInfoRsp)e.a(ShuoshuoInfoRsp.class.getSimpleName(), paramArrayOfByte);
+      paramArrayOfByte = (ShuoshuoInfoRsp)ProtocolUtil.unpack(ShuoshuoInfoRsp.class.getSimpleName(), paramArrayOfByte);
       if (paramArrayOfByte == null)
       {
         onError(Const.UploadRetCode.DATA_UNPACK_FAILED_RETCODE.getCode(), "processMoodRsp() unpack ShuoshuoInfoRsp == null !");
@@ -201,39 +205,19 @@ public class MoodUploadTask
     {
       for (;;)
       {
-        com.tencent.upload.common.b.e("MoodUploadTask", paramArrayOfByte.toString());
+        UploadLog.e("MoodUploadTask", paramArrayOfByte.toString());
         paramArrayOfByte = null;
       }
-      com.tencent.upload.common.b.b("MoodUploadTask", "onUploadSucceed flowid = " + this.flowId);
+      UploadLog.d("MoodUploadTask", "onUploadSucceed flowid = " + this.flowId);
       onUploadSucceed(new MoodUploadResult(paramArrayOfByte.vBusiNessDataRsp));
-      setTaskStatus(com.tencent.upload.d.c.g);
+      setTaskStatus(TaskState.SUCCEED);
       onTaskFinished(Const.UploadRetCode.SUCCEED.getCode(), Const.UploadRetCode.SUCCEED.getDesc());
     }
-  }
-  
-  public static final class PictureInfo
-  {
-    public String albumid;
-    public int hdheight;
-    public String hdid;
-    public int hdwidth;
-    public int isAppExtPic;
-    public boolean ishd;
-    public Map<String, String> mapWaterMarkParams;
-    public String picUrl;
-    public int picheight;
-    public String pictureid;
-    public int pictype;
-    public int picwidth;
-    public String richval;
-    public String sloc;
-    public String strWaterMarkID;
-    public String strWaterMarkMemo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.MoodUploadTask
  * JD-Core Version:    0.7.0.1
  */

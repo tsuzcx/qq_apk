@@ -1,21 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import android.content.Context;
 
-public class ort
-  implements ValueAnimator.AnimatorUpdateListener
+final class ort
+  implements sms
 {
-  public ort(RotateCircleImageView paramRotateCircleImageView) {}
+  ort(Context paramContext, String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    RotateCircleImageView.b(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    ors.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ort
  * JD-Core Version:    0.7.0.1
  */

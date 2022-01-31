@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ConfigurationService$Storage
-  extends MessageMicro
+  extends MessageMicro<Storage>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "builtin", "external" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L) }, Storage.class);
   public final PBUInt64Field builtin = PBField.initUInt64(0L);

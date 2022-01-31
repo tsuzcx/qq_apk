@@ -1,59 +1,63 @@
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import com.tencent.mobileqq.utils.ChnToSpell.CharSpelling;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.biz.qqstory.widget.StoryCoverView;
 
 public class wob
-  implements Comparator
+  extends bibi
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  public wob(PublicAccountFragment paramPublicAccountFragment) {}
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  StoryCoverView jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView;
+  String jdField_a_of_type_JavaLangString;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  String jdField_b_of_type_JavaLangString;
+  TextView c;
+  TextView d;
+  TextView e;
+  TextView f;
   
-  public int a(woe paramwoe1, woe paramwoe2)
+  public wob(StoryMessageListActivity paramStoryMessageListActivity, View paramView)
   {
-    paramwoe1 = paramwoe1.a.name;
-    paramwoe2 = paramwoe2.a.name;
-    if ((paramwoe1 == null) && (paramwoe2 == null)) {}
-    int j;
-    int k;
-    do
-    {
-      return 0;
-      if ((paramwoe1 == null) && (paramwoe2 != null)) {
-        return -1;
-      }
-      if ((paramwoe1 != null) && (paramwoe2 == null)) {
-        return 1;
-      }
-      j = paramwoe1.length();
-      k = paramwoe2.length();
-      int m = Math.min(j, k);
-      int i = 0;
-      while (i < m)
-      {
-        char c1 = paramwoe1.charAt(i);
-        char c2 = paramwoe2.charAt(i);
-        if (c1 != c2)
-        {
-          paramwoe1 = ChnToSpell.a(c1, i);
-          paramwoe2 = ChnToSpell.a(c2, i);
-          if (paramwoe1.jdField_a_of_type_Int == paramwoe2.jdField_a_of_type_Int) {
-            return paramwoe1.jdField_a_of_type_JavaLangString.compareTo(paramwoe2.jdField_a_of_type_JavaLangString);
-          }
-          return paramwoe1.jdField_a_of_type_Int - paramwoe2.jdField_a_of_type_Int;
-        }
-        i += 1;
-      }
-      if (j < k) {
-        return -1;
-      }
-    } while (j <= k);
-    return 1;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362973));
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView = ((StoryCoverView)paramView.findViewById(2131377824));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371139));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364511));
+    this.c = ((TextView)paramView.findViewById(2131371246));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369436);
+    this.d = ((TextView)paramView.findViewById(2131377876));
+    this.e = ((TextView)paramView.findViewById(2131379610));
+    this.f = ((TextView)paramView.findViewById(2131379611));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369451);
+    paramView.setOnClickListener(this);
+    paramView.setOnLongClickListener(this);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.onItemClick(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wob
  * JD-Core Version:    0.7.0.1
  */

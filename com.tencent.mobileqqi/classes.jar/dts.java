@@ -1,22 +1,12 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
 public class dts
-  implements CompoundButton.OnCheckedChangeListener
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public dts(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    switch (paramCompoundButton.getId())
-    {
-    default: 
-      return;
-    }
-    TroopAssistantManager.a().a(this.a.b, paramBoolean);
-  }
+  public TextView a;
+  public TroopTransferActivity.TroopMemberItem a;
 }
 
 

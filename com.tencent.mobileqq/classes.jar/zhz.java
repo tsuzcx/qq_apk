@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.app.NewFriendManager.INewFriendListener;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.content.ComponentCallbacks2;
+import android.content.res.Configuration;
+import com.tencent.common.app.ToolRuntimeBase;
 
 public class zhz
-  implements Runnable
+  implements ComponentCallbacks2
 {
-  public zhz(NewFriendManager paramNewFriendManager, int paramInt) {}
+  public zhz(ToolRuntimeBase paramToolRuntimeBase) {}
   
-  public void run()
+  public void onConfigurationChanged(Configuration paramConfiguration) {}
+  
+  public void onLowMemory() {}
+  
+  public void onTrimMemory(int paramInt)
   {
-    synchronized (NewFriendManager.a(this.jdField_a_of_type_ComTencentMobileqqAppNewFriendManager))
-    {
-      Iterator localIterator = NewFriendManager.a(this.jdField_a_of_type_ComTencentMobileqqAppNewFriendManager).iterator();
-      if (localIterator.hasNext()) {
-        ((NewFriendManager.INewFriendListener)localIterator.next()).a(this.jdField_a_of_type_Int);
-      }
-    }
+    this.a.onTrimMemory(paramInt);
   }
 }
 

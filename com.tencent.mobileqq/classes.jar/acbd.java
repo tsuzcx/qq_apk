@@ -1,20 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class acbd
-  extends VipSpecialCareHandler
+  implements View.OnClickListener
 {
-  public acbd(MessengerService paramMessengerService) {}
+  public acbd(AccountManageActivity paramAccountManageActivity) {}
   
-  public void a(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    this.a.a(paramBundle);
+    this.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acbd
  * JD-Core Version:    0.7.0.1
  */

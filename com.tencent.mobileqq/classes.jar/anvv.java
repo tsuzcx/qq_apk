@@ -1,161 +1,134 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.BitmapUtils;
-import com.tencent.biz.qqstory.utils.VideoUtils;
-import com.tencent.biz.qqstory.utils.VideoUtils.VideoKeyFrameFragment;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer.Mp4VideoFragmentInfo;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.utils.AudioDataUtil;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.utils.MediaUtil;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.utils.MediaUtil.FrameWithoutBlackResult;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloadListener;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderTask;
+import com.tencent.mobileqq.bigbrother.ServerApi.ErrorInfo;
+import com.tencent.mobileqq.bigbrother.ServerApi.RspPreDownloadRecmd;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class anvv
-  implements Runnable
+final class anvv
+  implements BusinessObserver
 {
-  public anvv(HWEditImportVideoPlayer paramHWEditImportVideoPlayer) {}
+  anvv(RockDownloaderTask paramRockDownloaderTask) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    SLog.d("Q.qqstory.record.HWEditImportVideoPlayer", "thumb get start");
-    HWEditImportVideoPlayer.a(this.a);
-    if (this.a.jdField_a_of_type_Boolean) {}
-    Object localObject2;
-    int i;
-    for (long l1 = 10000L;; l1 = 2147483647L)
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloader", 2, new Object[] { "type=", Integer.valueOf(paramInt), " success=", Boolean.valueOf(paramBoolean), " bundle=", paramBundle });
+    }
+    Object localObject;
+    if (1 == paramInt)
     {
-      localObject2 = VideoUtils.a(HWEditImportVideoPlayer.a(this.a), l1);
-      if (localObject2 != null) {
-        break label948;
+      if ((!paramBoolean) || (paramBundle == null)) {
+        break label816;
       }
-      localObject2 = new ArrayList();
-      i = 0;
-      while (i < this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration / l1)
+      localObject = paramBundle.getByteArray("BUNDLE_KEY_RESPONSE_BYTE");
+      paramBundle = new ServerApi.RspPreDownloadRecmd();
+      if (localObject == null)
       {
-        ((ArrayList)localObject2).add(new VideoUtils.VideoKeyFrameFragment(i * l1, l1));
-        i += 1;
+        if (this.a.getRockDownloadListener() != null)
+        {
+          this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), alud.a(2131713884), 10003);
+          this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+        }
+        anvu.a(this.a, "0x800A1E6");
       }
     }
-    label931:
-    label948:
-    for (;;)
+    else
     {
-      if (((ArrayList)localObject2).size() <= 0) {
-        ((ArrayList)localObject2).add(new VideoUtils.VideoKeyFrameFragment(0L, this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration));
-      }
-      long l3 = SystemClock.uptimeMillis();
-      i = 0;
-      Object localObject1;
-      int j;
-      if (i < ((ArrayList)localObject2).size())
-      {
-        localObject1 = (VideoUtils.VideoKeyFrameFragment)((ArrayList)localObject2).get(i);
-        long l4 = SystemClock.uptimeMillis();
-        long l2 = Math.min(HWEditImportVideoPlayer.a(this.a) + ((VideoUtils.VideoKeyFrameFragment)localObject1).b, this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration);
-        l1 = l2;
-        if (1000L + l2 > this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration) {
-          l1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration;
-        }
-        if (i == 5) {
-          l1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration;
-        }
-        Object localObject3 = MediaUtil.a(HWEditImportVideoPlayer.a(this.a), HWEditImportVideoPlayer.a(this.a));
-        localObject1 = localObject3;
-        if (i == 0)
-        {
-          localObject1 = localObject3;
-          if (localObject3 != null)
-          {
-            float f = MediaCodecThumbnailGenerator.a((Bitmap)localObject3);
-            SLog.b("Q.qqstory.record.HWEditImportVideoPlayer", "blackPrecent = %f start fix black frame.", Float.valueOf(f));
-            localObject1 = localObject3;
-            if (f > 0.9F)
-            {
-              MediaUtil.FrameWithoutBlackResult localFrameWithoutBlackResult = MediaUtil.a(HWEditImportVideoPlayer.a(this.a), HWEditImportVideoPlayer.a(this.a));
-              localObject1 = localObject3;
-              if (localFrameWithoutBlackResult.jdField_a_of_type_AndroidGraphicsBitmap != null)
-              {
-                localObject1 = localObject3;
-                if (localFrameWithoutBlackResult.jdField_a_of_type_Long > 0L)
-                {
-                  localObject1 = localObject3;
-                  if (MediaCodecThumbnailGenerator.a(localFrameWithoutBlackResult.jdField_a_of_type_AndroidGraphicsBitmap) <= 0.9F)
-                  {
-                    if (!((Bitmap)localObject3).isRecycled()) {
-                      ((Bitmap)localObject3).recycle();
-                    }
-                    localObject1 = localFrameWithoutBlackResult.jdField_a_of_type_AndroidGraphicsBitmap;
-                    HWEditImportVideoPlayer.a(this.a, (int)(localFrameWithoutBlackResult.jdField_a_of_type_Long / 1000L));
-                    SLog.d("Q.qqstory.record.HWEditImportVideoPlayer", "Fix black frame. adjust star time to " + HWEditImportVideoPlayer.a(this.a));
-                  }
-                }
-              }
-            }
-          }
-        }
-        localObject3 = localObject1;
-        if (localObject1 != null)
-        {
-          j = CaptureUtil.a(((Bitmap)localObject1).getWidth());
-          int k = CaptureUtil.a(((Bitmap)localObject1).getHeight());
-          if (j == ((Bitmap)localObject1).getWidth())
-          {
-            localObject3 = localObject1;
-            if (k == ((Bitmap)localObject1).getHeight()) {}
-          }
-          else
-          {
-            SLog.d("Q.qqstory.record.HWEditImportVideoPlayer", "origin bitmap width:%d, height:%d, should change size to w:%d, h:%d", new Object[] { Integer.valueOf(((Bitmap)localObject1).getWidth()), Integer.valueOf(((Bitmap)localObject1).getHeight()), Integer.valueOf(j), Integer.valueOf(j) });
-            localObject3 = BitmapUtils.a((Bitmap)localObject1, new Rect(0, 0, j, k), true);
-          }
-        }
-        localObject1 = new HWEditImportVideoPlayer.Mp4VideoFragmentInfo(i, (Bitmap)localObject3);
-        HWEditImportVideoPlayer.Mp4VideoFragmentInfo.a((HWEditImportVideoPlayer.Mp4VideoFragmentInfo)localObject1, HWEditImportVideoPlayer.a(this.a));
-        HWEditImportVideoPlayer.Mp4VideoFragmentInfo.b((HWEditImportVideoPlayer.Mp4VideoFragmentInfo)localObject1, HWEditImportVideoPlayer.b(this.a));
-        this.a.jdField_a_of_type_JavaUtilList.add(localObject1);
-        SLog.b("Q.qqstory.record.HWEditImportVideoPlayer", "create fragment info = %s, cost = %dms", localObject1, Long.valueOf(SystemClock.uptimeMillis() - l4));
-        if (l1 < this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration) {}
-      }
-      else
-      {
-        SLog.b("Q.qqstory.record.HWEditImportVideoPlayer", "create fragment info count = %d, cost = %dms", Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), Long.valueOf(SystemClock.uptimeMillis() - l3));
-        i = 0;
-        label694:
-        if (i >= this.a.jdField_a_of_type_JavaUtilList.size()) {
-          break label931;
-        }
-        localObject1 = (HWEditImportVideoPlayer.Mp4VideoFragmentInfo)this.a.jdField_a_of_type_JavaUtilList.get(i);
-        localObject2 = HWEditImportVideoPlayer.a(this.a) + "_" + i + ".IFrames.audio";
-        j = AudioDataUtil.a(HWEditImportVideoPlayer.b(this.a), (String)localObject2, (float)HWEditImportVideoPlayer.Mp4VideoFragmentInfo.a((HWEditImportVideoPlayer.Mp4VideoFragmentInfo)localObject1) * 1.0F / (float)this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration, (float)HWEditImportVideoPlayer.Mp4VideoFragmentInfo.b((HWEditImportVideoPlayer.Mp4VideoFragmentInfo)localObject1) * 1.0F / (float)this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration);
-        if (j != 0) {
-          break label867;
-        }
-        SLog.b("Q.qqstory.record.HWEditImportVideoPlayer", "clipAudioFile finished audioFilePath" + (String)localObject2);
-        ((HWEditImportVideoPlayer.Mp4VideoFragmentInfo)localObject1).b = ((String)localObject2);
-      }
-      for (;;)
-      {
-        i += 1;
-        break label694;
-        i += 1;
-        break;
-        label867:
-        SLog.e("Q.qqstory.record.HWEditImportVideoPlayer", "clipAudioFile failed. errcode =%s,  audioFilePath=%s, duration=%s, startTime=%s, endTime=%s", new Object[] { Integer.valueOf(j), localObject2, Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration), Long.valueOf(HWEditImportVideoPlayer.Mp4VideoFragmentInfo.a((HWEditImportVideoPlayer.Mp4VideoFragmentInfo)localObject1)), Long.valueOf(HWEditImportVideoPlayer.Mp4VideoFragmentInfo.b((HWEditImportVideoPlayer.Mp4VideoFragmentInfo)localObject1)) });
-      }
-      this.a.a(new anvw(this), 0L);
       return;
     }
+    try
+    {
+      paramBundle.mergeFrom((byte[])localObject);
+      localObject = (ServerApi.ErrorInfo)paramBundle.err_info.get();
+      if (localObject == null) {
+        break label757;
+      }
+      if (((ServerApi.ErrorInfo)localObject).err_code.get() != 0) {
+        break label395;
+      }
+      paramBoolean = anvu.a(paramBundle, this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloader", 2, new Object[] { "backend isGetPermission=", Boolean.valueOf(paramBoolean) });
+      }
+      if (!paramBoolean)
+      {
+        anvu.a(this.a, "0x800A1E9");
+        if (this.a.getRockDownloadListener() == null) {
+          break label387;
+        }
+        this.a.getRockDownloadListener().onPermissionDeny(this.a.getDownloadInfo());
+        this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloader", 2, "InvalidProtocolBufferMicroException,", paramBundle);
+      }
+      if (this.a.getRockDownloadListener() != null)
+      {
+        this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), "GET_PERMISSION_ERROR_BYTE_INFO", 10003);
+        this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+      }
+      anvu.a(this.a, "0x800A1E6");
+      return;
+    }
+    anvu.a(this.a, "0x800A1E4");
+    if (this.a.getRockDownloadListener() != null) {
+      this.a.getRockDownloadListener().onPermissionPermit(this.a.getDownloadInfo());
+    }
+    label387:
+    anvu.c(this.a);
+    return;
+    label395:
+    if (((ServerApi.ErrorInfo)localObject).err_code.get() == 10006)
+    {
+      if (this.a.getRockDownloadListener() != null)
+      {
+        this.a.getRockDownloadListener().onPermissionDeny(this.a.getDownloadInfo());
+        this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), ((ServerApi.ErrorInfo)localObject).err_msg.get(), ((ServerApi.ErrorInfo)localObject).err_code.get());
+        this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+      }
+      anvu.a(this.a, "0x800A1E6");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloader", 2, new Object[] { "GET_DOWNLOAD_CONFIG error!! ", " ", paramBundle.download_url.get(), " ", Integer.valueOf(paramBundle.start_time.get()), " ", Integer.valueOf(paramBundle.end_time.get()), " ", Integer.valueOf(paramBundle.interval.get()), " ", Integer.valueOf(paramBundle.quota_num.get()), " ", Integer.valueOf(paramBundle.daily_num.get()), " ", ((ServerApi.ErrorInfo)localObject).err_msg.get(), " ", Integer.valueOf(((ServerApi.ErrorInfo)localObject).err_code.get()), " ", ((ServerApi.ErrorInfo)localObject).jump_url.get() });
+    }
+    if (this.a.getRockDownloadListener() != null)
+    {
+      this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), ((ServerApi.ErrorInfo)localObject).err_msg.get(), ((ServerApi.ErrorInfo)localObject).err_code.get());
+      this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+    }
+    anvu.a(this.a, "0x800A1E6");
+    return;
+    label757:
+    if (this.a.getRockDownloadListener() != null)
+    {
+      this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), "GET_PERMISSION_ERROR_NULL_ERROR_INFO", 10003);
+      this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+    }
+    anvu.a(this.a, "0x800A1E6");
+    return;
+    label816:
+    if (this.a.getRockDownloadListener() != null)
+    {
+      this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), "GET_PERMISSION_ERROR", 10003);
+      this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+    }
+    anvu.a(this.a, "0x800A1E6");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anvv
  * JD-Core Version:    0.7.0.1
  */

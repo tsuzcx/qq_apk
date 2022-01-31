@@ -8,16 +8,16 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.biz.ProtoServlet;
+import azqs;
+import beft;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.protofile.coupon.CouponProto.MarkBusinessFavourUpdateReq;
 import java.util.Iterator;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
+import mzx;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,9 +27,9 @@ public class CouponActivity$CouponWebViewFragment
   int jdField_a_of_type_Int = 0;
   boolean jdField_a_of_type_Boolean = false;
   
-  private void f()
+  private void i()
   {
-    NewIntent localNewIntent = new NewIntent(super.getActivity(), ProtoServlet.class);
+    NewIntent localNewIntent = new NewIntent(super.getActivity(), mzx.class);
     localNewIntent.putExtra("cmd", "CouponSvr.coup_markBizupdate");
     localNewIntent.putExtra("data", new CouponProto.MarkBusinessFavourUpdateReq().toByteArray());
     if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
@@ -38,20 +38,20 @@ public class CouponActivity$CouponWebViewFragment
     this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(localNewIntent);
   }
   
-  protected int a(Bundle paramBundle)
+  public int a(Bundle paramBundle)
   {
     int i = super.a(paramBundle);
     if (!this.jdField_a_of_type_AndroidContentIntent.hasExtra("source"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setText(2131430174);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setOnClickListener(this);
+      this.jdField_a_of_type_Beft.a.setVisibility(8);
+      this.jdField_a_of_type_Beft.c.setVisibility(0);
+      this.jdField_a_of_type_Beft.c.setText(2131696565);
+      this.jdField_a_of_type_Beft.c.setOnClickListener(this);
       return i;
     }
     this.jdField_a_of_type_AndroidContentIntent.removeExtra("source");
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setVisibility(8);
+    this.jdField_a_of_type_Beft.a.setVisibility(8);
+    this.jdField_a_of_type_Beft.c.setVisibility(8);
     return i;
   }
   
@@ -89,14 +89,14 @@ public class CouponActivity$CouponWebViewFragment
     super.a(this.jdField_a_of_type_AndroidContentIntent, this.g);
     if (!this.jdField_a_of_type_AndroidContentIntent.hasExtra("source"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setText(2131430174);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setClickable(false);
+      this.jdField_a_of_type_Beft.a.setVisibility(8);
+      this.jdField_a_of_type_Beft.c.setVisibility(0);
+      this.jdField_a_of_type_Beft.c.setText(2131696565);
+      this.jdField_a_of_type_Beft.c.setClickable(false);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setVisibility(8);
+    this.jdField_a_of_type_Beft.a.setVisibility(8);
+    this.jdField_a_of_type_Beft.c.setVisibility(8);
   }
   
   public boolean a(Bundle paramBundle)
@@ -106,7 +106,7 @@ public class CouponActivity$CouponWebViewFragment
     this.jdField_a_of_type_AndroidContentIntent.putExtra("webStyle", "noBottomBar");
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("title", super.getResources().getString(2131430173));
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("title", super.getResources().getString(2131696568));
       this.jdField_a_of_type_Boolean = true;
       super.a(paramBundle);
       if (this.jdField_a_of_type_Boolean)
@@ -135,8 +135,8 @@ public class CouponActivity$CouponWebViewFragment
     {
       this.jdField_a_of_type_AndroidContentIntent.putExtra("url", paramBundle);
       this.jdField_a_of_type_AndroidContentIntent.putExtra("from", this.jdField_a_of_type_Int & 0x1C | 0x10);
-      f();
-      ReportController.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "coupon.activity.show", 0, 0, "", "", "", "");
+      i();
+      azqs.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "coupon.activity.show", 0, 0, "", "", "", "");
       return true;
       this.jdField_a_of_type_AndroidContentIntent.removeExtra("title");
       break;
@@ -145,7 +145,7 @@ public class CouponActivity$CouponWebViewFragment
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c)
+    if (paramView == this.jdField_a_of_type_Beft.c)
     {
       if ((this.jdField_a_of_type_Int & 0x4) != 0)
       {

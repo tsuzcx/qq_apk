@@ -1,70 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.AudioUtil;
-import com.tencent.mobileqq.utils.QQRecorder;
-import com.tencent.mobileqq.widget.MicroPhoneClipImageView;
-import com.tencent.mobileqq.widget.MicroPhoneDialog;
-import com.tencent.mobileqq.widget.OvalProgress;
+import com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener;
+import com.tencent.open.base.LogUtility;
+import com.tencent.smtt.sdk.WebView;
 
 public class hla
-  extends Handler
+  implements Runnable
 {
-  public hla(MicroPhoneDialog paramMicroPhoneDialog) {}
+  public hla(OpenJsBridge.OpenJsBridgeListener paramOpenJsBridgeListener, String paramString, WebView paramWebView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    LogUtility.b("Response", "AsyncInterface_end:javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge$OpenJsBridgeListener.b + ",'r':-2,'data':'no such method'});");
+    try
     {
-    default: 
-      return;
-    case 1: 
-      if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.b();
-      }
-      AudioUtil.a(this.a.jdField_a_of_type_AndroidContentContext, false);
-      return;
-    case 2: 
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetMicroPhoneClipImageView.setSoundWave(paramMessage.arg1);
-      return;
-    case 3: 
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetMicroPhoneClipImageView.setSoundWave(0);
-      return;
-    case 4: 
-      this.a.a(true);
-      return;
-    case 5: 
-      this.a.a(false);
-      return;
-    case 6: 
-      this.a.a();
-      return;
-    case 7: 
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress.setProgressParams(0L, 0L);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839030);
-      return;
-    case 9: 
-      MicroPhoneDialog.a(this.a);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839030);
-      return;
-    case 8: 
-      MicroPhoneDialog.b(this.a);
-      return;
-    case 10: 
-      MicroPhoneDialog.a(this.a);
-      MicroPhoneDialog.c(this.a);
-      return;
-    case 11: 
-      this.a.c.setText(Integer.toString((int)Math.round(this.a.g * 1.0D / 1000.0D)) + "\"");
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge$OpenJsBridgeListener.b + ",'r':-2,'data':'no such method'});");
       return;
     }
-    MicroPhoneDialog.a(this.a, 2131562618, 1);
+    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hla
  * JD-Core Version:    0.7.0.1
  */

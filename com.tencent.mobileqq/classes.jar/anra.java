@@ -1,29 +1,34 @@
-import com.tencent.image.URLImageView;
-import cooperation.qzone.widget.FastAnimationDrawable;
-import dov.com.tencent.biz.qqstory.takevideo.EditGifImage;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.ark.ArkEnvironmentManager.Log;
+import com.tencent.qphone.base.util.QLog;
 
-public class anra
-  implements Runnable
+final class anra
+  implements ArkEnvironmentManager.Log
 {
-  public anra(EditGifImage paramEditGifImage) {}
-  
-  public void run()
+  public void d(String paramString1, String paramString2)
   {
-    FastAnimationDrawable localFastAnimationDrawable = this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable;
-    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.stop();
-    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable = this.a.b;
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable);
-    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
-    this.a.d = false;
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a(true, false);
-    this.a.b = localFastAnimationDrawable;
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anra
  * JD-Core Version:    0.7.0.1
  */

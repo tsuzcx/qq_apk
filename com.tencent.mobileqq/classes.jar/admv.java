@@ -1,38 +1,50 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.AppProtocolObserver;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.Switch;
 
-public final class admv
-  extends ProtoUtils.AppProtocolObserver
+public class admv
+  extends ameq
 {
-  public admv(NearbyAppInterface paramNearbyAppInterface) {}
+  public admv(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    boolean bool2 = false;
-    if (paramInt == 0) {
-      NearbySPUtil.b(this.a.getCurrentAccountUin(), false);
-    }
-    for (boolean bool1 = false;; bool1 = NearbySPUtil.b(this.a.getCurrentAccountUin()))
+    TextView localTextView;
+    if (paramBoolean1)
     {
-      paramArrayOfByte = new HashMap();
-      paramArrayOfByte.put("param_reason", String.valueOf(paramInt));
-      paramBundle = StatisticCollector.a(BaseApplicationImpl.getContext());
-      String str = this.a.getCurrentAccountUin();
-      if (paramInt == 0) {
-        bool2 = true;
+      this.a.f.a().setChecked(paramBoolean2);
+      localTextView = this.a.a;
+      if (!paramBoolean2) {
+        break label59;
       }
-      paramBundle.a(str, "oidb_0x91f", bool2, 0L, 0L, paramArrayOfByte, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby", 2, "oidb_0x91f| visible:" + bool1 + "replyCode:" + paramInt);
-      }
+    }
+    label59:
+    for (int i = 2131693300;; i = 2131693301)
+    {
+      localTextView.setText(i);
+      bdne.c(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
       return;
     }
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    boolean bool = true;
+    if (!paramBoolean1)
+    {
+      QQToast.a(this.a, 1, alud.a(2131708311), 0).a();
+      Switch localSwitch = this.a.f.a();
+      if (!paramBoolean2) {}
+      for (paramBoolean1 = bool;; paramBoolean1 = false)
+      {
+        localSwitch.setChecked(paramBoolean1);
+        return;
+      }
+    }
+    bdne.c(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
   }
 }
 

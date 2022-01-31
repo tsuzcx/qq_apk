@@ -5,15 +5,19 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.ComponentView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import pgd;
+import pxk;
+import pxt;
+import qbs;
+import qfg;
 
 public class ComponentDivider
   extends View
-  implements ComponentView
+  implements pxk
 {
-  CmpCtxt a;
+  qbs a;
   
   public ComponentDivider(Context paramContext)
   {
@@ -42,16 +46,16 @@ public class ComponentDivider
   private void a(Context paramContext, Object paramObject)
   {
     b(paramContext);
-    if ((paramObject instanceof IReadInJoyModel))
+    if ((paramObject instanceof pgd))
     {
-      this.a.a((IReadInJoyModel)paramObject);
+      this.a.a((pgd)paramObject);
       b();
     }
   }
   
   private void b(Context paramContext)
   {
-    this.a = new CmpCtxt();
+    this.a = new qbs();
     a(paramContext);
     a();
   }
@@ -60,19 +64,21 @@ public class ComponentDivider
   
   public void a(Context paramContext)
   {
-    setBackgroundColor(getContext().getResources().getColor(2131493477));
-  }
-  
-  public void a(FeedItemCell.CellListener paramCellListener)
-  {
-    this.a.a(paramCellListener);
+    setBackgroundColor(getContext().getResources().getColor(2131166786));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof IReadInJoyModel))
+    if ((paramObject instanceof pgd))
     {
-      this.a.a((IReadInJoyModel)paramObject);
+      this.a.a((pgd)paramObject);
+      if ((((pgd)paramObject).a() == 53) && ((getLayoutParams() instanceof LinearLayout.LayoutParams)))
+      {
+        paramObject = (LinearLayout.LayoutParams)getLayoutParams();
+        paramObject.leftMargin = Utils.dp2px(6.0D);
+        paramObject.rightMargin = Utils.dp2px(6.0D);
+        setBackgroundColor(getContext().getResources().getColor(2131165613));
+      }
       if (this.a.a.e()) {
         setVisibility(0);
       }
@@ -84,17 +90,22 @@ public class ComponentDivider
     setVisibility(8);
   }
   
+  public void a(pxt parampxt)
+  {
+    this.a.a(parampxt);
+  }
+  
   public void b()
   {
-    IReadInJoyModel localIReadInJoyModel = this.a.a;
+    pgd localpgd = this.a.a;
     ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -2);
-    UtilsForComponent.a(getContext(), localIReadInJoyModel, localLayoutParams);
+    qfg.a(getContext(), localpgd, localLayoutParams);
     setLayoutParams(localLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentDivider
  * JD-Core Version:    0.7.0.1
  */

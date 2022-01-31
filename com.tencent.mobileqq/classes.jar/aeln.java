@@ -1,39 +1,22 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class aeln
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aeln(NearbyAppInterface paramNearbyAppInterface) {}
+  public aeln(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    synchronized (this.a.a)
-    {
-      boolean bool = this.a.d;
-      if (!bool) {}
-      try
-      {
-        DeviceProfileManager.a(this.a, 214).a(this.a);
-        this.a.d = true;
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("NearbyAppInterface", 2, "onDestroy: ", localException);
-          }
-        }
-      }
-    }
+    this.a.n();
+    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, ndd.a(), "2", "0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeln
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,38 @@
-import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.biz.qqstory.model.TroopNickNameManager.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class uwj
-  implements FMDialogUtil.FMDialogInterface
+  extends ameq
 {
-  public uwj(FileItemBuilder paramFileItemBuilder, FileManagerEntity paramFileManagerEntity) {}
+  uwj(uwi paramuwi) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      localStringBuilder = new StringBuilder().append("onGetTroopMemberCardInfoResult suc=").append(paramBoolean).append(" size=");
+      if (paramArrayList != null) {
+        break label78;
+      }
+    }
+    label78:
+    for (int i = 0;; i = paramArrayList.size())
+    {
+      QLog.d("TroopNickNameManager", 2, i);
+      if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+        ThreadManager.executeOnSubThread(new TroopNickNameManager.1.1(this, paramArrayList));
+      }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uwj
  * JD-Core Version:    0.7.0.1
  */

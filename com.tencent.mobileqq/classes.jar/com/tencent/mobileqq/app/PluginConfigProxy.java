@@ -8,18 +8,18 @@ import mqq.manager.ServerConfigManager;
 import mqq.observer.ServerConfigObserver;
 import mqq.os.MqqHandler;
 import protocol.KQQConfig.GPS;
+import protocol.KQQConfig.GetResourceReqInfoV2;
 import protocol.KQQConfig.GetResourceRespV2;
 import protocol.KQQConfig.ReqUserInfo;
-import zjl;
 
 public class PluginConfigProxy
   extends ServerConfigObserver
 {
   private int jdField_a_of_type_Int = 0;
-  private final ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ArrayList b = new ArrayList();
+  private final ArrayList<ServerConfigObserver> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<GetResourceReqInfoV2> b = new ArrayList();
   
-  public void a(int paramInt, List paramList, ServerConfigObserver paramServerConfigObserver)
+  public void a(int paramInt, List<GetResourceReqInfoV2> paramList, ServerConfigObserver paramServerConfigObserver)
   {
     this.b.addAll(paramList);
     this.jdField_a_of_type_Int |= paramInt;
@@ -37,7 +37,7 @@ public class PluginConfigProxy
     localReqUserInfo.strAuthPassword = "NzVK_qGE";
     localReqUserInfo.vCells = new ArrayList();
     localReqUserInfo.vMacs = new ArrayList();
-    ((ServerConfigManager)paramQQAppInterface.getManager(4)).getPluginConfig(this.jdField_a_of_type_Int, localReqUserInfo, this.b, this, AppSetting.jdField_a_of_type_Int);
+    ((ServerConfigManager)paramQQAppInterface.getManager(4)).getPluginConfig(this.jdField_a_of_type_Int, localReqUserInfo, this.b, this, AppSetting.a());
   }
   
   public void onGetPluginConfig(boolean paramBoolean, int paramInt, GetResourceRespV2 paramGetResourceRespV2)
@@ -52,7 +52,7 @@ public class PluginConfigProxy
         while (localIterator.hasNext())
         {
           ServerConfigObserver localServerConfigObserver = (ServerConfigObserver)localIterator.next();
-          ThreadManager.getSubThreadHandler().post(new zjl(this, localServerConfigObserver, paramBoolean, paramInt, paramGetResourceRespV2));
+          ThreadManager.getSubThreadHandler().post(new PluginConfigProxy.CallbackRunner(this, localServerConfigObserver, paramBoolean, paramInt, paramGetResourceRespV2));
         }
       }
     }

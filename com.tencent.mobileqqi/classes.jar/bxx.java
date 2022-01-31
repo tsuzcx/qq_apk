@@ -1,30 +1,23 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.managers.MessageRecordManagerImpl;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatActivity;
+import java.util.TimerTask;
 
 public class bxx
-  implements Runnable
+  extends TimerTask
 {
-  public bxx(AccountManageActivity paramAccountManageActivity, boolean paramBoolean, String paramString) {}
+  public bxx(ChatActivity paramChatActivity) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      ProxyManager localProxyManager = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.b.a();
-      if (localProxyManager != null)
-      {
-        localProxyManager.c();
-        new MessageRecordManagerImpl().a(this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.runOnUiThread(new bxy(this));
+    Message localMessage = new Message();
+    localMessage.what = 101;
+    ChatActivity.a(this.a).sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bxx
  * JD-Core Version:    0.7.0.1
  */

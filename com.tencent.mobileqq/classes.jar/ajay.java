@@ -1,17 +1,42 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPClientConnectListener;
 
-public class ajay
-  implements View.OnClickListener
+class ajay
+  implements EIPClientConnectListener
 {
-  public ajay(ContactListAdapter paramContactListAdapter) {}
+  ajay(ajaw paramajaw, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void connectFailed()
   {
-    GroupManagerActivity.a((Activity)ContactListAdapter.a(this.a));
+    ajaw.a(this.jdField_a_of_type_Ajaw, false);
+    ajaw.b(this.jdField_a_of_type_Ajaw, false);
+    synchronized (ajaw.a(this.jdField_a_of_type_Ajaw))
+    {
+      ajaw.a(this.jdField_a_of_type_Ajaw).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletIPCConnector", 2, "connectFailed:" + ajaw.a(this.jdField_a_of_type_Ajaw));
+      }
+      return;
+    }
+  }
+  
+  public void connectSuccess(EIPCConnection arg1)
+  {
+    long l = System.currentTimeMillis();
+    if (??? != null) {
+      ajaw.a(this.jdField_a_of_type_Ajaw, ???.procName);
+    }
+    ajaw.a(this.jdField_a_of_type_Ajaw, true);
+    ajaw.b(this.jdField_a_of_type_Ajaw, false);
+    synchronized (ajaw.a(this.jdField_a_of_type_Ajaw))
+    {
+      ajaw.a(this.jdField_a_of_type_Ajaw).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletIPCConnector", 2, "connectSuccess:" + ajaw.a(this.jdField_a_of_type_Ajaw) + "|" + (l - this.jdField_a_of_type_Long));
+      }
+      return;
+    }
   }
 }
 

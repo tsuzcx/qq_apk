@@ -1,24 +1,14 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
-public final class adot
-  implements Runnable
+public class adot
+  extends altm
 {
-  public adot(Context paramContext) {}
+  public adot(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void run()
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("mqq.intent.action.QQ_BACKGROUND");
-    try
-    {
-      this.a.sendBroadcast(localIntent);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.i("GESTUREPWDUTILS", 1, localException.toString(), localException);
+    if (paramBoolean) {
+      this.a.c();
     }
   }
 }

@@ -1,33 +1,35 @@
-import android.app.Activity;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
-import com.tencent.open.appcommon.js.AppInterface;
-import com.tencent.open.downloadnew.MyAppDialog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
 
 public class aldp
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public aldp(AppInterface paramAppInterface, DialogInterface.OnClickListener paramOnClickListener) {}
+  public aldp(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Resources localResources = this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.activity.getResources();
-    MyAppDialog localMyAppDialog = new MyAppDialog(this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.activity);
-    localMyAppDialog.a(2131428541, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, true);
-    localMyAppDialog.b(2131428542, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, true);
-    localMyAppDialog.a(localResources.getString(2131428532));
-    localMyAppDialog.b(localResources.getString(2131428543));
-    localMyAppDialog.setCancelable(false);
-    localMyAppDialog.setOnDismissListener(new aldq(this));
-    if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.activity != null) && (!this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.activity.isFinishing())) {
-      localMyAppDialog.show();
+    switch (paramMotionEvent.getAction())
+    {
     }
-    this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog = localMyAppDialog;
+    for (;;)
+    {
+      return true;
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
+      this.a.jdField_a_of_type_AndroidWidgetButton.performClick();
+      continue;
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(0.5F);
+      continue;
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aldp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoVolumeControl;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public class mox
-  implements View.OnClickListener
+class mox
+  implements TextWatcher
 {
-  public mox(FastWebVideoFeedsPlayActivity paramFastWebVideoFeedsPlayActivity) {}
+  mox(mov parammov) {}
   
-  public void onClick(View paramView)
-  {
-    if (paramView.getId() == 2131367141)
-    {
-      paramView = FastWebVideoVolumeControl.a();
-      if (FastWebVideoVolumeControl.a().b()) {
-        break label33;
-      }
-    }
-    label33:
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.a(bool, "user_click", 2);
-      return;
-    }
-  }
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mox
  * JD-Core Version:    0.7.0.1
  */

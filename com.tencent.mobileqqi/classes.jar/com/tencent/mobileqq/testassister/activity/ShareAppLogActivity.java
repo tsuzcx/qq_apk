@@ -22,23 +22,23 @@ import com.tencent.mobileqq.testassister.ShareAppLogHelper.OnGetLocalLogListener
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.widget.Switch;
 import com.tencent.widget.TCWDatePickerDialogHelper;
-import gqp;
-import gqq;
-import gqr;
-import gqu;
-import gqv;
-import gqw;
+import gmi;
+import gmj;
+import gmk;
+import gmn;
+import gmo;
+import gmp;
 
 public class ShareAppLogActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new gqp(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new gmi(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
-  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new gqq(this);
+  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new gmj(this);
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ShareAppLogHelper.OnGetLocalLogListener jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper$OnGetLocalLogListener = new gqr(this);
+  private ShareAppLogHelper.OnGetLocalLogListener jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper$OnGetLocalLogListener = new gmk(this);
   private ShareAppLogHelper jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private Switch jdField_a_of_type_ComTencentWidgetSwitch;
@@ -76,7 +76,7 @@ public class ShareAppLogActivity
     int k = localTime.monthDay;
     try
     {
-      TCWDatePickerDialogHelper.a(this, i, j + 1, k, new gqw(this, paramTextView));
+      TCWDatePickerDialogHelper.a(this, i, j + 1, k, new gmp(this, paramTextView));
       return;
     }
     catch (Exception paramTextView) {}
@@ -98,12 +98,12 @@ public class ShareAppLogActivity
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new gqu(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new gmn(this));
   }
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new gqv(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new gmo(this));
   }
   
   protected void a(Bundle paramBundle)
@@ -150,7 +150,7 @@ public class ShareAppLogActivity
     // Byte code:
     //   0: aload_1
     //   1: invokevirtual 257	android/view/View:getId	()I
-    //   4: lookupswitch	default:+44->48, 2131233147:+279->283, 2131233151:+288->292, 2131233155:+45->49, 2131233157:+297->301
+    //   4: lookupswitch	default:+44->48, 2131233149:+279->283, 2131233153:+288->292, 2131233157:+45->49, 2131233159:+297->301
     //   49: aload_0
     //   50: getfield 259	com/tencent/mobileqq/testassister/activity/ShareAppLogActivity:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   53: invokevirtual 99	android/widget/TextView:getEditableText	()Landroid/text/Editable;
@@ -409,14 +409,14 @@ public class ShareAppLogActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903626);
+    setContentView(2130903628);
     setTitle(2131562848);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233147));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233149));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233151));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233153));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131233146));
-    this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131233150));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131233148));
+    this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131233152));
     this.jdField_a_of_type_AndroidWidgetTextView.setInputType(4);
     this.jdField_b_of_type_AndroidWidgetTextView.setInputType(4);
     this.jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper = new ShareAppLogHelper(getApplicationContext());
@@ -425,12 +425,12 @@ public class ShareAppLogActivity
     this.jdField_b_of_type_AndroidWidgetTextView.setText(a(System.currentTimeMillis()));
     this.jdField_a_of_type_AndroidWidgetEditText.setText(String.format("%02d", new Object[] { Integer.valueOf(a(System.currentTimeMillis() - 7200000L)) }));
     this.jdField_b_of_type_AndroidWidgetEditText.setText(String.format("%02d", new Object[] { Integer.valueOf(a(System.currentTimeMillis())) }));
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131233153));
+    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131233155));
     this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
     this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131233155));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131233157));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131233157));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131233159));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   

@@ -1,39 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 
 public class xjc
-  implements View.OnClickListener
+  extends xis
 {
-  public xjc(BannerManager paramBannerManager) {}
+  public final int c;
   
-  public void onClick(View paramView)
+  public xjc(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    BannerManager.a(this.a).app.getPreferences();
-    UpgradeController.a().a();
-    if (UpgradeController.a().a() == 4)
-    {
-      UpgradeController.a().a(BannerManager.a(this.a));
-      ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, UpgradeConstants.b(), UpgradeController.b(), UpgradeController.a(), "1");
-    }
-    for (;;)
-    {
-      this.a.a(-1, null);
-      return;
-      UpgradeDetailActivity.a(BannerManager.a(this.a), UpgradeController.a().a(), true, true, true);
-      ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, UpgradeConstants.b(), UpgradeController.b(), UpgradeController.a(), "1");
-    }
+    super(paramInt3, paramString, paramInt1);
+    this.c = paramInt2;
+  }
+  
+  @NonNull
+  public Class<? extends xit> a()
+  {
+    return xjd.class;
+  }
+  
+  @NonNull
+  public xit a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return new xjd(this, paramContext, paramViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xjc
  * JD-Core Version:    0.7.0.1
  */

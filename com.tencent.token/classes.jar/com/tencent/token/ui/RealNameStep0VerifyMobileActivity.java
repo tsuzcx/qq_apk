@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.token.ax;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.RealNameQueryResult;
 import com.tencent.token.core.bean.RealNameStatusResult;
+import com.tencent.token.do;
 
 public class RealNameStep0VerifyMobileActivity
   extends BaseActivity
@@ -16,6 +16,7 @@ public class RealNameStep0VerifyMobileActivity
   byte[] backphotoinfo;
   private boolean canchange_uin;
   byte[] frontphotoinfo;
+  boolean isFromRecommView;
   private boolean isShowLockVerify = false;
   boolean ish5zzb;
   byte[] mBackData;
@@ -24,7 +25,7 @@ public class RealNameStep0VerifyMobileActivity
   byte[] mFaceData;
   byte[] mFrontData;
   String mFrontPath;
-  private Handler mHandler = new wh(this);
+  private Handler mHandler = new vt(this);
   private TextView mInfo;
   private TextView mMaskMobile;
   private String mMobile;
@@ -38,19 +39,19 @@ public class RealNameStep0VerifyMobileActivity
   
   private void initView()
   {
-    setContentView(2130903158);
-    setTitle(2131362004);
-    this.mInfo = ((TextView)findViewById(2131296930));
-    this.mMaskMobile = ((TextView)findViewById(2131296440));
-    this.mNextBtn = ((Button)findViewById(2131296442));
-    this.mChangeMobileBtnBtn = ((Button)findViewById(2131296931));
+    setContentView(2130968721);
+    setTitle(2131231620);
+    this.mInfo = ((TextView)findViewById(2131559101));
+    this.mMaskMobile = ((TextView)findViewById(2131558728));
+    this.mNextBtn = ((Button)findViewById(2131558730));
+    this.mChangeMobileBtnBtn = ((Button)findViewById(2131559147));
     if (this.mSceneId == 1001) {
-      this.mChangeMobileBtnBtn.setOnClickListener(new wj(this));
+      this.mChangeMobileBtnBtn.setOnClickListener(new vv(this));
     }
     for (;;)
     {
       this.mMaskMobile.setText(this.mMobile);
-      this.mNextBtn.setOnClickListener(new wl(this));
+      this.mNextBtn.setOnClickListener(new vx(this));
       return;
       if (this.mSceneId == 1003)
       {
@@ -58,10 +59,10 @@ public class RealNameStep0VerifyMobileActivity
       }
       else
       {
-        this.mInfo.setText(2131361819);
+        this.mInfo.setText(2131230796);
         this.mInfo.setGravity(17);
-        this.mChangeMobileBtnBtn.setText(2131361824);
-        this.mChangeMobileBtnBtn.setOnClickListener(new wk(this));
+        this.mChangeMobileBtnBtn.setText(2131230801);
+        this.mChangeMobileBtnBtn.setOnClickListener(new vw(this));
       }
     }
   }
@@ -89,8 +90,9 @@ public class RealNameStep0VerifyMobileActivity
     this.canchange_uin = paramBundle.getBooleanExtra("canchange_uin", false);
     this.mQueryResult = ((RealNameQueryResult)getIntent().getSerializableExtra("result"));
     this.ish5zzb = paramBundle.getBooleanExtra("ish5zzb", false);
-    if ((this.mRealUin == 0L) && (ax.a().e() != null)) {
-      this.mRealUin = ax.a().e().mRealUin;
+    this.isFromRecommView = getIntent().getBooleanExtra("zzb_recommend_view", false);
+    if ((this.mRealUin == 0L) && (do.a().e() != null)) {
+      this.mRealUin = do.a().e().mRealUin;
     }
     initView();
   }

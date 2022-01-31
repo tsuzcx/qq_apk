@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class BnrReport$BNRConfigMsg
-  extends MessageMicro
+  extends MessageMicro<BNRConfigMsg>
 {
   public static final int CMD_FIELD_NUMBER = 2;
   public static final int EXT_INFO_FIELD_NUMBER = 4;
@@ -25,7 +25,7 @@ public final class BnrReport$BNRConfigMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.bnr.BnrReport.BNRConfigMsg
  * JD-Core Version:    0.7.0.1
  */

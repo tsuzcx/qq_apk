@@ -1,43 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.util.BitmapManager;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-public final class aewv
-  implements URLDrawable.URLDrawableListener
+class aewv
+  implements badp
 {
-  public aewv(String paramString1, String paramString2, String paramString3, String paramString4, QQAppInterface paramQQAppInterface) {}
+  aewv(aewu paramaewu) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a()
   {
-    paramURLDrawable = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130842645);
-    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.b, paramURLDrawable, this.c, this.d);
-    new NowVideoReporter().h("video").i("playpage_fw_suc").a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    Bitmap localBitmap = ShortVideoShareUtil.a(paramURLDrawable);
-    paramURLDrawable = localBitmap;
-    if (localBitmap == null) {
-      paramURLDrawable = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130842645);
-    }
-    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.b, paramURLDrawable, this.c, this.d);
-    new NowVideoReporter().h("video").i("playpage_fw_suc").a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    int i = this.a.a.jdField_a_of_type_Int / 2;
+    int j = (int)(this.a.a.b - bdaq.a(this.a.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.a.jdField_a_of_type_Baes.b / 2.0F);
+    int k = (int)(this.a.a.b - bdaq.a(this.a.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.a.jdField_a_of_type_Baes.b / 2.0F);
+    badx localbadx = new badx(new bado[] { new bads(450, i, j, i, k), new bads(450, i, k, i, j) });
+    localbadx.a = true;
+    this.a.a.jdField_a_of_type_Baes.a(new bado[] { localbadx });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aewv
  * JD-Core Version:    0.7.0.1
  */

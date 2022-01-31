@@ -1,21 +1,23 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class rqr
-  implements View.OnClickListener
+class rqr
+  implements PopupWindow.OnDismissListener
 {
-  public rqr(BaseChatPie paramBaseChatPie) {}
+  rqr(rqj paramrqj) {}
   
-  public void onClick(View paramView)
+  public void onDismiss()
   {
-    this.a.c.cancel();
+    rqj.a(this.a).a(1.0F);
+    if (this.a.b)
+    {
+      this.a.a.c();
+      this.a.b = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rqr
  * JD-Core Version:    0.7.0.1
  */

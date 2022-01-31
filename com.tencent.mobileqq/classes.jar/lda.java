@@ -1,30 +1,59 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.Context;
+import android.util.Pair;
+import com.rookery.translate.type.Language;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class lda
-  implements ActionSheet.OnButtonClickListener
+  extends lcx
 {
-  public lda(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity, String paramString, ActionSheet paramActionSheet) {}
+  private static lda a;
   
-  public void OnClick(View paramView, int paramInt)
+  public static lda a()
   {
-    switch (paramInt)
+    try
     {
+      if (a == null) {
+        a = new lda();
+      }
+      return a;
     }
+    finally {}
+  }
+  
+  public void a(Context paramContext, List<String> paramList, Language paramLanguage, String paramString, Long paramLong, ldq paramldq)
+  {
+    if (paramLanguage == null) {
+      paramLanguage = Language.CHINESE_SIMPLIFIED.toString();
+    }
+    Object localObject;
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyMessagesActivity.getActivity());
+      localObject = new ArrayList();
+      ((List)localObject).add(new Pair("key", paramString));
+      ((List)localObject).add(new Pair("target", paramLanguage));
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        ((List)localObject).add(new Pair("q", (String)paramList.next()));
+      }
+      localObject = paramLanguage.toString();
+      if (localObject != null)
+      {
+        paramLanguage = (Language)localObject;
+        if (((String)localObject).length() != 0) {}
+      }
+      else
+      {
+        paramLanguage = Language.CHINESE_SIMPLIFIED.toString();
+      }
     }
+    lcz.a(paramContext, null, (List)localObject, new ldb(this, paramldq, paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lda
  * JD-Core Version:    0.7.0.1
  */

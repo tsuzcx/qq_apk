@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/bja" android:layout_width="320.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/aza" android:background="@drawable/common_alert_bg" android:layout_width="320.0dip" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <com.tencent.mobileqq.widget.RoundImageView android:id="@id/bj8" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginTop="48.299988dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+        <TextView android:textColor="@color/gg" android:gravity="center" android:background="@drawable/aj4" android:layout_width="22.799988dip" android:layout_height="22.799988dip" android:layout_marginLeft="-11.399994dip" android:text="1" android:layout_toRightOf="@id/bj8" android:layout_alignTop="@id/bj8" />
+        <TextView android:textSize="@dimen/aek" android:textColor="@color/fl" android:ellipsize="end" android:gravity="center" android:id="@id/dialogTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="34.5dip" android:maxLines="1" android:layout_below="@id/bj8" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/gm" android:gravity="center" android:id="@id/bin" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_below="@id/dialogTitle" />
+        <Button android:textSize="17.0sp" android:id="@id/bik" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="24.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="16.0dip" android:layout_below="@id/bin" style="@style/i4" />
+        <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_below="@id/bik" />
+    </RelativeLayout>
+    <ImageView android:id="@id/az7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:src="@drawable/f9p" android:layout_below="@id/aza" android:layout_centerHorizontal="true" android:contentDescription="@string/l5u" />
+</RelativeLayout>

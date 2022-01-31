@@ -1,49 +1,62 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import android.view.KeyEvent;
+import android.view.View;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import java.util.ArrayList;
 
-public class rng
-  extends AccountObserver
+public abstract interface rng
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  @Nullable
+  public abstract VideoInfo a();
   
-  public rng(AssociatedAccountManageActivity paramAssociatedAccountManageActivity, String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public abstract VideoFeedsPlayManager a();
   
-  public void onDeleteAccount(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountManage", 2, "DelHistoryAccountObserver onDeleteAccount isSuccess " + paramBoolean + ",peerUin:" + this.jdField_a_of_type_JavaLangString + ",isDeleteHistory:" + this.jdField_a_of_type_Boolean);
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity;
-    if (Build.VERSION.SDK_INT > 10) {}
-    for (int i = 4;; i = 0)
-    {
-      localObject = ((AssociatedAccountManageActivity)localObject).getSharedPreferences("Last_Login", i);
-      if ((paramBoolean) && (localObject != null) && (((SharedPreferences)localObject).contains("uin")) && (((SharedPreferences)localObject).getString("uin", "").equals(this.jdField_a_of_type_JavaLangString)))
-      {
-        ((SharedPreferences)localObject).edit().remove("uin").commit();
-        if (QLog.isColorLevel()) {
-          QLog.d("AssociatedAccountManage", 2, "delete Last_Login");
-        }
-      }
-      if ((paramBoolean) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a(this.jdField_a_of_type_JavaLangString);
-      }
-      return;
-    }
-  }
+  public abstract ArrayList<VideoInfo> a();
+  
+  public abstract rac a();
+  
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(VideoInfo paramVideoInfo, int paramInt1, int paramInt2);
+  
+  public abstract void a(VideoFeedsRecyclerView paramVideoFeedsRecyclerView, rmn paramrmn, View paramView);
+  
+  public abstract void a(rne paramrne);
+  
+  public abstract boolean a(int paramInt, KeyEvent paramKeyEvent);
+  
+  public abstract boolean a(rmr paramrmr);
+  
+  public abstract boolean a(rne paramrne);
+  
+  public abstract boolean a(boolean paramBoolean);
+  
+  public abstract void b(VideoInfo paramVideoInfo);
+  
+  public abstract void c();
+  
+  public abstract void c(VideoInfo paramVideoInfo);
+  
+  public abstract void d();
+  
+  public abstract void d(VideoInfo paramVideoInfo);
+  
+  public abstract void e();
+  
+  public abstract void e(VideoInfo paramVideoInfo);
+  
+  public abstract void f(VideoInfo paramVideoInfo);
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rng
  * JD-Core Version:    0.7.0.1
  */

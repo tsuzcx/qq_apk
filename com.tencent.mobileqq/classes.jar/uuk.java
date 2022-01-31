@@ -1,33 +1,23 @@
-import android.annotation.TargetApi;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 
-public class uuk
-  implements ArkViewImplement.LoadCallback
+class uuk
+  implements View.OnLongClickListener
 {
-  public uuk(ArkAppItemBubbleBuilder paramArkAppItemBubbleBuilder, ArkAppItemBubbleBuilder.Holder paramHolder, MessageForArkApp paramMessageForArkApp) {}
+  uuk(uui paramuui, uuh paramuuh) {}
   
-  @TargetApi(14)
-  public void onLoadFinish(int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "attachArkView onLoadFinish MessageForArkApp state=" + paramInt);
+    int i = this.jdField_a_of_type_Uuh.getPosition();
+    if (i >= 0) {
+      this.jdField_a_of_type_Uui.a.b(this.jdField_a_of_type_Uuh.itemView, i);
     }
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder$Holder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder$Holder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder$Holder.a.setVisibility(8);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uuk
  * JD-Core Version:    0.7.0.1
  */

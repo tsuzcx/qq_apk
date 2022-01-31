@@ -1,50 +1,32 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.mobileqq.redtouch.RedTouchTextView;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.mobileqq.utils.ImageUtil;
-import java.io.File;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment.4.1;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahfs
-  implements Runnable
+  extends ampn
 {
-  public ahfs(RedTouchTextView paramRedTouchTextView, String paramString, int paramInt) {}
-  
-  public void run()
+  public ahfs(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment, String paramString)
   {
-    Object localObject = new File(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.getContext().getFilesDir(), this.jdField_a_of_type_JavaLangString);
-    Bitmap localBitmap;
-    if (((File)localObject).exists())
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 2, "getview onLocationFinish info = " + paramSosoLbsInfo);
+    }
+    if (paramInt != 0)
     {
-      localBitmap = this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.a((File)localObject);
-      localObject = localBitmap;
-      if (this.jdField_a_of_type_Int == 1) {
-        localObject = ImageUtil.a(localBitmap, localBitmap.getWidth(), localBitmap.getWidth(), localBitmap.getHeight());
-      }
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.b = new BitmapDrawable((Bitmap)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.a();
+      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 1, "getview onLocationFinish, errorCode=" + paramInt);
+      this.a.a.post(new AddContactViewPagerTroopFragment.4.1(this));
     }
-    while (RedTouchTextView.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView)) {
-      return;
-    }
-    RedTouchTextView.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView, true);
-    if (HttpDownloadUtil.a(null, this.jdField_a_of_type_JavaLangString, (File)localObject))
-    {
-      localBitmap = this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.a((File)localObject);
-      localObject = localBitmap;
-      if (this.jdField_a_of_type_Int == 1) {
-        localObject = ImageUtil.a(localBitmap, localBitmap.getWidth(), localBitmap.getWidth(), localBitmap.getHeight());
-      }
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.b = new BitmapDrawable((Bitmap)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.a();
-    }
-    RedTouchTextView.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahfs
  * JD-Core Version:    0.7.0.1
  */

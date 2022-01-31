@@ -1,51 +1,33 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.richstatus.IActionListener;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class ahpu
-  extends ConfigObserver
+  implements View.OnClickListener
 {
-  public ahpu(StatusManager paramStatusManager) {}
+  public ahpu(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "onUpdateStatusActions " + paramBoolean + ", " + paramInt);
-    }
-    StatusManager.a(this.a, 0L);
-    if (paramBoolean)
+    if (!(paramView.getTag() instanceof ahok)) {}
+    do
     {
-      if (paramInt == 100)
+      do
       {
-        StatusManager.b(this.a, System.currentTimeMillis());
-        StatusManager.a(this.a).edit().putLong("k_update_time", StatusManager.a(this.a)).commit();
-      }
-      this.a.a(true);
-    }
-    if (StatusManager.a(this.a) != null)
-    {
-      Iterator localIterator = StatusManager.a(this.a).iterator();
-      if (localIterator.hasNext())
-      {
-        IActionListener localIActionListener = (IActionListener)localIterator.next();
-        if (paramBoolean) {}
-        for (int i = 300;; i = 301)
-        {
-          localIActionListener.a(paramInt, i);
-          break;
-        }
-      }
-    }
+        return;
+        paramView = (ahok)paramView.getTag();
+      } while (paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get() != 2);
+      this.a.a(paramView);
+    } while (paramView.jdField_a_of_type_Int != 82);
+    azqs.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "Clk_notice", 0, 0, "", "", "", paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahpu
  * JD-Core Version:    0.7.0.1
  */

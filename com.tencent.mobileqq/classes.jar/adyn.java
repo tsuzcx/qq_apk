@@ -1,30 +1,34 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.data.LebaFeedInfo;
-import com.tencent.mobileqq.leba.LebaFeedsAdapter;
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController;
-import com.tencent.mobileqq.leba.view.LebaFPSXListView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class adyn
-  implements Animator.AnimatorListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adyn(LebaFeedsAdapter paramLebaFeedsAdapter, LebaFeedInfo paramLebaFeedInfo) {}
+  public adyn(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    LebaFeedsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsAdapter, null);
-    LebaFeedsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsAdapter).a(false);
-    LebaFeedsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsAdapter, this.jdField_a_of_type_ComTencentMobileqqDataLebaFeedInfo.feedID);
-    this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsAdapter.notifyDataSetChanged();
-    LebaFeedsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsAdapter, false);
-    LebaFeedsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsAdapter).requestLayout();
+    int i = 1;
+    if (paramBoolean)
+    {
+      this.a.app.d(1);
+      paramCompoundButton = this.a.app;
+      if (!paramBoolean) {
+        break label68;
+      }
+    }
+    for (;;)
+    {
+      azqs.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_grpshake", 0, i, "", "", "", "");
+      return;
+      this.a.app.d(0);
+      break;
+      label68:
+      i = 0;
+    }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

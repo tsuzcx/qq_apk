@@ -87,6 +87,7 @@ public class AnimationView
       }
       this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
       this.jdField_g_of_type_Int = 2;
+      paramCanvas.save();
     case 2: 
       float f1 = (float)(SystemClock.uptimeMillis() - this.jdField_b_of_type_Long) / (float)this.jdField_c_of_type_Long;
       if (f1 >= 1.0F) {
@@ -136,6 +137,7 @@ public class AnimationView
     if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister != null) {
       this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.b();
     }
+    paramCanvas.save();
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_b_of_type_AndroidGraphicsRect);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
     paramCanvas.restore();

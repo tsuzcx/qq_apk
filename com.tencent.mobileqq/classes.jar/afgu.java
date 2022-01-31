@@ -1,22 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
 
-class afgu
-  implements DialogInterface.OnClickListener
+public abstract interface afgu
 {
-  afgu(afgp paramafgp, QQCustomDialog paramQQCustomDialog) {}
+  public abstract View a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    this.jdField_a_of_type_Afgp.a.f();
-  }
+  public abstract void a();
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void d();
+  
+  public abstract void j();
+  
+  public abstract void p();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afgu
  * JD-Core Version:    0.7.0.1
  */

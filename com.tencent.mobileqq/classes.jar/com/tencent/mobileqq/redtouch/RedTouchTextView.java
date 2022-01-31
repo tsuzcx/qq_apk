@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.redtouch;
 
-import ahfs;
-import ahft;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -20,6 +19,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.TextView;
+import bdhj;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -50,7 +50,7 @@ public class RedTouchTextView
   private Handler jdField_a_of_type_AndroidOsHandler;
   private BusinessInfoCheckUpdate.AppInfo jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo;
   public String a;
-  private List jdField_a_of_type_JavaUtilList;
+  private List<BusinessInfoCheckUpdate.RedTypeInfo> jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = a(9);
   public Drawable b;
@@ -136,7 +136,7 @@ public class RedTouchTextView
     }
   }
   
-  private int a(List paramList)
+  private int a(List<BusinessInfoCheckUpdate.RedTypeInfo> paramList)
   {
     int j = 0;
     boolean bool;
@@ -179,7 +179,7 @@ public class RedTouchTextView
     }
   }
   
-  private int a(List paramList, int paramInt)
+  private int a(List<BusinessInfoCheckUpdate.RedTypeInfo> paramList, int paramInt)
   {
     int j = 0;
     int k = 0;
@@ -234,7 +234,7 @@ public class RedTouchTextView
     }
   }
   
-  private List a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  public static List<BusinessInfoCheckUpdate.RedTypeInfo> a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
     if (paramAppInfo == null) {
       paramAppInfo = null;
@@ -297,14 +297,14 @@ public class RedTouchTextView
           {
             localObject1 = new JSONObject();
             if (n != 0) {
-              break label1120;
+              break label1128;
             }
             if (QLog.isColorLevel()) {
               QLog.d("RedTouchTextView", 2, "draw redtouchpoint");
             }
             j = getWidth() - a(this.jdField_a_of_type_JavaUtilList, i) - a(0);
             k = getHeight() / 2 - this.jdField_b_of_type_Int / 2;
-            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846051);
+            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849801);
             this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(j, k, this.jdField_b_of_type_Int + j, this.jdField_b_of_type_Int + k);
             this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
           }
@@ -346,7 +346,7 @@ public class RedTouchTextView
                 float f2 = ((Paint.FontMetrics)localObject4).top;
                 if (k != 0)
                 {
-                  localObject4 = getResources().getDrawable(2130846055);
+                  localObject4 = getResources().getDrawable(2130849805);
                   ((Drawable)localObject4).getBounds();
                   ((Drawable)localObject4).setBounds(m, i3, localRect.right, localRect.bottom);
                   ((Drawable)localObject4).draw(paramCanvas);
@@ -359,11 +359,11 @@ public class RedTouchTextView
                 paramCanvas.drawText((String)localObject3, j, f1 - f2, localPaint);
               }
             }
-            label1120:
+            label1128:
             do
             {
               if (n != 3) {
-                break label1135;
+                break label1143;
               }
               if (QLog.isColorLevel()) {
                 QLog.d("RedTouchTextView", 2, "draw redtouch img");
@@ -388,7 +388,7 @@ public class RedTouchTextView
                 if (QLog.isColorLevel()) {
                   QLog.d("RedTouchTextView", 2, "draw redtouch img gif ");
                 }
-                localObject2 = getResources().getDrawable(2130839132);
+                localObject2 = getResources().getDrawable(2130840085);
                 localObject3 = URLDrawable.URLDrawableOptions.obtain();
                 ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject2);
                 ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject2);
@@ -399,23 +399,23 @@ public class RedTouchTextView
                 ((URLDrawable)localObject1).setCallback(this);
                 ((URLDrawable)localObject1).draw(paramCanvas);
                 if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) {
-                  break label1135;
+                  break label1143;
                 }
                 this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(n, i1, this.jdField_a_of_type_Int + n, this.jdField_a_of_type_Int + i1);
                 this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-                break label1135;
+                break label1143;
                 localObject1 = new JSONObject(((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_desc.get());
                 break;
               }
               if (m != 0) {
-                break label1135;
+                break label1143;
               }
               if (QLog.isColorLevel()) {
                 QLog.d("RedTouchTextView", 2, "draw redtouch img static ");
               }
               if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null)
               {
-                localObject2 = getResources().getDrawable(2130839132);
+                localObject2 = getResources().getDrawable(2130840085);
                 ((Drawable)localObject2).setBounds(n, i1, this.jdField_a_of_type_Int + n, this.jdField_a_of_type_Int + i1);
                 ((Drawable)localObject2).draw(paramCanvas);
               }
@@ -423,14 +423,14 @@ public class RedTouchTextView
               {
                 if (k == 1)
                 {
-                  localObject2 = getResources().getDrawable(2130846051);
+                  localObject2 = getResources().getDrawable(2130849801);
                   ((Drawable)localObject2).setBounds(getWidth() - a(0) - a(9), i1 - a(4), getWidth() - a(0), i1 + a(5));
                   ((Drawable)localObject2).draw(paramCanvas);
                 }
-                if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) {
+                if ((this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) || (TextUtils.isEmpty((CharSequence)localObject1))) {
                   break;
                 }
-                ThreadManager.post(new ahfs(this, (String)localObject1, j), 8, null, true);
+                ThreadManager.post(new RedTouchTextView.1(this, (String)localObject1, j), 8, null, true);
                 break;
                 this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(n, i1, this.jdField_a_of_type_Int + n, this.jdField_a_of_type_Int + i1);
                 this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
@@ -447,8 +447,8 @@ public class RedTouchTextView
         }
         catch (Exception localException)
         {
-          label1135:
-          break label1135;
+          label1143:
+          break label1143;
         }
         i -= 1;
       }
@@ -639,7 +639,7 @@ public class RedTouchTextView
     }
   }
   
-  private boolean a(List paramList1, List paramList2)
+  private boolean a(List<BusinessInfoCheckUpdate.RedTypeInfo> paramList1, List<BusinessInfoCheckUpdate.RedTypeInfo> paramList2)
   {
     if ((paramList1 == null) || (paramList2 == null)) {}
     while ((paramList1.size() != paramList2.size()) || (paramList1.size() == 0)) {
@@ -707,21 +707,27 @@ public class RedTouchTextView
     return Color.parseColor(paramString);
   }
   
-  public Bitmap a(File paramFile)
+  protected Bitmap a(File paramFile)
   {
     if (paramFile == null) {
       return null;
     }
     try
     {
-      paramFile = new FileInputStream(paramFile.getAbsolutePath());
-      Bitmap localBitmap = SafeBitmapFactory.decodeStream(new BufferedInputStream(paramFile));
-      paramFile.close();
-      return localBitmap;
+      paramFile = paramFile.getAbsolutePath();
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inSampleSize = ((int)bdhj.a(new BufferedInputStream(new FileInputStream(paramFile)), this.c, this.c));
+      paramFile = SafeBitmapFactory.decodeStream(new BufferedInputStream(new FileInputStream(paramFile)), null, localOptions);
+      return paramFile;
     }
     catch (Exception paramFile)
     {
       QLog.e("RedTouchTextView", 1, "getIconFromFile exception e = " + paramFile.getMessage());
+      return null;
+    }
+    catch (Error paramFile)
+    {
+      QLog.e("RedTouchTextView", 1, "getIconFromFile error e = " + paramFile.getMessage());
     }
     return null;
   }
@@ -731,7 +737,7 @@ public class RedTouchTextView
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new ahft(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new RedTouchTextView.3(this));
   }
   
   public void invalidateDrawable(Drawable paramDrawable)
@@ -772,7 +778,7 @@ public class RedTouchTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchTextView
  * JD-Core Version:    0.7.0.1
  */

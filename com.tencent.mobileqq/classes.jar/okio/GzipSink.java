@@ -1,6 +1,5 @@
 package okio;
 
-import java.io.IOException;
 import java.util.zip.CRC32;
 import java.util.zip.Deflater;
 
@@ -26,11 +25,8 @@ public final class GzipSink
   
   private void updateCrc(Buffer paramBuffer, long paramLong)
   {
-    for (paramBuffer = paramBuffer.head;; paramBuffer = paramBuffer.next)
+    for (paramBuffer = paramBuffer.head; paramLong > 0L; paramBuffer = paramBuffer.next)
     {
-      if (paramLong <= 0L) {
-        return;
-      }
       int i = (int)Math.min(paramLong, paramBuffer.limit - paramBuffer.pos);
       this.crc.update(paramBuffer.data, paramBuffer.pos, i);
       paramLong -= i;
@@ -38,10 +34,9 @@ public final class GzipSink
   }
   
   private void writeFooter()
-    throws IOException
   {
     this.sink.writeIntLe((int)this.crc.getValue());
-    this.sink.writeIntLe(this.deflater.getTotalIn());
+    this.sink.writeIntLe((int)this.deflater.getBytesRead());
   }
   
   private void writeHeader()
@@ -56,7 +51,6 @@ public final class GzipSink
   }
   
   public void close()
-    throws IOException
   {
     if (this.closed) {}
     for (;;)
@@ -73,14 +67,14 @@ public final class GzipSink
           this.deflater.end();
           localObject1 = localObject2;
         }
-        catch (Throwable localThrowable2)
+        catch (Throwable localThrowable1)
         {
           for (;;)
           {
+            Object localObject1;
             label41:
-            localObject1 = localThrowable1;
-            if (localThrowable1 == null) {
-              localObject1 = localThrowable2;
+            if (localThrowable3 != null) {
+              localThrowable2 = localThrowable3;
             }
           }
         }
@@ -89,13 +83,13 @@ public final class GzipSink
           this.sink.close();
           localObject2 = localObject1;
         }
-        catch (Throwable localThrowable3)
+        catch (Throwable localThrowable4)
         {
-          Object localObject3 = localObject1;
-          if (localObject1 != null) {
+          Object localObject3 = localThrowable2;
+          if (localThrowable2 != null) {
             break label41;
           }
-          localObject3 = localThrowable3;
+          localObject3 = localThrowable4;
           break label41;
         }
         this.closed = true;
@@ -105,15 +99,19 @@ public final class GzipSink
         Util.sneakyRethrow(localObject2);
         return;
       }
-      catch (Throwable localThrowable1)
+      catch (Throwable localThrowable3)
       {
         break label21;
       }
     }
   }
   
+  public final Deflater deflater()
+  {
+    return this.deflater;
+  }
+  
   public void flush()
-    throws IOException
   {
     this.deflaterSink.flush();
   }
@@ -124,7 +122,6 @@ public final class GzipSink
   }
   
   public void write(Buffer paramBuffer, long paramLong)
-    throws IOException
   {
     if (paramLong < 0L) {
       throw new IllegalArgumentException("byteCount < 0: " + paramLong);
@@ -138,7 +135,7 @@ public final class GzipSink
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okio.GzipSink
  * JD-Core Version:    0.7.0.1
  */

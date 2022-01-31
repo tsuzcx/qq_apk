@@ -1,279 +1,163 @@
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteStatement;
-import android.text.TextUtils;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppEnvConfig;
-import com.tencent.mobileqq.ark.ArkAppInfo.ContextActionAppInfo;
-import com.tencent.mobileqq.utils.StringUtil;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import com.tencent.gdtad.aditem.GdtAppReceiver;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.api.GdtAd;
+import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS;
+import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
+import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
+import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGet;
 
-public class aard
+public abstract class aard
+  extends PublicBaseFragment
 {
-  public static final Object a;
-  int jdField_a_of_type_Int;
-  SQLiteDatabase jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase;
+  protected aane a;
+  protected LinearLayout a;
+  private GdtAppReceiver a;
   
-  static
+  protected aard()
   {
-    jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
+    this.jdField_a_of_type_Aane = new aarg(this);
   }
   
-  private static String a(int paramInt)
+  public static void a(Activity paramActivity, JSONObject paramJSONObject, Class<? extends aard> paramClass)
   {
-    if (1 == ArkAppEnvConfig.a().a())
+    if ((paramActivity == null) || (paramJSONObject == null))
     {
-      if (paramInt == 1) {
-        return "gray_ark_app_info_test.db";
-      }
-      if (paramInt == 2) {
-        return "ark_app_info_test.db";
-      }
-    }
-    else
-    {
-      if (paramInt == 1) {
-        return "gray_ark_app_info.db";
-      }
-      if (paramInt == 2) {
-        return "ark_app_info.db";
-      }
-    }
-    return null;
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase == null) {
+      aase.b("GdtBaseBannerFragment", "start error");
       return;
     }
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.execSQL("DELETE FROM action_app_name WHERE id NOT IN ( SELECT id FROM action_app_name a JOIN (SELECT context, action, app_name, max(app_id) as app_id FROM action_app_name GROUP BY context, action, app_name) b ON a.context=b.context AND a.action=b.action AND a.app_name=b.app_name AND a.app_id=b.app_id) ");
+    aase.b("GdtBaseBannerFragment", "start");
+    Bundle localBundle = new Bundle();
+    localBundle.putString("params", paramJSONObject.toString());
+    paramJSONObject = new Intent();
+    paramJSONObject.putExtra("public_fragment_window_feature", 1);
+    paramJSONObject.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
+    paramJSONObject.putExtras(localBundle);
+    adpn.a(paramActivity, paramJSONObject, PublicFragmentActivityForTool.class, paramClass);
+  }
+  
+  protected abstract GdtAd a();
+  
+  protected abstract void a();
+  
+  protected abstract void a(String paramString, qq_ad_get.QQAdGet paramQQAdGet, GdtHandler.Params paramParams);
+  
+  public void initWindowStyleAndAnimation(Activity paramActivity)
+  {
+    super.initWindowStyleAndAnimation(paramActivity);
+    if (paramActivity == null) {
       return;
     }
+    paramActivity.getWindow().addFlags(1024);
   }
   
-  public ArrayList a()
+  public boolean isWrapContent()
   {
-    if (this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase == null) {
-      return null;
-    }
-    ArrayList localArrayList;
-    try
-    {
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        Cursor localCursor = this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.rawQuery("SELECT context, action, MAX(app_id), MAX(time) FROM action_app_name GROUP BY context, action", null);
-        if (localCursor == null) {
-          return null;
-        }
-      }
-      localArrayList = new ArrayList();
-      while (localObject2.moveToNext())
-      {
-        String str1 = localObject2.getString(0);
-        String str2 = localObject2.getString(1);
-        long l1 = localObject2.getLong(2);
-        long l2 = localObject2.getLong(3);
-        if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
-        {
-          ArkAppInfo.ContextActionAppInfo localContextActionAppInfo = new ArkAppInfo.ContextActionAppInfo();
-          localContextActionAppInfo.jdField_a_of_type_JavaLangString = str1;
-          localContextActionAppInfo.jdField_b_of_type_JavaLangString = str2;
-          localContextActionAppInfo.jdField_a_of_type_Long = l1;
-          localContextActionAppInfo.jdField_b_of_type_Long = l2;
-          localArrayList.add(localContextActionAppInfo);
-        }
-      }
-      localException.close();
-    }
-    catch (Exception localException)
-    {
-      ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("getContextActionList fail, msg=%s", new Object[] { localException.getMessage() }));
-      return null;
-    }
-    return localArrayList;
-  }
-  
-  public ArrayList a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase == null) {}
-    while ((StringUtil.a(paramString1)) || (StringUtil.a(paramString2))) {
-      return null;
-    }
-    ArrayList localArrayList;
-    try
-    {
-      Cursor localCursor;
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        localCursor = this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.rawQuery("SELECT app_name, MAX(app_id), MAX(time) FROM action_app_name GROUP BY context, action, app_name HAVING context=? AND action=?", new String[] { paramString1, paramString2 });
-        if (localCursor == null) {
-          return null;
-        }
-      }
-      localArrayList = new ArrayList();
-      while (localCursor.moveToNext())
-      {
-        String str = localCursor.getString(0);
-        long l1 = localCursor.getLong(1);
-        long l2 = localCursor.getLong(2);
-        ArkAppInfo.ContextActionAppInfo localContextActionAppInfo = new ArkAppInfo.ContextActionAppInfo();
-        localContextActionAppInfo.jdField_a_of_type_JavaLangString = paramString1;
-        localContextActionAppInfo.jdField_b_of_type_JavaLangString = paramString2;
-        localContextActionAppInfo.c = str;
-        localContextActionAppInfo.jdField_a_of_type_Long = l1;
-        localContextActionAppInfo.jdField_b_of_type_Long = l2;
-        localArrayList.add(localContextActionAppInfo);
-      }
-      localCursor.close();
-    }
-    catch (Exception paramString1)
-    {
-      ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("getAppInfoByContextAction, fail, msg=%s", new Object[] { paramString1.getMessage() }));
-      return null;
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.close();
-    this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase = null;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase == null) {
-      return false;
-    }
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      try
-      {
-        this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.execSQL("DELETE FROM action_app_name");
-        ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("deleteAllData success", new Object[0]));
-        return true;
-      }
-      catch (Exception localException)
-      {
-        ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("deleteAllData fail, msg=%s", new Object[] { localException.getMessage() }));
-        return false;
-      }
-    }
-  }
-  
-  public boolean a(Context paramContext, int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase != null) {
-      return true;
-    }
-    String str = a(paramInt);
-    if (StringUtil.a(str)) {
-      return false;
-    }
-    try
-    {
-      this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase = new aare(paramContext, str).getWritableDatabase();
-      if (this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase == null) {
-        return false;
-      }
-      this.jdField_a_of_type_Int = paramInt;
-      return true;
-    }
-    catch (Exception paramContext)
-    {
-      ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("initDatabase, fail, msg=%s", new Object[] { paramContext.getMessage() }));
-      this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase = null;
-      this.jdField_a_of_type_Int = 0;
-    }
     return false;
   }
   
-  public boolean a(String paramString1, String paramString2)
+  public boolean needImmersive()
   {
-    if (this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase == null) {}
-    while ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return false;
-    }
-    try
-    {
-      SQLiteStatement localSQLiteStatement;
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        localSQLiteStatement = this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.compileStatement("UPDATE action_app_name SET time=?1 WHERE context=?2 AND action=?3");
-        if (localSQLiteStatement == null) {
-          return false;
-        }
-      }
-      localSQLiteStatement.bindLong(1, System.currentTimeMillis());
-      localSQLiteStatement.bindString(2, paramString1);
-      localSQLiteStatement.bindString(3, paramString2);
-      localSQLiteStatement.execute();
-      localSQLiteStatement.close();
-      return true;
-    }
-    catch (Exception paramString1)
-    {
-      ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("updateActionUpdateTime fail, msg=%s", new Object[] { paramString1.getMessage() }));
-    }
     return false;
   }
   
-  public boolean a(ArrayList paramArrayList)
+  public boolean needStatusTrans()
   {
-    if (this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase == null) {
-      return false;
+    return false;
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+  }
+  
+  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
+  {
+    paramLayoutInflater = null;
+    if (getArguments() == null) {
+      return null;
     }
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return true;
-    }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    paramViewGroup = getArguments().getString("params");
+    try
     {
-      this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.beginTransaction();
-      try
-      {
-        SQLiteStatement localSQLiteStatement = this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.compileStatement("INSERT OR REPLACE INTO action_app_name (context, action, app_id, app_name, time) VALUES (?1, ?2, ?3, ?4, ?5)");
-        paramArrayList = paramArrayList.iterator();
-        while (paramArrayList.hasNext())
-        {
-          ArkAppInfo.ContextActionAppInfo localContextActionAppInfo = (ArkAppInfo.ContextActionAppInfo)paramArrayList.next();
-          localSQLiteStatement.clearBindings();
-          localSQLiteStatement.bindString(1, localContextActionAppInfo.jdField_a_of_type_JavaLangString);
-          localSQLiteStatement.bindString(2, localContextActionAppInfo.jdField_b_of_type_JavaLangString);
-          localSQLiteStatement.bindLong(3, localContextActionAppInfo.jdField_a_of_type_Long);
-          localSQLiteStatement.bindString(4, localContextActionAppInfo.c);
-          localSQLiteStatement.bindLong(5, System.currentTimeMillis());
-          localSQLiteStatement.execute();
-        }
-        paramArrayList = finally;
+      Object localObject = new JSONObject(paramViewGroup);
+      paramBundle = ((JSONObject)localObject).getJSONObject("requestParams");
+      localObject = ((JSONObject)localObject).getJSONObject("clickParams");
+      boolean bool1 = ((JSONObject)localObject).getBoolean("reportForClick");
+      boolean bool2 = ((JSONObject)localObject).getBoolean("appAutoDownload");
+      boolean bool3 = ((JSONObject)localObject).optBoolean("videoCeilingSupported", false);
+      paramBundle = (qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(aasd.a(new qq_ad_get.QQAdGet(), paramBundle));
+      localObject = new GdtHandler.Params();
+      ((GdtHandler.Params)localObject).c = 1;
+      ((GdtHandler.Params)localObject).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(getActivity());
+      ((GdtHandler.Params)localObject).jdField_a_of_type_Boolean = bool1;
+      ((GdtHandler.Params)localObject).jdField_b_of_type_Boolean = bool2;
+      ((GdtHandler.Params)localObject).jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver);
+      if (bool3) {
+        paramLayoutInflater = GdtVideoCeilingFragmentForJS.class;
       }
-      catch (Exception paramArrayList)
+      ((GdtHandler.Params)localObject).jdField_a_of_type_JavaLangClass = paramLayoutInflater;
+      ((GdtHandler.Params)localObject).jdField_b_of_type_JavaLangClass = GdtCanvasFragmentForJS.class;
+      a(paramViewGroup, paramBundle, (GdtHandler.Params)localObject);
+    }
+    catch (JSONException paramLayoutInflater)
+    {
+      for (;;)
       {
-        ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("updateAppInfo fail, msg=%s", new Object[] { paramArrayList.getMessage() }));
-        this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.endTransaction();
-        return false;
-        b();
-        this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.setTransactionSuccessful();
-        this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.endTransaction();
-        return true;
-      }
-      finally
-      {
-        this.jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase.endTransaction();
+        aase.d("GdtBaseBannerFragment", "createParams error", paramLayoutInflater);
       }
     }
+    paramLayoutInflater = new Button(getActivity());
+    paramLayoutInflater.setText("load");
+    paramLayoutInflater.setOnClickListener(new aare(this));
+    paramViewGroup = new Button(getActivity());
+    paramViewGroup.setText("show");
+    paramViewGroup.setOnClickListener(new aarf(this));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getActivity());
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(Color.parseColor("#DBDBDB"));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramLayoutInflater);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramViewGroup);
+    paramLayoutInflater = new ScrollView(getActivity());
+    paramLayoutInflater.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(getActivity());
+    return paramLayoutInflater;
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.unregister(getActivity());
+    super.onDestroy();
+  }
+  
+  public void onPause()
+  {
+    super.onPause();
+  }
+  
+  public void onResume()
+  {
+    super.onResume();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aard
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 package com.tencent.smtt.sdk;
 
+import android.content.Context;
+import com.tencent.smtt.utils.FileUtil;
 import java.nio.channels.FileLock;
 
 class X5CoreEngine
@@ -25,348 +27,373 @@ class X5CoreEngine
   }
   
   /* Error */
-  public void init(android.content.Context paramContext, TbsInitPerformanceRecorder paramTbsInitPerformanceRecorder)
+  public void init(Context paramContext, TbsInitPerformanceRecorder paramTbsInitPerformanceRecorder)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore 6
     //   3: aload_0
     //   4: monitorenter
-    //   5: aload_2
-    //   6: ifnull +10 -> 16
-    //   9: aload_2
-    //   10: ldc 38
-    //   12: iconst_2
-    //   13: invokevirtual 44	com/tencent/smtt/sdk/TbsInitPerformanceRecorder:recordPerformanceEvent	(Ljava/lang/String;B)V
-    //   16: iconst_1
-    //   17: invokestatic 49	com/tencent/smtt/sdk/SDKEngine:getInstance	(Z)Lcom/tencent/smtt/sdk/SDKEngine;
-    //   20: astore 8
-    //   22: aload 8
-    //   24: aload_1
-    //   25: iconst_0
-    //   26: iconst_0
-    //   27: aload_2
-    //   28: invokevirtual 52	com/tencent/smtt/sdk/SDKEngine:init	(Landroid/content/Context;ZZLcom/tencent/smtt/sdk/TbsInitPerformanceRecorder;)V
-    //   31: new 54	java/lang/StringBuilder
-    //   34: dup
-    //   35: invokespecial 55	java/lang/StringBuilder:<init>	()V
-    //   38: astore 7
-    //   40: aload_2
-    //   41: ifnull +10 -> 51
-    //   44: aload_2
-    //   45: ldc 57
-    //   47: iconst_1
-    //   48: invokevirtual 44	com/tencent/smtt/sdk/TbsInitPerformanceRecorder:recordPerformanceEvent	(Ljava/lang/String;B)V
-    //   51: aload 8
-    //   53: invokevirtual 61	com/tencent/smtt/sdk/SDKEngine:wizard	()Lcom/tencent/smtt/sdk/TbsWizard;
-    //   56: astore 9
+    //   5: ldc 8
+    //   7: ldc 38
+    //   9: invokestatic 44	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   12: aload_2
+    //   13: ifnull +10 -> 23
+    //   16: aload_2
+    //   17: ldc 46
+    //   19: iconst_2
+    //   20: invokevirtual 52	com/tencent/smtt/sdk/TbsInitPerformanceRecorder:recordPerformanceEvent	(Ljava/lang/String;B)V
+    //   23: iconst_1
+    //   24: invokestatic 57	com/tencent/smtt/sdk/SDKEngine:getInstance	(Z)Lcom/tencent/smtt/sdk/SDKEngine;
+    //   27: astore 8
+    //   29: aload 8
+    //   31: aload_1
+    //   32: iconst_0
+    //   33: iconst_0
+    //   34: aload_2
+    //   35: invokevirtual 60	com/tencent/smtt/sdk/SDKEngine:init	(Landroid/content/Context;ZZLcom/tencent/smtt/sdk/TbsInitPerformanceRecorder;)V
+    //   38: new 62	java/lang/StringBuilder
+    //   41: dup
+    //   42: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   45: astore 7
+    //   47: aload_2
+    //   48: ifnull +10 -> 58
+    //   51: aload_2
+    //   52: ldc 65
+    //   54: iconst_1
+    //   55: invokevirtual 52	com/tencent/smtt/sdk/TbsInitPerformanceRecorder:recordPerformanceEvent	(Ljava/lang/String;B)V
     //   58: aload 8
-    //   60: invokevirtual 65	com/tencent/smtt/sdk/SDKEngine:isTbsAvailable	()Z
-    //   63: ifeq +403 -> 466
-    //   66: aload 9
-    //   68: ifnull +398 -> 466
-    //   71: aload_0
-    //   72: getfield 67	com/tencent/smtt/sdk/X5CoreEngine:mIsInited	Z
-    //   75: ifne +563 -> 638
-    //   78: aload_2
-    //   79: ifnull +8 -> 87
-    //   82: aload_2
-    //   83: iconst_1
-    //   84: putfield 70	com/tencent/smtt/sdk/TbsInitPerformanceRecorder:mIsFirstInitX5	Z
-    //   87: aload_0
-    //   88: new 72	com/tencent/smtt/sdk/X5CoreWizard
-    //   91: dup
-    //   92: aload 9
-    //   94: invokevirtual 78	com/tencent/smtt/sdk/TbsWizard:dexLoader	()Lcom/tencent/smtt/export/external/DexLoader;
-    //   97: invokespecial 81	com/tencent/smtt/sdk/X5CoreWizard:<init>	(Lcom/tencent/smtt/export/external/DexLoader;)V
-    //   100: putfield 83	com/tencent/smtt/sdk/X5CoreEngine:mX5CoreWizard	Lcom/tencent/smtt/sdk/X5CoreWizard;
-    //   103: aload_0
-    //   104: aload_0
-    //   105: getfield 83	com/tencent/smtt/sdk/X5CoreEngine:mX5CoreWizard	Lcom/tencent/smtt/sdk/X5CoreWizard;
-    //   108: invokevirtual 86	com/tencent/smtt/sdk/X5CoreWizard:canUseX5	()Z
-    //   111: putfield 88	com/tencent/smtt/sdk/X5CoreEngine:mCanUseX5	Z
-    //   114: aload_0
-    //   115: getfield 88	com/tencent/smtt/sdk/X5CoreEngine:mCanUseX5	Z
-    //   118: ifne +11 -> 129
-    //   121: aload 7
-    //   123: ldc 90
-    //   125: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   128: pop
-    //   129: aconst_null
-    //   130: astore 4
-    //   132: aload 4
-    //   134: astore 5
-    //   136: aload_0
-    //   137: getfield 88	com/tencent/smtt/sdk/X5CoreEngine:mCanUseX5	Z
-    //   140: ifeq +22 -> 162
-    //   143: invokestatic 99	com/tencent/smtt/sdk/CookieManager:getInstance	()Lcom/tencent/smtt/sdk/CookieManager;
-    //   146: aload_1
-    //   147: iconst_1
-    //   148: iconst_1
-    //   149: invokevirtual 103	com/tencent/smtt/sdk/CookieManager:compatiableCookieDatabaseIfNeed	(Landroid/content/Context;ZZ)V
-    //   152: invokestatic 99	com/tencent/smtt/sdk/CookieManager:getInstance	()Lcom/tencent/smtt/sdk/CookieManager;
-    //   155: invokevirtual 106	com/tencent/smtt/sdk/CookieManager:syncCookies	()V
-    //   158: aload 4
-    //   160: astore 5
-    //   162: aload_0
-    //   163: getfield 88	com/tencent/smtt/sdk/X5CoreEngine:mCanUseX5	Z
-    //   166: ifne +457 -> 623
+    //   60: invokevirtual 69	com/tencent/smtt/sdk/SDKEngine:wizard	()Lcom/tencent/smtt/sdk/TbsWizard;
+    //   63: astore 9
+    //   65: aload 8
+    //   67: invokevirtual 73	com/tencent/smtt/sdk/SDKEngine:isTbsAvailable	()Z
+    //   70: ifeq +430 -> 500
+    //   73: aload 9
+    //   75: ifnull +425 -> 500
+    //   78: aload_0
+    //   79: getfield 75	com/tencent/smtt/sdk/X5CoreEngine:mIsInited	Z
+    //   82: ifne +616 -> 698
+    //   85: aload_2
+    //   86: ifnull +8 -> 94
+    //   89: aload_2
+    //   90: iconst_1
+    //   91: putfield 78	com/tencent/smtt/sdk/TbsInitPerformanceRecorder:mIsFirstInitX5	Z
+    //   94: aload_0
+    //   95: new 80	com/tencent/smtt/sdk/X5CoreWizard
+    //   98: dup
+    //   99: aload 9
+    //   101: invokevirtual 86	com/tencent/smtt/sdk/TbsWizard:dexLoader	()Lcom/tencent/smtt/export/external/DexLoader;
+    //   104: invokespecial 89	com/tencent/smtt/sdk/X5CoreWizard:<init>	(Lcom/tencent/smtt/export/external/DexLoader;)V
+    //   107: putfield 91	com/tencent/smtt/sdk/X5CoreEngine:mX5CoreWizard	Lcom/tencent/smtt/sdk/X5CoreWizard;
+    //   110: aload_0
+    //   111: aload_0
+    //   112: getfield 91	com/tencent/smtt/sdk/X5CoreEngine:mX5CoreWizard	Lcom/tencent/smtt/sdk/X5CoreWizard;
+    //   115: invokevirtual 94	com/tencent/smtt/sdk/X5CoreWizard:canUseX5	()Z
+    //   118: putfield 96	com/tencent/smtt/sdk/X5CoreEngine:mCanUseX5	Z
+    //   121: aload_0
+    //   122: getfield 96	com/tencent/smtt/sdk/X5CoreEngine:mCanUseX5	Z
+    //   125: ifne +11 -> 136
+    //   128: aload 7
+    //   130: ldc 98
+    //   132: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   135: pop
+    //   136: aconst_null
+    //   137: astore 4
+    //   139: aload 4
+    //   141: astore 5
+    //   143: aload_0
+    //   144: getfield 96	com/tencent/smtt/sdk/X5CoreEngine:mCanUseX5	Z
+    //   147: ifeq +22 -> 169
+    //   150: invokestatic 107	com/tencent/smtt/sdk/CookieManager:getInstance	()Lcom/tencent/smtt/sdk/CookieManager;
+    //   153: aload_1
+    //   154: iconst_1
+    //   155: iconst_1
+    //   156: invokevirtual 111	com/tencent/smtt/sdk/CookieManager:compatiableCookieDatabaseIfNeed	(Landroid/content/Context;ZZ)V
+    //   159: invokestatic 107	com/tencent/smtt/sdk/CookieManager:getInstance	()Lcom/tencent/smtt/sdk/CookieManager;
+    //   162: invokevirtual 114	com/tencent/smtt/sdk/CookieManager:syncCookies	()V
+    //   165: aload 4
+    //   167: astore 5
     //   169: ldc 8
-    //   171: ldc 108
-    //   173: invokestatic 114	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   176: aload 8
-    //   178: invokevirtual 65	com/tencent/smtt/sdk/SDKEngine:isTbsAvailable	()Z
-    //   181: istore_3
-    //   182: iload_3
-    //   183: ifeq +352 -> 535
-    //   186: aload 9
-    //   188: ifnull +347 -> 535
-    //   191: aload 5
-    //   193: ifnonnull +342 -> 535
-    //   196: aload 9
-    //   198: invokevirtual 78	com/tencent/smtt/sdk/TbsWizard:dexLoader	()Lcom/tencent/smtt/export/external/DexLoader;
-    //   201: astore 5
-    //   203: aload 6
-    //   205: astore 4
-    //   207: aload 5
-    //   209: ifnull +22 -> 231
-    //   212: aload 5
-    //   214: ldc 116
-    //   216: ldc 118
-    //   218: iconst_0
-    //   219: anewarray 120	java/lang/Class
-    //   222: iconst_0
-    //   223: anewarray 4	java/lang/Object
-    //   226: invokevirtual 126	com/tencent/smtt/export/external/DexLoader:invokeStaticMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   229: astore 4
-    //   231: aload 4
-    //   233: instanceof 36
-    //   236: ifeq +62 -> 298
-    //   239: aload 4
-    //   241: checkcast 36	java/lang/Throwable
-    //   244: astore 5
-    //   246: aload 7
-    //   248: new 54	java/lang/StringBuilder
-    //   251: dup
-    //   252: invokespecial 55	java/lang/StringBuilder:<init>	()V
-    //   255: ldc 128
-    //   257: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   260: aload 5
-    //   262: invokevirtual 132	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   265: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   268: ldc 134
-    //   270: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   273: aload 5
-    //   275: invokevirtual 138	java/lang/Throwable:getCause	()Ljava/lang/Throwable;
-    //   278: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   281: ldc 143
-    //   283: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   286: aload 5
-    //   288: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   291: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   294: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   297: pop
-    //   298: aload 4
-    //   300: instanceof 148
-    //   303: ifeq +29 -> 332
-    //   306: aload 7
-    //   308: new 54	java/lang/StringBuilder
-    //   311: dup
-    //   312: invokespecial 55	java/lang/StringBuilder:<init>	()V
-    //   315: ldc 150
-    //   317: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   320: aload 4
-    //   322: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   325: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   328: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   171: new 62	java/lang/StringBuilder
+    //   174: dup
+    //   175: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   178: ldc 116
+    //   180: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   183: aload_0
+    //   184: getfield 96	com/tencent/smtt/sdk/X5CoreEngine:mCanUseX5	Z
+    //   187: invokevirtual 119	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   190: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   193: invokestatic 44	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   196: aload_0
+    //   197: getfield 96	com/tencent/smtt/sdk/X5CoreEngine:mCanUseX5	Z
+    //   200: ifne +457 -> 657
+    //   203: ldc 8
+    //   205: ldc 125
+    //   207: invokestatic 128	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   210: aload 8
+    //   212: invokevirtual 73	com/tencent/smtt/sdk/SDKEngine:isTbsAvailable	()Z
+    //   215: istore_3
+    //   216: iload_3
+    //   217: ifeq +352 -> 569
+    //   220: aload 9
+    //   222: ifnull +347 -> 569
+    //   225: aload 5
+    //   227: ifnonnull +342 -> 569
+    //   230: aload 9
+    //   232: invokevirtual 86	com/tencent/smtt/sdk/TbsWizard:dexLoader	()Lcom/tencent/smtt/export/external/DexLoader;
+    //   235: astore 5
+    //   237: aload 6
+    //   239: astore 4
+    //   241: aload 5
+    //   243: ifnull +22 -> 265
+    //   246: aload 5
+    //   248: ldc 130
+    //   250: ldc 132
+    //   252: iconst_0
+    //   253: anewarray 134	java/lang/Class
+    //   256: iconst_0
+    //   257: anewarray 4	java/lang/Object
+    //   260: invokevirtual 140	com/tencent/smtt/export/external/DexLoader:invokeStaticMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   263: astore 4
+    //   265: aload 4
+    //   267: instanceof 36
+    //   270: ifeq +62 -> 332
+    //   273: aload 4
+    //   275: checkcast 36	java/lang/Throwable
+    //   278: astore 5
+    //   280: aload 7
+    //   282: new 62	java/lang/StringBuilder
+    //   285: dup
+    //   286: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   289: ldc 142
+    //   291: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   294: aload 5
+    //   296: invokevirtual 145	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   299: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   302: ldc 147
+    //   304: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   307: aload 5
+    //   309: invokevirtual 151	java/lang/Throwable:getCause	()Ljava/lang/Throwable;
+    //   312: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   315: ldc 156
+    //   317: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   320: aload 5
+    //   322: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   325: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   328: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   331: pop
-    //   332: aload 7
-    //   334: ifnull +158 -> 492
-    //   337: aload 7
-    //   339: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   342: ldc 152
-    //   344: invokevirtual 156	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   347: ifeq +145 -> 492
-    //   350: invokestatic 161	com/tencent/smtt/sdk/TbsCoreLoadStat:getInstance	()Lcom/tencent/smtt/sdk/TbsCoreLoadStat;
-    //   353: aload_1
-    //   354: sipush 408
-    //   357: new 36	java/lang/Throwable
-    //   360: dup
-    //   361: new 54	java/lang/StringBuilder
-    //   364: dup
-    //   365: invokespecial 55	java/lang/StringBuilder:<init>	()V
-    //   368: ldc 163
-    //   370: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   373: aload 7
-    //   375: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   378: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   381: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   384: invokespecial 166	java/lang/Throwable:<init>	(Ljava/lang/String;)V
-    //   387: invokevirtual 170	com/tencent/smtt/sdk/TbsCoreLoadStat:setLoadErrorCode	(Landroid/content/Context;ILjava/lang/Throwable;)V
-    //   390: aload_0
-    //   391: iconst_1
-    //   392: putfield 67	com/tencent/smtt/sdk/X5CoreEngine:mIsInited	Z
-    //   395: aload_2
-    //   396: ifnull +10 -> 406
-    //   399: aload_2
-    //   400: ldc 57
-    //   402: iconst_2
-    //   403: invokevirtual 44	com/tencent/smtt/sdk/TbsInitPerformanceRecorder:recordPerformanceEvent	(Ljava/lang/String;B)V
-    //   406: aload_0
-    //   407: monitorexit
-    //   408: return
-    //   409: astore 4
-    //   411: aload_0
-    //   412: iconst_1
-    //   413: putfield 88	com/tencent/smtt/sdk/X5CoreEngine:mCanUseX5	Z
-    //   416: aconst_null
-    //   417: astore 4
-    //   419: goto -287 -> 132
-    //   422: astore 4
+    //   332: aload 4
+    //   334: instanceof 158
+    //   337: ifeq +29 -> 366
+    //   340: aload 7
+    //   342: new 62	java/lang/StringBuilder
+    //   345: dup
+    //   346: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   349: ldc 160
+    //   351: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   354: aload 4
+    //   356: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   359: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   362: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   365: pop
+    //   366: aload 7
+    //   368: ifnull +158 -> 526
+    //   371: aload 7
+    //   373: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   376: ldc 162
+    //   378: invokevirtual 166	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   381: ifeq +145 -> 526
+    //   384: invokestatic 171	com/tencent/smtt/sdk/TbsCoreLoadStat:getInstance	()Lcom/tencent/smtt/sdk/TbsCoreLoadStat;
+    //   387: aload_1
+    //   388: sipush 408
+    //   391: new 36	java/lang/Throwable
+    //   394: dup
+    //   395: new 62	java/lang/StringBuilder
+    //   398: dup
+    //   399: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   402: ldc 173
+    //   404: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   407: aload 7
+    //   409: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   412: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   415: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   418: invokespecial 176	java/lang/Throwable:<init>	(Ljava/lang/String;)V
+    //   421: invokevirtual 180	com/tencent/smtt/sdk/TbsCoreLoadStat:setLoadErrorCode	(Landroid/content/Context;ILjava/lang/Throwable;)V
     //   424: aload_0
-    //   425: iconst_0
-    //   426: putfield 88	com/tencent/smtt/sdk/X5CoreEngine:mCanUseX5	Z
-    //   429: aload 7
-    //   431: new 54	java/lang/StringBuilder
-    //   434: dup
-    //   435: invokespecial 55	java/lang/StringBuilder:<init>	()V
-    //   438: ldc 172
-    //   440: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   443: aload 4
-    //   445: invokestatic 178	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   448: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   451: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   454: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   457: pop
-    //   458: goto -326 -> 132
-    //   461: astore_1
-    //   462: aload_0
-    //   463: monitorexit
-    //   464: aload_1
-    //   465: athrow
-    //   466: aload_0
-    //   467: iconst_0
-    //   468: putfield 88	com/tencent/smtt/sdk/X5CoreEngine:mCanUseX5	Z
-    //   471: aload 7
-    //   473: ldc 180
-    //   475: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   478: pop
-    //   479: goto +159 -> 638
-    //   482: astore 4
-    //   484: aload 4
-    //   486: invokevirtual 183	java/lang/Throwable:printStackTrace	()V
-    //   489: goto -157 -> 332
-    //   492: invokestatic 161	com/tencent/smtt/sdk/TbsCoreLoadStat:getInstance	()Lcom/tencent/smtt/sdk/TbsCoreLoadStat;
-    //   495: aload_1
-    //   496: sipush 407
-    //   499: new 36	java/lang/Throwable
-    //   502: dup
-    //   503: new 54	java/lang/StringBuilder
-    //   506: dup
-    //   507: invokespecial 55	java/lang/StringBuilder:<init>	()V
-    //   510: ldc 163
-    //   512: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   515: aload 7
-    //   517: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   520: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   523: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   526: invokespecial 166	java/lang/Throwable:<init>	(Ljava/lang/String;)V
-    //   529: invokevirtual 170	com/tencent/smtt/sdk/TbsCoreLoadStat:setLoadErrorCode	(Landroid/content/Context;ILjava/lang/Throwable;)V
-    //   532: goto -142 -> 390
-    //   535: aload 8
-    //   537: invokevirtual 65	com/tencent/smtt/sdk/SDKEngine:isTbsAvailable	()Z
-    //   540: ifeq +43 -> 583
-    //   543: invokestatic 161	com/tencent/smtt/sdk/TbsCoreLoadStat:getInstance	()Lcom/tencent/smtt/sdk/TbsCoreLoadStat;
-    //   546: aload_1
-    //   547: sipush 409
-    //   550: new 36	java/lang/Throwable
-    //   553: dup
-    //   554: new 54	java/lang/StringBuilder
-    //   557: dup
-    //   558: invokespecial 55	java/lang/StringBuilder:<init>	()V
-    //   561: ldc 185
-    //   563: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   566: aload 5
-    //   568: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   571: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   574: invokespecial 166	java/lang/Throwable:<init>	(Ljava/lang/String;)V
-    //   577: invokevirtual 170	com/tencent/smtt/sdk/TbsCoreLoadStat:setLoadErrorCode	(Landroid/content/Context;ILjava/lang/Throwable;)V
-    //   580: goto -190 -> 390
-    //   583: invokestatic 161	com/tencent/smtt/sdk/TbsCoreLoadStat:getInstance	()Lcom/tencent/smtt/sdk/TbsCoreLoadStat;
-    //   586: aload_1
-    //   587: sipush 410
-    //   590: new 36	java/lang/Throwable
-    //   593: dup
-    //   594: new 54	java/lang/StringBuilder
-    //   597: dup
-    //   598: invokespecial 55	java/lang/StringBuilder:<init>	()V
-    //   601: ldc 187
-    //   603: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   606: aload 5
-    //   608: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   611: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   614: invokespecial 166	java/lang/Throwable:<init>	(Ljava/lang/String;)V
-    //   617: invokevirtual 170	com/tencent/smtt/sdk/TbsCoreLoadStat:setLoadErrorCode	(Landroid/content/Context;ILjava/lang/Throwable;)V
-    //   620: goto -230 -> 390
-    //   623: getstatic 21	com/tencent/smtt/sdk/X5CoreEngine:sTbsCoreLoadFileLock	Ljava/nio/channels/FileLock;
-    //   626: ifnonnull -236 -> 390
-    //   629: aload_0
-    //   630: aload_1
-    //   631: invokevirtual 191	com/tencent/smtt/sdk/X5CoreEngine:tryTbsCoreLoadFileLock	(Landroid/content/Context;)Ljava/nio/channels/FileLock;
-    //   634: pop
-    //   635: goto -245 -> 390
-    //   638: aconst_null
-    //   639: astore 5
-    //   641: goto -479 -> 162
+    //   425: iconst_1
+    //   426: putfield 75	com/tencent/smtt/sdk/X5CoreEngine:mIsInited	Z
+    //   429: aload_2
+    //   430: ifnull +10 -> 440
+    //   433: aload_2
+    //   434: ldc 65
+    //   436: iconst_2
+    //   437: invokevirtual 52	com/tencent/smtt/sdk/TbsInitPerformanceRecorder:recordPerformanceEvent	(Ljava/lang/String;B)V
+    //   440: aload_0
+    //   441: monitorexit
+    //   442: return
+    //   443: astore 4
+    //   445: aload_0
+    //   446: iconst_1
+    //   447: putfield 96	com/tencent/smtt/sdk/X5CoreEngine:mCanUseX5	Z
+    //   450: aconst_null
+    //   451: astore 4
+    //   453: goto -314 -> 139
+    //   456: astore 4
+    //   458: aload_0
+    //   459: iconst_0
+    //   460: putfield 96	com/tencent/smtt/sdk/X5CoreEngine:mCanUseX5	Z
+    //   463: aload 7
+    //   465: new 62	java/lang/StringBuilder
+    //   468: dup
+    //   469: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   472: ldc 182
+    //   474: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   477: aload 4
+    //   479: invokestatic 188	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   482: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   485: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   488: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   491: pop
+    //   492: goto -353 -> 139
+    //   495: astore_1
+    //   496: aload_0
+    //   497: monitorexit
+    //   498: aload_1
+    //   499: athrow
+    //   500: aload_0
+    //   501: iconst_0
+    //   502: putfield 96	com/tencent/smtt/sdk/X5CoreEngine:mCanUseX5	Z
+    //   505: aload 7
+    //   507: ldc 190
+    //   509: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   512: pop
+    //   513: goto +185 -> 698
+    //   516: astore 4
+    //   518: aload 4
+    //   520: invokevirtual 193	java/lang/Throwable:printStackTrace	()V
+    //   523: goto -157 -> 366
+    //   526: invokestatic 171	com/tencent/smtt/sdk/TbsCoreLoadStat:getInstance	()Lcom/tencent/smtt/sdk/TbsCoreLoadStat;
+    //   529: aload_1
+    //   530: sipush 407
+    //   533: new 36	java/lang/Throwable
+    //   536: dup
+    //   537: new 62	java/lang/StringBuilder
+    //   540: dup
+    //   541: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   544: ldc 173
+    //   546: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   549: aload 7
+    //   551: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   554: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   557: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   560: invokespecial 176	java/lang/Throwable:<init>	(Ljava/lang/String;)V
+    //   563: invokevirtual 180	com/tencent/smtt/sdk/TbsCoreLoadStat:setLoadErrorCode	(Landroid/content/Context;ILjava/lang/Throwable;)V
+    //   566: goto -142 -> 424
+    //   569: aload 8
+    //   571: invokevirtual 73	com/tencent/smtt/sdk/SDKEngine:isTbsAvailable	()Z
+    //   574: ifeq +43 -> 617
+    //   577: invokestatic 171	com/tencent/smtt/sdk/TbsCoreLoadStat:getInstance	()Lcom/tencent/smtt/sdk/TbsCoreLoadStat;
+    //   580: aload_1
+    //   581: sipush 409
+    //   584: new 36	java/lang/Throwable
+    //   587: dup
+    //   588: new 62	java/lang/StringBuilder
+    //   591: dup
+    //   592: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   595: ldc 195
+    //   597: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   600: aload 5
+    //   602: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   605: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   608: invokespecial 176	java/lang/Throwable:<init>	(Ljava/lang/String;)V
+    //   611: invokevirtual 180	com/tencent/smtt/sdk/TbsCoreLoadStat:setLoadErrorCode	(Landroid/content/Context;ILjava/lang/Throwable;)V
+    //   614: goto -190 -> 424
+    //   617: invokestatic 171	com/tencent/smtt/sdk/TbsCoreLoadStat:getInstance	()Lcom/tencent/smtt/sdk/TbsCoreLoadStat;
+    //   620: aload_1
+    //   621: sipush 410
+    //   624: new 36	java/lang/Throwable
+    //   627: dup
+    //   628: new 62	java/lang/StringBuilder
+    //   631: dup
+    //   632: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   635: ldc 197
+    //   637: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   640: aload 5
+    //   642: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   645: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   648: invokespecial 176	java/lang/Throwable:<init>	(Ljava/lang/String;)V
+    //   651: invokevirtual 180	com/tencent/smtt/sdk/TbsCoreLoadStat:setLoadErrorCode	(Landroid/content/Context;ILjava/lang/Throwable;)V
+    //   654: goto -230 -> 424
+    //   657: ldc 8
+    //   659: new 62	java/lang/StringBuilder
+    //   662: dup
+    //   663: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   666: ldc 199
+    //   668: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   671: getstatic 21	com/tencent/smtt/sdk/X5CoreEngine:sTbsCoreLoadFileLock	Ljava/nio/channels/FileLock;
+    //   674: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   677: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   680: invokestatic 44	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   683: getstatic 21	com/tencent/smtt/sdk/X5CoreEngine:sTbsCoreLoadFileLock	Ljava/nio/channels/FileLock;
+    //   686: ifnonnull -262 -> 424
+    //   689: aload_0
+    //   690: aload_1
+    //   691: invokevirtual 203	com/tencent/smtt/sdk/X5CoreEngine:tryTbsCoreLoadFileLock	(Landroid/content/Context;)Ljava/nio/channels/FileLock;
+    //   694: pop
+    //   695: goto -271 -> 424
+    //   698: aconst_null
+    //   699: astore 5
+    //   701: goto -532 -> 169
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	644	0	this	X5CoreEngine
-    //   0	644	1	paramContext	android.content.Context
-    //   0	644	2	paramTbsInitPerformanceRecorder	TbsInitPerformanceRecorder
-    //   181	2	3	bool	boolean
-    //   130	191	4	localObject1	Object
-    //   409	1	4	localNoSuchMethodException	java.lang.NoSuchMethodException
-    //   417	1	4	localObject2	Object
-    //   422	22	4	localThrowable1	java.lang.Throwable
-    //   482	3	4	localThrowable2	java.lang.Throwable
-    //   134	506	5	localObject3	Object
-    //   1	203	6	localObject4	Object
-    //   38	478	7	localStringBuilder	java.lang.StringBuilder
-    //   20	516	8	localSDKEngine	SDKEngine
-    //   56	141	9	localTbsWizard	TbsWizard
+    //   0	704	0	this	X5CoreEngine
+    //   0	704	1	paramContext	Context
+    //   0	704	2	paramTbsInitPerformanceRecorder	TbsInitPerformanceRecorder
+    //   215	2	3	bool	boolean
+    //   137	218	4	localObject1	Object
+    //   443	1	4	localNoSuchMethodException	java.lang.NoSuchMethodException
+    //   451	1	4	localObject2	Object
+    //   456	22	4	localThrowable1	Throwable
+    //   516	3	4	localThrowable2	Throwable
+    //   141	559	5	localObject3	Object
+    //   1	237	6	localObject4	Object
+    //   45	505	7	localStringBuilder	java.lang.StringBuilder
+    //   27	543	8	localSDKEngine	SDKEngine
+    //   63	168	9	localTbsWizard	TbsWizard
     // Exception table:
     //   from	to	target	type
-    //   103	129	409	java/lang/NoSuchMethodException
-    //   103	129	422	java/lang/Throwable
-    //   9	16	461	finally
-    //   16	40	461	finally
-    //   44	51	461	finally
-    //   51	66	461	finally
-    //   71	78	461	finally
-    //   82	87	461	finally
-    //   87	103	461	finally
-    //   103	129	461	finally
-    //   136	158	461	finally
-    //   162	182	461	finally
-    //   196	203	461	finally
-    //   212	231	461	finally
-    //   231	298	461	finally
-    //   298	332	461	finally
-    //   337	390	461	finally
-    //   390	395	461	finally
-    //   399	406	461	finally
-    //   411	416	461	finally
-    //   424	458	461	finally
-    //   466	479	461	finally
-    //   484	489	461	finally
-    //   492	532	461	finally
-    //   535	580	461	finally
-    //   583	620	461	finally
-    //   623	635	461	finally
-    //   196	203	482	java/lang/Throwable
-    //   212	231	482	java/lang/Throwable
-    //   231	298	482	java/lang/Throwable
-    //   298	332	482	java/lang/Throwable
+    //   110	136	443	java/lang/NoSuchMethodException
+    //   110	136	456	java/lang/Throwable
+    //   5	12	495	finally
+    //   16	23	495	finally
+    //   23	47	495	finally
+    //   51	58	495	finally
+    //   58	73	495	finally
+    //   78	85	495	finally
+    //   89	94	495	finally
+    //   94	110	495	finally
+    //   110	136	495	finally
+    //   143	165	495	finally
+    //   169	216	495	finally
+    //   230	237	495	finally
+    //   246	265	495	finally
+    //   265	332	495	finally
+    //   332	366	495	finally
+    //   371	424	495	finally
+    //   424	429	495	finally
+    //   433	440	495	finally
+    //   445	450	495	finally
+    //   458	492	495	finally
+    //   500	513	495	finally
+    //   518	523	495	finally
+    //   526	566	495	finally
+    //   569	614	495	finally
+    //   617	654	495	finally
+    //   657	695	495	finally
+    //   230	237	516	java/lang/Throwable
+    //   246	265	516	java/lang/Throwable
+    //   265	332	516	java/lang/Throwable
+    //   332	366	516	java/lang/Throwable
   }
   
   boolean isInited()
@@ -382,42 +409,79 @@ class X5CoreEngine
     return this.mCanUseX5;
   }
   
+  public void releaseTbsCoreLoadFileLock(Context paramContext)
+  {
+    int i = 1;
+    try
+    {
+      boolean bool = TbsDownloadConfig.getInstance().getTbsCoreLoadRenameFileLockEnable();
+      i = bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      label11:
+      break label11;
+    }
+    if (i == 0) {}
+    while (sTbsCoreLoadFileLock == null) {
+      return;
+    }
+    FileUtil.releaseTbsCoreRenameFileLock(paramContext, sTbsCoreLoadFileLock);
+  }
+  
   /* Error */
-  public FileLock tryTbsCoreLoadFileLock(android.content.Context paramContext)
+  public FileLock tryTbsCoreLoadFileLock(Context paramContext)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: getstatic 21	com/tencent/smtt/sdk/X5CoreEngine:sTbsCoreLoadFileLock	Ljava/nio/channels/FileLock;
-    //   5: ifnull +11 -> 16
-    //   8: getstatic 21	com/tencent/smtt/sdk/X5CoreEngine:sTbsCoreLoadFileLock	Ljava/nio/channels/FileLock;
-    //   11: astore_1
-    //   12: aload_0
-    //   13: monitorexit
-    //   14: aload_1
-    //   15: areturn
-    //   16: aload_1
-    //   17: invokestatic 203	com/tencent/smtt/utils/FileUtil:getTbsCoreLoadFileLock	(Landroid/content/Context;)Ljava/nio/channels/FileLock;
-    //   20: putstatic 21	com/tencent/smtt/sdk/X5CoreEngine:sTbsCoreLoadFileLock	Ljava/nio/channels/FileLock;
-    //   23: getstatic 21	com/tencent/smtt/sdk/X5CoreEngine:sTbsCoreLoadFileLock	Ljava/nio/channels/FileLock;
-    //   26: ifnonnull +3 -> 29
-    //   29: getstatic 21	com/tencent/smtt/sdk/X5CoreEngine:sTbsCoreLoadFileLock	Ljava/nio/channels/FileLock;
-    //   32: astore_1
-    //   33: goto -21 -> 12
-    //   36: astore_1
-    //   37: aload_0
-    //   38: monitorexit
-    //   39: aload_1
-    //   40: athrow
+    //   0: ldc 8
+    //   2: ldc 228
+    //   4: invokestatic 44	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   7: getstatic 21	com/tencent/smtt/sdk/X5CoreEngine:sTbsCoreLoadFileLock	Ljava/nio/channels/FileLock;
+    //   10: ifnull +7 -> 17
+    //   13: getstatic 21	com/tencent/smtt/sdk/X5CoreEngine:sTbsCoreLoadFileLock	Ljava/nio/channels/FileLock;
+    //   16: areturn
+    //   17: ldc 2
+    //   19: monitorenter
+    //   20: getstatic 21	com/tencent/smtt/sdk/X5CoreEngine:sTbsCoreLoadFileLock	Ljava/nio/channels/FileLock;
+    //   23: ifnonnull +23 -> 46
+    //   26: aload_1
+    //   27: invokestatic 231	com/tencent/smtt/utils/FileUtil:getTbsCoreLoadFileLock	(Landroid/content/Context;)Ljava/nio/channels/FileLock;
+    //   30: putstatic 21	com/tencent/smtt/sdk/X5CoreEngine:sTbsCoreLoadFileLock	Ljava/nio/channels/FileLock;
+    //   33: getstatic 21	com/tencent/smtt/sdk/X5CoreEngine:sTbsCoreLoadFileLock	Ljava/nio/channels/FileLock;
+    //   36: ifnonnull +17 -> 53
+    //   39: ldc 8
+    //   41: ldc 233
+    //   43: invokestatic 44	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   46: ldc 2
+    //   48: monitorexit
+    //   49: getstatic 21	com/tencent/smtt/sdk/X5CoreEngine:sTbsCoreLoadFileLock	Ljava/nio/channels/FileLock;
+    //   52: areturn
+    //   53: ldc 8
+    //   55: new 62	java/lang/StringBuilder
+    //   58: dup
+    //   59: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   62: ldc 235
+    //   64: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: getstatic 21	com/tencent/smtt/sdk/X5CoreEngine:sTbsCoreLoadFileLock	Ljava/nio/channels/FileLock;
+    //   70: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   73: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   76: invokestatic 44	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   79: goto -33 -> 46
+    //   82: astore_1
+    //   83: ldc 2
+    //   85: monitorexit
+    //   86: aload_1
+    //   87: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	41	0	this	X5CoreEngine
-    //   0	41	1	paramContext	android.content.Context
+    //   0	88	0	this	X5CoreEngine
+    //   0	88	1	paramContext	Context
     // Exception table:
     //   from	to	target	type
-    //   2	12	36	finally
-    //   16	29	36	finally
-    //   29	33	36	finally
+    //   20	46	82	finally
+    //   46	49	82	finally
+    //   53	79	82	finally
+    //   83	86	82	finally
   }
   
   public X5CoreWizard wizard()
@@ -438,7 +502,7 @@ class X5CoreEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.sdk.X5CoreEngine
  * JD-Core Version:    0.7.0.1
  */

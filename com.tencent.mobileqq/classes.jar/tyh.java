@@ -1,53 +1,93 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.troop.utils.AvatarTroopUtil;
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread.UploadState;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentVideo;
+import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StUser;
+import java.util.List;
 
-public class tyh
-  implements Observer
+class tyh
+  implements View.OnClickListener
 {
-  public tyh(TroopInfoActivity paramTroopInfoActivity) {}
+  tyh(txz paramtxz) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (paramObject == null) {}
-    label4:
-    int i;
-    do
+    boolean bool2 = false;
+    trz localtrz = new trz();
+    Object localObject = null;
+    ReportExtraTypeInfo localReportExtraTypeInfo = new ReportExtraTypeInfo();
+    paramView = (View)localObject;
+    if (txz.a(this.a) != null)
     {
-      do
+      paramView = (View)localObject;
+      if (txz.a(this.a).a() != null)
       {
-        do
-        {
-          break label4;
-          do
-          {
-            return;
-          } while (!(paramObject instanceof TroopUploadingThread.UploadState));
-          paramObservable = (TroopUploadingThread.UploadState)paramObject;
-        } while (paramObservable.a == 0);
-        this.a.jdField_a_of_type_AndroidOsHandler.post(new tyi(this, paramObservable));
-      } while ((paramObservable.a != 1) || (paramObservable.c < 0) || (this.a.jdField_a_of_type_AndroidNetUri == null));
-      paramObject = ImageUtil.b(this.a, this.a.jdField_a_of_type_AndroidNetUri);
-      i = AvatarWallAdapter.b(paramObject, AbsDownloader.d(AvatarTroopUtil.b(AvatarTroopUtil.a(String.valueOf(paramObservable.b), this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, 1))));
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.troopinfo", 2, "origin photo,result:" + i);
+        localObject = txz.a(this.a).a();
+        if (!(localObject instanceof txm)) {
+          break label267;
+        }
+        paramView = ((txm)localObject).a;
+        if (paramView == null) {
+          break label304;
+        }
+        paramView = (FeedCloudMeta.StFeed)paramView.a();
       }
-      i = AvatarWallAdapter.a(paramObject, AbsDownloader.d(AvatarTroopUtil.a(AvatarTroopUtil.a(String.valueOf(paramObservable.b), this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, 1))));
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.troopinfo", 2, "thumb photo,result:" + i);
+    }
+    for (;;)
+    {
+      localReportExtraTypeInfo.mFeed = paramView;
+      localReportExtraTypeInfo.mDataPosition = ((RecyclerView.ViewHolder)localObject).getAdapterPosition();
+      localReportExtraTypeInfo.mPlayScene = 2;
+      localtrz.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = localReportExtraTypeInfo;
+      localtrz.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramView;
+      localtrz.jdField_a_of_type_Int = 0;
+      if (!tra.a(localtrz.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed)) {}
+      for (boolean bool1 = true;; bool1 = false)
+      {
+        localtrz.c = bool1;
+        localtrz.b = tra.a(localtrz.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed);
+        localtrz.d = false;
+        if (localtrz.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null)
+        {
+          localObject = localtrz.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.opMask2.get();
+          if ((localObject != null) && (((List)localObject).contains(Integer.valueOf(3))))
+          {
+            bool1 = bool2;
+            if (!tra.a((FeedCloudMeta.StUser)localtrz.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.get())) {
+              bool1 = true;
+            }
+            localtrz.d = bool1;
+          }
+        }
+        if (paramView != null)
+        {
+          this.a.b("share_action_show_share_sheet", localtrz);
+          txz.a(this.a, true);
+        }
+        return;
+        label267:
+        if (!(localObject instanceof txn)) {
+          break label304;
+        }
+        paramView = ((txn)localObject).a;
+        if (paramView == null) {
+          break label304;
+        }
+        paramView = (FeedCloudMeta.StFeed)paramView.a();
+        break;
+      }
+      label304:
+      paramView = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tyh
  * JD-Core Version:    0.7.0.1
  */

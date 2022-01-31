@@ -1,29 +1,46 @@
-import android.view.MotionEvent;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class tbp
-  implements View.OnTouchListener
+  extends RecyclerView.ItemDecoration
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private final int a = aepi.a(4.0F, BaseApplicationImpl.getApplication().getResources());
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    switch (paramMotionEvent.getActionMasked())
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    paramView = (StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams();
+    int i = paramView.getSpanIndex();
+    if (paramView.isFullSpan())
     {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      FrameHelperActivity.b(false);
-      return false;
+      paramRect.left = 0;
+      paramRect.right = 0;
     }
-    FrameHelperActivity.b(true);
-    return false;
+    for (;;)
+    {
+      paramRect.bottom = this.a;
+      return;
+      if (i % 2 == 0)
+      {
+        paramRect.left = 0;
+        paramRect.right = (this.a / 2);
+      }
+      else
+      {
+        paramRect.left = (this.a / 2);
+        paramRect.right = 0;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tbp
  * JD-Core Version:    0.7.0.1
  */

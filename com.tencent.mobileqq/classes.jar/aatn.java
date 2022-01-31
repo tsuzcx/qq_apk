@@ -1,24 +1,10 @@
-import java.util.ArrayList;
-
-public class aatn
-  extends aati
+public abstract interface aatn
 {
-  public boolean a;
-  public long b;
-  public long c;
-  public final ArrayList c = new ArrayList();
-  public String d;
-  public final ArrayList d = new ArrayList();
-  public String e;
-  
-  private aatn()
-  {
-    super(null);
-  }
+  public abstract void a(aato paramaato);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aatn
  * JD-Core Version:    0.7.0.1
  */

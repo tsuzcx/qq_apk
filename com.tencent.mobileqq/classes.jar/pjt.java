@@ -1,53 +1,47 @@
-import com.tencent.component.network.downloader.strategy.DownloadPreprocessStrategy.DownloadPool;
-import com.tencent.component.network.module.base.Config;
-import com.tencent.component.network.utils.thread.PriorityThreadPool;
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
-public final class pjt
+public class pjt
 {
-  private final int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private final HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  
-  public pjt(String paramString, int paramInt)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    int i = paramInt;
-    if (paramInt <= 0) {
-      i = 1;
-    }
-    this.jdField_a_of_type_JavaLangString = str;
-    this.jdField_a_of_type_Int = i;
-  }
-  
-  public PriorityThreadPool a(String paramString)
-  {
-    String str = this.jdField_a_of_type_JavaLangString + "-" + paramString;
-    ??? = (PriorityThreadPool)this.jdField_a_of_type_JavaUtilHashMap.get(str);
-    if (??? != null) {
-      return ???;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    Object localObject;
+    if (paramBaseArticleInfo.mSinglePicture != null)
     {
-      PriorityThreadPool localPriorityThreadPool = (PriorityThreadPool)this.jdField_a_of_type_JavaUtilHashMap.get(str);
-      if (localPriorityThreadPool != null) {
-        return localPriorityThreadPool;
+      localObject = paramBaseArticleInfo.mSinglePicture.getFile();
+      localJSONObject2.put("article_large_imge_url", localObject);
+      localJSONObject1.put("id_article_large_imge", localJSONObject2);
+      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
+        break label103;
       }
     }
-    if ((paramString != null) && (paramString.equals(DownloadPreprocessStrategy.DownloadPool.HTTP2.getName()))) {}
-    for (paramString = new PriorityThreadPool(str, Config.f());; paramString = new PriorityThreadPool(str, this.jdField_a_of_type_Int))
+    for (;;)
     {
-      this.jdField_a_of_type_JavaUtilHashMap.put(str, paramString);
-      return paramString;
+      pkm.a(paramBaseArticleInfo, localJSONObject1, true, "3");
+      pkm.l(paramBaseArticleInfo, localJSONObject1);
+      pkm.e(paramBaseArticleInfo, localJSONObject1);
+      oee.b(paramBaseArticleInfo, localJSONObject1);
+      oee.a(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_ad_pk_cell");
+      pkm.a(localJSONObject1, paramBaseArticleInfo);
+      return localJSONObject1;
+      localObject = null;
+      break;
+      label103:
+      localObject = (AdvertisementInfo)paramBaseArticleInfo;
+      if (((AdvertisementInfo)localObject).mAdvertisementExtInfo != null) {
+        oee.a(localJSONObject1, ((AdvertisementInfo)localObject).mAdvertisementExtInfo);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pjt
  * JD-Core Version:    0.7.0.1
  */

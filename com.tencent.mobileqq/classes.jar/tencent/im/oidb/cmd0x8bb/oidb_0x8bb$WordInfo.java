@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0x8bb$WordInfo
-  extends MessageMicro
+  extends MessageMicro<WordInfo>
 {
   public static final int STR_KEYWORD_FIELD_NUMBER = 1;
   public static final int UINT32_UPDATE_TIME_FIELD_NUMBER = 2;
@@ -17,7 +17,7 @@ public final class oidb_0x8bb$WordInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8bb.oidb_0x8bb.WordInfo
  * JD-Core Version:    0.7.0.1
  */

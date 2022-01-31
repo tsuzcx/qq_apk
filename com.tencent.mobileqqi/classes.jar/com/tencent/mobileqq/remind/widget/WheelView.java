@@ -86,7 +86,7 @@ public class WheelView
   private void a(View paramView, Transformation paramTransformation, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
   {
     paramTransformation.clear();
-    paramTransformation.setTransformationType(Transformation.TYPE_BOTH);
+    paramTransformation.setTransformationType(3);
     Matrix localMatrix = paramTransformation.getMatrix();
     int m = paramView.getWidth();
     int n = paramView.getHeight();

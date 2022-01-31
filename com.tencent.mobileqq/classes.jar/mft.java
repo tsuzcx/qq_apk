@@ -1,26 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.EffectSettingUi.2.1;
+import com.tencent.av.ui.EffectSettingUi.2.2;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
+import java.lang.ref.WeakReference;
 
 public class mft
-  implements DialogInterface.OnShowListener
+  implements mry
 {
-  public mft(VideoShareHelper paramVideoShareHelper) {}
+  public mft(EffectSettingUi paramEffectSettingUi) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "mDisLikeActionSheet onShow() on VideoChannel");
+    if (QLog.isDevelopLevel()) {
+      QLog.d("EffectSettingUi", 4, "onGetConfig, enable[" + paramBoolean + "]");
     }
-    VideoShareHelper.b(this.a).getWindow().clearFlags(8);
+    if (paramBoolean)
+    {
+      Object localObject = this.a.jdField_a_of_type_JavaLangRefWeakReference;
+      if (localObject != null)
+      {
+        localObject = (AVActivity)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ((AVActivity)localObject).runOnUiThread(new EffectSettingUi.2.1(this));
+        }
+      }
+      return;
+    }
+    this.a.jdField_a_of_type_Mry = null;
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    long l = AudioHelper.b();
+    if (QLog.isDevelopLevel()) {
+      QLog.w("EffectSettingUi", 1, "onStatusChanged, seq[" + l + "]");
+    }
+    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new EffectSettingUi.2.2(this, l, paramBoolean3, paramBoolean1, paramBoolean2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mft
  * JD-Core Version:    0.7.0.1
  */

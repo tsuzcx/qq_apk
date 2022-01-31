@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Qworkflow$Approver
-  extends MessageMicro
+  extends MessageMicro<Approver>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_userdef = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -25,7 +25,7 @@ public final class Qworkflow$Approver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.trunk.Qworkflow.Qworkflow.Approver
  * JD-Core Version:    0.7.0.1
  */

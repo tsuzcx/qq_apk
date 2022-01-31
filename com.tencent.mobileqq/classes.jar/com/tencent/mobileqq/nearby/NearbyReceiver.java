@@ -3,6 +3,7 @@ package com.tencent.mobileqq.nearby;
 import android.content.Context;
 import android.content.Intent;
 import android.os.ResultReceiver;
+import auwq;
 import com.tencent.mobileqq.olympic.ScannerResultReceiver;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -30,7 +31,7 @@ public class NearbyReceiver
           paramContext.send(0, null);
         }
         int i = paramIntent.getIntExtra("nearby_preload_from", 0);
-        NearbySPUtil.b(paramAppRuntime.getAccount());
+        auwq.b(paramAppRuntime.getAccount());
         ((NearbyAppInterface)paramAppRuntime).a(1, i);
       }
     } while (!QLog.isColorLevel());
@@ -39,7 +40,7 @@ public class NearbyReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyReceiver
  * JD-Core Version:    0.7.0.1
  */

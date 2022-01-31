@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.widget.AbsListView;
 
 public class aikv
-  implements Runnable
+  extends aila
 {
-  public aikv(SubAccountManager paramSubAccountManager, SubAccountInfo paramSubAccountInfo) {}
-  
-  public void run()
+  public aikv(AvatarPendantActivity paramAvatarPendantActivity)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSubaccountDatamanagerSubAccountManager.a(this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo);
+    super(paramAvatarPendantActivity);
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.e == AvatarPendantActivity.d) {}
+    while (Build.VERSION.SDK_INT < 14) {
+      return;
     }
+    this.a.b();
   }
 }
 

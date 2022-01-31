@@ -1,25 +1,30 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.location.LocationDataManager;
-import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
-import com.tencent.mobileqq.nearby.now.model.LocationInfo;
-import com.tencent.mobileqq.nearby.now.widget.ItemClickHelper;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
 
 public class aesy
-  extends ItemClickHelper
+  implements Animator.AnimatorListener
 {
-  public aesy(SelectLocationFragment paramSelectLocationFragment) {}
+  public aesy(IntimateTitleSwitchView paramIntimateTitleSwitchView) {}
   
-  public void a(int paramInt, View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    SelectLocationFragment.a(this.a, paramInt);
-    SelectLocationFragment.b(this.a, (LocationInfo)SelectLocationFragment.a(this.a).a().get(SelectLocationFragment.b(this.a)));
-    SelectLocationFragment.a(this.a, SelectLocationFragment.b(this.a));
+    onAnimationEnd(paramAnimator);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.c.setAlpha(1.0F);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aesy
  * JD-Core Version:    0.7.0.1
  */

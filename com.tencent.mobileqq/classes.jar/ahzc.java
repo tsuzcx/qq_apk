@@ -1,47 +1,53 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import mqq.observer.WtloginObserver;
+import mqq.os.MqqHandler;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class ahzc
-  implements Runnable
+  extends WtloginObserver
 {
-  public ahzc(PtvTemplateManager paramPtvTemplateManager, AppInterface paramAppInterface, File paramFile) {}
+  public ahzc(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment, long paramLong, boolean paramBoolean) {}
   
-  public void run()
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PtvTemplateManager", 4, String.format("rebuildWebTemplateInfos, runnable[%s]", new Object[] { Integer.valueOf(hashCode()) }));
-    }
-    List localList = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaIoFile, null);
-    if (localList != null) {}
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.jdField_c_of_type_JavaLangObject)
+    int i = 1;
+    boolean bool;
+    if (QLog.isColorLevel())
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.jdField_c_of_type_Boolean) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.b.clear();
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.b.addAll(localList);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.d = true;
-      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) && (PtvFilterSoLoad.b())) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.b);
-      }
-      PtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager);
-      if (QLog.isDevelopLevel())
+      long l = System.currentTimeMillis();
+      paramWUserSigInfo = new StringBuilder().append("CheckDevLockStatus ret: ").append(paramInt).append(", has devinfo: ");
+      if (paramDevlockInfo == null)
       {
-        QLog.d("PtvTemplateManager", 4, String.format("rebuildWebTemplateInfos, [%s] finished", new Object[] { Integer.valueOf(hashCode()) }));
-        return;
+        bool = true;
+        QLog.d("Q.history.C2CAllFragment", 2, bool + ", cost: " + (l - this.jdField_a_of_type_Long) + "ms");
       }
+    }
+    else
+    {
+      paramWUserSigInfo = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.obtainMessage(40);
+      paramWUserSigInfo.arg1 = paramInt;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label135;
+      }
+    }
+    label135:
+    for (paramInt = i;; paramInt = 0)
+    {
+      paramWUserSigInfo.arg2 = paramInt;
+      paramWUserSigInfo.obj = paramDevlockInfo;
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.sendMessage(paramWUserSigInfo);
+      return;
+      bool = false;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahzc
  * JD-Core Version:    0.7.0.1
  */

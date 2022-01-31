@@ -1,63 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class lhb
-  implements INetInfoHandler
+class lhb
+  extends BroadcastReceiver
 {
-  public lhb(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
+  lhb(lha paramlha) {}
   
-  public void onNetMobile2None()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "INetInfoHandler onNetMobile2None()");
-    }
-    if (ReadInJoyCameraCaptureActivity.a(this.a) == 6) {
-      ReadInJoyCameraCaptureActivity.d(this.a);
-    }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "INetInfoHandler onNetMobile2Wifi() ssid=" + paramString);
-    }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "INetInfoHandler onNetNone2Mobile() apn=" + paramString);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "INetInfoHandler onNetNone2Wifi() ssid=" + paramString);
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "INetInfoHandler onNetWifi2Mobile() apn=" + paramString);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "INetInfoHandler onNetWifi2None()");
-    }
-    if (ReadInJoyCameraCaptureActivity.a(this.a) == 6) {
-      ReadInJoyCameraCaptureActivity.d(this.a);
+    if ((paramIntent != null) && ("com.tencent.av.EXIT_VIDEO_PROCESS".equals(paramIntent.getAction())))
+    {
+      long l = mwd.a(paramIntent);
+      QLog.w("GAudioExitMonitor", 1, "onReceive.EXIT_VIDEO_ACTION, seq[" + l + "]");
+      paramContext = lha.a(this.a).a();
+      if (paramContext != null)
+      {
+        paramContext.a(false, 202, new int[] { paramContext.a().C });
+        paramContext.b(202);
+        paramContext.d(1011);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lhb
  * JD-Core Version:    0.7.0.1
  */

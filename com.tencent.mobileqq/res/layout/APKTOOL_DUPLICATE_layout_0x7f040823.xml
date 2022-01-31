@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:mobileqq="http://schemas.android.com/apk/res/com.tencent.mobileqq">
-    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2639" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" mobileqq:customPadding="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0156" />
-    <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0578" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a263b" android:focusable="true" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0176" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0174" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0176" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0173" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2639" />
-</RelativeLayout>

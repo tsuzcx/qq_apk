@@ -2,8 +2,8 @@ package cooperation.qzone.report.lp;
 
 import android.net.Uri;
 import android.text.TextUtils;
+import bjdm;
 import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.qzone.QUA;
 import cooperation.qzone.util.QZLog;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -27,12 +27,23 @@ public class LpReportInfo_dc02880
     this.subactiontype = paramInt2;
   }
   
+  public LpReportInfo_dc02880(int paramInt1, int paramInt2, String paramString1, String paramString2)
+  {
+    this.actiontype = paramInt1;
+    this.subactiontype = paramInt2;
+    this.url = paramString1;
+    this.item_type = paramString2;
+  }
+  
   public LpReportInfo_dc02880(String paramString1, String paramString2)
   {
-    this.url = paramString1;
-    this.actiontype = 2;
-    this.subactiontype = 2;
-    this.item_type = paramString2;
+    this(2, 2, paramString1, paramString2);
+  }
+  
+  public static void report(int paramInt1, int paramInt2, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    paramString1 = new LpReportInfo_dc02880(paramInt1, paramInt2, paramString1, paramString2);
+    LpReportManager.getInstance().reportToDC02880(paramString1, paramBoolean1, paramBoolean2);
   }
   
   public static void report(String paramString)
@@ -41,8 +52,10 @@ public class LpReportInfo_dc02880
     try
     {
       String str = Uri.parse(paramString).getQueryParameter("hydtgzh");
-      if (!TextUtils.isEmpty(str)) {
+      if (!TextUtils.isEmpty(str))
+      {
         report(paramString, str);
+        QZoneLoginReportHelper.reportLoginFromMQQPublicAccount(str);
       }
       return;
     }
@@ -63,10 +76,10 @@ public class LpReportInfo_dc02880
     return null;
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("qua", QUA.a());
+    localHashMap.put("qua", bjdm.a());
     if (this.uin == 0L) {}
     for (String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();; str = String.valueOf(this.uin))
     {
@@ -83,7 +96,7 @@ public class LpReportInfo_dc02880
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc02880
  * JD-Core Version:    0.7.0.1
  */

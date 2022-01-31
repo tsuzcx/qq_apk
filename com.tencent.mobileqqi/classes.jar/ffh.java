@@ -1,16 +1,72 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class ffh
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public ffh(DataLineHandler paramDataLineHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  public ffh(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.handleRecvFileReply(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg, this.jdField_a_of_type_JavaLangObject);
+    if (paramIntent.getAction().equals("com.tencent.qzone.clean_sharealbum"))
+    {
+      paramIntent = paramIntent.getExtras();
+      int i = -1;
+      if (paramIntent != null) {
+        i = paramIntent.getInt("para_sharealbum_operation_type");
+      }
+      switch (i)
+      {
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      return;
+                      QZoneShareAlbumAssistantManager.a().h(this.a);
+                      return;
+                    } while (paramIntent == null);
+                    paramContext = paramIntent.getString("albumid");
+                  } while (TextUtils.isEmpty(paramContext));
+                  QZoneShareAlbumAssistantManager.a().a(paramContext, this.a);
+                } while (!QLog.isColorLevel());
+                QLog.d(QQAppInterface.b, 2, "sharealbum exitAlbum:" + paramContext);
+                return;
+              } while (paramIntent == null);
+              paramContext = paramIntent.getString("albumid");
+            } while (TextUtils.isEmpty(paramContext));
+            QZoneShareAlbumAssistantManager.a().a(paramContext);
+          } while (!QLog.isColorLevel());
+          QLog.d(QQAppInterface.b, 2, "sharealbum clearShareAlbum:" + paramContext);
+          return;
+        } while (paramIntent == null);
+        paramContext = paramIntent.getString("albumid");
+        paramIntent = paramIntent.getString("albumname");
+      } while ((TextUtils.isEmpty(paramContext)) || (TextUtils.isEmpty(paramIntent)));
+      QZoneShareAlbumAssistantManager.a().a(paramContext, paramIntent);
+    } while (!QLog.isColorLevel());
+    QLog.d(QQAppInterface.b, 2, "sharealbum changeName:" + paramContext + " name:" + paramIntent);
   }
 }
 

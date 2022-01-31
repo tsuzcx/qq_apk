@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/apa" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <View android:id="@id/r8" android:background="@color/id" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/if" android:id="@id/p3" android:paddingTop="20.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginLeft="14.0dip" android:text="@string/cancel" android:shadowColor="@color/by" android:shadowRadius="3.0" android:layout_alignParentLeft="true" />
+    <ImageView android:id="@id/qt" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="14.0dip" android:src="@drawable/fan" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView android:layout_gravity="top" android:id="@id/ap_" android:visibility="visible" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/abp" android:layout_below="@id/p3" />
+    <LinearLayout android:gravity="center_horizontal" android:id="@id/abp" android:layout_width="fill_parent" android:layout_height="130.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="18.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/ilx" android:background="@drawable/ak0" android:visibility="visible" android:layout_width="167.0dip" android:layout_height="40.0dip" android:layout_marginTop="15.0dip" android:text="@string/r4p" />
+    </LinearLayout>
+    <TextView android:textSize="10.0dip" android:textColor="@color/alf" android:id="@id/bec" android:background="@color/br" android:padding="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:maxLines="8" android:layout_centerInParent="true" />
+    <RelativeLayout android:orientation="vertical" android:id="@id/qv" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="5.0dip" android:layout_below="@id/qt">
+        <ImageView android:id="@id/yw" android:layout_width="wrap_content" android:layout_height="5.5dip" android:layout_marginRight="10.0dip" android:src="@drawable/fal" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <RelativeLayout android:id="@id/qu" android:background="@drawable/ak1" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/yw">
+            <com.tencent.biz.qqstory.album.view.StoryFormSwitchItem android:id="@id/qx" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:layout_marginBottom="7.0dip" formItem:bgType="abp" formItem:customHeight="32.0dip" formItem:customPadding="15.0dip" formItem:switchChecked="true" formItem:switchText="智能影集设置" />
+            <View android:background="#34000000" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="13.0dip" android:layout_marginRight="13.0dip" android:layout_below="@id/qx" />
+            <TextView android:textSize="14.0dip" android:textColor="#99000000" android:id="@id/qw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="7.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="13.0dip" android:text="@string/r4o" android:layout_below="@id/qx" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

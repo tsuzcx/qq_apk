@@ -1,46 +1,47 @@
-import android.util.SparseArray;
-import android.view.View;
-import com.tencent.widget.AbsSpinner;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class amae
+  extends BroadcastReceiver
 {
-  private final SparseArray jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  public amae(QQAppInterface paramQQAppInterface) {}
   
-  public amae(AbsSpinner paramAbsSpinner) {}
-  
-  public View a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    View localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localView != null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray.delete(paramInt);
-    }
-    return localView;
-  }
-  
-  public void a()
-  {
-    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
-    int j = localSparseArray.size();
-    int i = 0;
-    while (i < j)
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
     {
-      View localView = (View)localSparseArray.valueAt(i);
-      if (localView != null) {
-        AbsSpinner.a(this.jdField_a_of_type_ComTencentWidgetAbsSpinner, localView, true);
-      }
-      i += 1;
+      do
+      {
+        do
+        {
+          return;
+          if ((paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())))
+          {
+            assz.a();
+            return;
+          }
+        } while (!paramContext.equals("com.tencent.mobileqq.kickedLogin.otherDevice"));
+        paramContext = paramIntent.getStringExtra("kickedUin");
+      } while ((TextUtils.isEmpty(paramContext)) || (!paramContext.equals(this.a.getAccount())));
+      paramContext = this.a.getKickIntent();
+    } while (paramContext == null);
+    paramContext.putExtra("isSameDevice", false);
+    paramIntent = paramIntent.getStringExtra("msg");
+    if (!TextUtils.isEmpty(paramIntent)) {
+      paramContext.putExtra("msg", paramIntent);
     }
-    localSparseArray.clear();
-  }
-  
-  public void a(int paramInt, View paramView)
-  {
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramView);
+    this.a.setKickIntent(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amae
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,16 @@
-import android.view.SurfaceView;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class yeq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class yeq
+  implements yls
 {
-  public yeq(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  yeq(yep paramyep) {}
   
-  public void onGlobalLayout()
+  public void a(boolean paramBoolean)
   {
-    this.a.e = this.a.a.getWidth();
-    this.a.f = this.a.a.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.e + ",mSurfaceViewHeight:" + this.a.f);
-    }
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.jdField_a_of_type_Yen.a.a(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yeq
  * JD-Core Version:    0.7.0.1
  */

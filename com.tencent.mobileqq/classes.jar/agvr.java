@@ -1,22 +1,15 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class agvr
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public agvr(QzoneAlbumRedTouchManager paramQzoneAlbumRedTouchManager) {}
+  public agvr(TroopChatPie paramTroopChatPie) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SharedPreferences.Editor localEditor = QzoneAlbumRedTouchManager.a(this.a).edit().putLong("key_photo_guide_has_red_date", System.currentTimeMillis());
-    if (Build.VERSION.SDK_INT < 9)
-    {
-      localEditor.commit();
-      return;
-    }
-    localEditor.apply();
+    this.a.I();
   }
 }
 

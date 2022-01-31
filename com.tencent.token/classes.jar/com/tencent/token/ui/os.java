@@ -1,18 +1,31 @@
 package com.tencent.token.ui;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.MbInfoResult.MbInfoItem;
+import com.tencent.token.core.bean.MbInfoResult.MbInfoItemDetail;
 
-final class os
+class os
   implements View.OnClickListener
 {
-  os(or paramor) {}
+  os(or paramor, MbInfoResult.MbInfoItem paramMbInfoItem, int paramInt1, int paramInt2) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(or.a(this.a), PCMobileQQVerifyedDevicesActivity.class);
-    or.a(this.a).startActivity(paramView);
+    if ((this.a.mId == 51) && (this.a.mDetail.mBtnType == 1))
+    {
+      paramView = new Intent(or.a(this.d), UtilsModSetMobileStep1Activity.class);
+      paramView.putExtra("title", or.a(this.d).getResources().getString(2131231428) + this.a.mName);
+      paramView.putExtra("op_type", 1);
+      paramView.putExtra("position", this.b);
+      or.a(this.d).startActivity(paramView);
+      return;
+    }
+    paramView = new Intent(or.a(this.d), UtilsMbInfoItemActivity.class);
+    paramView.putExtra("position", this.c);
+    or.a(this.d).startActivity(paramView);
   }
 }
 

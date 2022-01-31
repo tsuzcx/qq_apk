@@ -1,21 +1,40 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.GroupListOpenFrame;
-import com.tencent.open.agent.GroupListOpenFrame.GroupListAdapter;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.StaticAnalyz;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
 
 public class hnl
-  implements View.OnClickListener
+  implements Runnable
 {
-  public hnl(GroupListOpenFrame.GroupListAdapter paramGroupListAdapter, int paramInt, String paramString) {}
+  public hnl(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Bundle();
-    paramView.putInt("group_index", this.jdField_a_of_type_Int);
-    paramView.putString("group_name", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentOpenAgentGroupListOpenFrame$GroupListAdapter.a.a.a(1, paramView);
+    try
+    {
+      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c);
+      if (localTMAssistantDownloadTaskInfo != null)
+      {
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c).mSavePath;
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.e(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(4, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+        long l = localTMAssistantDownloadTaskInfo.mTotalDataLen;
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, l);
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
+      }
+    }
+    StaticAnalyz.a("300", this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b);
+    if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a) {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.c(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+    }
   }
 }
 

@@ -1,32 +1,31 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.permission.ComplexPart;
-import com.tencent.biz.qqstory.takevideo.permission.ComplexPart.Group;
-import com.tencent.biz.qqstory.takevideo.permission.PermissionPart.PartCallback;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
 public class ole
-  implements View.OnClickListener
+  implements oma
 {
-  public ole(ComplexPart paramComplexPart, ComplexPart.Group paramGroup) {}
+  public ole(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
+  
+  public void a()
+  {
+    if (ReadInJoyCommentListFragment.a(this.a) != null) {
+      ReadInJoyCommentListFragment.a(this.a).a();
+    }
+  }
   
   public void onClick(View paramView)
   {
-    if (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group.a()) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group.b();
-    }
-    for (;;)
+    switch (paramView.getId())
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart.a != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart.a.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart);
-      }
+    default: 
       return;
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group.c();
     }
+    this.a.a(false, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ole
  * JD-Core Version:    0.7.0.1
  */

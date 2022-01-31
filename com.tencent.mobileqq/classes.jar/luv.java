@@ -1,25 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeTopicRecommendGrid;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage.OnNoItemClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
-
-public class luv
-  implements ComponentContentGridImage.OnNoItemClickListener
+public abstract interface luv
 {
-  public luv(FeedItemCellTypeTopicRecommendGrid paramFeedItemCellTypeTopicRecommendGrid) {}
-  
-  public void a()
-  {
-    ReadInJoyBaseAdapter.OnSubRegionClickListener localOnSubRegionClickListener = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
-    if (localOnSubRegionClickListener != null) {
-      localOnSubRegionClickListener.a(null, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
-    }
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     luv
  * JD-Core Version:    0.7.0.1
  */

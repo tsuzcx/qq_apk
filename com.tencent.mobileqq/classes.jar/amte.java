@@ -1,16 +1,8 @@
-import android.os.Handler;
-import android.os.Message;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
-
-public class amte
-  extends Handler
+public abstract interface amte
 {
-  public amte(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
   
-  public void handleMessage(Message paramMessage)
-  {
-    this.a.a(QzoneVerticalVideoDownloadActivity.a(this.a), paramMessage);
-  }
+  public abstract void a(Runnable paramRunnable);
 }
 
 

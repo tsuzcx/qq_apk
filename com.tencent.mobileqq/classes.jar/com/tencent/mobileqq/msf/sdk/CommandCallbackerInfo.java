@@ -9,7 +9,7 @@ public final class CommandCallbackerInfo
   extends JceStruct
 {
   static ArrayList cache_cmds;
-  public ArrayList cmds;
+  public ArrayList cmds = null;
   public String uin = "";
   
   public CommandCallbackerInfo() {}

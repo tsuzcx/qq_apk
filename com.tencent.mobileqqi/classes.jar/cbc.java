@@ -1,27 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.mobileqq.activity.ChatForEnterpriseActivity;
 
 public class cbc
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public cbc(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public cbc(ChatForEnterpriseActivity paramChatForEnterpriseActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    AssistantSettingActivity.e(this.a).setContentDescription("联系人列表按字母排列");
-    paramCompoundButton = this.a.b;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "0X8004043", "0X8004043", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, this.a.b.a(), null, "qqsetting_all_contacts_key", paramBoolean);
-      return;
-    }
+    ChatForEnterpriseActivity.a(this.a).setVisibility(8);
+    this.a.a.setVisibility(0);
   }
 }
 

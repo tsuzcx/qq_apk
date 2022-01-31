@@ -1,35 +1,51 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
-import com.tencent.widget.MultiImageTextView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SignatureManager;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class amcr
-  extends ImageSpan
+  implements Handler.Callback
 {
-  public amcr(MultiImageTextView paramMultiImageTextView, Drawable paramDrawable, int paramInt)
-  {
-    super(paramDrawable, paramInt);
-  }
+  public amcr(SignatureManager paramSignatureManager) {}
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramCharSequence = getDrawable();
-    paramPaint = paramPaint.getFontMetricsInt();
-    paramInt1 = paramPaint.descent;
-    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
-    paramInt2 = paramCharSequence.getBounds().bottom / 2;
-    paramCanvas.save();
-    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
+    if (2 == paramMessage.what)
+    {
+      SignatureManager.jdField_a_of_type_ArrayOfBdtu = (bdtu[])paramMessage.obj;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      {
+        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
+        if (paramMessage != null) {
+          paramMessage.sendEmptyMessageDelayed(2, 50L);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Signature", 2, "update sign tpl info...");
+        }
+      }
+    }
+    for (;;)
+    {
+      return true;
+      if ((3 == paramMessage.what) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+      {
+        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
+        if (paramMessage != null) {
+          paramMessage.sendEmptyMessageDelayed(7, 50L);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Signature", 2, "update sign tpl animation ...");
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amcr
  * JD-Core Version:    0.7.0.1
  */

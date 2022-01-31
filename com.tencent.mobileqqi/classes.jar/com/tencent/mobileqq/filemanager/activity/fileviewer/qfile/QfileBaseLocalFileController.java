@@ -8,12 +8,12 @@ import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import fxt;
-import fxw;
+import fth;
+import ftk;
 import java.util.List;
 
 public class QfileBaseLocalFileController
-  extends fxt
+  extends fth
 {
   static final String b = "<FileAssistant>QfileLocalFileController";
   
@@ -26,7 +26,7 @@ public class QfileBaseLocalFileController
   {
     if ((FileManagerUtil.a()) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize > 5242880L))
     {
-      FMDialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileviewerBaseBaseFileViewerActivity, 2131558759, 2131558756, new fxw(this));
+      FMDialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileviewerBaseBaseFileViewerActivity, 2131558759, 2131558756, new ftk(this));
       return;
     }
     e();

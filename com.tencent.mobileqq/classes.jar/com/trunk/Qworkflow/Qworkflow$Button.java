@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class Qworkflow$Button
-  extends MessageMicro
+  extends MessageMicro<Button>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_title = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -23,7 +23,7 @@ public final class Qworkflow$Button
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.trunk.Qworkflow.Qworkflow.Button
  * JD-Core Version:    0.7.0.1
  */

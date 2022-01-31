@@ -1,30 +1,21 @@
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class aogf
-  implements Runnable
+class aogf
+  implements EIPCResultCallback
 {
-  private SVHwEncoder jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder;
+  aogf(aoge paramaoge) {}
   
-  public aogf(FlowCameraActivity2 paramFlowCameraActivity2, SVHwEncoder paramSVHwEncoder)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder = paramSVHwEncoder;
-  }
-  
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "handleQQVideo(): onSendVideoClick mEncoderCache=" + this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder);
-    }
-    if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder.b();
-    }
+    QLog.d("DanmuDataIPCClient", 1, new Object[] { "get barrage list, IPC success, msgSeq:", Long.valueOf(paramEIPCResult.data.getLong("key_barrage_msg_seq")) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aogf
  * JD-Core Version:    0.7.0.1
  */

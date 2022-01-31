@@ -1,29 +1,36 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationRule;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationRule.BussinessData;
+import android.annotation.TargetApi;
+import java.net.URL;
 
+@TargetApi(14)
 public class umz
-  implements Runnable
 {
-  public umz(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, AioAnimationRule paramAioAnimationRule) {}
-  
-  public void run()
+  public static URL a(URL paramURL)
   {
-    AIOAnimationConatiner localAIOAnimationConatiner = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner;
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.a == null) {}
-    for (int i = -1;; i = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.a.a)
+    String str = paramURL.getHost();
+    int k = str.indexOf(':');
+    Object localObject = paramURL;
+    if (k != -1)
     {
-      localAIOAnimationConatiner.a(2, 300, new Object[] { localDrawable, Integer.valueOf(0), Integer.valueOf(i) });
-      return;
+      localObject = str.substring(0, k);
+      int j = paramURL.getPort();
+      int i = j;
+      if (j == -1) {
+        i = Integer.valueOf(str.substring(k + 1)).intValue();
+      }
+      wxe.b("URLChecker", "url is not initilized correctly, so re-create it");
+      localObject = new URL(paramURL.getProtocol(), (String)localObject, i, paramURL.getFile());
     }
+    return localObject;
+  }
+  
+  public static boolean a(URL paramURL)
+  {
+    return paramURL.getHost().indexOf(':') == -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     umz
  * JD-Core Version:    0.7.0.1
  */

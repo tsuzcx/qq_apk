@@ -1,54 +1,17 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x984.oidb_0x984.RspBody;
+import android.view.View;
+import com.tencent.mobileqq.activity.chathistory.TroopAIOEmotionFragment;
 
 public class ahef
-  extends ahfj
+  implements bhuk
 {
-  public ahef(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
-  {
-    super(paramReceiptMessageDetailFragment);
-  }
+  public ahef(TroopAIOEmotionFragment paramTroopAIOEmotionFragment, bhuf parambhuf) {}
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      QLog.d("ReceiptMessageDetailFragment", 1, "getDiscussionSendReadReportCallback error on code: " + paramInt);
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOEmotionFragment.b();
+    if (this.jdField_a_of_type_Bhuf.isShowing()) {
+      this.jdField_a_of_type_Bhuf.dismiss();
     }
-    try
-    {
-      paramBundle = new oidb_0x984.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (paramBundle.uint32_code.get() == 0) {
-        break label148;
-      }
-      QLog.d("ReceiptMessageDetailFragment", 1, "getDiscussionSendReadReportCallback fail on code: " + paramBundle.uint32_code.get());
-      if (paramBundle.uint32_code.get() == 20)
-      {
-        ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      QLog.d("ReceiptMessageDetailFragment", 1, "Report read status fail on invalid data");
-      ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
-      return;
-    }
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
-    return;
-    label148:
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "getDiscussionSendReadReportCallback succ");
-    }
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, 0, 0, false);
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
   }
 }
 

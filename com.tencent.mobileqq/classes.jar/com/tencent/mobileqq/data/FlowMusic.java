@@ -1,29 +1,34 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
+import NS_QQ_STORY_META.META.StMusic;
+import awge;
+import awhp;
+import awhs;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 
 public class FlowMusic
-  extends Entity
-  implements Comparable
+  extends awge
+  implements Comparable<FlowMusic>
 {
   public static final int SOURCE_CUSTOM_ADD = 0;
   public static final int SOURCE_QQ_MUSIC_AUTO = 1;
   public int albumId;
   public String albumMid;
   public String albumName;
+  public String albumUrl;
   public int duration = -1;
   public String path;
-  @notColumn
+  @awhp
   public int playable = 1;
   public int singerId;
   public String singerMid;
   public String singerName;
-  @notColumn
+  @awhp
   public long size = -1L;
-  @unique
+  @awhs
   public int songId;
   public String songMid;
   public String songName;
@@ -32,23 +37,50 @@ public class FlowMusic
   public long storeTimeStamp = -1L;
   public int tryBegin = -1;
   public int tryEnd = -1;
-  @notColumn
+  @awhp
   public String url;
   public int userOwnRule;
   
   public FlowMusic() {}
   
+  public FlowMusic(META.StMusic paramStMusic)
+  {
+    this.albumId = ((int)paramStMusic.uiAlbumId.get());
+    this.albumMid = paramStMusic.strAlbumMid.get();
+    this.albumName = paramStMusic.strAlbumName.get();
+    this.albumUrl = paramStMusic.strAlbumPic.get();
+    this.singerId = ((int)paramStMusic.uiSingerId.get());
+    this.singerMid = paramStMusic.strSingerMid.get();
+    this.singerName = paramStMusic.strSingerName.get();
+    this.songId = ((int)paramStMusic.uiSongId.get());
+    this.songMid = paramStMusic.strSongMid.get();
+    this.songName = paramStMusic.strSongName.get();
+    this.songPlayTime = paramStMusic.iPlayTime.get();
+    if (paramStMusic.iTrySize.get() > 0) {}
+    for (;;)
+    {
+      this.userOwnRule = i;
+      this.url = paramStMusic.strPlayUrl.get();
+      this.size = paramStMusic.iSize.get();
+      this.playable = paramStMusic.copyright.get();
+      this.storeTimeStamp = System.currentTimeMillis();
+      return;
+      i = 0;
+    }
+  }
+  
   public FlowMusic(MusicItemInfo paramMusicItemInfo)
   {
-    this.songId = paramMusicItemInfo.jdField_a_of_type_Int;
-    this.singerName = paramMusicItemInfo.b;
-    this.songName = paramMusicItemInfo.jdField_a_of_type_JavaLangString;
-    this.url = paramMusicItemInfo.c;
-    this.tryBegin = paramMusicItemInfo.jdField_e_of_type_Int;
-    this.tryEnd = paramMusicItemInfo.f;
-    this.songMid = paramMusicItemInfo.jdField_e_of_type_JavaLangString;
-    this.duration = paramMusicItemInfo.g;
+    this.songId = paramMusicItemInfo.mItemId;
+    this.singerName = paramMusicItemInfo.mSingername;
+    this.songName = paramMusicItemInfo.mMusicName;
+    this.url = paramMusicItemInfo.mUrl;
+    this.tryBegin = paramMusicItemInfo.musicStart;
+    this.tryEnd = paramMusicItemInfo.musicEnd;
+    this.songMid = paramMusicItemInfo.mSongMid;
+    this.duration = paramMusicItemInfo.musicDuration;
     this.storeTimeStamp = System.currentTimeMillis();
+    this.albumUrl = paramMusicItemInfo.mAlbumUrl;
   }
   
   public int compareTo(FlowMusic paramFlowMusic)
@@ -77,6 +109,7 @@ public class FlowMusic
     this.albumId = paramFlowMusic.albumId;
     this.albumMid = paramFlowMusic.albumMid;
     this.albumName = paramFlowMusic.albumName;
+    this.albumUrl = paramFlowMusic.albumUrl;
     this.singerId = paramFlowMusic.singerId;
     this.singerMid = paramFlowMusic.singerMid;
     this.singerName = paramFlowMusic.singerName;
@@ -116,12 +149,12 @@ public class FlowMusic
   
   public String toString()
   {
-    return "FlowMusic{albumId=" + this.albumId + ", albumMid='" + this.albumMid + '\'' + ", albumName='" + this.albumName + '\'' + ", singerId=" + this.singerId + ", singerMid='" + this.singerMid + '\'' + ", singerName='" + this.singerName + '\'' + ", songId=" + this.songId + ", songMid='" + this.songMid + '\'' + ", songName='" + this.songName + '\'' + ", songPlayTime=" + this.songPlayTime + ", userOwnRule=" + this.userOwnRule + ", tryBegin=" + this.tryBegin + ", tryEnd=" + this.tryEnd + ", duration=" + this.duration + ", path='" + this.path + '\'' + ", url='" + this.url + '\'' + ", size=" + this.size + ", sourceType=" + this.sourceType + ", playable=" + this.playable + ", storeTimeStamp=" + this.storeTimeStamp + '}';
+    return "FlowMusic{url='" + this.url + '\'' + ", songMid='" + this.songMid + '\'' + ", songName='" + this.songName + '\'' + ", playable=" + this.playable + ", albumId=" + this.albumId + ", albumMid='" + this.albumMid + '\'' + ", albumName='" + this.albumName + '\'' + ", albumUrl='" + this.albumUrl + '\'' + ", singerId=" + this.singerId + ", singerMid='" + this.singerMid + '\'' + ", singerName='" + this.singerName + '\'' + ", songId=" + this.songId + ", songPlayTime=" + this.songPlayTime + ", userOwnRule=" + this.userOwnRule + ", tryBegin=" + this.tryBegin + ", tryEnd=" + this.tryEnd + ", duration=" + this.duration + ", path='" + this.path + '\'' + ", size=" + this.size + ", sourceType=" + this.sourceType + ", storeTimeStamp=" + this.storeTimeStamp + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.FlowMusic
  * JD-Core Version:    0.7.0.1
  */

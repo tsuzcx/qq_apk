@@ -30,8 +30,11 @@ public class ProtectedWebView
   
   private void a()
   {
-    if (Build.VERSION.SDK_INT >= 11) {
+    if (Build.VERSION.SDK_INT >= 11)
+    {
       removeJavascriptInterface("searchBoxJavaBridge_");
+      removeJavascriptInterface("accessibility");
+      removeJavascriptInterface("accessibilityTraversal");
     }
     this.a = false;
   }
@@ -127,7 +130,7 @@ public class ProtectedWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.ProtectedWebView
  * JD-Core Version:    0.7.0.1
  */

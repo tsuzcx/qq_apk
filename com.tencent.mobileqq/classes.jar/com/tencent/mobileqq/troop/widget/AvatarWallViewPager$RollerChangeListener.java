@@ -34,7 +34,7 @@ public class AvatarWallViewPager$RollerChangeListener
       bool = false;
       break;
       int i = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager.getCurrentItem();
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.d = i;
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_b_of_type_Int = i;
       int k = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount();
       if (k > 1)
       {
@@ -51,7 +51,7 @@ public class AvatarWallViewPager$RollerChangeListener
           if (i == paramInt) {
             break label190;
           }
-          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.d = paramInt;
+          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_b_of_type_Int = paramInt;
           this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(paramInt, false);
           return;
           if (i != k - 2) {
@@ -88,7 +88,7 @@ public class AvatarWallViewPager$RollerChangeListener
       if ((i >= 0) && (this.jdField_a_of_type_Int >= 0) && (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_ArrayOfAndroidViewView.length > i) && (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_ArrayOfAndroidViewView.length > this.jdField_a_of_type_Int))
       {
         this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_ArrayOfAndroidViewView[this.jdField_a_of_type_Int].setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_ArrayOfAndroidViewView[i].setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.b);
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_ArrayOfAndroidViewView[i].setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
         this.jdField_a_of_type_Int = i;
       }
       if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_AndroidSupportV4ViewViewPager$SimpleOnPageChangeListener != null) {
@@ -105,7 +105,7 @@ public class AvatarWallViewPager$RollerChangeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AvatarWallViewPager.RollerChangeListener
  * JD-Core Version:    0.7.0.1
  */

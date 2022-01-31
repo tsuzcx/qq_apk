@@ -1,14 +1,14 @@
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class acic
+  implements bdae
 {
-  public long a;
-  public List a;
-  public boolean a;
+  public acic(BaseChatPie paramBaseChatPie) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "CacheData{mList.size()=" + this.jdField_a_of_type_JavaUtilList.size() + ", mLoadOver=" + this.jdField_a_of_type_Boolean + ", mUpdateTime=" + this.jdField_a_of_type_Long + '}';
+    this.a.onClick(this.a.a);
   }
 }
 

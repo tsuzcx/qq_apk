@@ -1,25 +1,30 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.QzoneEffectsCameraCaptureFragment;
-import com.tencent.open.base.ToastUtil;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
 
 public class ahki
-  implements Runnable
+  implements nar
 {
-  public ahki(QzoneEffectsCameraCaptureFragment paramQzoneEffectsCameraCaptureFragment, boolean paramBoolean, String paramString) {}
+  public ahki(GroupSearchRecommendView paramGroupSearchRecommendView) {}
   
-  public void run()
+  public void a()
   {
-    QzoneEffectsCameraCaptureFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentQzoneEffectsCameraCaptureFragment);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QzoneEffectsCameraCaptureFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentQzoneEffectsCameraCaptureFragment, this.jdField_a_of_type_JavaLangString);
+    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
       return;
     }
-    ToastUtil.a().a("对不起，GIF处理异常...");
+    GroupSearchRecommendView.a(this.a).sendEmptyMessage(2);
+  }
+  
+  public void b()
+  {
+    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+      return;
+    }
+    GroupSearchRecommendView.a(this.a).sendEmptyMessage(3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahki
  * JD-Core Version:    0.7.0.1
  */

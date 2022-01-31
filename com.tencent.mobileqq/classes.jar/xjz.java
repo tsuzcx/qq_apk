@@ -1,106 +1,85 @@
-import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.activity.recent.BannerManager.IBannerInteract;
-import com.tencent.mobileqq.activity.recent.BannerManager.MessageToShowBanner;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.SharedPreferences;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.PluginParams;
-import java.lang.ref.WeakReference;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class xjz
-  implements BannerManager.IBannerInteract
+class xjz
+  extends BroadcastReceiver
 {
-  private final int jdField_a_of_type_Int;
-  @NonNull
-  private final Intent jdField_a_of_type_AndroidContentIntent;
-  @Nullable
-  private BannerManager.MessageToShowBanner jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner;
-  @NonNull
-  private final String jdField_a_of_type_JavaLangString;
-  @NonNull
-  private final WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  @NonNull
-  private final String b;
-  @NonNull
-  private final String c;
-  @NonNull
-  private final String d;
+  xjz(xjy paramxjy) {}
   
-  public xjz(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString1, @NonNull String paramString2, @NonNull String paramString3, @NonNull Intent paramIntent, @NonNull String paramString4, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.d = paramString4;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner == null) {}
-    BaseActivity localBaseActivity;
+    Object localObject = paramIntent.getAction();
+    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(localObject))
+    {
+      localObject = paramIntent.getStringExtra("data");
+      paramIntent = paramIntent.getStringExtra("event");
+      if (QLog.isColorLevel()) {
+        QLog.d("MusicCache", 2, "onReceive:" + (String)localObject);
+      }
+      if ((!TextUtils.isEmpty(paramIntent)) && (paramIntent.equals("kTribeSelectMusic")) && (!TextUtils.isEmpty((CharSequence)localObject))) {}
+    }
     do
     {
-      do
+      return;
+      xjy.a(this.a).a();
+      for (;;)
       {
+        try
+        {
+          paramIntent = new JSONObject((String)localObject);
+          i = paramIntent.optInt("id");
+          paramContext = paramContext.getSharedPreferences("VideoMusicCache", 0).getString(String.valueOf(i), null);
+          if ((paramContext == null) || (!new File(paramContext).exists())) {
+            continue;
+          }
+          localObject = new xkl();
+          ((xkl)localObject).jdField_b_of_type_JavaLangString = paramIntent.optString("title");
+          ((xkl)localObject).jdField_b_of_type_Int = 2;
+          ((xkl)localObject).a = String.valueOf(i);
+          ((xkl)localObject).g = paramContext;
+          xjy.a(this.a).a((xkl)localObject);
+        }
+        catch (JSONException paramContext)
+        {
+          int i;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.e("MusicCache", 2, "on receiver error, ", paramContext);
+          continue;
+        }
+        wxk.a("0X80076D6");
         return;
-      } while ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
-      localBaseActivity = BaseActivity.sTopActivity;
-    } while ((localBaseActivity == null) || (localBaseActivity.isFinishing()));
-    try
-    {
-      Class localClass = Class.forName(this.jdField_b_of_type_JavaLangString).asSubclass(Activity.class);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("banner_fromBanner", true);
-      IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(this.jdField_a_of_type_Int);
-      localPluginParams.e = this.jdField_a_of_type_JavaLangString;
-      localPluginParams.jdField_a_of_type_JavaLangClass = localClass;
-      localPluginParams.jdField_b_of_type_JavaLangString = this.c;
-      localPluginParams.jdField_a_of_type_JavaLangString = this.d;
-      localPluginParams.jdField_a_of_type_AndroidContentIntent = this.jdField_a_of_type_AndroidContentIntent;
-      localPluginParams.jdField_b_of_type_Int = -1;
-      IPluginManager.a(localBaseActivity, localPluginParams);
-      return;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      QLog.e("Q.recent.banner", 1, "return to plugin error, can not find the ckass " + this.jdField_b_of_type_JavaLangString);
-    }
+        paramContext = new MusicItemInfo();
+        paramContext.mType = 5;
+        paramContext.mItemId = i;
+        paramContext.mMusicName = paramIntent.optString("title");
+        paramContext.mSingername = paramIntent.optString("desc");
+        paramContext.mSongMid = paramIntent.optString("mid");
+        xjy.a(this.a, paramIntent.optBoolean("is_from_story", false));
+        xjy.a(this.a, paramContext.mSongMid);
+      }
+      if ("action_music_start".equals(localObject))
+      {
+        xjy.a(this.a).b();
+        return;
+      }
+    } while (!"action_music_refresh_list".equals(localObject));
+    xjy.a(this.a).sendEmptyMessage(1);
   }
-  
-  public void a(@Nullable BannerManager.MessageToShowBanner paramMessageToShowBanner)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner = paramMessageToShowBanner;
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
-    BannerManager.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner);
-  }
-  
-  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xjz
  * JD-Core Version:    0.7.0.1
  */

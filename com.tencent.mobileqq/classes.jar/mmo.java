@@ -1,32 +1,57 @@
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ItemDatasListUtils;
-import java.util.List;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class mmo
-  implements Runnable
+  extends lhe
 {
-  public mmo(FastWebActivity paramFastWebActivity) {}
+  public mmo(VideoInviteActivity paramVideoInviteActivity) {}
   
-  public void run()
+  protected void a(long paramLong, int paramInt)
   {
-    Object localObject = FastWebActivity.a(this.a).getCommentList();
-    ItemDatasListUtils.a(FastWebActivity.a(this.a), (List)localObject, FastWebActivity.a(this.a), FastWebActivity.a(this.a));
-    localObject = ReadInJoyLogicEngine.a().a();
-    if (localObject != null) {
-      ((FastWebModule)localObject).a(FastWebActivity.a(this.a).j, FastWebActivity.a(this.a));
+    long l = AudioHelper.b();
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onDestroyInviteUI, relationId[" + paramLong + "], seq[" + l + "]");
     }
-    FastWebActivity.a(this.a).notifyDataSetChanged();
-    this.a.a(FastWebActivity.a(this.a));
+    boolean bool = this.a.i;
+    if ((bool) && (this.a.c != null) && (this.a.c.equals(String.valueOf(paramLong))))
+    {
+      super.a(paramLong);
+      mwk.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      this.a.a(l);
+      if ((bool) && (this.a.c.length() > 2) && (paramLong != 0L))
+      {
+        paramLong = Long.valueOf(this.a.c).longValue();
+        if (!this.a.h)
+        {
+          this.a.h = true;
+          if (paramInt != 1) {
+            break label255;
+          }
+          this.a.a().a(l, paramLong, 7);
+        }
+      }
+    }
+    for (;;)
+    {
+      this.a.e = true;
+      if ((!this.a.l) || (this.a.jdField_a_of_type_Mkb == null) || (this.a.f())) {
+        break;
+      }
+      this.a.jdField_a_of_type_Mkb.a(new mmp(this));
+      return;
+      label255:
+      if (paramInt == 2) {
+        this.a.a().a(l, paramLong, 2);
+      }
+    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mmo
  * JD-Core Version:    0.7.0.1
  */

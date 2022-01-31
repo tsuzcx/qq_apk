@@ -1,16 +1,17 @@
-import android.support.v7.widget.StaggeredGridLayoutManager.ExceptionListener;
-import android.view.View;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
-public class adqb
-  implements StaggeredGridLayoutManager.ExceptionListener
+class adqb
+  implements DialogInterface.OnClickListener
 {
-  public adqb(HotPicPageView paramHotPicPageView) {}
+  adqb(adqa paramadqa) {}
   
-  public void onGetPositionErr(View paramView, boolean paramBoolean, int paramInt, Exception paramException)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.e("HotPicManagerHotPicPageView", 1, "onGetPositionErr 1  final p:" + paramInt + " rescue:" + paramBoolean + " v:" + paramView + " error: " + paramException);
+    paramDialogInterface.dismiss();
+    QQIdentiferActivity.a(this.a.a, 205, alud.a(2131710755));
+    this.a.a.finish();
   }
 }
 

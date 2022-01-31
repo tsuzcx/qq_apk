@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class hd_video$LoginSig
-  extends MessageMicro
+  extends MessageMicro<LoginSig>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_sig = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class hd_video$LoginSig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.longconn.hd_video.LoginSig
  * JD-Core Version:    0.7.0.1
  */

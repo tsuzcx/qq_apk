@@ -1,25 +1,39 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.core.bean.SafeMsgItem;
-import com.tencent.token.fo;
-import com.tencent.token.gm;
+import android.os.Message;
+import com.tencent.token.core.bean.RealNameStatusResult;
+import com.tencent.token.global.h;
 
-final class tn
-  implements Runnable
+class tn
+  extends cb
 {
-  SafeMsgItem a = null;
-  
-  public tn(tj paramtj, SafeMsgItem paramSafeMsgItem)
+  tn(RealNameActivity paramRealNameActivity)
   {
-    this.a = paramSafeMsgItem;
+    super(paramRealNameActivity);
   }
   
-  public final void run()
+  public void handleMessage(Message paramMessage)
   {
-    fo localfo = this.b.b;
-    SafeMsgItem localSafeMsgItem = this.a;
-    localSafeMsgItem.mIsRead = true;
-    localfo.a.d(localSafeMsgItem.mId);
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.dismissDialog();
+    h.a("realnameactivity msg.what=" + paramMessage.what + ", msg.arg1=" + paramMessage.arg1);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case -100: 
+      RealNameActivity.access$000(this.a);
+      return;
+    }
+    if (paramMessage.arg1 == 0)
+    {
+      RealNameActivity.access$102(this.a, (RealNameStatusResult)paramMessage.obj);
+      RealNameActivity.access$200(this.a);
+      return;
+    }
+    this.a.finish();
   }
 }
 

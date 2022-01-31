@@ -9,7 +9,7 @@ public final class k
 {
   static byte[] c;
   public String a = "";
-  public byte[] b;
+  public byte[] b = null;
   
   public k() {}
   

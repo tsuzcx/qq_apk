@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/am2" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/b1z" android:key="contact_info_shake_go_shake" android:layout="@layout/afi" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/eda" android:key="contact_info_shake_install" android:layout="@layout/a95" />
+    <Preference android:title="@string/edg" android:key="contact_info_shake_uninstall" android:layout="@layout/aap" />
+    <PreferenceCategory />
+</PreferenceScreen>

@@ -1,21 +1,38 @@
-import com.tencent.component.network.module.common.NetworkStatus;
-import com.tencent.component.network.utils.thread.ThreadPool.Job;
-import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
-class pkk
-  implements ThreadPool.Job
+public class pkk
 {
-  pkk(pkj parampkj) {}
-  
-  public Object run(ThreadPool.JobContext paramJobContext)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    NetworkStatus.a(this.a.a);
-    return null;
+    JSONObject localJSONObject1 = new JSONObject();
+    pkm.v(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("id_content_wrapper", new JSONObject());
+    localJSONObject1.put("id_article_wrapper", new JSONObject());
+    localJSONObject1.put("id_summary_wrapper", new JSONObject());
+    localJSONObject1.put("id_info_wrapper", new JSONObject());
+    pkm.b(paramBaseArticleInfo, localJSONObject1);
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("summary_text", alud.a(2131713281));
+    localJSONObject1.put("id_summary", localJSONObject2);
+    localJSONObject1.put("id_image_content", new JSONObject());
+    localJSONObject2 = new JSONObject();
+    localJSONObject2.put("article_small_imge_url", paramBaseArticleInfo.mSinglePicture.getFile());
+    localJSONObject1.put("id_article_small_imge", localJSONObject2);
+    pkm.a(paramBaseArticleInfo, localJSONObject1, true);
+    pkm.e(paramBaseArticleInfo, localJSONObject1);
+    pkm.l(paramBaseArticleInfo, localJSONObject1);
+    pkm.B(paramBaseArticleInfo, localJSONObject1);
+    pkm.C(paramBaseArticleInfo, localJSONObject1);
+    pkm.b(localJSONObject1);
+    localJSONObject1.put("style_ID", "ReadInjoy_topic_recommend_pgc_small_cell");
+    return localJSONObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pkk
  * JD-Core Version:    0.7.0.1
  */

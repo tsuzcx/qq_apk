@@ -1,28 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
 
 public class tlb
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  public tlb(QQSettingMe paramQQSettingMe) {}
+  public tlb(OuterInterceptManager.1 param1) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.a.a == null) {}
-    String str;
-    do
-    {
-      return;
-      str = this.a.a.getCurrentAccountUin();
-    } while (TextUtils.isEmpty(str));
-    WebProcessManager.b(str, System.currentTimeMillis());
+    if (this.a.a != null) {
+      this.a.a.d();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tlb
  * JD-Core Version:    0.7.0.1
  */

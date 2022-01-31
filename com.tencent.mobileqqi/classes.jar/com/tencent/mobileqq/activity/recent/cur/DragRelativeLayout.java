@@ -20,9 +20,9 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout;
 import com.tencent.qphone.base.util.QLog;
-import etn;
-import eto;
-import etp;
+import eoz;
+import epa;
+import epb;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -33,7 +33,7 @@ public class DragRelativeLayout
 {
   public static final float a = 1.1F;
   public static final int a = -1;
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130838346, 2130838347, 2130838348, 2130838349, 2130838350 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130838348, 2130838349, 2130838350, 2130838351, 2130838352 };
   private static final float jdField_b_of_type_Float = 0.3F;
   public static final int b = 0;
   private static final float c = 0.7F;
@@ -48,9 +48,9 @@ public class DragRelativeLayout
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private View jdField_a_of_type_AndroidViewView;
   private DragRelativeLayout.IDragViewProvider jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout$IDragViewProvider;
-  private etn jdField_a_of_type_Etn;
-  private eto jdField_a_of_type_Eto;
-  private etp jdField_a_of_type_Etp;
+  private eoz jdField_a_of_type_Eoz;
+  private epa jdField_a_of_type_Epa;
+  private epb jdField_a_of_type_Epb;
   private final List jdField_a_of_type_JavaUtilList = new ArrayList();
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private float d;
@@ -168,20 +168,20 @@ public class DragRelativeLayout
   {
     if (this.k != -1)
     {
-      if (this.jdField_a_of_type_Etp != null)
+      if (this.jdField_a_of_type_Epb != null)
       {
-        getHandler().removeCallbacks(this.jdField_a_of_type_Etp);
-        this.jdField_a_of_type_Etp = null;
+        getHandler().removeCallbacks(this.jdField_a_of_type_Epb);
+        this.jdField_a_of_type_Epb = null;
       }
-      if (this.jdField_a_of_type_Eto != null)
+      if (this.jdField_a_of_type_Epa != null)
       {
-        getHandler().removeCallbacks(this.jdField_a_of_type_Eto);
-        this.jdField_a_of_type_Eto = null;
+        getHandler().removeCallbacks(this.jdField_a_of_type_Epa);
+        this.jdField_a_of_type_Epa = null;
       }
-      if (this.jdField_a_of_type_Etn != null)
+      if (this.jdField_a_of_type_Eoz != null)
       {
-        getHandler().removeCallbacks(this.jdField_a_of_type_Etn);
-        this.jdField_a_of_type_Etn = null;
+        getHandler().removeCallbacks(this.jdField_a_of_type_Eoz);
+        this.jdField_a_of_type_Eoz = null;
       }
       this.k = -1;
       a(false);
@@ -310,8 +310,8 @@ public class DragRelativeLayout
           if (this.k != 3) {
             break;
           }
-        } while (this.jdField_a_of_type_Etp == null);
-        localObject = this.jdField_a_of_type_Etp.a();
+        } while (this.jdField_a_of_type_Epb == null);
+        localObject = this.jdField_a_of_type_Epb.a();
         this.jdField_a_of_type_AndroidGraphicsPointF.set((PointF)localObject);
         this.d = ((float)Math.sqrt((this.jdField_a_of_type_AndroidGraphicsPointF.x - this.jdField_a_of_type_AndroidGraphicsRect.centerX()) * (this.jdField_a_of_type_AndroidGraphicsPointF.x - this.jdField_a_of_type_AndroidGraphicsRect.centerX()) + (this.jdField_a_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_AndroidGraphicsRect.centerY()) * (this.jdField_a_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_AndroidGraphicsRect.centerY())));
         paramCanvas.save();
@@ -331,7 +331,7 @@ public class DragRelativeLayout
         paramCanvas.restore();
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16711936);
         paramCanvas.drawBitmap(this.b, this.jdField_a_of_type_AndroidGraphicsPointF.x - this.jdField_a_of_type_AndroidGraphicsRect.width() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_AndroidGraphicsRect.height() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-        postDelayed(this.jdField_a_of_type_Etp, 60L);
+        postDelayed(this.jdField_a_of_type_Epb, 60L);
         return;
         if (this.k == 2)
         {
@@ -341,20 +341,20 @@ public class DragRelativeLayout
         if (this.k != 4) {
           break;
         }
-      } while (this.jdField_a_of_type_Eto == null);
-      localObject = this.jdField_a_of_type_Eto.a();
+      } while (this.jdField_a_of_type_Epa == null);
+      localObject = this.jdField_a_of_type_Epa.a();
       if (localObject != null) {
         paramCanvas.drawBitmap((Bitmap)localObject, null, new RectF(this.jdField_a_of_type_AndroidGraphicsPointF.x - ((Bitmap)localObject).getWidth() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPointF.y - ((Bitmap)localObject).getHeight() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPointF.x + ((Bitmap)localObject).getWidth() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPointF.y + ((Bitmap)localObject).getHeight() / 2.0F), this.jdField_a_of_type_AndroidGraphicsPaint);
       }
-      postDelayed(this.jdField_a_of_type_Eto, 50L);
+      postDelayed(this.jdField_a_of_type_Epa, 50L);
       return;
-    } while ((this.k != 5) || (this.jdField_a_of_type_Etn == null));
-    Object localObject = this.jdField_a_of_type_Etn.a();
-    Bitmap localBitmap = this.jdField_a_of_type_Etn.a();
+    } while ((this.k != 5) || (this.jdField_a_of_type_Eoz == null));
+    Object localObject = this.jdField_a_of_type_Eoz.a();
+    Bitmap localBitmap = this.jdField_a_of_type_Eoz.a();
     if ((localBitmap != null) && (((PointF)localObject).x > 0.0F) && (((PointF)localObject).y > 0.0F)) {
       paramCanvas.drawBitmap(localBitmap, null, new RectF(((PointF)localObject).x - localBitmap.getWidth() / 2.0F, ((PointF)localObject).y - localBitmap.getHeight() / 2.0F, ((PointF)localObject).x + localBitmap.getWidth() / 2.0F, ((PointF)localObject).y + localBitmap.getHeight() / 2.0F), this.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    postDelayed(this.jdField_a_of_type_Etn, 40L);
+    postDelayed(this.jdField_a_of_type_Eoz, 40L);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -403,7 +403,7 @@ public class DragRelativeLayout
                 this.k = 3;
                 this.jdField_a_of_type_AndroidGraphicsPointF.set(f1, f2);
                 paramMotionEvent = new RectF(this.jdField_a_of_type_AndroidGraphicsRect.centerX(), this.jdField_a_of_type_AndroidGraphicsRect.centerY(), this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
-                this.jdField_a_of_type_Etp = new etp(this, new PointF(this.jdField_a_of_type_AndroidGraphicsRect.centerX(), this.jdField_a_of_type_AndroidGraphicsRect.centerY()), paramMotionEvent);
+                this.jdField_a_of_type_Epb = new epb(this, new PointF(this.jdField_a_of_type_AndroidGraphicsRect.centerX(), this.jdField_a_of_type_AndroidGraphicsRect.centerY()), paramMotionEvent);
                 invalidate();
                 return true;
               }
@@ -425,7 +425,7 @@ public class DragRelativeLayout
                 return true;
                 this.k = 4;
                 this.jdField_a_of_type_AndroidGraphicsPointF.set(f1, f2);
-                this.jdField_a_of_type_Eto = new eto(this, this.jdField_a_of_type_AndroidGraphicsPointF);
+                this.jdField_a_of_type_Epa = new epa(this, this.jdField_a_of_type_AndroidGraphicsPointF);
               }
             }
             bool1 = bool2;

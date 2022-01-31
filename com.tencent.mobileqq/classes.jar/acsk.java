@@ -1,21 +1,35 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class acsk
-  implements Runnable
+public class acsk
+  extends aluu
 {
-  acsk(acsi paramacsi, long paramLong) {}
+  public acsk(Conversation paramConversation) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, Long paramLong)
   {
-    this.jdField_a_of_type_Acsi.a.e();
-    QfileBaseRecentFileTabView.E(this.jdField_a_of_type_Acsi.a).a().a(this.jdField_a_of_type_Long);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "onGetUserCreateHotChatAnnounce  isSuccess= " + paramBoolean + ", result=" + paramInt + ", memo=" + paramString2 + ", troopOwner=" + paramLong);
+    }
+    if ((paramBoolean) && (paramInt == 0)) {
+      this.a.a(0L);
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, int paramInt, String paramString2, String paramString3, List<Long> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "onGetHotChatAnnounce  isSuccess= " + paramBoolean + ", result=" + paramInt + ", memo=" + paramString2 + ", jumpurl=" + paramString3);
+    }
+    if ((paramBoolean) && (paramInt == 0)) {
+      this.a.a(0L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acsk
  * JD-Core Version:    0.7.0.1
  */

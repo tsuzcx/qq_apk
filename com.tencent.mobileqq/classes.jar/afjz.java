@@ -1,61 +1,42 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFailedAdapter;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.DeleteFeedCallback;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.ShortVideoMomentFeedInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import com.tencent.mobileqq.flashchat.FlashChatManager;
+import com.tencent.qphone.base.util.QLog;
 
 class afjz
-  implements NearbyMomentManager.DeleteFeedCallback
+  implements View.OnClickListener
 {
-  afjz(afjy paramafjy) {}
+  afjz(afjw paramafjw) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    int i;
-    if (!paramBoolean)
+    paramView = (MessageForArkFlashChat)paramView.getTag();
+    arwd localarwd;
+    String str1;
+    if (paramView != null)
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 1, "删除失败", 0).a();
-      if (!(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataPublishableMomentInfo instanceof ShortVideoMomentFeedInfo)) {
-        break label187;
+      localarwd = ((FlashChatManager)this.a.a.getManager(217)).a;
+      str1 = localarwd.c;
+      String str2 = localarwd.f;
+      String str3 = localarwd.g;
+      if (QLog.isColorLevel()) {
+        QLog.d("FlashChat", 2, "mSourceOnClickListener clickAppMsg url = " + str1 + ", actionData = " + str2 + ", actionDataA = " + str3);
       }
-      paramString = (ShortVideoMomentFeedInfo)this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataPublishableMomentInfo;
-      if (paramString.b % 1000L <= 500L) {
-        break label168;
-      }
-      i = (int)paramString.b / 1000 + 1;
-      label69:
-      localNowVideoReporter = new NowVideoReporter().h("video_public").i("de_republic").a(String.valueOf(i)).d("5").c("1");
-      if (!paramBoolean) {
-        break label181;
+      if (!this.a.a(str1, str2, str3)) {
+        break label116;
       }
     }
-    label168:
-    label181:
-    for (paramString = "1";; paramString = "")
-    {
-      localNowVideoReporter.e(paramString).b(NearbyMomentFailedAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFailedAdapter));
-      return;
-      NearbyMomentFailedAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFailedAdapter).remove(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataPublishableMomentInfo);
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFailedAdapter.notifyDataSetChanged();
-      break;
-      i = (int)paramString.b / 1000;
-      break label69;
-    }
-    label187:
-    NowVideoReporter localNowVideoReporter = new NowVideoReporter().h("video_public").i("de_republic").d("5").c("2");
-    if (paramBoolean) {}
-    for (paramString = "1";; paramString = "")
-    {
-      localNowVideoReporter.e(paramString).b(NearbyMomentFailedAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFailedAdapter));
+    label116:
+    while (!this.a.a(str1, localarwd.b, paramView)) {
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afjz
  * JD-Core Version:    0.7.0.1
  */

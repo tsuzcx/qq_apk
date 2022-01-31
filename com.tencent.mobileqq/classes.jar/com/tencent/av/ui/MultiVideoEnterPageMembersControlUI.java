@@ -1,5 +1,6 @@
 package com.tencent.av.ui;
 
+import alud;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -20,7 +21,8 @@ import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import jvy;
+import lfu;
+import mht;
 import mqq.app.BaseActivity;
 
 public class MultiVideoEnterPageMembersControlUI
@@ -29,11 +31,12 @@ public class MultiVideoEnterPageMembersControlUI
   public static int c;
   public static int d = 2;
   Button jdField_a_of_type_AndroidWidgetButton = null;
-  public ProgressBar a;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar = null;
   TextView jdField_a_of_type_AndroidWidgetTextView = null;
   View jdField_b_of_type_AndroidViewView;
+  public Button b;
   TextView jdField_b_of_type_AndroidWidgetTextView = null;
-  public TextView c;
+  TextView c;
   int e = d;
   
   static
@@ -44,8 +47,8 @@ public class MultiVideoEnterPageMembersControlUI
   public MultiVideoEnterPageMembersControlUI(Context paramContext)
   {
     super(paramContext);
+    this.jdField_b_of_type_AndroidWidgetButton = null;
     this.jdField_c_of_type_AndroidWidgetTextView = null;
-    this.jdField_a_of_type_AndroidWidgetProgressBar = null;
     a(paramContext);
   }
   
@@ -53,8 +56,8 @@ public class MultiVideoEnterPageMembersControlUI
   public MultiVideoEnterPageMembersControlUI(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext);
+    this.jdField_b_of_type_AndroidWidgetButton = null;
     this.jdField_c_of_type_AndroidWidgetTextView = null;
-    this.jdField_a_of_type_AndroidWidgetProgressBar = null;
     a(paramContext);
   }
   
@@ -64,7 +67,7 @@ public class MultiVideoEnterPageMembersControlUI
     d();
     if (this.e == jdField_c_of_type_Int)
     {
-      localDrawable = super.getResources().getDrawable(2130840270);
+      localDrawable = super.getResources().getDrawable(2130841836);
       paramInt = (int)(super.getResources().getDisplayMetrics().density * 20.0F);
       localDrawable.setBounds(0, 0, paramInt, paramInt);
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(localDrawable, null, null, null);
@@ -72,7 +75,7 @@ public class MultiVideoEnterPageMembersControlUI
     while (this.e != d) {
       return;
     }
-    Drawable localDrawable = super.getResources().getDrawable(2130840271);
+    Drawable localDrawable = super.getResources().getDrawable(2130841837);
     paramInt = (int)(super.getResources().getDisplayMetrics().density * 20.0F);
     localDrawable.setBounds(0, 0, paramInt, paramInt);
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(localDrawable, null, null, null);
@@ -109,30 +112,31 @@ public class MultiVideoEnterPageMembersControlUI
       return;
     }
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    LayoutInflater.from(paramContext).inflate(2130969326, this);
+    LayoutInflater.from(paramContext).inflate(2131559598, this);
     this.jdField_a_of_type_AndroidViewView = this;
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)super.findViewById(2131365998));
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)super.findViewById(2131365996));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366155));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366156));
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131366157);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131366141));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)super.findViewById(2131370933));
+    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)super.findViewById(2131370931));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372655));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372654));
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131372649);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131372653));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131372646));
     this.jdField_a_of_type_AndroidWidgetGridView.setNumColumns(-1);
     this.jdField_a_of_type_AndroidWidgetGridView.setGravity(17);
     this.jdField_a_of_type_AndroidWidgetGridView.setSelector(new ColorDrawable(0));
     if (Build.VERSION.SDK_INT >= 9) {
       this.jdField_a_of_type_AndroidWidgetGridView.setOverScrollMode(2);
     }
-    this.jdField_a_of_type_Jvy = new jvy(this);
-    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Jvy);
+    this.jdField_a_of_type_Mht = new mht(this);
+    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Mht);
     this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
     this.jdField_a_of_type_AndroidWidgetGridView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366140));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131366139));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372652));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131372650));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
   }
   
-  public void a(ArrayList paramArrayList)
+  public void a(ArrayList<lfu> paramArrayList)
   {
     super.a(paramArrayList);
     d();
@@ -145,28 +149,28 @@ public class MultiVideoEnterPageMembersControlUI
       i = this.jdField_a_of_type_JavaUtilArrayList.size();
       if (i > 0)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(" 视频聊天(%d人)", new Object[] { Integer.valueOf(i) }));
-        this.jdField_b_of_type_AndroidWidgetTextView.setText("全民群视频，礼物送不停");
-        this.jdField_a_of_type_AndroidWidgetButton.setText("加入视频");
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(alud.a(2131707413), new Object[] { Integer.valueOf(i) }));
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131707415));
+        this.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131707412));
       }
     }
     while (this.e != d) {
       for (;;)
       {
         return;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(" 视频聊天");
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131707410));
       }
     }
     int i = this.jdField_a_of_type_JavaUtilArrayList.size();
     if (i > 0) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(" QQ电话(%d人)", new Object[] { Integer.valueOf(i) }));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(getResources().getString(2131696150), new Object[] { Integer.valueOf(i) }));
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText("多人通话，支持远程演示");
-      this.jdField_a_of_type_AndroidWidgetButton.setText("加入通话");
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131696147);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131696145);
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(" QQ电话");
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695842);
     }
   }
   
@@ -185,8 +189,11 @@ public class MultiVideoEnterPageMembersControlUI
       localLayoutParams.setMargins(0, (int)(10.0F * f), 0, 0);
       this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setLayoutParams(localLayoutParams);
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetButton.getLayoutParams();
-      localLayoutParams.setMargins(0, (int)(10.0F * f), 0, (int)(f * 20.0F));
+      localLayoutParams.setMargins(0, (int)(10.0F * f), 0, (int)(20.0F * f));
       this.jdField_a_of_type_AndroidWidgetButton.setLayoutParams(localLayoutParams);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetButton.getLayoutParams();
+      localLayoutParams.setMargins(0, (int)(10.0F * f), 0, (int)(f * 20.0F));
+      this.jdField_b_of_type_AndroidWidgetButton.setLayoutParams(localLayoutParams);
     }
   }
 }

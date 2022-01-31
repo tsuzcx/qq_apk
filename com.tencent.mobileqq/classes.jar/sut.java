@@ -1,115 +1,311 @@
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.adapter.GroupEditeDragSortAdapter;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.emosm.view.DragSortListView.DropListener;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageForPubAccount;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageForVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.PAMessage;
+import com.tencent.mobileqq.data.PAMessage.Item;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class sut
-  implements DragSortListView.DropListener
 {
-  public sut(GroupManagerActivity paramGroupManagerActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  protected WeakReference<QQAppInterface> a;
+  public List<suu> a;
+  public int b;
+  public WeakReference<MessageRecord> b;
   
-  public void b_(int paramInt1, int paramInt2)
+  public sut(QQAppInterface paramQQAppInterface)
   {
-    if (paramInt1 == paramInt2) {
-      return;
-    }
-    int j = this.a.jdField_a_of_type_JavaUtilList.size();
-    this.a.jdField_a_of_type_ArrayOfByte = new byte[j];
-    this.a.b = new byte[j];
-    int i = 0;
-    while (i < j)
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+  }
+  
+  public static sut a(QQAppInterface paramQQAppInterface, Context paramContext, TroopBarData paramTroopBarData)
+  {
+    Object localObject3 = paramTroopBarData.mLatestMessage;
+    Object localObject2 = localObject3;
+    if (localObject3 == null)
     {
-      this.a.jdField_a_of_type_ArrayOfByte[i] = ((byte)((Groups)this.a.jdField_a_of_type_JavaUtilList.get(i)).group_id);
-      i += 1;
-    }
-    if (paramInt2 < paramInt1)
-    {
-      i = j - 1;
-      if (i >= 0)
+      localObject2 = paramQQAppInterface.a().a(paramTroopBarData.mUin, 1008);
+      localObject1 = localObject3;
+      if (localObject2 != null)
       {
-        if ((paramInt2 < i) && (i <= paramInt1)) {
-          this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[(i - 1)];
+        localObject1 = localObject3;
+        if ((localObject2 instanceof MessageRecord)) {
+          localObject1 = localObject2;
         }
-        for (;;)
+      }
+      localObject2 = localObject1;
+      if (localObject1 == null) {
+        return null;
+      }
+    }
+    Object localObject1 = new sut(paramQQAppInterface);
+    localObject3 = paramQQAppInterface.a();
+    if (localObject3 != null) {}
+    for (int i = ((abta)localObject3).a(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop);; i = 0)
+    {
+      long l;
+      if (paramTroopBarData.mLastMsgTime > paramTroopBarData.mLastDraftTime)
+      {
+        l = paramTroopBarData.mLastMsgTime;
+        ((sut)localObject1).jdField_a_of_type_Long = l;
+        ((sut)localObject1).jdField_a_of_type_JavaLangString = ((MessageRecord)localObject2).frienduin;
+        ((sut)localObject1).jdField_b_of_type_Int = i;
+        try
         {
-          i -= 1;
-          break;
-          if (i == paramInt2) {
-            this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[paramInt1];
-          } else {
-            this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[i];
+          if ((localObject2 instanceof MessageForPubAccount))
+          {
+            ((MessageForPubAccount)localObject2).parse();
+            ((sut)localObject1).jdField_a_of_type_Int = 1;
+            paramQQAppInterface = ((MessageForPubAccount)localObject2).mPAMessage;
+            if (paramQQAppInterface != null)
+            {
+              paramQQAppInterface = paramQQAppInterface.items.iterator();
+              while (paramQQAppInterface.hasNext())
+              {
+                paramContext = (PAMessage.Item)paramQQAppInterface.next();
+                paramTroopBarData = new suu();
+                paramTroopBarData.jdField_a_of_type_Int = 1;
+                paramTroopBarData.jdField_a_of_type_JavaLangString = paramContext.cover;
+                paramTroopBarData.d = paramContext.url;
+                paramTroopBarData.e = paramContext.actionData;
+                paramTroopBarData.b = paramContext.title;
+                ((sut)localObject1).jdField_a_of_type_JavaUtilList.add(paramTroopBarData);
+              }
+            }
+            ((sut)localObject1).jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(localObject2);
+          }
+        }
+        catch (Exception paramQQAppInterface)
+        {
+          ((sut)localObject1).jdField_a_of_type_Int = 0;
+          paramContext = new suu();
+          paramContext.jdField_a_of_type_Int = 0;
+          paramContext.c = ((MessageRecord)localObject2).msg;
+          ((sut)localObject1).jdField_a_of_type_JavaUtilList.clear();
+          ((sut)localObject1).jdField_a_of_type_JavaUtilList.add(paramContext);
+          if (QLog.isColorLevel()) {
+            QLog.w("SubscriptionFeed", 2, "convertMsgToSubscriptionFeed exception: ", paramQQAppInterface);
           }
         }
       }
-    }
-    else if (paramInt1 < paramInt2)
-    {
-      i = 0;
-      if (i < j)
+      for (;;)
       {
-        if ((i < paramInt1) || (paramInt2 < i)) {
-          this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[i];
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (i == paramInt2) {
-            this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[paramInt1];
-          } else {
-            this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[(i + 1)];
-          }
-        }
-      }
-    }
-    i = 0;
-    while (i < j)
-    {
-      this.a.jdField_a_of_type_ArrayOfByte[i] = ((byte)i);
-      i += 1;
-    }
-    Groups localGroups;
-    if (paramInt2 < paramInt1)
-    {
-      localGroups = (Groups)this.a.jdField_a_of_type_JavaUtilList.remove(paramInt1);
-      this.a.jdField_a_of_type_JavaUtilList.add(paramInt2, localGroups);
-      GroupManagerActivity.a(this.a).notifyDataSetChanged();
-      if (QLog.isColorLevel())
-      {
-        QLog.d("GroupManagerActivity", 2, "DragSortListView.DropListener onDrop groupIdList = " + Arrays.toString(this.a.b));
-        QLog.d("GroupManagerActivity", 2, "DragSortListView.DropListener onDrop sortIdList = " + Arrays.toString(this.a.jdField_a_of_type_ArrayOfByte));
-      }
-      GroupManagerActivity.a(this.a, this.a.a(this.a.b, this.a.jdField_a_of_type_ArrayOfByte));
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupManagerActivity", 2, "SortFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
-      }
-      if (!GroupManagerActivity.a(this.a)) {
-        break label586;
-      }
-      this.a.a(2131435546);
-    }
-    for (;;)
-    {
-      ReportController.b(this.a.app, "CliOper", "", "", "category", "Move_category", 0, 0, "", "", "", "");
-      return;
-      if (paramInt1 >= paramInt2) {
+        return localObject1;
+        l = paramTroopBarData.mLastDraftTime;
         break;
+        if ((localObject2 instanceof MessageForStructing))
+        {
+          ((MessageForStructing)localObject2).parse();
+          ((sut)localObject1).jdField_a_of_type_Int = 1;
+          paramContext = ((MessageForStructing)localObject2).structingMsg;
+          if ((paramContext != null) && ((paramContext instanceof AbsShareMsg)))
+          {
+            paramQQAppInterface = ((AbsShareMsg)paramContext).getStructMsgItemLists();
+            if ((QLog.isColorLevel()) && ((paramQQAppInterface == null) || (paramQQAppInterface.isEmpty()))) {
+              QLog.w("SubscriptionFeed", 2, "convertMsgToSubscriptionFeed MessageForStructing itemlist size = 0");
+            }
+            paramTroopBarData = paramQQAppInterface.iterator();
+            label800:
+            label809:
+            label816:
+            for (;;)
+            {
+              label443:
+              suu localsuu;
+              if (paramTroopBarData.hasNext())
+              {
+                localObject3 = (azus)paramTroopBarData.next();
+                localsuu = new suu();
+                localsuu.jdField_a_of_type_Int = 1;
+                localsuu.c = ((azus)localObject3).g;
+                localsuu.g = paramContext.mTagName;
+                if (!(localObject3 instanceof azut)) {
+                  break label809;
+                }
+                paramQQAppInterface = ((azut)localObject3).a.iterator();
+                for (;;)
+                {
+                  if (!paramQQAppInterface.hasNext()) {
+                    break label726;
+                  }
+                  Object localObject4 = (azus)paramQQAppInterface.next();
+                  if ((localObject4 instanceof azwv))
+                  {
+                    localsuu.jdField_a_of_type_JavaLangString = ((azwv)localObject4).S;
+                  }
+                  else if ((localObject4 instanceof StructMsgItemTitle))
+                  {
+                    localsuu.b = ((StructMsgItemTitle)localObject4).b();
+                  }
+                  else if ((localObject4 instanceof azzv))
+                  {
+                    localsuu.jdField_a_of_type_JavaLangString = ((azzv)localObject4).S;
+                  }
+                  else if ((localObject4 instanceof azzb))
+                  {
+                    localsuu.jdField_a_of_type_JavaLangString = ((azzb)localObject4).S;
+                  }
+                  else if ((localObject4 instanceof azzg))
+                  {
+                    localsuu.jdField_a_of_type_JavaLangString = ((azzg)localObject4).S;
+                  }
+                  else if ((localObject4 instanceof azvv))
+                  {
+                    localObject4 = ((azvv)localObject4).jdField_a_of_type_JavaUtilList.iterator();
+                    if (((Iterator)localObject4).hasNext())
+                    {
+                      azus localazus = (azus)((Iterator)localObject4).next();
+                      if (!(localazus instanceof StructMsgItemTitle)) {
+                        break;
+                      }
+                      localsuu.b = ((StructMsgItemTitle)localazus).b();
+                    }
+                  }
+                }
+                label726:
+                if (!TextUtils.isEmpty(((azus)localObject3).b)) {
+                  break label800;
+                }
+                paramQQAppInterface = paramContext.mMsgUrl;
+                label742:
+                localsuu.d = paramQQAppInterface;
+              }
+              for (;;)
+              {
+                if ((((azut)localObject3).a.size() == 1) && (((azus)((azut)localObject3).a.get(0) instanceof azwx))) {
+                  break label816;
+                }
+                ((sut)localObject1).jdField_a_of_type_JavaUtilList.add(localsuu);
+                break label443;
+                break;
+                paramQQAppInterface = ((azus)localObject3).b;
+                break label742;
+                localsuu.jdField_a_of_type_Int = 0;
+              }
+            }
+          }
+        }
+        else
+        {
+          if (!(localObject2 instanceof MessageForPic)) {
+            break label911;
+          }
+          ((MessageForPic)localObject2).parse();
+          ((sut)localObject1).jdField_a_of_type_Int = 3;
+          paramTroopBarData = new suu();
+          paramTroopBarData.jdField_a_of_type_Int = 2;
+          paramTroopBarData.c = paramQQAppInterface.a().b(paramContext, (MessageRecord)localObject2, false);
+          paramTroopBarData.f = ((MessageForPic)localObject2).path;
+          paramTroopBarData.jdField_a_of_type_JavaNetURL = bayu.a((MessageForPic)localObject2, 65537, null);
+          ((sut)localObject1).jdField_a_of_type_JavaUtilList.add(paramTroopBarData);
+        }
       }
-      localGroups = (Groups)this.a.jdField_a_of_type_JavaUtilList.remove(paramInt1);
-      this.a.jdField_a_of_type_JavaUtilList.add(paramInt2, localGroups);
-      break;
-      label586:
-      this.a.a();
+      label911:
+      if ((localObject2 instanceof MessageForText))
+      {
+        ((sut)localObject1).jdField_a_of_type_Int = 0;
+        ((MessageForText)localObject2).parse();
+      }
+      for (;;)
+      {
+        paramTroopBarData = new suu();
+        paramTroopBarData.jdField_a_of_type_Int = 0;
+        paramTroopBarData.c = paramQQAppInterface.a().b(paramContext, (MessageRecord)localObject2, false);
+        ((sut)localObject1).jdField_a_of_type_JavaUtilList.add(paramTroopBarData);
+        break;
+        if ((localObject2 instanceof MessageForVideo))
+        {
+          ((sut)localObject1).jdField_a_of_type_Int = 2;
+          ((MessageForVideo)localObject2).parse();
+        }
+        else if ((localObject2 instanceof MessageForShortVideo))
+        {
+          ((sut)localObject1).jdField_a_of_type_Int = 2;
+          ((MessageForShortVideo)localObject2).parse();
+        }
+        else if ((localObject2 instanceof MessageForPtt))
+        {
+          ((sut)localObject1).jdField_a_of_type_Int = 4;
+        }
+      }
     }
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {}
+    QQMessageFacade.Message localMessage;
+    Object localObject;
+    do
+    {
+      do
+      {
+        return;
+        localMessage = null;
+        int i = syb.b((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString);
+        localObject = ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
+        if (localObject != null) {
+          localMessage = ((QQMessageFacade)localObject).a(this.jdField_a_of_type_JavaLangString, i);
+        }
+      } while (localMessage == null);
+      this.jdField_b_of_type_Int = 0;
+      suv.a().a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localMessage.frienduin);
+      localObject = ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
+    } while (localObject == null);
+    ((abta)localObject).a(localMessage.frienduin, localMessage.istroop, true);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (sut)paramObject;
+      if (this.jdField_a_of_type_JavaLangString != null) {
+        return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+      }
+    } while (paramObject.jdField_a_of_type_JavaLangString == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      return this.jdField_a_of_type_JavaLangString.hashCode();
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sut
  * JD-Core Version:    0.7.0.1
  */

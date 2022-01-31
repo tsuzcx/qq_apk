@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="@dimen/am1" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView android:id="@id/gwl" android:layout_width="@dimen/am1" android:layout_height="@dimen/am0" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/skin_black" android:id="@id/gwm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="10:45" android:layout_below="@id/gwl" android:layout_alignLeft="@id/gwl" />
+    <com.tencent.biz.qqstory.view.widget.StoryNickNameView android:textSize="12.0sp" android:textColor="@color/skin_gray_group_item" android:ellipsize="end" android:id="@id/gwk" android:visibility="gone" android:layout_width="120.0dip" android:layout_height="wrap_content" android:layout_marginLeft="2.5dip" android:layout_marginTop="5.0dip" android:text="none" android:maxLines="1" android:singleLine="true" android:layout_toRightOf="@id/gwm" android:layout_below="@id/gwl" />
+</RelativeLayout>

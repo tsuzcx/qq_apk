@@ -1,55 +1,363 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import dov.com.tencent.biz.qqstory.takevideo.EditInteractExport;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextFaceEditLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.LayerEventListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.businessCard.BusinessCardManager.1;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
 public class anys
-  implements VoteLayer.LayerEventListener
+  implements Manager
 {
-  public anys(DoodleLayout paramDoodleLayout) {}
+  SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  awgf jdField_a_of_type_Awgf;
+  bayf jdField_a_of_type_Bayf = null;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  protected ArrayList<awrl> a;
+  public ConcurrentHashMap<String, BusinessCard> a;
+  protected ConcurrentHashMap<String, BusinessCard> b;
+  
+  public anys(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Awgf = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.b = new ConcurrentHashMap();
+    this.jdField_a_of_type_AndroidContentSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("pref_business_card" + paramQQAppInterface.getAccount(), 0);
+    a();
+  }
+  
+  private boolean a(BusinessCard paramBusinessCard)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramBusinessCard != null)
+    {
+      String str = paramBusinessCard.cardId;
+      bool1 = bool2;
+      if (str != null)
+      {
+        bool1 = bool2;
+        if (str.length() != 0)
+        {
+          paramBusinessCard.setStatus(1000);
+          this.jdField_a_of_type_Awgf.b(paramBusinessCard);
+          bool1 = bool2;
+          if (paramBusinessCard.getStatus() == 1001) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  private void c(BusinessCard paramBusinessCard)
+  {
+    if (paramBusinessCard != null) {
+      this.jdField_a_of_type_Awgf.a(paramBusinessCard);
+    }
+  }
+  
+  private void d(BusinessCard paramBusinessCard)
+  {
+    if (paramBusinessCard != null) {
+      this.jdField_a_of_type_Awgf.b(paramBusinessCard);
+    }
+  }
+  
+  public int a()
+  {
+    int i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("key_server_seq", -1);
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_Manager", 2, "getLocalSeq | seq = " + i);
+    }
+    return i;
+  }
+  
+  public BusinessCard a()
+  {
+    BusinessCard localBusinessCard;
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localBusinessCard = (BusinessCard)((Map.Entry)localIterator.next()).getValue();
+      } while (localBusinessCard.cardType != 1);
+    }
+    for (;;)
+    {
+      if ((localBusinessCard == null) && (QLog.isColorLevel())) {
+        QLog.w("BusinessCard_Manager", 2, "getMyBusinessCard return null");
+      }
+      return localBusinessCard;
+      localBusinessCard = null;
+    }
+  }
+  
+  public BusinessCard a(String paramString)
+  {
+    return (BusinessCard)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+  }
+  
+  public ArrayList<awrl> a()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone();
+      return localArrayList2;
+    }
+  }
+  
+  public List<BusinessCard> a()
+  {
+    List localList = this.jdField_a_of_type_Awgf.a(BusinessCard.class);
+    if ((localList != null) && (QLog.isColorLevel())) {
+      QLog.d("BusinessCard_Manager", 2, "getBusinessCardListFromDB= " + localList.size());
+    }
+    return localList;
+  }
   
   public void a()
   {
-    SLog.b("DoodleLayout", "deleteInteractPaster.");
-    if (DoodleLayout.a(this.a) != null)
+    ThreadManager.post(new BusinessCardManager.1(this), 8, null, true);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt != -1) {
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_server_seq", paramInt).commit();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_Manager", 2, "saveServerSeq | seq = " + paramInt);
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_Manager", 2, "setCardSetting|type=" + paramInt + ", flag=" + paramBoolean);
+    }
+    switch (paramInt)
     {
-      EditInteractExport localEditInteractExport = (EditInteractExport)DoodleLayout.a(this.a).a(EditInteractExport.class);
-      if (localEditInteractExport != null) {
-        localEditInteractExport.b();
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("key_show_open_card", paramBoolean).commit();
+      return;
+    case 1: 
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("key_need_req_card", paramBoolean).commit();
+      return;
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("key_need_show_guide", paramBoolean).commit();
+  }
+  
+  public void a(BusinessCard paramBusinessCard)
+  {
+    if (paramBusinessCard == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramBusinessCard.cardId)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramBusinessCard.cardId);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramBusinessCard.cardId, paramBusinessCard);
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
+    {
+      d((BusinessCard)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString));
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    }
+  }
+  
+  public void a(String paramString, BusinessCard paramBusinessCard)
+  {
+    if ((paramBusinessCard == null) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    if (this.b.containsKey(paramString)) {
+      this.b.remove(paramString);
+    }
+    this.b.put(paramString, paramBusinessCard);
+  }
+  
+  public void a(ArrayList<awrl> paramArrayList)
+  {
+    if (paramArrayList != null) {
+      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+        return;
       }
     }
   }
   
-  public boolean a(VoteLayer.VoteItem paramVoteItem)
+  public void a(List<BusinessCard> paramList, boolean paramBoolean)
   {
-    boolean bool = false;
-    if (this.a.a != null)
+    if (paramList != null) {}
+    try
     {
-      this.a.a.setVisibility(0);
-      if (this.a.a.a.b()) {
-        this.a.a.a.a().j = false;
+      this.jdField_a_of_type_Awgf.a().a();
+      if (paramBoolean) {
+        this.jdField_a_of_type_Awgf.a(BusinessCard.class.getSimpleName());
       }
-      this.a.a.a.a(paramVoteItem);
-      paramVoteItem.j = true;
-      paramVoteItem = paramVoteItem.a;
-      if (!this.a.a.a()) {
-        bool = true;
-      }
-      paramVoteItem.a(bool);
-      this.a.a.requestLayout();
-      return true;
+      paramList = paramList.iterator();
+      BusinessCard localBusinessCard;
+      do
+      {
+        if (!paramList.hasNext()) {
+          break;
+        }
+        localBusinessCard = (BusinessCard)paramList.next();
+      } while (a(localBusinessCard));
+      throw new Exception("saveCardList exception : comicId = " + localBusinessCard.cardId);
     }
-    return false;
+    catch (Exception paramList)
+    {
+      QLog.d("BusinessCard_Manager", 2, "saveComicHistoryList exception :" + paramList.toString());
+      paramList.printStackTrace();
+      return;
+      this.jdField_a_of_type_Awgf.a().c();
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_Awgf.a().b();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("key_red_point", paramBoolean).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_Manager", 2, "setRedPointClicked | clicked = " + paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_red_point", true);
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_Manager", 2, "getRedPointClicked | ret = " + bool);
+    }
+    return bool;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    switch (paramInt)
+    {
+    default: 
+      bool1 = bool2;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BusinessCard_Manager", 2, "getCardSetting|type=" + paramInt + ", result=" + bool1);
+      }
+      return bool1;
+      bool1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_show_open_card", false);
+      continue;
+      bool1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_need_req_card", false);
+      continue;
+      bool1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_need_show_guide", true);
+    }
+  }
+  
+  public BusinessCard b(String paramString)
+  {
+    return (BusinessCard)this.b.get(paramString);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.jdField_a_of_type_Awgf.a(BusinessCard.class);
+  }
+  
+  public void b(BusinessCard paramBusinessCard)
+  {
+    if (paramBusinessCard == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramBusinessCard.cardId))
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramBusinessCard.cardId);
+      c(paramBusinessCard);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramBusinessCard.cardId, paramBusinessCard);
+      return;
+      a(paramBusinessCard);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (this.b.containsKey(paramString)) {
+      this.b.remove(paramString);
+    }
+  }
+  
+  public BusinessCard c(String paramString)
+  {
+    if ((paramString == null) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())) {
+      return null;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+    while (localIterator.hasNext())
+    {
+      BusinessCard localBusinessCard = (BusinessCard)localIterator.next();
+      if ((localBusinessCard.OCRInfo != null) && (paramString.equals(localBusinessCard.OCRInfo.b))) {
+        return localBusinessCard;
+      }
+    }
+    return null;
+  }
+  
+  public BusinessCard d(String paramString)
+  {
+    BusinessCard localBusinessCard1 = new BusinessCard();
+    BusinessCard localBusinessCard2 = (BusinessCard)this.jdField_a_of_type_Awgf.a(BusinessCard.class, paramString);
+    paramString = localBusinessCard2;
+    if (localBusinessCard2 == null) {
+      paramString = localBusinessCard1;
+    }
+    return paramString;
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.b.clear();
+    this.jdField_a_of_type_Awgf.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anys
  * JD-Core Version:    0.7.0.1
  */

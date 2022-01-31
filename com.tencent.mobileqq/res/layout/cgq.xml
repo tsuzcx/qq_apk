@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.pubaccount.readinjoy.viola.wormhole.WormholeView android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/mx9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <FrameLayout android:id="@id/mxa" android:background="@color/aal" android:layout_width="fill_parent" android:layout_height="200.0dip">
+        <TextView android:textSize="15.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/mx_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="200.0dip" android:text="@string/gvw" />
+    </FrameLayout>
+</com.tencent.biz.pubaccount.readinjoy.viola.wormhole.WormholeView>

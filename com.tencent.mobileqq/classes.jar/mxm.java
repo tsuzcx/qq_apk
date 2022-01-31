@@ -1,21 +1,17 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
-
-public class mxm
-  implements TextView.OnEditorActionListener
+class mxm
 {
-  public mxm(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  int jdField_a_of_type_Int;
+  int b;
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  mxm(mxl parammxl, int paramInt1, int paramInt2)
   {
-    return paramKeyEvent.getKeyCode() == 66;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mxm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,72 @@
-import android.os.FileObserver;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.util.ScreenshotContentObserver;
-import com.tencent.biz.pubaccount.util.ScreenshotContentObserver.Listener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
 
 public class mwu
-  extends FileObserver
 {
-  public mwu(ScreenshotContentObserver paramScreenshotContentObserver, String paramString1, int paramInt, String paramString2)
+  public static int a(AppInterface paramAppInterface, String paramString1, String paramString2)
   {
-    super(paramString1, paramInt);
+    if ((paramAppInterface instanceof QQAppInterface)) {
+      return a((QQAppInterface)paramAppInterface, paramString1, paramString2);
+    }
+    return c(paramAppInterface, paramString1, paramString2);
   }
   
-  public void onEvent(int paramInt, String paramString)
+  private static int a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ScreenshotContentObserver", 2, "onEvent->time:" + System.currentTimeMillis() + ", path:" + paramString);
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
+      if (paramQQAppInterface != null)
+      {
+        if (paramQQAppInterface.b(paramString2, paramString1) == null) {
+          return 3;
+        }
+        paramQQAppInterface = paramQQAppInterface.b(paramString2);
+        if ((paramQQAppInterface != null) && (paramQQAppInterface.isTroopOwner(paramString1))) {
+          return 0;
+        }
+        if ((paramQQAppInterface != null) && (paramQQAppInterface.isTroopAdmin(paramString1))) {
+          return 1;
+        }
+        if (paramQQAppInterface != null) {
+          return 2;
+        }
+        return -1;
+      }
+      return -1;
     }
-    if ((TextUtils.isEmpty(paramString)) || (paramInt != 256)) {}
-    while ((paramString.equalsIgnoreCase(ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver))) || (paramString.contains("temp")) || (ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver) == null)) {
-      return;
+    return -1;
+  }
+  
+  public static int b(AppInterface paramAppInterface, String paramString1, String paramString2)
+  {
+    switch (a(paramAppInterface, paramString1, paramString2))
+    {
+    default: 
+      return 4;
+    case 0: 
+      return 3;
+    case 1: 
+      return 2;
+    case 2: 
+      return 1;
     }
-    ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver).a(null, this.jdField_a_of_type_JavaLangString + paramString, 1);
-    ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver, paramString);
+    return 0;
+  }
+  
+  private static int c(AppInterface paramAppInterface, String paramString1, String paramString2)
+  {
+    if ((paramAppInterface instanceof mwv)) {
+      return ((mwv)paramAppInterface).a(paramString1, paramString2);
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mwu
  * JD-Core Version:    0.7.0.1
  */

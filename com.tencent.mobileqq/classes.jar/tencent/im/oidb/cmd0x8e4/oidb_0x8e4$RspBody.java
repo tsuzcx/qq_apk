@@ -12,13 +12,13 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 public final class oidb_0x8e4$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public Common.WifiPOIInfo poi_info = new Common.WifiPOIInfo();
-  public final PBRepeatMessageField rpt_msg_player_state = PBField.initRepeatMessage(oidb_0x8e4.PlayerState.class);
-  public final PBRepeatField rpt_uint64_invite_uin = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
-  public final PBRepeatField rpt_uint64_kick_uin = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatMessageField<oidb_0x8e4.PlayerState> rpt_msg_player_state = PBField.initRepeatMessage(oidb_0x8e4.PlayerState.class);
+  public final PBRepeatField<Long> rpt_uint64_invite_uin = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> rpt_uint64_kick_uin = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBBytesField string_err_msg = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField string_err_title = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField string_invite_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -37,7 +37,7 @@ public final class oidb_0x8e4$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody
  * JD-Core Version:    0.7.0.1
  */

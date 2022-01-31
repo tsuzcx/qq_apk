@@ -1,32 +1,65 @@
-import android.graphics.Rect;
-import android.view.View;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class otq
-  implements Runnable
+  implements AladdinConfigHandler
 {
-  public otq(QRDisplayActivity paramQRDisplayActivity, boolean paramBoolean) {}
-  
-  public void run()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    int i = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d.getLeft();
-    int j = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d.getRight();
-    Rect localRect = new Rect(i, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d.getTop(), j, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d.getBottom());
-    if (this.jdField_a_of_type_Boolean)
+    QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    Map localMap = osq.a(paramString);
+    Object localObject2 = localMap.keySet();
+    Object localObject1 = "";
+    paramString = "";
+    Iterator localIterator = ((Set)localObject2).iterator();
+    String str;
+    if (localIterator.hasNext())
     {
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d.setOnClickListener(null);
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d.setClickable(false);
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d.setTouchDelegate(new otr(this, localRect, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d));
-      return;
+      str = (String)localIterator.next();
+      localObject2 = (String)localMap.get(str);
+      QLog.d("NativeProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str + ", value=" + (String)localObject2);
+      if (TextUtils.equals(str, "native_article"))
+      {
+        bkbq.a("native_proteus_offline_bid", (String)localObject2);
+        paramString = (String)localObject1;
+        localObject1 = localObject2;
+      }
     }
-    this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d.setClickable(true);
-    this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d.setOnClickListener(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity);
-    this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d.setTouchDelegate(null);
+    for (;;)
+    {
+      localObject2 = paramString;
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
+      break;
+      if (TextUtils.equals(str, "native_article_cdn_url"))
+      {
+        localObject1 = paramString;
+        paramString = (String)localObject2;
+        continue;
+        sgl.a(paramString, (String)localObject1);
+        return true;
+      }
+      else
+      {
+        localObject2 = paramString;
+        paramString = (String)localObject1;
+        localObject1 = localObject2;
+      }
+    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bkbq.a("native_proteus_offline_bid", "0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     otq
  * JD-Core Version:    0.7.0.1
  */

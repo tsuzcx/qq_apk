@@ -1,15 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.qphone.base.util.QLog;
 
 class amsz
-  implements DialogInterface.OnDismissListener
+  implements MediaPlayer.OnPreparedListener
 {
-  amsz(amsy paramamsy) {}
+  amsz(amsu paramamsu) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.onDismiss(paramDialogInterface);
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMusicController", 2, "load bg music success. : " + amsu.b(this.a));
+      }
+      this.a.a.seekTo(0);
+      amsu.b(this.a, true);
+      if (amsu.b(this.a))
+      {
+        this.a.a.start();
+        amsu.c(this.a, false);
+      }
+      return;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      paramMediaPlayer.printStackTrace();
     }
   }
 }

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0xee$AccountInfo
-  extends MessageMicro
+  extends MessageMicro<AccountInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_icon_url = PBField.initBytes(ByteStringMicro.EMPTY);

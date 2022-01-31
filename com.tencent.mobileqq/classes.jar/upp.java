@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-
 public class upp
-  implements Runnable
+  extends upo
 {
-  public upp(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
-  
-  public void run()
+  public upp(upl paramupl)
   {
-    this.a.c();
+    super(paramupl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     upp
  * JD-Core Version:    0.7.0.1
  */

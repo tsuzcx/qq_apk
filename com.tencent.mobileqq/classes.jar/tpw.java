@@ -1,22 +1,37 @@
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.View;
-import android.view.View.OnCreateContextMenuListener;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
 
 public class tpw
-  implements View.OnCreateContextMenuListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public tpw(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  private final tpx jdField_a_of_type_Tpx;
   
-  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
+  public tpw(PublicAccountImageView paramPublicAccountImageView, tpx paramtpx)
   {
-    paramContextMenu.clear();
+    this.jdField_a_of_type_Tpx = paramtpx;
+  }
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
+    return false;
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tpw
  * JD-Core Version:    0.7.0.1
  */

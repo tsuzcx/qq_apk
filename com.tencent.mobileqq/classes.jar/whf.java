@@ -1,27 +1,30 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class whf
-  implements ConditionSearchManager.IConfigListener
+public abstract interface whf
 {
-  public whf(AddContactsView paramAddContactsView) {}
+  public abstract View a();
   
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onGetConfig | isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
-    }
-    if ((paramInt == 2) && (paramBoolean))
-    {
-      this.a.b = true;
-      this.a.e();
-    }
-  }
+  public abstract ImageView a();
+  
+  public abstract TextView a();
+  
+  public abstract void a();
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     whf
  * JD-Core Version:    0.7.0.1
  */

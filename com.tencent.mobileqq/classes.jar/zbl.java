@@ -1,31 +1,24 @@
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.TextView;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
 
 public class zbl
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public zbl(ConditionSearchManager paramConditionSearchManager, boolean paramBoolean) {}
+  public zbl(SingleLyricView paramSingleLyricView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ConditionSearchManager.IConfigListener)localIterator.next()).a(1, this.jdField_a_of_type_Boolean);
-      }
-    }
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.c)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a());
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (SingleLyricView.a(this.a) != null) {
+      SingleLyricView.a(this.a).setAlpha(f);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zbl
  * JD-Core Version:    0.7.0.1
  */

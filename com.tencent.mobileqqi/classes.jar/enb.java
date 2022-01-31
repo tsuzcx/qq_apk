@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.config.ResourcePluginListener;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
 
-public class enb
-  extends ResourcePluginListener
+class enb
 {
-  public enb(MainAssistObserver paramMainAssistObserver) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  ImageView b;
+  ImageView c;
   
-  public void b(byte paramByte) {}
+  private enb(ena paramena) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     enb
  * JD-Core Version:    0.7.0.1
  */

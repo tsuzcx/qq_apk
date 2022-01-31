@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0dip" android:textColor="@color/aho" android:gravity="center|left" android:id="@id/k59" android:background="@drawable/gy" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="0.0dip" android:layout_height="32.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="15.0dip" android:layout_marginBottom="14.0dip" android:minWidth="183.0dip" android:text="@string/kai" android:maxLines="1" android:layout_weight="1.0" />
+    <RelativeLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/ksa" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="29.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip">
+        <ImageView android:id="@id/dus" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/cca" android:layout_alignParentLeft="true" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff333333" android:id="@id/dur" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:includeFontPadding="false" android:layout_toRightOf="@id/dus" />
+        <ImageView android:id="@id/dwx" android:background="@drawable/hmb" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="30.0dip" android:layout_toRightOf="@id/dus" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff333333" android:id="@id/g0g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:includeFontPadding="false" android:layout_toRightOf="@id/dwx" />
+        <ImageView android:id="@id/dy1" android:background="@drawable/ccb" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="30.0dip" android:layout_toRightOf="@id/dwx" />
+    </RelativeLayout>
+</merge>

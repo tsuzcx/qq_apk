@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
 
 public class adta
-  implements Runnable
+  extends avva
 {
-  public adta(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager) {}
+  public adta(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ImaxAdVideoPreloadManager.a(this.a, 2);
+    QQSettingSettingActivity.a(this.a);
+    QQSettingSettingActivity.b(this.a);
   }
 }
 

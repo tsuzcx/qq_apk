@@ -1,27 +1,17 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import com.tencent.token.ui.base.dh;
-import com.tencent.token.utils.s;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.utils.w;
 
-final class adu
-  implements dh
+class adu
+  implements View.OnClickListener
 {
-  adu(adt paramadt) {}
+  adu(UtilsMbInfoItemActivity paramUtilsMbInfoItemActivity, int paramInt) {}
   
-  public final void a(int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      Intent localIntent = new Intent(this.a.a, AssistantRecommendFriendQrcode.class);
-      localIntent.putExtra("page_id", 9);
-      this.a.a.startActivity(localIntent);
-      return;
-    }
-    s.b(this.a.a, this.a.a.getString(2131361976));
+    w.b(this.b, this.b.getString(this.a));
   }
 }
 

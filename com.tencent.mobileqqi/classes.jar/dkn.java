@@ -1,26 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Handler;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.mobileqq.activity.SplashActivityCore;
+import com.tencent.qphone.base.util.QLog;
 
-public class dkn
-  implements DialogInterface.OnClickListener
+class dkn
+  implements MediaPlayer.OnCompletionListener
 {
-  public dkn(RegisterActivity paramRegisterActivity, String paramString) {}
+  dkn(dkl paramdkl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.startActivity(localIntent);
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.a.sendEmptyMessage(1);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Splash.testCanPlayMp4", 4, "OnCompletion");
+    }
+    if (paramMediaPlayer.getCurrentPosition() == 0)
+    {
+      this.a.a.handler.sendEmptyMessage(5);
+      return;
+    }
+    this.a.a.handler.sendEmptyMessage(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dkn
  * JD-Core Version:    0.7.0.1
  */

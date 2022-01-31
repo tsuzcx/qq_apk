@@ -1,29 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-
 public class lgm
-  implements View.OnClickListener
 {
-  public lgm(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  @Deprecated
+  public int a;
+  @Deprecated
+  public boolean a;
+  @Deprecated
+  public int b = 5;
   
-  public void onClick(View paramView)
+  public lgm()
   {
-    if ((ReadInJoyDeliverBiuActivity.d(this.a)) && ((!ReadInJoyDeliverBiuActivity.e(this.a)) || (ReadInJoyDeliverBiuActivity.m(this.a) != -1)))
-    {
-      this.a.c(ReadInJoyDeliverBiuActivity.n(this.a));
-      return;
-    }
-    this.a.finish();
-    PublicAccountReportUtils.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.n(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
-    ReadInJoyDeliverBiuActivity.a(this.a, false);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lgm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,34 @@
-import android.util.Printer;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.QzoneThreadMonitor;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.1;
+import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.2;
+import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.3;
 
 public class anak
-  implements Printer
+  extends Handler
 {
-  public anak(QzoneThreadMonitor paramQzoneThreadMonitor) {}
-  
-  public void println(String paramString)
+  public anak(anai paramanai, Looper paramLooper)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzoneThreadMonitor", 4, paramString);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 100: 
+      anft.a().a(new ARCamera.ARCameraHandler.1(this));
+      removeMessages(100);
+      sendEmptyMessageDelayed(100, 3000L);
+      return;
+    case 101: 
+      anft.a().a(new ARCamera.ARCameraHandler.2(this));
+      return;
     }
+    anft.a().a(new ARCamera.ARCameraHandler.3(this));
   }
 }
 

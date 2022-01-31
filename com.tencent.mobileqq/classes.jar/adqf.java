@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.QQIdentiferLegacy;
+import mqq.app.QQPermissionCallback;
 
-class adqf
-  implements Runnable
+public class adqf
+  implements QQPermissionCallback
 {
-  adqf(adqe paramadqe) {}
+  public adqf(QQIdentiferLegacy paramQQIdentiferLegacy) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    ThreadManager.getUIHandler().post(new adqg(this));
+    bdgm.a(QQIdentiferLegacy.a(this.a), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QQIdentiferLegacy.a(this.a);
   }
 }
 

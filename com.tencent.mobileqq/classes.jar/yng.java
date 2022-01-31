@@ -1,34 +1,26 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.ChatPieApolloViewController;
-import com.tencent.mobileqq.apollo.task.ApolloActionHelper;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
 
 public class yng
-  implements Runnable
+  implements View.OnClickListener
 {
-  public yng(ChatPieApolloViewController paramChatPieApolloViewController, BaseChatPie paramBaseChatPie) {}
+  public yng(VideoPlayerView paramVideoPlayerView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (ApolloActionHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a) != 1)
+    if (VideoPlayerView.a(this.a) != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatPieApolloViewController", 2, "Apollo switch NOT open.");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().obtainMessage(62).sendToTarget();
-      return;
+      VideoPlayerView.a(this.a).b();
+      VideoPlayerView.i(this.a);
+      VideoPlayerView.a(this.a, false);
     }
-    ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().obtainMessage(65).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yng
  * JD-Core Version:    0.7.0.1
  */

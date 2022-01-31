@@ -5,8 +5,8 @@ import java.util.Map.Entry;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class BubbleManager$LruLinkedHashMap
-  extends LinkedHashMap
+public class BubbleManager$LruLinkedHashMap<K, V>
+  extends LinkedHashMap<K, V>
 {
   private static final long serialVersionUID = 1L;
   private final Lock lock = new ReentrantLock();
@@ -32,7 +32,7 @@ public class BubbleManager$LruLinkedHashMap
     }
   }
   
-  public Object get(Object paramObject)
+  public V get(Object paramObject)
   {
     try
     {
@@ -46,13 +46,13 @@ public class BubbleManager$LruLinkedHashMap
     }
   }
   
-  public Object put(Object paramObject1, Object paramObject2)
+  public V put(K paramK, V paramV)
   {
     try
     {
       this.lock.lock();
-      paramObject1 = super.put(paramObject1, paramObject2);
-      return paramObject1;
+      paramK = super.put(paramK, paramV);
+      return paramK;
     }
     finally
     {
@@ -60,14 +60,14 @@ public class BubbleManager$LruLinkedHashMap
     }
   }
   
-  protected boolean removeEldestEntry(Map.Entry paramEntry)
+  protected boolean removeEldestEntry(Map.Entry<K, V> paramEntry)
   {
     return size() > this.maxCapacity;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleManager.LruLinkedHashMap
  * JD-Core Version:    0.7.0.1
  */

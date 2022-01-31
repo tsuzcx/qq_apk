@@ -1,29 +1,21 @@
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData.ActionCountdownOver;
-import java.util.TimerTask;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class aedu
-  extends TimerTask
+  implements URLDrawable.URLDrawableListener
 {
-  public aedu(ActionGlobalData paramActionGlobalData) {}
+  public aedu(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    ActionGlobalData localActionGlobalData = this.a;
-    localActionGlobalData.h += 1;
-    localActionGlobalData = this.a;
-    localActionGlobalData.jdField_a_of_type_Float -= 0.1F;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData$ActionCountdownOver != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData$ActionCountdownOver.b();
-    }
-    if (this.a.h * 100 == this.a.c * 1000)
-    {
-      this.a.jdField_a_of_type_Float = 0.0F;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData$ActionCountdownOver != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData$ActionCountdownOver.a();
-      }
-      cancel();
-    }
+    TroopInfoActivity.b(this.a);
   }
 }
 

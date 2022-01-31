@@ -1,40 +1,41 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloGameArkHandler;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQHeadDownloadHandler;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class yjr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public yjr(ApolloGameArkHandler paramApolloGameArkHandler, String paramString) {}
+  public yjr(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, yiz paramyiz) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    Object localObject;
-    do
+    paramView = new Intent();
+    paramView.putExtra("postUin", this.jdField_a_of_type_Yiz.a.poster.id.get());
+    if (this.jdField_a_of_type_Yiz.a.poster.youZhan.size() > 0) {
+      if (((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_Yiz.a.poster.youZhan.get(0)).type.get() <= 1) {
+        break label132;
+      }
+    }
+    label132:
+    for (boolean bool = true;; bool = false)
     {
-      Setting localSetting;
-      do
-      {
-        do
-        {
-          return;
-          localObject = this.jdField_a_of_type_ComTencentMobileqqApolloApolloGameArkHandler.a();
-        } while (localObject == null);
-        localSetting = ((QQAppInterface)localObject).c(this.jdField_a_of_type_JavaLangString);
-      } while ((localSetting == null) || (TextUtils.isEmpty(localSetting.url)));
-      localObject = MsfSdkUtils.insertMtype("QQHeadIcon", ((FriendListHandler)((QQAppInterface)localObject).a(1)).a().a(localSetting.url, localSetting.bFaceFlags, localSetting.bUsrType, 0));
-    } while (TextUtils.isEmpty((CharSequence)localObject));
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloGameArkHandler.a(this.jdField_a_of_type_JavaLangString, (String)localObject);
+      paramView.putExtra("has_shop", bool);
+      bjdt.a(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomOpusFragment.getActivity(), paramView, 0);
+      zaj.b(this.jdField_a_of_type_Yiz.a.poster.id.get(), "auth_person", "blank_post", 0, 0, new String[0]);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yjr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,18 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.arcard.ARCardHeadIconManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.SystemClock;
+import com.tencent.ad.tangram.ark.AdArkAdapter.Callback;
 
-public class aalu
-  implements Runnable
+class aalu
+  implements afjs
 {
-  public aalu(ARCardHeadIconManager paramARCardHeadIconManager) {}
+  aalu(aalt paramaalt, AdArkAdapter.Callback paramCallback) {}
   
-  public void run()
+  public void a() {}
+  
+  public void b()
   {
-    Intent localIntent = new Intent("com.tencent.qqhead.getheadreq");
-    localIntent.putStringArrayListExtra("uinList", ARCardHeadIconManager.a(this.a));
-    if (QLog.isColorLevel()) {
-      QLog.d("DingdongHeadManager", 2, "mContactHeadReqRunnable: request contact head whose size=" + ARCardHeadIconManager.a(this.a).size());
+    if (this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback != null) {
+      this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback.firstPaint(SystemClock.elapsedRealtime());
     }
-    ARCardHeadIconManager.a(this.a).sendBroadcast(localIntent, "com.tencent.qqhead.permission.getheadresp");
-    ARCardHeadIconManager.a(this.a).clear();
   }
 }
 

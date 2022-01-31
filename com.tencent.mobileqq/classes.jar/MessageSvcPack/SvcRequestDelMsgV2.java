@@ -8,22 +8,22 @@ import java.util.ArrayList;
 public final class SvcRequestDelMsgV2
   extends JceStruct
 {
-  static ArrayList cache_vAccostMsg;
-  static ArrayList cache_vDelInfos;
+  static ArrayList<AccostMsg> cache_vAccostMsg;
+  static ArrayList<SvcDelMsgInfo> cache_vDelInfos;
   public byte cInst;
   public byte cVerifyType;
   public long lUin;
-  public ArrayList vAccostMsg;
-  public ArrayList vDelInfos;
+  public ArrayList<AccostMsg> vAccostMsg;
+  public ArrayList<SvcDelMsgInfo> vDelInfos;
   
   public SvcRequestDelMsgV2() {}
   
-  public SvcRequestDelMsgV2(long paramLong, ArrayList paramArrayList1, byte paramByte1, ArrayList paramArrayList2, byte paramByte2)
+  public SvcRequestDelMsgV2(long paramLong, ArrayList<SvcDelMsgInfo> paramArrayList, byte paramByte1, ArrayList<AccostMsg> paramArrayList1, byte paramByte2)
   {
     this.lUin = paramLong;
-    this.vDelInfos = paramArrayList1;
+    this.vDelInfos = paramArrayList;
     this.cVerifyType = paramByte1;
-    this.vAccostMsg = paramArrayList2;
+    this.vAccostMsg = paramArrayList1;
     this.cInst = paramByte2;
   }
   

@@ -1,69 +1,31 @@
-import android.content.Intent;
-import android.os.Parcelable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.fileviewer.qfile.QfileFileViewerActivity;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.data.RecentFileAdapter.ItemHolder;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 import com.tencent.qphone.base.util.QLog;
 
 public class fvc
-  implements View.OnClickListener
+  extends fvb
 {
-  public fvc(FMActivity paramFMActivity) {}
-  
-  public void onClick(View paramView)
+  public fvc(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    paramView = (RecentFileAdapter.ItemHolder)paramView.getTag();
-    FileManagerEntity localFileManagerEntity = paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().b();
-    FMActivity.a(this.a);
-    if (this.a.g()) {
-      if (FMDataCache.a(localFileManagerEntity))
-      {
-        FMDataCache.b(localFileManagerEntity);
-        this.a.f();
-        FMActivity.a(this.a);
-      }
-    }
-    do
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateCancelUploadWhenChangeToOff";
+  }
+  
+  protected boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.a == null)
     {
-      return;
-      FMDataCache.a(localFileManagerEntity);
-      break;
-      if (this.a.c()) {
-        break label102;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i(FMActivity.jdField_b_of_type_JavaLangString, 2, "click too fast , wait a minute.");
-    return;
-    label102:
-    this.a.d();
-    Object localObject = new FileManagerReporter.fileAssistantReportData();
-    ((FileManagerReporter.fileAssistantReportData)localObject).jdField_a_of_type_JavaLangString = "file_viewer_in";
-    ((FileManagerReporter.fileAssistantReportData)localObject).jdField_a_of_type_Int = 73;
-    ((FileManagerReporter.fileAssistantReportData)localObject).jdField_b_of_type_JavaLangString = FileUtil.a(localFileManagerEntity.fileName);
-    ((FileManagerReporter.fileAssistantReportData)localObject).jdField_a_of_type_Long = localFileManagerEntity.fileSize;
-    FileManagerReporter.a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), (FileManagerReporter.fileAssistantReportData)localObject);
-    localObject = new ForwardFileInfo();
-    ((ForwardFileInfo)localObject).c(localFileManagerEntity.cloudType);
-    ((ForwardFileInfo)localObject).a(10001);
-    ((ForwardFileInfo)localObject).b(paramView.b);
-    ((ForwardFileInfo)localObject).c(paramView.jdField_a_of_type_Long);
-    ((ForwardFileInfo)localObject).d(localFileManagerEntity.fileName);
-    ((ForwardFileInfo)localObject).d(localFileManagerEntity.fileSize);
-    ((ForwardFileInfo)localObject).b(localFileManagerEntity.Uuid);
-    paramView = new Intent(this.a.getApplicationContext(), QfileFileViewerActivity.class);
-    paramView.putExtra("fileinfo", (Parcelable)localObject);
-    this.a.startActivityForResult(paramView, 102);
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "]. recvOnLineFile entity is null");
+      return false;
+    }
+    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 9);
+    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 9);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateCancelUploadWhenRecv)");
+    this.jdField_a_of_type_Fvb = new fve(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+    return true;
   }
 }
 

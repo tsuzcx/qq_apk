@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.olympic;
 
-import agdt;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import awag;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class OlyimpicConfig
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new agdt();
+  public static final Parcelable.Creator<OlyimpicConfig> CREATOR = new awag();
   public long grabInterval = -1L;
   public int id;
   public long reportActiveInterval = -1L;
   public long reportNormalInterval = -1L;
-  public ArrayList shuayishuaConfigs = new ArrayList();
+  public ArrayList<ShuayishuaConfig> shuayishuaConfigs = new ArrayList();
   public int version;
   
   public OlyimpicConfig() {}
@@ -60,7 +60,7 @@ public class OlyimpicConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.OlyimpicConfig
  * JD-Core Version:    0.7.0.1
  */

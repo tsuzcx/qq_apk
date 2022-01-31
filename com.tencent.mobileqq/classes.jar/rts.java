@@ -1,46 +1,30 @@
 import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import mqq.app.AppRuntime;
 
 public class rts
-  implements Runnable
+  implements View.OnClickListener
 {
-  public rts(BaseChatPie paramBaseChatPie) {}
+  public rts(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.delmsg", 2, "hor anim onAnimationEnd() is called,time is:" + System.currentTimeMillis());
-    }
-    int i;
-    if (this.a.jdField_a_of_type_ArrayOfAndroidWidgetFrameLayout != null)
+    ReadInJoyListViewGroup.b(this.a);
+    paramView = ((KandianMergeManager)ors.a().getManager(162)).a();
+    if ((paramView != null) && (paramView.isFromNotification))
     {
-      i = 0;
-      while (i < this.a.jdField_a_of_type_ArrayOfAndroidWidgetFrameLayout.length)
-      {
-        if (this.a.jdField_a_of_type_ArrayOfAndroidWidgetFrameLayout[i] != null) {
-          this.a.jdField_a_of_type_ArrayOfAndroidWidgetFrameLayout[i].setVisibility(8);
-        }
-        i += 1;
-      }
+      ors.a(this.a.getContext(), 5, false, paramView.mMsgId);
+      return;
     }
-    if (this.a.jdField_a_of_type_ArrayOfAndroidViewView != null)
-    {
-      i = 0;
-      while (i < this.a.jdField_a_of_type_ArrayOfAndroidViewView.length)
-      {
-        if (this.a.jdField_a_of_type_ArrayOfAndroidViewView[i] != null) {
-          this.a.jdField_a_of_type_ArrayOfAndroidViewView[i].setVisibility(0);
-        }
-        i += 1;
-      }
-    }
+    ors.a(this.a.getContext(), 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rts
  * JD-Core Version:    0.7.0.1
  */

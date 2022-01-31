@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
-import bqx;
-import bqy;
-import bqz;
+import bkt;
+import bku;
+import bkv;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.PublicAccountDataManager;
 import com.tencent.mobileqq.app.PublicAccountHandler;
@@ -24,11 +24,11 @@ import java.util.List;
 public class PubAccountAssistantSettingActivity
   extends IphoneTitleBarActivity
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new bqx(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new bkt(this);
   private PubAccountAssistantSettingAdapter jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantSettingAdapter;
-  private PublicAccountObserver jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = new bqy(this);
+  private PublicAccountObserver jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = new bku(this);
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new bqz(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new bkv(this);
   private List jdField_a_of_type_JavaUtilList;
   
   private void d()
@@ -50,9 +50,9 @@ public class PubAccountAssistantSettingActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903423);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232565));
-    paramBundle = View.inflate(this, 2130903424, null);
+    setContentView(2130903425);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232568));
+    paramBundle = View.inflate(this, 2130903426, null);
     this.jdField_a_of_type_ComTencentWidgetXListView.a(paramBundle);
     d();
     setTitle(2131560557);

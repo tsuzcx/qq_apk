@@ -1,40 +1,22 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.app.HotchatSCHelper;
-import com.tencent.mobileqq.app.HotchatSCHelper.OnShowNoteListener;
-import com.tencent.mobileqq.app.HotchatSCMng;
-import com.tencent.mobileqq.app.HotchatSCMng.HotchatNote;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class owk
-  implements HotchatSCHelper.OnShowNoteListener
+public class owk
+  extends altm
 {
-  owk(owi paramowi, Bundle paramBundle) {}
+  public owk(KandianMergeManager paramKandianMergeManager) {}
   
-  public boolean a(HotchatSCMng.HotchatNote paramHotchatNote)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    Bundle localBundle = new Bundle();
-    HotchatSCMng.HotchatNote localHotchatNote = paramHotchatNote;
-    if (paramHotchatNote == null) {
-      localHotchatNote = this.jdField_a_of_type_Owi.a.a.jdField_a_of_type_ComTencentMobileqqAppHotchatSCMng.a(this.jdField_a_of_type_Owi.a.a.jdField_a_of_type_JavaLangString, 1, HotchatSCHelper.a());
-    }
-    if (localHotchatNote != null)
-    {
-      localBundle.putString("url", localHotchatNote.b);
-      localBundle.putString("content", localHotchatNote.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      localBundle.putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq", -1));
-      this.jdField_a_of_type_Owi.a.a(102, localBundle);
-      return false;
-      localBundle.putString("url", "");
-      localBundle.putString("content", "");
+    if ((paramBoolean) && (TextUtils.equals(KandianMergeManager.b(this.a), paramString)) && (!TextUtils.equals(paramString, alof.aA))) {
+      KandianMergeManager.a(this.a).a(1).notifyUI(4, true, new Object[] { alof.aA });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     owk
  * JD-Core Version:    0.7.0.1
  */

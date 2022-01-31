@@ -1,15 +1,25 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageInfo;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
 
 public class ebx
-  implements Runnable
+  implements MessageQueue.IdleHandler
 {
-  public ebx(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable) {}
+  public ebx(AIOGalleryScene paramAIOGalleryScene) {}
   
-  public void run()
+  public boolean queueIdle()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(2, 300, new Object[] { this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, Integer.valueOf(0) });
+    Object localObject = this.a.a.a();
+    if (localObject != null)
+    {
+      localObject = ((AIOImageInfo)localObject).a;
+      if ((localObject != null) && (((AIOImageData)localObject).a(4)) && (((AIOImageData)localObject).a(4) == null)) {
+        this.a.c(true);
+      }
+    }
+    return false;
   }
 }
 

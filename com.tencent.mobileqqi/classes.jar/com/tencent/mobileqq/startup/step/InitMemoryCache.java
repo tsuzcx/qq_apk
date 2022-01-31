@@ -3,7 +3,7 @@ package com.tencent.mobileqq.startup.step;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.MemoryManager;
 import com.tencent.qphone.base.util.QLog;
-import goi;
+import gjz;
 
 public class InitMemoryCache
   extends Step
@@ -13,7 +13,7 @@ public class InitMemoryCache
     if ("com.tencent.mobileqqi".equals(BaseApplicationImpl.processName))
     {
       long l = MemoryManager.a() * 3L / 16L;
-      BaseApplicationImpl.jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new goi(Integer.valueOf((int)l));
+      BaseApplicationImpl.jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new gjz(Integer.valueOf((int)l));
       BaseApplicationImpl.jdField_a_of_type_Int = (int)l;
     }
     for (;;)
@@ -26,7 +26,7 @@ public class InitMemoryCache
         if (j > 4194304) {
           i = j;
         }
-        BaseApplicationImpl.jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new goi(Integer.valueOf(i));
+        BaseApplicationImpl.jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new gjz(Integer.valueOf(i));
         BaseApplicationImpl.jdField_a_of_type_Int = j;
         if (QLog.isColorLevel()) {
           QLog.d("MemoryCache", 2, "memory size:" + j);

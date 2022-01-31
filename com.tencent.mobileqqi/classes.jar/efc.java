@@ -1,26 +1,24 @@
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.PASingleItemBuilder;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.RecommendContactMsg;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 
 public class efc
-  extends AbstractChatItemBuilder.ViewHolder
 {
-  public int a;
-  public long a;
-  public Object a;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  public ImageView a;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RecommendContactMsg jdField_a_of_type_ComTencentMobileqqDataRecommendContactMsg;
+  ShaderAnimLayout jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout;
   public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  
-  public efc(PASingleItemBuilder paramPASingleItemBuilder) {}
+  TextView b;
+  TextView c;
+  TextView d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     efc
  * JD-Core Version:    0.7.0.1
  */

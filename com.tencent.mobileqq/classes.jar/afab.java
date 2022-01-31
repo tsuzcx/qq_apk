@@ -1,24 +1,26 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
 public class afab
-  implements ActionSheet.OnButtonClickListener
+  implements afbx
 {
-  public afab(PlayOperationViewModel paramPlayOperationViewModel, String paramString1, String[] paramArrayOfString, String paramString2, Context paramContext, ActionSheet paramActionSheet) {}
+  public afab(DoodlePanel paramDoodlePanel) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt)
   {
-    NearbyMomentProtocol.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString[paramInt], this.b, new afac(this));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if (DoodlePanel.a(this.a) != null)
+    {
+      if (DoodlePanel.a(this.a) != null) {
+        DoodlePanel.a(this.a).setTemplateID(paramInt);
+      }
+      DoodlePanel.a(this.a);
+      bdea.a(this.a.getContext(), "aio_doodle_template_picker_select", String.valueOf(paramInt));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afab
  * JD-Core Version:    0.7.0.1
  */

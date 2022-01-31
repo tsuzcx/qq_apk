@@ -1,22 +1,18 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoTag;
-import com.tencent.biz.qqstory.takevideo.EditVideoTag.EditBehavior;
-import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
-import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class ogv
-  implements QQStoryPullToRefreshListView.PullToRefreshListener
+  implements ViewBase.IBuilder
 {
-  public ogv(EditVideoTag paramEditVideoTag) {}
-  
-  public void a()
+  public ViewBase build(VafContext paramVafContext)
   {
-    EditVideoTag.EditBehavior localEditBehavior = EditVideoTag.a(this.a);
-    EditVideoTag.a(this.a, EditVideoTag.a(this.a)).a(localEditBehavior);
+    return new ogr(paramVafContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ogv
  * JD-Core Version:    0.7.0.1
  */

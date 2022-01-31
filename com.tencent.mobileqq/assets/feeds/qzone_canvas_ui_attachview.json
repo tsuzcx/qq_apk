@@ -1,5 +1,5 @@
 {
-  "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+  "class": "com.tencent.ditto.widget.LinearAreaLayout",
   "shell": {
     "id":"feed_attach_root",
     "width": "match_parent",
@@ -9,7 +9,7 @@
   },
   "children": [
     {
-      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
       "shell": {
         "id":"feed_attach_remark",
         "width": "match_parent",
@@ -23,7 +23,7 @@
     },
 
     {
-      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
       "shell": {
         "id":"feed_attach_refer",
         "width": "match_parent",
@@ -37,7 +37,7 @@
     },
 
     {
-      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
       "shell": {
         "id":"feed_attach_titleinfo",
         "width": "match_parent",
@@ -51,7 +51,7 @@
     },
 
     {
-      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
       "shell": {
         "id":"feed_attach_shootinfo",
         "width": "match_parent",
@@ -65,7 +65,7 @@
     },
 
     {
-      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
       "shell": {
         "id":"feed_attach_lbs",
         "width": "match_parent",

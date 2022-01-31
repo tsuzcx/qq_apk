@@ -1,64 +1,39 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.base.ContactsViewController;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class wmv
-  implements Handler.Callback
+class wmv
+  extends QQUIEventReceiver<wms, vdl>
 {
-  public wmv(ContactsViewController paramContactsViewController) {}
-  
-  private void a()
+  public wmv(@NonNull wms paramwms)
   {
-    if (ContactsViewController.a(this.a) != null) {
-      ContactsViewController.a(this.a).setRefreshing(false);
-    }
-    if (ContactsViewController.a(this.a) != null) {
-      ContactsViewController.a(this.a).setRefresh(false);
+    super(paramwms);
+  }
+  
+  public void a(@NonNull wms paramwms, @NonNull vdl paramvdl)
+  {
+    if ((paramvdl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvdl.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (TextUtils.equals(paramvdl.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.getUnionId(), paramwms.jdField_a_of_type_JavaLangString)))
+    {
+      wxe.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive user info event. %s. from others.", paramvdl);
+      paramwms.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramvdl.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+      wms.a(paramwms).e();
+      wms.a(paramwms).c();
+      wms.a(paramwms).d();
+      wms.a(paramwms).a();
     }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public Class acceptEventClass()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    case 3: 
-      QQToast.a(this.a.a(), 1, 2131434349, 0).b(ContactsViewController.a(this.a));
-      a();
-      return false;
-    case 4: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label134;
-        }
-        ContactsViewController.a(this.a);
-        if (ContactsViewController.a(this.a) == null) {
-          break;
-        }
-        ContactsViewController.a(this.a).a(0);
-        this.a.a.sendEmptyMessageDelayed(5, 800L);
-        return false;
-      }
-      label134:
-      a();
-      QQToast.a(this.a.a(), 1, 2131434349, 0).b(ContactsViewController.a(this.a));
-      return false;
-    }
-    a();
-    return false;
+    return vdl.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wmv
  * JD-Core Version:    0.7.0.1
  */

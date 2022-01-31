@@ -1,35 +1,27 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.mobileqq.widget.FormMutiItem;
+import android.app.Activity;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
 class whi
-  implements Runnable
+  implements whl
 {
-  whi(whh paramwhh) {}
+  whi(whh paramwhh, PublishParam paramPublishParam, String paramString, int paramInt) {}
   
-  public void run()
+  public void a()
   {
-    String str2 = this.a.jdField_a_of_type_JavaLangStringBuilder.toString();
-    String str1 = str2;
-    if (str2.endsWith("、")) {
-      str1 = str2.substring(0, str2.length() - 1);
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView.a != null)
-    {
-      if (!str1.equals("条件："))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView.a.setSecondLineVisible(true);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView.a.setSecondLineText(str1);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView.a.setSecondLineVisible(false);
+    wxe.c("QQStoryTakeVideoHelper", "generate manifest file success.start publishing.");
+    whh.a(this.jdField_a_of_type_Whh, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+  }
+  
+  public void b()
+  {
+    wxe.e("QQStoryTakeVideoHelper", "generate manifest file error. let's exit.");
+    whh.a(this.jdField_a_of_type_Whh).finish();
+    whh.a(this.jdField_a_of_type_Whh).overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     whi
  * JD-Core Version:    0.7.0.1
  */

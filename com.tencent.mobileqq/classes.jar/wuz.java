@@ -1,28 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.PhoneFrame;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wuz
-  implements View.OnClickListener
+  extends QQUIEventReceiver<wub, uwk>
 {
-  public wuz(PhoneFrameActivity paramPhoneFrameActivity) {}
-  
-  public void onClick(View paramView)
+  public wuz(@NonNull wub paramwub)
   {
-    paramView = this.a.a.a();
-    if (paramView != null) {
-      paramView.a(false);
-    }
-    com.tencent.mobileqq.app.PhoneContactManagerImp.g = false;
-    this.a.setResult(1);
-    this.a.finish();
+    super(paramwub);
+  }
+  
+  public void a(@NonNull wub paramwub, @NonNull uwk paramuwk)
+  {
+    paramwub.i();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uwk.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wuz
  * JD-Core Version:    0.7.0.1
  */

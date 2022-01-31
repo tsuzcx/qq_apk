@@ -1,55 +1,39 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.pic.compress.Utils;
-import com.tencent.mobileqq.search.util.SearchUtils.GenerateGifWithTextCallback;
-import com.tencent.mobileqq.utils.Base64Util;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.MD5;
-import org.json.JSONObject;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adxr
-  implements SearchUtils.GenerateGifWithTextCallback
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adxr(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  public adxr(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
   
-  public void a(String paramString)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramString == null)
+    boolean bool = true;
+    if (((paramCompoundButton == this.a.a.a()) || (paramCompoundButton == this.a.b.a())) && (!bdin.d(this.a.getActivity())))
     {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-4}" });
-      return;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    for (;;)
-    {
-      try
+      this.a.a(2131694832, 0);
+      SettingUncommUsedContactsActivity localSettingUncommUsedContactsActivity = this.a;
+      if (!paramBoolean)
       {
-        byte[] arrayOfByte = FileUtils.a(paramString);
-        if (arrayOfByte == null) {
-          break;
-        }
-        localJSONObject.put("code", 0);
-        StringBuilder localStringBuilder = new StringBuilder("data:");
-        if (Utils.a(paramString))
-        {
-          str = "image/gif;";
-          localStringBuilder.append(str);
-          localStringBuilder.append("base64,");
-          localStringBuilder.append(Base64Util.encodeToString(arrayOfByte, 0));
-          localJSONObject.put("imgData", localStringBuilder);
-          localJSONObject.put("md5", MD5.toMD5(arrayOfByte));
-          localJSONObject.put("imagePath", paramString);
-          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-          return;
-        }
+        paramBoolean = bool;
+        SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, paramCompoundButton, paramBoolean);
       }
-      catch (Exception paramString)
+    }
+    do
+    {
+      return;
+      paramBoolean = false;
+      break;
+      if (paramCompoundButton == this.a.a.a())
       {
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
+        this.a.app.f(paramBoolean, true);
         return;
       }
-      String str = "image/jpg;";
-    }
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
+    } while (paramCompoundButton != this.a.b.a());
+    this.a.app.g(paramBoolean, true);
   }
 }
 

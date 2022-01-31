@@ -33,11 +33,11 @@ public class PubAccountAssistantEmptyItemBuilder
       paramDrawable = null;
       if (!"PubAccountAssistantEmptyItemBuilder".equals(paramDrawable))
       {
-        paramView = View.inflate(paramContext, 2130903429, null);
+        paramView = View.inflate(paramContext, 2130903431, null);
         paramView.setTag("PubAccountAssistantEmptyItemBuilder");
-        this.b = paramContext.getResources().getDimensionPixelSize(2131427449);
-        this.a = paramContext.getResources().getDimensionPixelSize(2131427450);
-        this.l = paramContext.getResources().getDimensionPixelSize(2131427451);
+        this.b = paramContext.getResources().getDimensionPixelSize(2131427452);
+        this.a = paramContext.getResources().getDimensionPixelSize(2131427453);
+        this.l = paramContext.getResources().getDimensionPixelSize(2131427454);
       }
       i = paramViewGroup.getMeasuredHeight() - this.a - this.b - 10;
       if (i <= this.l) {
@@ -51,7 +51,7 @@ public class PubAccountAssistantEmptyItemBuilder
       if ((paramObject instanceof Integer))
       {
         paramObject = (Integer)paramObject;
-        paramDrawable = (TextView)paramView.findViewById(2131232571);
+        paramDrawable = (TextView)paramView.findViewById(2131232574);
         if (paramObject.intValue() != 9) {
           break label200;
         }

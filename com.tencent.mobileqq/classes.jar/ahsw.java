@@ -1,26 +1,24 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment;
 
 public class ahsw
-  implements Runnable
+  extends View.AccessibilityDelegate
 {
-  public ahsw(BaseSearchFragment paramBaseSearchFragment, boolean paramBoolean) {}
+  public ahsw(ContactsBaseFragment paramContactsBaseFragment) {}
   
-  public void run()
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.c)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.a.a();
-      this.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.c = true;
+    int i = paramInt;
+    if (paramInt == 8) {
+      i = 32768;
     }
-    ThreadManager.getUIHandler().post(new ahsx(this));
+    super.sendAccessibilityEvent(paramView, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahsw
  * JD-Core Version:    0.7.0.1
  */

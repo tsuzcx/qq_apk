@@ -39,238 +39,250 @@ public class NativeGifFactory
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 5
+    //   1: astore 4
     //   3: aconst_null
-    //   4: astore_3
+    //   4: astore_2
     //   5: aconst_null
-    //   6: astore 6
-    //   8: aconst_null
-    //   9: astore 4
-    //   11: aconst_null
-    //   12: astore 7
-    //   14: aconst_null
-    //   15: astore_2
-    //   16: aconst_null
-    //   17: astore 8
-    //   19: new 94	java/io/ByteArrayOutputStream
-    //   22: dup
-    //   23: invokespecial 95	java/io/ByteArrayOutputStream:<init>	()V
-    //   26: astore_1
-    //   27: new 97	java/io/FileInputStream
-    //   30: dup
-    //   31: ldc 99
-    //   33: invokespecial 102	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   36: astore_2
-    //   37: sipush 4096
-    //   40: newarray byte
-    //   42: astore_3
-    //   43: aload_2
-    //   44: aload_3
-    //   45: iconst_0
-    //   46: sipush 4096
-    //   49: invokevirtual 106	java/io/FileInputStream:read	([BII)I
-    //   52: istore_0
-    //   53: iload_0
-    //   54: ifle +66 -> 120
-    //   57: aload_1
-    //   58: aload_3
-    //   59: iconst_0
-    //   60: iload_0
-    //   61: invokevirtual 110	java/io/ByteArrayOutputStream:write	([BII)V
-    //   64: goto -21 -> 43
+    //   6: astore 5
+    //   8: ldc 94
+    //   10: astore 6
+    //   12: new 96	java/io/ByteArrayOutputStream
+    //   15: dup
+    //   16: invokespecial 97	java/io/ByteArrayOutputStream:<init>	()V
+    //   19: astore_1
+    //   20: aload_1
+    //   21: astore_3
+    //   22: aload_2
+    //   23: astore 4
+    //   25: new 99	java/io/FileInputStream
+    //   28: dup
+    //   29: ldc 101
+    //   31: invokespecial 104	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   34: astore_2
+    //   35: sipush 4096
+    //   38: newarray byte
+    //   40: astore_3
+    //   41: aload_2
+    //   42: aload_3
+    //   43: iconst_0
+    //   44: sipush 4096
+    //   47: invokevirtual 108	java/io/FileInputStream:read	([BII)I
+    //   50: istore_0
+    //   51: iload_0
+    //   52: ifle +73 -> 125
+    //   55: aload_1
+    //   56: aload_3
+    //   57: iconst_0
+    //   58: iload_0
+    //   59: invokevirtual 112	java/io/ByteArrayOutputStream:write	([BII)V
+    //   62: goto -21 -> 41
+    //   65: astore_3
+    //   66: aload_2
     //   67: astore 5
-    //   69: aload_2
-    //   70: astore 4
-    //   72: aload_1
-    //   73: astore_2
-    //   74: aload 4
-    //   76: astore_3
+    //   69: aload_3
+    //   70: astore_2
+    //   71: aload_1
+    //   72: astore_3
+    //   73: aload 5
+    //   75: astore 4
     //   77: invokestatic 47	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   80: ifeq +19 -> 99
     //   83: aload_1
-    //   84: astore_2
-    //   85: aload 4
-    //   87: astore_3
-    //   88: getstatic 19	com/tencent/image/NativeGifFactory:TAG	Ljava/lang/String;
-    //   91: iconst_2
-    //   92: ldc 112
-    //   94: aload 5
-    //   96: invokestatic 116	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   84: astore_3
+    //   85: aload 5
+    //   87: astore 4
+    //   89: getstatic 19	com/tencent/image/NativeGifFactory:TAG	Ljava/lang/String;
+    //   92: iconst_2
+    //   93: ldc 114
+    //   95: aload_2
+    //   96: invokestatic 118	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   99: aload_1
     //   100: ifnull +7 -> 107
     //   103: aload_1
-    //   104: invokevirtual 119	java/io/ByteArrayOutputStream:close	()V
-    //   107: aload 4
-    //   109: ifnull +8 -> 117
-    //   112: aload 4
-    //   114: invokevirtual 120	java/io/FileInputStream:close	()V
-    //   117: ldc 122
-    //   119: areturn
-    //   120: aload_1
-    //   121: ldc 124
-    //   123: invokevirtual 127	java/io/ByteArrayOutputStream:toString	(Ljava/lang/String;)Ljava/lang/String;
-    //   126: astore_3
-    //   127: aload_1
-    //   128: ifnull +7 -> 135
-    //   131: aload_1
-    //   132: invokevirtual 119	java/io/ByteArrayOutputStream:close	()V
-    //   135: aload_2
-    //   136: ifnull +7 -> 143
-    //   139: aload_2
-    //   140: invokevirtual 120	java/io/FileInputStream:close	()V
-    //   143: aload_3
-    //   144: areturn
-    //   145: astore_1
-    //   146: invokestatic 47	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   149: ifeq +13 -> 162
-    //   152: getstatic 19	com/tencent/image/NativeGifFactory:TAG	Ljava/lang/String;
-    //   155: iconst_2
-    //   156: ldc 112
-    //   158: aload_1
-    //   159: invokestatic 116	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   162: aload_3
-    //   163: areturn
-    //   164: astore_1
-    //   165: invokestatic 47	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   168: ifeq -51 -> 117
-    //   171: getstatic 19	com/tencent/image/NativeGifFactory:TAG	Ljava/lang/String;
-    //   174: iconst_2
-    //   175: ldc 112
-    //   177: aload_1
-    //   178: invokestatic 116	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   181: ldc 122
-    //   183: areturn
-    //   184: astore_1
-    //   185: aload 5
-    //   187: astore_2
-    //   188: aload 7
-    //   190: astore_1
-    //   191: aload_1
-    //   192: ifnull +7 -> 199
-    //   195: aload_1
-    //   196: invokevirtual 119	java/io/ByteArrayOutputStream:close	()V
-    //   199: aload_2
-    //   200: ifnull -83 -> 117
-    //   203: aload_2
-    //   204: invokevirtual 120	java/io/FileInputStream:close	()V
-    //   207: ldc 122
-    //   209: areturn
-    //   210: astore_1
-    //   211: invokestatic 47	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   214: ifeq -97 -> 117
-    //   217: getstatic 19	com/tencent/image/NativeGifFactory:TAG	Ljava/lang/String;
-    //   220: iconst_2
-    //   221: ldc 112
-    //   223: aload_1
-    //   224: invokestatic 116	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   227: ldc 122
-    //   229: areturn
-    //   230: astore_1
-    //   231: aload_2
-    //   232: ifnull +7 -> 239
-    //   235: aload_2
-    //   236: invokevirtual 119	java/io/ByteArrayOutputStream:close	()V
-    //   239: aload_3
-    //   240: ifnull +7 -> 247
-    //   243: aload_3
-    //   244: invokevirtual 120	java/io/FileInputStream:close	()V
-    //   247: aload_1
-    //   248: athrow
-    //   249: astore_2
-    //   250: invokestatic 47	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   253: ifeq -6 -> 247
-    //   256: getstatic 19	com/tencent/image/NativeGifFactory:TAG	Ljava/lang/String;
-    //   259: iconst_2
-    //   260: ldc 112
-    //   262: aload_2
-    //   263: invokestatic 116	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   266: goto -19 -> 247
-    //   269: astore 4
-    //   271: aload_1
-    //   272: astore_2
-    //   273: aload 6
-    //   275: astore_3
-    //   276: aload 4
-    //   278: astore_1
-    //   279: goto -48 -> 231
-    //   282: astore 4
-    //   284: aload_2
-    //   285: astore_3
-    //   286: aload_1
-    //   287: astore_2
-    //   288: aload 4
-    //   290: astore_1
-    //   291: goto -60 -> 231
-    //   294: astore_2
-    //   295: aload 5
-    //   297: astore_2
-    //   298: goto -107 -> 191
-    //   301: astore_3
-    //   302: goto -111 -> 191
-    //   305: astore 5
-    //   307: aload 8
-    //   309: astore_1
-    //   310: goto -238 -> 72
-    //   313: astore 5
-    //   315: goto -243 -> 72
+    //   104: invokevirtual 121	java/io/ByteArrayOutputStream:close	()V
+    //   107: aload 6
+    //   109: astore_1
+    //   110: aload 5
+    //   112: ifnull +11 -> 123
+    //   115: aload 5
+    //   117: invokevirtual 122	java/io/FileInputStream:close	()V
+    //   120: aload 6
+    //   122: astore_1
+    //   123: aload_1
+    //   124: areturn
+    //   125: aload_1
+    //   126: ldc 124
+    //   128: invokevirtual 127	java/io/ByteArrayOutputStream:toString	(Ljava/lang/String;)Ljava/lang/String;
+    //   131: astore_3
+    //   132: aload_1
+    //   133: ifnull +7 -> 140
+    //   136: aload_1
+    //   137: invokevirtual 121	java/io/ByteArrayOutputStream:close	()V
+    //   140: aload_3
+    //   141: astore_1
+    //   142: aload_2
+    //   143: ifnull -20 -> 123
+    //   146: aload_2
+    //   147: invokevirtual 122	java/io/FileInputStream:close	()V
+    //   150: aload_3
+    //   151: areturn
+    //   152: astore_2
+    //   153: aload_3
+    //   154: astore_1
+    //   155: invokestatic 47	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   158: ifeq -35 -> 123
+    //   161: getstatic 19	com/tencent/image/NativeGifFactory:TAG	Ljava/lang/String;
+    //   164: iconst_2
+    //   165: ldc 114
+    //   167: aload_2
+    //   168: invokestatic 118	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   171: aload_3
+    //   172: areturn
+    //   173: astore_2
+    //   174: aload 6
+    //   176: astore_1
+    //   177: invokestatic 47	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   180: ifeq -57 -> 123
+    //   183: getstatic 19	com/tencent/image/NativeGifFactory:TAG	Ljava/lang/String;
+    //   186: iconst_2
+    //   187: ldc 114
+    //   189: aload_2
+    //   190: invokestatic 118	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   193: ldc 94
+    //   195: areturn
+    //   196: astore_1
+    //   197: aconst_null
+    //   198: astore_1
+    //   199: aconst_null
+    //   200: astore_2
+    //   201: ldc 94
+    //   203: astore_3
+    //   204: aload_1
+    //   205: ifnull +7 -> 212
+    //   208: aload_1
+    //   209: invokevirtual 121	java/io/ByteArrayOutputStream:close	()V
+    //   212: aload_3
+    //   213: astore_1
+    //   214: aload_2
+    //   215: ifnull -92 -> 123
+    //   218: aload_2
+    //   219: invokevirtual 122	java/io/FileInputStream:close	()V
+    //   222: ldc 94
+    //   224: areturn
+    //   225: astore_2
+    //   226: aload_3
+    //   227: astore_1
+    //   228: invokestatic 47	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   231: ifeq -108 -> 123
+    //   234: getstatic 19	com/tencent/image/NativeGifFactory:TAG	Ljava/lang/String;
+    //   237: iconst_2
+    //   238: ldc 114
+    //   240: aload_2
+    //   241: invokestatic 118	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   244: ldc 94
+    //   246: areturn
+    //   247: astore_2
+    //   248: aconst_null
+    //   249: astore_1
+    //   250: aload_1
+    //   251: ifnull +7 -> 258
+    //   254: aload_1
+    //   255: invokevirtual 121	java/io/ByteArrayOutputStream:close	()V
+    //   258: aload 4
+    //   260: ifnull +8 -> 268
+    //   263: aload 4
+    //   265: invokevirtual 122	java/io/FileInputStream:close	()V
+    //   268: aload_2
+    //   269: athrow
+    //   270: astore_1
+    //   271: invokestatic 47	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   274: ifeq -6 -> 268
+    //   277: getstatic 19	com/tencent/image/NativeGifFactory:TAG	Ljava/lang/String;
+    //   280: iconst_2
+    //   281: ldc 114
+    //   283: aload_1
+    //   284: invokestatic 118	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   287: goto -19 -> 268
+    //   290: astore_2
+    //   291: aload_3
+    //   292: astore_1
+    //   293: goto -43 -> 250
+    //   296: astore_3
+    //   297: aload_2
+    //   298: astore 4
+    //   300: aload_3
+    //   301: astore_2
+    //   302: goto -52 -> 250
+    //   305: astore_2
+    //   306: aconst_null
+    //   307: astore_2
+    //   308: goto -107 -> 201
+    //   311: astore_3
+    //   312: goto -111 -> 201
+    //   315: astore_2
+    //   316: aconst_null
+    //   317: astore_1
+    //   318: goto -247 -> 71
+    //   321: astore_2
+    //   322: goto -251 -> 71
     // Local variable table:
     //   start	length	slot	name	signature
-    //   52	9	0	i	int
-    //   26	106	1	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   145	14	1	localIOException1	IOException
-    //   164	14	1	localIOException2	IOException
-    //   184	1	1	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   190	6	1	localObject1	Object
-    //   210	14	1	localIOException3	IOException
-    //   230	42	1	localObject2	Object
-    //   278	32	1	localObject3	Object
-    //   15	221	2	localObject4	Object
-    //   249	14	2	localIOException4	IOException
-    //   272	16	2	localObject5	Object
-    //   294	1	2	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   297	1	2	localIOException5	IOException
-    //   4	282	3	localObject6	Object
-    //   301	1	3	localOutOfMemoryError3	java.lang.OutOfMemoryError
-    //   9	104	4	localObject7	Object
-    //   269	8	4	localObject8	Object
-    //   282	7	4	localObject9	Object
-    //   1	1	5	localObject10	Object
-    //   67	229	5	localIOException6	IOException
-    //   305	1	5	localIOException7	IOException
-    //   313	1	5	localIOException8	IOException
-    //   6	268	6	localObject11	Object
-    //   12	177	7	localObject12	Object
-    //   17	291	8	localObject13	Object
+    //   50	9	0	i	int
+    //   19	158	1	localObject1	Object
+    //   196	1	1	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   198	57	1	localObject2	Object
+    //   270	14	1	localIOException1	IOException
+    //   292	26	1	localObject3	Object
+    //   4	143	2	localObject4	Object
+    //   152	16	2	localIOException2	IOException
+    //   173	17	2	localIOException3	IOException
+    //   200	19	2	localObject5	Object
+    //   225	16	2	localIOException4	IOException
+    //   247	22	2	localObject6	Object
+    //   290	8	2	localObject7	Object
+    //   301	1	2	localObject8	Object
+    //   305	1	2	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   307	1	2	localObject9	Object
+    //   315	1	2	localIOException5	IOException
+    //   321	1	2	localIOException6	IOException
+    //   21	36	3	localObject10	Object
+    //   65	5	3	localIOException7	IOException
+    //   72	220	3	localObject11	Object
+    //   296	5	3	localObject12	Object
+    //   311	1	3	localOutOfMemoryError3	java.lang.OutOfMemoryError
+    //   1	298	4	localObject13	Object
+    //   6	110	5	localObject14	Object
+    //   10	165	6	str	String
     // Exception table:
     //   from	to	target	type
-    //   37	43	67	java/io/IOException
-    //   43	53	67	java/io/IOException
-    //   57	64	67	java/io/IOException
-    //   120	127	67	java/io/IOException
-    //   131	135	145	java/io/IOException
-    //   139	143	145	java/io/IOException
-    //   103	107	164	java/io/IOException
-    //   112	117	164	java/io/IOException
-    //   19	27	184	java/lang/OutOfMemoryError
-    //   195	199	210	java/io/IOException
-    //   203	207	210	java/io/IOException
-    //   19	27	230	finally
-    //   77	83	230	finally
-    //   88	99	230	finally
-    //   235	239	249	java/io/IOException
-    //   243	247	249	java/io/IOException
-    //   27	37	269	finally
-    //   37	43	282	finally
-    //   43	53	282	finally
-    //   57	64	282	finally
-    //   120	127	282	finally
-    //   27	37	294	java/lang/OutOfMemoryError
-    //   37	43	301	java/lang/OutOfMemoryError
-    //   43	53	301	java/lang/OutOfMemoryError
-    //   57	64	301	java/lang/OutOfMemoryError
-    //   120	127	301	java/lang/OutOfMemoryError
-    //   19	27	305	java/io/IOException
-    //   27	37	313	java/io/IOException
+    //   35	41	65	java/io/IOException
+    //   41	51	65	java/io/IOException
+    //   55	62	65	java/io/IOException
+    //   125	132	65	java/io/IOException
+    //   136	140	152	java/io/IOException
+    //   146	150	152	java/io/IOException
+    //   103	107	173	java/io/IOException
+    //   115	120	173	java/io/IOException
+    //   12	20	196	java/lang/OutOfMemoryError
+    //   208	212	225	java/io/IOException
+    //   218	222	225	java/io/IOException
+    //   12	20	247	finally
+    //   254	258	270	java/io/IOException
+    //   263	268	270	java/io/IOException
+    //   25	35	290	finally
+    //   77	83	290	finally
+    //   89	99	290	finally
+    //   35	41	296	finally
+    //   41	51	296	finally
+    //   55	62	296	finally
+    //   125	132	296	finally
+    //   25	35	305	java/lang/OutOfMemoryError
+    //   35	41	311	java/lang/OutOfMemoryError
+    //   41	51	311	java/lang/OutOfMemoryError
+    //   55	62	311	java/lang/OutOfMemoryError
+    //   125	132	311	java/lang/OutOfMemoryError
+    //   12	20	315	java/io/IOException
+    //   25	35	321	java/io/IOException
   }
   
   public static AbstractGifImage getNativeGifObject(File paramFile, boolean paramBoolean)
@@ -278,44 +290,40 @@ public class NativeGifFactory
     if (QLog.isColorLevel()) {
       QLog.d(TAG, 2, "getNativeGifObject(File file, boolean cacheFirstFrame)");
     }
-    Object localObject1 = null;
-    label77:
-    File localFile;
-    try
+    do
     {
-      if (isUseNewGif()) {
-        localObject2 = new NativeGifIndex8(paramFile, paramBoolean);
-      }
-    }
-    catch (IOException localIOException2)
-    {
-      do
+      try
       {
-        Object localObject2;
-        paramFile = localObject1;
-        localObject1 = localIOException2;
-        localFile = paramFile;
-      } while (!QLog.isColorLevel());
-      QLog.e(TAG, 2, "getNativeGifObject exception. msg:" + localObject1.getMessage());
-      return paramFile;
-    }
-    try
-    {
-      if (((NativeGifIndex8)localObject2).mFrameNumber != -1001) {
-        return localObject2;
+        if (isUseNewGif())
+        {
+          localNativeGifIndex8 = new NativeGifIndex8(paramFile, paramBoolean);
+          localObject = localNativeGifIndex8;
+        }
+      }
+      catch (IOException localIOException1)
+      {
+        paramFile = null;
+      }
+      try
+      {
+        if (((NativeGifIndex8)localNativeGifIndex8).mFrameNumber == -1001) {
+          localObject = new NativeGifImage(paramFile, paramBoolean);
+        }
+        return localObject;
+      }
+      catch (IOException localIOException2)
+      {
+        for (;;)
+        {
+          paramFile = localNativeGifIndex8;
+        }
       }
       paramFile = new NativeGifImage(paramFile, paramBoolean);
-      localObject2 = paramFile;
-      return localObject2;
-    }
-    catch (IOException localIOException1)
-    {
-      paramFile = localFile;
-      break label77;
-    }
-    paramFile = new NativeGifImage(paramFile, paramBoolean);
+      return paramFile;
+      Object localObject = paramFile;
+    } while (!QLog.isColorLevel());
+    QLog.e(TAG, 2, "getNativeGifObject exception. msg:" + localIOException1.getMessage());
     return paramFile;
-    return localFile;
   }
   
   public static AbstractGifImage getNativeGifObject(File paramFile, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, float paramFloat)
@@ -363,7 +371,6 @@ public class NativeGifFactory
   }
   
   public static String getSystemProperties(Context paramContext, String paramString)
-    throws IllegalArgumentException
   {
     try
     {
@@ -381,21 +388,65 @@ public class NativeGifFactory
   
   public static boolean isUseNewGif()
   {
+    boolean bool3 = false;
+    boolean bool1 = false;
     Object localObject = Build.MANUFACTURER;
     String str = Build.MODEL;
     boolean bool2;
-    if (((Build.VERSION.SDK_INT == 10) && (!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).contains("samsung"))) || ((!TextUtils.isEmpty(str)) && ((str.contains("m1")) || (str.contains("meizu_m1")) || (str.contains("N1")))) || (str.contains("HYF9300")) || ((!TextUtils.isEmpty((CharSequence)localObject)) && ((((String)localObject).contains("alps")) || (((String)localObject).contains("Nokia")) || (((String)localObject).toLowerCase().contains("asus"))))) {
-      bool2 = false;
+    if ((Build.VERSION.SDK_INT == 10) && (!TextUtils.isEmpty((CharSequence)localObject)))
+    {
+      bool2 = bool1;
+      if (((String)localObject).contains("samsung")) {}
     }
-    boolean bool1;
+    else if (!TextUtils.isEmpty(str))
+    {
+      bool2 = bool1;
+      if (!str.contains("m1"))
+      {
+        bool2 = bool1;
+        if (!str.contains("meizu_m1"))
+        {
+          bool2 = bool1;
+          if (str.contains("N1")) {}
+        }
+      }
+    }
+    else
+    {
+      bool2 = bool1;
+      if (!str.contains("HYF9300"))
+      {
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          break label140;
+        }
+        bool2 = bool1;
+        if (!((String)localObject).contains("alps"))
+        {
+          bool2 = bool1;
+          if (!((String)localObject).contains("Nokia"))
+          {
+            if (!((String)localObject).toLowerCase().contains("asus")) {
+              break label140;
+            }
+            bool2 = bool1;
+          }
+        }
+      }
+    }
+    label140:
     do
     {
-      return bool2;
-      if ((isX86) || (isYunOS)) {
-        return false;
-      }
+      do
+      {
+        do
+        {
+          return bool2;
+          bool2 = bool1;
+        } while (isX86);
+        bool2 = bool1;
+      } while (isYunOS);
       localObject = URLDrawable.mApplicationContext.getSharedPreferences("early_qq.android.native.gif", 4);
-      bool1 = false;
+      bool1 = bool3;
       if (localObject != null) {
         bool1 = ((SharedPreferences)localObject).getBoolean("use_new_gif_so", false);
       }

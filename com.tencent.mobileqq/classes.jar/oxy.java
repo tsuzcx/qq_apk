@@ -1,57 +1,44 @@
-import android.util.DisplayMetrics;
-import android.widget.ImageView;
-import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.utils.DisplayUtils;
+import android.util.Pair;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class oxy
-  implements URLDrawable.URLDrawableListener
+class oxy
 {
-  public oxy(TroopNewGuidePopWindow paramTroopNewGuidePopWindow, DisplayMetrics paramDisplayMetrics) {}
+  public long a;
+  public ArrayList<Pair<BaseArticleInfo, Float>> a;
+  public long b;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  private oxy(oxp paramoxp)
   {
-    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.c = false;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public ArrayList<Long> a()
   {
-    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.c = false;
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
-    float f1 = paramURLDrawable.getIntrinsicHeight();
-    float f2 = paramURLDrawable.getIntrinsicWidth();
-    paramURLDrawable = this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    int i = 0;
-    if (f2 != 0.0F) {
-      if (f1 <= DisplayUtils.a(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 150.0F)) {
-        break label109;
-      }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(Long.valueOf(((BaseArticleInfo)((Pair)localIterator.next()).first).mArticleID));
     }
-    label109:
-    for (i = (int)DisplayUtils.a(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 150.0F);; i = (int)((this.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels - DisplayUtils.a(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 60.0F)) * (f1 / f2)))
+    return localArrayList;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("screenInfo : \n");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      if (i > 0)
-      {
-        paramURLDrawable.height = i;
-        this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramURLDrawable);
-      }
-      return;
+      Pair localPair = (Pair)localIterator.next();
+      localStringBuilder.append("【").append(((BaseArticleInfo)localPair.first).mTitle).append("】");
     }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oxy
  * JD-Core Version:    0.7.0.1
  */

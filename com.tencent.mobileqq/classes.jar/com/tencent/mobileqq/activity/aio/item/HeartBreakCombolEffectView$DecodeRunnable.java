@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.activity.aio.item;
 
+import afpn;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory.Options;
-import com.tencent.mobileqq.utils.ImageUtil;
+import bdhj;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -12,36 +13,37 @@ public class HeartBreakCombolEffectView$DecodeRunnable
   implements Runnable
 {
   BitmapFactory.Options jdField_a_of_type_AndroidGraphicsBitmapFactory$Options = new BitmapFactory.Options();
-  ArrayList jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<Bitmap> jdField_a_of_type_JavaUtilArrayList;
   
-  public HeartBreakCombolEffectView$DecodeRunnable(HeartBreakCombolEffectView paramHeartBreakCombolEffectView, ArrayList paramArrayList)
+  public HeartBreakCombolEffectView$DecodeRunnable(ArrayList<Bitmap> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilArrayList = localObject;
   }
   
   public void run()
   {
     Object localObject3;
-    while ((this.jdField_a_of_type_JavaUtilArrayList.size() < 2) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView.b < this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView.jdField_a_of_type_JavaUtilArrayList.size()) && (HeartBreakCombolEffectView.jdField_a_of_type_Boolean))
+    while ((this.jdField_a_of_type_JavaUtilArrayList.size() < 2) && (this.this$0.b < this.this$0.jdField_a_of_type_JavaUtilArrayList.size()) && (HeartBreakCombolEffectView.jdField_a_of_type_Boolean))
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView.jdField_a_of_type_JavaUtilArrayList;
-      localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView;
+      localObject1 = this.this$0.jdField_a_of_type_JavaUtilArrayList;
+      localObject3 = this.this$0;
       int i = ((HeartBreakCombolEffectView)localObject3).b;
       ((HeartBreakCombolEffectView)localObject3).b = (i + 1);
-      localObject3 = (HeartBreakCombolEffectView.OneFrame)((ArrayList)localObject1).get(i);
+      localObject3 = (afpn)((ArrayList)localObject1).get(i);
       if (localObject3 != null)
       {
         this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inSampleSize = 1;
         this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inPreferredConfig = Bitmap.Config.ARGB_4444;
         this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inMutable = true;
-        if (HeartBreakCombolEffectView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView).size() <= 0) {
+        if (HeartBreakCombolEffectView.a(this.this$0).size() <= 0) {
           break label218;
         }
       }
     }
     Object localObject2;
     label218:
-    for (Object localObject1 = (Bitmap)HeartBreakCombolEffectView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView).remove(0);; localObject2 = null)
+    for (Object localObject1 = (Bitmap)HeartBreakCombolEffectView.a(this.this$0).remove(0);; localObject2 = null)
     {
       for (;;)
       {
@@ -50,7 +52,7 @@ public class HeartBreakCombolEffectView$DecodeRunnable
         }
         try
         {
-          localObject1 = ImageUtil.a(((HeartBreakCombolEffectView.OneFrame)localObject3).a, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
+          localObject1 = bdhj.a(((afpn)localObject3).a, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
           if (localObject1 == null) {
             break;
           }
@@ -68,7 +70,7 @@ public class HeartBreakCombolEffectView$DecodeRunnable
         }
       }
       if (!HeartBreakCombolEffectView.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView.c();
+        this.this$0.c();
       }
       return;
     }
@@ -76,7 +78,7 @@ public class HeartBreakCombolEffectView$DecodeRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView.DecodeRunnable
  * JD-Core Version:    0.7.0.1
  */

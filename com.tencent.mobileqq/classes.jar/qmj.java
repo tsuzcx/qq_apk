@@ -1,20 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.canvas.framework.GdtCanvasView;
-
 public class qmj
-  implements View.OnClickListener
+  implements Cloneable
 {
-  public qmj(GdtCanvasView paramGdtCanvasView) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void onClick(View paramView)
+  public qmj a()
   {
-    this.a.a();
+    try
+    {
+      qmj localqmj = (qmj)super.clone();
+      return localqmj;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qmj
  * JD-Core Version:    0.7.0.1
  */

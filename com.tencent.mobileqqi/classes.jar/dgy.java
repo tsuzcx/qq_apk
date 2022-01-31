@@ -1,18 +1,24 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
 
-class dgy
-  implements View.OnLongClickListener
+public class dgy
+  implements Runnable
 {
-  dgy(dgx paramdgx, long paramLong) {}
+  public dgy(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
   
-  public boolean onLongClick(View paramView)
+  public void run()
   {
-    DialogUtil.a(this.jdField_a_of_type_Dgx.a, 230).setTitle(this.jdField_a_of_type_Dgx.a.getString(2131562677)).setItems(2131689484, new dgz(this)).show();
-    return true;
+    if (RegisterVerifyCodeActivity.a(this.a) == 1)
+    {
+      RegisterVerifyCodeActivity.a(this.a).setText(2131562863);
+      RegisterVerifyCodeActivity.a(this.a).setEnabled(true);
+      RegisterVerifyCodeActivity.a(this.a).setClickable(true);
+      return;
+    }
+    RegisterVerifyCodeActivity.b(this.a);
+    RegisterVerifyCodeActivity.a(this.a).setText(this.a.getString(2131562863) + "(" + RegisterVerifyCodeActivity.a(this.a) + ")");
+    this.a.b.postDelayed(this, 1000L);
   }
 }
 

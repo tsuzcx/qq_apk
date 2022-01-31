@@ -33,8 +33,8 @@ public class NativeCodec
   public static String STRIDE;
   private static final String TAG = "NativeCodec";
   public static String TOP;
-  static AVCCaps gAVCDecoderCaps;
-  static AVCCaps gAVCEncoderCaps;
+  static NativeCodec.AVCCaps gAVCDecoderCaps;
+  static NativeCodec.AVCCaps gAVCEncoderCaps;
   public static boolean mUseAsyncAPI = false;
   int mBitRate;
   AndroidCodec mCodec;
@@ -122,18 +122,18 @@ public class NativeCodec
         this.mDebugDelayMap = new LongSparseArray();
         this.mDebugDelayMap2 = new LongSparseArray();
         if (!mUseAsyncAPI) {
-          break label533;
+          break label532;
         }
         paramString = "Async";
         this.mDebugTag = paramString;
         paramMap = new StringBuilder().append(this.mDebugTag);
         if (!this.misdecoder) {
-          break label540;
+          break label539;
         }
       }
     }
-    label533:
-    label540:
+    label532:
+    label539:
     for (paramString = "DEC";; paramString = "ENC")
     {
       for (;;)
@@ -260,7 +260,7 @@ public class NativeCodec
   private static void initAVCDecoderCaps()
   {
     MediaCodecInfo.CodecCapabilities localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)AndroidCodec.getDecoderInfos(AndroidCodec.AVC_CODEC_MIME).get(0), AndroidCodec.AVC_CODEC_MIME);
-    gAVCDecoderCaps = new AVCCaps();
+    gAVCDecoderCaps = new NativeCodec.AVCCaps();
     if (localCodecCapabilities == null) {
       return;
     }
@@ -473,7 +473,7 @@ public class NativeCodec
   private static void initAVCEncoderCaps()
   {
     MediaCodecInfo.CodecCapabilities localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)AndroidCodec.getDecoderInfos(AndroidCodec.AVC_CODEC_MIME).get(0), AndroidCodec.AVC_CODEC_MIME);
-    gAVCEncoderCaps = new AVCCaps();
+    gAVCEncoderCaps = new NativeCodec.AVCCaps();
     if (localCodecCapabilities == null) {}
     int i;
     do
@@ -928,65 +928,65 @@ public class NativeCodec
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 256	com/tencent/TMG/mediacodec/NativeCodec:mCodec	Lcom/tencent/TMG/mediacodec/AndroidCodec;
+    //   1: getfield 253	com/tencent/TMG/mediacodec/NativeCodec:mCodec	Lcom/tencent/TMG/mediacodec/AndroidCodec;
     //   4: ifnull +76 -> 80
     //   7: aload_0
-    //   8: getfield 130	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
+    //   8: getfield 127	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   11: astore_1
     //   12: aload_1
     //   13: monitorenter
     //   14: aload_0
-    //   15: getfield 137	com/tencent/TMG/mediacodec/NativeCodec:mCodersExit	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   15: getfield 134	com/tencent/TMG/mediacodec/NativeCodec:mCodersExit	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   18: iconst_1
-    //   19: invokevirtual 412	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   19: invokevirtual 411	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   22: aload_0
-    //   23: getfield 130	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
-    //   26: invokeinterface 415 1 0
+    //   23: getfield 127	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
+    //   26: invokeinterface 414 1 0
     //   31: aload_0
-    //   32: getfield 145	com/tencent/TMG/mediacodec/NativeCodec:mDebugIndexMap	Landroid/support/v4/util/LongSparseArray;
-    //   35: invokevirtual 416	android/support/v4/util/LongSparseArray:clear	()V
+    //   32: getfield 142	com/tencent/TMG/mediacodec/NativeCodec:mDebugIndexMap	Landroid/support/v4/util/LongSparseArray;
+    //   35: invokevirtual 415	android/support/v4/util/LongSparseArray:clear	()V
     //   38: aload_0
-    //   39: getfield 139	com/tencent/TMG/mediacodec/NativeCodec:mDebugDelay	Z
+    //   39: getfield 136	com/tencent/TMG/mediacodec/NativeCodec:mDebugDelay	Z
     //   42: ifeq +17 -> 59
     //   45: aload_0
-    //   46: getfield 141	com/tencent/TMG/mediacodec/NativeCodec:mDebugDelayMap	Landroid/support/v4/util/LongSparseArray;
-    //   49: invokevirtual 416	android/support/v4/util/LongSparseArray:clear	()V
+    //   46: getfield 138	com/tencent/TMG/mediacodec/NativeCodec:mDebugDelayMap	Landroid/support/v4/util/LongSparseArray;
+    //   49: invokevirtual 415	android/support/v4/util/LongSparseArray:clear	()V
     //   52: aload_0
-    //   53: getfield 143	com/tencent/TMG/mediacodec/NativeCodec:mDebugDelayMap2	Landroid/support/v4/util/LongSparseArray;
-    //   56: invokevirtual 416	android/support/v4/util/LongSparseArray:clear	()V
+    //   53: getfield 140	com/tencent/TMG/mediacodec/NativeCodec:mDebugDelayMap2	Landroid/support/v4/util/LongSparseArray;
+    //   56: invokevirtual 415	android/support/v4/util/LongSparseArray:clear	()V
     //   59: aload_0
-    //   60: getfield 256	com/tencent/TMG/mediacodec/NativeCodec:mCodec	Lcom/tencent/TMG/mediacodec/AndroidCodec;
-    //   63: invokevirtual 419	com/tencent/TMG/mediacodec/AndroidCodec:stop	()V
+    //   60: getfield 253	com/tencent/TMG/mediacodec/NativeCodec:mCodec	Lcom/tencent/TMG/mediacodec/AndroidCodec;
+    //   63: invokevirtual 418	com/tencent/TMG/mediacodec/AndroidCodec:stop	()V
     //   66: aload_0
-    //   67: getfield 256	com/tencent/TMG/mediacodec/NativeCodec:mCodec	Lcom/tencent/TMG/mediacodec/AndroidCodec;
-    //   70: invokevirtual 422	com/tencent/TMG/mediacodec/AndroidCodec:release	()V
+    //   67: getfield 253	com/tencent/TMG/mediacodec/NativeCodec:mCodec	Lcom/tencent/TMG/mediacodec/AndroidCodec;
+    //   70: invokevirtual 421	com/tencent/TMG/mediacodec/AndroidCodec:release	()V
     //   73: aload_0
     //   74: aconst_null
-    //   75: putfield 256	com/tencent/TMG/mediacodec/NativeCodec:mCodec	Lcom/tencent/TMG/mediacodec/AndroidCodec;
+    //   75: putfield 253	com/tencent/TMG/mediacodec/NativeCodec:mCodec	Lcom/tencent/TMG/mediacodec/AndroidCodec;
     //   78: aload_1
     //   79: monitorexit
     //   80: aload_0
-    //   81: getfield 160	com/tencent/TMG/mediacodec/NativeCodec:misdecoder	Z
+    //   81: getfield 157	com/tencent/TMG/mediacodec/NativeCodec:misdecoder	Z
     //   84: ifeq +75 -> 159
     //   87: aload_0
-    //   88: invokespecial 240	com/tencent/TMG/mediacodec/NativeCodec:createDecCodec	()V
+    //   88: invokespecial 237	com/tencent/TMG/mediacodec/NativeCodec:createDecCodec	()V
     //   91: aload_0
     //   92: lconst_0
-    //   93: putfield 107	com/tencent/TMG/mediacodec/NativeCodec:mTimeStamp	J
+    //   93: putfield 104	com/tencent/TMG/mediacodec/NativeCodec:mTimeStamp	J
     //   96: aload_0
     //   97: lconst_0
-    //   98: putfield 109	com/tencent/TMG/mediacodec/NativeCodec:mLastEncFrameTime	J
+    //   98: putfield 106	com/tencent/TMG/mediacodec/NativeCodec:mLastEncFrameTime	J
     //   101: aload_0
-    //   102: getfield 256	com/tencent/TMG/mediacodec/NativeCodec:mCodec	Lcom/tencent/TMG/mediacodec/AndroidCodec;
+    //   102: getfield 253	com/tencent/TMG/mediacodec/NativeCodec:mCodec	Lcom/tencent/TMG/mediacodec/AndroidCodec;
     //   105: ifnull +11 -> 116
     //   108: aload_0
-    //   109: getfield 256	com/tencent/TMG/mediacodec/NativeCodec:mCodec	Lcom/tencent/TMG/mediacodec/AndroidCodec;
-    //   112: invokevirtual 382	com/tencent/TMG/mediacodec/AndroidCodec:start	()Z
+    //   109: getfield 253	com/tencent/TMG/mediacodec/NativeCodec:mCodec	Lcom/tencent/TMG/mediacodec/AndroidCodec;
+    //   112: invokevirtual 381	com/tencent/TMG/mediacodec/AndroidCodec:start	()Z
     //   115: pop
     //   116: aload_0
-    //   117: getfield 137	com/tencent/TMG/mediacodec/NativeCodec:mCodersExit	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   117: getfield 134	com/tencent/TMG/mediacodec/NativeCodec:mCodersExit	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   120: iconst_0
-    //   121: invokevirtual 412	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   121: invokevirtual 411	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   124: return
     //   125: astore_2
     //   126: aload_1
@@ -995,31 +995,31 @@ public class NativeCodec
     //   129: athrow
     //   130: astore_1
     //   131: aload_1
-    //   132: invokevirtual 250	java/lang/Exception:printStackTrace	()V
-    //   135: invokestatic 215	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   132: invokevirtual 247	java/lang/Exception:printStackTrace	()V
+    //   135: invokestatic 212	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   138: ifeq +13 -> 151
-    //   141: ldc 23
+    //   141: ldc 20
     //   143: iconst_0
-    //   144: ldc_w 583
+    //   144: ldc_w 582
     //   147: aload_1
-    //   148: invokestatic 254	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
+    //   148: invokestatic 251	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
     //   151: aload_0
     //   152: aconst_null
-    //   153: putfield 256	com/tencent/TMG/mediacodec/NativeCodec:mCodec	Lcom/tencent/TMG/mediacodec/AndroidCodec;
+    //   153: putfield 253	com/tencent/TMG/mediacodec/NativeCodec:mCodec	Lcom/tencent/TMG/mediacodec/AndroidCodec;
     //   156: goto -76 -> 80
     //   159: aload_0
-    //   160: invokevirtual 263	com/tencent/TMG/mediacodec/NativeCodec:createEncCodec	()V
+    //   160: invokevirtual 260	com/tencent/TMG/mediacodec/NativeCodec:createEncCodec	()V
     //   163: goto -72 -> 91
     //   166: astore_1
     //   167: aload_1
-    //   168: invokevirtual 250	java/lang/Exception:printStackTrace	()V
-    //   171: invokestatic 215	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   168: invokevirtual 247	java/lang/Exception:printStackTrace	()V
+    //   171: invokestatic 212	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   174: ifeq -50 -> 124
-    //   177: ldc 23
+    //   177: ldc 20
     //   179: iconst_0
-    //   180: ldc_w 583
+    //   180: ldc_w 582
     //   183: aload_1
-    //   184: invokestatic 254	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
+    //   184: invokestatic 251	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
     //   187: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1119,7 +1119,7 @@ public class NativeCodec
     }
   }
   
-  private static void setLevel(MediaCodecInfo.CodecProfileLevel paramCodecProfileLevel, AVCCaps paramAVCCaps)
+  private static void setLevel(MediaCodecInfo.CodecProfileLevel paramCodecProfileLevel, NativeCodec.AVCCaps paramAVCCaps)
   {
     if (paramCodecProfileLevel.level == 1) {
       if ((paramAVCCaps.width < 176) || (paramAVCCaps.height < 144))
@@ -1368,7 +1368,7 @@ public class NativeCodec
               QLog.d("NativeCodec", 0, "KEY_I_FRAME_INTERVAL = " + j + ", mFrameRate = " + this.mFrameRate);
             }
             if (Build.VERSION.SDK_INT >= 19) {
-              break label288;
+              break label287;
             }
             ((MediaFormat)localObject).setInteger("i-frame-interval", j);
           }
@@ -1377,7 +1377,7 @@ public class NativeCodec
             localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)localList.get(i), this.mMime);
             j = 16;
             if (localCodecCapabilities != null) {
-              break label330;
+              break label329;
             }
             this.mCodec = null;
             return;
@@ -1391,7 +1391,7 @@ public class NativeCodec
             }
             this.mColorFormat = 19;
             break;
-            label288:
+            label287:
             ((MediaFormat)localObject).setInteger("i-frame-interval", j);
           }
           m = 0;
@@ -1409,7 +1409,7 @@ public class NativeCodec
     }
     for (;;)
     {
-      label330:
+      label329:
       int m;
       if (m < localCodecCapabilities.profileLevels.length) {}
       switch (localCodecCapabilities.profileLevels[m].profile)
@@ -1464,59 +1464,59 @@ public class NativeCodec
     //   3: iconst_0
     //   4: istore 4
     //   6: aload_0
-    //   7: getfield 256	com/tencent/TMG/mediacodec/NativeCodec:mCodec	Lcom/tencent/TMG/mediacodec/AndroidCodec;
+    //   7: getfield 253	com/tencent/TMG/mediacodec/NativeCodec:mCodec	Lcom/tencent/TMG/mediacodec/AndroidCodec;
     //   10: iload_2
-    //   11: invokevirtual 656	com/tencent/TMG/mediacodec/AndroidCodec:getInputBuffer	(I)Ljava/nio/ByteBuffer;
+    //   11: invokevirtual 655	com/tencent/TMG/mediacodec/AndroidCodec:getInputBuffer	(I)Ljava/nio/ByteBuffer;
     //   14: astore 6
     //   16: aload 6
     //   18: ifnonnull +36 -> 54
-    //   21: invokestatic 215	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   21: invokestatic 212	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   24: ifeq +29 -> 53
-    //   27: ldc 23
+    //   27: ldc 20
     //   29: iconst_0
-    //   30: new 217	java/lang/StringBuilder
+    //   30: new 214	java/lang/StringBuilder
     //   33: dup
-    //   34: invokespecial 218	java/lang/StringBuilder:<init>	()V
-    //   37: ldc_w 658
-    //   40: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: invokespecial 215	java/lang/StringBuilder:<init>	()V
+    //   37: ldc_w 657
+    //   40: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   43: iload_2
-    //   44: invokevirtual 227	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   47: invokevirtual 233	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: invokestatic 366	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   44: invokevirtual 224	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   47: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   50: invokestatic 365	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   53: return
     //   54: iload 5
     //   56: istore_3
     //   57: aload_0
-    //   58: getfield 130	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
+    //   58: getfield 127	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   61: astore_1
     //   62: iload 5
     //   64: istore_3
     //   65: aload_1
     //   66: monitorenter
     //   67: aload_0
-    //   68: getfield 137	com/tencent/TMG/mediacodec/NativeCodec:mCodersExit	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   71: invokevirtual 559	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   68: getfield 134	com/tencent/TMG/mediacodec/NativeCodec:mCodersExit	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   71: invokevirtual 558	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   74: ifeq +81 -> 155
-    //   77: invokestatic 215	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   77: invokestatic 212	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   80: ifeq +12 -> 92
-    //   83: ldc 23
+    //   83: ldc 20
     //   85: iconst_0
-    //   86: ldc_w 660
-    //   89: invokestatic 366	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   86: ldc_w 659
+    //   89: invokestatic 365	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   92: aload_1
     //   93: monitorexit
     //   94: aload_0
-    //   95: getfield 130	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
+    //   95: getfield 127	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   98: astore_1
     //   99: aload_1
     //   100: monitorenter
     //   101: aload_0
-    //   102: getfield 130	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
+    //   102: getfield 127	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   105: iconst_0
-    //   106: invokeinterface 280 2 0
-    //   111: checkcast 565	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData
+    //   106: invokeinterface 277 2 0
+    //   111: checkcast 564	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData
     //   114: iconst_0
-    //   115: putfield 571	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData:processing	Z
+    //   115: putfield 570	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData:processing	Z
     //   118: aload_1
     //   119: monitorexit
     //   120: return
@@ -1527,126 +1527,126 @@ public class NativeCodec
     //   127: athrow
     //   128: astore 6
     //   130: aload 6
-    //   132: invokevirtual 250	java/lang/Exception:printStackTrace	()V
-    //   135: invokestatic 215	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   132: invokevirtual 247	java/lang/Exception:printStackTrace	()V
+    //   135: invokestatic 212	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   138: ifeq -20 -> 118
-    //   141: ldc 23
+    //   141: ldc 20
     //   143: iconst_0
-    //   144: ldc_w 662
+    //   144: ldc_w 661
     //   147: aload 6
-    //   149: invokestatic 254	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
+    //   149: invokestatic 251	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
     //   152: goto -34 -> 118
     //   155: aload_0
-    //   156: getfield 130	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
-    //   159: new 565	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData
+    //   156: getfield 127	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
+    //   159: new 564	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData
     //   162: dup
     //   163: aload 6
     //   165: iload_2
-    //   166: invokespecial 665	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData:<init>	(Ljava/nio/ByteBuffer;I)V
-    //   169: invokeinterface 668 2 0
+    //   166: invokespecial 664	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData:<init>	(Ljava/nio/ByteBuffer;I)V
+    //   169: invokeinterface 667 2 0
     //   174: pop
     //   175: aload_0
-    //   176: getfield 130	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
+    //   176: getfield 127	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   179: iconst_0
-    //   180: invokeinterface 280 2 0
-    //   185: checkcast 565	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData
+    //   180: invokeinterface 277 2 0
+    //   185: checkcast 564	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData
     //   188: iconst_1
-    //   189: putfield 571	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData:processing	Z
+    //   189: putfield 570	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData:processing	Z
     //   192: aload_1
     //   193: monitorexit
     //   194: iload 5
     //   196: istore_3
     //   197: aload_0
-    //   198: getfield 160	com/tencent/TMG/mediacodec/NativeCodec:misdecoder	Z
+    //   198: getfield 157	com/tencent/TMG/mediacodec/NativeCodec:misdecoder	Z
     //   201: ifeq +248 -> 449
     //   204: iload 5
     //   206: istore_3
     //   207: aload_0
     //   208: aload_0
-    //   209: getfield 130	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
+    //   209: getfield 127	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   212: iconst_0
-    //   213: invokeinterface 280 2 0
-    //   218: checkcast 565	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData
-    //   221: getfield 566	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData:buffer	Ljava/nio/ByteBuffer;
+    //   213: invokeinterface 277 2 0
+    //   218: checkcast 564	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData
+    //   221: getfield 565	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData:buffer	Ljava/nio/ByteBuffer;
     //   224: iconst_1
-    //   225: invokevirtual 452	com/tencent/TMG/mediacodec/NativeCodec:writeInputData	(Ljava/nio/ByteBuffer;Z)I
+    //   225: invokevirtual 451	com/tencent/TMG/mediacodec/NativeCodec:writeInputData	(Ljava/nio/ByteBuffer;Z)I
     //   228: istore_2
     //   229: iload_2
     //   230: ifle +114 -> 344
     //   233: iload_2
     //   234: istore_3
-    //   235: invokestatic 215	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   235: invokestatic 212	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   238: ifeq +31 -> 269
     //   241: iload_2
     //   242: istore_3
-    //   243: ldc 23
+    //   243: ldc 20
     //   245: iconst_0
-    //   246: new 217	java/lang/StringBuilder
+    //   246: new 214	java/lang/StringBuilder
     //   249: dup
-    //   250: invokespecial 218	java/lang/StringBuilder:<init>	()V
-    //   253: ldc_w 670
-    //   256: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   250: invokespecial 215	java/lang/StringBuilder:<init>	()V
+    //   253: ldc_w 669
+    //   256: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   259: iload_2
-    //   260: invokevirtual 227	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   263: invokevirtual 233	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   266: invokestatic 237	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   260: invokevirtual 224	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   263: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   266: invokestatic 234	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   269: iload_2
     //   270: istore_3
     //   271: aload_0
     //   272: aload_0
-    //   273: getfield 109	com/tencent/TMG/mediacodec/NativeCodec:mLastEncFrameTime	J
+    //   273: getfield 106	com/tencent/TMG/mediacodec/NativeCodec:mLastEncFrameTime	J
     //   276: aload_0
-    //   277: getfield 125	com/tencent/TMG/mediacodec/NativeCodec:mFrameInverval	I
+    //   277: getfield 122	com/tencent/TMG/mediacodec/NativeCodec:mFrameInverval	I
     //   280: i2l
     //   281: ladd
-    //   282: putfield 109	com/tencent/TMG/mediacodec/NativeCodec:mLastEncFrameTime	J
+    //   282: putfield 106	com/tencent/TMG/mediacodec/NativeCodec:mLastEncFrameTime	J
     //   285: iload_2
     //   286: istore_3
     //   287: aload_0
-    //   288: getfield 139	com/tencent/TMG/mediacodec/NativeCodec:mDebugDelay	Z
+    //   288: getfield 136	com/tencent/TMG/mediacodec/NativeCodec:mDebugDelay	Z
     //   291: ifeq +22 -> 313
     //   294: iload_2
     //   295: istore_3
     //   296: aload_0
-    //   297: getfield 141	com/tencent/TMG/mediacodec/NativeCodec:mDebugDelayMap	Landroid/support/v4/util/LongSparseArray;
+    //   297: getfield 138	com/tencent/TMG/mediacodec/NativeCodec:mDebugDelayMap	Landroid/support/v4/util/LongSparseArray;
     //   300: aload_0
-    //   301: getfield 109	com/tencent/TMG/mediacodec/NativeCodec:mLastEncFrameTime	J
-    //   304: invokestatic 393	java/lang/System:currentTimeMillis	()J
-    //   307: invokestatic 399	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   310: invokevirtual 403	android/support/v4/util/LongSparseArray:put	(JLjava/lang/Object;)V
+    //   301: getfield 106	com/tencent/TMG/mediacodec/NativeCodec:mLastEncFrameTime	J
+    //   304: invokestatic 392	java/lang/System:currentTimeMillis	()J
+    //   307: invokestatic 398	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   310: invokevirtual 402	android/support/v4/util/LongSparseArray:put	(JLjava/lang/Object;)V
     //   313: iload_2
     //   314: istore_3
     //   315: aload_0
-    //   316: getfield 256	com/tencent/TMG/mediacodec/NativeCodec:mCodec	Lcom/tencent/TMG/mediacodec/AndroidCodec;
+    //   316: getfield 253	com/tencent/TMG/mediacodec/NativeCodec:mCodec	Lcom/tencent/TMG/mediacodec/AndroidCodec;
     //   319: aload_0
-    //   320: getfield 130	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
+    //   320: getfield 127	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   323: iconst_0
-    //   324: invokeinterface 280 2 0
-    //   329: checkcast 565	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData
-    //   332: getfield 577	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData:index	I
+    //   324: invokeinterface 277 2 0
+    //   329: checkcast 564	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData
+    //   332: getfield 576	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData:index	I
     //   335: iload_2
     //   336: aload_0
-    //   337: getfield 109	com/tencent/TMG/mediacodec/NativeCodec:mLastEncFrameTime	J
+    //   337: getfield 106	com/tencent/TMG/mediacodec/NativeCodec:mLastEncFrameTime	J
     //   340: iconst_0
-    //   341: invokevirtual 476	com/tencent/TMG/mediacodec/AndroidCodec:queueInputBuffer	(IIJI)V
+    //   341: invokevirtual 475	com/tencent/TMG/mediacodec/AndroidCodec:queueInputBuffer	(IIJI)V
     //   344: aload_0
-    //   345: getfield 130	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
+    //   345: getfield 127	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   348: astore_1
     //   349: aload_1
     //   350: monitorenter
     //   351: aload_0
-    //   352: getfield 130	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
+    //   352: getfield 127	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   355: iconst_0
-    //   356: invokeinterface 280 2 0
-    //   361: checkcast 565	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData
+    //   356: invokeinterface 277 2 0
+    //   361: checkcast 564	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData
     //   364: iconst_0
-    //   365: putfield 571	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData:processing	Z
+    //   365: putfield 570	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData:processing	Z
     //   368: iload_2
     //   369: ifle +14 -> 383
     //   372: aload_0
-    //   373: getfield 130	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
+    //   373: getfield 127	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   376: iconst_0
-    //   377: invokeinterface 576 2 0
+    //   377: invokeinterface 575 2 0
     //   382: pop
     //   383: aload_1
     //   384: monitorexit
@@ -1665,23 +1665,23 @@ public class NativeCodec
     //   402: athrow
     //   403: astore 6
     //   405: aload_0
-    //   406: getfield 130	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
+    //   406: getfield 127	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   409: astore_1
     //   410: aload_1
     //   411: monitorenter
     //   412: aload_0
-    //   413: getfield 130	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
+    //   413: getfield 127	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   416: iconst_0
-    //   417: invokeinterface 280 2 0
-    //   422: checkcast 565	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData
+    //   417: invokeinterface 277 2 0
+    //   422: checkcast 564	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData
     //   425: iconst_0
-    //   426: putfield 571	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData:processing	Z
+    //   426: putfield 570	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData:processing	Z
     //   429: iload_3
     //   430: ifle +14 -> 444
     //   433: aload_0
-    //   434: getfield 130	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
+    //   434: getfield 127	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   437: iconst_0
-    //   438: invokeinterface 576 2 0
+    //   438: invokeinterface 575 2 0
     //   443: pop
     //   444: aload_1
     //   445: monitorexit
@@ -1689,47 +1689,47 @@ public class NativeCodec
     //   448: athrow
     //   449: iload 5
     //   451: istore_3
-    //   452: invokestatic 215	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   452: invokestatic 212	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   455: ifeq +15 -> 470
     //   458: iload 5
     //   460: istore_3
-    //   461: ldc 23
+    //   461: ldc 20
     //   463: iconst_0
-    //   464: ldc_w 672
-    //   467: invokestatic 237	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   464: ldc_w 671
+    //   467: invokestatic 234	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   470: iload 5
     //   472: istore_3
     //   473: aload_0
     //   474: aload_0
-    //   475: getfield 130	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
+    //   475: getfield 127	com/tencent/TMG/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   478: iconst_0
-    //   479: invokeinterface 280 2 0
-    //   484: checkcast 565	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData
-    //   487: getfield 566	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData:buffer	Ljava/nio/ByteBuffer;
+    //   479: invokeinterface 277 2 0
+    //   484: checkcast 564	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData
+    //   487: getfield 565	com/tencent/TMG/mediacodec/AndroidCodec$InputBufferData:buffer	Ljava/nio/ByteBuffer;
     //   490: aload_0
-    //   491: getfield 465	com/tencent/TMG/mediacodec/NativeCodec:mColorFormat	I
+    //   491: getfield 464	com/tencent/TMG/mediacodec/NativeCodec:mColorFormat	I
     //   494: iconst_1
-    //   495: invokevirtual 469	com/tencent/TMG/mediacodec/NativeCodec:writeInputData2	(Ljava/nio/ByteBuffer;IZ)I
+    //   495: invokevirtual 468	com/tencent/TMG/mediacodec/NativeCodec:writeInputData2	(Ljava/nio/ByteBuffer;IZ)I
     //   498: istore_2
     //   499: goto -270 -> 229
     //   502: astore_1
     //   503: iload 5
     //   505: istore_3
     //   506: aload_1
-    //   507: invokevirtual 250	java/lang/Exception:printStackTrace	()V
+    //   507: invokevirtual 247	java/lang/Exception:printStackTrace	()V
     //   510: iload 4
     //   512: istore_2
     //   513: iload 5
     //   515: istore_3
-    //   516: invokestatic 215	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   516: invokestatic 212	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   519: ifeq -290 -> 229
     //   522: iload 5
     //   524: istore_3
-    //   525: ldc 23
+    //   525: ldc 20
     //   527: iconst_0
-    //   528: ldc_w 674
+    //   528: ldc_w 673
     //   531: aload_1
-    //   532: invokestatic 254	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
+    //   532: invokestatic 251	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
     //   535: iload 4
     //   537: istore_2
     //   538: goto -309 -> 229
@@ -1737,40 +1737,40 @@ public class NativeCodec
     //   542: iload_2
     //   543: istore_3
     //   544: aload_1
-    //   545: invokevirtual 250	java/lang/Exception:printStackTrace	()V
+    //   545: invokevirtual 247	java/lang/Exception:printStackTrace	()V
     //   548: iload_2
     //   549: istore_3
-    //   550: invokestatic 215	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   550: invokestatic 212	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   553: ifeq -209 -> 344
     //   556: iload_2
     //   557: istore_3
-    //   558: ldc 23
+    //   558: ldc 20
     //   560: iconst_0
-    //   561: ldc_w 676
+    //   561: ldc_w 675
     //   564: aload_1
-    //   565: invokestatic 254	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
+    //   565: invokestatic 251	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
     //   568: goto -224 -> 344
     //   571: astore 6
     //   573: aload 6
-    //   575: invokevirtual 250	java/lang/Exception:printStackTrace	()V
-    //   578: invokestatic 215	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   575: invokevirtual 247	java/lang/Exception:printStackTrace	()V
+    //   578: invokestatic 212	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   581: ifeq -198 -> 383
-    //   584: ldc 23
+    //   584: ldc 20
     //   586: iconst_0
-    //   587: ldc_w 662
+    //   587: ldc_w 661
     //   590: aload 6
-    //   592: invokestatic 254	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
+    //   592: invokestatic 251	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
     //   595: goto -212 -> 383
     //   598: astore 7
     //   600: aload 7
-    //   602: invokevirtual 250	java/lang/Exception:printStackTrace	()V
-    //   605: invokestatic 215	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   602: invokevirtual 247	java/lang/Exception:printStackTrace	()V
+    //   605: invokestatic 212	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   608: ifeq -164 -> 444
-    //   611: ldc 23
+    //   611: ldc 20
     //   613: iconst_0
-    //   614: ldc_w 662
+    //   614: ldc_w 661
     //   617: aload 7
-    //   619: invokestatic 254	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
+    //   619: invokestatic 251	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
     //   622: goto -178 -> 444
     //   625: astore 6
     //   627: aload_1
@@ -1933,17 +1933,10 @@ public class NativeCodec
   public native int writeInputData(ByteBuffer paramByteBuffer, boolean paramBoolean);
   
   public native int writeInputData2(ByteBuffer paramByteBuffer, int paramInt, boolean paramBoolean);
-  
-  static class AVCCaps
-  {
-    public int height = 0;
-    public int profile = 3;
-    public int width = 0;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.TMG.mediacodec.NativeCodec
  * JD-Core Version:    0.7.0.1
  */

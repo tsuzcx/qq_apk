@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipFileUploadCallBack;
-import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipReqInfo;
-import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.gdtad.aditem.GdtPreLoader.1;
+import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager.IPrePullListener;
+import org.json.JSONObject;
 
 public class aanb
+  implements MiniAppPrePullManager.IPrePullListener
 {
-  public ARRelationShipFileUpload.ARRelationShipFileUploadCallBack a;
-  public ARRelationShipFileUpload.ARRelationShipReqInfo a;
-  public Transaction a;
+  public aanb(GdtPreLoader.1 param1) {}
   
-  public aanb()
+  public void onPrePullCallback(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = null;
-    this.jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload$ARRelationShipFileUploadCallBack = null;
+    aase.b("GdtPreLoader", String.format("MiniAppPrePullManager.getInstance().prePullAppinfoByLink end:%b", new Object[] { Boolean.valueOf(paramBoolean) }));
   }
 }
 

@@ -1,48 +1,53 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader;
-import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader.CommentListener;
-import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader.GetFeedCommentEvent;
-import com.tencent.biz.qqstory.storyHome.model.FeedCommentSync;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import java.util.List;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-class nyk
-  implements CommentListPageLoader.CommentListener
+public class nyk
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  nyk(nyj paramnyj, JobContext paramJobContext, FeedCommentSync paramFeedCommentSync) {}
+  public nyk(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void a(CommentListPageLoader.GetFeedCommentEvent paramGetFeedCommentEvent)
+  public void onGlobalLayout()
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    Rect localRect = new Rect();
+    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.getWindowVisibleDisplayFrame(localRect);
+    int j = this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.getRootView().getHeight();
+    int i = j - localRect.height();
+    if (i > 100) {}
+    for (boolean bool = true;; bool = false)
     {
-      SLog.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment is cancel, feedId:%d", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync });
-      return;
-    }
-    nyj.a(this.jdField_a_of_type_Nyj);
-    SLog.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "on comment back loop count:%d, event:%s", Integer.valueOf(nyj.b(this.jdField_a_of_type_Nyj)), paramGetFeedCommentEvent);
-    if (paramGetFeedCommentEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      nyj.a(this.jdField_a_of_type_Nyj).addAll(paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList);
-      if ((!paramGetFeedCommentEvent.jdField_a_of_type_Boolean) && (nyj.b(this.jdField_a_of_type_Nyj) < 10))
-      {
-        SLog.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull next page, loop count:%d", Integer.valueOf(nyj.b(this.jdField_a_of_type_Nyj)));
-        nyj.a(this.jdField_a_of_type_Nyj).c();
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout screenHeight:" + j + ", ExternalPanelheight:" + i + ", isShowKeybroad:" + bool);
       }
-      paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList = nyj.a(this.jdField_a_of_type_Nyj);
-      SLog.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment end, comment count:%d", Integer.valueOf(nyj.a(this.jdField_a_of_type_Nyj).size()));
-      nyj.a(this.jdField_a_of_type_Nyj, paramGetFeedCommentEvent);
+      if (bool != this.a.k)
+      {
+        if (i > this.a.e) {
+          this.a.e = i;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout mMAXExternalPanelheight:" + this.a.e);
+        }
+        i = bdoo.b(this.a.f);
+        j = j - ImmersiveUtils.getStatusBarHeight(this.a) - this.a.getTitleBarHeight() - this.a.e;
+        int k = j - i;
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout contentHeight:" + j + ", fixedHeight:" + i + ", maxHeight:" + k);
+        }
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setMaxHeight(k);
+      }
+      this.a.k = bool;
       return;
     }
-    paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList = nyj.a(this.jdField_a_of_type_Nyj);
-    SLog.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment error, comment count:%d", Integer.valueOf(nyj.a(this.jdField_a_of_type_Nyj).size()));
-    nyj.b(this.jdField_a_of_type_Nyj, paramGetFeedCommentEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nyk
  * JD-Core Version:    0.7.0.1
  */

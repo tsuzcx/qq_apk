@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.f;
-import com.tencent.tmassistantbase.util.m;
+import com.tencent.tmassistantbase.util.k;
+import com.tencent.tmassistantbase.util.s;
 
 public class RemoteOpService
   extends Service
@@ -20,15 +20,15 @@ public class RemoteOpService
   
   public void onCreate()
   {
-    m.c();
+    s.c();
     GlobalUtil.getInstance().setContext(this);
-    f.a().post(new e(this));
+    k.a().post(new e(this));
     super.onCreate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.remote.RemoteOpService
  * JD-Core Version:    0.7.0.1
  */

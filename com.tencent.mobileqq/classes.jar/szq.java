@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public class szq
-  implements Runnable
+final class szq
+  implements oxx
 {
-  public szq(LoginActivity paramLoginActivity) {}
+  public void l() {}
   
-  public void run()
+  public void m()
   {
-    LoginActivity.a(this.a.app, this.a.app.getAccount());
+    szp.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     szq
  * JD-Core Version:    0.7.0.1
  */

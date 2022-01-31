@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
+import android.os.Handler;
 
-public class wze
-  implements View.OnClickListener
+class wze
+  implements axpu
 {
-  public wze(GoldMsgSettingActivity paramGoldMsgSettingActivity) {}
+  wze(wzb paramwzb) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    GoldMsgSettingActivity.a(this.a, paramView);
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 10000L);
+    ((xet)uwa.a(8)).a(xrm.a(this.a.jdField_a_of_type_Xan.a), this.a.jdField_a_of_type_Xfg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wze
  * JD-Core Version:    0.7.0.1
  */

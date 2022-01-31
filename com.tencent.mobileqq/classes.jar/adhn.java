@@ -1,136 +1,104 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import QQService.DeviceItemDes;
+import QQService.SvcDevLoginInfo;
+import android.os.Bundle;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import mqq.app.MobileQQ;
+import mqq.os.MqqHandler;
 
-public final class adhn
-  implements Runnable
+public class adhn
+  extends MqqHandler
 {
-  public adhn(String paramString1, QQAppInterface paramQQAppInterface, int paramInt, String paramString2) {}
+  public adhn(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    SharedPreferences localSharedPreferences;
-    String str2;
-    long l1;
-    long l2;
-    Object localObject1;
-    int i;
-    Object localObject2;
-    int j;
-    label262:
-    MessageRecord localMessageRecord;
+    switch (paramMessage.what)
+    {
+    }
     do
     {
-      for (;;)
+      do
       {
-        return;
-        try
+        do
         {
-          Thread.sleep(500L);
-          String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "BatProcessTips";
-          localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(str1, 0);
-          str2 = this.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_Int + "_LastShowTime";
-          l1 = localSharedPreferences.getLong(str2, 0L);
-          l2 = System.currentTimeMillis();
-          if (l2 - l1 < 86400000L)
+          do
           {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.i("updateBatProcessTips<FileAssistant>", 4, "lastShowTime[" + l1 + "],today has notify user!return!");
-          }
-        }
-        catch (InterruptedException localInterruptedException)
+            do
+            {
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.d("LoginInfoActivity.AccDevSec", 2, "handleMessage.msg.arg1=" + paramMessage.arg1);
+              }
+            } while (LoginInfoActivity.a(this.a) == null);
+            LoginInfoActivity.a(this.a).DevSetup = paramMessage.arg1;
+            LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+            return;
+            LoginInfoActivity.a(this.a, this.a.findViewById(1));
+            return;
+          } while (LoginInfoActivity.a(this.a) == null);
+          localObject = paramMessage.getData();
+        } while (localObject == null);
+        paramMessage = ((Bundle)localObject).getString(AuthDevRenameActivity.f);
+        Object localObject = ((Bundle)localObject).getByteArray(AuthDevRenameActivity.h);
+        int i = 0;
+        for (;;)
         {
-          for (;;)
+          if (i < LoginInfoActivity.a(this.a).size())
           {
-            localInterruptedException.printStackTrace();
-          }
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-          if ((localObject1 == null) || (((List)localObject1).size() == 0))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("updateBatProcessTips<FileAssistant>", 4, "lastShowTime[" + l1 + "],msgRecd null,return");
+            SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)LoginInfoActivity.a(this.a).get(i);
+            if ((localSvcDevLoginInfo != null) && (Arrays.equals(localSvcDevLoginInfo.stDeviceItemDes.vecItemDes, (byte[])localObject))) {
+              localSvcDevLoginInfo.strDeviceName = paramMessage;
             }
           }
           else
           {
-            i = 1;
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-            j = ((List)localObject1).size() - 1;
+            LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+            return;
           }
+          i += 1;
         }
-      }
-      if (j < 0) {
-        break;
-      }
-      localMessageRecord = (MessageRecord)((List)localObject1).get(j);
-    } while ((localMessageRecord.msgtype != -2005) || (localMessageRecord.isSend()) || (localMessageRecord.senderuin.equalsIgnoreCase((String)localObject2) == true));
-    if (QLog.isDevelopLevel()) {
-      QLog.d("FileManagerUtil<FileAssistant>", 4, "updateBatProcessTips count[" + i + "]");
-    }
-    if (i >= 4)
-    {
-      localObject1 = (MessageRecord)((List)localObject1).get(((List)localObject1).size() - 1);
-      switch (FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForFile)localObject1).nFileType)
+      } while ((LoginInfoActivity.a(this.a) == null) || ((!LoginInfoActivity.a(this.a)) && (!LoginInfoActivity.b(this.a))));
+      paramMessage = this.a.getString(2131717639);
+      if (LoginInfoActivity.a(this.a) >= 4)
       {
-      case 1: 
-      case 4: 
-      case 5: 
-      case 8: 
-      default: 
-        localObject1 = "3";
+        LoginInfoActivity.a(this.a).setText(paramMessage);
+        return;
+      }
+      LoginInfoActivity.a(this.a).setVisibility(0);
+      LoginInfoActivity.a(this.a, (LoginInfoActivity.a(this.a) + 1) % 4);
+      switch (LoginInfoActivity.a(this.a))
+      {
       }
       for (;;)
       {
-        localObject2 = new HashMap();
-        ((HashMap)localObject2).put("bat_process_tips_last_file_type", localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, -3013, (Map)localObject2, BaseApplicationImpl.getContext().getString(2131428329), -1L, -1L, -1L);
-        localSharedPreferences.edit().putLong(str2, l2);
-        if (QLog.isColorLevel()) {
-          QLog.i("updateBatProcessTips<FileAssistant>", 4, "lastShowTime[" + l1 + "],[" + FileManagerUtil.e(this.jdField_a_of_type_JavaLangString) + "]add new grayTips!");
-        }
-        FileManagerReporter.a("0X800506B");
+        sendEmptyMessageDelayed(20170210, 300L);
         return;
-        localObject1 = "0";
+        paramMessage = paramMessage + this.a.getString(2131719667);
+        LoginInfoActivity.a(this.a).setText(paramMessage);
         continue;
-        localObject1 = "1";
+        paramMessage = paramMessage + this.a.getString(2131719668);
+        LoginInfoActivity.a(this.a).setText(paramMessage);
+        continue;
+        paramMessage = paramMessage + this.a.getString(2131719669);
+        LoginInfoActivity.a(this.a).setText(paramMessage);
+        continue;
+        LoginInfoActivity.a(this.a).setText(paramMessage);
       }
-    }
-    long l3 = localMessageRecord.time * 1000L;
-    if (QLog.isColorLevel()) {
-      QLog.i("updateBatProcessTips<FileAssistant>", 4, "lastShowTime[" + l1 + "],time[" + l3 + "]");
-    }
-    if (l3 > l1) {
-      i += 1;
-    }
-    for (;;)
-    {
-      j -= 1;
-      break label262;
-      break;
-    }
+      paramMessage = paramMessage.getData();
+    } while (paramMessage == null);
+    boolean bool = paramMessage.getBoolean("bSafe");
+    paramMessage = paramMessage.getString("TipText");
+    LoginInfoActivity.a(this.a, bool, paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adhn
  * JD-Core Version:    0.7.0.1
  */

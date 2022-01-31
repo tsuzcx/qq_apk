@@ -18,40 +18,40 @@ class NotificationCompatOreo
   
   public NotificationCompatOreo(Context paramContext, Notification paramNotification, CharSequence paramCharSequence1, CharSequence paramCharSequence2, CharSequence paramCharSequence3, RemoteViews paramRemoteViews, int paramInt1, PendingIntent paramPendingIntent1, PendingIntent paramPendingIntent2, Bitmap paramBitmap, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, int paramInt4, CharSequence paramCharSequence4, String paramString)
   {
-    paramContext = new Notification.Builder(paramContext).setWhen(paramNotification.when).setSmallIcon(paramNotification.icon, paramNotification.iconLevel).setContent(paramNotification.contentView).setTicker(paramNotification.tickerText, paramRemoteViews).setSound(paramNotification.sound, paramNotification.audioStreamType).setVibrate(paramNotification.vibrate).setLights(paramNotification.ledARGB, paramNotification.ledOnMS, paramNotification.ledOffMS);
+    paramContext = new Notification.Builder(paramContext).setWhen(paramNotification.when).setShowWhen(true).setSmallIcon(paramNotification.icon, paramNotification.iconLevel).setContent(paramNotification.contentView).setTicker(paramNotification.tickerText, paramRemoteViews).setSound(paramNotification.sound, paramNotification.audioStreamType).setVibrate(paramNotification.vibrate).setLights(paramNotification.ledARGB, paramNotification.ledOnMS, paramNotification.ledOffMS);
     if ((paramNotification.flags & 0x2) != 0)
     {
       bool = true;
       paramContext = paramContext.setOngoing(bool);
       if ((paramNotification.flags & 0x8) == 0) {
-        break label244;
+        break label248;
       }
       bool = true;
-      label112:
+      label116:
       paramContext = paramContext.setOnlyAlertOnce(bool);
       if ((paramNotification.flags & 0x10) == 0) {
-        break label250;
+        break label254;
       }
       bool = true;
-      label132:
+      label136:
       paramContext = paramContext.setAutoCancel(bool).setDefaults(paramNotification.defaults).setContentTitle(paramCharSequence1).setContentText(paramCharSequence2).setSubText(paramCharSequence4).setContentInfo(paramCharSequence3).setContentIntent(paramPendingIntent1).setDeleteIntent(paramNotification.deleteIntent);
       if ((paramNotification.flags & 0x80) == 0) {
-        break label256;
+        break label260;
       }
     }
-    label256:
+    label260:
     for (boolean bool = true;; bool = false)
     {
       this.b = paramContext.setFullScreenIntent(paramPendingIntent2, bool).setLargeIcon(paramBitmap).setNumber(paramInt1).setUsesChronometer(paramBoolean2).setPriority(paramInt4).setProgress(paramInt2, paramInt3, paramBoolean1).setChannelId(paramString);
       return;
       bool = false;
       break;
-      label244:
+      label248:
       bool = false;
-      break label112;
-      label250:
+      break label116;
+      label254:
       bool = false;
-      break label132;
+      break label136;
     }
   }
   

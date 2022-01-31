@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class cia
-  implements Runnable
+  implements View.OnClickListener
 {
-  public cia(ChatHistory paramChatHistory, boolean paramBoolean) {}
+  public cia(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ChatHistory localChatHistory1 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory;
-    ChatHistory localChatHistory2 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory;
-    if (this.jdField_a_of_type_Boolean == true) {}
-    for (int i = 2131562051;; i = 2131561467)
-    {
-      localChatHistory1.b(localChatHistory2.getString(i));
-      return;
-    }
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

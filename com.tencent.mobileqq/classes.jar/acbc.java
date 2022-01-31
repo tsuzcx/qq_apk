@@ -1,54 +1,67 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.theme.ThemeDownloader;
-import com.tencent.mobileqq.theme.ThemeDownloader.ThemeDownloadListener;
-import com.tencent.mobileqq.vip.IPCDownloadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity.3.1;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import mqq.os.MqqHandler;
 
 public class acbc
-  implements ThemeDownloader.ThemeDownloadListener
+  implements View.OnClickListener
 {
-  public acbc(MessengerService paramMessengerService) {}
+  public acbc(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onDownloadCallback(Bundle paramBundle, int paramInt1, int paramInt2, int paramInt3, ThemeDownloader paramThemeDownloader)
+  public void onClick(View paramView)
   {
-    if (paramInt1 == 4) {}
-    do
-    {
+    if (!this.a.b) {
       return;
-      if ((QLog.isColorLevel()) || (paramInt1 < 0)) {
-        QLog.d("Q.emoji.web.MessengerService", 2, "mThemeDownloadListener onDownloadCallback stateCode:" + paramInt1 + ", errCode=" + paramInt2 + ", httpCode=" + paramInt3);
-      }
-      Bundle localBundle = paramBundle;
-      if (paramBundle == null) {
-        localBundle = new Bundle();
-      }
-      localBundle.putString("status", "onDone");
-      localBundle.putInt("result", paramInt1);
-      localBundle.putInt("errCode", paramInt2);
-      this.a.a.a(localBundle);
-    } while (paramThemeDownloader == null);
-    paramThemeDownloader.a();
-  }
-  
-  public void onDownloadProgress(Bundle paramBundle, int paramInt, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.emoji.web.MessengerService", 2, "mThemeDownloadListener onDownloadProgress readSize:" + paramLong1 + ", dwProgressMax" + paramLong2);
     }
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
+    paramView = this.a;
+    boolean bool;
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      bool = true;
+      paramView.jdField_a_of_type_Boolean = bool;
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break label245;
+      }
+      this.a.rightViewText.setVisibility(8);
+      this.a.rightHighLView.setVisibility(0);
+      this.a.rightViewText.setText(2131692682);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131166983));
     }
-    localBundle.putString("status", "onProgress");
-    localBundle.putLong("readSize", paramLong1);
-    localBundle.putLong("size", paramLong2);
-    this.a.a.a(localBundle);
+    for (;;)
+    {
+      if (AccountManageActivity.a(this.a) != null)
+      {
+        paramView = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+        if ((paramView instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)paramView).f();
+        }
+        AccountManageActivity.a(this.a).a();
+        AccountManageActivity.a(this.a, null);
+      }
+      this.a.b();
+      this.a.a(this.a.jdField_a_of_type_Boolean);
+      this.a.b = false;
+      AccountManageActivity.a(this.a).postDelayed(new AccountManageActivity.3.1(this), 400L);
+      azqs.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit", 0, 0, "", "", "", "");
+      return;
+      bool = false;
+      break;
+      label245:
+      this.a.rightViewText.setVisibility(0);
+      this.a.rightHighLView.setVisibility(8);
+      this.a.rightViewText.setText(2131692017);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131166911));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acbc
  * JD-Core Version:    0.7.0.1
  */

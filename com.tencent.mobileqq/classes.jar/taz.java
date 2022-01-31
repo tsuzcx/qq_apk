@@ -1,30 +1,38 @@
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QIMNewFriendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class taz
-  implements Runnable
+class taz
+  implements URLDrawable.URLDrawableListener
 {
-  public taz(MainFragment paramMainFragment) {}
+  taz(tax paramtax, String paramString, ImageView paramImageView) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
-    if (MainFragment.a(this.a) != null)
-    {
-      MainFragment.a(this.a).addObserver(MainFragment.a(this.a));
-      ((QIMNewFriendManager)MainFragment.a(this.a).getManager(256)).a(MainFragment.a(this.a));
-      MainFragment.a(this.a).registObserver(MainFragment.a(this.a));
-    }
-    MainFragment.a(this.a, false);
+    tlo.c("813", "onLoadCanceled - " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841378);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    tlo.d("813", "onLoadFialed - " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841378);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    tlo.a("813", "onLoadProgressed - " + this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    tax.a(this.jdField_a_of_type_Tax, paramURLDrawable, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidWidgetImageView);
+    tfd.b(3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     taz
  * JD-Core Version:    0.7.0.1
  */

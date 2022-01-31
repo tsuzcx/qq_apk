@@ -8,11 +8,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class im_msg_body$ElemFlags2
-  extends MessageMicro
+  extends MessageMicro<ElemFlags2>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58, 64, 74, 80, 88, 96, 106, 112 }, new String[] { "uint32_color_text_id", "uint64_msg_id", "uint32_whisper_session_id", "uint32_ptt_change_bit", "uint32_vip_status", "uint32_compatible_id", "rpt_insts", "uint32_msg_rpt_cnt", "src_inst", "uint32_longtitude", "uint32_latitude", "uint32_custom_font", "pc_support_def", "uint32_crm_flags" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0) }, ElemFlags2.class);
   public im_msg_body.PcSupportDef pc_support_def = new im_msg_body.PcSupportDef();
-  public final PBRepeatMessageField rpt_insts = PBField.initRepeatMessage(im_msg_body.ElemFlags2.Inst.class);
+  public final PBRepeatMessageField<im_msg_body.ElemFlags2.Inst> rpt_insts = PBField.initRepeatMessage(im_msg_body.ElemFlags2.Inst.class);
   public im_msg_body.ElemFlags2.Inst src_inst = new im_msg_body.ElemFlags2.Inst();
   public final PBUInt32Field uint32_color_text_id = PBField.initUInt32(0);
   public final PBUInt32Field uint32_compatible_id = PBField.initUInt32(0);

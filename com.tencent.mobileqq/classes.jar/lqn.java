@@ -1,20 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.av.gaudio.QQGAudioCtrl;
 
 public class lqn
-  implements Runnable
 {
-  public lqn(ChannelCoverInfoModule paramChannelCoverInfoModule, ChannelCoverInfo paramChannelCoverInfo) {}
+  public int a;
+  public long a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelCoverInfoModule.a.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo);
-  }
+  public lqn(QQGAudioCtrl paramQQGAudioCtrl) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lqn
  * JD-Core Version:    0.7.0.1
  */

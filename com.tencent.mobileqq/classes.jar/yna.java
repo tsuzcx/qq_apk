@@ -1,46 +1,25 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.GLTextureView.EGLContextFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
 
 public class yna
-  implements GLTextureView.EGLContextFactory
+  implements bexv
 {
-  private yna(ApolloTextureView paramApolloTextureView) {}
+  public yna(VideoPlayerView paramVideoPlayerView) {}
   
-  public EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloTextureView", 2, "[createContext], id:" + Thread.currentThread().getId());
+    if ((VideoPlayerView.a(this.a) != null) && (VideoPlayerView.a(this.a) != null))
+    {
+      VideoPlayerView.d(this.a, false);
+      VideoPlayerView.a(this.a).onOrientationChange(VideoPlayerView.d(this.a));
+      VideoPlayerView.a(this.a).onVideoSize(this.a.a().getViewWidth(), this.a.a().getViewHeight());
     }
-    if (this.a.mIsDestroy != null) {
-      this.a.mIsDestroy.set(false);
-    }
-    return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
-  }
-  
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloTextureView", 2, "[destroyContext], id:" + Thread.currentThread().getId());
-    }
-    if (this.a.mIsDestroy != null) {
-      this.a.mIsDestroy.set(true);
-    }
-    if (this.a.mRender != null) {
-      this.a.mRender.onDestroy();
-    }
-    paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yna
  * JD-Core Version:    0.7.0.1
  */

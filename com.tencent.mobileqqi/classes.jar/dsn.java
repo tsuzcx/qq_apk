@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.FriendManager;
 
-class dsn
-  implements Runnable
+public class dsn
+  extends FriendListObserver
 {
-  dsn(dsl paramdsl) {}
+  public dsn(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void run()
+  protected void a(String paramString, boolean paramBoolean)
   {
-    SubLoginActivity.a(this.a.a).setText("");
+    if ((!paramBoolean) || (paramString == null)) {}
+    do
+    {
+      return;
+      paramString = ((FriendManager)this.a.b.getManager(8)).a(paramString);
+    } while (paramString == null);
+    TroopRequestActivity.a(this.a, paramString);
   }
 }
 

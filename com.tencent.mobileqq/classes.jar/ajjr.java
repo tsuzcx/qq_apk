@@ -1,19 +1,20 @@
-import android.widget.EditText;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class ajjr
-  implements LoadingMoreHelper.OnLoadMoreListener
+final class ajjr
+  implements Animation.AnimationListener
 {
-  public ajjr(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  ajjr(View paramView, Animation paramAnimation) {}
   
-  public void a() {}
-  
-  public boolean a(boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    SearchReciteArticleFragment.a(this.a, SearchReciteArticleFragment.a(this.a).getText().toString());
-    return true;
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

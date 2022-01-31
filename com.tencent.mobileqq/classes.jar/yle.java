@@ -1,23 +1,20 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.biz.subscribe.utils.AnimationDrawableFactory.2;
+import java.io.File;
+import java.util.Comparator;
 
-public final class yle
-  implements Runnable
+public class yle
+  implements Comparator<File>
 {
-  public yle(ApolloRender paramApolloRender, String paramString) {}
+  public yle(AnimationDrawableFactory.2 param2) {}
   
-  public void run()
+  public int a(File paramFile1, File paramFile2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop.getText().toString().compareToIgnoreCase(this.jdField_a_of_type_JavaLangString) != 0))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop.setText(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop.setSelection(this.jdField_a_of_type_JavaLangString.length());
-    }
+    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yle
  * JD-Core Version:    0.7.0.1
  */

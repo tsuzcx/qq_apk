@@ -1,13 +1,14 @@
-import com.dataline.util.HttpUpload.HttpUploadListenerPack;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class eo
-  implements Runnable
+class eo
+  implements DialogInterface.OnClickListener
 {
-  public eo(HttpUpload.HttpUploadListenerPack paramHttpUploadListenerPack, long paramLong1, String paramString, long paramLong2) {}
+  eo(em paramem) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComDatalineUtilHttpUpload$HttpUploadListenerPack.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
+    paramDialogInterface.dismiss();
   }
 }
 

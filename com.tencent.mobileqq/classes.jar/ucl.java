@@ -1,133 +1,78 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.DisplayMetrics;
+import com.tencent.biz.subscribe.comment.CommentEditText;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class ucl
-  extends TroopObserver
+class ucl
+  implements TextWatcher
 {
-  public ucl(TroopRequestActivity paramTroopRequestActivity) {}
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  protected void a(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 == 4) || (paramInt1 == 5) || (paramInt1 == 6) || (paramInt1 == 7)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-    }
-    if (paramInt1 == 8) {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-    }
-  }
+  ucl(uce paramuce) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((paramInt1 == 4) || (paramInt1 == 5) || (paramInt1 == 6) || (paramInt1 == 7))
-    {
-      if (paramInt2 != 0) {
-        break label68;
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-      this.a.finish();
-    }
-    for (;;)
-    {
-      if (paramInt1 == 8)
-      {
-        if (paramInt2 != 0) {
-          break;
-        }
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-      }
+    yqe localyqe = null;
+    if (paramEditable == null) {
       return;
-      label68:
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
-  {
-    if (this.a.jdField_a_of_type_JavaLangString == null) {}
-    do
+    this.jdField_a_of_type_Uce.a.removeTextChangedListener(this);
+    String str = paramEditable.toString().substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.b);
+    int i = str.indexOf('/');
+    Object localObject = localyqe;
+    if (i >= 0)
+    {
+      localObject = localyqe;
+      if (i < str.length() - 1)
+      {
+        localObject = new yqd(paramEditable.toString());
+        localyqe = new yqe();
+        localyqe.jdField_a_of_type_Float = ((int)(22.0D * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5D));
+        localyqe.jdField_a_of_type_Int = 0;
+        localyqe.jdField_a_of_type_JavaLangCharSequence = paramEditable.toString();
+        yqc.a(localyqe, str, null, (yqd)localObject, false);
+      }
+    }
+    if (localObject != null) {
+      i = this.jdField_a_of_type_Uce.a.getSelectionEnd();
+    }
+    try
+    {
+      this.jdField_a_of_type_Uce.a.setText((CharSequence)localObject);
+      this.jdField_a_of_type_Uce.a.setSelection(i);
+      this.b = 0;
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Uce.a.addTextChangedListener(this);
+      return;
+    }
+    catch (ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException)
     {
       for (;;)
       {
-        return;
-        this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_JavaLangString.trim();
-        try
-        {
-          long l = Long.parseLong(this.a.jdField_a_of_type_JavaLangString);
-          if (paramLong != l) {}
-        }
-        catch (NumberFormatException paramString)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel())
-            {
-              QLog.e("Q.systemmsg.TroopRequestActivity", 2, "onOIDB0X88D_1_Ret=>NumberFormatException");
-              continue;
-              QQToast.a(this.a.app.getApplication(), 2131434431, 0).b(this.a.getTitleBarHeight());
-            }
-          }
-          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-        }
+        this.jdField_a_of_type_Uce.a.setText(paramEditable.toString());
+        i = paramEditable.toString().length();
       }
-      this.a.i();
-      if (!paramBoolean) {
-        break label215;
-      }
-      if ((paramTroopInfo.cGroupOption == 4) || (paramTroopInfo.cGroupOption == 5))
-      {
-        this.a.o = paramTroopInfo.joinTroopQuestion;
-        this.a.p = paramTroopInfo.joinTroopAnswer;
-      }
-      this.a.jdField_a_of_type_Short = paramTroopInfo.cGroupOption;
-      if (this.a.jdField_a_of_type_Short == 3) {
-        break;
-      }
-      TroopRequestActivity.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.systemmsg.TroopRequestActivity", 2, "troop.cGroupOption = " + paramTroopInfo.cGroupOption);
-    return;
-    label215:
+    }
   }
   
-  protected void b(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a.jdField_a_of_type_JavaLangString == null) {}
-    do
-    {
-      for (;;)
-      {
-        return;
-        try
-        {
-          this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_JavaLangString.trim();
-          long l = Long.parseLong(this.a.jdField_a_of_type_JavaLangString);
-          if (paramLong != l) {}
-        }
-        catch (NumberFormatException paramString)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("Q.systemmsg.TroopRequestActivity", 2, "onOIDB0X88D_10_Ret=>NumberFormatException");
-            }
-          }
-        }
-      }
-      this.a.i();
-    } while ((!paramBoolean) || (paramTroopInfo == null));
-    ThreadManager.post(new ucm(this, paramTroopInfo), 8, null, true);
+    if (paramCharSequence == null) {
+      return;
+    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ucl
  * JD-Core Version:    0.7.0.1
  */

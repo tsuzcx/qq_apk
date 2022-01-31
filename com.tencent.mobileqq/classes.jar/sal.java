@@ -1,46 +1,66 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileView;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.widget.HorizontalLabelLayout;
 
-class sal
-  implements FMDialogUtil.FMDialogInterface
+public class sal
+  implements sai
 {
-  sal(sak paramsak, FileManagerEntity paramFileManagerEntity) {}
-  
-  public void a()
+  public int a(BaseData paramBaseData)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      this.jdField_a_of_type_Sak.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    }
-    DataLineHandler localDataLineHandler;
-    ArrayList localArrayList;
-    do
+    switch (paramBaseData.s)
     {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
-      }
-      localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_Sak.a.a.a(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localDataLineHandler.a(localArrayList));
-    FMToastUtil.a(2131428328);
-    return;
-    this.jdField_a_of_type_Sak.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    case 9: 
+    case 10: 
+    case 11: 
+    case 12: 
+    default: 
+      throw new IllegalArgumentException();
+    case 7: 
+    case 13: 
+      return 7;
+    case 8: 
+    case 14: 
+      return 8;
+    case 15: 
+      return 13;
+    }
+    return 14;
   }
   
-  public void b() {}
+  public sah a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    LayoutInflater localLayoutInflater = LayoutInflater.from(paramContext);
+    switch (a(paramBaseData))
+    {
+    case 9: 
+    case 10: 
+    case 11: 
+    case 12: 
+    default: 
+      throw new IllegalArgumentException();
+    case 7: 
+      return new sap(this, localLayoutInflater.inflate(2131560020, paramViewGroup, false), paramBaseData);
+    case 8: 
+      return new san(this, localLayoutInflater.inflate(2131560017, paramViewGroup, false), paramBaseData);
+    case 13: 
+      paramViewGroup = new HorizontalLabelLayout(paramContext);
+      int i = aepi.a(15.0F, paramContext.getResources());
+      paramViewGroup.setPadding(i, 0, i, 0);
+      return new sam(this, paramViewGroup, paramBaseData);
+    }
+    return new sao(this, localLayoutInflater.inflate(2131559939, paramViewGroup, false), paramBaseData);
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return (paramBaseData.s == 7) || (paramBaseData.s == 8) || (paramBaseData.s == 13) || (paramBaseData.s == 14) || (paramBaseData.s == 15) || (paramBaseData.s == 16);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sal
  * JD-Core Version:    0.7.0.1
  */

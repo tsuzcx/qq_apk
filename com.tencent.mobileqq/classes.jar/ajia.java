@@ -1,41 +1,27 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
-public final class ajia
-  implements Runnable
+class ajia
+  implements View.OnClickListener
 {
-  public ajia(String paramString, ImageView paramImageView) {}
+  private ajhy jdField_a_of_type_Ajhy;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public void run()
+  ajia(ajhy paramajhy, MqqHandler paramMqqHandler)
   {
-    try
-    {
-      if (FileUtil.a(this.jdField_a_of_type_JavaLangString))
-      {
-        Object localObject = new BitmapFactory.Options();
-        ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
-        ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
-        localObject = BitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
-        ThreadManager.getUIHandler().post(new ajib(this, (Bitmap)localObject));
-      }
-      return;
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    this.jdField_a_of_type_Ajhy = paramajhy;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_Ajhy.jdField_a_of_type_JavaLangString + " on enter");
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      QLog.e("setBitmapByPath", 2, localOutOfMemoryError.getStackTrace());
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("setBitmapByPath", 2, localException.getStackTrace());
-    }
+    this.jdField_a_of_type_Ajhy.jdField_a_of_type_Ajhw.onEnter();
+    azqs.a(null, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 1, 0, "", "", "", "");
   }
 }
 

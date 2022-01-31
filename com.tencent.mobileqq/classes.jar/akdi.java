@@ -1,22 +1,20 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
-import com.tencent.open.downloadnew.MyAppApi;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class akdi
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public akdi(NewUpgradeDialog paramNewUpgradeDialog, Bundle paramBundle) {}
+  public akdi(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MyAppApi.a().a((Context)this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog.a.get(), this.jdField_a_of_type_AndroidOsBundle, false, false);
+    this.a.s();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akdi
  * JD-Core Version:    0.7.0.1
  */

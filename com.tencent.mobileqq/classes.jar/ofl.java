@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.liveroom.LiveRoomGiftCallback;
 
-public class ofl
-  implements DialogInterface.OnClickListener
+class ofl
+  implements LiveRoomGiftCallback
 {
-  public ofl(EditVideoPartManager paramEditVideoPartManager) {}
+  ofl(ofi paramofi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onCall(int paramInt, String paramString)
+  {
+    if (paramInt == 7)
+    {
+      QLog.d("KandianAdPandent", 2, "Vpng play completion!");
+      ofi.a(this.a).sendEmptyMessage(2);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ofl
  * JD-Core Version:    0.7.0.1
  */

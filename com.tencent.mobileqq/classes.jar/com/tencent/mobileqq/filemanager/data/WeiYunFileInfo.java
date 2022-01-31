@@ -1,17 +1,18 @@
 package com.tencent.mobileqq.filemanager.data;
 
-import adat;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import arch;
 
 public class WeiYunFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new adat();
+  public static final Parcelable.Creator<WeiYunFileInfo> CREATOR = new arch();
   public int a;
   public long a;
   public String a;
+  public boolean a;
   public int b;
   public long b;
   public String b;
@@ -46,6 +47,10 @@ public class WeiYunFileInfo
     this.h = paramParcel.readString();
     this.i = paramParcel.readString();
     this.j = paramParcel.readString();
+    if (paramParcel.readByte() != 0) {
+      bool = true;
+    }
+    this.jdField_a_of_type_Boolean = bool;
   }
   
   public int describeContents()
@@ -69,11 +74,17 @@ public class WeiYunFileInfo
     paramParcel.writeString(this.h);
     paramParcel.writeString(this.i);
     paramParcel.writeString(this.j);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      paramParcel.writeByte((byte)paramInt);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.WeiYunFileInfo
  * JD-Core Version:    0.7.0.1
  */

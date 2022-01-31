@@ -1,68 +1,24 @@
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.observer.GameCenterObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 
-public class emz
-  extends GameCenterObserver
+class emz
+  implements Runnable
 {
-  public emz(MainAssistObserver paramMainAssistObserver) {}
+  emz(emy paramemy) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void run()
   {
-    int i;
-    if ((paramBoolean1) && (paramBoolean2) && (paramInt != 2))
+    if ((PhotoListActivity.a(this.a.a)) && (this.a.a.a == null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainActivity", 2, "inform onGameCenterMsgReceive.type=" + paramInt);
-      }
-      i = this.a.a() + this.a.b();
-      this.a.a(34, 16, Integer.valueOf(i));
+      PhotoListActivity.a(this.a.a, false);
+      this.a.a.a = new enc(this.a.a, null);
+      this.a.a.a.execute(new Object[0]);
     }
-    switch (paramInt)
-    {
-    case 2: 
-    case 3: 
-    default: 
-    case 0: 
-    case 1: 
-    case 4: 
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-              } while (i <= 0);
-              this.a.a(34, 17, Boolean.valueOf(false));
-              this.a.a(34, 18, Boolean.valueOf(false));
-              return;
-            } while (i != 0);
-            paramBoolean1 = MainAssistObserver.a(this.a);
-            this.a.a(34, 17, Boolean.valueOf(paramBoolean1));
-          } while (!paramBoolean1);
-          this.a.a(34, 18, Boolean.valueOf(false));
-          this.a.a(34, 16, Integer.valueOf(0));
-          return;
-        } while (i != 0);
-        paramBoolean1 = MainAssistObserver.b(this.a);
-        this.a.a(34, 18, Boolean.valueOf(paramBoolean1));
-      } while (!paramBoolean1);
-      this.a.a(34, 17, Boolean.valueOf(false));
-      this.a.a(34, 16, Integer.valueOf(0));
-      return;
-    }
-    this.a.g();
-    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     emz
  * JD-Core Version:    0.7.0.1
  */

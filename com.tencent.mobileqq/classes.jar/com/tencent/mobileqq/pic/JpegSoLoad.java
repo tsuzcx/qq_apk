@@ -2,6 +2,7 @@ package com.tencent.mobileqq.pic;
 
 import android.content.Context;
 import android.os.Environment;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public final class JpegSoLoad
@@ -12,43 +13,51 @@ public final class JpegSoLoad
   public static final int LOAD_ERROR = -3;
   public static final int LOAD_SUCCESS = 0;
   private static final String PKG_NAME = "com.tencent.mobileqq";
-  public static final String SO_NAME = "jpegc_above665";
+  public static final String SO_NAME = "jpegc_above820";
   
-  public static int LoadJpegExtractedSo(String paramString)
+  public static int LoadJpegExtractedSo(String paramString, Context paramContext)
   {
-    i = 0;
+    int j = 0;
     if (paramString == null) {
       return -1;
     }
-    String str = getJpegSolibPath(null) + getLibActualName(paramString);
-    if (!new File(str).exists()) {
+    paramContext = getJpegSolibPath(paramContext);
+    paramContext = paramContext + getLibActualName(paramString);
+    int i;
+    if (!new File(paramContext).exists())
+    {
       i = -2;
+      if (i == 0) {
+        break label138;
+      }
     }
+    label138:
     for (;;)
     {
-      j = i;
-      if (i != 0) {}
-      try
+      for (;;)
       {
-        System.loadLibrary(paramString);
-        j = 0;
-      }
-      catch (UnsatisfiedLinkError paramString)
-      {
-        for (;;)
+        try
         {
-          j = i;
+          System.loadLibrary(paramString);
+          i = j;
+        }
+        catch (UnsatisfiedLinkError paramString)
+        {
+          continue;
+        }
+        QLog.d("JpegSoLoad", 2, "LoadJpegExtractedSo:" + i + " path:" + paramContext + " length:" + new File(paramContext).length());
+        return i;
+        try
+        {
+          System.load(paramContext);
+          i = 0;
+        }
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+        {
+          i = -3;
         }
       }
-      return j;
-      try
-      {
-        System.load(str);
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        i = -3;
-      }
+      break;
     }
   }
   
@@ -64,14 +73,14 @@ public final class JpegSoLoad
     return Environment.getDataDirectory() + "/data/" + paramContext.getPackageName() + "/jpeglib/";
   }
   
-  private static String getLibActualName(String paramString)
+  public static String getLibActualName(String paramString)
   {
     return "lib" + paramString + ".so";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.pic.JpegSoLoad
  * JD-Core Version:    0.7.0.1
  */

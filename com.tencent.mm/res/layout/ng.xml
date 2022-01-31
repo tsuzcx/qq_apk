@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/ag" android:layout_marginBottom="@dimen/m1" style="@style/go" />
+    <LinearLayout android:gravity="center" style="@style/gf">
+        <com.tencent.mm.ui.widget.MMNeat7extView android:gravity="left" android:id="@id/oy" android:background="@drawable/ix" android:paddingLeft="@dimen/lb" android:paddingRight="@dimen/lb" android:clickable="true" android:layout_marginLeft="@dimen/l5" android:layout_marginRight="@dimen/l5" style="@style/gq" />
+    </LinearLayout>
+</LinearLayout>

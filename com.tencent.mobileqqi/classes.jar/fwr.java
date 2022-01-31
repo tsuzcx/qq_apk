@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
 
 public class fwr
-  implements View.OnClickListener
+  implements Runnable
 {
-  public fwr(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public fwr(UniformDownloadMgr paramUniformDownloadMgr, String paramString, Bundle paramBundle) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    LocalFileBrowserActivity.a(this.a);
+    UniformDownloadMgr.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
   }
 }
 

@@ -38,21 +38,17 @@ public abstract class AbstractAVDecode
   
   public abstract void resetVideoPlayer(AVDecodeOption paramAVDecodeOption);
   
-  public abstract byte[] seekToNextAudioByteFrame()
-    throws AVideoException;
+  public abstract byte[] seekToNextAudioByteFrame();
   
-  public abstract float[] seekToNextAudioFloatFrame()
-    throws AVideoException;
+  public abstract float[] seekToNextAudioFloatFrame();
   
-  public abstract short[] seekToNextAudioShortFrame()
-    throws AVideoException;
+  public abstract short[] seekToNextAudioShortFrame();
   
-  public abstract void seekToNextFrame(Bitmap paramBitmap)
-    throws AVideoException;
+  public abstract void seekToNextFrame(Bitmap paramBitmap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.video.decode.AbstractAVDecode
  * JD-Core Version:    0.7.0.1
  */

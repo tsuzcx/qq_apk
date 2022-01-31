@@ -1,24 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusManager;
+import android.view.View;
 
-public class tlg
-  implements IIconListener
+final class tlg
+  implements bhuk
 {
-  public tlg(QQSettingMe paramQQSettingMe) {}
+  tlg(bhuk parambhuk, bhuf parambhuf) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((this.a.c) && (paramBitmap != null) && (QQSettingMe.a(this.a).a().actionId == paramInt1) && (paramInt2 == 200)) {
-      this.a.B();
+    tlo.b("WSFeedUtils", "clickedView :" + paramView + ", which: " + paramInt);
+    if (this.jdField_a_of_type_Bhuk != null) {
+      this.jdField_a_of_type_Bhuk.OnClick(paramView, paramInt);
     }
+    this.jdField_a_of_type_Bhuf.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tlg
  * JD-Core Version:    0.7.0.1
  */

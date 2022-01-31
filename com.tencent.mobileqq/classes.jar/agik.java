@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
 class agik
-  implements Runnable
+  implements DialogInterface.OnKeyListener
 {
-  agik(agij paramagij) {}
+  agik(aghx paramaghx) {}
   
-  public void run()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    ScanTorchActivity.a(this.a.a);
-    ScanTorchActivity.c(this.a.a);
-    ScanTorchActivity.b(this.a.a);
+    if (paramInt == 4)
+    {
+      this.a.n = true;
+      aghx.a(this.a).dismiss();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agik
  * JD-Core Version:    0.7.0.1
  */

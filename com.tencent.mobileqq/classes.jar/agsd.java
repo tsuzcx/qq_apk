@@ -1,60 +1,117 @@
 import android.content.Context;
-import android.support.v4.view.ViewPager.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import com.tencent.mobileqq.profile.view.QzonePhotoView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterViewPagerAdapter.AdapterViewFactory;
+import com.tencent.widget.XListView;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class agsd
-  implements AdapterViewPagerAdapter.AdapterViewFactory
+  implements bfml
 {
-  public agsd(QzonePhotoView paramQzonePhotoView) {}
+  int jdField_a_of_type_Int = 1;
+  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<akjh> b;
+  WeakReference<XListView> c;
+  WeakReference<PullRefreshHeader> d;
+  WeakReference<TextView> e;
   
-  public AdapterView a(Context paramContext, int paramInt)
+  public agsd(Context paramContext, XListView paramXListView, akjh paramakjh, PullRefreshHeader paramPullRefreshHeader, TextView paramTextView, int paramInt)
   {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.c = new WeakReference(paramXListView);
+    this.b = new WeakReference(paramakjh);
+    this.d = new WeakReference(paramPullRefreshHeader);
+    this.e = new WeakReference(paramTextView);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(Exception paramException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.hotchat.aio_post_list_req", 2, paramException.getMessage());
+    }
+    paramException = (PullRefreshHeader)this.d.get();
+    if ((paramException != null) && (paramException.getVisibility() == 0)) {
+      paramException.a(1);
+    }
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.hotchat.aio_post_list_req", 2, "result " + paramJSONObject);
+    }
+    XListView localXListView = (XListView)this.c.get();
+    if (localXListView == null) {}
+    akjh localakjh;
     do
     {
-      try
+      do
       {
-        paramContext = new GridView(paramContext);
-        ViewPager.LayoutParams localLayoutParams;
-        Context localContext = paramContext;
+        do
+        {
+          return;
+          localObject = (TextView)this.e.get();
+        } while (localObject == null);
+        localakjh = (akjh)this.b.get();
+      } while (localakjh == null);
+      if ((paramJSONObject != null) && (paramJSONObject.optInt("retcode") == 0)) {
+        break;
       }
-      catch (OutOfMemoryError localOutOfMemoryError1)
+      if (localXListView.getVisibility() == 8) {
+        ((TextView)localObject).setText(alud.a(2131705974));
+      }
+      paramJSONObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (paramJSONObject == null);
+    QQToast.a(paramJSONObject, 1, alud.a(2131705976), 0).a();
+    localakjh.a();
+    return;
+    ((TextView)localObject).setVisibility(8);
+    localXListView.setVisibility(0);
+    Object localObject = paramJSONObject.optJSONObject("result");
+    label193:
+    int j;
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      localakjh.b(((JSONObject)localObject).optJSONArray("posts"));
+      j = paramJSONObject.optInt("retcode");
+      paramJSONObject = (PullRefreshHeader)this.d.get();
+      if ((paramJSONObject != null) && (paramJSONObject.getVisibility() == 0)) {
+        if (j != 0) {
+          break label315;
+        }
+      }
+    }
+    label315:
+    for (int i = 0;; i = 1)
+    {
+      paramJSONObject.a(i);
+      localXListView.springBackOverScrollHeaderView();
+      if (j != 0) {
+        break;
+      }
+      agrn.i = System.currentTimeMillis();
+      return;
+      if (((JSONObject)localObject).optInt("isend") == 0)
       {
-        try
-        {
-          paramContext.setNumColumns(4);
-          paramContext.setFadingEdgeLength(0);
-          paramContext.setHorizontalSpacing(QzonePhotoView.a(this.a));
-          paramContext.setVerticalSpacing(QzonePhotoView.a(this.a));
-          paramContext.setStretchMode(2);
-          paramContext.setScrollingCacheEnabled(false);
-          paramContext.setSelector(2131492924);
-          localLayoutParams = new ViewPager.LayoutParams();
-          localLayoutParams.gravity = 17;
-          localLayoutParams.height = -2;
-          localLayoutParams.width = -1;
-          paramContext.setLayoutParams(localLayoutParams);
-          localContext = paramContext;
-          return localContext;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError2)
-        {
-          continue;
-        }
-        localOutOfMemoryError1 = localOutOfMemoryError1;
-        paramContext = null;
+        localakjh.a(((JSONObject)localObject).optJSONArray("posts"));
+        localakjh.a();
+        break label193;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("ProfileCard.QzonePhotoView", 2, "new gridview error", localOutOfMemoryError1);
-    return paramContext;
+      paramJSONObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramJSONObject != null) {
+        QQToast.a(paramJSONObject, 2, alud.a(2131705966), 0).a();
+      }
+      localakjh.a();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agsd
  * JD-Core Version:    0.7.0.1
  */

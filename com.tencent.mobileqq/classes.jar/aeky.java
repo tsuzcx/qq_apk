@@ -1,20 +1,44 @@
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.UpgradeTipsDialog;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
+
 public class aeky
+  extends WebViewClient
 {
-  public final String a;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
-  public final String f;
+  public aeky(UpgradeTipsDialog paramUpgradeTipsDialog) {}
   
-  public aeky(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.f = paramString6;
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeController", 2, "onPageFinished: " + paramString);
+    }
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeController", 2, "onPageStarted: " + paramString);
+    }
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeController", 2, "onReceivedError: " + paramInt + ", " + paramString1);
+    }
+    azqs.b(UpgradeTipsDialog.a(this.a), "CliOper", "", "", "Update_tips", "Upd_fail", 0, paramInt, "", "", "", "");
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
+    while (UpgradeTipsDialog.a(this.a).a(paramWebView, paramString)) {
+      return true;
+    }
+    this.a.a.loadUrl(paramString);
+    return true;
   }
 }
 

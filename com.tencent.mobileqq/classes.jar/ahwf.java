@@ -1,28 +1,23 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import android.view.animation.Animation;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 
 public class ahwf
-  extends SosoInterface.OnLocationListener
+  extends bhry
 {
-  public ahwf(NetSearchEngine paramNetSearchEngine, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public ahwf(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt == 0)
-    {
-      NetSearchEngine.a = paramSosoLbsInfo.a.a;
-      NetSearchEngine.b = paramSosoLbsInfo.a.b;
-    }
+    this.a.a(true);
+    EmoticonGroupStoreFragment.a(this.a, false);
+    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.a(this.a));
+    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahwf
  * JD-Core Version:    0.7.0.1
  */

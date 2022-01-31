@@ -1,20 +1,27 @@
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.AuthorityLoginView;
-import com.tencent.open.agent.CardContainer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.ImageView;
 
 class alal
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  alal(alak paramalak) {}
+  alal(alaj paramalaj) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a.a.a.a(false);
+    if (alaj.a(this.a) != null)
+    {
+      alaj.b(this.a).setVisibility(8);
+      alaj.c(this.a).setVisibility(8);
+      alaj.b(this.a, false);
+      alaj.a(this.a).a();
+    }
+    this.a.a(6, 3, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alal
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,103 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.transfile.HttpDownloader;
-import com.tencent.mobileqq.transfile.HttpDownloaderParams;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
 
-public final class aiqg
-  implements INetEngine.INetEngineListener
+class aiqg
+  extends Handler
 {
-  long jdField_a_of_type_Long = 0L;
+  private aiqg(aiqf paramaiqf) {}
   
-  public aiqg(URLDrawableHandler paramURLDrawableHandler, String paramString, HttpDownloaderParams paramHttpDownloaderParams) {}
-  
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HttpDownloader", 2, " structMsgCover onUpdateProgeress totalLen = " + paramLong2 + " curOffset = " + paramLong1);
-    }
-    this.jdField_a_of_type_Long = paramLong2;
-  }
-  
-  public void a(NetResp paramNetResp)
-  {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("HttpDownloader", 2, " structMsgCover download onResp result fileSize = " + this.jdField_a_of_type_Long + " file.path = " + paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c + " resp.result = " + paramNetResp.jdField_a_of_type_Int);
-    }
-    if (paramNetResp.jdField_a_of_type_Int == 3) {
-      return;
-    }
-    boolean bool1;
-    if (paramNetResp.jdField_a_of_type_Int == 0)
+    switch (paramMessage.what)
     {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentImageURLDrawableHandler != null)
-      {
-        this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadSucceed(this.jdField_a_of_type_Long);
-        bool1 = bool2;
-      }
     }
-    for (;;)
+    do
     {
-      try
+      do
       {
-        HttpDownloader.a(bool1, new URL(this.jdField_a_of_type_JavaLangString), null, true, paramNetResp.c, paramNetResp.e, null, this.jdField_a_of_type_ComTencentMobileqqTransfileHttpDownloaderParams);
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    return;
+                    if (QLog.isColorLevel()) {
+                      QLog.d("carverW VideoPlayController", 2, "MEDIA_PREPAREING ");
+                    }
+                    aiqf.a(this.a, 2);
+                    return;
+                    if (QLog.isColorLevel()) {
+                      QLog.d("carverW VideoPlayController", 2, "onPrepared  getAutoPlayFlag=" + this.a.a());
+                    }
+                    if (this.a.jdField_a_of_type_Aiqh != null) {
+                      this.a.jdField_a_of_type_Aiqh.a(this.a.jdField_a_of_type_Aiqo, this.a.b());
+                    }
+                    if (this.a.a())
+                    {
+                      this.a.m();
+                      this.a.a(false);
+                      return;
+                    }
+                    aiqf.a(this.a, 3);
+                    return;
+                    if (QLog.isColorLevel()) {
+                      QLog.d("carverW VideoPlayController", 2, "onSeekComplete");
+                    }
+                  } while (this.a.jdField_a_of_type_Aiqh == null);
+                  this.a.jdField_a_of_type_Aiqh.v();
+                  return;
+                  if (QLog.isColorLevel()) {
+                    QLog.d("carverW VideoPlayController", 2, "onPlaybackComplete");
+                  }
+                  aiqf.a(this.a, true);
+                  this.a.a(0);
+                  this.a.b(0);
+                  if (this.a.jdField_a_of_type_Aiqh != null) {
+                    this.a.jdField_a_of_type_Aiqh.c(this.a.jdField_a_of_type_Aiqo);
+                  }
+                  aiqf.a(this.a, 0);
+                  return;
+                } while (!QLog.isColorLevel());
+                QLog.d("carverW VideoPlayController", 2, "onVideoSizeChanged");
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d("carverW VideoPlayController", 2, "MEDIA_INSTALL_SUCCESS");
+                }
+              } while ((this.a.jdField_a_of_type_Aiob == null) || (this.a.jdField_a_of_type_AndroidAppActivity == null));
+              this.a.jdField_a_of_type_AndroidViewView = this.a.jdField_a_of_type_Aiob.a(this.a.jdField_a_of_type_AndroidAppActivity);
+            } while ((this.a.jdField_a_of_type_AndroidViewView == null) || (this.a.jdField_a_of_type_AndroidAppActivity == null));
+            aiqf.a(this.a, this.a.jdField_a_of_type_AndroidAppActivity);
+            return;
+            if (QLog.isColorLevel()) {
+              QLog.d("carverW VideoPlayController", 2, "Error (" + paramMessage.arg1 + "," + paramMessage.arg2 + ")");
+            }
+            this.a.a(paramMessage.arg1, paramMessage.arg2);
+            return;
+          } while (this.a.jdField_a_of_type_Aiqh == null);
+          if (paramMessage.arg1 == 929)
+          {
+            this.a.jdField_a_of_type_Aiqh.d(this.a.jdField_a_of_type_Aiqo);
+            this.a.b(8);
+            return;
+          }
+        } while (paramMessage.arg1 != 92);
+        this.a.jdField_a_of_type_Aiqh.a(this.a.jdField_a_of_type_Aiqo, paramMessage.arg2);
         return;
-      }
-      catch (Exception paramNetResp)
-      {
-        return;
-      }
-      bool2 = false;
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentImageURLDrawableHandler != null)
-      {
-        this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(paramNetResp.jdField_a_of_type_Int);
-        bool1 = bool2;
-      }
-    }
+        if (QLog.isColorLevel()) {
+          QLog.d("carverW VideoPlayController", 2, "onDownloading isClickToStart=" + aiqf.a(this.a));
+        }
+      } while ((this.a.jdField_a_of_type_Aiqh == null) || (!aiqf.a(this.a)));
+      this.a.jdField_a_of_type_Aiqh.b(this.a.jdField_a_of_type_Aiqo, paramMessage.arg1);
+    } while (aiqf.a(this.a) == 4);
+    this.a.b(8);
   }
 }
 

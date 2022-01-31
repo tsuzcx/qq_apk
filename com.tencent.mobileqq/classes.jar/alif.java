@@ -1,41 +1,17 @@
-import android.app.Activity;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.ControlPolicyUtil;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.open.downloadnew.MyAppApi.InstallParams;
+import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
+import java.util.List;
 
-public class alif
-  implements Runnable
+public abstract interface alif
 {
-  public alif(MyAppApi paramMyAppApi, boolean paramBoolean, Activity paramActivity, String paramString) {}
+  public abstract List<TraceData> a();
   
-  public void run()
-  {
-    LogUtility.c("MyAppApi", "---isAutoInstall:" + ControlPolicyUtil.c() + " url:" + ControlPolicyUtil.a() + " interval:" + ControlPolicyUtil.a());
-    boolean bool = ControlPolicyUtil.b();
-    if ((!this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b()) && (bool))
-    {
-      LogUtility.c("MyAppApi", "---startDownloadYYB---");
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a = new MyAppApi.InstallParams(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi);
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.b = false;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_AndroidOsBundle = null;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_Int = -1;
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 0);
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 1);
-  }
+  public abstract boolean a(List<TraceData> paramList);
+  
+  public abstract boolean b(List<TraceData> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alif
  * JD-Core Version:    0.7.0.1
  */

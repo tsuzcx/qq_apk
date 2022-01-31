@@ -1,123 +1,91 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.takevideo.filter.FilterData.FilterPageItem;
-import com.tencent.biz.qqstory.takevideo.filter.WeatherFilterData;
-import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.hotpic.PublicAccountHotPicPanel;
 
 public class okq
-  extends FilterData.FilterPageItem
+  implements bicy
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  public okq(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public okq(WeatherFilterData paramWeatherFilterData, @NonNull Context paramContext, ViewGroup paramViewGroup)
+  public View a(int paramInt)
   {
-    super(paramContext, paramViewGroup);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131372168));
-  }
-  
-  private void a(int paramInt)
-  {
-    char[] arrayOfChar = String.valueOf(paramInt).toCharArray();
-    paramInt = 0;
-    Object localObject1;
-    while (paramInt < arrayOfChar.length)
+    EmoticonMainPanel localEmoticonMainPanel = null;
+    if (paramInt == 3)
     {
-      Object localObject2 = (ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt);
-      localObject1 = localObject2;
-      if (localObject2 == null)
+      if (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel == null)
       {
-        localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-        localObject2 = new RelativeLayout.LayoutParams(UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 40.0F), UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 62.0F));
-        if (paramInt != 0) {
-          ((RelativeLayout.LayoutParams)localObject2).leftMargin = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 1.0F);
-        }
-        ((ImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_CENTER);
-        ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = ((EmoticonMainPanel)View.inflate(ReadInJoyCommentComponentFragment.a(this.a), 2131559056, null));
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.setCallBack(ReadInJoyCommentComponentFragment.a(this.a));
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.b = true;
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a(ReadInJoyCommentComponentFragment.a(this.a).app, 1008, ReadInJoyCommentComponentFragment.a(this.a), ReadInJoyCommentComponentFragment.a(this.a).getTitleBarHeight(), null, null);
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.k();
       }
-      a((ImageView)localObject1, arrayOfChar[paramInt]);
-      paramInt += 1;
+      localEmoticonMainPanel = this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel;
     }
-    paramInt = arrayOfChar.length;
-    while (paramInt < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
+    while (paramInt != 24) {
+      return localEmoticonMainPanel;
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel == null)
     {
-      localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeView((View)localObject1);
-      paramInt += 1;
+      this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel = ((PublicAccountHotPicPanel)View.inflate(ReadInJoyCommentComponentFragment.a(this.a), 2131559478, null));
+      this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.a(ReadInJoyCommentComponentFragment.a(this.a).app, ReadInJoyCommentComponentFragment.a(this.a), null, this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer);
+      this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.setPublicAccountGifListener(ReadInJoyCommentComponentFragment.a(this.a));
     }
+    return this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel;
   }
   
-  private void a(ImageView paramImageView, char paramChar)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (paramImageView == null) {
-      return;
+    boolean bool;
+    if ((paramInt1 == 24) && (this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel != null)) {
+      if (paramInt2 == 1)
+      {
+        bool = true;
+        this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.a(bool);
+        label34:
+        if (paramInt2 != 1) {
+          break label82;
+        }
+        ReadInJoyCommentComponentFragment.a(this.a, 1);
+      }
     }
-    switch (paramChar)
+    label82:
+    do
     {
-    case '.': 
-    case '/': 
-    default: 
       return;
-    case '-': 
-      paramImageView.setImageResource(2130843760);
-      return;
-    case '0': 
-      paramImageView.setImageResource(2130843761);
-      return;
-    case '1': 
-      paramImageView.setImageResource(2130843762);
-      return;
-    case '2': 
-      paramImageView.setImageResource(2130843763);
-      return;
-    case '3': 
-      paramImageView.setImageResource(2130843764);
-      return;
-    case '4': 
-      paramImageView.setImageResource(2130843765);
-      return;
-    case '5': 
-      paramImageView.setImageResource(2130843766);
-      return;
-    case '6': 
-      paramImageView.setImageResource(2130843767);
-      return;
-    case '7': 
-      paramImageView.setImageResource(2130843768);
-      return;
-    case '8': 
-      paramImageView.setImageResource(2130843769);
-      return;
-    }
-    paramImageView.setImageResource(2130843770);
+      bool = false;
+      break;
+      if ((paramInt2 != 24) || (this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel == null)) {
+        break label34;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.f();
+      break label34;
+      if (paramInt2 == 3)
+      {
+        ReadInJoyCommentComponentFragment.a(this.a, 2);
+        return;
+      }
+      if (paramInt2 == 0)
+      {
+        ReadInJoyCommentComponentFragment.a(this.a, 0);
+        return;
+      }
+    } while (paramInt2 != 24);
+    ReadInJoyCommentComponentFragment.a(this.a, 3);
   }
   
-  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public boolean a(int paramInt)
   {
-    return LayoutInflater.from(paramContext).inflate(2130970904, paramViewGroup, false);
+    return false;
   }
   
-  public void a(WeatherFilterData paramWeatherFilterData, int paramInt)
-  {
-    super.a(paramWeatherFilterData, paramInt);
-    if (paramWeatherFilterData != null) {
-      a(paramWeatherFilterData.c);
-    }
-  }
+  public void s() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okq
  * JD-Core Version:    0.7.0.1
  */

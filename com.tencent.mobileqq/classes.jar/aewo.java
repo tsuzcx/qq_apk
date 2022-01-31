@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.OnCsError;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
-
-public class aewo
-  implements CsTask.OnCsError
+class aewo
+  implements aewp
 {
-  public aewo(VideoFeedsUploader paramVideoFeedsUploader) {}
+  aewo(aewn paramaewn) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void a()
   {
-    VideoFeedsUploader.a(this.a).a = -1004;
-    VideoFeedsUploader.a(this.a).c = paramInt;
-    VideoFeedsUploader.a(this.a, VideoFeedsUploader.a(this.a));
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aewo
  * JD-Core Version:    0.7.0.1
  */

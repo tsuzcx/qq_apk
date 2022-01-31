@@ -1,33 +1,27 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
-
-public class anpu
-  implements Animator.AnimatorListener
+class anpu
 {
-  public anpu(QIMProviderContainerView paramQIMProviderContainerView) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UserGuideManager", 2, "ProviderContainerView  startDownAnimation onAnimationEnd");
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.c.setVisibility(8);
+    this.a = null;
+    this.b = null;
+    this.c = null;
+    this.d = null;
+    this.e = null;
+    this.f = null;
+    this.g = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpu
  * JD-Core Version:    0.7.0.1
  */

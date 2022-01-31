@@ -1,20 +1,21 @@
-import com.tencent.litetransfersdk.Session;
-import com.tencent.mobileqq.app.DataLineHandler;
+import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
 
-public class zce
-  implements Runnable
+class zce
+  implements zac<CLIENT.StSmartMatchMusicRsp>
 {
-  public zce(DataLineHandler paramDataLineHandler, long paramLong) {}
+  zce(zby paramzby) {}
   
-  public void run()
+  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StSmartMatchMusicRsp paramStSmartMatchMusicRsp)
   {
-    Session localSession = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a(this.jdField_a_of_type_Long);
-    DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler, localSession, null, null, true);
+    long l = System.currentTimeMillis() - zby.a(this.a);
+    zaj.a("edit_smart_music", zaj.a(paramLong, l, "", 0L));
+    this.a.a(alud.a(2131704294) + l + "ms");
+    zby.a(this.a, paramBoolean, paramLong, paramString, paramStSmartMatchMusicRsp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zce
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,60 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment.ItemViewHolder;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.widget.XListView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedLikeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class wiv
-  implements IIconListener
+  extends urt<vhh>
 {
-  public wiv(SearchBaseFragment paramSearchBaseFragment) {}
+  public String a;
+  public boolean a;
+  public int c = -1;
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public String a()
   {
-    if ((paramBitmap == null) || (paramInt2 == 201)) {}
-    for (;;)
+    return uqn.a("StorySvc.feed_like_list_715");
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspFeedLikeList localRspFeedLikeList = new qqstory_service.RspFeedLikeList();
+    try
     {
-      return;
-      if ((this.a.e == 0) && (this.a.a != null))
-      {
-        int i = this.a.a.getChildCount();
-        paramInt2 = 0;
-        while (paramInt2 < i)
-        {
-          paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
-          if ((paramBitmap != null) && ((paramBitmap instanceof SearchBaseFragment.ItemViewHolder)))
-          {
-            paramBitmap = (SearchBaseFragment.ItemViewHolder)paramBitmap;
-            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
-              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
-            }
-          }
-          paramInt2 += 1;
-        }
-      }
+      localRspFeedLikeList.mergeFrom(paramArrayOfByte);
+      return new wiw(localRspFeedLikeList);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wxe.d("Q.qqstory:GetLikeListRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqFeedLikeList localReqFeedLikeList = new qqstory_service.ReqFeedLikeList();
+    localReqFeedLikeList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 2;; i = 1)
+    {
+      localReqFeedLikeList.source.set(i);
+      if (this.c != -1) {
+        localReqFeedLikeList.type.set(this.c);
+      }
+      return localReqFeedLikeList.toByteArray();
+    }
+  }
+  
+  public String toString()
+  {
+    return "GetLikeListRequest{, feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isOpen=" + this.jdField_a_of_type_Boolean + ", type=" + this.c + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wiv
  * JD-Core Version:    0.7.0.1
  */

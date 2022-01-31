@@ -1,113 +1,64 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.preference.PreferenceManager;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
 public class bjq
-  implements Runnable
+  implements BusinessObserver
 {
-  public Runnable a;
-  public String a;
-  public boolean a;
+  public bjq(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public bjq(MultiVideoCtrlLayerUI paramMultiVideoCtrlLayerUI)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRunnable = null;
-  }
-  
-  void a(String paramString)
-  {
-    boolean bool2;
-    SharedPreferences localSharedPreferences;
-    String str;
-    if (paramString.equals("WIFI"))
-    {
-      bool2 = NetworkUtil.g((Context)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_JavaLangRefWeakReference.get());
-      if (bool2) {
-        break label442;
-      }
-      localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a());
-      str = "WIFI_NOTICE" + this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-      if (!localSharedPreferences.contains(str)) {
-        break label442;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "success:" + String.valueOf(paramBoolean));
     }
-    label442:
-    for (boolean bool1 = localSharedPreferences.getBoolean(str, true);; bool1 = true)
-    {
-      if ((bool2 == true) || (!bool1))
-      {
-        this.jdField_a_of_type_JavaLangString = paramString;
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 0L);
-      }
-      do
-      {
-        return;
-        DialogUtil.a((Context)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_JavaLangRefWeakReference.get(), 230, this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_AndroidContentResResources.getString(2131560225), this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_AndroidContentResResources.getString(2131560222), 2131560229, 2131560230, new bjr(this), new bjs(this)).show();
-        return;
-      } while (!paramString.equals("CPU"));
-      int i = this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_ComTencentAvVideoController.i();
-      QLog.d("MultiVideoCtrlLayerUI", 2, "cpuAbility: %d" + i);
-      if (i != 2)
-      {
-        localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a());
-        str = "CPU_NOTICE" + this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-        if (!localSharedPreferences.contains(str)) {}
-      }
-      for (bool1 = localSharedPreferences.getBoolean(str, true);; bool1 = true)
-      {
-        if ((i == 2) || (!bool1))
-        {
-          this.jdField_a_of_type_JavaLangString = paramString;
-          this.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 0L);
-          return;
-        }
-        DialogUtil.a((Context)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_JavaLangRefWeakReference.get(), 230, ((Context)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131560225), ((Context)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131560224), 2131560229, 2131560230, new bjt(this), new bju(this)).show();
-        return;
-      }
+    if (!paramBoolean) {
+      this.a.a(2131560545);
     }
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      a("WIFI");
-    }
-    do
+    for (;;)
     {
+      paramBundle = this.a;
+      paramBundle.jdField_b_of_type_Int -= 1;
+      if (this.a.jdField_b_of_type_Int == 0) {
+        AccountDetailActivity.a(this.a);
+      }
       return;
-      if (this.jdField_a_of_type_JavaLangString.equals("WIFI"))
+      if (paramBoolean) {}
+      try
       {
-        if (this.jdField_a_of_type_Boolean)
-        {
-          a("CPU");
-          return;
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          continue;
         }
-        this.jdField_a_of_type_JavaLangString = null;
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_JavaLangRunnable = null;
-        return;
+        mobileqq_mp.UnFollowResponse localUnFollowResponse = new mobileqq_mp.UnFollowResponse();
+        localUnFollowResponse.mergeFrom(paramBundle);
+        if (((mobileqq_mp.RetInfo)localUnFollowResponse.ret_info.get()).ret_code.get() == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "unfollow success");
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.b(this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
+          AccountDetailActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
+          paramBundle = new Intent();
+          paramBundle.putExtra("isNeedFinish", true);
+          this.a.setResult(-1, paramBundle);
+          this.a.finish();
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int);
+          continue;
+        }
+        this.a.a(2131560545);
       }
-    } while (!this.jdField_a_of_type_JavaLangString.equals("CPU"));
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangRunnable != null)) {
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 0L);
+      catch (Exception paramBundle) {}
+      this.a.a(2131560545);
     }
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRunnable = null;
   }
 }
 

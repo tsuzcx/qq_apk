@@ -10,7 +10,7 @@ public class b
   public long f;
   public int g;
   public String h;
-  public byte i;
+  public byte i = 0;
   public int j;
   public long k;
   public Runnable l;

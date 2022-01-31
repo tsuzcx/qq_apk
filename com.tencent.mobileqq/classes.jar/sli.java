@@ -1,41 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditActivity;
+import android.animation.AnimatorSet;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
 
 public class sli
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public sli(EditActivity paramEditActivity) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void onClick(View paramView)
+  public sli(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramView = this.a;
-    if (!EditActivity.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramValueAnimator.getCurrentPlayTime() >= 100L) && (!this.jdField_a_of_type_Boolean))
     {
-      EditActivity.a(paramView, bool);
-      if (!EditActivity.a(this.a)) {
-        break;
-      }
-      this.a.d();
-      EditActivity.a(this.a).setImageResource(2130837627);
-      if (EditActivity.a(this.a) != null) {
-        EditActivity.a(this.a).setVisibility(0);
-      }
-      return;
+      ColorBandVideoEntranceButton.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotColorBandVideoEntranceButton).start();
+      this.jdField_a_of_type_Boolean = true;
     }
-    if (EditActivity.a(this.a) != null) {
-      EditActivity.a(this.a).setVisibility(4);
-    }
-    EditActivity.a(this.a).setImageResource(2130844545);
-    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sli
  * JD-Core Version:    0.7.0.1
  */

@@ -8,12 +8,12 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class Qworkflow$WorkflowContent
-  extends MessageMicro
+  extends MessageMicro<WorkflowContent>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_title = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_userdef = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_content_list = PBField.initRepeatMessage(Qworkflow.ContentElement.class);
+  public final PBRepeatMessageField<Qworkflow.ContentElement> rpt_content_list = PBField.initRepeatMessage(Qworkflow.ContentElement.class);
   
   static
   {
@@ -24,7 +24,7 @@ public final class Qworkflow$WorkflowContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.trunk.Qworkflow.Qworkflow.WorkflowContent
  * JD-Core Version:    0.7.0.1
  */

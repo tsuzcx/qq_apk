@@ -1,24 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.voip.EditTextAutoResizeFont;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class etx
   implements View.OnClickListener
 {
-  public etx(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public etx(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_b_of_type_Boolean) {
-      ReportController.b(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      this.a.finish();
-      return;
-      ReportController.b(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
-    }
+    VoipDialInterfaceActivity.a(this.a).setCursorVisible(true);
+    VoipDialInterfaceActivity.b(this.a).setCursorVisible(false);
+    ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(VoipDialInterfaceActivity.b(this.a).getWindowToken(), 0);
   }
 }
 

@@ -1,32 +1,100 @@
 package com.tencent.mobileqq.apollo.game;
 
+import aktr;
+import akul;
+import akwd;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.widget.FrameLayout;
-import com.tencent.biz.common.util.Util;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import azqs;
+import beft;
+import beiy;
+import bejh;
+import bidj;
 import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
-import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import ypx;
-import ypy;
+import ndq;
 
 public class ApolloWebViewFragment
   extends ApolloFragment
 {
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  View.OnLayoutChangeListener jdField_a_of_type_AndroidViewView$OnLayoutChangeListener = new akul(this);
+  public Runnable a;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
+  private int c;
+  
+  public ApolloWebViewFragment()
+  {
+    this.jdField_a_of_type_JavaLangRunnable = new ApolloWebViewFragment.2(this);
+  }
+  
+  private boolean g()
+  {
+    try
+    {
+      Uri localUri = Uri.parse(b());
+      if (localUri.isHierarchical())
+      {
+        boolean bool = TextUtils.isEmpty(localUri.getQueryParameter("_fv"));
+        if (!bool) {
+          return true;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ApolloWebViewFragment", 1, localException, new Object[0]);
+    }
+    return false;
+  }
+  
+  private boolean h()
+  {
+    try
+    {
+      Object localObject = Uri.parse(b());
+      if (((Uri)localObject).isHierarchical())
+      {
+        String str = ((Uri)localObject).getQueryParameter("_wv");
+        localObject = ((Uri)localObject).getQueryParameter("_wwv");
+        if (TextUtils.isEmpty(str))
+        {
+          boolean bool = TextUtils.isEmpty((CharSequence)localObject);
+          if (bool) {}
+        }
+        else
+        {
+          return true;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ApolloWebViewFragment", 1, localException, new Object[0]);
+    }
+    return false;
+  }
+  
+  private void i()
+  {
+    if (bidj.a(a()))
+    {
+      a().findViewById(16908290).addOnLayoutChangeListener(this.jdField_a_of_type_AndroidViewView$OnLayoutChangeListener);
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
@@ -34,7 +102,7 @@ public class ApolloWebViewFragment
     {
       paramBundle = a();
       if (paramBundle != null) {
-        paramBundle.putExtra("Director", new ApolloGameView.Director());
+        paramBundle.putExtra("Director", new WebGameFakeView.Director());
       }
       if (Build.VERSION.SDK_INT < 18) {
         this.jdField_a_of_type_ComTencentBizUiTouchWebView.clearView();
@@ -53,13 +121,13 @@ public class ApolloWebViewFragment
     if (!TextUtils.isEmpty(str))
     {
       Object localObject = a().getSerializableExtra("Director");
-      if ((localObject != null) && ((localObject instanceof ApolloGameView.Director)))
+      if ((localObject != null) && ((localObject instanceof WebGameFakeView.Director)))
       {
-        localObject = (ApolloGameView.Director)localObject;
-        if (!str.equals(((ApolloGameView.Director)localObject).title))
+        localObject = (WebGameFakeView.Director)localObject;
+        if (!str.equals(((WebGameFakeView.Director)localObject).title))
         {
-          ((ApolloGameView.Director)localObject).title = str;
-          ApolloFragmentManager.a().b();
+          ((WebGameFakeView.Director)localObject).title = str;
+          aktr.a().b();
         }
       }
     }
@@ -73,30 +141,30 @@ public class ApolloWebViewFragment
   
   public void a(String paramString)
   {
-    Util.a("Web_readyToLoadUrl");
+    ndq.a("Web_readyToLoadUrl");
     if ((this.jdField_a_of_type_ComTencentBizUiTouchWebView == null) || (TextUtils.isEmpty(paramString))) {
       return;
     }
-    c();
+    a();
     if (Build.VERSION.SDK_INT < 18) {
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.clearView();
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics.e) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics.h > 0L))
+      if ((this.jdField_a_of_type_Beiy.i) && (this.jdField_a_of_type_Beiy.k > 0L))
       {
-        ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics.h) / 1000000L), "", "", "", "" + this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics.c);
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics.h = 0L;
+        azqs.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.jdField_a_of_type_Beiy.k) / 1000000L), "", "", "", "" + this.jdField_a_of_type_Beiy.c);
+        this.jdField_a_of_type_Beiy.k = 0L;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics.n = System.currentTimeMillis();
-      long l = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics.n;
-      l = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics.b;
+      this.jdField_a_of_type_Beiy.q = System.currentTimeMillis();
+      long l = this.jdField_a_of_type_Beiy.q;
+      l = this.jdField_a_of_type_Beiy.b;
       this.g = paramString;
       if (!TextUtils.isEmpty(this.g)) {
         this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(this.g);
       }
-      Util.b("Web_readyToLoadUrl");
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.g, 0, 0, 0, 0, 0, null);
+      ndq.b("Web_readyToLoadUrl");
+      this.jdField_a_of_type_Beiy.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.g, 0, 0, 0, 0, 0, null);
       return;
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("about:blank");
     }
@@ -104,25 +172,20 @@ public class ApolloWebViewFragment
   
   public boolean a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.c = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_Boolean = false;
-    Util.a("Web_qqbrowser_ShowPreview");
-    long l = System.nanoTime();
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidContentIntent);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b(this.jdField_a_of_type_AndroidContentIntent);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.y);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_b_of_type_AndroidViewViewGroup = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a(this.jdField_a_of_type_AndroidContentIntent, this);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b(false);
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloWebViewFragment", 2, "init view 1, cost = " + (System.nanoTime() - l) / 1000000L);
+    boolean bool = h();
+    if (!bool)
+    {
+      this.jdField_a_of_type_Bejh.jdField_a_of_type_Bejk.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Bejh.b = false;
+      this.jdField_a_of_type_Bejh.jdField_a_of_type_Boolean = false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.c = true;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidWidgetProgressBar = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetProgressBar;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.g);
-    Util.b("Web_qqbrowser_ShowPreview");
+    if (!g()) {
+      this.jdField_a_of_type_Bejk.c = 0L;
+    }
+    super.a();
+    if (!bool) {
+      this.jdField_a_of_type_Beft.b(false);
+    }
     return true;
   }
   
@@ -137,8 +200,9 @@ public class ApolloWebViewFragment
       paramBundle.getInt("id");
       str1 = paramBundle.getString("url");
       String str2 = b();
+      akwd.a(new Object[] { "[launchWebGame], success load url:", str1 });
       if ((TextUtils.isEmpty(str2)) || (str2.equals(str1))) {
-        break label64;
+        break label83;
       }
       a(str1);
     }
@@ -146,7 +210,7 @@ public class ApolloWebViewFragment
     {
       super.b(paramBundle);
       return;
-      label64:
+      label83:
       if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) {
         this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(str1);
       }
@@ -161,64 +225,50 @@ public class ApolloWebViewFragment
     if (paramBundle != null)
     {
       this.jdField_a_of_type_Int = paramBundle.getInt("id");
-      ThreadManager.post(new ypy(this, paramBundle.getString("url")), 8, null, false);
+      ThreadManager.post(new ApolloWebViewFragment.3(this, paramBundle.getString("url")), 8, null, false);
     }
     super.c(paramBundle);
   }
   
-  protected int e(Bundle paramBundle)
+  public int f(Bundle paramBundle)
   {
-    Util.a("Web_qqbrowser_state_machine_init_ui_frame");
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.d = true;
+    ndq.a("Web_qqbrowser_state_machine_init_ui_frame");
+    if (this.jdField_a_of_type_Bejh != null) {
+      this.jdField_a_of_type_Bejh.d = true;
     }
+    i();
     a();
     this.m = 128;
-    Util.b("Web_qqbrowser_state_machine_init_ui_frame");
+    ndq.b("Web_qqbrowser_state_machine_init_ui_frame");
     return 1;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_Boolean) {
+      a().findViewById(16908290).removeOnLayoutChangeListener(this.jdField_a_of_type_AndroidViewView$OnLayoutChangeListener);
+    }
   }
   
   public void onResume()
   {
-    int j = 1;
-    Util.a("Web_qqbrowser_doonresume");
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloWebViewFragment", 2, "onResume");
-    }
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) {
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.onResume();
-    }
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putInt("state_machine_step", this.m);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider.a(2, (Bundle)localObject);
-    localObject = a();
-    int i = j;
-    if ((localObject instanceof QQBrowserActivity))
+    super.onResume();
+    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) {}
+    try
     {
-      WebViewFragment localWebViewFragment = ((QQBrowserActivity)localObject).b();
-      i = j;
-      if (localWebViewFragment != null) {
-        if (localWebViewFragment != this) {
-          break label139;
-        }
-      }
-    }
-    label139:
-    for (i = 1;; i = 0)
-    {
-      if (i != 0) {
-        a(2L, null);
-      }
-      ThreadManager.executeOnSubThread(new ypx(this, (Activity)localObject));
-      Util.b("Web_qqbrowser_doonresume");
-      super.onResume();
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.requestFocus();
       return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ApolloWebViewFragment", 1, localException, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,39 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.mobileqq.jsbridge.WebBridge.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class fzm
-  extends fzn
+  implements Runnable
 {
-  public fzm(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  public fzm(WebBridge.JsBridgeListener paramJsBridgeListener, JSONObject paramJSONObject, WebView paramWebView) {}
   
-  protected String a()
+  public void run()
   {
-    return "StateAcceptByPCWhenToOffFailed";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.a == null)
+    try
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "]. recvOnLineFile entity is null");
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("responseId", this.jdField_a_of_type_ComTencentMobileqqJsbridgeWebBridge$JsBridgeListener.a);
+      localJSONObject.put("responseData", this.jdField_a_of_type_OrgJsonJSONObject);
+      if (QLog.isColorLevel()) {
+        QLog.i("BaseWebActivity.WebBridge", 2, "WebBridge onComplete setMessage message:" + localJSONObject.toString());
+      }
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:qqJSBridge.setMessage('" + localJSONObject.toString() + "');");
       return;
     }
-    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 5);
-    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 5);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateAcceptByPC)");
-    this.jdField_a_of_type_Fzn = new fzk(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+    catch (JSONException localJSONException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("BaseWebActivity.WebBridge", 2, "WebBridge onComplete Exception:" + localJSONException.getMessage());
+      }
+      localJSONException.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fzm
  * JD-Core Version:    0.7.0.1
  */

@@ -5,18 +5,19 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import astv;
+import asub;
+import asuu;
+import azqs;
+import bdin;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hotpic.HotPicIndexAndIDMap;
 import com.tencent.mobileqq.hotpic.HotPicMainPanel;
-import com.tencent.mobileqq.hotpic.HotPicManager;
-import com.tencent.mobileqq.hotpic.HotPicPageView.OnHotPicItemClickListener;
 import com.tencent.mobileqq.hotpic.HotPicPanelViewPagerAdapter;
 import com.tencent.mobileqq.hotpic.HotPicTab;
 import com.tencent.mobileqq.hotpic.HotPicTagInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XPanelContainer;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
 public class TribeHotPicPanel
   extends HotPicMainPanel
 {
-  protected HotPicPageView.OnHotPicItemClickListener a;
+  protected asuu a;
   protected boolean b;
   
   public TribeHotPicPanel(Context paramContext, AttributeSet paramAttributeSet)
@@ -34,20 +35,20 @@ public class TribeHotPicPanel
     super(paramContext, paramAttributeSet);
   }
   
-  protected void a(int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, HotPicPageView.OnHotPicItemClickListener paramOnHotPicItemClickListener)
+  public void a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, asuu paramasuu)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramBaseActivity;
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$OnHotPicItemClickListener = paramOnHotPicItemClickListener;
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362727);
-    this.c = findViewById(2131362992);
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramBaseActivity).inflate(2130968640, null);
+    this.jdField_a_of_type_Asuu = paramasuu;
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369767);
+    this.c = findViewById(2131367782);
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramBaseActivity).inflate(2131558579, null);
     this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131362990));
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab = ((HotPicTab)findViewById(2131362991));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131367788));
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab = ((HotPicTab)findViewById(2131367769));
     this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab.setOnItemClickListener(this);
   }
   
@@ -61,26 +62,26 @@ public class TribeHotPicPanel
   {
     this.d = XPanelContainer.jdField_a_of_type_Int;
     if (jdField_a_of_type_Int > this.d) {}
-    HotPicManager localHotPicManager;
+    asub localasub;
     Object localObject1;
     Object localObject3;
     for (boolean bool = true;; bool = false)
     {
       this.jdField_a_of_type_Boolean = bool;
       if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.Panel", 2, "onShow 349884 init panelH " + this.d + " needExtendPanel" + this.jdField_a_of_type_Boolean);
+        QLog.d("HotPicManager.Panel", 2, "onShow " + AppSetting.g() + " init panelH " + this.d + " needExtendPanel" + this.jdField_a_of_type_Boolean);
       }
-      localHotPicManager = HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      localHotPicManager.a(this);
+      localasub = asub.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localasub.a(this);
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setInterceptListener(this);
       }
-      localHotPicManager.a();
-      localHotPicManager.d();
+      localasub.a();
+      localasub.d();
       localObject1 = new ArrayList();
-      ((ArrayList)localObject1).addAll(localHotPicManager.a());
+      ((ArrayList)localObject1).addAll(localasub.a());
       if (!a()) {
-        break label258;
+        break label269;
       }
       localObject2 = new ArrayList();
       localObject3 = ((ArrayList)localObject1).iterator();
@@ -103,42 +104,42 @@ public class TribeHotPicPanel
         }
       }
     }
-    label258:
+    label269:
     Object localObject2 = ((ArrayList)localObject1).iterator();
     int i = 0;
     int j = -1;
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (HotPicTagInfo)((Iterator)localObject2).next();
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicIndexAndIDMap.a((HotPicTagInfo)localObject3);
-      if (((HotPicTagInfo)localObject3).tagId == localHotPicManager.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_Astv.a((HotPicTagInfo)localObject3);
+      if (((HotPicTagInfo)localObject3).tagId == localasub.jdField_a_of_type_Int) {
         j = i;
       }
       i += 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPanelViewPagerAdapter = new HotPicPanelViewPagerAdapter(this);
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPanelViewPagerAdapter.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$OnHotPicItemClickListener);
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPanelViewPagerAdapter = new HotPicPanelViewPagerAdapter(this, this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPanelViewPagerAdapter.a(this.jdField_a_of_type_Asuu);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPanelViewPagerAdapter);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(this);
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPanelViewPagerAdapter);
     this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab.a((List)localObject1, j);
     this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab.setOnItemClickListener(this);
     if (j != -1) {
       this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(j);
     }
-    if (NetworkUtil.g(this.jdField_a_of_type_AndroidContentContext))
+    if (bdin.g(this.jdField_a_of_type_AndroidContentContext))
     {
-      localObject1 = localHotPicManager.a().iterator();
+      localObject1 = localasub.a().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (HotPicTagInfo)((Iterator)localObject1).next();
         i = ((HotPicTagInfo)localObject2).tagId;
         j = ((HotPicTagInfo)localObject2).tagType;
-        if ((i != 2) && (j != 255) && (!localHotPicManager.b(i))) {
-          localHotPicManager.a(i);
+        if ((i != 2) && (j != 255) && (!localasub.b(i))) {
+          localasub.a(i);
         }
       }
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007B11", "0X8007B11", 0, 0, "", "", "", "");
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007B11", "0X8007B11", 0, 0, "", "", "", "");
     a();
     h();
     setVisibility(0);
@@ -152,7 +153,7 @@ public class TribeHotPicPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TribeHotPicPanel
  * JD-Core Version:    0.7.0.1
  */

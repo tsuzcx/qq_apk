@@ -1,17 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aggt
-  implements DialogInterface.OnClickListener
+class aggt
+  implements View.OnClickListener
 {
-  public aggt(ScanTorchActivity paramScanTorchActivity) {}
+  aggt(aggq paramaggq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    if (aggq.a(this.a) != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NavigateBarManager", 2, String.format("onClick barId: %s", new Object[] { Integer.valueOf(aggq.a(this.a).a) }));
+      }
+      paramView = aggq.a(this.a);
+      aggq.a(this.a);
+      if (paramView != null) {
+        paramView.a();
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aggt
  * JD-Core Version:    0.7.0.1
  */

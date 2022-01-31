@@ -1,105 +1,87 @@
-import com.tencent.mobileqq.magicface.magicfaceaction.Action;
-import com.tencent.mobileqq.magicface.magicfaceaction.MagicfaceActionDecoder;
-import com.tencent.mobileqq.magicface.model.MagicfaceResLoader;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.TroopInviteStatusFragment;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.util.ArrayList;
 
 public class aeea
-  implements Runnable
+  extends ameq
 {
-  public aeea(MagicfaceActionManager paramMagicfaceActionManager, int paramInt1, int paramInt2) {}
+  public aeea(TroopInviteStatusFragment paramTroopInviteStatusFragment) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, ArrayList<String> paramArrayList, int paramInt4)
   {
-    try
-    {
-      bool1 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c;
-      if (bool1) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a(this.jdField_a_of_type_Int);
-      localObject1 = null;
-      if (this.b != 0) {
-        break label277;
-      }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceResLoader.a("send.xml");
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicfaceActionManager", 2, "func doAction. step 1");
-      }
-      if (localObject1 == null) {
-        break label248;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionMagicfaceActionDecoder.a((String)localObject1);
-      if (this.b == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.e();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData);
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionMagicfaceActionDecoder.a((String)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.d();
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_JavaUtilList.iterator();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopInviteStatusFragment", 2, "onGetGroupInviteStatus success:" + paramBoolean + " group_members_num:" + paramInt2 + " group_friends_num:" + paramInt3 + " friends_uins:" + paramArrayList + " status:" + paramInt4);
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        boolean bool1;
-        Object localObject1;
-        Action localAction;
-        boolean bool2;
-        label248:
-        if (QLog.isColorLevel()) {
-          QLog.d("MagicfaceActionManager", 2, "doaction=Exception=" + localException.toString());
-        }
-        label277:
-        label301:
-        return;
-        label383:
-        if (bool1)
-        {
-          bool1 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b;
-          if (!bool1) {}
-        }
-      }
+    if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
     }
-    finally
-    {
-      if (!QLog.isColorLevel()) {
-        break label417;
-      }
-      QLog.d("MagicfaceActionManager", 2, "func doAction, 【magic end】");
-      label417:
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b(this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData);
+    if (this.a.jdField_a_of_type_Bety != null) {
+      this.a.jdField_a_of_type_Bety.dismiss();
     }
-    if (((Iterator)localObject1).hasNext())
-    {
-      localAction = (Action)((Iterator)localObject1).next();
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction = localAction;
-      localAction.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager;
-      localAction.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData;
-      bool1 = localAction.a();
-      bool2 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b;
-      if (!bool2) {
-        break label301;
-      }
-    }
+    if (paramBoolean) {}
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicfaceActionManager", 2, "func doAction, 【magic end】");
+      synchronized (this.a)
+      {
+        this.a.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+        this.a.jdField_b_of_type_Int = paramInt3;
+        this.a.jdField_a_of_type_Int = paramInt2;
+        this.a.jdField_c_of_type_Int = paramInt4;
+        paramInt1 = paramInt4;
+        if (paramInt4 == 5)
+        {
+          paramInt1 = paramInt4;
+          if (this.a.jdField_b_of_type_Boolean)
+          {
+            paramInt1 = paramInt4;
+            if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null)
+            {
+              paramInt1 = paramInt4;
+              if (!this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing())
+              {
+                this.a.jdField_b_of_type_Boolean = false;
+                this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_c_of_type_JavaLangRunnable, 1000L);
+                paramInt1 = paramInt4;
+              }
+            }
+          }
+        }
+        if (paramInt1 != 6) {
+          if (this.a.jdField_a_of_type_Boolean)
+          {
+            paramArrayList = "1";
+            bdes.a("Grp_AIO", "invite", "in_exp", 0, 0, new String[] { paramArrayList, String.valueOf(paramInt1) });
+            TroopInviteStatusFragment.a(this.a);
+            return;
+          }
+        }
       }
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b(this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData);
-      return;
-      if (this.b != 1) {
+      switch (paramInt1)
+      {
+      default: 
+        QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, alud.a(2131715864), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight()).show();
+        paramInt1 = paramInt4;
         break;
+      case 1282: 
+      case 1283: 
+      case 1284: 
+      case 1285: 
+        synchronized (this.a)
+        {
+          this.a.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+          this.a.jdField_b_of_type_Int = paramInt3;
+          this.a.jdField_a_of_type_Int = paramInt2;
+          this.a.jdField_c_of_type_Int = 6;
+          paramInt1 = 6;
+        }
+        paramArrayList = "2";
+        continue;
+        bdes.a("Grp_AIO", "invite", "in_past", 0, 0, new String[0]);
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceResLoader.a("receive.xml");
-      break;
-      if (!localAction.d) {
-        break label383;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c();
     }
   }
 }

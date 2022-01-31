@@ -1,20 +1,12 @@
-import com.tencent.widget.AdapterView;
-
-public class amao
-  implements Runnable
+class amao
+  implements mag
 {
-  private amao(AdapterView paramAdapterView) {}
+  amao(amam paramamam) {}
   
-  public void run()
+  public void a(maf parammaf)
   {
-    if (this.a.mDataChanged)
-    {
-      if (this.a.getAdapter() != null) {
-        this.a.post(this);
-      }
-      return;
-    }
-    AdapterView.access$200(this.a);
+    parammaf.a(this.a.a.a);
+    parammaf.a();
   }
 }
 

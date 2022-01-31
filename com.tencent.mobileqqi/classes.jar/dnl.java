@@ -1,33 +1,20 @@
-import com.tencent.mobileqq.activity.SendMultiPictureHelper;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper.SendingFileInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
 
 class dnl
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  dnl(dnk paramdnk) {}
+  dnl(dni paramdni) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (NetworkUtil.e(this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity)) {
-      return;
-    }
-    this.a.a.jdField_d_of_type_Boolean = true;
-    SendMultiPictureHelper.a(this.a.a);
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
-    int i = 0;
-    while (i < this.a.a.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      long l = this.a.a.a((SendMultiPictureHelper.SendingFileInfo)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i), this.a.a.jdField_c_of_type_Int, this.a.a.jdField_d_of_type_JavaLangString, this.a.a.jdField_c_of_type_JavaLangString);
-      ((SendMultiPictureHelper.SendingFileInfo)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i)).a = l;
-      this.a.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(String.format(this.a.a.f, new Object[] { Integer.valueOf(this.a.a.jdField_a_of_type_Int + i), Integer.valueOf(this.a.a.b), Integer.valueOf(0) }));
-      i += 1;
-    }
-    this.a.a.c();
+    SubAccountAssistantForward.b(this.a.a.b);
+    SubAccountAssistantForward.a(this.a.a.b);
+    SubAccountAssistantForward.a(this.a.a.b, this.a.a, this.a.a.b.getAccount());
+    this.a.a.finish();
   }
 }
 

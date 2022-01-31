@@ -1,21 +1,24 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.TextInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.TextViewHolder;
-import mqq.os.MqqHandler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class ajke
-  implements Runnable
+class ajke
+  implements View.OnTouchListener
 {
-  public ajke(XMediaEditor paramXMediaEditor, TextItem.TextViewHolder paramTextViewHolder) {}
+  ajke(ajkd paramajkd) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.requestFocus();
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.findFocus();
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setSelection(XMediaEditor.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor).a);
-    ThreadManager.getUIHandler().post(new ajkf(this));
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

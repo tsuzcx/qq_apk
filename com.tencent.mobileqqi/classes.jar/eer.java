@@ -1,23 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.activity.contact.newfriend.RecommendListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.PhoneContactManager;
+import java.util.List;
 
 public class eer
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public eer(MarketFaceItemBuilder paramMarketFaceItemBuilder, eev parameev) {}
+  public eer(RecommendListView paramRecommendListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ChatActivityFacade.a(MarketFaceItemBuilder.j(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder), this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.b, MarketFaceItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder), this.jdField_a_of_type_Eev.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a, this.jdField_a_of_type_Eev.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+    for (;;)
+    {
+      synchronized (RecommendListView.a(this.a))
+      {
+        if (!RecommendListView.a(this.a)) {
+          return;
+        }
+        Object localObject1 = (PhoneContactManager)this.a.a.getManager(10);
+        if (localObject1 != null)
+        {
+          localObject1 = ((PhoneContactManager)localObject1).d();
+          this.a.a.runOnUiThread(new ees(this, (List)localObject1));
+          return;
+        }
+      }
+      Object localObject3 = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     eer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,13 @@
-import com.tencent.common.app.BaseProtocolCoder;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.compatible.ActionListener;
-import com.tencent.mobileqq.service.MobileQQService;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
 
 public class gmy
-  extends ActionListener
+  implements Runnable
 {
-  public gmy(MobileQQService paramMobileQQService) {}
+  public gmy(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public void run()
   {
-    if ((paramFromServiceMsg != null) && ("VideoSvc.Send".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())))
-    {
-      localObject = this.a.a("VideoSvc.Send");
-      if (localObject != null)
-      {
-        localObject = ((BaseProtocolCoder)localObject).a(paramToServiceMsg, paramFromServiceMsg);
-        localMessageHandler = MobileQQService.a(this.a).a();
-        if ((localMessageHandler != null) && (localObject != null)) {
-          localMessageHandler.a(paramToServiceMsg, paramFromServiceMsg, localObject);
-        }
-      }
-    }
-    while (paramFromServiceMsg == null)
-    {
-      Object localObject;
-      MessageHandler localMessageHandler;
-      return;
-    }
-    this.a.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    this.a.t();
   }
 }
 

@@ -1,47 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.gaudio.GAudioNotifyCenter;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.ImageUtil;
 
 public class cfh
-  implements View.OnClickListener
+  implements Runnable
 {
-  public cfh(ChatActivity paramChatActivity) {}
+  public cfh(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.a.jdField_a_of_type_Int == 3000)
+    Object localObject = this.a.a.a();
+    localObject = this.a.a.b((String)localObject);
+    if ((localObject != ImageUtil.a()) && (this.a.X == 4096))
     {
-      ChatActivityUtils.a(this.a.b, this.a, this.a.a.jdField_a_of_type_JavaLangString, true, true, null);
-      long l = Long.valueOf(this.a.a.jdField_a_of_type_JavaLangString).longValue();
-      if (this.a.b.a().a() != l) {
-        ReportController.b(this.a.b, "CliOper", "", "", "Multi_call", "Mc_corner_launch", 0, 0, "", "", "", "");
+      if (!Conversation.d(this.a)) {
+        break label80;
       }
-      return;
-    }
-    int i;
-    switch (this.a.a.jdField_a_of_type_Int)
-    {
-    default: 
-      i = 0;
+      this.a.b(3500L);
     }
     for (;;)
     {
-      ReportController.b(this.a.b, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(i), "", "", "");
-      PlusPanelUtils.a(this.a.b, this.a, this.a.a, true);
+      this.a.b(new cfi(this, (Drawable)localObject));
       return;
-      i = 0;
-      continue;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
+      label80:
+      this.a.b(4500L);
     }
   }
 }

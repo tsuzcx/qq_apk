@@ -1,51 +1,35 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.VipComicHelper;
-import cooperation.comic.utils.QQComicPluginBridge;
-import java.lang.ref.WeakReference;
 
-public final class amjj
-  extends amjo
+public class amjj
+  extends altm
 {
-  public amjj(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public amjj(HiddenChatFragment paramHiddenChatFragment) {}
   
-  public void run()
+  protected void onSetHiddenChatSwitch(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    if (localQQAppInterface == null) {}
+    if ((paramArrayOfObject == null) || (paramArrayOfObject.length < 2)) {
+      QLog.e("tag_hidden_chat", 1, "data not right");
+    }
     do
     {
       do
       {
-        do
-        {
-          return;
-          if (!QQComicPluginBridge.a(localQQAppInterface)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("QQComicDebug", 2, "plugin is installed.");
         return;
+        String[] arrayOfString = (String[])paramArrayOfObject[0];
+        paramArrayOfObject = (boolean[])paramArrayOfObject[1];
         if (QLog.isColorLevel()) {
-          QLog.d("QQComicDebug", 2, "wait for plugin installation...");
+          QLog.d("tag_hidden_chat", 2, new Object[] { "res:", Boolean.valueOf(paramBoolean), " len1:", Integer.valueOf(arrayOfString.length), " len2:", Integer.valueOf(paramArrayOfObject.length) });
         }
-        VipComicHelper.a(2, localQQAppInterface);
-        if (QQComicPluginBridge.a(localQQAppInterface, true, null)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QQComicDebug", 2, "plugin install failed.");
-      return;
+      } while (!paramBoolean);
+      this.a.a();
     } while (!QLog.isColorLevel());
-    QLog.d("QQComicDebug", 2, "plugin is installed now.");
+    QLog.d("tag_hidden_chat", 2, "onSetHiddenChatSwitch");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjj
  * JD-Core Version:    0.7.0.1
  */

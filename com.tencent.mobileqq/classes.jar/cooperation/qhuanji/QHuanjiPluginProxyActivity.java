@@ -15,14 +15,14 @@ public class QHuanjiPluginProxyActivity
     return PluginStatic.getOrCreateClassLoader(paramContext, "qhuanji_plugin.apk");
   }
   
-  protected void onPause()
+  public void onPause()
   {
     super.onPause();
     Log.i("miles", "QHuanjiPluginProxyActivity >> onPause.");
     a = false;
   }
   
-  protected void onResume()
+  public void onResume()
   {
     super.onResume();
     Log.i("miles", "QHuanjiPluginProxyActivity >> onResume.");
@@ -31,7 +31,7 @@ public class QHuanjiPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qhuanji.QHuanjiPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

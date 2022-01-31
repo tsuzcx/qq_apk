@@ -1,18 +1,15 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatForEnterpriseActivity;
 
 public class cba
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public cba(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public cba(ChatForEnterpriseActivity paramChatForEnterpriseActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    AssistantSettingActivity.c(this.a).setContentDescription(this.a.getString(2131231141));
-    SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131563423), "qqsetting_auto_receive_magic_face_key", paramBoolean);
+    paramView.setVisibility(8);
   }
 }
 

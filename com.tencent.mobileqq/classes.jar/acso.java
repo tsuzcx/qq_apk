@@ -1,38 +1,72 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.annotation.TargetApi;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
 
 public class acso
-  implements Runnable
+  implements ajih
 {
-  public acso(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public acso(Conversation paramConversation) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.f()) && (this.a.jdField_a_of_type_JavaUtilLinkedHashMap != null) && (this.a.jdField_a_of_type_JavaUtilLinkedHashMap.size() > 0))
+    if (this.a.jdField_a_of_type_Ajit != null) {
+      this.a.jdField_a_of_type_Ajit.e();
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.a())) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.v();
+    }
+    if (this.a.jdField_a_of_type_Vaw != null) {
+      this.a.jdField_a_of_type_Vaw.f();
+    }
+  }
+  
+  @TargetApi(11)
+  public void a(int paramInt, float paramFloat) {}
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a.jdField_a_of_type_Awmf.i();
+    if (this.a.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        Object localObject = (String)localIterator.next();
-        localObject = ((List)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject)).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          if (((FileManagerEntity)((Iterator)localObject).next()).sendCloudUnsuccessful()) {
-            ((Iterator)localObject).remove();
-          }
+        ansg localansg = (ansg)localIterator.next();
+        if (localansg != null) {
+          localansg.h();
         }
       }
     }
-    this.a.e();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.F();
+    }
+    if (this.a.jdField_a_of_type_Vaw != null) {
+      this.a.jdField_a_of_type_Vaw.g();
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    Conversation.j(this.a);
+    this.a.jdField_a_of_type_Awmf.j();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.E();
+    }
+    if (this.a.jdField_a_of_type_Vaw != null) {
+      this.a.jdField_a_of_type_Vaw.k();
+    }
+    if (this.a.jdField_a_of_type_Ajmw != null) {
+      this.a.jdField_a_of_type_Ajmw.f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acso
  * JD-Core Version:    0.7.0.1
  */

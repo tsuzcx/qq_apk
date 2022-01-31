@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class submsgtype0xe4$Room
-  extends MessageMicro
+  extends MessageMicro<Room>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "str_room_id" }, new Object[] { "" }, Room.class);
   public final PBStringField str_room_id = PBField.initString("");

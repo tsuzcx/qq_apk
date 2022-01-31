@@ -1,43 +1,35 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomFloatView;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.werewolves.WerewolvesObserver;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody;
-import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody.WifiPOIInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import mqq.util.WeakReference;
 
 public class aenq
-  extends WerewolvesObserver
+  implements View.OnClickListener
 {
-  public aenq(GameRoomFloatView paramGameRoomFloatView) {}
+  public aenq(PositionActivatePage paramPositionActivatePage) {}
   
-  public void a(submsgtype0xdd.MsgBody paramMsgBody)
+  public void onClick(View paramView)
   {
-    switch (paramMsgBody.uint32_msg_type.get())
+    if ((PositionActivatePage.a(this.a) != null) && (PositionActivatePage.a(this.a).get() != null))
     {
+      paramView = new Intent((Context)PositionActivatePage.a(this.a).get(), SendBirthdayWishesActivity.class);
+      paramView.putExtra("key_msg_type", 1);
+      paramView.putExtra("key_friend_list", this.a.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid.a());
+      paramView.putExtra("key_roam_city", this.a.jdField_a_of_type_JavaLangString);
+      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).startActivityForResult(paramView, 1000);
+      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).overridePendingTransition(2130771979, 2130771990);
+      azqs.b(((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E06", "0X8004E06", 0, 0, "", "", "", "");
     }
-    do
-    {
-      return;
-      paramMsgBody = (submsgtype0xdd.MsgBody.WifiPOIInfo)paramMsgBody.msg_poi_info.get();
-      String str = paramMsgBody.bytes_uid.get().toStringUtf8();
-      this.a.a(HotChatInfo.createHotChat(paramMsgBody, false, 0), paramMsgBody.uint32_group_code.get(), str, paramMsgBody.bytes_name.get().toStringUtf8());
-      return;
-      QQToast.a(this.a.a, "你被移出房间", 0).a();
-      paramMsgBody = BaseApplicationImpl.getApplication().getRuntime();
-    } while ((paramMsgBody == null) || (!(paramMsgBody instanceof QQAppInterface)));
-    paramMsgBody = (QQAppInterface)paramMsgBody;
-    SharedPreUtils.a(this.a.a, paramMsgBody.getCurrentAccountUin(), false, System.currentTimeMillis());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aenq
  * JD-Core Version:    0.7.0.1
  */

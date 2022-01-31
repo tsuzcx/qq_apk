@@ -1,43 +1,49 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.util.Base64;
-import com.tencent.biz.pubaccount.readinjoy.model.FollowCoverInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo;
-import cooperation.readinjoy.ReadInJoyHelper;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.TopicRecommendFeedsInfo;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class lrf
-  implements Runnable
 {
-  public lrf(FollowCoverInfoModule paramFollowCoverInfoModule, TopicRecommendFeedsInfo paramTopicRecommendFeedsInfo) {}
+  private static lrf a;
   
-  public void run()
+  public static lrf a()
   {
-    Object localObject = ReadInJoyHelper.a(FollowCoverInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelFollowCoverInfoModule), true, false);
-    if (localObject != null)
+    if (a != null) {
+      return a;
+    }
+    try
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      if (localObject != null)
-      {
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo != null) {
-          break label66;
-        }
-        ((SharedPreferences.Editor)localObject).remove("follow_tab_topic_update_info");
+      a = new lrf();
+      lrf locallrf = a;
+      return locallrf;
+    }
+    catch (Exception localException) {}
+    return null;
+  }
+  
+  public float a()
+  {
+    float f;
+    try
+    {
+      f = Float.parseFloat(lim.a(BaseApplicationImpl.getContext()).a("sharp/beauty_3/ratio", "1.0"));
+      if (f <= 0.0F) {
+        return 1.0F;
       }
     }
-    for (;;)
+    catch (Exception localException)
     {
-      ((SharedPreferences.Editor)localObject).putInt("follow_tab_topic_update_info_exists", FollowCoverInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelFollowCoverInfoModule));
-      ReadInJoyHelper.a((SharedPreferences.Editor)localObject, true);
-      return;
-      label66:
-      ((SharedPreferences.Editor)localObject).putString("follow_tab_topic_update_info", Base64.encodeToString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo.a().toByteArray(), 0));
+      return 1.0F;
     }
+    return f;
+  }
+  
+  public boolean a()
+  {
+    return lim.a(BaseApplicationImpl.getContext()).a("sharp/beauty_3/flag", 0) == 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lrf
  * JD-Core Version:    0.7.0.1
  */

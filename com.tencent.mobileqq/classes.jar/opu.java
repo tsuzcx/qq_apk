@@ -1,33 +1,23 @@
-import android.os.Handler;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.view.AnimationPoint;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.Comparator;
 
-public class opu
-  implements Runnable
+final class opu
+  implements Comparator<ArticleInfo>
 {
-  public opu(AnimationPoint paramAnimationPoint) {}
-  
-  public void run()
+  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
+    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
+      return 0;
     }
-    if ((System.currentTimeMillis() - this.a.c < this.a.b) || (this.a.b < 0L)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 30L);
+    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
+      return -1;
     }
-    for (;;)
-    {
-      this.a.invalidate();
-      return;
-      if (this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener != null) {
-        this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener.onAnimationEnd(null);
-      }
-    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     opu
  * JD-Core Version:    0.7.0.1
  */

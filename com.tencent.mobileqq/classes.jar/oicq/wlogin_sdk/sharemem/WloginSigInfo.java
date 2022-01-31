@@ -14,7 +14,7 @@ public class WloginSigInfo
   implements Parcelable, Serializable
 {
   public static final Parcelable.Creator<WloginSigInfo> CREATOR = new WloginSigInfo.1();
-  public static final int SIG_RESERVE_LENGTH = 15;
+  public static final int SIG_RESERVE_LENGTH = 16;
   public static final int SIG_RESERVE_VALID_LENGTH = 7;
   public static byte[] _LHSig = new byte[0];
   public static byte[] _QRPUSHSig = new byte[0];
@@ -35,6 +35,7 @@ public class WloginSigInfo
   public byte[] _aqSig = new byte[0];
   public long _aqSig_create_time = 0L;
   public long _create_time = 0L;
+  public byte[] _device_token = new byte[0];
   public byte[] _dpwd = new byte[0];
   public byte[] _en_A1 = new byte[0];
   public int _login_bitmap = 0;
@@ -124,12 +125,13 @@ public class WloginSigInfo
       {
         this._en_A1 = ((byte[])paramArrayOfByte[0].clone());
         this._create_time = paramLong;
+        util.LOGI("update A1 sig", "");
         if ((paramArrayOfByte[1] == null) || (paramArrayOfByte[1].length <= 0)) {
-          break label147;
+          break label154;
         }
       }
     }
-    label147:
+    label154:
     for (this._noPicSig = ((byte[])paramArrayOfByte[1].clone());; this._noPicSig = new byte[0])
     {
       if ((paramArrayOfByte[2] != null) && (paramArrayOfByte[2].length > 0)) {
@@ -147,7 +149,7 @@ public class WloginSigInfo
   
   public void SetSigInfo(long paramLong1, long paramLong2, long paramLong3, long paramLong4, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7, byte[] paramArrayOfByte8, byte[] paramArrayOfByte9, byte[] paramArrayOfByte10, byte[] paramArrayOfByte11, byte[] paramArrayOfByte12, byte[][] paramArrayOfByte, long[] paramArrayOfLong, int paramInt)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length != 15))
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length != 16))
     {
       util.LOGI("ERROR:reserve null or length not right", "");
       return;
@@ -199,7 +201,7 @@ public class WloginSigInfo
       this._lsKey_create_time = paramLong2;
       this._lsKey_expire_time = (paramArrayOfLong[0] + paramLong2);
     }
-    util.LOGI("set skey " + util.getMaskBytes(paramArrayOfByte9, 2, 2));
+    util.LOGI("set skey " + util.getMaskBytes(paramArrayOfByte9, 2, 2), "");
     if ((paramArrayOfByte9 != null) && (paramArrayOfByte9.length > 0))
     {
       this._sKey = ((byte[])paramArrayOfByte9.clone());
@@ -269,23 +271,23 @@ public class WloginSigInfo
     if ((paramArrayOfByte[10] != null) && (paramArrayOfByte[10].length > 0)) {
       this._pfKey = ((byte[])paramArrayOfByte[10].clone());
     }
-    label874:
+    label877:
     int i;
     if (this._DA2 == null)
     {
       util.LOGI("_DA2 is null", "");
       paramInt = 0;
       if (paramArrayOfByte[11] != null) {
-        break label1089;
+        break label1118;
       }
       util.LOGI("reserve[11] is null", "");
       i = 0;
-      label893:
+      label896:
       util.LOGI("mainSigMap 0x" + Integer.toHexString(this.mainSigMap) + " file da2 len " + paramInt + " rsp da2 len " + i, "");
       if (paramArrayOfByte[11] != null)
       {
         if (paramArrayOfByte[11].length <= 0) {
-          break label1100;
+          break label1129;
         }
         this._DA2 = ((byte[])paramArrayOfByte[11].clone());
         util.LOGI("get _DA2", "");
@@ -296,19 +298,23 @@ public class WloginSigInfo
       if ((paramArrayOfByte[12] != null) && (paramArrayOfByte[12].length > 2)) {
         this._pt4Token = ((byte[])paramArrayOfByte[12].clone());
       }
-      if ((paramArrayOfByte[13] == null) || (paramArrayOfByte[13].length <= 0) || (paramArrayOfByte[14] == null) || (paramArrayOfByte[14].length <= 0)) {
+      if ((paramArrayOfByte[13] != null) && (paramArrayOfByte[13].length > 0) && (paramArrayOfByte[14] != null) && (paramArrayOfByte[14].length > 0))
+      {
+        this.wtSessionTicket = paramArrayOfByte[13];
+        this.wtSessionTicketKey = paramArrayOfByte[14];
+        this.wtSessionTicketCreatTime = t.f();
+      }
+      if ((paramArrayOfByte[15] == null) || (paramArrayOfByte[15].length <= 0)) {
         break;
       }
-      this.wtSessionTicket = paramArrayOfByte[13];
-      this.wtSessionTicketKey = paramArrayOfByte[14];
-      this.wtSessionTicketCreatTime = t.f();
+      this._device_token = paramArrayOfByte[15];
       return;
       paramInt = this._DA2.length;
-      break label874;
-      label1089:
+      break label877;
+      label1118:
       i = paramArrayOfByte[11].length;
-      break label893;
-      label1100:
+      break label896;
+      label1129:
       if ((0x2000000 & this.mainSigMap) != 0)
       {
         this._DA2 = new byte[0];
@@ -407,6 +413,7 @@ public class WloginSigInfo
     this._pt4Token = paramParcel.createByteArray();
     this.wtSessionTicket = paramParcel.createByteArray();
     this.wtSessionTicketKey = paramParcel.createByteArray();
+    this._device_token = paramParcel.createByteArray();
     this.wtSessionTicketCreatTime = paramParcel.readLong();
   }
   
@@ -528,6 +535,7 @@ public class WloginSigInfo
     paramParcel.writeByteArray(this._pt4Token);
     paramParcel.writeByteArray(this.wtSessionTicket);
     paramParcel.writeByteArray(this.wtSessionTicketKey);
+    paramParcel.writeByteArray(this._device_token);
     paramParcel.writeLong(this.wtSessionTicketCreatTime);
   }
 }

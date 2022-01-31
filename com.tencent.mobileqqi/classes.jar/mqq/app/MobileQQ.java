@@ -41,6 +41,7 @@ public abstract class MobileQQ
 {
   public static final String KEY_UIN = "uin";
   static final int MSG_ACCOUNT = 1;
+  private static final String[] PERMS = { "android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_PHONE_STATE" };
   private static final String PREF_KEY = "currentAccount";
   public static final String PREF_LAST_LOGIN = "last";
   private static final String PREF_SHARE = "share";
@@ -49,6 +50,8 @@ public abstract class MobileQQ
   public static final int STATE_INITING = 2;
   public static final int STATE_READY = 3;
   public static String processName;
+  private static volatile boolean sHasPhonePermission;
+  private static volatile boolean sHasSDCardPermission;
   public static MobileQQ sMobileQQ;
   private boolean accountChanged;
   private final List<WeakReference<BaseActivity>> activitys = new ArrayList();
@@ -364,54 +367,54 @@ public abstract class MobileQQ
   {
     // Byte code:
     //   0: aload_0
-    //   1: ldc_w 273
-    //   4: invokevirtual 277	mqq/app/MobileQQ:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
+    //   1: ldc_w 284
+    //   4: invokevirtual 288	mqq/app/MobileQQ:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
     //   7: astore_2
     //   8: aload_2
-    //   9: invokevirtual 282	java/io/File:exists	()Z
+    //   9: invokevirtual 293	java/io/File:exists	()Z
     //   12: ifeq +66 -> 78
     //   15: aconst_null
     //   16: astore_1
     //   17: aconst_null
     //   18: astore_3
-    //   19: new 284	java/io/FileInputStream
+    //   19: new 295	java/io/FileInputStream
     //   22: dup
     //   23: aload_2
-    //   24: invokespecial 287	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   24: invokespecial 298	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   27: astore_2
     //   28: aload_2
-    //   29: invokevirtual 291	java/io/FileInputStream:available	()I
+    //   29: invokevirtual 302	java/io/FileInputStream:available	()I
     //   32: newarray byte
     //   34: astore_1
     //   35: aload_2
     //   36: aload_1
-    //   37: invokevirtual 295	java/io/FileInputStream:read	([B)I
+    //   37: invokevirtual 306	java/io/FileInputStream:read	([B)I
     //   40: pop
-    //   41: invokestatic 301	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   41: invokestatic 312	android/os/Parcel:obtain	()Landroid/os/Parcel;
     //   44: astore_3
     //   45: aload_3
     //   46: aload_1
     //   47: iconst_0
     //   48: aload_1
     //   49: arraylength
-    //   50: invokevirtual 305	android/os/Parcel:unmarshall	([BII)V
+    //   50: invokevirtual 316	android/os/Parcel:unmarshall	([BII)V
     //   53: aload_3
     //   54: iconst_0
-    //   55: invokevirtual 308	android/os/Parcel:setDataPosition	(I)V
+    //   55: invokevirtual 319	android/os/Parcel:setDataPosition	(I)V
     //   58: aload_0
     //   59: aload_3
-    //   60: invokevirtual 312	android/os/Parcel:readBundle	()Landroid/os/Bundle;
-    //   63: putfield 132	mqq/app/MobileQQ:savedInstanceState	Landroid/os/Bundle;
+    //   60: invokevirtual 323	android/os/Parcel:readBundle	()Landroid/os/Bundle;
+    //   63: putfield 145	mqq/app/MobileQQ:savedInstanceState	Landroid/os/Bundle;
     //   66: aload_3
-    //   67: invokevirtual 315	android/os/Parcel:recycle	()V
+    //   67: invokevirtual 326	android/os/Parcel:recycle	()V
     //   70: aload_2
     //   71: ifnull +7 -> 78
     //   74: aload_2
-    //   75: invokevirtual 316	java/io/FileInputStream:close	()V
+    //   75: invokevirtual 327	java/io/FileInputStream:close	()V
     //   78: return
     //   79: astore_1
     //   80: aload_1
-    //   81: invokevirtual 252	java/io/IOException:printStackTrace	()V
+    //   81: invokevirtual 263	java/io/IOException:printStackTrace	()V
     //   84: return
     //   85: astore_1
     //   86: aload_3
@@ -421,26 +424,26 @@ public abstract class MobileQQ
     //   90: aload_2
     //   91: astore_1
     //   92: aload_3
-    //   93: invokevirtual 271	java/lang/Exception:printStackTrace	()V
+    //   93: invokevirtual 282	java/lang/Exception:printStackTrace	()V
     //   96: aload_2
     //   97: ifnull -19 -> 78
     //   100: aload_2
-    //   101: invokevirtual 316	java/io/FileInputStream:close	()V
+    //   101: invokevirtual 327	java/io/FileInputStream:close	()V
     //   104: return
     //   105: astore_1
     //   106: aload_1
-    //   107: invokevirtual 252	java/io/IOException:printStackTrace	()V
+    //   107: invokevirtual 263	java/io/IOException:printStackTrace	()V
     //   110: return
     //   111: astore_2
     //   112: aload_1
     //   113: ifnull +7 -> 120
     //   116: aload_1
-    //   117: invokevirtual 316	java/io/FileInputStream:close	()V
+    //   117: invokevirtual 327	java/io/FileInputStream:close	()V
     //   120: aload_2
     //   121: athrow
     //   122: astore_1
     //   123: aload_1
-    //   124: invokevirtual 252	java/io/IOException:printStackTrace	()V
+    //   124: invokevirtual 263	java/io/IOException:printStackTrace	()V
     //   127: goto -7 -> 120
     //   130: astore_3
     //   131: aload_2
@@ -858,191 +861,191 @@ public abstract class MobileQQ
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 96	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   1: getfield 110	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
     //   4: iconst_1
     //   5: iconst_2
-    //   6: invokevirtual 504	java/util/concurrent/atomic/AtomicInteger:compareAndSet	(II)Z
+    //   6: invokevirtual 515	java/util/concurrent/atomic/AtomicInteger:compareAndSet	(II)Z
     //   9: ifne +4 -> 13
     //   12: return
     //   13: aload_0
-    //   14: getstatic 505	mqq/app/MobileQQ:processName	Ljava/lang/String;
-    //   17: invokevirtual 508	mqq/app/MobileQQ:isNeedMSF	(Ljava/lang/String;)Z
+    //   14: getstatic 516	mqq/app/MobileQQ:processName	Ljava/lang/String;
+    //   17: invokevirtual 519	mqq/app/MobileQQ:isNeedMSF	(Ljava/lang/String;)Z
     //   20: istore_2
-    //   21: ldc_w 259
+    //   21: ldc_w 270
     //   24: iconst_1
-    //   25: ldc_w 510
+    //   25: ldc_w 521
     //   28: iconst_2
-    //   29: anewarray 512	java/lang/Object
+    //   29: anewarray 523	java/lang/Object
     //   32: dup
     //   33: iconst_0
-    //   34: getstatic 505	mqq/app/MobileQQ:processName	Ljava/lang/String;
+    //   34: getstatic 516	mqq/app/MobileQQ:processName	Ljava/lang/String;
     //   37: aastore
     //   38: dup
     //   39: iconst_1
     //   40: iload_2
-    //   41: invokestatic 163	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   41: invokestatic 174	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   44: aastore
-    //   45: invokestatic 516	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   48: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   51: getstatic 505	mqq/app/MobileQQ:processName	Ljava/lang/String;
-    //   54: ldc_w 518
-    //   57: invokevirtual 151	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   45: invokestatic 527	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   48: invokestatic 276	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   51: getstatic 516	mqq/app/MobileQQ:processName	Ljava/lang/String;
+    //   54: ldc_w 529
+    //   57: invokevirtual 162	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   60: ifne +375 -> 435
     //   63: iload_2
     //   64: ifeq +371 -> 435
     //   67: aload_0
-    //   68: invokespecial 520	mqq/app/MobileQQ:loadProperites	()V
-    //   71: getstatic 505	mqq/app/MobileQQ:processName	Ljava/lang/String;
-    //   74: ldc_w 522
-    //   77: invokevirtual 151	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   68: invokespecial 531	mqq/app/MobileQQ:loadProperites	()V
+    //   71: getstatic 516	mqq/app/MobileQQ:processName	Ljava/lang/String;
+    //   74: ldc_w 533
+    //   77: invokevirtual 162	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   80: ifne +52 -> 132
-    //   83: getstatic 505	mqq/app/MobileQQ:processName	Ljava/lang/String;
-    //   86: ldc 145
-    //   88: invokevirtual 151	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   83: getstatic 516	mqq/app/MobileQQ:processName	Ljava/lang/String;
+    //   86: ldc 158
+    //   88: invokevirtual 162	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   91: ifne +41 -> 132
-    //   94: getstatic 505	mqq/app/MobileQQ:processName	Ljava/lang/String;
-    //   97: ldc_w 524
-    //   100: invokevirtual 151	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   94: getstatic 516	mqq/app/MobileQQ:processName	Ljava/lang/String;
+    //   97: ldc_w 535
+    //   100: invokevirtual 162	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   103: ifne +29 -> 132
-    //   106: getstatic 505	mqq/app/MobileQQ:processName	Ljava/lang/String;
-    //   109: ldc_w 526
-    //   112: invokevirtual 151	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   106: getstatic 516	mqq/app/MobileQQ:processName	Ljava/lang/String;
+    //   109: ldc_w 537
+    //   112: invokevirtual 162	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   115: ifne +17 -> 132
     //   118: aload_0
-    //   119: invokespecial 528	mqq/app/MobileQQ:restoreBundle	()V
-    //   122: ldc_w 259
+    //   119: invokespecial 539	mqq/app/MobileQQ:restoreBundle	()V
+    //   122: ldc_w 270
     //   125: iconst_1
-    //   126: ldc_w 530
-    //   129: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   126: ldc_w 541
+    //   129: invokestatic 276	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   132: aload_0
-    //   133: new 153	mqq/app/MainService
+    //   133: new 164	mqq/app/MainService
     //   136: dup
     //   137: aload_0
     //   138: aload_0
-    //   139: getstatic 505	mqq/app/MobileQQ:processName	Ljava/lang/String;
-    //   142: invokevirtual 534	mqq/app/MobileQQ:getAppId	(Ljava/lang/String;)I
+    //   139: getstatic 516	mqq/app/MobileQQ:processName	Ljava/lang/String;
+    //   142: invokevirtual 545	mqq/app/MobileQQ:getAppId	(Ljava/lang/String;)I
     //   145: aload_0
-    //   146: getstatic 505	mqq/app/MobileQQ:processName	Ljava/lang/String;
-    //   149: invokevirtual 538	mqq/app/MobileQQ:getBootBroadcastName	(Ljava/lang/String;)Ljava/lang/String;
+    //   146: getstatic 516	mqq/app/MobileQQ:processName	Ljava/lang/String;
+    //   149: invokevirtual 549	mqq/app/MobileQQ:getBootBroadcastName	(Ljava/lang/String;)Ljava/lang/String;
     //   152: iload_1
-    //   153: invokespecial 541	mqq/app/MainService:<init>	(Lmqq/app/MobileQQ;ILjava/lang/String;Z)V
-    //   156: putfield 119	mqq/app/MobileQQ:mService	Lmqq/app/MainService;
+    //   153: invokespecial 552	mqq/app/MainService:<init>	(Lmqq/app/MobileQQ;ILjava/lang/String;Z)V
+    //   156: putfield 132	mqq/app/MobileQQ:mService	Lmqq/app/MainService;
     //   159: aload_0
-    //   160: invokevirtual 143	mqq/app/MobileQQ:getProcessName	()Ljava/lang/String;
-    //   163: ldc 145
-    //   165: invokevirtual 151	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   160: invokevirtual 156	mqq/app/MobileQQ:getProcessName	()Ljava/lang/String;
+    //   163: ldc 158
+    //   165: invokevirtual 162	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   168: ifne +13 -> 181
     //   171: aload_0
-    //   172: getfield 119	mqq/app/MobileQQ:mService	Lmqq/app/MainService;
-    //   175: getfield 157	mqq/app/MainService:msfSub	Lcom/tencent/mobileqq/msf/sdk/MsfServiceSdk;
-    //   178: invokevirtual 544	com/tencent/mobileqq/msf/sdk/MsfServiceSdk:initMsfService	()V
+    //   172: getfield 132	mqq/app/MobileQQ:mService	Lmqq/app/MainService;
+    //   175: getfield 168	mqq/app/MainService:msfSub	Lcom/tencent/mobileqq/msf/sdk/MsfServiceSdk;
+    //   178: invokevirtual 555	com/tencent/mobileqq/msf/sdk/MsfServiceSdk:initMsfService	()V
     //   181: aconst_null
     //   182: astore_3
     //   183: aload_3
     //   184: astore 4
     //   186: aload_0
-    //   187: getfield 132	mqq/app/MobileQQ:savedInstanceState	Landroid/os/Bundle;
+    //   187: getfield 145	mqq/app/MobileQQ:savedInstanceState	Landroid/os/Bundle;
     //   190: ifnull +43 -> 233
     //   193: aload_0
-    //   194: getfield 132	mqq/app/MobileQQ:savedInstanceState	Landroid/os/Bundle;
-    //   197: getstatic 549	mqq/app/Constants$Key:currentAccount	Lmqq/app/Constants$Key;
-    //   200: invokevirtual 550	mqq/app/Constants$Key:toString	()Ljava/lang/String;
-    //   203: invokevirtual 555	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   194: getfield 145	mqq/app/MobileQQ:savedInstanceState	Landroid/os/Bundle;
+    //   197: getstatic 560	mqq/app/Constants$Key:currentAccount	Lmqq/app/Constants$Key;
+    //   200: invokevirtual 561	mqq/app/Constants$Key:toString	()Ljava/lang/String;
+    //   203: invokevirtual 566	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   206: astore 5
     //   208: aload_3
     //   209: astore 4
     //   211: aload 5
     //   213: ifnull +20 -> 233
     //   216: aload 5
-    //   218: invokestatic 561	com/tencent/qphone/base/remote/SimpleAccount:parseSimpleAccount	(Ljava/lang/String;)Lcom/tencent/qphone/base/remote/SimpleAccount;
+    //   218: invokestatic 572	com/tencent/qphone/base/remote/SimpleAccount:parseSimpleAccount	(Ljava/lang/String;)Lcom/tencent/qphone/base/remote/SimpleAccount;
     //   221: astore 4
-    //   223: ldc_w 259
+    //   223: ldc_w 270
     //   226: iconst_1
-    //   227: ldc_w 563
-    //   230: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   227: ldc_w 574
+    //   230: invokestatic 276	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   233: aload 4
     //   235: astore_3
     //   236: aload 4
     //   238: ifnonnull +173 -> 411
-    //   241: ldc_w 259
+    //   241: ldc_w 270
     //   244: iconst_1
-    //   245: ldc_w 565
-    //   248: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   245: ldc_w 576
+    //   248: invokestatic 276	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   251: aload_0
-    //   252: invokevirtual 568	mqq/app/MobileQQ:getAllAccounts	()Ljava/util/List;
+    //   252: invokevirtual 579	mqq/app/MobileQQ:getAllAccounts	()Ljava/util/List;
     //   255: astore_3
     //   256: aload_3
     //   257: ifnull +252 -> 509
     //   260: aload_3
     //   261: iconst_0
-    //   262: invokeinterface 339 2 0
-    //   267: checkcast 557	com/tencent/qphone/base/remote/SimpleAccount
+    //   262: invokeinterface 350 2 0
+    //   267: checkcast 568	com/tencent/qphone/base/remote/SimpleAccount
     //   270: astore 4
     //   272: aload 4
     //   274: astore_3
     //   275: aload 4
     //   277: ifnonnull +134 -> 411
-    //   280: ldc_w 259
+    //   280: ldc_w 270
     //   283: iconst_1
-    //   284: ldc_w 570
-    //   287: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   284: ldc_w 581
+    //   287: invokestatic 276	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   290: aload_0
-    //   291: ldc 36
+    //   291: ldc 38
     //   293: iconst_0
-    //   294: invokevirtual 574	mqq/app/MobileQQ:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   294: invokevirtual 585	mqq/app/MobileQQ:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
     //   297: astore 6
     //   299: aload 4
     //   301: astore_3
     //   302: aload 6
     //   304: ifnull +107 -> 411
     //   307: aload 6
-    //   309: ldc 30
+    //   309: ldc 32
     //   311: aconst_null
-    //   312: invokeinterface 579 3 0
+    //   312: invokeinterface 590 3 0
     //   317: astore 5
-    //   319: invokestatic 257	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   319: invokestatic 268	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   322: ifeq +31 -> 353
-    //   325: ldc_w 259
+    //   325: ldc_w 270
     //   328: iconst_1
-    //   329: new 366	java/lang/StringBuilder
+    //   329: new 377	java/lang/StringBuilder
     //   332: dup
-    //   333: invokespecial 367	java/lang/StringBuilder:<init>	()V
-    //   336: ldc_w 581
-    //   339: invokevirtual 373	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   333: invokespecial 378	java/lang/StringBuilder:<init>	()V
+    //   336: ldc_w 592
+    //   339: invokevirtual 384	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   342: aload 5
-    //   344: invokevirtual 373	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   347: invokevirtual 386	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   350: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   344: invokevirtual 384	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   347: invokevirtual 397	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   350: invokestatic 276	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   353: aload 4
     //   355: astore_3
     //   356: aload 5
     //   358: ifnull +53 -> 411
     //   361: aload 6
-    //   363: invokeinterface 585 1 0
-    //   368: ldc 30
-    //   370: invokeinterface 590 2 0
-    //   375: invokeinterface 593 1 0
+    //   363: invokeinterface 596 1 0
+    //   368: ldc 32
+    //   370: invokeinterface 601 2 0
+    //   375: invokeinterface 604 1 0
     //   380: pop
-    //   381: new 557	com/tencent/qphone/base/remote/SimpleAccount
+    //   381: new 568	com/tencent/qphone/base/remote/SimpleAccount
     //   384: dup
-    //   385: invokespecial 594	com/tencent/qphone/base/remote/SimpleAccount:<init>	()V
+    //   385: invokespecial 605	com/tencent/qphone/base/remote/SimpleAccount:<init>	()V
     //   388: astore_3
     //   389: aload_3
     //   390: aload 5
-    //   392: invokevirtual 597	com/tencent/qphone/base/remote/SimpleAccount:setUin	(Ljava/lang/String;)V
+    //   392: invokevirtual 608	com/tencent/qphone/base/remote/SimpleAccount:setUin	(Ljava/lang/String;)V
     //   395: aload_3
-    //   396: invokevirtual 600	com/tencent/qphone/base/remote/SimpleAccount:isLogined	()Z
+    //   396: invokevirtual 611	com/tencent/qphone/base/remote/SimpleAccount:isLogined	()Z
     //   399: pop
     //   400: aload_3
-    //   401: ldc_w 602
+    //   401: ldc_w 613
     //   404: iconst_1
-    //   405: invokestatic 605	java/lang/String:valueOf	(Z)Ljava/lang/String;
-    //   408: invokevirtual 609	com/tencent/qphone/base/remote/SimpleAccount:setAttribute	(Ljava/lang/String;Ljava/lang/String;)V
+    //   405: invokestatic 616	java/lang/String:valueOf	(Z)Ljava/lang/String;
+    //   408: invokevirtual 620	com/tencent/qphone/base/remote/SimpleAccount:setAttribute	(Ljava/lang/String;Ljava/lang/String;)V
     //   411: iconst_0
     //   412: istore_1
-    //   413: getstatic 505	mqq/app/MobileQQ:processName	Ljava/lang/String;
-    //   416: ldc_w 611
-    //   419: invokevirtual 222	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   413: getstatic 516	mqq/app/MobileQQ:processName	Ljava/lang/String;
+    //   416: ldc_w 622
+    //   419: invokevirtual 233	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   422: ifeq +5 -> 427
     //   425: iconst_1
     //   426: istore_1
@@ -1051,40 +1054,40 @@ public abstract class MobileQQ
     //   429: iconst_0
     //   430: iload_1
     //   431: iconst_5
-    //   432: invokevirtual 613	mqq/app/MobileQQ:createNewRuntime	(Lcom/tencent/qphone/base/remote/SimpleAccount;ZZI)V
+    //   432: invokevirtual 624	mqq/app/MobileQQ:createNewRuntime	(Lcom/tencent/qphone/base/remote/SimpleAccount;ZZI)V
     //   435: aload_0
-    //   436: new 468	android/content/Intent
+    //   436: new 479	android/content/Intent
     //   439: dup
-    //   440: new 366	java/lang/StringBuilder
+    //   440: new 377	java/lang/StringBuilder
     //   443: dup
-    //   444: invokespecial 367	java/lang/StringBuilder:<init>	()V
-    //   447: ldc_w 615
-    //   450: invokevirtual 373	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   453: getstatic 505	mqq/app/MobileQQ:processName	Ljava/lang/String;
-    //   456: invokevirtual 373	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   459: invokevirtual 386	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   462: invokespecial 473	android/content/Intent:<init>	(Ljava/lang/String;)V
-    //   465: invokevirtual 491	mqq/app/MobileQQ:sendBroadcast	(Landroid/content/Intent;)V
+    //   444: invokespecial 378	java/lang/StringBuilder:<init>	()V
+    //   447: ldc_w 626
+    //   450: invokevirtual 384	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   453: getstatic 516	mqq/app/MobileQQ:processName	Ljava/lang/String;
+    //   456: invokevirtual 384	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   459: invokevirtual 397	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   462: invokespecial 484	android/content/Intent:<init>	(Ljava/lang/String;)V
+    //   465: invokevirtual 502	mqq/app/MobileQQ:sendBroadcast	(Landroid/content/Intent;)V
     //   468: aload_0
-    //   469: getfield 96	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   469: getfield 110	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
     //   472: astore_3
     //   473: aload_3
     //   474: monitorenter
     //   475: aload_0
-    //   476: getfield 96	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   476: getfield 110	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
     //   479: iconst_3
-    //   480: invokevirtual 618	java/util/concurrent/atomic/AtomicInteger:set	(I)V
+    //   480: invokevirtual 629	java/util/concurrent/atomic/AtomicInteger:set	(I)V
     //   483: aload_0
-    //   484: getfield 96	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   487: invokevirtual 621	java/lang/Object:notifyAll	()V
+    //   484: getfield 110	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   487: invokevirtual 632	java/lang/Object:notifyAll	()V
     //   490: aload_3
     //   491: monitorexit
-    //   492: invokestatic 257	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   492: invokestatic 268	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   495: ifeq -483 -> 12
-    //   498: ldc_w 259
+    //   498: ldc_w 270
     //   501: iconst_2
-    //   502: ldc_w 623
-    //   505: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   502: ldc_w 634
+    //   505: invokestatic 276	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   508: return
     //   509: aconst_null
     //   510: astore 4
@@ -1095,37 +1098,37 @@ public abstract class MobileQQ
     //   519: aload 4
     //   521: athrow
     //   522: astore_3
-    //   523: ldc_w 259
+    //   523: ldc_w 270
     //   526: iconst_1
-    //   527: ldc_w 625
+    //   527: ldc_w 636
     //   530: aload_3
-    //   531: invokestatic 629	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   534: new 631	java/lang/RuntimeException
+    //   531: invokestatic 640	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   534: new 642	java/lang/RuntimeException
     //   537: dup
     //   538: aload_3
-    //   539: invokespecial 634	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
+    //   539: invokespecial 645	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
     //   542: athrow
     //   543: astore 4
     //   545: aload_0
-    //   546: getfield 96	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   546: getfield 110	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
     //   549: astore_3
     //   550: aload_3
     //   551: monitorenter
     //   552: aload_0
-    //   553: getfield 96	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   553: getfield 110	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
     //   556: iconst_3
-    //   557: invokevirtual 618	java/util/concurrent/atomic/AtomicInteger:set	(I)V
+    //   557: invokevirtual 629	java/util/concurrent/atomic/AtomicInteger:set	(I)V
     //   560: aload_0
-    //   561: getfield 96	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   564: invokevirtual 621	java/lang/Object:notifyAll	()V
+    //   561: getfield 110	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   564: invokevirtual 632	java/lang/Object:notifyAll	()V
     //   567: aload_3
     //   568: monitorexit
-    //   569: invokestatic 257	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   569: invokestatic 268	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   572: ifeq +13 -> 585
-    //   575: ldc_w 259
+    //   575: ldc_w 270
     //   578: iconst_2
-    //   579: ldc_w 623
-    //   582: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   579: ldc_w 634
+    //   582: invokestatic 276	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   585: aload 4
     //   587: athrow
     //   588: astore 4
@@ -1178,6 +1181,36 @@ public abstract class MobileQQ
     //   523	543	543	finally
     //   552	569	588	finally
     //   590	592	588	finally
+  }
+  
+  public boolean doesHasPhonePermission()
+  {
+    if (!sHasPhonePermission)
+    {
+      if (Build.VERSION.SDK_INT < 23) {
+        break label42;
+      }
+      if ((context == null) || (context.checkSelfPermission(PERMS[1]) != 0)) {}
+    }
+    label42:
+    for (sHasPhonePermission = true;; sHasPhonePermission = true) {
+      return sHasPhonePermission;
+    }
+  }
+  
+  public boolean doesHasSDCardPermission()
+  {
+    if (!sHasSDCardPermission)
+    {
+      if (Build.VERSION.SDK_INT < 23) {
+        break label42;
+      }
+      if ((context == null) || (context.checkSelfPermission(PERMS[0]) != 0)) {}
+    }
+    label42:
+    for (sHasSDCardPermission = true;; sHasSDCardPermission = true) {
+      return sHasSDCardPermission;
+    }
   }
   
   public List<SimpleAccount> getAllAccounts()

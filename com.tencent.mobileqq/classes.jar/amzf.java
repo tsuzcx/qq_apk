@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-public class amzf
-  implements Runnable
+public final class amzf
+  implements Parcelable.Creator<ArEffectConfig>
 {
-  public amzf(QZoneShareActivity paramQZoneShareActivity) {}
-  
-  public void run()
+  public ArEffectConfig a(Parcel paramParcel)
   {
-    QQToast.a(this.a, this.a.a.msg.get(), 0).a();
+    return new ArEffectConfig(paramParcel);
+  }
+  
+  public ArEffectConfig[] a(int paramInt)
+  {
+    return new ArEffectConfig[paramInt];
   }
 }
 

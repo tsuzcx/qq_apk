@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import android.app.Activity;
+import befl;
+import begz;
+import bfrz;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.JsWebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.open.appcommon.js.BaseInterface;
-import com.tencent.open.appcommon.js.BaseJsCallBack;
-import com.tencent.open.wadl.WLog;
 import com.tencent.open.wadl.WadlJsBridge;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -17,22 +15,20 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class WadlWebViewJsPlugin
-  extends JsWebViewPlugin
+  extends befl
 {
   public static final String PLUGIN_NAMESPACE = "wadl_download";
-  public static final String Tag = "WadlWebViewJsPlugin";
-  private Map apiMap;
+  public static final String TAG = "WadlWebViewJsPlugin";
+  private Map<String, BaseInterface> apiMap;
   
   private void initMap()
   {
     this.apiMap = new HashMap();
-    Object localObject = this.mRuntime.a();
-    new BaseJsCallBack((Activity)localObject);
-    localObject = new WadlJsBridge((Activity)localObject, this.mRuntime.a());
-    this.apiMap.put(((BaseInterface)localObject).getInterfaceName(), localObject);
+    WadlJsBridge localWadlJsBridge = new WadlJsBridge(this.mRuntime.a(), this.mRuntime.a());
+    this.apiMap.put(localWadlJsBridge.getInterfaceName(), localWadlJsBridge);
   }
   
-  protected Method getJsMethod(String paramString1, String paramString2, int paramInt)
+  public Method getJsMethod(String paramString1, String paramString2, int paramInt)
   {
     paramString1 = (BaseInterface)this.apiMap.get(paramString1);
     if (paramString1 != null)
@@ -52,18 +48,18 @@ public class WadlWebViewJsPlugin
     return null;
   }
   
-  protected String getNameSpace()
+  public String getNameSpace()
   {
     return "wadl_download";
   }
   
-  protected boolean handleEvent(String paramString, long paramLong, Map paramMap)
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if (paramLong == 8589934593L) {}
     return false;
   }
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     String str = null;
     paramString1 = null;
@@ -74,7 +70,7 @@ public class WadlWebViewJsPlugin
     int i;
     if (localBaseInterface != null)
     {
-      WLog.b(this.TAG, "handleJsRequest pkgName=" + paramString2 + ",methodName=" + paramString3);
+      bfrz.c("WadlWebViewJsPlugin", "handleJsRequest pkgName=" + paramString2 + ",methodName=" + paramString3);
       Method[] arrayOfMethod = localBaseInterface.getClass().getDeclaredMethods();
       int j = arrayOfMethod.length;
       i = 0;
@@ -83,12 +79,12 @@ public class WadlWebViewJsPlugin
       {
         paramString2 = arrayOfMethod[i];
         if ((!paramString2.getName().equals(paramString3)) || (paramString2.getParameterTypes().length != paramVarArgs.length)) {
-          break label222;
+          break label220;
         }
         paramString1 = paramString2;
       }
     }
-    label222:
+    label220:
     for (;;)
     {
       i += 1;
@@ -104,13 +100,13 @@ public class WadlWebViewJsPlugin
               break;
             }
             if (paramJsBridgeListener == null) {
-              break label225;
+              break label223;
             }
             paramJsBridgeListener.a(null);
-            break label225;
+            break label223;
           }
           if (paramJsBridgeListener == null) {
-            break label225;
+            break label223;
           }
           paramJsBridgeListener.a(paramString1);
         }
@@ -118,15 +114,15 @@ public class WadlWebViewJsPlugin
       }
       return false;
     }
-    label225:
+    label223:
     return true;
   }
   
   public void onAppRuntimeReady(AppInterface paramAppInterface) {}
   
-  protected void onCreate() {}
+  public void onCreate() {}
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     if (this.apiMap == null) {}
     for (;;)
@@ -145,7 +141,7 @@ public class WadlWebViewJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.WadlWebViewJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,22 @@
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.open.agent.BindGroupActivity;
-import com.tencent.qphone.base.util.QLog;
-
 public class alay
-  implements Runnable
+  extends alas
 {
-  public alay(BindGroupActivity paramBindGroupActivity) {}
+  private int b;
   
-  public void run()
+  public alay(int paramInt1, int paramInt2, alba paramalba)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindGroupActivity", 2, "-->onGetOpenId timeout.");
-    }
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.c = true;
-    this.a.b.hide();
-    this.a.a();
+    super(paramInt1, paramalba);
+    this.b = paramInt2;
+  }
+  
+  public akrw a(long paramLong, String paramString1, String paramString2)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alay
  * JD-Core Version:    0.7.0.1
  */

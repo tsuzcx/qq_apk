@@ -1,18 +1,23 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import java.lang.ref.WeakReference;
 
 public class anyp
-  implements Runnable
 {
-  public anyp(DoodleEditView paramDoodleEditView) {}
+  public int a;
+  public String a;
+  public WeakReference<anyo> a;
+  public int b = 0;
+  public int c = 0;
   
-  public void run()
+  public anyp()
   {
-    this.a.setVisibility(0);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anyp
  * JD-Core Version:    0.7.0.1
  */

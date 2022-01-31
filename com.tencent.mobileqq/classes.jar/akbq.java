@@ -1,39 +1,86 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.utils.AudioUtil;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop.MyTroopObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-public final class akbq
-  implements MediaPlayer.OnCompletionListener
+public class akbq
+  extends ameq
 {
-  public akbq(MediaPlayer.OnCompletionListener paramOnCompletionListener, Handler paramHandler) {}
+  public akbq(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    if (AudioUtil.b() == 0)
-    {
-      if (this.jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener != null)
-      {
-        if ((this.jdField_a_of_type_AndroidOsHandler == null) || (this.jdField_a_of_type_AndroidOsHandler.getLooper() == Looper.myLooper()))
-        {
-          this.jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener.onCompletion(AudioUtil.a);
-          return;
-        }
-        AudioUtil.a();
-        this.jdField_a_of_type_AndroidOsHandler.post(new akbr(this));
-        return;
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.c();
       }
-      AudioUtil.a();
-      return;
     }
-    AudioUtil.c();
-    AudioUtil.a.start();
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt1 != 2) {
+          break;
+        }
+      } while (paramInt2 != 0);
+      this.a.c();
+      return;
+    } while ((paramInt1 != 9) || (paramInt2 != 0));
+    this.a.c();
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if (TroopDiscussionTroop.a(this.a) != null) {
+      TroopDiscussionTroop.a(this.a).a();
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopDiscussionTroop", 2, "onUpdateTroopList " + paramBoolean);
+    }
+    if (paramBoolean) {
+      ThreadManager.getUIHandler().postDelayed(new TroopDiscussionTroop.MyTroopObserver.1(this), 500L);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
+  {
+    if (paramBoolean) {
+      this.a.c();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.c();
+    }
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.c();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
+  {
+    if (paramBoolean) {
+      this.a.c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbq
  * JD-Core Version:    0.7.0.1
  */

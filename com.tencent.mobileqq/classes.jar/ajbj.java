@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import eipc.EIPCResult;
 
-public class ajbj
-  extends FriendListObserver
+class ajbj
+  implements ajal
 {
-  public ajbj(NewTroopContactView paramNewTroopContactView) {}
+  ajbj(ajaz paramajaz, int paramInt) {}
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if (paramBoolean1) {
-      this.a.a.notifyDataSetChanged();
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result_code", paramInt);
+    localBundle.putSerializable("path_result", paramPathResult);
+    this.jdField_a_of_type_Ajaz.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
 }
 

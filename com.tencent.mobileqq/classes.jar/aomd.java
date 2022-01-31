@@ -1,70 +1,150 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar.BeautyBarListener;
-import mqq.app.AppRuntime;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
-public class aomd
-  implements SeekBar.OnSeekBarChangeListener
+class aomd
 {
-  public aomd(BeautyBar paramBeautyBar) {}
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<aomf> jdField_a_of_type_JavaUtilArrayList;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public aomd(String paramString)
   {
-    BeautyBar.a(this.a, paramInt);
-    if (paramBoolean) {
-      BeautyBar.a(this.a, BeautyBar.a(this.a), false);
-    }
-    if (BeautyBar.a(this.a) != BeautyBar.b(this.a))
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = a(paramString);
+  }
+  
+  public Object a(Map<String, Object> paramMap)
+  {
+    Object localObject;
+    if (paramMap == null)
     {
-      if (BeautyBar.a(this.a) != null) {
-        BeautyBar.a(this.a).b(BeautyBar.a(this.a));
-      }
-      BeautyBar.b(this.a, BeautyBar.a(this.a));
+      localObject = null;
+      return localObject;
     }
-    if (paramBoolean) {
-      BeautyBar.a(this.a).setContentDescription("调节美颜效果,当前效果" + BeautyBar.a(this.a) + "%");
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
+      return null;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    for (;;)
+    {
+      localObject = paramMap;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      paramMap = ((aomf)localIterator.next()).a(paramMap);
     }
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public ArrayList<aomf> a(String paramString)
   {
-    BeautyBar.a(this.a).removeMessages(1011);
-    if (BeautyBar.a(this.a) != null) {
-      BeautyBar.a(this.a).setVisibility(0);
+    ArrayList localArrayList = b(paramString);
+    if (localArrayList.size() == 0) {
+      return null;
+    }
+    if (!((String)localArrayList.get(0)).equals("$")) {
+      return null;
+    }
+    paramString = new ArrayList();
+    int i = 1;
+    for (;;)
+    {
+      try
+      {
+        if (i < localArrayList.size())
+        {
+          str1 = (String)localArrayList.get(i);
+          if (TextUtils.isEmpty(str1)) {
+            return null;
+          }
+          if (str1.charAt(0) == '.')
+          {
+            paramString.add(new aomg(str1.substring(1)));
+          }
+          else
+          {
+            String str2 = aomh.a().b(str1);
+            if (!TextUtils.isEmpty(str2)) {
+              paramString.add(new aomg(str2));
+            }
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("ArkMsgReplyConfigMgr", 1, "parsePattern error:" + localException.getMessage());
+      }
+      return paramString;
+      String str1 = aomh.a().a(str1);
+      if (!TextUtils.isEmpty(str1)) {
+        paramString.add(new aome(Integer.parseInt(str1)));
+      } else {
+        return null;
+      }
+      i += 1;
     }
   }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public ArrayList<String> b(String paramString)
   {
-    if (BeautyBar.b(this.a) >= 0)
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = new StringBuilder();
+    int i = 0;
+    int j = 0;
+    if (j < paramString.length())
     {
-      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("beauty_setting", 0);
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      localSharedPreferences.edit().putFloat("beauty_radius" + str, BeautyBar.b(this.a));
-      localSharedPreferences.edit().putFloat("beauty_whitenmag" + str, BeautyBar.b(this.a));
-      localSharedPreferences.edit().putInt("beauty_level" + str, paramSeekBar.getProgress());
-      localSharedPreferences.edit().commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("beauty", 2, "onStopTrackingTouch mBeautyValue" + BeautyBar.b(this.a) + " mBeautyProcess=" + paramSeekBar.getProgress());
+      char c = paramString.charAt(j);
+      Object localObject2;
+      if (i == 0) {
+        if (c != '.')
+        {
+          localObject2 = localObject1;
+          if (c != '[') {}
+        }
+        else
+        {
+          if (((StringBuilder)localObject1).length() == 0) {
+            return null;
+          }
+          localArrayList.add(((StringBuilder)localObject1).toString());
+          localObject2 = new StringBuilder();
+          if (c != '[') {
+            break label126;
+          }
+          i = 1;
+        }
       }
-      BeautyBar.a(this.a).removeMessages(1011);
-      BeautyBar.a(this.a).sendEmptyMessageDelayed(1011, BeautyBar.a);
-      if (BeautyBar.a(this.a) != null) {
-        BeautyBar.a(this.a).setVisibility(4);
+      for (;;)
+      {
+        ((StringBuilder)localObject2).append(c);
+        j += 1;
+        localObject1 = localObject2;
+        break;
+        label126:
+        i = 0;
+        continue;
+        localObject2 = localObject1;
+        if (c == ']')
+        {
+          i = 0;
+          localObject2 = localObject1;
+        }
       }
     }
+    if (((StringBuilder)localObject1).length() == 0) {
+      return null;
+    }
+    localArrayList.add(((StringBuilder)localObject1).toString());
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomd
  * JD-Core Version:    0.7.0.1
  */

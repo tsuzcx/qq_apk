@@ -1,29 +1,28 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import java.lang.ref.WeakReference;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
-abstract class ahfj
-  extends ProtoUtils.TroopProtocolObserver
+public class ahfj
+  extends RecyclerView.ItemDecoration
 {
-  protected Object a;
-  private WeakReference a;
+  private int a;
+  private int b;
   
-  ahfj(Object paramObject)
+  public ahfj(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramObject);
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  public final void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (this.jdField_a_of_type_JavaLangObject == null) {
-      return;
+    paramRect.right = this.a;
+    if (paramRecyclerView.getChildPosition(paramView) == 0) {
+      paramRect.left = this.b;
     }
-    b(paramInt, paramArrayOfByte, paramBundle);
-    this.jdField_a_of_type_JavaLangObject = null;
   }
-  
-  abstract void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
 }
 
 

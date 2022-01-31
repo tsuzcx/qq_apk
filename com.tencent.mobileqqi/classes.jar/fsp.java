@@ -1,29 +1,36 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonGridViewAdapter;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.filemanager.activity.VerifyPwdActivity;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
 public class fsp
-  implements View.OnLongClickListener
+  extends FMObserver
 {
-  public fsp(EmoticonGridViewAdapter paramEmoticonGridViewAdapter) {}
+  public fsp(VerifyPwdActivity paramVerifyPwdActivity) {}
   
-  public boolean onLongClick(View paramView)
+  protected void a(boolean paramBoolean)
   {
-    if ((paramView != null) && (paramView.getTag() != null))
-    {
-      EmoticonInfo localEmoticonInfo = (EmoticonInfo)paramView.getTag();
-      if ((localEmoticonInfo != null) && (!EmoticonGridViewAdapter.a(this.a).a(localEmoticonInfo))) {
-        EmoticonGridViewAdapter.a(this.a, paramView, localEmoticonInfo);
-      }
-    }
-    return true;
+    this.a.runOnUiThread(new fsr(this, paramBoolean));
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    FMToastUtil.a(paramString);
+    this.a.runOnUiThread(new fss(this));
+  }
+  
+  protected void d()
+  {
+    this.a.runOnUiThread(new fsq(this));
+  }
+  
+  protected void d(int paramInt, String paramString)
+  {
+    FMToastUtil.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fsp
  * JD-Core Version:    0.7.0.1
  */

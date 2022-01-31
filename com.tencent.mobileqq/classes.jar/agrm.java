@@ -1,49 +1,24 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView.UpdateProfileSetCardTask;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agrm
-  implements Runnable
+class agrm
+  implements DialogInterface.OnClickListener
 {
-  public agrm(ProfileHeaderView.UpdateProfileSetCardTask paramUpdateProfileSetCardTask, ProfileHeaderView paramProfileHeaderView) {}
+  agrm(agqq paramagqq, bemp parambemp) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_JavaUtilHashMap != null)
-      {
-        ReportController.b(null, "CliOper", "", "", "card_mall", "0X80066D3", 0, 0, "", "", "", "");
-        View localView = (View)this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_JavaUtilHashMap.get("map_key_tips_set_card");
-        TextView localTextView = (TextView)localView.findViewById(2131362875);
-        ImageView localImageView = (ImageView)localView.findViewById(2131371002);
-        Resources localResources = localView.getResources();
-        localTextView.setText(localResources.getString(2131436940));
-        localImageView.setContentDescription(localResources.getString(2131436940));
-        localView.setTag(new DataTag(29, "CLICK_BANNER"));
-        localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a);
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.b.set(true);
-        ProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    this.jdField_a_of_type_Agqq.ab = true;
+    this.jdField_a_of_type_Agqq.aa = true;
+    agqq.b(this.jdField_a_of_type_Agqq, false);
+    if ((this.jdField_a_of_type_Bemp.a()) && (!this.jdField_a_of_type_Bemp.b())) {
+      azqs.b(this.jdField_a_of_type_Agqq.a, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrm
  * JD-Core Version:    0.7.0.1
  */

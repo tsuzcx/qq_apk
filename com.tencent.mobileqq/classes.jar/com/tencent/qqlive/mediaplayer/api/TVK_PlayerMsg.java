@@ -47,15 +47,19 @@ public class TVK_PlayerMsg
   public static final int PLAYER_FORCE_TYPE_NONE = 0;
   public static final int PLAYER_FORCE_TYPE_SELF = 2;
   public static final int PLAYER_FORCE_TYPE_SYS = 1;
+  public static final int PLAYER_INFO_CHANGE_HW_BACKUP_URL = 41;
   public static final int PLAYER_INFO_DECODER_BLOCK = 28;
   public static final int PLAYER_INFO_DOLBY_DECODE_FAIL = 27;
   public static final int PLAYER_INFO_ENDOF_BUFFERING = 22;
   public static final int PLAYER_INFO_END_GET_VINFO = 34;
+  public static final int PLAYER_INFO_EXTRACT_FRAME_ERROR = 43;
   public static final int PLAYER_INFO_FETCH_NEXT_VIDEO_INFO = 36;
+  public static final int PLAYER_INFO_HW_DECODE_FAILED = 39;
   public static final int PLAYER_INFO_LOOP_AD_START = 37;
   public static final int PLAYER_INFO_LOOP_VIDEO_START = 38;
   public static final int PLAYER_INFO_NEXT_NET_VINFO = 35;
   public static final int PLAYER_INFO_OFFLINE_NOMORE_CACHE = 35;
+  public static final int PLAYER_INFO_PERFORMANCE_REPORT = 42;
   public static final int PLAYER_INFO_PLAYER_TYPE = 31;
   public static final int PLAYER_INFO_PLAYER_TYPE_SELF = 2;
   public static final int PLAYER_INFO_PLAYER_TYPE_SYSTEM = 1;
@@ -64,6 +68,7 @@ public class TVK_PlayerMsg
   public static final int PLAYER_INFO_RETRY_URL = 30;
   public static final int PLAYER_INFO_RETURN_VIDEO_DURATION = 26;
   public static final int PLAYER_INFO_SKIPAD_FOR_VIPUSER = 25;
+  public static final int PLAYER_INFO_SKIP_ONE_FRAME = 40;
   public static final int PLAYER_INFO_START_BUFFERING = 21;
   public static final int PLAYER_INFO_START_GET_VINFO = 33;
   public static final int PLAYER_INFO_START_RENDERING = 23;
@@ -101,7 +106,7 @@ public class TVK_PlayerMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.mediaplayer.api.TVK_PlayerMsg
  * JD-Core Version:    0.7.0.1
  */

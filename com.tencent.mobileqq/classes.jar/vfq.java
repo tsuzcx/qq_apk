@@ -1,49 +1,60 @@
-import android.view.View;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.Holder;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPOIPosters;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPOIPosters;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class vfq
-  implements ActionSheet.OnButtonClickListener
+  extends urt<vhk>
 {
-  public vfq(ShortVideoItemBuilder paramShortVideoItemBuilder, MessageForShortVideo paramMessageForShortVideo, ShortVideoItemBuilder.Holder paramHolder, ActionSheet paramActionSheet) {}
+  public final int c;
+  public final int d;
+  public final int e;
   
-  public void OnClick(View paramView, int paramInt)
+  public vfq(int paramInt1, int paramInt2)
   {
-    switch (paramInt)
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = 1;
+  }
+  
+  public String a()
+  {
+    return uqn.a("StorySvc.video_poi_posters_get");
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetPOIPosters localRspGetPOIPosters = new qqstory_service.RspGetPOIPosters();
+    try
     {
+      localRspGetPOIPosters.mergeFrom(paramArrayOfByte);
+      return new vhk(localRspGetPOIPosters);
     }
-    for (;;)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2)
+      for (;;)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder, 10, false);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder);
-      }
-      else if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 1)
-      {
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.md5 == null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1005))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder, true);
-          Utils.executeAsyncTaskOnSerialExcuter(new vft(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo), new Void[0]);
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder, 10, false);
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder);
-        }
+        paramArrayOfByte.printStackTrace();
       }
     }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetPOIPosters localReqGetPOIPosters = new qqstory_service.ReqGetPOIPosters();
+    qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
+    localGpsMsg.lng.set(this.c);
+    localGpsMsg.lat.set(this.d);
+    localReqGetPOIPosters.coordinate.set(this.e);
+    localReqGetPOIPosters.gps.set(localGpsMsg);
+    return localReqGetPOIPosters.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vfq
  * JD-Core Version:    0.7.0.1
  */

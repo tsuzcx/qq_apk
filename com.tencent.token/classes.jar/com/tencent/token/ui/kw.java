@@ -1,34 +1,16 @@
 package com.tencent.token.ui;
 
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.token.ba;
-import com.tencent.token.bf;
-import com.tencent.token.core.bean.g;
-import com.tencent.token.ui.base.SwitchButton;
-import com.tencent.token.ui.base.ds;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class kw
-  implements CompoundButton.OnCheckedChangeListener
+class kw
+  implements DialogInterface.OnClickListener
 {
-  kw(ku paramku) {}
+  kw(kq paramkq) {}
   
-  public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramCompoundButton = (ds)((SwitchButton)paramCompoundButton).getTag();
-    if (paramCompoundButton == null) {}
-    g localg;
-    do
-    {
-      return;
-      localg = paramCompoundButton.a();
-    } while ((localg == null) || (paramCompoundButton.h() == null) || (!ba.a().n()) || (paramBoolean != localg.c) || (localg.e) || (ku.a(this.a)));
-    ku.a(this.a, localg);
-    ku.a(this.a, paramCompoundButton);
-    localg.e = true;
-    ku.b(this.a);
-    this.a.a(paramCompoundButton, false);
-    bf.a().a(3, ku.c(this.a).getHandler());
+    this.a.a.finish();
   }
 }
 

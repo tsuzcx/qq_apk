@@ -1,20 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.ContainerDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aodr
-  implements ValueAnimator.AnimatorUpdateListener
+class aodr
+  implements View.OnClickListener
 {
-  public aodr(ContainerDrawable paramContainerDrawable) {}
+  aodr(aodp paramaodp) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    this.a.invalidateSelf();
+    aodl.a(this.a.a).setVisibility(8);
+    aodl.a(this.a.a, null);
+    if (aodl.a(this.a.a).getItemCount() == 0) {
+      aodl.a(this.a.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aodr
  * JD-Core Version:    0.7.0.1
  */

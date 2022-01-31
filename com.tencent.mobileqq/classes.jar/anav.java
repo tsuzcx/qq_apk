@@ -1,12 +1,24 @@
-import com.tencent.mobileqq.testassister.ShareAppLogHelper.LogFile;
-import java.util.Comparator;
-
-public final class anav
-  implements Comparator
+public class anav
 {
-  public int a(ShareAppLogHelper.LogFile paramLogFile1, ShareAppLogHelper.LogFile paramLogFile2)
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c = 0;
+  
+  public anav()
   {
-    return (int)(paramLogFile1.lastModified() - paramLogFile2.lastModified()) / 1000;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    return "POIInfo{latitude = " + this.jdField_a_of_type_Int + ", longitude = " + this.jdField_b_of_type_Int + ", name = " + this.jdField_a_of_type_JavaLangString + ", addr = " + this.jdField_b_of_type_JavaLangString + ", dist = " + this.c + '}';
   }
 }
 

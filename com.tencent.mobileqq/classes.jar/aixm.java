@@ -1,29 +1,16 @@
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 
 class aixm
-  implements VideoCompositeHelper.VideoCompositeCallBack
+  extends aixi
 {
-  aixm(aixk paramaixk) {}
+  aixm(aixl paramaixl) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void a(int paramInt)
   {
-    if (paramInt != 0)
-    {
-      new VideoFeedsUploader.UploadResult().a = -1010;
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopBarPublishActivity", 2, "compositeVideo: errorCode = " + paramInt);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a(null, this.a.jdField_a_of_type_Long);
-      return;
+    if (((paramInt == 1) || (paramInt == 10)) && (this.a.a.a != null)) {
+      this.a.a.a.dismiss();
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentMobileqqTribeVideoInfo.b = this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoWidth;
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentMobileqqTribeVideoInfo.c = this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoHeight;
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentMobileqqTribeVideoInfo.a = ((int)this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoDuration);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a(paramString2, this.a.jdField_a_of_type_Long);
   }
 }
 

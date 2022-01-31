@@ -1,24 +1,10 @@
-import com.tencent.ark.ark;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-
-public class vyo
-  implements Runnable
+public abstract interface vyo
 {
-  public vyo(PublicAccountChatPie paramPublicAccountChatPie) {}
-  
-  public void run()
-  {
-    try
-    {
-      ark.arkNotify("com.tencent.weather", "pubaccountPendantRefresh", "", "json");
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError) {}
-  }
+  public abstract void a(vyi paramvyi);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vyo
  * JD-Core Version:    0.7.0.1
  */

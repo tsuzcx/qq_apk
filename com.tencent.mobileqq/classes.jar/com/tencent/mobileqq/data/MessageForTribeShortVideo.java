@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.data;
 
+import alud;
 import android.graphics.Color;
 import android.text.TextUtils;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
@@ -37,7 +38,7 @@ public class MessageForTribeShortVideo
   
   public static String buildCompatibleText()
   {
-    return "收到一条部落短视频[请使用新版手机QQ查看]";
+    return alud.a(2131706966) + "QQ" + alud.a(2131706994);
   }
   
   public void doParse()
@@ -85,12 +86,12 @@ public class MessageForTribeShortVideo
   public String getSummaryMsg()
   {
     if (!TextUtils.isEmpty(this.themeName)) {
-      return "[分享]#" + this.themeName;
+      return alud.a(2131706985) + this.themeName;
     }
     if (!TextUtils.isEmpty(this.brief)) {
-      return "[分享]" + this.brief;
+      return alud.a(2131706960) + this.brief;
     }
-    return "[分享]部落短视频";
+    return alud.a(2131707002);
   }
   
   public boolean isSupportReply()
@@ -113,7 +114,7 @@ public class MessageForTribeShortVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTribeShortVideo
  * JD-Core Version:    0.7.0.1
  */

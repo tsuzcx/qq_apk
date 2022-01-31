@@ -1,43 +1,48 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqProfileStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileStoryFeedIdList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class vfr
-  implements Runnable
+  extends urt
 {
-  public vfr(ShortVideoItemBuilder paramShortVideoItemBuilder) {}
+  public String a;
+  public String b;
   
-  public void run()
+  public String a()
   {
-    boolean bool = false;
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    SharedPreferences localSharedPreferences = this.a.a.getPreferences();
-    long l1 = localSharedPreferences.getLong("key_check_temp", 0L);
-    long l2 = localCalendar.getTimeInMillis();
-    if (l1 < l2) {
-      bool = true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoItemBuilder", 2, "TempCleanTask, lastCheck=" + l1 + ", today:" + l2 + ", needClean : " + bool);
-    }
-    if (bool)
+    return uqn.a("StorySvc.get_profile_feed_id_list");
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspProfileStoryFeedIdList localRspProfileStoryFeedIdList = new qqstory_service.RspProfileStoryFeedIdList();
+    try
     {
-      localSharedPreferences.edit().putLong("key_check_temp", l2).commit();
-      ShortVideoUtils.a("", true);
+      localRspProfileStoryFeedIdList.mergeFrom(paramArrayOfByte);
+      return new vfs(localRspProfileStoryFeedIdList);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqProfileStoryFeedIdList localReqProfileStoryFeedIdList = new qqstory_service.ReqProfileStoryFeedIdList();
+    localReqProfileStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    localReqProfileStoryFeedIdList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localReqProfileStoryFeedIdList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vfr
  * JD-Core Version:    0.7.0.1
  */

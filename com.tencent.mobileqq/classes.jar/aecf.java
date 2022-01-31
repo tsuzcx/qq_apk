@@ -1,27 +1,44 @@
-import android.os.Handler;
-import com.tencent.mobileqq.log.ReportLog;
-import com.tencent.mobileqq.utils.httputils.HttpMsg;
-import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.troop.activity.TroopStoryMainActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aecf
-  implements IHttpCommunicatorListener
+public class aecf
+  implements View.OnClickListener
 {
-  public void a(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
-  {
-    ReportLog.a().sendEmptyMessage(10000001);
-  }
+  public aecf(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void a(String paramString) {}
-  
-  public boolean a(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2, int paramInt)
+  public void onClick(View paramView)
   {
-    return true;
-  }
-  
-  public void b(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
-  {
-    ReportLog.a = false;
-    ReportLog.a().sendEmptyMessage(10000001);
+    if (System.currentTimeMillis() - this.a.jdField_a_of_type_Long >= 1500L) {
+      try
+      {
+        this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+        switch (paramView.getId())
+        {
+        case 2131378336: 
+          TroopStoryMainActivity.a(this.a);
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick, url:http://qqweb.qq.com/m/qunfeeds/index.html?_wv=1031&_bid=200");
+          }
+          if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
+            this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          }
+          wxj.a("grp_help", "clk_video", 0, 0, new String[] { "", "", "", "" });
+          return;
+        }
+      }
+      catch (Exception paramView)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.e("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick:" + paramView.toString());
+          return;
+        }
+      }
+    }
   }
 }
 

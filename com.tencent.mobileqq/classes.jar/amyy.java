@@ -1,13 +1,18 @@
-import cooperation.qzone.share.QZoneShareActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 
-public class amyy
-  implements Runnable
+public final class amyy
+  implements Parcelable.Creator<ARCommonConfigInfo>
 {
-  public amyy(QZoneShareActivity paramQZoneShareActivity) {}
-  
-  public void run()
+  public ARCommonConfigInfo a(Parcel paramParcel)
   {
-    QZoneShareActivity.a(this.a);
+    return new ARCommonConfigInfo(paramParcel);
+  }
+  
+  public ARCommonConfigInfo[] a(int paramInt)
+  {
+    return new ARCommonConfigInfo[paramInt];
   }
 }
 

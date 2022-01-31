@@ -1,27 +1,45 @@
-import java.util.Comparator;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.subscribe.comment.EmoView;
 
-public final class yhc
-  implements Comparator
+public class yhc
+  implements AdapterView.OnItemClickListener
 {
-  public int a(String paramString1, String paramString2)
+  public yhc(EmoView paramEmoView, int paramInt) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ("★".equals(paramString2)) {}
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (paramInt == 27)
+    {
+      if (EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView) != null) {
+        bool1 = EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
+      }
+      if (!bool1) {
+        EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
+      }
+    }
     do
     {
-      return 1;
-      if ("★".equals(paramString1)) {
-        return -1;
+      do
+      {
+        return;
+        paramInt = (this.jdField_a_of_type_Int - 1) * 27 + paramInt;
+      } while (paramInt >= 107);
+      paramAdapterView = yhp.b[yhg.b[paramInt]];
+      bool1 = bool2;
+      if (EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView) != null) {
+        bool1 = EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a(paramAdapterView);
       }
-      if ("#".equals(paramString2)) {
-        return -1;
-      }
-    } while ("#".equals(paramString1));
-    return paramString1.compareTo(paramString2);
+    } while (bool1);
+    EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a(paramAdapterView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yhc
  * JD-Core Version:    0.7.0.1
  */

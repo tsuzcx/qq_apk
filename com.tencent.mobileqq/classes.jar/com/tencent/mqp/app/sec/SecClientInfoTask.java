@@ -1,6 +1,5 @@
 package com.tencent.mqp.app.sec;
 
-import akzf;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class SecClientInfoTask
@@ -26,12 +25,12 @@ public class SecClientInfoTask
   
   public void run()
   {
-    ThreadManager.post(new akzf(this), 5, null, true);
+    ThreadManager.post(new SecClientInfoTask.1(this), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mqp.app.sec.SecClientInfoTask
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,84 @@
 package com.tencent.qphone.base.util;
 
-public class f
+import LBS.Cell;
+import android.telephony.CellLocation;
+import android.telephony.PhoneStateListener;
+import android.telephony.SignalStrength;
+import android.telephony.TelephonyManager;
+import android.telephony.gsm.GsmCellLocation;
+import java.util.ArrayList;
+
+final class f
+  extends PhoneStateListener
 {
-  public static void a(byte[] paramArrayOfByte, int paramInt, long paramLong)
+  private short a = 0;
+  
+  public void onCellLocationChanged(CellLocation paramCellLocation)
   {
-    paramArrayOfByte[paramInt] = ((byte)(int)(paramLong >> 24));
-    paramArrayOfByte[(paramInt + 1)] = ((byte)(int)(paramLong >> 16));
-    paramArrayOfByte[(paramInt + 2)] = ((byte)(int)(paramLong >> 8));
-    paramArrayOfByte[(paramInt + 3)] = ((byte)(int)paramLong);
+    if (paramCellLocation == null) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        if ((paramCellLocation instanceof GsmCellLocation))
+        {
+          e.a(new ArrayList());
+          localCell = new Cell();
+          localCell.iLac = ((GsmCellLocation)paramCellLocation).getLac();
+          localCell.iCellId = ((GsmCellLocation)paramCellLocation).getCid();
+          str = e.a().getNetworkOperator();
+          if (str != null)
+          {
+            int i = str.length();
+            if (i < 5) {}
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        Cell localCell;
+        String str;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("LocationUtil", 2, "onCellLocationChanged exception:" + localException.getMessage());
+        continue;
+      }
+      try
+      {
+        localCell.shMcc = Short.valueOf(str.substring(0, 3)).shortValue();
+        localCell.shMnc = Short.valueOf(str.substring(3, 5)).shortValue();
+        localCell.shRssi = this.a;
+        if ((localCell.iLac != -1) && (localCell.iCellId != -1)) {
+          e.b().add(0, localCell);
+        }
+        super.onCellLocationChanged(paramCellLocation);
+        return;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        localNumberFormatException.printStackTrace();
+      }
+    }
   }
   
-  public static void a(byte[] paramArrayOfByte1, int paramInt1, byte[] paramArrayOfByte2, int paramInt2)
+  public void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
   {
-    a(paramArrayOfByte1, paramInt1, paramArrayOfByte2, 0, paramInt2);
-  }
-  
-  public static void a(byte[] paramArrayOfByte1, int paramInt1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3)
-  {
-    System.arraycopy(paramArrayOfByte2, paramInt2, paramArrayOfByte1, paramInt1, paramInt3);
+    if (paramSignalStrength.isGsm()) {
+      if (paramSignalStrength.getGsmSignalStrength() != 99) {
+        this.a = ((short)(paramSignalStrength.getGsmSignalStrength() * 2 - 113));
+      }
+    }
+    for (;;)
+    {
+      super.onSignalStrengthsChanged(paramSignalStrength);
+      return;
+      this.a = ((short)paramSignalStrength.getGsmSignalStrength());
+      continue;
+      this.a = ((short)paramSignalStrength.getCdmaDbm());
+    }
   }
 }
 

@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-class acqp
-  implements Runnable
+public class acqp
+  implements aufz<Void, bdwv>
 {
-  acqp(acqo paramacqo) {}
+  public acqp(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  public bdwv a(Void paramVoid)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity.a(2130970030, 2130842666, 4, this.a.jdField_a_of_type_JavaLangString, 0, false, 0, "other", 1, false, false);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity.a(2130970030, 2130842666, 4, this.a.jdField_a_of_type_JavaLangString, 0, true, 21, "other", 1, false, false);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter.notifyDataSetChanged();
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity.jdField_a_of_type_ComTencentWidgetXListView.smoothScrollToPosition(0);
+    return bdww.a(this.a.app).a(this.a.a.troopUin);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqp
  * JD-Core Version:    0.7.0.1
  */

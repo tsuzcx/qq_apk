@@ -1,46 +1,71 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.model.EmoticonManager;
-import java.io.Serializable;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 import java.util.List;
 
 public class vbr
-  implements Runnable
+  extends vbo
 {
-  public vbr(MarketFaceItemBuilder paramMarketFaceItemBuilder, String paramString, MarketFaceItemBuilder.Holder paramHolder) {}
-  
-  public void run()
+  public vbr(ViewGroup paramViewGroup)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.b, H5MagicPlayerActivity.class);
-    localIntent.putExtra("clickTime", System.currentTimeMillis());
-    localIntent.putExtra("autoPlay", this.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("senderUin", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin);
-    localIntent.putExtra("selfUin", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    localIntent.putExtra("sessionInfo", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    localIntent.putExtra("emoticon", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a);
-    Object localObject = (EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13);
-    EmoticonPackage localEmoticonPackage = ((EmoticonManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId);
-    if (localEmoticonPackage != null)
+    super(paramViewGroup, 2131561509);
+  }
+  
+  public void a()
+  {
+    this.a.setTag(2131373850, null);
+  }
+  
+  public void a(uyg paramuyg)
+  {
+    super.a(paramuyg);
+    this.a.setDisplayState(2);
+    c(paramuyg.jdField_b_of_type_JavaLangString);
+    StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout;
+    String str;
+    if (!TextUtils.isEmpty(paramuyg.j))
     {
-      localObject = ((EmoticonManager)localObject).a(localEmoticonPackage.childEpId);
-      if ((localObject != null) && (((List)localObject).size() > 0)) {
-        localIntent.putExtra("childEmoticon", (Serializable)((List)localObject).get(0));
+      localStoryMsgNodeFrameLayout = this.a;
+      if (TextUtils.isEmpty(paramuyg.c))
+      {
+        str = alud.a(2131713657);
+        localStoryMsgNodeFrameLayout.setNodeName(str, paramuyg.j);
+        if ((paramuyg.jdField_a_of_type_JavaUtilList == null) || (paramuyg.jdField_a_of_type_JavaUtilList.isEmpty())) {
+          this.a.a(1, 1 - paramuyg.jdField_b_of_type_Int);
+        }
+        str = (String)this.a.getTag(2131373850);
+        if (!TextUtils.equals(paramuyg.jdField_a_of_type_JavaLangString, str)) {
+          switch (paramuyg.jdField_a_of_type_Int)
+          {
+          default: 
+            str = "unknown";
+          }
+        }
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.b.startActivity(localIntent);
+    for (;;)
+    {
+      wxj.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramuyg.jdField_a_of_type_JavaLangString, str });
+      this.a.setTag(2131373850, paramuyg.jdField_a_of_type_JavaLangString);
+      return;
+      str = paramuyg.c;
+      break;
+      localStoryMsgNodeFrameLayout = this.a;
+      if (TextUtils.isEmpty(paramuyg.c)) {}
+      for (str = alud.a(2131713664);; str = paramuyg.c)
+      {
+        localStoryMsgNodeFrameLayout.setNodeName(str, false);
+        break;
+      }
+      str = "2";
+      continue;
+      str = "3";
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vbr
  * JD-Core Version:    0.7.0.1
  */

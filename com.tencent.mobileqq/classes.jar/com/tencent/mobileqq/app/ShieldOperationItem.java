@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app;
 
+import amcn;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import zmx;
 
 public class ShieldOperationItem
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new zmx();
+  public static final Parcelable.Creator<ShieldOperationItem> CREATOR = new amcn();
   public int a;
   public long[] a;
   public int b;

@@ -1,38 +1,42 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import android.content.Intent;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
 
-class maa
-  implements HttpWebCgiAsyncTask.Callback
+public class maa
+  implements blar
 {
-  maa(lzz paramlzz) {}
+  final WeakReference<QQServiceForAV> a;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  maa(QQServiceForAV paramQQServiceForAV)
   {
-    QLog.w("ReadInJoyWebDataManager", 2, Long.toString(Thread.currentThread().getId()));
-    if (paramJSONObject != null) {}
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("ReadInJoyWebDataManager", 2, "sendLog result:" + paramJSONObject.toString());
-        }
-        return;
-      }
-      catch (Exception paramJSONObject)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.w("ReadInJoyWebDataManager", 2, "sendLog result Exception :" + paramJSONObject);
-        return;
-      }
+    this.a = new WeakReference(paramQQServiceForAV);
+  }
+  
+  public void a(blao paramblao, long paramLong1, long paramLong2) {}
+  
+  public void a(blao paramblao, String paramString, boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QQServiceForAV", 2, "PTULibpagDownloadCallback onAEResDownloadResult, package[" + paramblao.a + ", isDownloaded[" + paramBoolean + ", errorType[" + paramInt + "]");
     }
-    QLog.w("ReadInJoyWebDataManager", 2, "sendLog result null");
+    paramString = (QQServiceForAV)this.a.get();
+    if (paramString != null)
+    {
+      paramString = (QQAppInterface)paramString.a();
+      Intent localIntent = new Intent("tencent.video.q2v.ptuLibpagDownloadRet");
+      localIntent.putExtra("packageIdx", paramblao.a);
+      localIntent.putExtra("isDownloaded", paramBoolean);
+      localIntent.putExtra("errorType", paramInt);
+      paramString.getApp().sendBroadcast(localIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     maa
  * JD-Core Version:    0.7.0.1
  */

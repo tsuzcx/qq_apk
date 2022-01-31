@@ -1,15 +1,22 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-
 public class amvk
-  implements Runnable
+  extends amvm
 {
-  public amvk(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int;
+  float[] jdField_a_of_type_ArrayOfFloat;
+  float jdField_b_of_type_Float;
+  float[] jdField_b_of_type_ArrayOfFloat;
+  float c;
   
-  public void run()
+  public amvk(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    RemoteHandleManager.a().a().a();
+    super(0);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.c = paramFloat3;
+    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat1;
+    this.jdField_b_of_type_ArrayOfFloat = paramArrayOfFloat2;
   }
 }
 

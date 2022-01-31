@@ -1,15 +1,17 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
-import com.tencent.litetransfersdk.MsgCSBody;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.servlet.ReduFriendObserver;
 
 public class bwz
-  implements Runnable
+  extends ReduFriendObserver
 {
-  public bwz(LiteTransferWrapper paramLiteTransferWrapper, MsgCSBody paramMsgCSBody) {}
+  public bwz(ChatActivity paramChatActivity) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetProxyToJni();
-    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.PbMsgReciveToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_ComTencentLitetransfersdkMsgCSBody);
+    if (paramBoolean) {
+      ChatActivity.a(this.a);
+    }
   }
 }
 

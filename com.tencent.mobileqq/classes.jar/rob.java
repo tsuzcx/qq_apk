@@ -1,37 +1,49 @@
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class rob
-  implements Runnable
+class rob
+  extends Handler
 {
-  public rob(AuthDevRenameActivity paramAuthDevRenameActivity) {}
+  private WeakReference<rny> a;
   
-  public void run()
+  public rob(rny paramrny)
   {
-    try
+    this.a = new WeakReference(paramrny);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      if ((AuthDevRenameActivity.a(this.a) == null) && (!this.a.isFinishing())) {
-        AuthDevRenameActivity.a(this.a, new QQProgressDialog(this.a, this.a.getTitleBarHeight()));
-      }
-      if ((AuthDevRenameActivity.a(this.a) != null) && (!AuthDevRenameActivity.a(this.a).isShowing()))
+    }
+    do
+    {
+      do
       {
-        AuthDevRenameActivity.a(this.a).a(this.a.getString(2131436618));
-        AuthDevRenameActivity.a(this.a).show();
-      }
+        return;
+      } while (this.a.get() == null);
+      rny.a((rny)this.a.get());
+      rny.a((rny)this.a.get()).sendEmptyMessageDelayed(0, rny.a((rny)this.a.get()));
+      return;
+    } while (this.a.get() == null);
+    if (QLog.isColorLevel()) {
+      QLog.d(rny.a((rny)this.a.get()), 2, "prePlay timeout, try rePlay");
+    }
+    if ((((rny)this.a.get()).e()) && (rny.a((rny)this.a.get()).a() == rny.a((rny)this.a.get())))
+    {
+      rny.b((rny)this.a.get());
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    rny.a((rny)this.a.get(), false);
+    ((rny)this.a.get()).a(rny.a((rny)this.a.get()));
+    rny.a((rny)this.a.get(), rny.a((rny)this.a.get()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rob
  * JD-Core Version:    0.7.0.1
  */

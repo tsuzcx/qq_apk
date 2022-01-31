@@ -1,23 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.redpacket.ui.RedPacketRollTextView;
+import java.lang.ref.WeakReference;
 
-public final class lxz
-  implements Parcelable.Creator
+public class lxz
+  extends Handler
 {
-  public TagInfo a(Parcel paramParcel)
+  WeakReference<RedPacketRollTextView> a;
+  
+  public lxz(RedPacketRollTextView paramRedPacketRollTextView)
   {
-    return new TagInfo(paramParcel);
+    this.a = new WeakReference(paramRedPacketRollTextView);
   }
   
-  public TagInfo[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new TagInfo[paramInt];
+    RedPacketRollTextView localRedPacketRollTextView = (RedPacketRollTextView)this.a.get();
+    if (localRedPacketRollTextView == null) {}
+    do
+    {
+      Bundle localBundle;
+      do
+      {
+        return;
+        localBundle = paramMessage.getData();
+      } while (localBundle == null);
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      }
+      localRedPacketRollTextView.setText(localBundle.getString("content"));
+    } while (RedPacketRollTextView.a(localRedPacketRollTextView) == null);
+    RedPacketRollTextView.a(localRedPacketRollTextView).a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lxz
  * JD-Core Version:    0.7.0.1
  */

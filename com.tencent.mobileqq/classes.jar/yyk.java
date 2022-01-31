@@ -1,47 +1,141 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ValueAnimator;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.animation.Interpolator;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class yyk
-  implements DialogInterface.OnClickListener
 {
-  public yyk(ApolloPanel paramApolloPanel, String paramString1, String paramString2, String paramString3) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long = 3000L;
+  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
+  private View jdField_a_of_type_AndroidViewView;
+  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
+  private List<yya> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private yyf jdField_a_of_type_Yyf;
+  private yyg jdField_a_of_type_Yyg;
+  private yyh jdField_a_of_type_Yyh;
+  private yyi jdField_a_of_type_Yyi;
+  private yyk jdField_a_of_type_Yyk;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = 1;
+  private long jdField_b_of_type_Long;
+  private yyk jdField_b_of_type_Yyk;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static yya a(View... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.m();
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a != null))
+    return new yyk().b(paramVarArgs);
+  }
+  
+  protected AnimatorSet a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject2;
+    while (((Iterator)localObject1).hasNext())
     {
-      paramDialogInterface = (VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(71);
-      if (!this.jdField_a_of_type_JavaLangString.equals(String.valueOf(2))) {}
-    }
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "cmshow", "Apollo", "icon_alert_clickbuy", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { "" + this.b });
+      localObject2 = (yya)((Iterator)localObject1).next();
+      List localList = ((yya)localObject2).a();
+      if (((yya)localObject2).a() != null)
+      {
+        Iterator localIterator = localList.iterator();
+        while (localIterator.hasNext()) {
+          ((Animator)localIterator.next()).setInterpolator(((yya)localObject2).a());
+        }
       }
-      String str = new JSONObject(this.c).getString("packageId");
-      paramDialogInterface.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getCurrentAccountUin(), Integer.parseInt(this.b), Integer.parseInt(str));
-      return;
+      localArrayList.addAll(localList);
     }
-    catch (JSONException paramDialogInterface)
+    localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      QLog.e("ApolloPanel", 1, "[showAioDialog] Exception:", paramDialogInterface);
+      localObject2 = (yya)((Iterator)localObject1).next();
+      if (((yya)localObject2).a()) {
+        this.jdField_a_of_type_AndroidViewView = ((yya)localObject2).a();
+      }
     }
+    localObject1 = localArrayList.iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (Animator)((Iterator)localObject1).next();
+      if ((localObject2 instanceof ValueAnimator))
+      {
+        localObject2 = (ValueAnimator)localObject2;
+        ((ValueAnimator)localObject2).setRepeatCount(this.jdField_a_of_type_Int);
+        ((ValueAnimator)localObject2).setRepeatMode(this.jdField_b_of_type_Int);
+        if (!this.jdField_a_of_type_Boolean)
+        {
+          ((ValueAnimator)localObject2).addListener(new yyl(this));
+          this.jdField_a_of_type_Boolean = true;
+        }
+      }
+    }
+    localObject1 = new AnimatorSet();
+    ((AnimatorSet)localObject1).playTogether(localArrayList);
+    ((AnimatorSet)localObject1).setDuration(this.jdField_a_of_type_Long);
+    ((AnimatorSet)localObject1).setStartDelay(this.jdField_b_of_type_Long);
+    if (this.jdField_a_of_type_AndroidViewAnimationInterpolator != null) {
+      ((AnimatorSet)localObject1).setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
+    }
+    ((AnimatorSet)localObject1).addListener(new yym(this));
+    return localObject1;
+  }
+  
+  public yyk a()
+  {
+    if (this.jdField_a_of_type_Yyk != null)
+    {
+      this.jdField_a_of_type_Yyk.a();
+      return this;
+    }
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet = a();
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnPreDrawListener(new yyn(this));
+      return this;
+    }
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
+    return this;
+  }
+  
+  public yyk a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public yyk a(Interpolator paramInterpolator)
+  {
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
+    return this;
+  }
+  
+  public yyk a(yyh paramyyh)
+  {
+    this.jdField_a_of_type_Yyh = paramyyh;
+    return this;
+  }
+  
+  public yyk a(yyi paramyyi)
+  {
+    this.jdField_a_of_type_Yyi = paramyyi;
+    return this;
+  }
+  
+  public yya b(View... paramVarArgs)
+  {
+    paramVarArgs = new yya(this, paramVarArgs);
+    this.jdField_a_of_type_JavaUtilList.add(paramVarArgs);
+    return paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yyk
  * JD-Core Version:    0.7.0.1
  */

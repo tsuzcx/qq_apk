@@ -1,37 +1,36 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 public class ahel
-  extends ahfj
+  implements View.OnClickListener
 {
-  public ahel(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
-  {
-    super(paramReceiptMessageDetailFragment);
-  }
+  public ahel(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d("ReceiptMessageDetailFragment", 4, "mTroopSendReadReportCallback onRes: " + paramInt);
-    }
-    if (paramInt == 0)
+    paramView = paramView.getTag();
+    if ((paramView == null) || (!(paramView instanceof Integer))) {}
+    int i;
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReceiptMessageDetailFragment", 2, "mTroopSendReadReportCallback succ");
-      }
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, 0, 0, false);
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
-      return;
+      do
+      {
+        return;
+        i = ((Integer)paramView).intValue();
+      } while ((i < 0) || (this.a.jdField_a_of_type_Aheo == null));
+      paramView = this.a.getActivity();
+    } while (paramView == null);
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_clk", 0, 0, this.a.b, "", "", "");
+    MessageRecord localMessageRecord = ((ahen)this.a.jdField_a_of_type_Aheo.getItem(i)).a;
+    ChatHistoryBubbleListForTroopFragment.a(paramView, this.a.b, localMessageRecord, 100, 1);
+    if (QLog.isColorLevel()) {
+      QLog.i(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "onItemClick, message = " + localMessageRecord);
     }
-    if (paramInt != 1281)
-    {
-      QLog.d("ReceiptMessageDetailFragment", 1, "mTroopSendReadReportCallback fatal error: " + paramInt);
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
-      return;
-    }
-    ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A597", "0X800A597", 0, 0, "", "", "", "");
   }
 }
 

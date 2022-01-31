@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XPanelContainer;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class rpl
-  implements Runnable
+class rpl
+  implements View.OnClickListener
 {
-  public rpl(BaseChatPie paramBaseChatPie) {}
+  rpl(rpk paramrpk, nww paramnww) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a(1);
+    this.jdField_a_of_type_Nww.j();
+    this.jdField_a_of_type_Rpk.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rpl
  * JD-Core Version:    0.7.0.1
  */

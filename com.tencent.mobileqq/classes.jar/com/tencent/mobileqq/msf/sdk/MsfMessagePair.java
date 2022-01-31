@@ -6,7 +6,7 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 public class MsfMessagePair
 {
   public FromServiceMsg fromServiceMsg;
-  public String sendProcess;
+  public String sendProcess = null;
   public ToServiceMsg toServiceMsg;
   
   public MsfMessagePair(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)

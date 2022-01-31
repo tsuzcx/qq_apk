@@ -1,22 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
-public final class dfq
-  implements Parcelable.Creator
+public class dfq
+  implements View.OnClickListener
 {
-  public ProfileActivity.CardContactInfo a(Parcel paramParcel)
-  {
-    ProfileActivity.CardContactInfo localCardContactInfo = new ProfileActivity.CardContactInfo(null);
-    localCardContactInfo.a = paramParcel.readString();
-    localCardContactInfo.c = paramParcel.readString();
-    localCardContactInfo.b = paramParcel.readString();
-    return localCardContactInfo;
-  }
+  public dfq(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public ProfileActivity.CardContactInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ProfileActivity.CardContactInfo[paramInt];
+    this.a.e();
   }
 }
 

@@ -1,28 +1,20 @@
-import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantActivity;
-import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantItemData;
-import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantManager;
-import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantManager.onShareAlbumResultListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.transfile.OldHttpEngine.OldHttpCommunicatorListner;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
+import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class gnr
-  implements QZoneShareAlbumAssistantManager.onShareAlbumResultListener
+  extends TimerTask
 {
-  public gnr(QZoneShareAlbumAssistantActivity paramQZoneShareAlbumAssistantActivity) {}
+  public gnr(OldHttpEngine.OldHttpCommunicatorListner paramOldHttpCommunicatorListner) {}
   
-  public void a(QZoneShareAlbumAssistantItemData paramQZoneShareAlbumAssistantItemData)
+  public void run()
   {
-    QZoneShareAlbumAssistantManager.a().h(this.a.b);
-    QZoneShareAlbumAssistantActivity.a(this.a, paramQZoneShareAlbumAssistantItemData);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareAlbumAssistantActivity", 2, "ShareAlbum ondata Rsp");
+    if (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      return;
     }
-    QZoneShareAlbumAssistantActivity.a(this.a, false);
-    QZoneShareAlbumAssistantActivity.a(this.a);
-    this.a.runOnUiThread(new gns(this, paramBoolean));
+    this.a.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.a(9004, -1, "nonetwork");
+    this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg, this.a.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
   }
 }
 

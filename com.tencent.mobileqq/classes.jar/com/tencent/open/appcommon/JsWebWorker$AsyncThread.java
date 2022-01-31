@@ -12,7 +12,7 @@ public class JsWebWorker$AsyncThread
   {
     try
     {
-      this.jdField_a_of_type_ComTencentOpenAppcommonJsWebWorker.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_ArrayOfJavaLangString);
+      this.this$0.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_ArrayOfJavaLangString);
       return;
     }
     catch (Exception localException)
@@ -23,7 +23,7 @@ public class JsWebWorker$AsyncThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.JsWebWorker.AsyncThread
  * JD-Core Version:    0.7.0.1
  */

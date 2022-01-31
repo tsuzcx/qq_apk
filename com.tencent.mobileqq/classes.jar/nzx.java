@@ -1,41 +1,28 @@
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class nzx
-  implements Runnable
+  implements bhuk
 {
-  int jdField_a_of_type_Int = -1;
+  public nzx(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public nzx(MystoryListView paramMystoryListView, int[] paramArrayOfInt1, int[] paramArrayOfInt2, float[] paramArrayOfFloat) {}
-  
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = 0;
-    if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ArrayOfInt.length) {}
-    do
+    switch (paramInt)
     {
+    }
+    for (;;)
+    {
+      ReadInJoySettingActivity.b(this.a).cancel();
       return;
-      if (this.jdField_a_of_type_Int < 0)
-      {
-        this.jdField_a_of_type_Int += 1;
-        if (this.jdField_a_of_type_Int >= 0) {
-          i = this.b[this.jdField_a_of_type_Int];
-        }
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.postDelayed(this, i);
-        return;
-      }
-      long l = System.currentTimeMillis();
-      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, this.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int], this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.getWidth() / 2, this.jdField_a_of_type_ArrayOfFloat[this.jdField_a_of_type_Int], 0);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.dispatchTouchEvent(localMotionEvent);
-      localMotionEvent.recycle();
-      this.jdField_a_of_type_Int += 1;
-    } while (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ArrayOfInt.length);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.postDelayed(this, this.b[this.jdField_a_of_type_Int]);
+      ReadInJoySettingActivity.e(this.a, false);
+      ReadInJoySettingActivity.d(this.a, ReadInJoySettingActivity.d(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nzx
  * JD-Core Version:    0.7.0.1
  */

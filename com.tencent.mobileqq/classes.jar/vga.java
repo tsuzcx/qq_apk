@@ -1,77 +1,64 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.widget.CircleBubbleImageView;
-import java.net.URL;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class vga
-  extends CircleBubbleImageView
+  extends urt
 {
-  URLDrawable a;
-  public URLDrawable b;
+  public static final String a;
+  public uxs a;
+  public String b;
   
-  public vga(Context paramContext)
+  static
   {
-    super(paramContext);
-    a(true);
+    jdField_a_of_type_JavaLangString = uqn.a("StorySvc.homepage_batch_feeds_720");
   }
   
-  public void a(URLDrawable paramURLDrawable)
+  public String a()
   {
-    if (this.a != null) {
-      this.a.setURLDrawableListener(null);
-    }
-    paramURLDrawable.setURLDrawableListener(this);
-    this.a = paramURLDrawable;
-    paramURLDrawable.startDownload();
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public boolean a(String paramString)
+  public uro a(byte[] paramArrayOfByte)
   {
-    return (this.b == null) || (!this.b.getURL().getPath().equals(paramString));
-  }
-  
-  public void b(URLDrawable paramURLDrawable)
-  {
-    setImageDrawable(paramURLDrawable);
-    if (this.b != paramURLDrawable) {
-      this.b = paramURLDrawable;
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (paramURLDrawable == this.a)
+    qqstory_service.RspStoryFeedIdList localRspStoryFeedIdList = new qqstory_service.RspStoryFeedIdList();
+    try
     {
-      b(paramURLDrawable);
-      return;
+      localRspStoryFeedIdList.mergeFrom(paramArrayOfByte);
+      return new vgb(localRspStoryFeedIdList);
     }
-    super.onLoadFialed(paramURLDrawable, paramThrowable);
-  }
-  
-  @TargetApi(11)
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable == this.a) {
-      b(paramURLDrawable);
-    }
-    super.onLoadSuccessed(paramURLDrawable);
-  }
-  
-  public void setImageDrawable(Drawable paramDrawable)
-  {
-    super.setImageDrawable(paramDrawable);
-    if (this.a != null)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      this.a.setURLDrawableListener(null);
-      this.a = null;
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqStoryFeedIdList localReqStoryFeedIdList = new qqstory_service.ReqStoryFeedIdList();
+    localReqStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.b));
+    if (this.jdField_a_of_type_Uxs != null)
+    {
+      localReqStoryFeedIdList.coordinate.set(this.jdField_a_of_type_Uxs.c);
+      localReqStoryFeedIdList.gps.setHasFlag(true);
+      localReqStoryFeedIdList.gps.lat.set(this.jdField_a_of_type_Uxs.a);
+      localReqStoryFeedIdList.gps.lng.set(this.jdField_a_of_type_Uxs.b);
+    }
+    localReqStoryFeedIdList.client_version.set(6);
+    return localReqStoryFeedIdList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vga
  * JD-Core Version:    0.7.0.1
  */

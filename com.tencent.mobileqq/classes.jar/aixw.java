@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-
-public class aixw
-  implements DialogInterface.OnClickListener
+public abstract interface aixw
 {
-  public aixw(TroopBarPublishActivity paramTroopBarPublishActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.finish();
-  }
+  public abstract void a(String paramString1, String paramString2, aixq paramaixq);
 }
 
 

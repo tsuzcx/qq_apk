@@ -61,9 +61,9 @@ import com.tencent.widget.ActionSheet;
 import com.tencent.widget.XListView;
 import cooperation.qqfav.QfavUtil;
 import cooperation.qqfav.widget.QfavMicroPhoneDialog;
-import efh;
-import efi;
-import efj;
+import eaf;
+import eag;
+import eah;
 import mqq.manager.ServerConfigManager.ConfigType;
 
 public class PttItemBuilder
@@ -266,7 +266,7 @@ public class PttItemBuilder
   
   private void a(PttItemBuilder.Holder paramHolder, MessageForPtt paramMessageForPtt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new efh(this, paramMessageForPtt));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new eaf(this, paramMessageForPtt));
   }
   
   private void a(MessageForPtt paramMessageForPtt)
@@ -310,7 +310,7 @@ public class PttItemBuilder
       paramView.setId(2131230837);
       TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
       localTextView.setId(2131230836);
-      localTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131362077));
+      localTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131362087));
       Object localObject = new RelativeLayout.LayoutParams(-2, -2);
       ((RelativeLayout.LayoutParams)localObject).addRule(15, -1);
       paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
@@ -378,7 +378,7 @@ public class PttItemBuilder
         }
         paramInt = QQRecorder.a(paramContext.url);
       } while (paramInt <= 0);
-      paramChatMessage = new QfavMicroPhoneDialog(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new efi(this, paramContext));
+      paramChatMessage = new QfavMicroPhoneDialog(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new eag(this, paramContext));
       if (paramChatMessage.a(paramContext.url, paramInt))
       {
         paramChatMessage.show();
@@ -386,12 +386,12 @@ public class PttItemBuilder
       }
       QfavUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131560785, 1);
       return;
-      if (paramInt == 2131234872)
+      if (paramInt == 2131234874)
       {
         ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
         return;
       }
-      if (paramInt == 2131234877)
+      if (paramInt == 2131234879)
       {
         if (TextUtils.isEmpty(paramContext.sttText)) {}
         for (paramContext = this.jdField_a_of_type_AndroidContentContext.getString(2131561420);; paramContext = paramContext.sttText) {
@@ -436,7 +436,7 @@ public class PttItemBuilder
       paramView.a(2131561439);
       paramView.c(2131562859);
       paramView.d(2131561746);
-      paramView.a(new efj(this, localMessageForPtt, paramView));
+      paramView.a(new eah(this, localMessageForPtt, paramView));
       paramView.show();
       return;
     }
@@ -514,7 +514,7 @@ public class PttItemBuilder
       paramViewHolder = paramView.getResources();
       if (paramChatMessage.isSend())
       {
-        paramViewHolder = paramViewHolder.getColorStateList(2131362080);
+        paramViewHolder = paramViewHolder.getColorStateList(2131362090);
         if (localHolder.jdField_a_of_type_AndroidWidgetTextView != null) {
           localHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramViewHolder);
         }
@@ -529,7 +529,7 @@ public class PttItemBuilder
       do
       {
         return;
-        paramViewHolder = paramViewHolder.getColorStateList(2131362077);
+        paramViewHolder = paramViewHolder.getColorStateList(2131362087);
         break;
         if (paramBubbleInfo.b != 0) {
           break label127;
@@ -671,9 +671,9 @@ public class PttItemBuilder
           }
           i1 = i2;
           i3 = AIOUtils.a(12.0F, (Resources)localObject4);
-          ((Resources)localObject4).getDrawable(2130838677).getIntrinsicWidth();
-          i4 = ((Resources)localObject4).getDrawable(2130838677).getIntrinsicHeight();
-          i5 = ((Resources)localObject4).getDrawable(2130839791).getIntrinsicWidth();
+          ((Resources)localObject4).getDrawable(2130838679).getIntrinsicWidth();
+          i4 = ((Resources)localObject4).getDrawable(2130838679).getIntrinsicHeight();
+          i5 = ((Resources)localObject4).getDrawable(2130839793).getIntrinsicWidth();
           i6 = AIOUtils.a(1.0F, (Resources)localObject4);
           if (m != 1) {
             break label1259;
@@ -691,10 +691,10 @@ public class PttItemBuilder
         break;
         if (c(paramMessageForPtt))
         {
-          paramHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839109);
+          paramHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839111);
           break label837;
         }
-        paramHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839781);
+        paramHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839783);
         break label837;
         if (paramBoolean)
         {
@@ -709,10 +709,10 @@ public class PttItemBuilder
         }
         if (c(paramMessageForPtt))
         {
-          paramHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839108);
+          paramHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839110);
           break label837;
         }
-        paramHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839780);
+        paramHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839782);
         break label837;
         label1148:
         if (paramMessageForPtt.sttAbility == 1)
@@ -790,12 +790,12 @@ public class PttItemBuilder
           ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131230838);
           ((RelativeLayout.LayoutParams)localObject2).addRule(8, 2131230838);
           ((RelativeLayout.LayoutParams)paramHolder.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams()).addRule(1, 2131230840);
-          i1 = 2130839793;
-          n = 2130838680;
+          i1 = 2130839795;
+          n = 2130838682;
           if (c(paramMessageForPtt))
           {
-            i1 = 2130838682;
-            n = 2130838678;
+            i1 = 2130838684;
+            n = 2130838680;
           }
           paramHolder.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(i1);
           paramHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(n);
@@ -831,12 +831,12 @@ public class PttItemBuilder
           ((RelativeLayout.LayoutParams)localObject2).addRule(0, -1);
           ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131230838);
           ((RelativeLayout.LayoutParams)localObject2).addRule(8, 2131230838);
-          i1 = 2130839792;
-          n = 2130838679;
+          i1 = 2130839794;
+          n = 2130838681;
           if (c(paramMessageForPtt))
           {
-            i1 = 2130838682;
-            n = 2130838678;
+            i1 = 2130838684;
+            n = 2130838680;
           }
           paramHolder.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(i1);
           paramHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(n);
@@ -864,7 +864,7 @@ public class PttItemBuilder
         TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
         if (paramMessageForPtt.isSend())
         {
-          localObject2 = ((Resources)localObject4).getColorStateList(2131362080);
+          localObject2 = ((Resources)localObject4).getColorStateList(2131362090);
           label2057:
           localTextView.setTextColor((ColorStateList)localObject2);
           localTextView.setId(2131230841);
@@ -873,7 +873,7 @@ public class PttItemBuilder
           ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
           RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-2, -2);
           localImageView.setLayoutParams(localLayoutParams2);
-          localImageView.setImageResource(2130838677);
+          localImageView.setImageResource(2130838679);
           localImageView.setScaleType(ImageView.ScaleType.FIT_END);
           localLayoutParams1.addRule(3, 2131230838);
           localLayoutParams1.addRule(14);
@@ -933,7 +933,7 @@ public class PttItemBuilder
         }
         paramHolder.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
         break;
-        localObject2 = ((Resources)localObject4).getColorStateList(2131362077);
+        localObject2 = ((Resources)localObject4).getColorStateList(2131362087);
         break label2057;
         paramHolder.d.setVisibility(0);
         paramHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -964,7 +964,7 @@ public class PttItemBuilder
         ((ImageView)localObject2).setContentDescription(paramMessageForPtt);
         break;
       }
-      paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setFailedIconResource(2130837860, null);
+      paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setFailedIconResource(2130837862, null);
       paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
       ((Animatable)paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.jdField_b_of_type_AndroidWidgetImageView.getDrawable()).start();
     }
@@ -1036,7 +1036,7 @@ public class PttItemBuilder
     }
     if ((paramView.sttAbility == 2) && (paramView.expandStt))
     {
-      localQQCustomMenu.a(2131234877, this.jdField_a_of_type_AndroidContentContext.getString(2131561878));
+      localQQCustomMenu.a(2131234879, this.jdField_a_of_type_AndroidContentContext.getString(2131561878));
       localQQCustomMenu.a(2131231190, this.jdField_a_of_type_AndroidContentContext.getString(2131562132));
     }
     localQQCustomMenu.a(this.jdField_a_of_type_AndroidContentContext.getString(2131562611));

@@ -1,72 +1,66 @@
 import android.content.Context;
-import android.graphics.Color;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.troop.logic.HomeworkTroopController;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.calloutpopupwindow.CalloutPopupWindow;
-import com.tencent.widget.calloutpopupwindow.CalloutPopupWindow.Builder;
-import com.tencent.widget.calloutpopupwindow.CalloutPopupWindow.DrawableBuilder;
-import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ajlz
-  implements Runnable
+  extends ajlr
+  implements Cloneable
 {
-  public ajlz(HomeworkTroopController paramHomeworkTroopController, int paramInt) {}
-  
-  public void run()
+  public ajlz(Context paramContext)
   {
-    Object localObject2 = (BaseActivity)this.jdField_a_of_type_ComTencentMobileqqTroopLogicHomeworkTroopController.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject2 == null) {
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131699977);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    QLog.d("TroopConfessToMeMsg", 2, "deSerialize");
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
+    {
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      this.c = paramArrayOfByte.getString("messageNavInfo");
+      if ((this.c != null) && (this.c.length() != 0)) {
+        this.jdField_a_of_type_Bbpe.a(this.c);
+      }
       return;
     }
-    label31:
-    Object localObject1;
-    if (this.jdField_a_of_type_Int == 1)
+    catch (JSONException paramArrayOfByte)
     {
-      i = 1;
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopLogicHomeworkTroopController.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout;
-      if (i == 0) {
-        break label79;
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("time", this.jdField_a_of_type_Int);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Bbpe != null) {
+        this.c = this.jdField_a_of_type_Bbpe.a();
+      }
+      localJSONObject.put("messageNavInfo", this.c);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
       }
     }
-    label79:
-    for (int j = 32;; j = 31)
-    {
-      localObject1 = ((PanelIconLinearLayout)localObject1).findViewWithTag(Integer.valueOf(j));
-      if (localObject1 != null) {
-        break label85;
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("HomeworkTroopController", 2, "showAIOPanelTip anchorView null.");
-      return;
-      i = 0;
-      break label31;
-    }
-    label85:
-    this.jdField_a_of_type_ComTencentMobileqqTroopLogicHomeworkTroopController.c();
-    CalloutPopupWindow.Builder localBuilder = CalloutPopupWindow.a((Context)localObject2).b(0).a(true);
-    if (i != 0) {}
-    for (int i = 2131430724;; i = 2131430725)
-    {
-      localObject2 = localBuilder.a(((BaseActivity)localObject2).getString(i)).a(16.0F).a(-1);
-      ((CalloutPopupWindow.Builder)localObject2).c(49);
-      localObject2 = new CalloutPopupWindow.DrawableBuilder((CalloutPopupWindow.Builder)localObject2).b(Color.argb(255, 0, 0, 0)).a(5).a();
-      if (localObject2 != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopLogicHomeworkTroopController.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow = ((CalloutPopupWindow.Builder)localObject2).a();
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopLogicHomeworkTroopController.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow == null) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTroopLogicHomeworkTroopController.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqTroopLogicHomeworkTroopController.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow.a(82);
-      this.jdField_a_of_type_ComTencentMobileqqTroopLogicHomeworkTroopController.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow.a(new ajma(this));
-      this.jdField_a_of_type_ComTencentMobileqqTroopLogicHomeworkTroopController.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow.a((View)localObject1);
-      return;
-    }
+    return localJSONObject.toString().getBytes();
   }
 }
 

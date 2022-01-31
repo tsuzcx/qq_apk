@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class mobileqq_mp$GetUserFollowListRequest
-  extends MessageMicro
+  extends MessageMicro<GetUserFollowListRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56 }, new String[] { "follow_seqno", "public_account_seqno", "begin", "limit", "is_increment", "group_info_seqno", "version" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), Integer.valueOf(0), Integer.valueOf(0) }, GetUserFollowListRequest.class);
   public final PBUInt32Field begin = PBField.initUInt32(0);
@@ -20,7 +20,7 @@ public final class mobileqq_mp$GetUserFollowListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mp.mobileqq_mp.GetUserFollowListRequest
  * JD-Core Version:    0.7.0.1
  */

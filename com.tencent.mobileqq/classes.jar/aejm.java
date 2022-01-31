@@ -1,134 +1,72 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MultiMsgProxy;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import mqq.app.MobileQQ;
-import tencent.im.msg.im_msg_body.RichText;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import java.util.List;
 
 public class aejm
-  implements UpCallBack
+  extends akis
 {
-  int jdField_a_of_type_Int;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  ArrayList jdField_a_of_type_JavaUtilArrayList;
-  HashMap jdField_a_of_type_JavaUtilHashMap;
+  private List<aejp> jdField_a_of_type_JavaUtilList;
   
-  public aejm(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString, int paramInt, ArrayList paramArrayList, HashMap paramHashMap)
+  public aejm(List<aejp> paramList)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    super(paramList, paramList.app, paramList.b, 1, true);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  private Bitmap a(Bitmap paramBitmap)
+  public int getCount()
   {
-    Bitmap localBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
-    Canvas localCanvas = new Canvas(localBitmap);
-    localCanvas.drawColor(-1);
-    localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, null);
-    return localBitmap;
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public Object getItem(int paramInt)
   {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
     return null;
   }
   
-  public void a(UpCallBack.SendResult paramSendResult) {}
-  
-  public void b(UpCallBack.SendResult paramSendResult)
+  public long getItemId(int paramInt)
   {
-    if (paramSendResult.jdField_a_of_type_Int == 0) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg", 2, "send real struct msg done, cost : " + (System.currentTimeMillis() - MultiMsgManager.b()));
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    aejp localaejp;
+    if (paramView == null)
+    {
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getLayoutInflater().inflate(2131562633, paramViewGroup, false);
+      paramViewGroup = new aejr(null);
+      paramViewGroup.c = ((ImageView)paramView.findViewById(2131368796));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378896));
+      ((TextView)paramView.findViewById(2131379008)).setText("");
+      paramView.setTag(paramViewGroup);
+      localaejp = (aejp)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if ((TextUtils.isEmpty(localaejp.e)) || (localaejp.e.equals(localaejp.b))) {
+        break label203;
       }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localaejp.b + "(" + localaejp.e + ")");
     }
     for (;;)
     {
-      String str2;
-      Object localObject2;
-      long l;
-      try
-      {
-        String str1;
-        String str3;
-        if (this.jdField_a_of_type_Int == 0)
-        {
-          str1 = String.format(((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplication().getString(2131438944), new Object[] { ContactUtils.b((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).c()), ContactUtils.b((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString) });
-          str3 = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msg;
-          str2 = "https://mma.qq.com/jumpqq/forward2.html?rId=" + paramSendResult.c + "&fName=" + paramSendResult.d;
-          if (this.jdField_a_of_type_Int == 1)
-          {
-            i = 4;
-            localObject2 = ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(i, this.jdField_a_of_type_JavaLangString, (byte)1, false, 0);
-            if (localObject2 != null) {
-              continue;
-            }
-          }
-        }
-        else
-        {
-          str1 = String.format(((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplication().getString(2131438945), new Object[] { ContactUtils.a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) });
-          continue;
-        }
-        if (this.jdField_a_of_type_Int != 3000) {
-          break label567;
-        }
-        i = 101;
-        continue;
-        Object localObject1 = localObject2;
-        if (this.jdField_a_of_type_Int == 3000) {
-          localObject1 = a((Bitmap)localObject2);
-        }
-        localObject2 = String.valueOf(System.currentTimeMillis());
-        WXShareHelper.a().d((String)localObject2, str1, (Bitmap)localObject1, str3, str2);
-        l = paramSendResult.c.hashCode();
-        paramSendResult = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        if (paramSendResult.hasNext())
-        {
-          ((MessageRecord)paramSendResult.next()).msgseq = l;
-          continue;
-        }
-        ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a().a(this.jdField_a_of_type_JavaUtilArrayList, null);
-      }
-      catch (Exception paramSendResult)
-      {
-        paramSendResult.printStackTrace();
-        return;
-      }
-      MultiMsgManager.a().a(this.jdField_a_of_type_JavaUtilHashMap, l, (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-      ((MessageHandler)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(0)).a(8031, false, Integer.valueOf(0));
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("MultiMsg", 2, "shareToWXFriend.transaction: " + (String)localObject2 + ", shareLink:" + str2);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg", 2, "upload multi msg pack failed, result.errStr=" + paramSendResult.b + ",result.errStr=" + paramSendResult.jdField_a_of_type_JavaLangString);
-      }
-      ((MessageHandler)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(0)).a(8031, false, Integer.valueOf(5));
-      return;
-      label567:
-      int i = 1;
+      paramViewGroup.jdField_a_of_type_JavaLangString = localaejp.jdField_a_of_type_JavaLangString;
+      paramViewGroup.jdField_a_of_type_Aejp = localaejp;
+      paramViewGroup.c.setImageBitmap(a(1, localaejp.jdField_a_of_type_JavaLangString));
+      return paramView;
+      paramViewGroup = (aejr)paramView.getTag();
+      break;
+      label203:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localaejp.b);
     }
   }
 }

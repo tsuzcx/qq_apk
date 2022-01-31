@@ -1,22 +1,32 @@
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.activity.voip.VoipTencentPayActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.app.DiscussionIconHelper;
+import java.util.Comparator;
 
 public class fbp
-  implements Runnable
+  implements Comparator
 {
-  public fbp(VoipTencentPayActivity paramVoipTencentPayActivity) {}
+  public fbp(DiscussionIconHelper paramDiscussionIconHelper) {}
   
-  public void run()
+  public int a(String paramString1, String paramString2)
   {
-    this.a.a.hide();
-    QRUtils.a(1, 2131562452);
-    this.a.finish();
+    try
+    {
+      long l1 = Long.parseLong(paramString1);
+      long l2 = Long.parseLong(paramString2);
+      if (l1 == l2) {
+        return 0;
+      }
+      if (l1 > l2) {
+        return 2;
+      }
+      return -1;
+    }
+    catch (Exception paramString1) {}
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fbp
  * JD-Core Version:    0.7.0.1
  */

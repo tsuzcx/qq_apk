@@ -10,32 +10,32 @@ public final class RespCommonCard
 {
   static CommonCard cache_stCommonCard;
   static RespHead cache_stHeader;
-  static ArrayList cache_vFaceInfo;
+  static ArrayList<FaceInfo> cache_vFaceInfo;
   static byte[] cache_vQQFaceID;
-  static ArrayList cache_vVisitors;
-  static ArrayList cache_vVoter;
+  static ArrayList<Visitor> cache_vVisitors;
+  static ArrayList<Visitor> cache_vVoter;
   public byte bShareLBS;
   public byte cSqqLevel;
   public int iVoteIncrement;
   public int lListVoterTime;
   public CommonCard stCommonCard;
   public RespHead stHeader;
-  public ArrayList vFaceInfo;
+  public ArrayList<FaceInfo> vFaceInfo;
   public byte[] vQQFaceID;
-  public ArrayList vVisitors;
-  public ArrayList vVoter;
+  public ArrayList<Visitor> vVisitors;
+  public ArrayList<Visitor> vVoter;
   
   public RespCommonCard() {}
   
-  public RespCommonCard(RespHead paramRespHead, CommonCard paramCommonCard, byte[] paramArrayOfByte, ArrayList paramArrayList1, int paramInt1, ArrayList paramArrayList2, ArrayList paramArrayList3, int paramInt2, byte paramByte1, byte paramByte2)
+  public RespCommonCard(RespHead paramRespHead, CommonCard paramCommonCard, byte[] paramArrayOfByte, ArrayList<FaceInfo> paramArrayList, int paramInt1, ArrayList<Visitor> paramArrayList1, ArrayList<Visitor> paramArrayList2, int paramInt2, byte paramByte1, byte paramByte2)
   {
     this.stHeader = paramRespHead;
     this.stCommonCard = paramCommonCard;
     this.vQQFaceID = paramArrayOfByte;
-    this.vFaceInfo = paramArrayList1;
+    this.vFaceInfo = paramArrayList;
     this.iVoteIncrement = paramInt1;
-    this.vVisitors = paramArrayList2;
-    this.vVoter = paramArrayList3;
+    this.vVisitors = paramArrayList1;
+    this.vVoter = paramArrayList2;
     this.lListVoterTime = paramInt2;
     this.bShareLBS = paramByte1;
     this.cSqqLevel = paramByte2;

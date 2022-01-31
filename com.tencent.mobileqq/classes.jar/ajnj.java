@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class ajnj
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public ajnj(AIOAnimationControlManager paramAIOAnimationControlManager, boolean paramBoolean) {}
+  public ajnj(LoginView paramLoginView) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a = 1;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.jdField_a_of_type_Boolean);
+    LoginView.g(this.a, false);
+    LoginView.h(this.a, false);
+    azqs.a(this.a.a, "new_reg_805", "log_page", "can_clk", "", 1, "");
   }
 }
 

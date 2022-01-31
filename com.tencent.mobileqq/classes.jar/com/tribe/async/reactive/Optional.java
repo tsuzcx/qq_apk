@@ -132,7 +132,6 @@ public final class Optional<T>
   }
   
   public <X extends Throwable> T orElseThrow(Supplier<? extends X> paramSupplier)
-    throws Throwable
   {
     if (this.value != null) {
       return this.value;
@@ -150,7 +149,7 @@ public final class Optional<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tribe.async.reactive.Optional
  * JD-Core Version:    0.7.0.1
  */

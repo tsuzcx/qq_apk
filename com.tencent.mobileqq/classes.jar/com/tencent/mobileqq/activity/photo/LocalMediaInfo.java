@@ -1,19 +1,21 @@
 package com.tencent.mobileqq.activity.photo;
 
+import aioa;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.util.PanoramaUtil;
-import cooperation.qzone.util.XMPCoreUtil;
+import bjum;
+import bjvs;
 import java.io.Serializable;
 import java.net.URL;
-import wwj;
+import java.util.ArrayList;
 
 public class LocalMediaInfo
-  implements Parcelable, Serializable, Comparable
+  implements Parcelable, Serializable, Comparable<LocalMediaInfo>
 {
-  public static final Parcelable.Creator CREATOR = new wwj();
+  public static final Parcelable.Creator<LocalMediaInfo> CREATOR = new aioa();
   public static final int PHOTO_LAST_SELECTED = 3;
   public static final int PHOTO_SELECTED = 1;
   public static final int PHOTO_UNSELECTED = 2;
@@ -27,28 +29,42 @@ public class LocalMediaInfo
   public static final int TYPE_PANORAMA_NORMAL = 3;
   public long _id;
   public long addedDate;
+  public ArrayList<String> aiTextLabel;
   public Bundle bundle;
   public String fakeVid;
   public long fileSize;
   public int index;
+  public boolean isMakeVideo;
   public boolean isRecord;
   public boolean isRegionThumbUseNewDecoder;
+  public boolean isSyncToWeishi;
   public boolean isSystemMeidaStore = true;
+  public boolean isVideoReady = true;
   public int latitude;
   public int listViewPosition = -1;
   public int longitude;
+  public String mAlbumName;
+  public String mAudioPath;
   public boolean mChecked;
   public String mCloudPhotoId = "";
   public String mCloudPhotoOwnerAlbumId = "";
   public long mCloudPhotoOwnerUin;
   public long mDuration;
+  public boolean mHasAudioTrack;
   public boolean mIsUploadOrigin;
+  public int mMediaType;
   public String mMimeType;
+  public int mSampleRate = 1;
   public long mStartTime;
+  public int mTextId = -1;
+  public String mTextStr;
   public long mTotalDuration;
+  public String mTransId;
+  public ArrayList<Long> mTransferPosList;
   public int mVideoType;
   public int mediaHeight;
   public int mediaWidth;
+  public String missionID;
   public long modifiedDate;
   public boolean needProcess;
   public int orientation;
@@ -60,6 +76,7 @@ public class LocalMediaInfo
   public int selectStatus;
   public int specialVideoType;
   public int thumbHeight;
+  public Rect thumbRect;
   public int thumbSize;
   public int thumbWidth;
   public String thumbnailPath;
@@ -130,7 +147,7 @@ public class LocalMediaInfo
   
   public boolean isPanoramaPhoto()
   {
-    if (!PanoramaUtil.a().b()) {}
+    if (!bjum.a().b()) {}
     do
     {
       return false;
@@ -143,13 +160,13 @@ public class LocalMediaInfo
   
   public void setPanoramaType()
   {
-    if ((this.panoramaPhotoType != 0) || (!PanoramaUtil.a().b())) {}
+    if ((this.panoramaPhotoType != 0) || (!bjum.a().b())) {}
     while ((this.mediaWidth == 0) || (this.mediaHeight == 0)) {
       return;
     }
     if ((this.mediaHeight >= 1000) && (this.mediaWidth / this.mediaHeight == 2.0F))
     {
-      if (XMPCoreUtil.a().a(this.path))
+      if (bjvs.a().a(this.path))
       {
         this.panoramaPhotoType = 2;
         return;
@@ -167,7 +184,7 @@ public class LocalMediaInfo
   
   public String toString()
   {
-    return "LocalMediaInfo{_id=" + this._id + ", path='" + this.path + '\'' + ", fileSize=" + this.fileSize + ", addedDate=" + this.addedDate + ", modifiedDate=" + this.modifiedDate + ", orientation=" + this.orientation + ", mDuration=" + this.mDuration + ", mChecked=" + this.mChecked + ", selectStatus=" + this.selectStatus + ", rotation=" + this.rotation + ", thumbWidth=" + this.thumbWidth + ", thumbHeight=" + this.thumbHeight + ", index=" + this.index + ", position=" + this.position + ", mMimeType='" + this.mMimeType + '\'' + ", mediaWidth=" + this.mediaWidth + ", mediaHeight=" + this.mediaHeight + ", isSystemMeidaStore=" + this.isSystemMeidaStore + ", isRegionThumbUseNewDecoder=" + this.isRegionThumbUseNewDecoder + ", panoramaPhotoType=" + this.panoramaPhotoType + '}';
+    return "LocalMediaInfo{_id=" + this._id + ", path='" + this.path + '\'' + ", fileSize=" + this.fileSize + ", addedDate=" + this.addedDate + ", modifiedDate=" + this.modifiedDate + ", orientation=" + this.orientation + ", mDuration=" + this.mDuration + ", mChecked=" + this.mChecked + ", selectStatus=" + this.selectStatus + ", rotation=" + this.rotation + ", thumbWidth=" + this.thumbWidth + ", thumbHeight=" + this.thumbHeight + ", index=" + this.index + ", position=" + this.position + ", mMimeType='" + this.mMimeType + '\'' + ", mediaWidth=" + this.mediaWidth + ", mediaHeight=" + this.mediaHeight + ", isSystemMeidaStore=" + this.isSystemMeidaStore + ", isRegionThumbUseNewDecoder=" + this.isRegionThumbUseNewDecoder + ", panoramaPhotoType=" + this.panoramaPhotoType + ", mediaType=" + this.mMediaType + ", isVideoReady=" + this.isVideoReady + ", missionID=" + this.missionID + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -188,25 +205,24 @@ public class LocalMediaInfo
       paramParcel.writeInt(this.selectStatus);
       paramParcel.writeInt(this.thumbWidth);
       paramParcel.writeInt(this.thumbHeight);
+      paramParcel.writeString(this.thumbnailPath);
       paramParcel.writeInt(this.index);
       paramParcel.writeInt(this.position.intValue());
       paramParcel.writeString(this.mMimeType);
+      paramParcel.writeInt(this.mMediaType);
       paramParcel.writeInt(this.mediaWidth);
       paramParcel.writeInt(this.mediaHeight);
       if (!this.isSystemMeidaStore) {
-        break label232;
+        break label287;
       }
       paramInt = 1;
-      label157:
+      label173:
       paramParcel.writeByte((byte)paramInt);
       if (!this.isRegionThumbUseNewDecoder) {
-        break label237;
+        break label292;
       }
-    }
-    label232:
-    label237:
-    for (paramInt = i;; paramInt = 0)
-    {
+      paramInt = 1;
+      label188:
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeInt(this.longitude);
       paramParcel.writeInt(this.latitude);
@@ -214,17 +230,32 @@ public class LocalMediaInfo
       paramParcel.writeLong(this.mCloudPhotoOwnerUin);
       paramParcel.writeString(this.mCloudPhotoOwnerAlbumId);
       paramParcel.writeString(this.mCloudPhotoId);
+      if (!this.isVideoReady) {
+        break label297;
+      }
+    }
+    label287:
+    label292:
+    label297:
+    for (paramInt = i;; paramInt = 0)
+    {
+      paramParcel.writeByte((byte)paramInt);
+      paramParcel.writeString(this.missionID);
+      paramParcel.writeList(this.mTransferPosList);
+      paramParcel.writeList(this.aiTextLabel);
       return;
       paramInt = 0;
       break;
       paramInt = 0;
-      break label157;
+      break label173;
+      paramInt = 0;
+      break label188;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.LocalMediaInfo
  * JD-Core Version:    0.7.0.1
  */

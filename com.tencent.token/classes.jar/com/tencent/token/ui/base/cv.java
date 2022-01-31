@@ -1,8 +1,14 @@
 package com.tencent.token.ui.base;
 
-public abstract interface cv
+final class cv
+  implements Runnable
 {
-  public abstract void a(int paramInt);
+  private cv(SwitchButton paramSwitchButton) {}
+  
+  public void run()
+  {
+    this.a.performClick();
+  }
 }
 
 

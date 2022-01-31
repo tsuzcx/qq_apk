@@ -1,13 +1,48 @@
-import android.os.Process;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.msf.service.protocol.security.CustomSigContent;
+import com.tencent.msf.service.protocol.security.RespondCustomSig;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.observer.AccountObserver;
 
-class fdy
-  extends Thread
+public class fdy
+  extends AccountObserver
 {
-  fdy(fdx paramfdx) {}
+  public fdy(MessageHandler paramMessageHandler, String paramString) {}
   
-  public void run()
+  public void onChangeToken(boolean paramBoolean, HashMap paramHashMap)
   {
-    Process.killProcess(Process.myPid());
+    if ((paramBoolean) && (paramHashMap != null))
+    {
+      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
+      if ((paramHashMap != null) && (paramHashMap.SigList != null)) {
+        break label30;
+      }
+    }
+    for (;;)
+    {
+      return;
+      label30:
+      int i = 0;
+      while (i < paramHashMap.SigList.size())
+      {
+        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
+        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
+        {
+          localObject = new String(((CustomSigContent)localObject).SigContent);
+          OpenID localOpenID = new OpenID();
+          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
+          localOpenID.openID = ((String)localObject);
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a().b(localOpenID);
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.a(this.jdField_a_of_type_JavaLangString, localOpenID);
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(1, true, localOpenID);
+        }
+        i += 1;
+      }
+    }
   }
 }
 

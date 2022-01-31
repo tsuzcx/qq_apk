@@ -1,17 +1,20 @@
 package com.tencent.token.ui;
 
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-final class il
-  implements CompoundButton.OnCheckedChangeListener
+class il
+  implements DialogInterface.OnCancelListener
 {
-  il(FaceRecognitionCreateActivity paramFaceRecognitionCreateActivity) {}
+  il(ij paramij, boolean paramBoolean) {}
   
-  public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (paramBoolean) {
-      FaceRecognitionCreateActivity.saveFlag();
+    FaceStartVryCameraActivity.access$300(this.b.a).setStop(true);
+    FaceStartVryCameraActivity.access$300(this.b.a).c();
+    FaceStartVryCameraActivity.access$202(this.b.a, false);
+    if (!this.a) {
+      this.b.a.finish();
     }
   }
 }

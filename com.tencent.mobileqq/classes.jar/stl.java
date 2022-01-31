@@ -1,19 +1,35 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.data.Card;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class stl
-  implements Runnable
+public class stl
+  implements View.OnFocusChangeListener
 {
-  stl(stk paramstk, Card paramCard) {}
+  public stl(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void run()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_Stk.a, this.jdField_a_of_type_ComTencentMobileqqDataCard, false);
+    if (paramBoolean)
+    {
+      paramView.clearFocus();
+      SubscriptFeedsActivity.a(this.a);
+      long l = System.currentTimeMillis();
+      if (l - SubscriptFeedsActivity.a(this.a) > 1500L)
+      {
+        SubscriptFeedsActivity.a(this.a, l);
+        UniteSearchActivity.a(this.a, null, 12);
+        if (QLog.isColorLevel()) {
+          QLog.d("SubscriptFeedsActivity", 2, "Search Subscript Account...");
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     stl
  * JD-Core Version:    0.7.0.1
  */

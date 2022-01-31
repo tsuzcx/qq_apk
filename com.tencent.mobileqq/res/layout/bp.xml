@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.hotpic.HotPicPageView android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.hotpic.HotPicRecyclerView android:orientation="vertical" android:id="@id/i4m" android:paddingLeft="1.0dip" android:paddingRight="1.0dip" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+    <RelativeLayout android:id="@id/d99" android:background="#ffffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="17.0dip" android:textColor="#ff000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j_8" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <include android:id="@id/loading" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" layout="@layout/bm" />
+</com.tencent.mobileqq.hotpic.HotPicPageView>

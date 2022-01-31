@@ -30,15 +30,15 @@ public class AppBaseActivity
   public static final int a = 1000;
   protected static final String a;
   protected Handler a;
-  protected View a;
-  protected ProgressBar a;
-  protected TextView a;
+  public View a;
+  public ProgressBar a;
+  public TextView a;
   protected AppInterface a;
   protected BrowserAppInterface a;
-  protected View b;
+  public View b;
   protected TextView b;
   protected String b;
-  protected TextView c;
+  public TextView c;
   
   static
   {
@@ -165,22 +165,22 @@ public class AppBaseActivity
     d();
   }
   
-  protected void e()
+  public void e()
   {
     this.jdField_a_of_type_AndroidWidgetTextView = this.k;
     this.jdField_b_of_type_AndroidWidgetTextView = this.m;
     RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131231448);
-    View localView1 = getLayoutInflater().inflate(2130903334, null);
-    View localView2 = getLayoutInflater().inflate(2130903335, null);
+    View localView1 = getLayoutInflater().inflate(2130903336, null);
+    View localView2 = getLayoutInflater().inflate(2130903337, null);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
     localLayoutParams.addRule(13, 1);
     localRelativeLayout.addView(localView1, localLayoutParams);
     localRelativeLayout.addView(localView2, localLayoutParams);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131232129);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131232128);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131232132);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131232131);
     this.jdField_b_of_type_AndroidViewView.setVisibility(4);
-    this.c = ((TextView)localView1.findViewById(2131232126));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localView1.findViewById(2131232127));
+    this.c = ((TextView)localView1.findViewById(2131232129));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localView1.findViewById(2131232130));
     f();
   }
   
@@ -199,7 +199,7 @@ public class AppBaseActivity
       return;
     }
     LogUtility.b(jdField_a_of_type_JavaLangString, ">>>setNightTheme runtime:" + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getClass().getName());
-    localObject = findViewById(2131232112);
+    localObject = findViewById(2131232115);
     if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentCommonAppAppInterface))
     {
       ((View)localObject).setVisibility(0);
@@ -208,14 +208,14 @@ public class AppBaseActivity
     ((View)localObject).setVisibility(8);
   }
   
-  protected void g()
+  public void g()
   {
     if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) {
       this.jdField_a_of_type_AndroidViewView.setEnabled(false);
     }
   }
   
-  protected void h()
+  public void h()
   {
     if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) {
       this.jdField_a_of_type_AndroidViewView.setEnabled(true);

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x8c9$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int OPT_BYTES_GROUP_SIG_FIELD_NUMBER = 4;
   public static final int OPT_UINT64_FROM_UIN_FIELD_NUMBER = 1;
@@ -19,7 +19,7 @@ public final class oidb_0x8c9$ReqBody
   public final PBBytesField opt_bytes_group_sig = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt64Field opt_uint64_from_uin = PBField.initUInt64(0L);
   public final PBUInt64Field opt_uint64_group_code = PBField.initUInt64(0L);
-  public final PBRepeatField rpt_uint64_appid = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> rpt_uint64_appid = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   
   static
   {
@@ -29,7 +29,7 @@ public final class oidb_0x8c9$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.oidb_0x8c9.oidb_0x8c9.ReqBody
  * JD-Core Version:    0.7.0.1
  */

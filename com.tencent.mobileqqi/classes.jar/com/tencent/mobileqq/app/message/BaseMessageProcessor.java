@@ -13,9 +13,9 @@ import com.tencent.mobileqq.utils.SendMessageHandler;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import fnh;
-import fni;
-import foa;
+import fiv;
+import fiw;
+import fjo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -51,7 +51,7 @@ public abstract class BaseMessageProcessor
     this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public foa a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  public fjo a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
     return null;
   }
@@ -96,7 +96,7 @@ public abstract class BaseMessageProcessor
     this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(paramToServiceMsg);
   }
   
-  protected void a(String paramString, int paramInt) {}
+  public void a(String paramString, int paramInt) {}
   
   public void a(String paramString, boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3)
   {
@@ -121,7 +121,7 @@ public abstract class BaseMessageProcessor
     }
   }
   
-  protected void a(ArrayList paramArrayList1, ArrayList paramArrayList2, boolean paramBoolean)
+  public void a(ArrayList paramArrayList1, ArrayList paramArrayList2, boolean paramBoolean)
   {
     if (paramArrayList1.size() > 0)
     {
@@ -136,7 +136,7 @@ public abstract class BaseMessageProcessor
     }
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, long paramLong, fni paramfni)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, long paramLong, fiw paramfiw)
   {
     int i;
     if (paramLong == 0L)
@@ -150,11 +150,11 @@ public abstract class BaseMessageProcessor
       long l = System.currentTimeMillis();
       if (!paramBoolean1)
       {
-        paramfni = paramfni.a();
+        paramfiw = paramfiw.a();
         if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.BaseMessageProcessor", 2, "processRequest cmd=" + paramfni.getServiceCmd() + ",reqSeq=" + paramLong);
+          QLog.d("Q.msg.BaseMessageProcessor", 2, "processRequest cmd=" + paramfiw.getServiceCmd() + ",reqSeq=" + paramLong);
         }
-        a(paramfni, paramLong, paramBoolean2, paramBoolean3);
+        a(paramfiw, paramLong, paramBoolean2, paramBoolean3);
         return;
       }
       SendMessageHandler localSendMessageHandler = new SendMessageHandler();
@@ -162,7 +162,7 @@ public abstract class BaseMessageProcessor
       i = 0;
       while (i < 9)
       {
-        localSendMessageHandler.a(new fnh(this, paramfni, paramLong, l, paramBoolean2, paramBoolean3));
+        localSendMessageHandler.a(new fiv(this, paramfiw, paramLong, l, paramBoolean2, paramBoolean3));
         i += 1;
       }
       i = 0;

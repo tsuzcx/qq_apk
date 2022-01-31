@@ -1,34 +1,71 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FMConfig;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.SimpleFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class adeq
-  implements View.OnClickListener
+  extends aluu
 {
-  public adeq(SimpleFilePresenter paramSimpleFilePresenter) {}
+  public adeq(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    switch (paramView.getId())
+    if (QLog.isColorLevel()) {
+      QLog.i("HotChatAnnounceActivity", 2, "onSetUserCreateHotChatAnnounce.isSuccess=" + paramBoolean + ",result=" + paramInt + ", strErr=" + paramString2);
+    }
+    HotChatAnnounceActivity.a(this.a);
+    if ((paramBoolean) && (paramInt == 0))
     {
-    default: 
-      return;
-    case 2131368827: 
-      paramView = FMConfig.b();
-      FileManagerUtil.a(this.a.jdField_a_of_type_AndroidAppActivity, paramView);
-      FileManagerReporter.a("0X8008469");
+      paramString1 = ((HotChatManager)this.a.app.getManager(60)).a(this.a.a);
+      if (paramString1 != null)
+      {
+        paramString1.memo = this.a.d;
+        paramString1.memoUrl = this.a.e;
+        paramString1.memoShowed = false;
+      }
+      QQToast.a(this.a, 2, alud.a(2131705920), 0).b(this.a.getTitleBarHeight());
+      this.a.setResult(-1);
+      this.a.finish();
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f();
+    paramString1 = alud.a(2131705923);
+    if (paramInt == 1282) {
+      paramString1 = alud.a(2131705928);
+    }
+    QQToast.a(this.a, 1, paramString1, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HotChatAnnounceActivity", 2, "onSetHotChatAnnounce.isSuccess=" + paramBoolean + ",result=" + paramInt + ", strErr=" + paramString);
+    }
+    HotChatAnnounceActivity.a(this.a);
+    if ((paramBoolean) && (paramInt == 0))
+    {
+      paramArrayOfByte = ((HotChatManager)this.a.app.getManager(60)).a(this.a.a);
+      if (paramArrayOfByte != null)
+      {
+        paramArrayOfByte.memo = this.a.d;
+        paramArrayOfByte.memoUrl = this.a.e;
+        paramArrayOfByte.memoShowed = false;
+      }
+      QQToast.a(this.a, 2, alud.a(2131705927), 0).b(this.a.getTitleBarHeight());
+      this.a.setResult(-1);
+      this.a.finish();
+      return;
+    }
+    paramArrayOfByte = alud.a(2131705921);
+    if (paramInt == 1288) {
+      paramArrayOfByte = alud.a(2131705925);
+    }
+    QQToast.a(this.a, 1, paramArrayOfByte, 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adeq
  * JD-Core Version:    0.7.0.1
  */

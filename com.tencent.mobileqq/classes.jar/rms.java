@@ -1,41 +1,28 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
 
-public class rms
-  implements ActionSheet.OnButtonClickListener
+class rms
+  implements Animation.AnimationListener
 {
-  public rms(AssociatedAccountActivity paramAssociatedAccountActivity, boolean paramBoolean, ActionSheet paramActionSheet) {}
+  rms(rmr paramrmr, boolean paramBoolean) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    int i = paramInt;
-    if (!this.jdField_a_of_type_Boolean) {
-      i = paramInt + 1;
+    if (rmr.a(this.jdField_a_of_type_Rmr) != null) {
+      rmr.a(this.jdField_a_of_type_Rmr).setImageDrawable(this.jdField_a_of_type_Rmr.a(rmr.a(this.jdField_a_of_type_Rmr, this.jdField_a_of_type_Boolean)));
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-    switch (i)
-    {
-    default: 
-      return;
-    case 0: 
-      AssociatedAccountActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007149", "0X8007149", 0, 0, "", "", "", "");
-      return;
-    case 1: 
-      AssociatedAccountActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007145", "0X8007145", 0, 0, "", "", "", "");
-      return;
-    }
-    AssociatedAccountActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007148", "0X8007148", 0, 0, "", "", "", "");
+    paramAnimation.setInterpolator(new AnticipateInterpolator());
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rms
  * JD-Core Version:    0.7.0.1
  */

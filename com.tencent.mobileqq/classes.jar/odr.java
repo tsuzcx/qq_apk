@@ -1,23 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+import java.util.HashMap;
 
-public final class odr
-  implements Parcelable.Creator
+public class odr
 {
-  public EditRecordVideoSource a(Parcel paramParcel)
+  private static HashMap<Integer, Integer> a = new HashMap();
+  
+  static
   {
-    return new EditRecordVideoSource(paramParcel);
+    a.put(Integer.valueOf(1105), Integer.valueOf(4));
+    a.put(Integer.valueOf(1106), Integer.valueOf(3));
+    a.put(Integer.valueOf(1107), Integer.valueOf(4));
+    a.put(Integer.valueOf(1103), Integer.valueOf(101));
+    a.put(Integer.valueOf(1104), Integer.valueOf(102));
+    a.put(Integer.valueOf(1108), Integer.valueOf(103));
+    a.put(Integer.valueOf(1109), Integer.valueOf(104));
   }
   
-  public EditRecordVideoSource[] a(int paramInt)
+  public static int a(int paramInt)
   {
-    return new EditRecordVideoSource[paramInt];
+    if (a.containsKey(Integer.valueOf(paramInt))) {
+      return ((Integer)a.get(Integer.valueOf(paramInt))).intValue();
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     odr
  * JD-Core Version:    0.7.0.1
  */

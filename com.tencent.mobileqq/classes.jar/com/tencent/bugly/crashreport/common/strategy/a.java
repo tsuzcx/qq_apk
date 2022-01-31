@@ -2,8 +2,8 @@ package com.tencent.bugly.crashreport.common.strategy;
 
 import android.content.Context;
 import com.tencent.bugly.crashreport.biz.b;
-import com.tencent.bugly.proguard.ao;
-import com.tencent.bugly.proguard.ap;
+import com.tencent.bugly.proguard.ar;
+import com.tencent.bugly.proguard.as;
 import com.tencent.bugly.proguard.p;
 import com.tencent.bugly.proguard.r;
 import com.tencent.bugly.proguard.w;
@@ -85,45 +85,7 @@ public final class a
   
   public final void a(long paramLong)
   {
-    this.e.a(new Thread()
-    {
-      public final void run()
-      {
-        try
-        {
-          Object localObject2 = p.a().a(a.a, null, true);
-          if (localObject2 != null)
-          {
-            localObject1 = (byte[])((Map)localObject2).get("key_imei");
-            localObject2 = (byte[])((Map)localObject2).get("key_ip");
-            if (localObject1 != null) {
-              com.tencent.bugly.crashreport.common.info.a.a(a.a(a.this)).e(new String((byte[])localObject1));
-            }
-            if (localObject2 != null) {
-              com.tencent.bugly.crashreport.common.info.a.a(a.a(a.this)).d(new String((byte[])localObject2));
-            }
-          }
-          Object localObject1 = a.this;
-          localObject2 = a.this;
-          a.a((a)localObject1, a.d());
-          if ((a.b(a.this) != null) && (!z.a(a.e())) && (z.c(a.e())))
-          {
-            a.b(a.this).q = a.e();
-            a.b(a.this).r = a.e();
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          for (;;)
-          {
-            if (!x.a(localThrowable)) {
-              localThrowable.printStackTrace();
-            }
-          }
-        }
-        a.this.a(a.b(a.this), false);
-      }
-    }, paramLong);
+    this.e.a(new a.1(this), paramLong);
   }
   
   protected final void a(StrategyBean paramStrategyBean, boolean paramBoolean)
@@ -146,60 +108,60 @@ public final class a
     }
   }
   
-  public final void a(ap paramap)
+  public final void a(as paramas)
   {
-    if (paramap == null) {}
-    while ((this.g != null) && (paramap.h == this.g.o)) {
+    if (paramas == null) {}
+    while ((this.g != null) && (paramas.h == this.g.p)) {
       return;
     }
     localStrategyBean = new StrategyBean();
-    localStrategyBean.g = paramap.a;
-    localStrategyBean.i = paramap.c;
-    localStrategyBean.h = paramap.b;
+    localStrategyBean.g = paramas.a;
+    localStrategyBean.i = paramas.c;
+    localStrategyBean.h = paramas.b;
     if ((z.a(i)) || (!z.c(i)))
     {
-      if (z.c(paramap.d))
+      if (z.c(paramas.d))
       {
-        x.c("[Strategy] Upload url changes to %s", new Object[] { paramap.d });
-        localStrategyBean.q = paramap.d;
+        x.c("[Strategy] Upload url changes to %s", new Object[] { paramas.d });
+        localStrategyBean.r = paramas.d;
       }
-      if (z.c(paramap.e))
+      if (z.c(paramas.e))
       {
-        x.c("[Strategy] Exception upload url changes to %s", new Object[] { paramap.e });
-        localStrategyBean.r = paramap.e;
+        x.c("[Strategy] Exception upload url changes to %s", new Object[] { paramas.e });
+        localStrategyBean.s = paramas.e;
       }
     }
-    if ((paramap.f != null) && (!z.a(paramap.f.a))) {
-      localStrategyBean.t = paramap.f.a;
+    if ((paramas.f != null) && (!z.a(paramas.f.a))) {
+      localStrategyBean.u = paramas.f.a;
     }
-    if (paramap.h != 0L) {
-      localStrategyBean.o = paramap.h;
+    if (paramas.h != 0L) {
+      localStrategyBean.p = paramas.h;
     }
     String str;
-    if ((paramap.g != null) && (paramap.g.size() > 0))
+    if ((paramas.g != null) && (paramas.g.size() > 0))
     {
-      localStrategyBean.u = paramap.g;
-      str = (String)paramap.g.get("B11");
+      localStrategyBean.v = paramas.g;
+      str = (String)paramas.g.get("B11");
       if ((str == null) || (!str.equals("1"))) {
-        break label568;
+        break label633;
       }
     }
-    label568:
+    label633:
     for (localStrategyBean.j = true;; localStrategyBean.j = false)
     {
-      str = (String)paramap.g.get("B3");
+      str = (String)paramas.g.get("B3");
       if (str != null) {
-        localStrategyBean.x = Long.valueOf(str).longValue();
+        localStrategyBean.y = Long.valueOf(str).longValue();
       }
-      localStrategyBean.p = paramap.i;
-      localStrategyBean.w = paramap.i;
-      str = (String)paramap.g.get("B27");
+      localStrategyBean.q = paramas.i;
+      localStrategyBean.x = paramas.i;
+      str = (String)paramas.g.get("B27");
       if ((str != null) && (str.length() > 0)) {}
       try
       {
         int j = Integer.parseInt(str);
         if (j > 0) {
-          localStrategyBean.v = j;
+          localStrategyBean.w = j;
         }
       }
       catch (Exception localException)
@@ -214,20 +176,30 @@ public final class a
           }
         }
       }
-      paramap = (String)paramap.g.get("B25");
-      if ((paramap == null) || (!paramap.equals("1"))) {
+      str = (String)paramas.g.get("B25");
+      if ((str == null) || (!str.equals("1"))) {
         break;
       }
       localStrategyBean.l = true;
-      x.a("[Strategy] enableCrashReport:%b, enableQuery:%b, enableUserInfo:%b, enableAnr:%b, enableBlock:%b, enableSession:%b, enableSessionTimer:%b, sessionOverTime:%d, enableCocos:%b, strategyLastUpdateTime:%d", new Object[] { Boolean.valueOf(localStrategyBean.g), Boolean.valueOf(localStrategyBean.i), Boolean.valueOf(localStrategyBean.h), Boolean.valueOf(localStrategyBean.j), Boolean.valueOf(localStrategyBean.k), Boolean.valueOf(localStrategyBean.m), Boolean.valueOf(localStrategyBean.n), Long.valueOf(localStrategyBean.p), Boolean.valueOf(localStrategyBean.l), Long.valueOf(localStrategyBean.o) });
+      x.a("[Strategy] enableCrashReport:%b, enableQuery:%b, enableUserInfo:%b, enableAnr:%b, enableBlock:%b, enableSession:%b, enableSessionTimer:%b, sessionOverTime:%d, enableCocos:%b, strategyLastUpdateTime:%d", new Object[] { Boolean.valueOf(localStrategyBean.g), Boolean.valueOf(localStrategyBean.i), Boolean.valueOf(localStrategyBean.h), Boolean.valueOf(localStrategyBean.j), Boolean.valueOf(localStrategyBean.k), Boolean.valueOf(localStrategyBean.n), Boolean.valueOf(localStrategyBean.o), Long.valueOf(localStrategyBean.q), Boolean.valueOf(localStrategyBean.l), Long.valueOf(localStrategyBean.p) });
       this.g = localStrategyBean;
+      if (!z.c(paramas.d))
+      {
+        x.c("[Strategy] download url is null", new Object[0]);
+        this.g.r = "";
+      }
+      if (!z.c(paramas.e))
+      {
+        x.c("[Strategy] download crashurl is null", new Object[0]);
+        this.g.s = "";
+      }
       p.a().b(2);
-      paramap = new r();
-      paramap.b = 2;
-      paramap.a = localStrategyBean.e;
-      paramap.e = localStrategyBean.f;
-      paramap.g = z.a(localStrategyBean);
-      p.a().a(paramap);
+      paramas = new r();
+      paramas.b = 2;
+      paramas.a = localStrategyBean.e;
+      paramas.e = localStrategyBean.f;
+      paramas.g = z.a(localStrategyBean);
+      p.a().a(paramas);
       a(localStrategyBean, true);
       return;
     }
@@ -240,7 +212,7 @@ public final class a
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 39	com/tencent/bugly/crashreport/common/strategy/a:g	Lcom/tencent/bugly/crashreport/common/strategy/StrategyBean;
+    //   3: getfield 37	com/tencent/bugly/crashreport/common/strategy/a:g	Lcom/tencent/bugly/crashreport/common/strategy/StrategyBean;
     //   6: astore_2
     //   7: aload_2
     //   8: ifnull +9 -> 17
@@ -271,8 +243,20 @@ public final class a
   
   public final StrategyBean c()
   {
-    if (this.g != null) {
+    if (this.g != null)
+    {
+      if (!z.c(this.g.r)) {
+        this.g.r = StrategyBean.b;
+      }
+      if (!z.c(this.g.s)) {
+        this.g.s = StrategyBean.c;
+      }
       return this.g;
+    }
+    if ((!z.a(i)) && (z.c(i)))
+    {
+      this.f.r = i;
+      this.f.s = i;
     }
     return this.f;
   }

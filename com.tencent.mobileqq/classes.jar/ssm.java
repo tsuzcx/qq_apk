@@ -1,101 +1,60 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.campuscircle.CampusCircleHelper;
-import com.tencent.mobileqq.campuscircle.CampusCircleObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.util.WeakReferenceHandler;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class ssm
-  extends CampusCircleObserver
+class ssm
+  implements BusinessObserver
 {
-  public ssm(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  ssm(ssk paramssk, ssj paramssj) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, List paramList)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (!paramBoolean) {}
-    while ((this.a.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataCard.lCampusSchoolID != paramLong) || (paramList == null) || (paramList.size() <= 0)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ServiceAccountFolderFeedAdapter", 2, "do unfollow->uin:" + this.jdField_a_of_type_Ssj.a + ", success:" + String.valueOf(paramBoolean));
     }
-    if (this.a.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.a.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if ((ssk.a(this.jdField_a_of_type_Ssk) != null) && (ssk.a(this.jdField_a_of_type_Ssk).isResume())) {
+      ssk.a(this.jdField_a_of_type_Ssk).b(false);
+    }
+    if (!paramBoolean) {
+      ssk.a(this.jdField_a_of_type_Ssk);
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
       return;
-      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-  }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle, Card paramCard)
-  {
-    long l;
-    if ((paramBoolean) && (paramBundle != null) && (this.a.i) && (paramBundle.containsKey("campus_school")) && (paramBundle.containsKey("campus_school_id")))
-    {
-      String str = paramBundle.getString("campus_school");
-      l = paramBundle.getLong("campus_school_id");
-      if (TextUtils.isEmpty(str))
+      try
       {
-        i = 3;
-        this.a.a("0X8007ECC", i);
-        this.a.i = false;
-        this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(1004, 100L);
-      }
-    }
-    else
-    {
-      if (!paramBoolean) {
-        this.a.runOnUiThread(new ssn(this));
-      }
-      if (paramCard != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
-      }
-      if (this.a.jdField_b_of_type_Boolean)
-      {
-        this.a.app.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleObserver);
-        this.a.jdField_b_of_type_Boolean = false;
-      }
-      if ((this.a.jdField_b_of_type_Int & 0x2) != 2) {
-        break label323;
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataCard == null) {
-        break label343;
-      }
-    }
-    label323:
-    label343:
-    for (int i = CampusCircleHelper.b(this.a.jdField_a_of_type_ComTencentMobileqqDataCard.lCampusSchoolID);; i = 0)
-    {
-      if ((this.a.j) && (paramBundle != null) && (((i == 4) && (paramBundle.containsKey("campus_college"))) || (paramBundle.containsKey("campus_enroll_year")))) {
-        this.a.j = false;
-      }
-      if ((this.a.k) && (paramBundle != null) && (((i == 4) && (paramBundle.containsKey("campus_enroll_year"))) || (paramBundle.containsKey("campus_class")))) {
-        this.a.k = false;
-      }
-      this.a.b(2);
-      do
-      {
-        return;
-        if (l != 0L)
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
         {
-          i = 1;
-          break;
+          mobileqq_mp.UnFollowResponse localUnFollowResponse = new mobileqq_mp.UnFollowResponse();
+          localUnFollowResponse.mergeFrom(paramBundle);
+          if (((mobileqq_mp.RetInfo)localUnFollowResponse.ret_info.get()).ret_code.get() == 0)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ServiceAccountFolderFeedAdapter", 2, "unfollow success");
+            }
+            ssk.b(this.jdField_a_of_type_Ssk, this.jdField_a_of_type_Ssj);
+            StructLongMessageDownloadProcessor.a(ssk.a(this.jdField_a_of_type_Ssk), this.jdField_a_of_type_Ssj.a);
+            ((bcml)ssk.a(this.jdField_a_of_type_Ssk).getManager(132)).a(this.jdField_a_of_type_Ssj.a);
+            return;
+          }
+          ssk.a(this.jdField_a_of_type_Ssk);
+          return;
         }
-        i = 2;
-        break;
-      } while (!paramBoolean);
-      this.a.runOnUiThread(new sso(this));
-      return;
+      }
+      catch (Exception paramBundle) {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ssm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,27 @@
-import com.tencent.mobileqq.emoticonview.CommonUsedSystemEmojiManager;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.emosm.EmosmPb.SmallYellowItem;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
 
 public class acea
-  implements Comparator
+  implements afil
 {
-  public acea(CommonUsedSystemEmojiManager paramCommonUsedSystemEmojiManager) {}
+  public acea(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public int a(EmosmPb.SmallYellowItem paramSmallYellowItem1, EmosmPb.SmallYellowItem paramSmallYellowItem2)
+  public boolean a(afii paramafii)
   {
-    if (paramSmallYellowItem2.ts.get() > paramSmallYellowItem1.ts.get()) {
-      return 1;
+    this.a.finish();
+    if (ArkFullScreenAppActivity.a(this.a)) {
+      this.a.overridePendingTransition(2130771997, 2130772001);
     }
-    if (paramSmallYellowItem2.ts.get() == paramSmallYellowItem1.ts.get()) {
-      return 0;
-    }
-    return -1;
+    return false;
+  }
+  
+  public boolean a(afii paramafii, String paramString1, String paramString2)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acea
  * JD-Core Version:    0.7.0.1
  */

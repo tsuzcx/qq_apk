@@ -1,19 +1,35 @@
-import android.view.View;
-import com.tencent.widget.calloutpopupwindow.CalloutPopupWindow;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class amel
-  implements Runnable
 {
-  public amel(CalloutPopupWindow paramCalloutPopupWindow, View paramView, int paramInt1, int paramInt2) {}
-  
-  public void run()
+  public static void a(Context paramContext, String paramString1, String paramString2)
   {
-    CalloutPopupWindow.a(this.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b);
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", aouq.c().a(paramString2, paramString1));
+    localIntent.putExtra("hide_operation_bar", true);
+    paramContext.startActivity(localIntent);
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return paramInt != 0;
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt & 0x1) != 0;
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    return (paramInt & 0x2) != 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amel
  * JD-Core Version:    0.7.0.1
  */

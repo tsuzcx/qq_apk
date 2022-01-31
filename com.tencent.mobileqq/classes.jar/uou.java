@@ -1,24 +1,18 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
-import com.tencent.mobileqq.surfaceviewaction.action.Action;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.action.RotateAction;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-class uou
-  implements Action.OnActionEndListener
+public final class uou
 {
-  uou(uos paramuos) {}
+  public StoryVideoItem a;
+  public StoryVideoItem b;
   
-  public void a()
+  public String toString()
   {
-    RotateAction localRotateAction = new RotateAction(3000, 360, 0);
-    localRotateAction.a = true;
-    this.a.a.e.a(new Action[] { localRotateAction });
+    return "{mFakeStoryVideoItem=" + this.a + ", mSucStoryVideoItem=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uou
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager.IBannerInteract;
-import com.tencent.mobileqq.activity.recent.BannerManager.MessageToShowBanner;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
-public class xjw
-  implements View.OnClickListener
+class xjw
+  extends uya
 {
-  private BannerManager.MessageToShowBanner jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  
-  public xjw(BannerManager.MessageToShowBanner paramMessageToShowBanner, MqqHandler paramMqqHandler)
+  xjw(xjv paramxjv, umx paramumx, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner = paramMessageToShowBanner;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    super(paramumx);
   }
   
-  public void onClick(View paramView)
+  protected void a(uyd paramuyd)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner.jdField_a_of_type_JavaLangString + " on close");
+    if (paramuyd.jdField_a_of_type_Int == 0)
+    {
+      long l1 = SystemClock.uptimeMillis();
+      long l2 = this.jdField_a_of_type_Long;
+      if (QLog.isColorLevel()) {
+        QLog.d("FileDownloadTask", 2, "startDownloadVCImage success, cost:" + (l1 - l2));
+      }
+      xjv.a().sendMessage(Message.obtain(xjv.a(), 1, null));
     }
-    paramView = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(201);
-    paramView.obj = this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner;
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$IBannerInteract.b();
+    for (;;)
+    {
+      xjv.a(this.jdField_a_of_type_Xjv);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("FileDownloadTask", 2, "startDownloadVCImage error:" + paramuyd.jdField_a_of_type_Int + ", errMsg:" + paramuyd.jdField_a_of_type_JavaLangString);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xjw
  * JD-Core Version:    0.7.0.1
  */

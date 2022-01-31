@@ -1,25 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.ad.tangram.thread.AdThreadManagerAdapter;
+import com.tencent.gdtad.adapter.GdtThreadManagerAdapter.1;
+import com.tencent.gdtad.adapter.GdtThreadManagerAdapter.2;
+import java.util.Map;
 
-public class aamn
-  implements View.OnTouchListener
+public final class aamn
+  implements AdThreadManagerAdapter
 {
-  public aamn(ARGreetingCardListManager paramARGreetingCardListManager) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean postDelayed(Runnable paramRunnable, int paramInt, long paramLong)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    GdtThreadManagerAdapter.1 local1 = new GdtThreadManagerAdapter.1(this);
+    if (paramInt == 0) {
+      return new Handler(Looper.getMainLooper()).postDelayed(paramRunnable, paramLong);
     }
-    for (;;)
+    if (local1.containsKey(Integer.valueOf(paramInt)))
     {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+      paramInt = ((Integer)local1.get(Integer.valueOf(paramInt))).intValue();
+      return new Handler(Looper.getMainLooper()).postDelayed(new GdtThreadManagerAdapter.2(this, paramRunnable, paramInt), paramLong);
     }
+    return false;
   }
 }
 

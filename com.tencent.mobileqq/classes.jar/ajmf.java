@@ -1,77 +1,63 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.troop.robot.RobotResourcesManager;
-import com.tencent.mobileqq.troop.robot.RobotResourcesManager.LoadResourceCallback;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import android.content.Context;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ajmf
-  extends DownloadListener
+  extends ajlr
 {
-  public ajmf(RobotResourcesManager paramRobotResourcesManager) {}
-  
-  public void onDone(DownloadTask paramDownloadTask)
+  public ajmf(Context paramContext)
   {
-    String str = paramDownloadTask.a().getString("resId");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.robot.RobotResourcesManager", 2, "onDown task; errCode = " + paramDownloadTask.a + " url = " + paramDownloadTask.c);
-    }
-    RobotResourcesManager.LoadResourceCallback localLoadResourceCallback = (RobotResourcesManager.LoadResourceCallback)this.a.b.get(str);
-    if (paramDownloadTask.a == 0)
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131699985);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    QLog.d("TroopKeyWordMsg", 2, "deSerialize");
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
     {
-      paramDownloadTask = new File(this.a.b(str));
-      if (!paramDownloadTask.exists()) {
-        break label234;
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      this.c = paramArrayOfByte.getString("messageNavInfo");
+      if ((this.c != null) && (this.c.length() != 0)) {
+        this.jdField_a_of_type_Bbpe.a(this.c);
       }
+      return;
     }
-    for (;;)
+    catch (JSONException paramArrayOfByte)
     {
-      int i;
-      try
-      {
-        FileUtils.a(paramDownloadTask.getAbsolutePath(), AppConstants.cd, false);
-        i = 1;
-        if (i != 0)
-        {
-          this.a.a.put(str, Integer.valueOf(3));
-          if (localLoadResourceCallback != null) {
-            localLoadResourceCallback.a(0);
-          }
-          this.a.b.remove(str);
-          return;
-        }
-      }
-      catch (Exception paramDownloadTask)
-      {
-        paramDownloadTask = paramDownloadTask;
-        paramDownloadTask.printStackTrace();
-        return;
-      }
-      finally {}
-      this.a.a.put(str, Integer.valueOf(4));
-      if (localLoadResourceCallback != null)
-      {
-        localLoadResourceCallback.a(-1);
-        continue;
-        this.a.a.put(str, Integer.valueOf(4));
-        if (localLoadResourceCallback != null)
-        {
-          localLoadResourceCallback.a(-1);
-          continue;
-          label234:
-          i = 0;
-        }
-      }
+      QLog.e("TroopKeyWordMsg", 1, "deSerialize: ", paramArrayOfByte);
     }
   }
   
-  public boolean onStart(DownloadTask paramDownloadTask)
+  public byte[] a()
   {
-    return true;
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("time", this.jdField_a_of_type_Int);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      this.c = this.jdField_a_of_type_Bbpe.a();
+      localJSONObject.put("messageNavInfo", this.c);
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("TroopKeyWordMsg", 1, "deSerialize: ", localJSONException);
+      }
+    }
   }
 }
 

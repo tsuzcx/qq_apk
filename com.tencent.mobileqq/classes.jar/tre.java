@@ -1,52 +1,55 @@
-import android.view.LayoutInflater;
-import android.view.View;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SearchFriendListActivity;
-import java.util.ArrayList;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import java.util.List;
 
 public class tre
-  extends BaseAdapter
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  private tre(SearchFriendListActivity paramSearchFriendListActivity) {}
+  private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
+  private List<trx> jdField_a_of_type_JavaUtilList;
+  private ydl jdField_a_of_type_Ydl;
   
-  public int getCount()
+  public void a(ExtraTypeInfo paramExtraTypeInfo)
   {
-    return SearchFriendListActivity.a(this.a).size();
+    this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = paramExtraTypeInfo;
   }
   
-  public Object getItem(int paramInt)
+  public void a(List<trx> paramList)
   {
-    return SearchFriendListActivity.a(this.a).get(paramInt);
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public long getItemId(int paramInt)
+  public void a(ydl paramydl)
   {
-    return paramInt;
+    this.jdField_a_of_type_Ydl = paramydl;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public int getItemCount()
   {
-    View localView = paramView;
-    if (paramView == null)
-    {
-      localView = this.a.getLayoutInflater().inflate(2130971521, paramViewGroup, false);
-      paramView = new trf();
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362869));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362870));
-      paramView.b = ((TextView)localView.findViewById(2131375009));
-      localView.setTag(paramView);
-      localView.setOnClickListener(this.a);
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    this.a.a(localView, paramInt);
-    return localView;
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && ((this.jdField_a_of_type_Ydl instanceof trw))) {
+      ((trf)paramViewHolder).a(this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo, (trw)this.jdField_a_of_type_Ydl);
+    }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new trf(new QCircleFeedCommentWidget(paramViewGroup.getContext()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tre
  * JD-Core Version:    0.7.0.1
  */

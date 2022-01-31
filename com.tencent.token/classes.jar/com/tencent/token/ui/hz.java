@@ -1,31 +1,25 @@
 package com.tencent.token.ui;
 
-import com.tencent.jni.FaceDetector;
-import com.tencent.token.global.e;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cw;
+import com.tencent.token.do;
+import com.tencent.token.ui.base.FaceView;
+import com.tencent.token.ui.base.cd;
 
-final class hz
-  implements Runnable
+class hz
+  implements DialogInterface.OnClickListener
 {
-  hz(hx paramhx) {}
+  hz(hs paramhs) {}
   
-  public final void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    synchronized (this.a.e)
+    if (do.a().e() != null) {}
+    for (long l = do.a().e().mRealUin;; l = 0L)
     {
-      if (!this.a.l)
-      {
-        long l = System.currentTimeMillis();
-        this.a.j = FaceDetector.LiveDetectInitial(hx.e(this.a));
-        com.tencent.token.cv.h = (int)(System.currentTimeMillis() - l);
-        if (this.a.j)
-        {
-          hx.a(this.a, System.currentTimeMillis());
-          hx.f(this.a);
-          this.a.l = true;
-        }
-        e.d("LiveDetectInitial,ret=" + this.a.j + ",livemodelfile=" + hx.e(this.a));
-        e.a("LiveDetectInitial,ret=" + this.a.j + ",livemodelfile=" + hx.e(this.a));
-      }
+      cw.a().a(0L, l, FaceRegCameraActivity.access$1500(this.a.a), FaceRegCameraActivity.access$1900(this.a.a), 0, FaceRegCameraActivity.access$2000(this.a.a), FaceRegCameraActivity.access$500(this.a.a).getBrightModeIntValue(), FaceRegCameraActivity.access$1600(this.a.a));
+      FaceRegCameraActivity.access$1300(this.a.a).b();
       return;
     }
   }

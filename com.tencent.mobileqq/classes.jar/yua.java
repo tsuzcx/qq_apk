@@ -1,99 +1,105 @@
-import android.graphics.Bitmap;
-import android.media.MediaScannerConnection;
-import android.os.Environment;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.utils.FileUtils;
-import com.tencent.mobileqq.apollo.store.ApolloStoreActivity;
-import com.tencent.mobileqq.apollo.store.ApolloViewController;
-import com.tencent.mobileqq.utils.ImageUtil;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileListRspBody;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileListRspBody.Item;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
 
-public class yua
-  implements Runnable
+public abstract class yua
+  extends nac
 {
-  public yua(ApolloStoreActivity paramApolloStoreActivity, Bitmap paramBitmap, long paramLong, String paramString) {}
-  
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    int i = 0;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloStoreActivity", 2, "[saveImage] failed bitmap null");
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder().append("GetFileListObserver, errorCode=").append(paramInt).append(", has data=");
+        if (paramArrayOfByte == null) {
+          break label73;
+        }
+      }
+      label73:
+      for (bool = true;; bool = false)
+      {
+        QLog.i("TroopFileProtocol", 2, bool);
+        a(false, false, 0, 0, 0, null, null, paramBundle);
+        return;
       }
     }
-    String str;
-    do
-    {
-      for (;;)
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloStoreActivity", 2, "[saveImage] consume time " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + " ms");
-        }
-        Message localMessage = Message.obtain();
-        localMessage.what = 256;
-        try
-        {
-          str = Environment.getExternalStorageDirectory().toString();
-          Object localObject = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format(Long.valueOf(System.currentTimeMillis()));
-          if (ApolloStoreActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloStoreActivity) != null) {
-            i = ApolloStoreActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloStoreActivity).c();
-          }
-          str = str + "/cmshow/" + i + "_" + (String)localObject + ".png";
-          localObject = new File(str);
-          if (!TextUtils.isEmpty(str))
-          {
-            try
-            {
-              ImageUtil.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (File)localObject);
-              if ((!TextUtils.isEmpty(str)) && (FileUtils.c(str))) {
-                break label275;
-              }
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.d("ApolloStoreActivity", 2, "[saveImage] failed invalid path");
-              return;
-            }
-            catch (Throwable localThrowable1) {}
-            if (QLog.isColorLevel())
-            {
-              QLog.d("ApolloStoreActivity", 2, "[saveImage] failed save to disk");
-              return;
-            }
-          }
-        }
-        catch (Throwable localThrowable2) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloStoreActivity", 2, "[saveImage] failed create path" + localThrowable2.getMessage());
-    return;
+    Object localObject1 = new oidb_0x6d8.RspBody();
     try
     {
-      label275:
-      MediaScannerConnection.scanFile(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloStoreActivity.getApplicationContext(), new String[] { str }, new String[] { "image/png" }, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloStoreActivity", 2, "[saveImage] to media db " + str);
+      ((oidb_0x6d8.RspBody)localObject1).mergeFrom(paramArrayOfByte);
+      if (!((oidb_0x6d8.RspBody)localObject1).file_list_info_rsp.has())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopFileProtocol", 2, "no FileList rsp.");
+        }
+        a(false, false, 0, 0, 0, null, null, paramBundle);
+        return;
       }
-      localThrowable2.obj = this.jdField_a_of_type_JavaLangString;
-      localThrowable2.arg1 = 0;
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloStoreActivity.a.sendMessage(localThrowable2);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileProtocol", 2, "merge data exception," + paramArrayOfByte.toString());
+      }
+      a(false, false, 0, 0, 0, null, null, paramBundle);
       return;
     }
-    catch (Throwable localThrowable3)
+    localObject1 = (oidb_0x6d8.GetFileListRspBody)((oidb_0x6d8.RspBody)localObject1).file_list_info_rsp.get();
+    if (((oidb_0x6d8.GetFileListRspBody)localObject1).int32_ret_code.has())
     {
-      QLog.e("ApolloStoreActivity", 2, "[saveImage] failed exception " + localThrowable3.getMessage());
+      i = ((oidb_0x6d8.GetFileListRspBody)localObject1).int32_ret_code.get();
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileProtocol", 2, "GetFileListObserver, retCode=" + i);
+      }
+      if (i < 0)
+      {
+        if (i == -1000)
+        {
+          a(true, false, 0, i, 0, null, null, paramBundle);
+          return;
+        }
+        a(false, false, 0, 0, 0, null, null, paramBundle);
+      }
     }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileProtocol", 2, "GetFileListObserver, has not redCode");
+      }
+      a(false, false, 0, 0, 0, null, null, paramBundle);
+      return;
+    }
+    int i = ((oidb_0x6d8.GetFileListRspBody)localObject1).uint32_all_file_count.get();
+    boolean bool = ((oidb_0x6d8.GetFileListRspBody)localObject1).bool_is_end.get();
+    int j = ((oidb_0x6d8.GetFileListRspBody)localObject1).uint32_next_index.get();
+    paramArrayOfByte = ((oidb_0x6d8.GetFileListRspBody)localObject1).bytes_context.get();
+    Object localObject2 = ((oidb_0x6d8.GetFileListRspBody)localObject1).rpt_item_list.get();
+    localObject1 = new ArrayList();
+    localObject2 = ((List)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      ((List)localObject1).add(new bbsa((oidb_0x6d8.GetFileListRspBody.Item)((Iterator)localObject2).next()));
+    }
+    a(true, bool, i, paramInt, j, paramArrayOfByte, (List)localObject1, paramBundle);
   }
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, ByteStringMicro paramByteStringMicro, List<bbsa> paramList, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yua
  * JD-Core Version:    0.7.0.1
  */

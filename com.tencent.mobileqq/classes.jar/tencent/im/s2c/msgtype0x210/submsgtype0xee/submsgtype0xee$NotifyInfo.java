@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class submsgtype0xee$NotifyInfo
-  extends MessageMicro
+  extends MessageMicro<NotifyInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 42, 90, 98, 106, 114, 170 }, new String[] { "msg_style_sheet", "enum_apppush_type", "msg_ordinary_push_info", "msg_social_push_info", "msg_ugc_push_info", "msg_context_info", "msg_account_info", "msg_statistics_info", "msg_control_info", "msg_extra_info" }, new Object[] { null, Integer.valueOf(0), null, null, null, null, null, null, null, null }, NotifyInfo.class);
   public final PBEnumField enum_apppush_type = PBField.initEnum(0);

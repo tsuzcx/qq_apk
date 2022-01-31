@@ -1,27 +1,4 @@
-import cooperation.qzone.plugin.IQZonePluginManager;
-import cooperation.qzone.plugin.PluginRecord;
-import cooperation.qzone.plugin.QZonePluginMangerHelper;
-import cooperation.qzone.plugin.QZonePluginMangerHelper.OnQzonePluginClientReadyListner;
-import cooperation.qzone.widgetai.QzoneWidgetAIInterface;
-
-public final class aneg
-  implements QZonePluginMangerHelper.OnQzonePluginClientReadyListner
-{
-  public aneg(String paramString) {}
-  
-  public void a(IQZonePluginManager paramIQZonePluginManager)
-  {
-    if (paramIQZonePluginManager == null) {
-      QZonePluginMangerHelper.a(QzoneWidgetAIInterface.getContext(), this);
-    }
-    do
-    {
-      return;
-      paramIQZonePluginManager = paramIQZonePluginManager.a(this.a);
-    } while (paramIQZonePluginManager == null);
-    QzoneWidgetAIInterface.access$002(paramIQZonePluginManager.c);
-  }
-}
+public abstract interface aneg {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

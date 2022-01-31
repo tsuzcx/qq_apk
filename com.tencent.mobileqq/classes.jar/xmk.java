@@ -1,19 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.slideshow.ConvertRunnable;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import java.lang.ref.WeakReference;
 
-class xmk
-  implements DialogInterface.OnClickListener
+public class xmk
 {
-  xmk(xmi paramxmi) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public static int a = 3;
+  public long a;
+  public ConvertRunnable a;
+  public SlideItemInfo a;
+  public WeakReference<xml> a;
+  public int b;
+  public long b;
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xmk
  * JD-Core Version:    0.7.0.1
  */

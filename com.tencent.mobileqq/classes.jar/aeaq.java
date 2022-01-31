@@ -1,31 +1,16 @@
-import com.tencent.mobileqq.leba.QZoneEntryController;
-import com.tencent.mobileqq.observer.QZoneObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
 
 public class aeaq
-  extends QZoneObserver
+  implements View.OnClickListener
 {
-  public aeaq(QZoneEntryController paramQZoneEntryController) {}
+  public aeaq(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UndealCount.QZoneObserver", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
-    }
-    if (QLog.isColorLevel())
-    {
-      if ((paramLong >>> 17 & 1L) != 0L) {
-        QLog.d("UndealCount.QZoneObserver", 2, "Leba onGetQZoneFeedCountFin Zebra album and then call Leba freshEntryItemUI");
-      }
-      QLog.d("UndealCount.QZoneObserver", 2, "Leba onGetQZoneFeedCountFin type: " + paramLong + " and then call Leba freshEntryItemUI");
-    }
-    if (paramBoolean1)
-    {
-      this.a.a();
-      if (QLog.isColorLevel()) {
-        QLog.i("UndealCount.QZoneObserver", 2, "onGetQZoneFeedCountFin. notifyData.");
-      }
-    }
+    this.a.b(this.a.f());
+    paramView.setEnabled(false);
   }
 }
 

@@ -1,22 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.biz.eqq.EnterpriseDetailActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.PopupWindow;
+import com.tencent.biz.ui.PopupWindows;
 
 public class bof
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  public bof(EnterpriseDetailActivity paramEnterpriseDetailActivity, String paramString) {}
+  public bof(PopupWindows paramPopupWindows) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramInt == 0) {}
-    while (paramInt != 1) {
-      return;
+    if (paramMotionEvent.getAction() == 4)
+    {
+      this.a.a.dismiss();
+      return true;
     }
-    paramDialogInterface = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.startActivity(paramDialogInterface);
+    return false;
   }
 }
 

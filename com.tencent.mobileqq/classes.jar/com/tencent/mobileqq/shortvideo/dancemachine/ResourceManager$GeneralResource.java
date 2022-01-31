@@ -2,17 +2,14 @@ package com.tencent.mobileqq.shortvideo.dancemachine;
 
 public class ResourceManager$GeneralResource
 {
-  public String a;
-  private String b = ResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager);
+  public String bgPic = this.prefix_bgm + "bg.png";
+  private String prefix_bgm = ResourceManager.access$000(this.this$0);
   
-  public ResourceManager$GeneralResource(ResourceManager paramResourceManager)
-  {
-    this.jdField_a_of_type_JavaLangString = (this.b + "bg.png");
-  }
+  public ResourceManager$GeneralResource(ResourceManager paramResourceManager) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.GeneralResource
  * JD-Core Version:    0.7.0.1
  */

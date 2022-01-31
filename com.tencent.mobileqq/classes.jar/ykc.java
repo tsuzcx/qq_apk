@@ -1,90 +1,83 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloBaseInfo;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Vector;
+import com.tencent.biz.subscribe.preloader.lib.Worker;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ykc
-  extends Handler
 {
-  public ykc(ApolloManager paramApolloManager, Looper paramLooper)
+  private static ykc jdField_a_of_type_Ykc;
+  private final ConcurrentHashMap<String, ykf> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(100);
+  
+  private <T> String a(String paramString, Worker<T> paramWorker)
   {
-    super(paramLooper);
+    if (a(paramString))
+    {
+      ykb.b("preLoader ID is used, please note that remove!");
+      a(paramString);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramWorker);
+    paramWorker.a();
+    return paramString;
   }
   
-  public void handleMessage(Message paramMessage)
+  public static ykc a()
   {
-    if (paramMessage.what == ApolloManager.jdField_a_of_type_Int)
+    if (jdField_a_of_type_Ykc == null) {
+      jdField_a_of_type_Ykc = new ykc();
+    }
+    return jdField_a_of_type_Ykc;
+  }
+  
+  public <T> String a(String paramString, yka<T> paramyka)
+  {
+    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+    return a(paramString, new Worker(paramString, paramyka, (ykh)null, i));
+  }
+  
+  public void a(String paramString)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))) {}
+    try
     {
-      paramMessage = (VasExtensionHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71);
-      if (paramMessage != null) {
-        localObject = new ArrayList(ApolloManager.jdField_a_of_type_JavaUtilVector.size());
+      ykf localykf = (ykf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if (localykf != null) {
+        localykf.b();
       }
     }
-    while (paramMessage.what != ApolloManager.jdField_b_of_type_Int)
+    catch (Exception localException)
     {
-      try
-      {
-        Iterator localIterator = ApolloManager.jdField_a_of_type_JavaUtilVector.iterator();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          if (!((ArrayList)localObject).contains(str)) {
-            ((ArrayList)localObject).add(Long.valueOf(Long.parseLong(str)));
-          }
-        }
-        paramMessage.a((ArrayList)localObject, "troop");
-      }
-      catch (Exception localException) {}
       for (;;)
       {
-        ApolloManager.jdField_a_of_type_JavaUtilVector.clear();
-        if (ApolloManager.jdField_b_of_type_JavaUtilVector.size() > 0)
-        {
-          paramMessage.a((String[])ApolloManager.jdField_b_of_type_JavaUtilVector.toArray(new String[0]));
-          ApolloManager.jdField_b_of_type_JavaUtilVector.clear();
-        }
-        return;
-        if ((ApolloManager.a(this.a) != null) && (ApolloManager.a(this.a).apolloLocalTS != ApolloManager.a(this.a).apolloServerTS) && (!((ArrayList)localObject).contains(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()))) {
-          ((ArrayList)localObject).add(Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin()));
-        }
+        ykb.a(localException);
       }
     }
-    Object localObject = (String)paramMessage.obj;
-    if (paramMessage.arg1 == 1) {
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!ApolloManager.jdField_a_of_type_JavaUtilVector.contains(localObject)))
-      {
-        ApolloManager.jdField_a_of_type_JavaUtilVector.add(localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloManager", 2, "addToBulkPullMap-->dress uin:" + (String)localObject);
-        }
-      }
-    }
-    for (;;)
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+  }
+  
+  public <T> void a(String paramString, ykh<T> paramykh)
+  {
+    try
     {
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(ApolloManager.jdField_a_of_type_Int);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(ApolloManager.jdField_a_of_type_Int, 200L);
-      return;
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!ApolloManager.jdField_b_of_type_JavaUtilVector.contains(localObject)))
-      {
-        ApolloManager.jdField_b_of_type_JavaUtilVector.add(localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloManager", 2, "addToBulkPullMap-->info uin:" + (String)localObject);
-        }
+      paramString = (ykf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if (paramString != null) {
+        paramString.a(paramykh);
       }
+      return;
     }
+    catch (Exception paramString)
+    {
+      ykb.a(paramString);
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ykc
  * JD-Core Version:    0.7.0.1
  */

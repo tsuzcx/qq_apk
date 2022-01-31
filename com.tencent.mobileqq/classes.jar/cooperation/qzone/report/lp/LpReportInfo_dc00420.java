@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
+import bjdm;
 import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.qzone.QUA;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.app.AppRuntime;
@@ -55,7 +55,7 @@ public class LpReportInfo_dc00420
     return "dc00420:" + this.actiontype + "," + this.subactiontype + "," + this.reserves;
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
@@ -63,14 +63,14 @@ public class LpReportInfo_dc00420
     localHashMap.put("subactiontype", String.valueOf(this.subactiontype));
     LpReportUtils.safePut(localHashMap, "reserves", this.reserves);
     LpReportUtils.safePut(localHashMap, "pushstatkey", this.pushstatkey);
-    localHashMap.put("qua", QUA.a());
+    localHashMap.put("qua", bjdm.a());
     localHashMap.put("mergenum", String.valueOf(this.mergenum));
     return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc00420
  * JD-Core Version:    0.7.0.1
  */

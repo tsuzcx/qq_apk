@@ -1,29 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import java.util.ArrayList;
 
-class enh
-  implements DialogInterface.OnClickListener
+public class enh
+  implements View.OnClickListener
 {
-  enh(enf paramenf, String paramString) {}
+  public enh(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    try
-    {
-      paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_Enf.a.a.startActivity(paramDialogInterface);
-      return;
+    if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+      PhotoPreviewActivity.a(this.a, PhotoPreviewActivity.a(this.a), this.a.jdField_a_of_type_Int, PhotoPreviewActivity.a(this.a));
     }
-    catch (Exception paramDialogInterface) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     enh
  * JD-Core Version:    0.7.0.1
  */

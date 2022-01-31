@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.story.ui.view.gallery.StoryVideoPlayTextureView android:id="@id/f05" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.story.image2video.StoryFakeVideoPlayView android:id="@id/f06" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.0" />
+    <com.tencent.mm.plugin.story.ui.view.editor.item.EditorItemContainer android:id="@id/bgp" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" />
+    <com.tencent.mm.plugin.story.ui.view.editor.EditorControlPanel android:id="@id/f07" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.story.ui.view.editor.EditorInputView android:id="@id/bf6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.story.ui.view.editor.EditorAudioView android:id="@id/f08" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</merge>

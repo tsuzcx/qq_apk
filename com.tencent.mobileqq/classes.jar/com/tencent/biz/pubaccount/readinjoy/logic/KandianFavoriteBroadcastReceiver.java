@@ -9,22 +9,23 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import pem;
 import tencent.im.oidb.FavoriteCKVData.KandianFavoriteBizData;
 
 public class KandianFavoriteBroadcastReceiver
   extends BroadcastReceiver
 {
   public static final String a;
-  private ReadInJoyAtlasManager.AtlasCallback a;
+  private pem a;
   
   static
   {
     jdField_a_of_type_JavaLangString = "Q.readinjoy.atlas.." + KandianFavoriteBroadcastReceiver.class.getSimpleName();
   }
   
-  public KandianFavoriteBroadcastReceiver(ReadInJoyAtlasManager.AtlasCallback paramAtlasCallback)
+  public KandianFavoriteBroadcastReceiver(pem parampem)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback = paramAtlasCallback;
+    this.jdField_a_of_type_Pem = parampem;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -48,9 +49,9 @@ public class KandianFavoriteBroadcastReceiver
           if (QLog.isColorLevel()) {
             QLog.d(jdField_a_of_type_JavaLangString, 2, "BroadcastReceiver.onReceive  operation == " + i + " rowkey=" + paramIntent + " cid=" + paramContext);
           }
-          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback != null)
+          if (this.jdField_a_of_type_Pem != null)
           {
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback.a(bool, paramIntent, i, paramContext);
+            this.jdField_a_of_type_Pem.a(bool, paramIntent, i, paramContext);
             return;
           }
         }
@@ -64,7 +65,7 @@ public class KandianFavoriteBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.logic.KandianFavoriteBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

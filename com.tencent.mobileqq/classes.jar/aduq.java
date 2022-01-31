@@ -1,36 +1,32 @@
-import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.animation.LinearInterpolator;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.intervideo.now.HorizontalLoadingView;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aduq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends MqqHandler
 {
-  public aduq(HorizontalLoadingView paramHorizontalLoadingView) {}
+  public aduq(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  @TargetApi(16)
-  public void onGlobalLayout()
+  public void handleMessage(Message paramMessage)
   {
-    int i = this.a.getMeasuredWidth() * 40 / 710;
-    View localView = new View(this.a.getContext());
-    localView.setBackgroundResource(2130843705);
-    Object localObject = new FrameLayout.LayoutParams(-1, -1);
-    ((FrameLayout.LayoutParams)localObject).gravity = 3;
-    this.a.addView(localView, (ViewGroup.LayoutParams)localObject);
-    localObject = ValueAnimator.ofFloat(new float[] { 0.0F, i });
-    ((ValueAnimator)localObject).setInterpolator(new LinearInterpolator());
-    ((ValueAnimator)localObject).setRepeatMode(1);
-    ((ValueAnimator)localObject).setRepeatCount(-1);
-    ((ValueAnimator)localObject).setDuration(1000L);
-    ((ValueAnimator)localObject).addUpdateListener(new adur(this, localView));
-    ((ValueAnimator)localObject).start();
-    HorizontalLoadingView.a(this.a, (ValueAnimator)localObject);
-    this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      this.a.finish();
+      return;
+      paramMessage = (String)paramMessage.obj;
+      if (!TextUtils.isEmpty(paramMessage))
+      {
+        RegisterPhoneNumActivity.a(this.a).a(paramMessage);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("RegisterPhoneNumActivity", 2, "captcha sig is empty");
   }
 }
 

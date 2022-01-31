@@ -1,109 +1,78 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Bundle;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyAtlasViewPagerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
-import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager;
-import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager.AtlasCallbackImpl;
-import com.tencent.biz.pubaccount.readinjoy.model.AtlasModelImageList;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAllInOneBar;
-import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.gallery.gallery.GalleryInfo;
+import java.util.Random;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.CmdReportClientInfoReqBody;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.MobileHardWareValue;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.PutinfoHead;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.ReqBody;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.VideoHardWareInfo;
 
 public class lne
-  extends ReadInJoyAtlasManager.AtlasCallbackImpl
 {
-  public lne(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
+  private long jdField_a_of_type_Long;
+  private lnn jdField_a_of_type_Lnn;
+  private hd_video_putinfo.ReqBody jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody = new hd_video_putinfo.ReqBody();
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public lne(lnd paramlnd) {}
+  
+  private void a()
   {
-    if (paramBoolean)
-    {
-      paramObject = (gallery.GalleryInfo)paramObject;
-      ReadInJoyAtlasFragment.a(this.a, paramObject);
-      this.a.a(1);
-      long l;
-      if (paramObject != null)
-      {
-        ReadInJoyAtlasFragment.a(this.a, paramObject.bytes_publisher_name.get().toStringUtf8());
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ReadInJoyAtlasFragment.c(this.a));
-        l = paramObject.uint64_publisher_uin.get();
-        ReadInJoyAtlasFragment.b(this.a, paramObject.bytes_subject.get().toStringUtf8());
-        Object localObject = this.a;
-        ReadInJoyAtlasManager.a();
-        ReadInJoyAtlasFragment.c((ReadInJoyAtlasFragment)localObject, ReadInJoyAtlasManager.a(paramObject));
-        localObject = paramObject.bytes_comments_url.get().toStringUtf8();
-        ReadInJoyAtlasFragment.d(this.a, Long.toString(l));
-        ReadInJoyAtlasFragment.a(this.a, paramObject.uint64_article_id.get());
-        ReadInJoyAtlasFragment.b(this.a, paramObject.uint64_pic_count.get());
-        ReadInJoyAtlasFragment.e(this.a, paramObject.bytes_report_exdata.get().toStringUtf8());
-        Bundle localBundle = new Bundle();
-        localBundle.putString("row_key", ReadInJoyAtlasFragment.a(this.a));
-        localBundle.putByteArray("gallery_info", paramObject.toByteArray());
-        localBundle.putInt("ability_mask", 7);
-        localBundle.putString("comment_list_jump_url", (String)localObject);
-        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAllInOneBar.a(localBundle);
-        localObject = ReadInJoyAtlasFragment.a(this.a).a(1, ReadInJoyAtlasFragment.d(this.a));
-        if (localObject == null) {
-          break label483;
-        }
-        this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(new BitmapDrawable((Bitmap)localObject));
-        if (QLog.isColorLevel()) {
-          QLog.d(ReadInJoyAtlasFragment.jdField_a_of_type_JavaLangString, 2, "mFaceDecoder.getBitmapFromCache() uin=" + ReadInJoyAtlasFragment.d(this.a) + " hit cache. time=" + System.currentTimeMillis());
-        }
-      }
-      for (;;)
-      {
-        ReadInJoyAtlasFragment.a(this.a).a(l + "", 1, false);
-        this.a.jdField_a_of_type_ComTencentImageURLImageView.setTag(Long.valueOf(l));
-        ReadInJoyAtlasFragment.a(this.a, ReadInJoyAtlasManager.a().a(paramObject));
-        paramObject = new AtlasModelImageList(ReadInJoyAtlasFragment.a(this.a));
-        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasViewPagerAdapter.a(paramObject);
-        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasViewPagerAdapter.a(ReadInJoyAtlasFragment.e(this.a));
-        if (this.a.jdField_a_of_type_Int != 1) {
-          this.a.d();
-        }
-        ReadInJoyAtlasManager.a().b(ReadInJoyAtlasFragment.a(this.a), this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback);
-        return;
-        label483:
-        ReadInJoyAtlasFragment.a(this.a).a(ReadInJoyAtlasFragment.d(this.a), 1, true, (byte)0);
-        this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(ImageUtil.b());
-        if (QLog.isColorLevel()) {
-          QLog.d(ReadInJoyAtlasFragment.jdField_a_of_type_JavaLangString, 2, "mFaceDecoder.getBitmapFromCache() uin=" + ReadInJoyAtlasFragment.d(this.a) + " not hit cache. time=" + System.currentTimeMillis());
-        }
-      }
-    }
-    paramObject = (String)paramObject;
-    if ("阿嘞，内容被外星人带走啦~".equals(paramObject))
-    {
-      this.a.a(4, paramObject);
-      return;
-    }
-    this.a.a(3, paramObject);
+    hd_video_putinfo.PutinfoHead localPutinfoHead = (hd_video_putinfo.PutinfoHead)this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_putinfo_head.get();
+    localPutinfoHead.enum_body_type.set(1);
+    localPutinfoHead.uint64_uin.set(this.jdField_a_of_type_Long);
+    localPutinfoHead.bytes_appid.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lnn.jdField_a_of_type_JavaLangString.getBytes()));
+    localPutinfoHead.uint64_seq.set(new Random().nextLong());
+    localPutinfoHead.bytes_config_ver.set(ByteStringMicro.copyFrom(lnd.jdField_a_of_type_JavaLangString.getBytes()));
+    this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_putinfo_head.set(localPutinfoHead);
   }
   
-  public void a(boolean paramBoolean, List paramList)
+  private void b()
   {
-    if (paramList != null)
-    {
-      paramList = ReadInJoyAtlasManager.a().a(paramList);
-      if (paramList != null) {
-        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasViewPagerAdapter.a(paramList, false);
-      }
-    }
+    hd_video_putinfo.CmdReportClientInfoReqBody localCmdReportClientInfoReqBody = (hd_video_putinfo.CmdReportClientInfoReqBody)this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_report_client_info_req_body.get();
+    localCmdReportClientInfoReqBody.uint32_mobile_type.set(this.jdField_a_of_type_Lnn.jdField_a_of_type_Int);
+    localCmdReportClientInfoReqBody.uint32_mobile_os_info.set(this.jdField_a_of_type_Lnn.jdField_b_of_type_Int);
+    localCmdReportClientInfoReqBody.uint32_instid.set(11001);
+    localCmdReportClientInfoReqBody.bytes_client_system_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lnn.jdField_b_of_type_JavaLangString.getBytes()));
+    localCmdReportClientInfoReqBody.bytes_device_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lnn.jdField_c_of_type_JavaLangString.getBytes()));
+    Object localObject = (hd_video_putinfo.MobileHardWareValue)localCmdReportClientInfoReqBody.msg_device_info.get();
+    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_struct.set(this.jdField_a_of_type_Lnn.jdField_c_of_type_Int);
+    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_number.set(this.jdField_a_of_type_Lnn.jdField_d_of_type_Int);
+    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_hertz.set(this.jdField_a_of_type_Lnn.jdField_e_of_type_Int);
+    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_camera_turn.set(this.jdField_a_of_type_Lnn.f);
+    localCmdReportClientInfoReqBody.msg_device_info.set((MessageMicro)localObject);
+    localObject = (hd_video_putinfo.VideoHardWareInfo)localCmdReportClientInfoReqBody.msg_video_info.get();
+    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_max_encodeframe.set(this.jdField_a_of_type_Lnn.g);
+    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_max_decodeframe.set(this.jdField_a_of_type_Lnn.h);
+    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_width.set(this.jdField_a_of_type_Lnn.i);
+    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_height.set(this.jdField_a_of_type_Lnn.j);
+    localCmdReportClientInfoReqBody.msg_video_info.set((MessageMicro)localObject);
+    localCmdReportClientInfoReqBody.bytes_mobile_rom_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lnn.jdField_d_of_type_JavaLangString.getBytes()));
+    localCmdReportClientInfoReqBody.uint32_sharp_sdk_ver.set(this.jdField_a_of_type_Lnn.m);
+    localCmdReportClientInfoReqBody.uint32_open_general_info.set(this.jdField_a_of_type_Lnn.l);
+    localCmdReportClientInfoReqBody.bytes_app_version.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lnn.jdField_e_of_type_JavaLangString.getBytes()));
+    this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_report_client_info_req_body.set(localCmdReportClientInfoReqBody);
+  }
+  
+  public void a(long paramLong, lnn paramlnn)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Lnn = paramlnn;
+  }
+  
+  public byte[] a()
+  {
+    a();
+    b();
+    return this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lne
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QQProxyForQlink;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.widget.RoundImageView;
 
-public class amnf
-  implements DialogInterface.OnClickListener
+class amnf
+  implements ansr
 {
-  public amnf(QQProxyForQlink paramQQProxyForQlink) {}
+  amnf(amne paramamne) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    paramDialogInterface.dismiss();
+    amne.a(this.a).setImageBitmap(paramBitmap);
   }
 }
 

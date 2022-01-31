@@ -1,39 +1,40 @@
 package oicq.wlogin_sdk.request;
 
 import java.util.ArrayList;
-import oicq.wlogin_sdk.b.ad;
-import oicq.wlogin_sdk.b.ae;
-import oicq.wlogin_sdk.b.bw;
-import oicq.wlogin_sdk.b.cr;
-import oicq.wlogin_sdk.b.f;
+import oicq.wlogin_sdk.tlv_type.tlv_t104;
+import oicq.wlogin_sdk.tlv_type.tlv_t116;
+import oicq.wlogin_sdk.tlv_type.tlv_t126;
+import oicq.wlogin_sdk.tlv_type.tlv_t127;
+import oicq.wlogin_sdk.tlv_type.tlv_t184;
+import oicq.wlogin_sdk.tlv_type.tlv_t8;
 import oicq.wlogin_sdk.tools.util;
 
 public class x
-  extends j
+  extends oicq_request
 {
   public x(t paramt)
   {
-    this.s = 2064;
-    this.t = 18;
-    this.u = "wtlogin.login";
-    this.w = paramt;
-    this.w.m = 0;
+    this.t = 2064;
+    this.u = 18;
+    this.v = "wtlogin.login";
+    this.x = paramt;
+    this.x.m = 0;
   }
   
   public int a(String paramString, int paramInt1, int paramInt2, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo)
   {
-    int j = t.u;
+    int j = t.w;
     int i = 0;
     for (;;)
     {
       byte[] arrayOfByte = a(paramString.getBytes(), paramInt1, paramInt2, paramArrayOfLong);
-      a(this.h, this.s, this.i, this.w.f, this.l, this.m, j, this.o, arrayOfByte);
-      int k = a(String.valueOf(this.w.f), false, paramWUserSigInfo);
+      a(this.i, this.t, this.j, this.x.f, this.m, this.n, j, this.p, arrayOfByte);
+      int k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
       if (k != 0) {
         return k;
       }
       k = b();
-      util.LOGI("retry num:" + i + " ret:" + k, "" + this.w.f);
+      util.LOGI("retry num:" + i + " ret:" + k, "" + this.x.f);
       if (k != 180) {
         return k;
       }
@@ -62,7 +63,7 @@ public class x
     ArrayList localArrayList = new ArrayList();
     int i1 = arrayOfInt.length;
     int j = 0;
-    async_context localasync_context = t.b(this.w.h);
+    async_context localasync_context = t.b(this.x.h);
     int n = 0;
     if (n < i1)
     {
@@ -84,15 +85,15 @@ public class x
         i = m;
         j = k;
         break;
-        arrayOfByte = localasync_context._t104.a();
+        arrayOfByte = localasync_context._t104.get_buf();
         continue;
-        arrayOfByte = new cr().a(0, t.s, 0);
+        arrayOfByte = new tlv_t8().get_tlv_8(0, t.u, 0);
         continue;
-        arrayOfByte = new ae().a(paramArrayOfByte, localasync_context._t126.f());
+        arrayOfByte = new tlv_t127().get_tlv_127(paramArrayOfByte, localasync_context._t126.get_random());
         continue;
-        arrayOfByte = new bw().a(localasync_context._msalt, localasync_context._mpasswd);
+        arrayOfByte = new tlv_t184().get_tlv_184(localasync_context._msalt, localasync_context._mpasswd);
         continue;
-        arrayOfByte = new oicq.wlogin_sdk.b.t().a(paramInt1, paramInt2, paramArrayOfLong);
+        arrayOfByte = new tlv_t116().get_tlv_116(paramInt1, paramInt2, paramArrayOfLong);
       }
     }
     paramArrayOfByte = new byte[j];
@@ -105,7 +106,7 @@ public class x
       paramInt2 += paramArrayOfLong.length;
       paramInt1 += 1;
     }
-    return a(paramArrayOfByte, this.t, i);
+    return b(paramArrayOfByte, this.u, i);
   }
 }
 

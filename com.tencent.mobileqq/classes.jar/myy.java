@@ -1,34 +1,30 @@
-import com.tencent.biz.pubaccount.PublicAccountArticleObserver;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionUtils.PhotoCollectionInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.ImageView;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.mobileqq.widget.QQMapView;
 
 public class myy
-  extends PublicAccountArticleObserver
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public myy(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, long paramLong) {}
+  public myy(PoiMapActivity paramPoiMapActivity) {}
   
-  public void a(boolean paramBoolean, PublicAccountImageCollectionUtils.PhotoCollectionInfo paramPhotoCollectionInfo, byte[] paramArrayOfByte, String paramString)
+  public boolean onPreDraw()
   {
-    if (paramBoolean)
+    this.a.o = PoiMapActivity.e(this.a).getMeasuredHeight();
+    PoiMapActivity.a(this.a, PoiMapActivity.a(this.a).getMeasuredHeight());
+    if ((this.a.o > 0) && (PoiMapActivity.a(this.a) > 0))
     {
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(true, this.jdField_a_of_type_Long);
-      if (paramPhotoCollectionInfo != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetPhotoCollectionInfoRespond isSuccess=" + paramBoolean + " ;articleID = " + paramPhotoCollectionInfo.a);
-        }
-        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(paramPhotoCollectionInfo, paramArrayOfByte);
-        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.b(paramPhotoCollectionInfo);
-      }
-      return;
+      this.a.a((this.a.o - PoiMapActivity.b(this.a)) / 2 + this.a.u, false);
+      PoiMapActivity.f(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
+      PoiMapActivity.b(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
     }
-    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(false, this.jdField_a_of_type_Long);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     myy
  * JD-Core Version:    0.7.0.1
  */

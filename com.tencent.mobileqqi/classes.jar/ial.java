@@ -1,201 +1,84 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.res.Configuration;
-import android.graphics.Rect;
-import android.view.KeyEvent;
-import android.view.KeyEvent.DispatcherState;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import com.tencent.widget.BubblePopupWindow;
+import android.os.IBinder;
+import cooperation.qlink.IQlinkService;
 
 public class ial
-  extends FrameLayout
+  implements IQlinkService
 {
-  private static final String jdField_a_of_type_JavaLangString = "PopupWindow.PopupViewContainer";
-  View jdField_a_of_type_AndroidViewView = null;
+  private IBinder a;
   
-  public ial(BubblePopupWindow paramBubblePopupWindow, Context paramContext)
+  public ial(IBinder paramIBinder)
   {
-    super(paramContext);
+    this.a = paramIBinder;
   }
   
-  private View a(View paramView)
+  public String a()
   {
-    if (paramView.isPressed()) {
-      return paramView;
-    }
-    if ((paramView instanceof ViewGroup))
-    {
-      paramView = (ViewGroup)paramView;
-      int i = 0;
-      while (i < paramView.getChildCount())
-      {
-        View localView = a(paramView.getChildAt(i));
-        if (localView != null) {
-          return localView;
-        }
-        i += 1;
-      }
-    }
-    return null;
+    return "cooperation.qlink.IQlinkService";
   }
   
-  private void a(View paramView1, View paramView2, Rect paramRect)
+  /* Error */
+  public void a(cooperation.qlink.SendMsg paramSendMsg)
   {
-    if (paramView1 == paramView2) {
-      return;
-    }
-    paramRect.top += paramView1.getTop();
-    paramRect.bottom += paramView1.getTop();
-    paramRect.left += paramView1.getLeft();
-    paramRect.right += paramView1.getLeft();
-    a((View)paramView1.getParent(), paramView2, paramRect);
+    // Byte code:
+    //   0: invokestatic 26	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: invokestatic 26	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   7: astore_3
+    //   8: aload_2
+    //   9: ldc 19
+    //   11: invokevirtual 30	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   14: aload_1
+    //   15: ifnull +41 -> 56
+    //   18: aload_2
+    //   19: iconst_1
+    //   20: invokevirtual 34	android/os/Parcel:writeInt	(I)V
+    //   23: aload_1
+    //   24: aload_2
+    //   25: iconst_0
+    //   26: invokevirtual 40	cooperation/qlink/SendMsg:writeToParcel	(Landroid/os/Parcel;I)V
+    //   29: aload_0
+    //   30: getfield 15	ial:a	Landroid/os/IBinder;
+    //   33: iconst_1
+    //   34: aload_2
+    //   35: aload_3
+    //   36: iconst_0
+    //   37: invokeinterface 46 5 0
+    //   42: pop
+    //   43: aload_3
+    //   44: invokevirtual 49	android/os/Parcel:readException	()V
+    //   47: aload_3
+    //   48: invokevirtual 52	android/os/Parcel:recycle	()V
+    //   51: aload_2
+    //   52: invokevirtual 52	android/os/Parcel:recycle	()V
+    //   55: return
+    //   56: aload_2
+    //   57: iconst_0
+    //   58: invokevirtual 34	android/os/Parcel:writeInt	(I)V
+    //   61: goto -32 -> 29
+    //   64: astore_1
+    //   65: aload_3
+    //   66: invokevirtual 52	android/os/Parcel:recycle	()V
+    //   69: aload_2
+    //   70: invokevirtual 52	android/os/Parcel:recycle	()V
+    //   73: aload_1
+    //   74: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	75	0	this	ial
+    //   0	75	1	paramSendMsg	cooperation.qlink.SendMsg
+    //   3	67	2	localParcel1	android.os.Parcel
+    //   7	59	3	localParcel2	android.os.Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   8	14	64	finally
+    //   18	29	64	finally
+    //   29	47	64	finally
+    //   56	61	64	finally
   }
   
-  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
+  public IBinder asBinder()
   {
-    boolean bool = true;
-    if (paramKeyEvent.getKeyCode() == 4)
-    {
-      if (getKeyDispatcherState() == null) {
-        bool = super.dispatchKeyEvent(paramKeyEvent);
-      }
-      KeyEvent.DispatcherState localDispatcherState;
-      do
-      {
-        return bool;
-        if ((paramKeyEvent.getAction() != 0) || (paramKeyEvent.getRepeatCount() != 0)) {
-          break;
-        }
-        localDispatcherState = getKeyDispatcherState();
-      } while (localDispatcherState == null);
-      localDispatcherState.startTracking(paramKeyEvent, this);
-      return true;
-      if (paramKeyEvent.getAction() == 1)
-      {
-        localDispatcherState = getKeyDispatcherState();
-        if ((localDispatcherState != null) && (localDispatcherState.isTracking(paramKeyEvent)) && (!paramKeyEvent.isCanceled()))
-        {
-          this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
-          return true;
-        }
-      }
-      return super.dispatchKeyEvent(paramKeyEvent);
-    }
-    return super.dispatchKeyEvent(paramKeyEvent);
-  }
-  
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    int k = 0;
-    int i = 0;
-    if ((BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow) != null) && (BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).onTouch(this, paramMotionEvent))) {
-      return true;
-    }
-    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    paramMotionEvent = a(BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow));
-    if ((this.jdField_a_of_type_AndroidViewView == null) && (paramMotionEvent == null)) {}
-    while (this.jdField_a_of_type_AndroidViewView == paramMotionEvent) {
-      return bool;
-    }
-    this.jdField_a_of_type_AndroidViewView = paramMotionEvent;
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      this.jdField_a_of_type_AndroidViewView.getDrawingRect(BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow));
-      a(this.jdField_a_of_type_AndroidViewView, BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow), BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow));
-      if (BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).left != 0) {
-        break label410;
-      }
-    }
-    label410:
-    for (int m = 1;; m = 0)
-    {
-      int j;
-      if (BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).right == BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).getWidth()) {
-        j = BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).getWidth();
-      }
-      for (int n = 1;; n = 0)
-      {
-        if ((m == 0) || (n == 0))
-        {
-          this.jdField_a_of_type_AndroidViewView.getDrawingRect(BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow));
-          a(this.jdField_a_of_type_AndroidViewView, BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow), BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow));
-          if (m == 0) {
-            i = BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).left;
-          }
-          k = i;
-          if (n == 0)
-          {
-            j = BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).right;
-            k = i;
-          }
-        }
-        for (i = j;; i = j)
-        {
-          BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(k, i);
-          BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(k - BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).getLeft(), i - BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).getLeft());
-          BubblePopupWindow.c(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(k - BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).getLeft(), i - BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).getLeft());
-          for (;;)
-          {
-            BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).invalidate();
-            break;
-            BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(0, 0);
-            BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(0, 0);
-            BubblePopupWindow.c(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(0, 0);
-          }
-        }
-        j = 0;
-      }
-    }
-  }
-  
-  @TargetApi(8)
-  protected void onConfigurationChanged(Configuration paramConfiguration)
-  {
-    super.onConfigurationChanged(paramConfiguration);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
-  }
-  
-  protected int[] onCreateDrawableState(int paramInt)
-  {
-    if (BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow))
-    {
-      int[] arrayOfInt = super.onCreateDrawableState(paramInt + 1);
-      View.mergeDrawableStates(arrayOfInt, BubblePopupWindow.a());
-      return arrayOfInt;
-    }
-    return super.onCreateDrawableState(paramInt);
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
-  {
-    int i = (int)paramMotionEvent.getX();
-    int j = (int)paramMotionEvent.getY();
-    if ((paramMotionEvent.getAction() == 0) && ((i < 0) || (i >= getWidth()) || (j < 0) || (j >= getHeight())))
-    {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
-      return true;
-    }
-    if (paramMotionEvent.getAction() == 4)
-    {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
-      return true;
-    }
-    return super.onTouchEvent(paramMotionEvent);
-  }
-  
-  public void sendAccessibilityEvent(int paramInt)
-  {
-    if (BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow) != null)
-    {
-      BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).sendAccessibilityEvent(paramInt);
-      return;
-    }
-    super.sendAccessibilityEvent(paramInt);
+    return this.a;
   }
 }
 

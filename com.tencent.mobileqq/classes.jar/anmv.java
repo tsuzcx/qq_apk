@@ -1,22 +1,20 @@
-import dov.com.qq.im.capture.paster.PasterDataManager;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
-import java.util.Collections;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8.1.1;
 
 public class anmv
-  implements Runnable
+  extends annk
 {
-  public anmv(PasterDataManager paramPasterDataManager) {}
+  public anmv(ArkAiDictUpdateMgr.8 param8) {}
   
-  public void run()
+  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte)
   {
-    if (!this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiManager$POIPostersRequestCallback.a(1, Collections.EMPTY_LIST);
-    }
+    ThreadManager.post(new ArkAiDictUpdateMgr.8.1.1(this, paramArrayOfByte, paramBoolean), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmv
  * JD-Core Version:    0.7.0.1
  */

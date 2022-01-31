@@ -1,27 +1,12 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class abtk
-  extends Handler
+final class abtk
+  implements Comparator<MessageRecord>
 {
-  public abtk(ContactSyncManager paramContactSyncManager, Looper paramLooper)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      ContactSyncManager.a(this.a);
-      return;
-    }
-    ContactSyncManager.b(this.a);
+    return (int)(paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq);
   }
 }
 

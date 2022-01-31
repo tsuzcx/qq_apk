@@ -1,30 +1,13 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.now.enter.NowEnterManager;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class agah
-  implements Runnable
+  extends aeqi
 {
-  public agah(NowEnterManager paramNowEnterManager, String paramString1, String paramString2) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NowEnterManager", 2, "start preload image~");
-    }
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager.a(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager.a, this.jdField_a_of_type_JavaLangString);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      URLDrawable.getDrawable(this.b, localURLDrawableOptions).downloadImediatly();
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("NowEnterManager", 1, localException, new Object[0]);
-    }
-  }
+  public agah(agad paramagad) {}
 }
 
 

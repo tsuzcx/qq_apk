@@ -1,30 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
 
-public class wwa
-  implements View.OnClickListener
+class wwa
+  extends ulw
 {
-  public wwa(CameraPreviewActivity paramCameraPreviewActivity) {}
+  wwa(wvq paramwvq) {}
   
-  public void onClick(View paramView)
+  public void a(StoryPushMsg paramStoryPushMsg)
   {
-    if (CameraPreviewActivity.a(this.a, (String)CameraPreviewActivity.a(this.a).get(0))) {
+    if ((wvq.a(this.a) == null) || (wvq.a(this.a).a == null))
+    {
+      wxe.e("NewMyStorySegment", "onPushMessage MyStory feed is null!");
       return;
     }
-    if (this.a.b) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8004D96", "0X8004D96", 0, 0, "", "", "", "");
+    String str = wvq.a(this.a).a.a;
+    if (!TextUtils.equals(str, paramStoryPushMsg.d))
+    {
+      wxe.a("NewMyStorySegment", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, str);
+      return;
     }
-    PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 2, true);
-    paramView.setClickable(false);
+    switch (paramStoryPushMsg.a)
+    {
+    case 16: 
+    case 17: 
+    default: 
+      return;
+    }
+    this.a.a(new wsz[] { new wsu(wsc.a(str)), (wsz)this.a.b.a(), new wst(new wwb(this, str)) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wwa
  * JD-Core Version:    0.7.0.1
  */

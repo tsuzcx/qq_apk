@@ -1,22 +1,88 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.troop.utils.VideoAnimationUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.maxvideo.mediadevice.AVCodec;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
+import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import com.tencent.mobileqq.widget.CircleProgress;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import com.tencent.widget.HorizontalListView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class ajri
-  extends DownloadListener
+public class ajri
+  implements Animator.AnimatorListener
 {
-  public ajri(WeakReference paramWeakReference, File paramFile, FrameSprite.OnFrameEndListener paramOnFrameEndListener) {}
+  public ajri(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoAnimationUtils", 2, "onDone:" + paramDownloadTask.a);
+    if (!this.a.r)
+    {
+      if (ajpx.a == 2) {
+        this.a.jdField_a_of_type_Azho.e();
+      }
+      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      if (NewFlowCameraActivity.i(this.a))
+      {
+        AVCodec.get().retake();
+        wxe.c("PTV.NewFlowCameraActivity", "AVCodec.get().retake() by mbRetake flag");
+        NewFlowCameraActivity.i(this.a, false);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_Ajty.x();
+      if (NewFlowCameraActivity.j(this.a))
+      {
+        if (ajpx.a != 1) {
+          break label235;
+        }
+        NewFlowCameraActivity.a(this.a, true);
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_Long = System.currentTimeMillis();
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_Double = 0.0D;
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.f();
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.reset();
+        this.a.H();
+        if (QLog.isColorLevel()) {
+          QLog.d("PTV.NewFlowCameraActivity", 2, "start recording start time=" + this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_Long);
+        }
+        this.a.r = true;
+        if (this.a.f) {
+          this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(4);
+        }
+        return;
+        label235:
+        this.a.jdField_a_of_type_Azho.c(true);
+      }
     }
-    VideoAnimationUtils.a(this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener);
+    if (this.a.f) {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    }
+    paramAnimator = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    int i = aepi.a(59.0F, this.a.getResources());
+    paramAnimator.width = i;
+    paramAnimator.height = i;
+    paramAnimator.addRule(13);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramAnimator);
+    paramAnimator = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.getLayoutParams();
+    i = aepi.a(84.0F, this.a.getResources());
+    paramAnimator.width = i;
+    paramAnimator.height = i;
+    paramAnimator.addRule(13);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setLayoutParams(paramAnimator);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.r = false;
   }
 }
 

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0431" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
-    <com.tencent.mobileqq.widget.ClearableEditText android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0589" android:textColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0c0587" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0432" android:background="@drawable/skin_setting_strip_bg_unpressed" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0280" android:hint="@string/APKTOOL_DUPLICATE_string_0x7f0b1b78" android:drawablePadding="6.0dip" android:contentDescription="搜索栏、QQ号、手机号、群、公众号" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0294" />
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0280" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040029" />
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="10.0dip" />
-</LinearLayout>

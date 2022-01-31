@@ -1,31 +1,34 @@
 package com.tencent.mobileqq.richstatus;
 
+import java.io.Serializable;
+
 public class TipsInfo
+  implements Serializable
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  
-  public TipsInfo()
-  {
-    this.jdField_b_of_type_Int = -1;
-  }
+  public static final int TYPE_JUMP_URL = 2;
+  public static final int TYPE_JUMP_URL_WITHOUT_TIPS = 3;
+  public static final int TYPE_PAYMENT = 1;
+  public int authAppid;
+  public String errorDesc;
+  public String leftBtnWording;
+  public int ret;
+  public String rightBtnWording;
+  public String titleWording;
+  public int type = -1;
+  public String url;
+  public boolean valid;
+  public int vipMonth;
+  public String vipType;
+  public String wording;
   
   public String toString()
   {
-    return "TipsInfo{valid=" + this.jdField_a_of_type_Boolean + ", ret=" + this.jdField_a_of_type_Int + ", type=" + this.jdField_b_of_type_Int + ", titleWording='" + this.jdField_a_of_type_JavaLangString + '\'' + ", wording='" + this.jdField_b_of_type_JavaLangString + '\'' + ", rightBtnWording='" + this.jdField_c_of_type_JavaLangString + '\'' + ", leftBtnWording='" + this.d + '\'' + ", vipType='" + this.e + '\'' + ", vipMonth=" + this.jdField_c_of_type_Int + ", url='" + this.f + '\'' + '}';
+    return "TipsInfo{valid=" + this.valid + ", ret=" + this.ret + ", type=" + this.type + ", titleWording='" + this.titleWording + '\'' + ", wording='" + this.wording + '\'' + ", rightBtnWording='" + this.rightBtnWording + '\'' + ", leftBtnWording='" + this.leftBtnWording + '\'' + ", vipType='" + this.vipType + '\'' + ", vipMonth=" + this.vipMonth + ", url='" + this.url + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.TipsInfo
  * JD-Core Version:    0.7.0.1
  */

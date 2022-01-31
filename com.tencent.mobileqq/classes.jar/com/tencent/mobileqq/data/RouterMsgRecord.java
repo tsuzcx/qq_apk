@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.data;
 
+import awge;
+import awhp;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="time,msgid,uSessionID")
@@ -26,7 +27,7 @@ public class RouterMsgRecord
   public static final int status_transfer_pause = 5;
   public static final int status_transfer_suc = 3;
   public static final int status_transfering = 2;
-  @notColumn
+  @awhp
   public long entityID;
   public long fileSize;
   public String filename;
@@ -67,7 +68,7 @@ public class RouterMsgRecord
     return null;
   }
   
-  protected Class getClassForTable()
+  public Class<? extends awge> getClassForTable()
   {
     return RouterMsgRecord.class;
   }
@@ -77,7 +78,7 @@ public class RouterMsgRecord
     return this.sTableName;
   }
   
-  protected void postRead() {}
+  public void postRead() {}
   
   public void setTableName(String paramString)
   {
@@ -87,7 +88,7 @@ public class RouterMsgRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.RouterMsgRecord
  * JD-Core Version:    0.7.0.1
  */

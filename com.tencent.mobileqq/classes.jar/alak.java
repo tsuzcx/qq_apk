@@ -1,25 +1,43 @@
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.AuthorityLoginView;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 class alak
-  implements Runnable
+  implements View.OnClickListener
 {
-  alak(alae paramalae) {}
+  alak(alaj paramalaj) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AuthorityActivity", 2, "--> handler message UPDATE_DROP_DOWN_VIEWS");
+    if (alaj.a(this.a) == null) {
+      return;
     }
-    this.a.a.a.a.b();
-    this.a.a.runOnUiThread(new alal(this));
+    boolean bool = alaj.a(this.a).a();
+    if (bool)
+    {
+      alaj.a(this.a).setImageDrawable(alaj.a(this.a).getContext().getResources().getDrawable(2130838376));
+      paramView = this.a;
+      if (bool) {
+        break label124;
+      }
+    }
+    label124:
+    for (bool = true;; bool = false)
+    {
+      alaj.a(paramView, bool);
+      alaj.a(this.a).a(alaj.a(this.a));
+      return;
+      alaj.a(this.a).setImageDrawable(alaj.a(this.a).getContext().getResources().getDrawable(2130838375));
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alak
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,25 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 
-public final class oht
-  implements Animation.AnimationListener
+class oht
+  implements pgi
 {
-  public oht(View paramView) {}
+  oht(ohs paramohs) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt)
   {
-    this.a.setAnimation(null);
+    if ((ohs.a(this.a) != null) && (ohs.a(this.a).a != null))
+    {
+      if (ohs.a(this.a).a.mSocialFeedInfo == null) {
+        ohs.a(this.a).a.mSocialFeedInfo = new SocializeFeedsInfo();
+      }
+      ohs.a(this.a).a.mSocialFeedInfo.a.a = paramInt;
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oht
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/head" android:layout_width="24.0dip" android:layout_height="24.0dip" />
-    <TextView android:textSize="16.0dip" android:textColor="@android:color/white" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0730" android:paddingLeft="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:shadowColor="#66000000" android:shadowDx="2.0" android:shadowDy="0.0" android:shadowRadius="4.0" android:lineSpacingExtra="0.0dip" android:lineSpacingMultiplier="1.2" />
-</LinearLayout>

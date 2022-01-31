@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class sso2sns_0x3_blocklist$ReqBodyGetBlockList
-  extends MessageMicro
+  extends MessageMicro<ReqBodyGetBlockList>
 {
   public static final int FIXED32_LAST_GET_TIME_FIELD_NUMBER = 2;
   public static final int UINT32_GET_TYPE_FIELD_NUMBER = 5;
@@ -24,7 +24,7 @@ public final class sso2sns_0x3_blocklist$ReqBodyGetBlockList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.sso2sns.cmd0x3.sso2sns_0x3_blocklist.ReqBodyGetBlockList
  * JD-Core Version:    0.7.0.1
  */

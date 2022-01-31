@@ -1,20 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.asyncdb.cache.RecentUserCache;
 
 public class amnz
-  implements DialogInterface.OnDismissListener
+  extends RecentUserCache
 {
-  public amnz(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public amnz(QQAppInterface paramQQAppInterface, amgv paramamgv)
   {
-    this.a.finish();
+    super(paramQQAppInterface, paramamgv);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amnz
  * JD-Core Version:    0.7.0.1
  */

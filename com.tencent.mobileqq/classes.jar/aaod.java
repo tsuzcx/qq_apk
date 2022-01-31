@@ -1,35 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.Context;
 
-class aaod
-  implements DialogInterface.OnClickListener
+final class aaod
 {
-  aaod(aanz paramaanz, QQCustomDialog paramQQCustomDialog) {}
+  public int a = -2147483648;
+  public int b = -2147483648;
+  public int c = -2147483648;
+  public int d = -2147483648;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aaod(Context paramContext, int paramInt1, int paramInt2)
   {
-    ArkAppCenter.a().post(new aaoe(this));
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
+    if ((paramInt1 <= 0) || (paramInt2 <= 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      label38:
-      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aanz.a, "ark_authority_api_location", this.jdField_a_of_type_Aanz.c, 1);
+      aase.d("GdtBannerViewWithLetterStyle", "constructor");
       return;
     }
-    catch (Exception paramDialogInterface)
-    {
-      break label38;
-    }
+    this.a = Double.valueOf(0.02892561983471075D * paramInt1).intValue();
+    this.b = Double.valueOf(0.02666666666666667D * paramInt2).intValue();
+    this.c = Double.valueOf(0.06666666666666667D * paramInt2).intValue();
+    this.d = Double.valueOf(0.16D * paramInt2).intValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaod
  * JD-Core Version:    0.7.0.1
  */

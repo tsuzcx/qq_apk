@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.ptt.LSRecordPanel;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.12.1;
+import mqq.os.MqqHandler;
 
 public class agtb
-  implements Runnable
+  extends ameq
 {
-  public agtb(LSRecordPanel paramLSRecordPanel) {}
+  agtb(agsy paramagsy) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    LSRecordPanel.b(this.a, false);
-    LSRecordPanel.a(this.a, "亲们，QQ没有使用麦克风权限呢");
-    LSRecordPanel.b(this.a, false);
+    paramString = this.a;
+    if ((paramBoolean1) && (paramBoolean2)) {}
+    for (paramBoolean1 = true;; paramBoolean1 = false)
+    {
+      paramString.Z = paramBoolean1;
+      agsy.c(this.a).post(new NearbyChatPie.12.1(this));
+      return;
+    }
   }
 }
 

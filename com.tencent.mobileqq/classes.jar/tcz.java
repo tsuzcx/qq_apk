@@ -1,51 +1,27 @@
-import android.app.ProgressDialog;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.log.ReportLog;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.manager.ServerConfigManager.ConfigType;
-import mqq.manager.TicketManager;
+import NS_KING_INTERFACE.stPostCommentReplyRsp;
+import NS_KING_SOCIALIZE_META.stMetaReply;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class tcz
-  implements View.OnClickListener
+class tcz
+  implements tgt
 {
-  public tcz(NotificationActivity paramNotificationActivity) {}
+  tcz(tcu paramtcu, stMetaReply paramstMetaReply) {}
   
-  public void onClick(View paramView)
+  public void a(the paramthe)
   {
-    ProgressDialog localProgressDialog = DialogUtil.a(this.a, this.a.getResources().getDrawable(2130845469), 2131435052);
-    localProgressDialog.setOnDismissListener(new tda(this));
-    ReportLog.a(this.a.app.getAccount());
-    this.a.app.a(ServerConfigManager.ConfigType.app, "log_upload");
-    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-    if (localObject != null)
+    if ((paramthe.jdField_a_of_type_JavaLangObject instanceof stPostCommentReplyRsp))
     {
-      paramView = (TicketManager)((AppRuntime)localObject).getManager(2);
-      localObject = ((AppRuntime)localObject).getAccount();
-      if (paramView == null) {
-        break label161;
-      }
-    }
-    label161:
-    for (paramView = paramView.getSkey((String)localObject);; paramView = "")
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("qqBaseActivity", 2, new Object[] { " NotificationActivity crash uin=", localObject, ",skey=", paramView });
-      }
-      ReportLog.a(this.a.app.getHttpCommunicatort(), this.a.app.getApp(), localProgressDialog, (String)localObject, paramView);
+      stPostCommentReplyRsp localstPostCommentReplyRsp = (stPostCommentReplyRsp)paramthe.jdField_a_of_type_JavaLangObject;
+      paramthe = this.jdField_a_of_type_Tcu.a(new Object[] { Integer.valueOf(4), Integer.valueOf(paramthe.b), paramthe.jdField_a_of_type_JavaLangString, localstPostCommentReplyRsp, this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaReply, this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaReply.id, Integer.valueOf(this.jdField_a_of_type_Tcu.hashCode()) });
+      umc.a().dispatch(paramthe);
       return;
     }
+    tlo.d(tcu.a(), "添加回复失败new！");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tcz
  * JD-Core Version:    0.7.0.1
  */

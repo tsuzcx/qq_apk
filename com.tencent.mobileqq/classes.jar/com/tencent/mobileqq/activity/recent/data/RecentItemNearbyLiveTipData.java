@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.activity.recent.data;
 
+import abta;
+import alof;
 import android.content.Context;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ConversationFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.data.MessageForNearbyLiveTip;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -14,11 +15,12 @@ import com.tencent.qphone.base.util.QLog;
 public class RecentItemNearbyLiveTipData
   extends RecentMsgBoxItem
 {
-  public MessageForNearbyLiveTip a;
+  public MessageForNearbyLiveTip nearbyLiveTipMsg;
   
   public RecentItemNearbyLiveTipData(MessageRecord paramMessageRecord)
   {
     super(paramMessageRecord);
+    this.mMenuFlag |= 0x200000;
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -27,9 +29,9 @@ public class RecentItemNearbyLiveTipData
       return;
     }
     Object localObject = paramQQAppInterface.a();
-    ConversationFacade localConversationFacade = paramQQAppInterface.a();
+    abta localabta = paramQQAppInterface.a();
     if (localObject != null) {}
-    for (localObject = ((QQMessageFacade)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop);; localObject = null)
+    for (localObject = ((QQMessageFacade)localObject).a(this.mData.senderuin, this.mData.istroop);; localObject = null)
     {
       MsgSummary localMsgSummary = a();
       if (localObject == null)
@@ -40,9 +42,9 @@ public class RecentItemNearbyLiveTipData
         QLog.i("Q.nearby.tag_nearby_live_tip", 2, "RecentItemNearbyLiveTipData, msg = null");
         return;
       }
-      this.jdField_a_of_type_Long = ((QQMessageFacade.Message)localObject).time;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip = ((MessageForNearbyLiveTip)paramQQAppInterface.a().a(((QQMessageFacade.Message)localObject).senderuin, ((QQMessageFacade.Message)localObject).istroop, ((QQMessageFacade.Message)localObject).uniseq));
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip == null)
+      this.mDisplayTime = ((QQMessageFacade.Message)localObject).time;
+      this.nearbyLiveTipMsg = ((MessageForNearbyLiveTip)paramQQAppInterface.a().a(((QQMessageFacade.Message)localObject).senderuin, ((QQMessageFacade.Message)localObject).istroop, ((QQMessageFacade.Message)localObject).uniseq));
+      if (this.nearbyLiveTipMsg == null)
       {
         if (!QLog.isColorLevel()) {
           break;
@@ -50,47 +52,68 @@ public class RecentItemNearbyLiveTipData
         QLog.i("Q.nearby.tag_nearby_live_tip", 2, "RecentItemNearbyLiveTipData, nearbyLiveTipMsg = null");
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.parse();
-      this.b = this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.nickName;
-      localMsgSummary.b = this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.msg;
-      if (localConversationFacade != null)
+      this.nearbyLiveTipMsg.parse();
+      this.mTitleName = this.nearbyLiveTipMsg.nickName;
+      localMsgSummary.strContent = this.nearbyLiveTipMsg.msg;
+      if (localabta != null)
       {
-        this.jdField_c_of_type_Int = localConversationFacade.a(((QQMessageFacade.Message)localObject).frienduin, ((QQMessageFacade.Message)localObject).istroop);
+        this.mUnreadNum = localabta.a(((QQMessageFacade.Message)localObject).frienduin, ((QQMessageFacade.Message)localObject).istroop);
+        if (c().equals("1822701914")) {
+          this.mUnreadFlag = 3;
+        }
         a(paramQQAppInterface, paramContext, localMsgSummary);
-        if (!AppSetting.b) {
+        if (!AppSetting.c) {
           break;
         }
         paramQQAppInterface = new StringBuilder(24);
-        paramQQAppInterface.append(this.b);
-        if (this.jdField_c_of_type_Int != 0) {
-          break label288;
+        paramQQAppInterface.append(this.mTitleName);
+        if (this.mUnreadNum != 0) {
+          break label305;
         }
       }
       for (;;)
       {
-        if (this.jdField_d_of_type_JavaLangCharSequence != null) {
-          paramQQAppInterface.append(this.jdField_d_of_type_JavaLangCharSequence + ",");
+        if (this.mMsgExtroInfo != null) {
+          paramQQAppInterface.append(this.mMsgExtroInfo + ",");
         }
-        paramQQAppInterface.append(this.jdField_c_of_type_JavaLangCharSequence).append(' ').append(this.jdField_c_of_type_JavaLangString);
-        this.jdField_d_of_type_JavaLangString = paramQQAppInterface.toString();
+        paramQQAppInterface.append(this.mLastMsg).append(' ').append(this.mShowTime);
+        this.mContentDesc = paramQQAppInterface.toString();
         return;
-        this.jdField_c_of_type_Int = 0;
+        this.mUnreadNum = 0;
         break;
-        label288:
-        if (this.jdField_c_of_type_Int == 1) {
+        label305:
+        if (this.mUnreadNum == 1) {
           paramQQAppInterface.append("有一条未读");
-        } else if (this.jdField_c_of_type_Int == 2) {
+        } else if (this.mUnreadNum == 2) {
           paramQQAppInterface.append("有两条未读");
-        } else if (this.jdField_c_of_type_Int > 0) {
-          paramQQAppInterface.append("有").append(this.jdField_c_of_type_Int).append("条未读");
+        } else if (this.mUnreadNum > 0) {
+          paramQQAppInterface.append("有").append(this.mUnreadNum).append("条未读");
         }
       }
     }
   }
+  
+  public String c()
+  {
+    String str2 = this.mData.senderuin;
+    try
+    {
+      long l1 = Long.valueOf(str2).longValue();
+      String str1 = str2;
+      if (l1 > alof.l)
+      {
+        long l2 = alof.l;
+        str1 = l1 - l2 + "";
+      }
+      return str1;
+    }
+    catch (NumberFormatException localNumberFormatException) {}
+    return str2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData
  * JD-Core Version:    0.7.0.1
  */

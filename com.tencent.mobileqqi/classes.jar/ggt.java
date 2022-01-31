@@ -1,29 +1,38 @@
-import android.content.Context;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
-import com.tencent.mobileqq.maproam.widget.RoamSearchDialog.OnRoamResultObserver;
-import com.tencent.widget.XListView;
+import PersonalState.HotRishState;
+import android.os.Handler;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.StatusObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ggt
-  implements Runnable
+  extends StatusObserver
 {
-  public ggt(RoamSearchDialog paramRoamSearchDialog, int paramInt, String paramString) {}
+  public ggt(EditActivity paramEditActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, ArrayList paramArrayList)
   {
-    ((InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_AndroidContentContext.getSystemService("input_method")).hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
-    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-    if (this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog$OnRoamResultObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog$OnRoamResultObserver.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("get_hot_rich_status", 2, "EditActivity.mHotRichStatusObserver.onGetHotStatus, isSuccess:" + paramBoolean);
+    }
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0) && (!EditActivity.c(this.a)))
+    {
+      EditActivity.a(this.a).removeMessages(1);
+      ArrayList localArrayList = new ArrayList();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext()) {
+        localArrayList.add(Integer.valueOf(((HotRishState)paramArrayList.next()).iActId));
+      }
+      EditActivity.a(this.a).clear();
+      EditActivity.a(this.a).addAll(localArrayList);
+      EditActivity.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     ggt
  * JD-Core Version:    0.7.0.1
  */

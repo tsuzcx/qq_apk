@@ -1,125 +1,32 @@
-import android.annotation.TargetApi;
-import android.media.AudioManager;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
-import com.tencent.sharp.jni.TraeAudioManager.DeviceConfigManager;
+import android.support.v4.util.LruCache;
+import common.qzone.component.cache.common.ExtendLruCache;
 
 public class hzc
-  extends hzg
+  extends LruCache
 {
-  public hzc(TraeAudioManager paramTraeAudioManager)
+  public hzc(ExtendLruCache paramExtendLruCache, int paramInt)
   {
-    super(paramTraeAudioManager);
+    super(paramInt);
   }
   
-  public String a()
+  protected Object create(Object paramObject)
   {
-    return "DEVICE_BLUETOOTHHEADSET";
+    return this.a.c(paramObject);
   }
   
-  public void a()
+  protected void entryRemoved(boolean paramBoolean, Object paramObject1, Object paramObject2, Object paramObject3)
   {
-    try
-    {
-      Thread.sleep(5000L);
-      label6:
-      int j;
-      int i;
-      if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a().indexOf("Gear") != -1)
-      {
-        j = 1;
-        if (j == 0) {
-          c();
-        }
-        i = 0;
-      }
-      for (;;)
-      {
-        int k;
-        StringBuilder localStringBuilder;
-        if (this.jdField_a_of_type_Boolean == true)
-        {
-          k = i + 1;
-          if ((i < 10) && (j == 0)) {
-            if (QLog.isColorLevel())
-            {
-              localStringBuilder = new StringBuilder().append("bluetoothHeadsetSwitchThread i:").append(k).append(" sco:");
-              if (!this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.isBluetoothScoOn()) {
-                break label222;
-              }
-            }
-          }
-        }
-        label222:
-        for (String str = "Y";; str = "N")
-        {
-          QLog.w("TRAE", 2, str + " :" + this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a());
-          if (!this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.isBluetoothScoOn()) {
-            break label229;
-          }
-          e();
-          if (!this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.isBluetoothScoOn())
-          {
-            if ((QLog.isColorLevel()) && (j == 0)) {
-              QLog.e("TRAE", 2, "bluetoothHeadsetSwitchThread sco fail,remove btheadset");
-            }
-            this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a(a(), false);
-            a(10);
-            this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.d();
-          }
-          return;
-          j = 0;
-          break;
-        }
-        try
-        {
-          label229:
-          Thread.sleep(1000L);
-          i = k;
-        }
-        catch (InterruptedException localInterruptedException1)
-        {
-          i = k;
-        }
-      }
-    }
-    catch (InterruptedException localInterruptedException2)
-    {
-      break label6;
-    }
+    this.a.a(paramBoolean, paramObject1, paramObject2, paramObject3);
   }
   
-  @TargetApi(8)
-  public void b()
+  protected int sizeOf(Object paramObject1, Object paramObject2)
   {
-    if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager == null) {
-      return;
-    }
-    d();
-  }
-  
-  @TargetApi(8)
-  void c()
-  {
-    this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.setBluetoothScoOn(true);
-    if (Build.VERSION.SDK_INT > 8) {
-      this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.startBluetoothSco();
-    }
-  }
-  
-  @TargetApi(8)
-  void d()
-  {
-    if (Build.VERSION.SDK_INT > 8) {
-      this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.stopBluetoothSco();
-    }
-    this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.setBluetoothScoOn(false);
+    return this.a.a(paramObject1, paramObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hzc
  * JD-Core Version:    0.7.0.1
  */

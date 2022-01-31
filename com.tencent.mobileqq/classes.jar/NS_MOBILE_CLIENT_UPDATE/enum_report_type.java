@@ -5,6 +5,7 @@ import java.io.Serializable;
 public final class enum_report_type
   implements Serializable
 {
+  public static final int _ENUM_KUOLIE_LIVESHOW = 37;
   public static final int _ENUM_NEW_LAYER_VIDEO_REPORT = 36;
   public static final int _ENUM_REDBAG_STAT = 35;
   public static final int _ENUM_REPORT_STATIS = 33;
@@ -18,7 +19,7 @@ public final class enum_report_type
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_CLIENT_UPDATE.enum_report_type
  * JD-Core Version:    0.7.0.1
  */

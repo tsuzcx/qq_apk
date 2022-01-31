@@ -1,28 +1,33 @@
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.AutomatorObserver;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class snx
-  extends AutomatorObserver
+class snx
+  implements DialogInterface.OnCancelListener
 {
-  public snx(ForwardRecentActivity paramForwardRecentActivity) {}
+  snx(snu paramsnu, String paramString) {}
   
-  protected void a(int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    switch (paramInt)
+    paramDialogInterface = new JSONObject();
+    try
     {
-    }
-    for (;;)
-    {
-      ForwardRecentActivity.c(this.a);
+      paramDialogInterface.put("index", snu.a(this.jdField_a_of_type_Snu));
+      paramDialogInterface.put("type", 1);
+      if (snu.a(this.jdField_a_of_type_Snu) != null) {
+        ((BridgeModule)snu.a(this.jdField_a_of_type_Snu).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
+      }
       return;
-      this.a.a.f();
     }
+    catch (JSONException paramDialogInterface) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     snx
  * JD-Core Version:    0.7.0.1
  */

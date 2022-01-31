@@ -1,36 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.widget.MultiImageTextView;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class sea
-  implements Runnable
+public class sea
+  implements bhxs
 {
-  sea(sdz paramsdz, String paramString) {}
+  public sea(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
   
-  public void run()
+  public void onScrollStateChanged(int paramInt)
   {
-    FormSimpleItem localFormSimpleItem;
-    if (this.jdField_a_of_type_Sdz.a.a != null)
-    {
-      localFormSimpleItem = (FormSimpleItem)this.jdField_a_of_type_Sdz.a.a[6];
-      if ((localFormSimpleItem != null) && (!TextUtils.equals(localFormSimpleItem.a().getText(), this.jdField_a_of_type_JavaLangString)))
-      {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          break label78;
-        }
-        localFormSimpleItem.setRightText(this.jdField_a_of_type_Sdz.a.getString(2131430597));
-      }
+    if ((ReadInJoyDiandianHeaderController.b(this.a)) && (paramInt == 4097)) {
+      nrt.a(null, "", "0X8009BA4", "0X8009BA4", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin(), "", "", "", false);
     }
-    return;
-    label78:
-    localFormSimpleItem.setRightText(new QQText(this.jdField_a_of_type_JavaLangString, 3));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sea
  * JD-Core Version:    0.7.0.1
  */

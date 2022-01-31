@@ -19,6 +19,8 @@ public class BuglyStrategy
   private boolean m = true;
   private boolean n = false;
   private a o;
+  private int p = 31;
+  private boolean q = false;
   
   /* Error */
   public String getAppChannel()
@@ -27,17 +29,17 @@ public class BuglyStrategy
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 50	com/tencent/bugly/BuglyStrategy:b	Ljava/lang/String;
+    //   3: getfield 57	com/tencent/bugly/BuglyStrategy:b	Ljava/lang/String;
     //   6: ifnonnull +14 -> 20
-    //   9: invokestatic 55	com/tencent/bugly/crashreport/common/info/a:b	()Lcom/tencent/bugly/crashreport/common/info/a;
-    //   12: getfield 57	com/tencent/bugly/crashreport/common/info/a:n	Ljava/lang/String;
+    //   9: invokestatic 62	com/tencent/bugly/crashreport/common/info/a:b	()Lcom/tencent/bugly/crashreport/common/info/a;
+    //   12: getfield 64	com/tencent/bugly/crashreport/common/info/a:o	Ljava/lang/String;
     //   15: astore_1
     //   16: aload_0
     //   17: monitorexit
     //   18: aload_1
     //   19: areturn
     //   20: aload_0
-    //   21: getfield 50	com/tencent/bugly/BuglyStrategy:b	Ljava/lang/String;
+    //   21: getfield 57	com/tencent/bugly/BuglyStrategy:b	Ljava/lang/String;
     //   24: astore_1
     //   25: goto -9 -> 16
     //   28: astore_1
@@ -63,17 +65,17 @@ public class BuglyStrategy
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 60	com/tencent/bugly/BuglyStrategy:c	Ljava/lang/String;
+    //   3: getfield 67	com/tencent/bugly/BuglyStrategy:c	Ljava/lang/String;
     //   6: ifnonnull +14 -> 20
-    //   9: invokestatic 55	com/tencent/bugly/crashreport/common/info/a:b	()Lcom/tencent/bugly/crashreport/common/info/a;
-    //   12: getfield 61	com/tencent/bugly/crashreport/common/info/a:c	Ljava/lang/String;
+    //   9: invokestatic 62	com/tencent/bugly/crashreport/common/info/a:b	()Lcom/tencent/bugly/crashreport/common/info/a;
+    //   12: getfield 68	com/tencent/bugly/crashreport/common/info/a:c	Ljava/lang/String;
     //   15: astore_1
     //   16: aload_0
     //   17: monitorexit
     //   18: aload_1
     //   19: areturn
     //   20: aload_0
-    //   21: getfield 60	com/tencent/bugly/BuglyStrategy:c	Ljava/lang/String;
+    //   21: getfield 67	com/tencent/bugly/BuglyStrategy:c	Ljava/lang/String;
     //   24: astore_1
     //   25: goto -9 -> 16
     //   28: astore_1
@@ -113,17 +115,17 @@ public class BuglyStrategy
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 68	com/tencent/bugly/BuglyStrategy:a	Ljava/lang/String;
+    //   3: getfield 75	com/tencent/bugly/BuglyStrategy:a	Ljava/lang/String;
     //   6: ifnonnull +14 -> 20
-    //   9: invokestatic 55	com/tencent/bugly/crashreport/common/info/a:b	()Lcom/tencent/bugly/crashreport/common/info/a;
-    //   12: getfield 70	com/tencent/bugly/crashreport/common/info/a:l	Ljava/lang/String;
+    //   9: invokestatic 62	com/tencent/bugly/crashreport/common/info/a:b	()Lcom/tencent/bugly/crashreport/common/info/a;
+    //   12: getfield 77	com/tencent/bugly/crashreport/common/info/a:m	Ljava/lang/String;
     //   15: astore_1
     //   16: aload_0
     //   17: monitorexit
     //   18: aload_1
     //   19: areturn
     //   20: aload_0
-    //   21: getfield 68	com/tencent/bugly/BuglyStrategy:a	Ljava/lang/String;
+    //   21: getfield 75	com/tencent/bugly/BuglyStrategy:a	Ljava/lang/String;
     //   24: astore_1
     //   25: goto -9 -> 16
     //   28: astore_1
@@ -140,6 +142,34 @@ public class BuglyStrategy
     //   from	to	target	type
     //   2	16	28	finally
     //   20	25	28	finally
+  }
+  
+  public int getCallBackType()
+  {
+    try
+    {
+      int i1 = this.p;
+      return i1;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public boolean getCloseErrorCallback()
+  {
+    try
+    {
+      boolean bool = this.q;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public a getCrashHandleCallback$49db9608()
@@ -349,6 +379,34 @@ public class BuglyStrategy
     {
       this.k = paramBoolean;
       return this;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void setCallBackType(int paramInt)
+  {
+    try
+    {
+      this.p = paramInt;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void setCloseErrorCallback(boolean paramBoolean)
+  {
+    try
+    {
+      this.q = paramBoolean;
+      return;
     }
     finally
     {

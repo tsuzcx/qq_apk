@@ -1,13 +1,6 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-
-public final class anci
-  implements Runnable
+public abstract interface anci
 {
-  public void run()
-  {
-    RemoteHandleManager.a().a().m();
-  }
+  public abstract void a(ancj paramancj);
 }
 
 

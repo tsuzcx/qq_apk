@@ -1,46 +1,42 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLViewContext;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.ReadyResource;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceManagerFilter;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aias
-  implements Animation.AnimationListener
+  extends aqru
 {
-  public aias(DanceReadyFilter paramDanceReadyFilter) {}
+  private aias(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(int paramInt, long paramLong, String paramString)
   {
-    switch (DanceReadyFilter.a(this.a))
-    {
-    }
-    for (;;)
-    {
-      DanceReadyFilter.b(this.a);
-      if (DanceReadyFilter.a(this.a) == 0)
-      {
-        DanceReadyFilter.d(this.a).e();
-        DanceReadyFilter.d(this.a).a(DanceReadyFilter.b(this.a));
-      }
-      return;
-      this.a.a.a().a(DanceReadyFilter.a(this.a).a.e);
-      continue;
-      this.a.a.a().a(DanceReadyFilter.a(this.a).a.d);
-      continue;
-      this.a.a.a().a(DanceReadyFilter.a(this.a).a.c);
+    if ((bkjc.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
+  {
+    if ((bkjc.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatHistoryMediaBaseFragment", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
+    }
+    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);
+    if ((paramString1 != null) && (paramString1.nOpType == 6) && (bkjc.a(paramInt2)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aias
  * JD-Core Version:    0.7.0.1
  */

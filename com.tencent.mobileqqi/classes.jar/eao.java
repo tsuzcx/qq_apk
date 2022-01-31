@@ -1,22 +1,30 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
 
 public class eao
-  implements Runnable
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public eao(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public int a;
+  public long a;
+  public ViewGroup a;
+  public ImageView a;
+  public AnyScaleTypeImageView a;
+  public String a;
+  public TextView b;
+  public String b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
   
-  public void run()
-  {
-    if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
-      this.a.a.dismiss();
-    }
-    this.a.a = null;
-  }
+  public eao(RichStatItemBuilder paramRichStatItemBuilder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eao
  * JD-Core Version:    0.7.0.1
  */

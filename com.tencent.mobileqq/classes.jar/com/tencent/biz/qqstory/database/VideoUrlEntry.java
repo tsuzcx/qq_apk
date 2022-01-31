@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import com.tencent.mobileqq.persistence.Entity;
+import awge;
 
 public class VideoUrlEntry
-  extends Entity
+  extends awge
 {
   public String vid;
   public String videoUrl;
@@ -16,7 +16,7 @@ public class VideoUrlEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.VideoUrlEntry
  * JD-Core Version:    0.7.0.1
  */

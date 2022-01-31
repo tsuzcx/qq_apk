@@ -1,20 +1,13 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.view.View;
+import com.tencent.av.widget.stageview.StageEffectView;
 
-class myh
-  implements Runnable
+public abstract interface myh
 {
-  myh(mye parammye) {}
-  
-  public void run()
-  {
-    if (PublicAccountImageCollectionMainActivity.a(this.a.a) != null) {
-      PublicAccountImageCollectionMainActivity.a(this.a.a).a(PublicAccountImageCollectionMainActivity.d(this.a.a));
-    }
-  }
+  public abstract void a(StageEffectView paramStageEffectView, View paramView, myi parammyi);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     myh
  * JD-Core Version:    0.7.0.1
  */

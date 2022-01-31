@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
 
 public class fts
+  implements Runnable
 {
-  public String a;
-  public String b = null;
+  public fts(FMObserver paramFMObserver, Object paramObject) {}
   
-  public fts(EnterpriseQQManager paramEnterpriseQQManager)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = null;
+    FMObserver.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver, this.jdField_a_of_type_JavaLangObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fts
  * JD-Core Version:    0.7.0.1
  */

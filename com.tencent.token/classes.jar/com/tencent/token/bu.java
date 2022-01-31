@@ -1,21 +1,38 @@
 package com.tencent.token;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
 final class bu
-  implements Runnable
+  implements ThreadFactory
 {
-  bu(bq parambq, fs paramfs) {}
+  private static final AtomicInteger a = new AtomicInteger(1);
+  private final ThreadGroup b;
+  private final AtomicInteger c = new AtomicInteger(1);
+  private final String d;
   
-  public final void run()
+  bu(String paramString)
   {
-    bq.a(this.b).remove(this.a);
-    fs localfs = this.a;
-    localfs.d = null;
-    localfs.l = null;
-    localfs.c.clear();
-    localfs.c = null;
+    Object localObject = System.getSecurityManager();
+    if (localObject != null) {}
+    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
+    {
+      this.b = ((ThreadGroup)localObject);
+      this.d = (paramString + "-" + a.getAndIncrement() + "-thread-");
+      return;
+    }
+  }
+  
+  public final Thread newThread(Runnable paramRunnable)
+  {
+    paramRunnable = new Thread(this.b, paramRunnable, this.d + this.c.getAndIncrement(), 0L);
+    if (paramRunnable.isDaemon()) {
+      paramRunnable.setDaemon(false);
+    }
+    if (paramRunnable.getPriority() != 5) {
+      paramRunnable.setPriority(5);
+    }
+    return paramRunnable;
   }
 }
 

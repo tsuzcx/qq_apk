@@ -1,27 +1,42 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class thr
-  implements View.OnTouchListener
+class thr
+  implements Handler.Callback
 {
-  public thr(PublicAccountListActivity paramPublicAccountListActivity) {}
+  thr(thq paramthq) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (paramMotionEvent.getAction() == 1)
+    switch (paramMessage.what)
     {
-      this.a.c();
-      PublicAccountReportUtils.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573C", "0X800573C", 0, 0, "", "", "", "", false);
+    default: 
+    case 0: 
+    case 1: 
+      do
+      {
+        do
+        {
+          return true;
+          thq.a(this.a, false);
+          thq.a(this.a).removeMessages(0);
+        } while (thq.a(this.a) == null);
+        thq.a(this.a).a(true);
+        return true;
+        thq.a(this.a, false);
+        thq.a(this.a).removeMessages(1);
+      } while (thq.a(this.a) == null);
+      thq.a(this.a).a(false);
+      return true;
     }
+    thq.a(this.a, true);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     thr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,23 @@
-import android.view.View;
-import android.widget.ImageButton;
-import com.tencent.biz.qqstory.takevideo2.StoryLocalPublishPart;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class omm
-  implements ProviderContainerView.ContainerViewListener
+class omm
+  implements DialogInterface.OnClickListener
 {
-  public omm(StoryLocalPublishPart paramStoryLocalPublishPart) {}
+  omm(oml paramoml, String paramString, int paramInt) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StoryLocalPublishPart.a(this.a).setVisibility(8);
-  }
-  
-  public void y_()
-  {
-    StoryLocalPublishPart.a(this.a).setVisibility(0);
+    QQToast.a(this.jdField_a_of_type_Oml.jdField_a_of_type_Omg.a, 2, alud.a(2131713434), 0).a();
+    if (this.jdField_a_of_type_Oml.jdField_a_of_type_Olz != null) {
+      this.jdField_a_of_type_Oml.jdField_a_of_type_Olz.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     omm
  * JD-Core Version:    0.7.0.1
  */

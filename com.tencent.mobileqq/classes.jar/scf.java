@@ -1,93 +1,40 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ShieldListObserver;
-import com.tencent.mobileqq.managers.ShieldMsgManger;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Activity;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebAnimationUtils.3;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class scf
-  extends ShieldListObserver
+  implements Animation.AnimationListener
 {
-  public scf(ChatSettingActivity paramChatSettingActivity) {}
+  public scf(FastWebAnimationUtils.3 param3) {}
   
-  protected void a(boolean paramBoolean, List paramList)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (!ChatSettingActivity.c(this.a))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, mShieldByThis=" + ChatSettingActivity.c(this.a));
-      }
-      return;
-    }
-    ChatSettingActivity.c(this.a, false);
-    ChatSettingActivity.d(this.a);
-    paramList = this.a;
-    ChatSettingActivity localChatSettingActivity = this.a;
-    if (paramBoolean) {}
-    for (int i = 2131434508;; i = 2131434510)
-    {
-      QQToast.a(paramList, 2, localChatSettingActivity.getString(i), 0).b(this.a.getTitleBarHeight());
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, isSuccess=" + paramBoolean + ", mShieldByThis=" + ChatSettingActivity.c(this.a) + ", mShieldUin=" + ChatSettingActivity.d(this.a) + ", mIsShield=" + ChatSettingActivity.a(this.a));
-      }
-      if (!paramBoolean) {
-        break;
-      }
-      paramList = (ShieldMsgManger)this.a.app.getManager(15);
-      if ((paramList != null) && (!TextUtils.isEmpty(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.a(this.a, paramList.a(ChatSettingActivity.d(this.a)));
-      }
-      ChatSettingActivity.b(this.a);
-      if (ChatSettingActivity.a(this.a))
-      {
-        this.a.jdField_a_of_type_Boolean = false;
-        ChatSettingActivity.a(this.a);
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, mIsShield=" + ChatSettingActivity.a(this.a) + ", mIsFollowed=" + this.a.jdField_a_of_type_Boolean);
-      return;
-    }
+    QLog.d("FastWebAnimationUtils", 1, "setAnimation onAnimationEnd");
+    paramAnimation = (AlphaAnimation)AnimationUtils.loadAnimation(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 2130772182);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
   }
   
-  protected void b(boolean paramBoolean, List paramList)
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    if (!ChatSettingActivity.c(this.a)) {
-      return;
-    }
-    ChatSettingActivity.c(this.a, false);
-    ChatSettingActivity.d(this.a);
-    paramList = this.a;
-    ChatSettingActivity localChatSettingActivity = this.a;
-    if (paramBoolean) {}
-    for (int i = 2131434512;; i = 2131434511)
-    {
-      QQToast.a(paramList, 2, localChatSettingActivity.getString(i), 0).b(this.a.getTitleBarHeight());
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDeleteShieldList, isSuccess=" + paramBoolean);
-      }
-      if (!paramBoolean) {
-        break;
-      }
-      paramList = (ShieldMsgManger)this.a.app.getManager(15);
-      if ((paramList != null) && (!TextUtils.isEmpty(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.a(this.a, paramList.a(ChatSettingActivity.d(this.a)));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDeleteShieldList, mIsShield=" + ChatSettingActivity.a(this.a));
-      }
-      ChatSettingActivity.b(this.a);
-      return;
-    }
-    ChatSettingActivity.a(this.a, 2131434511, 1);
+    QLog.d("FastWebAnimationUtils", 1, "setAnimation onAnimationRepeat");
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    QLog.d("FastWebAnimationUtils", 1, "setAnimation onAnimationStart");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     scf
  * JD-Core Version:    0.7.0.1
  */

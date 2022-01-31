@@ -1,43 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.FileUploadController.FileUploadListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.NormalVideoDeliverController;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.LBSInfo;
 
-public class lzm
-  implements FileUploadController.FileUploadListener
+public final class lzm
+  implements Parcelable.Creator<LBSInfo>
 {
-  public lzm(NormalVideoDeliverController paramNormalVideoDeliverController) {}
-  
-  public void a() {}
-  
-  public void a(float paramFloat) {}
-  
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
+  public LBSInfo a(Parcel paramParcel)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      NormalVideoDeliverController.a(this.a, paramString1);
-      NormalVideoDeliverController.b(this.a, paramString2);
-      NormalVideoDeliverController.a(this.a, 4);
-      return;
-    case 1001: 
-      NormalVideoDeliverController.b(this.a, 10);
-      return;
-    case 1002: 
-      NormalVideoDeliverController.b(this.a, 9);
-      return;
-    case 1003: 
-      NormalVideoDeliverController.b(this.a, 11);
-      return;
-    }
-    NormalVideoDeliverController.b(this.a, 13);
-    NormalVideoDeliverController.c(this.a, 1002);
+    return new LBSInfo(paramParcel);
+  }
+  
+  public LBSInfo[] a(int paramInt)
+  {
+    return new LBSInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lzm
  * JD-Core Version:    0.7.0.1
  */

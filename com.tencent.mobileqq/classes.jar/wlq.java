@@ -1,30 +1,21 @@
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.widget.RedDotTextView;
-import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.widget.AbsListView;
 
-class wlq
-  implements Runnable
+public class wlq
+  implements bhtv
 {
-  wlq(wlp paramwlp, boolean paramBoolean) {}
+  public wlq(StoryMemoriesFragment paramStoryMemoriesFragment, xsk paramxsk) {}
   
-  public void run()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.jdField_a_of_type_Wlp.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.b == 0) || (this.jdField_a_of_type_Wlp.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.b == 2))
-    {
-      if ((!this.jdField_a_of_type_Wlp.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.a()) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Wlp.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.a.a(1).a(true);
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Wlp.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.a.a(1).a(false);
+    this.jdField_a_of_type_Xsk.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
   }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wlq
  * JD-Core Version:    0.7.0.1
  */

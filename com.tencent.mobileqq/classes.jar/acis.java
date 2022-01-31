@@ -1,24 +1,26 @@
-import com.tencent.mobileqq.extendfriend.ExtendFriendObserver;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.pb.extendfriend.ExtendFriendSquareInfo.RspBody;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.AppRuntime;
 
-public class acis
-  extends ExtendFriendObserver
+class acis
+  implements DialogInterface.OnClickListener
 {
-  public acis(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  acis(acir paramacir) {}
   
-  protected void a(boolean paramBoolean, ExtendFriendSquareInfo.RspBody paramRspBody)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
+    if (this.a.a.a() != null)
     {
-      ExtendFriendSquareFragment.a(this.a, paramBoolean, paramRspBody);
-      return;
+      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
+      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
+      this.a.a.a().startActivity(localIntent);
     }
-    catch (Exception paramRspBody)
-    {
-      QLog.e("ExtendFriendSquareFragment", 1, "onGetSquareStrangerList exception", paramRspBody);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

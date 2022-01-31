@@ -10,6 +10,7 @@ public final class IPCCmd
   public static final IPCCmd Empty;
   public static final IPCCmd GetDownloadProgress;
   public static final IPCCmd GetDownloadState;
+  public static final IPCCmd GetInstallState;
   public static final IPCCmd OperateDownloadTask;
   public static final IPCCmd QueryDownloadTask;
   public static final IPCCmd QueryLoginInfo;
@@ -24,6 +25,7 @@ public final class IPCCmd
   public static final int _Empty = 0;
   public static final int _GetDownloadProgress = 3;
   public static final int _GetDownloadState = 2;
+  public static final int _GetInstallState = 14;
   public static final int _OperateDownloadTask = 1;
   public static final int _QueryDownloadTask = 4;
   public static final int _QueryLoginInfo = 6;
@@ -43,7 +45,7 @@ public final class IPCCmd
     for (boolean bool = true;; bool = false)
     {
       a = bool;
-      __values = new IPCCmd[14];
+      __values = new IPCCmd[15];
       Empty = new IPCCmd(0, 0, "Empty");
       OperateDownloadTask = new IPCCmd(1, 1, "OperateDownloadTask");
       GetDownloadState = new IPCCmd(2, 2, "GetDownloadState");
@@ -58,6 +60,7 @@ public final class IPCCmd
       SyncSDKDownloadTask = new IPCCmd(11, 11, "SyncSDKDownloadTask");
       SyncSDKHandShake = new IPCCmd(12, 12, "SyncSDKHandShake");
       BatchSDKDownloadAction = new IPCCmd(13, 13, "BatchSDKDownloadAction");
+      GetInstallState = new IPCCmd(14, 14, "GetInstallState");
       return;
     }
   }
@@ -113,7 +116,7 @@ public final class IPCCmd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCCmd
  * JD-Core Version:    0.7.0.1
  */

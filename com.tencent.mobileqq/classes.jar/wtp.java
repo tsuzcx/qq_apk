@@ -1,23 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 class wtp
-  implements DialogInterface.OnClickListener
+  implements wsy
 {
-  wtp(wtl paramwtl) {}
+  wtp(wtd paramwtd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.setText("");
-    }
+    wxe.e("Q.qqstory.home.StoryListPresenter", "step %s error occur when requestAllDataFromNet error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wtp
  * JD-Core Version:    0.7.0.1
  */

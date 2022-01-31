@@ -1,21 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
 
-public class xpu
-  implements Runnable
+public final class xpu
+  implements Parcelable.Creator<TroopStoryItemInfo>
 {
-  public xpu(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void run()
+  public TroopStoryItemInfo a(Parcel paramParcel)
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), "录制出现异常，请重试", 1).a();
-    this.a.finish();
+    return new TroopStoryItemInfo(paramParcel);
+  }
+  
+  public TroopStoryItemInfo[] a(int paramInt)
+  {
+    return new TroopStoryItemInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xpu
  * JD-Core Version:    0.7.0.1
  */

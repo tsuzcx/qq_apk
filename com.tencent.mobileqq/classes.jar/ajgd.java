@@ -1,28 +1,24 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.utils.AssertUtils;
-import com.tencent.mobileqq.troop.homework.arithmetic.data.ArithResult;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.ArithResultView;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
-import org.json.JSONException;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajgd
+class ajgd
   implements View.OnClickListener
 {
-  public ajgd(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
+  ajgd(ajgb paramajgb, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
   
   public void onClick(View paramView)
   {
-    try
-    {
-      CheckArithHWResultFragment.a(this.a, CheckArithHWResultFragment.a(this.a).a(), CheckArithHWResultFragment.a(this.a).a());
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper click banner, jump");
     }
-    catch (JSONException paramView)
-    {
-      paramView.printStackTrace();
-      AssertUtils.a("QQ.Troop.homework.CheckArithHWResultFragment//onClick toJSON error:" + paramView, new Object[0]);
-    }
+    paramView = (QQAppInterface)ajgb.a(this.jdField_a_of_type_Ajgb).getAppRuntime();
+    ((UpgradeTIMManager)paramView.getManager(256)).a(ajgb.a(this.jdField_a_of_type_Ajgb), this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper.g);
+    azqs.b(paramView, "CliOper", "", "", "0X8008659", "0X8008659", 0, 0, "", "", "", "");
   }
 }
 

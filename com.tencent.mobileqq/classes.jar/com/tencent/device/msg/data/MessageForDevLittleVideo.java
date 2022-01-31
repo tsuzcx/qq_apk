@@ -1,10 +1,11 @@
 package com.tencent.device.msg.data;
 
+import alud;
+import amrf;
+import bdgc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.utils.MessagePkgUtils;
 import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.utils.ContactUtils;
 
 public class MessageForDevLittleVideo
   extends MessageForShortVideo
@@ -18,7 +19,7 @@ public class MessageForDevLittleVideo
   {
     try
     {
-      MessageForDevLittleVideo.DevLittleVideoMsgSerial localDevLittleVideoMsgSerial = (MessageForDevLittleVideo.DevLittleVideoMsgSerial)MessagePkgUtils.a(this.msgData);
+      MessageForDevLittleVideo.DevLittleVideoMsgSerial localDevLittleVideoMsgSerial = (MessageForDevLittleVideo.DevLittleVideoMsgSerial)amrf.a(this.msgData);
       if (localDevLittleVideoMsgSerial != null)
       {
         this.thumbFileKey = localDevLittleVideoMsgSerial.thumbFileKey;
@@ -68,9 +69,9 @@ public class MessageForDevLittleVideo
     {
       localObject = (QQAppInterface)localObject;
       if (isSendFromLocal()) {
-        return "[视频]";
+        return alud.a(2131706973);
       }
-      return ContactUtils.b((QQAppInterface)localObject, this.senderuin, true) + ": [视频]";
+      return bdgc.b((QQAppInterface)localObject, this.senderuin, true) + alud.a(2131706977);
     }
     return null;
   }
@@ -107,7 +108,7 @@ public class MessageForDevLittleVideo
     localDevLittleVideoMsgSerial.senderuin = this.senderuin;
     try
     {
-      this.msgData = MessagePkgUtils.a(localDevLittleVideoMsgSerial);
+      this.msgData = amrf.a(localDevLittleVideoMsgSerial);
       return;
     }
     catch (Exception localException)
@@ -118,7 +119,7 @@ public class MessageForDevLittleVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.device.msg.data.MessageForDevLittleVideo
  * JD-Core Version:    0.7.0.1
  */

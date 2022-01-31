@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.activity.StructMsgObserver;
-import com.tencent.mobileqq.activity.WebAccelerator;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import feedcloud.FeedCloudMeta.StTagInfo;
 
-public class tts
-  implements Runnable
+class tts
+  implements Observer<ubz<FeedCloudMeta.StTagInfo>>
 {
-  public tts(StructMsgObserver paramStructMsgObserver, String paramString1, int paramInt, String paramString2, String paramString3) {}
+  tts(ttr paramttr) {}
   
-  public void run()
+  public void a(@Nullable ubz<FeedCloudMeta.StTagInfo> paramubz)
   {
-    WebAccelerator.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
+    ttr.a(this.a, paramubz);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tts
  * JD-Core Version:    0.7.0.1
  */

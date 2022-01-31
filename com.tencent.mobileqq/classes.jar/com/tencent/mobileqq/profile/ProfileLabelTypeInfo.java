@@ -7,14 +7,14 @@ import java.util.List;
 public class ProfileLabelTypeInfo
   implements Serializable, Cloneable
 {
-  public List labels = new ArrayList();
+  public List<ProfileLabelInfo> labels = new ArrayList();
   public String typeId;
   public String typeInfo;
   public String typeName;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.ProfileLabelTypeInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Roam$RoamReqHead
-  extends MessageMicro
+  extends MessageMicro<RoamReqHead>
 {
   public static final int CLIENT_PLAT_ID_FIELD_NUMBER = 2;
   public static final int CLIENT_VER_FIELD_NUMBER = 3;
@@ -24,7 +24,7 @@ public final class Roam$RoamReqHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.sso.roam.Roam.RoamReqHead
  * JD-Core Version:    0.7.0.1
  */

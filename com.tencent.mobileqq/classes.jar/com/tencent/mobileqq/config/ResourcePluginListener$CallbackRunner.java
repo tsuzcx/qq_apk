@@ -1,33 +1,40 @@
 package com.tencent.mobileqq.config;
 
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.SoftReference;
+
 public class ResourcePluginListener$CallbackRunner
   implements Runnable
 {
   private byte jdField_a_of_type_Byte;
   private int jdField_a_of_type_Int;
-  private ResourcePluginListener jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener;
+  private SoftReference<ResourcePluginListener> jdField_a_of_type_JavaLangRefSoftReference;
   
   public ResourcePluginListener$CallbackRunner(ResourcePluginListener paramResourcePluginListener, byte paramByte, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = paramResourcePluginListener;
+    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramResourcePluginListener);
     this.jdField_a_of_type_Byte = paramByte;
     this.jdField_a_of_type_Int = paramInt;
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener != null)
+    ResourcePluginListener localResourcePluginListener = (ResourcePluginListener)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+    if ((localResourcePluginListener == null) && (QLog.isColorLevel())) {
+      QLog.d("LebaHelper", 2, "ResourcePluginListener is null");
+    }
+    if (localResourcePluginListener != null)
     {
       if (this.jdField_a_of_type_Int != 2) {
-        break label27;
+        break label50;
       }
-      this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener.b(this.jdField_a_of_type_Byte);
+      localResourcePluginListener.b(this.jdField_a_of_type_Byte);
     }
-    label27:
+    label50:
     while (this.jdField_a_of_type_Int != 1) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener.a(this.jdField_a_of_type_Byte);
+    localResourcePluginListener.a(this.jdField_a_of_type_Byte);
   }
 }
 

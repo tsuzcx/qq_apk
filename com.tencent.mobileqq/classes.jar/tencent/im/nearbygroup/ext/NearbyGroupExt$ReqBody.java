@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import tencent.im.troop_search_userinfo.userinfo.UserInfo;
 
 public final class NearbyGroupExt$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int UINT32_TYPE_FIELD_NUMBER = 3;
   public static final int USER_INFO_FIELD_NUMBER = 1;
@@ -17,7 +17,7 @@ public final class NearbyGroupExt$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.nearbygroup.ext.NearbyGroupExt.ReqBody
  * JD-Core Version:    0.7.0.1
  */

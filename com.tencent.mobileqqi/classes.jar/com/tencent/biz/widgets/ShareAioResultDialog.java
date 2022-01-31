@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.widget.TextView;
-import bvj;
-import bvk;
+import bpl;
+import bpm;
 
 public class ShareAioResultDialog
   extends Dialog
@@ -19,7 +19,7 @@ public class ShareAioResultDialog
   public ShareAioResultDialog(Context paramContext)
   {
     super(paramContext, 2131624405);
-    super.setContentView(2130903443);
+    super.setContentView(2130903445);
     a();
   }
   
@@ -33,7 +33,7 @@ public class ShareAioResultDialog
   {
     Resources localResources = getContext().getResources();
     this.b.setContentDescription(localResources.getString(2131561316, new Object[] { localResources.getString(2131560587) }));
-    this.b.setOnClickListener(new bvk(this, paramOnClickListener));
+    this.b.setOnClickListener(new bpm(this, paramOnClickListener));
   }
   
   public void a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
@@ -46,7 +46,7 @@ public class ShareAioResultDialog
       str = "";
     }
     localTextView.setContentDescription(localResources.getString(2131561316, new Object[] { str }));
-    this.a.setOnClickListener(new bvj(this, paramOnClickListener));
+    this.a.setOnClickListener(new bpl(this, paramOnClickListener));
   }
   
   public void dismiss()

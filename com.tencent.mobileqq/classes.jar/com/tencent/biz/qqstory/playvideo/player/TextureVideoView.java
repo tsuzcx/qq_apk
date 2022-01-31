@@ -1,7 +1,9 @@
 package com.tencent.biz.qqstory.playvideo.player;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.graphics.SurfaceTexture;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -18,24 +20,24 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.MediaController;
 import android.widget.MediaController.MediaPlayerControl;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnBufferingUpdateListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnCompletionListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnInfoListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnPreparedListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnSeekCompleteListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnVideoSizeChangedListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.onTextureUpdateListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.MediaPlayerWrapper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
-import npa;
-import npb;
-import npc;
-import npd;
-import npe;
-import npg;
+import vwt;
+import vwu;
+import vwv;
+import vww;
+import vwx;
+import vwz;
+import vyi;
+import vyj;
+import vyk;
+import vyl;
+import vym;
+import vyn;
+import vyo;
+import vyq;
+import vyr;
+import vys;
 
 @TargetApi(14)
 public class TextureVideoView
@@ -46,22 +48,22 @@ public class TextureVideoView
   protected Uri a;
   protected Surface a;
   public MediaController a;
-  private IMediaPlayer.OnBufferingUpdateListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnBufferingUpdateListener = new npg(this);
-  public IMediaPlayer.OnCompletionListener a;
-  public IMediaPlayer.OnErrorListener a;
-  public IMediaPlayer.OnInfoListener a;
-  public IMediaPlayer.OnPreparedListener a;
-  protected IMediaPlayer.OnSeekCompleteListener a;
-  IMediaPlayer.OnVideoSizeChangedListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnVideoSizeChangedListener = new npa(this);
-  protected IMediaPlayer.onTextureUpdateListener a;
-  public IMediaPlayer a;
   public String a;
-  protected Map a;
+  protected Map<String, String> a;
+  public vyi a;
+  private vyj jdField_a_of_type_Vyj = new vwz(this);
+  public vyk a;
+  public vyl a;
+  public vym a;
+  public vyn a;
+  protected vyo a;
+  vyq jdField_a_of_type_Vyq = new vwt(this);
+  protected vyr a;
   public int b;
-  private IMediaPlayer.OnCompletionListener jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener = new npc(this);
-  private IMediaPlayer.OnErrorListener jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener = new npe(this);
-  private IMediaPlayer.OnInfoListener jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnInfoListener = new npd(this);
-  IMediaPlayer.OnPreparedListener jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener = new npb(this);
+  private vyk jdField_b_of_type_Vyk = new vwv(this);
+  private vyl jdField_b_of_type_Vyl = new vwx(this);
+  private vym jdField_b_of_type_Vym = new vww(this);
+  vyn jdField_b_of_type_Vyn = new vwu(this);
   public boolean b;
   protected int c;
   public boolean c;
@@ -72,7 +74,7 @@ public class TextureVideoView
   public int f;
   public boolean f;
   public int g;
-  public boolean g;
+  protected boolean g;
   
   public TextureVideoView(Context paramContext)
   {
@@ -93,232 +95,249 @@ public class TextureVideoView
     b();
   }
   
+  private Activity a()
+  {
+    try
+    {
+      for (Context localContext = getContext(); (localContext instanceof ContextWrapper); localContext = ((ContextWrapper)localContext).getBaseContext()) {
+        if ((localContext instanceof Activity)) {
+          return (Activity)localContext;
+        }
+      }
+      return null;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
   /* Error */
   private void a(boolean paramBoolean)
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 96	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   1: getfield 115	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
     //   4: ifnull +10 -> 14
     //   7: aload_0
-    //   8: getfield 98	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
+    //   8: getfield 117	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
     //   11: ifnonnull +4 -> 15
     //   14: return
     //   15: aload_0
     //   16: iconst_0
-    //   17: invokespecial 100	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:b	(Z)V
+    //   17: invokespecial 119	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:b	(Z)V
     //   20: iload_1
     //   21: ifeq +25 -> 46
     //   24: aload_0
-    //   25: invokespecial 104	android/view/TextureView:getContext	()Landroid/content/Context;
-    //   28: invokevirtual 109	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   31: ldc 111
-    //   33: invokevirtual 115	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   36: checkcast 117	android/media/AudioManager
+    //   25: invokespecial 120	android/view/TextureView:getContext	()Landroid/content/Context;
+    //   28: invokevirtual 125	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   31: ldc 127
+    //   33: invokevirtual 131	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   36: checkcast 133	android/media/AudioManager
     //   39: aconst_null
     //   40: iconst_3
     //   41: iconst_1
-    //   42: invokevirtual 121	android/media/AudioManager:requestAudioFocus	(Landroid/media/AudioManager$OnAudioFocusChangeListener;II)I
+    //   42: invokevirtual 137	android/media/AudioManager:requestAudioFocus	(Landroid/media/AudioManager$OnAudioFocusChangeListener;II)I
     //   45: pop
     //   46: aload_0
     //   47: aload_0
-    //   48: invokevirtual 124	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:a	()Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer;
-    //   51: putfield 126	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer;
+    //   48: invokevirtual 140	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:a	()Lvyi;
+    //   51: putfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
     //   54: aload_0
-    //   55: getfield 126	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer;
+    //   55: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
     //   58: aload_0
-    //   59: getfield 128	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_e_of_type_Boolean	Z
-    //   62: invokeinterface 132 2 0
+    //   59: getfield 144	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_e_of_type_Boolean	Z
+    //   62: invokeinterface 148 2 0
     //   67: aload_0
-    //   68: getfield 134	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_c_of_type_Int	I
+    //   68: getfield 150	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_c_of_type_Int	I
     //   71: ifeq +300 -> 371
     //   74: aload_0
-    //   75: getfield 126	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer;
+    //   75: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
     //   78: aload_0
-    //   79: getfield 134	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_c_of_type_Int	I
-    //   82: invokeinterface 137 2 0
+    //   79: getfield 150	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_c_of_type_Int	I
+    //   82: invokeinterface 153 2 0
     //   87: aload_0
-    //   88: getfield 126	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer;
+    //   88: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
     //   91: aload_0
-    //   92: getfield 62	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer$OnPreparedListener;
-    //   95: invokeinterface 140 2 0
+    //   92: getfield 63	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vyn	Lvyn;
+    //   95: invokeinterface 156 2 0
     //   100: aload_0
-    //   101: getfield 126	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer;
+    //   101: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
     //   104: aload_0
-    //   105: getfield 57	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnVideoSizeChangedListener	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer$OnVideoSizeChangedListener;
-    //   108: invokeinterface 143 2 0
+    //   105: getfield 58	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyq	Lvyq;
+    //   108: invokeinterface 159 2 0
     //   113: aload_0
-    //   114: getfield 126	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer;
+    //   114: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
     //   117: aload_0
-    //   118: getfield 67	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer$OnCompletionListener;
-    //   121: invokeinterface 146 2 0
+    //   118: getfield 68	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vyk	Lvyk;
+    //   121: invokeinterface 162 2 0
     //   126: aload_0
-    //   127: getfield 126	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer;
+    //   127: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
     //   130: aload_0
-    //   131: getfield 77	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer$OnErrorListener;
-    //   134: invokeinterface 149 2 0
+    //   131: getfield 78	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vyl	Lvyl;
+    //   134: invokeinterface 165 2 0
     //   139: aload_0
-    //   140: getfield 126	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer;
+    //   140: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
     //   143: aload_0
-    //   144: getfield 72	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnInfoListener	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer$OnInfoListener;
-    //   147: invokeinterface 152 2 0
+    //   144: getfield 73	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vym	Lvym;
+    //   147: invokeinterface 168 2 0
     //   152: aload_0
-    //   153: getfield 126	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer;
+    //   153: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
     //   156: aload_0
-    //   157: getfield 82	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnBufferingUpdateListener	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer$OnBufferingUpdateListener;
-    //   160: invokeinterface 155 2 0
+    //   157: getfield 83	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyj	Lvyj;
+    //   160: invokeinterface 171 2 0
     //   165: aload_0
-    //   166: getfield 157	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer$OnSeekCompleteListener;
+    //   166: getfield 173	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyo	Lvyo;
     //   169: ifnull +16 -> 185
     //   172: aload_0
-    //   173: getfield 126	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer;
+    //   173: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
     //   176: aload_0
-    //   177: getfield 157	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer$OnSeekCompleteListener;
-    //   180: invokeinterface 160 2 0
+    //   177: getfield 173	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyo	Lvyo;
+    //   180: invokeinterface 176 2 0
     //   185: aload_0
     //   186: iconst_0
-    //   187: putfield 162	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_f_of_type_Int	I
+    //   187: putfield 178	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_f_of_type_Int	I
     //   190: aload_0
-    //   191: getfield 126	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer;
+    //   191: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
     //   194: aload_0
-    //   195: invokevirtual 163	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:getContext	()Landroid/content/Context;
-    //   198: invokevirtual 109	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   195: invokevirtual 93	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:getContext	()Landroid/content/Context;
+    //   198: invokevirtual 125	android/content/Context:getApplicationContext	()Landroid/content/Context;
     //   201: aload_0
-    //   202: getfield 96	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   202: getfield 115	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
     //   205: aload_0
-    //   206: getfield 165	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   209: invokeinterface 168 4 0
+    //   206: getfield 180	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   209: invokeinterface 183 4 0
     //   214: aload_0
-    //   215: getfield 126	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer;
+    //   215: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
     //   218: aload_0
-    //   219: getfield 98	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
-    //   222: invokeinterface 171 2 0
+    //   219: getfield 117	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
+    //   222: invokeinterface 186 2 0
     //   227: aload_0
-    //   228: getfield 126	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer;
+    //   228: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
     //   231: iconst_3
-    //   232: invokeinterface 173 2 0
+    //   232: invokeinterface 188 2 0
     //   237: aload_0
-    //   238: getfield 126	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer;
+    //   238: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
     //   241: iconst_1
-    //   242: invokeinterface 174 2 0
+    //   242: invokeinterface 189 2 0
     //   247: aload_0
-    //   248: getfield 126	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer;
-    //   251: invokeinterface 175 1 0
+    //   248: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
+    //   251: invokeinterface 190 1 0
     //   256: aload_0
     //   257: iconst_1
-    //   258: putfield 48	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Int	I
+    //   258: putfield 49	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Int	I
     //   261: aload_0
-    //   262: invokespecial 177	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:d	()V
+    //   262: invokespecial 192	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:d	()V
     //   265: return
     //   266: astore_2
-    //   267: invokestatic 183	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   267: invokestatic 198	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   270: ifeq +34 -> 304
     //   273: aload_0
-    //   274: getfield 46	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   274: getfield 47	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   277: iconst_2
-    //   278: new 185	java/lang/StringBuilder
+    //   278: new 200	java/lang/StringBuilder
     //   281: dup
-    //   282: invokespecial 187	java/lang/StringBuilder:<init>	()V
-    //   285: ldc 189
-    //   287: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   282: invokespecial 202	java/lang/StringBuilder:<init>	()V
+    //   285: ldc 204
+    //   287: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   290: aload_0
-    //   291: getfield 96	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   294: invokevirtual 196	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   297: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   291: getfield 115	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   294: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   297: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   300: aload_2
-    //   301: invokestatic 204	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   301: invokestatic 219	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   304: aload_0
     //   305: iconst_m1
-    //   306: putfield 48	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Int	I
+    //   306: putfield 49	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Int	I
     //   309: aload_0
     //   310: iconst_m1
-    //   311: putfield 50	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Int	I
+    //   311: putfield 51	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Int	I
     //   314: aload_0
-    //   315: getfield 77	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer$OnErrorListener;
+    //   315: getfield 78	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vyl	Lvyl;
     //   318: aload_0
-    //   319: getfield 126	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer;
+    //   319: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
     //   322: iconst_1
     //   323: iconst_0
-    //   324: invokeinterface 209 4 0
+    //   324: invokeinterface 224 4 0
     //   329: pop
     //   330: return
     //   331: astore_2
-    //   332: invokestatic 183	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   332: invokestatic 198	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   335: ifeq -289 -> 46
     //   338: aload_0
-    //   339: getfield 46	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   339: getfield 47	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   342: iconst_2
-    //   343: new 185	java/lang/StringBuilder
+    //   343: new 200	java/lang/StringBuilder
     //   346: dup
-    //   347: invokespecial 187	java/lang/StringBuilder:<init>	()V
-    //   350: ldc 211
-    //   352: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   347: invokespecial 202	java/lang/StringBuilder:<init>	()V
+    //   350: ldc 226
+    //   352: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   355: aload_2
-    //   356: invokestatic 215	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   359: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   362: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   365: invokestatic 218	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   356: invokestatic 230	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   359: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   362: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   365: invokestatic 233	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   368: goto -322 -> 46
     //   371: aload_0
     //   372: aload_0
-    //   373: getfield 126	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer;
-    //   376: invokeinterface 221 1 0
-    //   381: putfield 134	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_c_of_type_Int	I
+    //   373: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
+    //   376: invokeinterface 236 1 0
+    //   381: putfield 150	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_c_of_type_Int	I
     //   384: goto -297 -> 87
     //   387: astore_2
-    //   388: invokestatic 183	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   388: invokestatic 198	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   391: ifeq +34 -> 425
     //   394: aload_0
-    //   395: getfield 46	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   395: getfield 47	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   398: iconst_2
-    //   399: new 185	java/lang/StringBuilder
+    //   399: new 200	java/lang/StringBuilder
     //   402: dup
-    //   403: invokespecial 187	java/lang/StringBuilder:<init>	()V
-    //   406: ldc 189
-    //   408: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   403: invokespecial 202	java/lang/StringBuilder:<init>	()V
+    //   406: ldc 204
+    //   408: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   411: aload_0
-    //   412: getfield 96	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   415: invokevirtual 196	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   418: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   412: getfield 115	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   415: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   418: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   421: aload_2
-    //   422: invokestatic 204	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   422: invokestatic 219	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   425: aload_0
     //   426: iconst_m1
-    //   427: putfield 48	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Int	I
+    //   427: putfield 49	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Int	I
     //   430: aload_0
     //   431: iconst_m1
-    //   432: putfield 50	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Int	I
+    //   432: putfield 51	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Int	I
     //   435: aload_0
-    //   436: getfield 77	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer$OnErrorListener;
+    //   436: getfield 78	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vyl	Lvyl;
     //   439: aload_0
-    //   440: getfield 126	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer;
+    //   440: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
     //   443: iconst_1
     //   444: iconst_0
-    //   445: invokeinterface 209 4 0
+    //   445: invokeinterface 224 4 0
     //   450: pop
     //   451: return
     //   452: astore_2
-    //   453: invokestatic 183	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   453: invokestatic 198	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   456: ifeq +14 -> 470
     //   459: aload_0
-    //   460: getfield 46	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   460: getfield 47	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   463: iconst_2
-    //   464: ldc 223
+    //   464: ldc 238
     //   466: aload_2
-    //   467: invokestatic 204	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   467: invokestatic 219	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   470: aload_0
     //   471: iconst_m1
-    //   472: putfield 48	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Int	I
+    //   472: putfield 49	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Int	I
     //   475: aload_0
     //   476: iconst_m1
-    //   477: putfield 50	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Int	I
+    //   477: putfield 51	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Int	I
     //   480: aload_0
-    //   481: getfield 77	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer$OnErrorListener;
+    //   481: getfield 78	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vyl	Lvyl;
     //   484: aload_0
-    //   485: getfield 126	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/wrapper/IMediaPlayer;
+    //   485: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vyi	Lvyi;
     //   488: iconst_1
     //   489: iconst_0
-    //   490: invokeinterface 209 4 0
+    //   490: invokeinterface 224 4 0
     //   495: pop
     //   496: return
     // Local variable table:
@@ -326,7 +345,7 @@ public class TextureVideoView
     //   0	497	0	this	TextureVideoView
     //   0	497	1	paramBoolean	boolean
     //   266	35	2	localIOException	java.io.IOException
-    //   331	25	2	localException	java.lang.Exception
+    //   331	25	2	localException	Exception
     //   387	35	2	localIllegalArgumentException	java.lang.IllegalArgumentException
     //   452	15	2	localIllegalStateException	IllegalStateException
     // Exception table:
@@ -348,7 +367,7 @@ public class TextureVideoView
   
   private boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer != null) && (this.jdField_a_of_type_Int != -1) && (this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 1);
+    return (this.jdField_a_of_type_Vyi != null) && (this.jdField_a_of_type_Int != -1) && (this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 1);
   }
   
   private void b()
@@ -365,15 +384,14 @@ public class TextureVideoView
   
   private void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer != null)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.e();
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.g();
+    if (this.jdField_a_of_type_Vyi != null) {
+      this.jdField_a_of_type_Vyi.e();
     }
     try
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.f();
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer = null;
+      this.jdField_a_of_type_Vyi.g();
+      this.jdField_a_of_type_Vyi.f();
+      this.jdField_a_of_type_Vyi = null;
       this.jdField_a_of_type_Int = 0;
       if (paramBoolean) {
         this.jdField_b_of_type_Int = 0;
@@ -403,7 +421,7 @@ public class TextureVideoView
   
   private void d()
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer != null) && (this.jdField_a_of_type_AndroidWidgetMediaController != null))
+    if ((this.jdField_a_of_type_Vyi != null) && (this.jdField_a_of_type_AndroidWidgetMediaController != null))
     {
       this.jdField_a_of_type_AndroidWidgetMediaController.setMediaPlayer(this);
       if (!(getParent() instanceof View)) {
@@ -429,18 +447,25 @@ public class TextureVideoView
     this.jdField_a_of_type_AndroidWidgetMediaController.show();
   }
   
-  protected IMediaPlayer a()
+  protected vyi a()
   {
-    return new MediaPlayerWrapper();
+    return new vys();
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer != null)
+    if (this.jdField_a_of_type_Vyi != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.e();
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.f();
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer = null;
+      this.jdField_a_of_type_Vyi.e();
+      this.jdField_a_of_type_Vyi.f();
+      this.jdField_a_of_type_Vyi.a(null);
+      this.jdField_a_of_type_Vyi.a(null);
+      this.jdField_a_of_type_Vyi.a(null);
+      this.jdField_a_of_type_Vyi.a(null);
+      this.jdField_a_of_type_Vyi.a(null);
+      this.jdField_a_of_type_Vyi.a(null);
+      this.jdField_a_of_type_Vyi.a(null);
+      this.jdField_a_of_type_Vyi = null;
       this.jdField_a_of_type_Int = 0;
       this.jdField_b_of_type_Int = 0;
       ((AudioManager)super.getContext().getApplicationContext().getSystemService("audio")).abandonAudioFocus(null);
@@ -475,7 +500,7 @@ public class TextureVideoView
   
   public int getBufferPercentage()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer != null) {
+    if (this.jdField_a_of_type_Vyi != null) {
       return this.jdField_f_of_type_Int;
     }
     return 0;
@@ -484,7 +509,7 @@ public class TextureVideoView
   public int getCurrentPosition()
   {
     if (a()) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.b();
+      return this.jdField_a_of_type_Vyi.b();
     }
     return 0;
   }
@@ -492,14 +517,14 @@ public class TextureVideoView
   public int getDuration()
   {
     if (a()) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a();
+      return this.jdField_a_of_type_Vyi.a();
     }
     return -1;
   }
   
   public boolean isPlaying()
   {
-    return (a()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a());
+    return (a()) && (this.jdField_a_of_type_Vyi.a());
   }
   
   public void onInitializeAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
@@ -526,7 +551,7 @@ public class TextureVideoView
       if ((paramInt != 79) && (paramInt != 85)) {
         break label116;
       }
-      if (!this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a()) {
+      if (!this.jdField_a_of_type_Vyi.a()) {
         break label103;
       }
       pause();
@@ -547,14 +572,14 @@ public class TextureVideoView
         if (paramInt != 126) {
           break label147;
         }
-      } while (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a());
+      } while (this.jdField_a_of_type_Vyi.a());
       start();
       this.jdField_a_of_type_AndroidWidgetMediaController.hide();
       return true;
       if ((paramInt != 86) && (paramInt != 127)) {
         break label184;
       }
-    } while (!this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a());
+    } while (!this.jdField_a_of_type_Vyi.a());
     label147:
     pause();
     this.jdField_a_of_type_AndroidWidgetMediaController.show();
@@ -565,7 +590,7 @@ public class TextureVideoView
     return super.onKeyDown(paramInt, paramKeyEvent);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     int k = TextureView.getDefaultSize(this.jdField_d_of_type_Int, paramInt1);
     int m = TextureView.getDefaultSize(this.jdField_e_of_type_Int, paramInt2);
@@ -682,6 +707,9 @@ public class TextureVideoView
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_AndroidViewSurface = new Surface(paramSurfaceTexture);
+    if (QLog.isColorLevel()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onSurfaceTextureAvailable: openVideo");
+    }
     c();
   }
   
@@ -713,7 +741,7 @@ public class TextureVideoView
     label67:
     for (paramInt1 = j;; paramInt1 = 0)
     {
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer != null) && (i != 0) && (paramInt1 != 0))
+      if ((this.jdField_a_of_type_Vyi != null) && (i != 0) && (paramInt1 != 0))
       {
         if (this.jdField_g_of_type_Int != 0) {
           seekTo(this.jdField_g_of_type_Int);
@@ -728,8 +756,8 @@ public class TextureVideoView
   
   public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$onTextureUpdateListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$onTextureUpdateListener.a(paramSurfaceTexture);
+    if (this.jdField_a_of_type_Vyr != null) {
+      this.jdField_a_of_type_Vyr.a(paramSurfaceTexture);
     }
   }
   
@@ -751,9 +779,9 @@ public class TextureVideoView
   
   public void pause()
   {
-    if ((a()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a()))
+    if ((a()) && (this.jdField_a_of_type_Vyi.a()))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.d();
+      this.jdField_a_of_type_Vyi.d();
       this.jdField_a_of_type_Int = 4;
     }
     this.jdField_b_of_type_Int = 4;
@@ -763,7 +791,7 @@ public class TextureVideoView
   {
     if (a())
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(paramInt);
+      this.jdField_a_of_type_Vyi.a(paramInt);
       this.jdField_g_of_type_Int = 0;
       return;
     }
@@ -778,36 +806,36 @@ public class TextureVideoView
   public void setLooping(boolean paramBoolean)
   {
     this.jdField_e_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(paramBoolean);
+    if (this.jdField_a_of_type_Vyi != null) {
+      this.jdField_a_of_type_Vyi.a(paramBoolean);
     }
   }
   
-  public void setOnCompletionListener(IMediaPlayer.OnCompletionListener paramOnCompletionListener)
+  public void setOnCompletionListener(vyk paramvyk)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener = paramOnCompletionListener;
+    this.jdField_a_of_type_Vyk = paramvyk;
   }
   
-  public void setOnErrorListener(IMediaPlayer.OnErrorListener paramOnErrorListener)
+  public void setOnErrorListener(vyl paramvyl)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener = paramOnErrorListener;
+    this.jdField_a_of_type_Vyl = paramvyl;
   }
   
-  public void setOnInfoListener(IMediaPlayer.OnInfoListener paramOnInfoListener)
+  public void setOnInfoListener(vym paramvym)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnInfoListener = paramOnInfoListener;
+    this.jdField_a_of_type_Vym = paramvym;
   }
   
-  public void setOnPreparedListener(IMediaPlayer.OnPreparedListener paramOnPreparedListener)
+  public void setOnPreparedListener(vyn paramvyn)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener = paramOnPreparedListener;
+    this.jdField_a_of_type_Vyn = paramvyn;
   }
   
-  public void setOnSeekCompleteListener(IMediaPlayer.OnSeekCompleteListener paramOnSeekCompleteListener)
+  public void setOnSeekCompleteListener(vyo paramvyo)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener = paramOnSeekCompleteListener;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(paramOnSeekCompleteListener);
+    this.jdField_a_of_type_Vyo = paramvyo;
+    if (this.jdField_a_of_type_Vyi != null) {
+      this.jdField_a_of_type_Vyi.a(paramvyo);
     }
   }
   
@@ -826,26 +854,29 @@ public class TextureVideoView
     setVideoURI(paramUri, null);
   }
   
-  public void setVideoURI(Uri paramUri, Map paramMap)
+  public void setVideoURI(Uri paramUri, Map<String, String> paramMap)
   {
     this.jdField_a_of_type_AndroidNetUri = paramUri;
     this.jdField_a_of_type_JavaUtilMap = paramMap;
     this.jdField_g_of_type_Int = 0;
+    if (QLog.isColorLevel()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setVideoURI: openVideo");
+    }
     c();
     super.requestLayout();
     super.invalidate();
   }
   
-  public void setmOnTextureUpdateListener(IMediaPlayer.onTextureUpdateListener paramonTextureUpdateListener)
+  public void setmOnTextureUpdateListener(vyr paramvyr)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$onTextureUpdateListener = paramonTextureUpdateListener;
+    this.jdField_a_of_type_Vyr = paramvyr;
   }
   
   public void start()
   {
     if (a())
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.c();
+      this.jdField_a_of_type_Vyi.c();
       this.jdField_a_of_type_Int = 3;
     }
     this.jdField_b_of_type_Int = 3;
@@ -853,7 +884,7 @@ public class TextureVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.TextureVideoView
  * JD-Core Version:    0.7.0.1
  */

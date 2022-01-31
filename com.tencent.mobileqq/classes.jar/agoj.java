@@ -1,28 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import android.view.View.OnClickListener;
 
 class agoj
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  agoj(agof paramagof, View paramView, PersonalityLabelInfo paramPersonalityLabelInfo) {}
+  agoj(agoe paramagoe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    paramDialogInterface = (agoe)this.jdField_a_of_type_AndroidViewView.getTag(2131362740);
-    if (paramDialogInterface != null) {
-      this.jdField_a_of_type_Agof.a.a(paramDialogInterface.e, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
-    }
+    this.a.v(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agoj
  * JD-Core Version:    0.7.0.1
  */

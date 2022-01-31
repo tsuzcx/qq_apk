@@ -22,48 +22,50 @@ class SecurityUtile
   
   public static void setKey(Context paramContext)
   {
-    localObject2 = null;
-    localObject1 = null;
+    localObject = null;
     if (0 != 0) {
       throw new NullPointerException();
     }
     try
     {
-      String str = ((TelephonyManager)paramContext.getApplicationContext().getSystemService("phone")).getDeviceId();
+      str = ((TelephonyManager)paramContext.getApplicationContext().getSystemService("phone")).getDeviceId();
       if (str != null)
       {
-        localObject1 = str;
-        localObject2 = str;
-        if (str.length() >= codeKey.length) {}
+        localObject = str;
+        if (str.length() >= codeKey.length) {
+          break label106;
+        }
       }
-      else
-      {
-        localObject2 = str;
-        localObject1 = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getMacAddress();
-      }
+      localObject = str;
+      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getMacAddress();
     }
     catch (Exception paramContext)
     {
       for (;;)
       {
-        localObject1 = localObject2;
+        String str;
+        paramContext = (Context)localObject;
+        continue;
+        paramContext = str;
       }
     }
-    if (localObject1 != null)
+    if (paramContext != null)
     {
-      paramContext = (Context)localObject1;
-      if (((String)localObject1).length() >= codeKey.length) {}
+      localObject = paramContext;
+      if (paramContext.length() >= codeKey.length) {}
     }
     else
     {
-      paramContext = "361910168";
+      localObject = "361910168";
     }
-    codeKey = paramContext.toCharArray();
+    codeKey = ((String)localObject).toCharArray();
     codeKeyLen = codeKey.length;
   }
   
   private static String xor(String paramString)
   {
+    int i = 0;
+    int j = 0;
     if (paramString == null) {
       return null;
     }
@@ -71,14 +73,13 @@ class SecurityUtile
     char[] arrayOfChar = new char[paramString.length];
     if (codeKeyLen >= paramString.length)
     {
-      i = 0;
+      i = j;
       while (i < paramString.length)
       {
         arrayOfChar[i] = ((char)(paramString[i] ^ codeKey[i]));
         i += 1;
       }
     }
-    int i = 0;
     while (i < paramString.length)
     {
       arrayOfChar[i] = ((char)(paramString[i] ^ codeKey[(i % codeKeyLen)]));

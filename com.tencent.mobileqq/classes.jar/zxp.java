@@ -1,24 +1,25 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.ar.ARMusicController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.device.msg.activities.DeviceTipActivity;
+import mqq.app.QQPermissionCallback;
 
 public class zxp
-  implements MediaPlayer.OnErrorListener
+  implements QQPermissionCallback
 {
-  public zxp(ARMusicController paramARMusicController) {}
+  public zxp(DeviceTipActivity paramDeviceTipActivity) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ARMusicController", 2, "ARMusicController, onError, what=" + paramInt1 + ", extra=" + paramInt2);
-    }
-    return false;
+    bdgm.b(this.a);
+    this.a.finish();
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    DeviceTipActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zxp
  * JD-Core Version:    0.7.0.1
  */

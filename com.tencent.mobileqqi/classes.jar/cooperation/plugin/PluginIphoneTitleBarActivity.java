@@ -26,7 +26,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.widget.BounceScrollView;
 import com.tencent.mobileqq.widget.FakeImageView;
 import com.tencent.mobileqq.widget.FakeTextView;
-import ifa;
+import iag;
 import java.lang.reflect.Method;
 
 public class PluginIphoneTitleBarActivity
@@ -39,16 +39,16 @@ public class PluginIphoneTitleBarActivity
   protected View.OnClickListener a;
   private boolean jdField_a_of_type_Boolean;
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
-  protected ViewGroup b;
-  protected ImageView k;
-  protected TextView l;
-  protected TextView m;
-  protected TextView n;
+  public ViewGroup b;
+  public ImageView k;
+  public TextView l;
+  public TextView m;
+  public TextView n;
   protected TextView o;
   
   public PluginIphoneTitleBarActivity()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ifa(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new iag(this);
   }
   
   private void a(String paramString)
@@ -66,7 +66,7 @@ public class PluginIphoneTitleBarActivity
   
   private void b(Intent paramIntent)
   {
-    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130840100));
+    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130840102));
     if (this.l == null)
     {
       this.b = ((ViewGroup)findViewById(2131231448));
@@ -205,7 +205,7 @@ public class PluginIphoneTitleBarActivity
     }
   }
   
-  protected View b_()
+  public View b_()
   {
     this.n = ((TextView)findViewById(2131231380));
     this.k = ((ImageView)findViewById(2131231461));
@@ -222,7 +222,7 @@ public class PluginIphoneTitleBarActivity
     return this.l;
   }
   
-  protected String c()
+  public String c()
   {
     if ((this.m == null) || (this.m.getText() == null) || (this.m.getText().length() == 0)) {
       return getString(2131561692);
@@ -230,7 +230,7 @@ public class PluginIphoneTitleBarActivity
     return this.m.getText().toString();
   }
   
-  protected void c(int paramInt, View.OnClickListener paramOnClickListener)
+  public void c(int paramInt, View.OnClickListener paramOnClickListener)
   {
     this.jdField_a_of_type_Boolean = false;
     this.n.setVisibility(0);
@@ -319,11 +319,11 @@ public class PluginIphoneTitleBarActivity
     this.o.setVisibility(8);
   }
   
-  protected boolean h()
+  public boolean h()
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837860);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837862);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.m.getCompoundDrawables();
       this.jdField_a_of_type_Int = this.m.getCompoundDrawablePadding();
       this.m.setCompoundDrawablePadding(10);
@@ -334,7 +334,7 @@ public class PluginIphoneTitleBarActivity
     return false;
   }
   
-  protected void i(int paramInt)
+  public void i(int paramInt)
   {
     if ((this.l != null) && ((this.l instanceof TextView)))
     {
@@ -354,7 +354,7 @@ public class PluginIphoneTitleBarActivity
     }
   }
   
-  protected boolean i()
+  public boolean i()
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
     {

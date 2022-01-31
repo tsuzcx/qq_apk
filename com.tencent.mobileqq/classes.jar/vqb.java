@@ -1,43 +1,29 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import com.tencent.mobileqq.activity.aio.qim.QIMUserManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
 
 public class vqb
-  implements Runnable
+  implements vpt
 {
-  public vqb(QIMUserManager paramQIMUserManager, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
+  private final vqa a;
   
-  public void run()
+  public vqb(vqa paramvqa)
   {
-    if (QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, this.jdField_a_of_type_JavaLangString, this.b) == 0) {
-      if (QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, this.b))
-      {
-        QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager);
-        QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, false);
-        QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, 2);
-        SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).edit();
-        localEditor.putBoolean("qim_user_special_need_force_download", QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager));
-        localEditor.commit();
-      }
+    this.a = paramvqa;
+  }
+  
+  public void a(vpu paramvpu)
+  {
+    Stream localStream2 = Stream.of(this.a.a).map(new ThreadOffFunction("Q.qqstory.player.data.MsgTabPlayPageLoader", 2)).map(new uyw("Q.qqstory.player.data.MsgTabPlayPageLoader", this.a.c, this.a.d, this.a));
+    Stream localStream1 = localStream2;
+    if (this.a.a.a == 5) {
+      localStream1 = localStream2.map(new uyt()).map(new uyj(this.a.a));
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QIMUserManager", 2, this.jdField_a_of_type_Boolean + " startDownLoadQimTheme QimIconsState " + QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager));
-      }
-      return;
-      QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, 4);
-      continue;
-      QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, 3);
-    }
+    localStream1.subscribe(new vqc(this, paramvpu));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vqb
  * JD-Core Version:    0.7.0.1
  */

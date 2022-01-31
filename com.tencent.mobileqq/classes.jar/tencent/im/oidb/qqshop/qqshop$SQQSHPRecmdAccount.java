@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqshop$SQQSHPRecmdAccount
-  extends MessageMicro
+  extends MessageMicro<SQQSHPRecmdAccount>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34 }, new String[] { "puin", "nick", "headurl", "desc" }, new Object[] { Long.valueOf(0L), "", "", "" }, SQQSHPRecmdAccount.class);
   public final PBStringField desc = PBField.initString("");
@@ -17,7 +17,7 @@ public final class qqshop$SQQSHPRecmdAccount
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.qqshop.qqshop.SQQSHPRecmdAccount
  * JD-Core Version:    0.7.0.1
  */

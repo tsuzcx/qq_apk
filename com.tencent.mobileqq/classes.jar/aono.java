@@ -1,62 +1,80 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.flashchat.FlashChatManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tracking.sdk.TrackerManager;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.tracker.SimpleStickerTrackerOrigin;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView.TrackerCallback;
-import java.util.HashMap;
-import java.util.Map;
 
 public class aono
-  extends Handler
+  extends aokh<aonn>
 {
-  public aono(SimpleStickerTrackerOrigin paramSimpleStickerTrackerOrigin, Looper paramLooper)
+  public int a()
   {
-    super(paramLooper);
+    return 168;
   }
   
-  public void handleMessage(Message paramMessage)
+  @NonNull
+  public aonn a(int paramInt)
   {
-    switch (paramMessage.what)
+    return new aonn();
+  }
+  
+  @Nullable
+  public aonn a(aoko[] paramArrayOfaoko)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfaoko != null)
     {
-    default: 
-      return;
-    case 1: 
-      paramMessage = (byte[])paramMessage.obj;
-      TrackerManager.newInstance().openTrack(paramMessage, 2, 0, this.a.jdField_a_of_type_Float, this.a.b, this.a.c, this.a.d, SimpleStickerTrackerOrigin.a(this.a), SimpleStickerTrackerOrigin.b(this.a), 1.0F);
-      this.a.jdField_a_of_type_Boolean = true;
-      return;
-    case 2: 
-      if (QLog.isColorLevel()) {
-        QLog.d("SimpleStickerTrackerOrigin", 2, "handle frame start");
+      localObject1 = localObject2;
+      if (paramArrayOfaoko.length > 0)
+      {
+        localObject1 = localObject2;
+        if (paramArrayOfaoko[0] != null)
+        {
+          localObject1 = aonn.a(paramArrayOfaoko[0].a);
+          paramArrayOfaoko = BaseApplicationImpl.getApplication().getRuntime();
+          if ((paramArrayOfaoko instanceof QQAppInterface)) {
+            ((FlashChatManager)((QQAppInterface)paramArrayOfaoko).getManager(217)).b(((aonn)localObject1).a);
+          }
+        }
       }
-      SimpleStickerTrackerOrigin.a(this.a).clear();
-      return;
-    case 3: 
-      if (QLog.isColorLevel()) {
-        QLog.d("SimpleStickerTrackerOrigin", 2, "handle frame in  , thread id=" + Thread.currentThread().getId());
-      }
-      SimpleStickerTrackerOrigin.a(this.a);
-      return;
     }
-    long l1 = System.currentTimeMillis();
-    long l2 = SimpleStickerTrackerOrigin.a(this.a);
+    return localObject1;
+  }
+  
+  public Class<aonn> a()
+  {
+    return aonn.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aonn paramaonn)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("SimpleStickerTrackerOrigin", 2, "handle finish cos time  =" + (l1 - l2));
+      QLog.d("FlashChatConfProcessor", 2, "onUpdate " + paramaonn.toString());
     }
-    if (SimpleStickerTrackerOrigin.a(this.a) != null)
-    {
-      paramMessage = new HashMap();
-      paramMessage.putAll(SimpleStickerTrackerOrigin.a(this.a));
-      SimpleStickerTrackerOrigin.a(this.a).a(paramMessage);
-    }
-    this.a.a();
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aono
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,15 @@
-import android.content.Context;
-import android.view.ViewParent;
-import android.widget.FrameLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class ibe
-  extends FrameLayout
+  implements DialogInterface.OnClickListener
 {
-  public ibe(Context paramContext)
-  {
-    super(paramContext);
-  }
+  public ibe(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  private void a(ViewParent paramViewParent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.mParent = paramViewParent;
+    this.a.finish();
   }
 }
 

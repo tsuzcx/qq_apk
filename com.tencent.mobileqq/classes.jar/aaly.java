@@ -1,29 +1,42 @@
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.arcard.ARCardPageProcess;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.ad.tangram.Ad;
+import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.canvas.AdCanvasAdapter;
+import com.tencent.ad.tangram.canvas.AdCanvasAdapter.Params;
+import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasData;
+import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasDataBuilderV2;
+import com.tencent.ad.tangram.settings.AdSettingsUtil;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS;
+import com.tencent.gdtad.views.canvas.GdtCanvasBaseFragment;
+import java.lang.ref.WeakReference;
 
-public class aaly
-  implements Animator.AnimatorListener
+public final class aaly
+  implements AdCanvasAdapter
 {
-  public aaly(ARCardPageProcess paramARCardPageProcess, boolean paramBoolean) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public int getQueueLength(WeakReference<Context> paramWeakReference)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess.jdField_a_of_type_Boolean = false;
+    return AdSettingsUtil.getQueueLength(paramWeakReference);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public AdError show(AdCanvasAdapter.Params paramParams)
   {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess.b) && (this.jdField_a_of_type_Boolean)) {
-      ARCardPageProcess.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess).remove(ARCardPageProcess.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess).size() - 1);
+    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
+    {
+      aase.d("GdtCanvasAdapter", "show error");
+      return new AdError(4);
     }
-    this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess.jdField_a_of_type_Boolean = false;
+    Object localObject = (GdtAd)GdtAd.class.cast(paramParams.ad);
+    localObject = AdCanvasDataBuilderV2.build(((Activity)paramParams.activity.get()).getApplicationContext(), (Ad)localObject, paramParams.autoDownload);
+    if ((localObject == null) || (!((AdCanvasData)localObject).isValid()))
+    {
+      aase.d("GdtCanvasAdapter", "show error");
+      return new AdError(4);
+    }
+    GdtCanvasBaseFragment.start((Activity)paramParams.activity.get(), GdtCanvasFragmentForJS.class, (AdCanvasData)localObject, paramParams.extrasForIntent);
+    return new AdError(0);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

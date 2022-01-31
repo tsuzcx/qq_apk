@@ -1,45 +1,35 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.api.banner.GdtBannerAd;
+import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
 
 public class aanu
-  implements aanv
+  implements View.OnClickListener
 {
-  private aanu(ArkAppDeviceModule paramArkAppDeviceModule) {}
+  public aanu(GdtBannerAd paramGdtBannerAd, aany paramaany) {}
   
-  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  public void onClick(View paramView)
   {
-    if (!ArkAppModuleReg.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, "permission.CONNECTION_TYPE")) {
-      return false;
-    }
-    if (!AppNetConnInfo.isNetSupport()) {
-      paramVariantWrapper.SetString("none");
-    }
-    for (;;)
+    aase.b("GdtBannerAd", "onClick");
+    aany localaany = this.jdField_a_of_type_Aany;
+    paramView = aany.a.onClick(paramView);
+    if (!TextUtils.isEmpty(paramView))
     {
-      return true;
-      if (AppNetConnInfo.isWifiConn())
-      {
-        paramVariantWrapper.SetString("wifi");
-      }
-      else if (AppNetConnInfo.isMobileConn())
-      {
-        int i = AppNetConnInfo.getMobileInfo();
-        if (i == 0) {
-          paramVariantWrapper.SetString("none");
-        } else if (-1 == i) {
-          paramVariantWrapper.SetString("other");
-        } else {
-          paramVariantWrapper.SetString("cellular");
-        }
-      }
+      GdtBannerAd.access$000(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a = paramView;
+      aase.b("GdtBannerAd", "onclick:" + GdtBannerAd.access$000(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a);
     }
+    GdtBannerAd.access$000(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick.a();
+    GdtHandler.a(GdtBannerAd.access$000(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params);
+    GdtBannerAd.access$100(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aanu
  * JD-Core Version:    0.7.0.1
  */

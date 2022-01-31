@@ -1,17 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.observer.GameCenterObserver;
+import com.tencent.mobileqq.activity.SpaceGateActivity;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class djf
-  extends GameCenterObserver
+  implements Runnable
 {
-  public djf(QQSettingMe paramQQSettingMe) {}
+  public djf(SpaceGateActivity paramSpaceGateActivity, MessageRecord paramMessageRecord) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if (this.a.b) {
-      this.a.g();
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop == 1009) {
+      this.jdField_a_of_type_ComTencentMobileqqActivitySpaceGateActivity.a(0);
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivitySpaceGateActivity.c();
   }
 }
 

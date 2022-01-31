@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadPoolExecutor.DiscardPolicy;
 public final class GifRenderingExecutor
   extends ScheduledThreadPoolExecutor
 {
-  private static volatile GifRenderingExecutor a = null;
+  private static volatile GifRenderingExecutor instance = null;
   
   private GifRenderingExecutor()
   {
@@ -17,20 +17,20 @@ public final class GifRenderingExecutor
   
   public static GifRenderingExecutor getInstance()
   {
-    if (a == null) {}
+    if (instance == null) {}
     try
     {
-      if (a == null) {
-        a = new GifRenderingExecutor();
+      if (instance == null) {
+        instance = new GifRenderingExecutor();
       }
-      return a;
+      return instance;
     }
     finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.gif.GifRenderingExecutor
  * JD-Core Version:    0.7.0.1
  */

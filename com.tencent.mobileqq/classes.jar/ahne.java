@@ -1,20 +1,46 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.richmedia.conn.ConnManager;
-import com.tencent.mobileqq.richmedia.server.PeakAudioTransHandler;
+import android.util.SparseArray;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.SwipListView;
 
 public class ahne
-  implements Runnable
+  implements skj
 {
-  public ahne(ConnManager paramConnManager, long paramLong) {}
+  public ahne(SystemMsgListView paramSystemMsgListView) {}
   
-  public void run()
+  public void a(sko paramsko)
   {
-    ((PeakAudioTransHandler)ConnManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager).getBusinessHandler(0)).b(this.jdField_a_of_type_Long);
+    int j;
+    if (paramsko != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.newfriendSystemMsgListView", 2, "setStickHead onTabSelected : position = " + paramsko.a() + " tabid = " + (Integer)paramsko.a());
+      }
+      SystemMsgListView.a(this.a).a(((Integer)paramsko.a()).intValue(), paramsko.a());
+      i = SystemMsgListView.a(this.a).b();
+      paramsko = (ahob)SystemMsgListView.a(this.a).get(i);
+      if (paramsko == null) {
+        break label141;
+      }
+      j = paramsko.b;
+    }
+    for (int i = paramsko.c;; i = SystemMsgListView.a(this.a).c)
+    {
+      SystemMsgListView.a(this.a).setSelectionFromTop(j, i);
+      SystemMsgListView.a(this.a).a(0L);
+      return;
+      label141:
+      j = SystemMsgListView.a(this.a).b;
+    }
   }
+  
+  public void b(sko paramsko) {}
+  
+  public void c(sko paramsko) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahne
  * JD-Core Version:    0.7.0.1
  */

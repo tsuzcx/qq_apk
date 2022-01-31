@@ -1,69 +1,32 @@
-import android.annotation.SuppressLint;
-import android.app.DownloadManager;
-import android.app.DownloadManager.Query;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
-
 public class akzo
-  extends BroadcastReceiver
+  implements alpg
 {
-  public akzo(MSFIntChkStrike paramMSFIntChkStrike, DownloadManager paramDownloadManager) {}
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  @SuppressLint({"NewApi"})
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  protected void c(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    long l = paramIntent.getLongExtra("extra_download_id", -1L);
-    String str;
-    Object localObject;
-    if (MSFIntChkStrike.a(this.jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFIntChkStrike) == l)
+    switch (paramInt)
     {
-      str = "";
-      localObject = new DownloadManager.Query();
-      ((DownloadManager.Query)localObject).setFilterById(new long[] { l });
-      paramIntent = null;
-    }
-    try
-    {
-      Cursor localCursor = this.jdField_a_of_type_AndroidAppDownloadManager.query((DownloadManager.Query)localObject);
-      localObject = str;
-      if (localCursor != null)
-      {
-        localObject = str;
-        paramIntent = localCursor;
-        if (localCursor.moveToFirst())
-        {
-          paramIntent = localCursor;
-          localObject = localCursor.getString(localCursor.getColumnIndex("local_filename"));
-        }
-      }
-      if (localCursor != null) {
-        localCursor.close();
-      }
-      if (TextUtils.isEmpty((CharSequence)localObject))
-      {
-        paramIntent = new Intent("android.intent.action.VIEW");
-        paramIntent.setDataAndType(Uri.parse("file://" + (String)localObject), "application/vnd.android.package-archive");
-        paramIntent.setFlags(268435456);
-        paramContext.startActivity(paramIntent);
-      }
+    case 3: 
+    default: 
+      return;
+    case 2: 
+      a(paramBoolean, paramObject);
+      return;
+    case 1: 
+      b(paramBoolean, paramObject);
       return;
     }
-    finally
-    {
-      if (paramIntent != null) {
-        paramIntent.close();
-      }
-    }
+    c(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akzo
  * JD-Core Version:    0.7.0.1
  */

@@ -30,7 +30,7 @@ public class RecentItemTroopAssistant
     if (this.A > 0)
     {
       this.jdField_c_of_type_JavaLangCharSequence = String.format(paramContext.getString(2131561537), new Object[0]);
-      this.D = paramContext.getResources().getColor(2131362098);
+      this.D = paramContext.getResources().getColor(2131362108);
       return;
     }
     this.jdField_c_of_type_JavaLangCharSequence = "";

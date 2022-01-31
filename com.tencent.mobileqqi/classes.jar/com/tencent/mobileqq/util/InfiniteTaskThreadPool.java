@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import hfb;
+import hau;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy;
@@ -17,7 +17,7 @@ public class InfiniteTaskThreadPool
   
   public InfiniteTaskThreadPool(int paramInt, long paramLong)
   {
-    super(paramInt, 2147483647, paramLong, TimeUnit.SECONDS, new LinkedBlockingQueue(), new hfb(), new ThreadPoolExecutor.CallerRunsPolicy());
+    super(paramInt, 2147483647, paramLong, TimeUnit.SECONDS, new LinkedBlockingQueue(), new hau(), new ThreadPoolExecutor.CallerRunsPolicy());
   }
   
   public static final InfiniteTaskThreadPool a()

@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class eyp
-  implements View.OnClickListener
+class eyp
+  implements DialogInterface.OnClickListener
 {
-  public eyp(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  eyp(eyn parameyn) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VoipDialInterfaceActivity.a(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eyp
  * JD-Core Version:    0.7.0.1
  */

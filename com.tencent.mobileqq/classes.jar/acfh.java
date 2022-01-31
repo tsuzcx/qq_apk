@@ -1,45 +1,34 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelLinearLayout;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.model.QueryCallback;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class acfh
-  implements QueryCallback
+  implements View.OnClickListener
 {
-  public acfh(EmoticonPanelLinearLayout paramEmoticonPanelLinearLayout, Emoticon paramEmoticon, EmoticonInfo paramEmoticonInfo, PicEmoticonInfo paramPicEmoticonInfo) {}
+  public acfh(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void onClick(View paramView)
   {
-    if (paramEmoticonPackage == null) {
+    boolean bool = false;
+    azqs.b(this.a.app, "CliOper", "", "", "0X8007144", "0X8007144", 0, 0, "", "", "", "");
+    paramView = (badd)this.a.app.getManager(61);
+    if ((paramView != null) && (paramView.a() >= 2)) {}
+    for (;;)
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("EmotionPanelLinearLayout", 2, "package is null, epId: " + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
+        QLog.d("AssociatedAccountActivity", 2, "click top right manage btn underTwo = " + bool);
       }
-    }
-    do
-    {
+      AssociatedAccountActivity.a(this.a, bool);
       return;
-      EmoticonCallback localEmoticonCallback = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelLinearLayout.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback;
-      if (localEmoticonCallback != null) {
-        localEmoticonCallback.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo);
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.d != 2);
-    if ((paramEmoticonPackage.jobType == 0) && (paramEmoticonPackage.subType == 4))
-    {
-      ReportController.b(((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelLinearLayout.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "ep_mall", "0X800579F", 0, 0, "", "", "3", "");
-      return;
+      bool = true;
     }
-    ReportController.b(((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelLinearLayout.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "ep_mall", "0X800579F", 0, 0, "", "", "2", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acfh
  * JD-Core Version:    0.7.0.1
  */

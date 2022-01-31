@@ -1,27 +1,14 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.global.e;
-import com.tencent.token.ui.base.CommonActionSheetDialog;
-import com.tencent.token.ui.base.i;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class vp
-  implements i
+class vp
+  implements DialogInterface.OnClickListener
 {
-  vp(RealNameGuidActivity paramRealNameGuidActivity) {}
+  vp(vj paramvj) {}
   
-  public final void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      e.c("CommonActionSheetOnClickListener which=" + paramInt);
-      return;
-      RealNameGuidActivity.access$000(this.a, paramInt);
-      this.a.dialog.dismiss();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

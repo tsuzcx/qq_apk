@@ -1,50 +1,20 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
 
 public class aekl
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public aekl(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aekl(UpgradeActivity paramUpgradeActivity, bdio parambdio, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = paramMessage.getData();
-    if (localObject != null) {}
-    for (localObject = ((Bundle)localObject).getString("BUNDLE_KEY_FILE_PATH");; localObject = null)
-    {
-      paramMessage = (Bitmap)paramMessage.obj;
-      if ((paramMessage != null) && (localObject != null))
-      {
-        localObject = new File((String)localObject);
-        if (((File)localObject).exists()) {
-          ((File)localObject).delete();
-        }
-      }
-      try
-      {
-        localObject = new FileOutputStream((File)localObject);
-        paramMessage.compress(Bitmap.CompressFormat.JPEG, 100, (OutputStream)localObject);
-        ((FileOutputStream)localObject).flush();
-        ((FileOutputStream)localObject).close();
-        return;
-      }
-      catch (Exception paramMessage)
-      {
-        paramMessage.printStackTrace();
-        return;
-      }
-    }
+    this.jdField_a_of_type_Bdio.d();
+    bdmr.c(true);
+    bdmr.c(this.jdField_a_of_type_Int);
+    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeActivity, amqe.a().a(), false, true, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeActivity.finish();
   }
 }
 

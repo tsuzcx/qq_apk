@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import nhx;
+import vlh;
 
 public class StoryPushMsg
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new nhx();
+  public static final Parcelable.Creator<StoryPushMsg> CREATOR = new vlh();
   public int a;
   public long a;
   public Bundle a;
@@ -89,7 +89,7 @@ public class StoryPushMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.notification.StoryPushMsg
  * JD-Core Version:    0.7.0.1
  */

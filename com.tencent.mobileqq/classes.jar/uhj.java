@@ -1,25 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
 
-public class uhj
-  implements DialogInterface.OnClickListener
+class uhj
+  implements View.OnClickListener
 {
-  public uhj(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  uhj(uhf paramuhf, Context paramContext) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.l();
-    this.a.a(ProfileCardTemplate.g, this.a.a, false);
-    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, HttpUtil.a(), "2", "1");
+    trx localtrx;
+    boolean bool;
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      localtrx = uhf.a(this.jdField_a_of_type_Uhf);
+      StringBuilder localStringBuilder = new StringBuilder().append("startReply getFeedCommentInfo is");
+      if (localtrx == null) {
+        break label97;
+      }
+      bool = true;
+      QLog.d("QCircleReplyMessagePresenter", 1, bool);
+      if (localtrx != null)
+      {
+        if (paramView.getId() != 2131379038) {
+          break label102;
+        }
+        uhf.a(this.jdField_a_of_type_Uhf, localtrx, 2);
+      }
+    }
+    for (;;)
+    {
+      uax.a().a((Activity)this.jdField_a_of_type_AndroidContentContext, localtrx, uhf.a(this.jdField_a_of_type_Uhf));
+      return;
+      label97:
+      bool = false;
+      break;
+      label102:
+      if (this.jdField_a_of_type_Uhf.a == 1) {
+        uhf.a(this.jdField_a_of_type_Uhf, localtrx, 6);
+      } else if (this.jdField_a_of_type_Uhf.a == 2) {
+        uhf.a(this.jdField_a_of_type_Uhf, localtrx, 10);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uhj
  * JD-Core Version:    0.7.0.1
  */

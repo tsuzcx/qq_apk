@@ -1,33 +1,27 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.mobileqq.service.message.MessageUtils;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class ahdz
-  implements Runnable
+  implements aheg
 {
-  public ahdz(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
+  public ahdz(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment) {}
   
-  public void run()
+  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "mSendFetchReadStatusRequestRunnable");
-    }
-    switch (ReceiptMessageDetailFragment.a(this.a).jdField_a_of_type_Int)
+    if ((paramArrayOfAIORichMediaData != null) && (paramArrayOfAIORichMediaData.length > 0))
     {
-    default: 
-      return;
-    case 3000: 
-      ReceiptMessageDetailFragment.e(this.a);
-      return;
-    case 0: 
-      ReceiptMessageDetailFragment.a(this.a).addObserver(ReceiptMessageDetailFragment.b(this.a), false);
-      ReceiptMessageDetailFragment.b(this.a, ReceiptMessageDetailFragment.a(this.a).a().b(ReceiptMessageDetailFragment.a(this.a), ReceiptMessageDetailFragment.a(this.a, ReceiptMessageDetailFragment.a(this.a).jdField_a_of_type_JavaLangString), ReceiptMessageDetailFragment.a(this.a), MessageUtils.a(ReceiptMessageDetailFragment.b(this.a))));
-      return;
+      this.a.a = paramArrayOfAIORichMediaData[(paramArrayOfAIORichMediaData.length - 1)];
+      if (QLog.isColorLevel()) {
+        QLog.i("chatHistory.troop.portal", 2, "get the first media data");
+      }
     }
-    ReceiptMessageDetailFragment.f(this.a);
+    do
+    {
+      return;
+      this.a.a = null;
+    } while (!QLog.isColorLevel());
+    QLog.i("chatHistory.troop.portal", 2, "no media data found");
   }
 }
 

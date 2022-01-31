@@ -7,7 +7,7 @@ final class o
 {
   public void run()
   {
-    if ((n.h() == null) || (!n.c) || (n.i().get())) {
+    if ((n.i() == null) || (!n.c) || (n.j().get())) {
       return;
     }
     new p(this, "QLogInitThread").start();

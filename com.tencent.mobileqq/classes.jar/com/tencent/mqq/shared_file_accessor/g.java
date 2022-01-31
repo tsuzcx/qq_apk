@@ -1,6 +1,9 @@
 package com.tencent.mqq.shared_file_accessor;
 
-abstract interface g {}
+final class g
+{
+  static final f a = new f((byte)0);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

@@ -2,16 +2,9 @@ package com.tencent.upload.image;
 
 import android.app.Service;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
 import android.os.IBinder;
-import android.os.Message;
 import android.os.Messenger;
-import android.os.Process;
-import android.os.RemoteException;
-import android.text.TextUtils;
-import com.tencent.upload.common.FileUtils;
-import com.tencent.upload.common.b;
+import com.tencent.upload.utils.UploadLog;
 
 public class ImageProcessService
   extends Service
@@ -34,6 +27,7 @@ public class ImageProcessService
   public static final int EMPTY_SAVE_PATH = 1048576;
   public static final int EXIF_NULL = 2048;
   public static final String KEY_MSG_COMPRESS = "KEY_MSG_COMPRESS";
+  static final Milestone MILESTONE = new Milestone();
   public static final int MSG_COPY_AND_COMPRESS_IMAGE_REQUEST = 1;
   public static final int MSG_COPY_AND_COMPRESS_IMAGE_RESPONSE = 101;
   public static final int MSG_OBTAIN_PID_REQUEST = 2;
@@ -48,128 +42,44 @@ public class ImageProcessService
   public static final String TAG = "ImageProcessService";
   public static final int TRANSFORM_BITMAP_END = 262144;
   public static final int TRANSFORM_BITMAP_FAIL = 524288;
-  static final Milestone a = new Milestone();
-  static String b;
-  Messenger c;
-  a d;
+  static String sMsg;
+  ImageProcessService.IncomingHandler mIncomingHandler;
+  Messenger mMessenger;
   
   public IBinder onBind(Intent paramIntent)
   {
-    b.b("ImageProcessService", "onBind");
-    return this.c.getBinder();
+    UploadLog.d("ImageProcessService", "onBind");
+    return this.mMessenger.getBinder();
   }
   
   public void onCreate()
   {
-    this.d = new a();
-    this.c = new Messenger(this.d);
+    this.mIncomingHandler = new ImageProcessService.IncomingHandler();
+    this.mMessenger = new Messenger(this.mIncomingHandler);
   }
   
   public void onDestroy()
   {
-    b.b("ImageProcessService", "onDestroy");
+    UploadLog.d("ImageProcessService", "onDestroy");
     super.onDestroy();
   }
   
   public void onRebind(Intent paramIntent)
   {
-    b.a("ImageProcessService", "onRebind");
+    UploadLog.v("ImageProcessService", "onRebind");
     super.onRebind(paramIntent);
   }
   
   public boolean onUnbind(Intent paramIntent)
   {
-    b.b("ImageProcessService", "onUnbind");
-    this.d.removeMessages(1);
+    UploadLog.d("ImageProcessService", "onUnbind");
+    this.mIncomingHandler.removeMessages(1);
     return super.onUnbind(paramIntent);
-  }
-  
-  static class a
-    extends Handler
-  {
-    public void handleMessage(Message paramMessage)
-    {
-      Object localObject;
-      switch (paramMessage.what)
-      {
-      default: 
-        super.handleMessage(paramMessage);
-        return;
-      case 1: 
-        b.b("ImageProcessService", "receive MSG_COPY_AND_COMPRESS_IMAGE_REQUEST request flowId=" + paramMessage.arg1);
-        ImageProcessService.a.reset();
-        ImageProcessService.b = null;
-        Message localMessage = Message.obtain(null, 101);
-        localMessage.arg1 = paramMessage.arg1;
-        paramMessage.getData().setClassLoader(ImageProcessData.class.getClassLoader());
-        localObject = paramMessage.getData().getParcelable("KEY_MSG_COMPRESS");
-        ImageProcessData localImageProcessData;
-        if ((localObject instanceof ImageProcessData))
-        {
-          localImageProcessData = (ImageProcessData)localObject;
-          b.b("ImageProcessService", "compressFile start. " + localImageProcessData.toString());
-          if (FileUtils.isFileExist(localImageProcessData.targetFilePath)) {
-            break label306;
-          }
-          b.b("ImageProcessService", "targetFilePath not exist begin compress");
-          localObject = ImageProcessUtil.compressFile(localImageProcessData.originalFilePath, localImageProcessData.targetFilePath, localImageProcessData.targetWidth, localImageProcessData.targetHeight, localImageProcessData.targetQuality, localImageProcessData.autoRotate, localImageProcessData.compressToWebp);
-        }
-        for (;;)
-        {
-          b.b("ImageProcessService", "compressFile end. targetFile=" + (String)localObject);
-          localImageProcessData.originalFilePath = ((String)localObject);
-          if (TextUtils.isEmpty(ImageProcessService.b))
-          {
-            localImageProcessData.msg = null;
-            localMessage.getData().putParcelable("KEY_MSG_COMPRESS", localImageProcessData);
-          }
-          try
-          {
-            paramMessage.replyTo.send(localMessage);
-            b.a("ImageProcessService", "send MSG_COPY_AND_COMPRESS_IMAGE_RESPONSE flowId=" + paramMessage.arg1);
-            try
-            {
-              Thread.sleep(300L);
-              return;
-            }
-            catch (InterruptedException paramMessage)
-            {
-              return;
-            }
-            label306:
-            b.b("ImageProcessService", "compressFile exist no need compress");
-            localObject = localImageProcessData.targetFilePath;
-            continue;
-            localImageProcessData.msg = ("imageCompressCode=" + ImageProcessService.a.getMilestoneValue() + " errorMsg=" + ImageProcessService.b);
-          }
-          catch (RemoteException paramMessage)
-          {
-            for (;;)
-            {
-              b.c("ImageProcessService", "ImageProcessService", paramMessage);
-            }
-          }
-        }
-      }
-      b.c("ImageProcessService", "receive MSG_OBTAIN_PID_REQUEST");
-      try
-      {
-        localObject = Message.obtain(null, 102);
-        ((Message)localObject).arg1 = Process.myPid();
-        paramMessage.replyTo.send((Message)localObject);
-        b.a("ImageProcessService", "send MSG_OBTAIN_PID_RESPONSE flowId=" + paramMessage.arg1);
-        return;
-      }
-      catch (RemoteException paramMessage)
-      {
-        b.e("ImageProcessService", "send MSG_OBTAIN_PID_RESPONSE:" + paramMessage);
-      }
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.upload.image.ImageProcessService
  * JD-Core Version:    0.7.0.1
  */

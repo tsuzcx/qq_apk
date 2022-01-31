@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/w9" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/adk" />
+    <ScrollView android:orientation="vertical" android:id="@id/root_layout" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:background="@drawable/dw1" android:padding="1.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="19.0dip">
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="46.0dip">
+                    <TextView android:gravity="center_vertical" android:layout_width="55.5dip" android:layout_height="fill_parent" android:layout_marginLeft="11.0dip" android:text="@string/eh4" style="@style/tl" />
+                    <com.tenpay.sdk.view.ClearableEditText android:textSize="17.0dip" android:textColor="@color/tr" android:textColorHint="@color/ws" android:id="@id/l4f" android:paddingRight="2.5dip" android:layout_width="0.0dip" android:hint="@string/e5a" android:singleLine="true" android:layout_weight="1.0" style="@style/to" />
+                </LinearLayout>
+            </LinearLayout>
+            <Button android:id="@id/l4e" android:layout_marginLeft="12.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="14.0dip" android:text="@string/ehd" style="@style/sv" />
+            <Button android:textSize="14.0sp" android:layout_gravity="right" android:id="@id/use_phone_card" android:paddingLeft="8.0dip" android:paddingRight="12.0dip" android:paddingBottom="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e5f" style="@style/tb" />
+        </LinearLayout>
+    </ScrollView>
+    <com.tenpay.api.MyKeyboardWindow android:id="@id/je9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

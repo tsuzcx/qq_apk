@@ -12,14 +12,14 @@ public class SonicSessionStream
   extends InputStream
 {
   private static final String TAG = "SonicSdk_SonicSessionStream";
-  private final WeakReference<Callback> callbackWeakReference;
+  private final WeakReference<SonicSessionStream.Callback> callbackWeakReference;
   private BufferedInputStream memStream;
   private boolean memStreamReadComplete = true;
   private BufferedInputStream netStream;
   private boolean netStreamReadComplete = true;
   private ByteArrayOutputStream outputStream;
   
-  public SonicSessionStream(Callback paramCallback, ByteArrayOutputStream paramByteArrayOutputStream, BufferedInputStream paramBufferedInputStream)
+  public SonicSessionStream(SonicSessionStream.Callback paramCallback, ByteArrayOutputStream paramByteArrayOutputStream, BufferedInputStream paramBufferedInputStream)
   {
     if (paramBufferedInputStream != null)
     {
@@ -41,24 +41,25 @@ public class SonicSessionStream
   }
   
   public void close()
-    throws IOException
   {
     if (SonicUtils.shouldLog(4)) {
       SonicUtils.log("SonicSdk_SonicSessionStream", 4, "close: memory stream and socket stream, netStreamReadComplete=" + this.netStreamReadComplete + ", memStreamReadComplete=" + this.memStreamReadComplete);
     }
-    Object localObject1 = null;
     try
     {
       if (this.memStream != null) {
         this.memStream.close();
       }
+      this.memStream = null;
+      localObject1 = null;
     }
     catch (Throwable localThrowable1)
     {
       for (;;)
       {
+        Object localObject1;
         label87:
-        Callback localCallback;
+        SonicSessionStream.Callback localCallback;
         SonicUtils.log("SonicSdk_SonicSessionStream", 6, "close memStream error:" + localThrowable1.getMessage());
         this.memStream = null;
       }
@@ -83,7 +84,7 @@ public class SonicSessionStream
     {
       this.netStream = null;
     }
-    localCallback = (Callback)this.callbackWeakReference.get();
+    localCallback = (SonicSessionStream.Callback)this.callbackWeakReference.get();
     if (localCallback != null) {
       if ((!this.netStreamReadComplete) || (!this.memStreamReadComplete)) {
         break label271;
@@ -107,57 +108,90 @@ public class SonicSessionStream
   }
   
   public int read()
-    throws IOException
   {
-    int j = -1;
-    int i = j;
-    try
+    Object localObject = null;
+    label296:
+    label305:
+    label310:
+    for (;;)
     {
-      if (this.memStream != null)
+      int i;
+      try
       {
-        i = j;
-        if (!this.memStreamReadComplete) {
-          i = this.memStream.read();
-        }
-      }
-      j = i;
-      if (-1 == i)
-      {
-        this.memStreamReadComplete = true;
-        j = i;
-        if (this.netStream != null)
+        SonicSessionStream.Callback localCallback = (SonicSessionStream.Callback)this.callbackWeakReference.get();
+        if ((localCallback instanceof SonicServer))
         {
-          j = i;
-          if (!this.netStreamReadComplete)
+          localObject = (SonicServer)localCallback;
+          if (((SonicServer)localObject).session != null)
           {
-            j = this.netStream.read();
-            if (-1 == j) {
-              break label85;
-            }
-            this.outputStream.write(j);
+            localObject = ((SonicServer)localObject).session.statistics;
+            break label310;
           }
         }
-      }
-      for (;;)
-      {
-        return j;
-        label85:
+        else
+        {
+          if ((this.memStream == null) || (this.memStreamReadComplete)) {
+            break label305;
+          }
+          i = this.memStream.read();
+          int j = i;
+          if (-1 == i)
+          {
+            this.memStreamReadComplete = true;
+            j = i;
+            if (this.netStream != null)
+            {
+              j = i;
+              if (!this.netStreamReadComplete)
+              {
+                j = this.netStream.read();
+                if (-1 == j) {
+                  continue;
+                }
+                this.outputStream.write(j);
+              }
+            }
+          }
+          if (j != -1) {
+            break label240;
+          }
+          if ((localObject != null) && (((SonicSessionStatistics)localObject).connectionRecDataEndTime <= 0L))
+          {
+            ((SonicSessionStatistics)localObject).connectionRecDataEndTime = System.currentTimeMillis();
+            SonicUtils.log("SonicSdk_SonicSessionStream", 4, "SonicSessionStream_from_SonicStart_to_RecLastData, cost=" + (((SonicSessionStatistics)localObject).connectionRecDataEndTime - ((SonicSessionStatistics)localObject).connectionFlowStartTime));
+          }
+          return j;
+        }
+        localObject = null;
+        break label310;
         this.netStreamReadComplete = true;
+        continue;
+        if (localThrowable2 == null) {
+          continue;
+        }
       }
-      throw new IOException(localThrowable2);
-    }
-    catch (Throwable localThrowable1)
-    {
-      SonicUtils.log("SonicSdk_SonicSessionStream", 6, "read error:" + localThrowable1.getMessage());
-      if ((localThrowable1 instanceof IOException)) {
+      catch (Throwable localThrowable1)
+      {
+        SonicUtils.log("SonicSdk_SonicSessionStream", 6, "read error:" + localThrowable1.getMessage());
+        if (!(localThrowable1 instanceof IOException)) {
+          break label296;
+        }
         throw localThrowable1;
       }
+      finally {}
+      label240:
+      if (localThrowable2.connectionRecDataStartTime <= 0L)
+      {
+        localThrowable2.connectionRecDataStartTime = System.currentTimeMillis();
+        SonicUtils.log("SonicSdk_SonicSessionStream", 4, "SonicSessionStream_from_SonicStart_to_RecFirstData, cost=" + (localThrowable2.connectionRecDataStartTime - localThrowable2.connectionFlowStartTime));
+        continue;
+        throw new IOException(localThrowable2);
+        i = -1;
+      }
     }
-    finally {}
   }
   
   public int read(@NonNull byte[] paramArrayOfByte)
-    throws IOException
   {
     try
     {
@@ -172,8 +206,8 @@ public class SonicSessionStream
   }
   
   public int read(@NonNull byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-    throws IOException
   {
+    int j = -1;
     try
     {
       i = paramArrayOfByte.length;
@@ -186,43 +220,41 @@ public class SonicSessionStream
     if (i < paramInt2) {}
     for (;;)
     {
-      int j;
+      int k;
       try
       {
-        j = read();
-        if (j != -1) {
-          break label85;
+        k = read();
+        if (k != -1) {
+          break label95;
         }
-        paramInt1 = i;
-        if (i == 0) {
-          paramInt1 = -1;
-        }
-      }
-      catch (IOException paramArrayOfByte)
-      {
-        paramInt1 = i;
         if (i != 0) {
           continue;
         }
+        paramInt1 = j;
+      }
+      catch (IOException paramArrayOfByte)
+      {
+        if (i == 0) {
+          continue;
+        }
+        paramInt1 = i;
+        continue;
         throw paramArrayOfByte;
       }
       return paramInt1;
-      label85:
-      paramArrayOfByte[(paramInt1 + i)] = ((byte)j);
+      paramInt1 = i;
+      continue;
+      label95:
+      paramArrayOfByte[(paramInt1 + i)] = ((byte)k);
       i += 1;
       break;
       paramInt1 = paramInt2;
     }
   }
-  
-  public static abstract interface Callback
-  {
-    public abstract void onClose(boolean paramBoolean, ByteArrayOutputStream paramByteArrayOutputStream);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicSessionStream
  * JD-Core Version:    0.7.0.1
  */

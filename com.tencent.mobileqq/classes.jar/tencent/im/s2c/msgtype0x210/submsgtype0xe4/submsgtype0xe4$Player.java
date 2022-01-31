@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0xe4$Player
-  extends MessageMicro
+  extends MessageMicro<Player>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_logo_url = PBField.initBytes(ByteStringMicro.EMPTY);

@@ -1,27 +1,60 @@
+import android.content.Context;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.net.HttpURLConnection;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class yut
-  implements Runnable
+public class yut
+  extends nbq
 {
-  yut(yus paramyus, HttpURLConnection paramHttpURLConnection) {}
+  public boolean a;
   
-  public void run()
+  public yut(Context paramContext, String paramString)
   {
-    try
-    {
-      this.jdField_a_of_type_JavaNetHttpURLConnection.disconnect();
+    super(paramContext, paramString);
+  }
+  
+  public String a()
+  {
+    return "key_for_troop_config_for_all_cfg";
+  }
+  
+  public void a(String paramString)
+  {
+    boolean bool = true;
+    this.a = true;
+    if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    catch (Throwable localThrowable)
+    for (;;)
     {
-      QLog.e("apollo_client_ApolloUrlInterceptor", 2, "disconnect error:" + localThrowable.getMessage());
+      try
+      {
+        if (new JSONObject(paramString).optInt("isShow3kTroopTips") != 1) {
+          break label56;
+        }
+        this.a = bool;
+        return;
+      }
+      catch (JSONException paramString) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("TroopConfigForAllUser", 2, paramString.getMessage());
+      return;
+      label56:
+      bool = false;
     }
+  }
+  
+  public String b()
+  {
+    return "key_for_troop_config_for_all_cfg_version";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yut
  * JD-Core Version:    0.7.0.1
  */

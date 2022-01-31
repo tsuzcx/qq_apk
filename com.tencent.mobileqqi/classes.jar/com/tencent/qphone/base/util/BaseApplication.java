@@ -10,7 +10,7 @@ public abstract class BaseApplication
 {
   public static int appnewavmsgicon;
   public static int appnewmsgicon = 0;
-  static Context context;
+  public static BaseApplication context;
   public static int defaultNotifSoundResourceId = 0;
   public static int devlockQuickloginIcon = 0;
   public static ArrayList exclusiveStreamList = new ArrayList();
@@ -63,6 +63,16 @@ public abstract class BaseApplication
   public static int getQQWiFiIcon()
   {
     return qqwifiicon;
+  }
+  
+  public boolean doesHasPhonePermission()
+  {
+    return false;
+  }
+  
+  public boolean doesHasSDCardPermission()
+  {
+    return false;
   }
   
   public void onCreate()

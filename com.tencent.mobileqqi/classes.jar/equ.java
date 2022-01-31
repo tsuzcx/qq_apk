@@ -1,17 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class equ
   implements View.OnClickListener
 {
-  public equ(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public equ(SelectMemberActivity paramSelectMemberActivity) {}
   
   public void onClick(View paramView)
   {
-    PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 1, true);
-    paramView.setClickable(false);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.showSoftInput(this.a.jdField_a_of_type_AndroidWidgetEditText, 0);
   }
 }
 

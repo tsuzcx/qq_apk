@@ -79,10 +79,10 @@ import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MsgAutoMonitorUtil;
-import fob;
-import foc;
-import fod;
-import foe;
+import fjp;
+import fjq;
+import fjr;
+import fjs;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -645,7 +645,7 @@ public class QQMessageFacade
     if (Thread.currentThread() == localLooper.getThread()) {
       return a(localDataLineMsgSet);
     }
-    new Handler(localLooper).post(new fod(this, localDataLineMsgSet));
+    new Handler(localLooper).post(new fjr(this, localDataLineMsgSet));
     return 0;
   }
   
@@ -685,7 +685,7 @@ public class QQMessageFacade
       }
       return i1;
     }
-    new Handler((Looper)localObject).post(new foe(this, paramDataLineMsgSet));
+    new Handler((Looper)localObject).post(new fjs(this, paramDataLineMsgSet));
     return 0;
   }
   
@@ -804,7 +804,7 @@ public class QQMessageFacade
         }
       }
     }
-    new Handler((Looper)localObject2).post(new foc(this, paramDataLineMsgRecord, (WaitEvent)localObject1));
+    new Handler((Looper)localObject2).post(new fjq(this, paramDataLineMsgRecord, (WaitEvent)localObject1));
     ((WaitEvent)localObject1).a(-1L);
     return 0L;
   }
@@ -1402,7 +1402,7 @@ public class QQMessageFacade
   
   public void a()
   {
-    ThreadManager.a(new fob(this));
+    ThreadManager.a(new fjp(this));
   }
   
   public void a(int paramInt)

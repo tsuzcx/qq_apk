@@ -25,6 +25,8 @@ public class WtloginServlet
 {
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
+    int k = 0;
+    int j = 0;
     if (paramFromServiceMsg.getBusinessFailCode() == 3002) {}
     Bundle localBundle;
     for (int i = 2107;; i = paramIntent.getIntExtra("action", 0))
@@ -212,8 +214,7 @@ public class WtloginServlet
     localBundle.putInt("cmd", ((Integer)paramFromServiceMsg.attributes.get("cmd")).intValue());
     notifyObserver(paramIntent, 2107, paramFromServiceMsg.isSuccess(), localBundle, WtloginObserver.class);
     return;
-    Object localObject2;
-    Object localObject3;
+    Object localObject1;
     if (paramFromServiceMsg.attributes != null)
     {
       localObject2 = paramFromServiceMsg.getAttribute("userAccount");
@@ -225,255 +226,268 @@ public class WtloginServlet
       localBundle.putByteArray("supersig", (byte[])paramFromServiceMsg.attributes.get("supersig"));
       localBundle.putByteArray("contactssig", (byte[])paramFromServiceMsg.attributes.get("contactssig"));
       localBundle.putByteArray("msg", (byte[])paramFromServiceMsg.attributes.get("msg"));
-      localObject3 = paramFromServiceMsg.getAttribute("ret");
-      localObject2 = Integer.valueOf(paramFromServiceMsg.getBusinessFailCode());
-      localObject1 = localObject2;
-      if (localObject3 != null)
+      localObject2 = (byte[])paramFromServiceMsg.getAttribute("resp_register_lh_sig", null);
+      if ((localObject2 != null) && (localObject2.length > 0))
       {
-        localObject1 = localObject2;
-        if ((localObject3 instanceof Integer)) {
-          localObject1 = (Integer)localObject3;
+        localBundle.putByteArray("lhsig", (byte[])localObject2);
+        if (QLog.isColorLevel()) {
+          QLog.d("wtLogin_LiangHao", 2, "wtloginServlet|lhsig= " + new String((byte[])localObject2));
         }
       }
-      localBundle.putInt("ret", ((Integer)localObject1).intValue());
+      localObject2 = paramFromServiceMsg.getAttribute("ret");
+      i = paramFromServiceMsg.getBusinessFailCode();
+      if ((localObject2 == null) || (!(localObject2 instanceof Integer))) {
+        break label4665;
+      }
     }
-    notifyObserver(paramIntent, 2117, paramFromServiceMsg.isSuccess(), localBundle, WtloginObserver.class);
-    return;
-    if (paramFromServiceMsg.attributes != null)
+    Integer localInteger;
+    label4633:
+    label4638:
+    label4647:
+    label4656:
+    label4665:
+    for (Object localObject2 = (Integer)localObject2;; localInteger = Integer.valueOf(i))
     {
-      localBundle.putString("countryCode", (String)paramFromServiceMsg.attributes.get("countryCode"));
-      localBundle.putString("mobile", (String)paramFromServiceMsg.attributes.get("mobile"));
-      localBundle.putParcelable("errMsg", (ErrMsg)paramFromServiceMsg.attributes.get("errMsg"));
-      localBundle.putString("msg", (String)paramFromServiceMsg.attributes.get("msg"));
-      localObject3 = paramFromServiceMsg.getAttribute("ret");
-      localObject2 = Integer.valueOf(paramFromServiceMsg.getBusinessFailCode());
-      localObject1 = localObject2;
-      if (localObject3 != null)
+      localBundle.putInt("ret", ((Integer)localObject2).intValue());
+      if (QLog.isColorLevel()) {
+        QLog.d("wtLogin_LiangHao", 2, "wtloginServlet|RegGetAccount|ret=" + localObject2 + ",uin=" + localObject1);
+      }
+      if (!TextUtils.isEmpty(paramIntent.getStringExtra("lhuin"))) {
+        localBundle.putBoolean("reg_LiangHao", true);
+      }
+      notifyObserver(paramIntent, 2117, paramFromServiceMsg.isSuccess(), localBundle, WtloginObserver.class);
+      return;
+      if (paramFromServiceMsg.attributes != null)
       {
-        localObject1 = localObject2;
-        if ((localObject3 instanceof Integer)) {
-          localObject1 = (Integer)localObject3;
+        localBundle.putString("countryCode", (String)paramFromServiceMsg.attributes.get("countryCode"));
+        localBundle.putString("mobile", (String)paramFromServiceMsg.attributes.get("mobile"));
+        localBundle.putParcelable("errMsg", (ErrMsg)paramFromServiceMsg.attributes.get("errMsg"));
+        localBundle.putString("msg", (String)paramFromServiceMsg.attributes.get("msg"));
+        localObject1 = paramFromServiceMsg.getAttribute("ret");
+        i = paramFromServiceMsg.getBusinessFailCode();
+        if ((localObject1 == null) || (!(localObject1 instanceof Integer))) {
+          break label4656;
         }
       }
-      localBundle.putInt("ret", ((Integer)localObject1).intValue());
-    }
-    notifyObserver(paramIntent, 2118, paramFromServiceMsg.isSuccess(), localBundle, WtloginObserver.class);
-    return;
-    if (paramFromServiceMsg.attributes != null)
-    {
-      localBundle.putString("mobile", (String)paramFromServiceMsg.attributes.get("mobile"));
-      localBundle.putParcelable("errMsg", (ErrMsg)paramFromServiceMsg.attributes.get("errMsg"));
-      localBundle.putString("msg", (String)paramFromServiceMsg.attributes.get("msg"));
-      localObject3 = paramFromServiceMsg.getAttribute("ret");
-      localObject2 = Integer.valueOf(paramFromServiceMsg.getBusinessFailCode());
-      localObject1 = localObject2;
-      if (localObject3 != null)
+      for (localObject1 = (Integer)localObject1;; localObject1 = Integer.valueOf(i))
       {
-        localObject1 = localObject2;
-        if ((localObject3 instanceof Integer)) {
-          localObject1 = (Integer)localObject3;
-        }
-      }
-      localBundle.putInt("ret", ((Integer)localObject1).intValue());
-    }
-    notifyObserver(paramIntent, 2119, paramFromServiceMsg.isSuccess(), localBundle, WtloginObserver.class);
-    return;
-    if (paramFromServiceMsg.attributes != null)
-    {
-      localBundle.putString("msgCode", (String)paramFromServiceMsg.attributes.get("msgCode"));
-      localBundle.putString("mobile", (String)paramFromServiceMsg.attributes.get("mobile"));
-      localBundle.putParcelable("errMsg", (ErrMsg)paramFromServiceMsg.attributes.get("errMsg"));
-      localObject3 = paramFromServiceMsg.getAttribute("ret");
-      localObject2 = Integer.valueOf(paramFromServiceMsg.getBusinessFailCode());
-      localObject1 = localObject2;
-      if (localObject3 != null)
-      {
-        localObject1 = localObject2;
-        if ((localObject3 instanceof Integer)) {
-          localObject1 = (Integer)localObject3;
-        }
-      }
-      localBundle.putInt("ret", ((Integer)localObject1).intValue());
-    }
-    notifyObserver(paramIntent, 2120, paramFromServiceMsg.isSuccess(), localBundle, WtloginObserver.class);
-    return;
-    String str;
-    if (paramFromServiceMsg.attributes != null)
-    {
-      getAppRuntime().getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
-      localBundle.putString("uin", paramFromServiceMsg.getUin());
-      localBundle.putString("alias", paramIntent.getStringExtra("userAccount"));
-      localBundle.putString("error", paramFromServiceMsg.getBusinessFailMsg());
-      localBundle.putByteArray("st_temp", (byte[])paramFromServiceMsg.getAttribute("st_temp"));
-      localBundle.putByteArray("st_temp_key", (byte[])paramFromServiceMsg.getAttribute("st_temp_key"));
-      localObject3 = paramFromServiceMsg.getAttribute("resp_login_url");
-      localObject2 = "";
-      localObject1 = localObject2;
-      if (localObject3 != null)
-      {
-        localObject1 = localObject2;
-        if ((localObject3 instanceof String)) {
-          localObject1 = (String)localObject3;
-        }
-      }
-      localObject2 = paramFromServiceMsg.getAttribute("resp_logini_ret");
-      j = 0;
-      i = j;
-      if (localObject2 != null)
-      {
-        i = j;
-        if ((localObject2 instanceof Integer)) {
-          i = ((Integer)localObject2).intValue();
-        }
-      }
-      localBundle.putString("errorurl", (String)localObject1);
-      localBundle.putInt("loginret", i);
-      localBundle.putInt("code", paramFromServiceMsg.getResultCode());
-      if (paramFromServiceMsg.isSuccess())
-      {
-        if (!"com.tencent.mobileqq:openSdk".equals(getAppRuntime().getApplication().getProcessName()))
+        localBundle.putInt("ret", ((Integer)localObject1).intValue());
+        notifyObserver(paramIntent, 2118, paramFromServiceMsg.isSuccess(), localBundle, WtloginObserver.class);
+        return;
+        if (paramFromServiceMsg.attributes != null)
         {
-          MsfSdkUtils.addSimpleAccount(paramFromServiceMsg.getUin());
-          MsfSdkUtils.updateSimpleAccount(paramFromServiceMsg.getUin(), true);
-          if (!paramFromServiceMsg.getUin().equals(paramIntent.getStringExtra("userAccount"))) {
-            MsfSdkUtils.delSimpleAccount(paramIntent.getStringExtra("userAccount"));
+          localBundle.putString("mobile", (String)paramFromServiceMsg.attributes.get("mobile"));
+          localBundle.putParcelable("errMsg", (ErrMsg)paramFromServiceMsg.attributes.get("errMsg"));
+          localBundle.putString("msg", (String)paramFromServiceMsg.attributes.get("msg"));
+          localObject1 = paramFromServiceMsg.getAttribute("ret");
+          i = paramFromServiceMsg.getBusinessFailCode();
+          if ((localObject1 == null) || (!(localObject1 instanceof Integer))) {
+            break label4647;
           }
         }
-        localObject1 = paramIntent.getStringExtra("userAccount");
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        for (localObject1 = (Integer)localObject1;; localObject1 = Integer.valueOf(i))
         {
-          getAppRuntime().getApplication().setProperty(Constants.PropertiesKey.uinDisplayName.toString() + paramFromServiceMsg.getUin(), (String)localObject1);
-          localObject2 = MsfSdkUtils.getLoginedAccountList();
-          if (localObject2 != null)
+          localBundle.putInt("ret", ((Integer)localObject1).intValue());
+          notifyObserver(paramIntent, 2119, paramFromServiceMsg.isSuccess(), localBundle, WtloginObserver.class);
+          return;
+          if (paramFromServiceMsg.attributes != null)
           {
-            i = 0;
-            if (i < ((List)localObject2).size())
+            localBundle.putString("msgCode", (String)paramFromServiceMsg.attributes.get("msgCode"));
+            localBundle.putString("mobile", (String)paramFromServiceMsg.attributes.get("mobile"));
+            localBundle.putParcelable("errMsg", (ErrMsg)paramFromServiceMsg.attributes.get("errMsg"));
+            localObject1 = paramFromServiceMsg.getAttribute("ret");
+            i = paramFromServiceMsg.getBusinessFailCode();
+            if ((localObject1 == null) || (!(localObject1 instanceof Integer))) {
+              break label4638;
+            }
+          }
+          for (localObject1 = (Integer)localObject1;; localObject1 = Integer.valueOf(i))
+          {
+            localBundle.putInt("ret", ((Integer)localObject1).intValue());
+            notifyObserver(paramIntent, 2120, paramFromServiceMsg.isSuccess(), localBundle, WtloginObserver.class);
+            return;
+            Object localObject3;
+            if (paramFromServiceMsg.attributes != null)
             {
-              localObject3 = (SimpleAccount)((List)localObject2).get(i);
-              if (localObject3 == null) {}
-              for (;;)
+              getAppRuntime().getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
+              localBundle.putString("uin", paramFromServiceMsg.getUin());
+              localBundle.putString("alias", paramIntent.getStringExtra("userAccount"));
+              localBundle.putString("error", paramFromServiceMsg.getBusinessFailMsg());
+              localBundle.putByteArray("st_temp", (byte[])paramFromServiceMsg.getAttribute("st_temp"));
+              localBundle.putByteArray("st_temp_key", (byte[])paramFromServiceMsg.getAttribute("st_temp_key"));
+              localObject3 = paramFromServiceMsg.getAttribute("resp_login_url");
+              localObject2 = "";
+              localObject1 = localObject2;
+              if (localObject3 != null)
               {
-                i += 1;
-                break;
-                localObject3 = ((SimpleAccount)localObject3).getUin();
-                str = getAppRuntime().getApplication().getProperty(Constants.PropertiesKey.uinDisplayName.toString() + (String)localObject3);
-                if ((!TextUtils.isEmpty(str)) && (str.equals(localObject1)) && (!((String)localObject3).equals(paramFromServiceMsg.getUin()))) {
-                  getAppRuntime().getApplication().setProperty(Constants.PropertiesKey.uinDisplayName.toString() + (String)localObject3, (String)localObject3);
+                localObject1 = localObject2;
+                if ((localObject3 instanceof String)) {
+                  localObject1 = (String)localObject3;
+                }
+              }
+              localObject2 = paramFromServiceMsg.getAttribute("resp_logini_ret");
+              if ((localObject2 == null) || (!(localObject2 instanceof Integer))) {
+                break label4633;
+              }
+            }
+            for (i = ((Integer)localObject2).intValue();; i = 0)
+            {
+              localObject2 = paramFromServiceMsg.getAttribute("resp_login_lhsig");
+              if ((localObject2 != null) && ((localObject2 instanceof byte[]))) {}
+              for (localObject2 = (byte[])localObject2;; localInteger = null)
+              {
+                localBundle.putString("errorurl", (String)localObject1);
+                localBundle.putInt("loginret", i);
+                localBundle.putInt("code", paramFromServiceMsg.getResultCode());
+                localBundle.putByteArray("lhsig", (byte[])localObject2);
+                String str;
+                if (paramFromServiceMsg.isSuccess())
+                {
+                  if (!"com.tencent.mobileqq:openSdk".equals(getAppRuntime().getApplication().getQQProcessName()))
+                  {
+                    MsfSdkUtils.addSimpleAccount(paramFromServiceMsg.getUin());
+                    MsfSdkUtils.updateSimpleAccount(paramFromServiceMsg.getUin(), true);
+                    if (!paramFromServiceMsg.getUin().equals(paramIntent.getStringExtra("userAccount"))) {
+                      MsfSdkUtils.delSimpleAccount(paramIntent.getStringExtra("userAccount"));
+                    }
+                  }
+                  localObject1 = paramIntent.getStringExtra("userAccount");
+                  if (!TextUtils.isEmpty((CharSequence)localObject1))
+                  {
+                    getAppRuntime().getApplication().setProperty(Constants.PropertiesKey.uinDisplayName.toString() + paramFromServiceMsg.getUin(), (String)localObject1);
+                    localObject2 = MsfSdkUtils.getLoginedAccountList();
+                    if (localObject2 != null)
+                    {
+                      i = j;
+                      if (i < ((List)localObject2).size())
+                      {
+                        localObject3 = (SimpleAccount)((List)localObject2).get(i);
+                        if (localObject3 == null) {}
+                        for (;;)
+                        {
+                          i += 1;
+                          break;
+                          localObject3 = ((SimpleAccount)localObject3).getUin();
+                          str = getAppRuntime().getApplication().getProperty(Constants.PropertiesKey.uinDisplayName.toString() + (String)localObject3);
+                          if ((!TextUtils.isEmpty(str)) && (str.equals(localObject1)) && (!((String)localObject3).equals(paramFromServiceMsg.getUin()))) {
+                            getAppRuntime().getApplication().setProperty(Constants.PropertiesKey.uinDisplayName.toString() + (String)localObject3, (String)localObject3);
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                getAppRuntime().getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
+                localBundle.putParcelable("lastError", (ErrMsg)paramFromServiceMsg.attributes.get("lastError"));
+                localBundle.putString("userAccount", (String)paramFromServiceMsg.attributes.get("userAccount"));
+                i = paramFromServiceMsg.getResultCode();
+                localObject1 = paramFromServiceMsg.attributes.get("ret");
+                if ((localObject1 != null) && ((localObject1 instanceof Integer))) {
+                  i = ((Integer)localObject1).intValue();
+                }
+                long l1;
+                long l2;
+                for (;;)
+                {
+                  localBundle.putInt("ret", i);
+                  notifyObserver(paramIntent, 2121, paramFromServiceMsg.isSuccess(), localBundle, WtloginObserver.class);
+                  return;
+                  long l3;
+                  if (paramFromServiceMsg.attributes != null)
+                  {
+                    getAppRuntime().getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
+                    if (paramFromServiceMsg.isSuccess())
+                    {
+                      MsfSdkUtils.addSimpleAccount(paramFromServiceMsg.getUin());
+                      MsfSdkUtils.updateSimpleAccount(paramFromServiceMsg.getUin(), true);
+                      if (!paramFromServiceMsg.getUin().equals(paramIntent.getStringExtra("userAccount"))) {
+                        MsfSdkUtils.delSimpleAccount(paramIntent.getStringExtra("userAccount"));
+                      }
+                      localObject1 = paramIntent.getStringExtra("userAccount");
+                      if (!TextUtils.isEmpty((CharSequence)localObject1))
+                      {
+                        getAppRuntime().getApplication().setProperty(Constants.PropertiesKey.uinDisplayName.toString() + paramFromServiceMsg.getUin(), (String)localObject1);
+                        localObject2 = MsfSdkUtils.getLoginedAccountList();
+                        if (localObject2 != null)
+                        {
+                          i = k;
+                          if (i < ((List)localObject2).size())
+                          {
+                            localObject3 = (SimpleAccount)((List)localObject2).get(i);
+                            if (localObject3 == null) {}
+                            for (;;)
+                            {
+                              i += 1;
+                              break;
+                              localObject3 = ((SimpleAccount)localObject3).getUin();
+                              str = getAppRuntime().getApplication().getProperty(Constants.PropertiesKey.uinDisplayName.toString() + (String)localObject3);
+                              if ((!TextUtils.isEmpty(str)) && (str.equals(localObject1)) && (!((String)localObject3).equals(paramFromServiceMsg.getUin()))) {
+                                getAppRuntime().getApplication().setProperty(Constants.PropertiesKey.uinDisplayName.toString() + (String)localObject3, (String)localObject3);
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                    localObject1 = (String)paramFromServiceMsg.getAttribute("mainaccount");
+                    localBundle.putString("submainaccount", (String)localObject1);
+                    localObject2 = getAppRuntime().getApplication().getFirstSimpleAccount();
+                    l3 = System.currentTimeMillis();
+                    l1 = l3;
+                    if (localObject2 != null) {
+                      l2 = l3;
+                    }
+                  }
+                  try
+                  {
+                    long l4 = getAppRuntime().getApplication().string2Long(getAppRuntime().getApplication().getProperty(((SimpleAccount)localObject2).getUin() + Constants.Key._logintime));
+                    l1 = l3;
+                    if (l3 <= l4)
+                    {
+                      l3 = 1L + l4;
+                      l1 = l3;
+                      l2 = l3;
+                      if (QLog.isColorLevel())
+                      {
+                        l2 = l3;
+                        QLog.d("mqq", 2, "CNR account savetime => system time is error..");
+                        l1 = l3;
+                      }
+                    }
+                  }
+                  catch (Exception localException)
+                  {
+                    for (;;)
+                    {
+                      localException.printStackTrace();
+                      l1 = l2;
+                    }
+                  }
+                  if (paramFromServiceMsg.getUin() != null) {
+                    getAppRuntime().getApplication().setProperty(paramFromServiceMsg.getUin() + Constants.Key._logintime, String.valueOf(l1));
+                  }
+                  if (localObject1 != null) {
+                    getAppRuntime().getApplication().setProperty((String)localObject1 + Constants.Key._logintime, String.valueOf(l1 + 1L));
+                  }
+                  getAppRuntime().getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
+                  localBundle.putParcelable("lastError", (ErrMsg)paramFromServiceMsg.attributes.get("lastError"));
+                  localBundle.putString("userAccount", paramFromServiceMsg.getUin());
+                  i = paramFromServiceMsg.getResultCode();
+                  localObject1 = paramFromServiceMsg.attributes.get("ret");
+                  if ((localObject1 != null) && ((localObject1 instanceof Integer)))
+                  {
+                    i = ((Integer)localObject1).intValue();
+                    localBundle.putInt("ret", i);
+                    notifyObserver(paramIntent, 2122, paramFromServiceMsg.isSuccess(), localBundle, WtloginObserver.class);
+                    return;
+                  }
                 }
               }
             }
           }
         }
       }
-      getAppRuntime().getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
-      localBundle.putParcelable("lastError", (ErrMsg)paramFromServiceMsg.attributes.get("lastError"));
-      localBundle.putString("userAccount", (String)paramFromServiceMsg.attributes.get("userAccount"));
-      j = paramFromServiceMsg.getResultCode();
-      localObject1 = paramFromServiceMsg.attributes.get("ret");
-      i = j;
-      if (localObject1 != null)
-      {
-        i = j;
-        if ((localObject1 instanceof Integer)) {
-          i = ((Integer)localObject1).intValue();
-        }
-      }
-      localBundle.putInt("ret", i);
     }
-    notifyObserver(paramIntent, 2121, paramFromServiceMsg.isSuccess(), localBundle, WtloginObserver.class);
-    return;
-    long l3;
-    if (paramFromServiceMsg.attributes != null)
-    {
-      getAppRuntime().getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
-      if (paramFromServiceMsg.isSuccess())
-      {
-        MsfSdkUtils.addSimpleAccount(paramFromServiceMsg.getUin());
-        MsfSdkUtils.updateSimpleAccount(paramFromServiceMsg.getUin(), true);
-        if (!paramFromServiceMsg.getUin().equals(paramIntent.getStringExtra("userAccount"))) {
-          MsfSdkUtils.delSimpleAccount(paramIntent.getStringExtra("userAccount"));
-        }
-        localObject1 = paramIntent.getStringExtra("userAccount");
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          getAppRuntime().getApplication().setProperty(Constants.PropertiesKey.uinDisplayName.toString() + paramFromServiceMsg.getUin(), (String)localObject1);
-          localObject2 = MsfSdkUtils.getLoginedAccountList();
-          if (localObject2 != null)
-          {
-            i = 0;
-            if (i < ((List)localObject2).size())
-            {
-              localObject3 = (SimpleAccount)((List)localObject2).get(i);
-              if (localObject3 == null) {}
-              for (;;)
-              {
-                i += 1;
-                break;
-                localObject3 = ((SimpleAccount)localObject3).getUin();
-                str = getAppRuntime().getApplication().getProperty(Constants.PropertiesKey.uinDisplayName.toString() + (String)localObject3);
-                if ((!TextUtils.isEmpty(str)) && (str.equals(localObject1)) && (!((String)localObject3).equals(paramFromServiceMsg.getUin()))) {
-                  getAppRuntime().getApplication().setProperty(Constants.PropertiesKey.uinDisplayName.toString() + (String)localObject3, (String)localObject3);
-                }
-              }
-            }
-          }
-        }
-      }
-      localObject1 = (String)paramFromServiceMsg.getAttribute("mainaccount");
-      localBundle.putString("submainaccount", (String)localObject1);
-      localObject2 = getAppRuntime().getApplication().getFirstSimpleAccount();
-      l3 = System.currentTimeMillis();
-      l1 = l3;
-      if (localObject2 != null) {
-        l2 = l3;
-      }
-    }
-    try
-    {
-      long l4 = getAppRuntime().getApplication().string2Long(getAppRuntime().getApplication().getProperty(((SimpleAccount)localObject2).getUin() + Constants.Key._logintime));
-      l1 = l3;
-      if (l3 <= l4)
-      {
-        l3 = l4 + 1L;
-        l1 = l3;
-        l2 = l3;
-        if (QLog.isColorLevel())
-        {
-          l2 = l3;
-          QLog.d("mqq", 2, "CNR account savetime => system time is error..shit");
-          l1 = l3;
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        l1 = l2;
-      }
-    }
-    if (paramFromServiceMsg.getUin() != null) {
-      getAppRuntime().getApplication().setProperty(paramFromServiceMsg.getUin() + Constants.Key._logintime, String.valueOf(l1));
-    }
-    if (localObject1 != null) {
-      getAppRuntime().getApplication().setProperty((String)localObject1 + Constants.Key._logintime, String.valueOf(1L + l1));
-    }
-    getAppRuntime().getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
-    localBundle.putParcelable("lastError", (ErrMsg)paramFromServiceMsg.attributes.get("lastError"));
-    localBundle.putString("userAccount", paramFromServiceMsg.getUin());
-    int j = paramFromServiceMsg.getResultCode();
-    Object localObject1 = paramFromServiceMsg.attributes.get("ret");
-    i = j;
-    if (localObject1 != null)
-    {
-      i = j;
-      if ((localObject1 instanceof Integer)) {
-        i = ((Integer)localObject1).intValue();
-      }
-    }
-    localBundle.putInt("ret", i);
-    notifyObserver(paramIntent, 2122, paramFromServiceMsg.isSuccess(), localBundle, WtloginObserver.class);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket) {}
@@ -508,6 +522,9 @@ public class WtloginServlet
     case 2105: 
       sendToMSF(paramIntent, MsfMsgUtil.get_wt_CloseCode((String)localObject, paramIntent.getStringExtra("userAccount"), paramIntent.getLongExtra("appid", 0L), paramIntent.getByteArrayExtra("code"), paramIntent.getIntExtra("version", 0), paramIntent.getStringArrayListExtra("data"), 30000L));
       return;
+    case 2213: 
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_CancelCode((String)localObject, paramIntent.getStringExtra("userAccount"), paramIntent.getLongExtra("appid", 0L), paramIntent.getByteArrayExtra("code"), 30000L));
+      return;
     case 2106: 
       WFastLoginInfo localWFastLoginInfo = (WFastLoginInfo)((NewIntent)paramIntent).intentMap.get("fastLoginInfo");
       sendToMSF(paramIntent, MsfMsgUtil.get_wt_GetA1WithA1((String)localObject, paramIntent.getStringExtra("userAccount"), paramIntent.getLongExtra("dwSrcAppid", 0L), paramIntent.getLongExtra("dwSubSrcAppid", 0L), paramIntent.getByteArrayExtra("dstAppName"), paramIntent.getLongExtra("dwDstSsoVer", 0L), paramIntent.getLongExtra("dwDstAppid", 0L), paramIntent.getLongExtra("dwSubDstAppid", 0L), paramIntent.getByteArrayExtra("dstAppVer"), paramIntent.getByteArrayExtra("dstAppSign"), localWFastLoginInfo, 30000L));
@@ -540,7 +557,7 @@ public class WtloginServlet
       sendToMSF(paramIntent, MsfMsgUtil.get_wt_CheckSMSAndGetStExt((String)localObject, paramIntent.getStringExtra("userAccount"), paramIntent.getByteArrayExtra("userInput"), 30000L));
       return;
     case 2117: 
-      sendToMSF(paramIntent, MsfMsgUtil.get_wt_RegGetSMSVerifyLoginAccount((String)localObject, paramIntent.getByteArrayExtra("msgchk"), paramIntent.getByteArrayExtra("nick"), 30000L));
+      sendToMSF(paramIntent, MsfMsgUtil.get_wt_RegGetSMSVerifyLoginAccount((String)localObject, paramIntent.getByteArrayExtra("msgchk"), paramIntent.getByteArrayExtra("nick"), paramIntent.getStringExtra("lhuin"), paramIntent.getStringExtra("unBindlhUin"), paramIntent.getStringExtra("appVersion"), 30000L));
       return;
     case 2118: 
       sendToMSF(paramIntent, MsfMsgUtil.get_wt_CheckSMSVerifyLoginAccount((String)localObject, paramIntent.getStringExtra("userAccount"), paramIntent.getStringExtra("countryCode"), paramIntent.getIntExtra("appid", 0), 30000L));

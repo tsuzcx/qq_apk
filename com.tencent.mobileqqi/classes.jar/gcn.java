@@ -1,20 +1,24 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.model.TroopInfoManager;
 
-public final class gcn
-  implements Runnable
+public class gcn
+  extends Handler
 {
-  public gcn(String paramString) {}
-  
-  public void run()
+  public gcn(TroopInfoManager paramTroopInfoManager, Looper paramLooper)
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 2, this.a, 0).b(FMToastUtil.a());
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    TroopInfoManager.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gcn
  * JD-Core Version:    0.7.0.1
  */

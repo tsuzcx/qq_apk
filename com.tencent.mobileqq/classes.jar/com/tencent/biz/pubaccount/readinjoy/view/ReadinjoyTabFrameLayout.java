@@ -7,8 +7,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
+import azkz;
 import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class ReadinjoyTabFrameLayout
   extends FrameLayout
 {
   private int jdField_a_of_type_Int;
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   private int b;
   
@@ -53,7 +53,7 @@ public class ReadinjoyTabFrameLayout
       i = 0;
       if (i < this.jdField_a_of_type_JavaUtilList.size()) {
         if (a((View)this.jdField_a_of_type_JavaUtilList.get(i), paramMotionEvent.getRawX(), paramMotionEvent.getRawY())) {
-          FrameHelperActivity.b(false);
+          FrameHelperActivity.c(false);
         }
       }
     }
@@ -90,7 +90,7 @@ public class ReadinjoyTabFrameLayout
       if ((!this.jdField_a_of_type_Boolean) || (i <= k)) {
         break label245;
       }
-      if ((j / i >= 0.6F) || (this.jdField_a_of_type_Int <= (int)(ScreenUtil.jdField_a_of_type_Int * 0.1F))) {
+      if ((j / i >= 0.6F) || (this.jdField_a_of_type_Int <= (int)(azkz.jdField_a_of_type_Int * 0.1F))) {
         break label253;
       }
     }
@@ -98,13 +98,13 @@ public class ReadinjoyTabFrameLayout
     for (i = 1;; i = 0)
     {
       if (i == 0) {
-        FrameHelperActivity.b(true);
+        FrameHelperActivity.c(true);
       }
       this.jdField_a_of_type_Boolean = false;
       break;
       if ((i == 1) || (i == 3))
       {
-        FrameHelperActivity.b(true);
+        FrameHelperActivity.c(true);
         this.jdField_a_of_type_Boolean = false;
       }
       i = 0;
@@ -116,7 +116,7 @@ public class ReadinjoyTabFrameLayout
   {
     int i = paramMotionEvent.getAction();
     if (i == 0) {
-      FrameHelperActivity.b(false);
+      FrameHelperActivity.c(false);
     }
     for (;;)
     {
@@ -128,7 +128,7 @@ public class ReadinjoyTabFrameLayout
       catch (Exception paramMotionEvent) {}
       if ((i == 1) || (i == 3))
       {
-        FrameHelperActivity.b(true);
+        FrameHelperActivity.c(true);
         this.jdField_a_of_type_Boolean = false;
       }
     }
@@ -137,7 +137,7 @@ public class ReadinjoyTabFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrameLayout
  * JD-Core Version:    0.7.0.1
  */

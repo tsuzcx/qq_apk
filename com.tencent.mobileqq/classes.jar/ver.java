@@ -1,38 +1,62 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.Holder;
-import com.tencent.mobileqq.data.MessageForReplyText.LightReplyMsgRich2;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchFeedComment;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedComment;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
 
 public class ver
-  extends TextItemBuilder.Holder
+  extends urt
 {
-  public ViewGroup a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public ETTextView a;
-  public MessageForReplyText.LightReplyMsgRich2 a;
-  public BubbleImageView a;
-  public View b;
-  public ViewGroup b;
-  public TextView b;
-  public BubbleImageView b;
-  public ViewGroup c;
-  public TextView c;
-  public TextView d;
-  public int e;
+  private static final String jdField_a_of_type_JavaLangString = uqn.a("StorySvc.feed_comment_list_batch_775");
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private int c;
   
-  public ver(ReplyTextItemBuilder paramReplyTextItemBuilder) {}
+  public ver(List<String> paramList, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
+    {
+      this.c = i;
+      return;
+    }
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspBatchFeedComment localRspBatchFeedComment = new qqstory_service.RspBatchFeedComment();
+    try
+    {
+      localRspBatchFeedComment.mergeFrom(paramArrayOfByte);
+      return new ves(localRspBatchFeedComment);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqBatchFeedComment localReqBatchFeedComment = new qqstory_service.ReqBatchFeedComment();
+    List localList = a(this.jdField_a_of_type_JavaUtilList);
+    localReqBatchFeedComment.feed_id_list.set(localList);
+    localReqBatchFeedComment.source.set(this.c);
+    return localReqBatchFeedComment.toByteArray();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ver
  * JD-Core Version:    0.7.0.1
  */

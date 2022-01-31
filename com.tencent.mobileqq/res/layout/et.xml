@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/a4f" android:background="@color/br" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ejb" android:background="@color/k8" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <com.tencent.biz.subscribe.widget.textview.SafeTextView android:textSize="@dimen/aw6" android:textColor="@color/af" android:gravity="center" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:layout_marginBottom="25.0dip" android:text="这是一个Title啦" />
+        <LinearLayout android:orientation="vertical" android:id="@id/bcv" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" />
+        <Button android:textSize="@dimen/aw6" android:textColor="@color/af" android:id="@id/c3" android:background="@drawable/h8g" android:layout_width="fill_parent" android:layout_height="@dimen/wa" android:layout_marginTop="6.0dip" android:layout_marginBottom="0.0dip" android:text="@string/kab" />
+    </LinearLayout>
+</RelativeLayout>

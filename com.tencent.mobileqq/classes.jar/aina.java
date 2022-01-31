@@ -1,142 +1,148 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager;
-import com.tencent.mobileqq.teamwork.spread.BaseTimAIOTipsProcessor;
-import com.tencent.mobileqq.teamwork.spread.BuddyFileAIOMsgTips;
-import com.tencent.mobileqq.teamwork.spread.ConfigSetting;
-import com.tencent.mobileqq.teamwork.spread.TeamWorkTextMsgTipsProcessor;
-import com.tencent.mobileqq.teamwork.spread.TroopFileAIOMsgTips;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
+import com.tencent.widget.ListView;
 
 public class aina
-  implements Runnable
+  extends Dialog
+  implements TextWatcher, View.OnClickListener, View.OnTouchListener
 {
-  public aina(AIOMessageSpreadManager paramAIOMessageSpreadManager, ChatMessage paramChatMessage) {}
+  private aimz jdField_a_of_type_Aimz;
+  private View jdField_a_of_type_AndroidViewView;
+  EditText jdField_a_of_type_AndroidWidgetEditText;
+  ImageButton jdField_a_of_type_AndroidWidgetImageButton;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ListView jdField_a_of_type_ComTencentWidgetListView;
   
-  public void run()
+  public aina(NewStyleCountryActivity paramNewStyleCountryActivity, Context paramContext)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.i("AIOMessageSpreadManager", 1, "SubThread Process Start");
-    }
-    if (!AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("AIOMessageSpreadManager", 1, "config return false!");
-      }
-    }
-    label279:
-    do
+    super(paramContext);
+    requestWindowFeature(1);
+    getWindow().setSoftInputMode(36);
+    getWindow().addFlags(1024);
+    getWindow().setBackgroundDrawable(new ColorDrawable());
+    setContentView(2131561663);
+    paramContext = getWindow().getAttributes();
+    paramContext.x = 0;
+    paramContext.y = 0;
+    paramContext.width = -1;
+    paramContext.windowAnimations = 16973824;
+    paramContext.gravity = 51;
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365851));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
+    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
+    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131367817));
+    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
+    paramContext = (Button)findViewById(2131363522);
+    paramContext.setVisibility(0);
+    paramContext.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131375722);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371205));
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719579);
+    findViewById(2131376261).setVisibility(8);
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131376283));
+    this.jdField_a_of_type_Aimz = new aimz(paramNewStyleCountryActivity, null);
+    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Aimz);
+    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(this);
+  }
+  
+  void a(String paramString)
+  {
+    if ((paramString.equals("")) || (paramString.trim().length() == 0))
     {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       return;
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForText))
-      {
-        AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager, new TeamWorkTextMsgTipsProcessor(AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager), this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager)));
-        if (QLog.isDebugVersion()) {
-          QLog.i("AIOMessageSpreadManager", 1, "message is MessageForText");
-        }
-      }
-      for (;;)
-      {
-        if (AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a()) {
-          break label294;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("AIOMessageSpreadManager", 1, "file[" + AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a() + "] is not support!");
-        return;
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForFile))
-        {
-          if (QLog.isDebugVersion()) {
-            QLog.i("AIOMessageSpreadManager", 1, "message is MessageForFile");
-          }
-          AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager, new BuddyFileAIOMsgTips(AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager), this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager)));
-        }
-        else
-        {
-          if (!(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForTroopFile)) {
-            break label279;
-          }
-          if (QLog.isDebugVersion()) {
-            QLog.i("AIOMessageSpreadManager", 1, "message is MessageForTroopFile");
-          }
-          AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager, new TroopFileAIOMsgTips(AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager), this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager)));
-        }
-      }
-    } while (!QLog.isDebugVersion());
-    QLog.i("AIOMessageSpreadManager", 1, "message is unknown");
-    return;
-    label294:
-    String str = AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a();
-    if (QLog.isColorLevel()) {
-      QLog.i("AIOMessageSpreadManager", 1, "recv new File name is :" + str);
     }
-    Object localObject2 = AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a(AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager));
-    Object localObject1;
-    if (QLog.isDebugVersion())
-    {
-      localObject1 = new StringBuilder();
-      j = localObject2.length;
-      i = 0;
-      while (i < j)
-      {
-        ((StringBuilder)localObject1).append(localObject2[i]).append(",");
-        i += 1;
-      }
-      if (((StringBuilder)localObject1).length() > 0) {
-        ((StringBuilder)localObject1).deleteCharAt(((StringBuilder)localObject1).length() - 1);
-      }
-      QLog.i("AIOMessageSpreadManager", 1, "getConfig keyWords:" + ((StringBuilder)localObject1).toString());
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_Aimz.a(paramString);
+    if (this.jdField_a_of_type_Aimz.getCount() == 0) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     }
-    int j = localObject2.length;
-    int i = 0;
-    if (i < j)
+    for (;;)
     {
-      localObject1 = localObject2[i];
-      if (!str.contains((CharSequence)localObject1)) {}
-    }
-    for (i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("AIOMessageSpreadManager", 1, "keyWord[" + (String)localObject1 + "] find!");
-        }
-        str = AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a(AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager));
-        localObject2 = AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).b(AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager));
-        if ((TextUtils.isEmpty(str)) && (QLog.isColorLevel())) {
-          QLog.i("AIOMessageSpreadManager", 1, "tips is null! return, tips[" + str + "], link[" + (String)localObject2 + "]");
-        }
-        if (AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a(AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager)) == 1) {}
-        for (str = str + (String)localObject1 + "。" + (String)localObject2;; str = str + "。" + (String)localObject2)
-        {
-          if ((!(AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager) instanceof BuddyFileAIOMsgTips)) && (!(AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager) instanceof TroopFileAIOMsgTips))) {
-            break label743;
-          }
-          AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, str, (String)localObject2, "keyword", null);
-          return;
-          i += 1;
-          break;
-        }
-        label743:
-        if (!(AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager) instanceof TeamWorkTextMsgTipsProcessor)) {
-          break;
-        }
-        AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, str, (String)localObject2, "text_keyword", AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a((String)localObject1));
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("AIOMessageSpreadManager", 1, "keyWords not find!");
-      }
-      if ((AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager) instanceof TeamWorkTextMsgTipsProcessor)) {
-        break;
-      }
-      AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a(new ainb(this, str));
+      this.jdField_a_of_type_Aimz.notifyDataSetChanged();
       return;
-      localObject1 = "";
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
+  }
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    a(paramEditable);
+    if (paramEditable.equals(""))
+    {
+      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  /* Error */
+  public void dismiss()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokespecial 201	android/app/Dialog:dismiss	()V
+    //   4: aload_0
+    //   5: invokestatic 206	abvb:a	(Landroid/app/Dialog;)V
+    //   8: return
+    //   9: astore_1
+    //   10: aload_0
+    //   11: invokestatic 206	abvb:a	(Landroid/app/Dialog;)V
+    //   14: return
+    //   15: astore_1
+    //   16: aload_0
+    //   17: invokestatic 206	abvb:a	(Landroid/app/Dialog;)V
+    //   20: aload_1
+    //   21: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	22	0	this	aina
+    //   9	1	1	localException	java.lang.Exception
+    //   15	6	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   0	4	9	java/lang/Exception
+    //   0	4	15	finally
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131363522: 
+      dismiss();
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    ((InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

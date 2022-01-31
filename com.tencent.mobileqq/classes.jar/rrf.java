@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.ProteusParserWithHotReload.IHotReloadChangedObserver;
 
-public class rrf
-  implements Runnable
+class rrf
+  implements ProteusParserWithHotReload.IHotReloadChangedObserver
 {
-  public rrf(BaseChatPie paramBaseChatPie) {}
+  rrf(rqj paramrqj) {}
   
-  public void run()
+  public void onHotReloadChanged(Context paramContext, String paramString1, String paramString2)
   {
-    this.a.a.setSelectionFromBottom(this.a.a.getCount() - 1, 0);
+    this.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rrf
  * JD-Core Version:    0.7.0.1
  */

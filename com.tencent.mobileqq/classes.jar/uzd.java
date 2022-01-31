@@ -1,32 +1,27 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class uzd
-  implements ActionSheet.OnButtonClickListener
+  implements alrb
 {
-  uzd(uzb paramuzb, ActionSheet paramActionSheet) {}
+  uzd(uza paramuza) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (paramInt)
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface)) {}
+    for (localObject = (QQAppInterface)localObject;; localObject = null)
     {
-    default: 
+      if (localObject != null) {
+        ((ult)((QQAppInterface)localObject).a(98)).notifyUI(1023, true, Boolean.valueOf(paramBoolean));
+      }
       return;
     }
-    ChatActivityUtils.a(this.jdField_a_of_type_Uzb.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Uzb.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Uzb.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Uzb.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Uzb.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, null, true, this.jdField_a_of_type_Uzb.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, true, true, null, "from_internal");
-    ReportController.b(this.jdField_a_of_type_Uzb.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005974", "0X8005974", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uzd
  * JD-Core Version:    0.7.0.1
  */

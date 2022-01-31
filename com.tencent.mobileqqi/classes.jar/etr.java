@@ -1,12 +1,11 @@
 import android.os.Handler;
 import android.os.Message;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
+import com.tencent.mobileqq.activity.voip.VoipDialInterface;
 
 public class etr
   extends Handler
 {
-  public etr(ContactsInnerFrame paramContactsInnerFrame) {}
+  public etr(VoipDialInterface paramVoipDialInterface) {}
   
   public void handleMessage(Message paramMessage)
   {
@@ -14,14 +13,8 @@ public class etr
     {
     default: 
       return;
-    case 1: 
-      this.a.a.setPadding(0, 0, 40, 0);
-      return;
-    case 2: 
-      this.a.a.setPadding(0, 0, 0, 0);
-      return;
     }
-    ContactsInnerFrame.a(this.a);
+    VoipDialInterface.a(this.a);
   }
 }
 

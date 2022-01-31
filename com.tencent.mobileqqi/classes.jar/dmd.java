@@ -1,31 +1,21 @@
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SubAccountMessageActivity;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
 
-public class dmd
-  implements Runnable
+class dmd
+  implements DialogInterface.OnClickListener
 {
-  public dmd(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  dmd(dmb paramdmb) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
+    if (paramInt == 1)
     {
-      if ((RegisterQQNumberActivity.a(this.a) == null) && (!this.a.isFinishing()))
-      {
-        RegisterQQNumberActivity.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
-        RegisterQQNumberActivity.a(this.a).b(2131562645);
-      }
-      if ((RegisterQQNumberActivity.a(this.a) != null) && (!RegisterQQNumberActivity.a(this.a).isShowing())) {
-        RegisterQQNumberActivity.a(this.a).show();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      this.a.a.d();
+      SubAccountMessageActivity.c(this.a.a, true);
+      SubAccountAssistantManager.a().a(this.a.a.b);
+      this.a.a.f();
     }
   }
 }

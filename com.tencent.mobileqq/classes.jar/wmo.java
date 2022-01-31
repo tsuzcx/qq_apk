@@ -1,64 +1,21 @@
-import com.tencent.mobileqq.activity.contacts.base.CardViewController;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
+import java.util.List;
 
 public class wmo
-  extends FriendListObserver
+  extends uli
 {
-  public wmo(CardViewController paramCardViewController) {}
+  public List<MomeriesYearNode> a;
+  public boolean a;
   
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  public wmo(wml paramwml, ErrorMessage paramErrorMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardViewController", 2, "onCancelMayKnowRecommend isCancelRemote =" + CardViewController.a(this.a) + "， isSuccess = " + paramBoolean + ", mState = " + CardViewController.a(this.a));
-    }
-    if (paramBoolean)
-    {
-      if (CardViewController.a(this.a))
-      {
-        CardViewController.a(this.a);
-        int i = CardViewController.b(this.a);
-        if (QLog.isColorLevel()) {
-          QLog.d("CardViewController", 2, "onCancelMayKnowRecommend increaseIgnore times now = " + i);
-        }
-        CardViewController.a(this.a, paramString, null);
-        CardViewController.a(this.a, false);
-      }
-    }
-    else {
-      return;
-    }
-    CardViewController.b(this.a);
-  }
-  
-  protected void onGetMayKnowRecommend(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardViewController", 2, "onGetMayKnowRecommend isSuccess = " + paramBoolean + ", isRefreshingRemote =" + CardViewController.b(this.a) + ", waitingAccountChangeToRefresh =" + CardViewController.c(this.a));
-    }
-    if (CardViewController.b(this.a)) {
-      CardViewController.c(this.a);
-    }
-    while ((!paramBoolean) || (!CardViewController.c(this.a))) {
-      return;
-    }
-    CardViewController.b(this.a, false);
-    CardViewController.a(this.a, false, false);
-  }
-  
-  protected void onMayknowStateChanged(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardViewController", 2, "onMayknowStateChanged isSuccess = " + paramBoolean + ", waitingAccountChangeToRefresh =" + CardViewController.c(this.a));
-    }
-    if (paramBoolean) {
-      CardViewController.a(this.a, false, true);
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wmo
  * JD-Core Version:    0.7.0.1
  */

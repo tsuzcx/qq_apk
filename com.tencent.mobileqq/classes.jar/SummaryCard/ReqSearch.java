@@ -8,15 +8,15 @@ import java.util.ArrayList;
 public final class ReqSearch
   extends JceStruct
 {
-  static ArrayList cache_vvReqServices;
+  static ArrayList<byte[]> cache_vvReqServices;
   public int shVersion;
   public String strCountryCode = "";
   public String strKeyword = "";
-  public ArrayList vvReqServices;
+  public ArrayList<byte[]> vvReqServices;
   
   public ReqSearch() {}
   
-  public ReqSearch(String paramString1, String paramString2, int paramInt, ArrayList paramArrayList)
+  public ReqSearch(String paramString1, String paramString2, int paramInt, ArrayList<byte[]> paramArrayList)
   {
     this.strKeyword = paramString1;
     this.strCountryCode = paramString2;

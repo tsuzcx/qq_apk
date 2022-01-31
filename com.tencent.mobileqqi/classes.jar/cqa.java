@@ -1,37 +1,17 @@
-import android.os.Handler;
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import java.io.UnsupportedEncodingException;
+import com.tencent.mobileqq.activity.HelloListActivity;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class cqa
-  implements TextWatcher
+  implements Runnable
 {
-  public cqa(EditInfoActivity paramEditInfoActivity) {}
+  public cqa(HelloListActivity paramHelloListActivity, MessageRecord paramMessageRecord) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void run()
   {
-    if ((paramCharSequence == null) || (paramCharSequence.length() == 0))
-    {
-      this.a.b = ("0/" + this.a.c);
-      this.a.a.post(new cqb(this));
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop == 1001) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityHelloListActivity.a(0);
     }
-    try
-    {
-      paramInt1 = paramCharSequence.toString().getBytes("utf-8").length;
-      this.a.b = (paramInt1 + "/" + this.a.c);
-      this.a.a.post(new cqc(this, paramInt1));
-      return;
-    }
-    catch (UnsupportedEncodingException paramCharSequence)
-    {
-      paramCharSequence.printStackTrace();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityHelloListActivity.a();
   }
 }
 

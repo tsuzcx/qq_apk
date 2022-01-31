@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class appoint_define$TravelInfo
-  extends MessageMicro
+  extends MessageMicro<TravelInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 50 }, new String[] { "msg_depart_locale", "msg_destination", "uint32_vehicle", "uint32_partner_count", "str_place_pic_url", "str_place_url" }, new Object[] { null, null, Integer.valueOf(0), Integer.valueOf(0), "", "" }, TravelInfo.class);
   public appoint_define.LocaleInfo msg_depart_locale = new appoint_define.LocaleInfo();
@@ -19,7 +19,7 @@ public final class appoint_define$TravelInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     appoint.define.appoint_define.TravelInfo
  * JD-Core Version:    0.7.0.1
  */

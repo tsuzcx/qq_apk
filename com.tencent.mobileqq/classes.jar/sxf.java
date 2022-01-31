@@ -1,36 +1,24 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.observer.QZoneObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
 
-public class sxf
-  extends QZoneObserver
+class sxf
+  extends Handler
 {
-  public sxf(Leba paramLeba) {}
+  sxf(sxe paramsxe) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UndealCount.Q.lebatab.leba", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
-    }
-    if (QLog.isColorLevel())
+    switch (paramMessage.what)
     {
-      if ((paramLong >>> 17 & 1L) != 0L) {
-        QLog.d("UndealCount.ZebraAlbum.", 2, "Leba onGetQZoneFeedCountFin Zebra album and then call Leba freshEntryItemUI");
-      }
-      QLog.d("UndealCount.", 2, "Leba onGetQZoneFeedCountFin type: " + paramLong + " and then call Leba freshEntryItemUI");
+    default: 
+      return;
     }
-    if (paramBoolean1)
-    {
-      Leba.c(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.lebatab.leba", 2, "onGetQZoneFeedCountFin. notifyData.");
-      }
-    }
+    this.a.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sxf
  * JD-Core Version:    0.7.0.1
  */

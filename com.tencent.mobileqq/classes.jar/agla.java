@@ -1,25 +1,20 @@
-import com.tencent.mobileqq.pic.Logger;
-import com.tencent.mobileqq.pic.PicPreDownloader;
-import java.util.TimerTask;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 
 public class agla
-  extends TimerTask
+  implements bezx
 {
-  public agla(PicPreDownloader paramPicPreDownloader) {}
+  public agla(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (!this.a.a.get())
-    {
-      this.a.a.set(true);
-      Logger.b("PIC_TAG_PRELOAD", "timer count off,picPreDownload set on", "mIsPicPreloadSuitable" + this.a.a.get());
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agla
  * JD-Core Version:    0.7.0.1
  */

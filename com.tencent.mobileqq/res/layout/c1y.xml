@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0sp" android:textColor="@color/skin_dark_gray" android:id="@id/k8u" android:background="@drawable/skin_group_list_sub_entry" android:paddingLeft="10.0dip" android:paddingTop="3.0dip" android:paddingBottom="3.0dip" android:focusable="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:id="@id/jzt" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="52.0dip">
+        <RelativeLayout android:id="@id/bm1" android:visibility="gone" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_centerVertical="true">
+            <ImageView android:id="@id/bm0" android:padding="5.0dip" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/bxk" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <ImageView android:gravity="center_vertical" android:id="@id/dvo" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="7.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="7.0dip" android:src="@drawable/kj" android:layout_toRightOf="@id/bm1" />
+        <RelativeLayout android:orientation="vertical" android:id="@id/f5h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="104.0dip" android:layout_toRightOf="@id/dvo" android:layout_alignTop="@id/dvo" android:layout_alignBottom="@id/dvo" android:layout_alignParentRight="true">
+            <TextView android:textSize="16.0sp" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/tv_name" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <ImageView android:id="@id/dyi" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/h6v" android:layout_toRightOf="@id/f5h" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:id="@id/k5_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="30.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/el" android:gravity="center" android:id="@id/ai4" android:background="@drawable/hb7" android:focusable="true" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="64.0dip" android:layout_height="34.0dip" android:layout_marginRight="30.0dip" android:text="@string/ak3" android:shadowColor="#7f000000" android:shadowDx="1.5" android:shadowDy="1.5" android:shadowRadius="1.5" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <com.tencent.mobileqq.widget.ShaderAnimLayout android:id="@id/iqk" android:visibility="gone" android:clickable="true" android:layout_width="60.0dip" android:layout_height="34.0dip" android:layout_marginRight="30.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <Button android:textSize="14.0dip" android:textColor="@color/el" android:gravity="center" android:id="@id/agn" android:background="@drawable/hb7" android:layout_width="64.0dip" android:layout_height="34.0dip" android:text="@string/ak3" android:layout_centerInParent="true" />
+        </com.tencent.mobileqq.widget.ShaderAnimLayout>
+    </RelativeLayout>
+</FrameLayout>

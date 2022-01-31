@@ -1,42 +1,62 @@
-import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
-import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileError;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class adbq
-  implements View.OnClickListener
+public class adbq
+  implements bhuk
 {
-  public adbq(IFileBrowser paramIFileBrowser, FileManagerEntity paramFileManagerEntity) {}
+  public adbq(FriendProfileImageActivity paramFriendProfileImageActivity, adbx paramadbx, boolean paramBoolean, bhuf parambhuf) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      paramView = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      if (paramView.jdField_e_of_type_JavaLangString == null) {
-        return;
-      }
-      if (NetworkUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity()) == 0)
-      {
-        TroopFileError.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity().getString(2131429788));
-        return;
-      }
-      TroopFileError.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity().getString(2131428195), 0);
-      TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin).a(paramView.jdField_e_of_type_JavaLangString, paramView.g, paramView.b, paramView.jdField_e_of_type_Int);
-      return;
     }
-    catch (Exception paramView) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      bddf.a(this.jdField_a_of_type_Adbx.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        azqs.b(localQQAppInterface, "dc00898", "", "", "0X800A8CA", "0X800A8CA", 0, 0, paramView, "", "", "");
+        break;
+      }
+      bddf.a(this.jdField_a_of_type_Adbx.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        azqs.b(localQQAppInterface, "dc00898", "", "", "0X800A8CB", "0X800A8CB", 0, 0, paramView, "", "", "");
+        break;
+      }
+      FriendProfileImageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity, this.jdField_a_of_type_Adbx.c, this.jdField_a_of_type_Adbx.d);
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        azqs.b(localQQAppInterface, "dc00898", "", "", "0X800A8CC", "0X800A8CC", 0, 0, paramView, "", "", "");
+        break;
+      }
+      bddf.b(this.jdField_a_of_type_Adbx.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        azqs.b(localQQAppInterface, "dc00898", "", "", "0X800A8CD", "0X800A8CD", 0, 0, paramView, "", "", "");
+        break;
+      }
+      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b(this.jdField_a_of_type_Adbx);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adbq
  * JD-Core Version:    0.7.0.1
  */

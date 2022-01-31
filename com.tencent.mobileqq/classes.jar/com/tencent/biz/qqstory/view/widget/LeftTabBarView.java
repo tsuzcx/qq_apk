@@ -13,8 +13,8 @@ import com.tencent.mobileqq.widget.TabBarView;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import oqx;
-import oqy;
+import xwa;
+import xwb;
 
 public class LeftTabBarView
   extends TabBarView
@@ -37,20 +37,20 @@ public class LeftTabBarView
     LinearLayout localLinearLayout1 = new LinearLayout(getContext());
     RedDotTextView localRedDotTextView = new RedDotTextView(getContext());
     localRedDotTextView.setText(paramString);
-    localRedDotTextView.setTextSize(2, this.g);
-    localRedDotTextView.setTextColor(this.jdField_b_of_type_Int);
-    localRedDotTextView.setPadding(this.jdField_c_of_type_Int, this.e, this.d, this.f);
+    localRedDotTextView.setTextSize(2, this.m);
+    localRedDotTextView.setTextColor(this.f);
+    localRedDotTextView.setPadding(this.i, this.k, this.j, this.l);
     localRedDotTextView.setSingleLine();
     localRedDotTextView.setFocusable(true);
     localRedDotTextView.setContentDescription(paramString);
     localRedDotTextView.setGravity(17);
     if (!TextUtils.isEmpty(paramString)) {
-      localLinearLayout1.setOnClickListener(new oqx(this, paramInt));
+      localLinearLayout1.setOnClickListener(new xwa(this, paramInt));
     }
-    ViewCompat.setAccessibilityDelegate(localRedDotTextView, new oqy(this));
+    ViewCompat.setAccessibilityDelegate(localRedDotTextView, new xwb(this));
     this.jdField_a_of_type_JavaUtilList.add(localRedDotTextView);
-    this.jdField_b_of_type_JavaUtilList.add(localLinearLayout1);
-    this.jdField_c_of_type_JavaUtilList.add(paramString);
+    this.b.add(localLinearLayout1);
+    this.c.add(paramString);
     int m = this.jdField_a_of_type_JavaUtilList.size();
     HashMap localHashMap = new HashMap();
     if ((m == 2) || (m == 1)) {
@@ -66,7 +66,7 @@ public class LeftTabBarView
       j = 0;
       if (j < m)
       {
-        k = ((String)this.jdField_c_of_type_JavaUtilList.get(j)).toString().length();
+        k = ((String)this.c.get(j)).toString().length();
         if (j == 0) {
           i = k;
         }
@@ -95,7 +95,7 @@ public class LeftTabBarView
           if (i >= m) {
             break label660;
           }
-          localLinearLayout2 = (LinearLayout)this.jdField_b_of_type_JavaUtilList.get(i);
+          localLinearLayout2 = (LinearLayout)this.b.get(i);
           if ((localHashMap == null) || (localHashMap.get("width") == null)) {
             break label536;
           }
@@ -126,7 +126,7 @@ public class LeftTabBarView
           }
         }
         label660:
-        localRedDotTextView.setId(2131362344);
+        localRedDotTextView.setId(2131377682);
         if ((localHashMap != null) && (localHashMap.get("paddingLeft") != null)) {
           localLinearLayout1.addView(localRedDotTextView, paramString);
         }
@@ -143,7 +143,7 @@ public class LeftTabBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.LeftTabBarView
  * JD-Core Version:    0.7.0.1
  */

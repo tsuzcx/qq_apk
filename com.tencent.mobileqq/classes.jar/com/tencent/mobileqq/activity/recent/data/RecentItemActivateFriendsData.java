@@ -1,19 +1,21 @@
 package com.tencent.mobileqq.activity.recent.data;
 
+import abta;
+import ajlh;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.recent.TimeManager;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ConversationFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecentItemActivateFriendsData
   extends RecentUserBaseData
 {
+  private static final String TAG = "ActivateFriends.Recent";
+  
   public RecentItemActivateFriendsData(RecentUser paramRecentUser)
   {
     super(paramRecentUser);
@@ -30,59 +32,59 @@ public class RecentItemActivateFriendsData
       QQMessageFacade.Message localMessage = null;
       QQMessageFacade localQQMessageFacade = paramQQAppInterface.a();
       if (localQQMessageFacade != null) {
-        localMessage = localQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type);
+        localMessage = localQQMessageFacade.a(this.mUser.uin, this.mUser.getType());
       }
       if (localMessage == null) {
         break label242;
       }
-      this.jdField_a_of_type_Long = localMessage.time;
+      this.mDisplayTime = localMessage.time;
       paramQQAppInterface = paramQQAppInterface.a();
       if (paramQQAppInterface == null) {
         break;
       }
-      this.jdField_c_of_type_Int = paramQQAppInterface.a(localMessage.frienduin, localMessage.istroop);
-      this.jdField_c_of_type_JavaLangString = TimeManager.a().a(a(), this.jdField_a_of_type_Long);
-      this.jdField_c_of_type_JavaLangCharSequence = localMessage.getMessageText();
+      this.mUnreadNum = paramQQAppInterface.a(localMessage.frienduin, localMessage.istroop);
+      this.mShowTime = ajlh.a().a(a(), this.mDisplayTime);
+      this.mLastMsg = localMessage.getMessageText();
       e();
-      if (TextUtils.isEmpty(this.b)) {
-        this.b = paramContext.getString(2131437234);
+      if (TextUtils.isEmpty(this.mTitleName)) {
+        this.mTitleName = paramContext.getString(2131689607);
       }
-    } while (!AppSetting.b);
+    } while (!AppSetting.c);
     paramQQAppInterface = new StringBuilder();
-    paramQQAppInterface.append(this.b).append(",");
-    if (this.jdField_c_of_type_Int == 0) {}
+    paramQQAppInterface.append(this.mTitleName).append(",");
+    if (this.mUnreadNum == 0) {}
     for (;;)
     {
-      if (this.jdField_d_of_type_JavaLangCharSequence != null) {
-        paramQQAppInterface.append(this.jdField_d_of_type_JavaLangCharSequence + ",");
+      if (this.mMsgExtroInfo != null) {
+        paramQQAppInterface.append(this.mMsgExtroInfo + ",");
       }
-      paramQQAppInterface.append(this.jdField_c_of_type_JavaLangCharSequence).append(",").append(this.jdField_c_of_type_JavaLangString);
-      this.jdField_d_of_type_JavaLangString = paramQQAppInterface.toString();
+      paramQQAppInterface.append(this.mLastMsg).append(",").append(this.mShowTime);
+      this.mContentDesc = paramQQAppInterface.toString();
       return;
-      this.jdField_c_of_type_Int = 0;
+      this.mUnreadNum = 0;
       break;
       label242:
-      this.jdField_c_of_type_Int = 0;
-      this.jdField_a_of_type_Long = 0L;
+      this.mUnreadNum = 0;
+      this.mDisplayTime = 0L;
       if (QLog.isColorLevel()) {
         QLog.e("ActivateFriends.Recent", 2, "RecentActivateFriends update, last msg is null");
       }
-      this.jdField_c_of_type_JavaLangString = "";
-      this.jdField_c_of_type_JavaLangCharSequence = "";
+      this.mShowTime = "";
+      this.mLastMsg = "";
       break label111;
-      if (this.jdField_c_of_type_Int == 1) {
+      if (this.mUnreadNum == 1) {
         paramQQAppInterface.append("有一条未读");
-      } else if (this.jdField_c_of_type_Int == 2) {
+      } else if (this.mUnreadNum == 2) {
         paramQQAppInterface.append("有两条未读");
-      } else if (this.jdField_c_of_type_Int > 0) {
-        paramQQAppInterface.append("有").append(this.jdField_c_of_type_Int).append("条未读,");
+      } else if (this.mUnreadNum > 0) {
+        paramQQAppInterface.append("有").append(this.mUnreadNum).append("条未读,");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemActivateFriendsData
  * JD-Core Version:    0.7.0.1
  */

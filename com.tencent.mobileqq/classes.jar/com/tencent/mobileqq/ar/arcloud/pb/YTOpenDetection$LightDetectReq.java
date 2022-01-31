@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class YTOpenDetection$LightDetectReq
-  extends MessageMicro
+  extends MessageMicro<LightDetectReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField app_id = PBField.initString("");
@@ -24,7 +24,7 @@ public final class YTOpenDetection$LightDetectReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.YTOpenDetection.LightDetectReq
  * JD-Core Version:    0.7.0.1
  */

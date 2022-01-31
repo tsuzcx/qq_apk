@@ -1,109 +1,70 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.biz.qrcode.activity.QRLoginActivity;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class oug
-  extends WtloginObserver
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  public oug(QRLoginActivity paramQRLoginActivity) {}
+  public static String a = "ViolaPicSerPreloadHandler";
+  public static String b = "viola_service_instance";
   
-  public void OnCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  public static boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRLoginActivity", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt);
-    }
-    paramArrayOfByte1 = null;
-    paramString = paramArrayOfByte1;
-    if (paramInt == 0)
-    {
-      paramString = paramArrayOfByte1;
-      if (paramWUserSigInfo != null) {
-        paramString = WtloginHelper.getLoginTlvValue(paramWUserSigInfo, 54);
-      }
-    }
-    paramArrayOfByte1 = new Message();
-    paramWUserSigInfo = new Bundle();
-    paramWUserSigInfo.putInt("ret", paramInt);
-    paramWUserSigInfo.putByteArray("errMsg", paramArrayOfByte2);
-    if (paramString != null) {
-      paramWUserSigInfo.putByteArray("devInfo", paramString);
-    }
-    paramArrayOfByte1.setData(paramWUserSigInfo);
-    paramArrayOfByte1.what = 2;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramArrayOfByte1);
+    return ((Boolean)bkbq.a(b, Boolean.valueOf(false))).booleanValue();
   }
   
-  public void OnException(String paramString, int paramInt)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRLoginActivity", 2, "OnException e=" + paramString);
-    }
-    paramString = new Message();
-    paramString.what = 3;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
-  }
-  
-  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRLoginActivity", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
-    }
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.jdField_a_of_type_JavaLangString = paramString;
-    paramErrMsg = null;
-    paramString = paramErrMsg;
-    if (paramArrayList != null)
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    Map localMap = osq.a(paramString);
+    Object localObject = localMap.keySet();
+    for (;;)
     {
-      paramString = paramErrMsg;
-      if (paramArrayList.size() > 0)
+      try
       {
-        paramString = new ByteArrayOutputStream();
-        int i = 0;
-        for (;;)
+        localObject = ((Set)localObject).iterator();
+        if (((Iterator)localObject).hasNext())
         {
-          if (i < paramArrayList.size()) {
-            try
-            {
-              paramString.write(HexUtil.hexStr2Bytes((String)paramArrayList.get(i)));
-              i += 1;
-            }
-            catch (Throwable paramErrMsg)
-            {
-              for (;;)
-              {
-                paramErrMsg.printStackTrace();
-              }
-            }
+          String str2 = (String)((Iterator)localObject).next();
+          String str1 = (String)localMap.get(str2);
+          if (!TextUtils.equals(str2, "viola_service_instance_open")) {
+            continue;
+          }
+          str2 = b;
+          if (Integer.parseInt(str1) == 1)
+          {
+            bool = true;
+            bkbq.a(str2, Boolean.valueOf(bool));
           }
         }
-        paramString = paramString.toByteArray();
+        else
+        {
+          return true;
+        }
       }
+      catch (Throwable localThrowable)
+      {
+        QLog.e(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString + " , error= " + localThrowable.getMessage());
+      }
+      boolean bool = false;
     }
-    paramArrayList = new Message();
-    paramErrMsg = new Bundle();
-    paramErrMsg.putInt("ret", paramInt);
-    paramErrMsg.putByteArray("tlv", paramString);
-    paramErrMsg.putByteArray("appName", paramArrayOfByte1);
-    paramErrMsg.putByteArray("errMsg", paramArrayOfByte2);
-    paramArrayList.setData(paramErrMsg);
-    paramArrayList.what = 1;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramArrayList);
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bkbq.a(b, Boolean.valueOf(false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oug
  * JD-Core Version:    0.7.0.1
  */

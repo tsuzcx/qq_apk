@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.widget.TextView;
 
-public class aggm
-  implements Runnable
+class aggm
+  extends aeqi
 {
-  public aggm(ScanTorchActivity paramScanTorchActivity) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void run()
-  {
-    this.a.a.setVisibility(8);
-  }
+  aggm(aggj paramaggj) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aggm
  * JD-Core Version:    0.7.0.1
  */

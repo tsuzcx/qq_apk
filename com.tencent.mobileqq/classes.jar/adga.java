@@ -1,25 +1,35 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.List;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.qphone.base.util.QLog;
 
 public class adga
-  implements ActionSheet.OnButtonClickListener
+  extends avvd
 {
-  public adga(VideoFileViewer paramVideoFileViewer, List paramList) {}
+  public adga(Leba paramLeba) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
   {
-    VideoFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer, this.jdField_a_of_type_JavaUtilList, paramInt, paramView);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a.isShowing()) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("UndealCount.Q.lebatab.leba", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
+    }
+    if (QLog.isColorLevel())
+    {
+      if ((paramLong >>> 17 & 1L) != 0L) {
+        QLog.d("UndealCount.ZebraAlbum.", 2, "Leba onGetQZoneFeedCountFin Zebra album and then call Leba freshEntryItemUI");
+      }
+      QLog.d("UndealCount.", 2, "Leba onGetQZoneFeedCountFin type: " + paramLong + " and then call Leba freshEntryItemUI");
+    }
+    if (paramBoolean1)
+    {
+      Leba.c(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.lebatab.leba", 2, "onGetQZoneFeedCountFin. notifyData.");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adga
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.util.List;
 
-public class scs
-  implements Runnable
+final class scs
+  implements scv
 {
-  public scs(ChatSettingForTroop paramChatSettingForTroop) {}
+  scs(sct paramsct) {}
   
-  public void run()
+  public void a(boolean paramBoolean, List<BaseData> paramList)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.g();
+    this.a.a(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     scs
  * JD-Core Version:    0.7.0.1
  */

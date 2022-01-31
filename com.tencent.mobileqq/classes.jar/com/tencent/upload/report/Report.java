@@ -21,6 +21,7 @@ public class Report
   public long fileSize;
   public int flowId;
   public int ipsrctype;
+  public boolean isIPV6 = false;
   public int networkType;
   public int num;
   public String refer;
@@ -62,7 +63,7 @@ public class Report
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.upload.report.Report
  * JD-Core Version:    0.7.0.1
  */

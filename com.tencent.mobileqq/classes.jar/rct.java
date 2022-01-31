@@ -1,39 +1,42 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 import com.tencent.qphone.base.util.QLog;
 
-public class rct
-  implements Runnable
+class rct
+  extends BroadcastReceiver
 {
-  public rct(LiteTransferWrapper paramLiteTransferWrapper) {}
+  private rct(rcp paramrcp) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((LiteTransferWrapper.access$000(this.a) == null) || (LiteTransferWrapper.access$100(this.a) == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("dataline.LiteTTransferWrapper", 2, "litetransfer callback is null, do nothing");
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsFloatWindowManager", 2, "onReceive: action=" + paramContext);
+    }
+    if (paramContext.equals("tencent.av.v2q.StartVideoChat")) {
+      this.a.f();
+    }
+    while ((!paramContext.equals("tencent.av.v2q.StopVideoChat")) || (rcp.c(this.a) != 1)) {
+      return;
+    }
+    if (rcp.a(this.a).e()) {
+      rcp.a(this.a).a(rcp.a(this.a), false);
+    }
+    for (;;)
+    {
+      rlf.a().a(true, "float window video");
+      return;
+      if (rcp.a(this.a).f()) {
+        rcp.a(this.a).c();
       }
-    }
-    while (LiteTransferWrapper.access$200(this.a) != 0L) {
-      return;
-    }
-    try
-    {
-      LiteTransferWrapper.access$202(this.a, this.a.createOperator(LiteTransferWrapper.access$000(this.a), LiteTransferWrapper.access$100(this.a)));
-      this.a.SetBusinessID(38, 3, 106, 102);
-      QLog.i("dataline.LiteTTransferWrapper", 1, "createOperator mLiteTransferOperator:" + LiteTransferWrapper.access$200(this.a) + " threadId:" + Thread.currentThread().getId());
-      this.a.checkPathExist();
-      this.a.SetProxyToJni();
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      localUnsatisfiedLinkError.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rct
  * JD-Core Version:    0.7.0.1
  */

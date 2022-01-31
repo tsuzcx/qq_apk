@@ -1,18 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.SearchTroopListActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 
 public class dmx
-  implements DialogInterface.OnCancelListener
+  implements TextWatcher
 {
-  public dmx(SearchTroopListActivity paramSearchTroopListActivity) {}
+  public dmx(SubLoginActivity paramSubLoginActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.a = null;
-    if (!this.a.isFinishing()) {
-      this.a.finish();
+    if (paramCharSequence.length() > 0) {
+      if (SubLoginActivity.a(this.a) != null) {
+        SubLoginActivity.a(this.a).setVisibility(0);
+      }
     }
+    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
+      return;
+    }
+    SubLoginActivity.a(this.a).setVisibility(8);
   }
 }
 

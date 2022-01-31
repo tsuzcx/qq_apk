@@ -1,32 +1,41 @@
-import com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoDownloadInfo;
-import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader;
-import com.tencent.mobileqq.shortvideo.ShortVideoReq;
-import java.util.Iterator;
-import java.util.concurrent.PriorityBlockingQueue;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ahzm
-  implements Runnable
+class ahzm
+  implements arrh
 {
-  public ahzm(ShortVideoPreDownloader paramShortVideoPreDownloader) {}
+  ahzm(ahzl paramahzl, FileManagerEntity paramFileManagerEntity) {}
   
-  public void run()
+  public void a()
   {
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.iterator();
-    while (localIterator.hasNext())
-    {
-      ShortVideoReq localShortVideoReq = (ShortVideoReq)localIterator.next();
-      ShortVideoBusiManager.a(localShortVideoReq, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (localShortVideoReq.a != null) {
-        ShortVideoPreDownloader.a("consumeAllThumbsInPendingQueue", "consume thumb, uniseq=" + localShortVideoReq.a.a);
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      this.jdField_a_of_type_Ahzl.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
     }
-    this.a.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.clear();
+    alqo localalqo;
+    ArrayList localArrayList;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
+      }
+      localalqo = (alqo)this.jdField_a_of_type_Ahzl.a.a.a(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localalqo.a(localArrayList));
+    arri.a(2131692746);
+    return;
+    this.jdField_a_of_type_Ahzl.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahzm
  * JD-Core Version:    0.7.0.1
  */

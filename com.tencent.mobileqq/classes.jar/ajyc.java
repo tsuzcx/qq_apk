@@ -1,16 +1,21 @@
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+import android.view.View;
 
-public class ajyc
-  implements FilenameFilter
+public abstract interface ajyc
 {
-  public ajyc(UnifiedDebugManager paramUnifiedDebugManager, String paramString) {}
+  @NonNull
+  public abstract View a();
   
-  public boolean accept(File paramFile, String paramString)
-  {
-    return paramString.startsWith(this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void a(ajyd paramajyd);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract void b(@ColorInt int paramInt);
 }
 
 

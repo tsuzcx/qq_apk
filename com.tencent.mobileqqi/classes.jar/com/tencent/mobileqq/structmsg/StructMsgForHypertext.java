@@ -123,7 +123,7 @@ public class StructMsgForHypertext
     paramView = (ViewGroup)super.getView(paramContext, paramView, paramOnLongClickAndTouchListener);
     paramOnLongClickAndTouchListener = new StructMsgForHypertext.HyperTextView(paramContext);
     Resources localResources = paramContext.getResources();
-    paramOnLongClickAndTouchListener.setPadding((int)localResources.getDimension(2131427485), (int)localResources.getDimension(2131427487), (int)localResources.getDimension(2131427486), (int)localResources.getDimension(2131427488));
+    paramOnLongClickAndTouchListener.setPadding((int)localResources.getDimension(2131427488), (int)localResources.getDimension(2131427490), (int)localResources.getDimension(2131427489), (int)localResources.getDimension(2131427491));
     paramOnLongClickAndTouchListener.setText(getSpannableString());
     paramOnLongClickAndTouchListener.setTextSize(0, ChatTextSizeSettingActivity.a(paramContext));
     paramOnLongClickAndTouchListener.setTextColor(paramContext.getResources().getColor(2131361819));

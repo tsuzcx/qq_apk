@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBFloatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class DoodleMsgProto$LineData
-  extends MessageMicro
+  extends MessageMicro<LineData>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 13, 21, 24 }, new String[] { "float_X", "float_Y", "uint64_tickcount" }, new Object[] { Float.valueOf(0.0F), Float.valueOf(0.0F), Long.valueOf(0L) }, LineData.class);
   public final PBFloatField float_X = PBField.initFloat(0.0F);
@@ -16,7 +16,7 @@ public final class DoodleMsgProto$LineData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msg.aio_doodle.DoodleMsgProto.LineData
  * JD-Core Version:    0.7.0.1
  */

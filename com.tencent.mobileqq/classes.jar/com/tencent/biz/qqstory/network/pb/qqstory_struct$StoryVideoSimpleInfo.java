@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_struct$StoryVideoSimpleInfo
-  extends MessageMicro
+  extends MessageMicro<StoryVideoSimpleInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field ban_type = PBField.initUInt32(0);
@@ -29,7 +29,7 @@ public final class qqstory_struct$StoryVideoSimpleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoSimpleInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
+import java.io.File;
+import org.json.JSONObject;
 
-class vwc
-  implements Runnable
+public abstract interface vwc
 {
-  vwc(vwb paramvwb) {}
+  public abstract void a(String paramString, File paramFile, int paramInt, JSONObject paramJSONObject);
   
-  public void run()
-  {
-    if (!NearbyChatPie.a(this.a.a)) {
-      this.a.a.k();
-    }
-  }
+  public abstract void a(String paramString1, String paramString2, int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2, File paramFile);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vwc
  * JD-Core Version:    0.7.0.1
  */

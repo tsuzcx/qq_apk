@@ -1,24 +1,20 @@
-import android.widget.ImageView;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.graphics.drawable.Drawable;
 
-class myi
-  implements Runnable
+public class myi
 {
-  myi(mye parammye) {}
+  public Drawable a;
+  public final String a;
+  public mxz a;
+  public String b;
   
-  public void run()
+  public boolean equals(Object paramObject)
   {
-    if (PublicAccountImageCollectionMainActivity.b(this.a.a))
-    {
-      this.a.a.e.setImageResource(2130839679);
-      return;
-    }
-    this.a.a.e.setImageResource(2130839678);
+    return ((paramObject instanceof myi)) && (((myi)paramObject).a.equals(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     myi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,28 @@
-import com.tencent.biz.qqstory.newshare.StoryShare;
-import com.tencent.biz.qqstory.newshare.callback.OnShareListener;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.ui.OnShareUIListener;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
 
 public class nfy
-  implements OnShareUIListener
+  implements Animation.AnimationListener
 {
-  public nfy(StoryShare paramStoryShare) {}
+  public nfy(ScrolledTabHost paramScrolledTabHost, View paramView1, View paramView2, int paramInt) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).c();
-    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    this.b.setVisibility(0);
+    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.a(this.jdField_a_of_type_Int);
   }
   
-  public void a(int paramInt)
-  {
-    StoryShare.a(this.a).a(paramInt);
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).b(paramInt);
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void b()
-  {
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).d();
-    }
-  }
-  
-  public void c()
-  {
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).d(-1);
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nfy
  * JD-Core Version:    0.7.0.1
  */

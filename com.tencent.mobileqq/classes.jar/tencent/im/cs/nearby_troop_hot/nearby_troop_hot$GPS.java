@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class nearby_troop_hot$GPS
-  extends MessageMicro
+  extends MessageMicro<GPS>
 {
   public static final int LATITUDE_FIELD_NUMBER = 2;
   public static final int LONGTITUDE_FIELD_NUMBER = 1;
@@ -18,7 +18,7 @@ public final class nearby_troop_hot$GPS
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.nearby_troop_hot.nearby_troop_hot.GPS
  * JD-Core Version:    0.7.0.1
  */

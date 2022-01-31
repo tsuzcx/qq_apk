@@ -1,16 +1,15 @@
 package com.tencent.token.ui;
 
-import android.webkit.DownloadListener;
-import com.tencent.token.utils.s;
+import java.util.TimerTask;
 
-final class dk
-  implements DownloadListener
+class dk
+  extends TimerTask
 {
-  dk(EmbedWebBaseActivity paramEmbedWebBaseActivity) {}
+  dk(di paramdi) {}
   
-  public final void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
+  public void run()
   {
-    s.a(this.a, paramString1);
+    this.a.c();
   }
 }
 

@@ -1,48 +1,22 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
 
-public final class ajyp
-  implements DownloadParams.DecodeHandler
+public class ajyp
+  extends BroadcastReceiver
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public ajyp(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject;
-    if (paramBitmap == null)
+    if ((bdin.d(this.a.jdField_a_of_type_AndroidContentContext)) && (this.a.c) && (this.a.isResume()))
     {
-      localObject = null;
-      return localObject;
-    }
-    paramDownloadParams = paramDownloadParams.tag;
-    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length > 0)) {}
-    for (int i = ((int[])(int[])paramDownloadParams)[0];; i = 0)
-    {
-      int j;
-      int k;
-      boolean bool;
-      if (i != 0)
-      {
-        paramDownloadParams = new Matrix();
-        paramDownloadParams.postRotate(i);
-        j = paramBitmap.getWidth();
-        k = paramBitmap.getHeight();
-        if (i % 90 != 0) {
-          bool = true;
-        }
+      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
       }
-      label84:
-      for (paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, k, paramDownloadParams, bool);; paramDownloadParams = paramBitmap)
-      {
-        localObject = paramDownloadParams;
-        if (paramDownloadParams == paramBitmap) {
-          break;
-        }
-        paramBitmap.recycle();
-        return paramDownloadParams;
-        bool = false;
-        break label84;
-      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
     }
   }
 }

@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import NS_KING_INTERFACE.stPostCommentDingReq;
+import NS_KING_INTERFACE.stPostCommentDingRsp;
 
 public class tkj
-  implements DialogInterface.OnClickListener
+  extends thb<stPostCommentDingRsp>
 {
-  public tkj(QQSettingCleanActivity paramQQSettingCleanActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public tkj(String paramString1, String paramString2, int paramInt)
   {
-    ThreadManager.executeOnNetWorkThread(new tkk(this));
+    super("PostCommentDing");
+    this.a = new stPostCommentDingReq(paramString1, paramString2, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tkj
  * JD-Core Version:    0.7.0.1
  */

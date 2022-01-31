@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.widget.FormSimpleItem;
-import exc;
+import eso;
 import java.util.List;
 
 public class QvipSpecialCarePersonActivity$SpecialCareAdapter
@@ -44,8 +44,8 @@ public class QvipSpecialCarePersonActivity$SpecialCareAdapter
   {
     if (paramView == null)
     {
-      paramView = (RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialCarePersonActivity.getLayoutInflater().inflate(2130903696, null);
-      paramViewGroup = new exc(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialCarePersonActivity, null);
+      paramView = (RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialCarePersonActivity.getLayoutInflater().inflate(2130903698, null);
+      paramViewGroup = new eso(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialCarePersonActivity, null);
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)paramView);
       paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialCarePersonActivity);
       paramView.setTag(paramViewGroup);
@@ -61,7 +61,7 @@ public class QvipSpecialCarePersonActivity$SpecialCareAdapter
     {
       QvipSpecialCarePersonActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialCarePersonActivity, paramView, paramInt, getCount());
       return paramView;
-      paramViewGroup = (exc)paramView.getTag();
+      paramViewGroup = (eso)paramView.getTag();
       break;
       label151:
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setLeftText(paramViewGroup.b);

@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.widget.QQToast;
-
-class aolg
-  implements Runnable
+public class aolg
 {
-  aolg(aolf paramaolf) {}
+  @atgw(a="poll_interval")
+  public int a;
+  @atgw(a="jump_url")
+  public String a;
+  @atgw(a="search_empty_show_troop_recommend")
+  public int b;
   
-  public void run()
+  public aolg()
   {
-    QQToast.a(this.a.a.a, 1, "分享失败", 0).a();
+    this.jdField_a_of_type_Int = 10;
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public static aolg a(String paramString)
+  {
+    return (aolg)atgx.a(paramString, aolg.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aolg
  * JD-Core Version:    0.7.0.1
  */

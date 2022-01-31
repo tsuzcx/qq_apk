@@ -2,16 +2,16 @@ package com.tencent.util;
 
 import java.io.Serializable;
 
-public class Pair
+public class Pair<F, S>
   implements Serializable
 {
-  public final Object first;
-  public final Object second;
+  public final F first;
+  public final S second;
   
-  public Pair(Object paramObject1, Object paramObject2)
+  public Pair(F paramF, S paramS)
   {
-    this.first = paramObject1;
-    this.second = paramObject2;
+    this.first = paramF;
+    this.second = paramS;
   }
   
   public boolean equals(Object paramObject)

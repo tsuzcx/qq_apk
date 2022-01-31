@@ -1,25 +1,52 @@
 package com.tencent.mobileqq.theme;
 
+import aeqq;
+import amdj;
 import android.annotation.TargetApi;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.Window;
+import android.widget.ImageView;
+import apmq;
+import azmk;
+import azri;
+import banh;
+import banz;
+import baoc;
+import baoq;
+import baou;
+import baov;
+import bdhb;
+import bdtd;
+import bdut;
+import bdvy;
+import bdwl;
+import bdwm;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThemeHandler;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vas.IndividuationConfigInfo;
-import com.tencent.mobileqq.vas.VasMonitorHandler;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinEngine;
+import com.tencent.widget.immersive.ImmersiveUtils;
 import java.io.File;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -32,6 +59,8 @@ import java.util.TimeZone;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
+import mqq.os.MqqHandler;
+import ndi;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -47,18 +76,36 @@ public class ThemeUtil
   public static final int ANIMATE_TAB_NOW = 15;
   public static final int ANIMATE_TAB_SEE = 16;
   public static final String DEFAULT_THEME_ID = "1000";
+  public static final String DIY_ASSETS_NAME = "999_540";
+  public static final int DIY_STYLE_END = 1000000;
   public static final int DIY_STYLE_START = 5000;
   public static final String DIY_THEME_ID = "999";
   public static final String DIY_THEME_VERSION = "20000000";
+  public static final String LOCAL_THEME_ID = "900";
+  public static ColorFilter NIGHTMODE_COLORFILTER;
+  public static final int NIGHTMODE_MASKCOLOR;
   public static final String OLD_ENGINE_PATH = "oldEnginePath";
   public static final String PKG_SUFFIX = ".zip";
-  public static final String SKIP_ENGINE_CHANGE = "skipEngineChange";
   public static final String SP_KEY_AUTH_TIME = "authTime";
+  public static final String SP_KEY_CLEAN_LIST = "cleanList";
   public static final String TAG = "Theme.ThemeUtil";
   public static final String THEME_DEBUG_KEY = "ThemeDebugKeyLog:";
+  public static final String[] THEME_DEFAULT_IDS = { "999", "1000", "1103", "2971", "2921", "3064", "3063", "3066", "3065", "3067" };
   public static final String THEME_ERROR_ID_LIST = "listOfErrorThemeSrc";
   public static final String THEME_ID = "themeId";
+  public static final String THEME_ID_DAYMODE = "xxxx";
+  public static final String THEME_ID_DAYMODE_SIMPLEUI_BLUE = "3491";
+  public static final String THEME_ID_DAYMODE_SIMPLEUI_GRREEN = "3063";
+  public static final String THEME_ID_DAYMODE_SIMPLEUI_PURPLE = "3065";
+  public static final String THEME_ID_DAYMODE_SIMPLEUI_RED = "3067";
+  public static final String THEME_ID_DAYMODE_SIMPLEUI_T_RED = "3066";
+  public static final String THEME_ID_DAYMODE_SIMPLEUI_YELLOW = "3064";
+  public static final String THEME_ID_DAYMODE_SIMPLE_GRAY = "2921";
+  public static final String THEME_ID_DAYMODE_SIMPLE_WHITE = "2971";
+  public static final String THEME_ID_GOLDEN = "2101";
   public static final String THEME_ID_NIGHTMODE = "1103";
+  public static final String THEME_ID_NIGHTMODE_SIMPLE = "2920";
+  public static final String THEME_ID_WHITEMODE = "2105";
   public static final String THEME_ISVOICE = "isVoiceTheme";
   public static final String THEME_KEY_CURRENT_THEME_ID = "currentThemeId_6.3.5";
   public static final String THEME_KEY_CURRENT_THEME_VERSION = "currentThemeVersion";
@@ -87,155 +134,54 @@ public class ThemeUtil
   public static final String WEEK_KEY_THEME_ARRAY = "themeArray";
   public static final String WEEK_KEY_THEME_LENGTH = "themeLength";
   public static final String WEEK_KEY_THEME_START_TIME = "startTime";
+  public static String curThemeId;
   public static boolean isNowThemeDefaultCache = true;
   static boolean isThemeIsAnimate;
+  public static String lastThemeId;
   static String mAnimateThemeId;
   static String mAnimateThemePath;
-  static String uin;
+  static BroadcastReceiver mReceiver;
+  static Object refLock;
+  public static WeakReference<QQAppInterface> weakApp;
   
-  public static void delOldThemeResDir(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  static
   {
-    Object localObject = paramString3;
+    NIGHTMODE_MASKCOLOR = Color.parseColor("#4d000000");
+    NIGHTMODE_COLORFILTER = new PorterDuffColorFilter(NIGHTMODE_MASKCOLOR, PorterDuff.Mode.SRC_ATOP);
+    curThemeId = getCurrentThemeId();
+    lastThemeId = "";
+    refLock = new Object();
+    mReceiver = new baou();
+  }
+  
+  public static void adjustThemeStatusBar(Window paramWindow)
+  {
+    boolean bool = true;
+    if ((isCustomTheme(true)) && (ImmersiveUtils.isSupporImmersive() != 0) && (ImmersiveUtils.c())) {
+      if (isColorDark(paramWindow.getDecorView().getResources().getColor(2131166959))) {
+        break label47;
+      }
+    }
     for (;;)
     {
-      int i;
-      try
-      {
-        if (QLog.isColorLevel())
-        {
-          localObject = paramString3;
-          QLog.e("Theme.ThemeUtil", 2, "delOldThemeResDir themeId=" + paramString1 + ", version=" + paramString2 + ", themeResPath=" + paramString3 + ",andDelZip=" + paramBoolean);
-        }
-        localObject = paramString3;
-        if (android.text.TextUtils.isEmpty(paramString1)) {
-          break label720;
-        }
-        localObject = paramString3;
-        if ("1000".equals(paramString1)) {
-          break label720;
-        }
-        localObject = paramString3;
-        if (android.text.TextUtils.isEmpty(paramString2)) {
-          break label720;
-        }
-        localObject = paramString3;
-        if (paramString2.equals(String.valueOf(200))) {
-          break label720;
-        }
-        localObject = paramString3;
-        if (android.text.TextUtils.isEmpty(paramString3)) {
-          return;
-        }
-        String str1 = paramString3;
-        localObject = paramString3;
-        if (paramString3.endsWith(File.separator))
-        {
-          localObject = paramString3;
-          str1 = paramString3.substring(0, paramString3.length() - 1);
-        }
-        localObject = str1;
-        i = str1.lastIndexOf(File.separator);
-        if (i <= 0) {
-          break label730;
-        }
-        localObject = str1;
-        paramString3 = str1.substring(0, i);
-        if (paramString3 == null) {
-          break label720;
-        }
-        localObject = str1;
-        String str3 = SkinEngine.getInstances().getSkinRootPath();
-        localObject = str1;
-        if (!android.text.TextUtils.isEmpty(str3))
-        {
-          str2 = str3;
-          localObject = str1;
-          if (str3.endsWith(File.separator))
-          {
-            localObject = str1;
-            str2 = str3.substring(0, str3.length() - 1);
-          }
-          localObject = str1;
-          i = str2.lastIndexOf(File.separator);
-          localObject = str1;
-          if (i < str2.length() - 1)
-          {
-            localObject = str1;
-            str2 = str2.substring(i + 1);
-            localObject = str1;
-            str3 = paramString1 + "_" + paramString2;
-            localObject = str1;
-            String[] arrayOfString1 = new File(paramString3).list();
-            localObject = str1;
-            long l = Long.parseLong(paramString2);
-            localObject = str1;
-            i = arrayOfString1.length - 1;
-            if (i < 0) {
-              break label720;
-            }
-            String str4 = arrayOfString1[i];
-            localObject = str1;
-            if (QLog.isColorLevel())
-            {
-              localObject = str1;
-              QLog.d("Theme.ThemeUtil", 2, "delOldThemeResDir test themeId=" + paramString1 + ", version=" + paramString2 + ", dirName=" + str4);
-            }
-            localObject = str1;
-            if (android.text.TextUtils.isEmpty(str4)) {
-              break label721;
-            }
-            localObject = str1;
-            if (str4.equals(str3)) {
-              break label721;
-            }
-            localObject = str1;
-            if (str4.equals(str2)) {
-              break label721;
-            }
-            localObject = str1;
-            String[] arrayOfString2 = str4.split("_");
-            localObject = str1;
-            if (arrayOfString2.length != 2) {
-              break label721;
-            }
-            localObject = str1;
-            if (!paramString1.equals(arrayOfString2[0])) {
-              break label721;
-            }
-            localObject = str1;
-            if (android.text.TextUtils.isEmpty(arrayOfString2[1])) {
-              break label721;
-            }
-            localObject = str1;
-            if (l <= Long.parseLong(arrayOfString2[1])) {
-              break label721;
-            }
-            localObject = str1;
-            if (QLog.isColorLevel())
-            {
-              localObject = str1;
-              QLog.d("Theme.ThemeUtil", 2, "delOldThemeResDir del themeId=" + paramString1 + ", version=" + paramString2 + ", dirName=" + str4);
-            }
-            localObject = str1;
-            FileUtils.a(paramString3 + File.separator + str4);
-          }
-        }
-      }
-      catch (Exception paramString3)
-      {
-        QLog.e("Theme.ThemeUtil", 1, "delOldThemeResDir Exception themeId=" + paramString1 + ", version=" + paramString2 + ", themeResPath=" + (String)localObject + ",andDelZip=" + paramBoolean + ", eMsg=" + paramString3.getMessage());
-        return;
-      }
-      String str2 = null;
-      continue;
-      label720:
+      ImmersiveUtils.a(bool, paramWindow);
       return;
-      label721:
-      i -= 1;
-      continue;
-      label730:
-      paramString3 = null;
+      label47:
+      bool = false;
     }
+  }
+  
+  public static Drawable drawableTint(Context paramContext, int paramInt1, int paramInt2)
+  {
+    if (!SkinEngine.getInstances().checkResExist(paramInt1)) {
+      return ndi.a(paramContext.getResources().getDrawable(paramInt1), paramInt2);
+    }
+    return paramContext.getResources().getDrawable(paramInt1);
+  }
+  
+  public static String getAIOSkinPath()
+  {
+    return "/mnt/sdcard/skin/aio/";
   }
   
   public static String getAnimatePathByTag(int paramInt)
@@ -244,11 +190,11 @@ public class ThemeUtil
     Object localObject2 = null;
     Object localObject1;
     String str;
-    if (android.text.TextUtils.isEmpty(mAnimateThemePath))
+    if (TextUtils.isEmpty(mAnimateThemePath))
     {
       localObject1 = getCurrentThemeInfo();
       str = ((Bundle)localObject1).getString("themePath");
-      if (android.text.TextUtils.isEmpty(str))
+      if (TextUtils.isEmpty(str))
       {
         localObject1 = ((Bundle)localObject1).getString("themeId");
         QLog.e("Theme.ThemeUtil", 2, "getAnimatePathByTag err ApngImage path = " + null + " id = " + (String)localObject1);
@@ -302,45 +248,68 @@ public class ThemeUtil
   {
     String str2 = getCurrentThemeInfo().getString("themeId");
     String str1 = str2;
-    if (android.text.TextUtils.isEmpty(str2)) {
+    if (TextUtils.isEmpty(str2)) {
       str1 = "1000";
     }
+    curThemeId = str1;
     return str1;
   }
   
   public static Bundle getCurrentThemeInfo()
   {
     Bundle localBundle = new Bundle();
-    try
+    for (;;)
     {
-      localBundle.putString("themeId", "1000");
-      localBundle.putString("version", "0");
-      String str = SkinEngine.getInstances().getSkinRootPath();
-      localBundle.putString("themePath", str);
-      if ((str != null) && (str.length() > 0))
+      try
       {
-        Object localObject = str;
-        if (str.endsWith(File.separator)) {
-          localObject = str.substring(0, str.length() - 1);
-        }
-        localObject = ((String)localObject).substring(((String)localObject).lastIndexOf("/") + 1);
-        if (localObject != null)
+        localBundle.putString("themeId", "1000");
+        localBundle.putString("version", "0");
+        String str = SkinEngine.getInstances().getSkinRootPath();
+        localBundle.putString("themePath", str);
+        if ((str != null) && (str.length() > 0))
         {
-          localObject = ((String)localObject).split("_");
-          if (localObject.length == 2)
+          Object localObject1 = str;
+          if (str.endsWith(File.separator)) {
+            localObject1 = str.substring(0, str.length() - 1);
+          }
+          if (((String)localObject1).contains("theme_810"))
           {
-            localBundle.putString("themeId", localObject[0]);
-            localBundle.putString("version", localObject[1]);
+            localObject1 = ((String)localObject1).split(File.separator);
+            if (localObject1.length < 3) {
+              break label201;
+            }
+            localObject1 = localObject1[(localObject1.length - 3)];
+            if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (apmq.a((String)localObject1)))
+            {
+              localBundle.putString("themeId", (String)localObject1);
+              localBundle.putString("version", "20000000");
+              return localBundle;
+            }
+          }
+          else
+          {
+            localObject1 = ((String)localObject1).substring(((String)localObject1).lastIndexOf("/") + 1);
+            if (localObject1 != null)
+            {
+              localObject1 = ((String)localObject1).split("_");
+              if (localObject1.length == 2)
+              {
+                localBundle.putString("themeId", localObject1[0]);
+                localBundle.putString("version", localObject1[1]);
+                return localBundle;
+              }
+            }
           }
         }
       }
+      catch (Exception localException)
+      {
+        QLog.e("Theme.ThemeUtil", 1, "getCurrentThemeInfo, exception:", localException);
+      }
       return localBundle;
+      label201:
+      Object localObject2 = null;
     }
-    catch (Exception localException)
-    {
-      QLog.e("Theme.ThemeUtil", 1, "getCurrentThemeInfo, exception:", localException);
-    }
-    return localBundle;
   }
   
   public static int getErrorThemeId(Context paramContext, String paramString)
@@ -462,44 +431,30 @@ public class ThemeUtil
   
   public static String getIDFromSCID(String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    if (android.text.TextUtils.isEmpty(paramString))
+    if (TextUtils.isEmpty(paramString))
     {
       QLog.e("Theme.ThemeUtil", 1, "getIDFromSCID error null: zipName=" + paramString);
-      localObject2 = localObject1;
-      return localObject2;
+      return null;
     }
-    int j = 0;
-    String[] arrayOfString = paramString.split("\\.");
-    int i;
-    if ((paramString.startsWith("theme.android.")) && (arrayOfString.length > 3))
-    {
-      localObject1 = arrayOfString[2];
-      i = j;
+    int i = 0;
+    Object localObject = paramString.split("\\.");
+    if ((paramString.startsWith("theme.android.")) && (localObject.length > 3)) {
+      localObject = localObject[2];
     }
     for (;;)
     {
-      if (!QLog.isColorLevel())
-      {
-        localObject2 = localObject1;
-        if (!android.text.TextUtils.isEmpty((CharSequence)localObject1)) {
-          break;
-        }
+      if ((QLog.isColorLevel()) || (TextUtils.isEmpty((CharSequence)localObject))) {
+        QLog.d("Theme.ThemeUtil", 1, "getIDFromSCID ok, zipName = " + paramString + ", themeid=" + (String)localObject + ", idType=" + i);
       }
-      QLog.d("Theme.ThemeUtil", 2, "getIDFromSCID ok, zipName = " + paramString + ", themeid=" + (String)localObject1 + ", idType=" + i);
-      return localObject1;
-      i = j;
-      localObject1 = localObject2;
-      if (paramString.startsWith("theme."))
+      return localObject;
+      if ((paramString.startsWith("theme.")) && (localObject.length > 1))
       {
-        i = j;
-        localObject1 = localObject2;
-        if (arrayOfString.length > 1)
-        {
-          localObject1 = arrayOfString[1];
-          i = 2;
-        }
+        localObject = localObject[1];
+        i = 2;
+      }
+      else
+      {
+        localObject = null;
       }
     }
   }
@@ -519,11 +474,14 @@ public class ThemeUtil
     }
     try
     {
-      int i = Integer.parseInt(str);
-      if (i >= 5000)
+      if (Integer.parseInt(str) >= 5000)
       {
-        bool1 = true;
-        return bool1;
+        int i = Integer.parseInt(str);
+        if (i < 1000000)
+        {
+          bool1 = true;
+          return bool1;
+        }
       }
       return false;
     }
@@ -552,18 +510,6 @@ public class ThemeUtil
       return "h";
     }
     return "xh";
-  }
-  
-  public static String getThemeDownloadFilePath(Context paramContext, String paramString1, String paramString2)
-  {
-    if (android.text.TextUtils.isEmpty(paramString1)) {
-      QLog.e("Theme.ThemeUtil", 1, "getThemeDownloadFilePath null themeId:" + paramString1);
-    }
-    if (android.text.TextUtils.isEmpty(paramString1)) {
-      paramString2 = "20000000";
-    }
-    paramContext = AppConstants.bT;
-    return paramContext + paramString1 + "_" + paramString2 + ".zip";
   }
   
   public static int getThemeDownloadNum(Context paramContext)
@@ -627,7 +573,7 @@ public class ThemeUtil
   public static ThemeUtil.ThemeInfo getThemeInfo(Context paramContext, String paramString)
   {
     ThemeUtil.ThemeInfo localThemeInfo = null;
-    if ((paramContext == null) || (android.text.TextUtils.isEmpty(paramString)))
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
     {
       QLog.e("Theme.ThemeUtil", 1, "getThemeInfoFromSp error, themeId:" + paramString + ", context:" + paramContext);
       paramContext = localThemeInfo;
@@ -638,7 +584,7 @@ public class ThemeUtil
       {
         return paramContext;
         str = getThemePreferences(paramContext).getString(paramString, "");
-        if (!android.text.TextUtils.isEmpty(str)) {
+        if (!TextUtils.isEmpty(str)) {
           break;
         }
         paramContext = localThemeInfo;
@@ -655,23 +601,23 @@ public class ThemeUtil
       try
       {
         localThemeInfo.themeId = paramString;
-        if (!android.text.TextUtils.isEmpty(paramContext[0])) {
+        if (!TextUtils.isEmpty(paramContext[0])) {
           localThemeInfo.zipVer = Integer.parseInt(paramContext[0]);
         }
-        if (!android.text.TextUtils.isEmpty(paramContext[1])) {
+        if (!TextUtils.isEmpty(paramContext[1])) {
           localThemeInfo.version = paramContext[1];
         }
-        if (!android.text.TextUtils.isEmpty(paramContext[2])) {
+        if (!TextUtils.isEmpty(paramContext[2])) {
           localThemeInfo.fileNum = Integer.parseInt(paramContext[2]);
         }
         localThemeInfo.isVoiceTheme = "1".equals(paramContext[3]);
-        if (!android.text.TextUtils.isEmpty(paramContext[4])) {
+        if (!TextUtils.isEmpty(paramContext[4])) {
           localThemeInfo.size = Long.parseLong(paramContext[4]);
         }
-        if (!android.text.TextUtils.isEmpty(paramContext[5])) {
+        if (!TextUtils.isEmpty(paramContext[5])) {
           localThemeInfo.downsize = Long.parseLong(paramContext[5]);
         }
-        if (!android.text.TextUtils.isEmpty(paramContext[6])) {
+        if (!TextUtils.isEmpty(paramContext[6])) {
           localThemeInfo.status = paramContext[6];
         }
       }
@@ -704,53 +650,6 @@ public class ThemeUtil
     return localContext.getSharedPreferences("userThemeSharedPreferences", 4);
   }
   
-  public static String getThemeResourcePath(Context paramContext, String paramString1, String paramString2)
-  {
-    Object localObject2 = null;
-    Object localObject3 = null;
-    Object localObject1 = localObject3;
-    if (!android.text.TextUtils.isEmpty(paramString1))
-    {
-      localObject1 = localObject3;
-      if (!android.text.TextUtils.isEmpty(paramString2))
-      {
-        localObject1 = localObject3;
-        if (android.text.TextUtils.equals(paramString1, "1000")) {}
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        if (Utils.b()) {
-          paramContext = AppConstants.bN + "using_theme_res";
-        }
-      }
-      catch (Exception paramString1)
-      {
-        paramContext = localObject2;
-      }
-      try
-      {
-        localObject1 = paramContext + File.separator + paramString1 + "_" + paramString2;
-        return localObject1;
-      }
-      catch (Exception paramString1)
-      {
-        label122:
-        break label122;
-      }
-      if (paramContext == null)
-      {
-        QLog.e("Theme.ThemeUtil", 1, "getThemeResourcePath Error null == context");
-        return null;
-        QLog.e("Theme.ThemeUtil", 1, "getThemeResourcePath error:" + paramString1.getMessage());
-        return paramContext;
-      }
-      paramContext = paramContext.getDir("mobileqq_theme", 0).getAbsolutePath();
-    }
-  }
-  
   public static int getThemeSwitchTimes(QQAppInterface paramQQAppInterface)
   {
     int j = getUinThemePreferences(paramQQAppInterface).getInt("user_switch_theme_times", -1);
@@ -767,7 +666,7 @@ public class ThemeUtil
   public static String getThemeVoiceRootPath()
   {
     Object localObject = SkinEngine.getInstances().getSkinRootPath();
-    if (!android.text.TextUtils.isEmpty((CharSequence)localObject))
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       localObject = new File((String)localObject + File.separatorChar + "voice");
       if (((File)localObject).exists()) {
@@ -836,17 +735,18 @@ public class ThemeUtil
         QLog.e("Theme.ThemeUtil", 1, "getUserCurrentThemeId Error, uin=noLogin");
       }
       paramAppRuntime = (AppRuntime)localObject2;
-      if (android.text.TextUtils.isEmpty((CharSequence)localObject2))
+      if (TextUtils.isEmpty((CharSequence)localObject2))
       {
         if (QLog.isColorLevel()) {
           QLog.d("Theme.ThemeUtil", 2, "getUserCurrentThemeVersion,null == currentThemeId, currentThemeId= ThemeUtil.DEFAULT_THEME_ID");
         }
         paramAppRuntime = "1000";
       }
+      curThemeId = paramAppRuntime;
       localObject2 = paramAppRuntime;
     } while (!QLog.isColorLevel());
     long l = localSharedPreferences.getLong("themeSetTimeKey", 0L);
-    QLog.d("Theme.ThemeUtil", 2, "getUserCurrentThemeId,uin=" + com.tencent.mobileqq.text.TextUtils.a((String)localObject1, 2) + ",currentThemeId=" + paramAppRuntime + ", oldTime=" + l);
+    QLog.d("Theme.ThemeUtil", 2, "getUserCurrentThemeId,uin=" + (String)localObject1 + ",currentThemeId=" + paramAppRuntime + ", oldTime=" + l);
     return paramAppRuntime;
   }
   
@@ -881,7 +781,7 @@ public class ThemeUtil
       }
       localObject2 = localSharedPreferences.getString("currentThemeVersion", null);
       paramAppInterface = (AppInterface)localObject2;
-      if (android.text.TextUtils.isEmpty((CharSequence)localObject2))
+      if (TextUtils.isEmpty((CharSequence)localObject2))
       {
         localObject2 = "0";
         paramAppInterface = (AppInterface)localObject2;
@@ -894,7 +794,7 @@ public class ThemeUtil
       localObject2 = paramAppInterface;
     } while (!QLog.isColorLevel());
     long l = localSharedPreferences.getLong("themeSetTimeKey", 0L);
-    QLog.d("Theme.ThemeUtil", 2, "getUserCurrentThemeVersion,uin=" + com.tencent.mobileqq.text.TextUtils.a((String)localObject1, 2) + ",currentThemeVersion=" + paramAppInterface + ", oldTime=" + l);
+    QLog.d("Theme.ThemeUtil", 2, "getUserCurrentThemeVersion,uin=" + banh.a((String)localObject1, 2) + ",currentThemeVersion=" + paramAppInterface + ", oldTime=" + l);
     return paramAppInterface;
   }
   
@@ -908,7 +808,7 @@ public class ThemeUtil
         QLog.d("Theme.ThemeUtil", 2, "initTheme current qq already set theme:" + (String)localObject1);
       }
       if ("1103".equals(localObject1)) {}
-      for (paramAppInterface = null; !android.text.TextUtils.isEmpty(paramAppInterface); paramAppInterface = getWeekLoopTheme(paramAppInterface))
+      for (paramAppInterface = null; !TextUtils.isEmpty(paramAppInterface); paramAppInterface = getWeekLoopTheme(paramAppInterface))
       {
         if (QLog.isColorLevel()) {
           QLog.d("Theme.ThemeUtil", 2, "initTheme current qq already set weekThemeId:" + paramAppInterface);
@@ -944,7 +844,7 @@ public class ThemeUtil
       Collections.sort((List)localObject3);
       localObject4 = (String)((List)localObject3).get(((List)localObject3).size() - 1);
       localObject3 = ((SharedPreferences)localObject2).getString("currentThemeVersion", "0");
-      if (IndividuationConfigInfo.a("6.0", "7.6.3"))
+      if (bdtd.a("6.0", "8.3.5"))
       {
         localObject2 = (String)((Map)localObject1).get(localObject4);
         localObject1 = localObject2;
@@ -952,7 +852,7 @@ public class ThemeUtil
         {
           localObject1 = localObject2;
           if ((paramAppInterface instanceof QQAppInterface)) {
-            ((ThemeHandler)((QQAppInterface)paramAppInterface).a(14)).a((String)localObject2, (String)localObject3, false);
+            ((amdj)((QQAppInterface)paramAppInterface).a(14)).a((String)localObject2, (String)localObject3, false);
           }
         }
       }
@@ -971,223 +871,216 @@ public class ThemeUtil
   public static String getWeekLoopTheme(AppInterface paramAppInterface)
   {
     SharedPreferences localSharedPreferences = getUinThemePreferences(paramAppInterface);
+    Object localObject3 = null;
+    Object localObject1 = null;
     for (;;)
     {
+      int i;
       int j;
       try
       {
-        str = localSharedPreferences.getString("themeArray", null);
-        if ((!android.text.TextUtils.isEmpty(localSharedPreferences.getString("seriesID", null))) && (!android.text.TextUtils.isEmpty(str)))
+        localObject2 = localSharedPreferences.getString("themeArray", null);
+        if ((!TextUtils.isEmpty(localSharedPreferences.getString("seriesID", null))) && (!TextUtils.isEmpty((CharSequence)localObject2)))
         {
           i = localSharedPreferences.getInt("themeLength", 7);
           j = localSharedPreferences.getInt("themeIndex", 0);
           long l = localSharedPreferences.getLong("startTime", -28800L);
           int k = TimeZone.getTimeZone("GMT+8").getRawOffset();
           if (System.currentTimeMillis() <= l) {
-            break label520;
+            break label428;
           }
           i = ((int)Math.ceil((System.currentTimeMillis() + k) / 86400000L) - (int)Math.ceil((l + k) / 86400000L)) % i;
-          if (QLog.isColorLevel()) {
-            QLog.d("Theme.ThemeUtil", 2, "getWeekLoopTheme nIndex:" + j + ", tIndex:" + i);
+          if (!QLog.isColorLevel()) {
+            break label433;
           }
-          if (j != i)
+          QLog.d("Theme.ThemeUtil", 2, "getWeekLoopTheme nIndex:" + j + ", tIndex:" + i);
+          break label433;
+          label182:
+          localObject1 = new JSONArray((String)localObject2);
+          if (((JSONArray)localObject1).length() <= 0) {
+            break label414;
+          }
+          if (i < ((JSONArray)localObject1).length()) {
+            break label420;
+          }
+          i = 0;
+          localObject2 = ((JSONArray)localObject1).getJSONObject(i);
+          if (localObject2 != null)
           {
-            localJSONArray = new JSONArray(str);
-            if (localJSONArray.length() > 0)
-            {
-              if (i < localJSONArray.length()) {
-                break label517;
-              }
-              i = 0;
-              localObject2 = localJSONArray.getJSONObject(i);
-              if (localObject2 != null)
-              {
-                str = ((JSONObject)localObject2).getString("id");
-                if (localObject2 == null) {
-                  continue;
-                }
-                localObject2 = ((JSONObject)localObject2).getString("version");
-                if ((android.text.TextUtils.isEmpty(str)) || (android.text.TextUtils.isEmpty((CharSequence)localObject2))) {
-                  continue;
-                }
-                ThemeUtil.ThemeInfo localThemeInfo = getThemeInfo(paramAppInterface.getApp(), str);
-                if ((localThemeInfo == null) || (!((String)localObject2).equals(localThemeInfo.version))) {
-                  continue;
-                }
-                boolean bool = "5".equals(localThemeInfo.status);
-                if (!bool) {
-                  continue;
-                }
-              }
+            localObject1 = ((JSONObject)localObject2).getString("id");
+            if (localObject2 == null) {
+              continue;
+            }
+            localObject2 = ((JSONObject)localObject2).getString("version");
+            if (TextUtils.isEmpty((CharSequence)localObject1)) {
+              break label414;
+            }
+            boolean bool = TextUtils.isEmpty((CharSequence)localObject2);
+            if (bool) {
+              break label414;
             }
           }
         }
       }
-      catch (Exception localException1)
+      catch (Exception paramAppInterface)
       {
-        String str;
-        JSONArray localJSONArray;
         Object localObject2;
-        paramAppInterface = null;
-        QLog.e("Theme.ThemeUtil", 1, "getWeekLoopTheme error:" + localException1.getMessage());
-        return paramAppInterface;
+        localObject1 = localObject3;
+        QLog.e("Theme.ThemeUtil", 1, "getWeekLoopTheme error:" + paramAppInterface.getMessage());
+        return localObject1;
       }
       try
       {
         if (QLog.isColorLevel()) {
-          QLog.d("Theme.ThemeUtil", 2, "getWeekLoopTheme ok: sThemeId = " + str);
+          QLog.d("Theme.ThemeUtil", 2, "getWeekLoopTheme ok: sThemeId = " + (String)localObject1);
         }
-        setCurrentThemeIdVersion(paramAppInterface, str, (String)localObject2);
+        setCurrentThemeIdVersion(paramAppInterface, (String)localObject1, (String)localObject2);
         paramAppInterface = localSharedPreferences.edit();
         paramAppInterface.putInt("themeIndex", i);
         paramAppInterface.commit();
-        paramAppInterface = str;
-      }
-      catch (Exception localException3)
-      {
-        paramAppInterface = localException1;
-        Object localObject1 = localException3;
-        continue;
-      }
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Theme.ThemeUtil", 2, "getWeekLoopTheme seriesID || themeArray = null");
-        }
+        paramAppInterface = (AppInterface)localObject1;
         return paramAppInterface;
       }
-      catch (Exception localException2)
+      catch (Exception paramAppInterface)
       {
         continue;
       }
-      str = null;
+      localObject1 = null;
       continue;
       localObject2 = null;
       continue;
-      if (QLog.isColorLevel()) {
-        QLog.d("Theme.ThemeUtil", 2, "getWeekLoopTheme waitting: sThemeId = " + str);
+      paramAppInterface = (AppInterface)localObject1;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Theme.ThemeUtil", 2, "getWeekLoopTheme seriesID || themeArray = null");
+        return null;
+        label414:
+        localObject1 = null;
+        continue;
+        label420:
+        continue;
+        label428:
+        label433:
+        do
+        {
+          i = j;
+          break label182;
+          i = j;
+          break;
+        } while (j == i);
       }
-      ((ThemeSwitchManager)paramAppInterface.getManager(184)).a(localJSONArray, i, "206", 0);
-      paramAppInterface = null;
-      continue;
-      label517:
-      continue;
-      label520:
-      int i = j;
     }
   }
   
   @TargetApi(9)
   public static void initTheme(QQAppInterface paramQQAppInterface)
   {
-    if ((!paramQQAppInterface.isLogin()) || ((!android.text.TextUtils.isEmpty(uin)) && (uin.equals(paramQQAppInterface.getCurrentAccountUin())))) {
-      return;
-    }
-    uin = paramQQAppInterface.getCurrentAccountUin();
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
-    Object localObject1 = getCurrentThemeInfo();
-    String str2 = ((Bundle)localObject1).getString("themeId");
-    String str3 = getUserThemeIDForReset(paramQQAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.i("Theme.ThemeUtil", 2, "initTheme,userThemeId=" + str3 + ",engine currentThemeId=" + str2 + ", enginePath=" + ((Bundle)localObject1).getString("themePath"));
-    }
-    if (!str2.equals(str3)) {
-      if (str3.equals("1000"))
+    Object localObject = refLock;
+    if (paramQQAppInterface == null) {}
+    for (;;)
+    {
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("Theme.ThemeUtil", 1, "initTheme reset user to default theme, currentThemeId:" + str2);
+        if (weakApp == null) {
+          break label278;
         }
-        SkinEngine.getInstances().setSkinRootPath(localBaseApplicationImpl, null);
+        paramQQAppInterface = (QQAppInterface)weakApp.get();
+        if (paramQQAppInterface == null)
+        {
+          weakApp = null;
+          QLog.e("Theme.ThemeUtil", 1, "initTheme null app");
+          return;
+        }
+        localQQAppInterface = paramQQAppInterface;
+        if (paramQQAppInterface.isLogin()) {
+          break label89;
+        }
+        weakApp = null;
+        QLog.e("Theme.ThemeUtil", 1, "initTheme logout app");
+        return;
       }
+      finally {}
+      weakApp = new WeakReference(paramQQAppInterface);
+      QQAppInterface localQQAppInterface = paramQQAppInterface;
+      label89:
+      if (!localQQAppInterface.isLogin())
+      {
+        QLog.e("Theme.ThemeUtil", 1, "initTheme logout appInterface");
+        return;
+      }
+      if (SkinEngine.getInstances().mResources == null)
+      {
+        QLog.e("Theme.ThemeUtil", 1, "initTheme: engine is not ready");
+        return;
+      }
+      paramQQAppInterface = (amdj)localQQAppInterface.a(14);
+      if ((paramQQAppInterface != null) && (!paramQQAppInterface.b.compareAndSet(true, false)))
+      {
+        QLog.e("Theme.ThemeUtil", 1, "initTheme: had send auth");
+        return;
+      }
+      paramQQAppInterface = BaseApplicationImpl.sApplication;
+      paramQQAppInterface = getCurrentThemeInfo();
+      localObject = paramQQAppInterface.getString("themeId");
+      String str = getUserThemeIDForReset(localQQAppInterface);
+      QLog.i("Theme.ThemeUtil", 1, "initTheme,userThemeId=" + str + ",engine currentThemeId=" + (String)localObject + ", enginePath=" + paramQQAppInterface.getString("themePath"));
+      ThemeSwitcher.a(localQQAppInterface, str, "206", new baov(localQQAppInterface));
+      paramQQAppInterface = (bdut)localQQAppInterface.a(103);
+      if (!paramQQAppInterface.b.get()) {
+        paramQQAppInterface.a(localQQAppInterface, true);
+      }
+      return;
+      label278:
+      paramQQAppInterface = null;
+    }
+  }
+  
+  public static boolean isColorDark(int paramInt)
+  {
+    return 1.0D - (0.299D * Color.red(paramInt) + 0.587D * Color.green(paramInt) + 0.114D * Color.blue(paramInt)) / 255.0D >= 0.5D;
+  }
+  
+  public static boolean isCustomTheme(boolean paramBoolean)
+  {
+    String str;
+    String[] arrayOfString;
+    int j;
+    int i;
+    if (paramBoolean)
+    {
+      str = getUserCurrentThemeId(null);
+      arrayOfString = THEME_DEFAULT_IDS;
+      j = arrayOfString.length;
+      i = 0;
     }
     for (;;)
     {
-      isNowThemeIsAnimate();
-      localObject1 = (VasMonitorHandler)paramQQAppInterface.a(103);
-      if (((VasMonitorHandler)localObject1).b.get()) {
+      if (i >= j) {
+        break label52;
+      }
+      if (str.equals(arrayOfString[i]))
+      {
+        return false;
+        str = getCurrentThemeId();
         break;
       }
-      ((VasMonitorHandler)localObject1).a(paramQQAppInterface, true);
-      return;
-      localObject1 = getThemeInfo(localBaseApplicationImpl, str3);
-      String str1;
-      label231:
-      int i;
-      label267:
-      Object localObject2;
-      if (localObject1 != null)
-      {
-        str1 = ((ThemeUtil.ThemeInfo)localObject1).version;
-        i = 0;
-        if (android.text.TextUtils.isEmpty(str1)) {
-          break label507;
-        }
-        localObject1 = getThemeResourcePath(localBaseApplicationImpl, str3, str1);
-        if (!new File((String)localObject1).exists()) {
-          break label470;
-        }
-        i = 1;
-        j = i;
-        localObject2 = localObject1;
-        if (android.text.TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          String str4 = getUserCurrentThemeVersion(paramQQAppInterface);
-          j = i;
-          localObject2 = localObject1;
-          if (!android.text.TextUtils.isEmpty(str4))
-          {
-            j = i;
-            localObject2 = localObject1;
-            if (!str4.equals(str1))
-            {
-              localObject2 = getThemeResourcePath(localBaseApplicationImpl, str3, str4);
-              if (!new File((String)localObject2).exists()) {
-                break label512;
-              }
-            }
-          }
-        }
-      }
-      for (int j = i + 10;; j = i)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Theme.ThemeUtil", 2, "initTheme reset theme all themePath=" + (String)localObject2 + ", step=" + j + ", currentThemeId:" + str2);
-        }
-        if (android.text.TextUtils.isEmpty((CharSequence)localObject2)) {
-          break label557;
-        }
-        SkinEngine.getInstances().setSkinRootPath(localBaseApplicationImpl, (String)localObject2);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("Theme.ThemeUtil", 1, "initTheme set theme: themePath:" + (String)localObject2 + ", currentThemeId:" + str2);
-        break;
-        str1 = null;
-        break label231;
-        label470:
-        QLog.d("Theme.ThemeUtil", 1, "initTheme set sp theme Error themePath:" + null + ", currentThemeId:" + str2);
-        label507:
-        localObject1 = null;
-        break label267;
-        label512:
-        QLog.d("Theme.ThemeUtil", 1, "initTheme set user theme Error themePath:" + null + ", currentThemeId:" + str2);
-        localObject2 = null;
-      }
-      label557:
-      QLog.e("Theme.ThemeUtil", 2, "initTheme reset theme all Error themePath=" + (String)localObject2 + ", step=" + j + ", currentThemeId:" + str2);
-      SkinEngine.getInstances().setSkinRootPath(localBaseApplicationImpl, null);
-      setCurrentThemeIdVersion(paramQQAppInterface, "1000", "0");
-      continue;
-      localObject1 = SkinEngine.getInstances().getSkinRootPath();
-      if ((localObject1 != null) && (((String)localObject1).length() > 0) && (str2.equals("1000")))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("Theme.ThemeUtil", 2, "initTheme reset user to default theme for old version,currentThemeResPath=" + (String)localObject1);
-        }
-        SkinEngine.getInstances().setSkinRootPath(localBaseApplicationImpl, null);
-      }
-      QLog.i("Theme.ThemeUtil", 1, "initTheme theme currentThemeResPath:" + (String)localObject1);
+      i += 1;
     }
+    label52:
+    return true;
+  }
+  
+  public static boolean isDartStatusBar(Context paramContext)
+  {
+    if (isNowThemeIsNight(null, false, null)) {}
+    float[] arrayOfFloat;
+    do
+    {
+      return false;
+      arrayOfFloat = new float[3];
+      Color.colorToHSV(paramContext.getResources().getColor(2131166365), arrayOfFloat);
+    } while (arrayOfFloat[2] >= 0.5F);
+    return true;
   }
   
   @Deprecated
@@ -1211,17 +1104,33 @@ public class ThemeUtil
     return "1000".equals(getUserCurrentThemeId(null));
   }
   
+  public static boolean isFixTheme(String paramString)
+  {
+    return ("1103".equals(paramString)) || (azmk.a(paramString));
+  }
+  
+  public static boolean isGoldenTheme()
+  {
+    return "2101".equals(getUserCurrentThemeId(null));
+  }
+  
+  public static boolean isIOSTheme(String paramString)
+  {
+    return paramString.startsWith("theme.ios");
+  }
+  
   @Deprecated
   public static boolean isInNightMode(AppRuntime paramAppRuntime)
   {
-    return "1103".equals(getUserCurrentThemeId(paramAppRuntime));
+    paramAppRuntime = getUserCurrentThemeId(paramAppRuntime);
+    return ("1103".equals(paramAppRuntime)) || ("2920".equals(paramAppRuntime));
   }
   
   public static boolean isNeedUpdataById(String paramString)
   {
     boolean bool2 = false;
     boolean bool1;
-    if (!android.text.TextUtils.isEmpty(paramString))
+    if (!TextUtils.isEmpty(paramString))
     {
       bool1 = true;
       if (!bool1) {
@@ -1248,6 +1157,21 @@ public class ThemeUtil
     }
   }
   
+  public static boolean isNowSimpleThemeUserDarkStatus(AppRuntime paramAppRuntime, boolean paramBoolean, String paramString)
+  {
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      if (!paramBoolean) {
+        break label36;
+      }
+    }
+    label36:
+    for (str = getUserCurrentThemeId(paramAppRuntime); (azmk.a(str)) && ("3064".equals(str)); str = getCurrentThemeId()) {
+      return true;
+    }
+    return false;
+  }
+  
   public static boolean isNowThemeIsAnimate()
   {
     Object localObject3 = null;
@@ -1267,7 +1191,7 @@ public class ThemeUtil
         return bool1;
         mAnimateThemePath = null;
         isThemeIsAnimate = false;
-        if ((android.text.TextUtils.isEmpty(str)) || ("1000".equals(str)) || ("999".equals(str)))
+        if ((TextUtils.isEmpty(str)) || ("1000".equals(str)) || ("999".equals(str)))
         {
           mAnimateThemeId = str;
           bool1 = bool3;
@@ -1276,7 +1200,7 @@ public class ThemeUtil
         {
           try
           {
-            if (Integer.parseInt(str) >= 5000)
+            if ((Integer.parseInt(str) >= 5000) && (Integer.parseInt(str) < 1000000))
             {
               mAnimateThemeId = str;
               bool1 = bool3;
@@ -1286,8 +1210,8 @@ public class ThemeUtil
           {
             QLog.d("Theme.ThemeUtil", 2, "isNowThemeIsAnimate err" + localException.getMessage());
             localObject2 = localObject1.getString("themePath");
-            if (android.text.TextUtils.isEmpty((CharSequence)localObject2)) {
-              break label516;
+            if (TextUtils.isEmpty((CharSequence)localObject2)) {
+              break label526;
             }
           }
         }
@@ -1295,7 +1219,7 @@ public class ThemeUtil
     }
     finally {}
     Object localObject2;
-    label193:
+    label203:
     Object localObject5;
     if (((String)localObject2).endsWith(File.separator))
     {
@@ -1307,7 +1231,7 @@ public class ThemeUtil
       bool1 = ((File)localObject5).exists();
       localObject3 = localObject2;
       if (!bool1) {
-        break label516;
+        break label526;
       }
     }
     for (;;)
@@ -1315,7 +1239,7 @@ public class ThemeUtil
       Object localObject4;
       try
       {
-        localObject3 = FileUtils.a((File)localObject5, -1);
+        localObject3 = bdhb.a((File)localObject5, -1);
         bool1 = bool3;
         if (localObject3 == null) {
           break;
@@ -1337,7 +1261,7 @@ public class ThemeUtil
         if (isThemeIsAnimate)
         {
           localObject2 = new Bundle();
-          if (ThemeSwitchManager.a((Bundle)localObject2))
+          if (baoq.a((Bundle)localObject2))
           {
             bool1 = bool2;
             if (((Bundle)localObject2).getBoolean("dynamic_switch", true))
@@ -1361,8 +1285,8 @@ public class ThemeUtil
       localObject5 = (String)localObject2 + File.separator;
       localObject3 = (String)localObject2 + File.separator + "config.json";
       localObject2 = localObject5;
-      break label193;
-      label516:
+      break label203;
+      label526:
       bool1 = false;
       localObject2 = localObject4;
     }
@@ -1380,11 +1304,14 @@ public class ThemeUtil
     }
     try
     {
-      int i = Integer.parseInt(str);
-      if (i >= 5000)
+      if (Integer.parseInt(str) >= 5000)
       {
-        bool1 = true;
-        return bool1;
+        int i = Integer.parseInt(str);
+        if (i < 1000000)
+        {
+          bool1 = true;
+          return bool1;
+        }
       }
       return false;
     }
@@ -1398,7 +1325,7 @@ public class ThemeUtil
   public static boolean isNowThemeIsDefault(AppRuntime paramAppRuntime, boolean paramBoolean, String paramString)
   {
     String str = paramString;
-    if (android.text.TextUtils.isEmpty(paramString)) {
+    if (TextUtils.isEmpty(paramString)) {
       if (!paramBoolean) {
         break label25;
       }
@@ -1420,15 +1347,150 @@ public class ThemeUtil
   public static boolean isNowThemeIsNight(AppRuntime paramAppRuntime, boolean paramBoolean, String paramString)
   {
     String str = paramString;
-    if (android.text.TextUtils.isEmpty(paramString)) {
+    if (TextUtils.isEmpty(paramString)) {
       if (!paramBoolean) {
-        break label25;
+        break label38;
       }
     }
-    label25:
-    for (str = getUserCurrentThemeId(paramAppRuntime);; str = getCurrentThemeId()) {
-      return "1103".equals(str);
+    label38:
+    for (str = getUserCurrentThemeId(paramAppRuntime); ("1103".equals(str)) || ("2920".equals(str)); str = getCurrentThemeId()) {
+      return true;
     }
+    return false;
+  }
+  
+  public static boolean isNowThemeIsNightForQzone()
+  {
+    return isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
+  }
+  
+  public static boolean isNowThemeIsSimple(AppRuntime paramAppRuntime, boolean paramBoolean, String paramString)
+  {
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      if (!paramBoolean) {
+        break label23;
+      }
+    }
+    label23:
+    for (str = getUserCurrentThemeId(paramAppRuntime);; str = getCurrentThemeId()) {
+      return azmk.a(str);
+    }
+  }
+  
+  public static boolean isSimpleAndOtherThemeSwitch()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Theme.ThemeUtil", 2, "isSimpleAndOtherThemeSwitch lastThemeId  = " + lastThemeId + ", curThemeId = " + curThemeId);
+    }
+    return ((azmk.a(lastThemeId)) || (azmk.a(curThemeId))) && (!curThemeId.equals(lastThemeId));
+  }
+  
+  public static boolean isSimpleColrThemeStateBarUseWhite(String paramString)
+  {
+    return ("3064".equals(paramString)) || ("2971".equals(paramString)) || ("2921".equals(paramString));
+  }
+  
+  public static boolean isSimpleDayTheme(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (String str = getUserCurrentThemeId(null);; str = getCurrentThemeId()) {
+      return azmk.b(str);
+    }
+  }
+  
+  public static boolean isSkinEngineInitial()
+  {
+    if (SkinEngine.getInstances().mResources == null) {}
+    String str1;
+    String str2;
+    do
+    {
+      return false;
+      str1 = getUserCurrentThemeId(BaseApplicationImpl.getApplication().getRuntime());
+      str2 = getCurrentThemeId();
+    } while (((TextUtils.isEmpty(SkinEngine.getInstances().getSkinRootPath())) || (!str2.equals(str1))) && (!"1000".equals(str1)));
+    return true;
+  }
+  
+  public static void previewAIOTheme(Context paramContext, String paramString)
+  {
+    Object localObject = bdwm.a;
+    localObject = ((bdwm)localObject).getDir(paramContext, ((bdwm)localObject).getScid(99999));
+    if ((TextUtils.isEmpty(paramString)) || ("clear".equals(paramString)))
+    {
+      banz.a().b("", 0);
+      return;
+    }
+    try
+    {
+      bdhb.a(paramString, "/storage/emulated/0/tencent/skin/aioTmp", false);
+      paramString = new File("/storage/emulated/0/tencent/skin/aioTmp", "theme.zip");
+      if (new File(paramString.getAbsolutePath()).exists()) {
+        bdhb.a(paramString.getAbsolutePath(), "/storage/emulated/0/tencent/skin/aioTmp", false);
+      }
+      paramString = new File("/storage/emulated/0/tencent/skin/aioTmp", "androidXH.zip");
+      if (new File(paramString.getAbsolutePath()).exists())
+      {
+        if (new File((String)localObject).exists()) {
+          bdhb.a((String)localObject);
+        }
+        bdhb.a(paramString.getAbsolutePath(), (String)localObject, false);
+      }
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d("Theme.ThemeUtil", 2, paramString.getMessage());
+          QQToast.a(paramContext, paramString.getMessage(), 0).a();
+        }
+      }
+      QQToast.a(paramContext, "AIO主题文件不存在", 0).a();
+    }
+    if (new File((String)localObject).exists())
+    {
+      banz.a().b((String)localObject, 99999);
+      QQToast.a(paramContext, "AIO主题切换成功", 0).a();
+      return;
+    }
+  }
+  
+  public static void previewPlayerSkin(Context paramContext, String paramString)
+  {
+    bdwl localbdwl = bdwl.a;
+    paramContext = localbdwl.getDir(paramContext, localbdwl.getScid(99999));
+    if ((TextUtils.isEmpty(paramString)) || ("clear".equals(paramString)))
+    {
+      baoc.a().a("", 0);
+      return;
+    }
+    try
+    {
+      bdhb.a(paramString, paramContext, false);
+      baoc.a().a(paramContext, 99999);
+      return;
+    }
+    catch (IOException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+  }
+  
+  public static Boolean removeThemeInfo(Context paramContext, String paramString)
+  {
+    if ((paramContext == null) || (paramString == null))
+    {
+      QLog.e("Theme.ThemeUtil", 1, "removeThemeInfo error, themeId:" + paramString + ", context:" + paramContext);
+      return Boolean.valueOf(false);
+    }
+    boolean bool = getThemePreferences(paramContext).edit().remove(paramString).commit();
+    if ((!bool) || (QLog.isColorLevel())) {
+      QLog.d("Theme.ThemeUtil", 2, "removeThemeInfo sp comit ret=" + bool + ", themeId=" + paramString);
+    }
+    return Boolean.valueOf(bool);
   }
   
   public static void resetThemeSwitchTimes(QQAppInterface paramQQAppInterface)
@@ -1440,6 +1502,19 @@ public class ThemeUtil
     if (QLog.isColorLevel()) {
       QLog.d("Theme.ThemeUtil", 2, "resetThemeSwitchTimes");
     }
+  }
+  
+  public static void setColorFilterIfNeed(ImageView paramImageView)
+  {
+    if (paramImageView == null) {
+      return;
+    }
+    if (isNowThemeIsNightForQzone())
+    {
+      paramImageView.setColorFilter(1291845632);
+      return;
+    }
+    paramImageView.setColorFilter(0);
   }
   
   public static Boolean setCurrentThemeIdVersion(AppRuntime paramAppRuntime, String paramString1, String paramString2)
@@ -1457,7 +1532,7 @@ public class ThemeUtil
         return Boolean.valueOf(false);
       }
     }
-    if ((android.text.TextUtils.isEmpty(paramString1)) || (android.text.TextUtils.isEmpty(paramString2)))
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
       QLog.e("Theme.ThemeUtil", 1, "setCurrentThemeIdVersion Error,themeId or version == null, themeId:" + paramString1 + "version:" + paramString2);
       return Boolean.valueOf(false);
@@ -1471,6 +1546,7 @@ public class ThemeUtil
       localObject1 = "noLogin";
       QLog.e("Theme.ThemeUtil", 1, "setCurrentThemeIdVersion Error,uin=noLogin");
     }
+    curThemeId = paramString1;
     str = ((SharedPreferences)localObject2).getString("currentThemeId_6.3.5", "1000");
     int i = ((SharedPreferences)localObject2).getInt("user_switch_theme_times", 0);
     long l2 = ((SharedPreferences)localObject2).getLong("themeSetTimeKey", 0L);
@@ -1486,19 +1562,19 @@ public class ThemeUtil
     ((SharedPreferences.Editor)localObject2).putString("currentThemeVersion", paramString2);
     ((SharedPreferences.Editor)localObject2).putInt("user_switch_theme_times", i);
     boolean bool2 = ((SharedPreferences.Editor)localObject2).commit();
-    QLog.d("Theme.ThemeUtil", 1, "setCurrentThemeIdVersion,uin=" + com.tencent.mobileqq.text.TextUtils.a((String)localObject1, 2) + ",oldUsrThemeId=" + str + ",set new themeId=" + paramString1 + ",set new version=" + paramString2 + ", userSwitchThemeTimes=" + i + ",commitSuss=" + bool1 + ", oldTime=" + l2 + ", commitSussOld:" + bool2);
+    QLog.d("Theme.ThemeUtil", 1, "setCurrentThemeIdVersion,uin=" + banh.a((String)localObject1, 2) + ",oldUsrThemeId=" + str + ",set new themeId=" + paramString1 + ",set new version=" + paramString2 + ", userSwitchThemeTimes=" + i + ",commitSuss=" + bool1 + ", oldTime=" + l2 + ", commitSussOld:" + bool2);
     try
     {
       paramString2 = new HashMap();
       paramString2.put("param_themeId", paramString1);
       paramString2.put("param_singleSp", String.valueOf(bool1));
-      StatisticCollector.a(paramAppRuntime.getApplication().getApplicationContext()).a((String)localObject1, "VipSetCurrentThemeIdVersion", bool1, 1L, 0L, paramString2, "", false);
-      label471:
+      azri.a(paramAppRuntime.getApplication().getApplicationContext()).a((String)localObject1, "VipSetCurrentThemeIdVersion", bool1, 1L, 0L, paramString2, "", false);
+      label474:
       return Boolean.valueOf(bool1);
     }
     catch (Exception paramAppRuntime)
     {
-      break label471;
+      break label474;
     }
   }
   
@@ -1510,23 +1586,23 @@ public class ThemeUtil
     if (QLog.isColorLevel()) {
       QLog.d("Theme.ThemeUtil", 2, "setErrorThemeID themeId=" + paramString);
     }
-    label178:
+    label177:
+    label194:
     label195:
-    label196:
-    label199:
+    label198:
     for (;;)
     {
       int i;
       try
       {
-        if (android.text.TextUtils.isEmpty(paramContext))
+        if (TextUtils.isEmpty(paramContext))
         {
           paramContext = new JSONObject();
           if (!paramContext.has(paramString)) {
-            break label196;
+            break label195;
           }
           i = paramContext.getInt(paramString);
-          break label178;
+          break label177;
           paramContext.put(paramString, i);
           localEditor.putString("listOfErrorThemeSrc", paramContext.toString()).commit();
           return;
@@ -1540,14 +1616,14 @@ public class ThemeUtil
       catch (Exception paramContext)
       {
         if (!QLog.isColorLevel()) {
-          break label195;
+          break label194;
         }
       }
       return;
       for (;;)
       {
         if (!paramBoolean) {
-          break label199;
+          break label198;
         }
         i = i % 100000 + 500000;
         break;
@@ -1555,6 +1631,19 @@ public class ThemeUtil
         i = 0;
       }
     }
+  }
+  
+  public static void setThemeFilter(Drawable paramDrawable, String paramString)
+  {
+    if (paramDrawable == null) {
+      return;
+    }
+    if ("1103".equals(paramString))
+    {
+      paramDrawable.setColorFilter(NIGHTMODE_COLORFILTER);
+      return;
+    }
+    paramDrawable.clearColorFilter();
   }
   
   public static Boolean setThemeInfo(Context paramContext, ThemeUtil.ThemeInfo paramThemeInfo)
@@ -1596,98 +1685,130 @@ public class ThemeUtil
     if (QLog.isColorLevel()) {
       QLog.d("Theme.ThemeUtil", 2, "setWeekLoopTheme, seriesID=" + paramString1 + ", themeArray=" + paramString2 + ", startTime=" + paramLong);
     }
-    SharedPreferences localSharedPreferences = getUinThemePreferences(paramAppRuntime);
-    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-    boolean bool2;
-    if (android.text.TextUtils.isEmpty(paramString1))
+    paramAppRuntime = getUinThemePreferences(paramAppRuntime);
+    SharedPreferences.Editor localEditor = paramAppRuntime.edit();
+    boolean bool1 = true;
+    boolean bool2 = true;
+    if (TextUtils.isEmpty(paramString1))
     {
-      if (!android.text.TextUtils.isEmpty(localSharedPreferences.getString("seriesID", null)))
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramAppRuntime.getString("seriesID", null)))
       {
         localEditor.putString("seriesID", "");
         localEditor.putString("themeArray", "");
-        bool2 = localEditor.commit();
-        return bool2;
+        bool1 = localEditor.commit();
       }
     }
-    else
+    for (;;)
     {
+      return bool1;
+      bool2 = bool1;
       try
       {
         localEditor.putString("seriesID", paramString1);
+        bool2 = bool1;
         localEditor.putString("themeArray", paramString2);
-        if (android.text.TextUtils.isEmpty(paramString2)) {
-          break label321;
-        }
-        j = new JSONArray(paramString2).length();
-        if (j <= 0)
+        bool2 = bool1;
+        if (!TextUtils.isEmpty(paramString2))
         {
-          QLog.e("Theme.ThemeUtil", 2, "setWeekLoopTheme themeJsonArr Error:0 == length");
-          return false;
+          bool2 = bool1;
+          int j = new JSONArray(paramString2).length();
+          if (j <= 0)
+          {
+            bool2 = bool1;
+            QLog.e("Theme.ThemeUtil", 2, "setWeekLoopTheme themeJsonArr Error:0 == length");
+            return false;
+          }
+          int i = 0;
+          bool2 = bool1;
+          int k = TimeZone.getTimeZone("GMT+8").getRawOffset();
+          bool2 = bool1;
+          if (System.currentTimeMillis() > paramLong)
+          {
+            bool2 = bool1;
+            i = ((int)Math.ceil((System.currentTimeMillis() + k) / 86400000L) - (int)Math.ceil((k + paramLong) / 86400000L)) % j;
+          }
+          bool2 = bool1;
+          localEditor.putInt("themeLength", j);
+          bool2 = bool1;
+          localEditor.putInt("themeIndex", i);
+          bool2 = bool1;
+          localEditor.putLong("startTime", paramLong);
         }
-        i = TimeZone.getTimeZone("GMT+8").getRawOffset();
-        if (System.currentTimeMillis() <= paramLong) {
-          break label433;
+        bool2 = bool1;
+        boolean bool3 = localEditor.commit();
+        bool1 = bool3;
+        bool2 = bool3;
+        if (QLog.isColorLevel())
+        {
+          bool2 = bool3;
+          QLog.d("Theme.ThemeUtil", 2, "setWeekLoopTheme , setWeekLoopTheme is ok:" + bool3);
+          return bool3;
         }
-        i = ((int)Math.ceil((System.currentTimeMillis() + i) / 86400000L) - (int)Math.ceil((i + paramLong) / 86400000L)) % j;
       }
       catch (Exception paramAppRuntime)
       {
-        for (;;)
-        {
-          int j;
-          label288:
-          label321:
-          boolean bool1 = true;
-          label408:
-          continue;
-          int i = 0;
-        }
-      }
-      localEditor.putInt("themeLength", j);
-      localEditor.putInt("themeIndex", i);
-      localEditor.putLong("startTime", paramLong);
-      if ((paramAppRuntime instanceof QQAppInterface))
-      {
-        paramAppRuntime = (QQAppInterface)paramAppRuntime;
-        if (paramAppRuntime == null) {
-          break label408;
-        }
-        ((ThemeSwitchManager)paramAppRuntime.getManager(184)).a(new JSONArray(paramString2), i + 1, "203", 2);
-      }
-      for (;;)
-      {
-        for (;;)
-        {
-          bool1 = localEditor.commit();
-          bool2 = bool1;
-          try
-          {
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("Theme.ThemeUtil", 2, "setWeekLoopTheme , setWeekLoopTheme is ok:" + bool1);
-            return bool1;
-          }
-          catch (Exception paramAppRuntime) {}
-        }
         QLog.e("Theme.ThemeUtil", 2, "setWeekLoopTheme json Error:" + paramAppRuntime.getMessage());
-        return bool1;
-        paramAppRuntime = null;
-        break label288;
-        if (QLog.isColorLevel()) {
-          QLog.d("Theme.ThemeUtil", 2, "setWeekLoopTheme , goto download null != qapp");
-        }
       }
     }
-    label433:
-    return true;
+    return bool2;
+  }
+  
+  public static void storeLastThemeId(String paramString)
+  {
+    lastThemeId = paramString;
+  }
+  
+  public static boolean themeFont(Intent paramIntent, String paramString)
+  {
+    paramIntent = paramIntent.getStringExtra(paramString);
+    if (TextUtils.isEmpty(paramIntent)) {
+      return false;
+    }
+    try
+    {
+      bdvy.b(Integer.parseInt(paramIntent));
+      return true;
+    }
+    catch (NumberFormatException paramIntent)
+    {
+      for (;;)
+      {
+        paramIntent.printStackTrace();
+      }
+    }
+  }
+  
+  private static void validLocalBg3D(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    try
+    {
+      Object localObject = new File("/storage/emulated/0/tencent/skin/effect");
+      if (((File)localObject).exists()) {
+        bdhb.a(((File)localObject).getAbsolutePath());
+      }
+      localObject = "/storage/emulated/0/tencent/skin/effect" + "/" + System.currentTimeMillis();
+      bdhb.a(paramString2, (String)localObject, false);
+      aeqq.a(paramContext, paramString1, null, (String)localObject + "/aioImage");
+      paramContext = paramQQAppInterface.getHandler(ChatActivity.class);
+      if (paramContext != null) {
+        paramContext.sendMessage(paramContext.obtainMessage(60, new BitmapDrawable()));
+      }
+      return;
+    }
+    catch (IOException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
   }
   
   public static void validLocalTheme(Context paramContext, String paramString) {}
+  
+  public static void validLocalTheme(Context paramContext, String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ThemeUtil
  * JD-Core Version:    0.7.0.1
  */

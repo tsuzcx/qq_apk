@@ -1,22 +1,17 @@
 package com.tencent.token.ui;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.core.bean.ConfigResult;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.utils.s;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class zs
-  implements View.OnClickListener
+class zs
+  implements DialogInterface.OnClickListener
 {
-  zs(SettingPageActivity paramSettingPageActivity) {}
+  zs(zr paramzr) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    s.a(this.a, SettingPageActivity.access$700(this.a).mActivityUrl, RqdApplication.i().getResources().getString(2131362750));
-    SettingPageActivity.mShowConfigNew = false;
+    StartPwdGestureDeleteActivity.access$302(this.a.a, 3);
+    StartPwdGestureDeleteActivity.access$400(this.a.a);
   }
 }
 

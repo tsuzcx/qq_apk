@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_cmd0x978$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 90 }, new String[] { "uint64_uin", "msg_rsp_follow_op_result" }, new Object[] { Long.valueOf(0L), null }, RspBody.class);
   public oidb_cmd0x978.RspFollowOperationResult msg_rsp_follow_op_result = new oidb_cmd0x978.RspFollowOperationResult();
@@ -14,7 +14,7 @@ public final class oidb_cmd0x978$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x978.oidb_cmd0x978.RspBody
  * JD-Core Version:    0.7.0.1
  */

@@ -18,21 +18,21 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.QQCustomSingleButtonDialog;
 import com.tencent.qphone.base.util.BaseApplication;
-import dzk;
-import dzl;
-import dzm;
-import dzn;
-import dzo;
-import dzp;
-import dzq;
-import dzr;
-import dzs;
-import dzt;
-import dzu;
-import dzv;
-import dzw;
-import dzx;
-import dzy;
+import dtt;
+import dtu;
+import dtv;
+import dtw;
+import dtx;
+import dty;
+import dtz;
+import dua;
+import dub;
+import duc;
+import dud;
+import due;
+import duf;
+import dug;
+import duh;
 import java.util.Calendar;
 import protocol.KQQConfig.UpgradeInfo;
 
@@ -208,10 +208,10 @@ public class UpgradeActivity
         break label504;
       }
       ((QQCustomDialog)localObject).setCanceledOnTouchOutside(false);
-      ((QQCustomDialog)localObject).setOnDismissListener(new dzq(this));
+      ((QQCustomDialog)localObject).setOnDismissListener(new dtz(this));
       return localObject;
       localObject = DialogUtil.a(this, 230).setTitle(this.c).setMessage(this.jdField_d_of_type_JavaLangString);
-      ((QQCustomDialog)localObject).setPositiveButton(2131563134, new dzs(this)).setNegativeButton(2131562704, new dzr(this)).setOnKeyListener(new dzk(this));
+      ((QQCustomDialog)localObject).setPositiveButton(2131563134, new dub(this)).setNegativeButton(2131562704, new dua(this)).setOnKeyListener(new dtt(this));
       continue;
       if (this.j == 0)
       {
@@ -219,7 +219,7 @@ public class UpgradeActivity
         if (UpgradeController.a().a() == 4) {}
         for (paramInt = 2131562241;; paramInt = 2131563134)
         {
-          ((QQCustomDialog)localObject).setPositiveButton(paramInt, new dzv(this)).setNegativeButton(2131561659, new dzu(this)).setOnKeyListener(new dzt(this));
+          ((QQCustomDialog)localObject).setPositiveButton(paramInt, new due(this)).setNegativeButton(2131561659, new dud(this)).setOnKeyListener(new duc(this));
           break;
         }
       }
@@ -228,21 +228,21 @@ public class UpgradeActivity
       }
       ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800417D", "0X800417D", 0, 0, "", "", "", "");
       this.e = getResources().getString(2131559142);
-      localObject = DialogUtil.a(this, this.c, this.jdField_d_of_type_JavaLangString, this.e, new dzw(this), getResources().getString(2131559147), new dzx(this));
-      ((QQCustomSingleButtonDialog)localObject).setOnKeyListener(new dzy(this));
+      localObject = DialogUtil.a(this, this.c, this.jdField_d_of_type_JavaLangString, this.e, new duf(this), getResources().getString(2131559147), new dug(this));
+      ((QQCustomSingleButtonDialog)localObject).setOnKeyListener(new duh(this));
       if (localObject != null)
       {
         ((QQCustomSingleButtonDialog)localObject).setCanceledOnTouchOutside(false);
-        ((QQCustomSingleButtonDialog)localObject).setOnDismissListener(new dzl(this));
+        ((QQCustomSingleButtonDialog)localObject).setOnDismissListener(new dtu(this));
         return localObject;
       }
       localObject = null;
       continue;
       localObject = DialogUtil.a(this, 230).setTitle(this.c).setMessage(this.jdField_d_of_type_JavaLangString);
-      ((QQCustomDialog)localObject).setPositiveButton(getResources().getString(2131559148), new dzn(this)).setNegativeButton(getResources().getString(2131559149), new dzm(this));
+      ((QQCustomDialog)localObject).setPositiveButton(getResources().getString(2131559148), new dtw(this)).setNegativeButton(getResources().getString(2131559149), new dtv(this));
       continue;
       localObject = DialogUtil.a(this, 230).setTitle(this.c).setMessage(this.jdField_d_of_type_JavaLangString);
-      ((QQCustomDialog)localObject).setPositiveButton(getResources().getString(2131559150), new dzp(this)).setNegativeButton(getResources().getString(2131559151), new dzo(this));
+      ((QQCustomDialog)localObject).setPositiveButton(getResources().getString(2131559150), new dty(this)).setNegativeButton(getResources().getString(2131559151), new dtx(this));
     }
     label504:
     return null;

@@ -1,28 +1,12 @@
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-public class skg
-  extends BizTroopObserver
+public abstract interface skg
 {
-  public skg(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
-  {
-    this.a.i();
-    if (paramBoolean)
-    {
-      if (paramBoolean1.booleanValue()) {
-        DiscussionInfoCardActivity.e(this.a);
-      }
-      return;
-    }
-    QQToast.a(this.a, paramInt, 0).b(this.a.getTitleBarHeight());
-  }
+  public abstract void a(BaseArticleInfo paramBaseArticleInfo, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     skg
  * JD-Core Version:    0.7.0.1
  */

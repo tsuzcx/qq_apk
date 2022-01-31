@@ -1,27 +1,10 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-public final class opl
-  implements AsyncBack
+public abstract interface opl
 {
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngQuantUtils", 2, "checkUpByBusinessId loaded,code=" + paramInt);
-    }
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramString)) && (paramString.contains("url"))) {
-      PngQuantUtils.a.set(false);
-    }
-  }
+  public abstract void a(String paramString, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     opl
  * JD-Core Version:    0.7.0.1
  */

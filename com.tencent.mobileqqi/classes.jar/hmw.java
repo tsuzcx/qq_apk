@@ -1,24 +1,29 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.MsgIconsurl;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.UpdateManager;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
 
-class hmw
+public class hmw
   implements Runnable
 {
-  hmw(hms paramhms, GetAppInfoProto.MsgIconsurl paramMsgIconsurl) {}
+  public hmw(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    Bitmap localBitmap = AuthorityActivity.a(this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$MsgIconsurl.url.get());
-    if (localBitmap != null)
+    try
     {
-      Message localMessage = new Message();
-      localMessage.obj = localBitmap;
-      localMessage.what = 4;
-      this.jdField_a_of_type_Hms.a.a.sendMessage(localMessage);
+      if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h) != null)
+      {
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h).mSavePath;
+        UpdateManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
     }
   }
 }

@@ -9,10 +9,10 @@ import java.util.Map;
 public final class template_gift_get_send_status_rsp
   extends JceStruct
 {
-  static Map cache_mapExt;
-  static Map cache_map_birth_friend_list_state = new HashMap();
-  public Map mapExt;
-  public Map map_birth_friend_list_state;
+  static Map<String, String> cache_mapExt;
+  static Map<Long, Integer> cache_map_birth_friend_list_state = new HashMap();
+  public Map<String, String> mapExt;
+  public Map<Long, Integer> map_birth_friend_list_state;
   public long uin;
   
   static
@@ -24,11 +24,11 @@ public final class template_gift_get_send_status_rsp
   
   public template_gift_get_send_status_rsp() {}
   
-  public template_gift_get_send_status_rsp(long paramLong, Map paramMap1, Map paramMap2)
+  public template_gift_get_send_status_rsp(long paramLong, Map<Long, Integer> paramMap, Map<String, String> paramMap1)
   {
     this.uin = paramLong;
-    this.map_birth_friend_list_state = paramMap1;
-    this.mapExt = paramMap2;
+    this.map_birth_friend_list_state = paramMap;
+    this.mapExt = paramMap1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -51,7 +51,7 @@ public final class template_gift_get_send_status_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_TEMPLATE_GIFT.template_gift_get_send_status_rsp
  * JD-Core Version:    0.7.0.1
  */

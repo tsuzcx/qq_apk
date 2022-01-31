@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class nearby_troop_activity$ActivityDigest
-  extends MessageMicro
+  extends MessageMicro<ActivityDigest>
 {
   public static final int STR_ACTIVITY_ID_FIELD_NUMBER = 1;
   public static final int STR_COVER_URL_FIELD_NUMBER = 4;
@@ -30,7 +30,7 @@ public final class nearby_troop_activity$ActivityDigest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.nearby_troop_activity.nearby_troop_activity.ActivityDigest
  * JD-Core Version:    0.7.0.1
  */

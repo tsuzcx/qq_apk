@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.apollo.store.webview.ApolloUrlInterceptor;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 public class yup
-  implements Runnable
 {
-  public yup(ApolloUrlInterceptor paramApolloUrlInterceptor) {}
-  
-  public void run()
-  {
-    ApolloUrlInterceptor.a(this.a);
-  }
+  public View a;
+  public TextView a;
+  public arnw a;
+  public AsyncImageView a;
+  public TextView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yup
  * JD-Core Version:    0.7.0.1
  */

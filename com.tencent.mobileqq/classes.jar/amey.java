@@ -1,16 +1,20 @@
-import android.view.animation.Interpolator;
-
-public final class amey
-  implements Interpolator
+public class amey
+  implements alpg
 {
-  public float getInterpolation(float paramFloat)
+  private final String a = "TroopQZoneUploadAlbumObserver";
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return paramFloat * paramFloat * paramFloat * paramFloat * paramFloat;
+    if (paramInt == 999) {
+      a(paramBoolean, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amey
  * JD-Core Version:    0.7.0.1
  */

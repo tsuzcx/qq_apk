@@ -1,17 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.fragment.QzoneGifHotPicFragment;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 
 public class adoe
-  implements View.OnClickListener
+  extends alwx
 {
-  public adoe(QzoneGifHotPicFragment paramQzoneGifHotPicFragment) {}
+  public adoe(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if (this.a.a != null) {
-      this.a.a.finish();
+    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
+      this.a.a(paramBoolean, false);
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
+      this.a.a(paramBoolean, true);
     }
   }
 }

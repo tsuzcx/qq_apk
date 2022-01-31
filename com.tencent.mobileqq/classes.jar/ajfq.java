@@ -1,19 +1,18 @@
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
-
-class ajfq
-  implements Runnable
+public abstract interface ajfq
 {
-  ajfq(ajfp paramajfp) {}
+  public abstract int a();
   
-  public void run()
-  {
-    this.a.a.a.jdField_a_of_type_AndroidWidgetLinearLayout.removeView(this.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView);
-    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetScrollView);
-    this.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = null;
-    this.a.a.a.a();
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(boolean paramBoolean, String paramString);
+  
+  public abstract boolean c();
+  
+  public abstract void i();
+  
+  public abstract void j();
 }
 
 

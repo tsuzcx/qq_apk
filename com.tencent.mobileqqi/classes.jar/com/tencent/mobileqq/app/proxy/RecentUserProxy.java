@@ -8,8 +8,8 @@ import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import fpb;
-import fpc;
+import fko;
+import fkp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -114,7 +114,7 @@ public class RecentUserProxy
       if (localObject1 != null) {
         b((RecentUser)localObject1);
       }
-      localObject1 = new fpb(this);
+      localObject1 = new fko(this);
       Collections.sort(this.jdField_a_of_type_JavaUtilList, (Comparator)localObject1);
       localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
       for (;;)
@@ -188,7 +188,7 @@ public class RecentUserProxy
     }
     return;
     label72:
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fpc(this, localSharedPreferences));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fkp(this, localSharedPreferences));
   }
   
   public RecentUser a(String paramString, int paramInt)

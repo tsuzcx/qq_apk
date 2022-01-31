@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class hd_video$InviteTempSessionData
-  extends MessageMicro
+  extends MessageMicro<InviteTempSessionData>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_relationship = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -27,7 +27,7 @@ public final class hd_video$InviteTempSessionData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.longconn.hd_video.InviteTempSessionData
  * JD-Core Version:    0.7.0.1
  */

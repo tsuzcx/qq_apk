@@ -9,8 +9,8 @@ import java.util.Map;
 public final class stGetNewestFeedRsp
   extends JceStruct
 {
-  static Map cache_mapRsp = new HashMap();
-  public Map mapRsp;
+  static Map<Long, stGetNewestFeedRspInner> cache_mapRsp = new HashMap();
+  public Map<Long, stGetNewestFeedRspInner> mapRsp;
   
   static
   {
@@ -20,7 +20,7 @@ public final class stGetNewestFeedRsp
   
   public stGetNewestFeedRsp() {}
   
-  public stGetNewestFeedRsp(Map paramMap)
+  public stGetNewestFeedRsp(Map<Long, stGetNewestFeedRspInner> paramMap)
   {
     this.mapRsp = paramMap;
   }

@@ -1,25 +1,55 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.TimerTask;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 
 public class acxg
-  extends TimerTask
+  implements adwr
 {
-  public acxg(OnlineFileSessionWorker paramOnlineFileSessionWorker) {}
+  public acxg(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void run()
+  public void a(Editable paramEditable)
   {
-    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] state:" + OnlineFileSessionWorker.a(this.a).a() + " WaitSenderReplayOnRecvTimer time out!!!!!!!");
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 42, new Object[] { Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) });
-    this.a.b();
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable)) {
+      ForwardFriendListActivity.a(this.a).setVisibility(8);
+    }
+    for (;;)
+    {
+      if (ForwardFriendListActivity.a(this.a) != null) {
+        ForwardFriendListActivity.a(this.a).a(paramEditable);
+      }
+      return;
+      ForwardFriendListActivity.a(this.a).setVisibility(0);
+    }
+  }
+  
+  public void a(ResultRecord paramResultRecord)
+  {
+    if (paramResultRecord != null) {
+      ForwardFriendListActivity.a(this.a, paramResultRecord.a, paramResultRecord.a());
+    }
+    ForwardFriendListActivity.a(this.a).notifyDataSetChanged();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (ForwardFriendListActivity.a(this.a) == null))
+    {
+      ForwardFriendListActivity.a(this.a, ContactSearchFragment.a(6, 1, null, null, ForwardFriendListActivity.a(this.a)));
+      FragmentTransaction localFragmentTransaction = this.a.getSupportFragmentManager().beginTransaction();
+      localFragmentTransaction.add(2131375722, ForwardFriendListActivity.a(this.a));
+      localFragmentTransaction.commitAllowingStateLoss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acxg
  * JD-Core Version:    0.7.0.1
  */

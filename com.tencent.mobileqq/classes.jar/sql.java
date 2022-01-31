@@ -1,32 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.ViolaVideoView;
 
 public class sql
-  implements DialogInterface.OnClickListener
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public sql(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public sql(ViolaVideoView paramViolaVideoView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if (this.a.f == 1) {
-      VipUtils.a(this.a, 1, ProfileCardUtil.a(3));
-    }
-    for (;;)
-    {
-      this.a.K();
+    if (!ViolaVideoView.a(this.a).a()) {
       return;
-      if (this.a.f == 2) {
-        VipUtils.b(this.a, 1, ProfileCardUtil.a(6));
-      }
     }
+    long l = ViolaVideoView.a(this.a).a();
+    double d = paramInt / 100.0D;
+    paramInt = (int)(l * d);
+    rdm.a(ViolaVideoView.a(this.a), paramInt);
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    ViolaVideoView.a(this.a, true);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if (!ViolaVideoView.a(this.a).a()) {}
+    int i;
+    do
+    {
+      return;
+      ViolaVideoView.a(this.a, false);
+      i = paramSeekBar.getProgress();
+      long l = ViolaVideoView.a(this.a).a();
+      i = (int)(i / 100.0D * l);
+      ViolaVideoView.a(this.a).d(i);
+    } while (ViolaVideoView.a(this.a) == null);
+    ViolaVideoView.a(this.a).b(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sql
  * JD-Core Version:    0.7.0.1
  */

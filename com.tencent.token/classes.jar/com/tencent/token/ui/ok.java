@@ -1,19 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.token.global.RqdApplication;
 
-final class ok
+class ok
   implements View.OnClickListener
 {
-  ok(LoginMsgIpShareActivity paramLoginMsgIpShareActivity) {}
+  ok(LogoActivity paramLogoActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, LoginMsgReportLocationActivity.class);
-    paramView.putExtra("position", LoginMsgIpShareActivity.access$300(this.a));
-    this.a.startActivity(paramView);
+    Toast.makeText(RqdApplication.l(), "需要获得您的同意后才可继续使用QQ安全中心提供的服务", 0).show();
   }
 }
 

@@ -1,96 +1,59 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.EmoticonHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.model.EmoticonManager;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
 
-public class rsk
-  implements Runnable
+class rsk
+  implements ViewBase.OnClickListener
 {
-  public rsk(BaseChatPie paramBaseChatPie, String paramString, Editable paramEditable) {}
+  rsk(rsj paramrsj) {}
   
-  public void run()
+  public void onClick(ViewBase paramViewBase)
   {
-    int i = 9;
-    int m = 0;
-    int j = BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).b(this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, this.jdField_a_of_type_AndroidTextEditable.toString() + "is hotword, totalnum = " + j);
-    }
-    if (j == 0) {
-      return;
-    }
-    Object localObject3 = BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_JavaLangString);
-    Object localObject2 = BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).b(this.jdField_a_of_type_JavaLangString);
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = new ArrayList();
-    }
-    if (j > 9) {}
     for (;;)
     {
-      long l = BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_JavaLangString);
-      boolean bool;
-      if (BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a()) {
-        if (System.currentTimeMillis() - l > 86400000L) {
-          bool = true;
-        }
-      }
-      for (;;)
+      FastWebArticleInfo localFastWebArticleInfo;
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.aio.BaseChatPie", 2, "afterTextChanged isNeedReq = " + bool);
-        }
-        if (bool)
+        String str = paramViewBase.getEventAttachedData();
+        int i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
+        paramViewBase = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b;
+        localFastWebArticleInfo = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a;
+        switch (i)
         {
-          ((List)localObject1).clear();
-          localObject2 = new ArrayList();
-          j = i;
-          int k = m;
-          if (localObject3 != null)
-          {
-            ((List)localObject2).add(((Emoticon)localObject3).eId);
-            ((List)localObject1).add(localObject3);
-            j = i - 1;
-            k = m;
+        case 1004: 
+          if (TextUtils.isEmpty(str)) {
+            return;
           }
-          for (;;)
-          {
-            if (k < j)
-            {
-              localObject3 = new Emoticon();
-              ((Emoticon)localObject3).epId = "NONE";
-              ((Emoticon)localObject3).eId = ("_" + k);
-              ((List)localObject1).add(localObject3);
-              k += 1;
-              continue;
-              if (((List)localObject1).size() >= i) {
-                break label407;
-              }
-              bool = true;
-              break;
-            }
-          }
-          localObject3 = BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).c(this.jdField_a_of_type_JavaLangString);
-          ((EmoticonHandler)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(12)).a(this.jdField_a_of_type_AndroidTextEditable.toString(), (List)localObject2, (List)localObject3);
+          ors.d(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, str);
+          return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_MqqOsMqqHandler.post(new rsl(this, (List)localObject1));
-        return;
-        label407:
-        bool = false;
       }
-      i = j;
+      catch (Exception paramViewBase)
+      {
+        QLog.d("ReadInJoyFastWebBottomSocialViewNew", 1, "findClickableViewListener error!  msg=" + paramViewBase);
+        return;
+      }
+      ReadInJoyFastWebBottomSocialViewNew.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
+      return;
+      ReadInJoyFastWebBottomSocialViewNew.b(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
+      return;
+      ReadInJoyFastWebBottomSocialViewNew.c(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
+      return;
+      ReadInJoyFastWebBottomSocialViewNew.d(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
+      return;
+      ReadInJoyFastWebBottomSocialViewNew.e(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rsk
  * JD-Core Version:    0.7.0.1
  */

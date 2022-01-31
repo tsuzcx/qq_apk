@@ -1,187 +1,47 @@
-import android.content.Context;
-import android.os.IBinder;
-import android.os.RemoteException;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.plugin.IQZonePluginManager;
-import cooperation.qzone.plugin.IQZonePluginManager.OnPluginReadyListener;
-import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
-import cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener;
-import cooperation.qzone.plugin.OnQZonePluginInstallListner;
-import cooperation.qzone.plugin.PluginRecord;
-import cooperation.qzone.plugin.QZoneRemotePluginManager;
 
-public class amxg
-  extends IQZonePluginManager
+class amxg
+  implements andm
 {
-  QZoneRemotePluginManager a;
-  
-  amxg(QZoneRemotePluginManager paramQZoneRemotePluginManager)
-  {
-    this.a = paramQZoneRemotePluginManager;
-  }
-  
-  public PluginRecord a(String paramString)
-  {
-    try
-    {
-      paramString = this.a.a(paramString);
-      return paramString;
-    }
-    catch (RemoteException paramString)
-    {
-      paramString.printStackTrace();
-      return null;
-    }
-    catch (NullPointerException paramString)
-    {
-      for (;;)
-      {
-        QLog.w("QZonePluginClient", 1, "", paramString);
-      }
-    }
-  }
+  amxg(amxf paramamxf, String paramString, andm paramandm) {}
   
   public void a()
   {
-    try
+    if (this.jdField_a_of_type_Andm != null) {
+      this.jdField_a_of_type_Andm.a();
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    if (this.jdField_a_of_type_Andm != null) {
+      this.jdField_a_of_type_Andm.a(paramLong1, paramLong2);
+    }
+  }
+  
+  public void a(boolean paramBoolean, andn paramandn)
+  {
+    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + paramandn.d + ", filename = " + paramandn.c + ", url = " + paramandn.jdField_a_of_type_JavaLangString);
+    if (paramBoolean) {
+      if (!amxf.a(this.jdField_a_of_type_Amxf, paramandn.c, paramandn.b))
+      {
+        amxf.a(this.jdField_a_of_type_Amxf, paramandn.c);
+        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
+      }
+    }
+    while (this.jdField_a_of_type_Andm == null)
     {
-      this.a.a();
       return;
+      if ((!paramandn.d.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Amxf.a(paramandn.d, paramandn.c, paramandn.b) != 0)) {}
     }
-    catch (NullPointerException localNullPointerException)
-    {
-      QLog.e("QZonePluginClient", 1, localNullPointerException, new Object[0]);
-    }
-  }
-  
-  public void a(Context paramContext, IQZonePluginManager.PluginParams paramPluginParams, IQZonePluginManager.OnPluginReadyListener paramOnPluginReadyListener)
-  {
-    try
-    {
-      a(paramPluginParams.b, new amxh(this, paramOnPluginReadyListener, paramContext, paramPluginParams), 0);
-      return;
-    }
-    catch (RemoteException paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-  }
-  
-  public void a(OnQZoneLiveSoDownloadListener paramOnQZoneLiveSoDownloadListener, int paramInt)
-  {
-    try
-    {
-      this.a.a(paramOnQZoneLiveSoDownloadListener, paramInt);
-      return;
-    }
-    catch (NullPointerException paramOnQZoneLiveSoDownloadListener)
-    {
-      QLog.e("QZonePluginClient", 1, paramOnQZoneLiveSoDownloadListener, new Object[0]);
-    }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = this.a.a();
-      return bool;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      localRemoteException.printStackTrace();
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString)
-  {
-    try
-    {
-      boolean bool = this.a.a(paramString);
-      return bool;
-    }
-    catch (RemoteException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString, OnQZonePluginInstallListner paramOnQZonePluginInstallListner, int paramInt)
-  {
-    try
-    {
-      boolean bool = this.a.a(paramString, paramOnQZonePluginInstallListner, paramInt);
-      return bool;
-    }
-    catch (NullPointerException paramString)
-    {
-      QLog.e("QZonePluginClient", 1, paramString, new Object[0]);
-    }
-    return false;
+    this.jdField_a_of_type_Andm.a(paramBoolean, paramandn);
   }
   
   public void b()
   {
-    this.a = null;
-  }
-  
-  public boolean b()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    try
-    {
-      if (this.a != null)
-      {
-        IBinder localIBinder = this.a.asBinder();
-        bool1 = bool2;
-        if (localIBinder != null)
-        {
-          bool1 = bool2;
-          if (localIBinder.isBinderAlive())
-          {
-            boolean bool3 = localIBinder.pingBinder();
-            bool1 = bool2;
-            if (bool3) {
-              bool1 = true;
-            }
-          }
-        }
-      }
-      return bool1;
+    if (this.jdField_a_of_type_Andm != null) {
+      this.jdField_a_of_type_Andm.b();
     }
-    catch (Exception localException) {}
-    return false;
-  }
-  
-  public boolean b(String paramString)
-  {
-    try
-    {
-      boolean bool = this.a.b(paramString);
-      return bool;
-    }
-    catch (RemoteException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return false;
-  }
-  
-  public boolean c(String paramString)
-  {
-    try
-    {
-      boolean bool = this.a.c(paramString);
-      return bool;
-    }
-    catch (RemoteException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return false;
   }
 }
 

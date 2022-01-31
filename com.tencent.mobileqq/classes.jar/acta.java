@@ -1,23 +1,34 @@
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class acta
-  implements FMDialogUtil.FMDialogInterface
+  extends ambp
 {
-  public acta(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView, Intent paramIntent) {}
+  private WeakReference<Conversation> a;
   
-  public void a()
+  public acta(Conversation paramConversation)
   {
-    QfileBaseRecentFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 102);
+    this.a = new WeakReference(paramConversation);
   }
   
-  public void b() {}
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "cameraRedTouchObserver notify dataChanged");
+    }
+    Conversation localConversation = (Conversation)this.a.get();
+    if (localConversation != null)
+    {
+      localConversation.f(false);
+      Conversation.h(localConversation);
+      localConversation.q();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acta
  * JD-Core Version:    0.7.0.1
  */

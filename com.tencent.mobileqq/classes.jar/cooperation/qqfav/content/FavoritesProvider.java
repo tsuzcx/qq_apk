@@ -4,22 +4,24 @@ import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
+import bivc;
+import bivt;
+import bivu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.QfavHelper;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.app.AppContentProvider;
 
 public class FavoritesProvider
   extends AppContentProvider
-  implements Favorites
+  implements bivt
 {
   private UriMatcher jdField_a_of_type_AndroidContentUriMatcher;
   private String jdField_a_of_type_JavaLangString;
-  private Map jdField_a_of_type_JavaUtilMap;
+  private Map<Integer, bivu> jdField_a_of_type_JavaUtilMap;
   
-  private Favorites.IProxy a(Uri paramUri)
+  private bivu a(Uri paramUri)
   {
     int i = 1;
     int n = this.jdField_a_of_type_AndroidContentUriMatcher.match(paramUri);
@@ -52,10 +54,10 @@ public class FavoritesProvider
             j = i;
             if (i != 0)
             {
-              QfavHelper.a(false);
+              bivc.a(false);
               j = 0;
             }
-            localObject = localBaseApplicationImpl.peekAppRuntime();
+            localObject = localBaseApplicationImpl.getRuntime();
           }
           m += 1;
           i = j;
@@ -77,7 +79,7 @@ public class FavoritesProvider
     paramUri = paramUri.getLastPathSegment();
     if (this.jdField_a_of_type_JavaLangString.equals(paramUri))
     {
-      localObject = (Favorites.IProxy)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(n));
+      localObject = (bivu)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(n));
       if (localObject != null) {
         switch (n)
         {
@@ -111,7 +113,7 @@ public class FavoritesProvider
         break;
       }
     }
-    for (paramUri = (Favorites.IProxy)QfavHelper.a("com.qqfav.data.BizRelatedData$Proxy", null, null); paramUri != null; paramUri = (Favorites.IProxy)QfavHelper.a("com.qqfav.data.BizRelatedData$GlobalSearchProxy", null, null))
+    for (paramUri = (bivu)bivc.a("com.qqfav.data.BizRelatedData$Proxy", null, null); paramUri != null; paramUri = (bivu)bivc.a("com.qqfav.data.BizRelatedData$GlobalSearchProxy", null, null))
     {
       this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(n), paramUri);
       return paramUri;
@@ -124,9 +126,9 @@ public class FavoritesProvider
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
-    Favorites.IProxy localIProxy = a(paramUri);
-    if (localIProxy != null) {
-      return localIProxy.a(paramUri, paramString, paramArrayOfString);
+    bivu localbivu = a(paramUri);
+    if (localbivu != null) {
+      return localbivu.delete(paramUri, paramString, paramArrayOfString);
     }
     return 0;
   }
@@ -138,15 +140,16 @@ public class FavoritesProvider
   
   public Uri insert(Uri paramUri, ContentValues paramContentValues)
   {
-    Favorites.IProxy localIProxy = a(paramUri);
-    if (localIProxy != null) {
-      return localIProxy.a(paramUri, paramContentValues);
+    bivu localbivu = a(paramUri);
+    if (localbivu != null) {
+      return localbivu.insert(paramUri, paramContentValues);
     }
     return null;
   }
   
   public boolean onCreate()
   {
+    super.onCreate();
     this.jdField_a_of_type_AndroidContentUriMatcher = new UriMatcher(-1);
     this.jdField_a_of_type_AndroidContentUriMatcher.addURI("qq.favorites", "biz_related/#", 100);
     this.jdField_a_of_type_AndroidContentUriMatcher.addURI("qq.favorites", "global_search/#", 101);
@@ -157,21 +160,21 @@ public class FavoritesProvider
   
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    Favorites.IProxy localIProxy = a(paramUri);
+    bivu localbivu = a(paramUri);
     if (QLog.isDevelopLevel()) {
-      QLog.d("qqfav|FavoritesProvider", 4, "query|" + localIProxy + ",uri=" + paramUri + ",selection=" + paramString1);
+      QLog.d("qqfav|FavoritesProvider", 4, "query|" + localbivu + ",uri=" + paramUri + ",selection=" + paramString1);
     }
-    if (localIProxy != null) {
-      return localIProxy.a(paramUri, paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+    if (localbivu != null) {
+      return localbivu.query(paramUri, paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
     }
     return null;
   }
   
   public int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)
   {
-    Favorites.IProxy localIProxy = a(paramUri);
-    if (localIProxy != null) {
-      return localIProxy.a(paramUri, paramContentValues, paramString, paramArrayOfString);
+    bivu localbivu = a(paramUri);
+    if (localbivu != null) {
+      return localbivu.update(paramUri, paramContentValues, paramString, paramArrayOfString);
     }
     return 0;
   }

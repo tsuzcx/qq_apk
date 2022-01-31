@@ -1,47 +1,48 @@
 package com.tencent.token.ui;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.ax;
-import com.tencent.token.p;
+import android.os.Bundle;
+import com.tencent.token.global.h;
+import com.tencent.token.ui.base.a;
 
-final class abt
-  extends Handler
+class abt
+  extends BroadcastReceiver
 {
-  abt(StartPwdGestureModifyActivity paramStartPwdGestureModifyActivity) {}
+  abt(UtilsActivity paramUtilsActivity) {}
   
-  public final void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.isFinishing()) {}
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("com.tencent.token.utils_icon_flag")) {
+      UtilsActivity.access$500(this.a);
+    }
     do
     {
       return;
-      switch (paramMessage.what)
+      if (paramContext.equals("com.tencent.token.token_code_change_30s"))
       {
-      default: 
+        UtilsActivity.access$600(this.a);
         return;
       }
-    } while (!this.a.isProDialogShow());
-    if (paramMessage.arg1 == 0)
+    } while ((!paramContext.equals("com.tencent.token.siderbar.statechanged")) || (paramIntent.getExtras() == null));
+    int i = paramIntent.getExtras().getInt("cscreen", -1);
+    int j = paramIntent.getExtras().getInt("nscreen", -1);
+    boolean bool = paramIntent.getExtras().getBoolean("cstate");
+    h.c("cscreen=" + i + ", nscreen=" + j + ", moving=" + bool);
+    if (bool)
     {
-      this.a.dismissDialog();
-      paramMessage = ax.a().e();
-      if (paramMessage == null)
-      {
-        p.a().a(System.currentTimeMillis(), 23);
-        StartPwdGestureModifyActivity.access$000(this.a, this.a, 2131362160, 2131362167);
-        return;
-      }
-      p.a().a(System.currentTimeMillis(), 24);
-      Intent localIntent = new Intent(this.a, StartPwdGestureForgetActivity.class);
-      localIntent.putExtra("qquser", paramMessage);
-      localIntent.putExtra("startpwd_forget_source", 2);
-      this.a.startActivityForResult(localIntent, 256);
+      UtilsActivity.access$700(this.a).a = false;
       return;
     }
-    this.a.dismissDialog();
-    this.a.showToast(2131362164);
+    if (j == 0)
+    {
+      UtilsActivity.access$700(this.a).a = false;
+      return;
+    }
+    UtilsActivity.access$700(this.a).a = true;
+    UtilsActivity.access$700(this.a).invalidateSelf();
   }
 }
 

@@ -1,30 +1,44 @@
-import android.content.Intent;
+import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.util.Pair;
+import android.view.ViewGroup;
 
-public class xit
-  implements View.OnClickListener
+public abstract class xit<T extends xis>
 {
-  public xit(BannerManager paramBannerManager) {}
+  protected int a;
+  public final View a;
+  public T a;
   
-  public void onClick(View paramView)
+  protected xit(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    Intent localIntent = new Intent(BannerManager.a(this.a), QQBrowserActivity.class);
-    localIntent.putExtra("uin", ((QQAppInterface)BannerManager.a(this.a).getAppRuntime()).getCurrentAccountUin());
-    paramView = (Pair)paramView.getTag();
-    if (paramView != null) {
-      BannerManager.a(this.a).startActivity(localIntent.putExtra("url", "https://qzs.qq.com/iot/mobile/xiaowei-qq-proxy/index.html?din=" + ((Long)paramView.first).longValue() + "&deviceRemark=" + (String)paramView.second));
+    this.jdField_a_of_type_AndroidViewView = a(paramContext, paramViewGroup);
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      throw new NullPointerException("onCreateView can not return null");
     }
+  }
+  
+  protected abstract View a(@NonNull Context paramContext, ViewGroup paramViewGroup);
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Xis = null;
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void a(T paramT, int paramInt)
+  {
+    this.jdField_a_of_type_Xis = paramT;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Xis != null) && (this.jdField_a_of_type_Xis.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xit
  * JD-Core Version:    0.7.0.1
  */

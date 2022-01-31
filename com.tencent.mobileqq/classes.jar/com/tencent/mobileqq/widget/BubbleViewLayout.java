@@ -5,11 +5,13 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
+import android.graphics.PaintFlagsDrawFilter;
 import android.graphics.Path;
 import android.graphics.Path.Direction;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
+import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.RelativeLayout;
@@ -62,6 +64,7 @@ public class BubbleViewLayout
     this.jdField_a_of_type_ArrayOfFloat = new float[8];
     this.jdField_a_of_type_AndroidContentResResources = getResources();
     setRadius(15.0F);
+    setWillNotDraw(false);
   }
   
   public void a(float paramFloat1, float paramFloat2)
@@ -134,6 +137,13 @@ public class BubbleViewLayout
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
+    if ((Build.VERSION.SDK_INT == 28) || (Build.VERSION.SDK_INT == 29))
+    {
+      paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
+      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+      super.dispatchDraw(paramCanvas);
+      return;
+    }
     paramCanvas.saveLayer(new RectF(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight()), this.jdField_b_of_type_AndroidGraphicsPaint, 31);
     super.dispatchDraw(paramCanvas);
     paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
@@ -168,7 +178,7 @@ public class BubbleViewLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.BubbleViewLayout
  * JD-Core Version:    0.7.0.1
  */

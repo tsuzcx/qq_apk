@@ -1,30 +1,75 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Gallery;
 
-public class zio
-  implements Comparator
+class zio
+  implements zja
 {
-  public zio(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  zio(zin paramzin) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void b()
   {
-    Object localObject2 = paramPhoneContact1.pinyinFirst;
-    String str = paramPhoneContact2.pinyinFirst;
-    Object localObject1 = localObject2;
-    if (((String)localObject2).endsWith("#")) {
-      localObject1 = "Za";
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryComponent", 2, "gallery onEnterAnimationEnd");
     }
-    localObject2 = str;
-    if (str.endsWith("#")) {
-      localObject2 = "Za";
+    if (this.a.jdField_a_of_type_ComTencentWidgetGallery.getVisibility() != 0) {
+      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
     }
-    int j = ((String)localObject1).compareTo((String)localObject2);
-    int i = j;
-    if (j == 0) {
-      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+    this.a.b();
+    if ((this.a.jdField_a_of_type_Ziz != null) && (!this.a.jdField_a_of_type_Ziz.a())) {
+      this.a.jdField_a_of_type_Ziz.a();
     }
-    return i;
+  }
+  
+  public void c()
+  {
+    if (this.a.jdField_a_of_type_Zje.a().b) {
+      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
+    }
+    this.a.c();
+    if ((this.a.jdField_a_of_type_Ziz != null) && (this.a.jdField_a_of_type_Ziz.a())) {
+      this.a.jdField_a_of_type_Ziz.b();
+    }
+  }
+  
+  public void d()
+  {
+    if (this.a.jdField_a_of_type_Zje.a().b) {
+      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
+    }
+    if (this.a.jdField_a_of_type_Zim != null) {
+      this.a.jdField_a_of_type_Zim.a(4);
+    }
+    if ((this.a.jdField_a_of_type_Ziz != null) && (this.a.jdField_a_of_type_Ziz.a())) {
+      this.a.jdField_a_of_type_Ziz.b();
+    }
+    this.a.d();
+    this.a.jdField_a_of_type_ComTencentWidgetGallery.e();
+  }
+  
+  public void e()
+  {
+    this.a.e();
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("gallery onExitAnimationEnd ");
+      if (this.a.jdField_a_of_type_Zje.a() != this.a) {
+        break label87;
+      }
+    }
+    label87:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("GalleryComponent", 2, bool);
+      if (this.a.jdField_a_of_type_Zje.a() != this.a) {
+        break;
+      }
+      this.a.jdField_a_of_type_AndroidAppActivity.finish();
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
+    this.a.l();
   }
 }
 

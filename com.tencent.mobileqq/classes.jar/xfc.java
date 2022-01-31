@@ -1,47 +1,27 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog.OnClickListener;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
 
-class xfc
-  implements NearbyCustomDialog.OnClickListener
+public class xfc
+  extends uli
 {
-  xfc(xfb paramxfb, String paramString) {}
+  public final int a;
+  public final long a;
+  @NonNull
+  public final xes a;
+  public final boolean a;
+  public final long b;
   
-  public void a(View paramView)
+  public xfc(@NonNull xes paramxes, int paramInt, boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    if (BaseActivity.sTopActivity == null) {
-      return;
-    }
-    try
-    {
-      paramView = new JSONObject();
-      paramView.put("viewTag", "goldmsg_open");
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("skip_confirm", "1");
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        ((JSONObject)localObject).put("returl", this.jdField_a_of_type_JavaLangString);
-      }
-      paramView.put("extra_data", ((JSONObject)localObject).toString());
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("json", paramView.toString());
-      ((Bundle)localObject).putString("callbackSn", "0");
-      PayBridgeActivity.a(BaseActivity.sTopActivity, 5, (Bundle)localObject);
-      return;
-    }
-    catch (JSONException paramView)
-    {
-      paramView.printStackTrace();
-    }
+    this.jdField_a_of_type_Xes = paramxes;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xfc
  * JD-Core Version:    0.7.0.1
  */

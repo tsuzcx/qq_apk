@@ -13,124 +13,130 @@ import android.text.TextPaint;
 public class GLLyricsView
   extends GLImageView
 {
-  private int jdField_a_of_type_Int = 0;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float = 0.0F;
-  private int jdField_b_of_type_Int;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private int jdField_c_of_type_Int = 0;
-  private Paint jdField_c_of_type_AndroidGraphicsPaint;
+  private Bitmap mBitmap;
+  private Canvas mCanvas;
+  private boolean mNeedDrawText;
+  private Paint mShadowPaint;
+  private Paint mStrokePaint;
+  private Paint mTextPaint = new Paint();
+  private int textColor;
+  private int textShadowPadding = 0;
+  private int textSize = 0;
+  private String textString;
+  private float totalWidth = 0.0F;
   
   public GLLyricsView(GLViewContext paramGLViewContext, String paramString)
   {
     super(paramGLViewContext, paramString);
-    f(4);
+    initView(4);
   }
   
-  public float a()
+  public void clearTextCache()
   {
-    if (this.jdField_b_of_type_Float == 0.0F)
+    this.textString = null;
+    this.totalWidth = 0.0F;
+  }
+  
+  public void draw()
+  {
+    if (this.mNeedDrawText) {
+      drawText();
+    }
+    super.draw();
+  }
+  
+  public void drawText()
+  {
+    this.mBitmap = Bitmap.createBitmap((int)(getTextWidth() + this.textShadowPadding), this.textSize + this.textShadowPadding, Bitmap.Config.ARGB_8888);
+    this.mCanvas = new Canvas(this.mBitmap);
+    this.mTextPaint.setTextSize(this.textSize);
+    this.mTextPaint.setColor(this.textColor);
+    this.mTextPaint.setAntiAlias(true);
+    this.mTextPaint.setFakeBoldText(true);
+    this.mTextPaint.setDither(true);
+    float f = Math.abs(this.mTextPaint.getFontMetrics().ascent) + this.textShadowPadding / 2;
+    if (this.mStrokePaint == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Int);
-      this.jdField_b_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_JavaLangString);
+      this.mStrokePaint = new TextPaint();
+      this.mStrokePaint.setTextSize(this.textSize);
+      this.mStrokePaint.setFakeBoldText(true);
+      this.mStrokePaint.setAntiAlias(true);
+      this.mStrokePaint.setColor(-12779354);
+      this.mStrokePaint.setStrokeWidth(15.0F);
+      this.mStrokePaint.setStyle(Paint.Style.STROKE);
+      this.mStrokePaint.setStrokeJoin(Paint.Join.ROUND);
+      this.mStrokePaint.setStrokeCap(Paint.Cap.ROUND);
     }
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      c();
-    }
-    super.a();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(Bitmap paramBitmap) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Float = 0.0F;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)(a() + this.jdField_c_of_type_Int), this.jdField_a_of_type_Int + this.jdField_c_of_type_Int, Bitmap.Config.ARGB_8888);
-    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFakeBoldText(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-    float f = Math.abs(this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics().ascent) + this.jdField_c_of_type_Int / 2;
-    if (this.jdField_b_of_type_AndroidGraphicsPaint == null)
+    if (this.mShadowPaint == null)
     {
-      this.jdField_b_of_type_AndroidGraphicsPaint = new TextPaint();
-      this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Int);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setFakeBoldText(true);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-12779354);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(15.0F);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
+      this.mShadowPaint = new TextPaint();
+      this.mShadowPaint.setTextSize(this.textSize);
+      this.mShadowPaint.setFakeBoldText(true);
+      this.mShadowPaint.setAntiAlias(true);
+      this.mShadowPaint.setStrokeWidth(30.0F);
+      this.mShadowPaint.setColor(-9636865);
+      this.mShadowPaint.setStyle(Paint.Style.STROKE);
+      this.mShadowPaint.setStrokeJoin(Paint.Join.ROUND);
+      this.mShadowPaint.setStrokeCap(Paint.Cap.ROUND);
+      this.mShadowPaint.setShadowLayer(20.0F, 0.0F, 0.0F, -9636865);
     }
-    if (this.jdField_c_of_type_AndroidGraphicsPaint == null)
+    this.mCanvas.drawText(this.textString, this.textShadowPadding / 2, f, this.mShadowPaint);
+    this.mCanvas.drawText(this.textString, this.textShadowPadding / 2, f, this.mStrokePaint);
+    this.mCanvas.drawText(this.textString, this.textShadowPadding / 2, f, this.mTextPaint);
+    super.setImageBitmap(this.mBitmap);
+    this.mNeedDrawText = false;
+  }
+  
+  public int getShadowPadding()
+  {
+    return this.textShadowPadding;
+  }
+  
+  public int getTextHeight()
+  {
+    return this.textSize;
+  }
+  
+  public float getTextWidth()
+  {
+    if (this.totalWidth == 0.0F)
     {
-      this.jdField_c_of_type_AndroidGraphicsPaint = new TextPaint();
-      this.jdField_c_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Int);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setFakeBoldText(true);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(30.0F);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setColor(-9636865);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setShadowLayer(20.0F, 0.0F, 0.0F, -9636865);
+      this.mTextPaint.setTextSize(this.textSize);
+      this.totalWidth = this.mTextPaint.measureText(this.textString);
     }
-    this.jdField_a_of_type_AndroidGraphicsCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_Int / 2, f, this.jdField_c_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_Int / 2, f, this.jdField_b_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_Int / 2, f, this.jdField_a_of_type_AndroidGraphicsPaint);
-    super.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_Boolean = false;
+    return this.totalWidth;
+  }
+  
+  public void setImageBitmap(Bitmap paramBitmap) {}
+  
+  public void setImageRes(String paramString) {}
+  
+  public void setShadowPadding(int paramInt)
+  {
+    this.textShadowPadding = paramInt;
+  }
+  
+  public void setText(String paramString, int paramInt)
+  {
+    this.textString = paramString;
+    this.textColor = paramInt;
+    this.mNeedDrawText = true;
+  }
+  
+  public void setTextSize(int paramInt)
+  {
+    this.textSize = paramInt;
+  }
+  
+  public void setmStrokePaint(Paint paramPaint1, Paint paramPaint2)
+  {
+    this.mStrokePaint = paramPaint1;
+    this.mShadowPaint = paramPaint2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLLyricsView
  * JD-Core Version:    0.7.0.1
  */

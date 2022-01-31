@@ -1,40 +1,26 @@
-import android.os.AsyncTask;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
-import com.tencent.mobileqq.shortvideo.redbag.VideoPlayIPCClient;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class aidl
-  extends AsyncTask
+  implements TextWatcher
 {
-  aidl(RedBagVideoManager paramRedBagVideoManager) {}
+  public aidl(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  protected Boolean a(String... paramVarArgs)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (RedBagVideoManager.a(this.a) != null)
-    {
-      RedBagVideoManager.a(this.a).g = 1;
-      long l = RedBagVideoManager.a(this.a).a;
-      paramVarArgs = RedBagVideoManager.a(this.a).e;
-      int i = RedBagVideoManager.a(this.a).h;
-      Bundle localBundle = new Bundle();
-      localBundle.putLong("VALUE_MSG_UINSEQ", l);
-      localBundle.putString("VALUE_MSG_FRIENDUIN", paramVarArgs);
-      localBundle.putInt("VALUE_MSG_ISTROOP", i);
-      localBundle.putString("VALUE_MSG_VIDEO_ID", RedBagVideoManager.a(this.a).c);
-      VideoPlayIPCClient.a().a("CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT", localBundle);
-    }
-    return Boolean.valueOf(true);
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.e(paramEditable);
   }
   
-  protected void a(Boolean paramBoolean)
-  {
-    this.a.b(RedBagVideoManager.a(this.a));
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aidl
  * JD-Core Version:    0.7.0.1
  */

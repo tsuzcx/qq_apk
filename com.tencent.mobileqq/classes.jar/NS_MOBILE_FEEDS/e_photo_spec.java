@@ -14,11 +14,12 @@ public final class e_photo_spec
   public static final int _PhotoSpecSmall = 3;
   public static final int _PhotoSpecSmallClip = 7;
   public static final int _PhotoSpecThumb = 4;
+  public static final int _PhotoSpecVideoDynamicCover = 13;
   public static final int _PhotoSpecVideoPlay = 12;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.e_photo_spec
  * JD-Core Version:    0.7.0.1
  */

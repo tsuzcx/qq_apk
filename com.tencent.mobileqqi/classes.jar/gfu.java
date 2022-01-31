@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.maproam.Utils;
+import com.tencent.mobileqq.data.QCallRecord;
+import com.tencent.mobileqq.qcall.QCallProxy;
+import java.util.Comparator;
 
-public final class gfu
-  implements DialogInterface.OnDismissListener
+public class gfu
+  implements Comparator
 {
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public gfu(QCallProxy paramQCallProxy) {}
+  
+  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
   {
-    if (paramDialogInterface == Utils.a) {
-      Utils.a = null;
+    if (paramQCallRecord1.type == QCallRecord.TYPE_DATE) {
+      return 0;
     }
+    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
   }
 }
 

@@ -1,33 +1,32 @@
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.app.SubAccountBindObserver;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class rne
-  extends SubAccountBindObserver
+public abstract interface rne
 {
-  public rne(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  public abstract int a();
   
-  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
-  {
-    this.a.c();
-    AssociatedAccountManageActivity.b(this.a);
-  }
+  public abstract VideoInfo a();
   
-  protected void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
-  {
-    this.a.c();
-    AssociatedAccountManageActivity.b(this.a);
-  }
+  public abstract rfs a();
   
-  protected void c(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
-  {
-    this.a.c();
-    AssociatedAccountManageActivity.b(this.a);
-  }
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(VideoInfo paramVideoInfo);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rne
  * JD-Core Version:    0.7.0.1
  */

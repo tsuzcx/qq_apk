@@ -1,15 +1,7 @@
-import android.os.Bundle;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
-
-class angq
-  implements Runnable
+public class angq
 {
-  angq(angp paramangp, Bundle paramBundle) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_Angp.a.a(this.jdField_a_of_type_AndroidOsBundle);
-  }
+  public static int a = azkz.a;
+  public static int b = azkz.b;
 }
 
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#66000000" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:animateLayoutChanges="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip">
+        <EditText android:textSize="14.0sp" android:textColor="@color/bp" android:textColorHint="#ffa6a6a6" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/jb3" android:background="@drawable/a10" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="9.0dip" android:hint="@string/gwu" android:maxLines="1" android:lines="1" android:singleLine="true" android:maxLength="22" android:drawableLeft="@drawable/flc" android:drawablePadding="6.0dip" android:layout_weight="1.0" android:drawableStart="@drawable/flc" />
+        <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="#ff777777" android:gravity="center" android:id="@id/amm" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/cancel" />
+    </LinearLayout>
+    <FrameLayout android:id="@id/ebt" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:animateLayoutChanges="true">
+        <ListView android:id="@id/ec7" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:cacheColorHint="@color/ajr" android:divider="@drawable/a11" android:dividerHeight="1.0dip" android:overScrollMode="never" android:animateLayoutChanges="true" />
+        <TextView android:textSize="14.0sp" android:textColor="#ffbbbbbb" android:gravity="center" android:id="@id/bww" android:background="@color/al3" android:paddingTop="20.0dip" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/gub"
+          xmlns:android="http://schemas.android.com/apk/res/android" />
+    </FrameLayout>
+</LinearLayout>

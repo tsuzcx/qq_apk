@@ -1,61 +1,56 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import com.tencent.mobileqq.activity.aio.qim.QIMUserManager;
-import com.tencent.mobileqq.activity.aio.qim.QIMUserManager.QIMUserIcon;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.theme.SkinEngine;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import java.util.Collections;
 import java.util.Iterator;
-import mqq.os.MqqHandler;
+import java.util.List;
 
-public class vqh
-  implements Runnable
+class vqh
+  implements urr<vfd, vhb>
 {
-  public vqh(QIMUserManager paramQIMUserManager, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  vqh(vqg paramvqg, vpu paramvpu) {}
   
-  public void run()
+  public void a(@NonNull vfd paramvfd, @Nullable vhb paramvhb, @NonNull ErrorMessage paramErrorMessage)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    if ((paramvhb == null) || (paramErrorMessage.isFail()))
     {
-      QIMUserManager.QIMUserIcon localQIMUserIcon = (QIMUserManager.QIMUserIcon)localIterator.next();
-      if ((this.b != null) && (this.b.size() > localQIMUserIcon.jdField_a_of_type_Int))
-      {
-        int i;
-        if (((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int)).length >= 7)
-        {
-          i = 5;
-          label73:
-          if (((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int)).length < 7) {
-            break label251;
-          }
-        }
-        label251:
-        for (int j = 6;; j = 5)
-        {
-          StateListDrawable localStateListDrawable = new StateListDrawable();
-          Drawable localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int))[j]);
-          localStateListDrawable.addState(new int[] { 16842913, 16842910 }, localDrawable);
-          localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int))[j]);
-          localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable);
-          localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int))[i]);
-          localStateListDrawable.addState(new int[] { 16842910 }, localDrawable);
-          localQIMUserIcon.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localStateListDrawable;
-          break;
-          i = 4;
-          break label73;
-        }
-      }
+      this.jdField_a_of_type_Vpu.a(paramErrorMessage, Collections.singletonList(this.jdField_a_of_type_Vqg.jdField_a_of_type_Vpm));
+      return;
     }
-    if (this.b != null) {
-      this.b.clear();
+    paramvhb.jdField_a_of_type_JavaUtilList = ((uvx)uwa.a(5)).a(paramvhb.jdField_a_of_type_JavaUtilList);
+    paramvfd = paramvhb.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramvfd.hasNext()) {
+      ((StoryVideoItem)paramvfd.next()).mOwnerUid = vqf.a(this.jdField_a_of_type_Vqg.jdField_a_of_type_Vqf).uid;
     }
-    ThreadManager.getUIHandler().post(new vqi(this));
+    ((umm)uwa.a(28)).a(paramvhb.b);
+    paramvfd = paramvhb.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramvfd.hasNext())
+    {
+      paramErrorMessage = (StoryVideoItem)paramvfd.next();
+      vqg.a(this.jdField_a_of_type_Vqg).add(paramErrorMessage.mVid);
+    }
+    if ((paramvhb.jdField_a_of_type_Boolean) || (paramvhb.jdField_a_of_type_JavaUtilList.size() == 0))
+    {
+      paramvfd = new vpn(this.jdField_a_of_type_Vqg.jdField_a_of_type_Vpm);
+      paramvfd.jdField_a_of_type_JavaUtilList = vqg.a(this.jdField_a_of_type_Vqg);
+      paramvfd.a(vqf.a(this.jdField_a_of_type_Vqg.jdField_a_of_type_Vqf).feedId);
+      this.jdField_a_of_type_Vpu.a(Collections.singletonList(paramvfd), true);
+      return;
+    }
+    vqg.a(this.jdField_a_of_type_Vqg);
+    if (vqg.b(this.jdField_a_of_type_Vqg) > 50)
+    {
+      this.jdField_a_of_type_Vpu.a(new ErrorMessage(940001, "too much times"), Collections.singletonList(this.jdField_a_of_type_Vqg.jdField_a_of_type_Vpm));
+      return;
+    }
+    this.jdField_a_of_type_Vqg.a(paramvhb.c, this.jdField_a_of_type_Vpu);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vqh
  * JD-Core Version:    0.7.0.1
  */

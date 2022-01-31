@@ -1,0 +1,13 @@
+package a.j.b.a.c.b;
+
+public abstract interface o
+  extends l
+{
+  public abstract am ecN();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+ * Qualified Name:     a.j.b.a.c.b.o
+ * JD-Core Version:    0.7.0.1
+ */

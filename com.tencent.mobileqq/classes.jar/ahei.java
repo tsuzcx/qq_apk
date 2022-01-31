@@ -1,40 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MultiMsgProxy;
-import com.tencent.mobileqq.pic.DownCallBack;
-import com.tencent.mobileqq.pic.DownCallBack.DownResult;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import java.lang.ref.WeakReference;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
 
 public class ahei
-  implements DownCallBack
+  implements View.OnTouchListener
 {
-  private WeakReference a;
+  public ahei(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
   
-  public ahei(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = new WeakReference(paramReceiptMessageDetailFragment);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(DownCallBack.DownResult paramDownResult)
-  {
-    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a.get();
-    if (localReceiptMessageDetailFragment == null) {
-      return;
-    }
-    switch (paramDownResult.a)
-    {
-    default: 
-      return;
-    case -1: 
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(7);
-      return;
-    }
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(6);
+    return (paramMotionEvent.getAction() == 2) && ((this.a.a == null) || (this.a.a.getCount() == 0));
   }
 }
 

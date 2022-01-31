@@ -1,44 +1,28 @@
-import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.messagesearch.MessageItem;
-import com.tencent.mobileqq.activity.messagesearch.MessageResultAdapter;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemLongClickListener;
-import com.tencent.widget.XListView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.util.VersionUtils;
 
 public class eoh
-  implements AdapterView.OnItemLongClickListener
+  implements View.OnClickListener
 {
-  public eoh(MessageSearchDialog paramMessageSearchDialog) {}
+  public eoh(BannerManager paramBannerManager) {}
   
-  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onLongClick, position = " + paramInt);
-    }
-    paramAdapterView = MessageSearchDialog.a(this.a).a();
-    if (paramAdapterView == this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter)
+    if (VersionUtils.e())
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem = ((MessageItem)this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.getItem(paramInt));
-      paramAdapterView = new QQCustomMenu();
-      paramAdapterView.a(2131234877, MessageSearchDialog.a(this.a).getString(17039361));
-      paramAdapterView.a(2131231190, MessageSearchDialog.a(this.a).getString(2131562129));
-      MessageSearchDialog.a(this.a, BubbleContextMenu.a(paramView, paramAdapterView, MessageSearchDialog.a(this.a), null));
+      BannerManager.a(this.a).startActivity(new Intent("android.settings.SETTINGS"));
+      return;
     }
-    for (;;)
-    {
-      return true;
-      if (paramAdapterView != this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter) {}
-    }
+    BannerManager.a(this.a).startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eoh
  * JD-Core Version:    0.7.0.1
  */

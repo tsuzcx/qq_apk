@@ -1,35 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-
-class aaom
-  implements DialogInterface.OnClickListener
+public final class aaom
 {
-  aaom(aaoi paramaaoi, QQCustomDialog paramQQCustomDialog) {}
+  private static volatile boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static int a(int paramInt)
   {
-    ArkAppCenter.a().post(new aaon(this));
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
+    switch (paramInt)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      label38:
-      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aaoi.a, "ark_authority_api_location", this.jdField_a_of_type_Aaoi.c, 1);
+    case -5: 
+    case -4: 
+    case -3: 
+    case -1: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 5: 
+    default: 
+      return 1;
+    case 0: 
+      return 0;
+    case -2: 
+      return 3;
+    case -6: 
+      return 6;
+    case -7: 
+      return 13;
+    }
+    return 207;
+  }
+  
+  public static void a()
+  {
+    aase.b("GdtArkUtil", String.format("init %b", new Object[] { Boolean.valueOf(a) }));
+    if (a) {
       return;
     }
-    catch (Exception paramDialogInterface)
+    try
     {
-      break label38;
+      if (a) {
+        return;
+      }
     }
+    finally {}
+    a = true;
+    anqy.a(true);
+    anqy.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaom
  * JD-Core Version:    0.7.0.1
  */

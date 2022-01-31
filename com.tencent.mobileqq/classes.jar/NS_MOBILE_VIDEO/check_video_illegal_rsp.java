@@ -9,11 +9,11 @@ import java.util.Map;
 public final class check_video_illegal_rsp
   extends JceStruct
 {
-  static Map cache_video_urls = new HashMap();
+  static Map<String, UrlRsp> cache_video_urls = new HashMap();
   public String illegal_msg = "";
   public String msg = "";
   public int ret;
-  public Map video_urls;
+  public Map<String, UrlRsp> video_urls;
   
   static
   {
@@ -23,7 +23,7 @@ public final class check_video_illegal_rsp
   
   public check_video_illegal_rsp() {}
   
-  public check_video_illegal_rsp(int paramInt, String paramString1, Map paramMap, String paramString2)
+  public check_video_illegal_rsp(int paramInt, String paramString1, Map<String, UrlRsp> paramMap, String paramString2)
   {
     this.ret = paramInt;
     this.msg = paramString1;
@@ -55,7 +55,7 @@ public final class check_video_illegal_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_VIDEO.check_video_illegal_rsp
  * JD-Core Version:    0.7.0.1
  */

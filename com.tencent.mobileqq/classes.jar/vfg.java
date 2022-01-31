@@ -1,22 +1,73 @@
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetEmoticonPackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetEmoticonPackList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class vfg
-  implements Runnable
+public class vfg
+  extends urt<vhe>
 {
-  vfg(vff paramvff, ProgressPieDrawable paramProgressPieDrawable) {}
+  public final String a;
+  public final int c;
+  public final int d;
+  public final int e;
   
-  public void run()
+  public vfg(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.setVisible(false, true);
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribbleItemBuilder", 2, "[onProgressCompleted] set ProgressPieDrawable invisible,ppd = " + this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable);
+    this(paramString, paramInt, 0, 0);
+  }
+  
+  public vfg(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramString == null) {
+      throw new IllegalArgumentException("mCookie should not be null");
     }
+    if (paramInt1 <= 0) {
+      throw new IllegalArgumentException("mCount should not be less than 0 : " + paramInt1);
+    }
+    this.a = paramString;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+  }
+  
+  public String a()
+  {
+    return uqn.a("StorySvc.video_emoticon_get");
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetEmoticonPackList localRspGetEmoticonPackList = new qqstory_service.RspGetEmoticonPackList();
+    try
+    {
+      localRspGetEmoticonPackList.mergeFrom(paramArrayOfByte);
+      return new vhe(localRspGetEmoticonPackList, paramArrayOfByte, System.currentTimeMillis());
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wxe.e("GetEmojiPackInfoListRequest", "GetEmojiPackInfoListRequest error : " + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetEmoticonPackList localReqGetEmoticonPackList = new qqstory_service.ReqGetEmoticonPackList();
+    localReqGetEmoticonPackList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    localReqGetEmoticonPackList.count.set(this.c);
+    return localReqGetEmoticonPackList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetEmojiPackInfoListRequest{mCookie='" + this.a + '\'' + ", mCount=" + this.c + ", latitude=" + this.d + ", longitude=" + this.e + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vfg
  * JD-Core Version:    0.7.0.1
  */

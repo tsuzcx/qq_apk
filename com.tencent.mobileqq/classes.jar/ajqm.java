@@ -1,94 +1,18 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x496.Robot;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class ajqm
-  implements Runnable
+  implements View.OnLayoutChangeListener
 {
-  public ajqm(TroopRobotManager paramTroopRobotManager, oidb_0x496.Robot paramRobot) {}
+  public ajqm(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt) {}
   
-  public void run()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    Object localObject3 = null;
-    Object localObject1 = null;
-    for (;;)
-    {
-      try
-      {
-        localFileOutputStream = BaseApplication.getContext().openFileOutput("troop_robot_config", 0);
-        localObject1 = localFileOutputStream;
-        localObject3 = localFileOutputStream;
-        localFileOutputStream.write(this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$Robot.toByteArray());
-        localObject1 = localFileOutputStream;
-        localObject3 = localFileOutputStream;
-        localFileOutputStream.flush();
-        localObject1 = localFileOutputStream;
-        localObject3 = localFileOutputStream;
-        localFileOutputStream.close();
-      }
-      catch (IOException localIOException4)
-      {
-        FileOutputStream localFileOutputStream;
-        localObject3 = localIOException1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        localObject3 = localIOException1;
-        QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(localIOException4));
-        if (localIOException1 == null) {
-          continue;
-        }
-        try
-        {
-          localIOException1.close();
-        }
-        catch (IOException localIOException2) {}
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(localIOException2));
-        continue;
-      }
-      finally
-      {
-        if (localObject3 == null) {
-          break label172;
-        }
-      }
-      try
-      {
-        localFileOutputStream.close();
-        BaseApplication.getContext().getSharedPreferences("troop_robot_config", 0).edit().putInt("troop_robot_config_version", this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$Robot.version.get()).commit();
-        return;
-      }
-      catch (IOException localIOException1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(localIOException1));
-        }
-      }
-    }
-    try
-    {
-      localObject3.close();
-      label172:
-      throw localObject2;
-    }
-    catch (IOException localIOException3)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(localIOException3));
-        }
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.removeOnLayoutChangeListener(this);
+    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, this.jdField_a_of_type_Int, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.addOnLayoutChangeListener(new ajqn(this));
   }
 }
 

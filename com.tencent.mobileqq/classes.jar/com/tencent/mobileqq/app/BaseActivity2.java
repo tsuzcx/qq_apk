@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.app;
 
+import alow;
+import amck;
 import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -9,23 +11,24 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.hardware.SensorManager;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Process;
+import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
+import azcm;
+import azri;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 import com.tencent.mobileqq.activity.fling.FlingHandler;
 import com.tencent.mobileqq.activity.fling.FlingTrackerHandler;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.haoliyou.JefsClass;
 import com.tencent.mobileqq.startup.step.InitSkin;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableActivityProcesser;
@@ -33,65 +36,53 @@ import com.tencent.theme.SkinnableActivityProcesser.Callback;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import mqq.app.BaseActivity;
-import zan;
-import zao;
 
 public class BaseActivity2
   extends BaseActivity
   implements SkinnableActivityProcesser.Callback
 {
-  public static boolean T = true;
-  public static BaseActivity2 a;
-  private static ShakeListener jdField_a_of_type_ComTencentMobileqqAppShakeListener;
-  private static boolean jdField_a_of_type_Boolean;
-  public boolean R = true;
-  protected boolean S = true;
-  public boolean U = true;
-  public boolean V = true;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private FlingHandler jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler;
-  public ScreenShot a;
-  SkinnableActivityProcesser jdField_a_of_type_ComTencentThemeSkinnableActivityProcesser;
-  public SystemBarCompact a;
-  private String jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-  public String q;
-  protected int v;
+  private static final int DEFAULT_FLING_ACTION = 2;
+  protected static final String TAG = "BaseActivity2";
+  public static boolean mAppForground = true;
+  private static amck shakeListener;
+  private static boolean snapChecked;
+  public static BaseActivity2 topActivity;
+  private String className = getClass().getSimpleName();
+  protected long currentActivityStayTime;
+  public boolean isPause = true;
+  public String lastLoginUin;
+  public boolean mActNeedImmersive = true;
+  protected boolean mCanLock = true;
+  private FlingHandler mFlingHandler;
+  public boolean mNeedStatusTrans = true;
+  private BroadcastReceiver mScreenReceiver;
+  protected int mStopFlag;
+  public SystemBarCompact mSystemBarComp;
+  public int[] mWindowLocation;
+  SkinnableActivityProcesser processer;
+  public ScreenShot screenShot;
   
-  public static View a(View paramView, int paramInt)
+  public static <T extends View> T $(View paramView, int paramInt)
   {
     return paramView.findViewById(paramInt);
   }
   
-  public static ViewGroup.LayoutParams a(View paramView)
+  public static <T extends ViewGroup.LayoutParams> T $lp(View paramView)
   {
     return paramView.getLayoutParams();
   }
   
-  private void a()
+  private void cleanScreenShot()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppScreenShot != null)
+    if (this.screenShot != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppScreenShot.a();
-      this.jdField_a_of_type_ComTencentMobileqqAppScreenShot = null;
+      this.screenShot.a();
+      this.screenShot = null;
       ScreenShot.a("BaseActivity2 cleanScreenShot");
     }
   }
   
-  private void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if (jdField_a_of_type_ComTencentMobileqqAppShakeListener == null) {
-        ThreadManager.post(new zan(this), 5, null, true);
-      }
-    }
-    while (jdField_a_of_type_ComTencentMobileqqAppShakeListener == null) {
-      return;
-    }
-    ((SensorManager)getSystemService("sensor")).unregisterListener(jdField_a_of_type_ComTencentMobileqqAppShakeListener);
-    jdField_a_of_type_ComTencentMobileqqAppShakeListener = null;
-  }
-  
-  private boolean a(Intent paramIntent)
+  private boolean isStartQQ3rdApp(Intent paramIntent)
   {
     String str = paramIntent.getAction();
     if ((!TextUtils.isEmpty(str)) && (str.equals("android.media.action.IMAGE_CAPTURE"))) {}
@@ -114,43 +105,48 @@ public class BaseActivity2
     return false;
   }
   
-  protected void S()
+  private void setShakeEnabled()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("BaseActivity2", 4, "startUnlockActivity..." + this.jdField_a_of_type_JavaLangString);
-    }
-    startActivity(new Intent(this, GesturePWDUnlockActivity.class));
+    ThreadManager.excute(new BaseActivity2.2(this), 16, null, true);
   }
   
-  protected void T()
+  private void startActivityInner(Intent paramIntent, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("BaseActivity2", 4, "checkUnlockForSpecial. flag=,AbsAppInter.visibleActCnt=?,stopflag" + this.v);
+    switch (2)
+    {
+    default: 
+      super.startActivityForResult(paramIntent, paramInt);
+      return;
+    case 0: 
+      super.startActivityForResult(paramIntent, paramInt);
+      return;
     }
+    paramIntent.putExtra("fling_action_key", 2);
+    paramIntent.putExtra("fling_code_key", hashCode());
+    super.startActivityForResult(paramIntent, paramInt);
   }
   
-  public View a(int paramInt)
+  public <T extends View> T $(int paramInt)
   {
     return findViewById(paramInt);
   }
   
-  public boolean a()
+  protected void checkUnlockForSpecial()
   {
-    return true;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("BaseActivity2", 4, "checkUnlockForSpecial. flag=,AbsAppInter.visibleActCnt=?,stopflag" + this.mStopFlag);
+    }
   }
   
-  public int e()
-  {
-    return getResources().getDimensionPixelSize(2131558448);
-  }
+  public void doInMultiWindowModeStatusBarVisibilityChange(int paramInt) {}
   
-  protected boolean f()
+  public int getTitleBarHeight()
   {
-    return false;
+    return getResources().getDimensionPixelSize(2131298914);
   }
   
   @TargetApi(24)
-  public boolean g()
+  public boolean isInMultiWindow()
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
@@ -172,9 +168,43 @@ public class BaseActivity2
     }
   }
   
+  public boolean isNeedInterruptDoMulitWindow()
+  {
+    return false;
+  }
+  
+  public boolean isNeedStatusBarGone()
+  {
+    boolean bool = true;
+    if (this.mWindowLocation == null) {
+      this.mWindowLocation = new int[2];
+    }
+    getWindow().getDecorView().getLayoutParams();
+    getWindow().getDecorView().getLocationOnScreen(this.mWindowLocation);
+    if (this.mWindowLocation[1] > 10) {}
+    for (;;)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("BaseActivity2", 4, "fight..isNeedStatusBarGone " + bool);
+      }
+      return bool;
+      bool = false;
+    }
+  }
+  
+  protected boolean isWrapContent()
+  {
+    return true;
+  }
+  
+  protected boolean onBackEvent()
+  {
+    return false;
+  }
+  
   public void onBackPressed()
   {
-    if (f()) {
+    if (onBackEvent()) {
       return;
     }
     try
@@ -194,8 +224,8 @@ public class BaseActivity2
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    if ((a()) && (this.jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler.onConfigurationChanged(paramConfiguration);
+    if ((isWrapContent()) && (this.mFlingHandler != null)) {
+      this.mFlingHandler.onConfigurationChanged(paramConfiguration);
     }
   }
   
@@ -203,110 +233,111 @@ public class BaseActivity2
   {
     super.onCreate(paramBundle);
     if (QLog.isColorLevel()) {
-      QLog.i("BaseActivity2", 2, "[" + hashCode() + "]" + this.jdField_a_of_type_JavaLangString + " process id =" + Process.myPid() + " onCreate task : " + getTaskId());
+      QLog.i("BaseActivity2", 2, "[" + hashCode() + "]" + this.className + " process id =" + Process.myPid() + " onCreate task : " + getTaskId());
     }
     try
     {
-      paramBundle = BaseApplicationImpl.sApplication;
-      if (Build.VERSION.SDK_INT <= 10) {
-        break label373;
+      if (getIntent().getLongExtra("TIMESTAMP_START_ACTIVITY", 0L) != 0L)
+      {
+        azcm.e = System.currentTimeMillis();
+        QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_CREATE ", Long.valueOf(azcm.e) });
       }
-      i = 4;
     }
-    catch (IllegalStateException paramBundle)
+    catch (Exception paramBundle)
     {
       try
       {
-        for (;;)
+        this.lastLoginUin = BaseApplicationImpl.sApplication.getSharedPreferences("Last_Login", 4).getString("uin", null);
+        if ((this.lastLoginUin == null) && (QLog.isColorLevel())) {
+          QLog.d("BaseActivity2", 1, "last uin is null.. has problem");
+        }
+        ThreadManagerV2.excute(new BaseActivity2.LogActivityOnCreateRunnalbe(this), 16, null, true);
+        if (InitSkin.a) {
+          this.processer = new SkinnableActivityProcesser(this, this);
+        }
+        paramBundle = getIntent().getExtras();
+        if (paramBundle != null)
         {
-          registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
-          if ((this.U) && (ImmersiveUtils.isSupporImmersive() == 1))
+          int i = paramBundle.getInt("fling_action_key");
+          if ((i != 0) && (isWrapContent()))
           {
-            getWindow().addFlags(67108864);
-            if (this.V)
-            {
-              this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(this, true, getResources().getColor(2131494254));
-              if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
-                break;
-              }
-              this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusDrawable(getResources().getDrawable(2130843344));
+            if (1 == i) {
+              this.mFlingHandler = new FlingTrackerHandler(this);
             }
           }
-          return;
-          int i = 0;
-          continue;
-          paramBundle = paramBundle;
-          this.q = null;
-          if (QLog.isColorLevel()) {
-            QLog.e("BaseActivity2", 2, "Get lastLoginUin error", paramBundle);
+          else {
+            this.mCanLock = paramBundle.getBoolean("PhotoConst.ALLOW_LOCK", true);
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler = new FlingGestureHandler(this);
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
+        else if (!snapChecked)
         {
-          if (QLog.isColorLevel()) {
-            QLog.e("BaseActivity2", 2, "registerReceiver error", paramBundle);
+          setShakeEnabled();
+          snapChecked = true;
+        }
+      }
+      catch (IllegalStateException paramBundle)
+      {
+        try
+        {
+          for (;;)
+          {
+            paramBundle = new IntentFilter();
+            paramBundle.addAction("android.intent.action.SCREEN_OFF");
+            this.mScreenReceiver = new alow(this, null);
+            registerReceiver(this.mScreenReceiver, paramBundle);
+            if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1))
+            {
+              getWindow().addFlags(67108864);
+              if (this.mActNeedImmersive)
+              {
+                this.mSystemBarComp = new SystemBarCompact(this, true, getResources().getColor(2131166959));
+                if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
+                  break;
+                }
+                this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130845746));
+              }
+            }
+            return;
+            paramBundle = paramBundle;
+            QLog.e("BaseActivity2", 1, "getLongExtra fail, ", paramBundle);
+            continue;
+            paramBundle = paramBundle;
+            this.lastLoginUin = null;
+            if (QLog.isColorLevel()) {
+              QLog.e("BaseActivity2", 2, "Get lastLoginUin error", paramBundle);
+            }
           }
+          this.mFlingHandler = new FlingGestureHandler(this);
         }
-        this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusDrawable(null);
-      }
-    }
-    this.q = paramBundle.getSharedPreferences("Last_Login", i).getString("uin", null);
-    if ((this.q == null) && (QLog.isColorLevel())) {
-      QLog.d("BaseActivity2", 1, "last uin is null.. has porblem?");
-    }
-    StatisticCollector.a(this).a(this);
-    if (InitSkin.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentThemeSkinnableActivityProcesser = new SkinnableActivityProcesser(this, this);
-    }
-    paramBundle = getIntent().getExtras();
-    if (paramBundle != null)
-    {
-      i = paramBundle.getInt("fling_action_key");
-      if ((i != 0) && (a()))
-      {
-        if (1 == i) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler = new FlingTrackerHandler(this);
+        catch (Exception paramBundle)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("BaseActivity2", 2, "registerReceiver error", paramBundle);
+            }
+          }
+          this.mSystemBarComp.setStatusDrawable(null);
         }
       }
-      else {
-        this.S = paramBundle.getBoolean("PhotoConst.ALLOW_LOCK", true);
-      }
     }
-    else
-    {
-      if (!jdField_a_of_type_Boolean)
-      {
-        if (SettingCloneUtil.readValue(this, null, getString(2131433581), "qqsetting_screenshot_key", false)) {
-          a(true);
-        }
-        jdField_a_of_type_Boolean = true;
-      }
-      paramBundle = new IntentFilter();
-      paramBundle.addAction("android.intent.action.SCREEN_OFF");
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new zao(this, null);
-    }
-    label373:
   }
   
   public void onDestroy()
   {
     super.onDestroy();
     if (QLog.isColorLevel()) {
-      QLog.i("BaseActivity2", 2, "[" + hashCode() + "]" + this.jdField_a_of_type_JavaLangString + " process id =" + Process.myPid() + " onDestroy task : " + getTaskId());
+      QLog.i("BaseActivity2", 2, "[" + hashCode() + "]" + this.className + " process id =" + Process.myPid() + " onDestroy task : " + getTaskId());
     }
-    jdField_a_of_type_ComTencentMobileqqAppBaseActivity2 = null;
-    StatisticCollector.a(this).d(this);
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {}
+    topActivity = null;
+    azri.a(this).d(this);
+    if (this.mScreenReceiver != null) {}
     try
     {
-      unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      unregisterReceiver(this.mScreenReceiver);
       label104:
-      if (this.jdField_a_of_type_ComTencentThemeSkinnableActivityProcesser != null) {
-        this.jdField_a_of_type_ComTencentThemeSkinnableActivityProcesser.destory();
+      if (this.processer != null) {
+        this.processer.destory();
       }
       return;
     }
@@ -323,11 +354,11 @@ public class BaseActivity2
   {
     super.onPause();
     if (QLog.isColorLevel()) {
-      QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.jdField_a_of_type_JavaLangString + " onPause");
+      QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.className + " onPause");
     }
-    this.R = true;
-    StatisticCollector.a(this).c(this);
-    a();
+    this.isPause = true;
+    azri.a(this).c(this);
+    cleanScreenShot();
   }
   
   public void onPostThemeChanged() {}
@@ -338,12 +369,18 @@ public class BaseActivity2
   public void onResume()
   {
     super.onResume();
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.jdField_a_of_type_JavaLangString + " onResume ");
+    if (getIntent().getLongExtra("TIMESTAMP_START_ACTIVITY", 0L) != 0L)
+    {
+      azcm.i = System.currentTimeMillis();
+      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_RESUME ", Long.valueOf(azcm.i) });
     }
-    this.R = false;
-    StatisticCollector.a(this).b(this);
-    jdField_a_of_type_ComTencentMobileqqAppBaseActivity2 = this;
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.className + " onResume ");
+    }
+    this.isPause = false;
+    azri.a(this).b(this);
+    topActivity = this;
+    this.currentActivityStayTime = SystemClock.uptimeMillis();
     int i;
     SharedPreferences.Editor localEditor;
     if (Build.VERSION.SDK_INT > 10)
@@ -352,40 +389,40 @@ public class BaseActivity2
       localEditor = getSharedPreferences("screen_shot", i).edit();
       localEditor.putString("currentactivity", getClass().getName());
       if (Build.VERSION.SDK_INT <= 8) {
-        break label273;
+        break label328;
       }
       localEditor.apply();
-      label130:
-      T = GesturePWDUtils.getAppForground(this);
+      label185:
+      mAppForground = GesturePWDUtils.getAppForground(this);
       if (QLog.isDevelopLevel()) {
-        QLog.d("BaseActivity2", 4, "onResume.mAppForground = " + T + ",mCanLock=" + this.S);
+        QLog.d("BaseActivity2", 4, "onResume.mAppForground = " + mAppForground + ",mCanLock=" + this.mCanLock);
       }
-      if ((T) || (!this.S) || (this.q == null) || (!GesturePWDUtils.getJumpLock(this, this.q))) {
-        break label283;
+      if ((mAppForground) || (!this.mCanLock) || (this.lastLoginUin == null) || (!GesturePWDUtils.getJumpLock(this, this.lastLoginUin))) {
+        break label338;
       }
-      S();
+      startUnlockActivity();
     }
     for (;;)
     {
-      if (!T)
+      if (!mAppForground)
       {
-        T = true;
-        GesturePWDUtils.setAppForground(this, T);
+        mAppForground = true;
+        GesturePWDUtils.setAppForground(this, mAppForground);
       }
-      this.v = 0;
-      this.S = true;
-      if ((this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact != null) && (this.V)) {
-        this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.init();
+      this.mStopFlag = 0;
+      this.mCanLock = true;
+      if ((this.mSystemBarComp != null) && (this.mActNeedImmersive)) {
+        this.mSystemBarComp.init();
       }
       return;
       i = 0;
       break;
-      label273:
+      label328:
       localEditor.commit();
-      break label130;
-      label283:
-      if ((!T) && (this.S)) {
-        T();
+      break label185;
+      label338:
+      if ((!mAppForground) && (this.mCanLock)) {
+        checkUnlockForSpecial();
       }
     }
   }
@@ -393,11 +430,16 @@ public class BaseActivity2
   public void onStart()
   {
     super.onStart();
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.jdField_a_of_type_JavaLangString + " onStart");
+    if (getIntent().getLongExtra("TIMESTAMP_START_ACTIVITY", 0L) != 0L)
+    {
+      azcm.g = System.currentTimeMillis();
+      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_BASE_ACTIVITY_START ", Long.valueOf(azcm.g) });
     }
-    if ((a()) && (this.jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler.onStart();
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.className + " onStart");
+    }
+    if ((isWrapContent()) && (this.mFlingHandler != null)) {
+      this.mFlingHandler.onStart();
     }
   }
   
@@ -405,12 +447,12 @@ public class BaseActivity2
   {
     super.onStop();
     if (QLog.isColorLevel()) {
-      QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.jdField_a_of_type_JavaLangString + " onStop");
+      QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.className + " onStop");
     }
-    this.v = 1;
-    T = GesturePWDUtils.isAppOnForegroundByTasks(this);
-    if (!T) {
-      GesturePWDUtils.setAppForground(this, T);
+    this.mStopFlag = 1;
+    mAppForground = GesturePWDUtils.isAppOnForegroundByTasks(this);
+    if (!mAppForground) {
+      GesturePWDUtils.setAppForground(this, mAppForground);
     }
     if (QLog.isColorLevel()) {
       QLog.d("BaseActivity2", 2, "zsw subaccount onStop stop get sub msg AbsAppInter.visibleActCnt = ?");
@@ -419,31 +461,41 @@ public class BaseActivity2
   
   public void startActivityForResult(Intent paramIntent, int paramInt)
   {
-    this.v = 2;
-    if (a(paramIntent)) {
-      this.S = false;
-    }
-    switch (2)
-    {
+    this.mStopFlag = 2;
+    if (isStartQQ3rdApp(paramIntent)) {
+      this.mCanLock = false;
     }
     try
     {
-      super.startActivityForResult(paramIntent, paramInt);
+      startActivityInner(paramIntent, paramInt);
       return;
     }
     catch (Exception paramIntent)
     {
-      if (!QLog.isColorLevel()) {
-        return;
-      }
+      while (!QLog.isColorLevel()) {}
       QLog.d("BaseActivity2", 2, "startActivity failed with: ", paramIntent);
-      return;
-      paramIntent.putExtra("fling_action_key", 2);
-      paramIntent.putExtra("fling_code_key", hashCode());
-      super.startActivityForResult(paramIntent, paramInt);
     }
-    super.startActivityForResult(paramIntent, paramInt);
-    return;
+  }
+  
+  public void startActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)
+  {
+    try
+    {
+      JefsClass.getInstance().b(this, paramIntent, new BaseActivity2.1(this, paramIntent, paramInt, paramBundle));
+      return;
+    }
+    catch (Throwable paramIntent)
+    {
+      QLog.e("BaseActivity2", 1, paramIntent, new Object[0]);
+    }
+  }
+  
+  protected void startUnlockActivity()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("BaseActivity2", 4, "startUnlockActivity..." + this.className);
+    }
+    startActivity(new Intent(this, GesturePWDUnlockActivity.class));
   }
 }
 

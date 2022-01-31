@@ -1,47 +1,69 @@
-import android.graphics.Rect;
-import android.os.CountDownTimer;
-import android.view.MotionEvent;
-import android.view.TouchDelegate;
-import android.view.View;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.util.AccessibilityUtil;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
-class otr
-  extends TouchDelegate
+public class otr
+  implements AladdinConfigHandler
 {
-  otr(otq paramotq, Rect paramRect, View paramView)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    super(paramRect, paramView);
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
+    QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
     for (;;)
     {
-      return true;
-      if (QRDisplayActivity.a(this.a.a) != null)
+      try
       {
-        QRDisplayActivity.a(this.a.a, false);
-        QRDisplayActivity.a(this.a.a).start();
-        continue;
-        if (QRDisplayActivity.a(this.a.a) != null) {
-          QRDisplayActivity.a(this.a.a).cancel();
-        }
-        if (!QRDisplayActivity.a(this.a.a))
+        Object localObject1 = osq.a(paramString);
+        Object localObject2 = ((Map)localObject1).keySet();
+        paramString = new JSONObject();
+        paramInt1 = 0;
+        localObject2 = ((Set)localObject2).iterator();
+        if (((Iterator)localObject2).hasNext())
         {
-          AccessibilityUtil.c(this.a.a.d);
-          this.a.a.onClick(this.a.a.d);
+          String str1 = (String)((Iterator)localObject2).next();
+          String str2 = (String)((Map)localObject1).get(str1);
+          if (!TextUtils.isEmpty(str2))
+          {
+            paramString.put(str1, str2);
+            paramInt1 = 1;
+          }
+        }
+        else
+        {
+          if (paramInt1 != 0)
+          {
+            localObject1 = ors.a();
+            if (localObject1 != null)
+            {
+              bkbq.a((AppRuntime)localObject1, "local_kd_native_main_text_style", paramString.toString());
+              QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig],content: " + paramString.toString());
+            }
+          }
+          return true;
         }
       }
+      catch (Exception paramString)
+      {
+        return true;
+      }
+    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    AppRuntime localAppRuntime = ors.a();
+    if (localAppRuntime != null) {
+      bkbq.a(localAppRuntime, "local_kd_native_main_text_style", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     otr
  * JD-Core Version:    0.7.0.1
  */

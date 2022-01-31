@@ -1,51 +1,56 @@
 package com.tencent.mobileqq.shortvideo.filter;
 
 import android.opengl.GLES20;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.TextureRender;
+import com.tencent.ttpic.openapi.filter.TextureRender;
 
 public class QQDrawScreenFilter
   extends QQBaseFilter
 {
-  public TextureRender a;
+  public TextureRender textureRender;
   
-  public void a()
+  public QQDrawScreenFilter(int paramInt, QQFilterRenderManager paramQQFilterRenderManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender = new TextureRender();
+    super(paramInt, paramQQFilterRenderManager);
   }
   
-  public void e()
+  public void init()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender.a();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender = null;
-    }
+    this.textureRender = new TextureRender();
   }
   
-  public void h()
+  public void onDrawFrame()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender == null) {
-      a();
+    if (this.textureRender == null) {
+      init();
     }
-    boolean bool = a().a("key_draw_screen");
-    int i = a().a("key_width");
-    int j = a().a("key_height");
+    boolean bool = getQQFilterRenderManager().getBooleanParam("key_draw_screen");
+    int i = getQQFilterRenderManager().getIntParam("key_width");
+    int j = getQQFilterRenderManager().getIntParam("key_height");
     if (bool)
     {
-      QQFilterLogManager.a();
+      QQFilterLogManager.setOnDrawFilterStart();
       GLES20.glBindFramebuffer(36160, 0);
       GLES20.glViewport(0, 0, i, j);
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender != null) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender.a(3553, this.jdField_a_of_type_Int, null, null);
+      if (this.textureRender != null) {
+        this.textureRender.drawTexture(3553, this.mInputTextureID, null, null);
       }
-      QQFilterLogManager.a("绘制到屏幕");
+      QQFilterLogManager.setOnDrawFilterEnd("绘制到屏幕");
     }
-    this.b = this.jdField_a_of_type_Int;
+    this.mOutputTextureID = this.mInputTextureID;
+  }
+  
+  public void onSurfaceDestroy()
+  {
+    if (this.textureRender != null)
+    {
+      this.textureRender.release();
+      this.textureRender = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQDrawScreenFilter
  * JD-Core Version:    0.7.0.1
  */

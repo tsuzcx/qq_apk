@@ -1,19 +1,17 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.phone.ContactListView;
 
 public class aily
-  implements Runnable
+  extends altm
 {
-  public aily(GroupSystemMsgController paramGroupSystemMsgController, QQAppInterface paramQQAppInterface, int paramInt) {}
+  public aily(ContactListView paramContactListView) {}
   
-  public void run()
+  protected void onAddFriend(String paramString) {}
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putInt("unread_Group_system_msg", this.jdField_a_of_type_Int).commit();
+    if ((paramBoolean1) && (paramBoolean2) && (!paramBoolean3)) {
+      this.a.j();
     }
   }
 }

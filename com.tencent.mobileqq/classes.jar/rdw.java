@@ -1,18 +1,23 @@
-import com.tencent.mfsdk.MagnifierSDK;
-import com.tencent.mfsdk.persist.DBHandler;
-import com.tencent.mfsdk.reporter.IReporter.ReportResultCallback;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Point;
+import android.view.View;
 
-public final class rdw
-  implements IReporter.ReportResultCallback
+final class rdw
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void a(int paramInt)
+  rdw(View paramView1, View paramView2) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    MagnifierSDK.a.a("result_objects", paramInt, 2);
+    paramValueAnimator = (Point)paramValueAnimator.getAnimatedValue();
+    rdm.a(this.a, paramValueAnimator);
+    rdm.a(this.b, paramValueAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rdw
  * JD-Core Version:    0.7.0.1
  */

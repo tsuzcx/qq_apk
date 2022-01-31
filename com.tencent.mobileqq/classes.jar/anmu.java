@@ -1,53 +1,55 @@
-import dov.com.qq.im.capture.paster.CaptureComboPtvTemplate;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.open.base.BspatchUtil;
+import java.io.File;
 
-public class anmu
-  implements PtvTemplateManager.IPtvTemplateDownloadListener
+class anmu
+  implements anmx
 {
-  public anmu(CaptureComboPtvTemplate paramCaptureComboPtvTemplate) {}
+  anmu(anmm paramanmm, anmw paramanmw1, String paramString1, anmw paramanmw2, String paramString2, anmy paramanmy) {}
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public void a(byte[] paramArrayOfByte)
   {
-    synchronized (CaptureComboPtvTemplate.a(this.a))
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anmw.jdField_b_of_type_JavaLangString }));
+    }
+    for (;;)
     {
-      if (paramPtvTemplateInfo.id.equals(CaptureComboPtvTemplate.a(this.a).id))
-      {
-        CaptureComboPtvTemplate.a(this.a).downloading = true;
-        CaptureComboPtvTemplate.a(this.a, 1.0F * paramInt / 100.0F);
-        CaptureComboPtvTemplate.a(this.a, 1);
-      }
+      this.jdField_a_of_type_Anmy.a(false);
       return;
-    }
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
-  {
-    synchronized (CaptureComboPtvTemplate.a(this.a))
-    {
-      if (paramPtvTemplateInfo.id.equals(CaptureComboPtvTemplate.a(this.a).id))
+      if (!anmm.b(paramArrayOfByte, this.jdField_a_of_type_Anmw.f))
       {
-        CaptureComboPtvTemplate.a(this.a).downloading = false;
-        CaptureComboPtvTemplate.a(this.a).usable = paramBoolean;
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, md5 mismatch, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anmw.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Anmw.f }));
       }
-      if (paramBoolean)
+      else
       {
-        if (CaptureComboPtvTemplate.a(this.a).id.equals(paramPtvTemplateInfo.id))
+        String str1 = anmm.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Anmw.jdField_a_of_type_JavaLangString);
+        if (!new File(str1).isFile())
         {
-          CaptureComboPtvTemplate.a(this.a, 3);
-          CaptureComboPtvTemplate.a(this.a, 1.0F);
-          this.a.b();
+          ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, src path not exist, name=%s, path=s", new Object[] { this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString, str1 }));
         }
-        return;
+        else
+        {
+          String str2 = String.format("%s/diff-%s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Anmw.d });
+          if (!anmm.a(paramArrayOfByte, str2))
+          {
+            ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, write diff to file fail, name=%s, path=%s", new Object[] { this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString, str2 }));
+          }
+          else
+          {
+            if (BspatchUtil.a(str1, str2, String.format("%s/%s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString }))) {
+              break;
+            }
+            ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, patch fail, name=%s, diff-md5=%s", new Object[] { this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anmw.f }));
+          }
+        }
       }
-      this.a.a(1);
-      CaptureComboPtvTemplate.a(this.a, 2);
     }
+    this.jdField_a_of_type_Anmy.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmu
  * JD-Core Version:    0.7.0.1
  */

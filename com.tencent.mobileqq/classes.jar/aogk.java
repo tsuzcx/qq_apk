@@ -1,25 +1,39 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.LBSDetetor;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.comment.DanmuItemBean;
 
-public class aogk
-  implements Handler.Callback
+public final class aogk
+  implements Parcelable.Creator<DanmuItemBean>
 {
-  public aogk(LBSDetetor paramLBSDetetor) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public DanmuItemBean a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "check timeout. reqCookie:" + paramMessage.what);
+    boolean bool = true;
+    DanmuItemBean localDanmuItemBean = new DanmuItemBean();
+    localDanmuItemBean.jdField_a_of_type_Long = paramParcel.readLong();
+    localDanmuItemBean.jdField_b_of_type_Long = paramParcel.readLong();
+    localDanmuItemBean.d = paramParcel.readLong();
+    localDanmuItemBean.jdField_c_of_type_Long = paramParcel.readLong();
+    localDanmuItemBean.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localDanmuItemBean.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readInt() == 1) {}
+    for (;;)
+    {
+      localDanmuItemBean.jdField_a_of_type_Boolean = bool;
+      localDanmuItemBean.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      localDanmuItemBean.jdField_a_of_type_Int = paramParcel.readInt();
+      return localDanmuItemBean;
+      bool = false;
     }
-    LBSDetetor.a(this.a, false, null, paramMessage.what);
-    return false;
+  }
+  
+  public DanmuItemBean[] a(int paramInt)
+  {
+    return new DanmuItemBean[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aogk
  * JD-Core Version:    0.7.0.1
  */

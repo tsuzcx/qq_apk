@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="208.0dip" android:layout_marginTop="0.5dip" android:layout_marginBottom="0.5dip">
+        <com.tencent.image.URLImageView android:id="@id/bqx" android:layout_width="fill_parent" android:layout_height="208.0dip" android:scaleType="centerCrop" />
+        <ImageView android:id="@id/bqy" android:background="@drawable/br3" android:layout_width="375.0dip" android:layout_height="208.0dip" android:layout_alignParentLeft="true" />
+        <ImageView android:id="@id/br_" android:layout_width="62.0dip" android:layout_height="62.0dip" android:src="@drawable/duf" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/as0" android:textColor="@color/al3" android:id="@id/bra" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_marginBottom="7.0dip" android:text="00:00" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <TextView android:textSize="18.0sp" android:textColor="@android:color/black" android:ellipsize="end" android:id="@id/br0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ash" android:layout_marginTop="6.5dip" android:layout_marginRight="@dimen/ash" android:layout_marginBottom="2.0dip" android:text="@string/pna" android:maxLines="2" android:lineSpacingExtra="4.0dip" />
+    <TextView android:textSize="14.0sp" android:textColor="#ff9d9d9d" android:ellipsize="end" android:id="@id/bqz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="1.5dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="5.0dip" android:text="07-04" android:maxLines="1" android:includeFontPadding="false" />
+    <View android:background="#ffededed" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="17.0dip" />
+</LinearLayout>

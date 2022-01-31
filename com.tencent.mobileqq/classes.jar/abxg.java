@@ -1,33 +1,24 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.mobileqq.nearpeople.NearbyRecommender.ChatPushCarrierHelper;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 class abxg
-  implements Runnable
+  implements View.OnClickListener
 {
-  abxg(abxe paramabxe, List paramList) {}
+  abxg(abxe paramabxe, abxd paramabxd, abwv paramabwv, JSONObject paramJSONObject, abwu paramabwu) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Abxe.a.jdField_a_of_type_ComTencentMobileqqNearpeopleNearbyRecommenderChatPushCarrierHelper != null)
-    {
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        this.jdField_a_of_type_Abxe.a.jdField_a_of_type_ComTencentMobileqqNearpeopleNearbyRecommenderChatPushCarrierHelper.a(this.jdField_a_of_type_JavaUtilList);
-      }
-      this.jdField_a_of_type_Abxe.a.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_Abxe.a.jdField_a_of_type_ComTencentMobileqqNearpeopleNearbyRecommenderChatPushCarrierHelper.a();
-      this.jdField_a_of_type_Abxe.a.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_Abxe.a.jdField_d_of_type_AndroidViewView);
-      this.jdField_a_of_type_Abxe.a.jdField_d_of_type_Boolean = true;
-      if ((this.jdField_a_of_type_Abxe.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) && ((this.jdField_a_of_type_Abxe.a.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_Abxe.a.jdField_a_of_type_JavaUtilList.size() == 0))) {
-        this.jdField_a_of_type_Abxe.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.notifyDataSetChanged();
-      }
-    }
+    this.jdField_a_of_type_Abxe.d();
+    QLog.i("DoraemonOpenAPI.apiMgr", 1, "accept " + this.jdField_a_of_type_Abxd.a);
+    abxe.a(this.jdField_a_of_type_Abxe, this.jdField_a_of_type_Abxd, 2);
+    abxe.a(this.jdField_a_of_type_Abxe, 0, this.jdField_a_of_type_Abwv, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Abwu);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxg
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class value$HwCommentInfo
-  extends MessageMicro
+  extends MessageMicro<HwCommentInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field createts = PBField.initUInt64(0L);
@@ -27,7 +27,7 @@ public final class value$HwCommentInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.protofile.group_homework.value.HwCommentInfo
  * JD-Core Version:    0.7.0.1
  */

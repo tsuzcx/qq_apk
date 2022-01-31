@@ -2,8 +2,8 @@ package com.tencent.mobileqq.data;
 
 import NS_MOBILE_MAIN_PAGE.mobile_sub_get_cover_rsp;
 import android.os.Parcel;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhs;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.model.CoverCacheData;
 import java.util.ArrayList;
@@ -14,16 +14,16 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class QZoneCover
-  extends Entity
+  extends awge
 {
   public int jigsaw;
   public String type;
-  @unique
+  @awhs
   public String uin;
   public byte[] vCoverInfo;
   public byte[] vPhotoInfo;
   
-  public HashMap parseCoverInfo()
+  public HashMap<String, String> parseCoverInfo()
   {
     Object localObject2 = null;
     HashMap localHashMap = null;
@@ -48,7 +48,7 @@ public class QZoneCover
     return localObject1;
   }
   
-  public ArrayList parsePhotoInfo()
+  public ArrayList<Map<Integer, String>> parsePhotoInfo()
   {
     Object localObject4 = null;
     Object localObject5 = null;
@@ -97,7 +97,7 @@ public class QZoneCover
     return localException;
   }
   
-  protected void printInfo(String paramString1, String paramString2, String paramString3, Map paramMap, ArrayList paramArrayList)
+  protected void printInfo(String paramString1, String paramString2, String paramString3, Map<String, String> paramMap, ArrayList<Map<Integer, String>> paramArrayList)
   {
     if (QLog.isColorLevel())
     {
@@ -179,7 +179,7 @@ public class QZoneCover
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.QZoneCover
  * JD-Core Version:    0.7.0.1
  */

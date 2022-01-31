@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_struct$UserId
-  extends MessageMicro
+  extends MessageMicro<UserId>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field uid = PBField.initUInt64(0L);
@@ -22,7 +22,7 @@ public final class qqstory_struct$UserId
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.UserId
  * JD-Core Version:    0.7.0.1
  */

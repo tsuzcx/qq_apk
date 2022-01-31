@@ -1,12 +1,15 @@
-public class agtw
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class agtw
+  implements DialogInterface.OnDismissListener
 {
-  public String a;
-  public String b;
+  agtw(agti paramagti) {}
   
-  public agtw(String paramString1, String paramString2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    this.a.ah = false;
+    azqs.b(this.a.a, "CliOper", "", "", "0X8004EFA", "0X8004EFA", 0, 0, "", "", "", "");
   }
 }
 

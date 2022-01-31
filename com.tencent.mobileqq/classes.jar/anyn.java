@@ -1,22 +1,22 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
+import java.util.HashSet;
+import java.util.Set;
 
 public class anyn
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public anyn(DoodleEditView paramDoodleEditView, GestureHelper.ZoomItem paramZoomItem) {}
+  public Set<Integer> a;
+  public boolean a;
+  public boolean b = false;
+  public boolean c = false;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public anyn()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper$ZoomItem.n = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.invalidate();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anyn
  * JD-Core Version:    0.7.0.1
  */

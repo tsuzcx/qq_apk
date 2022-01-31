@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class qqstory_struct$UserSeqInfo
-  extends MessageMicro
+  extends MessageMicro<UserSeqInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field seq = PBField.initInt32(0);
@@ -22,7 +22,7 @@ public final class qqstory_struct$UserSeqInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.UserSeqInfo
  * JD-Core Version:    0.7.0.1
  */

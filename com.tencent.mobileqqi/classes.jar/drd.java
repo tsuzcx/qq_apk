@@ -1,77 +1,18 @@
-import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.util.List;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class drd
-  extends FriendListObserver
+  implements View.OnTouchListener
 {
-  public drd(SubAccountBindActivity paramSubAccountBindActivity) {}
+  public drd(TroopMemberListActivity paramTroopMemberListActivity, InputMethodManager paramInputMethodManager) {}
   
-  void a(String paramString, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ThreadManager.a().post(new dre(this, paramString, paramInt));
-  }
-  
-  protected void a(String paramString, boolean paramBoolean)
-  {
-    int j = 0;
-    if ((!paramBoolean) || (paramString == null)) {}
-    for (;;)
-    {
-      return;
-      int i;
-      if (SubAccountBindActivity.a(this.a) != null) {
-        i = SubAccountBindActivity.a(this.a).getChildCount();
-      }
-      while (j < SubAccountBindActivity.a(this.a).size())
-      {
-        if ((i > j) && (SubAccountBindActivity.a(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.a(this.a).get(j)).getUin())))
-        {
-          TextView localTextView1 = (TextView)SubAccountBindActivity.a(this.a).getChildAt(j).findViewById(2131231000);
-          TextView localTextView2 = (TextView)SubAccountBindActivity.a(this.a).getChildAt(j).findViewById(2131231001);
-          localTextView1.setText(ContactUtils.g(this.a.b, paramString));
-          localTextView2.setText(this.a.b.b(paramString));
-          a(paramString, j);
-          return;
-        }
-        j += 1;
-        continue;
-        i = 0;
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    int j = 0;
-    if ((!paramBoolean) || (paramString == null)) {}
-    for (;;)
-    {
-      return;
-      int i;
-      if (SubAccountBindActivity.a(this.a) != null) {
-        i = SubAccountBindActivity.a(this.a).getChildCount();
-      }
-      while (j < SubAccountBindActivity.a(this.a).size())
-      {
-        if ((i > j) && (SubAccountBindActivity.a(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.a(this.a).get(j)).getUin())))
-        {
-          a(paramString, j);
-          return;
-        }
-        j += 1;
-        continue;
-        i = 0;
-      }
-    }
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

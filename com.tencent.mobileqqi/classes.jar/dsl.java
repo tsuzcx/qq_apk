@@ -1,202 +1,109 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantImpl;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
+import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.observer.SubAccountObserver;
 
 public class dsl
-  extends SubAccountObserver
+  extends TroopObserver
 {
-  public dsl(SubLoginActivity paramSubLoginActivity) {}
+  public dsl(TroopRequestActivity paramTroopRequestActivity) {}
   
-  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  protected void a(int paramInt, byte paramByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubLoginActivity", 2, "onGetKeyBack: start");
+    if ((paramInt == 4) || (paramInt == 5) || (paramInt == 6) || (paramInt == 7)) {
+      this.a.a.sendEmptyMessage(1);
     }
-    if (TextUtils.isEmpty(paramString3))
+    if (paramInt == 8) {
+      this.a.a.sendEmptyMessage(1);
+    }
+  }
+  
+  protected void a(int paramInt, byte paramByte, String paramString)
+  {
+    if ((paramInt == 4) || (paramInt == 5) || (paramInt == 6) || (paramInt == 7))
     {
-      paramString1 = new HashMap();
-      paramString1.put("param_FailCode", "12005");
-      paramString1.put("fail_step", "getKeyEmpty");
-      paramString1.put("fail_location", "subLogin");
-      StatisticCollector.a(BaseApplication.getContext()).a(this.a.b.a(), "actSBGeykey", false, 0L, 0L, paramString1, "");
-      this.a.e();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.subaccount.SubLoginActivity", 2, "onGetKeyBack:subLogin ...has Failed key  =  null");
+      if (paramByte != 0) {
+        break label68;
       }
-      this.a.a(this.a.getString(2131562096));
-      this.a.runOnUiThread(new dsn(this));
+      this.a.a.sendEmptyMessage(0);
+      this.a.finish();
     }
-    label487:
+    for (;;)
+    {
+      if (paramInt == 8)
+      {
+        if (paramByte != 0) {
+          break;
+        }
+        this.a.a.sendEmptyMessage(0);
+      }
+      return;
+      label68:
+      this.a.a.sendEmptyMessage(1);
+    }
+    this.a.a.sendEmptyMessage(1);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  {
+    if (paramLong != Long.parseLong(this.a.p)) {}
     for (;;)
     {
       return;
-      paramString1 = new HashMap();
-      paramString1.put("param_FailCode", "12006");
-      paramString1.put("fail_step", "getKeyNotEmpty");
-      paramString1.put("fail_location", "subLogin");
-      StatisticCollector.a(BaseApplication.getContext()).a(this.a.b.a(), "actSBGeykey", true, 0L, 0L, paramString1, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.subaccount.SubLoginActivity", 2, "onGetKeyBack: key no null");
-      }
-      if (!SubLoginActivity.b(this.a))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SubAccount", 2, "subaccount onGetKeyBack not need bind");
-        }
-        this.a.e();
-        SubAccountAssistantImpl.a().a(this.a.b, paramString2, paramString3);
-        long l1 = SubAccountAssistantImpl.a().a(this.a.b, paramString2);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.subaccount.SubLoginActivity", 2, "sublogin activity status = " + l1);
-        }
-        SubAccountAssistantImpl localSubAccountAssistantImpl = SubAccountAssistantImpl.a();
-        QQAppInterface localQQAppInterface = this.a.b;
-        long l2 = Long.parseLong(paramString2);
-        if (paramString3 == null)
-        {
-          paramString1 = null;
-          localSubAccountAssistantImpl.a(localQQAppInterface, (byte)1, l2, paramString1, (int)l1);
-          SubAccountAssistantImpl.a().a(this.a.b, System.currentTimeMillis() / 1000L);
-          SubAccountAssistantForward.b(this.a.b);
-          SubAccountAssistantForward.a(this.a.b);
-          this.a.setTitle("");
-          SubAccountAssistantForward.a(this.a.b, this.a, this.a.b.getAccount());
-          this.a.finish();
-        }
-      }
-      for (;;)
-      {
-        if (!QLog.isColorLevel()) {
-          break label487;
-        }
-        QLog.d("Q.subaccount.SubLoginActivity", 2, "onGetKeyBack: sucess .........");
-        return;
-        paramString1 = HexUtil.a(paramString3);
+      this.a.h();
+      if (!paramBoolean) {
         break;
-        if (QLog.isColorLevel()) {
-          QLog.d("SubAccount", 2, "subaccount onGetKeyBack goto bind");
-        }
-        SubAccountAssistantManager.a().a(this.a.b, paramString2, paramString3);
-        this.a.c = true;
       }
-    }
-  }
-  
-  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubLoginActivity", 2, "onLoginFailed: subLogin ...onLoginTimeout  subuin =  uin .. .errorMsg = " + paramString4);
-    }
-    paramString2 = new HashMap();
-    paramString2.put("param_FailCode", "12002");
-    paramString2.put("fail_step", "loginFail");
-    paramString3 = new StringBuilder().append("subLogin:");
-    if (paramString4 == null) {
-      paramString1 = "";
-    }
-    for (;;)
-    {
-      paramString2.put("fail_location", paramString1);
-      StatisticCollector.a(BaseApplication.getContext()).a(this.a.b.a(), "actSBLogin", false, 0L, 0L, paramString2, "");
-      if (!this.a.a().isFinishing()) {}
-      try
+      if ((paramTroopInfo.cGroupOption == 4) || (paramTroopInfo.cGroupOption == 5)) {
+        TroopRequestActivity.a(this.a, paramTroopInfo.joinTroopQuestion);
+      }
+      TroopRequestActivity.a(this.a, paramTroopInfo.cGroupOption);
+      if (TroopRequestActivity.a(this.a) != 3) {
+        TroopRequestActivity.a(this.a);
+      }
+      while (QLog.isColorLevel())
       {
-        this.a.e();
-        this.a.runOnUiThread(new dsm(this));
-        if (TextUtils.isEmpty(paramString4))
-        {
-          this.a.a(this.a.getString(2131562451));
-          return;
-          paramString1 = paramString4;
-        }
-      }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          paramString1.printStackTrace();
-        }
-        this.a.a(paramString4);
+        QLog.i("Q.systemmsg.TroopRequestActivity", 2, "troop.cGroupOption = " + paramTroopInfo.cGroupOption);
+        return;
+        QQToast.a(this.a.b.getApplication(), 2131563078, 0).b(this.a.d());
       }
     }
+    this.a.a.sendEmptyMessage(1);
   }
   
-  public void onLoginSuccess(String paramString1, String paramString2, String paramString3)
+  protected void b(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubLoginActivity", 2, "onLoginSuccess: start");
-    }
-    if (this.a.b == null) {
-      return;
-    }
-    paramString1 = new HashMap();
-    paramString1.put("param_FailCode", "12001");
-    paramString1.put("fail_step", "loginsucc");
-    paramString1.put("fail_location", "subLogin");
-    StatisticCollector.a(BaseApplication.getContext()).a(this.a.b.a(), "actSBLogin", true, 0L, 0L, paramString1, "");
-    SharedPreUtils.a(this.a.b.getApplication().getApplicationContext(), paramString2, true);
-    this.a.getAppRuntime().getSubAccountKey(this.a.b.getAccount(), paramString2, SubLoginActivity.a(this.a));
-    SubAccountAssistantImpl.a().a(this.a.b, paramString2, 0, "");
-  }
-  
-  protected void onLoginTimeout(String paramString1, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubLoginActivity", 2, "onLoginTimeout:  subuin =  uin");
-    }
-    paramString1 = new HashMap();
-    paramString1.put("param_FailCode", "12004");
-    paramString1.put("fail_step", "loginTimeout");
-    paramString1.put("fail_location", "subLogin");
-    StatisticCollector.a(BaseApplication.getContext()).a(this.a.b.a(), "actSBLogin", false, 0L, 0L, paramString1, "");
-    if (!this.a.a().isFinishing()) {}
     try
     {
-      this.a.e();
-      this.a.a(this.a.getString(2131562451));
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
-      {
-        paramString1.printStackTrace();
+      this.a.p = this.a.p.trim();
+      long l = Long.parseLong(this.a.p);
+      if (paramLong != l) {
+        return;
       }
     }
-  }
-  
-  protected void onUserCancel(String paramString1, String paramString2, String paramString3)
-  {
-    paramString1 = new HashMap();
-    paramString1.put("param_FailCode", "12003");
-    paramString1.put("fail_step", "onUserCancel");
-    paramString1.put("fail_location", "subLogin");
-    StatisticCollector.a(BaseApplication.getContext()).a(this.a.b.a(), "actSBLogin", false, 0L, 0L, paramString1, "");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubLoginActivity", 2, "onUserCancel: start");
-    }
-    if (!this.a.a().isFinishing()) {}
-    try
+    catch (NumberFormatException paramString)
     {
-      this.a.e();
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      paramString1.printStackTrace();
+      do
+      {
+        do
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("Q.systemmsg.TroopRequestActivity", 2, "NumberFormatException");
+          }
+        } while ((!paramBoolean) || (paramTroopInfo == null));
+        paramTroopInfo = GroupCatalogTool.a(BaseApplication.getContext()).a(this.a, Long.toString(paramTroopInfo.dwGroupClassExt));
+      } while (paramTroopInfo == null);
+      paramString = new Message();
+      paramString.what = 2;
+      paramString.obj = paramTroopInfo.a();
+      this.a.a.sendMessage(paramString);
     }
   }
 }

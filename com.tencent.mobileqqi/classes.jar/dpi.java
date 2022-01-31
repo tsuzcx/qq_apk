@@ -1,17 +1,20 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SplashActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class dpi
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public dpi(SplashActivity paramSplashActivity) {}
+  public dpi(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean) {}
+  public void onClick(View paramView)
+  {
+    this.a.h();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dpi
  * JD-Core Version:    0.7.0.1
  */

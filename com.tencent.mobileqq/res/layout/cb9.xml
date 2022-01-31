@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.widget.SwipListView android:id="@id/i30" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:divider="@null" />
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/lr8" android:background="@drawable/jh" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ProgressBar android:id="@id/bu8" android:layout_width="19.0dip" android:layout_height="19.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/skin_gray2" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/bg" />
+        </LinearLayout>
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/bwk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.widget.ThemeImageView android:layout_gravity="center_horizontal" android:id="@id/lk8" android:layout_width="150.0dip" android:layout_height="100.0dip" android:src="@drawable/hjq" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2" android:layout_gravity="center_horizontal" android:id="@id/lg9" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/iyp" />
+            <Button android:layout_gravity="center_horizontal" android:id="@id/lk9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:text="@string/iym" style="@style/i0" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

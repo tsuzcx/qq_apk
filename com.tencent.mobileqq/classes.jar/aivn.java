@@ -1,17 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-
-class aivn
-  implements AdapterView.OnItemClickListener
+public class aivn
 {
-  aivn(aivm paramaivm) {}
-  
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    this.a.a.a.finish();
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public int c = 0;
+  public long c;
 }
 
 

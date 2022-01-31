@@ -18,55 +18,45 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import com.tencent.token.af;
-import com.tencent.token.ag;
-import com.tencent.token.ax;
-import com.tencent.token.global.b;
-import com.tencent.token.global.e;
+import com.tencent.token.cw;
+import com.tencent.token.cx;
+import com.tencent.token.do;
+import com.tencent.token.global.c;
+import com.tencent.token.global.h;
 import com.tencent.token.ui.base.ProDialogWithShutDown;
-import com.tencent.token.ui.base.cf;
-import com.tencent.token.ui.base.cg;
+import com.tencent.token.ui.base.by;
+import com.tencent.token.ui.base.bz;
 import com.tencent.token.utils.UserTask;
 import com.tencent.token.utils.UserTask.Status;
-import com.tencent.token.utils.t;
+import com.tencent.token.utils.x;
 
 public class WelcomeActivity
   extends Activity
-  implements cg
+  implements bz
 {
   private static final int BTN_HEIGHT = 45;
   private static final int BTN_WIDTH = 200;
   private static final int FLING_MIN_DISTANCE = 0;
-  private static final int IMAGE_LEVEL_COUNT;
-  private static final int[] mBitmapIds;
+  private static final int IMAGE_LEVEL_COUNT = mBitmapIds.length;
+  private static final int[] mBitmapIds = { 2130837706, 2130837707 };
   private int DOT_OFFSET_X;
   private int DOT_OFFSET_Y;
   private int DOT_SIZE;
   private UserTask mActiveTask = null;
-  private GestureDetector mDetector = new GestureDetector(new agz(this));
+  private GestureDetector mDetector = new GestureDetector(new afp(this));
   private Dialog mDialog;
   private Bitmap mDotEmpty;
   private Bitmap mDotFull;
   private Button mEndBtn;
   private boolean mFirstInstall = false;
-  private Handler mHandler = new agy(this);
+  private Handler mHandler = new afo(this);
   private int mHeight;
   private int mLevel = 0;
   private boolean mLowQuality;
-  private cf mPageCurlView;
+  private by mPageCurlView;
   private ProDialogWithShutDown mProDialog;
   private UserTask mSyncInitTask = null;
   private int mWidth;
-  
-  static
-  {
-    int[] arrayOfInt = new int[2];
-    arrayOfInt[0] = 2130837619;
-    arrayOfInt[1] = 2130837620;
-    arrayOfInt;
-    mBitmapIds = arrayOfInt;
-    IMAGE_LEVEL_COUNT = arrayOfInt.length;
-  }
   
   private void doOutOfMemory()
   {
@@ -79,7 +69,7 @@ public class WelcomeActivity
     }
     this.mDotFull = null;
     if (this.mPageCurlView != null) {
-      this.mPageCurlView.b();
+      this.mPageCurlView.c();
     }
     this.mPageCurlView = null;
     nextActivity();
@@ -106,17 +96,17 @@ public class WelcomeActivity
   
   private void getSharedKey()
   {
-    this.mSyncInitTask = new aha(this);
-    this.mSyncInitTask.a(new String[] { "" });
+    this.mSyncInitTask = new afq(this);
+    this.mSyncInitTask.c(new String[] { "" });
   }
   
   private void init()
   {
-    ag.b(b.g());
+    cx.b(c.h());
     try
     {
-      e.b("totalMemory:" + Runtime.getRuntime().totalMemory() + " freeMemory:" + Runtime.getRuntime().freeMemory() + " maxMemory:" + Runtime.getRuntime().maxMemory());
-      t.b();
+      h.b("totalMemory:" + Runtime.getRuntime().totalMemory() + " freeMemory:" + Runtime.getRuntime().freeMemory() + " maxMemory:" + Runtime.getRuntime().maxMemory());
+      if (x.b()) {}
       nextActivity();
       return;
     }
@@ -135,13 +125,13 @@ public class WelcomeActivity
   
   private void nextActivity()
   {
-    Object localObject = ag.c();
-    if ((this.mActiveTask != null) && (this.mActiveTask.c() != UserTask.Status.FINISHED)) {
-      this.mActiveTask.d();
+    Object localObject = cx.c();
+    if ((this.mActiveTask != null) && (this.mActiveTask.b() != UserTask.Status.FINISHED)) {
+      this.mActiveTask.a(true);
     }
-    if (!((ag)localObject).g())
+    if (!((cx)localObject).g())
     {
-      if (ax.a().d() == 0)
+      if (do.a().d() == 0)
       {
         localObject = new Intent(this, IndexActivity.class);
         ((Intent)localObject).putExtra("index_from", 16);
@@ -152,8 +142,8 @@ public class WelcomeActivity
       localObject = new Intent(this, IndexActivity.class);
       if (this.mFirstInstall)
       {
-        if (ax.a().e() == null) {
-          break label126;
+        if (do.a().e() == null) {
+          break label125;
         }
         ((Intent)localObject).putExtra("index_from", 17);
       }
@@ -162,7 +152,7 @@ public class WelcomeActivity
         startActivity((Intent)localObject);
         finish();
         return;
-        label126:
+        label125:
         ((Intent)localObject).putExtra("index_from", 16);
       }
     }
@@ -174,7 +164,7 @@ public class WelcomeActivity
   
   private void sendActiveClient()
   {
-    af.a().d(this.mHandler);
+    cw.a().d(this.mHandler);
   }
   
   public void dismissDialog()
@@ -199,7 +189,7 @@ public class WelcomeActivity
       }
       catch (Exception localException)
       {
-        e.b(localException.toString());
+        h.b(localException.toString());
       }
     }
   }
@@ -220,7 +210,7 @@ public class WelcomeActivity
       catch (Exception paramKeyEvent)
       {
         paramKeyEvent.printStackTrace();
-        e.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
+        h.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
         return true;
       }
       finish();
@@ -231,18 +221,18 @@ public class WelcomeActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    e.b(this + ",task" + getTaskId());
-    e.a("width = " + getWindowManager().getDefaultDisplay().getWidth() + ", height = " + getWindowManager().getDefaultDisplay().getHeight());
+    h.b(this + ",task" + getTaskId());
+    h.a("width = " + getWindowManager().getDefaultDisplay().getWidth() + ", height = " + getWindowManager().getDefaultDisplay().getHeight());
     init();
   }
   
   protected void onDestroy()
   {
     if (this.mPageCurlView != null) {
-      this.mPageCurlView.b();
+      this.mPageCurlView.c();
     }
     this.mPageCurlView = null;
-    af.a().a(getClass().getName());
+    cw.a().a(getClass().getName());
     super.onDestroy();
   }
   
@@ -278,17 +268,7 @@ public class WelcomeActivity
     localRect.top = 0;
     this.mWidth = localRect.width();
     this.mHeight = localRect.height();
-    this.mPageCurlView.a(localRect);
-  }
-  
-  public void showProDialog(Activity paramActivity, int paramInt, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (isFinishing()) {
-      return;
-    }
-    dismissDialog();
-    this.mProDialog = new ProDialogWithShutDown(paramActivity, null, paramActivity.getString(2131361844));
-    this.mProDialog.show();
+    this.mPageCurlView.setViewRect(localRect);
   }
   
   public void showUserDialog(int paramInt1, String paramString, int paramInt2, DialogInterface.OnClickListener paramOnClickListener)

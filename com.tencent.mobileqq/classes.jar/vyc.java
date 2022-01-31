@@ -1,38 +1,77 @@
-import com.tencent.biz.pubaccount.PublicAccountManager.refuseAcceptDone;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
 
 public class vyc
-  implements PublicAccountManager.refuseAcceptDone
+  extends Handler
 {
-  public vyc(PublicAccountChatPie paramPublicAccountChatPie) {}
+  private vyc(MediaPlayer paramMediaPlayer) {}
   
-  public void a(boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.aY();
-    if (!paramBoolean)
+    switch (paramMessage.what)
     {
-      this.a.w(2131430033);
+    default: 
+    case 1: 
+    case 4: 
+    case 2: 
+    case 5: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            Log.d("Story-MediaPlayer", "onPrepared");
+          } while (this.a.jdField_a_of_type_Vyn == null);
+          this.a.jdField_a_of_type_Vyn.a_(this.a);
+          return;
+          Log.d("Story-MediaPlayer", "onSeekComplete");
+        } while (this.a.jdField_a_of_type_Vyo == null);
+        this.a.jdField_a_of_type_Vyo.a(this.a);
+        return;
+        Log.d("Story-MediaPlayer", "onPlaybackComplete");
+        if (this.a.jdField_a_of_type_Vyk != null) {
+          this.a.jdField_a_of_type_Vyk.a(this.a);
+        }
+        this.a.c(false);
+        return;
+        Log.d("Story-MediaPlayer", "onVideoSizeChanged");
+      } while (this.a.jdField_a_of_type_Vyq == null);
+      this.a.jdField_a_of_type_Vyq.a(this.a, paramMessage.arg1, paramMessage.arg2);
+      return;
+    case 100: 
+      Log.e("Story-MediaPlayer", "Error (" + paramMessage.arg1 + "," + paramMessage.arg2 + ")");
+      if (this.a.jdField_a_of_type_Vyl == null) {
+        break;
+      }
+    }
+    for (boolean bool = this.a.jdField_a_of_type_Vyl.a(this.a, paramMessage.arg1, paramMessage.arg2);; bool = false)
+    {
+      if ((this.a.jdField_a_of_type_Vyk != null) && (!bool)) {
+        this.a.jdField_a_of_type_Vyk.a(this.a);
+      }
+      this.a.c(false);
+      return;
+      Log.d("Story-MediaPlayer", "onInfo");
+      if (this.a.jdField_a_of_type_Vym == null) {
+        break;
+      }
+      this.a.jdField_a_of_type_Vym.a_(this.a, paramMessage.arg1, paramMessage.arg2);
+      return;
+      if (this.a.jdField_a_of_type_Vyj != null) {
+        this.a.jdField_a_of_type_Vyj.a(this.a, paramMessage.arg1);
+      }
+      this.a.e = paramMessage.arg1;
       return;
     }
-    EntityManager localEntityManager = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    AccountDetail localAccountDetail = (AccountDetail)localEntityManager.a(AccountDetail.class, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    if (localAccountDetail != null) {
-      localEntityManager.b(localAccountDetail);
-    }
-    localEntityManager.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1008);
-    this.a.A();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vyc
  * JD-Core Version:    0.7.0.1
  */

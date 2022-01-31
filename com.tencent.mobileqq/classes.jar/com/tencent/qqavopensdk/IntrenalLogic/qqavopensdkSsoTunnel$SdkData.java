@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqavopensdkSsoTunnel$SdkData
-  extends MessageMicro
+  extends MessageMicro<SdkData>
 {
   public static final int BYTES_SDK_APP_TOKEN_FIELD_NUMBER = 2;
   public static final int CMLB_TEST_FIELD_NUMBER = 9;
@@ -30,7 +30,7 @@ public final class qqavopensdkSsoTunnel$SdkData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqavopensdk.IntrenalLogic.qqavopensdkSsoTunnel.SdkData
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,42 @@
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import com.tencent.biz.pubaccount.util.OfflineUpdateStatus;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class buv
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public buv(OfflinePlugin paramOfflinePlugin) {}
+  public buv(AddRequestActivity paramAddRequestActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (OfflinePlugin.jdField_a_of_type_JavaUtilHashMap != null)
+    switch (paramInt)
     {
-      OfflineUpdateStatus localOfflineUpdateStatus = (OfflineUpdateStatus)OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.get(OfflinePlugin.b(this.a));
-      if ((localOfflineUpdateStatus != null) && (localOfflineUpdateStatus.b() == 1))
-      {
-        this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        localOfflineUpdateStatus.c(2);
-      }
+    default: 
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+    }
+    if (NetworkUtil.e(BaseApplication.getContext()))
+    {
+      Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.b.a()).longValue();
+      AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity);
+    }
+    for (;;)
+    {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.b, "CliOper", "", "", "Verification_msg", "Vfc_shield_clk", 0, 0, "", "", "", "");
+      break;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131562449, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.d());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     buv
  * JD-Core Version:    0.7.0.1
  */

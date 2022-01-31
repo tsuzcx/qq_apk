@@ -9,9 +9,9 @@ import java.util.Map;
 public final class share_attr
   extends JceStruct
 {
-  static Map cache_shares_attr = new HashMap();
+  static Map<Long, uin_attr> cache_shares_attr = new HashMap();
   public long owner;
-  public Map shares_attr;
+  public Map<Long, uin_attr> shares_attr;
   public String source = "";
   
   static
@@ -22,7 +22,7 @@ public final class share_attr
   
   public share_attr() {}
   
-  public share_attr(Map paramMap, String paramString, long paramLong)
+  public share_attr(Map<Long, uin_attr> paramMap, String paramString, long paramLong)
   {
     this.shares_attr = paramMap;
     this.source = paramString;
@@ -49,7 +49,7 @@ public final class share_attr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     photo_share_struct.share_attr
  * JD-Core Version:    0.7.0.1
  */

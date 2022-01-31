@@ -9,8 +9,8 @@ public class AVRedPacketManager$LocalFrameSyncInfo
 {
   public int curScore;
   public int frameSyncGameState;
-  public List hasHitedEmojiIds = new ArrayList();
-  public List localEmojiInfos = new ArrayList();
+  public List<Integer> hasHitedEmojiIds = new ArrayList();
+  public List<AVRedPacketManager.LocalEmojiInfo> localEmojiInfos = new ArrayList();
   public AVRedPacketManager.LocalFocusInfo localFocusInfo = new AVRedPacketManager.LocalFocusInfo();
   public AVRedPacketManager.LocalHitInfo localHitInfo = new AVRedPacketManager.LocalHitInfo();
   public int seq;

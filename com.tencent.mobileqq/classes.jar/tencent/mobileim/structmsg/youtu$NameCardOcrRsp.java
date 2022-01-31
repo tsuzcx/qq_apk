@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class youtu$NameCardOcrRsp
-  extends MessageMicro
+  extends MessageMicro<NameCardOcrRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field errorcode = PBField.initInt32(0);
@@ -32,7 +32,7 @@ public final class youtu$NameCardOcrRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.mobileim.structmsg.youtu.NameCardOcrRsp
  * JD-Core Version:    0.7.0.1
  */

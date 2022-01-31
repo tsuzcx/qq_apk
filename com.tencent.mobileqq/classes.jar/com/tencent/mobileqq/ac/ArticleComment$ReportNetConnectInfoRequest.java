@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ArticleComment$ReportNetConnectInfoRequest
-  extends MessageMicro
+  extends MessageMicro<ReportNetConnectInfoRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field DNSCost = PBField.initUInt32(0);
@@ -30,7 +30,7 @@ public final class ArticleComment$ReportNetConnectInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ac.ArticleComment.ReportNetConnectInfoRequest
  * JD-Core Version:    0.7.0.1
  */

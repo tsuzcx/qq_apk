@@ -9,10 +9,10 @@ public final class faiss_search_result
   extends JceStruct
 {
   static comm_page_info cache_page_info = new comm_page_info();
-  static ArrayList cache_photolist = new ArrayList();
+  static ArrayList<Photo> cache_photolist = new ArrayList();
   public String categoryid = "";
   public comm_page_info page_info;
-  public ArrayList photolist;
+  public ArrayList<Photo> photolist;
   
   static
   {
@@ -22,7 +22,7 @@ public final class faiss_search_result
   
   public faiss_search_result() {}
   
-  public faiss_search_result(ArrayList paramArrayList, comm_page_info paramcomm_page_info, String paramString)
+  public faiss_search_result(ArrayList<Photo> paramArrayList, comm_page_info paramcomm_page_info, String paramString)
   {
     this.photolist = paramArrayList;
     this.page_info = paramcomm_page_info;

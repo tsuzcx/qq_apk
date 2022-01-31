@@ -30,17 +30,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.util.Locale;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import pfw;
-import pfx;
-import pfy;
-import pfz;
-import pgb;
 
 public class NewGifDrawable
   extends Drawable
@@ -54,43 +48,44 @@ public class NewGifDrawable
   public static final int STATE_PLAY_ANY_CASE = 0;
   public static final int STATE_PLAY_END = 3;
   public static final int STATE_PLAY_START = 1;
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int = 0;
-  public long a;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private PorterDuff.Mode jdField_a_of_type_AndroidGraphicsPorterDuff$Mode;
-  private PorterDuffColorFilter jdField_a_of_type_AndroidGraphicsPorterDuffColorFilter;
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ImageManagerEnv.g().getDispatcher());
-  public final InvalidationHandler a;
-  public NewGifDecoder a;
-  private NewGifDrawable.GifPlayListener jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable$GifPlayListener;
-  private Object jdField_a_of_type_JavaLangObject;
-  public final ConcurrentLinkedQueue a;
-  public ScheduledFuture a;
-  public final ScheduledThreadPoolExecutor a;
-  private pfy jdField_a_of_type_Pfy = new pfy(this, null);
-  private final pgb jdField_a_of_type_Pgb;
-  public volatile boolean a;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 0;
-  private long jdField_b_of_type_Long;
-  private final Rect jdField_b_of_type_AndroidGraphicsRect;
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private volatile int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int = 1;
-  private long jdField_d_of_type_Long;
-  private volatile boolean jdField_d_of_type_Boolean;
-  private int e;
+  private static final String TAG = "NewGifDrawable";
+  private volatile int curPlayCount;
+  private NewGifDrawable.GifPlayListener gifPlayListener;
   public boolean isEndDownload = false;
   public Bitmap mBuffer;
+  private long mCreateTime;
+  private Handler mCtrlHandler = new Handler(ImageManagerEnv.g().getDispatcher());
+  private int mCurrentModel = 1;
+  private long mDrawCounts;
+  private final Rect mDstRect = new Rect();
+  final ScheduledThreadPoolExecutor mExecutor;
+  private float mFactor = 1.0F;
+  private float mFrameRate;
+  private boolean mFrameRateReported;
+  NewGifDecoder mGifDecoder;
   public int mHashcode = 0;
-  public boolean mIsRenderingTriggeredOnDraw = true;
+  final InvalidationHandler mInvalidationHandler;
+  protected boolean mIsRenderingTriggeredOnDraw = true;
+  private volatile boolean mIsResetting;
+  volatile boolean mIsRunning = true;
+  private boolean mIsSharpp;
+  final ConcurrentLinkedQueue<AnimationListener> mListeners = new ConcurrentLinkedQueue();
   public final Object mLock4Bmp = new Object();
+  private float mMaxFrameRate;
+  long mNextFrameRenderTime = -9223372036854775808L;
   protected final Paint mPaint = new Paint(6);
+  private final RenderTask mRenderTask;
+  ScheduledFuture<?> mSchedule;
+  private final Rect mSrcRect;
+  private long mStartTimeStamp;
+  private NewGifDrawable.StopRunnable mStopTask = new NewGifDrawable.StopRunnable(this, null);
+  private int mTaskType;
+  private ColorStateList mTint;
+  private PorterDuffColorFilter mTintFilter;
+  private PorterDuff.Mode mTintMode;
+  private int sHeight = 0;
+  private int sWidth = 0;
+  private Object tag;
   public String url;
   
   public NewGifDrawable(ContentResolver paramContentResolver, Uri paramUri)
@@ -130,29 +125,26 @@ public class NewGifDrawable
   
   private NewGifDrawable(NewGifDecoder paramNewGifDecoder, NewGifDrawable paramNewGifDrawable, ScheduledThreadPoolExecutor paramScheduledThreadPoolExecutor, boolean paramBoolean, int paramInt1, int paramInt2, NewGifDecoder.Options paramOptions)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = -9223372036854775808L;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
     this.mIsRenderingTriggeredOnDraw = paramBoolean;
     if (paramScheduledThreadPoolExecutor != null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor = paramScheduledThreadPoolExecutor;
+      this.mExecutor = paramScheduledThreadPoolExecutor;
       this.mHashcode = paramInt2;
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder = paramNewGifDecoder;
+      this.mGifDecoder = paramNewGifDecoder;
       if (paramInt1 != 1) {
-        break label491;
+        break label492;
       }
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.setLoopCount(0);
+      this.mGifDecoder.setLoopCount(0);
       setCurrentModel(paramInt1);
       label181:
       if ((paramNewGifDecoder instanceof SharpPNewGifDecoder)) {
-        this.jdField_b_of_type_Boolean = true;
+        this.mIsSharpp = true;
       }
-      if ((!ImageManagerEnv.g().isPreferNewGifDecodeTask()) || (this.jdField_b_of_type_Boolean) || (a())) {
-        break label510;
+      if ((!ImageManagerEnv.g().isPreferNewGifDecodeTask()) || (this.mIsSharpp) || (isSupportGifPlaying())) {
+        break label511;
       }
-      this.jdField_a_of_type_Pgb = new PrepareAndRenderTask(this);
-      this.e = 2;
+      this.mRenderTask = new PrepareAndRenderTask(this);
+      this.mTaskType = 2;
       label233:
       paramNewGifDecoder = localObject2;
       if (paramNewGifDrawable != null)
@@ -163,53 +155,53 @@ public class NewGifDrawable
     }
     for (;;)
     {
-      label491:
-      label510:
+      label492:
+      label511:
       try
       {
-        if (!paramNewGifDrawable.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.isRecycled())
+        if (!paramNewGifDrawable.mGifDecoder.isRecycled())
         {
           paramNewGifDecoder = localObject1;
-          if (paramNewGifDrawable.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getHeight() >= this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getHeight())
+          if (paramNewGifDrawable.mGifDecoder.getHeight() >= this.mGifDecoder.getHeight())
           {
             paramNewGifDecoder = localObject1;
-            if (paramNewGifDrawable.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getWidth() >= this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getWidth())
+            if (paramNewGifDrawable.mGifDecoder.getWidth() >= this.mGifDecoder.getWidth())
             {
-              paramNewGifDrawable.a();
+              paramNewGifDrawable.shutdown();
               paramNewGifDecoder = paramNewGifDrawable.mBuffer;
               paramNewGifDecoder.eraseColor(0);
             }
           }
         }
         if (paramNewGifDecoder != null) {
-          break label564;
+          break label565;
         }
         paramNewGifDrawable = Bitmap.Config.ARGB_8888;
         paramNewGifDecoder = paramNewGifDrawable;
         if (ImageManagerEnv.g().isGifSupport565())
         {
           paramNewGifDecoder = paramNewGifDrawable;
-          if (!a())
+          if (!isSupportGifPlaying())
           {
             paramNewGifDecoder = paramNewGifDrawable;
-            if (!this.jdField_b_of_type_Boolean)
+            if (!this.mIsSharpp)
             {
               if ((paramOptions == null) || (paramOptions.inPreferredConfig != Bitmap.Config.ARGB_8888)) {
-                break label535;
+                break label536;
               }
               ImageManagerLog.w("NewGifDrawable", "prefer to decode as 8888");
               paramNewGifDecoder = paramNewGifDrawable;
             }
           }
         }
-        this.mBuffer = Bitmap.createBitmap(this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getWidth(), this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getHeight(), paramNewGifDecoder);
+        this.mBuffer = Bitmap.createBitmap(this.mGifDecoder.getWidth(), this.mGifDecoder.getHeight(), paramNewGifDecoder);
         if (paramNewGifDecoder != Bitmap.Config.ARGB_8888) {
-          break label548;
+          break label549;
         }
         this.mBuffer.eraseColor(0);
-        this.jdField_b_of_type_AndroidGraphicsRect = new Rect(0, 0, this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getWidth(), this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getHeight());
-        this.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler = new InvalidationHandler(this);
-        if (!a()) {
+        this.mSrcRect = new Rect(0, 0, this.mGifDecoder.getWidth(), this.mGifDecoder.getHeight());
+        this.mInvalidationHandler = new InvalidationHandler(this);
+        if (!isSupportGifPlaying()) {
           reset();
         }
         return;
@@ -217,19 +209,19 @@ public class NewGifDrawable
       finally {}
       paramScheduledThreadPoolExecutor = GifRenderingExecutor.getInstance();
       break;
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.setLoopCount(1);
+      this.mGifDecoder.setLoopCount(1);
       setCurrentModel(paramInt1);
       break label181;
-      this.jdField_a_of_type_Pgb = new pgb(this);
-      this.e = 1;
+      this.mRenderTask = new RenderTask(this);
+      this.mTaskType = 1;
       break label233;
-      label535:
-      paramNewGifDecoder = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getAcceptableConfig();
+      label536:
+      paramNewGifDecoder = this.mGifDecoder.getAcceptableConfig();
       continue;
-      label548:
+      label549:
       this.mBuffer.eraseColor(Color.parseColor("#DFDFDF"));
       continue;
-      label564:
+      label565:
       this.mBuffer = paramNewGifDecoder;
     }
   }
@@ -296,88 +288,20 @@ public class NewGifDrawable
     this(GifInfoHandle.openByteArray(paramArrayOfByte, false, null), null, null, true, null);
   }
   
-  private PorterDuffColorFilter a(ColorStateList paramColorStateList, PorterDuff.Mode paramMode)
+  private void addDrawCount()
   {
-    if ((paramColorStateList == null) || (paramMode == null)) {
-      return null;
-    }
-    return new PorterDuffColorFilter(paramColorStateList.getColorForState(getState(), 0), paramMode);
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable$GifPlayListener = null;
-    this.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.removeMessages(0);
-    this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.recycle();
-  }
-  
-  private boolean a()
-  {
-    return (this.jdField_d_of_type_Int == 4) || (this.jdField_d_of_type_Int == 3);
-  }
-  
-  private void b()
-  {
-    boolean bool = this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.remove(this.jdField_a_of_type_Pgb);
-    ImageManagerLog.e("NewGifDrawable", "waitForPendingRenderTask isRemove:" + bool + " queue size:" + this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.getQueue().size());
-    if (this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture != null) {}
     try
     {
-      this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture.get();
-      this.jdField_a_of_type_Pgb.waitFinish();
-      label82:
-      this.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.removeMessages(0);
+      if (this.mStartTimeStamp != 0L) {
+        this.mDrawCounts += 1L;
+      }
       return;
     }
-    catch (ExecutionException localExecutionException)
+    finally
     {
-      break label82;
+      localObject = finally;
+      throw localObject;
     }
-    catch (InterruptedException localInterruptedException)
-    {
-      break label82;
-    }
-  }
-  
-  /* Error */
-  private void c()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: invokespecial 189	com/tencent/component/media/gif/NewGifDrawable:a	()Z
-    //   6: ifne +12 -> 18
-    //   9: aload_0
-    //   10: getfield 183	com/tencent/component/media/gif/NewGifDrawable:jdField_b_of_type_Boolean	Z
-    //   13: istore_1
-    //   14: iload_1
-    //   15: ifeq +6 -> 21
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: return
-    //   21: aload_0
-    //   22: invokestatic 412	java/lang/System:currentTimeMillis	()J
-    //   25: putfield 414	com/tencent/component/media/gif/NewGifDrawable:jdField_b_of_type_Long	J
-    //   28: aload_0
-    //   29: lconst_0
-    //   30: putfield 416	com/tencent/component/media/gif/NewGifDrawable:jdField_c_of_type_Long	J
-    //   33: goto -15 -> 18
-    //   36: astore_2
-    //   37: aload_0
-    //   38: monitorexit
-    //   39: aload_2
-    //   40: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	41	0	this	NewGifDrawable
-    //   13	2	1	bool	boolean
-    //   36	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	36	finally
-    //   21	33	36	finally
   }
   
   public static NewGifDrawable createFromResource(Resources paramResources, int paramInt)
@@ -392,41 +316,41 @@ public class NewGifDrawable
   }
   
   /* Error */
-  private void d()
+  private void endFrameRateStat()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokespecial 189	com/tencent/component/media/gif/NewGifDrawable:a	()Z
+    //   3: invokespecial 221	com/tencent/component/media/gif/NewGifDrawable:isSupportGifPlaying	()Z
     //   6: ifne +12 -> 18
     //   9: aload_0
-    //   10: getfield 183	com/tencent/component/media/gif/NewGifDrawable:jdField_b_of_type_Boolean	Z
+    //   10: getfield 214	com/tencent/component/media/gif/NewGifDrawable:mIsSharpp	Z
     //   13: istore_1
     //   14: iload_1
     //   15: ifeq +6 -> 21
     //   18: aload_0
     //   19: monitorexit
     //   20: return
-    //   21: invokestatic 412	java/lang/System:currentTimeMillis	()J
+    //   21: invokestatic 383	java/lang/System:currentTimeMillis	()J
     //   24: aload_0
-    //   25: getfield 414	com/tencent/component/media/gif/NewGifDrawable:jdField_b_of_type_Long	J
+    //   25: getfield 368	com/tencent/component/media/gif/NewGifDrawable:mStartTimeStamp	J
     //   28: lsub
     //   29: lstore_2
     //   30: aload_0
-    //   31: getfield 196	com/tencent/component/media/gif/NewGifDrawable:jdField_a_of_type_Pgb	Lpgb;
-    //   34: invokevirtual 425	pgb:getFrameDelay	()J
+    //   31: getfield 228	com/tencent/component/media/gif/NewGifDrawable:mRenderTask	Lcom/tencent/component/media/gif/RenderTask;
+    //   34: invokevirtual 386	com/tencent/component/media/gif/RenderTask:getFrameDelay	()J
     //   37: lstore 4
     //   39: aload_0
-    //   40: getfield 427	com/tencent/component/media/gif/NewGifDrawable:jdField_c_of_type_Boolean	Z
+    //   40: getfield 388	com/tencent/component/media/gif/NewGifDrawable:mFrameRateReported	Z
     //   43: ifne +126 -> 169
     //   46: aload_0
-    //   47: getfield 416	com/tencent/component/media/gif/NewGifDrawable:jdField_c_of_type_Long	J
+    //   47: getfield 370	com/tencent/component/media/gif/NewGifDrawable:mDrawCounts	J
     //   50: lconst_0
     //   51: lcmp
     //   52: ifle +117 -> 169
     //   55: lload_2
-    //   56: ldc2_w 428
+    //   56: ldc2_w 389
     //   59: lcmp
     //   60: ifle +109 -> 169
     //   63: lload 4
@@ -435,54 +359,54 @@ public class NewGifDrawable
     //   67: ifle +102 -> 169
     //   70: aload_0
     //   71: aload_0
-    //   72: getfield 416	com/tencent/component/media/gif/NewGifDrawable:jdField_c_of_type_Long	J
-    //   75: ldc2_w 430
+    //   72: getfield 370	com/tencent/component/media/gif/NewGifDrawable:mDrawCounts	J
+    //   75: ldc2_w 391
     //   78: lmul
     //   79: lload_2
     //   80: ldiv
     //   81: l2f
-    //   82: putfield 433	com/tencent/component/media/gif/NewGifDrawable:jdField_b_of_type_Float	F
+    //   82: putfield 394	com/tencent/component/media/gif/NewGifDrawable:mFrameRate	F
     //   85: aload_0
-    //   86: getfield 435	com/tencent/component/media/gif/NewGifDrawable:jdField_c_of_type_Float	F
+    //   86: getfield 396	com/tencent/component/media/gif/NewGifDrawable:mMaxFrameRate	F
     //   89: fconst_0
     //   90: fcmpl
     //   91: ifne +14 -> 105
     //   94: aload_0
-    //   95: ldc2_w 430
+    //   95: ldc2_w 391
     //   98: lload 4
     //   100: ldiv
     //   101: l2f
-    //   102: putfield 435	com/tencent/component/media/gif/NewGifDrawable:jdField_c_of_type_Float	F
-    //   105: ldc 233
-    //   107: new 366	java/lang/StringBuilder
+    //   102: putfield 396	com/tencent/component/media/gif/NewGifDrawable:mMaxFrameRate	F
+    //   105: ldc 26
+    //   107: new 398	java/lang/StringBuilder
     //   110: dup
-    //   111: invokespecial 367	java/lang/StringBuilder:<init>	()V
-    //   114: ldc_w 437
-    //   117: invokevirtual 373	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   111: invokespecial 399	java/lang/StringBuilder:<init>	()V
+    //   114: ldc_w 401
+    //   117: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   120: aload_0
-    //   121: getfield 433	com/tencent/component/media/gif/NewGifDrawable:jdField_b_of_type_Float	F
-    //   124: invokevirtual 440	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   127: ldc_w 442
-    //   130: invokevirtual 373	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   121: getfield 394	com/tencent/component/media/gif/NewGifDrawable:mFrameRate	F
+    //   124: invokevirtual 408	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   127: ldc_w 410
+    //   130: invokevirtual 405	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   133: aload_0
-    //   134: getfield 435	com/tencent/component/media/gif/NewGifDrawable:jdField_c_of_type_Float	F
-    //   137: invokevirtual 440	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   140: invokevirtual 393	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   143: invokestatic 445	com/tencent/component/media/utils/ImageManagerLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   146: invokestatic 151	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   134: getfield 396	com/tencent/component/media/gif/NewGifDrawable:mMaxFrameRate	F
+    //   137: invokevirtual 408	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   140: invokevirtual 413	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   143: invokestatic 416	com/tencent/component/media/utils/ImageManagerLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   146: invokestatic 182	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
     //   149: aload_0
-    //   150: getfield 198	com/tencent/component/media/gif/NewGifDrawable:e	I
+    //   150: getfield 230	com/tencent/component/media/gif/NewGifDrawable:mTaskType	I
     //   153: aload_0
-    //   154: getfield 433	com/tencent/component/media/gif/NewGifDrawable:jdField_b_of_type_Float	F
+    //   154: getfield 394	com/tencent/component/media/gif/NewGifDrawable:mFrameRate	F
     //   157: aload_0
-    //   158: getfield 435	com/tencent/component/media/gif/NewGifDrawable:jdField_c_of_type_Float	F
-    //   161: invokevirtual 449	com/tencent/component/media/ImageManagerEnv:reportGifFrameRate	(IFF)V
+    //   158: getfield 396	com/tencent/component/media/gif/NewGifDrawable:mMaxFrameRate	F
+    //   161: invokevirtual 420	com/tencent/component/media/ImageManagerEnv:reportGifFrameRate	(IFF)V
     //   164: aload_0
     //   165: iconst_1
-    //   166: putfield 427	com/tencent/component/media/gif/NewGifDrawable:jdField_c_of_type_Boolean	Z
+    //   166: putfield 388	com/tencent/component/media/gif/NewGifDrawable:mFrameRateReported	Z
     //   169: aload_0
     //   170: lconst_0
-    //   171: putfield 414	com/tencent/component/media/gif/NewGifDrawable:jdField_b_of_type_Long	J
+    //   171: putfield 368	com/tencent/component/media/gif/NewGifDrawable:mStartTimeStamp	J
     //   174: goto -156 -> 18
     //   177: astore 6
     //   179: aload_0
@@ -505,42 +429,91 @@ public class NewGifDrawable
     //   169	174	177	finally
   }
   
-  private void e()
+  private boolean isSupportGifPlaying()
   {
-    try
-    {
-      if (this.jdField_b_of_type_Long != 0L) {
-        this.jdField_c_of_type_Long += 1L;
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return (this.mCurrentModel == 4) || (this.mCurrentModel == 3);
   }
   
-  void a(long paramLong)
+  private void shutdown()
   {
-    if (this.mIsRenderingTriggeredOnDraw)
+    this.mIsRunning = false;
+    this.gifPlayListener = null;
+    this.mInvalidationHandler.removeMessages(0);
+    this.mGifDecoder.recycle();
+  }
+  
+  /* Error */
+  private void startFrameRateStat()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: invokespecial 221	com/tencent/component/media/gif/NewGifDrawable:isSupportGifPlaying	()Z
+    //   6: ifne +12 -> 18
+    //   9: aload_0
+    //   10: getfield 214	com/tencent/component/media/gif/NewGifDrawable:mIsSharpp	Z
+    //   13: istore_1
+    //   14: iload_1
+    //   15: ifeq +6 -> 21
+    //   18: aload_0
+    //   19: monitorexit
+    //   20: return
+    //   21: aload_0
+    //   22: invokestatic 383	java/lang/System:currentTimeMillis	()J
+    //   25: putfield 368	com/tencent/component/media/gif/NewGifDrawable:mStartTimeStamp	J
+    //   28: aload_0
+    //   29: lconst_0
+    //   30: putfield 370	com/tencent/component/media/gif/NewGifDrawable:mDrawCounts	J
+    //   33: goto -15 -> 18
+    //   36: astore_2
+    //   37: aload_0
+    //   38: monitorexit
+    //   39: aload_2
+    //   40: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	41	0	this	NewGifDrawable
+    //   13	2	1	bool	boolean
+    //   36	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	14	36	finally
+    //   21	33	36	finally
+  }
+  
+  private PorterDuffColorFilter updateTintFilter(ColorStateList paramColorStateList, PorterDuff.Mode paramMode)
+  {
+    if ((paramColorStateList == null) || (paramMode == null)) {
+      return null;
+    }
+    return new PorterDuffColorFilter(paramColorStateList.getColorForState(getState(), 0), paramMode);
+  }
+  
+  private void waitForPendingRenderTask()
+  {
+    if (this.mSchedule != null) {}
+    try
     {
-      this.jdField_a_of_type_Long = 0L;
-      if (!this.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.hasMessages(0))
-      {
-        this.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
-        return;
-      }
-      ImageManagerLog.d("NewGifDrawable", "startAnimation: already has one message");
+      this.mSchedule.get();
+      this.mRenderTask.waitFinish();
+      label24:
+      this.mInvalidationHandler.removeMessages(0);
       return;
     }
-    pfz localpfz = new pfz(this, paramLong);
-    this.jdField_a_of_type_AndroidOsHandler.post(localpfz);
+    catch (ExecutionException localExecutionException)
+    {
+      break label24;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      break label24;
+    }
   }
   
   public void addAnimationListener(AnimationListener paramAnimationListener)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramAnimationListener);
+    this.mListeners.add(paramAnimationListener);
   }
   
   public boolean canPause()
@@ -560,19 +533,19 @@ public class NewGifDrawable
   
   public void changeFile(String paramString)
   {
-    b();
-    this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.changeFile(paramString);
-    this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.schedule(this.jdField_a_of_type_Pgb, 0L, TimeUnit.MILLISECONDS);
+    waitForPendingRenderTask();
+    this.mGifDecoder.changeFile(paramString);
+    this.mSchedule = this.mExecutor.schedule(this.mRenderTask, 0L, TimeUnit.MILLISECONDS);
   }
   
   public void draw(Canvas paramCanvas)
   {
     int i = 1;
-    e();
+    addDrawCount();
     handlePlayCallBack(1);
-    if ((this.jdField_a_of_type_AndroidGraphicsPorterDuffColorFilter != null) && (this.mPaint.getColorFilter() == null))
+    if ((this.mTintFilter != null) && (this.mPaint.getColorFilter() == null))
     {
-      this.mPaint.setColorFilter(this.jdField_a_of_type_AndroidGraphicsPorterDuffColorFilter);
+      this.mPaint.setColorFilter(this.mTintFilter);
       if (this.mPaint.getShader() != null) {
         break label203;
       }
@@ -584,24 +557,24 @@ public class NewGifDrawable
         if (!this.mBuffer.isRecycled())
         {
           handlePlayCallBack(2);
-          paramCanvas.drawBitmap(this.mBuffer, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRect, this.mPaint);
+          paramCanvas.drawBitmap(this.mBuffer, this.mSrcRect, this.mDstRect, this.mPaint);
         }
         if (i != 0) {
           this.mPaint.setColorFilter(null);
         }
-        if ((this.mIsRenderingTriggeredOnDraw) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Long != -9223372036854775808L))
+        if ((this.mIsRenderingTriggeredOnDraw) && (this.mIsRunning) && (this.mNextFrameRenderTime != -9223372036854775808L))
         {
-          long l = Math.max(0L, this.jdField_a_of_type_Long - SystemClock.uptimeMillis());
-          this.jdField_a_of_type_Long = -9223372036854775808L;
-          this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.remove(this.jdField_a_of_type_Pgb);
-          this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.schedule(this.jdField_a_of_type_Pgb, l, TimeUnit.MILLISECONDS);
+          long l = Math.max(0L, this.mNextFrameRenderTime - SystemClock.uptimeMillis());
+          this.mNextFrameRenderTime = -9223372036854775808L;
+          this.mExecutor.remove(this.mRenderTask);
+          this.mSchedule = this.mExecutor.schedule(this.mRenderTask, l, TimeUnit.MILLISECONDS);
         }
         handlePlayCallBack(3);
         return;
         i = 0;
       }
       label203:
-      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.mPaint);
+      paramCanvas.drawRect(this.mDstRect, this.mPaint);
     }
   }
   
@@ -623,7 +596,7 @@ public class NewGifDrawable
   @TargetApi(19)
   public long getAllocationByteCount()
   {
-    long l = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getAllocationByteCount();
+    long l = this.mGifDecoder.getAllocationByteCount();
     if (Build.VERSION.SDK_INT >= 19) {
       return l + this.mBuffer.getAllocationByteCount();
     }
@@ -640,7 +613,7 @@ public class NewGifDrawable
     if (this.mBuffer != null) {
       return this.mBuffer.getConfig();
     }
-    return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getAcceptableConfig();
+    return this.mGifDecoder.getAcceptableConfig();
   }
   
   public int getBufferPercentage()
@@ -655,12 +628,12 @@ public class NewGifDrawable
   
   public String getComment()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getComment();
+    return this.mGifDecoder.getComment();
   }
   
   public int getCurPlayCount()
   {
-    return this.jdField_c_of_type_Int;
+    return this.curPlayCount;
   }
   
   public Bitmap getCurrentFrame()
@@ -674,32 +647,45 @@ public class NewGifDrawable
   
   public int getCurrentFrameIndex()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getCurrentFrameIndex();
+    return this.mGifDecoder.getCurrentFrameIndex();
   }
   
   public int getCurrentLoop()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getCurrentLoop();
+    return this.mGifDecoder.getCurrentLoop();
   }
   
   public int getCurrentModel()
   {
-    return this.jdField_d_of_type_Int;
+    return this.mCurrentModel;
   }
   
   public int getCurrentPosition()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getCurrentPosition();
+    return this.mGifDecoder.getCurrentPosition();
   }
   
   public int getDuration()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getDuration();
+    return this.mGifDecoder.getDuration();
   }
   
   public GifError getError()
   {
-    return GifError.a(this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getError());
+    return GifError.fromCode(this.mGifDecoder.getError());
+  }
+  
+  public Bitmap getFrame(int paramInt)
+  {
+    if (paramInt < 0) {
+      throw new IndexOutOfBoundsException("Frame index is not positive");
+    }
+    synchronized (this.mLock4Bmp)
+    {
+      this.mBuffer = this.mGifDecoder.seekToFrame(paramInt, this.mBuffer);
+      Bitmap localBitmap = getCurrentFrame();
+      return localBitmap;
+    }
   }
   
   public int getFrameByteCount()
@@ -709,58 +695,58 @@ public class NewGifDrawable
   
   public int getFrameDuration(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getFrameDuration(paramInt);
+    return this.mGifDecoder.getFrameDuration(paramInt);
   }
   
   public NewGifDrawable.GifPlayListener getGifPlayListener()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable$GifPlayListener;
+    return this.gifPlayListener;
   }
   
   public int getImageCount()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getImageCount();
+    return this.mGifDecoder.getImageCount();
   }
   
   public long getInputSourceByteCount()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getSourceLength();
+    return this.mGifDecoder.getSourceLength();
   }
   
   public int getIntrinsicHeight()
   {
-    if (this.jdField_b_of_type_Int == 0) {
-      return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getHeight();
+    if (this.sHeight == 0) {
+      return this.mGifDecoder.getHeight();
     }
-    return this.jdField_b_of_type_Int;
+    return this.sHeight;
   }
   
   public int getIntrinsicWidth()
   {
-    if (this.jdField_a_of_type_Int == 0) {
-      return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getWidth();
+    if (this.sWidth == 0) {
+      return this.mGifDecoder.getWidth();
     }
-    return this.jdField_a_of_type_Int;
+    return this.sWidth;
   }
   
   public int getLoopCount()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getLoopCount();
+    return this.mGifDecoder.getLoopCount();
   }
   
   public int getMinimumHeight()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getHeight();
+    return this.mGifDecoder.getHeight();
   }
   
   public int getMinimumWidth()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getWidth();
+    return this.mGifDecoder.getWidth();
   }
   
   public int getNumberOfFrames()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getFrameCount();
+    return this.mGifDecoder.getFrameCount();
   }
   
   public int getOpacity()
@@ -775,10 +761,10 @@ public class NewGifDrawable
   
   public int getPixel(int paramInt1, int paramInt2)
   {
-    if (paramInt1 >= this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getWidth()) {
+    if (paramInt1 >= this.mGifDecoder.getWidth()) {
       throw new IllegalArgumentException("x must be < width");
     }
-    if (paramInt2 >= this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getHeight()) {
+    if (paramInt2 >= this.mGifDecoder.getHeight()) {
       throw new IllegalArgumentException("y must be < height");
     }
     synchronized (this.mLock4Bmp)
@@ -792,22 +778,22 @@ public class NewGifDrawable
   {
     synchronized (this.mLock4Bmp)
     {
-      this.mBuffer.getPixels(paramArrayOfInt, 0, this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getWidth(), 0, 0, this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getWidth(), this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getHeight());
+      this.mBuffer.getPixels(paramArrayOfInt, 0, this.mGifDecoder.getWidth(), 0, 0, this.mGifDecoder.getWidth(), this.mGifDecoder.getHeight());
       return;
     }
   }
   
   public float getSpeedFactor()
   {
-    if (this.jdField_a_of_type_Float > 0.0F) {
-      return this.jdField_a_of_type_Float;
+    if (this.mFactor > 0.0F) {
+      return this.mFactor;
     }
     return 1.0F;
   }
   
   public Object getTag()
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    return this.tag;
   }
   
   public String getUrl()
@@ -817,35 +803,35 @@ public class NewGifDrawable
   
   public int getsHeight()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getHeight();
+    return this.mGifDecoder.getHeight();
   }
   
   public int getsWidth()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getWidth();
+    return this.mGifDecoder.getWidth();
   }
   
   protected void handlePlayCallBack(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable$GifPlayListener != null)
+    if (this.gifPlayListener != null)
     {
       int i = getCurrentFrameIndex();
       int j = getNumberOfFrames();
       int k = getLoopCount();
       if (((paramInt == 3) || (paramInt == 0)) && (i == j - 1)) {
-        this.jdField_c_of_type_Int += 1;
+        this.curPlayCount += 1;
       }
-      if (((paramInt == 1) || (paramInt == 0)) && ((this.jdField_c_of_type_Int == 0) || (k == 0)) && (i == 0)) {
-        this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable$GifPlayListener.onGifStartPlay(this);
+      if (((paramInt == 1) || (paramInt == 0)) && ((this.curPlayCount == 0) || (k == 0)) && (i == 0)) {
+        this.gifPlayListener.onGifStartPlay(this);
       }
-      if (((paramInt == 2) || (paramInt == 0)) && (i < 0) && (i < j - 1) && ((this.jdField_c_of_type_Int < k) || (k == 0))) {
-        this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable$GifPlayListener.onGifPlaying(this);
+      if (((paramInt == 2) || (paramInt == 0)) && (i < 0) && (i < j - 1) && ((this.curPlayCount < k) || (k == 0))) {
+        this.gifPlayListener.onGifPlaying(this);
       }
-      if (((paramInt == 3) || (paramInt == 0)) && (i == j - 1) && ((this.jdField_c_of_type_Int == k) || (k == 0)))
+      if (((paramInt == 3) || (paramInt == 0)) && (i == j - 1) && ((this.curPlayCount == k) || (k == 0)))
       {
-        this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable$GifPlayListener.onGifStopPlay(this);
-        if (this.jdField_c_of_type_Int >= 2147483647) {
-          this.jdField_c_of_type_Int = 0;
+        this.gifPlayListener.onGifStopPlay(this);
+        if (this.curPlayCount >= 2147483647) {
+          this.curPlayCount = 0;
         }
       }
     }
@@ -853,18 +839,18 @@ public class NewGifDrawable
   
   public boolean isAnimationCompleted()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.isAnimationCompleted();
+    return this.mGifDecoder.isAnimationCompleted();
   }
   
   public void isEndDownload()
   {
-    this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.setLoopCount(0);
+    this.mGifDecoder.setLoopCount(0);
     this.isEndDownload = true;
   }
   
   public boolean isPlaying()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.mIsRunning;
   }
   
   /* Error */
@@ -874,7 +860,7 @@ public class NewGifDrawable
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 171	com/tencent/component/media/gif/NewGifDrawable:jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder	Lcom/tencent/component/media/gif/NewGifDecoder;
+    //   3: getfield 202	com/tencent/component/media/gif/NewGifDrawable:mGifDecoder	Lcom/tencent/component/media/gif/NewGifDecoder;
     //   6: astore_2
     //   7: aload_2
     //   8: ifnonnull +9 -> 17
@@ -885,8 +871,8 @@ public class NewGifDrawable
     //   15: iload_1
     //   16: ireturn
     //   17: aload_0
-    //   18: getfield 171	com/tencent/component/media/gif/NewGifDrawable:jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder	Lcom/tencent/component/media/gif/NewGifDecoder;
-    //   21: invokeinterface 201 1 0
+    //   18: getfield 202	com/tencent/component/media/gif/NewGifDrawable:mGifDecoder	Lcom/tencent/component/media/gif/NewGifDecoder;
+    //   21: invokeinterface 233 1 0
     //   26: istore_1
     //   27: goto -14 -> 13
     //   30: astore_2
@@ -908,24 +894,24 @@ public class NewGifDrawable
   
   public boolean isRunning()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.mIsRunning;
   }
   
   public boolean isStateful()
   {
-    return (super.isStateful()) || ((this.jdField_a_of_type_AndroidContentResColorStateList != null) && (this.jdField_a_of_type_AndroidContentResColorStateList.isStateful()));
+    return (super.isStateful()) || ((this.mTint != null) && (this.mTint.isStateful()));
   }
   
   protected void onBoundsChange(Rect paramRect)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
+    this.mDstRect.set(paramRect);
   }
   
   protected boolean onStateChange(int[] paramArrayOfInt)
   {
-    if ((this.jdField_a_of_type_AndroidContentResColorStateList != null) && (this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode != null))
+    if ((this.mTint != null) && (this.mTintMode != null))
     {
-      this.jdField_a_of_type_AndroidGraphicsPorterDuffColorFilter = a(this.jdField_a_of_type_AndroidContentResColorStateList, this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode);
+      this.mTintFilter = updateTintFilter(this.mTint, this.mTintMode);
       return true;
     }
     return false;
@@ -943,18 +929,18 @@ public class NewGifDrawable
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokespecial 210	com/tencent/component/media/gif/NewGifDrawable:a	()V
-    //   6: invokestatic 151	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
-    //   9: invokevirtual 701	com/tencent/component/media/ImageManagerEnv:isNeedRecycle	()Z
+    //   3: invokespecial 243	com/tencent/component/media/gif/NewGifDrawable:shutdown	()V
+    //   6: invokestatic 182	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   9: invokevirtual 712	com/tencent/component/media/ImageManagerEnv:isNeedRecycle	()Z
     //   12: ifeq +19 -> 31
     //   15: aload_0
-    //   16: getfield 141	com/tencent/component/media/gif/NewGifDrawable:mLock4Bmp	Ljava/lang/Object;
+    //   16: getfield 172	com/tencent/component/media/gif/NewGifDrawable:mLock4Bmp	Ljava/lang/Object;
     //   19: astore_1
     //   20: aload_1
     //   21: monitorenter
     //   22: aload_0
-    //   23: getfield 212	com/tencent/component/media/gif/NewGifDrawable:mBuffer	Landroid/graphics/Bitmap;
-    //   26: invokevirtual 702	android/graphics/Bitmap:recycle	()V
+    //   23: getfield 245	com/tencent/component/media/gif/NewGifDrawable:mBuffer	Landroid/graphics/Bitmap;
+    //   26: invokevirtual 713	android/graphics/Bitmap:recycle	()V
     //   29: aload_1
     //   30: monitorexit
     //   31: aload_0
@@ -986,12 +972,12 @@ public class NewGifDrawable
   public void recycleForGifPlay()
   {
     ImageManagerLog.e("NewGifDrawable", "NewGifDrawable recycleForGifPlay");
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    b();
+    this.curPlayCount = 0;
+    this.mIsRunning = false;
+    waitForPendingRenderTask();
     try
     {
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.stop();
+      this.mGifDecoder.stop();
       recycle();
       return;
     }
@@ -1003,7 +989,7 @@ public class NewGifDrawable
   
   public boolean removeAnimationListener(AnimationListener paramAnimationListener)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(paramAnimationListener);
+    return this.mListeners.remove(paramAnimationListener);
   }
   
   /* Error */
@@ -1013,32 +999,32 @@ public class NewGifDrawable
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 354	com/tencent/component/media/gif/NewGifDrawable:jdField_d_of_type_Boolean	Z
+    //   3: getfield 363	com/tencent/component/media/gif/NewGifDrawable:mIsResetting	Z
     //   6: ifeq +14 -> 20
-    //   9: ldc 233
-    //   11: ldc_w 717
-    //   14: invokestatic 241	com/tencent/component/media/utils/ImageManagerLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   9: ldc 26
+    //   11: ldc_w 731
+    //   14: invokestatic 272	com/tencent/component/media/utils/ImageManagerLog:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   17: aload_0
     //   18: monitorexit
     //   19: return
     //   20: aload_0
-    //   21: invokespecial 719	com/tencent/component/media/gif/NewGifDrawable:d	()V
+    //   21: invokespecial 733	com/tencent/component/media/gif/NewGifDrawable:endFrameRateStat	()V
     //   24: aload_0
     //   25: iconst_1
-    //   26: putfield 354	com/tencent/component/media/gif/NewGifDrawable:jdField_d_of_type_Boolean	Z
+    //   26: putfield 363	com/tencent/component/media/gif/NewGifDrawable:mIsResetting	Z
     //   29: aload_0
     //   30: iconst_0
-    //   31: putfield 575	com/tencent/component/media/gif/NewGifDrawable:jdField_c_of_type_Int	I
+    //   31: putfield 572	com/tencent/component/media/gif/NewGifDrawable:curPlayCount	I
     //   34: aload_0
     //   35: iconst_0
-    //   36: putfield 103	com/tencent/component/media/gif/NewGifDrawable:jdField_a_of_type_Boolean	Z
+    //   36: putfield 134	com/tencent/component/media/gif/NewGifDrawable:mIsRunning	Z
     //   39: aload_0
-    //   40: getfield 160	com/tencent/component/media/gif/NewGifDrawable:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   43: new 721	pfu
+    //   40: getfield 191	com/tencent/component/media/gif/NewGifDrawable:mCtrlHandler	Landroid/os/Handler;
+    //   43: new 735	com/tencent/component/media/gif/NewGifDrawable$1
     //   46: dup
     //   47: aload_0
-    //   48: invokespecial 722	pfu:<init>	(Lcom/tencent/component/media/gif/NewGifDrawable;)V
-    //   51: invokevirtual 470	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   48: invokespecial 736	com/tencent/component/media/gif/NewGifDrawable$1:<init>	(Lcom/tencent/component/media/gif/NewGifDrawable;)V
+    //   51: invokevirtual 739	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   54: pop
     //   55: goto -38 -> 17
     //   58: astore_1
@@ -1061,7 +1047,7 @@ public class NewGifDrawable
     if (paramInt < 0) {
       throw new IllegalArgumentException("Position is not positive");
     }
-    this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.execute(new pfw(this, this, paramInt));
+    this.mExecutor.execute(new NewGifDrawable.2(this, this, paramInt));
   }
   
   public void seekToFrame(int paramInt)
@@ -1069,7 +1055,7 @@ public class NewGifDrawable
     if (paramInt < 0) {
       throw new IndexOutOfBoundsException("Frame index is not positive");
     }
-    this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.execute(new pfx(this, this, paramInt));
+    this.mExecutor.execute(new NewGifDrawable.3(this, this, paramInt));
   }
   
   public Bitmap seekToFrameAndGet(int paramInt)
@@ -1079,10 +1065,10 @@ public class NewGifDrawable
     }
     synchronized (this.mLock4Bmp)
     {
-      this.mBuffer = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.seekToFrame(paramInt, this.mBuffer);
+      this.mBuffer = this.mGifDecoder.seekToFrame(paramInt, this.mBuffer);
       Bitmap localBitmap = getCurrentFrame();
-      if (!this.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.hasMessages(0)) {
-        this.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
+      if (!this.mInvalidationHandler.hasMessages(0)) {
+        this.mInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
       }
       return localBitmap;
     }
@@ -1095,10 +1081,10 @@ public class NewGifDrawable
     }
     synchronized (this.mLock4Bmp)
     {
-      this.mBuffer = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.seekToTime(paramInt, this.mBuffer);
+      this.mBuffer = this.mGifDecoder.seekToTime(paramInt, this.mBuffer);
       Bitmap localBitmap = getCurrentFrame();
-      if (!this.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.hasMessages(0)) {
-        this.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
+      if (!this.mInvalidationHandler.hasMessages(0)) {
+        this.mInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
       }
       return localBitmap;
     }
@@ -1116,12 +1102,12 @@ public class NewGifDrawable
   
   public void setCurPlayCount(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.curPlayCount = paramInt;
   }
   
   public void setCurrentModel(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.mCurrentModel = paramInt;
   }
   
   public void setDither(boolean paramBoolean)
@@ -1138,34 +1124,34 @@ public class NewGifDrawable
   
   public void setGifPlayListener(NewGifDrawable.GifPlayListener paramGifPlayListener)
   {
-    this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable$GifPlayListener = paramGifPlayListener;
+    this.gifPlayListener = paramGifPlayListener;
   }
   
   public void setIntrinsicHeight(int paramInt)
   {
-    if (this.jdField_b_of_type_Int == 0) {
-      this.jdField_b_of_type_Int = paramInt;
+    if (this.sHeight == 0) {
+      this.sHeight = paramInt;
     }
   }
   
   public void setIntrinsicWidth(int paramInt)
   {
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Int = paramInt;
+    if (this.sWidth == 0) {
+      this.sWidth = paramInt;
     }
   }
   
   public void setLoopCount(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.setLoopCount(paramInt);
+    this.mGifDecoder.setLoopCount(paramInt);
   }
   
   public void setSpeed(float paramFloat)
   {
     try
     {
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.setSpeed(paramFloat);
-      this.jdField_a_of_type_Float = paramFloat;
+      this.mGifDecoder.setSpeed(paramFloat);
+      this.mFactor = paramFloat;
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
@@ -1177,26 +1163,26 @@ public class NewGifDrawable
   public void setSrcRect(Rect paramRect)
   {
     if (paramRect != null) {
-      this.jdField_b_of_type_AndroidGraphicsRect.set(paramRect);
+      this.mSrcRect.set(paramRect);
     }
   }
   
   public void setTag(Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.tag = paramObject;
   }
   
   public void setTintList(ColorStateList paramColorStateList)
   {
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
-    this.jdField_a_of_type_AndroidGraphicsPorterDuffColorFilter = a(paramColorStateList, this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode);
+    this.mTint = paramColorStateList;
+    this.mTintFilter = updateTintFilter(paramColorStateList, this.mTintMode);
     invalidateSelf();
   }
   
   public void setTintMode(PorterDuff.Mode paramMode)
   {
-    this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode = paramMode;
-    this.jdField_a_of_type_AndroidGraphicsPorterDuffColorFilter = a(this.jdField_a_of_type_AndroidContentResColorStateList, paramMode);
+    this.mTintMode = paramMode;
+    this.mTintFilter = updateTintFilter(this.mTint, paramMode);
     invalidateSelf();
   }
   
@@ -1207,65 +1193,77 @@ public class NewGifDrawable
   
   public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
   {
-    boolean bool = super.setVisible(paramBoolean1, paramBoolean2);
-    ImageManagerLog.e("NewGifDrawable", "setVisible changed:" + bool + " visible:" + paramBoolean1 + " restart:" + paramBoolean2 + " mIsRenderingTriggeredOnDraw:" + this.mIsRenderingTriggeredOnDraw);
-    if (paramBoolean1)
-    {
-      ImageManagerLog.e("NewGifDrawable", "setVisible start");
+    paramBoolean2 = super.setVisible(paramBoolean1, paramBoolean2);
+    if (paramBoolean1) {
       start();
     }
-    while (!bool) {
-      return bool;
+    while (!paramBoolean2) {
+      return paramBoolean2;
     }
-    ImageManagerLog.e("NewGifDrawable", "setVisible stop");
     stop();
-    return bool;
+    return paramBoolean2;
   }
   
   public void setmCreateTime(long paramLong)
   {
-    this.jdField_d_of_type_Long = paramLong;
+    this.mCreateTime = paramLong;
   }
   
   public void start()
   {
-    this.jdField_a_of_type_Boolean = true;
-    long l = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.start();
-    ImageManagerLog.e("NewGifDrawable", "isSupportGifPlaying():" + a() + " lastFrameRemainder:" + l + " mIsRenderingTriggeredOnDraw:" + this.mIsRenderingTriggeredOnDraw);
-    if (a()) {
-      a(0L);
+    this.mIsRunning = true;
+    long l = this.mGifDecoder.start();
+    if (isSupportGifPlaying()) {
+      startAnimation(0L);
     }
     for (;;)
     {
-      c();
+      startFrameRateStat();
       return;
-      a(l);
+      startAnimation(l);
     }
+  }
+  
+  void startAnimation(long paramLong)
+  {
+    if (this.mIsRenderingTriggeredOnDraw)
+    {
+      this.mNextFrameRenderTime = 0L;
+      if (!this.mInvalidationHandler.hasMessages(0))
+      {
+        this.mInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
+        return;
+      }
+      ImageManagerLog.d("NewGifDrawable", "startAnimation: already has one message");
+      return;
+    }
+    NewGifDrawable.WaitRunnable localWaitRunnable = new NewGifDrawable.WaitRunnable(this, paramLong);
+    this.mCtrlHandler.post(localWaitRunnable);
   }
   
   public void stop()
   {
-    d();
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_Pfy);
+    endFrameRateStat();
+    this.curPlayCount = 0;
+    this.mIsRunning = false;
+    this.mCtrlHandler.post(this.mStopTask);
   }
   
   public String toString()
   {
-    return String.format(Locale.US, "GIF: size: %dx%d, frames: %d, error: %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getWidth()), Integer.valueOf(this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getHeight()), Integer.valueOf(this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getFrameCount()), Integer.valueOf(this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.getError()) });
+    return String.format(Locale.US, "GIF: size: %dx%d, frames: %d, error: %d", new Object[] { Integer.valueOf(this.mGifDecoder.getWidth()), Integer.valueOf(this.mGifDecoder.getHeight()), Integer.valueOf(this.mGifDecoder.getFrameCount()), Integer.valueOf(this.mGifDecoder.getError()) });
   }
   
   public void updateFile(String paramString)
   {
-    b();
-    this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.updateFile(paramString);
-    this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.schedule(this.jdField_a_of_type_Pgb, 0L, TimeUnit.MILLISECONDS);
+    waitForPendingRenderTask();
+    this.mGifDecoder.updateFile(paramString);
+    this.mSchedule = this.mExecutor.schedule(this.mRenderTask, 0L, TimeUnit.MILLISECONDS);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.gif.NewGifDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
-
-public class wzh
-  implements CompoundButton.OnCheckedChangeListener
+class wzh
+  extends azcv
 {
-  public wzh(GoldMsgSettingActivity paramGoldMsgSettingActivity) {}
+  wzh(wzb paramwzb) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a()
   {
-    if (paramBoolean != this.a.a) {
-      GoldMsgSettingActivity.a(this.a, paramBoolean, true);
-    }
+    wxe.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
+    this.a.ad_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wzh
  * JD-Core Version:    0.7.0.1
  */

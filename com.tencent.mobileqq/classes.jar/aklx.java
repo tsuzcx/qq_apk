@@ -1,35 +1,44 @@
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.Comparator;
 
 public class aklx
-  implements Runnable
+  implements Comparator<aklz>
 {
-  int jdField_a_of_type_Int;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public aklx(int paramInt, WebProcessManager.WebProcessStartListener paramWebProcessStartListener)
+  private int a(aklz paramaklz)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWebProcessStartListener);
+    if ((a(paramaklz) == 0L) || (paramaklz.jdField_a_of_type_Int == 4)) {
+      return paramaklz.jdField_a_of_type_Int + 3;
+    }
+    return paramaklz.jdField_a_of_type_Int;
   }
   
-  public void run()
+  private long a(aklz paramaklz)
   {
-    WebProcessManager.WebProcessStartListener localWebProcessStartListener = (WebProcessManager.WebProcessStartListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (!WebProcessManager.c())
-    {
-      WebProcessManager.b(true);
-      WebProcessManager.a(false);
-      WebProcessManager.b(this.jdField_a_of_type_Int);
-      if (localWebProcessStartListener != null) {
-        localWebProcessStartListener.a(true);
-      }
+    if ((paramaklz.jdField_a_of_type_Awge instanceof TroopInfo)) {
+      return ((TroopInfo)paramaklz.jdField_a_of_type_Awge).lastMsgTime;
     }
-    while (localWebProcessStartListener == null) {
-      return;
+    if ((paramaklz.jdField_a_of_type_Awge instanceof DiscussionInfo)) {
+      return ((DiscussionInfo)paramaklz.jdField_a_of_type_Awge).lastMsgTime;
     }
-    localWebProcessStartListener.a(false);
+    return 0L;
+  }
+  
+  public int a(aklz paramaklz1, aklz paramaklz2)
+  {
+    if ((paramaklz1 == null) && (paramaklz2 == null)) {
+      return 0;
+    }
+    if (paramaklz1 == null) {
+      return -1;
+    }
+    if (paramaklz2 == null) {
+      return 1;
+    }
+    if (a(paramaklz1) == a(paramaklz2)) {
+      return (int)(a(paramaklz2) - a(paramaklz1));
+    }
+    return a(paramaklz1) - a(paramaklz2);
   }
 }
 

@@ -1,37 +1,18 @@
 package com.tencent.token.ui;
 
-import android.app.DatePickerDialog;
-import android.os.Build.VERSION;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.DatePicker;
-import java.lang.reflect.Method;
-import java.util.Calendar;
 
-final class nc
+class nc
   implements View.OnClickListener
 {
-  nc(JLFindItems paramJLFindItems) {}
+  nc(nb paramnb, int paramInt) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.dpd = new DatePickerDialog(this.a, JLFindItems.access$000(this.a), this.a.calendar.get(1), this.a.calendar.get(2), this.a.calendar.get(5));
-    if (Build.VERSION.SDK_INT >= 11) {}
-    try
-    {
-      paramView = (DatePicker)this.a.dpd.getClass().getDeclaredMethod("getDatePicker", new Class[0]).invoke(this.a.dpd, new Object[0]);
-      paramView.getClass().getDeclaredMethod("setMaxDate", new Class[] { Long.TYPE }).invoke(paramView, new Object[] { Long.valueOf(System.currentTimeMillis()) });
-      this.a.dpd.show();
-      JLFindItems.access$102(this.a, 1);
-      return;
-    }
-    catch (Exception paramView)
-    {
-      for (;;)
-      {
-        paramView.printStackTrace();
-      }
-    }
+    nb.a(this.b, this.a);
+    nb.b(this.b).checkMenuBtnEnable(nb.a(this.b));
+    this.b.notifyDataSetChanged();
   }
 }
 

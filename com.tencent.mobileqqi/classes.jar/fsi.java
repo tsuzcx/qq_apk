@@ -1,30 +1,42 @@
-import com.tencent.mobileqq.emoticon.EmoticonController;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.filemanager.activity.LocalFileCategoryBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class fsi
-  extends Thread
+  implements AbsListView.OnScrollListener
 {
-  public fsi(EmoticonController paramEmoticonController, String paramString) {}
+  public fsi(LocalFileCategoryBrowserActivity paramLocalFileCategoryBrowserActivity) {}
   
-  public void run()
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    String str = this.jdField_a_of_type_JavaLangString + ".err";
-    if (FileUtils.b(this.jdField_a_of_type_JavaLangString, str)) {}
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectPhotoTrace", 2, LocalFileCategoryBrowserActivity.b + ",onScrollStateChanged() is called,scrollState is:" + paramInt + ",time is:" + System.currentTimeMillis());
+    }
+    if (paramInt == 0)
     {
-      FileUtils.a(str);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.emoji.EmoDown", 2, "EMaterialTask| zip folder is lossy, Do delete ok.:" + str);
+      URLDrawable.resume();
+      return;
+    }
+    URLDrawable.pause();
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramInt1 <= 0) || (paramInt1 + paramInt2 >= paramInt3 - 1)) {}
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      if (paramInt1 != 0) {
+        URLDrawable.resume();
       }
       return;
-      str = this.jdField_a_of_type_JavaLangString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fsi
  * JD-Core Version:    0.7.0.1
  */

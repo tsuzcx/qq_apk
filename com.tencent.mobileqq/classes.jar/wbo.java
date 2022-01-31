@@ -1,18 +1,32 @@
-import com.tencent.mobileqq.troop.utils.TroopFileError.TroopFileErrorFilter;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wbo
-  implements TroopFileError.TroopFileErrorFilter
+  extends QQUIEventReceiver<wax, vdl>
 {
-  public String a;
-  
-  public wbo(String paramString)
+  public wbo(@NonNull wax paramwax)
   {
-    this.a = paramString;
+    super(paramwax);
+  }
+  
+  public void a(@NonNull wax paramwax, @NonNull vdl paramvdl)
+  {
+    if (paramvdl.a.isSuccess())
+    {
+      wxe.a(paramwax.b, "receive user info event. %s.", paramvdl.toString());
+      paramwax.i();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vdl.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wbo
  * JD-Core Version:    0.7.0.1
  */

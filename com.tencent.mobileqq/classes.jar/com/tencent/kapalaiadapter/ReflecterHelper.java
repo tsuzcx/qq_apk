@@ -230,7 +230,6 @@ public final class ReflecterHelper
   }
   
   public static Object getProperty(Object paramObject, String paramString)
-    throws Exception
   {
     return paramObject.getClass().getField(paramString).get(paramObject);
   }
@@ -282,13 +281,11 @@ public final class ReflecterHelper
   }
   
   public static Object invokeMethod(Object paramObject, String paramString)
-    throws Exception
   {
     return invokeMethod(paramObject, paramString, null);
   }
   
   public static Object invokeMethod(Object paramObject, String paramString, Class<?>[] paramArrayOfClass, Object[] paramArrayOfObject)
-    throws Exception
   {
     paramString = paramObject.getClass().getMethod(paramString, paramArrayOfClass);
     paramString.setAccessible(true);
@@ -296,44 +293,37 @@ public final class ReflecterHelper
   }
   
   public static Object invokeMethod(Object paramObject, String paramString, Object[] paramArrayOfObject)
-    throws Exception
   {
     return invokeMethod(paramObject, paramString, getArgsClasses(paramArrayOfObject), paramArrayOfObject);
   }
   
   public static Object invokeStaticMethod(String paramString1, String paramString2)
-    throws Exception
   {
     return invokeStaticMethod(paramString1, paramString2, (Object[])null);
   }
   
   public static Object invokeStaticMethod(String paramString1, String paramString2, Object[] paramArrayOfObject)
-    throws Exception
   {
     return invokeStaticMethod(paramString1, paramString2, paramArrayOfObject, getArgsClasses(paramArrayOfObject));
   }
   
   public static Object invokeStaticMethod(String paramString1, String paramString2, Object[] paramArrayOfObject, Class<?>[] paramArrayOfClass)
-    throws Exception
   {
     paramString1 = Class.forName(paramString1);
     return paramString1.getDeclaredMethod(paramString2, paramArrayOfClass).invoke(paramString1, paramArrayOfObject);
   }
   
   public static Object newInstance(String paramString)
-    throws Exception
   {
     return newInstance(paramString, (Object[])null);
   }
   
   public static Object newInstance(String paramString, Object[] paramArrayOfObject)
-    throws Exception
   {
     return Class.forName(paramString).getConstructor(getArgsClasses(paramArrayOfObject)).newInstance(paramArrayOfObject);
   }
   
   public static Object newInstance(String paramString, Object[] paramArrayOfObject, Class<?>[] paramArrayOfClass)
-    throws Exception
   {
     return Class.forName(paramString).getConstructor(paramArrayOfClass).newInstance(paramArrayOfObject);
   }
@@ -361,7 +351,6 @@ public final class ReflecterHelper
   }
   
   public static void setProperty(Object paramObject1, String paramString, Object paramObject2)
-    throws Exception
   {
     paramString = paramObject1.getClass().getField(paramString);
     paramString.setAccessible(true);
@@ -397,7 +386,7 @@ public final class ReflecterHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.kapalaiadapter.ReflecterHelper
  * JD-Core Version:    0.7.0.1
  */

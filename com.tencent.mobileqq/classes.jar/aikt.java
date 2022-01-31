@@ -1,94 +1,53 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SubAccountBindObserver;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.22.1;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.22.2;
+import com.tencent.mobileqq.app.QQHeadDownloadHandler;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.subaccount.SubAccountProtocManager;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 import mqq.os.MqqHandler;
 
 public class aikt
-  extends SubAccountBindObserver
+  extends altm
 {
-  public aikt(SubAccountProtocManager paramSubAccountProtocManager) {}
+  public aikt(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    Object localObject2;
-    if (QLog.isColorLevel())
+    if ((paramSetting == null) || (this.a.a == null) || (!this.a.a.a.equals(paramSetting.uin)))
     {
-      localObject2 = new StringBuilder().append("SubAccountProtocManager.onGetBindSubAccount() isSucc=").append(paramBoolean).append(" data.mSubUin=");
-      if (paramSubAccountBackProtocData == null)
-      {
-        ??? = "data is null";
-        QLog.d("SUB_ACCOUNT", 2, (String)???);
+      if (QLog.isColorLevel()) {
+        QLog.d("AvatarPendantActivity", 2, "onGetHeadInfo， fail");
       }
-    }
-    else
-    {
-      if (!SubAccountProtocManager.a(this.a).l) {
-        break label73;
-      }
-    }
-    for (;;)
-    {
       return;
-      ??? = paramSubAccountBackProtocData.c;
-      break;
-      label73:
-      if ((!SubAccountProtocManager.a(this.a)) && (ThreadManager.getSubThreadHandler() != null)) {
-        ThreadManager.getSubThreadHandler().postDelayed(SubAccountProtocManager.a(this.a), 100L);
-      }
-      if (paramSubAccountBackProtocData != null)
-      {
-        if (paramSubAccountBackProtocData.a()) {
-          SubAccountControll.a(SubAccountProtocManager.a(this.a), paramSubAccountBackProtocData.a(), 2);
-        }
-        if (paramSubAccountBackProtocData.b())
-        {
-          ??? = paramSubAccountBackProtocData.b();
-          if (??? != null)
-          {
-            ??? = ((ArrayList)???).iterator();
-            while (((Iterator)???).hasNext())
-            {
-              localObject2 = (String)((Iterator)???).next();
-              SubAccountControll.c(SubAccountProtocManager.a(this.a), (String)localObject2);
-            }
-          }
-        }
-        paramSubAccountBackProtocData.a();
-      }
-      synchronized (SubAccountProtocManager.c())
-      {
-        SubAccountProtocManager.c(this.a, false);
-        SubAccountProtocManager.d(this.a, true);
-        if ((paramSubAccountBackProtocData == null) || (!paramSubAccountBackProtocData.b)) {
-          continue;
-        }
-        SubAccountControll.a(SubAccountProtocManager.a(this.a), paramSubAccountBackProtocData.c, false);
-        return;
-      }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("AvatarPendantActivity", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
+    }
+    AvatarPendantActivity.c(this.a);
+    if (!this.a.isResume()) {
+      AvatarPendantActivity.a(this.a, true);
+    }
+    String str2 = QQHeadDownloadHandler.a(paramSetting.url, paramSetting.bFaceFlags);
+    String str1 = str2;
+    if (!TextUtils.isEmpty(str2)) {
+      str1 = MsfSdkUtils.insertMtype("QQHeadIcon", str2);
+    }
+    this.a.d = paramSetting.headImgTimestamp;
+    ThreadManager.getUIHandler().post(new AvatarPendantActivity.22.2(this, str1));
   }
   
-  protected void b(boolean paramBoolean, SubAccountBackProtocData arg2)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    synchronized ()
-    {
-      SubAccountProtocManager.a(this.a, false);
-      return;
+    AvatarPendantActivity.c(this.a);
+    if (!this.a.isResume()) {
+      AvatarPendantActivity.a(this.a, true);
     }
-  }
-  
-  protected void c(boolean paramBoolean, SubAccountBackProtocData arg2)
-  {
-    synchronized ()
-    {
-      SubAccountProtocManager.b(this.a, false);
-      return;
+    if (paramBoolean) {
+      ThreadManager.excute(new AvatarPendantActivity.22.1(this), 32, null, false);
     }
   }
 }

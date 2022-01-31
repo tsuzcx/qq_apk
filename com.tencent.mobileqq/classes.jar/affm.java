@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-
-public class affm
-  implements DialogInterface.OnClickListener
+class affm
+  implements anxq
 {
-  public affm(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  affm(affl paramaffl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    affl.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     affm
  * JD-Core Version:    0.7.0.1
  */

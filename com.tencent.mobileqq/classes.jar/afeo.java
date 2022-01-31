@@ -1,41 +1,41 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import java.util.List;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class afeo
-  extends FragmentPagerAdapter
+  implements affa
 {
-  private List jdField_a_of_type_JavaUtilList;
+  private BaseChatPie a;
   
-  public afeo(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel, FragmentManager paramFragmentManager, List paramList)
+  public afeo(BaseChatPie paramBaseChatPie)
   {
-    super(paramFragmentManager);
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramBaseChatPie;
   }
   
-  public Fragment a(int paramInt)
+  private void a()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
-      return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((this.a != null) && (this.a.a != null)) {
+      ((auqc)this.a.a.getManager(324)).onDestroy();
     }
-    return null;
   }
   
-  public int getCount()
+  public void a(int paramInt)
   {
-    return 2;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a();
   }
   
-  public Fragment getItem(int paramInt)
+  public int[] a()
   {
-    return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return new int[] { 11 };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afeo
  * JD-Core Version:    0.7.0.1
  */

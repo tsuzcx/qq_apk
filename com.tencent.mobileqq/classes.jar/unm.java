@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
+import java.util.List;
 
-class unm
-  implements Runnable
+public abstract interface unm
 {
-  unm(unl paramunl) {}
+  public abstract void a();
   
-  public void run()
-  {
-    this.a.a.d();
-    this.a.a.a.invalidate();
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(List<unj> paramList, boolean paramBoolean);
+  
+  public abstract void a(unn paramunn);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     unm
  * JD-Core Version:    0.7.0.1
  */

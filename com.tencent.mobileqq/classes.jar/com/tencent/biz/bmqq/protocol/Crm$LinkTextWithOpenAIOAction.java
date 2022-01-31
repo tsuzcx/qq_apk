@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Crm$LinkTextWithOpenAIOAction
-  extends MessageMicro
+  extends MessageMicro<LinkTextWithOpenAIOAction>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26 }, new String[] { "uint64_uin", "str_link_text", "str_attach_content" }, new Object[] { Long.valueOf(0L), "", "" }, LinkTextWithOpenAIOAction.class);
   public final PBStringField str_attach_content = PBField.initString("");

@@ -8,12 +8,12 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class oidb_cmd0x64e$PGCFeedsInfo
-  extends MessageMicro
+  extends MessageMicro<PGCFeedsInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_pgc_comments = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField msg_pgc_pic_info_list = PBField.initRepeatMessage(oidb_cmd0x64e.PGCPicInfo.class);
-  public final PBRepeatMessageField msg_pgc_video_info_list = PBField.initRepeatMessage(oidb_cmd0x64e.PGCVideoInfo.class);
+  public final PBRepeatMessageField<oidb_cmd0x64e.PGCPicInfo> msg_pgc_pic_info_list = PBField.initRepeatMessage(oidb_cmd0x64e.PGCPicInfo.class);
+  public final PBRepeatMessageField<oidb_cmd0x64e.PGCVideoInfo> msg_pgc_video_info_list = PBField.initRepeatMessage(oidb_cmd0x64e.PGCVideoInfo.class);
   
   static
   {
@@ -23,7 +23,7 @@ public final class oidb_cmd0x64e$PGCFeedsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x64e.oidb_cmd0x64e.PGCFeedsInfo
  * JD-Core Version:    0.7.0.1
  */

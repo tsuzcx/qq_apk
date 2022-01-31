@@ -1,9 +1,9 @@
 package com.tencent.ttpic.util.youtu;
 
 import android.graphics.PointF;
-import com.tencent.ttpic.facedetect.FaceInfo;
+import com.tencent.ttpic.openapi.facedetect.FaceInfo;
+import com.tencent.ttpic.openapi.util.VideoMaterialUtil.EXPRESSION_TYPE;
 import com.tencent.ttpic.util.AlgoUtils;
-import com.tencent.ttpic.util.VideoMaterialUtil.EXPRESSION_TYPE;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -14,8 +14,13 @@ public class ExpressionDetectorObject
 {
   private static final int FACE_QUEUE_MAX_SIZE = 30;
   private static final String TAG = ExpressionDetectorObject.class.getSimpleName();
-  public List<LinkedList<FaceInfo>> mFaceQueueList = new ArrayList();
-  public List<LinkedList<FaceInfo>> mShookQueueList = new ArrayList();
+  private boolean[] isLeftEyeClosed = new boolean[30];
+  private boolean isLeftOccluded = false;
+  private boolean[] isRightEyeClosed = new boolean[30];
+  private boolean isRightOccluded = false;
+  private boolean[] islipsOccluded = new boolean[30];
+  private List<LinkedList<FaceInfo>> mFaceQueueList = new ArrayList();
+  private List<LinkedList<FaceInfo>> mShookQueueList = new ArrayList();
   
   private double calDistanceSquare(PointF paramPointF1, PointF paramPointF2)
   {
@@ -38,95 +43,124 @@ public class ExpressionDetectorObject
   
   private boolean isExpressionDistanceChangeDetected(int paramInt1, int paramInt2)
   {
+    boolean bool2 = false;
     int i = 0;
-    while (i < this.mFaceQueueList.size())
+    for (;;)
     {
-      if (isExpressionDistanceChangeDetected(i, paramInt1, paramInt2)) {
-        return true;
+      boolean bool1 = bool2;
+      if (i < this.mFaceQueueList.size())
+      {
+        if (isExpressionDistanceChangeDetected(i, paramInt1, paramInt2)) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
       }
       i += 1;
     }
-    return false;
   }
   
   private boolean isExpressionDistanceChangeDetected(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 < 0) || (paramInt1 >= this.mFaceQueueList.size()) || (((LinkedList)this.mFaceQueueList.get(paramInt1)).isEmpty())) {}
-    double d;
-    FaceInfo localFaceInfo;
-    do
+    if ((paramInt1 < 0) || (paramInt1 >= this.mFaceQueueList.size()) || (((LinkedList)this.mFaceQueueList.get(paramInt1)).isEmpty())) {
+      return false;
+    }
+    Object localObject = (FaceInfo)((LinkedList)this.mFaceQueueList.get(paramInt1)).getFirst();
+    double d = calDistanceSquare((PointF)((FaceInfo)localObject).points.get(paramInt2), (PointF)((FaceInfo)localObject).points.get(paramInt3));
+    localObject = ((LinkedList)this.mFaceQueueList.get(paramInt1)).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      Object localObject;
-      while (!((Iterator)localObject).hasNext())
-      {
-        return false;
-        localObject = (FaceInfo)((LinkedList)this.mFaceQueueList.get(paramInt1)).getFirst();
-        d = calDistanceSquare((PointF)((FaceInfo)localObject).points.get(paramInt2), (PointF)((FaceInfo)localObject).points.get(paramInt3));
-        localObject = ((LinkedList)this.mFaceQueueList.get(paramInt1)).iterator();
+      FaceInfo localFaceInfo = (FaceInfo)((Iterator)localObject).next();
+      if (d / calDistanceSquare((PointF)localFaceInfo.points.get(paramInt2), (PointF)localFaceInfo.points.get(paramInt3)) < 0.5D) {
+        return true;
       }
-      localFaceInfo = (FaceInfo)((Iterator)localObject).next();
-    } while (calDistanceSquare((PointF)localFaceInfo.points.get(paramInt2), (PointF)localFaceInfo.points.get(paramInt3)) / d >= 0.5D);
-    return true;
+    }
+    return false;
+  }
+  
+  private boolean isExpressionDoubleEyesOcculudedDetected()
+  {
+    return (this.isLeftOccluded) && (this.isRightOccluded);
   }
   
   private boolean isExpressionJumpEyebrowDetected()
   {
+    boolean bool2 = false;
     int i = 0;
-    while (i < this.mFaceQueueList.size())
+    for (;;)
     {
-      if (isExpressionJumpEyebrowDetected(i)) {
-        return true;
+      boolean bool1 = bool2;
+      if (i < this.mFaceQueueList.size())
+      {
+        if (isExpressionJumpEyebrowDetected(i)) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
       }
       i += 1;
     }
-    return false;
   }
   
   private boolean isExpressionJumpEyebrowDetected(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.mFaceQueueList.size()) || (((LinkedList)this.mFaceQueueList.get(paramInt)).isEmpty())) {}
-    double d;
-    FaceInfo localFaceInfo;
-    do
+    if ((paramInt < 0) || (paramInt >= this.mFaceQueueList.size()) || (((LinkedList)this.mFaceQueueList.get(paramInt)).isEmpty())) {
+      return false;
+    }
+    Object localObject = (FaceInfo)((LinkedList)this.mFaceQueueList.get(paramInt)).getFirst();
+    double d = AlgoUtils.getDistance((PointF)((FaceInfo)localObject).points.get(26), (PointF)((FaceInfo)localObject).points.get(64)) / AlgoUtils.getDistance((PointF)((FaceInfo)localObject).points.get(24), (PointF)((FaceInfo)localObject).points.get(64));
+    localObject = ((LinkedList)this.mFaceQueueList.get(paramInt)).listIterator();
+    ((ListIterator)localObject).next();
+    while (((ListIterator)localObject).hasNext())
     {
-      Object localObject;
-      while (!((ListIterator)localObject).hasNext())
-      {
-        return false;
-        localObject = (FaceInfo)((LinkedList)this.mFaceQueueList.get(paramInt)).getFirst();
-        d = AlgoUtils.getDistance((PointF)((FaceInfo)localObject).points.get(26), (PointF)((FaceInfo)localObject).points.get(64)) / AlgoUtils.getDistance((PointF)((FaceInfo)localObject).points.get(24), (PointF)((FaceInfo)localObject).points.get(64));
-        localObject = ((LinkedList)this.mFaceQueueList.get(paramInt)).listIterator();
-        ((ListIterator)localObject).next();
+      FaceInfo localFaceInfo = (FaceInfo)((ListIterator)localObject).next();
+      if ((localFaceInfo != null) && (localFaceInfo.points != null) && (localFaceInfo.points.size() >= 90) && (1.04D * d <= AlgoUtils.getDistance((PointF)localFaceInfo.points.get(26), (PointF)localFaceInfo.points.get(64)) / AlgoUtils.getDistance((PointF)localFaceInfo.points.get(24), (PointF)localFaceInfo.points.get(64)))) {
+        return true;
       }
-      localFaceInfo = (FaceInfo)((ListIterator)localObject).next();
-    } while (1.04D * d > AlgoUtils.getDistance((PointF)localFaceInfo.points.get(26), (PointF)localFaceInfo.points.get(64)) / AlgoUtils.getDistance((PointF)localFaceInfo.points.get(24), (PointF)localFaceInfo.points.get(64)));
-    return true;
+    }
+    return false;
   }
   
   private boolean isExpressionJumpEyebrowDetectedForAtLeastOneFace()
   {
+    boolean bool2 = false;
     int i = 0;
-    while (i < this.mFaceQueueList.size())
+    for (;;)
     {
-      if (isExpressionJumpEyebrowDetected(i)) {
-        return true;
+      boolean bool1 = bool2;
+      if (i < this.mFaceQueueList.size())
+      {
+        if (isExpressionJumpEyebrowDetected(i)) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
       }
       i += 1;
     }
-    return false;
   }
   
   private boolean isExpressionKissDetected()
   {
+    boolean bool2 = false;
     int i = 0;
-    while (i < this.mFaceQueueList.size())
+    for (;;)
     {
-      if (isExpressionKissDetected(i)) {
-        return true;
+      boolean bool1 = bool2;
+      if (i < this.mFaceQueueList.size())
+      {
+        if (isExpressionKissDetected(i)) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
       }
       i += 1;
     }
-    return false;
   }
   
   private boolean isExpressionKissDetected(int paramInt)
@@ -138,64 +172,179 @@ public class ExpressionDetectorObject
     return AlgoUtils.getDistance((PointF)localFaceInfo.points.get(77), (PointF)localFaceInfo.points.get(69)) / AlgoUtils.getDistance((PointF)localFaceInfo.points.get(65), (PointF)localFaceInfo.points.get(66)) >= 0.55F;
   }
   
-  private boolean isExpressionLeftEyeWinkDetected()
+  private boolean isExpressionLeftEyeOccludedDetected()
   {
     int i = 0;
     while (i < this.mFaceQueueList.size())
     {
-      if (isExpressionDistanceChangeDetected(i, 47, 51)) {
+      if (isExpressionLeftEyeOccludedDetected(i))
+      {
+        this.isLeftOccluded = true;
         return true;
       }
       i += 1;
+    }
+    this.isLeftOccluded = false;
+    return false;
+  }
+  
+  private boolean isExpressionLeftEyeOccludedDetected(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= this.mFaceQueueList.size()) || (((LinkedList)this.mFaceQueueList.get(paramInt)).isEmpty())) {
+      return false;
+    }
+    FaceInfo localFaceInfo = (FaceInfo)((LinkedList)this.mFaceQueueList.get(paramInt)).getFirst();
+    float f = 0.0F;
+    int i = 35;
+    while (i < 44)
+    {
+      f += localFaceInfo.pointsVis[i].floatValue();
+      i += 1;
+    }
+    if (f / 9.0F < 0.5D)
+    {
+      this.isLeftEyeClosed[paramInt] = true;
+      return false;
+    }
+    if (this.isLeftEyeClosed[paramInt] != 0)
+    {
+      this.isLeftEyeClosed[paramInt] = false;
+      return true;
+    }
+    return false;
+  }
+  
+  private boolean isExpressionLeftEyeWinkDetected()
+  {
+    boolean bool2 = false;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < this.mFaceQueueList.size())
+      {
+        if (isExpressionDistanceChangeDetected(i, 37, 41)) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  private boolean isExpressionMouthOccludedDetected()
+  {
+    boolean bool2 = false;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < this.mFaceQueueList.size())
+      {
+        if (isExpressionMouthOccludedDetected(i)) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  private boolean isExpressionMouthOccludedDetected(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt > this.mFaceQueueList.size()) || (((LinkedList)this.mFaceQueueList.get(paramInt)).isEmpty())) {
+      return false;
+    }
+    FaceInfo localFaceInfo = (FaceInfo)((LinkedList)this.mFaceQueueList.get(paramInt)).getFirst();
+    float f = 0.0F;
+    int i = 65;
+    while (i < 72)
+    {
+      f += localFaceInfo.pointsVis[i].floatValue();
+      i += 1;
+    }
+    i = 75;
+    while (i < 80)
+    {
+      f += localFaceInfo.pointsVis[i].floatValue();
+      i += 1;
+    }
+    if (f / 12.0F < 0.5D)
+    {
+      if (paramInt < this.islipsOccluded.length)
+      {
+        this.islipsOccluded[paramInt] = true;
+        return false;
+      }
+    }
+    else if ((paramInt < this.islipsOccluded.length) && (this.islipsOccluded[paramInt] != 0))
+    {
+      this.islipsOccluded[paramInt] = false;
+      return true;
     }
     return false;
   }
   
   private boolean isExpressionNodDetected()
   {
+    boolean bool2 = false;
     int i = 0;
-    while (i < this.mFaceQueueList.size())
+    for (;;)
     {
-      if (isExpressionNodDetected(i)) {
-        return true;
+      boolean bool1 = bool2;
+      if (i < this.mFaceQueueList.size())
+      {
+        if (isExpressionNodDetected(i)) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
       }
       i += 1;
     }
-    return false;
   }
   
   private boolean isExpressionNodDetected(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.mFaceQueueList.size()) || (((LinkedList)this.mFaceQueueList.get(paramInt)).isEmpty())) {}
-    float f3;
-    float f2;
-    do
+    if ((paramInt < 0) || (paramInt >= this.mFaceQueueList.size()) || (((LinkedList)this.mFaceQueueList.get(paramInt)).isEmpty())) {
+      return false;
+    }
+    float f1 = 100.0F;
+    float f2 = (float)(((FaceInfo)((LinkedList)this.mFaceQueueList.get(paramInt)).getFirst()).angles[0] * 180.0F / 3.141592653589793D);
+    Iterator localIterator = ((LinkedList)this.mFaceQueueList.get(paramInt)).iterator();
+    while (localIterator.hasNext())
     {
-      Iterator localIterator;
-      while (!localIterator.hasNext())
-      {
-        return false;
-        f1 = 100.0F;
-        f3 = (float)(((FaceInfo)((LinkedList)this.mFaceQueueList.get(paramInt)).getFirst()).angles[0] * 180.0F / 3.141592653589793D);
-        localIterator = ((LinkedList)this.mFaceQueueList.get(paramInt)).iterator();
+      f1 = Math.min(f1, (float)(((FaceInfo)localIterator.next()).angles[0] * 180.0F / 3.141592653589793D));
+      if (f2 - f1 > 7.0F) {
+        return true;
       }
-      f2 = Math.min(f1, (float)(((FaceInfo)localIterator.next()).angles[0] * 180.0F / 3.141592653589793D));
-      float f1 = f2;
-    } while (f3 - f2 <= 5.0F);
-    return true;
+    }
+    return false;
   }
   
   private boolean isExpressionOpenMouthDetected()
   {
+    boolean bool2 = false;
     int i = 0;
-    while (i < this.mFaceQueueList.size())
+    for (;;)
     {
-      if (isExpressionOpenMouthDetected(i)) {
-        return true;
+      boolean bool1 = bool2;
+      if (i < this.mFaceQueueList.size())
+      {
+        if (isExpressionOpenMouthDetected(i)) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
       }
       i += 1;
     }
-    return false;
   }
   
   private boolean isExpressionOpenMouthDetected(int paramInt)
@@ -205,105 +354,170 @@ public class ExpressionDetectorObject
     }
     FaceInfo localFaceInfo = (FaceInfo)((LinkedList)this.mFaceQueueList.get(paramInt)).getFirst();
     double d = AlgoUtils.getDistance((PointF)localFaceInfo.points.get(65), (PointF)localFaceInfo.points.get(66));
-    return AlgoUtils.getDistance((PointF)localFaceInfo.points.get(73), (PointF)localFaceInfo.points.get(81)) > 0.2D * d;
+    return AlgoUtils.getDistance((PointF)localFaceInfo.points.get(73), (PointF)localFaceInfo.points.get(81)) > d * 0.2D;
   }
   
   private boolean isExpressionOpenMouthDetectedForAtLeastOneFace()
   {
+    boolean bool2 = false;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < this.mFaceQueueList.size())
+      {
+        if (isExpressionOpenMouthDetected(i)) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  private boolean isExpressionRightEyeOccludedDetected()
+  {
     int i = 0;
     while (i < this.mFaceQueueList.size())
     {
-      if (isExpressionOpenMouthDetected(i)) {
+      if (isExpressionRightEyeOccludedDetected(i))
+      {
+        this.isRightOccluded = true;
         return true;
       }
       i += 1;
+    }
+    this.isRightOccluded = false;
+    return false;
+  }
+  
+  private boolean isExpressionRightEyeOccludedDetected(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= this.mFaceQueueList.size()) || (((LinkedList)this.mFaceQueueList.get(paramInt)).isEmpty())) {
+      return false;
+    }
+    FaceInfo localFaceInfo = (FaceInfo)((LinkedList)this.mFaceQueueList.get(paramInt)).getFirst();
+    float f = 0.0F;
+    int i = 45;
+    while (i < 54)
+    {
+      f += localFaceInfo.pointsVis[i].floatValue();
+      i += 1;
+    }
+    if (f / 9.0F < 0.5D)
+    {
+      this.isRightEyeClosed[paramInt] = true;
+      return false;
+    }
+    if (this.isRightEyeClosed[paramInt] != 0)
+    {
+      this.isRightEyeClosed[paramInt] = false;
+      return true;
     }
     return false;
   }
   
   private boolean isExpressionRightEyeWinkDetected()
   {
+    boolean bool2 = false;
     int i = 0;
-    while (i < this.mFaceQueueList.size())
+    for (;;)
     {
-      if (isExpressionDistanceChangeDetected(i, 37, 41)) {
-        return true;
+      boolean bool1 = bool2;
+      if (i < this.mFaceQueueList.size())
+      {
+        if (isExpressionDistanceChangeDetected(i, 47, 51)) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
       }
       i += 1;
     }
-    return false;
   }
   
   private boolean isExpressionShakeHeadDetected()
   {
+    boolean bool2 = false;
     int i = 0;
-    while (i < this.mFaceQueueList.size())
+    for (;;)
     {
-      if (isExpressionShakeHeadDetected(i)) {
-        return true;
+      boolean bool1 = bool2;
+      if (i < this.mFaceQueueList.size())
+      {
+        if (isExpressionShakeHeadDetected(i)) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
       }
       i += 1;
     }
-    return false;
   }
   
   private boolean isExpressionShakeHeadDetected(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.mFaceQueueList.size()) || (((LinkedList)this.mFaceQueueList.get(paramInt)).isEmpty())) {}
-    float f4;
-    float f3;
-    do
+    if ((paramInt < 0) || (paramInt >= this.mFaceQueueList.size()) || (((LinkedList)this.mFaceQueueList.get(paramInt)).isEmpty())) {
+      return false;
+    }
+    float f2 = 100.0F;
+    float f1 = -100.0F;
+    Iterator localIterator = ((LinkedList)this.mFaceQueueList.get(paramInt)).iterator();
+    while (localIterator.hasNext())
     {
-      Iterator localIterator;
-      while (!localIterator.hasNext())
-      {
-        return false;
-        f1 = 100.0F;
-        f2 = -100.0F;
-        localIterator = ((LinkedList)this.mFaceQueueList.get(paramInt)).iterator();
-      }
-      f4 = (float)(((FaceInfo)localIterator.next()).angles[1] * 180.0F / 3.141592653589793D);
-      f3 = Math.min(f1, f4);
-      f4 = Math.max(f2, f4);
-      float f2 = f4;
-      float f1 = f3;
-    } while (f4 - f3 <= 7.0F);
-    return true;
-  }
-  
-  private boolean isExpressionShookHeadDetected()
-  {
-    int i = 0;
-    while (i < this.mFaceQueueList.size())
-    {
-      if (isExpressionShookHeadDetected(i)) {
+      float f3 = (float)(((FaceInfo)localIterator.next()).angles[1] * 180.0F / 3.141592653589793D);
+      f2 = Math.min(f2, f3);
+      f1 = Math.max(f1, f3);
+      if (f1 - f2 > 7.0F) {
         return true;
       }
-      i += 1;
     }
     return false;
   }
   
+  private boolean isExpressionShookHeadDetected()
+  {
+    boolean bool2 = false;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < this.mFaceQueueList.size())
+      {
+        if (isExpressionShookHeadDetected(i)) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
   private boolean isExpressionShookHeadDetected(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.mFaceQueueList.size()) || (((LinkedList)this.mFaceQueueList.get(paramInt)).isEmpty())) {}
-    FaceInfo localFaceInfo;
-    do
+    if ((paramInt < 0) || (paramInt >= this.mFaceQueueList.size()) || (((LinkedList)this.mFaceQueueList.get(paramInt)).isEmpty())) {
+      return false;
+    }
+    Object localObject = (FaceInfo)((LinkedList)this.mFaceQueueList.get(paramInt)).getFirst();
+    if ((((LinkedList)this.mFaceQueueList.get(paramInt)).size() > 1) && (AlgoUtils.getDistance((PointF)((FaceInfo)localObject).points.get(2), (PointF)((FaceInfo)localObject).points.get(64)) * 0.7F > AlgoUtils.getDistance((PointF)((FaceInfo)localObject).points.get(64), (PointF)((FaceInfo)localObject).points.get(16))))
     {
-      Object localObject;
-      while (!((ListIterator)localObject).hasNext())
+      localObject = ((LinkedList)this.mFaceQueueList.get(paramInt)).listIterator();
+      ((ListIterator)localObject).next();
+      while (((ListIterator)localObject).hasNext())
       {
-        do
-        {
-          return false;
-          localObject = (FaceInfo)((LinkedList)this.mFaceQueueList.get(paramInt)).getFirst();
-        } while ((((LinkedList)this.mFaceQueueList.get(paramInt)).size() <= 1) || (AlgoUtils.getDistance((PointF)((FaceInfo)localObject).points.get(2), (PointF)((FaceInfo)localObject).points.get(64)) * 0.7F <= AlgoUtils.getDistance((PointF)((FaceInfo)localObject).points.get(64), (PointF)((FaceInfo)localObject).points.get(16))));
-        localObject = ((LinkedList)this.mFaceQueueList.get(paramInt)).listIterator();
-        ((ListIterator)localObject).next();
+        FaceInfo localFaceInfo = (FaceInfo)((ListIterator)localObject).next();
+        if (AlgoUtils.getDistance((PointF)localFaceInfo.points.get(64), (PointF)localFaceInfo.points.get(16)) * 0.7F > AlgoUtils.getDistance((PointF)localFaceInfo.points.get(2), (PointF)localFaceInfo.points.get(64))) {
+          return true;
+        }
       }
-      localFaceInfo = (FaceInfo)((ListIterator)localObject).next();
-    } while (AlgoUtils.getDistance((PointF)localFaceInfo.points.get(64), (PointF)localFaceInfo.points.get(16)) * 0.7F <= AlgoUtils.getDistance((PointF)localFaceInfo.points.get(2), (PointF)localFaceInfo.points.get(64)));
-    return true;
+    }
+    return false;
   }
   
   private boolean isFaceDetected()
@@ -389,6 +603,7 @@ public class ExpressionDetectorObject
   public boolean detectExpression(int paramInt)
   {
     boolean bool2 = true;
+    boolean bool3 = false;
     boolean bool1 = bool2;
     switch (paramInt)
     {
@@ -413,12 +628,25 @@ public class ExpressionDetectorObject
                   return isFaceDetected();
                   return isExpressionOpenMouthDetected();
                   return isExpressionJumpEyebrowDetected();
-                  return isExpressionRightEyeWinkDetected();
+                  if (!isExpressionRightEyeWinkDetected())
+                  {
+                    bool1 = bool3;
+                    if (!isExpressionLeftEyeWinkDetected()) {}
+                  }
+                  else
+                  {
+                    bool1 = true;
+                  }
+                  return bool1;
                   return isExpressionShakeHeadDetected();
                   return isExpressionKissDetected();
-                  return isExpressionRightEyeWinkDetected();
                   return isExpressionLeftEyeWinkDetected();
+                  return isExpressionRightEyeWinkDetected();
                   return isExpressionNodDetected();
+                  return isExpressionMouthOccludedDetected();
+                  return isExpressionLeftEyeOccludedDetected();
+                  return isExpressionRightEyeOccludedDetected();
+                  return isExpressionDoubleEyesOcculudedDetected();
                   if (!isFaceDetected()) {
                     break;
                   }
@@ -447,13 +675,13 @@ public class ExpressionDetectorObject
             break;
           }
           bool1 = bool2;
-        } while (!isExpressionLeftEyeWinkDetected());
+        } while (!isExpressionRightEyeWinkDetected());
         return false;
         if (!isFaceDetected()) {
           break;
         }
         bool1 = bool2;
-      } while (!isExpressionLeftEyeWinkDetected());
+      } while (!isExpressionRightEyeWinkDetected());
       return false;
       if (!isFaceDetected()) {
         break;
@@ -462,10 +690,15 @@ public class ExpressionDetectorObject
     } while (!isExpressionNodDetected());
     return false;
   }
+  
+  public List<LinkedList<FaceInfo>> getShookFaceInfos()
+  {
+    return this.mShookQueueList;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.util.youtu.ExpressionDetectorObject
  * JD-Core Version:    0.7.0.1
  */

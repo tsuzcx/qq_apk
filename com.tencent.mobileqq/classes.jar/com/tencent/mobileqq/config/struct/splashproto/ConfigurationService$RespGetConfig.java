@@ -9,21 +9,23 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ConfigurationService$RespGetConfig
-  extends MessageMicro
+  extends MessageMicro<RespGetConfig>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatMessageField config_list = PBField.initRepeatMessage(ConfigurationService.Config.class);
+  public final PBRepeatMessageField<ConfigurationService.Config> config_list = PBField.initRepeatMessage(ConfigurationService.Config.class);
   public final PBBytesField cookies = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField debug_msg_list = PBField.initRepeat(PBStringField.__repeatHelper__);
-  public final PBRepeatField next_req_types = PBField.initRepeat(PBInt32Field.__repeatHelper__);
+  public final PBRepeatField<String> debug_msg_list = PBField.initRepeat(PBStringField.__repeatHelper__);
+  public final PBUInt32Field min_req_interval_for_reconnect = PBField.initUInt32(0);
+  public final PBRepeatField<Integer> next_req_types = PBField.initRepeat(PBInt32Field.__repeatHelper__);
   public final PBInt32Field result = PBField.initInt32(0);
   
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 802 }, new String[] { "result", "config_list", "debug_msg_list", "next_req_types", "cookies" }, new Object[] { Integer.valueOf(0), null, "", Integer.valueOf(0), localByteStringMicro }, RespGetConfig.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 802, 808 }, new String[] { "result", "config_list", "debug_msg_list", "next_req_types", "cookies", "min_req_interval_for_reconnect" }, new Object[] { Integer.valueOf(0), null, "", Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, RespGetConfig.class);
   }
 }
 

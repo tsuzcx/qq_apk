@@ -2,68 +2,52 @@ package com.tencent.mobileqq.msf.sdk;
 
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.qq.taf.jce.JceStruct;
 
-public class y
+public final class y
+  extends JceStruct
 {
-  public static CommandCallbackerInfo a(ToServiceMsg paramToServiceMsg)
+  static NotifyRegisterInfo f;
+  static CommandCallbackerInfo g;
+  public int a = 0;
+  public String b = "";
+  public String c = "";
+  public NotifyRegisterInfo d = null;
+  public CommandCallbackerInfo e = null;
+  
+  public y() {}
+  
+  public y(int paramInt, String paramString1, String paramString2, NotifyRegisterInfo paramNotifyRegisterInfo, CommandCallbackerInfo paramCommandCallbackerInfo)
   {
-    paramToServiceMsg = new JceInputStream((byte[])paramToServiceMsg.getAttribute("to_push_cmdCallbackerInfo"));
-    CommandCallbackerInfo localCommandCallbackerInfo = new CommandCallbackerInfo();
-    localCommandCallbackerInfo.readFrom(paramToServiceMsg);
-    return localCommandCallbackerInfo;
+    this.a = paramInt;
+    this.b = paramString1;
+    this.c = paramString2;
+    this.d = paramNotifyRegisterInfo;
+    this.e = paramCommandCallbackerInfo;
   }
   
-  public static void a(ToServiceMsg paramToServiceMsg, CommandCallbackerInfo paramCommandCallbackerInfo)
+  public void readFrom(JceInputStream paramJceInputStream)
   {
-    JceOutputStream localJceOutputStream = new JceOutputStream();
-    paramCommandCallbackerInfo.writeTo(localJceOutputStream);
-    paramToServiceMsg.addAttribute("to_push_cmdCallbackerInfo", localJceOutputStream.toByteArray());
+    this.a = paramJceInputStream.read(this.a, 1, true);
+    this.b = paramJceInputStream.readString(2, true);
+    this.c = paramJceInputStream.readString(3, true);
+    if (f == null) {
+      f = new NotifyRegisterInfo();
+    }
+    this.d = ((NotifyRegisterInfo)paramJceInputStream.read(f, 4, true));
+    if (g == null) {
+      g = new CommandCallbackerInfo();
+    }
+    this.e = ((CommandCallbackerInfo)paramJceInputStream.read(g, 5, true));
   }
   
-  public static void a(ToServiceMsg paramToServiceMsg, NotifyRegisterInfo paramNotifyRegisterInfo)
+  public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    JceOutputStream localJceOutputStream = new JceOutputStream();
-    paramNotifyRegisterInfo.writeTo(localJceOutputStream);
-    paramToServiceMsg.addAttribute("to_push_notifyRegisterInfo", localJceOutputStream.toByteArray());
-  }
-  
-  public static void a(ToServiceMsg paramToServiceMsg, PushRegisterInfo paramPushRegisterInfo)
-  {
-    JceOutputStream localJceOutputStream = new JceOutputStream();
-    paramPushRegisterInfo.writeTo(localJceOutputStream);
-    paramToServiceMsg.addAttribute("to_push_pushRegisterInfo", localJceOutputStream.toByteArray());
-  }
-  
-  public static void a(ToServiceMsg paramToServiceMsg, x paramx)
-  {
-    JceOutputStream localJceOutputStream = new JceOutputStream();
-    paramx.writeTo(localJceOutputStream);
-    paramToServiceMsg.addAttribute("to_push_proxyRegisterInfo", localJceOutputStream.toByteArray());
-  }
-  
-  public static PushRegisterInfo b(ToServiceMsg paramToServiceMsg)
-  {
-    paramToServiceMsg = new JceInputStream((byte[])paramToServiceMsg.getAttribute("to_push_pushRegisterInfo"));
-    PushRegisterInfo localPushRegisterInfo = new PushRegisterInfo();
-    localPushRegisterInfo.readFrom(paramToServiceMsg);
-    return localPushRegisterInfo;
-  }
-  
-  public static NotifyRegisterInfo c(ToServiceMsg paramToServiceMsg)
-  {
-    paramToServiceMsg = new JceInputStream((byte[])paramToServiceMsg.getAttribute("to_push_notifyRegisterInfo"));
-    NotifyRegisterInfo localNotifyRegisterInfo = new NotifyRegisterInfo();
-    localNotifyRegisterInfo.readFrom(paramToServiceMsg);
-    return localNotifyRegisterInfo;
-  }
-  
-  public static x d(ToServiceMsg paramToServiceMsg)
-  {
-    paramToServiceMsg = new JceInputStream((byte[])paramToServiceMsg.getAttribute("to_push_proxyRegisterInfo"));
-    x localx = new x();
-    localx.readFrom(paramToServiceMsg);
-    return localx;
+    paramJceOutputStream.write(this.a, 1);
+    paramJceOutputStream.write(this.b, 2);
+    paramJceOutputStream.write(this.c, 3);
+    paramJceOutputStream.write(this.d, 4);
+    paramJceOutputStream.write(this.e, 5);
   }
 }
 

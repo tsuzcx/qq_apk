@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <permission description="申请获取你的昵称、头像、地区及性别" id="scope.userInfo" name="用户信息" />
+    <permission description="申请获取你的位置信息" id="scope.userLocation" name="位置信息" />
+    <permission description="申请获取你的通讯地址" id="scope.address" name="通讯地址" />
+    <permission description="申请获取你的发票抬头" id="scope.invoiceTitle" name="发票抬头" />
+    <permission description="申请获取你的运动步数" id="scope.qqrun" name="运动步数" />
+    <permission description="申请使用你的麦克风" id="scope.record" name="录音功能" />
+    <permission description="申请使用你的系统相册" id="scope.writePhotosAlbum" name="保存视频或图片到你的相册" />
+    <permission description="申请使用你的摄像头" id="scope.camera" name="相机功能" />
+    <permission description="申请修改你的个人资料如昵称、头像" id="scope.personalize" name="修改资料" />
+    <permission description="申请发送订阅消息" description-reject="暂不接收" id="setting.appMsgSubscribed" name="小程序订阅消息" />
+    <permission id="scope.getPhoneNumber" name="获取你的电话号码" />
+    <permission description="允许该小程序向我发起加好友请求" id="setting.addFriend" name="向我发起加好友请求" />
+    <permission built-in="true" description="系统位置权限" id="android.permission.ACCESS_FINE_LOCATION" name="系统位置权限" />
+    <permission built-in="true" description="需要麦克风权限，请到设置中设置" id="android.permission.RECORD_AUDIO" name="系统麦克风权限" />
+    <permission built-in="true" description="需要麦克风权限，请到设置中设置" id="android.permission.CALL_PHONE" name="系统麦克风权限" />
+    <permission built-in="true" description="需要相机权限，请到设置中设置" id="android.permission.CAMERA" min-sdk-version="16" name="系统相机权限" />
+    <permission built-in="true" description="需要存储权限，请到设置中设置" id="android.permission.READ_EXTERNAL_STORAGE" min-sdk-version="16" name="系统存储权限" />
+    <permission built-in="true" description="需要存储权限，请到设置中设置" id="android.permission.WRITE_EXTERNAL_STORAGE" min-sdk-version="16" name="系统存储权限" />
+    <event name="operateWXData">
+        <request-permission>scope.userInfo</request-permission>
+    </event>
+    <event name="chooseLocation">
+        <request-permission>scope.userLocation</request-permission>
+        <request-permission>android.permission.ACCESS_FINE_LOCATION</request-permission>
+    </event>
+    <event name="getLocation">
+        <request-permission>scope.userLocation</request-permission>
+    </event>
+    <event name="makePhoneCall">
+        <request-permission>android.permission.CALL_PHONE</request-permission>
+    </event>
+    <event name="insertCamera">
+        <request-permission>scope.camera</request-permission>
+        <request-permission>android.permission.CAMERA</request-permission>
+    </event>
+    <event name="operateCamera">
+        <request-permission>android.permission.CAMERA</request-permission>
+    </event>
+    <event name="updateCamera">
+        <request-permission>android.permission.CAMERA</request-permission>
+    </event>
+    <event name="chooseVideo">
+        <request-permission>android.permission.CAMERA</request-permission>
+    </event>
+    <event name="chooseImage">
+        <request-permission>android.permission.CAMERA</request-permission>
+    </event>
+    <event name="startRecord">
+        <request-permission>scope.record</request-permission>
+        <request-permission>android.permission.RECORD_AUDIO</request-permission>
+    </event>
+    <event name="operateRecorder">
+        <request-permission>android.permission.RECORD_AUDIO</request-permission>
+    </event>
+    <event name="joinVoIPChat">
+        <request-permission>android.permission.RECORD_AUDIO</request-permission>
+    </event>
+    <event name="saveImageToPhotosAlbum">
+        <request-permission>scope.writePhotosAlbum</request-permission>
+    </event>
+    <event name="saveVideoToPhotosAlbum">
+        <request-permission>scope.writePhotosAlbum</request-permission>
+    </event>
+    <event name="chooseInvoiceTitle">
+        <request-permission>scope.invoiceTitle</request-permission>
+    </event>
+    <event name="openAddress">
+        <request-permission>scope.address</request-permission>
+    </event>
+    <event name="openWeRunSetting">
+        <request-permission>scope.qqrun</request-permission>
+    </event>
+    <event name="getNativeWeRunData">
+        <request-permission>scope.qqrun</request-permission>
+    </event>
+    <event name="subscribeAppMsg">
+        <request-permission>setting.appMsgSubscribed</request-permission>
+    </event>
+    <event name="Personalize">
+        <request-permission>scope.personalize</request-permission>
+    </event>
+</permissions>

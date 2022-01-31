@@ -10,7 +10,7 @@ public final class e
   static byte[] d;
   public String a = "";
   public String b = "";
-  public byte[] c;
+  public byte[] c = null;
   
   public e() {}
   

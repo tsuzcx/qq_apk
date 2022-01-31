@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/edw" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/n1" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="@dimen/ad_" android:layout_marginLeft="@dimen/an" android:layout_marginTop="20.0dip" android:layout_marginRight="@dimen/an" android:layout_marginBottom="5.0dip" android:scaleType="centerCrop" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/content" android:layout_width="fill_parent" android:layout_height="@dimen/ad_" android:layout_marginLeft="@dimen/an" android:layout_marginTop="20.0dip" android:layout_marginRight="@dimen/an" android:layout_marginBottom="5.0dip">
+        <RelativeLayout android:layout_width="@dimen/adc" android:layout_height="@dimen/adc" android:layout_marginLeft="17.0dip">
+            <ImageView android:id="@id/n3" android:layout_width="@dimen/adc" android:layout_height="@dimen/adc" android:src="@drawable/b8c" android:layout_centerInParent="true" />
+            <ImageView android:id="@id/n2" android:layout_width="@dimen/adb" android:layout_height="@dimen/adb" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/n4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:text="@string/lo" android:singleLine="true" android:includeFontPadding="false" />
+    </LinearLayout>
+</FrameLayout>

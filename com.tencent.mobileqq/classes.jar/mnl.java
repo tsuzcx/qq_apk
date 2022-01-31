@@ -1,46 +1,46 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.TextData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.OnItemClickListener;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import android.content.Intent;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class mnl
-  extends BaseItemViewHolder
-  implements View.OnLongClickListener
+class mnl
+  implements mla
 {
-  private TextView a;
+  mnl(mnk parammnk, long paramLong) {}
   
-  public mnl(View paramView, BaseData paramBaseData)
+  public void a(boolean paramBoolean)
   {
-    super(paramView, paramBaseData);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367129));
-    paramView.setOnLongClickListener(this);
-  }
-  
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    switch (paramBaseData2.d)
+    if (paramBoolean)
     {
-    default: 
+      if (mnk.a(this.jdField_a_of_type_Mnk)) {
+        return;
+      }
+      if (this.jdField_a_of_type_Mnk.a.getIntent().getBooleanExtra("isDoubleVideoMeeting", false)) {
+        this.jdField_a_of_type_Mnk.a("0X80051FE");
+      }
+      for (;;)
+      {
+        QLog.w("VideoInviteUILock", 1, "SlideAcceptListener, seq[" + this.jdField_a_of_type_Long + "]");
+        this.jdField_a_of_type_Mnk.a.d = true;
+        this.jdField_a_of_type_Mnk.a.c(this.jdField_a_of_type_Long);
+        return;
+        if (this.jdField_a_of_type_Mnk.a.b) {
+          this.jdField_a_of_type_Mnk.a("0X8004201");
+        } else {
+          this.jdField_a_of_type_Mnk.a("0X8004205");
+        }
+      }
+    }
+    if (this.jdField_a_of_type_Mnk.a.b)
+    {
+      this.jdField_a_of_type_Mnk.a("0X800439E");
       return;
     }
-    paramBaseData1 = (TextData)paramBaseData2;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1.a);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    new QQCustomMenu().a(0, "复制");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemOnItemClickListener.a(this);
-    return true;
+    this.jdField_a_of_type_Mnk.a("0X80043FD");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mnl
  * JD-Core Version:    0.7.0.1
  */

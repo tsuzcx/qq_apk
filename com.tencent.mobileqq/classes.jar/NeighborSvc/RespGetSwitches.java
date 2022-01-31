@@ -9,13 +9,13 @@ public final class RespGetSwitches
   extends JceStruct
 {
   static RespHeader cache_stHeader;
-  static ArrayList cache_switches;
+  static ArrayList<Switch> cache_switches;
   public RespHeader stHeader;
-  public ArrayList switches;
+  public ArrayList<Switch> switches;
   
   public RespGetSwitches() {}
   
-  public RespGetSwitches(RespHeader paramRespHeader, ArrayList paramArrayList)
+  public RespGetSwitches(RespHeader paramRespHeader, ArrayList<Switch> paramArrayList)
   {
     this.stHeader = paramRespHeader;
     this.switches = paramArrayList;
@@ -44,7 +44,7 @@ public final class RespGetSwitches
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NeighborSvc.RespGetSwitches
  * JD-Core Version:    0.7.0.1
  */

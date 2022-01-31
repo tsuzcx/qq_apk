@@ -1,24 +1,23 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Handler;
+import android.os.Message;
 
 class mxe
-  implements View.OnTouchListener
+  extends Handler
 {
-  mxe(mxc parammxc, int paramInt) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    mxc.a(this.jdField_a_of_type_Mxc, paramView);
-    this.jdField_a_of_type_Mxc.d = this.jdField_a_of_type_Int;
-    mxc.a(this.jdField_a_of_type_Mxc).onTouchEvent(paramMotionEvent);
-    return false;
+    mxd localmxd = (mxd)paramMessage.obj;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    localmxd.jdField_a_of_type_Mxc.a(((mxf[])localmxd.jdField_a_of_type_ArrayOfJavaLangObject)[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mxe
  * JD-Core Version:    0.7.0.1
  */

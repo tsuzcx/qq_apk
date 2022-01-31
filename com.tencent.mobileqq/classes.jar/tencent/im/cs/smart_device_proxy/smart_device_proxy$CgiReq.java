@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class smart_device_proxy$CgiReq
-  extends MessageMicro
+  extends MessageMicro<CgiReq>
 {
   public static final int BYTES_COOKIE_FIELD_NUMBER = 3;
   public static final int BYTES_PARAM_FIELD_NUMBER = 2;
@@ -27,7 +27,7 @@ public final class smart_device_proxy$CgiReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.smart_device_proxy.smart_device_proxy.CgiReq
  * JD-Core Version:    0.7.0.1
  */

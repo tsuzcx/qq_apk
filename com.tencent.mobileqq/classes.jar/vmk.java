@@ -1,17 +1,26 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher.1;
 
 public class vmk
-  implements TroopMemberApiClient.Callback
+  implements bnpq
 {
-  public vmk(AIOGalleryAdapter paramAIOGalleryAdapter) {}
+  public vmk(FollowCaptureLauncher.1 param1) {}
   
-  public void a(Bundle paramBundle) {}
+  public void a()
+  {
+    FollowCaptureLauncher.a(this.a.this$0).sendEmptyMessage(65541);
+  }
+  
+  public void a(long paramLong1, long paramLong2) {}
+  
+  public void b()
+  {
+    FollowCaptureLauncher.a(this.a.this$0).sendEmptyMessage(65542);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmk
  * JD-Core Version:    0.7.0.1
  */

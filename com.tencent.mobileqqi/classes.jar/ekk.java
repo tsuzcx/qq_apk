@@ -1,36 +1,62 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter.ViewHolder;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.phone.BindNumberDialogActivity;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.activity.phone.RebindActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class ekk
-  implements View.OnClickListener
+  extends ContactBindObserver
 {
-  public ekk(SystemMsgListView paramSystemMsgListView) {}
+  public ekk(BindNumberDialogActivity paramBindNumberDialogActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (!NetworkUtil.e(SystemMsgListView.a(this.a)))
+    this.a.d();
+    int i;
+    if (paramBoolean)
     {
-      QQToast.a(SystemMsgListView.a(this.a), SystemMsgListView.a(this.a).getResources().getString(2131562451), 0).b(this.a.a());
-      return;
-    }
-    paramView = (SystemMsgListAdapter.ViewHolder)paramView.getTag();
-    SystemMsgListView.a(this.a, (structmsg.StructMsg)paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get(), paramView.c);
-    if (paramView.jdField_a_of_type_Int == -1011) {
-      this.a.a(paramView.jdField_a_of_type_JavaLangString, 0L, null, paramView.jdField_b_of_type_JavaLangString, paramView.jdField_b_of_type_Long, paramView.jdField_a_of_type_Long);
+      i = paramBundle.getInt("k_result");
+      if ((i == 104) || (i == 0))
+      {
+        paramBundle = new Intent(this.a, BindVerifyActivity.class);
+        paramBundle.putExtra("kBindType", BindNumberDialogActivity.a(this.a));
+        paramBundle.putExtra("k_number", this.a.c);
+        paramBundle.putExtra("kShowAgree", true);
+        if ((paramBundle != null) && (!this.a.isFinishing()))
+        {
+          paramBundle.addFlags(536870912);
+          this.a.startActivityForResult(paramBundle, 2);
+        }
+      }
     }
     for (;;)
     {
-      ReportController.b(this.a.a, "CliOper", "", "", "frd_recommend", "Frd_accept", 0, 0, "1", "", "", "");
+      this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(BindNumberDialogActivity.a(this.a));
+      BindNumberDialogActivity.a(this.a, null);
+      this.a.finish();
       return;
-      this.a.a(paramView.jdField_a_of_type_JavaLangString, paramView.jdField_b_of_type_Long, 0, null, paramView.jdField_a_of_type_Long);
+      if (i == 107)
+      {
+        Intent localIntent = new Intent(this.a, RebindActivity.class);
+        localIntent.putExtra("k_uin", paramBundle.getString("k_uin"));
+        localIntent.putExtra("k_number", this.a.c);
+        localIntent.putExtra("k_country_code", this.a.jdField_b_of_type_JavaLangString);
+        localIntent.putExtra("kBindType", BindNumberDialogActivity.a(this.a));
+        paramBundle = localIntent;
+        break;
+      }
+      if (i == 106)
+      {
+        this.a.b(this.a.getString(2131558957));
+        paramBundle = null;
+        break;
+      }
+      this.a.b(a(i));
+      paramBundle = null;
+      break;
+      this.a.b(2131562782);
     }
   }
 }

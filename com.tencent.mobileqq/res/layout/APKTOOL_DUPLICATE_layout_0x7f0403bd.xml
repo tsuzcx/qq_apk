@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0208ab" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c026f" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d050c" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d050d" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d050d" />
-    <com.tencent.biz.widgets.KandianTextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04f7" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0270" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13c8" android:layout_width="wrap_content" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0510" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d050d" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d050d" android:text="好友点赞测试" android:maxLines="2" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0208d2" android:drawablePadding="6.0dip" />
-</LinearLayout>

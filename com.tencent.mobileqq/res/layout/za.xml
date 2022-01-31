@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:id="@id/gd6" android:background="@null" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="7.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageButton android:gravity="center_vertical" android:id="@id/gd7" android:background="@null" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="9.0dip" android:layout_marginRight="9.0dip" android:src="@drawable/dae" android:layout_centerVertical="true" android:onClick="BtnOnClick" android:contentDescription="@string/bhq" />
+    <ImageButton android:gravity="center_vertical" android:id="@id/gd4" android:background="@null" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="9.0dip" android:layout_marginRight="9.0dip" android:src="@drawable/da1" android:layout_toRightOf="@id/gd7" android:layout_centerVertical="true" android:onClick="BtnOnClick" android:contentDescription="@string/ddn" />
+</RelativeLayout>

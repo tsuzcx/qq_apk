@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/uy" android:paddingLeft="@dimen/a6k" android:paddingRight="@dimen/a6k" android:paddingBottom="@dimen/fs" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/d99" android:background="@color/a0a" android:layout_width="fill_parent" android:layout_height="@dimen/fs" />
+</LinearLayout>

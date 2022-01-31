@@ -1,27 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadComDownloader;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderInterface;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
 
-public class xfk
-  implements Runnable
+class xfk
+  implements View.OnFocusChangeListener
 {
-  public xfk(PreloadComDownloader paramPreloadComDownloader, String paramString1, String paramString2, DownloadListener paramDownloadListener, Bundle paramBundle) {}
+  xfk(xfh paramxfh) {}
   
-  public void run()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    DownloadTask localDownloadTask = new DownloadTask(this.jdField_a_of_type_JavaLangString, new File(this.b));
-    localDownloadTask.f = "QwalletPreload";
-    if (PreloadComDownloader.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadComDownloader) != null) {
-      PreloadComDownloader.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadComDownloader).a(localDownloadTask, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, this.jdField_a_of_type_AndroidOsBundle);
-    }
+    wxe.b("EditTextDialog", "onFocusChange:" + paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xfk
  * JD-Core Version:    0.7.0.1
  */

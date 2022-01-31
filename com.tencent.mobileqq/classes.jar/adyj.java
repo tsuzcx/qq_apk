@@ -1,28 +1,20 @@
-import com.tencent.mobileqq.jsp.X5ApiPlugin;
-import com.tencent.mobileqq.jsp.X5ApiPlugin.PreloadTask;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
-import com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils;
-import com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils.OfflineData;
-import com.tencent.smtt.sdk.WebView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class adyj
-  implements Runnable
+class adyj
+  implements View.OnClickListener
 {
-  public adyj(X5ApiPlugin paramX5ApiPlugin, X5ApiPlugin.PreloadTask paramPreloadTask, WebView paramWebView) {}
+  adyj(adyg paramadyg, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (SwiftOfflineDataUtils.a(this.jdField_a_of_type_ComTencentMobileqqJspX5ApiPlugin$PreloadTask.a))
+    if (!adyd.a(this.jdField_a_of_type_Adyg.a)) {}
+    do
     {
-      SwiftOfflineDataUtils.OfflineData localOfflineData = SwiftOfflineDataUtils.a(this.jdField_a_of_type_ComTencentMobileqqJspX5ApiPlugin$PreloadTask.a);
-      localObject1 = localObject2;
-      if (localOfflineData != null) {
-        localObject1 = localOfflineData.b;
-      }
-    }
-    SwiftBrowserTBSHandler.a(this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_ComTencentMobileqqJspX5ApiPlugin$PreloadTask.a, (String)localObject1);
+      return;
+      paramView = azmf.b[this.jdField_a_of_type_Adyg.a(this.jdField_a_of_type_Int).jdField_a_of_type_Int];
+    } while (banm.a(adyd.a(this.jdField_a_of_type_Adyg.a), paramView, new adyk(this)));
+    adyg.a(this.jdField_a_of_type_Adyg, this.jdField_a_of_type_Int);
   }
 }
 

@@ -52,8 +52,8 @@ public class FavPanelViewBinder
   
   public Drawable a(Context paramContext)
   {
-    Drawable localDrawable = paramContext.getResources().getDrawable(2130839154);
-    paramContext = paramContext.getResources().getDrawable(2130839155);
+    Drawable localDrawable = paramContext.getResources().getDrawable(2130839156);
+    paramContext = paramContext.getResources().getDrawable(2130839157);
     StateListDrawable localStateListDrawable = new StateListDrawable();
     localStateListDrawable.addState(new int[] { 16842913 }, paramContext);
     localStateListDrawable.addState(new int[0], localDrawable);

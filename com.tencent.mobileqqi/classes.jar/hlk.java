@@ -1,24 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.open.applist.WebAppActivity;
 
 public class hlk
-  implements DialogInterface.OnKeyListener
+  implements View.OnLongClickListener
 {
-  public hlk(QQProgressDialog paramQQProgressDialog, boolean paramBoolean) {}
+  public hlk(WebAppActivity paramWebAppActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public boolean onLongClick(View paramView)
   {
-    if ((paramInt == 84) || (paramInt == 4)) {
-      return this.jdField_a_of_type_Boolean;
-    }
-    return false;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hlk
  * JD-Core Version:    0.7.0.1
  */

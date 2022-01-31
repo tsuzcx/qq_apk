@@ -1,30 +1,16 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.DownloaderGetCodeClient;
-
 public class alhd
-  implements Runnable
 {
-  public alhd(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
-  
-  public void run()
-  {
-    try
-    {
-      LogUtility.c(DownloadManager.a, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.d + " begin getApkCode ......");
-      DownloaderGetCodeClient.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.d, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b);
-      return;
-    }
-    catch (Exception localException)
-    {
-      LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
-    }
-  }
+  public String a = "";
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "0";
+  public String g = "0";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alhd
  * JD-Core Version:    0.7.0.1
  */

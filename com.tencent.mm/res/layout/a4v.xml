@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.game.ui.GameFeedModuleTitle android:paddingLeft="@dimen/jr" android:paddingTop="@dimen/jr" android:paddingRight="@dimen/jr" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/jx" android:textStyle="bold" android:textColor="@color/qj" android:id="@id/c92" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </com.tencent.mm.plugin.game.ui.GameFeedModuleTitle>
+</FrameLayout>

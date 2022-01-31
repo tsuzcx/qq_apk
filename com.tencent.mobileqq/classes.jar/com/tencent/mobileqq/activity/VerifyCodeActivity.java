@@ -1,5 +1,10 @@
 package com.tencent.mobileqq.activity;
 
+import aela;
+import aelb;
+import aelc;
+import aeld;
+import aele;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -8,24 +13,19 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import bdal;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.mobileqq.widget.ClearableEditText;
 import mqq.manager.VerifyCodeManager;
 import mqq.observer.ServerNotifyObserver;
 import mqq.os.MqqHandler;
-import ugo;
-import ugp;
-import ugq;
-import ugr;
-import ugs;
 
 public class VerifyCodeActivity
   extends IphoneTitleBarActivity
 {
   final int jdField_a_of_type_Int = 4;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ugs(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aele(this);
   private View jdField_a_of_type_AndroidViewView;
   public ImageView a;
   public TextView a;
@@ -40,7 +40,7 @@ public class VerifyCodeActivity
   public VerifyCodeActivity()
   {
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqObserverServerNotifyObserver = new ugo(this);
+    this.jdField_a_of_type_MqqObserverServerNotifyObserver = new aela(this);
   }
   
   private void a(Intent paramIntent)
@@ -94,15 +94,15 @@ public class VerifyCodeActivity
             localObject2 = "";
           }
           if (arrayOfByte != null) {
-            this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(BitmapManager.a(arrayOfByte, 0, arrayOfByte.length));
+            this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bdal.a(arrayOfByte, 0, arrayOfByte.length));
           }
           this.jdField_a_of_type_MqqObserverServerNotifyObserver.setSeq(i);
           this.jdField_a_of_type_MqqObserverServerNotifyObserver.setKey((String)localObject2);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131372063));
+          this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131368371));
           this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setClearButtonStyle(1);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(new ugr(this));
-          this.jdField_a_of_type_AndroidViewView = findViewById(2131372476);
-          this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372477));
+          this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(new aeld(this));
+          this.jdField_a_of_type_AndroidViewView = findViewById(2131380114);
+          this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375581));
           this.jdField_a_of_type_MqqManagerVerifyCodeManager = ((VerifyCodeManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(6));
           this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
           this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -128,9 +128,9 @@ public class VerifyCodeActivity
   
   private void c()
   {
-    setTitle(2131433224);
-    setLeftButton(2131433015, new ugp(this));
-    setRightHighlightButton(2131434534, new ugq(this));
+    setTitle(2131721277);
+    setLeftButton(2131690648, new aelb(this));
+    setRightHighlightButton(2131692682, new aelc(this));
   }
   
   public void a()
@@ -172,7 +172,7 @@ public class VerifyCodeActivity
     finish();
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.app;
@@ -185,16 +185,20 @@ public class VerifyCodeActivity
       super.finish();
       return false;
     }
-    super.setContentView(2130971711);
-    setContentBackgroundResource(2130838214);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372475));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372478));
+    super.setContentView(2131562809);
+    setContentBackgroundResource(2130838592);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379512));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371267));
     a(paramBundle);
     paramBundle = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHandler(LoginActivity.class);
     if (paramBundle != null) {
       paramBundle.sendEmptyMessage(20140107);
     }
     paramBundle = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHandler(SubLoginActivity.class);
+    if (paramBundle != null) {
+      paramBundle.sendEmptyMessage(20140107);
+    }
+    paramBundle = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHandler(AddAccountActivity.class);
     if (paramBundle != null) {
       paramBundle.sendEmptyMessage(20140107);
     }

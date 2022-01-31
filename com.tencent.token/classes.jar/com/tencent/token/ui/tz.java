@@ -1,19 +1,16 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class tz
-  implements DialogInterface.OnClickListener
+class tz
+  implements View.OnClickListener
 {
-  tz(ty paramty) {}
+  tz(RealNameActivity paramRealNameActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = new Intent(this.a.a, WtloginSigExpireActivity.class);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    this.a.onBackPressed();
   }
 }
 

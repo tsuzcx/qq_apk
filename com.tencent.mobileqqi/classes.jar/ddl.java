@@ -1,41 +1,30 @@
-import android.app.ProgressDialog;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.log.ReportLog;
-import com.tencent.mobileqq.utils.DialogUtil;
-import mqq.manager.ServerConfigManager.ConfigType;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.richstatus.IStatusListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class ddl
-  implements View.OnClickListener
+  implements IStatusListener
 {
-  public ddl(NotificationActivity paramNotificationActivity) {}
+  public ddl(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, RichStatus paramRichStatus)
   {
-    ProgressDialog localProgressDialog = DialogUtil.a(this.a, this.a.getResources().getDrawable(2130839680), 2131562878);
-    localProgressDialog.setOnDismissListener(new ddm(this));
-    ReportLog.a(this.a.b.getAccount());
-    paramView = null;
-    if (this.a.b.getSid() != null) {
-      paramView = this.a.b.getSid().getBytes();
-    }
-    ReportLog.a(paramView);
-    paramView = this.a.b.a(ServerConfigManager.ConfigType.app, "log_upload");
-    if ((!TextUtils.isEmpty(paramView)) && (paramView.equals("1")))
+    if (this.a.b)
     {
-      ReportLog.a(this.a.b.a(), this.a.b.a(), localProgressDialog);
-      return;
+      if (paramInt != 100) {
+        this.a.a(2131561424);
+      }
+      this.a.o();
     }
-    ReportLog.a(this.a.b.a(), this.a.b.a(), localProgressDialog);
   }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ddl
  * JD-Core Version:    0.7.0.1
  */

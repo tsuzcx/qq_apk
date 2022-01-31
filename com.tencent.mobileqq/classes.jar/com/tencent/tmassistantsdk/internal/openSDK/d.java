@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
 import com.tencent.tmassistantsdk.ITMAssistantCallBackListener;
 import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
 import com.tencent.tmassistantsdk.TMAssistantCallYYBTaskInfo;
@@ -33,11 +33,10 @@ public class d
   implements com.tencent.tmassistantsdk.internal.b.a
 {
   protected static d a = null;
-  protected static final String b = d.class.getSimpleName();
-  protected com.tencent.tmassistantsdk.internal.b.b c = null;
-  protected ITMAssistantCallBackListener d = null;
-  String e = UUID.randomUUID().toString();
-  private Context f = null;
+  protected com.tencent.tmassistantsdk.internal.b.b b = null;
+  protected ITMAssistantCallBackListener c = null;
+  String d = UUID.randomUUID().toString();
+  private Context e = null;
   
   public d() {}
   
@@ -46,7 +45,7 @@ public class d
     if (paramContext != null) {
       b(paramContext);
     }
-    this.f = paramContext;
+    this.e = paramContext;
   }
   
   private TMAssistantCallYYBParamStruct a(IPCBaseParam paramIPCBaseParam)
@@ -71,7 +70,7 @@ public class d
     {
       for (;;)
       {
-        r.c(b, "baseParam2QQParam Integer.valueOf(baseParam.taskVersion) NumberFormatException occur");
+        ab.c("TMQQDownloaderDataProcessor", "baseParam2QQParam Integer.valueOf(baseParam.taskVersion) NumberFormatException occur");
       }
     }
   }
@@ -109,31 +108,30 @@ public class d
   
   public static byte[] a(JceStruct paramJceStruct, String paramString)
   {
-    r.c(b, "jceStruct = " + paramJceStruct);
+    ab.c("TMQQDownloaderDataProcessor", "jceStruct = " + paramJceStruct);
     paramJceStruct = com.tencent.tmassistantsdk.internal.openSDK.param.a.a(paramJceStruct, paramString);
     if (paramJceStruct != null)
     {
       paramJceStruct = com.tencent.tmassistantsdk.internal.openSDK.param.a.a(paramJceStruct);
       if ((paramJceStruct != null) && (paramJceStruct.length > 0))
       {
-        r.c(b, "return sendData length = " + paramJceStruct.length);
+        ab.c("TMQQDownloaderDataProcessor", "return sendData length = " + paramJceStruct.length);
         return paramJceStruct;
       }
-      r.c(b, "handleUriAction sendData = null");
+      ab.c("TMQQDownloaderDataProcessor", "handleUriAction sendData = null");
       return null;
     }
-    r.c(b, "handleUriAction IPCRequest = null");
+    ab.c("TMQQDownloaderDataProcessor", "handleUriAction IPCRequest = null");
     return null;
   }
   
   public static BatchDownloadActionRequest b(int paramInt, ArrayList<TMAssistantCallYYBParamStruct> paramArrayList, String paramString1, String paramString2, String paramString3)
   {
-    String str = b;
     StringBuilder localStringBuilder = new StringBuilder().append("batchRequestType = ").append(paramInt).append(",appList size = ");
     if (paramArrayList == null) {}
     for (Object localObject = "null";; localObject = Integer.valueOf(paramArrayList.size()))
     {
-      r.c(str, localObject + ",via = " + paramString1 + ",uin = " + paramString2 + ",uinType = " + paramString3);
+      ab.c("TMQQDownloaderDataProcessor", localObject + ",via = " + paramString1 + ",uin = " + paramString2 + ",uinType = " + paramString3);
       localObject = new BatchDownloadActionRequest();
       ((BatchDownloadActionRequest)localObject).batchRequestType = paramInt;
       if (paramString1 != null) {
@@ -166,8 +164,7 @@ public class d
         paramInt += 1;
       }
     }
-    paramArrayList = paramString2 + "}";
-    r.c(b, paramArrayList);
+    ab.c("TMQQDownloaderDataProcessor", paramString2 + "}");
     return localObject;
   }
   
@@ -194,7 +191,7 @@ public class d
   
   public TMAssistantCallYYBTaskInfo a(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct)
   {
-    r.c(b, "getDownloadTask param.sngAppid:" + paramTMAssistantCallYYBParamStruct.SNGAppId + "|param.appid:" + paramTMAssistantCallYYBParamStruct.taskAppId + "| param.taskPackageName:" + paramTMAssistantCallYYBParamStruct.taskPackageName + "|param.taskVersion:" + paramTMAssistantCallYYBParamStruct.taskVersion);
+    ab.c("TMQQDownloaderDataProcessor", "getDownloadTask param.sngAppid:" + paramTMAssistantCallYYBParamStruct.SNGAppId + "|param.appid:" + paramTMAssistantCallYYBParamStruct.taskAppId + "| param.taskPackageName:" + paramTMAssistantCallYYBParamStruct.taskPackageName + "|param.taskVersion:" + paramTMAssistantCallYYBParamStruct.taskVersion);
     paramTMAssistantCallYYBParamStruct = a(paramTMAssistantCallYYBParamStruct, null);
     QueryDownloadTaskRequest localQueryDownloadTaskRequest = new QueryDownloadTaskRequest();
     localQueryDownloadTaskRequest.baseParam = paramTMAssistantCallYYBParamStruct;
@@ -205,35 +202,35 @@ public class d
       try
       {
         b(GlobalUtil.getInstance().getContext());
-        if (this.c == null) {
-          break label242;
+        if (this.b == null) {
+          break label238;
         }
-        paramTMAssistantCallYYBParamStruct = this.c.a(paramTMAssistantCallYYBParamStruct);
+        paramTMAssistantCallYYBParamStruct = this.b.a(paramTMAssistantCallYYBParamStruct);
         paramTMAssistantCallYYBParamStruct = com.tencent.tmassistantsdk.internal.openSDK.param.a.a(paramTMAssistantCallYYBParamStruct);
         if (paramTMAssistantCallYYBParamStruct == null) {
           break;
         }
         paramTMAssistantCallYYBParamStruct = (QueryDownloadTaskResponse)com.tencent.tmassistantsdk.internal.openSDK.param.a.a(paramTMAssistantCallYYBParamStruct);
-        r.c(b, "QueryDownloadTaskResponse downloadTask state:" + paramTMAssistantCallYYBParamStruct.state);
+        ab.c("TMQQDownloaderDataProcessor", "QueryDownloadTaskResponse downloadTask state:" + paramTMAssistantCallYYBParamStruct.state);
         int i = GlobalUtil.assistantState2SDKState(paramTMAssistantCallYYBParamStruct.state);
         if (paramTMAssistantCallYYBParamStruct == null) {
-          break label256;
+          break label251;
         }
         return new TMAssistantCallYYBTaskInfo(paramTMAssistantCallYYBParamStruct.url, paramTMAssistantCallYYBParamStruct.savePath, i, paramTMAssistantCallYYBParamStruct.receivedLen, paramTMAssistantCallYYBParamStruct.totalLen, "application/vnd.android.package-archive");
       }
       catch (Throwable paramTMAssistantCallYYBParamStruct)
       {
         paramTMAssistantCallYYBParamStruct.printStackTrace();
-        r.c(b, "getDownloadTask Exception,return null", paramTMAssistantCallYYBParamStruct);
+        ab.c("TMQQDownloaderDataProcessor", "getDownloadTask Exception,return null", paramTMAssistantCallYYBParamStruct);
         return null;
       }
-      r.c(b, "getDownloadTask sendData = null");
-      label242:
+      ab.c("TMQQDownloaderDataProcessor", "getDownloadTask sendData = null");
+      label238:
       paramTMAssistantCallYYBParamStruct = null;
     }
-    r.c(b, "getDownloadTask IPCResponse = null");
-    label256:
-    r.c(b, "getDownloadTask return null");
+    ab.c("TMQQDownloaderDataProcessor", "getDownloadTask IPCResponse = null");
+    label251:
+    ab.c("TMQQDownloaderDataProcessor", "getDownloadTask return null");
     return null;
   }
   
@@ -241,10 +238,10 @@ public class d
   {
     if (paramArrayList == null)
     {
-      r.c(b, "appList = null,return null");
+      ab.c("TMQQDownloaderDataProcessor", "appList = null,return null");
       return null;
     }
-    r.c(b, "getBatchTaskInfos appList.size:" + paramArrayList.size() + ",via = " + paramString1 + ",uin = " + paramString2 + ",uinType = " + paramString3);
+    ab.c("TMQQDownloaderDataProcessor", "getBatchTaskInfos appList.size:" + paramArrayList.size() + ",via = " + paramString1 + ",uin = " + paramString2 + ",uinType = " + paramString3);
     paramString1 = a(b(3, paramArrayList, paramString1, paramString2, paramString3), "");
     paramArrayList = null;
     if ((paramString1 != null) && (paramString1.length > 0)) {}
@@ -253,21 +250,21 @@ public class d
       try
       {
         b(GlobalUtil.getInstance().getContext());
-        if (this.c != null) {
-          paramArrayList = this.c.a(paramString1);
+        if (this.b != null) {
+          paramArrayList = this.b.a(paramString1);
         }
         paramString1 = null;
         paramArrayList = com.tencent.tmassistantsdk.internal.openSDK.param.a.a(paramArrayList);
         if (paramArrayList == null) {
-          break label371;
+          break label366;
         }
         paramString2 = (BatchDownloadActionResponse)com.tencent.tmassistantsdk.internal.openSDK.param.a.a(paramArrayList);
         if (paramString2 == null) {
-          break label360;
+          break label356;
         }
         paramArrayList = "getBatchTaskInfos BatchDownloadActionResponse batchRequestType:" + paramString2.batchRequestType;
         if (paramString2.batchData == null) {
-          break label336;
+          break label332;
         }
         paramArrayList = paramArrayList + "response.batchData.size:" + paramString2.batchData.size();
         paramString1 = new ArrayList();
@@ -282,7 +279,7 @@ public class d
         }
         i += 1;
         continue;
-        r.c(b, "getBatchTaskInfos sendData = null or length = 0");
+        ab.c("TMQQDownloaderDataProcessor", "getBatchTaskInfos sendData = null or length = 0");
       }
       catch (Throwable paramArrayList)
       {
@@ -292,56 +289,56 @@ public class d
     }
     for (;;)
     {
-      r.c(b, paramArrayList);
+      ab.c("TMQQDownloaderDataProcessor", paramArrayList);
       return paramString1;
-      label336:
+      label332:
       paramArrayList = paramArrayList + "response.batchData = null";
     }
-    label360:
-    r.c(b, "getBatchTaskInfos BatchDownloadActionResponse response = null");
+    label356:
+    ab.c("TMQQDownloaderDataProcessor", "getBatchTaskInfos BatchDownloadActionResponse response = null");
     return null;
-    label371:
-    r.c(b, "getBatchTaskInfos IPCResponse resp = null");
+    label366:
+    ab.c("TMQQDownloaderDataProcessor", "getBatchTaskInfos IPCResponse resp = null");
     return null;
   }
   
   public void a()
   {
-    r.c(b, "onDownloadSDKServiceInvalid callback = " + this.d);
-    if (this.d != null) {
-      this.d.onQQDownloaderInvalid();
+    ab.c("TMQQDownloaderDataProcessor", "onDownloadSDKServiceInvalid callback = " + this.c);
+    if (this.c != null) {
+      this.c.onQQDownloaderInvalid();
     }
     Context localContext = GlobalUtil.getInstance().getContext();
     if (localContext != null) {
-      com.tencent.tmassistant.a.a(localContext).b(this.e);
+      com.tencent.tmassistant.a.a(localContext).b(this.d);
     }
-    this.c = null;
+    this.b = null;
   }
   
   public void a(ITMAssistantCallBackListener paramITMAssistantCallBackListener)
   {
-    r.c(b, "listener = " + paramITMAssistantCallBackListener);
-    this.d = paramITMAssistantCallBackListener;
+    ab.c("TMQQDownloaderDataProcessor", "listener = " + paramITMAssistantCallBackListener);
+    this.c = paramITMAssistantCallBackListener;
   }
   
   void a(GetDownloadProgressResponse paramGetDownloadProgressResponse)
   {
     TMAssistantCallYYBParamStruct localTMAssistantCallYYBParamStruct = a(paramGetDownloadProgressResponse.requestParam);
-    if ((localTMAssistantCallYYBParamStruct != null) && (this.d != null))
+    if ((localTMAssistantCallYYBParamStruct != null) && (this.c != null))
     {
-      r.c(b, "进度回调：GetDownloadProgressResponse response.receivedLen:" + paramGetDownloadProgressResponse.receivedLen + ",response.totalLen" + paramGetDownloadProgressResponse.totalLen);
-      this.d.onDownloadTaskProgressChanged(localTMAssistantCallYYBParamStruct, paramGetDownloadProgressResponse.receivedLen, paramGetDownloadProgressResponse.totalLen);
+      ab.c("TMQQDownloaderDataProcessor", "进度回调：GetDownloadProgressResponse response.receivedLen:" + paramGetDownloadProgressResponse.receivedLen + ",response.totalLen" + paramGetDownloadProgressResponse.totalLen);
+      this.c.onDownloadTaskProgressChanged(localTMAssistantCallYYBParamStruct, paramGetDownloadProgressResponse.receivedLen, paramGetDownloadProgressResponse.totalLen);
     }
   }
   
   void a(GetDownloadStateResponse paramGetDownloadStateResponse)
   {
-    r.c(b, "onServiceFreed response = " + paramGetDownloadStateResponse);
+    ab.c("TMQQDownloaderDataProcessor", "onServiceFreed response = " + paramGetDownloadStateResponse);
     TMAssistantCallYYBParamStruct localTMAssistantCallYYBParamStruct = a(paramGetDownloadStateResponse.requestParam);
-    if ((localTMAssistantCallYYBParamStruct != null) && (this.d != null))
+    if ((localTMAssistantCallYYBParamStruct != null) && (this.c != null))
     {
-      r.c(b, "状态回调：GetDownloadStateResponse param.taskAppId:" + localTMAssistantCallYYBParamStruct.taskAppId + ",param.taskPackageName:" + localTMAssistantCallYYBParamStruct.taskPackageName + ",state:" + paramGetDownloadStateResponse.state + ",response.errorCode" + paramGetDownloadStateResponse.errorCode);
-      this.d.onDownloadTaskStateChanged(localTMAssistantCallYYBParamStruct, GlobalUtil.assistantState2SDKState(paramGetDownloadStateResponse.state), GlobalUtil.assistantErrorCode2SDKErrorCode(paramGetDownloadStateResponse.errorCode), paramGetDownloadStateResponse.errorMsg);
+      ab.c("TMQQDownloaderDataProcessor", "状态回调：GetDownloadStateResponse param.taskAppId:" + localTMAssistantCallYYBParamStruct.taskAppId + ",param.taskPackageName:" + localTMAssistantCallYYBParamStruct.taskPackageName + ",state:" + paramGetDownloadStateResponse.state + ",response.errorCode" + paramGetDownloadStateResponse.errorCode);
+      this.c.onDownloadTaskStateChanged(localTMAssistantCallYYBParamStruct, GlobalUtil.assistantState2SDKState(paramGetDownloadStateResponse.state), GlobalUtil.assistantErrorCode2SDKErrorCode(paramGetDownloadStateResponse.errorCode), paramGetDownloadStateResponse.errorMsg);
     }
   }
   
@@ -351,7 +348,7 @@ public class d
     {
       paramArrayOfByte = com.tencent.tmassistantsdk.internal.openSDK.param.a.a(paramArrayOfByte);
       JceStruct localJceStruct = com.tencent.tmassistantsdk.internal.openSDK.param.a.a(paramArrayOfByte);
-      r.c(b, "response.head.cmdId = " + paramArrayOfByte.head.cmdId);
+      ab.c("TMQQDownloaderDataProcessor", "response.head.cmdId = " + paramArrayOfByte.head.cmdId);
       switch (paramArrayOfByte.head.cmdId)
       {
       default: 
@@ -372,13 +369,12 @@ public class d
       d();
       return;
     }
-    r.c(b, "onActionResult reponseData = null");
+    ab.c("TMQQDownloaderDataProcessor", "onActionResult reponseData = null");
   }
   
   public boolean a(int paramInt, ArrayList<TMAssistantCallYYBParamStruct> paramArrayList, String paramString1, String paramString2, String paramString3)
   {
-    String str = "handleBatchUpdateAction batchRequestType:" + paramInt + "|appList:" + paramArrayList;
-    r.c(b, str);
+    ab.c("TMQQDownloaderDataProcessor", "handleBatchUpdateAction batchRequestType:" + paramInt + "|appList:" + paramArrayList);
     paramString2 = b(paramInt, paramArrayList, paramString1, paramString2, paramString3);
     paramArrayList = UUID.randomUUID().toString();
     paramString2 = a(paramString2, paramArrayList);
@@ -386,37 +382,37 @@ public class d
       try
       {
         b(GlobalUtil.getInstance().getContext());
-        if (this.c != null)
+        if (this.b != null)
         {
-          this.c.b(paramString2);
-          r.c(b, "result is true");
-          paramArrayList = com.tencent.tmassistantsdk.internal.logreport.b.h().a(paramString1, paramArrayList, "V2_handleBatchRequestAction_" + paramInt);
-          com.tencent.tmassistantsdk.internal.logreport.b.h().a(paramArrayList);
+          this.b.b(paramString2);
+          ab.c("TMQQDownloaderDataProcessor", "result is true, clientKey:" + this.b.mClientKey);
+          paramArrayList = com.tencent.tmassistantsdk.internal.logreport.b.g().a(paramString1, paramArrayList, "V2_handleBatchRequestAction_" + paramInt);
+          com.tencent.tmassistantsdk.internal.logreport.b.g().a(paramArrayList);
           return true;
         }
-        r.c(b, "result is false,openSDKClient is null");
+        ab.c("TMQQDownloaderDataProcessor", "result is false,openSDKClient is null");
         return false;
       }
       catch (Throwable paramArrayList)
       {
         paramArrayList.printStackTrace();
-        r.c(b, "result is false");
+        ab.c("TMQQDownloaderDataProcessor", "result is false");
         return false;
       }
     }
-    r.c(b, "handleBatchUpdateAction sendData = null or length = 0");
+    ab.c("TMQQDownloaderDataProcessor", "handleBatchUpdateAction sendData = null or length = 0");
     return false;
   }
   
   public boolean a(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, int paramInt, String paramString1, String paramString2, String paramString3, OuterCallReportModel paramOuterCallReportModel)
   {
-    r.c(b, "handleDownloadTask requestType:" + paramInt + "  param.sngAppid:" + paramTMAssistantCallYYBParamStruct.SNGAppId + "|param.appid:" + paramTMAssistantCallYYBParamStruct.taskAppId + "| param.taskPackageName:" + paramTMAssistantCallYYBParamStruct.taskPackageName + "|param.taskVersion:" + paramTMAssistantCallYYBParamStruct.taskVersion + "| param.actionFlag:" + paramString2 + " | verifyType:" + paramString3);
-    if ((TMAssistantCallYYB_V1.getQQDownloadApiLevel(this.f) >= 6) && (paramInt == 1)) {
+    ab.c("TMQQDownloaderDataProcessor", "handleDownloadTask requestType:" + paramInt + "  param.sngAppid:" + paramTMAssistantCallYYBParamStruct.SNGAppId + "|param.appid:" + paramTMAssistantCallYYBParamStruct.taskAppId + "| param.taskPackageName:" + paramTMAssistantCallYYBParamStruct.taskPackageName + "|param.taskVersion:" + paramTMAssistantCallYYBParamStruct.taskVersion + "| param.actionFlag:" + paramString2 + " | verifyType:" + paramString3);
+    if ((TMAssistantCallYYB_V1.getQQDownloadApiLevel(this.e) >= 6) && (paramInt == 1)) {
       paramTMAssistantCallYYBParamStruct.timePointMap.put("OuterCall_TMQQDownloaderDataProcessor_HandleDownloadTask_Start", Long.valueOf(System.currentTimeMillis()));
     }
     OperateDownloadTaskRequest localOperateDownloadTaskRequest = new OperateDownloadTaskRequest();
     paramOuterCallReportModel = a(paramTMAssistantCallYYBParamStruct, paramOuterCallReportModel);
-    if ((TMAssistantCallYYB_V1.getQQDownloadApiLevel(this.f) >= 6) && (paramInt == 1)) {
+    if ((TMAssistantCallYYB_V1.getQQDownloadApiLevel(this.e) >= 6) && (paramInt == 1)) {
       paramTMAssistantCallYYBParamStruct.timePointMap.put("OuterCall_TMQQDownloaderDataProcessor_HandleDownloadTask_End", Long.valueOf(System.currentTimeMillis()));
     }
     localOperateDownloadTaskRequest.requestType = paramInt;
@@ -431,25 +427,25 @@ public class d
       try
       {
         b(GlobalUtil.getInstance().getContext());
-        if (this.c != null)
+        if (this.b != null)
         {
-          this.c.b(paramString2);
-          r.c(b, "return true");
-          paramTMAssistantCallYYBParamStruct = com.tencent.tmassistantsdk.internal.logreport.b.h().a(com.tencent.tmassistantsdk.internal.logreport.b.a(paramTMAssistantCallYYBParamStruct), paramString1, "V2_handleDownloadTask_" + paramInt);
-          com.tencent.tmassistantsdk.internal.logreport.b.h().a(paramTMAssistantCallYYBParamStruct);
+          this.b.b(paramString2);
+          ab.c("TMQQDownloaderDataProcessor", "return true");
+          paramTMAssistantCallYYBParamStruct = com.tencent.tmassistantsdk.internal.logreport.b.g().a(com.tencent.tmassistantsdk.internal.logreport.b.a(paramTMAssistantCallYYBParamStruct), paramString1, "V2_handleDownloadTask_" + paramInt);
+          com.tencent.tmassistantsdk.internal.logreport.b.g().a(paramTMAssistantCallYYBParamStruct);
           return true;
         }
-        r.c(b, "handleDownloadTask openSDKClient = null,return false");
+        ab.c("TMQQDownloaderDataProcessor", "handleDownloadTask openSDKClient = null,return false");
         return false;
       }
       catch (Throwable paramTMAssistantCallYYBParamStruct)
       {
-        r.a(b, "handleDownloadTask Exception,return false", paramTMAssistantCallYYBParamStruct);
+        ab.a("TMQQDownloaderDataProcessor", "handleDownloadTask Exception,return false", paramTMAssistantCallYYBParamStruct);
         paramTMAssistantCallYYBParamStruct.printStackTrace();
         return false;
       }
     }
-    r.c(b, "handleDownloadTask sendData = null,return false");
+    ab.c("TMQQDownloaderDataProcessor", "handleDownloadTask sendData = null,return false");
     return false;
   }
   
@@ -457,10 +453,10 @@ public class d
   {
     if (TextUtils.isEmpty(paramString))
     {
-      r.c(b, "uri = null,return false");
+      ab.c("TMQQDownloaderDataProcessor", "uri = null,return false");
       return false;
     }
-    r.c(b, "uri = " + paramString);
+    ab.c("TMQQDownloaderDataProcessor", "uri = " + paramString);
     Object localObject = new URIActionRequest(paramString);
     String str = UUID.randomUUID().toString();
     localObject = a((JceStruct)localObject, str);
@@ -468,21 +464,21 @@ public class d
       try
       {
         b(GlobalUtil.getInstance().getContext());
-        if (this.c != null) {
-          this.c.b((byte[])localObject);
+        if (this.b != null) {
+          this.b.b((byte[])localObject);
         }
-        paramString = com.tencent.tmassistantsdk.internal.logreport.b.h().a(paramString, str, "V2_handleUriAction");
-        com.tencent.tmassistantsdk.internal.logreport.b.h().a(paramString);
+        paramString = com.tencent.tmassistantsdk.internal.logreport.b.g().a(paramString, str, "V2_handleUriAction");
+        com.tencent.tmassistantsdk.internal.logreport.b.g().a(paramString);
         return false;
       }
       catch (Throwable paramString)
       {
         paramString.printStackTrace();
-        r.a(b, "handleUriAction Exception,return false", paramString);
+        ab.a("TMQQDownloaderDataProcessor", "handleUriAction Exception,return false", paramString);
         return false;
       }
     }
-    r.c(b, "handleUriAction sendData = null");
+    ab.c("TMQQDownloaderDataProcessor", "handleUriAction sendData = null");
     return false;
   }
   
@@ -490,14 +486,14 @@ public class d
   {
     try
     {
-      if ((this.c == null) && (paramContext != null))
+      if ((this.b == null) && (paramContext != null))
       {
-        this.c = com.tencent.tmassistant.a.a(paramContext).a(this.e);
-        if (this.c != null) {
-          this.c.a(this);
+        this.b = com.tencent.tmassistant.a.a(paramContext).a(this.d);
+        if (this.b != null) {
+          this.b.a(this);
         }
       }
-      paramContext = this.c;
+      paramContext = this.b;
       return paramContext;
     }
     finally {}
@@ -505,39 +501,39 @@ public class d
   
   public void b()
   {
-    r.c(b, "unregisterIQQDownloaderOpenSDKListener start");
-    this.d = null;
+    ab.c("TMQQDownloaderDataProcessor", "unregisterIQQDownloaderOpenSDKListener start");
+    this.c = null;
     Context localContext = GlobalUtil.getInstance().getContext();
     if (localContext != null) {
-      com.tencent.tmassistant.a.a(localContext).b(this.e);
+      com.tencent.tmassistant.a.a(localContext).b(this.d);
     }
-    this.c = null;
+    this.b = null;
   }
   
   public void c()
   {
-    r.c(b, "releaseIPCClient openSDKClient = " + this.c);
-    if (this.c != null)
+    ab.c("TMQQDownloaderDataProcessor", "releaseIPCClient openSDKClient = " + this.b);
+    if (this.b != null)
     {
       Context localContext = GlobalUtil.getInstance().getContext();
       if (localContext != null) {
-        com.tencent.tmassistant.a.a(localContext).b(this.e);
+        com.tencent.tmassistant.a.a(localContext).b(this.d);
       }
-      this.c = null;
+      this.b = null;
     }
   }
   
   void d()
   {
-    r.c(b, "onServiceFreed callback = " + this.d);
-    if (this.d != null) {
-      this.d.onServiceFree();
+    ab.c("TMQQDownloaderDataProcessor", "onServiceFreed callback = " + this.c);
+    if (this.c != null) {
+      this.c.onServiceFree();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.d
  * JD-Core Version:    0.7.0.1
  */

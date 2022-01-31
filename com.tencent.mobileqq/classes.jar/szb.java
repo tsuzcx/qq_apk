@@ -1,30 +1,44 @@
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class szb
-  implements Runnable
+final class szb
+  implements DialogInterface.OnClickListener
 {
-  public szb(LikeRankingListActivity paramLikeRankingListActivity) {}
+  szb(int paramInt1, int paramInt2, Runnable paramRunnable) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LocalRedTouchManager localLocalRedTouchManager = (LocalRedTouchManager)this.a.app.getManager(159);
-    RedTouchItem localRedTouchItem1 = localLocalRedTouchManager.a(100601);
-    if (localLocalRedTouchManager.a(localRedTouchItem1, false))
+    paramInt = 1;
+    bkbq.a("readinjoy_user_data_switch", Integer.valueOf(1));
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new JSONObject();
+    try
     {
-      RedTouchItem localRedTouchItem2 = localLocalRedTouchManager.a(100500);
-      if ((localLocalRedTouchManager.a(localRedTouchItem2, true)) && (localRedTouchItem2.receiveTime == localRedTouchItem1.receiveTime)) {
-        localRedTouchItem2.unReadFlag = false;
+      if (this.jdField_a_of_type_Int == 1) {
+        paramInt = 0;
       }
-      localLocalRedTouchManager.a(100601);
+      paramDialogInterface.put("click_src", paramInt);
+      paramDialogInterface.put("user_data_alert_interval", this.b);
+      paramDialogInterface.put("click_opt", 2);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+    nrt.a(null, "", "0X800A809", "0X800A809", 0, 0, "", "", "", paramDialogInterface.toString(), false);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     szb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.LocalImageShootInfo;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public final class amuq
-  implements Parcelable.Creator
+class amuq
+  implements QQPermissionCallback
 {
-  public LocalImageShootInfo a(Parcel paramParcel)
+  amuq(amup paramamup) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return new LocalImageShootInfo(paramParcel);
+    bdgm.a(amup.a(this.a), paramArrayOfString, paramArrayOfInt);
+    QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION deny");
   }
   
-  public LocalImageShootInfo[] a(int paramInt)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return null;
+    QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION allow restart it");
   }
 }
 

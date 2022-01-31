@@ -1,24 +1,24 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.service.message.MessagePBElemDecoder;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahxm
-  implements Runnable
+class ahxm
+  implements aznz
 {
-  public ahxm(MessagePBElemDecoder paramMessagePBElemDecoder, msg_comm.Msg paramMsg) {}
+  ahxm(ahxl paramahxl) {}
   
-  public void run()
+  public void a()
   {
-    ((PublicAccountHandler)MessagePBElemDecoder.a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessagePBElemDecoder).b.a(11)).a(String.valueOf(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg.msg_head.from_uin.get()), 0L, 1);
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion show self dialog grant");
+  }
+  
+  public void b()
+  {
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion show self dialog denied");
+    ahww.a(this.a.a, ahww.b(this.a.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxm
  * JD-Core Version:    0.7.0.1
  */

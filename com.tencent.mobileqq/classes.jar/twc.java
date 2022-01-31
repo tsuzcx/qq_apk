@@ -1,35 +1,15 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import mqq.os.MqqHandler;
-
 public class twc
-  extends TroopObserver
 {
-  public twc(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public String a;
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public twc(String paramString)
   {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0) {
-        this.a.a.sendEmptyMessage(1);
-      }
-    }
-    while ((paramInt1 != 2) || (paramInt2 != 0)) {
-      return;
-    }
-    TroopAssistantManager.a().b(paramString, this.a.app);
-    this.a.c();
-  }
-  
-  protected void b(String paramString)
-  {
-    this.a.c();
+    this.a = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     twc
  * JD-Core Version:    0.7.0.1
  */

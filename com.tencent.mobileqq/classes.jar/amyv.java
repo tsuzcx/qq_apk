@@ -1,14 +1,24 @@
-import cooperation.qzone.report.lp.LpReportInfo;
-import cooperation.qzone.report.lp.MachinelearningReport;
+import com.tencent.mobileqq.ar.ScanningData;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import com.tencent.qphone.base.util.QLog;
 
 public class amyv
-  implements Runnable
+  implements awbh
 {
-  public amyv(MachinelearningReport paramMachinelearningReport, int paramInt, LpReportInfo paramLpReportInfo) {}
+  public amyv(ScanningSurfaceView paramScanningSurfaceView, ScanningData paramScanningData) {}
   
-  public void run()
+  public void a()
   {
-    MachinelearningReport.access$100(this.jdField_a_of_type_CooperationQzoneReportLpMachinelearningReport, this.jdField_a_of_type_Int, this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d("ScanningSurfaceView", 2, "onContentClick wikiurl = " + this.jdField_a_of_type_ComTencentMobileqqArScanningData.c);
+    }
+    ScanningSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArScanningData.c);
+    azqs.b(null, "dc00898", "", "", "0X8008351", "0X8008351", 0, 0, "", "", "", "");
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.a.a();
   }
 }
 

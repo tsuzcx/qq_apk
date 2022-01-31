@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/root" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/b9t" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/g05" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginTop="60.0dip" android:src="@drawable/cfd" />
+        <TextView android:textSize="17.0sp" android:textColor="#ff8e8e93" android:gravity="center_horizontal" android:id="@id/jk7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/vzx" />
+        <include layout="@layout/ap0" />
+        <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:gravity="center_horizontal" android:id="@id/jk8" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/vzv" />
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/g2d" android:visibility="invisible" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="20.0dip" />
+        <android.support.v7.widget.RecyclerView android:gravity="center" android:id="@id/cx6" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="18.0dip" android:layout_marginTop="48.0dip" android:layout_marginRight="18.0dip" android:listSelector="@color/ajr" />
+        <include layout="@layout/ap3" />
+    </LinearLayout>
+    <include layout="@layout/ap1" />
+    <include layout="@layout/aoz" />
+</FrameLayout>

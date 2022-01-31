@@ -1,27 +1,21 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View.OnClickListener;
 
-public class xmu
-  implements View.OnTouchListener
+class xmu
+  implements View.OnClickListener
 {
-  public xmu(LoginView paramLoginView) {}
+  xmu(xms paramxms, int paramInt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if ((paramMotionEvent.getAction() == 1) && (LoginView.a(this.a) != null)) {
-      LoginView.a(this.a).hideSoftInputFromWindow(this.a.a.getWindow().getDecorView().getWindowToken(), 0);
+    if (xms.a(this.jdField_a_of_type_Xms) != null) {
+      xms.a(this.jdField_a_of_type_Xms).a(this.jdField_a_of_type_Int);
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xmu
  * JD-Core Version:    0.7.0.1
  */

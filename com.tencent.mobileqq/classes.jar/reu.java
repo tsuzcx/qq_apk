@@ -1,28 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.Doraemon.APICallback;
-import com.tencent.mobileqq.Doraemon.APIParam;
-import com.tencent.mobileqq.Doraemon.DoraemonBridge.Callback;
-import com.tencent.mobileqq.Doraemon.impl.commonModule.UserInfoModule;
-import com.tencent.mobileqq.Doraemon.util.DoraemonUtil;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
 
 public class reu
-  extends DoraemonBridge.Callback
+  extends AnimatorListenerAdapter
 {
-  public reu(UserInfoModule paramUserInfoModule, APICallback paramAPICallback) {}
+  public reu(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (paramBundle != null)
-    {
-      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, new APIParam(paramBundle));
-      return;
-    }
-    DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, 1, "get user info error, try again");
+    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     reu
  * JD-Core Version:    0.7.0.1
  */

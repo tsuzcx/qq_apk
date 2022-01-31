@@ -1,24 +1,34 @@
-import com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
-import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.CodecHandler;
-import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailArgs;
-import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailProgress;
-import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailTaskContext;
+import android.text.Editable;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import java.util.Comparator;
 
 public class okt
-  implements Runnable
+  implements Comparator<BiuNicknameSpan>
 {
-  public okt(MediaCodecThumbnailGenerator.CodecHandler paramCodecHandler, MediaCodecThumbnailGenerator.ThumbnailTaskContext paramThumbnailTaskContext, MediaCodecThumbnailGenerator.ThumbnailProgress paramThumbnailProgress) {}
+  private Editable jdField_a_of_type_AndroidTextEditable;
   
-  public void run()
+  public okt(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, Editable paramEditable)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailTaskContext.a.a != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailTaskContext.a.a.a(Boolean.valueOf(true), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailProgress);
+    this.jdField_a_of_type_AndroidTextEditable = paramEditable;
+  }
+  
+  public int a(BiuNicknameSpan paramBiuNicknameSpan1, BiuNicknameSpan paramBiuNicknameSpan2)
+  {
+    int i = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan1);
+    int j = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan2);
+    if (i > j) {
+      return 1;
     }
+    if (i < j) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okt
  * JD-Core Version:    0.7.0.1
  */

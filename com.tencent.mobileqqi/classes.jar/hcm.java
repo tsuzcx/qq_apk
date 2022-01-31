@@ -1,38 +1,24 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troop.widget.AutoLocationMapView;
-import com.tencent.mobileqq.troop.widget.AutoLocationMapView.AutoLocationCallback;
-import com.tencent.mobileqq.util.BitmapManager;
-import com.tencent.tencentmap.mapsdk.map.GeoPoint;
-import com.tencent.tencentmap.mapsdk.map.MapController;
-import com.tencent.tencentmap.mapsdk.map.Overlay;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialogDevLock;
 
 public class hcm
-  extends Handler
+  implements View.OnClickListener
 {
-  public hcm(AutoLocationMapView paramAutoLocationMapView) {}
+  public hcm(QQCustomDialogDevLock paramQQCustomDialogDevLock, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    GeoPoint localGeoPoint = (GeoPoint)paramMessage.obj;
-    this.a.clearAllOverlays();
-    if (paramMessage.arg1 == 0)
-    {
-      Object localObject = this.a.getController();
-      ((MapController)localObject).setCenter(localGeoPoint);
-      ((MapController)localObject).setZoom(this.a.getMaxZoomLevel());
-      localObject = new hco(BitmapManager.a(this.a.getContext().getResources(), 2130838397), localGeoPoint);
-      this.a.addOverlay((Overlay)localObject);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogDevLock, 1);
     }
-    if (this.a.a != null) {
-      this.a.a.a(paramMessage.arg1, localGeoPoint);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogDevLock.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hcm
  * JD-Core Version:    0.7.0.1
  */

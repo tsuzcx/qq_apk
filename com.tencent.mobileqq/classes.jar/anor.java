@@ -1,23 +1,28 @@
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public final class anor
-  implements Runnable
+class anor
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public anor(File paramFile, String paramString1, String paramString2) {}
+  anor(anoq paramanoq, anou paramanou) {}
   
-  public void run()
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    FileUtils.a(this.jdField_a_of_type_JavaIoFile.getPath() + File.separator, this.jdField_a_of_type_JavaLangString, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMFileUtils", 2, "paster config save to file " + this.jdField_a_of_type_JavaIoFile.getPath() + File.separator + this.jdField_a_of_type_JavaLangString);
+    if (paramBitmap != null)
+    {
+      this.jdField_a_of_type_Anou.b.setVisibility(0);
+      this.jdField_a_of_type_Anou.a.setVisibility(0);
+      this.jdField_a_of_type_Anou.a.setImageBitmap(paramBitmap);
+      return;
     }
+    this.jdField_a_of_type_Anou.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anor
  * JD-Core Version:    0.7.0.1
  */

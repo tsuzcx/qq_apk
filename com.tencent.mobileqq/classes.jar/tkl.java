@@ -1,54 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONObject;
+import NS_KING_INTERFACE.stPostFeedCommentReq;
+import NS_KING_INTERFACE.stPostFeedCommentRsp;
+import NS_KING_SOCIALIZE_META.stMetaComment;
+import UserGrowth.stSimpleMetaFeed;
 
 public class tkl
-  implements Runnable
+  extends thb<stPostFeedCommentRsp>
 {
-  public tkl(QQSettingCleanActivity paramQQSettingCleanActivity) {}
-  
-  public void run()
+  public tkl(stSimpleMetaFeed paramstSimpleMetaFeed, stMetaComment paramstMetaComment)
   {
-    try
-    {
-      Object localObject = new HttpGet("http://qqwx.qq.com/s?aid=index&p=5&c=102120&vt=2&pf=0");
-      localObject = new DefaultHttpClient().execute((HttpUriRequest)localObject);
-      if (((HttpResponse)localObject).getStatusLine().getStatusCode() == 200)
-      {
-        localObject = EntityUtils.toString(((HttpResponse)localObject).getEntity());
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          long l = new JSONObject(((String)localObject).substring(6, ((String)localObject).length() - 2)).getLong("size");
-          if (l > 0L)
-          {
-            this.a.a = l;
-            this.a.runOnUiThread(new tkp(this.a, 0));
-          }
-        }
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      localOutOfMemoryError.printStackTrace();
-    }
+    super("PostFeedComment");
+    this.a = new stPostFeedCommentReq(paramstSimpleMetaFeed.id, paramstMetaComment);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tkl
  * JD-Core Version:    0.7.0.1
  */

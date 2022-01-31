@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
 
 public class xai
-  extends DownloadListener
+  implements DialogInterface.OnDismissListener
 {
-  public xai(PreloadImgManager paramPreloadImgManager) {}
+  public xai(EditVideoMusic paramEditVideoMusic) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super.onDone(paramDownloadTask);
-    ThreadManager.getFileThreadHandler().post(new xaj(this, paramDownloadTask));
+    this.a.a.a(0);
+    wxk.a("0X80076DD");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xai
  * JD-Core Version:    0.7.0.1
  */

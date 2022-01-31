@@ -1,28 +1,40 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import com.tencent.mobileqq.activity.contacts.base.CardViewController;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
 public class wmp
-  implements SharedPreferences.OnSharedPreferenceChangeListener
+  extends QQUIEventReceiver<wml, wmo>
 {
-  public wmp(CardViewController paramCardViewController) {}
-  
-  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
+  public wmp(wml paramwml)
   {
-    paramSharedPreferences = "contact_recommend_config_json_" + CardViewController.a(this.a).getCurrentAccountUin();
-    if (QLog.isColorLevel()) {
-      QLog.d("CardViewController", 2, "mConfigChangelistener CONTACT_RECOMMEND_CONFIG_JSON ");
+    super(paramwml);
+  }
+  
+  public void a(@NonNull wml paramwml, @NonNull wmo paramwmo)
+  {
+    if (paramwmo.jdField_a_of_type_Boolean)
+    {
+      if (paramwmo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+      {
+        wml.a(paramwml, paramwmo.jdField_a_of_type_JavaUtilList, true);
+        wml.a(paramwml).a(true);
+      }
+      return;
     }
-    if (paramSharedPreferences.equals(paramString)) {
-      CardViewController.a(this.a, true, true);
-    }
+    wml.a(paramwml, paramwmo);
+    wml.a(paramwml).remove(wml.b());
+    wml.a(paramwml);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wmo.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wmp
  * JD-Core Version:    0.7.0.1
  */

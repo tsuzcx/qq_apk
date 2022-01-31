@@ -1,41 +1,15 @@
-import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.CommonWebActivity;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
 
 public class dsr
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public dsr(SubLoginActivity paramSubLoginActivity) {}
+  public dsr(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.d) {
-      return;
-    }
-    if (paramInt == 0)
-    {
-      paramView = new Intent(this.a, CommonWebActivity.class);
-      paramView.putExtra("uin", SubLoginActivity.a(this.a));
-      paramView.putExtra("reqType", 3);
-      paramView.putExtra("url", "https://aq.qq.com/cn2/findpsw/mobile_web_find_input_account?source_id=2756");
-      this.a.startActivity(paramView);
-    }
-    for (;;)
-    {
-      this.a.d = true;
-      this.a.a.dismiss();
-      return;
-      if (paramInt == 1)
-      {
-        paramView = new Intent(this.a, LoginPhoneNumActivity.class);
-        paramView.putExtra("isSubaccount", true);
-        this.a.startActivity(paramView);
-      }
-    }
+    this.a.d();
   }
 }
 

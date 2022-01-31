@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class intchk$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int MSG_CHECK_CONFIG_RSP_FIELD_NUMBER = 3;
   public static final int MSG_REPORT_CHECK_RESULT_RSP_FIELD_NUMBER = 4;
@@ -20,7 +20,7 @@ public final class intchk$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.intchk.RspBody
  * JD-Core Version:    0.7.0.1
  */

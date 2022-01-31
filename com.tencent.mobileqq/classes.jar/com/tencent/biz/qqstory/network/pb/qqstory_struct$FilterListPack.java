@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_struct$FilterListPack
-  extends MessageMicro
+  extends MessageMicro<FilterListPack>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField filter_config_file = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -28,7 +28,7 @@ public final class qqstory_struct$FilterListPack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.FilterListPack
  * JD-Core Version:    0.7.0.1
  */

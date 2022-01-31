@@ -22,17 +22,17 @@ public class StatusObserver
   static final String jdField_f_of_type_JavaLangString = "k_status_key";
   static final String g = "k_error_code";
   
-  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList paramArrayList, boolean paramBoolean3) {}
+  public void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList paramArrayList, boolean paramBoolean3) {}
   
-  protected void a(boolean paramBoolean, ArrayList paramArrayList) {}
+  public void a(boolean paramBoolean, ArrayList paramArrayList) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, byte[] paramArrayOfByte, ArrayList paramArrayList) {}
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, byte[] paramArrayOfByte, ArrayList paramArrayList) {}
   
-  protected void a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt) {}
+  public void a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt) {}
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
+  public void b(boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {

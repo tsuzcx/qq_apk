@@ -10,11 +10,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0xee$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_id = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_msg_notify_list = PBField.initRepeatMessage(submsgtype0xee.NotifyInfo.class);
+  public final PBRepeatMessageField<submsgtype0xee.NotifyInfo> rpt_msg_notify_list = PBField.initRepeatMessage(submsgtype0xee.NotifyInfo.class);
   public final PBUInt32Field uint32_bid = PBField.initUInt32(0);
   public final PBUInt64Field uint64_seq = PBField.initUInt64(0L);
   

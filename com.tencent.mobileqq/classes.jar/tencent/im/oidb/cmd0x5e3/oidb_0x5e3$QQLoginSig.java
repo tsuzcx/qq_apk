@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x5e3$QQLoginSig
-  extends MessageMicro
+  extends MessageMicro<QQLoginSig>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_sig = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -25,7 +25,7 @@ public final class oidb_0x5e3$QQLoginSig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5e3.oidb_0x5e3.QQLoginSig
  * JD-Core Version:    0.7.0.1
  */

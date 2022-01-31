@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.leba.LebaGridManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
 
 public class adzf
-  implements Runnable
+  implements DialogInterface.OnKeyListener
 {
-  public adzf(LebaGridManager paramLebaGridManager) {}
+  public adzf(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
   
-  public void run()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.a();
+    if (paramInt == 4) {
+      this.a.finish();
+    }
+    return false;
   }
 }
 

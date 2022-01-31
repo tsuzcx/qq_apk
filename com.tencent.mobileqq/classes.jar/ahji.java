@@ -1,42 +1,37 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import android.graphics.Bitmap;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.widget.ImageView;
 
-public class ahji
-  implements View.OnTouchListener
+class ahji
+  implements bdbc
 {
-  public ahji(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  ahji(ahjh paramahjh) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    switch (paramView.getId())
+    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
     {
-    }
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 0)
+      paramInt2 = ahjh.a(this.a).getChildCount();
+      paramInt1 = 0;
+      while (paramInt1 < paramInt2)
       {
-        EffectsCameraCaptureFragment.a(this.a).setAlpha(0.5F);
-        EffectsCameraCaptureFragment.a(this.a).setAlpha(0.5F);
-        EffectsCameraCaptureFragment.f(this.a).setAlpha(0.5F);
-      }
-      else if (paramMotionEvent.getAction() == 1)
-      {
-        EffectsCameraCaptureFragment.a(this.a).setAlpha(1.0F);
-        EffectsCameraCaptureFragment.a(this.a).setAlpha(1.0F);
-        EffectsCameraCaptureFragment.f(this.a).setAlpha(1.0F);
+        Object localObject = ahjh.a(this.a).getChildViewHolder(ahjh.a(this.a).getChildAt(paramInt1));
+        if ((localObject instanceof ahjj))
+        {
+          localObject = (ahjj)localObject;
+          if (((ahjj)localObject).jdField_a_of_type_JavaLangString.equals(paramString)) {
+            ((ahjj)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+          }
+        }
+        paramInt1 += 1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahji
  * JD-Core Version:    0.7.0.1
  */

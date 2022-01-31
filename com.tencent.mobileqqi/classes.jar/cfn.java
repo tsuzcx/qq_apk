@@ -1,26 +1,17 @@
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import cooperation.qlink.QQProxyForQlink.Listener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class cfn
-  extends QQProxyForQlink.Listener
+  implements DialogInterface.OnDismissListener
 {
-  private cfn(ChatActivity paramChatActivity) {}
+  public cfn(Conversation paramConversation) {}
   
-  protected void a(String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramString == null) {}
-    while (!this.a.a.a.equalsIgnoreCase(paramString)) {
-      return;
+    if (paramDialogInterface == Conversation.a(this.a)) {
+      Conversation.a(this.a, null);
     }
-    Object localObject = new cfo(this);
-    paramString = new cfp(this);
-    localObject = DialogUtil.a(this.a, 230, null, this.a.getString(2131560936), 2131563227, 2131560937, (DialogInterface.OnClickListener)localObject, null);
-    ((QQCustomDialog)localObject).setOnDismissListener(paramString);
-    ((QQCustomDialog)localObject).show();
   }
 }
 

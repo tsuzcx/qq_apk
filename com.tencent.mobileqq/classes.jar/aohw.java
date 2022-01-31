@@ -1,28 +1,29 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Handler;
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView.OnTrimVDPlayCompelteListener;
+import android.os.Message;
+import com.tencent.av.service.LBSInfo;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
 
 public class aohw
-  implements MediaPlayer.OnCompletionListener
+  extends alvn
 {
-  public aohw(FixedSizeVideoView paramFixedSizeVideoView) {}
+  public aohw(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
   {
-    if (this.a.a != null)
+    if (paramLBSInfo != null) {}
+    for (paramLBSInfo = paramLBSInfo.a(); Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) > 1200L; paramLBSInfo = null)
     {
-      if (FixedSizeVideoView.a(this.a) != null) {
-        FixedSizeVideoView.a(this.a).removeMessages(0);
-      }
-      this.a.a.a(paramMediaPlayer);
+      this.a.a(paramBoolean, paramLBSInfo);
+      return;
     }
+    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000);
+    localMessage.obj = new Object[] { Boolean.valueOf(paramBoolean), paramLBSInfo };
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1200L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aohw
  * JD-Core Version:    0.7.0.1
  */

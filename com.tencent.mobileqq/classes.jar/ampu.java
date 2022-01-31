@@ -1,19 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qqfav.widget.QfavJumpActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoAttribute;
 
-public class ampu
-  implements DialogInterface.OnDismissListener
+public final class ampu
+  implements Parcelable.Creator<SosoInterface.SosoAttribute>
 {
-  public ampu(QfavJumpActivity paramQfavJumpActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public SosoInterface.SosoAttribute a(Parcel paramParcel)
   {
-    if (QfavJumpActivity.a(this.a))
-    {
-      QfavJumpActivity.a(this.a, false);
-      this.a.finish();
-    }
+    return new SosoInterface.SosoAttribute(paramParcel);
+  }
+  
+  public SosoInterface.SosoAttribute[] a(int paramInt)
+  {
+    return new SosoInterface.SosoAttribute[paramInt];
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ar;
 
+import amxd;
+import ando;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -39,15 +39,8 @@ public class ARNativeBridge
   private static boolean initSoEnvirontMent()
   {
     boolean bool2 = true;
-    if (ARWorldCupGameLogicManager.a().a())
-    {
-      System.loadLibrary("armapengine");
-      globalInitialized = true;
-      loadSoSuccess = true;
-      return true;
-    }
     long l = System.currentTimeMillis();
-    boolean bool3 = ArNativeSoLoader.a("ArMapEngine7651", needCheckMd5);
+    boolean bool3 = amxd.a("ArMapEngine836", needCheckMd5);
     if (!bool3) {}
     for (boolean bool1 = true;; bool1 = false)
     {
@@ -70,7 +63,7 @@ public class ARNativeBridge
     {
       try
       {
-        int i = ArNativeSoLoader.a("ArMapEngine7651");
+        int i = amxd.a("ArMapEngine836");
         if (i != 0) {
           continue;
         }
@@ -91,7 +84,7 @@ public class ARNativeBridge
       if (QLog.isColorLevel()) {
         QLog.d("AREngine", 2, "initSoEnvirontMent loadSoSuccess = " + loadSoSuccess);
       }
-      ARReport.a().f(System.currentTimeMillis() - l, loadSoSuccess);
+      ando.a().f(System.currentTimeMillis() - l, loadSoSuccess);
       return loadSoSuccess;
       bool1 = false;
     }
@@ -116,7 +109,7 @@ public class ARNativeBridge
   
   private native void nativeOnResume();
   
-  private native void nativeSetupScene(int paramInt1, int paramInt2, ArrayList paramArrayList);
+  private native void nativeSetupScene(int paramInt1, int paramInt2, ArrayList<String> paramArrayList);
   
   public static void qqColorLog(int paramInt, String paramString1, String paramString2)
   {
@@ -169,6 +162,8 @@ public class ARNativeBridge
     return i;
   }
   
+  public native float getRotateDegree();
+  
   public void handleDrawFrame(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
     if (!loadSoSuccess) {
@@ -185,7 +180,7 @@ public class ARNativeBridge
     }
   }
   
-  public void handleOnSurfaceCreate(ArrayList paramArrayList, int paramInt1, int paramInt2)
+  public void handleOnSurfaceCreate(ArrayList<String> paramArrayList, int paramInt1, int paramInt2)
   {
     if (!loadSoSuccess) {
       return;
@@ -262,6 +257,8 @@ public class ARNativeBridge
       localUnsatisfiedLinkError.printStackTrace();
     }
   }
+  
+  public native void nativePreLoadTransferDoorAnd360Ball();
   
   public void nativeResume(long paramLong)
   {
@@ -377,14 +374,20 @@ public class ARNativeBridge
   
   public void onResume() {}
   
+  public native void setARCoreSupport(int paramInt);
+  
+  public native void setPreLoadTransferDoorFlags();
+  
   public void setupActionCallback(ARNativeBridge.ActionCallback paramActionCallback)
   {
     this.sActionCallback = paramActionCallback;
   }
+  
+  public native void updateCameraTranslate(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARNativeBridge
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,38 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.biz.troopgift.RadioButtonIndicator;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
 
 public class oyx
-  extends RadioButton
+  implements olx
 {
-  public oyx(RadioButtonIndicator paramRadioButtonIndicator, Context paramContext)
+  public oyx(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(boolean paramBoolean)
   {
-    super(paramContext);
+    if (!paramBoolean)
+    {
+      this.a.onBackEvent();
+      return;
+    }
+    this.a.a(this.a.a);
   }
   
-  public boolean performClick()
+  public void onClick(View paramView)
   {
-    return true;
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    this.a.onBackEvent();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oyx
  * JD-Core Version:    0.7.0.1
  */

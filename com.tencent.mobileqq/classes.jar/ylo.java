@@ -1,34 +1,39 @@
-import android.view.View;
-import com.tencent.mobileqq.Doraemon.APICallback;
-import com.tencent.mobileqq.Doraemon.APIParam;
-import com.tencent.mobileqq.Doraemon.DoraemonAPIManager;
-import com.tencent.mobileqq.apollo.ApolloRender;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoTipOffRsp;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ylo
-  implements APICallback
+class ylo
+  implements zac<CertifiedAccountWrite.StDoTipOffRsp>
 {
-  public ylo(View paramView, DoraemonAPIManager paramDoraemonAPIManager, long paramLong, int paramInt, String paramString) {}
+  ylo(yln paramyln) {}
   
-  public void a() {}
-  
-  public void a(int paramInt)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoTipOffRsp paramStDoTipOffRsp)
   {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location login permision code");
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location login failed," + paramString);
-  }
-  
-  public void a(APIParam paramAPIParam)
-  {
-    ApolloRender.getLocationDoLocation(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    paramBoolean = true;
+    if (paramLong == 0L)
+    {
+      QLog.w("FeedbackSheetHelper", 1, "DoTipOffRequest success");
+      if (this.a.a != null)
+      {
+        paramString = this.a.a;
+        if (paramLong != 0L) {
+          break label78;
+        }
+      }
+    }
+    for (;;)
+    {
+      paramString.a(paramBoolean);
+      return;
+      QLog.w("FeedbackSheetHelper", 1, "DoTipOffRequest failed retCode:" + paramLong);
+      break;
+      label78:
+      paramBoolean = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ylo
  * JD-Core Version:    0.7.0.1
  */

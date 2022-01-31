@@ -1,31 +1,87 @@
-import android.net.Uri;
-import android.provider.ContactsContract.Data;
-import android.provider.ContactsContract.RawContacts;
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.v7.widget.RecyclerView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class advt
-  implements HookMethodCallback
+public class advt
+  implements mxt
 {
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
+  public advt(ScoreQAVFragment paramScoreQAVFragment) {}
+  
+  public void a(Object paramObject, int paramInt)
   {
-    paramMethodHookParam = ((Uri)paramMethodHookParam.args[0]).toString();
-    if ((paramMethodHookParam.contains(ContactsContract.RawContacts.CONTENT_URI.toString())) || (paramMethodHookParam.contains(ContactsContract.Data.CONTENT_URI.toString())))
+    if (QLog.isColorLevel()) {
+      QLog.d("ScoreActivity", 2, "ratingScore : " + paramInt);
+    }
+    this.a.e = paramInt;
+    if (paramInt <= 3) {}
+    for (;;)
     {
-      paramMethodHookParam = new StringBuilder(1000);
-      StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
-      int i = 0;
-      while (i < arrayOfStackTraceElement.length)
+      try
       {
-        paramMethodHookParam.append(arrayOfStackTraceElement[i] + "-");
-        i += 1;
+        if (mum.a("qav_score_bad.jpg")) {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), mum.b() + "qav_score_bad.jpg"));
+        }
+        ScoreQAVFragment.a(this.a).setVisibility(0);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.a.b.setText(2131696310);
+        if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
+        {
+          ScoreQAVFragment.a(this.a).setAdapter(ScoreQAVFragment.a(this.a));
+          if (paramInt <= 0) {
+            break label398;
+          }
+          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+          this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFF"));
+          this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+          return;
+        }
       }
-      QLog.d("ContactDelete", 1, paramMethodHookParam.toString());
+      catch (OutOfMemoryError paramObject)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
+        continue;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ScoreActivity", 2, "mDatas is invalid!");
+        continue;
+      }
+      if (paramInt > 3)
+      {
+        ScoreQAVFragment.a(this.a).setVisibility(8);
+        try
+        {
+          if (mum.a("qav_score_good.jpg")) {
+            this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), mum.b() + "qav_score_good.jpg"));
+          }
+          this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+          this.a.b.setText(2131696310);
+        }
+        catch (OutOfMemoryError paramObject)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
+            }
+          }
+        }
+        label398:
+        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+        this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#BBBBBB"));
+      }
     }
   }
-  
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 

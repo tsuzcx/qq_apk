@@ -1,26 +1,34 @@
-import com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener;
-import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.WebView;
-
 public class alen
-  implements Runnable
+  implements Comparable
 {
-  public alen(OpenJsBridge.OpenJsBridgeListener paramOpenJsBridgeListener, String paramString1, String paramString2, WebView paramWebView) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
   
-  public void run()
+  public int compareTo(Object paramObject)
   {
-    LogUtility.b("Response", "AsyncInterface_end:javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge$OpenJsBridgeListener.b + ",'r':0,'data':" + this.b + "});");
-    try
-    {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge$OpenJsBridgeListener.b + ",'r':0,'data':" + this.b + "});");
-      return;
+    paramObject = (alen)paramObject;
+    if (this.d < paramObject.d) {
+      return 1;
     }
-    catch (Exception localException) {}
+    if (this.d > paramObject.d) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alen
  * JD-Core Version:    0.7.0.1
  */

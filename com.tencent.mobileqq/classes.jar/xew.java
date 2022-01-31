@@ -1,33 +1,28 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgDialog;
+import android.support.annotation.Nullable;
 
 class xew
-  implements Runnable
+  extends xff
 {
-  xew(xev paramxev, Bitmap paramBitmap) {}
-  
-  public void run()
+  xew(xet paramxet, xes paramxes)
   {
-    if ((GoldMsgDialog.a(this.jdField_a_of_type_Xev.a.a) != null) && (this.jdField_a_of_type_Xev.a.a.isShowing()) && (GoldMsgDialog.a(this.jdField_a_of_type_Xev.a.a) != null))
+    super(paramxes);
+  }
+  
+  protected void a(@Nullable xes arg1)
+  {
+    super.onResult(???);
+    wxe.b("DoodleEmojiManager", "startDownload again");
+    synchronized (this.a.jdField_a_of_type_JavaLangObject)
     {
-      int i = GoldMsgDialog.b(this.jdField_a_of_type_Xev.a.a).getWidth();
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)GoldMsgDialog.a(this.jdField_a_of_type_Xev.a.a).getLayoutParams();
-      if (localLayoutParams != null)
-      {
-        localLayoutParams.height = (i * this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
-        GoldMsgDialog.a(this.jdField_a_of_type_Xev.a.a).setLayoutParams(localLayoutParams);
-      }
-      GoldMsgDialog.a(this.jdField_a_of_type_Xev.a.a).setVisibility(0);
-      GoldMsgDialog.a(this.jdField_a_of_type_Xev.a.a).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.a.jdField_a_of_type_Xes = null;
+      this.a.c();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xew
  * JD-Core Version:    0.7.0.1
  */

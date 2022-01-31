@@ -1,25 +1,21 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.readinjoy.ReadInJoyObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class sxj
-  extends ReadInJoyObserver
+class sxj
+  implements View.OnClickListener
 {
-  public sxj(Leba paramLeba) {}
+  sxj(sxe paramsxe, String paramString) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba", 2, "onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
-    }
-    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x1) != 0)) {
-      this.a.a(new sxk(this));
-    }
+    this.jdField_a_of_type_Sxe.j();
+    this.jdField_a_of_type_Sxe.o = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Sxe.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sxj
  * JD-Core Version:    0.7.0.1
  */

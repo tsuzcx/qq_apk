@@ -1,52 +1,16 @@
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnControllerClickListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo.RecommadInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
 
-public class akks
-  implements TVK_IMediaPlayer.OnControllerClickListener
+class akks
+  extends akit
 {
-  public akks(VipVideoPlayActivity paramVipVideoPlayActivity) {}
-  
-  public void onAttationClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
-  
-  public void onBackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipVideoPlayActivity", 2, "video player onBackClick");
-    }
-    this.a.setResult(0);
-    this.a.finish();
-  }
-  
-  public void onBackOnFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipVideoPlayActivity", 2, "video player onBackOnFullScreenClick");
-    }
-    if (this.a.getRequestedOrientation() == 0)
-    {
-      this.a.setRequestedOrientation(1);
-      return;
-    }
-    this.a.setResult(0);
-    this.a.finish();
-  }
-  
-  public void onCacheClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
-  
-  public void onFeedbackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
-  
-  public void onFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipVideoPlayActivity", 2, "video player onFullScreenClick--------------");
-    }
-    this.a.setRequestedOrientation(0);
-  }
-  
-  public void onReopenClick(TVK_NetVideoInfo.RecommadInfo paramRecommadInfo) {}
+  public TextView a;
+  public MayKnowRecommend a;
+  public TroopLabelLayout a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
 }
 
 

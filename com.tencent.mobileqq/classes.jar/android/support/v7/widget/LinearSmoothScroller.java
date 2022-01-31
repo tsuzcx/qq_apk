@@ -50,15 +50,16 @@ public abstract class LinearSmoothScroller
     }
     do
     {
-      return paramInt1;
-      return paramInt4 - paramInt2;
-      paramInt3 -= paramInt1;
-      paramInt1 = paramInt3;
-    } while (paramInt3 > 0);
-    paramInt1 = paramInt4 - paramInt2;
-    if (paramInt1 < 0) {
-      return paramInt1;
-    }
+      do
+      {
+        return paramInt1;
+        return paramInt4 - paramInt2;
+        paramInt3 -= paramInt1;
+        paramInt1 = paramInt3;
+      } while (paramInt3 > 0);
+      paramInt2 = paramInt4 - paramInt2;
+      paramInt1 = paramInt2;
+    } while (paramInt2 < 0);
     return 0;
   }
   

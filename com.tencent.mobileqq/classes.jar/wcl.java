@@ -1,19 +1,32 @@
-import android.graphics.drawable.StateListDrawable;
-import android.widget.TextView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class wcl
-  implements Runnable
+public class wcl
+  extends QQUIEventReceiver<wcj, vdl>
 {
-  wcl(wck paramwck, StateListDrawable paramStateListDrawable) {}
-  
-  public void run()
+  public wcl(@NonNull wcj paramwcj)
   {
-    this.jdField_a_of_type_Wck.a.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable);
+    super(paramwcj);
+  }
+  
+  public void a(@NonNull wcj paramwcj, @NonNull vdl paramvdl)
+  {
+    if (paramvdl.a.isSuccess())
+    {
+      wxe.a(this.TAG, "receive user info event. %s.", paramvdl.toString());
+      paramwcj.i();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vdl.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wcl
  * JD-Core Version:    0.7.0.1
  */

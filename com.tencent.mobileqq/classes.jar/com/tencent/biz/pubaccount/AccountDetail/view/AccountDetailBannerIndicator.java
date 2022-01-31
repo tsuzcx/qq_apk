@@ -1,5 +1,6 @@
 package com.tencent.biz.pubaccount.AccountDetail.view;
 
+import aepi;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -9,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.widget.BubbleViewLayout;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class AccountDetailBannerIndicator
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
   private final String jdField_a_of_type_JavaLangString = "#FFFFFFFF";
-  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<ImageView> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private int jdField_b_of_type_Int;
   private final String jdField_b_of_type_JavaLangString = "#33FFFFFF";
   
@@ -34,8 +34,8 @@ public class AccountDetailBannerIndicator
   
   private void a()
   {
-    int j = AIOUtils.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int k = AIOUtils.a(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int j = aepi.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int k = aepi.a(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     int i = 0;
     if (i < this.jdField_a_of_type_Int)
     {

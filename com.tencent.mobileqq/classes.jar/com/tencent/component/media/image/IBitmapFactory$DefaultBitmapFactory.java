@@ -6,11 +6,11 @@ import android.graphics.Bitmap.Config;
 public class IBitmapFactory$DefaultBitmapFactory
   extends IBitmapFactory
 {
-  IDecoder a;
+  IDecoder mDecoder;
   
   public IBitmapFactory$DefaultBitmapFactory(IDecoder paramIDecoder)
   {
-    this.a = paramIDecoder;
+    this.mDecoder = paramIDecoder;
   }
   
   public BitmapReference createBitmap(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
@@ -20,7 +20,7 @@ public class IBitmapFactory$DefaultBitmapFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.IBitmapFactory.DefaultBitmapFactory
  * JD-Core Version:    0.7.0.1
  */

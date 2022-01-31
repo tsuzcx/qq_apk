@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class aeiy
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aeiy(AIOShareActionSheet paramAIOShareActionSheet) {}
+  public aeiy(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.e();
-    AIOShareActionSheet.a(this.a).a(false, null, false);
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
+    this.a.finish();
   }
 }
 

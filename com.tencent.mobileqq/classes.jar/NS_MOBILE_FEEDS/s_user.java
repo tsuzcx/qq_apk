@@ -10,46 +10,57 @@ import java.util.ArrayList;
 public final class s_user
   extends JceStruct
 {
-  static s_medal cache_authqzoneMedalInfo = new s_medal();
+  static s_medal cache_authqzoneMedalInfo;
   static byte[] cache_decoration;
+  static s_kuolie_info cache_kuoliestate;
   static s_medal cache_liveshowMedalInfo;
   static s_medal cache_medalInfo = new s_medal();
+  static s_openid_user cache_openid_users;
   static combine_diamond_info cache_stuCombineDiamondInfo;
   static star_info cache_stuStarInfo = new star_info();
-  static ArrayList cache_tagInfos;
+  static ArrayList<s_yytag> cache_tagInfos;
+  static ArrayList<String> cache_user_tags;
   public int actiontype;
   public String actionurl = "";
+  public int age;
   public s_medal authqzoneMedalInfo;
+  public String avatarRecomBar = "";
   public byte[] decoration;
   public String descicon = "";
   public int displayflag;
-  public long eUserTypeReport;
+  public long eUserTypeReport = 0L;
   public int from = 1;
   public int iCurUserType = 0;
+  public int iVipActType;
   public int icon_height;
   public int icon_width;
   public byte isAnnualVip;
   public int isCmtVerifyOpen;
   public int isFamousWhite;
+  public int isPrivateMode;
   public int isQzoneUser;
   public byte isSafeModeUser;
   public byte isSetNickGlint;
   public int isSweetVip;
+  public int isVideoCircleVUser;
   public int is_own;
   public int is_owner;
+  public s_kuolie_info kuoliestate;
   public int level;
   public s_medal liveshowMedalInfo;
   public String logo = "";
   public s_medal medalInfo;
   public int namePlate;
   public String nickname = "";
+  public s_openid_user openid_users;
   public int operation_mask;
   public int portrait_id;
   public String qzonedesc = "";
+  public byte sex;
   public String strPortraitId = "";
   public combine_diamond_info stuCombineDiamondInfo;
   public star_info stuStarInfo;
-  public ArrayList tagInfos;
+  public ArrayList<s_yytag> tagInfos;
   public String talk_id = "";
   public int timestamp;
   public long uFansCount;
@@ -58,6 +69,7 @@ public final class s_user
   public long uin;
   public String uinkey = "";
   public String under_nickname_desc = "";
+  public ArrayList<String> user_tags;
   public int vip;
   public byte vipShowType = -1;
   public int viplevel;
@@ -73,11 +85,16 @@ public final class s_user
     s_yytag locals_yytag = new s_yytag();
     cache_tagInfos.add(locals_yytag);
     cache_liveshowMedalInfo = new s_medal();
+    cache_authqzoneMedalInfo = new s_medal();
+    cache_openid_users = new s_openid_user();
+    cache_kuoliestate = new s_kuolie_info();
+    cache_user_tags = new ArrayList();
+    cache_user_tags.add("");
   }
   
   public s_user() {}
   
-  public s_user(long paramLong1, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString4, int paramInt7, int paramInt8, String paramString5, String paramString6, int paramInt9, int paramInt10, int paramInt11, int paramInt12, byte paramByte1, byte paramByte2, s_medal params_medal1, String paramString7, int paramInt13, int paramInt14, int paramInt15, star_info paramstar_info, combine_diamond_info paramcombine_diamond_info, byte paramByte3, byte paramByte4, int paramInt16, int paramInt17, String paramString8, byte[] paramArrayOfByte, ArrayList paramArrayList, String paramString9, String paramString10, s_medal params_medal2, long paramLong2, long paramLong3, int paramInt18, int paramInt19, int paramInt20, long paramLong4, s_medal params_medal3, long paramLong5)
+  public s_user(long paramLong1, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString4, int paramInt7, int paramInt8, String paramString5, String paramString6, int paramInt9, int paramInt10, int paramInt11, int paramInt12, byte paramByte1, byte paramByte2, s_medal params_medal1, String paramString7, int paramInt13, int paramInt14, int paramInt15, star_info paramstar_info, combine_diamond_info paramcombine_diamond_info, byte paramByte3, byte paramByte4, int paramInt16, int paramInt17, String paramString8, byte[] paramArrayOfByte, ArrayList<s_yytag> paramArrayList, String paramString9, String paramString10, s_medal params_medal2, long paramLong2, long paramLong3, int paramInt18, int paramInt19, int paramInt20, long paramLong4, s_medal params_medal3, long paramLong5, int paramInt21, s_openid_user params_openid_user, byte paramByte5, s_kuolie_info params_kuolie_info, int paramInt22, String paramString11, ArrayList<String> paramArrayList1, int paramInt23, int paramInt24)
   {
     this.uin = paramLong1;
     this.nickname = paramString1;
@@ -125,6 +142,15 @@ public final class s_user
     this.vtime = paramLong4;
     this.authqzoneMedalInfo = params_medal3;
     this.eUserTypeReport = paramLong5;
+    this.iVipActType = paramInt21;
+    this.openid_users = params_openid_user;
+    this.sex = paramByte5;
+    this.kuoliestate = params_kuolie_info;
+    this.isPrivateMode = paramInt22;
+    this.avatarRecomBar = paramString11;
+    this.user_tags = paramArrayList1;
+    this.age = paramInt23;
+    this.isVideoCircleVUser = paramInt24;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -175,6 +201,15 @@ public final class s_user
     this.vtime = paramJceInputStream.read(this.vtime, 43, false);
     this.authqzoneMedalInfo = ((s_medal)paramJceInputStream.read(cache_authqzoneMedalInfo, 44, false));
     this.eUserTypeReport = paramJceInputStream.read(this.eUserTypeReport, 45, false);
+    this.iVipActType = paramJceInputStream.read(this.iVipActType, 46, false);
+    this.openid_users = ((s_openid_user)paramJceInputStream.read(cache_openid_users, 47, false));
+    this.sex = paramJceInputStream.read(this.sex, 48, false);
+    this.kuoliestate = ((s_kuolie_info)paramJceInputStream.read(cache_kuoliestate, 49, false));
+    this.isPrivateMode = paramJceInputStream.read(this.isPrivateMode, 50, false);
+    this.avatarRecomBar = paramJceInputStream.readString(51, false);
+    this.user_tags = ((ArrayList)paramJceInputStream.read(cache_user_tags, 52, false));
+    this.age = paramJceInputStream.read(this.age, 53, false);
+    this.isVideoCircleVUser = paramJceInputStream.read(this.isVideoCircleVUser, 54, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -259,11 +294,28 @@ public final class s_user
       paramJceOutputStream.write(this.authqzoneMedalInfo, 44);
     }
     paramJceOutputStream.write(this.eUserTypeReport, 45);
+    paramJceOutputStream.write(this.iVipActType, 46);
+    if (this.openid_users != null) {
+      paramJceOutputStream.write(this.openid_users, 47);
+    }
+    paramJceOutputStream.write(this.sex, 48);
+    if (this.kuoliestate != null) {
+      paramJceOutputStream.write(this.kuoliestate, 49);
+    }
+    paramJceOutputStream.write(this.isPrivateMode, 50);
+    if (this.avatarRecomBar != null) {
+      paramJceOutputStream.write(this.avatarRecomBar, 51);
+    }
+    if (this.user_tags != null) {
+      paramJceOutputStream.write(this.user_tags, 52);
+    }
+    paramJceOutputStream.write(this.age, 53);
+    paramJceOutputStream.write(this.isVideoCircleVUser, 54);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_user
  * JD-Core Version:    0.7.0.1
  */

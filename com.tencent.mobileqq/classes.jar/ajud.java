@@ -1,35 +1,6 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
-
-public class ajud
-  implements Runnable
+public abstract interface ajud
 {
-  private final WeakReference a;
-  
-  public ajud(TroopMoreDetailView paramTroopMoreDetailView)
-  {
-    this.a = new WeakReference(paramTroopMoreDetailView);
-  }
-  
-  public void run()
-  {
-    TroopMoreDetailView localTroopMoreDetailView = (TroopMoreDetailView)this.a.get();
-    if (localTroopMoreDetailView == null) {}
-    ArrayList localArrayList;
-    do
-    {
-      do
-      {
-        return;
-      } while (localTroopMoreDetailView.getContext() == null);
-      localArrayList = TroopInfoActivity.a(localTroopMoreDetailView.getContext(), localTroopMoreDetailView.a);
-    } while (localArrayList == null);
-    ThreadManager.getUIHandler().post(new ajue(this, localTroopMoreDetailView, localArrayList));
-  }
+  public abstract void a(long paramLong1, long paramLong2, String paramString1, String paramString2, boolean paramBoolean);
 }
 
 

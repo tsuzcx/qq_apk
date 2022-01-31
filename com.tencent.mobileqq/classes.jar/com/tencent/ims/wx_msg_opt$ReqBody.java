@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class wx_msg_opt$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int UINT32_CMD_FIELD_NUMBER = 2;
   public static final int UINT32_OPT_FIELD_NUMBER = 4;
@@ -21,7 +21,7 @@ public final class wx_msg_opt$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.wx_msg_opt.ReqBody
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,40 @@
-import android.animation.TypeEvaluator;
+import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
 
-final class ose
-  implements TypeEvaluator
+class ose
+  implements osi
 {
-  private osd a;
+  ose(osd paramosd) {}
   
-  public osd a(float paramFloat, osd paramosd1, osd paramosd2)
+  public void a(osl paramosl)
   {
-    float f1 = paramosd1.a + (paramosd2.a - paramosd1.a) * paramFloat;
-    float f2 = paramosd1.b + (paramosd2.b - paramosd1.b) * paramFloat;
-    paramFloat = paramosd1.c + (paramosd2.c - paramosd1.c) * paramFloat;
-    if (this.a == null) {
-      this.a = new osd(f1, f2, paramFloat);
+    osd.a(this.a, 2);
+    osd localosd = this.a;
+    String str;
+    if (paramosl.jdField_a_of_type_JavaLangString == null)
+    {
+      str = "";
+      osd.a(localosd, str);
+      if (paramosl.jdField_a_of_type_Int != 1) {
+        break label78;
+      }
+      osd.b(this.a, 1);
     }
     for (;;)
     {
-      return this.a;
-      this.a.a = f1;
-      this.a.b = f2;
-      this.a.c = paramFloat;
+      if (osd.a(this.a) != null) {
+        osd.a(this.a).onPrepared();
+      }
+      return;
+      str = paramosl.jdField_a_of_type_JavaLangString;
+      break;
+      label78:
+      osd.b(this.a, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ose
  * JD-Core Version:    0.7.0.1
  */

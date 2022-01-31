@@ -1,21 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchResultGroupPresenter;
-import com.tencent.mobileqq.filemanager.data.search.GroupSearchModelFileEntity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.62.1;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.62.2;
 
 public class aday
-  implements View.OnClickListener
+  implements beth
 {
-  public aday(FileSearchResultGroupPresenter paramFileSearchResultGroupPresenter, GroupSearchModelFileEntity paramGroupSearchModelFileEntity) {}
+  public aday(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchGroupSearchModelFileEntity.a(paramView);
+    if ("profile_btn_config".equals(paramString)) {
+      this.a.runOnUiThread(new FriendProfileCardActivity.62.1(this));
+    }
+    while (!"profile_switch_config".equals(paramString)) {
+      return;
+    }
+    this.a.runOnUiThread(new FriendProfileCardActivity.62.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aday
  * JD-Core Version:    0.7.0.1
  */

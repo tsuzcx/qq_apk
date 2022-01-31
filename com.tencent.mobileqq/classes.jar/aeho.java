@@ -1,51 +1,28 @@
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.bubble.BubbleInfo;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.mobileqq.model.ChatBackgroundManager.BgThemeColorExtractListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.Vector;
+import android.content.res.Resources;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
 
 public class aeho
-  implements ChatBackgroundManager.BgThemeColorExtractListener
+  extends amdd
 {
-  public aeho(ChatBackgroundManager paramChatBackgroundManager, Context paramContext) {}
+  public aeho(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void a(boolean paramBoolean, Vector paramVector)
+  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)))
-    {
-      paramVector = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
-      if ((paramVector != null) && (paramVector.a() != null) && (paramVector.a().a != null))
-      {
-        ChatXListView localChatXListView = paramVector.a().a;
-        int i = localChatXListView.getFirstVisiblePosition();
-        int j = localChatXListView.getLastVisiblePosition();
-        while (i <= j)
-        {
-          Object localObject = AIOUtils.a(localChatXListView, i);
-          if ((localObject != null) && (((View)localObject).getTag() != null) && ((((View)localObject).getTag() instanceof BaseBubbleBuilder.ViewHolder)))
-          {
-            localObject = (BaseBubbleBuilder.ViewHolder)((View)localObject).getTag();
-            if ((((BaseBubbleBuilder.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo != null) && (!((BaseBubbleBuilder.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.a) && (((BaseBubbleBuilder.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.b))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("ChatBackgroundManager", 2, "BgThemeColorExtractListener.onBgThemeColorExtracted: success=true, refresh AIO.");
-              }
-              paramVector.a().a(((BaseBubbleBuilder.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage, 1);
-            }
-          }
-          i += 1;
-        }
-      }
+    if (this.a.isFinishing()) {
+      return;
     }
+    if (paramBoolean)
+    {
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getApplicationContext().getResources().getString(2131720220), 0).a();
+      this.a.c.setVisibility(8);
+      return;
+    }
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getApplicationContext().getResources().getString(2131720217), 0).a();
   }
 }
 

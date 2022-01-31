@@ -1,85 +1,74 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController.QQStoryMainView;
-import com.tencent.biz.qqstory.utils.AssertUtils;
-import com.tencent.mobileqq.activity.Now;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.TMG.utils.QLog;
 
 public class tei
-  implements QQStoryMainController.QQStoryMainView
+  extends aokh<teh>
 {
-  public tei(Now paramNow) {}
-  
-  public View a()
+  public int a()
   {
-    return this.a.jdField_b_of_type_AndroidWidgetRelativeLayout;
+    return 447;
   }
   
-  public ImageView a()
+  public Class<teh> a()
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {}
-    for (boolean bool = true;; bool = false)
+    return teh.class;
+  }
+  
+  @NonNull
+  public teh a(int paramInt)
+  {
+    return new teh();
+  }
+  
+  @Nullable
+  public teh a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      AssertUtils.a(bool);
-      return this.a.jdField_a_of_type_AndroidWidgetImageView;
+      tlo.d("WeSeeConfigProcessor", "onParsed:" + paramArrayOfaoko[0].a);
+      teh localteh = new teh();
+      localteh.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("WeSeeConfigProcessor", 0, "onParsed " + paramArrayOfaoko[0].a);
+      }
+      return localteh;
+    }
+    return null;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(teh paramteh)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WeSeeConfigProcessor", 0, "onUpdate " + paramteh);
     }
   }
   
-  public TextView a()
+  public boolean a()
   {
-    if (this.a.c != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AssertUtils.a(bool);
-      return this.a.c;
-    }
+    return false;
   }
   
-  public void a()
+  public int b()
   {
-    this.a.a();
+    return 0;
   }
   
-  public void a(String paramString)
+  public boolean b()
   {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    return false;
   }
   
-  public void a(boolean paramBoolean)
+  public boolean c()
   {
-    if (paramBoolean)
-    {
-      Now.a(this.a);
-      return;
-    }
-    Now.b(this.a);
+    return true;
   }
-  
-  public void b()
-  {
-    this.a.b(false);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(i);
-      return;
-    }
-  }
-  
-  public void c()
-  {
-    this.a.b(true);
-  }
-  
-  public void d() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tei
  * JD-Core Version:    0.7.0.1
  */

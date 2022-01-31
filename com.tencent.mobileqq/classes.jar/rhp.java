@@ -1,19 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
 class rhp
-  implements DialogInterface.OnClickListener
+  implements bhun
 {
-  rhp(rhn paramrhn) {}
+  rhp(rhf paramrhf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void ap_()
   {
-    paramDialogInterface.dismiss();
+    if (rhf.b(this.a)) {
+      rhf.a(this.a).c();
+    }
+    if (rhf.a(this.a) != null) {
+      rhf.a(this.a).g();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rhp
  * JD-Core Version:    0.7.0.1
  */

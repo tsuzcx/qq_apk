@@ -13,45 +13,9 @@ class AccessibilityDelegateCompatIcs
     return ((View.AccessibilityDelegate)paramObject).dispatchPopulateAccessibilityEvent(paramView, paramAccessibilityEvent);
   }
   
-  public static Object newAccessibilityDelegateBridge(AccessibilityDelegateBridge paramAccessibilityDelegateBridge)
+  public static Object newAccessibilityDelegateBridge(AccessibilityDelegateCompatIcs.AccessibilityDelegateBridge paramAccessibilityDelegateBridge)
   {
-    new View.AccessibilityDelegate()
-    {
-      public boolean dispatchPopulateAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
-      {
-        return this.val$bridge.dispatchPopulateAccessibilityEvent(paramAnonymousView, paramAnonymousAccessibilityEvent);
-      }
-      
-      public void onInitializeAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
-      {
-        this.val$bridge.onInitializeAccessibilityEvent(paramAnonymousView, paramAnonymousAccessibilityEvent);
-      }
-      
-      public void onInitializeAccessibilityNodeInfo(View paramAnonymousView, AccessibilityNodeInfo paramAnonymousAccessibilityNodeInfo)
-      {
-        this.val$bridge.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousAccessibilityNodeInfo);
-      }
-      
-      public void onPopulateAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
-      {
-        this.val$bridge.onPopulateAccessibilityEvent(paramAnonymousView, paramAnonymousAccessibilityEvent);
-      }
-      
-      public boolean onRequestSendAccessibilityEvent(ViewGroup paramAnonymousViewGroup, View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
-      {
-        return this.val$bridge.onRequestSendAccessibilityEvent(paramAnonymousViewGroup, paramAnonymousView, paramAnonymousAccessibilityEvent);
-      }
-      
-      public void sendAccessibilityEvent(View paramAnonymousView, int paramAnonymousInt)
-      {
-        this.val$bridge.sendAccessibilityEvent(paramAnonymousView, paramAnonymousInt);
-      }
-      
-      public void sendAccessibilityEventUnchecked(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
-      {
-        this.val$bridge.sendAccessibilityEventUnchecked(paramAnonymousView, paramAnonymousAccessibilityEvent);
-      }
-    };
+    return new AccessibilityDelegateCompatIcs.1(paramAccessibilityDelegateBridge);
   }
   
   public static Object newAccessibilityDelegateDefaultImpl()
@@ -87,23 +51,6 @@ class AccessibilityDelegateCompatIcs
   public static void sendAccessibilityEventUnchecked(Object paramObject, View paramView, AccessibilityEvent paramAccessibilityEvent)
   {
     ((View.AccessibilityDelegate)paramObject).sendAccessibilityEventUnchecked(paramView, paramAccessibilityEvent);
-  }
-  
-  public static abstract interface AccessibilityDelegateBridge
-  {
-    public abstract boolean dispatchPopulateAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent);
-    
-    public abstract void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent);
-    
-    public abstract void onInitializeAccessibilityNodeInfo(View paramView, Object paramObject);
-    
-    public abstract void onPopulateAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent);
-    
-    public abstract boolean onRequestSendAccessibilityEvent(ViewGroup paramViewGroup, View paramView, AccessibilityEvent paramAccessibilityEvent);
-    
-    public abstract void sendAccessibilityEvent(View paramView, int paramInt);
-    
-    public abstract void sendAccessibilityEventUnchecked(View paramView, AccessibilityEvent paramAccessibilityEvent);
   }
 }
 

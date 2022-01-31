@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class GetAppInfoProto$AndroidInfo
-  extends MessageMicro
+  extends MessageMicro<AndroidInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58 }, new String[] { "apkDownUrl", "packName", "className", "sourceUrl", "officalwebsite", "messagetail", "bundleid" }, new Object[] { "", "", "", "", "", "", "" }, AndroidInfo.class);
   public final PBStringField apkDownUrl = PBField.initString("");
@@ -19,7 +19,7 @@ public final class GetAppInfoProto$AndroidInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo
  * JD-Core Version:    0.7.0.1
  */

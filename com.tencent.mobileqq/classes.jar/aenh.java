@@ -1,28 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransferRequest;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
 
-public final class aenh
-  implements Runnable
+public class aenh
+  implements View.OnClickListener
 {
-  public aenh(String paramString, QQAppInterface paramQQAppInterface) {}
+  public aenh(ActivateFriendView paramActivateFriendView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    paramView = (ActivateFriendViewItem)paramView;
+    if (paramView.a)
     {
-      TransferRequest localTransferRequest = new TransferRequest();
-      localTransferRequest.a = true;
-      localTransferRequest.i = this.jdField_a_of_type_JavaLangString;
-      localTransferRequest.b = 64;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localTransferRequest);
+      ActivateFriendView.a(this.a);
+      if (paramView.a) {
+        break label75;
+      }
+    }
+    label75:
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.setChecked(bool);
+      if (ActivateFriendView.a(this.a) != null) {
+        ActivateFriendView.a(this.a).a(ActivateFriendView.c(this.a));
+      }
+      return;
+      ActivateFriendView.b(this.a);
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aenh
  * JD-Core Version:    0.7.0.1
  */

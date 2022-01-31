@@ -1,24 +1,22 @@
-import android.app.Activity;
-import com.tencent.biz.common.util.Util;
-import com.tencent.mobileqq.jsp.DataApiPlugin;
+import com.tencent.mobileqq.activity.SearchFriendListActivity;
 
-class adwa
-  implements Runnable
+public class adwa
+  extends altm
 {
-  adwa(advz paramadvz, Activity paramActivity, String paramString, int paramInt) {}
+  public adwa(SearchFriendListActivity paramSearchFriendListActivity) {}
   
-  public void run()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())
-    {
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        this.jdField_a_of_type_Advz.a.callJs(this.jdField_a_of_type_Advz.c, new String[] { "null", Integer.toString(this.jdField_a_of_type_Int) });
-      }
+    if (paramBoolean) {
+      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
     }
-    else {
-      return;
+  }
+  
+  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (paramString != null)) {
+      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
     }
-    this.jdField_a_of_type_Advz.a.callJs(this.jdField_a_of_type_Advz.c, new String[] { Util.a(this.jdField_a_of_type_JavaLangString), Integer.toString(this.jdField_a_of_type_Int) });
   }
 }
 

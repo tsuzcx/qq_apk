@@ -1,21 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.model.ISearchResultModel;
-import com.tencent.mobileqq.search.presenter.ContactSearchResultMobilePresenter;
-
-public class ahue
-  implements View.OnClickListener
+public abstract interface ahue
 {
-  public ahue(ContactSearchResultMobilePresenter paramContactSearchResultMobilePresenter, ISearchResultModel paramISearchResultModel) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel.a(paramView);
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahue
  * JD-Core Version:    0.7.0.1
  */

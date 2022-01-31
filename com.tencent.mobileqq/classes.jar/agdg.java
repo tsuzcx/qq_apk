@@ -1,24 +1,35 @@
-import android.support.v4.view.ViewPager;
-import com.tencent.biz.lebasearch.widget.ScrolledTabHost.OnTabSelectedListener;
-import com.tencent.mobileqq.ocr.ui.BaseOCRTextSearchFragment.SearchActivityInterface;
-import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.7.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class agdg
-  implements ScrolledTabHost.OnTabSelectedListener
+  extends fu
 {
-  public agdg(SearchResultFragment paramSearchResultFragment) {}
+  agdg(agda paramagda) {}
   
-  public void a(int paramInt)
+  public void a(ChatMessage paramChatMessage, int paramInt) {}
+  
+  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt)
   {
-    this.a.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(paramInt);
-    this.a.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment$SearchActivityInterface.a(false);
+    if ((!paramBoolean) && (paramChatMessage != null))
+    {
+      paramChatMessage.saveExtInfoToExtStr("font_animation_played", "1");
+      ThreadManager.excute(new TextItemBuilder.7.1(this, paramChatMessage), 128, null, true);
+    }
+    String str = this.a.a.c();
+    if (paramBoolean) {}
+    for (paramChatMessage = "1";; paramChatMessage = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage(str, "Font_Mall", "0X800813C", "0", 0, 1, 1, null, paramChatMessage, "" + paramInt);
+      return;
+    }
   }
-  
-  public void b(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agdg
  * JD-Core Version:    0.7.0.1
  */

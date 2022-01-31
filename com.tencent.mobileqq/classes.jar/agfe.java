@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager.ButtonClickListener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.view.View;
+import android.widget.TextView;
 
-class agfe
-  implements ARTipsManager.ButtonClickListener
+public class agfe
+  extends aeqi
 {
-  agfe(agfb paramagfb) {}
-  
-  public void a()
-  {
-    if ((this.a.a.a != null) && (this.a.a.a.a() != null)) {
-      this.a.a.a.a().u();
-    }
-  }
+  public TextView a;
+  public TextView b;
+  public View c;
+  public View d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agfe
  * JD-Core Version:    0.7.0.1
  */

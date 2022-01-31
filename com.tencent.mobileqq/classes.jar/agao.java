@@ -1,35 +1,21 @@
-import com.tencent.mobileqq.now.enter.NowHongbaoPushManager;
-import com.tencent.mobileqq.now.enter.NowHongbaoPushManager.Callback;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class agao
-  implements Runnable
+class agao
+  implements bezx
 {
-  public agao(NowHongbaoPushManager paramNowHongbaoPushManager, int paramInt1, int paramInt2) {}
+  agao(agai paramagai, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (NowHongbaoPushManager.a(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager) != null)
+    if (paramInt == 2)
     {
-      if (this.jdField_a_of_type_Int != 2) {
-        break label108;
-      }
-      NowHongbaoPushManager.a(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager).b();
+      this.jdField_a_of_type_Agai.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+      azdd.jdField_a_of_type_Boolean = true;
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("NowHongbaoPushManager", 2, (String)NowHongbaoPushManager.a().get(Integer.valueOf(this.jdField_a_of_type_Int)) + ",隐藏---type=" + this.jdField_a_of_type_Int + ", reason = " + (String)NowHongbaoPushManager.b().get(Integer.valueOf(this.b)));
-      }
+    while ((paramInt != 3) && (paramInt != 1)) {
       return;
-      label108:
-      if (this.jdField_a_of_type_Int == 3) {
-        NowHongbaoPushManager.a(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager).a();
-      } else if (this.jdField_a_of_type_Int == 1) {
-        NowHongbaoPushManager.a(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager).c();
-      }
     }
+    azdd.jdField_a_of_type_Long = 0L;
   }
 }
 

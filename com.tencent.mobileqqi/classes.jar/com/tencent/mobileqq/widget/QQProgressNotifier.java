@@ -3,7 +3,7 @@ package com.tencent.mobileqq.widget;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.app.BaseActivity;
-import hll;
+import hhh;
 
 public class QQProgressNotifier
 {
@@ -23,7 +23,7 @@ public class QQProgressNotifier
   public QQProgressNotifier(BaseActivity paramBaseActivity)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_AndroidOsHandler = new hll(this);
+    this.jdField_a_of_type_AndroidOsHandler = new hhh(this);
   }
   
   public void a()
@@ -66,7 +66,7 @@ public class QQProgressNotifier
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.d());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setContentView(2130903940);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setContentView(2130903942);
     }
     if (paramInt1 == 0)
     {
@@ -84,7 +84,7 @@ public class QQProgressNotifier
     if ((paramInt1 == 2) || (paramInt1 == 4) || (paramInt1 == 6))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2130837947);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2130837949);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(false);
       if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
@@ -103,7 +103,7 @@ public class QQProgressNotifier
       ((Handler)localObject).sendMessageDelayed(paramString, l);
       return;
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2130837958);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2130837960);
       break;
     }
   }

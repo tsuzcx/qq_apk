@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class FlyTicket$DiscussGetUrlRequest
-  extends MessageMicro
+  extends MessageMicro<DiscussGetUrlRequest>
 {
   public static final int CONF_UIN_FIELD_NUMBER = 1;
   public static final int IS_NEED_LONG_LINK_FIELD_NUMBER = 2;
@@ -17,7 +17,7 @@ public final class FlyTicket$DiscussGetUrlRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.protofile.discuss.FlyTicket.DiscussGetUrlRequest
  * JD-Core Version:    0.7.0.1
  */

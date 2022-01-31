@@ -1,13 +1,11 @@
 package com.tencent.commonsdk.soload;
 
 import java.io.EOFException;
-import java.io.IOException;
 import java.io.InputStream;
 
 public class Streams
 {
   public static void readFully(InputStream paramInputStream, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-    throws IOException
   {
     if (paramInt2 == 0) {}
     for (;;)
@@ -34,7 +32,6 @@ public class Streams
   }
   
   public static int readSingleByte(InputStream paramInputStream)
-    throws IOException
   {
     int i = -1;
     byte[] arrayOfByte = new byte[1];

@@ -1,23 +1,39 @@
-import com.tencent.mobileqq.ark.ArkAppInfo.ContextActionAppInfo;
-import java.util.Comparator;
+import android.os.Bundle;
+import android.text.TextUtils;
 
-class aaqw
-  implements Comparator
+public final class aaqw
 {
-  aaqw(aaqv paramaaqv) {}
+  public Bundle a;
   
-  public int a(ArkAppInfo.ContextActionAppInfo paramContextActionAppInfo1, ArkAppInfo.ContextActionAppInfo paramContextActionAppInfo2)
+  public aaqw(Bundle paramBundle)
   {
-    int i = paramContextActionAppInfo1.a.compareTo(paramContextActionAppInfo2.a);
-    if (i != 0) {
-      return i;
+    this.a = paramBundle;
+  }
+  
+  public String a()
+  {
+    if (this.a != null) {
+      return this.a.getString("IPC_ACTION");
     }
-    return paramContextActionAppInfo1.b.compareTo(paramContextActionAppInfo2.b);
+    return null;
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(a())) && (!TextUtils.isEmpty(b()));
+  }
+  
+  public String b()
+  {
+    if (this.a != null) {
+      return this.a.getString("IPC_TO_PROCESS_NAME");
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaqw
  * JD-Core Version:    0.7.0.1
  */

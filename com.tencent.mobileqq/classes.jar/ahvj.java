@@ -1,26 +1,22 @@
-import com.tencent.mobileqq.search.model.GroupSearchModelMultiChat;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import java.util.List;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
 
 public class ahvj
-  extends GroupSearchEngine.SearchEngineEntity
+  extends View.AccessibilityDelegate
 {
-  public ahvj(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
-  }
+  public ahvj(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
   
-  public ISearchResultGroupModel a(List paramList, String paramString)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    return new GroupSearchModelMultiChat(paramList, paramString, GroupSearchEngine.a(this.a));
+    if (paramInt != 4096) {
+      super.sendAccessibilityEvent(paramView, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahvj
  * JD-Core Version:    0.7.0.1
  */

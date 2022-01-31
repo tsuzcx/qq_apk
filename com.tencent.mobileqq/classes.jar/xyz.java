@@ -1,76 +1,63 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.selectmember.FriendTabView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.PhoneContact;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
 
 public class xyz
-  implements View.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
-  public xyz(FriendTabView paramFriendTabView) {}
+  public xyz(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    QLog.d("FriendTabView", 2, "----->onBuddyListClick");
-    ybp localybp = (ybp)paramView.getTag();
-    String str;
-    boolean bool;
-    if ((localybp != null) && (localybp.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localybp.jdField_a_of_type_JavaLangObject != null))
-    {
-      str = "";
-      if (!(localybp.jdField_a_of_type_JavaLangObject instanceof Friends)) {
-        break label233;
-      }
-      str = ((Friends)localybp.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
-      if (localybp.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
-      {
-        if (!localybp.jdField_a_of_type_JavaLangString.startsWith("+")) {
-          break label259;
-        }
-        bool = this.a.a.a(localybp.jdField_a_of_type_JavaLangString, str, 4, "-1", "");
-        label110:
-        if (QLog.isDevelopLevel()) {
-          QLog.d("FriendTabView", 2, "----->onBuddyListClick = " + bool);
-        }
-        localybp.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-        if (AppSetting.b)
-        {
-          if (!localybp.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-            break label284;
-          }
-          paramView.setContentDescription(localybp.d.getText().toString() + "已选中,双击取消");
-        }
+    QRDisplayActivity.a(this.a).dismiss();
+    int i;
+    if ((paramLong == 2L) || (paramLong == 3L)) {
+      if (!WXShareHelper.a().a()) {
+        i = 2131721491;
       }
     }
     for (;;)
     {
-      this.a.c();
-      if (AppSetting.b) {
-        paramView.postDelayed(new xza(this, paramView), 2000L);
+      if (i != -1)
+      {
+        QQToast.a(this.a, this.a.getString(i), 0).b(this.a.getTitleBarHeight());
+        if (this.a.jdField_c_of_type_Int == 2) {
+          if (paramLong != 2L) {
+            break label165;
+          }
+        }
+        label165:
+        for (paramAdapterView = "qr_wechat";; paramAdapterView = "qr_circle")
+        {
+          bdes.a("Grp_share", "grpData_admin", paramAdapterView, 0, 0, new String[] { this.a.jdField_c_of_type_JavaLangString, String.valueOf(this.a.a), "1" });
+          this.a.h = -1;
+          return;
+          if (WXShareHelper.a().b()) {
+            break label230;
+          }
+          i = 2131721492;
+          break;
+        }
       }
+      if (QLog.isColorLevel()) {
+        QLog.i("QRDisplayActivity", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
+      }
+      this.a.h = ((int)paramLong);
+      QRDisplayActivity.a(this.a);
       return;
-      label233:
-      if (!(localybp.jdField_a_of_type_JavaLangObject instanceof PhoneContact)) {
-        break;
-      }
-      str = ((PhoneContact)localybp.jdField_a_of_type_JavaLangObject).name;
-      break;
-      label259:
-      bool = this.a.a.a(localybp.jdField_a_of_type_JavaLangString, str, 0, "-1", "");
-      break label110;
-      label284:
-      paramView.setContentDescription(localybp.d.getText().toString() + "未选中,双击选中");
+      label230:
+      i = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xyz
  * JD-Core Version:    0.7.0.1
  */

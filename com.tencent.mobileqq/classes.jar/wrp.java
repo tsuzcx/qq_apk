@@ -1,21 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
-
 public class wrp
-  implements View.OnClickListener
+  extends uli
 {
-  public wrp(MessageSearchDialog paramMessageSearchDialog) {}
+  public int a;
   
-  public void onClick(View paramView)
+  public wrp(int paramInt)
   {
-    this.a.a.setText("");
+    this.a = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wrp
  * JD-Core Version:    0.7.0.1
  */

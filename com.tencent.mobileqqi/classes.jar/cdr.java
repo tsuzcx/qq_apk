@@ -1,33 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.AIOTipsController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class cdr
-  extends Handler
+  implements View.OnClickListener
 {
-  public cdr(ChatActivity paramChatActivity) {}
+  public cdr(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (paramMessage.what == 101)
-    {
-      ChatActivity.a(this.a, 2);
-      ChatActivity.a(this.a);
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (paramMessage.what == 102) {
-        ChatActivity.a(this.a).a();
-      }
-    }
+    ChatSettingForTroop.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cdr
  * JD-Core Version:    0.7.0.1
  */

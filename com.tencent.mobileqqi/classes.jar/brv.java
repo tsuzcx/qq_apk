@@ -1,53 +1,53 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import mqq.observer.AccountObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
-class brv
-  extends AccountObserver
+public class brv
+  implements View.OnClickListener
 {
-  brv(bru parambru, String paramString1, String paramString2) {}
+  public brv(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onUpdateSid(String paramString)
+  public void onClick(View paramView)
   {
-    Object localObject;
-    String str;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    View localView = AccountManageActivity.a(this.a, paramView);
+    if (this.a.a == null)
     {
-      localObject = "http://w.mail.qq.com/cgi-bin/login?target=mobileqqwrite&fwd=mq&fun=from3g&uin=" + this.jdField_a_of_type_JavaLangString + "&3g_sid=" + paramString + "&to=" + this.b;
-      str = ((String)localObject).toLowerCase();
-      if (!str.startsWith("www.")) {
-        break label141;
-      }
-      paramString = "http://" + (String)localObject;
-    }
-    for (;;)
-    {
-      localObject = new Intent(this.jdField_a_of_type_Bru.a, QQBrowserDelegationActivity.class);
-      ((Intent)localObject).putExtra("url", paramString);
-      ((Intent)localObject).putExtra("key_isReadModeEnabled", true);
-      ((Intent)localObject).putExtra("injectrecommend", false);
-      this.jdField_a_of_type_Bru.a.startActivity((Intent)localObject);
+      this.a.a = paramView;
+      this.a.a(paramView, 2130968586, 2);
+      localObject = localView.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.c(this.a) * 75.0F));
+      localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      paramView.setContentDescription(this.a.getString(2131562854));
       return;
-      label141:
-      if (str.startsWith("https:"))
-      {
-        paramString = "https" + ((String)localObject).substring(5);
-      }
-      else
-      {
-        paramString = (String)localObject;
-        if (str.startsWith("http:")) {
-          paramString = "http" + ((String)localObject).substring(4);
-        }
-      }
     }
+    if (this.a.a == paramView)
+    {
+      this.a.a(this.a.a, 2130968585, 3);
+      localObject = localView.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.d(this.a) * 40.0F));
+      localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.a.a = null;
+      paramView.setContentDescription(this.a.getString(2131558457));
+      return;
+    }
+    this.a.a(this.a.a, 2130968585, 3);
+    Object localObject = AccountManageActivity.a(this.a, this.a.a);
+    ViewGroup.LayoutParams localLayoutParams = ((View)localObject).getLayoutParams();
+    localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.e(this.a) * 40.0F));
+    ((View)localObject).setLayoutParams(localLayoutParams);
+    this.a.a(paramView, 2130968586, 2);
+    localObject = localView.getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject).width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.f(this.a) * 75.0F));
+    localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    paramView.setContentDescription(this.a.getString(2131562854));
+    this.a.a.setContentDescription(this.a.getString(2131558457));
+    this.a.a = paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     brv
  * JD-Core Version:    0.7.0.1
  */

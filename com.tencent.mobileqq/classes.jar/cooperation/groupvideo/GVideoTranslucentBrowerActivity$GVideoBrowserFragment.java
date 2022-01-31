@@ -2,12 +2,12 @@ package cooperation.groupvideo;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import atbh;
+import azqs;
+import beft;
+import bejh;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
-import com.tencent.mobileqq.intervideo.huayang.Monitor;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 import com.tencent.mobileqq.widget.WebViewProgressBar;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
@@ -17,11 +17,11 @@ public class GVideoTranslucentBrowerActivity$GVideoBrowserFragment
 {
   private boolean a;
   
-  protected int a(Bundle paramBundle)
+  public int a(Bundle paramBundle)
   {
     int i = super.a(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b(false);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a.setVisibility(8);
+    this.jdField_a_of_type_Beft.b(false);
+    this.jdField_a_of_type_Bejh.a.setVisibility(8);
     return i;
   }
   
@@ -37,7 +37,7 @@ public class GVideoTranslucentBrowerActivity$GVideoBrowserFragment
     }
   }
   
-  protected boolean a(Bundle paramBundle)
+  public boolean a(Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewFragment", 2, "GVideoBrowserFragment doOnCreate = ");
@@ -47,26 +47,26 @@ public class GVideoTranslucentBrowerActivity$GVideoBrowserFragment
     return bool;
   }
   
-  protected int c(Bundle paramBundle)
+  public int d(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.c = 0L;
-    return super.c(paramBundle);
+    this.jdField_a_of_type_Bejk.c = 0L;
+    return super.d(paramBundle);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    Monitor.a("2729128");
+    atbh.a("2729128");
     if (!this.jdField_a_of_type_Boolean)
     {
-      Monitor.a("2489207");
-      ReportController.b(null, "dc00899", "Huayang_video", "", "group_video", "loadHideWeb", 1, 0, "", "7.6.3", "", "");
+      atbh.a("2489207");
+      azqs.b(null, "dc00899", "Huayang_video", "", "group_video", "loadHideWeb", 1, 0, "", "8.3.5", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.groupvideo.GVideoTranslucentBrowerActivity.GVideoBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

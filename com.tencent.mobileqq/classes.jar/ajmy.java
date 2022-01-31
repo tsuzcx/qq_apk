@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.2;
+import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.2.2.1;
 
-class ajmy
-  implements Runnable
+public class ajmy
+  implements Animator.AnimatorListener
 {
-  ajmy(ajmx paramajmx) {}
+  public ajmy(CareNotificationBar.2 param2) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.a.a == 3) {
-      this.a.a.a = 1;
-    }
-    this.a.a.g();
+    this.a.a.post(new CareNotificationBar.2.2.1(this));
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

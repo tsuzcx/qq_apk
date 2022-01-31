@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center" android:id="@id/z5" android:paddingTop="24.0dip" android:paddingBottom="24.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.appbrand.page.AppBrandActionSingleHeaderView android:gravity="center" android:id="@id/z6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <HorizontalScrollView android:gravity="center" android:id="@id/z7" android:paddingTop="24.0dip" android:paddingBottom="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true">
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:id="@id/z8" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.plugin.appbrand.page.AppBrandActionMultipleHeaderView android:gravity="center" android:id="@id/z9" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <com.tencent.mm.plugin.appbrand.page.AppBrandActionMultipleHeaderView android:gravity="center" android:id="@id/z_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <com.tencent.mm.plugin.appbrand.page.AppBrandActionMultipleHeaderView android:gravity="center" android:id="@id/za" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <com.tencent.mm.plugin.appbrand.page.AppBrandActionMultipleHeaderView android:gravity="center" android:id="@id/zb" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        </LinearLayout>
+    </HorizontalScrollView>
+    <TextView android:textSize="@dimen/e1" android:textColor="@color/hj" android:gravity="center|left" android:id="@id/zc" android:paddingLeft="@dimen/uy" android:paddingTop="14.0dip" android:paddingBottom="7.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/e0" />
+</LinearLayout>

@@ -1,19 +1,16 @@
-import com.tencent.biz.common.offline.AsyncCallBack;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import java.util.Comparator;
 
-public class vvi
-  implements AsyncCallBack
+public final class vvi
+  implements Comparator<vvn>
 {
-  public vvi(HotChatPie paramHotChatPie) {}
-  
-  public void a(int paramInt, String paramString)
+  public int a(vvn paramvvn1, vvn paramvvn2)
   {
-    HotChatPie.a(this.a, 0, 10);
+    return paramvvn1.a - paramvvn2.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vvi
  * JD-Core Version:    0.7.0.1
  */

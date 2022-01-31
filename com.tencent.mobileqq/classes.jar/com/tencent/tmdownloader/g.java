@@ -1,7 +1,7 @@
 package com.tencent.tmdownloader;
 
-import com.tencent.tmassistantbase.util.m;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.s;
 import com.tencent.tmdownloader.internal.remote.a;
 
 class g
@@ -13,28 +13,28 @@ class g
   {
     try
     {
-      r.c("RemoteOpProxy", "<postReport> process:" + m.e() + ", getServiceInterface()");
+      ab.c("RemoteOpProxy", "<postReport> process:" + s.e() + ", getServiceInterface()");
       a locala = (a)this.c.getServiceInterface();
       if (locala != null)
       {
-        r.c("RemoteOpProxy", "<postReport> process:" + m.e());
+        ab.c("RemoteOpProxy", "<postReport> process:" + s.e());
         locala.a(this.a, this.b);
         return;
       }
-      r.c("RemoteOpProxy", "<postReport> null == serviceInterface, initTMAssistantDownloadSDK,process:" + m.e());
+      ab.c("RemoteOpProxy", "<postReport> null == serviceInterface, initTMAssistantDownloadSDK,process:" + s.e());
       this.c.initTMAssistantDownloadSDK();
       return;
     }
     catch (Exception localException)
     {
-      r.c("RemoteOpProxy", "<postReport> process:" + m.e() + ", getServiceInterface() error, error msg = " + localException.getMessage());
+      ab.c("RemoteOpProxy", "<postReport> process:" + s.e() + ", getServiceInterface() error, error msg = " + localException.getMessage());
       localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmdownloader.g
  * JD-Core Version:    0.7.0.1
  */

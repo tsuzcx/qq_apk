@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qq_ad_get$QQAdGet$PositionInfo$PositionExt$ShareInfo
-  extends MessageMicro
+  extends MessageMicro<ShareInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "share_rate", "share_check" }, new Object[] { Integer.valueOf(0), "" }, ShareInfo.class);
   public final PBStringField share_check = PBField.initString("");
@@ -15,7 +15,7 @@ public final class qq_ad_get$QQAdGet$PositionInfo$PositionExt$ShareInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.gdt.qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo
  * JD-Core Version:    0.7.0.1
  */

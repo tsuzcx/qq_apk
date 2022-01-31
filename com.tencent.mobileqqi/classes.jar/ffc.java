@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.activity.aio.VoiceNotifyConfigHelper;
-import com.tencent.mobileqq.app.ConfigHandler;
+import com.tencent.lbsapi.QLBSService;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ffc
   implements Runnable
 {
-  public ffc(ConfigHandler paramConfigHandler) {}
+  public ffc(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    VoiceNotifyConfigHelper.a().a(this.a.a.getApplication());
+    if (!this.a.m()) {
+      return;
+    }
+    this.a.a.startLocation();
   }
 }
 

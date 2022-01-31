@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.album.business.photolist.ui.listitem.LoverHeaderCell android:id="@id/ehq" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="7.0dip">
+        <View android:id="@id/hc4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.qzone.album.business.photolist.ui.listitem.BigPhotoView android:id="@id/hak" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <com.qzone.widget.AsyncImageView android:id="@id/hbv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="21.0dip" android:layout_marginBottom="5.0dip" android:layout_alignBottom="@id/hc4" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/hka" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="120.0dip">
+        <com.qzone.widget.AsyncImageView android:id="@id/hk_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</LinearLayout>

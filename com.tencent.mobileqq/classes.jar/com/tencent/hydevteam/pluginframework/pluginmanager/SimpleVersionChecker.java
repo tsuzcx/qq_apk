@@ -1,5 +1,6 @@
 package com.tencent.hydevteam.pluginframework.pluginmanager;
 
+import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -7,14 +8,14 @@ import org.json.JSONObject;
 class SimpleVersionChecker
   implements VersionChecker
 {
-  private static String a = "http://dldir1.qq.com/huayang/Android/$TYPE$_StableBackupUrl_1_3.zip";
+  private static String a = "http://dldir1.qq.com/huayang/Android/$TYPE$_StableBackupUrl_1_4.zip";
   
   private static TargetDownloadInfo a(JSONObject paramJSONObject)
-    throws VersionCheckException
   {
+    String str = null;
     int i;
-    Object localObject;
     long l2;
+    Object localObject;
     JSONObject localJSONObject;
     try
     {
@@ -22,20 +23,20 @@ class SimpleVersionChecker
       if (i != 0) {
         break label207;
       }
-      localObject = paramJSONObject.getJSONObject("data").getJSONObject("targetversion");
-      ((JSONObject)localObject).getInt("versionno");
+      paramJSONObject = paramJSONObject.getJSONObject("data").getJSONObject("targetversion");
+      paramJSONObject.getInt("versionno");
+      JSONArray localJSONArray = paramJSONObject.getJSONArray("content");
+      int j = 0;
       paramJSONObject = null;
-      str = null;
       long l1 = 0L;
       i = 0;
-      JSONArray localJSONArray = ((JSONObject)localObject).getJSONArray("content");
-      int j = 0;
+      str = null;
       int k;
       for (;;)
       {
+        l2 = l1;
         k = i;
         localObject = str;
-        l2 = l1;
         localJSONObject = paramJSONObject;
         if (j < localJSONArray.length())
         {
@@ -43,15 +44,15 @@ class SimpleVersionChecker
           if (((JSONObject)localObject).getString("type").equals("default"))
           {
             i = 1;
-            paramJSONObject = ((JSONObject)localObject).getString("url");
-            str = ((JSONObject)localObject).getString("hash");
+            str = ((JSONObject)localObject).getString("url");
+            paramJSONObject = ((JSONObject)localObject).getString("hash");
           }
           try
           {
             l1 = Long.parseLong(((JSONObject)localObject).getString("size"));
+            l2 = l1;
             k = i;
             localObject = str;
-            l2 = l1;
             localJSONObject = paramJSONObject;
             if (i == 0) {
               j += 1;
@@ -73,12 +74,11 @@ class SimpleVersionChecker
     }
     throw new VersionCheckException("json中不包含目标content,目标content的type是default");
     label191:
-    paramJSONObject = new SimpleTargetDownloadInfo(localJSONObject, (String)localObject, l2);
+    paramJSONObject = new SimpleTargetDownloadInfo((String)localObject, localJSONObject, l2);
     return paramJSONObject;
-    label207:
-    String str = null;
     try
     {
+      label207:
       paramJSONObject = paramJSONObject.getString("message");
       throw new VersionCheckException("查询出错。errCode==" + i + " message==" + paramJSONObject);
     }
@@ -93,268 +93,261 @@ class SimpleVersionChecker
   
   /* Error */
   private static JSONObject a(String paramString1, String paramString2)
-    throws VersionCheckException
   {
     // Byte code:
-    //   0: new 129	java/net/URL
+    //   0: new 128	java/net/URL
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 130	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 129	java/net/URL:<init>	(Ljava/lang/String;)V
     //   8: astore_0
     //   9: aload_0
-    //   10: invokevirtual 134	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   10: invokevirtual 133	java/net/URL:openConnection	()Ljava/net/URLConnection;
     //   13: astore_0
     //   14: aload_0
-    //   15: instanceof 136
-    //   18: ifeq +365 -> 383
+    //   15: instanceof 135
+    //   18: ifeq +353 -> 371
     //   21: aload_0
-    //   22: checkcast 136	java/net/HttpURLConnection
-    //   25: astore 7
-    //   27: aload 7
-    //   29: invokevirtual 139	java/net/HttpURLConnection:getResponseCode	()I
+    //   22: checkcast 135	java/net/HttpURLConnection
+    //   25: astore 5
+    //   27: aload 5
+    //   29: invokevirtual 138	java/net/HttpURLConnection:getResponseCode	()I
     //   32: istore_2
     //   33: iload_2
     //   34: sipush 200
-    //   37: if_icmpne +310 -> 347
-    //   40: new 141	java/util/zip/ZipInputStream
+    //   37: if_icmpne +298 -> 335
+    //   40: new 140	com/tencent/commonsdk/zip/QZipInputStream
     //   43: dup
-    //   44: new 143	java/io/BufferedInputStream
+    //   44: new 142	java/io/BufferedInputStream
     //   47: dup
-    //   48: aload 7
-    //   50: invokevirtual 147	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   53: invokespecial 150	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   56: invokespecial 151	java/util/zip/ZipInputStream:<init>	(Ljava/io/InputStream;)V
-    //   59: astore 8
-    //   61: aconst_null
-    //   62: astore 5
-    //   64: aload 8
-    //   66: invokevirtual 155	java/util/zip/ZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
-    //   69: astore 6
-    //   71: aload 5
-    //   73: astore_0
-    //   74: aload 6
-    //   76: ifnull +36 -> 112
-    //   79: aload 6
-    //   81: invokevirtual 160	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   84: new 105	java/lang/StringBuilder
-    //   87: dup
-    //   88: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   91: aload_1
-    //   92: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   95: ldc 163
-    //   97: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   100: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   103: invokevirtual 72	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   106: ifeq -42 -> 64
-    //   109: aload 6
-    //   111: astore_0
-    //   112: aload_0
-    //   113: ifnonnull +84 -> 197
-    //   116: new 21	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
-    //   119: dup
-    //   120: new 105	java/lang/StringBuilder
-    //   123: dup
-    //   124: ldc 165
-    //   126: invokespecial 108	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   129: aload_1
-    //   130: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   133: ldc 163
-    //   135: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   138: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   141: invokespecial 96	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;)V
-    //   144: athrow
-    //   145: astore_0
-    //   146: aload 8
-    //   148: invokevirtual 168	java/util/zip/ZipInputStream:close	()V
-    //   151: aload_0
+    //   48: aload 5
+    //   50: invokevirtual 146	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   53: invokespecial 149	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   56: invokespecial 150	com/tencent/commonsdk/zip/QZipInputStream:<init>	(Ljava/io/InputStream;)V
+    //   59: astore 6
+    //   61: aload 6
+    //   63: invokevirtual 154	com/tencent/commonsdk/zip/QZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
+    //   66: astore_0
+    //   67: aload_0
+    //   68: ifnull +313 -> 381
+    //   71: aload_0
+    //   72: invokevirtual 159	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   75: new 105	java/lang/StringBuilder
+    //   78: dup
+    //   79: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   82: aload_1
+    //   83: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: ldc 162
+    //   88: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   91: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   94: invokevirtual 70	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   97: ifeq -36 -> 61
+    //   100: aload_0
+    //   101: ifnonnull +84 -> 185
+    //   104: new 84	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
+    //   107: dup
+    //   108: new 105	java/lang/StringBuilder
+    //   111: dup
+    //   112: ldc 164
+    //   114: invokespecial 108	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   117: aload_1
+    //   118: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   121: ldc 162
+    //   123: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   126: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   129: invokespecial 96	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;)V
+    //   132: athrow
+    //   133: astore_0
+    //   134: aload 6
+    //   136: invokevirtual 167	com/tencent/commonsdk/zip/QZipInputStream:close	()V
+    //   139: aload_0
+    //   140: athrow
+    //   141: astore_0
+    //   142: new 84	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
+    //   145: dup
+    //   146: ldc 169
+    //   148: aload_0
+    //   149: invokespecial 89	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   152: athrow
     //   153: astore_0
-    //   154: new 21	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
-    //   157: dup
-    //   158: ldc 170
-    //   160: aload_0
-    //   161: invokespecial 89	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   164: athrow
-    //   165: astore_0
-    //   166: aload 7
-    //   168: invokevirtual 173	java/net/HttpURLConnection:disconnect	()V
-    //   171: aload_0
+    //   154: aload 5
+    //   156: invokevirtual 172	java/net/HttpURLConnection:disconnect	()V
+    //   159: aload_0
+    //   160: athrow
+    //   161: astore_0
+    //   162: new 84	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
+    //   165: dup
+    //   166: ldc 174
+    //   168: aload_0
+    //   169: invokespecial 89	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   172: athrow
     //   173: astore_0
-    //   174: new 21	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
+    //   174: new 84	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
     //   177: dup
-    //   178: ldc 175
+    //   178: ldc 176
     //   180: aload_0
     //   181: invokespecial 89	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   184: athrow
-    //   185: astore_0
-    //   186: new 21	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
-    //   189: dup
-    //   190: ldc 177
-    //   192: aload_0
-    //   193: invokespecial 89	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   196: athrow
-    //   197: aload_0
-    //   198: invokevirtual 181	java/util/zip/ZipEntry:getSize	()J
-    //   201: lstore_3
-    //   202: lload_3
-    //   203: ldc2_w 182
-    //   206: lcmp
-    //   207: ifle +30 -> 237
-    //   210: new 21	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
-    //   213: dup
-    //   214: new 105	java/lang/StringBuilder
-    //   217: dup
-    //   218: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   221: aload_0
-    //   222: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   225: ldc 188
-    //   227: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   230: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   233: invokespecial 96	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;)V
-    //   236: athrow
+    //   185: aload_0
+    //   186: invokevirtual 180	java/util/zip/ZipEntry:getSize	()J
+    //   189: lstore_3
+    //   190: lload_3
+    //   191: ldc2_w 181
+    //   194: lcmp
+    //   195: ifle +30 -> 225
+    //   198: new 84	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
+    //   201: dup
+    //   202: new 105	java/lang/StringBuilder
+    //   205: dup
+    //   206: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   209: aload_0
+    //   210: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   213: ldc 187
+    //   215: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   218: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   221: invokespecial 96	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;)V
+    //   224: athrow
+    //   225: lload_3
+    //   226: ldc2_w 188
+    //   229: lcmp
+    //   230: ifeq +78 -> 308
+    //   233: new 191	java/io/ByteArrayOutputStream
+    //   236: dup
     //   237: lload_3
-    //   238: ldc2_w 189
-    //   241: lcmp
-    //   242: ifeq +78 -> 320
-    //   245: new 192	java/io/ByteArrayOutputStream
-    //   248: dup
-    //   249: lload_3
-    //   250: l2i
-    //   251: invokespecial 195	java/io/ByteArrayOutputStream:<init>	(I)V
-    //   254: astore_0
-    //   255: aload 8
-    //   257: invokevirtual 198	java/util/zip/ZipInputStream:read	()I
-    //   260: istore_2
-    //   261: iload_2
-    //   262: iconst_m1
-    //   263: if_icmpeq +17 -> 280
-    //   266: aload_0
-    //   267: iload_2
-    //   268: invokevirtual 201	java/io/ByteArrayOutputStream:write	(I)V
-    //   271: aload 8
-    //   273: invokevirtual 198	java/util/zip/ZipInputStream:read	()I
-    //   276: istore_2
-    //   277: goto -16 -> 261
-    //   280: aload 8
-    //   282: invokevirtual 204	java/util/zip/ZipInputStream:closeEntry	()V
-    //   285: new 29	org/json/JSONObject
-    //   288: dup
-    //   289: aload_0
-    //   290: invokevirtual 205	java/io/ByteArrayOutputStream:toString	()Ljava/lang/String;
-    //   293: invokespecial 206	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   296: astore_1
-    //   297: aload_0
-    //   298: invokevirtual 207	java/io/ByteArrayOutputStream:close	()V
-    //   301: aload 8
-    //   303: invokevirtual 168	java/util/zip/ZipInputStream:close	()V
-    //   306: aload 7
-    //   308: invokevirtual 173	java/net/HttpURLConnection:disconnect	()V
-    //   311: aload_1
-    //   312: areturn
-    //   313: astore_1
-    //   314: aload_0
-    //   315: invokevirtual 207	java/io/ByteArrayOutputStream:close	()V
-    //   318: aload_1
-    //   319: athrow
-    //   320: new 21	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
-    //   323: dup
-    //   324: new 105	java/lang/StringBuilder
-    //   327: dup
-    //   328: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   331: aload_0
-    //   332: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   335: ldc 209
-    //   337: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   340: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   343: invokespecial 96	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;)V
-    //   346: athrow
-    //   347: new 21	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
-    //   350: dup
-    //   351: new 105	java/lang/StringBuilder
-    //   354: dup
-    //   355: ldc 211
-    //   357: invokespecial 108	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   360: iload_2
-    //   361: invokevirtual 112	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   364: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   367: invokespecial 96	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;)V
+    //   238: l2i
+    //   239: invokespecial 194	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   242: astore_0
+    //   243: aload 6
+    //   245: invokevirtual 197	com/tencent/commonsdk/zip/QZipInputStream:read	()I
+    //   248: istore_2
+    //   249: iload_2
+    //   250: iconst_m1
+    //   251: if_icmpeq +17 -> 268
+    //   254: aload_0
+    //   255: iload_2
+    //   256: invokevirtual 200	java/io/ByteArrayOutputStream:write	(I)V
+    //   259: aload 6
+    //   261: invokevirtual 197	com/tencent/commonsdk/zip/QZipInputStream:read	()I
+    //   264: istore_2
+    //   265: goto -16 -> 249
+    //   268: aload 6
+    //   270: invokevirtual 203	com/tencent/commonsdk/zip/QZipInputStream:closeEntry	()V
+    //   273: new 27	org/json/JSONObject
+    //   276: dup
+    //   277: aload_0
+    //   278: invokevirtual 204	java/io/ByteArrayOutputStream:toString	()Ljava/lang/String;
+    //   281: invokespecial 205	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   284: astore_1
+    //   285: aload_0
+    //   286: invokevirtual 206	java/io/ByteArrayOutputStream:close	()V
+    //   289: aload 6
+    //   291: invokevirtual 167	com/tencent/commonsdk/zip/QZipInputStream:close	()V
+    //   294: aload 5
+    //   296: invokevirtual 172	java/net/HttpURLConnection:disconnect	()V
+    //   299: aload_1
+    //   300: areturn
+    //   301: astore_1
+    //   302: aload_0
+    //   303: invokevirtual 206	java/io/ByteArrayOutputStream:close	()V
+    //   306: aload_1
+    //   307: athrow
+    //   308: new 84	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
+    //   311: dup
+    //   312: new 105	java/lang/StringBuilder
+    //   315: dup
+    //   316: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   319: aload_0
+    //   320: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   323: ldc 208
+    //   325: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   328: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   331: invokespecial 96	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;)V
+    //   334: athrow
+    //   335: new 84	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
+    //   338: dup
+    //   339: new 105	java/lang/StringBuilder
+    //   342: dup
+    //   343: ldc 210
+    //   345: invokespecial 108	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   348: iload_2
+    //   349: invokevirtual 112	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   352: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   355: invokespecial 96	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;)V
+    //   358: athrow
+    //   359: astore_0
+    //   360: new 84	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
+    //   363: dup
+    //   364: ldc 212
+    //   366: aload_0
+    //   367: invokespecial 89	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   370: athrow
-    //   371: astore_0
-    //   372: new 21	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
-    //   375: dup
-    //   376: ldc 213
-    //   378: aload_0
-    //   379: invokespecial 89	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   382: athrow
-    //   383: new 21	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
-    //   386: dup
-    //   387: ldc 215
-    //   389: invokespecial 96	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;)V
-    //   392: athrow
+    //   371: new 84	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
+    //   374: dup
+    //   375: ldc 214
+    //   377: invokespecial 96	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;)V
+    //   380: athrow
+    //   381: aconst_null
+    //   382: astore_0
+    //   383: goto -283 -> 100
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	393	0	paramString1	String
-    //   0	393	1	paramString2	String
-    //   32	329	2	i	int
-    //   201	49	3	l	long
-    //   62	10	5	localObject	Object
-    //   69	41	6	localZipEntry	java.util.zip.ZipEntry
-    //   25	282	7	localHttpURLConnection	java.net.HttpURLConnection
-    //   59	243	8	localZipInputStream	java.util.zip.ZipInputStream
+    //   0	386	0	paramString1	String
+    //   0	386	1	paramString2	String
+    //   32	317	2	i	int
+    //   189	49	3	l	long
+    //   25	270	5	localHttpURLConnection	java.net.HttpURLConnection
+    //   59	231	6	localQZipInputStream	com.tencent.commonsdk.zip.QZipInputStream
     // Exception table:
     //   from	to	target	type
-    //   64	71	145	finally
-    //   79	109	145	finally
-    //   116	145	145	finally
-    //   197	202	145	finally
-    //   210	237	145	finally
-    //   245	255	145	finally
-    //   297	301	145	finally
-    //   314	320	145	finally
-    //   320	347	145	finally
-    //   27	33	153	java/io/IOException
-    //   40	61	153	java/io/IOException
-    //   146	153	153	java/io/IOException
-    //   301	306	153	java/io/IOException
-    //   347	371	153	java/io/IOException
-    //   27	33	165	finally
-    //   40	61	165	finally
-    //   146	153	165	finally
-    //   154	165	165	finally
-    //   301	306	165	finally
-    //   347	371	165	finally
-    //   372	383	165	finally
-    //   0	9	173	java/net/MalformedURLException
-    //   9	14	173	java/net/MalformedURLException
-    //   14	27	173	java/net/MalformedURLException
-    //   166	173	173	java/net/MalformedURLException
-    //   186	197	173	java/net/MalformedURLException
-    //   306	311	173	java/net/MalformedURLException
-    //   383	393	173	java/net/MalformedURLException
-    //   9	14	185	java/io/IOException
-    //   255	261	313	finally
-    //   266	277	313	finally
-    //   280	297	313	finally
-    //   27	33	371	org/json/JSONException
-    //   40	61	371	org/json/JSONException
-    //   146	153	371	org/json/JSONException
-    //   301	306	371	org/json/JSONException
-    //   347	371	371	org/json/JSONException
+    //   61	67	133	finally
+    //   71	100	133	finally
+    //   104	133	133	finally
+    //   185	190	133	finally
+    //   198	225	133	finally
+    //   233	243	133	finally
+    //   285	289	133	finally
+    //   302	308	133	finally
+    //   308	335	133	finally
+    //   27	33	141	java/io/IOException
+    //   40	61	141	java/io/IOException
+    //   134	141	141	java/io/IOException
+    //   289	294	141	java/io/IOException
+    //   335	359	141	java/io/IOException
+    //   27	33	153	finally
+    //   40	61	153	finally
+    //   134	141	153	finally
+    //   142	153	153	finally
+    //   289	294	153	finally
+    //   335	359	153	finally
+    //   360	371	153	finally
+    //   0	9	161	java/net/MalformedURLException
+    //   9	14	161	java/net/MalformedURLException
+    //   14	27	161	java/net/MalformedURLException
+    //   154	161	161	java/net/MalformedURLException
+    //   174	185	161	java/net/MalformedURLException
+    //   294	299	161	java/net/MalformedURLException
+    //   371	381	161	java/net/MalformedURLException
+    //   9	14	173	java/io/IOException
+    //   243	249	301	finally
+    //   254	265	301	finally
+    //   268	285	301	finally
+    //   27	33	359	org/json/JSONException
+    //   40	61	359	org/json/JSONException
+    //   134	141	359	org/json/JSONException
+    //   289	294	359	org/json/JSONException
+    //   335	359	359	org/json/JSONException
   }
   
   /* Error */
   private static JSONObject a(String paramString1, String paramString2, boolean paramBoolean)
-    throws VersionCheckException
   {
     // Byte code:
     //   0: new 105	java/lang/StringBuilder
     //   3: dup
-    //   4: ldc 218
+    //   4: ldc 217
     //   6: invokespecial 108	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   9: aload_1
     //   10: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13: ldc 220
+    //   13: ldc 219
     //   15: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   18: astore_1
     //   19: iload_2
@@ -364,79 +357,79 @@ class SimpleVersionChecker
     //   25: aload_1
     //   26: iload_3
     //   27: invokevirtual 112	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   30: ldc 222
+    //   30: ldc 221
     //   32: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: aload_0
     //   36: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   42: astore_0
-    //   43: new 129	java/net/URL
+    //   43: new 128	java/net/URL
     //   46: dup
     //   47: aload_0
-    //   48: invokespecial 130	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   48: invokespecial 129	java/net/URL:<init>	(Ljava/lang/String;)V
     //   51: astore_0
     //   52: aload_0
-    //   53: invokevirtual 134	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   53: invokevirtual 133	java/net/URL:openConnection	()Ljava/net/URLConnection;
     //   56: astore_0
     //   57: aload_0
-    //   58: instanceof 136
+    //   58: instanceof 135
     //   61: ifeq +193 -> 254
     //   64: aload_0
-    //   65: checkcast 136	java/net/HttpURLConnection
+    //   65: checkcast 135	java/net/HttpURLConnection
     //   68: astore_0
     //   69: aload_0
-    //   70: invokevirtual 139	java/net/HttpURLConnection:getResponseCode	()I
+    //   70: invokevirtual 138	java/net/HttpURLConnection:getResponseCode	()I
     //   73: istore_3
     //   74: iload_3
     //   75: sipush 200
     //   78: if_icmpne +140 -> 218
-    //   81: new 224	java/io/BufferedReader
+    //   81: new 223	java/io/BufferedReader
     //   84: dup
-    //   85: new 226	java/io/InputStreamReader
+    //   85: new 225	java/io/InputStreamReader
     //   88: dup
     //   89: aload_0
-    //   90: invokevirtual 147	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   93: invokespecial 227	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   96: invokespecial 230	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   90: invokevirtual 146	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   93: invokespecial 226	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   96: invokespecial 229	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   99: astore_1
     //   100: new 105	java/lang/StringBuilder
     //   103: dup
-    //   104: ldc 232
+    //   104: ldc 231
     //   106: invokespecial 108	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   109: astore 4
     //   111: aload_1
-    //   112: invokevirtual 235	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   112: invokevirtual 234	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   115: astore 5
     //   117: aload 5
     //   119: ifnull +76 -> 195
     //   122: aload 4
     //   124: aload 5
     //   126: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   129: ldc 237
+    //   129: ldc 236
     //   131: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   134: pop
     //   135: goto -24 -> 111
     //   138: astore 4
     //   140: aload_1
-    //   141: invokevirtual 238	java/io/BufferedReader:close	()V
+    //   141: invokevirtual 237	java/io/BufferedReader:close	()V
     //   144: aload 4
     //   146: athrow
     //   147: astore_1
-    //   148: new 21	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
+    //   148: new 84	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
     //   151: dup
-    //   152: ldc 170
+    //   152: ldc 169
     //   154: aload_1
     //   155: invokespecial 89	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   158: athrow
     //   159: astore_1
     //   160: aload_0
-    //   161: invokevirtual 173	java/net/HttpURLConnection:disconnect	()V
+    //   161: invokevirtual 172	java/net/HttpURLConnection:disconnect	()V
     //   164: aload_1
     //   165: athrow
     //   166: astore_0
-    //   167: new 21	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
+    //   167: new 84	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
     //   170: dup
-    //   171: ldc 240
+    //   171: ldc 239
     //   173: aload_0
     //   174: invokespecial 89	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   177: athrow
@@ -444,29 +437,29 @@ class SimpleVersionChecker
     //   179: istore_3
     //   180: goto -155 -> 25
     //   183: astore_0
-    //   184: new 21	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
+    //   184: new 84	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
     //   187: dup
-    //   188: ldc 177
+    //   188: ldc 176
     //   190: aload_0
     //   191: invokespecial 89	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   194: athrow
     //   195: aload_1
-    //   196: invokevirtual 238	java/io/BufferedReader:close	()V
-    //   199: new 29	org/json/JSONObject
+    //   196: invokevirtual 237	java/io/BufferedReader:close	()V
+    //   199: new 27	org/json/JSONObject
     //   202: dup
     //   203: aload 4
     //   205: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   208: invokespecial 206	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   208: invokespecial 205	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   211: astore_1
     //   212: aload_0
-    //   213: invokevirtual 173	java/net/HttpURLConnection:disconnect	()V
+    //   213: invokevirtual 172	java/net/HttpURLConnection:disconnect	()V
     //   216: aload_1
     //   217: areturn
-    //   218: new 21	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
+    //   218: new 84	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
     //   221: dup
     //   222: new 105	java/lang/StringBuilder
     //   225: dup
-    //   226: ldc 211
+    //   226: ldc 210
     //   228: invokespecial 108	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   231: iload_3
     //   232: invokevirtual 112	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -474,15 +467,15 @@ class SimpleVersionChecker
     //   238: invokespecial 96	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;)V
     //   241: athrow
     //   242: astore_1
-    //   243: new 21	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
+    //   243: new 84	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
     //   246: dup
-    //   247: ldc 213
+    //   247: ldc 212
     //   249: aload_1
     //   250: invokespecial 89	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   253: athrow
-    //   254: new 21	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
+    //   254: new 84	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException
     //   257: dup
-    //   258: ldc 242
+    //   258: ldc 241
     //   260: invokespecial 96	com/tencent/hydevteam/pluginframework/pluginmanager/VersionCheckException:<init>	(Ljava/lang/String;)V
     //   263: athrow
     // Local variable table:
@@ -526,7 +519,6 @@ class SimpleVersionChecker
   }
   
   public TargetDownloadInfo check(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
-    throws VersionCheckException
   {
     int i = -1;
     switch (paramString1.hashCode())
@@ -554,10 +546,15 @@ class SimpleVersionChecker
     a = paramString1;
     return a(a(paramString1, paramString3));
   }
+  
+  public TargetDownloadInfo checkForceUpdate(String paramString1, String paramString2, String paramString3, boolean paramBoolean, InstalledPlugin paramInstalledPlugin)
+  {
+    throw new RuntimeException("SimpleVersionChecker暂不支持checkForceUpdate");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.hydevteam.pluginframework.pluginmanager.SimpleVersionChecker
  * JD-Core Version:    0.7.0.1
  */

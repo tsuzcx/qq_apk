@@ -1,17 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class aiwt
-  implements Runnable
+final class aiwt
+  implements DialogInterface.OnClickListener
 {
-  aiwt(aiws paramaiws) {}
+  aiwt(Activity paramActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.b == null) {
-      return;
-    }
-    this.a.a.b.setVisibility(8);
+    this.a.setResult(-1);
+    this.a.finish();
   }
 }
 

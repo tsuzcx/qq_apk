@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.SetTroopAdminsActivity.TroopAdmin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SubaccountUgActivity;
 
-public final class dnv
-  implements Parcelable.Creator
+class dnv
+  implements DialogInterface.OnClickListener
 {
-  public SetTroopAdminsActivity.TroopAdmin a(Parcel paramParcel)
-  {
-    return new SetTroopAdminsActivity.TroopAdmin(paramParcel, null);
-  }
+  dnv(dns paramdns) {}
   
-  public SetTroopAdminsActivity.TroopAdmin[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new SetTroopAdminsActivity.TroopAdmin[paramInt];
+    paramDialogInterface = new Intent(this.a.a.a(), SubaccountUgActivity.class);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

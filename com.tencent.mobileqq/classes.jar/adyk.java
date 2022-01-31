@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.leba.LebaFeedsAdapter;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
-public class adyk
-  implements View.OnClickListener
+class adyk
+  implements banr
 {
-  public adyk(LebaFeedsAdapter paramLebaFeedsAdapter) {}
+  adyk(adyj paramadyj) {}
   
-  public void onClick(View paramView)
+  public void onCancel() {}
+  
+  public void onConfirm()
   {
-    if ((LebaFeedsAdapter.a(this.a) != null) && (LebaFeedsAdapter.a(this.a) == 4)) {
-      LebaFeedsAdapter.a(this.a).ag_();
-    }
+    adyd.a(this.a.jdField_a_of_type_Adyg.a).b();
+    adyg.a(this.a.jdField_a_of_type_Adyg, this.a.jdField_a_of_type_Int);
   }
 }
 

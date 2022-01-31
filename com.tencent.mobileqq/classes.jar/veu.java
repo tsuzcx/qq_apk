@@ -1,38 +1,67 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureHandler;
-import com.tencent.mobileqq.data.MessageForRichState;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchFeedLike;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedLike;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
 
 public class veu
-  implements Runnable
+  extends urt
 {
-  public veu(RichStatItemBuilder paramRichStatItemBuilder, MessageForRichState paramMessageForRichState) {}
+  public static final String a;
+  private List<String> a;
+  private int c;
   
-  public void run()
+  static
   {
-    if (TextUtils.isEmpty(RichStatItemBuilder.a().feedsId))
+    jdField_a_of_type_JavaLangString = uqn.a("StorySvc.feed_like_list_batch_715");
+  }
+  
+  public veu(List<String> paramList, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
     {
-      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.a.a(1)).b(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.frienduin });
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatItemBuilder", 2, "sign feedid is is null reget friend sign");
+      this.c = i;
+      return;
+    }
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspBatchFeedLike localRspBatchFeedLike = new qqstory_service.RspBatchFeedLike();
+    try
+    {
+      localRspBatchFeedLike.mergeFrom(paramArrayOfByte);
+      return new vev(localRspBatchFeedLike);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
       }
     }
-    SignatureHandler localSignatureHandler;
-    do
-    {
-      return;
-      localSignatureHandler = (SignatureHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.a.a(41);
-    } while (localSignatureHandler == null);
-    localSignatureHandler.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.feedId);
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqBatchFeedLike localReqBatchFeedLike = new qqstory_service.ReqBatchFeedLike();
+    List localList = a(this.jdField_a_of_type_JavaUtilList);
+    localReqBatchFeedLike.feed_id_list.set(localList);
+    localReqBatchFeedLike.source.set(this.c);
+    return localReqBatchFeedLike.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     veu
  * JD-Core Version:    0.7.0.1
  */

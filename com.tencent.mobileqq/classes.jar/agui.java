@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class agui
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  agui(aguh paramaguh) {}
+  agui(agti paramagti) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.a(false);
+    this.a.g = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agui
  * JD-Core Version:    0.7.0.1
  */

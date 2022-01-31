@@ -1,34 +1,81 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ThumbInfo;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetVideoFullInfoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoFullInfoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class vgh
-  implements Runnable
+  extends urt<vhs>
 {
-  public vgh(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, MessageForShortVideo paramMessageForShortVideo) {}
+  public static final String a;
+  public List<String> a;
+  public int c;
   
-  public void run()
+  static
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    jdField_a_of_type_JavaLangString = uqn.a("StorySvc.union_batch_vid_basic_info");
+  }
+  
+  public vgh()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspBatchGetVideoFullInfoList localRspBatchGetVideoFullInfoList = new qqstory_service.RspBatchGetVideoFullInfoList();
+    try
     {
-      ShortVideoRealItemBuilder.a(true);
-      ShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-      EncodeVideoTask.ThumbInfo localThumbInfo = new EncodeVideoTask.ThumbInfo(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.mThumbFilePath, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbMD5, null, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbWidth, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbHeight);
-      localObject = new EncodeVideoTask(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a, (String)localObject, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.mediacodecEncode, localThumbInfo);
-      ((EncodeVideoTask)localObject).a(ShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder));
-      ((EncodeVideoTask)localObject).a(false);
-      Utils.executeAsyncTaskOnSerialExcuter((AsyncTask)localObject, new Void[] { (Void)null });
+      localRspBatchGetVideoFullInfoList.mergeFrom(paramArrayOfByte);
+      wxe.a("Q.qqstory.net:GetVideoFullInfoListRequest", "%s", xrq.a(localRspBatchGetVideoFullInfoList));
+      return new vhs(localRspBatchGetVideoFullInfoList);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wxe.b("Q.qqstory.net:GetVideoFullInfoListRequest", a(), paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqBatchGetVideoFullInfoList localReqBatchGetVideoFullInfoList = new qqstory_service.ReqBatchGetVideoFullInfoList();
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      if (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if (!str.startsWith("Loading")) {}
+        for (boolean bool = true;; bool = false)
+        {
+          xqq.a(bool);
+          localReqBatchGetVideoFullInfoList.vid_list.add(ByteStringMicro.copyFromUtf8(str));
+          break;
+        }
+      }
+    }
+    localReqBatchGetVideoFullInfoList.source.set(this.c);
+    return localReqBatchGetVideoFullInfoList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetVideoFullInfoListRequest{vidList='" + this.jdField_a_of_type_JavaUtilList + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vgh
  * JD-Core Version:    0.7.0.1
  */

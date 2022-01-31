@@ -1,59 +1,69 @@
-import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
-import com.tencent.mobileqq.imaxad.ImaxAdUtil;
-import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
-import java.io.File;
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.ims.QQProtectRisks.QQProtectRisksResponse;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity.7.1;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class adte
-  implements TVK_ICacheMgr.IPreloadCallback
+  extends nac
 {
-  private adte(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager) {}
+  public adte(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    synchronized (ImaxAdVideoPreloadManager.a(this.a))
+    int i = 0;
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
+    for (paramInt = 0;; paramInt = 1)
     {
-      ImaxAdUtil.b("onPreLoadFailed vid:" + paramString1 + ", i:" + paramInt + ", callbackMsg:" + paramString2);
-      ImaxAdVideoPreloadManager.b(this.a, ImaxAdVideoPreloadManager.a(this.a));
-      return;
-    }
-  }
-  
-  public void onPreLoadSucess(String paramString1, String paramString2)
-  {
-    synchronized (ImaxAdVideoPreloadManager.a(this.a))
-    {
-      ImaxAdUtil.b("onPreLoadSucess vid:" + paramString1 + ", detail:" + paramString2);
+      if (paramInt != 0) {}
       try
       {
-        paramString2 = new JSONObject(paramString2);
-        long l1 = paramString2.optLong("fileSize");
-        long l2 = paramString2.optLong("offset");
-        if ((l1 > 0L) && (l2 > 0L) && (l2 >= l1))
+        QQProtectRisks.QQProtectRisksResponse localQQProtectRisksResponse = new QQProtectRisks.QQProtectRisksResponse();
+        localQQProtectRisksResponse.mergeFrom(paramArrayOfByte);
+        paramInt = i;
+        if (localQQProtectRisksResponse.uint32_sec_cmd.has()) {
+          paramInt = localQQProtectRisksResponse.uint32_sec_cmd.get();
+        }
+        if (paramInt == 1)
         {
-          paramString2 = ImaxAdVideoPreloadManager.a(paramString1);
-          ImaxAdUtil.b("onPreLoadSucess path:" + paramString2);
-          ImaxAdVideoPreloadManager.a(this.a, paramString1);
-          File localFile = new File(ImaxAdVideoPreloadManager.b(paramString1));
-          if (localFile.exists()) {
-            localFile.renameTo(new File(paramString2));
+          long l = 3600L;
+          paramArrayOfByte = "";
+          if (localQQProtectRisksResponse.uint32_cache_time.has()) {
+            l = localQQProtectRisksResponse.uint32_cache_time.get();
           }
-          ImaxAdVideoPreloadManager.b(this.a, paramString1);
-          ImaxAdVideoPreloadManager.b(this.a, ImaxAdVideoPreloadManager.a(this.a));
-          ReportController.b(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", ImaxAdVideoPreloadManager.a(this.a).mVideoVid, String.valueOf(ImaxAdVideoPreloadManager.a(this.a).mSource));
+          if (localQQProtectRisksResponse.str_risk_exist.has()) {
+            paramArrayOfByte = localQQProtectRisksResponse.str_risk_exist.get();
+          }
+          paramBundle = paramArrayOfByte;
+          if (TextUtils.isEmpty(paramArrayOfByte))
+          {
+            paramBundle = paramArrayOfByte;
+            if (localQQProtectRisksResponse.risk_info_list.has())
+            {
+              paramBundle = paramArrayOfByte;
+              if (!localQQProtectRisksResponse.risk_info_list.isEmpty()) {
+                paramBundle = this.a.getString(2131699758);
+              }
+            }
+          }
+          QQSettingSettingActivity.a(this.a, l, paramBundle);
+          this.a.runOnUiThread(new QQSettingSettingActivity.7.1(this, paramBundle));
         }
+        return;
       }
-      catch (Exception paramString1)
+      catch (Throwable paramArrayOfByte)
       {
-        for (;;)
-        {
-          QLog.d("ImaxAdvertisement", 1, "onPreLoadSucess", paramString1);
-        }
+        paramArrayOfByte.printStackTrace();
+        return;
       }
-      return;
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        return;
+      }
     }
   }
 }

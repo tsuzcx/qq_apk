@@ -1,24 +1,29 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.widget.ImageView;
 
-public final class anwu
-  implements Animation.AnimationListener
+class anwu
+  extends AnimatorListenerAdapter
 {
-  public anwu(View paramView) {}
+  anwu(anwq paramanwq, anwx paramanwx, ObjectAnimator paramObjectAnimator) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.setAnimation(null);
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Anwx != null) {
+      this.jdField_a_of_type_Anwx.a.setVisibility(0);
+    }
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anwu
  * JD-Core Version:    0.7.0.1
  */

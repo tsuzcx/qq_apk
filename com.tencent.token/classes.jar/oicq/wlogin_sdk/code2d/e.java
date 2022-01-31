@@ -56,7 +56,7 @@ public class e
           if (util.buf_to_int8(paramArrayOfByte, j + 4) == 1) {}
           for (boolean bool = true;; bool = false)
           {
-            c.s = bool;
+            c.t = bool;
             break;
           }
         }
@@ -107,7 +107,7 @@ public class e
       System.arraycopy(paramArrayOfInt, 0, paramArrayOfByte5, i, paramArrayOfInt.length);
       i += paramArrayOfInt.length;
       if ((paramArrayOfByte2 == null) || (paramArrayOfByte2.length != 16)) {
-        break label399;
+        break label398;
       }
       System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte5, i, 16);
       i += 16;
@@ -118,7 +118,7 @@ public class e
       i += 1;
       util.int16_to_buf(paramArrayOfByte5, i, paramInt);
       paramInt = i + 2;
-      util.int8_to_buf(paramArrayOfByte5, paramInt, 8);
+      util.int8_to_buf(paramArrayOfByte5, paramInt, 3);
       paramInt += 1;
       util.int16_to_buf(paramArrayOfByte5, paramInt, paramArrayOfByte1.length);
       paramInt += 2;
@@ -131,7 +131,7 @@ public class e
       }
       paramArrayOfByte5 = new byte[arrayOfByte.length + 16 + 2 + paramArrayOfInt.length + 16 + 1 + 2 + 1 + 2 + paramArrayOfByte1.length * 2 + 2 + 4 + paramArrayOfByte3.length];
       break;
-      label399:
+      label398:
       i += 16;
     }
     int j = 1;

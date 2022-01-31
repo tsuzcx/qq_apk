@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.data;
 
-import abvi;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import apfr;
+import awge;
+import awhs;
 
 public class Setting
-  extends Entity
+  extends awge
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abvi();
+  public static final Parcelable.Creator<Setting> CREATOR = new apfr();
   public byte bFaceFlags;
   public byte bHeadType;
   public byte bSourceType;
   public byte bUsrType;
   public long headImgTimestamp;
   public short systemHeadID;
-  @unique
+  @awhs
   public String uin;
   public long updateTimestamp;
   public String url;
@@ -86,7 +86,7 @@ public class Setting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.Setting
  * JD-Core Version:    0.7.0.1
  */

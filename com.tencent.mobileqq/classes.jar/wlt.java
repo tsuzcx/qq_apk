@@ -1,32 +1,35 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
 
-public class wlt
-  extends BizTroopObserver
+class wlt
+  implements urr<vfr, vfs>
 {
-  public wlt(TroopView paramTroopView) {}
+  wlt(wls paramwls, JobContext paramJobContext, Integer paramInteger) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void a(@NonNull vfr paramvfr, @Nullable vfs paramvfs, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (paramInt2 == 0) {
-      this.a.j();
-    }
-    while (this.a.b()) {
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      wxe.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
       return;
     }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131435580);
+    if ((paramErrorMessage.isFail()) || (paramvfs == null))
+    {
+      wxe.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
+      wls.a(this.jdField_a_of_type_Wls, paramErrorMessage);
+      return;
     }
-    QQToast.a(this.a.a(), 1, paramString1, 0).a();
+    wls.a(this.jdField_a_of_type_Wls).a(paramvfs.jdField_a_of_type_JavaUtilList, paramvfs.jdField_a_of_type_JavaLangString, paramvfs.jdField_a_of_type_Boolean);
+    ((woy)uwa.a(11)).a(paramvfs.jdField_a_of_type_JavaUtilList);
+    paramvfr = wls.a(this.jdField_a_of_type_Wls).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
+    wls.a(this.jdField_a_of_type_Wls, paramvfr);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wlt
  * JD-Core Version:    0.7.0.1
  */

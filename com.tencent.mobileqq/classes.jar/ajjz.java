@@ -1,46 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
-import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
-import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
-import com.tencent.mobileqq.troop.homework.recite.utils.ReciteDetectManager;
-import com.tencent.mobileqq.troop.homework.recite.utils.ReciteDetectManager.ReciteDetectListener;
-import java.util.List;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.URLThemeImageView;
 
 public class ajjz
-  extends Handler
+  extends ajjw
 {
-  public ajjz(ReciteDetectManager paramReciteDetectManager) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (ReciteDetectManager.a(this.a) == null) {}
-    List localList;
-    do
-    {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        case 0: 
-          paramMessage = (WordInfo)paramMessage.obj;
-          ReciteDetectManager.a(this.a).a(paramMessage);
-          ReciteDetectManager.a(this.a, paramMessage);
-        }
-      } while ((!paramMessage.isDetected) || (paramMessage.paragraphPos != this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.size() - 1));
-      localList = ((ParagraphInfo)this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.get(paramMessage.paragraphPos)).generateOrGetWordInfoList(paramMessage.paragraphPos);
-    } while (paramMessage.wordPos != localList.size() - 2);
-    this.a.a();
-    return;
-    ReciteDetectManager.a(this.a).f();
-    return;
-    ReciteDetectManager.a(this.a).a(this.a.jdField_a_of_type_Int, this.a.b, this.a.c);
-    this.a.jdField_a_of_type_Int = 0;
-    this.a.c = 0;
-  }
+  public View a;
+  public TextView a;
+  public DragTextView a;
+  public URLThemeImageView a;
+  public TextView b;
+  public URLThemeImageView b;
+  public TextView c;
+  public TextView d;
 }
 
 

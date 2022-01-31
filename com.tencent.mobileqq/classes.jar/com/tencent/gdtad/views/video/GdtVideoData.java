@@ -1,21 +1,26 @@
 package com.tencent.gdtad.views.video;
 
 import android.text.TextUtils;
-import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.ad.tangram.Ad;
 import java.io.Serializable;
 
 public class GdtVideoData
   implements Serializable
 {
-  private GdtAd ad;
+  private Ad ad;
   private String coverURL;
+  private boolean directPlay;
   private long durationMillis;
-  private boolean loop;
+  private boolean forceNotShowControllerView;
+  private boolean isVolumOpen = true;
+  private boolean loop = true;
+  private boolean needReport = true;
   private int playScene = -1;
   private long startPositionMillis;
   private String url;
+  private int videoDefaultBackgroundColor = -16777216;
   
-  public GdtAd getAd()
+  public Ad getAd()
   {
     return this.ad;
   }
@@ -45,6 +50,21 @@ public class GdtVideoData
     return this.url;
   }
   
+  public int getVideoDefaultBackgroundColor()
+  {
+    return this.videoDefaultBackgroundColor;
+  }
+  
+  public boolean isDirectPlay()
+  {
+    return this.directPlay;
+  }
+  
+  public boolean isForceNotShowControllerView()
+  {
+    return this.forceNotShowControllerView;
+  }
+  
   public boolean isLoop()
   {
     return this.loop;
@@ -55,10 +75,20 @@ public class GdtVideoData
     return !TextUtils.isEmpty(getUrl());
   }
   
-  public void setAd(GdtAd paramGdtAd)
+  public boolean isVolumOpen()
   {
-    if (paramGdtAd != null) {
-      this.ad = paramGdtAd;
+    return this.isVolumOpen;
+  }
+  
+  public boolean needReport()
+  {
+    return this.needReport;
+  }
+  
+  public void setAd(Ad paramAd)
+  {
+    if (paramAd != null) {
+      this.ad = paramAd;
     }
   }
   
@@ -67,14 +97,29 @@ public class GdtVideoData
     this.coverURL = paramString;
   }
   
+  public void setDirectPlay(boolean paramBoolean)
+  {
+    this.directPlay = paramBoolean;
+  }
+  
   public void setDurationMillis(long paramLong)
   {
     this.durationMillis = paramLong;
   }
   
+  public void setForceNotShowControllerView(boolean paramBoolean)
+  {
+    this.forceNotShowControllerView = paramBoolean;
+  }
+  
   public void setLoop(boolean paramBoolean)
   {
     this.loop = paramBoolean;
+  }
+  
+  public void setNeedReport(boolean paramBoolean)
+  {
+    this.needReport = paramBoolean;
   }
   
   public void setPlayScene(int paramInt)
@@ -89,12 +134,36 @@ public class GdtVideoData
   
   public void setUrl(String paramString)
   {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (paramString.startsWith("https")) {
+        this.url = paramString.replaceFirst("https", "http");
+      }
+    }
+    else {
+      return;
+    }
+    if (paramString.startsWith("HTTPS"))
+    {
+      this.url = paramString.replaceFirst("HTTPS", "http");
+      return;
+    }
     this.url = paramString;
+  }
+  
+  public void setVideoDefaultBackgroundColor(int paramInt)
+  {
+    this.videoDefaultBackgroundColor = paramInt;
+  }
+  
+  public void setVolumOpen(boolean paramBoolean)
+  {
+    this.isVolumOpen = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.views.video.GdtVideoData
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,14 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
+import com.tencent.image.URLDrawable;
 
-class aaum
-  implements ArkAppCenter.OnGetAppIcon
+public abstract interface aaum
 {
-  aaum(aaul paramaaul) {}
+  public abstract void a(URLDrawable paramURLDrawable);
   
-  public void a(String paramString, Bitmap paramBitmap)
-  {
-    if (paramBitmap != null) {
-      this.a.a.a.setImageBitmap(paramBitmap);
-    }
-  }
+  public abstract void b(URLDrawable paramURLDrawable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaum
  * JD-Core Version:    0.7.0.1
  */

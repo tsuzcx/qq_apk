@@ -1,38 +1,37 @@
 package com.tencent.filter.ttpic;
 
+import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.filter.BaseFilter;
-import com.tencent.filter.GLSLRender;
-import com.tencent.filter.Param.FloatParam;
 
 public class AutoLevelFilter
   extends BaseFilter
 {
   public AutoLevelFilter()
   {
-    super(GLSLRender.FILTER_SHADER_NONE);
+    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   }
   
-  public void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
+  public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
     if (paramBoolean)
     {
-      super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+      super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
       return;
     }
-    BaseFilter localBaseFilter = new BaseFilter(GLSLRender.VERTEXT_HSVCHANNELSHARPEN_SHADER, GLSLRender.FILTER_HSVNCHANNEL_SHARPEN_SHADER);
-    localBaseFilter.addParam(new Param.FloatParam("sharpness", 0.2F));
-    localBaseFilter.addParam(new Param.FloatParam("inputH", 1.0F));
-    localBaseFilter.addParam(new Param.FloatParam("inputS", 1.2F));
-    localBaseFilter.addParam(new Param.FloatParam("inputV", 1.0F));
-    localBaseFilter.addParam(new Param.FloatParam("imageWidthFactor", 1.0F / paramFloat1));
-    localBaseFilter.addParam(new Param.FloatParam("imageHeightFactor", 1.0F / paramFloat2));
+    BaseFilter localBaseFilter = new BaseFilter(BaseFilter.getVertexShader(13), BaseFilter.getFragmentShader(112));
+    localBaseFilter.addParam(new UniformParam.FloatParam("sharpness", 0.2F));
+    localBaseFilter.addParam(new UniformParam.FloatParam("inputH", 1.0F));
+    localBaseFilter.addParam(new UniformParam.FloatParam("inputS", 1.2F));
+    localBaseFilter.addParam(new UniformParam.FloatParam("inputV", 1.0F));
+    localBaseFilter.addParam(new UniformParam.FloatParam("imageWidthFactor", 1.0F / paramFloat1));
+    localBaseFilter.addParam(new UniformParam.FloatParam("imageHeightFactor", 1.0F / paramFloat2));
     setNextFilter(localBaseFilter, null);
-    super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+    super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.filter.ttpic.AutoLevelFilter
  * JD-Core Version:    0.7.0.1
  */

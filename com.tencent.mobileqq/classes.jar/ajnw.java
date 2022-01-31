@@ -1,13 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.utils.SchoolTroopKeywordManager.SchoolTroopHighlightSpan;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajnw
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public ajnw(SchoolTroopKeywordManager.SchoolTroopHighlightSpan paramSchoolTroopHighlightSpan) {}
+  public ajnw(LoginView paramLoginView) {}
   
-  public void onClick(View paramView) {}
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    QLog.d("LoginActivity.LoginView", 1, "AutoLoginReceiver onReceive");
+    LoginView.a(this.a, true);
+  }
 }
 
 

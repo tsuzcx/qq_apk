@@ -1,20 +1,21 @@
-import android.content.Context;
-import com.tencent.mobileqq.pluginsdk.PluginProxyService;
-import cooperation.plugin.IPluginManager.PluginParams;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public final class amma
-  implements Runnable
+public class amma
+  extends abss
 {
-  public amma(Context paramContext, IPluginManager.PluginParams paramPluginParams) {}
-  
-  public void run()
+  public amma(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade, abtf paramabtf)
   {
-    PluginProxyService.openService(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.d, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.c, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.e, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a);
+    super(paramQQAppInterface, paramQQMessageFacade, paramabtf);
+    if (QLog.isColorLevel()) {
+      QLog.d("TinyIdMsgMessageManager", 2, "TinyIdMsgMessageManager() called with: app = [" + paramQQAppInterface + "], msgFacade = [" + paramQQMessageFacade + "], msgPool = [" + paramabtf + "]");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amma
  * JD-Core Version:    0.7.0.1
  */

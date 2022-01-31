@@ -1,24 +1,14 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class wrt
-  implements View.OnTouchListener
+public abstract interface wrt<T>
 {
-  public wrt(MessageSearchDialog paramMessageSearchDialog) {}
+  public abstract void a(ErrorMessage paramErrorMessage);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
-  }
+  public abstract void a(T paramT);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wrt
  * JD-Core Version:    0.7.0.1
  */

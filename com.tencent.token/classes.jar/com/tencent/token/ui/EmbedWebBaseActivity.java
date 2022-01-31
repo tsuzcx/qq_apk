@@ -1,31 +1,23 @@
 package com.tencent.token.ui;
 
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Picture;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.webkit.DownloadListener;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
-import com.tencent.token.global.e;
+import com.tencent.token.global.h;
 import com.tencent.token.ui.base.TitleOptionMenu;
+import com.tencent.token.utils.w;
 import java.lang.reflect.Method;
 
 public abstract class EmbedWebBaseActivity
@@ -33,53 +25,36 @@ public abstract class EmbedWebBaseActivity
 {
   private static final int TIMELINE_SUPPORTED_VERSION = 553779201;
   protected boolean alsoShowMenu;
-  private boolean backevent;
   protected TextView backtext;
   protected TextView closetext;
-  private boolean firstload = true;
-  private ImageView iamgeView;
-  private View.OnClickListener mBrowserCloseListener = new dm(this);
-  private View.OnClickListener mBrowserListener = new dl(this);
-  private final WebChromeClient mChromeClient = new di(this);
-  private DownloadListener mDownloadlistener = new dk(this);
-  boolean mIsRefreshing;
-  private View.OnClickListener mRightTitleButtonClickListener = new dd(this);
+  private View.OnClickListener mBrowserCloseListener = new eh(this);
+  private View.OnClickListener mBrowserListener = new eg(this);
+  private final WebChromeClient mChromeClient = new ed(this);
+  private DownloadListener mDownloadlistener = new ef(this);
+  public boolean mDynamicTitle;
+  private View.OnClickListener mRightTitleButtonClickListener = new dz(this);
   protected TitleOptionMenu mTitleMenu;
-  private final View.OnTouchListener mTouchListener = new dj(this);
+  private final View.OnTouchListener mTouchListener = new ee(this);
   protected IWXAPI mWeChatApi;
   public WebView mWebView;
-  private final WebViewClient mWebviewClient = new dg(this);
-  private FrameLayout root;
+  private final WebViewClient mWebviewClient = new ec(this);
   public String sharetitle;
   public String shareurl;
-  private String sig;
-  
-  private Bitmap captureWebView(WebView paramWebView)
-  {
-    paramWebView = paramWebView.capturePicture();
-    if ((paramWebView == null) || (paramWebView.getWidth() <= 0) || (paramWebView.getHeight() <= 0)) {
-      return null;
-    }
-    Bitmap localBitmap = Bitmap.createBitmap(paramWebView.getWidth(), paramWebView.getHeight(), Bitmap.Config.ARGB_8888);
-    paramWebView.draw(new Canvas(localBitmap));
-    return localBitmap;
-  }
   
   private void initUI()
   {
-    this.backtext = ((TextView)findViewById(2131297146));
+    this.backtext = ((TextView)findViewById(2131559305));
     if (this.backtext != null) {
       this.backtext.setVisibility(0);
     }
-    ((RelativeLayout)findViewById(2131297145)).setOnClickListener(this.mBrowserListener);
-    this.closetext = ((TextView)findViewById(2131297147));
+    ((RelativeLayout)findViewById(2131559304)).setOnClickListener(this.mBrowserListener);
+    this.closetext = ((TextView)findViewById(2131559306));
     this.closetext.setOnClickListener(this.mBrowserCloseListener);
   }
   
   private void initWebView()
   {
-    this.root = ((FrameLayout)findViewById(2131296415));
-    this.mWebView = ((WebView)findViewById(2131297302));
+    this.mWebView = ((WebView)findViewById(2131559463));
     this.mWebView.setWebViewClient(this.mWebviewClient);
     this.mWebView.setWebChromeClient(this.mChromeClient);
     this.mWebView.setOnTouchListener(this.mTouchListener);
@@ -90,88 +65,86 @@ public abstract class EmbedWebBaseActivity
     localWebSettings.setNeedInitialFocus(false);
     localWebSettings.setBuiltInZoomControls(false);
     localWebSettings.setSupportZoom(false);
+    localWebSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+    localWebSettings.setSupportMultipleWindows(true);
+  }
+  
+  private void sendBindUinSmsBySMSAPP(String paramString1, String paramString2)
+  {
+    try
+    {
+      paramString1 = new Intent("android.intent.action.SENDTO", Uri.parse("smsto:" + paramString1));
+      paramString1.putExtra("sms_body", paramString2);
+      startActivityForResult(paramString1, 0);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      paramString1.printStackTrace();
+      h.b(paramString1.toString());
+    }
   }
   
   private void showWechatBindDialog()
   {
-    showUserDialog(2131361808, getString(2131362386), 2131361812, 2131361813, new df(this), null);
-  }
-  
-  private void startAnim(WebView paramWebView)
-  {
-    if (this.iamgeView == null)
-    {
-      this.iamgeView = new ImageView(this);
-      paramWebView.setDrawingCacheEnabled(true);
-      localObject = captureWebView(paramWebView);
-      if (localObject != null) {
-        this.iamgeView.setImageBitmap((Bitmap)localObject);
-      }
-      this.iamgeView.setScaleType(ImageView.ScaleType.FIT_XY);
-      localObject = new FrameLayout.LayoutParams(-1, -1);
-      this.root.addView(this.iamgeView, (ViewGroup.LayoutParams)localObject);
-    }
-    if (this.backevent)
-    {
-      localObject = AnimationUtils.loadAnimation(this, 2130837973);
-      ((Animation)localObject).setFillAfter(true);
-      ((Animation)localObject).setDuration(200L);
-      ((Animation)localObject).setDetachWallpaper(true);
-      this.iamgeView.setAnimation((Animation)localObject);
-      ((Animation)localObject).setAnimationListener(new dh(this));
-      if (!this.backevent) {
-        break label180;
-      }
-    }
-    label180:
-    for (Object localObject = AnimationUtils.loadAnimation(this, 2130837971);; localObject = AnimationUtils.loadAnimation(this, 2130837970))
-    {
-      ((Animation)localObject).setFillAfter(true);
-      ((Animation)localObject).setDuration(200L);
-      ((Animation)localObject).setDetachWallpaper(true);
-      paramWebView.setAnimation((Animation)localObject);
-      this.backevent = false;
-      return;
-      localObject = AnimationUtils.loadAnimation(this, 2130837972);
-      break;
-    }
+    showUserDialog(2131230843, getString(2131231435), 2131231294, 2131231265, new eb(this), null);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    super.onCreate(paramBundle);
-    setContentView(2130903257);
-    initWebView();
-    initUI();
     try
     {
-      paramBundle = this.mWebView.getClass().getMethod("removeJavascriptInterface", new Class[] { String.class });
-      if (paramBundle != null) {
-        paramBundle.invoke(this.mWebView, new Object[] { "searchBoxJavaBridge_" });
+      super.onCreate(paramBundle);
+      setContentView(2130968822);
+      initWebView();
+      initUI();
+      try
+      {
+        paramBundle = this.mWebView.getClass().getMethod("removeJavascriptInterface", new Class[] { String.class });
+        if (paramBundle != null) {
+          paramBundle.invoke(this.mWebView, new Object[] { "searchBoxJavaBridge_" });
+        }
       }
+      catch (Exception paramBundle)
+      {
+        for (;;)
+        {
+          paramBundle.printStackTrace();
+          h.c("removeJavascriptInterface error: " + paramBundle.getMessage());
+        }
+      }
+      setRightTitleImage(2130838013, this.mRightTitleButtonClickListener);
+      this.mTitleMenu = getDialogMenu();
+      if (this.mTitleMenu != null) {
+        this.mTitleMenu.setDisplayMode(5);
+      }
+      if (this.mRightOptionLayout != null) {
+        this.mRightOptionLayout.setVisibility(8);
+      }
+      this.mWeChatApi = WXAPIFactory.createWXAPI(this, "wx68451b483ebd18ce", false);
+      this.mWeChatApi.registerApp("wx68451b483ebd18ce");
+      return;
     }
     catch (Exception paramBundle)
     {
-      for (;;)
-      {
-        paramBundle.printStackTrace();
-        e.c("removeJavascriptInterface error: " + paramBundle.getMessage());
-      }
+      paramBundle.printStackTrace();
+      finish();
     }
-    setRightTitleImage(2130837953, this.mRightTitleButtonClickListener);
-    this.mTitleMenu = getDialogMenu();
-    if (this.mTitleMenu != null) {
-      this.mTitleMenu.a(5);
-    }
-    if (this.mRightOptionLayout != null) {
-      this.mRightOptionLayout.setVisibility(8);
-    }
-    this.mWeChatApi = WXAPIFactory.createWXAPI(this, "wx68451b483ebd18ce", false);
-    this.mWeChatApi.registerApp("wx68451b483ebd18ce");
   }
   
   public boolean overrideUrlLoading(String paramString)
   {
+    if (paramString.startsWith("sms:"))
+    {
+      h.b("url" + paramString);
+      sendBindUinSmsBySMSAPP(paramString.substring(4), "");
+      return true;
+    }
+    if (paramString.startsWith("wtloginmqq://ptlogin/qlogin?p=http"))
+    {
+      w.a(this, paramString);
+      return true;
+    }
     return false;
   }
   

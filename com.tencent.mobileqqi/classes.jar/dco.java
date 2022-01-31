@@ -1,37 +1,27 @@
-import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import java.util.ArrayList;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class dco
-  extends TroopObserver
+  extends BroadcastReceiver
 {
-  public dco(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
+  public dco(QQMapActivity paramQQMapActivity) {}
   
-  protected void a(boolean paramBoolean, ArrayList paramArrayList)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((!paramBoolean) || (paramArrayList == null)) {
-      return;
-    }
-    int i = 0;
-    label11:
-    TroopMemberCardInfo localTroopMemberCardInfo;
-    if (i < paramArrayList.size())
+    if ((paramIntent.getAction().equals("android.intent.action.SCREEN_OFF")) && (!this.a.m) && (!this.a.jdField_n_of_type_Boolean) && (GesturePWDUtils.getGesturePWDState(this.a, this.a.jdField_n_of_type_JavaLangString) == 2) && (GesturePWDUtils.getGesturePWDMode(this.a, this.a.jdField_n_of_type_JavaLangString) == 21))
     {
-      localTroopMemberCardInfo = (TroopMemberCardInfo)paramArrayList.get(i);
-      if ((localTroopMemberCardInfo != null) && (localTroopMemberCardInfo.memberuin != null)) {
-        break label49;
+      if (QLog.isColorLevel()) {
+        QLog.d("qqbaseactivity", 2, "qqmapactivity.start lock. receive lock.");
       }
+      paramContext = new Intent(this.a, GesturePWDUnlockActivity.class);
+      QQMapActivity.b(this.a, paramContext);
+      this.a.jdField_n_of_type_Boolean = true;
     }
-    label49:
-    while (!localTroopMemberCardInfo.memberuin.equals(this.a.b.a()))
-    {
-      i += 1;
-      break label11;
-      break;
-    }
-    this.a.a(localTroopMemberCardInfo, false);
   }
 }
 

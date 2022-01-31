@@ -1,25 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.adapter.TroopListAdapter2;
-import com.tencent.mobileqq.adapter.TroopListAdapter2.OnTroopListClickListener;
-import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListItem;
-import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListViewItemTag;
+import android.os.Process;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
 
 public class fdf
-  implements View.OnClickListener
+  extends fcu
 {
-  public fdf(TroopListAdapter2 paramTroopListAdapter2) {}
-  
-  public void onClick(View paramView)
+  protected void a()
   {
-    paramView = paramView.getTag();
-    if (!(paramView instanceof TroopListAdapter2.TroopListViewItemTag)) {}
-    do
-    {
+    this.jdField_a_of_type_Long += 1L;
+    this.b += 1L;
+    if (this.jdField_a_of_type_Long >= fcp.a().a(this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(Process.myPid())) / 12000L) {
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(7, null);
+    }
+    while (this.b != 1L) {
       return;
-      paramView = (TroopListAdapter2.TroopListViewItemTag)paramView;
-    } while ((paramView.a == null) || (paramView.a.a == null));
-    this.a.a.a(paramView.a.a, paramView.a.i);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.f();
+  }
+  
+  protected void a(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(3, paramString);
+  }
+  
+  protected void b()
+  {
+    if (this.jdField_a_of_type_Long > 2L) {
+      this.jdField_a_of_type_Long -= 2L;
+    }
+  }
+  
+  protected void b(String paramString)
+  {
+    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
+    CoreService.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.d();
   }
 }
 

@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.activity.SpaceGateActivity;
 
-class djh
-  implements Runnable
+public class djh
+  extends Handler
 {
-  djh(djg paramdjg) {}
+  public djh(SpaceGateActivity paramSpaceGateActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.a.a();
-    QQSettingMe.a(this.a.a).setLength(0);
-    QQSettingMe.a(this.a.a).append(QQSettingMe.a(this.a.a));
+    ((View)paramMessage.obj).setVisibility(paramMessage.arg1);
   }
 }
 

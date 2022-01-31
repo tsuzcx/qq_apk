@@ -1,21 +1,49 @@
-import java.util.Comparator;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public final class mty
-  implements Comparator
+public class mty
 {
-  public int a(muc parammuc1, muc parammuc2)
+  public static String a()
   {
-    int j = parammuc1.a - parammuc2.a;
-    int i = j;
-    if (j == 0) {
-      i = parammuc1.b - parammuc2.b;
+    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localFile == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("GAudioSoundUtil", 2, "[sound_early] getFilesDir is null");
+      }
+      return "";
     }
-    return i;
+    return localFile.getParent() + "/qav/sound_early/";
+  }
+  
+  public static void a(Context paramContext)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("GAudioSoundUtil", 2, "[sound_early] trigger early download");
+    }
+    Object localObject2 = a();
+    Object localObject1 = new File((String)localObject2, "qav_gaudio_muted.mp3");
+    File localFile = new File((String)localObject2, "qav_gaudio_cancel_muted.mp3");
+    localObject2 = new File((String)localObject2, "qav_peer_phone_calling.mp3");
+    if ((!((File)localObject1).exists()) || (!localFile.exists()) || (!((File)localObject2).exists()))
+    {
+      localObject1 = new Intent("tencent.video.v2q.downloadGAudioSound");
+      ((Intent)localObject1).setPackage(paramContext.getPackageName());
+      paramContext.sendBroadcast((Intent)localObject1);
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return new File(a(), paramString).exists();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mty
  * JD-Core Version:    0.7.0.1
  */

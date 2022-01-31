@@ -1,12 +1,10 @@
-import android.widget.TextView;
-
-public class wry
+public abstract interface wry
 {
-  public TextView a;
+  public abstract void a(wrd paramwrd);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wry
  * JD-Core Version:    0.7.0.1
  */

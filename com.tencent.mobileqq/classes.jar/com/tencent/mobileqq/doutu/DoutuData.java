@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.doutu;
 
-import abxy;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
+import apjs;
+import awge;
+import awhp;
 
 public class DoutuData
-  extends Entity
+  extends awge
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abxy();
+  public static final Parcelable.Creator<DoutuData> CREATOR = new apjs();
   public String pic_down_url;
   public int pic_height;
   public String pic_md5;
   public long pic_size;
-  @notColumn
+  @awhp
   public int pic_type = 1;
   public int pic_width;
   public String suppliers_name;
@@ -73,7 +73,7 @@ public class DoutuData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DoutuData
  * JD-Core Version:    0.7.0.1
  */

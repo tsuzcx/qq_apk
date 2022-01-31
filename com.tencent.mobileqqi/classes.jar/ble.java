@@ -1,64 +1,59 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoInviteLock;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class ble
-  extends BroadcastReceiver
+public final class ble
+  implements BusinessObserver
 {
-  static final String jdField_a_of_type_JavaLangString = "reason";
-  static final String b = "homekey";
-  static final String c = "rencentkeys";
+  public ble(Context paramContext, AppInterface paramAppInterface) {}
   
-  public ble(VideoInviteLock paramVideoInviteLock) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
-    {
-      paramContext = paramIntent.getStringExtra("reason");
-      if ((paramContext != null) && (paramContext.equals("homekey")))
-      {
-        this.a.b();
-        if (!this.a.b) {
-          break label92;
-        }
-        ReportController.b(null, "CliOper", "", "", "0X80041FF", "0X80041FF", 0, 0, Integer.toString(this.a.d), Integer.toString(this.a.f), "", "");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    if (!paramBoolean) {
+      PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131560545);
     }
     for (;;)
     {
       return;
-      label92:
-      ReportController.b(null, "CliOper", "", "", "0X8004203", "0X8004203", 0, 0, Integer.toString(this.a.d), Integer.toString(this.a.f), "", "");
-      return;
-      if (paramContext.equals("tencent.notify.cancel.videorequest"))
+      try
       {
-        paramContext = paramIntent.getStringExtra("selfUin");
-        paramIntent = paramIntent.getStringExtra("sendUin");
-        if (QLog.isColorLevel()) {
-          QLog.d(VideoInviteLock.g, 2, "recv cancel video request");
-        }
-        if ((this.a.a.a() == null) || ((this.a.a.a().equals(paramContext)) && (paramIntent.equals(this.a.c)))) {
-          this.a.finish();
-        }
-      }
-      else if (paramContext.equals("android.intent.action.SCREEN_OFF"))
-      {
-        if (this.a.b) {
-          ReportController.b(null, "CliOper", "", "", "0X8004208", "0X8004208", 0, 0, Integer.toString(this.a.d), Integer.toString(this.a.f), "", "");
-        }
-        while (QLog.isColorLevel())
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
         {
-          QLog.d(VideoInviteLock.g, 2, "ACTION_SCREEN_OFF");
+          Object localObject = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+          ((mobileqq_mp.GetPublicAccountDetailInfoResponse)localObject).mergeFrom(paramBundle);
+          if ((((mobileqq_mp.GetPublicAccountDetailInfoResponse)localObject).ret_info.has()) && (((mobileqq_mp.RetInfo)((mobileqq_mp.GetPublicAccountDetailInfoResponse)localObject).ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)((mobileqq_mp.GetPublicAccountDetailInfoResponse)localObject).ret_info.get()).ret_code.get() == 0))
+          {
+            paramBundle = new AccountDetail((mobileqq_mp.GetPublicAccountDetailInfoResponse)localObject);
+            localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount()).createEntityManager();
+            if (localObject != null) {
+              ((EntityManager)localObject).b(paramBundle);
+            }
+          }
+          else
+          {
+            PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131560545);
+          }
+        }
+        else
+        {
+          PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131560545);
           return;
-          ReportController.b(null, "CliOper", "", "", "0X8004209", "0X8004209", 0, 0, Integer.toString(this.a.d), Integer.toString(this.a.f), "", "");
         }
       }
+      catch (Exception paramBundle) {}
     }
   }
 }

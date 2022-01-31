@@ -7,7 +7,7 @@ public class MX3FlowNewCameraActivity
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.MX3FlowNewCameraActivity
  * JD-Core Version:    0.7.0.1
  */

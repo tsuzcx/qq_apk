@@ -1,16 +1,12 @@
-import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
-import com.tencent.smtt.sdk.WebView;
+import android.content.Context;
 
 public class ajlw
-  implements Runnable
+  extends ajlx
 {
-  public ajlw(TroopNoticeJsHandler paramTroopNoticeJsHandler, WebView paramWebView, String paramString1, String paramString2) {}
-  
-  public void run()
+  public ajlw(Context paramContext)
   {
-    if (this.jdField_a_of_type_ComTencentSmttSdkWebView != null) {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript: " + this.jdField_a_of_type_JavaLangString + "(" + this.b + ")");
-    }
+    this.a = paramContext.getString(2131697684);
+    this.b = this.a;
   }
 }
 

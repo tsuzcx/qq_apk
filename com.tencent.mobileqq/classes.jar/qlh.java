@@ -1,48 +1,23 @@
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.views.canvas.GdtCanvasData;
-import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormComponentData;
-import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormError;
-import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormListener;
-import com.tencent.gdtad.views.canvas.framework.GdtCanvasDMPReportUtil;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
 
-public class qlh
+public final class qlh
+  implements Parcelable.Creator<MultiBiuSameContent>
 {
-  public static void a(GdtCanvasData paramGdtCanvasData, GdtCanvasFormComponentData paramGdtCanvasFormComponentData, WeakReference paramWeakReference)
+  public MultiBiuSameContent a(Parcel paramParcel)
   {
-    if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
-      ((GdtCanvasFormListener)paramWeakReference.get()).h();
-    }
-    ThreadManager.post(new qli(paramGdtCanvasData, paramGdtCanvasFormComponentData, paramWeakReference), 5, null, true);
+    return new MultiBiuSameContent(paramParcel);
   }
   
-  private static GdtCanvasFormError b(GdtCanvasData paramGdtCanvasData, GdtCanvasFormComponentData paramGdtCanvasFormComponentData)
+  public MultiBiuSameContent[] a(int paramInt)
   {
-    Object localObject;
-    if ((paramGdtCanvasData == null) || (!paramGdtCanvasData.isValid()) || (paramGdtCanvasFormComponentData == null) || (!paramGdtCanvasFormComponentData.isValid()))
-    {
-      GdtLog.d("GdtCanvasFormCommitUtil", "commit error");
-      localObject = new GdtCanvasFormError(4, -1, null);
-    }
-    GdtCanvasFormError localGdtCanvasFormError;
-    do
-    {
-      do
-      {
-        return localObject;
-        localGdtCanvasFormError = qlu.a(paramGdtCanvasData, paramGdtCanvasFormComponentData);
-        localObject = localGdtCanvasFormError;
-      } while (localGdtCanvasFormError == null);
-      localObject = localGdtCanvasFormError;
-    } while (localGdtCanvasFormError.a != 1);
-    GdtCanvasDMPReportUtil.a(paramGdtCanvasData, paramGdtCanvasFormComponentData);
-    return localGdtCanvasFormError;
+    return new MultiBiuSameContent[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qlh
  * JD-Core Version:    0.7.0.1
  */

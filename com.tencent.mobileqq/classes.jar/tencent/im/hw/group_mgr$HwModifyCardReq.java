@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class group_mgr$HwModifyCardReq
-  extends MessageMicro
+  extends MessageMicro<HwModifyCardReq>
 {
   public static final int CARD_INFO_FIELD_NUMBER = 3;
   public static final int GID_FIELD_NUMBER = 1;
@@ -18,7 +18,7 @@ public final class group_mgr$HwModifyCardReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.hw.group_mgr.HwModifyCardReq
  * JD-Core Version:    0.7.0.1
  */

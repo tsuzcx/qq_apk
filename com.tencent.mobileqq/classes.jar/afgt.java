@@ -1,29 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.widget.AbsListView;
 
-class afgt
-  implements DialogInterface.OnClickListener
+public class afgt
+  implements affa
 {
-  afgt(afgp paramafgp, QQCustomDialog paramQQCustomDialog) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    this.jdField_a_of_type_Afgp.a.a.c();
-    paramInt = ((Integer)NearbySPUtil.a(this.jdField_a_of_type_Afgp.a.a.app.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
-    ReportController.b(this.jdField_a_of_type_Afgp.a.a.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, NearbyUtils.a(this.jdField_a_of_type_Afgp.a.a.j), paramInt + "", "", "");
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 4: 
+      ymq.a().a();
+      return;
+    case 9: 
+      ymq.a().b();
+      return;
+    }
+    ymq.a().c();
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
+  {
+    ymq.a().a(paramAbsListView, paramInt);
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    ymq.a().a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (afkf.class.isInstance(paramObject)) {
+      ymq.a().a((afkf)paramObject);
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 11, 6, 4, 9 };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afgt
  * JD-Core Version:    0.7.0.1
  */

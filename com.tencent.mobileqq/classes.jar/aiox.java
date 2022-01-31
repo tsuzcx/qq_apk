@@ -1,14 +1,10 @@
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
+import com.tencent.image.URLImageView;
 
 class aiox
-  implements Runnable
 {
-  aiox(aiov paramaiov, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  public URLImageView a;
   
-  public void run()
-  {
-    this.jdField_a_of_type_Aiov.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 1);
-  }
+  private aiox(aiov paramaiov) {}
 }
 
 

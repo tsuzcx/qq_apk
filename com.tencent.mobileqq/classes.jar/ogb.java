@@ -1,39 +1,36 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
-import com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
-import com.tencent.biz.qqstory.takevideo.MultiBlockVideoPlayer;
-import com.tencent.biz.qqstory.takevideo.MultiBlockVideoPlayer.MultiOperateException;
-import com.tencent.biz.qqstory.takevideo.MultiBlockVideoPlayer.RecordVideoBlockInfo;
-import java.util.List;
+import android.app.Activity;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.mini.util.SoftKeyboardStateHelper.SoftKeyboardStateListener;
 
-public class ogb
-  implements Runnable
+class ogb
+  implements SoftKeyboardStateHelper.SoftKeyboardStateListener
 {
-  public ogb(EditVideoPlayer paramEditVideoPlayer) {}
+  ogb(ofx paramofx, RelativeLayout.LayoutParams paramLayoutParams) {}
   
-  public void run()
+  public void onSoftKeyboardClosed()
   {
-    this.a.jdField_a_of_type_JavaUtilList = ((MultiBlockVideoPlayer)this.a.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer).a(true, 10000L, 6, this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditRecordVideoSource.a(), this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditRecordVideoSource.b(), this.a.jdField_a_of_type_Float);
-    SLog.a("Q.qqstory.record.EditVideoPlayer", "onLoadSuccess getMultiVideoInfo find %d blocks", Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()));
-    if (this.a.jdField_a_of_type_JavaUtilList.size() > 0) {}
-    try
+    if (System.currentTimeMillis() - ofx.a(this.jdField_a_of_type_Ofx) > 500L)
     {
-      ((MultiBlockVideoPlayer)this.a.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer).setCurrentVideoFragment((MultiBlockVideoPlayer.RecordVideoBlockInfo)this.a.jdField_a_of_type_JavaUtilList.get(0));
-      EditVideoPlayer.a(this.a);
-      return;
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = aepi.a(140.5F, ofx.a(this.jdField_a_of_type_Ofx).getResources());
+      ofx.a(this.jdField_a_of_type_Ofx).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+      ofx.b(this.jdField_a_of_type_Ofx, System.currentTimeMillis());
     }
-    catch (MultiBlockVideoPlayer.MultiOperateException localMultiOperateException)
+  }
+  
+  public void onSoftKeyboardOpened(int paramInt)
+  {
+    if (System.currentTimeMillis() - ofx.a(this.jdField_a_of_type_Ofx) > 500L)
     {
-      for (;;)
-      {
-        SLog.c("Q.qqstory.record.EditVideoPlayer", "onLoadSuccess setCurrentVideoFragment failed", localMultiOperateException);
-      }
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = aepi.a(40.0F, ofx.a(this.jdField_a_of_type_Ofx).getResources());
+      ofx.a(this.jdField_a_of_type_Ofx).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+      ofx.b(this.jdField_a_of_type_Ofx, System.currentTimeMillis());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ogb
  * JD-Core Version:    0.7.0.1
  */

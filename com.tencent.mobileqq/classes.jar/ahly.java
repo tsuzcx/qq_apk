@@ -1,28 +1,20 @@
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity;
 
 public class ahly
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahly(EffectsCameraCaptureView paramEffectsCameraCaptureView) {}
+  public ahly(NewFriendMoreSysMsgActivity paramNewFriendMoreSysMsgActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.h) && (this.a.a != null))
-    {
-      this.a.a.c(this.a.f, this.a.g, this.a.getWidth(), this.a.getHeight());
-      if (EffectsCameraCaptureView.a(this.a) != null) {
-        this.a.setFaceEffect(EffectsCameraCaptureView.a(this.a));
-      }
-      if (EffectsCameraCaptureView.a(this.a) != 0) {
-        this.a.setBeauty(EffectsCameraCaptureView.a(this.a));
-      }
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahly
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Pic;
-
-public final class ulo
-  implements Parcelable.Creator
+public abstract interface ulo<T>
 {
-  public ForwardUtils.Section_Pic a(Parcel paramParcel)
-  {
-    return new ForwardUtils.Section_Pic(paramParcel);
-  }
+  public abstract void a();
   
-  public ForwardUtils.Section_Pic[] a(int paramInt)
-  {
-    return new ForwardUtils.Section_Pic[paramInt];
-  }
+  public abstract void a(ulp<T> paramulp);
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ulo
  * JD-Core Version:    0.7.0.1
  */

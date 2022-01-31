@@ -9,10 +9,10 @@ import java.util.Map;
 public final class s_droplist_option
   extends JceStruct
 {
-  static Map cache_extend_info = new HashMap();
+  static Map<String, String> cache_extend_info = new HashMap();
   public int action_detail;
   public int actiontype;
-  public Map extend_info;
+  public Map<String, String> extend_info;
   public String iconurl = "";
   public String jumpurl = "";
   public String optext = "";
@@ -27,7 +27,7 @@ public final class s_droplist_option
   
   public s_droplist_option() {}
   
-  public s_droplist_option(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2, String paramString4, int paramInt3, Map paramMap, int paramInt4)
+  public s_droplist_option(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2, String paramString4, int paramInt3, Map<String, String> paramMap, int paramInt4)
   {
     this.iconurl = paramString1;
     this.optext = paramString2;
@@ -78,7 +78,7 @@ public final class s_droplist_option
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_droplist_option
  * JD-Core Version:    0.7.0.1
  */

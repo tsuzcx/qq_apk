@@ -1,30 +1,16 @@
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import com.tencent.qphone.base.util.QLog;
-
-public class xpi
-  implements Runnable
+class xpi
 {
-  private SVHwEncoder jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder;
+  static void a(String paramString1, String paramString2) {}
   
-  public xpi(FlowCameraActivity2 paramFlowCameraActivity2, SVHwEncoder paramSVHwEncoder)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder = paramSVHwEncoder;
-  }
+  static void b(String paramString1, String paramString2) {}
   
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "handleQQVideo(): onSendVideoClick mEncoderCache=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder.b();
-    }
-  }
+  static void c(String paramString1, String paramString2) {}
+  
+  static void d(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xpi
  * JD-Core Version:    0.7.0.1
  */

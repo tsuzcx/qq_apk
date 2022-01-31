@@ -3,8 +3,8 @@ package com.tencent.av.ui;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageButton;
-import com.tencent.av.smallscreen.SmallScreenUtils;
 import com.tencent.qphone.base.util.QLog;
+import mbt;
 
 public class TestImageButton
   extends ImageButton
@@ -30,7 +30,7 @@ public class TestImageButton
     if (QLog.isDevelopLevel()) {
       QLog.d("TestImageButton", 4, "WL_DEBUG setVisibility visibility = " + paramInt);
     }
-    SmallScreenUtils.a();
+    mbt.a();
   }
 }
 

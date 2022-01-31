@@ -1,66 +1,37 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.SigCommentListActivity;
-import com.tencent.mobileqq.adapter.SigCommentSessionListAdapter;
-import com.tencent.mobileqq.app.SignatureManager.SigComments;
-import com.tencent.mobileqq.app.SignatureObserver;
-import java.util.List;
+import android.graphics.drawable.AnimationDrawable;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
 
-public class tsp
-  extends SignatureObserver
+class tsp
+  implements View.OnClickListener
 {
-  public tsp(SigCommentListActivity paramSigCommentListActivity) {}
+  tsp(tsk paramtsk) {}
   
-  protected void d(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    List localList;
-    if (this.a.isResume())
-    {
-      this.a.stopTitleProgress();
-      if (!paramBoolean) {
-        break label175;
-      }
-      if ((paramObject instanceof Bundle))
-      {
-        paramObject = (SignatureManager.SigComments)((Bundle)paramObject).getSerializable("data");
-        paramBoolean = paramObject.isOver;
-        paramObject = paramObject.mlist;
-        localList = this.a.a.a();
-        if (paramObject.size() <= 0) {
-          break label128;
-        }
-        if (localList == null) {
-          break label113;
-        }
-        localList.addAll(localList.size(), paramObject);
-        this.a.a.a(localList, paramBoolean);
-        this.a.a.notifyDataSetChanged();
-      }
-    }
-    label113:
-    do
-    {
+    if (tsk.a(this.a)) {
       return;
-      this.a.a.a(paramObject, paramBoolean);
-      break;
-      if ((localList != null) && (localList.size() > 0)) {
-        this.a.a.a(localList, paramBoolean);
-      }
-      for (;;)
-      {
-        this.a.a.notifyDataSetChanged();
-        return;
-        SigCommentListActivity.a(this.a, 3);
-      }
-      paramObject = this.a.a.a();
-    } while ((paramObject != null) && (paramObject.size() > 0));
-    label128:
-    label175:
-    SigCommentListActivity.a(this.a, 2);
+    }
+    tsk.a(this.a, true);
+    tsk.a(this.a).setImageResource(2130843610);
+    tsk.a(this.a, (AnimationDrawable)tsk.a(this.a).getDrawable());
+    tsk.a(this.a).start();
+    if (tsk.b(this.a)) {
+      tsk.c(this.a);
+    }
+    for (;;)
+    {
+      tzv.a("", 19, 5L);
+      return;
+      tsk.a(this.a).postDelayed(tsk.a(this.a), 5000L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tsp
  * JD-Core Version:    0.7.0.1
  */

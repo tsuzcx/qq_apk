@@ -1,12 +1,21 @@
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.widget.AbsListView;
+
 public class aiqt
+  implements bhtv
 {
-  public int a;
-  public String[] a;
+  public aiqt(NewPhotoListActivity paramNewPhotoListActivity) {}
   
-  public aiqt(int paramInt, String[] paramArrayOfString)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 0)
+    {
+      abvl.a().a("list_photo", false);
+      return;
+    }
+    abvl.a().a("list_photo");
   }
 }
 

@@ -1,42 +1,20 @@
-import com.tencent.biz.troop.file.TroopFileProtocol;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnPreviewVideoOnlineListener;
-import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 
 public class addo
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public addo(TroopFileModel paramTroopFileModel, FileManagerEntity paramFileManagerEntity, FileBrowserModelBase.OnPreviewVideoOnlineListener paramOnPreviewVideoOnlineListener) {}
+  public addo(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isZipInnerFile)
-    {
-      TroopFileProtocol.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelTroopFileModel.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.zipFilePath, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId, new addp(this));
-      return;
-    }
-    try
-    {
-      TroopFileTransferManager localTroopFileTransferManager = (TroopFileTransferManager)TroopFileTransferManager.a.get(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin));
-      if (localTroopFileTransferManager == null)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.e("TroopFileModel<FileAssistant>", 4, "bad troopUin" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener.c();
-        return;
-      }
-    }
-    finally {}
-    localObject.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId, TroopFileModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelTroopFileModel));
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     addo
  * JD-Core Version:    0.7.0.1
  */

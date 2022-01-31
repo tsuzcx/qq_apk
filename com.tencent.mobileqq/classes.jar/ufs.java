@@ -1,20 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.biz.qqcircle.widgets.QCircleTagPageHeaderView;
 
 public class ufs
-  implements DialogInterface.OnClickListener
+  implements udu
 {
-  public ufs(UpgradeActivity paramUpgradeActivity) {}
+  public ufs(QCircleTagPageHeaderView paramQCircleTagPageHeaderView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.finish();
+    tzv.a("", 6, 2L, 3L);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt > 0) {}
+    for (long l = 2L;; l = 1L)
+    {
+      tzv.a("", 6, 2L, l);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ufs
  * JD-Core Version:    0.7.0.1
  */

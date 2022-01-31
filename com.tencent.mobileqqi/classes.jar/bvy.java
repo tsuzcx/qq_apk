@@ -1,24 +1,10 @@
-import android.view.animation.Animation;
-import com.tencent.common.galleryactivity.AbstractAnimationManager;
-import com.tencent.common.galleryactivity.AbstractGalleryScene;
-import com.tencent.common.galleryactivity.GalleryManager;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
 
 public class bvy
-  extends AnimateUtils.AnimationAdapter
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  public bvy(AbstractGalleryScene paramAbstractGalleryScene) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.a().e();
-    this.a.a.a().a();
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.a.a().d();
-  }
+  public bvy(AuthDevOpenUgActivity paramAuthDevOpenUgActivity) {}
 }
 
 

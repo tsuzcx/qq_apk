@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.structmsg.view;
 
+import android.widget.TextView;
+import azuu;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsgTextElement;
 
 public class StructMsgItemTitle
-  extends AbsStructMsgTextElement
+  extends azuu
 {
   public boolean c;
   public boolean d;
-  public int e;
+  public int k;
   
   public StructMsgItemTitle()
   {
@@ -20,7 +21,7 @@ public class StructMsgItemTitle
     super(paramString, "title");
   }
   
-  protected Class a()
+  public Class<? extends TextView> a()
   {
     if (this.d) {
       return StructMsgItemTitle.TitleTextView.class;
@@ -35,13 +36,13 @@ public class StructMsgItemTitle
   
   public void a(AbsShareMsg paramAbsShareMsg)
   {
-    paramAbsShareMsg.mContentTitle = this.A;
+    paramAbsShareMsg.mContentTitle = this.Y;
   }
   
   public void a(boolean paramBoolean, int paramInt)
   {
     this.c = paramBoolean;
-    this.e = paramInt;
+    this.k = paramInt;
   }
   
   public void b(boolean paramBoolean)
@@ -49,27 +50,27 @@ public class StructMsgItemTitle
     this.d = paramBoolean;
   }
   
-  protected int c()
+  public int c()
   {
-    return 2131361926;
+    return 2131379043;
   }
   
-  public int d()
+  public int e()
   {
-    if ((this.c) && (this.e != 0)) {
+    if ((this.c) && (this.k != 0)) {
       return -1;
     }
     return -16777216;
   }
   
-  public int e()
+  public int f()
   {
     return 28;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemTitle
  * JD-Core Version:    0.7.0.1
  */

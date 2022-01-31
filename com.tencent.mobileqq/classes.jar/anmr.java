@@ -1,40 +1,20 @@
-import com.tencent.open.base.ToastUtil;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.humrecognition.humming.IRecognizer;
-import dov.com.qq.im.capture.music.humrecognition.view.BgmRecognitionProviderView;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecognitionPart;
-import java.io.File;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class anmr
-  implements Runnable
+class anmr
+  implements anmy
 {
-  public anmr(BgmRecognitionProviderView paramBgmRecognitionProviderView) {}
+  anmr(anmq paramanmq) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if (BgmRecognitionProviderView.a(this.a) == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("BgmRecognitionProviderView", 2, "run: invoked. info: mRecognitionPart = " + BgmRecognitionProviderView.a(this.a));
-      }
-      return;
-    }
-    File localFile = BgmRecognitionProviderView.a(this.a).a();
-    if ((localFile != null) && (localFile.exists()))
-    {
-      BgmRecognitionProviderView.a(this.a).a(localFile);
-      BgmRecognitionProviderView.a(this.a).a();
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("BgmRecognitionProviderView", 2, "run: invoked. info: Failed to get audioFile. audioFile = " + localFile);
-    }
-    ToastUtil.a().a(2131439253);
+    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, full update result, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.a.jdField_a_of_type_Anmw.a }));
+    if (paramBoolean) {}
+    this.a.jdField_a_of_type_Anmy.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmr
  * JD-Core Version:    0.7.0.1
  */

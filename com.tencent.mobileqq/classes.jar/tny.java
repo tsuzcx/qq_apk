@@ -1,30 +1,21 @@
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.QuickLoginActivity;
-import com.tencent.mobileqq.mqsafeedit.libsafeedit;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import android.view.View.OnClickListener;
 
-public class tny
-  implements AdapterView.OnItemClickListener
+class tny
+  implements View.OnClickListener
 {
-  public tny(QuickLoginActivity paramQuickLoginActivity) {}
+  tny(tnx paramtnx) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    paramAdapterView = (String)((HashMap)this.a.a.get(paramInt)).get("qq");
-    libsafeedit.getLoginLegal((String)((HashMap)this.a.a.get(paramInt)).get("password"));
-    paramView = libsafeedit.byteSafeEditTextToMD5(Boolean.valueOf(true));
-    this.a.getAppRuntime().login(paramAdapterView, paramView, QuickLoginActivity.a(this.a));
-    Toast.makeText(this.a.getApplicationContext(), "logining...", 0).show();
+    if (this.a.isShowing()) {
+      this.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tny
  * JD-Core Version:    0.7.0.1
  */

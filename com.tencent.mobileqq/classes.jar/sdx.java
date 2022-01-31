@@ -1,36 +1,26 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.DBUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
 
 public class sdx
-  implements Runnable
+  implements slg
 {
-  public sdx(ChatSettingForTroop paramChatSettingForTroop) {}
+  public sdx(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadMsgNum = DBUtils.a(this.a.app.getCurrentAccountUin(), "troop_photo_message", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.chatopttroop", 2, "从群空间返回，更新群空间未读计数， troopuin = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin + ", unreadmsgnum = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadMsgNum + ", newphotonum = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nNewPhotoNum);
-      }
+    default: 
+      return;
+    case 0: 
+      this.a.h();
       return;
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("Q.chatopttroop", 2, localException.toString());
-    }
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sdx
  * JD-Core Version:    0.7.0.1
  */

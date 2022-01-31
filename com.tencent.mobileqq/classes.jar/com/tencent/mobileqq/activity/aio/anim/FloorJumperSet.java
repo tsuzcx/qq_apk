@@ -1,35 +1,37 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
+import aeun;
+import aevg;
+import aevj;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import bhtb;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.VersionUtils;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.app.MainService;
-import unq;
 
 @TargetApi(11)
 public class FloorJumperSet
-  extends AIOAnimationConatiner.AIOAnimator
+  extends aeun
 {
   @SuppressLint({"NewApi"})
-  static final long jdField_a_of_type_Long;
+  public static final long a;
   public static final int b;
-  public ArrayList a;
-  unq jdField_a_of_type_Unq;
+  FloorJumperSet.Animator jdField_a_of_type_ComTencentMobileqqActivityAioAnimFloorJumperSet$Animator;
+  ArrayList<aevg> jdField_a_of_type_JavaUtilArrayList = new ArrayList(jdField_b_of_type_Int);
   private long b;
   
   static
   {
     long l;
-    if (VersionUtils.e())
+    if (bhtb.e())
     {
       l = ValueAnimator.getFrameDelay();
       jdField_a_of_type_Long = l;
-      if (!VersionUtils.e()) {
+      if (!bhtb.e()) {
         break label35;
       }
     }
@@ -46,33 +48,32 @@ public class FloorJumperSet
   public FloorJumperSet(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
   {
     super(paramInt, paramAIOAnimationConatiner, paramListView);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(jdField_b_of_type_Int);
   }
   
-  protected void a(int paramInt)
+  public void a(int paramInt)
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      FloorJumper localFloorJumper = (FloorJumper)localIterator.next();
-      localFloorJumper.j += paramInt;
-      localFloorJumper.h += paramInt;
+      aevg localaevg = (aevg)localIterator.next();
+      localaevg.j += paramInt;
+      localaevg.h += paramInt;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.offsetChildrenTopAndBottom(paramInt);
   }
   
-  protected boolean a(int paramInt)
+  public boolean a(int paramInt)
   {
     return paramInt == 2;
   }
   
-  protected boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     boolean bool = false;
     if (localIterator.hasNext())
     {
-      if (((FloorJumper)localIterator.next()).a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4)) {
+      if (((aevg)localIterator.next()).a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4)) {
         bool = true;
       }
       for (;;)
@@ -91,7 +92,7 @@ public class FloorJumperSet
     return bool;
   }
   
-  protected boolean a(Object... paramVarArgs)
+  public boolean a(Object... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
       QLog.d("FloorJumperSet", 2, "[start], args.len:" + paramVarArgs.length);
@@ -115,20 +116,20 @@ public class FloorJumperSet
       {
         if (i != 0)
         {
-          FloorJumper localFloorJumper = new FloorJumper(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_ComTencentWidgetListView);
+          aevg localaevg = new aevg(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_ComTencentWidgetListView);
           if ((paramVarArgs != null) && (paramVarArgs.length >= 3)) {
-            localFloorJumper.c = ((Integer)paramVarArgs[2]).intValue();
+            localaevg.c = ((Integer)paramVarArgs[2]).intValue();
           }
-          this.jdField_a_of_type_JavaUtilArrayList.add(localFloorJumper);
+          this.jdField_a_of_type_JavaUtilArrayList.add(localaevg);
           if (paramVarArgs != null) {
-            localFloorJumper.a(paramVarArgs);
+            localaevg.a(paramVarArgs);
           }
         }
-        if (this.jdField_a_of_type_Unq == null)
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFloorJumperSet$Animator == null)
         {
-          this.jdField_a_of_type_Unq = new unq(this, null);
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFloorJumperSet$Animator = new FloorJumperSet.Animator(this, null);
           if (this.jdField_b_of_type_Long == 0L) {
-            this.jdField_a_of_type_ComTencentWidgetListView.postDelayed(this.jdField_a_of_type_Unq, jdField_a_of_type_Long);
+            this.jdField_a_of_type_ComTencentWidgetListView.postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFloorJumperSet$Animator, jdField_a_of_type_Long);
           }
         }
         return true;
@@ -141,14 +142,14 @@ public class FloorJumperSet
     return false;
   }
   
-  protected void b()
+  public void b()
   {
     this.jdField_b_of_type_Long = 0L;
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     int i = 0;
     if (localIterator.hasNext())
     {
-      if (((FloorJumper)localIterator.next()).a(false)) {
+      if (((aevg)localIterator.next()).a(false)) {
         i = 1;
       }
       for (;;)
@@ -157,26 +158,26 @@ public class FloorJumperSet
         localIterator.remove();
       }
     }
-    if ((i != 0) && (this.jdField_a_of_type_Unq != null))
+    if ((i != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFloorJumperSet$Animator != null))
     {
-      this.jdField_a_of_type_ComTencentWidgetListView.post(this.jdField_a_of_type_Unq);
+      this.jdField_a_of_type_ComTencentWidgetListView.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFloorJumperSet$Animator);
       return;
     }
     d();
   }
   
-  protected void c()
+  public void c()
   {
-    if (this.jdField_a_of_type_Unq != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFloorJumperSet$Animator != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetListView.removeCallbacks(this.jdField_a_of_type_Unq);
-      this.jdField_a_of_type_Unq = null;
+      this.jdField_a_of_type_ComTencentWidgetListView.removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFloorJumperSet$Animator);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFloorJumperSet$Animator = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.FloorJumperSet
  * JD-Core Version:    0.7.0.1
  */

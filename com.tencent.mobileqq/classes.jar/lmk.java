@@ -1,50 +1,159 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import com.tencent.qphone.base.util.QLog;
 
-public final class lmk
-  implements Runnable
+public class lmk
 {
-  public lmk(int paramInt, boolean paramBoolean) {}
+  private static volatile lmk jdField_a_of_type_Lmk;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private lml[] jdField_a_of_type_ArrayOfLml = new lml[4];
   
-  public void run()
+  public static lmk a()
   {
-    oidb_cmd0x80a.AttributeList localAttributeList1;
-    oidb_cmd0x80a.AttributeList localAttributeList2;
-    PBStringField localPBStringField;
-    if (ReadinjoySPEventReport.b(7))
+    if (jdField_a_of_type_Lmk == null) {}
+    try
     {
-      localAttributeList1 = new oidb_cmd0x80a.AttributeList();
-      localAttributeList1.att_id.set(1);
-      localAttributeList1.att_name.set("tab");
-      localAttributeList1.att_value.set(String.valueOf(this.jdField_a_of_type_Int));
-      localAttributeList2 = new oidb_cmd0x80a.AttributeList();
-      localAttributeList2.att_id.set(4);
-      localAttributeList2.att_name.set("redStatus");
-      localPBStringField = localAttributeList2.att_value;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label127;
+      if (jdField_a_of_type_Lmk == null) {
+        jdField_a_of_type_Lmk = new lmk();
       }
+      return jdField_a_of_type_Lmk;
     }
-    label127:
-    for (Object localObject = "1";; localObject = "0")
+    finally {}
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_ArrayOfLml.length;
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    QLog.i("FrameBufMgr", 1, "clear.");
+    for (;;)
     {
-      localPBStringField.set((String)localObject);
-      localObject = new ArrayList();
-      ((List)localObject).add(localAttributeList1);
-      ((List)localObject).add(localAttributeList2);
-      PublicAccountUtil.a(7, "ClickTab", (List)localObject);
-      return;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if (i < this.jdField_a_of_type_ArrayOfLml.length)
+        {
+          if (this.jdField_a_of_type_ArrayOfLml[i] != null)
+          {
+            this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_ArrayOfByte = null;
+            this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_Int = 0;
+          }
+        }
+        else {
+          return;
+        }
+      }
+      i += 1;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    int j = 0;
+    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i < this.jdField_a_of_type_ArrayOfLml.length)
+        {
+          if (this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_Int == paramInt1)
+          {
+            this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_Int = paramInt2;
+            j = 1;
+          }
+        }
+        else
+        {
+          if (j == 0) {
+            QLog.i("FrameBufMgr", 1, "setFrameBufState failed. oldState = " + paramInt1 + ", newState = " + paramInt2);
+          }
+          return;
+        }
+      }
+      finally {}
+      i += 1;
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte, int paramInt)
+  {
+    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i < this.jdField_a_of_type_ArrayOfLml.length)
+        {
+          if (this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_ArrayOfByte == paramArrayOfByte) {
+            this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_Int = paramInt;
+          }
+        }
+        else
+        {
+          QLog.i("FrameBufMgr", 1, "setFrameBufState failed. dataBuf = " + paramArrayOfByte + ", state = " + paramInt);
+          return;
+        }
+      }
+      finally {}
+      i += 1;
+    }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    int i = 0;
+    QLog.i("FrameBufMgr", 1, "init. bufSize = " + paramInt);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      while (i < this.jdField_a_of_type_ArrayOfLml.length)
+      {
+        if (this.jdField_a_of_type_ArrayOfLml[i] == null) {
+          this.jdField_a_of_type_ArrayOfLml[i] = new lml(this);
+        }
+        if ((this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_ArrayOfByte.length != paramInt)) {
+          this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_ArrayOfByte = new byte[paramInt];
+        }
+        this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_Int = 0;
+        i += 1;
+      }
+      return true;
+    }
+  }
+  
+  public byte[] a(int paramInt)
+  {
+    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i < this.jdField_a_of_type_ArrayOfLml.length)
+        {
+          if (this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_Int == paramInt)
+          {
+            byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_ArrayOfByte;
+            return arrayOfByte;
+          }
+        }
+        else
+        {
+          QLog.i("FrameBufMgr", 1, "getFrameBufByState failed. state = " + paramInt);
+          return null;
+        }
+      }
+      finally {}
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lmk
  * JD-Core Version:    0.7.0.1
  */

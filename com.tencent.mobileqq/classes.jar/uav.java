@@ -1,23 +1,37 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.os.Build.VERSION;
+import com.tencent.biz.qqcircle.transition.QCircleTransitionLayout;
 
 public class uav
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public uav(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public uav(QCircleTransitionLayout paramQCircleTransitionLayout) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((this.a.d == 1) || (this.a.d == 11) || (this.a.d == 16))
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      Object[] arrayOfObject = this.a.a(this.a.b);
-      this.a.a.sendMessage(this.a.a.obtainMessage(1, arrayOfObject));
+      this.a.setBackground(null);
+      return;
+    }
+    this.a.setBackgroundColor(0);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QCircleTransitionLayout.a(this.a) != null) {
+      QCircleTransitionLayout.a(this.a).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uav
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.emoticon.SogouEmojiTaskController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
 public class acdn
-  implements DialogInterface.OnDismissListener
+  extends alpq
 {
-  public acdn(SogouEmojiTaskController paramSogouEmojiTaskController) {}
+  public acdn(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void onImpeach(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func onDismiss begins, mCurTaskId:" + this.a.a);
+    if (!this.a.a.equals(paramString)) {
+      return;
     }
-    this.a.a(this.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func onDismiss ends");
+    if (paramBoolean)
+    {
+      this.a.a(2130839405, this.a.getString(2131690676));
+      return;
     }
+    this.a.a(2130839392, this.a.getString(2131690674));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acdn
  * JD-Core Version:    0.7.0.1
  */

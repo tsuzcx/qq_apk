@@ -1,44 +1,32 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class adcf
-  extends FMObserver
+  implements alqc
 {
-  public adcf(TroopFileDetailBrowserActivity paramTroopFileDetailBrowserActivity) {}
+  public adcf(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  protected void a(long paramLong, boolean paramBoolean, int paramInt, String paramString)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (!paramBoolean) {
-      if ((paramString != null) && (paramString.length() > 0)) {
-        FileManagerUtil.a(paramString);
-      }
-    }
-    do
+    if ((this.a.a == 1) || (this.a.a == 2))
     {
-      do
-      {
-        do
-        {
-          return;
-        } while ((this.a.b == null) || (this.a.app == null));
-        if (this.a.b.b() == paramLong) {
-          break;
-        }
-      } while (!QLog.isDevelopLevel());
-      QLog.d("FileBrowserActivity<FileAssistant>", 4, "difference nSessionId");
+      if (paramBoolean) {
+        break label55;
+      }
+      FriendProfileMoreInfoActivity.a(this.a);
+      QQToast.a(this.a, 2131691082, 0).b(this.a.getTitleBarHeight());
+    }
+    label55:
+    while (paramInt != 2) {
       return;
-    } while (this.a.app.a().b(paramLong) != null);
-    QLog.e("FileBrowserActivity<FileAssistant>", 1, "OnTroopFileCopyToC2cDisc->,but entity is null SessionId[" + paramLong + "]");
+    }
+    FriendProfileMoreInfoActivity.a(this.a);
+    FriendProfileMoreInfoActivity.a(this.a, this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adcf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
-import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.widget.AdapterView;
 
-public final class adbo
-  implements View.OnClickListener
+public class adbo
+  implements bhux
 {
-  public adbo(Activity paramActivity, String paramString) {}
+  public adbo(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onClick(View paramView)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    FileManagerUtil.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+    FriendProfileImageActivity.a(this.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adbo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 
-public class aksj
-  extends Handler
+public abstract interface aksj
 {
-  public aksj(WerewolvesPluginManager paramWerewolvesPluginManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a(CmGameStartChecker.StartCheckParam paramStartCheckParam);
   
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.arg1;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    ((WerewolvesHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(107)).a(3, true, Integer.valueOf(i));
-  }
+  public abstract void b(CmGameStartChecker.StartCheckParam paramStartCheckParam);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aksj
  * JD-Core Version:    0.7.0.1
  */

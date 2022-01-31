@@ -1,25 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
-import com.tencent.biz.qqstory.view.RingView.DrawInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class opz
-  implements ValueAnimator.AnimatorUpdateListener
+final class opz
+  implements ViewFactory.FoundClickableViewListener
 {
-  public opz(NeoVideoRecordButton paramNeoVideoRecordButton) {}
+  opz(VafContext paramVafContext, TemplateBean paramTemplateBean) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onFound(ViewBase paramViewBase)
   {
-    this.a.a.a(((Integer)paramValueAnimator.getAnimatedValue("border")).intValue(), 0.0F);
-    this.a.a.b(((Integer)paramValueAnimator.getAnimatedValue("ring")).intValue(), 0.0F);
-    this.a.b.a(((Integer)paramValueAnimator.getAnimatedValue("center")).intValue(), 0.0F);
-    this.a.b.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
-    NeoVideoRecordButton.a(this.a);
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    {
+    default: 
+      paramViewBase.setOnClickListener(new oqc(this, paramViewBase));
+      return;
+    case 1123: 
+      paramViewBase.setOnClickListener(new oqa(this));
+      return;
+    }
+    paramViewBase.setOnClickListener(new oqb(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     opz
  * JD-Core Version:    0.7.0.1
  */

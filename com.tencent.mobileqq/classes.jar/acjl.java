@@ -1,14 +1,9 @@
-import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
+import com.tencent.common.config.AppSetting;
 
-public class acjl
-  implements Runnable
+public abstract interface acjl
 {
-  public acjl(PullToRefreshBase paramPullToRefreshBase) {}
-  
-  public void run()
-  {
-    this.a.a();
-  }
+  public static final boolean S = AppSetting.c;
+  public static final String f = alud.a(2131701945);
 }
 
 

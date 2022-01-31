@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include android:id="@id/idz" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_alignParentTop="true" layout="@layout/s2" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/idz">
+        <LinearLayout android:orientation="vertical" android:id="@id/jss" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <include layout="@layout/b82" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/jst" android:background="@drawable/skin_aio_input_bar_bg_local_albums" android:paddingLeft="@dimen/yy" android:paddingRight="@dimen/yz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip" android:layout_alignParentBottom="true">
+                <Button android:gravity="center" android:layout_gravity="center" android:id="@id/fyh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d09" style="@style/i6" />
+                <Button android:gravity="center" android:layout_gravity="center" android:id="@id/ekt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/yx" android:text="@string/cue" android:layout_toRightOf="@id/fyh" style="@style/i6" />
+                <CheckBox android:gravity="center" android:layout_gravity="center" android:id="@id/h1y" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/yx" android:button="@drawable/b4r" android:minWidth="18.0dip" android:minHeight="30.0dip" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/common_photo_list_panel_button" android:id="@id/h24" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="@string/qz0" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/common_photo_list_panel_button" android:id="@id/h1z" android:visibility="invisible" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="(999K)" />
+                <TextView android:gravity="center_horizontal" android:id="@id/dg7" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                <Button android:textColor="@color/skin_aio_send_button" android:gravity="center" android:layout_gravity="center|right" android:id="@id/send_btn" android:paddingTop="0.0dip" android:paddingBottom="0.0dip" android:layout_width="wrap_content" android:layout_height="@dimen/acx" android:text="@string/cvd" style="@style/hz" />
+            </LinearLayout>
+        </LinearLayout>
+        <dov.com.qq.im.ae.album.AEAlbumLinearLayout android:id="@id/d1q" android:layout_width="fill_parent" android:layout_height="fill_parent" app:minPreviewHeight="65.0dip">
+            <FrameLayout android:background="@color/db" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <dov.com.qq.im.ae.album.nocropper.AECropperView android:id="@id/d1r" android:layout_width="fill_parent" android:layout_height="wrap_content" app:addPaddingToMakeSquare="false" app:fitToCenter="false" app:gridColor="@color/al3" app:gridOpacity="0.8" app:gridThickness="1.1999817dip" />
+                <ImageView android:layout_gravity="bottom|center|left" android:id="@id/mg8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginBottom="2.0dip" android:src="@drawable/bwy" />
+                <TextView android:textSize="17.0sp" android:textColor="#ffbababa" android:gravity="center" android:layout_gravity="center" android:id="@id/mt6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w9d" android:drawableTop="@drawable/bwt" android:drawablePadding="13.0dip" />
+                <dov.com.qq.im.ae.album.AEAlbumPreviewMaskLayout android:id="@id/ku2" android:background="@color/bz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <View android:layout_gravity="bottom|center" android:background="@drawable/g3" android:layout_width="29.0dip" android:layout_height="3.0dip" android:layout_marginBottom="12.0dip" />
+                </dov.com.qq.im.ae.album.AEAlbumPreviewMaskLayout>
+            </FrameLayout>
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <android.support.v7.widget.RecyclerView android:id="@id/mk5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="1.0dip" android:paddingStart="1.5dip" android:paddingEnd="1.5dip" />
+                <View android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="2.0dip" />
+            </FrameLayout>
+        </dov.com.qq.im.ae.album.AEAlbumLinearLayout>
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/jss">
+            <TextView android:textSize="15.0sp" android:textColor="#ffafafaf" android:gravity="center" android:layout_gravity="center" android:id="@id/bww" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/cuq" android:drawableTop="@drawable/hap" android:drawablePadding="10.0dip" />
+        </FrameLayout>
+    </RelativeLayout>
+    <FrameLayout android:id="@id/l9k" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/idz" />
+</RelativeLayout>

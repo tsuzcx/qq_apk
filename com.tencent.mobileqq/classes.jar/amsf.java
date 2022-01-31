@@ -1,71 +1,63 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.Pair;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.QZoneStartupMonitor;
-import cooperation.qzone.QzonePluginProxyActivity;
-import cooperation.qzone.util.QZoneExceptionReport;
-import cooperation.qzone.util.exception.QZoneStartupFailException;
 
 public class amsf
-  extends Handler
 {
-  public amsf(QZoneStartupMonitor paramQZoneStartupMonitor, Looper paramLooper)
+  private static amsf a;
+  
+  public static amsf a()
   {
-    super(paramLooper);
+    if (a == null) {
+      a = new amsf();
+    }
+    return a;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(long paramLong)
   {
-    int j = 1;
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      break;
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("AR_选图_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
     }
-    do
-    {
-      return;
-    } while (QZoneStartupMonitor.a(this.a));
-    if (QzonePluginProxyActivity.a())
-    {
-      QLog.i("QZoneStartupMonitor", 1, "超时，但是qzone 进程存在");
-      return;
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("AR_选图_启动累计耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong2 - paramLong1) }));
     }
-    QLog.e("QZoneStartupMonitor", 1, "启动超时认为启动失败，校验odex，并上报");
-    paramMessage = QZoneStartupMonitor.a(BaseApplicationImpl.getApplication(), "qzone_plugin.apk");
-    int i;
-    if (paramMessage != null)
-    {
-      i = ((Integer)paramMessage.first).intValue();
-      paramMessage = (Throwable)paramMessage.second;
+  }
+  
+  public void b(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("AR_识别_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
     }
-    for (;;)
-    {
-      int k = LocalMultiProcConfig.getInt("key_recovery_count", 0);
-      QZoneStartupMonitor.a(this.a, i, QZoneStartupMonitor.a(this.a), k);
-      StringBuilder localStringBuilder = new StringBuilder("qzone进程启动失败,elf valid errorcode: ").append(i).append(",recoveryCount:").append(k);
-      if (QzoneConfig.getInstance().getConfig("QZoneSetting", "exception_report_rdm", 0) == 1) {}
-      for (;;)
-      {
-        if (j != 0) {
-          QZoneExceptionReport.a(new QZoneStartupFailException(paramMessage), localStringBuilder.toString());
-        }
-        if (i == 0) {
-          break;
-        }
-        ThreadManager.postImmediately(new amsg(this, k), null, false);
-        return;
-        j = 0;
-      }
-      paramMessage = null;
-      i = 0;
+  }
+  
+  public void b(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("QR_识别_启动累计耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong2 - paramLong1) }));
+    }
+  }
+  
+  public void c(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("AR_追踪_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    }
+  }
+  
+  public void d(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("人脸_特征提取_单帧耗时 time cost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    }
+  }
+  
+  public void e(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("人脸_追踪_单帧耗时 time cost=%sms", new Object[] { Long.valueOf(paramLong) }));
     }
   }
 }

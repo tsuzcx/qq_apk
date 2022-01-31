@@ -43,11 +43,11 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import cooperation.qzone.QZoneShareManager;
-import hed;
-import hee;
-import hef;
-import heg;
-import heh;
+import gzw;
+import gzx;
+import gzy;
+import gzz;
+import haa;
 import java.util.ArrayList;
 
 public class TroopShareUtility
@@ -65,7 +65,7 @@ public class TroopShareUtility
   private static final int i = 0;
   private static final int j = 1;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new heh(this);
+  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new haa(this);
   private TroopInfoData jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet = null;
@@ -160,7 +160,7 @@ public class TroopShareUtility
       localPaint = new Paint();
       localPaint.setAntiAlias(true);
       Rect localRect = new Rect(217, 217, 323, 323);
-      paramResources = BitmapFactory.decodeResource(paramResources, 2130837994);
+      paramResources = BitmapFactory.decodeResource(paramResources, 2130837996);
       localCanvas.drawBitmap(paramResources, null, localRect, localPaint);
       paramResources.recycle();
       ((Bitmap)localObject).recycle();
@@ -338,7 +338,7 @@ public class TroopShareUtility
   {
     String str1 = String.valueOf(System.currentTimeMillis());
     Object localObject = (QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime();
-    localObject = a(BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), 2130838413));
+    localObject = a(BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), 2130838415));
     String str2 = a();
     StringBuffer localStringBuffer = new StringBuffer(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.f);
     if (TextUtils.isEmpty(localStringBuffer)) {
@@ -534,12 +534,12 @@ public class TroopShareUtility
     {
       this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null));
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131562908);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new hed(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new gzw(this));
       this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131562137);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131562715);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131560516);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131561882);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new hee(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new gzx(this));
     }
     if (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())
     {
@@ -554,8 +554,8 @@ public class TroopShareUtility
     this.jdField_b_of_type_ComTencentWidgetActionSheet.c(2131561682);
     this.jdField_b_of_type_ComTencentWidgetActionSheet.c(2131563148);
     this.jdField_b_of_type_ComTencentWidgetActionSheet.d(2131561746);
-    this.jdField_b_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new hef(this));
-    this.jdField_b_of_type_ComTencentWidgetActionSheet.a(new heg(this));
+    this.jdField_b_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new gzy(this));
+    this.jdField_b_of_type_ComTencentWidgetActionSheet.a(new gzz(this));
     String str;
     switch (this.k)
     {

@@ -1,29 +1,32 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
 
-public class lgg
-  implements Runnable
+class lgg
+  implements ServiceConnection
 {
-  public lgg(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity, String paramString) {}
+  lgg(lgf paramlgf) {}
   
-  public void run()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInJoyDeliverBiuActivity.app.getCurrentAccountUin();
-    localObject = BaseApplicationImpl.getContext().getSharedPreferences("sp_public_account_with_cuin_" + (String)localObject, 4);
-    if (localObject != null)
-    {
-      ((SharedPreferences)localObject).edit().putString("readinjoy_deliver_biu_guide_time", this.jdField_a_of_type_JavaLangString);
-      ((SharedPreferences)localObject).edit().commit();
+    if (QLog.isColorLevel()) {
+      QLog.d(lgf.a(), 2, "AVServiceForQQ onServiceConnected");
     }
+    this.a.a = lzb.a(paramIBinder);
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(lgf.a(), 2, "AVServiceForQQ onServiceDisconnected");
+    }
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lgg
  * JD-Core Version:    0.7.0.1
  */

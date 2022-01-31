@@ -1,22 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afdu
-  implements DialogInterface.OnClickListener
+class afdu
+  implements bhuk
 {
-  public afdu(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  afdu(afdq paramafdq, ChatMessage paramChatMessage, bhuf parambhuf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.d(true);
-    ReportController.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
+    if (paramInt == 0)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop != 3000) {
+        break label41;
+      }
+      arrp.a("0X8005E4F");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Afdq.e(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      label41:
+      arrp.a("0X8005E4D");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afdu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
 
 public class aehn
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aehn(ChatBackgroundManager paramChatBackgroundManager, String paramString, QQAppInterface paramQQAppInterface) {}
+  public aehn(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ChatBackgroundManager.c = this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.c(null);
-    Message localMessage = ChatBackgroundManager.a.obtainMessage();
-    localMessage.what = 1;
-    localMessage.obj = new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface };
-    if (QLog.isColorLevel())
-    {
-      QLog.d("ThemeDownloadTrace", 2, "bgin to report chat bg info");
-      QLog.d("ThemeDownloadTrace", 2, "initCurrChatBgNameForReport is:" + ChatBackgroundManager.c);
-    }
-    ChatBackgroundManager.a.sendMessage(localMessage);
+    paramView = this.a.d;
+    bcgq.a(this.a, paramView);
   }
 }
 

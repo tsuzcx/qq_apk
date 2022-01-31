@@ -3,11 +3,9 @@ package com.tencent.sonic.sdk;
 import android.content.Context;
 import android.net.SSLCertificateSocketFactory;
 import android.net.SSLSessionCache;
-import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLException;
@@ -29,7 +27,6 @@ class SonicSniSSLSocketFactory
   }
   
   public static void verifyHostname(Socket paramSocket, String paramString)
-    throws IOException
   {
     if (!(paramSocket instanceof SSLSocket)) {
       throw new IllegalArgumentException("Attempt to verify non-SSL socket");
@@ -48,13 +45,11 @@ class SonicSniSSLSocketFactory
   }
   
   public Socket createSocket()
-    throws IOException
   {
     return this.sslSocketFactory.createSocket();
   }
   
   public Socket createSocket(String paramString, int paramInt)
-    throws IOException, UnknownHostException
   {
     Socket localSocket = createSocket();
     localSocket.connect(new InetSocketAddress(paramString, paramInt));
@@ -63,7 +58,6 @@ class SonicSniSSLSocketFactory
   }
   
   public Socket createSocket(String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2)
-    throws IOException
   {
     Socket localSocket = createSocket();
     localSocket.bind(new InetSocketAddress(paramInetAddress, paramInt2));
@@ -73,19 +67,16 @@ class SonicSniSSLSocketFactory
   }
   
   public Socket createSocket(InetAddress paramInetAddress, int paramInt)
-    throws IOException
   {
     return this.sslSocketFactory.createSocket(paramInetAddress, paramInt);
   }
   
   public Socket createSocket(InetAddress paramInetAddress1, int paramInt1, InetAddress paramInetAddress2, int paramInt2)
-    throws IOException
   {
     return this.sslSocketFactory.createSocket(paramInetAddress1, paramInt1, paramInetAddress2, paramInt2);
   }
   
   public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
-    throws IOException
   {
     return this.sslSocketFactory.createSocket(paramSocket, this.targetHostName, paramInt, paramBoolean);
   }
@@ -102,7 +93,7 @@ class SonicSniSSLSocketFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicSniSSLSocketFactory
  * JD-Core Version:    0.7.0.1
  */

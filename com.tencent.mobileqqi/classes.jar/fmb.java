@@ -1,30 +1,16 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.CheckPublicAccount;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class fmb
-  extends PublicAccountObserver
 {
-  private fmb(CheckPublicAccount paramCheckPublicAccount) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "PublicAccount onUpdateUserFollowList:" + paramBoolean + " " + paramInt);
-    }
-    if ((paramBoolean) && (paramInt == 0))
-    {
-      CheckPublicAccount.a(this.a).a.edit().putBoolean("isPublicAccountListOK", true).commit();
-      this.a.a(7);
-    }
-    while (paramInt == 0) {
-      return;
-    }
-    this.a.a(6);
-  }
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public RichStatus a;
+  public String a;
+  public TextView b;
+  public TextView c;
 }
 
 

@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
 
-class cvb
+public class cvb
   implements Runnable
 {
-  cvb(cuy paramcuy) {}
+  public cvb(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
   
   public void run()
   {
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    if ((LoginVerifyCodeActivity.a(this.a) == 1) || (this.a.isFinishing()))
+    {
+      LoginVerifyCodeActivity.a(this.a).setText(2131562863);
+      LoginVerifyCodeActivity.a(this.a).setEnabled(true);
+      LoginVerifyCodeActivity.a(this.a).setClickable(true);
+      return;
+    }
+    LoginVerifyCodeActivity.b(this.a);
+    LoginVerifyCodeActivity.a(this.a).setText(this.a.getString(2131562863) + "(" + LoginVerifyCodeActivity.a(this.a) + ")");
+    this.a.b.postDelayed(this, 1000L);
   }
 }
 

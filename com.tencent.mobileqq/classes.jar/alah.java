@@ -1,19 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.SurfaceHolder;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
 
 class alah
-  implements DialogInterface.OnClickListener
+  implements IVideoViewBase.IVideoViewCallBack
 {
-  alah(alae paramalae) {}
+  alah(alag paramalag) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
   {
-    paramDialogInterface.dismiss();
+    alag.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alah
  * JD-Core Version:    0.7.0.1
  */

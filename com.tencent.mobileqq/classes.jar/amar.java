@@ -1,32 +1,24 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnScrollChangedListener;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.widget.BubblePopupWindow;
-import java.lang.ref.WeakReference;
+import java.util.concurrent.atomic.AtomicBoolean;
+import msf.msgcomm.msg_comm.Msg;
 
-public class amar
-  implements ViewTreeObserver.OnScrollChangedListener
+class amar
 {
-  public amar(BubblePopupWindow paramBubblePopupWindow) {}
+  public long a;
+  public AtomicBoolean a;
+  public msg_comm.Msg a;
+  public long b;
   
-  public void onScrollChanged()
+  public amar(msg_comm.Msg paramMsg, long paramLong1, long paramLong2)
   {
-    if (BubblePopupWindow.a(this.a) != null) {}
-    for (View localView = (View)BubblePopupWindow.a(this.a).get();; localView = null)
-    {
-      if ((localView != null) && (BubblePopupWindow.a(this.a) != null))
-      {
-        WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)BubblePopupWindow.a(this.a).getLayoutParams();
-        BubblePopupWindow.a(this.a, localView, localLayoutParams, BubblePopupWindow.a(this.a), BubblePopupWindow.b(this.a));
-        this.a.a(localLayoutParams.x, localLayoutParams.y, -1, -1, true);
-      }
-      return;
-    }
+    this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg = paramMsg;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amar
  * JD-Core Version:    0.7.0.1
  */

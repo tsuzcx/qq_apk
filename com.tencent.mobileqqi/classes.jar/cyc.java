@@ -1,55 +1,71 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.config.DownloadIconsListener;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import java.io.File;
-import java.util.HashMap;
+import android.app.Application;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantImpl;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.MobileQQ;
 
 public class cyc
-  extends DownloadIconsListener
+  implements DialogInterface.OnClickListener
 {
-  public cyc(Leba paramLeba) {}
+  public cyc(NotificationActivity paramNotificationActivity) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = this.a.a.getCount();
-    int i = 0;
-    boolean bool1;
-    for (boolean bool2 = false; i < j; bool2 = bool1)
+    paramDialogInterface = this.a.b.getApplication().getAllAccounts();
+    String str;
+    if ((paramDialogInterface != null) && (paramDialogInterface.size() > 0))
     {
-      Object localObject = (LebaViewItem)this.a.a.getItem(i);
-      bool1 = bool2;
-      if (((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo != null)
+      str = this.a.b.getAccount();
+      if ((str != null) && (str.length() > 0))
       {
-        bool1 = bool2;
-        if (paramString.equals(((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName))
+        Iterator localIterator = paramDialogInterface.iterator();
+        do
         {
-          ((LebaViewItem)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(paramBitmap);
-          bool2 = true;
-          localObject = LebaShowListManager.a(this.a.a(), paramString, ((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName);
-          bool1 = bool2;
-          if (localObject != null)
-          {
-            bool1 = bool2;
-            if (paramBitmap != null)
-            {
-              bool1 = bool2;
-              if (!LebaShowListManager.a().a.containsKey(((File)localObject).getAbsolutePath()))
-              {
-                LebaShowListManager.a().a.put(((File)localObject).getAbsolutePath(), paramBitmap);
-                bool1 = bool2;
-              }
-            }
+          if (!localIterator.hasNext()) {
+            break;
           }
-        }
+          paramDialogInterface = (SimpleAccount)localIterator.next();
+        } while (!str.equals(paramDialogInterface.getUin()));
       }
-      i += 1;
     }
-    this.a.b(new cyd(this, paramString, paramBitmap, bool2));
+    for (;;)
+    {
+      this.a.finish();
+      this.a.b.setKickIntent(null);
+      if (paramDialogInterface != null)
+      {
+        SharedPreUtils.a(this.a.getApplication().getApplicationContext(), paramDialogInterface.getUin(), true);
+        this.a.b.login(paramDialogInterface);
+        return;
+      }
+      paramDialogInterface = new Bundle();
+      paramDialogInterface.putString("password", null);
+      if (!PhoneNumLoginImpl.a().a(this.a.b, this.a.b.a()))
+      {
+        this.a.b.updateSubAccountLogin(this.a.b.a(), false);
+        this.a.b.getApplication().refreAccountList();
+      }
+      str = SubAccountAssistantImpl.a().a(this.a.b);
+      if ((!TextUtils.isEmpty(str)) && (!PhoneNumLoginImpl.a().a(this.a.b, str)))
+      {
+        this.a.b.updateSubAccountLogin(str, false);
+        this.a.b.getApplication().refreAccountList();
+      }
+      this.a.startActivity(new Intent(this.a, LoginActivity.class).putExtras(paramDialogInterface).addFlags(67108864));
+      return;
+      paramDialogInterface = null;
+    }
   }
 }
 

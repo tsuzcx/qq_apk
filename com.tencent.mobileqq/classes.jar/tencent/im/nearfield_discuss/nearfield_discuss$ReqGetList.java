@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class nearfield_discuss$ReqGetList
-  extends MessageMicro
+  extends MessageMicro<ReqGetList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -26,7 +26,7 @@ public final class nearfield_discuss$ReqGetList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.nearfield_discuss.nearfield_discuss.ReqGetList
  * JD-Core Version:    0.7.0.1
  */

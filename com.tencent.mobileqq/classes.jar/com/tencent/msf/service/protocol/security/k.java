@@ -9,16 +9,16 @@ public final class k
 {
   static byte[] k;
   static byte[] l;
-  public int a;
-  public int b;
-  public int c;
+  public int a = 0;
+  public int b = 0;
+  public int c = 0;
   public String d = "";
-  public int e;
-  public int f;
-  public byte[] g;
-  public byte[] h;
-  public int i;
-  public int j;
+  public int e = 0;
+  public int f = 0;
+  public byte[] g = null;
+  public byte[] h = null;
+  public int i = 0;
+  public int j = 0;
   
   public k() {}
   

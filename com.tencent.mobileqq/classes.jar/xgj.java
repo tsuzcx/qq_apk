@@ -1,21 +1,24 @@
-import com.tencent.mobileqq.activity.qwallet.GoldConfigObserver;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager.ConfigListener;
-import java.util.Map;
-import mqq.app.AppRuntime;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-class xgj
-  implements QWalletConfigManager.ConfigListener
+public class xgj
+  implements xon
 {
-  xgj(xgi paramxgi) {}
+  public xgj(DoodleLayout paramDoodleLayout) {}
   
-  public void a(String paramString, Map paramMap)
+  public void a(@NonNull xou paramxou)
   {
-    this.a.a.notifyObservers(GoldConfigObserver.class, 7, true, null);
+    wxk.b("0X80075CD");
+    if ((this.a.a != null) && (this.a.a.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 1, 2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgj
  * JD-Core Version:    0.7.0.1
  */

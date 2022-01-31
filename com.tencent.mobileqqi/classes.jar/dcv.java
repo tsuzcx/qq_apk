@@ -1,15 +1,35 @@
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.mobileqq.activity.NearPeopleActivity;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import cooperation.qqfav.QfavBuilder;
+import cooperation.qqfav.QfavReport;
 
-public class dcv
-  implements Runnable
+class dcv
+  implements ActionSheet.OnButtonClickListener
 {
-  public dcv(NearPeopleActivity paramNearPeopleActivity) {}
+  dcv(dcu paramdcu) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (HtmlOffline.a(NearPeopleActivity.a(this.a)) == null) {
-      HtmlOffline.a(this.a.a, NearPeopleActivity.b(this.a), this.a.b);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      if (QfavBuilder.a((float)this.a.a.jdField_a_of_type_Double, (float)this.a.a.b, this.a.a.o, this.a.a.l, null).d(this.a.a.getIntent().getStringExtra("uin")).a(this.a.a, this.a.a.getIntent().getStringExtra("uin"), 1, null))
+      {
+        paramInt = QQMapActivity.a(this.a.a).getDimensionPixelSize(2131427376);
+        QQToast.a(this.a.a, 2, this.a.a.getString(2131560778), 1).b(paramInt);
+      }
+      QfavReport.a(null, 65, 7);
+      ReportController.a(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_collect", 0, 0, "", "", "", "");
     }
   }
 }

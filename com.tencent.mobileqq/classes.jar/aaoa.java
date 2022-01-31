@@ -1,23 +1,23 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
 
-class aaoa
-  implements ArkAppCenter.OnGetAppIcon
+final class aaoa
+  implements View.OnTouchListener
 {
-  aaoa(aanz paramaanz, QQCustomDialog paramQQCustomDialog) {}
+  aaoa(aany paramaany) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramBitmap != null) {
-      ((ImageView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131364041)).setImageBitmap(paramBitmap);
-    }
+    aany localaany = this.a;
+    aany.a.onTouch(paramView, paramMotionEvent);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaoa
  * JD-Core Version:    0.7.0.1
  */

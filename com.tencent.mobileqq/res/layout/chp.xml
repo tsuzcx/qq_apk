@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="@dimen/b2l" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/mh7" android:background="@drawable/bjj" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="21.0dip">
+        <ImageView android:id="@id/mh6" android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="@drawable/eb1" android:layout_centerVertical="true" />
+        <TextView android:textSize="11.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/mh8" android:paddingRight="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="腾讯俱乐部" android:layout_toRightOf="@id/mh6" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</FrameLayout>

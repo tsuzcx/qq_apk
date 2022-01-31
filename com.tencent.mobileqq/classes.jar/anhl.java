@@ -1,62 +1,58 @@
-import com.tencent.mobileqq.util.EndianUtil;
+import android.animation.Animator.AnimatorListener;
+import android.util.SparseArray;
 
-final class anhl
+public class anhl
 {
-  public static int d = 16;
-  int jdField_a_of_type_Int = 538116905;
-  short jdField_a_of_type_Short = 1;
-  int jdField_b_of_type_Int;
-  short jdField_b_of_type_Short = 0;
-  int c;
+  private int jdField_a_of_type_Int = 1;
+  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new anhm(this);
+  private SparseArray<anhi> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private anhn jdField_a_of_type_Anhn;
   
-  public int a()
+  private void a(int paramInt)
   {
-    return this.jdField_b_of_type_Int;
+    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
+      ((anhi)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).stop();
+    }
   }
   
-  public void a(int paramInt)
+  private void a(int paramInt1, int paramInt2)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    anhi localanhi1 = (anhi)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+    anhi localanhi2 = (anhi)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
+    localanhi1.a(false, null);
+    localanhi2.a(true, this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener);
   }
   
-  public void a(byte[] paramArrayOfByte)
+  public void a()
   {
-    byte[] arrayOfByte = new byte[4];
-    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, 4);
-    this.jdField_a_of_type_Int = EndianUtil.a(arrayOfByte);
-    arrayOfByte = new byte[2];
-    System.arraycopy(paramArrayOfByte, 4, arrayOfByte, 0, 2);
-    this.jdField_a_of_type_Short = EndianUtil.a(arrayOfByte);
-    arrayOfByte = new byte[4];
-    System.arraycopy(paramArrayOfByte, 6, arrayOfByte, 0, 4);
-    this.jdField_b_of_type_Int = EndianUtil.a(arrayOfByte);
-    arrayOfByte = new byte[4];
-    System.arraycopy(paramArrayOfByte, 10, arrayOfByte, 0, 4);
-    this.c = EndianUtil.a(arrayOfByte);
-    arrayOfByte = new byte[2];
-    System.arraycopy(paramArrayOfByte, 14, arrayOfByte, 0, 2);
-    this.jdField_b_of_type_Short = EndianUtil.a(arrayOfByte);
+    int i = 1;
+    while (i <= 3)
+    {
+      a(i);
+      i += 1;
+    }
   }
   
-  public byte[] a()
+  public void a(int paramInt, anhi paramanhi)
   {
-    byte[] arrayOfByte = new byte[16];
-    System.arraycopy(EndianUtil.a(this.jdField_a_of_type_Int), 0, arrayOfByte, 0, 4);
-    System.arraycopy(EndianUtil.a(this.jdField_a_of_type_Short), 0, arrayOfByte, 4, 2);
-    System.arraycopy(EndianUtil.a(this.jdField_b_of_type_Int), 0, arrayOfByte, 6, 4);
-    System.arraycopy(EndianUtil.a(this.c), 0, arrayOfByte, 10, 4);
-    System.arraycopy(EndianUtil.a(this.jdField_b_of_type_Short), 0, arrayOfByte, 14, 2);
-    return arrayOfByte;
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramanhi);
   }
   
-  public int b()
+  public void a(int paramInt, anhn paramanhn)
   {
-    return this.c;
+    if (this.jdField_a_of_type_Int == paramInt) {
+      return;
+    }
+    this.jdField_a_of_type_Anhn = paramanhn;
+    a(this.jdField_a_of_type_Int, paramInt);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void b(int paramInt)
+  public void b()
   {
-    this.c = paramInt;
+    a();
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    this.jdField_a_of_type_Anhn = null;
   }
 }
 

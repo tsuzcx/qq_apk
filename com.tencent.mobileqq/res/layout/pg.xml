@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/image" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <com.tencent.mobileqq.widget.ImageProgressCircle android:id="@id/dea" android:layout_width="@dimen/tp" android:layout_height="@dimen/tp" android:layout_centerInParent="true" />
+</RelativeLayout>

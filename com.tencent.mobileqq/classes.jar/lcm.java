@@ -1,23 +1,19 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
 
 class lcm
-  implements AsyncBack
+  extends Handler
 {
   lcm(lcl paramlcl) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 2378 html web resource finish");
-    }
+    this.a.a(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lcm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,64 +1,37 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.widget.ADView;
-import com.tencent.mobileqq.widget.WorkSpaceView.OnScreenChangeListener;
-
 public class aksl
-  implements WorkSpaceView.OnScreenChangeListener
 {
-  public aksl(ADView paramADView, LinearLayout paramLinearLayout) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void b(int paramInt)
+  public boolean equals(Object paramObject)
   {
-    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    int i = 0;
-    View localView;
-    while (i < j)
+    if ((paramObject == null) || (!(paramObject instanceof aksl))) {}
+    do
     {
-      localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if (localView != null) {
-        localView.setEnabled(false);
-      }
-      i += 1;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.f) {
-      if (paramInt == -1) {
-        i = j - 1;
-      }
-    }
-    for (;;)
-    {
-      if ((i > -1) && (i < j))
-      {
-        localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-        if (localView != null) {
-          localView.setEnabled(true);
-        }
-      }
-      return;
-      i = paramInt;
-      if (paramInt == j)
-      {
-        i = 0;
-        continue;
-        if (paramInt == -1)
-        {
-          i = 0;
-        }
-        else
-        {
-          i = paramInt;
-          if (paramInt == j) {
-            i = j - 1;
-          }
-        }
-      }
-    }
+      return false;
+      paramObject = (aksl)paramObject;
+    } while ((this.a != paramObject.a) || (this.b != paramObject.b) || (this.c != paramObject.c) || (this.d != paramObject.d) || (this.e != paramObject.e));
+    return true;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("{");
+    localStringBuilder.append("positionX:").append(this.a);
+    localStringBuilder.append(", positionY:").append(this.b);
+    localStringBuilder.append(", width:").append(this.c);
+    localStringBuilder.append(", height:").append(this.d);
+    localStringBuilder.append(", align:").append(this.e);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aksl
  * JD-Core Version:    0.7.0.1
  */

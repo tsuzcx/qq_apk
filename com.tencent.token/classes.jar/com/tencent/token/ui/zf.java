@@ -1,17 +1,11 @@
 package com.tencent.token.ui;
 
-import android.widget.ImageView;
-import com.tencent.token.ui.base.bb;
-
-final class zf
-  implements Runnable
+public class zf
 {
-  zf(SecurityReporterActivity paramSecurityReporterActivity, bb parambb) {}
+  public yz a;
+  public int b;
   
-  public final void run()
-  {
-    this.a.setBounds(SecurityReporterActivity.access$000(this.b).getLeft(), SecurityReporterActivity.access$000(this.b).getTop(), SecurityReporterActivity.access$000(this.b).getRight(), SecurityReporterActivity.access$000(this.b).getBottom());
-  }
+  public zf(ShowLogActivity paramShowLogActivity) {}
 }
 
 

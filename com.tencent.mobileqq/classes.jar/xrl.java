@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import java.lang.reflect.Field;
 
-public class xrl
-  implements Runnable
+public final class xrl
 {
-  public xrl(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public final int a;
+  public final String a;
+  public final Field a;
   
-  public void run()
+  public xrl(String paramString, int paramInt, Field paramField)
   {
-    this.a.M();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangReflectField = paramField;
+    paramField.setAccessible(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xrl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/m14" android:background="@drawable/b6n" android:layout_width="@dimen/a3o" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/bif" android:background="@drawable/iy" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
+    <FrameLayout android:id="@id/m16" android:layout_width="@dimen/a3i" android:layout_height="@dimen/a3f" android:layout_marginTop="23.0dip" android:layout_below="@id/bif" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+        <ImageView android:id="@id/gap" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@null" />
+        <View android:id="@id/m15" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <TextView android:textSize="17.0dip" android:textColor="#ff03081a" android:ellipsize="end" android:gravity="center" android:id="@id/gao" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:maxEms="8" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/m16" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="14.0dip" android:textColor="#ff03081a" android:gravity="center" android:id="@id/gar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/df0" android:includeFontPadding="false" android:layout_below="@id/gao" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/a3n" android:textColor="@color/qu" android:gravity="center" android:id="@id/gan" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/df3" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/gar" android:layout_centerHorizontal="true" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/kvs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:layout_below="@id/gar">
+        <com.tencent.av.ui.MutiMemberThumbList android:id="@id/gas" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="19.5dip" />
+        <View android:id="@id/biw" android:background="@color/i5" android:layout_width="fill_parent" android:layout_height="@dimen/m2" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/kco" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/kvs" android:layout_centerHorizontal="true">
+        <Button android:textSize="@dimen/a3c" android:textColor="@color/pv" android:gravity="center" android:id="@id/gaq" android:background="@drawable/common_dialog_btn_left" android:paddingLeft="@dimen/a3a" android:paddingRight="@dimen/a3b" android:layout_width="@dimen/a3d" android:layout_height="@dimen/a3_" android:text="@string/df9" android:drawableLeft="@drawable/dbd" android:drawablePadding="@dimen/a38" android:contentDescription="@string/bhe" />
+        <View android:id="@id/m17" android:background="@color/i5" android:layout_width="@dimen/m2" android:layout_height="fill_parent" />
+        <Button android:textSize="@dimen/a3c" android:textColor="@color/pv" android:gravity="center" android:id="@id/gam" android:background="@drawable/common_dialog_btn_right" android:paddingLeft="@dimen/a3a" android:paddingRight="@dimen/a3b" android:layout_width="@dimen/a3d" android:layout_height="@dimen/a3_" android:text="@string/df2" android:drawableLeft="@drawable/dbc" android:drawablePadding="@dimen/a38" android:contentDescription="@string/bh9" />
+    </LinearLayout>
+</RelativeLayout>

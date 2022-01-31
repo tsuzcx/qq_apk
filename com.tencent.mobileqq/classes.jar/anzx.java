@@ -1,22 +1,23 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
 
-public class anzx
-  implements Runnable
+public final class anzx
+  implements Parcelable.Creator<BusinessCard>
 {
-  public anzx(DoodleView paramDoodleView, long paramLong) {}
-  
-  public void run()
+  public BusinessCard a(Parcel paramParcel)
   {
-    if (DoodleView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView, this.jdField_a_of_type_Long))
-    {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.requestLayout();
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.invalidate();
-    }
+    return new BusinessCard(paramParcel);
+  }
+  
+  public BusinessCard[] a(int paramInt)
+  {
+    return new BusinessCard[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anzx
  * JD-Core Version:    0.7.0.1
  */

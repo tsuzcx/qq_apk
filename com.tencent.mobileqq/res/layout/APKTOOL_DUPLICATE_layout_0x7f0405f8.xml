@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="bottom|center" android:layout_width="66.0dip" android:layout_height="66.0dip" android:layout_marginBottom="4.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02113b" />
-</FrameLayout>

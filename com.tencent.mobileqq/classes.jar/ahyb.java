@@ -1,32 +1,80 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.servlet.QZoneNotifyServlet;
-import cooperation.qzone.LbsDataV2;
-import cooperation.qzone.util.QZLog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.os.AsyncTask;
+import android.view.View;
+import com.tencent.mobileqq.activity.fling.ScreenCapture;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.ref.WeakReference;
 
-public final class ahyb
-  extends SosoInterface.OnLocationListener
+public class ahyb
+  extends AsyncTask<String, Void, Boolean>
 {
-  public ahyb(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(int paramInt1, int paramInt2)
+  public ahyb(View paramView)
   {
-    QZLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", "onConsecutiveFailure failCode:" + paramInt1 + ",failCount:" + paramInt2);
-  }
-  
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null))
+    if (paramView != null)
     {
-      QZoneNotifyServlet.a(LbsDataV2.convertFromSoso(paramSosoLbsInfo.a));
-      QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, "onLocationFinish succeed! gps=" + QZoneNotifyServlet.b());
-      return;
+      Context localContext = paramView.getContext();
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+      paramView.setDrawingCacheEnabled(true);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramView.getDrawingCache();
+      ScreenCapture.setSnapFile(localContext, false);
     }
-    QZLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", "onLocationFinish failed: error in force gps info update..");
   }
+  
+  protected Boolean a(String... paramVarArgs)
+  {
+    Boolean localBoolean = Boolean.FALSE;
+    if (isCancelled()) {}
+    while ((this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      return localBoolean;
+    }
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    paramVarArgs = new File(paramVarArgs[0]);
+    File localFile = paramVarArgs.getParentFile();
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    try
+    {
+      paramVarArgs = new FileOutputStream(paramVarArgs);
+      localBitmap.compress(Bitmap.CompressFormat.JPEG, 90, paramVarArgs);
+      paramVarArgs.flush();
+      paramVarArgs.close();
+      paramVarArgs = Boolean.TRUE;
+      return paramVarArgs;
+    }
+    catch (IOException paramVarArgs)
+    {
+      paramVarArgs.printStackTrace();
+    }
+    return localBoolean;
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localView != null)
+      {
+        if (paramBoolean.booleanValue()) {
+          ScreenCapture.setSnapFile(localView.getContext(), true);
+        }
+        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+        localView.setDrawingCacheEnabled(false);
+        localView.destroyDrawingCache();
+      }
+    }
+  }
+  
+  protected void onCancelled() {}
 }
 
 

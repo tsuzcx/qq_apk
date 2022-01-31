@@ -1,20 +1,32 @@
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.biz.ui.CustomMenuBar.OnMenuItemClickListener;
-import com.tencent.mobileqq.activity.PublicAccountChatActivity;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class dgt
-  implements CustomMenuBar.OnMenuItemClickListener
+  implements Runnable
 {
-  public dgt(PublicAccountChatActivity paramPublicAccountChatActivity) {}
+  public dgt(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public void a(String paramString, int paramInt)
+  public void run()
   {
-    PublicAccountChatActivity.a(this.a).a(paramString, this.a, this.a.b, this.a.c(), paramInt, PublicAccountChatActivity.a(this.a), this.a.a);
+    try
+    {
+      if ((RegisterSendUpSms.a(this.a) != null) && (RegisterSendUpSms.a(this.a).isShowing()) && (!this.a.isFinishing()))
+      {
+        RegisterSendUpSms.a(this.a).dismiss();
+        RegisterSendUpSms.a(this.a).cancel();
+      }
+      RegisterSendUpSms.a(this.a, null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dgt
  * JD-Core Version:    0.7.0.1
  */

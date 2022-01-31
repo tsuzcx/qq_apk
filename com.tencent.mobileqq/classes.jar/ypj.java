@@ -1,26 +1,134 @@
-import android.util.LruCache;
-import com.tencent.mobileqq.apollo.game.ApolloGameResManager;
-import com.tencent.mobileqq.apollo.game.ApolloGameResManager.ApolloGameRes;
+import android.graphics.Bitmap;
+import android.support.annotation.RequiresApi;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class ypj
-  extends LruCache
+  extends RecyclerView.ViewHolder
 {
-  public ypj(ApolloGameResManager paramApolloGameResManager, int paramInt)
+  private ajjp jdField_a_of_type_Ajjp;
+  private ajlp jdField_a_of_type_Ajlp;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  private HashMap<String, Bitmap> jdField_a_of_type_JavaUtilHashMap;
+  public ssj a;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public ypj(View paramView, ajjp paramajjp, HashMap<String, Bitmap> paramHashMap, DragFrameLayout paramDragFrameLayout)
   {
-    super(paramInt);
+    super(paramView);
+    this.jdField_a_of_type_Ajjp = paramajjp;
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.jdField_a_of_type_Ajlp = paramDragFrameLayout;
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131376456));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376461));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131376464));
   }
   
-  protected int a(String paramString, ApolloGameResManager.ApolloGameRes paramApolloGameRes)
+  private boolean a(ssj paramssj1, ssj paramssj2)
   {
-    if ((paramApolloGameRes == null) || (paramApolloGameRes.a == null)) {
-      return 0;
+    if ((paramssj1 != null) && (paramssj2 != null)) {
+      if ((!paramssj1.jdField_a_of_type_JavaLangString.equals(paramssj2.jdField_a_of_type_JavaLangString)) || (paramssj1.b != paramssj2.b) || (paramssj1.jdField_a_of_type_Int != paramssj2.jdField_a_of_type_Int) || (!paramssj1.c.equals(paramssj2.c))) {
+        break label88;
+      }
     }
-    return paramApolloGameRes.a.length;
+    label88:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d(ServiceFolderFollowPBHeadView.a(), 4, "isSameServiceData:" + bool);
+      return false;
+    }
+  }
+  
+  @RequiresApi(api=8)
+  public void a(ImageView paramImageView, String paramString)
+  {
+    Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (localBitmap == null) {
+      paramImageView.setImageDrawable(this.jdField_a_of_type_Ajjp.a(1008, paramString));
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        paramImageView.setColorFilter(1711276032);
+      }
+      return;
+      paramImageView.setImageBitmap(localBitmap);
+    }
+  }
+  
+  public void a(ssj paramssj, int paramInt)
+  {
+    if ((paramssj == null) || (a(this.jdField_a_of_type_Ssj, paramssj))) {
+      return;
+    }
+    this.jdField_a_of_type_Ssj = paramssj;
+    this.itemView.setTag(this.jdField_a_of_type_Ssj);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(2131376458, this.jdField_a_of_type_Ssj);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(2131376456, Integer.valueOf(paramInt));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramssj.c);
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-5723992);
+    }
+    a(this.jdField_a_of_type_ComTencentImageURLImageView, paramssj.jdField_a_of_type_JavaLangString);
+    int j = paramssj.b;
+    int i = paramssj.jdField_a_of_type_Int;
+    int k;
+    if (j > 0) {
+      if (i == 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, this.itemView);
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(null);
+        j = 0;
+        k = 0;
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      bhvv.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, i, j, k, 99, null);
+      this.itemView.setOnClickListener(new ypk(this, paramssj, paramInt));
+      zaj.a(paramssj.jdField_a_of_type_JavaLangString, "auth_follow", "new_s_exp", 0, 0, new String[] { "", "", paramssj.c, paramssj.jdField_a_of_type_JavaLangCharSequence.toString() });
+      return;
+      if (i == 2)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, this.itemView);
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(null);
+        j = 0;
+        k = 0;
+        i = 1;
+      }
+      else
+      {
+        i = 3;
+        k = 2130849805;
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, this.itemView);
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_Ajlp);
+        continue;
+        j = 0;
+        k = 0;
+        i = 0;
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ypj
  * JD-Core Version:    0.7.0.1
  */

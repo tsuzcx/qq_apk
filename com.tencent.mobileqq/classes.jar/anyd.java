@@ -1,42 +1,49 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import mqq.os.MqqHandler;
 
 public class anyd
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends Handler
 {
-  private anyd(EditTextDialog paramEditTextDialog) {}
+  private QQAnimationDrawable b;
   
-  public void onGlobalLayout()
+  public anyd(QQAnimationDrawable paramQQAnimationDrawable1, QQAnimationDrawable paramQQAnimationDrawable2)
   {
-    int i = this.a.jdField_a_of_type_AndroidViewView.getBottom();
-    if (this.a.b < 0)
+    this.b = paramQQAnimationDrawable2;
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("InternalHandler handleMessage msg.what:").append(paramMessage.what).append(" main:");
+    if (Looper.myLooper() == Looper.getMainLooper()) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("EditTextDialog", 2, "onGlobalLayout first bottom:" + i);
+      QLog.d("QQAnimationDrawable", 2, bool);
+      if (!(paramMessage.obj instanceof Long)) {
+        break label170;
       }
-      this.a.b = i;
-      this.a.jdField_a_of_type_MqqOsMqqHandler.post(new anye(this));
-    }
-    while (this.a.b - i <= this.a.jdField_a_of_type_Int) {
+      QLog.d("QQAnimationDrawable", 2, "InternalHandler handleMessage msg.obj:" + paramMessage.obj + " android.os.SystemClock.uptimeMillis():" + SystemClock.uptimeMillis());
+      paramMessage = (Long)paramMessage.obj;
+      if (paramMessage.longValue() >= SystemClock.uptimeMillis()) {
+        break;
+      }
+      QLog.d("QQAnimationDrawable", 2, "time < android.os.SystemClock.uptimeMillis()");
+      this.a.scheduleSelf(this.b, SystemClock.uptimeMillis());
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("EditTextDialog", 2, "onGlobalLayout second bottom:" + i);
-    }
-    this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.a.b = i;
-    this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
-    this.a.jdField_a_of_type_MqqOsMqqHandler.post(new anyf(this));
+    QLog.d("QQAnimationDrawable", 2, "time > android.os.SystemClock.uptimeMillis()");
+    this.a.scheduleSelf(this.b, paramMessage.longValue());
+    return;
+    label170:
+    QLog.d("QQAnimationDrawable", 2, "InternalHandler handleMessage msg.obj:" + paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anyd
  * JD-Core Version:    0.7.0.1
  */

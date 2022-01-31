@@ -1,21 +1,25 @@
-import android.content.res.Resources;
-import com.tencent.litetransfersdk.ProtocolHelper;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
 
 public class rdj
-  implements Runnable
+  extends Handler
 {
-  public rdj(ProtocolHelper paramProtocolHelper, String paramString) {}
+  private rdj(VideoFeedsGuideView paramVideoFeedsGuideView) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    FMToastUtil.a("'" + this.jdField_a_of_type_JavaLangString + "'" + BaseApplication.getContext().getResources().getString(2131427561));
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    VideoFeedsGuideView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rdj
  * JD-Core Version:    0.7.0.1
  */

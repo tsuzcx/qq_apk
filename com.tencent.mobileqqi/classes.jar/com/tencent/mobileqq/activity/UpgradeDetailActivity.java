@@ -25,8 +25,8 @@ import com.tencent.smtt.sdk.WebView;
 import com.tencent.util.WeakReferenceHandler;
 import com.tencent.widget.ProtectedWebView;
 import cooperation.qzone.QZoneHelper;
-import eaa;
-import eab;
+import duj;
+import duk;
 import protocol.KQQConfig.UpgradeInfo;
 
 @SuppressLint({"SetJavaScriptEnabled"})
@@ -105,19 +105,19 @@ public class UpgradeDetailActivity
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131234629);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131234631);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = ((ProtectedWebView)findViewById(2131234628));
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = ((ProtectedWebView)findViewById(2131234630));
     WebSettings localWebSettings = this.jdField_a_of_type_ComTencentSmttSdkWebView.getSettings();
     localWebSettings.setUserAgentString(localWebSettings.getUserAgentString() + " " + QZoneHelper.a());
     localWebSettings.setJavaScriptEnabled(true);
     localWebSettings.setGeolocationEnabled(true);
     localWebSettings.setCacheMode(2);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebViewClient(new eab(this, null));
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebChromeClient(new eaa(this, null));
+    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebViewClient(new duk(this, null));
+    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebChromeClient(new duj(this, null));
     this.jdField_a_of_type_ComTencentMobileqqJsbridgeJsBridge = new JsBridge();
     this.jdField_a_of_type_ComTencentMobileqqJsbridgeJsBridge.a(new UpgradeDetailActivity.JsCover(this), "qqupgrade");
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131234631));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131234633));
   }
   
   void a(int paramInt)
@@ -237,7 +237,7 @@ public class UpgradeDetailActivity
       finish();
       return;
     }
-    setContentView(2130904037);
+    setContentView(2130904039);
     x();
     Intent localIntent = getIntent();
     this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper = ((UpgradeDetailWrapper)localIntent.getParcelableExtra("detail_wrapper"));

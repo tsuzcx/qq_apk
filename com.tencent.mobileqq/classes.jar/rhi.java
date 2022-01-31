@@ -1,46 +1,21 @@
-import android.app.Dialog;
-import android.view.View;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
 
-public class rhi
-  implements ActionSheet.OnButtonClickListener
+class rhi
+  implements DialogInterface.OnShowListener
 {
-  int jdField_a_of_type_Int = -1;
+  rhi(rhf paramrhf) {}
   
-  public rhi(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    }
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
-      } while (this.jdField_a_of_type_Int < 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, false);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
-    } while (this.jdField_a_of_type_Int < 0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, true);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
+    rhf.a(this.a, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
+    rhf.a(this.a).getWindow().clearFlags(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rhi
  * JD-Core Version:    0.7.0.1
  */

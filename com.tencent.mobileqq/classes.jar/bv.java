@@ -1,45 +1,34 @@
-import android.os.AsyncTask;
-import android.os.Bundle;
 import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class bv
-  extends AsyncTask
+  implements arrh
 {
-  public bv(LiteActivity paramLiteActivity) {}
+  public bv(LiteActivity paramLiteActivity, DataLineMsgRecord paramDataLineMsgRecord, FileManagerEntity paramFileManagerEntity, String paramString1, String paramString2) {}
   
-  protected Void a(Bundle... paramVarArgs)
+  public void a()
   {
-    Object localObject = paramVarArgs[0].getStringArrayList("PhotoConst.PHOTO_PATHS");
-    if (localObject == null) {}
-    for (;;)
+    int i = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      return null;
-      paramVarArgs = (DataLineHandler)this.a.app.a(8);
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str = (String)((Iterator)localObject).next();
-        DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-        localDataLineMsgRecord.path = str;
-        localDataLineMsgRecord.msgtype = -2009;
-        paramVarArgs.a(localDataLineMsgRecord, false);
-      }
+      arri.b(arrr.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131692912));
+      FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(this.b, null, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), 0, false);
+      this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId = localFileManagerEntity.nSessionId;
+      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(i).c(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgId);
+      return;
     }
+    arri.b(arrr.d(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getString(2131692912));
+    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a().a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.nWeiyunSessionId);
   }
   
-  protected void a(Void paramVoid)
-  {
-    this.a.a(false);
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bv
  * JD-Core Version:    0.7.0.1
  */

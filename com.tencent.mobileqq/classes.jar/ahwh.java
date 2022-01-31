@@ -1,54 +1,27 @@
-import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
-import java.util.concurrent.CountDownLatch;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 
 public class ahwh
-  implements Runnable
+  implements URLDrawable.URLDrawableListener
 {
-  private int jdField_a_of_type_Int;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ahwi(this);
-  private ISearchListener jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener;
-  private String jdField_a_of_type_JavaLangString;
-  public CountDownLatch a;
-  private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt;
+  public ahwh(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public ahwh(NetSearchEngine paramNetSearchEngine, String paramString, int[] paramArrayOfInt, int paramInt, ISearchListener paramISearchListener)
-  {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener = paramISearchListener;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(1);
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener = null;
-    NetSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = null;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public void run()
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    NetSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade.a(this.jdField_a_of_type_Int);
-    if (NetSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine) == 12)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfInt, NetSearchEngine.b, NetSearchEngine.jdField_a_of_type_Double, false, 1);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfInt, NetSearchEngine.b, NetSearchEngine.jdField_a_of_type_Double, false, 0);
+    EmoticonGroupStoreFragment.a(this.a).invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahwh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,21 @@
 import android.view.View;
-import android.view.ViewParent;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
 
 public class acee
-  implements Runnable
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
+  public acee(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public acee(EmoticonLinearLayout paramEmoticonLinearLayout) {}
-  
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = EmoticonLinearLayout.b(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout);
-  }
-  
-  public void run()
-  {
-    EmoticonInfo localEmoticonInfo;
-    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.getParent() != null) && (this.jdField_a_of_type_Int == EmoticonLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout)) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_AndroidViewView != null))
-    {
-      localEmoticonInfo = (EmoticonInfo)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_AndroidViewView.getTag();
-      if (localEmoticonInfo != null)
-      {
-        if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback.a(localEmoticonInfo))) {
-          break label172;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.getParent().requestDisallowInterceptTouchEvent(true);
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.sendAccessibilityEvent(2);
-        if (!"delete".equals(localEmoticonInfo.a)) {
-          break label132;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_JavaLangRunnable.run();
-      }
-    }
-    label132:
-    while (("setting".equals(localEmoticonInfo.a)) || ("add".equals(localEmoticonInfo.a))) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_AndroidViewView, localEmoticonInfo);
-    return;
-    label172:
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_AndroidViewView = null;
+    this.a.finish();
+    this.a.overridePendingTransition(2130771997, 2130772001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acee
  * JD-Core Version:    0.7.0.1
  */

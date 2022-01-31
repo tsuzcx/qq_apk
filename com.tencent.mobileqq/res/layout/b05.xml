@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aik"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/dq1" android:visibility="gone" style="@style/bw" />
+    <TextView android:id="@id/info" style="@style/bz" />
+    <ImageView android:id="@id/yw" style="@style/bv" />
+</LinearLayout>

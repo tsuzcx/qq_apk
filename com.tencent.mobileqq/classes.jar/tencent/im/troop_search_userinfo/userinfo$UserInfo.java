@@ -10,15 +10,15 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class userinfo$UserInfo
-  extends MessageMicro
+  extends MessageMicro<UserInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public userinfo.AppInfo app_info = new userinfo.AppInfo();
   public userinfo.DevAttr attr = new userinfo.DevAttr();
   public final PBBytesField bytes_client_version = PBField.initBytes(ByteStringMicro.EMPTY);
   public userinfo.GPS gps = new userinfo.GPS();
-  public final PBRepeatMessageField rpt_cell = PBField.initRepeatMessage(userinfo.Cell.class);
-  public final PBRepeatMessageField rpt_wifi = PBField.initRepeatMessage(userinfo.Wifi.class);
+  public final PBRepeatMessageField<userinfo.Cell> rpt_cell = PBField.initRepeatMessage(userinfo.Cell.class);
+  public final PBRepeatMessageField<userinfo.Wifi> rpt_wifi = PBField.initRepeatMessage(userinfo.Wifi.class);
   public final PBStringField skey = PBField.initString("");
   public final PBUInt64Field uin = PBField.initUInt64(0L);
   
@@ -30,7 +30,7 @@ public final class userinfo$UserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.troop_search_userinfo.userinfo.UserInfo
  * JD-Core Version:    0.7.0.1
  */

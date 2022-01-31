@@ -1,90 +1,71 @@
-import android.annotation.SuppressLint;
-import android.content.SharedPreferences.Editor;
-import java.util.Set;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.GalleryProteusItem.1;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAvatarView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import org.json.JSONObject;
+import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
 
 public class pmd
-  implements SharedPreferences.Editor
+  implements poa
 {
-  private final SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
-  private final ply jdField_a_of_type_Ply;
-  
-  public pmd(SharedPreferences.Editor paramEditor, ply paramply)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = paramEditor;
-    this.jdField_a_of_type_Ply = paramply;
-  }
-  
-  private String a(String paramString)
-  {
-    if (this.jdField_a_of_type_Ply != null) {
-      return this.jdField_a_of_type_Ply.a(paramString);
-    }
     return null;
   }
   
-  @SuppressLint({"NewApi"})
-  public void apply()
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
+    if (paramInt == 103) {
+      return pjz.a(paramBaseArticleInfo);
+    }
+    if (paramInt == 102) {
+      return pjx.a(paramBaseArticleInfo);
+    }
+    return pjy.a(paramBaseArticleInfo);
   }
   
-  public SharedPreferences.Editor clear()
+  public void a(int paramInt1, Container paramContainer, pgd parampgd, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.clear();
-    return this;
+    ViewBase localViewBase = paramContainer.getVirtualView();
+    Object localObject = (pqg)localViewBase.findViewBaseByName("id_info_avator");
+    if (localObject != null)
+    {
+      ((pqg)localObject).a(parampgd, false);
+      parampgd = parampgd.a();
+      localObject = (NativeAvatarView)((pqg)localObject).getNativeView();
+      if ((ors.b(parampgd)) && (parampgd.mGalleryFeedsInfo.uint32_is_account_derelict.has()) && (parampgd.mGalleryFeedsInfo.uint32_is_account_derelict.get() == 1)) {
+        ((NativeAvatarView)localObject).setAvatarDrawable(paramContainer.getContext().getResources().getDrawable(2130845909));
+      }
+    }
+    paramContainer = (NativeText)localViewBase.findViewBaseByName("id_nickname");
+    parampgd = localViewBase.findViewBaseByName("id_view_nickname");
+    if ((paramContainer != null) && (parampgd != null))
+    {
+      paramContainer = (NativeTextImp)paramContainer.getNativeView();
+      parampgd = parampgd.getNativeView();
+      if ((paramContainer != null) && (parampgd != null)) {
+        parampgd.post(new GalleryProteusItem.1(this, parampgd, paramContainer));
+      }
+    }
   }
   
-  public boolean commit()
+  public boolean a(int paramInt, Container paramContainer, pgd parampgd, ViewBase paramViewBase)
   {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
-  }
-  
-  public SharedPreferences.Editor putBoolean(String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putBoolean(a(paramString), paramBoolean);
-    return this;
-  }
-  
-  public SharedPreferences.Editor putFloat(String paramString, float paramFloat)
-  {
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putFloat(a(paramString), paramFloat);
-    return this;
-  }
-  
-  public SharedPreferences.Editor putInt(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt(a(paramString), paramInt);
-    return this;
-  }
-  
-  public SharedPreferences.Editor putLong(String paramString, long paramLong)
-  {
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong(a(paramString), paramLong);
-    return this;
-  }
-  
-  public SharedPreferences.Editor putString(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putString(a(paramString1), paramString2);
-    return this;
-  }
-  
-  @SuppressLint({"NewApi"})
-  public SharedPreferences.Editor putStringSet(String paramString, Set paramSet)
-  {
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putStringSet(a(paramString), paramSet);
-    return this;
-  }
-  
-  public SharedPreferences.Editor remove(String paramString)
-  {
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.remove(a(paramString));
-    return this;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pmd
  * JD-Core Version:    0.7.0.1
  */

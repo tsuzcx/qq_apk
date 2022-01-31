@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.tencent.tmassistant.common.a.d;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
 import com.tencent.tmdownloader.internal.storage.a.a;
 
 public class CacheTable
@@ -44,7 +44,7 @@ public class CacheTable
         {
           localSQLiteDatabase = paramSQLiteDatabase1;
           localObject = paramSQLiteDatabase1;
-          r.c("reportInfo", "start move data!");
+          ab.c("reportInfo", "start move data!");
           boolean bool;
           do
           {
@@ -72,11 +72,11 @@ public class CacheTable
       for (;;)
       {
         localObject = localSQLiteDatabase;
-        r.c("ReportTable", "exception: ", paramSQLiteDatabase1);
+        ab.c("ReportTable", "exception: ", paramSQLiteDatabase1);
         localObject = localSQLiteDatabase;
         paramSQLiteDatabase1.printStackTrace();
         localObject = localSQLiteDatabase;
-        r.c("reportInfo", "move data exception!");
+        ab.c("reportInfo", "move data exception!");
         if (localSQLiteDatabase != null) {
           localSQLiteDatabase.close();
         }
@@ -110,7 +110,7 @@ public class CacheTable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.storage.table.CacheTable
  * JD-Core Version:    0.7.0.1
  */

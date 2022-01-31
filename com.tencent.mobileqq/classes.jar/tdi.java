@@ -1,21 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.subscribe.comment.EmoView;
 
 class tdi
-  implements DialogInterface.OnClickListener
+  implements yhs
 {
-  tdi(tdh paramtdh) {}
+  tdi(tdf paramtdf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    ThreadManager.getSubThreadHandler().post(new tdj(this));
+    if (tdf.a(this.a))
+    {
+      tdf.b(this.a, false);
+      tdf.a(this.a).setVisibility(0);
+    }
+    for (;;)
+    {
+      tdf.a(this.a, false);
+      return;
+      this.a.dismiss();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (tdf.a(this.a) != paramInt)
+    {
+      tdf.a(this.a, paramInt);
+      tdf.a(this.a);
+      tdf.a(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
+      tdf.a(this.a).commit();
+    }
+    tdf.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tdi
  * JD-Core Version:    0.7.0.1
  */

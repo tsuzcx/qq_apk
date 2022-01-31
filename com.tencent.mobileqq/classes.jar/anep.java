@@ -1,17 +1,8 @@
-import android.os.Bundle;
-import cooperation.smartdevice.ipc.SmartDeviceIPCHost;
-import java.util.ArrayList;
-
-public class anep
-  implements Runnable
+public abstract interface anep
 {
-  public anep(SmartDeviceIPCHost paramSmartDeviceIPCHost, Bundle paramBundle) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void run()
-  {
-    this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a.add(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.b();
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 

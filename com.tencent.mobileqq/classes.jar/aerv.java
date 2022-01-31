@@ -1,76 +1,73 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorAdapter.ChildItemHolder;
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
-import com.tencent.mobileqq.util.IIconDecoder;
-import com.tencent.mobileqq.util.IIconDecoder.IIconListener;
-import com.tencent.mobileqq.widget.StatableBitmapDrawable;
-import com.tencent.widget.PinnedHeaderExpandableListView;
-import com.tencent.widget.SingleLineTextView;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import tencent.im.s2c.msgtype0x210.submsgtype0xc7.submsgtype0xc7.RelationalChainInfo;
 
 public class aerv
-  implements IIconDecoder.IIconListener
 {
-  public aerv(NearbyVisitorListActivity paramNearbyVisitorListActivity) {}
+  public int a;
+  public aerw a;
+  public aerx a;
+  public byte[] a;
   
-  public void a(int paramInt1, String paramString, int paramInt2, Bitmap paramBitmap)
+  public static aerv a(submsgtype0xc7.RelationalChainInfo paramRelationalChainInfo)
   {
-    if ((paramInt1 != 1) || (TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
-    while ((paramBitmap == null) || (paramInt2 != 200)) {
-      return;
-    }
-    paramInt2 = this.a.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.getChildCount();
-    paramInt1 = 0;
-    label43:
-    Object localObject2;
-    Object localObject1;
-    if (paramInt1 < paramInt2)
+    if (paramRelationalChainInfo != null)
     {
-      localObject2 = this.a.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.getChildAt(paramInt1).getTag();
-      localObject1 = paramBitmap;
-      if (localObject2 != null)
+      aerv localaerv = new aerv();
+      localaerv.jdField_a_of_type_Int = paramRelationalChainInfo.uint64_type.get();
+      if (paramRelationalChainInfo.bytes_attr.has()) {
+        localaerv.jdField_a_of_type_Aerx = aerx.a(localaerv.jdField_a_of_type_Int, paramRelationalChainInfo.bytes_attr.get().toByteArray());
+      }
+      if (paramRelationalChainInfo.bytes_intimate_info.has()) {
+        localaerv.jdField_a_of_type_Aerw = aerw.a(paramRelationalChainInfo.bytes_intimate_info.get().toByteArray());
+      }
+      if (paramRelationalChainInfo.bytes_mutualmark_alienation.has()) {
+        localaerv.jdField_a_of_type_ArrayOfByte = paramRelationalChainInfo.bytes_mutualmark_alienation.get().toByteArray();
+      }
+      return localaerv;
+    }
+    return null;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Aerx != null) {
+      return (int)this.jdField_a_of_type_Aerx.b;
+    }
+    if ((this.jdField_a_of_type_Aerw != null) && ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 3))) {
+      return this.jdField_a_of_type_Aerw.jdField_a_of_type_Int;
+    }
+    return 0;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ExtSnsRelationalChainPushInfo{");
+    localStringBuilder.append("relation_type:").append(this.jdField_a_of_type_Int).append(", ");
+    localStringBuilder.append("mutualMarkInfo:").append(this.jdField_a_of_type_Aerx).append(", ");
+    localStringBuilder.append("intimateInfo:").append(this.jdField_a_of_type_Aerw).append(", ");
+    localStringBuilder.append("relationIconFlag:");
+    if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length > 0))
+    {
+      int i = 0;
+      while ((i < this.jdField_a_of_type_ArrayOfByte.length) && (i < 10))
       {
-        localObject1 = paramBitmap;
-        if ((localObject2 instanceof NearbyVisitorAdapter.ChildItemHolder))
-        {
-          localObject2 = (NearbyVisitorAdapter.ChildItemHolder)localObject2;
-          localObject1 = paramBitmap;
-          if (paramString.equals(String.valueOf(((NearbyVisitorAdapter.ChildItemHolder)localObject2).jdField_b_of_type_Int)))
-          {
-            localObject1 = paramBitmap;
-            if (((NearbyVisitorAdapter.ChildItemHolder)localObject2).jdField_b_of_type_ComTencentWidgetSingleLineTextView != null)
-            {
-              if (paramBitmap != null) {
-                break label255;
-              }
-              paramBitmap = this.a.jdField_a_of_type_ComTencentMobileqqUtilIIconDecoder.a(1, String.valueOf(((NearbyVisitorAdapter.ChildItemHolder)localObject2).jdField_b_of_type_Int), 200, true, true);
-            }
-          }
-        }
+        localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte[0]).append(" ");
+        i += 1;
       }
     }
-    label255:
-    for (;;)
-    {
-      localObject1 = new StatableBitmapDrawable(this.a.getResources(), paramBitmap, false, false);
-      if (this.a.d == 0) {
-        this.a.d = ((int)(((NearbyVisitorAdapter.ChildItemHolder)localObject2).jdField_b_of_type_ComTencentWidgetSingleLineTextView.a() * 1.1F + 0.5F));
-      }
-      ((StatableBitmapDrawable)localObject1).setBounds(0, 0, this.a.d, this.a.d);
-      ((NearbyVisitorAdapter.ChildItemHolder)localObject2).jdField_b_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables((Drawable)localObject1, null);
-      localObject1 = paramBitmap;
-      paramInt1 += 1;
-      paramBitmap = (Bitmap)localObject1;
-      break label43;
-      break;
-    }
+    localStringBuilder.append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerv
  * JD-Core Version:    0.7.0.1
  */

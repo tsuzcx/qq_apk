@@ -1,18 +1,25 @@
-import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnErrorListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneAudioRecordPlugin.SimpleAACRecorder;
+import java.util.ArrayList;
 
 public class ancg
-  implements MediaRecorder.OnErrorListener
+  extends ancs
 {
-  public ancg(QzoneAudioRecordPlugin.SimpleAACRecorder paramSimpleAACRecorder) {}
+  public long a;
+  public ArrayList<amxp> a;
+  public boolean a;
   
-  public void onError(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
+  public ancg()
   {
-    paramMediaRecorder = "(code = " + paramInt1 + ", extra = " + paramInt2 + ")";
-    QzoneAudioRecordPlugin.SimpleAACRecorder.a(this.a, paramInt1, paramMediaRecorder);
-    QLog.w("QzoneVoiceRecordPlugin.SimpleRecorder", 1, "MediaRecorder error " + paramMediaRecorder);
+    this.b = 4L;
+    this.jdField_a_of_type_JavaUtilArrayList = null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("ARLocalFaceRecogResult{recogType = ").append(this.b).append(",isTimeOut = ").append(this.jdField_a_of_type_Boolean).append(",frameIdx = ").append(this.jdField_a_of_type_Long).append(", faceDatas.size = ");
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {}
+    for (int i = this.jdField_a_of_type_JavaUtilArrayList.size();; i = 0) {
+      return i + '}';
+    }
   }
 }
 

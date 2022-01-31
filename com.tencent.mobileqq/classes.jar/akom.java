@@ -1,22 +1,26 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
-import mqq.app.TicketManagerListener;
+import java.util.Arrays;
 
 public class akom
-  implements TicketManagerListener
 {
-  public void onTicketRefreshed()
+  public int a;
+  public boolean a;
+  public int[] a;
+  public int b;
+  public int[] b;
+  public int c;
+  public int d;
+  public int e;
+  
+  public String toString()
   {
-    QLog.i("SwiftBrowserCookieMonster", 1, "TicketManager invoke onTicketRefreshed");
-    SwiftBrowserCookieMonster.d();
-    SwiftBrowserCookieMonster.b(MobileQQ.sMobileQQ.waitAppRuntime(null), new Intent());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("userStatus:").append(this.d).append(",roleId:").append(this.jdField_a_of_type_Int).append(",dressIds:").append(Arrays.toString(this.jdField_a_of_type_ArrayOfInt)).append(",threeRoleId:").append(this.jdField_b_of_type_Int).append(",threeDressIds:").append(Arrays.toString(this.jdField_b_of_type_ArrayOfInt));
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akom
  * JD-Core Version:    0.7.0.1
  */

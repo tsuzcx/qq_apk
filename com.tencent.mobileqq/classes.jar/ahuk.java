@@ -1,21 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.presenter.SearchResultGroupMessagePresenter;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahuk
-  implements View.OnClickListener
+class ahuk
+  extends altm
 {
-  public ahuk(SearchResultGroupMessagePresenter paramSearchResultGroupMessagePresenter, ISearchResultGroupModel paramISearchResultGroupModel) {}
+  ahuk(ahuf paramahuf) {}
   
-  public void onClick(View paramView)
+  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel.a(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("CTEntryMng", 2, "onMayKnowEntryStateChanged isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      ahuf.a(this.a, true);
+      ahuf.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahuk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-public class QQRecorder$RecordNoPermissonException
+class QQRecorder$RecordNoPermissonException
   extends RuntimeException
 {
   public QQRecorder$RecordNoPermissonException(String paramString)
@@ -10,7 +10,7 @@ public class QQRecorder$RecordNoPermissonException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQRecorder.RecordNoPermissonException
  * JD-Core Version:    0.7.0.1
  */

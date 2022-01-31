@@ -1,54 +1,35 @@
-import android.content.res.Resources;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import com.tencent.component.media.image.BitmapReference;
-import com.tencent.component.media.image.drawable.ImageDrawable;
+import android.support.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public final class phx
-  extends Drawable.ConstantState
+class phx
+  implements phy<BEAN, COOKIE>
 {
-  public int a;
-  public Paint a;
-  public BitmapReference a;
-  public int b;
-  public int c;
-  public int d = 160;
+  phx(phu paramphu, pht parampht) {}
   
-  public phx(BitmapReference paramBitmapReference, int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, ArrayList<BEAN> paramArrayList, @Nullable COOKIE paramCOOKIE, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference = paramBitmapReference;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-  }
-  
-  public phx(phx paramphx)
-  {
-    this(paramphx.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference, paramphx.jdField_a_of_type_Int, paramphx.b);
-    this.c = paramphx.c;
-    this.d = paramphx.d;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(paramphx.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  public int getChangingConfigurations()
-  {
-    return this.c;
-  }
-  
-  public Drawable newDrawable()
-  {
-    return new ImageDrawable(this, null, null);
-  }
-  
-  public Drawable newDrawable(Resources paramResources)
-  {
-    return new ImageDrawable(this, paramResources, null);
+    this.jdField_a_of_type_Phu.a.addAll(paramArrayList);
+    if (paramBoolean1)
+    {
+      phu.a(this.jdField_a_of_type_Phu, paramCOOKIE);
+      paramArrayList = this.jdField_a_of_type_Phu;
+      if (paramBoolean2) {
+        break label68;
+      }
+    }
+    label68:
+    for (paramBoolean2 = true;; paramBoolean2 = false)
+    {
+      phu.a(paramArrayList, paramBoolean2);
+      this.jdField_a_of_type_Pht.a(paramBoolean1, this.jdField_a_of_type_Phu.a, paramInt2, paramString);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     phx
  * JD-Core Version:    0.7.0.1
  */

@@ -7,14 +7,16 @@ public class n
   public String a;
   public long b;
   public boolean c;
+  public int d;
   
   public n() {}
   
-  public n(String paramString, long paramLong, boolean paramBoolean)
+  public n(String paramString, long paramLong, boolean paramBoolean, int paramInt)
   {
     this.a = paramString;
     this.b = paramLong;
     this.c = paramBoolean;
+    this.d = paramInt;
   }
   
   public static n a(String paramString)
@@ -25,7 +27,7 @@ public class n
       if (paramString.length != 3) {
         return null;
       }
-      paramString = new n(paramString[0], Long.parseLong(paramString[1]), Boolean.parseBoolean(paramString[2]));
+      paramString = new n(paramString[0], Long.parseLong(paramString[1]), Boolean.parseBoolean(paramString[2]), 0);
       return paramString;
     }
     catch (Exception paramString)
@@ -39,7 +41,7 @@ public class n
   {
     try
     {
-      paramJSONObject = new n(paramJSONObject.getString("ssid"), paramJSONObject.getLong("time"), paramJSONObject.getBoolean("available"));
+      paramJSONObject = new n(paramJSONObject.getString("ssid"), paramJSONObject.getLong("time"), paramJSONObject.getBoolean("available"), 0);
       return paramJSONObject;
     }
     catch (Exception paramJSONObject)
@@ -54,7 +56,8 @@ public class n
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append(this.a).append("&#&");
     localStringBuffer.append(this.b).append("&#&");
-    localStringBuffer.append(this.c);
+    localStringBuffer.append(this.c).append("&#&");
+    localStringBuffer.append(this.d);
     return localStringBuffer.toString();
   }
   

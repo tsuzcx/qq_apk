@@ -1,25 +1,43 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOFilePicData;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import java.util.List;
 
 class vms
-  implements DialogInterface.OnClickListener
+  extends PagerAdapter
 {
-  vms(vmr paramvmr) {}
+  private List<View> jdField_a_of_type_JavaUtilList;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public vms(List<View> paramList)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFilePicData.g);
-    QQToast.a(AIOGalleryScene.ak(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), AIOGalleryScene.al(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).getString(2131428195), 0).a();
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+  }
+  
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  {
+    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup.addView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vms
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,26 @@
 package com.tencent.mobileqq.conditionsearch.data;
 
+import alud;
 import android.text.TextUtils;
+import bdnn;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.StringUtil;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class AddressData
 {
-  public HashMap a = new HashMap(30);
+  public static final String a;
+  public HashMap<String, BaseAddress> a;
+  
+  static
+  {
+    jdField_a_of_type_JavaLangString = alud.a(2131700260);
+  }
+  
+  public AddressData()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(30);
+  }
   
   private int a(int paramInt)
   {
@@ -55,31 +67,31 @@ public class AddressData
   
   public void a()
   {
-    if (this.a != null)
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
     {
-      this.a.clear();
-      this.a = null;
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      this.jdField_a_of_type_JavaUtilHashMap = null;
     }
   }
   
   public boolean a(AppInterface paramAppInterface, String paramString)
   {
-    if (paramString.startsWith("#兼容列表")) {
+    if (paramString.startsWith(jdField_a_of_type_JavaLangString)) {
       return false;
     }
-    Object localObject2 = StringUtil.a(paramString, '|');
+    Object localObject2 = bdnn.a(paramString, '|');
     if ((paramString.startsWith("#")) || (localObject2.length < 2)) {
       return true;
     }
     int i = localObject2.length;
     paramString = localObject2[0];
     Object localObject1 = localObject2[1];
-    paramAppInterface = (BaseAddress)this.a.get(paramString);
+    paramAppInterface = (BaseAddress)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
     if (paramAppInterface == null)
     {
       paramAppInterface = new BaseAddress((String)localObject1, paramString, a(1));
-      this.a.put("0", new BaseAddress("不限", "0", 0));
-      this.a.put(paramString, paramAppInterface);
+      this.jdField_a_of_type_JavaUtilHashMap.put("0", new BaseAddress("不限", "0", 0));
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramAppInterface);
     }
     for (;;)
     {
@@ -144,7 +156,7 @@ public class AddressData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.data.AddressData
  * JD-Core Version:    0.7.0.1
  */

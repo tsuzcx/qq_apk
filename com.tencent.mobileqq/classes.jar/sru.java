@@ -1,29 +1,32 @@
-import android.content.res.Resources;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.content.Context;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
 
 public class sru
-  implements Runnable
+  implements View.OnClickListener
 {
-  public sru(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public sru(LimitWordCountEditText paramLimitWordCountEditText) {}
   
-  public void run()
+  public final void onClick(View paramView)
   {
-    this.a.f = false;
-    if (!this.a.jdField_c_of_type_Boolean) {
-      this.a.b.setVisibility(0);
+    if (!LimitWordCountEditText.a(this.a).hasFocus())
+    {
+      LimitWordCountEditText.a(this.a).requestFocus();
+      LimitWordCountEditText.a(this.a).setSelection(LimitWordCountEditText.a(this.a).getText().length());
     }
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, this.a.getResources().getDimension(2131558775), 0.0F);
-    localTranslateAnimation.setDuration(300L);
-    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.a.jdField_c_of_type_AndroidWidgetRelativeLayout.startAnimation(localTranslateAnimation);
+    paramView = (InputMethodManager)this.a.getContext().getSystemService("input_method");
+    if (paramView != null) {
+      paramView.showSoftInput(LimitWordCountEditText.a(this.a), 2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sru
  * JD-Core Version:    0.7.0.1
  */

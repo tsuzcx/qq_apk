@@ -1,31 +1,24 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils.WatermarkVideoRunnable;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
 
 public class vmx
-  implements DialogInterface.OnKeyListener
+  extends wrj
 {
-  public vmx(AIOGalleryScene paramAIOGalleryScene) {}
+  public vmx(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void a(int paramInt, View paramView, Object paramObject, wtq paramwtq)
   {
-    if (paramInt == 4)
+    if ((paramObject instanceof QQUserUIItem))
     {
-      this.a.o = true;
-      AIOGalleryScene.a(this.a).dismiss();
-      if (AIOGalleryScene.a(this.a) != null) {
-        AIOGalleryScene.a(this.a).a();
-      }
+      paramView = (QQUserUIItem)paramObject;
+      uqn.a(this.a.a, 10, paramView.uid);
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmx
  * JD-Core Version:    0.7.0.1
  */

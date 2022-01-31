@@ -1,28 +1,23 @@
-import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupWelcomeFragment;
 
 public class addf
-  implements INetEventHandler
+  implements View.OnClickListener
 {
-  public addf(MPcFileModel paramMPcFileModel) {}
+  public addf(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (AppNetConnInfo.isWifiConn())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MPcFileModel<FileAssistant>[MPFile]", 2, "网络切换到Wifi网络");
-      }
-      QQToast.a(this.a.a, 2131427641, 0).a();
-    }
+    aujo.a("0X800A22D");
+    PublicFragmentActivity.a(this.a.getActivity(), MsgBackupWelcomeFragment.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     addf
  * JD-Core Version:    0.7.0.1
  */

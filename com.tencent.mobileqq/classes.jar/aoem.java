@@ -1,88 +1,55 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.MarkDrawable;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aoem
-  implements Animator.AnimatorListener
+  implements aoeq
 {
-  public aoem(MarkDrawable paramMarkDrawable) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "onAnimationCancel: mState:" + MarkDrawable.c(this.a) + " isrun:" + MarkDrawable.a(this.a));
-    }
-    if (this.a.isRunning())
-    {
-      MarkDrawable.e(this.a, MarkDrawable.c(this.a));
-      if (MarkDrawable.c(this.a) != 2) {
-        break label105;
-      }
-      this.a.a(3);
-    }
-    for (;;)
-    {
-      MarkDrawable.a(this.a, false);
-      return;
-      label105:
-      if (MarkDrawable.c(this.a) == 4) {
-        this.a.a(5);
-      } else if (MarkDrawable.c(this.a) == 5) {
-        this.a.a(1);
-      }
-    }
+    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131692447);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "onAnimationEnd: mState:" + MarkDrawable.c(this.a) + " isrun:" + MarkDrawable.a(this.a));
-    }
-    if (this.a.isRunning())
+    boolean bool2 = true;
+    Context localContext = paramView.getContext();
+    boolean bool1;
+    if (!((BaseActivity)paramView.getContext()).isInMultiWindow())
     {
-      MarkDrawable.d(this.a, MarkDrawable.c(this.a));
-      if (MarkDrawable.c(this.a) != 2) {
-        break label105;
+      bool1 = true;
+      if (!(localContext instanceof BaseActivity)) {
+        break label121;
       }
-      this.a.a(3);
+      if (((BaseActivity)localContext).isInMultiWindow()) {
+        break label116;
+      }
+      bool1 = bool2;
     }
+    label116:
+    label121:
     for (;;)
     {
-      MarkDrawable.a(this.a, false);
+      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      bivc.a((Activity)localContext, paramView.getAccount(), null, -1, bool1);
+      bivo.b(paramView, 6, 0);
+      bivs.a(paramView.getCurrentAccountUin());
+      azqs.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 2, 0, "", "", "", "");
       return;
-      label105:
-      if (MarkDrawable.c(this.a) == 4)
-      {
-        this.a.a(0);
-      }
-      else if (MarkDrawable.c(this.a) == 5)
-      {
-        this.a.a(1);
-        MarkDrawable.a(this.a, 0);
-      }
-      else if (MarkDrawable.c(this.a) == 6)
-      {
-        this.a.a(2);
-      }
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "onAnimationStart: mState:" + MarkDrawable.c(this.a) + " isrun:" + MarkDrawable.a(this.a));
-    }
-    if (this.a.isRunning()) {
-      MarkDrawable.c(this.a, MarkDrawable.c(this.a));
+      bool1 = false;
+      break;
+      bool1 = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoem
  * JD-Core Version:    0.7.0.1
  */

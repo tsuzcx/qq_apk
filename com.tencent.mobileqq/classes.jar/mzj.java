@@ -1,38 +1,23 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView.MatrixTouchListener;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.biz.PoiMapActivity;
 
 public class mzj
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnTouchListener
 {
-  private final PublicAccountImageView.MatrixTouchListener jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView$MatrixTouchListener;
+  public mzj(PoiMapActivity paramPoiMapActivity, InputMethodManager paramInputMethodManager) {}
   
-  public mzj(PublicAccountImageView paramPublicAccountImageView, PublicAccountImageView.MatrixTouchListener paramMatrixTouchListener)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView$MatrixTouchListener = paramMatrixTouchListener;
-  }
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     return false;
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
-    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mzj
  * JD-Core Version:    0.7.0.1
  */

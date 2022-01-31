@@ -1,42 +1,39 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import aidu;
-import aidv;
-import aidw;
-import android.content.Context;
+import alof;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
 import android.util.Base64;
+import awci;
+import axoc;
+import axpm;
+import azkw;
+import azla;
+import baub;
+import baue;
+import bavg;
+import bdcs;
+import bdhb;
+import bdin;
+import bhpp;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Content;
-import com.tencent.mobileqq.olympic.utils.OlympicUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.qmcf.QmcfManager;
-import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.NetworkCenter;
-import com.tencent.mobileqq.util.JSONUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.singleupdate.MD5FileUtil;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -47,13 +44,11 @@ import org.json.JSONObject;
 
 public class RecentDanceConfigMgr
 {
-  private static AtomicReference a;
-  private static volatile boolean c;
-  private static boolean d;
-  public int a;
-  public HashMap a;
+  private static AtomicReference<RecentDanceConfigMgr> a;
+  private static volatile boolean b;
+  private static boolean c;
+  public HashMap<String, RecentDanceConfigMgr.DItemInfo> a;
   public boolean a;
-  public boolean b;
   
   static
   {
@@ -70,11 +65,6 @@ public class RecentDanceConfigMgr
     return BaseApplicationImpl.getApplication().getSharedPreferences("video_dance_filter_cfg", 4).getInt("video_dance_version_key", 0);
   }
   
-  private static int a(AppInterface paramAppInterface, String paramString)
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("video_dance_red_dot_cfg", 4).getInt(paramString + paramAppInterface.getCurrentAccountUin(), 0);
-  }
-  
   public static int a(QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig)
   {
     int k = a();
@@ -89,7 +79,7 @@ public class RecentDanceConfigMgr
         if (paramQQAppInterface != null) {
           if (paramQQAppInterface.compress.get() == 1)
           {
-            paramQQAppInterface = OlympicUtil.a(paramQQAppInterface.content.get().toByteArray());
+            paramQQAppInterface = awci.a(paramQQAppInterface.content.get().toByteArray());
             if (paramQQAppInterface == null) {}
           }
         }
@@ -217,7 +207,7 @@ public class RecentDanceConfigMgr
     {
       return (RecentDanceConfigMgr)jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
       label52:
-      b((String)localObject);
+      c((String)localObject);
     }
   }
   
@@ -233,34 +223,11 @@ public class RecentDanceConfigMgr
   
   private static void a()
   {
-    if (!c)
+    if (!b)
     {
-      c = true;
-      ThreadManager.post(new aidw(), 5, null, true);
+      b = true;
+      ThreadManager.post(new RecentDanceConfigMgr.3(), 5, null, true);
     }
-  }
-  
-  public static void a(AppInterface paramAppInterface)
-  {
-    a(paramAppInterface, "video_dance_red_dot_version_show");
-  }
-  
-  public static void a(AppInterface paramAppInterface, String paramString)
-  {
-    RecentDanceConfigMgr localRecentDanceConfigMgr = a();
-    if (localRecentDanceConfigMgr == null) {
-      QLog.e("RecentDanceConfigMgr", 2, "saveClickedRedDot mgr=null");
-    }
-    boolean bool;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("RecentDanceConfigMgr", 2, "saveClickedRedDot showRedPoint=" + localRecentDanceConfigMgr.b + " redPointVersion=" + localRecentDanceConfigMgr.jdField_a_of_type_Int);
-      }
-      bool = a(paramAppInterface, localRecentDanceConfigMgr.jdField_a_of_type_Int, paramString);
-    } while (!QLog.isColorLevel());
-    QLog.d("RecentDanceConfigMgr", 2, "saveClickedRedDot success=" + bool);
   }
   
   public static void a(String paramString)
@@ -285,20 +252,6 @@ public class RecentDanceConfigMgr
     return false;
   }
   
-  public static boolean a(Context paramContext)
-  {
-    if (!PtvFilterSoLoad.a(paramContext)) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while (CaptureUtil.jdField_a_of_type_Int != 1);
-      paramContext = new File(CapturePtvTemplateManager.a, "ptv_template_new.cfg");
-    } while ((!paramContext.exists()) || (TextUtils.isEmpty(CapturePtvTemplateManager.a(paramContext))));
-    return true;
-  }
-  
   public static boolean a(AppInterface paramAppInterface)
   {
     Object localObject = a();
@@ -316,7 +269,7 @@ public class RecentDanceConfigMgr
     {
       localObject = (RecentDanceConfigMgr.DItemInfo)((RecentDanceConfigMgr)localObject).jdField_a_of_type_JavaUtilHashMap.get("plus");
       if (localObject == null) {
-        break label237;
+        break label234;
       }
       if (QLog.isColorLevel()) {
         QLog.d("RecentDanceConfigMgr", 2, "needShowDanceInPlus plus.show=" + ((RecentDanceConfigMgr.DItemInfo)localObject).show);
@@ -330,7 +283,7 @@ public class RecentDanceConfigMgr
           }
           return false;
         }
-        if ((((RecentDanceConfigMgr.DItemInfo)localObject).showName == null) || ("".equals(((RecentDanceConfigMgr.DItemInfo)localObject).showName)))
+        if (TextUtils.isEmpty(((RecentDanceConfigMgr.DItemInfo)localObject).showName.trim()))
         {
           if (QLog.isColorLevel()) {
             QLog.d("RecentDanceConfigMgr", 2, "needShowDanceInPlus item.showName=null or space");
@@ -338,9 +291,10 @@ public class RecentDanceConfigMgr
           return false;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("RecentDanceConfigMgr", 2, "needShowDanceInPlus sTemplateFileOk=" + d);
+          QLog.d("RecentDanceConfigMgr", 2, "needShowDanceInPlus sTemplateFileOk=" + c);
         }
-        if (d) {
+        b();
+        if (c) {
           return a(paramAppInterface, (RecentDanceConfigMgr.DItemInfo)localObject);
         }
         a();
@@ -349,23 +303,16 @@ public class RecentDanceConfigMgr
     for (;;)
     {
       return false;
-      label237:
+      label234:
       if (QLog.isColorLevel()) {
         QLog.d("RecentDanceConfigMgr", 2, "needShowDanceInPlus PLUS_PANEL=null");
       }
     }
   }
   
-  private static boolean a(AppInterface paramAppInterface, int paramInt, String paramString)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("video_dance_red_dot_cfg", 4).edit();
-    localEditor.putInt(paramString + paramAppInterface.getCurrentAccountUin(), paramInt);
-    return localEditor.commit();
-  }
-  
   private static boolean a(AppInterface paramAppInterface, RecentDanceConfigMgr.DItemInfo paramDItemInfo)
   {
-    boolean bool = CaptureUtil.a();
+    boolean bool = axpm.a();
     if (QLog.isColorLevel()) {
       QLog.d("RecentDanceConfigMgr", 2, "needShowDanceInPlus supportMediaCodec=" + bool);
     }
@@ -373,7 +320,7 @@ public class RecentDanceConfigMgr
     {
       if (paramDItemInfo.categoryID == 10)
       {
-        bool = ShortVideoGuideUtil.h(paramAppInterface);
+        bool = azla.g(paramAppInterface);
         if (QLog.isColorLevel()) {
           QLog.d("RecentDanceConfigMgr", 2, "needShowDanceInPlus isSupportDance=" + bool);
         }
@@ -382,38 +329,6 @@ public class RecentDanceConfigMgr
       return true;
     }
     return false;
-  }
-  
-  public static boolean a(AppInterface paramAppInterface, int[] paramArrayOfInt)
-  {
-    return a(paramAppInterface, paramArrayOfInt, "video_dance_red_dot_version_show");
-  }
-  
-  private static boolean a(AppInterface paramAppInterface, int[] paramArrayOfInt, String paramString)
-  {
-    RecentDanceConfigMgr localRecentDanceConfigMgr = a();
-    if (localRecentDanceConfigMgr == null) {
-      QLog.e("RecentDanceConfigMgr", 2, "needShowDanceRedDot mgr=null");
-    }
-    int i;
-    do
-    {
-      do
-      {
-        return false;
-        if (QLog.isColorLevel()) {
-          QLog.d("RecentDanceConfigMgr", 2, "needShowDanceRedDot showRedPoint=" + localRecentDanceConfigMgr.b + " redPointVersion=" + localRecentDanceConfigMgr.jdField_a_of_type_Int);
-        }
-      } while ((!localRecentDanceConfigMgr.b) || (localRecentDanceConfigMgr.jdField_a_of_type_Int <= 0));
-      i = a(paramAppInterface, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("RecentDanceConfigMgr", 2, "needShowDanceRedDot[getSpDanceRedDotVersion] currentVersion=" + i);
-      }
-    } while (localRecentDanceConfigMgr.jdField_a_of_type_Int <= i);
-    if (paramArrayOfInt != null) {
-      paramArrayOfInt[0] = localRecentDanceConfigMgr.jdField_a_of_type_Int;
-    }
-    return true;
   }
   
   public static boolean a(String paramString)
@@ -431,47 +346,9 @@ public class RecentDanceConfigMgr
     return localEditor.commit();
   }
   
-  public static RecentDanceConfigMgr.DItemInfo b()
-  {
-    RecentDanceConfigMgr localRecentDanceConfigMgr = b();
-    if (localRecentDanceConfigMgr == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("RecentDanceConfigMgr", 2, "getFloatItemInfo mgr == null");
-      }
-    }
-    while (!localRecentDanceConfigMgr.jdField_a_of_type_Boolean) {
-      return null;
-    }
-    return (RecentDanceConfigMgr.DItemInfo)localRecentDanceConfigMgr.jdField_a_of_type_JavaUtilHashMap.get("float");
-  }
-  
-  private static RecentDanceConfigMgr b()
-  {
-    Object localObject;
-    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get() == null)
-    {
-      localObject = b();
-      if ((localObject != null) && (!"".equals(localObject))) {
-        break label52;
-      }
-      localObject = new RecentDanceConfigMgr();
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.getAndSet(localObject);
-    }
-    for (;;)
-    {
-      return (RecentDanceConfigMgr)jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
-      label52:
-      localObject = b((String)localObject);
-      if (localObject != null) {
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.getAndSet(localObject);
-      }
-    }
-  }
-  
   private static RecentDanceConfigMgr b(String paramString)
   {
     RecentDanceConfigMgr localRecentDanceConfigMgr = new RecentDanceConfigMgr();
-    label516:
     for (;;)
     {
       int i;
@@ -481,23 +358,21 @@ public class RecentDanceConfigMgr
       {
         paramString = new JSONObject(paramString);
         localRecentDanceConfigMgr.jdField_a_of_type_Boolean = paramString.optBoolean("showEntrance", false);
-        localRecentDanceConfigMgr.b = paramString.optBoolean("showRedPoint", false);
-        localRecentDanceConfigMgr.jdField_a_of_type_Int = paramString.optInt("redPointVersion", 0);
         paramString = paramString.getJSONArray("ItemsInfo");
         if ((paramString != null) && (paramString.length() > 0))
         {
           i = 0;
           if (i < paramString.length())
           {
-            localDItemInfo = (RecentDanceConfigMgr.DItemInfo)JSONUtils.a(paramString.getJSONObject(i), RecentDanceConfigMgr.DItemInfo.class);
+            localDItemInfo = (RecentDanceConfigMgr.DItemInfo)bdcs.a(paramString.getJSONObject(i), RecentDanceConfigMgr.DItemInfo.class);
             if (localDItemInfo == null) {
-              break label516;
+              break label492;
             }
             if ((localDItemInfo.icon_url != null) && (!"".equals(localDItemInfo.icon_url)))
             {
               localObject = a(c(), localDItemInfo);
               if (new File((String)localObject).exists()) {
-                break label489;
+                break label465;
               }
               if (localDItemInfo.isContent) {
                 c(localDItemInfo, (String)localObject);
@@ -511,7 +386,7 @@ public class RecentDanceConfigMgr
               {
                 localObject = (RecentDanceConfigMgr.DItemInfo)((RecentDanceConfigMgr)localObject).jdField_a_of_type_JavaUtilHashMap.get("" + localDItemInfo.name);
                 if (localObject == null) {
-                  break label498;
+                  break label474;
                 }
                 if ((TextUtils.isEmpty(((RecentDanceConfigMgr.DItemInfo)localObject).icon_md5)) && (!TextUtils.isEmpty(localDItemInfo.icon_md5))) {
                   localDItemInfo.forceRefresh = true;
@@ -536,7 +411,7 @@ public class RecentDanceConfigMgr
                 }
               }
               localRecentDanceConfigMgr.jdField_a_of_type_JavaUtilHashMap.put(localDItemInfo.name, localDItemInfo);
-              break label516;
+              break label492;
             }
             d(localDItemInfo, (String)localObject);
             continue;
@@ -551,14 +426,15 @@ public class RecentDanceConfigMgr
         }
         localRecentDanceConfigMgr.jdField_a_of_type_JavaUtilHashMap.clear();
       }
-      label489:
+      label465:
       b(localDItemInfo, (String)localObject);
       continue;
-      label498:
+      label474:
       if (QLog.isColorLevel())
       {
         QLog.d("RecentDanceConfigMgr", 2, "loadRecentDanceConfigMgr oldItem=null");
         continue;
+        label492:
         i += 1;
       }
     }
@@ -580,12 +456,19 @@ public class RecentDanceConfigMgr
     {
       try
       {
-        paramString = MD5FileUtil.a(new File(paramString));
+        paramString = bhpp.a(new File(paramString));
         return paramString;
       }
       catch (Exception paramString) {}
     }
     return null;
+  }
+  
+  private static void b()
+  {
+    if (!c) {
+      c = c();
+    }
   }
   
   private static void b(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString)
@@ -615,43 +498,12 @@ public class RecentDanceConfigMgr
   
   private static void b(String paramString)
   {
-    ThreadManager.post(new aidu(paramString), 5, null, true);
-  }
-  
-  public static boolean b()
-  {
-    Object localObject = b();
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RecentDanceConfigMgr", 2, "needShowDanceFloat mgr == null");
-      }
-      return false;
-    }
-    if (((RecentDanceConfigMgr)localObject).jdField_a_of_type_Boolean)
-    {
-      localObject = (RecentDanceConfigMgr.DItemInfo)((RecentDanceConfigMgr)localObject).jdField_a_of_type_JavaUtilHashMap.get("float");
-      if (localObject != null)
-      {
-        if (((RecentDanceConfigMgr.DItemInfo)localObject).categoryID == 10)
-        {
-          if (((RecentDanceConfigMgr.DItemInfo)localObject).show) {
-            return QmcfManager.a().a(2);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("RecentDanceConfigMgr", 2, "hasQmcfEntrance false, show " + ((RecentDanceConfigMgr.DItemInfo)localObject).show);
-          }
-          return false;
-        }
-        return ((RecentDanceConfigMgr.DItemInfo)localObject).show;
-      }
-    }
-    return false;
+    ThreadManager.post(new RecentDanceConfigMgr.1(paramString), 5, null, true);
   }
   
   private static String c()
   {
-    Object localObject = new StringBuilder(AppConstants.aJ);
+    Object localObject = new StringBuilder(alof.aX);
     ((StringBuilder)localObject).append("sv_config_icon");
     ((StringBuilder)localObject).append(File.separator);
     localObject = ((StringBuilder)localObject).toString();
@@ -675,14 +527,14 @@ public class RecentDanceConfigMgr
     Object localObject = Base64.decode(paramDItemInfo.icon_url, 0);
     if (localObject != null)
     {
-      FileUtils.a((byte[])localObject, paramString);
+      bdhb.a((byte[])localObject, paramString);
       if (new File(paramString).exists())
       {
         localObject = b(paramString);
         if ((localObject != null) && (!"".equals(localObject)) && (((String)localObject).equalsIgnoreCase(paramDItemInfo.icon_md5))) {
           break label68;
         }
-        FileUtils.d(paramString);
+        bdhb.d(paramString);
       }
     }
     return;
@@ -690,20 +542,33 @@ public class RecentDanceConfigMgr
     b(paramDItemInfo, paramString);
   }
   
+  private static void c(String paramString)
+  {
+    paramString = b(paramString);
+    if (paramString != null) {
+      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.getAndSet(paramString);
+    }
+  }
+  
+  private static boolean c()
+  {
+    return new File(axoc.a, "ptv_template_new.cfg").exists();
+  }
+  
   private static void d(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString)
   {
-    HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new aidv(paramDItemInfo, paramString);
-    localHttpNetReq.jdField_a_of_type_JavaLangString = paramDItemInfo.icon_url;
-    localHttpNetReq.jdField_a_of_type_Int = 0;
-    localHttpNetReq.jdField_c_of_type_JavaLangString = (paramString + "_temp");
-    localHttpNetReq.jdField_c_of_type_Int = NetworkUtil.a(NetworkCenter.a().a());
+    baub localbaub = new baub();
+    localbaub.jdField_a_of_type_Baug = new azkw(paramDItemInfo, paramString);
+    localbaub.jdField_a_of_type_JavaLangString = paramDItemInfo.icon_url;
+    localbaub.jdField_a_of_type_Int = 0;
+    localbaub.jdField_c_of_type_JavaLangString = (paramString + "_temp");
+    localbaub.jdField_c_of_type_Int = bdin.a(bavg.a().a());
     try
     {
       paramString = BaseApplicationImpl.getApplication().getRuntime();
       if (QQAppInterface.class.isInstance(paramString))
       {
-        ((QQAppInterface)paramString).getNetEngine(0).a(localHttpNetReq);
+        ((QQAppInterface)paramString).getNetEngine(0).a(localbaub);
         if (QLog.isColorLevel()) {
           QLog.i("RecentDanceConfigMgr", 2, "processNetWork url: " + paramDItemInfo.icon_url);
         }
@@ -716,15 +581,10 @@ public class RecentDanceConfigMgr
       QLog.i("RecentDanceConfigMgr", 2, "processNetWork[Exception] url: " + paramDItemInfo.icon_url, paramString);
     }
   }
-  
-  private static boolean d()
-  {
-    return new File(CapturePtvTemplateManager.a, "ptv_template_new.cfg").exists();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr
  * JD-Core Version:    0.7.0.1
  */

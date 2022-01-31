@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.richmedia.capture.gesture.GL3DGesture;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.GameEventConsumer.MotionEventData;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.GameplayEngine;
-
 public class ahkm
-  implements Runnable
 {
-  public ahkm(GL3DGesture paramGL3DGesture, GameEventConsumer.MotionEventData paramMotionEventData) {}
+  public String a;
+  public String b;
   
-  public void run()
+  public ahkm(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureGL3DGesture.a.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialGameEventConsumer$MotionEventData);
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahkm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
-import android.os.Handler;
-import com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
 
 public class adui
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
+  public adui(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
   
-  public adui(HuayangPluginLauncher paramHuayangPluginLauncher) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Int += 20;
-    if (this.jdField_a_of_type_Int < 80) {
-      HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher).postDelayed(this, 300L);
-    }
+    paramDialogInterface.dismiss();
+    RegisterChooseLoginActivity.a(this.a, true);
+    RegisterChooseLoginActivity.a(this.a, true);
+    azqs.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 0, 0, "", "", "", "");
+    azqs.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 1, 0, "", "", "", "");
+    azqs.a(this.a.app, "new_reg", "next_ask", "new_clk", "", 1, "");
   }
 }
 

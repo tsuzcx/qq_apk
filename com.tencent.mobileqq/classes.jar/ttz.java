@@ -1,42 +1,22 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
-import com.tencent.qphone.base.util.QLog;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import feedcloud.FeedCloudMeta.StTagInfo;
 
-public class ttz
-  implements View.OnClickListener
+class ttz
+  implements Observer<ubz<FeedCloudMeta.StTagInfo>>
 {
-  public ttz(SubAccountBindActivity paramSubAccountBindActivity) {}
+  ttz(tty paramtty) {}
   
-  public void onClick(View paramView)
+  public void a(@Nullable ubz<FeedCloudMeta.StTagInfo> paramubz)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onAddAccountClick.onClick:add account");
-    }
-    paramView = (SubAccountManager)this.a.app.getManager(60);
-    if (paramView != null) {}
-    for (int i = paramView.a();; i = 0)
-    {
-      if (i < 2)
-      {
-        paramView = new Intent(this.a, SubLoginActivity.class);
-        paramView.putExtra("fromWhere", this.a.b);
-        this.a.startActivity(paramView);
-        return;
-      }
-      SubAccountControll.a(this.a.app, this.a);
-      return;
+    if (paramubz != null) {
+      tty.a(this.a, (FeedCloudMeta.StTagInfo)paramubz.a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ttz
  * JD-Core Version:    0.7.0.1
  */

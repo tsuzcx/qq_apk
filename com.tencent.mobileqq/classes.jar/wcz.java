@@ -1,24 +1,31 @@
-import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar;
-import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBarData;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class wcz
-  implements Runnable
+class wcz
+  extends nac
 {
-  public wcz(LightalkBlueTipsBar paramLightalkBlueTipsBar) {}
+  wcz(wcv paramwcv, boolean paramBoolean) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    LightalkBlueTipsBarData localLightalkBlueTipsBarData = LightalkBlueTipsBarData.a();
-    if (localLightalkBlueTipsBarData != null)
+    if (paramInt != 0)
     {
-      this.a.a = localLightalkBlueTipsBarData.d;
-      this.a.b = localLightalkBlueTipsBarData.e;
+      paramArrayOfByte = this.a;
+      if (!this.b) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramArrayOfByte.a(5, bool);
+        this.a.a(0, this.a.a.getString(2131721096));
+        return;
+      }
     }
+    ((ulu)this.a.a.app.getManager(181)).c(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wcz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,84 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.utils.AlbumUtil;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class rgc
-  implements View.OnClickListener
+  extends pen
 {
-  public rgc(AccountManageActivity paramAccountManageActivity) {}
+  private rgc(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004038", "0X8004038", 0, 0, String.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), "", "", "");
-    if (!PhoneNumLoginImpl.a().a(this.a.app, this.a)) {}
+    VideoFeedsPlayActivity.a("handleDoFavoriteResult isSuccess = " + paramBoolean + ", operationType = " + paramInt + ", cid = " + paramString2);
+    if (TextUtils.isEmpty(paramString1)) {}
     do
     {
-      do
-      {
-        return;
-        AccountManageActivity.a(this.a, SubAccountControll.a(this.a.app));
-        if (!this.a.c) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("AccountManage", 2, "onClick v.hashCode()" + paramView.hashCode());
       return;
-      paramView = paramView.getTag();
-      if (paramView != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("Switch_Account", 2, "switch a non-existing account");
-    return;
-    int i = ((Integer)paramView).intValue();
-    paramView = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(i);
-    if (QLog.isColorLevel()) {
-      QLog.d("Switch_Account", 2, "switch uin:" + paramView.getUin());
-    }
-    if ((paramView != null) && (!paramView.getUin().equals(this.a.app.getCurrentAccountUin())))
+      paramString1 = VideoFeedsRecommendFragment.a(this.a).a(paramString1);
+    } while (paramString1 == null);
+    if (paramBoolean)
     {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X80077DA", "0X80077DA", 0, 0, "", "", "", "");
-      this.a.f();
-      this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = paramView;
-      AccountManageActivity.b(this.a, true);
-      AccountManageActivity.c(this.a, true);
-      this.a.app.switchAccount(paramView, null);
-      SubAccountAssistantForward.a(this.a.app, this.a);
+      if (paramInt != 1) {
+        break label204;
+      }
+      paramString1.a.add(paramString2);
+      if (!paramString1.d) {
+        new ArrayList(paramString1.a);
+      }
     }
-    AlbumUtil.b();
+    label103:
+    if (paramString1.e)
+    {
+      paramString2 = new QQToast(this.a.getActivity().getApplicationContext());
+      paramString2.d(2000);
+      if (!paramBoolean) {
+        break label212;
+      }
+      paramString2.a(QQToast.a(2));
+      paramString2.c(2131692402);
+      paramString2.b(this.a.getActivity().getApplicationContext().getResources().getDimensionPixelSize(2131298914) - (int)bdgz.a(this.a.getActivity().getApplicationContext(), 5.0F));
+    }
+    for (;;)
+    {
+      paramString1.e = false;
+      return;
+      label204:
+      if (paramInt != 2) {
+        break label103;
+      }
+      break label103;
+      break;
+      label212:
+      paramString2.a(QQToast.a(1));
+      paramString2.c(2131692403);
+      paramString2.b(this.a.getActivity().getApplicationContext().getResources().getDimensionPixelSize(2131298914) - (int)bdgz.a(this.a.getActivity().getApplicationContext(), 5.0F));
+      paramString1.d = false;
+    }
+  }
+  
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, ArrayList<String> paramArrayList)
+  {
+    VideoFeedsPlayActivity.a("handleFavoriteStatus isSuccess = " + paramBoolean1 + ", rowkey = " + paramString + ", isFavorite = " + paramBoolean2);
+    if ((!paramBoolean1) || (TextUtils.isEmpty(paramString))) {}
+    do
+    {
+      return;
+      paramString = VideoFeedsRecommendFragment.a(this.a).a(paramString);
+    } while (paramString == null);
+    paramString.d = paramBoolean2;
+    paramString.a.addAll(paramArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rgc
  * JD-Core Version:    0.7.0.1
  */

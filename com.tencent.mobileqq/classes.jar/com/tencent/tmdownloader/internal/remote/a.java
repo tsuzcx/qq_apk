@@ -31,11 +31,13 @@ public abstract interface a
   
   public abstract String d(String paramString);
   
+  public abstract void d();
+  
   public abstract boolean e(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.remote.a
  * JD-Core Version:    0.7.0.1
  */

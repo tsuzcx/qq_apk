@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/bqg" android:background="@drawable/b5z" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/bqh" android:background="@drawable/nq" android:layout_width="62.0dip" android:layout_height="fill_parent" android:alpha="0.75" />
+        <RelativeLayout android:background="@drawable/b5t" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/bqi" android:layout_marginLeft="@dimen/a2e" style="@style/if" />
+            <ImageView android:id="@id/bqj" android:layout_marginRight="@dimen/a2e" android:layout_alignParentRight="true" style="@style/if" />
+            <ImageView android:id="@id/bqk" android:layout_marginLeft="@dimen/a2e" android:layout_alignParentBottom="true" style="@style/if" />
+            <ImageView android:id="@id/bql" android:layout_marginRight="@dimen/a2e" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/if" />
+            <ImageView android:id="@id/bqm" android:layout_marginTop="@dimen/a2e" style="@style/ig" />
+            <ImageView android:id="@id/bqn" android:layout_marginBottom="@dimen/a2e" android:layout_alignParentBottom="true" style="@style/ig" />
+            <ImageView android:id="@id/bqo" android:layout_marginTop="@dimen/a2e" android:layout_alignParentRight="true" style="@style/ig" />
+            <ImageView android:id="@id/bqp" android:layout_marginBottom="@dimen/a2e" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/ig" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/bqq" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+</merge>

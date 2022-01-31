@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.Contacts;
 
-class cek
-  implements Runnable
+public class cek
+  implements DialogInterface.OnDismissListener
 {
-  cek(cej paramcej, long paramLong) {}
+  public cek(Contacts paramContacts) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_Long == Long.parseLong(this.jdField_a_of_type_Cej.a.a.a)) {
-      ChatActivity.a(this.jdField_a_of_type_Cej.a);
-    }
+    this.a.a = null;
   }
 }
 

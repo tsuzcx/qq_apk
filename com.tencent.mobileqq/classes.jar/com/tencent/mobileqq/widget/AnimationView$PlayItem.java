@@ -24,28 +24,32 @@ public class AnimationView$PlayItem
   
   protected static PlayItem a(JSONObject paramJSONObject)
   {
+    int i = 1;
     if (paramJSONObject == null) {
       return null;
     }
-    int i = paramJSONObject.optInt("frame");
-    if (i > 0) {
-      return new PlayItem(i);
+    int j = paramJSONObject.optInt("frame");
+    if (j > 0) {
+      return new PlayItem(j);
     }
     int k = paramJSONObject.optInt("from");
     int m = paramJSONObject.optInt("to");
-    int j = paramJSONObject.optInt("cycle");
-    if ((m > 0) && (k > 0) && (m > k))
-    {
-      i = j;
-      if (j < 0) {
-        i = 1;
+    j = paramJSONObject.optInt("cycle", 1);
+    if ((m > 0) && (k > 0) && (m > k)) {
+      if (j >= 0) {
+        break label84;
       }
-      return new PlayItem(k, m, i);
     }
-    return null;
+    for (;;)
+    {
+      return new PlayItem(k, m, i);
+      return null;
+      label84:
+      i = j;
+    }
   }
   
-  public ArrayList getFrames()
+  public ArrayList<Integer> getFrames()
   {
     ArrayList localArrayList = new ArrayList();
     if (this.mFrame > 0) {
@@ -68,7 +72,7 @@ public class AnimationView$PlayItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AnimationView.PlayItem
  * JD-Core Version:    0.7.0.1
  */

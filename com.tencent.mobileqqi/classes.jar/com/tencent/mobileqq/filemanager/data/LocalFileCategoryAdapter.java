@@ -62,27 +62,27 @@ public class LocalFileCategoryAdapter
     {
       Object localObject2 = new LocalFileCategoryAdapter.LocalFileItemHolder(this);
       localObject1 = paramView;
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903498, paramViewGroup, false);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903500, paramViewGroup, false);
       localObject1 = paramView;
       paramView.setTag(localObject2);
       localObject1 = paramView;
-      ((LocalFileCategoryAdapter.LocalFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131232737));
+      ((LocalFileCategoryAdapter.LocalFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131232740));
       localObject1 = paramView;
       ((LocalFileCategoryAdapter.LocalFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileCategoryBrowserActivity.a);
       localObject1 = paramView;
       ((LocalFileCategoryAdapter.LocalFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localObject2);
       localObject1 = paramView;
-      ((LocalFileCategoryAdapter.LocalFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131232738));
+      ((LocalFileCategoryAdapter.LocalFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131232741));
       localObject1 = paramView;
-      ((LocalFileCategoryAdapter.LocalFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131232739));
+      ((LocalFileCategoryAdapter.LocalFileItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131232742));
       localObject1 = paramView;
-      ((LocalFileCategoryAdapter.LocalFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232740));
+      ((LocalFileCategoryAdapter.LocalFileItemHolder)localObject2).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232743));
       localObject1 = paramView;
-      ((LocalFileCategoryAdapter.LocalFileItemHolder)localObject2).b = ((TextView)paramView.findViewById(2131232742));
+      ((LocalFileCategoryAdapter.LocalFileItemHolder)localObject2).b = ((TextView)paramView.findViewById(2131232745));
       localObject1 = paramView;
-      ((LocalFileCategoryAdapter.LocalFileItemHolder)localObject2).c = ((TextView)paramView.findViewById(2131232743));
+      ((LocalFileCategoryAdapter.LocalFileItemHolder)localObject2).c = ((TextView)paramView.findViewById(2131232746));
       localObject1 = paramView;
-      ((LocalFileCategoryAdapter.LocalFileItemHolder)localObject2).d = ((TextView)paramView.findViewById(2131231881));
+      ((LocalFileCategoryAdapter.LocalFileItemHolder)localObject2).d = ((TextView)paramView.findViewById(2131231883));
       paramViewGroup = (ViewGroup)localObject2;
       try
       {

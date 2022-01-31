@@ -1,44 +1,72 @@
-import android.view.View;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.content.Context;
+import android.graphics.Bitmap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public final class akaz
-  implements URLDrawable.URLDrawableListener
+class akaz
+  implements bdbc
 {
-  public akaz(View paramView) {}
+  protected bdbb a;
+  boolean jdField_a_of_type_Boolean = true;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public akaz(akar paramakar, Context paramContext, AppInterface paramAppInterface)
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
+    this.jdField_a_of_type_Bdbb = new bdbb(paramContext, paramAppInterface);
+    this.jdField_a_of_type_Bdbb.a(this);
+  }
+  
+  private Bitmap a(String paramString, int paramInt1, byte paramByte, int paramInt2)
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_Bdbb == null) {
+      localObject = null;
     }
-    if (this.a != null) {
-      this.a.postInvalidate();
+    Bitmap localBitmap;
+    do
+    {
+      return localObject;
+      localBitmap = this.jdField_a_of_type_Bdbb.b(paramInt1, paramString, paramInt2);
+      localObject = localBitmap;
+    } while (localBitmap != null);
+    QLog.w("FriendTeamListInnerFrameBuddyListAdapter", 1, "requestDecodeFace, uin[" + paramString + "]");
+    this.jdField_a_of_type_Bdbb.a(paramString, paramInt1, true, paramByte);
+    return bdhj.a();
+  }
+  
+  public Bitmap a(TroopMemberInfo paramTroopMemberInfo)
+  {
+    return a(paramTroopMemberInfo.memberuin, 1, (byte)0, 0);
+  }
+  
+  public void a()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Bdbb != null)
+      {
+        this.jdField_a_of_type_Bdbb.d();
+        this.jdField_a_of_type_Bdbb = null;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        this.jdField_a_of_type_Bdbb = null;
+      }
     }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
+    QLog.w("FriendTeamListInnerFrameBuddyListAdapter", 1, "onDecodeTaskCompleted, uin[" + paramString + "]");
+    if (this.jdField_a_of_type_Boolean) {
+      return;
     }
-    if (this.a != null) {
-      this.a.postInvalidate();
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, UIUtils.a(BaseApplicationImpl.getContext(), 47.0F), UIUtils.a(BaseApplicationImpl.getContext(), 14.0F));
-    }
-    if (this.a != null) {
-      this.a.postInvalidate();
-    }
+    akar.a(this.jdField_a_of_type_Akar, paramString, paramBitmap);
   }
 }
 

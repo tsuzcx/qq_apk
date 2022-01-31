@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class im_msg_body$GeneralFlags
-  extends MessageMicro
+  extends MessageMicro<GeneralFlags>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField babyq_guide_msg_cookie = PBField.initBytes(ByteStringMicro.EMPTY);

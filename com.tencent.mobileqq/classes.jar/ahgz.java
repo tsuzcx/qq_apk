@@ -1,65 +1,68 @@
-import android.media.AudioRecord;
-import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
-import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture.AudioCaptureListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class ahgz
-  implements Runnable
+class ahgz
+  implements View.OnClickListener
 {
-  public ahgz(AudioCapture paramAudioCapture) {}
+  ahgz(ahgy paramahgy) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    if (AudioCapture.a(this.a) != null)
+    nry localnry = (nry)paramView.getTag();
+    paramView = (alzl)this.a.a.a.getManager(56);
+    if ((paramView != null) && (paramView.c(localnry.jdField_a_of_type_JavaLangString) != null)) {}
+    for (boolean bool = true;; bool = false)
     {
-      AudioCapture.a(this.a).a = false;
-      AudioCapture.a(this.a).b = true;
-      AudioCapture.a(this.a).interrupt();
-    }
-    try
-    {
-      AudioCapture.a(this.a).join();
-    }
-    catch (InterruptedException localException1)
-    {
-      try
+      if (bool)
       {
-        if (AudioCapture.a(this.a) != null) {
-          AudioCapture.a(this.a).f();
+        paramView = new Intent(this.a.a.a(), ChatActivity.class);
+        if (localnry.jdField_a_of_type_Boolean)
+        {
+          paramView.putExtra("uintype", 1008);
+          paramView.putExtra("uin", localnry.jdField_a_of_type_JavaLangString);
+          paramView.putExtra("uinname", localnry.b);
+          paramView.putExtra("start_time", System.currentTimeMillis());
+          this.a.a.a().startActivity(paramView);
+          if (!ahgy.a(this.a)) {
+            break label360;
+          }
         }
-        this.a.a.stop();
       }
-      catch (Exception localException1)
+      label360:
+      for (paramView = "houtai";; paramView = "duan")
       {
-        try
+        nrt.a(this.a.a.a, localnry.jdField_a_of_type_JavaLangString, "0X8007404", "0X8007404", 0, 0, "", "", paramView, "");
+        if (QLog.isColorLevel())
         {
-          for (;;)
-          {
-            this.a.a.release();
-            this.a.a = null;
-            return;
-            localInterruptedException = localInterruptedException;
-            localInterruptedException.printStackTrace();
-            continue;
-            localException1 = localException1;
-            QLog.e("AudioCapture", 2, localException1, new Object[0]);
-            if (AudioCapture.a(this.a) != null) {
-              AudioCapture.a(this.a).b(-5);
-            }
-          }
+          StringBuilder localStringBuilder = new StringBuilder("clickRecommendAccount->");
+          localStringBuilder.append("source:").append(paramView);
+          localStringBuilder.append(", puin:").append(localnry.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(", isFollow:").append(bool);
+          QLog.d("ClassificationSearchFragment", 2, localStringBuilder.toString());
         }
-        catch (Exception localException2)
+        return;
+        paramView.putExtra("uintype", 1024);
+        break;
+        if (localnry.jdField_a_of_type_Boolean)
         {
-          for (;;)
-          {
-            QLog.e("AudioCapture", 2, localException2, new Object[0]);
-            if (AudioCapture.a(this.a) != null) {
-              AudioCapture.a(this.a).b(-5);
-            }
-          }
+          paramView = new Intent(this.a.a.a(), AccountDetailActivity.class);
+          paramView.putExtra("uintype", 1008);
+          paramView.putExtra("source", 118);
+        }
+        for (;;)
+        {
+          paramView.putExtra("uin", localnry.jdField_a_of_type_JavaLangString);
+          paramView.addFlags(67108864);
+          this.a.a.a().startActivity(paramView);
+          break;
+          paramView = ndv.a(this.a.a.a(), null, "", false, -1, false, -1);
         }
       }
     }
@@ -67,7 +70,7 @@ public class ahgz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahgz
  * JD-Core Version:    0.7.0.1
  */

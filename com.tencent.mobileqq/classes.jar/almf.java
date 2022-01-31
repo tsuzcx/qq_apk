@@ -1,128 +1,231 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.CardHandler;
+import android.widget.EditText;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloLinearLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.data.PublicAccountItem;
-import com.tencent.qidian.data.QidianExternalInfo;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class almf
-  implements View.OnClickListener
+  extends allz
 {
-  private long jdField_a_of_type_Long;
+  public Drawable a;
+  public Drawable b;
   
-  public almf(QidianProfileCardActivity paramQidianProfileCardActivity) {}
-  
-  public void onClick(View paramView)
+  public almf(String paramString)
   {
-    if (paramView == null) {}
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null)) {
+      try
+      {
+        paramString = BaseApplication.getContext().getResources();
+        if (paramString != null)
+        {
+          Bitmap localBitmap1 = (Bitmap)BaseApplicationImpl.sImageHashMap.get("apolloMainInfoDef");
+          Bitmap localBitmap2 = (Bitmap)BaseApplicationImpl.sImageHashMap.get("apolloMainInfoFail");
+          if (localBitmap1 != null) {
+            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(localBitmap1);
+          }
+          while (localBitmap2 != null)
+          {
+            this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(localBitmap2);
+            return;
+            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130837907);
+            BaseApplicationImpl.sImageHashMap.put("apolloMainInfoDef", BitmapFactory.decodeResource(paramString, 2130837907));
+          }
+        }
+        return;
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.e("ApolloMainInfo", 2, paramString.getMessage());
+          return;
+          this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130843340);
+          BaseApplicationImpl.sImageHashMap.put("apolloMainInfoFail", BitmapFactory.decodeResource(paramString, 2130843340));
+          return;
+        }
+      }
+      catch (OutOfMemoryError paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ApolloMainInfo", 2, paramString.getMessage());
+        }
+      }
+    }
+  }
+  
+  public Drawable a(Context paramContext, float paramFloat)
+  {
+    Object localObject = null;
+    paramContext = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData == null) {}
+    String str;
     do
     {
       do
       {
-        do
+        return paramContext;
+        if (this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.status == 0) {
+          return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        }
+        str = Integer.toString(1);
+        if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+          break;
+        }
+        paramContext = URLDrawable.URLDrawableOptions.obtain();
+        localObject = new aldu();
+        ((aldu)localObject).jdField_a_of_type_JavaLangString = (aliu.d + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId + File.separator + "txtImg.png");
+        ((aldu)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.textImg;
+        paramContext.mExtraInfo = localObject;
+        paramContext.mRequestHeight = ApolloLinearLayout.e;
+        paramContext.mRequestWidth = ApolloLinearLayout.e;
+        localObject = aldt.a(true, ((aldu)localObject).jdField_a_of_type_JavaLangString, paramContext, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.textImg);
+        paramContext = (Context)localObject;
+      } while (!QLog.isColorLevel());
+      QLog.d("ApolloMainInfo", 2, "decode panel action name =" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionName + " mActionText:" + this.jdField_b_of_type_JavaLangString);
+      return localObject;
+      try
+      {
+        paramContext = new URL("apollo_pic", null, a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData));
+        if (paramContext == null) {
+          return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        }
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        for (;;)
         {
-          do
+          paramContext = (Context)localObject;
+          if (QLog.isColorLevel())
           {
-            do
-            {
-              return;
-              l = System.currentTimeMillis();
-            } while (Math.abs(l - this.jdField_a_of_type_Long) < 1000L);
-            this.jdField_a_of_type_Long = l;
-            paramView = (DataTag)paramView.getTag();
-            switch (paramView.jdField_a_of_type_Int)
-            {
-            default: 
-              return;
-            case 4: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.b(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-              return;
-            case 7: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f();
-              return;
-            case 20: 
-              ReportController.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app, "dc00899", "Qidian", "", "0X8008FEB", "qidianMasterVideo", 1, 1, 0, "1", "1", "", "");
-              if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 6)
-              {
-                ChatActivityUtils.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, 1024, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo.nickname, null, true, null, true, true, null, "from_internal");
-                return;
-              }
-              FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-              return;
-            case 55: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
-              return;
-            case 8: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.d(((Integer)paramView.jdField_a_of_type_JavaLangObject).intValue());
-              return;
-            case 52: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-              return;
-            case 47: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-              return;
-            case 48: 
-              localObject = (String[])paramView.jdField_a_of_type_JavaLangObject;
-              paramView = localObject[0];
-              localObject = localObject[1];
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(paramView, (String)localObject);
-              return;
-            case 49: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-              return;
-            case 50: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a((PublicAccountItem)paramView.jdField_a_of_type_JavaLangObject);
-              return;
-            case 51: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.d(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-              return;
-            case 53: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.d();
-              return;
-            case 54: 
-              paramView = JumpParser.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-            }
-          } while (paramView == null);
-          paramView.b();
-          return;
-          QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-          return;
-          paramView = String.valueOf(paramView.jdField_a_of_type_JavaLangObject);
-        } while ((TextUtils.isEmpty(paramView)) || (!paramView.contains("|")));
-        paramView = paramView.split("\\|");
-      } while ((paramView == null) || (paramView.length != 2));
-      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, paramView[0], paramView[1]);
-      return;
-    } while (QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity));
-    QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, true);
-    if ((this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null))
+            QLog.d("ApolloMainInfo", 2, "getDrawable ,", localMalformedURLException);
+            paramContext = (Context)localObject;
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloMainInfo", 2, "decode panel action name =" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionName);
+        }
+        localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = ApolloLinearLayout.e;
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = ApolloLinearLayout.e;
+        ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = false;
+        localObject = URLDrawable.getDrawable(paramContext, (URLDrawable.URLDrawableOptions)localObject);
+        paramContext = (Context)localObject;
+      }
+    } while (((URLDrawable)localObject).getStatus() == 1);
+    ((URLDrawable)localObject).setTag(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData);
+    ((URLDrawable)localObject).addHeader("apollo_uin", this.jdField_a_of_type_JavaLangString);
+    ((URLDrawable)localObject).addHeader("apollo_tasks", str);
+    return localObject;
+  }
+  
+  public String a(ApolloActionData paramApolloActionData)
+  {
+    if (paramApolloActionData == null) {
+      return "action";
+    }
+    return paramApolloActionData.actionId + "_" + paramApolloActionData.actionName;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData == null) || (paramQQAppInterface == null) || (paramSessionInfo == null)) {}
+    label320:
+    do
     {
-      this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.vQzoneCoverInfo);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloMainInfo", 2, "send apolloInfo actionid=" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId + " input =" + paramEditText.getText().toString());
+      }
+      acjm.a(paramQQAppInterface, paramContext, paramSessionInfo, this);
+      paramContext = "";
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.inputText))
+      {
+        paramEditText = "2";
+        paramContext = paramEditText;
+        if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+        {
+          if (this.d == 0) {
+            paramContext = "6";
+          }
+        }
+        else
+        {
+          if (paramSessionInfo.jdField_a_of_type_Int != 0) {
+            continue;
+          }
+          paramEditText = paramSessionInfo.jdField_a_of_type_JavaLangString;
+          i = Integer.parseInt(paramContext);
+          paramSessionInfo = "" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId;
+          str = "655_" + this.jdField_a_of_type_Int;
+          if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+            break label320;
+          }
+        }
+      }
+      for (paramContext = "0";; paramContext = this.jdField_b_of_type_JavaLangString)
+      {
+        VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "action_sent", paramEditText, i, 0, new String[] { paramSessionInfo, str, paramContext, String.valueOf(System.currentTimeMillis() / 1000L) });
+        return;
+        paramContext = paramEditText;
+        if (this.d != 1) {
+          break;
+        }
+        paramContext = "7";
+        break;
+        if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+        {
+          paramContext = "3";
+          break;
+        }
+        if (this.d == 0)
+        {
+          paramContext = "4";
+          break;
+        }
+        if (this.d != 1) {
+          break;
+        }
+        paramContext = "5";
+        break;
+      }
+    } while (((paramSessionInfo.jdField_a_of_type_Int != 1) && (paramSessionInfo.jdField_a_of_type_Int != 3000)) || (this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.personNum != 0));
+    paramEditText = paramSessionInfo.jdField_a_of_type_JavaLangString;
+    int i = Integer.parseInt(paramContext);
+    int j = ApolloUtil.b(paramSessionInfo.jdField_a_of_type_Int);
+    paramSessionInfo = "" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId;
+    String str = "655_" + this.jdField_a_of_type_Int;
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {}
+    for (paramContext = "0";; paramContext = this.jdField_b_of_type_JavaLangString)
+    {
+      VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "g_action_single_sent", paramEditText, i, j, new String[] { paramSessionInfo, str, paramContext, String.valueOf(System.currentTimeMillis() / 1000L) });
       return;
     }
-    this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(2131430029);
-    paramView = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler;
-    Object localObject = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app.getCurrentAccountUin();
-    String str = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a;
-    long l = ProfileActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne, false);
-    paramView.a((String)localObject, str, 1, 0L, (byte)1, 0L, 0L, new byte[] { 0 }, "", l, 10004, new byte[] { 0 }, (byte)0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     almf
  * JD-Core Version:    0.7.0.1
  */

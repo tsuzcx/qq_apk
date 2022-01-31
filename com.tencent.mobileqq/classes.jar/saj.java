@@ -1,26 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryFileView;
-import com.tencent.mobileqq.adapter.ChatHistoryFileAdapter.HistoryFileItemHolder;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-public class saj
-  implements View.OnClickListener
+public abstract interface saj
 {
-  public saj(ChatHistoryFileView paramChatHistoryFileView) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((paramView.getTag() instanceof String)) {
-      return;
-    }
-    paramView = (FileManagerEntity)((ChatHistoryFileAdapter.HistoryFileItemHolder)paramView.getTag()).a;
-    this.a.a(paramView);
-  }
+  public abstract void a(BaseData paramBaseData);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     saj
  * JD-Core Version:    0.7.0.1
  */

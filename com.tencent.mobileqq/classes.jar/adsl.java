@@ -1,36 +1,76 @@
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
-import com.tencent.mobileqq.hotpic.VideoBaseItem.OnInnerStateChangeListener;
+import MQQ.PrivExtV2Rsp;
+import MQQ.VipUserInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.QQSettingMe.29.1;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import mqq.app.MobileQQ;
 
 public class adsl
-  implements TVK_IMediaPlayer.OnInfoListener
+  extends amft
 {
-  public adsl(VideoBaseItem paramVideoBaseItem) {}
+  public adsl(QQSettingMe paramQQSettingMe) {}
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    switch (paramInt)
+    if ((paramBoolean) && (paramInt >= 0) && (this.a.a != null))
     {
+      Object localObject = this.a.a.getPreferences();
+      if (localObject != null) {
+        ((SharedPreferences)localObject).edit().putInt("key_selfvip_growthvalue", paramInt).commit();
+      }
+      localObject = this.a.a.getCurrentAccountUin();
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoObserver");
+      }
+      this.a.c((String)localObject);
     }
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt == 1) {
+      if (paramBoolean)
+      {
+        paramObject = ((PrivExtV2Rsp)paramObject).vipInfo;
+        if ((paramObject != null) && (paramObject.bUpdate == 1))
+        {
+          paramObject = paramObject.sUri;
+          if (paramObject != null)
+          {
+            QQSettingMe.b(this.a, paramObject);
+            if (QLog.isColorLevel()) {
+              QLog.d("QQSettingRedesign", 2, "vip url = " + paramObject);
+            }
+            paramObject = this.a.a.getApplication().getSharedPreferences(this.a.a.getCurrentAccountUin(), 4).edit().putString("VIPCenter_url_key", paramObject);
+            if (Build.VERSION.SDK_INT >= 9) {
+              break label170;
+            }
+            paramObject.commit();
+          }
+        }
+        paramObject = this.a.a.getCurrentAccountUin();
+        this.a.c(paramObject);
+        this.a.b.post(new QQSettingMe.29.1(this));
+      }
+    }
+    label170:
     do
     {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoBaseItem", 2, "video start buffering !");
+      return;
+      paramObject.apply();
+      break;
+      if (paramInt == 4)
+      {
+        this.a.b.sendEmptyMessage(2);
+        return;
       }
-      if (VideoBaseItem.a(this.a) != null) {
-        VideoBaseItem.a(this.a).a(this.a.b, 0);
-      }
-      this.a.c = 6;
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoBaseItem", 2, "video end buffering !");
-      }
-    } while (VideoBaseItem.a(this.a) == null);
-    VideoBaseItem.a(this.a).a(this.a.b, 1);
-    return false;
+    } while (paramInt != 5);
+    this.a.b.sendMessage(this.a.b.obtainMessage(3, paramObject));
   }
 }
 

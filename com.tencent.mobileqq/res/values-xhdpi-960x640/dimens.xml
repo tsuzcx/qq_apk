@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="e6">12.0sp</dimen>
+    <dimen name="e9">15.0dip</dimen>
+    <dimen name="ea">75.0dip</dimen>
+    <dimen name="eb">5.0dip</dimen>
+    <dimen name="ee">20.0sp</dimen>
+    <dimen name="eg">12.0sp</dimen>
+    <dimen name="ei">5.0dip</dimen>
+    <dimen name="eo">14.0sp</dimen>
+    <dimen name="ep">20.0dip</dimen>
+</resources>

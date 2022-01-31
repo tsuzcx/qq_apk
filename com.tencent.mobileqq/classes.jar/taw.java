@@ -1,29 +1,20 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
+import android.support.annotation.NonNull;
+import android.support.annotation.UiThread;
 
-public class taw
-  implements Runnable
+public abstract interface taw<V extends tat>
 {
-  public taw(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
+  @UiThread
+  public abstract void a();
   
-  public void run()
-  {
-    if (LoginVerifyCodeActivity2.a(this.a) == 1)
-    {
-      LoginVerifyCodeActivity2.a(this.a).setText(2131434277);
-      LoginVerifyCodeActivity2.a(this.a).setEnabled(true);
-      LoginVerifyCodeActivity2.a(this.a).setClickable(true);
-      return;
-    }
-    LoginVerifyCodeActivity2.b(this.a);
-    LoginVerifyCodeActivity2.a(this.a).setText(this.a.getString(2131434277) + "(" + LoginVerifyCodeActivity2.a(this.a) + ")");
-    this.a.b.postDelayed(this, 1000L);
-  }
+  @UiThread
+  public abstract void a(@NonNull V paramV);
+  
+  @UiThread
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     taw
  * JD-Core Version:    0.7.0.1
  */

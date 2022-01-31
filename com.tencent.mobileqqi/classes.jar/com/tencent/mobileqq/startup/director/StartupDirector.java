@@ -2,6 +2,7 @@ package com.tencent.mobileqq.startup.director;
 
 import android.content.Intent;
 import android.os.Build;
+import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
@@ -19,12 +20,13 @@ import com.tencent.mobileqq.activity.qfileJumpActivity;
 import com.tencent.mobileqq.app.GuardManager;
 import com.tencent.mobileqq.app.InjectUtils;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.startup.step.SetPermission;
 import com.tencent.mobileqq.startup.step.Step;
 import com.tencent.mobileqq.utils.QQUtils;
 import com.tencent.qphone.base.util.QLog;
-import gof;
-import gog;
-import goh;
+import gjw;
+import gjx;
+import gjy;
 import java.io.File;
 import java.util.ArrayList;
 import mqq.app.AppActivity;
@@ -88,6 +90,7 @@ public class StartupDirector
   private int A = 0;
   private int B;
   private Handler jdField_a_of_type_AndroidOsHandler;
+  private SetPermission jdField_a_of_type_ComTencentMobileqqStartupStepSetPermission;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   public AppActivity a;
   private Handler jdField_b_of_type_AndroidOsHandler;
@@ -104,20 +107,20 @@ public class StartupDirector
     for (int i1 = 0;; i1 = 3)
     {
       jdField_m_of_type_Int = i1;
-      jdField_a_of_type_ArrayOfInt = new int[] { 1, 8, 7, 14 };
-      jdField_b_of_type_ArrayOfInt = new int[] { 5, 6, 16 };
-      jdField_c_of_type_ArrayOfInt = new int[] { 5 };
-      d = new int[] { 10, 11, 15 };
-      jdField_e_of_type_ArrayOfInt = new int[] { 10, 11, 15 };
-      jdField_f_of_type_ArrayOfInt = new int[] { 6, 16 };
-      jdField_g_of_type_ArrayOfInt = new int[] { 10, 15 };
+      jdField_a_of_type_ArrayOfInt = new int[] { 1, 9, 8, 15 };
+      jdField_b_of_type_ArrayOfInt = new int[] { 6, 7, 17 };
+      jdField_c_of_type_ArrayOfInt = new int[] { 6 };
+      d = new int[] { 11, 12, 16 };
+      jdField_e_of_type_ArrayOfInt = new int[] { 11, 12, 16 };
+      jdField_f_of_type_ArrayOfInt = new int[] { 7, 17 };
+      jdField_g_of_type_ArrayOfInt = new int[] { 11, 16 };
       h = jdField_f_of_type_ArrayOfInt;
-      jdField_i_of_type_ArrayOfInt = new int[] { 5, 10, 13, 9 };
-      j = new int[] { 10, 13 };
-      k = new int[] { 17, 5, 9 };
-      l = new int[] { 12, 5 };
-      jdField_m_of_type_ArrayOfInt = new int[] { 12, 5, 13, 11, 9 };
-      jdField_n_of_type_ArrayOfInt = new int[] { 12, 5, 13, 11, 18 };
+      jdField_i_of_type_ArrayOfInt = new int[] { 6, 11, 14, 10 };
+      j = new int[] { 11, 14 };
+      k = new int[] { 18, 6, 10 };
+      l = new int[] { 13, 6 };
+      jdField_m_of_type_ArrayOfInt = new int[] { 13, 6, 14, 12, 10 };
+      jdField_n_of_type_ArrayOfInt = new int[] { 13, 6, 14, 12, 19 };
       jdField_e_of_type_Boolean = false;
       jdField_f_of_type_Boolean = false;
       jdField_f_of_type_Long = 0L;
@@ -139,30 +142,30 @@ public class StartupDirector
     //   10: istore 4
     //   12: iconst_0
     //   13: istore_2
-    //   14: new 148	java/io/File
+    //   14: new 149	java/io/File
     //   17: dup
     //   18: aload_1
-    //   19: invokevirtual 154	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   19: invokevirtual 155	android/content/Context:getFilesDir	()Ljava/io/File;
     //   22: ldc 27
-    //   24: invokespecial 157	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   24: invokespecial 158	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   27: astore 9
     //   29: iload 4
     //   31: istore_3
     //   32: aload 9
-    //   34: invokevirtual 161	java/io/File:exists	()Z
+    //   34: invokevirtual 162	java/io/File:exists	()Z
     //   37: ifeq +49 -> 86
-    //   40: new 163	java/io/BufferedInputStream
+    //   40: new 164	java/io/BufferedInputStream
     //   43: dup
-    //   44: new 165	java/io/FileInputStream
+    //   44: new 166	java/io/FileInputStream
     //   47: dup
     //   48: aload 9
-    //   50: invokespecial 168	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   53: invokespecial 171	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   50: invokespecial 169	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   53: invokespecial 172	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   56: astore 5
     //   58: aload 5
     //   60: astore_1
     //   61: aload 5
-    //   63: invokevirtual 175	java/io/BufferedInputStream:read	()I
+    //   63: invokevirtual 176	java/io/BufferedInputStream:read	()I
     //   66: istore_3
     //   67: iload_3
     //   68: iconst_m1
@@ -172,7 +175,7 @@ public class StartupDirector
     //   74: aload 5
     //   76: ifnull +10 -> 86
     //   79: aload 5
-    //   81: invokevirtual 178	java/io/BufferedInputStream:close	()V
+    //   81: invokevirtual 179	java/io/BufferedInputStream:close	()V
     //   84: iload_2
     //   85: istore_3
     //   86: iload_3
@@ -181,23 +184,23 @@ public class StartupDirector
     //   89: istore_2
     //   90: aload 8
     //   92: astore_1
-    //   93: new 180	java/io/FileOutputStream
+    //   93: new 181	java/io/FileOutputStream
     //   96: dup
     //   97: aload 9
-    //   99: invokespecial 181	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   99: invokespecial 182	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   102: astore 5
     //   104: aload 5
     //   106: iload_2
-    //   107: invokevirtual 185	java/io/FileOutputStream:write	(I)V
+    //   107: invokevirtual 186	java/io/FileOutputStream:write	(I)V
     //   110: aload 5
     //   112: ifnull +8 -> 120
     //   115: aload 5
-    //   117: invokevirtual 186	java/io/FileOutputStream:close	()V
+    //   117: invokevirtual 187	java/io/FileOutputStream:close	()V
     //   120: iload_2
     //   121: ireturn
     //   122: astore_1
     //   123: aload_1
-    //   124: invokevirtual 189	java/io/IOException:printStackTrace	()V
+    //   124: invokevirtual 190	java/io/IOException:printStackTrace	()V
     //   127: iload_2
     //   128: istore_3
     //   129: goto -43 -> 86
@@ -207,19 +210,19 @@ public class StartupDirector
     //   137: aload 5
     //   139: astore_1
     //   140: aload 6
-    //   142: invokevirtual 190	java/lang/Exception:printStackTrace	()V
+    //   142: invokevirtual 191	java/lang/Exception:printStackTrace	()V
     //   145: iload 4
     //   147: istore_3
     //   148: aload 5
     //   150: ifnull -64 -> 86
     //   153: aload 5
-    //   155: invokevirtual 178	java/io/BufferedInputStream:close	()V
+    //   155: invokevirtual 179	java/io/BufferedInputStream:close	()V
     //   158: iload 4
     //   160: istore_3
     //   161: goto -75 -> 86
     //   164: astore_1
     //   165: aload_1
-    //   166: invokevirtual 189	java/io/IOException:printStackTrace	()V
+    //   166: invokevirtual 190	java/io/IOException:printStackTrace	()V
     //   169: iload 4
     //   171: istore_3
     //   172: goto -86 -> 86
@@ -229,16 +232,16 @@ public class StartupDirector
     //   180: aload 5
     //   182: ifnull +8 -> 190
     //   185: aload 5
-    //   187: invokevirtual 178	java/io/BufferedInputStream:close	()V
+    //   187: invokevirtual 179	java/io/BufferedInputStream:close	()V
     //   190: aload_1
     //   191: athrow
     //   192: astore 5
     //   194: aload 5
-    //   196: invokevirtual 189	java/io/IOException:printStackTrace	()V
+    //   196: invokevirtual 190	java/io/IOException:printStackTrace	()V
     //   199: goto -9 -> 190
     //   202: astore_1
     //   203: aload_1
-    //   204: invokevirtual 189	java/io/IOException:printStackTrace	()V
+    //   204: invokevirtual 190	java/io/IOException:printStackTrace	()V
     //   207: iload_2
     //   208: ireturn
     //   209: astore 6
@@ -247,16 +250,16 @@ public class StartupDirector
     //   215: aload 5
     //   217: astore_1
     //   218: aload 6
-    //   220: invokevirtual 189	java/io/IOException:printStackTrace	()V
+    //   220: invokevirtual 190	java/io/IOException:printStackTrace	()V
     //   223: aload 5
     //   225: ifnull -105 -> 120
     //   228: aload 5
-    //   230: invokevirtual 186	java/io/FileOutputStream:close	()V
+    //   230: invokevirtual 187	java/io/FileOutputStream:close	()V
     //   233: iload_2
     //   234: ireturn
     //   235: astore_1
     //   236: aload_1
-    //   237: invokevirtual 189	java/io/IOException:printStackTrace	()V
+    //   237: invokevirtual 190	java/io/IOException:printStackTrace	()V
     //   240: iload_2
     //   241: ireturn
     //   242: astore 6
@@ -267,12 +270,12 @@ public class StartupDirector
     //   250: aload 5
     //   252: ifnull +8 -> 260
     //   255: aload 5
-    //   257: invokevirtual 186	java/io/FileOutputStream:close	()V
+    //   257: invokevirtual 187	java/io/FileOutputStream:close	()V
     //   260: aload_1
     //   261: athrow
     //   262: astore 5
     //   264: aload 5
-    //   266: invokevirtual 189	java/io/IOException:printStackTrace	()V
+    //   266: invokevirtual 190	java/io/IOException:printStackTrace	()V
     //   269: goto -9 -> 260
     //   272: astore_1
     //   273: goto -23 -> 250
@@ -346,13 +349,13 @@ public class StartupDirector
     }
     if (BaseApplicationImpl.processName.endsWith(":web"))
     {
-      Step.a(12, paramBaseApplicationImpl, null).b();
-      Step.a(10, paramBaseApplicationImpl, null).b();
+      Step.a(13, paramBaseApplicationImpl, null).b();
+      Step.a(11, paramBaseApplicationImpl, null).b();
       paramBaseApplicationImpl.a(1);
       return paramBaseApplicationImpl;
     }
     jdField_e_of_type_Boolean = false;
-    Step.a(12, paramBaseApplicationImpl, null).b();
+    Step.a(13, paramBaseApplicationImpl, null).b();
     if (BaseApplicationImpl.processName.endsWith("qzone"))
     {
       new Thread(Step.a(0, paramBaseApplicationImpl, k)).start();
@@ -365,7 +368,121 @@ public class StartupDirector
     }
   }
   
-  private void a()
+  private void a(int paramInt)
+  {
+    long l1;
+    if (jdField_e_of_type_Boolean)
+    {
+      if (this.jdField_n_of_type_Int == -1) {
+        break label105;
+      }
+      l1 = SystemClock.uptimeMillis();
+      Log.i("AutoMonitor", "STATE_" + this.jdField_n_of_type_Int + ", cost=" + (l1 - jdField_f_of_type_Long) + " then " + paramInt);
+    }
+    for (;;)
+    {
+      if (paramInt != 1000)
+      {
+        if (this.jdField_n_of_type_Int == -1) {
+          l1 = SystemClock.uptimeMillis();
+        }
+        if (l1 != 0L) {
+          jdField_f_of_type_Long = l1;
+        }
+      }
+      this.jdField_n_of_type_Int = paramInt;
+      return;
+      label105:
+      l1 = 0L;
+    }
+  }
+  
+  private void a(int paramInt, long paramLong)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.b(), this);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(paramInt);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(paramInt, paramLong);
+  }
+  
+  private void a(AppActivity paramAppActivity, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramAppActivity == null) {
+      return;
+    }
+    TextView localTextView = new TextView(paramAppActivity);
+    paramAppActivity.getWindow().setBackgroundDrawableResource(17170446);
+    localTextView.setGravity(17);
+    localTextView.setBackgroundColor(-16777216);
+    localTextView.setTextColor(-1);
+    localTextView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    if (!paramBoolean1) {
+      localTextView.setText(2131562559);
+    }
+    for (;;)
+    {
+      paramAppActivity.setContentView(localTextView);
+      InjectUtils.a(paramAppActivity, "SuicideFailed", Integer.toString(this.o));
+      this.jdField_b_of_type_AndroidOsHandler.postDelayed(new gjy(this, paramAppActivity), 8000L);
+      return;
+      localTextView.setText("程序启动失败，请稍候重试.");
+    }
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AutoMonitor", 2, "onEndStep with " + paramBoolean + ", when " + this.jdField_n_of_type_Int);
+    }
+    if (paramBoolean)
+    {
+      Step.a(10, this, null).run();
+      if (this.jdField_i_of_type_Boolean) {
+        Step.a(20, this, null).run();
+      }
+    }
+    this.jdField_a_of_type_AndroidOsHandler = null;
+    if (this.jdField_b_of_type_AndroidOsHandler != null) {
+      this.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+    a(1000);
+    if ((paramBoolean) && ((this.jdField_g_of_type_Boolean) || (this.jdField_c_of_type_Long > 0L) || (BaseApplicationImpl.jdField_a_of_type_Long < 0L)))
+    {
+      long l1 = this.jdField_c_of_type_Long;
+      long l2 = SystemClock.uptimeMillis();
+      long l3 = this.jdField_c_of_type_Long;
+      long l4 = BaseApplicationImpl.jdField_a_of_type_Long;
+      long l5 = SystemClock.uptimeMillis();
+      long l6 = BaseApplicationImpl.b;
+      paramBoolean = this.jdField_g_of_type_Boolean;
+      ThreadManager.b().postDelayed(new gjw(this, paramBoolean, l1, l2 - l3, l4, l5 - l6), 10000L);
+    }
+    BaseApplicationImpl.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector = null;
+  }
+  
+  private void a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt)
+  {
+    this.A = 1;
+    paramArrayOfInt1 = Step.a(0, this, paramArrayOfInt1);
+    if (paramArrayOfInt2 != null)
+    {
+      this.A = 2;
+      this.B = paramInt;
+      paramArrayOfInt1.a(this.jdField_b_of_type_AndroidOsHandler, 10);
+      paramArrayOfInt2 = Step.a(0, this, paramArrayOfInt2);
+      paramArrayOfInt2.a(this.jdField_b_of_type_AndroidOsHandler, 10);
+      ThreadManager.a(paramArrayOfInt2);
+    }
+    for (;;)
+    {
+      paramArrayOfInt1.b();
+      return;
+      paramArrayOfInt1.a(this.jdField_b_of_type_AndroidOsHandler, paramInt);
+    }
+  }
+  
+  private void c()
   {
     if (QLog.isColorLevel()) {
       QLog.i("AutoMonitor", 2, "realCreateActivity when " + this.jdField_n_of_type_Int + ", " + this.jdField_a_of_type_JavaUtilArrayList);
@@ -399,122 +516,13 @@ public class StartupDirector
       if (QLog.isColorLevel()) {
         QLog.i("AutoMonitor", 2, "start:" + BaseApplicationImpl.b + ", end:" + SystemClock.uptimeMillis());
       }
-      ThreadManager.b().postDelayed(new gog(this, i1), 10000L);
+      ThreadManager.b().postDelayed(new gjx(this, i1), 10000L);
     }
   }
   
-  private void a(int paramInt)
+  public void a()
   {
-    long l1;
-    if (jdField_e_of_type_Boolean)
-    {
-      if (this.jdField_n_of_type_Int == -1) {
-        break label106;
-      }
-      l1 = SystemClock.uptimeMillis();
-      Log.i("AutoMonitor", "STATE_" + this.jdField_n_of_type_Int + ", cost=" + (l1 - jdField_f_of_type_Long) + " then " + paramInt);
-    }
-    for (;;)
-    {
-      if (paramInt != 1000)
-      {
-        if (this.jdField_n_of_type_Int == -1) {
-          l1 = SystemClock.uptimeMillis();
-        }
-        if (l1 != 0L) {
-          jdField_f_of_type_Long = l1;
-        }
-      }
-      this.jdField_n_of_type_Int = paramInt;
-      return;
-      label106:
-      l1 = 0L;
-    }
-  }
-  
-  private void a(int paramInt, long paramLong)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.b(), this);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(paramInt);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(paramInt, paramLong);
-  }
-  
-  private void a(AppActivity paramAppActivity, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramAppActivity == null) {
-      return;
-    }
-    TextView localTextView = new TextView(paramAppActivity);
-    paramAppActivity.getWindow().setBackgroundDrawableResource(17170446);
-    localTextView.setGravity(17);
-    localTextView.setBackgroundColor(-16777216);
-    localTextView.setTextColor(-1);
-    localTextView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    if (!paramBoolean1) {
-      localTextView.setText(2131562559);
-    }
-    for (;;)
-    {
-      paramAppActivity.setContentView(localTextView);
-      InjectUtils.a(paramAppActivity, "SuicideFailed", Integer.toString(this.o));
-      this.jdField_b_of_type_AndroidOsHandler.postDelayed(new goh(this, paramAppActivity), 8000L);
-      return;
-      localTextView.setText("程序启动失败，请稍候重试.");
-    }
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AutoMonitor", 2, "onEndStep with " + paramBoolean + ", when " + this.jdField_n_of_type_Int);
-    }
-    if (paramBoolean)
-    {
-      Step.a(9, this, null).run();
-      if (this.jdField_i_of_type_Boolean) {
-        Step.a(19, this, null).run();
-      }
-    }
-    this.jdField_a_of_type_AndroidOsHandler = null;
-    if (this.jdField_b_of_type_AndroidOsHandler != null) {
-      this.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-    a(1000);
-    if ((paramBoolean) && ((this.jdField_g_of_type_Boolean) || (this.jdField_c_of_type_Long > 0L) || (BaseApplicationImpl.jdField_a_of_type_Long < 0L)))
-    {
-      long l1 = this.jdField_c_of_type_Long;
-      long l2 = SystemClock.uptimeMillis();
-      long l3 = this.jdField_c_of_type_Long;
-      long l4 = BaseApplicationImpl.jdField_a_of_type_Long;
-      long l5 = SystemClock.uptimeMillis();
-      long l6 = BaseApplicationImpl.b;
-      paramBoolean = this.jdField_g_of_type_Boolean;
-      ThreadManager.b().postDelayed(new gof(this, paramBoolean, l1, l2 - l3, l4, l5 - l6), 10000L);
-    }
-    BaseApplicationImpl.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector = null;
-  }
-  
-  private void a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt)
-  {
-    this.A = 1;
-    paramArrayOfInt1 = Step.a(0, this, paramArrayOfInt1);
-    if (paramArrayOfInt2 != null)
-    {
-      this.A = 2;
-      this.B = paramInt;
-      paramArrayOfInt1.a(this.jdField_b_of_type_AndroidOsHandler, 10);
-      paramArrayOfInt2 = Step.a(0, this, paramArrayOfInt2);
-      paramArrayOfInt2.a(this.jdField_b_of_type_AndroidOsHandler, 10);
-      ThreadManager.a(paramArrayOfInt2);
-    }
-    for (;;)
-    {
-      paramArrayOfInt1.b();
-      return;
-      paramArrayOfInt1.a(this.jdField_b_of_type_AndroidOsHandler, paramInt);
-    }
+    a(2, 0, 0L);
   }
   
   public void a(int paramInt1, int paramInt2, long paramLong)
@@ -535,7 +543,10 @@ public class StartupDirector
     if (!paramBoolean) {}
     do
     {
-      return;
+      do
+      {
+        return;
+      } while ((Build.VERSION.SDK_INT >= 23) && (!Step.a(4, this, null).b()));
       this.jdField_b_of_type_AndroidOsHandler.removeMessages(2);
       if (this.jdField_n_of_type_Int == 2)
       {
@@ -588,7 +599,7 @@ public class StartupDirector
             GuardManager.a.a(6, null);
           }
           a(201);
-          label180:
+          label183:
           bool2 = false;
         }
       }
@@ -599,16 +610,16 @@ public class StartupDirector
       paramAppActivity = jdField_m_of_type_ArrayOfInt;
       break;
       if (this.jdField_n_of_type_Int != 2) {
-        break label180;
+        break label183;
       }
       Step.a(0, this, l).b();
       a(101);
-      break label180;
+      break label183;
       if ((this.jdField_n_of_type_Int != 1) && (this.jdField_n_of_type_Int != 2) && (this.jdField_n_of_type_Int != 101) && (this.jdField_n_of_type_Int != 201)) {
-        break label557;
+        break label561;
       }
       if ((BaseApplicationImpl.jdField_a_of_type_JavaLangString != null) || ((paramAppActivity instanceof InstallActivity)) || ((paramAppActivity instanceof JumpActivity)) || ((paramAppActivity instanceof qfileJumpActivity))) {
-        break label343;
+        break label346;
       }
       paramIntent = new Intent(paramAppActivity, InstallActivity.class);
       paramIntent.addFlags(603979776);
@@ -619,7 +630,7 @@ public class StartupDirector
     } while (this.o > jdField_m_of_type_Int);
     System.exit(-1);
     return true;
-    label343:
+    label346:
     this.jdField_a_of_type_MqqAppAppActivity = paramAppActivity;
     if (this.jdField_n_of_type_Int == 201) {
       this.jdField_c_of_type_Long = SystemClock.uptimeMillis();
@@ -660,7 +671,7 @@ public class StartupDirector
         QLog.e("AutoMonitor", 2, "suicide_count " + Log.getStackTraceString(paramIntent));
         continue;
       }
-      label557:
+      label561:
       if ((this.jdField_n_of_type_Int == 5) || (this.jdField_n_of_type_Int == 6))
       {
         this.jdField_a_of_type_MqqAppAppActivity = paramAppActivity;
@@ -676,6 +687,11 @@ public class StartupDirector
         }
       }
     }
+  }
+  
+  public void b()
+  {
+    a(2, 0, 0L);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -706,7 +722,7 @@ public class StartupDirector
           {
             return true;
             a(4, 0, 300L);
-            bool1 = Step.a(12, this, null).b();
+            bool1 = Step.a(13, this, null).b();
             if ((bool1) && (this.o <= jdField_m_of_type_Int))
             {
               a(5, 0, 0L);
@@ -769,9 +785,9 @@ public class StartupDirector
           a(6, 0, l1);
           return true;
         }
-        a();
+        c();
         return true;
-        Step.a(13, this, null).b();
+        Step.a(14, this, null).b();
         return true;
         i1 = this.A - 1;
         this.A = i1;

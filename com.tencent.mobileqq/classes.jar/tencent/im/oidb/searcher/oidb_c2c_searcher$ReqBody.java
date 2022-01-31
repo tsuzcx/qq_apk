@@ -9,10 +9,10 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_c2c_searcher$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatMessageField friends = PBField.initRepeatMessage(oidb_c2c_searcher.Iterator.class);
+  public final PBRepeatMessageField<oidb_c2c_searcher.Iterator> friends = PBField.initRepeatMessage(oidb_c2c_searcher.Iterator.class);
   public final PBUInt32Field max_cnt = PBField.initUInt32(0);
   public final PBBytesField query = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field type = PBField.initUInt32(0);
@@ -25,7 +25,7 @@ public final class oidb_c2c_searcher$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.searcher.oidb_c2c_searcher.ReqBody
  * JD-Core Version:    0.7.0.1
  */

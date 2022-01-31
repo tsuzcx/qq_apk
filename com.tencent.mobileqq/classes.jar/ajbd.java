@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.data.Friends;
+import android.os.Bundle;
+import android.os.ResultReceiver;
 
-public class ajbd
+class ajbd
+  implements alqc
 {
-  public int a;
-  public Friends a;
+  ajbd(ajaz paramajaz, Bundle paramBundle, int paramInt, ResultReceiver paramResultReceiver, alpy paramalpy) {}
   
-  public ajbd(Friends paramFriends, int paramInt)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsBundle.putInt("updateResult", this.jdField_a_of_type_Int);
+    if (paramBoolean) {
+      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", 1);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, this.jdField_a_of_type_AndroidOsBundle);
+      this.jdField_a_of_type_Alpy.d(this);
+      return;
+      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", -1);
+    }
   }
 }
 

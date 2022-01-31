@@ -1,30 +1,41 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.SplashActivityCore;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberCardActivity;
+import com.tencent.mobileqq.activity.TroopMemberCardActivity.ViewHolder;
 
-class dqe
-  implements MediaPlayer.OnCompletionListener
+public class dqe
+  implements View.OnClickListener
 {
-  dqe(dqc paramdqc) {}
+  public dqe(TroopMemberCardActivity paramTroopMemberCardActivity) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Splash.testCanPlayMp4", 4, "OnCompletion");
-    }
-    if (paramMediaPlayer.getCurrentPosition() == 0)
+    paramView = paramView.getTag();
+    if ((paramView == null) || (!(paramView instanceof TroopMemberCardActivity.ViewHolder))) {}
+    do
     {
-      this.a.a.handler.sendEmptyMessage(5);
       return;
-    }
-    this.a.a.handler.sendEmptyMessage(4);
+      paramView = (TroopMemberCardActivity.ViewHolder)paramView;
+      if (paramView.a == 0)
+      {
+        this.a.c(this.a.e);
+        this.a.f("Clk_account");
+        return;
+      }
+      if (paramView.a == 1)
+      {
+        this.a.b(this.a.c, this.a.e);
+        this.a.f("Clk_name");
+        return;
+      }
+    } while (paramView.a != 3);
+    this.a.a(this.a.c, this.a.e);
+    this.a.f("Clk_set");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dqe
  * JD-Core Version:    0.7.0.1
  */

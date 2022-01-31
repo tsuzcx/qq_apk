@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.widget.VerticalGallery;
-import com.tencent.widget.VerticalGallery.OnEndFlingListener;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.widget.SwipListView;
 
 public class ahgg
-  implements VerticalGallery.OnEndFlingListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ahgg(IosTimepicker paramIosTimepicker) {}
+  public ahgg(AddContactsView paramAddContactsView) {}
   
-  public void b(VerticalGallery paramVerticalGallery)
+  public void onGlobalLayout()
   {
-    IosTimepicker.a(this.a);
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.setListViewHeightBasedOnChildren(this.a.a);
   }
 }
 

@@ -33,7 +33,6 @@ public final class GzipSource
   }
   
   private void checkEqual(String paramString, int paramInt1, int paramInt2)
-    throws IOException
   {
     if (paramInt2 != paramInt1) {
       throw new IOException(String.format("%s: actual 0x%08x != expected 0x%08x", new Object[] { paramString, Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) }));
@@ -41,7 +40,6 @@ public final class GzipSource
   }
   
   private void consumeHeader()
-    throws IOException
   {
     this.source.require(10L);
     int j = this.source.buffer().getByte(3L);
@@ -100,42 +98,43 @@ public final class GzipSource
   }
   
   private void consumeTrailer()
-    throws IOException
   {
     checkEqual("CRC", this.source.readIntLe(), (int)this.crc.getValue());
-    checkEqual("ISIZE", this.source.readIntLe(), this.inflater.getTotalOut());
+    checkEqual("ISIZE", this.source.readIntLe(), (int)this.inflater.getBytesWritten());
   }
   
   private void updateCrc(Buffer paramBuffer, long paramLong1, long paramLong2)
   {
-    paramBuffer = paramBuffer.head;
-    if (paramLong1 < paramBuffer.limit - paramBuffer.pos) {}
-    for (;;)
+    Object localObject;
+    long l1;
+    long l2;
+    for (paramBuffer = paramBuffer.head;; paramBuffer = paramBuffer.next)
     {
-      if (paramLong2 <= 0L)
-      {
-        return;
-        paramLong1 -= paramBuffer.limit - paramBuffer.pos;
-        paramBuffer = paramBuffer.next;
+      localObject = paramBuffer;
+      l1 = paramLong1;
+      l2 = paramLong2;
+      if (paramLong1 < paramBuffer.limit - paramBuffer.pos) {
         break;
       }
-      int i = (int)(paramBuffer.pos + paramLong1);
-      int j = (int)Math.min(paramBuffer.limit - i, paramLong2);
-      this.crc.update(paramBuffer.data, i, j);
-      paramLong2 -= j;
-      paramLong1 = 0L;
-      paramBuffer = paramBuffer.next;
+      paramLong1 -= paramBuffer.limit - paramBuffer.pos;
+    }
+    while (l2 > 0L)
+    {
+      int i = (int)(((Segment)localObject).pos + l1);
+      int j = (int)Math.min(((Segment)localObject).limit - i, l2);
+      this.crc.update(((Segment)localObject).data, i, j);
+      l2 -= j;
+      localObject = ((Segment)localObject).next;
+      l1 = 0L;
     }
   }
   
   public void close()
-    throws IOException
   {
     this.inflaterSource.close();
   }
   
   public long read(Buffer paramBuffer, long paramLong)
-    throws IOException
   {
     if (paramLong < 0L) {
       throw new IllegalArgumentException("byteCount < 0: " + paramLong);
@@ -177,7 +176,7 @@ public final class GzipSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okio.GzipSource
  * JD-Core Version:    0.7.0.1
  */

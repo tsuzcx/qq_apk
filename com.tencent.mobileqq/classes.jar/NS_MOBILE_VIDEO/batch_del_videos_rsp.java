@@ -8,14 +8,14 @@ import java.util.ArrayList;
 public final class batch_del_videos_rsp
   extends JceStruct
 {
-  static ArrayList cache_summarys;
+  static ArrayList<DelVideoSummary> cache_summarys;
   public String msg = "";
   public int ret;
-  public ArrayList summarys;
+  public ArrayList<DelVideoSummary> summarys;
   
   public batch_del_videos_rsp() {}
   
-  public batch_del_videos_rsp(int paramInt, String paramString, ArrayList paramArrayList)
+  public batch_del_videos_rsp(int paramInt, String paramString, ArrayList<DelVideoSummary> paramArrayList)
   {
     this.ret = paramInt;
     this.msg = paramString;
@@ -48,7 +48,7 @@ public final class batch_del_videos_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_VIDEO.batch_del_videos_rsp
  * JD-Core Version:    0.7.0.1
  */

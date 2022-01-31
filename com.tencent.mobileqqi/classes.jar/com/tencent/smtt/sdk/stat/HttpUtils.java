@@ -2,6 +2,7 @@ package com.tencent.smtt.sdk.stat;
 
 import MTT.ThirdAppInfoNew;
 import android.content.Context;
+import android.os.Build.VERSION;
 import android.telephony.TelephonyManager;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -42,40 +43,48 @@ public class HttpUtils
         localThirdAppInfoNew.sGuid = paramString1;
         localThirdAppInfoNew.sQua = paramString2;
         localThirdAppInfoNew.sLc = paramString3;
-        paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-        if (paramContext != null) {}
-        try
+        if (Build.VERSION.SDK_INT > 23)
         {
-          paramString1 = paramContext.getDeviceId();
-          if ((paramString1 != null) && (!"".equals(paramString1))) {
-            localThirdAppInfoNew.sImei = paramString1;
+          localThirdAppInfoNew.sMac = "";
+          localThirdAppInfoNew.iPv = paramInt;
+          if (paramBoolean)
+          {
+            paramInt = 1;
+            localThirdAppInfoNew.iCoreType = paramInt;
+            post(localThirdAppInfoNew);
           }
-          paramContext = paramContext.getSubscriberId();
-          if ((paramContext != null) && (!"".equals(paramContext))) {
+        }
+        else
+        {
+          paramContext = (TelephonyManager)paramContext.getSystemService("phone");
+          if (paramContext == null) {
+            continue;
+          }
+          try
+          {
+            paramString1 = paramContext.getDeviceId();
+            if ((paramString1 != null) && (!"".equals(paramString1))) {
+              localThirdAppInfoNew.sImei = paramString1;
+            }
+            paramContext = paramContext.getSubscriberId();
+            if ((paramContext == null) || ("".equals(paramContext))) {
+              continue;
+            }
             localThirdAppInfoNew.sImsi = paramContext;
           }
-        }
-        catch (Exception paramContext)
-        {
-          paramContext.printStackTrace();
+          catch (Exception paramContext)
+          {
+            paramContext.printStackTrace();
+          }
           continue;
         }
-        localThirdAppInfoNew.sMac = "";
-        localThirdAppInfoNew.iPv = paramInt;
-        if (paramBoolean)
-        {
-          paramInt = 1;
-          localThirdAppInfoNew.iCoreType = paramInt;
-          post(localThirdAppInfoNew);
-          return;
-        }
+        paramInt = 0;
       }
       catch (Throwable paramContext)
       {
         paramContext.printStackTrace();
         return;
       }
-      paramInt = 0;
     }
   }
   

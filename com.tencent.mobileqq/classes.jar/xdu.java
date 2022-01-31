@@ -1,63 +1,14 @@
-import android.app.Activity;
-import android.graphics.Rect;
-import android.view.Display;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
-
-public class xdu
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface xdu
 {
-  public xdu(QzoneHbFragment paramQzoneHbFragment, Activity paramActivity) {}
+  public abstract void a(int paramInt);
   
-  public void onGlobalLayout()
-  {
-    Button localButton;
-    int j;
-    int i;
-    if (this.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay().getWidth() <= 480)
-    {
-      localButton = QzoneHbFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment);
-      Object localObject = new Rect();
-      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-      int k = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getRootView().getHeight();
-      j = k - ((Rect)localObject).bottom;
-      i = j;
-      if (j - this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment.a(this.jdField_a_of_type_AndroidAppActivity) == 0) {
-        i = 0;
-      }
-      j = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment.a.getWindow().getDecorView().getScrollY();
-      if ((localButton == null) || (i == 0)) {
-        break label204;
-      }
-      localObject = new int[2];
-      localButton.getLocationOnScreen((int[])localObject);
-      m = localObject[1];
-      i = localButton.getMeasuredHeight() + m + i - k - j;
-      if (i > 0) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment.a.getWindow().getDecorView().scrollBy(0, i + 5);
-      }
-      QzoneHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment, true);
-    }
-    label204:
-    while (i != 0)
-    {
-      int m;
-      return;
-      localButton = QzoneHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment);
-      break;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment.a.getWindow().getDecorView().scrollBy(0, -j);
-    QzoneHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment, false);
-  }
+  public abstract void a(xdo paramxdo);
+  
+  public abstract boolean a(xdr paramxdr);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xdu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,77 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.store.ApolloResDownloader.OnApolloDownLoadListener;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
-class acbl
-  implements ApolloResDownloader.OnApolloDownLoadListener
+public class acbl
+  implements Animation.AnimationListener
 {
-  acbl(acbg paramacbg, Bundle paramBundle, MessengerService paramMessengerService) {}
+  int jdField_a_of_type_Int = -1;
+  View jdField_a_of_type_AndroidViewView;
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public acbl(AccountManageActivity paramAccountManageActivity, View paramView, int paramInt)
   {
-    paramString = new Bundle();
-    if (paramBoolean)
-    {
-      paramString.putInt("apollo_result", 0);
-      paramString.putIntArray("apollo_dressIds", paramArrayOfInt);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
       return;
     }
-    paramString.putInt("apollo_result", 1);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    switch (this.jdField_a_of_type_Int)
+    {
+    case 2: 
+    case 3: 
+    default: 
+      return;
+    case 0: 
+      paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      paramAnimation.leftMargin += (int)(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a * 34.0F);
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
+      this.jdField_a_of_type_AndroidViewView.setTag("right");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      return;
+      paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      paramAnimation.leftMargin -= (int)(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a * 34.0F);
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
+      this.jdField_a_of_type_AndroidViewView.setTag("left");
+      continue;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      if (this.jdField_a_of_type_AndroidViewView.getId() == 2131364239)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c();
+        continue;
+        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      }
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
+    {
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
+    }
+    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
+    {
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acbl
  * JD-Core Version:    0.7.0.1
  */

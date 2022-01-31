@@ -1,27 +1,20 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.portal.ConversationHongBao;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
 
-public class aglt
-  implements ValueAnimator.AnimatorUpdateListener
+class aglt
+  implements View.OnTouchListener
 {
-  public aglt(ConversationHongBao paramConversationHongBao, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  aglt(agls paramagls, agln paramagln) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {}
-    float f;
-    do
-    {
-      return;
-      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-      int i = (int)(-ConversationHongBao.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao) * f);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    } while (!this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.f);
-    this.b.setAlpha(1.0F - f);
+    paramView = paramView.getParent();
+    if (paramView != null) {
+      paramView.requestDisallowInterceptTouchEvent(true);
+    }
+    return false;
   }
 }
 

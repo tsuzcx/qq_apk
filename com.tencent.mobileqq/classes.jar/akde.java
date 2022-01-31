@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class akde
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public akde(NewUpgradeDialog paramNewUpgradeDialog) {}
+  public akde(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NewUpgradeDialog.d(this.a);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akde
  * JD-Core Version:    0.7.0.1
  */

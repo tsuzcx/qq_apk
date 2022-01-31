@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-class aeuj
-  implements Runnable
+public final class aeuj
+  implements Parcelable.Creator<SessionInfo>
 {
-  aeuj(aeui paramaeui) {}
-  
-  public void run()
+  public SessionInfo a(Parcel paramParcel)
   {
-    QQToast.a(this.a.a.getActivity(), 1, SmallVideoCameraCaptureFragment.a(this.a.a), 0).a();
+    return new SessionInfo(paramParcel);
+  }
+  
+  public SessionInfo[] a(int paramInt)
+  {
+    return new SessionInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeuj
  * JD-Core Version:    0.7.0.1
  */

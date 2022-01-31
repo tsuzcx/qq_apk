@@ -8,12 +8,12 @@ import org.json.JSONObject;
 
 public class ExpressionTemplateConfig
 {
-  public String a;
-  public List a;
-  public double[] a;
-  public float[] a;
+  public float[] expressionAngle;
+  public List<PointF> expressionFeat;
+  public String expressionID;
+  public double[] expressionWeight;
   
-  public static ExpressionTemplateConfig a(String paramString)
+  public static ExpressionTemplateConfig parseConfig(String paramString)
   {
     for (;;)
     {
@@ -24,7 +24,7 @@ public class ExpressionTemplateConfig
       {
         localExpressionTemplateConfig = new ExpressionTemplateConfig();
         paramString = new JSONObject(paramString);
-        localExpressionTemplateConfig.jdField_a_of_type_JavaLangString = paramString.getString("expressionID");
+        localExpressionTemplateConfig.expressionID = paramString.getString("expressionID");
         localJSONArray = paramString.optJSONArray("expressionFeat");
         if (localJSONArray != null)
         {
@@ -40,10 +40,10 @@ public class ExpressionTemplateConfig
             else
             {
               PointF localPointF = new PointF(f, (float)d);
-              if (localExpressionTemplateConfig.jdField_a_of_type_JavaUtilList == null) {
-                localExpressionTemplateConfig.jdField_a_of_type_JavaUtilList = new ArrayList();
+              if (localExpressionTemplateConfig.expressionFeat == null) {
+                localExpressionTemplateConfig.expressionFeat = new ArrayList();
               }
-              localExpressionTemplateConfig.jdField_a_of_type_JavaUtilList.add(localPointF);
+              localExpressionTemplateConfig.expressionFeat.add(localPointF);
             }
           }
         }
@@ -61,11 +61,11 @@ public class ExpressionTemplateConfig
         i = 0;
         while (i < j)
         {
-          if (localExpressionTemplateConfig.jdField_a_of_type_ArrayOfFloat == null) {
-            localExpressionTemplateConfig.jdField_a_of_type_ArrayOfFloat = new float[j];
+          if (localExpressionTemplateConfig.expressionAngle == null) {
+            localExpressionTemplateConfig.expressionAngle = new float[j];
           }
           d = localJSONArray.getDouble(i);
-          localExpressionTemplateConfig.jdField_a_of_type_ArrayOfFloat[i] = ((float)d);
+          localExpressionTemplateConfig.expressionAngle[i] = ((float)d);
           i += 1;
         }
       }
@@ -76,11 +76,11 @@ public class ExpressionTemplateConfig
         i = 0;
         while (i < j)
         {
-          if (localExpressionTemplateConfig.jdField_a_of_type_ArrayOfDouble == null) {
-            localExpressionTemplateConfig.jdField_a_of_type_ArrayOfDouble = new double[j];
+          if (localExpressionTemplateConfig.expressionWeight == null) {
+            localExpressionTemplateConfig.expressionWeight = new double[j];
           }
           d = paramString.getDouble(i);
-          localExpressionTemplateConfig.jdField_a_of_type_ArrayOfDouble[i] = d;
+          localExpressionTemplateConfig.expressionWeight[i] = d;
           i += 1;
         }
       }
@@ -91,7 +91,7 @@ public class ExpressionTemplateConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.facedancegame.ExpressionTemplateConfig
  * JD-Core Version:    0.7.0.1
  */

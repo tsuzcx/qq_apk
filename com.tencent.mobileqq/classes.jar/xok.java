@@ -1,21 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
 public class xok
-  implements DialogInterface.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
-  public xok(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public xok(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a("608", "7", "2", true);
-    EditLocalVideoActivity.b(this.a, "an_yuanshipin");
+    HorizontalSelectColorLayout.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xok
  * JD-Core Version:    0.7.0.1
  */

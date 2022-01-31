@@ -1,32 +1,50 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
+import java.util.List;
 
 public class xid
-  implements Animation.AnimationListener
+  extends xia<xhu>
+  implements View.OnClickListener
 {
-  public xid(AnonymousEntranceView paramAnonymousEntranceView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public xid(Context paramContext)
   {
-    if (AnonymousEntranceView.b(this.a) != null) {
-      AnonymousEntranceView.b(this.a).setVisibility(4);
+    super(paramContext);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (this.jdField_a_of_type_Xhr == null) {
+      return paramView;
+    }
+    if (paramView == null) {}
+    for (paramView = new xie(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((xhu)this.jdField_a_of_type_Xhr).a(), ((xhu)this.jdField_a_of_type_Xhr).a(), this);; paramView = (xie)paramView)
+    {
+      paramView.a((xhu)this.jdField_a_of_type_Xhr, paramInt, getCount());
+      return paramView;
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (AnonymousEntranceView.b(this.a) != null) {
-      AnonymousEntranceView.b(this.a).setVisibility(0);
+    int i = ((Integer)paramView.getTag(2131377441)).intValue();
+    xhv localxhv = (xhv)((xhu)this.jdField_a_of_type_Xhr).a.get(i);
+    paramView = (ImageView)paramView;
+    Boolean localBoolean = (Boolean)paramView.getTag(2131377419);
+    if ((localBoolean != null) && (localBoolean.booleanValue()))
+    {
+      localxhv.a = paramView.getDrawable();
+      this.jdField_a_of_type_Xht.a(localxhv);
+      return;
     }
+    wxe.b("LocationFaceAdapter", "ImageView drawable has not been downloaded.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xid
  * JD-Core Version:    0.7.0.1
  */

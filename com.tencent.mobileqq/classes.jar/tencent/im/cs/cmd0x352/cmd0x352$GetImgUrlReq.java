@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x352$GetImgUrlReq
-  extends MessageMicro
+  extends MessageMicro<GetImgUrlReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_address_book = PBField.initBool(false);
@@ -37,7 +37,7 @@ public final class cmd0x352$GetImgUrlReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x352.cmd0x352.GetImgUrlReq
  * JD-Core Version:    0.7.0.1
  */

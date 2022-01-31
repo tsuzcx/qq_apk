@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.widget.BounceScrollView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" tencent:skintype="contact_list_bg"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
-    <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040026" />
-</com.tencent.mobileqq.widget.BounceScrollView>

@@ -1,23 +1,19 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoOutputFrameListener;
 
 class vxl
-  implements Runnable
+  implements TVK_IMediaPlayer.OnVideoOutputFrameListener
 {
-  vxl(vxk paramvxk) {}
+  vxl(vxe paramvxe) {}
   
-  public void run()
+  public void OnVideoOutputFrame(TVK_IMediaPlayer paramTVK_IMediaPlayer, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("isNeedFinish", true);
-    this.a.a.a.setResult(-1, localIntent);
-    this.a.a.A();
+    wxe.a(this.a.a, "OnVideoOutputFrame width=%d height=%d rotation=%d %d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vxl
  * JD-Core Version:    0.7.0.1
  */

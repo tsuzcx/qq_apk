@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBFixed32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class hd_video_comm$NetAddr
-  extends MessageMicro
+  extends MessageMicro<NetAddr>
 {
   public static final int PT_TCP = 1;
   public static final int PT_UDP = 2;
@@ -20,7 +20,7 @@ public final class hd_video_comm$NetAddr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.longconn.hd_video_comm.NetAddr
  * JD-Core Version:    0.7.0.1
  */

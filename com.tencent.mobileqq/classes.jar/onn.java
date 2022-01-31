@@ -1,23 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter.OnUIClickListener;
+import java.util.List;
 
 class onn
-  implements View.OnClickListener
+  extends oob
 {
-  onn(onm paramonm) {}
-  
-  public void onClick(View paramView)
+  onn(omz paramomz, boolean paramBoolean1, boolean paramBoolean2, List paramList)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a();
+    super(paramomz, null);
+  }
+  
+  void a(ooe paramooe)
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      paramooe.onCommentLoadMore(2, this.b, this.jdField_a_of_type_JavaUtilList, omz.e(this.jdField_a_of_type_Omz), 4);
+      return;
     }
+    paramooe.onCommentListLoad(2, this.b, this.jdField_a_of_type_JavaUtilList, omz.e(this.jdField_a_of_type_Omz), 4, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     onn
  * JD-Core Version:    0.7.0.1
  */

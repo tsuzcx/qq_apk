@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
+import android.graphics.Bitmap;
 
-public class xaa
-  implements Runnable
+class xaa
+  extends xcs
 {
-  public xaa(PasswdRedBagManager paramPasswdRedBagManager, String paramString) {}
+  public Bitmap a;
+  public Bitmap b;
   
-  public void run()
+  public xaa(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
   {
-    PasswdRedBagManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagManager).c(this.jdField_a_of_type_JavaLangString, true);
+    super(paramInt, paramBitmap1);
+    this.b = paramBitmap2;
+    this.a = paramBitmap3;
+  }
+  
+  public xaa(xcs paramxcs, Bitmap paramBitmap1, Bitmap paramBitmap2)
+  {
+    this(paramxcs.jdField_c_of_type_Int, paramxcs.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xaa
  * JD-Core Version:    0.7.0.1
  */

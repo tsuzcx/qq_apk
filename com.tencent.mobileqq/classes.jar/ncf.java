@@ -1,20 +1,32 @@
-import com.tencent.biz.qqstory.comment.FeedCommentLikeLego;
-import com.tencent.biz.qqstory.comment.FeedLikeLego;
+import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class ncf
-  implements Runnable
+public class ncf
+  extends bazx
 {
-  ncf(nce paramnce) {}
+  public BidDownloader a;
   
-  public void run()
+  public ncf(QQAppInterface paramQQAppInterface, String paramString, BidDownloader paramBidDownloader)
   {
-    this.a.a.a(this.a.a.a);
-    ((FeedCommentLikeLego)this.a.a.a()).d();
+    super(paramQQAppInterface, paramString);
+    this.a = paramBidDownloader;
+  }
+  
+  protected void realCancel()
+  {
+    QLog.i(ncc.a, 1, "cancel predown bid=" + this.a.a);
+  }
+  
+  protected void realStart()
+  {
+    QLog.i(ncc.a, 1, "start predown bid=" + this.a.a);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ncf
  * JD-Core Version:    0.7.0.1
  */

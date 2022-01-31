@@ -1,60 +1,41 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.apollo.store.ApolloBaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.io.File;
 
-public class ysn
-  implements Runnable
+class ysn
+  implements ysj
 {
-  public ysn(ApolloBaseActivity paramApolloBaseActivity, String paramString, int paramInt) {}
+  ysn(ysm paramysm, ysl paramysl) {}
   
-  public void run()
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    ReportController.b(null, "P_CliOper", "WebStatusReport", "", "", this.jdField_a_of_type_JavaLangString, 0, 1, this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBaseActivity.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBaseActivity.jdField_a_of_type_JavaLangString, Build.VERSION.RELEASE, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBaseActivity.f - this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBaseActivity.g), String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBaseActivity.g));
-    Object localObject1 = ApolloBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBaseActivity).getAll();
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloBaseActivity", 2, "mClickTime->" + this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBaseActivity.g + " mCurrentStepTime - mClickTime->" + (this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBaseActivity.f - this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBaseActivity.g) + " mCurrentStep->" + this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBaseActivity.jdField_a_of_type_Int);
+      QLog.d(".troop.VideoCombineHelper", 2, "combineVideos end! isSuccess:" + paramBoolean + " path = " + paramString1);
     }
-    Object localObject2;
-    if (this.jdField_a_of_type_Int != 1)
+    File localFile = new File(paramString1);
+    if ((paramBoolean) && (localFile.exists()))
     {
-      if (localObject1 != null)
+      if (this.jdField_a_of_type_Ysl.a)
       {
-        localObject2 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBaseActivity.jdField_a_of_type_Long);
-        if (((Map)localObject1).containsKey(localObject2)) {
-          ApolloBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBaseActivity).edit().remove((String)localObject2).commit();
-        }
+        this.jdField_a_of_type_Ysm.jdField_a_of_type_Yta.b(this.jdField_a_of_type_Ysm);
+        return;
       }
+      if (this.jdField_a_of_type_Ysm.jdField_a_of_type_JavaLangString != null)
+      {
+        l = System.currentTimeMillis();
+        this.jdField_a_of_type_Ysm.jdField_a_of_type_Ysb.a(paramString1, this.jdField_a_of_type_Ysm.jdField_a_of_type_JavaLangString, new yso(this, l));
+        return;
+      }
+      long l = System.currentTimeMillis();
+      this.jdField_a_of_type_Ysm.a(localFile, this.jdField_a_of_type_Ysm.b, new ysq(this, l));
       return;
     }
-    localObject1 = ((Map)localObject1).entrySet().iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (Map.Entry)((Iterator)localObject1).next();
-      if ((((Map.Entry)localObject2).getValue() instanceof String))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloBaseActivity_report", 2, "current url:" + String.valueOf(((Map.Entry)localObject2).getValue()) + "\n current key:" + (String)((Map.Entry)localObject2).getKey());
-        }
-        if (!((String)((Map.Entry)localObject2).getKey()).equalsIgnoreCase(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBaseActivity.jdField_a_of_type_Long)))
-        {
-          localObject2 = String.valueOf(((Map.Entry)localObject2).getValue());
-          ReportController.b(null, "P_CliOper", "WebStatusReport", "", "hard code unknown", this.jdField_a_of_type_JavaLangString, 0, 1, 100, (String)localObject2, Build.VERSION.RELEASE, "100", "200");
-        }
-      }
-    }
-    ApolloBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBaseActivity).edit().clear().commit();
+    this.jdField_a_of_type_Ysm.d = paramString2;
+    this.jdField_a_of_type_Ysm.jdField_a_of_type_Yta.a(this.jdField_a_of_type_Ysm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ysn
  * JD-Core Version:    0.7.0.1
  */

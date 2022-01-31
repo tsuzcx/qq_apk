@@ -1,16 +1,30 @@
-public final class akgk
-  implements akgp
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+
+public class akgk
+  implements View.OnClickListener
 {
-  public Integer a(float paramFloat, Integer paramInteger1, Integer paramInteger2)
+  public akgk(SessionClearFragment paramSessionClearFragment) {}
+  
+  public void onClick(View paramView)
   {
-    int i = paramInteger1.intValue();
-    float f = i;
-    return Integer.valueOf((int)((paramInteger2.intValue() - i) * paramFloat + f));
+    if (SessionClearFragment.a(this.a) == 0)
+    {
+      SessionClearFragment.a(this.a).setText(alud.a(2131714237));
+      SessionClearFragment.a(this.a, 1);
+      SessionClearFragment.a(this.a).b();
+      return;
+    }
+    SessionClearFragment.a(this.a).setText(alud.a(2131714235));
+    SessionClearFragment.a(this.a, 0);
+    SessionClearFragment.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akgk
  * JD-Core Version:    0.7.0.1
  */

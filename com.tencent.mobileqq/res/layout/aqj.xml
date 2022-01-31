@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.widget.ScrollView android:scrollbarThumbVertical="@drawable/b2n" android:background="@color/z5" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.activity.activateFriend.ReminderViewPager android:id="@id/di" android:paddingLeft="34.0dip" android:paddingRight="34.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+          xmlns:android="http://schemas.android.com/apk/res/android" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/gag" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/aio_face_indicator" />
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:src="@drawable/aio_face_indicator" />
+        </LinearLayout>
+    </RelativeLayout>
+</com.tencent.widget.ScrollView>

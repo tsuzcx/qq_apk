@@ -1,37 +1,47 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.ArrayList;
+import java.util.List;
 
+@TargetApi(14)
 public class uqd
-  implements Animation.AnimationListener
 {
-  public uqd(PressToChangeVoicePanel paramPressToChangeVoicePanel) {}
+  public volatile int a;
+  public long a;
+  public ErrorMessage a;
+  public List<upy> a;
+  public int b;
+  public int c;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public uqd()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationEnd is called,time is:" + System.currentTimeMillis());
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationRepeat is called,time is:" + System.currentTimeMillis());
-    }
+    return (this.jdField_a_of_type_Int == 6) || (this.jdField_a_of_type_Int == 3);
   }
   
-  public void onAnimationStart(Animation paramAnimation)
+  public boolean b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationStart is called,time is:" + System.currentTimeMillis());
-    }
+    return this.jdField_a_of_type_Int == 5;
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("BaseTaskInfo{");
+    localStringBuffer.append("status=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", retryTimes=").append(this.b);
+    localStringBuffer.append(", result=").append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uqd
  * JD-Core Version:    0.7.0.1
  */

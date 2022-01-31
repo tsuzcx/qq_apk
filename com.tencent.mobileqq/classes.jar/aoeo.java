@@ -1,32 +1,47 @@
-import android.view.ViewParent;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerBarLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
 
 public class aoeo
-  implements Runnable
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
+  public aoeo(HistoryFormItem paramHistoryFormItem) {}
   
-  public aoeo(PickerBarLayout paramPickerBarLayout) {}
-  
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = PickerBarLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout);
-  }
-  
-  public void run()
-  {
-    if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout.getParent() != null) && (this.jdField_a_of_type_Int == PickerBarLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout)))
+    boolean bool = true;
+    int i;
+    HistoryFormItem localHistoryFormItem;
+    if (aoca.a())
     {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout.a = true;
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout.getParent().requestDisallowInterceptTouchEvent(true);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout.sendAccessibilityEvent(2);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout.a(PickerBarLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout));
+      i = 1;
+      if ((i != 0) && (this.a.a()))
+      {
+        localHistoryFormItem = this.a;
+        if (HistoryFormItem.a(this.a)) {
+          break label112;
+        }
+      }
+    }
+    for (;;)
+    {
+      HistoryFormItem.a(localHistoryFormItem, bool);
+      this.a.a(paramView, HistoryFormItem.a(this.a));
+      if (HistoryFormItem.a(this.a) != null) {
+        HistoryFormItem.a(this.a).a(paramView, HistoryFormItem.a(this.a), HistoryFormItem.a(this.a));
+      }
+      return;
+      aocr.a(paramView.getContext());
+      i = 0;
+      break;
+      label112:
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoeo
  * JD-Core Version:    0.7.0.1
  */

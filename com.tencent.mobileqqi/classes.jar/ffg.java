@@ -1,85 +1,37 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.net.NetworkInfo;
-import android.net.NetworkInfo.State;
-import android.os.Handler;
-import com.dataline.mpfile.MpfileDataCenter;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.DataLineHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import wifiphoto.WifiPhotoDataCenter;
-import wifiphoto.WifiPhotoStatusMgr;
+import com.tencent.mobileqq.model.QZoneManager.FeedType;
+import com.tencent.mobileqq.servlet.QZoneManagerImp;
 
 public class ffg
   extends BroadcastReceiver
 {
-  public ffg(DataLineHandler paramDataLineHandler, QQAppInterface paramQQAppInterface) {}
+  public ffg(QQAppInterface paramQQAppInterface) {}
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent != null)
+    int i;
+    if (paramIntent.getAction().equals("com.tencent.qzone.cleanunreadcount"))
     {
-      paramContext = paramIntent.getAction();
+      i = paramIntent.getIntExtra("clean_unread_feed_type", -1);
+      paramContext = (QZoneManagerImp)this.a.getManager(9);
       if (paramContext != null)
       {
-        if ((!paramContext.equals("com.tencent.mobileqq.intent.logout")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) && (!paramContext.equals("mqq.i.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.i.intent.action.FORCE_LOGOUT")) && (!paramContext.equals("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getPackageName())) && (!paramContext.equals("mqq.i.intent.action.FORCE_LOGOUT"))) {
-          break label163;
+        if (i != 0) {
+          break label62;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("DataLineHandler", 2, "--->>logout cancel all task");
+        if (paramContext.a(QZoneManager.FeedType.friendSpace) > 0) {
+          paramContext.a(QZoneManager.FeedType.friendSpace, 0, 0L, null);
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.d(32);
-        if (DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler) != null)
-        {
-          DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler).a();
-          DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler, null);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.b(false);
-        DataLineHandler.a.a.d();
       }
     }
-    label163:
-    label320:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (!paramContext.equals("android.net.conn.CONNECTIVITY_CHANGE")) {
-              break label320;
-            }
-            paramContext = (NetworkInfo)paramIntent.getParcelableExtra("networkInfo");
-            if ((paramContext == null) || (paramContext.getState() != NetworkInfo.State.DISCONNECTED) || (paramContext.getType() != 1)) {
-              break;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("DataLineHandler", 2, "--->>wifi lost cancel all task");
-            }
-            this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.d(8);
-          } while (!DataLineHandler.a.a.a());
-          this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.b(false);
-          DataLineHandler.a.a.d();
-          this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.k();
-          return;
-        } while ((paramContext == null) || (paramContext.getState() != NetworkInfo.State.CONNECTED) || (paramContext.getType() != 1) || (!DataLineHandler.a.a.a()));
-        if (QLog.isColorLevel()) {
-          QLog.d("wifiphoto", 2, "wifi status change and ask if need open wifiphoto");
-        }
-        DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler);
-        return;
-      } while ((!paramContext.equals("com.tencent.dataline.wifiphoto.ACTION_WIFIPHOTO_CONNECTED")) || (!DataLineHandler.a.a.a()));
-      paramContext = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(Conversation.class);
-    } while (paramContext == null);
-    paramIntent = paramContext.obtainMessage(1134021);
-    paramIntent.arg1 = 2;
-    paramContext.sendMessage(paramIntent);
+    label62:
+    while ((i != 1) || (paramContext.a(QZoneManager.FeedType.mySpacefeed) <= 0)) {
+      return;
+    }
+    paramContext.a(QZoneManager.FeedType.mySpacefeed, 0, 0L, null);
   }
 }
 

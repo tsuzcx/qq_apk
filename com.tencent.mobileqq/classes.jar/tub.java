@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.util.FaceDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class tub
-  implements Runnable
+  implements View.OnClickListener
 {
-  tub(tua paramtua, String paramString, int paramInt) {}
+  tub(tua paramtua) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_Tua.a.app, 1, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Tua.a.runOnUiThread(new tuc(this, localFaceDrawable));
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tub
  * JD-Core Version:    0.7.0.1
  */

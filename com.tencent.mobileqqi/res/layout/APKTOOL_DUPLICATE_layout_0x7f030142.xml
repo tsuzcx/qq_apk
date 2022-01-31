@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080621" android:background="#ffebebeb" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02015c" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080128" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00e2" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00e2" />
-    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f080025" android:visibility="gone" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00e2" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00e2" android:progress="0" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203ed" style="?android:attr/progressBarStyleHorizontal" />
-    <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08036f" android:background="#ff9f9f9f" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="1.0dip" />
-    <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080622" android:background="#ff9f9f9f" android:visibility="gone" android:layout_width="1.0dip" android:layout_height="30.0dip" />
-</FrameLayout>
+    <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080623" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" />
+</LinearLayout>

@@ -1,19 +1,24 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
 
-public final class ajzd
-  extends View.AccessibilityDelegate
+public class ajzd
+  extends Handler
 {
-  public ajzd(CharSequence paramCharSequence, String paramString) {}
+  public ajzd(FriendListInnerFrame paramFriendListInnerFrame) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public void handleMessage(Message paramMessage)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    if (this.jdField_a_of_type_JavaLangCharSequence != null) {
-      paramAccessibilityNodeInfo.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.a.setPadding(0, 0, 40, 0);
+      return;
     }
-    paramAccessibilityNodeInfo.setClassName(this.jdField_a_of_type_JavaLangString);
+    this.a.a.setPadding(0, 0, 0, 0);
   }
 }
 

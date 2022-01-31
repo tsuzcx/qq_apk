@@ -1,34 +1,56 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.PicFeedUploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader.UploadListener;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.NinePatch;
+import android.graphics.Paint;
+import android.graphics.Rect;
 
-class aevs
-  implements Runnable
+public class aevs
 {
-  aevs(aevr paramaevr, PicFeedUploadInfo paramPicFeedUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult) {}
+  public Bitmap a;
+  public NinePatch a;
   
-  public void run()
+  public void a()
   {
-    NearbyMomentManager localNearbyMomentManager = (NearbyMomentManager)this.jdField_a_of_type_Aevr.a.a.getManager(262);
-    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelPicFeedUploadInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.jdField_a_of_type_Int == 0)) {
-      localNearbyMomentManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.e);
-    }
-    for (;;)
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
-      if (ImageFeedsUploader.a(this.jdField_a_of_type_Aevr.a) != null) {
-        ImageFeedsUploader.a(this.jdField_a_of_type_Aevr.a).a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelPicFeedUploadInfo, this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult);
-      }
-      return;
-      localNearbyMomentManager.d(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
     }
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    if (paramBitmap != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      paramBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap.getNinePatchChunk();
+      if ((paramBitmap != null) && (NinePatch.isNinePatchChunk(paramBitmap))) {
+        this.jdField_a_of_type_AndroidGraphicsNinePatch = new NinePatch(this.jdField_a_of_type_AndroidGraphicsBitmap, paramBitmap, null);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_AndroidGraphicsNinePatch = null;
+  }
+  
+  public void a(Canvas paramCanvas, Rect paramRect1, Rect paramRect2, Paint paramPaint)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsNinePatch != null) {
+      if (paramPaint != null) {
+        this.jdField_a_of_type_AndroidGraphicsNinePatch.draw(paramCanvas, paramRect2, paramPaint);
+      }
+    }
+    while ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (paramPaint == null)) {
+      return;
+    }
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramRect1, paramRect2, paramPaint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aevs
  * JD-Core Version:    0.7.0.1
  */

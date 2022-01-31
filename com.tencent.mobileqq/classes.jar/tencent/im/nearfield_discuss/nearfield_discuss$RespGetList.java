@@ -11,13 +11,13 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class nearfield_discuss$RespGetList
-  extends MessageMicro
+  extends MessageMicro<RespGetList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBInt32Field int32_update_interval = PBField.initInt32(0);
   public nearfield_discuss.BusiRespHead msg_head = new nearfield_discuss.BusiRespHead();
-  public final PBRepeatMessageField rpt_msg_user_list = PBField.initRepeatMessage(nearfield_discuss.UserProfile.class);
+  public final PBRepeatMessageField<nearfield_discuss.UserProfile> rpt_msg_user_list = PBField.initRepeatMessage(nearfield_discuss.UserProfile.class);
   public final PBUInt32Field uint32_button_switch = PBField.initUInt32(0);
   public final PBUInt32Field uint32_has_created = PBField.initUInt32(0);
   public final PBUInt32Field uint32_session_id = PBField.initUInt32(0);
@@ -31,7 +31,7 @@ public final class nearfield_discuss$RespGetList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.nearfield_discuss.nearfield_discuss.RespGetList
  * JD-Core Version:    0.7.0.1
  */

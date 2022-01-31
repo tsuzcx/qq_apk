@@ -6,22 +6,22 @@ import android.view.View;
 import android.widget.ImageView;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.international.LocaleUtil;
-import emh;
-import emi;
-import emj;
-import emk;
-import eml;
-import emm;
-import emn;
-import emo;
-import emp;
+import ehe;
+import ehf;
+import ehg;
+import ehh;
+import ehi;
+import ehj;
+import ehk;
+import ehl;
+import ehm;
 
 public class SelectLanguageActivity
   extends IphoneTitleBarActivity
 {
   private static final String jdField_a_of_type_JavaLangString = "SelectLanguageActivity";
   private int jdField_a_of_type_Int = 0;
-  private Integer[] jdField_a_of_type_ArrayOfJavaLangInteger = { Integer.valueOf(0), Integer.valueOf(2131231839), Integer.valueOf(2131231841), Integer.valueOf(2131231843), Integer.valueOf(2131231845), Integer.valueOf(2131231847), Integer.valueOf(2131231849), Integer.valueOf(2131231851), Integer.valueOf(2131231853) };
+  private Integer[] jdField_a_of_type_ArrayOfJavaLangInteger = { Integer.valueOf(0), Integer.valueOf(2131231841), Integer.valueOf(2131231843), Integer.valueOf(2131231845), Integer.valueOf(2131231847), Integer.valueOf(2131231849), Integer.valueOf(2131231851), Integer.valueOf(2131231853), Integer.valueOf(2131231855) };
   
   private void a(int paramInt)
   {
@@ -31,29 +31,29 @@ public class SelectLanguageActivity
     int i = this.jdField_a_of_type_Int;
     this.jdField_a_of_type_Int = paramInt;
     if (i >= 1) {
-      ((ImageView)findViewById(this.jdField_a_of_type_ArrayOfJavaLangInteger[i].intValue())).setImageResource(2130840216);
+      ((ImageView)findViewById(this.jdField_a_of_type_ArrayOfJavaLangInteger[i].intValue())).setImageResource(2130840218);
     }
-    ((ImageView)findViewById(this.jdField_a_of_type_ArrayOfJavaLangInteger[this.jdField_a_of_type_Int].intValue())).setImageResource(2130840215);
+    ((ImageView)findViewById(this.jdField_a_of_type_ArrayOfJavaLangInteger[this.jdField_a_of_type_Int].intValue())).setImageResource(2130840217);
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903254);
+    setContentView(2130903256);
     setTitle(2131559346);
-    b(2131559347, new emh(this));
+    b(2131559347, new ehe(this));
     d(true);
     this.jdField_a_of_type_Int = LocaleUtil.a(getApplicationContext());
     Log.d("SelectLanguageActivity", "last saved item " + this.jdField_a_of_type_Int);
-    ((ImageView)findViewById(this.jdField_a_of_type_ArrayOfJavaLangInteger[this.jdField_a_of_type_Int].intValue())).setImageResource(2130840215);
-    findViewById(2131231840).setOnClickListener(new emi(this));
-    findViewById(2131231842).setOnClickListener(new emj(this));
-    findViewById(2131231838).setOnClickListener(new emk(this));
-    findViewById(2131231844).setOnClickListener(new eml(this));
-    findViewById(2131231846).setOnClickListener(new emm(this));
-    findViewById(2131231848).setOnClickListener(new emn(this));
-    findViewById(2131231850).setOnClickListener(new emo(this));
-    findViewById(2131231852).setOnClickListener(new emp(this));
+    ((ImageView)findViewById(this.jdField_a_of_type_ArrayOfJavaLangInteger[this.jdField_a_of_type_Int].intValue())).setImageResource(2130840217);
+    findViewById(2131231842).setOnClickListener(new ehf(this));
+    findViewById(2131231844).setOnClickListener(new ehg(this));
+    findViewById(2131231840).setOnClickListener(new ehh(this));
+    findViewById(2131231846).setOnClickListener(new ehi(this));
+    findViewById(2131231848).setOnClickListener(new ehj(this));
+    findViewById(2131231850).setOnClickListener(new ehk(this));
+    findViewById(2131231852).setOnClickListener(new ehl(this));
+    findViewById(2131231854).setOnClickListener(new ehm(this));
   }
 }
 

@@ -1,41 +1,136 @@
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
 
-public class sko
-  implements ActionSheet.OnButtonClickListener
+public final class sko
 {
-  public sko(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, ActionSheet paramActionSheet) {}
+  private int jdField_a_of_type_Int = -1;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private View jdField_a_of_type_AndroidViewView;
+  public TabLayoutCompat a;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private Object jdField_a_of_type_JavaLangObject;
+  public skp a;
+  private CharSequence b;
   
-  public void OnClick(View paramView, int paramInt)
+  public int a()
   {
-    switch (paramInt)
-    {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  @Nullable
+  public Drawable a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  }
+  
+  @Nullable
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  @Nullable
+  public CharSequence a()
+  {
+    return this.jdField_a_of_type_JavaLangCharSequence;
+  }
+  
+  @Nullable
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  @NonNull
+  public sko a(int paramInt)
+  {
+    return a(LayoutInflater.from(this.jdField_a_of_type_Skp.getContext()).inflate(paramInt, this.jdField_a_of_type_Skp, false));
+  }
+  
+  @NonNull
+  public sko a(@Nullable View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    c();
+    return this;
+  }
+  
+  @NonNull
+  public sko a(@Nullable CharSequence paramCharSequence)
+  {
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    c();
+    return this;
+  }
+  
+  @NonNull
+  public sko a(@Nullable Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    return this;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
+      throw new IllegalArgumentException("Tab not attached to a TabLayout");
     }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.isFinishing()))
-      {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.c();
-      continue;
-      ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity, DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), null, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.getCurrentAccountUin(), 1014, null);
-      TroopReportor.a("Grp_Dis_set", "Dis_info", "clk_report", 0, 0, new String[] { DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a) });
-      continue;
-      DiscussionInfoCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.e(this);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
+      throw new IllegalArgumentException("Tab not attached to a TabLayout");
     }
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b() == this.jdField_a_of_type_Int;
+  }
+  
+  @Nullable
+  public CharSequence b()
+  {
+    return this.b;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
+      throw new IllegalArgumentException("Tab not attached to a TabLayout");
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.c(this, true);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Skp != null) {
+      this.jdField_a_of_type_Skp.b();
+    }
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat = null;
+    this.jdField_a_of_type_Skp = null;
+    this.jdField_a_of_type_JavaLangObject = null;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    this.jdField_a_of_type_JavaLangCharSequence = null;
+    this.b = null;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidViewView = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sko
  * JD-Core Version:    0.7.0.1
  */

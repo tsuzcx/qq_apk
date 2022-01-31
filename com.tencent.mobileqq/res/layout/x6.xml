@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageButton android:id="@id/g75" android:background="@drawable/ux" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:onClick="BtnOnClick" android:contentDescription="@string/sj" />
+    <Button android:textSize="16.0dip" android:textColor="@color/ru" android:gravity="center_horizontal" android:id="@id/g6v" android:background="@color/ajr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="60.0dip" android:layout_marginBottom="28.0dip" android:text="@string/ic_" android:drawablePadding="14.0dip" android:layout_above="@id/g75" android:layout_alignParentLeft="true" android:onClick="BtnOnClick" android:contentDescription="@string/d9t" />
+    <Button android:textSize="16.0dip" android:textColor="@color/ru" android:gravity="center_horizontal" android:id="@id/g78" android:background="@color/ajr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="60.0dip" android:layout_marginBottom="28.0dip" android:text="@string/dlw" android:drawablePadding="14.0dip" android:layout_above="@id/g75" android:layout_alignParentRight="true" android:onClick="BtnOnClick" android:contentDescription="@string/dlw" />
+</RelativeLayout>

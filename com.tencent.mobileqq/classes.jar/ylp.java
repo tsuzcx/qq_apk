@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.apollo.utils.ApolloHttpCallBack;
-import com.tencent.mobileqq.apollo.utils.ApolloHttpUtil;
-
-public final class ylp
-  implements Runnable
+final class ylp
+  implements bhum
 {
-  public ylp(String paramString1, String paramString2, byte[] paramArrayOfByte, String[] paramArrayOfString, ApolloHttpCallBack paramApolloHttpCallBack) {}
+  ylp(yls paramyls, bhuf parambhuf) {}
   
-  public void run()
+  public void onDismiss()
   {
-    ApolloHttpUtil.a(this.jdField_a_of_type_JavaLangString.toUpperCase(), this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpCallBack);
+    if (this.jdField_a_of_type_Yls != null) {
+      this.jdField_a_of_type_Yls.a(false);
+    }
+    this.jdField_a_of_type_Bhuf.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ylp
  * JD-Core Version:    0.7.0.1
  */

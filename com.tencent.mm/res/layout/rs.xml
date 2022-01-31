@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout style="@style/q1"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
+    <ListView android:id="@id/b6z" android:background="@color/vy" android:focusable="true" android:transcriptMode="disabled" android:overScrollMode="never" style="@style/mn" />
+    <TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:gravity="center" android:id="@id/a6l" android:paddingTop="0.0dip" android:paddingBottom="60.0dip" android:visibility="gone" android:text="@string/cnr" android:layout_centerInParent="true" style="@style/lf" />
+</RelativeLayout>

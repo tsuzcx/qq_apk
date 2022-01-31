@@ -1,50 +1,28 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Handler;
-import com.tencent.mobileqq.service.gamecenter.AppLaucherHelper;
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahxi
-  extends WtloginListener
+class ahxi
+  implements DialogInterface.OnClickListener
 {
-  public ahxi(AppLaucherHelper paramAppLaucherHelper, String paramString, WtloginHelper paramWtloginHelper, int paramInt, Context paramContext) {}
+  ahxi(ahww paramahww, boolean paramBoolean, String paramString) {}
   
-  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
-    if (QLog.isColorLevel()) {
-      QLog.d(getClass().getSimpleName(), 2, "geta1 OnException " + paramErrMsg);
+    azqs.b(null, "dc00898", "", "", "0X8009DCB", "0X8009DCB", 0, 0, ahww.a(this.jdField_a_of_type_Ahww), "", "", "");
+    if (this.jdField_a_of_type_Boolean) {
+      ahww.a(this.jdField_a_of_type_Ahww, ahww.a(this.jdField_a_of_type_Ahww), Long.valueOf(ahww.a(this.jdField_a_of_type_Ahww)).longValue(), false);
     }
-    AppLaucherHelper.a = false;
-    this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.b.removeMessages(0);
-  }
-  
-  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.b.removeMessages(0);
-    AppLaucherHelper.a = false;
-    if (paramInt2 != 0)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(getClass().getSimpleName(), 2, "geta1 failed " + paramInt2);
-      }
+      this.jdField_a_of_type_Ahww.f();
       return;
+      ahww.a(this.jdField_a_of_type_Ahww, ahww.a(this.jdField_a_of_type_Ahww), Long.valueOf(ahww.a(this.jdField_a_of_type_Ahww)).longValue(), false, this.jdField_a_of_type_JavaLangString);
     }
-    paramArrayOfByte1 = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    paramArrayOfByte1.putExtras(this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo));
-    paramArrayOfByte1.setFlags(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramArrayOfByte1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxi
  * JD-Core Version:    0.7.0.1
  */

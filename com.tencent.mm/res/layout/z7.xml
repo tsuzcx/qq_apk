@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/bm" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.base.MultiTouchImageView android:gravity="center" android:id="@id/bl" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <include layout="@layout/yy" />
+    </RelativeLayout>
+    <ImageView android:gravity="center" android:id="@id/a05" android:layout_width="150.0dip" android:layout_height="150.0dip" />
+    <ProgressBar android:id="@id/ats" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="50.0dip" android:layout_marginRight="20.0dip" style="?android:attr/progressBarStyleHorizontal" />
+    <TextView android:textSize="@dimen/dq" android:textColor="@color/a6q" android:gravity="center" android:id="@id/bt1" android:background="@color/h6" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

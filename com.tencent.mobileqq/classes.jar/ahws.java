@@ -1,30 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SearchHistoryManager;
-import com.tencent.mobileqq.data.SearchHistory;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
-public final class ahws
-  implements Runnable
+public class ahws
+  extends RecyclerView.ViewHolder
 {
-  public ahws(int paramInt, String paramString1, String paramString2, String paramString3, QQAppInterface paramQQAppInterface) {}
+  TextView a;
   
-  public void run()
+  ahws(View paramView)
   {
-    SearchHistory localSearchHistory = new SearchHistory();
-    localSearchHistory.type = this.jdField_a_of_type_Int;
-    localSearchHistory.uin = this.jdField_a_of_type_JavaLangString;
-    localSearchHistory.troopUin = this.b;
-    localSearchHistory.displayName = this.c;
-    SearchHistoryManager localSearchHistoryManager = (SearchHistoryManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(54);
-    if (localSearchHistoryManager == null) {
-      return;
-    }
-    localSearchHistoryManager.a(localSearchHistory);
-    com.tencent.mobileqq.search.activity.UniteSearchActivity.b = true;
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131379162));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahws
  * JD-Core Version:    0.7.0.1
  */

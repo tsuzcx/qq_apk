@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="zzb_active_tip_margin_left">21.0dip</dimen>
-    <dimen name="logo_margin_top">5.0dip</dimen>
-    <dimen name="scan_tip_margin_top">1.0dip</dimen>
-    <dimen name="btn_margin_bottom">10.0dip</dimen>
-    <dimen name="left_menu_item_height">41.0dip</dimen>
     <dimen name="branerheight">82.0dip</dimen>
+    <dimen name="logo_margin_top">5.0dip</dimen>
     <dimen name="photoheight">257.0dip</dimen>
     <dimen name="photowidth">397.0dip</dimen>
+    <dimen name="btn_margin_bottom">10.0dip</dimen>
+    <dimen name="left_menu_item_height">41.0dip</dimen>
+    <dimen name="scan_tip_margin_top">1.0dip</dimen>
 </resources>

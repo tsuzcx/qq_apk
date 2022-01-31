@@ -1,66 +1,105 @@
-import android.content.Intent;
+import android.app.Activity;
 import android.os.SystemClock;
-import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDanceMachine;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerVideoItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
 
-public class oco
-  extends MessageObserver
+class oco
+  implements ViewBase.OnClickListener
 {
-  public oco(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
+  oco(ocn paramocn) {}
   
-  public void a(MessageForDanceMachine paramMessageForDanceMachine)
+  public void onClick(ViewBase paramViewBase)
   {
-    super.a(paramMessageForDanceMachine);
-    if (!DanceMachineUploadVideoFragment.a(this.a)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadDanceMachineVideo", 2, "do not need callback");
+    boolean bool1;
+    int i;
+    if ((ocm.a(this.a.jdField_a_of_type_Ocm) instanceof ProteusItemData)) {
+      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+      {
+      default: 
+        bool1 = true;
+        i = -1;
+        if (odv.f((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData)) {
+          odv.b(ocl.a(this.a.jdField_a_of_type_Ocm.a), (AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+        }
+        break;
       }
     }
     do
     {
+      do
+      {
+        do
+        {
+          return;
+          sdj.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
+        } while (!ocl.b);
+        ocl.c = true;
+      } while (ocm.a(this.a.jdField_a_of_type_Ocm) == null);
+      ocm.a(this.a.jdField_a_of_type_Ocm).p();
+      ocm.a(this.a.jdField_a_of_type_Ocm).o();
       return;
-      DanceMachineUploadVideoFragment.a(this.a, false);
-      if (paramMessageForDanceMachine != null) {
+      bool1 = true;
+      i = 4;
+      break;
+      bool1 = true;
+      i = 3;
+      break;
+      bool1 = false;
+      i = 5;
+      break;
+      bool1 = true;
+      i = 8;
+      break;
+      bool1 = true;
+      i = 1000;
+      break;
+      paramViewBase = oef.a((ProteusBannerVideoItemData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+      if (!szl.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase)) {
+        break label304;
+      }
+    } while (ocm.a(this.a.jdField_a_of_type_Ocm) == null);
+    ocm.a(this.a.jdField_a_of_type_Ocm).p();
+    return;
+    label304:
+    if (ocm.a(this.a.jdField_a_of_type_Ocm) != null) {}
+    for (boolean bool2 = ocm.a(this.a.jdField_a_of_type_Ocm).a();; bool2 = false)
+    {
+      paramViewBase.setClickPos(i);
+      Object localObject = new obg(bool2);
+      if (i == 8) {
+        ((obg)localObject).c = true;
+      }
+      localObject = szl.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, paramViewBase, null, 2, bool1, (obg)localObject);
+      if (localObject == null) {
         break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("UploadDanceMachineVideo", 2, "mfd is null");
-    return;
-    if (QLog.isColorLevel()) {
-      QLog.d("UploadDanceMachineVideo", 2, "uuid : " + paramMessageForDanceMachine.uuid + "  md5 : " + paramMessageForDanceMachine.md5 + " thumbFilePath : " + paramMessageForDanceMachine.mThumbFilePath);
-    }
-    if (paramMessageForDanceMachine.errorCode == 0)
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("upload_result", true);
-      localIntent.putExtra("upload_video_uuid", paramMessageForDanceMachine.uuid);
-      localIntent.putExtra("upload_video_md5", paramMessageForDanceMachine.md5);
-      localIntent.putExtra("upload_video_thumb", paramMessageForDanceMachine.mThumbFilePath);
-      localIntent.putExtra("share_method", DanceMachineUploadVideoFragment.a(this.a));
-      localIntent.putExtra("current_nickname", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
-      localIntent.putExtra("current_uin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-      if (DanceMachineUploadVideoFragment.a(this.a) != -1L) {
-        localIntent.putExtra("upload_time_cost", SystemClock.elapsedRealtime() - DanceMachineUploadVideoFragment.a(this.a));
+      ((GdtHandler.Params)localObject).f = oed.b((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+      szl.a((GdtHandler.Params)localObject, this.a.jdField_a_of_type_AndroidContentContext, paramViewBase);
+      ocl.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = (GdtHandler.Params)localObject;
+      if (ocl.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params != null) {}
+      for (long l = SystemClock.elapsedRealtime();; l = -2147483648L)
+      {
+        ocl.jdField_a_of_type_Long = l;
+        oef.a((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+        if (ocm.a(this.a.jdField_a_of_type_Ocm) == null) {
+          break;
+        }
+        ocm.a(this.a.jdField_a_of_type_Ocm).p();
+        return;
       }
-      paramMessageForDanceMachine = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-      BaseActivity localBaseActivity = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-      paramMessageForDanceMachine.setResult(-1, localIntent);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oco
  * JD-Core Version:    0.7.0.1
  */

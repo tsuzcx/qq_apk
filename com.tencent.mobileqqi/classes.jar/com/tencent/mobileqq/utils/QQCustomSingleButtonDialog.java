@@ -20,10 +20,10 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.mobileqq.text.QQText;
-import hhk;
-import hhl;
-import hhm;
-import hhn;
+import hdd;
+import hde;
+import hdf;
+import hdg;
 
 public class QQCustomSingleButtonDialog
   extends Dialog
@@ -33,7 +33,7 @@ public class QQCustomSingleButtonDialog
   public DialogInterface.OnClickListener a;
   public LayoutInflater a;
   View jdField_a_of_type_AndroidViewView;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new hhk(this);
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new hdd(this);
   Button jdField_a_of_type_AndroidWidgetButton;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
@@ -84,7 +84,7 @@ public class QQCustomSingleButtonDialog
     this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(paramInt1);
     this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getContext().getString(paramInt2));
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new hhm(this, paramOnClickListener));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new hdf(this, paramOnClickListener));
     a();
     return this;
   }
@@ -138,10 +138,10 @@ public class QQCustomSingleButtonDialog
       }
       if (paramInt == 2)
       {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838002);
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838004);
         return this;
       }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838003);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838005);
       return this;
     }
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
@@ -223,7 +223,7 @@ public class QQCustomSingleButtonDialog
     this.d.setText(new QQText(paramString, 5, 20));
     this.d.setContentDescription(paramString);
     this.d.setVisibility(0);
-    this.d.setOnClickListener(new hhl(this, paramOnClickListener));
+    this.d.setOnClickListener(new hde(this, paramOnClickListener));
     a();
     return this;
   }
@@ -276,7 +276,7 @@ public class QQCustomSingleButtonDialog
     this.d.setText(paramInt);
     this.d.setContentDescription(getContext().getString(paramInt));
     this.d.setVisibility(0);
-    this.d.setOnClickListener(new hhn(this, paramOnClickListener));
+    this.d.setOnClickListener(new hdg(this, paramOnClickListener));
     a();
     return this;
   }

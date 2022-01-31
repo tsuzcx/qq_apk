@@ -16,15 +16,15 @@ import com.tencent.component.media.image.drawable.BitmapRefDrawable;
 public class MarkProcessor
   extends ImageProcessor
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Bitmap mMarker;
+  private float mPercent;
+  private int mType;
   
   public MarkProcessor(Bitmap paramBitmap, int paramInt, float paramFloat)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat;
+    this.mMarker = paramBitmap;
+    this.mType = paramInt;
+    this.mPercent = paramFloat;
   }
   
   public int getType()
@@ -45,17 +45,17 @@ public class MarkProcessor
       Canvas localCanvas = new Canvas(localBitmapReference1.getBitmap());
       RectF localRectF = new RectF(0.0F, 0.0F, localBitmapReference2.getWidth(), localBitmapReference2.getHeight());
       f1 = localBitmapReference2.getWidth();
-      f1 = this.jdField_a_of_type_Float * f1;
+      f1 = this.mPercent * f1;
       f2 = localBitmapReference2.getHeight();
-      f2 = this.jdField_a_of_type_Float * f2;
-      switch (this.jdField_a_of_type_Int)
+      f2 = this.mPercent * f2;
+      switch (this.mType)
       {
       default: 
         paramDrawable = null;
         Paint localPaint = new Paint();
         localPaint.setAntiAlias(true);
         localCanvas.drawBitmap(localBitmapReference2.getBitmap(), null, localRectF, localPaint);
-        localCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, paramDrawable, localPaint);
+        localCanvas.drawBitmap(this.mMarker, null, paramDrawable, localPaint);
         return new BitmapRefDrawable(localBitmapReference1);
       }
     }
@@ -80,7 +80,7 @@ public class MarkProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.processor.MarkProcessor
  * JD-Core Version:    0.7.0.1
  */

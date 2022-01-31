@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class C2CType0x211_SubC2CType0x8$ReqAIOJudge
-  extends MessageMicro
+  extends MessageMicro<ReqAIOJudge>
 {
   public static final int MSG_HEAD_FIELD_NUMBER = 1;
   public static final int MSG_NEARFIELD_INFO_FIELD_NUMBER = 3;

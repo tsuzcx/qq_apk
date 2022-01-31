@@ -1,49 +1,58 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneShareData;
-import cooperation.qzone.QZoneShareManager;
-import cooperation.qzone.share.QZoneShareActivity;
-import cooperation.qzone.share.QzoneShareServlet;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.manager.TicketManager;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-class amzq
-  implements Runnable
+public abstract class amzq
+  extends Binder
+  implements amzp
 {
-  amzq(amzp paramamzp, ArrayList paramArrayList, String paramString) {}
-  
-  public void run()
+  public amzq()
   {
-    Object localObject = this.jdField_a_of_type_Amzp.a.a.app.getAccount();
-    String str = ((TicketManager)this.jdField_a_of_type_Amzp.a.a.app.getManager(2)).getSkey((String)localObject);
-    if (new ArrayList(this.jdField_a_of_type_JavaUtilArrayList).equals(QZoneShareManager.a(this.jdField_a_of_type_JavaUtilArrayList, (String)localObject, str, "1"))) {
-      QLog.e("QZoneShare", 1, "imageChangeError!");
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+  }
+  
+  public static amzp a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
     }
-    try
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof amzp))) {
+      return (amzp)localIInterface;
+    }
+    return new amzr(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      l1 = Long.parseLong(QZoneShareActivity.a(this.jdField_a_of_type_Amzp.a.a).f);
-      long l2 = l1;
-      if (l1 <= 0L) {
-        l2 = this.jdField_a_of_type_Amzp.a.a.app.getLongAccountUin();
-      }
-      localObject = new NewIntent(this.jdField_a_of_type_Amzp.a.a, QzoneShareServlet.class);
-      ((NewIntent)localObject).putExtra("reason", this.jdField_a_of_type_JavaLangString);
-      ((NewIntent)localObject).putExtra("uin", l2);
-      ((NewIntent)localObject).putExtra("sharedata", QZoneShareActivity.a(this.jdField_a_of_type_Amzp.a.a));
-      BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject);
-      QLog.e("QZoneShare", 1, "startShare()");
-      return;
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+      a(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+      a(paramParcel1.readInt(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        long l1 = 0L;
-      }
-    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+    b(paramParcel1.readInt(), paramParcel1.readInt());
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 

@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
+import android.view.View;
+import com.tencent.image.URLImageView;
 
 class aiow
-  implements Runnable
+  implements bhtx
 {
-  aiow(aiov paramaiov, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  aiow(aiov paramaiov) {}
   
-  public void run()
+  public void b(View paramView)
   {
-    this.jdField_a_of_type_Aiov.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 1);
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof aiox))) {
+      ((aiox)paramView).a.setImageDrawable(null);
+    }
   }
 }
 

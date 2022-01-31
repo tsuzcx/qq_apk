@@ -1,19 +1,39 @@
 package com.tencent.token.ui;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ScrollView;
+import android.widget.TextView;
+import com.tencent.token.utils.w;
 
-final class xn
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class xn
+  extends BroadcastReceiver
 {
-  xn(RealNameStep1InputNameIdActivity paramRealNameStep1InputNameIdActivity, ScrollView paramScrollView) {}
+  xn(RealNameStep1InputNameIdActivity paramRealNameStep1InputNameIdActivity) {}
   
-  public final void onGlobalLayout()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.a.getRootView().getHeight() - this.a.getHeight() < this.a.getMeasuredHeight() / 3) && (!RealNameStep1InputNameIdActivity.access$500(this.b))) {
-      RealNameStep1InputNameIdActivity.access$2900(this.b);
+    if ("android.net.conn.CONNECTIVITY_CHANGE".equals(paramIntent.getAction()))
+    {
+      paramContext = (TextView)this.a.findViewById(2131558987);
+      if (paramContext != null) {
+        break label30;
+      }
     }
+    label30:
+    do
+    {
+      return;
+      paramContext.setText(2131231361);
+    } while (RealNameStep1InputNameIdActivity.access$800(this.a) == null);
+    if (!w.a())
+    {
+      RealNameStep1InputNameIdActivity.access$800(this.a).setVisibility(0);
+      RealNameStep1InputNameIdActivity.access$800(this.a).findViewById(2131558988).setOnClickListener(new xo(this));
+      return;
+    }
+    RealNameStep1InputNameIdActivity.access$800(this.a).setVisibility(8);
   }
 }
 

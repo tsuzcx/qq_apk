@@ -1,60 +1,98 @@
 package com.tencent.mobileqq.msf.core.net;
 
-import com.tencent.qphone.base.util.AbsSessionInputBuffer;
-import java.io.IOException;
-import org.apache.http.impl.io.HttpTransportMetricsImpl;
-import org.apache.http.util.ByteArrayBuffer;
+import com.tencent.qphone.base.util.CodecWarpper;
+import com.tencent.qphone.base.util.QLog;
+import java.io.FileDescriptor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.net.Socket;
+import java.net.SocketImpl;
 
-public class h
-  extends AbsSessionInputBuffer
+public final class h
+  extends Socket
 {
-  public h()
-  {
-    this.linebuffer = new ByteArrayBuffer(1024);
-    this.charset = "US-ASCII";
-    if ((this.charset.equalsIgnoreCase("US-ASCII")) || (this.charset.equalsIgnoreCase("ASCII"))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.ascii = bool;
-      this.maxLineLen = -1;
-      this.metrics = new HttpTransportMetricsImpl();
-      return;
-    }
-  }
+  private static final String a = "MSFSocket";
   
-  public void a(byte[] paramArrayOfByte)
+  private int b()
   {
-    if ((this.bufferlen != 0) && (this.bufferpos < this.bufferlen))
-    {
-      int i = this.bufferlen - this.bufferpos;
-      byte[] arrayOfByte = new byte[paramArrayOfByte.length + i];
-      System.arraycopy(this.buffer, this.bufferpos, arrayOfByte, 0, i);
-      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, i, paramArrayOfByte.length);
-      this.buffer = arrayOfByte;
-    }
+    j = -1;
     for (;;)
     {
-      this.bufferpos = 0;
-      this.bufferlen = this.buffer.length;
-      if (this.linebuffer != null) {
-        this.linebuffer.clear();
+      try
+      {
+        localObject1 = Socket.class.getDeclaredField("impl");
+        ((Field)localObject1).setAccessible(true);
+        localObject1 = (SocketImpl)((Field)localObject1).get(this);
+        localObject2 = Socket.class.getClassLoader().loadClass("java.net.SocketImpl").getDeclaredMethod("getFileDescriptor", new Class[0]);
+        ((Method)localObject2).setAccessible(true);
+        localObject1 = (FileDescriptor)((Method)localObject2).invoke(localObject1, new Object[0]);
+        if (localObject1 != null) {
+          continue;
+        }
+        i = -1;
       }
-      this.metrics.incrementBytesTransferred(paramArrayOfByte.length);
-      return;
-      this.buffer = new byte[paramArrayOfByte.length];
-      System.arraycopy(paramArrayOfByte, 0, this.buffer, 0, paramArrayOfByte.length);
+      catch (Throwable localThrowable)
+      {
+        Object localObject1;
+        Object localObject2;
+        int i = j;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("MSFSocket", 1, "getSocketFd fail", localThrowable);
+        i = j;
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("MSFSocket", 1, "getSocketFd = " + i);
+      }
+      return i;
+      localObject2 = FileDescriptor.class.getDeclaredField("descriptor");
+      ((Field)localObject2).setAccessible(true);
+      i = ((Integer)((Field)localObject2).get(localObject1)).intValue();
     }
   }
   
-  protected int fillBuffer()
-    throws IOException
+  public long a()
   {
-    return -1;
-  }
-  
-  public boolean isDataAvailable(int paramInt)
-  {
-    return hasBufferedData();
+    for (;;)
+    {
+      try
+      {
+        int i = b();
+        long l2;
+        if (i != -1)
+        {
+          l1 = CodecWarpper.getPacketLossLength(i);
+          l2 = l1;
+        }
+        long l1 = 0L;
+      }
+      catch (Throwable localThrowable1)
+      {
+        try
+        {
+          if (QLog.isColorLevel())
+          {
+            QLog.d("MSFSocket", 1, "getLossPacketLength = " + l1);
+            l2 = l1;
+          }
+          return l2;
+        }
+        catch (Throwable localThrowable2)
+        {
+          continue;
+        }
+        localThrowable1 = localThrowable1;
+        l1 = 0L;
+        l2 = l1;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("MSFSocket", 1, "getLossPacketLength fail", localThrowable1);
+          return l1;
+        }
+      }
+    }
   }
 }
 

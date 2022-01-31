@@ -1,59 +1,89 @@
+import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.RandomDrawableParam;
-import com.tencent.mobileqq.magicface.drawable.PngFrameUtil;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import java.io.File;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aedj
-  implements Runnable
+  extends Handler
 {
-  public aedj(PngFrameManager paramPngFrameManager, PngFrameManager.RandomDrawableParam paramRandomDrawableParam) {}
+  public aedj(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    File localFile = new File(EmoticonUtils.r.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString));
-    EmoticonManager localEmoticonManager = (EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13);
-    ??? = localEmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString);
-    Object localObject1 = ???;
-    if (??? == null)
-    {
-      localObject1 = new EmoticonPackage();
-      ((EmoticonPackage)localObject1).epId = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString;
-      ((EmoticonPackage)localObject1).aio = true;
+    if (paramMessage.what == 1) {
+      this.a.f();
     }
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager)
+    do
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_AndroidOsHandler != null)
+      return;
+      if (paramMessage.what == 2)
       {
-        if (!localFile.exists()) {
-          break label165;
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_OWNER_NAME");
         }
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameUtil.a(localFile);
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_AndroidOsHandler.obtainMessage(224, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
-        ((EmoticonPackage)localObject1).rscType = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_Int;
-        localEmoticonManager.a((EmoticonPackage)localObject1);
-      }
-      label165:
-      DownloadTask localDownloadTask;
-      do
-      {
+        this.a.a(2, this.a.a.getTroopOwnerName(), this.a.a.isFetchedTroopOwnerUin());
         return;
-        localDownloadTask = new DownloadTask(EmosmUtils.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString), localFile);
-        localDownloadTask.h = true;
-      } while ((DownloaderFactory.a(localDownloadTask, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != 0) || (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameUtil == null) || (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_AndroidOsHandler == null));
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameUtil.a(localFile);
-      ((EmoticonPackage)localObject1).rscType = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_Int;
-      localEmoticonManager.a((EmoticonPackage)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_AndroidOsHandler.obtainMessage(224, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
-    }
+      }
+      if (paramMessage.what == 4)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_INFO");
+        }
+        if ((this.a.a.dwGroupFlagExt & 0x800) != 0L) {
+          this.a.a(7, this.a.a.troopAuthenticateInfo, false);
+        }
+        this.a.a(2, this.a.a.troopOwnerNick, this.a.a.isFetchedTroopOwnerUin());
+        if ((this.a.a.troopOwnerNick == null) && (!TextUtils.isEmpty(this.a.a.troopowneruin))) {
+          TroopInfoActivity.c(this.a);
+        }
+        this.a.k();
+        if (!TextUtils.isEmpty(this.a.a.mRichFingerMemo)) {}
+        for (paramMessage = this.a.a.mRichFingerMemo;; paramMessage = this.a.getResources().getString(2131696639))
+        {
+          this.a.a(6, paramMessage, this.a.a.isOwnerOrAdim());
+          if (this.a.a.troopClass != null) {
+            break;
+          }
+          TroopInfoActivity.d(this.a);
+          return;
+        }
+      }
+      if (paramMessage.what == 5)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_CLASS");
+        }
+        this.a.a(4, this.a.a.troopClass, this.a.a.isOwnerOrAdim());
+        return;
+      }
+      if (paramMessage.what == 6)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_TAGS");
+        }
+        paramMessage = TroopInfoActivity.a(this.a, this.a.a);
+        this.a.a(8, paramMessage, true, 2, true);
+        return;
+      }
+      if (paramMessage.what == 7)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_INTEREST");
+        }
+        paramMessage = new ArrayList();
+        if (!TextUtils.isEmpty(this.a.a.tribeName)) {
+          paramMessage.add(this.a.a.tribeName);
+        }
+        this.a.a(9, paramMessage, true, 1, true);
+        TroopInfoActivity.e(this.a);
+        return;
+      }
+    } while (paramMessage.what != 8);
+    TroopInfoActivity.e(this.a);
   }
 }
 

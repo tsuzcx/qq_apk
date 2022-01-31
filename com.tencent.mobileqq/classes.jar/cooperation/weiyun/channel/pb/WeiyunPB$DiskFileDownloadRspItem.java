@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class WeiyunPB$DiskFileDownloadRspItem
-  extends MessageMicro
+  extends MessageMicro<DiskFileDownloadRspItem>
 {
   public static final int CHANNEL_COUNT_FIELD_NUMBER = 25;
   public static final int COOKIE_NAME_FIELD_NUMBER = 5;
@@ -54,7 +54,7 @@ public final class WeiyunPB$DiskFileDownloadRspItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.DiskFileDownloadRspItem
  * JD-Core Version:    0.7.0.1
  */

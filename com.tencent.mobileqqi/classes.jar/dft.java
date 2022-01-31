@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
-public class dft
-  implements DialogInterface.OnClickListener
+class dft
+  implements Runnable
 {
-  public dft(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  dft(dfs paramdfs) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    RegisterPhoneNumActivity.a(this.a.a, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dft
  * JD-Core Version:    0.7.0.1
  */

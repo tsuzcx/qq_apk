@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x6f$UpgradeQimFriendNotify
-  extends MessageMicro
+  extends MessageMicro<UpgradeQimFriendNotify>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_wording = PBField.initBytes(ByteStringMicro.EMPTY);

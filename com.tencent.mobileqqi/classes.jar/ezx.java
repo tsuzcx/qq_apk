@@ -1,25 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.voip.VoipDialInterface;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.CircleManager;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.service.circle.IFriendObserver;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class ezx
-  implements View.OnClickListener
+  extends FriendListObserver
 {
-  public ezx(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  public ezx(CircleManager paramCircleManager) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, String[] paramArrayOfString, Bundle paramBundle)
   {
-    this.a.a.a("6");
-    VoipDialInterfaceActivity.a(this.a, '6');
-    if (VoipDialInterfaceActivity.b(this.a)) {
-      new Thread(new ezy(this)).start();
+    if ((paramBundle.getBoolean("isHighPriority", false)) && (this.a.c != null))
+    {
+      paramBundle = this.a.c.iterator();
+      while (paramBundle.hasNext()) {
+        ((IFriendObserver)paramBundle.next()).a(paramBoolean, paramArrayOfString);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ezx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,45 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserManager.IModelCreater;
-import com.tencent.mobileqq.filemanager.fileviewer.TroopFileViewerParamParser;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.data.NowShowVideoInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.List;
+import tencent.im.ilive.photo.NowLiveGallary.RspBody.PhotoInfo;
 
 public class adcg
-  implements FileBrowserManager.IModelCreater
+  extends alpp
 {
-  public adcg(TroopFileViewerParamParser paramTroopFileViewerParamParser, BaseActivity paramBaseActivity) {}
+  public adcg(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public FileBrowserModelBase a()
+  public void a(int paramInt, List<NowLiveGallary.RspBody.PhotoInfo> paramList)
   {
-    Object localObject2 = null;
-    List localList = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerTroopFileViewerParamParser.a();
-    Object localObject1 = localObject2;
-    if (localList != null)
+    if (paramInt != 0)
     {
-      localObject1 = localObject2;
-      if (localList.size() > 0) {
-        localObject1 = new TroopFileModel(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localList, TroopFileViewerParamParser.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerTroopFileViewerParamParser));
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendProfileMoreInfoActivity", 2, "onGetNowOnliveGallay errorCode:" + paramInt);
       }
+      return;
     }
-    return localObject1;
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileMoreInfoActivity", 2, "onGetNowOnliveGallay size:" + paramList.size());
+    }
+    FriendProfileMoreInfoActivity.a(this.a).clear();
+    paramInt = 0;
+    while (paramInt < paramList.size())
+    {
+      Object localObject = (NowLiveGallary.RspBody.PhotoInfo)paramList.get(paramInt);
+      localObject = new NowShowVideoInfo(((NowLiveGallary.RspBody.PhotoInfo)localObject).cover.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).video.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).timestamp.get());
+      FriendProfileMoreInfoActivity.a(this.a).add(localObject);
+      paramInt += 1;
+    }
+    this.a.a.sendEmptyMessage(1003);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adcg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.app.TroopHandler;
-import cooperation.troop.TroopPluginManager.TroopPluginCallback;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskException;
 
-class owm
-  implements TroopPluginManager.TroopPluginCallback
+public class owm
+  extends BroadcastReceiver
 {
-  owm(owi paramowi, String paramString1, int paramInt, String paramString2) {}
+  public owm(KandianMergeManager paramKandianMergeManager) {}
   
-  public void a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Owi.a.a != null)) {
-      this.jdField_a_of_type_Owi.a.a.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 510, 0, this.jdField_a_of_type_Int, this.b);
-    }
+    TaskException.reportCrash(paramIntent.getBooleanExtra("isNativeCrashed", false), paramIntent.getStringExtra("crashType"), paramIntent.getStringExtra("crashAddress"), paramIntent.getStringExtra("crashStack"), paramIntent.getIntExtra("native_SICODE", 0), paramIntent.getLongExtra("crashTime", 0L));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     owm
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,7 @@ import android.webkit.ValueCallback;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import java.util.HashMap;
 
 public abstract interface IX5WebViewClientExtension
 {
@@ -45,6 +46,8 @@ public abstract interface IX5WebViewClientExtension
   public abstract boolean notifyJavaScriptOpenWindowsBlocked(String paramString, String[] paramArrayOfString, ValueCallback<Boolean> paramValueCallback, boolean paramBoolean);
   
   public abstract void onDoubleTapStart();
+  
+  public abstract void onFakeLoginRecognised(Bundle paramBundle);
   
   public abstract void onFlingScrollBegin(int paramInt1, int paramInt2, int paramInt3);
   
@@ -88,6 +91,8 @@ public abstract interface IX5WebViewClientExtension
   
   public abstract void onReportHtmlInfo(int paramInt, String paramString);
   
+  public abstract void onReportResponseHeaders(String paramString, int paramInt, HashMap<String, String> paramHashMap);
+  
   public abstract void onResponseReceived(WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse, int paramInt);
   
   public abstract void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
@@ -126,7 +131,7 @@ public abstract interface IX5WebViewClientExtension
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.export.external.extension.interfaces.IX5WebViewClientExtension
  * JD-Core Version:    0.7.0.1
  */

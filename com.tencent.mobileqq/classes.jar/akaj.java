@@ -1,21 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
-public final class akaj
-  implements Runnable
+public class akaj
+  implements View.OnClickListener
 {
-  public akaj(String paramString) {}
+  public akaj(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    File localFile = new File(this.a);
-    if ((localFile.exists()) && (localFile.isFile()))
+    if (this.a.d == 27)
     {
-      boolean bool = localFile.delete();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.VoiceIntro", 2, "delete result=" + bool + " f.path=" + this.a);
-      }
+      this.a.a.putParcelableArrayListExtra("result_set", this.a.e);
+      ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.getWindow().peekDecorView().getWindowToken(), 0);
+      this.a.setResult(-1, this.a.a);
     }
+    this.a.finish();
   }
 }
 

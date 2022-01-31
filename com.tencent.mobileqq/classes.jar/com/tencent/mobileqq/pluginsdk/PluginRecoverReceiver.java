@@ -15,29 +15,29 @@ import mqq.app.MobileQQ;
 public class PluginRecoverReceiver
   extends BroadcastReceiver
 {
-  private static final String c = "PluginRecoverReceiver";
-  private static final String d = "com.tencent.mobileqq.ACTION_PLUGIN_STARUP_FAILED";
-  private static final String e = "pluginId";
-  private static final int f = 50;
-  private static final int g = 100;
-  private static final Set h = new HashSet();
-  boolean a;
-  String b;
+  private static final String INTENT_ACTION_EXCEPTION_STARTUP_FAILED = "com.tencent.mobileqq.ACTION_PLUGIN_STARUP_FAILED";
+  private static final String INTENT_KEY_PLUGIN_ID = "pluginId";
+  private static final int PRIORITY_PROCESS_PLUGIN = 100;
+  private static final int PRIORITY_PROCESS_QQ = 50;
+  private static final String TAG = "PluginRecoverReceiver";
+  private static final Set<String> sCarePluginIds = new HashSet();
+  boolean isMobileQQProcess;
+  String processName;
   
-  static void a(Context paramContext, String paramString)
+  static void addCarePluginId(String paramString)
+  {
+    if (!sCarePluginIds.contains(paramString)) {
+      sCarePluginIds.add(paramString);
+    }
+  }
+  
+  static void broadcast(Context paramContext, String paramString)
   {
     Intent localIntent = new Intent();
     localIntent.setAction("com.tencent.mobileqq.ACTION_PLUGIN_STARUP_FAILED");
     localIntent.putExtra("pluginId", paramString);
     localIntent.setPackage(paramContext.getPackageName());
     paramContext.sendOrderedBroadcast(localIntent, null);
-  }
-  
-  static void a(String paramString)
-  {
-    if (!h.contains(paramString)) {
-      h.add(paramString);
-    }
   }
   
   public static PluginRecoverReceiver register(Application paramApplication, PluginRecoverReceiver paramPluginRecoverReceiver)
@@ -50,8 +50,8 @@ public class PluginRecoverReceiver
     }
     for (;;)
     {
-      paramPluginRecoverReceiver.a = bool;
-      paramPluginRecoverReceiver.b = str;
+      paramPluginRecoverReceiver.isMobileQQProcess = bool;
+      paramPluginRecoverReceiver.processName = str;
       try
       {
         paramApplication.registerReceiver(paramPluginRecoverReceiver, localIntentFilter);
@@ -68,16 +68,16 @@ public class PluginRecoverReceiver
     if (("com.tencent.mobileqq.ACTION_PLUGIN_STARUP_FAILED".equals(paramIntent.getAction())) && (TextUtils.equals(paramContext.getPackageName(), paramIntent.getPackage())))
     {
       paramContext = paramIntent.getStringExtra("pluginId");
-      QLog.d("PluginRecoverReceiver", 1, "onReceive =  pluginID = " + paramContext + ", isQQMobileProcess = " + this.a + ", processName = " + this.b);
-      if (!this.a) {
+      QLog.d("PluginRecoverReceiver", 1, "onReceive =  pluginID = " + paramContext + ", isQQMobileProcess = " + this.isMobileQQProcess + ", processName = " + this.processName);
+      if (!this.isMobileQQProcess) {
         break label107;
       }
-      if (!h.contains(paramContext)) {
+      if (!sCarePluginIds.contains(paramContext)) {
         onRecver(paramContext);
       }
     }
     label107:
-    while (!h.contains(paramContext)) {
+    while (!sCarePluginIds.contains(paramContext)) {
       return;
     }
     paramIntent = PluginRuntime.getRuntime();

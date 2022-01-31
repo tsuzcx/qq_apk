@@ -1,32 +1,17 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import android.view.View;
 
 public class aodx
-  extends Property
+  extends aodu
 {
-  public aodx(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
+  public void a(aodk paramaodk, int paramInt, boolean paramBoolean)
   {
-    super(paramClass, paramString);
-  }
-  
-  public Integer a(GroundDrawable paramGroundDrawable)
-  {
-    if (paramGroundDrawable != null) {
-      return Integer.valueOf(GroundDrawable.c(paramGroundDrawable));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(GroundDrawable paramGroundDrawable, Integer paramInteger)
-  {
-    if (paramGroundDrawable != null) {
-      GroundDrawable.c(paramGroundDrawable, paramInteger.intValue());
-    }
+    super.a(paramaodk, paramInt, paramBoolean);
+    paramaodk.b.setBackgroundResource(2130839073);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aodx
  * JD-Core Version:    0.7.0.1
  */

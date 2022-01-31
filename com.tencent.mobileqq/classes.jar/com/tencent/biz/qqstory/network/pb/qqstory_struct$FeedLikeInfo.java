@@ -9,12 +9,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_struct$FeedLikeInfo
-  extends MessageMicro
+  extends MessageMicro<FeedLikeInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField feed_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field has_like = PBField.initUInt32(0);
-  public final PBRepeatMessageField like_list = PBField.initRepeatMessage(qqstory_struct.StoryVideoLikeInfo.class);
+  public final PBRepeatMessageField<qqstory_struct.StoryVideoLikeInfo> like_list = PBField.initRepeatMessage(qqstory_struct.StoryVideoLikeInfo.class);
   public final PBUInt32Field like_total_count = PBField.initUInt32(0);
   
   static
@@ -25,7 +25,7 @@ public final class qqstory_struct$FeedLikeInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo
  * JD-Core Version:    0.7.0.1
  */

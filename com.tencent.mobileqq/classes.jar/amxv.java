@@ -1,19 +1,25 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.MTAReportController;
-import cooperation.qzone.plugin.QZonePluginManager;
-import java.util.Properties;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class amxv
-  implements Runnable
+class amxv
+  implements DialogInterface.OnClickListener
 {
-  public amxv(QZonePluginManager paramQZonePluginManager, String paramString, int paramInt) {}
+  amxv(amxu paramamxu) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Properties localProperties = new Properties();
-    localProperties.put("plugin_id", this.jdField_a_of_type_JavaLangString);
-    localProperties.put("refer", String.valueOf(this.jdField_a_of_type_Int));
-    MTAReportController.a(BaseApplicationImpl.getContext()).reportKVEvent("QzonePluginDownloadRefer", localProperties);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      QQToast.a(this.a.a, 2, 2131690232, 0).a();
+      paramDialogInterface.dismiss();
+      azqs.b(null, "dc00898", "", "", "0X8008353", "0X8008353", 0, 0, "", "", "", "");
+      return;
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

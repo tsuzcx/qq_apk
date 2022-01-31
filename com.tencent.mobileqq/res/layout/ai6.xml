@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.troop.widget.ChildPressEffectRelativeLayout android:id="@id/k20" android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="72.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/k25" android:layout_width="@dimen/abu" android:layout_height="@dimen/abu" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginBottom="12.0dip" android:scaleType="centerCrop" android:layout_alignParentLeft="true" app:cornerRadius="@dimen/qp" />
+    <RelativeLayout android:id="@id/k22" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/is" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip" android:layout_toLeftOf="@id/k2c" android:layout_toRightOf="@id/k25" android:layout_centerVertical="true">
+        <com.tencent.mobileqq.troop.widget.EllipsizingTextView android:textSize="@dimen/ayp" android:textColor="@color/skin_dark_gray" android:textColorLink="#ff00cafc" android:ellipsize="middle" android:id="@id/k26" android:layout_width="fill_parent" android:layout_height="wrap_content" android:includeFontPadding="true" android:layout_alignParentTop="true" />
+        <TextView android:textColor="#ff878b99" android:id="@id/k23" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/abv" android:text="@string/q6h" android:maxLines="2" android:includeFontPadding="false" android:layout_below="@id/k26" style="@style/u6" />
+    </RelativeLayout>
+</com.tencent.mobileqq.troop.widget.ChildPressEffectRelativeLayout>

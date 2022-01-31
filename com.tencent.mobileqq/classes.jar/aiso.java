@@ -1,17 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.FlowComponentInterface;
-import com.tencent.mobileqq.tribe.fragment.TribeEffectsCameraCaptureFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aiso
-  implements View.OnClickListener
+class aiso
+  implements DialogInterface.OnClickListener
 {
-  public aiso(TribeEffectsCameraCaptureFragment paramTribeEffectsCameraCaptureFragment) {}
+  aiso(aisn paramaisn) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.a.a(this.a.getActivity());
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

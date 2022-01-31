@@ -1,18 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import UserGrowth.stNotificationRsp;
+import UserGrowth.stSimpleMetaFeed;
+import java.util.List;
 
-public class tjm
+public abstract interface tjm
+  extends tiv<List<stSimpleMetaFeed>>
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
-  TextView b;
-  TextView c;
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(stNotificationRsp paramstNotificationRsp, tgu paramtgu);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tjm
  * JD-Core Version:    0.7.0.1
  */

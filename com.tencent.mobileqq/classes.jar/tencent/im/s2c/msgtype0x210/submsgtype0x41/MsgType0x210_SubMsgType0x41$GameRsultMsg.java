@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class MsgType0x210_SubMsgType0x41$GameRsultMsg
-  extends MessageMicro
+  extends MessageMicro<GameRsultMsg>
 {
   public static final int BYTES_NICKNAME_FIELD_NUMBER = 7;
   public static final int RPT_MSG_GAME_RSTS_FIELD_NUMBER = 4;
@@ -21,7 +21,7 @@ public final class MsgType0x210_SubMsgType0x41$GameRsultMsg
   public static final int UINT64_UIN_FIELD_NUMBER = 6;
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_nickname = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_msg_game_rsts = PBField.initRepeatMessage(MsgType0x210_SubMsgType0x41.UinResult.class);
+  public final PBRepeatMessageField<MsgType0x210_SubMsgType0x41.UinResult> rpt_msg_game_rsts = PBField.initRepeatMessage(MsgType0x210_SubMsgType0x41.UinResult.class);
   public final PBStringField str_game_name = PBField.initString("");
   public final PBStringField str_game_pic = PBField.initString("");
   public final PBStringField str_game_subheading = PBField.initString("");

@@ -14,6 +14,7 @@ public final class ShuoshuoPicInfo
   public int hdheight = 0;
   public String hdid = "";
   public int hdwidth = 0;
+  public String imageId = "";
   public int is_appext_pic = 0;
   public boolean ishd = true;
   public Map<String, String> mapWaterMarkParams = null;
@@ -27,6 +28,7 @@ public final class ShuoshuoPicInfo
   public int sourceType = 0;
   public String strWaterMarkID = "";
   public String strWaterMarkMemo = "";
+  public String video_id = "";
   
   static
   {
@@ -35,7 +37,7 @@ public final class ShuoshuoPicInfo
   
   public ShuoshuoPicInfo() {}
   
-  public ShuoshuoPicInfo(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, String paramString4, int paramInt4, int paramInt5, String paramString5, String paramString6, Map<String, String> paramMap, String paramString7, int paramInt6, String paramString8, int paramInt7)
+  public ShuoshuoPicInfo(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, String paramString4, int paramInt4, int paramInt5, String paramString5, String paramString6, Map<String, String> paramMap, String paramString7, int paramInt6, String paramString8, int paramInt7, String paramString9, String paramString10)
   {
     this.albumid = paramString1;
     this.pictureid = paramString2;
@@ -54,6 +56,8 @@ public final class ShuoshuoPicInfo
     this.is_appext_pic = paramInt6;
     this.richval = paramString8;
     this.sourceType = paramInt7;
+    this.imageId = paramString9;
+    this.video_id = paramString10;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -75,6 +79,8 @@ public final class ShuoshuoPicInfo
     this.is_appext_pic = paramJceInputStream.read(this.is_appext_pic, 14, false);
     this.richval = paramJceInputStream.readString(15, false);
     this.sourceType = paramJceInputStream.read(this.sourceType, 16, false);
+    this.imageId = paramJceInputStream.readString(17, false);
+    this.video_id = paramJceInputStream.readString(18, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -114,11 +120,17 @@ public final class ShuoshuoPicInfo
       paramJceOutputStream.write(this.richval, 15);
     }
     paramJceOutputStream.write(this.sourceType, 16);
+    if (this.imageId != null) {
+      paramJceOutputStream.write(this.imageId, 17);
+    }
+    if (this.video_id != null) {
+      paramJceOutputStream.write(this.video_id, 18);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     FileUpload.ShuoshuoPicInfo
  * JD-Core Version:    0.7.0.1
  */

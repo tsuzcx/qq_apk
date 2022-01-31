@@ -1,63 +1,66 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.TroopManager.ITroopMemberInfoCallBack;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troop.utils.HWTroopUtils;
-import com.tencent.mobileqq.troop.utils.HWTroopUtils.OnHomeworkTroopIdentityCheckListener;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.widget.NewStyleDropdownView;
 
-public final class ajno
-  implements TroopManager.ITroopMemberInfoCallBack
+public class ajno
+  implements TextWatcher
 {
-  public ajno(String paramString1, String paramString2, boolean paramBoolean, QQAppInterface paramQQAppInterface, HWTroopUtils.OnHomeworkTroopIdentityCheckListener paramOnHomeworkTroopIdentityCheckListener) {}
+  public ajno(LoginView paramLoginView) {}
   
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public void afterTextChanged(Editable paramEditable)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("checkHomeworkTroopIdentity. troopUin=").append(this.jdField_a_of_type_JavaLangString).append(", memberUin=").append(this.b).append(", level=");
-      if (paramTroopMemberInfo != null) {
-        break label150;
-      }
-      localObject = "";
-      localStringBuilder = localStringBuilder.append(localObject).append(", reqMemberInfo=").append(this.jdField_a_of_type_Boolean).append(", hwIdentity=");
-      if (paramTroopMemberInfo != null) {
-        break label162;
+    LoginView.c(this.a);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    Object localObject;
+    if (paramCharSequence.length() > 0) {
+      if (this.a.b != null)
+      {
+        localObject = (ajod)this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getAdapter();
+        if ((localObject != null) && (((ajod)localObject).getCount() != 0)) {
+          break label139;
+        }
+        localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
+        paramInt1 = (int)(15.0F * LoginView.a(this.a) + 0.5F);
+        if (((RelativeLayout.LayoutParams)localObject).rightMargin != paramInt1)
+        {
+          ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
+          this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        }
+        this.a.b.setVisibility(0);
       }
     }
-    label150:
-    label162:
-    for (Object localObject = "";; localObject = Integer.valueOf(paramTroopMemberInfo.hwIdentity))
+    for (;;)
     {
-      QLog.i("hw_troop", 2, localObject);
-      if (paramTroopMemberInfo != null) {
-        break label216;
+      if (paramCharSequence.length() <= 4) {
+        break label237;
       }
-      if (this.jdField_a_of_type_Boolean) {}
-      try
-      {
-        long l1 = Long.parseLong(this.jdField_a_of_type_JavaLangString);
-        long l2 = Long.parseLong(this.b);
-        ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(l1, l2, true);
-        return;
-      }
-      catch (NumberFormatException paramTroopMemberInfo)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("hw_troop", 2, new Object[] { "checkIdentity NumberFormatException,info.troopuin=", this.jdField_a_of_type_JavaLangString, ", memberuin=", this.b });
-        return;
-      }
-      localObject = Integer.valueOf(paramTroopMemberInfo.level);
-      break;
-    }
-    label216:
-    if (!HWTroopUtils.a(paramTroopMemberInfo.hwIdentity))
-    {
-      ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).e(this.jdField_a_of_type_JavaLangString, this.b);
+      this.a.b(paramCharSequence.toString());
       return;
+      label139:
+      localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
+      paramInt1 = (int)(40.0F * LoginView.a(this.a) + 0.5F);
+      if (((RelativeLayout.LayoutParams)localObject).rightMargin == paramInt1) {
+        break;
+      }
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
+      this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      break;
+      if ((this.a.b != null) && (this.a.b.isShown())) {
+        this.a.b.setVisibility(8);
+      }
     }
-    HWTroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHWTroopUtils$OnHomeworkTroopIdentityCheckListener, paramTroopMemberInfo.level);
+    label237:
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.a(false, null);
   }
 }
 

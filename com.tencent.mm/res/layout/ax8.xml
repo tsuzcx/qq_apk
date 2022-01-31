@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/lx"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="horizontal" android:id="@id/ept" android:background="@drawable/l8" android:paddingTop="@dimen/n_" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/m0">
+        <ImageView android:id="@id/epu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a_d" android:layout_marginRight="@dimen/a_e" android:layout_alignParentLeft="true" android:layout_centerInParent="true" android:contentDescription="@null" />
+        <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:id="@id/epw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/l2" android:layout_marginBottom="@dimen/dl" android:layout_toRightOf="@id/epu" android:layout_alignParentTop="true" />
+        <TextView android:textSize="@dimen/ko" android:textColor="@color/a0n" android:id="@id/epx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/l2" android:layout_toRightOf="@id/epu" android:layout_below="@id/epw" />
+    </RelativeLayout>
+</LinearLayout>

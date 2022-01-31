@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class rhs
-  implements Runnable
+public abstract interface rhs
 {
-  public rhs(AddAccountActivity paramAddAccountActivity) {}
+  public abstract void a(VideoInfo paramVideoInfo);
   
-  public void run()
-  {
-    AddAccountActivity.a(this.a.app, this.a.app.getAccount());
-  }
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rhs
  * JD-Core Version:    0.7.0.1
  */

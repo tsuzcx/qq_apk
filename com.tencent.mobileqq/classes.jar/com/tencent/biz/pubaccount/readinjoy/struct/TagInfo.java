@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import lxz;
+import qnd;
 
 public class TagInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new lxz();
+  public static final Parcelable.Creator<TagInfo> CREATOR = new qnd();
   private final double jdField_a_of_type_Double;
   private final long jdField_a_of_type_Long;
   private final String jdField_a_of_type_JavaLangString;
@@ -110,7 +110,7 @@ public class TagInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.TagInfo
  * JD-Core Version:    0.7.0.1
  */

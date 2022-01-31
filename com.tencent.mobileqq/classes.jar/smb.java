@@ -1,26 +1,20 @@
 import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.EditInfoActivity.TouchableSpan;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
 
-class smb
-  extends EditInfoActivity.TouchableSpan
+public class smb
+  implements View.OnClickListener
 {
-  smb(sly paramsly, int paramInt1, int paramInt2, String paramString)
-  {
-    super(paramsly.a, paramInt1, paramInt2);
-  }
+  public smb(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Sly.a.a != null) {
-      this.jdField_a_of_type_Sly.a.a.setText(this.jdField_a_of_type_JavaLangString);
-    }
+    this.a.a(0, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     smb
  * JD-Core Version:    0.7.0.1
  */

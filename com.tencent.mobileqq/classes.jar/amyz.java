@@ -1,21 +1,18 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
 
-public class amyz
-  implements Runnable
+public final class amyz
+  implements Parcelable.Creator<ARCommonConfigInfo.NativeSoRes>
 {
-  public amyz(QZoneShareActivity paramQZoneShareActivity) {}
-  
-  public void run()
+  public ARCommonConfigInfo.NativeSoRes a(Parcel paramParcel)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845271);
-    this.a.d = true;
-    this.a.e = false;
-    QZoneShareActivity.a(this.a, this.a.d);
+    return new ARCommonConfigInfo.NativeSoRes(paramParcel);
+  }
+  
+  public ARCommonConfigInfo.NativeSoRes[] a(int paramInt)
+  {
+    return new ARCommonConfigInfo.NativeSoRes[paramInt];
   }
 }
 

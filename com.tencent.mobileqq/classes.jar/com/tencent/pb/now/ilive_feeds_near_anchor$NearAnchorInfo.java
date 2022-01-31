@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ilive_feeds_near_anchor$NearAnchorInfo
-  extends MessageMicro
+  extends MessageMicro<NearAnchorInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field anchor_type = PBField.initUInt32(0);
@@ -40,7 +40,7 @@ public final class ilive_feeds_near_anchor$NearAnchorInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_near_anchor.NearAnchorInfo
  * JD-Core Version:    0.7.0.1
  */

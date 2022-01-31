@@ -1,36 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
 
 public class aghb
-  implements DialogInterface.OnDismissListener
+  implements View.OnLongClickListener
 {
-  public aghb(ScanTorchActivity paramScanTorchActivity) {}
+  public aghb(PanelIconLinearLayout paramPanelIconLinearLayout) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onLongClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, "onDismiss");
+    if (PanelIconLinearLayout.a(this.a) != null) {
+      PanelIconLinearLayout.a(this.a).a(1);
     }
-    if ((!this.a.isFinishing()) && (this.a.a != null))
-    {
-      if (this.a.isResume())
-      {
-        this.a.a.b(false);
-        ScanTorchActivity.c(this.a, true);
-      }
-    }
-    else {
-      return;
-    }
-    ScanTorchActivity.n(this.a, true);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aghb
  * JD-Core Version:    0.7.0.1
  */

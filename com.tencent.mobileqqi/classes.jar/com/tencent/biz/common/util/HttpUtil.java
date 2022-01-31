@@ -10,7 +10,7 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bnv;
+import bhr;
 import com.rookery.asyncHttpClient.AsyncHttpClient.CustomSSLSocketFactory;
 import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -1311,7 +1311,7 @@ public class HttpUtil
         ((KeyStore)localObject1).load(null, null);
         localObject1 = new AsyncHttpClient.CustomSSLSocketFactory((KeyStore)localObject1);
         ((SSLSocketFactory)localObject1).setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
-        ((SSLSocketFactory)localObject1).setHostnameVerifier(new bnv());
+        ((SSLSocketFactory)localObject1).setHostnameVerifier(new bhr());
         Object localObject2 = new BasicHttpParams();
         HttpConnectionParams.setConnectionTimeout((HttpParams)localObject2, 15000);
         HttpConnectionParams.setSoTimeout((HttpParams)localObject2, 30000);

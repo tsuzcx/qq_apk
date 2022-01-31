@@ -1,71 +1,17 @@
 package com.tencent.token.ui;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class aad
+class aad
+  implements DialogInterface.OnClickListener
 {
-  private final List a = new LinkedList();
-  private final boolean b = true;
+  aad(aac paramaac) {}
   
-  public final int a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a.size();
-  }
-  
-  public final Collection a(Collection paramCollection)
-  {
-    Object localObject = paramCollection;
-    if (paramCollection == null) {}
-    try
-    {
-      localObject = new ArrayList();
-      ((Collection)localObject).clear();
-      ((Collection)localObject).addAll(this.a);
-      return localObject;
-    }
-    finally {}
-  }
-  
-  public final void a(List paramList)
-  {
-    if (paramList != null) {}
-    for (;;)
-    {
-      try
-      {
-        int i = paramList.size();
-        if (i == 0) {
-          return;
-        }
-        if (this.b)
-        {
-          i = 0;
-          this.a.addAll(i, paramList);
-        }
-        else
-        {
-          i = this.a.size();
-        }
-      }
-      finally {}
-    }
-  }
-  
-  public final void b()
-  {
-    try
-    {
-      this.a.clear();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    StartPwdGestureModifyActivity.access$402(this.a.a, 3);
+    StartPwdGestureModifyActivity.access$500(this.a.a);
   }
 }
 

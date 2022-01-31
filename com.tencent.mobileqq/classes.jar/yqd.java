@@ -1,12 +1,20 @@
-import com.tencent.mobileqq.apollo.process.CmGameServerQIPCModule;
+import android.text.SpannableStringBuilder;
 
 public class yqd
+  extends SpannableStringBuilder
 {
-  private static CmGameServerQIPCModule a = new CmGameServerQIPCModule("cm_game_module");
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  
+  public yqd(CharSequence paramCharSequence)
+  {
+    super(paramCharSequence);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yqd
  * JD-Core Version:    0.7.0.1
  */

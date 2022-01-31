@@ -1,29 +1,34 @@
-import android.content.Context;
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 
 public class zai
-  implements Runnable
 {
-  public zai(BaseActivity paramBaseActivity) {}
-  
-  public void run()
+  public static Bitmap a(Bitmap paramBitmap)
   {
-    try
+    int i;
+    int j;
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      if (BaseActivity.access$300() != null)
-      {
-        ((SensorManager)this.a.getApplicationContext().getSystemService("sensor")).unregisterListener(BaseActivity.access$300());
-        BaseActivity.access$302(null);
-      }
-      return;
+      i = paramBitmap.getWidth();
+      j = paramBitmap.getHeight();
+      if ((i > 0) && (j > 0)) {}
     }
-    finally {}
+    else
+    {
+      return paramBitmap;
+    }
+    int k = ((Long)yyw.a().a("SmartCutPicWidth", Long.valueOf(224L))).intValue();
+    float f1 = k / i;
+    float f2 = k / j;
+    awiw.a("Q.videostory", "Q.videostory.capture", "resizeImage", k + " " + k);
+    Matrix localMatrix = new Matrix();
+    localMatrix.postScale(f1, f2);
+    return Bitmap.createBitmap(paramBitmap, 0, 0, i, j, localMatrix, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zai
  * JD-Core Version:    0.7.0.1
  */

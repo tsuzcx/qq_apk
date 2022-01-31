@@ -1,37 +1,52 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.mqsafeedit.libsafeedit;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.open.downloadnew.DownloadConstants;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.MyAppApi;
 
-public class hkc
-  implements TextWatcher
+public final class hkc
+  implements Runnable
 {
-  public hkc(ClearableEditText paramClearableEditText) {}
+  public hkc(String paramString1, Bundle paramBundle1, String paramString2, Activity paramActivity, Intent paramIntent, Bundle paramBundle2) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void run()
   {
-    libsafeedit.getLoginLegal(paramCharSequence.toString());
-    paramCharSequence = this.a.getText().toString();
-    if ((paramCharSequence == null) || (paramCharSequence.length() == 0))
+    if (MyAppApi.a().c())
     {
-      this.a.setClearButtonVisible(false);
+      DownloadInfo localDownloadInfo = DownloadManager.a().a(this.jdField_a_of_type_JavaLangString);
+      if (localDownloadInfo != null)
+      {
+        if (localDownloadInfo.h == 1)
+        {
+          this.jdField_a_of_type_AndroidOsBundle.putString(DownloadConstants.jdField_a_of_type_JavaLangString, localDownloadInfo.jdField_b_of_type_JavaLangString);
+          this.jdField_a_of_type_AndroidOsBundle.putString(DownloadConstants.jdField_b_of_type_JavaLangString, localDownloadInfo.i);
+          this.jdField_a_of_type_AndroidOsBundle.putString(DownloadConstants.c, localDownloadInfo.j);
+          this.jdField_a_of_type_AndroidOsBundle.putString(DownloadConstants.h, this.jdField_b_of_type_JavaLangString);
+          this.jdField_a_of_type_AndroidOsBundle.putString(DownloadConstants.e, localDownloadInfo.d);
+          this.jdField_a_of_type_AndroidOsBundle.putInt(DownloadConstants.d, localDownloadInfo.g);
+          MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, false, false);
+          return;
+        }
+        this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 200);
+        return;
+      }
+      if ((this.jdField_b_of_type_AndroidOsBundle != null) && (this.jdField_b_of_type_AndroidOsBundle.containsKey(DownloadConstants.e)))
+      {
+        this.jdField_a_of_type_AndroidOsBundle.putAll(this.jdField_b_of_type_AndroidOsBundle);
+        MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, false, false);
+        return;
+      }
+      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 200);
       return;
     }
-    if (ClearableEditText.a(this.a))
-    {
-      this.a.setClearButtonVisible(true);
-      return;
-    }
-    this.a.setClearButtonVisible(false);
+    this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 200);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hkc
  * JD-Core Version:    0.7.0.1
  */

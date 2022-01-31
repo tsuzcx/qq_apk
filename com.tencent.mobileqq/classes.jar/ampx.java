@@ -1,28 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
-public class ampx
-  implements DialogInterface.OnDismissListener
+public final class ampx
+  implements Parcelable.Creator<SosoInterface.SosoLocation>
 {
-  public ampx(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public SosoInterface.SosoLocation a(Parcel paramParcel)
   {
-    if (this.a.a)
-    {
-      this.a.setResult(1001);
-      QQIndividualityBridgeActivity.a(this.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQIndividuality", 2, "dialog dismiss: " + this.a.a);
-    }
+    return new SosoInterface.SosoLocation(paramParcel);
+  }
+  
+  public SosoInterface.SosoLocation[] a(int paramInt)
+  {
+    return new SosoInterface.SosoLocation[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.PrecoverResource;
-import com.tencent.mobileqq.precover.ipc.PrecoverIPCClient;
-import com.tencent.mobileqq.precover.ipc.PrecoverIPCConstans;
-import com.tencent.mobileqq.precover.ipc.PrecoverIPCListener;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
 public class agnf
-  implements EIPCResultCallback
+  extends agmy
 {
-  public agnf(PrecoverIPCClient paramPrecoverIPCClient) {}
+  public Bitmap a;
+  public String b;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public agnf(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("", 2, "onCallback, result=" + paramEIPCResult);
-    }
-    if (paramEIPCResult == null) {}
-    for (;;)
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("", 2, "onCallback, result.isSuccess=" + paramEIPCResult.isSuccess());
-      }
-      Object localObject = paramEIPCResult.data;
-      if (localObject == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("", 2, "onCallback, data is null");
-        }
-      }
-      else
-      {
-        paramEIPCResult = ((Bundle)localObject).getString("key_action");
-        if (QLog.isColorLevel()) {
-          QLog.d("", 2, "onCallback, action=" + paramEIPCResult);
-        }
-        if (PrecoverIPCConstans.b.equals(paramEIPCResult))
-        {
-          int j = ((Bundle)localObject).getInt("errCode", -1);
-          paramEIPCResult = ((Bundle)localObject).getString("errDesc");
-          localObject = (PrecoverResource)((Bundle)localObject).getParcelable("resource");
-          if (QLog.isColorLevel()) {
-            QLog.d("", 2, "onCallback, errCode=" + j + ", errDesc=" + paramEIPCResult + ", res=" + localObject);
-          }
-          int i = 0;
-          while (i < PrecoverIPCClient.a(this.a).size())
-          {
-            PrecoverIPCListener localPrecoverIPCListener = (PrecoverIPCListener)PrecoverIPCClient.a(this.a).get(i);
-            if (localPrecoverIPCListener != null) {
-              localPrecoverIPCListener.a(j, paramEIPCResult, (PrecoverResource)localObject);
-            }
-            i += 1;
-          }
-        }
-      }
+      this.a = paramRedPacketInfo.icon;
+      this.b = paramRedPacketInfo.resPath;
     }
+  }
+  
+  public boolean a()
+  {
+    return (this.a != null) && (!TextUtils.isEmpty(this.b));
   }
 }
 

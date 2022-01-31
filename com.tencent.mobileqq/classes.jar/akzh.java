@@ -1,27 +1,22 @@
-import com.tencent.mqp.app.sec.d;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.process.download.CmGameSubRscHandler.2;
 
-public final class akzh
-  implements Runnable
+public class akzh
+  implements DialogInterface.OnClickListener
 {
-  public akzh(int paramInt, Object[] paramArrayOfObject, byte[] paramArrayOfByte) {}
+  public akzh(CmGameSubRscHandler.2 param2) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Int != -1) && (this.jdField_a_of_type_ArrayOfJavaLangObject != null) && (this.jdField_a_of_type_ArrayOfByte != null)) {}
-    try
-    {
-      d.e(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject, this.jdField_a_of_type_ArrayOfByte);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    if (this.a.a != null) {
+      this.a.a.a(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akzh
  * JD-Core Version:    0.7.0.1
  */

@@ -28,9 +28,10 @@ public class CrashStrategyBean
   private int r = 50;
   private boolean s = true;
   private boolean t = true;
+  private int u = 31;
+  private boolean v = true;
   
   public CrashStrategyBean clone()
-    throws CloneNotSupportedException
   {
     try
     {
@@ -76,6 +77,34 @@ public class CrashStrategyBean
     {
       int i1 = this.q;
       return i1;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public int getCallBackType()
+  {
+    try
+    {
+      int i1 = this.u;
+      return i1;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public boolean getCloseErrorCallback()
+  {
+    try
+    {
+      boolean bool = this.v;
+      return bool;
     }
     finally
     {
@@ -374,6 +403,34 @@ public class CrashStrategyBean
       paramInt = 60;
       continue;
       if (paramInt <= 0) {}
+    }
+  }
+  
+  public void setCallBackType(int paramInt)
+  {
+    try
+    {
+      this.u = paramInt;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void setCloseErrorCallback(boolean paramBoolean)
+  {
+    try
+    {
+      this.v = paramBoolean;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   

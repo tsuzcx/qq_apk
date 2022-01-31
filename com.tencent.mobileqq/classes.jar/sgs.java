@@ -1,44 +1,26 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.now.enter.ConversationNowController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class sgs
-  implements Runnable
+  implements SoundPool.OnLoadCompleteListener
 {
-  public sgs(Conversation paramConversation) {}
+  public sgs(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager, long paramLong) {}
   
-  public void run()
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    boolean bool;
-    PullRefreshHeader localPullRefreshHeader;
-    if (this.a.i)
-    {
-      Conversation.a(this.a, 800L);
-      bool = NetworkUtil.d(BaseApplication.getContext());
-      if (this.a.a != null)
-      {
-        localPullRefreshHeader = this.a.a;
-        if (!bool) {
-          break label78;
-        }
-      }
+    long l = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoySkinAnimManager", 1, "setSoundPool onLoadComplete time = " + (l - this.jdField_a_of_type_Long));
     }
-    label78:
-    for (int i = 0;; i = 2)
-    {
-      localPullRefreshHeader.a(i);
-      if (Conversation.a(this.a) != null) {
-        Conversation.a(this.a).a(bool);
-      }
-      return;
-    }
+    azqs.b(null, "dc00899", "BizTechReport", "", "kan_dian_skin_pull_refresh", "sound_load_time", 0, 0, ReadInJoySkinAnimManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoySkinAnimManager), String.valueOf(l - this.jdField_a_of_type_Long), null, null);
+    ReadInJoySkinAnimManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoySkinAnimManager, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sgs
  * JD-Core Version:    0.7.0.1
  */

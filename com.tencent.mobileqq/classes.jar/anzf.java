@@ -1,33 +1,30 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.LineLayer.LayerEventListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
 public class anzf
-  implements LineLayer.LayerEventListener
+  implements View.OnClickListener
 {
-  public anzf(DoodleLayout paramDoodleLayout) {}
+  public anzf(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void a(Bitmap paramBitmap, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramBitmap, paramBoolean);
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if (this.a.a != null)
+    paramView = (anzj)paramView.getTag();
+    if (!((alto)this.a.app.getManager(51)).b(paramView.a)) {}
+    for (int i = 35;; i = 1)
     {
-      SLog.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
-      this.a.a.a(paramArrayOfByte);
+      paramView = new ProfileActivity.AllInOne(paramView.a, i);
+      ProfileActivity.a(this.a, paramView, 1016);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anzf
  * JD-Core Version:    0.7.0.1
  */

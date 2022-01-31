@@ -1,73 +1,54 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.file.TroopFileProtocol.ReqTransFileObserver;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileManager;
-import com.tencent.mobileqq.troop.utils.TroopFileManager.FileManagerStatus;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.media.MediaPlayer;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.TransFileRspBody;
 
 public class ajoo
-  extends TroopFileProtocol.ReqTransFileObserver
+  implements ajvt
 {
-  public ajoo(TroopFileManager paramTroopFileManager) {}
+  public ajoo(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d9.TransFileRspBody paramTransFileRspBody, Bundle paramBundle)
+  public void a(MediaPlayer paramMediaPlayer)
   {
-    Object localObject = this.a;
-    ((TroopFileManager)localObject).jdField_a_of_type_Int -= 1;
-    if ((!paramBoolean) || (paramTransFileRspBody == null)) {
-      if (QLog.isDevelopLevel()) {
-        QLog.e("TroopFileManager", 4, "onTransFileResult, isSuccess:" + paramBoolean + "transFileResp:" + paramTransFileRspBody);
-      }
-    }
-    do
+    if (EditLocalVideoActivity.b(this.a))
     {
+      QLog.e("EditLocalVideoActivity", 2, "onComplete() ---------------1   mStartTime=" + EditLocalVideoActivity.c(this.a) + " mEndTime=" + EditLocalVideoActivity.d(this.a) + "   mCurrentStartTime=" + EditLocalVideoActivity.e(this.a));
+      EditLocalVideoActivity.a(this.a).pause();
+      paramMediaPlayer.seekTo(EditLocalVideoActivity.e(this.a));
+      EditLocalVideoActivity.b(this.a, false);
+      EditLocalVideoActivity.a(this.a).setVisibility(0);
       return;
-      localObject = paramBundle.getString("fileId");
-      paramBundle = (TroopFileInfo)this.a.c.get(localObject);
-    } while (paramBundle == null);
-    int i = paramTransFileRspBody.int32_ret_code.get();
-    if (QLog.isDevelopLevel()) {
-      QLog.e("TroopFileManager", 4, String.format("onRspTransFile - retCode: %d", new Object[] { Integer.valueOf(i) }));
     }
-    if (i < 0)
+    QLog.e("EditLocalVideoActivity", 2, "onComplete() ---------------2   mStartTime=" + EditLocalVideoActivity.c(this.a) + " mEndTime=" + EditLocalVideoActivity.d(this.a) + "   mCurrentStartTime=" + EditLocalVideoActivity.e(this.a));
+    paramMediaPlayer.seekTo(EditLocalVideoActivity.c(this.a));
+    EditLocalVideoActivity.a(this.a).start();
+  }
+  
+  public void a(FixedSizeVideoView paramFixedSizeVideoView, int paramInt1, int paramInt2)
+  {
+    if (EditLocalVideoActivity.b(this.a))
     {
-      paramInt = 501;
-      switch (i)
-      {
+      QLog.e("EditLocalVideoActivity", 2, "onArriveTrimEnd() ---------------3   mStartTime=" + EditLocalVideoActivity.c(this.a) + " mEndTime=" + EditLocalVideoActivity.d(this.a) + "   mCurrentStartTime=" + EditLocalVideoActivity.e(this.a));
+      paramFixedSizeVideoView.pause();
+      paramFixedSizeVideoView.seekTo(EditLocalVideoActivity.e(this.a));
+      EditLocalVideoActivity.b(this.a, false);
+      EditLocalVideoActivity.a(this.a).setVisibility(0);
+    }
+    for (;;)
+    {
+      if (EditLocalVideoActivity.a(this.a) != null) {
+        EditLocalVideoActivity.a(this.a).b();
       }
-      for (;;)
+      do
       {
-        this.a.a(paramBundle, paramInt);
         return;
-        paramInt = 504;
-        continue;
-        paramInt = 103;
-        continue;
-        paramInt = 101;
-        continue;
-        paramInt = 503;
-        continue;
-        paramInt = 502;
-      }
+      } while (EditLocalVideoActivity.d(this.a) == 0);
+      QLog.e("EditLocalVideoActivity", 2, "onArriveTrimEnd() ---------------4   mStartTime=" + EditLocalVideoActivity.c(this.a) + " mEndTime=" + EditLocalVideoActivity.d(this.a) + "   mCurrentStartTime=" + EditLocalVideoActivity.e(this.a));
+      paramFixedSizeVideoView.setPlayDuration(EditLocalVideoActivity.c(this.a), EditLocalVideoActivity.d(this.a) - EditLocalVideoActivity.c(this.a));
+      paramFixedSizeVideoView.seekTo(EditLocalVideoActivity.c(this.a));
+      paramFixedSizeVideoView.start();
     }
-    paramTransFileRspBody = paramTransFileRspBody.str_save_file_path.get();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(paramBundle.jdField_a_of_type_JavaUtilUUID, paramTransFileRspBody);
-    paramBundle.b = paramTransFileRspBody;
-    paramBundle.jdField_a_of_type_Int = 102;
-    paramBundle.c = 0;
-    this.a.c.remove(localObject);
-    this.a.c.put(paramTransFileRspBody, paramBundle);
-    this.a.d(paramBundle);
-    paramTransFileRspBody = (TroopFileManager.FileManagerStatus)this.a.d.get(paramBundle.f);
-    if (paramTransFileRspBody != null) {
-      paramTransFileRspBody.a = null;
-    }
-    this.a.a(paramBundle, 505);
   }
 }
 

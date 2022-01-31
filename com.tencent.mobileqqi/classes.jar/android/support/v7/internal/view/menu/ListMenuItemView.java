@@ -47,7 +47,6 @@ public class ListMenuItemView
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.M, paramInt, 0);
     this.mBackground = paramAttributeSet.getDrawable(5);
     this.mTextAppearance = paramAttributeSet.getResourceId(1, -1);
-    this.mPreserveIconSpacing = paramAttributeSet.getBoolean(7, false);
     this.mTextAppearanceContext = paramContext;
     paramAttributeSet.recycle();
   }

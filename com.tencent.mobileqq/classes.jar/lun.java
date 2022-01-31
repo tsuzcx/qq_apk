@@ -1,25 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeSmallSocial;
+import java.util.Collections;
 
-public class lun
-  implements View.OnTouchListener
+class lun
+  implements lul
 {
-  public lun(FeedItemCellTypeSmallSocial paramFeedItemCellTypeSmallSocial, RelativeLayout paramRelativeLayout) {}
+  lun(lum paramlum) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(luj paramluj, int paramInt1, int paramInt2)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(false);
-    }
-    return false;
+    Collections.sort(lum.a(this.a), lum.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lun
  * JD-Core Version:    0.7.0.1
  */

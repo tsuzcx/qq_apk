@@ -1,15 +1,24 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.profile.view.VipPhotoViewForSimple.PhotoAdapter;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class agsl
+class agsl
+  extends altm
 {
-  public URLImageView a;
+  agsl(agse paramagse) {}
   
-  public agsl(VipPhotoViewForSimple.PhotoAdapter paramPhotoAdapter) {}
+  protected void onAddFriend(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddFriend : " + paramString);
+    }
+    if ((this.a.v()) && (paramString != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+      agse.a(this.a);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agsl
  * JD-Core Version:    0.7.0.1
  */

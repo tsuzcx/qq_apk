@@ -35,13 +35,13 @@ import com.tencent.mobileqq.servlet.GameCenterManagerImp;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticAssist;
 import com.tencent.qphone.base.util.QLog;
-import fsu;
-import fsw;
-import fsy;
-import fta;
-import ftc;
-import ftd;
-import fte;
+import foh;
+import foj;
+import fol;
+import fon;
+import foq;
+import for;
+import fos;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -63,21 +63,21 @@ public class EmoticonMainPanel
   private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ClubContentUpdateHandler.ClubContentUpdateListener jdField_a_of_type_ComTencentMobileqqAppClubContentUpdateHandler$ClubContentUpdateListener = new fsu(this);
+  ClubContentUpdateHandler.ClubContentUpdateListener jdField_a_of_type_ComTencentMobileqqAppClubContentUpdateHandler$ClubContentUpdateListener = new foh(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  EmoticonPackageDownloadListener jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new fsw(this);
+  EmoticonPackageDownloadListener jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new foj(this);
   public EmoticonCallback a;
   private EmoticonPageIndicator jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPageIndicator;
   private EmoticonPagerAdapter jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter;
   private EmoticonViewPager jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonViewPager;
   private HorizonEmoticonTabs jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new fte(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new fos(this);
   private List jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean;
   private View jdField_b_of_type_AndroidViewView;
   private Button jdField_b_of_type_AndroidWidgetButton;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  EmoticonPackageDownloadListener jdField_b_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new fsy(this);
+  EmoticonPackageDownloadListener jdField_b_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new fol(this);
   private HorizonEmoticonTabs jdField_b_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs;
   private List jdField_b_of_type_JavaUtilList;
   private boolean jdField_b_of_type_Boolean;
@@ -576,7 +576,7 @@ public class EmoticonMainPanel
           localObject = (EmoticonViewBinder)this.jdField_c_of_type_JavaUtilList.get(k);
           if (((EmoticonViewBinder)localObject).n == 8)
           {
-            int n = (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131427511);
+            int n = (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131427514);
             this.jdField_b_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs.a((EmoticonViewBinder)localObject, n, true);
           }
           for (;;)
@@ -720,23 +720,23 @@ public class EmoticonMainPanel
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.j = paramInt1;
     this.jdField_c_of_type_Int = paramInt2;
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs = ((HorizonEmoticonTabs)findViewById(2131231640));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs = ((HorizonEmoticonTabs)findViewById(2131231641));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs.setEmoticonTabChangeListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPageIndicator = ((EmoticonPageIndicator)findViewById(2131231633));
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonViewPager = ((EmoticonViewPager)findViewById(2131231632));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPageIndicator = ((EmoticonPageIndicator)findViewById(2131231634));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonViewPager = ((EmoticonViewPager)findViewById(2131231633));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonViewPager.setOnPageChangeListener(this);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPageIndicator.setViewPager(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonViewPager);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter = new EmoticonPagerAdapter();
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131231639);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131231641);
-    this.jdField_b_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs = ((HorizonEmoticonTabs)findViewById(2131231644));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131231640);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131231642);
+    this.jdField_b_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs = ((HorizonEmoticonTabs)findViewById(2131231645));
     this.jdField_b_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs.setEmoticonTabChangeListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131231643));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131231642));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131231644));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131231643));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231645));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageButton)findViewById(2131231634));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231646));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageButton)findViewById(2131231635));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     paramContext = EmoticonController.a(paramQQAppInterface);
     if (paramContext != null)
@@ -863,7 +863,7 @@ public class EmoticonMainPanel
     while (jdField_d_of_type_Int != 2) {
       return;
     }
-    ThreadManager.b(new fta(this));
+    ThreadManager.b(new fon(this));
   }
   
   public void e()
@@ -871,7 +871,7 @@ public class EmoticonMainPanel
     if (!isShown()) {
       return;
     }
-    postDelayed(new ftc(this), 200L);
+    postDelayed(new foq(this), 200L);
   }
   
   public void f()
@@ -879,7 +879,7 @@ public class EmoticonMainPanel
     if (!isShown()) {
       return;
     }
-    postDelayed(new ftd(this), 200L);
+    postDelayed(new for(this), 200L);
   }
   
   public void onClick(View paramView)

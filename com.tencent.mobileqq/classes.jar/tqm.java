@@ -1,126 +1,55 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import mqq.observer.AccountObserver;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import java.util.ArrayList;
+import java.util.List;
 
-public class tqm
-  extends AccountObserver
+final class tqm
+  implements URLDrawableDownListener
 {
-  public tqm(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
+  tqm(URLDrawableDownListener paramURLDrawableDownListener, long paramLong, String paramString) {}
   
-  public void onRegisterCommitSmsCodeResp(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterCommitSmsCodeResp isSuccess=" + paramBoolean + ",code=" + paramInt);
+    if (this.jdField_a_of_type_ComTencentImageURLDrawableDownListener != null) {
+      this.jdField_a_of_type_ComTencentImageURLDrawableDownListener.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
     }
-    if (this.a.isFinishing()) {}
-    do
+    if (this.jdField_a_of_type_Long > 0L)
     {
-      return;
-      this.a.c();
-      if ((!paramBoolean) || (paramInt != 0)) {
-        try
-        {
-          paramString1 = new String(paramArrayOfByte, "utf-8");
-          paramString2 = paramString1;
-          if (TextUtils.isEmpty(paramString1)) {
-            paramString2 = this.a.getString(2131434215);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("Login_Optimize_RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterCommitSmsCodeResp error=" + paramString2);
-          }
-          this.a.a(paramString2, 1);
-          return;
-        }
-        catch (UnsupportedEncodingException paramString1)
-        {
-          for (;;)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
-        }
-      }
-      if (!TextUtils.isEmpty(paramString1)) {
-        RegisterVerifyCodeActivity.a(this.a, paramString1);
-      }
-      if (!TextUtils.isEmpty(paramString2)) {
-        RegisterVerifyCodeActivity.b(this.a, paramString2);
-      }
-      if (!TextUtils.isEmpty(paramString3)) {
-        RegisterVerifyCodeActivity.c(this.a, paramString3);
-      }
-      this.a.a();
-    } while (!QLog.isColorLevel());
-    QLog.d("Login_Optimize_RegisterVerifyCodeActivity", 2, "onRegisterCommitSmsCodeResp code=" + paramInt + " ,uin=" + paramString1 + " ,nick=" + paramString2 + " ,faceUrl=" + paramString3);
+      double d = (float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F;
+      paramView = new ArrayList();
+      paramView.add(tzy.a("time_cost", String.valueOf(d)));
+      paramView.add(tzy.a("ret_code", "-1"));
+      paramView.add(tzy.a("url", this.jdField_a_of_type_JavaLangString));
+      tzx.a("image_load_ret", paramView, true);
+    }
   }
   
-  public void onRegisterSendResendSmsreqResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    Object localObject = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterSendResendSmsreqResp");
+    if (this.jdField_a_of_type_ComTencentImageURLDrawableDownListener != null) {
+      this.jdField_a_of_type_ComTencentImageURLDrawableDownListener.onLoadSuccessed(paramView, paramURLDrawable);
     }
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.c();
-    if (!paramBoolean) {
-      try
-      {
-        paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
-        localObject = paramArrayOfByte;
-        if (TextUtils.isEmpty(paramArrayOfByte)) {
-          localObject = this.a.getString(2131434215);
-        }
-        this.a.a((String)localObject, 1);
-        return;
-      }
-      catch (UnsupportedEncodingException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramArrayOfByte.printStackTrace();
-          paramArrayOfByte = null;
-        }
-      }
-    }
-    if (paramArrayOfByte != null) {}
-    try
+    if (this.jdField_a_of_type_Long > 0L)
     {
-      localObject = new String(paramArrayOfByte, "utf-8");
-      if (QLog.isColorLevel()) {
-        QLog.d("RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterSendResendSmsreqResp code = " + paramInt1 + ";strMsg = " + (String)localObject + ";next_chk_time =" + paramInt2 + ";total_time_over =" + paramInt3);
-      }
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        continue;
-        if (paramInt1 == 5)
-        {
-          paramInt1 = paramInt2;
-          if (paramInt2 <= 60) {
-            paramInt1 = 60;
-          }
-          RegisterVerifyCodeActivity.a(this.a, paramInt1);
-        }
-      }
-    }
-    if (paramInt1 == 0)
-    {
-      RegisterVerifyCodeActivity.a(this.a, 60);
-      RegisterVerifyCodeActivity.a(this.a, RegisterVerifyCodeActivity.c(this.a));
-      return;
+      double d = (float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F;
+      paramView = new ArrayList();
+      paramView.add(tzy.a("time_cost", String.valueOf(d)));
+      paramView.add(tzy.a("ret_code", "0"));
+      paramView.add(tzy.a("url", this.jdField_a_of_type_JavaLangString));
+      tzx.a("image_load_ret", paramView, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tqm
  * JD-Core Version:    0.7.0.1
  */

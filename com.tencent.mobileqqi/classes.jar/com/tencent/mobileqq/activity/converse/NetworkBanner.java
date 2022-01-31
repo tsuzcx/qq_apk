@@ -24,7 +24,7 @@ public class NetworkBanner
   {
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = View.inflate(paramContext, 2130903290, null);
+      this.jdField_a_of_type_AndroidViewView = View.inflate(paramContext, 2130903292, null);
       this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231164));
       if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
         this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);

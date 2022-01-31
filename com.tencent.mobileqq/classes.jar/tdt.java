@@ -1,25 +1,12 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-
-public class tdt
-  implements View.OnClickListener
+public abstract interface tdt
 {
-  public tdt(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public abstract void c();
   
-  public void onClick(View paramView)
-  {
-    paramView = new Intent(this.a, TroopAssisSettingActivity.class);
-    this.a.startActivity(paramView);
-    ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_msginfor_grp", 0, 0, "", "", "", "");
-  }
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tdt
  * JD-Core Version:    0.7.0.1
  */

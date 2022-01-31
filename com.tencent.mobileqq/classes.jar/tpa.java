@@ -1,24 +1,39 @@
-import com.tencent.mobileqq.activity.RegisterBaseActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView.ScaleType;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
+import com.tencent.qphone.base.util.QLog;
 
 public class tpa
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public tpa(RegisterBaseActivity paramRegisterBaseActivity, String paramString1, String paramString2) {}
+  public tpa(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity, 230);
-    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
-    localQQCustomDialog.setMessage(this.b);
-    localQQCustomDialog.setPositiveButton(2131436320, new tpb(this));
-    localQQCustomDialog.show();
+    if (PublicAccountImageCollectionMainActivity.a(this.a))
+    {
+      this.a.jdField_a_of_type_AndroidViewScaleGestureDetector.onTouchEvent(paramMotionEvent);
+      if (QLog.isColorLevel()) {
+        QLog.d("qqBaseActivity", 2, "current operation is" + paramMotionEvent.getAction());
+      }
+      if ((paramMotionEvent.getAction() == 1) && (this.a.b[0] < this.a.jdField_a_of_type_ArrayOfFloat[0]))
+      {
+        PublicAccountImageCollectionMainActivity.a(this.a).setImageMatrix(this.a.c);
+        PublicAccountImageCollectionMainActivity.a(this.a).setScaleType(ImageView.ScaleType.FIT_CENTER);
+      }
+      return true;
+    }
+    this.a.jdField_a_of_type_AndroidViewScaleGestureDetector.onTouchEvent(paramMotionEvent);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tpa
  * JD-Core Version:    0.7.0.1
  */

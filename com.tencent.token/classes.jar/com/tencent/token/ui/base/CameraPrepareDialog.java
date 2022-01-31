@@ -14,9 +14,9 @@ public class CameraPrepareDialog
 {
   private Activity a;
   
-  public CameraPrepareDialog(Activity paramActivity)
+  public CameraPrepareDialog(Activity paramActivity, int paramInt)
   {
-    super(paramActivity, 2131427400);
+    super(paramActivity, paramInt);
     this.a = paramActivity;
   }
   
@@ -28,11 +28,11 @@ public class CameraPrepareDialog
       return;
     }
     super.onCreate(paramBundle);
-    setContentView(2130903062);
+    setContentView(2130968625);
     setCanceledOnTouchOutside(false);
     paramBundle = getWindow();
-    paramBundle.setBackgroundDrawableResource(2130837639);
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)findViewById(2131296460).getLayoutParams();
+    paramBundle.setBackgroundDrawableResource(2130837730);
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)findViewById(2131558745).getLayoutParams();
     localMarginLayoutParams.width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
     localMarginLayoutParams.height = paramBundle.getWindowManager().getDefaultDisplay().getHeight();
   }

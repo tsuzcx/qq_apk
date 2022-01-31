@@ -42,6 +42,11 @@ public class ExtendButton
       }
     }
   }
+  
+  public void setAncestorHaveOneSelected(boolean paramBoolean)
+  {
+    this.a = paramBoolean;
+  }
 }
 
 

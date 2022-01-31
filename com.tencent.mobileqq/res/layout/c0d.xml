@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@drawable/b8c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:id="@id/s8" android:layout_width="60.0dip" android:layout_height="60.0dip" android:scaleType="centerInside" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/fl" android:id="@id/jca" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/aig" android:id="@id/jcb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
+        <TextView android:textSize="13.0dip" android:textColor="#3d000000" android:id="@id/iws" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:text="@string/w8j" />
+        <TextView android:textSize="13.0dip" android:textColor="#3d000000" android:id="@id/iy5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/w8k" />
+    </LinearLayout>
+    <com.tencent.widget.AutoVerticalScrollTextView android:textSize="12.0dip" android:textColor="@color/aig" android:id="@id/jc7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="40.0dip" android:layout_alignParentBottom="true" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/jc_" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ProgressBar android:layout_gravity="center" android:id="@id/jce" android:layout_width="23.0dip" android:layout_height="23.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/aig" android:layout_gravity="center_horizontal" android:id="@id/jcf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/hyw" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/jc9" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/jc4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ch2" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/jc6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="12.0dip" android:text="@string/hym" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/aig" android:gravity="center" android:id="@id/jc5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="12.0dip" android:text="@string/hy4" android:lineSpacingExtra="2.0dip" />
+    </LinearLayout>
+</RelativeLayout>

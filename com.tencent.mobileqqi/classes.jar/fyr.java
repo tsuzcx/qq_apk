@@ -1,28 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
 
 public class fyr
-  extends Handler
+  implements Runnable
 {
-  public fyr(FileManagerNotifyCenter paramFileManagerNotifyCenter, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public fyr(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.a.a().b();
-    this.a.a.a().b(-1);
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk, this.jdField_a_of_type_JavaLangString, 3);
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk);
   }
 }
 

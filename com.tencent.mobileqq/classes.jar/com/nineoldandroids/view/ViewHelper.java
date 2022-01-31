@@ -10,7 +10,7 @@ public final class ViewHelper
     if (AnimatorProxy.NEEDS_PROXY) {
       return AnimatorProxy.wrap(paramView).getAlpha();
     }
-    return Honeycomb.getAlpha(paramView);
+    return ViewHelper.Honeycomb.getAlpha(paramView);
   }
   
   public static float getPivotX(View paramView)
@@ -18,7 +18,7 @@ public final class ViewHelper
     if (AnimatorProxy.NEEDS_PROXY) {
       return AnimatorProxy.wrap(paramView).getPivotX();
     }
-    return Honeycomb.getPivotX(paramView);
+    return ViewHelper.Honeycomb.getPivotX(paramView);
   }
   
   public static float getPivotY(View paramView)
@@ -26,7 +26,7 @@ public final class ViewHelper
     if (AnimatorProxy.NEEDS_PROXY) {
       return AnimatorProxy.wrap(paramView).getPivotY();
     }
-    return Honeycomb.getPivotY(paramView);
+    return ViewHelper.Honeycomb.getPivotY(paramView);
   }
   
   public static float getRotation(View paramView)
@@ -34,7 +34,7 @@ public final class ViewHelper
     if (AnimatorProxy.NEEDS_PROXY) {
       return AnimatorProxy.wrap(paramView).getRotation();
     }
-    return Honeycomb.getRotation(paramView);
+    return ViewHelper.Honeycomb.getRotation(paramView);
   }
   
   public static float getRotationX(View paramView)
@@ -42,7 +42,7 @@ public final class ViewHelper
     if (AnimatorProxy.NEEDS_PROXY) {
       return AnimatorProxy.wrap(paramView).getRotationX();
     }
-    return Honeycomb.getRotationX(paramView);
+    return ViewHelper.Honeycomb.getRotationX(paramView);
   }
   
   public static float getRotationY(View paramView)
@@ -50,7 +50,7 @@ public final class ViewHelper
     if (AnimatorProxy.NEEDS_PROXY) {
       return AnimatorProxy.wrap(paramView).getRotationY();
     }
-    return Honeycomb.getRotationY(paramView);
+    return ViewHelper.Honeycomb.getRotationY(paramView);
   }
   
   public static float getScaleX(View paramView)
@@ -58,7 +58,7 @@ public final class ViewHelper
     if (AnimatorProxy.NEEDS_PROXY) {
       return AnimatorProxy.wrap(paramView).getScaleX();
     }
-    return Honeycomb.getScaleX(paramView);
+    return ViewHelper.Honeycomb.getScaleX(paramView);
   }
   
   public static float getScaleY(View paramView)
@@ -66,7 +66,7 @@ public final class ViewHelper
     if (AnimatorProxy.NEEDS_PROXY) {
       return AnimatorProxy.wrap(paramView).getScaleY();
     }
-    return Honeycomb.getScaleY(paramView);
+    return ViewHelper.Honeycomb.getScaleY(paramView);
   }
   
   public static float getScrollX(View paramView)
@@ -74,7 +74,7 @@ public final class ViewHelper
     if (AnimatorProxy.NEEDS_PROXY) {
       return AnimatorProxy.wrap(paramView).getScrollX();
     }
-    return Honeycomb.getScrollX(paramView);
+    return ViewHelper.Honeycomb.getScrollX(paramView);
   }
   
   public static float getScrollY(View paramView)
@@ -82,7 +82,7 @@ public final class ViewHelper
     if (AnimatorProxy.NEEDS_PROXY) {
       return AnimatorProxy.wrap(paramView).getScrollY();
     }
-    return Honeycomb.getScrollY(paramView);
+    return ViewHelper.Honeycomb.getScrollY(paramView);
   }
   
   public static float getTranslationX(View paramView)
@@ -90,7 +90,7 @@ public final class ViewHelper
     if (AnimatorProxy.NEEDS_PROXY) {
       return AnimatorProxy.wrap(paramView).getTranslationX();
     }
-    return Honeycomb.getTranslationX(paramView);
+    return ViewHelper.Honeycomb.getTranslationX(paramView);
   }
   
   public static float getTranslationY(View paramView)
@@ -98,7 +98,7 @@ public final class ViewHelper
     if (AnimatorProxy.NEEDS_PROXY) {
       return AnimatorProxy.wrap(paramView).getTranslationY();
     }
-    return Honeycomb.getTranslationY(paramView);
+    return ViewHelper.Honeycomb.getTranslationY(paramView);
   }
   
   public static float getX(View paramView)
@@ -106,7 +106,7 @@ public final class ViewHelper
     if (AnimatorProxy.NEEDS_PROXY) {
       return AnimatorProxy.wrap(paramView).getX();
     }
-    return Honeycomb.getX(paramView);
+    return ViewHelper.Honeycomb.getX(paramView);
   }
   
   public static float getY(View paramView)
@@ -114,7 +114,7 @@ public final class ViewHelper
     if (AnimatorProxy.NEEDS_PROXY) {
       return AnimatorProxy.wrap(paramView).getY();
     }
-    return Honeycomb.getY(paramView);
+    return ViewHelper.Honeycomb.getY(paramView);
   }
   
   public static void setAlpha(View paramView, float paramFloat)
@@ -124,7 +124,7 @@ public final class ViewHelper
       AnimatorProxy.wrap(paramView).setAlpha(paramFloat);
       return;
     }
-    Honeycomb.setAlpha(paramView, paramFloat);
+    ViewHelper.Honeycomb.setAlpha(paramView, paramFloat);
   }
   
   public static void setPivotX(View paramView, float paramFloat)
@@ -134,7 +134,7 @@ public final class ViewHelper
       AnimatorProxy.wrap(paramView).setPivotX(paramFloat);
       return;
     }
-    Honeycomb.setPivotX(paramView, paramFloat);
+    ViewHelper.Honeycomb.setPivotX(paramView, paramFloat);
   }
   
   public static void setPivotY(View paramView, float paramFloat)
@@ -144,7 +144,7 @@ public final class ViewHelper
       AnimatorProxy.wrap(paramView).setPivotY(paramFloat);
       return;
     }
-    Honeycomb.setPivotY(paramView, paramFloat);
+    ViewHelper.Honeycomb.setPivotY(paramView, paramFloat);
   }
   
   public static void setRotation(View paramView, float paramFloat)
@@ -154,7 +154,7 @@ public final class ViewHelper
       AnimatorProxy.wrap(paramView).setRotation(paramFloat);
       return;
     }
-    Honeycomb.setRotation(paramView, paramFloat);
+    ViewHelper.Honeycomb.setRotation(paramView, paramFloat);
   }
   
   public static void setRotationX(View paramView, float paramFloat)
@@ -164,7 +164,7 @@ public final class ViewHelper
       AnimatorProxy.wrap(paramView).setRotationX(paramFloat);
       return;
     }
-    Honeycomb.setRotationX(paramView, paramFloat);
+    ViewHelper.Honeycomb.setRotationX(paramView, paramFloat);
   }
   
   public static void setRotationY(View paramView, float paramFloat)
@@ -174,7 +174,7 @@ public final class ViewHelper
       AnimatorProxy.wrap(paramView).setRotationY(paramFloat);
       return;
     }
-    Honeycomb.setRotationY(paramView, paramFloat);
+    ViewHelper.Honeycomb.setRotationY(paramView, paramFloat);
   }
   
   public static void setScaleX(View paramView, float paramFloat)
@@ -184,7 +184,7 @@ public final class ViewHelper
       AnimatorProxy.wrap(paramView).setScaleX(paramFloat);
       return;
     }
-    Honeycomb.setScaleX(paramView, paramFloat);
+    ViewHelper.Honeycomb.setScaleX(paramView, paramFloat);
   }
   
   public static void setScaleY(View paramView, float paramFloat)
@@ -194,7 +194,7 @@ public final class ViewHelper
       AnimatorProxy.wrap(paramView).setScaleY(paramFloat);
       return;
     }
-    Honeycomb.setScaleY(paramView, paramFloat);
+    ViewHelper.Honeycomb.setScaleY(paramView, paramFloat);
   }
   
   public static void setScrollX(View paramView, int paramInt)
@@ -204,7 +204,7 @@ public final class ViewHelper
       AnimatorProxy.wrap(paramView).setScrollX(paramInt);
       return;
     }
-    Honeycomb.setScrollX(paramView, paramInt);
+    ViewHelper.Honeycomb.setScrollX(paramView, paramInt);
   }
   
   public static void setScrollY(View paramView, int paramInt)
@@ -214,7 +214,7 @@ public final class ViewHelper
       AnimatorProxy.wrap(paramView).setScrollY(paramInt);
       return;
     }
-    Honeycomb.setScrollY(paramView, paramInt);
+    ViewHelper.Honeycomb.setScrollY(paramView, paramInt);
   }
   
   public static void setTranslationX(View paramView, float paramFloat)
@@ -224,7 +224,7 @@ public final class ViewHelper
       AnimatorProxy.wrap(paramView).setTranslationX(paramFloat);
       return;
     }
-    Honeycomb.setTranslationX(paramView, paramFloat);
+    ViewHelper.Honeycomb.setTranslationX(paramView, paramFloat);
   }
   
   public static void setTranslationY(View paramView, float paramFloat)
@@ -234,7 +234,7 @@ public final class ViewHelper
       AnimatorProxy.wrap(paramView).setTranslationY(paramFloat);
       return;
     }
-    Honeycomb.setTranslationY(paramView, paramFloat);
+    ViewHelper.Honeycomb.setTranslationY(paramView, paramFloat);
   }
   
   public static void setX(View paramView, float paramFloat)
@@ -244,7 +244,7 @@ public final class ViewHelper
       AnimatorProxy.wrap(paramView).setX(paramFloat);
       return;
     }
-    Honeycomb.setX(paramView, paramFloat);
+    ViewHelper.Honeycomb.setX(paramView, paramFloat);
   }
   
   public static void setY(View paramView, float paramFloat)
@@ -254,155 +254,12 @@ public final class ViewHelper
       AnimatorProxy.wrap(paramView).setY(paramFloat);
       return;
     }
-    Honeycomb.setY(paramView, paramFloat);
-  }
-  
-  private static final class Honeycomb
-  {
-    static float getAlpha(View paramView)
-    {
-      return AnimatorProxy.wrap(paramView).getAlpha();
-    }
-    
-    static float getPivotX(View paramView)
-    {
-      return AnimatorProxy.wrap(paramView).getPivotX();
-    }
-    
-    static float getPivotY(View paramView)
-    {
-      return AnimatorProxy.wrap(paramView).getPivotY();
-    }
-    
-    static float getRotation(View paramView)
-    {
-      return AnimatorProxy.wrap(paramView).getRotation();
-    }
-    
-    static float getRotationX(View paramView)
-    {
-      return AnimatorProxy.wrap(paramView).getRotationX();
-    }
-    
-    static float getRotationY(View paramView)
-    {
-      return AnimatorProxy.wrap(paramView).getRotationY();
-    }
-    
-    static float getScaleX(View paramView)
-    {
-      return AnimatorProxy.wrap(paramView).getScaleX();
-    }
-    
-    static float getScaleY(View paramView)
-    {
-      return AnimatorProxy.wrap(paramView).getScaleY();
-    }
-    
-    static float getScrollX(View paramView)
-    {
-      return AnimatorProxy.wrap(paramView).getScrollX();
-    }
-    
-    static float getScrollY(View paramView)
-    {
-      return AnimatorProxy.wrap(paramView).getScrollY();
-    }
-    
-    static float getTranslationX(View paramView)
-    {
-      return AnimatorProxy.wrap(paramView).getTranslationX();
-    }
-    
-    static float getTranslationY(View paramView)
-    {
-      return AnimatorProxy.wrap(paramView).getTranslationY();
-    }
-    
-    static float getX(View paramView)
-    {
-      return AnimatorProxy.wrap(paramView).getX();
-    }
-    
-    static float getY(View paramView)
-    {
-      return AnimatorProxy.wrap(paramView).getY();
-    }
-    
-    static void setAlpha(View paramView, float paramFloat)
-    {
-      AnimatorProxy.wrap(paramView).setAlpha(paramFloat);
-    }
-    
-    static void setPivotX(View paramView, float paramFloat)
-    {
-      AnimatorProxy.wrap(paramView).setPivotX(paramFloat);
-    }
-    
-    static void setPivotY(View paramView, float paramFloat)
-    {
-      AnimatorProxy.wrap(paramView).setPivotY(paramFloat);
-    }
-    
-    static void setRotation(View paramView, float paramFloat)
-    {
-      AnimatorProxy.wrap(paramView).setRotation(paramFloat);
-    }
-    
-    static void setRotationX(View paramView, float paramFloat)
-    {
-      AnimatorProxy.wrap(paramView).setRotationX(paramFloat);
-    }
-    
-    static void setRotationY(View paramView, float paramFloat)
-    {
-      AnimatorProxy.wrap(paramView).setRotationY(paramFloat);
-    }
-    
-    static void setScaleX(View paramView, float paramFloat)
-    {
-      AnimatorProxy.wrap(paramView).setScaleX(paramFloat);
-    }
-    
-    static void setScaleY(View paramView, float paramFloat)
-    {
-      AnimatorProxy.wrap(paramView).setScaleY(paramFloat);
-    }
-    
-    static void setScrollX(View paramView, int paramInt)
-    {
-      AnimatorProxy.wrap(paramView).setScrollX(paramInt);
-    }
-    
-    static void setScrollY(View paramView, int paramInt)
-    {
-      AnimatorProxy.wrap(paramView).setScrollY(paramInt);
-    }
-    
-    static void setTranslationX(View paramView, float paramFloat)
-    {
-      AnimatorProxy.wrap(paramView).setTranslationX(paramFloat);
-    }
-    
-    static void setTranslationY(View paramView, float paramFloat)
-    {
-      AnimatorProxy.wrap(paramView).setTranslationY(paramFloat);
-    }
-    
-    static void setX(View paramView, float paramFloat)
-    {
-      AnimatorProxy.wrap(paramView).setX(paramFloat);
-    }
-    
-    static void setY(View paramView, float paramFloat)
-    {
-      AnimatorProxy.wrap(paramView).setY(paramFloat);
-    }
+    ViewHelper.Honeycomb.setY(paramView, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.nineoldandroids.view.ViewHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import android.graphics.drawable.Drawable;
+import java.util.List;
 
 public class uqv
-  implements Runnable
 {
-  public uqv(RecordSoundPanel paramRecordSoundPanel, String paramString) {}
-  
-  public void run()
+  public static Drawable a(List<String> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.c();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    return ((wdt)uwa.a(24)).a(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uqv
  * JD-Core Version:    0.7.0.1
  */

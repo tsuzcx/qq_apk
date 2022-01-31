@@ -1,23 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
-
-public final class ocy
-  implements Parcelable.Creator
+class ocy
+  extends ocw
 {
-  public EditLocalPhotoSource a(Parcel paramParcel)
-  {
-    return new EditLocalPhotoSource(paramParcel);
-  }
+  ocy(ocx paramocx) {}
   
-  public EditLocalPhotoSource[] a(int paramInt)
+  public void a(boolean paramBoolean, String paramString)
   {
-    return new EditLocalPhotoSource[paramInt];
+    if (paramBoolean) {
+      ocx.a(this.a, paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ocy
  * JD-Core Version:    0.7.0.1
  */

@@ -6,8 +6,10 @@ public final class CheckType
   implements Serializable
 {
   public static final CheckType TYPE_MD5;
+  public static final CheckType TYPE_NONE;
   public static final CheckType TYPE_SHA1;
   public static final int _TYPE_MD5 = 0;
+  public static final int _TYPE_NONE = 2;
   public static final int _TYPE_SHA1 = 1;
   private static CheckType[] __values;
   private String __T = new String();
@@ -19,9 +21,10 @@ public final class CheckType
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      __values = new CheckType[2];
+      __values = new CheckType[3];
       TYPE_MD5 = new CheckType(0, 0, "TYPE_MD5");
       TYPE_SHA1 = new CheckType(1, 1, "TYPE_SHA1");
+      TYPE_NONE = new CheckType(2, 2, "TYPE_NONE");
       return;
     }
   }
@@ -77,7 +80,7 @@ public final class CheckType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     SLICE_UPLOAD.CheckType
  * JD-Core Version:    0.7.0.1
  */

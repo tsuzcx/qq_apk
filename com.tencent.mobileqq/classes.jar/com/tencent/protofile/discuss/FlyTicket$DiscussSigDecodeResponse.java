@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class FlyTicket$DiscussSigDecodeResponse
-  extends MessageMicro
+  extends MessageMicro<DiscussSigDecodeResponse>
 {
   public static final int RET_INFO_FIELD_NUMBER = 1;
   public static final int SIG_FIELD_NUMBER = 2;
@@ -16,7 +16,7 @@ public final class FlyTicket$DiscussSigDecodeResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.protofile.discuss.FlyTicket.DiscussSigDecodeResponse
  * JD-Core Version:    0.7.0.1
  */

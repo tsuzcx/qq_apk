@@ -1,129 +1,235 @@
 import android.content.Context;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.PanelAdapter;
-import com.tencent.mobileqq.activity.aio.PanelAdapter.ViewHolder;
-import com.tencent.widget.XPanelContainer;
+import android.os.Handler;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.FutureListener;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobControlHandler;
+import com.tribe.async.async.JobController;
+import com.tribe.async.async.JobController.CancelCommand;
+import com.tribe.async.async.LightWeightExecutor;
+import com.tribe.async.async.MonitorThreadPoolExecutor.ThreadPoolMonitorListener;
+import com.tribe.async.async.Worker;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Future;
 
 public class uly
-  extends RelativeLayout
+  implements Boss, MonitorThreadPoolExecutor.ThreadPoolMonitorListener
 {
-  public int a;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private static final int jdField_a_of_type_Int = Runtime.getRuntime().availableProcessors();
+  private static final int jdField_b_of_type_Int = Runtime.getRuntime().availableProcessors();
+  private static final int jdField_c_of_type_Int = Runtime.getRuntime().availableProcessors();
+  private long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private final JobController jdField_a_of_type_ComTribeAsyncAsyncJobController;
+  private final LightWeightExecutor jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor;
+  private final Executor jdField_a_of_type_JavaUtilConcurrentExecutor = new uma("StoryBoss.NetworkExecutor", 128, jdField_c_of_type_Int, null);
+  private final Executor[] jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor = new Executor[3];
+  private long jdField_b_of_type_Long;
+  private final Executor jdField_b_of_type_JavaUtilConcurrentExecutor = new uma("StoryBoss.CpuExecutor", 16, jdField_a_of_type_Int, null);
+  private final Executor jdField_c_of_type_JavaUtilConcurrentExecutor = new uma("StoryBoss.FileExecutor", 64, jdField_b_of_type_Int, null);
   
-  public uly(PanelAdapter paramPanelAdapter, Context paramContext, AttributeSet paramAttributeSet)
+  public uly(Context paramContext)
   {
-    super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    int k = paramPanelAdapter.a();
-    int m = paramPanelAdapter.b();
-    int n = AIOUtils.a(15.0F, getContext().getResources());
-    int i = 0;
-    while (i < m)
-    {
-      paramAttributeSet = new LinearLayout(paramContext);
-      int j = (XPanelContainer.jdField_a_of_type_Int - XPanelContainer.d - n) / m;
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, j);
-      localLayoutParams.leftMargin = AIOUtils.a(20.0F, getContext().getResources());
-      localLayoutParams.rightMargin = AIOUtils.a(20.0F, getContext().getResources());
-      paramAttributeSet.setOrientation(0);
-      if (i == 0) {}
-      for (localLayoutParams.topMargin = (XPanelContainer.d / (m + 1));; localLayoutParams.topMargin = (j * i + XPanelContainer.d * (i + 2) / (m + 1) / 2))
-      {
-        j = 0;
-        while (j < k)
-        {
-          Object localObject = new LinearLayout.LayoutParams(-1, -1);
-          ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
-          if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-            this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-          }
-          View localView = LayoutInflater.from(paramContext).inflate(2130968772, null);
-          paramAttributeSet.addView(localView, (ViewGroup.LayoutParams)localObject);
-          localObject = new PanelAdapter.ViewHolder();
-          ((PanelAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131363701));
-          ((PanelAdapter.ViewHolder)localObject).b = ((ImageView)localView.findViewById(2131363702));
-          ((PanelAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362961));
-          localView.setTag(localObject);
-          j += 1;
-        }
-      }
-      addView(paramAttributeSet, localLayoutParams);
-      i += 1;
-    }
-    if (paramPanelAdapter.jdField_a_of_type_Boolean) {
-      a(paramContext);
-    }
-    setTag(Integer.valueOf(XPanelContainer.d));
+    this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor[0] = this.jdField_a_of_type_JavaUtilConcurrentExecutor;
+    this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor[1] = this.jdField_b_of_type_JavaUtilConcurrentExecutor;
+    this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor[2] = this.jdField_c_of_type_JavaUtilConcurrentExecutor;
+    this.jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor = new LightWeightExecutor(umc.a().getDefaultLooper(), 100);
+    this.jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor.setMonitorListener(this);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(umc.a().getDefaultLooper());
+    this.jdField_a_of_type_ComTribeAsyncAsyncJobController = new JobController(this);
+    umc.a().registerSubscriber("root_group", this.jdField_a_of_type_ComTribeAsyncAsyncJobController);
   }
   
-  public void a()
+  @NonNull
+  private <Params, Progress, Result> Future<Result> a(Job<Params, Progress, Result> paramJob, int paramInt1, int paramInt2, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
   {
-    int i = 0;
-    while (i < getChildCount())
+    paramJob = prepareWorker(paramJob, paramInt2, paramFutureListener, paramParams);
+    paramJob.addFutureListener(new ulz(this, paramJob));
+    if (paramInt1 == 0)
     {
-      Object localObject = getChildAt(i);
-      if (localObject != null)
-      {
-        localObject = (PanelAdapter.ViewHolder)((View)localObject).getTag();
-        if ((localObject != null) && (((PanelAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView != null)) {
-          ((PanelAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
-        }
-      }
-      i += 1;
+      umc.a().dispatch(paramJob);
+      return paramJob;
     }
-    this.jdField_a_of_type_Int = -1;
+    umc.a().dispatchDelayed(paramJob, paramInt1);
+    return paramJob;
   }
   
-  public void a(int paramInt)
+  public <Params, Progress, Result> Future<Result> a(Job<Params, Progress, Result> paramJob, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelAdapter.jdField_a_of_type_Boolean)
-    {
-      a(getContext());
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelAdapter.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    paramJob = prepareWorker(paramJob, paramJob.getJobType(), paramFutureListener, paramParams);
+    this.jdField_a_of_type_ComTribeAsyncAsyncJobController.getDefaultHandler().handleExecute(this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor, paramJob);
+    if (paramJob != null) {
+      wxe.b("StoryBoss", "work hash code:" + paramJob.hashCode());
     }
-    while (this.jdField_a_of_type_AndroidWidgetTextView == null) {
+    return paramJob;
+  }
+  
+  public <Result> void cancelJob(Future<Result> paramFuture, boolean paramBoolean)
+  {
+    if ((paramFuture instanceof Worker)) {
+      umc.a().cancelDispatch("", (Worker)paramFuture);
+    }
+    umc.a().dispatch(new JobController.CancelCommand(paramFuture, paramBoolean));
+  }
+  
+  @NonNull
+  public Executor getExecutor(int paramInt)
+  {
+    Executor localExecutor = this.jdField_b_of_type_JavaUtilConcurrentExecutor;
+    switch (paramInt)
+    {
+    default: 
+      return localExecutor;
+    case 2: 
+      return this.jdField_b_of_type_JavaUtilConcurrentExecutor;
+    case 4: 
+      return this.jdField_c_of_type_JavaUtilConcurrentExecutor;
+    case 8: 
+      return this.jdField_c_of_type_JavaUtilConcurrentExecutor;
+    }
+    return this.jdField_a_of_type_JavaUtilConcurrentExecutor;
+  }
+  
+  @NonNull
+  public Executor[] getExecutors()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor;
+  }
+  
+  @NonNull
+  public JobController getJobController()
+  {
+    return this.jdField_a_of_type_ComTribeAsyncAsyncJobController;
+  }
+  
+  @NonNull
+  public Executor getLightWeightExecutor()
+  {
+    return this.jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor;
+  }
+  
+  public void onQueueExceedLimit(String paramString, int paramInt)
+  {
+    wxe.e("StoryBoss", paramString + " onQueueExceedLimit, size = " + paramInt);
+    if (SystemClock.uptimeMillis() - this.jdField_b_of_type_Long > 7200000L) {
+      this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    }
+  }
+  
+  public void onWorkerExceedTime(String paramString, List<Runnable> paramList, int paramInt)
+  {
+    Iterator localIterator = paramList.iterator();
+    if (localIterator.hasNext())
+    {
+      Runnable localRunnable = (Runnable)localIterator.next();
+      paramList = localRunnable.getClass().getSimpleName();
+      if (!(localRunnable instanceof Worker)) {
+        break label116;
+      }
+      paramList = ((Worker)localRunnable).getJob().getClass().getSimpleName();
+    }
+    label116:
+    for (;;)
+    {
+      wxe.e("StoryBoss", paramString + " onWorkerExceedTime, runnable = " + paramList);
+      if (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long <= 7200000L) {
+        break;
+      }
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      break;
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
   
-  protected void a(Context paramContext)
+  @NonNull
+  public <Params, Progress, Result> Future<Result> postJob(Job<Params, Progress, Result> paramJob)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView == null)
-    {
-      int i = AIOUtils.a(18.0F, getContext().getResources());
-      int j = AIOUtils.a(18.0F, getContext().getResources());
-      this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-4473925);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(8.0F);
-      paramContext = new LinearLayout(paramContext);
-      paramContext.setOrientation(0);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.gravity = 83;
-      this.jdField_a_of_type_AndroidWidgetTextView.setGravity(83);
-      this.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, 0, 0, 0);
-      localLayoutParams.leftMargin = i;
-      paramContext.addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
-      addView(paramContext, new RelativeLayout.LayoutParams(-1, j));
-    }
+    return a(paramJob, null, null);
   }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> postJob(Job<Params, Progress, Result> paramJob, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
+  {
+    return a(paramJob, paramFutureListener, paramParams);
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> postJob(Job<Params, Progress, Result> paramJob, @Nullable Params paramParams)
+  {
+    return a(paramJob, null, paramParams);
+  }
+  
+  public void postLightWeightJob(Runnable paramRunnable, int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor.execute(paramRunnable);
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramRunnable, paramInt);
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Worker<Progress, Result> prepareWorker(Job<Params, Progress, Result> paramJob, int paramInt, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
+  {
+    xqq.a(paramJob);
+    paramJob.setJobType(paramInt);
+    paramJob.setParams(paramParams);
+    paramParams = new Worker(paramJob);
+    if (paramFutureListener != null) {
+      paramParams.addFutureListener(paramFutureListener);
+    }
+    paramJob.onPost();
+    return paramParams;
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> scheduleJob(Job<Params, Progress, Result> paramJob)
+  {
+    return a(paramJob, 0, paramJob.getJobType(), null, null);
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> scheduleJob(Job<Params, Progress, Result> paramJob, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
+  {
+    return a(paramJob, 0, paramJob.getJobType(), paramFutureListener, paramParams);
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> scheduleJob(Job<Params, Progress, Result> paramJob, @Nullable Params paramParams)
+  {
+    return a(paramJob, 0, paramJob.getJobType(), null, paramParams);
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> scheduleJobDelayed(Job<Params, Progress, Result> paramJob, int paramInt)
+  {
+    return a(paramJob, paramInt, paramJob.getJobType(), null, null);
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> scheduleJobDelayed(Job<Params, Progress, Result> paramJob, int paramInt, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
+  {
+    return a(paramJob, paramInt, paramJob.getJobType(), paramFutureListener, paramParams);
+  }
+  
+  @NonNull
+  public <Params, Progress, Result> Future<Result> scheduleJobDelayed(Job<Params, Progress, Result> paramJob, int paramInt, @Nullable Params paramParams)
+  {
+    return a(paramJob, paramInt, paramJob.getJobType(), null, paramParams);
+  }
+  
+  public void shutdown() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uly
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,27 @@
-import android.widget.ImageView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
-import com.tencent.mobileqq.freshnews.QQInputView;
-import com.tencent.util.InputMethodUtil;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class adok
-  implements Runnable
+  implements View.OnClickListener
 {
-  public adok(QQInputView paramQQInputView) {}
+  public adok(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQInputView.a(this.a).setVisibility(8);
-    QQInputView.a(this.a).setImageResource(2130844545);
-    if (AppSetting.b) {
-      QQInputView.a(this.a).setContentDescription("键盘");
+    paramView = this.a.getIntent().getStringExtra("uin");
+    if ((paramView != null) && (paramView.equals(this.a.app.getCurrentAccountUin())))
+    {
+      ProfileLabelEditorActivity.a(this.a);
+      azqs.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "4", "", "", "");
     }
-    InputMethodUtil.a(QQInputView.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adok
  * JD-Core Version:    0.7.0.1
  */

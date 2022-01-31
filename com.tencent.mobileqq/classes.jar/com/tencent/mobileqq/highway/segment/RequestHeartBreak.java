@@ -48,14 +48,12 @@ public class RequestHeartBreak
   
   public void onResponse(RequestWorker paramRequestWorker, HwResponse paramHwResponse)
   {
-    if (this.isUrgent) {
-      paramRequestWorker.engine.mConnManager.onHeartBreakResp(this.sendConnId, this.endpoint);
-    }
+    paramRequestWorker.engine.mConnManager.onHeartBreakResp(this.sendConnId, this.endpoint, this.isUrgent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.segment.RequestHeartBreak
  * JD-Core Version:    0.7.0.1
  */

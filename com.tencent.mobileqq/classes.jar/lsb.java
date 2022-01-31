@@ -1,21 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule;
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
-import com.tencent.mobileqq.pb.PBEnumField;
-import tencent.im.oidb.cmd0x978.oidb_cmd0x978.OneFollowOperationResult;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public class lsb
-  implements Runnable
+class lsb
+  extends lme
 {
-  public lsb(UserOperationModule paramUserOperationModule, UserOperationModule.Ox978RespCallBack paramOx978RespCallBack, String paramString, oidb_cmd0x978.OneFollowOperationResult paramOneFollowOperationResult) {}
+  lsb(lsa paramlsa) {}
   
-  public void run()
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelUserOperationModule$Ox978RespCallBack.a(true, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_TencentImOidbCmd0x978Oidb_cmd0x978$OneFollowOperationResult.enum_follow_status.get());
+    QLog.w(lsa.jdField_a_of_type_JavaLangString, 1, "onAfterOpenCamera, success[" + paramBoolean + "], preSessionType[" + paramInt + "], seq[" + paramLong + "]");
+    if (paramBoolean) {
+      b(paramLong);
+    }
+  }
+  
+  void b(long paramLong)
+  {
+    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4);
+    localMessage.obj = Long.valueOf(paramLong);
+    localMessage.sendToTarget();
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    long l = AudioHelper.b();
+    QLog.w(lsa.jdField_a_of_type_JavaLangString, 1, "onAfterReopenCamera, success[" + paramBoolean + "], seq[" + l + "]");
+    if (paramBoolean) {
+      b(l);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lsb
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class FastAuthorize$AuthorizeResponse
-  extends MessageMicro
+  extends MessageMicro<AuthorizeResponse>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42, 50, 58, 66, 74, 82, 90, 98 }, new String[] { "ret", "msg", "access_token", "expires_in", "openid", "pay_token", "encrytoken", "pf", "pfkey", "encrykey", "md5key", "apk_name" }, new Object[] { "", "", "", Long.valueOf(0L), "", "", "", "", "", "", "", "" }, AuthorizeResponse.class);
   public final PBStringField access_token = PBField.initString("");
@@ -25,7 +25,7 @@ public final class FastAuthorize$AuthorizeResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeResponse
  * JD-Core Version:    0.7.0.1
  */

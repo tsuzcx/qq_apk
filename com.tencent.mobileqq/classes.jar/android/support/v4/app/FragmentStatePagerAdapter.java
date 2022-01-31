@@ -17,8 +17,8 @@ public abstract class FragmentStatePagerAdapter
   private FragmentTransaction mCurTransaction;
   private Fragment mCurrentPrimaryItem;
   private final FragmentManager mFragmentManager;
-  private ArrayList mFragments = new ArrayList();
-  private ArrayList mSavedState = new ArrayList();
+  protected ArrayList<Fragment> mFragments = new ArrayList();
+  private ArrayList<Fragment.SavedState> mSavedState = new ArrayList();
   
   public FragmentStatePagerAdapter(FragmentManager paramFragmentManager)
   {

@@ -1,22 +1,32 @@
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-public final class pkr
-  implements Comparator
+public class pkr
+  implements poa
 {
-  public int a(pkt parampkt1, pkt parampkt2)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    if (parampkt1.b > parampkt2.b) {
-      return -1;
-    }
-    if (parampkt1.b < parampkt2.b) {
-      return 1;
-    }
-    return 0;
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    return pjt.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pgd parampgd, int paramInt2) {}
+  
+  public boolean a(int paramInt, Container paramContainer, pgd parampgd, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pkr
  * JD-Core Version:    0.7.0.1
  */

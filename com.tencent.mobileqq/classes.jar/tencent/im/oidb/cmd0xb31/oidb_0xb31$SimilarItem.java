@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0xb31$SimilarItem
-  extends MessageMicro
+  extends MessageMicro<SimilarItem>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 64 }, new String[] { "type", "title", "name", "url", "jump_url", "sub_title", "icon_url", "show_both_head" }, new Object[] { Integer.valueOf(1), "", "", "", "", "", "", Integer.valueOf(0) }, SimilarItem.class);
   public final PBStringField icon_url = PBField.initString("");
@@ -22,7 +22,7 @@ public final class oidb_0xb31$SimilarItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb31.oidb_0xb31.SimilarItem
  * JD-Core Version:    0.7.0.1
  */

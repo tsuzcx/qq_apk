@@ -1,19 +1,16 @@
 package com.tencent.token.ui;
 
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class uf
+class uf
   implements View.OnClickListener
 {
-  uf(RealNameActivity paramRealNameActivity, Dialog paramDialog) {}
+  uf(RealNameActivity paramRealNameActivity, View paramView) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    if (this.a.isShowing()) {
-      this.a.dismiss();
-    }
+    this.a.setVisibility(8);
   }
 }
 

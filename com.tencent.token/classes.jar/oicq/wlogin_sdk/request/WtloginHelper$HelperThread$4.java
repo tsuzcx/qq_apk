@@ -14,7 +14,7 @@ class WtloginHelper$HelperThread$4
       return;
     }
     ErrMsg localErrMsg = t.b(this.this$1.mUserSigInfo._seqence)._last_err_msg;
-    if (n.D)
+    if (o.I)
     {
       if (this.this$1.mST == null)
       {

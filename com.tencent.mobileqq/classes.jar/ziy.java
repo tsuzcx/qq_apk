@@ -1,21 +1,34 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.qphone.base.util.QLog;
 
-public class ziy
-  implements Runnable
+class ziy
+  implements zja
 {
-  public ziy(PhoneContactManagerImp paramPhoneContactManagerImp, boolean paramBoolean1, boolean paramBoolean2) {}
+  ziy(zis paramzis) {}
   
-  public void run()
+  public void b()
   {
-    RespondQueryQQBindingStat localRespondQueryQQBindingStat = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a();
-    if ((localRespondQueryQQBindingStat != null) && (TextUtils.isEmpty(localRespondQueryQQBindingStat.mobileNo)) && (localRespondQueryQQBindingStat.noBindUploadContacts == true))
-    {
-      PhoneContactManagerImp.b(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp, this.jdField_a_of_type_Boolean);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryComponent", 2, "image list onEnterAnimationEnd");
     }
-    PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp, this.jdField_a_of_type_Boolean, this.b);
+    this.a.b();
+  }
+  
+  public void c()
+  {
+    this.a.c();
+  }
+  
+  public void d()
+  {
+    this.a.d();
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryComponent", 2, "image list onExitAnimationEnd");
+    }
+    this.a.e();
   }
 }
 

@@ -1,20 +1,12 @@
-import com.tencent.mobileqq.adapter.NewFriendMoreSysMsgAdapter;
-import com.tencent.mobileqq.newfriend.NewFriendMessage;
-import java.util.Comparator;
-
-public class yhs
-  implements Comparator
+public abstract interface yhs
 {
-  public yhs(NewFriendMoreSysMsgAdapter paramNewFriendMoreSysMsgAdapter) {}
+  public abstract void a();
   
-  public int a(NewFriendMessage paramNewFriendMessage1, NewFriendMessage paramNewFriendMessage2)
-  {
-    return (int)(paramNewFriendMessage2.a - paramNewFriendMessage1.a);
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yhs
  * JD-Core Version:    0.7.0.1
  */

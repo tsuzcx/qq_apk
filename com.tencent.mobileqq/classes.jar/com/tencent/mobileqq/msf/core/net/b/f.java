@@ -2,14 +2,10 @@ package com.tencent.mobileqq.msf.core.net.b;
 
 import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.af;
 import com.tencent.mobileqq.msf.core.d;
-import com.tencent.mobileqq.msf.core.t;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.CodecWarpper;
 import com.tencent.qphone.base.util.QLog;
-import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -24,11 +20,11 @@ public class f
 {
   private static final String f = "ReqAllFailSocket";
   private static final int g = 10000;
-  protected boolean a;
-  protected boolean b;
-  protected boolean c;
-  protected long d;
-  protected long e;
+  protected boolean a = false;
+  protected boolean b = false;
+  protected boolean c = false;
+  protected long d = 0L;
+  protected long e = 0L;
   private Socket h;
   private OutputStream i;
   private InputStream j;
@@ -36,7 +32,7 @@ public class f
   private AtomicBoolean l = new AtomicBoolean(false);
   private d m;
   private LinkedBlockingDeque n = new LinkedBlockingDeque(1000);
-  private long o;
+  private long o = 0L;
   private String p = "";
   private MsfCore q;
   private int r;
@@ -49,7 +45,6 @@ public class f
   }
   
   private int a(String paramString, MsfCommand paramMsfCommand, byte[] paramArrayOfByte)
-    throws IOException
   {
     if (paramMsfCommand == MsfCommand.openConn) {}
     for (;;)
@@ -71,26 +66,26 @@ public class f
   
   private boolean c()
   {
-    InetSocketAddress localInetSocketAddress = new InetSocketAddress(this.m.c(), this.m.d());
+    InetSocketAddress localInetSocketAddress = new InetSocketAddress(this.m.c(), this.m.f());
     try
     {
       this.h = new Socket();
       this.h.setTcpNoDelay(true);
       this.h.setKeepAlive(true);
-      this.h.connect(localInetSocketAddress, this.m.e());
+      this.h.connect(localInetSocketAddress, this.m.g());
       this.i = this.h.getOutputStream();
       this.j = this.h.getInputStream();
       this.k.set(true);
       this.c = true;
       this.o = SystemClock.elapsedRealtime();
-      QLog.d("ReqAllFailSocket", 1, this.r + " conn " + this.m.c() + ":" + this.m.d() + " succ");
+      QLog.d("ReqAllFailSocket", 1, this.r + " conn " + this.m.c() + ":" + this.m.f() + " succ");
       return true;
     }
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
       this.p = "connFail";
-      QLog.d("ReqAllFailSocket", 1, this.r + " conn " + this.m.c() + ":" + this.m.d() + " fail");
+      QLog.d("ReqAllFailSocket", 1, this.r + " conn " + this.m.c() + ":" + this.m.f() + " fail");
     }
     return false;
   }
@@ -173,124 +168,17 @@ public class f
   
   public String b()
   {
-    return this.m.c() + "|" + this.m.d() + "|" + this.a + "|" + this.b + "|" + this.p + "|" + this.c + "|" + this.d + "|" + this.e;
+    return this.m.c() + "|" + this.m.f() + "|" + this.a + "|" + this.b + "|" + this.p + "|" + this.c + "|" + this.d + "|" + this.e;
   }
   
   public void run()
   {
     if (c())
     {
-      new b(null).start();
-      new a(null).start();
+      new f.b(this, null).start();
+      new f.a(this, null).start();
       f();
       e();
-    }
-  }
-  
-  private class a
-    extends Thread
-  {
-    private a() {}
-    
-    public void run()
-    {
-      for (;;)
-      {
-        int j;
-        try
-        {
-          DataInputStream localDataInputStream = new DataInputStream(f.e(f.this));
-          i = 0;
-          if ((f.c(f.this).get()) || (!f.a(f.this).get()))
-          {
-            if (i > 0) {
-              break label215;
-            }
-            j = localDataInputStream.readInt() - 4;
-            if (j <= 33)
-            {
-              f.this.a = true;
-              f.this.d = (SystemClock.elapsedRealtime() - f.f(f.this));
-              QLog.d("ReqAllFailSocket", 1, f.g(f.this) + " recv sso ping");
-              i = j;
-            }
-          }
-          else
-          {
-            return;
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          localThrowable.printStackTrace();
-          f.a(f.this, "readError");
-          f.d(f.this);
-        }
-        int i = j;
-        if (j == 62)
-        {
-          f.this.b = true;
-          f.this.e = (SystemClock.elapsedRealtime() - f.f(f.this));
-          QLog.d("ReqAllFailSocket", 1, f.g(f.this) + " recv heartbeat ping");
-          i = j;
-          continue;
-          label215:
-          localThrowable.readByte();
-          i -= 1;
-        }
-      }
-    }
-  }
-  
-  private class b
-    extends Thread
-  {
-    private b() {}
-    
-    public void run()
-    {
-      ToServiceMsg localToServiceMsg;
-      String str;
-      for (;;)
-      {
-        if (f.a(f.this).get()) {
-          return;
-        }
-        try
-        {
-          localToServiceMsg = (ToServiceMsg)f.b(f.this).take();
-          str = localToServiceMsg.getServiceCmd();
-          localObject = null;
-        }
-        catch (Throwable localThrowable)
-        {
-          Object localObject;
-          byte[] arrayOfByte2;
-          label42:
-          label89:
-          localThrowable.printStackTrace();
-          f.d(f.this);
-        }
-        try
-        {
-          arrayOfByte2 = af.f(localToServiceMsg);
-          localObject = arrayOfByte2;
-        }
-        catch (Exception localException)
-        {
-          QLog.d("ReqAllFailSocket", 1, "", localException);
-          break label42;
-          byte[] arrayOfByte1 = CodecWarpper.nativeEncodeRequest(localToServiceMsg.getRequestSsoSeq(), t.d(), t.f(), t.g(), "", str, null, localToServiceMsg.getAppId(), 0, localToServiceMsg.getUin(), (byte)0, (byte)0, localThrowable, localToServiceMsg.getWupBuffer(), true);
-          break label89;
-        }
-        if (591 != CodecWarpper.getSharedObjectVersion()) {
-          break;
-        }
-        localObject = CodecWarpper.nativeEncodeRequest(localToServiceMsg.getRequestSsoSeq(), t.d(), t.f(), t.g(), "", str, null, localToServiceMsg.getAppId(), 0, localToServiceMsg.getUin(), (byte)0, (byte)0, localToServiceMsg.getWupBuffer(), true);
-        if (f.c(f.this).get()) {
-          f.a(f.this, localToServiceMsg.getServiceCmd(), localToServiceMsg.getMsfCommand(), (byte[])localObject);
-        }
-      }
     }
   }
 }

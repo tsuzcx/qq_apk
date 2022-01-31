@@ -1,48 +1,50 @@
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.ark.ApplicationCallback;
-import com.tencent.ark.ark.ModuleRegister;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg;
-import com.tencent.mobileqq.ark.ArkAppCenterEvent;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.support.annotation.IdRes;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public final class uuh
-  implements ark.ApplicationCallback
+public class uuh<M>
+  extends RecyclerView.ViewHolder
 {
-  public void AppCreate(String paramString, ark.Application paramApplication)
+  private SparseArray<View> a = new SparseArray();
+  
+  public uuh(View paramView)
   {
-    ArkAppCenterEvent.a(0, paramString, null);
+    super(paramView);
   }
   
-  public void AppDestroy(String paramString, ark.Application paramApplication)
+  public uuh(ViewGroup paramViewGroup, int paramInt)
   {
-    ArkAppCenterEvent.a(1, paramString, null);
+    super(LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false));
   }
   
-  public void OutputScriptError(String paramString1, String paramString2)
+  protected Context a()
   {
-    String str = paramString1;
-    if (paramString1 == null) {
-      str = "";
-    }
-    paramString1 = paramString2;
-    if (paramString2 == null) {
-      paramString1 = "";
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("ArkApp.ArkAppContainer", 1, String.format("%s.script error: %s", new Object[] { str, paramString1 }));
-    }
-    ArkAppDataReport.c(null, str, paramString1);
+    return this.itemView.getContext();
   }
   
-  public void RegisterModules(ark.ModuleRegister paramModuleRegister, String paramString)
+  protected <T extends View> T a(@IdRes int paramInt)
   {
-    ArkAppModuleReg.a(paramModuleRegister, paramString);
+    View localView2 = (View)this.a.get(paramInt);
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = this.itemView.findViewById(paramInt);
+      this.a.put(paramInt, localView1);
+    }
+    return localView1;
   }
+  
+  public void a() {}
+  
+  public void a(M paramM) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uuh
  * JD-Core Version:    0.7.0.1
  */

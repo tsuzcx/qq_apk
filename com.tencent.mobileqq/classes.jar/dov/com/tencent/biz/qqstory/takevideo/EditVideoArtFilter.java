@@ -22,28 +22,31 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import ansi;
-import ansj;
-import ansl;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
+import azqs;
+import bmkq;
+import bmkr;
+import bmkt;
+import bmnh;
+import bmnj;
+import bmor;
+import bnaz;
+import bnbf;
 import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
-import com.tencent.biz.qqstory.takevideo.artfilter.FilterTemplate;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
-import dov.com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
-import dov.com.tencent.biz.qqstory.takevideo.publish.GeneratePicArgs;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
+import wxk;
+import xcz;
 
 @TargetApi(11)
 public class EditVideoArtFilter
-  extends EditVideoPart
+  extends bmnh
   implements View.OnClickListener, View.OnTouchListener, AdapterView.OnItemClickListener, Runnable
 {
   public static final String a;
@@ -53,8 +56,8 @@ public class EditVideoArtFilter
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ansj jdField_a_of_type_Ansj;
-  private ansl jdField_a_of_type_Ansl;
+  private bmkr jdField_a_of_type_Bmkr;
+  private bmkt jdField_a_of_type_Bmkt;
   public HorizontalListView a;
   public ArtFilterItemView a;
   public AtomicInteger a;
@@ -81,9 +84,9 @@ public class EditVideoArtFilter
     jdField_a_of_type_JavaLangString = ArtFilterManager.jdField_b_of_type_JavaLangString + "artfiltertemp/";
   }
   
-  public EditVideoArtFilter(@NonNull EditVideoPartManager paramEditVideoPartManager)
+  public EditVideoArtFilter(@NonNull bmnj parambmnj)
   {
-    super(paramEditVideoPartManager);
+    super(parambmnj);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
     this.jdField_c_of_type_Boolean = true;
     this.jdField_c_of_type_Int = 0;
@@ -101,8 +104,8 @@ public class EditVideoArtFilter
   
   private void a(int paramInt)
   {
-    this.jdField_a_of_type_Ansj.jdField_c_of_type_Int = paramInt;
-    this.jdField_a_of_type_Ansj.notifyDataSetChanged();
+    this.jdField_a_of_type_Bmkr.jdField_c_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bmkr.notifyDataSetChanged();
   }
   
   private void b(boolean paramBoolean)
@@ -126,23 +129,23 @@ public class EditVideoArtFilter
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity();
-    this.jdField_a_of_type_Ansj = new ansj(this, this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
-    this.jdField_a_of_type_Ansl = new ansl(this);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView = ((ArtFilterItemView)a(2131364357));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.findViewById(2131365542));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.findViewById(2131365543));
+    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_Bmnj.jdField_a_of_type_Bmor.getActivity();
+    this.jdField_a_of_type_Bmkr = new bmkr(this, this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_Bmnj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
+    this.jdField_a_of_type_Bmkt = new bmkt(this);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView = ((ArtFilterItemView)a(2131362852));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.findViewById(2131362845));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.findViewById(2131362846));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.findViewById(2131365541));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.findViewById(2131362853));
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(this);
-    if ((this.jdField_a_of_type_ComTencentWidgetHorizontalListView != null) && (this.jdField_a_of_type_Ansj != null)) {
+    if ((this.jdField_a_of_type_ComTencentWidgetHorizontalListView != null) && (this.jdField_a_of_type_Bmkr != null)) {
       this.jdField_a_of_type_ComTencentWidgetHorizontalListView.postDelayed(this, 10L);
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.findViewById(2131365544));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.findViewById(2131362847));
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnTouchListener(this);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.setHandler(this.jdField_a_of_type_Ansl, this.jdField_c_of_type_JavaLangString);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.setHandler(this.jdField_a_of_type_Bmkt, this.jdField_c_of_type_JavaLangString);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -153,33 +156,33 @@ public class EditVideoArtFilter
     }
   }
   
-  public void a(int paramInt, @NonNull GenerateContext paramGenerateContext)
+  public void a(int paramInt, @NonNull bnaz parambnaz)
   {
     if (b())
     {
-      GeneratePicArgs localGeneratePicArgs = paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishGeneratePicArgs;
-      localGeneratePicArgs.jdField_a_of_type_Int += 1;
-      ReportController.b(null, "dc00898", "", "", "0X8007551", "0X8007551", 0, 0, "", "", "", "");
-      ReportController.b(null, "dc00898", "", "", "0X8007552", "0X8007552", this.jdField_d_of_type_Int, 0, "", "", "", "");
-      paramGenerateContext.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo_pf00064.reservesArray.add("5");
-      paramGenerateContext.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo_pf00064.reserves7 = (this.jdField_d_of_type_Int + "");
-      VideoEditReport.b("0X80075EF", VideoEditReport.jdField_a_of_type_Int);
+      bnbf localbnbf = parambnaz.jdField_a_of_type_Bnbf;
+      localbnbf.jdField_a_of_type_Int += 1;
+      azqs.b(null, "dc00898", "", "", "0X8007551", "0X8007551", 0, 0, "", "", "", "");
+      azqs.b(null, "dc00898", "", "", "0X8007552", "0X8007552", this.jdField_d_of_type_Int, 0, "", "", "", "");
+      parambnaz.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo_pf00064.reservesArray.add("5");
+      parambnaz.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo_pf00064.reserves7 = (this.jdField_d_of_type_Int + "");
+      wxk.b("0X80075EF", wxk.jdField_a_of_type_Int);
     }
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    FilterTemplate localFilterTemplate = this.jdField_a_of_type_Ansj.a(paramInt);
-    if (localFilterTemplate == null) {
+    xcz localxcz = this.jdField_a_of_type_Bmkr.a(paramInt);
+    if (localxcz == null) {
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "submitFilterTask:position:" + paramInt + "FilterTemplate" + localFilterTemplate);
+      QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "submitFilterTask:position:" + paramInt + "FilterTemplate" + localxcz);
     }
     a(paramInt);
     if ((this.jdField_d_of_type_JavaLangString.endsWith(".gif")) && (!paramBoolean))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131438724), 0).a();
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690295), 0).a();
       return;
     }
     if (paramInt == 0)
@@ -188,11 +191,11 @@ public class EditVideoArtFilter
       this.jdField_f_of_type_Int = -1;
       return;
     }
-    this.jdField_f_of_type_Int = localFilterTemplate.jdField_a_of_type_Int;
-    Object localObject = jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long + "_" + localFilterTemplate.jdField_a_of_type_Int + ".png";
+    this.jdField_f_of_type_Int = localxcz.jdField_a_of_type_Int;
+    Object localObject = jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long + "_" + localxcz.jdField_a_of_type_Int + ".png";
     if (new File((String)localObject).exists())
     {
-      a((String)localObject, localFilterTemplate.jdField_a_of_type_Int);
+      a((String)localObject, localxcz.jdField_a_of_type_Int);
       return;
     }
     paramInt = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
@@ -200,17 +203,17 @@ public class EditVideoArtFilter
       QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "submitFilterTask: timeStamp:" + this.jdField_a_of_type_Long + " currentTaskId:" + paramInt + " compressedFilePath:" + this.jdField_d_of_type_JavaLangString);
     }
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a(paramInt);
-    localObject = this.jdField_a_of_type_Ansl.obtainMessage(35);
+    localObject = this.jdField_a_of_type_Bmkt.obtainMessage(35);
     ((Message)localObject).obj = Integer.valueOf(paramInt);
-    this.jdField_a_of_type_Ansl.sendMessageDelayed((Message)localObject, 20000L);
+    this.jdField_a_of_type_Bmkt.sendMessageDelayed((Message)localObject, 20000L);
     b(true);
     localObject = new Bundle();
-    ((Bundle)localObject).putInt("param_art_filter_style_id", localFilterTemplate.jdField_a_of_type_Int);
-    ((Bundle)localObject).putString("param_art_filter_style_name", localFilterTemplate.jdField_b_of_type_JavaLangString);
+    ((Bundle)localObject).putInt("param_art_filter_style_id", localxcz.jdField_a_of_type_Int);
+    ((Bundle)localObject).putString("param_art_filter_style_name", localxcz.jdField_b_of_type_JavaLangString);
     ((Bundle)localObject).putLong("param_art_filter_file_name", this.jdField_a_of_type_Long);
     ((Bundle)localObject).putString("param_art_filter_resource_path", this.jdField_d_of_type_JavaLangString);
     ((Bundle)localObject).putInt("param_art_filter_task_id", paramInt);
-    QIPCClientHelper.getInstance().callServer("ArtFilterModule", "action_get_art_filter_path", (Bundle)localObject, new ansi(this, localFilterTemplate));
+    QIPCClientHelper.getInstance().callServer("ArtFilterModule", "action_get_art_filter_path", (Bundle)localObject, new bmkq(this, localxcz));
   }
   
   /* Error */
@@ -290,7 +293,7 @@ public class EditVideoArtFilter
     //   160: aload_0
     //   161: getfield 453	dov/com/tencent/biz/qqstory/takevideo/EditVideoArtFilter:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   164: invokevirtual 482	android/graphics/Bitmap:getWidth	()I
-    //   167: istore 4
+    //   167: istore 5
     //   169: invokestatic 298	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   172: ifeq +41 -> 213
     //   175: ldc_w 300
@@ -304,26 +307,26 @@ public class EditVideoArtFilter
     //   193: invokevirtual 278	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   196: ldc_w 486
     //   199: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   202: iload 4
+    //   202: iload 5
     //   204: invokevirtual 278	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   207: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   210: invokestatic 310	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   213: iload_3
-    //   214: iload 4
+    //   214: iload 5
     //   216: invokestatic 492	java/lang/Math:max	(II)I
-    //   219: istore 5
-    //   221: iload 5
+    //   219: istore 4
+    //   221: iload 4
     //   223: aload_0
     //   224: getfield 493	dov/com/tencent/biz/qqstory/takevideo/EditVideoArtFilter:jdField_a_of_type_Int	I
     //   227: if_icmple +459 -> 686
     //   230: aload_0
     //   231: getfield 493	dov/com/tencent/biz/qqstory/takevideo/EditVideoArtFilter:jdField_a_of_type_Int	I
     //   234: i2f
-    //   235: iload 5
+    //   235: iload 4
     //   237: i2f
     //   238: fdiv
     //   239: fstore_2
-    //   240: iload 4
+    //   240: iload 5
     //   242: i2f
     //   243: fload_2
     //   244: fmul
@@ -711,8 +714,8 @@ public class EditVideoArtFilter
     //   0	1061	1	paramBitmap	Bitmap
     //   239	14	2	f1	float
     //   159	148	3	i	int
-    //   167	129	4	j	int
-    //   219	17	5	k	int
+    //   219	77	4	j	int
+    //   167	74	5	k	int
     //   366	8	6	bool	boolean
     //   266	198	7	localObject1	Object
     //   649	3	7	localOutOfMemoryError1	OutOfMemoryError
@@ -830,17 +833,17 @@ public class EditVideoArtFilter
         {
           localObject2 = localBitmap;
           localObject1 = localBitmap;
-          if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_c_of_type_Int != 0)
+          if (this.jdField_a_of_type_Bmnj.jdField_b_of_type_Int != 0)
           {
             localObject2 = localBitmap;
             localObject1 = localBitmap;
-            if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_c_of_type_Int % 90 == 0)
+            if (this.jdField_a_of_type_Bmnj.jdField_b_of_type_Int % 90 == 0)
             {
               localObject1 = localBitmap;
               if (QLog.isColorLevel())
               {
                 localObject1 = localBitmap;
-                QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "load bitmap has exif rotate " + this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_c_of_type_Int);
+                QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "load bitmap has exif rotate " + this.jdField_a_of_type_Bmnj.jdField_b_of_type_Int);
               }
               localObject1 = localBitmap;
               int i = localBitmap.getWidth();
@@ -849,7 +852,7 @@ public class EditVideoArtFilter
               localObject1 = localBitmap;
               localObject2 = new Matrix();
               localObject1 = localBitmap;
-              ((Matrix)localObject2).postRotate(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_c_of_type_Int, i / 2.0F, j / 2.0F);
+              ((Matrix)localObject2).postRotate(this.jdField_a_of_type_Bmnj.jdField_b_of_type_Int, i / 2.0F, j / 2.0F);
               localObject1 = localBitmap;
               localObject2 = Bitmap.createBitmap(localBitmap, 0, 0, i, j, (Matrix)localObject2, true);
               localObject1 = localBitmap;
@@ -866,7 +869,7 @@ public class EditVideoArtFilter
       }
       if (localObject2 != null)
       {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a((Bitmap)localObject2, true);
+        this.jdField_a_of_type_Bmnj.a((Bitmap)localObject2, true);
         this.jdField_f_of_type_JavaLangString = paramString;
         this.jdField_d_of_type_Int = paramInt;
         this.jdField_e_of_type_Boolean = false;
@@ -881,7 +884,7 @@ public class EditVideoArtFilter
       if (!this.jdField_e_of_type_Boolean)
       {
         localObject1 = this.jdField_a_of_type_AndroidGraphicsBitmap.copy(a(this.jdField_a_of_type_AndroidGraphicsBitmap), true);
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a((Bitmap)localObject1, true);
+        this.jdField_a_of_type_Bmnj.a((Bitmap)localObject1, true);
       }
     }
     for (;;)
@@ -891,7 +894,7 @@ public class EditVideoArtFilter
       break label337;
       label477:
       break;
-      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a().copy(a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a()), true);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_Bmnj.a().copy(a(this.jdField_a_of_type_Bmnj.a()), true);
     }
   }
   
@@ -912,13 +915,13 @@ public class EditVideoArtFilter
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_b_of_type_Int == 12)
+    if (this.jdField_a_of_type_Bmnj.jdField_a_of_type_Int == 12)
     {
       if (a(this.jdField_b_of_type_Int))
       {
         a(false);
         a(this.jdField_b_of_type_Int, true);
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+        this.jdField_a_of_type_Bmnj.a(0);
       }
       return true;
     }
@@ -947,7 +950,7 @@ public class EditVideoArtFilter
     } while ((this.jdField_c_of_type_Int == paramInt) && (this.jdField_a_of_type_Boolean));
     this.jdField_c_of_type_Int = paramInt;
     if (this.jdField_c_of_type_Int != 0) {
-      ReportController.b(null, "dc00898", "", "", "0X8007550", "0X8007550", 0, 0, "", "", "", "");
+      azqs.b(null, "dc00898", "", "", "0X8007550", "0X8007550", 0, 0, "", "", "", "");
     }
     return true;
   }
@@ -965,9 +968,9 @@ public class EditVideoArtFilter
       }
       return;
     }
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_Ansj.jdField_c_of_type_Int;
+    this.jdField_b_of_type_Int = this.jdField_a_of_type_Bmkr.jdField_c_of_type_Int;
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.b();
-    ReportController.b(null, "dc00898", "", "", "0X800754F", "0X800754F", 0, 0, "", "", "", "");
+    azqs.b(null, "dc00898", "", "", "0X800754F", "0X800754F", 0, 0, "", "", "", "");
   }
   
   public boolean b()
@@ -978,7 +981,7 @@ public class EditVideoArtFilter
   public void c()
   {
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a();
-    this.jdField_a_of_type_Ansl.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Bmkt.removeCallbacksAndMessages(null);
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "CancelFilterTaskId:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
     }
@@ -1005,16 +1008,16 @@ public class EditVideoArtFilter
     }
   }
   
-  public void h()
+  public void g()
   {
-    super.h();
+    super.g();
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
       this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
       this.jdField_a_of_type_AndroidGraphicsBitmap = null;
     }
-    this.jdField_a_of_type_Ansl.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_Ansl = null;
+    this.jdField_a_of_type_Bmkt.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Bmkt = null;
     if (this.jdField_c_of_type_Boolean) {
       QIPCClientHelper.getInstance().callServer("ArtFilterModule", "action_exit_art_filter", null, null);
     }
@@ -1025,24 +1028,24 @@ public class EditVideoArtFilter
     switch (paramView.getId())
     {
     default: 
-    case 2131365542: 
+    case 2131362845: 
       do
       {
         return;
       } while (!a(this.jdField_b_of_type_Int));
       a(false);
       a(this.jdField_b_of_type_Int, true);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+      this.jdField_a_of_type_Bmnj.a(0);
       return;
     }
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+    this.jdField_a_of_type_Bmnj.a(0);
   }
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     if (a(paramInt))
     {
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 3) {
+      if (this.jdField_a_of_type_Bmnj.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 3) {
         LpReportInfo_pf00064.report(615, 7);
       }
       a(false);
@@ -1052,7 +1055,7 @@ public class EditVideoArtFilter
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramMotionEvent.getAction() == 0) && (paramView.getId() == 2131365544))
+    if ((paramMotionEvent.getAction() == 0) && (paramView.getId() == 2131362847))
     {
       if (this.jdField_a_of_type_Boolean) {
         return true;
@@ -1068,49 +1071,49 @@ public class EditVideoArtFilter
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 675	dov/com/tencent/biz/qqstory/takevideo/EditVideoArtFilter:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   1: getfield 677	dov/com/tencent/biz/qqstory/takevideo/EditVideoArtFilter:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   4: invokestatic 468	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   7: ifne +237 -> 244
     //   10: new 271	java/util/ArrayList
     //   13: dup
-    //   14: invokespecial 676	java/util/ArrayList:<init>	()V
+    //   14: invokespecial 678	java/util/ArrayList:<init>	()V
     //   17: astore_2
-    //   18: new 678	org/json/JSONArray
+    //   18: new 680	org/json/JSONArray
     //   21: dup
     //   22: aload_0
-    //   23: getfield 675	dov/com/tencent/biz/qqstory/takevideo/EditVideoArtFilter:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   26: invokespecial 679	org/json/JSONArray:<init>	(Ljava/lang/String;)V
+    //   23: getfield 677	dov/com/tencent/biz/qqstory/takevideo/EditVideoArtFilter:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   26: invokespecial 681	org/json/JSONArray:<init>	(Ljava/lang/String;)V
     //   29: astore_3
     //   30: iconst_0
     //   31: istore_1
     //   32: iload_1
     //   33: aload_3
-    //   34: invokevirtual 682	org/json/JSONArray:length	()I
+    //   34: invokevirtual 684	org/json/JSONArray:length	()I
     //   37: if_icmpge +71 -> 108
     //   40: aload_3
     //   41: iload_1
-    //   42: invokevirtual 686	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   42: invokevirtual 688	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
     //   45: astore 4
     //   47: aload_2
-    //   48: new 347	com/tencent/biz/qqstory/takevideo/artfilter/FilterTemplate
+    //   48: new 347	xcz
     //   51: dup
     //   52: aload 4
-    //   54: ldc_w 688
-    //   57: invokevirtual 694	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   54: ldc_w 690
+    //   57: invokevirtual 696	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   60: aload 4
-    //   62: ldc_w 696
-    //   65: invokevirtual 699	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   62: ldc_w 698
+    //   65: invokevirtual 701	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   68: aload 4
-    //   70: ldc_w 701
-    //   73: invokevirtual 694	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   70: ldc_w 703
+    //   73: invokevirtual 696	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   76: aload 4
-    //   78: ldc_w 703
-    //   81: invokevirtual 699	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   78: ldc_w 705
+    //   81: invokevirtual 701	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   84: aload 4
-    //   86: ldc_w 705
-    //   89: invokevirtual 699	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   92: invokespecial 708	com/tencent/biz/qqstory/takevideo/artfilter/FilterTemplate:<init>	(ILjava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   95: invokeinterface 711 2 0
+    //   86: ldc_w 707
+    //   89: invokevirtual 701	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   92: invokespecial 710	xcz:<init>	(ILjava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   95: invokeinterface 713 2 0
     //   100: pop
     //   101: iload_1
     //   102: iconst_1
@@ -1118,34 +1121,34 @@ public class EditVideoArtFilter
     //   104: istore_1
     //   105: goto -73 -> 32
     //   108: aload_2
-    //   109: invokeinterface 715 1 0
+    //   109: invokeinterface 717 1 0
     //   114: astore_3
     //   115: aload_3
-    //   116: invokeinterface 720 1 0
+    //   116: invokeinterface 722 1 0
     //   121: ifeq +132 -> 253
     //   124: new 359	java/io/File
     //   127: dup
     //   128: aload_3
-    //   129: invokeinterface 724 1 0
-    //   134: checkcast 347	com/tencent/biz/qqstory/takevideo/artfilter/FilterTemplate
-    //   137: getfield 725	com/tencent/biz/qqstory/takevideo/artfilter/FilterTemplate:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   129: invokeinterface 726 1 0
+    //   134: checkcast 347	xcz
+    //   137: getfield 727	xcz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   140: invokespecial 362	java/io/File:<init>	(Ljava/lang/String;)V
     //   143: astore 4
     //   145: aload 4
     //   147: invokevirtual 365	java/io/File:exists	()Z
     //   150: ifeq +11 -> 161
     //   153: aload 4
-    //   155: invokevirtual 728	java/io/File:isFile	()Z
+    //   155: invokevirtual 730	java/io/File:isFile	()Z
     //   158: ifne -43 -> 115
     //   161: aload_3
-    //   162: invokeinterface 731 1 0
+    //   162: invokeinterface 733 1 0
     //   167: goto -52 -> 115
     //   170: astore_3
     //   171: invokestatic 298	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   174: ifeq +13 -> 187
     //   177: ldc_w 300
     //   180: iconst_2
-    //   181: ldc_w 733
+    //   181: ldc_w 735
     //   184: invokestatic 585	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   187: invokestatic 298	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   190: ifeq +35 -> 225
@@ -1154,29 +1157,29 @@ public class EditVideoArtFilter
     //   197: new 38	java/lang/StringBuilder
     //   200: dup
     //   201: invokespecial 41	java/lang/StringBuilder:<init>	()V
-    //   204: ldc_w 735
+    //   204: ldc_w 737
     //   207: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   210: aload_2
-    //   211: invokeinterface 738 1 0
+    //   211: invokeinterface 740 1 0
     //   216: invokevirtual 278	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   219: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   222: invokestatic 310	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   225: aload_0
-    //   226: getfield 113	dov/com/tencent/biz/qqstory/takevideo/EditVideoArtFilter:jdField_a_of_type_Ansj	Lansj;
+    //   226: getfield 113	dov/com/tencent/biz/qqstory/takevideo/EditVideoArtFilter:jdField_a_of_type_Bmkr	Lbmkr;
     //   229: aload_2
-    //   230: invokevirtual 741	ansj:a	(Ljava/util/List;)V
+    //   230: invokevirtual 743	bmkr:a	(Ljava/util/List;)V
     //   233: aload_0
     //   234: getfield 206	dov/com/tencent/biz/qqstory/takevideo/EditVideoArtFilter:jdField_a_of_type_ComTencentWidgetHorizontalListView	Lcom/tencent/widget/HorizontalListView;
     //   237: aload_0
-    //   238: getfield 113	dov/com/tencent/biz/qqstory/takevideo/EditVideoArtFilter:jdField_a_of_type_Ansj	Lansj;
-    //   241: invokevirtual 745	com/tencent/widget/HorizontalListView:setAdapter	(Landroid/widget/ListAdapter;)V
+    //   238: getfield 113	dov/com/tencent/biz/qqstory/takevideo/EditVideoArtFilter:jdField_a_of_type_Bmkr	Lbmkr;
+    //   241: invokevirtual 747	com/tencent/widget/HorizontalListView:setAdapter	(Landroid/widget/ListAdapter;)V
     //   244: aload_0
     //   245: getfield 206	dov/com/tencent/biz/qqstory/takevideo/EditVideoArtFilter:jdField_a_of_type_ComTencentWidgetHorizontalListView	Lcom/tencent/widget/HorizontalListView;
     //   248: aload_0
     //   249: invokevirtual 210	com/tencent/widget/HorizontalListView:setOnItemClickListener	(Landroid/widget/AdapterView$OnItemClickListener;)V
     //   252: return
     //   253: aload_2
-    //   254: invokestatic 750	java/util/Collections:sort	(Ljava/util/List;)V
+    //   254: invokestatic 752	java/util/Collections:sort	(Ljava/util/List;)V
     //   257: invokestatic 298	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   260: ifeq +35 -> 295
     //   263: ldc_w 300
@@ -1184,17 +1187,17 @@ public class EditVideoArtFilter
     //   267: new 38	java/lang/StringBuilder
     //   270: dup
     //   271: invokespecial 41	java/lang/StringBuilder:<init>	()V
-    //   274: ldc_w 735
+    //   274: ldc_w 737
     //   277: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   280: aload_2
-    //   281: invokeinterface 738 1 0
+    //   281: invokeinterface 740 1 0
     //   286: invokevirtual 278	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   289: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   292: invokestatic 310	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   295: aload_0
-    //   296: getfield 113	dov/com/tencent/biz/qqstory/takevideo/EditVideoArtFilter:jdField_a_of_type_Ansj	Lansj;
+    //   296: getfield 113	dov/com/tencent/biz/qqstory/takevideo/EditVideoArtFilter:jdField_a_of_type_Bmkr	Lbmkr;
     //   299: aload_2
-    //   300: invokevirtual 741	ansj:a	(Ljava/util/List;)V
+    //   300: invokevirtual 743	bmkr:a	(Ljava/util/List;)V
     //   303: goto -70 -> 233
     //   306: astore_3
     //   307: invokestatic 298	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1204,17 +1207,17 @@ public class EditVideoArtFilter
     //   317: new 38	java/lang/StringBuilder
     //   320: dup
     //   321: invokespecial 41	java/lang/StringBuilder:<init>	()V
-    //   324: ldc_w 735
+    //   324: ldc_w 737
     //   327: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   330: aload_2
-    //   331: invokeinterface 738 1 0
+    //   331: invokeinterface 740 1 0
     //   336: invokevirtual 278	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   339: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   342: invokestatic 310	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   345: aload_0
-    //   346: getfield 113	dov/com/tencent/biz/qqstory/takevideo/EditVideoArtFilter:jdField_a_of_type_Ansj	Lansj;
+    //   346: getfield 113	dov/com/tencent/biz/qqstory/takevideo/EditVideoArtFilter:jdField_a_of_type_Bmkr	Lbmkr;
     //   349: aload_2
-    //   350: invokevirtual 741	ansj:a	(Ljava/util/List;)V
+    //   350: invokevirtual 743	bmkr:a	(Ljava/util/List;)V
     //   353: aload_3
     //   354: athrow
     // Local variable table:
@@ -1245,7 +1248,7 @@ public class EditVideoArtFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter
  * JD-Core Version:    0.7.0.1
  */

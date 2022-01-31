@@ -9,13 +9,13 @@ import java.util.Map;
 public final class RespCreateDiscuss
   extends JceStruct
 {
-  static Map cache_AddResult;
-  public Map AddResult;
+  static Map<Long, Integer> cache_AddResult;
+  public Map<Long, Integer> AddResult;
   public long DiscussUin;
   
   public RespCreateDiscuss() {}
   
-  public RespCreateDiscuss(long paramLong, Map paramMap)
+  public RespCreateDiscuss(long paramLong, Map<Long, Integer> paramMap)
   {
     this.DiscussUin = paramLong;
     this.AddResult = paramMap;

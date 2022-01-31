@@ -1,35 +1,36 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Calendar;
 
 public class ahen
-  implements Runnable
 {
-  public ahen(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  long jdField_a_of_type_Long;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  CharSequence jdField_a_of_type_JavaLangCharSequence;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  long jdField_b_of_type_Long;
+  CharSequence jdField_b_of_type_JavaLangCharSequence;
   
-  public void run()
+  public ahen(TroopMemberHistoryFragment paramTroopMemberHistoryFragment, String paramString, long paramLong1, CharSequence paramCharSequence, long paramLong2, MessageRecord paramMessageRecord)
   {
-    if (!this.a.isAdded()) {
-      return;
-    }
-    if (ReceiptMessageReadMemberListContainerFragment.a(this.a).getApp().getSharedPreferences("last_update_time" + ReceiptMessageReadMemberListContainerFragment.a(this.a).getCurrentAccountUin(), 0).getLong("key_last_update_time" + ReceiptMessageReadMemberListContainerFragment.a(this.a), 0L) - ReceiptMessageReadMemberListContainerFragment.b(this.a) * 1000L > 60000L)
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public CharSequence a()
+  {
+    if (this.jdField_b_of_type_JavaLangCharSequence == null)
     {
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(4);
-      return;
+      Calendar.getInstance().setTimeInMillis(this.jdField_a_of_type_Long * 1000L);
+      this.jdField_b_of_type_JavaLangCharSequence = bdns.a(BaseApplicationImpl.getApplication().getApplicationContext(), 3, this.jdField_a_of_type_Long * 1000L);
     }
-    TroopHandler localTroopHandler = (TroopHandler)ReceiptMessageReadMemberListContainerFragment.a(this.a).a(20);
-    TroopInfo localTroopInfo = ((TroopManager)ReceiptMessageReadMemberListContainerFragment.a(this.a).getManager(51)).a(Long.toString(ReceiptMessageReadMemberListContainerFragment.a(this.a)));
-    if (localTroopInfo == null)
-    {
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(-1);
-      return;
-    }
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).addObserver(ReceiptMessageReadMemberListContainerFragment.a(this.a), true);
-    localTroopHandler.a(true, localTroopInfo.troopuin, localTroopInfo.troopcode, 10);
+    return this.jdField_b_of_type_JavaLangCharSequence;
   }
 }
 

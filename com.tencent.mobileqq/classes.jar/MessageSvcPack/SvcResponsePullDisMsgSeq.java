@@ -8,14 +8,14 @@ import java.util.ArrayList;
 public final class SvcResponsePullDisMsgSeq
   extends JceStruct
 {
-  static ArrayList cache_vConfNumInfo;
+  static ArrayList<stConfNumInfo> cache_vConfNumInfo;
   public byte cReplyCode;
   public String strResult = "";
-  public ArrayList vConfNumInfo;
+  public ArrayList<stConfNumInfo> vConfNumInfo;
   
   public SvcResponsePullDisMsgSeq() {}
   
-  public SvcResponsePullDisMsgSeq(byte paramByte, String paramString, ArrayList paramArrayList)
+  public SvcResponsePullDisMsgSeq(byte paramByte, String paramString, ArrayList<stConfNumInfo> paramArrayList)
   {
     this.cReplyCode = paramByte;
     this.strResult = paramString;

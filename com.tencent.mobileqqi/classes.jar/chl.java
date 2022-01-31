@@ -1,20 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatForEnterpriseActivity;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class chl
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public chl(ChatForEnterpriseActivity paramChatForEnterpriseActivity, PublicAccountDataManager paramPublicAccountDataManager) {}
+  public chl(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    ChatForEnterpriseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatForEnterpriseActivity).mIsAgreeSyncLbs = true;
-    ChatForEnterpriseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatForEnterpriseActivity).mIsSyncLbsSelected = true;
-    this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountDataManager.a(ChatForEnterpriseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatForEnterpriseActivity));
-    ChatForEnterpriseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatForEnterpriseActivity, 1, null);
-    ChatForEnterpriseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatForEnterpriseActivity);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing())) {
+        DiscussionInfoCardActivity.a(this.a).dismiss();
+      }
+      paramMessage = new Intent();
+      paramMessage.putExtra("isNeedFinish", true);
+      this.a.setResult(-1, paramMessage);
+      this.a.finish();
+      return;
+    } while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing()));
+    DiscussionInfoCardActivity.a(this.a).dismiss();
   }
 }
 

@@ -1,21 +1,33 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.app.DiscussionManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import com.tencent.mobileqq.data.RecentUser;
 
 class bym
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  bym(byl parambyl, String paramString, int paramInt) {}
+  bym(byk parambyk, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Drawable localDrawable = this.jdField_a_of_type_Byl.a.b.b(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Byl.a.runOnUiThread(new byn(this, localDrawable));
+    ((DiscussionManager)this.jdField_a_of_type_Byk.a.b.getManager(48)).a(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_Byk.a.b.a().a();
+    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
+    if (localRecentUser != null) {
+      paramDialogInterface.b(localRecentUser);
+    }
+    ((DiscussionHandler)this.jdField_a_of_type_Byk.a.b.a(6)).d();
+    this.jdField_a_of_type_Byk.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bym
  * JD-Core Version:    0.7.0.1
  */

@@ -1,56 +1,79 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.troop.TroopMemberApiPlugin;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import cannon.Visitor;
+import com.tencent.mobileqq.activity.AddFriendActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class btq
-  extends Handler
+  extends BaseAdapter
 {
-  public btq(TroopMemberApiPlugin paramTroopMemberApiPlugin) {}
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new btr(this);
   
-  public void handleMessage(Message paramMessage)
+  public btq(AddFriendActivity paramAddFriendActivity)
   {
-    Activity localActivity = this.a.mRuntime.a();
-    AppInterface localAppInterface = this.a.mRuntime.a();
-    if ((localActivity == null) || (localAppInterface == null)) {}
-    do
+    if (paramAddFriendActivity.a.size() > 8)
     {
-      return;
-      switch (paramMessage.what)
+      Random localRandom = new Random();
+      ArrayList localArrayList = new ArrayList(8);
+      int i = 0;
+      while (i < 8)
       {
-      default: 
-        return;
-      case 1: 
-        ThreadManager.a(new btr(this));
-        return;
+        int j = localRandom.nextInt(paramAddFriendActivity.a.size());
+        localArrayList.add(paramAddFriendActivity.a.get(j));
+        paramAddFriendActivity.a.remove(j);
+        i += 1;
       }
-    } while (!TroopMemberApiPlugin.b(this.a));
-    this.a.callJs(this.a.j, new String[] { "true" });
-    return;
-    TroopMemberApiPlugin.h = 1;
-    TroopMemberApiPlugin.q = this.a.g;
-    paramMessage = new Intent();
-    paramMessage.putExtra("finish_chat_setting", true);
-    localActivity.setResult(-1, paramMessage);
-    localActivity.finish();
-    return;
-    this.a.callJs(this.a.j, new String[] { "true" });
-    return;
-    paramMessage = (Object[])paramMessage.obj;
-    boolean bool = ((Boolean)paramMessage[0]).booleanValue();
-    paramMessage = (ArrayList)paramMessage[1];
-    ChatSettingForTroop.a(localActivity, this.a.e, bool, paramMessage);
+      paramAddFriendActivity.a = localArrayList;
+    }
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity.a.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity.a.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null)
+    {
+      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity.getLayoutInflater().inflate(2130903933, null);
+      paramView = new bts(null);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131232909));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131232911));
+      paramViewGroup.setTag(paramView);
+      paramViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    }
+    paramView = (bts)paramViewGroup.getTag();
+    Visitor localVisitor = (Visitor)this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity.a.get(paramInt);
+    paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity.b.b(localVisitor.uin + ""));
+    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localVisitor.name);
+    paramView.jdField_a_of_type_Int = paramInt;
+    paramViewGroup.setContentDescription("该联系人的昵称为" + localVisitor.name);
+    return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     btq
  * JD-Core Version:    0.7.0.1
  */

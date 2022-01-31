@@ -1,39 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
-import com.tencent.mobileqq.apollo.AVCameraCaptureModel;
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import com.tencent.mobileqq.apollo.process.data.CmGameOpenIdFinder;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
 
 class yjo
-  implements Runnable
+  implements zac<CertifiedAccountRead.StGetMainPageRsp>
 {
-  yjo(yjn paramyjn, AVVideoCtrl.VideoFrame paramVideoFrame, ApolloSurfaceView paramApolloSurfaceView) {}
+  yjo(yjn paramyjn, yei paramyei) {}
   
-  public void run()
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    CmGameOpenIdFinder localCmGameOpenIdFinder = CmGameUtil.a(AVCameraCaptureModel.a(this.jdField_a_of_type_Yjn.a.a));
-    if (localCmGameOpenIdFinder == null) {
-      return;
-    }
-    String str2 = localCmGameOpenIdFinder.b(this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier);
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2))
+    boolean bool = true;
+    List localList;
+    COMM.StCommonExt localStCommonExt;
+    if ((paramBoolean) && (paramStGetMainPageRsp != null))
     {
-      str2 = localCmGameOpenIdFinder.a(Long.parseLong(this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier));
-      str1 = str2;
-      if (TextUtils.isEmpty(str2)) {
-        str1 = this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier;
+      paramString = this.jdField_a_of_type_Yei;
+      localList = paramStGetMainPageRsp.vecFeed.get();
+      localStCommonExt = paramStGetMainPageRsp.extInfo;
+      if (paramStGetMainPageRsp.isFinish.get() != 1) {
+        break label61;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().nativeRemotePreviewCallback(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().a, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.data, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.width, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.height, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.rotate, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.videoFormat, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.srcType, str1);
+    label61:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      paramString.b(localList, localStCommonExt, paramBoolean);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yjo
  * JD-Core Version:    0.7.0.1
  */

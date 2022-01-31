@@ -6,7 +6,7 @@ public class a
   public String b;
   public String c;
   public boolean d;
-  public v e;
+  public x e;
   public String f;
   public int g;
   public int h;

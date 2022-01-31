@@ -1,10 +1,10 @@
 package Wallet;
 
+import bdgk;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig.RedInfo;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,12 +13,12 @@ public final class RedInfoSyncReq
   extends JceStruct
 {
   public static final int PLAT_ANDROID = 1;
-  static ArrayList cache_vecRedInfo = new ArrayList();
+  static ArrayList<RedInfo> cache_vecRedInfo = new ArrayList();
   public String OSVersion = "";
   public String deviceModel = "";
   public int platId;
   public String qVersion = "";
-  public ArrayList vecRedInfo;
+  public ArrayList<RedInfo> vecRedInfo;
   
   static
   {
@@ -28,7 +28,7 @@ public final class RedInfoSyncReq
   
   public RedInfoSyncReq() {}
   
-  public RedInfoSyncReq(int paramInt, String paramString1, String paramString2, String paramString3, ArrayList paramArrayList)
+  public RedInfoSyncReq(int paramInt, String paramString1, String paramString2, String paramString3, ArrayList<RedInfo> paramArrayList)
   {
     this.platId = paramInt;
     this.qVersion = paramString1;
@@ -37,7 +37,7 @@ public final class RedInfoSyncReq
     this.vecRedInfo = paramArrayList;
   }
   
-  public static RedInfoSyncReq createReq(List paramList)
+  public static RedInfoSyncReq createReq(List<QWRedConfig.RedInfo> paramList)
   {
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
@@ -46,7 +46,7 @@ public final class RedInfoSyncReq
       QWRedConfig.RedInfo localRedInfo = (QWRedConfig.RedInfo)paramList.next();
       localArrayList.add(new RedInfo(localRedInfo.path, localRedInfo.taskId, localRedInfo.isShow));
     }
-    return new RedInfoSyncReq(1, DeviceInfoUtil.d(), DeviceInfoUtil.f(), DeviceInfoUtil.j(), localArrayList);
+    return new RedInfoSyncReq(1, bdgk.c(), bdgk.e(), bdgk.i(), localArrayList);
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhs;
 
 public class FriendSystemMsgOldData
-  extends Entity
+  extends awge
 {
   public long msgtime;
-  @unique
+  @awhs
   public long uin;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.FriendSystemMsgOldData
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class nearfield_group$GroupProfile
-  extends MessageMicro
+  extends MessageMicro<GroupProfile>
 {
   public static final int BYTES_DISTANCE_FIELD_NUMBER = 5;
   public static final int BYTES_GROUP_NAME_FIELD_NUMBER = 2;
@@ -32,7 +32,7 @@ public final class nearfield_group$GroupProfile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.nearfield_group.nearfield_group.GroupProfile
  * JD-Core Version:    0.7.0.1
  */

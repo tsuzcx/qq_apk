@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="15.0dip" android:paddingTop="10.0dip" android:paddingBottom="17.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/dv9" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/md" android:scaleType="fitCenter" />
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="18.0dip" android:textColor="@color/yj" android:ellipsize="end" android:id="@id/k9t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="nick_name" android:maxLines="1" android:singleLine="true" android:includeFontPadding="false" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/yd" android:ellipsize="end" android:id="@id/kax" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="cover_story" android:maxLines="1" android:singleLine="true" android:includeFontPadding="false" />
+        </LinearLayout>
+        <CheckBox android:layout_gravity="center_vertical" android:id="@id/as7" android:background="@drawable/a9u" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="21.0dip" android:layout_height="21.0dip" android:layout_marginRight="15.0dip" android:checked="true" android:button="@null" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/ed2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
+</LinearLayout>

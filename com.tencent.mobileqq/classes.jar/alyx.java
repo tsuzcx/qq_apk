@@ -1,29 +1,59 @@
-import android.annotation.TargetApi;
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
+import com.dataline.activities.LiteActivity;
+import com.dataline.activities.PrinterActivity;
+import com.tencent.litetransfersdk.Session;
 
 class alyx
-  implements AudioManager.OnAudioFocusChangeListener
+  extends alqv
 {
-  alyx(alyu paramalyu) {}
+  alyx(alyw paramalyw) {}
   
-  @TargetApi(8)
-  public void onAudioFocusChange(int paramInt)
+  protected void a(Session paramSession)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("TRAE", 2, "focusChange:" + paramInt + " _focusSteamType:" + this.a.c + " currMode:" + this.a.b.jdField_a_of_type_AndroidMediaAudioManager.getMode() + " _activeMode:" + this.a.b.jdField_a_of_type_Int);
+    this.a.a(3, paramSession, 0.0D, false);
+    if (this.a.a != null)
+    {
+      this.a.a.c();
+      this.a.a.notifyDataSetChanged();
+      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
+      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
     }
-    if (paramInt == -1) {}
-    while ((paramInt == -2) || (paramInt == -3) || (paramInt != 1)) {
-      return;
+  }
+  
+  protected void a(Session paramSession, float paramFloat)
+  {
+    this.a.a(1, paramSession, paramFloat, false);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(Session paramSession, boolean paramBoolean)
+  {
+    this.a.a(2, paramSession, 0.0D, paramBoolean);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong)
+  {
+    this.a.a(paramLong, paramBoolean);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void b(Session paramSession)
+  {
+    this.a.a(0, paramSession, 0.0D, false);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alyx
  * JD-Core Version:    0.7.0.1
  */

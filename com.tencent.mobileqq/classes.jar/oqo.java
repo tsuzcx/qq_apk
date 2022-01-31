@@ -1,18 +1,16 @@
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class oqo
-  implements Runnable
+class oqo
+  implements ViewBase.OnClickListener
 {
-  public oqo(SegmentList paramSegmentList) {}
+  oqo(oqd paramoqd) {}
   
-  public void run()
-  {
-    this.a.springBackOverScrollHeaderView();
-  }
+  public void onClick(ViewBase paramViewBase) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oqo
  * JD-Core Version:    0.7.0.1
  */

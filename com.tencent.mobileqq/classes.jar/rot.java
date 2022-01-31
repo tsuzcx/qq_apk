@@ -1,22 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class rot
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public rot(BaseChatPie paramBaseChatPie, ChatMessage paramChatMessage) {}
+  public rot(BaseTabbar paramBaseTabbar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.f(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    paramDialogInterface.dismiss();
+    switch (paramMessage.what)
+    {
+    default: 
+    case 0: 
+      int i;
+      do
+      {
+        return;
+        BaseTabbar.a(this.a, 0.0F);
+        BaseTabbar.a(this.a, (float)(BaseTabbar.a(this.a) + 0.05D));
+        this.a.invalidate();
+        i = paramMessage.arg1;
+        sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(1), 10L);
+      } while (i == 1);
+      BaseTabbar.a(this.a, BaseTabbar.a(this.a), BaseTabbar.b(this.a));
+      return;
+    case 1: 
+      if (BaseTabbar.a(this.a) < 1.0F)
+      {
+        BaseTabbar.a(this.a, (float)(BaseTabbar.a(this.a) + 0.05D));
+        this.a.invalidate();
+        sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(1), 10L);
+        return;
+      }
+      sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(2), 10L);
+      return;
+    }
+    BaseTabbar.a(this.a);
+    this.a.a(BaseTabbar.a(this.a), BaseTabbar.b(this.a));
+    BaseTabbar.a(this.a, 1.0F);
+    BaseTabbar.a(this.a, BaseTabbar.b(this.a));
+    this.a.invalidate();
+    BaseTabbar.a(this.a).set(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rot
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,24 @@
-import android.os.CountDownTimer;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class ajjh
-  implements INetInfoHandler
+class ajjh
+  implements View.OnTouchListener
 {
-  public ajjh(ReciteRecordLayout paramReciteRecordLayout) {}
+  ajjh(ajjg paramajjg) {}
   
-  public void onNetMobile2None()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.b.cancel();
-    this.a.b.start();
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetWifi2None()
-  {
-    this.a.b.cancel();
-    this.a.b.start();
+    if (paramMotionEvent.getAction() == 0) {
+      paramView.setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+        paramView.setAlpha(1.0F);
+      }
+    }
   }
 }
 

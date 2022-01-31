@@ -1,41 +1,47 @@
-import android.graphics.Color;
-import android.os.Build.VERSION;
+import Wallet.RedPackGrapInfo;
+import android.animation.Animator;
+import android.support.v7.widget.RecyclerView;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.biz.qqstory.view.widget.TipsView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
+import java.util.List;
 
 public class aixh
-  implements Runnable
+  implements IRedPacket.OnGetAvailableListListener
 {
-  public aixh(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public aixh(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void run()
+  public void OnGetAvailableList(List<RedPackGrapInfo> paramList)
   {
-    TroopBarPublishActivity localTroopBarPublishActivity = this.a;
-    TEditText localTEditText = this.a.jdField_b_of_type_ComTencentMobileqqTribeViewTEditText;
-    int j = DisplayUtil.a(this.a, 71.0F);
-    if (Build.VERSION.SDK_INT < 19)
+    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+      TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+    }
+    if ((paramList == null) || (paramList.isEmpty()))
     {
-      i = DisplayUtil.a(this.a, 20.0F);
-      TipsView.a(localTroopBarPublishActivity, localTEditText, "添加话题，更快上热门", 1, 1, j, i, DisplayUtil.a(this.a, 20.0F), 5000, Color.argb(204, 0, 0, 0));
-      SharedPreUtils.a(this.a, this.a.app.getCurrentAccountUin(), "tribe_video_post_has_show_tips", true);
-      if ((this.a.jdField_b_of_type_AndroidWidgetTextView == null) || (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0)) {
-        break label150;
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null)
+      {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
+        TroopUnAccalimedRedPacketList.a(this.a).setText(alud.a(2131716191));
       }
     }
-    label150:
-    for (int i = 2;; i = 1)
+    do
     {
-      ReportController.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_guide", i, 0, "", "", "", "");
       return;
-      i = 0;
-      break;
-    }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).a(paramList);
+      }
+    } while (TroopUnAccalimedRedPacketList.a(this.a) == null);
+    TroopUnAccalimedRedPacketList.a(this.a).start();
   }
 }
 

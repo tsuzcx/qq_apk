@@ -1,22 +1,14 @@
-public final class fy
+final class fy
+  extends fs
 {
-  private final byte[] a;
-  private final byte[] b;
-  
-  public fy(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  private fy()
   {
-    this.a = paramArrayOfByte1;
-    this.b = paramArrayOfByte2;
+    super(null);
   }
   
-  public byte[] a()
+  boolean a(int paramInt1, int paramInt2)
   {
-    return this.a;
-  }
-  
-  public byte[] b()
-  {
-    return this.b;
+    return ((paramInt1 >>> 1) + paramInt2 / 3 & 0x1) == 0;
   }
 }
 

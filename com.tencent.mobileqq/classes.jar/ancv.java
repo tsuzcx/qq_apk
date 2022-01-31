@@ -1,14 +1,16 @@
-import cooperation.qzone.webviewplugin.QzonePhotoWallPlugin;
-import java.util.ArrayList;
-
 public class ancv
-  implements Runnable
 {
-  public ancv(QzonePhotoWallPlugin paramQzonePhotoWallPlugin, ArrayList paramArrayList) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void run()
+  public String toString()
   {
-    QzonePhotoWallPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQzonePhotoWallPlugin, this.jdField_a_of_type_JavaUtilArrayList, true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("skuId:").append(this.c).append(",skuName:").append(this.d).append(",skuPrice:").append(this.e).append(",imageUrl:").append(this.b).append(",detailUrl:").append(this.a);
+    return localStringBuilder.toString();
   }
 }
 

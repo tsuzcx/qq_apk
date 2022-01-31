@@ -1,25 +1,40 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.ChatActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.model.FriendManager;
 
 public class cde
-  implements Runnable
+  extends CardObserver
 {
-  public cde(ChatActivity paramChatActivity) {}
+  public cde(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if ((this.a.d != null) && (this.a.d.isShowing())) {
-      this.a.d.dismiss();
-    }
-    while ((this.a.e == null) || (!this.a.e.isShowing())) {
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
+    {
+      if ((paramBoolean) && (paramObject != null))
+      {
+        if ((ChatSettingActivity.a(this.a) == 0) && (ChatSettingActivity.a(this.a).equals(paramObject.uin)))
+        {
+          String str = ((FriendManager)this.a.b.getManager(8)).b(ChatSettingActivity.a(this.a));
+          if ((!TextUtils.isEmpty(str)) && (!str.equals(ChatSettingActivity.f(this.a)))) {
+            ChatSettingActivity.c(this.a, str);
+          }
+        }
+        if ((this.a.a != null) && (!TextUtils.isEmpty(ChatSettingActivity.a(this.a))) && (ChatSettingActivity.a(this.a).equals(paramObject.uin))) {
+          ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a)), this.a.a);
+        }
+      }
       return;
     }
-    this.a.e.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cde
  * JD-Core Version:    0.7.0.1
  */

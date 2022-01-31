@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class DomainIpChannel
   extends JceStruct
 {
-  static ArrayList cache_vDomain_iplists;
-  public ArrayList vDomain_iplists;
+  static ArrayList<DomainIpList> cache_vDomain_iplists;
+  public ArrayList<DomainIpList> vDomain_iplists;
   
   public DomainIpChannel() {}
   
-  public DomainIpChannel(ArrayList paramArrayList)
+  public DomainIpChannel(ArrayList<DomainIpList> paramArrayList)
   {
     this.vDomain_iplists = paramArrayList;
   }

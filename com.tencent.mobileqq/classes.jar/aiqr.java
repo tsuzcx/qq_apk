@@ -1,20 +1,29 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DPCObserver;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.transfile.RichMediaStrategy.OldEngineDPCProfile;
+import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-public class aiqr
-  implements DeviceProfileManager.DPCObserver
+class aiqr
+  extends avvd
 {
-  public aiqr(RichMediaStrategy.OldEngineDPCProfile paramOldEngineDPCProfile) {}
+  aiqr(aiqq paramaiqq) {}
   
-  public void a(boolean paramBoolean)
+  protected void c(boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramBoolean)
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp)))
     {
-      String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.HttpTimeoutParam.name());
-      this.a.a(str);
+      long l = ((get_albumlist_num_rsp)paramBundle).album_num;
+      this.a.mPhotoCommonData.jdField_a_of_type_Long = l;
+      paramBundle = this.a.a();
+      if (paramBundle != null)
+      {
+        paramBundle.a(this.a.mPhotoCommonData.jdField_a_of_type_Long);
+        paramBundle.postData();
+      }
     }
+    this.a.mPhotoCommonData.jdField_a_of_type_Boolean = false;
+    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this.a.a.a);
   }
 }
 

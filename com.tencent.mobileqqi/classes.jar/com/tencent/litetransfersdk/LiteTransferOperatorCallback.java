@@ -3,7 +3,7 @@ package com.tencent.litetransfersdk;
 import QQService.FileDownloadResp;
 import QQService.FileUploadResp;
 import android.os.Bundle;
-import bwr;
+import bqt;
 import com.dataline.util.DatalineMathUtil;
 import com.dataline.util.QualityReportUtil;
 import com.dataline.util.file.FileUtil;
@@ -190,7 +190,7 @@ public class LiteTransferOperatorCallback
     if (!NetworkUtil.e(BaseApplication.getContext())) {
       return;
     }
-    new Timer().schedule(new bwr(this, paramInt, paramFileControl), 10L);
+    new Timer().schedule(new bqt(this, paramInt, paramFileControl), 10L);
   }
   
   private void _sendNFCNotify(int paramInt, NFCNotify paramNFCNotify)

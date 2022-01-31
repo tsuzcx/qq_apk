@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="@drawable/bg_texture_theme_version2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/idz" layout="@layout/is" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.activity.SelectedAndSearchBar android:id="@id/imi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" />
+        <com.tencent.widget.PinnedHeaderExpandableListView android:id="@id/cny" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scrollingCache="false" android:cacheColorHint="#00000000" android:groupIndicator="@drawable/ki" android:indicatorLeft="16.0dip" android:indicatorRight="28.0dip" android:divider="@null" android:layout_below="@id/imi" />
+        <FrameLayout android:id="@id/result_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="-12.0dip" android:layout_below="@id/imi" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,29 +1,30 @@
-import com.tencent.mobileqq.app.NearbyHandler;
-import com.tencent.mobileqq.nearby.NearbyReportManager;
-import com.tencent.mobileqq.nearby.NearbyReportManager.ReportRecord;
-import com.tencent.util.LongSparseArray;
-import java.util.ArrayList;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePageArkView;
 
 public class aemy
-  implements Runnable
+  implements Handler.Callback
 {
-  public aemy(NearbyReportManager paramNearbyReportManager, LongSparseArray paramLongSparseArray, NearbyHandler paramNearbyHandler, boolean paramBoolean) {}
+  public aemy(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_ComTencentUtilLongSparseArray.a())
+    switch (paramMessage.what)
     {
-      localArrayList.add((NearbyReportManager.ReportRecord)this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(i));
-      i += 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppNearbyHandler.a(localArrayList, this.jdField_a_of_type_Boolean);
+    for (;;)
+    {
+      return false;
+      if (ActivateFriendActivity.a(this.a) != null) {
+        ActivateFriendActivity.a(this.a).e();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemy
  * JD-Core Version:    0.7.0.1
  */

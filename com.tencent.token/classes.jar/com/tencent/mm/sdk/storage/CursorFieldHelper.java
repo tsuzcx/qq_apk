@@ -8,9 +8,9 @@ import java.util.Map;
 
 class CursorFieldHelper
 {
-  private static final Map<Class<?>, ISetMethod> bP = new HashMap();
-  private static final Map<Class<?>, IGetMethod> bQ = new HashMap();
-  private static final Map<Class<?>, String> bR = new HashMap();
+  private static final Map bP = new HashMap();
+  private static final Map bQ = new HashMap();
+  private static final Map bR = new HashMap();
   
   static
   {
@@ -66,9 +66,9 @@ class CursorFieldHelper
     }
   }
   
-  public static IGetMethod getter(Class<?> paramClass)
+  public static CursorFieldHelper.IGetMethod getter(Class paramClass)
   {
-    return (IGetMethod)bQ.get(paramClass);
+    return (CursorFieldHelper.IGetMethod)bQ.get(paramClass);
   }
   
   public static void keep_getBlob(Field paramField, Object paramObject, ContentValues paramContentValues)
@@ -346,24 +346,14 @@ class CursorFieldHelper
     }
   }
   
-  public static ISetMethod setter(Class<?> paramClass)
+  public static CursorFieldHelper.ISetMethod setter(Class paramClass)
   {
-    return (ISetMethod)bP.get(paramClass);
+    return (CursorFieldHelper.ISetMethod)bP.get(paramClass);
   }
   
-  public static String type(Class<?> paramClass)
+  public static String type(Class paramClass)
   {
     return (String)bR.get(paramClass);
-  }
-  
-  public static abstract interface IGetMethod
-  {
-    public abstract void invoke(Field paramField, Object paramObject, ContentValues paramContentValues);
-  }
-  
-  public static abstract interface ISetMethod
-  {
-    public abstract void invoke(Field paramField, Object paramObject, Cursor paramCursor, int paramInt);
   }
 }
 

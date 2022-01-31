@@ -1,18 +1,31 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectConfig;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectManager;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
 
 public class ajft
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public ajft(TroopEnterEffectManager paramTroopEnterEffectManager, String paramString) {}
+  public ajft(AnonymousEntranceView paramAnonymousEntranceView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectManager.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig = this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectManager.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectManager.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig.a.get()) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectManager.jdField_a_of_type_AndroidOsHandler.post(new ajfu(this));
+    if (AnonymousEntranceView.a(this.a) != null) {
+      AnonymousEntranceView.a(this.a).setVisibility(4);
+    }
+    if (AnonymousEntranceView.b(this.a) != null)
+    {
+      AnonymousEntranceView.b(this.a).clearAnimation();
+      AnonymousEntranceView.b(this.a).startAnimation(AnonymousEntranceView.a(this.a));
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (AnonymousEntranceView.a(this.a) != null) {
+      AnonymousEntranceView.a(this.a).setVisibility(0);
     }
   }
 }

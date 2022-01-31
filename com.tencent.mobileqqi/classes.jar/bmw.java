@@ -1,19 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import mqq.app.permission.PermissionCallback;
 
-public class bmw
-  implements View.OnTouchListener
+class bmw
+  implements PermissionCallback
 {
-  public bmw(PoiMapActivity paramPoiMapActivity) {}
+  bmw(bmv parambmv) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.b();
-    }
-    return true;
+    new PermissionsDialog().a(this.a.a, paramInt, paramArrayOfString, new bmx(this));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.a.startActivity(this.a.a.getIntent());
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 0);
   }
 }
 

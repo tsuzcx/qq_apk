@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_cmd0x8c8$FeedsInfo
-  extends MessageMicro
+  extends MessageMicro<FeedsInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public oidb_cmd0x8c8.AccountInfo account_info = new oidb_cmd0x8c8.AccountInfo();
@@ -45,7 +45,7 @@ public final class oidb_cmd0x8c8$FeedsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.FeedsInfo
  * JD-Core Version:    0.7.0.1
  */

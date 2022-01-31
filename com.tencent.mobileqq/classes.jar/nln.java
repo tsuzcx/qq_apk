@@ -1,32 +1,82 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.biz.qqstory.playmode.child.TagStoryVidListPlayMode;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.Advertisement.adapter.VideoCoverAdapter;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class nln
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+  implements INetInfoHandler
 {
-  public nln(TagStoryVidListPlayMode paramTagStoryVidListPlayMode, BatchGetVideoInfo paramBatchGetVideoInfo, Bundle paramBundle) {}
+  private nln(VideoCoverAdapter paramVideoCoverAdapter) {}
   
-  public void a()
+  public void onNetMobile2None()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    ThreadManager.getUIHandler().post(new nlq(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverAdapter", 2, "net from mobile to none");
+    }
+    VideoCoverAdapter.a(this.a);
   }
   
-  public void a(ArrayList paramArrayList)
+  public void onNetMobile2Wifi(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildTagStoryVidListPlayMode.a.post(new nlo(this, paramArrayList));
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverAdapter", 2, "net from mobile to wifi");
+    }
+    VideoCoverAdapter.a(this.a, false);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverAdapter", 2, "net from none to mobile");
+    }
+    if (!VideoCoverAdapter.a(this.a))
+    {
+      paramString = this.a.a();
+      if ((paramString != null) && (paramString.isPlaying()))
+      {
+        this.a.c();
+        this.a.d();
+      }
+      VideoCoverAdapter.a(this.a, true);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverAdapter", 2, "net from none to wifi");
+    }
+    VideoCoverAdapter.a(this.a, false);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverAdapter", 2, "net from wifi to mobile");
+    }
+    if (!VideoCoverAdapter.a(this.a))
+    {
+      paramString = this.a.a();
+      if ((paramString != null) && (paramString.isPlaying()))
+      {
+        this.a.c();
+        this.a.d();
+      }
+      VideoCoverAdapter.a(this.a, true);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverAdapter", 2, "net from wifi to none");
+    }
+    VideoCoverAdapter.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nln
  * JD-Core Version:    0.7.0.1
  */

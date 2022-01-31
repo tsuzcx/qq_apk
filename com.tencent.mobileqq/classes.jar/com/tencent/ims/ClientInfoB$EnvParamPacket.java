@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ClientInfoB$EnvParamPacket
-  extends MessageMicro
+  extends MessageMicro<EnvParamPacket>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_guid = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -28,7 +28,7 @@ public final class ClientInfoB$EnvParamPacket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.ClientInfoB.EnvParamPacket
  * JD-Core Version:    0.7.0.1
  */

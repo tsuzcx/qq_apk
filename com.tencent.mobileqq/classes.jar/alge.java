@@ -1,27 +1,62 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.open.appcircle.st.AppCircleReportManager;
-import com.tencent.open.downloadnew.DownloadApi;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.LRULinkedHashMap;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
-public final class alge
-  implements DialogInterface.OnClickListener
+class alge
 {
-  public alge(Bundle paramBundle, int paramInt, ApkUpdateDetail paramApkUpdateDetail) {}
+  public String a;
+  public WeakReference<WebViewPlugin> a;
+  private WeakReference<algd> b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public alge(algd paramalgd, String paramString, WebViewPlugin paramWebViewPlugin)
   {
-    DownloadApi.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
-    ReportController.b(null, "dc00898", "", "", "0X8008F7C", "0X8008F7C", 0, 0, "", "", "", "");
-    paramDialogInterface = System.currentTimeMillis() / 1000L + "|" + 101;
-    AppCircleReportManager.a().a(25, paramDialogInterface);
+    this.b = new WeakReference(paramalgd);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWebViewPlugin);
+  }
+  
+  public void a(algf paramalgf, algg paramalgg)
+  {
+    algd localalgd = (algd)this.b.get();
+    WebViewPlugin localWebViewPlugin;
+    if ((localalgd != null) && (paramalgf != null))
+    {
+      localWebViewPlugin = (WebViewPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((localWebViewPlugin != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      {
+        if (paramalgg != null) {
+          paramalgg.d = System.currentTimeMillis();
+        }
+        if (algf.a(paramalgf) == null) {
+          break label175;
+        }
+        localWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { algf.a(paramalgf).toString() });
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebDataCallBack, onSSOCallBack, plugin.callJs.mResultJson:" + algf.a(paramalgf));
+      }
+      if (algd.a(localalgd) != null)
+      {
+        algd.a(localalgd).remove(algf.a(paramalgf));
+        if (QLog.isColorLevel()) {
+          QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebDataCallBack, onSSOCallBack, remove sso from mPreloadSSODatas:" + algf.a(paramalgf));
+        }
+      }
+      return;
+      label175:
+      localWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alge
  * JD-Core Version:    0.7.0.1
  */

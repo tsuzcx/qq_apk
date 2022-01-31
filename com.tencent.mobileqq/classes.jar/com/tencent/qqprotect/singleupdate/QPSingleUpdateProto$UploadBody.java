@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class QPSingleUpdateProto$UploadBody
-  extends MessageMicro
+  extends MessageMicro<UploadBody>
 {
   public static final int BYTES_FAILED_REASON_FIELD_NUMBER = 3;
   public static final int BYTES_FAILED_STEP_FIELD_NUMBER = 2;
@@ -27,7 +27,7 @@ public final class QPSingleUpdateProto$UploadBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqprotect.singleupdate.QPSingleUpdateProto.UploadBody
  * JD-Core Version:    0.7.0.1
  */

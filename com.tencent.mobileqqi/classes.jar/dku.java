@@ -1,26 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterBaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.StrangerManageActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 
 public class dku
-  extends Handler
+  implements View.OnClickListener
 {
-  public dku(RegisterBaseActivity paramRegisterBaseActivity) {}
+  public dku(StrangerManageActivity paramStrangerManageActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    paramView = this.a;
+    if (this.a.a == null)
     {
-    default: 
-      return;
+      this.a.a = ((ActionSheet)ActionSheetHelper.a(paramView, null));
+      this.a.a.a(2131562553);
+      this.a.a.a(2131561964, 3);
+      this.a.a.d(2131561746);
+      this.a.a.a(paramView);
     }
-    this.a.g();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131563125);
-    }
-    this.a.a(paramMessage, 1);
+    this.a.a.show();
   }
 }
 

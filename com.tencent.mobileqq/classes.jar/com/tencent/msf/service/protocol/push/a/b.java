@@ -12,15 +12,15 @@ public final class b
   static ArrayList k;
   static ArrayList l;
   static ArrayList m;
-  public short a;
-  public ArrayList b;
-  public ArrayList c;
-  public ArrayList d;
-  public ArrayList e;
-  public long f;
-  public long g;
-  public long h;
-  public long i;
+  public short a = 0;
+  public ArrayList b = null;
+  public ArrayList c = null;
+  public ArrayList d = null;
+  public ArrayList e = null;
+  public long f = 0L;
+  public long g = 0L;
+  public long h = 0L;
+  public long i = 0L;
   
   public b() {}
   

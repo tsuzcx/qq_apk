@@ -6,25 +6,26 @@ import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.widget.TabHost;
 import android.widget.TabWidget;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
+import asfa;
+import bdnm;
+import beuc;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.fpsreport.OnDrawCompleteListener;
-import com.tencent.mobileqq.utils.StartupTracker;
 import com.tencent.qphone.base.util.QLog;
+import oxp;
 
 public class QQTabHost
   extends TabHost
 {
-  private OnDrawCompleteListener jdField_a_of_type_ComTencentMobileqqFpsreportOnDrawCompleteListener;
-  private QQTabHost.OnTabSelectionListener jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost$OnTabSelectionListener;
+  private asfa jdField_a_of_type_Asfa;
+  private beuc jdField_a_of_type_Beuc;
   private boolean jdField_a_of_type_Boolean;
   
   public QQTabHost(Context paramContext)
   {
     super(paramContext);
     setWillNotDraw(false);
-    if ((paramContext instanceof OnDrawCompleteListener)) {
-      this.jdField_a_of_type_ComTencentMobileqqFpsreportOnDrawCompleteListener = ((OnDrawCompleteListener)paramContext);
+    if ((paramContext instanceof asfa)) {
+      this.jdField_a_of_type_Asfa = ((asfa)paramContext);
     }
   }
   
@@ -45,15 +46,15 @@ public class QQTabHost
   public void draw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_Boolean) {
-      StartupTracker.a(null, "Recent_Draw");
+      bdnm.a(null, "Recent_Draw");
     }
     super.draw(paramCanvas);
     if (this.jdField_a_of_type_Boolean)
     {
-      StartupTracker.a("Recent_Draw", null);
+      bdnm.a("Recent_Draw", null);
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_ComTencentMobileqqFpsreportOnDrawCompleteListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqFpsreportOnDrawCompleteListener.a();
+      if (this.jdField_a_of_type_Asfa != null) {
+        this.jdField_a_of_type_Asfa.a();
       }
     }
   }
@@ -61,11 +62,11 @@ public class QQTabHost
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (this.jdField_a_of_type_Boolean) {
-      StartupTracker.a(null, "Recent_OnLayout");
+      bdnm.a(null, "Recent_OnLayout");
     }
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.jdField_a_of_type_Boolean) {
-      StartupTracker.a("Recent_OnLayout", null);
+      bdnm.a("Recent_OnLayout", null);
     }
   }
   
@@ -90,11 +91,21 @@ public class QQTabHost
       return;
       i = getCurrentTab();
       super.setCurrentTab(paramInt);
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost$OnTabSelectionListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost$OnTabSelectionListener.a(i, paramInt, this);
+      if (this.jdField_a_of_type_Beuc != null) {
+        this.jdField_a_of_type_Beuc.a(i, paramInt, this);
       }
-    } while (paramInt != 0);
-    ReadinjoySPEventReport.a().a(1, false);
+      if (paramInt == 0) {
+        oxp.a().a(1, false);
+      }
+    } while (!QLog.isColorLevel());
+    try
+    {
+      throw new RuntimeException();
+    }
+    catch (Exception localException)
+    {
+      QLog.d("QQTabHost", 2, "QQTabHost setCurrentTab, index=" + paramInt, localException);
+    }
   }
   
   public void setFirstDrawTrue()
@@ -102,19 +113,19 @@ public class QQTabHost
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public void setOnDrawCompleteListener(OnDrawCompleteListener paramOnDrawCompleteListener)
+  public void setOnDrawCompleteListener(asfa paramasfa)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFpsreportOnDrawCompleteListener = paramOnDrawCompleteListener;
+    this.jdField_a_of_type_Asfa = paramasfa;
   }
   
-  public void setOnTabSelectionListener(QQTabHost.OnTabSelectionListener paramOnTabSelectionListener)
+  public void setOnTabSelectionListener(beuc parambeuc)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost$OnTabSelectionListener = paramOnTabSelectionListener;
+    this.jdField_a_of_type_Beuc = parambeuc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQTabHost
  * JD-Core Version:    0.7.0.1
  */

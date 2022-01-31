@@ -1,27 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 
-public class xmt
-  implements DialogInterface.OnClickListener
+class xmt
+  implements View.OnClickListener
 {
-  public xmt(LoginView paramLoginView) {}
+  xmt(xms paramxms, xmv paramxmv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ReportController.a(this.a.a, "dc00898", "", "", "0X8006797", "0X8006797", 0, 0, "", "", "", "");
-    try
-    {
-      paramDialogInterface.dismiss();
-      return;
+    if (xms.a(this.jdField_a_of_type_Xms) != null) {
+      xms.a(this.jdField_a_of_type_Xms).a((SlideItemInfo)this.jdField_a_of_type_Xmv.a.getTag());
     }
-    catch (Exception paramDialogInterface) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xmt
  * JD-Core Version:    0.7.0.1
  */

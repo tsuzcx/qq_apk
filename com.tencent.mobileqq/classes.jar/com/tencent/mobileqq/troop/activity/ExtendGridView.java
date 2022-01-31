@@ -37,8 +37,8 @@ public class ExtendGridView
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.GridView);
-    this.jdField_a_of_type_Boolean = paramContext.getBoolean(0, false);
-    this.jdField_b_of_type_Boolean = paramContext.getBoolean(1, false);
+    this.jdField_a_of_type_Boolean = paramContext.getBoolean(1, false);
+    this.jdField_b_of_type_Boolean = paramContext.getBoolean(0, false);
     paramContext.recycle();
     a();
   }
@@ -150,7 +150,7 @@ public class ExtendGridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.ExtendGridView
  * JD-Core Version:    0.7.0.1
  */

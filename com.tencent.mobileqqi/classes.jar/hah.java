@@ -1,23 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.util.FaceDecoder;
 
 public class hah
-  implements DialogInterface.OnClickListener
+  extends FriendListObserver
 {
-  public hah(TroopFileItemOperation paramTroopFileItemOperation, TroopFileTransferManager paramTroopFileTransferManager, String paramString1, String paramString2, long paramLong, int paramInt) {}
+  private hah(FaceDecoder paramFaceDecoder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
-    }
+    FaceDecoder.a(this.a, paramBoolean, (byte)1, paramString);
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    FaceDecoder.a(this.a, paramBoolean, (byte)11, paramString);
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    FaceDecoder.a(this.a, paramBoolean, (byte)4, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hah
  * JD-Core Version:    0.7.0.1
  */

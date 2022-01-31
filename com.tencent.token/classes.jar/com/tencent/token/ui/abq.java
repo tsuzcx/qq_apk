@@ -1,18 +1,20 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.token.utils.UserTask;
+import com.tencent.token.utils.UserTask.Status;
 
-final class abq
+class abq
   implements View.OnClickListener
 {
-  abq(StartPwdGestureIndexActivity paramStartPwdGestureIndexActivity) {}
+  abq(UtilsActivity paramUtilsActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, StartPwdUpdateInfoActivity.class);
-    this.a.startActivity(paramView);
+    if ((UtilsActivity.access$2400(this.a) != null) && (UtilsActivity.access$2400(this.a).b() != UserTask.Status.FINISHED)) {
+      UtilsActivity.access$2400(this.a).a(true);
+    }
   }
 }
 

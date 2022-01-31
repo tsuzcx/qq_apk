@@ -1,16 +1,22 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.token.cy;
+import com.tencent.token.global.RqdApplication;
 
-final class aaf
-  implements View.OnClickListener
+class aaf
+  implements DialogInterface.OnClickListener
 {
-  aaf(aae paramaae) {}
+  aaf(StartPwdGestureModifyActivity paramStartPwdGestureModifyActivity, Context paramContext) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.dismissDialog();
+    cy.a().a(this.a);
+    RqdApplication.i();
+    this.b.setResult(35);
+    this.b.finish();
   }
 }
 

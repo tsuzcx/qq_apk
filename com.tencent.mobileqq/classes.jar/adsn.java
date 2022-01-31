@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparingListener;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class adsn
-  implements TVK_IMediaPlayer.OnVideoPreparingListener
+  extends alqh
 {
-  public adsn(VideoBaseItem paramVideoBaseItem) {}
+  public adsn(QQSettingMe paramQQSettingMe) {}
   
-  public void onVideoPreparing(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onVideoPreparing mCacheProgress=");
+    QQSettingMe.a(this.a, paramUpgradeDetailWrapper);
+    if (this.a.c) {
+      this.a.o();
     }
   }
 }

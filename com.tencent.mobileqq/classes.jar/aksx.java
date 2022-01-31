@@ -1,29 +1,28 @@
-import android.os.Handler;
-import com.tencent.mobileqq.widget.CircleProgressView;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
 
 public class aksx
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  private aksx(CircleProgressView paramCircleProgressView) {}
+  public aksx(CmGameDebugView paramCmGameDebugView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (CircleProgressView.a(this.a)) {
-      CircleProgressView.a(this.a, CircleProgressView.a(this.a) + CircleProgressView.b(this.a));
-    }
-    for (;;)
-    {
-      CircleProgressView.a(this.a, CircleProgressView.a(this.a) % 360);
-      CircleProgressView.a(this.a).postDelayed(this, 16L);
-      this.a.invalidate();
-      return;
-      CircleProgressView.a(this.a, CircleProgressView.a(this.a) + 1);
-    }
+    CmGameDebugView.a(this.a).setVisibility(8);
+    CmGameDebugView.b(this.a).setVisibility(8);
+    CmGameDebugView.a(this.a).clearAnimation();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aksx
  * JD-Core Version:    0.7.0.1
  */

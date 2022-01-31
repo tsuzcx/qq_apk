@@ -1,23 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ansc
-  implements Parcelable.Creator
+public class ansc
+  implements alpg
 {
-  public EditRecordVideoSource a(Parcel paramParcel)
-  {
-    return new EditRecordVideoSource(paramParcel);
-  }
+  public void a(boolean paramBoolean, int paramInt, long paramLong) {}
   
-  public EditRecordVideoSource[] a(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return new EditRecordVideoSource[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("ArMapObserver", 2, new Object[] { "onUpdate, type=", Integer.valueOf(paramInt), ", isSuccess=", Boolean.valueOf(paramBoolean) });
+    }
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+    } while (!(paramObject instanceof Object[]));
+    paramObject = (Object[])paramObject;
+    a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Long)paramObject[1]).longValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ansc
  * JD-Core Version:    0.7.0.1
  */

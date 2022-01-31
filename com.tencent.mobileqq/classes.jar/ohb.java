@@ -1,47 +1,35 @@
-import com.tencent.biz.qqstory.takevideo.EditWebVideoPartManager;
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-public class ohb
-  implements Runnable
+class ohb
+  implements DialogInterface.OnClickListener
 {
-  public ohb(EditWebVideoPartManager paramEditWebVideoPartManager, RMVideoStateMgr paramRMVideoStateMgr) {}
+  ohb(ogy paramogy, boolean paramBoolean) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
+    paramDialogInterface = new HashMap();
+    paramDialogInterface.put("stat_src", "2");
+    noy.a(new obk().a(BaseApplication.getContext()).a(noy.e).b(noy.ac).a(oef.a(ogy.a(this.jdField_a_of_type_Ogy))).d(noy.a(ogy.a(this.jdField_a_of_type_Ogy), paramDialogInterface)).a());
+    if (!this.jdField_a_of_type_Boolean) {
+      if (!ogy.a(this.jdField_a_of_type_Ogy)) {}
+    }
+    while (!(this.jdField_a_of_type_Ogy.a instanceof Activity))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EditWebVideoActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
-      }
-      RecordManager.a().a().recordSubmit();
+      return;
+      this.jdField_a_of_type_Ogy.g();
       return;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        localUnsatisfiedLinkError.printStackTrace();
-        synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.notifyAll();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("EditWebVideoActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString + ", call AVideoCodec.recordSubmit() fail, error = " + localUnsatisfiedLinkError.getMessage());
-          return;
-        }
-      }
-    }
+    szl.a(this.jdField_a_of_type_Ogy.a);
+    odv.a(this.jdField_a_of_type_Ogy.a, ogy.a(this.jdField_a_of_type_Ogy));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ohb
  * JD-Core Version:    0.7.0.1
  */

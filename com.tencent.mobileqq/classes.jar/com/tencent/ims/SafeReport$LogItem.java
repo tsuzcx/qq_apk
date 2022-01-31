@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SafeReport$LogItem
-  extends MessageMicro
+  extends MessageMicro<LogItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_rpt_data = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class SafeReport$LogItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.SafeReport.LogItem
  * JD-Core Version:    0.7.0.1
  */

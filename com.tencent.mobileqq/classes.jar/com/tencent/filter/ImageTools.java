@@ -17,17 +17,17 @@ public class ImageTools
   public static final int BLURBORDER_RADIUS = 2;
   public static final int SMOOTHBORDER_RADIUS = 11;
   
-  public static void FormatAlphaBitmap(Bitmap paramBitmap)
+  public static void formatAlphaBitmap(Bitmap paramBitmap)
   {
     PaintSelection.FormatAlphaBitmap(paramBitmap);
   }
   
-  public static boolean HasAlphaBitmap(Bitmap paramBitmap)
+  public static boolean hasAlphaBitmap(Bitmap paramBitmap)
   {
     return PaintSelection.HasAlphaBitmap(paramBitmap);
   }
   
-  public static void ProcessBitmap(Bitmap paramBitmap1, Bitmap paramBitmap2)
+  public static void processBitmap(Bitmap paramBitmap1, Bitmap paramBitmap2)
   {
     PaintSelection.ProcessBitmap(paramBitmap1, paramBitmap2);
   }
@@ -100,7 +100,7 @@ public class ImageTools
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.filter.ImageTools
  * JD-Core Version:    0.7.0.1
  */

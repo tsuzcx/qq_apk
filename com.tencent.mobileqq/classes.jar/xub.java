@@ -1,36 +1,120 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
-import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.annotation.TargetApi;
 import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
+@TargetApi(14)
 class xub
-  extends ExecuteBinResponseCallback
 {
-  xub(xua paramxua, String paramString1, PeakActivity paramPeakActivity, String paramString2, String paramString3, PublishVideoEntry paramPublishVideoEntry) {}
-  
-  public void a(boolean paramBoolean)
+  static String a(InputStream paramInputStream)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SaveVideoActivity", 2, "combine music finish: " + paramBoolean);
-    }
-    FileUtils.d(this.jdField_a_of_type_JavaLangString);
-    if (paramBoolean)
+    try
     {
-      xua.a(this.jdField_a_of_type_Xua, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.b, this.c, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-      return;
+      paramInputStream = new BufferedReader(new InputStreamReader(paramInputStream));
+      StringBuilder localStringBuilder = new StringBuilder();
+      for (;;)
+      {
+        String str = paramInputStream.readLine();
+        if (str == null) {
+          break;
+        }
+        localStringBuilder.append(str);
+      }
+      paramInputStream = localStringBuilder.toString();
     }
-    xua.a(this.jdField_a_of_type_Xua, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+    catch (IOException paramInputStream)
+    {
+      wxe.c("Q.qqstory.ffmpeg.FFmpeg", "error converting input stream to string", paramInputStream);
+      return null;
+    }
+    return paramInputStream;
   }
   
-  public void b(String paramString)
+  static void a(Process paramProcess)
   {
-    xua.a(this.jdField_a_of_type_Xua, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+    if (paramProcess != null) {
+      paramProcess.destroy();
+    }
+  }
+  
+  static void a(xtj paramxtj)
+  {
+    if ((paramxtj != null) && (!paramxtj.a()))
+    {
+      if (paramxtj.jdField_a_of_type_JavaLangProcess != null)
+      {
+        paramxtj.jdField_a_of_type_JavaLangProcess.destroy();
+        paramxtj.jdField_a_of_type_JavaLangProcess = null;
+      }
+      if (!paramxtj.isCancelled()) {
+        paramxtj.cancel(true);
+      }
+      wxe.e("Q.qqstory.ffmpeg.FFmpeg", "kill ffmpeg task", new Object[] { Arrays.toString(paramxtj.jdField_a_of_type_ArrayOfJavaLangString) });
+    }
+  }
+  
+  static boolean a(File paramFile)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramFile == null) || (!paramFile.exists())) {
+      bool1 = false;
+    }
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (paramFile.canExecute());
+      bool1 = bool2;
+    } while (paramFile.setExecutable(true));
+    return false;
+  }
+  
+  static boolean a(Process paramProcess)
+  {
+    if (paramProcess == null) {}
+    for (;;)
+    {
+      return true;
+      try
+      {
+        paramProcess.exitValue();
+        if (QLog.isColorLevel())
+        {
+          QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "isProcessCompleted: true  in  process.exitValue()");
+          return true;
+        }
+      }
+      catch (IllegalThreadStateException paramProcess)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "IllegalThreadStateException e, ", paramProcess);
+        }
+      }
+    }
+    return false;
+  }
+  
+  static <T> T[] a(T[] paramArrayOfT1, T[] paramArrayOfT2)
+  {
+    int i = paramArrayOfT1.length;
+    int j = paramArrayOfT2.length;
+    Object[] arrayOfObject = (Object[])Array.newInstance(paramArrayOfT1.getClass().getComponentType(), i + j);
+    System.arraycopy(paramArrayOfT1, 0, arrayOfObject, 0, i);
+    System.arraycopy(paramArrayOfT2, 0, arrayOfObject, i, j);
+    return arrayOfObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xub
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,21 @@
-import android.graphics.Bitmap;
-import android.util.Pair;
-import android.widget.ImageView;
-import com.tencent.mobileqq.troop.widget.HotChatPostItemView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
 
-class ajsk
-  implements Runnable
+public class ajsk
+  extends Handler
 {
-  ajsk(ajsj paramajsj, Pair paramPair) {}
-  
-  public void run()
+  public ajsk(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment, Looper paramLooper)
   {
-    if ((this.jdField_a_of_type_Ajsj.a.jdField_a_of_type_AndroidWidgetImageView.getTag() instanceof String))
-    {
-      String str = (String)this.jdField_a_of_type_Ajsj.a.jdField_a_of_type_AndroidWidgetImageView.getTag();
-      if ((this.jdField_a_of_type_AndroidUtilPair != null) && (str.endsWith(this.jdField_a_of_type_Ajsj.a.jdField_a_of_type_JavaLangString)))
-      {
-        this.jdField_a_of_type_Ajsj.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)this.jdField_a_of_type_AndroidUtilPair.first);
-        HotChatPostItemView.a(this.jdField_a_of_type_Ajsj.a.jdField_a_of_type_JavaLangString, (Bitmap)this.jdField_a_of_type_AndroidUtilPair.first);
-      }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if (paramMessage.what == 10) {
+      postDelayed(QzoneSlideShowPreparingFragment.a(this.a), 200L);
     }
   }
 }

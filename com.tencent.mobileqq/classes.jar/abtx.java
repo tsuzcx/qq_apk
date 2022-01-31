@@ -1,28 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
-
-public final class abtx
-  implements Parcelable.Creator
+public class abtx
+  implements abtw
 {
-  public IPSiteModel.ComicRich a(Parcel paramParcel)
-  {
-    IPSiteModel.ComicRich localComicRich = new IPSiteModel.ComicRich();
-    localComicRich.extCover = paramParcel.readString();
-    localComicRich.extName = paramParcel.readString();
-    localComicRich.extTitle = paramParcel.readString();
-    localComicRich.extUrl = paramParcel.readString();
-    return localComicRich;
-  }
+  private abtt<abtv> a = new abtu();
   
-  public IPSiteModel.ComicRich[] a(int paramInt)
+  public abtv a(int paramInt)
   {
-    return new IPSiteModel.ComicRich[paramInt];
+    return (abtv)this.a.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abtx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:layout_width="fill_parent" android:layout_height="640.0dip" />
+        <ImageView android:id="@id/drs" android:layout_width="fill_parent" android:layout_height="256.0dip" android:layout_marginLeft="48.0dip" android:layout_marginRight="48.0dip" android:scaleType="centerCrop" />
+        <View android:layout_width="fill_parent" android:layout_height="1080.0dip" />
+    </LinearLayout>
+</ScrollView>

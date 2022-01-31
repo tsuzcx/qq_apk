@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/b5g" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/j_l" android:layout_width="wrap_content" android:layout_height="54.0dip" android:src="@drawable/b5h" android:layout_alignParentLeft="true" android:contentDescription="@null" />
+    <ImageView android:id="@id/j_m" android:layout_width="wrap_content" android:layout_height="54.0dip" android:src="@drawable/b5i" android:layout_alignParentRight="true" android:contentDescription="@null" />
+    <ImageView android:id="@id/j_k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+    <com.tencent.mobileqq.activity.recent.cur.DragTextView android:id="@id/khc" android:visibility="gone" android:layout_marginLeft="@dimen/wd" android:layout_marginTop="@dimen/wf" android:layout_toRightOf="@id/j_k" android:layout_alignParentTop="true" style="@style/cg" />
+    <com.tencent.image.URLImageView android:gravity="center" android:id="@id/j_n" android:background="@drawable/agi" android:padding="1.0dip" android:visibility="gone" android:layout_width="31.0dip" android:layout_height="31.0dip" android:layout_marginRight="-16.0dip" android:src="@drawable/com" android:layout_alignRight="@id/j_k" android:layout_alignBottom="@id/j_k" />
+</RelativeLayout>

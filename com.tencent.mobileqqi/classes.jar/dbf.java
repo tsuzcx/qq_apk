@@ -1,30 +1,22 @@
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
 
 public class dbf
-  implements Runnable
+  extends Handler
 {
-  public dbf(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
+  public dbf(QQBroadcastActivity paramQQBroadcastActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    try
+    switch (paramMessage.what)
     {
-      if ((LoginVerifyCodeActivity2.a(this.a) != null) && (LoginVerifyCodeActivity2.a(this.a).isShowing()))
-      {
-        LoginVerifyCodeActivity2.a(this.a).dismiss();
-        LoginVerifyCodeActivity2.a(this.a).cancel();
-      }
-      LoginVerifyCodeActivity2.a(this.a, null);
+    }
+    do
+    {
       return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    } while (this.a.a == null);
+    this.a.a.changeCursor(this.a.a());
   }
 }
 

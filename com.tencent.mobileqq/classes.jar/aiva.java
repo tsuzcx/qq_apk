@@ -1,25 +1,29 @@
-import com.tencent.mobileqq.troop.activity.TroopAdminList;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
-public class aiva
-  implements Runnable
+class aiva
+  implements ThreadExcutor.IThreadListener
 {
-  public aiva(TroopAdminList paramTroopAdminList) {}
+  aiva(aiux paramaiux, List paramList, Map paramMap, Bundle paramBundle) {}
   
-  public void run()
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    int j = this.a.a.size();
-    int i = 0;
-    while (i < j)
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
     {
-      String str = (String)((Map)this.a.a.get(i)).get("uin");
-      ((Map)this.a.a.get(i)).put("nick", ContactUtils.l(this.a.app, str));
-      i += 1;
+      beae localbeae = new beae(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilMap, UUID.randomUUID().toString());
+      localbeae.a(this.jdField_a_of_type_AndroidOsBundle);
+      if (this.jdField_a_of_type_Aiux.a != null) {
+        this.jdField_a_of_type_Aiux.a.a(localbeae, aiux.a(this.jdField_a_of_type_Aiux), null);
+      }
     }
-    this.a.runOnUiThread(new aivb(this));
   }
+  
+  public void onPreRun() {}
 }
 
 

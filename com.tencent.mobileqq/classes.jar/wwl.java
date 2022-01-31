@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.activity.photo.MediaFileFilter;
-import com.tencent.mobileqq.activity.photo.MimeHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class wwl
-  extends MediaFileFilter
+class wwl
+  implements View.OnClickListener
 {
-  public boolean a(String paramString)
-  {
-    paramString = MimeHelper.a(paramString);
-    return (paramString == null) || (!"image".equals(paramString[0])) || (!MimeHelper.a(paramString[1]));
-  }
+  wwl(wwk paramwwk) {}
   
-  public boolean b()
+  public void onClick(View paramView)
   {
-    return false;
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wwl
  * JD-Core Version:    0.7.0.1
  */

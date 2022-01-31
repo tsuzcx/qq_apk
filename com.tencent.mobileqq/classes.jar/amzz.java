@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.share.WXShareFromQZHelper;
-
-public class amzz
-  implements Runnable
+class amzz
+  extends amsp
 {
-  public amzz(WXShareFromQZHelper paramWXShareFromQZHelper) {}
+  amzz(amzy paramamzy) {}
   
-  public void run()
+  public void a(anau paramanau)
   {
-    QQToast.a(BaseApplication.getContext(), 2131432726, 0).a();
+    if (amzy.a(this.a) != null) {
+      amzy.a(this.a).a(paramanau);
+    }
   }
 }
 

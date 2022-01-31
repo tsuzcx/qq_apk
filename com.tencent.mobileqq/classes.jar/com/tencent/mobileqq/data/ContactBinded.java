@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
+import awge;
 
 public class ContactBinded
-  extends Entity
+  extends awge
 {
   public boolean isReaded;
   public long timestamp;

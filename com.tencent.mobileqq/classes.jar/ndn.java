@@ -1,25 +1,26 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class ndn
-  implements Comparator
+public class ndn
+  implements nck
 {
-  ndn(ndm paramndm) {}
-  
-  public int a(StoryVideoItem paramStoryVideoItem1, StoryVideoItem paramStoryVideoItem2)
+  public void a(Runnable paramRunnable)
   {
-    if (paramStoryVideoItem1.mCreateTime > paramStoryVideoItem2.mCreateTime) {
-      return 1;
-    }
-    if (paramStoryVideoItem1.mCreateTime < paramStoryVideoItem2.mCreateTime) {
-      return -1;
-    }
-    return 0;
+    ThreadManager.executeOnNetWorkThread(paramRunnable);
+  }
+  
+  public void b(Runnable paramRunnable)
+  {
+    ThreadManager.executeOnFileThread(paramRunnable);
+  }
+  
+  public void c(Runnable paramRunnable)
+  {
+    ThreadManager.post(paramRunnable, 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ndn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,19 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.utils.s;
 
-final class tx
+class tx
   implements View.OnClickListener
 {
-  tx(PCMobileQQVerifyedDevicesActivity paramPCMobileQQVerifyedDevicesActivity) {}
+  tx(RealNameActivity paramRealNameActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = this.a.getString(2131361980);
-    s.b(this.a, paramView);
+    paramView = new Intent(this.a, RealNameDetailActivity.class);
+    paramView.putExtra("index", 3);
+    this.a.startActivity(paramView);
   }
 }
 

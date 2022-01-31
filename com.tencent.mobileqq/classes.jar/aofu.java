@@ -1,26 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
 
 public class aofu
-  implements Runnable
+  implements aofn
 {
-  public aofu(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public aofu(SwipePostTableLayout paramSwipePostTableLayout) {}
   
-  public void run()
+  public void onServiceSyncSucc(boolean paramBoolean)
   {
-    if (!this.a.b)
-    {
-      this.a.a.a(2002, "抱歉，摄像头可能被禁止了", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("FlowCameraActivity", 2, "[@] ERR_CODE_CAMERA_CREATE  黑名单机型,2秒还没有获取到预览帧,可能没有权限");
-      }
-    }
+    QLog.d("SwipePostTableLayout", 1, "result: " + paramBoolean);
+    this.a.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aofu
  * JD-Core Version:    0.7.0.1
  */

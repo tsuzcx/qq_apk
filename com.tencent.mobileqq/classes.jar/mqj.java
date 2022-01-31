@@ -1,153 +1,165 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.BytePool;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.Releaser;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.Utils;
-import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.av.ui.funchat.record.QavRecordReporter.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashMap;
 
 public class mqj
 {
-  public static final String a;
-  int jdField_a_of_type_Int = 0;
-  public BytePool a;
-  public Releaser a;
-  private QQLruCache jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache;
-  public List a;
-  int jdField_b_of_type_Int = 0;
-  final List jdField_b_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+  private static int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  private static Throwable jdField_a_of_type_JavaLangThrowable;
+  private static boolean jdField_a_of_type_Boolean;
+  private static int jdField_b_of_type_Int;
+  private static long jdField_b_of_type_Long;
+  private static int c;
   
-  static
+  public static void a()
   {
-    jdField_a_of_type_JavaLangString = "zimage." + mqj.class.getSimpleName();
+    jdField_a_of_type_Int = 0;
+    jdField_a_of_type_Long = System.currentTimeMillis();
+    jdField_b_of_type_Long = -1L;
+    jdField_b_of_type_Int = 0;
+    jdField_a_of_type_Boolean = false;
+    c = 0;
+    jdField_a_of_type_JavaLangThrowable = null;
   }
   
-  public mqj(int paramInt)
+  public static void a(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new LinkedList());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBytePool = new BytePool(2097152);
-    this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new mqk(this, 2008, paramInt);
-    paramInt = i;
-    while (paramInt < 5)
+    long l1 = System.currentTimeMillis();
+    long l2 = jdField_a_of_type_Long;
+    long l3 = jdField_b_of_type_Long;
+    int i = jdField_a_of_type_Int;
+    int j = jdField_b_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "onRecordEnd cores=" + paramInt1 + ", fqc=" + paramInt2 + ", start=" + l2 + ", end=" + l1 + ", frames=" + i + ", stopType=" + paramInt3 + ", mp4Start=" + l3 + ", mp4Frames=" + j);
+    }
+    ThreadManager.post(new QavRecordReporter.1(paramInt2, i, l1, l2, j, l3, paramLong, paramInt1, paramInt3), 5, null, false);
+  }
+  
+  public static void a(int paramInt, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "onError " + paramInt);
+    }
+    jdField_a_of_type_Boolean = true;
+    c = paramInt;
+    jdField_a_of_type_JavaLangThrowable = paramThrowable;
+  }
+  
+  public static void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "reportConvertPcmCostTime cost=" + paramLong);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("device_model", bdgk.d());
+    localHashMap.put("api", bdgk.e());
+    localHashMap.put("manufacture", bdgk.h());
+    azri localazri = azri.a(BaseApplicationImpl.getContext());
+    if (!jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_JavaUtilList.add(new byte[16384]);
-      paramInt += 1;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderReleaser = new mql(this);
-  }
-  
-  public Bitmap a(BitmapFactory.Options paramOptions)
-  {
-    for (;;)
-    {
-      int i;
-      try
-      {
-        this.jdField_b_of_type_Int += 1;
-        ArrayList localArrayList = new ArrayList();
-        List localList = this.jdField_b_of_type_JavaUtilList;
-        i = 0;
-        try
-        {
-          if (i < this.jdField_b_of_type_JavaUtilList.size())
-          {
-            localBitmap = (Bitmap)((SoftReference)this.jdField_b_of_type_JavaUtilList.get(i)).get();
-            if (localBitmap != null)
-            {
-              if (Utils.a(localBitmap, paramOptions))
-              {
-                localArrayList.add(this.jdField_b_of_type_JavaUtilList.get(i));
-                str = "cache";
-                if (!localArrayList.isEmpty()) {
-                  this.jdField_b_of_type_JavaUtilList.removeAll(localArrayList);
-                }
-                if (localBitmap != null) {
-                  this.jdField_a_of_type_Int += 1;
-                }
-                if (QLog.isColorLevel()) {
-                  Utils.a(jdField_a_of_type_JavaLangString, "getReuseableBitmap found:" + str + " picSize:" + paramOptions.outWidth + "x" + paramOptions.outHeight + " bitmap:" + localBitmap + " state:" + toString());
-                }
-                return localBitmap;
-              }
-            }
-            else {
-              localArrayList.add(this.jdField_b_of_type_JavaUtilList.get(i));
-            }
-          }
-        }
-        finally {}
-        String str = "notFound";
-      }
-      finally {}
-      Bitmap localBitmap = null;
-      continue;
-      i += 1;
-    }
-  }
-  
-  public CloseableBitmap a(ImageRequest paramImageRequest)
-  {
-    if (paramImageRequest == null) {
-      return null;
-    }
-    paramImageRequest = (CloseableBitmap)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(paramImageRequest);
-    if (paramImageRequest != null) {
-      return paramImageRequest.a();
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        Utils.a(jdField_a_of_type_JavaLangString, "clean  mBitmapCaches size = " + this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.size());
-      }
-      this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.evictAll();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBytePool.a();
-      this.jdField_b_of_type_JavaUtilList.clear();
+      localazri.a("", "av_record_convert_pcm_cost", bool, paramLong / 1000L, 0L, localHashMap, "", false);
       return;
     }
-    finally {}
   }
   
-  public void a(ImageRequest paramImageRequest, CloseableBitmap paramCloseableBitmap)
+  public static void a(String paramString)
   {
-    try
+    azqs.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
+  }
+  
+  public static void a(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "reportPCMSuccess success=" + paramBoolean + ", errcode=" + paramInt);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(paramInt));
+    azri.a(BaseApplicationImpl.getContext()).a("", "av_record_convert_pcm_success", paramBoolean, 0L, 0L, localHashMap, "", false);
+  }
+  
+  public static void b()
+  {
+    jdField_a_of_type_Int += 1;
+  }
+  
+  public static void c()
+  {
+    if (jdField_b_of_type_Long < 0L) {
+      jdField_b_of_type_Long = System.currentTimeMillis();
+    }
+    jdField_b_of_type_Int += 1;
+  }
+  
+  public static void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "reportEnd");
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(c));
+    localHashMap.put("device_model", bdgk.d());
+    localHashMap.put("api", bdgk.e());
+    localHashMap.put("manufacture", bdgk.h());
+    localHashMap.put("throwable", String.valueOf(jdField_a_of_type_JavaLangThrowable));
+    jdField_a_of_type_JavaLangThrowable = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "reportEnd params=" + localHashMap);
+    }
+    azri localazri = azri.a(BaseApplicationImpl.getContext());
+    if (!jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(paramImageRequest, paramCloseableBitmap.a());
+      localazri.a("", "av_record_report_end", bool, 0L, 0L, localHashMap, "", false);
       return;
     }
-    finally
+  }
+  
+  public static void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "onAudioTrackInitFail");
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("device_model", bdgk.d());
+    localHashMap.put("api", bdgk.e());
+    localHashMap.put("manufacture", bdgk.h());
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "onAudioTrackInitFail  params=" + localHashMap);
+    }
+    azri localazri = azri.a(BaseApplicationImpl.getContext());
+    if (!jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramImageRequest = finally;
-      throw paramImageRequest;
+      localazri.a("", "av_record_audio_fail", bool, 0L, 0L, localHashMap, "", false);
+      return;
     }
   }
   
-  public String toString()
+  public static void f()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("total:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(" reuse:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" cacheMem:");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.size() / 1024);
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.i("QavRecordReporter", 2, "reportConvertPcmTimeout");
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("device_model", bdgk.d());
+    localHashMap.put("api", bdgk.e());
+    localHashMap.put("manufacture", bdgk.h());
+    azri localazri = azri.a(BaseApplicationImpl.getContext());
+    if (!jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localazri.a("", "av_record_convert_pcm_timeout", bool, 0L, 0L, localHashMap, "", false);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mqj
  * JD-Core Version:    0.7.0.1
  */

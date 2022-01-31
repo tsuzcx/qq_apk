@@ -1,34 +1,64 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.os.Bundle;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_bhd_upload_pic.RspStoryVideo;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.HashMap;
 
-public class rkz
-  implements CompoundButton.OnCheckedChangeListener
+class rkz
+  extends bayj
 {
-  public rkz(AssistantSettingActivity paramAssistantSettingActivity, SharedPreferences paramSharedPreferences, String paramString) {}
+  rkz(rky paramrky) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("sticker_switch_" + this.jdField_a_of_type_JavaLangString, paramBoolean).commit();
-    if ((paramBoolean) && (EmojiStickerManager.a())) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      EmojiStickerManager.e = paramBoolean;
-      if (EmojiStickerManager.e) {
-        VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app.c(), "Stick", "ClickSwitchOn", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-      }
+    Object localObject = (bass)paramMessage.obj;
+    if ((localObject == null) || ((((bass)localObject).jdField_b_of_type_Int != 24) && (((bass)localObject).jdField_b_of_type_Int != 32))) {}
+    while ((((bass)localObject).jdField_b_of_type_Int == 24) && (((bass)localObject).c != 54)) {
       return;
+    }
+    switch (paramMessage.what)
+    {
+    case 1001: 
+    case 1002: 
+    case 1004: 
+    case 1005: 
+    case 2001: 
+    case 2003: 
+    default: 
+      return;
+    }
+    paramMessage = (Bundle)this.a.b.remove(Long.valueOf(((bass)localObject).jdField_b_of_type_Long));
+    paramMessage.putLong("uniseq", ((bass)localObject).jdField_b_of_type_Long);
+    paramMessage.putString("pic_server_id", ((bass)localObject).i);
+    qqstory_bhd_upload_pic.RspStoryVideo localRspStoryVideo = new qqstory_bhd_upload_pic.RspStoryVideo();
+    try
+    {
+      localRspStoryVideo.mergeFrom(((bass)localObject).a);
+      if (localRspStoryVideo.retcode.get() == 0)
+      {
+        localObject = localRspStoryVideo.cdn_url.get().toStringUtf8();
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          paramMessage.putString("cdn_url", (String)localObject);
+        }
+      }
+      label214:
+      this.a.a.a(83, paramMessage);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      break label214;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rkz
  * JD-Core Version:    0.7.0.1
  */

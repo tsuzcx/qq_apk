@@ -1,28 +1,25 @@
-import android.os.PowerManager.WakeLock;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.JumpActivity;
 
-class adfj
-  implements Runnable
+public class adfj
+  implements acln
 {
-  adfj(adfi paramadfi) {}
+  public adfj(JumpActivity paramJumpActivity) {}
   
-  public void run()
+  public void a()
   {
-    VideoFilePresenter.a(this.a.a, true);
-    VideoFilePresenter.a(this.a.a, 0);
-    VideoFilePresenter.a(this.a.a).release();
-    this.a.a.a.b(0);
-    this.a.a.a.b(0L);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("#@#@", 1, "setProgress 187 [0]");
-    }
+    this.a.finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adfj
  * JD-Core Version:    0.7.0.1
  */

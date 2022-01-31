@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02017b" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00ad" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00ae" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00b2"
+<com.tencent.mobileqq.widget.PullRefreshHeader android:background="@null" android:layout_width="fill_parent" android:layout_height="370.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080738" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00af" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00af" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00b0" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020332" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080739" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02017a" android:scaleType="center" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <TextView android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0801a0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00b1" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d086f" android:singleLine="true" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f080739" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f080738" android:layout_centerVertical="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e008c" />
-</RelativeLayout>
+    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08073a" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b002a" android:layout_alignParentBottom="true">
+        <FrameLayout android:layout_width="33.0dip" android:layout_height="33.0dip" android:layout_marginLeft="60.0dip" android:layout_centerInParent="true">
+            <ProgressBar android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08015a" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:indeterminate="true" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020165" android:indeterminateBehavior="repeat" />
+            <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080553" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/refresh_arrow" android:scaleType="fitCenter" android:contentDescription="@string/image" />
+        </FrameLayout>
+        <LinearLayout android:orientation="vertical" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0149" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080554" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d10b1" />
+            <TextView android:textSize="13.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0149" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080555" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d10b1" />
+        </LinearLayout>
+    </RelativeLayout>
+</com.tencent.mobileqq.widget.PullRefreshHeader>

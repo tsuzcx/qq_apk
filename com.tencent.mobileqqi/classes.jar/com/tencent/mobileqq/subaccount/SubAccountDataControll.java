@@ -12,7 +12,7 @@ import com.tencent.mobileqq.subaccount.datamanager.SubAccountDBOperation;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import gpq;
+import glj;
 import java.util.List;
 
 public class SubAccountDataControll
@@ -500,7 +500,7 @@ public class SubAccountDataControll
     {
       this.jdField_a_of_type_ComTencentMobileqqSubaccountDatamanagerSubAccountAssistantCache.a((SubAccountInfo)localList.get(0));
       if (SubAccountAssistantImpl.a().a(paramQQAppInterface, ((SubAccountInfo)localList.get(0)).subuin)) {
-        paramQQAppInterface.getSubAccountKey(paramQQAppInterface.getAccount(), ((SubAccountInfo)localList.get(0)).subuin, new gpq(this, paramQQAppInterface, localRecentUser));
+        paramQQAppInterface.getSubAccountKey(paramQQAppInterface.getAccount(), ((SubAccountInfo)localList.get(0)).subuin, new glj(this, paramQQAppInterface, localRecentUser));
       }
     }
     for (;;)

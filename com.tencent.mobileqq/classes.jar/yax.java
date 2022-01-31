@@ -1,25 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.qrcode.ipc.VoiceScan.1;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 public class yax
-  implements View.OnClickListener
+  implements benw
 {
-  public yax(SelectMemberActivity paramSelectMemberActivity) {}
+  public yax(VoiceScan.1 param1) {}
   
-  public void onClick(View paramView)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    this.a.onBackEvent();
-    if (AppSetting.b) {
-      this.a.c.post(new yay(this));
-    }
+    paramClickableColorSpanTextView = new Intent(yaw.a(this.a.this$0), QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    yaw.a(this.a.this$0).startActivity(paramClickableColorSpanTextView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yax
  * JD-Core Version:    0.7.0.1
  */

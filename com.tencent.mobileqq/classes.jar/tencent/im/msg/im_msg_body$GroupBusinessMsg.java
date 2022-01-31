@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_msg_body$GroupBusinessMsg
-  extends MessageMicro
+  extends MessageMicro<GroupBusinessMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_head_clk_url = PBField.initBytes(ByteStringMicro.EMPTY);

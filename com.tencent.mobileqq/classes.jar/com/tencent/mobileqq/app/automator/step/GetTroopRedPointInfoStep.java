@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import com.tencent.biz.TroopRedpoint.TroopRedTouchHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
+import nag;
 
 public class GetTroopRedPointInfoStep
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
-    ((TroopRedTouchHandler)this.a.b.a(43)).a();
+    ((nag)this.a.app.a(43)).a();
     return 7;
   }
 }

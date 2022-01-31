@@ -1,33 +1,25 @@
-import com.tencent.mobileqq.apollo.view.QQFrameZipDecoder;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 
-public class yzs
-  extends DownloadListener
+class yzs
+  implements Downloader.DownloadListener
 {
-  public yzs(QQFrameZipDecoder paramQQFrameZipDecoder, String paramString1, String paramString2, String paramString3) {}
+  yzs(yzr paramyzr, yyz paramyyz, String paramString) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult) {}
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    super.onDone(paramDownloadTask);
-    if (3 == paramDownloadTask.a()) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a(true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SimpleFrameZipDecoder", 2, "downloadZip onDone task.getStatus()->" + paramDownloadTask.a());
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a = 2;
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    }
+    yzr.a(this.jdField_a_of_type_Yzr, this.jdField_a_of_type_Yyz, yzo.a().b(this.jdField_a_of_type_JavaLangString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yzs
  * JD-Core Version:    0.7.0.1
  */

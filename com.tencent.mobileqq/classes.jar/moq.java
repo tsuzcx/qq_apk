@@ -1,19 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.beauty.BeautyView;
 
 public class moq
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public moq(FastWebVideoFeedsListView paramFastWebVideoFeedsListView, int paramInt) {}
+  public moq(BeautyView paramBeautyView) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FastWebVideoFeedsListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView.smoothScrollBy(this.jdField_a_of_type_Int, 0);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     moq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.ChatSettingForTroop.ClearChatRecordTask;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-class acpo
-  implements FMDialogUtil.FMDialogInterface
+public class acpo
+  implements beoy
 {
-  acpo(acpl paramacpl, WeiYunFileInfo paramWeiYunFileInfo) {}
+  public acpo(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void a()
+  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
   {
-    FileManagerEntity localFileManagerEntity = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo);
-    QfileBaseCloudFileTabView.h(this.jdField_a_of_type_Acpl.a).a().b(localFileManagerEntity);
-    QfileBaseCloudFileTabView.i(this.jdField_a_of_type_Acpl.a).a().a(localFileManagerEntity);
-    this.jdField_a_of_type_Acpl.a.a(localFileManagerEntity);
+    ThreadManager.post(new ChatSettingForTroop.ClearChatRecordTask(this.a), 5, null, false);
+    bdes.a("Grp_set_new", "grpData_admin", "confirm_delRecord", 0, 0, new String[] { this.a.a.troopUin, bdes.a(this.a.a) });
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,40 @@
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupDBManager;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class wpc
-  implements Runnable
+public final class wpc
+  extends QQUIEventReceiver<woy, vcp>
 {
-  public wpc(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
-  
-  public void run()
+  public wpc(@NonNull woy paramwoy)
   {
-    Object localObject = (EmoticonFromGroupDBManager)EmoticonGroupStoreFragment.a(this.a).getManager(258);
-    if (localObject != null) {
-      ((EmoticonFromGroupDBManager)localObject).b();
-    }
-    localObject = new CopyOnWriteArrayList(EmoticonGroupStoreFragment.a(this.a).a());
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
+    super(paramwoy);
+  }
+  
+  public void a(@NonNull woy paramwoy, @NonNull vcp paramvcp)
+  {
+    wxe.a(this.TAG, "receive feature event. %s.", paramvcp.toString());
+    if ((paramvcp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvcp.jdField_a_of_type_JavaUtilList != null))
     {
-      int i = ((List)localObject).size();
-      if (i < 50)
+      paramvcp = paramvcp.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramvcp.hasNext())
       {
-        EmoticonGroupStoreFragment.a(this.a, (List)localObject);
-        EmoticonGroupStoreFragment.b(this.a, EmoticonGroupStoreFragment.c(this.a));
-        EmoticonGroupStoreFragment.a(this.a);
-        EmoticonGroupStoreFragment.b(this.a);
-      }
-      for (;;)
-      {
-        if (EmoticonGroupStoreFragment.b(this.a) != null) {
-          EmoticonGroupStoreFragment.c(this.a);
-        }
-        return;
-        EmoticonGroupStoreFragment.a(this.a, ((List)localObject).subList(0, 50));
-        int j = EmoticonGroupStoreFragment.c(this.a).size();
-        EmoticonGroupStoreFragment.b(this.a, EmoticonGroupStoreFragment.c(this.a));
-        EmoticonGroupStoreFragment.b(this.a);
-        EmoticonGroupStoreFragment.a(this.a, ((List)localObject).subList(50, i));
-        EmoticonGroupStoreFragment.a(this.a);
-        EmoticonGroupStoreFragment.b(this.a, EmoticonGroupStoreFragment.c(this.a).subList(j, EmoticonGroupStoreFragment.c(this.a).size()));
-        EmoticonGroupStoreFragment.b(this.a);
+        uxd localuxd = (uxd)paramvcp.next();
+        woy.a(paramwoy).put(localuxd.a, localuxd);
       }
     }
-    EmoticonGroupStoreFragment.d(this.a);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vcp.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpc
  * JD-Core Version:    0.7.0.1
  */

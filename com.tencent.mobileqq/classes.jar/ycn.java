@@ -1,25 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopObserver;
-import java.util.List;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class ycn
-  extends TroopObserver
+  implements ylr
 {
-  public ycn(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public ycn(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
   
-  protected void a(String paramString, boolean paramBoolean, List paramList, int paramInt, long paramLong)
+  public void a(boolean paramBoolean)
   {
-    if ((!TextUtils.isEmpty(this.a.b)) && (!this.a.b.equals(paramString))) {
+    String str2 = RecommendBannerFeedItemView.a(this.a).poster.id.get();
+    StringBuilder localStringBuilder = new StringBuilder().append("recom_");
+    if (paramBoolean) {}
+    for (String str1 = "cancel";; str1 = "dislike")
+    {
+      zaj.a(str2, "auth_page", str1, 0, 0, new String[] { "", RecommendBannerFeedItemView.a(this.a) + "", RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
       return;
     }
-    ThreadManager.post(new yco(this, paramList), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ycn
  * JD-Core Version:    0.7.0.1
  */

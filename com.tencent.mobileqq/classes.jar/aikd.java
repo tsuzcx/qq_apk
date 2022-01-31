@@ -1,28 +1,39 @@
-import com.tencent.mobileqq.activity.photopreview.CountDownTimer.CountDownTimerListener;
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView.TimerCallback;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aikd
-  extends CountDownTimer.CountDownTimerListener
+  extends aijq
 {
-  public aikd(CountdownTextView paramCountdownTextView, long paramLong, CountdownTextView.TimerCallback paramTimerCallback)
+  public aikd(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    super(paramLong);
+    super(paramContext, paramSessionInfo, paramQQAppInterface);
   }
   
-  public void b()
+  protected boolean b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback.a();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.a();
+    return true;
   }
   
-  public void b(long paramLong)
+  protected void g()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback.a(paramLong);
-    }
+    this.e = true;
+    super.g();
+  }
+  
+  protected void u()
+  {
+    super.u();
+  }
+  
+  protected void v()
+  {
+    super.v();
+  }
+  
+  protected void y()
+  {
+    this.a = "MiniPieForTroop";
   }
 }
 

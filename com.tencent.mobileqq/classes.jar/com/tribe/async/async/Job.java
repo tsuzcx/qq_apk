@@ -4,9 +4,6 @@ import android.os.Process;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tribe.async.utils.AssertUtils;
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.lang.reflect.Array;
 import java.util.concurrent.Callable;
 
@@ -20,7 +17,19 @@ public abstract class Job<Params, Progress, Result>
   private JobContext mJobContext;
   @Nullable
   private Params mParams;
+  private final String mTAG;
   private int mType = 2;
+  
+  @Deprecated
+  public Job()
+  {
+    this("Job");
+  }
+  
+  public Job(@NonNull String paramString)
+  {
+    this.mTAG = paramString;
+  }
   
   public static JobContext stubJobContext()
   {
@@ -28,7 +37,6 @@ public abstract class Job<Params, Progress, Result>
   }
   
   public Result call()
-    throws Exception
   {
     Process.setThreadPriority(10);
     Object[] arrayOfObject = null;
@@ -98,18 +106,16 @@ public abstract class Job<Params, Progress, Result>
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("Job{");
-    localStringBuilder.append("mType=").append(this.mType);
+    localStringBuilder.append("mTAG='").append(this.mTAG).append("', ");
+    localStringBuilder.append("mType= ").append(this.mType);
     localStringBuilder.append(", mParams=").append(this.mParams);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
-  
-  @Retention(RetentionPolicy.SOURCE)
-  public static @interface JobType {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tribe.async.async.Job
  * JD-Core Version:    0.7.0.1
  */

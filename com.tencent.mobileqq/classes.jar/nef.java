@@ -1,24 +1,37 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.OnMsgTabNodeListLoadListener;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Intent;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class nef
-  implements Runnable
+  extends MSFServlet
 {
-  public nef(MsgTabNodeListLoader paramMsgTabNodeListLoader, boolean paramBoolean) {}
+  private String[] a = { "OnlinePush.ReqPush.GameStatusPush" };
   
-  public void run()
+  public String[] getPreferSSOCommands()
   {
-    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.c.iterator();
-    while (localIterator.hasNext()) {
-      ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)localIterator.next()).a(this.jdField_a_of_type_Boolean);
-    }
+    return this.a;
   }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    neg localneg = SensorAPIJavaScript.getMsfToWebViewConnector();
+    if (localneg != null) {
+      localneg.a(paramIntent, paramFromServiceMsg);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("GamePushServlet", 2, "WebView not connect to msf");
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nef
  * JD-Core Version:    0.7.0.1
  */

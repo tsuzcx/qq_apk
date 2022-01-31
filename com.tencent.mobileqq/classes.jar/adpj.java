@@ -1,21 +1,16 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import com.tencent.mobileqq.hiboom.HiBoomTextView.OnDoubleClick;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.Comparator;
 
 public class adpj
-  extends GestureDetector.SimpleOnGestureListener
+  implements Comparator<adpf>
 {
-  public adpj(HiBoomTextView paramHiBoomTextView) {}
+  public adpj(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public int a(adpf paramadpf1, adpf paramadpf2)
   {
-    if (this.a.a != null)
-    {
-      this.a.a.a(this.a);
-      return true;
-    }
-    return super.onDoubleTap(paramMotionEvent);
+    long l = paramadpf1.a.certifiedGrade;
+    return (int)(paramadpf2.a.certifiedGrade - l);
   }
 }
 

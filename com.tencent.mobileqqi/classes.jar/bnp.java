@@ -1,49 +1,51 @@
-import android.content.Context;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.common.util.LoadedCallBack;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.troop.TroopMemberApiPlugin;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
+import java.util.ArrayList;
 
-public final class bnp
-  extends Thread
+public class bnp
+  extends Handler
 {
-  public bnp(JSONObject paramJSONObject, Context paramContext, String paramString1, String paramString2, LoadedCallBack paramLoadedCallBack) {}
+  public bnp(TroopMemberApiPlugin paramTroopMemberApiPlugin) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HtmlCheckUpdate", 2, "Begin checkUpServerThread:");
-    }
-    String str3 = "0";
-    String str1 = str3;
-    try
+    Activity localActivity = this.a.mRuntime.a();
+    AppInterface localAppInterface = this.a.mRuntime.a();
+    if ((localActivity == null) || (localAppInterface == null)) {}
+    do
     {
-      if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
-        str1 = this.jdField_a_of_type_OrgJsonJSONObject.getString("version");
-      }
-      str1 = HtmlOffline.a(this.jdField_a_of_type_AndroidContentContext, str1, this.jdField_a_of_type_JavaLangString, this.b);
-      if (str1 == null)
+      return;
+      switch (paramMessage.what)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("HtmlCheckUpdate", 2, "getUpdateConfig: null");
-        }
-        this.jdField_a_of_type_ComTencentBizCommonUtilLoadedCallBack.a("{\"r\":-2}");
-        if (QLog.isColorLevel()) {
-          QLog.i("HtmlCheckUpdate", 2, "end checkUpServerThread:");
-        }
+      default: 
+        return;
+      case 1: 
+        ThreadManager.a(new bnq(this));
         return;
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        String str2 = str3;
-        continue;
-        this.jdField_a_of_type_ComTencentBizCommonUtilLoadedCallBack.a(str2);
-      }
-    }
+    } while (!TroopMemberApiPlugin.b(this.a));
+    this.a.callJs(this.a.j, new String[] { "true" });
+    return;
+    TroopMemberApiPlugin.h = 1;
+    TroopMemberApiPlugin.q = this.a.g;
+    paramMessage = new Intent();
+    paramMessage.putExtra("finish_chat_setting", true);
+    localActivity.setResult(-1, paramMessage);
+    localActivity.finish();
+    return;
+    this.a.callJs(this.a.j, new String[] { "true" });
+    return;
+    paramMessage = (Object[])paramMessage.obj;
+    boolean bool = ((Boolean)paramMessage[0]).booleanValue();
+    paramMessage = (ArrayList)paramMessage[1];
+    ChatSettingForTroop.a(localActivity, this.a.e, bool, paramMessage);
   }
 }
 

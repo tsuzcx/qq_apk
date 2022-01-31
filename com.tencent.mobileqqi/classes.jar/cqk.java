@@ -1,59 +1,82 @@
-import QQService.TagInfo;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ToggleButton;
-import com.tencent.mobileqq.activity.EditTagActivity;
-import java.util.ArrayList;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.BaseHornListActivity;
+import com.tencent.mobileqq.activity.HornPublishActivity;
+import com.tencent.mobileqq.app.NearHornHandler;
+import com.tencent.mobileqq.app.NearHornObserver;
+import com.tencent.mobileqq.data.HornDetail;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.VipUtils;
+import java.util.Iterator;
+import java.util.List;
 
 public class cqk
-  extends BaseAdapter
+  extends NearHornObserver
 {
-  ArrayList jdField_a_of_type_JavaUtilArrayList;
+  public cqk(HornPublishActivity paramHornPublishActivity) {}
   
-  public cqk(EditTagActivity paramEditTagActivity, ArrayList paramArrayList)
+  protected void a(boolean paramBoolean, List paramList, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    this.a.jdField_a_of_type_JavaLangString = paramString;
+    if (paramBoolean)
     {
-      paramView = new ToggleButton(paramViewGroup.getContext());
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(28.0F * this.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.jdField_a_of_type_Float)));
-      paramView.setBackgroundResource(2130840277);
-      ((ToggleButton)paramView).setGravity(17);
-      ((ToggleButton)paramView).setTextSize(this.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.getResources().getInteger(2131492869));
-      ((ToggleButton)paramView).setTextColor(Color.parseColor("#777777"));
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Svip", "", "Vip_nearby", "Vip_nearby_freeHorn", 0, 0, "", "", "", "");
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.jdField_a_of_type_JavaUtilList != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.jdField_a_of_type_JavaUtilList.clear();
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          paramString = (HornDetail)paramList.next();
+          this.a.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.jdField_a_of_type_JavaUtilList.add(paramString);
+        }
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity.setResult(1);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity.finish();
     }
     for (;;)
     {
-      ((ToggleButton)paramView).setOnCheckedChangeListener(null);
-      ((ToggleButton)paramView).setChecked(this.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.a((TagInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), this.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.jdField_a_of_type_JavaUtilArrayList));
-      ((ToggleButton)paramView).setOnCheckedChangeListener(new cql(this, paramInt));
-      ((ToggleButton)paramView).setText(((TagInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).strContent);
-      ((ToggleButton)paramView).setTextOn(((TagInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).strContent);
-      ((ToggleButton)paramView).setTextOff(((TagInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).strContent);
-      return paramView;
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      return;
+      switch (paramInt)
+      {
+      default: 
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity.a(2131563060);
+        break;
+      case 210000: 
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity.a(2131563029);
+        break;
+      case 210001: 
+        HornPublishActivity.a(this.a);
+        break;
+      case 100351: 
+        if (VipUtils.a(this.a.b)) {
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity.a(2131562529);
+        } else {
+          HornPublishActivity.a(this.a);
+        }
+        break;
+      case 100353: 
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity.a(2131563027);
+        break;
+      case 100354: 
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity.a(2131563218);
+        break;
+      case 100355: 
+        paramList = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity.getResources().getString(2131561908);
+        paramString = paramString.split("=");
+        if (paramString.length > 1) {
+          paramList = paramString[1];
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity.a(paramList);
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, List paramList, Boolean paramBoolean1, Boolean paramBoolean2, int paramInt, String paramString)
+  {
+    if (paramBoolean) {
+      HornPublishActivity.b(this.a);
     }
   }
 }

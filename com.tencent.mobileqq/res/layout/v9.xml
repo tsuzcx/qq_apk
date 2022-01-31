@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#7f000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/common_alert_bg" android:layout_width="320.0dip" android:layout_height="wrap_content" android:layout_centerInParent="true"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <View android:id="@id/bif" android:background="@drawable/iy" android:layout_width="fill_parent" android:layout_height="4.0dip" android:layout_marginBottom="@dimen/mc" android:layout_alignParentTop="true" />
+        <TextView android:textSize="@dimen/aek" android:textColor="@color/fl" android:ellipsize="end" android:gravity="center" android:id="@id/dialogTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ma" android:layout_marginRight="@dimen/mb" android:layout_marginBottom="@dimen/ls" android:text="@string/pne" android:singleLine="true" android:layout_below="@id/bif" />
+        <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:layout_width="100.0dip" android:layout_height="wrap_content" android:text="Table" />
+                    <View android:background="#7fcccccc" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+                    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/ja1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Table" />
+                </LinearLayout>
+                <View android:background="#7fcccccc" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:layout_width="100.0dip" android:layout_height="wrap_content" android:text="Main Action" />
+                    <View android:background="#7fcccccc" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+                    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/elj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Main Action" />
+                </LinearLayout>
+                <View android:background="#7fcccccc" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:layout_width="100.0dip" android:layout_height="wrap_content" android:text="Sub Action" />
+                    <View android:background="#7fcccccc" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+                    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/j5x" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Sub Action" />
+                </LinearLayout>
+                <View android:background="#7fcccccc" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:layout_width="100.0dip" android:layout_height="wrap_content" android:text="Action Name" />
+                    <View android:background="#7fcccccc" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+                    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/ch" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Action Name" />
+                </LinearLayout>
+                <View android:background="#7fcccccc" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:layout_width="100.0dip" android:layout_height="wrap_content" android:text="Op Type" />
+                    <View android:background="#7fcccccc" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+                    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/fdh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Op Type" />
+                </LinearLayout>
+                <View android:background="#7fcccccc" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:layout_width="100.0dip" android:layout_height="wrap_content" android:text="Result" />
+                    <View android:background="#7fcccccc" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+                    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/i96" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Result" />
+                </LinearLayout>
+                <View android:background="#7fcccccc" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:layout_width="100.0dip" android:layout_height="wrap_content" android:text="R2" />
+                    <View android:background="#7fcccccc" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+                    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/hux" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="R2" />
+                </LinearLayout>
+                <View android:background="#7fcccccc" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:layout_width="100.0dip" android:layout_height="wrap_content" android:text="R3" />
+                    <View android:background="#7fcccccc" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+                    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/huy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="R3" />
+                </LinearLayout>
+                <View android:background="#7fcccccc" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:layout_width="100.0dip" android:layout_height="wrap_content" android:text="R4" />
+                    <View android:background="#7fcccccc" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+                    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/huz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="R4" />
+                </LinearLayout>
+                <View android:background="#7fcccccc" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:layout_width="100.0dip" android:layout_height="wrap_content" android:text="R5" />
+                    <View android:background="#7fcccccc" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+                    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/hv0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="R5" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+        <LinearLayout android:orientation="horizontal" android:id="@id/aew" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/biw">
+            <TextView android:textSize="@dimen/aei" android:textColor="@color/fl" android:gravity="center" android:id="@id/dialogLeftBtn" android:background="@drawable/common_dialog_btn_left" android:layout_width="fill_parent" android:layout_height="@dimen/ly" android:text="@string/pm8" android:singleLine="true" android:layout_weight="1.0" />
+            <View android:id="@id/aet" android:background="@color/i5" android:layout_width="@dimen/m2" android:layout_height="fill_parent" />
+            <TextView android:textSize="@dimen/aei" android:textColor="@color/fl" android:gravity="center" android:id="@id/dialogRightBtn" android:background="@drawable/common_dialog_btn_right" android:layout_width="fill_parent" android:layout_height="@dimen/ly" android:text="@string/pmj" android:singleLine="true" android:layout_weight="1.0" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -9,8 +9,8 @@ import java.util.Map;
 public final class cell_original
   extends JceStruct
 {
-  static Map cache_original_data = new HashMap();
-  public Map original_data;
+  static Map<Integer, byte[]> cache_original_data = new HashMap();
+  public Map<Integer, byte[]> original_data;
   
   static
   {
@@ -21,7 +21,7 @@ public final class cell_original
   
   public cell_original() {}
   
-  public cell_original(Map paramMap)
+  public cell_original(Map<Integer, byte[]> paramMap)
   {
     this.original_data = paramMap;
   }
@@ -40,7 +40,7 @@ public final class cell_original
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_original
  * JD-Core Version:    0.7.0.1
  */

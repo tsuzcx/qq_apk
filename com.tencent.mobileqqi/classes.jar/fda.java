@@ -1,19 +1,16 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.mobileqq.adapter.SubAccountMessageAdapter;
+import com.tencent.mobileqq.app.I18nTranslatorHandler;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLSession;
 
 public class fda
+  implements HostnameVerifier
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public DragTextView a;
-  public TextView b;
-  public TextView c;
+  public fda(I18nTranslatorHandler paramI18nTranslatorHandler) {}
   
-  public fda(SubAccountMessageAdapter paramSubAccountMessageAdapter) {}
+  public boolean verify(String paramString, SSLSession paramSSLSession)
+  {
+    return (paramString.startsWith("https://macqq.translator.qq.com")) || (paramString.startsWith("macqq.translator.qq.com"));
+  }
 }
 
 

@@ -1,21 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-
 public class aexo
-  implements DialogInterface.OnClickListener
 {
-  public aexo(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment) {}
+  public int a;
+  public String a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private aexo(aexk paramaexk, String paramString, int paramInt)
   {
-    ShortVideoCommentsView.c(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aexo
  * JD-Core Version:    0.7.0.1
  */

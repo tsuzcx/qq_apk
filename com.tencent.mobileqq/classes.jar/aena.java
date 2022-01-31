@@ -1,33 +1,59 @@
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivatePageAdapter;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aena
-  implements Runnable
+  extends alpq
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public long c;
-  public long d;
+  public aena(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void run()
+  protected void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
   {
-    try
+    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
     {
-      this.d = System.currentTimeMillis();
-      ThreadManager.post(new aenb(this), 5, null, false);
+      amfz.a(this.a.app, false, true, false, true);
+      this.a.a();
+    }
+    ActivateFriendActivity.a(this.a, paramBoolean2);
+  }
+  
+  protected void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
+    {
+      amfz.a(this.a.app, false, true, false, true);
+      this.a.a();
+    }
+    if (!this.a.isFinishing())
+    {
+      if (!paramBoolean1) {
+        break label161;
+      }
+      ActivateFriendActivity.a(this.a, paramBoolean2);
+      if (!ActivateFriendActivity.a(this.a)) {
+        break label148;
+      }
+    }
+    label148:
+    for (String str = this.a.getString(2131689603);; str = this.a.getString(2131689604))
+    {
+      str = this.a.getString(2131689606, new Object[] { str });
+      QQToast.a(this.a, 2, str, 0).b(this.a.getTitleBarHeight());
+      if (ActivateFriendActivity.a(this.a) != null)
+      {
+        ActivateFriendActivity.a(this.a).c();
+        ActivateFriendActivity.b(this.a);
+      }
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    label161:
+    QQToast.a(this.a, 1, this.a.getResources().getString(2131719884), 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aena
  * JD-Core Version:    0.7.0.1
  */

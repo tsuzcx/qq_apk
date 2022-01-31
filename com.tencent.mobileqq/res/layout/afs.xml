@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:background="#66000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/j1w" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/root_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="37.0dip" android:layout_below="@id/j1w">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <ImageView android:layout_gravity="top" android:id="@id/h03" android:background="@drawable/dys" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="125.0dip" android:layout_marginTop="13.0dip" />
+            <ImageView android:layout_gravity="top" android:id="@id/h04" android:background="@drawable/dyt" android:layout_width="fill_parent" android:layout_height="73.0dip" android:layout_marginTop="65.0dip" />
+            <View android:id="@id/h02" android:background="#ff01b3e5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="138.0dip" />
+            <ImageView android:layout_gravity="center|right|top" android:id="@id/gte" android:paddingLeft="15.0dip" android:paddingTop="26.0dip" android:paddingRight="15.0dip" android:paddingBottom="15.0dip" android:layout_width="52.0dip" android:layout_height="61.0dip" android:src="@drawable/dyv" android:contentDescription="@string/q2c" />
+            <ImageView android:layout_gravity="center|left|top" android:id="@id/gtd" android:paddingLeft="14.0dip" android:paddingTop="24.0dip" android:paddingRight="15.0dip" android:paddingBottom="15.0dip" android:visibility="gone" android:layout_width="53.0dip" android:layout_height="70.0dip" android:src="@drawable/ap5" android:contentDescription="@string/q48" />
+            <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/e3l" android:paddingLeft="15.0dip" android:paddingTop="41.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="11.0dip">
+                <com.tenpay.sdk.view.ExpandClearableEditor android:textSize="16.0sp" android:textColor="#ff000000" android:textColorHint="#ffa6a6a6" android:gravity="center_vertical" android:id="@id/brf" android:background="@drawable/dyx" android:paddingLeft="16.0dip" android:layout_width="fill_parent" android:layout_height="42.0dip" android:layout_marginTop="10.0dip" android:hint="@string/vn1" android:maxLength="15" android:inputType="number" />
+                <TextView android:textSize="14.0sp" android:textColor="#99ffffff" android:id="@id/jvf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="@string/vmw" android:includeFontPadding="false" />
+                <Button android:textSize="18.0sp" android:textColor="@color/vw" android:id="@id/cbe" android:background="@drawable/a4k" android:layout_width="fill_parent" android:layout_height="42.0dip" android:layout_marginTop="20.0dip" android:text="@string/q4y" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_horizontal" android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/e5h" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="11.0dip">
+                <RelativeLayout android:background="@drawable/dyw" android:layout_width="61.5dip" android:layout_height="61.5dip" android:layout_marginTop="15.0dip">
+                    <ImageView android:id="@id/gqy" android:layout_width="60.0dip" android:layout_height="60.0dip" android:src="@drawable/dxx" android:layout_centerInParent="true" />
+                </RelativeLayout>
+                <ScrollView android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/grv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/q2y" android:singleLine="true" />
+                        <LinearLayout android:orientation="vertical" android:id="@id/h05" android:background="@drawable/dyx" android:layout_width="fill_parent" android:layout_height="93.5dip" android:layout_marginTop="20.0dip">
+                            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="51.0dip" android:layout_weight="1.0">
+                                <com.tenpay.sdk.view.ClearableEditText android:textSize="18.0sp" android:textColor="#ff000000" android:textColorHint="#ffa6a6a6" android:gravity="center_vertical" android:id="@id/brg" android:background="@null" android:paddingLeft="10.0dip" android:layout_width="0.0dip" android:layout_height="51.0dip" android:hint="@string/q4g" android:layout_weight="1.0" android:inputType="numberDecimal" />
+                                <TextView android:textSize="18.0sp" android:textColor="#ff000000" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/q4o" />
+                            </LinearLayout>
+                            <View android:background="#ffc2d8de" android:paddingLeft="15.0dip" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginRight="-1.0dip" />
+                            <com.tenpay.sdk.view.ClearableEditText android:textSize="16.0sp" android:textColor="#ff000000" android:textColorHint="#ffa6a6a6" android:gravity="center_vertical" android:id="@id/brh" android:background="@null" android:paddingLeft="15.0dip" android:layout_width="fill_parent" android:layout_height="42.0dip" android:hint="@string/q4u" android:singleLine="true" android:maxLength="12" android:layout_weight="1.0" android:imeOptions="actionDone" />
+                        </LinearLayout>
+                        <Button android:textSize="18.0sp" android:textColor="@color/vw" android:id="@id/fj9" android:background="@drawable/a4k" android:layout_width="fill_parent" android:layout_height="42.0dip" android:layout_marginTop="15.0dip" android:text="@string/q2p" />
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+        </FrameLayout>
+        <com.tenpay.api.MyKeyboardWindow android:id="@id/je9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

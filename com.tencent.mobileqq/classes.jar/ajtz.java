@@ -1,74 +1,76 @@
-import NearbyGroup.GroupLabel;
-import android.util.SparseIntArray;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import android.util.Base64;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajtz
-  implements Runnable
 {
-  public ajtz(TroopLabelLayout paramTroopLabelLayout) {}
-  
-  public void run()
+  public static int a(int paramInt)
   {
-    int k = 0;
-    for (;;)
-    {
-      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-      {
-        if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() != 0)) {
-          break label235;
-        }
-        return;
-        GroupLabel localGroupLabel;
-        Object localObject2;
-        if (j < this.a.jdField_a_of_type_JavaUtilArrayList.size())
-        {
-          localGroupLabel = (GroupLabel)this.a.jdField_a_of_type_JavaUtilArrayList.get(j);
-          if (j == 0)
-          {
-            i = 0;
-            break label242;
-          }
-          localObject2 = (GroupLabel)this.a.jdField_a_of_type_JavaUtilArrayList.get(i);
-          if (TroopLabelLayout.jdField_a_of_type_AndroidUtilSparseIntArray.get((int)((GroupLabel)localObject2).type) <= TroopLabelLayout.jdField_a_of_type_AndroidUtilSparseIntArray.get((int)localGroupLabel.type))
-          {
-            i = j;
-            break label242;
-          }
-        }
-        else
-        {
-          localGroupLabel = (GroupLabel)this.a.jdField_a_of_type_JavaUtilArrayList.get(i);
-          i = k;
-          if (i < this.a.getChildCount())
-          {
-            localObject2 = this.a.getChildAt(i);
-            if (!(localObject2 instanceof TextView)) {
-              break label249;
-            }
-            localObject2 = (TextView)localObject2;
-            if (!((TextView)localObject2).getText().toString().equals(localGroupLabel.strWording)) {
-              break label249;
-            }
-            ((TextView)localObject2).setVisibility(8);
-            this.a.requestLayout();
-            break label249;
-          }
-          return;
-        }
-      }
-      break label242;
-      label235:
-      int j = 0;
-      int i = 0;
-      continue;
-      label242:
-      j += 1;
-      continue;
-      label249:
-      i += 1;
+    if (paramInt == 1) {
+      return 1;
     }
+    if (paramInt == 2) {
+      return 2;
+    }
+    if (paramInt == 3) {
+      return 3;
+    }
+    return 0;
+  }
+  
+  public static ajuh a(int paramInt)
+  {
+    QLog.d("AnimDrawerFactory", 2, "create drawer by type: " + paramInt);
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 1: 
+      return new ajue();
+    case 2: 
+      return new ajuu();
+    }
+    return new ajur();
+  }
+  
+  public static ajuh a(String paramString, float paramFloat1, float paramFloat2, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
+    {
+      paramString = a(Base64.decode(paramString.getBytes(), 0), paramFloat1, paramFloat2, paramInt);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("AnimDrawerFactory", 2, "subtitle base64decode exception:" + paramString.toString());
+    }
+    return null;
+  }
+  
+  public static ajuh a(byte[] paramArrayOfByte, float paramFloat1, float paramFloat2, int paramInt)
+  {
+    Object localObject;
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 4)) {
+      localObject = null;
+    }
+    ajuh localajuh;
+    do
+    {
+      return localObject;
+      localajuh = a(aezw.a(paramArrayOfByte, 0));
+      localObject = localajuh;
+    } while (localajuh == null);
+    localajuh.a(BaseApplicationImpl.getApplication(), paramFloat1, paramFloat2, paramInt, paramArrayOfByte, 4, paramArrayOfByte.length - 4, true);
+    return localajuh;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt > 0) && (paramInt < 4);
   }
 }
 

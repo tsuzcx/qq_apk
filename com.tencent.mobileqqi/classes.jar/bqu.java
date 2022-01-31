@@ -1,29 +1,18 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.assistant.PubAccountAssistantManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.SharedPreferencesHandler;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.Set;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
 
 public class bqu
   implements Runnable
 {
-  public bqu(PubAccountAssistantManager paramPubAccountAssistantManager, QQAppInterface paramQQAppInterface) {}
+  public bqu(LiteTransferWrapper paramLiteTransferWrapper, long paramLong1, long paramLong2, int paramInt1, int paramInt2, short paramShort) {}
   
   public void run()
   {
-    synchronized (PubAccountAssistantManager.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantManager))
-    {
-      Object[] arrayOfObject = PubAccountAssistantManager.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantManager).toArray();
-      SharedPreferencesHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit(), "pubaccount_assistant_new_unread_list", arrayOfObject).commit();
-      return;
-    }
+    LiteTransferWrapper.access$000(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Short);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bqu
  * JD-Core Version:    0.7.0.1
  */

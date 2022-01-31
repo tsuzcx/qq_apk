@@ -1,24 +1,24 @@
-import com.tencent.mobileqq.extendfriend.ExtendFriendObserver;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class achy
-  extends ExtendFriendObserver
+  implements DialogInterface.OnClickListener
 {
-  public achy(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
+  public achy(BaseChatPie paramBaseChatPie, boolean paramBoolean) {}
   
-  protected void a(boolean paramBoolean1, List paramList, boolean paramBoolean2, long paramLong, boolean paramBoolean3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      ExtendFriendGroupFragment.a(this.a, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramList);
+    default: 
+      return;
+    case 0: 
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
       return;
     }
-    catch (Exception paramList)
-    {
-      QLog.e("ExtendFriendGroupFragment", 1, "mExtendFriendObserver exception", paramList);
-    }
+    BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_Boolean);
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
   }
 }
 

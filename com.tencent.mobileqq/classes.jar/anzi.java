@@ -1,22 +1,24 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.base.DoodleStrategy;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
 public class anzi
-  implements DoodleStrategy
+  implements View.OnClickListener
 {
-  public anzi(DoodleLayout paramDoodleLayout) {}
+  public anzi(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void a(List paramList, DoodleView paramDoodleView)
+  public void onClick(View paramView)
   {
-    paramList.add(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer);
-    paramList.add(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerInteractPasterLayer);
+    paramView = (String)paramView.getTag();
+    if (!TextUtils.isEmpty(paramView)) {
+      this.a.a(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anzi
  * JD-Core Version:    0.7.0.1
  */

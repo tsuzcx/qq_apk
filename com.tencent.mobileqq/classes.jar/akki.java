@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vashealth.SportManager;
-import com.tencent.mobileqq.vashealth.StepAlarmReceiver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class akki
-  implements Runnable
+class akki
+  implements DialogInterface.OnClickListener
 {
-  public akki(StepAlarmReceiver paramStepAlarmReceiver) {}
+  akki(akkd paramakkd) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("NewFriendMoreSysMsgAdapter", 2, "cancel click");
     }
-    ((SportManager)this.a.a.getManager(259)).b();
+    azqs.b(this.a.a, "dc00898", "", "", "0X800A328", "0X800A328", 1, 0, "", "", "", "");
   }
 }
 

@@ -15,7 +15,7 @@ import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.activity.photo.AlbumThumbManager;
 import com.tencent.mobileqq.app.AppConstants;
-import gsi;
+import gob;
 import java.io.File;
 import java.io.OutputStream;
 
@@ -127,7 +127,7 @@ public class VideoThumbDownloader
   
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    return AlbumThumbManager.a(BaseApplicationImpl.getContext()).a(paramDownloadParams.url, new gsi(this));
+    return AlbumThumbManager.a(BaseApplicationImpl.getContext()).a(paramDownloadParams.url, new gob(this));
   }
 }
 

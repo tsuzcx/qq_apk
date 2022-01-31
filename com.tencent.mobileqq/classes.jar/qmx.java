@@ -1,20 +1,15 @@
-import android.widget.TextView;
-import com.tencent.gdtad.views.GdtUIUtils;
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
-
 public class qmx
-  implements Runnable
 {
-  public qmx(GdtVideoCommonView paramGdtVideoCommonView) {}
-  
-  public void run()
-  {
-    GdtVideoCommonView.a(this.a).setText(GdtUIUtils.a(GdtVideoCommonView.a(this.a)));
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qmx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,24 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
 public class rgd
-  implements View.OnClickListener
+  extends oxe
 {
-  public rgd(AccountManageActivity paramAccountManageActivity) {}
+  private rgd(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void onClick(View paramView)
+  public void j()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Switch_Account", 2, "add account");
-    }
-    if (!PhoneNumLoginImpl.a().a(this.a.app, this.a)) {
-      return;
-    }
-    if ((this.a.a != null) && (this.a.a.size() >= 8))
+    if ((this.a.getActivity() instanceof VideoFeedsPlayActivity))
     {
-      QQToast.a(this.a, 2131433266, 0).a();
-      return;
+      ((VideoFeedsPlayActivity)this.a.getActivity()).e();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
-    AccountManageActivity.a(this.a, SubAccountControll.a(this.a.app));
-    paramView = new Intent();
-    paramView.setPackage(this.a.getPackageName());
-    paramView.setClass(this.a, AddAccountActivity.class);
-    this.a.startActivityForResult(paramView, 1000);
-    this.a.overridePendingTransition(2131034134, 2131034131);
-    SubAccountAssistantForward.c(this.a.app, this.a);
-    ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_add", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rgd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aiux;
-import aiuy;
-import aiva;
-import aivc;
-import aivd;
+import altm;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
@@ -12,11 +8,13 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
+import bbgp;
+import bbgq;
+import bbgr;
+import bdgc;
 import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.XListView;
@@ -27,29 +25,30 @@ import java.util.Map;
 public class TroopAdminList
   extends IphoneTitleBarActivity
 {
+  altm jdField_a_of_type_Altm = new bbgp(this);
   public View.OnClickListener a;
   protected LinearLayout a;
-  public FriendListHandler a;
-  public FriendListObserver a;
-  public TroopAdminList.AdminListAdapter a;
-  public XListView a;
+  bbgr jdField_a_of_type_Bbgr;
+  protected FriendListHandler a;
+  protected XListView a;
   protected final String a;
-  public List a;
-  public String[] a;
-  protected String b;
+  public List<Map<String, String>> a;
+  protected String[] a;
+  public String b;
+  public String c;
+  public String d;
   
   public TroopAdminList()
   {
     this.jdField_a_of_type_JavaLangString = "TroopAdminList";
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new aiux(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aivd(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bbgq(this);
   }
   
   protected void a()
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    ThreadManager.post(new aiuy(this), 8, null, true);
+    ThreadManager.post(new TroopAdminList.2(this), 8, null, true);
   }
   
   protected boolean a()
@@ -78,13 +77,15 @@ public class TroopAdminList
         i += 1;
       }
     }
+    this.c = getIntent().getStringExtra("troop_uin");
+    this.d = getIntent().getStringExtra("troop_code");
     return true;
   }
   
   protected void b()
   {
-    View localView = View.inflate(this, 2130969849, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localView.findViewById(2131363733));
+    View localView = View.inflate(this, 2131560394, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localView.findViewById(2131364645));
     this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this);
@@ -92,14 +93,14 @@ public class TroopAdminList
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
     setContentView(localView);
-    setTitle(getString(2131433113));
+    setTitle(getString(2131694196));
   }
   
   public void c()
   {
     if (Looper.getMainLooper().getThread() == Thread.currentThread())
     {
-      ThreadManager.post(new aiva(this), 8, null, true);
+      ThreadManager.post(new TroopAdminList.3(this), 8, null, true);
       return;
     }
     int j = this.jdField_a_of_type_JavaUtilList.size();
@@ -107,10 +108,10 @@ public class TroopAdminList
     while (i < j)
     {
       String str = (String)((Map)this.jdField_a_of_type_JavaUtilList.get(i)).get("uin");
-      ((Map)this.jdField_a_of_type_JavaUtilList.get(i)).put("nick", ContactUtils.l(this.app, str));
+      ((Map)this.jdField_a_of_type_JavaUtilList.get(i)).put("nick", bdgc.j(this.app, str));
       i += 1;
     }
-    runOnUiThread(new aivc(this));
+    runOnUiThread(new TroopAdminList.4(this));
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -131,15 +132,15 @@ public class TroopAdminList
     }
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    removeObserver(this.jdField_a_of_type_Altm);
     super.doOnDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAdminList
  * JD-Core Version:    0.7.0.1
  */

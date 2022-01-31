@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
-import com.tencent.mobileqq.utils.DESUtil;
+import android.support.annotation.NonNull;
+import org.json.JSONObject;
 
-public class abwy
-  implements Runnable
+public abstract class abwy
 {
-  public abwy(HotChatFlashPicActivity paramHotChatFlashPicActivity, String paramString) {}
+  protected abwx a;
   
-  public void run()
+  protected void a() {}
+  
+  public final void a(abwx paramabwx)
   {
-    DESUtil.a(this.jdField_a_of_type_JavaLangString, HotChatFlashPicActivity.c(this.jdField_a_of_type_ComTencentMobileqqDatingHotChatFlashPicActivity));
+    this.a = paramabwx;
+    a();
   }
+  
+  public abstract boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull abwu paramabwu);
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwy
  * JD-Core Version:    0.7.0.1
  */

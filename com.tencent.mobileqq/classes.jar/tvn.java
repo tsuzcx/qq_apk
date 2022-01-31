@@ -1,42 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.activity.ThemeNoviceGuideActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class tvn
-  extends Handler
+class tvn
+  implements DialogInterface.OnClickListener
 {
-  public tvn(ThemeNoviceGuideActivity paramThemeNoviceGuideActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  tvn(tvl paramtvl) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    paramMessage = this.a.findViewById(2131375254);
-    if (paramMessage != null) {}
-    try
-    {
-      paramMessage.setBackgroundResource(2130846225);
-      ReportController.b(this.a.app, "CliOper", "", this.a.app.getCurrentAccountUin(), "theme_mall", "theme_popup", 0, 0, "", "", "", "");
-      return;
-    }
-    catch (OutOfMemoryError paramMessage)
-    {
-      for (;;)
-      {
-        QLog.e("ThemeNoviceGuideActivity", 1, "handleMessage oom e = " + paramMessage);
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tvn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.qphone.base.util.QLog;
-
-class albm
-  implements DialogInterface.OnClickListener
+public abstract interface albm
 {
-  albm(albl paramalbl) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramInt == 1)
-    {
-      this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.a.cancel();
-      this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.finish();
-      return;
-    }
-    try
-    {
-      ForwardSdkShareOption.a(this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity, true, "action_game_bind_group", Long.valueOf(this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.c).longValue(), -1, this.a.jdField_a_of_type_JavaLangString);
-      this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.a.cancel();
-      BindGroupConfirmActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity, -1);
-      BindGroupConfirmActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        QLog.e("BindGroupConfirmActivity", 1, "showAlertDlg error = " + paramDialogInterface);
-      }
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     albm
  * JD-Core Version:    0.7.0.1
  */

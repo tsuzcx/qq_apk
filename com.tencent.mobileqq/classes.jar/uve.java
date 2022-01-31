@@ -1,26 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ArkFlashChatItemBubbleBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.flashchat.FlashChatManager;
-
 public class uve
-  implements View.OnClickListener
+  extends uli
 {
-  public uve(ArkFlashChatItemBubbleBuilder paramArkFlashChatItemBubbleBuilder) {}
-  
-  public void onClick(View paramView)
-  {
-    MessageRecord localMessageRecord = (MessageRecord)paramView.getTag();
-    if (localMessageRecord != null) {
-      ((FlashChatManager)this.a.a.getManager(216)).a(paramView.getContext(), localMessageRecord);
-    }
-  }
+  public boolean a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uve
  * JD-Core Version:    0.7.0.1
  */

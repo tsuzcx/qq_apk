@@ -1,81 +1,50 @@
-import android.app.Activity;
-import com.tencent.common.galleryactivity.AbstractAnimationManager;
-import com.tencent.common.galleryactivity.AbstractGalleryPageView;
-import com.tencent.common.galleryactivity.AbstractGalleryScene;
-import com.tencent.common.galleryactivity.AbstractProgressView;
-import com.tencent.common.galleryactivity.AnimationLister;
-import com.tencent.common.galleryactivity.GalleryManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AuthDevConfirmPhoneNoActivity;
+import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.equipmentlock.EquipLockWebEntrance;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Gallery;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
 
 public class bvw
-  implements AnimationLister
+  implements DialogInterface.OnClickListener
 {
-  public bvw(AbstractGalleryScene paramAbstractGalleryScene) {}
+  public bvw(AuthDevOpenUgActivity paramAuthDevOpenUgActivity) {}
   
-  public void b()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("GalleryComponent", 2, "gallery onEnterAnimationEnd");
+      QLog.d("Q.devlock.AuthDevOpenUgActivity", 2, "On Click Right Button! ");
     }
-    if (this.a.jdField_a_of_type_ComTencentWidgetGallery.getVisibility() != 0) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
-    }
-    this.a.b();
-    if ((this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView != null) && (!this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.a())) {
-      this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.a();
-    }
-  }
-  
-  public void c()
-  {
-    if (this.a.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a().b) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
-    }
-    this.a.c();
-    if ((this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView != null) && (this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.a())) {
-      this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.b();
-    }
-  }
-  
-  public void d()
-  {
-    if (this.a.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a().b) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
-    }
-    if (this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryPageView != null) {
-      this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryPageView.a(4);
-    }
-    if ((this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView != null) && (this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.a())) {
-      this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.b();
-    }
-    this.a.d();
-    this.a.jdField_a_of_type_ComTencentWidgetGallery.e();
-  }
-  
-  public void e()
-  {
-    this.a.e();
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    try
     {
-      localStringBuilder = new StringBuilder().append("gallery onEnterAnimationEnd ");
-      if (this.a.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a() != this.a) {
-        break label87;
+      ReportController.b(null, "P_CliOper", "Safe_DeviceLock", this.a.b.a(), "UserBehavior", "Manually", 0, 5, "", "", "", "");
+      label46:
+      if ((AuthDevOpenUgActivity.a(this.a) != null) && (!TextUtils.isEmpty(AuthDevOpenUgActivity.a(this.a).Mobile)))
+      {
+        paramDialogInterface = new Intent(this.a, AuthDevConfirmPhoneNoActivity.class);
+        paramDialogInterface.putExtra("ParaTextUp", AuthDevOpenUgActivity.a(this.a));
+        paramDialogInterface.putExtra("ParaTextDown", AuthDevOpenUgActivity.b(this.a));
+        paramDialogInterface.putExtra("PhoneNO", AuthDevOpenUgActivity.a(this.a).Mobile);
+        paramDialogInterface.putExtra("mainaccount", AuthDevOpenUgActivity.c(this.a));
+        paramDialogInterface.putExtra("uin", AuthDevOpenUgActivity.d(this.a));
+        paramDialogInterface.putExtra("from_where", AuthDevOpenUgActivity.e(this.a));
+        paramDialogInterface.putExtra("DevlockInfo", AuthDevOpenUgActivity.a(this.a));
+        this.a.startActivityForResult(paramDialogInterface, 1001);
+        this.a.overridePendingTransition(0, 2130968598);
+        return;
       }
-    }
-    label87:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("GalleryComponent", 2, bool);
-      if (this.a.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a() != this.a) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidAppActivity.finish();
+      EquipLockWebEntrance.a(this.a, this.a.b, 1003, null);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
-    this.a.k();
+    catch (Exception paramDialogInterface)
+    {
+      break label46;
+    }
   }
 }
 

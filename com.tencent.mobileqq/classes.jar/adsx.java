@@ -1,23 +1,30 @@
-import com.tencent.mobileqq.imaxad.ImaxAdUtil;
-import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
 public class adsx
-  implements TVK_SDKMgr.InstallListener
+  extends ampt
 {
-  public adsx(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager) {}
-  
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public adsx(QQSettingMe paramQQSettingMe, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    ImaxAdUtil.b("installSDK onInstalledFailed arg0=" + paramInt);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void onInstalledSuccessed()
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    ImaxAdUtil.b("installSDK onInstalledSuccessed");
-    ImaxAdVideoPreloadManager.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
+    }
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      paramInt = (int)(paramSosoLbsInfo.a.a * 1000000.0D);
+      int i = (int)(paramSosoLbsInfo.a.b * 1000000.0D);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "onLocationFinish latitude:" + paramInt + ",longtitude:" + i);
+      }
+      akgw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, i, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    }
   }
 }
 

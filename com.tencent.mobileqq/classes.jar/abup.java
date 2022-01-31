@@ -1,38 +1,37 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class abup
-  implements Runnable
+public class abup
 {
-  abup(abul paramabul, QQAppInterface paramQQAppInterface) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void run()
+  public abup(abun paramabun) {}
+  
+  public boolean a(JSONObject paramJSONObject)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("MessageForNearbyMarketGrayTips", 4, "0X80052C4");
-    }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80052C4", "0X80052C4", 0, 0, abul.a(this.jdField_a_of_type_Abul).frienduin, "", "", "");
-    QQAppInterface localQQAppInterface;
-    if ((abul.a(this.jdField_a_of_type_Abul).AioType == 1) || (abul.a(this.jdField_a_of_type_Abul).AioType == 3))
+    try
     {
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if (abul.a(this.jdField_a_of_type_Abul).AioType != 0) {
-        break label122;
-      }
+      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("hookpoint_type"));
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("hookpoint_lib_name").trim();
+      this.b = paramJSONObject.getString("hookpoint_func_name").trim();
+      return true;
     }
-    label122:
-    for (String str = "0";; str = "1")
+    catch (Exception paramJSONObject)
     {
-      ReportController.b(localQQAppInterface, "dc00899", "grp_lbs", "", "tmp_grey", "clk_blue", 0, 0, str, "", "", "");
-      return;
+      abui.a("KingKongNativePatch", "Parse HookPoint error!");
     }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abup
  * JD-Core Version:    0.7.0.1
  */

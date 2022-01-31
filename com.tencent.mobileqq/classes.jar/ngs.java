@@ -1,37 +1,83 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.job.AddPollViewJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.AssertUtils;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class ngs
-  extends AddPollViewJob
+  implements BusinessObserver
 {
-  public ngs(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem, ShareSinaData paramShareSinaData)
-  {
-    super(paramStoryVideoItem);
-  }
+  public ngs(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
-  public boolean b()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    String str = (String)a("result");
-    AssertUtils.a(str);
-    AssertUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d == null)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d = "";
-      SLog.c(this.b, "imageLocalPath is null", new Throwable());
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "success:" + String.valueOf(paramBoolean));
     }
-    a("DownloadPic2FileJob_iiu", str);
-    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d);
-    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.a));
-    return true;
+    if (!paramBoolean) {
+      if (!EqqAccountDetailActivity.a(this.a)) {
+        this.a.d(2131695729);
+      }
+    }
+    for (;;)
+    {
+      EqqAccountDetailActivity.a(this.a);
+      if (EqqAccountDetailActivity.b(this.a) == 0) {
+        EqqAccountDetailActivity.a(this.a);
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("crmtest", 4, "receive sendCrmDetailInfoRequest, ts=" + System.currentTimeMillis());
+      }
+      return;
+      if (paramBoolean) {}
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
+          localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
+          if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
+          {
+            if ((this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail == null) || ((localGetEqqAccountDetailInfoResponse.seqno.has()) && (localGetEqqAccountDetailInfoResponse.seqno.get() != this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.seqno)))
+            {
+              this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetEqqAccountDetailInfoResponse = localGetEqqAccountDetailInfoResponse;
+              paramBundle = new EqqDetail(this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetEqqAccountDetailInfoResponse);
+              if ((EqqAccountDetailActivity.b(this.a)) && (paramBundle.followType == 1))
+              {
+                this.a.a(paramBundle, false);
+                continue;
+              }
+              this.a.a(paramBundle, true);
+              continue;
+            }
+            if ((!EqqAccountDetailActivity.c(this.a)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.followType != 1)) {
+              continue;
+            }
+            this.a.f();
+            continue;
+          }
+          this.a.d(2131695729);
+          continue;
+        }
+        if (EqqAccountDetailActivity.d(this.a)) {
+          continue;
+        }
+        this.a.d(2131695729);
+      }
+      catch (Exception paramBundle) {}
+      if (!EqqAccountDetailActivity.e(this.a)) {
+        this.a.d(2131695729);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ngs
  * JD-Core Version:    0.7.0.1
  */

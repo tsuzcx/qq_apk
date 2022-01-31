@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.DiscussionListInnerFrame;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
 public class epv
-  implements DialogInterface.OnClickListener
 {
-  public epv(DialogBaseActivity paramDialogBaseActivity) {}
+  public ImageView a;
+  public TextView a;
+  public DiscussionInfo a;
+  public TextView b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.finish();
-  }
+  private epv(DiscussionListInnerFrame paramDiscussionListInnerFrame) {}
 }
 
 

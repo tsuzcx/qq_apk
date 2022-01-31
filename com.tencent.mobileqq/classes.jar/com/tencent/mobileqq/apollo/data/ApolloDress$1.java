@@ -2,10 +2,10 @@ package com.tencent.mobileqq.apollo.data;
 
 import java.util.HashMap;
 
-final class ApolloDress$1
-  extends HashMap
+public final class ApolloDress$1
+  extends HashMap<String, Integer>
 {
-  ApolloDress$1()
+  public ApolloDress$1()
   {
     put("TopSuit", Integer.valueOf(0));
     put("BottomSuit", Integer.valueOf(1));
@@ -18,7 +18,7 @@ final class ApolloDress$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.data.ApolloDress.1
  * JD-Core Version:    0.7.0.1
  */

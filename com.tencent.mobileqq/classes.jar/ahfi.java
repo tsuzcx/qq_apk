@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.receipt.ReceiptMsgManager;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ahfi
-  implements Runnable
+class ahfi
+  implements View.OnClickListener
 {
-  public ahfi(ReceiptMsgManager paramReceiptMsgManager, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
+  ahfi(ahfh paramahfh, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ReceiptMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    if (this.jdField_a_of_type_Ahfh.a != null) {
+      this.jdField_a_of_type_Ahfh.a.a(paramView, this.jdField_a_of_type_Int);
+    }
   }
 }
 

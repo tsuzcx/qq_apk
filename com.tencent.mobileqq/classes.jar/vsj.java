@@ -1,41 +1,88 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class vsj
-  extends BizTroopObserver
+  extends vsi
 {
-  public vsj(DiscussChatPie paramDiscussChatPie) {}
+  protected Map<String, vsi> a = new HashMap();
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
+  public vsj(@NonNull ViewGroup paramViewGroup)
   {
-    if (paramBoolean)
-    {
-      if ((this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isResume())) {
-        DiscussChatPie.a(this.a);
-      }
-      do
-      {
-        do
-        {
-          return;
-        } while (paramBoolean1.booleanValue());
-        paramString1 = BaseActivity.sTopActivity;
-      } while (paramString1 == null);
-      DialogUtil.a(paramString1, 230, paramString1.getString(2131433746), null, null, paramString1.getString(2131435269), new vsk(this, paramString1), null).show();
-      return;
+    super(paramViewGroup);
+  }
+  
+  protected View a(ViewGroup paramViewGroup)
+  {
+    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561598, paramViewGroup, false);
+  }
+  
+  public void a(int paramInt, vpn paramvpn, @NonNull ArrayList<vtt> paramArrayList)
+  {
+    super.a(paramInt, paramvpn, paramArrayList);
+    Iterator localIterator = this.a.values().iterator();
+    while (localIterator.hasNext()) {
+      ((vsi)localIterator.next()).a(paramInt, paramvpn, paramArrayList);
     }
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, paramInt, 0).b(this.a.a());
+  }
+  
+  public void a(@NonNull vsi paramvsi)
+  {
+    this.a.put(paramvsi.getClass().getName(), paramvsi);
+  }
+  
+  public void a(vsj paramvsj)
+  {
+    super.a(paramvsj);
+    paramvsj = this.a.values().iterator();
+    while (paramvsj.hasNext()) {
+      ((vsi)paramvsj.next()).a(this);
+    }
+  }
+  
+  public void a(vth paramvth)
+  {
+    super.a(paramvth);
+    Iterator localIterator = this.a.values().iterator();
+    while (localIterator.hasNext()) {
+      ((vsi)localIterator.next()).a(paramvth);
+    }
+  }
+  
+  @Nullable
+  public vsi b(Class<? extends vsi> paramClass)
+  {
+    return (vsi)this.a.get(paramClass.getName());
+  }
+  
+  protected void b()
+  {
+    super.b();
+    Iterator localIterator = this.a.values().iterator();
+    while (localIterator.hasNext()) {
+      ((vsi)localIterator.next()).b();
+    }
+  }
+  
+  public void c()
+  {
+    super.c();
+    Iterator localIterator = this.a.values().iterator();
+    while (localIterator.hasNext()) {
+      ((vsi)localIterator.next()).c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vsj
  * JD-Core Version:    0.7.0.1
  */

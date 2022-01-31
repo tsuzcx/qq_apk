@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.activity.ForwardOperations;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.struct.LebaViewItem;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
-class cso
+public class cso
   implements Runnable
 {
-  cso(csm paramcsm, HashMap paramHashMap) {}
+  public cso(Leba paramLeba, LebaViewItem paramLebaViewItem) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Csm.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(this.jdField_a_of_type_Csm.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Csm.jdField_a_of_type_Int, this.jdField_a_of_type_Csm.b, this.jdField_a_of_type_JavaUtilHashMap);
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.a().createEntityManager();
+    ResourcePluginInfo.persistOrReplace(localEntityManager, this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.a);
+    localEntityManager.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     cso
  * JD-Core Version:    0.7.0.1
  */

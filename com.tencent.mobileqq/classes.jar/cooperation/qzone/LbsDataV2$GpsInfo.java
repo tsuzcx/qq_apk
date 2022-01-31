@@ -1,14 +1,14 @@
 package cooperation.qzone;
 
-import amrj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bjdc;
 
 public class LbsDataV2$GpsInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amrj();
+  public static final Parcelable.Creator<GpsInfo> CREATOR = new bjdc();
   public int accuracy;
   public int alt = -10000000;
   public int gpsType = 0;
@@ -69,7 +69,7 @@ public class LbsDataV2$GpsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.LbsDataV2.GpsInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
-import com.tencent.component.network.downloader.DownloadRequest;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import cooperation.qzone.QzonePreDownloadManager;
+import java.io.File;
 
-public class amtc
+public final class amtc
 {
-  public DownloadRequest a;
-  public Downloader.DownloadListener a;
-  public String a;
-  public boolean a;
-  public Downloader.DownloadListener b;
-  public String b;
-  public boolean b;
+  public static String a = "_model.zip";
   
-  public amtc(QzonePreDownloadManager paramQzonePreDownloadManager) {}
+  public static String a()
+  {
+    return andq.a() + "ar_cloud_marker_model/" + 8 + File.separator;
+  }
+  
+  public static String b()
+  {
+    return andq.a() + "ar_cloud_transfer/";
+  }
 }
 
 

@@ -1,61 +1,20 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.language.SelectLanguageActivity;
 
 public class ehk
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public ehk(AIOImageListScene paramAIOImageListScene, ActionSheet paramActionSheet) {}
+  public ehk(SelectLanguageActivity paramSelectLanguageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramView != null)
-    {
-      paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramInt);
-      if (paramView == null) {
-        return;
-      }
-      if (!TextUtils.isEmpty(paramView))
-      {
-        if (!paramView.equals(AIOImageListScene.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).getResources().getString(2131561871))) {
-          break label81;
-        }
-        AIOImageListScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene);
-        AIOImageListScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene, "Multi_Forward_Contacts", this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a.size());
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      label81:
-      if (paramView.equals(AIOImageListScene.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).getResources().getString(2131562778)))
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a.size() > 20) {
-          QQToast.a(AIOImageListScene.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene), 2131563256, 0).a();
-        } else {
-          AIOImageListScene.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene);
-        }
-      }
-      else if (paramView.equals(AIOImageListScene.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).getResources().getString(2131562914))) {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a.size() > 20) {
-          QQToast.a(AIOImageListScene.f(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene), 2131563256, 0).a();
-        } else {
-          AIOImageListScene.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene);
-        }
-      }
-    }
+    SelectLanguageActivity.a(this.a, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ehk
  * JD-Core Version:    0.7.0.1
  */

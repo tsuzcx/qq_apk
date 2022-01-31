@@ -1,39 +1,78 @@
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
-import com.tencent.util.MqqWeakReferenceHandler;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
+import com.tencent.widget.PatchedButton;
+import com.tencent.widget.XEditTextEx;
+import com.tencent.widget.XPanelContainer;
+import java.util.HashMap;
 
-public class agri
-  extends AnimateUtils.AnimationAdapter
+class agri
+  implements View.OnClickListener
 {
-  public agri(ProfileHeaderView paramProfileHeaderView, LinearLayout paramLinearLayout, View paramView) {}
+  agri(agqq paramagqq) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "ProfileHeaderView updateTips sideOutAnim onAnimationEnd");
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
-    paramAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131034358);
-    paramAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.c < 4)
+    if (this.a.jdField_a_of_type_Bemq == null) {}
+    HashMap localHashMap;
+    label229:
+    do
     {
-      paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView;
-      paramAnimation.c += 1;
-      paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(ProfileHeaderView.d);
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendMessageDelayed(paramAnimation, 4000L);
+      Object localObject;
+      do
+      {
+        do
+        {
+          return;
+          localObject = this.a.jdField_a_of_type_Bemq.a();
+        } while (localObject == null);
+        localHashMap = ((bemp)localObject).b();
+        localObject = ((bemp)localObject).a();
+        if (paramView != this.a.p) {
+          break label229;
+        }
+        if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getVisibility() == 0) {
+          break;
+        }
+        if (localHashMap != null) {
+          this.a.p.setImageDrawable((Drawable)localHashMap.get("audioIcon"));
+        }
+        this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(0);
+        this.a.jdField_a_of_type_ComTencentWidgetPatchedButton.setVisibility(0);
+        this.a.l.setVisibility(4);
+        agqq.a(this.a).a(25);
+      } while ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel == null) || (localObject == null));
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.setBackgroundColor(((Integer)((HashMap)localObject).get("quickWordBgColor")).intValue());
+      return;
+      if (localHashMap != null) {
+        this.a.p.setImageDrawable((Drawable)localHashMap.get("textIcon"));
+      }
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(4);
+      this.a.jdField_a_of_type_ComTencentWidgetPatchedButton.setVisibility(4);
+      this.a.l.setVisibility(0);
+      this.a.aM();
+      return;
+    } while (paramView != this.a.q);
+    if (agqq.b(this.a).a() != 3)
+    {
+      this.a.a(Integer.valueOf(3));
+      if (localHashMap != null) {
+        this.a.p.setImageDrawable((Drawable)localHashMap.get("audioIcon"));
+      }
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentWidgetPatchedButton.setVisibility(0);
+      this.a.l.setVisibility(4);
+      return;
     }
+    this.a.aM();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agri
  * JD-Core Version:    0.7.0.1
  */

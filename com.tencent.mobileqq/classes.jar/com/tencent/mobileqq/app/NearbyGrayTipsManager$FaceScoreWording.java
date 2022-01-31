@@ -6,18 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import mqq.os.MqqHandler;
-import zht;
 
 public class NearbyGrayTipsManager$FaceScoreWording
   implements Serializable
 {
   private static final long serialVersionUID = 1L;
   public long createTime;
-  public List femaleWordingList;
+  public List<String> femaleWordingList;
   public int id;
   public int lastIndex;
   public Object lock = new Object();
-  public List maleWordingList;
+  public List<String> maleWordingList;
   
   public NearbyGrayTipsManager$FaceScoreWording(int paramInt)
   {
@@ -26,7 +25,7 @@ public class NearbyGrayTipsManager$FaceScoreWording
     this.femaleWordingList = new ArrayList(5);
   }
   
-  public NearbyGrayTipsManager$FaceScoreWording(int paramInt1, long paramLong, List paramList1, List paramList2, int paramInt2)
+  public NearbyGrayTipsManager$FaceScoreWording(int paramInt1, long paramLong, List<String> paramList1, List<String> paramList2, int paramInt2)
   {
     this.id = paramInt1;
     this.createTime = paramLong;
@@ -70,7 +69,7 @@ public class NearbyGrayTipsManager$FaceScoreWording
     }
   }
   
-  public void saveWording(long paramLong, List paramList1, List paramList2, boolean paramBoolean)
+  public void saveWording(long paramLong, List<String> paramList1, List<String> paramList2, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q..troop.faceScore", 2, "saveWording time= " + paramLong + "  maleWordingList=" + paramList1 + "  femaleWordingList=" + paramList2 + "  needSaveToFile=" + paramBoolean);
@@ -105,7 +104,7 @@ public class NearbyGrayTipsManager$FaceScoreWording
         if ((!paramBoolean) || (localFaceScoreWording == null)) {
           continue;
         }
-        ThreadManager.getFileThreadHandler().post(new zht(this, localFaceScoreWording));
+        ThreadManager.getFileThreadHandler().post(new NearbyGrayTipsManager.FaceScoreWording.1(this, localFaceScoreWording));
         return;
       }
     }

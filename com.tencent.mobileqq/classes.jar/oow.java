@@ -1,56 +1,84 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
-import java.util.ArrayList;
+import android.graphics.Color;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeCommentTextView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
 
 public class oow
-  extends ExecuteBinResponseCallback
+  extends TextBase
 {
-  public oow(FFmpeg paramFFmpeg, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback) {}
+  private static final int jdField_a_of_type_Int = Color.parseColor("#262626");
+  private NativeCommentTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView;
+  private final int b = 5;
+  private final int c = Utils.dp2px(16.0D);
   
-  public void a()
+  public oow(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.a();
+    super(paramVafContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView = new NativeCommentTextView(paramVafContext.getContext());
   }
   
-  public void a(String paramString)
+  public void a(omg paramomg, View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.a(paramString);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setModel(paramomg, paramView);
   }
   
-  public void a(boolean paramBoolean)
+  public void a(omg paramomg, View paramView, int paramInt)
   {
-    FFmpeg localFFmpeg;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setModel(paramomg, paramView, paramInt);
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setTextSize(0, this.c);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setLineSpacing(Utils.rp2px(5.0D), 1.0F);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setIncludeFontPadding(false);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setTextColor(jdField_a_of_type_Int);
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
     {
-      localFFmpeg = this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg;
-      if (!paramBoolean) {
-        break label44;
-      }
     }
-    label44:
-    for (int i = 1;; i = 0)
+    do
     {
-      localFFmpeg.jdField_a_of_type_Int = i;
-      FFmpeg.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg = null;
-      this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.a(paramBoolean);
-      return;
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.b(paramString);
-  }
-  
-  public void c(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.c(paramString);
+      return super.setAttribute(paramInt, paramObject);
+    } while (!(paramObject instanceof omt));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setCommentModel((omt)paramObject);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oow
  * JD-Core Version:    0.7.0.1
  */

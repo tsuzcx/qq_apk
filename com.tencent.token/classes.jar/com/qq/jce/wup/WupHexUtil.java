@@ -1,6 +1,5 @@
 package com.qq.jce.wup;
 
-import java.io.PrintStream;
 import java.nio.ByteBuffer;
 
 public class WupHexUtil
@@ -72,40 +71,19 @@ public class WupHexUtil
   
   public static byte[] hexStr2Bytes(String paramString)
   {
-    Object localObject;
-    if ((paramString == null) || (paramString.equals("")))
-    {
-      localObject = emptybytes;
-      return localObject;
+    if ((paramString == null) || (paramString.equals(""))) {
+      return emptybytes;
     }
     byte[] arrayOfByte = new byte[paramString.length() / 2];
     int i = 0;
-    for (;;)
+    while (i < arrayOfByte.length)
     {
-      localObject = arrayOfByte;
-      if (i >= arrayOfByte.length) {
-        break;
-      }
       char c1 = paramString.charAt(i * 2);
       char c2 = paramString.charAt(i * 2 + 1);
       arrayOfByte[i] = ((byte)(char2Byte(c1) * 16 + char2Byte(c2)));
       i += 1;
     }
-  }
-  
-  public static void main(String[] paramArrayOfString)
-  {
-    long l = System.currentTimeMillis();
-    int i = 0;
-    while (i < 1000000)
-    {
-      paramArrayOfString = "234" + i;
-      if (!new String(hexStr2Bytes(bytes2HexStr(paramArrayOfString.getBytes()))).equals(paramArrayOfString)) {
-        System.out.println("error:" + paramArrayOfString);
-      }
-      i += 1;
-    }
-    System.out.println("use:" + (System.currentTimeMillis() - l));
+    return arrayOfByte;
   }
 }
 

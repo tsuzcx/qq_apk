@@ -1,15 +1,18 @@
-import cooperation.weiyun.channel.HttpChannel;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public final class anhk
-  implements Runnable
+class anhk
+  implements Animator.AnimatorListener
 {
-  public anhk(String paramString, JSONObject paramJSONObject) {}
+  anhk(anhi paramanhi) {}
   
-  public void run()
-  {
-    HttpChannel.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

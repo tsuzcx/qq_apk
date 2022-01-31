@@ -2,9 +2,24 @@ package com.tencent.av.gameplay;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import lek;
 
 public class ARNativeBridge
 {
+  public void a(long paramLong, String paramString1, Context paramContext, AssetManager paramAssetManager, String paramString2, int paramInt1, int paramInt2, int paramInt3)
+  {
+    try
+    {
+      native_CreateEngineBusiness(paramLong, paramString1, paramContext, paramAssetManager, paramString2, paramInt1, paramInt2, paramInt3);
+      return;
+    }
+    catch (UnsatisfiedLinkError paramString1)
+    {
+      lek.e("ARZimuTask_ARNativeBridge", "nativeCreateEngineBusiness has exception: " + paramString1);
+      paramString1.printStackTrace();
+    }
+  }
+  
   public native void native_CreateEngineBusiness(long paramLong, String paramString1, Context paramContext, AssetManager paramAssetManager, String paramString2, int paramInt1, int paramInt2, int paramInt3);
   
   public native void native_setDrawParticle(boolean paramBoolean);

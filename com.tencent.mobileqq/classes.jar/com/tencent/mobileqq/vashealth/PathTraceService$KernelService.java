@@ -14,8 +14,8 @@ public class PathTraceService$KernelService
   private Notification a()
   {
     Notification localNotification = new Notification();
-    localNotification.icon = 2130839193;
-    localNotification.contentView = new RemoteViews(PathTraceService.a.getApplication().getPackageName(), 2130969245);
+    localNotification.icon = 2130840158;
+    localNotification.contentView = new RemoteViews(PathTraceService.a.getApplication().getPackageName(), 2131559517);
     startForeground(1, localNotification);
     return localNotification;
   }
@@ -65,8 +65,8 @@ public class PathTraceService$KernelService
     try
     {
       QLog.d("PathTraceManager.Service", 1, "PathTraceService startForeground");
-      PathTraceService.a.startForeground(3216, a());
-      super.startForeground(3216, a());
+      PathTraceService.a.startForeground(237, a());
+      super.startForeground(237, a());
       super.stopForeground(true);
       return 2;
     }
@@ -79,7 +79,7 @@ public class PathTraceService$KernelService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.PathTraceService.KernelService
  * JD-Core Version:    0.7.0.1
  */

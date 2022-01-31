@@ -1,14 +1,18 @@
-import com.tencent.widget.ActionSheet;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
 
-class aivt
-  implements Runnable
+public class aivt
+  implements View.OnClickListener
 {
-  aivt(aivs paramaivs) {}
+  public aivt(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.b(2131435874);
-    this.a.a.b();
+    this.a.b.setVisibility(8);
+    this.a.a.setVisibility(8);
+    RedPacketKSongFragment.a(this.a);
   }
 }
 

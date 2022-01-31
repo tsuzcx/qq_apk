@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import NS_KING_INTERFACE.stPostCommentReplyReq;
+import NS_KING_INTERFACE.stPostCommentReplyRsp;
+import NS_KING_SOCIALIZE_META.stMetaComment;
+import NS_KING_SOCIALIZE_META.stMetaReply;
+import UserGrowth.stSimpleMetaFeed;
 
-class tkk
-  implements Runnable
+public class tkk
+  extends thb<stPostCommentReplyRsp>
 {
-  tkk(tkj paramtkj) {}
-  
-  public void run()
+  public tkk(stSimpleMetaFeed paramstSimpleMetaFeed, stMetaComment paramstMetaComment, stMetaReply paramstMetaReply)
   {
-    ReportController.b(this.a.a.app, "dc00898", "", "", "0X8007914", "0X8007914", 0, 0, this.a.a.app.getCurrentAccountUin(), "", "", "");
-    HttpDownloadUtil.a("http://qqwx.qq.com/s?aid=index&g_f=429&mType=QQSpaceClean", this.a.a);
+    super("PostCommentReply");
+    this.a = new stPostCommentReplyReq(paramstSimpleMetaFeed.id, paramstMetaComment.id, paramstMetaReply);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tkk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,19 @@
-import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import com.tencent.mobileqq.richmedia.capture.fragment.ArithmeticCameraCaptureFragment;
-
-public class ahhx
-  implements View.OnKeyListener
+public final class ahhx
 {
-  private ahhx(ArithmeticCameraCaptureFragment paramArithmeticCameraCaptureFragment) {}
-  
-  public void a()
+  public static String a(int paramInt)
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if (localFragmentActivity != null)
-    {
-      this.a.getActivity().finish();
-      localFragmentActivity.overridePendingTransition(2131034165, 2131034328);
+    if (paramInt == 0) {
+      return "1";
     }
-  }
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramInt)
-    {
-    default: 
-      bool1 = false;
+    if (paramInt == 1) {
+      return "2";
     }
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-      switch (paramKeyEvent.getAction())
-      {
-      case 0: 
-      default: 
-        break;
-      case 1: 
-        bool1 = bool2;
-      }
-    } while (paramKeyEvent.isCanceled());
-    a();
-    return true;
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahhx
  * JD-Core Version:    0.7.0.1
  */

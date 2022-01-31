@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class im_msg$MsgHead
-  extends MessageMicro
+  extends MessageMicro<MsgHead>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public im_msg.ContentHead content_head = new im_msg.ContentHead();

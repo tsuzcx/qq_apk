@@ -1,31 +1,21 @@
-import com.tencent.mobileqq.app.HotChatHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.dating.NearbyTransitActivity;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-public class abxq
-  implements Runnable
+class abxq
+  extends JobSegment<auef, auef>
 {
-  public abxq(NearbyTransitActivity paramNearbyTransitActivity, Common.WifiPOIInfo paramWifiPOIInfo) {}
-  
-  public void run()
+  protected void a(JobContext paramJobContext, auef paramauef)
   {
-    boolean bool = true;
-    HotChatHandler localHotChatHandler = (HotChatHandler)this.jdField_a_of_type_ComTencentMobileqqDatingNearbyTransitActivity.app.a(35);
-    Common.WifiPOIInfo localWifiPOIInfo = this.jdField_a_of_type_TencentImOidbHotchatCommon$WifiPOIInfo;
-    if (this.jdField_a_of_type_TencentImOidbHotchatCommon$WifiPOIInfo.uint32_wifi_poi_type.get() == 1) {}
-    for (;;)
-    {
-      localHotChatHandler.a(localWifiPOIInfo, bool, 4, NearbyTransitActivity.c(this.jdField_a_of_type_ComTencentMobileqqDatingNearbyTransitActivity));
-      return;
-      bool = false;
+    paramJobContext = abxj.a();
+    if (!paramJobContext.a) {
+      paramJobContext.a();
     }
+    notifyResult(paramauef);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxq
  * JD-Core Version:    0.7.0.1
  */

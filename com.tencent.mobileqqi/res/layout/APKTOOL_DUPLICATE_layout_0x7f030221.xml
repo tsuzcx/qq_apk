@@ -1,3 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808de" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b001b" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0a0017"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808e0" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="APKTOOL_DUPLICATE_id_0x7f080012" formItem:leftIconWidth="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0117" formItem:leftIconHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0117" formItem:switchText="@string/APKTOOL_DUPLICATE_string_0x7f0d1183" formItem:switchChecked="false"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqqi" />

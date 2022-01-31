@@ -11,9 +11,9 @@ public class AutomatorObserver
   public static final int f = 2;
   public static final int g = 3;
   
-  protected void a() {}
+  public void a() {}
   
-  protected void a(int paramInt) {}
+  public void a(int paramInt) {}
   
   public void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
@@ -35,7 +35,7 @@ public class AutomatorObserver
     a();
   }
   
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  public void a(boolean paramBoolean, Object paramObject) {}
   
   protected void b() {}
 }

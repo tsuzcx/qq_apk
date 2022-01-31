@@ -5,21 +5,21 @@ import java.util.Map;
 public class DpiLensFilter
   extends BaseFilter
 {
-  float scaleFact = 1.0F;
+  private float scaleFact = 1.0F;
   
   public DpiLensFilter()
   {
-    super(GLSLRender.FILTER_SHADER_NONE);
+    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   }
   
-  public void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
+  public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
-    this.glsl_programID = GLSLRender.FILTER_SHADER_NONE;
-    BaseFilter localBaseFilter = new BaseFilter(GLSLRender.FILTER_SHADER_NONE);
+    this.glslProgramShader = "precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n";
+    BaseFilter localBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
     localBaseFilter.scaleFact = this.scaleFact;
     setNextFilter(localBaseFilter, null);
-    localBaseFilter.setNextFilter(new BaseFilter(GLSLRender.FILTER_SHADER_NONE), null);
-    super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+    localBaseFilter.setNextFilter(new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n"), null);
+    super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
   }
   
   public void setParameterDic(Map<String, Object> paramMap)
@@ -31,7 +31,7 @@ public class DpiLensFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.filter.DpiLensFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ import com.tencent.mobileqq.profile.ProfileCardInfo;
 import com.tencent.mobileqq.profile.ProfileCardTemplate;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
-import gje;
+import gev;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -53,7 +53,7 @@ public class ProfileBusinessView
     if (QLog.isColorLevel()) {
       QLog.d("Q.profilecard.FrdProfileCard", 2, "updateAvatar() type = " + paramInt + "key = " + paramString);
     }
-    ThreadManager.b(new gje(this, paramInt, paramAllInOne, paramString));
+    ThreadManager.b(new gev(this, paramInt, paramAllInOne, paramString));
   }
   
   public void a(ProfileCardInfo paramProfileCardInfo)
@@ -85,15 +85,15 @@ public class ProfileBusinessView
   public void b(ProfileCardInfo paramProfileCardInfo)
   {
     Object localObject = getContext();
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from((Context)localObject).inflate(2130903680, this, true);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from((Context)localObject).inflate(2130903682, this, true);
     ProfileCardTemplate.a(this.jdField_a_of_type_AndroidViewView, "background", paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate, "headerBackground");
     getResources().getDisplayMetrics();
-    int i = getResources().getDimensionPixelSize(2131427437);
-    int j = getResources().getDimensionPixelSize(2131427440);
+    int i = getResources().getDimensionPixelSize(2131427440);
+    int j = getResources().getDimensionPixelSize(2131427443);
     this.jdField_d_of_type_Float = (this.jdField_b_of_type_Float - (i + j * 3));
     this.jdField_c_of_type_Float = (70.0F * this.jdField_a_of_type_Float);
     this.jdField_e_of_type_Float = (this.jdField_b_of_type_Float - 103.0F * this.jdField_a_of_type_Float - j * 2);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233383));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233385));
     ProfileCardTemplate.a(this.jdField_b_of_type_AndroidWidgetImageView, "background", paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate, "faceBackground");
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
     DataTag localDataTag = new DataTag(1, null);
@@ -105,32 +105,32 @@ public class ProfileBusinessView
       this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription((CharSequence)localObject);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_face", this.jdField_b_of_type_AndroidWidgetImageView);
       a(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233385));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233387));
       ProfileCardTemplate.a(this.jdField_b_of_type_AndroidWidgetTextView, "color", paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate, "nickNameColor");
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetTextView.setClickable(true);
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_nick_name", this.jdField_b_of_type_AndroidWidgetTextView);
       super.e(paramProfileCardInfo);
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233390));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233392));
       ProfileCardTemplate.a(this.jdField_d_of_type_AndroidWidgetTextView, "color", paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate, "telColor");
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_tel", this.jdField_d_of_type_AndroidWidgetTextView);
       c(paramProfileCardInfo);
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233392));
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233394));
       ProfileCardTemplate.a(this.jdField_e_of_type_AndroidWidgetTextView, "color", paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate, "emailAddressColor");
       ProfileCardTemplate.a(this.jdField_e_of_type_AndroidWidgetTextView, "drawableleft", paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate, "emailBackground");
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_tel", this.jdField_e_of_type_AndroidWidgetTextView);
       d(paramProfileCardInfo);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233387));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233389));
       ProfileCardTemplate.a(this.jdField_c_of_type_AndroidWidgetTextView, "color", paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate, "emailAddressColor");
       ProfileCardTemplate.a(this.jdField_c_of_type_AndroidWidgetTextView, "drawableleft", paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate, "addressBackground");
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_sex_age_area", this.jdField_c_of_type_AndroidWidgetTextView);
       super.f(paramProfileCardInfo);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233380));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233382));
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_like", this.jdField_a_of_type_AndroidWidgetTextView);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233381));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233383));
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_like_image", this.jdField_a_of_type_AndroidWidgetImageView);
       super.g(paramProfileCardInfo);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131233379));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131233381));
       this.jdField_a_of_type_JavaUtilHashMap.put("map_key_tips", this.jdField_a_of_type_AndroidWidgetLinearLayout);
       super.b(paramProfileCardInfo);
       return;

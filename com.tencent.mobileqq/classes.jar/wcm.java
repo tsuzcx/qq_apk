@@ -1,37 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.tips.ArkTipsBar;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.ArkTipsManager;
+import java.util.ArrayList;
 
 public class wcm
-  implements View.OnClickListener
 {
-  public wcm(ArkTipsBar paramArkTipsBar) {}
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void onClick(View paramView)
+  public wcm(String paramString)
   {
-    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
-    {
-      paramView = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-      if (paramView != null)
-      {
-        paramView = paramView.a();
-        if (paramView != null) {
-          paramView.a(ArkTipsBar.a(this.a));
-        }
-      }
-      ArkTipsManager.a().a();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wcm
  * JD-Core Version:    0.7.0.1
  */

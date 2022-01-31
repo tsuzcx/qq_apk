@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/ur" />
+    <LinearLayout android:orientation="vertical" android:background="@drawable/a13" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/n9"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <LinearLayout android:orientation="horizontal" android:id="@id/bhk" android:background="@drawable/l_" android:paddingLeft="@dimen/m1" android:paddingRight="@dimen/m1" android:layout_height="@dimen/n9" style="@style/mp">
+            <ImageView android:id="@id/bh7" android:background="@null" android:layout_width="@dimen/fc" android:layout_height="@dimen/fc" android:layout_marginRight="@dimen/g2" android:src="@raw/emoticonstore_custom_icon" />
+            <TextView android:id="@android:id/title" style="@style/lg" />
+        </LinearLayout>
+        <View android:layout_gravity="center_vertical" android:background="@drawable/abk" android:layout_width="fill_parent" android:layout_height="1.0sp" android:layout_marginLeft="52.0dip" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/bhl" android:background="@drawable/l_" android:paddingLeft="@dimen/m1" android:paddingRight="@dimen/m1" android:layout_height="@dimen/n9" style="@style/mp">
+            <ImageView android:id="@id/bhm" android:background="@null" android:layout_width="@dimen/fc" android:layout_height="@dimen/fc" android:layout_marginRight="@dimen/g2" android:src="@raw/emoticonstore_capture_icon" />
+            <TextView android:id="@id/bhn" style="@style/lg" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:gravity="bottom|center|left" android:id="@id/bho" android:layout_marginLeft="@dimen/n0" android:layout_marginRight="@dimen/n0" style="@style/nn" />
+</LinearLayout>

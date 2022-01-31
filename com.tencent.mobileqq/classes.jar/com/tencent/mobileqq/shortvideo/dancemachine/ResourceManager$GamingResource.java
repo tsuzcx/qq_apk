@@ -5,55 +5,51 @@ import java.util.List;
 
 public class ResourceManager$GamingResource
 {
-  public String a;
-  public List a;
-  public String b;
-  public List b;
-  public String c = this.t + "great_mongolian.png";
-  public String d = this.t + "perfect_mongolian.png";
-  public String e = this.t + "miss_background.png";
-  public String f = this.t + "good_background.png";
-  public String g = this.t + "great_background.png";
-  public String h = this.t + "perfect_background.png";
-  public String i = this.t + "miss.png";
-  public String j = this.t + "good.png";
-  public String k = this.t + "great.png";
-  public String l = this.t + "perfect.png";
-  public String m = this.t + "timeBackGround.png";
-  public String n = this.t + "volume/sound.png";
-  public String o = this.t + "volume/sound_single.png";
-  public String p = this.t + "good.mp3";
-  public String q = this.t + "great.mp3";
-  public String r = this.t + "miss.mp3";
-  public String s = this.t + "perfect.mp3";
-  private String t = ResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager) + "gaming/";
-  private String u = "timeFront";
-  private String v = "recogrect";
+  public String good = this.prefix + "good.png";
+  public String goodSound = this.prefix + "good.mp3";
+  public String good_background = this.prefix + "good_background.png";
+  public String good_mongolian = this.prefix + "good_mongolian.png";
+  public String great = this.prefix + "great.png";
+  public String greatSound = this.prefix + "great.mp3";
+  public String great_background = this.prefix + "great_background.png";
+  public String great_mongolian = this.prefix + "great_mongolian.png";
+  public String miss = this.prefix + "miss.png";
+  public String missSound = this.prefix + "miss.mp3";
+  public String miss_background = this.prefix + "miss_background.png";
+  public String miss_mongolian = this.prefix + "miss_mongolian.png";
+  public String perfect = this.prefix + "perfect.png";
+  public String perfectSound = this.prefix + "perfect.mp3";
+  public String perfect_background = this.prefix + "perfect_background.png";
+  public String perfect_mongolian = this.prefix + "perfect_mongolian.png";
+  private String prefix = ResourceManager.access$000(this.this$0) + "gaming/";
+  private String recogRect = "recogrect";
+  public List<String> recogRects = new ArrayList();
+  public String timeBackground = this.prefix + "timeBackGround.png";
+  private String timeFront = "timeFront";
+  public List<String> timeFronts = new ArrayList();
+  public String volumSoundPic = this.prefix + "volume/sound.png";
+  public String volumSoundPicSingle = this.prefix + "volume/sound_single.png";
   
   public ResourceManager$GamingResource(ResourceManager paramResourceManager)
   {
-    this.jdField_a_of_type_JavaLangString = (this.t + "miss_mongolian.png");
-    this.jdField_b_of_type_JavaLangString = (this.t + "good_mongolian.png");
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    int i1 = 0;
-    while (i1 < 4)
+    int i = 0;
+    while (i < 4)
     {
-      this.jdField_b_of_type_JavaUtilList.add(this.t + this.v + (i1 + 1) + ".png");
-      i1 += 1;
+      this.recogRects.add(this.prefix + this.recogRect + (i + 1) + ".png");
+      i += 1;
     }
-    this.jdField_a_of_type_JavaUtilList.add(this.t + this.u + ".png");
-    i1 = i2;
-    while (i1 < 3)
+    this.timeFronts.add(this.prefix + this.timeFront + ".png");
+    i = j;
+    while (i < 3)
     {
-      this.jdField_a_of_type_JavaUtilList.add(this.t + this.u + (i1 + 1) + ".png");
-      i1 += 1;
+      this.timeFronts.add(this.prefix + this.timeFront + (i + 1) + ".png");
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.GamingResource
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,25 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.plugin.ReadInJoyWebviewPlugin;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class lsf
-  implements TroopMemberApiClient.Callback
+  extends lrs
 {
-  public lsf(ReadInJoyWebviewPlugin paramReadInJoyWebviewPlugin, String paramString) {}
+  short a;
+  short jdField_b_of_type_Short;
+  byte[] jdField_b_of_type_ArrayOfByte;
+  byte[] c;
+  byte[] d;
   
-  public void a(Bundle paramBundle)
+  lsf(lrs paramlrs, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, short paramShort1, short paramShort2)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d("ReadInJoyWebviewPlugin", 4, "receive cancelLoadSkin callback resp:" + paramBundle.toString());
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId"));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPluginReadInJoyWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
-      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPluginReadInJoyWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
-    }
+    super(paramlrs);
+    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte1;
+    this.c = paramArrayOfByte2;
+    this.d = paramArrayOfByte3;
+    this.a = paramShort1;
+    this.jdField_b_of_type_Short = paramShort2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lsf
  * JD-Core Version:    0.7.0.1
  */

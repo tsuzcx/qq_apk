@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.paster.QIMPasterConfigManager;
-import dov.com.qq.im.capture.util.ConfigSimplifier.ConfigDownloadCallback;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class absw
-  implements ConfigSimplifier.ConfigDownloadCallback
+class absw
+  implements Comparator<MessageRecord>
 {
-  public absw(ConfigServlet paramConfigServlet) {}
+  absw(absu paramabsu) {}
   
-  public void a(String paramString)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    ((QIMPasterConfigManager)QIMManager.a(1)).a(paramString);
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     absw
  * JD-Core Version:    0.7.0.1
  */

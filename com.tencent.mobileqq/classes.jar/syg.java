@@ -1,59 +1,29 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.app.LebaHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.QQUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil.19;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 public class syg
-  implements Runnable
+  implements bckx
 {
-  public syg(Leba paramLeba) {}
+  public syg(PublicAccountUtil.19 param19) {}
   
-  public void run()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    Object localObject = LebaShowListManager.a().a(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.a.jdField_a_of_type_MqqOsMqqHandler.post(new syh(this, (List)localObject));
-    if (Leba.a(this.a))
-    {
-      Leba.a(this.a, false);
-      long l1 = SystemClock.uptimeMillis();
-      long l2 = Leba.a(this.a);
-      StatisticCollector.a(BaseApplication.getContext()).a(QQUtils.a(), "actLebaShowTime", true, l1 - l2, 0L, null, null);
-      localObject = LebaShowListManager.a().b();
-      if (localObject != null)
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          LebaViewItem localLebaViewItem = (LebaViewItem)((Iterator)localObject).next();
-          if (localLebaViewItem != null) {
-            ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005416", "0X8005416", 0, 0, localLebaViewItem.a.uiResId + "", "", "", "");
-          }
-        }
+    if (paramJSONObject != null) {
+      if (QLog.isColorLevel()) {
+        QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result :" + paramJSONObject);
       }
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a.e();
     }
     while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.e("Q.lebatab.leba", 2, "refreshLebaConfig. mLebaHelper is null(when checkCampusEntry)");
+    QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     syg
  * JD-Core Version:    0.7.0.1
  */

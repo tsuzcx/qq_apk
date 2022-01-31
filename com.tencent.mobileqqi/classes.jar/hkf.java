@@ -1,61 +1,68 @@
-import android.app.Activity;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.ContainerView;
-import com.tencent.mobileqq.widget.ContainerView.SelectableTextView;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.OfflineSecurity;
+import com.tencent.open.appcommon.AppViewBaseActivity;
+import com.tencent.open.appcommon.Common;
+import com.tencent.open.base.LogUtility;
+import java.io.File;
 
 public class hkf
-  implements ActionMode.Callback
+  implements Runnable
 {
-  public hkf(ContainerView.SelectableTextView paramSelectableTextView, ContainerView paramContainerView) {}
+  public hkf(AppViewBaseActivity paramAppViewBaseActivity, Object paramObject, String paramString1, String paramString2) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void run()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramMenuItem.getItemId() == 2131234871)
+    this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.f = System.currentTimeMillis();
+    if (this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.b == null) {}
+    for (;;)
     {
-      paramActionMode = this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView.getContext();
-      bool1 = bool2;
-      if (paramActionMode != null)
-      {
-        bool1 = bool2;
-        if ((paramActionMode instanceof TextPreviewActivity))
+      return;
+      Message localMessage = this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.b.obtainMessage();
+      localMessage.obj = this.jdField_a_of_type_JavaLangObject;
+      if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || ((this.jdField_a_of_type_JavaLangString.startsWith("file:///")) && (!this.jdField_a_of_type_JavaLangString.startsWith(Common.q)))) {
+        if (this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.h)
         {
-          paramMenuItem = (TextPreviewActivity)paramActionMode;
-          CharSequence localCharSequence = this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView.getText().subSequence(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView.getSelectionStart(), this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView.getSelectionEnd());
-          if (localCharSequence != null) {
-            TextPreviewActivity.a(localCharSequence.toString(), (Activity)paramActionMode, paramMenuItem.b, paramMenuItem.g, paramMenuItem.jdField_a_of_type_Int, TextPreviewActivity.jdField_a_of_type_Long, false);
+          this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.g = System.currentTimeMillis();
+          LogUtility.b("opensdk", ">>end verify html ,load assets,so we ingore it=" + (this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.g - this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.f) + ">>");
+          localMessage.what = 104;
+        }
+      }
+      while (this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.b != null)
+      {
+        this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.b.sendMessage(localMessage);
+        return;
+        boolean bool = false;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        {
+          String str = "";
+          int i = this.jdField_a_of_type_JavaLangString.lastIndexOf(File.separator);
+          if (i != -1) {
+            str = this.jdField_a_of_type_JavaLangString.substring(i + 1);
           }
-          ReportController.b(paramMenuItem.b, "CliOper", "", "", "0X8004065", "0X8004065", 0, 0, "", "", "", "");
-          bool1 = true;
+          bool = OfflineSecurity.a(this.b, str, "98");
+        }
+        this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.g = System.currentTimeMillis();
+        if (bool)
+        {
+          localMessage.what = 102;
+          LogUtility.b("opensdk", ">>end verify html ,result ok,tmcost=" + (this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.g - this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.f) + ">>");
+        }
+        else
+        {
+          localMessage.what = 103;
+          LogUtility.b("opensdk", ">>end verify html ,result fail,tmcost=" + (this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.g - this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.f) + ">>");
+          continue;
+          localMessage.what = 102;
         }
       }
     }
-    return bool1;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    paramActionMode.getMenuInflater().inflate(2131755008, paramMenu);
-    return true;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hkf
  * JD-Core Version:    0.7.0.1
  */

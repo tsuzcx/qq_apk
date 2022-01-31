@@ -1,36 +1,45 @@
-import android.os.Message;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.RectF;
+import android.support.annotation.NonNull;
 
-class sht
-  implements Runnable
+public class sht
 {
-  sht(shq paramshq, long paramLong) {}
+  private float jdField_a_of_type_Float;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private float jdField_b_of_type_Float;
+  private RectF jdField_b_of_type_AndroidGraphicsRectF;
   
-  public void run()
+  public sht(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2)
   {
-    if (this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager != null)
-    {
-      this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a();
-      if (this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Long) == 2)
-      {
-        Message localMessage = new Message();
-        localMessage.obj = Long.valueOf(this.jdField_a_of_type_Long);
-        this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(32, localMessage);
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(-1, null);
+    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF1;
+    this.jdField_b_of_type_AndroidGraphicsRectF = paramRectF2;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public RectF a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsRectF;
+  }
+  
+  public RectF b()
+  {
+    return this.jdField_b_of_type_AndroidGraphicsRectF;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "cropRect:" + this.jdField_a_of_type_AndroidGraphicsRectF + " ,imageRect:" + this.jdField_b_of_type_AndroidGraphicsRectF + " ,scale:" + this.jdField_a_of_type_Float + " ,angle:" + this.jdField_b_of_type_Float;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sht
  * JD-Core Version:    0.7.0.1
  */

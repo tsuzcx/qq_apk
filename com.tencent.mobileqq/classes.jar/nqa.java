@@ -1,21 +1,42 @@
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnCompletionListener;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTextureImpl;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnCompletionListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
+import com.tencent.widget.FadeIconImageView;
 
 public class nqa
-  implements IMediaPlayer.OnCompletionListener
+  implements qfp
 {
-  public nqa(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnCompletionListener paramOnCompletionListener) {}
+  public nqa(PublicAccountBrowser paramPublicAccountBrowser) {}
   
-  public void a(IMediaPlayer paramIMediaPlayer)
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView$OnCompletionListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTextureImpl);
+    this.a.a = paramBoolean;
+    PublicAccountBrowser.a(this.a);
+    if (paramBoolean)
+    {
+      this.a.b = paramString;
+      if ((PublicAccountBrowser.a(this.a) == null) || (PublicAccountBrowser.a(this.a).getVisibility() != 0))
+      {
+        PublicAccountBrowser.a(this.a).setImageResource(2130848937);
+        PublicAccountBrowser.a(this.a).setVisibility(0);
+        PublicAccountBrowser.a(this.a).setVisibility(8);
+      }
+      for (;;)
+      {
+        PublicAccountBrowser.b(this.a);
+        return;
+        PublicAccountBrowser.a(this.a).setImageResource(2130848992);
+        PublicAccountBrowser.a(this.a).setVisibility(0);
+        PublicAccountBrowser.a(this.a).setVisibility(0);
+      }
+    }
+    PublicAccountBrowser.a(this.a).setVisibility(8);
+    PublicAccountBrowser.a(this.a).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nqa
  * JD-Core Version:    0.7.0.1
  */

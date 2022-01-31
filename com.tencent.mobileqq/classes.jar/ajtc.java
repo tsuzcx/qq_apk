@@ -1,15 +1,6 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel;
-
-public class ajtc
+public abstract interface ajtc
 {
-  public View a;
-  public TextView a;
-  public URLImageView a;
-  
-  private ajtc(TroopAIORobotPanel paramTroopAIORobotPanel) {}
+  public abstract void a(int paramInt);
 }
 
 

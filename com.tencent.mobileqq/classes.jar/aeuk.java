@@ -1,24 +1,33 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
+import android.support.v4.util.ArraySet;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class aeuk
-  implements Runnable
+public class aeuk
 {
-  aeuk(aeui paramaeui) {}
+  private static ArraySet<Long> a = new ArraySet();
   
-  public void run()
+  public static void a()
   {
-    if ((this.a.a.getActivity() != null) && (!this.a.a.getActivity().isFinishing()))
+    a.clear();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    if (!a.contains(Long.valueOf(paramMessageRecord.uniseq)))
     {
-      this.a.a.a.setVisibility(0);
-      this.a.a.b.setVisibility(0);
+      a.add(Long.valueOf(paramMessageRecord.uniseq));
+      azqs.b(paramQQAppInterface, "dc00898", "", "", "0X800A52B", "0X800A52B", 0, 0, "", "", "", "");
     }
+  }
+  
+  public static void a(MessageRecord paramMessageRecord)
+  {
+    a.add(Long.valueOf(paramMessageRecord.uniseq));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeuk
  * JD-Core Version:    0.7.0.1
  */

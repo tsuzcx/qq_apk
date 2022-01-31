@@ -7,8 +7,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.os.Bundle;
 import android.os.Handler;
-import boa;
-import bob;
+import bhw;
+import bhx;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -43,8 +43,8 @@ public class ShareToQZone
   {
     jdField_a_of_type_JavaLangString = "ShareToQZone";
     b = null;
-    jdField_a_of_type_AndroidOsHandler = new boa();
-    jdField_a_of_type_JavaLangRunnable = new bob();
+    jdField_a_of_type_AndroidOsHandler = new bhw();
+    jdField_a_of_type_JavaLangRunnable = new bhx();
   }
   
   public static int a()

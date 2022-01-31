@@ -1,17 +1,11 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin;
-import java.util.ArrayList;
-
-public class andj
-  implements Runnable
+class andj
+  implements baug
 {
-  public andj(QzoneVideoTabJsPlugin paramQzoneVideoTabJsPlugin, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  andj(andh paramandh) {}
   
-  public void run()
-  {
-    RemoteHandleManager.a().a().a(this.jdField_a_of_type_JavaUtilArrayList, this.b);
-  }
+  public void onResp(bavf parambavf) {}
+  
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

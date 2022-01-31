@@ -1,38 +1,31 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import dov.com.tencent.biz.qqstory.takevideo.publish.GenerateVideoManifestSegment;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import java.util.List;
 
-public class aodi
-  implements Runnable
+class aodi
+  implements View.OnClickListener
 {
-  public aodi(GenerateVideoManifestSegment paramGenerateVideoManifestSegment, RMVideoStateMgr paramRMVideoStateMgr) {}
+  aodg jdField_a_of_type_Aodg;
+  aodk jdField_a_of_type_Aodk;
   
-  public void run()
+  aodi(aodg paramaodg, aodk paramaodk)
   {
-    try
-    {
-      SLog.a("Q.qqstory.publish.edit.GenerateVideoManifestSegment", "Async, mVideoCacheDir:%s, before call AVideoCodec.recordSubmit()", this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString);
-      RecordManager.a().a().recordSubmit();
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      SLog.e("Q.qqstory.publish.edit.GenerateVideoManifestSegment", "Async, mVideoCacheDir:%s, call AVideoCodec.recordSubmit() error = %s", new Object[] { this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString, localUnsatisfiedLinkError });
-      synchronized (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
-      {
-        this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-        this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.notifyAll();
-        return;
-      }
+    this.jdField_a_of_type_Aodg = paramaodg;
+    this.jdField_a_of_type_Aodk = paramaodk;
+  }
+  
+  public void onClick(View paramView)
+  {
+    aobw.a(paramView.getContext(), (ColorNote)aodg.a(this.jdField_a_of_type_Aodg).get(this.jdField_a_of_type_Aodk.getAdapterPosition()));
+    if (aodg.a(this.jdField_a_of_type_Aodg) != null) {
+      aodg.a(this.jdField_a_of_type_Aodg).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aodi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,21 @@
 package com.tencent.mobileqq.transfile;
 
-import aiqn;
+import alrb;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
+import awxt;
+import bavo;
+import bavp;
+import bavq;
+import bavr;
+import bavs;
+import bawk;
+import bdqa;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DPCObserver;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ptt.PttOptimizeParams;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
@@ -19,56 +24,48 @@ import mqq.app.BuiltInServlet;
 import mqq.app.NewIntent;
 
 public class ProtoReqManager
-  implements DeviceProfileManager.DPCObserver
+  implements alrb
 {
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  public ConcurrentHashMap a;
+  ConcurrentHashMap<Intent, bavr> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private boolean jdField_a_of_type_Boolean;
   
   public ProtoReqManager(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
   }
   
-  private void a()
-  {
-    if (DeviceProfileManager.a().a() == 4) {
-      RichMediaStrategy.a(DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.RichProReqCfg.name()));
-    }
-  }
-  
-  private void a(Intent paramIntent, ProtoReqManager.ProtoResp paramProtoResp)
+  private void a(Intent paramIntent, bavr parambavr)
   {
     int i = paramIntent.getIntExtra("key_runnable_index", 0);
-    paramProtoResp.jdField_a_of_type_ArrayOfAiqn[i].jdField_b_of_type_Boolean = true;
-    paramProtoResp.jdField_a_of_type_ArrayOfAiqn[i].jdField_c_of_type_Long = System.currentTimeMillis();
+    parambavr.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i].jdField_b_of_type_Boolean = true;
+    parambavr.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i].jdField_c_of_type_Long = System.currentTimeMillis();
   }
   
-  private void a(ProtoReqManager.ProtoResp paramProtoResp)
+  private void a(bavr parambavr)
   {
-    paramProtoResp.jdField_a_of_type_Boolean = true;
+    parambavr.jdField_a_of_type_Boolean = true;
     int i = 0;
-    while (i < paramProtoResp.jdField_a_of_type_ArrayOfAiqn.length)
+    while (i < parambavr.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable.length)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramProtoResp.jdField_a_of_type_ArrayOfAiqn[i].jdField_a_of_type_MqqAppNewIntent);
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(paramProtoResp.jdField_a_of_type_ArrayOfAiqn[i]);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(parambavr.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i].jdField_a_of_type_MqqAppNewIntent);
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(parambavr.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i]);
       i += 1;
     }
   }
   
-  private boolean a(ProtoReqManager.ProtoReq paramProtoReq)
+  private boolean a(bavq parambavq)
   {
-    return ("PttStore.GroupPttUp".equals(paramProtoReq.jdField_a_of_type_JavaLangString)) || ("PttStore.GroupPttDown".equals(paramProtoReq.jdField_a_of_type_JavaLangString)) || ("PttCenterSvr.pb_pttCenter_CMD_REQ_APPLY_UPLOAD-500".equals(paramProtoReq.jdField_a_of_type_JavaLangString)) || ("PttCenterSvr.pb_pttCenter_CMD_REQ_APPLY_DOWNLOAD-1200".equals(paramProtoReq.jdField_a_of_type_JavaLangString));
+    return ("PttStore.GroupPttUp".equals(parambavq.jdField_a_of_type_JavaLangString)) || ("PttStore.GroupPttDown".equals(parambavq.jdField_a_of_type_JavaLangString)) || ("PttCenterSvr.pb_pttCenter_CMD_REQ_APPLY_UPLOAD-500".equals(parambavq.jdField_a_of_type_JavaLangString)) || ("PttCenterSvr.pb_pttCenter_CMD_REQ_APPLY_DOWNLOAD-1200".equals(parambavq.jdField_a_of_type_JavaLangString));
   }
   
-  private boolean a(ProtoReqManager.ProtoResp paramProtoResp)
+  private boolean a(bavr parambavr)
   {
     int i = 0;
-    while (i < paramProtoResp.jdField_a_of_type_ArrayOfAiqn.length)
+    while (i < parambavr.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable.length)
     {
-      if ((!paramProtoResp.jdField_a_of_type_ArrayOfAiqn[i].jdField_b_of_type_Boolean) && ((paramProtoResp.jdField_a_of_type_ArrayOfAiqn[i].jdField_a_of_type_Boolean == true) || (paramProtoResp.jdField_a_of_type_ArrayOfAiqn[i].jdField_c_of_type_Boolean == true))) {
+      if ((!parambavr.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i].jdField_b_of_type_Boolean) && ((parambavr.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i].jdField_a_of_type_Boolean == true) || (parambavr.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i].jdField_c_of_type_Boolean == true))) {
         return false;
       }
       i += 1;
@@ -76,30 +73,40 @@ public class ProtoReqManager
     return true;
   }
   
-  private void c(ProtoReqManager.ProtoReq paramProtoReq)
+  private void b()
   {
-    paramProtoReq.jdField_a_of_type_Int = RichMediaStrategy.c();
-    paramProtoReq.jdField_b_of_type_Int = RichMediaStrategy.a();
-    paramProtoReq.c = RichMediaStrategy.b();
+    if (DeviceProfileManager.a().a() == 4) {
+      bawk.a(DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.RichProReqCfg.name()));
+    }
   }
   
-  private void d(ProtoReqManager.ProtoReq paramProtoReq)
+  private void c(bavq parambavq)
+  {
+    parambavq.jdField_a_of_type_Int = bawk.c();
+    parambavq.jdField_b_of_type_Int = bawk.a();
+    parambavq.c = bawk.b();
+  }
+  
+  private void d(bavq parambavq)
   {
     if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface))
     {
-      paramProtoReq.jdField_a_of_type_Int = PttOptimizeParams.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-      paramProtoReq.jdField_b_of_type_Int = PttOptimizeParams.b((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-      paramProtoReq.c = PttOptimizeParams.c((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      parambavq.jdField_a_of_type_Int = awxt.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      parambavq.jdField_b_of_type_Int = awxt.b((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      parambavq.c = awxt.c((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
       if (QLog.isColorLevel()) {
-        QLog.d("Q.richmedia.ProtoReqManager", 2, "ptt config from dpc:" + paramProtoReq.jdField_a_of_type_Int + paramProtoReq.jdField_b_of_type_Int + paramProtoReq.c);
+        QLog.d("Q.richmedia.ProtoReqManager", 2, "ptt config from dpc:" + parambavq.jdField_a_of_type_Int + parambavq.jdField_b_of_type_Int + parambavq.c);
       }
     }
   }
   
-  void a(aiqn paramaiqn, long paramLong)
+  public void a()
   {
-    paramaiqn.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramaiqn, paramLong);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richmedia.ProtoReqManager", 2, "onDestroy ");
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
   }
   
   public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
@@ -107,228 +114,240 @@ public class ProtoReqManager
     Object localObject = null;
     for (;;)
     {
-      ProtoReqManager.IProtoRespBack localIProtoRespBack;
+      bavp localbavp;
       try
       {
         if (QLog.isColorLevel()) {
           QLog.d("Q.richmedia.ProtoReqManager", 2, "onReceive." + paramFromServiceMsg);
         }
         if ((paramIntent == null) || (paramFromServiceMsg == null)) {
-          break label537;
+          break label538;
         }
-        localObject = (ProtoReqManager.ProtoResp)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramIntent);
+        localObject = (bavr)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramIntent);
         if (localObject == null) {
-          break label522;
+          break label523;
         }
-        if (((ProtoReqManager.ProtoResp)localObject).jdField_a_of_type_Boolean)
+        if (((bavr)localObject).jdField_a_of_type_Boolean)
         {
-          localProtoReq = null;
+          localbavq = null;
           paramIntent = null;
           paramFromServiceMsg = (FromServiceMsg)localObject;
-          localObject = localProtoReq;
+          localObject = localbavq;
           if (localObject != null) {
-            ((ProtoReqManager.IProtoRespBack)localObject).a(paramFromServiceMsg, paramIntent);
+            ((bavp)localObject).a(paramFromServiceMsg, paramIntent);
           }
           return;
         }
-        a(paramIntent, (ProtoReqManager.ProtoResp)localObject);
-        localProtoReq = ((ProtoReqManager.ProtoResp)localObject).jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$ProtoReq;
-        ((ProtoReqManager.ProtoResp)localObject).jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
-        ((ProtoReqManager.ProtoResp)localObject).jdField_a_of_type_ComTencentMobileqqAppMessageObserver$StatictisInfo.jdField_b_of_type_Int = ((ProtoReqManager.ProtoResp)localObject).jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getResultCode();
+        a(paramIntent, (bavr)localObject);
+        localbavq = ((bavr)localObject).jdField_a_of_type_Bavq;
+        ((bavr)localObject).jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
+        ((bavr)localObject).jdField_a_of_type_Alwy.jdField_b_of_type_Int = ((bavr)localObject).jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getResultCode();
         int i = paramFromServiceMsg.getResultCode();
         if (i == 1000)
         {
-          a((ProtoReqManager.ProtoResp)localObject);
+          a((bavr)localObject);
           this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramIntent);
-          if (localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack != null)
+          if (localbavq.jdField_a_of_type_Bavp != null)
           {
             i = paramFromServiceMsg.getWupBuffer().length - 4;
             paramIntent = new byte[i];
-            PkgTools.a(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+            bdqa.a(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
             paramFromServiceMsg.putWupBuffer(paramIntent);
-            localIProtoRespBack = localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack;
+            localbavp = localbavq.jdField_a_of_type_Bavp;
             paramFromServiceMsg = (FromServiceMsg)localObject;
-            paramIntent = localProtoReq;
-            localObject = localIProtoRespBack;
+            paramIntent = localbavq;
+            localObject = localbavp;
           }
         }
         else
         {
           if (i == 2901)
           {
-            long l1 = System.currentTimeMillis() - ((ProtoReqManager.ProtoResp)localObject).jdField_a_of_type_Long;
-            if ((l1 < localProtoReq.e) && (((ProtoReqManager.ProtoResp)localObject).jdField_a_of_type_Int < localProtoReq.jdField_b_of_type_Int))
+            long l1 = System.currentTimeMillis() - ((bavr)localObject).jdField_a_of_type_Long;
+            if ((l1 < localbavq.e) && (((bavr)localObject).jdField_a_of_type_Int < localbavq.jdField_b_of_type_Int))
             {
-              long l2 = localProtoReq.jdField_a_of_type_Int;
-              paramIntent = localObject.jdField_a_of_type_ArrayOfAiqn[localObject.jdField_a_of_type_Int];
-              ((ProtoReqManager.ProtoResp)localObject).jdField_a_of_type_Int += 1;
+              long l2 = localbavq.jdField_a_of_type_Int;
+              paramIntent = localObject.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[localObject.jdField_a_of_type_Int];
+              ((bavr)localObject).jdField_a_of_type_Int += 1;
               paramIntent.jdField_a_of_type_Long = (l2 - l1 - 5000L);
               a(paramIntent, 0L);
-              localIProtoRespBack = null;
+              localbavp = null;
               paramFromServiceMsg = (FromServiceMsg)localObject;
-              paramIntent = localProtoReq;
-              localObject = localIProtoRespBack;
+              paramIntent = localbavq;
+              localObject = localbavp;
               continue;
             }
             if (QLog.isColorLevel()) {
-              QLog.d("Q.richmedia.ProtoReqManager", 2, "onReceive found 2901 but do not retry : elapse:" + l1 + " index:" + ((ProtoReqManager.ProtoResp)localObject).jdField_a_of_type_Int);
+              QLog.d("Q.richmedia.ProtoReqManager", 2, "onReceive found 2901 but do not retry : elapse:" + l1 + " index:" + ((bavr)localObject).jdField_a_of_type_Int);
             }
           }
-          if (a((ProtoReqManager.ProtoResp)localObject))
+          if (a((bavr)localObject))
           {
-            a((ProtoReqManager.ProtoResp)localObject);
+            a((bavr)localObject);
             this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramIntent);
             if (i == 1013)
             {
               paramIntent = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), BuiltInServlet.class);
-              paramIntent.setObserver(new ProtoReqManager.CheckConErroObserverImp(this, (ProtoReqManager.ProtoResp)localObject, localProtoReq));
+              paramIntent.setObserver(new bavo(this, (bavr)localObject, localbavq));
               paramIntent.putExtra("action", 2201);
               this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramIntent);
-              localIProtoRespBack = null;
+              localbavp = null;
               paramFromServiceMsg = (FromServiceMsg)localObject;
-              paramIntent = localProtoReq;
-              localObject = localIProtoRespBack;
+              paramIntent = localbavq;
+              localObject = localbavp;
               continue;
             }
-            if (localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack != null)
+            if (localbavq.jdField_a_of_type_Bavp != null)
             {
-              localIProtoRespBack = localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack;
+              localbavp = localbavq.jdField_a_of_type_Bavp;
               paramFromServiceMsg = (FromServiceMsg)localObject;
-              paramIntent = localProtoReq;
-              localObject = localIProtoRespBack;
+              paramIntent = localbavq;
+              localObject = localbavp;
               continue;
             }
           }
         }
-        localIProtoRespBack = null;
+        localbavp = null;
       }
       finally {}
       paramFromServiceMsg = (FromServiceMsg)localObject;
-      paramIntent = localProtoReq;
-      localObject = localIProtoRespBack;
+      paramIntent = localbavq;
+      localObject = localbavp;
       continue;
-      label522:
-      ProtoReqManager.ProtoReq localProtoReq = null;
+      label523:
+      bavq localbavq = null;
       paramIntent = null;
       paramFromServiceMsg = (FromServiceMsg)localObject;
-      localObject = localProtoReq;
+      localObject = localbavq;
       continue;
-      label537:
+      label538:
       paramIntent = null;
-      localProtoReq = null;
+      localbavq = null;
       paramFromServiceMsg = (FromServiceMsg)localObject;
-      localObject = localProtoReq;
+      localObject = localbavq;
     }
   }
   
-  public void a(ProtoReqManager.ProtoReq paramProtoReq)
+  public void a(bavq parambavq)
   {
     for (;;)
     {
+      Object localObject1;
+      int i;
       try
       {
         if (QLog.isColorLevel()) {
-          QLog.d("Q.richmedia.ProtoReqManager", 2, "req:" + paramProtoReq.jdField_a_of_type_JavaLangString);
+          QLog.d("Q.richmedia.ProtoReqManager", 2, "req:" + parambavq.jdField_a_of_type_JavaLangString);
         }
         if (!this.jdField_a_of_type_Boolean)
         {
-          a();
+          b();
           this.jdField_a_of_type_Boolean = true;
         }
-        if (paramProtoReq != null)
-        {
-          if ((paramProtoReq.jdField_a_of_type_JavaLangString != null) && ((paramProtoReq.jdField_a_of_type_JavaLangString.equals("ImgStore.GroupPicUp")) || (paramProtoReq.jdField_a_of_type_JavaLangString.equals("LongConn.OffPicUp")))) {
-            c(paramProtoReq);
-          }
-          if ((paramProtoReq.jdField_a_of_type_JavaLangString != null) && ((paramProtoReq.jdField_a_of_type_JavaLangString.equals("PttStore.GroupPttUp")) || (paramProtoReq.jdField_a_of_type_JavaLangString.equals("PttCenterSvr.pb_pttCenter_CMD_REQ_APPLY_UPLOAD-500")))) {
-            d(paramProtoReq);
-          }
-          ProtoReqManager.ProtoResp localProtoResp = new ProtoReqManager.ProtoResp();
-          paramProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$ProtoResp = localProtoResp;
-          localProtoResp.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$ProtoReq = paramProtoReq;
-          localProtoResp.jdField_a_of_type_Long = System.currentTimeMillis();
-          localProtoResp.jdField_a_of_type_ArrayOfAiqn = new aiqn[paramProtoReq.jdField_b_of_type_Int];
-          byte[] arrayOfByte = paramProtoReq.jdField_a_of_type_ArrayOfByte;
-          Object localObject = ByteBuffer.allocate(arrayOfByte.length + 4);
-          ((ByteBuffer)localObject).putInt(arrayOfByte.length + 4).put(arrayOfByte);
-          arrayOfByte = ((ByteBuffer)localObject).array();
-          i = 0;
-          if (i >= paramProtoReq.jdField_b_of_type_Int) {
-            break label502;
-          }
-          localObject = new aiqn(this);
-          localProtoResp.jdField_a_of_type_ArrayOfAiqn[i] = localObject;
-          ((aiqn)localObject).jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$ProtoResp = localProtoResp;
-          ((aiqn)localObject).jdField_a_of_type_MqqAppNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), ProtoServlet.class);
-          localObject = ((aiqn)localObject).jdField_a_of_type_MqqAppNewIntent;
-          ((NewIntent)localObject).putExtra("key_body", arrayOfByte);
-          ((NewIntent)localObject).putExtra("key_cmd", paramProtoReq.jdField_a_of_type_JavaLangString);
-          ((NewIntent)localObject).putExtra("key_runnable_index", i);
-          ((NewIntent)localObject).putExtra("key_fastresend", paramProtoReq.jdField_a_of_type_Boolean);
-          ((NewIntent)localObject).putExtra("remind_slown_network", paramProtoReq.jdField_b_of_type_Boolean);
-          if ((a(paramProtoReq)) && ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) && (PttOptimizeParams.d((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface)))
-          {
-            ((NewIntent)localObject).putExtra("quickSendEnable", true);
-            ((NewIntent)localObject).putExtra("quickSendStrategy", 1);
-            if (QLog.isColorLevel())
-            {
-              QLog.d("http_sideway", 2, "set");
-              break label495;
-              if (i < paramProtoReq.c)
-              {
-                long l1 = paramProtoReq.jdField_a_of_type_Int * i / paramProtoReq.c;
-                long l2 = paramProtoReq.jdField_a_of_type_Int;
-                long l3 = paramProtoReq.d * i;
-                localProtoResp.jdField_a_of_type_ArrayOfAiqn[i].jdField_a_of_type_Long = (l2 - l1 - l3);
-                a(localProtoResp.jdField_a_of_type_ArrayOfAiqn[i], l1);
-                i += 1;
-                continue;
-              }
-              localProtoResp.jdField_a_of_type_Int = paramProtoReq.c;
-            }
-          }
-        }
-        else
-        {
+        localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+        if (localObject1 == null) {
           return;
         }
+        if (parambavq == null) {
+          continue;
+        }
+        if ((parambavq.jdField_a_of_type_JavaLangString != null) && ((parambavq.jdField_a_of_type_JavaLangString.equals("ImgStore.GroupPicUp")) || (parambavq.jdField_a_of_type_JavaLangString.equals("LongConn.OffPicUp")))) {
+          c(parambavq);
+        }
+        if ((parambavq.jdField_a_of_type_JavaLangString != null) && ((parambavq.jdField_a_of_type_JavaLangString.equals("PttStore.GroupPttUp")) || (parambavq.jdField_a_of_type_JavaLangString.equals("PttCenterSvr.pb_pttCenter_CMD_REQ_APPLY_UPLOAD-500")))) {
+          d(parambavq);
+        }
+        localObject1 = new bavr();
+        parambavq.jdField_a_of_type_Bavr = ((bavr)localObject1);
+        ((bavr)localObject1).jdField_a_of_type_Bavq = parambavq;
+        ((bavr)localObject1).jdField_a_of_type_Long = System.currentTimeMillis();
+        ((bavr)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable = new ProtoReqManager.ProtoReqRunnable[parambavq.jdField_b_of_type_Int];
+        byte[] arrayOfByte = parambavq.jdField_a_of_type_ArrayOfByte;
+        Object localObject2 = ByteBuffer.allocate(arrayOfByte.length + 4);
+        ((ByteBuffer)localObject2).putInt(arrayOfByte.length + 4).put(arrayOfByte);
+        arrayOfByte = ((ByteBuffer)localObject2).array();
+        i = 0;
+        if (i >= parambavq.jdField_b_of_type_Int) {
+          break label516;
+        }
+        localObject2 = new ProtoReqManager.ProtoReqRunnable(this);
+        ((bavr)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i] = localObject2;
+        ((ProtoReqManager.ProtoReqRunnable)localObject2).jdField_a_of_type_Bavr = ((bavr)localObject1);
+        ((ProtoReqManager.ProtoReqRunnable)localObject2).jdField_a_of_type_MqqAppNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), bavs.class);
+        localObject2 = ((ProtoReqManager.ProtoReqRunnable)localObject2).jdField_a_of_type_MqqAppNewIntent;
+        ((NewIntent)localObject2).putExtra("key_body", arrayOfByte);
+        ((NewIntent)localObject2).putExtra("key_cmd", parambavq.jdField_a_of_type_JavaLangString);
+        ((NewIntent)localObject2).putExtra("key_runnable_index", i);
+        ((NewIntent)localObject2).putExtra("key_fastresend", parambavq.jdField_a_of_type_Boolean);
+        ((NewIntent)localObject2).putExtra("remind_slown_network", parambavq.jdField_b_of_type_Boolean);
+        if ((!a(parambavq)) || (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) || (!awxt.d((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface))) {
+          break label509;
+        }
+        ((NewIntent)localObject2).putExtra("quickSendEnable", true);
+        ((NewIntent)localObject2).putExtra("quickSendStrategy", 1);
+        if (!QLog.isColorLevel()) {
+          break label509;
+        }
+        QLog.d("http_sideway", 2, "set");
       }
       finally {}
-      label495:
-      i += 1;
-      continue;
-      label502:
-      int i = 0;
+      if (i < parambavq.c)
+      {
+        long l1 = parambavq.jdField_a_of_type_Int * i / parambavq.c;
+        long l2 = parambavq.jdField_a_of_type_Int;
+        long l3 = parambavq.d * i;
+        localObject1.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i].jdField_a_of_type_Long = (l2 - l1 - l3);
+        a(localObject1.jdField_a_of_type_ArrayOfComTencentMobileqqTransfileProtoReqManager$ProtoReqRunnable[i], l1);
+        i += 1;
+      }
+      else
+      {
+        ((bavr)localObject1).jdField_a_of_type_Int = parambavq.c;
+        continue;
+        label509:
+        i += 1;
+        continue;
+        label516:
+        i = 0;
+      }
     }
   }
   
-  public void a(NewIntent paramNewIntent)
+  void a(ProtoReqManager.ProtoReqRunnable paramProtoReqRunnable, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramNewIntent);
+    paramProtoReqRunnable.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramProtoReqRunnable, paramLong);
+  }
+  
+  void a(NewIntent paramNewIntent)
+  {
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramNewIntent);
+    }
   }
   
   public void a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      RichMediaStrategy.a(DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.RichProReqCfg.name()));
+      bawk.a(DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.RichProReqCfg.name()));
     }
     DeviceProfileManager.b(this);
   }
   
-  public void b(ProtoReqManager.ProtoReq paramProtoReq)
+  public void b(bavq parambavq)
   {
-    if (paramProtoReq != null) {}
+    if (parambavq != null) {}
     try
     {
-      if (paramProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$ProtoResp != null) {
-        a(paramProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$ProtoResp);
+      if (parambavq.jdField_a_of_type_Bavr != null) {
+        a(parambavq.jdField_a_of_type_Bavr);
       }
       return;
     }
     finally
     {
-      paramProtoReq = finally;
-      throw paramProtoReq;
+      parambavq = finally;
+      throw parambavq;
     }
   }
 }

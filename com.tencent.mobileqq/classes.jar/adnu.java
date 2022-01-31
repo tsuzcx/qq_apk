@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.fragment.NowLiveFragment;
+import com.tencent.mobileqq.activity.PreloadWebService;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class adnu
-  implements Runnable
+  extends WebViewClient
 {
-  public adnu(NowLiveFragment paramNowLiveFragment) {}
+  public adnu(PreloadWebService paramPreloadWebService) {}
   
-  public void run()
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    this.a.e();
+    return true;
   }
 }
 

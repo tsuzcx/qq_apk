@@ -39,16 +39,16 @@ import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import ejh;
-import eji;
-import ejj;
-import ejm;
-import ejn;
-import ejo;
-import ejp;
-import ejq;
-import ejr;
-import ejs;
+import eee;
+import eef;
+import eeg;
+import eej;
+import eek;
+import eel;
+import eem;
+import een;
+import eeo;
+import eep;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -84,8 +84,8 @@ public class NewFriendActivity
   private RecommendListView jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendRecommendListView;
   private SystemMsgListView jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView;
   public CircleManager a;
-  private ISwitchObserver jdField_a_of_type_ComTencentMobileqqServiceCircleISwitchObserver = new ejm(this);
-  private TabBarView.OnTabChangeListener jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener = new eji(this);
+  private ISwitchObserver jdField_a_of_type_ComTencentMobileqqServiceCircleISwitchObserver = new eej(this);
+  private TabBarView.OnTabChangeListener jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener = new eef(this);
   private TabBarView jdField_a_of_type_ComTencentMobileqqWidgetTabBarView;
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
   private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
@@ -165,8 +165,8 @@ public class NewFriendActivity
         QLog.i("NewFriendManager", 2, "enterTime: " + l1);
       }
     } while ((l1 != -100L) || ((this.jdField_a_of_type_AndroidViewView != null) && (paramBoolean)));
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getApplicationContext()).inflate(2130903594, null);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new ejp(this, localSharedPreferences));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getApplicationContext()).inflate(2130903596, null);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new eem(this, localSharedPreferences));
     a(true, false);
   }
   
@@ -187,7 +187,7 @@ public class NewFriendActivity
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837860);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837862);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawables();
       this.n = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawablePadding();
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
@@ -200,17 +200,17 @@ public class NewFriendActivity
   
   private void h()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext = new ejh(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext = new eee(this);
   }
   
   private void i()
   {
-    setContentView(2130903593);
+    setContentView(2130903595);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131231116));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232304));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232307));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131231377));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setOnTabChangeListener(this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131232305));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131232308));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231374));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231376));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231456));
@@ -262,8 +262,8 @@ public class NewFriendActivity
       localRelativeLayout.setVisibility(i1);
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838009);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ejs(this));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838011);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new eep(this));
       a(true);
       l();
       m();
@@ -448,7 +448,7 @@ public class NewFriendActivity
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    setContentView(2130903593);
+    setContentView(2130903595);
     j(2130837729);
     h();
     i();
@@ -553,7 +553,7 @@ public class NewFriendActivity
     }
     for (;;)
     {
-      localActionSheet.a(new ejj(this, localActionSheet));
+      localActionSheet.a(new eeg(this, localActionSheet));
       localActionSheet.d(2131561746);
       localActionSheet.show();
       return;
@@ -598,11 +598,11 @@ public class NewFriendActivity
       this.jdField_a_of_type_AndroidWidgetImageView.performClick();
       return true;
     case 1001: 
-      paramMenuItem = new ejq(this);
+      paramMenuItem = new een(this);
       this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(paramMenuItem);
       return true;
     case 1002: 
-      paramMenuItem = new ejr(this);
+      paramMenuItem = new eeo(this);
       this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(paramMenuItem);
       return true;
     }
@@ -677,7 +677,7 @@ public class NewFriendActivity
   public void update(Observable paramObservable, Object paramObject)
   {
     if ((paramObject instanceof NewFriendMessage)) {
-      runOnUiThread(new ejn(this, paramObject));
+      runOnUiThread(new eek(this, paramObject));
     }
     int i1;
     do
@@ -696,7 +696,7 @@ public class NewFriendActivity
         }
       }
     } while (i1 == 0);
-    runOnUiThread(new ejo(this));
+    runOnUiThread(new eel(this));
   }
 }
 

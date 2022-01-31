@@ -1,34 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import UserGrowth.stFollowReq;
+import UserGrowth.stFollowRsp;
 
 public class tkc
-  implements View.OnClickListener
+  extends thb<stFollowRsp>
 {
-  public tkc(QQMapActivity paramQQMapActivity) {}
-  
-  public void onClick(View paramView)
+  public tkc(String paramString, int paramInt)
   {
-    if (this.a.a == null)
-    {
-      this.a.a = ((ActionSheet)ActionSheetHelper.a(this.a, null));
-      this.a.a.b(2131431690);
-      this.a.a.b(2131431563);
-      this.a.a.c(2131433015);
-      this.a.a.a(new tkd(this));
-    }
-    if (!this.a.a.isShowing()) {
-      this.a.a.show();
-    }
-    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_menu", 0, 0, "", "", "", "");
+    super("Follow");
+    this.a = new stFollowReq(paramString, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tkc
  * JD-Core Version:    0.7.0.1
  */

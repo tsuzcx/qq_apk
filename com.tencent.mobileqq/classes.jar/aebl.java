@@ -1,22 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
 
-public final class aebl
-  implements View.OnTouchListener
+public class aebl
+  implements DialogInterface.OnClickListener
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aebl(TranslucentTRansferFragment paramTranslucentTRansferFragment, bdjz parambdjz) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    this.jdField_a_of_type_Bdjz.dismiss();
   }
 }
 

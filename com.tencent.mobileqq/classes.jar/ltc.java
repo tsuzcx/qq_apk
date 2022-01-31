@@ -1,21 +1,16 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.aekit.openrender.internal.VideoFilterBase;
 
-public class ltc
-  implements AdapterView.OnItemClickListener
+class ltc
+  extends VideoFilterBase
 {
-  public ltc(NativeGridImageView paramNativeGridImageView) {}
-  
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  ltc(ltb paramltb)
   {
-    NativeGridImageView.a(this.a, paramInt, NativeGridImageView.a(this.a).a());
+    super(ltb.a(), ltb.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ltc
  * JD-Core Version:    0.7.0.1
  */

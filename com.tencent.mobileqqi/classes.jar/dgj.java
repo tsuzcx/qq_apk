@@ -1,32 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.PublicAccountChatActivity;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.PhoneContactManager;
 
 public class dgj
-  extends Handler
+  implements Runnable
 {
-  public dgj(PublicAccountChatActivity paramPublicAccountChatActivity) {}
+  public dgj(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (this.a.isFinishing());
-    try
-    {
-      PublicAccountChatActivity.a(this.a);
-      return;
-    }
-    catch (Exception paramMessage) {}
+    ((PhoneContactManager)this.a.b.getManager(10)).e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dgj
  * JD-Core Version:    0.7.0.1
  */

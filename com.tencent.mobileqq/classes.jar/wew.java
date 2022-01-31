@@ -1,25 +1,49 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wew
-  implements MediaPlayer.OnErrorListener
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wfl>
 {
-  public wew(BlessActivity paramBlessActivity) {}
-  
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public wew(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onError what=" + paramInt1 + ", extra=" + paramInt2);
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wfl paramwfl)
+  {
+    if (paramwfl.a == 1)
+    {
+      paramQQStoryShareGroupProfileActivity.g = true;
+      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Wfk.a();
+      paramQQStoryShareGroupProfileActivity.b(true);
+      paramwfl = paramQQStoryShareGroupProfileActivity.b;
+      if (!paramQQStoryShareGroupProfileActivity.g) {
+        break label82;
+      }
     }
-    BlessActivity.a(this.a, true);
-    return true;
+    label82:
+    for (paramQQStoryShareGroupProfileActivity = "1";; paramQQStoryShareGroupProfileActivity = "2")
+    {
+      wxj.a("share_story", "clk_rank", 0, 0, new String[] { paramwfl, paramQQStoryShareGroupProfileActivity });
+      return;
+      if (paramwfl.a != 0) {
+        break;
+      }
+      paramQQStoryShareGroupProfileActivity.g = false;
+      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean = false;
+      break;
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wfl.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wew
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,20 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.MarkDrawable;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import java.util.Comparator;
 
 public class aoei
-  extends Property
+  implements Comparator<ColorNote>
 {
-  public aoei(MarkDrawable paramMarkDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public aoei(ColorNoteSettingFragment paramColorNoteSettingFragment) {}
   
-  public Integer a(MarkDrawable paramMarkDrawable)
+  public int a(ColorNote paramColorNote1, ColorNote paramColorNote2)
   {
-    if (paramMarkDrawable != null) {
-      return Integer.valueOf(MarkDrawable.a(paramMarkDrawable));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(MarkDrawable paramMarkDrawable, Integer paramInteger)
-  {
-    if (paramMarkDrawable != null) {
-      MarkDrawable.a(paramMarkDrawable, paramInteger.intValue());
-    }
+    return -(int)(paramColorNote1.getTime() - paramColorNote2.getTime());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoei
  * JD-Core Version:    0.7.0.1
  */

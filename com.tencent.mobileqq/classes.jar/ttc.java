@@ -1,39 +1,23 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import feedcloud.FeedCloudMeta.StUser;
 
-public class ttc
-  implements CompoundButton.OnCheckedChangeListener
+class ttc
+  implements udx
 {
-  public ttc(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  ttc(ttb paramttb) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser)
   {
-    int i = 1;
     if (paramBoolean)
     {
-      this.a.app.c(1);
-      paramCompoundButton = this.a.app;
-      if (!paramBoolean) {
-        break label68;
-      }
-    }
-    for (;;)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_gupsound", 0, i, "", "", "", "");
+      tzs.a(73, 2, tsw.a(this.a.a));
       return;
-      this.a.app.c(0);
-      break;
-      label68:
-      i = 0;
     }
+    tzs.a(74, 2, tsw.a(this.a.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ttc
  * JD-Core Version:    0.7.0.1
  */

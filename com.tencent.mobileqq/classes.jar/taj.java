@@ -1,33 +1,39 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.util.SwipeBackLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class taj
-  implements Runnable
+  extends Handler
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  public taj(SwipeBackLayout paramSwipeBackLayout) {}
   
-  public taj(int paramInt, WeakReference paramWeakReference)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    switch (paramMessage.what)
     {
-      FormSimpleItem localFormSimpleItem = (FormSimpleItem)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localFormSimpleItem != null) {
-        localFormSimpleItem.setRightText(localFormSimpleItem.getResources().getString(this.jdField_a_of_type_Int));
-      }
+    default: 
+      super.handleMessage(paramMessage);
     }
+    do
+    {
+      do
+      {
+        return;
+      } while (SwipeBackLayout.a(this.a));
+      SwipeBackLayout.a(this.a, true);
+    } while (!(this.a.a instanceof Activity));
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_SwipeBackLayout", 2, "SwipeBackLayout finish()");
+    }
+    this.a.c = true;
+    ((Activity)this.a.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     taj
  * JD-Core Version:    0.7.0.1
  */

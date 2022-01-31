@@ -10,7 +10,7 @@ import com.google.zxing.common.GridSampler;
 import com.google.zxing.common.PerspectiveTransform;
 import com.google.zxing.common.detector.MathUtils;
 import com.google.zxing.qrcode.decoder.Version;
-import fw;
+import ge;
 import java.util.Map;
 
 public class Detector
@@ -343,7 +343,7 @@ public class Detector
     if (paramInt2 - k < paramFloat1 * 3.0F) {
       throw ReaderException.getInstance();
     }
-    return new fw(this.jdField_a_of_type_ComGoogleZxingCommonBitMatrix, i, k, paramInt1 - i, paramInt2 - k, paramFloat1, this.jdField_a_of_type_ComGoogleZxingResultPointCallback).a();
+    return new ge(this.jdField_a_of_type_ComGoogleZxingCommonBitMatrix, i, k, paramInt1 - i, paramInt2 - k, paramFloat1, this.jdField_a_of_type_ComGoogleZxingResultPointCallback).a();
   }
 }
 

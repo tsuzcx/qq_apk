@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class rkf
-  implements Runnable
+class rkf
+  implements DialogInterface.OnCancelListener
 {
-  public rkf(AddRequestActivity paramAddRequestActivity) {}
+  rkf(rkd paramrkd) {}
   
-  public void run()
-  {
-    this.a.a(ContactUtils.f(this.a.app, this.a.a));
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rkf
  * JD-Core Version:    0.7.0.1
  */

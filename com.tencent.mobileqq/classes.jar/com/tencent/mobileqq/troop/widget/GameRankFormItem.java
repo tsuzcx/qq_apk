@@ -20,7 +20,7 @@ public class GameRankFormItem
     super(paramContext);
   }
   
-  protected void a()
+  public void a()
   {
     if (this.jdField_a_of_type_ComTencentWidgetMultiImageTextView == null) {}
     label282:
@@ -31,31 +31,31 @@ public class GameRankFormItem
       do
       {
         return;
-        c();
-        if (this.jdField_c_of_type_AndroidWidgetTextView != null) {
-          this.jdField_c_of_type_AndroidWidgetTextView.setMaxWidth(this.i);
+        b();
+        if (this.jdField_d_of_type_AndroidWidgetTextView != null) {
+          this.jdField_d_of_type_AndroidWidgetTextView.setMaxWidth(this.o);
         }
         if (this.jdField_a_of_type_Int <= 0) {
           break;
         }
-        if (this.jdField_c_of_type_JavaLangCharSequence == null) {
-          this.jdField_c_of_type_JavaLangCharSequence = "";
+        if (this.jdField_d_of_type_JavaLangCharSequence == null) {
+          this.jdField_d_of_type_JavaLangCharSequence = "";
         }
         this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setVisibility(0);
         if (this.jdField_a_of_type_Int >= 4)
         {
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setText(this.jdField_c_of_type_JavaLangCharSequence + String.valueOf(this.jdField_a_of_type_Int));
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setTextColor(b(getResources(), this.g));
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setContentDescription(this.jdField_c_of_type_JavaLangCharSequence + String.valueOf(this.jdField_a_of_type_Int));
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setMaxWidth(this.h);
+          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setText(this.jdField_d_of_type_JavaLangCharSequence + String.valueOf(this.jdField_a_of_type_Int));
+          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setTextColor(b(getResources(), this.m));
+          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setContentDescription(this.jdField_d_of_type_JavaLangCharSequence + String.valueOf(this.jdField_a_of_type_Int));
+          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setMaxWidth(this.n);
           if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || (!this.jdField_a_of_type_Boolean)) {
             break label448;
           }
-          if ((this.e <= 0) || (this.f <= 0)) {
+          if ((this.k <= 0) || (this.l <= 0)) {
             break label428;
           }
           this.b.setBounds(0, 0, this.b.getIntrinsicWidth(), this.b.getIntrinsicHeight());
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.e, this.f);
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.k, this.l);
           this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawables(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, this.b, null);
         }
         for (;;)
@@ -72,11 +72,11 @@ public class GameRankFormItem
           int k;
           if (this.jdField_a_of_type_Int == 1)
           {
-            i = 2130841347;
+            i = 2130843337;
             localObject = ((Resources)localObject).getDrawable(i);
-            localCharSequence = this.jdField_c_of_type_JavaLangCharSequence;
+            localCharSequence = this.jdField_d_of_type_JavaLangCharSequence;
             localTextPaint = this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.getPaint();
-            k = this.h;
+            k = this.n;
             if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
               break label412;
             }
@@ -89,14 +89,14 @@ public class GameRankFormItem
           {
             localCharSequence = TextUtils.ellipsize(localCharSequence, localTextPaint, k - i - j - ((Drawable)localObject).getIntrinsicWidth(), TextUtils.TruncateAt.END);
             this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setText(localCharSequence);
-            this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.a((Drawable)localObject, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight()).a();
+            this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.a((Drawable)localObject, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight()).b();
             break;
             if (this.jdField_a_of_type_Int == 2)
             {
-              i = 2130841348;
+              i = 2130843338;
               break label282;
             }
-            i = 2130841349;
+            i = 2130843339;
             break label282;
             i = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
             break label319;
@@ -105,9 +105,9 @@ public class GameRankFormItem
         }
         if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (!this.jdField_a_of_type_Boolean))
         {
-          if ((this.e > 0) && (this.f > 0))
+          if ((this.k > 0) && (this.l > 0))
           {
-            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.e, this.f);
+            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.k, this.l);
             this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawables(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
           }
           for (;;)
@@ -131,9 +131,9 @@ public class GameRankFormItem
       if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (this.jdField_a_of_type_Boolean))
       {
         this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setVisibility(0);
-        if ((this.e > 0) && (this.f > 0))
+        if ((this.k > 0) && (this.l > 0))
         {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.e, this.f);
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.k, this.l);
           this.b.setBounds(0, 0, this.b.getIntrinsicWidth(), this.b.getIntrinsicHeight());
           this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawables(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, this.b, null);
         }
@@ -147,9 +147,9 @@ public class GameRankFormItem
       if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (!this.jdField_a_of_type_Boolean))
       {
         this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setVisibility(0);
-        if ((this.e > 0) && (this.f > 0))
+        if ((this.k > 0) && (this.l > 0))
         {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.e, this.f);
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.k, this.l);
           this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawables(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
         }
         for (;;)
@@ -175,7 +175,7 @@ public class GameRankFormItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.GameRankFormItem
  * JD-Core Version:    0.7.0.1
  */

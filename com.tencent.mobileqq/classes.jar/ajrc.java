@@ -1,12 +1,15 @@
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr.WriteCommentCallback;
-import org.json.JSONObject;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-public final class ajrc
-  implements TroopTopicMgr.WriteCommentCallback
+public class ajrc
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public void a(int paramInt, JSONObject paramJSONObject)
+  public ajrc(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramInt == 0) {}
+    NewFlowCameraActivity.a(this.a, paramBoolean);
   }
 }
 

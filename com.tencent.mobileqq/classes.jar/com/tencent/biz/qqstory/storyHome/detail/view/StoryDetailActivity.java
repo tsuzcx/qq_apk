@@ -1,5 +1,6 @@
 package com.tencent.biz.qqstory.storyHome.detail.view;
 
+import abvb;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +9,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.widget.TextView;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import com.tencent.mfsdk.LeakInspector.ActivityLeakSolution;
 
 public class StoryDetailActivity
   extends QQStoryBaseActivity
@@ -70,40 +70,40 @@ public class StoryDetailActivity
     a(paramActivity, paramString1, paramInt1, paramBoolean, -1, paramString2, paramInt2, 0);
   }
   
-  private void b()
+  private void d()
   {
-    setContentView(2130970696);
-    this.leftView.setText(2131433698);
+    setContentView(2131561417);
+    this.leftView.setText(2131690623);
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment = StoryDetailFragment.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.d, this.c);
-    localFragmentTransaction.replace(2131362841, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment);
+    localFragmentTransaction.replace(2131364736, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment);
     localFragmentTransaction.commitAllowingStateLoss();
   }
   
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     a();
-    b();
+    d();
     return true;
   }
   
-  protected void doOnSaveInstanceState(Bundle paramBundle) {}
+  public void doOnSaveInstanceState(Bundle paramBundle) {}
   
   public void finish()
   {
     super.finish();
-    ActivityLeakSolution.a(this);
+    abvb.a(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailActivity
  * JD-Core Version:    0.7.0.1
  */

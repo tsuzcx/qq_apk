@@ -7,14 +7,14 @@ import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginRuntime;
 import com.tencent.mobileqq.startup.step.Step;
-import dit;
+import ddc;
 import mqq.app.MobileQQ;
 
 public class QQMapActivity$MapRuntime
   extends PluginRuntime
   implements Thread.UncaughtExceptionHandler
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new dit(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ddc(this);
   private Thread.UncaughtExceptionHandler jdField_a_of_type_JavaLangThread$UncaughtExceptionHandler;
   
   protected void onCreate(Bundle paramBundle)
@@ -28,7 +28,7 @@ public class QQMapActivity$MapRuntime
     paramBundle.addAction("mqq.i.intent.action.LOGOUT");
     paramBundle.addAction("mqq.intent.action.EXIT_" + MobileQQ.getMobileQQ().getPackageName());
     MobileQQ.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
-    Step.a(11, BaseApplicationImpl.a, null).b();
+    Step.a(12, BaseApplicationImpl.a, null).b();
   }
   
   public void uncaughtException(Thread paramThread, Throwable paramThrowable)

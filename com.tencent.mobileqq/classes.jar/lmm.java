@@ -1,104 +1,116 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.av.camera.QavCameraUsage.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.List;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
-public final class lmm
-  implements Runnable
+public class lmm
 {
-  public lmm(List paramList, int paramInt1, int paramInt2) {}
+  public static String a;
   
-  public void run()
+  public static void a(Context paramContext, String paramString)
   {
-    int j = 0;
-    long l2;
-    ArrayList localArrayList;
-    oidb_cmd0x80a.AttributeList localAttributeList;
-    PBStringField localPBStringField;
-    if (ReadinjoySPEventReport.b(60))
-    {
-      long l1 = ReadinjoySPEventReport.b();
-      l2 = ReadinjoySPEventReport.a(l1 * 1000L) / 1000L;
-      int k = this.jdField_a_of_type_JavaUtilList.size() - 1;
-      int i = 0;
-      if (k >= 0)
-      {
-        localObject = (ChatMessage)this.jdField_a_of_type_JavaUtilList.get(k);
-        if (((ChatMessage)localObject).time > l1)
-        {
-          if (((ChatMessage)localObject).isSendFromLocal())
-          {
-            i = j;
-            j = 1;
-          }
-          for (;;)
-          {
-            int m = k - 1;
-            k = j;
-            j = i;
-            i = k;
-            k = m;
-            break;
-            m = 1;
-            j = i;
-            i = m;
-          }
-        }
-      }
-      localArrayList = new ArrayList();
-      localObject = new oidb_cmd0x80a.AttributeList();
-      ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(1);
-      ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("aiotype");
-      ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(String.valueOf(ReadinjoySPEventReport.a(this.jdField_a_of_type_Int)));
-      localArrayList.add(localObject);
-      localObject = new oidb_cmd0x80a.AttributeList();
-      ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(2);
-      ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("unreadmsg");
-      ((oidb_cmd0x80a.AttributeList)localObject).att_value.set("" + this.b);
-      localArrayList.add(localObject);
-      localAttributeList = new oidb_cmd0x80a.AttributeList();
-      localAttributeList.att_id.set(3);
-      localAttributeList.att_name.set("hassendmsg");
-      localPBStringField = localAttributeList.att_value;
-      if (i == 0) {
-        break label443;
-      }
-      localObject = "1";
-      localPBStringField.set((String)localObject);
-      localArrayList.add(localAttributeList);
-      localAttributeList = new oidb_cmd0x80a.AttributeList();
-      localAttributeList.att_id.set(4);
-      localAttributeList.att_name.set("hasrecvmsg");
-      localPBStringField = localAttributeList.att_value;
-      if (j == 0) {
-        break label450;
-      }
-    }
-    label443:
-    label450:
-    for (Object localObject = "1";; localObject = "0")
-    {
-      localPBStringField.set((String)localObject);
-      localArrayList.add(localAttributeList);
-      localObject = new oidb_cmd0x80a.AttributeList();
-      ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(5);
-      ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("costtime");
-      ((oidb_cmd0x80a.AttributeList)localObject).att_value.set("" + l2);
-      localArrayList.add(localObject);
-      PublicAccountUtil.a(60, "ExitChatAIO", localArrayList);
+    if (paramContext == null) {
       return;
-      localObject = "0";
-      break;
     }
+    String str = a;
+    paramString = paramString + "_" + System.currentTimeMillis();
+    QLog.w("QavCameraUsage", 1, "setCameraUsageState, last[" + str + "], cur[" + paramString + "]");
+    a = paramString;
+    paramContext = paramContext.getSharedPreferences("qav_camera_usage_sp", 4).edit();
+    paramContext.putString("camera_used_desc", paramString);
+    paramContext.putBoolean("camera_used", true);
+    paramContext.commit();
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    boolean bool = true;
+    if (paramContext == null) {
+      return false;
+    }
+    paramContext = paramContext.getSharedPreferences("qav_camera_usage_sp", 4).getString("camera_used_desc", null);
+    QLog.w("QavCameraUsage", 1, "getCameraUsageState, cameraIsUsing[" + paramContext + "]");
+    if (paramContext != null) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
+  }
+  
+  public static boolean a(Context paramContext, boolean paramBoolean)
+  {
+    boolean bool1 = false;
+    boolean bool2 = false;
+    if (paramContext == null) {
+      return bool2;
+    }
+    Object localObject = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
+    label43:
+    int j;
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      int i = 0;
+      j = i;
+      if (!((Iterator)localObject).hasNext()) {
+        break label83;
+      }
+      if (!((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName.equals("com.tencent.mobileqq:video")) {
+        break label135;
+      }
+      i = 1;
+    }
+    label135:
+    for (;;)
+    {
+      break label43;
+      j = 0;
+      label83:
+      if (j != 0) {
+        bool1 = a(paramContext);
+      }
+      bool2 = bool1;
+      if (!bool1) {
+        break;
+      }
+      bool2 = bool1;
+      if (!paramBoolean) {
+        break;
+      }
+      new Handler(Looper.getMainLooper()).post(new QavCameraUsage.1(paramContext));
+      return bool1;
+    }
+  }
+  
+  public static void b(Context paramContext, String paramString)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    QLog.w("QavCameraUsage", 1, "clearCameraUsageState, cameraIsUsing[" + a + "], type[" + paramString + "]");
+    a = null;
+    paramContext = paramContext.getSharedPreferences("qav_camera_usage_sp", 4).edit();
+    paramContext.remove("camera_used_desc");
+    paramContext.putBoolean("camera_used", false);
+    paramContext.commit();
+  }
+  
+  public static boolean b(Context paramContext)
+  {
+    return a(paramContext, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lmm
  * JD-Core Version:    0.7.0.1
  */

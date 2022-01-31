@@ -1,32 +1,35 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
-public final class ahkp
-  implements ValueAnimation.AnimationUpdateListener
+public abstract class ahkp<T>
+  extends ahkt<T>
 {
-  public ahkp(View paramView) {}
+  protected int a;
+  protected Context a;
+  protected LayoutInflater a;
   
-  @TargetApi(11)
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public ahkp(Context paramContext, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QIMAnimationUtils", 2, "alphaAnimation value = " + paramFloat1);
-    }
-    paramFloat = paramFloat1.floatValue();
-    if (this.a != null)
-    {
-      this.a.setAlpha(paramFloat);
-      this.a.invalidate();
-    }
+    super(paramContext);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_Int = paramInt;
+    a(new ahkq(this, paramInt));
   }
+  
+  public ahkz a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  {
+    return b(paramContext, paramViewGroup, paramInt);
+  }
+  
+  protected abstract void a(ahkz paramahkz, T paramT, int paramInt);
+  
+  protected abstract ahkz b(Context paramContext, ViewGroup paramViewGroup, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahkp
  * JD-Core Version:    0.7.0.1
  */

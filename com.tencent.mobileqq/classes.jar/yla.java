@@ -1,62 +1,62 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.PopupWindow;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class yla
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class yla
 {
-  public yla(ApolloRender paramApolloRender, View paramView) {}
+  int a;
+  public String a;
+  int jdField_b_of_type_Int;
+  private final String jdField_b_of_type_JavaLangString = "image_url";
+  private final String c = "image_width";
+  private final String d = "image_height";
   
-  public void onGlobalLayout()
+  public yla() {}
+  
+  public yla(String paramString, int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow == null) || (!this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mShowEditWindow)) {
-      QLog.e("rogersxiao", 2, "render.mEditWindow return");
-    }
-    do
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public String a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      return;
-      localObject = new Rect();
-      this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame((Rect)localObject);
-      i = (int)DeviceInfoUtil.m();
-      int j = ((Rect)localObject).bottom;
-      int k = ((Rect)localObject).top;
-      ImmersiveUtils.a(this.jdField_a_of_type_AndroidViewView.getContext());
-      if (i - (j - k) >= 200) {
-        break;
+      localJSONObject.put("image_url", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("image_width", this.jdField_a_of_type_Int);
+      localJSONObject.put("image_height", this.jdField_b_of_type_Int);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
       }
-    } while (!ApolloRender.sIsKeyBoardShow);
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.dismiss();
-    ApolloRender.sIsKeyBoardDissmiss = true;
-    return;
-    int i = ((Rect)localObject).bottom - this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getHeight();
-    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0);
-    if (((SharedPreferences)localObject).getInt("sp_key_apollo_keyboard_height", 0) != i)
-    {
-      ((SharedPreferences)localObject).edit().putInt("sp_key_apollo_keyboard_height", i).commit();
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView.getRootView(), 0, 0, i);
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.update(0, i, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getHeight());
-      ApolloRender.sIsKeyBoardDissmiss = false;
     }
-    if (ApolloRender.sIsKeyBoardDissmiss)
+  }
+  
+  public void a(String paramString)
+  {
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView.getRootView(), 0, 0, i);
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.update(0, i, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getHeight());
-      ApolloRender.sIsKeyBoardDissmiss = false;
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_JavaLangString = paramString.getString("image_url");
+      this.jdField_a_of_type_Int = paramString.getInt("image_width");
+      this.jdField_b_of_type_Int = paramString.getInt("image_height");
+      return;
     }
-    ApolloRender.sIsKeyBoardShow = true;
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yla
  * JD-Core Version:    0.7.0.1
  */

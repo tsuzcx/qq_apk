@@ -1,102 +1,71 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyEngineModule;
-import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFService;
-import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFServlet;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.aekit.openrender.internal.FrameBufferCache;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class ltg
-  implements Runnable
+  extends ltk
 {
-  public ltg(ReadInJoyMSFService paramReadInJoyMSFService, ToServiceMsg paramToServiceMsg) {}
+  private final String jdField_a_of_type_JavaLangString = "MultipleTextureSource-" + Integer.toHexString(hashCode());
+  private List<Frame> jdField_a_of_type_JavaUtilList = new LinkedList();
   
-  public void run()
+  protected void a() {}
+  
+  public void a(List<lth> paramList, long paramLong)
   {
-    int j = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyMSFService", 2, "req cmd: " + this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getServiceCmd());
-    }
-    for (;;)
+    ArrayList localArrayList1 = new ArrayList(paramList.size());
+    int i = 0;
+    if (i < paramList.size())
     {
-      try
+      lth locallth = (lth)paramList.get(i);
+      label131:
+      ArrayList localArrayList2;
+      if (i >= this.jdField_a_of_type_JavaUtilList.size())
       {
-        boolean bool = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
-        if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttribute(ReadInJoyEngineModule.g) == null) {
-          break label391;
+        localObject = new Frame();
+        QLog.d(this.jdField_a_of_type_JavaLangString, 1, "render: create cached frame#" + Integer.toHexString(localObject.hashCode()));
+        ((Frame)localObject).setSizedTexture(locallth.jdField_a_of_type_Int, locallth.b, locallth.c);
+        this.jdField_a_of_type_JavaUtilList.add(localObject);
+        if (!locallth.a()) {
+          break label257;
         }
-        if (((Integer)this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttribute(ReadInJoyEngineModule.g)).intValue() == 2)
-        {
-          i = 1;
-          if ((!bool) || (this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getWupBuffer() == null)) {
-            break label386;
-          }
-          long l;
-          if (i == 0)
-          {
-            l = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getWupBuffer().length;
-            localObject = new byte[(int)l + 4];
-            PkgTools.a((byte[])localObject, 0, 4L + l);
-            PkgTools.a((byte[])localObject, 4, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getWupBuffer(), (int)l);
-            this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.putWupBuffer((byte[])localObject);
-          }
-          i = j;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ReadInJoyMSFService", 2, "PB cmd: req cmd: " + this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getServiceCmd());
-            i = j;
-          }
-          if (i != 0)
-          {
-            localObject = new NewIntent(ReadInJoyUtils.a().getApplication(), ReadInJoyMSFServlet.class);
-            ((NewIntent)localObject).putExtra(ToServiceMsg.class.getSimpleName(), this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg);
-            ReadInJoyUtils.a().startServlet((NewIntent)localObject);
-            l = System.currentTimeMillis();
-            this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.putLong("sendtimekey", l);
-          }
-          return;
-        }
-        i = 0;
-        continue;
-        StringBuilder localStringBuilder;
-        Object localObject = "";
+        localArrayList2 = new ArrayList(1);
+        lto locallto = new lto();
+        locallto.jdField_a_of_type_JavaUtilList = locallth.jdField_a_of_type_JavaUtilList;
+        localArrayList2.add(locallto);
       }
-      catch (Exception localException)
+      label257:
+      for (Object localObject = ltn.a((Frame)localObject, localArrayList2);; localObject = ltn.a((Frame)localObject))
       {
-        localException.printStackTrace();
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder().append("handleRequest Exception. cmd=");
-          if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg != null)
-          {
-            localObject = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getServiceCmd();
-            QLog.e("ReadInJoyMSFService", 2, (String)localObject, localException);
-          }
-        }
-        else
-        {
-          localObject = new FromServiceMsg(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getUin(), this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getServiceCmd());
-          ((FromServiceMsg)localObject).setMsgFail();
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyMSFService.a(false, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, (FromServiceMsg)localObject, localException);
-          return;
-        }
+        localArrayList1.add(localObject);
+        i += 1;
+        break;
+        localObject = (Frame)this.jdField_a_of_type_JavaUtilList.get(i);
+        ((Frame)this.jdField_a_of_type_JavaUtilList.get(i)).setSizedTexture(locallth.jdField_a_of_type_Int, locallth.b, locallth.c);
+        break label131;
       }
-      continue;
-      label386:
-      int i = 0;
-      continue;
-      label391:
-      i = 0;
     }
+    b(localArrayList1, paramLong);
+  }
+  
+  protected void b()
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      ((Frame)this.jdField_a_of_type_JavaUtilList.get(i)).clear();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: cached frame#" + Integer.toHexString(((Frame)this.jdField_a_of_type_JavaUtilList.get(i)).hashCode()));
+      i += 1;
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    FrameBufferCache.getInstance().destroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ltg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,8 @@
 package com.tencent.token.ui.base;
 
-import android.graphics.Canvas;
-
 public abstract interface cg
 {
-  public abstract void onDrawDots(Canvas paramCanvas, boolean paramBoolean);
-  
-  public abstract void onNextPage(boolean paramBoolean);
+  public abstract void onRefresh();
 }
 
 

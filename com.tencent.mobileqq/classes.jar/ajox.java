@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class ajox
-  implements Runnable
+  implements bhuk
 {
-  public ajox(TroopFileTransferManager paramTroopFileTransferManager) {}
+  public ajox(EditLocalVideoActivity paramEditLocalVideoActivity, Bundle paramBundle) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.c()) {
-      this.a.d();
-    }
+    paramView = "[Actvity]" + getClass().getSimpleName() + " QQCustomDialog click :" + alud.a(2131704055);
+    bjgs.a().c(paramView);
+    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).dismiss();
+    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

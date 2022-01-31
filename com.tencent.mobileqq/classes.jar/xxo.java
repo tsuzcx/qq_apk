@@ -1,29 +1,19 @@
-import com.tencent.mobileqq.activity.richmedia.view.ExtendEditText.LengthConvertor;
+import android.util.SparseArray;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView.BorderStyle;
 
 public final class xxo
-  implements ExtendEditText.LengthConvertor
+  extends SparseArray<RotateCircleImageView.BorderStyle>
 {
-  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public xxo(int paramInt)
   {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
-    }
-    return -paramInt1;
-  }
-  
-  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
-    }
-    return -paramInt1;
+    super(paramInt);
+    append(0, RotateCircleImageView.BorderStyle.STILL);
+    append(1, RotateCircleImageView.BorderStyle.ROTATE);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xxo
  * JD-Core Version:    0.7.0.1
  */

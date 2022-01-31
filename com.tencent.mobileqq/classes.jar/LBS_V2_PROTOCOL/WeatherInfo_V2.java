@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public final class WeatherInfo_V2
   extends JceStruct
 {
-  static ArrayList cache_vecForecastInfo;
+  static ArrayList<ForecastInfo> cache_vecForecastInfo;
   public long iCacheTime;
   public int iCityCode;
   public int iDayTime;
@@ -30,11 +30,11 @@ public final class WeatherInfo_V2
   public String strSunriseTime = "";
   public String strSunsetTime = "";
   public String strUrl = "";
-  public ArrayList vecForecastInfo;
+  public ArrayList<ForecastInfo> vecForecastInfo;
   
   public WeatherInfo_V2() {}
   
-  public WeatherInfo_V2(int paramInt1, int paramInt2, String paramString1, String paramString2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, String paramString3, String paramString4, String paramString5, int paramInt10, String paramString6, int paramInt11, int paramInt12, long paramLong, ArrayList paramArrayList, String paramString7, int paramInt13)
+  public WeatherInfo_V2(int paramInt1, int paramInt2, String paramString1, String paramString2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, String paramString3, String paramString4, String paramString5, int paramInt10, String paramString6, int paramInt11, int paramInt12, long paramLong, ArrayList<ForecastInfo> paramArrayList, String paramString7, int paramInt13)
   {
     this.iRet = paramInt1;
     this.iCityCode = paramInt2;

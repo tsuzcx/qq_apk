@@ -1,49 +1,59 @@
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask;
-import dov.com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
+import com.tencent.mobileqq.confess.BaseMsgListFragment;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class aoin
-  implements aoip
+  extends altm
 {
-  public aoin(EncodeVideoTask paramEncodeVideoTask) {}
+  public aoin(BaseMsgListFragment paramBaseMsgListFragment) {}
   
-  public void a(int paramInt)
+  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
   {
-    if (EncodeVideoTask.a(this.a) != null) {
-      EncodeVideoTask.a(this.a).a(paramInt);
+    if ((paramBoolean) && ((paramObject instanceof HashMap))) {}
+    try
+    {
+      paramObject = ((HashMap)paramObject).entrySet().iterator();
+      do
+      {
+        Map.Entry localEntry;
+        do
+        {
+          if (!paramObject.hasNext()) {
+            break;
+          }
+          localEntry = (Map.Entry)paramObject.next();
+        } while (localEntry == null);
+        paramBoolean = this.a.a((String)localEntry.getKey(), 2);
+      } while (!paramBoolean);
+      i = 1;
+    }
+    catch (Throwable paramObject)
+    {
+      for (;;)
+      {
+        int i = 0;
+        continue;
+        i = 0;
+      }
+    }
+    if (i != 0) {
+      this.a.b();
     }
   }
   
-  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EncodeVideoTask", 2, "generate files|onNext file: " + paramString);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a(paramString, 1))) {
+      this.a.b();
     }
-    if (EncodeVideoTask.a(this.a))
-    {
-      b(paramPublishVideoEntry, paramString);
-      return;
-    }
-    if ((paramPublishVideoEntry != null) && (!TextUtils.isEmpty(paramPublishVideoEntry.doodlePath)) && (FileUtils.b(paramPublishVideoEntry.doodlePath)))
-    {
-      EncodeVideoTask.a(paramString, paramPublishVideoEntry, EncodeVideoTask.a(this.a));
-      return;
-    }
-    b(paramPublishVideoEntry, paramString);
-  }
-  
-  public void b(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
-    ThreadManager.postImmediately(new aoio(this, paramPublishVideoEntry, paramString), null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.confess.ConfessHandler;
-import com.tencent.mobileqq.confess.ConfessInfo;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
+import com.tencent.qphone.base.util.QLog;
 
 public class abui
-  implements DialogInterface.OnClickListener
 {
-  public abui(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, ConfessInfo paramConfessInfo, ConfessChatPie paramConfessChatPie) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(String paramString1, String paramString2)
   {
-    ((ConfessHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(125)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ComTencentMobileqqConfessConfessInfo, -1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.a(0, "正在屏蔽...", 0);
+    QLog.d(paramString1, 1, paramString2);
   }
+  
+  public static void b(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abui
  * JD-Core Version:    0.7.0.1
  */

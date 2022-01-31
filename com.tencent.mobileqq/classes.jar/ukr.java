@@ -1,49 +1,12 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.HBCustomizeStrategy;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.BaseRedPkgElem;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.PanelRedPkgElem;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-
-public class ukr
-  implements CustomizeStrategyFactory.HBCustomizeStrategy
+public abstract interface ukr
 {
-  QWalletConfigManager jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager = null;
-  PreloadManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public abstract void a(uiz paramuiz);
   
-  public ukr(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(150));
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager = ((QWalletConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(244));
-    }
-  }
-  
-  public void a() {}
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    ThreadManager.post(new uks(this, paramRedPacketInfo), 5, null, true);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, BaseRedPkgElem paramBaseRedPkgElem)
-  {
-    if ((paramRedPacketInfo != null) && ((paramBaseRedPkgElem instanceof PanelRedPkgElem)))
-    {
-      paramBaseRedPkgElem = (PanelRedPkgElem)paramBaseRedPkgElem;
-      paramRedPacketInfo.icon = paramBaseRedPkgElem.a;
-      paramRedPacketInfo.resPath = paramBaseRedPkgElem.b;
-    }
-  }
+  public abstract void b(uiz paramuiz);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ukr
  * JD-Core Version:    0.7.0.1
  */

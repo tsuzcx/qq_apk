@@ -1,14 +1,24 @@
-import android.widget.Button;
-import com.tencent.mobileqq.tribe.fragment.TribeEffectsCameraCaptureFragment;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.widget.AbsListView;
 
-public class aisr
-  implements Runnable
+class aisr
+  implements bhtv
 {
-  public aisr(TribeEffectsCameraCaptureFragment paramTribeEffectsCameraCaptureFragment) {}
+  aisr(aisq paramaisq) {}
   
-  public void run()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.a.a.setVisibility(0);
+    if ((aisq.a(this.a)) && (paramInt == 0) && (((NewPhotoListActivity)this.a.mActivity).mGridView != null) && (((NewPhotoListActivity)this.a.mActivity).photoListAdapter != null) && (aisq.a(this.a).selectedMediaInfoHashMap != null)) {
+      aisq.a(this.a);
+    }
+    if (paramInt == 0)
+    {
+      abvl.a().a("list_photo", false);
+      return;
+    }
+    abvl.a().a("list_photo");
   }
 }
 

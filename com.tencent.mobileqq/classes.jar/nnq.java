@@ -1,35 +1,47 @@
-import android.app.Dialog;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.EncryptUinInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class nnq
-  extends GestureDetector.SimpleOnGestureListener
+class nnq
+  extends nnr
 {
-  public nnq(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
+  nnq(nnp paramnnp) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle)
   {
-    return true;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
+    if ((paramBoolean) && (paramList != null) && (!paramList.isEmpty()))
     {
-      paramFloat1 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
-      float f = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
-      double d = Math.abs(Math.asin(paramFloat1 / Math.sqrt(paramFloat1 * paramFloat1 + f * f)));
-      if ((paramFloat2 > 0.0F) && (d < 0.5235987755982988D) && (this.a.jdField_a_of_type_Int == 0)) {
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      paramList = (EncryptUinInfo)paramList.get(0);
+      if ((paramList.jdField_a_of_type_Int != 0) || (paramList.jdField_a_of_type_Long != this.a.mApp.getLongAccountUin()) || (TextUtils.isEmpty(paramList.jdField_a_of_type_JavaLangString))) {
+        break label113;
+      }
+      nnp.a(this.a, paramList.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: " + nnp.a(this.a));
       }
     }
-    return false;
+    label113:
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: failed，code=" + paramList.jdField_a_of_type_Int);
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt == 1)
+    {
+      super.onUpdate(paramInt, paramBoolean, paramObject);
+      this.a.mApp.removeObserver(nnp.a(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nnq
  * JD-Core Version:    0.7.0.1
  */

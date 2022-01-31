@@ -1,36 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.CoverCacheData;
-import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
-import cooperation.qzone.model.CoverCacheData.PackageInfo;
-
-public final class amuj
-  implements Parcelable.Creator
+public class amuj
 {
-  public CoverCacheData a(Parcel paramParcel)
-  {
-    CoverCacheData localCoverCacheData = new CoverCacheData();
-    if (paramParcel != null)
-    {
-      localCoverCacheData.jdField_a_of_type_Long = paramParcel.readLong();
-      localCoverCacheData.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      localCoverCacheData.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      localCoverCacheData.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      localCoverCacheData.jdField_a_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
-      localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo = ((CoverCacheData.PackageInfo)paramParcel.readParcelable(getClass().getClassLoader()));
-      localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$GameCoverInfo = ((CoverCacheData.GameCoverInfo)paramParcel.readParcelable(getClass().getClassLoader()));
-      localCoverCacheData.jdField_a_of_type_JavaUtilArrayList = paramParcel.readArrayList(getClass().getClassLoader());
-      localCoverCacheData.jdField_a_of_type_Int = paramParcel.readInt();
-      localCoverCacheData.jdField_b_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
-      localCoverCacheData.jdField_c_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
-      localCoverCacheData.jdField_b_of_type_Int = paramParcel.readInt();
-    }
-    return localCoverCacheData;
-  }
+  public long a;
+  public boolean a;
   
-  public CoverCacheData[] a(int paramInt)
+  public amuj(long paramLong, boolean paramBoolean)
   {
-    return null;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

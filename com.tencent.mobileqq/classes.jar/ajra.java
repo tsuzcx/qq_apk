@@ -1,47 +1,29 @@
-import com.tencent.mobileqq.data.MessageForTroopTopic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
-import com.tencent.mobileqq.troop.data.TroopTopicDetailInfoManager;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ajra
-  implements Runnable
+  implements yrb
 {
-  public ajra(TroopTopicMgr paramTroopTopicMgr, MessageRecord paramMessageRecord) {}
+  public ajra(NewFlowCameraActivity paramNewFlowCameraActivity, String paramString1, String paramString2) {}
   
-  public void run()
+  public void callback(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "syncTopicExtInfo query db");
-    }
-    TroopTopicDetailInfo localTroopTopicDetailInfo = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.a.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq, true);
-    if (localTroopTopicDetailInfo != null)
+    Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getIntent();
+    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")) && (paramBundle.getInt("head_id") >= 0) && (!TextUtils.isEmpty(paramBundle.getString("video_id"))))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.b(localTroopTopicDetailInfo);
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForTroopTopic)) {
-        if (((MessageForTroopTopic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).pVersion < localTroopTopicDetailInfo.pVersion)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "syncTopicExtInfo fetch network");
-          }
-          TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, localTroopTopicDetailInfo);
-        }
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        return;
-      } while (localTroopTopicDetailInfo.pVersion == localTroopTopicDetailInfo.mOldVersion);
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "syncTopicExtInfo fetch network 2");
-      }
-      TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, localTroopTopicDetailInfo);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.c();
+      localIntent.putExtras(paramBundle);
+      localIntent.putExtra("video_path", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("photo_path", this.b);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.setResult(-1, localIntent);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.finish();
       return;
     }
-    QLog.e(".troop.troop_topic.TroopTopicMgr", 2, "syncTopicExtInfo there is no topic info in db.");
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.c();
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, 1, alud.a(2131707854), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getTitleBarHeight());
   }
 }
 

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x9c0$NearbyUser
-  extends MessageMicro
+  extends MessageMicro<NearbyUser>
 {
   public static final int BYTES_NICK_FIELD_NUMBER = 4;
   public static final int BYTES_REMARK_FIELD_NUMBER = 3;
@@ -30,7 +30,7 @@ public final class cmd0x9c0$NearbyUser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x9c0.cmd0x9c0.NearbyUser
  * JD-Core Version:    0.7.0.1
  */

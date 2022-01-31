@@ -1,6 +1,9 @@
 package oicq.wlogin_sdk.request;
 
+import java.util.HashMap;
+import oicq.wlogin_sdk.tlv_type.tlv_t;
 import oicq.wlogin_sdk.tools.ErrMsg;
+import oicq.wlogin_sdk.tools.util;
 
 class WtloginHelper$HelperThread$2
   implements Runnable
@@ -13,7 +16,18 @@ class WtloginHelper$HelperThread$2
     if (this.val$cancel != 0) {
       return;
     }
-    ErrMsg localErrMsg = t.b(this.this$1.mUserSigInfo._seqence)._last_err_msg;
+    async_context localasync_context = t.b(this.this$1.mUserSigInfo._seqence);
+    ErrMsg localErrMsg = localasync_context._last_err_msg;
+    if (WtloginHelper.access$100(this.this$1.mHelper) == null)
+    {
+      util.LOGW("login helper listener is null", this.this$1.mUserAccount);
+      return;
+    }
+    if ((this.val$ret == 0) && (localasync_context.tlv528 != null))
+    {
+      util.LOGI("context from seq " + this.this$1.mUserSigInfo._seqence + " tlv528 length " + localasync_context.tlv528.get_data_len(), this.this$1.mUserAccount);
+      this.this$1.mUserSigInfo.loginResultTLVMap.put(new Integer(1320), localasync_context.tlv528);
+    }
     if (this.this$1.mDwSubAppidList == null)
     {
       if (this.this$1.mIsSmslogin)

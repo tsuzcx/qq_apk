@@ -1,51 +1,35 @@
-import android.os.SystemClock;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.emoticonview.FastImagePreviewLayout;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.data.SubAccountInfo;
 
-class acga
-  implements URLDrawable.URLDrawableListener
+public class acga
+  implements bhuk
 {
-  acga(acfz paramacfz, long paramLong) {}
+  SubAccountInfo jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage Load URLDrawable onLoadCanceled");
-    }
-  }
+  public acga(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage Load URLDrawable onLoadFialed");
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a.dismiss();
     }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage Load URLDrawable onLoadProgressed");
-    }
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage Load URLDrawable Successed, is to call showFastImage,queryTime = " + l);
-    }
-    if (l > 2000L) {
+    switch (paramInt)
+    {
+    default: 
       return;
     }
-    this.jdField_a_of_type_Acfz.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.jdField_a_of_type_Acfz.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(32));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b(this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo);
+  }
+  
+  public void a(SubAccountInfo paramSubAccountInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo = paramSubAccountInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acga
  * JD-Core Version:    0.7.0.1
  */

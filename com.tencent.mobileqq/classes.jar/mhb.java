@@ -1,45 +1,33 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoAutoPlayController;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView.OnDrawCompleteListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import android.text.TextUtils;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class mhb
-  implements ReadInJoyBaseListView.OnDrawCompleteListener
+  extends lij
 {
-  public mhb(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
+  public mhb(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView)
+  protected void a(long paramLong, int paramInt, String paramString)
   {
-    ReadInJoyBaseAdapter.e(this.a, false);
-    if (!ReadInJoyBaseAdapter.d(this.a)) {
-      return;
-    }
-    ReadInJoyBaseAdapter.b(this.a, false);
-    if ((this.a.a()) && (ReadInJoyBaseAdapter.a(this.a) != null))
+    QLog.w(this.a.b, 1, "VideoObserver_onClose, reason[" + paramInt + "], peerUin[" + paramString + "], mPeerUin[" + this.a.c + "], seq[" + paramLong + "]");
+    if (TextUtils.equals(this.a.c, paramString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.video", 2, "onDrawFinish checkplayable!");
-      }
-      if (!ReadInJoyBaseAdapter.a(this.a).b()) {
-        break label122;
-      }
-      ReadInJoyBaseAdapter.a(this.a).postDelayed(new mhc(this, paramReadInJoyBaseListView), 1200L);
+      this.a.b("VideoObserver_onClose");
+      this.a.a(paramLong, paramInt);
     }
-    for (;;)
-    {
-      ReadInJoyBaseAdapter.a(this.a, this.a.a.getLastVisiblePosition() + 1, ReadInJoyBaseAdapter.b());
-      return;
-      label122:
-      ReadInJoyBaseAdapter.a(this.a, paramReadInJoyBaseListView, ReadInJoyBaseAdapter.b);
+  }
+  
+  protected void a(String paramString, boolean paramBoolean)
+  {
+    QLog.w(this.a.b, 1, "VideoObserver_onDestroyUI, peerUin[" + paramString + "], isQuit[" + paramBoolean + "], mPeerUin[" + this.a.c + "]");
+    if (TextUtils.equals(this.a.c, paramString)) {
+      this.a.b("VideoObserver_onDestroyUI");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mhb
  * JD-Core Version:    0.7.0.1
  */

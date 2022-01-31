@@ -1,27 +1,17 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
 public class ailp
-  implements MediaPlayer.OnCompletionListener
+  implements DialogInterface.OnClickListener
 {
-  public ailp(VideoSprite paramVideoSprite) {}
+  public ailp(BindNumberActivity paramBindNumberActivity) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.j) {
-      this.a.b.b(new ailq(this));
-    }
-    do
-    {
-      return;
-      this.a.g = false;
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
+    this.a.a("dc00898", "0X8009F15", 0);
+    paramDialogInterface.dismiss();
+    BindNumberActivity.b(this.a);
   }
 }
 

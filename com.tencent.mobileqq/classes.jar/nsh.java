@@ -1,29 +1,23 @@
-import com.tencent.biz.qqstory.newshare.callback.OnSimpleShareListener;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity.UIEventListenerImpl;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoAdInfo.NegFeedback;
 
-public class nsh
-  extends OnSimpleShareListener
+public final class nsh
+  implements Parcelable.Creator<VideoAdInfo.NegFeedback>
 {
-  public nsh(QQStoryShareGroupProfileActivity.UIEventListenerImpl paramUIEventListenerImpl) {}
-  
-  public void a()
+  public VideoAdInfo.NegFeedback a(Parcel paramParcel)
   {
-    super.a();
-    QQStoryShareGroupProfileActivity.UIEventListenerImpl.a(this.a).jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare = null;
+    return new VideoAdInfo.NegFeedback(paramParcel);
   }
   
-  public void a(int paramInt)
+  public VideoAdInfo.NegFeedback[] a(int paramInt)
   {
-    super.a(paramInt);
-    StoryReportor.a("share_story", "day_suc", 0, paramInt, new String[] { QQStoryShareGroupProfileActivity.UIEventListenerImpl.a(this.a).jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
+    return new VideoAdInfo.NegFeedback[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nsh
  * JD-Core Version:    0.7.0.1
  */

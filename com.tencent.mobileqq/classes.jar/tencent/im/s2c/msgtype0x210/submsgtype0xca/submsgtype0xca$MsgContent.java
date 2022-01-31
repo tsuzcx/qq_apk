@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0xca$MsgContent
-  extends MessageMicro
+  extends MessageMicro<MsgContent>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48, 56, 66, 72, 82 }, new String[] { "uint64_tag", "uint64_msg_type", "uint64_seq", "str_content", "uint64_action_id", "uint64_ts", "uint64_expts", "str_error_msg", "uint64_show_space", "str_region_url" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), "", Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), "", Long.valueOf(0L), "" }, MsgContent.class);
   public final PBStringField str_content = PBField.initString("");

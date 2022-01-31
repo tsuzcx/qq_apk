@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class signature$SignatureKickResult
-  extends MessageMicro
+  extends MessageMicro<SignatureKickResult>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_data = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -23,7 +23,7 @@ public final class signature$SignatureKickResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.signature.SignatureKickResult
  * JD-Core Version:    0.7.0.1
  */

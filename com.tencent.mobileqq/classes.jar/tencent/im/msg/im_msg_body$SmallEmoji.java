@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_msg_body$SmallEmoji
-  extends MessageMicro
+  extends MessageMicro<SmallEmoji>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "packIdSum", "imageType" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, SmallEmoji.class);
   public final PBUInt32Field imageType = PBField.initUInt32(0);

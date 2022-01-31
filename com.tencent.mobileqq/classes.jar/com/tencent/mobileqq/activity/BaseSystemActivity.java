@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.widget.XListView;
@@ -16,8 +16,6 @@ import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.TimeZone;
-import rul;
-import rum;
 
 public class BaseSystemActivity
   extends IphoneTitleBarActivity
@@ -26,10 +24,10 @@ public class BaseSystemActivity
   private static int jdField_a_of_type_Int;
   private static StringBuffer jdField_a_of_type_JavaLangStringBuffer = new StringBuffer();
   private static Calendar jdField_a_of_type_JavaUtilCalendar = ;
-  public CursorAdapter a;
+  CursorAdapter jdField_a_of_type_AndroidWidgetCursorAdapter;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   String jdField_a_of_type_JavaLangString;
-  HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  HashMap<Long, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
   private static int a(long paramLong)
   {
@@ -37,16 +35,16 @@ public class BaseSystemActivity
     int j = (int)((System.currentTimeMillis() + jdField_a_of_type_Int) / 86400000L);
     int k = (int)((jdField_a_of_type_Int + paramLong) / 86400000L);
     if (k == j) {
-      i = 2131434640;
+      i = 2131720894;
     }
     do
     {
       return i;
       if (k == j - 1) {
-        return 2131434641;
+        return 2131721504;
       }
     } while (k != j - 2);
-    return 2131434642;
+    return 2131690507;
   }
   
   public static String a(long paramLong, boolean paramBoolean)
@@ -57,7 +55,7 @@ public class BaseSystemActivity
     int k = a(paramLong);
     if (k != -1)
     {
-      if (k != 2131434640) {
+      if (k != 2131720894) {
         jdField_a_of_type_JavaLangStringBuffer.append(BaseApplication.getContext().getString(k));
       }
       i = 1;
@@ -65,7 +63,7 @@ public class BaseSystemActivity
     int m = jdField_a_of_type_JavaUtilCalendar.get(11);
     int j = jdField_a_of_type_JavaUtilCalendar.get(12);
     if (i != 0) {
-      if (k == 2131434640) {
+      if (k == 2131720894) {
         if (m == 24)
         {
           i = 24;
@@ -116,9 +114,9 @@ public class BaseSystemActivity
   
   private void c()
   {
-    super.setContentView(2130970639);
-    setContentBackgroundResource(2130838214);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131369964));
+    super.setContentView(2131561332);
+    setContentBackgroundResource(2130838592);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131377345));
     this.jdField_a_of_type_JavaLangString = a();
     if (this.jdField_a_of_type_JavaLangString == null) {
       throw new Exception("peerUin is null");
@@ -163,7 +161,7 @@ public class BaseSystemActivity
     return null;
   }
   
-  public void a() {}
+  protected void a() {}
   
   public void a(Cursor paramCursor)
   {
@@ -191,7 +189,7 @@ public class BaseSystemActivity
     this.jdField_a_of_type_AndroidWidgetCursorAdapter.changeCursor(a());
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     try
@@ -205,15 +203,15 @@ public class BaseSystemActivity
     }
   }
   
-  protected View onCreateRightView()
+  public View onCreateRightView()
   {
     super.onCreateRightView();
     this.rightViewText.setVisibility(0);
-    this.rightViewText.setCompoundDrawablesWithIntrinsicBounds(2130846258, 0, 0, 0);
+    this.rightViewText.setCompoundDrawablesWithIntrinsicBounds(2130850010, 0, 0, 0);
     return this.rightViewText;
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     super.onDestroy();
     this.app.a().deleteObserver(this);
@@ -222,7 +220,7 @@ public class BaseSystemActivity
     }
   }
   
-  protected void onResume()
+  public void onResume()
   {
     super.onResume();
     this.jdField_a_of_type_AndroidWidgetCursorAdapter.changeCursor(a());
@@ -236,17 +234,17 @@ public class BaseSystemActivity
       if ((this.jdField_a_of_type_JavaLangString.equals(paramObservable.frienduin)) && (paramObservable.istroop == 0))
       {
         this.app.a().c(this.jdField_a_of_type_JavaLangString, 0);
-        runOnUiThread(new rul(this));
+        runOnUiThread(new BaseSystemActivity.1(this));
       }
       if (!paramObservable.isSendFromLocal()) {
-        runOnUiThread(new rum(this));
+        runOnUiThread(new BaseSystemActivity.2(this));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseSystemActivity
  * JD-Core Version:    0.7.0.1
  */

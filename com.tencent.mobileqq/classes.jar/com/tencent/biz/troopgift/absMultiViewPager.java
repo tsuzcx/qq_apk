@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import java.util.ArrayList;
-import ozm;
+import ywr;
 
 public abstract class absMultiViewPager
   extends ViewPager
@@ -17,9 +17,9 @@ public abstract class absMultiViewPager
   protected ViewPager.OnPageChangeListener a;
   protected AdapterView.OnItemClickListener a;
   protected absMultiViewPager.ViewPagerAdapter a;
-  public ArrayList a;
-  protected ozm a;
-  protected ArrayList b = new ArrayList();
+  protected ArrayList<Object> a;
+  protected ywr a;
+  protected ArrayList<View> b = new ArrayList();
   protected int d;
   
   public absMultiViewPager(Context paramContext)
@@ -33,7 +33,7 @@ public abstract class absMultiViewPager
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public static ArrayList a(ArrayList paramArrayList, int paramInt1, int paramInt2)
+  public static ArrayList<Object> a(ArrayList<Object> paramArrayList, int paramInt1, int paramInt2)
   {
     if ((paramInt1 > paramArrayList.size()) || (paramInt2 > paramArrayList.size())) {
       throw new IndexOutOfBoundsException("subArrayList exception, start or end is large than src list size. src size:" + paramArrayList.size() + ", start:" + paramInt1 + ", end:" + paramInt2);
@@ -53,8 +53,8 @@ public abstract class absMultiViewPager
   
   protected void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Ozm != null) {
-      this.jdField_a_of_type_Ozm.a(paramInt1, paramInt2, getCurrentItem());
+    if (this.jdField_a_of_type_Ywr != null) {
+      this.jdField_a_of_type_Ywr.a(paramInt1, paramInt2, getCurrentItem());
     }
   }
   
@@ -82,14 +82,14 @@ public abstract class absMultiViewPager
     }
   }
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     if (this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener != null) {
       this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener.onItemClick(paramAdapterView, paramView, paramInt, paramLong);
     }
   }
   
-  public void setData(ArrayList paramArrayList)
+  public void setData(ArrayList<Object> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
     b();
@@ -106,14 +106,14 @@ public abstract class absMultiViewPager
     super.setOnPageChangeListener(paramOnPageChangeListener);
   }
   
-  public void setOnPagerSizeChangeListener(ozm paramozm)
+  public void setOnPagerSizeChangeListener(ywr paramywr)
   {
-    this.jdField_a_of_type_Ozm = paramozm;
+    this.jdField_a_of_type_Ywr = paramywr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.troopgift.absMultiViewPager
  * JD-Core Version:    0.7.0.1
  */

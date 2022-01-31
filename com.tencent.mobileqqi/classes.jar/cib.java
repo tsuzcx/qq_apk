@@ -1,25 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class cib
-  extends Handler
+  implements View.OnTouchListener
 {
-  public cib(ChatHistory paramChatHistory) {}
+  public cib(DiscussionMemberActivity paramDiscussionMemberActivity, InputMethodManager paramInputMethodManager) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramMessage.what == 1)
-    {
-      if ((this.a.a != null) && (this.a.a.isShowing())) {
-        this.a.a.dismiss();
-      }
-      this.a.a = new QQProgressDialog(this.a, this.a.d());
-      this.a.a.setCancelable(false);
-      this.a.a.b(2131563004);
-      this.a.a.show();
-    }
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

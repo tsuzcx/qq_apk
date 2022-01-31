@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendSingleInfo;
-
-public final class gnf
-  implements Parcelable.Creator
+public abstract interface gnf
 {
-  public FriendSingleInfo a(Parcel paramParcel)
-  {
-    return new FriendSingleInfo(paramParcel);
-  }
-  
-  public FriendSingleInfo[] a(int paramInt)
-  {
-    return new FriendSingleInfo[paramInt];
-  }
+  public static final int a = 0;
+  public static final int b = 1;
+  public static final int c = 2;
+  public static final int d = 3;
+  public static final int e = 4;
+  public static final int f = 5;
+  public static final int g = 10;
+  public static final int h = 7;
 }
 
 

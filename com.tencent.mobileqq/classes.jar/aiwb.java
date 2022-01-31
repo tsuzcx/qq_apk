@@ -1,13 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.media.MediaPlayer;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
 
 public class aiwb
-  implements DialogInterface.OnClickListener
+  extends bewx
 {
-  public aiwb(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public aiwb(RedPacketKSongFragment paramRedPacketKSongFragment, bewy parambewy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    RedPacketKSongFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment, false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.a.release();
+    this.jdField_a_of_type_Bewy.a();
+  }
 }
 
 

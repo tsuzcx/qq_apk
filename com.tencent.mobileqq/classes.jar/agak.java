@@ -1,18 +1,21 @@
 import android.view.View;
-import android.view.animation.AnimationUtils;
-import com.tencent.biz.troop.TroopMemberApiClient;
-import com.tencent.mobileqq.now.enter.NowFestivalWebViewFragment;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class agak
-  implements Runnable
+class agak
+  implements View.OnClickListener
 {
-  public agak(NowFestivalWebViewFragment paramNowFestivalWebViewFragment) {}
+  agak(agai paramagai) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    NowFestivalWebViewFragment.a(this.a).setVisibility(8);
-    NowFestivalWebViewFragment.a(this.a).startAnimation(AnimationUtils.loadAnimation(NowFestivalWebViewFragment.a(this.a), 2131034322));
-    NowFestivalWebViewFragment.a(this.a).l();
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof MessageForShortVideo))
+    {
+      localObject = (MessageForShortVideo)localObject;
+      azdl.a(paramView.getContext(), this.a.a.a, ((MessageForShortVideo)localObject).msgTailType);
+    }
   }
 }
 

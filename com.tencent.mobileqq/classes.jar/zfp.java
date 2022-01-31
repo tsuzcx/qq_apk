@@ -1,35 +1,20 @@
-import com.tencent.mobileqq.app.IndividualRedPacketManager;
-import com.tencent.mobileqq.vas.IndividualRedPacketResDownloader;
-import com.tencent.mobileqq.vas.IndividualRedPacketResDownloader.RedPacketTemplateInfo;
-import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
 
-public class zfp
-  implements Runnable
+class zfp
+  implements QzoneZipCacheHelperCallBack
 {
-  public zfp(IndividualRedPacketManager paramIndividualRedPacketManager) {}
+  zfp(zfn paramzfn, String paramString1, String paramString2, String paramString3) {}
   
-  public void run()
+  public void onResult(boolean paramBoolean)
   {
-    this.a.a(true);
-    if (QLog.isColorLevel()) {
-      QLog.d(IndividualRedPacketManager.b(), 2, "AIO_BG_WIDTH:" + this.a.b);
-    }
-    this.a.a().e();
-    this.a.a().d();
-    this.a.a().c();
-    this.a.a();
-    if (this.a.j > 0)
-    {
-      IndividualRedPacketResDownloader.RedPacketTemplateInfo localRedPacketTemplateInfo = this.a.a().a(String.valueOf(this.a.j), true);
-      if ((localRedPacketTemplateInfo == null) || (localRedPacketTemplateInfo.a == null) || (localRedPacketTemplateInfo.b == null) || (localRedPacketTemplateInfo.c == null)) {
-        this.a.a().a(16L, String.valueOf(this.a.j), null);
-      }
-    }
+    zfn.a(this.jdField_a_of_type_Zfn, paramBoolean, this.jdField_a_of_type_JavaLangString, this.b, this.c);
   }
+  
+  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zfp
  * JD-Core Version:    0.7.0.1
  */

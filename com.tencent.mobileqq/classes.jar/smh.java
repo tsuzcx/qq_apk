@@ -1,33 +1,31 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class smh
-  implements TabBarView.OnTabChangeListener
+  extends AnimatorListenerAdapter
 {
-  public smh(EmosmActivity paramEmosmActivity) {}
+  public smh(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, View paramView) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramInt1 == paramInt2) {
-      return;
+    super.onAnimationEnd(paramAnimator);
+    this.jdField_a_of_type_AndroidViewView.setLayerType(0, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
     }
-    if (paramInt2 == 0) {
-      this.a.b = 1;
-    }
-    for (;;)
-    {
-      this.a.c = false;
-      this.a.runOnUiThread(this.a.a);
-      return;
-      if (paramInt2 == 1) {
-        this.a.b = 2;
-      }
-    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     smh
  * JD-Core Version:    0.7.0.1
  */

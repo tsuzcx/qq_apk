@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import ew;
+import fe;
 
 public class WaitTextView
   extends TextView
@@ -13,7 +13,7 @@ public class WaitTextView
   private int jdField_a_of_type_Int = 0;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private WaitTextView.RefreshListener jdField_a_of_type_ComDatalineUtilWidgetWaitTextView$RefreshListener;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ew(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new fe(this);
   private String jdField_a_of_type_JavaLangString;
   
   public WaitTextView(Context paramContext)

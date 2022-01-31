@@ -1,21 +1,54 @@
-import android.content.Context;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.mobileqq.ar.ArConfigService.5.1;
+import com.tencent.mobileqq.ar.ArConfigService.5.2;
+import com.tencent.mobileqq.ar.ArConfigService.5.3;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.plugin.IQZonePluginManager;
-import cooperation.qzone.plugin.IQZonePluginManager.OnPluginReadyListener;
-import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
 
-public final class amwv
-  implements IQZonePluginManager.OnPluginReadyListener
+public class amwv
+  implements andm
 {
-  public void a(boolean paramBoolean, Context paramContext, IQZonePluginManager.PluginParams paramPluginParams)
+  public amwv(ArConfigService paramArConfigService) {}
+  
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean) {
-      IQZonePluginManager.d(paramContext, paramPluginParams);
+      QLog.d("ArConfig_ArConfigService", 2, "mARSDK2ResourceDownloadCallback");
     }
   }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+    }
+    ArConfigService.b(this.a, (int)(100L * paramLong1 / paramLong2));
+    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
+    if (!ArConfigService.e(this.a)) {
+      ArConfigService.a(this.a).post(new ArConfigService.5.1(this, i));
+    }
+  }
+  
+  public void a(boolean paramBoolean, andn paramandn)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadComplete mARSDK2ResourceDownloadCallback result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if (paramBoolean)
+    {
+      ArConfigService.c(this.a, true);
+      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
+        ArConfigService.a(this.a).post(new ArConfigService.5.2(this));
+      }
+    }
+    while (ArConfigService.e(this.a)) {
+      return;
+    }
+    ArConfigService.a(this.a).post(new ArConfigService.5.3(this));
+    ArConfigService.a(this.a, true);
+  }
+  
+  public void b() {}
 }
 
 

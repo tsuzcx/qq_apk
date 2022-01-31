@@ -1,40 +1,22 @@
-import Wallet.GoldMsgGetReq;
-import Wallet.GoldMsgGetRsp;
-import Wallet.GoldMsgSetReq;
-import Wallet.GoldMsgSetRsp;
-import android.content.Context;
-import android.content.Intent;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
+import com.tencent.biz.qqstory.view.UnHandleTouchEventViewPager;
 
-public abstract class wzn
+public class wzn
+  implements View.OnTouchListener
 {
-  final int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  final String c;
-  final String d;
-  final String e;
+  public wzn(EditVideoFilter paramEditVideoFilter) {}
   
-  wzn(GoldMsgSettingActivity paramGoldMsgSettingActivity, Context paramContext, Intent paramIntent, String paramString1, String paramString2, String paramString3, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.c = paramString1;
-    this.d = paramString2;
-    this.e = paramString3;
-    this.jdField_a_of_type_Int = paramInt;
+    return this.a.a.a(paramMotionEvent);
   }
-  
-  public abstract void a(View paramView);
-  
-  void a(boolean paramBoolean, GoldMsgGetReq paramGoldMsgGetReq, GoldMsgGetRsp paramGoldMsgGetRsp) {}
-  
-  void a(boolean paramBoolean, GoldMsgSetReq paramGoldMsgSetReq, GoldMsgSetRsp paramGoldMsgSetRsp) {}
-  
-  abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wzn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
+import feedcloud.FeedCloudMeta.StFeed;
 
 public class txv
-  implements DialogInterface.OnDismissListener
+  implements ydm
 {
-  public txv(TroopInfoActivity paramTroopInfoActivity) {}
+  public txv(QCircleContentOperationView paramQCircleContentOperationView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    if (this.a.a() != null) {
+      tzw.a(17, 2, (FeedCloudMeta.StFeed)this.a.a(), 2, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txv
  * JD-Core Version:    0.7.0.1
  */

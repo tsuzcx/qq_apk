@@ -1,62 +1,103 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.os.MqqHandler;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class xjb
-  implements View.OnClickListener
+class xjb
+  extends xit<xiz>
 {
-  public xjb(BannerManager paramBannerManager, Bundle paramBundle) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367796);
+  private ImageView b = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367797);
+  private ImageView c = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370657);
+  private ImageView d = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370658);
   
-  public void onClick(View paramView)
+  private xjb(xiz paramxiz, @NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    if (BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager) != null)
+    super(paramContext, paramViewGroup);
+  }
+  
+  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return LayoutInflater.from(paramContext).inflate(2131561591, paramViewGroup, false);
+  }
+  
+  void a(ImageView paramImageView, char paramChar)
+  {
+    switch (paramChar)
     {
-      paramView = BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).obtainMessage(30);
-      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).sendMessageDelayed(paramView, 2500L);
-    }
-    paramView = this.jdField_a_of_type_AndroidOsBundle.getString("activity");
-    if (!TextUtils.isEmpty(paramView)) {}
-    try
-    {
-      paramView = Class.forName(paramView);
-      if (paramView != null)
-      {
-        paramView = new Intent(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).getApplicationContext(), paramView);
-        String str = this.jdField_a_of_type_AndroidOsBundle.getString("action");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.setAction(str);
-        }
-        str = this.jdField_a_of_type_AndroidOsBundle.getString("category");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.addCategory(str);
-        }
-        str = this.jdField_a_of_type_AndroidOsBundle.getString("url");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.putExtra("url", str);
-        }
-        paramView.setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
-        paramView.putExtra("back_from_aio", true);
-        BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).startActivity(paramView);
-      }
+    default: 
+      return;
+    case '0': 
+      paramImageView.setImageResource(2130846235);
+      return;
+    case '1': 
+      paramImageView.setImageResource(2130846236);
+      return;
+    case '2': 
+      paramImageView.setImageResource(2130846237);
+      return;
+    case '3': 
+      paramImageView.setImageResource(2130846238);
+      return;
+    case '4': 
+      paramImageView.setImageResource(2130846239);
+      return;
+    case '5': 
+      paramImageView.setImageResource(2130846240);
+      return;
+    case '6': 
+      paramImageView.setImageResource(2130846241);
+      return;
+    case '7': 
+      paramImageView.setImageResource(2130846242);
+      return;
+    case '8': 
+      paramImageView.setImageResource(2130846243);
       return;
     }
-    catch (ClassNotFoundException paramView)
+    paramImageView.setImageResource(2130846244);
+  }
+  
+  public void a(xiz paramxiz, int paramInt)
+  {
+    super.a(paramxiz, paramInt);
+    paramxiz = new SimpleDateFormat("HH:mm");
+    ((xiz)this.jdField_a_of_type_Xis).c = paramxiz.format(new Date());
+    wxe.b("TimeFilterData", "TimeFilterData time:" + ((xiz)this.jdField_a_of_type_Xis).c);
+    a(this.jdField_a_of_type_AndroidWidgetImageView, ((xiz)this.jdField_a_of_type_Xis).c.charAt(0));
+    a(this.b, ((xiz)this.jdField_a_of_type_Xis).c.charAt(1));
+    a(this.c, ((xiz)this.jdField_a_of_type_Xis).c.charAt(3));
+    a(this.d, ((xiz)this.jdField_a_of_type_Xis).c.charAt(4));
+    int i = xsm.d(this.jdField_a_of_type_AndroidViewView.getContext());
+    if (((this.jdField_a_of_type_Xiz.a != null) && (this.jdField_a_of_type_Xiz.a.jdField_a_of_type_Int == 10)) || ((this.jdField_a_of_type_Xiz.a != null) && (this.jdField_a_of_type_Xiz.a.jdField_a_of_type_Int == 12)))
     {
-      for (;;)
+      if (this.jdField_a_of_type_Xiz.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a() / this.jdField_a_of_type_Xiz.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b() > bdgk.k() / bdgk.l())
       {
-        paramView = null;
+        paramInt = (int)(bdgk.k() * this.jdField_a_of_type_Xiz.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b() / this.jdField_a_of_type_Xiz.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a());
+        if (paramInt > i / 3 * 2 + bdaq.a(this.jdField_a_of_type_AndroidViewView.getContext(), 75.0F))
+        {
+          this.jdField_a_of_type_AndroidViewView.setPadding(0, i / 3 * 2, 0, 0);
+          return;
+        }
+        i = bdaq.a(this.jdField_a_of_type_AndroidViewView.getContext(), 75.0F);
+        this.jdField_a_of_type_AndroidViewView.setPadding(0, paramInt - i, 0, 0);
+        return;
       }
+      this.jdField_a_of_type_AndroidViewView.setPadding(0, i / 3 * 2, 0, 0);
+      return;
     }
+    this.jdField_a_of_type_AndroidViewView.setPadding(0, i / 3 * 2, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xjb
  * JD-Core Version:    0.7.0.1
  */

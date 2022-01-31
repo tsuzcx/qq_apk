@@ -1,46 +1,46 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.network.request.BatchGetFriendStoryFeedInfoRequest;
-import com.tencent.biz.qqstory.network.request.BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.GetFeedIdListResult;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedAllInfoPullSegment;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import java.util.Vector;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-public class nyo
-  implements CmdTaskManger.CommandCallback
+public final class nyo
+  implements aufz<apym, char[]>
 {
-  public nyo(HomeFeedAllInfoPullSegment paramHomeFeedAllInfoPullSegment, JobContext paramJobContext, FeedListPageLoaderBase.GetFeedIdListResult paramGetFeedIdListResult) {}
-  
-  public void a(@NonNull BatchGetFriendStoryFeedInfoRequest paramBatchGetFriendStoryFeedInfoRequest, @Nullable BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp arg2, @NonNull ErrorMessage paramErrorMessage)
+  public char[] a(apym paramapym)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    try
     {
-      SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed basic info pull segment cancel on net respond");
-      return;
+      int i = Integer.parseInt(paramapym.a.eId);
+      int j = Integer.parseInt(paramapym.a.epId);
+      Object localObject = apmq.a(j, i);
+      paramapym = new char[5];
+      paramapym[0] = 20;
+      paramapym[1] = localObject[3];
+      paramapym[2] = localObject[2];
+      paramapym[3] = localObject[1];
+      paramapym[4] = localObject[0];
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface))
+      {
+        localObject = ((aufn)((AppRuntime)localObject).getManager(14)).a(String.valueOf(j));
+        if ((localObject != null) && (((EmoticonPackage)localObject).isAPNG == 2)) {
+          paramapym[1] = 511;
+        }
+      }
+      return paramapym;
     }
-    BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp localGetFriendStoryFeedInfoResp = ???;
-    if (??? == null) {
-      localGetFriendStoryFeedInfoResp = new BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp(paramErrorMessage);
-    }
-    if (paramErrorMessage.isFail()) {
-      SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for feed info request");
-    }
-    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment)
+    catch (NumberFormatException paramapym)
     {
-      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, localGetFriendStoryFeedInfoResp);
-      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment).remove(paramBatchGetFriendStoryFeedInfoRequest);
-      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$GetFeedIdListResult);
-      return;
+      QLog.e("ReadInJoyBaseDeliverActivity", 1, "kandian fail to send small_emotion. id is not Int.");
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nyo
  * JD-Core Version:    0.7.0.1
  */

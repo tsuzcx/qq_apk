@@ -9,32 +9,39 @@ import android.widget.Button;
 import android.widget.ListView;
 import com.tencent.qbardemo.MainActivity;
 import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cp;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.x;
 
 public class ScanLoginAccountListActivity
   extends BaseActivity
 {
   private QQUser mActionUser;
-  private yq mAdapter;
-  public View.OnClickListener mDeleteListener = new yn(this);
-  private Handler mHandler = new yl(this);
+  private yg mAdapter;
+  public View.OnClickListener mDeleteListener = new yd(this);
+  private Handler mHandler = new yb(this);
   private ListView mListView;
-  public View.OnClickListener mLoginListener = new ym(this);
+  public View.OnClickListener mLoginListener = new yc(this);
   private String mQQUin;
   private byte[] mScanCode;
-  private x mScanLoginManager;
+  private cp mScanLoginManager;
   private Button mTitleButton;
-  public View.OnClickListener mTitleButtonListener = new yp(this);
+  public View.OnClickListener mTitleButtonListener = new yf(this);
+  
+  private void gotoQuickLoginWb()
+  {
+    cp.a(getApplicationContext()).a(this, 523005419L, this.mHandler, this.mQQUin);
+  }
   
   private void initUI()
   {
-    this.mListView = ((ListView)findViewById(2131297023));
-    this.mAdapter = new yq(this);
+    this.mListView = ((ListView)findViewById(2131559206));
+    this.mAdapter = new yg(this);
     this.mListView.setAdapter(this.mAdapter);
     this.mTitleButton = getRightTitleButton();
-    this.mTitleButton.setVisibility(4);
+    refreshUI();
   }
+  
+  private void judgeNextStep() {}
   
   private void refreshUI()
   {
@@ -50,11 +57,18 @@ public class ScanLoginAccountListActivity
     startActivity(localIntent);
   }
   
+  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if ((paramInt1 == 1201) || (paramInt1 == 1202)) {
+      cp.a(getApplicationContext()).a(paramIntent);
+    }
+  }
+  
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903187);
-    this.mScanLoginManager = x.a(RqdApplication.i());
+    setContentView(2130968746);
+    this.mScanLoginManager = cp.a(RqdApplication.l());
     this.mScanCode = getIntent().getByteArrayExtra("scancode");
     initUI();
   }

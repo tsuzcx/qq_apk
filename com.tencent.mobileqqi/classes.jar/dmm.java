@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SubAccountSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
 
 class dmm
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  dmm(dml paramdml, int paramInt) {}
+  dmm(dml paramdml) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RegisterSendUpSms.a(this.jdField_a_of_type_Dml.a, this.jdField_a_of_type_Int);
+    if (paramInt == 1)
+    {
+      SubAccountAssistantForward.a(this.a.a.b, this.a.a.a(), this.a.a.b.getAccount());
+      this.a.a.f();
+      this.a.a.finish();
+    }
   }
 }
 

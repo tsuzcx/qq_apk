@@ -1,160 +1,193 @@
-import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.WindowManager;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyGiftView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyRedPacketAnimMsg.2;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.data.TroopFeedParserHelper;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.QQWalletAioBodyReserve;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedHashMap;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class ajea
-  implements HttpWebCgiAsyncTask.Callback
+  implements bcko
 {
-  public ajea(TroopFeedsDataManager paramTroopFeedsDataManager) {}
+  public WindowManager a;
+  public SpecifyGiftView a;
+  public MessageForQQWalletMsg a;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public ajea(MessageForQQWalletMsg paramMessageForQQWalletMsg)
   {
-    if (paramJSONObject != null) {}
-    for (;;)
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg = paramMessageForQQWalletMsg;
+  }
+  
+  public static void a(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    if (paramMessageRecord != null)
+    {
+      paramMessageRecord.saveExtInfoToExtStr("specify_redpack_is_reply", "1");
+      ajeu.a(paramQQAppInterface, paramMessageRecord);
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, MessageForQQWalletMsg paramMessageForQQWalletMsg)
+  {
+    if ((paramQQAppInterface == null) || (paramMessageForQQWalletMsg == null)) {
+      return false;
+    }
+    boolean bool = a(paramMessageForQQWalletMsg, paramQQAppInterface);
+    if (QLog.isColorLevel()) {
+      QLog.i("SpecifyRedPacketAnimMsg", 2, "tryScheduleSpecifyAnim isValidAnim=" + bool);
+    }
+    if (bool)
+    {
+      ((bcka)paramQQAppInterface.getManager(223)).a(new ajea(paramMessageForQQWalletMsg), false);
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord != null)
     {
       try
       {
-        if (paramJSONObject.optInt("retcode") == 0) {
-          break label687;
+        i = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("specify_redpack_is_reply"));
+        if (i == 1) {
+          return true;
         }
-        i = paramJSONObject.optInt("ec");
-        if (i == 0) {
-          break label687;
-        }
-        i = 0;
-        if (i == 0)
+      }
+      catch (Throwable paramMessageRecord)
+      {
+        for (;;)
         {
-          if ((paramInt == 1000) || (paramInt == 1002))
-          {
-            TroopFeedsDataManager.e(this.a);
-            this.a.notifyObservers(Integer.valueOf(103));
-            if (paramInt == 1002) {
-              this.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-            }
+          int i = 0;
+        }
+      }
+      return false;
+    }
+    return false;
+  }
+  
+  public static boolean a(Object paramObject, QQAppInterface paramQQAppInterface)
+  {
+    if (!(paramObject instanceof MessageForQQWalletMsg)) {
+      return false;
+    }
+    paramObject = (MessageForQQWalletMsg)paramObject;
+    int i = paramObject.messageType;
+    if ((i == 7) || (i == 8) || (i == 11) || (i == 12))
+    {
+      if (TextUtils.isEmpty(paramObject.mQQWalletRedPacketMsg.body.feedId)) {
+        return false;
+      }
+      if (paramObject.isRedPackExpired()) {
+        return false;
+      }
+      if ((!ajbu.a().a()) && (!paramQQAppInterface.c().equals(paramObject.senderuin)))
+      {
+        if (paramObject.mQQWalletRedPacketMsg.specifyUinList == null) {
+          break label176;
+        }
+        paramObject = paramObject.mQQWalletRedPacketMsg.specifyUinList.iterator();
+        Long localLong;
+        do
+        {
+          if (!paramObject.hasNext()) {
+            break;
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopFeedsDataManager", 2, "cgi end(failed): " + System.currentTimeMillis());
-          }
-          return;
-        }
+          localLong = (Long)paramObject.next();
+        } while (!paramQQAppInterface.c().equals(localLong + ""));
       }
-      catch (Exception paramBundle)
-      {
-        paramBundle = paramBundle;
-        paramBundle.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopFeedsDataManager", 2, "cgi end(suc): " + System.currentTimeMillis());
-        }
-        if (paramInt == 1000)
-        {
-          ThreadManager.getSubThreadHandler().post(new ajeb(this, paramJSONObject));
-          return;
-        }
-      }
-      finally {}
-      if (paramInt == 1002)
-      {
-        ThreadManager.getSubThreadHandler().post(new ajec(this, paramJSONObject));
-        return;
-      }
-      if (paramInt == 1003)
-      {
-        TroopFeedsDataManager.f(this.a);
-        paramBundle = paramJSONObject.optJSONArray("inst");
-        if ((paramBundle != null) && (paramBundle.length() > 0))
-        {
-          this.a.jdField_a_of_type_OrgJsonJSONObject = paramBundle.optJSONObject(0);
-          this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");
-        }
-        this.a.notifyObservers(Integer.valueOf(106));
-        return;
-      }
-      Object localObject;
-      JSONObject localJSONObject;
-      if (paramInt == 1004)
-      {
-        localObject = paramJSONObject.optJSONArray("feeds");
-        paramBundle = paramJSONObject.optJSONArray("inst");
-        if ((localObject != null) && (((JSONArray)localObject).length() == 1))
-        {
-          localJSONObject = ((JSONArray)localObject).optJSONObject(0);
-          this.a.b = localJSONObject;
-          this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");
-          paramInt = 1;
-        }
-      }
+    }
+    label176:
+    for (i = 1;; i = 0)
+    {
+      return i != 0;
+      return false;
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView.removeAllViews();
+      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView);
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView = null;
+      this.jdField_a_of_type_AndroidViewWindowManager = null;
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    catch (Exception localException)
+    {
       for (;;)
       {
-        i = paramInt;
-        if (paramBundle != null)
-        {
-          i = paramInt;
-          if (paramBundle.length() > 0)
-          {
-            paramBundle = paramBundle.optJSONObject(0);
-            long l2 = paramBundle.optLong("pubt");
-            long l1 = 0L;
-            if (this.a.b != null) {
-              l1 = this.a.b.optLong("pubt");
-            }
-            i = paramInt;
-            if (l2 > l1)
-            {
-              this.a.b = paramBundle;
-              this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");
-              i = 1;
-            }
-          }
+        if (QLog.isColorLevel()) {
+          QLog.e(".troop.send_gift", 2, "closeRedPackGiftAnimation exception ", localException);
         }
-        if (i == 0) {
-          break;
-        }
-        TroopFeedsDataManager.g(this.a);
-        this.a.notifyObservers(Integer.valueOf(1007));
-        return;
-        if ((localObject != null) && (((JSONArray)localObject).length() == 2))
-        {
-          localJSONObject = ((JSONArray)localObject).optJSONObject(0);
-          localObject = ((JSONArray)localObject).optJSONObject(1);
-          if (localJSONObject.optLong("pubt") >= ((JSONObject)localObject).optLong("pubt")) {
-            this.a.b = localJSONObject;
-          }
-          for (this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");; this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad"))
-          {
-            paramInt = 1;
-            break;
-            this.a.b = ((JSONObject)localObject);
-          }
-          if ((paramInt != 1005) && (paramInt != 1006)) {
-            break;
-          }
-          paramJSONObject = TroopFeedParserHelper.a(paramJSONObject, "" + this.a.jdField_a_of_type_JavaLangLong, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-          paramBundle = (List)paramJSONObject[0];
-          paramJSONObject = (List)paramJSONObject[1];
-          this.a.jdField_a_of_type_JavaUtilList = paramJSONObject;
-          TroopFeedsDataManager.h(this.a);
-          if (paramInt == 1005)
-          {
-            this.a.notifyObservers(Integer.valueOf(1008));
-            return;
-          }
-          this.a.notifyObservers(Integer.valueOf(1009));
-          return;
-        }
-        paramInt = 0;
       }
-      label687:
-      int i = 1;
     }
+  }
+  
+  public void a(BaseChatPie paramBaseChatPie, baej parambaej)
+  {
+    ajeu.a(ajeu.a(), "212", "only.animation.show");
+    String str = ajdy.a() + this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.body.feedId + ".zip";
+    WeakReference localWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg);
+    paramBaseChatPie = new WeakReference(paramBaseChatPie);
+    if (QLog.isColorLevel()) {
+      QLog.i("SpecifyRedPacketAnimMsg", 2, "showAnim start");
+    }
+    parambaej = new ajeb(this, parambaej);
+    this.jdField_a_of_type_JavaLangRunnable = new SpecifyRedPacketAnimMsg.2(this, parambaej);
+    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 10000L);
+    PreloadManager.a().c(str, new ajec(this, localWeakReference, parambaej, paramBaseChatPie));
+  }
+  
+  public String getFriendUin()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin;
+  }
+  
+  public int getLimitType()
+  {
+    return 1;
+  }
+  
+  public long getSenderUin()
+  {
+    try
+    {
+      long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin);
+      return l;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+    return 0L;
+  }
+  
+  public long getShmsgseq()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.shmsgseq;
+  }
+  
+  public boolean isReaded()
+  {
+    return false;
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.fpsreport;
 
+import abvq;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.SystemClock;
 import android.util.AttributeSet;
-import com.tencent.mfsdk.collector.FPSCalculator;
-import com.tencent.mobileqq.utils.PerformanceReportUtils;
+import bdiz;
 import com.tencent.widget.SwipPinnedHeaderExpandableListView;
 
 public class FPSPinnedHeaderExpandableListView
   extends SwipPinnedHeaderExpandableListView
 {
   private long jdField_a_of_type_Long;
-  private FPSCalculator jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator;
+  private abvq jdField_a_of_type_Abvq;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   
@@ -33,16 +33,16 @@ public class FPSPinnedHeaderExpandableListView
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator != null) {
-      this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator.a();
+    if (this.jdField_a_of_type_Abvq != null) {
+      this.jdField_a_of_type_Abvq.a();
     }
   }
   
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if (this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator != null) {
-      this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator.b();
+    if (this.jdField_a_of_type_Abvq != null) {
+      this.jdField_a_of_type_Abvq.b();
     }
   }
   
@@ -52,23 +52,23 @@ public class FPSPinnedHeaderExpandableListView
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = false;
-      PerformanceReportUtils.a(this.jdField_a_of_type_JavaLangString, SystemClock.uptimeMillis());
+      bdiz.a(this.jdField_a_of_type_JavaLangString, SystemClock.uptimeMillis());
     }
   }
   
-  protected void reportScrollStateChange(int paramInt)
+  public void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    if (this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator != null) {
-      this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator.a(paramInt);
+    if (this.jdField_a_of_type_Abvq != null) {
+      this.jdField_a_of_type_Abvq.a(paramInt);
     }
   }
   
   public void setActTAG(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator = new FPSCalculator();
-    this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator.a(paramString);
+    this.jdField_a_of_type_Abvq = new abvq();
+    this.jdField_a_of_type_Abvq.a(paramString);
     setStartTime(SystemClock.uptimeMillis());
   }
   
@@ -80,7 +80,7 @@ public class FPSPinnedHeaderExpandableListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fpsreport.FPSPinnedHeaderExpandableListView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.pull2refresh.XRecyclerView android:orientation="vertical" android:id="@id/mxv" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/lck" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="50.0dip" layout="@layout/acb" />
+    <FrameLayout android:id="@id/lqv" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

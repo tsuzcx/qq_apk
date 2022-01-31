@@ -1,56 +1,36 @@
-import android.text.Selection;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.voip.EditTextAutoResizeFont;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.antiphing.AntiphingHandler;
+import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
+import com.tencent.qphone.base.util.QLog;
 
 public class eyu
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public eyu(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  public eyu(AntiphingHandler paramAntiphingHandler) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuffer localStringBuffer = new StringBuffer(VoipDialInterfaceActivity.a(this.a).getText().toString().trim());
-    int j;
-    int i;
-    if (VoipDialInterfaceActivity.a(this.a) == true)
-    {
-      j = VoipDialInterfaceActivity.a(this.a).getSelectionStart();
-      i = j;
-      paramView = localStringBuffer;
-      if (j > 0)
-      {
-        paramView = localStringBuffer.delete(j - 1, j);
-        i = j;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(AntiphingHandler.a(this.a), 2, "On Click Left Button! ");
+    }
+    if (this.a.mRuntime.a() != null) {
+      this.a.mRuntime.a().finish();
     }
     for (;;)
     {
-      VoipDialInterfaceActivity.a(this.a).setText(paramView.toString());
-      if (i > 0) {
-        Selection.setSelection(VoipDialInterfaceActivity.a(this.a).getText(), i - 1);
-      }
-      if (VoipDialInterfaceActivity.a(this.a).getText().toString().trim().length() <= 0)
-      {
-        VoipDialInterfaceActivity.a(this.a).setCursorVisible(false);
-        VoipDialInterfaceActivity.a(this.a, false);
-      }
+      AntiphingHandler.a(this.a, 1);
       return;
-      j = VoipDialInterfaceActivity.a(this.a).length();
-      i = j;
-      paramView = localStringBuffer;
-      if (j > 0)
-      {
-        paramView = localStringBuffer.delete(j - 1, j);
-        i = j;
+      if (QLog.isDevelopLevel()) {
+        QLog.d(AntiphingHandler.a(this.a), 4, "Call back object is null!");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     eyu
  * JD-Core Version:    0.7.0.1
  */

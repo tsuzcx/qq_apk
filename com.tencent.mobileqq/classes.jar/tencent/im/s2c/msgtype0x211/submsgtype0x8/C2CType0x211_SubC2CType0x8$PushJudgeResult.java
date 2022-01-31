@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class C2CType0x211_SubC2CType0x8$PushJudgeResult
-  extends MessageMicro
+  extends MessageMicro<PushJudgeResult>
 {
   public static final int BYTES_PEER_EXTRA_FIELD_NUMBER = 6;
   public static final int INT32_PEER_IP_FIELD_NUMBER = 4;

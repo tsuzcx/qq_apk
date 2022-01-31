@@ -1,15 +1,20 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import android.view.View;
+import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
-class chw
-  extends Thread
+public class chw
+  implements DialogInterface.OnDismissListener
 {
-  chw(chv paramchv) {}
+  public chw(DiscussionMemberActivity paramDiscussionMemberActivity, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager, FriendListObserver paramFriendListObserver) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ChatHistory.a(this.a.a, this.a.a.b, this.a.a.a);
-    this.a.a.c.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.getHandler().postDelayed(new chx(this), 150L);
   }
 }
 

@@ -1,60 +1,49 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView;
 
 public class uct
   implements View.OnClickListener
 {
-  public uct(TroopRequestActivity paramTroopRequestActivity) {}
+  public uct(QCircleExpandableTextView paramQCircleExpandableTextView) {}
   
   public void onClick(View paramView)
   {
-    long l = System.currentTimeMillis();
-    if ((l - TroopRequestActivity.c > 0L) && (l - TroopRequestActivity.c < 800L)) {
-      return;
-    }
-    TroopRequestActivity.c = l;
-    if (((FriendsManager)this.a.app.getManager(50)).b(this.a.l)) {
-      paramView = new ProfileActivity.AllInOne(this.a.l, 1);
-    }
-    for (;;)
+    paramView = this.a;
+    boolean bool;
+    if (!this.a.jdField_b_of_type_Boolean)
     {
-      ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.a.a.msg.group_code.get() + "", "3", "", "");
-      ProfileActivity.b(this.a, paramView);
-      return;
-      if ((this.a.a.msg.group_msg_type.get() != 2) || (this.a.a.msg.sub_type.get() != 3)) {
-        break;
+      bool = true;
+      paramView.jdField_b_of_type_Boolean = bool;
+      if (!this.a.jdField_b_of_type_Boolean) {
+        break label137;
       }
-      paramView = new ProfileActivity.AllInOne(this.a.l, 26);
-      paramView.d = 1;
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_b_of_type_JavaLangString);
+      if (this.a.jdField_a_of_type_Ucw != null) {
+        this.a.jdField_a_of_type_Ucw.a(false);
+      }
     }
-    paramView = new ProfileActivity.AllInOne(this.a.l, 24);
-    switch (this.a.b)
+    for (paramView = new ucv(this.a, this.a.getHeight(), this.a.d, null);; paramView = new ucv(this.a, this.a.getHeight(), this.a.c + this.a.e, null))
     {
-    }
-    for (;;)
-    {
+      paramView.setFillAfter(true);
+      paramView.setAnimationListener(new ucu(this));
+      this.a.clearAnimation();
+      this.a.startAnimation(paramView);
+      return;
+      bool = false;
       break;
-      paramView.l = 3;
-      break;
-      paramView.l = 1;
-      break;
-      paramView.l = 2;
+      label137:
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_JavaLangString);
+      if (this.a.jdField_a_of_type_Ucw != null) {
+        this.a.jdField_a_of_type_Ucw.a(true);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uct
  * JD-Core Version:    0.7.0.1
  */

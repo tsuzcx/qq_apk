@@ -1,25 +1,12 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.webview.AbsWebView;
-import com.tencent.qphone.base.util.QLog;
-
 public class aklz
-  implements Runnable
 {
-  public aklz(AbsWebView paramAbsWebView) {}
+  public int a;
+  public awge a;
   
-  public void run()
+  public aklz(int paramInt, awge paramawge)
   {
-    long l1 = SystemClock.uptimeMillis();
-    if (this.a.a == null)
-    {
-      this.a.z();
-      if (QLog.isColorLevel())
-      {
-        long l2 = SystemClock.uptimeMillis();
-        QLog.d("AbsWebView", 2, "initPluginEngine cost= " + (l2 - l1));
-      }
-    }
-    Thread.yield();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Awge = paramawge;
   }
 }
 

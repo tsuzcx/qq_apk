@@ -1,30 +1,27 @@
-import com.tencent.mobileqq.apollo.utils.ApolloSoLoader;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.subscribe.event.UserStateUpdateEvent;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
 
 public class yjv
-  implements INetInfoHandler
+  extends BroadcastReceiver
 {
-  public void onNetMobile2None() {}
+  private yjv(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment) {}
   
-  public void onNetMobile2Wifi(String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ApolloSoLoader.a("onNetMobile2Wifi");
+    if ((paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_reload_get_main_page")))
+    {
+      SubscribePersonalDetailFragment.b(this.a, false);
+      yiw.a().a(new UserStateUpdateEvent());
+    }
   }
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    ApolloSoLoader.a("onNetNone2Wifi");
-  }
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yjv
  * JD-Core Version:    0.7.0.1
  */

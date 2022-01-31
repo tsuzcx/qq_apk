@@ -1,20 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
 
-public class mmy
-  implements Runnable
+class mmy
+  implements mkg
 {
-  public mmy(ItemShowDispatcher paramItemShowDispatcher) {}
+  mmy(mmw parammmw) {}
   
-  public void run()
+  public void a()
   {
-    QLog.d(ItemShowDispatcher.a(this.a), 2, "  1秒到了 ");
-    ItemShowDispatcher.a(this.a, ItemShowDispatcher.a(this.a));
+    if (this.a.a.a != null)
+    {
+      this.a.a.a.setViewEnable(2131372756, false);
+      this.a.a.a.setViewEnable(2131362956, false);
+      this.a.a.a.setViewEnable(2131362968, false);
+      this.a.a.a.setViewEnable(2131362967, false);
+    }
+  }
+  
+  public void b()
+  {
+    this.a.a.e = true;
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 2130772165);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mmy
  * JD-Core Version:    0.7.0.1
  */

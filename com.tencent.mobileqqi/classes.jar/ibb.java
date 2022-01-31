@@ -1,22 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
+
 public class ibb
+  implements DialogInterface.OnClickListener
 {
-  private int a;
-  private int b;
+  public ibb(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public int a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public int b()
-  {
-    return this.b;
+    this.a.finish();
   }
 }
 

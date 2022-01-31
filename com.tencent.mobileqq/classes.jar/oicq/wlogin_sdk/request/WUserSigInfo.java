@@ -16,9 +16,11 @@ public class WUserSigInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<WUserSigInfo> CREATOR = new WUserSigInfo.1();
+  public byte[] _device_token = new byte[0];
   public List<String> _domains = new ArrayList();
   public byte[] _fastLoginBuf;
   public byte[] _in_ksid;
+  public HashMap<Integer, tlv_t> _loginExtraProductTLVMap = new HashMap();
   public int _login_bitmap = 0;
   public byte[] _reserveData;
   public long _seqence = 0L;
@@ -76,6 +78,7 @@ public class WUserSigInfo
     {
       util.LOGI(String.format("WUserSigInfo.get_clone add da2 %d", new Object[] { Integer.valueOf(i) }), "");
       this._tickets.add(new Ticket(33554432, paramWloginSigInfo._DA2, null, 0L, 0L));
+      this._device_token = paramWloginSigInfo._device_token;
       paramWloginSigInfo.cacheTickets = this._tickets;
       paramWloginSigInfo.cacheUpdateStamp = util.get_server_cur_time();
       return;
@@ -91,16 +94,18 @@ public class WUserSigInfo
     this._login_bitmap = paramParcel.readInt();
     this._domains = paramParcel.readArrayList(List.class.getClassLoader());
     paramParcel.readTypedList(this._tickets, Ticket.CREATOR);
+    this._device_token = paramParcel.createByteArray();
     paramParcel = paramParcel.readBundle();
     if (paramParcel != null)
     {
       this.regTLVMap = ((HashMap)paramParcel.getSerializable("regTLVMap"));
       this.extraLoginTLVMap = ((HashMap)paramParcel.getSerializable("extraLoginTLVMap"));
       this.extraRegTLVMap = ((HashMap)paramParcel.getSerializable("extraRegTLVMap"));
-      paramParcel = (HashMap)paramParcel.getSerializable("loginTLVMap");
-      if (paramParcel != null) {
-        this.loginTLVMap = paramParcel;
+      HashMap localHashMap = (HashMap)paramParcel.getSerializable("loginTLVMap");
+      if (localHashMap != null) {
+        this.loginTLVMap = localHashMap;
       }
+      this._loginExtraProductTLVMap = ((HashMap)paramParcel.getSerializable("loginExtraProductTLVMap"));
     }
   }
   
@@ -113,11 +118,13 @@ public class WUserSigInfo
     paramParcel.writeInt(this._login_bitmap);
     paramParcel.writeList(this._domains);
     paramParcel.writeTypedList(this._tickets);
+    paramParcel.writeByteArray(this._device_token);
     Bundle localBundle = new Bundle();
     localBundle.putSerializable("regTLVMap", this.regTLVMap);
     localBundle.putSerializable("extraLoginTLVMap", this.extraLoginTLVMap);
     localBundle.putSerializable("extraRegTLVMap", this.extraRegTLVMap);
     localBundle.putSerializable("loginTLVMap", this.loginTLVMap);
+    localBundle.putSerializable("loginExtraProductTLVMap", this._loginExtraProductTLVMap);
     paramParcel.writeBundle(localBundle);
   }
 }

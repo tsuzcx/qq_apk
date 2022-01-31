@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.radar.ui.RadarViewController android:layout_gravity="center" android:id="@id/dzb" android:layout_width="616.0dip" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:background="@drawable/aob" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/dzc" android:background="@drawable/bhi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="center" android:adjustViewBounds="true" android:layout_centerInParent="true" />
+    <com.tencent.mm.plugin.radar.ui.RadarWaveView android:id="@id/dzd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/dze" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/aoa" android:layout_centerInParent="true" />
+    </com.tencent.mm.plugin.radar.ui.RadarWaveView>
+    <RelativeLayout android:id="@id/dzf" android:layout_width="320.0dip" android:layout_height="fill_parent" android:layout_centerInParent="true">
+        <LinearLayout android:orientation="horizontal" android:padding="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_above="@id/dzg" android:layout_centerHorizontal="true">
+            <ProgressBar android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/dzh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t" />
+            <TextView android:textSize="16.0sp" android:textColor="#ff858585" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/dzi" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <ImageView android:background="@drawable/ao9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" android:adjustViewBounds="true" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/dzj" android:layout_width="78.0dip" android:layout_height="78.0dip" android:layout_centerInParent="true" />
+        <com.tencent.mm.plugin.radar.ui.RadarSpecialGridView android:id="@id/dzk" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="80.0dip" android:layout_marginBottom="80.0dip" android:overScrollMode="never" />
+        <Button android:textSize="16.0sp" android:textColor="#ff858585" android:gravity="center" android:id="@id/dzl" android:background="@drawable/ao_" android:paddingLeft="16.0dip" android:paddingTop="6.0dip" android:paddingRight="16.0dip" android:paddingBottom="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:text="@string/dkp" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <include android:id="@id/dzm" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" layout="@layout/ao4" />
+        <include layout="@layout/ao2" />
+    </RelativeLayout>
+</com.tencent.mm.plugin.radar.ui.RadarViewController>

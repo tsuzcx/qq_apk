@@ -1,16 +1,24 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.widget.ActionSheet.WatchDismissActions;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.util.Pair;
 
-public class ajgv
-  implements ActionSheet.WatchDismissActions
+class ajgv
+  implements View.OnClickListener
 {
-  public ajgv(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  ajgv(ajgb paramajgb) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    PublishHomeWorkFragment.a(this.a).a();
-    PublishHomeWorkFragment.d(this.a);
+    Intent localIntent = new Intent(ajgb.a(this.a), QQBrowserActivity.class);
+    localIntent.putExtra("uin", ((QQAppInterface)ajgb.a(this.a).getAppRuntime()).getCurrentAccountUin());
+    paramView = (Pair)paramView.getTag();
+    if (paramView != null) {
+      ajgb.a(this.a).startActivity(localIntent.putExtra("url", "https://qzs.qq.com/iot/mobile/xiaowei-qq-proxy/index.html?din=" + ((Long)paramView.first).longValue() + "&deviceRemark=" + (String)paramView.second));
+    }
   }
 }
 

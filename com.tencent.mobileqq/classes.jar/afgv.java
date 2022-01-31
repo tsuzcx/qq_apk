@@ -1,20 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
 
-class afgv
-  implements DialogInterface.OnClickListener
+public class afgv
 {
-  afgv(afgp paramafgp, QQCustomDialog paramQQCustomDialog) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static View a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    return LayoutInflater.from(paramContext).inflate(2131559192, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afgv
  * JD-Core Version:    0.7.0.1
  */

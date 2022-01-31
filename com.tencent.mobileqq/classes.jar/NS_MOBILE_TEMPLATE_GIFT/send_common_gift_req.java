@@ -10,9 +10,9 @@ public final class send_common_gift_req
   extends JceStruct
 {
   static s_send_gift_item cache_giftItem = new s_send_gift_item();
-  static Map cache_mapExt = new HashMap();
+  static Map<String, String> cache_mapExt = new HashMap();
   public s_send_gift_item giftItem;
-  public Map mapExt;
+  public Map<String, String> mapExt;
   
   static
   {
@@ -21,7 +21,7 @@ public final class send_common_gift_req
   
   public send_common_gift_req() {}
   
-  public send_common_gift_req(s_send_gift_item params_send_gift_item, Map paramMap)
+  public send_common_gift_req(s_send_gift_item params_send_gift_item, Map<String, String> paramMap)
   {
     this.giftItem = params_send_gift_item;
     this.mapExt = paramMap;
@@ -43,7 +43,7 @@ public final class send_common_gift_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_TEMPLATE_GIFT.send_common_gift_req
  * JD-Core Version:    0.7.0.1
  */

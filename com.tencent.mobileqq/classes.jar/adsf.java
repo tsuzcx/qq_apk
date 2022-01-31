@@ -1,27 +1,36 @@
-import android.view.SurfaceHolder;
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
+import MQQ.PayRuleCfg;
+import android.graphics.Color;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.QQSettingMe;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
 
 public class adsf
-  implements IVideoViewBase.IVideoViewCallBack
+  extends bayv
 {
-  public adsf(VideoBaseItem paramVideoBaseItem) {}
+  public adsf(QQSettingMe paramQQSettingMe, TextView paramTextView) {}
   
-  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + ";broad finish start show here onsurface changed  here");
+    QLog.e("QQSettingRedesign", 1, "VipInfoHandler updateVipItemView onLoadFialed: ", paramThrowable);
   }
   
-  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface create ok here");
-  }
-  
-  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
-  {
-    this.a.a = true;
-    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface Destroy  here");
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "VipInfoHandler onLoadSuccessed: " + QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconUrl);
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconText);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconTextCol));
+      return;
+    }
+    catch (Exception paramURLDrawable)
+    {
+      QLog.e("QQSettingRedesign", 1, "VipInfoHandler setTextColor: " + QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconTextCol, paramURLDrawable);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+    }
   }
 }
 

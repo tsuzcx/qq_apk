@@ -1,47 +1,38 @@
-import android.app.Dialog;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class cae
-  extends Handler
+class cae
+  implements ActionSheet.OnButtonClickListener
 {
-  public cae(AddRequestActivity paramAddRequestActivity) {}
+  cae(cad paramcad, ActionSheet paramActionSheet) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramMessage.what)
+    switch (paramInt)
     {
     }
-    do
+    for (;;)
     {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
-      if ((AddRequestActivity.a(this.a) != null) && (AddRequestActivity.a(this.a).isShowing()))
+      ChatActivityFacade.b(this.jdField_a_of_type_Cad.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Cad.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      if (!(this.jdField_a_of_type_Cad.jdField_a_of_type_AndroidContentContext instanceof ChatActivity))
       {
-        AddRequestActivity.a(this.a).setText(this.a.getString(2131562880));
-        AddRequestActivity.a(this.a).setVisibility(8);
-        AddRequestActivity.a(this.a).setVisibility(0);
-        AddRequestActivity.a(this.a).setImageResource(2130837958);
-        postDelayed(new caf(this), 1500L);
+        this.jdField_a_of_type_Cad.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Cad.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
         return;
       }
-      this.a.finish();
-      return;
-      this.a.a(true);
-    } while ((AddRequestActivity.a(this.a) == null) || (!AddRequestActivity.a(this.a).isShowing()));
-    AddRequestActivity.a(this.a).setText(this.a.getString(2131561435));
-    AddRequestActivity.a(this.a).setVisibility(8);
-    AddRequestActivity.a(this.a).setVisibility(0);
-    AddRequestActivity.a(this.a).setImageResource(2130837947);
-    postDelayed(new cag(this), 1500L);
+      ((ChatActivity)this.jdField_a_of_type_Cad.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Cad.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     cae
  * JD-Core Version:    0.7.0.1
  */

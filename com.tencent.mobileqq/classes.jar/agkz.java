@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.pic.PicBusiManager;
-import com.tencent.mobileqq.pic.PicPreDownloader;
-import com.tencent.mobileqq.pic.PicReq;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class agkz
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public agkz(PicPreDownloader paramPicPreDownloader, PicReq paramPicReq) {}
+  public agkz(PhotoListPanel paramPhotoListPanel) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PicBusiManager.a(this.jdField_a_of_type_ComTencentMobileqqPicPicReq, this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListPanel", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agkz
  * JD-Core Version:    0.7.0.1
  */

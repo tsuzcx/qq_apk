@@ -1,34 +1,94 @@
-import com.tencent.biz.qqstory.model.CommentManager;
-import com.tencent.biz.qqstory.model.LikeManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.hotpic.PublicAccountHotPicPanel;
 
-public final class nym
-  implements Runnable
+public class nym
+  implements bicy
 {
-  public nym(String paramString) {}
+  public nym(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void run()
+  public View a(int paramInt)
   {
-    Object localObject = (LikeManager)SuperManager.a(15);
-    ((LikeManager)localObject).a(new ArrayList(0), this.a, false, true);
-    ((LikeManager)localObject).a(new ArrayList(0), this.a, true, true);
-    localObject = (CommentManager)SuperManager.a(17);
-    ((CommentManager)localObject).a(new ArrayList(0), this.a, false, true);
-    ((CommentManager)localObject).a(new ArrayList(0), this.a, true, true);
-    localObject = (FeedManager)SuperManager.a(11);
-    FeedItem localFeedItem = ((FeedManager)localObject).a(this.a);
-    localFeedItem.reset();
-    ((FeedManager)localObject).a(localFeedItem);
-    SLog.a("Q.qqstory.home.data.FeedManager", "clear all feed interactive data %s", this.a);
+    EmoticonMainPanel localEmoticonMainPanel = null;
+    if (paramInt == 3)
+    {
+      if (ReadInJoyBaseDeliverActivity.a(this.a) == null)
+      {
+        ReadInJoyBaseDeliverActivity.a(this.a, (EmoticonMainPanel)View.inflate(this.a, 2131559056, null));
+        ReadInJoyBaseDeliverActivity.a(this.a).setCallBack(ReadInJoyBaseDeliverActivity.a(this.a));
+        ReadInJoyBaseDeliverActivity.a(this.a).b = true;
+        bool = this.a instanceof ReadInJoyDeliverBiuActivity;
+        ReadInJoyBaseDeliverActivity.a(this.a).a(this.a.app, 99999, this.a, this.a.getTitleBarHeight(), null, null, bool);
+        ReadInJoyBaseDeliverActivity.a(this.a).k();
+      }
+      localEmoticonMainPanel = ReadInJoyBaseDeliverActivity.a(this.a);
+    }
+    while (paramInt != 24)
+    {
+      boolean bool;
+      return localEmoticonMainPanel;
+    }
+    if (ReadInJoyBaseDeliverActivity.a(this.a) == null)
+    {
+      ReadInJoyBaseDeliverActivity.a(this.a, (PublicAccountHotPicPanel)View.inflate(this.a, 2131559478, null));
+      ReadInJoyBaseDeliverActivity.a(this.a).a(this.a.app, this.a, null, this.a.a);
+      ReadInJoyBaseDeliverActivity.a(this.a).setPublicAccountGifListener(ReadInJoyBaseDeliverActivity.a(this.a));
+    }
+    return ReadInJoyBaseDeliverActivity.a(this.a);
   }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    boolean bool;
+    if ((paramInt1 == 24) && (ReadInJoyBaseDeliverActivity.a(this.a) != null)) {
+      if (paramInt2 == 1)
+      {
+        bool = true;
+        ReadInJoyBaseDeliverActivity.a(this.a).a(bool);
+        label34:
+        if (paramInt2 != 1) {
+          break label82;
+        }
+        this.a.b(1);
+      }
+    }
+    label82:
+    do
+    {
+      return;
+      bool = false;
+      break;
+      if ((paramInt2 != 24) || (ReadInJoyBaseDeliverActivity.a(this.a) == null)) {
+        break label34;
+      }
+      ReadInJoyBaseDeliverActivity.a(this.a).f();
+      break label34;
+      if (paramInt2 == 3)
+      {
+        this.a.b(2);
+        return;
+      }
+      if (paramInt2 == 0)
+      {
+        this.a.b(0);
+        return;
+      }
+    } while (paramInt2 != 24);
+    this.a.b(3);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return false;
+  }
+  
+  public void s() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nym
  * JD-Core Version:    0.7.0.1
  */

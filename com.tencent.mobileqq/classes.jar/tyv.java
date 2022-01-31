@@ -1,27 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.qqcircle.list.QCirclePublicListFragment;
 
 public class tyv
-  implements DialogInterface.OnClickListener
+  extends RecyclerView.OnScrollListener
 {
-  public tyv(TroopInfoActivity paramTroopInfoActivity) {}
+  public tyv(QCirclePublicListFragment paramQCirclePublicListFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    TroopInfoActivity.b(this.a);
-    switch (TroopInfoActivity.a(this.a))
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0)
     {
-    default: 
+      abvl.a().a(this.a.a.getDropFrameMonitorTag(), false);
       return;
     }
-    this.a.overridePendingTransition(0, 2131034122);
+    abvl.a().a(this.a.a.getDropFrameMonitorTag());
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tyv
  * JD-Core Version:    0.7.0.1
  */

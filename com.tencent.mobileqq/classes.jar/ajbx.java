@@ -1,24 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.createNewTroop.CateListAdapter.SingleItemViewHolder;
-import com.tencent.mobileqq.troop.createNewTroop.SubCateListView;
+import Wallet.SetSelectedSkinRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class ajbx
-  implements ValueAnimator.AnimatorUpdateListener
+  implements BusinessObserver
 {
-  public ajbx(SubCateListView paramSubCateListView, CateListAdapter.SingleItemViewHolder paramSingleItemViewHolder) {}
+  public ajbx(RedPacketManager paramRedPacketManager, BusinessObserver paramBusinessObserver) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    float f = 1.0F * (100 - i) / 100.0F;
-    this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopCateListAdapter$SingleItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.setAlpha(f);
-    f = this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopCateListAdapter$SingleItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.getHeight() / 2.0F * i / 100.0F;
-    this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopCateListAdapter$SingleItemViewHolder.jdField_b_of_type_AndroidViewView.setTranslationY(f);
-    f = i * -180.0F / 100.0F;
-    this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopCateListAdapter$SingleItemViewHolder.c.setRotation(f);
+    SetSelectedSkinRsp localSetSelectedSkinRsp = (SetSelectedSkinRsp)paramBundle.getSerializable("rsp");
+    this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(paramInt, paramBoolean, paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("RedPacketManager", 2, "setSelectedSkin2ServerIfChanged onReceive isSuccess:" + paramBoolean);
+    }
   }
 }
 

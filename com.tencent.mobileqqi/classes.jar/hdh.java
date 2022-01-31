@@ -1,18 +1,30 @@
-import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomSingleButtonDialog;
 
 public class hdh
-  implements Runnable
+  implements View.OnClickListener
 {
-  public hdh(MessageSubtitleView paramMessageSubtitleView) {}
+  int jdField_a_of_type_Int;
   
-  public void run()
+  public hdh(QQCustomSingleButtonDialog paramQQCustomSingleButtonDialog, int paramInt)
   {
-    MessageSubtitleView.b(this.a);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a(this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hdh
  * JD-Core Version:    0.7.0.1
  */

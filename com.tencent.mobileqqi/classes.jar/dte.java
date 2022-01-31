@@ -1,25 +1,19 @@
-import com.tencent.mobileqq.activity.SubaccountUgActivity;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class dte
-  extends MessageObserver
+  implements View.OnTouchListener
 {
-  public dte(SubaccountUgActivity paramSubaccountUgActivity) {}
+  public dte(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void a(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.isFinishing()) {
-      return;
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.e();
     }
-    paramString = this.a.getString(2131562520);
-    if (paramSubAccountBackProtocData.p == 0) {}
-    for (int i = 2131563288;; i = 2131563291)
-    {
-      paramSubAccountBackProtocData = this.a.getString(i);
-      this.a.a(paramString, paramSubAccountBackProtocData, this.a.getString(2131562543), new dtf(this));
-      return;
-    }
+    return true;
   }
 }
 

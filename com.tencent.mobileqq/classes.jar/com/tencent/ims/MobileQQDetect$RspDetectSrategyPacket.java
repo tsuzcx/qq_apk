@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class MobileQQDetect$RspDetectSrategyPacket
-  extends MessageMicro
+  extends MessageMicro<RspDetectSrategyPacket>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_buffer = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class MobileQQDetect$RspDetectSrategyPacket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.MobileQQDetect.RspDetectSrategyPacket
  * JD-Core Version:    0.7.0.1
  */

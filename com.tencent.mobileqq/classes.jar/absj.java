@@ -1,23 +1,32 @@
-import android.graphics.Rect;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public final class absj
-  implements Comparator
+public class absj
 {
-  public int a(Rect paramRect1, Rect paramRect2)
+  public abta a;
+  public alto a;
+  public amnz a;
+  public auga a;
+  public Map<String, RecentUser> a;
+  public Map<String, MessageRecord> b = new HashMap();
+  public Map<String, MessageRecord> c = new HashMap();
+  public Map<String, MessageRecord> d = new HashMap();
+  public Map<String, MessageRecord> e = new HashMap();
+  public Map<String, List<MessageRecord>> f = new HashMap();
+  public Map<String, List<MessageRecord>> g = new HashMap();
+  
+  public absj(QQAppInterface paramQQAppInterface)
   {
-    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
-    do
-    {
-      return -1;
-      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
-        return 1;
-      }
-    } while (paramRect1.width() > paramRect2.width());
-    if (paramRect1.width() < paramRect2.width()) {
-      return 1;
-    }
-    return 0;
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_Alto = ((alto)paramQQAppInterface.getManager(51));
+    this.jdField_a_of_type_Auga = ((auga)paramQQAppInterface.getManager(37));
+    this.jdField_a_of_type_Amnz = paramQQAppInterface.a().a();
+    this.jdField_a_of_type_Abta = paramQQAppInterface.a();
   }
 }
 

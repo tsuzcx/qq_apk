@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.ocr.OcrControl.OcrCallback;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class agcq
-  implements OcrControl.OcrCallback
+  implements PopupWindow.OnDismissListener
 {
-  public agcq(ScanOcrActivity paramScanOcrActivity) {}
+  public agcq(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void a() {}
-  
-  public void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
+  public void onDismiss()
   {
-    this.a.runOnUiThread(new agcr(this, paramString, paramInt, paramOcrRecogResult, paramLong));
+    StructingMsgItemBuilder.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agcq
  * JD-Core Version:    0.7.0.1
  */

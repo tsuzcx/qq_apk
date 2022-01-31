@@ -1,34 +1,41 @@
-import com.tencent.biz.qqstory.comment.FeedCommentLikeLego;
-import com.tencent.biz.qqstory.newshare.callback.OnSimpleShareListener;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.biz.common.offline.HtmlOffline.6;
 
-class nby
-  extends OnSimpleShareListener
+public class nby
+  implements nbs
 {
-  nby(nbx paramnbx) {}
+  public nby(HtmlOffline.6 param6) {}
   
-  public void a()
+  public void loaded(String paramString, int paramInt)
   {
-    super.a();
-    FeedCommentLikeLego.a(this.a.a, null);
+    long l = System.currentTimeMillis() - this.a.jdField_a_of_type_Long;
+    if (nbv.a.a()) {
+      nbv.a.a("HtmlCheckUpdate", 2, "js call downloadUpdate callback:" + paramInt + ", time:" + l);
+    }
+    if (paramInt == 0) {
+      if (nbv.b(this.a.b)) {
+        this.a.jdField_a_of_type_Nbs.loaded(null, 0);
+      }
+    }
+    for (;;)
+    {
+      BidDownloader.b(this.a.b);
+      nbv.a(this.a.b, paramInt, l, ndk.a(this.a.jdField_a_of_type_AndroidContentContext));
+      return;
+      this.a.jdField_a_of_type_Nbs.loaded(null, 6);
+      continue;
+      this.a.jdField_a_of_type_Nbs.loaded(null, 2);
+    }
   }
   
-  public void a(int paramInt)
+  public void progress(int paramInt)
   {
-    super.a(paramInt);
-    StoryReportor.a("home_page", "suc_share", 1, paramInt, new String[] { StoryReportor.b(this.a.a.a) + "", StoryReportor.a(this.a.a.a) + "", this.a.a.a.feedId });
-  }
-  
-  public void b(int paramInt)
-  {
-    super.b(paramInt);
-    StoryReportor.a("home_page", "share_chanel", 1, paramInt, new String[] { StoryReportor.b(this.a.a.a) + "", StoryReportor.a(this.a.a.a) + "", this.a.a.a.feedId });
+    this.a.jdField_a_of_type_Nbs.progress(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nby
  * JD-Core Version:    0.7.0.1
  */

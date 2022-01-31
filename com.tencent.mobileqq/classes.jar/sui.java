@@ -1,30 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class sui
-  extends BroadcastReceiver
+class sui
+  implements View.OnClickListener
 {
-  public sui(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  sui(sue paramsue, sud paramsud) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (paramIntent != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.gesturelock.unlock", 2, "GesturePWDUnlockActivity finish onReceive");
-      }
-      if ((paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
-        this.a.finish();
-      }
-    }
+    nrt.a(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B6F", "0X8005B6F", 0, 0, "", "", "", "", false);
+    azqs.b(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800642D", "0X800642D", 0, 0, "", "", "", "");
+    adpm.a(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_AndroidAppActivity, swy.a(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_AndroidAppActivity), null, null);
+    suk.b(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sui
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import java.util.UUID;
 public class CrashDetailBean
   implements Parcelable, Comparable<CrashDetailBean>
 {
-  public static final Parcelable.Creator<CrashDetailBean> CREATOR = new Parcelable.Creator() {};
+  public static final Parcelable.Creator<CrashDetailBean> CREATOR = new CrashDetailBean.1();
   public String A = "";
   public String B = "";
   public long C = -1L;

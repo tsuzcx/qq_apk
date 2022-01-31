@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.RecentFileAdapter.ItemHolder;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
-class fvy
-  implements DialogInterface.OnClickListener
+public class fvy
+  extends fvj
 {
-  fvy(fvx paramfvx, RecentFileAdapter.ItemHolder paramItemHolder) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public fvy(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    this.jdField_a_of_type_Fvx.a.b.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter$ItemHolder.a.nSessionId);
-    FMRecentFileActivity.a(this.jdField_a_of_type_Fvx.a);
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateSenderCancelSend";
   }
 }
 

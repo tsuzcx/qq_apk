@@ -1,20 +1,18 @@
 package com.tencent.token.ui;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class act
+class act
   implements View.OnClickListener
 {
-  act(UnbindUinActivity paramUnbindUinActivity) {}
+  act(UtilsLoginProtectActivity paramUtilsLoginProtectActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, UtilsModSetMobileStep1Activity.class);
-    paramView.putExtra("op_type", 1);
-    paramView.putExtra("title", this.a.getResources().getString(2131361846));
+    paramView = new Intent(this.a, WtLoginAccountInput.class);
+    paramView.putExtra("page_id", 4);
     this.a.startActivity(paramView);
     this.a.finish();
   }

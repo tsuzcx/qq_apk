@@ -1,4 +1,4 @@
-public class ahfa {}
+public abstract interface ahfa {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

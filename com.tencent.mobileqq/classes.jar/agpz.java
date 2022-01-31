@@ -1,42 +1,48 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
-import com.tencent.mobileqq.vip.DownloadListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-public class agpz
-  implements Runnable
+class agpz
+  extends asim
 {
-  public agpz(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, int paramInt, String paramString) {}
+  agpz(agps paramagps) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    Object localObject = new agqa(this);
-    int i = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_JavaLangString, (DownloadListener)localObject);
-    if ((i == 19) || (i == 0))
+    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(20);
-      ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage((Message)localObject);
       if (QLog.isColorLevel()) {
-        QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("style download success , url : %s, position : %d ", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) }));
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onBandIntimateRelationship");
       }
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.b.remove(this.jdField_a_of_type_JavaLangString);
+      this.a.F();
     }
-    do
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
     {
-      return;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(21);
-      ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage((Message)localObject);
-    } while (!QLog.isColorLevel());
-    QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("styles download fail , url : %s, position : %d ", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) }));
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateIntimateRelationship");
+      }
+      this.a.F();
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (TextUtils.equals(paramString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDisbandIntimateRelationship");
+      }
+      this.a.F();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agpz
  * JD-Core Version:    0.7.0.1
  */

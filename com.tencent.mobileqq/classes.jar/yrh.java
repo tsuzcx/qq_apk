@@ -1,23 +1,35 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.biz.troop.TroopMemberApiService;
+import java.util.ArrayList;
 
-public final class yrh
-  implements EIPCResultCallback
+public class yrh
+  extends aluu
 {
-  public yrh(long paramLong) {}
+  public yrh(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a(boolean paramBoolean, String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, ArrayList<String> paramArrayList)
   {
-    paramEIPCResult = paramEIPCResult.data.getString("respData");
-    CmGameUtil.a().callbackFromRequest(this.a, 0, "cs.on_get_open_key.local", paramEIPCResult);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 1050);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putSerializable("data", new Object[] { paramString, paramArrayOfByte, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramArrayList });
+    localBundle.putSerializable("observer_type", Integer.valueOf(5));
+    this.a.a(3, localBundle);
+  }
+  
+  public void a(boolean paramBoolean, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("seq", this.a.f);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putStringArrayList("uins", paramArrayList1);
+    localBundle.putStringArrayList("tinyIds", paramArrayList2);
+    this.a.a(102, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yrh
  * JD-Core Version:    0.7.0.1
  */

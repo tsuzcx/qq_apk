@@ -1,21 +1,25 @@
-import android.graphics.Bitmap;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter.AvatarInfo;
+import android.os.Handler.Callback;
+import android.os.Message;
 
 class ajrz
-  implements Runnable
+  implements Handler.Callback
 {
   ajrz(ajry paramajry) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    Bitmap localBitmap = this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter$AvatarInfo.a;
-    if ((localBitmap != null) && (!localBitmap.isRecycled()))
+    switch (paramMessage.what)
     {
-      this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageBitmap(localBitmap);
-      return;
     }
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(null);
+    for (;;)
+    {
+      return false;
+      this.a.a(null);
+      continue;
+      if (ajry.a(this.a) != null) {
+        ajry.a(this.a).j();
+      }
+    }
   }
 }
 

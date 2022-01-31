@@ -1,38 +1,31 @@
-import android.content.Intent;
-import android.text.TextUtils;
+import android.graphics.Color;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
-public class xaf
-  implements View.OnClickListener
+class xaf
+  implements View.OnTouchListener
 {
-  public xaf(PayCodeEntryActivity paramPayCodeEntryActivity, xag paramxag) {}
+  xaf(xae paramxae) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity.a("payCodeEntry.cheCode2", "actQQWlxclick", "0003");
-    paramView = new Intent("com.tencent.mobileqq.action.jtcode");
-    paramView.setClass(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity, JumpActivity.class);
-    if (!TextUtils.isEmpty(PayCodeEntryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity))) {
-      paramView.putExtra("city_name", PayCodeEntryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity));
+    switch (paramMotionEvent.getAction())
+    {
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xag.b)) {
-      paramView.putExtra("city_code", this.jdField_a_of_type_Xag.b);
+    for (;;)
+    {
+      return false;
+      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
+      continue;
+      this.a.a.setTextColor(Color.parseColor("#ffffff"));
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xag.a)) {
-      paramView.putExtra("ykt_id", this.jdField_a_of_type_Xag.a);
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xag.c)) {
-      paramView.putExtra("show_name", this.jdField_a_of_type_Xag.c);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity.startActivityForResult(paramView, 102);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xaf
  * JD-Core Version:    0.7.0.1
  */

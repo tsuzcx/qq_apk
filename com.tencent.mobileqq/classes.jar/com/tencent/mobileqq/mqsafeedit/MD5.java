@@ -65,27 +65,30 @@ public class MD5
   
   public static byte[] getFileMd5(String paramString)
   {
-    arrayOfByte2 = (byte[])null;
+    byte[] arrayOfByte2 = (byte[])null;
+    byte[] arrayOfByte1;
     if ((paramString == null) || (paramString.length() == 0)) {
-      return null;
+      arrayOfByte1 = null;
     }
-    try
+    for (;;)
     {
-      File localFile = new File(paramString);
-      arrayOfByte1 = arrayOfByte2;
-      if (localFile.exists()) {
-        arrayOfByte1 = getPartfileMd5(paramString, localFile.length());
+      return arrayOfByte1;
+      try
+      {
+        File localFile = new File(paramString);
+        arrayOfByte1 = arrayOfByte2;
+        if (localFile.exists())
+        {
+          paramString = getPartfileMd5(paramString, localFile.length());
+          return paramString;
+        }
       }
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
+      catch (Exception paramString)
       {
         paramString.printStackTrace();
-        byte[] arrayOfByte1 = arrayOfByte2;
       }
     }
-    return arrayOfByte1;
+    return arrayOfByte2;
   }
   
   /* Error */
@@ -105,142 +108,148 @@ public class MD5
     //   18: areturn
     //   19: aconst_null
     //   20: checkcast 54	[B
-    //   23: astore 9
-    //   25: aconst_null
-    //   26: astore 7
-    //   28: aconst_null
-    //   29: astore 10
-    //   31: new 81	java/io/FileInputStream
-    //   34: dup
-    //   35: aload_0
-    //   36: invokespecial 82	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   39: astore 8
-    //   41: new 60	java/io/File
-    //   44: dup
-    //   45: aload_0
-    //   46: invokespecial 63	java/io/File:<init>	(Ljava/lang/String;)V
-    //   49: astore_0
-    //   50: aload_0
-    //   51: invokevirtual 67	java/io/File:exists	()Z
-    //   54: ifeq +50 -> 104
-    //   57: aload_0
-    //   58: invokevirtual 70	java/io/File:length	()J
-    //   61: lstore 5
-    //   63: lload_1
-    //   64: lconst_0
-    //   65: lcmp
-    //   66: ifeq +157 -> 223
+    //   23: astore 10
+    //   25: new 81	java/io/FileInputStream
+    //   28: dup
+    //   29: aload_0
+    //   30: invokespecial 82	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   33: astore 8
+    //   35: aload 8
+    //   37: astore 7
+    //   39: new 60	java/io/File
+    //   42: dup
+    //   43: aload_0
+    //   44: invokespecial 63	java/io/File:<init>	(Ljava/lang/String;)V
+    //   47: astore_0
+    //   48: aload 8
+    //   50: astore 7
+    //   52: aload_0
+    //   53: invokevirtual 67	java/io/File:exists	()Z
+    //   56: ifeq +61 -> 117
+    //   59: aload 8
+    //   61: astore 7
+    //   63: aload_0
+    //   64: invokevirtual 70	java/io/File:length	()J
+    //   67: lstore 5
     //   69: lload_1
-    //   70: lstore_3
-    //   71: lload 5
-    //   73: lload_1
-    //   74: lcmp
-    //   75: ifge +6 -> 81
-    //   78: goto +145 -> 223
-    //   81: aload 8
-    //   83: lload_3
-    //   84: invokestatic 86	com/tencent/mobileqq/mqsafeedit/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
-    //   87: astore_0
-    //   88: aload 8
-    //   90: ifnull +107 -> 197
-    //   93: aload 8
-    //   95: invokevirtual 89	java/io/FileInputStream:close	()V
+    //   70: lconst_0
+    //   71: lcmp
+    //   72: ifeq +158 -> 230
+    //   75: lload_1
+    //   76: lstore_3
+    //   77: lload 5
+    //   79: lload_1
+    //   80: lcmp
+    //   81: ifge +6 -> 87
+    //   84: goto +146 -> 230
+    //   87: aload 8
+    //   89: astore 7
+    //   91: aload 8
+    //   93: lload_3
+    //   94: invokestatic 86	com/tencent/mobileqq/mqsafeedit/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   97: astore_0
     //   98: aload_0
     //   99: astore 7
-    //   101: aload 7
-    //   103: areturn
-    //   104: aload 8
-    //   106: ifnull -89 -> 17
-    //   109: aload 8
-    //   111: invokevirtual 89	java/io/FileInputStream:close	()V
-    //   114: aconst_null
-    //   115: areturn
-    //   116: astore_0
-    //   117: aload_0
-    //   118: invokevirtual 90	java/io/IOException:printStackTrace	()V
-    //   121: aconst_null
-    //   122: areturn
-    //   123: astore 8
-    //   125: aload 10
-    //   127: astore_0
-    //   128: aload_0
-    //   129: astore 7
-    //   131: aload 8
-    //   133: invokevirtual 77	java/lang/Exception:printStackTrace	()V
-    //   136: aload 9
-    //   138: astore 7
+    //   101: aload 8
+    //   103: ifnull +11 -> 114
+    //   106: aload 8
+    //   108: invokevirtual 89	java/io/FileInputStream:close	()V
+    //   111: aload_0
+    //   112: astore 7
+    //   114: aload 7
+    //   116: areturn
+    //   117: aload 8
+    //   119: ifnull -102 -> 17
+    //   122: aload 8
+    //   124: invokevirtual 89	java/io/FileInputStream:close	()V
+    //   127: aconst_null
+    //   128: areturn
+    //   129: astore_0
+    //   130: aload_0
+    //   131: invokevirtual 90	java/io/IOException:printStackTrace	()V
+    //   134: aconst_null
+    //   135: areturn
+    //   136: astore 9
+    //   138: aconst_null
+    //   139: astore_0
     //   140: aload_0
-    //   141: ifnull -40 -> 101
-    //   144: aload_0
-    //   145: invokevirtual 89	java/io/FileInputStream:close	()V
-    //   148: aload 9
+    //   141: astore 7
+    //   143: aload 9
+    //   145: invokevirtual 77	java/lang/Exception:printStackTrace	()V
+    //   148: aload 10
     //   150: astore 7
-    //   152: goto -51 -> 101
-    //   155: astore_0
+    //   152: aload_0
+    //   153: ifnull -39 -> 114
     //   156: aload_0
-    //   157: invokevirtual 90	java/io/IOException:printStackTrace	()V
-    //   160: aload 9
+    //   157: invokevirtual 89	java/io/FileInputStream:close	()V
+    //   160: aload 10
     //   162: astore 7
-    //   164: goto -63 -> 101
+    //   164: goto -50 -> 114
     //   167: astore_0
-    //   168: aload 7
-    //   170: ifnull +8 -> 178
-    //   173: aload 7
-    //   175: invokevirtual 89	java/io/FileInputStream:close	()V
-    //   178: aload_0
-    //   179: athrow
-    //   180: astore 7
-    //   182: aload 7
-    //   184: invokevirtual 90	java/io/IOException:printStackTrace	()V
-    //   187: goto -9 -> 178
-    //   190: astore 7
-    //   192: aload 7
-    //   194: invokevirtual 90	java/io/IOException:printStackTrace	()V
-    //   197: aload_0
-    //   198: astore 7
-    //   200: goto -99 -> 101
-    //   203: astore_0
-    //   204: aload 8
-    //   206: astore 7
-    //   208: goto -40 -> 168
-    //   211: astore 7
-    //   213: aload 8
-    //   215: astore_0
-    //   216: aload 7
-    //   218: astore 8
-    //   220: goto -92 -> 128
-    //   223: lload 5
-    //   225: lstore_3
-    //   226: goto -145 -> 81
+    //   168: aload_0
+    //   169: invokevirtual 90	java/io/IOException:printStackTrace	()V
+    //   172: aload 10
+    //   174: astore 7
+    //   176: goto -62 -> 114
+    //   179: astore_0
+    //   180: aconst_null
+    //   181: astore 7
+    //   183: aload 7
+    //   185: ifnull +8 -> 193
+    //   188: aload 7
+    //   190: invokevirtual 89	java/io/FileInputStream:close	()V
+    //   193: aload_0
+    //   194: athrow
+    //   195: astore 7
+    //   197: aload 7
+    //   199: invokevirtual 90	java/io/IOException:printStackTrace	()V
+    //   202: goto -9 -> 193
+    //   205: astore 7
+    //   207: aload 7
+    //   209: invokevirtual 90	java/io/IOException:printStackTrace	()V
+    //   212: aload_0
+    //   213: astore 7
+    //   215: goto -101 -> 114
+    //   218: astore_0
+    //   219: goto -36 -> 183
+    //   222: astore 9
+    //   224: aload 8
+    //   226: astore_0
+    //   227: goto -87 -> 140
+    //   230: lload 5
+    //   232: lstore_3
+    //   233: goto -146 -> 87
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	229	0	paramString	String
-    //   0	229	1	paramLong	long
-    //   70	156	3	l1	long
-    //   61	163	5	l2	long
-    //   26	148	7	localObject1	Object
-    //   180	3	7	localIOException1	IOException
-    //   190	3	7	localIOException2	IOException
-    //   198	9	7	localObject2	Object
-    //   211	6	7	localException1	Exception
-    //   39	71	8	localFileInputStream	java.io.FileInputStream
-    //   123	91	8	localException2	Exception
-    //   218	1	8	localException3	Exception
-    //   23	138	9	arrayOfByte	byte[]
-    //   29	97	10	localObject3	Object
+    //   0	236	0	paramString	String
+    //   0	236	1	paramLong	long
+    //   76	157	3	l1	long
+    //   67	164	5	l2	long
+    //   37	152	7	localObject	Object
+    //   195	3	7	localIOException1	IOException
+    //   205	3	7	localIOException2	IOException
+    //   213	1	7	str	String
+    //   33	192	8	localFileInputStream	java.io.FileInputStream
+    //   136	8	9	localException1	Exception
+    //   222	1	9	localException2	Exception
+    //   23	150	10	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   109	114	116	java/io/IOException
-    //   31	41	123	java/lang/Exception
-    //   144	148	155	java/io/IOException
-    //   31	41	167	finally
-    //   131	136	167	finally
-    //   173	178	180	java/io/IOException
-    //   93	98	190	java/io/IOException
-    //   41	63	203	finally
-    //   81	88	203	finally
-    //   41	63	211	java/lang/Exception
-    //   81	88	211	java/lang/Exception
+    //   122	127	129	java/io/IOException
+    //   25	35	136	java/lang/Exception
+    //   156	160	167	java/io/IOException
+    //   25	35	179	finally
+    //   188	193	195	java/io/IOException
+    //   106	111	205	java/io/IOException
+    //   39	48	218	finally
+    //   52	59	218	finally
+    //   63	69	218	finally
+    //   91	98	218	finally
+    //   143	148	218	finally
+    //   39	48	222	java/lang/Exception
+    //   52	59	222	java/lang/Exception
+    //   63	69	222	java/lang/Exception
+    //   91	98	222	java/lang/Exception
   }
   
   public static byte[] sysGetBufferMd5(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -266,25 +275,25 @@ public class MD5
   public static byte[] sysGetStremMd5(InputStream paramInputStream, long paramLong)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: ifnull +9 -> 10
-    //   4: lload_1
-    //   5: lconst_0
-    //   6: lcmp
-    //   7: ifne +5 -> 12
-    //   10: aconst_null
-    //   11: areturn
-    //   12: ldc 96
-    //   14: invokestatic 102	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   17: astore 6
-    //   19: ldc 112
-    //   21: newarray byte
-    //   23: astore 7
-    //   25: aload 7
-    //   27: arraylength
-    //   28: istore_3
-    //   29: lconst_0
-    //   30: lstore 4
+    //   0: lconst_0
+    //   1: lstore 4
+    //   3: aload_0
+    //   4: ifnull +9 -> 13
+    //   7: lload_1
+    //   8: lconst_0
+    //   9: lcmp
+    //   10: ifne +5 -> 15
+    //   13: aconst_null
+    //   14: areturn
+    //   15: ldc 96
+    //   17: invokestatic 102	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   20: astore 6
+    //   22: ldc 112
+    //   24: newarray byte
+    //   26: astore 7
+    //   28: aload 7
+    //   30: arraylength
+    //   31: istore_3
     //   32: lload 4
     //   34: lload_1
     //   35: lcmp
@@ -314,7 +323,7 @@ public class MD5
     //   72: invokevirtual 119	java/io/InputStream:read	([BII)I
     //   75: istore_3
     //   76: iload_3
-    //   77: iflt -67 -> 10
+    //   77: iflt -64 -> 13
     //   80: aload 6
     //   82: aload 7
     //   84: iconst_0
@@ -342,19 +351,19 @@ public class MD5
     //   start	length	slot	name	signature
     //   0	117	0	paramInputStream	InputStream
     //   0	117	1	paramLong	long
-    //   28	64	3	i	int
-    //   30	65	4	l	long
-    //   17	64	6	localMessageDigest	MessageDigest
-    //   23	60	7	arrayOfByte	byte[]
+    //   31	61	3	i	int
+    //   1	94	4	l	long
+    //   20	61	6	localMessageDigest	MessageDigest
+    //   26	57	7	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   12	29	99	java/security/NoSuchAlgorithmException
+    //   15	32	99	java/security/NoSuchAlgorithmException
     //   39	43	99	java/security/NoSuchAlgorithmException
     //   43	49	99	java/security/NoSuchAlgorithmException
     //   49	61	99	java/security/NoSuchAlgorithmException
     //   67	76	99	java/security/NoSuchAlgorithmException
     //   80	89	99	java/security/NoSuchAlgorithmException
-    //   12	29	106	java/io/IOException
+    //   15	32	106	java/io/IOException
     //   39	43	106	java/io/IOException
     //   43	49	106	java/io/IOException
     //   49	61	106	java/io/IOException
@@ -365,9 +374,10 @@ public class MD5
   
   public static String toMD5(String paramString)
   {
-    Object localObject = (byte[])null;
+    Object localObject = null;
+    byte[] arrayOfByte = (byte[])null;
     if (paramString == null) {
-      paramString = null;
+      paramString = (String)localObject;
     }
     do
     {
@@ -381,7 +391,6 @@ public class MD5
       {
         for (;;)
         {
-          byte[] arrayOfByte;
           int i;
           paramString = paramString.getBytes();
         }
@@ -575,7 +584,7 @@ public class MD5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mqsafeedit.MD5
  * JD-Core Version:    0.7.0.1
  */

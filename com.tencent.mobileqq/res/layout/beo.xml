@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/newer_mask_layout" android:background="@color/g0" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/abj"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/enj" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="60.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:contentDescription="@string/ab4" />
+    <Button android:textSize="@dimen/az7" android:textColor="@color/skin_color_white" android:id="@id/enl" android:background="@drawable/ia" android:paddingLeft="17.0dip" android:paddingRight="17.0dip" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginBottom="109.0dip" android:text="@string/i5e" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/jjf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <TextView android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/aig" android:layout_marginRight="@dimen/aig" android:layout_weight="1.0" />
+        <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/aig" android:layout_weight="1.0">
+            <Button android:textSize="@dimen/i9" android:id="@id/eno" android:layout_width="fill_parent" android:layout_height="@dimen/i1" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip" android:text="@string/iba" style="@style/e0" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:id="@id/khb" android:background="@drawable/skin_tips_dot" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginRight="18.0dip" android:layout_alignTop="@id/jjf" android:layout_alignRight="@id/jjf" android:contentDescription="@null" />
+</RelativeLayout>

@@ -1,57 +1,21 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.utils.TroopTipsMsgMgr;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
 
 public class wau
-  implements Runnable
+  extends vtg
 {
-  public wau(TroopChatPie paramTroopChatPie) {}
+  public wau(wat paramwat) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    TroopManager localTroopManager = (TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    Object localObject = localTroopManager.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    long l;
-    TroopMemberInfo localTroopMemberInfo;
-    if (localObject != null)
-    {
-      l = NetConnInfoCenter.getServerTime();
-      localObject = ((List)localObject).iterator();
-      l += 2592000L;
-      if (((Iterator)localObject).hasNext())
-      {
-        localTroopMemberInfo = (TroopMemberInfo)((Iterator)localObject).next();
-        if ((localTroopMemberInfo.mUniqueTitleExpire > 0) && (localTroopMemberInfo.mUniqueTitleExpire - NetConnInfoCenter.getServerTime() < 259200L) && (!localTroopManager.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localTroopMemberInfo.memberuin)))
-        {
-          ((TroopTipsMsgMgr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(80)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.a(localTroopMemberInfo), NetConnInfoCenter.getServerTime(), localTroopMemberInfo.mUniqueTitleExpire, 0, 1);
-          localTroopManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localTroopMemberInfo.memberuin, true);
-          ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_manage", "", "grp_aio", "exp_expire", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
-        }
-      }
-    }
-    for (;;)
-    {
-      break;
-      if ((localTroopMemberInfo.mUniqueTitleExpire != 0) && (localTroopMemberInfo.mUniqueTitleExpire != -1) && (localTroopMemberInfo.mUniqueTitleExpire < l))
-      {
-        l = localTroopMemberInfo.mUniqueTitleExpire;
-        continue;
-        localTroopManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, l);
-        return;
-      }
+    if ((paramInt1 == 66666) && (paramInt2 == -1)) {
+      this.a.a.b().finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wau
  * JD-Core Version:    0.7.0.1
  */

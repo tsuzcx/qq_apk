@@ -1,23 +1,48 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmoticonViewBinder;
+import com.tencent.mobileqq.emoticonview.MagicFaceViewBinder;
+import java.util.List;
 
 public class fon
-  implements fni
+  implements Runnable
 {
-  public fon(SystemMessageProcessor paramSystemMessageProcessor, long paramLong1, long paramLong2, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
+  public fon(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public ToServiceMsg a()
+  public void run()
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageSystemMessageProcessor.a.a("ProfileService.Pb.ReqSystemMsgRead");
-    localToServiceMsg.extraData.putLong("latestFriendSeq", this.jdField_a_of_type_Long);
-    localToServiceMsg.extraData.putLong("latestGroupSeq", this.b);
-    localToServiceMsg.extraData.putLong("type", 1L);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
-    localToServiceMsg.setEnableFastResend(true);
-    return localToServiceMsg;
+    int i;
+    Object localObject;
+    if (EmoticonMainPanel.a(this.a) != null)
+    {
+      i = 0;
+      int j = EmoticonMainPanel.a(this.a).size();
+      if (i >= j) {
+        break label107;
+      }
+      localObject = (EmoticonViewBinder)EmoticonMainPanel.a(this.a).get(i);
+      if ((localObject == null) || (!(localObject instanceof MagicFaceViewBinder))) {
+        break label73;
+      }
+      localObject = (MagicFaceViewBinder)localObject;
+    }
+    for (;;)
+    {
+      if ((i == -1) || (localObject == null))
+      {
+        return;
+        label73:
+        i += 1;
+        break;
+      }
+      if (localObject != null) {
+        ((MagicFaceViewBinder)localObject).c();
+      }
+      this.a.post(new fop(this, i, (MagicFaceViewBinder)localObject));
+      return;
+      label107:
+      localObject = null;
+      i = -1;
+    }
   }
 }
 

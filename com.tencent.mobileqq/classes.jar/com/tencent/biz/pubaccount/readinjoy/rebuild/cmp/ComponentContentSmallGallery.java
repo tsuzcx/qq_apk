@@ -5,8 +5,8 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import pgd;
 
 public class ComponentContentSmallGallery
   extends ComponentContentSmall
@@ -30,21 +30,21 @@ public class ComponentContentSmallGallery
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969570, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559955, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.a = ((TextView)paramView.findViewById(2131367010));
+    this.a = ((TextView)paramView.findViewById(2131367023));
   }
   
   public void a(Object paramObject)
   {
     super.a(paramObject);
-    if ((paramObject instanceof IReadInJoyModel))
+    if ((paramObject instanceof pgd))
     {
-      paramObject = ((IReadInJoyModel)paramObject).a();
+      paramObject = ((pgd)paramObject).a();
       this.a.setText(String.valueOf(paramObject.mGalleryPicNumber));
     }
   }
@@ -56,7 +56,7 @@ public class ComponentContentSmallGallery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmallGallery
  * JD-Core Version:    0.7.0.1
  */

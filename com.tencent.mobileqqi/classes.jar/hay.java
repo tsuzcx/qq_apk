@@ -1,21 +1,50 @@
-import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
-import com.tencent.smtt.sdk.WebView;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
 
-public class hay
+class hay
   implements Runnable
 {
-  public hay(TroopNoticeJsHandler paramTroopNoticeJsHandler, WebView paramWebView, String paramString1, String paramString2) {}
+  hay(hax paramhax, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentSmttSdkWebView != null) {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript: " + this.jdField_a_of_type_JavaLangString + "(" + this.b + ")");
+    for (;;)
+    {
+      try
+      {
+        Intent localIntent = new Intent(this.jdField_a_of_type_Hax.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
+        localIntent.putExtra("BSafeReportPost", true);
+        if (this.jdField_a_of_type_JavaLangString != null) {
+          continue;
+        }
+        arrayOfByte = null;
+        localIntent.putExtra("SafeReportData", arrayOfByte);
+        localIntent.putExtra("hide_more_button", true);
+        localIntent.putExtra("ishiderefresh", true);
+        localIntent.putExtra("ishidebackforward", true);
+        this.jdField_a_of_type_Hax.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent.putExtra("url", "http://jubao.qq.com/cn/jubao"));
+      }
+      catch (Exception localException)
+      {
+        byte[] arrayOfByte;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("Q.profilecard.FrdProfileCard", 2, "safetyReport exception" + localException.getMessage());
+        continue;
+      }
+      this.jdField_a_of_type_Hax.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      return;
+      arrayOfByte = this.jdField_a_of_type_JavaLangString.getBytes("utf-8");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hay
  * JD-Core Version:    0.7.0.1
  */

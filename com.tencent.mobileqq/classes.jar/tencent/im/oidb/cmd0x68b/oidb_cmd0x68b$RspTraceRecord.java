@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_cmd0x68b$RspTraceRecord
-  extends MessageMicro
+  extends MessageMicro<RspTraceRecord>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_method = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class oidb_cmd0x68b$RspTraceRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspTraceRecord
  * JD-Core Version:    0.7.0.1
  */

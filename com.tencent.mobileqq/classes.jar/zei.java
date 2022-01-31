@@ -1,29 +1,23 @@
-import java.util.Comparator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin.RecommendedListResp;
 
 public final class zei
-  implements Comparator
+  implements Parcelable.Creator<NewerGuidePlugin.RecommendedListResp>
 {
-  public int a(String paramString1, String paramString2)
+  public NewerGuidePlugin.RecommendedListResp a(Parcel paramParcel)
   {
-    try
-    {
-      long l1 = Long.parseLong(paramString1);
-      long l2 = Long.parseLong(paramString2);
-      if (l1 == l2) {
-        return 0;
-      }
-      if (l1 > l2) {
-        return 2;
-      }
-      return -1;
-    }
-    catch (Exception paramString1) {}
-    return 0;
+    return new NewerGuidePlugin.RecommendedListResp(paramParcel);
+  }
+  
+  public NewerGuidePlugin.RecommendedListResp[] a(int paramInt)
+  {
+    return new NewerGuidePlugin.RecommendedListResp[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zei
  * JD-Core Version:    0.7.0.1
  */

@@ -36,19 +36,19 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XPanelContainer;
-import dgj;
-import dgk;
-import dgl;
-import dgm;
-import dgn;
-import dgo;
-import dgp;
-import dgq;
-import dgr;
-import dgs;
-import dgt;
-import dgu;
-import dgv;
+import das;
+import dat;
+import dau;
+import dav;
+import daw;
+import dax;
+import day;
+import daz;
+import dba;
+import dbb;
+import dbc;
+import dbd;
+import dbe;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.NewIntent;
@@ -63,8 +63,8 @@ public class PublicAccountChatActivity
   private PublicAccountManager jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager;
   private CustomMenuBar jdField_a_of_type_ComTencentBizUiCustomMenuBar;
   private NewIntent jdField_a_of_type_MqqAppNewIntent;
-  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new dgr(this);
-  private Handler jdField_b_of_type_AndroidOsHandler = new dgj(this);
+  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new dba(this);
+  private Handler jdField_b_of_type_AndroidOsHandler = new das(this);
   private View jdField_b_of_type_AndroidViewView;
   private ImageView c;
   
@@ -72,7 +72,7 @@ public class PublicAccountChatActivity
   {
     Object localObject = new ImageView(this);
     ((ImageView)localObject).setId(2131230790);
-    ((ImageView)localObject).setImageResource(2130839782);
+    ((ImageView)localObject).setImageResource(2130839784);
     ((ImageView)localObject).setVisibility(8);
     ((ImageView)localObject).setOnClickListener(this);
     ((ImageView)localObject).setContentDescription(getText(2131560552));
@@ -89,7 +89,7 @@ public class PublicAccountChatActivity
     getLayoutInflater().inflate(2130903089, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     this.jdField_a_of_type_ComTencentBizUiCustomMenuBar = ((CustomMenuBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131231112));
     localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131231109);
-    ((View)localObject).setOnClickListener(new dgs(this));
+    ((View)localObject).setOnClickListener(new dbb(this));
     this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setCoverView((View)localObject);
     this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131231110);
     D();
@@ -101,8 +101,8 @@ public class PublicAccountChatActivity
       ((SharedPreferences.Editor)localObject).commit();
     }
     this.c.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setOnMenuItemClickListener(new dgt(this));
-    this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setOnBackClickListner(new dgu(this));
+    this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setOnMenuItemClickListener(new dbc(this));
+    this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setOnBackClickListner(new dbd(this));
     localObject = this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, c());
     a((List)localObject);
     this.jdField_a_of_type_MqqAppNewIntent = this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, c(), this.jdField_a_of_type_MqqObserverBusinessObserver, false);
@@ -122,7 +122,7 @@ public class PublicAccountChatActivity
     if ((localPublicAccountInfo != null) && ((localPublicAccountInfo.accountFlag & 0x10000) != 0)) {
       this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0x9e370001hd", false, 0.0D, 0.0D, null);
     }
-    ThreadManager.b(new dgv(this, localSharedPreferences, str));
+    ThreadManager.b(new dbe(this, localSharedPreferences, str));
   }
   
   private void E()
@@ -154,7 +154,7 @@ public class PublicAccountChatActivity
       QLog.d(str, 2, bool);
       if ((localAccountDetail != null) && (!localAccountDetail.isConfirmed) && (localAccountDetail.isSyncLbs) && (!localAccountDetail.isAgreeSyncLbs))
       {
-        DialogUtil.a(this, 230, null, String.format(getString(2131561527), new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d }), 2131561936, 2131561577, new dgk(this, localAccountDetail), new dgl(this)).show();
+        DialogUtil.a(this, 230, null, String.format(getString(2131561527), new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d }), 2131561936, 2131561577, new dat(this, localAccountDetail), new dau(this)).show();
         PublicAccountUtil.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
       }
       return;
@@ -180,7 +180,7 @@ public class PublicAccountChatActivity
     localSetFunctionFlagRequset.type.set(3);
     localSetFunctionFlagRequset.value.set(1);
     paramAccountDetail.putExtra("data", localSetFunctionFlagRequset.toByteArray());
-    paramAccountDetail.setObserver(new dgm(this));
+    paramAccountDetail.setObserver(new dav(this));
     this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(paramAccountDetail);
   }
   
@@ -192,7 +192,7 @@ public class PublicAccountChatActivity
       long l1 = paramIntent.getLongExtra("incoming_msguid", 0L);
       long l2 = paramIntent.getLongExtra("incoming_shmsgseq", 0L);
       if (l1 > 0L) {
-        new Thread(new dgn(this, paramString, paramInt, l1, l2), "report_show_msg_result").start();
+        new Thread(new daw(this, paramString, paramInt, l1, l2), "report_show_msg_result").start();
       }
     }
     if (paramIntent.hasExtra("need_report")) {
@@ -335,10 +335,10 @@ public class PublicAccountChatActivity
     if (!isFinishing())
     {
       this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager = PublicAccountManager.a();
-      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, new dgo(this));
+      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, new dax(this));
     }
     if ((NetworkUtil.b(getApplicationContext()) == 1) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals("2632129500"))) {
-      HtmlOffline.b(getApplicationContext(), "108", this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), true, new dgp(this));
+      HtmlOffline.b(getApplicationContext(), "108", this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), true, new day(this));
     }
     return true;
   }
@@ -358,7 +358,7 @@ public class PublicAccountChatActivity
     if (!isFinishing())
     {
       this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a();
-      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, new dgq(this));
+      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, new daz(this));
     }
   }
   
@@ -380,7 +380,7 @@ public class PublicAccountChatActivity
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840115);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840117);
       this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(super.getText(2131560576));
     }
   }

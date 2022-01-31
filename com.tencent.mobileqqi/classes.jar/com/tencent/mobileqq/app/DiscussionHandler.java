@@ -21,12 +21,9 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Pair;
-import com.tencent.av.gaudio.GAudioNotifyCenter;
 import com.tencent.biz.qrcode.activity.ScannerActivity;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -888,25 +885,17 @@ public class DiscussionHandler
   
   public void a(long paramLong, String paramString, List paramList, int paramInt)
   {
-    Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder().append("notifyMemberChange disUin=").append(paramLong).append(" cmdUin=").append(paramString).append(" opType=").append(paramInt).append(" uinsize=");
+      paramString = new StringBuilder().append("notifyMemberChange disUin=").append(paramLong).append(" cmdUin=").append(paramString).append(" opType=").append(paramInt).append(" uinsize=");
       if (paramList != null) {
-        break label154;
+        break label75;
       }
     }
-    label154:
-    for (int i1 = -1;; i1 = paramList.size())
+    label75:
+    for (paramInt = -1;; paramInt = paramList.size())
     {
-      QLog.d("DiscussionHandler", 2, i1);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(GAudioNotifyCenter.class);
-      if (localObject != null)
-      {
-        Message localMessage = ((Handler)localObject).obtainMessage(paramInt);
-        localMessage.obj = new Object[] { Long.valueOf(paramLong), paramString, (String[])paramList.toArray(new String[paramList.size()]) };
-        ((Handler)localObject).sendMessage(localMessage);
-      }
+      QLog.d("DiscussionHandler", 2, paramInt);
       return;
     }
   }
@@ -1256,7 +1245,7 @@ public class DiscussionHandler
           try
           {
             localObject1 = new String[2];
-            localObject1[0] = AppConstants.ay;
+            localObject1[0] = AppConstants.aC;
             localObject1[1] = (SystemUtil.a + "head/_hd/");
             int i3 = localObject1.length;
             i1 = 0;
@@ -1373,7 +1362,7 @@ public class DiscussionHandler
             try
             {
               localObject1 = new String[2];
-              localObject1[0] = AppConstants.ay;
+              localObject1[0] = AppConstants.aC;
               localObject1[1] = (SystemUtil.a + "head/_hd/");
               int i3 = localObject1.length;
               i1 = 0;
@@ -1484,7 +1473,7 @@ public class DiscussionHandler
     //   3: ifeq +12 -> 15
     //   6: ldc 22
     //   8: iconst_2
-    //   9: ldc_w 1128
+    //   9: ldc_w 1102
     //   12: invokestatic 249	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   15: aload_2
     //   16: invokevirtual 524	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
@@ -1537,36 +1526,36 @@ public class DiscussionHandler
     //   119: getfield 116	com/tencent/mobileqq/app/DiscussionHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   122: bipush 8
     //   124: invokevirtual 120	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   127: checkcast 1130	com/tencent/mobileqq/app/FriendsManagerImp
+    //   127: checkcast 1104	com/tencent/mobileqq/app/FriendsManagerImp
     //   130: aload_1
     //   131: invokestatic 439	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   134: aload_2
     //   135: invokestatic 439	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   138: invokevirtual 1133	com/tencent/mobileqq/app/FriendsManagerImp:d	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   138: invokevirtual 1107	com/tencent/mobileqq/app/FriendsManagerImp:d	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   141: astore_3
     //   142: aload_0
     //   143: getfield 116	com/tencent/mobileqq/app/DiscussionHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   146: invokevirtual 606	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   149: ldc_w 1134
+    //   149: ldc_w 1108
     //   152: iconst_1
     //   153: anewarray 332	java/lang/Object
     //   156: dup
     //   157: iconst_0
     //   158: aload_3
     //   159: aastore
-    //   160: invokevirtual 1137	com/tencent/qphone/base/util/BaseApplication:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
+    //   160: invokevirtual 1111	com/tencent/qphone/base/util/BaseApplication:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
     //   163: astore_3
     //   164: aload_0
     //   165: aload_0
     //   166: getfield 116	com/tencent/mobileqq/app/DiscussionHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   169: invokevirtual 106	com/tencent/mobileqq/app/QQAppInterface:a	()Ljava/lang/String;
-    //   172: invokestatic 1110	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   172: invokestatic 1084	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   175: aload_1
     //   176: invokevirtual 480	java/lang/Long:longValue	()J
     //   179: aload_1
     //   180: invokevirtual 480	java/lang/Long:longValue	()J
     //   183: aload_3
-    //   184: invokespecial 1139	com/tencent/mobileqq/app/DiscussionHandler:a	(JJJLjava/lang/String;)V
+    //   184: invokespecial 1113	com/tencent/mobileqq/app/DiscussionHandler:a	(JJJLjava/lang/String;)V
     //   187: aload_0
     //   188: getfield 116	com/tencent/mobileqq/app/DiscussionHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   191: bipush 48
@@ -1579,12 +1568,12 @@ public class DiscussionHandler
     //   207: aload_3
     //   208: ifnull +276 -> 484
     //   211: aload_3
-    //   212: getfield 1142	com/tencent/mobileqq/data/DiscussionInfo:faceUinSet	Ljava/lang/String;
+    //   212: getfield 1116	com/tencent/mobileqq/data/DiscussionInfo:faceUinSet	Ljava/lang/String;
     //   215: astore 12
     //   217: aload 12
     //   219: ifnull +265 -> 484
     //   222: aload 12
-    //   224: invokevirtual 1145	java/lang/String:trim	()Ljava/lang/String;
+    //   224: invokevirtual 1119	java/lang/String:trim	()Ljava/lang/String;
     //   227: ldc_w 430
     //   230: invokevirtual 313	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   233: ifne +251 -> 484
@@ -1614,9 +1603,9 @@ public class DiscussionHandler
     //   284: aload_1
     //   285: invokestatic 439	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   288: astore 12
-    //   290: new 981	java/util/HashSet
+    //   290: new 955	java/util/HashSet
     //   293: dup
-    //   294: invokespecial 1146	java/util/HashSet:<init>	()V
+    //   294: invokespecial 1120	java/util/HashSet:<init>	()V
     //   297: astore 13
     //   299: aload 13
     //   301: new 219	java/lang/StringBuilder
@@ -1627,12 +1616,12 @@ public class DiscussionHandler
     //   312: ldc_w 430
     //   315: invokevirtual 226	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   318: invokevirtual 246	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   321: invokevirtual 1147	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   321: invokevirtual 1121	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   324: pop
     //   325: aload_0
     //   326: aload 12
     //   328: aload 13
-    //   330: invokevirtual 1149	com/tencent/mobileqq/app/DiscussionHandler:a	(Ljava/lang/String;Ljava/util/HashSet;)V
+    //   330: invokevirtual 1123	com/tencent/mobileqq/app/DiscussionHandler:a	(Ljava/lang/String;Ljava/util/HashSet;)V
     //   333: new 79	java/util/ArrayList
     //   336: dup
     //   337: invokespecial 82	java/util/ArrayList:<init>	()V
@@ -1650,14 +1639,14 @@ public class DiscussionHandler
     //   363: invokevirtual 106	com/tencent/mobileqq/app/QQAppInterface:a	()Ljava/lang/String;
     //   366: aload 12
     //   368: iconst_2
-    //   369: invokevirtual 1151	com/tencent/mobileqq/app/DiscussionHandler:a	(JLjava/lang/String;Ljava/util/List;I)V
+    //   369: invokevirtual 1125	com/tencent/mobileqq/app/DiscussionHandler:a	(JLjava/lang/String;Ljava/util/List;I)V
     //   372: iload 4
     //   374: ifeq +14 -> 388
     //   377: aload_0
     //   378: getfield 111	com/tencent/mobileqq/app/DiscussionHandler:jdField_a_of_type_ComTencentMobileqqAppDiscussionIconHelper	Lcom/tencent/mobileqq/app/DiscussionIconHelper;
     //   381: aload_3
-    //   382: getfield 1107	com/tencent/mobileqq/data/DiscussionInfo:uin	Ljava/lang/String;
-    //   385: invokevirtual 1153	com/tencent/mobileqq/app/DiscussionIconHelper:d	(Ljava/lang/String;)V
+    //   382: getfield 1081	com/tencent/mobileqq/data/DiscussionInfo:uin	Ljava/lang/String;
+    //   385: invokevirtual 1127	com/tencent/mobileqq/app/DiscussionIconHelper:d	(Ljava/lang/String;)V
     //   388: aload_0
     //   389: sipush 1015
     //   392: iload 6
@@ -1686,10 +1675,10 @@ public class DiscussionHandler
     //   429: istore 6
     //   431: invokestatic 217	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   434: ifeq +18 -> 452
-    //   437: ldc_w 1155
+    //   437: ldc_w 1129
     //   440: iconst_2
     //   441: aload_3
-    //   442: invokevirtual 1158	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   442: invokevirtual 1132	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   445: invokestatic 521	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   448: iload 7
     //   450: istore 6
@@ -1699,9 +1688,9 @@ public class DiscussionHandler
     //   459: ifeq -272 -> 187
     //   462: ldc 22
     //   464: iconst_2
-    //   465: ldc_w 1160
+    //   465: ldc_w 1134
     //   468: aload_3
-    //   469: invokestatic 1162	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   469: invokestatic 1136	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   472: goto -285 -> 187
     //   475: iload 4
     //   477: iconst_1
@@ -2234,27 +2223,25 @@ public class DiscussionHandler
     paramObject = (DiscussionReceiver.RespPackage)paramObject;
     Object localObject = (RespQuitDiscuss)paramObject.b;
     localObject = (DiscussRespHeader)paramObject.jdField_a_of_type_JavaLangObject;
-    String str1 = String.valueOf(paramToServiceMsg.extraData.getLong("discussUin"));
+    paramToServiceMsg = String.valueOf(paramToServiceMsg.extraData.getLong("discussUin"));
     int i1 = ((DiscussRespHeader)localObject).Result;
-    String str2 = ((DiscussRespHeader)localObject).ResultDesc;
+    String str = ((DiscussRespHeader)localObject).ResultDesc;
     if (((DiscussRespHeader)localObject).Result != 0)
     {
       if (QLog.isColorLevel()) {
         QLog.w("DiscussionHandler", 2, "header failed! failed code: " + ((DiscussRespHeader)localObject).Result);
       }
-      a(2000, true, new Object[] { str1, Integer.valueOf(i1), str2 });
-      a(1004, false, str1);
+      a(2000, true, new Object[] { paramToServiceMsg, Integer.valueOf(i1), str });
+      a(1004, false, paramToServiceMsg);
       return;
     }
     if ((!paramFromServiceMsg.isSuccess()) || (!paramObject.jdField_a_of_type_Boolean))
     {
-      a(1004, false, str1);
+      a(1004, false, paramToServiceMsg);
       return;
     }
-    a(str1);
-    paramFromServiceMsg = new ArrayList();
-    paramFromServiceMsg.add(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a());
-    a(paramToServiceMsg.extraData.getLong("discussUin"), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), paramFromServiceMsg, 10009);
+    a(paramToServiceMsg);
+    new ArrayList().add(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a());
   }
   
   protected void m(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)

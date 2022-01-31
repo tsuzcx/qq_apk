@@ -1,24 +1,35 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.PositionCallback;
-
-class aaow
-  implements Runnable
+final class aaow
+  implements aaqv
 {
-  aaow(aaou paramaaou) {}
-  
-  public void run()
+  public aaqx a(aaqw paramaaqw)
   {
-    if (ArkAppEventObserverManager.a(this.a.a) != null) {
-      ArkAppEventObserverManager.a(this.a.a).a(false, 0.0D, 0.0D);
+    String str2 = null;
+    aaqx localaaqx = new aaqx();
+    if (paramaaqw == null) {
+      if (paramaaqw == null) {
+        break label91;
+      }
     }
-    SosoInterface.b(ArkAppEventObserverManager.a(this.a.a));
-    ArkAppEventObserverManager.a(this.a.a, null);
+    label91:
+    for (String str1 = paramaaqw.a();; str1 = null)
+    {
+      if (paramaaqw != null) {
+        str2 = paramaaqw.b();
+      }
+      aase.b("GdtInterstitialPreDownloader", String.format("IPCHandlerForPreDownload.handle action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(localaaqx.a) }));
+      return localaaqx;
+      if (!paramaaqw.a()) {
+        break;
+      }
+      aaot.a().a();
+      localaaqx.a = true;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaow
  * JD-Core Version:    0.7.0.1
  */

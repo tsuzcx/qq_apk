@@ -1,44 +1,95 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.playmode.child.MsgTabPlayMode;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.GridView;
 import java.util.ArrayList;
 
 public class nju
-  implements Runnable
+  extends nik
 {
-  public nju(MsgTabPlayMode paramMsgTabPlayMode, boolean paramBoolean, String paramString1, String paramString2) {}
-  
-  public void run()
+  public nju(Context paramContext, ArrayList<npo> paramArrayList, nhu paramnhu, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.e = false;
-    if (this.jdField_a_of_type_Boolean)
+    super(paramContext, paramArrayList, paramnhu, paramString1, paramString2);
+  }
+  
+  public static View a(Context paramContext, View paramView, ViewGroup paramViewGroup, npn paramnpn, int paramInt, nhu paramnhu, String paramString1, String paramString2)
+  {
+    paramnpn = a(paramnpn, paramInt);
+    if (paramnpn.isEmpty())
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.g();
-      return;
-    }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    for (Object localObject = this.b;; localObject = this.jdField_a_of_type_JavaLangString)
-    {
-      int i = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.a();
-      if ((TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size() > 0) && (i > 1) && (i == this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.j))
+      paramContext = paramView;
+      if (QLog.isDevelopLevel())
       {
-        localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a;
-        MsgTabPlayMode localMsgTabPlayMode = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode;
-        i = localMsgTabPlayMode.j - 1;
-        localMsgTabPlayMode.j = i;
-        ((ProgressControler)localObject).a(i);
+        QLog.d("AccountDetailWindowViewWrapper", 2, "createView return convertView!");
+        paramContext = paramView;
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.setCurrentItem(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.b, false);
-      return;
     }
+    do
+    {
+      return paramContext;
+      if ((paramView == null) || (!(paramView instanceof LinearLayout))) {
+        break;
+      }
+      paramView = (LinearLayout)paramView;
+      Object localObject = paramView.getTag();
+      if ((localObject == null) || (!(localObject instanceof nju)) || (!((nju)localObject).a(paramnpn))) {
+        break;
+      }
+      paramContext = paramView;
+    } while (!QLog.isDevelopLevel());
+    QLog.d("AccountDetailWindowViewWrapper", 2, "createView reuse!");
+    return paramView;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AccountDetailWindowViewWrapper", 2, "createView new create!");
+    }
+    paramView = (LinearLayout)LayoutInflater.from(paramContext).inflate(2131558410, paramViewGroup, false);
+    paramView.setPadding(0, aepi.a(20.0F, paramViewGroup.getResources()), 0, 0);
+    paramContext = new nju(paramContext, paramnpn, paramnhu, paramString1, paramString2);
+    paramView.setTag(paramContext);
+    paramContext.a(paramView);
+    return paramView;
+  }
+  
+  @TargetApi(9)
+  private void a(LinearLayout paramLinearLayout)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailWindowViewWrapper", 2, "buildView!");
+    }
+    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
+    int i = aepi.a(140.0F, (Resources)localObject);
+    int j = aepi.a(10.0F, (Resources)localObject);
+    if (Build.VERSION.SDK_INT >= 9) {
+      ((HorizontalScrollView)paramLinearLayout.findViewById(2131380254)).setOverScrollMode(2);
+    }
+    localObject = (GridView)paramLinearLayout.findViewById(2131380245);
+    ((GridView)localObject).setClickable(true);
+    ((GridView)localObject).setColumnWidth(i);
+    ((GridView)localObject).setStretchMode(0);
+    ((GridView)localObject).setHorizontalSpacing(j);
+    int k = this.jdField_a_of_type_JavaUtilArrayList.size();
+    ((GridView)localObject).setLayoutParams(new LinearLayout.LayoutParams((i + j) * k - j, -2));
+    ((GridView)localObject).setNumColumns(k);
+    ((GridView)localObject).setOnItemClickListener(this.jdField_a_of_type_Bhuw);
+    if (Build.VERSION.SDK_INT >= 9) {
+      ((GridView)localObject).setOverScrollMode(2);
+    }
+    ((GridView)localObject).setAdapter(new njv(this));
+    paramLinearLayout.setClickable(false);
+    paramLinearLayout.setOnClickListener(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nju
  * JD-Core Version:    0.7.0.1
  */

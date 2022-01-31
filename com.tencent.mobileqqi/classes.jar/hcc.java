@@ -1,80 +1,105 @@
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileManager;
-import java.util.Map;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.AsyncTask;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.PerformanceReportUtils;
+import com.tencent.mobileqq.utils.QQUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.manager.ServerConfigManager.ConfigType;
 
-public class hcc
-  extends BizTroopObserver
+public final class hcc
+  extends AsyncTask
 {
-  static
-  {
-    if (!TroopFileManager.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
+  public hcc(int paramInt, long paramLong, String paramString) {}
   
-  public hcc(TroopFileManager paramTroopFileManager) {}
-  
-  protected void a(Object arg1)
+  protected Void a(Void... paramVarArgs)
   {
-    boolean bool = true;
-    if ((??? == null) || (!(??? instanceof TroopFileStatusInfo))) {}
-    TroopFileStatusInfo localTroopFileStatusInfo1;
-    do
-    {
-      return;
-      localTroopFileStatusInfo1 = (TroopFileStatusInfo)???;
-    } while (localTroopFileStatusInfo1.jdField_a_of_type_Long != this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.jdField_b_of_type_Long);
-    if (localTroopFileStatusInfo1.b == 12)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.b(localTroopFileStatusInfo1.jdField_a_of_type_JavaUtilUUID);
-      return;
+    int i = 1;
+    paramVarArgs = QQUtils.a(ServerConfigManager.ConfigType.common, PerformanceReportUtils.a());
+    if (QLog.isDevelopLevel()) {
+      QLog.d(PerformanceReportUtils.b(), 4, "reportUISwitch openStr ：" + paramVarArgs);
     }
-    TroopFileInfo localTroopFileInfo;
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager)
-    {
-      localTroopFileInfo = (TroopFileInfo)this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.jdField_b_of_type_JavaUtilMap.get(localTroopFileStatusInfo1.jdField_a_of_type_JavaUtilUUID);
-      if ((!jdField_a_of_type_Boolean) && (localTroopFileInfo == null)) {
-        throw new AssertionError();
-      }
-    }
-    if (localTroopFileInfo == null) {
-      return;
-    }
-    int i = localTroopFileInfo.g;
-    if (localTroopFileInfo.jdField_a_of_type_Boolean) {
-      if (localTroopFileStatusInfo2.b != 11) {
-        break label271;
-      }
-    }
+    if ((paramVarArgs == null) || (!"1".equals(paramVarArgs))) {}
     for (;;)
     {
-      for (localTroopFileInfo.jdField_a_of_type_Boolean = bool;; localTroopFileInfo.jdField_a_of_type_Boolean = true) {
-        do
+      return null;
+      try
+      {
+        HashMap localHashMap = new HashMap();
+        if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 3000))
         {
-          if ((localTroopFileInfo.b == null) && (localTroopFileStatusInfo2.d != null)) {
-            this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.c.put(localTroopFileStatusInfo2.d, localTroopFileInfo);
+          if (QQAppInterface.c) {
+            i = 0;
           }
-          localTroopFileInfo.a(localTroopFileStatusInfo2, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.a);
-          if ((localTroopFileStatusInfo2.b == 6) && (i != 6)) {
-            this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.a(localTroopFileStatusInfo2.d);
+          localHashMap.put("actloginTypt", String.valueOf(i));
+          if (!QQAppInterface.c) {
+            QQAppInterface.c = true;
           }
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.c(localTroopFileInfo);
-          return;
-        } while ((localTroopFileStatusInfo2.b != 11) || (localTroopFileInfo.g == 11));
+        }
+        switch (this.jdField_a_of_type_Int)
+        {
+        }
+        long l1;
+        for (;;)
+        {
+          SharedPreferences localSharedPreferences = PerformanceReportUtils.a();
+          if ((paramVarArgs == null) || (this.jdField_a_of_type_Long <= 0L)) {
+            break;
+          }
+          long l2 = localSharedPreferences.getLong(paramVarArgs, 0L);
+          l1 = PerformanceReportUtils.a();
+          String str = QQUtils.a(ServerConfigManager.ConfigType.common, PerformanceReportUtils.g());
+          if (str != null) {
+            if (QLog.isDevelopLevel()) {
+              QLog.d(PerformanceReportUtils.b(), 4, "reportUISwitch  server time：" + str);
+            }
+          }
+          try
+          {
+            l1 = Long.valueOf(str).longValue();
+            l1 *= 1000L;
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              l1 = PerformanceReportUtils.a();
+            }
+            paramVarArgs = null;
+          }
+          if (QLog.isDevelopLevel()) {
+            QLog.d(PerformanceReportUtils.b(), 4, "reportUISwitch report_time ：" + l1 + ",lastRp" + l2);
+          }
+          if ((l2 != 0L) && (SystemClock.uptimeMillis() >= l2) && (SystemClock.uptimeMillis() - l2 < l1)) {
+            break;
+          }
+          if (QLog.isDevelopLevel()) {
+            QLog.d(PerformanceReportUtils.b(), 4, "reportUISwitch timeConsumed ：" + this.jdField_a_of_type_Long);
+          }
+          StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_JavaLangString, paramVarArgs, true, this.jdField_a_of_type_Long, 0L, localHashMap, PerformanceReportUtils.h());
+          localSharedPreferences.edit().putLong(paramVarArgs, SystemClock.uptimeMillis()).commit();
+          return null;
+          paramVarArgs = PerformanceReportUtils.c();
+          continue;
+          paramVarArgs = PerformanceReportUtils.d();
+          continue;
+          paramVarArgs = PerformanceReportUtils.e();
+          continue;
+          paramVarArgs = PerformanceReportUtils.f();
+        }
+        return null;
       }
-      label271:
-      bool = false;
+      catch (Exception paramVarArgs) {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hcc
  * JD-Core Version:    0.7.0.1
  */

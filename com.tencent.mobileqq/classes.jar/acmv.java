@@ -1,113 +1,41 @@
-import android.os.Handler;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.data.FilePreviewDataReporter;
-import com.tencent.mobileqq.filemanager.widget.FileWebView;
-import com.tencent.mobileqq.filemanager.widget.FileWebView.TitilebarEventInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatHistory;
 
-public class acmv
-  implements FileWebView.TitilebarEventInterface
+class acmv
+  extends ClickableSpan
 {
-  long jdField_a_of_type_Long = 0L;
+  acmv(acms paramacms, String paramString1, String paramString2) {}
   
-  public acmv(FilePreviewActivity paramFilePreviewActivity, Handler paramHandler) {}
-  
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.d();
-  }
-  
-  public void b()
-  {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 1000L) {}
-    do
+    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+    azqs.b(this.jdField_a_of_type_Acms.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app, "CliOper", "", this.b, "0X8004937", "0X8004937", 0, 0, "", "", "", "");
+    try
     {
-      return;
-      this.jdField_a_of_type_Long = l;
-    } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.f)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.d();
+      this.jdField_a_of_type_Acms.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter != null)
+    catch (ActivityNotFoundException paramView)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.l = "3";
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.jdField_e_of_type_Long = System.currentTimeMillis();
+      paramView.printStackTrace();
     }
-    if (!NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.getActivity()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c.setText(2131435101);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.f = System.currentTimeMillis();
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.c = (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.f - this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.jdField_e_of_type_Long);
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.jdField_e_of_type_JavaLangString = "2";
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.d = (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.jdField_a_of_type_Long);
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.a();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a(5000);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.e();
-    new Handler().postDelayed(new acmw(this), 1500L);
   }
   
-  public void c()
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a(1000);
-  }
-  
-  public void d()
-  {
-    acmx localacmx = new acmx(this);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(localacmx, 3000L);
-    QLog.i("<FileAssistant>FilePreviewActivity", 1, "postDelayed(newRunnable, 3000)");
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.runOnUiThread(new acmy(this));
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.runOnUiThread(new acmz(this));
-  }
-  
-  public void g()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.f) {}
-    do
-    {
-      long l;
-      do
-      {
-        return;
-        l = System.currentTimeMillis();
-      } while (l - this.jdField_a_of_type_Long < 1000L);
-      this.jdField_a_of_type_Long = l;
-    } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl("javascript:qpreview.onClientResponse('addMorePage',{})");
+    paramTextPaint.setColor(-16732929);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acmv
  * JD-Core Version:    0.7.0.1
  */

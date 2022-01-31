@@ -6,11 +6,11 @@ import android.content.res.TypedArray;
 import android.graphics.PorterDuff.Mode;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
-import android.widget.ImageView;
+import com.tencent.image.URLImageView;
 
 @TargetApi(14)
 public class PressDarkImageView
-  extends ImageView
+  extends URLImageView
 {
   public static final int[] a;
   public float a;
@@ -43,6 +43,26 @@ public class PressDarkImageView
     paramContext.recycle();
   }
   
+  public void a()
+  {
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      super.clearColorFilter();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      super.setImageAlpha((int)(this.jdField_a_of_type_Float * 255.0F));
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      super.setAlpha(this.jdField_a_of_type_Float);
+      return;
+    }
+    super.clearColorFilter();
+  }
+  
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
@@ -66,27 +86,12 @@ public class PressDarkImageView
       super.setColorFilter(-3355444, PorterDuff.Mode.MULTIPLY);
       return;
     }
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      super.clearColorFilter();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      super.setImageAlpha((int)(this.jdField_a_of_type_Float * 255.0F));
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      super.setAlpha(this.jdField_a_of_type_Float);
-      return;
-    }
-    super.clearColorFilter();
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.PressDarkImageView
  * JD-Core Version:    0.7.0.1
  */

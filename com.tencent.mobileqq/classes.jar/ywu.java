@@ -1,29 +1,44 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.utils.MessagePkgUtils;
-import com.tencent.mobileqq.data.MessageForApollo;
+import android.app.Activity;
+import com.tencent.biz.troopplugin.PluginJumpManager;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
 
-public final class ywu
-  implements Runnable
+public class ywu
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  public ywu(MessageForApollo paramMessageForApollo, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
+  public ywu(PluginJumpManager paramPluginJumpManager, ywv paramywv, Activity paramActivity, String paramString1, String paramString2, String paramString3, long paramLong, yww paramyww, String paramString4) {}
   
-  public void run()
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.hasPlayed = true;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.mApolloMessage.isPlayed = true;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.msgData = MessagePkgUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.mApolloMessage);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.msgData);
-      return;
+    this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager = paramPluginManagerClient;
+    paramPluginManagerClient = this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.queryPlugin(this.jdField_a_of_type_Ywv.b);
+    int i;
+    if (paramPluginManagerClient != null) {
+      if (paramPluginManagerClient.mState == 4)
+      {
+        i = 1;
+        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.launchPlugin(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Ywv.b, this.jdField_a_of_type_Ywv.c, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Long, this.jdField_a_of_type_Yww.b, this.jdField_a_of_type_Yww.a);
+      }
     }
-    catch (Exception localException) {}
+    for (;;)
+    {
+      if (i == 0) {
+        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.openLinkInNewWebView(this.jdField_a_of_type_AndroidAppActivity, this.b, this.d);
+      }
+      return;
+      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 0, this.b, this.jdField_a_of_type_Yww.b, null, null);
+      this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.installPlugin(this.jdField_a_of_type_Ywv.b);
+      i = 0;
+      continue;
+      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 1, this.b, this.jdField_a_of_type_Yww.b, null, null);
+      i = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ywu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter.LocalFileItemHolder;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
-class acnn
-  implements View.OnClickListener
+public class acnn
+  implements arrh
 {
-  acnn(acnm paramacnm, View paramView) {}
+  public acnn(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, aqsb paramaqsb) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = (LocalFileAdapter.LocalFileItemHolder)this.jdField_a_of_type_AndroidViewView.getTag();
-    this.jdField_a_of_type_Acnm.a.d = paramView.a;
-    paramView = (FileInfo)this.jdField_a_of_type_Acnm.a.b.get(this.jdField_a_of_type_Acnm.a.d);
-    if ((!FileUtil.a(paramView.c())) || (FileUtil.c(paramView.c())))
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      FileManagerUtil.d(paramView.c());
-      this.jdField_a_of_type_Acnm.a.b.remove(this.jdField_a_of_type_Acnm.a.d);
-      LocalFileBrowserActivity.a(this.jdField_a_of_type_Acnm.a);
-      return;
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        this.jdField_a_of_type_Aqsb.b(localFileManagerEntity);
+      }
     }
-    FMToastUtil.a(2131428144);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acnn
  * JD-Core Version:    0.7.0.1
  */

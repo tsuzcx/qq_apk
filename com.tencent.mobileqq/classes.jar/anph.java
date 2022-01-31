@@ -1,20 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.graphics.Bitmap;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public class anph
-  implements DialogInterface.OnClickListener
+class anph
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public anph(MusicProviderView paramMusicProviderView) {}
+  anph(anpg paramanpg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    paramDialogInterface.dismiss();
+    if (paramBitmap != null) {
+      anpd.a(this.a.jdField_a_of_type_Anpd, paramBitmap, this.a.jdField_a_of_type_AndroidContentContext);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anph
  * JD-Core Version:    0.7.0.1
  */

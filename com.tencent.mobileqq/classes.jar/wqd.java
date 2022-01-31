@@ -1,91 +1,48 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
 
 public class wqd
-  extends Handler
+  extends umf<wpr, wql>
 {
-  public wqd(MainAssistObserver paramMainAssistObserver, Looper paramLooper)
+  public wqd(wpr paramwpr)
   {
-    super(paramLooper);
+    super(paramwpr);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(@NonNull wpr paramwpr, @NonNull wql paramwql)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app.isLogin())) {}
-    do
+    Object localObject = paramwql.a;
+    paramwql = paramwpr.a(((wqn)localObject).a.feedId);
+    if (paramwql == null)
     {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        case 0: 
-          paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-          this.a.a(35, paramMessage);
-          return;
-        case 28929: 
-          paramMessage = paramMessage.getData();
-        }
-      } while (paramMessage == null);
-      int i = paramMessage.getInt("result");
-      if ((i == -1) || (i == -2))
-      {
-        if (i == -1) {
-          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131433442);
-        }
-        for (String str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131433443);; str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131433445))
-        {
-          try
-          {
-            if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
-            {
-              if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-                this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-              }
-              this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-            }
-            this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230, paramMessage, str, new wqe(this), null);
-            this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new wqf(this));
-            this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new wqg(this));
-            this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-            return;
-          }
-          catch (Exception paramMessage) {}
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          paramMessage.printStackTrace();
-          return;
-          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131433444);
-        }
-      }
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    return;
-    paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-    this.a.a(34, paramMessage);
-    return;
-    paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-    this.a.a(33, paramMessage);
-    return;
-    paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-    this.a.a(36, paramMessage);
+      wxe.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { ((wqn)localObject).a.feedId });
+      return;
+    }
+    if ((!(localObject instanceof wqp)) || (!(paramwql instanceof wqp)))
+    {
+      wxe.e("Q.qqstory.home.data.HomeFeedPresenter", "SingleFeedInfoEvent error!!");
+      return;
+    }
+    localObject = (wqp)localObject;
+    paramwql = (wqp)paramwql;
+    paramwql.a = ((wqp)localObject).a;
+    paramwql.a(((wqp)localObject).b(), false);
+    paramwql.b(((wqp)localObject).c(), false);
+    paramwql.c(((wqp)localObject).a(), false);
+    wpr.a(paramwpr).b(paramwql.a.feedId);
+    wxe.a("Q.qqstory.home.data.HomeFeedPresenter", "single feed update from server %s", paramwql);
   }
+  
+  public Class acceptEventClass()
+  {
+    return wql.class;
+  }
+  
+  public void b(@NonNull wpr paramwpr, @NonNull wql paramwql) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wqd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,80 +1,36 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class otx
-  implements View.OnTouchListener
+  implements AladdinConfigHandler
 {
-  public otx(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    switch (paramView.getId())
+    paramString = osq.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-    }
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 0)
-      {
-        this.a.b.setImageResource(2130843874);
-      }
-      else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-      {
-        this.a.b.setImageResource(2130843873);
-      }
-      else if (paramMotionEvent.getAction() == 2)
-      {
-        int i = (int)paramMotionEvent.getRawX();
-        int j = (int)paramMotionEvent.getRawY();
-        if (!QRDisplayActivity.a(paramView, i, j))
-        {
-          this.a.b.setImageResource(2130843873);
-          continue;
-          if (paramMotionEvent.getAction() == 0)
-          {
-            this.a.c.setImageResource(2130843876);
-          }
-          else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-          {
-            this.a.c.setImageResource(2130843875);
-          }
-          else if (paramMotionEvent.getAction() == 2)
-          {
-            i = (int)paramMotionEvent.getRawX();
-            j = (int)paramMotionEvent.getRawY();
-            if (!QRDisplayActivity.a(paramView, i, j))
-            {
-              this.a.c.setImageResource(2130843875);
-              continue;
-              if (paramMotionEvent.getAction() == 0)
-              {
-                this.a.d.setImageResource(2130843878);
-              }
-              else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-              {
-                this.a.d.setImageResource(2130843877);
-              }
-              else if (paramMotionEvent.getAction() == 2)
-              {
-                i = (int)paramMotionEvent.getRawX();
-                j = (int)paramMotionEvent.getRawY();
-                if (!QRDisplayActivity.a(paramView, i, j)) {
-                  this.a.d.setImageResource(2130843877);
-                }
-              }
-            }
-          }
-        }
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      if (TextUtils.equals("check_period_ms", str1)) {
+        bkbq.a("sp_key_kandian_thread_pool_check_period", Long.valueOf(str2));
+      } else if (TextUtils.equals("time_out_threshold_ms", str1)) {
+        bkbq.a("sp_key_kandian_thread_pool_time_out_threshold", Long.valueOf(str2));
+      } else if (TextUtils.equals("thread_pool_monitor_enable", str1)) {
+        bkbq.a("sp_key_kandian_thread_pool_monitor_enable", Boolean.valueOf(TextUtils.equals(str2, "1")));
       }
     }
+    return true;
   }
+  
+  public void onWipeConfig(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     otx
  * JD-Core Version:    0.7.0.1
  */

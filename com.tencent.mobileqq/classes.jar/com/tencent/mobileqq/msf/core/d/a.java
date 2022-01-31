@@ -11,10 +11,10 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.af;
-import com.tencent.mobileqq.msf.core.c.j;
-import com.tencent.mobileqq.msf.core.c.j.c;
-import com.tencent.mobileqq.msf.core.net.m;
+import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.c.k.c;
+import com.tencent.mobileqq.msf.core.net.n;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -40,11 +40,11 @@ public class a
   private AtomicBoolean d = new AtomicBoolean(false);
   private AtomicBoolean e = new AtomicBoolean(false);
   private AtomicInteger f = new AtomicInteger(0);
-  private HashSet g = new HashSet();
+  private HashSet g = new HashSet(64);
   private MsfCore i;
   private d j;
-  private long k;
-  private long l;
+  private long k = 0L;
+  private long l = 0L;
   private String m = "0";
   private Handler s = new c(this);
   
@@ -80,11 +80,11 @@ public class a
       this.m = "0";
       this.f.set(0);
       this.d.set(false);
-      if ((this.i.sender.a.b()) && (this.e.get()))
+      if ((this.i.sender.b.b()) && (this.e.get()))
       {
         QLog.d("StandbyModeManager", 1, "notifyConnOpened when exitStandbyMode");
-        NetConnInfoCenter.onConnOpened(this.i.sender.a.s().toString(), this.i.nowSocketConnAdd);
-        if (this.i.sender.a.t())
+        NetConnInfoCenter.onConnOpened(this.i.sender.b.m().toString(), this.i.nowSocketConnAdd);
+        if (this.i.sender.b.n())
         {
           QLog.d("StandbyModeManager", 1, "notifyFirestMsgRecved when exitStandbyMode");
           NetConnInfoCenter.onRecvFirstResp();
@@ -145,7 +145,7 @@ public class a
     this.g.add("QQWifiSvc.ReportWiFiStatus");
     this.g.add("QQWifiSvc.getNearWiFi");
     this.g.add("QQWifiSvc.getNearbyAvailWiFiInfo");
-    a(com.tencent.mobileqq.msf.core.a.a.au());
+    a(com.tencent.mobileqq.msf.core.a.a.av());
   }
   
   private void j()
@@ -313,7 +313,7 @@ public class a
   
   public boolean b()
   {
-    return (com.tencent.mobileqq.msf.core.a.a.av()) && (this.d.get());
+    return (com.tencent.mobileqq.msf.core.a.a.aw()) && (this.d.get());
   }
   
   public boolean b(String paramString)
@@ -397,22 +397,22 @@ public class a
       return;
       paramContext = paramIntent.getAction();
       QLog.d("StandbyModeManager", 1, "onReceive action: " + paramContext);
-      if ((this.i.getStatReporter() != null) && (this.i.statReporter.Q == null)) {
-        this.i.statReporter.Q = new j.c();
+      if ((this.i.getStatReporter() != null) && (this.i.statReporter.X == null)) {
+        this.i.statReporter.X = new k.c();
       }
       if ("android.intent.action.SCREEN_ON".equals(paramContext))
       {
-        if ((this.i.getStatReporter() != null) && (this.i.statReporter.Q != null)) {
-          this.i.statReporter.Q.e = 0L;
+        if ((this.i.getStatReporter() != null) && (this.i.statReporter.X != null)) {
+          this.i.statReporter.X.e = 0L;
         }
         k();
         return;
       }
     } while (!"android.intent.action.SCREEN_OFF".equals(paramContext));
-    if ((this.i.getStatReporter() != null) && (this.i.statReporter.Q != null))
+    if ((this.i.getStatReporter() != null) && (this.i.statReporter.X != null))
     {
-      this.i.statReporter.Q.e = System.currentTimeMillis();
-      this.i.statReporter.Q.f = 0L;
+      this.i.statReporter.X.e = System.currentTimeMillis();
+      this.i.statReporter.X.f = 0L;
     }
     l();
   }

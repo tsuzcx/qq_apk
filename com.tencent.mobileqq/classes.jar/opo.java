@@ -1,24 +1,25 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.view.SplitedProgressBar;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class opo
-  implements Runnable
+final class opo
+  extends ampt
 {
-  public opo(StoryVideoPlayer paramStoryVideoPlayer) {}
-  
-  public void run()
+  opo(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (!this.a.d)
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    opn.a(false);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (QLog.isColorLevel())) {
+      QLog.d("GalleryReportedUtils", 2, "get Location: info = " + paramSosoLbsInfo.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     opo
  * JD-Core Version:    0.7.0.1
  */

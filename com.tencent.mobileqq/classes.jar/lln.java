@@ -1,19 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import cooperation.readinjoy.ReadInJoyHelper;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
 
-public class lln
-  implements Runnable
+class lln
+  implements Observer
 {
-  public lln(KandianMergeManager paramKandianMergeManager) {}
+  private WeakReference<llm> a;
   
-  public void run()
+  public lln(llm paramllm)
   {
-    ReadInJoyHelper.l(KandianMergeManager.a(this.a), true);
+    this.a = new WeakReference(paramllm);
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    llm localllm = (llm)this.a.get();
+    if (localllm == null) {
+      return;
+    }
+    llm.a(localllm, paramObservable, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lln
  * JD-Core Version:    0.7.0.1
  */

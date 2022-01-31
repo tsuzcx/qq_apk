@@ -1,25 +1,19 @@
-import com.tencent.mobileqq.magicface.model.MagicfaceDecoder;
-import com.tencent.mobileqq.magicface.model.MagicfaceDecoder.MagicPlayListener;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.profile.view.ProfileBusinessView;
+import java.util.HashMap;
 
-public class gew
+class gew
   implements Runnable
 {
-  public gew(MagicfaceDecoder paramMagicfaceDecoder) {}
+  gew(gev paramgev, Bitmap paramBitmap) {}
   
   public void run()
   {
-    int i = Thread.currentThread().getPriority();
-    Thread.currentThread().setPriority(10);
-    this.a.jdField_a_of_type_Boolean = true;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener.a();
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_Gev.a.a.get("map_key_face");
+    if (localImageView != null) {
+      localImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
-    this.a.e();
-    this.a.jdField_a_of_type_Boolean = false;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener.b();
-    }
-    Thread.currentThread().setPriority(i);
   }
 }
 

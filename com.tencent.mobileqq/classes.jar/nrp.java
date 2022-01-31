@@ -1,14 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.Stream;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface nrp
+class nrp
+  implements DialogInterface.OnClickListener
 {
-  @NonNull
-  public abstract Stream a(nrl paramnrl);
+  nrp(nrc paramnrc) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nrp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,9 @@
 package android.support.v4.widget;
 
 import android.content.Context;
-import android.database.ContentObserver;
 import android.database.Cursor;
 import android.database.DataSetObserver;
-import android.os.Handler;
+import android.support.annotation.RestrictTo;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -14,19 +13,28 @@ import android.widget.Filterable;
 
 public abstract class CursorAdapter
   extends BaseAdapter
-  implements Filterable, CursorFilter.CursorFilterClient
+  implements CursorFilter.CursorFilterClient, Filterable
 {
   @Deprecated
   public static final int FLAG_AUTO_REQUERY = 1;
   public static final int FLAG_REGISTER_CONTENT_OBSERVER = 2;
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   protected boolean mAutoRequery;
-  protected ChangeObserver mChangeObserver;
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  protected CursorAdapter.ChangeObserver mChangeObserver;
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   protected Context mContext;
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   protected Cursor mCursor;
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   protected CursorFilter mCursorFilter;
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   protected DataSetObserver mDataSetObserver;
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   protected boolean mDataValid;
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   protected FilterQueryProvider mFilterQueryProvider;
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   protected int mRowIDColumn;
   
   @Deprecated
@@ -86,14 +94,12 @@ public abstract class CursorAdapter
     if (this.mDataValid)
     {
       this.mCursor.moveToPosition(paramInt);
+      View localView = paramView;
       if (paramView == null) {
-        paramView = newDropDownView(this.mContext, this.mCursor, paramViewGroup);
+        localView = newDropDownView(this.mContext, this.mCursor, paramViewGroup);
       }
-      for (;;)
-      {
-        bindView(paramView, this.mContext, this.mCursor);
-        return paramView;
-      }
+      bindView(localView, this.mContext, this.mCursor);
+      return localView;
     }
     return null;
   }
@@ -147,14 +153,12 @@ public abstract class CursorAdapter
     if (!this.mCursor.moveToPosition(paramInt)) {
       throw new IllegalStateException("couldn't move cursor to position " + paramInt);
     }
+    View localView = paramView;
     if (paramView == null) {
-      paramView = newView(this.mContext, this.mCursor, paramViewGroup);
+      localView = newView(this.mContext, this.mCursor, paramViewGroup);
     }
-    for (;;)
-    {
-      bindView(paramView, this.mContext, this.mCursor);
-      return paramView;
-    }
+    bindView(localView, this.mContext, this.mCursor);
+    return localView;
   }
   
   public boolean hasStableIds()
@@ -172,23 +176,23 @@ public abstract class CursorAdapter
       paramInt |= 0x2;
       this.mAutoRequery = true;
       if (paramCursor == null) {
-        break label140;
+        break label139;
       }
       this.mCursor = paramCursor;
       this.mDataValid = bool;
       this.mContext = paramContext;
       if (!bool) {
-        break label146;
+        break label145;
       }
       i = paramCursor.getColumnIndexOrThrow("_id");
       label54:
       this.mRowIDColumn = i;
       if ((paramInt & 0x2) != 2) {
-        break label152;
+        break label151;
       }
-      this.mChangeObserver = new ChangeObserver();
+      this.mChangeObserver = new CursorAdapter.ChangeObserver(this);
     }
-    for (this.mDataSetObserver = new MyDataSetObserver(null);; this.mDataSetObserver = null)
+    for (this.mDataSetObserver = new CursorAdapter.MyDataSetObserver(this);; this.mDataSetObserver = null)
     {
       if (bool)
       {
@@ -202,13 +206,13 @@ public abstract class CursorAdapter
       return;
       this.mAutoRequery = false;
       break;
-      label140:
+      label139:
       bool = false;
       break label23;
-      label146:
+      label145:
       i = -1;
       break label54;
-      label152:
+      label151:
       this.mChangeObserver = null;
     }
   }
@@ -284,43 +288,6 @@ public abstract class CursorAdapter
     this.mDataValid = false;
     notifyDataSetInvalidated();
     return localCursor;
-  }
-  
-  private class ChangeObserver
-    extends ContentObserver
-  {
-    public ChangeObserver()
-    {
-      super();
-    }
-    
-    public boolean deliverSelfNotifications()
-    {
-      return true;
-    }
-    
-    public void onChange(boolean paramBoolean)
-    {
-      CursorAdapter.this.onContentChanged();
-    }
-  }
-  
-  private class MyDataSetObserver
-    extends DataSetObserver
-  {
-    private MyDataSetObserver() {}
-    
-    public void onChanged()
-    {
-      CursorAdapter.this.mDataValid = true;
-      CursorAdapter.this.notifyDataSetChanged();
-    }
-    
-    public void onInvalidated()
-    {
-      CursorAdapter.this.mDataValid = false;
-      CursorAdapter.this.notifyDataSetInvalidated();
-    }
   }
 }
 

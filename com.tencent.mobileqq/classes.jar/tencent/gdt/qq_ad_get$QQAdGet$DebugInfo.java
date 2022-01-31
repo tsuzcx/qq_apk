@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qq_ad_get$QQAdGet$DebugInfo
-  extends MessageMicro
+  extends MessageMicro<DebugInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "debug_adindexid", "nomatch", "debug" }, new Object[] { Integer.valueOf(0), Boolean.valueOf(false), Boolean.valueOf(false) }, DebugInfo.class);
   public final PBBoolField debug = PBField.initBool(false);
@@ -16,7 +16,7 @@ public final class qq_ad_get$QQAdGet$DebugInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.gdt.qq_ad_get.QQAdGet.DebugInfo
  * JD-Core Version:    0.7.0.1
  */

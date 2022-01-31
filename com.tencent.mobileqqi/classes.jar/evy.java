@@ -1,10 +1,11 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
-class evy
+public class evy
   implements DialogInterface.OnClickListener
 {
-  evy(evw paramevw) {}
+  public evy(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {

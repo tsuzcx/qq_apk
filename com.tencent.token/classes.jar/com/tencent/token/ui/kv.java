@@ -1,20 +1,16 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class kv
-  implements View.OnClickListener
+class kv
+  implements DialogInterface.OnClickListener
 {
-  kv(ku paramku) {}
+  kv(kq paramkq) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ku.d(this.a).findViewById(2131297271).setVisibility(8);
-    ku.d(this.a).findViewById(2131297270).setVisibility(8);
-    ku.d(this.a).setVisibility(8);
-    this.a.a = false;
-    this.a.notifyDataSetChanged();
+    this.a.a.finish();
   }
 }
 

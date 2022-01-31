@@ -1,118 +1,160 @@
 package c.t.m.g;
 
-import com.tencent.map.geolocation.TencentPoi;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.location.Location;
+import java.util.LinkedList;
 
-final class ej
-  implements TencentPoi
+public final class ej
 {
-  private String a;
-  private String b;
-  private String c;
-  private double d;
-  private String e;
-  private double f;
-  private double g;
-  private String h;
+  private static ej a = new ej();
+  private int b = ej.a.a;
+  private LinkedList<ev> c = new LinkedList();
   
-  public ej(TencentPoi paramTencentPoi)
+  public static ej a()
   {
-    this.a = paramTencentPoi.getName();
-    this.b = paramTencentPoi.getAddress();
-    this.c = paramTencentPoi.getCatalog();
-    this.d = paramTencentPoi.getDistance();
-    this.e = paramTencentPoi.getUid();
-    this.f = paramTencentPoi.getLatitude();
-    this.g = paramTencentPoi.getLongitude();
-    this.h = paramTencentPoi.getDirection();
+    return a;
   }
   
-  public ej(JSONObject paramJSONObject)
-    throws JSONException
+  public final int a(ev paramev)
   {
-    try
+    if (paramev != null)
     {
-      this.a = paramJSONObject.getString("name");
-      this.b = paramJSONObject.getString("addr");
-      this.c = paramJSONObject.getString("catalog");
-      this.d = paramJSONObject.optDouble("dist");
-      this.e = paramJSONObject.getString("uid");
-      this.f = paramJSONObject.optDouble("latitude");
-      this.g = paramJSONObject.optDouble("longitude");
-      this.h = paramJSONObject.optString("direction", "");
-      if (Double.isNaN(this.f)) {
-        this.f = paramJSONObject.optDouble("pointy");
+      try
+      {
+        while (this.c.size() > 9) {
+          this.c.remove(0);
+        }
+        if (this.c.size() <= 0) {
+          break label136;
+        }
       }
-      if (Double.isNaN(this.g)) {
-        this.g = paramJSONObject.optDouble("pointx");
+      finally {}
+      for (;;)
+      {
+        localev = (ev)this.c.getFirst();
+        long l1 = paramev.b;
+        long l2 = localev.b;
+        double d = fp.a(localev.a.getLatitude(), localev.a.getLongitude(), paramev.a.getLatitude(), paramev.a.getLongitude());
+        if ((l1 - l2 <= 180000L) || (d <= 500.0D)) {
+          break;
+        }
+        this.c.remove(0);
       }
-      return;
+      label136:
+      ev localev = new ev(paramev);
+      this.c.add(localev);
+      paramev.a.getSpeed();
     }
-    catch (JSONException paramJSONObject)
+    int i = this.c.size();
+    return i;
+  }
+  
+  public final long b()
+  {
+    for (;;)
     {
-      f.a.a("TencentJson", "json error", paramJSONObject);
-      throw paramJSONObject;
+      double d1;
+      long l;
+      double d2;
+      try
+      {
+        int j;
+        int i;
+        ev localev2;
+        if (this.c.size() < 2)
+        {
+          d1 = 0.0D;
+          if (this.c.size() < 2) {
+            continue;
+          }
+          j = this.c.size();
+          l = 0L;
+          d2 = 0.0D;
+          i = 1;
+          if (i < j)
+          {
+            localev1 = (ev)this.c.get(i);
+            localev2 = (ev)this.c.get(i - 1);
+            double d3 = fp.a(localev2.a.getLatitude(), localev2.a.getLongitude(), localev1.a.getLatitude(), localev1.a.getLongitude());
+            l = localev1.b - localev2.b + l;
+            d2 += d3;
+            i += 1;
+            continue;
+          }
+        }
+        else
+        {
+          i = this.c.size() - 1;
+          localev1 = (ev)this.c.get(i);
+          localev2 = (ev)this.c.get(i - 1);
+          if (localev1.b == localev2.b) {
+            break label515;
+          }
+          l = localev1.b - localev2.b;
+          d1 = fp.a(localev2.a.getLatitude(), localev2.a.getLongitude(), localev1.a.getLatitude(), localev1.a.getLongitude()) / l * 1000.0D;
+          continue;
+        }
+        if (l > 0L)
+        {
+          d2 = 1000.0D * (d2 / l);
+          if ((em.b() != null) && (this.c.size() > 0)) {
+            em.b().a(2, d2, d1, ((ev)this.c.getLast()).b);
+          }
+          if (this.c.size() < 2)
+          {
+            l = 0L;
+            i = this.c.size();
+            if (i >= 2) {
+              continue;
+            }
+            this.b = ej.a.a;
+            i = this.b;
+            j = ej.a.c;
+            if (i != j) {
+              break label507;
+            }
+            l = 90000L;
+            return l;
+          }
+        }
+        else
+        {
+          d2 = 0.0D;
+          continue;
+        }
+        ev localev1 = (ev)this.c.getFirst();
+        l = ((ev)this.c.getLast()).b - localev1.b;
+        continue;
+        if ((i > 6) && (d1 < 3.0D) && (d2 < 6.0D))
+        {
+          this.b = ej.a.c;
+          continue;
+        }
+        if (l <= 60000L) {
+          break label497;
+        }
+      }
+      finally {}
+      if ((d1 < 3.0D) && (d2 < 3.0D))
+      {
+        this.b = ej.a.c;
+      }
+      else
+      {
+        label497:
+        this.b = ej.a.b;
+        continue;
+        label507:
+        l = 30000L;
+        continue;
+        label515:
+        l = 500L;
+      }
     }
-  }
-  
-  public final String getAddress()
-  {
-    return this.b;
-  }
-  
-  public final String getCatalog()
-  {
-    return this.c;
-  }
-  
-  public final String getDirection()
-  {
-    return this.h;
-  }
-  
-  public final double getDistance()
-  {
-    return this.d;
-  }
-  
-  public final double getLatitude()
-  {
-    return this.f;
-  }
-  
-  public final double getLongitude()
-  {
-    return this.g;
-  }
-  
-  public final String getName()
-  {
-    return this.a;
-  }
-  
-  public final String getUid()
-  {
-    return this.e;
-  }
-  
-  public final String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("PoiData{");
-    localStringBuilder.append("name=").append(this.a).append(",");
-    localStringBuilder.append("addr=").append(this.b).append(",");
-    localStringBuilder.append("catalog=").append(this.c).append(",");
-    localStringBuilder.append("dist=").append(this.d).append(",");
-    localStringBuilder.append("latitude=").append(this.f).append(",");
-    localStringBuilder.append("longitude=").append(this.g).append(",");
-    localStringBuilder.append("direction=").append(this.h).append(",");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.ej
  * JD-Core Version:    0.7.0.1
  */

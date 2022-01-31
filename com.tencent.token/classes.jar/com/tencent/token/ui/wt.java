@@ -1,25 +1,20 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
 
-final class wt
-  implements View.OnClickListener
+class wt
+  implements DialogInterface.OnCancelListener
 {
-  wt(RealNameStep0VerifyMobileDownActivity paramRealNameStep0VerifyMobileDownActivity) {}
+  wt(wp paramwp) {}
   
-  public final void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramView = RealNameStep0VerifyMobileDownActivity.access$1600(this.a).getText().toString();
-    if ((paramView == null) || (paramView.length() == 0)) {
-      this.a.showToast(2131361948);
-    }
-    while (RealNameStep0VerifyMobileDownActivity.access$1300(this.a)) {
-      return;
-    }
-    this.a.showProDialog(this.a, 2131361808, 2131361817, null);
-    RealNameStep0VerifyMobileDownActivity.access$1700(this.a, paramView);
+    paramDialogInterface = new Intent(this.a.a, IndexActivity.class);
+    paramDialogInterface.addFlags(67108864);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

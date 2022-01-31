@@ -1,38 +1,30 @@
-import com.tencent.av.service.LBSInfo;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.LBSObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class whj
-  extends LBSObserver
+class whj
+  extends SimpleObserver<Void>
 {
-  public whj(AddContactsView paramAddContactsView) {}
+  whj(whh paramwhh, whl paramwhl) {}
   
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  public void a(Void paramVoid)
   {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ArrayOfJavaLangString = paramLBSInfo.a();
-    }
-    if ((this.a.jdField_a_of_type_ArrayOfJavaLangString == null) || (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 4)) {
-      this.a.jdField_a_of_type_ArrayOfJavaLangString = new String[] { "-1", "-1", "-1", "-1" };
-    }
-    if (this.a.jdField_a_of_type_Boolean) {
-      this.a.e();
-    }
-    if (!"-1".equals(this.a.jdField_a_of_type_ArrayOfJavaLangString[0]))
-    {
-      this.a.jdField_a_of_type_ArrayOfJavaLangString[3] = "0";
-      this.a.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(this.a.jdField_a_of_type_ArrayOfJavaLangString);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onGetUserLocation|isSuccess : " + paramBoolean + ", autoReqLocation : " + this.a.jdField_a_of_type_Boolean + ", locationCodes[0] : " + this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
-    }
+    super.onNext(paramVoid);
+    wxe.b("QQStoryTakeVideoHelper", "generate video manifest success.");
+    this.jdField_a_of_type_Whh.a = 2;
+    this.jdField_a_of_type_Whl.a();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    wxe.e("QQStoryTakeVideoHelper", "generate video manifest failed.");
+    this.jdField_a_of_type_Whh.a = -1;
+    this.jdField_a_of_type_Whl.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     whj
  * JD-Core Version:    0.7.0.1
  */

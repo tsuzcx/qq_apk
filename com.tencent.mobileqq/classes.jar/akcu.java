@@ -1,23 +1,21 @@
+import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.utils.JumpAction;
+import android.content.DialogInterface.OnClickListener;
 
-public class akcu
-  implements DialogInterface.OnDismissListener
+final class akcu
+  implements DialogInterface.OnClickListener
 {
-  public akcu(JumpAction paramJumpAction) {}
+  akcu(Context paramContext) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a instanceof LoginActivity)) {
-      ((LoginActivity)this.a.a).finish();
-    }
+    ((Activity)this.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akcu
  * JD-Core Version:    0.7.0.1
  */

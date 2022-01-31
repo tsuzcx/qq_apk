@@ -10,18 +10,18 @@ import java.util.Map;
 public final class MaterialItem
   extends JceStruct
 {
-  static Map cache_mapExtInfo;
+  static Map<String, String> cache_mapExtInfo;
   static MaterialFile cache_stBanner;
   static MaterialFile cache_stExtFile1 = new MaterialFile();
   static MaterialFile cache_stExtFile2 = new MaterialFile();
   static MaterialFile cache_stThumb;
   static byte[] cache_strExtFields;
-  static ArrayList cache_vecFile = new ArrayList();
+  static ArrayList<MaterialFile> cache_vecFile = new ArrayList();
   public int iItemId;
   public int iItemType;
   public int iPrice;
   public int iTypeId;
-  public Map mapExtInfo;
+  public Map<String, String> mapExtInfo;
   public MaterialFile stBanner;
   public MaterialFile stExtFile1;
   public MaterialFile stExtFile2;
@@ -33,7 +33,7 @@ public final class MaterialItem
   public String strJumpUrl = "";
   public String strTraceInfo = "";
   public long uiSettleTime;
-  public ArrayList vecFile;
+  public ArrayList<MaterialFile> vecFile;
   
   static
   {
@@ -49,7 +49,7 @@ public final class MaterialItem
   
   public MaterialItem() {}
   
-  public MaterialItem(int paramInt1, int paramInt2, int paramInt3, String paramString1, int paramInt4, ArrayList paramArrayList, String paramString2, String paramString3, MaterialFile paramMaterialFile1, MaterialFile paramMaterialFile2, long paramLong, String paramString4, String paramString5, byte[] paramArrayOfByte, Map paramMap, MaterialFile paramMaterialFile3, MaterialFile paramMaterialFile4)
+  public MaterialItem(int paramInt1, int paramInt2, int paramInt3, String paramString1, int paramInt4, ArrayList<MaterialFile> paramArrayList, String paramString2, String paramString3, MaterialFile paramMaterialFile1, MaterialFile paramMaterialFile2, long paramLong, String paramString4, String paramString5, byte[] paramArrayOfByte, Map<String, String> paramMap, MaterialFile paramMaterialFile3, MaterialFile paramMaterialFile4)
   {
     this.iItemId = paramInt1;
     this.iTypeId = paramInt2;

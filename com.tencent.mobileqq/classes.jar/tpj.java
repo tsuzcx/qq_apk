@@ -1,26 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
-import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class tpj
-  implements DialogInterface.OnClickListener
+  extends npu
 {
-  public tpj(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
+  public tpj(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, tpr paramtpr, byte[] paramArrayOfByte, String paramString)
   {
-    paramDialogInterface.dismiss();
-    RegisterChooseLoginActivity.a(this.a, false);
-    RegisterByNicknameAndPwdActivity.a(this.a.app, this.a, this.a.a, this.a.b, RegisterChooseLoginActivity.a(this.a), true, this.a.c, false);
-    ReportController.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 0, 0, "", "", "", "");
-    ReportController.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 2, 0, "", "", "", "");
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(true, this.jdField_a_of_type_Long);
+      if (paramtpr != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetPhotoCollectionInfoRespond isSuccess=" + paramBoolean + " ;articleID = " + paramtpr.a);
+        }
+        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(paramtpr, paramArrayOfByte);
+        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.b(paramtpr);
+      }
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(false, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tpj
  * JD-Core Version:    0.7.0.1
  */

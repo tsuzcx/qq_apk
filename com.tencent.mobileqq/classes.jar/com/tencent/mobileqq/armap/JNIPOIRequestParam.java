@@ -14,7 +14,7 @@ public class JNIPOIRequestParam
   public String cookie;
   public String encrypt_sig;
   public int fakePeriod;
-  public HashMap fakeReason;
+  public HashMap<Integer, Integer> fakeReason;
   public int fakeTimes;
   public double latitude;
   public String lbsPid;
@@ -64,7 +64,7 @@ public class JNIPOIRequestParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.armap.JNIPOIRequestParam
  * JD-Core Version:    0.7.0.1
  */

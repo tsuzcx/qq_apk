@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.extendfriend.pulltorefresh.internal;
 
-import acjs;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Matrix;
@@ -9,11 +8,12 @@ import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import aqgu;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Orientation;
 
 public class RotateLoadingLayout
-  extends acjs
+  extends aqgu
 {
   private float jdField_a_of_type_Float;
   private final Matrix jdField_a_of_type_AndroidGraphicsMatrix;
@@ -24,7 +24,7 @@ public class RotateLoadingLayout
   public RotateLoadingLayout(Context paramContext, PullToRefreshBase.Mode paramMode, PullToRefreshBase.Orientation paramOrientation, TypedArray paramTypedArray)
   {
     super(paramContext, paramMode, paramOrientation, paramTypedArray);
-    this.jdField_a_of_type_Boolean = paramTypedArray.getBoolean(16, true);
+    this.jdField_a_of_type_Boolean = paramTypedArray.getBoolean(18, true);
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.MATRIX);
     this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
     this.jdField_a_of_type_AndroidWidgetImageView.setImageMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
@@ -35,7 +35,7 @@ public class RotateLoadingLayout
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setRepeatMode(1);
   }
   
-  private void j()
+  private void a()
   {
     if (this.jdField_a_of_type_AndroidGraphicsMatrix != null)
     {
@@ -53,12 +53,12 @@ public class RotateLoadingLayout
     }
   }
   
-  protected int b()
+  public int b()
   {
-    return 2130839639;
+    return 2130841254;
   }
   
-  protected void b(float paramFloat)
+  public void b(float paramFloat)
   {
     if (this.jdField_a_of_type_Boolean) {}
     for (paramFloat = 90.0F * paramFloat;; paramFloat = Math.max(0.0F, Math.min(180.0F, 360.0F * paramFloat - 180.0F)))
@@ -69,24 +69,24 @@ public class RotateLoadingLayout
     }
   }
   
-  protected void e() {}
+  public void i() {}
   
-  protected void f()
+  public void j()
   {
     this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
   
-  protected void g() {}
+  public void k() {}
   
-  protected void h()
+  public void l()
   {
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    j();
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.pulltorefresh.internal.RotateLoadingLayout
  * JD-Core Version:    0.7.0.1
  */

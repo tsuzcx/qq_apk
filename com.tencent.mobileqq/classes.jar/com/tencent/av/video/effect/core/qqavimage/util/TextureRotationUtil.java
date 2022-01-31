@@ -30,35 +30,45 @@ public class TextureRotationUtil
   
   public static float[] getRotation(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    float[] arrayOfFloat1;
+    Object localObject;
     switch (paramInt)
     {
     default: 
-      arrayOfFloat1 = TEXTURE_NO_ROTATION2;
+      localObject = TEXTURE_NO_ROTATION2;
+      if (paramBoolean1)
+      {
+        float[] arrayOfFloat = new float[8];
+        arrayOfFloat[0] = flip(localObject[0]);
+        arrayOfFloat[1] = localObject[1];
+        arrayOfFloat[2] = flip(localObject[2]);
+        arrayOfFloat[3] = localObject[3];
+        arrayOfFloat[4] = flip(localObject[4]);
+        arrayOfFloat[5] = localObject[5];
+        arrayOfFloat[6] = flip(localObject[6]);
+        arrayOfFloat[7] = localObject[7];
+        localObject = arrayOfFloat;
+      }
+      break;
     }
-    float[] arrayOfFloat2;
     for (;;)
     {
-      arrayOfFloat2 = arrayOfFloat1;
-      if (paramBoolean1) {
-        arrayOfFloat2 = new float[] { flip(arrayOfFloat1[0]), arrayOfFloat1[1], flip(arrayOfFloat1[2]), arrayOfFloat1[3], flip(arrayOfFloat1[4]), arrayOfFloat1[5], flip(arrayOfFloat1[6]), arrayOfFloat1[7] };
-      }
-      if (!paramBoolean2) {
+      if (paramBoolean2)
+      {
+        return new float[] { localObject[0], flip(localObject[1]), localObject[2], flip(localObject[3]), localObject[4], flip(localObject[5]), localObject[6], flip(localObject[7]) };
+        localObject = TEXTURE_ROTATED2_90;
+        break;
+        localObject = TEXTURE_ROTATED2_180;
+        break;
+        localObject = TEXTURE_ROTATED2_270;
         break;
       }
-      return new float[] { arrayOfFloat2[0], flip(arrayOfFloat2[1]), arrayOfFloat2[2], flip(arrayOfFloat2[3]), arrayOfFloat2[4], flip(arrayOfFloat2[5]), arrayOfFloat2[6], flip(arrayOfFloat2[7]) };
-      arrayOfFloat1 = TEXTURE_ROTATED2_90;
-      continue;
-      arrayOfFloat1 = TEXTURE_ROTATED2_180;
-      continue;
-      arrayOfFloat1 = TEXTURE_ROTATED2_270;
+      return localObject;
     }
-    return arrayOfFloat2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.util.TextureRotationUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,28 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.Layer;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
+import com.tencent.qphone.base.util.QLog;
 
 class ajfj
-  implements Runnable
+  implements mpv
 {
-  ajfj(ajfi paramajfi, Layer paramLayer) {}
+  ajfj(ajfi paramajfi) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Ajfi.a.a.a != null) {
-      this.jdField_a_of_type_Ajfi.a.a.a.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLayer);
+    if (QLog.isColorLevel()) {
+      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onError " + paramInt);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onStart " + paramString);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onFinish " + paramString);
     }
   }
 }

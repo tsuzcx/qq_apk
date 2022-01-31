@@ -5,6 +5,7 @@ import java.io.Serializable;
 public final class e_permission_visit_flag
   implements Serializable
 {
+  private static e_permission_visit_flag[] __values;
   public static final int _enum_not_permission_some_fri = 8;
   public static final int _enum_permission_each_other = 7;
   public static final int _enum_permission_friend = 4;
@@ -14,7 +15,6 @@ public final class e_permission_visit_flag
   public static final int _enum_permission_qa = 5;
   public static final int _enum_permission_secndegrcontac = 9;
   public static final int _enum_permission_some_fri = 6;
-  private static e_permission_visit_flag[] a;
   public static final e_permission_visit_flag enum_not_permission_some_fri;
   public static final e_permission_visit_flag enum_permission_each_other;
   public static final e_permission_visit_flag enum_permission_friend;
@@ -33,7 +33,7 @@ public final class e_permission_visit_flag
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      a = new e_permission_visit_flag[9];
+      __values = new e_permission_visit_flag[9];
       enum_permission_public = new e_permission_visit_flag(0, 1, "enum_permission_public");
       enum_permission_passwd = new e_permission_visit_flag(1, 2, "enum_permission_passwd");
       enum_permission_private = new e_permission_visit_flag(2, 3, "enum_permission_private");
@@ -51,16 +51,16 @@ public final class e_permission_visit_flag
   {
     this.__T = paramString;
     this.__value = paramInt2;
-    a[paramInt1] = this;
+    __values[paramInt1] = this;
   }
   
   public static e_permission_visit_flag convert(int paramInt)
   {
     int i = 0;
-    while (i < a.length)
+    while (i < __values.length)
     {
-      if (a[i].value() == paramInt) {
-        return a[i];
+      if (__values[i].value() == paramInt) {
+        return __values[i];
       }
       i += 1;
     }
@@ -73,10 +73,10 @@ public final class e_permission_visit_flag
   public static e_permission_visit_flag convert(String paramString)
   {
     int i = 0;
-    while (i < a.length)
+    while (i < __values.length)
     {
-      if (a[i].toString().equals(paramString)) {
-        return a[i];
+      if (__values[i].toString().equals(paramString)) {
+        return __values[i];
       }
       i += 1;
     }
@@ -98,7 +98,7 @@ public final class e_permission_visit_flag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.e_permission_visit_flag
  * JD-Core Version:    0.7.0.1
  */

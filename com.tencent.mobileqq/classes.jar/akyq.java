@@ -1,34 +1,24 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
 class akyq
-  implements WXShareHelper.WXShareListener
+  implements Comparator<akys>
 {
   akyq(akyp paramakyp) {}
   
-  public void a(BaseResp paramBaseResp)
+  public int a(akys paramakys1, akys paramakys2)
   {
-    if ((WorldCupShareFragment.c(this.a.a.a) == null) || (!WorldCupShareFragment.c(this.a.a.a).equals(paramBaseResp.transaction))) {
-      return;
+    if (paramakys1.a == paramakys2.a) {
+      return 0;
     }
-    QLog.d("WorldCupShareFragment", 1, "WL_DEBUG ActionSheetAdapter.CHANNEL_WX_FRIEND_CIRCLE onWXShareResp resp.errCode = " + paramBaseResp.errCode);
-    switch (paramBaseResp.errCode)
-    {
+    if (paramakys1.a > paramakys2.a) {
+      return 1;
     }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      WorldCupShareFragment.a("0X800931F", 4);
-    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akyq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,75 +1,128 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
 public class vrt
-  extends MessageObserver
+  extends xvp
+  implements View.OnClickListener
 {
-  public vrt(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  public static final String KEY = "PlayerDoubleTabSegment";
+  private int jdField_a_of_type_Int = 1;
+  private vrd jdField_a_of_type_Vrd;
+  private wiq jdField_a_of_type_Wiq;
+  private wtq jdField_a_of_type_Wtq;
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  public vrt(Context paramContext)
   {
-    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
+    super(paramContext);
+  }
+  
+  private void a(TextView paramTextView, boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BusinessChatPie", 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+      if (QQStoryContext.a()) {
+        paramTextView.setBackgroundResource(2130846020);
       }
+      for (;;)
+      {
+        paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166387));
+        return;
+        paramTextView.setBackgroundResource(2130846019);
+      }
+    }
+    paramTextView.setBackgroundResource(0);
+    if (QQStoryContext.a())
+    {
+      paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166400));
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
-    }
-    if ((QLog.isColorLevel()) && (paramInt1 == 1024)) {
-      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, "errorCode" + paramInt2, 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-    }
-    this.a.b(196608);
+    paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166388));
   }
   
-  protected void a(boolean paramBoolean, String paramString)
+  public int a()
   {
-    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Wiq != null) && (this.jdField_a_of_type_Wiq.b())) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public View a(int paramInt, wtq paramwtq, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (TextView)paramwtq.a(2131377079);
+    TextView localTextView = (TextView)paramwtq.a(2131377078);
+    if (QQStoryContext.a())
     {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.k();
-      }
+      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166398));
+      localTextView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166398));
+      paramwtq.a(2131373736).setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166400));
+    }
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      a(paramViewGroup, true);
+      a(localTextView, false);
+    }
+    for (;;)
+    {
+      return paramwtq.a();
+      a(paramViewGroup, false);
+      a(localTextView, true);
     }
   }
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public String a()
   {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+    return "PlayerDoubleTabSegment";
+  }
+  
+  public wtq a(int paramInt, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_Wtq = new wtq(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561421, paramViewGroup, false));
+    paramViewGroup = (TextView)this.jdField_a_of_type_Wtq.a(2131377079);
+    TextView localTextView = (TextView)this.jdField_a_of_type_Wtq.a(2131377078);
+    paramViewGroup.setOnClickListener(this);
+    localTextView.setOnClickListener(this);
+    return this.jdField_a_of_type_Wtq;
+  }
+  
+  public void a(vrd paramvrd)
+  {
+    this.jdField_a_of_type_Vrd = paramvrd;
+  }
+  
+  public void a(wiq paramwiq)
+  {
+    this.jdField_a_of_type_Wiq = paramwiq;
+    if (this.jdField_a_of_type_Wiq.a()) {
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_Vrd.a();
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131377079: 
+      this.jdField_a_of_type_Vrd.a(1);
+      wxj.a("content_flow", "clk_detail_reply", 0, 1, new String[] { "", wxj.a(4444), this.jdField_a_of_type_Wiq.a.feedId });
       return;
     }
-    this.a.q = true;
-    this.a.a(262144, null, paramLong);
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
-    {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.k();
-      }
-    }
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    this.a.b(65536);
+    this.jdField_a_of_type_Vrd.a(2);
+    wxj.a("content_flow", "clk_detail_reply", 0, 2, new String[] { "", wxj.a(4444), this.jdField_a_of_type_Wiq.a.feedId });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vrt
  * JD-Core Version:    0.7.0.1
  */

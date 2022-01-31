@@ -1,18 +1,31 @@
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
 
-final class qlm
-  implements Runnable
+public class qlm
+  implements Cloneable
 {
-  qlm(WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
   
-  public void run()
+  protected Object clone()
   {
-    qll.b(this.a, this.b);
+    try
+    {
+      qlm localqlm = (qlm)super.clone();
+      return localqlm;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      QLog.e("NewPolymericInfo", 2, "PackTopicExtraInfo item clone failed. exception = " + localCloneNotSupportedException);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qlm
  * JD-Core Version:    0.7.0.1
  */

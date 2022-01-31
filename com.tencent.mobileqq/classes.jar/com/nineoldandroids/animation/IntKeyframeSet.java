@@ -34,6 +34,7 @@ class IntKeyframeSet
   
   public int getIntValue(float paramFloat)
   {
+    int i = 1;
     float f1;
     if (this.mNumKeyframes == 2)
     {
@@ -72,7 +73,7 @@ class IntKeyframeSet
       }
       paramFloat = (f1 - f2) / (f3 - f2);
       if (this.mEvaluator == null) {
-        return (int)((j - i) * paramFloat) + i;
+        return (int)(paramFloat * (j - i)) + i;
       }
       return ((Number)this.mEvaluator.evaluate(paramFloat, Integer.valueOf(i), Integer.valueOf(j))).intValue();
     }
@@ -91,13 +92,11 @@ class IntKeyframeSet
       }
       paramFloat = (f1 - f2) / (f3 - f2);
       if (this.mEvaluator == null) {
-        return (int)((j - i) * paramFloat) + i;
+        return (int)(paramFloat * (j - i)) + i;
       }
       return ((Number)this.mEvaluator.evaluate(paramFloat, Integer.valueOf(i), Integer.valueOf(j))).intValue();
     }
-    Object localObject = (Keyframe.IntKeyframe)this.mKeyframes.get(0);
-    int i = 1;
-    for (;;)
+    for (Object localObject = (Keyframe.IntKeyframe)this.mKeyframes.get(0);; localObject = localIntKeyframe)
     {
       if (i >= this.mNumKeyframes) {
         return ((Number)((Keyframe)this.mKeyframes.get(this.mNumKeyframes - 1)).getValue()).intValue();
@@ -118,7 +117,6 @@ class IntKeyframeSet
         }
         return ((Number)this.mEvaluator.evaluate(paramFloat, Integer.valueOf(i), Integer.valueOf(j))).intValue();
       }
-      localObject = localIntKeyframe;
       i += 1;
     }
   }
@@ -130,7 +128,7 @@ class IntKeyframeSet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.nineoldandroids.animation.IntKeyframeSet
  * JD-Core Version:    0.7.0.1
  */

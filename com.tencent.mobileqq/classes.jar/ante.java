@@ -1,33 +1,29 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
-import java.util.Collections;
-import java.util.List;
-
 public class ante
-  implements DoodleEmojiManager.POIPostersRequestCallback
+  implements antb
 {
-  public ante(EditVideoDoodle paramEditVideoDoodle) {}
+  public void onRotationUpdateOriginal(float[] paramArrayOfFloat) {}
   
-  public void a(int paramInt, List paramList)
-  {
-    SLog.b("Q.qqstory.publish.edit.StoryDoodle", "onPOIPostersRequestResult callback");
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    List localList = paramList;
-    if (paramList == null) {
-      localList = Collections.EMPTY_LIST;
-    }
-    Dispatchers.get().dispatch(new DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent(paramInt, localList));
-  }
+  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat) {}
+  
+  public void onSensorSupport(int paramInt, boolean paramBoolean) {}
+  
+  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong) {}
+  
+  public void updateAzimuth(float paramFloat) {}
+  
+  public void updateGyroscope(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong) {}
+  
+  public void updatePitch(float paramFloat) {}
+  
+  public void updateRoll(float paramFloat) {}
+  
+  public void updateRotation(float paramFloat1, float paramFloat2, float paramFloat3) {}
+  
+  public void updateSensor(float paramFloat1, float paramFloat2, float paramFloat3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ante
  * JD-Core Version:    0.7.0.1
  */

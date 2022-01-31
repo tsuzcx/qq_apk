@@ -2,6 +2,7 @@ package com.tencent.mobileqq.widget;
 
 import android.os.SystemClock;
 import android.support.v4.view.ViewCompat;
+import beqw;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageProgressView$RefreshProgressRunnable
@@ -76,8 +77,8 @@ public class MessageProgressView$RefreshProgressRunnable
             if (QLog.isColorLevel()) {
               QLog.e("MessageProgressView", 2, " stopAnim in run key=" + this.jdField_a_of_type_JavaLangString);
             }
-            if (this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView$AnimRunnableListener != null) {
-              this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView$AnimRunnableListener.a(this.jdField_a_of_type_JavaLangString);
+            if (this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.jdField_a_of_type_Beqw != null) {
+              this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.jdField_a_of_type_Beqw.a(this.jdField_a_of_type_JavaLangString);
             }
           }
           else if (this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView != null)
@@ -96,7 +97,7 @@ public class MessageProgressView$RefreshProgressRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MessageProgressView.RefreshProgressRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
 
 public class yfk
-  implements Runnable
+  implements View.OnClickListener
 {
-  public yfk(QvipSpecialSoundManager paramQvipSpecialSoundManager, String paramString) {}
+  public yfk(CommentBottomBar paramCommentBottomBar) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    FileUtils.b(this.jdField_a_of_type_JavaLangString + "http://i.gtimg.cn/club/moblie/special_sound/new_config.json", this.jdField_a_of_type_JavaLangString + "pddata/vas/special_remind/new_config.json");
+    if (CommentBottomBar.a(this.a) != null)
+    {
+      CommentBottomBar.a(this.a).a(CommentBottomBar.a(this.a), CommentBottomBar.a(this.a));
+      CommentBottomBar.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yfk
  * JD-Core Version:    0.7.0.1
  */

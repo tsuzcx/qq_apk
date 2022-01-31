@@ -1,33 +1,52 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Message;
+import com.tencent.mobileqq.activity.QQIdentiferLegacy;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface.GetLiveStyleResult;
+import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleRequester.YTLiveStyleReq;
+import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleResponse;
+import com.tencent.youtu.ytcommon.tools.wejson.WeJson;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.os.MqqHandler;
 
-class adqh
-  implements Runnable
+public class adqh
+  implements YTAGReflectLiveCheckInterface.GetLiveStyleResult
 {
-  adqh(adqe paramadqe) {}
+  public adqh(QQIdentiferLegacy paramQQIdentiferLegacy, boolean paramBoolean) {}
   
-  public void run()
+  public void onFailed(int paramInt, String paramString1, String paramString2)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a, 232, null, "腾讯视频插件加载失败", new adqi(this), null);
-    try
+    String str = new WeJson().toJson(new LiveStyleRequester.YTLiveStyleReq(-2.0F, "10164651"));
+    Message localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.obtainMessage(2);
+    localMessage.arg1 = 24;
+    localMessage.obj = str;
+    if (paramInt == 3) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessageDelayed(localMessage, 2000L);
+    }
+    for (;;)
     {
-      localQQCustomDialog.show();
+      QLog.d("QQIdentiferLegacy", 1, new Object[] { "getLightInfo Failed code=", Integer.valueOf(paramInt), " tips=", paramString1, " howtofix=", paramString2, " lightRTry=", Integer.valueOf(QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).get()) });
       return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessage(localMessage);
     }
-    catch (Exception localException)
+  }
+  
+  public void onSuccess(LiveStyleRequester.YTLiveStyleReq paramYTLiveStyleReq, LiveStyleResponse paramLiveStyleResponse)
+  {
+    QLog.d("QQIdentiferLegacy", 1, new Object[] { "getLightInfo success, current is loading : ", Boolean.valueOf(QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).get()) });
+    paramYTLiveStyleReq.app_id = "10164651";
+    paramYTLiveStyleReq = new WeJson().toJson(paramYTLiveStyleReq);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.removeMessages(2);
+    paramLiveStyleResponse = this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.obtainMessage(2);
+    paramLiveStyleResponse.arg1 = 23;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessage(paramLiveStyleResponse);
+    if (QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).compareAndSet(true, true)) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManagerHotPicPageView", 2, "show dialog fail");
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a == 1) {
-        this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a(0);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
-    }
+      return;
+      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, paramYTLiveStyleReq, this.jdField_a_of_type_Boolean);
+    } while (!QLog.isColorLevel());
+    QLog.d("QQIdentiferLegacy", 2, "getLightInfo success");
   }
 }
 

@@ -1,60 +1,91 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.activity.phone.MyBusinessActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.PointF;
+import com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout;
+import com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout.IDragViewProvider;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class epa
-  extends ContactBindObserver
+  implements Runnable
 {
-  public epa(BindVerifyActivity paramBindVerifyActivity) {}
+  public static final int a = 50;
+  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  private int b;
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public epa(DragRelativeLayout paramDragRelativeLayout, PointF paramPointF)
   {
-    this.a.d();
-    if (!paramBoolean)
+    this.jdField_a_of_type_AndroidGraphicsPointF.set(paramPointF);
+    this.b = -1;
+  }
+  
+  public Bitmap a()
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.b >= 0)
     {
-      this.a.b(2131562782);
-      return;
+      localObject1 = localObject2;
+      if (this.b >= DragRelativeLayout.a().length) {}
     }
-    if ((paramInt == 0) || (paramInt == 106))
+    try
     {
-      localObject = ((PhoneContactManager)this.a.b.getManager(10)).a();
-      if (1 == this.a.a) {
-        MyBusinessActivity.c(true);
-      }
-      if ((this.a.a == 0) || (localObject == null) || (TextUtils.isEmpty(((RespondQueryQQBindingStat)localObject).mobileNo)))
+      localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout.getResources(), DragRelativeLayout.a()[this.b]);
+      return localObject1;
+    }
+    catch (Throwable localThrowable)
+    {
+      do
       {
-        this.a.b.a(new epb(this));
-        this.a.setResult(-1);
-        this.a.finish();
-      }
-      for (;;)
-      {
-        ContactUtils.a(this.a.b, -1L, -1, 1);
-        return;
-        this.a.setResult(-1);
-        this.a.finish();
-      }
+        localObject1 = localObject2;
+      } while (!QLog.isColorLevel());
+      QLog.e("DragRelativeLayout", 2, "decodeBitmap failed" + localThrowable, localThrowable);
     }
-    if (paramInt == 213)
+    return null;
+  }
+  
+  public void run()
+  {
+    if (this.b == DragRelativeLayout.a().length)
     {
-      this.a.b(this.a.getString(2131558962));
+      if (this == DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout)) {
+        DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, null);
+      }
+      DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, null);
+      if (DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout) == 2)
+      {
+        List localList = DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout).a();
+        if ((DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout) != null) && (localList.size() > 0))
+        {
+          DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, 5);
+          DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, new eoz(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, localList));
+          DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, null);
+        }
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout.invalidate();
       return;
+      DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, -1);
+      if (QLog.isColorLevel()) {
+        QLog.d("Drag", 2, "DONE!");
+      }
+      DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, true);
+      break;
+      DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, -1);
+      if (QLog.isColorLevel()) {
+        QLog.d("Drag", 2, "DONE!");
+      }
+      DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, true);
+      break;
+      this.b += 1;
     }
-    Object localObject = this.a.getString(2131558963);
-    if (paramInt == 107) {
-      localObject = this.a.getString(2131558964);
-    }
-    this.a.a(this.a.getString(2131558965), (String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     epa
  * JD-Core Version:    0.7.0.1
  */

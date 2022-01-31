@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.newfriend.RecommendListView;
 
-class eeq
-  implements Runnable
+public class eeq
+  extends Handler
 {
-  eeq(eeo parameeo) {}
+  public eeq(RecommendListView paramRecommendListView) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    ((ChatActivity)this.a.a.b).p();
+    RecommendListView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     eeq
  * JD-Core Version:    0.7.0.1
  */

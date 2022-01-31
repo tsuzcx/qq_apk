@@ -1,29 +1,18 @@
-import com.tencent.mobileqq.Doraemon.monitor.APIQuotaEntity;
-import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterMain;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-
-public class rfd
-  implements Runnable
+public abstract interface rfd
 {
-  public rfd(DoraemonAPIReporterMain paramDoraemonAPIReporterMain, QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2) {}
+  public abstract void a();
   
-  public void run()
-  {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    APIQuotaEntity localAPIQuotaEntity = new APIQuotaEntity();
-    localAPIQuotaEntity.type = this.jdField_a_of_type_Int;
-    localAPIQuotaEntity.appid = this.jdField_a_of_type_JavaLangString;
-    localAPIQuotaEntity.apiName = this.jdField_b_of_type_JavaLangString;
-    localAPIQuotaEntity.remainTimes = this.jdField_a_of_type_Long;
-    localAPIQuotaEntity.expireTimeMillis = this.jdField_b_of_type_Long;
-    localEntityManager.b(localAPIQuotaEntity);
-  }
+  public abstract void a(Object paramObject);
+  
+  public abstract void a(Object paramObject, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rfd
  * JD-Core Version:    0.7.0.1
  */

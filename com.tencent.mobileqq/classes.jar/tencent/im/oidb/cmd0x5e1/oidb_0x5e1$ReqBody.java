@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x5e1$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int RPT_BYTES_OPENID_FIELD_NUMBER = 4;
   public static final int RPT_UINT64_UINS_FIELD_NUMBER = 1;
@@ -51,8 +51,8 @@ public final class oidb_0x5e1$ReqBody
   public static final int UINT32_REQ_SIMPLE_UPDATE_TIME_FIELD_NUMBER = 26010;
   public static final int UINT32_START_TIME_FIELD_NUMBER = 2;
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatField rpt_bytes_openid = PBField.initRepeat(PBBytesField.__repeatHelper__);
-  public final PBRepeatField rpt_uint64_uins = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> rpt_bytes_openid = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<Long> rpt_uint64_uins = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt32Field uint32_appid = PBField.initUInt32(0);
   public final PBUInt32Field uint32_max_package_size = PBField.initUInt32(0);
   public final PBUInt32Field uint32_req_allow = PBField.initUInt32(0);
@@ -98,7 +98,7 @@ public final class oidb_0x5e1$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5e1.oidb_0x5e1.ReqBody
  * JD-Core Version:    0.7.0.1
  */

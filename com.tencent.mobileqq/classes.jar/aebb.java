@@ -1,23 +1,55 @@
+import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.leba.model.pluginactions.JDPluginAction;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aebb
-  extends MqqHandler
+  extends bead
 {
-  public aebb(JDPluginAction paramJDPluginAction) {}
-  
-  public void handleMessage(Message paramMessage)
+  public aebb(TextPreviewSettingActivity paramTextPreviewSettingActivity, String paramString1, String paramString2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1134008: 
-      this.a.a(paramMessage);
-      return;
+    super(paramString1, paramString2);
+  }
+  
+  public void onCancel(beae parambeae)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onCancel| task:" + parambeae);
     }
-    this.a.a();
+    super.onCancel(parambeae);
+  }
+  
+  public void onDone(beae parambeae)
+  {
+    super.onDone(parambeae);
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onDone| task:" + parambeae);
+    }
+    if (parambeae.b()) {}
+    do
+    {
+      return;
+      if (parambeae.a() == -1)
+      {
+        parambeae = new Message();
+        parambeae.what = 17;
+        TextPreviewSettingActivity.a(this.a).sendMessage(parambeae);
+        return;
+      }
+      parambeae = TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a));
+    } while (parambeae == null);
+    Message localMessage = new Message();
+    localMessage.what = 18;
+    localMessage.obj = parambeae;
+    TextPreviewSettingActivity.a(this.a).sendMessage(localMessage);
+  }
+  
+  public boolean onStart(beae parambeae)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onStart| task:" + parambeae);
+    }
+    return super.onStart(parambeae);
   }
 }
 

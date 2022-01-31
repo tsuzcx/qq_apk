@@ -1,25 +1,14 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.TroopManager.callbackInMainThread;
-
-public class spy
-  implements TroopManager.callbackInMainThread
+public abstract interface spy
 {
-  public spy(FriendProfileCardActivity paramFriendProfileCardActivity, Intent paramIntent) {}
+  public abstract void b(int paramInt);
   
-  public void a(Object paramObject)
-  {
-    if ((paramObject instanceof String))
-    {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
-    }
-  }
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     spy
  * JD-Core Version:    0.7.0.1
  */

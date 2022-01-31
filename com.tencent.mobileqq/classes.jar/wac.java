@@ -1,46 +1,56 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.statistics.ReportTask;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.util.ArrayList;
 
 public class wac
-  implements DialogInterface.OnClickListener
+  extends vtg
 {
-  public wac(TroopChatPie paramTroopChatPie) {}
+  public wac(wab paramwab) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    paramDialogInterface = (TroopHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    if ((NetworkUtil.d(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext())) && (paramDialogInterface != null)) {
-      if (((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a).isTroopOwner(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-        paramDialogInterface.j(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      }
+    String str1;
+    String str2;
+    if ((paramInt1 == 20000) && (paramInt2 == -1))
+    {
+      paramIntent = BaseActivity.sActivityRoute;
+      str1 = SplashActivity.class.getSimpleName();
+      str2 = QQStoryMainActivity.class.getSimpleName();
+      paramInt1 = paramIntent.size() - 1;
     }
     for (;;)
     {
-      new ReportTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_banned").c("Grp_AIO").d("clk_quitgrp").a(new String[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a }).a();
-      return;
-      paramDialogInterface.i(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      continue;
-      if (paramDialogInterface != null) {
-        QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131434613, 0).a();
-      } else {
-        QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131435287, 0).a();
+      String str3;
+      if (paramInt1 >= 0)
+      {
+        str3 = (String)paramIntent.get(paramInt1);
+        if (TextUtils.isEmpty(str3)) {
+          break label95;
+        }
+        if (str3.startsWith(str1)) {
+          this.a.b();
+        }
       }
+      else
+      {
+        return;
+      }
+      if (TextUtils.equals(str3, str2))
+      {
+        this.a.c();
+        return;
+      }
+      label95:
+      paramInt1 -= 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wac
  * JD-Core Version:    0.7.0.1
  */

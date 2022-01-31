@@ -108,7 +108,7 @@ public class RecentItemChatMsgData
         if (((PublicAccountInfo)localObject1).certifiedGrade <= 0L) {
           break label607;
         }
-        this.B = 2130838179;
+        this.B = 2130838181;
         label369:
         if ((localMessage == null) || (localMessage.getMessageText() == null)) {
           break label623;

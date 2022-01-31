@@ -3,7 +3,7 @@ package com.tencent.qphone.base.util;
 import android.content.Context;
 import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 
 public abstract class CodecWarpper
@@ -26,6 +26,10 @@ public abstract class CodecWarpper
   
   static
   {
+    checkedSOVersion = 0;
+    appid = 0;
+    isLoaded = false;
+    soLoadResultCode = 0;
     long l = SystemClock.elapsedRealtime();
     soLoadResultCode = StringUtils.msfLoadSo(tag, "codecwrapperV2");
     isLoaded = StringUtils.getLoadResult(soLoadResultCode);
@@ -76,7 +80,7 @@ public abstract class CodecWarpper
             {
               checkedSOVersion = 591;
               QLog.d(tag, 1, "set so version to " + checkedSOVersion + " with error ", localUnsatisfiedLinkError2);
-              j.a("codecwrapperV2", isLoaded, soLoadResultCode, localUnsatisfiedLinkError2.getMessage());
+              k.a("codecwrapperV2", isLoaded, soLoadResultCode, localUnsatisfiedLinkError2.getMessage());
               return;
             }
           }
@@ -111,6 +115,8 @@ public abstract class CodecWarpper
   
   private static native void closeReceData();
   
+  private static synchronized native byte[] encodeRequest(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, String paramString6, byte paramByte1, byte paramByte2, byte paramByte3, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, boolean paramBoolean);
+  
   private static synchronized native byte[] encodeRequest(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, String paramString6, byte paramByte1, byte paramByte2, byte[] paramArrayOfByte2, boolean paramBoolean);
   
   private static synchronized native byte[] encodeRequest(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, String paramString6, byte paramByte1, byte paramByte2, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, boolean paramBoolean);
@@ -121,6 +127,8 @@ public abstract class CodecWarpper
   
   public static native int getMaxPackageSize();
   
+  public static native long getPacketLossLength(int paramInt);
+  
   public static native int getSOVersion();
   
   public static int getSharedObjectVersion()
@@ -130,14 +138,61 @@ public abstract class CodecWarpper
   
   public static native int getVersionCode();
   
+  public static byte[] nativeEncodeRequest(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, String paramString6, byte paramByte1, byte paramByte2, byte paramByte3, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, boolean paramBoolean)
+  {
+    Object localObject = null;
+    try
+    {
+      paramString1 = encodeRequest(paramInt1, paramString1, paramString2, paramString3, paramString4, paramString5, paramArrayOfByte1, paramInt2, paramInt3, paramString6, paramByte1, paramByte2, paramByte3, paramArrayOfByte2, paramArrayOfByte3, paramBoolean);
+      return paramString1;
+    }
+    catch (Exception paramString2)
+    {
+      do
+      {
+        paramString1 = localObject;
+      } while (!QLog.isColorLevel());
+      QLog.i(tag, 2, "nativeEncodeRequest 1 exception", paramString2);
+    }
+    return null;
+  }
+  
   public static byte[] nativeEncodeRequest(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, String paramString6, byte paramByte1, byte paramByte2, byte[] paramArrayOfByte2, boolean paramBoolean)
   {
-    return encodeRequest(paramInt1, paramString1, paramString2, paramString3, paramString4, paramString5, paramArrayOfByte1, paramInt2, paramInt3, paramString6, paramByte1, paramByte2, paramArrayOfByte2, paramBoolean);
+    Object localObject = null;
+    try
+    {
+      paramString1 = encodeRequest(paramInt1, paramString1, paramString2, paramString3, paramString4, paramString5, paramArrayOfByte1, paramInt2, paramInt3, paramString6, paramByte1, paramByte2, paramArrayOfByte2, paramBoolean);
+      return paramString1;
+    }
+    catch (Exception paramString2)
+    {
+      do
+      {
+        paramString1 = localObject;
+      } while (!QLog.isColorLevel());
+      QLog.i(tag, 2, "nativeEncodeRequest 3 exception", paramString2);
+    }
+    return null;
   }
   
   public static byte[] nativeEncodeRequest(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, String paramString6, byte paramByte1, byte paramByte2, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, boolean paramBoolean)
   {
-    return encodeRequest(paramInt1, paramString1, paramString2, paramString3, paramString4, paramString5, paramArrayOfByte1, paramInt2, paramInt3, paramString6, paramByte1, paramByte2, paramArrayOfByte2, paramArrayOfByte3, paramBoolean);
+    Object localObject = null;
+    try
+    {
+      paramString1 = encodeRequest(paramInt1, paramString1, paramString2, paramString3, paramString4, paramString5, paramArrayOfByte1, paramInt2, paramInt3, paramString6, paramByte1, paramByte2, paramArrayOfByte2, paramArrayOfByte3, paramBoolean);
+      return paramString1;
+    }
+    catch (Exception paramString2)
+    {
+      do
+      {
+        paramString1 = localObject;
+      } while (!QLog.isColorLevel());
+      QLog.i(tag, 2, "nativeEncodeRequest 2 exception", paramString2);
+    }
+    return null;
   }
   
   public static void nativeOnConnClose() {}
@@ -164,7 +219,7 @@ public abstract class CodecWarpper
   
   private static synchronized native void onConnClose();
   
-  private native void onReceData(byte[] paramArrayOfByte);
+  private native void onReceData(byte[] paramArrayOfByte, int paramInt);
   
   private native FromServiceMsg parseData(byte[] paramArrayOfByte);
   
@@ -192,13 +247,13 @@ public abstract class CodecWarpper
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      j.a("codecwrapperV2", isLoaded, soLoadResultCode, localUnsatisfiedLinkError.getMessage());
+      k.a("codecwrapperV2", isLoaded, soLoadResultCode, localUnsatisfiedLinkError.getMessage());
     }
   }
   
-  public void nativeOnReceData(byte[] paramArrayOfByte)
+  public void nativeOnReceData(byte[] paramArrayOfByte, int paramInt)
   {
-    onReceData(paramArrayOfByte);
+    onReceData(paramArrayOfByte, paramInt);
   }
   
   public FromServiceMsg nativeParseData(byte[] paramArrayOfByte)
@@ -219,7 +274,7 @@ public abstract class CodecWarpper
   
   public abstract void onResponse(int paramInt1, Object paramObject, int paramInt2, byte[] paramArrayOfByte);
   
-  public abstract void onSSOPingResponse(byte[] paramArrayOfByte);
+  public abstract int onSSOPingResponse(byte[] paramArrayOfByte, int paramInt);
 }
 
 

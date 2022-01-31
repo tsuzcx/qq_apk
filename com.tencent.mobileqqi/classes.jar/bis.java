@@ -1,19 +1,11 @@
-import com.tencent.av.thread.ThreadPool.CancelListener;
-import com.tencent.av.thread.ThreadPool.JobContext;
-
-public class bis
-  implements ThreadPool.JobContext
+class bis
+  implements Runnable
 {
-  public void a(ThreadPool.CancelListener paramCancelListener) {}
+  bis(bir parambir) {}
   
-  public boolean a()
+  public void run()
   {
-    return false;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return true;
+    this.a.a.f = false;
   }
 }
 

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SerializationPB$CommentLikeFeed
-  extends MessageMicro
+  extends MessageMicro<CommentLikeFeed>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 56, 64, 72, 80, 88 }, new String[] { "comment_count", "freind_commnet_count", "fan_comment_count", "comment_is_end", "comment_last_cookie", "like_count", "friend_like_count", "fan_like_count", "had_like", "view_total_time", "deny_comment" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0) }, CommentLikeFeed.class);
   public final PBUInt32Field comment_count = PBField.initUInt32(0);
@@ -25,7 +25,7 @@ public final class SerializationPB$CommentLikeFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.SerializationPB.CommentLikeFeed
  * JD-Core Version:    0.7.0.1
  */

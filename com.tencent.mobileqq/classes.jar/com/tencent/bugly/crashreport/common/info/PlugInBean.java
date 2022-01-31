@@ -7,7 +7,7 @@ import android.os.Parcelable.Creator;
 public class PlugInBean
   implements Parcelable
 {
-  public static final Parcelable.Creator<PlugInBean> CREATOR = new Parcelable.Creator() {};
+  public static final Parcelable.Creator<PlugInBean> CREATOR = new PlugInBean.1();
   public final String a;
   public final String b;
   public final String c;

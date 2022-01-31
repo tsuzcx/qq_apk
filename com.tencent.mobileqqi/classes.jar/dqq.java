@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.activity.StrangerManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.StrangerHandler;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.TroopMemberGagActivity;
+import com.tencent.mobileqq.activity.TroopMemberGagActivity.GagItemListener;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagItem;
 
 public class dqq
-  implements Runnable
+  implements TroopMemberGagActivity.GagItemListener
 {
-  public dqq(StrangerManageActivity paramStrangerManageActivity) {}
+  public dqq(TroopMemberGagActivity paramTroopMemberGagActivity) {}
   
-  public void run()
+  public void a(TroopGagMgr.GagItem paramGagItem)
   {
-    StrangerHandler localStrangerHandler = (StrangerHandler)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(28);
-    if (this.a.jdField_b_of_type_JavaUtilArrayList.isEmpty()) {
-      return;
-    }
-    localStrangerHandler.a(this.a.jdField_b_of_type_JavaUtilArrayList);
-    this.a.jdField_b_of_type_JavaUtilArrayList.clear();
+    this.a.a = paramGagItem.a;
   }
 }
 

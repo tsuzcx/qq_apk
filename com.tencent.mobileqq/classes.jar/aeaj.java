@@ -1,17 +1,49 @@
-import android.view.ViewStub;
-import com.tencent.mobileqq.activity.main.CommonLoadingView;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import java.util.ArrayList;
 
 public class aeaj
-  implements Runnable
+  implements Handler.Callback
 {
-  public aeaj(LebaWithFeeds paramLebaWithFeeds) {}
+  public aeaj(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    ViewStub localViewStub = (ViewStub)this.a.a(2131364872);
-    ((CommonLoadingView)this.a.a(2131363809)).setVisibility(8);
-    localViewStub.setVisibility(0);
+    switch (paramMessage.what)
+    {
+    default: 
+    case 1: 
+      do
+      {
+        do
+        {
+          return true;
+          paramMessage = (Intent)paramMessage.obj;
+          this.a.c = paramMessage.getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
+          if ((55 == paramMessage.getIntExtra(bdez.h, -1)) && (paramMessage.getExtras().containsKey("PhotoConst.PHOTO_PATHS")))
+          {
+            ArrayList localArrayList = paramMessage.getExtras().getStringArrayList("PhotoConst.PHOTO_PATHS");
+            if ((localArrayList != null) && (localArrayList.size() > 0))
+            {
+              this.a.a(BaseApplicationImpl.getApplication(), localArrayList);
+              return true;
+            }
+          }
+        } while (!paramMessage.getBooleanExtra("IS_FROM_PREVIEW_ACTIVITY", false));
+        paramMessage = paramMessage.getStringArrayListExtra("key_photo_preview");
+      } while (paramMessage == null);
+      this.a.a(BaseApplicationImpl.getApplication(), paramMessage);
+      return true;
+    case 2: 
+      this.a.b(null);
+      return true;
+    }
+    this.a.u();
+    return true;
   }
 }
 

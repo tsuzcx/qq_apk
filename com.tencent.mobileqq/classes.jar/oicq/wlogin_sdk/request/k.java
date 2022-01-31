@@ -1,12 +1,15 @@
 package oicq.wlogin_sdk.request;
 
 import android.content.Context;
+import android.util.Log;
 import com.tencent.loginsecsdk.ProtocolDet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import oicq.wlogin_sdk.report.a;
+import oicq.wlogin_sdk.report.c;
 import oicq.wlogin_sdk.sharemem.WloginSigInfo;
 import oicq.wlogin_sdk.tlv_type.tlv_t;
 import oicq.wlogin_sdk.tlv_type.tlv_t1;
@@ -41,16 +44,20 @@ import oicq.wlogin_sdk.tlv_type.tlv_t201;
 import oicq.wlogin_sdk.tlv_type.tlv_t202;
 import oicq.wlogin_sdk.tlv_type.tlv_t400;
 import oicq.wlogin_sdk.tlv_type.tlv_t511;
+import oicq.wlogin_sdk.tlv_type.tlv_t52d;
+import oicq.wlogin_sdk.tlv_type.tlv_t544;
+import oicq.wlogin_sdk.tlv_type.tlv_t545;
+import oicq.wlogin_sdk.tlv_type.tlv_t548;
 import oicq.wlogin_sdk.tlv_type.tlv_t8;
 import oicq.wlogin_sdk.tools.util;
 
 public class k
   extends oicq_request
 {
-  public static int I = 0;
-  public static byte[] J = new byte[0];
-  public static byte[] K = new byte[0];
+  public static int K = 0;
   public static byte[] L = new byte[0];
+  public static byte[] M = new byte[0];
+  public static byte[] N = new byte[0];
   
   public k(t paramt, Context paramContext)
   {
@@ -136,7 +143,7 @@ public class k
   
   public byte[] a(long paramLong1, long paramLong2, int paramInt1, long paramLong3, int paramInt2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, int paramInt3, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, int paramInt4, int paramInt5, long[] paramArrayOfLong, int paramInt6, long paramLong4, int paramInt7, int paramInt8, int paramInt9, int paramInt10, byte[] paramArrayOfByte7, byte[] paramArrayOfByte8, byte[] paramArrayOfByte9, List<String> paramList, WUserSigInfo paramWUserSigInfo)
   {
-    int[] arrayOfInt = new int[34];
+    int[] arrayOfInt = new int[37];
     int[] tmp8_6 = arrayOfInt;
     tmp8_6[0] = 24;
     int[] tmp13_8 = tmp8_6;
@@ -205,24 +212,46 @@ public class k
     tmp222_215[32] = 1321;
     int[] tmp229_222 = tmp222_215;
     tmp229_222[33] = 792;
-    tmp229_222;
+    int[] tmp236_229 = tmp229_222;
+    tmp236_229[34] = 1348;
+    int[] tmp243_236 = tmp236_229;
+    tmp243_236[35] = 1349;
+    int[] tmp250_243 = tmp243_236;
+    tmp250_243[36] = 1352;
+    tmp250_243;
     async_context localasync_context = t.b(this.x.h);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    int k = arrayOfInt.length;
+    util.LOGI("tgtgt getRequestBody start", "");
+    c.a(Thread.currentThread());
+    long l6 = System.currentTimeMillis();
+    long l1 = 0L;
+    long l2 = 0L;
+    long l4 = 0L;
+    long l3 = 0L;
+    int m = tmp8_6.length;
     int j = 0;
-    int m;
+    int k;
+    byte[] arrayOfByte1;
     Object localObject2;
+    Object localObject3;
     Object localObject1;
-    if (j < k)
+    label648:
+    long l5;
+    if (j < m)
     {
-      m = arrayOfInt[j];
+      k = tmp8_6[j];
+      arrayOfByte1 = null;
       localObject2 = null;
-      switch (m)
+      localObject3 = null;
+      switch (k)
       {
       default: 
-        localObject1 = localObject2;
-        label568:
+        localObject1 = localObject3;
+        l5 = l2;
+        l2 = l1;
+        l1 = l5;
+        label660:
         if (localObject1 != null)
         {
           localArrayList.add(localObject1);
@@ -234,252 +263,510 @@ public class k
     for (;;)
     {
       j += 1;
+      l5 = l2;
+      l2 = l1;
+      l1 = l5;
       break;
       localObject1 = new tlv_t18().get_tlv_18(paramLong1, paramInt1, paramLong3, paramInt2);
-      break label568;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
       localObject1 = new tlv_t1().get_tlv_1(paramLong3, paramArrayOfByte1);
-      break label568;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
       localObject1 = new tlv_t106();
       if ((paramArrayOfByte5 != null) && (paramArrayOfByte5.length > 0))
       {
         ((tlv_t106)localObject1).set_data(paramArrayOfByte5, paramArrayOfByte5.length);
         localObject1 = ((tlv_t106)localObject1).get_buf();
-        break label568;
+        l5 = l1;
+        l1 = l2;
+        l2 = l5;
+        break label660;
       }
-      localObject1 = ((tlv_t106)localObject1).get_tlv_106(paramLong1, paramLong2, paramInt1, paramLong3, paramArrayOfByte2, paramArrayOfByte1, 1, paramArrayOfByte3, localasync_context._msalt, this.x.g.getBytes(), paramArrayOfByte4, t.U, t.A, paramInt3);
-      break label568;
+      localObject1 = ((tlv_t106)localObject1).get_tlv_106(paramLong1, paramLong2, paramInt1, paramLong3, paramArrayOfByte2, paramArrayOfByte1, 1, paramArrayOfByte3, localasync_context._msalt, this.x.g.getBytes(), paramArrayOfByte4, t.V, t.A, paramInt3);
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
       localObject1 = new tlv_t116().get_tlv_116(paramInt4, paramInt5, paramArrayOfLong);
-      break label568;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
       localObject1 = new tlv_t100().get_tlv_100(paramLong1, paramLong4, paramInt1, paramInt6);
-      break label568;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
       localObject1 = new tlv_t107().get_tlv_107(paramInt7, paramInt8, paramInt9, paramInt10);
-      break label568;
-      localObject1 = localObject2;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      localObject1 = localObject3;
       if (paramArrayOfByte7 == null) {
-        break label568;
+        break label648;
       }
-      localObject1 = localObject2;
-      if (paramArrayOfByte7.length == 0) {
-        break label568;
+      if (paramArrayOfByte7.length == 0)
+      {
+        l5 = l1;
+        localObject1 = arrayOfByte1;
+        l1 = l2;
+        l2 = l5;
+        break label660;
       }
       localObject1 = new tlv_t108().get_tlv_108(paramArrayOfByte7);
-      break label568;
-      localObject1 = localObject2;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      localObject1 = localObject3;
       if (paramArrayOfByte8 == null) {
-        break label568;
+        break label648;
       }
-      localObject1 = localObject2;
-      if (paramArrayOfByte8.length == 0) {
-        break label568;
+      if (paramArrayOfByte8.length == 0)
+      {
+        l5 = l1;
+        localObject1 = arrayOfByte1;
+        l1 = l2;
+        l2 = l5;
+        break label660;
       }
       localObject1 = new tlv_t104().get_tlv_104(paramArrayOfByte8);
-      break label568;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
       localObject1 = new tlv_t142().get_tlv_142(paramArrayOfByte9);
-      break label568;
-      localObject1 = localObject2;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      localObject1 = localObject3;
       if (this.x.g == null) {
-        break label568;
+        break label648;
       }
-      localObject1 = localObject2;
-      if (util.check_uin_account(this.x.g).booleanValue()) {
-        break label568;
+      if (util.check_uin_account(this.x.g).booleanValue())
+      {
+        l5 = l1;
+        localObject1 = arrayOfByte1;
+        l1 = l2;
+        l2 = l5;
+        break label660;
       }
       localObject1 = new tlv_t112().get_tlv_112(this.x.g.getBytes());
-      break label568;
-      localObject1 = new tlv_t109().get_tlv_109(t.M);
-      localObject2 = new tlv_t124();
-      Object localObject3 = util.get_os_type();
-      byte[] arrayOfByte1 = util.get_os_version();
-      m = t.D;
-      byte[] arrayOfByte2 = t.C;
-      byte[] arrayOfByte3 = t.F;
-      localObject2 = ((tlv_t124)localObject2).get_tlv_124((byte[])localObject3, arrayOfByte1, m, arrayOfByte2, new byte[0], arrayOfByte3);
-      localObject3 = new tlv_t128().get_tlv_128(t.T, t.U, t.V, t.Y, t.I, t.A, t.P);
-      arrayOfByte1 = new tlv_t16e().get_tlv_16e(t.I);
-      localObject1 = new tlv_t144().get_tlv_144((byte[])localObject1, (byte[])localObject2, (byte[])localObject3, arrayOfByte1, localasync_context._tgtgt_key);
-      break label568;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      localObject1 = new tlv_t109().get_tlv_109(t.O);
+      localObject2 = new tlv_t52d().get_tlv_52d(this.a);
+      localObject3 = new tlv_t124();
+      arrayOfByte1 = util.get_os_type();
+      byte[] arrayOfByte2 = util.get_os_version();
+      k = t.D;
+      byte[] arrayOfByte3 = t.C;
+      byte[] arrayOfByte4 = t.F;
+      localObject3 = ((tlv_t124)localObject3).get_tlv_124(arrayOfByte1, arrayOfByte2, k, arrayOfByte3, new byte[0], arrayOfByte4);
+      arrayOfByte1 = new tlv_t128().get_tlv_128(t.U, t.V, t.W, t.Z, t.I, t.A, t.P);
+      arrayOfByte2 = new tlv_t16e().get_tlv_16e(t.I);
+      localObject1 = new tlv_t144().get_tlv_144((byte[])localObject1, (byte[])localObject2, (byte[])localObject3, arrayOfByte1, arrayOfByte2, localasync_context._tgtgt_key);
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
       localObject1 = new tlv_t145().get_tlv_145(t.A);
-      break label568;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
       localObject1 = new tlv_t147().get_tlv_147(paramLong1, t.G, t.H);
-      break label568;
-      localObject1 = localObject2;
-      if ((paramInt4 & 0x80) == 0) {
-        break label568;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      if ((paramInt4 & 0x80) == 0)
+      {
+        l5 = l1;
+        localObject1 = arrayOfByte1;
+        l1 = l2;
+        l2 = l5;
+        break label660;
       }
       localObject1 = new tlv_t166().get_tlv_166(t.x);
-      break label568;
-      localObject1 = localObject2;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      localObject1 = localObject3;
       if (paramArrayOfByte6 == null) {
-        break label568;
+        break label648;
       }
-      localObject1 = localObject2;
-      if (paramArrayOfByte6.length == 0) {
-        break label568;
+      if (paramArrayOfByte6.length == 0)
+      {
+        l5 = l1;
+        localObject1 = arrayOfByte1;
+        l1 = l2;
+        l2 = l5;
+        break label660;
       }
       localObject1 = new tlv_t16a().get_tlv_16a(paramArrayOfByte6);
-      break label568;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
       localObject1 = new tlv_t154().get_tlv_154(this.x.i);
-      break label568;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
       localObject1 = new tlv_t141().get_tlv_141(t.C, t.D, t.F);
-      break label568;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
       localObject1 = new tlv_t8().get_tlv_8(0, t.u, 0);
-      break label568;
-      localObject1 = localObject2;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      localObject1 = localObject3;
       if (paramList == null) {
-        break label568;
+        break label648;
       }
-      localObject1 = localObject2;
-      if (paramList.size() == 0) {
-        break label568;
+      if (paramList.size() == 0)
+      {
+        l5 = l1;
+        localObject1 = arrayOfByte1;
+        l1 = l2;
+        l2 = l5;
+        break label660;
       }
       localObject1 = new tlv_t511().get_tlv_511(paramList);
-      break label568;
-      localObject1 = localObject2;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      localObject1 = localObject3;
       if (this.x.r == null) {
-        break label568;
+        break label648;
       }
-      localObject1 = localObject2;
-      if (this.x.r.length == 0) {
-        break label568;
+      if (this.x.r.length == 0)
+      {
+        l5 = l1;
+        localObject1 = arrayOfByte1;
+        l1 = l2;
+        l2 = l5;
+        break label660;
       }
       localObject1 = new tlv_t172().get_tlv_172(this.x.r);
-      break label568;
-      localObject1 = localObject2;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      localObject1 = localObject3;
       if (paramInt3 != 3) {
-        break label568;
+        break label648;
       }
       localObject1 = new tlv_t185().get_tlv_185(1);
-      break label568;
-      localObject3 = this.x.a(paramLong3, paramLong1);
-      localObject1 = localObject2;
-      if (localObject3 == null) {
-        break label568;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      localObject2 = this.x.a(paramLong3, paramLong1);
+      localObject1 = localObject3;
+      if (localObject2 == null) {
+        break label648;
       }
-      localObject1 = localObject2;
-      if (((WloginSigInfo)localObject3)._G == null) {
-        break label568;
+      localObject1 = localObject3;
+      if (((WloginSigInfo)localObject2)._G == null) {
+        break label648;
       }
-      localObject1 = localObject2;
-      if (((WloginSigInfo)localObject3)._G.length == 0) {
-        break label568;
+      if (((WloginSigInfo)localObject2)._G.length == 0)
+      {
+        l5 = l1;
+        localObject1 = arrayOfByte1;
+        l1 = l2;
+        l2 = l5;
+        break label660;
       }
-      localObject1 = localObject2;
-      if (((WloginSigInfo)localObject3)._dpwd == null) {
-        break label568;
+      localObject1 = localObject3;
+      if (((WloginSigInfo)localObject2)._dpwd == null) {
+        break label648;
       }
-      localObject1 = localObject2;
-      if (((WloginSigInfo)localObject3)._dpwd.length == 0) {
-        break label568;
+      if (((WloginSigInfo)localObject2)._dpwd.length == 0)
+      {
+        l5 = l1;
+        localObject1 = arrayOfByte1;
+        l1 = l2;
+        l2 = l5;
+        break label660;
       }
-      localObject1 = localObject2;
-      if (((WloginSigInfo)localObject3)._randseed == null) {
-        break label568;
+      localObject1 = localObject3;
+      if (((WloginSigInfo)localObject2)._randseed == null) {
+        break label648;
       }
-      localObject1 = localObject2;
-      if (((WloginSigInfo)localObject3)._randseed.length == 0) {
-        break label568;
+      if (((WloginSigInfo)localObject2)._randseed.length == 0)
+      {
+        l5 = l1;
+        localObject1 = arrayOfByte1;
+        l1 = l2;
+        l2 = l5;
+        break label660;
       }
-      localObject1 = new tlv_t400().get_tlv_400(((WloginSigInfo)localObject3)._G, paramLong3, t.A, ((WloginSigInfo)localObject3)._dpwd, paramLong1, paramLong2, ((WloginSigInfo)localObject3)._randseed);
-      break label568;
-      localObject1 = localObject2;
+      localObject1 = new tlv_t400().get_tlv_400(((WloginSigInfo)localObject2)._G, paramLong3, t.A, ((WloginSigInfo)localObject2)._dpwd, paramLong1, paramLong2, ((WloginSigInfo)localObject2)._randseed);
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      localObject1 = localObject3;
       if (t.N == null) {
-        break label568;
+        break label648;
       }
-      localObject1 = localObject2;
-      if (t.N.length == 0) {
-        break label568;
+      if (t.N.length == 0)
+      {
+        l5 = l1;
+        localObject1 = arrayOfByte1;
+        l1 = l2;
+        l2 = l5;
+        break label660;
       }
       localObject1 = new tlv_t187().get_tlv_187(t.N);
-      break label568;
-      localObject1 = localObject2;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      localObject1 = localObject3;
       if (t.O == null) {
-        break label568;
+        break label648;
       }
-      localObject1 = localObject2;
-      if (t.O.length == 0) {
-        break label568;
+      if (t.O.length == 0)
+      {
+        l5 = l1;
+        localObject1 = arrayOfByte1;
+        l1 = l2;
+        l2 = l5;
+        break label660;
       }
       localObject1 = new tlv_t188().get_tlv_188(t.O);
-      break label568;
-      localObject1 = localObject2;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      localObject1 = localObject3;
       if (t.L == null) {
-        break label568;
+        break label648;
       }
-      localObject1 = localObject2;
-      if (t.L.length == 0) {
-        break label568;
+      if (t.L.length == 0)
+      {
+        l5 = l1;
+        localObject1 = arrayOfByte1;
+        l1 = l2;
+        l2 = l5;
+        break label660;
       }
       localObject1 = new tlv_t194().get_tlv_194(t.L);
-      break label568;
-      localObject1 = new tlv_t191().get_tlv_191(I);
-      break label568;
-      localObject1 = localObject2;
-      if (J == null) {
-        break label568;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      localObject1 = new tlv_t191().get_tlv_191(K);
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      localObject1 = localObject3;
+      if (L == null) {
+        break label648;
       }
-      localObject1 = localObject2;
-      if (J.length == 0) {
-        break label568;
+      if (L.length == 0)
+      {
+        l5 = l1;
+        localObject1 = arrayOfByte1;
+        l1 = l2;
+        l2 = l5;
+        break label660;
       }
-      localObject1 = new tlv_t201().get_tlv_201(J, K, "qq".getBytes(), L);
-      break label568;
-      localObject1 = localObject2;
+      localObject1 = new tlv_t201().get_tlv_201(L, M, "qq".getBytes(), N);
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      localObject1 = localObject3;
       if (t.R == null) {
-        break label568;
+        break label648;
       }
-      localObject1 = localObject2;
-      if (t.R.length == 0) {
-        break label568;
+      if (t.R.length == 0)
+      {
+        l5 = l1;
+        localObject1 = arrayOfByte1;
+        l1 = l2;
+        l2 = l5;
+        break label660;
       }
       localObject1 = new tlv_t202().get_tlv_202(t.R, t.S);
-      break label568;
-      localObject1 = new tlv_t177().get_tlv_177(1523965574L, "6.0.0.2282");
-      break label568;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      localObject1 = new tlv_t177().get_tlv_177(1585297161L, "6.0.0.2424");
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
       localObject1 = new tlv_t(1302);
       localObject2 = new byte[4];
       util.int32_to_buf((byte[])localObject2, 0, paramWUserSigInfo._source_type);
       ((tlv_t)localObject1).set_data((byte[])localObject2, 4);
       localObject1 = ((tlv_t)localObject1).get_buf();
-      break label568;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
       localObject1 = new tlv_t(1313);
       localObject2 = new byte[6];
-      util.int32_to_buf((byte[])localObject2, 0, t.au);
+      util.int32_to_buf((byte[])localObject2, 0, t.az);
       util.int16_to_buf((byte[])localObject2, 4, 0);
       ((tlv_t)localObject1).set_data((byte[])localObject2, 6);
       localObject1 = ((tlv_t)localObject1).get_buf();
-      break label568;
-      localObject3 = new tlv_t(1314);
-      arrayOfByte1 = ProtocolDet.getLoginExtraData(this.a);
-      localObject1 = localObject2;
-      if (arrayOfByte1 == null) {
-        break label568;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      for (;;)
+      {
+        for (;;)
+        {
+          try
+          {
+            l5 = System.currentTimeMillis();
+            l4 = l5;
+          }
+          catch (Throwable localThrowable1)
+          {
+            localObject1 = null;
+          }
+          try
+          {
+            localObject1 = new tlv_t(1334);
+            localObject2 = ProtocolDet.getLoginExtraData(this.a);
+            if ((localObject2 != null) && (localObject2.length > 0))
+            {
+              util.LOGI("TGTGT 0x536:" + localObject2.length + ":" + util.buf_to_string((byte[])localObject2), paramLong3 + "");
+              ((tlv_t)localObject1).set_data((byte[])localObject2, localObject2.length);
+              localObject1 = ((tlv_t)localObject1).get_buf();
+              localObject2 = new tlv_t(1317);
+              localObject3 = new byte[localObject1.length + 2];
+              util.int16_to_buf((byte[])localObject3, 0, 1);
+              System.arraycopy(localObject1, 0, localObject3, 2, localObject1.length);
+              ((tlv_t)localObject2).set_data((byte[])localObject3, localObject3.length);
+              localObject1 = ((tlv_t)localObject2).get_buf();
+            }
+          }
+          catch (Throwable localThrowable2)
+          {
+            for (;;)
+            {
+              StringBuilder localStringBuilder;
+              localObject1 = null;
+            }
+          }
+          try
+          {
+            l5 = System.currentTimeMillis();
+            l3 = l5;
+          }
+          catch (Throwable localThrowable3)
+          {
+            break label2852;
+          }
+          try
+          {
+            util.LOGI("TGTGT 0x536 cost:" + (l3 - l4), "");
+            l5 = l1;
+            l1 = l2;
+            l2 = l5;
+          }
+          catch (Throwable localThrowable4)
+          {
+            break label2852;
+          }
+        }
+        util.LOGI("TGTGT 0x536:null", paramLong3 + "");
+        localObject1 = null;
       }
-      localObject1 = localObject2;
-      if (arrayOfByte1.length <= 0) {
-        break label568;
-      }
-      ((tlv_t)localObject3).set_data(arrayOfByte1, arrayOfByte1.length);
-      localObject1 = ((tlv_t)localObject3).get_buf();
-      localObject2 = new tlv_t(1317);
-      localObject3 = new byte[localObject1.length + 2];
-      util.int16_to_buf((byte[])localObject3, 0, 1);
-      System.arraycopy(localObject1, 0, localObject3, 2, localObject1.length);
-      ((tlv_t)localObject2).set_data((byte[])localObject3, localObject3.length);
-      localObject1 = ((tlv_t)localObject2).get_buf();
-      break label568;
-      localObject1 = localObject2;
+      label2852:
+      util.LOGI("TGTGT tlv536 error " + Log.getStackTraceString(localThrowable1), paramLong3 + "");
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      localObject1 = localObject3;
       if (localasync_context.tgtQR == null) {
-        break label568;
+        break label648;
       }
-      localObject1 = localObject2;
+      localObject1 = localObject3;
       if (localasync_context.tgtQR.length == 0) {
-        break label568;
+        break label648;
       }
       localObject1 = new tlv_t(792);
       ((tlv_t)localObject1).set_data(localasync_context.tgtQR, localasync_context.tgtQR.length);
       localObject1 = ((tlv_t)localObject1).get_buf();
       util.LOGI("tgtQR len " + localasync_context.tgtQR.length, "" + paramLong3);
-      break label568;
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      l2 = System.currentTimeMillis();
+      localObject1 = new tlv_t544().get_tlv_544(this.a, paramLong3, t.A.length, t.A, "6.0.0.2424".length(), "6.0.0.2424", this.u);
+      l1 = System.currentTimeMillis();
+      util.LOGI("tgt 0x544 cost:" + (l1 - l2), "" + paramLong3);
+      break label660;
+      if ((t.T == null) || (t.T.length == 0)) {
+        t.T = util.get_qimei(t.t);
+      }
+      localObject1 = localObject3;
+      if (t.T == null) {
+        break label648;
+      }
+      localObject1 = localObject3;
+      if (t.T.length <= 0) {
+        break label648;
+      }
+      localObject1 = new tlv_t545().get_tlv_545(t.T);
+      util.LOGI("tgtgt qimei len " + t.T.length, "" + paramLong3);
+      l5 = l1;
+      l1 = l2;
+      l2 = l5;
+      break label660;
+      localObject1 = localObject3;
+      if (t.an == null) {
+        break label648;
+      }
+      localObject1 = localObject3;
+      if (t.an.length <= 0) {
+        break label648;
+      }
+      localObject3 = new tlv_t548().get_tlv_548(t.an);
+      localObject1 = localThrowable1;
+      if (localObject3 != null)
+      {
+        localObject1 = localThrowable1;
+        if (localObject3.length > 0) {
+          localObject1 = localObject3;
+        }
+      }
+      localStringBuilder = new StringBuilder().append("t548_data ");
+      if (localObject3 == null) {}
+      for (k = 0;; k = localObject3.length)
+      {
+        util.LOGI(k, "");
+        break;
+      }
       paramArrayOfByte1 = paramWUserSigInfo.extraLoginTLVMap.keySet().iterator();
       while (paramArrayOfByte1.hasNext())
       {
@@ -500,6 +787,9 @@ public class k
         paramInt2 += paramArrayOfByte2.length;
         paramInt1 += 1;
       }
+      paramLong1 = System.currentTimeMillis();
+      a.a().a(1, paramLong1 - l6, l2 - l1, l3 - l4);
+      c.b(Thread.currentThread());
       return b(paramArrayOfByte1, this.u, paramInt3);
     }
   }

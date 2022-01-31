@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class sync$SyncAppointmentReq
-  extends MessageMicro
+  extends MessageMicro<SyncAppointmentReq>
 {
   public static final int MSG_APPOINTMENT_FIELD_NUMBER = 2;
   public static final int MSG_GPS_INFO_FIELD_NUMBER = 3;
@@ -20,7 +20,7 @@ public final class sync$SyncAppointmentReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.sync.SyncAppointmentReq
  * JD-Core Version:    0.7.0.1
  */

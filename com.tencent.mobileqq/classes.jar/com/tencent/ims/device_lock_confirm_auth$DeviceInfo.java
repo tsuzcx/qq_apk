@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class device_lock_confirm_auth$DeviceInfo
-  extends MessageMicro
+  extends MessageMicro<DeviceInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_appname = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -30,7 +30,7 @@ public final class device_lock_confirm_auth$DeviceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.device_lock_confirm_auth.DeviceInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,23 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 class sgx
-  implements Runnable
+  implements OnCompositionLoadedListener
 {
-  sgx(sgt paramsgt, ArrayList paramArrayList) {}
+  sgx(sgw paramsgw, Runnable paramRunnable) {}
   
-  public void run()
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    if (this.jdField_a_of_type_Sgt.a.a != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        this.jdField_a_of_type_Sgt.a.a.a(str, true);
-      }
+    RefreshAnimView.a(this.jdField_a_of_type_Sgw.a, paramLottieComposition);
+    if (paramLottieComposition != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sgx
  * JD-Core Version:    0.7.0.1
  */

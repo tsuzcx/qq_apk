@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:id="@id/la6" android:background="#80000000" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/j_o" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator android:textSize="16.0sp" android:id="@id/ixv" android:layout_width="fill_parent" android:layout_height="@dimen/b9j" app:checkTextColor="#ffffffff" app:indicatorAlpha="25" app:indicatorColor="#19ffffff" app:indicatorMarginLeftRight="0.0dip" app:indicatorMarginTopBottom="@dimen/b9l" app:indicatorRoundRectX="@dimen/b9m" app:indicatorRoundRectY="@dimen/b9m" app:tabContainerPaddingLeftRight="0.0dip" app:tabGap="@dimen/b9k" app:tabPaddingLeftRight="0.0dip" app:tabTextSize="16.0sp" app:tabWidth="@dimen/b9n" app:uncheckTextColor="#80ffffff" />
+    </FrameLayout>
+    <com.tencent.av.ui.beauty.PanelViewPage android:id="@id/fi0" android:layout_width="fill_parent" android:layout_height="@dimen/b9p" android:layout_below="@id/j_o" />
+</merge>

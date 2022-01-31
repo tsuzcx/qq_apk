@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.Leba;
 
 class csn
   implements Runnable
 {
-  csn(csm paramcsm) {}
+  csn(csc paramcsc) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(1004, 0, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.b);
+    Leba.b(this.a.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     csn
  * JD-Core Version:    0.7.0.1
  */

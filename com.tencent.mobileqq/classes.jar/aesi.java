@@ -1,30 +1,50 @@
-import android.app.Activity;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.view.widget.StoryNewGuideDialog;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class aesi
-  implements Runnable
+class aesi
+  implements AdapterView.OnItemClickListener
 {
-  public aesi(StoryPlayController paramStoryPlayController) {}
+  aesi(aesh paramaesh) {}
   
-  public void run()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((StoryPlayController.a(this.a) != null) && (StoryPlayController.a(this.a).isShowing()))
+    int j = ((ShareActionSheetBuilder.ActionSheetItem)aesh.a(this.a)[0].get(paramInt)).action;
+    aesh.a(this.a).dismiss();
+    int i = 0;
+    switch (j)
     {
-      if (((this.a.a instanceof Activity)) && ((StoryPlayController.b(this.a)) || (((Activity)this.a.a).isFinishing()))) {
-        StoryPlayController.a(this.a, null);
+    }
+    for (;;)
+    {
+      if (i != 0) {
+        azqs.b(null, "dc00898", "", "", "0X800A11B", "0X800A11B", i, 0, "", "", "", "");
       }
-    }
-    else {
+      if (QLog.isColorLevel()) {
+        QLog.i("IntimateInfoShareHelper", 2, "intimate shareAction: " + paramInt + "," + j);
+      }
+      this.a.a(j, aesh.a(this.a));
       return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
+      continue;
+      i = 5;
+      continue;
+      i = 6;
     }
-    StoryPlayController.a(this.a).dismiss();
-    StoryPlayController.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aesi
  * JD-Core Version:    0.7.0.1
  */

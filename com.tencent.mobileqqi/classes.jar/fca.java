@@ -1,20 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.adapter.BaseWhatASmoothAdapter;
+import android.os.Process;
+import com.tencent.mobileqq.app.EmoticonManagerImp;
 
 public class fca
   implements Runnable
 {
-  public fca(BaseWhatASmoothAdapter paramBaseWhatASmoothAdapter, View paramView, Object paramObject1, Object paramObject2, int paramInt, fcc paramfcc) {}
+  public fca(EmoticonManagerImp paramEmoticonManagerImp) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((this.jdField_a_of_type_JavaLangObject != null) && (this.b != null) && ((this.b.equals(localObject)) || (localObject == null)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAdapterBaseWhatASmoothAdapter.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangObject);
-      this.jdField_a_of_type_AndroidViewView.setTag(this.jdField_a_of_type_ComTencentMobileqqAdapterBaseWhatASmoothAdapter.b + this.jdField_a_of_type_Int);
-    }
-    fcc.a(this.jdField_a_of_type_Fcc, null);
+    Process.setThreadPriority(10);
+    EmoticonManagerImp.a(this.a);
   }
 }
 

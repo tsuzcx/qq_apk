@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import agop;
 import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import awpz;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -24,7 +24,7 @@ import tencent.im.label.comm.PersonalityTagComm.PraiseUserInfo;
 public class PersonalityLabelInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new agop();
+  public static final Parcelable.Creator<PersonalityLabelInfo> CREATOR = new awpz();
   public static final String TAG = "PersonalityLabelInfo";
   int addTime = 0;
   public int bgColor = -16777216;
@@ -34,13 +34,13 @@ public class PersonalityLabelInfo
   public int fgColor = -1;
   public long id;
   public long modTime;
-  public List personalityLabelPhotos;
+  public List<PersonalityLabelPhoto> personalityLabelPhotos;
   public int photoCount = 0;
   public long praiseCount = 0L;
   public int praiseFlag;
   public String text = "";
   long unreadPraiseCount = 0L;
-  public ArrayList zanUins;
+  public ArrayList<PersonalityLabelZan> zanUins;
   
   public PersonalityLabelInfo()
   {
@@ -304,7 +304,7 @@ public class PersonalityLabelInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo
  * JD-Core Version:    0.7.0.1
  */

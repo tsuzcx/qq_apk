@@ -1,23 +1,26 @@
-import android.view.animation.Animation;
-import com.tencent.common.galleryactivity.AbstractAnimationManager;
-import com.tencent.common.galleryactivity.AbstractGalleryScene;
-import com.tencent.common.galleryactivity.GalleryManager;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class bvx
-  extends AnimateUtils.AnimationAdapter
+  implements DialogInterface.OnClickListener
 {
-  public bvx(AbstractGalleryScene paramAbstractGalleryScene) {}
+  public bvx(AuthDevOpenUgActivity paramAuthDevOpenUgActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a().b();
-    this.a.a.a().a();
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.a.a().c();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("devlock", 4, "left button is clicked! ");
+    }
+    try
+    {
+      ReportController.b(null, "P_CliOper", "Safe_DeviceLock", this.a.b.a(), "UserBehavior", "Manually", 0, 4, "", "", "", "");
+      return;
+    }
+    catch (Exception paramDialogInterface) {}
   }
 }
 

@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-
-public class uao
-  implements Runnable
+public abstract interface uao
 {
-  public uao(TroopMemberListActivity paramTroopMemberListActivity) {}
-  
-  public void run()
-  {
-    TroopMemberListActivity.a(this.a.app, Long.valueOf(this.a.b).longValue(), new uap(this));
-  }
+  public abstract float a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uao
  * JD-Core Version:    0.7.0.1
  */

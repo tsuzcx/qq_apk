@@ -1,30 +1,21 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
 
-public class whp
-  implements View.OnTouchListener
+class whp
+  implements View.OnClickListener
 {
-  public whp(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  whp(whn paramwhn) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
-    if (paramMotionEvent.isActive()) {
-      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    }
-    this.a.a.clearFocus();
-    paramView = this.a.a.getText().toString();
-    this.a.a.setSelection(paramView.length());
-    return false;
+    this.a.b();
+    this.a.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     whp
  * JD-Core Version:    0.7.0.1
  */

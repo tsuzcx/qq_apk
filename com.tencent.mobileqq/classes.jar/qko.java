@@ -1,55 +1,117 @@
-import android.content.Context;
-import com.tencent.gdtad.aditem.GdtAdLoader;
-import com.tencent.gdtad.aditem.GdtAdLoader.Listener;
-import com.tencent.gdtad.aditem.GdtAdLoader.Session;
-import com.tencent.gdtad.net.GdtHttp;
-import com.tencent.gdtad.net.GdtHttp.Listener;
-import com.tencent.gdtad.net.GdtHttp.Params;
-import java.lang.ref.WeakReference;
-import java.util.Set;
-import tencent.gdt.qq_ad_get.QQAdGet;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
 
 public class qko
+  implements qla
 {
-  private GdtAdLoader.Session jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session;
-  private GdtHttp.Listener jdField_a_of_type_ComTencentGdtadNetGdtHttp$Listener = new qkp(this);
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  protected BaseArticleInfo a;
+  protected URL a;
   
-  public qko(GdtAdLoader.Session paramSession, WeakReference paramWeakReference)
+  public qko(BaseArticleInfo paramBaseArticleInfo)
   {
-    this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session = paramSession;
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
   }
   
-  private void a(Context paramContext)
+  protected Pair<Integer, Integer> a(boolean paramBoolean)
   {
-    GdtAdLoader.a().add(this);
-    if ((paramContext == null) || (this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session == null) || (!this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session.a())) {}
-    do
-    {
-      a();
-      return;
-      GdtAdLoader.a(paramContext, this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session.a.device_info);
-      paramContext = new GdtHttp.Params();
-      paramContext.a("https://mi.gdt.qq.com/rpc/gdt.display.QQAdService.GetAds");
-      paramContext.jdField_a_of_type_JavaLangString = "POST";
-      paramContext.b = "application/x-protobuf";
-      paramContext.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session.a.toByteArray();
-    } while (!paramContext.a());
-    GdtHttp.a(paramContext, new WeakReference(this.jdField_a_of_type_ComTencentGdtadNetGdtHttp$Listener));
-  }
-  
-  void a()
-  {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      ((GdtAdLoader.Listener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session);
+    if (paramBoolean) {
+      return orc.g();
     }
-    GdtAdLoader.a().remove(this);
+    return orc.f();
+  }
+  
+  public int getCommentCount()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCommentCount;
+  }
+  
+  public String getInnerUniqueID()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID;
+  }
+  
+  public String getShareUrl()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleContentUrl;
+  }
+  
+  public String getSubscribeName()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSubscribeName;
+  }
+  
+  public String getSubscribeUin()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSubscribeID;
+  }
+  
+  public URL getVideoCoverURL()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCoverUrl != null) {
+      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCoverUrl;
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSinglePicture != null) {
+      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSinglePicture;
+    }
+    return ors.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mFirstPagePicUrl);
+  }
+  
+  public URL getVideoCoverUrlWithSmartCut(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaNetURL == null)
+    {
+      Pair localPair = a(paramBoolean);
+      this.jdField_a_of_type_JavaNetURL = getVideoCoverWithSmartCut(((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue());
+    }
+    return this.jdField_a_of_type_JavaNetURL;
+  }
+  
+  public URL getVideoCoverWithSmartCut(int paramInt1, int paramInt2)
+  {
+    if (getVideoCoverURL() != null)
+    {
+      String str2 = getVideoCoverURL().toString();
+      String str1 = str2;
+      if (!TextUtils.isEmpty(str2))
+      {
+        str1 = str2;
+        if (str2.startsWith("pubaccountimage:")) {
+          str1 = str2.replaceFirst("pubaccountimage:", "");
+        }
+      }
+      return ors.a(ors.a(str1, paramInt1, paramInt2));
+    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCoverUrl;
+  }
+  
+  public int getVideoDuration()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) {
+      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoDuration;
+    }
+    return 0;
+  }
+  
+  public int getVideoHeight()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoJsonHeight;
+  }
+  
+  public String getVideoVid()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoVid;
+  }
+  
+  public int getVideoWidth()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoJsonWidth;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qko
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,15 @@
-import com.tencent.mobileqq.magicface.model.MagicfaceDecoder;
-import com.tencent.mobileqq.magicface.model.MagicfaceDecoder.MagicPlayListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class aedw
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aedw(MagicfaceDecoder paramMagicfaceDecoder) {}
+  public aedw(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = Thread.currentThread().getPriority();
-    Thread.currentThread().setPriority(10);
-    this.a.jdField_a_of_type_Boolean = true;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener.a();
-    }
-    this.a.a();
-    this.a.jdField_a_of_type_Boolean = false;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener.b();
-    }
-    Thread.currentThread().setPriority(i);
+    paramDialogInterface.dismiss();
   }
 }
 

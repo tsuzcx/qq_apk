@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tribe.async.dispatch.Dispatcher;
 
-public final class wei
-  implements Parcelable.Creator
+public class wei
+  extends wfx
 {
-  public ZhituResponse a(Parcel paramParcel)
-  {
-    return new ZhituResponse(paramParcel);
-  }
+  public wei(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
   
-  public ZhituResponse[] a(int paramInt)
+  public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean)
   {
-    return new ZhituResponse[paramInt];
+    vem localvem = new vem();
+    localvem.jdField_a_of_type_JavaLangString = paramVideoCollectionItem.collectionId;
+    localvem.jdField_a_of_type_JavaUtilList = paramVideoCollectionItem.collectionVideoUIItemList;
+    umc.a().dispatch(localvem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wei
  * JD-Core Version:    0.7.0.1
  */

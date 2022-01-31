@@ -1,22 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
+import android.os.Handler;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.Collections;
+import java.util.List;
 
-public class wzf
-  implements View.OnClickListener
+class wzf
+  implements xfg
 {
-  public wzf(GoldMsgSettingActivity paramGoldMsgSettingActivity) {}
+  wzf(wzb paramwzb) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, List<uxf> paramList)
   {
-    GoldMsgAioState.a(this.a.getWindow(), this.a, null);
-    this.a.finish();
+    wxe.b("Q.qqstory.publish.edit.StoryDoodle", "onPOIPostersRequestResult callback");
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = Collections.EMPTY_LIST;
+    }
+    umc.a().dispatch(new xfe(paramInt, (List)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wzf
  * JD-Core Version:    0.7.0.1
  */

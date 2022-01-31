@@ -12,17 +12,17 @@ import com.tencent.mobileqq.data.MessageForLongMsg;
 import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import ebs;
-import ebt;
-import ebu;
-import ebv;
-import ebw;
-import ebx;
-import eby;
-import ebz;
-import eca;
-import ecb;
-import ecc;
+import dwq;
+import dwr;
+import dws;
+import dwt;
+import dwu;
+import dwv;
+import dww;
+import dwx;
+import dwy;
+import dwz;
+import dxa;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -354,7 +354,7 @@ public class AioAnimationDetector
                 localObject2 = (AioAnimationRule.JumpImage)((AioAnimationRule)localObject1).jdField_b_of_type_JavaUtilArrayList.get(i);
                 localObject2 = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject2);
                 k = i * 800;
-                this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ebs(this, paramAIOAnimationConatiner, (Drawable)localObject2, k), paramInt + k);
+                this.jdField_a_of_type_AndroidOsHandler.postDelayed(new dwq(this, paramAIOAnimationConatiner, (Drawable)localObject2, k), paramInt + k);
                 i += 1;
               }
             }
@@ -362,7 +362,7 @@ public class AioAnimationDetector
             {
               localObject1 = (AioAnimationRule.JumpImage)((AioAnimationRule)localObject1).jdField_b_of_type_JavaUtilArrayList.get(0);
               localObject1 = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject1);
-              this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ebv(this, paramAIOAnimationConatiner, (Drawable)localObject1), paramInt);
+              this.jdField_a_of_type_AndroidOsHandler.postDelayed(new dwt(this, paramAIOAnimationConatiner, (Drawable)localObject1), paramInt);
             }
           }
         }
@@ -381,7 +381,7 @@ public class AioAnimationDetector
               localObject2 = (AioAnimationRule.JumpImage)((AioAnimationRule)localObject1).jdField_b_of_type_JavaUtilArrayList.get(i);
               localObject2 = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject2);
               k = i * 800;
-              this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ebw(this, paramAIOAnimationConatiner, (Drawable)localObject2, k), paramInt + k);
+              this.jdField_a_of_type_AndroidOsHandler.postDelayed(new dwu(this, paramAIOAnimationConatiner, (Drawable)localObject2, k), paramInt + k);
               i += 1;
             }
           }
@@ -389,7 +389,7 @@ public class AioAnimationDetector
           {
             localObject1 = (AioAnimationRule.JumpImage)((AioAnimationRule)localObject1).jdField_b_of_type_JavaUtilArrayList.get(0);
             localObject1 = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject1);
-            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ebx(this, paramAIOAnimationConatiner, (Drawable)localObject1), paramInt);
+            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new dwv(this, paramAIOAnimationConatiner, (Drawable)localObject1), paramInt);
           }
         }
         else if ((j < m) && (i >= j))
@@ -403,7 +403,7 @@ public class AioAnimationDetector
             {
               a(paramQQAppInterface, paramChatMessage, 1, 2, (AioAnimationRule)localObject1);
               a(paramQQAppInterface, paramChatMessage, (AioAnimationRule)localObject1);
-              this.jdField_a_of_type_AndroidOsHandler.postDelayed(new eby(this, paramAIOAnimationConatiner, i, paramChatMessage), paramInt + 0);
+              this.jdField_a_of_type_AndroidOsHandler.postDelayed(new dww(this, paramAIOAnimationConatiner, i, paramChatMessage), paramInt + 0);
             }
             if (QLog.isColorLevel()) {
               QLog.d(jdField_a_of_type_JavaLangString, 2, "detect (M == Y) =======>  egg_jumper animation ,Y=" + m + ",crazyModeEnable=" + ((AioAnimationRule)localObject1).jdField_a_of_type_Boolean);
@@ -432,14 +432,14 @@ public class AioAnimationDetector
           localObject2 = (AioAnimationRule.JumpImage)((AioAnimationRule)localObject1).jdField_b_of_type_JavaUtilArrayList.get(k);
           localObject2 = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject2);
           int i1 = (k + i) * 800;
-          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ebz(this, paramAIOAnimationConatiner, (Drawable)localObject2, i1), paramInt + j + i1);
+          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new dwx(this, paramAIOAnimationConatiner, (Drawable)localObject2, i1), paramInt + j + i1);
           k += 1;
         }
       }
       localObject2 = (AioAnimationRule.JumpImage)((AioAnimationRule)localObject1).jdField_b_of_type_JavaUtilArrayList.get(0);
       localObject2 = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject2);
       k = i * 800;
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new eca(this, paramAIOAnimationConatiner, (Drawable)localObject2, k), paramInt + j + k);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new dwy(this, paramAIOAnimationConatiner, (Drawable)localObject2, k), paramInt + j + k);
       i += 1;
       break label801;
       break label63;
@@ -452,7 +452,7 @@ public class AioAnimationDetector
         {
           a(paramQQAppInterface, paramChatMessage, 1, 2, (AioAnimationRule)localObject1);
           a(paramQQAppInterface, paramChatMessage, (AioAnimationRule)localObject1);
-          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ecb(this, paramAIOAnimationConatiner, i, paramChatMessage), paramInt + 0);
+          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new dwz(this, paramAIOAnimationConatiner, i, paramChatMessage), paramInt + 0);
         }
         if (QLog.isColorLevel()) {
           QLog.d(jdField_a_of_type_JavaLangString, 2, "detect (M > Y) =======>  egg_jumper animation ,Y=" + m + ",crazyModeEnable=" + ((AioAnimationRule)localObject1).jdField_a_of_type_Boolean);
@@ -474,14 +474,14 @@ public class AioAnimationDetector
             localObject2 = (AioAnimationRule.JumpImage)((AioAnimationRule)localObject1).jdField_b_of_type_JavaUtilArrayList.get(j);
             localObject2 = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject2);
             m = j * 800;
-            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ecc(this, paramAIOAnimationConatiner, (Drawable)localObject2, m), paramInt + i + m);
+            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new dxa(this, paramAIOAnimationConatiner, (Drawable)localObject2, m), paramInt + i + m);
             j += 1;
           }
           break label63;
         }
         localObject1 = (AioAnimationRule.JumpImage)((AioAnimationRule)localObject1).jdField_b_of_type_JavaUtilArrayList.get(0);
         localObject1 = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject1);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ebt(this, paramAIOAnimationConatiner, (Drawable)localObject1), paramInt + i);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new dwr(this, paramAIOAnimationConatiner, (Drawable)localObject1), paramInt + i);
         break label63;
         if (QLog.isColorLevel()) {
           QLog.d(jdField_a_of_type_JavaLangString, 2, "detect (X <= M < Y) ======>  egg_combo animation, checkCombo= " + paramBoolean2);
@@ -491,7 +491,7 @@ public class AioAnimationDetector
         }
         a(paramQQAppInterface, paramChatMessage, 1, 2, (AioAnimationRule)localObject1);
         a(paramQQAppInterface, paramChatMessage, (AioAnimationRule)localObject1);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ebu(this, paramAIOAnimationConatiner, i, paramChatMessage), 0 + paramInt);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new dws(this, paramAIOAnimationConatiner, i, paramChatMessage), 0 + paramInt);
         break label63;
         break;
       }

@@ -1,25 +1,33 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
 public class duj
-  extends TroopObserver
+  extends WebChromeClient
 {
-  public duj(TroopAssistantActivity paramTroopAssistantActivity) {}
+  private duj(UpgradeDetailActivity paramUpgradeDetailActivity) {}
   
-  protected void a(int paramInt, byte paramByte, String paramString)
+  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
-    if (paramInt == 6) {
-      if (paramByte == 0) {
-        this.a.a.sendEmptyMessage(1);
-      }
+    super.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
+    paramGeolocationPermissionsCallback.invoke(paramString, true, false);
+  }
+  
+  public void onProgressChanged(WebView paramWebView, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "onProgressChanged: " + paramInt + "%");
     }
-    while ((paramInt != 2) || (paramByte != 0)) {
-      return;
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "onReceivedTitle:" + paramString);
     }
-    TroopAssistantManager.a().b(paramString, this.a.b);
-    this.a.h();
+    this.a.setTitle(paramString);
   }
 }
 

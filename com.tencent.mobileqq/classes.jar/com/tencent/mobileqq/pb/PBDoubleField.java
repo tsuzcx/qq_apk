@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.pb;
 
-import java.io.IOException;
-
 public final class PBDoubleField
   extends PBPrimitiveField<Double>
 {
@@ -48,14 +46,12 @@ public final class PBDoubleField
   }
   
   public void readFrom(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException
   {
     this.value = paramCodedInputStreamMicro.readDouble();
     setHasFlag(true);
   }
   
   protected Double readFromDirectly(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException
   {
     return Double.valueOf(paramCodedInputStreamMicro.readDouble());
   }
@@ -72,7 +68,6 @@ public final class PBDoubleField
   }
   
   public void writeTo(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt)
-    throws IOException
   {
     if (has()) {
       paramCodedOutputStreamMicro.writeDouble(paramInt, this.value);
@@ -80,7 +75,6 @@ public final class PBDoubleField
   }
   
   protected void writeToDirectly(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt, Double paramDouble)
-    throws IOException
   {
     paramCodedOutputStreamMicro.writeDouble(paramInt, paramDouble.doubleValue());
   }

@@ -10,7 +10,7 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ListAdapter;
-import iar;
+import hvx;
 import java.util.ArrayList;
 
 public class ExpandableListView
@@ -94,12 +94,12 @@ public class ExpandableListView
     paramContext.a();
   }
   
-  private long a(iar paramiar)
+  private long a(hvx paramhvx)
   {
-    if (paramiar.f == 1) {
-      return this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.getChildId(paramiar.c, paramiar.d);
+    if (paramhvx.f == 1) {
+      return this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.getChildId(paramhvx.c, paramhvx.d);
     }
-    return this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.getGroupId(paramiar.c);
+    return this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.getGroupId(paramhvx.c);
   }
   
   private Drawable a(ExpandableListConnector.PositionMetadata paramPositionMetadata)
@@ -107,7 +107,7 @@ public class ExpandableListView
     int i2 = 1;
     int i3 = 0;
     Drawable localDrawable;
-    if (paramPositionMetadata.jdField_a_of_type_Iar.f == 2)
+    if (paramPositionMetadata.jdField_a_of_type_Hvx.f == 2)
     {
       localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
       if ((localDrawable != null) && (localDrawable.isStateful()))
@@ -138,7 +138,7 @@ public class ExpandableListView
     {
       localDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
       if ((localDrawable != null) && (localDrawable.isStateful())) {
-        if (paramPositionMetadata.jdField_a_of_type_Iar.e != paramPositionMetadata.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata.c) {
+        if (paramPositionMetadata.jdField_a_of_type_Hvx.e != paramPositionMetadata.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata.c) {
           break label152;
         }
       }
@@ -209,8 +209,8 @@ public class ExpandableListView
   
   public int a(long paramLong)
   {
-    ExpandableListConnector.PositionMetadata localPositionMetadata = this.jdField_a_of_type_ComTencentWidgetExpandableListConnector.a(iar.a(paramLong));
-    int i1 = localPositionMetadata.jdField_a_of_type_Iar.e;
+    ExpandableListConnector.PositionMetadata localPositionMetadata = this.jdField_a_of_type_ComTencentWidgetExpandableListConnector.a(hvx.a(paramLong));
+    int i1 = localPositionMetadata.jdField_a_of_type_Hvx.e;
     localPositionMetadata.a();
     return d(i1);
   }
@@ -222,11 +222,11 @@ public class ExpandableListView
     }
     paramInt = c(paramInt);
     ExpandableListConnector.PositionMetadata localPositionMetadata = this.jdField_a_of_type_ComTencentWidgetExpandableListConnector.a(paramInt);
-    iar localiar = localPositionMetadata.jdField_a_of_type_Iar;
+    hvx localhvx = localPositionMetadata.jdField_a_of_type_Hvx;
     localPositionMetadata.a();
-    paramLong = a(localiar);
-    long l1 = localiar.a();
-    localiar.a();
+    paramLong = a(localhvx);
+    long l1 = localhvx.a();
+    localhvx.a();
     return new ExpandableListView.ExpandableListContextMenuInfo(paramView, l1, paramLong);
   }
   
@@ -247,7 +247,7 @@ public class ExpandableListView
     {
       int i1 = c(paramInt);
       ExpandableListConnector.PositionMetadata localPositionMetadata = this.jdField_a_of_type_ComTencentWidgetExpandableListConnector.a(i1);
-      if ((localPositionMetadata.jdField_a_of_type_Iar.f == 1) || ((localPositionMetadata.a()) && (localPositionMetadata.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata.c != localPositionMetadata.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata.jdField_b_of_type_Int)))
+      if ((localPositionMetadata.jdField_a_of_type_Hvx.f == 1) || ((localPositionMetadata.a()) && (localPositionMetadata.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata.c != localPositionMetadata.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata.jdField_b_of_type_Int)))
       {
         Drawable localDrawable = this.jdField_g_of_type_AndroidGraphicsDrawableDrawable;
         if (localDrawable != null)
@@ -265,8 +265,8 @@ public class ExpandableListView
   
   public boolean a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    iar localiar = iar.a(paramInt1, paramInt2);
-    ExpandableListConnector.PositionMetadata localPositionMetadata2 = this.jdField_a_of_type_ComTencentWidgetExpandableListConnector.a(localiar);
+    hvx localhvx = hvx.a(paramInt1, paramInt2);
+    ExpandableListConnector.PositionMetadata localPositionMetadata2 = this.jdField_a_of_type_ComTencentWidgetExpandableListConnector.a(localhvx);
     ExpandableListConnector.PositionMetadata localPositionMetadata1 = localPositionMetadata2;
     if (localPositionMetadata2 == null)
     {
@@ -274,28 +274,28 @@ public class ExpandableListView
         return false;
       }
       c(paramInt1);
-      localPositionMetadata2 = this.jdField_a_of_type_ComTencentWidgetExpandableListConnector.a(localiar);
+      localPositionMetadata2 = this.jdField_a_of_type_ComTencentWidgetExpandableListConnector.a(localhvx);
       localPositionMetadata1 = localPositionMetadata2;
       if (localPositionMetadata2 == null) {
         throw new IllegalStateException("Could not find child");
       }
     }
-    super.setSelection(d(localPositionMetadata1.jdField_a_of_type_Iar.e));
-    localiar.a();
+    super.setSelection(d(localPositionMetadata1.jdField_a_of_type_Hvx.e));
+    localhvx.a();
     localPositionMetadata1.a();
     return true;
   }
   
   public boolean a(int paramInt, boolean paramBoolean)
   {
-    ExpandableListConnector.PositionMetadata localPositionMetadata = this.jdField_a_of_type_ComTencentWidgetExpandableListConnector.a(iar.a(2, paramInt, -1, -1));
+    ExpandableListConnector.PositionMetadata localPositionMetadata = this.jdField_a_of_type_ComTencentWidgetExpandableListConnector.a(hvx.a(2, paramInt, -1, -1));
     boolean bool = this.jdField_a_of_type_ComTencentWidgetExpandableListConnector.b(localPositionMetadata);
     if (this.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupExpandListener != null) {
       this.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupExpandListener.a(paramInt);
     }
     if (paramBoolean)
     {
-      int i1 = localPositionMetadata.jdField_a_of_type_Iar.e + k();
+      int i1 = localPositionMetadata.jdField_a_of_type_Hvx.e + k();
       b(this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.getChildrenCount(paramInt) + i1, i1);
     }
     localPositionMetadata.a();
@@ -322,7 +322,7 @@ public class ExpandableListView
     }
     paramInt = c(paramInt);
     ExpandableListConnector.PositionMetadata localPositionMetadata = this.jdField_a_of_type_ComTencentWidgetExpandableListConnector.a(paramInt);
-    long l1 = localPositionMetadata.jdField_a_of_type_Iar.a();
+    long l1 = localPositionMetadata.jdField_a_of_type_Hvx.a();
     localPositionMetadata.a();
     return l1;
   }
@@ -348,10 +348,10 @@ public class ExpandableListView
   boolean c(View paramView, int paramInt, long paramLong)
   {
     ExpandableListConnector.PositionMetadata localPositionMetadata = this.jdField_a_of_type_ComTencentWidgetExpandableListConnector.a(paramInt);
-    paramLong = a(localPositionMetadata.jdField_a_of_type_Iar);
-    if (localPositionMetadata.jdField_a_of_type_Iar.f == 2)
+    paramLong = a(localPositionMetadata.jdField_a_of_type_Hvx);
+    if (localPositionMetadata.jdField_a_of_type_Hvx.f == 2)
     {
-      if ((this.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupClickListener != null) && (this.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupClickListener.a(this, paramView, localPositionMetadata.jdField_a_of_type_Iar.c, paramLong)))
+      if ((this.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupClickListener != null) && (this.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupClickListener.a(this, paramView, localPositionMetadata.jdField_a_of_type_Hvx.c, paramLong)))
       {
         localPositionMetadata.a();
         return true;
@@ -361,7 +361,7 @@ public class ExpandableListView
         this.jdField_a_of_type_ComTencentWidgetExpandableListConnector.a(localPositionMetadata);
         playSoundEffect(0);
         if (this.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupCollapseListener != null) {
-          this.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupCollapseListener.a(localPositionMetadata.jdField_a_of_type_Iar.c);
+          this.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupCollapseListener.a(localPositionMetadata.jdField_a_of_type_Hvx.c);
         }
       }
     }
@@ -372,16 +372,16 @@ public class ExpandableListView
       this.jdField_a_of_type_ComTencentWidgetExpandableListConnector.b(localPositionMetadata);
       playSoundEffect(0);
       if (this.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupExpandListener != null) {
-        this.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupExpandListener.a(localPositionMetadata.jdField_a_of_type_Iar.c);
+        this.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupExpandListener.a(localPositionMetadata.jdField_a_of_type_Hvx.c);
       }
-      paramInt = localPositionMetadata.jdField_a_of_type_Iar.c;
-      int i1 = localPositionMetadata.jdField_a_of_type_Iar.e + k();
+      paramInt = localPositionMetadata.jdField_a_of_type_Hvx.c;
+      int i1 = localPositionMetadata.jdField_a_of_type_Hvx.e + k();
       b(this.jdField_a_of_type_AndroidWidgetExpandableListAdapter.getChildrenCount(paramInt) + i1, i1);
       break;
       if (this.jdField_a_of_type_ComTencentWidgetExpandableListView$OnChildClickListener != null)
       {
         playSoundEffect(0);
-        return this.jdField_a_of_type_ComTencentWidgetExpandableListView$OnChildClickListener.a(this, paramView, localPositionMetadata.jdField_a_of_type_Iar.c, localPositionMetadata.jdField_a_of_type_Iar.d, paramLong);
+        return this.jdField_a_of_type_ComTencentWidgetExpandableListView$OnChildClickListener.a(this, paramView, localPositionMetadata.jdField_a_of_type_Hvx.c, localPositionMetadata.jdField_a_of_type_Hvx.d, paramLong);
       }
     }
   }
@@ -395,7 +395,7 @@ public class ExpandableListView
     return bool;
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
     if ((this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
@@ -472,9 +472,9 @@ public class ExpandableListView
     } while (i12 > i10);
     Object localObject = this.jdField_a_of_type_ComTencentWidgetExpandableListConnector.a(i5);
     int i2 = i1;
-    if (((ExpandableListConnector.PositionMetadata)localObject).jdField_a_of_type_Iar.f != i1)
+    if (((ExpandableListConnector.PositionMetadata)localObject).jdField_a_of_type_Hvx.f != i1)
     {
-      if (((ExpandableListConnector.PositionMetadata)localObject).jdField_a_of_type_Iar.f != 1) {
+      if (((ExpandableListConnector.PositionMetadata)localObject).jdField_a_of_type_Hvx.f != 1) {
         break label461;
       }
       if (this.n == -1)
@@ -491,7 +491,7 @@ public class ExpandableListView
         label338:
         localRect.left += getPaddingLeft();
         localRect.right += getPaddingLeft();
-        i2 = ((ExpandableListConnector.PositionMetadata)localObject).jdField_a_of_type_Iar.f;
+        i2 = ((ExpandableListConnector.PositionMetadata)localObject).jdField_a_of_type_Hvx.f;
       }
     }
     else if (localRect.left != localRect.right)
@@ -626,10 +626,10 @@ public class ExpandableListView
   
   public void setSelectedGroup(int paramInt)
   {
-    iar localiar = iar.a(paramInt);
-    ExpandableListConnector.PositionMetadata localPositionMetadata = this.jdField_a_of_type_ComTencentWidgetExpandableListConnector.a(localiar);
-    localiar.a();
-    super.setSelection(d(localPositionMetadata.jdField_a_of_type_Iar.e));
+    hvx localhvx = hvx.a(paramInt);
+    ExpandableListConnector.PositionMetadata localPositionMetadata = this.jdField_a_of_type_ComTencentWidgetExpandableListConnector.a(localhvx);
+    localhvx.a();
+    super.setSelection(d(localPositionMetadata.jdField_a_of_type_Hvx.e));
     localPositionMetadata.a();
   }
 }

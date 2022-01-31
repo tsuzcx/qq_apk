@@ -1,25 +1,57 @@
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
-import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicSave;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 public class anrr
-  implements ProgressPieDrawable.OnProgressListener
 {
-  public anrr(EditPicSave paramEditPicSave) {}
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private HashMap<String, anrs> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable)
+  public anrr(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditPicSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+  }
+  
+  public anrs a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, "AAShare.getPreprocessor in valid param");
+      }
+      return null;
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    {
+      paramString = (anrs)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      return paramString;
     }
   }
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
+  public void a(String paramString, anrs paramanrs)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramanrs == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, "AAShare.setPreprocessor in valid param");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, new Object[] { "AAShare.setPreprocessor app=", paramString });
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramanrs);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anrr
  * JD-Core Version:    0.7.0.1
  */

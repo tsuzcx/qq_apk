@@ -1,31 +1,24 @@
-import com.tencent.biz.qqstory.base.QQStoryBanInfo;
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class nnl
-  extends QQStoryObserver
 {
-  public nnl(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  public int a;
+  public long a;
+  public String a;
+  public HashMap<String, Long> a;
+  public int b;
+  public String b;
   
-  public void a(boolean paramBoolean, QQStoryBanInfo paramQQStoryBanInfo)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MyVideoVisiblePersonPageView", 2, "onGetVideoReaderConfig: isSuccess " + paramBoolean + ", QQStoryBanInfo = " + paramQQStoryBanInfo);
+    if (this.a != null) {
+      this.a.clear();
     }
-    if (paramBoolean)
-    {
-      if (paramQQStoryBanInfo != null) {
-        this.a.a(paramQQStoryBanInfo.a);
-      }
-      return;
-    }
-    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nnl
  * JD-Core Version:    0.7.0.1
  */

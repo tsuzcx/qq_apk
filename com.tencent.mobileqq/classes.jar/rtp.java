@@ -1,21 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-
-public class rtp
-  implements View.OnTouchListener
+class rtp
+  extends pdi
 {
-  public rtp(BaseChatPie paramBaseChatPie) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  rtp(rto paramrto, String paramString)
   {
-    return true;
+    super(paramString);
+  }
+  
+  public void a(pdc parampdc)
+  {
+    parampdc.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rtp
  * JD-Core Version:    0.7.0.1
  */

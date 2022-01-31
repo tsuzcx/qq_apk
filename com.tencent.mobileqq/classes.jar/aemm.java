@@ -1,28 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearpeople.mytab.NearbyMineHelper;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class aemm
-  implements Runnable
+  extends bhry
 {
-  public aemm(NearbyProxy paramNearbyProxy) {}
+  public aemm(VisitorsActivity paramVisitorsActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyProxy", 2, "receive msg_notify_new_msg in Main,updateNearbyNumAppinfo start..");
+    if ((paramAnimation == this.a.b) && (this.a.d)) {
+      this.a.centerView.setText("");
     }
-    ((RedTouchManager)this.a.a.getManager(35)).a = true;
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = NearbyMineHelper.a(this.a.a, true);
-    this.a.a(4102, new Object[] { localAppInfo });
+    this.a.centerView.clearAnimation();
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (paramAnimation == this.a.a) {
+      this.a.centerView.setText(2131694709);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemm
  * JD-Core Version:    0.7.0.1
  */

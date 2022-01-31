@@ -1,144 +1,65 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.media.MediaMetadataRetriever;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.IGetVideoCallback;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public final class adhi
-  implements Runnable
+public class adhi
+  extends WtloginObserver
 {
-  public adhi(String paramString, int paramInt1, boolean paramBoolean, FileManagerUtil.IGetVideoCallback paramIGetVideoCallback, int paramInt2, int paramInt3) {}
+  public adhi(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void run()
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    MediaMetadataRetriever localMediaMetadataRetriever;
-    if (Build.VERSION.SDK_INT >= 10) {
-      localMediaMetadataRetriever = new MediaMetadataRetriever();
+    if (this.a.isFinishing()) {
+      return;
     }
-    for (;;)
+    if ((paramInt == 0) && (paramDevlockInfo != null))
     {
-      try
+      if (QLog.isColorLevel())
       {
-        localMediaMetadataRetriever.setDataSource(this.jdField_a_of_type_JavaLangString);
-        long l = this.jdField_a_of_type_Int;
-        if (this.jdField_a_of_type_Int <= 0) {
-          l = 5000000L;
-        }
-        localBitmap1 = localMediaMetadataRetriever.getFrameAtTime(l, 2);
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus ret = " + paramInt);
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.ProtectIntro:" + paramDevlockInfo.ProtectIntro + "  info.MbGuideType:" + paramDevlockInfo.MbGuideType);
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideMsg:" + paramDevlockInfo.MbGuideMsg);
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
       }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        Bitmap localBitmap1;
-        localIllegalArgumentException = localIllegalArgumentException;
-        try
-        {
-          localException5.release();
-          localObject1 = null;
-        }
-        catch (Exception localException1)
-        {
-          localObject2 = null;
-        }
-        continue;
+      aqax.a().a(paramDevlockInfo.TransferInfo);
+      LoginInfoActivity.a(this.a, paramDevlockInfo);
+      LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+      LoginInfoActivity.b(this.a, LoginInfoActivity.a(this.a));
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus ret = " + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
       }
-      catch (RuntimeException localRuntimeException)
-      {
-        localRuntimeException = localRuntimeException;
-        try
-        {
-          localException5.release();
-          localObject3 = null;
-        }
-        catch (Exception localException2)
-        {
-          localObject4 = null;
-        }
-        continue;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        localOutOfMemoryError = localOutOfMemoryError;
-        try
-        {
-          localException5.release();
-          localObject5 = null;
-        }
-        catch (Exception localException3)
-        {
-          localObject6 = null;
-        }
-        continue;
-      }
-      finally {}
-      try
-      {
-        localMediaMetadataRetriever.release();
-        if (localBitmap1 == null) {
-          return;
-        }
-      }
-      catch (Exception localException5)
-      {
-        continue;
-      }
-      try
-      {
-        Object localObject1;
-        Object localObject2;
-        Object localObject3;
-        Object localObject4;
-        Object localObject5;
-        Object localObject6;
-        localException5.release();
-        label138:
-        throw localBitmap2;
-        if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$IGetVideoCallback != null))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$IGetVideoCallback.a(localBitmap2);
-          return;
-        }
-        float f;
-        label193:
-        Matrix localMatrix;
-        if (localBitmap2.getWidth() < localBitmap2.getHeight())
-        {
-          f = this.b / localBitmap2.getWidth();
-          localMatrix = new Matrix();
-          localMatrix.setScale(f, f);
-        }
-        for (;;)
-        {
-          try
-          {
-            localBitmap3 = FileManagerUtil.a(localMatrix, localBitmap2, this.b, this.c);
-            if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$IGetVideoCallback == null) {
-              break;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$IGetVideoCallback.a(localBitmap3);
-            return;
-          }
-          catch (Exception localException4)
-          {
-            Bitmap localBitmap3;
-            QLog.e("FileManagerUtil<FileAssistant>", 1, "transfrom bitmap fail, Exception:" + localException4.toString());
-          }
-          f = this.c / localBitmap3.getHeight();
-          break label193;
-          Object localObject7 = null;
-        }
-      }
-      catch (Exception localException6)
-      {
-        break label138;
+      if (paramDevlockInfo == null) {
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "OnCheckDevLockStatus DevlockInfo is null");
       }
     }
+    LoginInfoActivity.e(this.a);
+    paramDevlockInfo = this.a.getString(2131692204);
+    paramWUserSigInfo = paramDevlockInfo;
+    if (paramErrMsg != null)
+    {
+      paramWUserSigInfo = paramDevlockInfo;
+      if (!TextUtils.isEmpty(paramErrMsg.getMessage())) {
+        paramWUserSigInfo = paramErrMsg.getMessage();
+      }
+    }
+    QQToast.a(this.a.getApplicationContext(), paramWUserSigInfo, 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adhi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,49 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
+import com.tencent.mobileqq.util.FaceDecoder;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollToTopListener;
+import com.tencent.widget.AbsListView;
 
 public class efv
-  implements DialogInterface.OnClickListener
+  implements SlideDetectListView.OnScrollToTopListener
 {
-  public efv(StructingMsgItemBuilder paramStructingMsgItemBuilder, Context paramContext, ChatMessage paramChatMessage) {}
+  public efv(NotificationView paramNotificationView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a() {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    ChatActivityFacade.a(StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder), this.jdField_a_of_type_AndroidContentContext, StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder), this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+    if ((NotificationView.a(this.a) != null) && (paramInt == 0) && (NotificationView.a(this.a) == NotificationView.a(this.a).getCount())) {
+      NotificationView.b(this.a);
+    }
+    NotificationView.a(this.a, paramInt);
+    if (paramInt != 0)
+    {
+      NotificationView.a(this.a).c();
+      NotificationView.a(this.a).a();
+    }
+    while (!NotificationView.a(this.a).a()) {
+      return;
+    }
+    NotificationView.a(this.a).b();
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    NotificationView.b(this.a, paramInt1 + paramInt2 - 1);
+    if (paramInt1 > 1) {
+      GroupSystemMsgController.a().a();
+    }
+    while (!this.a.b) {
+      return;
+    }
+    GroupSystemMsgController.a().f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     efv
  * JD-Core Version:    0.7.0.1
  */

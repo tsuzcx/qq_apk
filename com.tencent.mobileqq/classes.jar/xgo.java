@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import android.graphics.Bitmap;
+import android.view.animation.Animation;
 
-public class xgo
-  implements Runnable
+public abstract interface xgo
 {
-  public xgo(QWRedConfig paramQWRedConfig) {}
+  public abstract void a(Animation paramAnimation);
   
-  public void run()
-  {
-    synchronized (QWRedConfig.access$000(this.a))
-    {
-      QWalletTools.a(this.a, QWRedConfig.access$100(this.a));
-      return;
-    }
-  }
+  public abstract Bitmap b();
+  
+  public abstract void b(Animation paramAnimation);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgo
  * JD-Core Version:    0.7.0.1
  */

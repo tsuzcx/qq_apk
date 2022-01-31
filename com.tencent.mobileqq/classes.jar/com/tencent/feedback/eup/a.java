@@ -7,7 +7,6 @@ import com.tencent.bugly.proguard.p;
 import com.tencent.bugly.proguard.x;
 import com.tencent.bugly.proguard.z;
 import java.io.File;
-import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -40,13 +39,7 @@ public final class a
     int i;
     if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
     {
-      localObject1 = ((File)localObject1).listFiles(new FilenameFilter()
-      {
-        public final boolean accept(File paramAnonymousFile, String paramAnonymousString)
-        {
-          return paramAnonymousString.endsWith("so");
-        }
-      });
+      localObject1 = ((File)localObject1).listFiles(new a.1(this));
       if (localObject1 != null)
       {
         j = localObject1.length;

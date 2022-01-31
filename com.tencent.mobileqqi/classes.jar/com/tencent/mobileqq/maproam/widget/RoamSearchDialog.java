@@ -19,12 +19,12 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.XListView;
-import ggp;
-import ggq;
-import ggr;
-import ggs;
-import ggv;
-import ggx;
+import gcd;
+import gce;
+import gcf;
+import gcg;
+import gcj;
+import gcl;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +53,7 @@ public class RoamSearchDialog
   public RoamSearchDialog.OnRoamResultObserver a;
   public RoamSearchDialog.OnSearchResultItemClick a;
   public XListView a;
-  public ggx a;
+  public gcl a;
   public List a;
   public String b;
   public int k = 1;
@@ -74,7 +74,7 @@ public class RoamSearchDialog
     requestWindowFeature(1);
     getWindow().setSoftInputMode(36);
     getWindow().setBackgroundDrawable(new ColorDrawable());
-    setContentView(2130903277);
+    setContentView(2130903279);
     paramContext = getWindow().getAttributes();
     paramContext.x = 0;
     paramContext.y = 0;
@@ -91,10 +91,10 @@ public class RoamSearchDialog
   {
     this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131231402));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_Ggx = new ggx(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ggx);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new ggp(this));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new ggq(this));
+    this.jdField_a_of_type_Gcl = new gcl(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Gcl);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new gcd(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new gce(this));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231403));
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(2131562494);
@@ -102,27 +102,27 @@ public class RoamSearchDialog
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131233085));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131233087));
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(15) });
     this.jdField_a_of_type_AndroidWidgetEditText.setHint(2131563055);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new ggr(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new gcf(this));
     this.jdField_a_of_type_AndroidWidgetEditText.setImeOptions(3);
-    ggv localggv = new ggv(this, null);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(localggv);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(localggv);
+    gcj localgcj = new gcj(this, null);
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(localgcj);
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(localgcj);
     this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131233086));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131233088));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
   }
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131233084));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131233086));
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
@@ -150,12 +150,12 @@ public class RoamSearchDialog
   
   public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetXListView.a() != this.jdField_a_of_type_Ggx) || (this.jdField_a_of_type_Ggx.getItemViewType(paramInt) == 1)) {}
+    if ((this.jdField_a_of_type_ComTencentWidgetXListView.a() != this.jdField_a_of_type_Gcl) || (this.jdField_a_of_type_Gcl.getItemViewType(paramInt) == 1)) {}
     LocationDetail localLocationDetail;
     do
     {
       return;
-      localLocationDetail = (LocationDetail)this.jdField_a_of_type_Ggx.getItem(paramInt);
+      localLocationDetail = (LocationDetail)this.jdField_a_of_type_Gcl.getItem(paramInt);
       this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog$OnSearchResultItemClick.a(paramAdapterView, paramView, paramInt, localLocationDetail);
     } while (!QLog.isColorLevel());
     QLog.i(jdField_a_of_type_JavaLangString, 2, "current click location, lat = " + localLocationDetail.jdField_a_of_type_Double + ", lon = " + localLocationDetail.jdField_b_of_type_Double);
@@ -174,7 +174,7 @@ public class RoamSearchDialog
     if (paramInt2 == 1) {
       this.jdField_a_of_type_JavaUtilList.clear();
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new ggs(this, paramString1, paramString2, paramInt1, paramInt2));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new gcg(this, paramString1, paramString2, paramInt1, paramInt2));
   }
   
   /* Error */
@@ -337,12 +337,12 @@ public class RoamSearchDialog
     //   343: invokevirtual 318	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   346: invokestatic 321	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   349: aload_1
-    //   350: new 506	ggt
+    //   350: new 506	gch
     //   353: dup
     //   354: aload_0
     //   355: iload_3
     //   356: aload 6
-    //   358: invokespecial 509	ggt:<init>	(Lcom/tencent/mobileqq/maproam/widget/RoamSearchDialog;ILjava/lang/String;)V
+    //   358: invokespecial 509	gch:<init>	(Lcom/tencent/mobileqq/maproam/widget/RoamSearchDialog;ILjava/lang/String;)V
     //   361: invokevirtual 513	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   364: pop
     //   365: return
@@ -446,12 +446,12 @@ public class RoamSearchDialog
     //   600: istore_3
     //   601: goto -201 -> 400
     //   604: aload_1
-    //   605: new 570	ggu
+    //   605: new 570	gci
     //   608: dup
     //   609: aload_0
     //   610: aload 6
     //   612: iload 4
-    //   614: invokespecial 573	ggu:<init>	(Lcom/tencent/mobileqq/maproam/widget/RoamSearchDialog;Ljava/util/List;I)V
+    //   614: invokespecial 573	gci:<init>	(Lcom/tencent/mobileqq/maproam/widget/RoamSearchDialog;Ljava/util/List;I)V
     //   617: invokevirtual 513	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   620: pop
     //   621: return
@@ -509,9 +509,9 @@ public class RoamSearchDialog
   {
     switch (paramView.getId())
     {
-    case 2131233085: 
+    case 2131233087: 
     default: 
-    case 2131233086: 
+    case 2131233088: 
       do
       {
         return;

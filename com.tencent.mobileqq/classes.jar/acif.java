@@ -1,13 +1,15 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
-public class acif
-  extends RecyclerView.ViewHolder
+class acif
+  implements anxr
 {
-  public acif(ExtendFriendGroupFragment paramExtendFriendGroupFragment, View paramView)
+  acif(acie paramacie, int paramInt1, int paramInt2) {}
+  
+  public void a()
   {
-    super(paramView);
+    this.jdField_a_of_type_Acie.a.a.setOnMeasureListener(null);
+    this.jdField_a_of_type_Acie.a.a.setSelectionFromBottom(this.jdField_a_of_type_Int, this.b);
   }
 }
 

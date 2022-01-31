@@ -1,21 +1,18 @@
-import com.tencent.plato.PlatoLoadEvent;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import com.tencent.qphone.base.util.QLog;
 
-public final class alka
-  implements Runnable
+class alka
+  extends alkf
 {
-  public alka(String paramString1, String paramString2) {}
+  alka(aljx paramaljx) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    PlatoLoadEvent localPlatoLoadEvent = PlatoLoadEvent.a(0, this.a, this.b);
-    Dispatchers.get().dispatch(localPlatoLoadEvent);
+    QLog.d("ApolloGameUtil", 2, " onFailure  the http retcode = " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alka
  * JD-Core Version:    0.7.0.1
  */

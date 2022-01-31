@@ -1,53 +1,27 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.mobileqq.magicface.drawable.PngGifEngine;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.pb.troop.bindgame.GCBindGroup.GCBindGroupSsoServerRsp;
 import com.tencent.qphone.base.util.QLog;
 
 public class aedq
-  implements Runnable
+  extends nac
 {
-  public aedq(PngGifEngine paramPngGifEngine) {}
+  public aedq(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngGifEngine", 2, "func run begins.");
-    }
-    Object localObject1 = this.a.a();
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
+    {
+      paramBundle = new GCBindGroup.GCBindGroupSsoServerRsp();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.a.a(paramBundle);
       return;
     }
-    long l2 = SystemClock.uptimeMillis();
-    Object localObject2 = PngGifEngine.a((String)localObject1);
-    if (QLog.isColorLevel()) {
-      QLog.d("PngGifEngine", 2, "func run, bitmap:" + localObject2);
-    }
-    localObject1 = this.a;
-    if (localObject2 != null) {}
-    for (;;)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      long l1;
-      try
-      {
-        if ((!((Bitmap)localObject2).isRecycled()) && (this.a.jdField_a_of_type_AndroidOsHandler != null))
-        {
-          l1 = SystemClock.uptimeMillis();
-          l2 += this.a.jdField_a_of_type_Aedr.b;
-          localObject2 = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, localObject2);
-          if (l1 > l2) {
-            this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
-          }
-        }
-        else
-        {
-          return;
-        }
-      }
-      finally {}
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, l2 - l1);
+      QLog.e("Q.troopinfo", 1, "parse game bind status failed");
     }
   }
 }

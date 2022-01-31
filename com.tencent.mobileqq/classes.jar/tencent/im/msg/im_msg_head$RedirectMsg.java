@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBFixed32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_msg_head$RedirectMsg
-  extends MessageMicro
+  extends MessageMicro<RedirectMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 13, 16, 29, 32, 40 }, new String[] { "uint32_last_redirect_ip", "uint32_last_redirect_port", "uint32_redirect_ip", "uint32_redirect_port", "uint32_redirect_count" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, RedirectMsg.class);
   public final PBFixed32Field uint32_last_redirect_ip = PBField.initFixed32(0);

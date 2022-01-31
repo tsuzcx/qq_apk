@@ -1,38 +1,21 @@
-import android.os.Handler;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
-import com.tencent.mobileqq.profile.upload.task.VipBaseUpsImageUploadTask;
-import com.tencent.upload.uinterface.data.UpsImageUploadResult;
-
-public class agqe
-  extends VipBaseUpsImageUploadTask
+class agqe
+  extends baht
 {
-  public agqe(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3)
+  agqe(agps paramagps) {}
+  
+  public void a(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    super(paramLong, paramString1, paramArrayOfByte, paramString2);
+    baic.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, agps.e(this.a), paramBoolean, paramArrayOfObject);
   }
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public void b(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    switch (paramInt)
-    {
-    default: 
-    case 1001: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
-      } while (a() == null);
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a());
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
-    paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(24, a());
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage(paramVarArgs);
+    baic.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, agps.f(this.a), paramBoolean, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqe
  * JD-Core Version:    0.7.0.1
  */

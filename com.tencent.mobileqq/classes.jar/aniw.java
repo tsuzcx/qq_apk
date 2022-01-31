@@ -1,32 +1,51 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.InsetDrawable;
-import android.widget.Button;
-import com.tencent.mobileqq.utils.ViewUtils;
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class aniw
-  implements Runnable
+public class aniw
+  implements anih
 {
-  aniw(aniv paramaniv) {}
+  private aniw(anif paramanif) {}
   
-  public void run()
+  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    if ((QIMCameraCaptureUnit.a(this.a.a) != null) && (this.a.a.e != null))
+    if ((!"ScanCode".equals(paramString)) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (!paramArrayOfVariantWrapper[0].IsFunction())) {}
+    for (;;)
     {
-      int i = ViewUtils.a(7.5F);
-      InsetDrawable localInsetDrawable = new InsetDrawable(new BitmapDrawable(QIMCameraCaptureUnit.a(this.a.a)), i, i, i, i);
-      this.a.a.e.setBackgroundDrawable(localInsetDrawable);
-      this.a.a.e.setVisibility(0);
-      this.a.a.e.setEnabled(true);
-      return;
+      return false;
+      long l = this.a.a(paramArrayOfVariantWrapper[0].Copy());
+      paramString = new Intent();
+      paramString.setClassName("com.tencent.mobileqq", "com.tencent.biz.qrcode.activity.ScannerActivity");
+      paramString.putExtra("from", anif.class.getName());
+      paramString.putExtra("finishAfterSucc", true);
+      if (anif.a(this.a) != null) {}
+      try
+      {
+        BaseApplicationImpl.getApplication().unregisterReceiver(anif.a(this.a));
+        label105:
+        anif.a(this.a, null);
+        anif.a(this.a, new anix(this, l));
+        paramArrayOfVariantWrapper = new IntentFilter("com.tencent.mobileqq.ark.API.scanResultAction");
+        BaseApplicationImpl.getApplication().registerReceiver(anif.a(this.a), paramArrayOfVariantWrapper, "com.tencent.msg.permission.pushnotify", null);
+        paramArrayOfVariantWrapper = BaseActivity.sTopActivity;
+        if (paramArrayOfVariantWrapper == null) {
+          continue;
+        }
+        paramArrayOfVariantWrapper.startActivity(paramString);
+        return false;
+      }
+      catch (Exception paramArrayOfVariantWrapper)
+      {
+        break label105;
+      }
     }
-    this.a.a.e.setVisibility(8);
-    this.a.a.e.setEnabled(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aniw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,43 @@
-import com.tencent.mobileqq.statistics.FDStatsTree;
-import com.tencent.mobileqq.statistics.FDStatsTree.ResultObj;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver.5.1;
+import com.tencent.mobileqq.activity.main.MainAssistObserver.5.2;
 
 public class aifv
-  implements Comparator
+  extends ampi
 {
-  public aifv(FDStatsTree paramFDStatsTree) {}
+  aifv(aiez paramaiez) {}
   
-  public int a(FDStatsTree.ResultObj paramResultObj1, FDStatsTree.ResultObj paramResultObj2)
+  public void a()
   {
-    return paramResultObj2.a - paramResultObj1.a;
+    if (bkbq.j()) {
+      this.a.a(39, null);
+    }
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    super.a(paramInt, paramObject);
+    if (!bkbq.i()) {}
+    while (this.a.a == null) {
+      return;
+    }
+    this.a.a.runOnUiThread(new MainAssistObserver.5.2(this, paramInt, paramObject));
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    a(1, paramView);
+  }
+  
+  public void c()
+  {
+    if (!bkbq.i()) {}
+    while (this.a.a == null) {
+      return;
+    }
+    this.a.a.runOnUiThread(new MainAssistObserver.5.1(this));
   }
 }
 

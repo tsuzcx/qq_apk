@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
 
 class cex
   implements Runnable
 {
-  cex(cew paramcew) {}
+  cex(cew paramcew, String paramString) {}
   
   public void run()
   {
-    if ((ChatActivity.c(this.a.a.a) != null) && (ChatActivity.c(this.a.a.a).getParent() != null)) {
-      ((ViewGroup)ChatActivity.c(this.a.a.a).getParent()).removeView(ChatActivity.c(this.a.a.a));
+    if (Conversation.a(this.jdField_a_of_type_Cew.a) != null) {
+      Conversation.a(this.jdField_a_of_type_Cew.a).a(this.jdField_a_of_type_JavaLangString, 3000);
     }
-    ChatActivity.b(this.a.a.a, null);
   }
 }
 

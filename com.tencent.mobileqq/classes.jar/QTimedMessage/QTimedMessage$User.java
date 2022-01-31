@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class QTimedMessage$User
-  extends MessageMicro
+  extends MessageMicro<User>
 {
   public static final int GROUP_CODE = 1;
   public static final int GTALK_CODE = 2;

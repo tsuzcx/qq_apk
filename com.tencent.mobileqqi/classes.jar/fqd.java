@@ -1,10 +1,18 @@
-public class fqd
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+
+class fqd
+  implements Runnable
 {
-  public String a;
+  fqd(fqc paramfqc) {}
+  
+  public void run()
+  {
+    FMActivity.a(this.a.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fqd
  * JD-Core Version:    0.7.0.1
  */

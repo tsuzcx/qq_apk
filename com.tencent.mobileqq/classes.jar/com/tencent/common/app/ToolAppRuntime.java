@@ -1,18 +1,19 @@
 package com.tencent.common.app;
 
+import bimq;
+import bixo;
+import biyo;
+import bizm;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
 import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
 import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.armap.ArMapInterface;
-import com.tencent.mobileqq.intervideo.now.runtime.NowRunTime;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.mobileqq.imaxad.ImaxAppInterface;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
 import com.tencent.mobileqq.startup.step.InitSkin;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.VipComicHelper;
-import cooperation.qqindividuality.QQIndividualityRuntimeHelper;
-import cooperation.qqpim.QQPimPluginRuntimeHelper;
-import cooperation.qqreader.QReaderHelper;
+import cooperation.liveroom.LiveRoomHelper;
 import cooperation.qwallet.plugin.QWalletHelper;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -46,17 +47,17 @@ public class ToolAppRuntime
       return paramString;
       if ("comic_plugin.apk".equals(paramString))
       {
-        paramString = VipComicHelper.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = bimq.a(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else if ("qqreaderplugin.apk".equals(paramString))
       {
-        paramString = QReaderHelper.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = bizm.a(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else if ("qqpim_plugin.apk".equals(paramString))
       {
-        paramString = QQPimPluginRuntimeHelper.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = biyo.a(localBaseApplicationImpl, MobileQQ.processName);
       }
       else if ("module_olympic".equals(paramString))
       {
@@ -69,22 +70,12 @@ public class ToolAppRuntime
       }
       else if ("qqindividuality_plugin.apk".equals(paramString))
       {
-        paramString = QQIndividualityRuntimeHelper.a(localBaseApplicationImpl, MobileQQ.processName);
-        bool = false;
-      }
-      else if ("Now".equals(paramString))
-      {
-        paramString = new NowRunTime(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = bixo.a(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else if ("modular_web".equals(paramString))
       {
         paramString = new BrowserAppInterface(localBaseApplicationImpl, MobileQQ.processName);
-      }
-      else if ("module_armap".equals(paramString))
-      {
-        paramString = new ArMapInterface(localBaseApplicationImpl, MobileQQ.processName);
-        bool = false;
       }
       else if ("module_videofeeds".equals(paramString))
       {
@@ -93,6 +84,21 @@ public class ToolAppRuntime
       else if ("cmshowgame_module".equals(paramString))
       {
         paramString = new CmGameAppInterface(localBaseApplicationImpl, MobileQQ.processName);
+        bool = false;
+      }
+      else if ("imax".equals(paramString))
+      {
+        paramString = new ImaxAppInterface(localBaseApplicationImpl, MobileQQ.processName);
+        bool = false;
+      }
+      else if ("peak".equals(paramString))
+      {
+        paramString = new PeakAppInterface(localBaseApplicationImpl, MobileQQ.processName);
+        bool = false;
+      }
+      else if ("LiveRoomPlugin.apk".equals(paramString))
+      {
+        paramString = LiveRoomHelper.createLiveRoomRuntime(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else

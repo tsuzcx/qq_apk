@@ -1,52 +1,77 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.bubble.BubbleDiyEntity;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
+import com.tencent.qphone.base.remote.SimpleAccount;
 import java.util.List;
 
-class acbp
-  implements BusinessObserver
+public class acbp
+  implements TextWatcher
 {
-  acbp(acbg paramacbg, Bundle paramBundle1, MessengerService paramMessengerService, Bundle paramBundle2) {}
+  public acbp(AddAccountActivity paramAddAccountActivity) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramBoolean) && (paramObject != null)) {}
-    try
+    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null) {
+      AddAccountActivity.a(this.a, null);
+    }
+    String str;
+    SimpleAccount localSimpleAccount;
+    for (;;)
     {
-      if ((paramObject instanceof List))
+      return;
+      if (paramCharSequence != null)
       {
-        paramObject = (List)paramObject;
-        if (!paramObject.isEmpty())
+        str = paramCharSequence.toString();
+        if ((str == null) || (str.length() == 0) || (this.a.jdField_a_of_type_JavaUtilList == null)) {
+          break;
+        }
+        paramInt1 = 0;
+        while (paramInt1 < this.a.jdField_a_of_type_JavaUtilList.size())
         {
-          this.jdField_a_of_type_AndroidOsBundle.putString("diyText", ((BubbleDiyEntity)paramObject.get(0)).diyText);
-          this.jdField_a_of_type_AndroidOsBundle.putString("isDiy", "1");
-          this.jdField_a_of_type_AndroidOsBundle.putString("tl", ((BubbleDiyEntity)paramObject.get(0)).topLeftId);
-          this.jdField_a_of_type_AndroidOsBundle.putString("tr", ((BubbleDiyEntity)paramObject.get(0)).topRightId);
-          this.jdField_a_of_type_AndroidOsBundle.putString("bl", ((BubbleDiyEntity)paramObject.get(0)).bottomLeftId);
-          this.jdField_a_of_type_AndroidOsBundle.putString("br", ((BubbleDiyEntity)paramObject.get(0)).bottomRightId);
+          localSimpleAccount = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(paramInt1);
+          if ((localSimpleAccount != null) && (localSimpleAccount.getUin() != null)) {
+            break label110;
+          }
+          paramInt1 += 1;
         }
       }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
-        return;
-        this.jdField_a_of_type_AndroidOsBundle.putString("diyText", "");
-      }
-      return;
     }
-    catch (Exception paramObject)
+    label110:
+    if (this.a.app == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.emoji.web.MessengerService", 2, paramObject.getMessage());
+      paramCharSequence = localSimpleAccount.getUin();
+      label126:
+      if (!str.equals(paramCharSequence)) {
+        break label198;
       }
+      if ((localSimpleAccount == null) || (!localSimpleAccount.isLogined())) {
+        break label200;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("!@#ewaGbhkc$!!=");
+      this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = localSimpleAccount;
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setClearButtonVisible(false);
+      return;
+      paramCharSequence = this.a.app.b(localSimpleAccount.getUin());
+      break label126;
+      label198:
+      break;
+      label200:
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acbp
  * JD-Core Version:    0.7.0.1
  */

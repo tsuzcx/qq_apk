@@ -1,30 +1,11 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPager;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPager.RollViewPager;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
-
 public class ajrx
-  extends Handler
 {
-  public ajrx(AvatarWallViewPager paramAvatarWallViewPager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (AvatarWallViewPager.a(this.a)) {}
-    while (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount() <= 1) {
-      return;
-    }
-    paramMessage = this.a;
-    paramMessage.d += 1;
-    this.a.d %= this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(this.a.d, true);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), this.a.c);
-  }
+  public static final String a = bdzf.a(alof.aW);
+  public static final String b = alof.bf;
+  public static final String c = bdzf.a(alof.bg);
+  public static final String d = bbck.a(alof.aX);
+  public static final String e = alof.bk;
+  public static final String f = alof.br;
 }
 
 

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.HistoryChatMsgSearchKeyUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
-import eok;
+import ejw;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -85,8 +85,8 @@ public class SearchHistoryAdapter
     View localView;
     if (paramView == null)
     {
-      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130903278, null);
-      paramView = new eok(null);
+      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130903280, null);
+      paramView = new ejw(null);
       paramView.a = ((TextView)localView.findViewById(2131230976));
       localView.setTag(paramView);
       paramViewGroup = paramView;
@@ -95,7 +95,7 @@ public class SearchHistoryAdapter
     {
       paramViewGroup.a.setText(localHistoryItem.jdField_a_of_type_JavaLangString);
       return localView;
-      paramViewGroup = (eok)paramView.getTag();
+      paramViewGroup = (ejw)paramView.getTag();
       localView = paramView;
     }
   }

@@ -1,30 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class sug
-  implements DialogInterface.OnDismissListener
+class sug
+  implements View.OnClickListener
 {
-  public sug(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  sug(sue paramsue, sud paramsud) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (!GesturePWDUnlockActivity.a(this.a))
-    {
-      GesturePWDUnlockActivity.a(this.a, true);
+    azqs.b(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.a, "P_CliOper", "Pb_account_lifeservice", "", "0X8005731", "0X8005731", 0, 0, "", "", "", "");
+    azqs.b(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.a, "CliOper", "", "", "0X800642E", "0X800642E", 0, 0, String.valueOf(this.jdField_a_of_type_Sue.jdField_a_of_type_Suc.a), "", "", "");
+    if ((this.jdField_a_of_type_Sue.jdField_a_of_type_Suc == null) || (TextUtils.isEmpty(String.valueOf(this.jdField_a_of_type_Sue.jdField_a_of_type_Suc.a)))) {
       return;
     }
-    this.a.e();
-    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
-    StatisticCollector.a(this.a.getBaseContext()).a(this.a.app, this.a.app.getCurrentAccountUin(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
+    sue.a(this.jdField_a_of_type_Sue);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sug
  * JD-Core Version:    0.7.0.1
  */

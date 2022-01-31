@@ -1,70 +1,65 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.multivideo.MultiVideoDataManager.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
 
 public class rmv
-  extends CardObserver
 {
-  public rmv(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private nsz jdField_a_of_type_Nsz;
+  private nta jdField_a_of_type_Nta;
+  private rmn jdField_a_of_type_Rmn;
+  private rng jdField_a_of_type_Rng;
   
-  protected void b(boolean paramBoolean)
+  rmv(Activity paramActivity, rmn paramrmn, rng paramrng)
   {
-    boolean bool1 = true;
-    boolean bool2 = AssociatedAccountManageActivity.a(this.a).a();
-    AssociatedAccountManageActivity.a(this.a).removeMessages(8193);
-    AssociatedAccountManageActivity.a(this.a).sendEmptyMessage(8194);
-    Object localObject = AssociatedAccountManageActivity.a(this.a).obtainMessage(8195);
-    int i;
-    if (paramBoolean)
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Rmn = paramrmn;
+    this.jdField_a_of_type_Rng = paramrng;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)ors.a());
+    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    b();
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Nsz = ((nsz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(99));
+    this.jdField_a_of_type_Nta = new rmw(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Nta);
+  }
+  
+  private void b(int paramInt1, int paramInt2)
+  {
+    ThreadManager.post(new MultiVideoDataManager.1(this, paramInt1, paramInt2), 1, null, true);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Nta);
+  }
+  
+  void a(int paramInt1, int paramInt2)
+  {
+    int i = paramInt1;
+    while ((i < paramInt1 + paramInt2) && (i < this.jdField_a_of_type_Rng.a().size()))
     {
-      i = 2;
-      ((Message)localObject).arg1 = i;
-      if (!paramBoolean) {
-        break label134;
+      VideoInfo localVideoInfo = (VideoInfo)this.jdField_a_of_type_Rng.a().get(i);
+      if (localVideoInfo.p == 0) {
+        this.jdField_a_of_type_Nsz.a(localVideoInfo.a, localVideoInfo.g);
       }
-      if (!bool2) {
-        break label128;
-      }
-      i = 2131436897;
+      i += 1;
     }
-    for (;;)
-    {
-      ((Message)localObject).arg2 = i;
-      AssociatedAccountManageActivity.a(this.a).sendMessage((Message)localObject);
-      if (!paramBoolean) {
-        break label151;
-      }
-      AssociatedAccountManageActivity.a(this.a);
-      SubAccountControll.a(this.a.app, bool2);
-      return;
-      i = 1;
-      break;
-      label128:
-      i = 2131436900;
-      continue;
-      label134:
-      if (bool2) {
-        i = 2131436424;
-      } else {
-        i = 2131436425;
-      }
-    }
-    label151:
-    localObject = this.a;
-    if (!bool2) {}
-    for (paramBoolean = bool1;; paramBoolean = false)
-    {
-      AssociatedAccountManageActivity.a((AssociatedAccountManageActivity)localObject, paramBoolean);
-      return;
-    }
+    b(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rmv
  * JD-Core Version:    0.7.0.1
  */

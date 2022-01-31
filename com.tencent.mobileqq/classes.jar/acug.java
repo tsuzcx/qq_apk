@@ -1,31 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 
-class acug
-  implements Runnable
+public class acug
+  implements bhuk
 {
-  acug(acuf paramacuf) {}
+  public acug(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, bhuf parambhuf) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 0)
+    this.jdField_a_of_type_Bhuf.dismiss();
+    switch (paramInt)
     {
-      QLog.i("FileTransferHandler<FileAssistant>", 1, "Id[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]Send CCMsg, but not size and thumb, try download Pic Thumb");
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().b(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, 7);
-    }
-    while (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType != 2) {
+    default: 
       return;
     }
-    QLog.i("FileTransferHandler<FileAssistant>", 1, "Id[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]Send CCMsg, but not size and thumb, try download Video Thumb");
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "P_CliOper", "Grp_discuss", "", "0X80040ED", "0X80040ED", 0, 0, "", "", "", "");
+    azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X8006623", "0X8006623", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acug
  * JD-Core Version:    0.7.0.1
  */

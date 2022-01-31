@@ -1,32 +1,36 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyMsgManagerActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.media.MediaPlayer;
+import com.tencent.av.VideoController;
+import com.tencent.qphone.base.util.QLog;
 
 public class lfj
-  implements ActionSheet.OnButtonClickListener
+  extends lfv
 {
-  public lfj(ReadinjoyMsgManagerActivity paramReadinjoyMsgManagerActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public lfj(VideoController paramVideoController)
   {
-    switch (paramInt)
-    {
+    super(paramVideoController);
+  }
+  
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    QLog.w(VideoController.a, 1, "onCompletion, onClose, mainSession[" + this.jdField_a_of_type_ComTencentAvVideoController.a() + "], seq[" + this.jdField_a_of_type_Long + "]");
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.release();
     }
-    for (;;)
+    if (!this.jdField_a_of_type_ComTencentAvVideoController.a().o())
     {
-      ReadinjoyMsgManagerActivity.a(this.a).dismiss();
+      lek.d(VideoController.a, "onCompletion onClose is not Closing2");
+      this.jdField_a_of_type_Long = 0L;
       return;
-      ReadinjoyMsgManagerActivity.a(this.a).a("正在设置");
-      ReadinjoyMsgManagerActivity.a(this.a).show();
-      ReadinjoyMsgManagerActivity.b(this.a, true);
     }
+    this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvVideoController.a().d, 217);
+    this.jdField_a_of_type_ComTencentAvVideoController.b(217);
+    this.jdField_a_of_type_ComTencentAvVideoController.b(this.jdField_a_of_type_ComTencentAvVideoController.a().d, this.jdField_a_of_type_ComTencentAvVideoController.a().y);
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lfj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,23 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class tsl
-  implements ChatActivityUtils.StartVideoListener
+class tsl
+  implements MediaPlayer.OnPreparedListener
 {
-  public tsl(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  tsl(tsk paramtsk) {}
   
-  public void a()
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    this.a.finish();
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    this.a.finish();
+    QLog.d("QCircleFolderSplashPart", 1, "videoView onPrepared!");
+    paramMediaPlayer.start();
+    tzv.a("", 19, 3L, 0L, "1");
+    paramMediaPlayer.setOnInfoListener(new tsm(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tsl
  * JD-Core Version:    0.7.0.1
  */

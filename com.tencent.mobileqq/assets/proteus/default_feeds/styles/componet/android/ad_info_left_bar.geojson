@@ -1,0 +1,99 @@
+{
+  "view_type": "container",
+  "layout_type": "layout_relative",
+  "height": {
+    "type": "relative",
+    "value": "30"
+  },
+  "width": {
+    "type": "relative",
+    "value": "359"
+  },
+  "subviews": [
+    {
+      "view_type": "UILabel",
+      "view_id": "id_info_status",
+      "align_parent_left": "YES",
+      "margin_top": "1",
+      "margin_right": "6",
+      "height": {
+        "type": "relative",
+        "value": "29"
+      },
+      "width": {
+        "type": "wrap_content"
+      },
+      "attributes": {
+        "setFrameString:": "-1",
+        "setText:": "-1",
+        "setTextColorString:": "#A6A6A6",
+        "setFontSizeString:": "12",
+        "setBorderColorString:": "-1",
+        "setNumberOfLinesString:": "1"
+      }
+    },
+    {
+      "view_type": "UILabel",
+      "view_id": "id_info_source",
+      "margin_top": "1",
+      "right_of_view": "id_info_status",
+      "height": {
+        "type": "relative",
+        "value": "29"
+      },
+      "width": {
+        "type": "wrap_content"
+      },
+      "attributes": {
+        "setText:": "-1",
+        "setTextColorString:": "#A6A6A6",
+        "setFontSizeString:": "12",
+        "setNumberOfLinesString:": "-1"
+      }
+    },
+    {
+      "view_type": "ReadInJoyAdDownloadView",
+      "view_id": "id_view_AdDownloadView",
+      "height": {
+        "type": "relative",
+        "value": "30"
+      },
+      "width": {
+        "type": "relative",
+        "value": "82"
+      },
+      "margin_left": "12",
+      "right_of_view": "id_info_source",
+      "event_type": "ad_download_area_click",
+      "attributes": {
+        "setFeedsModel:": "$article_model",
+        "setDownloadBtnStyle:": {
+          "buttonTextColor": "#A6A6A6",
+          "buttonTextSize": "12",
+          "buttonCornerSize": "",
+          "buttonBackgroundColor": "",
+          "showBunttonLeftIconOrNot": "",
+          "buttonBorderSize": "",
+          "buttonBorderColor": "",
+          "buttonHorizontalPadding": "",
+          "buttonVerticalPadding": "",
+          "buttonAlignment" : "1",
+          "showAdIconOrNot": ""
+        },
+        "progressStyle:": {
+          "style": "1",
+          "showProgress": "1",
+          "width": "82",
+          "height": "20",
+          "textColor": "#ffffff",
+          "textSize": "12",
+          "corner": "2.5",
+          "background": "",
+          "progressBg": "#F2F2F2",
+          "secondaryProgressBg": "#F2F2F2",
+          "progressColor": "#12B7F5"
+        }
+      }
+    }
+  ]
+}

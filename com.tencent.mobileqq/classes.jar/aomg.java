@@ -1,21 +1,36 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedHashMap;
 
-public class aomg
-  implements ValueAnimator.AnimatorUpdateListener
+class aomg
+  extends aomf
 {
-  public aomg(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  private String a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public aomg(String paramString)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    CameraCaptureButtonLayout.a(this.a, f);
+    this.a = paramString;
+  }
+  
+  public Object a(Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
+    {
+      return null;
+      paramObject = (LinkedHashMap)paramObject;
+      if (!(paramObject instanceof LinkedHashMap))
+      {
+        QLog.e("ArkMsgReplyConfigMgr", 1, "getElement instance wrong");
+        return null;
+      }
+    } while (TextUtils.isEmpty(this.a));
+    return paramObject.get(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomg
  * JD-Core Version:    0.7.0.1
  */

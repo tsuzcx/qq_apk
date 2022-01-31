@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class FlyTicket$RetInfo
-  extends MessageMicro
+  extends MessageMicro<RetInfo>
 {
   public static final int ERR_INFO_FIELD_NUMBER = 2;
   public static final int RET_CODE_FIELD_NUMBER = 1;
@@ -17,7 +17,7 @@ public final class FlyTicket$RetInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.protofile.discuss.FlyTicket.RetInfo
  * JD-Core Version:    0.7.0.1
  */

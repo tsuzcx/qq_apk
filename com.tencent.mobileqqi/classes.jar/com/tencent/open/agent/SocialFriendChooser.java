@@ -23,7 +23,7 @@ import com.tencent.open.base.http.HttpCgiAsyncTask.Callback;
 import com.tencent.open.business.base.StaticAnalyz;
 import com.tencent.open.settings.ServerSetting;
 import com.tencent.qphone.base.util.QLog;
-import hnt;
+import hjp;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
@@ -76,7 +76,7 @@ public class SocialFriendChooser
   public SocialFriendChooser()
   {
     this.jdField_a_of_type_AndroidAppProgressDialog = null;
-    this.jdField_b_of_type_AndroidOsHandler = new hnt(this);
+    this.jdField_b_of_type_AndroidOsHandler = new hjp(this);
   }
   
   public void a(Intent paramIntent)

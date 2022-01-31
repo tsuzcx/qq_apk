@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class submsgtype0xc9$BusinessMsg
-  extends MessageMicro
+  extends MessageMicro<BusinessMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_tab_visible = PBField.initBool(false);

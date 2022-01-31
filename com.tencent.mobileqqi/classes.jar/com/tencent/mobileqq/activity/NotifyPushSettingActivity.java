@@ -15,17 +15,17 @@ import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantManager;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.BaseApplication;
-import ddv;
-import ddw;
-import ddx;
-import ddy;
-import ddz;
-import dea;
-import deb;
-import dec;
-import ded;
-import dee;
-import def;
+import cye;
+import cyf;
+import cyg;
+import cyh;
+import cyi;
+import cyj;
+import cyk;
+import cyl;
+import cym;
+import cyn;
+import cyo;
 
 public class NotifyPushSettingActivity
   extends IphoneTitleBarActivity
@@ -92,7 +92,7 @@ public class NotifyPushSettingActivity
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramQQAppInterface.a(new ddx(paramQQAppInterface, paramString));
+    paramQQAppInterface.a(new cyg(paramQQAppInterface, paramString));
   }
   
   public static int b(Context paramContext, String paramString)
@@ -118,50 +118,50 @@ public class NotifyPushSettingActivity
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131232000);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131231993));
-    this.g = ((FormSwitchItem)findViewById(2131231998));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131231992);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131231995));
-    this.c = ((FormSwitchItem)findViewById(2131231996));
-    this.d = ((FormSwitchItem)findViewById(2131231997));
-    this.e = ((FormSwitchItem)findViewById(2131231994));
-    this.f = ((FormSwitchItem)findViewById(2131232001));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131231999));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(new ddv(this));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131232003);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131231996));
+    this.g = ((FormSwitchItem)findViewById(2131232001));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131231995);
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131231998));
+    this.c = ((FormSwitchItem)findViewById(2131231999));
+    this.d = ((FormSwitchItem)findViewById(2131232000));
+    this.e = ((FormSwitchItem)findViewById(2131231997));
+    this.f = ((FormSwitchItem)findViewById(2131232004));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131232002));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(new cye(this));
     if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("spcial_care_qq_setting", true)) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130840210));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(getResources().getDrawable(2130840212));
     }
-    boolean bool1 = SettingCloneUtil.readValue(this, this.jdField_a_of_type_JavaLangString, getString(2131563430), "qqsetting_notify_showcontent_key", true);
+    boolean bool1 = SettingCloneUtil.readValue(this, this.jdField_a_of_type_JavaLangString, getString(2131563458), "qqsetting_notify_showcontent_key", true);
     boolean bool2 = SettingCloneUtil.readValue(this, null, "no_disturb_mode", "qqsetting_nodisturb_mode_key", false);
     boolean bool3 = SettingCloneUtil.readValue(this, this.jdField_a_of_type_JavaLangString, getString(2131562526), "qqsetting_notify_blncontrol_key", true);
-    boolean bool4 = SettingCloneUtil.readValue(this, this.jdField_a_of_type_JavaLangString, getString(2131563433), "qqsetting_notify_myfeedpush_key", true);
+    boolean bool4 = SettingCloneUtil.readValue(this, this.jdField_a_of_type_JavaLangString, getString(2131563461), "qqsetting_notify_myfeedpush_key", true);
     boolean bool5 = SettingCloneUtil.readValue(this, this.jdField_a_of_type_JavaLangString, getString(2131561654), "qqsetting_receivemsg_whenexit_key", true);
     boolean bool6 = SettingCloneUtil.readValue(this, this.jdField_a_of_type_JavaLangString, getString(2131562309), "qqsetting_lock_screen_whenexit_key", false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(bool1);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new ddy(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new cyh(this));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription("通知内显示消息内容");
     this.g.setChecked(bool2);
-    this.g.setOnCheckedChangeListener(new ddz(this));
+    this.g.setOnCheckedChangeListener(new cyi(this));
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(bool3);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new dea(this));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new cyj(this));
     this.c.setChecked(bool4);
-    this.c.setOnCheckedChangeListener(new deb(this));
+    this.c.setOnCheckedChangeListener(new cyk(this));
     this.d.setChecked(bool5);
-    this.d.setOnCheckedChangeListener(new dec(this));
+    this.d.setOnCheckedChangeListener(new cyl(this));
     this.e.setChecked(bool6);
     if (bool1) {
       this.e.setVisibility(0);
     }
     for (;;)
     {
-      this.e.setOnCheckedChangeListener(new ded(this));
+      this.e.setOnCheckedChangeListener(new cym(this));
       this.e.setContentDescription("锁屏显示消息弹框");
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new dee(this));
-      this.jdField_b_of_type_AndroidViewView.setOnClickListener(new def(this));
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new cyn(this));
+      this.jdField_b_of_type_AndroidViewView.setOnClickListener(new cyo(this));
       bool1 = QZoneShareAlbumAssistantManager.a().b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
       this.f.setChecked(bool1);
-      this.f.setOnCheckedChangeListener(new ddw(this));
+      this.f.setOnCheckedChangeListener(new cyf(this));
       this.jdField_b_of_type_AndroidViewView.setContentDescription("声音");
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription("通知内显示消息内容");
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription("通知时指示灯闪烁");
@@ -184,7 +184,7 @@ public class NotifyPushSettingActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903293);
+    setContentView(2130903295);
     setTitle(2131562523);
     if (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface != null) {
       this.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a();

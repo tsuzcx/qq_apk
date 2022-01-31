@@ -1,51 +1,78 @@
 package com.tencent.mobileqq.msf.core.c;
 
-import com.tencent.feedback.eup.CrashHandleListener;
-import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.af;
+import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qphone.base.util.i;
-import java.util.concurrent.LinkedBlockingDeque;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-class l
-  implements CrashHandleListener
+final class l
+  extends Thread
 {
-  l(j paramj) {}
+  long a = 0L;
+  long b = 0L;
+  final long c = 5000L;
+  final long d = 1000L;
   
-  public byte[] getCrashExtraData(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong)
+  l(String paramString)
   {
-    return null;
+    super(paramString);
   }
   
-  public String getCrashExtraMessage(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong)
+  public void run()
   {
-    QLog.d("MSF.C.StatReport", 1, "getCrashExtraMessage...isNativeCrashed: " + paramBoolean + " crashType=" + paramString1 + " crashAddress=" + paramString2 + " crashStack=" + paramString3 + " native_SICODE=" + paramInt + " crashTime=" + paramLong);
-    QLog.flushLog(true);
-    if (paramString1.contains("OutOfMemory"))
+    for (;;)
     {
-      i.a(j.a(this.a));
-      j.a(this.a).append("\n:SendQueueSize:").append(MsfCore.sCore.sender.f.size());
+      this.a = SystemClock.elapsedRealtime();
+      synchronized (k.l())
+      {
+        try
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("MSF.C.StatReport", 2, "try wait to report");
+          }
+          k.l().wait(5000L);
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          for (;;)
+          {
+            localInterruptedException.printStackTrace();
+          }
+        }
+        this.b = SystemClock.elapsedRealtime();
+        if (this.b - this.a <= 6000L) {
+          break label241;
+        }
+        ??? = k.m().entrySet().iterator();
+        for (;;)
+        {
+          if (((Iterator)???).hasNext()) {
+            try
+            {
+              Map.Entry localEntry = (Map.Entry)((Iterator)???).next();
+              if ((localEntry != null) && (this.b - ((Long)localEntry.getKey()).longValue() > k.n())) {
+                ((Iterator)???).remove();
+              }
+            }
+            catch (Exception localException)
+            {
+              localException.printStackTrace();
+            }
+          }
+        }
+      }
+      k.m().put(Long.valueOf(this.a), Long.valueOf(this.b));
+      k.b(true);
+      if (QLog.isColorLevel())
+      {
+        QLog.d("MSF.C.StatReport", 2, "find deep sleep. currTime:" + this.b + ", lastTime:" + this.a + ", sleep:" + (this.b - this.a));
+        continue;
+        label241:
+        k.b(false);
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.StatReport", 2, "getCrashExtraMessage." + j.a(this.a).toString());
-    }
-    return j.a(this.a).toString();
-  }
-  
-  public boolean onCrashHandleEnd(boolean paramBoolean)
-  {
-    return true;
-  }
-  
-  public void onCrashHandleStart(boolean paramBoolean)
-  {
-    this.a.a();
-    this.a.b();
-  }
-  
-  public boolean onCrashSaving(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong, String paramString4, String paramString5, String paramString6, String paramString7)
-  {
-    return true;
   }
 }
 

@@ -8,6 +8,8 @@ import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.token.cw;
+import com.tencent.token.global.h;
 
 public class ProDialogWithShutDown
   extends Dialog
@@ -18,21 +20,20 @@ public class ProDialogWithShutDown
   private String d;
   private boolean e;
   
-  public ProDialogWithShutDown(Activity paramActivity, View.OnClickListener paramOnClickListener, String paramString)
+  public ProDialogWithShutDown(Activity paramActivity, int paramInt, View.OnClickListener paramOnClickListener, String paramString)
   {
-    super(paramActivity, 2131427400);
+    super(paramActivity, paramInt);
     this.a = paramActivity;
     this.c = paramOnClickListener;
     this.d = paramString;
   }
   
-  public ProDialogWithShutDown(Activity paramActivity, View.OnClickListener paramOnClickListener, String paramString, boolean paramBoolean)
+  private void a()
   {
-    super(paramActivity, 2131427400);
-    this.a = paramActivity;
-    this.c = paramOnClickListener;
-    this.d = paramString;
-    this.e = paramBoolean;
+    h.c("dismiss and cancel request");
+    if (this.a != null) {
+      cw.a().a(this.a.getClass().getName());
+    }
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -43,19 +44,19 @@ public class ProDialogWithShutDown
       return;
     }
     super.onCreate(paramBundle);
-    setContentView(2130903156);
-    getWindow().setBackgroundDrawableResource(2130837639);
+    setContentView(2130968718);
+    getWindow().setBackgroundDrawableResource(2130837730);
     if (this.e)
     {
-      paramBundle = (TextView)findViewById(2131296915);
+      paramBundle = (TextView)findViewById(2131559125);
       if ((this.d != null) && (this.d.length() > 0)) {
         paramBundle.setText(this.d);
       }
     }
-    ((ImageView)findViewById(2131296914)).startAnimation(AnimationUtils.loadAnimation(this.a, 2130968581));
-    this.b = ((ImageView)findViewById(2131296917));
-    this.b.setOnClickListener(new cm(this));
-    setOnDismissListener(new cn(this));
+    ((ImageView)findViewById(2131559124)).startAnimation(AnimationUtils.loadAnimation(this.a, 2131034130));
+    this.b = ((ImageView)findViewById(2131559127));
+    this.b.setOnClickListener(new cb(this));
+    setOnDismissListener(new cc(this));
   }
 }
 

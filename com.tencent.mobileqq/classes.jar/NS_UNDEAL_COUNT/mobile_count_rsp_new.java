@@ -13,32 +13,44 @@ public final class mobile_count_rsp_new
   extends JceStruct
 {
   static byte[] cache_QzmallProfileDecoGetRsp;
-  static Map cache_extendinfo;
+  static int cache_cancellation_status;
+  static Map<Integer, String> cache_extendinfo;
   static int cache_isShowNewFeedBanner;
   static int cache_jumpType;
-  static Map cache_mapBuf;
-  static Map cache_mapEntranceCfg = new HashMap();
-  static Map cache_mapExtendinfo;
-  static Map cache_mapFeedsTabInfo;
-  static Map cache_mapLastGetTime;
-  static Map cache_mapTransData;
-  static Map cache_mapYYIconInfo;
-  static Map cache_map_strAdvUrl;
+  static Map<Long, s_comm_data> cache_mapBuf;
+  static Map<Long, Long> cache_mapDyncShowTime;
+  static Map<Integer, ArrayList<entrance_cfg>> cache_mapEntranceCfg = new HashMap();
+  static Map<String, String> cache_mapExtendinfo;
+  static Map<Integer, mobile_feeds_tab_info> cache_mapFeedsTabInfo;
+  static Map<Long, Long> cache_mapLastGetTime;
+  static Map<String, byte[]> cache_mapTransData;
+  static Map<Integer, yy_icon> cache_mapYYIconInfo;
+  static Map<Integer, String> cache_map_strAdvUrl;
   static master_info cache_masterinfo;
+  static stPlusRecomInfo cache_plusRecom;
+  static stNuanNuanComment cache_sContentOpComment;
+  static stNuanNuanComment cache_snnComment;
   static ban_info cache_stBanInfo;
   static birth_info cache_stBirthInfo;
-  static Map cache_stMapCountInfo;
+  static Map<Integer, count_info> cache_stMapCountInfo;
   static master_info cache_stMasterInfo;
   static medal_banner cache_stMedalBanner;
   static medal_info cache_stMedalInfo;
   static yellow_info cache_stYellowInfo;
   static combine_diamond_info cache_stuCombineDiamondInfo;
   static star_info cache_stuStarInfo;
-  static ArrayList cache_vecOperateInfo;
+  static ArrayList<operat_data> cache_vecOperateInfo;
+  static ArrayList<String> cache_vec_blackReportPid;
+  static ArrayList<String> cache_vec_reportid;
+  static ArrayList<stSoftInfo> cache_vec_soft_infos;
+  static ArrayList<String> cache_veckuolieHotTag;
+  static stVerticalVideoDisplay cache_vertVideoDisplay;
   public byte[] QzmallProfileDecoGetRsp;
-  public Map extendinfo;
+  public int cancellation_status;
+  public Map<Integer, String> extendinfo;
   public int grayOperateMask;
   public int iNextTimeout;
+  public int isGetActiveWeiShi = 50;
   public int isLiveShow;
   public int isNotRegisterQzone;
   public int isOpenFeedUpdate;
@@ -50,24 +62,34 @@ public final class mobile_count_rsp_new
   public int isUpdateFeed;
   public int isVistorRedBous;
   public int jumpType;
-  public Map mapBuf;
-  public Map mapEntranceCfg;
-  public Map mapExtendinfo;
-  public Map mapFeedsTabInfo;
-  public Map mapLastGetTime;
-  public Map mapTransData;
-  public Map mapYYIconInfo;
-  public Map map_strAdvUrl;
+  public Map<Long, s_comm_data> mapBuf;
+  public Map<Long, Long> mapDyncShowTime;
+  public Map<Integer, ArrayList<entrance_cfg>> mapEntranceCfg;
+  public Map<String, String> mapExtendinfo;
+  public Map<Integer, mobile_feeds_tab_info> mapFeedsTabInfo;
+  public Map<Long, Long> mapLastGetTime;
+  public Map<String, byte[]> mapTransData;
+  public Map<Integer, yy_icon> mapYYIconInfo;
+  public Map<Integer, String> map_strAdvUrl;
   public master_info masterinfo;
+  public int operate_nbp_type;
+  public int operate_newyear_mask;
+  public stPlusRecomInfo plusRecom;
+  public int report_counts;
+  public int report_nexttime;
+  public int report_sq_switch;
+  public stNuanNuanComment sContentOpComment;
   public String sTransParam = "";
+  public stNuanNuanComment snnComment;
   public String sqDyncFeedsJson = "";
   public ban_info stBanInfo;
   public birth_info stBirthInfo;
-  public Map stMapCountInfo;
+  public Map<Integer, count_info> stMapCountInfo;
   public master_info stMasterInfo;
   public medal_banner stMedalBanner;
   public medal_info stMedalInfo;
   public yellow_info stYellowInfo;
+  public String strABTestId = "";
   public String strDeviceName = "";
   public String strNick = "";
   public String strRedBousUrl = "";
@@ -75,7 +97,12 @@ public final class mobile_count_rsp_new
   public star_info stuStarInfo;
   public int switchTimeout;
   public String undealCountTime = "";
-  public ArrayList vecOperateInfo;
+  public ArrayList<operat_data> vecOperateInfo;
+  public ArrayList<String> vec_blackReportPid;
+  public ArrayList<String> vec_reportid;
+  public ArrayList<stSoftInfo> vec_soft_infos;
+  public ArrayList<String> veckuolieHotTag;
+  public stVerticalVideoDisplay vertVideoDisplay;
   
   static
   {
@@ -122,33 +149,49 @@ public final class mobile_count_rsp_new
     cache_mapTransData.put("", localObject);
     cache_mapExtendinfo = new HashMap();
     cache_mapExtendinfo.put("", "");
+    cache_vertVideoDisplay = new stVerticalVideoDisplay();
+    cache_snnComment = new stNuanNuanComment();
+    cache_mapDyncShowTime = new HashMap();
+    cache_mapDyncShowTime.put(Long.valueOf(0L), Long.valueOf(0L));
+    cache_vec_reportid = new ArrayList();
+    cache_vec_reportid.add("");
+    cache_vec_blackReportPid = new ArrayList();
+    cache_vec_blackReportPid.add("");
+    cache_sContentOpComment = new stNuanNuanComment();
+    cache_vec_soft_infos = new ArrayList();
+    localObject = new stSoftInfo();
+    cache_vec_soft_infos.add(localObject);
+    cache_plusRecom = new stPlusRecomInfo();
+    cache_cancellation_status = 0;
+    cache_veckuolieHotTag = new ArrayList();
+    cache_veckuolieHotTag.add("");
   }
   
   public mobile_count_rsp_new() {}
   
-  public mobile_count_rsp_new(Map paramMap1, Map paramMap2, ban_info paramban_info, birth_info parambirth_info, String paramString1, int paramInt1, yellow_info paramyellow_info, String paramString2, Map paramMap3, master_info parammaster_info1, ArrayList paramArrayList, Map paramMap4, String paramString3, master_info parammaster_info2, medal_info parammedal_info, int paramInt2, medal_banner parammedal_banner, Map paramMap5, star_info paramstar_info, combine_diamond_info paramcombine_diamond_info, Map paramMap6, String paramString4, int paramInt3, int paramInt4, int paramInt5, int paramInt6, byte[] paramArrayOfByte, int paramInt7, int paramInt8, int paramInt9, String paramString5, int paramInt10, int paramInt11, int paramInt12, Map paramMap7, int paramInt13, String paramString6, Map paramMap8, Map paramMap9, Map paramMap10, int paramInt14)
+  public mobile_count_rsp_new(Map<Integer, ArrayList<entrance_cfg>> paramMap, Map<Integer, count_info> paramMap1, ban_info paramban_info, birth_info parambirth_info, String paramString1, int paramInt1, yellow_info paramyellow_info, String paramString2, Map<Long, s_comm_data> paramMap2, master_info parammaster_info1, ArrayList<operat_data> paramArrayList, Map<Long, Long> paramMap3, String paramString3, master_info parammaster_info2, medal_info parammedal_info, int paramInt2, medal_banner parammedal_banner, Map<Integer, yy_icon> paramMap4, star_info paramstar_info, combine_diamond_info paramcombine_diamond_info, Map<Integer, String> paramMap5, String paramString4, int paramInt3, int paramInt4, int paramInt5, int paramInt6, byte[] paramArrayOfByte, int paramInt7, int paramInt8, int paramInt9, String paramString5, int paramInt10, int paramInt11, int paramInt12, Map<Integer, mobile_feeds_tab_info> paramMap6, int paramInt13, String paramString6, Map<Integer, String> paramMap7, Map<String, byte[]> paramMap8, Map<String, String> paramMap9, int paramInt14, stVerticalVideoDisplay paramstVerticalVideoDisplay, int paramInt15, stNuanNuanComment paramstNuanNuanComment1, Map<Long, Long> paramMap10, int paramInt16, String paramString7, int paramInt17, ArrayList<String> paramArrayList1, int paramInt18, int paramInt19, int paramInt20, ArrayList<String> paramArrayList2, stNuanNuanComment paramstNuanNuanComment2, ArrayList<stSoftInfo> paramArrayList3, stPlusRecomInfo paramstPlusRecomInfo, int paramInt21, ArrayList<String> paramArrayList4)
   {
-    this.mapEntranceCfg = paramMap1;
-    this.stMapCountInfo = paramMap2;
+    this.mapEntranceCfg = paramMap;
+    this.stMapCountInfo = paramMap1;
     this.stBanInfo = paramban_info;
     this.stBirthInfo = parambirth_info;
     this.strNick = paramString1;
     this.iNextTimeout = paramInt1;
     this.stYellowInfo = paramyellow_info;
     this.strDeviceName = paramString2;
-    this.mapBuf = paramMap3;
+    this.mapBuf = paramMap2;
     this.masterinfo = parammaster_info1;
     this.vecOperateInfo = paramArrayList;
-    this.mapLastGetTime = paramMap4;
+    this.mapLastGetTime = paramMap3;
     this.sTransParam = paramString3;
     this.stMasterInfo = parammaster_info2;
     this.stMedalInfo = parammedal_info;
     this.jumpType = paramInt2;
     this.stMedalBanner = parammedal_banner;
-    this.mapYYIconInfo = paramMap5;
+    this.mapYYIconInfo = paramMap4;
     this.stuStarInfo = paramstar_info;
     this.stuCombineDiamondInfo = paramcombine_diamond_info;
-    this.extendinfo = paramMap6;
+    this.extendinfo = paramMap5;
     this.undealCountTime = paramString4;
     this.isPreLoad = paramInt3;
     this.switchTimeout = paramInt4;
@@ -162,13 +205,30 @@ public final class mobile_count_rsp_new
     this.isSetMemorySeal = paramInt10;
     this.isNotRegisterQzone = paramInt11;
     this.isOpenFeedUpdate = paramInt12;
-    this.mapFeedsTabInfo = paramMap7;
+    this.mapFeedsTabInfo = paramMap6;
     this.isUpdateFeed = paramInt13;
     this.sqDyncFeedsJson = paramString6;
-    this.map_strAdvUrl = paramMap8;
-    this.mapTransData = paramMap9;
-    this.mapExtendinfo = paramMap10;
+    this.map_strAdvUrl = paramMap7;
+    this.mapTransData = paramMap8;
+    this.mapExtendinfo = paramMap9;
     this.grayOperateMask = paramInt14;
+    this.vertVideoDisplay = paramstVerticalVideoDisplay;
+    this.isGetActiveWeiShi = paramInt15;
+    this.snnComment = paramstNuanNuanComment1;
+    this.mapDyncShowTime = paramMap10;
+    this.operate_newyear_mask = paramInt16;
+    this.strABTestId = paramString7;
+    this.operate_nbp_type = paramInt17;
+    this.vec_reportid = paramArrayList1;
+    this.report_nexttime = paramInt18;
+    this.report_counts = paramInt19;
+    this.report_sq_switch = paramInt20;
+    this.vec_blackReportPid = paramArrayList2;
+    this.sContentOpComment = paramstNuanNuanComment2;
+    this.vec_soft_infos = paramArrayList3;
+    this.plusRecom = paramstPlusRecomInfo;
+    this.cancellation_status = paramInt21;
+    this.veckuolieHotTag = paramArrayList4;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -214,6 +274,23 @@ public final class mobile_count_rsp_new
     this.mapTransData = ((Map)paramJceInputStream.read(cache_mapTransData, 38, false));
     this.mapExtendinfo = ((Map)paramJceInputStream.read(cache_mapExtendinfo, 39, false));
     this.grayOperateMask = paramJceInputStream.read(this.grayOperateMask, 40, false);
+    this.vertVideoDisplay = ((stVerticalVideoDisplay)paramJceInputStream.read(cache_vertVideoDisplay, 41, false));
+    this.isGetActiveWeiShi = paramJceInputStream.read(this.isGetActiveWeiShi, 42, false);
+    this.snnComment = ((stNuanNuanComment)paramJceInputStream.read(cache_snnComment, 43, false));
+    this.mapDyncShowTime = ((Map)paramJceInputStream.read(cache_mapDyncShowTime, 44, false));
+    this.operate_newyear_mask = paramJceInputStream.read(this.operate_newyear_mask, 45, false);
+    this.strABTestId = paramJceInputStream.readString(46, false);
+    this.operate_nbp_type = paramJceInputStream.read(this.operate_nbp_type, 47, false);
+    this.vec_reportid = ((ArrayList)paramJceInputStream.read(cache_vec_reportid, 48, false));
+    this.report_nexttime = paramJceInputStream.read(this.report_nexttime, 49, false);
+    this.report_counts = paramJceInputStream.read(this.report_counts, 50, false);
+    this.report_sq_switch = paramJceInputStream.read(this.report_sq_switch, 51, false);
+    this.vec_blackReportPid = ((ArrayList)paramJceInputStream.read(cache_vec_blackReportPid, 52, false));
+    this.sContentOpComment = ((stNuanNuanComment)paramJceInputStream.read(cache_sContentOpComment, 53, false));
+    this.vec_soft_infos = ((ArrayList)paramJceInputStream.read(cache_vec_soft_infos, 54, false));
+    this.plusRecom = ((stPlusRecomInfo)paramJceInputStream.read(cache_plusRecom, 55, false));
+    this.cancellation_status = paramJceInputStream.read(this.cancellation_status, 56, false);
+    this.veckuolieHotTag = ((ArrayList)paramJceInputStream.read(cache_veckuolieHotTag, 57, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -313,11 +390,48 @@ public final class mobile_count_rsp_new
       paramJceOutputStream.write(this.mapExtendinfo, 39);
     }
     paramJceOutputStream.write(this.grayOperateMask, 40);
+    if (this.vertVideoDisplay != null) {
+      paramJceOutputStream.write(this.vertVideoDisplay, 41);
+    }
+    paramJceOutputStream.write(this.isGetActiveWeiShi, 42);
+    if (this.snnComment != null) {
+      paramJceOutputStream.write(this.snnComment, 43);
+    }
+    if (this.mapDyncShowTime != null) {
+      paramJceOutputStream.write(this.mapDyncShowTime, 44);
+    }
+    paramJceOutputStream.write(this.operate_newyear_mask, 45);
+    if (this.strABTestId != null) {
+      paramJceOutputStream.write(this.strABTestId, 46);
+    }
+    paramJceOutputStream.write(this.operate_nbp_type, 47);
+    if (this.vec_reportid != null) {
+      paramJceOutputStream.write(this.vec_reportid, 48);
+    }
+    paramJceOutputStream.write(this.report_nexttime, 49);
+    paramJceOutputStream.write(this.report_counts, 50);
+    paramJceOutputStream.write(this.report_sq_switch, 51);
+    if (this.vec_blackReportPid != null) {
+      paramJceOutputStream.write(this.vec_blackReportPid, 52);
+    }
+    if (this.sContentOpComment != null) {
+      paramJceOutputStream.write(this.sContentOpComment, 53);
+    }
+    if (this.vec_soft_infos != null) {
+      paramJceOutputStream.write(this.vec_soft_infos, 54);
+    }
+    if (this.plusRecom != null) {
+      paramJceOutputStream.write(this.plusRecom, 55);
+    }
+    paramJceOutputStream.write(this.cancellation_status, 56);
+    if (this.veckuolieHotTag != null) {
+      paramJceOutputStream.write(this.veckuolieHotTag, 57);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_UNDEAL_COUNT.mobile_count_rsp_new
  * JD-Core Version:    0.7.0.1
  */

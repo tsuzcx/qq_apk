@@ -1,42 +1,63 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.network.request.GetFeedFeatureRequest;
-import com.tencent.biz.qqstory.network.response.GetFeedFeatureResponse;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.GetFeedIdListResult;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedAllInfoPullSegment;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import java.util.Vector;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class nyr
-  implements CmdTaskManger.CommandCallback
+  implements INetInfoHandler
 {
-  public nyr(HomeFeedAllInfoPullSegment paramHomeFeedAllInfoPullSegment, JobContext paramJobContext, FeedListPageLoaderBase.GetFeedIdListResult paramGetFeedIdListResult) {}
+  private nyr(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void a(@NonNull GetFeedFeatureRequest paramGetFeedFeatureRequest, @Nullable GetFeedFeatureResponse paramGetFeedFeatureResponse, @NonNull ErrorMessage arg3)
+  public void onNetMobile2None()
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "segment cancel on net respond");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetMobile2None");
     }
-    if ((paramGetFeedFeatureResponse == null) || (???.isFail())) {
-      SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for feature request, %s", new Object[] { ???.toString() });
+    this.a.b(false);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetMobile2Wifi");
     }
-    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment)
-    {
-      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, paramGetFeedFeatureResponse);
-      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment).remove(paramGetFeedFeatureRequest);
-      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$GetFeedIdListResult);
-      return;
+    this.a.d(true);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetNone2Mobile");
     }
+    this.a.c(false);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetNone2Wifi");
+    }
+    this.a.d(false);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetWifi2Mobile");
+    }
+    this.a.c(true);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetWifi2None");
+    }
+    this.a.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nyr
  * JD-Core Version:    0.7.0.1
  */

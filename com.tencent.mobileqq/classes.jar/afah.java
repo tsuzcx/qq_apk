@@ -1,47 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.now.ilive_short_video_label.GetShortVideoVideoLabelRsp;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
 public class afah
-  implements NowShortVideoProtoManager.Callback
+  implements DialogInterface.OnClickListener
 {
-  public afah(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public afah(DoodlePanel paramDoodlePanel) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new oidb_0xada.RspBody();
-    }
-    try
+    switch (paramInt)
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.i("PlayOperationViewModel", 2, "queryVideoState err_msg:   " + paramBundle.err_msg.get());
-      }
-      if (paramBundle.busi_buf.has())
-      {
-        paramArrayOfByte = new ilive_short_video_label.GetShortVideoVideoLabelRsp();
-        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-        this.a.a(paramArrayOfByte);
-      }
+    default: 
+      return;
+    case 0: 
+      azqs.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
       return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
+    azqs.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
+    DoodlePanel.a(this.a).b(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afah
  * JD-Core Version:    0.7.0.1
  */

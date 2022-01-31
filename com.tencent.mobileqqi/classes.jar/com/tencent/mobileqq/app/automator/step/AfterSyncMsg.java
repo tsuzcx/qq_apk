@@ -42,7 +42,7 @@ public class AfterSyncMsg
   {
     this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
     ((SVIPHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(12)).d();
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.k = true;
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.j = true;
     this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.D();
     this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(false);
     if (this.a.f) {

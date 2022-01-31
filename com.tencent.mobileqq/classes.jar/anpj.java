@@ -1,45 +1,49 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
+import com.tencent.mobileqq.ark.ArkTopGestureLayout;
 
-public final class anpj
-  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
+public class anpj
+  extends TopGestureLayout.TopGestureDetector
 {
-  final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  final View jdField_a_of_type_AndroidViewView;
-  
-  public anpj(View paramView, View.OnClickListener paramOnClickListener)
+  public anpj(ArkTopGestureLayout paramArkTopGestureLayout, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    super(paramArkTopGestureLayout, paramContext);
   }
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this.jdField_a_of_type_AndroidViewView);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setScaleX(f);
-    this.jdField_a_of_type_AndroidViewView.setScaleY(f);
+    if ((this.a.isGestureIdle()) || (this.a.isGestureEnd())) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return false;
+            paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+            paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
+            if (!this.a.hasGestureFlag(1)) {
+              break;
+            }
+          } while ((paramFloat1 >= 0.0F) || (paramFloat2 >= 0.5F) || (this.a.mOnFlingGesture == null));
+          this.a.setGestureFlag(-1);
+        } while (ArkTopGestureLayout.a(this.a));
+        this.a.mOnFlingGesture.flingLToR();
+        return false;
+      } while ((!this.a.hasGestureFlag(2)) || (paramFloat1 <= 0.0F) || (paramFloat2 >= 0.5F) || (this.a.mOnFlingGesture == null));
+      this.a.setGestureFlag(-1);
+    } while (ArkTopGestureLayout.b(this.a));
+    this.a.mOnFlingGesture.flingRToL();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpj
  * JD-Core Version:    0.7.0.1
  */

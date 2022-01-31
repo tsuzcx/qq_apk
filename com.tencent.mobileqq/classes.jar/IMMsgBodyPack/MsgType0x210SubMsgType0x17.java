@@ -78,7 +78,7 @@ public final class MsgType0x210SubMsgType0x17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     IMMsgBodyPack.MsgType0x210SubMsgType0x17
  * JD-Core Version:    0.7.0.1
  */

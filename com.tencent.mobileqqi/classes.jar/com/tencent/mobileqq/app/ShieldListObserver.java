@@ -51,9 +51,9 @@ public class ShieldListObserver
   
   protected void a(boolean paramBoolean) {}
   
-  protected void a(boolean paramBoolean, List paramList) {}
+  public void a(boolean paramBoolean, List paramList) {}
   
-  protected void b(boolean paramBoolean, List paramList) {}
+  public void b(boolean paramBoolean, List paramList) {}
 }
 
 

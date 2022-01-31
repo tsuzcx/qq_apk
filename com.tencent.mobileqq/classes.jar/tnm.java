@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class tnm
-  implements Runnable
+class tnm
+  implements View.OnTouchListener
 {
-  public tnm(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  tnm(tnk paramtnk) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ReportController.b(this.a.app, "dc00898", "", "", "0X8008123", "0X8008123", 0, 0, "", "", "", "");
+    tnk.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tnm
  * JD-Core Version:    0.7.0.1
  */

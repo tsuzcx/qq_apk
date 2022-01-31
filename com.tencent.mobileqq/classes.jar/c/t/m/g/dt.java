@@ -1,111 +1,101 @@
 package c.t.m.g;
 
-import android.util.Pair;
-import com.tencent.map.geolocation.internal.TencentHttpClient;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import java.io.Closeable;
+import java.util.Timer;
 
 public final class dt
-  implements TencentHttpClient
 {
-  private byte[] a = new byte[512];
+  public String a;
+  public String b;
+  public String c;
   
-  private static String a(String paramString)
+  public dt(String paramString1, String paramString2, String paramString3)
   {
-    String str2 = "GBK";
-    String str1 = str2;
-    int j;
-    int i;
-    if (paramString != null)
-    {
-      paramString = paramString.split(";");
-      j = paramString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      str1 = str2;
-      if (i < j)
-      {
-        str1 = paramString[i].trim();
-        int k = str1.indexOf("charset=");
-        if (-1 != k) {
-          str1 = str1.substring(k + 8, str1.length());
-        }
-      }
-      else
-      {
-        return str1;
-      }
-      i += 1;
-    }
+    this.a = paramString2;
+    this.b = paramString1;
+    this.c = paramString3;
   }
   
-  private byte[] a(InputStream paramInputStream)
-    throws IOException
+  public static String a(String paramString)
   {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(256);
-    for (;;)
-    {
-      int i = paramInputStream.read(this.a);
-      if (i == -1) {
-        break;
-      }
-      localByteArrayOutputStream.write(this.a, 0, i);
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    paramInputStream.close();
-    return localByteArrayOutputStream.toByteArray();
+    return str;
   }
   
-  public final Pair<byte[], String> postSync(String paramString, byte[] paramArrayOfByte)
-    throws IOException
+  static void a(HandlerThread paramHandlerThread)
   {
-    paramString = (HttpURLConnection)new URL(paramString).openConnection();
-    for (;;)
-    {
+    if (paramHandlerThread != null) {
       try
       {
-        paramString.setRequestProperty("User-Agent", "Dalvik/1.6.0 (Linux; U; Android 4.4; Nexus 5 Build/KRT16M)");
-        paramString.setRequestMethod("POST");
-        paramString.setConnectTimeout(10000);
-        paramString.setDoOutput(true);
-        paramString.setFixedLengthStreamingMode(paramArrayOfByte.length);
-        localObject = paramString.getOutputStream();
-        ((OutputStream)localObject).write(paramArrayOfByte);
-        ((OutputStream)localObject).flush();
-        ((OutputStream)localObject).close();
-        int i = paramString.getResponseCode();
-        switch (i)
+        if (Build.VERSION.SDK_INT >= 18)
         {
-        case 200: 
-          throw new IOException("net sdk error: " + i);
+          paramHandlerThread.quitSafely();
+          return;
+        }
+        paramHandlerThread.quit();
+        return;
+      }
+      catch (Throwable paramHandlerThread)
+      {
+        if (co.e()) {
+          co.a("quit error.", paramHandlerThread);
         }
       }
-      finally
-      {
-        paramString.disconnect();
-      }
-      paramArrayOfByte = a(paramString.getHeaderField("content-type"));
-      Object localObject = a(paramString.getInputStream());
-      if ((localObject == null) || (localObject.length == 0))
-      {
-        paramArrayOfByte = Pair.create("{}".getBytes(), "utf-8");
-        paramString.disconnect();
-        return paramArrayOfByte;
-      }
-      paramArrayOfByte = Pair.create(localObject, paramArrayOfByte);
-      paramString.disconnect();
-      return paramArrayOfByte;
     }
+  }
+  
+  public static void a(HandlerThread paramHandlerThread, Handler paramHandler, long paramLong)
+  {
+    if ((paramHandlerThread == null) && (paramHandler == null)) {
+      return;
+    }
+    if (paramLong <= 0L)
+    {
+      a(paramHandlerThread);
+      return;
+    }
+    Handler localHandler = paramHandler;
+    if (paramHandler == null)
+    {
+      localHandler = paramHandler;
+      if (Looper.myLooper() != null) {
+        localHandler = new Handler(Looper.myLooper());
+      }
+    }
+    if (localHandler == null) {}
+    for (paramHandler = new Timer("th_loc_tmp");; paramHandler = null)
+    {
+      paramHandlerThread = new dt.1(paramHandlerThread, localHandler, paramHandler);
+      if (localHandler == null) {
+        break;
+      }
+      localHandler.postDelayed(paramHandlerThread, paramLong);
+      return;
+    }
+    paramHandler.schedule(paramHandlerThread, paramLong);
+  }
+  
+  public static void a(Closeable paramCloseable)
+  {
+    if (paramCloseable != null) {}
+    try
+    {
+      paramCloseable.close();
+      return;
+    }
+    catch (Throwable paramCloseable) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.dt
  * JD-Core Version:    0.7.0.1
  */

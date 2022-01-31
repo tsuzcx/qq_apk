@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollGroupFloatingListener;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.activity.phone.PhoneMatchView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
 public class elt
-  extends SlideDetectListView.OnScrollGroupFloatingListener
+  implements Runnable
 {
-  public elt(TroopView paramTroopView) {}
+  public elt(PhoneMatchView paramPhoneMatchView) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void run()
   {
-    if (this.a.a != null) {
-      TroopView.a(this.a, paramInt1);
-    }
+    this.a.a.e();
   }
 }
 

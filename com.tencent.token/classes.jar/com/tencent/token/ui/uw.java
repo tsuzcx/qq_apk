@@ -1,16 +1,20 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-final class uw
-  implements View.OnClickListener
+class uw
+  implements TextWatcher
 {
-  uw(RealNameDetailActivity paramRealNameDetailActivity) {}
+  uw(RealNameFindActivity paramRealNameFindActivity) {}
   
-  public final void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.finish();
+    RealNameFindActivity.access$600(this.a);
   }
 }
 

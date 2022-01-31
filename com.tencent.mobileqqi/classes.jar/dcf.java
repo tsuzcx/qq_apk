@@ -1,21 +1,30 @@
-import com.tencent.mobileqq.activity.MyPublishedHornActivity;
-import com.tencent.mobileqq.app.NearHornHandler;
+import com.tencent.mobileqq.activity.QQLSUnlockActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class dcf
-  implements Runnable
+  extends Thread
 {
-  public dcf(MyPublishedHornActivity paramMyPublishedHornActivity, Boolean paramBoolean) {}
+  public dcf(QQLSUnlockActivity paramQQLSUnlockActivity) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
-    for (String str = "1";; str = "0")
+    try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityMyPublishedHornActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityMyPublishedHornActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityMyPublishedHornActivity.b, str, this.jdField_a_of_type_ComTencentMobileqqActivityMyPublishedHornActivity.jdField_a_of_type_JavaLangString);
+      wait(1500L);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQLSActivity", 2, " QQLSUnlockActivity finish");
       }
+      this.a.finish();
       return;
     }
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        localInterruptedException.printStackTrace();
+      }
+    }
+    finally {}
   }
 }
 

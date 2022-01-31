@@ -1,60 +1,84 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import android.os.Handler;
+import com.tencent.mobileqq.filemanager.util.UniformDownloader;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmassistantsdk.downloadclient.ITMAssistantDownloadSDKClientListener;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
 
 public class fys
-  implements Runnable
+  implements ITMAssistantDownloadSDKClientListener
 {
-  public fys(FileManagerNotifyCenter paramFileManagerNotifyCenter, FileManagerEntity paramFileManagerEntity, int paramInt) {}
+  public fys(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk) {}
   
-  public void run()
+  public void OnDownloadSDKTaskProgressChanged(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient, String paramString, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = 0.0F;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerNotifyCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 16, null, 14, null);
-    int i = 20;
-    for (;;)
+    UniformDownloaderAppBabySdk.b(this.a);
+    if (!UniformDownloaderAppBabySdk.a(this.a).post(new fyt(this, paramString, paramLong1, paramLong2))) {
+      QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
+    }
+  }
+  
+  public void OnDownloadSDKTaskStateChanged(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    int i = 0;
+    int j = 0;
+    Object localObject2 = null;
+    QLog.i(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] inPDownloadSDKTaskStateChanged  state:[" + paramInt1 + "] errcode:[" + paramInt2 + "] errStr:[" + paramString2 + "] url:[" + paramString1 + "]");
+    String str = "";
+    Object localObject1;
+    if ((paramTMAssistantDownloadSDKClient != null) && (4 == paramInt1))
     {
-      int j = i - 1;
-      if (i <= 0) {
-        break;
-      }
-      FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-      localFileManagerEntity.fProgress = ((float)(localFileManagerEntity.fProgress + 0.05D));
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerNotifyCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 16, null, 14, null);
       try
       {
-        Thread.sleep(50L);
-        i = j;
+        localObject1 = paramTMAssistantDownloadSDKClient.getDownloadTaskState(paramString1);
+        i = 0;
+        paramTMAssistantDownloadSDKClient = str;
       }
-      catch (InterruptedException localInterruptedException)
+      catch (Exception paramTMAssistantDownloadSDKClient)
       {
-        localInterruptedException.printStackTrace();
-        i = j;
+        do
+        {
+          for (;;)
+          {
+            paramTMAssistantDownloadSDKClient.printStackTrace();
+            paramTMAssistantDownloadSDKClient = UniformDownloader.a(22);
+            localObject1 = null;
+            j = 22;
+            i = 1;
+            continue;
+            localObject1 = ((TMAssistantDownloadTaskInfo)localObject1).mSavePath;
+          }
+        } while (UniformDownloaderAppBabySdk.a(this.a).post(new fyv(this, paramString1, paramInt1, paramInt2, paramString2, (String)localObject1)));
+        QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. thread error!!");
+        return;
       }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = 0.0F;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 1;
-    switch (this.jdField_a_of_type_Int)
-    {
+      if (localObject1 == null) {
+        localObject1 = localObject2;
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerNotifyCenter.a.a().a(true, 3, null);
-      FileManagerUtil.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerNotifyCenter.a.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.cloudType = 3;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 1;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerNotifyCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 14, new Object[] { this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFilePath, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize), Boolean.valueOf(true), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strServerPath }, 0, null);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerNotifyCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 14, new Object[] { this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFilePath, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize), Boolean.valueOf(true), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strServerPath }, 0, null);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerNotifyCenter.a.a().a(true, 34, new Object[] { this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) });
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerNotifyCenter.a.a().a(true, 33, new Object[] { this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid });
+      UniformDownloaderAppBabySdk.b(this.a);
+      if (i != 0)
+      {
+        if (!UniformDownloaderAppBabySdk.a(this.a).post(new fyu(this, paramString1, j, paramTMAssistantDownloadSDKClient))) {
+          QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDownloadSDKTaskProgressChanged. haveErr and thread error!!");
+        }
+        return;
+      }
+      localObject1 = null;
+      paramTMAssistantDownloadSDKClient = "";
+      j = 0;
+    }
+  }
+  
+  public void OnDwonloadSDKServiceInvalid(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient)
+  {
+    QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] ABSdkdownload service invalid ");
+    UniformDownloaderAppBabySdk.b(this.a);
+    if (!UniformDownloaderAppBabySdk.a(this.a).post(new fyw(this))) {
+      QLog.e(UniformDownloaderAppBabySdk.a, 1, "[UniformDL] OnDwonloadSDKServiceInvalid. thread error!!");
     }
   }
 }

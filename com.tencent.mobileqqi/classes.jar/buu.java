@@ -1,55 +1,42 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.common.util.LoadedBack2;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
-import com.tencent.smtt.sdk.WebView;
+import android.view.View;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class buu
-  implements LoadedBack2
+  implements ActionSheet.OnButtonClickListener
 {
-  public buu(OfflinePlugin paramOfflinePlugin) {}
+  public buu(AddRequestActivity paramAddRequestActivity, ActionSheet paramActionSheet) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject = this.a.mRuntime.a();
-    if (localObject == null) {}
-    WebView localWebView;
-    do
+    switch (paramInt)
     {
-      do
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      if (NetworkUtil.e(BaseApplication.getContext()))
       {
-        do
-        {
-          return;
-        } while (!(localObject instanceof QQBrowserActivity));
-        localObject = (QQBrowserActivity)localObject;
-      } while (QQBrowserActivity.a == localObject);
-      localWebView = this.a.mRuntime.a();
-    } while (localWebView == null);
-    localWebView.loadUrl(((QQBrowserActivity)localObject).I);
-  }
-  
-  public void a(int paramInt)
-  {
-    Message localMessage = this.a.a.obtainMessage();
-    localMessage.arg1 = 5;
-    localMessage.arg2 = paramInt;
-    this.a.a.sendMessage(localMessage);
-  }
-  
-  public void b(int paramInt)
-  {
-    Message localMessage = this.a.a.obtainMessage();
-    localMessage.arg1 = 4;
-    localMessage.arg2 = paramInt;
-    this.a.a.sendMessage(localMessage);
+        long l = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.b.a()).longValue();
+        this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.a(l, Long.valueOf(AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity)).longValue(), 1);
+      }
+      else
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131562449, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.d());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     buu
  * JD-Core Version:    0.7.0.1
  */

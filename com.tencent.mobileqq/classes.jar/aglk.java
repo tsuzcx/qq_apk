@@ -1,79 +1,55 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.mobileqq.pic.Logger;
-import com.tencent.mobileqq.pic.PresendPicMgr;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.hiboom.SquareRelativeLayout;
+import com.tencent.mobileqq.widget.NumberCheckBox;
+import mqq.util.WeakReference;
 
 public class aglk
-  extends Handler
+  extends RecyclerView.ViewHolder
 {
-  private final WeakReference a;
+  aglf jdField_a_of_type_Aglf;
+  public View a;
+  public FrameLayout a;
+  public ImageView a;
+  public TextView a;
+  public URLDrawable a;
+  public URLImageView a;
+  public SquareRelativeLayout a;
+  public NumberCheckBox a;
+  public ImageView b;
   
-  public aglk(Looper paramLooper, PresendPicMgr paramPresendPicMgr)
+  public aglk(agli paramagli, View paramView)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramPresendPicMgr);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    PresendPicMgr localPresendPicMgr = (PresendPicMgr)this.a.get();
-    if (localPresendPicMgr != null)
-    {
-      switch (paramMessage.what)
-      {
-      default: 
-        super.handleMessage(paramMessage);
-        return;
-      case 1: 
-        Logger.a("PresendPicMgr", "PresendHandler", "handleMessage MSG_REGISTER_CLIENT_HANDLER");
-        localPresendPicMgr.a = paramMessage.replyTo;
-        paramMessage = Message.obtain(null, 2);
-        ArrayList localArrayList = new ArrayList();
-        Object localObject = PresendPicMgr.a(localPresendPicMgr).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          localArrayList.add(((agll)((Iterator)localObject).next()).a);
-        }
-        localObject = new Bundle();
-        ((Bundle)localObject).putParcelableArrayList("flag_compressinfolist", localArrayList);
-        paramMessage.setData((Bundle)localObject);
-        try
-        {
-          localPresendPicMgr.a.send(paramMessage);
-          localPresendPicMgr.a = null;
-          PresendPicMgr.a(localPresendPicMgr);
-          localPresendPicMgr.b();
-          return;
-        }
-        catch (RemoteException paramMessage)
-        {
-          for (;;)
-          {
-            localPresendPicMgr.a = null;
-            if (QLog.isColorLevel()) {
-              QLog.e("PresendPicMgr", 2, paramMessage.getMessage(), paramMessage);
-            }
-            paramMessage.printStackTrace();
-          }
-        }
-      }
-      Logger.a("PresendPicMgr", "PresendHandler", "handleMessage MSG_UNREGISTER_CLIENT_HANDLER");
-      localPresendPicMgr.a = null;
-      return;
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqHiboomSquareRelativeLayout = ((SquareRelativeLayout)paramView.findViewById(2131366599));
+    if (PhotoListPanel.g() == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqHiboomSquareRelativeLayout.setCloseSquare(true);
     }
-    Logger.b("PresendPicMgr", "handleMessage", "PresendPicMgr == null!");
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368520));
+    this.jdField_a_of_type_Aglf = ((PhotoListPanel)paramagli.a.get()).a();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131368480));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131371847);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131368481));
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this.jdField_a_of_type_Aglf);
+    }
+    if ((((PhotoListPanel)paramagli.a.get()).m) && (this.jdField_a_of_type_AndroidWidgetFrameLayout != null)) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368589));
+    this.b = ((ImageView)paramView.findViewById(2131368521));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368588));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aglk
  * JD-Core Version:    0.7.0.1
  */

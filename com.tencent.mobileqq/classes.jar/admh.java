@@ -1,62 +1,27 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.forward.ForwardShareCardOption;
-import com.tencent.mobileqq.troopshare.TroopShareResp;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.PCActiveNoticeActiviy;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class admh
-  extends TroopObserver
+  implements DialogInterface.OnKeyListener
 {
-  public admh(ForwardShareCardOption paramForwardShareCardOption) {}
+  public admh(PCActiveNoticeActiviy paramPCActiveNoticeActiviy) {}
   
-  public void a(boolean paramBoolean, TroopShareResp paramTroopShareResp)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardShareCardOption", 2, "onTroopShareLink start");
-    }
-    this.a.t();
-    if (ForwardShareCardOption.a(this.a) != -1)
+    if (paramInt == 4)
     {
-      if ((!paramBoolean) || (paramTroopShareResp.jdField_a_of_type_Int != 0)) {
-        break label189;
-      }
-      if (paramTroopShareResp.jdField_a_of_type_Boolean)
-      {
-        ForwardShareCardOption.a(this.a, paramTroopShareResp.b);
-        if (ForwardShareCardOption.a(this.a) == 0) {}
-      }
-      else
-      {
-        do
-        {
-          return;
-          ForwardShareCardOption.b(this.a, paramTroopShareResp.b);
-        } while (ForwardShareCardOption.a(this.a) != 1);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardShareCardOption", 2, "mTroopVerifyLink=" + ForwardShareCardOption.a(this.a) + " mTroopNotNeedVefifyLink=" + ForwardShareCardOption.b(this.a));
-      }
-      if ((paramTroopShareResp.jdField_a_of_type_JavaLangString != null) && (paramTroopShareResp.jdField_a_of_type_JavaLangString.equals(ForwardShareCardOption.c(this.a)))) {
-        ForwardShareCardOption.a(this.a);
-      }
+      SettingCloneUtil.writeValue(this.a, PCActiveNoticeActiviy.a(this.a), null, "pcactive_notice_key", false);
+      this.a.finish();
     }
-    for (;;)
-    {
-      ForwardShareCardOption.a(this.a, -1);
-      return;
-      label189:
-      if (((paramTroopShareResp.jdField_a_of_type_Boolean) && (ForwardShareCardOption.a(this.a) != 0)) || ((!paramTroopShareResp.jdField_a_of_type_Boolean) && (ForwardShareCardOption.a(this.a) != 1))) {
-        break;
-      }
-      QQToast.a(this.a.a, 1, this.a.a.getString(2131435327), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     admh
  * JD-Core Version:    0.7.0.1
  */

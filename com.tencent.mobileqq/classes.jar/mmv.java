@@ -1,37 +1,52 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import java.net.URLEncoder;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
 
 public class mmv
-  implements Runnable
+  implements mkg
 {
-  public mmv(FastWebActivity paramFastWebActivity) {}
+  public mmv(VideoInviteActivity paramVideoInviteActivity, long paramLong) {}
   
-  public void run()
+  public void a()
   {
-    String str3 = "https://post.mp.qq.com/jubao/index?";
-    String str1 = str3;
-    if (FastWebActivity.a(this.a) != null) {}
-    try
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null)
     {
-      str1 = "https://post.mp.qq.com/jubao/index?" + "articleId=" + FastWebActivity.a(this.a).mArticleID + "&puin=" + FastWebActivity.a(this.a).mSubscribeID + "&url=" + URLEncoder.encode(FastWebActivity.a(this.a).mArticleContentUrl, "utf-8") + "&key=" + FastWebActivity.a(this.a).innerUniqueID + "&type=7&_wv=3";
-      ReadInJoyUtils.a(this.a, str1);
-      return;
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131372756, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131362956, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131362968, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131362967, false);
     }
-    catch (Exception localException)
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d = false;
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.i)
     {
-      for (;;)
+      long l = mto.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, 3, l);
+      if (!this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h)
       {
-        localException.printStackTrace();
-        String str2 = str3;
+        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h = true;
+        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, l, 2);
       }
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.e = true;
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.overridePendingTransition(0, 2130772165);
+      return;
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 246);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().b(246);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 0);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mmv
  * JD-Core Version:    0.7.0.1
  */

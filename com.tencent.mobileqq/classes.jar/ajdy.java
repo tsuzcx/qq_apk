@@ -1,53 +1,43 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.text.DecimalFormat;
 
 public class ajdy
-  extends Handler
 {
-  public ajdy(TroopFeedsDataManager paramTroopFeedsDataManager, Looper paramLooper)
+  public static String a;
+  public static DecimalFormat a;
+  private static boolean a;
+  public static String b;
+  public static String c;
+  private static String d;
+  public int a;
+  public long a;
+  public int b;
+  public long b;
+  
+  static
   {
-    super(paramLooper);
+    jdField_a_of_type_JavaLangString = "http://i.gtimg.cn/channel/exclusive_hb/socialpay_makehb_ani_";
+    jdField_b_of_type_JavaLangString = "http://i.gtimg.cn/channel/exclusive_hb/socialpay_aio_ani_";
+    c = jdField_a_of_type_JavaLangString;
+    d = jdField_b_of_type_JavaLangString;
+    jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#0.00");
   }
   
-  public void handleMessage(Message paramMessage)
+  public static String a()
   {
-    switch (paramMessage.what)
+    if (!jdField_a_of_type_Boolean)
     {
-    default: 
-    case 2: 
-    case 3: 
-    case 4: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.a = ((List)paramMessage.obj);
-          this.a.a(1000);
-          return;
-          this.a.a = ((List)paramMessage.obj);
-          TroopFeedsDataManager.a(this.a);
-          this.a.notifyObservers(Integer.valueOf(101));
-        } while (!QLog.isColorLevel());
-        QLog.d("TroopFeedsDataManager", 2, "end load feed: " + System.currentTimeMillis());
-        return;
-        this.a.a = ((List)paramMessage.obj);
-        TroopFeedsDataManager.b(this.a);
-        this.a.notifyObservers(Integer.valueOf(105));
-      } while (!QLog.isColorLevel());
-      QLog.d("TroopFeedsDataManager.troop.notification_center.auto_pull_down", 2, "end auto pull down feed");
-      return;
-    case 5: 
-      TroopFeedsDataManager.c(this.a);
-      this.a.notifyObservers(Integer.valueOf(1010));
-      return;
+      QQAppInterface localQQAppInterface = ajeu.a();
+      if (localQQAppInterface != null) {
+        d = ((aixs)localQQAppInterface.getManager(245)).a("hb_exclusive", jdField_b_of_type_JavaLangString, new String[] { "aio_red", "prefix" });
+      }
     }
-    TroopFeedsDataManager.d(this.a);
-    this.a.notifyObservers(Integer.valueOf(103));
+    return d;
+  }
+  
+  public String toString()
+  {
+    return "SpecifyAnimInfo{aId=" + this.jdField_a_of_type_Int + ", minPrice=" + this.jdField_a_of_type_Long + ", maxPrice=" + this.jdField_b_of_type_Long + ", skinId=" + this.jdField_b_of_type_Int + '}';
   }
 }
 

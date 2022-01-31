@@ -1,44 +1,42 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.KeyboardAndEmojiManager;
-
 public class nvb
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private int jdField_a_of_type_Int;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private boolean jdField_a_of_type_Boolean;
+  public int a;
+  public String a;
+  public int b;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g;
   
-  public nvb(KeyboardAndEmojiManager paramKeyboardAndEmojiManager) {}
-  
-  public void onGlobalLayout()
+  public nvb()
   {
-    KeyboardAndEmojiManager.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager).getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
-    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
-    if (i != this.jdField_a_of_type_Int)
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      int j = KeyboardAndEmojiManager.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager).getRootView().getHeight();
-      if (j - i <= j / 4) {
-        break label79;
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
       }
-      this.jdField_a_of_type_Boolean = true;
-      KeyboardAndEmojiManager.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = i;
-      return;
-      label79:
-      if (this.jdField_a_of_type_Boolean) {
-        KeyboardAndEmojiManager.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager);
-      }
-    }
+      paramObject = (nvb)paramObject;
+    } while (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvb
  * JD-Core Version:    0.7.0.1
  */

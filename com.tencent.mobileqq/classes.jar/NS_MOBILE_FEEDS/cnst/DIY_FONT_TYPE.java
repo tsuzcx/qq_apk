@@ -1,9 +1,12 @@
 package NS_MOBILE_FEEDS.cnst;
 
-public abstract interface DIY_FONT_TYPE {}
+public abstract interface DIY_FONT_TYPE
+{
+  public static final String value = "diy_font_type";
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cnst.DIY_FONT_TYPE
  * JD-Core Version:    0.7.0.1
  */

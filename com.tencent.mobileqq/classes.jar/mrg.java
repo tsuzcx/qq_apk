@@ -1,27 +1,28 @@
+import android.content.Context;
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
-import java.util.List;
+import com.tencent.av.ui.guide.GuideHelper.LottieDrawableHelper.2;
+import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
+import com.tencent.qphone.base.util.QLog;
 
 public class mrg
-  extends Handler
 {
-  public mrg(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void a(long paramLong, Context paramContext, String paramString, mrj parammrj)
   {
-    switch (paramMessage.what)
+    try
     {
-    default: 
+      LottieComposition.Factory.fromAssetFileName(paramContext, paramString, new mrh(this, paramContext, paramLong, parammrj));
       return;
     }
-    paramMessage = (List)paramMessage.obj;
-    ReadInJoyNewSearchActivity.a(this.a, paramMessage);
+    catch (Exception paramContext)
+    {
+      QLog.e("GuideHelper", 1, "fromAssetFileName fail, seq[" + paramLong + "]", paramContext);
+      bfvz.a().post(new GuideHelper.LottieDrawableHelper.2(this, parammrj));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mrg
  * JD-Core Version:    0.7.0.1
  */

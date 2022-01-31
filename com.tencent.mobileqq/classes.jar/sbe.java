@@ -1,69 +1,59 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
-import com.tencent.mobileqq.app.MessageRoamManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusBookData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import org.json.JSONObject;
 
-public class sbe
-  implements DialogInterface.OnDismissListener
+class sbe
+  extends sah
 {
-  public sbe(ChatHistoryForC2C paramChatHistoryForC2C, View paramView1, int paramInt, View paramView2, TranslateAnimation paramTranslateAnimation) {}
+  private Container a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public sbe(View paramView, BaseData paramBaseData)
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.b.setVisibility(0);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.a.setVisibility(0);
+    super(paramView, paramBaseData);
+    if ((paramView instanceof Container)) {
+      this.a = ((Container)paramView);
     }
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    Object localObject = (C2CMessageSearchDialog)paramDialogInterface;
-    boolean bool = ((C2CMessageSearchDialog)localObject).a();
-    int i = ((C2CMessageSearchDialog)localObject).a();
-    paramDialogInterface = (MessageRoamManager)this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.app.getManager(91);
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatHistoryForC2C", 2, "onDismiss, recordCount : " + i + ",showRoamFlag" + paramDialogInterface.d());
+  }
+  
+  private JSONObject a(ProteusBookData paramProteusBookData)
+  {
+    if (paramProteusBookData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo != null) {
+      return paramProteusBookData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.a(paramProteusBookData.b);
     }
-    localObject = ((C2CMessageSearchDialog)localObject).a();
-    if (localObject != null)
+    return null;
+  }
+  
+  private void b()
+  {
+    ViewFactory.findClickableViewListener(this.a.getVirtualView(), new sbf(this));
+  }
+  
+  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  {
+    switch (paramBaseData2.s)
     {
-      Calendar localCalendar1 = Calendar.getInstance();
-      localCalendar1.setTimeInMillis(((MessageRecord)localObject).time * 1000L);
-      localCalendar1.set(11, 0);
-      localCalendar1.set(12, 0);
-      localCalendar1.set(13, 0);
-      localCalendar1.set(14, 0);
-      Calendar localCalendar2 = paramDialogInterface.c();
-      if ((localCalendar2 != null) && (!localCalendar1.after(localCalendar2))) {
-        break label251;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("ChatHistoryForC2C", 2, "search message's date beyond the dateline, should rebuild the dateline");
-      }
     }
-    while (bool)
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.leftView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.getString(2131433698));
       return;
-      label251:
-      paramDialogInterface.a((MessageRecord)localObject);
+    } while (this.a == null);
+    paramBaseData1 = (ProteusBookData)paramBaseData2;
+    if (paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean != null)
+    {
+      paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.putDynamicJson(a(paramBaseData1));
+      opy.a(this.a.getVirtualView(), paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.getViewBean());
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.getIntent().getExtras().getString("leftViewText");
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.leftView.setText(paramDialogInterface);
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sbe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.widgets.QQMapRoutingHelper;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-
-public class tjw
-  implements View.OnClickListener
+public abstract interface tjw
 {
-  public tjw(QQMapActivity paramQQMapActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    if (!NetworkUtil.d(this.a)) {
-      this.a.x();
-    }
-    for (;;)
-    {
-      QQMapRoutingHelper.a("see_streetview");
-      return;
-      if (NetworkUtil.a(this.a)) {
-        this.a.p();
-      } else {
-        DialogUtil.a(this.a, 230).setTitle(this.a.getString(2131436445)).setMessage(2131436444).setPositiveButton(2131436446, new tjy(this)).setNegativeButton(2131433015, new tjx(this)).show();
-      }
-    }
-  }
+  public static final String a = String.valueOf(1000001);
+  public static final String b = String.valueOf(1000002);
+  public static final String c = String.valueOf(1000003);
+  public static final String d = String.valueOf(1000004);
+  public static final String e = String.valueOf(1000005);
+  public static final String f = String.valueOf(1000006);
+  public static final String g = String.valueOf(1001001);
+  public static final String h = String.valueOf(1001002);
+  public static final String i = String.valueOf(1001003);
+  public static final String j = String.valueOf(1003002);
+  public static final String k = String.valueOf(1003003);
+  public static final String l = String.valueOf(1003004);
+  public static final String m = String.valueOf(1003005);
+  public static final String n = String.valueOf(1003006);
+  public static final String o = String.valueOf(1003008);
+  public static final String p = String.valueOf(1003012);
+  public static final String q = String.valueOf(1004001);
+  public static final String r = String.valueOf(1004002);
+  public static final String s = String.valueOf(1007001);
+  public static final String t = String.valueOf(1007002);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tjw
  * JD-Core Version:    0.7.0.1
  */

@@ -36,11 +36,11 @@ public class GuideActivity
       finish();
       return false;
     }
-    paramBundle = LayoutInflater.from(this).inflate(2130903629, null);
+    paramBundle = LayoutInflater.from(this).inflate(2130903631, null);
     paramBundle.setOnTouchListener(this);
-    paramBundle.setBackgroundResource(2130839081);
+    paramBundle.setBackgroundResource(2130839083);
     setContentView(paramBundle);
-    paramBundle = (ImageView)findViewById(2131233164);
+    paramBundle = (ImageView)findViewById(2131233166);
     if (i == 2) {}
     for (;;)
     {
@@ -48,7 +48,7 @@ public class GuideActivity
       {
         paramBundle.setImageBitmap(BitmapFactory.decodeStream(new FileInputStream(new File(this.b.a().getFilesDir(), "VoiceToTextMask"))));
         paramBundle.setOnTouchListener(this);
-        ((ImageView)findViewById(2131233165)).setOnTouchListener(this);
+        ((ImageView)findViewById(2131233167)).setOnTouchListener(this);
         return true;
       }
       catch (Throwable paramBundle)
@@ -57,7 +57,7 @@ public class GuideActivity
         finish();
         return false;
       }
-      paramBundle.setImageResource(2130839082);
+      paramBundle.setImageResource(2130839084);
     }
   }
   

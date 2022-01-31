@@ -1,21 +1,50 @@
 package com.tencent.token;
 
-final class fw
-  extends fv
+import android.content.Context;
+import com.tencent.wcdb.database.SQLiteCipherSpec;
+import com.tencent.wcdb.database.SQLiteDatabase;
+import com.tencent.wcdb.database.SQLiteOpenHelper;
+
+public class fw
+  extends SQLiteOpenHelper
 {
-  int d = 1;
+  Context a;
   
-  fw()
+  fw(Context paramContext, String paramString, int paramInt, SQLiteCipherSpec paramSQLiteCipherSpec)
   {
-    super(1);
+    super(paramContext, a(paramInt), paramString.getBytes(), paramSQLiteCipherSpec, null, 1, new fu());
+    this.a = paramContext;
   }
   
-  fw(byte paramByte) {}
-  
-  public final String toString()
+  public static String a(int paramInt)
   {
-    return new fu(this, this.d).toString();
+    switch (paramInt)
+    {
+    default: 
+      return "mobiletoken.db";
+    case 0: 
+      return "mobiletoken_test.db";
+    case 1: 
+      return "mobiletoken.db";
+    case 2: 
+      return "mobiletoken_exp.db";
+    }
+    return "mobiletoken_gray.db";
   }
+  
+  protected void finalize()
+  {
+    try
+    {
+      close();
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase) {}
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
 }
 
 

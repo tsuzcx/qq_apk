@@ -1,19 +1,23 @@
-import java.util.concurrent.ThreadFactory;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class akgj
-  implements ThreadFactory
+public class akgj
+  implements ansr
 {
-  public Thread newThread(Runnable paramRunnable)
+  public akgj(SessionClearFragment paramSessionClearFragment) {}
+  
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    akgi.a();
-    paramRunnable = new Thread(paramRunnable, "InfiniteTaskThread_" + akgi.b());
-    paramRunnable.setDaemon(true);
-    return paramRunnable;
+    if (QLog.isColorLevel()) {
+      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForDiscuss onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    }
+    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akgj
  * JD-Core Version:    0.7.0.1
  */

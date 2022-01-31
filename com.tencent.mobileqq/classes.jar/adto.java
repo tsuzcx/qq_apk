@@ -1,36 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.intervideo.groupvideo.GVideoLoadingUI;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
+import QQService.SvcDevLoginInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import java.util.ArrayList;
 
 public class adto
-  extends Handler
+  implements View.OnClickListener
 {
-  public adto(GroupVideoLoadingFragment paramGroupVideoLoadingFragment, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public adto(RecentLoginDevActivity paramRecentLoginDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    int i = paramMessage.arg1;
-    if (i < GroupVideoLoadingFragment.a(this.a)) {
-      return;
-    }
-    GroupVideoLoadingFragment.b(this.a, i);
-    GroupVideoLoadingFragment.a(this.a).a(GroupVideoLoadingFragment.a(this.a), 0L);
-    paramMessage = Message.obtain();
-    if (GroupVideoLoadingFragment.a(this.a) >= 90) {
-      i += 1;
-    }
-    for (;;)
-    {
-      paramMessage.arg1 = i;
-      sendMessageDelayed(paramMessage, 500L);
-      return;
-      i += 8;
-    }
+    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramView.stDeviceItemDes);
+    RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, paramView.strDeviceName, localArrayList, RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity), this.jdField_a_of_type_Int);
   }
 }
 

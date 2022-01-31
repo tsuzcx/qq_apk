@@ -1,24 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
-import com.tencent.mobileqq.app.CardHandler;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 
-public class tdo
-  implements DialogInterface.OnClickListener
+class tdo
+  implements AbsListView.OnScrollListener
 {
-  public tdo(NotifyPCActiveActivity paramNotifyPCActiveActivity, CardHandler paramCardHandler) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  tdo(tdn paramtdn) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.b(true);
-    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity.finish();
+    if ((paramInt3 > 0) && (paramAbsListView.getFirstVisiblePosition() + paramInt2 >= paramInt3)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (paramInt == 0) && (!tdn.a(this.jdField_a_of_type_Tdn)) && (!tdn.b(this.jdField_a_of_type_Tdn)))
+    {
+      tlo.c(tdn.a(this.jdField_a_of_type_Tdn), "onScrollStateChanged scrollState:" + paramInt);
+      tdn.a(this.jdField_a_of_type_Tdn, this.jdField_a_of_type_Tdn.a().a(tdn.b(this.jdField_a_of_type_Tdn)));
+      if (tdn.c(this.jdField_a_of_type_Tdn) != null)
+      {
+        this.jdField_a_of_type_Tdn.a().a(tdn.a(this.jdField_a_of_type_Tdn), true);
+        tdn.a(this.jdField_a_of_type_Tdn, true);
+      }
+    }
+    else
+    {
+      return;
+    }
+    tlo.c(tdn.a(this.jdField_a_of_type_Tdn), "mCommentAttachInfo is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tdo
  * JD-Core Version:    0.7.0.1
  */

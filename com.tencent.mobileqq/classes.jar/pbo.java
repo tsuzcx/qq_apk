@@ -1,29 +1,34 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.WeakReferenceRunnable;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class pbo
-  implements IphonePickerView.PickerViewAdapter
+  implements TVK_SDKMgr.InstallListener
 {
-  public pbo(NewerGuidePlugin paramNewerGuidePlugin, String[] paramArrayOfString) {}
+  public pbo(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
   
-  public int getColumnCount()
+  public void onInstallProgress(float paramFloat)
   {
-    return 1;
+    aase.a("ReadInjoyIMAXAdFragment", "installSDK onInstallProgress arg0=");
   }
   
-  public int getRowCount(int paramInt)
+  public void onInstalledFailed(int paramInt)
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangString.length;
+    aase.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledFailed arg0=");
   }
   
-  public String getText(int paramInt1, int paramInt2)
+  public void onInstalledSuccessed()
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt2];
+    aase.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledSuccessed");
+    if ((ReadInjoyIMAXAdFragment.a()) && (ReadInjoyIMAXAdFragment.b(this.a) != null)) {
+      ReadInjoyIMAXAdFragment.b(this.a).post(new ReadInjoyIMAXAdFragment.WeakReferenceRunnable(this.a, 4));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pbo
  * JD-Core Version:    0.7.0.1
  */

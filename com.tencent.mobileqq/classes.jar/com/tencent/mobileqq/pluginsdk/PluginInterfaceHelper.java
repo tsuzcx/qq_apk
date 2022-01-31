@@ -7,35 +7,30 @@ import java.lang.ref.WeakReference;
 
 public class PluginInterfaceHelper
 {
-  private static PluginInterface a;
-  private static WeakReference b;
-  private static ServiceConnection c = new e();
+  private static PluginInterface sInterface;
+  private static WeakReference<PluginInterfaceHelper.OnPluginInterfaceLoadedListener> sListener;
+  private static ServiceConnection sSc = new PluginInterfaceHelper.1();
   
   public static void destory(Context paramContext)
   {
-    PluginRemoteProcessor.get().cancel(c);
+    PluginRemoteProcessor.get().cancel(sSc);
   }
   
-  public static void getPluginInterface(Context paramContext, OnPluginInterfaceLoadedListener paramOnPluginInterfaceLoadedListener)
+  public static void getPluginInterface(Context paramContext, PluginInterfaceHelper.OnPluginInterfaceLoadedListener paramOnPluginInterfaceLoadedListener)
   {
     if (QLog.isColorLevel()) {
       QLog.i("plugin_tag", 2, "PluginInterfaceHelper.getPluginInterface");
     }
-    PluginInterface localPluginInterface = a;
+    PluginInterface localPluginInterface = sInterface;
     if ((localPluginInterface == null) || (!localPluginInterface.isValid()))
     {
-      b = new WeakReference(paramOnPluginInterfaceLoadedListener);
-      PluginRemoteProcessor.get().process(paramContext, c, 0);
+      sListener = new WeakReference(paramOnPluginInterfaceLoadedListener);
+      PluginRemoteProcessor.get().process(paramContext, sSc, 0);
     }
     while (paramOnPluginInterfaceLoadedListener == null) {
       return;
     }
     paramOnPluginInterfaceLoadedListener.onPluginInterfaceLoaded(localPluginInterface);
-  }
-  
-  public static abstract interface OnPluginInterfaceLoadedListener
-  {
-    public abstract void onPluginInterfaceLoaded(PluginInterface paramPluginInterface);
   }
 }
 

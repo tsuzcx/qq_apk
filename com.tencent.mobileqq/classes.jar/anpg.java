@@ -1,26 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.widget.AdapterView;
-import dov.com.qq.im.capture.view.MusicProviderView;
-import dov.com.qq.im.capture.view.ProviderView.ProviderViewListener;
+import android.content.Context;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
 
-public class anpg
-  implements DialogInterface.OnClickListener
+class anpg
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public anpg(MusicProviderView paramMusicProviderView, AdapterView paramAdapterView, View paramView, int paramInt, long paramLong) {}
+  anpg(anpd paramanpd, String paramString, Context paramContext) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    paramDialogInterface.dismiss();
-    MusicProviderView.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener.ay_();
-    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.a(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    if ((paramInt == 0) && (paramAppPathInfo.path != null)) {
+      ArkAppCacheMgr.getAppIcon(this.jdField_a_of_type_JavaLangString, new anph(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpg
  * JD-Core Version:    0.7.0.1
  */

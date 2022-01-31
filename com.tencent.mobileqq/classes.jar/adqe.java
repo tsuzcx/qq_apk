@@ -1,29 +1,34 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import mqq.os.MqqHandler;
 
 public class adqe
-  implements TVK_SDKMgr.InstallListener
+  extends BroadcastReceiver
 {
-  public adqe(HotPicPageView paramHotPicPageView, HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, int paramInt) {}
+  public adqe(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ThreadManager.getUIHandler().post(new adqh(this));
-    if (QLog.isColorLevel()) {
-      QLog.d("HotPicManagerHotPicPageView", 2, "tencent sdk onInstalledFail");
+    paramContext = paramIntent.getAction();
+    if (("tencent.av.v2q.StartVideoChat".equals(paramContext)) || ("tencent.av.v2q.AvSwitch".equals(paramContext)))
+    {
+      i = paramIntent.getIntExtra("sessionType", 0);
+      QLog.d("qq_Identification.act", 1, "received video chat broadcast: " + i);
+      if ((i == 2) || (i == 4))
+      {
+        QQIdentiferActivity.a(this.a, 204, atho.a);
+        QQIdentiferActivity.a(this.a, 204, atho.a);
+        this.a.finish();
+      }
     }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
-    new Thread(new adqf(this)).run();
+    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext))
+    {
+      int i;
+      return;
+    }
+    this.a.finish();
   }
 }
 

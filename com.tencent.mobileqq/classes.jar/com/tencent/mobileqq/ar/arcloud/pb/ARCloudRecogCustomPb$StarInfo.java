@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ARCloudRecogCustomPb$StarInfo
-  extends MessageMicro
+  extends MessageMicro<StarInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 53, 58, 64, 72, 80, 88, 98, 808, 816 }, new String[] { "uin", "face_rect_id", "name", "star_wiki", "star_wiki_jumpurl", "confidence", "pinyin_name", "side_face", "mask", "sunglasses", "perspective", "star_wiki_title", "enum_game_id", "uint32_be_killed" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), "", "", "", Float.valueOf(0.0F), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0) }, StarInfo.class);
   public final PBFloatField confidence = PBField.initFloat(0.0F);
@@ -31,7 +31,7 @@ public final class ARCloudRecogCustomPb$StarInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.StarInfo
  * JD-Core Version:    0.7.0.1
  */

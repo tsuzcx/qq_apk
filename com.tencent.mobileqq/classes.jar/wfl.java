@@ -1,20 +1,16 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.widget.QQToast;
-
-class wfl
-  implements Runnable
+public class wfl
+  extends uli
 {
-  wfl(wfk paramwfk) {}
+  public int a;
   
-  public void run()
+  public String toString()
   {
-    QQToast.a(this.a.a, "对不起，视频处理异常...", 0).b(this.a.a.getResources().getDimensionPixelSize(2131558448));
+    return "ChangeVideoSortEvent " + super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wfl
  * JD-Core Version:    0.7.0.1
  */

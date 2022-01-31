@@ -1,19 +1,17 @@
-import com.tencent.component.network.utils.thread.AsyncTask;
-
-public class plo
+class plo
+  implements qci
 {
-  final AsyncTask jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask;
-  final Object[] jdField_a_of_type_ArrayOfJavaLangObject;
+  plo(plm paramplm, pgd parampgd, rqj paramrqj) {}
   
-  public plo(AsyncTask paramAsyncTask, Object... paramVarArgs)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask = paramAsyncTask;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
+    ors.a = this.jdField_a_of_type_Pgd.a();
+    ors.a(this.jdField_a_of_type_Rqj.a(), this.jdField_a_of_type_Pgd.a(), 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     plo
  * JD-Core Version:    0.7.0.1
  */

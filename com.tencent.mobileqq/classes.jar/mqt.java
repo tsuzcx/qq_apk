@@ -1,25 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.IBitmapCallback;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob;
+import android.os.Handler;
+import android.os.Message;
 import java.lang.ref.WeakReference;
 
-public class mqt
-  implements Runnable
+class mqt
+  extends Handler
 {
-  public mqt(RunningJob paramRunningJob, WeakReference paramWeakReference, Throwable paramThrowable) {}
+  final String jdField_a_of_type_JavaLangString;
+  WeakReference<mqs> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void run()
+  mqt(String paramString, mqs parammqs)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.a.a) {}
-    while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammqs);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    mqs localmqs = (mqs)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localmqs != null) {}
+    switch (paramMessage.what)
+    {
+    default: 
       return;
     }
-    ((IBitmapCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.a, this.jdField_a_of_type_JavaLangThrowable);
+    mqs.a(localmqs);
+    lek.c(this.jdField_a_of_type_JavaLangString, "ITEM_DISPEAR");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mqt
  * JD-Core Version:    0.7.0.1
  */

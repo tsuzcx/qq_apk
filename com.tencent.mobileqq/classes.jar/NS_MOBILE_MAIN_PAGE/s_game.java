@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class s_game
   extends JceStruct
 {
-  static ArrayList cache_stVecGame;
-  public ArrayList stVecGame;
+  static ArrayList<s_one_game> cache_stVecGame;
+  public ArrayList<s_one_game> stVecGame;
   public long uTotalCount;
   
   public s_game() {}
   
-  public s_game(long paramLong, ArrayList paramArrayList)
+  public s_game(long paramLong, ArrayList<s_one_game> paramArrayList)
   {
     this.uTotalCount = paramLong;
     this.stVecGame = paramArrayList;

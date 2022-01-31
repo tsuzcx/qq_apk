@@ -1,40 +1,49 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.fragment.WebEffectsCameraCaptureFragment;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class ahkk
-  extends BroadcastReceiver
+  extends Handler
 {
-  public ahkk(WebEffectsCameraCaptureFragment paramWebEffectsCameraCaptureFragment) {}
+  public WeakReference<GroupSearchRecommendView> a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public ahkk(GroupSearchRecommendView paramGroupSearchRecommendView)
   {
-    if ("tencent.video.q2v.startUploadPTV".equals(paramIntent.getAction())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOEffectsCameraCaptureFragment", 2, "receive ACTION_BLESS_UPLOAD_PTV.");
-      }
-    }
-    switch (paramIntent.getIntExtra("broadcastType", 1))
-    {
-    default: 
-    case 1: 
-      do
-      {
-        return;
-        paramContext = this.a.getActivity();
-      } while ((paramContext == null) || (paramContext.isFinishing()));
-      paramContext.finish();
+    this.a = new WeakReference(paramGroupSearchRecommendView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    GroupSearchRecommendView localGroupSearchRecommendView = (GroupSearchRecommendView)this.a.get();
+    if (localGroupSearchRecommendView == null) {
       return;
     }
-    WebEffectsCameraCaptureFragment.a(this.a, true);
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      GroupSearchRecommendView.a(localGroupSearchRecommendView);
+      return;
+    case 2: 
+      if (QLog.isColorLevel()) {
+        QLog.i("GroupSearchRecommendView", 2, "fetch data successfully");
+      }
+      GroupSearchRecommendView.a(localGroupSearchRecommendView, false);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("GroupSearchRecommendView", 2, "fetch data failed");
+    }
+    GroupSearchRecommendView.a(localGroupSearchRecommendView, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahkk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,33 @@
 package com.tencent.token.ui;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.token.af;
-import com.tencent.token.p;
+import android.os.Handler;
+import android.os.HandlerThread;
 
-final class xk
-  implements View.OnClickListener
+class xk
+  implements DialogInterface.OnClickListener
 {
-  xk(xg paramxg) {}
+  xk(RealNameStep1InputNameIdActivity paramRealNameStep1InputNameIdActivity, boolean paramBoolean) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.dismiss();
-    p.a().a(System.currentTimeMillis(), 94);
-    this.a.a.showProDialogWithoutShutDown(this.a.a, this.a.a.getResources().getString(2131361817));
-    af.a().a(0L, RealNameStep1InputNameIdActivity.access$1500(this.a.a), 3, RealNameStep1InputNameIdActivity.access$1600(this.a.a).getText().toString(), RealNameStep1InputNameIdActivity.access$1700(this.a.a).getText().toString(), null, null, null, RealNameStep1InputNameIdActivity.access$1800(this.a.a), RealNameStep1InputNameIdActivity.access$1900(this.a.a), RealNameStep1InputNameIdActivity.access$2000(this.a.a));
+    if (RealNameStep1InputNameIdActivity.access$2800(this.b) == null)
+    {
+      RealNameStep1InputNameIdActivity.access$2802(this.b, new HandlerThread("uploadphoto", 1));
+      RealNameStep1InputNameIdActivity.access$2800(this.b).start();
+    }
+    if (RealNameStep1InputNameIdActivity.access$2900(this.b) == null) {
+      RealNameStep1InputNameIdActivity.access$2902(this.b, new Handler(RealNameStep1InputNameIdActivity.access$2800(this.b).getLooper()));
+    }
+    RealNameStep1InputNameIdActivity.access$2900(this.b).post(new xl(this));
+    if (this.a)
+    {
+      this.b.showProDialogWithoutShutDown(this.b, this.b.getResources().getString(2131231298));
+      return;
+    }
+    RealNameStep1InputNameIdActivity.access$3000(this.b);
   }
 }
 

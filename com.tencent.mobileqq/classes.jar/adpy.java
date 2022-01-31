@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.hotpic.HotPicManager;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import mqq.util.WeakReference;
 
 public class adpy
-  implements Runnable
+  implements bevu
 {
-  public adpy(HotPicManager paramHotPicManager) {}
+  final WeakReference<QQBrowserActivity> a;
   
-  public void run()
+  public adpy(QQBrowserActivity paramQQBrowserActivity)
   {
-    this.a.a();
+    this.a = new WeakReference(paramQQBrowserActivity);
+  }
+  
+  public void onTabSelected(int paramInt1, int paramInt2)
+  {
+    QQBrowserActivity localQQBrowserActivity = (QQBrowserActivity)this.a.get();
+    if (localQQBrowserActivity == null) {}
+    while (paramInt1 == paramInt2) {
+      return;
+    }
+    QQBrowserActivity.a(paramInt2, localQQBrowserActivity);
   }
 }
 

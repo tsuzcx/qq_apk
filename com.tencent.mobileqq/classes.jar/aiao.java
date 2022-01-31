@@ -1,26 +1,20 @@
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.LyricItem;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
-public class aiao
-  implements Comparator
+class aiao
+  implements aupv
 {
-  public aiao(ResourceManager paramResourceManager) {}
+  aiao(aian paramaian) {}
   
-  public int a(ResourceManager.LyricItem paramLyricItem1, ResourceManager.LyricItem paramLyricItem2)
+  public void a()
   {
-    if (paramLyricItem1.b < paramLyricItem2.b) {
-      return -1;
-    }
-    if (paramLyricItem1.b > paramLyricItem2.b) {
-      return 1;
-    }
-    return 0;
+    this.a.jdField_a_of_type_Auqc.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
+    this.a.jdField_a_of_type_Auqc.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.v();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiao
  * JD-Core Version:    0.7.0.1
  */

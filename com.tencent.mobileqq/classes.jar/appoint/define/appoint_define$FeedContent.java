@@ -10,14 +10,14 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class appoint_define$FeedContent
-  extends MessageMicro
+  extends MessageMicro<FeedContent>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_private_data = PBField.initBytes(ByteStringMicro.EMPTY);
   public appoint_define.ADFeed msg_ad = new appoint_define.ADFeed();
   public appoint_define.LocaleInfo msg_locale = new appoint_define.LocaleInfo();
   public appoint_define.RichText msg_text = new appoint_define.RichText();
-  public final PBRepeatField rpt_str_pic_url = PBField.initRepeat(PBStringField.__repeatHelper__);
+  public final PBRepeatField<String> rpt_str_pic_url = PBField.initRepeat(PBStringField.__repeatHelper__);
   public final PBStringField str_group_bulletin = PBField.initString("");
   public final PBStringField str_group_name = PBField.initString("");
   public final PBStringField str_href_url = PBField.initString("");
@@ -36,7 +36,7 @@ public final class appoint_define$FeedContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     appoint.define.appoint_define.FeedContent
  * JD-Core Version:    0.7.0.1
  */

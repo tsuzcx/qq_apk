@@ -1,33 +1,29 @@
-import com.tencent.biz.qqstory.newshare.job.UrlDrawableDownloadJob;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class ngg
-  implements URLDrawable.URLDrawableListener
+class ngg
+  extends Handler
 {
-  public ngg(UrlDrawableDownloadJob paramUrlDrawableDownloadJob) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  ngg(ngf paramngf, Looper paramLooper)
   {
-    UrlDrawableDownloadJob.c(this.a, false);
+    super(paramLooper);
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void handleMessage(Message paramMessage)
   {
-    UrlDrawableDownloadJob.b(this.a, false);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.a.a("UrlDrawableDownloadJob_dra", paramURLDrawable.getCurrDrawable());
-    UrlDrawableDownloadJob.a(this.a, true);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a = true;
+    ngf.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ngg
  * JD-Core Version:    0.7.0.1
  */

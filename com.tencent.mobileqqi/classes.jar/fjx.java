@@ -1,45 +1,35 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.QQUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.transfile.ProtoReqManager.IProtoRespBack;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import tencent.mobileim.structmsg.structmsg.RspHead;
+import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
 
 public class fjx
-  extends Handler
+  implements ProtoReqManager.IProtoRespBack
 {
-  public fjx(QQAppInterface paramQQAppInterface, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public fjx(SystemMessageProcessor paramSystemMessageProcessor, long paramLong1, long paramLong2, long paramLong3) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
   {
-    if (paramMessage.what == 990)
+    try
     {
-      paramMessage = QQAppInterface.a(this.a);
-      QQAppInterface.a(this.a, null);
-      QQAppInterface.a(this.a).removeMessages(990);
-      ArrayList localArrayList = new ArrayList();
-      if ((paramMessage != null) && (paramMessage.size() > 0))
-      {
-        int i = 0;
-        while (i < paramMessage.size())
-        {
-          localArrayList.add(this.a.b(1, (String)paramMessage.get(i)));
-          i += 1;
-        }
-        Intent localIntent = new Intent("com.tencent.qqhead.getheadresp");
-        localIntent.putStringArrayListExtra("uinList", paramMessage);
-        localIntent.putStringArrayListExtra("headPathList", localArrayList);
-        this.a.a().sendBroadcast(localIntent);
-      }
+      paramProtoResp = paramProtoResp.a.getWupBuffer();
+      paramProtoReq = new structmsg.RspSystemMsgRead();
+      paramProtoReq.mergeFrom(paramProtoResp);
+      int i = paramProtoReq.head.result.get();
       if (QLog.isColorLevel()) {
-        QQUtils.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, getQQHead resp uinList: ", paramMessage);
+        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
       }
+      return;
+    }
+    catch (Exception paramProtoResp)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", paramProtoResp);
     }
   }
 }

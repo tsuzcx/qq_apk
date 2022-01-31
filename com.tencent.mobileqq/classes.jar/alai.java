@@ -1,32 +1,50 @@
-import android.graphics.Bitmap;
-import android.os.Message;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.MsgIconsurl;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import cooperation.qqfav.util.HandlerPlus;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
-class alai
-  implements Runnable
+public class alai
+  implements TVK_SDKMgr.OnLogListener
 {
-  alai(alae paramalae, GetAppInfoProto.MsgIconsurl paramMsgIconsurl) {}
+  public static String a = "cmgame_process.CmGameVideoLogImpl";
   
-  public void run()
+  public int d(String paramString1, String paramString2)
   {
-    Bitmap localBitmap = AuthorityActivity.a(this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$MsgIconsurl.url.get());
-    this.jdField_a_of_type_Alae.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(AuthorityActivity.f, localBitmap);
-    if (localBitmap != null)
-    {
-      Message localMessage = new Message();
-      localMessage.obj = localBitmap;
-      localMessage.what = 4;
-      this.jdField_a_of_type_Alae.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(localMessage);
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, paramString1 + ":" + paramString2);
     }
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    QLog.e(a, 1, paramString1 + ":" + paramString2);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    QLog.w(a, 1, paramString1 + ":" + paramString2);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alai
  * JD-Core Version:    0.7.0.1
  */

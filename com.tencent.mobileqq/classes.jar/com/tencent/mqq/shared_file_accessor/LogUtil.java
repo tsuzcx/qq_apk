@@ -21,14 +21,14 @@ public class LogUtil
     Log.e(paramString1, paramString2);
   }
   
-  public static j timeLogBegin()
+  public static d timeLogBegin()
   {
-    return new j();
+    return new d();
   }
   
-  public static void timeLogEnd(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, e parame, boolean paramBoolean, j paramj) {}
+  public static void timeLogEnd(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, c paramc, boolean paramBoolean, d paramd) {}
   
-  public static void timeLogEnd(String paramString, j paramj) {}
+  public static void timeLogEnd(String paramString, d paramd) {}
 }
 
 

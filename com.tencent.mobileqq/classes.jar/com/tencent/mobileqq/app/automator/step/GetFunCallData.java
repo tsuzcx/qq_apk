@@ -2,22 +2,22 @@ package com.tencent.mobileqq.app.automator.step;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import becr;
+import bedc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.vipav.VipFunCallManager;
-import com.tencent.mobileqq.vipav.VipSetFunCallHandler;
 import com.tencent.qphone.base.util.QLog;
 
 public class GetFunCallData
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
-    long l = VipFunCallManager.a(this.a.b, 1, null).getLong("update_time", 0L);
+    long l = becr.a(this.a.app, 1, null).getLong("update_time", 0L);
     if ((System.currentTimeMillis() - l > 14400000L) || (System.currentTimeMillis() < l))
     {
-      ((VipSetFunCallHandler)this.a.b.a(46)).a(1, new Bundle());
+      ((bedc)this.a.app.a(46)).a(1, new Bundle());
       if (QLog.isColorLevel()) {
         QLog.d("GetFunCallData", 2, "doStep SUB_CMD_GET_MY_FC.");
       }

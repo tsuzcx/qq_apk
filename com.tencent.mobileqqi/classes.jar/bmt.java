@@ -1,32 +1,16 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.biz.PoiMapActivity.ShopListAdapter;
-import com.tencent.biz.PoiMapActivity.Shops;
-import com.tencent.biz.coupon.CouponActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.qrcode.activity.QRLoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bmt
-  implements AdapterView.OnItemClickListener
+class bmt
+  extends Thread
 {
-  public bmt(PoiMapActivity paramPoiMapActivity) {}
+  bmt(bms parambms, String paramString) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    paramAdapterView = this.a.a.a(paramInt);
-    if (paramAdapterView == null) {}
-    do
-    {
-      return;
-      paramView = new Intent(this.a, CouponActivity.class);
-      paramView.putExtra("url", paramAdapterView.g);
-      this.a.startActivity(paramView);
-      if (paramAdapterView.b != 0) {
-        this.a.a("rec_locate", "view_share_tuan", paramAdapterView.h, "", "");
-      }
-    } while (paramAdapterView.c == 0);
-    this.a.a("rec_locate", "click_quan", paramAdapterView.h, "", "");
+    Drawable localDrawable = this.jdField_a_of_type_Bms.a.b.b(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bms.a.runOnUiThread(new bmu(this, localDrawable));
   }
 }
 

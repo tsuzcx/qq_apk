@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Yoqish</string>
+    <string name="b">Google Play xizmatlari yoqilmaguncha, %1$s ishlamaydi.</string>
+    <string name="c">Google Play xizmatlarini yoqish</string>
+    <string name="d">O‘rnatish</string>
+    <string name="e">%1$s ishlashi uchun qurilmangizda Google Play xizmatlarini o‘rnatish lozim.</string>
+    <string name="f">Google Play xizmatlarini o‘rnatish</string>
+    <string name="g">Google Play xizmatlari xatosi</string>
+    <string name="h">%1$s ilovasini Google Play xizmatlariga ulab bo‘lmadi. Qaytadan urinib ko‘ring.</string>
+    <string name="i">%1$s ilovasi Google Play xizmatlarisiz ishlamaydi, biroq qurilmangiz ularni qo‘llab-quvvatlamaydi.</string>
+    <string name="j">Yangilash</string>
+    <string name="k">Google Play xizmatlari yangilanmaguncha, %1$s ishga tushmaydi.</string>
+    <string name="l">Google Play xizmatlarini yangilash</string>
+    <string name="m">%1$s ilovasining ishlashi uchun zarur Google Play xizmatlari hozirda yangilanmoqda.</string>
+    <string name="n">Google Play xizmatlarining yangi versiyasi zarur. U o‘zini qisqa vaqt ichida yangilaydi.</string>
+    <string name="o">Telefonda ochish</string>
+    <string name="p">Kirish</string>
+    <string name="q">Google orqali kirish</string>
+    <string name="r">999+</string>
+</resources>

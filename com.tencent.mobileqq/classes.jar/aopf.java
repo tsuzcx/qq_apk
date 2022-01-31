@@ -1,97 +1,98 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
-import com.tencent.mobileqq.utils.FileUtils;
-import dov.com.tencent.mobileqq.shortvideo.PendantVersionManager;
-import java.io.File;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.QLog;
 
-class aopf
+public class aopf
+  extends aokh<aopc>
 {
-  public static String a()
+  public static aopc b(int paramInt)
   {
-    String str = BaseApplicationImpl.getApplication().getSharedPreferences("other_res_short_video_mgr_sp", 4).getString("other_res_sv_md5_version_soname_key", "other_res000_0");
-    boolean bool = PendantVersionManager.a(str, 1);
-    VideoEnvironment.a("ShortVideoOtherResourceMgr", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
-    if (bool) {
-      return str;
+    aopc localaopc = (aopc)aoks.a().a(paramInt);
+    if (localaopc != null) {
+      return localaopc;
     }
-    return "other_res000_0";
+    return new aopc();
   }
   
-  static boolean a()
+  public int a()
   {
-    return true;
+    return 466;
   }
   
-  static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
+  @NonNull
+  public aopc a(int paramInt)
+  {
+    return new aopc();
+  }
+  
+  @Nullable
+  public aopc a(aoko[] paramArrayOfaoko)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfaoko != null)
+    {
+      localObject1 = localObject2;
+      if (paramArrayOfaoko.length > 0)
+      {
+        localObject1 = paramArrayOfaoko[0].a;
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          break label125;
+        }
+        QLog.d("OpenSdkRandomProcessor", 1, "OpenVirtual.[onParsed] type=" + a() + ", content = " + (String)localObject1);
+      }
+    }
+    try
+    {
+      paramArrayOfaoko = (aopd)aolc.a(localObject1, aopd.class);
+      localObject1 = new aopc((String)localObject1, paramArrayOfaoko);
+      return localObject1;
+    }
+    catch (QStorageInstantiateException paramArrayOfaoko)
+    {
+      for (;;)
+      {
+        QLog.i("OpenSdkRandomProcessor", 1, "readJsonOrXml:" + (String)localObject1 + "fail", paramArrayOfaoko);
+        paramArrayOfaoko = null;
+      }
+    }
+    label125:
+    QLog.d("OpenSdkRandomProcessor", 1, "OpenVirtual.[onParsed] content is empty, config type = " + a());
+    return null;
+  }
+  
+  public Class<aopc> a()
+  {
+    return aopc.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aopc paramaopc)
+  {
+    QLog.d("OpenSdkRandomProcessor", 1, "OpenVirtual.[onUpdate] type=" + a() + ", content = " + paramaopc.a());
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
   {
     return false;
   }
   
-  static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  public boolean c()
   {
-    paramQQAppInterface = b();
-    paramQQAppInterface = paramQQAppInterface + paramString1 + File.separator;
-    File localFile = new File(paramQQAppInterface);
-    if (localFile.exists()) {
-      if ((a().equals(paramString1)) && (PendantVersionManager.b(paramQQAppInterface, "other_res_config_file"))) {
-        VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:[checkUnzipFileListSizeIsOK]success=true", null);
-      }
-    }
-    for (;;)
-    {
-      return false;
-      FileUtils.a(paramQQAppInterface);
-      VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:[deleteDirectory|already exists]unzipPath=" + paramQQAppInterface, null);
-      boolean bool = localFile.mkdirs();
-      VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:[exists]mkOK=" + bool, null);
-      try
-      {
-        FileUtils.a(paramString2, paramQQAppInterface, false);
-        bool = PendantVersionManager.b(paramQQAppInterface, "other_res_config_file");
-        VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK success=" + bool, null);
-        if (bool)
-        {
-          bool = a(paramString1);
-          VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK saveOK=" + bool, null);
-          if (bool) {
-            continue;
-          }
-          bool = a(paramString1);
-          VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK[two]saveOK=" + bool, null);
-          return false;
-        }
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        paramQQAppInterface.printStackTrace();
-        return true;
-      }
-    }
     return true;
-  }
-  
-  private static boolean a(String paramString)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("other_res_short_video_mgr_sp", 4).edit();
-    localEditor.putString("other_res_sv_md5_version_soname_key", paramString);
-    return localEditor.commit();
-  }
-  
-  public static String b()
-  {
-    String str = PtvFilterSoLoad.a(VideoEnvironment.a());
-    return str + "other_res_cache" + File.separator;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aopf
  * JD-Core Version:    0.7.0.1
  */

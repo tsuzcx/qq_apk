@@ -1,51 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.international.LocaleUtil;
 
 public class dfu
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public dfu(ProfileCardMoreActivity paramProfileCardMoreActivity, String paramString) {}
+  public dfu(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.b, "CliOper", "", "", "P_prof", "Pp_more_delete", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.f), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
-    if (NetworkUtil.e(BaseApplication.getContext()))
-    {
-      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.b.a(1)).c(this.jdField_a_of_type_JavaLangString, (byte)2);
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.b.a(ChatActivity.class);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
-      }
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.b.a(ChatSettingActivity.class);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent = new Intent();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent.putExtra("finchat", true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.setResult(-1, this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent);
-      this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.finish();
+    if (!RegisterPhoneNumActivity.a(this.a)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.a(2131561432, 1);
+    RegisterPhoneNumActivity.a(this.a, false);
+    this.a.jdField_b_of_type_AndroidOsHandler.postDelayed(new dfv(this), 1000L);
+    paramView = new Intent(this.a, QQBrowserActivity.class);
+    if (LocaleUtil.a(this.a.getApplicationContext()) == 2) {
+      this.a.jdField_b_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString.replace("{language}", "ch_simple");
+    }
+    for (;;)
+    {
+      paramView.putExtra("url", this.a.jdField_b_of_type_JavaLangString);
+      this.a.startActivity(paramView);
+      return;
+      if (LocaleUtil.a(this.a.getApplicationContext()) == 3) {
+        this.a.jdField_b_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString.replace("{language}", "ch_chT");
+      } else if (LocaleUtil.a(this.a.getApplicationContext()) == 1) {
+        this.a.jdField_b_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString.replace("{language}", "English");
+      } else if (LocaleUtil.a(this.a.getApplicationContext()) == 4) {
+        this.a.jdField_b_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString.replace("{language}", "Japanese");
+      } else if (LocaleUtil.a(this.a.getApplicationContext()) == 5) {
+        this.a.jdField_b_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString.replace("{language}", "Korean");
+      } else if (LocaleUtil.a(this.a.getApplicationContext()) == 6) {
+        this.a.jdField_b_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString.replace("{language}", "Deutsch");
+      } else if (LocaleUtil.a(this.a.getApplicationContext()) == 7) {
+        this.a.jdField_b_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString.replace("{language}", "Fran");
+      } else if (LocaleUtil.a(this.a.getApplicationContext()) == 8) {
+        this.a.jdField_b_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString.replace("{language}", "Espa");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dfu
  * JD-Core Version:    0.7.0.1
  */

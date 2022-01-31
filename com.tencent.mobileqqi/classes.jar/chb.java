@@ -1,29 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-public final class chb
-  implements Runnable
+public class chb
+  implements DialogInterface.OnClickListener
 {
-  public chb(String paramString, QQAppInterface paramQQAppInterface) {}
+  public chb(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = ChatBackgroundSettingActivity.a();
-    ChatBackgroundSettingActivity.c = ChatBackgroundSettingActivity.a(BaseApplication.getContext(), (List)localObject, this.jdField_a_of_type_JavaLangString);
-    localObject = ChatBackgroundSettingActivity.a.obtainMessage();
-    ((Message)localObject).what = 1;
-    ((Message)localObject).obj = new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface };
-    if (QLog.isColorLevel())
+    if (NetworkUtil.e(this.a.a()))
     {
-      QLog.d("ThemeDownloadTrace", 2, "bgin to report chat bg info");
-      QLog.d("ThemeDownloadTrace", 2, "initCurrChatBgNameForReport is:" + ChatBackgroundSettingActivity.c);
+      ReportController.b(this.a.b, "CliOper", "", "", "0X80040EA", "0X80040EA", 0, 0, "", "", "", "");
+      DiscussionInfoCardActivity.a(this.a).d(Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue());
+      this.a.a(this.a.getString(2131562648));
+      DiscussionInfoCardActivity.a(this.a).show();
+      return;
     }
-    ChatBackgroundSettingActivity.a.sendMessage((Message)localObject);
+    this.a.a(1, this.a.getString(2131562488));
   }
 }
 

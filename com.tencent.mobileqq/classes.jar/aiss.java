@@ -1,12 +1,26 @@
-import android.content.DialogInterface;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
-public final class aiss
-  extends DialogUtil.DialogOnClickAdapter
+class aiss
+  implements bjvv
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  aiss(aisq paramaisq, LocalMediaInfo paramLocalMediaInfo) {}
+  
+  public void a(boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    if (paramBoolean)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation == 90) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight))
+      {
+        int i = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth = i;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.setPanoramaType();
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.setPanoramaType();
   }
 }
 

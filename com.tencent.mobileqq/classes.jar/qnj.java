@@ -1,85 +1,135 @@
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingView;
-import com.tencent.gdtad.views.videoceiling.GdtWebViewBuilder;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerItem;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.VideoBannerItem;
 
 public class qnj
-  extends GdtWebViewBuilder
+  extends qnf
 {
-  public qnj(GdtVideoCeilingView paramGdtVideoCeilingView, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
+  public int b;
+  public long b;
+  public int c;
+  public long c;
+  public int d;
+  public int e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public String h = "";
+  public String i = "";
+  
+  public qnj()
   {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
+    super(2);
+    this.jdField_f_of_type_JavaLangString = "";
+    this.jdField_g_of_type_JavaLangString = "";
   }
   
-  public void a(WebView paramWebView, String paramString)
+  public static qnf b(oidb_cmd0xbc9.BannerItem paramBannerItem)
   {
-    super.a(paramWebView, paramString);
-    GdtLog.b("GdtVideoCeilingView", "onReceivedTitle: " + paramString);
-    if ((GdtVideoCeilingView.a(this.a) != null) && (!TextUtils.isEmpty(paramString))) {
-      GdtVideoCeilingView.a(this.a).setText(paramString);
+    if (!paramBannerItem.msg_video_banner_item.has()) {
+      return null;
     }
-  }
-  
-  public void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.a(paramWebView, paramString, paramBitmap);
-    GdtLog.b("GdtVideoCeilingView", "onPageStarted:" + paramString);
-  }
-  
-  public boolean a(WebView paramWebView, String paramString)
-  {
-    GdtLog.b("GdtVideoCeilingView", "shouldOverrideUrlLoading:" + paramString);
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
-    Object localObject;
-    do
-    {
-      return true;
-      localObject = ((CustomWebView)paramWebView).a();
-      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
-      {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-        for (boolean bool = true;; bool = false) {
-          return bool;
-        }
-      }
-      paramString = Uri.parse(paramString);
-      localObject = paramString.getScheme();
-    } while (!AuthorizeConfig.a().a(paramWebView.getUrl(), (String)localObject).booleanValue());
-    paramWebView = new Intent("android.intent.action.VIEW", paramString);
-    paramWebView.addFlags(268435456);
-    try
-    {
-      this.e.startActivity(paramWebView);
-      return true;
+    oidb_cmd0xbc9.VideoBannerItem localVideoBannerItem = (oidb_cmd0xbc9.VideoBannerItem)paramBannerItem.msg_video_banner_item.get();
+    qnj localqnj = new qnj();
+    if (localVideoBannerItem.bytes_share_url.has()) {
+      localqnj.jdField_f_of_type_JavaLangString = localVideoBannerItem.bytes_share_url.get().toStringUtf8();
     }
-    catch (ActivityNotFoundException paramWebView)
-    {
-      GdtLog.d("GdtVideoCeilingView", paramWebView.toString());
+    if (localVideoBannerItem.uint32_video_duration.has()) {
+      localqnj.jdField_b_of_type_Int = localVideoBannerItem.uint32_video_duration.get();
     }
-    return true;
+    if (localVideoBannerItem.uint32_video_width.has()) {
+      localqnj.jdField_c_of_type_Int = localVideoBannerItem.uint32_video_width.get();
+    }
+    if (localVideoBannerItem.uint32_video_height.has()) {
+      localqnj.d = localVideoBannerItem.uint32_video_height.get();
+    }
+    if (localVideoBannerItem.bytes_video_vid.has()) {
+      localqnj.jdField_g_of_type_JavaLangString = localVideoBannerItem.bytes_video_vid.get().toStringUtf8();
+    }
+    if (localVideoBannerItem.bytes_video_cover.has()) {
+      localqnj.jdField_c_of_type_JavaLangString = localVideoBannerItem.bytes_video_cover.get().toStringUtf8();
+    }
+    if (localVideoBannerItem.bytes_inner_uinque_id.has()) {
+      localqnj.jdField_e_of_type_JavaLangString = localVideoBannerItem.bytes_inner_uinque_id.get().toStringUtf8();
+    }
+    if (localVideoBannerItem.uint32_busi_type.has()) {
+      localqnj.jdField_e_of_type_Int = localVideoBannerItem.uint32_busi_type.get();
+    }
+    if (localVideoBannerItem.bytes_title.has()) {
+      localqnj.i = localVideoBannerItem.bytes_title.get().toStringUtf8();
+    }
+    if (localVideoBannerItem.bytes_account_name.has()) {
+      localqnj.h = localVideoBannerItem.bytes_account_name.get().toStringUtf8();
+    }
+    if (localVideoBannerItem.uint64_account_uin.has()) {
+      localqnj.jdField_b_of_type_Long = localVideoBannerItem.uint64_account_uin.get();
+    }
+    if (localVideoBannerItem.uint32_is_ugc.has()) {
+      localqnj.jdField_f_of_type_Int = localVideoBannerItem.uint32_is_ugc.get();
+    }
+    if (localVideoBannerItem.uint64_feeds_id.has()) {
+      localqnj.jdField_c_of_type_Long = localVideoBannerItem.uint64_feeds_id.get();
+    }
+    if (localVideoBannerItem.uint32_feeds_type.has()) {
+      localqnj.jdField_g_of_type_Int = localVideoBannerItem.uint32_feeds_type.get();
+    }
+    a(localqnj, paramBannerItem);
+    a(paramBannerItem, localqnj);
+    return localqnj;
   }
   
-  public void b(WebView paramWebView, String paramString)
+  public oidb_cmd0xbc9.BannerItem a()
   {
-    super.b(paramWebView, paramString);
-    GdtLog.b("GdtVideoCeilingView", "onPageFinished:" + paramString);
+    oidb_cmd0xbc9.BannerItem localBannerItem = super.a();
+    oidb_cmd0xbc9.VideoBannerItem localVideoBannerItem = new oidb_cmd0xbc9.VideoBannerItem();
+    if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) {
+      localVideoBannerItem.bytes_share_url.set(ByteStringMicro.copyFromUtf8(this.jdField_f_of_type_JavaLangString));
+    }
+    localVideoBannerItem.uint32_video_duration.set(this.jdField_b_of_type_Int);
+    localVideoBannerItem.uint32_video_width.set(this.jdField_c_of_type_Int);
+    localVideoBannerItem.uint32_video_height.set(this.d);
+    if (!TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString)) {
+      localVideoBannerItem.bytes_video_vid.set(ByteStringMicro.copyFromUtf8(this.jdField_g_of_type_JavaLangString));
+    }
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      localVideoBannerItem.bytes_video_cover.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    }
+    if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
+      localVideoBannerItem.bytes_inner_uinque_id.set(ByteStringMicro.copyFromUtf8(this.jdField_e_of_type_JavaLangString));
+    }
+    localVideoBannerItem.uint32_busi_type.set(this.jdField_e_of_type_Int);
+    if (!TextUtils.isEmpty(this.i)) {
+      localVideoBannerItem.bytes_title.set(ByteStringMicro.copyFromUtf8(this.i));
+    }
+    if (!TextUtils.isEmpty(this.h)) {
+      localVideoBannerItem.bytes_account_name.set(ByteStringMicro.copyFromUtf8(this.h));
+    }
+    localVideoBannerItem.uint64_account_uin.set(this.jdField_b_of_type_Long);
+    localVideoBannerItem.uint32_is_ugc.set(this.jdField_f_of_type_Int);
+    localVideoBannerItem.uint64_feeds_id.set(this.jdField_c_of_type_Long);
+    localVideoBannerItem.uint32_feeds_type.set(this.jdField_g_of_type_Int);
+    localBannerItem.msg_video_banner_item.set(localVideoBannerItem);
+    return localBannerItem;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_f_of_type_Int == 1;
+  }
+  
+  public String toString()
+  {
+    return super.toString() + " vid: " + this.jdField_g_of_type_JavaLangString + " puin : " + this.jdField_b_of_type_Long + " busitype " + this.jdField_e_of_type_Int + " accountName : " + this.h + "  shareUrl : " + this.jdField_f_of_type_JavaLangString + " isUgc " + this.jdField_f_of_type_Int + " feedsId " + this.jdField_c_of_type_Long + " feedsType " + this.jdField_g_of_type_Int + " videoTitle: " + this.i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qnj
  * JD-Core Version:    0.7.0.1
  */

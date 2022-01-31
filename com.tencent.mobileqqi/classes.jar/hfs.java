@@ -1,11 +1,13 @@
-public abstract class hfs
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
+
+class hfs
+  implements PermissionDialogCallback
 {
-  public int a;
-  public byte[] a;
+  hfs(hfr paramhfr) {}
   
-  public abstract int a(int paramInt);
+  public void a() {}
   
-  public abstract boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean);
+  public void b() {}
 }
 
 

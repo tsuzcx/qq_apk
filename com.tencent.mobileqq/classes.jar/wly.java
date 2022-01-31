@@ -1,30 +1,47 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDisAdapter;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
-import java.util.HashMap;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetYearNodeListReceiver.1;
+import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
 public class wly
-  implements Comparator
+  extends QQUIEventReceiver<wlu, wmo>
 {
-  public wly(ContactsDisAdapter paramContactsDisAdapter, HashMap paramHashMap) {}
-  
-  public int a(Entity paramEntity1, Entity paramEntity2)
+  public wly(wlu paramwlu)
   {
-    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity1).uin)).longValue();
-    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity2).uin)).longValue();
-    if (l1 < l2) {
-      return -1;
+    super(paramwlu);
+  }
+  
+  public void a(@NonNull wlu paramwlu, @NonNull wmo paramwmo)
+  {
+    if (paramwmo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      paramwmo = paramwmo.jdField_a_of_type_JavaUtilList.iterator();
+      for (int i = 0; paramwmo.hasNext(); i = ((MomeriesYearNode)paramwmo.next()).videoCount + i) {}
+      if (i >= 0)
+      {
+        wxe.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(i));
+        wlu.a(paramwlu, i);
+        if (paramwlu.a != null)
+        {
+          paramwlu.a.videoCount = wlu.a(paramwlu);
+          ThreadManager.post(new MemoriesProfilePresenter.GetYearNodeListReceiver.1(this, paramwlu), 5, null, false);
+        }
+      }
     }
-    if (l1 > l2) {
-      return 1;
-    }
-    return 0;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wmo.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wly
  * JD-Core Version:    0.7.0.1
  */

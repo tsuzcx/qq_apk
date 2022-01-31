@@ -1,19 +1,34 @@
-import android.widget.TextView;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.animation.AlphaAnimation;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyStaticGridView;
 
-class oza
-  implements Runnable
+public class oza
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  oza(oyz paramoyz, int paramInt) {}
+  public oza(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, ReadInJoyStaticGridView paramReadInJoyStaticGridView, View paramView) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_Oyz.a.b.setText(this.jdField_a_of_type_Int + "");
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getHeight() > 0) {
+      if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
+    }
+    while (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0) {
+      return;
+    }
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 0.0F);
+    localAlphaAnimation.setFillAfter(true);
+    localAlphaAnimation.setDuration(400L);
+    localAlphaAnimation.setAnimationListener(new ozb(this));
+    this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oza
  * JD-Core Version:    0.7.0.1
  */

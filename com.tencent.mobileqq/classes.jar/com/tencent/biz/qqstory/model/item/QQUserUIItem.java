@@ -1,32 +1,34 @@
 package com.tencent.biz.qqstory.model.item;
 
+import alto;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.Copyable;
 import com.tencent.biz.qqstory.database.OfficialRecommendEntry;
 import com.tencent.biz.qqstory.database.UserEntry;
 import com.tencent.biz.qqstory.model.BaseUIItem;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.network.handler.GetUserIconHandler;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserInfo;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.UsrIcon;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.WatcherExt;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.common.StringAppendTool;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.FeedUtils;
-import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import ulj;
+import uwa;
+import uwm;
+import uxe;
+import vde;
+import wrm;
+import wxe;
+import xre;
 
 public class QQUserUIItem
   extends BaseUIItem
-  implements Copyable, IFeedOwner
+  implements ulj, uxe
 {
   public static final int RELATION_TYPE_FOLLOWER = 1;
   public static final int RELATION_TYPE_QQ_FRIEND = 0;
@@ -37,6 +39,7 @@ public class QQUserUIItem
   public int fansCount = -1;
   public int fansCountExtra = -1;
   public int followCount = -1;
+  public int gradeSpeed = -2147483648;
   public long groupIdInGroup = -1L;
   public int hasLike = -1;
   public String headUrl;
@@ -47,6 +50,7 @@ public class QQUserUIItem
   public boolean isVip;
   public int mComparePartInt;
   public String mCompareSpell;
+  public int medalLevel = -2147483648;
   public String nickName;
   public String nickPostfix;
   public String qq;
@@ -54,6 +58,7 @@ public class QQUserUIItem
   public String remark;
   public int shareGroupCount = -1;
   public String signature;
+  public int sourceTagType = -2147483648;
   public String symbolUrl;
   public String uid;
   public int videoCount = -1;
@@ -93,6 +98,9 @@ public class QQUserUIItem
     this.iconJumpUrl = paramUserEntry.iconJumpUrl;
     this.iconUrlCacheTime = paramUserEntry.dbCacheTime;
     this.wsScahema = paramUserEntry.wsSchema;
+    this.medalLevel = paramUserEntry.medalLevel;
+    this.gradeSpeed = paramUserEntry.gradeSpeed;
+    this.sourceTagType = paramUserEntry.sourceTagType;
   }
   
   public static boolean isNotDovUser(String paramString)
@@ -142,6 +150,9 @@ public class QQUserUIItem
     localUserEntry.iconJumpUrl = this.iconJumpUrl;
     localUserEntry.dbCacheTime = this.iconUrlCacheTime;
     localUserEntry.wsSchema = this.wsScahema;
+    localUserEntry.medalLevel = this.medalLevel;
+    localUserEntry.gradeSpeed = this.gradeSpeed;
+    localUserEntry.sourceTagType = this.sourceTagType;
     return localUserEntry;
   }
   
@@ -150,7 +161,7 @@ public class QQUserUIItem
     int i = 1;
     this.uid = paramUserInfo.union_id.get().toStringUtf8();
     this.qq = String.valueOf(paramUserInfo.uid.get());
-    ((UserManager)SuperManager.a(2)).a(this.uid, this.qq);
+    ((uwm)uwa.a(2)).a(this.uid, this.qq);
     this.nickName = paramUserInfo.nick.get().toStringUtf8();
     this.headUrl = paramUserInfo.head_url.get().toStringUtf8();
     boolean bool;
@@ -183,15 +194,14 @@ public class QQUserUIItem
       if (paramUserInfo.watcher.has()) {
         this.hasLike = paramUserInfo.watcher.has_like.get();
       }
-      if (paramUserInfo.is_subscribe.has()) {
+      if (paramUserInfo.is_subscribe.has())
+      {
         if (paramUserInfo.is_subscribe.get() != 1) {
-          break label521;
+          break label603;
         }
+        label312:
+        this.isSubscribe = i;
       }
-    }
-    for (;;)
-    {
-      this.isSubscribe = i;
       if (paramUserInfo.friend_type.has()) {
         this.relationType = paramUserInfo.friend_type.get();
       }
@@ -214,11 +224,28 @@ public class QQUserUIItem
       if (paramUserInfo.ws_schema.has()) {
         this.wsScahema = paramUserInfo.ws_schema.get().toStringUtf8();
       }
+      if (paramUserInfo.medal_level.has()) {
+        this.medalLevel = paramUserInfo.medal_level.get();
+      }
+      if (paramUserInfo.grade_speed.has()) {
+        this.gradeSpeed = paramUserInfo.grade_speed.get();
+      }
+      if (!paramUserInfo.video_source_tag_type.has()) {
+        break label608;
+      }
+    }
+    label603:
+    label608:
+    for (this.sourceTagType = paramUserInfo.video_source_tag_type.get();; this.sourceTagType = 0)
+    {
+      if (QLog.isColorLevel()) {
+        wxe.a("UserManager", "convert %s", this.uid);
+      }
       return;
       bool = false;
       break;
-      label521:
       i = 0;
+      break label312;
     }
   }
   
@@ -239,7 +266,7 @@ public class QQUserUIItem
       if (!TextUtils.isEmpty(paramObject.headUrl))
       {
         if ((isMe()) && (!TextUtils.isEmpty(this.headUrl)) && (!TextUtils.equals(this.headUrl, paramObject.headUrl))) {
-          SLog.b("UserManager", "urlchange: %s -> %s  hashCode = %d -> %d %s", new Object[] { this.headUrl, paramObject.headUrl, Integer.valueOf(hashCode()), Integer.valueOf(paramObject.hashCode()), FeedUtils.a(8) });
+          wxe.b("UserManager", "urlchange: %s -> %s  hashCode = %d -> %d %s", new Object[] { this.headUrl, paramObject.headUrl, Integer.valueOf(hashCode()), Integer.valueOf(paramObject.hashCode()), xre.a(8) });
         }
         this.headUrl = paramObject.headUrl;
       }
@@ -297,8 +324,17 @@ public class QQUserUIItem
       if (paramObject.iconUrlCacheTime != -1L) {
         this.iconUrlCacheTime = paramObject.iconUrlCacheTime;
       }
-    } while (TextUtils.isEmpty(paramObject.wsScahema));
-    this.wsScahema = paramObject.wsScahema;
+      if (!TextUtils.isEmpty(paramObject.wsScahema)) {
+        this.wsScahema = paramObject.wsScahema;
+      }
+      if (paramObject.medalLevel != -2147483648) {
+        this.medalLevel = paramObject.medalLevel;
+      }
+      if (paramObject.gradeSpeed != -2147483648) {
+        this.gradeSpeed = paramObject.gradeSpeed;
+      }
+    } while (paramObject.sourceTagType == -2147483648);
+    this.sourceTagType = paramObject.sourceTagType;
   }
   
   public boolean equals(Object paramObject)
@@ -361,8 +397,10 @@ public class QQUserUIItem
     if (QLog.isColorLevel()) {
       QLog.d("QQUserUIItem", 2, "cache time between :" + String.valueOf(l - this.iconUrlCacheTime));
     }
-    if ((this.iconUrlCacheTime == -1L) || (l - this.iconUrlCacheTime > 3600000L)) {
-      new GetUserIconHandler().a(this.uid);
+    if ((this.iconUrlCacheTime == -1L) || (l - this.iconUrlCacheTime > 3600000L))
+    {
+      new vde();
+      vde.a(this.uid);
     }
     return this.iconUrl;
   }
@@ -399,7 +437,7 @@ public class QQUserUIItem
       bool2 = bool1;
     } while (bool1);
     QQStoryContext.a();
-    return ((FriendsManager)QQStoryContext.a().getManager(50)).b(this.qq);
+    return ((alto)QQStoryContext.a().getManager(51)).b(this.qq);
   }
   
   public boolean isMe()
@@ -459,12 +497,12 @@ public class QQUserUIItem
   
   public String toString()
   {
-    return StringAppendTool.a(new Object[] { "QQUserUIItem{nickName=", this.nickName, ", uid=", this.uid, ", isVip=", Boolean.valueOf(this.isVip), ",qq=", this.qq, ",isSubscribe=", Integer.valueOf(this.isSubscribe), ", headUrl=", this.headUrl });
+    return wrm.a(new Object[] { "QQUserUIItem{nickName=", this.nickName, ", uid=", this.uid, ", isVip=", Boolean.valueOf(this.isVip), ",qq=", this.qq, ",isSubscribe=", Integer.valueOf(this.isSubscribe), ", headUrl=", this.headUrl, ", sourceTagType=", Integer.valueOf(this.sourceTagType) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.QQUserUIItem
  * JD-Core Version:    0.7.0.1
  */

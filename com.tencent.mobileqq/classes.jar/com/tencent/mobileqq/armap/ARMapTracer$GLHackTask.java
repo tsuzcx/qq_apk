@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.armap;
 
 import android.os.SystemClock;
-import com.tencent.mobileqq.armap.utils.MapLog;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -13,7 +12,7 @@ public class ARMapTracer$GLHackTask
   private static GLHackTask b;
   private GLHackTask jdField_a_of_type_ComTencentMobileqqArmapARMapTracer$GLHackTask;
   private Runnable jdField_a_of_type_JavaLangRunnable;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<ARGLSurfaceView> jdField_a_of_type_JavaLangRefWeakReference;
   
   public ARMapTracer$GLHackTask(Runnable paramRunnable, ARGLSurfaceView paramARGLSurfaceView)
   {
@@ -68,13 +67,13 @@ public class ARMapTracer$GLHackTask
     {
       str2 = GLHackTask.class.getSimpleName();
       if (this.jdField_a_of_type_JavaLangRunnable == null) {
-        break label118;
+        break label122;
       }
     }
-    label118:
+    label122:
     for (String str1 = this.jdField_a_of_type_JavaLangRunnable.getClass().getName();; str1 = "default")
     {
-      MapLog.d(str2, "%s cost: %d", new Object[] { str1, Long.valueOf(l) });
+      QLog.d(str2, 2, new Object[] { "%s cost: %d", str1, Long.valueOf(l) });
       a();
       return;
     }
@@ -82,7 +81,7 @@ public class ARMapTracer$GLHackTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ARMapTracer.GLHackTask
  * JD-Core Version:    0.7.0.1
  */

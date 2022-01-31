@@ -1,48 +1,70 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader.VideoFrameLoaderListener;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-public class aocl
-  implements Runnable
+public final class aocl
 {
-  public aocl(VideoFrameLoader paramVideoFrameLoader) {}
+  public int a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  public void run()
+  public aocl()
   {
-    if (VideoFrameLoader.a(this.a) != VideoFrameLoader.a(this.a).size())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFrameLoader", 2, "onLoadEnd , framecount error!" + VideoFrameLoader.a(this.a) + "-" + VideoFrameLoader.a(this.a).size());
-      }
-      if ((!VideoFrameLoader.a(this.a)) && (VideoFrameLoader.a(this.a).size() == 0))
-      {
-        VideoFrameLoader.a(this.a, true);
-        this.a.b();
-        VideoFrameLoader.a(this.a, new aocg(VideoFrameLoader.a(this.a), VideoFrameLoader.b(this.a), VideoFrameLoader.c(this.a), VideoFrameLoader.a(this.a), VideoFrameLoader.d(this.a), VideoFrameLoader.a(this.a), VideoFrameLoader.b(this.a), this.a));
-        ThreadManager.post(VideoFrameLoader.a(this.a), 10, null, true);
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoFrameLoader", 2, "onLoadEnd , retry with retriever!");
-        }
-      }
-    }
-    for (;;)
-    {
-      return;
-      if (VideoFrameLoader.a(this.a) != null) {}
-      for (VideoFrameLoader.VideoFrameLoaderListener localVideoFrameLoaderListener = (VideoFrameLoader.VideoFrameLoaderListener)VideoFrameLoader.a(this.a).get(); localVideoFrameLoaderListener != null; localVideoFrameLoaderListener = null)
-      {
-        localVideoFrameLoaderListener.c();
-        return;
-      }
-    }
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public aocl a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public aocl a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public aocl a(byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    return this;
+  }
+  
+  public ColorNote a()
+  {
+    return new ColorNote(this);
+  }
+  
+  public aocl b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public aocl b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public aocl c(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public aocl d(String paramString)
+  {
+    this.d = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aocl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,39 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.CircleMemberListActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.GuardManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.observer.QZoneObserver;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzonePluginProxyActivity;
 
 public class eib
-  extends Handler
+  extends QZoneObserver
 {
-  public eib(CircleMemberListActivity paramCircleMemberListActivity) {}
+  public eib(MainAssistObserver paramMainAssistObserver) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    int i;
-    int j;
-    if (paramMessage.what == 1000)
+    if ((paramBoolean1) && (paramBoolean2))
     {
-      i = CircleMemberListActivity.a(this.a).q();
-      j = CircleMemberListActivity.a(this.a).r();
-      if (i <= 0) {
-        break label63;
+      if (QLog.isColorLevel()) {
+        QLog.d("MainActivity", 2, "inform onGetQZoneFeedCountFin");
       }
-      i -= 1;
+      if ((this.a.a != null) && (this.a.a.b != null)) {}
     }
-    for (;;)
+    else
     {
-      this.a.b.a(new eic(this, i, j - 1));
       return;
-      label63:
-      i = 0;
     }
+    QQAppInterface localQQAppInterface = this.a.a.b;
+    if (!GuardManager.a.a()) {
+      QzonePluginProxyActivity.a(localQQAppInterface);
+    }
+    this.a.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eib
  * JD-Core Version:    0.7.0.1
  */

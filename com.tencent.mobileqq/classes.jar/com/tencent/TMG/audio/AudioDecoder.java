@@ -26,8 +26,8 @@ public class AudioDecoder
   private MediaExtractor mediaExtractor = null;
   int nFirstThreeFrameInfo = 3;
   int nFrameSize = 3840;
-  private OnCompleteListener onCompleteListener = null;
-  private OnProgressListener onProgressListener = null;
+  private AudioDecoder.OnCompleteListener onCompleteListener = null;
+  private AudioDecoder.OnProgressListener onProgressListener = null;
   int sampleRate = 0;
   private String srcPath;
   
@@ -41,7 +41,7 @@ public class AudioDecoder
         this.mediaExtractor = new MediaExtractor();
         this.mediaExtractor.setDataSource(this.srcPath);
         if (this.mediaExtractor.getTrackCount() <= 1) {
-          break label527;
+          break label522;
         }
         if (QLog.isColorLevel()) {
           QLog.w("TRAE", 0, "m_nIndex: " + this.m_nIndex + " initMediaDecode mediaExtractor container video, getTrackCount: " + this.mediaExtractor.getTrackCount());
@@ -76,7 +76,7 @@ public class AudioDecoder
         this.nFrameSize = (this.sampleRate * this.channels * 2 * 20 / 1000);
         this.decRingBuffer = new RingBuffer(this.nFrameSize * paramInt);
         if (QLog.isColorLevel()) {
-          QLog.w("TRAE", 0, "m_nIndex: " + this.m_nIndex + " initMediaDecode open succeed, mp3 format:(" + this.sampleRate + "," + this.channels + "), fileTotalMs:" + this.fileTotalMs + "ms" + " RingBufferFrame:" + paramInt);
+          QLog.w("TRAE", 0, "m_nIndex: " + this.m_nIndex + " initMediaDecode open succeed, mp3 format:(" + this.sampleRate + "," + this.channels + "), fileTotalMs:" + this.fileTotalMs + "ms RingBufferFrame:" + paramInt);
         }
       }
       if (this.mediaDecode == null)
@@ -102,7 +102,7 @@ public class AudioDecoder
         this.IsTenFramesReady = false;
         this.nFirstThreeFrameInfo = 3;
         return 0;
-        label527:
+        label522:
         i = 0;
       }
     }
@@ -126,7 +126,7 @@ public class AudioDecoder
     int j;
     label142:
     int k;
-    label208:
+    label207:
     do
     {
       return;
@@ -147,7 +147,7 @@ public class AudioDecoder
       localByteBuffer.clear();
       k = this.mediaExtractor.readSampleData(localByteBuffer, 0);
       if (k >= 0) {
-        break label436;
+        break label435;
       }
       if (QLog.isColorLevel()) {
         QLog.w("TRAE", 0, "m_nIndex: " + this.m_nIndex + " srcAudioFormatToPCM readSampleData over,end");
@@ -182,9 +182,9 @@ public class AudioDecoder
         }
         catch (Exception localException)
         {
-          label436:
+          label435:
           if (!QLog.isColorLevel()) {
-            break label516;
+            break label515;
           }
           QLog.w("TRAE", 0, "m_nIndex: " + this.m_nIndex + " srcAudioFormatToPCM wrong outputIndex: " + i);
           this.codeOver = true;
@@ -194,9 +194,9 @@ public class AudioDecoder
       break label142;
       this.mediaDecode.queueInputBuffer(i, 0, k, 0L, 0);
       this.mediaExtractor.advance();
-      break label208;
+      break label207;
     }
-    label516:
+    label515:
   }
   
   public int ReadOneFrame(byte[] paramArrayOfByte, int paramInt)
@@ -310,29 +310,19 @@ public class AudioDecoder
     this.m_nIndex = paramInt;
   }
   
-  public void setOnCompleteListener(OnCompleteListener paramOnCompleteListener)
+  public void setOnCompleteListener(AudioDecoder.OnCompleteListener paramOnCompleteListener)
   {
     this.onCompleteListener = paramOnCompleteListener;
   }
   
-  public void setOnProgressListener(OnProgressListener paramOnProgressListener)
+  public void setOnProgressListener(AudioDecoder.OnProgressListener paramOnProgressListener)
   {
     this.onProgressListener = paramOnProgressListener;
-  }
-  
-  public static abstract interface OnCompleteListener
-  {
-    public abstract void completed();
-  }
-  
-  public static abstract interface OnProgressListener
-  {
-    public abstract void progress();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.TMG.audio.AudioDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,12 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.troop.model.VidToGroupInfoPuller;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-
-public class oob
-  extends SimpleJob
+public abstract class oob
 {
-  public oob(VidToGroupInfoPuller paramVidToGroupInfoPuller) {}
+  private oob(omz paramomz) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    this.a.b();
-    return null;
-  }
+  public abstract void a(ooe paramooe);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oob
  * JD-Core Version:    0.7.0.1
  */

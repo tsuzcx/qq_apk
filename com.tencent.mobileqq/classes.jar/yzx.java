@@ -1,30 +1,31 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
+import com.jakewharton.disklrucache.DiskLruCache.Snapshot;
+import java.io.InputStream;
 
-public final class yzx
-  implements Animation.AnimationListener
+public class yzx
 {
-  public yzx(View paramView) {}
+  private DiskLruCache.Snapshot jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache$Snapshot;
+  private InputStream jdField_a_of_type_JavaIoInputStream;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public yzx(yzw paramyzw) {}
+  
+  public InputStream a()
   {
-    if ((this.a != null) && (this.a.getVisibility() == 0))
-    {
-      paramAnimation = AnimationUtils.loadAnimation(this.a.getContext(), 2131034320);
-      paramAnimation.setAnimationListener(this);
-      this.a.startAnimation(paramAnimation);
-    }
+    return this.jdField_a_of_type_JavaIoInputStream;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(DiskLruCache.Snapshot paramSnapshot)
+  {
+    this.jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache$Snapshot = paramSnapshot;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(InputStream paramInputStream)
+  {
+    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yzx
  * JD-Core Version:    0.7.0.1
  */

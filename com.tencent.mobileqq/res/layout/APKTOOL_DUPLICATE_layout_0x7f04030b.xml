@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1176" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1177" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d067f" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d067f">
-        <com.tencent.av.funchat.AVListImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1178" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d067f" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d067f" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201cc" />
-        <com.tencent.mobileqq.widget.CircleProgress android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1179" android:layout_width="16.0dip" android:layout_height="16.0dip" android:scaleType="fitXY" android:layout_centerInParent="true" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a117a" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="3.0dip" android:layout_marginBottom="3.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021678" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-</LinearLayout>

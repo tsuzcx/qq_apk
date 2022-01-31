@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingTop="@dimen/aln" android:paddingBottom="@dimen/all" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/alu" android:textColor="@color/skin_unite_search_text_black_000000_6991b8" android:ellipsize="end" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ajk" android:layout_marginRight="@dimen/ajk" android:layout_marginBottom="10.0dip" android:maxLines="2" android:singleLine="true" android:includeFontPadding="false" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/de4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ajk" android:layout_marginRight="@dimen/ajk">
+        <com.tencent.mobileqq.widget.ThemeSquareImageView android:layout_gravity="center" android:layout_width="0.0dip" android:layout_height="wrap_content" android:scaleType="centerCrop" android:layout_weight="1.0" />
+        <com.tencent.mobileqq.widget.ThemeSquareImageView android:layout_gravity="center" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:scaleType="centerCrop" android:layout_weight="1.0" />
+        <com.tencent.mobileqq.widget.ThemeSquareImageView android:layout_gravity="center" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:scaleType="centerCrop" android:layout_weight="1.0" />
+        <com.tencent.mobileqq.widget.ThemeSquareImageView android:layout_gravity="center" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:scaleType="centerCrop" android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/e7n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ajk" android:layout_marginRight="@dimen/ajk">
+        <com.tencent.widget.ThemeURLImageView android:layout_gravity="center" android:id="@id/de6" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/d2v" android:scaleType="centerCrop" />
+        <LinearLayout android:orientation="vertical" android:id="@id/fsg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip">
+            <com.tencent.mobileqq.widget.ThemeSquareImageView android:layout_gravity="center" android:id="@id/dcq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/d2u" android:scaleType="centerCrop" />
+            <com.tencent.mobileqq.widget.ThemeSquareImageView android:layout_gravity="center" android:id="@id/dcr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:src="@drawable/d2u" android:scaleType="centerCrop" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/fsh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip">
+            <com.tencent.mobileqq.widget.ThemeSquareImageView android:layout_gravity="center" android:id="@id/dcs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/d2u" android:scaleType="centerCrop" />
+            <com.tencent.mobileqq.widget.ThemeSquareImageView android:layout_gravity="center" android:id="@id/dct" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:src="@drawable/d2u" android:scaleType="centerCrop" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

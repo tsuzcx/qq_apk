@@ -9,14 +9,14 @@ import java.util.Map;
 public final class PhotoWall
   extends JceStruct
 {
-  static Map cache_photoUrls;
+  static Map<Integer, String> cache_photoUrls;
   public long ctime;
   public String photoId = "";
-  public Map photoUrls;
+  public Map<Integer, String> photoUrls;
   
   public PhotoWall() {}
   
-  public PhotoWall(String paramString, long paramLong, Map paramMap)
+  public PhotoWall(String paramString, long paramLong, Map<Integer, String> paramMap)
   {
     this.photoId = paramString;
     this.ctime = paramLong;

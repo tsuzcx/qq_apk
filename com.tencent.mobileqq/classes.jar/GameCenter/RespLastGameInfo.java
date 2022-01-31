@@ -8,18 +8,18 @@ import java.util.ArrayList;
 public final class RespLastGameInfo
   extends JceStruct
 {
-  static ArrayList cache_stGameLogoInfo;
+  static ArrayList<GameLogoUrl> cache_stGameLogoInfo;
   public boolean bNative = true;
   public boolean bShowGameLogo = true;
   public byte iResult;
   public byte iVersion = 1;
   public String sLogoUrl = "";
   public String sProfileUrl = "";
-  public ArrayList stGameLogoInfo;
+  public ArrayList<GameLogoUrl> stGameLogoInfo;
   
   public RespLastGameInfo() {}
   
-  public RespLastGameInfo(byte paramByte1, byte paramByte2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, ArrayList paramArrayList, String paramString2)
+  public RespLastGameInfo(byte paramByte1, byte paramByte2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, ArrayList<GameLogoUrl> paramArrayList, String paramString2)
   {
     this.iVersion = paramByte1;
     this.iResult = paramByte2;

@@ -1,68 +1,117 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
-import com.tencent.mobileqq.apollo.ITriggerRenderCallback;
-import com.tencent.mobileqq.apollo.task.ApolloActionHelper;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.HashMap;
+import java.util.Map;
 
 public class yma
-  implements Runnable
 {
-  public yma(ApolloRenderDriver paramApolloRenderDriver, int paramInt1, int paramInt2, String[] paramArrayOfString1, String[] paramArrayOfString2) {}
+  public static final String a;
+  private static yma jdField_a_of_type_Yma;
+  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public void run()
+  static
   {
-    int j = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloRenderDriver", 2, "start run.");
-    }
-    String[] arrayOfString = ApolloActionHelper.a(ApolloUtil.d(1), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangString[0], this.jdField_a_of_type_ArrayOfJavaLangString[1]);
-    Object localObject3 = null;
-    Object localObject1 = localObject3;
-    if (this.jdField_b_of_type_ArrayOfJavaLangString != null)
+    jdField_a_of_type_JavaLangString = yma.class.getSimpleName();
+  }
+  
+  private String a(String paramString1, String paramString2, String paramString3)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (!TextUtils.isEmpty(paramString1))
     {
-      localObject1 = localObject3;
-      if (this.jdField_b_of_type_ArrayOfJavaLangString.length == 2) {
-        localObject1 = ApolloActionHelper.a(ApolloUtil.d(2), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_ArrayOfJavaLangString[0], this.jdField_b_of_type_ArrayOfJavaLangString[1]);
+      localStringBuilder.append(paramString1);
+      if (TextUtils.isEmpty(paramString2)) {
+        break label78;
+      }
+      localStringBuilder.append("&&").append(paramString2);
+      label42:
+      if (TextUtils.isEmpty(paramString3)) {
+        break label94;
+      }
+      localStringBuilder.append("&&").append(paramString3);
+    }
+    for (;;)
+    {
+      return localStringBuilder.toString();
+      localStringBuilder.append("0");
+      break;
+      label78:
+      localStringBuilder.append("&&").append("0");
+      break label42;
+      label94:
+      localStringBuilder.append("&&").append("0");
+    }
+  }
+  
+  public static yma a()
+  {
+    if (jdField_a_of_type_Yma == null) {}
+    try
+    {
+      if (jdField_a_of_type_Yma == null) {
+        jdField_a_of_type_Yma = new yma();
+      }
+      return jdField_a_of_type_Yma;
+    }
+    finally {}
+  }
+  
+  private void a(String paramString1, String paramString2)
+  {
+    QLog.d(jdField_a_of_type_JavaLangString, 1, "storeComment storeKey: " + paramString1 + " comment: " + paramString2);
+    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+  }
+  
+  private String b(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
+  {
+    if (paramStFeed != null)
+    {
+      paramStFeed = paramStFeed.id.get();
+      if (paramStComment == null) {
+        break label50;
+      }
+      paramStComment = paramStComment.id.get();
+      label24:
+      if (paramStReply == null) {
+        break label56;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    if (arrayOfString != null) {}
-    for (int i = 0;; i = j) {
-      do
-      {
-        try
-        {
-          while (i < arrayOfString.length)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine.a(arrayOfString[i]);
-            i += 1;
-            continue;
-            while (i < localObject1.length)
-            {
-              this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine.a(localObject1[i]);
-              i += 1;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-            if ((!this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback != null)) {
-              this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback.onRender();
-            }
-            return;
-          }
-        }
-        finally
-        {
-          this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-        }
-      } while (localObject2 == null);
+    label50:
+    label56:
+    for (paramStReply = paramStReply.id.get();; paramStReply = "")
+    {
+      return a(paramStFeed, paramStComment, paramStReply);
+      paramStFeed = "";
+      break;
+      paramStComment = "";
+      break label24;
     }
+  }
+  
+  public String a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
+  {
+    paramStFeed = b(paramStFeed, paramStComment, paramStReply);
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramStFeed))
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "getComment storeKey: " + paramStFeed + " preCommentText: " + (String)this.jdField_a_of_type_JavaUtilMap.get(paramStFeed));
+      return (String)this.jdField_a_of_type_JavaUtilMap.get(paramStFeed);
+    }
+    QLog.d(jdField_a_of_type_JavaLangString, 1, "getComment storeKey: " + paramStFeed + " preCommentText doesn't exit");
+    return "";
+  }
+  
+  public void a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply, String paramString)
+  {
+    a(b(paramStFeed, paramStComment, paramStReply), paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yma
  * JD-Core Version:    0.7.0.1
  */

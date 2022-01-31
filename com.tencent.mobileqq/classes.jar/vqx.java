@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.BaseTroopChatPie;
-import com.tencent.mobileqq.troop.utils.TroopTipsMsgMgr;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class vqx
-  implements Runnable
+class vqx
+  implements Animation.AnimationListener
 {
-  public vqx(BaseTroopChatPie paramBaseTroopChatPie, TroopTipsMsgMgr paramTroopTipsMsgMgr) {}
+  vqx(vqu paramvqu) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTipsMsgMgr.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    this.a.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vqx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,44 @@
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.views.GdtViewStatus.Listener;
-import com.tencent.gdtad.views.freeflip.GdtFreeFlipView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.articlesummary.articlesummary.OutsideLinkInfo;
 
 public class qmq
-  implements GdtViewStatus.Listener
 {
-  public qmq(GdtFreeFlipView paramGdtFreeFlipView) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void a()
+  public qmq(articlesummary.OutsideLinkInfo paramOutsideLinkInfo)
   {
-    GdtLog.b("GdtFreeFlipView", "onViewResume");
-    GdtFreeFlipView.a(this.a);
+    if (paramOutsideLinkInfo.title.has()) {
+      this.a = paramOutsideLinkInfo.title.get();
+    }
+    if (paramOutsideLinkInfo.bring_goods_url.has()) {
+      this.b = paramOutsideLinkInfo.bring_goods_url.get();
+    }
+    if (paramOutsideLinkInfo.icon_url.has()) {
+      this.c = paramOutsideLinkInfo.icon_url.get();
+    }
   }
   
-  public void b()
+  public articlesummary.OutsideLinkInfo a()
   {
-    GdtLog.b("GdtFreeFlipView", "onViewPause");
-    GdtFreeFlipView.b(this.a);
+    articlesummary.OutsideLinkInfo localOutsideLinkInfo = new articlesummary.OutsideLinkInfo();
+    if (!TextUtils.isEmpty(this.c)) {
+      localOutsideLinkInfo.icon_url.set(this.c);
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      localOutsideLinkInfo.bring_goods_url.set(this.b);
+    }
+    if (!TextUtils.isEmpty(this.a)) {
+      localOutsideLinkInfo.title.set(this.a);
+    }
+    return localOutsideLinkInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qmq
  * JD-Core Version:    0.7.0.1
  */

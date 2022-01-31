@@ -7,16 +7,16 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import java.util.List;
 
-public class QwAdapter
+public class QwAdapter<V>
   extends BaseAdapter
 {
   protected LayoutInflater layoutInflater;
-  protected List list;
+  protected List<V> list;
   private QwAdapter.IViewHolder mCloneObj;
   private QwAdapter.IViewHolder mHolder;
   protected int resource;
   
-  public QwAdapter(Context paramContext, List paramList, int paramInt, QwAdapter.IViewHolder paramIViewHolder)
+  public QwAdapter(Context paramContext, List<V> paramList, int paramInt, QwAdapter.IViewHolder paramIViewHolder)
   {
     this.resource = paramInt;
     this.list = paramList;
@@ -39,7 +39,7 @@ public class QwAdapter
     return paramInt;
   }
   
-  public List getList()
+  public List<V> getList()
   {
     return this.list;
   }
@@ -73,7 +73,7 @@ public class QwAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qwallet.plugin.QwAdapter
  * JD-Core Version:    0.7.0.1
  */

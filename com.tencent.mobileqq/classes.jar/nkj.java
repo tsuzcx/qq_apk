@@ -1,22 +1,20 @@
-import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-class nkj
-  implements Runnable
+public class nkj
+  implements DialogInterface.OnDismissListener
 {
-  nkj(nki paramnki, String paramString) {}
+  public nkj(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    PlayModeUtils.a(this.jdField_a_of_type_Nki.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a.a, this.jdField_a_of_type_Nki.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder, this.jdField_a_of_type_Nki.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_JavaLangString);
-    PlayModeUtils.a(this.jdField_a_of_type_Nki.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a.a, this.jdField_a_of_type_Nki.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder, this.jdField_a_of_type_Nki.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a(this.jdField_a_of_type_Nki.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.c), this.jdField_a_of_type_Nki.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    this.a.p = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nkj
  * JD-Core Version:    0.7.0.1
  */

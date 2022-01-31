@@ -1,18 +1,24 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
 public class ujv
 {
-  public int a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public ImageView b;
+  public static int a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 1: 
+    case 2: 
+    case 5: 
+    case 6: 
+    default: 
+      return 6;
+    case 4: 
+      return 10;
+    }
+    return 10;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ujv
  * JD-Core Version:    0.7.0.1
  */

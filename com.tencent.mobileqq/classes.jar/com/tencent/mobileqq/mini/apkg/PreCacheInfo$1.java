@@ -1,0 +1,30 @@
+package com.tencent.mobileqq.mini.apkg;
+
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+
+final class PreCacheInfo$1
+  implements Parcelable.Creator<PreCacheInfo>
+{
+  public PreCacheInfo createFromParcel(Parcel paramParcel)
+  {
+    PreCacheInfo localPreCacheInfo = new PreCacheInfo();
+    localPreCacheInfo.getDataUrl = paramParcel.readString();
+    localPreCacheInfo.preCacheKey = paramParcel.readString();
+    localPreCacheInfo.expireTime = paramParcel.readLong();
+    localPreCacheInfo.cacheType = paramParcel.readInt();
+    localPreCacheInfo.useProxy = paramParcel.readInt();
+    return localPreCacheInfo;
+  }
+  
+  public PreCacheInfo[] newArray(int paramInt)
+  {
+    return new PreCacheInfo[paramInt];
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.mini.apkg.PreCacheInfo.1
+ * JD-Core Version:    0.7.0.1
+ */

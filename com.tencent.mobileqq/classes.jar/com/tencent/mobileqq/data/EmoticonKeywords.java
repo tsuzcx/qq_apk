@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
+import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="keyword")
 public class EmoticonKeywords
-  extends Entity
+  extends awge
 {
   public String keyword;
   public long lastReqTime;
@@ -42,7 +42,7 @@ public class EmoticonKeywords
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.EmoticonKeywords
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,32 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
-import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedWidget;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StUser;
 
 public class udn
-  implements View.OnClickListener
+  extends alpq
 {
-  public udn(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
+  public udn(QCircleFeedWidget paramQCircleFeedWidget) {}
   
-  public void onClick(View paramView)
+  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
   {
-    paramView = new Intent(this.a, CountrySelectActivity.class);
-    paramView.putExtra("key_country_code", this.a.a.mLocationCountyCode);
-    paramView.putExtra("key_no_limit_allow", true);
-    this.a.startActivityForResult(paramView, 111);
+    if (paramBoolean)
+    {
+      String str = paramCard.strNick;
+      if (QCircleFeedWidget.a(this.a) != null) {
+        QCircleFeedWidget.a(this.a).a(paramCard.strNick, paramCard.uin);
+      }
+      if (tra.a(paramCard.uin))
+      {
+        tqg.a().nick.set(str);
+        tqg.a(str);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     udn
  * JD-Core Version:    0.7.0.1
  */

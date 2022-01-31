@@ -1,21 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
 public class agkb
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public agkb(ScanIconAnimateView paramScanIconAnimateView) {}
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.e = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
-  }
+  public agkb(agjx paramagjx) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agkb
  * JD-Core Version:    0.7.0.1
  */

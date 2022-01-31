@@ -1,20 +1,38 @@
-import com.tencent.mobileqq.apollo.store.ApolloGuestsPresenter;
-import com.tencent.mobileqq.apollo.store.DressDescriptionItem;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
 
-public class yti
-  implements Comparator
+class yti
+  implements URLDrawableDownListener
 {
-  public yti(ApolloGuestsPresenter paramApolloGuestsPresenter) {}
+  yti(ytb paramytb) {}
   
-  public int a(DressDescriptionItem paramDressDescriptionItem1, DressDescriptionItem paramDressDescriptionItem2)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    return paramDressDescriptionItem1.h - paramDressDescriptionItem2.h;
+    this.a.a(false, "onLoadCancelled");
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    this.a.a(false, "onLoadFailed");
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    this.a.a(false, "onLoadInterrupted");
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.a.a(true, "onLoadSuccessed");
+    this.a.b = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yti
  * JD-Core Version:    0.7.0.1
  */

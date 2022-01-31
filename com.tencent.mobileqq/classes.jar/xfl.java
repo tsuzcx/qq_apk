@@ -1,31 +1,32 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadConfig;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.widget.EditText;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-public class xfl
-  implements Runnable
+class xfl
+  implements xon
 {
-  public xfl(PreloadConfig paramPreloadConfig) {}
+  xfl(xfh paramxfh) {}
   
-  public void run()
+  public void a(@NonNull xou paramxou)
   {
-    synchronized (this.a.mSaveLock)
+    switch (paramxou.a)
     {
-      if (this.a.isModulesChange(this.a.mLastModules))
-      {
-        QWalletTools.a(this.a, this.a.mSavePath);
-        if (QLog.isColorLevel()) {
-          QLog.d("PreloadManager", 2, "really save:" + this.a);
-        }
-        this.a.mLastModules = this.a.getCloneModules();
-      }
-      return;
     }
+    do
+    {
+      return;
+      int i = paramxou.b;
+      this.a.jdField_a_of_type_Xeq.a = i;
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(i);
+      wxk.b("0X80075D8");
+    } while ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams == null) || (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a != 3));
+    LpReportInfo_pf00064.allReport(615, 3, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xfl
  * JD-Core Version:    0.7.0.1
  */

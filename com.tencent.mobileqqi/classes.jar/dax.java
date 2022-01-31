@@ -1,27 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.PublicAccountManager.InitDoneObserver;
+import com.tencent.mobileqq.activity.PublicAccountChatActivity;
 
-class dax
-  implements DialogInterface.OnClickListener
+public class dax
+  implements PublicAccountManager.InitDoneObserver
 {
-  dax(dav paramdav) {}
+  public dax(PublicAccountChatActivity paramPublicAccountChatActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    SubAccountAssistantForward.b(this.a.a.b);
-    SubAccountAssistantForward.a(this.a.a.b);
-    SubAccountAssistantForward.c(this.a.a.b);
-    SubAccountAssistantForward.d(this.a.a.b);
-    SubAccountAssistantForward.a(this.a.a.b, this.a.a, this.a.a.b.getAccount());
-    this.a.a.finish();
+    PublicAccountChatActivity.a(this.a).sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dax
  * JD-Core Version:    0.7.0.1
  */

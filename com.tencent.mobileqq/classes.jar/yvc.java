@@ -1,25 +1,27 @@
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
-import com.tencent.mobileqq.apollo.tmg_opensdk.TMG_Downloader.TMG_Downloader_DownloadEvent;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class yvc
-  extends TMG_Downloader.TMG_Downloader_DownloadEvent
 {
-  public yvc(AVEngineWalper paramAVEngineWalper) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (paramInt == 0) {
-      ThreadManager.getUIHandler().post(new yvd(this));
-    }
-  }
+  public View a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public yvj a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yvc
  * JD-Core Version:    0.7.0.1
  */

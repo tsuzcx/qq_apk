@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.arcard.ARCardShareHelper;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import java.lang.ref.WeakReference;
 
 class aamk
-  implements Runnable
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  aamk(aamf paramaamf, int paramInt) {}
+  aamk(aamj paramaamj, AdQQMINIProgramAdapter.Params paramParams, GdtAd paramGdtAd) {}
   
-  public void run()
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    boolean bool = ARCardShareHelper.a(this.jdField_a_of_type_Aamf.a);
-    String str = ARCardShareHelper.b(this.jdField_a_of_type_Aamf.a);
-    ThreadManager.getUIHandler().post(new aaml(this, bool, str));
+    aase.b("GdtQQMINIProgramAdapter", String.format("onLaunchResult %b", new Object[] { Boolean.valueOf(paramBoolean) }));
+    AdReporterForAnalysis.reportForLaunchQQMINIProgramEND((Context)this.jdField_a_of_type_ComTencentAdTangramMiniAdQQMINIProgramAdapter$Params.context.get(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, paramBoolean);
   }
 }
 

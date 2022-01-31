@@ -1,25 +1,35 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class aome
-  implements Animation.AnimationListener
+class aome
+  extends aomf
 {
-  public aome(BeautyBar paramBeautyBar) {}
+  private int a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public aome(int paramInt)
   {
-    FlowCameraMqqAction.a("", "0X8007C05", BeautyBar.a(this.a) + "", "", "", "");
+    this.a = paramInt;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public Object a(Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
+    {
+      return null;
+      paramObject = (ArrayList)paramObject;
+      if (!(paramObject instanceof ArrayList))
+      {
+        QLog.e("ArkMsgReplyConfigMgr", 1, "getElement instance wrong");
+        return null;
+      }
+    } while ((this.a < 0) || (this.a >= paramObject.size()));
+    return paramObject.get(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aome
  * JD-Core Version:    0.7.0.1
  */

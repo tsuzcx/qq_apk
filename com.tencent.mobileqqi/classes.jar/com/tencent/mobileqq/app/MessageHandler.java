@@ -34,7 +34,6 @@ import RegisterProxySvcPack.RegisterPushNotice;
 import RegisterProxySvcPack.SvcRequestPullDisGroupSeq;
 import RegisterProxySvcPack.SvcResponsePullDisGroupSeq;
 import RegisterProxySvcPack.stDisGroupInfo;
-import SharpSvrPack.MultiVideoMsg;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
 import android.app.Notification;
@@ -52,9 +51,6 @@ import android.os.Message;
 import android.support.v4.app.NotificationCompat.Builder;
 import android.text.TextUtils;
 import android.util.Pair;
-import com.tencent.av.VideoConstants;
-import com.tencent.av.VideoController;
-import com.tencent.av.utils.VideoMsgTools;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.LoginInfoActivity;
@@ -154,23 +150,23 @@ import com.tencent.util.EUCountryUtils;
 import com.tencent.util.MsgAutoMonitorUtil;
 import cooperation.qlink.QQServiceForQlink;
 import cooperation.qlink.QlinkServiceManager;
-import fia;
-import fib;
-import fic;
-import fid;
-import fie;
-import fif;
-import fig;
-import fih;
-import fii;
-import fij;
-import fik;
-import fil;
-import fim;
-import fin;
-import fip;
-import fiq;
-import fis;
+import fdm;
+import fdn;
+import fdo;
+import fdp;
+import fdq;
+import fdr;
+import fds;
+import fdt;
+import fdu;
+import fdv;
+import fdw;
+import fdx;
+import fdy;
+import fdz;
+import feb;
+import fec;
+import fee;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
@@ -183,7 +179,6 @@ import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.MobileQQ;
 import mqq.manager.AccountManager;
 import mqq.manager.ServerConfigManager.ConfigType;
 import msf.msgcomm.msg_comm.Msg;
@@ -276,11 +271,11 @@ public class MessageHandler
   public static final int aS = 0;
   public static final int aT = 1;
   public static final int aU = 2;
-  public static final int aV = 60;
-  public static final int aW = 1000;
-  public static final int aX = 1001;
-  public static final int aY = 1002;
-  public static final int aZ = 1003;
+  public static final int aV = 3;
+  public static final int aW = 4;
+  public static final int aX = 5;
+  public static final int aY = 60;
+  public static final int aZ = 1000;
   public static final int aa = 4006;
   public static final int ab = 4011;
   public static final int ac = 4012;
@@ -311,54 +306,57 @@ public class MessageHandler
   public static final int b = 8;
   public static final long b = 30000L;
   public static final String b = "RichNotify";
-  public static final int bA = 1030;
-  public static final int bB = 1031;
-  public static final int bC = 1032;
-  public static final int bD = 1033;
-  public static final int bE = 1034;
-  public static final int bF = 480;
-  public static final int bG = 480000;
-  public static final int bH = -1;
-  public static final int bI = 1;
-  public static final int bJ = 2;
-  public static int bL = 10103;
-  public static final int bM = 1080;
-  private static final int bP = 6;
-  public static final int ba = 1004;
-  public static final int bb = 1005;
-  public static final int bc = 1006;
-  public static final int bd = 1007;
-  public static final int be = 1008;
-  public static final int bf = 1009;
-  public static final int bg = 1010;
-  public static final int bh = 1011;
-  public static final int bi = 1012;
-  public static final int bj = 1013;
-  public static final int bk = 1014;
-  public static final int bl = 1015;
-  public static final int bm = 1016;
-  public static final int bn = 1020;
-  public static final int bo = 1017;
-  public static final int bp = 1018;
-  public static final int bq = 1019;
-  public static final int br = 1021;
-  public static final int bs = 1022;
-  public static final int bt = 1023;
-  public static final int bu = 1024;
-  public static final int bv = 1025;
-  public static final int bw = 1026;
-  public static final int bx = 1027;
-  public static final int by = 1028;
-  public static final int bz = 1029;
+  public static final int bA = 1027;
+  public static final int bB = 1028;
+  public static final int bC = 1029;
+  public static final int bD = 1030;
+  public static final int bE = 1031;
+  public static final int bF = 1032;
+  public static final int bG = 1033;
+  public static final int bH = 1034;
+  public static final int bI = 480;
+  public static final int bJ = 480000;
+  public static final int bK = -1;
+  public static final int bL = 1;
+  public static final int bM = 2;
+  public static int bO = 10103;
+  public static final int bP = 1080;
+  private static final int bS = 6;
+  public static final int ba = 1001;
+  public static final int bb = 1002;
+  public static final int bc = 1003;
+  public static final int bd = 1004;
+  public static final int be = 1005;
+  public static final int bf = 1006;
+  public static final int bg = 1007;
+  public static final int bh = 1008;
+  public static final int bi = 1009;
+  public static final int bj = 1010;
+  public static final int bk = 1011;
+  public static final int bl = 1012;
+  public static final int bm = 1013;
+  public static final int bn = 1014;
+  public static final int bo = 1015;
+  public static final int bp = 1016;
+  public static final int bq = 1020;
+  public static final int br = 1017;
+  public static final int bs = 1018;
+  public static final int bt = 1019;
+  public static final int bu = 1021;
+  public static final int bv = 1022;
+  public static final int bw = 1023;
+  public static final int bx = 1024;
+  public static final int by = 1025;
+  public static final int bz = 1026;
   public static final byte c = 0;
   public static final int c = 166;
   private static final long jdField_c_of_type_Long = 180000L;
   public static final String c = "update_unread_uin";
   public static boolean c = false;
-  private static final int ca = 604800;
-  private static final int cb = 360000;
-  private static final int cg = 3;
-  private static final int ci = 3;
+  private static final int cd = 604800;
+  private static final int ce = 360000;
+  private static final int cj = 3;
+  private static final int cl = 3;
   private static final byte jdField_d_of_type_Byte = 2;
   public static final int d = 169;
   public static final String d = "update_unread_type";
@@ -393,11 +391,11 @@ public class MessageHandler
   private final String G = "Q.msg.MessageHandler";
   private final String H = "Q.msg.MessageHandler";
   private volatile Pair jdField_a_of_type_AndroidUtilPair = null;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new fib(this);
-  ProxyListener jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener = new fik(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new fdn(this);
+  ProxyListener jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener = new fdw(this);
   private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = null;
   public MessageCache a;
-  fis jdField_a_of_type_Fis;
+  fee jdField_a_of_type_Fee;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private Thread jdField_a_of_type_JavaLangThread = null;
   ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -406,33 +404,33 @@ public class MessageHandler
   private Map jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private final int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  private fip[] jdField_a_of_type_ArrayOfFip = null;
+  private feb[] jdField_a_of_type_ArrayOfFeb = null;
   private String[] jdField_a_of_type_ArrayOfJavaLangString = null;
   private Object jdField_b_of_type_JavaLangObject = new Object();
   private ArrayList jdField_b_of_type_JavaUtilArrayList = null;
   private final HashMap jdField_b_of_type_JavaUtilHashMap = new HashMap();
   public boolean b;
   private String[] jdField_b_of_type_ArrayOfJavaLangString = null;
-  public int bK;
-  private int bN = 0;
-  private int bO = 0;
-  private final int bQ = 450000;
-  private final int bR = 9;
-  private final int bS = 3;
-  private int bT = 0;
-  private final int bU = 2;
-  private int bV = 0;
-  private final int bW = 3;
-  private final int bX = 6;
+  public int bN;
+  private int bQ = 0;
+  private int bR = 0;
+  private final int bT = 450000;
+  private final int bU = 9;
+  private final int bV = 3;
+  private int bW = 0;
+  private final int bX = 2;
   private int bY = 0;
-  private final int bZ = 1;
+  private final int bZ = 3;
   private Object jdField_c_of_type_JavaLangObject = new Object();
   private ArrayList jdField_c_of_type_JavaUtilArrayList = null;
-  private final int cc = 12;
-  private final int cd = 6;
-  private final int ce = 1080000;
-  private int cf = 0;
-  private int ch = 0;
+  private final int ca = 6;
+  private int cb = 0;
+  private final int cc = 1;
+  private final int cf = 12;
+  private final int cg = 6;
+  private final int ch = 1080000;
+  private int ci = 0;
+  private int ck = 0;
   private ArrayList jdField_d_of_type_JavaUtilArrayList = null;
   private boolean jdField_d_of_type_Boolean = false;
   private boolean e;
@@ -630,12 +628,12 @@ public class MessageHandler
     return new Pair(Long.valueOf(paramLong2), Long.valueOf(paramLong3));
   }
   
-  private fis a()
+  private fee a()
   {
-    if (this.jdField_a_of_type_Fis == null) {
-      this.jdField_a_of_type_Fis = new fis(this, ThreadManager.b());
+    if (this.jdField_a_of_type_Fee == null) {
+      this.jdField_a_of_type_Fee = new fee(this, ThreadManager.b());
     }
-    return this.jdField_a_of_type_Fis;
+    return this.jdField_a_of_type_Fee;
   }
   
   public static String a(FromServiceMsg paramFromServiceMsg)
@@ -683,7 +681,7 @@ public class MessageHandler
     }
   }
   
-  private void a(int paramInt1, int paramInt2)
+  private void a(int paramInt1, int paramInt2, int paramInt3)
   {
     EUCountryUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a());
     int i1 = EUCountryUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a());
@@ -695,26 +693,42 @@ public class MessageHandler
         EUCountryUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
       }
     }
-    label145:
+    label126:
     do
     {
+      boolean bool;
       do
       {
+        do
+        {
+          return;
+          if ((paramInt1 != 1) || (paramInt2 != 1)) {
+            break label214;
+          }
+          if (paramInt3 != 1) {
+            break label126;
+          }
+          if (i2 == 0) {
+            break;
+          }
+        } while (EUCountryUtils.a(i2));
+        a(8012, true, Integer.valueOf(3));
         return;
-        if ((paramInt1 != 1) || (paramInt2 != 1)) {
-          break label145;
+        a(8012, true, Integer.valueOf(4));
+        return;
+        bool = EUCountryUtils.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a());
+        if (bool)
+        {
+          EUCountryUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 1);
+          EUCountryUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 1);
+          b(1);
         }
         if (i2 == 0) {
           break;
         }
-      } while (!EUCountryUtils.a(i2));
-      a(8012, true, Integer.valueOf(2));
+      } while ((!EUCountryUtils.a(i2)) || (bool));
+      a(8012, true, Integer.valueOf(5));
       return;
-      if (!EUCountryUtils.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()))
-      {
-        a(8012, true, Integer.valueOf(2));
-        return;
-      }
       a(8012, true, Integer.valueOf(0));
       return;
       if ((paramInt1 == 0) && (paramInt2 == 1))
@@ -723,13 +737,14 @@ public class MessageHandler
         return;
       }
     } while ((paramInt1 != 1) || (paramInt2 != 0) || (i1 == 2));
+    label214:
     a(8012, true, Integer.valueOf(1));
   }
   
   private void a(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg arg3, Object paramObject)
   {
     f();
-    paramToServiceMsg = new fiq(paramInt, paramToServiceMsg, ???, paramObject);
+    paramToServiceMsg = new fec(paramInt, paramToServiceMsg, ???, paramObject);
     if (paramInt == 1) {
       synchronized (this.jdField_d_of_type_JavaUtilArrayList)
       {
@@ -1729,7 +1744,7 @@ public class MessageHandler
     }
     String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
     this.jdField_a_of_type_ArrayOfJavaLangString = null;
-    this.bV = 0;
+    this.bY = 0;
     ArrayList localArrayList = new ArrayList();
     if (bool) {}
     for (HashMap localHashMap = new HashMap(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache.a());; localHashMap = null)
@@ -1886,14 +1901,14 @@ public class MessageHandler
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if (this.bT < 2)
+    if (this.bW < 2)
     {
       a(paramToServiceMsg);
-      this.bT += 1;
+      this.bW += 1;
       return;
     }
     d(5002, false, null);
-    this.bT = 0;
+    this.bW = 0;
   }
   
   private void c(ToServiceMsg arg1, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1921,14 +1936,14 @@ public class MessageHandler
     {
       synchronized (this.jdField_c_of_type_JavaLangObject)
       {
-        if ((this.jdField_a_of_type_ArrayOfFip != null) && (this.jdField_a_of_type_ArrayOfFip.length > 1)) {
+        if ((this.jdField_a_of_type_ArrayOfFeb != null) && (this.jdField_a_of_type_ArrayOfFeb.length > 1)) {
           break label77;
         }
         return true;
-        if (i1 >= this.jdField_a_of_type_ArrayOfFip.length) {
+        if (i1 >= this.jdField_a_of_type_ArrayOfFeb.length) {
           break label73;
         }
-        if ((this.jdField_a_of_type_ArrayOfFip[i1] != null) && (this.jdField_a_of_type_ArrayOfFip[i1].b())) {
+        if ((this.jdField_a_of_type_ArrayOfFeb[i1] != null) && (this.jdField_a_of_type_ArrayOfFeb[i1].b())) {
           return false;
         }
       }
@@ -1949,10 +1964,10 @@ public class MessageHandler
   private void d(ToServiceMsg paramToServiceMsg)
   {
     b();
-    if (this.bK < 6)
+    if (this.bN < 6)
     {
       b(paramToServiceMsg.extraData.getBoolean("isPullRoamMsg"));
-      this.bK += 1;
+      this.bN += 1;
       return;
     }
     l();
@@ -3116,7 +3131,7 @@ public class MessageHandler
   private void l()
   {
     b();
-    this.bK = 0;
+    this.bN = 0;
     c(false);
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MessageHandler", 2, "handleGetBuddyMessageError ");
@@ -3144,7 +3159,7 @@ public class MessageHandler
   
   private void m()
   {
-    ((NotificationManager)BaseApplication.getContext().getSystemService("notification")).cancel(bL);
+    ((NotificationManager)BaseApplication.getContext().getSystemService("notification")).cancel(bO);
     this.f = false;
     if (this.jdField_a_of_type_JavaLangThread != null) {
       this.jdField_a_of_type_JavaLangThread.interrupt();
@@ -3197,7 +3212,7 @@ public class MessageHandler
         QLog.d("Q.msg.MessageHandler", 2, "registerproxy->handleRegisterProxyEndResp RegPrxySvc.NoticeEnd endseq=" + paramFromServiceMsg.uEndSeq + ",timeoutflag=" + paramFromServiceMsg.ulTimeOutFlag);
       }
       long l1;
-      if (paramFromServiceMsg.uEndSeq == this.bN)
+      if (paramFromServiceMsg.uEndSeq == this.bQ)
       {
         l1 = 0L;
         this.jdField_a_of_type_AndroidUtilPair = new Pair(paramFromServiceMsg, Long.valueOf(0L));
@@ -3223,7 +3238,7 @@ public class MessageHandler
           }
           return;
         }
-        if (paramFromServiceMsg.uEndSeq != this.bO) {
+        if (paramFromServiceMsg.uEndSeq != this.bR) {
           break;
         }
         this.jdField_a_of_type_AndroidUtilPair = new Pair(paramFromServiceMsg, Long.valueOf(1L));
@@ -3242,7 +3257,7 @@ public class MessageHandler
     Object localObject1 = BaseApplication.getContext();
     Object localObject2 = ((Context)localObject1).getString(2131562319);
     String str = ((Context)localObject1).getString(2131562319);
-    Bitmap localBitmap = BitmapManager.a(((Context)localObject1).getResources(), 2130838588);
+    Bitmap localBitmap = BitmapManager.a(((Context)localObject1).getResources(), 2130838590);
     NotificationManager localNotificationManager = (NotificationManager)((Context)localObject1).getSystemService("notification");
     localObject2 = new NotificationCompat.Builder((Context)localObject1).setContentTitle(str).setContentText("").setAutoCancel(true).setSmallIcon(BaseApplication.getQQNewMsgIcon()).setTicker((CharSequence)localObject2).setWhen(System.currentTimeMillis());
     if (localBitmap != null) {
@@ -3251,19 +3266,19 @@ public class MessageHandler
     for (;;)
     {
       if (Build.VERSION.SDK_INT < 11) {
-        ((NotificationCompat.Builder)localObject2).setSmallIcon(2130838588);
+        ((NotificationCompat.Builder)localObject2).setSmallIcon(2130838590);
       }
       ((NotificationCompat.Builder)localObject2).setContentIntent(PendingIntent.getBroadcast((Context)localObject1, 0, new Intent("com.tencent.mobileqq.PCONLINE_CLICK_NOTIFICATION"), 0));
       localObject1 = ((NotificationCompat.Builder)localObject2).build();
       if (localNotificationManager == null) {
         break;
       }
-      localNotificationManager.cancel(bL);
-      localNotificationManager.notify(bL, (Notification)localObject1);
-      this.jdField_a_of_type_JavaLangThread = new Thread(new fif(this, localNotificationManager));
+      localNotificationManager.cancel(bO);
+      localNotificationManager.notify(bO, (Notification)localObject1);
+      this.jdField_a_of_type_JavaLangThread = new Thread(new fdr(this, localNotificationManager));
       this.jdField_a_of_type_JavaLangThread.start();
       return;
-      ((NotificationCompat.Builder)localObject2).setLargeIcon(BitmapManager.a(((Context)localObject1).getResources(), 2130838588));
+      ((NotificationCompat.Builder)localObject2).setLargeIcon(BitmapManager.a(((Context)localObject1).getResources(), 2130838590));
     }
   }
   
@@ -3473,7 +3488,7 @@ public class MessageHandler
     }
     for (;;)
     {
-      this.bV = 0;
+      this.bY = 0;
       a(4003, false, paramToServiceMsg);
       label44:
       if ((paramToServiceMsg != null) && (i1 < paramToServiceMsg.length)) {
@@ -3522,7 +3537,7 @@ public class MessageHandler
   
   private void q(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if (this.bV < 3)
+    if (this.bY < 3)
     {
       int i2 = paramToServiceMsg.extraData.getInt("mask_type", 1);
       paramToServiceMsg = paramToServiceMsg.extraData.getStringArray("array_groupuin");
@@ -3536,7 +3551,7 @@ public class MessageHandler
           i1 += 1;
         }
       }
-      this.bV += 1;
+      this.bY += 1;
       return;
     }
     p(paramToServiceMsg, paramFromServiceMsg);
@@ -3811,7 +3826,7 @@ public class MessageHandler
     for (;;)
     {
       QLog.d("Q.msg.MessageHandler", 2, i1);
-      this.bY = 0;
+      this.cb = 0;
       if (paramToServiceMsg == null) {
         break label170;
       }
@@ -4089,24 +4104,24 @@ public class MessageHandler
   
   private void y(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if (this.cf < 3)
+    if (this.ci < 3)
     {
       b(paramToServiceMsg);
-      this.cf += 1;
+      this.ci += 1;
       return;
     }
-    this.cf = 0;
+    this.ci = 0;
   }
   
   private void z(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if (this.ch < 3)
+    if (this.ck < 3)
     {
       b(paramToServiceMsg);
-      this.ch += 1;
+      this.ck += 1;
       return;
     }
-    this.ch = 0;
+    this.ck = 0;
   }
   
   public int a(int paramInt)
@@ -4576,7 +4591,7 @@ public class MessageHandler
       if (!paramBoolean) {
         break label155;
       }
-      this.bN = i1;
+      this.bQ = i1;
       if (paramInt != 1) {
         break label162;
       }
@@ -4599,7 +4614,7 @@ public class MessageHandler
         l1 = l2;
         if (paramBoolean)
         {
-          this.bO = i1;
+          this.bR = i1;
           l1 = l2;
         }
       }
@@ -4639,7 +4654,7 @@ public class MessageHandler
     i1 = 0;
     while (i1 < 9)
     {
-      localSendMessageHandler.a(new fih(this, paramLong1, paramLong2, l1, l2));
+      localSendMessageHandler.a(new fdt(this, paramLong1, paramLong2, l1, l2));
       i1 += 1;
     }
     i1 = 0;
@@ -4673,107 +4688,32 @@ public class MessageHandler
   
   public void a(long paramLong1, byte[] paramArrayOfByte, long paramLong2, int paramInt)
   {
-    if (VideoController.b() == 2)
-    {
-      if (paramArrayOfByte[2] == 1) {
-        VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, 8, true, String.valueOf(paramLong2), String.valueOf(paramLong1), false, null, false);
-      }
-      return;
+    String str = "null";
+    if (paramArrayOfByte != null) {
+      str = String.valueOf(paramArrayOfByte[2]);
     }
-    if (paramArrayOfByte != null) {}
-    for (String str = String.valueOf(paramArrayOfByte[2]);; str = "null")
+    if (QLog.isColorLevel()) {
+      QLog.d("svenxu", 2, "Decode video message: selfUin = " + paramLong1 + " " + "fromUin = " + paramLong2 + " " + "buffer[2] = " + str);
+    }
+    paramArrayOfByte = ((FriendsManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).c(String.valueOf(paramLong2));
+    boolean bool = false;
+    if (paramArrayOfByte != null)
+    {
+      str = paramArrayOfByte.name;
+      if ((str != null) && (str.trim().length() == 0)) {}
+      paramInt = paramArrayOfByte.faceid;
+      bool = paramArrayOfByte.isFriend();
+    }
+    for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("svenxu", 2, "Decode video message: selfUin = " + paramLong1 + " " + "fromUin = " + paramLong2 + " " + "buffer[2] = " + str);
+        QLog.d("svenxu", 2, "isFriend: " + bool);
       }
-      Friends localFriends = ((FriendsManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).c(String.valueOf(paramLong2));
-      boolean bool = false;
-      Object localObject2;
-      Object localObject1;
-      short s1;
-      if (localFriends != null)
-      {
-        localObject2 = localFriends.name;
-        if (localObject2 != null)
-        {
-          localObject1 = localObject2;
-          if (((String)localObject2).trim().length() != 0) {}
-        }
-        else
-        {
-          localObject1 = String.valueOf(paramLong2);
-        }
-        s1 = localFriends.faceid;
-        bool = localFriends.isFriend();
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("svenxu", 2, "isFriend: " + bool);
-        }
-        localObject2 = new Intent("tencent.video.q2v.RecvVideoCall");
-        ((Intent)localObject2).setClassName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getPackageName(), "com.tencent.av.VideoMsgBroadcastReceiver");
-        ((Intent)localObject2).putExtra("m2m", false);
-        ((Intent)localObject2).putExtra("uin", String.valueOf(paramLong1));
-        ((Intent)localObject2).putExtra("fromUin", String.valueOf(paramLong2));
-        ((Intent)localObject2).putExtra("faceID", s1);
-        ((Intent)localObject2).putExtra("buffer", paramArrayOfByte);
-        ((Intent)localObject2).putExtra("time", paramInt);
-        ((Intent)localObject2).putExtra("name", (String)localObject1);
-        ((Intent)localObject2).putExtra("isFriend", bool);
-        ((Intent)localObject2).putExtra("isPttRecordingOrPlaying", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.s());
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().sendBroadcast((Intent)localObject2);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("svenxu", 2, "Send video recv broadcast: selfUin = " + paramLong1 + " " + "fromUin = " + paramLong2 + " " + "buffer[2] = " + str);
-        return;
-        localObject1 = String.valueOf(paramLong2);
-        s1 = 0;
-      }
+      return;
     }
   }
   
-  public void a(long paramLong1, byte[] paramArrayOfByte, long paramLong2, int paramInt, boolean paramBoolean)
-  {
-    Friends localFriends = ((FriendsManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).c(String.valueOf(paramLong2));
-    Object localObject2;
-    Object localObject1;
-    if (localFriends != null)
-    {
-      localObject2 = localFriends.name;
-      if (localObject2 != null)
-      {
-        localObject1 = localObject2;
-        if (((String)localObject2).trim().length() != 0) {}
-      }
-      else
-      {
-        localObject1 = String.valueOf(paramLong2);
-      }
-    }
-    for (short s1 = localFriends.faceid;; s1 = 0)
-    {
-      long l1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      localObject2 = new Intent("tencent.video.q2v.RecvSharpVideoCall");
-      ((Intent)localObject2).setClassName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getPackageName(), "com.tencent.av.VideoMsgBroadcastReceiver");
-      ((Intent)localObject2).putExtra("uin", String.valueOf(paramLong1));
-      ((Intent)localObject2).putExtra("fromUin", String.valueOf(paramLong2));
-      ((Intent)localObject2).putExtra("faceID", s1);
-      ((Intent)localObject2).putExtra("buffer", paramArrayOfByte);
-      ((Intent)localObject2).putExtra("time", paramInt);
-      ((Intent)localObject2).putExtra("name", (String)localObject1);
-      ((Intent)localObject2).putExtra("isPttRecordingOrPlaying", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.s());
-      ((Intent)localObject2).putExtra("isRequest", paramBoolean);
-      ((Intent)localObject2).putExtra("onLineStatus", l1);
-      if (QLog.isColorLevel()) {
-        QLog.d("shanezhaiSHARP", 2, "handleSharpVideoMessageResp sendBroadcast!!");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().sendBroadcast((Intent)localObject2);
-      return;
-      localObject1 = String.valueOf(paramLong2);
-    }
-  }
+  public void a(long paramLong1, byte[] paramArrayOfByte, long paramLong2, int paramInt, boolean paramBoolean) {}
   
   public void a(SvrMsg paramSvrMsg)
   {
@@ -4786,7 +4726,7 @@ public class MessageHandler
   {
     if ("com.tencent.mobileqq.PCONLINE_CLICK_NOTIFICATION".equals(paramIntent.getAction()))
     {
-      ((NotificationManager)BaseApplication.getContext().getSystemService("notification")).cancel(bL);
+      ((NotificationManager)BaseApplication.getContext().getSystemService("notification")).cancel(bO);
       this.f = false;
       if (this.jdField_a_of_type_JavaLangThread != null) {
         this.jdField_a_of_type_JavaLangThread.interrupt();
@@ -4895,7 +4835,7 @@ public class MessageHandler
           i2 = 0;
           while (i2 < 12)
           {
-            localSendMessageHandler.a(new fil(this, localMessageRecord, l1));
+            localSendMessageHandler.a(new fdx(this, localMessageRecord, l1));
             i2 += 1;
           }
           i2 = 0;
@@ -4938,7 +4878,7 @@ public class MessageHandler
     int i1 = 0;
     while (i1 < 9)
     {
-      localSendMessageHandler.a(new fia(this, paramMessageRecord, localPbSendMsgReq, paramBusinessObserver));
+      localSendMessageHandler.a(new fdm(this, paramMessageRecord, localPbSendMsgReq, paramBusinessObserver));
       i1 += 1;
     }
     i1 = 0;
@@ -5143,417 +5083,381 @@ public class MessageHandler
     }
     for (;;)
     {
-      for (;;)
+      long l2 = System.currentTimeMillis();
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("Q.msg.MessageHandler", 2, "handle [cmd]=" + str + " , cost =" + (l2 - l1));
+      return;
+      if ("RegPrxySvc.PullGroupMsgSeq".equalsIgnoreCase(str))
       {
-        long l2 = System.currentTimeMillis();
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("Q.msg.MessageHandler", 2, "handle [cmd]=" + str + " , cost =" + (l2 - l1));
-        return;
-        if ("RegPrxySvc.PullGroupMsgSeq".equalsIgnoreCase(str))
+        l2 = System.currentTimeMillis();
+        a(paramToServiceMsg, paramFromServiceMsg, (SvcResponsePullGroupMsgSeq)paramObject);
+        MsgAutoMonitorUtil.a().e(System.currentTimeMillis() - l2);
+      }
+      else if ("RegPrxySvc.PullDisMsgSeq".equalsIgnoreCase(str))
+      {
+        a(paramToServiceMsg, paramFromServiceMsg, (SvcResponsePullDisMsgSeq)paramObject);
+      }
+      else if ("RegPrxySvc.PullDisGroupSeq".equalsIgnoreCase(str))
+      {
+        l2 = System.currentTimeMillis();
+        a(paramToServiceMsg, paramFromServiceMsg, (SvcResponsePullDisGroupSeq)paramObject);
+        MsgAutoMonitorUtil.a().d(System.currentTimeMillis() - l2);
+      }
+      else if ("RegPrxySvc.NoticeEnd".equalsIgnoreCase(str))
+      {
+        m(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      }
+      else if ("RegPrxySvc.PbGetMsg".equalsIgnoreCase(str))
+      {
+        k(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      }
+      else if ("RegPrxySvc.PbGetGroupMsg".equalsIgnoreCase(str))
+      {
+        l(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      }
+      else if ("RegPrxySvc.PbGetDiscussMsg".equalsIgnoreCase(str))
+      {
+        o(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      }
+      else if ("RegPrxySvc.infoLogin".equalsIgnoreCase(str))
+      {
+        a(paramFromServiceMsg, paramObject);
+      }
+      else if ("RegPrxySvc.getOffMsg".equalsIgnoreCase(str))
+      {
+        a(paramFromServiceMsg, paramObject);
+      }
+      else if ("MessageSvc.PbGetMsg".equalsIgnoreCase(str))
+      {
+        try
         {
-          l2 = System.currentTimeMillis();
-          a(paramToServiceMsg, paramFromServiceMsg, (SvcResponsePullGroupMsgSeq)paramObject);
-          MsgAutoMonitorUtil.a().e(System.currentTimeMillis() - l2);
-        }
-        else if ("RegPrxySvc.PullDisMsgSeq".equalsIgnoreCase(str))
-        {
-          a(paramToServiceMsg, paramFromServiceMsg, (SvcResponsePullDisMsgSeq)paramObject);
-        }
-        else if ("RegPrxySvc.PullDisGroupSeq".equalsIgnoreCase(str))
-        {
-          l2 = System.currentTimeMillis();
-          a(paramToServiceMsg, paramFromServiceMsg, (SvcResponsePullDisGroupSeq)paramObject);
-          MsgAutoMonitorUtil.a().d(System.currentTimeMillis() - l2);
-        }
-        else if ("RegPrxySvc.NoticeEnd".equalsIgnoreCase(str))
-        {
-          m(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        }
-        else if ("RegPrxySvc.PbGetMsg".equalsIgnoreCase(str))
-        {
+          if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a.b()) {
+            break label620;
+          }
           k(paramToServiceMsg, paramFromServiceMsg, paramObject);
         }
-        else if ("RegPrxySvc.PbGetGroupMsg".equalsIgnoreCase(str))
+        catch (Exception paramToServiceMsg)
         {
-          l(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        }
-        else if ("RegPrxySvc.PbGetDiscussMsg".equalsIgnoreCase(str))
-        {
-          o(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        }
-        else if ("RegPrxySvc.infoLogin".equalsIgnoreCase(str))
-        {
-          a(paramFromServiceMsg, paramObject);
-        }
-        else if ("RegPrxySvc.getOffMsg".equalsIgnoreCase(str))
-        {
-          a(paramFromServiceMsg, paramObject);
-        }
-        else if ("MessageSvc.PbGetMsg".equalsIgnoreCase(str))
-        {
-          try
-          {
-            if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a.b()) {
-              break label620;
-            }
-            k(paramToServiceMsg, paramFromServiceMsg, paramObject);
+          paramToServiceMsg.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.w("Q.msg.MessageHandler", 2, "handleGetC2CMessageResp_PB exception ! ", paramToServiceMsg);
           }
-          catch (Exception paramToServiceMsg)
-          {
-            paramToServiceMsg.printStackTrace();
-            if (QLog.isColorLevel()) {
-              QLog.w("Q.msg.MessageHandler", 2, "handleGetC2CMessageResp_PB exception ! ", paramToServiceMsg);
-            }
-            l();
-          }
-          continue;
-          label620:
-          a("c2c_processor").a(1002, new Object[] { paramToServiceMsg, paramFromServiceMsg, paramObject });
+          l();
         }
-        else if (!"MessageSvc.DelMsgV2".equalsIgnoreCase(str))
+        continue;
+        label620:
+        a("c2c_processor").a(1002, new Object[] { paramToServiceMsg, paramFromServiceMsg, paramObject });
+      }
+      else if (!"MessageSvc.DelMsgV2".equalsIgnoreCase(str))
+      {
+        if ("TransService.ReqTmpChatPicDownload".equalsIgnoreCase(str))
         {
-          if ("TransService.ReqTmpChatPicDownload".equalsIgnoreCase(str))
-          {
-            if (paramObject == null) {
-              d(paramToServiceMsg, paramFromServiceMsg);
-            } else {
-              b(paramToServiceMsg, 3012, true, new Object[] { paramObject });
-            }
+          if (paramObject == null) {
+            d(paramToServiceMsg, paramFromServiceMsg);
+          } else {
+            b(paramToServiceMsg, 3012, true, new Object[] { paramObject });
           }
-          else
+        }
+        else
+        {
+          boolean bool;
+          if ("MessageSvc.PushNotify".equalsIgnoreCase(str))
           {
-            boolean bool;
-            if ("MessageSvc.PushNotify".equalsIgnoreCase(str))
+            int i2 = 0;
+            bool = false;
+            if ((paramObject instanceof RequestPushNotify))
             {
-              int i2 = 0;
-              bool = false;
-              if ((paramObject instanceof RequestPushNotify))
+              localObject = (RequestPushNotify)paramObject;
+              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.ah = ((RequestPushNotify)localObject).wUserActive;
+              if ((((RequestPushNotify)localObject).wGeneralFlag & 0x8) == 8) {
+                bool = true;
+              }
+              i2 = bool;
+              if (QLog.isColorLevel())
               {
-                localObject = (RequestPushNotify)paramObject;
-                this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.ah = ((RequestPushNotify)localObject).wUserActive;
-                if ((((RequestPushNotify)localObject).wGeneralFlag & 0x8) == 8) {
-                  bool = true;
-                }
+                QLog.d("Q.msg.MessageHandler", 2, "MessageSvc.PushNotify,notify.wUserActive:" + ((RequestPushNotify)localObject).wUserActive + " isSubAccount=" + bool + " cmd" + ((RequestPushNotify)localObject).strCmd);
                 i2 = bool;
-                if (QLog.isColorLevel())
-                {
-                  QLog.d("Q.msg.MessageHandler", 2, "MessageSvc.PushNotify,notify.wUserActive:" + ((RequestPushNotify)localObject).wUserActive + " isSubAccount=" + bool + " cmd" + ((RequestPushNotify)localObject).strCmd);
-                  i2 = bool;
-                }
-              }
-              if (i2 != 0)
-              {
-                this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.e(true);
-                if (QLog.isColorLevel()) {
-                  QLog.d("SUB_ACCOUNT", 2, "subaccount push and start get subaccount msg");
-                }
-              }
-              else
-              {
-                c(paramToServiceMsg, paramFromServiceMsg, paramObject);
               }
             }
-            else if (("MessageSvc.SetRoamMsgAllUser".equalsIgnoreCase(str)) || ("MessageSvc.SetRoamMsg".equalsIgnoreCase(str)))
+            if (i2 != 0)
             {
-              a(paramToServiceMsg, paramFromServiceMsg, (SvcResponseSetRoamMsg)paramObject);
-            }
-            else if ("PbMessageSvc.PbDelOneRoamMsg".equalsIgnoreCase(str))
-            {
-              r(paramToServiceMsg, paramFromServiceMsg, paramObject);
-            }
-            else if ("MessageSvc.DelRoamMsg".equalsIgnoreCase(str))
-            {
-              a(paramToServiceMsg, paramFromServiceMsg, (SvcResponseDelRoamMsg)paramObject);
-            }
-            else if ("MessageSvc.GroupMsgReadConfirm".equalsIgnoreCase(str))
-            {
-              a(paramToServiceMsg, paramFromServiceMsg, (SvcResponseGroupMsgReadConfirm)paramObject);
-            }
-            else if ("MessageSvc.DisMsgReadConfirm".equalsIgnoreCase(str))
-            {
-              a(paramToServiceMsg, paramFromServiceMsg, (SvcResponseSetConfMsgRead)paramObject);
-            }
-            else if ("MessageSvc.MsgReadedReport".equalsIgnoreCase(str))
-            {
-              a(paramToServiceMsg, paramFromServiceMsg, (SvcResponseMsgReadedReport)paramObject);
-            }
-            else if ("PbMessageSvc.PbMsgReadedReport".equalsIgnoreCase(str))
-            {
-              s(paramToServiceMsg, paramFromServiceMsg, paramObject);
-            }
-            else if ("ADMsgSvc.PushMsg".equalsIgnoreCase(str))
-            {
-              a(paramToServiceMsg, paramFromServiceMsg, (AdMsgInfo)paramObject);
-            }
-            else if ("MessageSvc.PushReaded".equalsIgnoreCase(str))
-            {
-              a(paramToServiceMsg, paramFromServiceMsg, (SvcRequestPushReadedNotify)paramObject);
-            }
-            else if ("TransService.ReqGetSign".equalsIgnoreCase(str))
-            {
-              a(paramToServiceMsg, paramFromServiceMsg, (MessageFactoryReceiver.SigStruct)paramObject);
-            }
-            else if ("StreamSvr.RespUploadStreamMsg".equalsIgnoreCase(str))
-            {
-              if (paramObject == null) {
-                a(3011, false, null);
-              } else {
-                a(3011, true, new Object[] { (MessageFactoryReceiver.UploadStreamStruct)paramObject });
-              }
-            }
-            else if ("MessageSvc.PbSendMsg".equalsIgnoreCase(str))
-            {
-              int i1 = paramToServiceMsg.extraData.getInt("ROUNTING_TYPE");
-              if ((i1 == 1) || (i1 == 3) || (i1 == 14) || (i1 == 5) || (i1 == 6) || (i1 == 10) || (i1 == 11) || (i1 == 12) || (i1 == 8) || (i1 == 16) || (i1 == 17) || (i1 == 18) || (i1 == 15)) {
-                d(paramToServiceMsg, paramFromServiceMsg, paramObject);
-              } else if (i1 == 9) {
-                a("offlinefile_processor").a(7002, new Object[] { paramToServiceMsg, paramFromServiceMsg, paramObject });
-              } else if (i1 == 13) {
-                a("offlinefile_processor").a(7003, new Object[] { paramToServiceMsg, paramFromServiceMsg, paramObject });
-              } else if (i1 == 4) {
-                h(paramToServiceMsg, paramFromServiceMsg, paramObject);
-              } else if (i1 == 2) {
-                e(paramToServiceMsg, paramFromServiceMsg, paramObject);
-              }
-            }
-            else if ("StreamSvr.PushStreamMsg".equalsIgnoreCase(str))
-            {
-              if (paramObject != null)
-              {
-                paramToServiceMsg = (Object[])paramObject;
-                l2 = ((Long)paramToServiceMsg[0]).longValue();
-                paramFromServiceMsg = (StreamInfo)paramToServiceMsg[1];
-                paramObject = (StreamData)paramToServiceMsg[2];
-                long l3 = ((Long)paramToServiceMsg[3]).longValue();
-                this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramFromServiceMsg, paramObject, l2, l3);
-              }
-            }
-            else if ("AccostSvc.ClientMsg".equalsIgnoreCase(str))
-            {
-              g(paramToServiceMsg, paramFromServiceMsg, paramObject);
-            }
-            else if ("AccostSvc.ReqGetBlackList".equalsIgnoreCase(str))
-            {
-              b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-            }
-            else if ("OnlinePush.PbPushTransMsg".equalsIgnoreCase(str))
-            {
-              paramToServiceMsg = paramFromServiceMsg.getWupBuffer();
-              paramFromServiceMsg = new byte[paramToServiceMsg.length - 4];
-              PkgTools.a(paramFromServiceMsg, 0, paramToServiceMsg, 4, paramToServiceMsg.length - 4);
-              paramToServiceMsg = new OnlinePushTrans.PbMsgInfo();
-              try
-              {
-                paramToServiceMsg.mergeFrom(paramFromServiceMsg);
-                if (paramToServiceMsg != null)
-                {
-                  if (paramToServiceMsg.msg_type.get() == 207) {
-                    a(paramToServiceMsg.msg_data.get().toByteArray());
-                  }
-                }
-                else
-                {
-                  paramFromServiceMsg = a("OnlinePush.RespPush");
-                  if (paramToServiceMsg != null)
-                  {
-                    paramFromServiceMsg.extraData.putInt("svrip", paramToServiceMsg.svr_ip.get());
-                    paramFromServiceMsg.extraData.putInt("seq", paramToServiceMsg.msg_seq.get());
-                  }
-                  paramFromServiceMsg.extraData.putLong("lUin", Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()));
-                  paramFromServiceMsg.setNeedCallback(false);
-                  a(paramFromServiceMsg);
-                }
-              }
-              catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-              {
-                for (;;)
-                {
-                  paramToServiceMsg = null;
-                  paramFromServiceMsg.printStackTrace();
-                  continue;
-                  if ((paramToServiceMsg.msg_type.get() == 44) || (paramToServiceMsg.msg_type.get() == 34)) {
-                    a().a(3);
-                  }
-                }
+              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.e(true);
+              if (QLog.isColorLevel()) {
+                QLog.d("SUB_ACCOUNT", 2, "subaccount push and start get subaccount msg");
               }
             }
             else
             {
-              if ("AccostSvc.ReqInsertBlackList".equals(paramFromServiceMsg.getServiceCmd()))
+              c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+            }
+          }
+          else if (("MessageSvc.SetRoamMsgAllUser".equalsIgnoreCase(str)) || ("MessageSvc.SetRoamMsg".equalsIgnoreCase(str)))
+          {
+            a(paramToServiceMsg, paramFromServiceMsg, (SvcResponseSetRoamMsg)paramObject);
+          }
+          else if ("PbMessageSvc.PbDelOneRoamMsg".equalsIgnoreCase(str))
+          {
+            r(paramToServiceMsg, paramFromServiceMsg, paramObject);
+          }
+          else if ("MessageSvc.DelRoamMsg".equalsIgnoreCase(str))
+          {
+            a(paramToServiceMsg, paramFromServiceMsg, (SvcResponseDelRoamMsg)paramObject);
+          }
+          else if ("MessageSvc.GroupMsgReadConfirm".equalsIgnoreCase(str))
+          {
+            a(paramToServiceMsg, paramFromServiceMsg, (SvcResponseGroupMsgReadConfirm)paramObject);
+          }
+          else if ("MessageSvc.DisMsgReadConfirm".equalsIgnoreCase(str))
+          {
+            a(paramToServiceMsg, paramFromServiceMsg, (SvcResponseSetConfMsgRead)paramObject);
+          }
+          else if ("MessageSvc.MsgReadedReport".equalsIgnoreCase(str))
+          {
+            a(paramToServiceMsg, paramFromServiceMsg, (SvcResponseMsgReadedReport)paramObject);
+          }
+          else if ("PbMessageSvc.PbMsgReadedReport".equalsIgnoreCase(str))
+          {
+            s(paramToServiceMsg, paramFromServiceMsg, paramObject);
+          }
+          else if ("ADMsgSvc.PushMsg".equalsIgnoreCase(str))
+          {
+            a(paramToServiceMsg, paramFromServiceMsg, (AdMsgInfo)paramObject);
+          }
+          else if ("MessageSvc.PushReaded".equalsIgnoreCase(str))
+          {
+            a(paramToServiceMsg, paramFromServiceMsg, (SvcRequestPushReadedNotify)paramObject);
+          }
+          else if ("TransService.ReqGetSign".equalsIgnoreCase(str))
+          {
+            a(paramToServiceMsg, paramFromServiceMsg, (MessageFactoryReceiver.SigStruct)paramObject);
+          }
+          else if ("StreamSvr.RespUploadStreamMsg".equalsIgnoreCase(str))
+          {
+            if (paramObject == null) {
+              a(3011, false, null);
+            } else {
+              a(3011, true, new Object[] { (MessageFactoryReceiver.UploadStreamStruct)paramObject });
+            }
+          }
+          else if ("MessageSvc.PbSendMsg".equalsIgnoreCase(str))
+          {
+            int i1 = paramToServiceMsg.extraData.getInt("ROUNTING_TYPE");
+            if ((i1 == 1) || (i1 == 3) || (i1 == 14) || (i1 == 5) || (i1 == 6) || (i1 == 10) || (i1 == 11) || (i1 == 12) || (i1 == 8) || (i1 == 16) || (i1 == 17) || (i1 == 18) || (i1 == 15)) {
+              d(paramToServiceMsg, paramFromServiceMsg, paramObject);
+            } else if (i1 == 9) {
+              a("offlinefile_processor").a(7002, new Object[] { paramToServiceMsg, paramFromServiceMsg, paramObject });
+            } else if (i1 == 13) {
+              a("offlinefile_processor").a(7003, new Object[] { paramToServiceMsg, paramFromServiceMsg, paramObject });
+            } else if (i1 == 4) {
+              h(paramToServiceMsg, paramFromServiceMsg, paramObject);
+            } else if (i1 == 2) {
+              e(paramToServiceMsg, paramFromServiceMsg, paramObject);
+            }
+          }
+          else if ("StreamSvr.PushStreamMsg".equalsIgnoreCase(str))
+          {
+            if (paramObject != null)
+            {
+              paramToServiceMsg = (Object[])paramObject;
+              l2 = ((Long)paramToServiceMsg[0]).longValue();
+              paramFromServiceMsg = (StreamInfo)paramToServiceMsg[1];
+              paramObject = (StreamData)paramToServiceMsg[2];
+              long l3 = ((Long)paramToServiceMsg[3]).longValue();
+              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramFromServiceMsg, paramObject, l2, l3);
+            }
+          }
+          else if ("AccostSvc.ClientMsg".equalsIgnoreCase(str))
+          {
+            g(paramToServiceMsg, paramFromServiceMsg, paramObject);
+          }
+          else if ("AccostSvc.ReqGetBlackList".equalsIgnoreCase(str))
+          {
+            b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+          }
+          else if ("OnlinePush.PbPushTransMsg".equalsIgnoreCase(str))
+          {
+            paramToServiceMsg = paramFromServiceMsg.getWupBuffer();
+            paramFromServiceMsg = new byte[paramToServiceMsg.length - 4];
+            PkgTools.a(paramFromServiceMsg, 0, paramToServiceMsg, 4, paramToServiceMsg.length - 4);
+            paramToServiceMsg = new OnlinePushTrans.PbMsgInfo();
+            try
+            {
+              paramToServiceMsg.mergeFrom(paramFromServiceMsg);
+              if (paramToServiceMsg != null)
               {
-                paramToServiceMsg = paramToServiceMsg.extraData.getString("insertUin");
-                if (paramFromServiceMsg.getResultCode() == 1000) {
-                  ((FriendsManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).a(paramToServiceMsg);
-                }
-                if (paramFromServiceMsg.getResultCode() == 1000) {}
-                for (bool = true;; bool = false)
-                {
-                  a(6001, bool, paramToServiceMsg);
-                  break;
-                }
-              }
-              if ("AccostSvc.ReqDeleteBlackList".equals(paramFromServiceMsg.getServiceCmd()))
-              {
-                paramToServiceMsg = paramToServiceMsg.extraData.getString("deleteUin");
-                if (paramFromServiceMsg.getResultCode() == 1000) {
-                  ((FriendsManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).b(paramToServiceMsg);
-                }
-                if (paramFromServiceMsg.getResultCode() == 1000) {}
-                for (bool = true;; bool = false)
-                {
-                  a(6002, bool, paramToServiceMsg);
-                  break;
-                }
-              }
-              if ("MessageSvc.PullGroupMsgSeq".equalsIgnoreCase(str))
-              {
-                paramObject = (SvcResponsePullGroupMsgSeq)paramObject;
-                try
-                {
-                  b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-                }
-                catch (Exception paramObject)
-                {
-                  paramObject.printStackTrace();
-                  if (QLog.isColorLevel()) {
-                    QLog.w("Q.msg.MessageHandler", 2, "handleGetPullTroopMsgNumResp exception ! ", paramObject);
-                  }
-                  p(paramToServiceMsg, paramFromServiceMsg);
-                }
-              }
-              else if ("MessageSvc.PbGetGroupMsg".equalsIgnoreCase(str))
-              {
-                try
-                {
-                  q(paramToServiceMsg, paramFromServiceMsg, paramObject);
-                }
-                catch (Exception paramObject)
-                {
-                  paramObject.printStackTrace();
-                  if (QLog.isColorLevel()) {
-                    QLog.w("Q.msg.MessageHandler", 2, "handleGetPullTroopMsgResp_PB exception ! ", paramObject);
-                  }
-                  r(paramToServiceMsg, paramFromServiceMsg);
-                }
-              }
-              else if ("MessageSvc.PbGetDiscussMsg".equalsIgnoreCase(str))
-              {
-                try
-                {
-                  j(paramToServiceMsg, paramFromServiceMsg, paramObject);
-                }
-                catch (Exception paramObject)
-                {
-                  paramObject.printStackTrace();
-                  if (QLog.isColorLevel()) {
-                    QLog.w("Q.msg.MessageHandler", 2, "handleGetPullDiscussionMsgResp_PB exception ! ", paramObject);
-                  }
-                  t(paramToServiceMsg, paramFromServiceMsg);
-                }
-              }
-              else if ("MessageSvc.RequestPushStatus".equalsIgnoreCase(str))
-              {
-                if (paramObject != null)
-                {
-                  paramToServiceMsg = (RequestPushStatus)paramObject;
-                  if (QLog.isColorLevel()) {
-                    QLog.d("Q.msg.MessageHandler", 2, "RequestPushStatus status:" + paramToServiceMsg.cStatus + "supportdataline:" + paramToServiceMsg.cDataLine);
-                  }
-                  paramFromServiceMsg = (RegisterProxySvcPackHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(9);
-                  byte b1 = 0;
-                  if (paramToServiceMsg.cStatus == 1)
-                  {
-                    b1 = 1;
-                    if (QLog.isDevelopLevel()) {
-                      QLog.d("Q.msg.MessageHandler", 4, "PConline now");
-                    }
-                    n();
-                  }
-                  for (;;)
-                  {
-                    paramFromServiceMsg.a(b1);
-                    paramFromServiceMsg.b(paramToServiceMsg.cDataLine);
-                    paramFromServiceMsg.c(paramToServiceMsg.cViewPcFile);
-                    a(6007, true, new Object[] { Byte.valueOf(b1), Byte.valueOf(paramToServiceMsg.cDataLine) });
-                    break;
-                    if (paramToServiceMsg.cStatus == 2)
-                    {
-                      b1 = 0;
-                      if (QLog.isDevelopLevel()) {
-                        QLog.d("Q.msg.MessageHandler", 4, "PCoffline now");
-                      }
-                      m();
-                    }
-                  }
-                }
-                if (QLog.isColorLevel()) {
-                  QLog.d("Q.msg.MessageHandler", 2, "RequestPushStatus ret, but data is null");
-                }
-              }
-              else if (("OnlinePush.PbPushGroupMsg".equalsIgnoreCase(str)) || ("OnlinePush.PbPushDisMsg".equalsIgnoreCase(str)) || ("OnlinePush.PbC2CMsgSync".equalsIgnoreCase(str)))
-              {
-                try
-                {
-                  f(paramToServiceMsg, paramFromServiceMsg, paramObject);
-                }
-                catch (Exception paramToServiceMsg)
-                {
-                  paramToServiceMsg.printStackTrace();
-                }
-                if (QLog.isColorLevel()) {
-                  QLog.w("Q.msg.MessageHandler", 2, "handleMessagePush_PB exception ! ", paramToServiceMsg);
-                }
-              }
-              else if ("MultiVideo.s2c".equalsIgnoreCase(str))
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("Q.msg.MessageHandler", 2, "Receive multi video message s2c ,cmd=MultiVideo.s2c");
-                }
-                if (VideoConstants.jdField_a_of_type_Boolean)
-                {
-                  paramToServiceMsg = (MultiVideoMsg)a(paramFromServiceMsg.getWupBuffer(), "MultiVideoMsg", new MultiVideoMsg());
-                  paramFromServiceMsg = paramToServiceMsg.video_buff;
-                  this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramFromServiceMsg);
-                  if (paramToServiceMsg.type != 10)
-                  {
-                    paramFromServiceMsg = a("MultiVideo.s2cack");
-                    paramFromServiceMsg.extraData.putByte("ver", paramToServiceMsg.ver);
-                    paramFromServiceMsg.extraData.putByte("type", paramToServiceMsg.type);
-                    paramFromServiceMsg.extraData.putShort("cscmd", paramToServiceMsg.csCmd);
-                    paramFromServiceMsg.extraData.putShort("subcmd", paramToServiceMsg.subCmd);
-                    paramFromServiceMsg.extraData.putLong("from_uin", paramToServiceMsg.from_uin);
-                    paramFromServiceMsg.extraData.putLong("to_uin", ((Long)paramToServiceMsg.to_uin.get(0)).longValue());
-                    paramFromServiceMsg.extraData.putLong("msg_seq", paramToServiceMsg.msg_seq);
-                    paramFromServiceMsg.extraData.putLong("msg_uid", paramToServiceMsg.msg_uid);
-                    paramFromServiceMsg.extraData.putLong("msg_type", paramToServiceMsg.msg_type);
-                    paramFromServiceMsg.extraData.putLong("msg_time", paramToServiceMsg.msg_time);
-                    paramFromServiceMsg.extraData.putByteArray("video_buff", paramToServiceMsg.video_buff);
-                    a(paramFromServiceMsg);
-                  }
-                }
-              }
-              else if ("NearFieldTranFileSvr.NotifyList".equalsIgnoreCase(str))
-              {
-                this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((byte[])paramObject);
-              }
-              else if ("MultiVideo.c2sack".equalsIgnoreCase(str))
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("Q.msg.MessageHandler", 2, "Receive multi video message C2SACK ,cmd=MultiVideo.c2sack");
-                }
-                if (VideoConstants.jdField_a_of_type_Boolean)
-                {
-                  paramToServiceMsg = ((MultiVideoMsg)a(paramFromServiceMsg.getWupBuffer(), "MultiVideoMsg", new MultiVideoMsg())).video_buff;
-                  this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramToServiceMsg);
+                if (paramToServiceMsg.msg_type.get() == 207) {
+                  a(paramToServiceMsg.msg_data.get().toByteArray());
                 }
               }
               else
               {
-                if (!"OidbSvc.0xb72_0".equalsIgnoreCase(str)) {
-                  break label2872;
+                paramFromServiceMsg = a("OnlinePush.RespPush");
+                if (paramToServiceMsg != null)
+                {
+                  paramFromServiceMsg.extraData.putInt("svrip", paramToServiceMsg.svr_ip.get());
+                  paramFromServiceMsg.extraData.putInt("seq", paramToServiceMsg.msg_seq.get());
                 }
+                paramFromServiceMsg.extraData.putLong("lUin", Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()));
+                paramFromServiceMsg.setNeedCallback(false);
+                a(paramFromServiceMsg);
+              }
+            }
+            catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+            {
+              for (;;)
+              {
+                paramToServiceMsg = null;
+                paramFromServiceMsg.printStackTrace();
+                continue;
+                if ((paramToServiceMsg.msg_type.get() == 44) || (paramToServiceMsg.msg_type.get() == 34)) {
+                  a().a(3);
+                }
+              }
+            }
+          }
+          else
+          {
+            if ("AccostSvc.ReqInsertBlackList".equals(paramFromServiceMsg.getServiceCmd()))
+            {
+              paramToServiceMsg = paramToServiceMsg.extraData.getString("insertUin");
+              if (paramFromServiceMsg.getResultCode() == 1000) {
+                ((FriendsManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).a(paramToServiceMsg);
+              }
+              if (paramFromServiceMsg.getResultCode() == 1000) {}
+              for (bool = true;; bool = false)
+              {
+                a(6001, bool, paramToServiceMsg);
+                break;
+              }
+            }
+            if ("AccostSvc.ReqDeleteBlackList".equals(paramFromServiceMsg.getServiceCmd()))
+            {
+              paramToServiceMsg = paramToServiceMsg.extraData.getString("deleteUin");
+              if (paramFromServiceMsg.getResultCode() == 1000) {
+                ((FriendsManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).b(paramToServiceMsg);
+              }
+              if (paramFromServiceMsg.getResultCode() == 1000) {}
+              for (bool = true;; bool = false)
+              {
+                a(6002, bool, paramToServiceMsg);
+                break;
+              }
+            }
+            if ("MessageSvc.PullGroupMsgSeq".equalsIgnoreCase(str))
+            {
+              paramObject = (SvcResponsePullGroupMsgSeq)paramObject;
+              try
+              {
+                b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+              }
+              catch (Exception paramObject)
+              {
+                paramObject.printStackTrace();
+                if (QLog.isColorLevel()) {
+                  QLog.w("Q.msg.MessageHandler", 2, "handleGetPullTroopMsgNumResp exception ! ", paramObject);
+                }
+                p(paramToServiceMsg, paramFromServiceMsg);
+              }
+            }
+            else if ("MessageSvc.PbGetGroupMsg".equalsIgnoreCase(str))
+            {
+              try
+              {
+                q(paramToServiceMsg, paramFromServiceMsg, paramObject);
+              }
+              catch (Exception paramObject)
+              {
+                paramObject.printStackTrace();
+                if (QLog.isColorLevel()) {
+                  QLog.w("Q.msg.MessageHandler", 2, "handleGetPullTroopMsgResp_PB exception ! ", paramObject);
+                }
+                r(paramToServiceMsg, paramFromServiceMsg);
+              }
+            }
+            else if ("MessageSvc.PbGetDiscussMsg".equalsIgnoreCase(str))
+            {
+              try
+              {
+                j(paramToServiceMsg, paramFromServiceMsg, paramObject);
+              }
+              catch (Exception paramObject)
+              {
+                paramObject.printStackTrace();
+                if (QLog.isColorLevel()) {
+                  QLog.w("Q.msg.MessageHandler", 2, "handleGetPullDiscussionMsgResp_PB exception ! ", paramObject);
+                }
+                t(paramToServiceMsg, paramFromServiceMsg);
+              }
+            }
+            else if ("MessageSvc.RequestPushStatus".equalsIgnoreCase(str))
+            {
+              if (paramObject != null)
+              {
+                paramToServiceMsg = (RequestPushStatus)paramObject;
+                if (QLog.isColorLevel()) {
+                  QLog.d("Q.msg.MessageHandler", 2, "RequestPushStatus status:" + paramToServiceMsg.cStatus + "supportdataline:" + paramToServiceMsg.cDataLine);
+                }
+                paramFromServiceMsg = (RegisterProxySvcPackHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(9);
+                byte b1 = 0;
+                if (paramToServiceMsg.cStatus == 1)
+                {
+                  b1 = 1;
+                  if (QLog.isDevelopLevel()) {
+                    QLog.d("Q.msg.MessageHandler", 4, "PConline now");
+                  }
+                  n();
+                }
+                for (;;)
+                {
+                  paramFromServiceMsg.a(b1);
+                  paramFromServiceMsg.b(paramToServiceMsg.cDataLine);
+                  paramFromServiceMsg.c(paramToServiceMsg.cViewPcFile);
+                  a(6007, true, new Object[] { Byte.valueOf(b1), Byte.valueOf(paramToServiceMsg.cDataLine) });
+                  break;
+                  if (paramToServiceMsg.cStatus == 2)
+                  {
+                    b1 = 0;
+                    if (QLog.isDevelopLevel()) {
+                      QLog.d("Q.msg.MessageHandler", 4, "PCoffline now");
+                    }
+                    m();
+                  }
+                }
+              }
+              if (QLog.isColorLevel()) {
+                QLog.d("Q.msg.MessageHandler", 2, "RequestPushStatus ret, but data is null");
+              }
+            }
+            else if (("OnlinePush.PbPushGroupMsg".equalsIgnoreCase(str)) || ("OnlinePush.PbPushDisMsg".equalsIgnoreCase(str)) || ("OnlinePush.PbC2CMsgSync".equalsIgnoreCase(str)))
+            {
+              try
+              {
+                f(paramToServiceMsg, paramFromServiceMsg, paramObject);
+              }
+              catch (Exception paramToServiceMsg)
+              {
+                paramToServiceMsg.printStackTrace();
+              }
+              if (QLog.isColorLevel()) {
+                QLog.w("Q.msg.MessageHandler", 2, "handleMessagePush_PB exception ! ", paramToServiceMsg);
+              }
+            }
+            else if ("NearFieldTranFileSvr.NotifyList".equalsIgnoreCase(str))
+            {
+              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((byte[])paramObject);
+            }
+            else if ("MultiVideo.c2sack".equalsIgnoreCase(str))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("Q.msg.MessageHandler", 2, "Receive multi video message C2SACK ,cmd=MultiVideo.c2sack");
+              }
+            }
+            else
+            {
+              if ("OidbSvc.0xb72_0".equalsIgnoreCase(str))
+              {
                 QLog.e("Barry", 4, "CMD_IQQ_USER_TYPE_INFO");
                 paramObject = a(paramToServiceMsg, paramFromServiceMsg, paramObject);
                 if (paramObject == null)
@@ -5569,32 +5473,20 @@ public class MessageHandler
                 {
                   paramToServiceMsg = new oidb_0xb72.RspBody();
                   paramToServiceMsg.mergeFrom(paramObject.bytes_bodybuffer.get().toByteArray());
-                  if (paramToServiceMsg.uint32_parent_allow.get() != 1) {
-                    break label2849;
-                  }
-                  EUCountryUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 1);
-                  if (paramToServiceMsg.uint32_user_flag_ue.get() != 0) {
-                    break;
-                  }
-                  b(0);
-                  return;
+                  a(paramToServiceMsg.uint32_loc_flag_ue.get(), paramToServiceMsg.uint32_user_flag_ue.get() & 0x1, paramToServiceMsg.uint32_parent_allow.get());
                 }
                 catch (Exception paramToServiceMsg) {}
+                if (!QLog.isColorLevel()) {
+                  continue;
+                }
+                QLog.d("Q.msg.MessageHandler", 2, "CMD_IQQ_USER_TYPE_INFO error:" + paramToServiceMsg.getMessage());
+                continue;
+              }
+              if ("OidbSvc.0x587_34".equalsIgnoreCase(str)) {
+                QLog.e("Barry", 4, "CMD_IQQ_USER_TYPE_ISEU");
               }
             }
           }
-        }
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Q.msg.MessageHandler", 2, "CMD_IQQ_USER_TYPE_INFO error:" + paramToServiceMsg.getMessage());
-        continue;
-        label2849:
-        a(paramToServiceMsg.uint32_loc_flag_ue.get(), paramToServiceMsg.uint32_user_flag_ue.get() & 0x1);
-        continue;
-        label2872:
-        if ("OidbSvc.0x587_34".equalsIgnoreCase(str)) {
-          QLog.e("Barry", 4, "CMD_IQQ_USER_TYPE_ISEU");
         }
       }
     }
@@ -5857,7 +5749,7 @@ public class MessageHandler
   {
     SendMessageHandler localSendMessageHandler = new SendMessageHandler();
     for (long l1 = 0L; l1 < 3L; l1 += 1L) {
-      localSendMessageHandler.postDelayed(new fig(this, l1, paramString1, paramString2, paramByte, paramString3, paramLong1, paramLong2), 30000L * l1);
+      localSendMessageHandler.postDelayed(new fds(this, l1, paramString1, paramString2, paramByte, paramString3, paramLong1, paramLong2), 30000L * l1);
     }
     a(paramLong1, localSendMessageHandler);
   }
@@ -5946,9 +5838,9 @@ public class MessageHandler
       i1 = 0;
       while (i1 < paramArrayList1.size())
       {
-        arrayOfLong[i1] = ((fin)paramArrayList1.get(i1)).jdField_a_of_type_Long;
-        localObject[i1] = ((fin)paramArrayList1.get(i1)).jdField_a_of_type_Int;
-        arrayOfShort[i1] = ((fin)paramArrayList1.get(i1)).jdField_a_of_type_Short;
+        arrayOfLong[i1] = ((fdz)paramArrayList1.get(i1)).jdField_a_of_type_Long;
+        localObject[i1] = ((fdz)paramArrayList1.get(i1)).jdField_a_of_type_Int;
+        arrayOfShort[i1] = ((fdz)paramArrayList1.get(i1)).jdField_a_of_type_Short;
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.MessageHandler", 2, "--->>delC2CMessage i: " + i1 + " fromUin:" + arrayOfLong[i1] + " msgTime: " + localObject[i1] + " msgSeq:" + arrayOfShort[i1]);
         }
@@ -5990,7 +5882,7 @@ public class MessageHandler
       return;
     }
     if (NetworkUtil.b(BaseApplication.getContext()) == 1) {}
-    paramBoolean = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131563423), "qqsetting_auto_receive_pic_key", true);
+    paramBoolean = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131563451), "qqsetting_auto_receive_pic_key", true);
     boolean bool = "1".equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(ServerConfigManager.ConfigType.common, "UseLocalFlowSet"));
     if ((NetworkUtil.b(BaseApplication.getContext()) == 1) || (paramBoolean)) {}
     for (int i1 = 1;; i1 = 0)
@@ -6254,6 +6146,9 @@ public class MessageHandler
   {
     Object localObject = new oidb_0x587.ReqBody();
     ((oidb_0x587.ReqBody)localObject).uint32_ueflag.set(65535);
+    if (paramInt != -1) {
+      ((oidb_0x587.ReqBody)localObject).uint32_parent_allow_flag.set(paramInt);
+    }
     oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
     localOIDBSSOPkg.uint32_command.set(1415);
     localOIDBSSOPkg.uint32_result.set(0);
@@ -6289,7 +6184,7 @@ public class MessageHandler
     i1 = 0;
     while (i1 < 9)
     {
-      localSendMessageHandler.a(new fii(this, paramLong1, paramLong2, l1, l2));
+      localSendMessageHandler.a(new fdu(this, paramLong1, paramLong2, l1, l2));
       i1 += 1;
     }
     i1 = 0;
@@ -6340,7 +6235,7 @@ public class MessageHandler
           ((MessageForPtt)paramMessageRecord).richText = null;
         }
       }
-      localSendMessageHandler.a(new fic(this, paramMessageRecord, localPbSendMsgReq, paramBusinessObserver));
+      localSendMessageHandler.a(new fdo(this, paramMessageRecord, localPbSendMsgReq, paramBusinessObserver));
       localSendMessageHandler.getClass();
       localSendMessageHandler.a(0L, 30000L, "period");
     } while (!QLog.isColorLevel());
@@ -6446,7 +6341,7 @@ public class MessageHandler
     paramInt = 0;
     while (paramInt < 9)
     {
-      localSendMessageHandler.a(new fie(this, paramString, l2, l1));
+      localSendMessageHandler.a(new fdq(this, paramString, l2, l1));
       paramInt += 1;
     }
     paramInt = 0;
@@ -6587,7 +6482,7 @@ public class MessageHandler
     i1 = 0;
     while (i1 < 9)
     {
-      localSendMessageHandler.a(new fij(this, paramArrayList, l1, l2));
+      localSendMessageHandler.a(new fdv(this, paramArrayList, l1, l2));
       i1 += 1;
     }
     i1 = 0;
@@ -6694,8 +6589,8 @@ public class MessageHandler
   
   public void d()
   {
-    this.bK = 0;
-    this.bV = 0;
+    this.bN = 0;
+    this.bY = 0;
   }
   
   public void d(String paramString)
@@ -6714,7 +6609,7 @@ public class MessageHandler
     localRequestCustomSig.reserved = new byte[0];
     localHashMap.put("RequestCustomSig", localRequestCustomSig);
     localHashMap.put("OpenAppid", paramString);
-    localAccountManager.changeToken(localHashMap, new fim(this, paramString));
+    localAccountManager.changeToken(localHashMap, new fdy(this, paramString));
   }
   
   public void d(boolean paramBoolean)
@@ -6899,27 +6794,27 @@ public class MessageHandler
     {
       synchronized (this.jdField_c_of_type_JavaLangObject)
       {
-        if (this.jdField_a_of_type_ArrayOfFip != null) {
+        if (this.jdField_a_of_type_ArrayOfFeb != null) {
           break label193;
         }
         this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(20);
         this.jdField_d_of_type_JavaUtilArrayList = new ArrayList(10);
-        this.jdField_a_of_type_ArrayOfFip = new fip[6];
+        this.jdField_a_of_type_ArrayOfFeb = new feb[6];
         break label193;
-        if (i1 < this.jdField_a_of_type_ArrayOfFip.length)
+        if (i1 < this.jdField_a_of_type_ArrayOfFeb.length)
         {
-          if ((this.jdField_a_of_type_ArrayOfFip[i1] != null) && (!this.jdField_a_of_type_ArrayOfFip[i1].a())) {
+          if ((this.jdField_a_of_type_ArrayOfFeb[i1] != null) && (!this.jdField_a_of_type_ArrayOfFeb[i1].a())) {
             break label198;
           }
           if (i1 == 0)
           {
-            this.jdField_a_of_type_ArrayOfFip[i1] = new fip(this, this.jdField_d_of_type_JavaUtilArrayList);
-            this.jdField_a_of_type_ArrayOfFip[i1].setName("MessageHandleThread" + (i1 + 1));
-            this.jdField_a_of_type_ArrayOfFip[i1].setPriority(5);
-            this.jdField_a_of_type_ArrayOfFip[i1].start();
+            this.jdField_a_of_type_ArrayOfFeb[i1] = new feb(this, this.jdField_d_of_type_JavaUtilArrayList);
+            this.jdField_a_of_type_ArrayOfFeb[i1].setName("MessageHandleThread" + (i1 + 1));
+            this.jdField_a_of_type_ArrayOfFeb[i1].setPriority(5);
+            this.jdField_a_of_type_ArrayOfFeb[i1].start();
             break label198;
           }
-          this.jdField_a_of_type_ArrayOfFip[i1] = new fip(this, this.jdField_c_of_type_JavaUtilArrayList);
+          this.jdField_a_of_type_ArrayOfFeb[i1] = new feb(this, this.jdField_c_of_type_JavaUtilArrayList);
         }
       }
       return;
@@ -6935,12 +6830,12 @@ public class MessageHandler
   {
     synchronized (this.jdField_c_of_type_JavaLangObject)
     {
-      if (this.jdField_a_of_type_ArrayOfFip != null)
+      if (this.jdField_a_of_type_ArrayOfFeb != null)
       {
         int i1 = 0;
-        while (i1 < this.jdField_a_of_type_ArrayOfFip.length)
+        while (i1 < this.jdField_a_of_type_ArrayOfFeb.length)
         {
-          this.jdField_a_of_type_ArrayOfFip[i1].a();
+          this.jdField_a_of_type_ArrayOfFeb[i1].a();
           i1 += 1;
         }
       }
@@ -6949,7 +6844,7 @@ public class MessageHandler
         this.jdField_c_of_type_JavaUtilArrayList.notifyAll();
         this.jdField_d_of_type_JavaUtilArrayList = null;
         this.jdField_c_of_type_JavaUtilArrayList = null;
-        this.jdField_a_of_type_ArrayOfFip = null;
+        this.jdField_a_of_type_ArrayOfFeb = null;
         return;
       }
     }
@@ -7098,7 +6993,7 @@ public class MessageHandler
     i1 = 0;
     while (i1 < 9)
     {
-      localSendMessageHandler.a(new fid(this, localPbMsgReadedReportReq, l2, l1));
+      localSendMessageHandler.a(new fdp(this, localPbMsgReadedReportReq, l2, l1));
       i1 += 1;
     }
     i1 = 0;

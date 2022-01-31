@@ -6,7 +6,7 @@ import com.tencent.qqprotect.qsec.QSecFramework;
 public class StartQSecLogic
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
     if (this.b == 102) {
       QSecFramework.a().a();

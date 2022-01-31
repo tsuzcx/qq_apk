@@ -1,55 +1,53 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.observer.SubAccountObserver;
 
 public class cvd
-  extends BaseAdapter
+  extends SubAccountObserver
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  public cvd(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
   
-  public cvd(GesturePWDCreateActivity paramGesturePWDCreateActivity, Context paramContext)
+  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a.length;
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: mainAccount=" + paramString1 + " subAccount=" + paramString2);
     }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a != null) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a.length) && (paramInt >= 0)) {
-      return Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a[paramInt]);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903239, null);
-    }
-    paramView = paramViewGroup.findViewById(2131231739);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a != null) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a.length) && (this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a[paramInt] > 0))
+    if (TextUtils.isEmpty(paramString3))
     {
-      paramView.setBackgroundResource(2130838941);
-      return paramViewGroup;
+      paramString1 = new HashMap();
+      paramString1.put("param_FailCode", "12005");
+      paramString1.put("fail_step", "getKeyEmpty");
+      paramString1.put("fail_location", "subLogin");
+      StatisticCollector.a(BaseApplication.getContext()).a(this.a.b.a(), "actSBGeykey", false, 0L, 0L, paramString1, "");
+      this.a.g();
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack:subLogin ...has Failed key  =  null");
+      }
+      this.a.a(2131562096, 0);
     }
-    paramView.setBackgroundResource(2130840509);
-    return paramViewGroup;
+    do
+    {
+      return;
+      paramString1 = new HashMap();
+      paramString1.put("param_FailCode", "12006");
+      paramString1.put("fail_step", "getKeyNotEmpty");
+      paramString1.put("fail_location", "subLogin");
+      StatisticCollector.a(BaseApplication.getContext()).a(this.a.b.a(), "actSBGeykey", true, 0L, 0L, paramString1, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: key not null");
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginVerifyCodeActivity", 2, "subaccount onGetKeyBack goto bind");
+      }
+      SubAccountAssistantManager.a().a(this.a.b, paramString2, paramString3);
+    } while (!QLog.isColorLevel());
+    QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: success .........");
   }
 }
 

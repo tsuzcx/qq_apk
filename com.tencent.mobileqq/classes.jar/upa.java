@@ -1,22 +1,10 @@
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgNumAnim;
-import com.tencent.mobileqq.activity.qwallet.widget.NumAnim;
-import com.tencent.mobileqq.activity.qwallet.widget.NumAnim.Ruler;
-import com.tencent.mobileqq.activity.qwallet.widget.NumAnim.SpannableValue;
-
-public class upa
-  implements NumAnim.Ruler
+public abstract interface upa
 {
-  public upa(GoldMsgNumAnim paramGoldMsgNumAnim) {}
-  
-  public NumAnim.SpannableValue getNumber(double paramDouble)
-  {
-    String str = NumAnim.formatNumber(paramDouble, true);
-    return new NumAnim.SpannableValue(str, 0, str.length());
-  }
+  public abstract void a(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     upa
  * JD-Core Version:    0.7.0.1
  */

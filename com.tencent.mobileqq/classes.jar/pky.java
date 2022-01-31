@@ -1,17 +1,39 @@
-import com.tencent.component.network.utils.FileUtils.FileComparator;
-import java.io.File;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-public final class pky
-  implements FileUtils.FileComparator
+public class pky
+  implements poa
 {
-  public boolean a(File paramFile1, File paramFile2)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    return (paramFile1.length() == paramFile2.length()) && (paramFile1.lastModified() == paramFile2.lastModified());
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    return pkb.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pgd parampgd, int paramInt2)
+  {
+    ArticleInfo localArticleInfo = parampgd.a();
+    if ((localArticleInfo != null) && (localArticleInfo.isAccountShown)) {
+      ppx.a(paramContainer, parampgd);
+    }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pgd parampgd, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pky
  * JD-Core Version:    0.7.0.1
  */

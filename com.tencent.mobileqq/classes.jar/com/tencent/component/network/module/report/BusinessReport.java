@@ -9,50 +9,70 @@ import java.util.Random;
 
 public class BusinessReport
 {
-  private static long jdField_a_of_type_Long = SystemClock.uptimeMillis();
-  private static SparseArray jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(12);
-  private static CommonTaskThread jdField_a_of_type_ComTencentComponentNetworkModuleReportCommonTaskThread = new CommonTaskThread("BusinessReport");
-  private static final Object jdField_a_of_type_JavaLangObject;
-  private static Random jdField_a_of_type_JavaUtilRandom = new Random();
-  private static volatile boolean jdField_a_of_type_Boolean;
-  private static final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[12];
+  private static final int APP_OP_COUNT = 12;
+  private static final int MAX_COUNT = 10;
+  private static final int MAX_TIME = 600000;
+  private static final int RADOM_PERCENT = 5;
+  private static final String TAG = "BusinessReport";
+  private static SparseArray<ArrayList<ReportObj>> appReportLists = new SparseArray(12);
+  private static final Object init_lock;
+  private static volatile boolean inited;
+  private static final Object[] locks;
+  private static CommonTaskThread mTaskThread = new CommonTaskThread("BusinessReport");
+  private static Random r = new Random();
+  private static long startTime;
   
   static
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_Boolean = false;
+    locks = new Object[12];
+    init_lock = new Object();
+    inited = false;
+    startTime = SystemClock.uptimeMillis();
   }
   
-  private static ArrayList a()
+  private static ArrayList<ReportObj> createRamdomArrayList()
   {
     return new BusinessReport.1();
   }
   
-  public static void a()
+  private static int getReportPercent()
+  {
+    int i = 100;
+    int j = Config.getReportPercent();
+    if (j < 0) {
+      i = 5;
+    }
+    while (j > 100) {
+      return i;
+    }
+    return j;
+  }
+  
+  public static void init()
   {
     int k = 0;
-    if (jdField_a_of_type_Boolean) {
+    if (inited) {
       return;
     }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (init_lock)
     {
-      if (jdField_a_of_type_Boolean) {
+      if (inited) {
         return;
       }
     }
-    jdField_a_of_type_Boolean = true;
+    inited = true;
     int j = 0;
     break label100;
-    jdField_a_of_type_AndroidUtilSparseArray.append(j, a());
+    appReportLists.append(j, createRamdomArrayList());
     break label122;
     label53:
-    jdField_a_of_type_AndroidUtilSparseArray.append(j, new ArrayList());
+    appReportLists.append(j, new ArrayList());
     break label122;
     label70:
     int i;
-    while (i < jdField_a_of_type_ArrayOfJavaLangObject.length)
+    while (i < locks.length)
     {
-      jdField_a_of_type_ArrayOfJavaLangObject[i] = new Object();
+      locks[i] = new Object();
       i += 1;
     }
     return;
@@ -75,36 +95,7 @@ public class BusinessReport
     }
   }
   
-  public static void a(int paramInt1, int paramInt2)
-  {
-    if (((paramInt1 < 0) || (paramInt1 > 11)) && (paramInt1 % 2 != 0)) {}
-    int i;
-    ArrayList localArrayList1;
-    do
-    {
-      do
-      {
-        return;
-      } while (((paramInt2 != 0) && (paramInt2 != 1)) || (!NetworkManager.isNetworkAvailable()));
-      i = paramInt1 + paramInt2;
-      localArrayList1 = (ArrayList)jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    } while (localArrayList1.isEmpty());
-    synchronized (jdField_a_of_type_ArrayOfJavaLangObject[i])
-    {
-      ArrayList localArrayList2 = new ArrayList(localArrayList1);
-      if ((i == 1) || (i == 11))
-      {
-        jdField_a_of_type_AndroidUtilSparseArray.setValueAt(i, a());
-        localArrayList1.clear();
-        jdField_a_of_type_Long = SystemClock.uptimeMillis();
-        jdField_a_of_type_ComTencentComponentNetworkModuleReportCommonTaskThread.a(new BusinessReport.ReportRunnable(localArrayList2, paramInt1, paramInt2));
-        return;
-      }
-      jdField_a_of_type_AndroidUtilSparseArray.setValueAt(i, new ArrayList());
-    }
-  }
-  
-  public static void a(ReportObj paramReportObj, int paramInt1, int paramInt2)
+  public static void uploadReport(ReportObj paramReportObj, int paramInt1, int paramInt2)
   {
     if (((paramInt1 < 0) || (paramInt1 > 9)) && (paramInt1 % 2 != 0)) {}
     for (;;)
@@ -114,9 +105,9 @@ public class BusinessReport
       {
         int i = paramInt1 + paramInt2;
         long l1 = SystemClock.uptimeMillis();
-        long l2 = jdField_a_of_type_Long;
-        ArrayList localArrayList = (ArrayList)jdField_a_of_type_AndroidUtilSparseArray.get(i);
-        synchronized (jdField_a_of_type_ArrayOfJavaLangObject[i])
+        long l2 = startTime;
+        ArrayList localArrayList = (ArrayList)appReportLists.get(i);
+        synchronized (locks[i])
         {
           localArrayList.add(paramReportObj);
           switch (i)
@@ -136,7 +127,7 @@ public class BusinessReport
           case 11: 
             if ((localArrayList.size() >= 10) || (l1 - l2 >= 600000L))
             {
-              a(paramInt1, paramInt2);
+              uploadReportImmediately(paramInt1, paramInt2);
               return;
             }
             break;
@@ -144,25 +135,41 @@ public class BusinessReport
         }
       }
     }
-    a(paramInt1, paramInt2);
+    uploadReportImmediately(paramInt1, paramInt2);
   }
   
-  private static int b()
+  public static void uploadReportImmediately(int paramInt1, int paramInt2)
   {
-    int i = 100;
-    int j = Config.d();
-    if (j < 0) {
-      i = 5;
+    if (((paramInt1 < 0) || (paramInt1 > 11)) && (paramInt1 % 2 != 0)) {}
+    int i;
+    ArrayList localArrayList1;
+    do
+    {
+      do
+      {
+        return;
+      } while (((paramInt2 != 0) && (paramInt2 != 1)) || (!NetworkManager.isNetworkAvailable()));
+      i = paramInt1 + paramInt2;
+      localArrayList1 = (ArrayList)appReportLists.get(i);
+    } while (localArrayList1.isEmpty());
+    synchronized (locks[i])
+    {
+      ArrayList localArrayList2 = new ArrayList(localArrayList1);
+      if ((i == 1) || (i == 11))
+      {
+        appReportLists.setValueAt(i, createRamdomArrayList());
+        localArrayList1.clear();
+        startTime = SystemClock.uptimeMillis();
+        mTaskThread.post(new BusinessReport.ReportRunnable(localArrayList2, paramInt1, paramInt2));
+        return;
+      }
+      appReportLists.setValueAt(i, new ArrayList());
     }
-    while (j > 100) {
-      return i;
-    }
-    return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.module.report.BusinessReport
  * JD-Core Version:    0.7.0.1
  */

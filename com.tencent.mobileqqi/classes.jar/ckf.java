@@ -1,62 +1,54 @@
-import android.os.Handler;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.emosm.view.DragSortAdapter;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.mobileqq.statistics.StatisticAssist;
+import mqq.app.MobileQQ;
 
 public class ckf
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public ckf(ChatSettingForTroop paramChatSettingForTroop, int paramInt, ActionSheet paramActionSheet) {}
+  public ckf(EmosmActivity paramEmosmActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!NetworkUtil.e(BaseApplication.getContext()))
+    EmosmActivity.b(this.a).setVisibility(0);
+    EmosmActivity.c(this.a).setEnabled(false);
+    if (!this.a.jdField_b_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131562449, 1500);
+      EmosmActivity.a(this.a).setVisibility(8);
+      EmosmActivity.a(this.a).setDragEnabled(true);
+      EmosmActivity.a(this.a).setEditMode(true);
+      this.a.jdField_b_of_type_Boolean = true;
+      EmosmActivity.a(this.a).notifyDataSetChanged();
+      EmosmActivity.a(this.a).setVisibility(8);
+      EmosmActivity.a(this.a).setEnabled(false);
+      StatisticAssist.a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), "Clk_ep_edit");
     }
-    try
+    do
     {
-      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      }
       return;
-      switch (paramInt)
+      if (EmosmActivity.d(this.a) == 2)
       {
-      default: 
-        paramInt = -1;
+        EmosmActivity.a(this.a).setVisibility(8);
+        EmosmActivity.a(this.a).setDragEnabled(false);
+        EmosmActivity.a(this.a).setEditMode(false);
+        this.a.a();
+        this.a.jdField_b_of_type_Boolean = false;
+        EmosmActivity.a(this.a).notifyDataSetChanged();
+        EmosmActivity.a(this.a).clearSelectStatus();
+        EmosmActivity.a(this.a).setVisibility(8);
+        return;
       }
-      while (paramInt != this.jdField_a_of_type_Int)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.g = paramInt;
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.b.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c, Integer.valueOf(paramInt));
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.b, "P_CliOper", "Grp_msg", "", "data_page", "Clk_setmsg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c, String.valueOf(paramInt - 1), "", "");
-        break;
-        paramInt = 1;
-        continue;
-        paramInt = 4;
-        continue;
-        paramInt = 2;
-        continue;
-        paramInt = 3;
-      }
-    }
-    catch (Exception paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("Q.chatopttroop", 2, paramView.toString());
-    }
+    } while (EmosmActivity.d(this.a) != 1);
+    EmosmActivity.a(this.a).clearSelectStatus();
+    this.a.a();
+    this.a.finish();
   }
 }
 

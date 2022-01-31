@@ -1,50 +1,56 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.Scroller;
-import com.tencent.widget.MovingView;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class amcq
-  extends Handler
+  extends QIPCModule
 {
-  public amcq(MovingView paramMovingView, Looper paramLooper)
+  private static amcq a;
+  
+  private amcq()
   {
-    super(paramLooper);
+    super("SignInModule");
   }
   
-  public void handleMessage(Message paramMessage)
+  public static amcq a()
   {
-    if (paramMessage.what == 1) {
-      if ((this.a.jdField_a_of_type_Boolean) && (!this.a.jdField_b_of_type_Boolean)) {}
+    if (a == null) {
+      a = new amcq();
     }
-    while (paramMessage.what != 2)
+    return a;
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    paramInt = paramBundle.getInt("type", 1);
+    int i = paramBundle.getInt("result", 2);
+    int j = paramBundle.getInt("day", 1);
+    if (QLog.isColorLevel()) {
+      QLog.i("DailySignIn", 2, "SignInModule onCall type = " + paramInt + ",result = " + i + ",day = " + j);
+    }
+    if (i == 0)
     {
-      return;
-      if (this.a.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (paramString != null)
       {
-        int i = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-        int j = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
-        int k = this.a.c;
-        int m = this.a.d;
-        this.a.c = i;
-        this.a.d = j;
-        paramMessage = this.a;
-        paramMessage.jdField_a_of_type_Int += i - k;
-        paramMessage = this.a;
-        paramMessage.jdField_b_of_type_Int += j - m;
-        this.a.invalidate();
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 40L);
-        return;
+        paramString.getPreferences();
+        paramString = (alpk)paramString.a(2);
+        if (QLog.isColorLevel()) {
+          QLog.i("DailySignIn", 2, "get oidb0x922 by web");
+        }
+        paramString.c(0);
+        paramString.n();
       }
-      this.a.a();
-      return;
     }
-    this.a.a();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amcq
  * JD-Core Version:    0.7.0.1
  */

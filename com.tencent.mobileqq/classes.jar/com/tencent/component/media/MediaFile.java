@@ -50,109 +50,116 @@ public class MediaFile
   public static final int FILE_TYPE_WPL = 43;
   public static final int FILE_TYPE_XML = 103;
   public static final int FILE_TYPE_ZIP = 107;
-  private static final HashMap a = new HashMap();
-  private static final HashMap b = new HashMap();
-  private static final HashMap c = new HashMap();
-  private static final HashMap d = new HashMap();
-  private static final HashMap e = new HashMap();
+  private static final int FIRST_AUDIO_FILE_TYPE = 1;
+  private static final int FIRST_DRM_FILE_TYPE = 51;
+  private static final int FIRST_IMAGE_FILE_TYPE = 31;
+  private static final int FIRST_MIDI_FILE_TYPE = 11;
+  private static final int FIRST_PLAYLIST_FILE_TYPE = 41;
+  private static final int FIRST_VIDEO_FILE_TYPE = 21;
+  private static final int FIRST_VIDEO_FILE_TYPE2 = 200;
+  private static final int LAST_AUDIO_FILE_TYPE = 10;
+  private static final int LAST_DRM_FILE_TYPE = 51;
+  private static final int LAST_IMAGE_FILE_TYPE = 36;
+  private static final int LAST_MIDI_FILE_TYPE = 13;
+  private static final int LAST_PLAYLIST_FILE_TYPE = 44;
+  private static final int LAST_VIDEO_FILE_TYPE = 30;
+  private static final int LAST_VIDEO_FILE_TYPE2 = 203;
+  private static final HashMap<String, MediaFile.MediaFileType> sFileTypeMap = new HashMap();
+  private static final HashMap<String, Integer> sFileTypeToFormatMap;
+  private static final HashMap<Integer, String> sFormatToMimeTypeMap;
+  private static final HashMap<String, Integer> sMimeTypeMap = new HashMap();
+  private static final HashMap<String, Integer> sMimeTypeToFormatMap;
   
   static
   {
-    a("MP3", 1, "audio/mpeg", 12297);
-    a("MPGA", 1, "audio/mpeg", 12297);
-    a("M4A", 2, "audio/mp4", 12299);
-    a("WAV", 3, "audio/x-wav", 12296);
-    a("AMR", 4, "audio/amr");
-    a("AWB", 5, "audio/amr-wb");
-    if (a()) {
-      a("WMA", 6, "audio/x-ms-wma", 47361);
+    sFileTypeToFormatMap = new HashMap();
+    sMimeTypeToFormatMap = new HashMap();
+    sFormatToMimeTypeMap = new HashMap();
+    addFileType("MP3", 1, "audio/mpeg", 12297);
+    addFileType("MPGA", 1, "audio/mpeg", 12297);
+    addFileType("M4A", 2, "audio/mp4", 12299);
+    addFileType("WAV", 3, "audio/x-wav", 12296);
+    addFileType("AMR", 4, "audio/amr");
+    addFileType("AWB", 5, "audio/amr-wb");
+    if (isWMAEnabled()) {
+      addFileType("WMA", 6, "audio/x-ms-wma", 47361);
     }
-    a("OGG", 7, "audio/ogg", 47362);
-    a("OGG", 7, "application/ogg", 47362);
-    a("OGA", 7, "application/ogg", 47362);
-    a("AAC", 8, "audio/aac", 47363);
-    a("AAC", 8, "audio/aac-adts", 47363);
-    a("MKA", 9, "audio/x-matroska");
-    a("MID", 11, "audio/midi");
-    a("MIDI", 11, "audio/midi");
-    a("XMF", 11, "audio/midi");
-    a("RTTTL", 11, "audio/midi");
-    a("SMF", 12, "audio/sp-midi");
-    a("IMY", 13, "audio/imelody");
-    a("RTX", 11, "audio/midi");
-    a("OTA", 11, "audio/midi");
-    a("MXMF", 11, "audio/midi");
-    a("MPEG", 21, "video/mpeg", 12299);
-    a("MPG", 21, "video/mpeg", 12299);
-    a("MP4", 21, "video/mp4", 12299);
-    a("M4V", 22, "video/mp4", 12299);
-    a("3GP", 23, "video/3gpp", 47492);
-    a("3GPP", 23, "video/3gpp", 47492);
-    a("3G2", 24, "video/3gpp2", 47492);
-    a("3GPP2", 24, "video/3gpp2", 47492);
-    a("MKV", 27, "video/x-matroska");
-    a("WEBM", 30, "video/webm");
-    a("TS", 28, "video/mp2ts");
-    a("AVI", 29, "video/avi");
-    if (b())
+    addFileType("OGG", 7, "audio/ogg", 47362);
+    addFileType("OGG", 7, "application/ogg", 47362);
+    addFileType("OGA", 7, "application/ogg", 47362);
+    addFileType("AAC", 8, "audio/aac", 47363);
+    addFileType("AAC", 8, "audio/aac-adts", 47363);
+    addFileType("MKA", 9, "audio/x-matroska");
+    addFileType("MID", 11, "audio/midi");
+    addFileType("MIDI", 11, "audio/midi");
+    addFileType("XMF", 11, "audio/midi");
+    addFileType("RTTTL", 11, "audio/midi");
+    addFileType("SMF", 12, "audio/sp-midi");
+    addFileType("IMY", 13, "audio/imelody");
+    addFileType("RTX", 11, "audio/midi");
+    addFileType("OTA", 11, "audio/midi");
+    addFileType("MXMF", 11, "audio/midi");
+    addFileType("MPEG", 21, "video/mpeg", 12299);
+    addFileType("MPG", 21, "video/mpeg", 12299);
+    addFileType("MP4", 21, "video/mp4", 12299);
+    addFileType("M4V", 22, "video/mp4", 12299);
+    addFileType("3GP", 23, "video/3gpp", 47492);
+    addFileType("3GPP", 23, "video/3gpp", 47492);
+    addFileType("3G2", 24, "video/3gpp2", 47492);
+    addFileType("3GPP2", 24, "video/3gpp2", 47492);
+    addFileType("MKV", 27, "video/x-matroska");
+    addFileType("WEBM", 30, "video/webm");
+    addFileType("TS", 28, "video/mp2ts");
+    addFileType("AVI", 29, "video/avi");
+    if (isWMVEnabled())
     {
-      a("WMV", 25, "video/x-ms-wmv", 47489);
-      a("ASF", 26, "video/x-ms-asf");
+      addFileType("WMV", 25, "video/x-ms-wmv", 47489);
+      addFileType("ASF", 26, "video/x-ms-asf");
     }
-    a("JPG", 31, "image/jpeg", 14337);
-    a("JPEG", 31, "image/jpeg", 14337);
-    a("GIF", 32, "image/gif", 14343);
-    a("PNG", 33, "image/png", 14347);
-    a("BMP", 34, "image/x-ms-bmp", 14340);
-    a("WBMP", 35, "image/vnd.wap.wbmp");
-    a("WEBP", 36, "image/webp");
-    a("M3U", 41, "audio/x-mpegurl", 47633);
-    a("M3U", 41, "application/x-mpegurl", 47633);
-    a("PLS", 42, "audio/x-scpls", 47636);
-    a("WPL", 43, "application/vnd.ms-wpl", 47632);
-    a("M3U8", 44, "application/vnd.apple.mpegurl");
-    a("M3U8", 44, "audio/mpegurl");
-    a("M3U8", 44, "audio/x-mpegurl");
-    a("FL", 51, "application/x-android-drm-fl");
-    a("TXT", 100, "text/plain", 12292);
-    a("HTM", 101, "text/html", 12293);
-    a("HTML", 101, "text/html", 12293);
-    a("PDF", 102, "application/pdf");
-    a("DOC", 104, "application/msword", 47747);
-    a("XLS", 105, "application/vnd.ms-excel", 47749);
-    a("PPT", 106, "application/mspowerpoint", 47750);
-    a("FLAC", 10, "audio/flac", 47366);
-    a("ZIP", 107, "application/zip");
-    a("MPG", 200, "video/mp2p");
-    a("MPEG", 200, "video/mp2p");
-    a("FLV", 201, "video/x-flv");
-    a("MOV", 202, "video/quicktime");
-    a("QT", 202, "video/quicktime");
-    a("RMVB", 203, "video/vnd.rn-realvideo");
+    addFileType("JPG", 31, "image/jpeg", 14337);
+    addFileType("JPEG", 31, "image/jpeg", 14337);
+    addFileType("GIF", 32, "image/gif", 14343);
+    addFileType("PNG", 33, "image/png", 14347);
+    addFileType("BMP", 34, "image/x-ms-bmp", 14340);
+    addFileType("WBMP", 35, "image/vnd.wap.wbmp");
+    addFileType("WEBP", 36, "image/webp");
+    addFileType("M3U", 41, "audio/x-mpegurl", 47633);
+    addFileType("M3U", 41, "application/x-mpegurl", 47633);
+    addFileType("PLS", 42, "audio/x-scpls", 47636);
+    addFileType("WPL", 43, "application/vnd.ms-wpl", 47632);
+    addFileType("M3U8", 44, "application/vnd.apple.mpegurl");
+    addFileType("M3U8", 44, "audio/mpegurl");
+    addFileType("M3U8", 44, "audio/x-mpegurl");
+    addFileType("FL", 51, "application/x-android-drm-fl");
+    addFileType("TXT", 100, "text/plain", 12292);
+    addFileType("HTM", 101, "text/html", 12293);
+    addFileType("HTML", 101, "text/html", 12293);
+    addFileType("PDF", 102, "application/pdf");
+    addFileType("DOC", 104, "application/msword", 47747);
+    addFileType("XLS", 105, "application/vnd.ms-excel", 47749);
+    addFileType("PPT", 106, "application/mspowerpoint", 47750);
+    addFileType("FLAC", 10, "audio/flac", 47366);
+    addFileType("ZIP", 107, "application/zip");
+    addFileType("MPG", 200, "video/mp2p");
+    addFileType("MPEG", 200, "video/mp2p");
+    addFileType("FLV", 201, "video/x-flv");
+    addFileType("MOV", 202, "video/quicktime");
+    addFileType("QT", 202, "video/quicktime");
+    addFileType("RMVB", 203, "video/vnd.rn-realvideo");
   }
   
-  static void a(String paramString1, int paramInt, String paramString2)
+  static void addFileType(String paramString1, int paramInt, String paramString2)
   {
-    a.put(paramString1, new MediaFile.MediaFileType(paramInt, paramString2));
-    b.put(paramString2, Integer.valueOf(paramInt));
+    sFileTypeMap.put(paramString1, new MediaFile.MediaFileType(paramInt, paramString2));
+    sMimeTypeMap.put(paramString2, Integer.valueOf(paramInt));
   }
   
-  static void a(String paramString1, int paramInt1, String paramString2, int paramInt2)
+  static void addFileType(String paramString1, int paramInt1, String paramString2, int paramInt2)
   {
-    a(paramString1, paramInt1, paramString2);
-    c.put(paramString1, Integer.valueOf(paramInt2));
-    d.put(paramString2, Integer.valueOf(paramInt2));
-    e.put(Integer.valueOf(paramInt2), paramString2);
-  }
-  
-  private static boolean a()
-  {
-    return true;
-  }
-  
-  private static boolean b()
-  {
-    return true;
+    addFileType(paramString1, paramInt1, paramString2);
+    sFileTypeToFormatMap.put(paramString1, Integer.valueOf(paramInt2));
+    sMimeTypeToFormatMap.put(paramString2, Integer.valueOf(paramInt2));
+    sFormatToMimeTypeMap.put(Integer.valueOf(paramInt2), paramString2);
   }
   
   public static String getFileTitle(String paramString)
@@ -181,12 +188,12 @@ public class MediaFile
     if (i < 0) {
       return null;
     }
-    return (MediaFile.MediaFileType)a.get(paramString.substring(i + 1).toUpperCase());
+    return (MediaFile.MediaFileType)sFileTypeMap.get(paramString.substring(i + 1).toUpperCase());
   }
   
   public static int getFileTypeForMimeType(String paramString)
   {
-    paramString = (Integer)b.get(paramString);
+    paramString = (Integer)sMimeTypeMap.get(paramString);
     if (paramString == null) {
       return 0;
     }
@@ -197,7 +204,7 @@ public class MediaFile
   {
     if (paramString2 != null)
     {
-      paramString2 = (Integer)d.get(paramString2);
+      paramString2 = (Integer)sMimeTypeToFormatMap.get(paramString2);
       if (paramString2 != null) {
         return paramString2.intValue();
       }
@@ -206,7 +213,7 @@ public class MediaFile
     if (i > 0)
     {
       paramString1 = paramString1.substring(i + 1).toUpperCase();
-      paramString1 = (Integer)c.get(paramString1);
+      paramString1 = (Integer)sFileTypeToFormatMap.get(paramString1);
       if (paramString1 != null) {
         return paramString1.intValue();
       }
@@ -225,7 +232,7 @@ public class MediaFile
   
   public static String getMimeTypeForFormatCode(int paramInt)
   {
-    return (String)e.get(Integer.valueOf(paramInt));
+    return (String)sFormatToMimeTypeMap.get(Integer.valueOf(paramInt));
   }
   
   public static boolean isAudioFileType(int paramInt)
@@ -258,10 +265,20 @@ public class MediaFile
   {
     return ((paramInt >= 21) && (paramInt <= 30)) || ((paramInt >= 200) && (paramInt <= 203));
   }
+  
+  private static boolean isWMAEnabled()
+  {
+    return true;
+  }
+  
+  private static boolean isWMVEnabled()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.MediaFile
  * JD-Core Version:    0.7.0.1
  */

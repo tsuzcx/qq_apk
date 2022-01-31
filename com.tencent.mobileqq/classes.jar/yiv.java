@@ -1,35 +1,83 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.adapter.contacts.BuddyListItem;
-import com.tencent.widget.SimpleTextView;
-import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
-import com.tencent.widget.SwipTextViewMenuBuilder;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 public class yiv
-  extends SwipTextViewMenuBuilder
 {
-  public yiv(BuddyListItem paramBuddyListItem, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  public static int a(RecyclerView paramRecyclerView)
   {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
-  
-  public View a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem paramSwipRightMenuItem, View.OnClickListener paramOnClickListener)
-  {
-    paramSwipRightMenuItem = super.a(paramInt, paramObject, paramSwipRightMenuItem, paramOnClickListener);
-    if ((paramSwipRightMenuItem instanceof SimpleTextView)) {
-      paramSwipRightMenuItem.setTag(-10, paramObject);
+    int i;
+    if (paramRecyclerView != null) {
+      try
+      {
+        if ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager)) {
+          return ((LinearLayoutManager)paramRecyclerView.getLayoutManager()).findLastCompletelyVisibleItemPosition();
+        }
+        if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
+        {
+          i = paramRecyclerView.getLayoutManager().getColumnCountForAccessibility(null, null);
+          int[] arrayOfInt = new int[i];
+          ((StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager()).findLastCompletelyVisibleItemPositions(arrayOfInt);
+          i = arrayOfInt[(i - 1)];
+          if (arrayOfInt.length != 2) {
+            return i;
+          }
+          if (arrayOfInt[1] >= arrayOfInt[0]) {
+            return arrayOfInt[1];
+          }
+          i = arrayOfInt[0];
+          return i;
+        }
+      }
+      catch (Exception paramRecyclerView)
+      {
+        paramRecyclerView.printStackTrace();
+      }
+    } else {
+      i = -1;
     }
-    return paramSwipRightMenuItem;
+    return i;
   }
   
-  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
+  public static int b(RecyclerView paramRecyclerView)
   {
-    this.a.a(paramInt, paramArrayOfSwipRightMenuItem);
+    int i;
+    if (paramRecyclerView != null) {
+      try
+      {
+        if ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager)) {
+          return ((LinearLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
+        }
+        if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
+        {
+          i = paramRecyclerView.getLayoutManager().getColumnCountForAccessibility(null, null);
+          int[] arrayOfInt = new int[i];
+          ((StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPositions(arrayOfInt);
+          i = arrayOfInt[(i - 1)];
+          if (arrayOfInt.length != 2) {
+            return i;
+          }
+          if (arrayOfInt[1] >= arrayOfInt[0]) {
+            return arrayOfInt[0];
+          }
+          i = arrayOfInt[1];
+          return i;
+        }
+      }
+      catch (Exception paramRecyclerView)
+      {
+        paramRecyclerView.printStackTrace();
+      }
+    } else {
+      i = -1;
+    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yiv
  * JD-Core Version:    0.7.0.1
  */

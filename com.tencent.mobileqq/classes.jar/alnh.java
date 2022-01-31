@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.mobileqq.data.ApolloActionPackage;
+import java.util.List;
 
-class alnh
-  implements Runnable
+public abstract interface alnh
 {
-  alnh(alng paramalng, QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
+  public abstract alnp a(int paramInt);
   
-  public void run()
-  {
-    QQToast.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getTitleBarHeight());
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(List<alnp> paramList, List<ApolloActionPackage> paramList1, boolean paramBoolean);
+  
+  public abstract boolean a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alnh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
-class adur
-  implements ValueAnimator.AnimatorUpdateListener
+public class adur
+  implements View.OnTouchListener
 {
-  adur(aduq paramaduq, View paramView) {}
+  public adur(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidViewView.setTranslationX(-((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.7F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

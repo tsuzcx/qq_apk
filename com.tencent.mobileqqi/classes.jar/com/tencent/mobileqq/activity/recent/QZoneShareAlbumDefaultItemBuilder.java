@@ -37,22 +37,22 @@ public class QZoneShareAlbumDefaultItemBuilder
     if (paramViewGroup == null)
     {
       paramViewGroup = new QZoneShareAlbumDefaultItemBuilder.RecentListForShareAlbumHolder();
-      paramView = a(paramContext, 2130903866, paramViewGroup, 2);
+      paramView = a(paramContext, 2130903868, paramViewGroup, 2);
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131230940));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131234177));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131234178));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231881));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131234187));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131234179));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131234180));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231883));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131234189));
       paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(16908308));
-      paramViewGroup.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232900));
-      paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232612));
-      paramViewGroup.e = ((TextView)paramView.findViewById(2131234181));
+      paramViewGroup.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232903));
+      paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232615));
+      paramViewGroup.e = ((TextView)paramView.findViewById(2131234183));
       paramViewGroup.f = ((TextView)paramView.findViewById(16908309));
-      paramViewGroup.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0] = ((ImageView)paramView.findViewById(2131234182));
-      paramViewGroup.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1] = ((ImageView)paramView.findViewById(2131234183));
-      paramViewGroup.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2] = ((ImageView)paramView.findViewById(2131234184));
-      paramViewGroup.jdField_a_of_type_ArrayOfAndroidWidgetImageView[3] = ((ImageView)paramView.findViewById(2131234185));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131234186));
+      paramViewGroup.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0] = ((ImageView)paramView.findViewById(2131234184));
+      paramViewGroup.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1] = ((ImageView)paramView.findViewById(2131234185));
+      paramViewGroup.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2] = ((ImageView)paramView.findViewById(2131234186));
+      paramViewGroup.jdField_a_of_type_ArrayOfAndroidWidgetImageView[3] = ((ImageView)paramView.findViewById(2131234187));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131234188));
       paramView.setTag(paramViewGroup);
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.a.a());
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0);
@@ -169,7 +169,7 @@ public class QZoneShareAlbumDefaultItemBuilder
           if (!TextUtils.isEmpty(paramRecentBaseData.d)) {
             break;
           }
-          paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839360);
+          paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839362);
           return;
           label341:
           if ((localURLDrawable.getStatus() != 0) || (localURLDrawable.isDownloadStarted())) {

@@ -1,26 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-
 class onq
-  implements View.OnClickListener
+  extends oob
 {
-  onq(onp paramonp, TroopStoryItemInfo paramTroopStoryItemInfo) {}
-  
-  public void onClick(View paramView)
+  onq(omz paramomz)
   {
-    paramView = ((StoryManager)SuperManager.a(5)).a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryItemInfo.storyId);
-    if (paramView != null) {
-      ((StoryVideoUploadManager)SuperManager.a().b(3)).a(paramView);
-    }
+    super(paramomz, null);
+  }
+  
+  void a(ooe paramooe)
+  {
+    paramooe.onCommentReply(false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     onq
  * JD-Core Version:    0.7.0.1
  */

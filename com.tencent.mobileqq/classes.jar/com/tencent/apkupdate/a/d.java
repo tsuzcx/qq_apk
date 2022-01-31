@@ -100,7 +100,7 @@ public final class d
   public static int b(String paramString1, String paramString2, String paramString3)
   {
     int i = -1;
-    PackageManager localPackageManager = com.tencent.apkupdate.logic.protocol.b.a().b().getPackageManager();
+    PackageManager localPackageManager = com.tencent.apkupdate.logic.protocol.a.a().b().getPackageManager();
     do
     {
       int j;
@@ -1676,7 +1676,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.apkupdate.a.d
  * JD-Core Version:    0.7.0.1
  */

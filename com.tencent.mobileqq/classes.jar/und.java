@@ -1,30 +1,47 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationRule;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationRule.BussinessData;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
-public class und
-  implements Runnable
+class und
+  implements uni
 {
-  public und(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt, AioAnimationRule paramAioAnimationRule) {}
+  private und(una paramuna) {}
   
-  public void run()
+  public void a(unj paramunj)
   {
-    AIOAnimationConatiner localAIOAnimationConatiner = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner;
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    int j = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.a == null) {}
-    for (int i = -1;; i = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.a.jdField_a_of_type_Int)
+    QQStoryContext.a();
+    QQAppInterface localQQAppInterface = QQStoryContext.a();
+    azdx localazdx = azdd.a(2, 2);
+    MessageForShortVideo localMessageForShortVideo = paramunj.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
+    azdg localazdg = localMessageForShortVideo.getDownloadInfo(localazdx.b);
+    if (paramunj.jdField_a_of_type_Int == 2)
     {
-      localAIOAnimationConatiner.a(2, 300, new Object[] { localDrawable, Integer.valueOf(j), Integer.valueOf(i) });
+      localazdg.i = ShortVideoUtils.a(localMessageForShortVideo.thumbMD5, "jpg");
+      localazdg.a(localMessageForShortVideo.istroop, 1);
+    }
+    for (;;)
+    {
+      localazdx.a(localazdg);
+      localazdx.a(new une(this, paramunj.jdField_a_of_type_JavaLangString));
+      azdd.a(localazdx, localQQAppInterface);
+      wxe.b("AsyncFileDownloader", String.format("start download with shortvideo downloader, task = %s", new Object[] { paramunj }));
       return;
+      localazdg.h = ShortVideoUtils.a(localMessageForShortVideo, "mp4");
+      localazdg.a(localMessageForShortVideo.istroop, 0);
     }
   }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public void b(unj paramunj) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     und
  * JD-Core Version:    0.7.0.1
  */

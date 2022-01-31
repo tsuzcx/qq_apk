@@ -1,15 +1,16 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter;
-
-public class lkd
+public abstract interface lkd
 {
-  public TextView a;
+  public abstract void a(long paramLong, String paramString);
   
-  public lkd(ReadInJoySecondCommentListAdapter paramReadInJoySecondCommentListAdapter) {}
+  public abstract void a(long paramLong, String paramString, int paramInt);
+  
+  public abstract void a(long paramLong, String paramString, boolean paramBoolean);
+  
+  public abstract void b(long paramLong, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lkd
  * JD-Core Version:    0.7.0.1
  */

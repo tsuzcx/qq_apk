@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.chathistory;
 
+import aepi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,12 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import bayu;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
 
 public class TroopAIOImageEmptyFragment
   extends IphoneTitleBarFragment
@@ -36,40 +36,40 @@ public class TroopAIOImageEmptyFragment
     PublicFragmentActivity.a(paramActivity, localIntent, TroopAIOImageEmptyFragment.class);
   }
   
-  protected int a()
+  public void doOnCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return 2130969870;
+    super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    setTitle(this.a);
+    if (!TextUtils.isEmpty(this.b))
+    {
+      paramLayoutInflater = this.mContentView.getContext().getResources();
+      paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
+      paramViewGroup.mRequestWidth = aepi.a(321.0F, paramLayoutInflater);
+      paramViewGroup.mRequestHeight = aepi.a(200.0F, paramLayoutInflater);
+      paramViewGroup.mLoadingDrawable = bayu.a;
+      paramViewGroup.mFailedDrawable = bayu.a;
+      paramLayoutInflater = URLDrawable.getDrawable(this.b, paramViewGroup);
+      ((ImageView)this.mContentView.findViewById(2131377824)).setImageDrawable(paramLayoutInflater);
+    }
+    ((TextView)this.mContentView.findViewById(2131377620)).setText(this.c);
   }
   
-  protected void a(Bundle paramBundle)
+  public int getContentLayoutId()
   {
-    super.a(paramBundle);
+    return 2131560418;
+  }
+  
+  public void init(Bundle paramBundle)
+  {
+    super.init(paramBundle);
     this.a = paramBundle.getString("title");
     this.b = paramBundle.getString("url");
     this.c = paramBundle.getString("text");
   }
-  
-  public void a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
-  {
-    super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    a(this.a);
-    if (!TextUtils.isEmpty(this.b))
-    {
-      paramLayoutInflater = this.e.getContext().getResources();
-      paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
-      paramViewGroup.mRequestWidth = AIOUtils.a(320.0F, paramLayoutInflater);
-      paramViewGroup.mRequestHeight = AIOUtils.a(177.5F, paramLayoutInflater);
-      paramViewGroup.mLoadingDrawable = URLDrawableHelper.a;
-      paramViewGroup.mFailedDrawable = URLDrawableHelper.a;
-      paramLayoutInflater = URLDrawable.getDrawable(this.b, paramViewGroup);
-      ((ImageView)this.e.findViewById(2131364191)).setImageDrawable(paramLayoutInflater);
-    }
-    ((TextView)this.e.findViewById(2131365553)).setText(this.c);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopAIOImageEmptyFragment
  * JD-Core Version:    0.7.0.1
  */

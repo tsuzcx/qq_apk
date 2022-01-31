@@ -1,36 +1,22 @@
-import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.util.SurfaceViewUtil;
-import com.tencent.mobileqq.video.IMediaPlayer;
-import com.tencent.mobileqq.video.IMediaPlayer.OnPreparedListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.takevideo.EditPicActivity;
 
 public class wyh
-  implements IMediaPlayer.OnPreparedListener
+  extends azcv
 {
-  public wyh(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public wyh(EditPicActivity paramEditPicActivity) {}
   
-  public void a(IMediaPlayer paramIMediaPlayer)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewActivity", 2, "mMediaPlayer onPrepared: ");
+    wxe.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
+    wxs localwxs = (wxs)this.a.a.a(wxs.class);
+    if (localwxs != null) {
+      localwxs.ad_();
     }
-    SurfaceHolder localSurfaceHolder = this.a.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
-    if ((localSurfaceHolder == null) || (!localSurfaceHolder.getSurface().isValid()))
-    {
-      FMToastUtil.a(2131437402);
-      return;
-    }
-    SurfaceViewUtil.a(this.a.jdField_a_of_type_AndroidViewSurfaceView, this.a.n, this.a.o, this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.d(), this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.e());
-    paramIMediaPlayer.a(localSurfaceHolder);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wyh
  * JD-Core Version:    0.7.0.1
  */

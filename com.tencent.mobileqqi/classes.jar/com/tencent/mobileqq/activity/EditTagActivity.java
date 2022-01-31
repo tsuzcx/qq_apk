@@ -11,6 +11,14 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import cjr;
+import cjs;
+import cjt;
+import cju;
+import cjv;
+import cjw;
+import cjx;
+import cjz;
 import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -24,14 +32,6 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.Workspace;
 import com.tencent.mobileqq.widget.Workspace.OnScreenChangeListener;
-import cqe;
-import cqf;
-import cqg;
-import cqh;
-import cqi;
-import cqj;
-import cqk;
-import cqm;
 import java.util.ArrayList;
 
 public class EditTagActivity
@@ -46,12 +46,12 @@ public class EditTagActivity
   private GridView jdField_a_of_type_AndroidWidgetGridView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
+  public cjz a;
   private CardHandler jdField_a_of_type_ComTencentMobileqqAppCardHandler;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new cqe(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new cjr(this);
   private Card jdField_a_of_type_ComTencentMobileqqDataCard;
   private QQToast jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
   public Workspace a;
-  public cqm a;
   public ArrayList a;
   public boolean a;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -61,7 +61,7 @@ public class EditTagActivity
   public EditTagActivity()
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidOsHandler = new cqh(this);
+    this.jdField_a_of_type_AndroidOsHandler = new cju(this);
   }
   
   private void a(String paramString)
@@ -79,26 +79,26 @@ public class EditTagActivity
     if (localTextView != null)
     {
       localTextView.setText(paramString);
-      localTextView.setOnClickListener(new cqi(this));
+      localTextView.setOnClickListener(new cjv(this));
     }
-    b(2131562798, new cqj(this));
+    b(2131562798, new cjw(this));
     d(true);
   }
   
   private void d()
   {
-    setContentView(2130903207);
+    setContentView(2130903208);
     a(getString(2131562002));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131231619);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231620));
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231621));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131231620);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231621));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231622));
     this.jdField_a_of_type_ComTencentMobileqqWidgetWorkspace = ((Workspace)this.jdField_a_of_type_AndroidViewView.findViewById(16908305));
     this.jdField_a_of_type_ComTencentMobileqqWidgetWorkspace.setFocusable(false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetWorkspace.setFocusableInTouchMode(false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetWorkspace.setOnScreenChangeListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231623));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231624));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131231625));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231624));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231625));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131231626));
   }
   
   private void e()
@@ -115,8 +115,8 @@ public class EditTagActivity
       {
         a(this.jdField_b_of_type_JavaUtilArrayList.size());
         this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)this.jdField_b_of_type_JavaUtilArrayList.clone());
-        this.jdField_a_of_type_Cqm = new cqm(this, this.jdField_a_of_type_JavaUtilArrayList);
-        this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Cqm);
+        this.jdField_a_of_type_Cjz = new cjz(this, this.jdField_a_of_type_JavaUtilArrayList);
+        this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Cjz);
       }
       f();
       return;
@@ -139,10 +139,10 @@ public class EditTagActivity
         ((GridView)localObject).setHorizontalSpacing((int)(this.jdField_a_of_type_Float * 4.0F));
         ((GridView)localObject).setVerticalSpacing((int)(this.jdField_a_of_type_Float * 4.0F));
         this.jdField_a_of_type_ComTencentMobileqqWidgetWorkspace.addView((View)localObject);
-        ((GridView)localObject).setAdapter(new cqk(this, ((TagArrayByType)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.jdField_a_of_type_JavaUtilArrayList.get(i)).mTags));
+        ((GridView)localObject).setAdapter(new cjx(this, ((TagArrayByType)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.jdField_a_of_type_JavaUtilArrayList.get(i)).mTags));
         localObject = new ImageView(this);
         ((ImageView)localObject).setPadding((int)(this.jdField_a_of_type_Float * 4.0F), 0, (int)(this.jdField_a_of_type_Float * 4.0F), 0);
-        ((ImageView)localObject).setImageResource(2130837964);
+        ((ImageView)localObject).setImageResource(2130837966);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
         i += 1;
       }
@@ -152,7 +152,7 @@ public class EditTagActivity
         String str = ((TagArrayByType)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.jdField_a_of_type_JavaUtilArrayList.get(0)).mInfo;
         this.jdField_b_of_type_AndroidWidgetTextView.setText(LocaleString.a((String)localObject));
         this.c.setText(str);
-        ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0)).setImageResource(2130837963);
+        ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0)).setImageResource(2130837965);
       }
     }
   }
@@ -256,7 +256,7 @@ public class EditTagActivity
     }
     if ((localArrayList1.size() != 0) || (localArrayList2.size() != 0))
     {
-      DialogUtil.a(this, 230).setMessage(getString(2131563012)).setPositiveButton(2131563227, new cqg(this)).setNegativeButton(2131562473, new cqf(this)).show();
+      DialogUtil.a(this, 230).setMessage(getString(2131563012)).setPositiveButton(2131563227, new cjt(this)).setNegativeButton(2131562473, new cjs(this)).show();
       return true;
     }
     finish();
@@ -275,12 +275,12 @@ public class EditTagActivity
     int i = 0;
     while (i < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
     {
-      ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i)).setImageResource(2130837964);
+      ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i)).setImageResource(2130837966);
       i += 1;
     }
     Object localObject = (ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt);
     if (localObject != null) {
-      ((ImageView)localObject).setImageResource(2130837963);
+      ((ImageView)localObject).setImageResource(2130837965);
     }
   }
   

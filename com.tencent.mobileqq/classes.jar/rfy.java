@@ -1,43 +1,25 @@
-import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import java.util.List;
 
 public class rfy
-  implements View.OnTouchListener
+  extends AnimatorListenerAdapter
 {
-  private GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new rfz(this);
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
-  View jdField_a_of_type_AndroidViewView;
+  public rfy(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment, List paramList) {}
   
-  public rfy(AccountManageActivity paramAccountManageActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    int i = paramMotionEvent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("AccountManage", 2, "action = " + i);
-    }
-    if (i == 0)
-    {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c == true) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c = false;
-      }
-    }
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    if (QLog.isColorLevel()) {
-      QLog.i("AccountManage", 2, "onTouch return mHasSlide " + this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c);
-    }
-    return false;
+    paramAnimator = new Bundle();
+    paramAnimator.putLong("ARGS_VIDEO_START_POSITION", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment.a() + 300L);
+    paramAnimator.putInt("VIDEO_FROM_TYPE", VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment));
+    rcp.a().a(this.jdField_a_of_type_JavaUtilList, paramAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rfy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,49 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class acfd
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public acfd(EmoticonMainPanel paramEmoticonMainPanel, EmoticonPackage paramEmoticonPackage) {}
+  public acfd(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.b.contains(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage)) {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.b.add(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage);
+    int j = 1;
+    if (!paramCompoundButton.isPressed()) {
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.g = true;
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.j = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.getVisibility() == 0)
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonMainPanel", 2, "refresh magic emoji.");
+      paramCompoundButton = "open_storyset";
+      wxj.a("dynamic_more", paramCompoundButton, 0, 0, new String[0]);
+      paramCompoundButton = new Integer[5];
+      paramCompoundButton[0] = Integer.valueOf(1);
+      if (!paramBoolean) {
+        break label106;
       }
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.c(0);
+    }
+    label106:
+    for (int i = 1;; i = 0)
+    {
+      paramCompoundButton[3] = Integer.valueOf(i);
+      this.a.app.a().a(paramCompoundButton);
+      paramCompoundButton = (ult)this.a.app.a(98);
+      i = j;
+      if (paramBoolean) {
+        i = 2;
+      }
+      paramCompoundButton.a(i);
+      return;
+      paramCompoundButton = "close_storyset";
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acfd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.av.utils.TroopMemberUtil;
-import com.tencent.biz.troopgift.TroopGiftAioPanelData;
-import com.tencent.biz.troopgift.TroopGiftAioPanelData.CoinInfo;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.NearbyFlowerManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyStaticGridView;
 
-public class ozf
-  implements DialogInterface.OnClickListener
+class ozf
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public ozf(TroopGiftPanel paramTroopGiftPanel, int paramInt) {}
+  ozf(oze paramoze, ReadInJoyStaticGridView paramReadInJoyStaticGridView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onPreDraw()
   {
-    if ((this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData != null) && (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData.a != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData.a.c)))
-    {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b();
-      if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d == 2) {
-        ReportController.b(null, "dc00899", "Grp_flower", "", "C2C", "Clk_topay", 0, 0, "", "", "", "");
-      }
-    }
-    else
-    {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d == 6)
-    {
-      ReportController.b(null, "dc00899", "Grp_flower", "", "discuss_grp", "Clk_topay", 0, 0, "", "", "", "");
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d == 7)
-    {
-      ReportController.b(null, "dc00899", "Grp_flower", "", "temp_c2c", "Clk_topay", 0, 0, "", "", "", "");
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.e >= 4)
-    {
-      NearbyFlowerManager.a("gift_store", "pay_tip", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b() + "", "", "");
-      return;
-    }
-    ReportController.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_topay", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b, "" + TroopMemberUtil.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+    Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getChildAt(0);
+    Object localObject2 = new int[2];
+    ((View)localObject1).getLocationOnScreen((int[])localObject2);
+    localObject2 = this.jdField_a_of_type_Oze.a.a(oze.a(this.jdField_a_of_type_Oze), (int[])localObject2);
+    ReadInJoyChannelPanelFragment.a(localObject2[0], 0.0F, localObject2[1], 0.0F, (View)localObject1);
+    localObject1 = (ViewTreeObserver.OnPreDrawListener)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getTag(2131375276);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getViewTreeObserver().removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)localObject1);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.setTag(2131375276, null);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ozf
  * JD-Core Version:    0.7.0.1
  */

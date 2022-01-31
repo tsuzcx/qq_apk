@@ -1,58 +1,56 @@
-import android.animation.ObjectAnimator;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
 
 public class agjt
-  implements Runnable
+  extends awkf
 {
-  ObjectAnimator a;
-  public WeakReference a;
-  public boolean a;
+  public agjt(AIOImageProviderService paramAIOImageProviderService, long paramLong1, int paramInt1, int paramInt2, long paramLong2, String paramString) {}
   
-  public agjt()
+  public void a(int paramInt, awjm paramawjm)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Agkl;
+    if (localObject != null)
+    {
+      if (paramawjm.jdField_a_of_type_Int != 0) {
+        break label139;
+      }
+      ((agkl)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramawjm.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Agjw;
+      if (localObject != null)
+      {
+        if (paramawjm.jdField_a_of_type_Int != 0) {
+          break;
+        }
+        ((agjw)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramawjm.jdField_a_of_type_Boolean);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      }
+      return;
+      label139:
+      ((agkl)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramawjm.jdField_a_of_type_Awjh.jdField_a_of_type_JavaLangString + ", desc:" + paramawjm.jdField_a_of_type_Awjh.b, paramawjm.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "I:E");
+    }
+    ((agjw)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramawjm.jdField_a_of_type_Awjh.jdField_a_of_type_JavaLangString + ", desc:" + paramawjm.jdField_a_of_type_Awjh.b, paramawjm.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "I:E");
   }
   
-  public void run()
+  public void a_(int paramInt, boolean paramBoolean)
   {
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localImageView == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (!this.jdField_a_of_type_Boolean) {
-            break;
-          }
-        } while (localImageView.getVisibility() == 0);
-        int i = localImageView.getLayoutParams().width - AIOUtils.a(46.0F, localImageView.getResources());
-        localImageView.setTranslationX(i);
-        localImageView.setVisibility(0);
-        if (this.jdField_a_of_type_AndroidAnimationObjectAnimator == null)
-        {
-          this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(localImageView, "translationX", new float[] { i, 0.0F });
-          this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(300L);
-          this.jdField_a_of_type_AndroidAnimationObjectAnimator.setStartDelay(500L);
-        }
-      } while (this.jdField_a_of_type_AndroidAnimationObjectAnimator == null);
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
-      return;
-      localImageView.setVisibility(8);
-    } while (this.jdField_a_of_type_AndroidAnimationObjectAnimator == null);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.end();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Agkl;
+    if (localObject != null) {
+      ((agkl)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Agjw;
+    if (localObject != null) {
+      ((agjw)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agjt
  * JD-Core Version:    0.7.0.1
  */

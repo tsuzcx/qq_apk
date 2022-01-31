@@ -17,143 +17,142 @@ import java.util.ArrayList;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import pja;
-import pjb;
 
 public class QzoneAnimationDrawable
   extends Drawable
   implements Animatable
 {
   public static int LOOP_INFINITE = 0;
-  private volatile int jdField_a_of_type_Int = 0;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private volatile Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private InvalidationHandler jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler;
-  private ImageKey jdField_a_of_type_ComTencentComponentMediaImageImageKey;
-  private ImageLoader.Options jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options;
-  private QzoneAnimationDrawable.AnimationListener jdField_a_of_type_ComTencentComponentMediaPhotogifQzoneAnimationDrawable$AnimationListener;
-  private ScheduledFuture jdField_a_of_type_JavaUtilConcurrentScheduledFuture;
-  private ScheduledThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor;
-  private pja jdField_a_of_type_Pja;
-  private pjb jdField_a_of_type_Pjb;
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private volatile Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  private volatile boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int;
-  private Drawable jdField_c_of_type_AndroidGraphicsDrawableDrawable;
+  private static final String TAG = "QzoneAnimationDrawable";
+  private QzoneAnimationDrawable.AnimationListener mAnimationListener;
+  private volatile Drawable mCurrentFrame;
+  private Drawable mDefaultFrame;
+  private final Rect mDstRect = new Rect();
+  private ScheduledThreadPoolExecutor mExecutor;
+  private ImageLoader.Options mFrameOptions;
+  private QzoneAnimationDrawable.FrameSwitcher mFrameSwitcher;
+  private ImageKey mImageKey;
+  private InvalidationHandler mInvalidationHandler;
+  private volatile boolean mIsRunning = false;
+  private volatile Drawable mNextFrame;
+  private volatile int mNextFrameIndex = 0;
+  private final Paint mPaint = new Paint();
+  private QzoneAnimationDrawable.PhotoLoadListener mPhotoLoadListener;
+  private int mPlayCount;
+  private int mRepeatCount;
+  private ScheduledFuture<?> mScheduledFuture;
+  private volatile boolean mSwitchFrameWhenLoaded = true;
   
   public QzoneAnimationDrawable(ImageKey paramImageKey)
   {
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageKey = ImageKey.copy(paramImageKey);
-    a();
+    this.mImageKey = ImageKey.copy(paramImageKey);
+    init();
   }
   
   public QzoneAnimationDrawable(ImageLoader.Options paramOptions)
   {
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageKey = ImageKey.obtain();
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options = ImageLoader.Options.copy(paramOptions);
-    a();
+    this.mImageKey = ImageKey.obtain();
+    this.mImageKey.options = ImageLoader.Options.copy(paramOptions);
+    init();
   }
   
-  private void a()
+  private void doBeforeDraw()
   {
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options = ImageLoader.Options.copy(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options);
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.needShowPhotoGifAnimation = false;
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.photoList = null;
-    this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor = GifRenderingExecutor.getInstance();
-    this.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler = new InvalidationHandler(this);
-    this.jdField_a_of_type_Pjb = new pjb(this, null);
-    this.jdField_a_of_type_Pja = new pja(this, null);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setARGB(255, 240, 240, 240);
+    if ((this.mNextFrameIndex - 1 == 0) && (this.mAnimationListener != null)) {
+      this.mAnimationListener.onAnimationStart(this);
+    }
+    if (this.mAnimationListener != null) {
+      this.mAnimationListener.onAnimationPlay(this, this.mNextFrameIndex - 1);
+    }
   }
   
-  private boolean a()
+  private void init()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    this.mFrameOptions = ImageLoader.Options.copy(this.mImageKey.options);
+    this.mFrameOptions.needShowPhotoGifAnimation = false;
+    this.mFrameOptions.photoList = null;
+    this.mExecutor = GifRenderingExecutor.getInstance();
+    this.mInvalidationHandler = new InvalidationHandler(this);
+    this.mPhotoLoadListener = new QzoneAnimationDrawable.PhotoLoadListener(this, null);
+    this.mFrameSwitcher = new QzoneAnimationDrawable.FrameSwitcher(this, null);
+    this.mPaint.setARGB(255, 240, 240, 240);
+  }
+  
+  private void loadNextFrame()
+  {
+    if (this.mNextFrameIndex < this.mImageKey.options.photoList.size())
+    {
+      String str = (String)this.mImageKey.options.photoList.get(this.mNextFrameIndex);
+      ImageLoader.getInstance().loadImageAsync(str, this.mPhotoLoadListener, this.mFrameOptions);
+      ImageManagerEnv.getLogger().d("QzoneAnimationDrawable", new Object[] { "loadNextFrame:" + str + ",frameIndex:" + this.mNextFrameIndex });
+      if (this.mNextFrameIndex == getFrameCounts() - 1) {
+        this.mPlayCount += 1;
+      }
+      this.mNextFrameIndex = ((this.mNextFrameIndex + 1) % this.mImageKey.options.photoList.size());
+      return;
+    }
+    ImageManagerEnv.getLogger().e("QzoneAnimationDrawable", new Object[] { "loadNextFrame: out of index,mNextFrameIndex:" + this.mNextFrameIndex + ",photosize:" + this.mImageKey.options.photoList.size() });
+  }
+  
+  private void reset()
+  {
+    if ((this.mScheduledFuture != null) && (!this.mScheduledFuture.isDone())) {
+      this.mScheduledFuture.cancel(true);
+    }
+    this.mIsRunning = true;
+    this.mNextFrameIndex = 0;
+    this.mCurrentFrame = null;
+    this.mNextFrame = null;
+    this.mSwitchFrameWhenLoaded = true;
+    this.mPlayCount = 0;
+    loadNextFrame();
+  }
+  
+  private boolean switchFrame()
+  {
+    if (!this.mIsRunning) {
       return false;
     }
-    if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) {
+    if (this.mNextFrame != null) {
       if (canAnimate())
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = null;
-        d();
-        if (!this.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.hasMessages(0)) {
-          this.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
+        this.mCurrentFrame = this.mNextFrame;
+        this.mNextFrame = null;
+        doBeforeDraw();
+        if (!this.mInvalidationHandler.hasMessages(0)) {
+          this.mInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
         }
-        c();
+        loadNextFrame();
       }
     }
     for (boolean bool = true;; bool = false)
     {
-      if ((this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture != null) && (!this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture.isDone())) {
-        this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture.cancel(true);
+      if ((this.mScheduledFuture != null) && (!this.mScheduledFuture.isDone())) {
+        this.mScheduledFuture.cancel(true);
       }
-      if ((this.jdField_b_of_type_Int == LOOP_INFINITE) || (this.jdField_c_of_type_Int < this.jdField_b_of_type_Int))
+      if ((this.mRepeatCount == LOOP_INFINITE) || (this.mPlayCount < this.mRepeatCount))
       {
-        this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.schedule(this.jdField_a_of_type_Pja, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options.photoDelayTimeInMs, TimeUnit.MILLISECONDS);
-        ImageManagerEnv.getLogger().d("QzoneAnimationDrawable", new Object[] { "------next index:" + this.jdField_a_of_type_Int });
+        this.mScheduledFuture = this.mExecutor.schedule(this.mFrameSwitcher, this.mImageKey.options.photoDelayTimeInMs, TimeUnit.MILLISECONDS);
+        ImageManagerEnv.getLogger().d("QzoneAnimationDrawable", new Object[] { "------next index:" + this.mNextFrameIndex });
       }
       for (;;)
       {
         return bool;
-        if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+        if (this.mCurrentFrame != null) {
           break;
         }
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-        d();
-        if (this.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.hasMessages(0)) {
+        this.mCurrentFrame = this.mNextFrame;
+        doBeforeDraw();
+        if (this.mInvalidationHandler.hasMessages(0)) {
           break;
         }
-        this.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
+        this.mInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
         break;
         stop();
-        if (this.jdField_a_of_type_ComTencentComponentMediaPhotogifQzoneAnimationDrawable$AnimationListener != null) {
-          this.jdField_a_of_type_ComTencentComponentMediaPhotogifQzoneAnimationDrawable$AnimationListener.onAnimationEnd(this);
+        if (this.mAnimationListener != null) {
+          this.mAnimationListener.onAnimationEnd(this);
         }
       }
-    }
-  }
-  
-  private void b()
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture != null) && (!this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture.isDone())) {
-      this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture.cancel(true);
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Int = 0;
-    c();
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_Int < this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options.photoList.size())
-    {
-      String str = (String)this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options.photoList.get(this.jdField_a_of_type_Int);
-      ImageLoader.getInstance().loadImageAsync(str, this.jdField_a_of_type_Pjb, this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options);
-      ImageManagerEnv.getLogger().d("QzoneAnimationDrawable", new Object[] { "loadNextFrame:" + str + ",frameIndex:" + this.jdField_a_of_type_Int });
-      if (this.jdField_a_of_type_Int == getFrameCounts() - 1) {
-        this.jdField_c_of_type_Int += 1;
-      }
-      this.jdField_a_of_type_Int = ((this.jdField_a_of_type_Int + 1) % this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options.photoList.size());
-      return;
-    }
-    ImageManagerEnv.getLogger().e("QzoneAnimationDrawable", new Object[] { "loadNextFrame: out of index,mNextFrameIndex:" + this.jdField_a_of_type_Int + ",photosize:" + this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options.photoList.size() });
-  }
-  
-  private void d()
-  {
-    if ((this.jdField_a_of_type_Int - 1 == 0) && (this.jdField_a_of_type_ComTencentComponentMediaPhotogifQzoneAnimationDrawable$AnimationListener != null)) {
-      this.jdField_a_of_type_ComTencentComponentMediaPhotogifQzoneAnimationDrawable$AnimationListener.onAnimationStart(this);
-    }
-    if (this.jdField_a_of_type_ComTencentComponentMediaPhotogifQzoneAnimationDrawable$AnimationListener != null) {
-      this.jdField_a_of_type_ComTencentComponentMediaPhotogifQzoneAnimationDrawable$AnimationListener.onAnimationPlay(this, this.jdField_a_of_type_Int - 1);
     }
   }
   
@@ -164,73 +163,73 @@ public class QzoneAnimationDrawable
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    if (this.mCurrentFrame != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(getBounds());
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      this.mCurrentFrame.setBounds(getBounds());
+      this.mCurrentFrame.draw(paramCanvas);
       return;
     }
-    if (this.jdField_c_of_type_AndroidGraphicsDrawableDrawable != null)
+    if (this.mDefaultFrame != null)
     {
-      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setBounds(getBounds());
-      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      this.mDefaultFrame.setBounds(getBounds());
+      this.mDefaultFrame.draw(paramCanvas);
       return;
     }
-    paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawRect(this.mDstRect, this.mPaint);
   }
   
   public int getFrameCounts()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options.photoList.size();
+    return this.mImageKey.options.photoList.size();
   }
   
   public long getFrameDuration()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options.photoDelayTimeInMs;
+    return this.mImageKey.options.photoDelayTimeInMs;
   }
   
   public int getIntrinsicHeight()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+    if (this.mCurrentFrame != null) {
+      return this.mCurrentFrame.getIntrinsicHeight();
     }
-    if (this.jdField_c_of_type_AndroidGraphicsDrawableDrawable != null) {
-      return this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+    if (this.mDefaultFrame != null) {
+      return this.mDefaultFrame.getIntrinsicHeight();
     }
-    return this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.clipHeight;
+    return this.mFrameOptions.clipHeight;
   }
   
   public int getIntrinsicWidth()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
+    if (this.mCurrentFrame != null) {
+      return this.mCurrentFrame.getIntrinsicWidth();
     }
-    if (this.jdField_c_of_type_AndroidGraphicsDrawableDrawable != null) {
-      return this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
+    if (this.mDefaultFrame != null) {
+      return this.mDefaultFrame.getIntrinsicWidth();
     }
-    return this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.clipWidth;
+    return this.mFrameOptions.clipWidth;
   }
   
   public int getMinimumHeight()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getMinimumHeight();
+    if (this.mCurrentFrame != null) {
+      return this.mCurrentFrame.getMinimumHeight();
     }
-    if (this.jdField_c_of_type_AndroidGraphicsDrawableDrawable != null) {
-      return this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.getMinimumHeight();
+    if (this.mDefaultFrame != null) {
+      return this.mDefaultFrame.getMinimumHeight();
     }
-    return this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.clipHeight;
+    return this.mFrameOptions.clipHeight;
   }
   
   public int getMinimumWidth()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getMinimumWidth();
+    if (this.mCurrentFrame != null) {
+      return this.mCurrentFrame.getMinimumWidth();
     }
-    if (this.jdField_c_of_type_AndroidGraphicsDrawableDrawable != null) {
-      return this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.getMinimumWidth();
+    if (this.mDefaultFrame != null) {
+      return this.mDefaultFrame.getMinimumWidth();
     }
-    return this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.clipWidth;
+    return this.mFrameOptions.clipWidth;
   }
   
   public int getOpacity()
@@ -240,31 +239,31 @@ public class QzoneAnimationDrawable
   
   public boolean isRunning()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.mIsRunning;
   }
   
   protected void onBoundsChange(Rect paramRect)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
+    this.mDstRect.set(paramRect);
   }
   
   public void setAlpha(int paramInt) {}
   
   public void setAnimationListener(QzoneAnimationDrawable.AnimationListener paramAnimationListener)
   {
-    this.jdField_a_of_type_ComTencentComponentMediaPhotogifQzoneAnimationDrawable$AnimationListener = paramAnimationListener;
+    this.mAnimationListener = paramAnimationListener;
   }
   
   public void setColorFilter(ColorFilter paramColorFilter) {}
   
   public void setDrawableForDefaultFrame(Drawable paramDrawable)
   {
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.mDefaultFrame = paramDrawable;
   }
   
   public void setRepeatCount(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.mRepeatCount = paramInt;
   }
   
   public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
@@ -272,7 +271,7 @@ public class QzoneAnimationDrawable
     boolean bool = super.setVisible(paramBoolean1, paramBoolean2);
     if (paramBoolean1) {
       if (paramBoolean2) {
-        b();
+        reset();
       }
     }
     while (!bool)
@@ -287,30 +286,28 @@ public class QzoneAnimationDrawable
   
   public void start()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      ImageManagerEnv.getLogger().d("QzoneAnimationDrawable", new Object[] { "start: isRunning = true" });
+    if (this.mIsRunning) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = false;
-    if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) {
-      c();
+    this.mIsRunning = true;
+    this.mSwitchFrameWhenLoaded = false;
+    if (this.mNextFrame == null) {
+      loadNextFrame();
     }
-    if ((this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture != null) && (!this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture.isDone())) {
-      this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture.cancel(true);
+    if ((this.mScheduledFuture != null) && (!this.mScheduledFuture.isDone())) {
+      this.mScheduledFuture.cancel(true);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.schedule(this.jdField_a_of_type_Pja, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options.photoDelayTimeInMs, TimeUnit.MILLISECONDS);
+    this.mScheduledFuture = this.mExecutor.schedule(this.mFrameSwitcher, this.mImageKey.options.photoDelayTimeInMs, TimeUnit.MILLISECONDS);
   }
   
   public void stop()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.mIsRunning = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.photogif.QzoneAnimationDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import android.graphics.Bitmap;
+import java.lang.ref.WeakReference;
 
-public class afam
-  implements View.OnClickListener
+class afam
 {
-  public afam(PlayOperationViewModel paramPlayOperationViewModel) {}
+  int jdField_a_of_type_Int;
+  WeakReference<Bitmap> jdField_a_of_type_JavaLangRefWeakReference;
+  boolean jdField_a_of_type_Boolean;
+  int b;
   
-  public void onClick(View paramView)
-  {
-    this.a.d(paramView);
-  }
+  afam(afal paramafal) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afam
  * JD-Core Version:    0.7.0.1
  */

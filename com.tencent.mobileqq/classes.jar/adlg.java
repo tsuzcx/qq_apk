@@ -1,31 +1,52 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adlg
-  implements DialogInterface.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adlg(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
+  public adlg(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    com.tencent.mobileqq.app.PhoneContactManagerImp.g = false;
-    paramDialogInterface = new Intent(this.a.a, SplashActivity.class);
-    paramDialogInterface.putExtra("tab_index", MainFragment.a);
-    paramDialogInterface.putExtra("fragment_id", 1);
-    paramDialogInterface.setFlags(67108864);
-    paramDialogInterface.setFlags(268435456);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    int i = 1;
+    if (AppSetting.c) {
+      NotifyPushSettingActivity.c(this.a).setContentDescription(alud.a(2131719350));
+    }
+    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131719350), "qqsetting_notify_blncontrol_key", paramBoolean);
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
+    {
+      NotifyPushSettingActivity.a(this.a.getActivity(), this.a.app.getCurrentAccountUin(), "LED_light", 1);
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label147;
+      }
+      label89:
+      if (!paramBoolean) {
+        break label152;
+      }
+    }
+    label147:
+    label152:
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    {
+      azqs.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Led_blinking", 0, i, paramCompoundButton, "", "", "");
+      return;
+      NotifyPushSettingActivity.a(this.a.getActivity(), this.a.app.getCurrentAccountUin(), "LED_light", 0);
+      break;
+      i = 0;
+      break label89;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adlg
  * JD-Core Version:    0.7.0.1
  */

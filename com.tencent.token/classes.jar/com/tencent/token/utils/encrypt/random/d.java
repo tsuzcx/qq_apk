@@ -7,18 +7,7 @@ public abstract class d
   private int b = 0;
   private long c;
   
-  public final void a()
-  {
-    long l = this.c;
-    a((byte)-128);
-    while (this.b != 0) {
-      a((byte)0);
-    }
-    a(l << 3);
-    c();
-  }
-  
-  public final void a(byte paramByte)
+  public void a(byte paramByte)
   {
     byte[] arrayOfByte = this.a;
     int i = this.b;
@@ -26,7 +15,7 @@ public abstract class d
     arrayOfByte[i] = paramByte;
     if (this.b == this.a.length)
     {
-      a(this.a, 0);
+      b(this.a, 0);
       this.b = 0;
     }
     this.c += 1L;
@@ -34,9 +23,7 @@ public abstract class d
   
   protected abstract void a(long paramLong);
   
-  protected abstract void a(byte[] paramArrayOfByte, int paramInt);
-  
-  public final void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     int i = paramInt2;
     int j = paramInt1;
@@ -63,7 +50,7 @@ public abstract class d
       if (paramInt2 <= this.a.length) {
         break;
       }
-      a(paramArrayOfByte, paramInt1);
+      b(paramArrayOfByte, paramInt1);
       paramInt1 += this.a.length;
       paramInt2 -= this.a.length;
       this.c += this.a.length;
@@ -78,6 +65,19 @@ public abstract class d
   
   public void b()
   {
+    long l = this.c;
+    a((byte)-128);
+    while (this.b != 0) {
+      a((byte)0);
+    }
+    a(l << 3);
+    d();
+  }
+  
+  protected abstract void b(byte[] paramArrayOfByte, int paramInt);
+  
+  public void c()
+  {
     this.c = 0L;
     this.b = 0;
     int i = 0;
@@ -88,7 +88,7 @@ public abstract class d
     }
   }
   
-  protected abstract void c();
+  protected abstract void d();
 }
 
 

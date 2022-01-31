@@ -1,23 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
-import com.tencent.mobileqq.facetoface.Face2FaceUserData;
-import com.tencent.mobileqq.util.ProfileCardUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ackk
-  implements View.OnClickListener
+public final class ackk
+  implements DialogInterface.OnClickListener
 {
-  public ackk(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, Face2FaceUserData paramFace2FaceUserData) {}
+  public ackk(acln paramacln, String paramString, int paramInt, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.a(), this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceUserData.e, 1);
+    if (this.jdField_a_of_type_Acln != null) {
+      this.jdField_a_of_type_Acln.a();
+    }
+    azqs.b(null, "dc00899", "Grp_video", "", "video_jump", "Clk_jump", 0, 0, this.jdField_a_of_type_JavaLangString + "", this.jdField_a_of_type_Int + "", "1", "");
+    bdjn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), null);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ackk
  * JD-Core Version:    0.7.0.1
  */

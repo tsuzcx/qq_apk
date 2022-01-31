@@ -1,21 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import java.util.List;
 
-public class thw
-  implements View.OnClickListener
+public abstract interface thw
 {
-  public thw(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public abstract List<thx> a(int paramInt, boolean paramBoolean);
   
-  public void onClick(View paramView)
-  {
-    this.a.a.setText("");
-  }
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     thw
  * JD-Core Version:    0.7.0.1
  */

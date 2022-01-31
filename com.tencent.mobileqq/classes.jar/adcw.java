@@ -1,21 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
-public class adcw
-  implements View.OnClickListener
+class adcw
+  implements banr
 {
-  public adcw(DefaultFileModel paramDefaultFileModel) {}
+  adcw(adcv paramadcv, CompoundButton paramCompoundButton, boolean paramBoolean, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onCancel()
   {
-    FileManagerUtil.a(this.a.a, this.a.b());
+    this.jdField_a_of_type_Adcv.a.a(this.jdField_a_of_type_AndroidWidgetCompoundButton, false);
+  }
+  
+  public void onConfirm()
+  {
+    this.jdField_a_of_type_Adcv.a.b();
+    GeneralSettingActivity.a(this.jdField_a_of_type_Adcv.a, this.jdField_a_of_type_AndroidWidgetCompoundButton, true, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adcw
  * JD-Core Version:    0.7.0.1
  */

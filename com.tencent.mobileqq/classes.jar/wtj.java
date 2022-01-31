@@ -1,30 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
 
 public class wtj
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public wtj(BindNumberActivity paramBindNumberActivity) {}
+  public wtj(StoryListPresenter.4.1 param1) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    BindNumberActivity.a(this.a);
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.a.getIntent();
-    if (paramDialogInterface.getBooleanExtra("kFPhoneChange", false)) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8005DE9", "0X8005DE9", 1, 0, "", "", "", "");
-    }
-    if (paramDialogInterface.getBooleanExtra("kUnityOther", false)) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8005DE9", "0X8005DE9", 2, 0, "", "", "", "");
-    }
+    wxj.a("home_page", "clk_up_close", 0, 0, new String[0]);
+    this.a.a.this$0.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wtj
  * JD-Core Version:    0.7.0.1
  */

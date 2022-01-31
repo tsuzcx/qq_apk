@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/iu"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:padding="@dimen/hx" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/im">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:id="@id/bt7" android:src="@raw/fav_list_img_default" style="@style/il" />
+            <include layout="@layout/zd" />
+            <include layout="@layout/zc" />
+        </LinearLayout>
+        <include layout="@layout/zb" />
+    </LinearLayout>
+</FrameLayout>

@@ -1,26 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import android.os.HandlerThread;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.cw;
 
-final class vx
-  implements DialogInterface.OnClickListener
+class vx
+  implements View.OnClickListener
 {
-  vx(vu paramvu) {}
+  vx(RealNameStep0VerifyMobileActivity paramRealNameStep0VerifyMobileActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (RealNameSmsContentTipActivity.access$500(this.a.a) == null)
-    {
-      RealNameSmsContentTipActivity.access$502(this.a.a, new HandlerThread("uploadphoto", 1));
-      RealNameSmsContentTipActivity.access$500(this.a.a).start();
-    }
-    if (RealNameSmsContentTipActivity.access$600(this.a.a) == null) {
-      RealNameSmsContentTipActivity.access$602(this.a.a, new Handler(RealNameSmsContentTipActivity.access$500(this.a.a).getLooper()));
-    }
-    RealNameSmsContentTipActivity.access$600(this.a.a).post(new vy(this));
+    this.a.showProDialogWithoutShutDown(this.a, this.a.getString(2131230787));
+    cw.a().a(0L, Long.valueOf(RealNameStep0VerifyMobileActivity.access$100(this.a)), RealNameStep0VerifyMobileActivity.access$200(this.a), RealNameStep0VerifyMobileActivity.access$800(this.a));
   }
 }
 

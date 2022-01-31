@@ -10,18 +10,18 @@ public final class BigDataChannel
 {
   static byte[] cache_sBigdata_key_session;
   static byte[] cache_sBigdata_sig_session;
-  static ArrayList cache_vBigdata_iplists;
+  static ArrayList<BigDataIpList> cache_vBigdata_iplists;
   static byte[] cache_vBigdata_pb_buf;
   public int iConnect_flag = 1;
   public byte[] sBigdata_key_session;
   public byte[] sBigdata_sig_session;
   public long uSig_Uin;
-  public ArrayList vBigdata_iplists;
+  public ArrayList<BigDataIpList> vBigdata_iplists;
   public byte[] vBigdata_pb_buf;
   
   public BigDataChannel() {}
   
-  public BigDataChannel(ArrayList paramArrayList, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong, int paramInt, byte[] paramArrayOfByte3)
+  public BigDataChannel(ArrayList<BigDataIpList> paramArrayList, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong, int paramInt, byte[] paramArrayOfByte3)
   {
     this.vBigdata_iplists = paramArrayList;
     this.sBigdata_sig_session = paramArrayOfByte1;

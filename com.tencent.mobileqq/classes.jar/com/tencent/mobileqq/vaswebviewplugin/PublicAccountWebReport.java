@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.content.Intent;
-import com.tencent.biz.pubaccount.PublicAccountServlet;
+import bfbh;
 import com.tencent.mobileqq.ac.ArticleComment.ReportNetConnectInfoRequest;
 import com.tencent.mobileqq.ac.ArticleComment.ReportNetConnectInfoResponse;
 import com.tencent.mobileqq.ac.ArticleComment.RetInfo;
@@ -10,12 +10,12 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mqpsdk.util.NetUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
+import nrz;
 
 public class PublicAccountWebReport
 {
@@ -45,7 +45,7 @@ public class PublicAccountWebReport
   public static boolean netShouldReport(int paramInt)
   {
     boolean bool = true;
-    switch (NetUtil.a(null))
+    switch (bfbh.a(null))
     {
     default: 
       bool = false;
@@ -71,19 +71,19 @@ public class PublicAccountWebReport
   
   public static void reportPublicAccountNetInfoRequest(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2)
   {
-    int i = NetUtil.a(null);
+    int i = bfbh.a(null);
     if (QLog.isColorLevel()) {
-      QLog.i("PublicAccountWebReport", 2, "urlStr: " + paramString1 + ",errorcode:" + paramInt3 + ",netType:" + i + ",DNSCost" + paramInt2 + ",connectCost:" + paramInt1 + ",receiveCost:" + paramInt4 + ",website_address:" + paramString2 + ",AppSetting.subVersion:" + "7.6.3,3,3560");
+      QLog.i("PublicAccountWebReport", 2, "urlStr: " + paramString1 + ",errorcode:" + paramInt3 + ",netType:" + i + ",DNSCost" + paramInt2 + ",connectCost:" + paramInt1 + ",receiveCost:" + paramInt4 + ",website_address:" + paramString2 + ",AppSetting.subVersion:" + "8.3.5,3,4555");
     }
     if (paramAppRuntime == null) {}
     while (!netShouldReport(paramInt1 + paramInt2 + paramInt4)) {
       return;
     }
-    NewIntent localNewIntent = new NewIntent(BaseApplication.getContext(), PublicAccountServlet.class);
+    NewIntent localNewIntent = new NewIntent(BaseApplication.getContext(), nrz.class);
     localNewIntent.putExtra("cmd", "PubAccountSvc.net_connect_info");
     ArticleComment.ReportNetConnectInfoRequest localReportNetConnectInfoRequest = new ArticleComment.ReportNetConnectInfoRequest();
     localReportNetConnectInfoRequest.netType.set(i);
-    localReportNetConnectInfoRequest.versionInfo.set("7.6.3,3,3560");
+    localReportNetConnectInfoRequest.versionInfo.set("8.3.5,3,4555");
     localReportNetConnectInfoRequest.connectCost.set(paramInt1);
     localReportNetConnectInfoRequest.DNSCost.set(paramInt2);
     localReportNetConnectInfoRequest.errorcode.set(paramInt3);
@@ -97,7 +97,7 @@ public class PublicAccountWebReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.PublicAccountWebReport
  * JD-Core Version:    0.7.0.1
  */

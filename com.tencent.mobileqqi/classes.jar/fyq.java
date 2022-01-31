@@ -1,38 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
 
 public class fyq
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public fyq(FileManagerDataCenter paramFileManagerDataCenter) {}
+  public fyq(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    paramContext = paramIntent.getAction();
-    if ((paramContext != null) && (paramContext.equalsIgnoreCase("com.opensdk.downloadmanager.renameFilename")))
-    {
-      localBundle = paramIntent.getBundleExtra("extraBundle");
-      if (localBundle != null) {
-        break label46;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("FileManagerDataCenter<FileAssistant>", 2, "INTENT_ACTION_RENAME_FILENAME extra is null!!!");
-      }
-    }
-    return;
-    label46:
-    paramContext = localBundle.getString("peerUin");
-    int i = localBundle.getInt("peerType");
-    paramIntent = localBundle.getString("sourceStr");
-    String str = localBundle.getString("filePath");
-    long l = localBundle.getLong("dataLength");
-    int j = localBundle.getInt("fileSourceId");
-    Bundle localBundle = localBundle.getBundle("otherData");
-    this.a.a(paramContext, i, str, l, j, paramIntent, localBundle);
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk, this.jdField_a_of_type_JavaLangString, 2);
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk);
   }
 }
 

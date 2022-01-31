@@ -1,60 +1,23 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qidian.QidianProfileCardActivity;
-import java.io.IOException;
-import java.lang.ref.WeakReference;
+import android.view.View;
 
 public class alng
-  implements Runnable
 {
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  String jdField_a_of_type_JavaLangString;
+  int b;
   
-  public alng(QidianProfileCardActivity paramQidianProfileCardActivity, URLDrawable paramURLDrawable, String paramString)
+  public alng(View paramView, int paramInt1, String paramString, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQidianProfileCardActivity);
-    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt1;
     this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void run()
-  {
-    localQidianProfileCardActivity = (QidianProfileCardActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQidianProfileCardActivity == null) {
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        str1 = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
-        if (str1 == null) {
-          continue;
-        }
-        ImageUtil.a(localQidianProfileCardActivity, str1);
-        str1 = localQidianProfileCardActivity.getString(2131434582) + " " + str1;
-      }
-      catch (IOException localIOException)
-      {
-        String str1;
-        String str2 = localQidianProfileCardActivity.getString(2131434583);
-        continue;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        String str3 = localQidianProfileCardActivity.getString(2131434583);
-        continue;
-      }
-      localQidianProfileCardActivity.runOnUiThread(new alnh(this, localQidianProfileCardActivity, str1));
-      return;
-      str1 = localQidianProfileCardActivity.getString(2131434583);
-    }
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alng
  * JD-Core Version:    0.7.0.1
  */

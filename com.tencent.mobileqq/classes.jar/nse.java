@@ -1,44 +1,29 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.handler.GetShareGroupInfoHandler.GetShareGroupInfoEvent;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.pubaccount.QualityReporter.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.ReportInfoReq;
 
 public class nse
-  extends QQUIEventReceiver
 {
-  public nse(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public static void a(qlq paramqlq)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    ThreadManager.excute(new QualityReporter.1(paramqlq), 16, null, true);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull GetShareGroupInfoHandler.GetShareGroupInfoEvent paramGetShareGroupInfoEvent)
+  private static void b(cc_sso_report_svr.ReportInfoReq paramReportInfoReq)
   {
-    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramGetShareGroupInfoEvent.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    if ((paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "update sharegroup info: " + paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.toString());
-      }
-      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
-      return;
-    }
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramGetShareGroupInfoEvent);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return GetShareGroupInfoHandler.GetShareGroupInfoEvent.class;
+    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), nrz.class);
+    localNewIntent.putExtra("cmd", "FeedsContentCenter.QualityReport");
+    localNewIntent.putExtra("data", paramReportInfoReq.toByteArray());
+    localNewIntent.setObserver(new nsf(localNewIntent));
+    ors.a().startServlet(localNewIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nse
  * JD-Core Version:    0.7.0.1
  */

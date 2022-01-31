@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.profile.view;
 
-import agsh;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,7 +10,9 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.LinearLayout;
+import awwh;
 import com.tencent.qphone.base.util.QLog;
 
 public class ShimmerLinearLayout
@@ -49,43 +50,55 @@ public class ShimmerLinearLayout
   
   private ValueAnimator a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
-    {
-      if (!paramBoolean) {
-        return this.jdField_a_of_type_AndroidAnimationValueAnimator;
-      }
-      QLog.i("ShimmerLinearLayout", 1, "getShimmerAnimation animator remove");
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-    }
-    int j = getWidth();
-    int m = getHeight();
-    int k;
-    int i;
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      m = 0;
-      j = 0;
-      k = 0;
-      i = 0;
-    }
+    int m = 0;
     for (;;)
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F + this.jdField_b_of_type_Int / this.c });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.c + this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new agsh(this, i, j, k, m));
-      return this.jdField_a_of_type_AndroidAnimationValueAnimator;
-      i = -this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      m = 0;
-      k = 0;
-      continue;
-      k = -this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-      j = 0;
-      i = 0;
+      try
+      {
+        ValueAnimator localValueAnimator;
+        if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
+        {
+          if (!paramBoolean)
+          {
+            localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+            return localValueAnimator;
+          }
+          QLog.i("ShimmerLinearLayout", 1, "getShimmerAnimation animator remove");
+          this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
+          this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+          this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+        }
+        QLog.i("ShimmerLinearLayout", 1, "getShimmerAnimation recreate = " + paramBoolean + "call stack = " + Log.getStackTraceString(new Throwable()));
+        int k = getWidth();
+        i = getHeight();
+        switch (this.jdField_a_of_type_Int)
+        {
+        case 0: 
+          this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F + this.jdField_b_of_type_Int / this.c });
+          this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.c + this.jdField_b_of_type_Int);
+          this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
+          this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
+          this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new awwh(this, i, j, k, m, null));
+          localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+          continue;
+          i = -this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+          j = 0;
+          break;
+        case 1: 
+          j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+          j = -j;
+          k = 0;
+          int n = 0;
+          m = i;
+          i = n;
+          break;
+        default: 
+          k = 0;
+        }
+      }
+      finally {}
+      int j = 0;
+      int i = 0;
     }
   }
   
@@ -244,7 +257,7 @@ public class ShimmerLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.ShimmerLinearLayout
  * JD-Core Version:    0.7.0.1
  */

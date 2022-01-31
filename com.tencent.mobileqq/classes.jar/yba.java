@@ -1,20 +1,21 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
-public class yba
+class yba
   implements View.OnClickListener
 {
-  public yba(SelectMemberActivity paramSelectMemberActivity) {}
+  yba(yay paramyay, ybe paramybe) {}
   
   public void onClick(View paramView)
   {
-    this.a.b(true, false);
+    if (yay.a(this.jdField_a_of_type_Yay) != null) {
+      yay.a(this.jdField_a_of_type_Yay).b(this.jdField_a_of_type_Ybe);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yba
  * JD-Core Version:    0.7.0.1
  */

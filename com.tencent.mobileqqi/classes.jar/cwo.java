@@ -1,105 +1,20 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.TextView.BufferType;
-import com.tencent.mobileqq.activity.BaseHornListActivity;
-import com.tencent.mobileqq.activity.BaseHornListActivity.BaseHornAdapter;
-import com.tencent.mobileqq.activity.HornListActivity;
-import com.tencent.mobileqq.data.HornDetail;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.widget.AnimationTextView;
+import com.tencent.mobileqq.activity.MyPublishedHornActivity;
+import com.tencent.mobileqq.app.NearHornHandler;
 
 public class cwo
-  extends BaseHornListActivity.BaseHornAdapter
+  implements Runnable
 {
-  private cwo(HornListActivity paramHornListActivity)
-  {
-    super(paramHornListActivity);
-  }
+  public cwo(MyPublishedHornActivity paramMyPublishedHornActivity, Boolean paramBoolean) {}
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void run()
   {
-    int i = 8;
-    Object localObject;
-    switch (super.getItemViewType(paramInt))
+    if (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
+    for (String str = "1";; str = "0")
     {
-    default: 
-      return paramView;
-    case 0: 
-      if (paramView == null)
-      {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903673, paramViewGroup, false);
-        paramViewGroup = new cck();
-        paramView.setTag(paramViewGroup);
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView = ((AnimationTextView)paramView.findViewById(2131233361));
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setSpannableFactory(QQText.a);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131233362));
-        paramViewGroup.b = ((TextView)paramView.findViewById(2131233360));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131233358));
-        paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131233363));
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityMyPublishedHornActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityMyPublishedHornActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityMyPublishedHornActivity.b, str, this.jdField_a_of_type_ComTencentMobileqqActivityMyPublishedHornActivity.jdField_a_of_type_JavaLangString);
       }
-      for (;;)
-      {
-        localObject = (HornDetail)super.getItem(paramInt);
-        paramViewGroup.jdField_a_of_type_JavaLangString = ((HornDetail)localObject).uin;
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setText(((HornDetail)localObject).content, TextView.BufferType.SPANNABLE);
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(((HornDetail)localObject).distance + " ").append(((HornDetail)localObject).time);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localStringBuilder.toString());
-        paramViewGroup.b.setText(((HornDetail)localObject).nickName);
-        paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText("" + ((HornDetail)localObject).commentCnt);
-        paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setContentDescription("查看该喇叭评论内容");
-        this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity.a(paramViewGroup.jdField_a_of_type_JavaLangString, 0, paramViewGroup.jdField_a_of_type_AndroidWidgetImageView);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new cwp(this, (HornDetail)localObject));
-        return paramView;
-        paramViewGroup = (cck)paramView.getTag();
-      }
-    }
-    if (paramView == null)
-    {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903281, null);
-      paramViewGroup = new cck();
-      paramView.setTag(paramViewGroup);
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131231867));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131231066));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231866));
-      ((LinearLayout)paramView).setOrientation(0);
-      localObject = paramViewGroup.d;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label487;
-      }
-      paramInt = 2131562334;
-      label427:
-      ((TextView)localObject).setText(paramInt);
-      localObject = paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label493;
-      }
-      paramInt = 0;
-      label448:
-      ((ProgressBar)localObject).setVisibility(paramInt);
-      paramViewGroup = paramViewGroup.jdField_c_of_type_AndroidWidgetImageView;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label499;
-      }
-    }
-    label487:
-    label493:
-    label499:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramViewGroup.setVisibility(paramInt);
-      return paramView;
-      paramViewGroup = (cck)paramView.getTag();
-      break;
-      paramInt = 2131562926;
-      break label427;
-      paramInt = 8;
-      break label448;
+      return;
     }
   }
 }

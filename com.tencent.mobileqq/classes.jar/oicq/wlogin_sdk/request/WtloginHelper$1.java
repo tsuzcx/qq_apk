@@ -1,17 +1,17 @@
 package oicq.wlogin_sdk.request;
 
-import android.os.Bundle;
 import oicq.wlogin_sdk.tools.ErrMsg;
 
 class WtloginHelper$1
   implements WtTicketPromise
 {
-  WtloginHelper$1(WtloginHelper paramWtloginHelper, WtTicketPromise paramWtTicketPromise, String paramString, long paramLong, int paramInt, Bundle paramBundle) {}
+  WtloginHelper$1(WtloginHelper paramWtloginHelper, String paramString, long paramLong, int paramInt, WtTicketPromise paramWtTicketPromise) {}
   
   public void Done(Ticket paramTicket)
   {
+    paramTicket = this.this$0.GetLocalTicket(this.val$userAccount, this.val$appid, this.val$sigType);
     if (this.val$promise != null) {
-      this.val$promise.Done(this.this$0.GetTicket(this.val$userAccount, this.val$appid, this.val$sigType, null, this.val$params));
+      this.val$promise.Done(paramTicket);
     }
   }
   

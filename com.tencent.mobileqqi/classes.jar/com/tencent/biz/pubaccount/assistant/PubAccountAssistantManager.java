@@ -4,9 +4,9 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.text.TextUtils;
-import bqu;
-import bqv;
-import bqw;
+import bkq;
+import bkr;
+import bks;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.recent.RecentDataListManager;
 import com.tencent.mobileqq.app.AppConstants;
@@ -74,10 +74,10 @@ public class PubAccountAssistantManager
   {
     try
     {
-      if (bqw.a == null) {
-        bqw.a = new PubAccountAssistantManager();
+      if (bks.a == null) {
+        bks.a = new PubAccountAssistantManager();
       }
-      PubAccountAssistantManager localPubAccountAssistantManager = bqw.a;
+      PubAccountAssistantManager localPubAccountAssistantManager = bks.a;
       return localPubAccountAssistantManager;
     }
     finally {}
@@ -191,7 +191,7 @@ public class PubAccountAssistantManager
     {
       localObject1 = ???.a(PubAccountAssistantData.class, false, null, null, null, null, "mLastMsgTime desc", null);
       if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
-        Collections.sort((List)localObject1, new bqv(this));
+        Collections.sort((List)localObject1, new bkr(this));
       }
     }
     catch (Exception ???)
@@ -360,7 +360,7 @@ public class PubAccountAssistantManager
     if (paramQQAppInterface == null) {
       return;
     }
-    ThreadManager.b(new bqu(this, paramQQAppInterface));
+    ThreadManager.b(new bkq(this, paramQQAppInterface));
   }
   
   public int a()
@@ -449,7 +449,7 @@ public class PubAccountAssistantManager
   
   public void a()
   {
-    bqw.a = null;
+    bks.a = null;
   }
   
   public void a(QQAppInterface paramQQAppInterface)

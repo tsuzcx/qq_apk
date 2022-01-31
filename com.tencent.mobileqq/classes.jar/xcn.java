@@ -1,22 +1,44 @@
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-class xcn
-  extends TroopUnAccalimedRedPacketList.HbItemClickListener
+public class xcn
+  implements View.OnClickListener
 {
-  xcn(xcm paramxcm) {}
+  protected long a;
+  protected View a;
+  public xco a;
   
-  public void a(int paramInt)
+  public xcn(xco paramxco, View paramView)
   {
-    if ((paramInt == 1) && (TroopUnAccalimedRedPacketList.a() != null)) {
-      TroopUnAccalimedRedPacketList.a().dismiss();
+    this.jdField_a_of_type_Xco = paramxco;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    paramView.setOnClickListener(this);
+  }
+  
+  private boolean a()
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = l1 - this.jdField_a_of_type_Long;
+    if ((l2 > 0L) && (l2 < 2000L)) {
+      return true;
     }
+    this.jdField_a_of_type_Long = l1;
+    return false;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (!a())
+    {
+      wxj.a("home_page", "clk_shoot", 0, 0, new String[0]);
+      this.jdField_a_of_type_Xco.a();
+    }
+    baxx.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xcn
  * JD-Core Version:    0.7.0.1
  */

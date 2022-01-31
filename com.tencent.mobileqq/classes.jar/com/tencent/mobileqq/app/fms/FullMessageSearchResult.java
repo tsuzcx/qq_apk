@@ -7,7 +7,7 @@ import java.util.List;
 public class FullMessageSearchResult
 {
   public int a;
-  public List a;
+  public List<FullMessageSearchResult.SearchResultItem> a;
   
   public FullMessageSearchResult()
   {

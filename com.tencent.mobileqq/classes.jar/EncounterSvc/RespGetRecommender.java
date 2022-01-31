@@ -9,7 +9,7 @@ public final class RespGetRecommender
   extends JceStruct
 {
   static int cache_eReasonType;
-  static ArrayList cache_vEncounterInfos;
+  static ArrayList<RespEncounterInfo> cache_vEncounterInfos;
   public int eReasonType = 0;
   public int iExpiretime = 172800;
   public int iInnerInterval = 180;
@@ -17,11 +17,11 @@ public final class RespGetRecommender
   public String strBrief = "";
   public String strTitle = "";
   public long uRecommendTime;
-  public ArrayList vEncounterInfos;
+  public ArrayList<RespEncounterInfo> vEncounterInfos;
   
   public RespGetRecommender() {}
   
-  public RespGetRecommender(int paramInt1, int paramInt2, int paramInt3, ArrayList paramArrayList, int paramInt4, String paramString1, String paramString2, long paramLong)
+  public RespGetRecommender(int paramInt1, int paramInt2, int paramInt3, ArrayList<RespEncounterInfo> paramArrayList, int paramInt4, String paramString1, String paramString2, long paramLong)
   {
     this.iOuterInterval = paramInt1;
     this.iInnerInterval = paramInt2;

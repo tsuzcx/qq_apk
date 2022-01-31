@@ -1,13 +1,9 @@
 package com.tencent.token.ui;
 
-import android.content.BroadcastReceiver;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
-import android.telephony.SmsMessage;
-import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,10 +12,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.tencent.token.af;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.UpgradeDeterminResult;
-import com.tencent.token.global.e;
+import com.tencent.token.cw;
+import com.tencent.token.global.h;
 
 public class VryMobileForStrategyActivity
   extends BaseActivity
@@ -27,51 +23,27 @@ public class VryMobileForStrategyActivity
   private final int INTERVAL_TIME_AFTER_GET_SMS_1 = 60;
   private final int INTERVAL_TIME_AFTER_GET_SMS_2 = 99;
   private final int MSG_LOADING = 100;
-  private final String RECEIVE_SMS_ACTION = "android.provider.Telephony.SMS_RECEIVED";
-  private final int SMS_INTERVAL = 3000;
   private final int UPDATE_TIME = -100;
-  private View.OnClickListener mBindTokenListener = new agu(this);
+  private View.OnClickListener mBindTokenListener = new afk(this);
   private int mCGISendSMSCount = 0;
-  private View.OnClickListener mCancelButtonListener = new agr(this);
-  private View.OnClickListener mCompleteButtonListener = new agq(this);
-  private View.OnClickListener mConfirmSendSmsListener = new ags(this);
-  Handler mHandler = new agv(this);
+  private View.OnClickListener mCancelButtonListener = new afh(this);
+  private View.OnClickListener mConfirmSendSmsListener = new afi(this);
+  Handler mHandler = new afl(this);
   private int mIntervalTime = 0;
-  private boolean mIsActiveSuccess = false;
   private boolean mIsAutoSumbit = false;
-  private boolean mIsSMSRegisted = false;
-  private int mPageId;
-  private View.OnClickListener mReSendButtonListener = new agt(this);
-  private BroadcastReceiver mSMSReceiver = new ago(this);
-  private af mTokenCore = af.a();
+  private View.OnClickListener mReSendButtonListener = new afj(this);
+  private cw mTokenCore = cw.a();
   private UpgradeDeterminResult mUpDetermin;
   private QQUser mUser;
   private boolean nextpage = false;
   
-  private void checkAndGetSMS(boolean paramBoolean)
+  private void checkAndGetSMS()
   {
-    e.a("interval: " + this.mIntervalTime + "  count: " + this.mCGISendSMSCount);
+    h.a("interval: " + this.mIntervalTime + "  count: " + this.mCGISendSMSCount);
     if (this.mIntervalTime > 0) {
       return;
     }
     getSMS();
-  }
-  
-  private SmsMessage[] getMessage(Intent paramIntent)
-  {
-    paramIntent = (Object[])paramIntent.getSerializableExtra("pdus");
-    if (paramIntent == null) {
-      return null;
-    }
-    int j = paramIntent.length;
-    SmsMessage[] arrayOfSmsMessage = new SmsMessage[j];
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfSmsMessage[i] = SmsMessage.createFromPdu((byte[])paramIntent[i]);
-      i += 1;
-    }
-    return arrayOfSmsMessage;
   }
   
   private void getSMS()
@@ -93,88 +65,53 @@ public class VryMobileForStrategyActivity
   
   private void init()
   {
-    setTitle(2131362004);
+    setTitle(2131231620);
     String str = this.mUpDetermin.mMobileMask;
     if ((str == null) || (str.length() == 0))
     {
       finish();
       return;
     }
-    ((Button)findViewById(2131296442)).setOnClickListener(this.mConfirmSendSmsListener);
-    Button localButton = (Button)findViewById(2131296443);
+    ((Button)findViewById(2131558730)).setOnClickListener(this.mConfirmSendSmsListener);
+    Button localButton = (Button)findViewById(2131558731);
     localButton.setOnClickListener(this.mCancelButtonListener);
-    localButton.setText(2131361866);
-    ((TextView)findViewById(2131296882)).setText(2131362803);
-    ((TextView)findViewById(2131296440)).setText(str);
+    localButton.setText(2131231504);
+    ((TextView)findViewById(2131559076)).setText(2131231613);
+    ((TextView)findViewById(2131558728)).setText(str);
   }
   
   private void initSMS()
   {
-    Button localButton = (Button)findViewById(2131296887);
-    Object localObject = (EditText)findViewById(2131296886);
+    Button localButton = (Button)findViewById(2131559081);
+    Object localObject = (EditText)findViewById(2131559080);
     if (localObject != null) {
       ((EditText)localObject).clearFocus();
     }
-    String str = getResources().getString(2131361823) + "\n(";
+    String str = getResources().getString(2131230800) + "\n(";
     localObject = str;
     if (this.mIntervalTime < 10) {
       localObject = str + "0";
     }
     localButton.setText((String)localObject + this.mIntervalTime + ")");
-    localButton.setTextColor(getResources().getColor(2131165197));
+    localButton.setTextColor(getResources().getColor(2131492930));
     localButton.setOnClickListener(this.mReSendButtonListener);
-    findViewById(2131296889).setOnClickListener(this.mBindTokenListener);
-  }
-  
-  private void registerSMSReceiver()
-  {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("android.provider.Telephony.SMS_RECEIVED");
-    registerReceiver(this.mSMSReceiver, localIntentFilter, "android.permission.RECEIVE_SMS", null);
-    this.mIsSMSRegisted = true;
-  }
-  
-  private void sendDnaBind()
-  {
-    this.mTokenCore.c(this.mUser.mRealUin, 1, "", "+86", this.mHandler);
-  }
-  
-  private void setTextFromSMS(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      showToast(2131361948);
-    }
-    EditText localEditText;
-    do
-    {
-      return;
-      localEditText = (EditText)findViewById(2131296886);
-    } while (localEditText == null);
-    localEditText.setText(paramString);
-    findViewById(2131296888).setVisibility(0);
-    if (this.mIsSMSRegisted)
-    {
-      unregisterReceiver(this.mSMSReceiver);
-      this.mIsSMSRegisted = false;
-    }
-    this.mIsAutoSumbit = true;
-    localEditText.postDelayed(new agw(this, paramString), 3000L);
+    findViewById(2131559083).setOnClickListener(this.mBindTokenListener);
   }
   
   private boolean setTime(long paramLong)
   {
-    Button localButton = (Button)findViewById(2131296887);
+    Button localButton = (Button)findViewById(2131559081);
     if (paramLong <= 0L)
     {
       if (localButton != null)
       {
-        localButton.setTextColor(getResources().getColor(2131165192));
-        localButton.setText(2131361823);
-        localButton.setTextSize(0, getResources().getDimensionPixelSize(2131230731));
+        localButton.setTextColor(getResources().getColor(2131492925));
+        localButton.setText(2131230800);
+        localButton.setTextSize(0, getResources().getDimensionPixelSize(2131296403));
       }
       return false;
     }
-    String str2 = getResources().getString(2131361823) + "\n(";
+    String str2 = getResources().getString(2131230800) + "\n(";
     String str1 = str2;
     if (this.mIntervalTime < 10) {
       str1 = str2 + "0";
@@ -183,34 +120,20 @@ public class VryMobileForStrategyActivity
     if (localButton != null)
     {
       localButton.setText(str1);
-      localButton.setTextColor(getResources().getColor(2131165197));
-      localButton.setTextSize(0, getResources().getDimensionPixelSize(2131230728));
+      localButton.setTextColor(getResources().getColor(2131492930));
+      localButton.setTextSize(0, getResources().getDimensionPixelSize(2131296400));
     }
     return true;
   }
   
   private void showBindFailDialog(String paramString)
   {
-    showUserDialog(2131361831, paramString, 2131361800, new agx(this));
-  }
-  
-  private void showKeyBoard(View paramView)
-  {
-    ((InputMethodManager)getSystemService("input_method")).showSoftInput(paramView, 1);
+    showUserDialog(2131230779, paramString, 2131230897, new afm(this));
   }
   
   private void showMobileFreqFail(String paramString)
   {
-    showUserDialog(2131361808, paramString, 2131361800, new agp(this));
-  }
-  
-  private void unregisterSMSReceiver()
-  {
-    if (this.mIsSMSRegisted)
-    {
-      unregisterReceiver(this.mSMSReceiver);
-      this.mIsSMSRegisted = false;
-    }
+    showUserDialog(2131230843, paramString, 2131230897, new afn(this));
   }
   
   private void updateIntervalTimer()
@@ -223,7 +146,7 @@ public class VryMobileForStrategyActivity
   
   private void vrySmsCode(String paramString)
   {
-    this.mTokenCore.a(this.mUser.mUin, this.mUser.mRealUin, 1006, paramString, this.mHandler);
+    this.mTokenCore.a(this.mUser.mUin, this.mUser.mRealUin, 1006, paramString, 0, this.mHandler);
   }
   
   public void cancelRequest()
@@ -247,15 +170,20 @@ public class VryMobileForStrategyActivity
       catch (Exception paramKeyEvent)
       {
         paramKeyEvent.printStackTrace();
-        e.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
+        h.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
         return true;
       }
-      setContentView(2130903147);
+      setContentView(2130968703);
       this.mIntervalTime = 0;
       this.nextpage = false;
       init();
       return true;
     }
+  }
+  
+  public void onBackPressed()
+  {
+    exit();
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -266,16 +194,20 @@ public class VryMobileForStrategyActivity
     this.mUpDetermin = ((UpgradeDeterminResult)getIntent().getSerializableExtra("intent.upgradedetermin"));
     if ((this.mUser == null) || (this.mUpDetermin == null))
     {
+      h.c("isshowingverifyfalse");
+      com.tencent.token.global.RqdApplication.b = false;
       finish();
       return;
     }
+    com.tencent.token.global.RqdApplication.b = true;
     if (getIntent().getBooleanExtra("succ", false))
     {
+      h.c("isshowingverifyfalse");
+      com.tencent.token.global.RqdApplication.b = false;
       finish();
       return;
     }
-    this.mPageId = getIntent().getIntExtra("page_id", 0);
-    setContentView(2130903147);
+    setContentView(2130968821);
     init();
   }
   
@@ -285,17 +217,12 @@ public class VryMobileForStrategyActivity
     if (this.mHandler != null) {
       this.mHandler.removeMessages(-100);
     }
-    if (this.mIsSMSRegisted)
-    {
-      unregisterReceiver(this.mSMSReceiver);
-      this.mIsSMSRegisted = false;
-    }
   }
   
   protected void onPause()
   {
     super.onPause();
-    e.a("pause");
+    h.a("pause");
   }
   
   protected void onResume()

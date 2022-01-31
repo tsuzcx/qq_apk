@@ -3,12 +3,12 @@ package com.tencent.mobileqq.theme.diy;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import bdeu;
+import bdtd;
+import becr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.vas.IndividuationConfigInfo;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vipav.VipFunCallManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -31,8 +31,8 @@ class ThemeDIYActivity$4
     String str1;
     try
     {
-      bool = VipFunCallManager.a(this.this$0.app.getApplication(), "ThemeDIYActivity", false);
-      l = Utils.b();
+      bool = becr.a(this.this$0.app.getApplication(), "ThemeDIYActivity", false);
+      l = bdeu.b();
       QLog.d("ThemeDIYActivity", 2, "loadResJson Err haveSDCard:" + bool + ", availableSpace:" + l);
       if (100 == this.val$resType)
       {
@@ -45,7 +45,7 @@ class ThemeDIYActivity$4
           break label264;
         }
         bool = true;
-        localObject1 = VasQuickUpdateManager.a((AppRuntime)localObject1, str1, bool, this.this$0.callBacker);
+        localObject1 = VasQuickUpdateManager.getJSONFromLocal((AppRuntime)localObject1, str1, bool, this.this$0.callBacker);
         if (localObject1 != null) {
           break label270;
         }
@@ -142,14 +142,14 @@ class ThemeDIYActivity$4
           break label1639;
         }
         JSONObject localJSONObject1 = ((JSONObject)localObject5).getJSONArray("operateAndroid").getJSONObject(0);
-        if ((!IndividuationConfigInfo.a(localJSONObject1.optString("minVersion"), "7.6.3")) || (IndividuationConfigInfo.a(localJSONObject1.optString("maxVersion"), "7.6.3")))
+        if ((!bdtd.a(localJSONObject1.optString("minVersion"), "8.3.5")) || (bdtd.a(localJSONObject1.optString("maxVersion"), "8.3.5")))
         {
           localObject3 = localObject2;
           m = i;
           if (!QLog.isColorLevel()) {
             break label1639;
           }
-          QLog.d("ThemeDIYActivity", 2, "loadResJson style subVersion: 7.6.3, minVersion:" + localJSONObject1.optString("minVersion") + ", maxVersion:" + localJSONObject1.optString("maxVersion") + ", id:" + str2 + ", timeStamp:" + l);
+          QLog.d("ThemeDIYActivity", 2, "loadResJson style subVersion: 8.3.5, minVersion:" + localJSONObject1.optString("minVersion") + ", maxVersion:" + localJSONObject1.optString("maxVersion") + ", id:" + str2 + ", timeStamp:" + l);
           localObject3 = localObject2;
           m = i;
           break label1639;
@@ -302,7 +302,7 @@ class ThemeDIYActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ThemeDIYActivity.4
  * JD-Core Version:    0.7.0.1
  */

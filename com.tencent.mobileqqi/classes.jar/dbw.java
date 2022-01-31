@@ -1,24 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.model.FriendManager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.widget.XEditTextEx;
 
 public class dbw
-  extends Thread
+  implements View.OnTouchListener
 {
-  public dbw(ModifyFriendInfoActivity paramModifyFriendInfoActivity) {}
+  public dbw(QQLSActivity paramQQLSActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject = ((FriendManager)this.a.b.getManager(8)).a(this.a.jdField_a_of_type_JavaLangString);
-    if (localObject != null) {
-      this.a.c = ((Card)localObject).strReMark;
-    }
-    localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-    ((Message)localObject).what = 1;
-    ((Message)localObject).sendToTarget();
+    QQLSActivity.a(this.a).setCursorVisible(true);
+    return false;
   }
 }
 

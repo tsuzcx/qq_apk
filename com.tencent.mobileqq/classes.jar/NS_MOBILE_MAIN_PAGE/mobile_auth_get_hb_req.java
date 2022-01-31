@@ -9,9 +9,9 @@ import java.util.Map;
 public final class mobile_auth_get_hb_req
   extends JceStruct
 {
-  static Map cache_ext_info = new HashMap();
+  static Map<String, String> cache_ext_info = new HashMap();
   public long cuin;
-  public Map ext_info;
+  public Map<String, String> ext_info;
   public String hb_id = "";
   public short hb_type;
   public long huin;
@@ -24,7 +24,7 @@ public final class mobile_auth_get_hb_req
   
   public mobile_auth_get_hb_req() {}
   
-  public mobile_auth_get_hb_req(long paramLong1, int paramInt, long paramLong2, String paramString, short paramShort, Map paramMap)
+  public mobile_auth_get_hb_req(long paramLong1, int paramInt, long paramLong2, String paramString, short paramShort, Map<String, String> paramMap)
   {
     this.huin = paramLong1;
     this.huin_type = paramInt;

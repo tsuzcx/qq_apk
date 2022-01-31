@@ -1,23 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.troop_homework.outer.TroopHWRecordBaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 public class angg
-  implements View.OnClickListener
+  implements TVK_SDKMgr.OnLogListener
 {
-  public angg(TroopHWRecordBaseActivity paramTroopHWRecordBaseActivity) {}
-  
-  public void onClick(View paramView)
+  public int d(String paramString1, String paramString2)
   {
-    switch (paramView.getId())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
     }
-    do
-    {
-      return;
-    } while (this.a.a);
-    this.a.setResult(0);
-    this.a.finish();
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
   }
 }
 

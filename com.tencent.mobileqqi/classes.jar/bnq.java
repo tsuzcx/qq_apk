@@ -1,41 +1,20 @@
-import android.content.Context;
-import com.tencent.biz.common.download.OfflineDownloader;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.common.util.LoadedBack;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.troop.TroopMemberApiPlugin;
 
-public final class bnq
-  implements AsyncBack
+class bnq
+  implements Runnable
 {
-  public bnq(long paramLong, Context paramContext, String paramString, LoadedBack paramLoadedBack) {}
+  bnq(bnp parambnp) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizCommonUtilLoadedBack.b(paramInt);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.i("HtmlCheckUpdate", 2, "js call downloadUpdate callback:" + paramInt + ", time:" + l);
-    }
-    if (paramInt == 0)
+    try
     {
-      HtmlOffline.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-      if (HtmlOffline.a(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_ComTencentBizCommonUtilLoadedBack.a(0);
-      }
-    }
-    for (;;)
-    {
-      HtmlOffline.b(this.jdField_a_of_type_JavaLangString);
-      HtmlOffline.a(this.jdField_a_of_type_JavaLangString, paramInt, l, OfflineDownloader.a(this.jdField_a_of_type_AndroidContentContext));
+      TroopMemberApiPlugin.a(this.a.a, this.a.a.i, this.a.a.e);
       return;
-      this.jdField_a_of_type_ComTencentBizCommonUtilLoadedBack.a(6);
-      continue;
-      this.jdField_a_of_type_ComTencentBizCommonUtilLoadedBack.a(2);
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      this.a.a.callJs(this.a.a.i, new String[] { "[]" });
     }
   }
 }

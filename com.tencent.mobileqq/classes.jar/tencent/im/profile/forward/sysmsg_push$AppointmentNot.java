@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class sysmsg_push$AppointmentNot
-  extends MessageMicro
+  extends MessageMicro<AppointmentNot>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_tips_content = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -24,7 +24,7 @@ public final class sysmsg_push$AppointmentNot
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.profile.forward.sysmsg_push.AppointmentNot
  * JD-Core Version:    0.7.0.1
  */

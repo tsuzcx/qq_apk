@@ -1,39 +1,62 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import java.lang.ref.WeakReference;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiMembersAudioUI;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import java.util.ArrayList;
 
 public class miw
-  extends Handler
+  extends lhe
 {
-  private WeakReference a;
+  public miw(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public miw(ReadInJoyListViewGroup paramReadInJoyListViewGroup)
+  protected void a(int paramInt)
   {
-    this.a = new WeakReference(paramReadInJoyListViewGroup);
+    if (this.a.b()) {
+      return;
+    }
+    this.a.c(paramInt);
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void a(long paramLong, ArrayList<lfu> paramArrayList, int paramInt1, int paramInt2)
   {
-    ReadInJoyListViewGroup localReadInJoyListViewGroup = (ReadInJoyListViewGroup)this.a.get();
-    if (localReadInJoyListViewGroup == null) {}
+    if (this.a.b()) {
+      return;
+    }
+    this.a.a(paramLong, paramArrayList, paramInt1, paramInt2);
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  {
+    if (this.a.b()) {}
     do
     {
-      return;
-      switch (paramMessage.what)
+      do
       {
-      default: 
+        return;
+      } while (paramLong != this.a.jdField_a_of_type_Long);
+      if (paramBoolean)
+      {
+        this.a.b(paramInt);
         return;
       }
-    } while (ReadInJoyListViewGroup.a(localReadInJoyListViewGroup) == null);
-    ReadInJoyListViewGroup.a(localReadInJoyListViewGroup).setAnimType(2);
-    localReadInJoyListViewGroup.m();
+    } while (((paramInt != 10) && (paramInt != 1)) || (!MultiVideoEnterPageActivity.a(this.a)));
+    this.a.a(paramInt);
+  }
+  
+  protected void d()
+  {
+    if (this.a.b()) {}
+    while (this.a.jdField_a_of_type_Boolean) {
+      return;
+    }
+    super.d();
+    ArrayList localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.e();
+    localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.a(localArrayList.size(), localArrayList);
+    this.a.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI.a(localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     miw
  * JD-Core Version:    0.7.0.1
  */

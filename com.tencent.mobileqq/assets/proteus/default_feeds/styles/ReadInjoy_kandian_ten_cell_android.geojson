@@ -1,0 +1,404 @@
+{
+  "platform" : "android",
+  "ReadInjoy_kandian_ten_cell": {
+    "view_type": "UIView",
+    "default_visible": "YES",
+    "view_id": "id_kandian_ten_container",
+    "layout_type": "layout_linear",
+    "direction": "vertical",
+    "event_type": "cmd_kandian_ten_click",
+    "height": {
+      "type": "wrap_content"
+    },
+    "width": {
+      "type": "match_parent"
+    },
+    "data_attributes":{
+                        "setLocalInfo:": {
+                          "feeds_type": "1030",
+                          "jump_src": "4"
+                       },
+                        "setRemoteInfo:":{
+                           "jump_page": "$jump_page"
+                       }
+     },
+    "subviews": [
+      {
+        "view_type": "UIView",
+        "default_visible": "YES",
+        "view_id": "id_kandian_ten_cell",
+        "layout_type": "layout_linear",
+        "direction": "vertical",
+        "height": {
+          "type": "wrap_content"
+        },
+        "width": {
+          "type": "match_parent"
+        },
+        "subviews": [
+          {
+            "view_type": "container",
+            "layout_type": "layout_relative",
+            "margin_top": "8",
+            "margin_left": "6",
+            "margin_right": "6",
+            "height": {
+              "type": "relative",
+              "value": "156"
+            },
+            "width": {
+              "type": "match_parent"
+            },
+            "subviews": [
+              {
+                "view_type": "ReadInjoyAsynImageView",
+                "view_id": "id_kandian_ten_top_img",
+                "height": {
+                  "type": "match_parent"
+                },
+                "width": {
+                  "type": "match_parent"
+                },
+                "attributes": {
+                  "setImageWithURLString:lineup:": [
+                    "$kandian_ten_top_img",
+                    "1"
+                  ]
+                }
+              },
+              {
+                "view_type": "UIView",
+                "default_visible": "YES",
+                "view_id": "id_kandian_ten_top_bg",
+                "layout_type": "layout_relative",
+                "align_parent_top": "YES",
+                "height": {
+                  "type": "relative",
+                  "value": "40"
+                },
+                "width": {
+                  "type": "match_parent"
+                },
+                "attributes": {
+                  "setGradientWithStartAlpha:endAlpha:color:direction:": [
+                    "1",
+                    "0",
+                    "#000000",
+                    "1"
+                  ]
+                }
+              },
+              {
+                "view_type": "ReadInjoyAsynImageView",
+                "view_id": "id_kandian_ten_icon",
+                "align_parent_left": "YES",
+                "align_parent_top": "YES",
+                "margin_left": "12",
+                "margin_top": "11",
+                "height": {
+                  "type": "relative",
+                  "value": "18"
+                },
+                "width": {
+                  "type": "relative",
+                  "value": "81"
+                },
+                "attributes": {
+                  "setImageWithURLString:lineup:": [
+                    "$kandian_ten_logo",
+                    "1"
+                  ]
+                }
+              },
+              {
+                "view_type": "UILabel",
+                "view_id": "id_update_time",
+                "align_parent_top": "YES",
+                "align_parent_right": "YES",
+                "margin_right": "12",
+                "margin_top": "14",
+                "height": {
+                  "type": "wrap_content"
+                },
+                "width": {
+                  "type": "wrap_content"
+                },
+                "attributes": {
+                  "setText:lineSpace:": [
+                    "$updateTimeStr",
+                    "5"
+                  ],
+                  "setTextColorString:": "#ffffff",
+                  "setFontSizeString:": "12",
+                  "setNumberOfLinesString:": "1"
+                }
+              },
+              {
+                "view_type": "UIView",
+                "default_visible": "YES",
+                "view_id": "id_kandian_ten_bottom_bg",
+                "layout_type": "layout_relative",
+                "direction": "horizontal",
+                "align_parent_bottom": "YES",
+                "height": {
+                  "type": "relative",
+                  "value": "48"
+                },
+                "width": {
+                  "type": "match_parent"
+                },
+                "attributes": {
+                  "setGradientWithStartAlpha:endAlpha:color:direction:": [
+                    "0",
+                    "1",
+                    "#000000",
+                    "1"
+                  ]
+                },
+                "subviews": [
+                  {
+                    "view_type": "ReadInjoyAsynImageView",
+                    "view_id": "id_small_image_icon_1",
+                    "align_parent_bottom": "YES",
+                    "align_parent_left": "YES",
+                    "margin_bottom": "14",
+                    "margin_left": "12",
+                    "height": {
+                      "type": "relative",
+                      "value": "16"
+                    },
+                    "width": {
+                      "type": "relative",
+                      "value": "16"
+                    },
+                    "attributes": {
+                      "setImageWithURLString:lineup:": [
+                        "$kandian_ten_title_icon",
+                        "1"
+                      ]
+                    }
+                  },
+                  {
+                    "view_type": "UILabel",
+                    "view_id": "id_article_title_1",
+                    "align_parent_bottom": "YES",
+                    "right_of_view": "id_small_image_icon_1",
+                    "margin_bottom": "12",
+                    "margin_left": "8",
+                    "margin_right": "12",
+                    "height": {
+                      "type": "wrap_content"
+                    },
+                    "width": {
+                      "type": "match_parent"
+                    },
+                    "attributes": {
+                      "setText:": "$title_1",
+                      "setTextColorString:": "#FFFFFF",
+                      "setFontSizeString:": "16",
+                      "setNumberOfLinesString:": "1"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "view_type": "container",
+            "layout_type": "layout_relative",
+            "margin_left": "6",
+            "margin_right": "6",
+            "direction": "horizontal",
+            "height": {
+              "type": "relative",
+              "value": "39"
+            },
+            "width": {
+              "type": "match_parent"
+            },
+            "attributes": {
+              "setBackgroundColorString:": "#F5F6FA"
+            },
+            "subviews": [
+              {
+                "view_type": "UIImageView",
+                "view_id": "id_small_image_icon_2",
+                "align_parent_bottom": "YES",
+                "align_parent_left": "YES",
+                "margin_bottom": "9",
+                "margin_left": "12",
+                "height": {
+                  "type": "relative",
+                  "value": "16"
+                },
+                "width": {
+                  "type": "relative",
+                  "value": "16"
+                },
+                "attributes": {
+                  "setImageWithURLString:lineup:": [
+                    "$kandian_ten_title_icon",
+                    "1"
+                  ]
+                }
+              },
+              {
+                "view_type": "UILabel",
+                "view_id": "id_article_title_2",
+                "align_parent_bottom": "YES",
+                "right_of_view": "id_small_image_icon_2",
+                "margin_bottom": "7",
+                "margin_left": "8",
+                "margin_right": "12",
+                "height": {
+                  "type": "wrap_content"
+                },
+                "width": {
+                  "type": "match_parent"
+                },
+                "attributes": {
+                  "setText:": "$title_2",
+                  "setTextColorString:": "#03081A",
+                  "setFontSizeString:": "16",
+                  "setNumberOfLinesString:": "1"
+                }
+              }
+            ]
+          },
+          {
+            "view_type": "container",
+            "layout_type": "layout_linear",
+            "margin_left": "6",
+            "margin_right": "6",
+            "direction": "horizontal",
+            "height": {
+              "type": "relative",
+              "value": "39"
+            },
+            "width": {
+              "type": "match_parent"
+            },
+            "attributes": {
+              "setBackgroundColorString:": "#F5F6FA"
+            },
+            "subviews": [
+              {
+                "view_type": "UIImageView",
+                "view_id": "id_small_image_icon_3",
+                "align_parent_top": "YES",
+                "align_parent_left": "YES",
+                "margin_top": "8",
+                "margin_left": "12",
+                "height": {
+                  "type": "relative",
+                  "value": "16"
+                },
+                "width": {
+                  "type": "relative",
+                  "value": "16"
+                },
+                "attributes": {
+                  "setImageWithURLString:lineup:": [
+                    "$kandian_ten_title_icon",
+                    "1"
+                  ]
+                }
+              },
+              {
+                "view_type": "UILabel",
+                "view_id": "id_article_title_3",
+                "align_parent_top": "YES",
+                "right_of_view": "id_small_image_icon_3",
+                "margin_top": "7",
+                "margin_left": "8",
+                "margin_right": "12",
+                "height": {
+                  "type": "wrap_content"
+                },
+                "width": {
+                  "type": "match_parent"
+                },
+                "attributes": {
+                  "setText:": "$title_3",
+                  "setTextColorString:": "#03081A",
+                  "setFontSizeString:": "16",
+                  "setNumberOfLinesString:": "2"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "view_type": "container",
+        "layout_type": "layout_relative",
+        "height": {
+          "type": "relative",
+          "value": "28"
+        },
+        "width": {
+          "type": "match_parent"
+        },
+        "subviews": [
+          {
+            "view_type": "UILabel",
+            "view_id": "viewid_article_bottom_left",
+            "align_parent_center_vertical": "YES",
+            "align_parent_left": "YES",
+            "margin_left": "6",
+            "height": {
+              "type": "wrap_content"
+            },
+            "width": {
+              "type": "wrap_content"
+            },
+            "attributes": {
+              "setText:": "$id_article_bottom_left",
+              "setTextColorString:": "#FF4D2C",
+              "setFontSizeString:": "12",
+              "setNumberOfLinesString:": "1"
+            }
+          },
+          {
+            "view_type": "UILabel",
+            "view_id": "viewid_article_bottom_right",
+            "align_parent_center_vertical": "YES",
+            "right_of_view": "viewid_article_bottom_left",
+            "margin_left": "8",
+            "height": {
+              "type": "wrap_content"
+            },
+            "width": {
+              "type": "wrap_content"
+            },
+            "attributes": {
+              "setText:": "$id_article_bottom_right",
+              "setTextColorString:": "#B0B3BF",
+              "setFontSizeString:": "12",
+              "setNumberOfLinesString:": "1"
+            }
+          },
+          {
+            "view_type": "UIButton",
+            "view_id": "id_ad_dislike_button",
+            "default_visible": "YES",
+            "align_parent_center_vertical": "YES",
+            "align_parent_right": "YES",
+            "event_type": "cmd_dislike_click",
+            "height": {
+              "type": "relative",
+              "value": "30"
+            },
+            "width": {
+              "type": "relative",
+              "value": "41"
+            },
+            "attributes": {
+              "setImage:": "feeds_dislike"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

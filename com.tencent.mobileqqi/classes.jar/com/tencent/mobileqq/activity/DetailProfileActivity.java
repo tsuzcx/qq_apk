@@ -7,14 +7,14 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import cmk;
-import cmm;
-import cmn;
-import cmo;
-import cmp;
-import cmq;
-import cmr;
-import cms;
+import cfy;
+import cga;
+import cgb;
+import cgc;
+import cgd;
+import cge;
+import cgf;
+import cgg;
 import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -45,18 +45,18 @@ public class DetailProfileActivity
 {
   public byte a;
   public int a;
-  private DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new cmm(this);
+  private DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new cga(this);
   private View jdField_a_of_type_AndroidViewView;
   public CardHandler a;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new cmq(this);
-  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new cms(this);
-  private IStatusListener jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener = new cmr(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new cge(this);
+  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new cgg(this);
+  private IStatusListener jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener = new cgf(this);
   private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
   private QQCustomDialogWtihInput jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput;
   private FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   private QQToastNotifier jdField_a_of_type_ComTencentMobileqqWidgetQQToastNotifier;
   public String a;
-  private DialogInterface.OnClickListener jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new cmn(this);
+  private DialogInterface.OnClickListener jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new cgb(this);
   private FormSimpleItem jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   public String b;
   private FormSimpleItem c;
@@ -70,20 +70,20 @@ public class DetailProfileActivity
   
   private void d()
   {
-    setContentView(2130903602);
+    setContentView(2130903604);
     setTitle(2131562005);
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131230989));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131232613));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131232616));
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131233040));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131233042));
     this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
-    this.d = ((FormSimpleItem)findViewById(2131233041));
+    this.d = ((FormSimpleItem)findViewById(2131233043));
     this.d.setOnClickListener(this);
     this.d.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131233039);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131233041);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130837875);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130837877);
   }
   
   private void e()
@@ -93,7 +93,7 @@ public class DetailProfileActivity
   
   private void f()
   {
-    new TimePickerView(this, ProfileUtil.b(this.jdField_a_of_type_Int), ProfileUtil.c(this.jdField_a_of_type_Int), ProfileUtil.d(this.jdField_a_of_type_Int), new cmo(this)).b();
+    new TimePickerView(this, ProfileUtil.b(this.jdField_a_of_type_Int), ProfileUtil.c(this.jdField_a_of_type_Int), ProfileUtil.d(this.jdField_a_of_type_Int), new cgc(this)).b();
   }
   
   private void g()
@@ -142,7 +142,7 @@ public class DetailProfileActivity
     for (boolean bool1 = bool2;; bool1 = false)
     {
       localActionSheet.a((CharSequence)localObject, bool1);
-      localActionSheet.a(new cmp(this, localActionSheet));
+      localActionSheet.a(new cgd(this, localActionSheet));
       localActionSheet.d(2131561746);
       localActionSheet.show();
       return;
@@ -216,7 +216,7 @@ public class DetailProfileActivity
     if (QLog.isColorLevel()) {
       QLog.i("Q.profilecard.FrdProfileCard", 2, "initCard()");
     }
-    new cmk(this, paramString).start();
+    new cfy(this, paramString).start();
   }
   
   public void b(String paramString)

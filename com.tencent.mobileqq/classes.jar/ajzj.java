@@ -1,14 +1,42 @@
-import android.view.Choreographer.FrameCallback;
-import com.tencent.mobileqq.util.FPSCalculator;
+import android.view.View;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
 public class ajzj
-  implements Choreographer.FrameCallback
+  implements bhzn
 {
-  public ajzj(FPSCalculator paramFPSCalculator) {}
+  public ajzj(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
-  public void doFrame(long paramLong)
+  public void a()
   {
-    FPSCalculator.a(this.a, paramLong);
+    this.a.a = true;
+    FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
+  }
+  
+  public void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
+  {
+    if (!this.a.a)
+    {
+      if (paramInt - 1 >= 0) {
+        paramPinnedFooterExpandableListView.b(paramInt - 1);
+      }
+      for (;;)
+      {
+        this.a.a = true;
+        FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendTeamListInnerFrameNew", 2, "header group unusal: " + paramInt);
+        }
+      }
+    }
+    if (paramPinnedFooterExpandableListView.c(paramInt))
+    {
+      paramPinnedFooterExpandableListView.b(paramInt);
+      return;
+    }
+    paramPinnedFooterExpandableListView.a(paramInt);
   }
 }
 

@@ -1,27 +1,33 @@
-import com.tencent.mobileqq.app.Frame;
-import com.tencent.mobileqq.app.FrameFragment;
-import com.tencent.mobileqq.widget.QQTabHost;
-import com.tencent.mobileqq.widget.QQTabHost.OnTabSelectionListener;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.webviewplugin.GamePartyPlugin;
 
 public class zdf
-  implements QQTabHost.OnTabSelectionListener
+  extends apmh
 {
-  public zdf(FrameFragment paramFrameFragment) {}
+  public zdf(GamePartyPlugin paramGamePartyPlugin) {}
   
-  public void a(int paramInt1, int paramInt2, QQTabHost paramQQTabHost)
+  public void onBindedToClient() {}
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle)
   {
-    if (paramInt1 == paramInt2)
+    if ((paramBundle != null) && (paramBundle.getInt("respkey") == GamePartyPlugin.a(this.a).key) && ("batchGetUserInfo".equals(paramBundle.getString("cmd"))))
     {
-      paramQQTabHost = this.a.b();
-      if (paramQQTabHost != null) {
-        paramQQTabHost.e();
+      String str = paramBundle.getString("callbackid");
+      paramBundle = paramBundle.getBundle("response").getString("result");
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramBundle))) {
+        this.a.callJs(str, new String[] { paramBundle });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zdf
  * JD-Core Version:    0.7.0.1
  */

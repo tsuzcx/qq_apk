@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.biz.qqstory.widget.StoryCoverView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a095f" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06ea" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="15.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020444" android:indeterminateBehavior="repeat" />
-    </FrameLayout>
-    <TextView android:textColor="#ffa7a7a7" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c9f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="23:46" />
-</LinearLayout>

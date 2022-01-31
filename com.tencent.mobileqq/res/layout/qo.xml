@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <SurfaceView android:id="@id/j8h" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/e2r" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/b6v" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="88.0dip" android:src="@drawable/cym" android:layout_centerInParent="true" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="12.0dip" android:textColor="#ffbcbbbb" android:id="@id/b6w" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:text="@string/nxk" android:layout_below="@id/b6v" android:layout_centerHorizontal="true" />
+        <View android:id="@id/iqn" android:background="#99000000" android:layout_width="fill_parent" android:layout_height="190.0dip" android:layout_alignParentTop="true" />
+        <View android:id="@id/l66" android:background="#99000000" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+        <View android:id="@id/l7t" android:background="#99000000" android:layout_width="wrap_content" android:layout_height="352.0dip" android:layout_below="@id/iqn" android:layout_alignParentLeft="true" />
+        <View android:id="@id/l6p" android:background="#99000000" android:layout_width="wrap_content" android:layout_height="352.0dip" android:layout_below="@id/iqn" android:layout_alignParentRight="true" />
+        <com.tencent.mobileqq.RectView android:id="@id/as_" android:background="#00000000" android:layout_width="262.0dip" android:layout_height="352.0dip" android:layout_below="@id/iqn" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/e5v" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="15.5dip" android:id="@id/cancel" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="17.5dip" android:layout_marginTop="21.5dip" android:text="@string/nxm" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <TextView android:textSize="23.5dip" android:textColor="#ffffffff" android:id="@id/jo4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="13.0dip" android:textColor="#ff00a5e0" android:id="@id/jmx" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:layout_below="@id/jo4" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="23.0dip" android:textColor="#ffffffff" android:id="@id/hw5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="70.0dip" android:layout_below="@id/jmx" android:layout_centerHorizontal="true" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/fc0" android:layout_width="262.0dip" android:layout_height="78.0dip" android:layout_marginLeft="13.0dip" android:layout_marginRight="13.0dip" android:layout_below="@id/hw5" android:layout_centerHorizontal="true">
+            <TextView android:textSize="71.0dip" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/fc1" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <TextView android:textSize="71.0dip" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/fc2" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <TextView android:textSize="71.0dip" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/fc3" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <TextView android:textSize="71.0dip" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/fc4" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/ay2" android:visibility="gone" android:layout_width="262.0dip" android:layout_height="78.0dip" android:layout_below="@id/hw5" android:layout_alignLeft="@id/fc0" android:layout_alignRight="@id/fc0" android:layout_centerHorizontal="true">
+            <ImageView android:layout_gravity="center" android:id="@id/fwl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/aio_face_indicator" android:layout_weight="1.0" />
+            <ImageView android:layout_gravity="center" android:id="@id/fwm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/aio_face_indicator" android:layout_weight="1.0" />
+            <ImageView android:layout_gravity="center" android:id="@id/fwn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/aio_face_indicator" android:layout_weight="1.0" />
+            <ImageView android:layout_gravity="center" android:id="@id/fwo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/aio_face_indicator" android:layout_weight="1.0" />
+        </LinearLayout>
+        <Button android:textSize="15.5dip" android:textColor="#ff00a5e0" android:id="@id/i49" android:visibility="gone" android:layout_width="147.0dip" android:layout_height="36.0dip" android:layout_marginTop="110.0dip" android:text="@string/nxh" android:layout_below="@id/fc0" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</FrameLayout>

@@ -1,17 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.fileviewer.base.BaseFileViewerActivity;
-import com.tencent.mobileqq.filemanager.activity.fileviewer.base.BaseFileViewerController;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
 
 public class fxn
-  implements AdapterView.OnItemClickListener
+  implements Runnable
 {
-  public fxn(BaseFileViewerController paramBaseFileViewerController) {}
+  public fxn(FileManagerProxy paramFileManagerProxy, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    this.a.a.b(paramAdapterView, paramView, paramInt, paramLong);
+    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bDelInFM) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerProxy.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerProxy.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, null);
   }
 }
 

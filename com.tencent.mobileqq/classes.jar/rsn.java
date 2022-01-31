@@ -1,37 +1,75 @@
-import com.tencent.biz.anonymous.AnonymousChatHelper;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.ImageCountChangedListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class rsn
-  implements PhotoListPanel.ImageCountChangedListener
+  extends pen
 {
-  public rsn(BaseChatPie paramBaseChatPie) {}
+  public rsn(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew) {}
   
-  public boolean a(int paramInt)
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    PanelIconLinearLayout localPanelIconLinearLayout;
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) && (!this.a.G))
+    QLog.d("ReadInJoyFastWebBottomSocialViewNew", 1, new Object[] { "handleDoFavoriteResult, isSuccess = ", Boolean.valueOf(paramBoolean), ", rowKey = ", paramString1, ", operationType = ", Integer.valueOf(paramInt), ", cid = ", paramString2 });
+    if ((ReadInJoyFastWebBottomSocialViewNew.a(this.a) == null) || (ReadInJoyFastWebBottomSocialViewNew.a(this.a) == null))
     {
-      boolean bool = AnonymousChatHelper.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      localPanelIconLinearLayout = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout;
-      if (!bool) {
-        break label63;
+      QLog.d("ReadInJoyFastWebBottomSocialViewNew", 1, "handleDoFavoriteResult but articleInfo is null.");
+      return;
+    }
+    QQToast localQQToast;
+    if ((paramBoolean) && (ReadInJoyFastWebBottomSocialViewNew.a(this.a).innerUniqueID.equals(paramString1)))
+    {
+      localQQToast = new QQToast(ReadInJoyFastWebBottomSocialViewNew.a(this.a));
+      localQQToast.d(2000);
+      localQQToast.b(2);
+      localQQToast.a(QQToast.a(2));
+      QLog.d("ReadInJoyFastWebBottomSocialViewNew", 1, "handleDoFavoriteResult,operationType=" + paramInt + ",button status:" + ReadInJoyFastWebBottomSocialViewNew.a(this.a));
+      if (paramInt != 1) {
+        break label294;
+      }
+      ArrayList localArrayList = (ArrayList)ReadInJoyFastWebBottomSocialViewNew.a(this.a).get(ReadInJoyFastWebBottomSocialViewNew.a(this.a).innerUniqueID);
+      paramString1 = localArrayList;
+      if (localArrayList == null) {
+        paramString1 = new ArrayList();
+      }
+      paramString1.add(paramString2);
+      ReadInJoyFastWebBottomSocialViewNew.a(this.a).put(ReadInJoyFastWebBottomSocialViewNew.a(this.a).innerUniqueID, paramString1);
+      if (ReadInJoyFastWebBottomSocialViewNew.a(this.a))
+      {
+        localQQToast.a(ReadInJoyFastWebBottomSocialViewNew.a);
+        localQQToast.a();
       }
     }
-    label63:
-    for (int[] arrayOfInt = AIOPanelUtiles.h;; arrayOfInt = AIOPanelUtiles.g)
+    for (;;)
     {
-      localPanelIconLinearLayout.a(arrayOfInt, paramInt);
-      return false;
+      ReadInJoyFastWebBottomSocialViewNew.a(this.a, false);
+      return;
+      label294:
+      if (paramInt == 2)
+      {
+        ReadInJoyFastWebBottomSocialViewNew.a(this.a).remove(ReadInJoyFastWebBottomSocialViewNew.a(this.a).innerUniqueID);
+        if (!ReadInJoyFastWebBottomSocialViewNew.a(this.a))
+        {
+          localQQToast.a(ReadInJoyFastWebBottomSocialViewNew.b);
+          localQQToast.a();
+        }
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, ArrayList<String> paramArrayList)
+  {
+    QLog.d("ReadInJoyFastWebBottomSocialViewNew", 1, "handleFavoriteStatus, isSuccess = " + paramBoolean1 + ", rowKey =  " + paramString + ", isFavorite = " + paramBoolean2 + ", cidList = " + paramArrayList);
+    if ((paramBoolean1) && (ReadInJoyFastWebBottomSocialViewNew.a(this.a).innerUniqueID.equals(paramString))) {
+      ReadInJoyFastWebBottomSocialViewNew.a(this.a).put(paramString, paramArrayList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rsn
  * JD-Core Version:    0.7.0.1
  */

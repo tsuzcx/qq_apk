@@ -1,35 +1,17 @@
-import android.view.OrientationEventListener;
-import com.tencent.biz.pubaccount.readinjoy.video.OrientationDetector;
-
-public class lzs
-  implements Runnable
+class lzs
+  implements bipw
 {
-  public lzs(OrientationDetector paramOrientationDetector, boolean paramBoolean) {}
+  lzs(lzr paramlzr) {}
   
-  public void run()
+  public void a(bipv parambipv)
   {
-    for (;;)
-    {
-      synchronized (OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector))
-      {
-        if (OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector) == null) {
-          return;
-        }
-        if (this.jdField_a_of_type_Boolean)
-        {
-          if (OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector).canDetectOrientation()) {
-            OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector).enable();
-          }
-          return;
-        }
-      }
-      OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector).disable();
-    }
+    parambipv.b();
+    parambipv.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lzs
  * JD-Core Version:    0.7.0.1
  */

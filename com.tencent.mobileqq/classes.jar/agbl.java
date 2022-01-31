@@ -1,23 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ocr.OcrCamera;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.HashMap;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class agbl
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public agbl(OcrCamera paramOcrCamera, long paramLong) {}
+  public agbl(SixCombolEffectView paramSixCombolEffectView, agbz paramagbz) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("costTime", String.valueOf(this.jdField_a_of_type_Long));
-    StatisticCollector.a(BaseApplicationImpl.getContext()).a("", "ocr_select_pic", true, 0L, 0L, localHashMap, "", false);
+    this.jdField_a_of_type_Agbz.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agbl
  * JD-Core Version:    0.7.0.1
  */

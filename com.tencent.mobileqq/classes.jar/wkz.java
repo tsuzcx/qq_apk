@@ -1,22 +1,30 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
 class wkz
-  implements Runnable
+  extends vii
 {
-  wkz(wky paramwky, Bitmap paramBitmap) {}
+  wkz(wkw paramwkw) {}
   
-  public void run()
+  public void a()
   {
-    BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_Wky.a.a.findViewById(2131362840).setBackgroundDrawable(localBitmapDrawable);
+    super.a();
+    wkw.a(this.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    wxj.a("home_page", "suc_share", 2, paramInt, new String[] { wxj.b(wkw.a(this.a).a) + "", wxj.a(wkw.a(this.a).a) + "", wkw.a(this.a).a.feedId });
+  }
+  
+  public void b(int paramInt)
+  {
+    wxj.a("home_page", "share_chanel", 2, paramInt, new String[] { wxj.b(wkw.a(this.a).a) + "", wxj.a(wkw.a(this.a).a) + "", wkw.a(this.a).a.feedId });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wkz
  * JD-Core Version:    0.7.0.1
  */

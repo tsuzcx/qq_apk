@@ -1,20 +1,24 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.troop.utils.TroopNativeUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
 
-public final class ajyq
-  implements DownloadParams.DecodeHandler
+public class ajyq
+  implements View.OnClickListener
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public ajyq(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  
+  public void onClick(View paramView)
   {
-    paramDownloadParams = paramDownloadParams.tag;
-    if ((TroopNativeUtils.a().a) && ((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1))
-    {
-      int i = ((int[])(int[])paramDownloadParams)[0];
-      TroopNativeUtils.a().a(paramBitmap, i);
+    if (this.a.c) {
+      azqs.b(this.a.app, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
     }
-    return paramBitmap;
+    for (;;)
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(2130771988, 2130771989);
+      return;
+      azqs.b(this.a.app, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
+    }
   }
 }
 

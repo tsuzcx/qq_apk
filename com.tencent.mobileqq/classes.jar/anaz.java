@@ -1,14 +1,31 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
-
-public class anaz
-  implements FileFilter
+public abstract class anaz
+  extends anbn
 {
-  public boolean accept(File paramFile)
+  private int a = 1;
+  private int b = 1;
+  
+  public anaz(int paramInt1, int paramInt2)
   {
-    return Pattern.matches("cpu[0-9]+", paramFile.getName());
+    this(paramInt1, paramInt2, 5);
   }
+  
+  public anaz(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public static boolean a(anaz paramanaz)
+  {
+    return (paramanaz != null) && (paramanaz.a());
+  }
+  
+  public int a()
+  {
+    return this.b;
+  }
+  
+  public abstract boolean a();
 }
 
 

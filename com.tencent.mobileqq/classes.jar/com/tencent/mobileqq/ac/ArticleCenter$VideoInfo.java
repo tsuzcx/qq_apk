@@ -8,13 +8,14 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ArticleCenter$VideoInfo
-  extends MessageMicro
+  extends MessageMicro<VideoInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField definition = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field encode_type = PBField.initUInt32(0);
   public final PBUInt32Field file_size = PBField.initUInt32(0);
   public final PBUInt32Field height = PBField.initUInt32(0);
+  public final PBBytesField json_video_detail = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField rate = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field rate_type = PBField.initUInt32(0);
   public final PBBytesField url = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -28,12 +29,13 @@ public final class ArticleCenter$VideoInfo
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 48, 56, 64, 74, 80 }, new String[] { "vid", "url", "video_type", "rate", "rate_type", "encode_type", "width", "height", "definition", "file_size" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro4, Integer.valueOf(0) }, VideoInfo.class);
+    ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 48, 56, 64, 74, 80, 90 }, new String[] { "vid", "url", "video_type", "rate", "rate_type", "encode_type", "width", "height", "definition", "file_size", "json_video_detail" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro4, Integer.valueOf(0), localByteStringMicro5 }, VideoInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ac.ArticleCenter.VideoInfo
  * JD-Core Version:    0.7.0.1
  */

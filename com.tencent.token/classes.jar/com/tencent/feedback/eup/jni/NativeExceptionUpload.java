@@ -149,7 +149,7 @@ public class NativeExceptionUpload
     //   73	83	93	finally
   }
   
-  public static boolean loadRQDNativeLib(List<File> paramList)
+  public static boolean loadRQDNativeLib(List paramList)
   {
     if (paramList != null) {}
     for (;;)

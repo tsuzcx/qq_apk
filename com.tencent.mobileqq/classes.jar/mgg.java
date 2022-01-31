@@ -1,34 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.OnPlayStateListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class mgg
-  implements VideoPlayManager.OnPlayStateListener
+final class mgg
 {
-  public mgg(VideoVolumeControl paramVideoVolumeControl) {}
+  public int a;
+  long jdField_a_of_type_Long;
+  View jdField_a_of_type_AndroidViewView = null;
+  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
+  TextView jdField_a_of_type_AndroidWidgetTextView = null;
+  boolean jdField_a_of_type_Boolean = false;
+  ImageView jdField_b_of_type_AndroidWidgetImageView = null;
+  TextView jdField_b_of_type_AndroidWidgetTextView = null;
+  boolean jdField_b_of_type_Boolean = true;
+  ImageView jdField_c_of_type_AndroidWidgetImageView = null;
+  TextView jdField_c_of_type_AndroidWidgetTextView = null;
+  public boolean c;
   
-  public void a(VideoPlayManager.VideoPlayParam paramVideoPlayParam, VideoPlayerWrapper paramVideoPlayerWrapper, int paramInt1, int paramInt2, Object paramObject)
+  private mgg(mgb parammgb)
   {
-    if (paramInt2 == 0) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramInt2 == 1) || (paramInt2 == 2));
-      if (paramInt2 == 3)
-      {
-        this.a.a(true, "PLAY_STATE_PLAYING");
-        this.a.a(this.a.b(), "video playing", 1);
-        return;
-      }
-    } while ((paramInt2 == 4) || (paramInt2 == 5) || (paramInt2 == 6) || (paramInt2 != 7));
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_c_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mgg
  * JD-Core Version:    0.7.0.1
  */

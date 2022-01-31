@@ -1,48 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.PinnedFooterExpandableListView;
-import com.tencent.widget.PinnedFooterExpandableListView.FooterExpandListViewListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
 
 public class xzb
-  implements PinnedFooterExpandableListView.FooterExpandListViewListener
+  implements DialogInterface.OnCancelListener
 {
-  public xzb(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  public xzb(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void a()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.a = true;
-    FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
-  }
-  
-  public void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
-  {
-    if (!this.a.a)
-    {
-      if (paramInt - 1 >= 0) {
-        paramPinnedFooterExpandableListView.b(paramInt - 1);
-      }
-      for (;;)
-      {
-        this.a.a = true;
-        FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendTeamListInnerFrameNew", 2, "header group unusal: " + paramInt);
-        }
-      }
-    }
-    if (paramPinnedFooterExpandableListView.c(paramInt))
-    {
-      paramPinnedFooterExpandableListView.b(paramInt);
+    if (this.a.f) {
       return;
     }
-    paramPinnedFooterExpandableListView.a(paramInt);
+    this.a.h = -1;
+    this.a.f = true;
+    QRDisplayActivity.a(this.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xzb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,19 @@
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.biz.qqstory.troop.activity.TroopStoryMainActivity;
-
-public class onb
-  implements Runnable
+class onb
+  extends oob
 {
-  public onb(TroopStoryMainActivity paramTroopStoryMainActivity) {}
-  
-  public void run()
+  onb(omz paramomz)
   {
-    if ((this.a.a != null) && (!this.a.isFinishing())) {
-      this.a.a.b();
-    }
+    super(paramomz, null);
+  }
+  
+  void a(ooe paramooe)
+  {
+    paramooe.onCommentStateError(1001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     onb
  * JD-Core Version:    0.7.0.1
  */

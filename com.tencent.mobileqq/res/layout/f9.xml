@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:roundCorner="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:layout_gravity="center_horizontal" android:id="@id/jn" android:layout_width="251.0dip" android:layout_height="115.0dip" android:layout_marginLeft="@dimen/an" android:layout_marginTop="11.5dip" android:layout_marginRight="@dimen/an" android:layout_marginBottom="6.0dip">
+        <View android:id="@id/jm" android:background="@color/ab3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="0.0px" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:layout_marginRight="7.0dip" android:layout_weight="1.0">
+                <View android:background="#ffffffff" android:layout_width="0.0px" android:layout_height="1.0px" android:layout_marginRight="3.0dip" android:layout_weight="1.0" />
+                <View android:background="#ffffffff" android:layout_width="3.5dip" android:layout_height="3.5dip" android:rotation="45.0" />
+            </LinearLayout>
+            <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/kg1" />
+            <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="0.0px" android:layout_height="fill_parent" android:layout_marginLeft="7.0dip" android:layout_marginRight="20.0dip" android:layout_weight="1.0">
+                <View android:background="#ffffffff" android:layout_width="3.5dip" android:layout_height="3.5dip" android:layout_marginRight="3.0dip" android:rotation="45.0" />
+                <View android:background="#ffffffff" android:layout_width="0.0px" android:layout_height="1.0px" android:layout_weight="1.0" />
+            </LinearLayout>
+        </LinearLayout>
+        <com.tencent.image.URLImageView android:id="@id/jp" android:layout_width="90.0dip" android:layout_height="90.0dip" android:layout_marginLeft="5.0dip" android:layout_marginTop="20.0dip" />
+        <TextView android:textSize="21.0dip" android:textColor="#ffffffff" android:id="@id/jq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="102.5dip" android:layout_marginTop="39.0dip" android:text="X月X日" />
+        <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/jo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="102.5dip" android:layout_marginTop="67.0dip" android:layout_marginRight="10.0dip" android:text="@string/kfu" />
+    </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
+</LinearLayout>

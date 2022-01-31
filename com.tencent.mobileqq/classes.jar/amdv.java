@@ -1,28 +1,39 @@
-import android.os.Handler;
-import com.tencent.widget.TCWNumberPicker;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.troop.org.pb.oidb_0x496.RspBody;
+import com.tencent.qphone.base.util.QLog;
 
-public class amdv
-  implements Runnable
+class amdv
+  extends nac
 {
-  public amdv(TCWNumberPicker paramTCWNumberPicker) {}
+  amdv(amdu paramamdu) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (TCWNumberPicker.a(this.a))
+    if (paramInt == 0)
     {
-      TCWNumberPicker.a(this.a, TCWNumberPicker.a(this.a) + 1);
-      TCWNumberPicker.a(this.a).postDelayed(this, TCWNumberPicker.a(this.a));
+      paramBundle = new oidb_0x496.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        amdu.a(this.a, paramBundle);
+        amdu.b(this.a, paramBundle);
+        amdu.c(this.a, paramBundle);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.i("TroopHandler", 2, "getTroopConfig, e=" + paramArrayOfByte.toString());
+        return;
+      }
     }
-    while (!TCWNumberPicker.b(this.a)) {
-      return;
-    }
-    TCWNumberPicker.a(this.a, TCWNumberPicker.a(this.a) - 1);
-    TCWNumberPicker.a(this.a).postDelayed(this, TCWNumberPicker.a(this.a));
+    QLog.i("TroopHandler", 1, "getTroopConfig, errorCode=" + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amdv
  * JD-Core Version:    0.7.0.1
  */

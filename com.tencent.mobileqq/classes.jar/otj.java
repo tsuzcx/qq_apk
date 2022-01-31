@@ -1,57 +1,60 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class otj
-  implements WXShareHelper.WXShareListener
+  implements AladdinConfigHandler
 {
-  public otj(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public void a(BaseResp paramBaseResp)
+  private static long a(String paramString, long paramLong)
   {
-    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    String str1;
-    label53:
-    String str3;
-    int i;
-    if (this.a.jdField_c_of_type_Int == 2)
+    try
     {
-      if (this.a.h != 2) {
-        break label151;
-      }
-      str1 = "qr_wechat";
-      str3 = this.a.jdField_c_of_type_JavaLangString;
-      i = this.a.a;
-      if (paramBaseResp.errCode != 0) {
-        break label157;
-      }
+      long l = Long.valueOf(paramString).longValue();
+      return l;
     }
-    label151:
-    label157:
-    for (String str2 = "0";; str2 = "1")
+    catch (NumberFormatException paramString)
     {
-      TroopReportor.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, String.valueOf(i), str2 });
-      switch (paramBaseResp.errCode)
-      {
-      case -2: 
-      case -1: 
-      default: 
-        QRUtils.a(1, 2131435303);
-        return;
-        str1 = "qr_circle";
-        break label53;
+      QLog.d("FeedsPreloadConfigHandler", 2, "parseStringToLong, e ", paramString);
+    }
+    return paramLong;
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    paramString = osq.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("FeedsPreloadConfigHandler", 1, new Object[] { "key = ", str1, ", value = ", str2 });
+      if (TextUtils.equals("switch", str1)) {
+        bkbq.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(TextUtils.equals("1", str2)));
+      } else if (TextUtils.equals("preload_interval", str1)) {
+        bkbq.a("sp_key_readinjoy_feeds_preload_interval", Long.valueOf(a(str2, 30L)));
+      } else if (TextUtils.equals("last_enter_kandian", str1)) {
+        bkbq.a("sp_key_readinjoy_feeds_preload_last_enter_kd_day", Long.valueOf(a(str2, 90L)));
+      } else if (TextUtils.equals("preload_time_limit", str1)) {
+        bkbq.a("sp_key_readinjoy_feeds_preload_time_limit", Long.valueOf(a(str2, 10L)));
+      } else if (TextUtils.equals("loading_time", str1)) {
+        bkbq.a("sp_key_readinjoy_feeds_preload_loading_time", Long.valueOf(a(str2, 50L)));
       }
     }
-    QRUtils.a(2, 2131435302);
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    QLog.d("FeedsPreloadConfigHandler", 1, new Object[] { "onWipeConfig, id = ", Integer.valueOf(paramInt) });
+    bkbq.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     otj
  * JD-Core Version:    0.7.0.1
  */

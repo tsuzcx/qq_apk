@@ -1,33 +1,62 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.UploadTask;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.ShortVideoExceptionReporter;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqTranslateToken;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspTranslateToken;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
 public class vgo
-  implements EncodeVideoTask.ResultListener
+  extends urt
 {
-  public vgo(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
+  public static final String a = uqn.a("StorySvc.translate_share_parameters_to_token");
+  public String b;
+  public int c;
+  public String c;
   
-  public void a(int paramInt)
+  public String a()
   {
-    ShortVideoRealItemBuilder.a(this.a);
+    return a;
   }
   
-  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  public uro a(byte[] paramArrayOfByte)
   {
-    if (ShortVideoRealItemBuilder.a(this.a) != null)
+    qqstory_service.RspTranslateToken localRspTranslateToken = new qqstory_service.RspTranslateToken();
+    try
     {
-      ShortVideoRealItemBuilder.a(this.a).md5 = HexUtil.bytes2HexStr(paramArrayOfByte1);
-      new ShortVideoRealItemBuilder.UploadTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, ShortVideoRealItemBuilder.a(this.a), paramString1, this.a).run();
-      return;
+      localRspTranslateToken.mergeFrom(paramArrayOfByte);
+      return new vgp(localRspTranslateToken);
     }
-    ShortVideoExceptionReporter.a(new RuntimeException("onMediaMessageSend failed"));
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("Q.qqstory.share.trans.req", 2, "decode failed", paramArrayOfByte);
+        }
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqTranslateToken localReqTranslateToken = new qqstory_service.ReqTranslateToken();
+    localReqTranslateToken.src_buffer.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqTranslateToken.type.set(this.jdField_c_of_type_Int);
+    if ((this.jdField_c_of_type_Int == 1) && (this.jdField_c_of_type_JavaLangString != null)) {
+      localReqTranslateToken.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    }
+    return localReqTranslateToken.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "StoryShareTranslateTokenRequest{feedId='" + this.jdField_c_of_type_JavaLangString + '\'' + ", srcBuffer='" + this.b + '\'' + ", type=" + this.jdField_c_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vgo
  * JD-Core Version:    0.7.0.1
  */

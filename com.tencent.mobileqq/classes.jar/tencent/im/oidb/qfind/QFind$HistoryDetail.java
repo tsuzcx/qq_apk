@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class QFind$HistoryDetail
-  extends MessageMicro
+  extends MessageMicro<HistoryDetail>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "date", "run", "walk", "duration" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, HistoryDetail.class);
   public final PBUInt32Field date = PBField.initUInt32(0);
@@ -16,7 +16,7 @@ public final class QFind$HistoryDetail
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.qfind.QFind.HistoryDetail
  * JD-Core Version:    0.7.0.1
  */

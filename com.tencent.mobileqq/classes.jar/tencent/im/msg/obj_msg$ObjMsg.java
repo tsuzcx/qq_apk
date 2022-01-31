@@ -10,14 +10,14 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class obj_msg$ObjMsg
-  extends MessageMicro
+  extends MessageMicro<ObjMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_title = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_title_ext = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField msg_content_info = PBField.initRepeatMessage(obj_msg.MsgContentInfo.class);
-  public final PBRepeatField rpt_bytes_abstact = PBField.initRepeat(PBBytesField.__repeatHelper__);
-  public final PBRepeatMessageField rpt_msg_pic = PBField.initRepeatMessage(obj_msg.MsgPic.class);
+  public final PBRepeatMessageField<obj_msg.MsgContentInfo> msg_content_info = PBField.initRepeatMessage(obj_msg.MsgContentInfo.class);
+  public final PBRepeatField<ByteStringMicro> rpt_bytes_abstact = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatMessageField<obj_msg.MsgPic> rpt_msg_pic = PBField.initRepeatMessage(obj_msg.MsgPic.class);
   public final PBUInt32Field uint32_msg_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_report_id_show = PBField.initUInt32(0);
   

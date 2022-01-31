@@ -1,40 +1,68 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.ArkHighLightClickCallback;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.statistics.ArkAppReportController;
-import com.tencent.mobileqq.text.QQText.ArkHighlightSpan;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarSaveFileJob.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
 
 public class viu
-  implements DialogInterface.OnClickListener
+  extends vis
 {
-  public viu(TextItemBuilder paramTextItemBuilder, QQCustomDialog paramQQCustomDialog, View paramView, TextItemBuilder.ArkHighLightClickCallback paramArkHighLightClickCallback, QQAppInterface paramQQAppInterface) {}
+  private final String c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private boolean a(wdl paramwdl)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
+    boolean bool = false;
     try
     {
-      QQText.ArkHighlightSpan.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$ArkHighLightClickCallback);
-      ArkAppReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "__global__", "ArkAlertDialogConfirm", 0L, 0L, 0L, 0L, 0L, "", "");
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      ArkRecommendController.a(this.jdField_a_of_type_AndroidViewView.getContext(), "open", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      return;
+      Bitmap localBitmap = Bitmap.createBitmap(paramwdl.a(), paramwdl.b(), Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(localBitmap);
+      localCanvas.drawColor(-1);
+      localCanvas.drawBitmap(paramwdl.a(), 0.0F, 0.0F, null);
+      bdhj.a(bdhj.a(localBitmap, 100), new File(this.c));
+      bool = true;
     }
-    catch (Exception paramDialogInterface)
+    catch (IOException paramwdl)
     {
-      ArkAppCenter.b("ArkDialog", String.format("PositiveButton click failed, err=%s", new Object[] { paramDialogInterface.getMessage() }));
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramwdl, new Object[0]);
+      return false;
     }
+    catch (OutOfMemoryError paramwdl)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramwdl, new Object[0]);
+    }
+    return bool;
+    return false;
+  }
+  
+  protected void a(Error paramError)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramError, new Object[0]);
+    }
+    b(false);
+  }
+  
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarSaveFileJob_sgi"))) {
+      this.a = ((String)a("ShareGroupAvatarSaveFileJob_sgi"));
+    }
+  }
+  
+  protected void a(wdl paramwdl)
+  {
+    ThreadManager.post(new ShareGroupAvatarSaveFileJob.1(this, paramwdl), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     viu
  * JD-Core Version:    0.7.0.1
  */

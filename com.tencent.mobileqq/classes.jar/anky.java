@@ -1,42 +1,53 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
-import dov.com.qq.im.capture.view.QIMCommonLoadingProgress;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.ark.ark;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class anky
-  implements PtvTemplateManager.IPtvTemplateDownloadListener
+  implements ankx
 {
-  public anky(QIMPtvTemplateAdapter paramQIMPtvTemplateAdapter) {}
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public boolean a(String paramString1, String paramString2, String paramString3)
   {
-    ThreadManager.getUIHandler().post(new anlb(this, paramPtvTemplateInfo, paramInt));
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
-  {
-    if (paramPtvTemplateInfo.usable) {
-      QIMCommonLoadingProgress.a(paramPtvTemplateInfo).b();
-    }
-    for (;;)
+    JSONObject localJSONObject = null;
+    try
     {
-      ThreadManager.getUIHandler().post(new ankz(this, paramPtvTemplateInfo, paramBoolean));
-      if (!paramBoolean)
-      {
-        FlowCameraMqqAction.a("", "0X80075BB", "", "", "", "");
-        ThreadManager.getUIHandler().post(new anla(this));
+      paramString3 = new JSONObject(paramString3).optString("gc");
+      if (TextUtils.isEmpty(paramString3)) {
+        return false;
       }
-      return;
-      QIMCommonLoadingProgress.a(paramPtvTemplateInfo).c();
     }
+    catch (Exception paramString3)
+    {
+      for (;;)
+      {
+        QLog.e("ark.ArkAppNotifyCenter", 1, "notify json error!", paramString3);
+        paramString3 = localJSONObject;
+      }
+      if (paramString2.equals("GetIsTroopOwner")) {
+        try
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put("isOwner", bcpx.a(ArkAppNotifyCenter.getAppInterface(), paramString3, ArkAppNotifyCenter.getAppInterface().c()));
+          ark.arkNotify(paramString1, paramString2, localJSONObject.toString(), "json");
+          return true;
+        }
+        catch (Throwable paramString1)
+        {
+          for (;;)
+          {
+            QLog.e("ark.ArkAppNotifyCenter", 1, "ark.notify error!", paramString1);
+          }
+        }
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anky
  * JD-Core Version:    0.7.0.1
  */

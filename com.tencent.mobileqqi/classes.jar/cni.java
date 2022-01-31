@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.activity.DialogActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 
 public class cni
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public cni(DialogActivity paramDialogActivity, QQCustomDialog paramQQCustomDialog) {}
+  public cni(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    DialogActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDialogActivity, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog);
+    if ((this.a.a.a.a.equals(this.a.b.a())) && (FriendProfileCardActivity.a(this.a) != null)) {
+      FriendProfileCardActivity.a(this.a).sendEmptyMessage(2);
+    }
   }
 }
 

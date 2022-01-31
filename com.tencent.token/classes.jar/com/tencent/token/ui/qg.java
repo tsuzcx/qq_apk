@@ -1,18 +1,18 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class qg
+class qg
   implements View.OnClickListener
 {
-  qg(qf paramqf) {}
+  qg(NetActiveSetDirBySeqActivity paramNetActiveSetDirBySeqActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = this.a;
-    paramView.c += 1;
-    this.a.a();
+    paramView = new Intent(this.a, SelectCountryCodeActivity.class);
+    this.a.startActivityForResult(paramView, 0);
   }
 }
 

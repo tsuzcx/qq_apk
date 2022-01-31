@@ -1,69 +1,63 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.AutoCompleteTextView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloFavActionData;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Locale;
 
-class acbr
-  implements Runnable
+public class acbr
+  implements bhuk
 {
-  acbr(acbg paramacbg, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public acbr(AddAccountActivity paramAddAccountActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    JSONObject localJSONObject1;
-    JSONArray localJSONArray;
-    int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (AddAccountActivity.a(this.a)) {
+      return;
+    }
+    if (paramInt == 0)
     {
-      localObject = ((ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154)).d();
-      localJSONObject1 = new JSONObject();
-      localJSONArray = new JSONArray();
-      if (localObject != null) {
-        i = 0;
+      azqs.a(this.a.app, "dc00898", "", "", "0X8007353", "0X8007353", 0, 0, "", "", "", "");
+      paramView = null;
+      if (this.a.a != null) {
+        paramView = this.a.a.getText().toString();
+      }
+      if (TextUtils.isEmpty(paramView)) {
+        break label292;
       }
     }
-    try
+    label292:
+    for (paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://ti.qq.com/safe/forgetpw?source_id=2756", paramView });; paramView = "https://ti.qq.com/safe/forgetpw?source_id=2756")
     {
-      while (i < ((List)localObject).size())
-      {
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("seq", ((ApolloFavActionData)((List)localObject).get(i)).favId);
-        localJSONObject2.put("actionId", ((ApolloFavActionData)((List)localObject).get(i)).acitonId);
-        localJSONObject2.put("actionText", ((ApolloFavActionData)((List)localObject).get(i)).text);
-        localJSONObject2.put("textType", ((ApolloFavActionData)((List)localObject).get(i)).textType);
-        localJSONObject2.put("audioId", ((ApolloFavActionData)((List)localObject).get(i)).audioId);
-        if (!Float.isNaN(((ApolloFavActionData)((List)localObject).get(i)).audioStartTime)) {
-          localJSONObject2.put("audioStartTime", ((ApolloFavActionData)((List)localObject).get(i)).audioStartTime);
-        }
-        localJSONArray.put(localJSONObject2);
-        i += 1;
-      }
-      localJSONObject1.put("favActionSet", localJSONArray);
-    }
-    catch (JSONException localJSONException)
-    {
+      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+      localIntent.putExtra("uin", this.a.app.getCurrentAccountUin());
+      localIntent.putExtra("reqType", 3);
+      localIntent.putExtra("url", paramView);
+      this.a.startActivity(localIntent);
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.emoji.web.MessengerService", 2, "getLocalFavAction json error " + localJSONException.toString());
+        AddAccountActivity.c(this.a, true);
+        AddAccountActivity.a(this.a).dismiss();
+        return;
+        if (paramInt == 1)
+        {
+          azqs.a(this.a.app, "dc00898", "", "", "0X8007354", "0X8007354", 0, 0, "", "", "", "");
+          azqs.b(this.a.app, "CliOper", "", "", "Mobile_signup", "Clk_ems_login", 0, 0, "", "", "", "");
+          boolean bool = this.a.getIntent().getBooleanExtra("login_from_account_change", false);
+          paramView = new Intent(this.a, LoginPhoneNumActivity.class);
+          paramView.putExtra("login_from_account_change", bool);
+          this.a.startActivity(paramView);
         }
       }
     }
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putString("getFavResult", localJSONObject1.toString());
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acbr
  * JD-Core Version:    0.7.0.1
  */

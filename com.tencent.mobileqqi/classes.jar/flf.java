@@ -1,28 +1,19 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.StartAppCheckHandler;
-import java.util.Queue;
+import com.tencent.mobileqq.app.LBSObserver;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
 
 public class flf
-  extends Handler
+  extends LBSObserver
 {
-  public flf(StartAppCheckHandler paramStartAppCheckHandler, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public flf(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, String[] paramArrayOfString)
   {
-    switch (paramMessage.what)
+    if (paramBoolean)
     {
-    default: 
+      this.a.c = paramArrayOfString;
       return;
     }
-    paramMessage = (fli)paramMessage.obj;
-    this.a.a.remove(paramMessage);
-    paramMessage.jdField_a_of_type_AndroidContentContext.startActivity(paramMessage.jdField_a_of_type_AndroidContentIntent);
+    this.a.c = new String[] { "-1", "-1", "-1", "-1" };
   }
 }
 

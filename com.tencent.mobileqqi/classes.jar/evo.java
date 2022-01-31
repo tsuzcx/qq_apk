@@ -1,57 +1,41 @@
-import android.app.Dialog;
-import android.os.Handler;
-import android.os.Message;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import android.widget.HorizontalScrollView;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.adapter.ContactsSearchResultAdapter;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class evo
-  extends Handler
+  implements View.OnTouchListener
 {
-  public evo(SelectMemberActivity paramSelectMemberActivity) {}
+  public evo(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
+    if (paramMotionEvent.getAction() == 0)
     {
+      paramView = new int[2];
+      VoipDialInterfaceActivity.g(this.a).getLocationInWindow(paramView);
+      paramMotionEvent = new int[2];
+      VoipDialInterfaceActivity.g(this.a).getLocationOnScreen(paramMotionEvent);
+      paramMotionEvent = new int[2];
+      VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
+      VoipDialInterfaceActivity.j(this.a).offsetTopAndBottom(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.g(this.a).getHeight() / 2 - VoipDialInterfaceActivity.j(this.a).getHeight() / 2);
+      VoipDialInterfaceActivity.j(this.a).offsetLeftAndRight(paramView[0] + VoipDialInterfaceActivity.g(this.a).getWidth() / 2 - VoipDialInterfaceActivity.j(this.a).getWidth() / 2);
+      VoipDialInterfaceActivity.j(this.a).setVisibility(0);
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          this.a.jdField_a_of_type_AndroidWidgetHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
-          return;
-        } while ((this.a.jdField_a_of_type_AndroidAppDialog == null) || (!this.a.jdField_a_of_type_AndroidAppDialog.isShowing()));
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.getString(2131562247));
-        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837958);
-        postDelayed(new evp(this), 1500L);
-        return;
-      } while ((this.a.jdField_a_of_type_AndroidAppDialog == null) || (!this.a.jdField_a_of_type_AndroidAppDialog.isShowing()));
-      String str = (String)paramMessage.obj;
-      paramMessage = str;
-      if (str == null) {
-        paramMessage = this.a.getString(2131562090);
-      }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramMessage);
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837947);
-      postDelayed(new evq(this), 1500L);
-      return;
-      paramMessage = (List)paramMessage.obj;
-    } while ((paramMessage == null) || (SelectMemberActivity.a(this.a) == null));
-    SelectMemberActivity.a(this.a).a(paramMessage);
+    while (paramMotionEvent.getAction() != 1) {
+      return false;
+    }
+    paramView = new int[2];
+    VoipDialInterfaceActivity.g(this.a).getLocationInWindow(paramView);
+    paramMotionEvent = new int[2];
+    VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
+    VoipDialInterfaceActivity.j(this.a).offsetTopAndBottom(-(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.g(this.a).getHeight() / 2 - VoipDialInterfaceActivity.j(this.a).getHeight() / 2));
+    VoipDialInterfaceActivity.j(this.a).offsetLeftAndRight(-(paramView[0] + VoipDialInterfaceActivity.g(this.a).getWidth() / 2 - VoipDialInterfaceActivity.j(this.a).getWidth() / 2));
+    VoipDialInterfaceActivity.j(this.a).setVisibility(4);
+    VoipDialInterfaceActivity.c(this.a).invalidate();
+    return false;
   }
 }
 

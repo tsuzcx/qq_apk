@@ -63,7 +63,7 @@ public class NetworkManager$NetworkChangeReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     if ("android.net.conn.CONNECTIVITY_CHANGE".equals(paramIntent.getAction())) {
-      GlobalHandlerThread.a(paramContext).a().post(new NetworkManager.NetworkChangeReceiver.1(this));
+      GlobalHandlerThread.getInstance(paramContext).getHandler().post(new NetworkManager.NetworkChangeReceiver.1(this));
     }
   }
   
@@ -74,7 +74,7 @@ public class NetworkManager$NetworkChangeReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.NetworkManager.NetworkChangeReceiver
  * JD-Core Version:    0.7.0.1
  */

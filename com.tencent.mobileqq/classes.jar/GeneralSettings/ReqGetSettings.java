@@ -8,15 +8,15 @@ import java.util.ArrayList;
 public final class ReqGetSettings
   extends JceStruct
 {
-  static ArrayList cache_Paths;
+  static ArrayList<String> cache_Paths;
   public long Count;
   public long Offset;
-  public ArrayList Paths;
+  public ArrayList<String> Paths;
   public int Revision;
   
   public ReqGetSettings() {}
   
-  public ReqGetSettings(int paramInt, ArrayList paramArrayList, long paramLong1, long paramLong2)
+  public ReqGetSettings(int paramInt, ArrayList<String> paramArrayList, long paramLong1, long paramLong2)
   {
     this.Revision = paramInt;
     this.Paths = paramArrayList;

@@ -1,26 +1,31 @@
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
 public class yvw
-  implements Comparator
+  implements DialogInterface.OnClickListener
 {
-  public yvw(ApolloDaoManager paramApolloDaoManager) {}
+  public yvw(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramApolloActionData2.version == paramApolloActionData1.version) {
-      return 0;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    if (paramApolloActionData2.version > paramApolloActionData1.version) {
-      return 1;
+    if (paramInt == 1)
+    {
+      bdun.a(this.a.a, "mvip.n.a.qlw_forsvip", "CJCLUBT", 3, false, true);
+      azqs.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_sure_click", 0, 0, "", "", "", "");
     }
-    return -1;
+    while (paramInt != 0) {
+      return;
+    }
+    azqs.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_cancel_click", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yvw
  * JD-Core Version:    0.7.0.1
  */

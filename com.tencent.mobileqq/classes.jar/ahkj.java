@@ -1,19 +1,15 @@
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.fragment.QzoneEffectsCameraCaptureFragment;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ahkj
-  implements Runnable
+public abstract interface ahkj
 {
-  public ahkj(QzoneEffectsCameraCaptureFragment paramQzoneEffectsCameraCaptureFragment, Intent paramIntent) {}
+  public abstract Activity a();
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentQzoneEffectsCameraCaptureFragment.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 1015);
-  }
+  public abstract QQAppInterface a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahkj
  * JD-Core Version:    0.7.0.1
  */

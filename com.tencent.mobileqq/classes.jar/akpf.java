@@ -1,30 +1,46 @@
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import org.json.JSONObject;
 
-public class akpf
-  implements Runnable
+public final class akpf
+  implements abwu
 {
-  public akpf(SwiftBrowserOfflineHandler paramSwiftBrowserOfflineHandler, String paramString) {}
+  public akpf(View paramView, abwx paramabwx, long paramLong, int paramInt) {}
   
-  public void run()
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.b();
-    long l = System.currentTimeMillis();
-    if (SwiftBrowserOfflineHandler.c.get() == 3) {}
-    for (boolean bool = HtmlOffline.a(BaseApplicationImpl.getApplication().getApplicationContext(), this.jdField_a_of_type_JavaLangString, new akpg(this, l));; bool = false)
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Abwx, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location failed," + paramString);
+  }
+  
+  public void onPermission(int paramInt)
+  {
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Abwx, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location permision code");
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    double d1 = paramJSONObject.optDouble("altitude", 0.0D);
+    double d2 = paramJSONObject.optDouble("latitude", 0.0D);
+    double d3 = paramJSONObject.optDouble("longitude", 0.0D);
+    double d4 = paramJSONObject.optDouble("horizontalAccuracy", 0.0D);
+    paramJSONObject.optDouble("verticalAccuracy", 0.0D);
+    paramJSONObject.optDouble("accuracy", 0.0D);
+    double d5 = paramJSONObject.optDouble("speed", 0.0D);
+    if (this.jdField_a_of_type_Int == 1)
     {
-      if (!bool) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.a();
-      }
+      ApolloRender.getLocationCity(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Abwx, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D);
       return;
     }
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Abwx, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D, "", 0, "location success");
   }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akpf
  * JD-Core Version:    0.7.0.1
  */

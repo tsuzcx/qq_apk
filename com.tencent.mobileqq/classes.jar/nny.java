@@ -1,32 +1,43 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.boundaries.StoryApi;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import java.util.ArrayList;
 
 public class nny
-  extends ChildViewClickListener
+  implements ViewPager.OnPageChangeListener
 {
-  public nny(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
+  public nny(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if ((paramObject instanceof QQUserUIItem))
+    ReadInJoyNativeAdFragment.a(this.a, Math.max(ReadInJoyNativeAdFragment.a(this.a), paramInt + 1));
+    ((noe)ReadInJoyNativeAdFragment.a(this.a).get(paramInt)).a();
+    if (paramInt + 1 < ReadInJoyNativeAdFragment.a(this.a).size()) {
+      ((noe)ReadInJoyNativeAdFragment.a(this.a).get(paramInt + 1)).b();
+    }
+    if ((ReadInJoyNativeAdFragment.a(this.a) != null) && (ReadInJoyNativeAdFragment.a(this.a).a == 1) && ((ReadInJoyNativeAdFragment.b(this.a) == 1) || (ReadInJoyNativeAdFragment.b(this.a) == 2)))
     {
-      paramView = (QQUserUIItem)paramObject;
-      StoryApi.a(this.a, 10, paramView.uid);
-      if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem != null)) {
-        StoryReportor.a("home_page", "clk_head_list", StoryReportor.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem), 0, new String[] { "1", StoryReportor.a(this.a.jdField_a_of_type_Int), "", this.a.jdField_a_of_type_JavaLangString });
+      if (paramInt != ReadInJoyNativeAdFragment.a(this.a).size() - 1) {
+        break label155;
       }
+      ReadInJoyNativeAdFragment.a(this.a).setVisibility(8);
+    }
+    for (;;)
+    {
+      ReadInJoyNativeAdFragment.a(this.a);
+      return;
+      label155:
+      ReadInJoyNativeAdFragment.a(this.a).setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nny
  * JD-Core Version:    0.7.0.1
  */

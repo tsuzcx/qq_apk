@@ -1,26 +1,23 @@
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.FeedIdListCache;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.RequestFeedObserver;
-import com.tribe.async.async.ThreadOffFunction;
-import com.tribe.async.reactive.Stream;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class nyl
-  implements Runnable
+  extends Editable.Factory
 {
-  public nyl(FeedListPageLoaderBase paramFeedListPageLoaderBase) {}
+  public nyl(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void run()
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    if (FeedListPageLoaderBase.a(this.a) != null) {
-      FeedListPageLoaderBase.a(this.a).cancel();
+    if ((paramCharSequence instanceof ohr)) {
+      return (Editable)paramCharSequence;
     }
-    FeedListPageLoaderBase.a(this.a, Stream.of(Integer.valueOf(this.a.a.a)).map(new ThreadOffFunction(2)).map(this.a.a(this.a.a)).map(this.a.a()));
-    FeedListPageLoaderBase.a(this.a).subscribe(new FeedListPageLoaderBase.RequestFeedObserver(this.a));
+    return new ohr(paramCharSequence, 3, 20);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nyl
  * JD-Core Version:    0.7.0.1
  */

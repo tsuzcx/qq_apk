@@ -1,23 +1,20 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.qwallet.FrameAnimHelper;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import android.graphics.PointF;
 
-class xec
-  implements Runnable
+public abstract interface xec
 {
-  xec(xeb paramxeb, Object paramObject) {}
+  public abstract void a();
   
-  public void run()
-  {
-    int i = (int)this.jdField_a_of_type_Xeb.a.a.getResources().getDimension(2131560172);
-    ThemeHbFragment.a(this.jdField_a_of_type_Xeb.a, new FrameAnimHelper(this.jdField_a_of_type_Xeb.a.a, ThemeHbFragment.a(this.jdField_a_of_type_Xeb.a), i, true, null));
-    ThemeHbFragment.a(this.jdField_a_of_type_Xeb.a).a((String)this.jdField_a_of_type_JavaLangObject, false);
-  }
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
+  
+  public abstract boolean a(xed paramxed);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xec
  * JD-Core Version:    0.7.0.1
  */

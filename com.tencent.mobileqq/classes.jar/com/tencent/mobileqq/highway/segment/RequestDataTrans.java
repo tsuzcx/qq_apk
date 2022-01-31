@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.highway.segment;
 
 import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.highway.config.ConfigManager;
 import com.tencent.mobileqq.highway.conn.ConnManager;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.LoginSigHead;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.SegHead;
@@ -95,7 +96,6 @@ public class RequestDataTrans
     this.mInfo.parent.TRACKER.logStep("RESPN", " Data Resp Start:" + this.mInfo.bitmapS + " End:" + this.mInfo.bitmapE + " Seq:" + getHwSeq() + " Code:" + paramHwResponse.retCode);
     BdhLogUtil.LogEvent("R", " Data Resp Start:" + this.mInfo.bitmapS + " End:" + this.mInfo.bitmapE + " Seq:" + getHwSeq() + " Code:" + paramHwResponse.retCode);
     Transaction localTransaction = paramRequestWorker.engine.mTransWorker.getTransactionById(this.transId);
-    boolean bool;
     if (localTransaction != null)
     {
       this.mInfo.timeCost_req = paramHwResponse.reqCost;
@@ -106,81 +106,60 @@ public class RequestDataTrans
       {
         localTransaction.mTransReport.netType = HwNetworkCenter.getInstance(paramRequestWorker.engine.getAppContext()).getNetType();
         localTransaction.mTransReport.connNum = paramRequestWorker.engine.mConnManager.getCurrentConnNum();
-        localTransReport = localTransaction.mTransReport;
+        TransReport localTransReport = localTransaction.mTransReport;
         if (this.protoType != 1) {
-          break label565;
+          break label442;
         }
-        paramRequestWorker = "TCP";
-        localTransReport.protoType = paramRequestWorker;
+        localObject = "TCP";
+        localTransReport.protoType = ((String)localObject);
         localTransaction.mTransReport.ipIndex = this.endpoint.ipIndex;
+        localTransaction.mTransReport.isIpv6 = paramHwResponse.isIpv6;
+        paramRequestWorker = ConfigManager.getInstance(paramRequestWorker.engine.getAppContext(), paramRequestWorker.engine);
+        localTransaction.mTransReport.netIpType = paramRequestWorker.mCurnetIptype;
       }
       if (paramHwResponse.retCode != 0) {
-        break label834;
+        break label680;
       }
-      if (paramHwResponse.segmentResp.uint32_flag.has())
-      {
+      if (paramHwResponse.segmentResp.uint32_flag.has()) {
         if ((paramHwResponse.segmentResp.uint32_flag.get() & 0x1) != 1) {
-          break label572;
-        }
-        bool = true;
-        label338:
-        paramHwResponse.isFinish = bool;
-      }
-      if (paramHwResponse.segmentResp.uint32_cache_addr.has())
-      {
-        int i = paramHwResponse.segmentResp.uint32_cache_addr.get();
-        BdhLogUtil.LogEvent("R", "RequestDataTrans HandleResp : cache_addr res from server is : " + i + " ( " + intToIP(i) + " ) Seq:" + getHwSeq());
-        if (i == 0) {
-          break label578;
-        }
-        if (this.mInfo.parent.cacheIp == 0) {
-          this.mInfo.parent.cacheIp = i;
-        }
-        if ((this.mInfo.parent.cacheIp != 0) && (this.mInfo.parent.cacheIp != i))
-        {
-          BdhLogUtil.LogEvent("R", "RequestDataTrans HandleResp : cache ip Diff ! Seq:" + getHwSeq());
-          localTransaction.mTransReport.bCacheDiff = true;
+          break label450;
         }
       }
     }
-    for (;;)
+    label442:
+    label450:
+    for (boolean bool = true;; bool = false)
     {
-      if (paramHwResponse.mBuCmdId == 25)
-      {
-        if (this.mInfo.bitmapS == 0) {
-          localTransaction.mTransReport.firstRange = paramHwResponse.range;
-        }
-        if (paramHwResponse.needReUpload)
-        {
-          if (!localTransaction.reUploadTransaction)
-          {
-            localTransaction.onTransReUpload(getHwSeq());
-            return;
-            label565:
-            paramRequestWorker = "HTTP";
-            break;
-            label572:
-            bool = false;
-            break label338;
-            label578:
-            BdhLogUtil.LogEvent("R", "RequestDataTrans HandleResp : cache_addr res from server is 0 ! Seq:" + getHwSeq());
-            continue;
-          }
-          BdhLogUtil.LogEvent("T", "B_ID:" + localTransaction.mBuzCmdId + "\tT_ID:" + localTransaction.getTransationId() + " ReUpload twice,transaction fail");
-          localTransaction.TRACKER.logStep("REUPLOAD", "ReUpload twice");
-          localTransaction.onTransFailed(9304, "ReUpload twice", paramHwResponse.retCode, paramHwResponse.buzRetCode, this.retryCount, paramHwResponse.mBuExtendinfo);
-          return;
-        }
-        if ((paramHwResponse.range > localTransaction.transferedSizeBDH) && (getHwSeq() > localTransaction.reUploadHwSeq))
-        {
-          if (paramHwResponse.range <= localTransaction.totalLength) {
-            break label814;
-          }
-          BdhLogUtil.LogEvent("T", "B_ID:" + localTransaction.mBuzCmdId + "\tT_ID:" + localTransaction.getTransationId() + " ReturnServerRangeError");
-        }
+      paramHwResponse.isFinish = bool;
+      checkCacheIp(paramHwResponse, this.mInfo.parent);
+      if (this.mInfo.bitmapS == 0) {
+        localTransaction.mTransReport.firstRange = paramHwResponse.range;
       }
+      if (!paramHwResponse.needReUpload) {
+        break label547;
+      }
+      if (localTransaction.reUploadTransaction) {
+        break label455;
+      }
+      localTransaction.onTransReUpload(getHwSeq());
+      return;
+      localObject = "HTTP";
+      break;
     }
-    label814:
+    label455:
+    BdhLogUtil.LogEvent("T", "B_ID:" + localTransaction.mBuzCmdId + "\tT_ID:" + localTransaction.getTransationId() + " ReUpload twice,transaction fail");
+    localTransaction.TRACKER.logStep("REUPLOAD", "ReUpload twice");
+    localTransaction.onTransFailed(9304, "ReUpload twice", paramHwResponse.retCode, paramHwResponse.buzRetCode, this.retryCount, paramHwResponse.mBuExtendinfo);
+    return;
+    label547:
+    if ((paramHwResponse.range > localTransaction.transferedSizeBDH) && (getHwSeq() > localTransaction.reUploadHwSeq))
+    {
+      if (paramHwResponse.range <= localTransaction.totalLength) {
+        break label660;
+      }
+      BdhLogUtil.LogEvent("T", "B_ID:" + localTransaction.mBuzCmdId + "\tT_ID:" + localTransaction.getTransationId() + " ReturnServerRangeError");
+    }
+    label660:
     for (localTransaction.transferedSizeBDH = 0; paramHwResponse.isFinish; localTransaction.transferedSizeBDH = paramHwResponse.range)
     {
       localTransaction.onTransSuccess(this.mInfo, paramHwResponse.mBuExtendinfo);
@@ -188,13 +167,13 @@ public class RequestDataTrans
     }
     localTransaction.onTransProgress(this, paramHwResponse);
     return;
-    label834:
+    label680:
     BdhLogUtil.LogEvent("R", "HandleResp : RespError :" + dumpBaseInfo());
-    TransReport localTransReport = localTransaction.mTransReport;
+    Object localObject = localTransaction.mTransReport;
     if (this.protoType == 1) {}
     for (paramRequestWorker = "TCP";; paramRequestWorker = "HTTP")
     {
-      localTransReport.protoType = paramRequestWorker;
+      ((TransReport)localObject).protoType = paramRequestWorker;
       localTransaction.onTransFailed(0, "BadResponse", paramHwResponse.retCode, paramHwResponse.buzRetCode, this.retryCount, paramHwResponse.mBuExtendinfo);
       return;
     }
@@ -218,7 +197,7 @@ public class RequestDataTrans
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.segment.RequestDataTrans
  * JD-Core Version:    0.7.0.1
  */

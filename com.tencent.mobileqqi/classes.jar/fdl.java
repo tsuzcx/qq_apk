@@ -1,45 +1,52 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.antiphing.AntiphishingUrlConfig;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.annotation.SuppressLint;
+import android.app.DownloadManager;
+import android.app.DownloadManager.Query;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import com.tencent.mobileqq.app.MQPIntChkHandler;
 import com.tencent.qphone.base.util.QLog;
 
 public class fdl
-  extends Handler
+  extends BroadcastReceiver
 {
-  public fdl(AntiphishingUrlConfig paramAntiphishingUrlConfig) {}
+  public fdl(MQPIntChkHandler paramMQPIntChkHandler, DownloadManager paramDownloadManager) {}
   
-  public void handleMessage(Message paramMessage)
+  @SuppressLint({"NewApi"})
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramMessage.what == AntiphishingUrlConfig.a(this.a))
+    long l = paramIntent.getLongExtra("extra_download_id", -1L);
+    if (MQPIntChkHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMQPIntChkHandler) == l)
     {
-      QLog.d(AntiphishingUrlConfig.a(this.a), 4, "Receive Message!");
-      this.a.a();
-    }
-    for (;;)
-    {
-      try
-      {
-        ReportController.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 1, "", "", "", "");
-        return;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("IntChk", 4, "download complete.");
       }
-      catch (Exception paramMessage) {}
-      if (paramMessage.what == AntiphishingUrlConfig.b(this.a))
+      paramIntent = "";
+      Object localObject = new DownloadManager.Query();
+      ((DownloadManager.Query)localObject).setFilterById(new long[] { l });
+      localObject = this.jdField_a_of_type_AndroidAppDownloadManager.query((DownloadManager.Query)localObject);
+      if (((Cursor)localObject).moveToFirst()) {
+        paramIntent = ((Cursor)localObject).getString(((Cursor)localObject).getColumnIndex("local_filename"));
+      }
+      ((Cursor)localObject).close();
+      if ((paramIntent != null) && (paramIntent != ""))
       {
-        QLog.d(AntiphishingUrlConfig.a(this.a), 4, "Receive Message!");
-        try
-        {
-          ReportController.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 0, "", "", "", "");
-          return;
+        if (QLog.isDevelopLevel()) {
+          QLog.d("IntChk", 4, "install downloaded package:" + paramIntent);
         }
-        catch (Exception paramMessage) {}
+        localObject = new Intent("android.intent.action.VIEW");
+        ((Intent)localObject).setDataAndType(Uri.parse("file://" + paramIntent), "application/vnd.android.package-archive");
+        ((Intent)localObject).setFlags(268435456);
+        paramContext.startActivity((Intent)localObject);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fdl
  * JD-Core Version:    0.7.0.1
  */

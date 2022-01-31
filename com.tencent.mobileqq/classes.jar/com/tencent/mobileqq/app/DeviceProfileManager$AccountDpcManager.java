@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app;
 
+import abti;
 import android.content.SharedPreferences;
+import bdmm;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.utils.ReflectedMethods;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -13,11 +13,11 @@ import mqq.manager.Manager;
 public class DeviceProfileManager$AccountDpcManager
   implements Manager
 {
-  public static HashSet a;
+  public static HashSet<String> a;
   public AppInterface a;
   private String a;
-  public HashMap a;
-  public HashMap b = new HashMap();
+  public HashMap<String, DeviceProfileManager.DPCConfigInfo> a;
+  public HashMap<String, DeviceProfileManager.DPCConfigInfo> b = new HashMap();
   
   static
   {
@@ -28,8 +28,13 @@ public class DeviceProfileManager$AccountDpcManager
   {
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_JavaLangString = MsgProxyUtils.a(paramAppInterface.getCurrentAccountUin());
-    b();
+    this.jdField_a_of_type_JavaLangString = abti.a(paramAppInterface.getCurrentAccountUin());
+    if (BaseApplicationImpl.sProcessId != 9) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a(bool);
+      return;
+    }
   }
   
   public static String a(AppInterface paramAppInterface, String paramString)
@@ -37,7 +42,7 @@ public class DeviceProfileManager$AccountDpcManager
     if (paramAppInterface == null) {
       return "";
     }
-    return MsgProxyUtils.a(paramAppInterface.getCurrentAccountUin()) + "_" + paramString;
+    return abti.a(paramAppInterface.getCurrentAccountUin()) + "_" + paramString;
   }
   
   private String a(String paramString)
@@ -59,32 +64,41 @@ public class DeviceProfileManager$AccountDpcManager
     }
   }
   
-  private void b()
+  private void a(boolean paramBoolean)
   {
     a();
-    SharedPreferences localSharedPreferences = ReflectedMethods.a(BaseApplicationImpl.getApplication(), "dpcConfig_account");
+    if (!paramBoolean) {
+      return;
+    }
+    SharedPreferences localSharedPreferences = bdmm.a(BaseApplicationImpl.getApplication(), "dpcConfig_account");
     DeviceProfileManager.AccountDpcManager.DpcAccountNames[] arrayOfDpcAccountNames = DeviceProfileManager.AccountDpcManager.DpcAccountNames.values();
     int j = arrayOfDpcAccountNames.length;
     int i = 0;
+    label30:
+    String str1;
+    String str2;
+    DeviceProfileManager.DPCConfigInfo localDPCConfigInfo;
     if (i < j)
     {
-      String str1 = a(arrayOfDpcAccountNames[i].name());
-      String str2 = localSharedPreferences.getString(str1, "");
-      DeviceProfileManager.DPCConfigInfo localDPCConfigInfo;
-      if ("".equals(str2)) {
-        localDPCConfigInfo = (DeviceProfileManager.DPCConfigInfo)((DeviceProfileManager.DPCConfigInfo)this.b.get(str1)).clone();
+      str1 = a(arrayOfDpcAccountNames[i].name());
+      str2 = localSharedPreferences.getString(str1, "");
+      if (!"".equals(str2)) {
+        break label155;
       }
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaUtilHashMap.put(str1, localDPCConfigInfo);
-        if (QLog.isColorLevel()) {
-          QLog.i("DeviceProfileManager", 2, "init loop mFeatureMapLV2_account MAP: " + str1 + "=" + localDPCConfigInfo.toString());
-        }
-        i += 1;
-        break;
-        localDPCConfigInfo = new DeviceProfileManager.DPCConfigInfo();
-        DeviceProfileManager.a(localDPCConfigInfo, str2);
+      localDPCConfigInfo = (DeviceProfileManager.DPCConfigInfo)((DeviceProfileManager.DPCConfigInfo)this.b.get(str1)).clone();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.put(str1, localDPCConfigInfo);
+      if (QLog.isColorLevel()) {
+        QLog.i("DeviceProfileManager", 2, "init loop mFeatureMapLV2_account MAP: " + str1 + "=" + localDPCConfigInfo.toString());
       }
+      i += 1;
+      break label30;
+      break;
+      label155:
+      localDPCConfigInfo = new DeviceProfileManager.DPCConfigInfo();
+      DeviceProfileManager.a(localDPCConfigInfo, str2);
     }
   }
   

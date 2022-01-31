@@ -1,67 +1,29 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.EditText;
 import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(11)
-public class yss
-  extends EditText
-  implements ActionMode.Callback
+class yss
+  extends xtb
 {
-  public yss(Context paramContext)
+  yss(ysm paramysm, ysw paramysw) {}
+  
+  public void onFailure(String paramString)
   {
-    super(paramContext);
-    super.setLongClickable(false);
-    super.setTextIsSelectable(false);
-    super.setImeOptions(268435456);
-    if (Build.VERSION.SDK_INT >= 11) {
-      super.setCustomSelectionActionModeCallback(this);
-    }
+    QLog.w(".troop.VideoCombineHelper", 1, "concatMediaByTs change ts onSuccess: " + paramString);
+    this.jdField_a_of_type_Ysw.onFailure(paramString);
   }
   
-  public void a(int paramInt)
+  public void onSuccess(String paramString)
   {
-    try
+    if (QLog.isColorLevel())
     {
-      super.setSelection(paramInt);
-      return;
+      QLog.w(".troop.trace_video_combine", 2, "concatMediaByTs change ts onSuccess: " + paramString);
+      QLog.d(".troop.trace_video_combine", 2, "convertToTsTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Ysm.a.a));
     }
-    catch (Exception localException)
-    {
-      QLog.e("ApolloDiyTextActivity", 1, localException.getMessage());
-    }
-  }
-  
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
-  {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public boolean onTextContextMenuItem(int paramInt)
-  {
-    return true;
+    this.jdField_a_of_type_Ysm.a.a = System.currentTimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yss
  * JD-Core Version:    0.7.0.1
  */

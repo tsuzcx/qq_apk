@@ -1,41 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public final class mwe
-  implements Runnable
+public class mwe
 {
-  public mwe(QQMessageFacade paramQQMessageFacade, String paramString1, String paramString2, String paramString3, QQAppInterface paramQQAppInterface) {}
+  public static String a = "ShareUtils";
   
-  public void run()
+  public static void a(AppInterface paramAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b(AppConstants.ar, -3006);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      localObject = this.b;
-      if ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForStructing))) {
-        break label108;
-      }
-    }
-    label108:
-    for (Object localObject = PublicAccountUtil.a((MessageForStructing)localMessageRecord, (String)localObject, null, null, this.c);; localObject = PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, null, null, this.c))
-    {
-      if (localObject != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a((MessageRecord)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-      }
-      return;
-      localObject = this.jdField_a_of_type_JavaLangString + ": " + this.b;
-      break;
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramString1);
+    Bundle localBundle = new Bundle();
+    localBundle.putStringArrayList("image_url", localArrayList);
+    localBundle.putString("title", paramString2);
+    localBundle.putString("desc", paramString3);
+    localBundle.putLong("req_share_id", 0L);
+    localBundle.putString("detail_url", paramString4);
+    bjev.a(paramAppInterface, paramContext, localBundle, null);
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, "shareToQzone. title:" + paramString2 + " desc:" + paramString3 + " shareLink:" + paramString4 + " icon:" + paramString1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mwe
  * JD-Core Version:    0.7.0.1
  */

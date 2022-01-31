@@ -11,11 +11,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class apollo_game_status$STCMGameMessage$STMsgComm
-  extends MessageMicro
+  extends MessageMicro<STMsgComm>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatField rpt_uint32_session_list = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
-  public final PBRepeatField rpt_uint32_uin_list = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
+  public final PBRepeatField<Integer> rpt_uint32_session_list = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
+  public final PBRepeatField<Integer> rpt_uint32_uin_list = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   public final PBBytesField str_game_comm_info = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBStringField str_room_id = PBField.initString("");
   public final PBUInt32Field uint32_game_id = PBField.initUInt32(0);
@@ -32,7 +32,7 @@ public final class apollo_game_status$STCMGameMessage$STMsgComm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.apollo_game_status.STCMGameMessage.STMsgComm
  * JD-Core Version:    0.7.0.1
  */

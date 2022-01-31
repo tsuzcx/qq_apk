@@ -1,26 +1,40 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.aio.item.FrameAnimationActor;
+import com.tencent.mobileqq.activity.aio.item.FrameAnimationActor.Listener;
 
 public class dyp
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public dyp(TroopTransferActivity paramTroopTransferActivity) {}
+  public dyp(FrameAnimationActor paramFrameAnimationActor) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
-    if (paramMotionEvent != null) {
-      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    if (this.a.jdField_a_of_type_AndroidViewView == null) {}
+    do
+    {
+      return;
+      if ((this.a.jdField_a_of_type_Int == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener.a();
+      }
+      if (this.a.jdField_a_of_type_Int < this.a.jdField_a_of_type_ArrayOfInt.length) {
+        break;
+      }
+      this.a.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.a.jdField_a_of_type_ArrayOfInt[this.a.b]);
+    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener.b();
+    return;
+    this.a.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.a.jdField_a_of_type_ArrayOfInt[this.a.jdField_a_of_type_Int]);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener.a(this.a.jdField_a_of_type_Int);
     }
-    return false;
+    this.a.jdField_a_of_type_AndroidViewView.postDelayed(FrameAnimationActor.a(this.a), this.a.c);
+    FrameAnimationActor localFrameAnimationActor = this.a;
+    localFrameAnimationActor.jdField_a_of_type_Int += 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dyp
  * JD-Core Version:    0.7.0.1
  */

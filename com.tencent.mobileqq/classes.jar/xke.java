@@ -1,24 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
 
-public final class xke
-  implements Runnable
+public class xke
+  implements DialogInterface.OnClickListener
 {
-  public xke(MqqHandler paramMqqHandler) {}
+  public xke(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SearchConfigManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-    if (SearchConfigManager.isConfigLoaded) {
-      this.a.sendEmptyMessage(0);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xke
  * JD-Core Version:    0.7.0.1
  */

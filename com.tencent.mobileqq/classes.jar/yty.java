@@ -1,20 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloStoreActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.DeleteFolderRspBody;
+import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RspBody;
 
-public class yty
-  implements DialogInterface.OnClickListener
+public abstract class yty
+  extends nac
 {
-  public yty(ApolloStoreActivity paramApolloStoreActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    paramDialogInterface.dismiss();
+    if (paramInt != 0)
+    {
+      a(false, paramInt);
+      return;
+    }
+    paramBundle = new oidb_0x6d7.RspBody();
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d7.DeleteFolderRspBody)paramBundle.delete_folder_rsp.get();
+      if (!paramArrayOfByte.int32_ret_code.has()) {
+        break label84;
+      }
+      if (paramArrayOfByte.int32_ret_code.get() == 0)
+      {
+        a(true, 0);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1);
+      return;
+    }
+    a(false, paramArrayOfByte.int32_ret_code.get());
+    return;
+    label84:
+    a(false, -1);
   }
+  
+  protected abstract void a(boolean paramBoolean, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yty
  * JD-Core Version:    0.7.0.1
  */

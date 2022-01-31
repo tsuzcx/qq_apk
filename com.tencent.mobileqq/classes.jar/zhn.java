@@ -1,51 +1,82 @@
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageRoamConstants;
-import com.tencent.mobileqq.app.MessageRoamManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.mobileqq.vip.DownloaderInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.widgets.TabLayout;
+import com.tencent.biz.widgets.TabLayout.TabAdapter.1;
+import java.util.List;
 
-public class zhn
-  implements Runnable
+public abstract class zhn<T>
+  extends BaseAdapter
 {
-  public zhn(MessageRoamManager paramMessageRoamManager) {}
+  protected Context a;
+  public TabLayout a;
+  protected List<T> a;
   
-  public void run()
+  public zhn(Context paramContext, List<T> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.roammsg.MessageRoamManager", 2, "checkCloudSearchCfg start...");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  protected abstract int a();
+  
+  public void a(TabLayout paramTabLayout)
+  {
+    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout = paramTabLayout;
+  }
+  
+  protected abstract void a(zho paramzho, T paramT, int paramInt);
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size() + 1;
     }
-    DownloaderInterface localDownloaderInterface = ((DownloaderFactory)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46)).a(1);
-    if ((localDownloaderInterface != null) && (localDownloaderInterface.a(MessageRoamConstants.a) == null))
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject1 = null;
+    if (paramInt < getCount() - 1)
     {
-      Object localObject = new File(MessageRoamConstants.b);
-      DownloadTask localDownloadTask = new DownloadTask(MessageRoamConstants.a, (File)localObject);
-      if (((File)localObject).exists())
+      Object localObject2 = this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.a(paramInt);
+      paramView = (View)localObject2;
+      if (localObject2 == null)
       {
-        localObject = Long.valueOf(((File)localObject).lastModified());
-        localDownloadTask.i = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("cloudSearchCfgLastModify", 0L);
-        if (((Long)localObject).longValue() != localDownloadTask.i)
-        {
-          localDownloadTask.k = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.roammsg.MessageRoamManager", 2, "checkCloudSearchCfg file modified local time: " + localObject + ", sp time: " + localDownloadTask.i);
-          }
-        }
+        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(a(), paramViewGroup, false);
+        paramView.post(new TabLayout.TabAdapter.1(this, paramInt, paramView));
       }
-      localDownloadTask.h = true;
-      localDownloadTask.n = false;
-      localObject = new Bundle();
-      localDownloaderInterface.a(localDownloadTask, this.a.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, (Bundle)localObject);
+      localObject2 = new zho(paramView, null);
+      paramView.setTranslationX(0.0F);
+      paramViewGroup = localObject1;
+      if (this.jdField_a_of_type_JavaUtilList != null) {
+        paramViewGroup = this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      }
+      a((zho)localObject2, paramViewGroup, paramInt);
+      return paramView;
     }
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560065, paramViewGroup, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zhn
  * JD-Core Version:    0.7.0.1
  */

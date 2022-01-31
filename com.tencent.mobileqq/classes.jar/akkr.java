@@ -1,21 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import com.tencent.widget.AbsListView;
 
-public class akkr
-  implements View.OnClickListener
+class akkr
+  implements bhtv
 {
-  public akkr(VipVideoPlayActivity paramVipVideoPlayActivity) {}
+  akkr(akkn paramakkn) {}
   
-  public void onClick(View paramView)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.a.getRequestedOrientation() == 0)
-    {
-      this.a.setRequestedOrientation(1);
+    if (paramInt != 0) {
       return;
     }
-    this.a.setResult(0);
-    this.a.finish();
+    this.a.d();
   }
 }
 

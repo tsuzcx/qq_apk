@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.FormItemRelativeLayout android:gravity="center_vertical" android:id="@id/bfb" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="@dimen/al1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
+        <TextView android:textSize="17.0sp" android:textColor="@color/skin_black" android:id="@id/bf7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/ajp" android:includeFontPadding="false" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/skin_gray2" android:id="@id/bf6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="@string/ajr" android:includeFontPadding="false" android:layout_below="@id/bf7" android:layout_alignLeft="@id/bf7" />
+    </RelativeLayout>
+    <ImageView android:id="@id/ze" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/iu" android:src="@drawable/skin_icon_arrow_right_normal" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+</com.tencent.mobileqq.widget.FormItemRelativeLayout>

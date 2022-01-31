@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class SubMsgType0x6f$VideoInfo
-  extends MessageMicro
+  extends MessageMicro<VideoInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_vid = PBField.initBytes(ByteStringMicro.EMPTY);

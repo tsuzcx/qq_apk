@@ -1,20 +1,10 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
-
-public class wgn
-  implements BubblePopupWindow.OnDismissListener
+public abstract interface wgn
 {
-  public wgn(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment, View paramView) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
-  }
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wgn
  * JD-Core Version:    0.7.0.1
  */

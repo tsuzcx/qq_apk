@@ -8,9 +8,9 @@ import com.tencent.bugly.BuglyStrategy;
 import com.tencent.bugly.crashreport.common.info.PlugInBean;
 import com.tencent.bugly.crashreport.common.strategy.StrategyBean;
 import com.tencent.bugly.crashreport.crash.c;
-import com.tencent.bugly.crashreport.crash.e;
+import com.tencent.bugly.crashreport.crash.d;
+import com.tencent.bugly.crashreport.crash.f;
 import com.tencent.bugly.crashreport.crash.jni.NativeCrashHandler;
-import com.tencent.bugly.proguard.an;
 import com.tencent.bugly.proguard.t;
 import com.tencent.bugly.proguard.u;
 import com.tencent.bugly.proguard.w;
@@ -34,7 +34,7 @@ public class CrashReport
   public static final int MODULE_ID = 1003;
   private static boolean a = false;
   private static CrashStrategyBean b = null;
-  private static e c = null;
+  private static f c = null;
   private static CrashHandleListener d = null;
   private static t e = null;
   private static CrashReport f = new CrashReport();
@@ -228,23 +228,7 @@ public class CrashReport
     setCrashHandler(paramCrashHandleListener);
     if (paramUploadHandleListener != null)
     {
-      e = new t()
-      {
-        public final void a(int paramAnonymousInt)
-        {
-          this.a.onUploadStart(paramAnonymousInt);
-        }
-        
-        public final void a(int paramAnonymousInt, an paramAnonymousan, long paramAnonymousLong1, long paramAnonymousLong2, boolean paramAnonymousBoolean, String paramAnonymousString)
-        {
-          if (paramAnonymousan == null) {}
-          for (int i = -1;; i = paramAnonymousan.b)
-          {
-            this.a.onUploadEnd(paramAnonymousInt, i, paramAnonymousLong1, paramAnonymousLong2, paramAnonymousBoolean, paramAnonymousString);
-            return;
-          }
-        }
-      };
+      e = new CrashReport.2(paramUploadHandleListener);
       paramCrashHandleListener = u.a();
       if (paramCrashHandleListener != null) {
         paramCrashHandleListener.a = e;
@@ -271,7 +255,7 @@ public class CrashReport
     }
     if (!h)
     {
-      paramUploadHandleListener = com.tencent.bugly.crashreport.common.info.a.a(paramContext).l;
+      paramUploadHandleListener = com.tencent.bugly.crashreport.common.info.a.a(paramContext).m;
       if ((paramUploadHandleListener != null) && (!z.a(paramUploadHandleListener)))
       {
         paramCrashStrategyBean = paramUploadHandleListener.toCharArray();
@@ -287,15 +271,15 @@ public class CrashReport
         }
         if (k < 3)
         {
-          paramUploadHandleListener = paramUploadHandleListener + "." + com.tencent.bugly.crashreport.common.info.a.a(paramContext).x;
-          com.tencent.bugly.crashreport.common.info.a.a(paramContext).l = paramUploadHandleListener;
+          paramUploadHandleListener = paramUploadHandleListener + "." + com.tencent.bugly.crashreport.common.info.a.a(paramContext).y;
+          com.tencent.bugly.crashreport.common.info.a.a(paramContext).m = paramUploadHandleListener;
           x.a("rqdp{ RQD version: %s }", new Object[] { paramUploadHandleListener });
         }
       }
     }
     com.tencent.bugly.crashreport.common.info.a.a(paramContext).f = paramBoolean;
     paramCrashHandleListener.setUploadProcess(paramBoolean);
-    com.tencent.bugly.crashreport.common.info.a.a(paramContext).D = true;
+    com.tencent.bugly.crashreport.common.info.a.a(paramContext).F = true;
     c.b = true;
     com.tencent.bugly.crashreport.common.strategy.a.b = 21600000L;
     paramCrashHandleListener.setEnableUserInfo(g);
@@ -316,11 +300,17 @@ public class CrashReport
   
   public static void initNativeCrashReport(Context paramContext, String paramString, boolean paramBoolean, List<File> paramList)
   {
-    initNativeCrashReport(paramContext, paramString, paramBoolean, paramList, null);
+    initNativeCrashReport(paramContext, paramString, paramBoolean, paramList, null, 0L);
   }
   
   @SuppressLint({"SdCardPath"})
   public static void initNativeCrashReport(Context paramContext, String paramString, boolean paramBoolean, List<File> paramList, File paramFile)
+  {
+    initNativeCrashReport(paramContext, paramString, paramBoolean, paramList, paramFile, 0L);
+  }
+  
+  @SuppressLint({"SdCardPath"})
+  public static void initNativeCrashReport(Context paramContext, String paramString, boolean paramBoolean, List<File> paramList, File paramFile, long paramLong)
   {
     if (!a) {}
     do
@@ -331,7 +321,7 @@ public class CrashReport
       {
         localObject = paramFile.getAbsolutePath();
         if (!z.a((String)localObject)) {
-          locala.o = ((String)localObject);
+          locala.p = ((String)localObject);
         }
       }
       Object localObject = paramList;
@@ -347,7 +337,7 @@ public class CrashReport
       {
         x.c("no setted SO , query so!", new Object[0]);
         paramList = "/data/data/" + paramContext.getPackageName() + "/lib/";
-        w.a().a(new a(paramContext, paramList, (List)localObject));
+        w.a().a(new a(paramContext, paramList, (List)localObject), paramLong);
       }
       paramList = NativeCrashHandler.getInstance();
       if ((paramList != null) && (!z.a(paramString))) {
@@ -359,13 +349,34 @@ public class CrashReport
       paramContext = c.a();
     } while (paramContext == null);
     paramContext.e();
-    paramContext.a(0L);
-    paramContext.b(0L);
+    paramContext.a(paramLong);
+    paramContext.l();
   }
   
   public static boolean needUploadCrash(Context paramContext)
   {
     return countExceptionDatas(paramContext) > 0;
+  }
+  
+  public static void postException(int paramInt, String paramString1, String paramString2, String paramString3, Map<String, String> paramMap)
+  {
+    Thread localThread = Thread.currentThread();
+    if (!com.tencent.bugly.b.a)
+    {
+      Log.w(x.b, "Can not post crash caught because bugly is disable.");
+      return;
+    }
+    d.a(localThread, paramInt, paramString1, paramString2, paramString3, paramMap);
+  }
+  
+  public static void postException(Thread paramThread, int paramInt, String paramString1, String paramString2, String paramString3, Map<String, String> paramMap)
+  {
+    if (!com.tencent.bugly.b.a)
+    {
+      Log.w(x.b, "Can not post crash caught because bugly is disable.");
+      return;
+    }
+    d.a(paramThread, paramInt, paramString1, paramString2, paramString3, paramMap);
   }
   
   public static void putUploadRequestData(Context paramContext, String paramString1, String paramString2)
@@ -477,7 +488,7 @@ public class CrashReport
   
   public static void setAPKSHa1(Context paramContext, String paramString)
   {
-    com.tencent.bugly.crashreport.common.info.a.a(paramContext).j = paramString;
+    com.tencent.bugly.crashreport.common.info.a.a(paramContext).k = paramString;
     x.c("set sha1 %s", new Object[] { paramString });
   }
   
@@ -494,7 +505,7 @@ public class CrashReport
         Log.w(x.b, "App channel is null, will not set");
         return;
       }
-      com.tencent.bugly.crashreport.common.info.a.a(paramContext).n = paramString;
+      com.tencent.bugly.crashreport.common.info.a.a(paramContext).o = paramString;
       paramContext = NativeCrashHandler.getInstance();
     } while (paramContext == null);
     paramContext.setNativeAppChannel(paramString);
@@ -512,33 +523,7 @@ public class CrashReport
     {
       return;
       d = paramCrashHandleListener;
-      c = new e()
-      {
-        public final void a(boolean paramAnonymousBoolean)
-        {
-          this.a.onCrashHandleStart(paramAnonymousBoolean);
-        }
-        
-        public final boolean a(boolean paramAnonymousBoolean, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt, long paramAnonymousLong, String paramAnonymousString4, String paramAnonymousString5, String paramAnonymousString6, String paramAnonymousString7)
-        {
-          return this.a.onCrashSaving(paramAnonymousBoolean, paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, paramAnonymousInt, paramAnonymousLong, paramAnonymousString4, paramAnonymousString5, paramAnonymousString6, paramAnonymousString7);
-        }
-        
-        public final byte[] a(boolean paramAnonymousBoolean, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt, long paramAnonymousLong)
-        {
-          return this.a.getCrashExtraData(paramAnonymousBoolean, paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, -1234567890, paramAnonymousLong);
-        }
-        
-        public final String b(boolean paramAnonymousBoolean, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt, long paramAnonymousLong)
-        {
-          return this.a.getCrashExtraMessage(paramAnonymousBoolean, paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, -1234567890, paramAnonymousLong);
-        }
-        
-        public final boolean b(boolean paramAnonymousBoolean)
-        {
-          return this.a.onCrashHandleEnd(paramAnonymousBoolean);
-        }
-      };
+      c = new CrashReport.1(paramCrashHandleListener);
       paramCrashHandleListener = c.a();
     } while (paramCrashHandleListener == null);
     paramCrashHandleListener.a(c);
@@ -593,7 +578,7 @@ public class CrashReport
     }
     for (;;)
     {
-      com.tencent.bugly.crashreport.common.info.a.a(paramContext).z = paramBoolean;
+      com.tencent.bugly.crashreport.common.info.a.a(paramContext).B = paramBoolean;
       return;
       x.c("This is not a development device.", new Object[0]);
     }
@@ -641,7 +626,7 @@ public class CrashReport
         x.d("appVersion %s length is over limit %d substring to %s", new Object[] { paramString, Integer.valueOf(100), str });
       }
       h = true;
-      com.tencent.bugly.crashreport.common.info.a.a(paramContext).l = str;
+      com.tencent.bugly.crashreport.common.info.a.a(paramContext).m = str;
     }
   }
   
@@ -653,7 +638,7 @@ public class CrashReport
       x.d("Can not set RDM UUID if RQD has not been initialized.", new Object[0]);
       return;
     }
-    locala.y = paramString;
+    locala.z = paramString;
   }
   
   public static void setSOFile(Context paramContext, List<SoFile> paramList)
@@ -766,17 +751,24 @@ public class CrashReport
   
   public void init(Context paramContext, boolean paramBoolean, BuglyStrategy paramBuglyStrategy)
   {
-    paramContext = c.a(1003, paramContext, com.tencent.bugly.b.c, null, c, null);
-    paramContext.c();
+    c localc = c.a(1003, paramContext, com.tencent.bugly.b.c, null, c, null);
+    localc.c();
+    localc.a(true);
+    if (b != null)
+    {
+      localc.a(b.getCallBackType());
+      localc.a(b.getCloseErrorCallback());
+    }
     if ((paramBuglyStrategy == null) || (paramBuglyStrategy.isEnableANRCrashMonitor())) {
-      paramContext.f();
+      localc.f();
     }
     for (;;)
     {
+      d.a(paramContext);
       u.a().a = e;
       return;
       x.a("[crash] Closed ANR monitor!", new Object[0]);
-      paramContext.g();
+      localc.g();
     }
   }
   

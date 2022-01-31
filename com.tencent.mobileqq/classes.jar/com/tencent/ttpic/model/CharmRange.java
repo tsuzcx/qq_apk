@@ -7,7 +7,7 @@ public class CharmRange
   public static final int PENDING = 0;
   public double max;
   public double min;
-  public int status = 0;
+  private int status = 0;
   
   public void clearStatus()
   {
@@ -31,7 +31,7 @@ public class CharmRange
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.model.CharmRange
  * JD-Core Version:    0.7.0.1
  */

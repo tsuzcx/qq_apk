@@ -1,22 +1,46 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.PublicCommentWindow;
-import com.tencent.qphone.base.util.QLog;
+import Wallet.BroadCastInfo;
+import Wallet.GetBroadCastHbIdiomRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import mqq.observer.BusinessObserver;
 
-public class aiup
-  extends BroadcastReceiver
+class aiup
+  implements BusinessObserver
 {
-  public aiup(PublicCommentWindow paramPublicCommentWindow) {}
+  aiup(aiuo paramaiuo) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) && ("CommentSendSuccess".equals(paramIntent.getStringExtra("event"))))
+    if (paramInt == 28)
     {
-      this.a.a = true;
-      this.a.dismiss();
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicCommentPopupWindow", 2, "web call finish----------------");
+      paramBundle = (GetBroadCastHbIdiomRsp)paramBundle.getSerializable("rsp");
+      if (paramBundle != null) {
+        break label21;
+      }
+    }
+    for (;;)
+    {
+      return;
+      label21:
+      if (paramBoolean)
+      {
+        this.a.jdField_a_of_type_Aiul.a = false;
+        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          BroadCastInfo localBroadCastInfo = (BroadCastInfo)paramBundle.sendlistIdiomInfoDict.get(str);
+          if ((this.a.jdField_a_of_type_Aiul.a(str) != null) && (localBroadCastInfo != null)) {
+            if (localBroadCastInfo.isFinished == 1) {
+              this.a.jdField_a_of_type_Aiul.a(str);
+            } else {
+              this.a.jdField_a_of_type_Aiul.a(str, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localBroadCastInfo.idiomSeq, localBroadCastInfo.hbIdiom, localBroadCastInfo.hbIdiomLastPY);
+            }
+          }
+        }
       }
     }
   }

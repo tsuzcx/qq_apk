@@ -1,13 +1,10 @@
-import com.tencent.weiyun.utils.Singleton;
-import cooperation.weiyun.channel.WySender;
+import javax.microedition.khronos.opengles.GL10;
 
-public final class anho
-  extends Singleton
+public abstract interface anho
 {
-  protected WySender a(Void paramVoid)
-  {
-    return new WySender(null);
-  }
+  public abstract void a(GL10 paramGL10);
+  
+  public abstract void a(GL10 paramGL10, int paramInt1, int paramInt2);
 }
 
 

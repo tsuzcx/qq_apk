@@ -1,28 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoStatusListener;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Comparator;
 
 class mdx
-  implements Runnable
+  implements Comparator<lqq>
 {
-  mdx(mdv parammdv) {}
+  mdx(mdw parammdw) {}
   
-  public void run()
+  public int a(lqq paramlqq1, lqq paramlqq2)
   {
-    if (VideoFeedsPlayManager.a(this.a.a) != null)
-    {
-      Iterator localIterator = VideoFeedsPlayManager.a(this.a.a).iterator();
-      while (localIterator.hasNext()) {
-        ((VideoFeedsPlayManager.VideoStatusListener)localIterator.next()).a(VideoFeedsPlayManager.a(this.a.a));
-      }
+    if (paramlqq1.a) {}
+    while (paramlqq2.a) {
+      return 1;
     }
-    this.a.a.b(0);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mdx
  * JD-Core Version:    0.7.0.1
  */

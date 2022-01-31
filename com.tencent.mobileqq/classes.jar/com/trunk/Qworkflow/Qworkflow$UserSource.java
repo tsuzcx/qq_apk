@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Qworkflow$UserSource
-  extends MessageMicro
+  extends MessageMicro<UserSource>
 {
   public static final int FROM_FRIEND = 3;
   public static final int FROM_GROUP = 1;
@@ -19,7 +19,7 @@ public final class Qworkflow$UserSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.trunk.Qworkflow.Qworkflow.UserSource
  * JD-Core Version:    0.7.0.1
  */

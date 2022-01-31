@@ -1,37 +1,32 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
 
 public class rov
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public rov(BaseChatPie paramBaseChatPie, ChatMessage paramChatMessage, ActionSheet paramActionSheet) {}
+  long jdField_a_of_type_Long = 0L;
   
-  public void OnClick(View paramView, int paramInt)
+  public rov(BaseTabbar paramBaseTabbar, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramInt == 0)
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 300L)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop != 3000) {
-        break label41;
+      this.jdField_a_of_type_Long = 0L;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a.a(this.jdField_a_of_type_Int);
       }
-      FileManagerReporter.a("0X8005E4F");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.e(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
-      label41:
-      FileManagerReporter.a("0X8005E4D");
     }
+    this.jdField_a_of_type_Long = l;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.setSelectedTab(this.jdField_a_of_type_Int, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rov
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-
 class spo
-  implements Runnable
 {
-  spo(spn paramspn) {}
+  public String a;
+  public String b;
   
-  public void run()
+  spo(spm paramspm, String paramString1, String paramString2)
   {
-    ReportController.b(this.a.a.a.app, "CliOper", "", "", "P_prof", "Prof_copy", ProfileActivity.a(this.a.a.a.a.a.h), 0, Integer.toString(ProfileActivity.a(this.a.a.a.a.a)), "", "", "");
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     spo
  * JD-Core Version:    0.7.0.1
  */

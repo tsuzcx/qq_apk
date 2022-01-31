@@ -13,7 +13,7 @@ public class Step
   implements Runnable
 {
   public static final int a = 0;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "STEP_GROUP", "STEP_TRY_LOAD_DEX", "STEP_NAME_PROCESS", "STEP_SET_SPLASH", "STEP_DO_LOAD_DEX", "STEP_NEW_RUNTIME", "STEP_LOAD_DATA", "STEP_MEMORY_CACHE", "STEP_OLD_ONCREATE", "STEP_START_SERVICE", "STEP_INIT_SKIN", "STEP_URL_DRAWABLE", "STEP_UPDATE", "STEP_RDM", "STEP_MANAGE_THREAD", "STEP_LOAD_UI", "STEP_MORE_DATA", "STEP_QZPRELOAD", "STEP_START_SERVICE_LITE", "STEP_START_SERVICE_LITE_CMP", "STEP_UPDATE_BUBBLE", "STEP_UPDATE_AVSO" };
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "STEP_GROUP", "STEP_TRY_LOAD_DEX", "STEP_NAME_PROCESS", "STEP_SET_SPLASH", "STEP_PERMISSION", "STEP_DO_LOAD_DEX", "STEP_NEW_RUNTIME", "STEP_LOAD_DATA", "STEP_MEMORY_CACHE", "STEP_OLD_ONCREATE", "STEP_START_SERVICE", "STEP_INIT_SKIN", "STEP_URL_DRAWABLE", "STEP_UPDATE", "STEP_RDM", "STEP_MANAGE_THREAD", "STEP_LOAD_UI", "STEP_MORE_DATA", "STEP_QZPRELOAD", "STEP_START_SERVICE_LITE", "STEP_START_SERVICE_LITE_CMP", "STEP_UPDATE_BUBBLE", "STEP_UPDATE_AVSO" };
   public static final int b = 1;
   public static final int c = 2;
   public static final int d = 3;
@@ -35,12 +35,13 @@ public class Step
   public static final int t = 19;
   public static final int u = 20;
   public static final int v = 21;
+  public static final int w = 22;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  protected StartupDirector a;
+  public StartupDirector a;
   protected String a;
   private int[] jdField_a_of_type_ArrayOfInt;
-  protected int w;
-  private int x;
+  protected int x;
+  private int y;
   
   public static Step a(int paramInt, StartupDirector paramStartupDirector, int[] paramArrayOfInt)
   {
@@ -52,7 +53,7 @@ public class Step
     }
     for (;;)
     {
-      ((Step)localObject).w = paramInt;
+      ((Step)localObject).x = paramInt;
       ((Step)localObject).jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector = paramStartupDirector;
       if (paramInt != 0) {
         break;
@@ -69,6 +70,8 @@ public class Step
       localObject = new OldApplication();
       continue;
       localObject = new SetSplash();
+      continue;
+      localObject = new SetPermission();
       continue;
       localObject = new LoadData();
       continue;
@@ -108,12 +111,12 @@ public class Step
   public void a(Handler paramHandler, int paramInt)
   {
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.x = paramInt;
+    this.y = paramInt;
   }
   
   protected boolean a()
   {
-    if (this.w == 0)
+    if (this.x == 0)
     {
       int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
       int i2 = arrayOfInt.length;
@@ -137,11 +140,11 @@ public class Step
       l1 = SystemClock.uptimeMillis();
       TraceUtils.a(this.jdField_a_of_type_JavaLangString);
     }
-    if ((StartupDirector.f) && (this.w != 0)) {
+    if ((StartupDirector.f) && (this.x != 0)) {
       GTUtil.a(0, "group_application_oncreate", this.jdField_a_of_type_JavaLangString, new int[0]);
     }
     boolean bool = a();
-    if ((StartupDirector.f) && (this.w != 0)) {
+    if ((StartupDirector.f) && (this.x != 0)) {
       GTUtil.b(0, "group_application_oncreate", this.jdField_a_of_type_JavaLangString, new int[0]);
     }
     if (StartupDirector.e)
@@ -150,7 +153,7 @@ public class Step
       Log.i("AutoMonitor", this.jdField_a_of_type_JavaLangString + ", cost=" + (SystemClock.uptimeMillis() - l1) + " results: " + bool);
     }
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(this.x, Boolean.valueOf(bool)).sendToTarget();
+      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(this.y, Boolean.valueOf(bool)).sendToTarget();
     }
     return bool;
   }

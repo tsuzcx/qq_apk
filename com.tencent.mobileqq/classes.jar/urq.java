@@ -1,25 +1,37 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
-import mqq.util.WeakReference;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class urq
-  implements Runnable
+class urq<Request extends urt, Respond extends uro>
+  implements uru<Respond>
 {
-  urq(uro paramuro, int paramInt) {}
+  protected final long a;
+  protected urr<Request, Respond> a;
+  public Request a;
   
-  public void run()
+  public urq(Request paramRequest)
   {
-    if (DoodleMsgView.a(this.jdField_a_of_type_Uro.a) != null)
+    this.jdField_a_of_type_Urt = paramRequest;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  private void b(int paramInt, String paramString, Respond paramRespond)
+  {
+    urr localurr = this.jdField_a_of_type_Urr;
+    if (localurr != null)
     {
-      urt localurt = (urt)DoodleMsgView.a(this.jdField_a_of_type_Uro.a).get();
-      if (localurt != null) {
-        localurt.a(this.jdField_a_of_type_Int);
-      }
+      localurr.a(this.jdField_a_of_type_Urt, paramRespond, new ErrorMessage(paramInt, paramString));
+      return;
     }
+    wxe.d("Q.qqstory.net:CmdTaskManager", "cmd callback is null");
+  }
+  
+  public void a(int paramInt, String paramString, Respond paramRespond)
+  {
+    b(paramInt, paramString, paramRespond);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     urq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,23 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerListAdapter;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.KdTagItem;
 
-public class nst
-  implements LoadingMoreHelper.OnLoadMoreListener
+public final class nst
+  implements Parcelable.Creator<VideoInfo.KdTagItem>
 {
-  public nst(StoryPickerFragment paramStoryPickerFragment) {}
-  
-  public void a() {}
-  
-  public boolean a(boolean paramBoolean)
+  public VideoInfo.KdTagItem a(Parcel paramParcel)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.a(this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a());
-    }
-    return true;
+    return new VideoInfo.KdTagItem(paramParcel);
+  }
+  
+  public VideoInfo.KdTagItem[] a(int paramInt)
+  {
+    return new VideoInfo.KdTagItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nst
  * JD-Core Version:    0.7.0.1
  */

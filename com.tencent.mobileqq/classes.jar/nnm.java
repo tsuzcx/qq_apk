@@ -1,27 +1,10 @@
-import android.view.View;
-import com.tencent.biz.qqstory.boundaries.StoryApi;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
-
-public class nnm
-  extends ChildViewClickListener
+public abstract interface nnm
 {
-  public nnm(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
-  
-  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
-  {
-    if ((paramObject instanceof QQUserUIItem))
-    {
-      paramView = (QQUserUIItem)paramObject;
-      StoryApi.a(this.a.a, 10, paramView.uid);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nnm
  * JD-Core Version:    0.7.0.1
  */

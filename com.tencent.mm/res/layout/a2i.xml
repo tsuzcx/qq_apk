@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/r_" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/ko" android:textColor="@color/n" android:ellipsize="middle" android:id="@id/axy" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{header}" android:singleLine="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/j7" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <View android:background="@color/x" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <View android:background="@color/a7" android:layout_width="fill_parent" android:layout_height="8.0dip" />
+        <View android:background="@color/x" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    </LinearLayout>
+    <View android:background="@color/x" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/hg" android:layout_alignParentBottom="true" />
+</RelativeLayout>

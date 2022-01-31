@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.shortvideo.dancemachine.GLFrameImage;
-import com.tencent.mobileqq.shortvideo.dancemachine.TrAsyncTextureLoad;
-import com.tencent.mobileqq.shortvideo.dancemachine.utils.DanceLog;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
 public class aiap
-  implements Runnable
+  implements acnt
 {
-  public aiap(TrAsyncTextureLoad paramTrAsyncTextureLoad) {}
+  public aiap(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
   
-  public void run()
+  public boolean a(boolean paramBoolean)
   {
-    long l1 = System.currentTimeMillis();
-    DanceLog.b("GLFrameImage", "asyncLoadBoyTexture start loading");
-    GLFrameImage.h();
-    long l2 = System.currentTimeMillis();
-    DanceLog.b("GLFrameImage", "asyncLoadBoyTexture end loading timeCost=" + (l2 - l1));
+    if (paramBoolean) {
+      bkjn.a(this.a.getActivity());
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiap
  * JD-Core Version:    0.7.0.1
  */

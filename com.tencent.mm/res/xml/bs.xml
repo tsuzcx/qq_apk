@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:title="@string/egt" android:key="settings_my_username" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:summary="@string/eej" android:title="@string/eeg" android:key="settings_show_username" />
+</PreferenceScreen>

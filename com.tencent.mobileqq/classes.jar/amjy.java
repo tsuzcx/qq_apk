@@ -1,24 +1,56 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponentFactory;
-import cooperation.comic.ui.QQComicFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import java.lang.ref.WeakReference;
 
-public class amjy
-  implements SwiftBrowserComponentsProvider.SwiftBrowserComponentFactory
+class amjy
+  extends altm
 {
-  public amjy(QQComicFragment paramQQComicFragment) {}
+  amjy(amjx paramamjx) {}
   
-  public Object a(int paramInt)
+  protected void onReqLastChatTime(boolean paramBoolean, String paramString1, String paramString2, Long paramLong)
   {
-    switch (paramInt)
+    int j = 1;
+    alto localalto;
+    int i;
+    Object localObject;
+    if (paramBoolean)
     {
-    default: 
-      return null;
+      localalto = (alto)this.a.a.getManager(51);
+      ExtensionInfo localExtensionInfo = localalto.a(paramString2, true);
+      i = 0;
+      localObject = localExtensionInfo;
+      if (localExtensionInfo == null)
+      {
+        localObject = new ExtensionInfo();
+        ((ExtensionInfo)localObject).uin = paramString2;
+        i = 1;
+      }
+      if (((ExtensionInfo)localObject).lastIceBreakChatTs >= paramLong.longValue()) {
+        break label152;
+      }
+      ((ExtensionInfo)localObject).lastIceBreakChatTs = paramLong.longValue();
+      i = j;
     }
-    return new amjz(this.a);
+    label152:
+    for (;;)
+    {
+      if (i != 0) {
+        localalto.a((ExtensionInfo)localObject);
+      }
+      if (amjx.a(this.a) == null) {}
+      for (localObject = null;; localObject = (amkb)amjx.a(this.a).get())
+      {
+        if (localObject != null) {
+          ((amkb)localObject).a(paramBoolean, paramString1, paramString2, paramLong);
+        }
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjy
  * JD-Core Version:    0.7.0.1
  */

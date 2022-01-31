@@ -1,21 +1,38 @@
-import android.os.Bundle;
-import cooperation.qqdataline.ipc.DatalineRemoteManager;
-import java.util.ArrayList;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.RspBody;
 
-public class amot
-  implements Runnable
+class amot
+  implements amoz
 {
-  public amot(DatalineRemoteManager paramDatalineRemoteManager, Bundle paramBundle) {}
+  amot(amos paramamos) {}
   
-  public void run()
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, oidb_cmd0xe27.RspBody paramRspBody)
   {
-    DatalineRemoteManager.a(this.jdField_a_of_type_CooperationQqdatalineIpcDatalineRemoteManager, this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_CooperationQqdatalineIpcDatalineRemoteManager.a.add(this.jdField_a_of_type_AndroidOsBundle);
+    long l = paramRspBody.uint32_test_keep_silence_sec.get();
+    paramToServiceMsg = this.a;
+    if (l <= 0L) {}
+    for (boolean bool = true;; bool = false)
+    {
+      amos.a(paramToServiceMsg, bool);
+      if (l > 0L)
+      {
+        amos.a(this.a).removeMessages(6);
+        amos.a(this.a).sendEmptyMessageDelayed(6, l);
+        if (QLog.isColorLevel()) {
+          QLog.d("FrontBackReportManager", 2, "receive keep silence");
+        }
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amot
  * JD-Core Version:    0.7.0.1
  */

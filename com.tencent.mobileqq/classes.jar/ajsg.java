@@ -1,9 +1,6 @@
-public class ajsg
+public abstract interface ajsg
 {
-  int jdField_a_of_type_Int;
-  CharSequence jdField_a_of_type_JavaLangCharSequence;
-  int b;
-  int c;
+  public abstract void c(int paramInt);
 }
 
 

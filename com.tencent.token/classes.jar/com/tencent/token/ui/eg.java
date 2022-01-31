@@ -1,21 +1,22 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.webkit.WebView;
 
-final class eg
-  implements DialogInterface.OnCancelListener
+class eg
+  implements View.OnClickListener
 {
-  eg(ee paramee) {}
+  eg(EmbedWebBaseActivity paramEmbedWebBaseActivity) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    FacePKCameraActivity.access$600(this.b.a).a(true);
-    FacePKCameraActivity.access$600(this.b.a).a();
-    FacePKCameraActivity.access$002(this.b.a, false);
-    if (!this.a) {
-      this.b.a.finish();
+    if (this.a.mWebView.canGoBack())
+    {
+      this.a.mWebView.goBack();
+      return;
     }
+    this.a.finish();
   }
 }
 

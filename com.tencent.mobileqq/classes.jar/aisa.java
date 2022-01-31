@@ -1,55 +1,24 @@
-import android.text.TextUtils;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
-import com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo;
-import com.tencent.mobileqq.mqsafeedit.MD5;
-import com.tencent.mobileqq.transfile.VasExtensionDownloader;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import java.util.ArrayList;
 
-public class aisa
-  implements Runnable
+class aisa
+  implements zao
 {
-  public aisa(VasExtensionDownloader paramVasExtensionDownloader, FavoriteEmoticonInfo paramFavoriteEmoticonInfo) {}
+  aisa(airz paramairz, LocalMediaInfo paramLocalMediaInfo) {}
   
-  public void run()
+  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localObject instanceof AppInterface)) {}
-    CustomEmotionData localCustomEmotionData;
-    do
-    {
-      return;
-      localObject = (FavroamingDBManager)((AppInterface)localObject).getManager(148);
-      localCustomEmotionData = ((FavroamingDBManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo.e);
-    } while ((localCustomEmotionData == null) || (!new File(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo.d).exists()));
-    if ("needDownload".equals(localCustomEmotionData.RomaingType)) {
-      localCustomEmotionData.RomaingType = "isUpdate";
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("VasExtensionDownloader", 2, "update CustomEmotionData romaing type  isUpdate, path: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo.d);
-      }
-      if ((TextUtils.isEmpty(localCustomEmotionData.md5)) && (!TextUtils.isEmpty(localCustomEmotionData.emoPath)))
-      {
-        localCustomEmotionData.md5 = HexUtil.bytes2HexStr(MD5.getFileMd5(localCustomEmotionData.emoPath));
-        if (QLog.isColorLevel()) {
-          QLog.i("VasExtensionDownloader", 2, "update CustomEmotionData md5 , path: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo.d);
-        }
-      }
-      if ("needDel".equals(localCustomEmotionData.RomaingType)) {
-        break;
-      }
-      ((FavroamingDBManager)localObject).b(localCustomEmotionData);
-      return;
-      if ("overflow".equals(localCustomEmotionData.RomaingType)) {
-        localCustomEmotionData.RomaingType = "overflow_downloaded";
-      }
-    }
+    ((NewPhotoListActivity)this.jdField_a_of_type_Airz.a.mActivity).cancleProgressDailog();
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("KEY_VIDEO_STORY_CAPTYRE_FRAMES_SIZE", paramLong);
+    localBundle.putBoolean("VIDEO_STORY_PHOTO_LIST_TO_EDIT", true);
+    localBundle.putSerializable("KEY_VIDEO_STORY_CAPTYRE_FRAMES", paramArrayList);
+    ((NewPhotoListActivity)this.jdField_a_of_type_Airz.a.mActivity).getIntent().putExtra("VIDEO_STORY_MEDIA_TYPE", 100);
+    airx.a(this.jdField_a_of_type_Airz.a, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, localBundle);
   }
 }
 

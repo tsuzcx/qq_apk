@@ -1,27 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a0047" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02015c" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803eb" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_weight="0.0" />
-    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803ec" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="7.0dip">
-            <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803ed" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02059c" android:layout_width="7.0dip" android:layout_height="7.0dip" />
-            <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803ee" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02059c" android:layout_width="7.0dip" android:layout_height="7.0dip" android:layout_marginLeft="5.0dip" />
-            <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803ef" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02059c" android:layout_width="7.0dip" android:layout_height="7.0dip" android:layout_marginLeft="5.0dip" />
-        </LinearLayout>
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="7.0dip" android:layout_marginTop="5.0dip">
-            <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803f0" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02059c" android:layout_width="7.0dip" android:layout_height="7.0dip" />
-            <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803f1" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02059c" android:layout_width="7.0dip" android:layout_height="7.0dip" android:layout_marginLeft="5.0dip" />
-            <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803f2" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02059c" android:layout_width="7.0dip" android:layout_height="7.0dip" android:layout_marginLeft="5.0dip" />
-        </LinearLayout>
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="7.0dip" android:layout_marginTop="5.0dip">
-            <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803f3" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02059c" android:layout_width="7.0dip" android:layout_height="7.0dip" />
-            <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803f4" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02059c" android:layout_width="7.0dip" android:layout_height="7.0dip" android:layout_marginLeft="5.0dip" />
-            <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803f5" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02059c" android:layout_width="7.0dip" android:layout_height="7.0dip" android:layout_marginLeft="5.0dip" />
-        </LinearLayout>
-    </LinearLayout>
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803f6" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_weight="0.0" />
-    <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a000c" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803f7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" android:layout_marginTop="0.0dip" android:layout_marginRight="40.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0e09" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803f8" android:layout_width="fill_parent" android:layout_height="15.0dip" android:layout_weight="0.0" />
-    <com.tencent.mobileqq.gesturelock.LockPatternView android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803f9" android:layout_width="288.0dip" android:layout_height="288.0dip" android:layout_marginTop="0.0dip" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803fa" android:layout_width="fill_parent" android:layout_height="150.0dip" android:layout_weight="1.0" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f08028e" android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030076" />
+    <com.tencent.widget.PinnedHeaderExpandableListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803ec" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02015c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scrollingCache="false" android:cacheColorHint="#00000000" android:groupIndicator="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020181" android:indicatorLeft="16.0dip" android:indicatorRight="28.0dip" android:divider="@null" />
 </LinearLayout>

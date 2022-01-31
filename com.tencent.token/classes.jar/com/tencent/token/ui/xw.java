@@ -1,21 +1,22 @@
 package com.tencent.token.ui;
 
-import android.widget.EditText;
-import com.tencent.token.af;
+import java.util.List;
 
-final class xw
-  implements Runnable
+class xw
+  implements dy
 {
-  xw(xv paramxv) {}
+  xw(RealNameTakeIDPhotoActivity paramRealNameTakeIDPhotoActivity) {}
   
-  public final void run()
+  public void a()
   {
-    if (this.a.a)
-    {
-      af.a().a(0L, RealNameStep1InputNameIdActivity.access$1500(this.a.b), 3, RealNameStep1InputNameIdActivity.access$1600(this.a.b).getText().toString(), RealNameStep1InputNameIdActivity.access$1700(this.a.b).getText().toString(), null, null, null, RealNameStep1InputNameIdActivity.access$1800(this.a.b), RealNameStep1InputNameIdActivity.access$1900(this.a.b), RealNameStep1InputNameIdActivity.access$2000(this.a.b));
-      return;
-    }
-    af.a().a(0L, RealNameStep1InputNameIdActivity.access$1500(this.a.b), RealNameStep1InputNameIdActivity.access$000(this.a.b), RealNameStep1InputNameIdActivity.access$1600(this.a.b).getText().toString(), RealNameStep1InputNameIdActivity.access$1700(this.a.b).getText().toString(), RealNameStep1InputNameIdActivity.access$2300(this.a.b), RealNameStep1InputNameIdActivity.access$2500(this.a.b, RealNameStep1InputNameIdActivity.access$2400(this.a.b)), RealNameStep1InputNameIdActivity.access$2500(this.a.b, RealNameStep1InputNameIdActivity.access$2600(this.a.b)), RealNameStep1InputNameIdActivity.access$1800(this.a.b), RealNameStep1InputNameIdActivity.access$1900(this.a.b), RealNameStep1InputNameIdActivity.access$2000(this.a.b));
+    RealNameTakeIDPhotoActivity.access$500(this.a).a(this.a, RealNameTakeIDPhotoActivity.access$300(this.a));
+    RealNameTakeIDPhotoActivity.access$500(this.a).setVisibility(0);
+  }
+  
+  public void a(List paramList)
+  {
+    RealNameTakeIDPhotoActivity.access$500(this.a).a(this.a, RealNameTakeIDPhotoActivity.access$300(this.a));
+    RealNameTakeIDPhotoActivity.access$500(this.a).setVisibility(0);
   }
 }
 

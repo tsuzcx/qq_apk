@@ -1,44 +1,44 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.model.NetSearchTemplateMovieItem;
-import com.tencent.mobileqq.search.presenter.SearchTemplatePresenter;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
-public class ahup
-  implements View.OnClickListener
+class ahup
+  implements bhtv
 {
-  public ahup(SearchTemplatePresenter paramSearchTemplatePresenter, NetSearchTemplateMovieItem paramNetSearchTemplateMovieItem) {}
+  ahup(ahuo paramahuo) {}
   
-  public void onClick(View paramView)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateMovieItem.e))
-    {
-      localObject = JumpParser.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateMovieItem.e);
-      if (localObject == null) {
-        break label47;
-      }
-      ((JumpAction)localObject).b();
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.RecommendsAdapter", 2, "onScrollStateChanged firstVisibleItem: " + paramInt1 + " visibleItemCount: " + paramInt2 + " totalItemCount: " + paramInt3);
     }
-    label47:
-    while ((!this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateMovieItem.e.startsWith("http://")) && (!this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateMovieItem.e.startsWith("https://"))) {
+    if ((paramInt1 >= 1) && (paramInt1 - 1 >= 0) && (paramInt1 - 1 < this.a.getCount()))
+    {
+      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1 - 1);
+      if (paramAbsListView != null) {
+        this.a.a.b(paramAbsListView, 24, 0, 1);
+      }
+    }
+    if ((paramInt1 + paramInt2 < paramInt3) && (paramInt1 + paramInt2 >= 0) && (paramInt1 + paramInt2 < this.a.getCount()))
+    {
+      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1 + paramInt2);
+      if (paramAbsListView != null) {
+        this.a.a.b(paramAbsListView, 24, 0, 1);
+      }
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt != 0) {
       return;
     }
-    paramView = paramView.getContext();
-    Object localObject = new Intent(paramView, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateMovieItem.e);
-    paramView.startActivity((Intent)localObject);
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahup
  * JD-Core Version:    0.7.0.1
  */

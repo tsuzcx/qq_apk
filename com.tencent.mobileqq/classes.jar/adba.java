@@ -1,70 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.discoperation.DiscFileOperator;
-import com.tencent.mobileqq.filemanager.discoperation.FileHttpUtils;
-import com.tencent.mobileqq.filemanager.discoperation.FileReportData;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 
 public class adba
-  implements Runnable
+  implements ImageAssetDelegate
 {
-  public adba(DiscFileOperator paramDiscFileOperator) {}
+  public adba(FriendProfileCardActivity.ColorScreenLoader paramColorScreenLoader) {}
   
-  public void run()
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DiscFileOperator<FileAssistant>", 1, "run sendFile:" + MessageCache.a());
-    }
-    if (!NetworkUtil.d(BaseApplication.getContext()))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 1, null, 2, null);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDiscoperationFileReportData.a = 9004L;
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDiscoperationFileReportData.jdField_c_of_type_JavaLangString = "NoNetWork";
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDiscoperationFileReportData.b();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    }
-    do
-    {
-      return;
-      if (this.a.jdField_a_of_type_Boolean)
-      {
-        QLog.w("DiscFileOperator<FileAssistant>", 1, "nID[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] user canceled!");
-        return;
-      }
-      String str1 = null;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5 == null) || (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5.length() != 32))
-      {
-        str1 = FileHttpUtils.a(FileManagerUtil.c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath()));
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5 = str1;
-      }
-      String str2 = null;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5 == null) || (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5.length() != 40))
-      {
-        str2 = FileHttpUtils.a(FileManagerUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath()));
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA = str2;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDiscoperationFileReportData.e = str1;
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDiscoperationFileReportData.f = str2;
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDiscoperationFileReportData.jdField_c_of_type_Long = System.currentTimeMillis();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a);
-    } while (!QLog.isColorLevel());
-    QLog.i("DiscFileOperator<FileAssistant>", 1, "nID[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]Send CS Request!");
+    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adba
  * JD-Core Version:    0.7.0.1
  */

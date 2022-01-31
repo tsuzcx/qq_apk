@@ -1,9 +1,13 @@
-import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
-
-public final class anid
-  implements IHttpCommunicatorFlowCount
+public class anid
 {
-  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  public int a;
+  public String a;
+  
+  public anid(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

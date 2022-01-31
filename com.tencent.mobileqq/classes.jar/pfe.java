@@ -1,20 +1,18 @@
-import com.tencent.common.galleryactivity.GalleryManager;
-
-public class pfe
-  implements Runnable
+class pfe
+  implements pfa
 {
-  public pfe(GalleryManager paramGalleryManager) {}
+  pfe(pfd parampfd) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractAnimationManager.c = false;
-    GalleryManager.a(this.a, this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene);
-    this.a.a(true);
+    if (this.a.a(paramInt) == null) {
+      this.a.c(paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pfe
  * JD-Core Version:    0.7.0.1
  */

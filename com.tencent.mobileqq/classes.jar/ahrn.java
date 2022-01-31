@@ -1,32 +1,29 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import java.lang.ref.WeakReference;
 
-public class ahrn
-  extends SosoInterface.OnLocationListener
+class ahrn
+  implements View.OnLongClickListener
 {
-  public ahrn(ActiveEntitySearchActivity paramActiveEntitySearchActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  private WeakReference<ahri> a;
+  
+  public ahrn(ahri paramahri)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.a = new WeakReference(paramahri);
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public boolean onLongClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, "onLocationFinish() errCode=" + paramInt);
+    ahri localahri = (ahri)this.a.get();
+    if (localahri != null) {
+      return localahri.onLongClick(paramView);
     }
-    if ((paramInt != 0) || (paramSosoLbsInfo == null) || (paramSosoLbsInfo.a == null)) {
-      return;
-    }
-    com.tencent.mobileqq.search.activity.UniteSearchActivity.a = paramSosoLbsInfo.a.a;
-    com.tencent.mobileqq.search.activity.UniteSearchActivity.b = paramSosoLbsInfo.a.b;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahrn
  * JD-Core Version:    0.7.0.1
  */

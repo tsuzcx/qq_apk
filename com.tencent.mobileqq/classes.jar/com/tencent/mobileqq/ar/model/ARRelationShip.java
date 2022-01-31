@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.model;
 
-import aakr;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anfk;
 
 public class ARRelationShip
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aakr();
+  public static final Parcelable.Creator<ARRelationShip> CREATOR = new anfk();
   public long a;
   public String a;
   public String b;
@@ -72,7 +72,7 @@ public class ARRelationShip
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.ARRelationShip
  * JD-Core Version:    0.7.0.1
  */

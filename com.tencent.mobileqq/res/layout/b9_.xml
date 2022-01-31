@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/c0o" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="4.0dip" android:src="@drawable/com" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="4.0dip">
+        <TextView android:textSize="14.0sp" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/f5e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="150.0dip" android:text="hahahahahahahahahhahahaha" android:maxLines="1" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <Button android:textColor="@color/skin_black" android:id="@id/bfq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/r9q" android:layout_alignParentRight="true" android:layout_centerHorizontal="true" style="@style/i9" />
+    </RelativeLayout>
+</LinearLayout>

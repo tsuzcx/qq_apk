@@ -1,26 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.leba.QZoneEntryController;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.service.qzone.QZoneUnreadServletLogic;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
 
-class aeav
-  implements Runnable
+public class aeav
+  implements bcyb
 {
-  aeav(aeau paramaeau, QZoneManagerImp paramQZoneManagerImp) {}
+  public aeav(TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void run()
+  public void a() {}
+  
+  public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqServletQZoneManagerImp.c(53);
-    Map localMap = QZoneUnreadServletLogic.a(Long.valueOf(this.jdField_a_of_type_Aeau.a.a.getLongAccountUin()));
-    Object localObject = localMap;
-    if (localMap == null) {
-      localObject = new HashMap();
-    }
-    ((Map)localObject).put(Long.valueOf(53L), Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-    QZoneUnreadServletLogic.a((Map)localObject, Long.valueOf(this.jdField_a_of_type_Aeau.a.a.getLongAccountUin()));
+    Message localMessage = this.a.a.obtainMessage(20);
+    this.a.a.sendMessage(localMessage);
   }
 }
 

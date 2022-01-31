@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class MarketFaceMsg$MarketFaceRec
-  extends MessageMicro
+  extends MessageMicro<MarketFaceRec>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_face_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -34,7 +34,7 @@ public final class MarketFaceMsg$MarketFaceRec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     localpb.richMsg.MarketFaceMsg.MarketFaceRec
  * JD-Core Version:    0.7.0.1
  */

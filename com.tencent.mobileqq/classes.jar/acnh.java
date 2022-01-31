@@ -1,61 +1,62 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
-import com.tencent.widget.BubblePopupWindow;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import java.util.List;
 
 public class acnh
-  implements SlideDetectListView.OnSlideListener
+  implements auqa
 {
-  public acnh(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public acnh(ChatHistoryFileActivity paramChatHistoryFileActivity, aupt paramaupt, auqc paramauqc, List paramList) {}
   
-  public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  public void a()
   {
-    if (this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
-      this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a();
-    }
-    if (!this.a.b())
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(null);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
-      paramView.setPressed(false);
-    }
-    do
-    {
-      return;
-      paramSlideDetectListView = paramView.findViewById(2131362741);
-      paramView = (FileInfo)this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.getItem(paramInt);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(paramView);
-    } while (paramSlideDetectListView == null);
-    paramView = (Button)paramSlideDetectListView.findViewById(2131364602);
-    paramView.setTag(Integer.valueOf(paramInt));
-    paramView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-    ((ShaderAnimLayout)paramSlideDetectListView).a();
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setDeleteAreaDim(paramSlideDetectListView.getLayoutParams().width, paramSlideDetectListView.getLayoutParams().height);
+    this.jdField_a_of_type_Aupt.a(new acni(this));
+    this.jdField_a_of_type_Aupt.show();
   }
   
-  public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  public void a(aupy paramaupy)
   {
-    paramSlideDetectListView = paramView.findViewById(2131362741);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(null);
-    if (paramSlideDetectListView != null)
-    {
-      ((ShaderAnimLayout)paramSlideDetectListView).e();
-      paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131364602);
-      paramSlideDetectListView.setTag(null);
-      paramSlideDetectListView.setOnClickListener(null);
+    if ((paramaupy != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.isFinishing())) {
+      switch (paramaupy.a)
+      {
+      }
     }
-    LocalFileBrowserActivity.a(this.a);
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Aupt.isShowing()) {
+        this.jdField_a_of_type_Aupt.dismiss();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
+      this.jdField_a_of_type_Auqc.b();
+      return;
+      aupz.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
+      continue;
+      aupz.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
+      continue;
+      aupz.c(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
+    }
+  }
+  
+  public void a(aupy paramaupy, int paramInt)
+  {
+    this.jdField_a_of_type_Aupt.a(paramInt);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Aupt.isShowing()) {
+      this.jdField_a_of_type_Aupt.dismiss();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
+    this.jdField_a_of_type_Auqc.b();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Auqc.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity, this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acnh
  * JD-Core Version:    0.7.0.1
  */

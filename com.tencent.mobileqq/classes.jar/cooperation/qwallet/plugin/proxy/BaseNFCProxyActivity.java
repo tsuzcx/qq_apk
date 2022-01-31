@@ -1,5 +1,6 @@
 package cooperation.qwallet.plugin.proxy;
 
+import alud;
 import android.annotation.TargetApi;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -7,9 +8,9 @@ import android.content.IntentFilter;
 import android.nfc.NfcAdapter;
 import android.nfc.NfcAdapter.ReaderCallback;
 import android.os.Bundle;
+import bdgm;
+import bdjz;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.buscard.BuscardHelper;
 
@@ -26,10 +27,10 @@ public class BaseNFCProxyActivity
   
   private void showNoNfcDialog(String paramString1, String paramString2)
   {
-    DialogUtil.a(this, 0, paramString1, paramString2, "下次再说", "设置", new BaseNFCProxyActivity.1(this), new BaseNFCProxyActivity.2(this)).show();
+    bdgm.a(this, 0, paramString1, paramString2, alud.a(2131701426), alud.a(2131701427), new BaseNFCProxyActivity.1(this), new BaseNFCProxyActivity.2(this)).show();
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     this.nfcAdapter = NfcAdapter.getDefaultAdapter(this);
@@ -56,7 +57,7 @@ public class BaseNFCProxyActivity
     }
   }
   
-  protected void onPause()
+  public void onPause()
   {
     BuscardHelper.a(this, true, getIntent().getStringExtra("buscard_pluginNewNfcAPIFlag"), getIntent().getStringExtra("buscard_pluginNewNfcAPIBlackModel"));
     if (QLog.isColorLevel()) {
@@ -65,7 +66,7 @@ public class BaseNFCProxyActivity
     super.onPause();
   }
   
-  protected void onResume()
+  public void onResume()
   {
     BuscardHelper.a(this, true, getIntent().getStringExtra("buscard_pluginNewNfcAPIFlag"), getIntent().getStringExtra("buscard_pluginNewNfcAPIBlackModel"), null);
     if (QLog.isColorLevel()) {
@@ -76,7 +77,7 @@ public class BaseNFCProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qwallet.plugin.proxy.BaseNFCProxyActivity
  * JD-Core Version:    0.7.0.1
  */

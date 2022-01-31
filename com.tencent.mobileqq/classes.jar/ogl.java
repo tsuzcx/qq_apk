@@ -1,35 +1,79 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.EditVideoPoiSearch;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
+import com.tencent.qphone.base.util.QLog;
 
 public class ogl
-  implements TextWatcher
+  extends NativeText
 {
-  public ogl(EditVideoPoiSearch paramEditVideoPoiSearch) {}
+  protected String a;
   
-  public void afterTextChanged(Editable paramEditable)
+  public ogl(VafContext paramVafContext)
   {
-    EditVideoPartManager localEditVideoPartManager = this.a.a;
-    if (this.a.a.a()) {}
-    for (paramEditable = "2";; paramEditable = "1")
+    super(paramVafContext);
+    QLog.d("ReadInJoyIconText", 2, "ReadInJoyIconText create");
+  }
+  
+  public boolean setAttribute(int paramInt, String paramString)
+  {
+    QLog.d("ReadInJoyIconText", 2, "key ->" + paramInt + " , value = " + paramString);
+    if (paramInt == 1083)
     {
-      localEditVideoPartManager.a("search_poi", 0, 0, new String[] { paramEditable });
-      VideoEditReport.a("0X80076D1");
-      VideoEditReport.b("0X80075E6");
-      EditVideoPoiSearch.a(this.a);
-      return;
+      if (paramString != null)
+      {
+        this.a = paramString;
+        setDrawableLeft(null);
+      }
+      return true;
+    }
+    if (paramInt == 1084) {
+      if (paramString != null)
+      {
+        int i = Utils.dp2px(npd.a(paramString, 0));
+        this.mNative.setCompoundDrawablePadding(i);
+      }
+    }
+    for (;;)
+    {
+      return super.setAttribute(paramInt, paramString);
+      if (paramInt == 48)
+      {
+        Float localFloat = Utils.toFloat(paramString);
+        if (localFloat != null)
+        {
+          this.mAlpha = localFloat.floatValue();
+          getNativeView().setAlpha(this.mAlpha);
+        }
+        else
+        {
+          QLog.d("ReadInJoyIconText", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
+        }
+      }
     }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void setDrawableLeft(String paramString)
+  {
+    QLog.d("ReadInJoyIconText", 2, "setDrawableLeft drawableLeftPath->" + this.drawableLeftPath + " , drawableRightPath = " + this.a);
+    if (this.drawableLeftPath != null) {}
+    for (paramString = DrawableUtil.getDrawable(this.mNative.getContext(), this.drawableLeftPath, (Drawable)null, (Drawable)null);; paramString = null)
+    {
+      if (this.a != null) {}
+      for (Drawable localDrawable = DrawableUtil.getDrawable(this.mNative.getContext(), this.a, (Drawable)null, (Drawable)null);; localDrawable = null)
+      {
+        this.mNative.setCompoundDrawablesWithIntrinsicBounds(paramString, (Drawable)null, localDrawable, (Drawable)null);
+        return;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ogl
  * JD-Core Version:    0.7.0.1
  */

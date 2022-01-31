@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.CheckListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
 
-class adtt
-  implements GroupVideoManager.CheckListener
+public class adtt
+  implements bibb
 {
-  adtt(adts paramadts) {}
+  public adtt(RecommendFriendActivity paramRecommendFriendActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void a(View paramView)
   {
-    if ((!paramBoolean) && (!GroupVideoLoadingFragment.a) && (GroupVideoManager.a(this.a.a) != null)) {
-      this.a.a.a(GroupVideoManager.a(this.a.a).getApp(), "", GroupVideoManager.a(this.a.a).getCurrentAccountUin(), 0, "slientDownload", "", "", null, null, null);
-    }
+    RecommendFriendActivity.a(this.a, false);
+  }
+  
+  public void b(View paramView)
+  {
+    RecommendFriendActivity.a(this.a, true);
   }
 }
 

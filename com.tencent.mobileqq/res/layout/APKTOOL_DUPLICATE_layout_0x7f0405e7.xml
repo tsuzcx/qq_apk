@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:id="@id/group_item_layout" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020468" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0394"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckBox android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a05c3" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020483" android:visibility="visible" android:clickable="false" android:layout_width="17.0dip" android:layout_height="17.0dip" android:layout_marginLeft="15.0dip" android:button="@null" android:scaleType="center" />
-    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d038b" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0548" android:id="@id/group_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:maxWidth="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d00f3" android:text="我的好友" android:includeFontPadding="false" />
-    <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <TextView android:textSize="12.0sp" android:textColor="#ffa7a7a7" android:id="@id/contact_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" />
-</LinearLayout>

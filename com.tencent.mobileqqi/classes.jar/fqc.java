@@ -1,118 +1,51 @@
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import com.tencent.mobileqq.widget.PinnedDividerListView.DividerAdapter;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
 public class fqc
-  extends PinnedDividerListView.DividerAdapter
+  extends FMObserver
 {
-  private static final int jdField_a_of_type_Int = 0;
-  private static final int b = 1;
-  private static final int c = 2;
+  public fqc(FMActivity paramFMActivity) {}
   
-  private fqc(CountrySelectActivity paramCountrySelectActivity) {}
-  
-  public int a()
+  protected void a()
   {
-    return 2130903305;
+    super.a();
+    this.a.runOnUiThread(new fqg(this));
   }
   
-  public void a(View paramView, int paramInt)
+  protected void a(boolean paramBoolean)
   {
-    paramView = (TextView)paramView;
-    Object localObject = getItem(paramInt);
-    if ((localObject instanceof fqd)) {
-      paramView.setText(((fqd)localObject).jdField_a_of_type_JavaLangString);
-    }
-    while (!(localObject instanceof BaseAddress)) {
+    if (this.a.d) {
       return;
     }
-    paramView.setText(((BaseAddress)localObject).d);
+    this.a.runOnUiThread(new fqh(this, paramBoolean));
   }
   
-  public boolean a(int paramInt)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    return getItemViewType(paramInt) == 0;
+    this.a.runOnUiThread(new fqd(this));
   }
   
-  public int getCount()
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    return this.a.a.size();
+    this.a.runOnUiThread(new fqe(this, paramLong2));
   }
   
-  public Object getItem(int paramInt)
+  protected void b(int paramInt, String paramString)
   {
-    return this.a.a.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if ((this.a.a.get(paramInt) instanceof fqd)) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (getItemViewType(paramInt) == 0)
-    {
-      if (paramView != null) {
-        break label246;
-      }
-      paramView = this.a.getLayoutInflater().inflate(a(), null);
-    }
-    label246:
-    for (;;)
-    {
-      ((TextView)paramView).setText(((fqd)getItem(paramInt)).jdField_a_of_type_JavaLangString);
-      return paramView;
-      paramViewGroup = paramView;
-      if (paramView == null)
-      {
-        paramViewGroup = this.a.getLayoutInflater().inflate(2130903306, null);
-        paramView = new fqe(null);
-        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131232034));
-        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131232035));
-        paramViewGroup.findViewById(2131232013).setVisibility(8);
-        paramViewGroup.setTag(paramView);
-        paramViewGroup.setOnClickListener(this.a);
-      }
-      paramView = (fqe)paramViewGroup.getTag();
-      BaseAddress localBaseAddress = (BaseAddress)getItem(paramInt);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localBaseAddress.jdField_a_of_type_JavaLangString);
-      if ((!TextUtils.isEmpty(this.a.c)) && (this.a.c.equals(localBaseAddress.b))) {
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      }
-      for (;;)
-      {
-        paramView.jdField_a_of_type_JavaLangString = localBaseAddress.b;
-        paramViewGroup.setContentDescription(localBaseAddress.jdField_a_of_type_JavaLangString + "，触摸两次选中");
-        return paramViewGroup;
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      }
+    if (!this.a.d) {
+      FMToastUtil.a(paramString);
     }
   }
   
-  public int getViewTypeCount()
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    return 2;
+    this.a.runOnUiThread(new fqf(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fqc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArWebInfo;
 
-public class anfs
-  extends Handler
+public final class anfs
+  implements Parcelable.Creator<ArWebInfo>
 {
-  public anfs(TroopHWJsPlugin paramTroopHWJsPlugin) {}
-  
-  public void handleMessage(Message paramMessage)
+  public ArWebInfo a(Parcel paramParcel)
   {
-    switch (paramMessage.what)
-    {
-    case 2: 
-    default: 
-      return;
-    case 0: 
-      QQToast.a(BaseApplicationImpl.getContext(), 2131430622, 0).a();
-      return;
-    case 1: 
-      QQToast.a(BaseApplicationImpl.getContext(), 2131430621, 0).a();
-      return;
-    case 3: 
-      QQToast.a(BaseApplicationImpl.getContext(), 2131430623, 0).a();
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 2131430624, 0).a();
+    return new ArWebInfo(paramParcel);
+  }
+  
+  public ArWebInfo[] a(int paramInt)
+  {
+    return new ArWebInfo[paramInt];
   }
 }
 

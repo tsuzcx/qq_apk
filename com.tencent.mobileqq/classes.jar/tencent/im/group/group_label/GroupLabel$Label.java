@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class GroupLabel$Label
-  extends MessageMicro
+  extends MessageMicro<Label>
 {
   public static final int BYTES_NAME_FIELD_NUMBER = 1;
   public static final int EDGING_COLOR_FIELD_NUMBER = 4;
@@ -33,7 +33,7 @@ public final class GroupLabel$Label
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.group.group_label.GroupLabel.Label
  * JD-Core Version:    0.7.0.1
  */

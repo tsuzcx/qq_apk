@@ -1,0 +1,99 @@
+package com.tencent.mm.plugin.profile.ui.newbizinfo;
+
+import android.content.Context;
+import android.text.method.LinkMovementMethod;
+import android.util.AttributeSet;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.d.j;
+import com.tencent.mm.protocal.protobuf.ka;
+import com.tencent.mm.protocal.protobuf.lj;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.preference.Preference;
+
+public class NewBizInfoLoadingPreference
+  extends Preference
+{
+  private MMActivity cmc;
+  private View gcq;
+  private TextView hsI;
+  private boolean lJS;
+  private ProgressBar nbP;
+  private boolean pDF;
+  private lj pDf;
+  private int state;
+  
+  public NewBizInfoLoadingPreference(Context paramContext, AttributeSet paramAttributeSet)
+  {
+    super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(23864);
+    this.pDF = false;
+    this.state = 1;
+    this.lJS = false;
+    this.cmc = ((MMActivity)paramContext);
+    this.lJS = false;
+    AppMethodBeat.o(23864);
+  }
+  
+  public NewBizInfoLoadingPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  {
+    super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(23865);
+    this.pDF = false;
+    this.state = 1;
+    this.lJS = false;
+    this.cmc = ((MMActivity)paramContext);
+    this.lJS = false;
+    AppMethodBeat.o(23865);
+  }
+  
+  public final void onBindView(View paramView)
+  {
+    AppMethodBeat.i(23866);
+    this.gcq = paramView.findViewById(2131823145);
+    this.hsI = ((TextView)paramView.findViewById(2131823147));
+    this.nbP = ((ProgressBar)paramView.findViewById(2131823146));
+    this.lJS = true;
+    if (this.lJS)
+    {
+      if (this.state == 1)
+      {
+        this.gcq.setVisibility(0);
+        this.nbP.setVisibility(0);
+        this.hsI.setVisibility(8);
+        AppMethodBeat.o(23866);
+        return;
+      }
+      if (this.state == 2)
+      {
+        this.gcq.setVisibility(0);
+        paramView = j.d(this.cmc, this.pDf.wzH.wwI, (int)this.hsI.getTextSize());
+        this.hsI.setText(paramView);
+        this.hsI.setMovementMethod(LinkMovementMethod.getInstance());
+        this.hsI.setVisibility(0);
+        this.nbP.setVisibility(8);
+        AppMethodBeat.o(23866);
+        return;
+      }
+      if (this.state == 3)
+      {
+        this.gcq.setVisibility(0);
+        this.hsI.setText(this.cmc.getString(2131298817));
+        this.hsI.setVisibility(0);
+        this.nbP.setVisibility(8);
+        AppMethodBeat.o(23866);
+        return;
+      }
+      this.gcq.setVisibility(8);
+    }
+    AppMethodBeat.o(23866);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+ * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.NewBizInfoLoadingPreference
+ * JD-Core Version:    0.7.0.1
+ */

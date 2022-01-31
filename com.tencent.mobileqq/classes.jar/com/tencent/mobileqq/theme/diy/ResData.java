@@ -4,10 +4,10 @@ public class ResData
 {
   static final String BUNDLE_KEY_INDEX = "index";
   static final String BUNDLE_KEY_TYPE = "type";
-  static final int RES_DATA_STATE_DEALED = 5;
+  public static final int RES_DATA_STATE_DEALED = 5;
   static final int RES_DATA_STATE_DEALING = 4;
   static final int RES_DATA_STATE_ERROR = -1;
-  static final int RES_DATA_STATE_INIT = 0;
+  public static final int RES_DATA_STATE_INIT = 0;
   static final int RES_DATA_STATE_LOADED = 2;
   static final int RES_DATA_STATE_LOADING = 1;
   static final int RES_DATA_STATE_OK = 2;
@@ -16,10 +16,10 @@ public class ResData
   public static final int RES_LOADING_TYPE_SETTING = 1;
   static final int RES_TYPE_JSON_BG = 100;
   static final int RES_TYPE_JSON_STYLE = 200;
-  static final int RES_TYPE_PIC_JPG_BG_BIG = 116;
+  public static final int RES_TYPE_PIC_JPG_BG_BIG = 116;
   static final int RES_TYPE_PIC_JPG_BG_BIG_ORG = 115;
   static final int RES_TYPE_PIC_JPG_BG_CUSTOM = 120;
-  static final int RES_TYPE_PIC_JPG_BG_CUSTOM_ORG = 121;
+  public static final int RES_TYPE_PIC_JPG_BG_CUSTOM_ORG = 121;
   static final int RES_TYPE_PIC_JPG_BG_PREVIEW = 110;
   static final int RES_TYPE_PIC_JPG_BG_THUM = 117;
   static final int RES_TYPE_PIC_JPG_STYLE_THUM = 202;
@@ -34,7 +34,7 @@ public class ResData
   String name;
   public String path;
   int resID;
-  int state;
+  public int state;
   public int type;
   public String url;
   
@@ -54,7 +54,7 @@ public class ResData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ResData
  * JD-Core Version:    0.7.0.1
  */

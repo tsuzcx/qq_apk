@@ -1,24 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
 
 public class aivl
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aivl(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, Bundle paramBundle) {}
+  public aivl(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.app == null) {
-      return;
-    }
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.app.getEntityManagerFactory().createEntityManager();
-    Setting localSetting = (Setting)localEntityManager.a(Setting.class, "troop_" + this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.a);
-    localEntityManager.a();
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.runOnUiThread(new aivm(this, localSetting));
+    this.a.getActivity().finish();
   }
 }
 

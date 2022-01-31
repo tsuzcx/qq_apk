@@ -6,18 +6,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.view.View;
-import cau;
-import cav;
-import caw;
-import cax;
-import cay;
-import caz;
-import cba;
-import cbb;
-import cbc;
-import cbd;
-import cbe;
-import cbf;
+import buz;
+import bva;
+import bvb;
+import bvc;
+import bvd;
+import bve;
+import bvf;
+import bvg;
+import bvh;
+import bvi;
+import bvj;
+import bvk;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
@@ -58,7 +58,7 @@ public class AssistantSettingActivity
   
   public AssistantSettingActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new cay(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bvd(this);
   }
   
   private void d()
@@ -89,34 +89,34 @@ public class AssistantSettingActivity
     for (;;)
     {
       this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
-      boolean bool = SettingCloneUtil.readValue(this, null, getString(2131563409), "qqsetting_screenshot_key", false);
+      boolean bool = SettingCloneUtil.readValue(this, null, getString(2131563437), "qqsetting_screenshot_key", false);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(bool);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new cau(this));
-      bool = SettingCloneUtil.readValue(this, null, getString(2131563423), "qqsetting_auto_receive_pic_key", true);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new buz(this));
+      bool = SettingCloneUtil.readValue(this, null, getString(2131563451), "qqsetting_auto_receive_pic_key", true);
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(bool);
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new caz(this));
-      bool = SettingCloneUtil.readValue(this, null, getString(2131563423), "qqsetting_auto_receive_magic_face_key", true);
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new bve(this));
+      bool = SettingCloneUtil.readValue(this, null, getString(2131563451), "qqsetting_auto_receive_magic_face_key", true);
       this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(bool);
-      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new cba(this));
-      bool = SettingCloneUtil.readValue(this, null, getString(2131563426), "qqsetting_enter_sendmsg_key", false);
+      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new bvf(this));
+      bool = SettingCloneUtil.readValue(this, null, getString(2131563454), "qqsetting_enter_sendmsg_key", false);
       this.d.setChecked(bool);
-      this.d.setOnCheckedChangeListener(new cbb(this));
+      this.d.setOnCheckedChangeListener(new bvg(this));
       bool = SettingCloneUtil.readValue(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), null, "qqsetting_all_contacts_key", false);
       this.e.setChecked(bool);
-      this.e.setOnCheckedChangeListener(new cbc(this));
+      this.e.setOnCheckedChangeListener(new bvh(this));
       bool = SettingCloneUtil.readValue(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), null, "qqsetting_msg_lockscreen_key", true);
       this.i.setChecked(bool);
-      this.i.setOnCheckedChangeListener(new cbd(this));
+      this.i.setOnCheckedChangeListener(new bvi(this));
       this.g.setVisibility(8);
       bool = PreferenceManager.getDefaultSharedPreferences(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).getBoolean("setting_aio_realtime_bg_open" + this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), false);
       this.f.setChecked(bool);
-      this.f.setOnCheckedChangeListener(new cbe(this));
-      bool = SettingCloneUtil.readValue(this, null, getString(2131563427), "qqsetting_notify_icon_key", false);
+      this.f.setOnCheckedChangeListener(new bvj(this));
+      bool = SettingCloneUtil.readValue(this, null, getString(2131563455), "qqsetting_notify_icon_key", false);
       this.h.setChecked(bool);
-      this.h.setOnCheckedChangeListener(new cbf(this));
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new cav(this));
-      this.jdField_b_of_type_AndroidViewView.setOnClickListener(new caw(this));
-      this.jdField_c_of_type_AndroidViewView.setOnClickListener(new cax(this));
+      this.h.setOnCheckedChangeListener(new bvk(this));
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new bva(this));
+      this.jdField_b_of_type_AndroidViewView.setOnClickListener(new bvb(this));
+      this.jdField_c_of_type_AndroidViewView.setOnClickListener(new bvc(this));
       this.jdField_a_of_type_AndroidViewView.setContentDescription("流量统计");
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription("摇动手机截屏");
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription("2G/3G/4G下自动接收图片");

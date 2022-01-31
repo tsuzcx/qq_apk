@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import android.os.Bundle;
 
-public class aeor
+public abstract interface aeor
 {
-  public String a;
-  public boolean a;
-  
-  aeor(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public abstract void a(boolean paramBoolean, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeor
  * JD-Core Version:    0.7.0.1
  */

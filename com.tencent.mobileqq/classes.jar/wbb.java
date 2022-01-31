@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel.GetListDataCallback;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class wbb
-  implements TroopAIORobotPanel.GetListDataCallback
+class wbb
+  implements bhum
 {
-  public wbb(TroopChatPie paramTroopChatPie) {}
+  wbb(wax paramwax, AtomicBoolean paramAtomicBoolean, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onDismiss()
   {
-    if ((paramBoolean) && (this.a.f.equals(paramString)))
-    {
-      TroopChatPie.a(this.a, true);
-      return;
+    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null)) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
     }
-    TroopChatPie.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wbb
  * JD-Core Version:    0.7.0.1
  */

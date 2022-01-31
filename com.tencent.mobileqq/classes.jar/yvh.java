@@ -1,24 +1,11 @@
-import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqavopensdk.AVEngineEventHandler;
-
 public class yvh
-  extends AVAudioCtrl.EnableMicCompleteCallback
 {
-  public yvh(AVEngineWalper paramAVEngineWalper) {}
-  
-  protected void onComplete(boolean paramBoolean, int paramInt)
-  {
-    QLog.d("AVEngineWalper", 1, "StartOpenMic.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean, paramInt);
-    }
-  }
+  public String a;
+  public boolean a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yvh
  * JD-Core Version:    0.7.0.1
  */

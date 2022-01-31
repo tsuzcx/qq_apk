@@ -1,27 +1,24 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
+import com.tribe.async.dispatch.Dispatcher.Event;
 
 public class wus
-  implements Animation.AnimationListener
+  implements Dispatcher.Event
 {
-  public wus(NewStyleCountryActivity paramNewStyleCountryActivity, int paramInt) {}
+  public float a;
+  public float b;
+  public float c;
+  public float d;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public wus(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.requestLayout();
+    this.d = paramFloat4;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.a = paramFloat1;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wus
  * JD-Core Version:    0.7.0.1
  */

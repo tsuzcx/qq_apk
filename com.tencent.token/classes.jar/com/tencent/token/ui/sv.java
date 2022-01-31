@@ -1,28 +1,39 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.af;
-import com.tencent.token.ax;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.fn;
+import com.tencent.token.do;
+import com.tencent.token.er;
 
-final class sv
-  implements View.OnClickListener
+class sv
+  implements DialogInterface.OnClickListener
 {
-  sv(OpMsgDisplayActivity paramOpMsgDisplayActivity) {}
+  sv(OpreateMsgActivity paramOpreateMsgActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = ax.a().e();
-    if ((fn.a().c() == null) && (paramView != null) && (paramView.mIsBinded))
+    paramDialogInterface = do.a().e();
+    if ((this.a.mIsSelectAll) && (paramDialogInterface != null))
     {
-      af.a().e(0L, OpMsgDisplayActivity.access$300(this.a));
-      OpMsgDisplayActivity.access$002(this.a, 51);
-      this.a.showUserDialog(12);
-      return;
+      OpreateMsgActivity.access$200(this.a).a(paramDialogInterface.mUin);
+      this.a.hideListEdit();
+      if (OpreateMsgActivity.access$200(this.a).g() > 0) {
+        break label102;
+      }
+      this.a.mAdapter.a(null);
+      this.a.mTitleButton.setVisibility(4);
     }
-    OpMsgDisplayActivity.access$100(this.a, 51);
+    for (;;)
+    {
+      this.a.mAdapter.a(false);
+      return;
+      OpreateMsgActivity.access$200(this.a).f();
+      break;
+      label102:
+      this.a.mTitleButton.setVisibility(0);
+    }
   }
 }
 

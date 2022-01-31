@@ -1,39 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class akbl
-  extends BroadcastReceiver
+class akbl
+  implements View.OnClickListener
 {
-  public akbl(BaseApplicationImpl paramBaseApplicationImpl) {}
+  akbl(akbj paramakbj) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    int i;
-    do
-    {
-      do
-      {
-        return;
-      } while (!"tencent.video.q2v.debug".equals(paramIntent.getAction()));
-      i = paramIntent.getIntExtra("_debug_Event_index", -1);
-      int j = paramIntent.getIntExtra("_debug_Event_value", -1);
-      if ((i >= 0) && (i < 13))
-      {
-        AudioHelper.a[i] = j;
-        QLog.w("AudioHelper", 1, "ReceiverDebugValue, [" + i + "]=[" + j + "]");
-      }
-    } while (i != 2);
-    AudioHelper.a(this.a.getApplicationContext());
+    akbj.a(this.a).onClick(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.zimu;
 
-import com.tencent.av.business.manager.EffectConfigBase.ItemBase;
+import ljo;
 
 public class ZimuLiveItem
-  extends EffectConfigBase.ItemBase
+  extends ljo
 {
   private String desc;
   private String iconurl;
@@ -61,7 +61,7 @@ public class ZimuLiveItem
   
   public String toString()
   {
-    return "ZimuLiveItem{id='" + this.id + '\'' + ", iconurl='" + this.iconurl + '\'' + ", usable='" + this.usable + '\'' + ", resurl='" + this.resurl + '\'' + ", md5='" + this.md5 + '\'' + ", platform='" + this.platform + '\'' + 125;
+    return "id[" + this.id + "], usable[" + this.usable + "], isDownloading[" + this.isDownloading + "], iconurl[" + this.iconurl + "], resurl[" + this.resurl + "], md5[" + this.md5 + "], platform[" + this.platform + "]";
   }
 }
 

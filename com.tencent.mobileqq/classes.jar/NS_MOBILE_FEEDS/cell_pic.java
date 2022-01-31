@@ -10,10 +10,12 @@ import java.util.Map;
 public final class cell_pic
   extends JceStruct
 {
-  static Map cache_busi_param;
-  static ArrayList cache_facemans;
+  static Map<Integer, String> cache_busi_param;
+  static ArrayList<s_user> cache_facemans;
   static s_user cache_friendinfo;
-  static ArrayList cache_picdata = new ArrayList();
+  static ArrayList<s_picdata> cache_picdata = new ArrayList();
+  static ArrayList<wx_user_info> cache_sharer_wx_info;
+  static int cache_sort_type;
   public int actiontype = 18;
   public String actionurl = "";
   public int activealbum;
@@ -30,28 +32,36 @@ public final class cell_pic
   public int animation_type;
   public int anonymity;
   public boolean balbum = true;
-  public Map busi_param;
+  public Map<Integer, String> busi_param;
   public String desc = "";
   public int extend_actiontype;
   public String extend_actionurl = "";
   public int faceman_num;
-  public ArrayList facemans;
+  public ArrayList<s_user> facemans;
   public s_user friendinfo;
+  public String icon_url = "";
   public int individualalbum;
   public boolean isSubscribe = true;
   public boolean is_contain_video_and_pic;
   public boolean is_share;
   public boolean is_share_owner = true;
+  public boolean is_topped_album;
   public boolean is_video_pic_mix;
   public int lastupdatetime;
+  public int like_cnt;
   public int newestupload;
   public String news = "";
-  public ArrayList picdata;
+  public ArrayList<s_picdata> picdata;
   public String qunid = "";
+  public String share_new_reason = "";
+  public int sharer_count;
+  public ArrayList<wx_user_info> sharer_wx_info;
+  public int sort_type;
   public String store_appid = "";
   public long uin;
   public int unread_count;
   public int uploadnum;
+  public int view_cnt;
   
   static
   {
@@ -63,13 +73,17 @@ public final class cell_pic
     cache_facemans = new ArrayList();
     localObject = new s_user();
     cache_facemans.add(localObject);
+    cache_sort_type = 0;
+    cache_sharer_wx_info = new ArrayList();
+    localObject = new wx_user_info();
+    cache_sharer_wx_info.add(localObject);
   }
   
   public cell_pic() {}
   
-  public cell_pic(ArrayList paramArrayList1, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, String paramString4, String paramString5, long paramLong, boolean paramBoolean1, int paramInt4, Map paramMap, String paramString6, int paramInt5, int paramInt6, int paramInt7, int paramInt8, String paramString7, boolean paramBoolean2, s_user params_user, String paramString8, int paramInt9, ArrayList paramArrayList2, int paramInt10, String paramString9, int paramInt11, String paramString10, int paramInt12, int paramInt13, int paramInt14, int paramInt15, int paramInt16, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, int paramInt17)
+  public cell_pic(ArrayList<s_picdata> paramArrayList, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, String paramString4, String paramString5, long paramLong, boolean paramBoolean1, int paramInt4, Map<Integer, String> paramMap, String paramString6, int paramInt5, int paramInt6, int paramInt7, int paramInt8, String paramString7, boolean paramBoolean2, s_user params_user, String paramString8, int paramInt9, ArrayList<s_user> paramArrayList1, int paramInt10, String paramString9, int paramInt11, String paramString10, int paramInt12, int paramInt13, int paramInt14, int paramInt15, int paramInt16, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, int paramInt17, int paramInt18, boolean paramBoolean7, int paramInt19, int paramInt20, String paramString11, int paramInt21, ArrayList<wx_user_info> paramArrayList2, String paramString12)
   {
-    this.picdata = paramArrayList1;
+    this.picdata = paramArrayList;
     this.albumname = paramString1;
     this.albumid = paramString2;
     this.albumnum = paramInt1;
@@ -92,7 +106,7 @@ public final class cell_pic
     this.friendinfo = params_user;
     this.news = paramString8;
     this.unread_count = paramInt9;
-    this.facemans = paramArrayList2;
+    this.facemans = paramArrayList1;
     this.faceman_num = paramInt10;
     this.store_appid = paramString9;
     this.extend_actiontype = paramInt11;
@@ -107,6 +121,14 @@ public final class cell_pic
     this.is_contain_video_and_pic = paramBoolean5;
     this.is_share_owner = paramBoolean6;
     this.animation_type = paramInt17;
+    this.sort_type = paramInt18;
+    this.is_topped_album = paramBoolean7;
+    this.view_cnt = paramInt19;
+    this.like_cnt = paramInt20;
+    this.icon_url = paramString11;
+    this.sharer_count = paramInt21;
+    this.sharer_wx_info = paramArrayList2;
+    this.share_new_reason = paramString12;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -149,6 +171,14 @@ public final class cell_pic
     this.is_contain_video_and_pic = paramJceInputStream.read(this.is_contain_video_and_pic, 35, false);
     this.is_share_owner = paramJceInputStream.read(this.is_share_owner, 36, false);
     this.animation_type = paramJceInputStream.read(this.animation_type, 37, false);
+    this.sort_type = paramJceInputStream.read(this.sort_type, 38, false);
+    this.is_topped_album = paramJceInputStream.read(this.is_topped_album, 39, false);
+    this.view_cnt = paramJceInputStream.read(this.view_cnt, 40, false);
+    this.like_cnt = paramJceInputStream.read(this.like_cnt, 41, false);
+    this.icon_url = paramJceInputStream.readString(42, false);
+    this.sharer_count = paramJceInputStream.read(this.sharer_count, 43, false);
+    this.sharer_wx_info = ((ArrayList)paramJceInputStream.read(cache_sharer_wx_info, 44, false));
+    this.share_new_reason = paramJceInputStream.readString(45, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -219,11 +249,25 @@ public final class cell_pic
     paramJceOutputStream.write(this.is_contain_video_and_pic, 35);
     paramJceOutputStream.write(this.is_share_owner, 36);
     paramJceOutputStream.write(this.animation_type, 37);
+    paramJceOutputStream.write(this.sort_type, 38);
+    paramJceOutputStream.write(this.is_topped_album, 39);
+    paramJceOutputStream.write(this.view_cnt, 40);
+    paramJceOutputStream.write(this.like_cnt, 41);
+    if (this.icon_url != null) {
+      paramJceOutputStream.write(this.icon_url, 42);
+    }
+    paramJceOutputStream.write(this.sharer_count, 43);
+    if (this.sharer_wx_info != null) {
+      paramJceOutputStream.write(this.sharer_wx_info, 44);
+    }
+    if (this.share_new_reason != null) {
+      paramJceOutputStream.write(this.share_new_reason, 45);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_pic
  * JD-Core Version:    0.7.0.1
  */

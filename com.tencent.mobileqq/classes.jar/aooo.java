@@ -1,73 +1,87 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
 
 public class aooo
-  implements Runnable
+  extends aokh<aoon>
 {
-  public aooo(PtvTemplateManager paramPtvTemplateManager, AppInterface paramAppInterface, File paramFile) {}
-  
-  public void run()
+  public static aoon a()
   {
-    boolean bool;
-    if (QLog.isColorLevel())
-    {
-      if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
-      {
-        bool = true;
-        QLog.i("PtvTemplateManager", 2, String.format("initBlessSpecialPendantConfigInfo, app[%s], isUpdateedByServer[%s], cur_runnable[%s]", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.jdField_e_of_type_Boolean), Integer.valueOf(hashCode()) }));
-      }
+    return (aoon)aoks.a().a(489);
+  }
+  
+  public int a()
+  {
+    return 489;
+  }
+  
+  @NonNull
+  public aoon a(int paramInt)
+  {
+    return new aoon();
+  }
+  
+  @Nullable
+  public aoon a(aoko[] paramArrayOfaoko)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgTabCameraSwitchProcessor", 2, "onParsed ");
     }
-    else {
-      if (!this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.jdField_e_of_type_Boolean) {
-        break label76;
-      }
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
+      return aoon.a(paramArrayOfaoko);
     }
-    label76:
-    Object localObject1;
-    do
-    {
-      do
-      {
-        return;
-        bool = false;
-        break;
-        localObject1 = PtvTemplateManager.a(this.jdField_a_of_type_JavaIoFile);
-      } while (TextUtils.isEmpty((CharSequence)localObject1));
-      localObject1 = PtvTemplateManager.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager, (String)localObject1);
-    } while ((localObject1 == null) || (((List)localObject1).isEmpty()));
-    ??? = ((List)localObject1).iterator();
-    while (((Iterator)???).hasNext())
-    {
-      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)???).next();
-      if (localPtvTemplateInfo != null)
-      {
-        localPtvTemplateInfo.usable = this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.a(localPtvTemplateInfo);
-        localPtvTemplateInfo.businessID = 1;
-      }
+    return null;
+  }
+  
+  public Class<aoon> a()
+  {
+    return aoon.class;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgTabCameraSwitchProcessor", 2, "onReqNoReceive ");
     }
-    synchronized (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.jdField_e_of_type_JavaUtilArrayList)
-    {
-      if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.jdField_e_of_type_Boolean) {
-        return;
-      }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgTabCameraSwitchProcessor", 2, "onReqFailed " + paramInt);
     }
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.jdField_e_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.jdField_e_of_type_JavaUtilArrayList.addAll(localCollection);
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.f = true;
-    PtvTemplateManager.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager);
+  }
+  
+  public void a(aoon paramaoon)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgTabCameraSwitchProcessor", 2, "onUpdate " + paramaoon.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aooo
  * JD-Core Version:    0.7.0.1
  */

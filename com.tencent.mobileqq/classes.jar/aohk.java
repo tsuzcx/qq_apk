@@ -1,36 +1,36 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
-import dov.com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
+import SummaryCard.CondFitUser;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
-class aohk
-  implements Runnable
+public class aohk
+  implements alqe
 {
-  aohk(aohe paramaohe) {}
+  public aohk(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt)
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
-    boolean bool1 = localSharedPreferences.getBoolean("sv_has_reported_front_camera_compatibility", false);
-    boolean bool2 = localSharedPreferences.getBoolean("sv_has_reported_back_camera_compatibility", false);
-    CameraControl localCameraControl = CameraControl.a();
-    if ((!bool1) && (FlowCameraConstant.a == 1))
-    {
-      NewFlowCameraReporter.a(localCameraControl.a(), "front");
-      localSharedPreferences.edit().putBoolean("sv_has_reported_front_camera_compatibility", true).commit();
-    }
-    while ((bool2) || (FlowCameraConstant.a != 2)) {
+    this.a.a();
+    if (paramInt != 1) {
       return;
     }
-    NewFlowCameraReporter.a(localCameraControl.a(), "back");
-    localSharedPreferences.edit().putBoolean("sv_has_reported_back_camera_compatibility", true).commit();
+    if (!paramBoolean1)
+    {
+      QQToast.a(this.a, 2131691070, 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      QQToast.a(this.a, 2131691073, 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    SearchResultActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.c, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Alpy.b(), this.a.jdField_a_of_type_Alpy.c(), this.a.e, this.a.d, paramList, paramBoolean2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aohk
  * JD-Core Version:    0.7.0.1
  */

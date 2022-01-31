@@ -36,7 +36,7 @@ public class Utils
     for (;;)
     {
       return null;
-      paramString = new ByteArrayInputStream(Base64.a(paramString.getBytes(), 0));
+      paramString = new ByteArrayInputStream(Base64.decode(paramString.getBytes(), 0));
       try
       {
         paramString = new ObjectInputStream(paramString);
@@ -48,17 +48,17 @@ public class Utils
       }
       catch (StreamCorruptedException paramString)
       {
-        QDLog.d("Utils", "", paramString);
+        QDLog.e("Utils", "", paramString);
         return null;
       }
       catch (IOException paramString)
       {
-        QDLog.d("Utils", "", paramString);
+        QDLog.e("Utils", "", paramString);
         return null;
       }
       catch (ClassNotFoundException paramString)
       {
-        QDLog.d("Utils", "", paramString);
+        QDLog.e("Utils", "", paramString);
       }
     }
     return null;
@@ -77,13 +77,13 @@ public class Utils
         break label59;
       }
       localObjectOutputStream.writeObject(paramObject);
-      paramObject = new String(Base64.b(localByteArrayOutputStream.toByteArray(), 0));
+      paramObject = new String(Base64.encode(localByteArrayOutputStream.toByteArray(), 0));
     }
     catch (IOException paramObject)
     {
       for (;;)
       {
-        QDLog.d("Utils", "", paramObject);
+        QDLog.e("Utils", "", paramObject);
         paramObject = null;
       }
     }
@@ -303,7 +303,7 @@ public class Utils
     }
     catch (Exception paramPattern)
     {
-      QDLog.d("Utils", "", paramPattern);
+      QDLog.e("Utils", "", paramPattern);
     }
     return false;
   }
@@ -326,7 +326,7 @@ public class Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.common.Utils
  * JD-Core Version:    0.7.0.1
  */

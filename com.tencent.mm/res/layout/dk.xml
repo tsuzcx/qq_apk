@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/wf" android:background="@drawable/ce" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="53.0dip" android:layout_marginRight="30.0dip">
+        <View android:background="@color/g4" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginLeft="@dimen/ll">
+            <ImageView android:layout_width="wrap_content" android:layout_height="23.0dip" android:src="@raw/app_brand_search_nearby_icon" android:scaleType="centerCrop" android:adjustViewBounds="true" />
+            <TextView android:textSize="14.0dip" android:textColor="#ff555555" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l2" android:text="@string/lg" android:layout_weight="1.0" />
+            <ImageView android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="@raw/app_brand_search_nearby_more_arrow" />
+        </LinearLayout>
+        <View android:background="@color/g4" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    </LinearLayout>
+</LinearLayout>

@@ -10,9 +10,9 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import ccn;
-import cco;
-import ccp;
+import bws;
+import bwt;
+import bwu;
 import com.tencent.mobileqq.activity.book.BookEditText;
 import com.tencent.mobileqq.activity.book.ResizeLayout;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -49,7 +49,7 @@ public class BookShareAdviceEditActivity
   
   public BookShareAdviceEditActivity()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ccn(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bws(this);
   }
   
   private int a(Context paramContext, float paramFloat)
@@ -167,8 +167,8 @@ public class BookShareAdviceEditActivity
     {
       this.jdField_c_of_type_Int = ((120 - this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.a((String)localObject) + 2) / 3);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_c_of_type_Int + "");
-      this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.addTextChangedListener(new cco(this));
-      this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout.setOnResizeListener(new ccp(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.addTextChangedListener(new bwt(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout.setOnResizeListener(new bwu(this));
       return;
       label346:
       this.n.setEnabled(true);
@@ -179,7 +179,7 @@ public class BookShareAdviceEditActivity
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.setBackgroundResource(2130839629);
+      this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.setBackgroundResource(2130839631);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
     }

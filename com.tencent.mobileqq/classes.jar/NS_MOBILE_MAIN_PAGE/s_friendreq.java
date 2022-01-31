@@ -10,19 +10,19 @@ import java.util.Map;
 public final class s_friendreq
   extends JceStruct
 {
-  static ArrayList cache_datalist;
-  static ArrayList cache_datalistnew;
-  static ArrayList cache_datalistold;
-  static Map cache_msglist;
+  static ArrayList<s_user> cache_datalist;
+  static ArrayList<s_user> cache_datalistnew;
+  static ArrayList<s_user> cache_datalistold;
+  static Map<Long, String> cache_msglist;
   public int allnum;
-  public ArrayList datalist;
-  public ArrayList datalistnew;
-  public ArrayList datalistold;
-  public Map msglist;
+  public ArrayList<s_user> datalist;
+  public ArrayList<s_user> datalistnew;
+  public ArrayList<s_user> datalistold;
+  public Map<Long, String> msglist;
   
   public s_friendreq() {}
   
-  public s_friendreq(int paramInt, ArrayList paramArrayList1, Map paramMap, ArrayList paramArrayList2, ArrayList paramArrayList3)
+  public s_friendreq(int paramInt, ArrayList<s_user> paramArrayList1, Map<Long, String> paramMap, ArrayList<s_user> paramArrayList2, ArrayList<s_user> paramArrayList3)
   {
     this.allnum = paramInt;
     this.datalist = paramArrayList1;

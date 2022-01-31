@@ -8,8 +8,8 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import azri;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
@@ -18,8 +18,17 @@ public class UserguideActivity
   extends FragmentActivity
 {
   public static boolean a;
-  private static boolean c;
-  boolean b = false;
+  public static boolean b;
+  private static boolean d;
+  boolean c = false;
+  
+  public static void a()
+  {
+    if (b) {
+      QLog.w("UserGuide", 1, "clearIsUserGuiderShowed");
+    }
+    b = false;
+  }
   
   public static boolean a(Context paramContext, String paramString)
   {
@@ -28,54 +37,71 @@ public class UserguideActivity
   
   public static boolean a(SplashActivity paramSplashActivity)
   {
-    if ((AppSetting.b) || (Build.VERSION.SDK_INT < 14) || (c)) {}
-    for (;;)
+    if ((AppSetting.c) || (Build.VERSION.SDK_INT < 14) || (d))
     {
+      if (QLog.isColorLevel()) {
+        QLog.i("UserGuide", 2, String.format("showUserGuide [%s, %s, %s]", new Object[] { Boolean.valueOf(AppSetting.c), Integer.valueOf(Build.VERSION.SDK_INT), Boolean.valueOf(d) }));
+      }
       return false;
-      c = true;
-      try
+    }
+    d = true;
+    boolean bool2 = false;
+    try
+    {
+      bool1 = paramSplashActivity.getIntent().getBooleanExtra("k_from_login", false);
+      if (QLog.isColorLevel()) {
+        QLog.i("UserGuide", 2, String.format("showUserGuide noNeedShowGuide[%s]", new Object[] { Boolean.valueOf(bool1) }));
+      }
+      a = false;
+      if (!bool1)
       {
-        bool = paramSplashActivity.getIntent().getBooleanExtra("k_from_login", false);
-        a = false;
-        if (bool) {
-          continue;
-        }
-        SharedPreferences localSharedPreferences = paramSplashActivity.getSharedPreferences("UserGuide", 0);
-        String str = localSharedPreferences.getString("qq_version", null);
+        Object localObject = paramSplashActivity.getSharedPreferences("UserGuide", 0);
+        String str1 = ((SharedPreferences)localObject).getString("qq_version", "");
+        String str2 = ((SharedPreferences)localObject).getString("qq_version_full", "");
         if (QLog.isColorLevel()) {
-          QLog.e("UserGuide", 2, "pkg build num is 3560, local build num is " + str);
+          QLog.e("UserGuide", 2, "pkg build num is 4555, local build num is " + str1);
         }
-        if (!"3560".equals(str))
+        if (!"4555".equals(str1))
         {
           localHashMap = new HashMap();
-          if (TextUtils.isEmpty(str))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("UserGuide", 2, "this is a new install");
-            }
-            localHashMap.put("userguide_update_type", "2");
-            StatisticCollector.a(paramSplashActivity).a(null, "userguide_update2", true, 0L, 0L, localHashMap, "", false);
-            paramSplashActivity = localSharedPreferences.edit();
-            paramSplashActivity.putString("qq_version", "3560");
-            paramSplashActivity.commit();
+          if (!TextUtils.isEmpty(str1)) {
+            break label424;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.e("UserGuide", 2, "this is a new install");
+          }
+          localHashMap.put("userguide_update_type", "2");
+          azri.a(paramSplashActivity).a(null, "userguide_update2", true, 0L, 0L, localHashMap, "", false);
+          paramSplashActivity = ((SharedPreferences)localObject).edit();
+          localObject = AppSetting.a();
+          paramSplashActivity.putString("qq_version_pre", str1);
+          paramSplashActivity.putString("qq_version_full_pre", str2);
+          paramSplashActivity.putString("qq_version", "4555");
+          paramSplashActivity.putString("qq_version_full", (String)localObject);
+          paramSplashActivity.commit();
+          if (QLog.isColorLevel()) {
+            QLog.i("UserGuide", 2, String.format("update version pre[%s, %s], cur[%s, %s]", new Object[] { str1, str2, "4555", localObject }));
           }
         }
-        else
-        {
-          QLog.e("UserGuide", 1, "showUserGuide " + a + ", " + str + ", " + "3560");
-          return false;
-        }
+        QLog.e("UserGuide", 1, "showUserGuide " + a + ", " + str1 + ", " + "4555");
       }
-      catch (Exception localException)
+      else
       {
-        for (;;)
+        return false;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        HashMap localHashMap;
+        boolean bool1 = bool2;
+        if (QLog.isDevelopLevel())
         {
-          HashMap localHashMap;
-          if (QLog.isDevelopLevel()) {
-            localException.printStackTrace();
-          }
-          boolean bool = false;
+          localException.printStackTrace();
+          bool1 = bool2;
           continue;
+          label424:
           if (QLog.isColorLevel()) {
             QLog.e("UserGuide", 2, "this is a old install");
           }
@@ -85,13 +111,13 @@ public class UserguideActivity
     }
   }
   
-  public void a()
+  public void b()
   {
     Intent localIntent = getIntent();
     if ((getAppRuntime() != null) && (getAppRuntime().isLogin()))
     {
       localIntent.setClass(this, SplashActivity.class);
-      localIntent.putExtra("tab_index", MainFragment.a);
+      localIntent.putExtra("tab_index", MainFragment.b);
     }
     for (;;)
     {
@@ -102,7 +128,7 @@ public class UserguideActivity
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     this.mNeedStatusTrans = false;
     super.doOnCreate(null);
@@ -110,14 +136,14 @@ public class UserguideActivity
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
     if (QLog.isDevelopLevel()) {
       QLog.d("UserGuide", 4, "UserguideActivity.doOnDestroy()");
     }
     a = false;
-    this.b = true;
+    this.c = true;
     System.gc();
   }
   
@@ -129,14 +155,14 @@ public class UserguideActivity
     if (isFinishing()) {
       return;
     }
-    a();
+    b();
     a = false;
     super.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UserguideActivity
  * JD-Core Version:    0.7.0.1
  */

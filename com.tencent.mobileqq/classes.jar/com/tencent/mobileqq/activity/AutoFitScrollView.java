@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity;
 
+import acha;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Message;
@@ -18,8 +19,8 @@ public class AutoFitScrollView
   private float jdField_a_of_type_Float;
   public int a;
   private long jdField_a_of_type_Long;
+  private acha jdField_a_of_type_Acha;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private AutoFitScroller jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
@@ -50,7 +51,7 @@ public class AutoFitScrollView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller = new AutoFitScroller(getContext());
+    this.jdField_a_of_type_Acha = new acha(getContext());
     this.d = ViewConfiguration.get(getContext()).getScaledTouchSlop();
     setFitWidth(paramContext.getResources().getDisplayMetrics().widthPixels, 10);
   }
@@ -62,29 +63,28 @@ public class AutoFitScrollView
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a() == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a(this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.b(), paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Acha.a() == 0) {
+      this.jdField_a_of_type_Acha.a(this.jdField_a_of_type_Acha.a(), this.jdField_a_of_type_Acha.b(), paramInt1, paramInt2);
     }
     for (;;)
     {
-      scrollTo(this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.b());
+      scrollTo(this.jdField_a_of_type_Acha.a(), this.jdField_a_of_type_Acha.b());
       postInvalidate();
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a(this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.b(), paramInt1 - this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a(), paramInt2);
+      this.jdField_a_of_type_Acha.a(this.jdField_a_of_type_Acha.a(), this.jdField_a_of_type_Acha.b(), paramInt1 - this.jdField_a_of_type_Acha.a(), paramInt2);
     }
   }
   
   public void b()
   {
-    setBackgroundColor(-1315602);
     this.jdField_b_of_type_Boolean = false;
   }
   
   public void computeScroll()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.b())
+    if (this.jdField_a_of_type_Acha.b())
     {
-      scrollTo(this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.b());
+      scrollTo(this.jdField_a_of_type_Acha.a(), this.jdField_a_of_type_Acha.b());
       postInvalidate();
     }
     while (!this.jdField_a_of_type_Boolean) {
@@ -136,7 +136,7 @@ public class AutoFitScrollView
         return false;
         this.jdField_a_of_type_Float = f1;
         this.jdField_b_of_type_Float = f2;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a()) {}
+        if (this.jdField_a_of_type_Acha.a()) {}
         for (i = 0;; i = 1)
         {
           this.jdField_c_of_type_Int = i;
@@ -180,8 +180,8 @@ public class AutoFitScrollView
       default: 
         return true;
       case 0: 
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a())) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a();
+        if ((this.jdField_a_of_type_Acha != null) && (!this.jdField_a_of_type_Acha.a())) {
+          this.jdField_a_of_type_Acha.a();
         }
         this.jdField_c_of_type_Float = f;
         this.jdField_a_of_type_Boolean = false;
@@ -217,14 +217,14 @@ public class AutoFitScrollView
       if (Math.abs(k) <= 1000) {
         break label473;
       }
-      j = this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a(k);
+      j = this.jdField_a_of_type_Acha.a(k);
       i = j;
       if (k > 0) {
         i = -j;
       }
       i = Math.round((i + getScrollX()) / this.jdField_b_of_type_Int);
       j = this.jdField_b_of_type_Int;
-      paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller;
+      paramMotionEvent = this.jdField_a_of_type_Acha;
       if (k >= 0) {
         break label436;
       }
@@ -233,7 +233,7 @@ public class AutoFitScrollView
       if (i >= 0) {
         break label442;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a(getScrollX(), getScrollY(), -i, 0, 0, this.jdField_a_of_type_Int - getWidth(), 0, 0);
+      this.jdField_a_of_type_Acha.a(getScrollX(), getScrollY(), -i, 0, 0, this.jdField_a_of_type_Int - getWidth(), 0, 0);
       label401:
       postInvalidate();
     }
@@ -251,12 +251,12 @@ public class AutoFitScrollView
       bool = false;
       break;
       label442:
-      this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a(getScrollX(), getScrollY(), -i, 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a(), 0, 0);
+      this.jdField_a_of_type_Acha.a(getScrollX(), getScrollY(), -i, 0, 0, this.jdField_a_of_type_Acha.a(), 0, 0);
       break label401;
       label473:
       i = getScrollX();
       j = Math.max(Math.min(Math.round((i + 0.1F) / this.jdField_b_of_type_Int) * this.jdField_b_of_type_Int, this.jdField_a_of_type_Int - getWidth()), 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAutoFitScroller.a(i, getScrollY(), j - i, 0);
+      this.jdField_a_of_type_Acha.a(i, getScrollY(), j - i, 0);
       postInvalidate();
     }
   }
@@ -274,7 +274,7 @@ public class AutoFitScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AutoFitScrollView
  * JD-Core Version:    0.7.0.1
  */

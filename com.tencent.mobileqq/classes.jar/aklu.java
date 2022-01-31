@@ -1,32 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BabyQHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aklu
-  extends BroadcastReceiver
+class aklu
+  implements View.OnClickListener
 {
-  public aklu(WebProcessManager paramWebProcessManager) {}
+  aklu(aklr paramaklr) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    int i = paramIntent.getIntExtra("user_type", 0);
-    int j = paramIntent.getIntExtra("from_type", 0);
-    paramContext = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramContext instanceof QQAppInterface))
-    {
-      paramContext = (BabyQHandler)((QQAppInterface)paramContext).a(53);
-      if (paramContext != null) {
-        paramContext.a(i, j);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("WebProcessManager", 2, "babyq receiver recv user_type=" + i + ", from_type=" + j);
-      }
+    paramView = paramView.getTag();
+    if (!(paramView instanceof akma)) {
+      return;
     }
+    paramView = (akma)paramView;
+    if ((paramView.a != null) && (paramView.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)) {
+      this.a.jdField_a_of_type_Aklw.a(paramView.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, paramView.a.jdField_a_of_type_Int);
+    }
+    if ((paramView.a != null) && (paramView.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null)) {
+      this.a.jdField_a_of_type_Aklw.a(paramView.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo);
+    }
+    new azqx(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("send_to").d("clk_grp").a(new String[] { "1" }).a();
   }
 }
 

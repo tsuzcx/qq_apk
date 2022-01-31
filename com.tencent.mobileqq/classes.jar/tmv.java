@@ -1,25 +1,20 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.storage.StorageReport;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-
-class tmv
-  implements Runnable
+public class tmv<I>
 {
-  tmv(tmu paramtmu) {}
+  private I a;
   
-  public void run()
+  public I a()
   {
-    QQSettingMsgHistoryActivity.a(this.a.a, this.a.a.app);
-    StorageReport.a().a(true);
-    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
-    SharedPreUtils.a(this.a.a.app.c());
+    return this.a;
+  }
+  
+  public void a(I paramI)
+  {
+    this.a = paramI;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tmv
  * JD-Core Version:    0.7.0.1
  */

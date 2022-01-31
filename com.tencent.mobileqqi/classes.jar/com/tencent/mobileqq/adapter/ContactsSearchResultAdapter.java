@@ -20,7 +20,7 @@ import com.tencent.mobileqq.search.IContactSearchable;
 import com.tencent.mobileqq.search.SearchAdapterInterface;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
-import fcl;
+import exx;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -107,7 +107,7 @@ public class ContactsSearchResultAdapter
         break label351;
       }
       paramViewGroup.d.setVisibility(0);
-      paramViewGroup.d.setOnClickListener(new fcl(this, (IContactSearchable)localObject1));
+      paramViewGroup.d.setOnClickListener(new exx(this, (IContactSearchable)localObject1));
       if (!(this.jdField_a_of_type_AndroidContentContext instanceof SelectMemberActivity)) {
         break label426;
       }

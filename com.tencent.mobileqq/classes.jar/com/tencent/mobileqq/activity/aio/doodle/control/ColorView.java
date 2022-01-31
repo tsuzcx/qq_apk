@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.activity.aio.doodle.control;
 
+import aepi;
+import afbu;
+import afbv;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -7,18 +10,15 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import uth;
-import uti;
 
 public class ColorView
   extends View
 {
   private int jdField_a_of_type_Int;
+  private afbv jdField_a_of_type_Afbv;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private uti jdField_a_of_type_Uti;
-  private int b = AIOUtils.a(4.0F, getResources());
+  private int b = aepi.a(4.0F, getResources());
   
   public ColorView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -65,15 +65,15 @@ public class ColorView
     invalidate();
   }
   
-  public void setListener(uti paramuti)
+  public void setListener(afbv paramafbv)
   {
-    this.jdField_a_of_type_Uti = paramuti;
-    setOnClickListener(new uth(this));
+    this.jdField_a_of_type_Afbv = paramafbv;
+    setOnClickListener(new afbu(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.control.ColorView
  * JD-Core Version:    0.7.0.1
  */

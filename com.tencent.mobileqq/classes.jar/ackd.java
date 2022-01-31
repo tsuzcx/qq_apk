@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.extendfriend.wiget.FrameAnimationDrawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ackd
-  implements Runnable
+public final class ackd
+  implements DialogInterface.OnClickListener
 {
-  public ackd(FrameAnimationDrawable paramFrameAnimationDrawable) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.invalidateSelf();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

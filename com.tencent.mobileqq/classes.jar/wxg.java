@@ -1,24 +1,20 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class wxg
-  implements Runnable
+final class wxg
+  implements urr<wxh, uro>
 {
-  wxg(wxf paramwxf) {}
-  
-  public void run()
+  public void a(@NonNull wxh paramwxh, @Nullable uro paramuro, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.b != null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.b.setChecked(this.a.jdField_a_of_type_Boolean);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.E = this.a.jdField_a_of_type_Boolean;
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.e();
+    if (paramErrorMessage.isFail()) {
+      wxe.b("Q.qqstory.MonitorReport", "send monitor fail %s", paramErrorMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wxg
  * JD-Core Version:    0.7.0.1
  */

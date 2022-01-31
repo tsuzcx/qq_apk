@@ -1,63 +1,30 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.telephony.PhoneStateListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class rlh
-  implements CompoundButton.OnCheckedChangeListener
+class rlh
+  extends PhoneStateListener
 {
-  public rlh(AssistantSettingActivity paramAssistantSettingActivity) {}
+  rlh(rlf paramrlf) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    int i;
-    label83:
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
-    {
-      i = 1;
-      ReadInJoyHelper.a("local_kd_tab_switch", Integer.valueOf(i));
-      ReadInJoyHelper.a(this.a.app, "local_kd_tab_switch", Boolean.valueOf(paramBoolean));
-      ReadInJoyHelper.a(this.a.app, "local_kd_tab_has_set", Boolean.valueOf(true));
-      if (!paramBoolean) {
-        break label138;
-      }
-      AssistantSettingActivity.a(this.a).setText(2131433554);
-      QQToast.a(this.a.getBaseContext(), 2, 2131439096, 2000).a();
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label173;
-      }
-      paramCompoundButton = "0X8008236";
-      label99:
-      if (!paramBoolean) {
-        break label179;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoVolumeController", 2, "onCallStateChanged:" + paramInt);
     }
-    label138:
-    label173:
-    label179:
-    for (String str = "0X8008236";; str = "0X8008235")
+    switch (paramInt)
     {
-      PublicAccountReportUtils.a(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "", "", "", "", false);
+    default: 
       return;
-      i = 0;
-      break;
-      AssistantSettingActivity.a(this.a).setText(2131433553);
-      QQToast.a(this.a.getBaseContext(), 2, 2131439097, 2000).a();
-      break label83;
-      paramCompoundButton = "0X8008235";
-      break label99;
+    case 1: 
+      this.a.a(true);
+      return;
     }
+    this.a.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rlh
  * JD-Core Version:    0.7.0.1
  */

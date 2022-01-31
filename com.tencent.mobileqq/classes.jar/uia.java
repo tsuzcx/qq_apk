@@ -1,23 +1,44 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqcircle.widgets.multiTouchImage.PhotoViewAttacher;
+import com.tencent.qphone.base.util.QLog;
 
 public class uia
-  extends AnimateUtils.AnimationAdapter
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public uia(VisitorsActivity paramVisitorsActivity) {}
+  public uia(PhotoViewAttacher paramPhotoViewAttacher) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    this.a.e.setVisibility(0);
-    this.a.a.setClipChildren(false);
+    if ((PhotoViewAttacher.a(this.a) == null) || (this.a.a() > PhotoViewAttacher.d())) {}
+    while ((paramMotionEvent1.getPointerCount() > PhotoViewAttacher.a()) || (paramMotionEvent2.getPointerCount() > PhotoViewAttacher.a())) {
+      return false;
+    }
+    return PhotoViewAttacher.a(this.a).a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    if (PhotoViewAttacher.a(this.a) != null) {
+      PhotoViewAttacher.a(this.a).onLongClick(PhotoViewAttacher.a(this.a));
+    }
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    QLog.d("PhotoViewAttacher", 4, "onScroll distanceX:" + paramFloat1 + " distanceY:" + paramFloat2);
+    paramFloat1 = 0.0F - paramFloat1;
+    paramFloat2 = 0.0F - paramFloat2;
+    if (PhotoViewAttacher.a(this.a) != null) {
+      PhotoViewAttacher.a(this.a).a(paramFloat1, paramFloat2);
+    }
+    return this.a.a(paramFloat1, paramFloat2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uia
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,47 @@
-import android.graphics.Rect;
-import android.hardware.Camera.Size;
-import com.tencent.mobileqq.activity.richmedia.view.CameraCover.PictureCallback;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
-import java.io.File;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.21;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x74f.oidb_cmd0x74f.RspBody;
 
 public class aicc
+  extends nac
 {
-  int jdField_a_of_type_Int;
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  Camera.Size jdField_a_of_type_AndroidHardwareCamera$Size;
-  CameraCover.PictureCallback jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover$PictureCallback;
-  File jdField_a_of_type_JavaIoFile;
-  boolean jdField_a_of_type_Boolean;
-  byte[] jdField_a_of_type_ArrayOfByte;
-  int b;
-  int c;
-  int d;
+  public aicc(ChatHistoryTroopMemberFragment.21 param21) {}
   
-  private aicc(CameraControl paramCameraControl) {}
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
+    do
+    {
+      for (;;)
+      {
+        return;
+        try
+        {
+          paramBundle = new oidb_cmd0x74f.RspBody();
+          paramBundle.mergeFrom(paramArrayOfByte);
+          if ((paramBundle.uint32_ret_code.get() == 0) && (paramBundle.bool_display_entrance.get()))
+          {
+            ChatHistoryTroopMemberFragment.a(this.a.this$0, paramBundle.range.get());
+            ChatHistoryTroopMemberFragment.c(this.a.this$0);
+            ChatHistoryTroopMemberFragment.a(this.a.this$0, paramBundle.uint64_next_pull_time.get());
+            return;
+          }
+        }
+        catch (Exception paramArrayOfByte) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.history.BaseFragment", 2, "initListView, get0x74f：failed");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aicc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,28 @@
-import android.graphics.Color;
-import android.text.Editable;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopRequestRefuseActivity;
+import com.tencent.biz.qqcircle.events.QCircleDoublePraiseAnimationEvent;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedWidget;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
 
 public class udm
-  implements Runnable
+  implements ucr
 {
-  public udm(TroopRequestRefuseActivity paramTroopRequestRefuseActivity, Editable paramEditable) {}
+  public udm(QCircleFeedWidget paramQCircleFeedWidget, Object paramObject) {}
   
-  public void run()
+  public void a()
   {
-    if (this.jdField_a_of_type_AndroidTextEditable.length() > 25)
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity.a.setTextColor(-65536);
-      TroopRequestRefuseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity, false);
-    }
-    for (;;)
-    {
-      String str2 = "" + (25 - this.jdField_a_of_type_AndroidTextEditable.length());
-      String str1 = str2;
-      if (str2.length() > 4) {
-        str1 = str2.substring(0, 2) + "…";
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity.a.setText(str1);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity.a.setTextColor(Color.rgb(119, 119, 119));
-      TroopRequestRefuseActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity, true);
+      String str = ((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject).id.get();
+      yiw.a().a(new QCircleDoublePraiseAnimationEvent(str, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedWidget.a().pageType, QCircleFeedWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedWidget)));
+      QLog.d("QCircleDoubleClickLayout", 1, "dispatchEvent id:" + str + " pageType:" + this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedWidget.a().pageType);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     udm
  * JD-Core Version:    0.7.0.1
  */

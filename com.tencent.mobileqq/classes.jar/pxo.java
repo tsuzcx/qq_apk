@@ -1,24 +1,31 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.device.file.DeviceAVFileMsgObserver;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class pxo
-  extends TransProcessorHandler
+class pxo
+  implements bhyg
 {
-  public pxo(DeviceAVFileMsgObserver paramDeviceAVFileMsgObserver, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  pxo(pxl parampxl) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    this.a.a(paramMessage);
+    if (QLog.isColorLevel()) {
+      QLog.d("FeedItemCell", 2, "onAdComplain");
+    }
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_from_type", 1);
+      localIntent.putExtra("key_ad_info", ((pgd)this.a.jdField_a_of_type_JavaLangObject).a());
+      PublicFragmentActivity.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pxo
  * JD-Core Version:    0.7.0.1
  */

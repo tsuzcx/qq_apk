@@ -1,78 +1,85 @@
-import com.tencent.biz.common.util.ZipUtils;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.data.TemplateGroupItem;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
-import java.io.File;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
 
 public class aooz
-  implements INetEngine.INetEngineListener
+  extends aokh<aooy>
 {
-  public aooz(QIMPtvTemplateManager paramQIMPtvTemplateManager, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, PtvTemplateManager.IPtvTemplateDownloadListener paramIPtvTemplateDownloadListener) {}
-  
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
+  public static aooy a()
   {
-    if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, (int)(100L * paramLong1 / paramLong2));
+    return (aooy)aoks.a().a(426);
+  }
+  
+  public static boolean e()
+  {
+    aooy localaooy = a();
+    if (localaooy != null) {}
+    for (boolean bool = localaooy.c();; bool = false)
+    {
+      QLog.d("OpenSdkConfProcessor", 1, new Object[] { "isUseThirdTransformPkgName, useThirdTransformPkgName = ", Boolean.valueOf(bool) });
+      return bool;
     }
   }
   
-  public void a(NetResp arg1)
+  public int a()
+  {
+    return 426;
+  }
+  
+  @NonNull
+  public aooy a(int paramInt)
+  {
+    return new aooy();
+  }
+  
+  @Nullable
+  public aooy a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      new aooy();
+      return aooy.a(paramArrayOfaoko);
+    }
+    return null;
+  }
+  
+  public Class<aooy> a()
+  {
+    return aooy.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aooy paramaooy)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("QIMPtvTemplateManager", 2, "onResp url: " + this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + ???.c);
+      QLog.d("OpenSdkConfProcessor", 2, "onUpdate " + paramaooy.toString());
     }
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-    synchronized (this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.b)
-    {
-      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
-      do
-      {
-        Iterator localIterator = this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.jdField_a_of_type_JavaUtilList.iterator();
-        Object localObject2;
-        while (!((Iterator)localObject2).hasNext())
-        {
-          do
-          {
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            localObject2 = (TemplateGroupItem)localIterator.next();
-          } while (((TemplateGroupItem)localObject2).jdField_a_of_type_JavaUtilList == null);
-          localObject2 = ((TemplateGroupItem)localObject2).jdField_a_of_type_JavaUtilList.iterator();
-        }
-        localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject2).next();
-      } while (!localPtvTemplateInfo.id.equals(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id));
-      localPtvTemplateInfo.usable = this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(localPtvTemplateInfo);
-    }
-    if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
-    try
-    {
-      ZipUtils.a(new File(QIMPtvTemplateManager.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name), QIMPtvTemplateManager.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener != null) {
-        this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable);
-      }
-      return;
-    }
-    catch (IOException ???)
-    {
-      for (;;)
-      {
-        ???.printStackTrace();
-      }
-    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aooz
  * JD-Core Version:    0.7.0.1
  */

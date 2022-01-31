@@ -1,18 +1,27 @@
 package com.tencent.token.ui.base;
 
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.token.cz;
+import com.tencent.token.global.RqdApplication;
 
-final class bq
-  implements View.OnTouchListener
+class bq
+  implements Animation.AnimationListener
 {
-  bq(LockPatternVerifyView paramLockPatternVerifyView) {}
+  bq(bp parambp, LockPatternVerifyView paramLockPatternVerifyView) {}
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return true;
+    bp.a(this.b).setVisibility(4);
+    bp.b(this.b).startAnimation(LockPatternVerifyView.g(this.b.a));
+    bp.c(this.b).startAnimation(LockPatternVerifyView.i(this.b.a));
+    cz.a(RqdApplication.l()).a();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

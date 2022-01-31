@@ -1,31 +1,59 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.subaccount.AssociatedAccountOptPopBar;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import java.io.File;
 
 public class aikl
-  implements Observer
+  extends bead
 {
-  public aikl(AssociatedAccountOptPopBar paramAssociatedAccountOptPopBar) {}
+  public aikl(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onDone(beae parambeae)
   {
+    super.onDone(parambeae);
     if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountOptPopBar", 2, "update()");
+      QLog.d("AvatarPendantActivity", 2, "download onDone status=" + parambeae.a() + ",errCode=" + parambeae.jdField_a_of_type_Int);
     }
-    if ((paramObject instanceof String[]))
+    int i = parambeae.jdField_a_of_type_JavaLangString.indexOf("?");
+    String str;
+    if (i == -1)
     {
-      paramObservable = (String[])paramObject;
-      if ((paramObservable.length == 2) && (AppConstants.w.equals(paramObservable[0])) && (this.a.a != null) && (this.a.a.app != null) && (!this.a.a.isFinishing()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AssociatedAccountOptPopBar", 2, "update() -> before update");
-        }
-        this.a.a.runOnUiThread(new aikm(this));
+      str = parambeae.jdField_a_of_type_JavaLangString;
+      if (!bdfp.jdField_a_of_type_JavaLangString.equals(str)) {
+        break label290;
       }
+      if ((parambeae.jdField_a_of_type_Int != 0) || (parambeae.f != 200)) {
+        break label237;
+      }
+      str = bdfp.b + "/icon.zip";
+      localFile = new File(bdfp.c);
+      if (beag.a(new File(str), localFile, false)) {
+        break label215;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AvatarPendantActivity", 2, "unzip avatarPendantMarketIcon fail: " + parambeae.f + ", url: " + parambeae.jdField_a_of_type_JavaLangString);
+      }
+      bdhb.a(bdfp.b);
     }
+    label215:
+    label237:
+    while (!QLog.isColorLevel())
+    {
+      File localFile;
+      return;
+      str = parambeae.jdField_a_of_type_JavaLangString.substring(0, i);
+      break;
+      AvatarPendantActivity.b(this.a);
+      this.a.a.sendEmptyMessage(1000);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("AvatarPendantActivity", 2, "download avatarPendantMarketIcon fail: " + parambeae.f + ", url: " + parambeae.jdField_a_of_type_JavaLangString);
+      }
+      bdhb.a(bdfp.b);
+      return;
+    }
+    label290:
+    QLog.e("AvatarPendantActivity", 2, "onDone unkonw url: " + parambeae.jdField_a_of_type_JavaLangString + ",errCode:" + parambeae.jdField_a_of_type_Int + ",httpCode:" + parambeae.f);
   }
 }
 

@@ -1,151 +1,101 @@
 import android.graphics.Bitmap;
-import android.graphics.Color;
+import android.os.Handler;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyTimeUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.CommentData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ReportUtil;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.service.message.MessageUtils;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.util.FaceDecoder;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class mnf
-  extends BaseItemViewHolder
-  implements View.OnClickListener
+class mnf
+  extends lij
 {
-  private static int jdField_a_of_type_Int = Color.parseColor("#07D0B0");
-  private static int jdField_b_of_type_Int = Color.parseColor("#9D9D9D");
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
-  private ReadInJoyNickNameTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView;
-  private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
-  private String jdField_a_of_type_JavaLangString;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView c;
-  private TextView d;
-  private TextView e;
+  mnf(mnd parammnd) {}
   
-  public mnf(View paramView, BaseData paramBaseData, FaceDecoder paramFaceDecoder)
+  protected void a()
   {
-    super(paramView, paramBaseData);
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = paramFaceDecoder;
-    a();
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367108));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367109));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367110));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367112));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367113));
-    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367115));
-    this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367116));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131367111);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-  }
-  
-  public void a(String paramString, Bitmap paramBitmap)
-  {
-    if ((TextUtils.equals(paramString, this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView != null) && (paramBitmap != null)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageBitmap(paramBitmap);
+    super.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoInviteFloatBarUICtr", 2, "onServiceConnected uin = " + this.a.c);
     }
+    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+    {
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a.jdField_b_of_type_Int, this.a.c, this.a.d);
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.c(this.a.jdField_a_of_type_Lid.z, this.a.jdField_a_of_type_Lid.p);
+    }
+    this.a.a(false);
   }
   
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  protected void a(long paramLong)
   {
-    paramBaseData1 = ((CommentData)paramBaseData2).a;
-    this.jdField_a_of_type_JavaLangString = paramBaseData1.authorUin;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setHeadImgByUin(paramBaseData1.authorUin);
-    if (!TextUtils.isEmpty(paramBaseData1.authorNickName))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setText(paramBaseData1.authorNickName);
-      if (paramBaseData1.author_selection != 0) {
-        break label229;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      label64:
-      if (paramBaseData1.rank == 0) {
-        break label240;
-      }
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      label80:
-      if (TextUtils.isEmpty(paramBaseData1.commentContent)) {
-        break label251;
-      }
-      paramBaseData2 = new QQText(MessageUtils.b(paramBaseData1.commentContent), 7, 16);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramBaseData2);
-      label117:
-      this.e.setText(paramBaseData1.likeCount + "");
-      if (!paramBaseData1.liked) {
-        break label270;
-      }
-      this.e.setCompoundDrawablesWithIntrinsicBounds(2130840695, 0, 0, 0);
-      this.e.setTextColor(jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.w("VideoInviteFloatBarUICtr", 1, "onConnected, seq[" + paramLong + "]");
     }
-    for (;;)
+    this.a.jdField_a_of_type_ComTencentAvVideoController.c();
+    mbl.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(paramLong, false);
+    if (this.a.jdField_a_of_type_Mnc != null) {
+      this.a.jdField_a_of_type_Mnc.c();
+    }
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_b_of_type_JavaLangRunnable, 1000L);
+    if (this.a.jdField_a_of_type_Lid.d == 1) {
+      this.a.f = "DEVICE_SPEAKERPHONE;DEVICE_EARPHONE;DEVICE_BLUETOOTHHEADSET;DEVICE_WIREDHEADSET;";
+    }
+    mwk.a().a(this.a.f);
+  }
+  
+  protected void a(long paramLong, int paramInt, String paramString)
+  {
+    QLog.d("VideoInviteFloatBarUICtr", 1, "onClose  reason = " + paramInt + ",peerUin =  " + paramString);
+    if (TextUtils.equals(this.a.c, paramString))
     {
-      this.e.setClickable(false);
-      this.c.setText(ReadInJoyTimeUtils.a(paramBaseData1.commentTime, true));
-      if (paramBaseData1.sub_comments_total > 0) {
-        break label295;
-      }
-      this.d.setText("回复");
+      QLog.d("VideoInviteFloatBarUICtr", 1, "onClose  wrong uin: " + this.a.c + ", " + paramString);
+      this.a.a();
+    }
+    while ((this.a.jdField_a_of_type_ComTencentAvVideoController == null) || (this.a.jdField_a_of_type_Lid.i())) {
       return;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setNickNameByUin(paramBaseData1.authorUin);
-      break;
-      label229:
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      break label64;
-      label240:
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      break label80;
-      label251:
-      if (paramBaseData1.gift_list == null) {
-        break label117;
-      }
-      this.jdField_b_of_type_AndroidWidgetTextView.setText("发布了图片");
-      break label117;
-      label270:
-      this.e.setCompoundDrawablesWithIntrinsicBounds(2130840696, 0, 0, 0);
-      this.e.setTextColor(jdField_b_of_type_Int);
     }
-    label295:
-    this.d.setText(paramBaseData1.sub_comments_total + "回复");
   }
   
-  public void onClick(View paramView)
+  protected void a(String paramString, Bitmap paramBitmap)
   {
-    paramView = (BaseActivity)this.jdField_a_of_type_AndroidViewView.getContext();
-    if ((paramView != null) && ((paramView instanceof FastWebActivity))) {
-      ((FastWebActivity)paramView).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoInviteFloatBarUICtr", 2, "onGetStrangeFace uin = " + this.a.c);
     }
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-    int i = (int)localArticleInfo.mChannelID;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.c()) {}
-    for (paramView = "2";; paramView = "1")
+    if ((this.a.jdField_b_of_type_Int == 25) && (this.a.jdField_a_of_type_Mnc != null)) {
+      this.a.jdField_a_of_type_Mnc.a(paramBitmap);
+    }
+    super.a(paramString, paramBitmap);
+  }
+  
+  protected void a(String paramString, boolean paramBoolean)
+  {
+    super.a(paramString, paramBoolean);
+    QLog.d("VideoInviteFloatBarUICtr", 1, "onDestroyUI  peerUin: " + this.a.c + ", isQuit : " + paramBoolean);
+    if ((this.a.c != null) && (paramString != null) && (this.a.c.equals(paramString)) && (paramBoolean)) {
+      this.a.a();
+    }
+  }
+  
+  protected void b(int paramInt) {}
+  
+  protected void c(int paramInt) {}
+  
+  protected void d(String paramString)
+  {
+    super.d(paramString);
+    if (this.a.jdField_b_of_type_Int == 25)
     {
-      ReportUtil.a(localArticleInfo, "0X8009009", ReadInJoyUtils.a(localArticleInfo, i, paramView));
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoInviteFloatBarUICtr", 2, "VideoInviteActivity onGetQCallNickName nickName:" + paramString);
+      }
+      this.a.jdField_b_of_type_JavaLangString = paramString;
+      if (this.a.jdField_a_of_type_Mnc != null) {
+        this.a.jdField_a_of_type_Mnc.d(this.a.jdField_b_of_type_JavaLangString);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mnf
  * JD-Core Version:    0.7.0.1
  */

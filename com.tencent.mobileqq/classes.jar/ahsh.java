@@ -1,25 +1,15 @@
-import com.tencent.mobileqq.search.activity.VADActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.List;
 
-public final class ahsh
-  implements Runnable
+public abstract interface ahsh
 {
-  public ahsh(MqqHandler paramMqqHandler) {}
+  public abstract void a(List<MayKnowRecommend> paramList);
   
-  public void run()
-  {
-    
-    if (VADActivity.a())
-    {
-      this.a.sendEmptyMessage(0);
-      return;
-    }
-    this.a.sendEmptyMessage(1);
-  }
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahsh
  * JD-Core Version:    0.7.0.1
  */

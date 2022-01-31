@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.nearby.now.view.MagazinePlayerView;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerView.VideoInfoListener;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-public class aewy
-  implements Runnable
+class aewy
+  implements badp
 {
-  public aewy(MagazinePlayerView paramMagazinePlayerView) {}
+  aewy(aewx paramaewx) {}
   
-  public void run()
+  public void a()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener.b();
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener.c();
+    badv localbadv = new badv(3000, 360, 0);
+    localbadv.a = true;
+    this.a.a.d.a(new bado[] { localbadv });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aewy
  * JD-Core Version:    0.7.0.1
  */

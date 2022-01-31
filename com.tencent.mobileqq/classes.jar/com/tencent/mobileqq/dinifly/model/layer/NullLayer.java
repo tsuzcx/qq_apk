@@ -15,15 +15,15 @@ public class NullLayer
   
   void drawLayer(Canvas paramCanvas, Matrix paramMatrix, int paramInt) {}
   
-  public void getBounds(RectF paramRectF, Matrix paramMatrix)
+  public void getBounds(RectF paramRectF, Matrix paramMatrix, boolean paramBoolean)
   {
-    super.getBounds(paramRectF, paramMatrix);
+    super.getBounds(paramRectF, paramMatrix, paramBoolean);
     paramRectF.set(0.0F, 0.0F, 0.0F, 0.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.layer.NullLayer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,23 @@
 package com.tencent.token.utils;
 
-public final class q
+import android.os.Handler;
+import android.os.Message;
+
+class q
+  extends Handler
 {
-  public static int a = 70;
-  public static String b = "6.7.2";
-  public static int c = 1;
-  public static boolean d = true;
-  public static boolean e = true;
-  public static boolean f = true;
-  public static boolean g = false;
-  public static int h = 63;
-  public static boolean i = true;
-  public static boolean j = true;
-  public static boolean k = false;
-  public static boolean l = true;
-  public static boolean m = true;
-  public static boolean n = true;
-  public static boolean o = true;
-  public static boolean p = true;
-  
-  static
+  public void handleMessage(Message paramMessage)
   {
-    if (c != 0)
+    p localp = (p)paramMessage.obj;
+    switch (paramMessage.what)
     {
-      d = false;
-      e = false;
-      i = false;
-      l = false;
-      m = false;
-      n = false;
+    default: 
+      return;
+    case 1: 
+      MyAsyncTask.a(localp.a, localp.b[0]);
       return;
     }
+    localp.a.a(localp.b);
   }
 }
 

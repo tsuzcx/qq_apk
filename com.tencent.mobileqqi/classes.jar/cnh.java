@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
 
-public class cnh
-  implements DialogInterface.OnCancelListener
+class cnh
+  implements PermissionDialogCallback
 {
-  public cnh(DialogActivity paramDialogActivity) {}
+  cnh(cng paramcng) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public void a() {}
+  
+  public void b() {}
 }
 
 

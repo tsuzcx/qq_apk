@@ -15,8 +15,6 @@ public abstract interface IWXAPI
   
   public abstract boolean isWXAppInstalled();
   
-  public abstract boolean isWXAppSupportAPI();
-  
   public abstract boolean openWXApp();
   
   public abstract boolean registerApp(String paramString);
@@ -33,7 +31,7 @@ public abstract interface IWXAPI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mm.opensdk.openapi.IWXAPI
  * JD-Core Version:    0.7.0.1
  */

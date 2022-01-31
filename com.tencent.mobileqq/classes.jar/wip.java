@@ -1,43 +1,33 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
 
 public class wip
-  implements TextView.OnEditorActionListener
+  extends SimpleObserver<wiq>
 {
-  public wip(SearchBaseActivity paramSearchBaseActivity) {}
+  public wip(wil paramwil) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void a(wiq paramwiq)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (paramInt != 3)
-    {
-      bool1 = bool2;
-      if (paramKeyEvent != null)
-      {
-        bool1 = bool2;
-        if (paramKeyEvent.getKeyCode() != 66) {}
-      }
-    }
-    else
-    {
-      paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-      if (!TextUtils.isEmpty(paramTextView)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramTextView, false);
-      }
-      bool1 = true;
-    }
-    return bool1;
+    super.onNext(paramwiq);
+    wil.a(this.a, paramwiq, false, new ErrorMessage());
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    wxe.d("Q.qqstory.detail.DetailFeedAllInfoPuller", "refresh data cancel");
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    wil.a(this.a, null, false, (ErrorMessage)paramError);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wip
  * JD-Core Version:    0.7.0.1
  */

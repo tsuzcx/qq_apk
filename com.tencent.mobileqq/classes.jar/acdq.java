@@ -1,70 +1,34 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmojiListenerManager;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.emoticon.VasEmojiManager;
-import com.tencent.mobileqq.vas.VasReportUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class acdq
-  extends DownloadListener
+  implements bhuk
 {
-  public acdq(VasEmojiManager paramVasEmojiManager) {}
+  public acdq(AddRequestActivity paramAddRequestActivity, bhuf parambhuf) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void OnClick(View paramView, int paramInt)
   {
-    super.onDone(paramDownloadTask);
-    EmojiManager localEmojiManager = this.a.a();
-    Bundle localBundle = paramDownloadTask.a();
-    if (paramDownloadTask.a() != 3) {}
-    for (boolean bool = true;; bool = false)
+    switch (paramInt)
     {
-      long l1 = System.currentTimeMillis();
-      long l2 = localBundle.getLong("vas_download_start");
-      localEmojiManager.a(localBundle, paramDownloadTask, bool, paramDownloadTask.a, paramDownloadTask.d, l1 - l2, 0);
-      return;
-    }
-  }
-  
-  public void onDoneFile(DownloadTask paramDownloadTask)
-  {
-    Object localObject = paramDownloadTask.a();
-    int i = ((Bundle)localObject).getInt(paramDownloadTask.c);
-    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
-    if (QLog.isColorLevel()) {
-      QLog.d("VasEmojiManager", 2, "emotionDownloadListener | onDoneFile epId=" + ((EmoticonPackage)localObject).epId + ",task:" + paramDownloadTask);
-    }
-    if (paramDownloadTask.a != 0)
-    {
-      QLog.e("VasEmojiManager", 1, "onDoneFile : ondone error , reportCode = " + paramDownloadTask.a);
-      if (EmojiManager.a(i)) {
-        EmojiManager.a.a((EmoticonPackage)localObject, i, -1, paramDownloadTask.a);
-      }
-      VasReportUtils.a("emotionType", "emotionActionDownload", "10", ((EmoticonPackage)localObject).epId, "", "", paramDownloadTask.a + "", "", "", "");
     }
     for (;;)
     {
+      this.jdField_a_of_type_Bhuf.dismiss();
       return;
-      EmojiManager localEmojiManager = this.a.a();
-      if (EmojiManager.a(i)) {
-        EmojiManager.a.a((EmoticonPackage)localObject, i, 0, 0);
-      }
-      while ((((EmoticonPackage)localObject).jobType == 3) || (((EmoticonPackage)localObject).jobType == 5))
-      {
-        localEmojiManager.b(paramDownloadTask);
-        return;
-        if (i == 7) {
-          localEmojiManager.a(paramDownloadTask);
-        }
+      if (bdin.d(BaseApplication.getContext())) {
+        zdv.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a, null, this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.getCurrentAccountUin(), 20010, null);
+      } else {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131694768, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acdq
  * JD-Core Version:    0.7.0.1
  */

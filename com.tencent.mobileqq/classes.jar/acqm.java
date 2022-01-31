@@ -1,34 +1,49 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelPicTabView;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
-class acqm
-  implements Runnable
+public class acqm
+  implements bkcu
 {
-  acqm(acql paramacql, HashMap paramHashMap) {}
+  public acqm(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    QfileLocalFileDelPicTabView.a(this.jdField_a_of_type_Acql.a).clear();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    while (localIterator.hasNext())
+    int i = 0;
+    boolean bool;
+    Object localObject;
+    if (paramInt == 0)
     {
-      String str = (String)localIterator.next();
-      List localList = (List)this.jdField_a_of_type_JavaUtilHashMap.get(str);
-      if (localList.size() != 0) {
-        QfileLocalFileDelPicTabView.b(this.jdField_a_of_type_Acql.a).put(str, localList);
+      this.a.b = true;
+      bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isOwnerOrAdim();
+      localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[5];
+      if (localObject != null) {
+        if (!bool) {
+          break label88;
+        }
       }
     }
-    this.jdField_a_of_type_Acql.a.i();
-    this.jdField_a_of_type_Acql.a.setSelect(0);
+    label88:
+    for (paramInt = 0;; paramInt = 8)
+    {
+      ((View)localObject).setVisibility(paramInt);
+      localObject = (FormSimpleItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[6];
+      if (localObject != null)
+      {
+        paramInt = i;
+        if (bool) {
+          paramInt = 3;
+        }
+        ((FormSimpleItem)localObject).setBgType(paramInt);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqm
  * JD-Core Version:    0.7.0.1
  */

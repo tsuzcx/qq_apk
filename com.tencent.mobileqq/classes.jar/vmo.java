@@ -1,29 +1,62 @@
 import android.os.Handler;
-import android.os.Looper;
-import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import android.os.Message;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class vmo
-  implements VideoDrawable.OnPlayRepeatListener
+  extends Handler
 {
-  AIOGalleryAdapter a;
+  WeakReference<FollowCaptureLauncher> a;
   
-  public vmo(AIOGalleryAdapter paramAIOGalleryAdapter)
+  public vmo(FollowCaptureLauncher paramFollowCaptureLauncher)
   {
-    this.a = paramAIOGalleryAdapter;
+    this.a = new WeakReference(paramFollowCaptureLauncher);
   }
   
-  public void onPlayRepeat(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt != 1) {
+    int i = 0;
+    FollowCaptureLauncher localFollowCaptureLauncher = (FollowCaptureLauncher)this.a.get();
+    if (localFollowCaptureLauncher == null) {}
+    for (;;)
+    {
       return;
+      switch (paramMessage.what)
+      {
+      }
+      while (i != 0)
+      {
+        FollowCaptureLauncher.f(localFollowCaptureLauncher);
+        return;
+        FollowCaptureLauncher.b(localFollowCaptureLauncher);
+        continue;
+        FollowCaptureLauncher.a(localFollowCaptureLauncher, (String)paramMessage.obj);
+        i = 1;
+        continue;
+        FollowCaptureLauncher.c(localFollowCaptureLauncher);
+        i = 1;
+        continue;
+        FollowCaptureLauncher.d(localFollowCaptureLauncher);
+        i = 1;
+        continue;
+        FollowCaptureLauncher.b(localFollowCaptureLauncher, (String)paramMessage.obj);
+        i = 1;
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("FollowCaptureLauncher", 2, new Object[] { "showFollowCaptureError, ", Integer.valueOf(paramMessage.what) });
+        }
+        wxj.a("FollowLaunchEvent", false, System.currentTimeMillis() - FollowCaptureLauncher.a(localFollowCaptureLauncher), new String[] { String.valueOf(paramMessage.what) });
+        FollowCaptureLauncher.e(localFollowCaptureLauncher);
+        continue;
+        localFollowCaptureLauncher.a();
+      }
     }
-    new Handler(Looper.getMainLooper()).post(new vmp(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmo
  * JD-Core Version:    0.7.0.1
  */

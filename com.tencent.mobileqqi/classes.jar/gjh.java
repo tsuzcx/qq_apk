@@ -1,24 +1,28 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.view.ProfileGameView;
-import java.util.HashMap;
+import com.tencent.mobileqq.servlet.QZoneServlet;
+import com.tencent.mobileqq.utils.ReflectedMethods;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.TimerTask;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
-class gjh
-  implements Runnable
+public class gjh
+  extends TimerTask
 {
-  gjh(gjg paramgjg, Bitmap paramBitmap) {}
+  private gjh(QZoneServlet paramQZoneServlet) {}
   
   public void run()
   {
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_Gjg.a.a.get("map_key_face");
-    if (localImageView != null) {
-      localImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
+    AppRuntime localAppRuntime = this.a.getAppRuntime();
+    this.a.a = ReflectedMethods.a(BaseApplication.getContext(), "QZONE_UNREAD");
+    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), QZoneServlet.class);
+    localNewIntent.setAction("QZone_Get_Unread");
+    localNewIntent.putExtra("bNotWorkInBackGround", true);
+    localAppRuntime.startServlet(localNewIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gjh
  * JD-Core Version:    0.7.0.1
  */

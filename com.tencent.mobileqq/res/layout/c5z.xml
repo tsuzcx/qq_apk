@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView android:id="@id/la1" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="195.0dip" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

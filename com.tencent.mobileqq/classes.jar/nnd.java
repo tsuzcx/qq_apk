@@ -1,20 +1,20 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
-import com.tencent.biz.qqstory.playmode.util.SendVideoToFriendHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public class nnd
-  implements Runnable
+class nnd
+  implements DialogInterface.OnClickListener
 {
-  public nnd(SendVideoToFriendHelper paramSendVideoToFriendHelper, StoryVideoItem paramStoryVideoItem) {}
+  nnd(nmx paramnmx, JsResult paramJsResult) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mStoryType, "SendVideoToFriendHelper");
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nnd
  * JD-Core Version:    0.7.0.1
  */

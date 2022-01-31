@@ -1,23 +1,12 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
-
-public class wca
-  implements wcd
+public abstract interface wca
 {
-  public wca(StickerBubbleListView paramStickerBubbleListView, int[] paramArrayOfInt) {}
+  public abstract void a();
   
-  public void a(View paramView)
-  {
-    if ((paramView.getTag() instanceof Integer))
-    {
-      paramView = (Integer)paramView.getTag();
-      this.jdField_a_of_type_ArrayOfInt[0] = paramView.intValue();
-    }
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wca
  * JD-Core Version:    0.7.0.1
  */

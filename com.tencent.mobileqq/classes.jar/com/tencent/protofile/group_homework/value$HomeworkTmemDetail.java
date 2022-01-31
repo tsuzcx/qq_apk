@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
 
 public final class value$HomeworkTmemDetail
-  extends MessageMicro
+  extends MessageMicro<HomeworkTmemDetail>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt64Field created = PBField.initInt64(0L);
@@ -25,7 +25,7 @@ public final class value$HomeworkTmemDetail
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.protofile.group_homework.value.HomeworkTmemDetail
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.BarrageParcelItem;
+import android.database.DataSetObserver;
 
-public final class xvn
-  implements Parcelable.Creator
+class xvn
+  extends DataSetObserver
 {
-  public BarrageParcelItem a(Parcel paramParcel)
-  {
-    return new BarrageParcelItem(paramParcel);
-  }
+  xvn(xvm paramxvm) {}
   
-  public BarrageParcelItem[] a(int paramInt)
+  public void onChanged()
   {
-    return new BarrageParcelItem[paramInt];
+    xvm.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xvn
  * JD-Core Version:    0.7.0.1
  */

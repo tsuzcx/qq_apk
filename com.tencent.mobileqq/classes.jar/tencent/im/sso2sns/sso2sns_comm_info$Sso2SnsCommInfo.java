@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class sso2sns_comm_info$Sso2SnsCommInfo
-  extends MessageMicro
+  extends MessageMicro<Sso2SnsCommInfo>
 {
   public static final int STR_ERROR_MSG_FIELD_NUMBER = 3;
   public static final int UINT32_RESULT_FIELD_NUMBER = 2;
@@ -19,7 +19,7 @@ public final class sso2sns_comm_info$Sso2SnsCommInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.sso2sns.sso2sns_comm_info.Sso2SnsCommInfo
  * JD-Core Version:    0.7.0.1
  */

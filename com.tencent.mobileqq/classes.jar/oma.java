@@ -1,18 +1,11 @@
-import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
+import android.view.View.OnClickListener;
 
-class oma
-  implements Runnable
-{
-  oma(olz paramolz) {}
-  
-  public void run()
-  {
-    EditVideoTagPresenter.a(EditVideoTagPresenter.a(this.a.a), EditVideoTagPresenter.a(this.a.a));
-  }
-}
+public abstract interface oma
+  extends View.OnClickListener, olu
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oma
  * JD-Core Version:    0.7.0.1
  */

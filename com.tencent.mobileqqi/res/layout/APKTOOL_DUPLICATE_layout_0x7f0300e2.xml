@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080487" android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200d5"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:background="@drawable/skin_header_bar_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0e3f" android:singleLine="true" style="@style/TitleText" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0112" android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleBtnRightText" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/title_bar_height" android:maxWidth="100.0dip" android:minWidth="52.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0f65" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentRight="true" />
-    <include android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/ivTitleName" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f03005f" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f08048b" android:visibility="gone" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0300e3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/ivTitleName" />
-</RelativeLayout>
+    <ImageView android:id="@android:id/icon" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b002f" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0011" android:gravity="center|right" android:layout_gravity="bottom" android:id="@android:id/text2" android:background="#bf222222" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="fill_parent" android:layout_height="16.0dip" android:includeFontPadding="false" android:layout_weight="1.0" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080263" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020182" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

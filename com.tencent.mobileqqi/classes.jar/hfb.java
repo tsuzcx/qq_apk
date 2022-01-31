@@ -1,15 +1,24 @@
-import com.tencent.mobileqq.util.InfiniteTaskThreadPool;
-import java.util.concurrent.ThreadFactory;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AlbumImageProxy;
+import com.tencent.qphone.base.util.QLog;
 
 public class hfb
-  implements ThreadFactory
+  extends Thread
 {
-  public Thread newThread(Runnable paramRunnable)
+  public hfb(AlbumImageProxy paramAlbumImageProxy, String paramString, int paramInt) {}
+  
+  public void run()
   {
-    InfiniteTaskThreadPool.a();
-    paramRunnable = new Thread(paramRunnable, "InfiniteTaskThread_" + InfiniteTaskThreadPool.b());
-    paramRunnable.setDaemon(true);
-    return paramRunnable;
+    if (QLog.isColorLevel()) {
+      QLog.d("AlbumImageProxy", 2, "AlbumImageProxy, decode Thread: filekey :" + this.jdField_a_of_type_JavaLangString);
+    }
+    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqWidgetAlbumImageProxy.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    Message localMessage = new Message();
+    localMessage.what = 0;
+    localMessage.obj = localBitmap;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAlbumImageProxy.a.sendMessage(localMessage);
   }
 }
 

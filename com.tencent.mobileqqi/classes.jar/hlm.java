@@ -1,32 +1,24 @@
-import android.content.Context;
-import android.widget.Toast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.open.applist.H5ConfirmDialog.Dialogcallback;
+import com.tencent.open.applist.WebAppActivity;
+import com.tencent.open.base.LogUtility;
 
 public class hlm
-  extends Toast
+  implements H5ConfirmDialog.Dialogcallback
 {
-  public hlm(Context paramContext)
-  {
-    super(paramContext);
-  }
+  public hlm(WebAppActivity paramWebAppActivity) {}
   
-  public void show()
+  public void a(boolean paramBoolean)
   {
-    try
-    {
-      super.show();
-      return;
+    LogUtility.c("WebAppActivity", " createIcon = " + paramBoolean);
+    if (paramBoolean) {
+      this.a.a(this.a.h, this.a.h, true);
     }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QQToast", 2, "", localThrowable);
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hlm
  * JD-Core Version:    0.7.0.1
  */

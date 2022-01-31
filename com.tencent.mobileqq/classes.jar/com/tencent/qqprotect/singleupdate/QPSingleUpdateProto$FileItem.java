@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class QPSingleUpdateProto$FileItem
-  extends MessageMicro
+  extends MessageMicro<FileItem>
 {
   public static final int BYTES_HASH_FIELD_NUMBER = 2;
   public static final int BYTES_NAME_FIELD_NUMBER = 1;
@@ -30,7 +30,7 @@ public final class QPSingleUpdateProto$FileItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqprotect.singleupdate.QPSingleUpdateProto.FileItem
  * JD-Core Version:    0.7.0.1
  */

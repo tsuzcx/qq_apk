@@ -1,18 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.BusinessAlbumInfo;
-
-public final class amui
-  implements Parcelable.Creator
+public class amui
 {
-  public BusinessAlbumInfo a(Parcel paramParcel)
-  {
-    return new BusinessAlbumInfo(paramParcel, null);
-  }
+  public int a;
+  public long a;
   
-  public BusinessAlbumInfo[] a(int paramInt)
+  public amui(long paramLong, int paramInt)
   {
-    return new BusinessAlbumInfo[paramInt];
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="false"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="150" android:drawable="@drawable/common_loading_0" />
-    <item android:duration="150" android:drawable="@drawable/common_loading_1" />
-    <item android:duration="150" android:drawable="@drawable/common_loading_2" />
-    <item android:duration="150" android:drawable="@drawable/common_loading_3" />
-    <item android:duration="150" android:drawable="@drawable/common_loading_4" />
-    <item android:duration="150" android:drawable="@drawable/common_loading_5" />
-    <item android:duration="150" android:drawable="@drawable/common_loading_6" />
-    <item android:duration="150" android:drawable="@drawable/common_loading_7" />
-    <item android:duration="150" android:drawable="@drawable/common_loading_8" />
-    <item android:duration="150" android:drawable="@drawable/common_loading_9" />
-    <item android:duration="150" android:drawable="@drawable/common_loading_10" />
-    <item android:duration="150" android:drawable="@drawable/common_loading_11" />
-</animation-list>
+    <item android:state_selected="true" android:drawable="@drawable/skin_list_item_pressed" />
+    <item android:state_pressed="true" android:drawable="@drawable/skin_list_item_pressed" />
+    <item android:drawable="@drawable/skin_list_item_unread" />
+</selector>

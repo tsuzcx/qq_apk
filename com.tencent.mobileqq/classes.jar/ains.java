@@ -1,16 +1,15 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import com.tencent.mobileqq.text.QQTextBuilder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 
-public final class ains
-  extends Editable.Factory
+public class ains
+  implements DialogInterface.OnClickListener
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  public ains(CameraPreviewActivity paramCameraPreviewActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramCharSequence instanceof QQTextBuilder)) {
-      return (Editable)paramCharSequence;
-    }
-    return new QQTextBuilder(paramCharSequence, 3);
+    this.a.a = null;
   }
 }
 

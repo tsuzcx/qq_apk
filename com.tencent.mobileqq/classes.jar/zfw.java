@@ -1,68 +1,84 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.JobReporter;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.WebSsoBody.WebSsoControlData;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class zfw
-  extends Handler
+class zfw
+  implements BusinessObserver
 {
-  public zfw(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  zfw(zft paramzft, String paramString1, String paramString2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramMessage.what == 1) && (paramMessage.obj != null))
+    if (paramBoolean) {}
+    for (;;)
     {
-      paramMessage = new WeakReference((Thread)paramMessage.obj);
-      JobReporter.access$000().add(paramMessage);
-    }
-    do
-    {
-      int i;
-      do
+      try
       {
-        return;
-        if (paramMessage.what != 2) {
-          break;
-        }
-        JobReporter.access$100();
-        long l = System.currentTimeMillis();
-        if ((l - JobReporter.access$200() > 86400000L) && (JobReporter.access$300() > 0L) && (JobReporter.ramdomReport(10)))
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
         {
-          paramMessage = (String)paramMessage.obj;
-          StatisticCollector.a(BaseApplicationImpl.getApplication()).a(paramMessage, "thread_monitor_peak_count", true, JobReporter.access$300(), 1L, null, "", false);
-          if (QLog.isColorLevel()) {
-            QLog.d("JobReporter", 2, "reportThreadPeakCount Yes " + JobReporter.access$300());
+          WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+          localWebSsoResponseBody.mergeFrom(paramBundle);
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("data", localWebSsoResponseBody.data.get());
+          localJSONObject.put("retcode", localWebSsoResponseBody.ret.get());
+          localJSONObject.put("cret", 0);
+          this.jdField_a_of_type_Zft.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+          if (((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).frequency.has()) {
+            this.jdField_a_of_type_Zft.a = ((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).frequency.get();
           }
-          JobReporter.access$202(l);
-          SharedPreUtils.b(l);
-          JobReporter.access$302(0L);
-          SharedPreUtils.a(JobReporter.access$300());
+          if (((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).packageSize.has()) {
+            this.jdField_a_of_type_Zft.b = ((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).packageSize.get();
+          }
+          if (QLog.isDevelopLevel()) {
+            QLog.i("SSOWebviewPlugin", 2, String.format("onReceive cmd=%s %b frequency=%d result=%s", new Object[] { this.b, Boolean.valueOf(((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).frequency.has()), Integer.valueOf(this.jdField_a_of_type_Zft.a), localJSONObject }));
+          }
+        }
+        if (!QLog.isColorLevel()) {
+          break label385;
+        }
+        if (paramBundle == null) {
+          break label386;
+        }
+        paramBoolean = true;
+        QLog.i("SSOWebviewPlugin", 2, String.format("onReceive data!=null[%b]", new Object[] { Boolean.valueOf(paramBoolean) }));
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle = new JSONObject();
+        try
+        {
+          paramBundle.put("cret", 2);
+          this.jdField_a_of_type_Zft.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
           return;
         }
-        i = JobReporter.access$400();
-        if (QLog.isColorLevel()) {
-          QLog.d("JobReporter", 2, "saveThreadPeakCount count" + i + " sThreadPeakCount " + JobReporter.access$300());
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+          continue;
         }
-      } while (i <= JobReporter.access$300());
-      JobReporter.access$302(i);
-      SharedPreUtils.a(JobReporter.access$300());
+      }
+      paramBundle = new JSONObject();
+      paramBundle.put("cret", 1);
+      this.jdField_a_of_type_Zft.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
       return;
-    } while (paramMessage.what == 3);
-    super.handleMessage(paramMessage);
+      label385:
+      return;
+      label386:
+      paramBoolean = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zfw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,32 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageView;
-import com.tencent.biz.common.util.ImageUtil;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class bvh
-  extends Handler
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private boolean jdField_a_of_type_Boolean;
+  public bvh(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public bvh(Share paramShare) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    AssistantSettingActivity.e(this.a).setContentDescription("联系人列表按字母排列");
+    paramCompoundButton = this.a.b;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "0X8004043", "0X8004043", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, this.a.b.a(), null, "qqsetting_all_contacts_key", paramBoolean);
+      return;
     }
-    do
-    {
-      do
-      {
-        return;
-      } while ((!(paramMessage.obj instanceof Bitmap)) || (this.jdField_a_of_type_Boolean));
-      paramMessage = ImageUtil.a((Bitmap)paramMessage.obj, (int)(34.0F * this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_Float));
-      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.f.setVisibility(8);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramMessage);
-    } while (!QLog.isColorLevel());
-    QLog.d(Share.b(), 2, "QQBrowserActivity VISIBLE -----------------------");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bvh
  * JD-Core Version:    0.7.0.1
  */

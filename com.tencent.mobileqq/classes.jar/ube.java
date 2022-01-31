@@ -1,21 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.view.animation.Interpolator;
+import com.tencent.biz.qqcircle.utils.QCircleSlidBottomView;
 
 public class ube
-  implements DialogInterface.OnDismissListener
+  implements Interpolator
 {
-  public ube(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public ube(QCircleSlidBottomView paramQCircleSlidBottomView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public float getInterpolation(float paramFloat)
   {
-    this.a.a.postDelayed(new ucg(this.a), 150L);
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ube
  * JD-Core Version:    0.7.0.1
  */

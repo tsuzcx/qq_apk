@@ -1,23 +1,38 @@
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.apollo.drawer.CardDrawerStatus;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
+import java.util.List;
 
 public class ypd
-  implements Runnable
+  extends FragmentPagerAdapter
 {
-  public ypd(CardDrawerStatus paramCardDrawerStatus, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public ypd(RelativePersonalBottomView paramRelativePersonalBottomView, FragmentManager paramFragmentManager)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) == null)) {
-      QLog.w("CardDrawerStatus", 1, "MediaPlayerManager is null");
+    super(paramFragmentManager);
+  }
+  
+  public int getCount()
+  {
+    return RelativePersonalBottomView.a(this.a).size();
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    if (paramInt < RelativePersonalBottomView.a(this.a).size()) {
+      return (Fragment)RelativePersonalBottomView.a(this.a).get(paramInt);
     }
+    return null;
+  }
+  
+  public int getItemPosition(Object paramObject)
+  {
+    return -2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ypd
  * JD-Core Version:    0.7.0.1
  */

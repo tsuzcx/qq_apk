@@ -1,23 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-
 class wto
-  implements DialogInterface.OnClickListener
+  implements wsx
 {
-  wto(wtl paramwtl) {}
+  wto(wtd paramwtd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.setText("");
-    }
+    wxe.d("Q.qqstory.home.StoryListPresenter", "ParallelStepExecutor finish requestAllDataFromNet steps");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wto
  * JD-Core Version:    0.7.0.1
  */

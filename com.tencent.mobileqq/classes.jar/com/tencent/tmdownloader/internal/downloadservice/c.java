@@ -11,7 +11,9 @@ import com.tencent.hlyyb.downloader.DownloaderTask;
 import com.tencent.hlyyb.downloader.DownloaderTaskCategory;
 import com.tencent.hlyyb.downloader.DownloaderTaskListener;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.k;
+import com.tencent.tmdownloader.notify.DownloadTaskInfo;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -23,19 +25,20 @@ import org.json.JSONObject;
 public class c
 {
   public String A = "";
-  public String B = "";
-  public int C = 0;
+  public int B = 0;
+  public String C = "";
   public String D = "";
   public String E = "";
-  public String F = "";
+  public boolean F = false;
   public boolean G = false;
-  public boolean H = false;
-  public int I = 0;
-  public long J;
-  public String K;
-  public int L = 0;
-  final Object M = new Object();
-  public DownloaderTaskListener N = new d(this);
+  public int H = 0;
+  public long I;
+  public String J;
+  public int K = 0;
+  public String L;
+  public String M;
+  final Object N = new Object();
+  public DownloaderTaskListener O = new d(this);
   public String a;
   public String b;
   public String c;
@@ -46,19 +49,19 @@ public class c
   public long h;
   public long i;
   public String j;
-  protected String k;
+  public int k;
   public int l;
-  public int m;
-  public String n;
-  public long o;
-  protected HashMap<String, String> p;
-  protected String q;
-  public long r = 0L;
+  public String m;
+  public long n;
+  protected HashMap<String, String> o;
+  protected String p;
+  public long q = 0L;
+  public String r = "";
   public String s = "";
-  public String t = "";
+  public long t = 0L;
   public long u = 0L;
   public long v = 0L;
-  public long w = 0L;
+  public String w = "";
   public String x = "";
   public String y = "";
   public String z = "";
@@ -73,13 +76,13 @@ public class c
     this.b = paramString1;
     this.c = b.a(paramString1);
     this.d = UUID.randomUUID().toString();
-    this.l = paramInt;
+    this.k = paramInt;
     this.g = 0;
-    this.m = 0;
+    this.l = 0;
     this.e = false;
     this.a = paramString2;
-    this.n = b.a();
-    this.o = 0L;
+    this.m = b.a();
+    this.n = 0L;
   }
   
   public static c a(Cursor paramCursor)
@@ -89,37 +92,58 @@ public class c
     localc.d = paramCursor.getString(paramCursor.getColumnIndex("uId"));
     localc.c = paramCursor.getString(paramCursor.getColumnIndex("finalUrl"));
     localc.b = paramCursor.getString(paramCursor.getColumnIndex("taskUrl"));
-    localc.K = paramCursor.getString(paramCursor.getColumnIndex("bakUrl"));
+    localc.J = paramCursor.getString(paramCursor.getColumnIndex("bakUrl"));
     localc.j = paramCursor.getString(paramCursor.getColumnIndex("fileName"));
     localc.a = paramCursor.getString(paramCursor.getColumnIndex("contentType"));
     localc.i = paramCursor.getLong(paramCursor.getColumnIndex("totalBytes"));
     localc.g = paramCursor.getInt(paramCursor.getColumnIndex("status"));
     localc.h = paramCursor.getLong(paramCursor.getColumnIndex("receivedBytes"));
-    localc.l = paramCursor.getInt(paramCursor.getColumnIndex("priority"));
-    localc.n = paramCursor.getString(paramCursor.getColumnIndex("netType"));
-    localc.m = paramCursor.getInt(paramCursor.getColumnIndex("downloadFailedErrCode"));
-    localc.o = paramCursor.getLong(paramCursor.getColumnIndex("downloadFailedTime"));
-    localc.q = paramCursor.getString(paramCursor.getColumnIndex("headerParams"));
-    localc.r = paramCursor.getLong(paramCursor.getColumnIndex("appId"));
-    localc.s = paramCursor.getString(paramCursor.getColumnIndex("taskPakcageName"));
-    localc.t = paramCursor.getString(paramCursor.getColumnIndex("taskVersioncode"));
-    localc.u = paramCursor.getLong(paramCursor.getColumnIndex("startTime"));
-    localc.v = paramCursor.getLong(paramCursor.getColumnIndex("endTime"));
-    localc.C = paramCursor.getInt(paramCursor.getColumnIndex("downloadType"));
-    localc.w = paramCursor.getLong(paramCursor.getColumnIndex("uin"));
-    localc.x = paramCursor.getString(paramCursor.getColumnIndex("uintype"));
-    localc.y = paramCursor.getString(paramCursor.getColumnIndex("via"));
-    localc.z = paramCursor.getString(paramCursor.getColumnIndex("channelId"));
-    localc.A = paramCursor.getString(paramCursor.getColumnIndex("traceId"));
-    localc.B = paramCursor.getString(paramCursor.getColumnIndex("extraData"));
-    localc.E = paramCursor.getString(paramCursor.getColumnIndex("iconUrl"));
-    localc.F = paramCursor.getString(paramCursor.getColumnIndex("appName"));
+    localc.k = paramCursor.getInt(paramCursor.getColumnIndex("priority"));
+    localc.m = paramCursor.getString(paramCursor.getColumnIndex("netType"));
+    localc.l = paramCursor.getInt(paramCursor.getColumnIndex("downloadFailedErrCode"));
+    localc.n = paramCursor.getLong(paramCursor.getColumnIndex("downloadFailedTime"));
+    localc.p = paramCursor.getString(paramCursor.getColumnIndex("headerParams"));
+    localc.q = paramCursor.getLong(paramCursor.getColumnIndex("appId"));
+    localc.r = paramCursor.getString(paramCursor.getColumnIndex("taskPakcageName"));
+    localc.s = paramCursor.getString(paramCursor.getColumnIndex("taskVersioncode"));
+    localc.t = paramCursor.getLong(paramCursor.getColumnIndex("startTime"));
+    localc.u = paramCursor.getLong(paramCursor.getColumnIndex("endTime"));
+    localc.B = paramCursor.getInt(paramCursor.getColumnIndex("downloadType"));
+    localc.v = paramCursor.getLong(paramCursor.getColumnIndex("uin"));
+    localc.w = paramCursor.getString(paramCursor.getColumnIndex("uintype"));
+    localc.x = paramCursor.getString(paramCursor.getColumnIndex("via"));
+    localc.y = paramCursor.getString(paramCursor.getColumnIndex("channelId"));
+    localc.z = paramCursor.getString(paramCursor.getColumnIndex("traceId"));
+    localc.A = paramCursor.getString(paramCursor.getColumnIndex("extraData"));
+    localc.D = paramCursor.getString(paramCursor.getColumnIndex("iconUrl"));
+    localc.E = paramCursor.getString(paramCursor.getColumnIndex("appName"));
     if (paramCursor.getInt(paramCursor.getColumnIndex("isAutoInstallBySDK")) != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      localc.G = bool;
-      localc.J = paramCursor.getLong(paramCursor.getColumnIndex("fileSize"));
+      localc.F = bool;
+      localc.I = paramCursor.getLong(paramCursor.getColumnIndex("fileSize"));
       return localc;
+    }
+  }
+  
+  private DownloadTaskInfo a(DownloaderTask paramDownloaderTask)
+  {
+    DownloadTaskInfo localDownloadTaskInfo = new DownloadTaskInfo();
+    localDownloadTaskInfo.url = paramDownloaderTask.getUrl();
+    localDownloadTaskInfo.pkgName = this.r;
+    localDownloadTaskInfo.source = this.L;
+    try
+    {
+      localDownloadTaskInfo.versionCode = Integer.parseInt(this.s);
+      localDownloadTaskInfo.stackInfo = this.M;
+      return localDownloadTaskInfo;
+    }
+    catch (Throwable paramDownloaderTask)
+    {
+      for (;;)
+      {
+        ab.a("_DownloadInfo", ">buildInfo parseInt error!", paramDownloaderTask);
+      }
     }
   }
   
@@ -131,32 +155,32 @@ public class c
       paramContentValues.put("uId", paramc.d);
       paramContentValues.put("finalUrl", paramc.c);
       paramContentValues.put("taskUrl", paramc.b);
-      paramContentValues.put("bakUrl", paramc.K);
+      paramContentValues.put("bakUrl", paramc.J);
       paramContentValues.put("fileName", paramc.j);
       paramContentValues.put("contentType", paramc.a);
       paramContentValues.put("totalBytes", Long.valueOf(paramc.i));
       paramContentValues.put("status", Integer.valueOf(paramc.g));
       paramContentValues.put("receivedBytes", Long.valueOf(paramc.h));
-      paramContentValues.put("priority", Integer.valueOf(paramc.l));
-      paramContentValues.put("netType", paramc.n);
-      paramContentValues.put("downloadFailedErrCode", Integer.valueOf(paramc.m));
-      paramContentValues.put("downloadFailedTime", Long.valueOf(paramc.o));
-      paramContentValues.put("headerParams", paramc.q);
-      paramContentValues.put("appId", Long.valueOf(paramc.r));
-      paramContentValues.put("taskPakcageName", paramc.s);
-      paramContentValues.put("taskVersioncode", paramc.t);
-      paramContentValues.put("startTime", Long.valueOf(paramc.u));
-      paramContentValues.put("endTime", Long.valueOf(paramc.v));
-      paramContentValues.put("downloadType", Integer.valueOf(paramc.C));
-      paramContentValues.put("uin", Long.valueOf(paramc.w));
-      paramContentValues.put("uintype", paramc.x);
-      paramContentValues.put("via", paramc.y);
-      paramContentValues.put("channelId", paramc.z);
-      paramContentValues.put("traceId", paramc.A);
-      paramContentValues.put("extraData", paramc.B);
-      paramContentValues.put("iconUrl", paramc.E);
-      paramContentValues.put("appName", paramc.F);
-      if (!paramc.G) {
+      paramContentValues.put("priority", Integer.valueOf(paramc.k));
+      paramContentValues.put("netType", paramc.m);
+      paramContentValues.put("downloadFailedErrCode", Integer.valueOf(paramc.l));
+      paramContentValues.put("downloadFailedTime", Long.valueOf(paramc.n));
+      paramContentValues.put("headerParams", paramc.p);
+      paramContentValues.put("appId", Long.valueOf(paramc.q));
+      paramContentValues.put("taskPakcageName", paramc.r);
+      paramContentValues.put("taskVersioncode", paramc.s);
+      paramContentValues.put("startTime", Long.valueOf(paramc.t));
+      paramContentValues.put("endTime", Long.valueOf(paramc.u));
+      paramContentValues.put("downloadType", Integer.valueOf(paramc.B));
+      paramContentValues.put("uin", Long.valueOf(paramc.v));
+      paramContentValues.put("uintype", paramc.w);
+      paramContentValues.put("via", paramc.x);
+      paramContentValues.put("channelId", paramc.y);
+      paramContentValues.put("traceId", paramc.z);
+      paramContentValues.put("extraData", paramc.A);
+      paramContentValues.put("iconUrl", paramc.D);
+      paramContentValues.put("appName", paramc.E);
+      if (!paramc.F) {
         break label367;
       }
     }
@@ -164,7 +188,7 @@ public class c
     for (int i1 = 1;; i1 = 0)
     {
       paramContentValues.put("isAutoInstallBySDK", Integer.valueOf(i1));
-      paramContentValues.put("fileSize", Long.valueOf(paramc.J));
+      paramContentValues.put("fileSize", Long.valueOf(paramc.I));
       return;
     }
   }
@@ -176,19 +200,36 @@ public class c
     localc.d = paramCursor.getString(paramCursor.getColumnIndex("uId"));
     localc.c = paramCursor.getString(paramCursor.getColumnIndex("finalUrl"));
     localc.b = paramCursor.getString(paramCursor.getColumnIndex("taskUrl"));
-    localc.K = paramCursor.getString(paramCursor.getColumnIndex("bakUrl"));
+    localc.J = paramCursor.getString(paramCursor.getColumnIndex("bakUrl"));
     localc.j = paramCursor.getString(paramCursor.getColumnIndex("fileName"));
     localc.a = paramCursor.getString(paramCursor.getColumnIndex("contentType"));
     localc.i = paramCursor.getLong(paramCursor.getColumnIndex("totalBytes"));
     localc.g = paramCursor.getInt(paramCursor.getColumnIndex("status"));
     localc.h = paramCursor.getLong(paramCursor.getColumnIndex("receivedBytes"));
-    localc.l = paramCursor.getInt(paramCursor.getColumnIndex("priority"));
-    localc.J = paramCursor.getLong(paramCursor.getColumnIndex("fileSize"));
-    localc.n = null;
-    localc.m = 0;
-    localc.o = 0L;
-    localc.q = null;
+    localc.k = paramCursor.getInt(paramCursor.getColumnIndex("priority"));
+    localc.I = paramCursor.getLong(paramCursor.getColumnIndex("fileSize"));
+    localc.m = null;
+    localc.l = 0;
+    localc.n = 0L;
+    localc.p = null;
     return localc;
+  }
+  
+  private boolean d(String paramString)
+  {
+    Object localObject = HalleyAgent.getDownloader().getAllTasks();
+    ab.e("_DownloadInfo", "isSavePathExisted " + paramString + ",taskList=" + localObject);
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      DownloaderTask localDownloaderTask = (DownloaderTask)((Iterator)localObject).next();
+      if ((TextUtils.equals(localDownloaderTask.getSavePath(), paramString)) && (!TextUtils.equals(localDownloaderTask.getUrl(), this.b)))
+      {
+        ab.e("_DownloadInfo", "Task " + localDownloaderTask.getUrl() + " has same path:" + paramString);
+        return true;
+      }
+    }
+    return false;
   }
   
   public void a(int paramInt)
@@ -197,7 +238,7 @@ public class c
     {
       try
       {
-        r.c("_DownloadInfo", "halleytest updateStatus status=" + paramInt + ", mStatus = " + this.g);
+        ab.c("_DownloadInfo", "halleytest updateStatus status=" + paramInt + ", mStatus = " + this.g);
         boolean bool = b();
         if (bool) {
           return;
@@ -206,28 +247,28 @@ public class c
         if ((this.g != 6) && (this.g != 6))
         {
           if (this.g == 5) {
-            this.o = System.currentTimeMillis();
+            this.n = System.currentTimeMillis();
           }
           com.tencent.tmdownloader.internal.storage.a.a().a(this);
-          f.a().a(this.b, this.g, this.m, "");
-          if ((this.g != 4) || (!this.G)) {
+          f.a().a(this.b, this.g, this.l, "");
+          if ((this.g != 4) || (!this.F)) {
             continue;
           }
-          r.c("_DownloadInfo", "Download status is succeed, start to install");
+          ab.c("_DownloadInfo", "Download status is succeed, start to install");
           a.a(com.tencent.tmdownloader.internal.storage.d.a(this.j));
           continue;
         }
         com.tencent.tmdownloader.internal.storage.a.a().a(this.b);
       }
       finally {}
-      f.a().a(String.valueOf(this.r));
+      f.a().a(String.valueOf(this.q));
     }
   }
   
   public void a(int paramInt, DownloaderTask paramDownloaderTask)
   {
     if (paramDownloaderTask == null) {
-      r.e("_DownloadInfo", "<downloadReport> task is null ,return");
+      ab.e("_DownloadInfo", "<downloadReport> task is null ,return");
     }
     long l1 = System.currentTimeMillis() / 1000L;
     String str1 = paramDownloaderTask.getUniqueKey();
@@ -242,9 +283,9 @@ public class c
       long l2 = paramDownloaderTask.getStartTime();
       long l3 = paramDownloaderTask.getCostTime();
       long l4 = paramDownloaderTask.getTotalLength();
-      paramDownloaderTask = l1 + "|" + this.r + "|" + this.t + "|" + this.s + "|" + this.C + "|" + paramInt + "|" + str1 + "|" + str2 + "|" + i1 + "|" + i2 + "|" + l2 + "|" + l3 + "|" + l4 + "|" + this.y;
-      r.c("_DownloadInfo", "<downloadReport> reportLog type=8,postReport.data: " + paramDownloaderTask);
-      com.tencent.tmassistantbase.util.f.a().post(new e(this, paramDownloaderTask));
+      paramDownloaderTask = l1 + "|" + this.q + "|" + this.s + "|" + this.r + "|" + this.B + "|" + paramInt + "|" + str1 + "|" + str2 + "|" + i1 + "|" + i2 + "|" + l2 + "|" + l3 + "|" + l4 + "|" + this.x;
+      ab.c("_DownloadInfo", "<downloadReport> reportLog type=8,postReport.data: " + paramDownloaderTask);
+      k.a().post(new e(this, paramDownloaderTask));
       return;
     }
   }
@@ -260,29 +301,29 @@ public class c
   
   public void a(String paramString)
   {
-    r.c(paramString, "--------dump DownloadInfo-----------");
-    r.c(paramString, "mContentType: " + this.a);
-    r.c(paramString, "mURL: " + this.b);
-    r.c(paramString, "mBakUrl: " + this.K);
-    r.c(paramString, "mTotalBytes: " + this.i);
-    r.c(paramString, "mUUID: " + this.d);
-    r.c(paramString, "mStatus: " + this.g);
-    r.c(paramString, "mReceivedBytes: " + this.h);
-    r.c(paramString, "mFileName: " + this.j);
-    r.c(paramString, "mDownloadFailedErrCode: " + this.m);
-    r.c(paramString, "mNetType:" + this.n);
-    r.c(paramString, "mDownloadFailedTime:" + this.o);
-    r.c(paramString, "mHeaderParamString:" + this.q);
-    r.c(paramString, "mAppid:" + this.r + " mpackageName:" + this.s + " mVersioncode:" + this.t + " via:" + this.y);
-    r.c(paramString, "mChannelid:" + this.z + " traceId:" + this.A + " extraData:" + this.B + " downloadType:" + this.C + " mIconUrl:" + this.E + " mAppName:" + this.F + " showNotification:" + this.L + " isAutoInstallBySDK:" + this.G);
+    ab.c(paramString, "--------dump DownloadInfo-----------");
+    ab.c(paramString, "mContentType: " + this.a);
+    ab.c(paramString, "mURL: " + this.b);
+    ab.c(paramString, "mBakUrl: " + this.J);
+    ab.c(paramString, "mTotalBytes: " + this.i);
+    ab.c(paramString, "mUUID: " + this.d);
+    ab.c(paramString, "mStatus: " + this.g);
+    ab.c(paramString, "mReceivedBytes: " + this.h);
+    ab.c(paramString, "mFileName: " + this.j);
+    ab.c(paramString, "mDownloadFailedErrCode: " + this.l);
+    ab.c(paramString, "mNetType:" + this.m);
+    ab.c(paramString, "mDownloadFailedTime:" + this.n);
+    ab.c(paramString, "mHeaderParamString:" + this.p);
+    ab.c(paramString, "mAppid:" + this.q + " mpackageName:" + this.r + " mVersioncode:" + this.s + " via:" + this.x);
+    ab.c(paramString, "mChannelid:" + this.y + " traceId:" + this.z + " extraData:" + this.A + " downloadType:" + this.B + " mIconUrl:" + this.D + " mAppName:" + this.E + " showNotification:" + this.K + " isAutoInstallBySDK:" + this.F);
   }
   
   public void a(HashMap<String, String> paramHashMap)
   {
     if ((paramHashMap != null) && (paramHashMap.size() > 0))
     {
-      this.p = paramHashMap;
-      this.q = new JSONObject(paramHashMap).toString();
+      this.o = paramHashMap;
+      this.p = new JSONObject(paramHashMap).toString();
     }
   }
   
@@ -294,7 +335,7 @@ public class c
   public DownloaderTask b(String paramString)
   {
     Object localObject2 = HalleyAgent.getDownloader().getIncompleteTasks();
-    synchronized (this.M)
+    synchronized (this.N)
     {
       localObject2 = ((List)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
@@ -311,50 +352,50 @@ public class c
   public void b(int paramInt)
   {
     if (paramInt >= 0) {
-      this.m = paramInt;
+      this.l = paramInt;
     }
     for (;;)
     {
-      r.e("_DownloadInfo", "halleytest convertHalleyFailCodeToDownloadFailedErrCode halley failCode = " + paramInt + ",mDownloadFailedErrCode = " + this.m);
+      ab.e("_DownloadInfo", "halleytest convertHalleyFailCodeToDownloadFailedErrCode halley failCode = " + paramInt + ",mDownloadFailedErrCode = " + this.l);
       return;
       if (paramInt == -23) {
-        this.m = 601;
+        this.l = 601;
       } else if (paramInt == -25) {
-        this.m = 602;
+        this.l = 602;
       } else if (paramInt == -29) {
-        this.m = 603;
+        this.l = 603;
       } else if (paramInt == -26) {
-        this.m = 605;
+        this.l = 605;
       } else if (paramInt == -27) {
-        this.m = 606;
+        this.l = 606;
       } else if (paramInt == -51) {
-        this.m = 700;
+        this.l = 700;
       } else if (paramInt == -41) {
-        this.m = 701;
+        this.l = 701;
       } else if (paramInt == -58) {
-        this.m = 702;
+        this.l = 702;
       } else if ((paramInt == -14) || (paramInt == -47) || (paramInt == -49) || (paramInt == -50) || (paramInt == -72)) {
-        this.m = 703;
+        this.l = 703;
       } else if (paramInt == -11) {
-        this.m = 704;
+        this.l = 704;
       } else if (paramInt == -43) {
-        this.m = 705;
+        this.l = 705;
       } else if (paramInt == -42) {
-        this.m = 706;
+        this.l = 706;
       } else if ((paramInt == -53) || (paramInt == -65) || (paramInt == -59)) {
-        this.m = 707;
+        this.l = 707;
       } else if (paramInt == -57) {
-        this.m = 709;
+        this.l = 709;
       } else if ((paramInt == -12) || (paramInt == -40)) {
-        this.m = 710;
+        this.l = 710;
       } else if ((paramInt == -13) || (paramInt == -46)) {
-        this.m = 711;
+        this.l = 711;
       } else if (paramInt == -15) {
-        this.m = 605;
+        this.l = 605;
       } else if (paramInt == -10) {
-        this.m = 712;
+        this.l = 712;
       } else {
-        this.m = 604;
+        this.l = 604;
       }
     }
   }
@@ -372,29 +413,29 @@ public class c
   
   public int c()
   {
-    r.c("_DownloadInfo", "url: " + this.b);
+    ab.c("_DownloadInfo", "url: " + this.b);
+    Object localObject1;
     Object localObject2;
-    Object localObject3;
-    if ((!TextUtils.isEmpty(this.q)) && ((this.p == null) || (this.p.size() <= 0)))
+    if ((!TextUtils.isEmpty(this.p)) && ((this.o == null) || (this.o.size() <= 0)))
     {
       HashMap localHashMap = new HashMap();
       try
       {
-        localObject2 = new JSONObject(this.q);
-        localObject3 = ((JSONObject)localObject2).keys();
-        while (((Iterator)localObject3).hasNext())
+        localObject1 = new JSONObject(this.p);
+        localObject2 = ((JSONObject)localObject1).keys();
+        while (((Iterator)localObject2).hasNext())
         {
-          String str = (String)((Iterator)localObject3).next();
-          localHashMap.put(str, ((JSONObject)localObject2).getString(str));
+          String str = (String)((Iterator)localObject2).next();
+          localHashMap.put(str, ((JSONObject)localObject1).getString(str));
           continue;
           if (!this.e) {
-            break label162;
+            break label156;
           }
         }
       }
       catch (JSONException localJSONException)
       {
-        r.b("_DownloadInfo", "exception: ", localJSONException);
+        ab.b("_DownloadInfo", "exception: ", localJSONException);
         localJSONException.printStackTrace();
       }
     }
@@ -402,12 +443,11 @@ public class c
     {
       return 5;
       if (localJSONException.size() > 0) {
-        this.p = localJSONException;
+        this.o = localJSONException;
       }
     }
-    label162:
-    label224:
-    long l1;
+    label156:
+    DownloaderTask localDownloaderTask;
     if (this.j == null)
     {
       if ("application/vnd.android.package-archive".equals(this.a)) {
@@ -416,113 +456,86 @@ public class c
     }
     else
     {
-      if (this.k == null)
-      {
-        if (!"application/vnd.android.package-archive".equals(this.a)) {
-          break label391;
-        }
-        this.k = b.b(this.b);
-      }
-      if (this.i == 0L) {
-        new com.tencent.tmdownloader.internal.storage.d(this.k, this.j).b();
-      }
       if (this.g == 5) {
         this.c = this.b;
       }
-      if (TextUtils.isEmpty(this.j)) {
-        break label417;
+      if (this.g == 5)
+      {
+        this.g = 0;
+        this.l = 0;
       }
-      localObject1 = new com.tencent.tmdownloader.internal.storage.d(this.k, this.j);
-      l1 = ((com.tencent.tmdownloader.internal.storage.d)localObject1).c();
-      r.c("_DownloadInfo", "FileLen: " + l1 + " filename: " + this.j);
-      if (l1 <= this.i) {
-        break label409;
+      ab.c("_DownloadInfo", "startDownloadIfReady...");
+      a("_DownloadInfo");
+      localDownloaderTask = b(this.b);
+      if (localDownloaderTask == null) {
+        break label798;
       }
-      ((com.tencent.tmdownloader.internal.storage.d)localObject1).b();
-    }
-    label391:
-    label409:
-    for (this.h = 0L;; this.h = l1)
-    {
-      if (!a()) {
-        break label417;
-      }
-      ((com.tencent.tmdownloader.internal.storage.d)localObject1).e();
-      a(4);
-      return 4;
-      this.j = b.a(this.b, this.a);
-      break;
-      this.k = b.a(this.b, this.a);
-      break label224;
-    }
-    label417:
-    if (this.g == 5)
-    {
-      this.g = 0;
-      this.m = 0;
-    }
-    r.c("_DownloadInfo", "startDownloadIfReady...");
-    a("_DownloadInfo");
-    Object localObject1 = b(this.b);
-    if (localObject1 != null)
-    {
-      r.c("_DownloadInfo", "halleyTest getIncompleteTask dt = " + localObject1 + ",download %=" + ((DownloaderTask)localObject1).getPercentage());
-      r.c("_DownloadInfo", "halleyTest getIncompleteTask dt = " + localObject1 + ",download length=" + ((DownloaderTask)localObject1).getReceivedLength());
-      if (localObject1 != null) {
-        break label1012;
+      ab.c("_DownloadInfo", "halleyTest getIncompleteTask dt = " + localDownloaderTask + ",download %=" + localDownloaderTask.getPercentage());
+      ab.c("_DownloadInfo", "halleyTest getIncompleteTask dt = " + localDownloaderTask + ",download length=" + localDownloaderTask.getReceivedLength());
+      label332:
+      if (localDownloaderTask != null) {
+        break label918;
       }
     }
     for (;;)
     {
       try
       {
-        r.c("_DownloadInfo", "mFileSize = " + this.J);
-        if (this.J <= 0L) {
+        ab.c("_DownloadInfo", "mFileSize = " + this.I);
+        ab.c("_DownloadInfo", "mFileNameB = " + this.j);
+        if (d(com.tencent.tmdownloader.internal.storage.d.b(this.j) + File.separator + this.j)) {
+          this.j = b.a(this.b, this.a);
+        }
+        ab.c("_DownloadInfo", "mFileNameA = " + this.j);
+        if (this.I <= 0L) {
           continue;
         }
-        localObject1 = HalleyAgent.getDownloader().createNewTask(0, this.b, this.b, com.tencent.tmdownloader.internal.storage.d.b(this.j), this.j, this.N, this.J);
-        ((DownloaderTask)localObject1).setAppId(this.r + "");
-        ((DownloaderTask)localObject1).setPauseTaskOnMobile(false);
-        if ((this.y != null) && (!TextUtils.isEmpty(this.y)) && (this.y.contains("ANDROIDQQ.GAME.DETAIL")))
+        localDownloaderTask = HalleyAgent.getDownloader().createNewTask(0, this.b, this.b, com.tencent.tmdownloader.internal.storage.d.b(this.j), this.j, this.O, this.I);
+        localDownloaderTask.setAppId(this.q + "");
+        localDownloaderTask.setPauseTaskOnMobile(false);
+        if ((this.x != null) && (!TextUtils.isEmpty(this.x)) && (this.x.contains("ANDROIDQQ.GAME.DETAIL")))
         {
-          localObject2 = GlobalUtil.getInstance().getModel();
-          localObject3 = GlobalUtil.getInstance().getBrand();
-          localObject2 = "_" + (String)localObject3 + "_" + (String)localObject2;
-          HalleyAgent.getDownloader().setQua1(this.y + (String)localObject2);
+          localObject1 = GlobalUtil.getInstance().getModel();
+          localObject2 = GlobalUtil.getInstance().getBrand();
+          localObject1 = "_" + (String)localObject2 + "_" + (String)localObject1;
+          HalleyAgent.getDownloader().setQua1(this.x + (String)localObject1);
         }
-        if ((this.y == null) || (TextUtils.isEmpty(this.y))) {
+        if ((this.x == null) || (TextUtils.isEmpty(this.x))) {
           continue;
         }
-        ((DownloaderTask)localObject1).setAppScene(this.y);
-        ((DownloaderTask)localObject1).setCategory(DownloaderTaskCategory.Cate_DefaultMass);
+        localDownloaderTask.setAppScene(this.x);
+        localDownloaderTask.setCategory(DownloaderTaskCategory.Cate_DefaultMass);
         a(1);
-        HalleyAgent.getDownloader().addNewTask((DownloaderTask)localObject1);
-        a(100, (DownloaderTask)localObject1);
-        r.c("_DownloadInfo", "halleyTest createNewTask mURL=" + this.b + ",saveFilePath=" + com.tencent.tmdownloader.internal.storage.d.a(this.j) + ",fileName=" + this.j);
+        HalleyAgent.getDownloader().addNewTask(localDownloaderTask);
+        a(100, localDownloaderTask);
+        ab.c("_DownloadInfo", "halleyTest createNewTask mURL=" + this.b + ",saveFilePath=" + com.tencent.tmdownloader.internal.storage.d.a(this.j) + ",fileName=" + this.j);
       }
       catch (Exception localException)
       {
-        r.c("_DownloadInfo", "startDownloadIfReady HalleyAgent createNewTask Exception", localException);
+        label798:
+        ab.c("_DownloadInfo", "startDownloadIfReady HalleyAgent createNewTask Exception", localException);
         continue;
       }
       return 0;
-      localObject2 = c(this.b);
-      if (localObject2 == null) {
-        break;
+      this.j = b.a(this.b, this.a);
+      break;
+      localObject1 = c(this.b);
+      if (localObject1 == null) {
+        break label332;
       }
-      localObject2 = new File(((DownloaderTask)localObject2).getRealSaveName());
-      if ((b.b(this.b, this.a)) || (((File)localObject2).exists())) {
-        break;
+      localObject1 = new File(((DownloaderTask)localObject1).getRealSaveName());
+      if ((b.b(this.b, this.a)) || (((File)localObject1).exists())) {
+        break label332;
       }
       f();
-      break;
-      localObject1 = HalleyAgent.getDownloader().createNewTask(this.I, this.b, this.b, com.tencent.tmdownloader.internal.storage.d.b(this.j), this.j, this.N);
+      break label332;
+      localDownloaderTask = HalleyAgent.getDownloader().createNewTask(this.H, this.b, this.b, com.tencent.tmdownloader.internal.storage.d.b(this.j), this.j, this.O);
       continue;
-      ((DownloaderTask)localObject1).setCategory(DownloaderTaskCategory.Cate_DefaultEase);
+      localDownloaderTask.setCategory(DownloaderTaskCategory.Cate_DefaultEase);
       continue;
       try
       {
-        label1012:
+        label918:
         localException.setPauseTaskOnMobile(false);
         a(1);
         localException.resume();
@@ -537,7 +550,7 @@ public class c
   public DownloaderTask c(String paramString)
   {
     Object localObject2 = HalleyAgent.getDownloader().getAllTasks();
-    synchronized (this.M)
+    synchronized (this.N)
     {
       localObject2 = ((List)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
@@ -553,7 +566,7 @@ public class c
   
   public void d()
   {
-    r.c("_DownloadInfo", "DownloadInfo::pauseDownload url: " + this.b);
+    ab.c("_DownloadInfo", "DownloadInfo::pauseDownload url: " + this.b);
     DownloaderTask localDownloaderTask = b(this.b);
     if (localDownloaderTask != null)
     {
@@ -561,12 +574,12 @@ public class c
       a(3);
       return;
     }
-    r.d("_DownloadInfo", "DownloadInfo::pauseDownload task == null");
+    ab.d("_DownloadInfo", "DownloadInfo::pauseDownload task == null");
   }
   
   public void e()
   {
-    r.c("_DownloadInfo", "DownloadInfo::stopDownload url: " + this.b);
+    ab.c("_DownloadInfo", "DownloadInfo::stopDownload url: " + this.b);
     DownloaderTask localDownloaderTask = b(this.b);
     if (localDownloaderTask != null)
     {
@@ -574,15 +587,14 @@ public class c
       a(6);
       return;
     }
-    r.d("_DownloadInfo", "DownloadInfo::stopDownload task == null");
+    ab.d("_DownloadInfo", "DownloadInfo::stopDownload task == null");
   }
   
   public void f()
   {
-    r.c("_DownloadInfo", "DownloadInfo::deleteDownload url: " + this.b + ",mFileName: " + this.j);
+    ab.c("_DownloadInfo", "DownloadInfo::deleteDownload url: " + this.b + ",mFileName: " + this.j);
     DownloaderTask localDownloaderTask = c(this.b);
-    String str = localDownloaderTask.getRealSaveName();
-    Object localObject = com.tencent.tmdownloader.internal.storage.d.a(str);
+    Object localObject = com.tencent.tmdownloader.internal.storage.d.a(localDownloaderTask.getRealSaveName());
     if (localObject != null)
     {
       localObject = new File((String)localObject);
@@ -590,16 +602,13 @@ public class c
         ((File)localObject).delete();
       }
     }
-    if ((this.j != null) && (str != this.j)) {
-      new com.tencent.tmdownloader.internal.storage.d(this.k, this.j).a();
-    }
     HalleyAgent.getDownloader().deleteTask(localDownloaderTask, true);
     a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.downloadservice.c
  * JD-Core Version:    0.7.0.1
  */

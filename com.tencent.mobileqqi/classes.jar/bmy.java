@@ -1,19 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import android.view.animation.TranslateAnimation;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.RelativeLayout;
-import com.tencent.biz.PoiMapActivity;
+import android.graphics.Rect;
+import android.view.View;
+import com.tencent.biz.qrcode.CameraManager;
+import com.tencent.biz.qrcode.ViewfinderView;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
 
 public class bmy
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public bmy(PoiMapActivity paramPoiMapActivity, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager) {}
+  public bmy(ScannerActivity paramScannerActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getHandler().postDelayed(new bmz(this), 150L);
+    Rect localRect1 = this.a.a();
+    if (this.a.jdField_f_of_type_Boolean) {
+      this.a.jdField_a_of_type_ComTencentBizQrcodeCameraManager.a(localRect1);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentBizQrcodeViewfinderView.setFlippedFrameingRect(localRect1);
+      this.a.jdField_b_of_type_AndroidViewView.post(this.a.jdField_b_of_type_JavaLangRunnable);
+      return;
+      Rect localRect2 = new Rect(localRect1.left, localRect1.top + this.a.jdField_f_of_type_Int, localRect1.right, localRect1.bottom + this.a.jdField_f_of_type_Int);
+      this.a.jdField_a_of_type_ComTencentBizQrcodeCameraManager.a(localRect2);
+    }
   }
 }
 

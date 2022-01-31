@@ -9,7 +9,7 @@ import java.util.Map;
 public final class FeedSkinInfo
   extends JceStruct
 {
-  static Map cache_mapExtInfo = new HashMap();
+  static Map<String, String> cache_mapExtInfo = new HashMap();
   public String desc = "";
   public int iExpireTime;
   public int iHasNewFlag;
@@ -17,7 +17,7 @@ public final class FeedSkinInfo
   public int iVipPrize;
   public long lTime;
   public long lUin;
-  public Map mapExtInfo;
+  public Map<String, String> mapExtInfo;
   public String sPicUrl = "";
   public String sSkinId = "";
   public int sSkinType;
@@ -40,7 +40,7 @@ public final class FeedSkinInfo
   
   public FeedSkinInfo() {}
   
-  public FeedSkinInfo(String paramString1, long paramLong1, String paramString2, long paramLong2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong3, String paramString5, String paramString6, String paramString7, int paramInt6, String paramString8, String paramString9, Map paramMap, String paramString10, String paramString11, String paramString12)
+  public FeedSkinInfo(String paramString1, long paramLong1, String paramString2, long paramLong2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong3, String paramString5, String paramString6, String paramString7, int paramInt6, String paramString8, String paramString9, Map<String, String> paramMap, String paramString10, String paramString11, String paramString12)
   {
     this.sSkinId = paramString1;
     this.lUin = paramLong1;

@@ -1,38 +1,136 @@
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.ark.image.PhotoListLogicArk.2;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Locale;
 
-final class anqu
-  implements Runnable
+public class anqu
+  extends aira
 {
-  anqu(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong1, long paramLong2, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack) {}
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private String b;
   
-  public void run()
+  public anqu(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    try
+    super(paramNewPhotoListActivity);
+  }
+  
+  public Intent caseNoSingModeImage(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    Intent localIntent = ((NewPhotoListActivity)this.mActivity).getIntent();
+    localIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
+    localIntent.putExtra("key_ark_app_res_path", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("key_should_compress", this.jdField_a_of_type_Boolean);
+    localIntent.putExtra("key_ark_app_engine_res_dir", this.b);
+    localIntent.putExtra("enter_from", 3);
+    return super.caseNoSingModeImage(paramAdapterView, paramView, paramInt, paramLong);
+  }
+  
+  public void enterAlbumListFragment(Intent paramIntent)
+  {
+    paramIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
+    paramIntent.putExtra("enter_from", 3);
+    super.enterAlbumListFragment(paramIntent);
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("key_ark_app_res_path");
+    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("key_should_compress", false);
+    this.b = paramIntent.getStringExtra("key_ark_app_engine_res_dir");
+  }
+  
+  public void onBackPressed()
+  {
+    anqp.a().a("callbackArk", null, null);
+    ((NewPhotoListActivity)this.mActivity).finish();
+    bdfa.anim(this.mActivity, false, false);
+  }
+  
+  public void onSendBtnClick(View paramView)
+  {
+    ((NewPhotoListActivity)this.mActivity).sendBtn.setClickable(false);
+    if (!this.mPhotoCommonData.selectedPhotoList.isEmpty()) {
+      ((NewPhotoListActivity)this.mActivity).recordLastPos((String)this.mPhotoCommonData.selectedPhotoList.get(this.mPhotoCommonData.selectedPhotoList.size() - 1));
+    }
+    bdfa.a();
+    if (this.mPhotoCommonData.selectedPhotoList.size() == 0)
     {
-      try
-      {
-        int i = anqt.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d, this.e, this.f, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
-        if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack != null) {
-          this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(i, "", this.jdField_b_of_type_JavaLangString);
-        }
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.e("PhotoList", 2, "size == 0");
       }
-      finally {}
       return;
     }
-    catch (Exception localException)
+    if (((NewPhotoListActivity)this.mActivity).getIntent().getBooleanExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", false))
     {
-      SLog.c("CropVideoActivity", "do composite exception", localException);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(940001, localException.getMessage(), "");
+      paramView = this.mPhotoCommonData.selectedPhotoList.iterator();
+      for (long l = 0L; paramView.hasNext(); l = bdhb.a((String)paramView.next()) + l) {}
+      if (arrr.a())
+      {
+        arre.a(this.mActivity, 2131692754, 2131692759, new anqv(this));
+        return;
       }
     }
+    if (this.mPhotoCommonData.selectedPhotoList.size() > 0)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramView = new StringBuilder(this.mPhotoCommonData.selectedPhotoList.size() * 128);
+        int i = 0;
+        while (i < this.mPhotoCommonData.selectedPhotoList.size())
+        {
+          paramView.append(String.format(Locale.CHINA, "choose image[%d],path=%s \r\n", new Object[] { Integer.valueOf(i), this.mPhotoCommonData.selectedPhotoList.get(i) }));
+          i += 1;
+        }
+        QLog.d("PhotoListLogicArk", 2, paramView.toString());
+      }
+      ((NewPhotoListActivity)this.mActivity).showProgressDialog();
+      ThreadManagerV2.executeOnSubThread(new PhotoListLogicArk.2(this));
+    }
+    for (;;)
+    {
+      ((NewPhotoListActivity)this.mActivity).finish();
+      return;
+      anqp.a().a("callbackArk", null, null);
+    }
+  }
+  
+  public void onTitleBtnCancelClick(View paramView)
+  {
+    anqp.a().a("callbackArk", null, null);
+    ((NewPhotoListActivity)this.mActivity).finish();
+    super.onTitleBtnCancelClick(paramView);
+  }
+  
+  public void postInitUI()
+  {
+    super.postInitUI();
+    NewPhotoListActivity localNewPhotoListActivity = (NewPhotoListActivity)this.mActivity;
+    if (localNewPhotoListActivity != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoListLogicArk", 2, "ArkApp ark app res:" + this.jdField_a_of_type_JavaLangString);
+      }
+      localNewPhotoListActivity.findViewById(2131372249).setVisibility(4);
+    }
+  }
+  
+  public void startPhotoPreviewActivity(Intent paramIntent)
+  {
+    super.startPhotoPreviewActivity(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anqu
  * JD-Core Version:    0.7.0.1
  */

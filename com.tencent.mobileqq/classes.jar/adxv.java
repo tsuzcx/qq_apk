@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
 public class adxv
-  implements DialogInterface.OnCancelListener
+  implements acln
 {
-  public adxv(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  public adxv(ShortcutRouterActivity paramShortcutRouterActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: -1})");
+    this.a.finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    this.a.finish();
   }
 }
 

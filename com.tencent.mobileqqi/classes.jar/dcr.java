@@ -1,13 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class dcr
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public dcr(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
+  public dcr(QQMapActivity paramQQMapActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    if (this.a.i)
+    {
+      this.a.p();
+      return;
+    }
+    this.a.setResult(-1, this.a.a());
+    this.a.finish();
+    this.a.d();
+  }
 }
 
 

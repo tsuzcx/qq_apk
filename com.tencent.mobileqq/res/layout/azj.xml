@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="178.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:orientation="vertical" android:id="@id/image" android:background="#ffd8dae0" android:layout_width="100.0dip" android:layout_height="178.0dip" android:scaleType="centerCrop" />
+    <View android:id="@id/jv1" android:layout_width="100.0dip" android:layout_height="178.0dip" />
+</FrameLayout>

@@ -1,30 +1,18 @@
-import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.widget.HorizontalListView;
-
 public class xsy
-  implements PtvTemplateManager.IPtvTemplateDownloadListener
 {
-  public xsy(PtvTemplateAdapter paramPtvTemplateAdapter) {}
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
-  {
-    this.a.a.post(new xta(this, paramPtvTemplateInfo, paramInt));
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
-  {
-    this.a.a.post(new xsz(this, paramPtvTemplateInfo, paramBoolean));
-    if (!paramBoolean) {
-      FlowCameraMqqAction.a("", "0X80075BB", "", "", "", "");
-    }
-  }
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  String c;
+  public String d;
+  String e;
+  public String f;
+  public String g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xsy
  * JD-Core Version:    0.7.0.1
  */

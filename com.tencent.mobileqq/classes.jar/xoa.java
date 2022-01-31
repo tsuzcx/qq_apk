@@ -1,41 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.QzoneBaseThread;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
 
-class xoa
-  implements Runnable
+public class xoa
+  extends urs<vge, vhr>
 {
-  xoa(xnz paramxnz, int paramInt, String paramString) {}
+  xoa(xny paramxny) {}
   
-  public void run()
+  public void a(@NonNull vge paramvge, @Nullable vhr paramvhr, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((this.jdField_a_of_type_Int == 0) && (EditLocalVideoActivity.a(this.jdField_a_of_type_Xnz.a) != null))
+    wxe.b("EditVideoTagPresenter", "loadMore onCmdRespond.");
+    if ((paramErrorMessage.isSuccess()) && (paramvhr != null))
     {
-      QLog.d("EditLocalVideoActivity", 2, "ret = " + this.jdField_a_of_type_Int);
-      EditLocalVideoActivity.a(this.jdField_a_of_type_Xnz.a).setVideoPath(this.jdField_a_of_type_JavaLangString);
-      EditLocalVideoActivity.a(this.jdField_a_of_type_Xnz.a).seekTo(EditLocalVideoActivity.a(this.jdField_a_of_type_Xnz.a));
-      EditLocalVideoActivity.a(this.jdField_a_of_type_Xnz.a).start();
-      if ((!TextUtils.equals(EditLocalVideoActivity.f(this.jdField_a_of_type_Xnz.a), EditLocalVideoActivity.h())) && (!TextUtils.equals(EditLocalVideoActivity.f(this.jdField_a_of_type_Xnz.a), EditLocalVideoActivity.a(this.jdField_a_of_type_Xnz.a)))) {
-        QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new xob(this));
-      }
-      for (;;)
-      {
-        EditLocalVideoActivity.d(this.jdField_a_of_type_Xnz.a, true);
-        return;
-        EditLocalVideoActivity.f(this.jdField_a_of_type_Xnz.a, this.jdField_a_of_type_JavaLangString);
-      }
+      wxe.a("EditVideoTagPresenter", "loadMore onCmdRespond, refresh success:[%s]", paramvhr.toString());
+      xny.a(this.a).addAll(paramvhr.jdField_a_of_type_JavaUtilList);
+      xny.a(this.a, paramvhr.jdField_a_of_type_JavaLangString);
+      xny.a(this.a, paramvhr.b);
+      ThreadManager.executeOnSubThread(new EditVideoTagPresenter.2.1(this));
     }
-    QQToast.a(this.jdField_a_of_type_Xnz.a, "音乐合成失败，请稍后重试", 1).a();
-    QLog.d("EditLocalVideoActivity", 2, "mixMusicToLocalVideo error ret = " + this.jdField_a_of_type_Int);
+    for (;;)
+    {
+      xny.a(this.a).b(paramErrorMessage.errorCode, xny.a(this.a), this.a.a());
+      return;
+      wxe.e("EditVideoTagPresenter", "loadMore onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xoa
  * JD-Core Version:    0.7.0.1
  */

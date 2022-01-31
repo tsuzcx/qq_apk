@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <LinearLayout android:orientation="vertical" android:id="@id/b9w" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/fm1" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip" formItem:bgType="evy" formItem:switchChecked="false" formItem:switchText="个性标签" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/dnj" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip" formItem:bgType="evy" formItem:switchChecked="false" formItem:switchText="兴趣部落" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/f3f" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip" formItem:bgType="evy" formItem:switchChecked="false" formItem:switchText="最近常听" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/m08" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip" formItem:bgType="evy" formItem:switchChecked="false" formItem:switchText="收到礼物" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/lvm" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip" formItem:bgType="evy" formItem:switchChecked="false" formItem:switchText="最近在玩" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/gxy" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip" formItem:bgType="evy" formItem:switchChecked="false" formItem:switchText="我的音乐盒" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/is0" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip" formItem:bgType="evy" formItem:switchChecked="false" formItem:switchText="随心贴" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/mon" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip" formItem:bgType="evy" formItem:switchChecked="false" formItem:switchText="@string/wjo" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/c00" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/bzz" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip" formItem:bgType="iwf" formItem:switchChecked="true" formItem:switchText="扩列资料" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="4.0dip" android:text="@string/r11" android:includeFontPadding="false" />
+        </LinearLayout>
+    </LinearLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

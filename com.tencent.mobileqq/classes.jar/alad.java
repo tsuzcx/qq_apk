@@ -1,153 +1,193 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Message;
-import android.os.SystemClock;
-import android.widget.Button;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.AuthorityActivity.AccountInfo;
-import com.tencent.open.agent.report.ReportCenter;
-import com.tencent.open.agent.report.ReportDef.AuthCmdCost.Record;
-import com.tencent.open.agent.util.AuthorityUtil;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.business.cgireport.ReportManager;
-import com.tencent.open.business.viareport.OpenSdkStatic;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.ui.framework.QzoneGameFloatView;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.util.HandlerPlus;
-import mqq.observer.BusinessObserver;
 
 public class alad
-  implements BusinessObserver
+  implements View.OnTouchListener
 {
-  public alad(AuthorityActivity paramAuthorityActivity) {}
+  int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean;
+  int b;
+  int c;
+  int d;
+  int e = 2000;
+  int f;
+  int g;
+  int h;
+  int i;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public alad(QzoneGameFloatView paramQzoneGameFloatView, DisplayMetrics paramDisplayMetrics) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AuthorityActivity.d(this.a).jdField_a_of_type_Long = (System.currentTimeMillis() - AuthorityActivity.d(this.a).jdField_a_of_type_Long);
-    String str = paramBundle.getString("ssoAccount");
-    if (QLog.isColorLevel()) {
-      QLog.d("AuthorityActivity", 2, "-->doAuthorize-onReceive, ssoAccount: " + str + " | uin: " + this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.jdField_a_of_type_JavaLangString);
-    }
-    if (!this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.jdField_a_of_type_JavaLangString.equals(str)) {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    paramInt = paramBundle.getInt("code");
-    if (!this.a.j) {}
-    for (str = "s_a_a_emp";; str = "s_a_a")
-    {
-      if (paramBoolean)
+    boolean bool = false;
+    if (paramView == this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView) {
+      switch (paramMotionEvent.getAction())
       {
-        this.a.jdField_f_of_type_Int = 0;
-        Object localObject3 = new SdkAuthorize.AuthorizeResponse();
+      default: 
+        bool = true;
+      }
+    }
+    label204:
+    do
+    {
+      return bool;
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.c.setVisibility(8);
+      int j = (int)paramMotionEvent.getRawX();
+      this.jdField_a_of_type_Int = j;
+      this.c = j;
+      j = (int)paramMotionEvent.getRawY();
+      this.jdField_b_of_type_Int = j;
+      this.d = j;
+      break;
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.getVisibility() == 0) {
+        break;
+      }
+      j = (int)paramMotionEvent.getRawX() - this.jdField_a_of_type_Int;
+      int k = (int)paramMotionEvent.getRawY() - this.jdField_b_of_type_Int;
+      this.e = (paramView.getLeft() + j);
+      this.f = (paramView.getTop() + k);
+      this.g = (j + paramView.getRight());
+      this.h = (paramView.getBottom() + k);
+      if (this.e < 0)
+      {
+        this.e = 0;
+        this.g = (this.e + paramView.getWidth());
+        if (this.f >= 0) {
+          break label416;
+        }
+        this.f = 0;
+        this.h = (this.f + paramView.getHeight());
+      }
+      for (;;)
+      {
+        paramView.layout(this.e, this.f, this.g, this.h);
+        this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
+        this.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawY());
+        if ((this.jdField_a_of_type_Boolean) || ((Math.abs(paramMotionEvent.getRawX() - this.c) <= this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 5.0F) && (Math.abs(paramMotionEvent.getRawY() - this.d) <= this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 5.0F))) {
+          break;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.setVisibility(8);
+        this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.setFloatBtnBackground(this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView, true);
+        this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.i.setVisibility(8);
+        this.jdField_a_of_type_Boolean = true;
+        break;
+        if (this.g <= this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_Int) {
+          break label204;
+        }
+        this.g = this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_Int;
+        this.e = (this.g - paramView.getWidth());
+        break label204;
+        if (this.h > this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_Int)
+        {
+          this.h = this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_Int;
+          this.f = (this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_Int - paramView.getHeight());
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.setFloatBtnBackground(this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView, true);
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.getVisibility() == 0)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.setVisibility(8);
+          this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.setFloatBtnBackground(this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView, true);
+          this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.i.setVisibility(8);
+          break;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.setVisibility(0);
+        this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.setFloatBtnBackground(this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView, false);
+        this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.i.setVisibility(0);
+        j = paramView.getTop();
+        k = paramView.getWidth() / 2;
+        if (this.e + k < this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_Int / 2) {
+          if (Build.VERSION.SDK_INT < 11) {}
+        }
         for (;;)
         {
           try
           {
-            localObject2 = paramBundle.getByteArray("data");
-            localObject1 = localObject2;
-            if (!this.a.j) {
-              localObject1 = this.a.b((byte[])localObject2);
+            this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView.setRotationY(180.0F);
+            paramView = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.getLayoutParams();
+            paramView.gravity = 3;
+            paramView.leftMargin = (k + this.e);
+            paramView.topMargin = j;
+            this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.setLayoutParams(paramView);
+            this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.setPadding((int)(this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 35.0F), this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.getPaddingTop(), (int)(this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 20.0F), this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.getPaddingBottom());
+            if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) {
+              break;
             }
-            if (localObject1 != null)
-            {
-              l1 = localObject1.length;
-              localObject2 = (SdkAuthorize.AuthorizeResponse)((SdkAuthorize.AuthorizeResponse)localObject3).mergeFrom((byte[])localObject1);
-              if (localObject2 != null)
-              {
-                localObject3 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-                ((Message)localObject3).what = 1;
-                ((Message)localObject3).obj = localObject2;
-                this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject3);
-                if (((SdkAuthorize.AuthorizeResponse)localObject2).ret.get() == 0) {
-                  this.a.a(AuthorityActivity.jdField_f_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.jdField_a_of_type_JavaLangString, ((SdkAuthorize.AuthorizeResponse)localObject2).expires_in.get(), (byte[])localObject1);
-                }
-                i = ((SdkAuthorize.AuthorizeResponse)localObject2).toByteArray().length;
-                l2 = i;
-              }
-            }
+            akwd.a(akwd.a(), akuf.a(0, 0, 3, 901003001, this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId, this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.src));
           }
-          catch (Exception paramBundle)
+          catch (Throwable paramView)
           {
-            Object localObject2;
-            long l1;
-            int i;
-            long l2;
-            Object localObject1 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-            ((Message)localObject1).what = 6;
-            ((Message)localObject1).arg1 = 3002;
-            ((Message)localObject1).obj = this.a.getResources().getString(2131435603);
-            this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject1);
-            localObject1 = (String)((Message)localObject1).obj;
-            QLog.d("AuthorityActivity", 1, "rec | cmd: " + str + " | uin : *" + AuthorityUtil.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.jdField_a_of_type_JavaLangString) + " | ret : success | code : " + paramInt, paramBundle);
+            QLog.e("cmframe_QzoneGameFloatView", 1, "floatbtn.setrotationy error!", paramView);
             continue;
           }
+          if (Build.VERSION.SDK_INT >= 11) {}
           try
           {
-            i = ((SdkAuthorize.AuthorizeResponse)localObject2).ret.get();
-            localObject1 = new Bundle();
-            ((Bundle)localObject1).putString("report_type", "103");
-            ((Bundle)localObject1).putString("act_type", "13");
-            if (!paramBundle.getBoolean("isShort", false)) {
-              continue;
-            }
-            paramBundle = "2";
-            ((Bundle)localObject1).putString("intext_3", paramBundle);
-            ((Bundle)localObject1).putString("stringext_1", AuthorityActivity.d(this.a).jdField_a_of_type_JavaLangString);
-            ((Bundle)localObject1).putString("intext_2", "" + i);
-            ((Bundle)localObject1).putString("intext_5", "" + AuthorityActivity.d(this.a).jdField_a_of_type_Long);
-            ReportCenter.a().a((Bundle)localObject1, AuthorityActivity.jdField_f_of_type_JavaLangString, this.a.jdField_a_of_type_JavaLangString, false);
-            ReportManager.a().a("agent_authority", this.a.h, l1, l2, 0, Long.parseLong(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.jdField_a_of_type_JavaLangString), "1000069", "ret: " + i);
-            OpenSdkStatic.a().a(0, "LOGIN_AUTH", this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.jdField_a_of_type_JavaLangString, AuthorityActivity.jdField_f_of_type_JavaLangString, null, Long.valueOf(SystemClock.elapsedRealtime()), i, 1, null);
+            this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView.setRotationY(0.0F);
+            paramMotionEvent = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.getLayoutParams();
+            paramMotionEvent.gravity = 5;
+            paramMotionEvent.rightMargin = (k + (this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_Int - paramView.getRight()));
+            paramMotionEvent.topMargin = j;
+            this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.setLayoutParams(paramMotionEvent);
+            this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.setPadding((int)(this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 20.0F), this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.getPaddingTop(), (int)(this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 35.0F), this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.getPaddingBottom());
           }
-          catch (Exception paramBundle)
+          catch (Throwable paramMotionEvent)
           {
-            LogUtility.c("AuthorityActivity", "-->success report exception cmd: agent_authority", paramBundle);
+            for (;;)
+            {
+              QLog.e("cmframe_QzoneGameFloatView", 1, "floatbtn.setrotationy error!", paramMotionEvent);
+            }
           }
         }
-        QLog.d("AuthorityActivity", 1, "rec | cmd: " + str + " | uin : *" + AuthorityUtil.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.jdField_a_of_type_JavaLangString) + " | ret : success | code : " + paramInt);
+      }
+      this.i = Math.min(this.e, this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_Int - this.g);
+      if (this.i == this.e)
+      {
+        paramMotionEvent = new TranslateAnimation(0.0F, -this.e, 0.0F, 0.0F);
+        this.e = 0;
+        this.g = (this.e + paramView.getWidth());
       }
       for (;;)
       {
-        this.a.i = SystemClock.elapsedRealtime();
-        LogUtility.c("Authority_TimeCost", "<TimeStamp> authority cost : " + (this.a.i - this.a.h));
-        return;
-        paramBundle = "1";
+        paramMotionEvent.setDuration(500L);
+        paramView.setVisibility(8);
+        paramMotionEvent.setAnimationListener(new alae(this, paramView));
+        paramView.startAnimation(paramMotionEvent);
         break;
-        QLog.d("AuthorityActivity", 1, "rec | cmd: " + str + " | uin : *" + AuthorityUtil.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.jdField_a_of_type_JavaLangString) + " | ret : failed | code : " + paramInt);
-        if ((paramInt == 1002) && (this.a.jdField_f_of_type_Int < 2))
-        {
-          paramBundle = this.a;
-          paramBundle.jdField_f_of_type_Int += 1;
-          this.a.k();
-          return;
-        }
-        paramBundle = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-        paramBundle.what = 6;
-        paramBundle.arg1 = 3002;
-        paramBundle.obj = this.a.getResources().getString(2131435603);
-        this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(paramBundle);
-        paramBundle = this.a.getResources().getString(2131435603);
-        try
-        {
-          ReportManager.a().a("agent_authority", this.a.h, 0L, 0L, paramInt, Long.parseLong(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.jdField_a_of_type_JavaLangString), "1000069", paramBundle);
-          OpenSdkStatic.a().a(1, "LOGIN_AUTH", this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.jdField_a_of_type_JavaLangString, AuthorityActivity.jdField_f_of_type_JavaLangString, null, Long.valueOf(SystemClock.elapsedRealtime()), 3002, 1, paramBundle);
-          ReportCenter.a().a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.jdField_a_of_type_JavaLangString, "", AuthorityActivity.jdField_f_of_type_JavaLangString, "1", "6", "" + 3002, false);
-        }
-        catch (Exception paramBundle)
-        {
-          LogUtility.c("AuthorityActivity", "-->failed report exception cmd: agent_authority", paramBundle);
-        }
+        paramMotionEvent = new TranslateAnimation(0.0F, this.i, 0.0F, 0.0F);
+        this.g = this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_Int;
+        this.e = (this.g - paramView.getWidth());
       }
-    }
+      if (paramView == this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.c)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.c.setVisibility(8);
+        this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.setVisibility(8);
+        this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.setFloatBtnBackground(this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView, true);
+        this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.i.setVisibility(8);
+        return true;
+      }
+    } while (paramView != this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.i);
+    label416:
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.c.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.setFloatBtnBackground(this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView, true);
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.i.setVisibility(8);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alad
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_cmd0x97b$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34 }, new String[] { "uint64_uin", "msg_follow_count_info", "msg_limit_info", "msg_simpleinfo" }, new Object[] { Long.valueOf(0L), null, null, null }, RspBody.class);
   public oidb_cmd0x97b.FollowCountInfo msg_follow_count_info = new oidb_cmd0x97b.FollowCountInfo();
@@ -16,7 +16,7 @@ public final class oidb_cmd0x97b$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x97b.oidb_cmd0x97b.RspBody
  * JD-Core Version:    0.7.0.1
  */

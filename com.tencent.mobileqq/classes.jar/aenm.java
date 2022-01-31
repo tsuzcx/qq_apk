@@ -1,14 +1,24 @@
-import android.widget.TextView;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
 
-class aenm
+public class aenm
+  implements aenf
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public aenm(BirthdayActivatePage paramBirthdayActivatePage) {}
   
-  aenm(aenl paramaenl) {}
+  public void a(int paramInt)
+  {
+    if (paramInt > 0)
+    {
+      this.a.a.setEnabled(true);
+      return;
+    }
+    this.a.a.setEnabled(false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aenm
  * JD-Core Version:    0.7.0.1
  */

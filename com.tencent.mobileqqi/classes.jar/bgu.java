@@ -1,13 +1,19 @@
-import com.tencent.av.app.GAudioUIObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.RelativeLayout;
+import com.tencent.biz.PoiMapActivity;
 
 public class bgu
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public bgu(GAudioUIObserver paramGAudioUIObserver, Object paramObject) {}
+  public bgu(PoiMapActivity paramPoiMapActivity, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppGAudioUIObserver.a(this.jdField_a_of_type_JavaLangObject);
+    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getHandler().postDelayed(new bgv(this), 150L);
   }
 }
 

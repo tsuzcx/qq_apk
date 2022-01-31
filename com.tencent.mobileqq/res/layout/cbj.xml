@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:background="@drawable/skin_header_bar_bg" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/lmy" android:background="@drawable/hgs" android:paddingTop="3.0dip" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <TextView android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/ivTitleName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxWidth="200.0dip" android:singleLine="true" style="@style/TitleBtn" />
+        <com.tencent.widget.TriangleView android:layout_gravity="center_vertical" android:id="@id/dta" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="12.0dip" />
+    </LinearLayout>
+    <TextView android:gravity="center" android:id="@id/ivTitleBtnLeft" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:maxWidth="99.0dip" android:minWidth="40.0dip" android:text="@string/cancel" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/cancel" style="@style/TitleBtn" />
+    <TextView android:gravity="center" android:id="@id/ivTitleBtnRightText" android:background="@drawable/top_button_right_selector" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="36.0dip" android:maxWidth="100.0dip" android:minWidth="52.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+</RelativeLayout>

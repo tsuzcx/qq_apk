@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020439" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0394"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09f4" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0396" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0396" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020bbd" />
-    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d038b" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0546" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/tv_name" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="所有老师和管理员的发言" android:singleLine="true" android:layout_weight="1.0" />
-    <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0673" android:background="@drawable/common_arrow_right_selector" android:layout_width="wrap_content" android:layout_height="15.0dip" android:layout_marginRight="10.0dip" />
-</LinearLayout>

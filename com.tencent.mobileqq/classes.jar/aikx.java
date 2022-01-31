@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
 public class aikx
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public aikx(SubAccountManager paramSubAccountManager, SubAccountInfo paramSubAccountInfo) {}
+  public aikx(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSubaccountDatamanagerSubAccountManager.a(this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo);
-    }
+    this.a.e = AvatarPendantActivity.c;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.e = AvatarPendantActivity.a;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.e = AvatarPendantActivity.d;
   }
 }
 

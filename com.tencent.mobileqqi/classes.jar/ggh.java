@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.maproam.activity.RoamingActivity;
-import com.tencent.mobileqq.maproam.widget.RoamSearchDialog.OnRoamResultObserver;
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ggh
-  implements RoamSearchDialog.OnRoamResultObserver
 {
-  public ggh(RoamingActivity paramRoamingActivity) {}
-  
-  public void a(int paramInt, String paramString) {}
-  
-  public void a(int paramInt, List paramList) {}
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     ggh
  * JD-Core Version:    0.7.0.1
  */

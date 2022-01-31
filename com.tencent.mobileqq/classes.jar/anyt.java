@@ -1,18 +1,45 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class anyt
-  implements Runnable
+  implements BusinessObserver
 {
-  public anyt(DoodleLayout paramDoodleLayout) {}
+  public void a(boolean paramBoolean) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void b(boolean paramBoolean, String paramString) {}
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a(0, Boolean.valueOf(false));
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      paramInt = paramBundle.getInt("resp_result", 0);
+      b(paramBoolean, paramBundle.getString("key_card_id"), paramInt);
+      return;
+    case 2: 
+      b(paramBoolean, paramBundle.getString("key_card_id"));
+      return;
+    case 3: 
+      a(paramBoolean, paramBundle.getString("key_card_id"));
+      return;
+    case 4: 
+      a(paramBoolean);
+      return;
+    }
+    a(paramBoolean, paramBundle.getString("key_card_id"), paramBundle.getInt("key_get_detail_type"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anyt
  * JD-Core Version:    0.7.0.1
  */

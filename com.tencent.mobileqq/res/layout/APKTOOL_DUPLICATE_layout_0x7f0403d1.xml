@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0397" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a140d" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403d2" />
-    <View android:layout_width="5.0dip" android:layout_height="20.0dip" />
-    <include android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a140e" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403d2" />
-</LinearLayout>

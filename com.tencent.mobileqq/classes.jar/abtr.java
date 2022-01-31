@@ -1,30 +1,18 @@
-import com.tencent.mobileqq.customviews.PicProgressView;
-
 public class abtr
-  implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
+  public int a;
+  public Object a;
+  public String a;
+  public int b;
   
-  public abtr(PicProgressView paramPicProgressView, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
+  public abtr() {}
   
-  public void a(int paramInt)
+  public abtr(String paramString, int paramInt1, int paramInt2, Object paramObject)
   {
-    this.b = paramInt;
-  }
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.jdField_a_of_type_Abtr = null;
-    if (!this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Int += this.b;
-      PicProgressView.a(this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView, this.jdField_a_of_type_Int, this.b);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
 }
 

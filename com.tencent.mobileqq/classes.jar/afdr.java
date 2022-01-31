@@ -1,27 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.view.View;
 
-public class afdr
-  implements Runnable
+class afdr
+  implements bhuk
 {
-  public afdr(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  afdr(afdq paramafdq, boolean paramBoolean, bhuf parambhuf) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    EntityManager localEntityManager = this.a.a.app.getEntityManagerFactory().createEntityManager();
-    if (localEntityManager != null)
+    switch (paramInt)
     {
-      localEntityManager.a(NearbyProfileDisplayPanel.a(this.a));
-      localEntityManager.a();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      if (afdq.a(this.jdField_a_of_type_Afdq) != null) {
+        afdq.a(this.jdField_a_of_type_Afdq, afdq.a(this.jdField_a_of_type_Afdq));
+      }
+      afdq.a(this.jdField_a_of_type_Afdq, "0X800A7F5", this.jdField_a_of_type_Boolean);
+      continue;
+      afdq.a(this.jdField_a_of_type_Afdq, "0X800A7F6", this.jdField_a_of_type_Boolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afdr
  * JD-Core Version:    0.7.0.1
  */

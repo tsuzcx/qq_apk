@@ -1,30 +1,20 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class xd
-  implements DialogInterface.OnCancelListener
+class xd
+  implements View.OnClickListener
 {
-  xd(wy paramwy) {}
+  xd(RealNameStep1InputNameIdActivity paramRealNameStep1InputNameIdActivity) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = new Intent(this.a.a, RealNameFindActivity.class);
-    paramDialogInterface.putExtra("result", RealNameStep0VerifyMobileUpActivity.access$800(this.a.a));
-    paramDialogInterface.putExtra("real_uin", RealNameStep0VerifyMobileUpActivity.access$100(this.a.a));
-    paramDialogInterface.putExtra("source_id", this.a.a.mSourceId);
-    paramDialogInterface.putExtra("mFrontPath", this.a.a.mFrontPath);
-    paramDialogInterface.putExtra("mBackPath", this.a.a.mBackPath);
-    paramDialogInterface.putExtra("mFaceData", this.a.a.mFaceData);
-    paramDialogInterface.putExtra("frontphotoinfo", this.a.a.frontphotoinfo);
-    paramDialogInterface.putExtra("backphotoinfo", this.a.a.backphotoinfo);
-    paramDialogInterface.putExtra("ish5zzb", RealNameStep0VerifyMobileUpActivity.access$600(this.a.a));
-    paramDialogInterface.putExtra("canchange_uin", this.a.a.canchange_uin);
-    paramDialogInterface.addFlags(67108864);
-    paramDialogInterface.putExtra("reupload", true);
-    this.a.a.startActivity(paramDialogInterface);
+    paramView = new Intent(this.a, FaceRegCameraActivity.class);
+    paramView.putExtra("flag", 3);
+    paramView.putExtra("scene", 2);
+    this.a.startActivityForResult(paramView, 1);
   }
 }
 

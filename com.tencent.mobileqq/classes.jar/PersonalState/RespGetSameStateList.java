@@ -10,14 +10,14 @@ public final class RespGetSameStateList
 {
   static BusiRespHead cache_oHead;
   static byte[] cache_vCookie;
-  static ArrayList cache_vUserInfos;
+  static ArrayList<UserProfile> cache_vUserInfos;
   public BusiRespHead oHead;
   public byte[] vCookie;
-  public ArrayList vUserInfos;
+  public ArrayList<UserProfile> vUserInfos;
   
   public RespGetSameStateList() {}
   
-  public RespGetSameStateList(BusiRespHead paramBusiRespHead, byte[] paramArrayOfByte, ArrayList paramArrayList)
+  public RespGetSameStateList(BusiRespHead paramBusiRespHead, byte[] paramArrayOfByte, ArrayList<UserProfile> paramArrayList)
   {
     this.oHead = paramBusiRespHead;
     this.vCookie = paramArrayOfByte;
@@ -56,7 +56,7 @@ public final class RespGetSameStateList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     PersonalState.RespGetSameStateList
  * JD-Core Version:    0.7.0.1
  */

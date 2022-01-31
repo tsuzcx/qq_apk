@@ -31,15 +31,16 @@ public class VolumeIndicateSquareView
   
   private void a(TypedArray paramTypedArray)
   {
-    boolean bool = false;
-    if (paramTypedArray.getInt(0, 0) == 0) {
-      bool = true;
+    if (paramTypedArray.getInt(2, 0) == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_Int = paramTypedArray.getInt(3, 5);
+      this.b = ((int)paramTypedArray.getDimension(5, 8.0F));
+      this.c = paramTypedArray.getColor(0, -16776961);
+      this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
+      return;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.jdField_a_of_type_Int = paramTypedArray.getInt(1, 5);
-    this.b = ((int)paramTypedArray.getDimension(4, 8.0F));
-    this.c = paramTypedArray.getColor(2, -16776961);
-    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
   }
   
   public void a()
@@ -148,7 +149,7 @@ public class VolumeIndicateSquareView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.VolumeIndicateSquareView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView android:gravity="center" android:id="@id/cnh" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:textSize="17.0sp" android:textColor="@color/al3" android:id="@id/cng" android:background="@null" android:paddingLeft="10.0dip" android:paddingTop="15.0dip" android:paddingRight="10.0dip" android:paddingBottom="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/close" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:contentDescription="@string/close" />
+    <ImageView android:id="@id/cnm" android:layout_width="90.0dip" android:layout_height="90.0dip" android:layout_marginTop="90.0dip" android:layout_centerHorizontal="true" android:contentDescription="@string/mdn" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/com" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/cnm" android:layout_centerHorizontal="true">
+        <TextView android:textSize="18.0sp" android:textColor="@color/al3" android:id="@id/co8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="30.0dip" android:text="" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff929292" android:id="@id/hi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="" />
+        <LinearLayout android:orientation="vertical" android:id="@id/hf" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <View android:id="@id/hc" android:background="#26ffffff" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="20.0dip" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/coh" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="44.0dip">
+                <TextView android:textSize="16.0sp" android:textColor="#ff929292" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/mdm" android:contentDescription="@string/mdp" />
+                <com.tencent.mobileqq.widget.ClearableEditText android:textSize="16.0sp" android:textColor="@color/al3" android:textColorHint="@color/al3" android:ellipsize="end" android:gravity="left" android:id="@id/cnl" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/aii" android:layout_marginRight="@dimen/aii" android:singleLine="true" android:layout_weight="1.0" android:layout_centerVertical="true" />
+            </LinearLayout>
+            <View android:id="@id/hd" android:background="#26ffffff" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cog" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="44.0dip">
+                <TextView android:textSize="16.0sp" android:textColor="#ff929292" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="分　组" android:contentDescription="分组" />
+                <TextView android:textColor="@color/al3" android:id="@id/cor" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/ne" />
+                <ImageView android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/cls" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </LinearLayout>
+            <View android:id="@id/he" android:background="#26ffffff" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <Button android:id="@id/h_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip" android:text="加好友" android:contentDescription="@string/mdl" style="@style/b9" />
+        </LinearLayout>
+    </LinearLayout>
+</com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView>

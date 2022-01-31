@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public final class SlaveMasterMsg
   extends JceStruct
 {
-  static ArrayList cache_vMarketFace;
+  static ArrayList<MarketFaceInfo> cache_vMarketFace;
   static byte[] cache_vOrigMsg;
   static byte[] cache_vReserved;
   public long lFromUin;
@@ -20,7 +20,7 @@ public final class SlaveMasterMsg
   public long uSeq;
   public long uSuperQQBubbleId;
   public long uToInstId;
-  public ArrayList vMarketFace;
+  public ArrayList<MarketFaceInfo> vMarketFace;
   public byte[] vOrigMsg;
   public byte[] vReserved;
   public short wFromApp;
@@ -28,7 +28,7 @@ public final class SlaveMasterMsg
   
   public SlaveMasterMsg() {}
   
-  public SlaveMasterMsg(long paramLong1, long paramLong2, long paramLong3, long paramLong4, short paramShort1, long paramLong5, long paramLong6, short paramShort2, long paramLong7, byte[] paramArrayOfByte1, long paramLong8, byte[] paramArrayOfByte2, ArrayList paramArrayList, long paramLong9)
+  public SlaveMasterMsg(long paramLong1, long paramLong2, long paramLong3, long paramLong4, short paramShort1, long paramLong5, long paramLong6, short paramShort2, long paramLong7, byte[] paramArrayOfByte1, long paramLong8, byte[] paramArrayOfByte2, ArrayList<MarketFaceInfo> paramArrayList, long paramLong9)
   {
     this.uMsgType = paramLong1;
     this.uCmd = paramLong2;
@@ -106,7 +106,7 @@ public final class SlaveMasterMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     IMMsgBodyPack.SlaveMasterMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,56 +1,54 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity.GetNicknameObserver;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class osz
-  extends QRDisplayActivity.GetNicknameObserver
+  implements AladdinConfigHandler
 {
-  public osz(QRDisplayActivity paramQRDisplayActivity)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    super(paramQRDisplayActivity);
-  }
-  
-  protected void a(boolean paramBoolean, List paramList1, List paramList2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QRDisplayActivity", 4, "onGetNicknameList: " + paramBoolean);
-    }
-    if ((paramBoolean) && (paramList1 != null) && (paramList2 != null))
+    QLog.d("BiuTriggerTypeConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    paramString = osq.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      int j = paramList2.size();
-      if ((j > 0) && (paramList1.size() == j))
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("BiuTriggerTypeConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "on_click"))
       {
-        if (this.a.jdField_b_of_type_JavaUtilList == null) {
-          this.a.jdField_b_of_type_JavaUtilList = new ArrayList();
-        }
-        this.a.jdField_b_of_type_JavaUtilList.addAll(paramList1);
-        int i = 0;
-        while (i < j)
+        if (TextUtils.equals(str2, "fast_biu")) {}
+        for (paramInt1 = 1;; paramInt1 = 0)
         {
-          if (this.a.a((String)paramList2.get(i)) == null) {
-            this.a.a((String)paramList2.get(i), (String)paramList1.get(i));
-          }
-          i += 1;
+          bkbq.a("sp_key_biu_button_click_behaviour", Integer.valueOf(paramInt1));
+          break;
         }
-        Collections.sort(this.a.jdField_b_of_type_JavaUtilList, new oud(this.a));
+      }
+      if (TextUtils.equals(str1, "on_long_pressed"))
+      {
+        if (TextUtils.equals(str2, "fast_biu")) {}
+        for (paramInt1 = 1;; paramInt1 = 0)
+        {
+          bkbq.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(paramInt1));
+          break;
+        }
       }
     }
-    this.a.jdField_a_of_type_JavaLangString = this.a.a(this.a.jdField_b_of_type_JavaUtilList);
-    if (this.a.jdField_a_of_type_JavaLangString != null)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.a.jdField_a_of_type_JavaLangString + "," + this.a.jdField_b_of_type_JavaLangString);
-      this.a.c.post(this.a.jdField_a_of_type_JavaLangRunnable);
-    }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bkbq.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0));
+    bkbq.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     osz
  * JD-Core Version:    0.7.0.1
  */

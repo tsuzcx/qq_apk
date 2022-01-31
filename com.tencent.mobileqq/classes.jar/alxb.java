@@ -1,30 +1,44 @@
-import com.tencent.qqprotect.qsec.ICloudAVEngine.DetectBundle;
-import com.tencent.qqprotect.qsec.ICloudAVEngine.IAVEngineEventListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class alxb
+class alxb
+  extends bead
 {
-  public int a;
-  public ICloudAVEngine.DetectBundle a;
-  public ICloudAVEngine.IAVEngineEventListener a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
+  alxb(alxa paramalxa) {}
   
-  private alxb()
+  public void onDone(beae parambeae)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public String toString()
-  {
-    return "[EntryId:" + this.jdField_a_of_type_Int + ",UseCache:" + this.jdField_a_of_type_Boolean + ",rightnow:" + this.jdField_b_of_type_Boolean + ",Retry:" + this.jdField_b_of_type_Int + ",localKey:" + this.jdField_a_of_type_JavaLangString + ",content:" + this.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.toString() + "]";
+    super.onDone(parambeae);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.roammsg.MessageRoamManager", 2, "onDone status: " + parambeae.f + ", url: " + parambeae.a);
+    }
+    int i = parambeae.a.indexOf("?");
+    String str;
+    if (i == -1)
+    {
+      str = parambeae.a;
+      if (!alwz.a.contains(str)) {
+        break label105;
+      }
+      this.a.a(parambeae);
+    }
+    label105:
+    do
+    {
+      return;
+      str = parambeae.a.substring(0, i - 1);
+      break;
+      if ("http://imgcache.qq.com/club/mobile/messageroam/xiaoximanyou2.json".equals(str))
+      {
+        this.a.b(parambeae);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.roammsg.MessageRoamManager", 2, "onDone unkonw url: " + parambeae.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alxb
  * JD-Core Version:    0.7.0.1
  */

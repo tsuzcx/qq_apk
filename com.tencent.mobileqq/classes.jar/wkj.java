@@ -1,36 +1,46 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class wkj
-  extends MqqHandler
+class wkj
+  extends umf<wjw, wiu>
 {
-  public wkj(NotificationView paramNotificationView) {}
-  
-  public void handleMessage(Message paramMessage)
+  wkj(wjw paramwjw)
   {
-    switch (paramMessage.what)
+    super(paramwjw);
+  }
+  
+  public void a(@NonNull wjw paramwjw, @NonNull wiu paramwiu)
+  {
+    if ((!paramwiu.jdField_a_of_type_Boolean) || (!paramwiu.jdField_a_of_type_JavaLangString.equals(wjw.a(paramwjw))) || (paramwiu.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (wjw.a(paramwjw) == null))
     {
-    case 1013: 
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationAdapter == null);
-      this.a.i();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationAdapter.a = GroupSystemMsgController.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationAdapter.notifyDataSetChanged();
+      wxe.b(this.TAG, "ignore this like list event. %s.", paramwiu.toString());
       return;
     }
-    this.a.j();
+    wxe.a(this.TAG, "receive like list event. %s.", paramwiu.toString());
+    boolean bool2 = wjw.a(paramwjw);
+    if (paramwiu.jdField_a_of_type_Int == 0) {}
+    for (boolean bool1 = false;; bool1 = true)
+    {
+      wjw.a(paramwjw).b(bool1, paramwiu.b);
+      wjw.a(paramwjw).b(paramwiu.jdField_a_of_type_JavaUtilList, true, bool1);
+      if (bool2 != bool1) {
+        break;
+      }
+      paramwjw.a();
+      return;
+    }
   }
+  
+  public Class acceptEventClass()
+  {
+    return wiu.class;
+  }
+  
+  public void b(@NonNull wjw paramwjw, @NonNull wiu paramwiu) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wkj
  * JD-Core Version:    0.7.0.1
  */

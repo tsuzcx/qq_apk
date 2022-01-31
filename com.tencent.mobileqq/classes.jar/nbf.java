@@ -1,24 +1,65 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.meta.ImageFileObject;
-import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject;
-import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject.UploadFinishListener;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoTaskInfo;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.util.WeakReference;
 
 public class nbf
-  implements UploadObject.UploadFinishListener
 {
-  public nbf(StoryVideoUploadTask paramStoryVideoUploadTask, StoryVideoTaskInfo paramStoryVideoTaskInfo) {}
+  HashMap<Integer, WeakReference<nbg>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  yqz jdField_a_of_type_Yqz;
   
-  public void a(UploadObject paramUploadObject)
+  public nbf(yqz paramyqz)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo.l = ((ImageFileObject)paramUploadObject).b;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
+    this.jdField_a_of_type_Yqz = paramyqz;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
+  }
+  
+  public void a(int paramInt, nbg paramnbg)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new WeakReference(paramnbg));
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebPushClient", 2, "data is null");
+      }
+    }
+    WeakReference localWeakReference;
+    do
+    {
+      int i;
+      do
+      {
+        return;
+        i = paramBundle.getInt("msgType", -1);
+        if (i != 0) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("WebPushClient", 2, "type is 0");
+      return;
+      localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+    } while ((localWeakReference == null) || (localWeakReference.get() == null));
+    ((nbg)localWeakReference.get()).a(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nbf
  * JD-Core Version:    0.7.0.1
  */

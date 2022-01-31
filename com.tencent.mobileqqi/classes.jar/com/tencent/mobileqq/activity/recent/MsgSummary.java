@@ -67,7 +67,7 @@ public class MsgSummary
         {
           if (this.f == 2)
           {
-            paramContext = ((Resources)localObject).getDrawable(2130839632);
+            paramContext = ((Resources)localObject).getDrawable(2130839634);
             if ((TextUtils.isEmpty(this.b)) || (!(this.b instanceof Spannable))) {
               continue;
             }
@@ -89,7 +89,7 @@ public class MsgSummary
           if (this.f != 1) {
             break label370;
           }
-          paramContext = ((Resources)localObject).getDrawable(2130839636);
+          paramContext = ((Resources)localObject).getDrawable(2130839638);
           continue;
         }
         catch (Exception localException)

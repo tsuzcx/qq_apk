@@ -1,23 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class adcb
-  extends BroadcastReceiver
+  implements DialogInterface.OnDismissListener
 {
-  public adcb(FileViewMusicService paramFileViewMusicService) {}
+  public adcb(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramIntent.getAction().equals("android.media.AUDIO_BECOMING_NOISY")) {
-      this.a.a();
-    }
+    this.a.a(FriendProfileMoreInfoActivity.a(this.a), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adcb
  * JD-Core Version:    0.7.0.1
  */

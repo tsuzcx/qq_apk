@@ -1,29 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.ui.CustomAnimationAdapter;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
 
 public class ozr
-  implements ValueAnimator.AnimatorUpdateListener
+  extends StaggeredGridLayoutManager
 {
-  public ozr(CustomAnimationAdapter paramCustomAnimationAdapter, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public ozr(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, int paramInt1, int paramInt2)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    if ((localLayoutParams instanceof LinearLayout.LayoutParams))
-    {
-      ((LinearLayout.LayoutParams)localLayoutParams).topMargin = paramValueAnimator.intValue();
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    }
+    super(paramInt1, paramInt2);
+  }
+  
+  public boolean canScrollVertically()
+  {
+    return (this.a.a.e) && (super.canScrollVertically());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ozr
  * JD-Core Version:    0.7.0.1
  */

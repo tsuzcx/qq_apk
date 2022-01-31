@@ -2,13 +2,12 @@ package com.tencent.upload.uinterface.data;
 
 import android.text.TextUtils;
 import android.util.Log;
-import com.tencent.upload.common.Const.UploadRetCode;
-import com.tencent.upload.common.FileUtils;
-import com.tencent.upload.common.b;
 import com.tencent.upload.uinterface.AbstractUploadTask;
 import com.tencent.upload.uinterface.IUploadTaskCallback;
 import com.tencent.upload.uinterface.TaskTypeConfig;
-import org.json.JSONException;
+import com.tencent.upload.utils.Const.UploadRetCode;
+import com.tencent.upload.utils.FileUtils;
+import com.tencent.upload.utils.UploadLog;
 import org.json.JSONObject;
 
 public class PhotoWallUploadTask
@@ -29,7 +28,6 @@ public class PhotoWallUploadTask
   }
   
   private byte[] createDescInfor(PhotoWallUploadTask paramPhotoWallUploadTask)
-    throws JSONException
   {
     JSONObject localJSONObject = new JSONObject();
     localJSONObject.put("op", paramPhotoWallUploadTask.op);
@@ -44,7 +42,6 @@ public class PhotoWallUploadTask
   }
   
   private PhotoWallUploadResult decodeUploadResult(String paramString)
-    throws JSONException
   {
     PhotoWallUploadResult localPhotoWallUploadResult = new PhotoWallUploadResult();
     localPhotoWallUploadResult.flowId = this.flowId;
@@ -69,14 +66,14 @@ public class PhotoWallUploadTask
     return TaskTypeConfig.PhotoWallUploadTaskType;
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     if (this.mDeleteFileAfterUpload) {
       FileUtils.deleteTempFile(this.mFilePath);
     }
   }
   
-  protected void processFileUploadFinishRsp(byte[] paramArrayOfByte)
+  public void processFileUploadFinishRsp(byte[] paramArrayOfByte)
   {
     Object localObject1 = null;
     if (paramArrayOfByte == null)
@@ -104,7 +101,7 @@ public class PhotoWallUploadTask
       for (;;)
       {
         localObject1 = Log.getStackTraceString(localException);
-        b.c("PhotoWallUploadTask", "decode photowallUpload result err", localException);
+        UploadLog.e("PhotoWallUploadTask", "decode photowallUpload result err", localException);
         localObject3 = null;
       }
       if (this.uploadTaskCallback != null) {
@@ -116,7 +113,7 @@ public class PhotoWallUploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.PhotoWallUploadTask
  * JD-Core Version:    0.7.0.1
  */

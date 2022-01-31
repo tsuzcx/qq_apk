@@ -1,35 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import UserGrowth.stFollowRsp;
 
-public class ter
-  implements DialogInterface.OnClickListener
+class ter
+  implements tgt
 {
-  public ter(PayBridgeActivity paramPayBridgeActivity, String paramString) {}
+  ter(tep paramtep, int paramInt, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(the paramthe)
   {
-    if (paramInt == 1)
-    {
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (BaseActivity.sTopActivity != null))
+    if (!(paramthe.a instanceof stFollowRsp)) {
+      if (this.jdField_a_of_type_Int == 2)
       {
-        Intent localIntent = new Intent(BaseActivity.sTopActivity, QQBrowserActivity.class);
-        localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-        localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-        this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity.startActivity(localIntent);
+        tep.a(this.jdField_a_of_type_Tep, this.jdField_a_of_type_JavaLangString, 1);
+        tlo.b("WSUserBusiness", "[getServiceListenerWrapper] data error: " + paramthe.a);
       }
-      paramDialogInterface.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity.finish();
     }
+    do
+    {
+      return;
+      tep.a(this.jdField_a_of_type_Tep, this.jdField_a_of_type_JavaLangString, 2);
+      break;
+      paramthe = (stFollowRsp)paramthe.a;
+    } while (paramthe == null);
+    int i = paramthe.isFollow;
+    tlo.b("WSUserBusiness", "[getServiceListenerWrapper] isFollow : " + i);
+    if (i == 1)
+    {
+      bflz.a().a(2131721483);
+      return;
+    }
+    bflz.a().a(2131721484);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ter
  * JD-Core Version:    0.7.0.1
  */

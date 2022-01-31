@@ -8,10 +8,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 
 public final class oidb_0xb40$CheckFavoriteReqBody
-  extends MessageMicro
+  extends MessageMicro<CheckFavoriteReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatField rpt_bytes_rowkey = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> rpt_bytes_rowkey = PBField.initRepeat(PBBytesField.__repeatHelper__);
   
   static
   {
@@ -21,7 +21,7 @@ public final class oidb_0xb40$CheckFavoriteReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb40.oidb_0xb40.CheckFavoriteReqBody
  * JD-Core Version:    0.7.0.1
  */

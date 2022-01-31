@@ -1,22 +1,20 @@
-import com.tencent.biz.qqstory.base.VideoServerInfoManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.PoiMapActivity;
 
-public class mzv
-  implements INetEventHandler
+public abstract class mzv
 {
-  private mzv(VideoServerInfoManager paramVideoServerInfoManager) {}
+  public int a;
+  public int b;
+  public int c;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public void onNetChangeEvent(boolean paramBoolean)
-  {
-    SLog.d("Q.qqstory.publish:VideoServerInfoManager", "network change");
-    this.a.b.set(true);
-  }
+  public mzv(PoiMapActivity paramPoiMapActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mzv
  * JD-Core Version:    0.7.0.1
  */

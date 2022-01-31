@@ -1,44 +1,67 @@
-import com.tencent.mobileqq.app.DataMigrationService;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.pluginsdk.PluginUtils;
 import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import dalvik.system.DexClassLoader;
+import java.io.File;
 
-public class zcs
-  extends WtloginListener
+class zcs
+  implements nbt
 {
-  public zcs(DataMigrationService paramDataMigrationService, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, WtloginHelper paramWtloginHelper) {}
+  zcs(zcr paramzcr, long paramLong, Context paramContext, boolean paramBoolean, nbt paramnbt) {}
   
-  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
+  public void loaded(int paramInt, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| OnException=" + paramErrMsg + ", cmd=" + paramInt);
+      QLog.i("ViewPluginManager", 2, "transToLocalUrl loadMode:" + paramInt + ", time:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-    DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, null, this.jdField_b_of_type_Int);
-  }
-  
-  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| onGetA1WithA1 ret=" + paramInt2);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("ViewPluginManager", 4, "transToLocalUrl transUrl:" + paramString);
     }
-    if (paramInt2 != 0)
+    this.jdField_a_of_type_Zcr.d = nbv.a(this.jdField_a_of_type_Zcr.jdField_a_of_type_JavaLangString);
+    String str = ncb.a(this.jdField_a_of_type_Zcr.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_Zcr.jdField_a_of_type_JavaLangString + "/" + this.jdField_a_of_type_Zcr.b;
+    try
     {
-      DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, null, this.jdField_b_of_type_Int);
+      Object localObject = new File(this.jdField_a_of_type_Zcr.c);
+      if (!this.jdField_a_of_type_Zcr.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.jdField_a_of_type_Zcr.a(this.jdField_a_of_type_Zcr.jdField_a_of_type_JavaLangString), "-1").equals(this.jdField_a_of_type_Zcr.d))
+      {
+        if (!((File)localObject).exists()) {
+          break label379;
+        }
+        bdhb.a(((File)localObject).getAbsolutePath());
+        this.jdField_a_of_type_Zcr.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(this.jdField_a_of_type_Zcr.a(this.jdField_a_of_type_Zcr.jdField_a_of_type_JavaLangString), nbv.a(this.jdField_a_of_type_Zcr.jdField_a_of_type_JavaLangString)).commit();
+        ((File)localObject).mkdirs();
+      }
+      for (;;)
+      {
+        if (!((File)localObject).exists()) {
+          ((File)localObject).mkdirs();
+        }
+        localObject = PluginUtils.getPluginLibPath(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Zcr.b).getCanonicalPath();
+        this.jdField_a_of_type_Zcr.jdField_a_of_type_JavaLangClassLoader = new DexClassLoader(str, this.jdField_a_of_type_Zcr.c, (String)localObject, this.jdField_a_of_type_AndroidContentContext.getClassLoader());
+        this.jdField_a_of_type_Zcr.jdField_a_of_type_Zcm = new zcm(this.jdField_a_of_type_AndroidContentContext, 0, str, null, null, this.jdField_a_of_type_Boolean);
+        if (this.jdField_a_of_type_Nbt == null) {
+          break;
+        }
+        this.jdField_a_of_type_Nbt.loaded(paramInt, paramString);
+        return;
+        label379:
+        ((File)localObject).mkdirs();
+      }
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| send action");
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ViewPluginManager", 2, "create classloader failed:" + paramString.toString());
+      }
     }
-    paramString = this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
-    DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, paramString, this.jdField_b_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zcs
  * JD-Core Version:    0.7.0.1
  */

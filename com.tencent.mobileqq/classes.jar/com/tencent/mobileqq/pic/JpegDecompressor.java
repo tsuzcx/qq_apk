@@ -18,8 +18,8 @@ public final class JpegDecompressor
   {
     try
     {
-      if ((!JpegCompressor.soLoadStatus) && (JpegSoLoad.LoadJpegExtractedSo("jpegc_above665") == 0)) {
-        JpegCompressor.soLoadStatus = true;
+      if (!JpegCompressor.soLoadStatus) {
+        JpegCompressor.jpegcompressLoadSo();
       }
       return;
     }
@@ -54,13 +54,12 @@ public final class JpegDecompressor
     if (this.insample <= 0) {
       this.insample = 1;
     }
-    this.outWidth = ((this.insample + (i - j) - 1) / this.insample);
+    this.outWidth = ((i - j + this.insample - 1) / this.insample);
     this.outHeight = ((this.insample + (k - m) - 1) / this.insample);
   }
   
   /* Error */
   public static Bitmap decodeByteArray(byte[] paramArrayOfByte, JpegOptions paramJpegOptions)
-    throws Exception
   {
     // Byte code:
     //   0: aconst_null
@@ -69,44 +68,44 @@ public final class JpegDecompressor
     //   3: astore_2
     //   4: aload_1
     //   5: ifnonnull +7 -> 12
-    //   8: getstatic 87	com/tencent/mobileqq/pic/JpegOptions:DEFAULT	Lcom/tencent/mobileqq/pic/JpegOptions;
+    //   8: getstatic 80	com/tencent/mobileqq/pic/JpegOptions:DEFAULT	Lcom/tencent/mobileqq/pic/JpegOptions;
     //   11: astore_2
     //   12: new 2	com/tencent/mobileqq/pic/JpegDecompressor
     //   15: dup
-    //   16: invokespecial 88	com/tencent/mobileqq/pic/JpegDecompressor:<init>	()V
+    //   16: invokespecial 81	com/tencent/mobileqq/pic/JpegDecompressor:<init>	()V
     //   19: astore_1
     //   20: aload_2
-    //   21: getfield 91	com/tencent/mobileqq/pic/JpegOptions:inJustDecodeBounds	Z
+    //   21: getfield 84	com/tencent/mobileqq/pic/JpegOptions:inJustDecodeBounds	Z
     //   24: ifeq +37 -> 61
     //   27: aload_1
     //   28: aload_0
     //   29: aload_2
-    //   30: getfield 95	com/tencent/mobileqq/pic/JpegOptions:inPreferredConfig	Landroid/graphics/Bitmap$Config;
-    //   33: invokevirtual 99	com/tencent/mobileqq/pic/JpegDecompressor:computeOutSize	([BLandroid/graphics/Bitmap$Config;)I
+    //   30: getfield 88	com/tencent/mobileqq/pic/JpegOptions:inPreferredConfig	Landroid/graphics/Bitmap$Config;
+    //   33: invokevirtual 92	com/tencent/mobileqq/pic/JpegDecompressor:computeOutSize	([BLandroid/graphics/Bitmap$Config;)I
     //   36: pop
     //   37: aload_2
     //   38: aload_1
-    //   39: getfield 42	com/tencent/mobileqq/pic/JpegDecompressor:imageHeight	I
-    //   42: putfield 100	com/tencent/mobileqq/pic/JpegOptions:outHeight	I
+    //   39: getfield 37	com/tencent/mobileqq/pic/JpegDecompressor:imageHeight	I
+    //   42: putfield 93	com/tencent/mobileqq/pic/JpegOptions:outHeight	I
     //   45: aload_2
     //   46: aload_1
-    //   47: getfield 40	com/tencent/mobileqq/pic/JpegDecompressor:imageWidth	I
-    //   50: putfield 101	com/tencent/mobileqq/pic/JpegOptions:outWidth	I
+    //   47: getfield 35	com/tencent/mobileqq/pic/JpegDecompressor:imageWidth	I
+    //   50: putfield 94	com/tencent/mobileqq/pic/JpegOptions:outWidth	I
     //   53: aload_3
     //   54: astore_0
     //   55: aload_1
-    //   56: invokevirtual 104	com/tencent/mobileqq/pic/JpegDecompressor:close	()V
+    //   56: invokevirtual 97	com/tencent/mobileqq/pic/JpegDecompressor:close	()V
     //   59: aload_0
     //   60: areturn
     //   61: aload_1
     //   62: aload_0
     //   63: aload_2
-    //   64: invokevirtual 107	com/tencent/mobileqq/pic/JpegDecompressor:createBitmap	([BLcom/tencent/mobileqq/pic/JpegOptions;)Landroid/graphics/Bitmap;
+    //   64: invokevirtual 100	com/tencent/mobileqq/pic/JpegDecompressor:createBitmap	([BLcom/tencent/mobileqq/pic/JpegOptions;)Landroid/graphics/Bitmap;
     //   67: astore_0
     //   68: goto -13 -> 55
     //   71: astore_0
     //   72: aload_1
-    //   73: invokevirtual 104	com/tencent/mobileqq/pic/JpegDecompressor:close	()V
+    //   73: invokevirtual 97	com/tencent/mobileqq/pic/JpegDecompressor:close	()V
     //   76: aload_0
     //   77: athrow
     // Local variable table:
@@ -123,7 +122,6 @@ public final class JpegDecompressor
   
   /* Error */
   public static Bitmap decodeFile(String paramString, JpegOptions paramJpegOptions)
-    throws Exception
   {
     // Byte code:
     //   0: aconst_null
@@ -132,44 +130,44 @@ public final class JpegDecompressor
     //   3: astore_2
     //   4: aload_1
     //   5: ifnonnull +7 -> 12
-    //   8: getstatic 87	com/tencent/mobileqq/pic/JpegOptions:DEFAULT	Lcom/tencent/mobileqq/pic/JpegOptions;
+    //   8: getstatic 80	com/tencent/mobileqq/pic/JpegOptions:DEFAULT	Lcom/tencent/mobileqq/pic/JpegOptions;
     //   11: astore_2
     //   12: new 2	com/tencent/mobileqq/pic/JpegDecompressor
     //   15: dup
-    //   16: invokespecial 88	com/tencent/mobileqq/pic/JpegDecompressor:<init>	()V
+    //   16: invokespecial 81	com/tencent/mobileqq/pic/JpegDecompressor:<init>	()V
     //   19: astore_1
     //   20: aload_2
-    //   21: getfield 91	com/tencent/mobileqq/pic/JpegOptions:inJustDecodeBounds	Z
+    //   21: getfield 84	com/tencent/mobileqq/pic/JpegOptions:inJustDecodeBounds	Z
     //   24: ifeq +37 -> 61
     //   27: aload_1
     //   28: aload_0
     //   29: aload_2
-    //   30: getfield 95	com/tencent/mobileqq/pic/JpegOptions:inPreferredConfig	Landroid/graphics/Bitmap$Config;
-    //   33: invokevirtual 113	com/tencent/mobileqq/pic/JpegDecompressor:computeOutSize	(Ljava/lang/String;Landroid/graphics/Bitmap$Config;)I
+    //   30: getfield 88	com/tencent/mobileqq/pic/JpegOptions:inPreferredConfig	Landroid/graphics/Bitmap$Config;
+    //   33: invokevirtual 105	com/tencent/mobileqq/pic/JpegDecompressor:computeOutSize	(Ljava/lang/String;Landroid/graphics/Bitmap$Config;)I
     //   36: pop
     //   37: aload_2
     //   38: aload_1
-    //   39: getfield 42	com/tencent/mobileqq/pic/JpegDecompressor:imageHeight	I
-    //   42: putfield 100	com/tencent/mobileqq/pic/JpegOptions:outHeight	I
+    //   39: getfield 37	com/tencent/mobileqq/pic/JpegDecompressor:imageHeight	I
+    //   42: putfield 93	com/tencent/mobileqq/pic/JpegOptions:outHeight	I
     //   45: aload_2
     //   46: aload_1
-    //   47: getfield 40	com/tencent/mobileqq/pic/JpegDecompressor:imageWidth	I
-    //   50: putfield 101	com/tencent/mobileqq/pic/JpegOptions:outWidth	I
+    //   47: getfield 35	com/tencent/mobileqq/pic/JpegDecompressor:imageWidth	I
+    //   50: putfield 94	com/tencent/mobileqq/pic/JpegOptions:outWidth	I
     //   53: aload_3
     //   54: astore_0
     //   55: aload_1
-    //   56: invokevirtual 104	com/tencent/mobileqq/pic/JpegDecompressor:close	()V
+    //   56: invokevirtual 97	com/tencent/mobileqq/pic/JpegDecompressor:close	()V
     //   59: aload_0
     //   60: areturn
     //   61: aload_1
     //   62: aload_0
     //   63: aload_2
-    //   64: invokevirtual 115	com/tencent/mobileqq/pic/JpegDecompressor:createBitmap	(Ljava/lang/String;Lcom/tencent/mobileqq/pic/JpegOptions;)Landroid/graphics/Bitmap;
+    //   64: invokevirtual 107	com/tencent/mobileqq/pic/JpegDecompressor:createBitmap	(Ljava/lang/String;Lcom/tencent/mobileqq/pic/JpegOptions;)Landroid/graphics/Bitmap;
     //   67: astore_0
     //   68: goto -13 -> 55
     //   71: astore_0
     //   72: aload_1
-    //   73: invokevirtual 104	com/tencent/mobileqq/pic/JpegDecompressor:close	()V
+    //   73: invokevirtual 97	com/tencent/mobileqq/pic/JpegDecompressor:close	()V
     //   76: aload_0
     //   77: athrow
     // Local variable table:
@@ -192,21 +190,14 @@ public final class JpegDecompressor
   
   private native int decompressHeader(long paramLong, byte[] paramArrayOfByte);
   
-  private native long decompressRegion(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  private native long decompressRegionBitmap(long paramLong, Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  private native int decompressRegionFileHeader(long paramLong, String paramString);
-  
-  private native int decompressRegionHeader(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
   private native void destroy(long paramLong);
   
   private int getPixelSize(Bitmap.Config paramConfig)
   {
+    int i = 1;
     if (this.idRgb) {}
-    for (int i = 3; paramConfig == null; i = 1) {
-      return i;
+    for (int j = 3; paramConfig == null; j = 1) {
+      return j;
     }
     if (Bitmap.Config.ARGB_8888 == paramConfig) {
       i = 4;
@@ -216,8 +207,8 @@ public final class JpegDecompressor
       return i;
       if (Bitmap.Config.RGB_565 == paramConfig) {
         i = 2;
-      } else if (Bitmap.Config.ALPHA_8 == paramConfig) {
-        i = 1;
+      } else if (Bitmap.Config.ALPHA_8 != paramConfig) {
+        i = j;
       }
     }
   }
@@ -249,7 +240,6 @@ public final class JpegDecompressor
   }
   
   public int computeOutSize(String paramString, Bitmap.Config paramConfig)
-    throws Exception
   {
     if (!JpegCompressor.soLoadStatus) {
       JpegError.throwException(50);
@@ -273,7 +263,6 @@ public final class JpegDecompressor
   }
   
   public int computeOutSize(byte[] paramArrayOfByte, Bitmap.Config paramConfig)
-    throws Exception
   {
     if (!JpegCompressor.soLoadStatus) {
       JpegError.throwException(50);
@@ -297,7 +286,6 @@ public final class JpegDecompressor
   }
   
   public Bitmap createBitmap(String paramString, JpegOptions paramJpegOptions)
-    throws Exception
   {
     if (!JpegCompressor.soLoadStatus) {
       JpegError.throwException(50);
@@ -308,7 +296,6 @@ public final class JpegDecompressor
   }
   
   public Bitmap createBitmap(byte[] paramArrayOfByte, JpegOptions paramJpegOptions)
-    throws Exception
   {
     if (!JpegCompressor.soLoadStatus) {
       JpegError.throwException(50);
@@ -319,97 +306,28 @@ public final class JpegDecompressor
   }
   
   public int decompress(byte[] paramArrayOfByte)
-    throws Exception
   {
     if (!JpegCompressor.soLoadStatus) {
       JpegError.throwException(50);
     }
-    int j = 0;
+    int i = 0;
     try
     {
       long l = decompress(this.nativePtr, paramArrayOfByte);
-      i = (int)(l & 0xFFFFFFFF);
-      j = (int)(l >> 32 & 0xFFFFFFFF);
+      j = (int)(l & 0xFFFFFFFF);
+      i = (int)(l >> 32 & 0xFFFFFFFF);
     }
     catch (UnsatisfiedLinkError paramArrayOfByte)
     {
       for (;;)
       {
-        int i = 52;
+        int j = 52;
       }
     }
-    if (i != 0) {
-      JpegError.throwException(i);
+    if (j != 0) {
+      JpegError.throwException(j);
     }
-    return j;
-  }
-  
-  void decompressRegion(byte[] paramArrayOfByte, Rect paramRect)
-  {
-    try
-    {
-      long l = decompressRegion(this.nativePtr, paramArrayOfByte, paramRect.left, paramRect.top, paramRect.right - paramRect.left, paramRect.bottom - paramRect.top);
-      i = (int)(0xFFFFFFFF & l);
-    }
-    catch (UnsatisfiedLinkError paramArrayOfByte)
-    {
-      for (;;)
-      {
-        int i = 52;
-      }
-    }
-    if (i != 0) {
-      JpegError.throwException(i);
-    }
-  }
-  
-  int decompressRegionBitmap(Bitmap paramBitmap, Rect paramRect)
-  {
-    try
-    {
-      long l = decompressRegionBitmap(this.nativePtr, paramBitmap, paramRect.left, paramRect.top, paramRect.right - paramRect.left, paramRect.bottom - paramRect.top);
-      return (int)(0xFFFFFFFF & l);
-    }
-    catch (UnsatisfiedLinkError paramBitmap) {}
-    return 52;
-  }
-  
-  void decompressRegionFileHeader(String paramString)
-  {
-    try
-    {
-      i = decompressRegionFileHeader(this.nativePtr, paramString);
-      if (i != 0) {
-        JpegError.throwException(i);
-      }
-      return;
-    }
-    catch (UnsatisfiedLinkError paramString)
-    {
-      for (;;)
-      {
-        int i = 52;
-      }
-    }
-  }
-  
-  void decompressRegionHeader(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    try
-    {
-      paramInt1 = decompressRegionHeader(this.nativePtr, paramArrayOfByte, paramInt1, paramInt2);
-      if (paramInt1 != 0) {
-        JpegError.throwException(paramInt1);
-      }
-      return;
-    }
-    catch (UnsatisfiedLinkError paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramInt1 = 52;
-      }
-    }
+    return i;
   }
   
   Bitmap getBitmap(Bitmap.Config paramConfig, Bitmap paramBitmap)
@@ -418,7 +336,7 @@ public final class JpegDecompressor
     try
     {
       long l = decompressBitmap(this.nativePtr, paramBitmap);
-      i = (int)(0xFFFFFFFF & l);
+      i = (int)(l & 0xFFFFFFFF);
     }
     catch (UnsatisfiedLinkError paramConfig)
     {
@@ -435,21 +353,6 @@ public final class JpegDecompressor
       JpegError.throwException(i);
     }
     return paramConfig;
-  }
-  
-  Bitmap getRegionBitmap(Rect paramRect, Bitmap.Config paramConfig, Bitmap paramBitmap)
-  {
-    computeOutWidthHeight(paramRect);
-    paramConfig = getReuseBitmap(paramConfig, paramBitmap);
-    int i = decompressRegionBitmap(paramConfig, paramRect);
-    paramRect = paramConfig;
-    if (i != 0)
-    {
-      paramConfig.recycle();
-      paramRect = null;
-      JpegError.throwException(i);
-    }
-    return paramRect;
   }
   
   public void setParams(boolean paramBoolean)
@@ -485,7 +388,7 @@ public final class JpegDecompressor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.pic.JpegDecompressor
  * JD-Core Version:    0.7.0.1
  */

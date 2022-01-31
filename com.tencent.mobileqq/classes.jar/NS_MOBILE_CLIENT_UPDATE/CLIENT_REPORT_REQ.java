@@ -10,12 +10,12 @@ import java.util.Map;
 public final class CLIENT_REPORT_REQ
   extends JceStruct
 {
-  static Map cache_extra_info;
-  static ArrayList cache_info = new ArrayList();
-  static ArrayList cache_multi_info;
-  public Map extra_info;
-  public ArrayList info;
-  public ArrayList multi_info;
+  static Map<String, String> cache_extra_info;
+  static ArrayList<Map<String, String>> cache_info = new ArrayList();
+  static ArrayList<REPORT_INFO> cache_multi_info;
+  public Map<String, String> extra_info;
+  public ArrayList<Map<String, String>> info;
+  public ArrayList<REPORT_INFO> multi_info;
   public long type;
   
   static
@@ -32,12 +32,12 @@ public final class CLIENT_REPORT_REQ
   
   public CLIENT_REPORT_REQ() {}
   
-  public CLIENT_REPORT_REQ(long paramLong, ArrayList paramArrayList1, Map paramMap, ArrayList paramArrayList2)
+  public CLIENT_REPORT_REQ(long paramLong, ArrayList<Map<String, String>> paramArrayList, Map<String, String> paramMap, ArrayList<REPORT_INFO> paramArrayList1)
   {
     this.type = paramLong;
-    this.info = paramArrayList1;
+    this.info = paramArrayList;
     this.extra_info = paramMap;
-    this.multi_info = paramArrayList2;
+    this.multi_info = paramArrayList1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -64,7 +64,7 @@ public final class CLIENT_REPORT_REQ
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_CLIENT_UPDATE.CLIENT_REPORT_REQ
  * JD-Core Version:    0.7.0.1
  */

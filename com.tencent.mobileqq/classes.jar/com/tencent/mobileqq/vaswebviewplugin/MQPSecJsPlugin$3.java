@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import bety;
 
 class MQPSecJsPlugin$3
   implements Runnable
@@ -30,7 +30,7 @@ class MQPSecJsPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.MQPSecJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

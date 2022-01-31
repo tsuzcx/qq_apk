@@ -1,46 +1,129 @@
-import android.content.res.Resources;
-import android.graphics.LightingColorFilter;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
 
 public class scj
-  implements View.OnTouchListener
 {
-  public scj(ChatSettingForTroop paramChatSettingForTroop) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static void a(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, FastWebActivity paramFastWebActivity, JSONObject paramJSONObject, List<BaseData> paramList, ArrayList<String> paramArrayList)
   {
-    int i;
-    if ((TroopInfo.hasPayPrivilege(this.a.a.mTroopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(this.a.a.mTroopPrivilegeFlag, 512)))
-    {
-      i = 1;
-      if ((!this.a.a.isMember) && (i != 0)) {
-        break label66;
-      }
+    if ((paramFastWebActivity == null) || (paramJSONObject == null)) {
+      return;
     }
-    label66:
-    do
+    try
     {
-      return false;
-      i = 0;
-      break;
-      if (paramMotionEvent.getAction() == 0) {
-        paramView.getBackground().setColorFilter(new LightingColorFilter(0, -950263));
+      paramJSONObject = paramJSONObject.getString("articleImageUrl");
+      if (paramArrayList.isEmpty())
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          Object localObject = (BaseData)paramList.next();
+          boolean bool = localObject instanceof ProteusItemData;
+          if (bool) {
+            try
+            {
+              localObject = (ProteusItemData)localObject;
+              if (((ProteusItemData)localObject).v == 2) {
+                paramArrayList.add(ors.f(((ProteusItemData)localObject).c.getString("articleImageUrl")));
+              }
+            }
+            catch (Exception localException)
+            {
+              QLog.d("FastWebImageItemUtils", 1, "handlerImageClick error!!! msg=" + localException);
+            }
+          }
+        }
       }
-    } while ((paramMotionEvent.getX() < this.a.getResources().getDisplayMetrics().widthPixels - 2) && (paramMotionEvent.getX() > 0.0F) && (paramMotionEvent.getY() > 0.0F) && (paramMotionEvent.getY() <= this.a.getResources().getDimensionPixelSize(2131558669) - 2) && (paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1));
-    paramView.getBackground().setColorFilter(new LightingColorFilter(0, -158425));
-    return false;
+      bcgq.a(paramFastWebActivity, paramArrayList.indexOf(ors.f(paramJSONObject)), paramArrayList, null, null, false, true, "4", 1000, null, null, null, null, "", true);
+    }
+    catch (Exception paramArticleInfo)
+    {
+      QLog.d("FastWebImageItemUtils", 1, "handlerImageClick error! msg=" + paramArticleInfo);
+      return;
+    }
+    if (paramFastWebArticleInfo.c()) {}
+    for (paramFastWebArticleInfo = "2";; paramFastWebArticleInfo = "1")
+    {
+      sdn.a(paramArticleInfo, "0X8008996", ors.a(paramFastWebActivity, paramArticleInfo, 0, paramFastWebArticleInfo).toString());
+      return;
+    }
+  }
+  
+  private static boolean a(int paramInt)
+  {
+    return paramInt < 100;
+  }
+  
+  public static boolean a(JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3)
+  {
+    int j;
+    for (;;)
+    {
+      try
+      {
+        i = FastWebActivity.a(BaseApplicationImpl.getContext());
+        j = Integer.valueOf(paramString1).intValue();
+        k = Integer.valueOf(paramString2).intValue();
+        if (a(j)) {
+          i = Utils.dp2px(j);
+        }
+      }
+      catch (Exception paramJSONObject)
+      {
+        int k;
+        int m;
+        int i = 0;
+        j = 0;
+        QLog.d("FastWebImageItemUtils", 1, "insertDynamicData error! msg=" + paramJSONObject);
+        continue;
+      }
+      try
+      {
+        j = i * k / j;
+        if ((j <= 0) || (i <= 0)) {}
+      }
+      catch (Exception paramJSONObject)
+      {
+        j = 0;
+        continue;
+      }
+      try
+      {
+        paramJSONObject.put("style_ID", "ReadInjoy_article_image_cell");
+        paramJSONObject.put("imageHeight", j);
+        paramJSONObject.put("imageWidth", i);
+        paramJSONObject.put("articleImageUrl", paramString3);
+        paramJSONObject.put("lineup", "0");
+        QLog.d("FastWebImageItemUtils", 1, "insertDynamicData image w,h error! w=" + i + "  h=" + j);
+        if ((!TextUtils.isEmpty(paramString3)) && (j > 0) && (i > 0)) {
+          break label227;
+        }
+        return false;
+      }
+      catch (Exception paramJSONObject)
+      {
+        continue;
+      }
+      m = Utils.dp2px(15.0D);
+      i -= m * 2;
+    }
+    label227:
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     scj
  * JD-Core Version:    0.7.0.1
  */

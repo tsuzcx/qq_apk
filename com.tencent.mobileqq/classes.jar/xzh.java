@@ -1,39 +1,80 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
-import com.tencent.mobileqq.qcall.PstnManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
-class xzh
-  implements DialogInterface.OnClickListener
+public class xzh
+  implements View.OnTouchListener
 {
-  xzh(xzg paramxzg, PstnManager paramPstnManager) {}
+  public xzh(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramInt = 1;
-    boolean bool = ((QQCustomDialog)paramDialogInterface).getCheckBoxState();
-    if (bool) {
-      this.jdField_a_of_type_ComTencentMobileqqQcallPstnManager.b(true);
+    switch (paramView.getId())
+    {
     }
-    if (!PhoneContactSelectActivity.a(this.jdField_a_of_type_Xzg.a)) {
-      this.jdField_a_of_type_Xzg.a.a();
-    }
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.jdField_a_of_type_Xzg.a.app;
-    if (bool) {}
     for (;;)
     {
-      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X8006404", "0X8006404", paramInt, 0, "", "", "", "");
-      return;
-      paramInt = 2;
+      return false;
+      if (paramMotionEvent.getAction() == 0)
+      {
+        this.a.b.setImageResource(2130846531);
+      }
+      else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+      {
+        this.a.b.setImageResource(2130846530);
+      }
+      else if (paramMotionEvent.getAction() == 2)
+      {
+        int i = (int)paramMotionEvent.getRawX();
+        int j = (int)paramMotionEvent.getRawY();
+        if (!QRDisplayActivity.a(paramView, i, j))
+        {
+          this.a.b.setImageResource(2130846530);
+          continue;
+          if (paramMotionEvent.getAction() == 0)
+          {
+            this.a.c.setImageResource(2130846533);
+          }
+          else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+          {
+            this.a.c.setImageResource(2130846532);
+          }
+          else if (paramMotionEvent.getAction() == 2)
+          {
+            i = (int)paramMotionEvent.getRawX();
+            j = (int)paramMotionEvent.getRawY();
+            if (!QRDisplayActivity.a(paramView, i, j))
+            {
+              this.a.c.setImageResource(2130846532);
+              continue;
+              if (paramMotionEvent.getAction() == 0)
+              {
+                this.a.d.setImageResource(2130846554);
+              }
+              else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+              {
+                this.a.d.setImageResource(2130846553);
+              }
+              else if (paramMotionEvent.getAction() == 2)
+              {
+                i = (int)paramMotionEvent.getRawX();
+                j = (int)paramMotionEvent.getRawY();
+                if (!QRDisplayActivity.a(paramView, i, j)) {
+                  this.a.d.setImageResource(2130846553);
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xzh
  * JD-Core Version:    0.7.0.1
  */

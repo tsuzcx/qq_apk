@@ -1,43 +1,60 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import android.text.TextUtils;
 
-public final class vbg
-  implements DialogInterface.OnClickListener
+public class vbg
 {
-  public vbg(Emoticon paramEmoticon, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt) {}
+  public int a;
+  public String a;
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public vbg()
   {
-    boolean bool;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 4)
+    this.jdField_a_of_type_JavaLangString = "";
+    uvt localuvt = (uvt)uwa.a(10);
+    String str = xqz.a();
+    this.jdField_a_of_type_JavaLangString = ((String)localuvt.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_Int = ((Integer)localuvt.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int))).intValue();
+    this.b = ((Integer)localuvt.b("key_story_msg_tab_autoshow_quota", Integer.valueOf(this.b))).intValue();
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, str))
     {
-      bool = true;
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, false, bool);
-      if (7 != this.jdField_a_of_type_Int) {
-        break label74;
-      }
-      MarketFaceItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, MarketFaceItemBuilder.a.frienduin, "ep_mall", "Clk_pkg_forward", 0);
+      this.jdField_a_of_type_JavaLangString = str;
+      this.jdField_a_of_type_Int = 0;
+      localuvt.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString);
+      localuvt.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
     }
-    label74:
-    while (6 != this.jdField_a_of_type_Int)
+    wxe.a(vaw.b(), "MsgTabShowCounter(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a()
+  {
+    b();
+    this.jdField_a_of_type_Int += 1;
+    ((uvt)uwa.a(10)).b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
+    wxe.a(vaw.b(), "addAutoShowCount(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public boolean a()
+  {
+    b();
+    wxe.a(vaw.b(), "shouldAutoShow(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
+    return this.jdField_a_of_type_Int < this.b;
+  }
+  
+  public void b()
+  {
+    String str = xqz.a();
+    if (!TextUtils.equals(str, this.jdField_a_of_type_JavaLangString))
     {
-      return;
-      bool = false;
-      break;
+      uvt localuvt = (uvt)uwa.a(10);
+      this.jdField_a_of_type_JavaLangString = str;
+      this.jdField_a_of_type_Int = 0;
+      localuvt.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString);
+      localuvt.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
     }
-    MarketFaceItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, MarketFaceItemBuilder.a.frienduin, "ep_mall", "Clk_collect_more", 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vbg
  * JD-Core Version:    0.7.0.1
  */

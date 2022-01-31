@@ -10,7 +10,7 @@ public final class RespHYMakeFriendsCard
 {
   static RespHead cache_stHeader;
   static MakeFriendsCard cache_stMakeFriendsCard;
-  static ArrayList cache_vFaceInfo;
+  static ArrayList<FaceInfo> cache_vFaceInfo;
   public byte bFavorited;
   public byte bQzoneInfo;
   public byte bShareLBS;
@@ -26,11 +26,11 @@ public final class RespHYMakeFriendsCard
   public String strCompany = "";
   public String strCustomTelNumber = "";
   public String strSchool = "";
-  public ArrayList vFaceInfo;
+  public ArrayList<FaceInfo> vFaceInfo;
   
   public RespHYMakeFriendsCard() {}
   
-  public RespHYMakeFriendsCard(RespHead paramRespHead, MakeFriendsCard paramMakeFriendsCard, byte paramByte1, byte paramByte2, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, ArrayList paramArrayList, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6)
+  public RespHYMakeFriendsCard(RespHead paramRespHead, MakeFriendsCard paramMakeFriendsCard, byte paramByte1, byte paramByte2, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, ArrayList<FaceInfo> paramArrayList, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6)
   {
     this.stHeader = paramRespHead;
     this.stMakeFriendsCard = paramMakeFriendsCard;

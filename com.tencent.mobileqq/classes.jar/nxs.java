@@ -1,55 +1,128 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
-import com.tencent.biz.qqstory.model.MemoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesVideoCollectionPresenter;
-import com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesVideoListSegment;
-import com.tencent.biz.qqstory.utils.AssertUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class nxs
-  extends SimpleJob
+  extends nwi
 {
-  public nxs(MemoriesVideoListSegment paramMemoriesVideoListSegment, String paramString1, int paramInt, View paramView, String paramString2) {}
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private ReadInJoyBaseListViewGroup jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
+  protected oxe a;
   
-  protected Object a(@NonNull JobContext paramJobContext, Void... paramVarArgs)
+  public nxs(Activity paramActivity)
   {
-    boolean bool = true;
-    Object localObject = (MemoryManager)SuperManager.a(19);
-    paramJobContext = new ArrayList();
-    paramVarArgs = ((MemoryManager)localObject).a(MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).jdField_a_of_type_JavaLangString, paramJobContext);
-    if ((paramVarArgs == null) || (paramVarArgs.size() == 0))
+    super(paramActivity);
+    this.jdField_a_of_type_Oxe = new nxt(this);
+  }
+  
+  public ViewGroup a()
+  {
+    return this.jdField_a_of_type_AndroidViewViewGroup;
+  }
+  
+  public void a()
+  {
+    super.a();
+    b();
+    owy.a().e();
+    oxb.a().a(this.jdField_a_of_type_Oxe);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramInt1, paramInt2, paramIntent);
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    super.a(paramViewGroup);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramBoolean);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    super.a(paramBoolean, paramInt);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramBoolean);
+  }
+  
+  public void b()
+  {
+    super.b();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null)
     {
-      AssertUtils.a("data key null for unionId:%s", new Object[] { MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).jdField_a_of_type_JavaLangString });
-      return null;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(null, null);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.b(null);
+      ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup, localLayoutParams);
     }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.jdField_a_of_type_JavaLangString);
-    MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).a(localArrayList);
-    int i = paramVarArgs.indexOf(this.jdField_a_of_type_JavaLangString);
-    localObject = ((MemoryManager)localObject).a(DateCollectionListPageLoader.a(MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).jdField_a_of_type_JavaLangString));
-    if ((localObject != null) && (((MemoryInfoEntry)localObject).isEnd == 1)) {}
-    for (;;)
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null)
     {
-      localObject = ((UserManager)SuperManager.a(2)).b(MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).jdField_a_of_type_JavaLangString);
-      ThreadManager.getUIHandler().post(new nxt(this, paramVarArgs, i, paramJobContext, bool, (QQUserUIItem)localObject));
-      return null;
-      bool = false;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(null, false);
+      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup);
+    }
+  }
+  
+  public void d()
+  {
+    oxb.a().b(this.jdField_a_of_type_Oxe);
+    super.d();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(null, false);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.g();
+  }
+  
+  public void e()
+  {
+    super.e();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.e();
+  }
+  
+  public void f()
+  {
+    super.f();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.f();
+  }
+  
+  public void g()
+  {
+    super.g();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.d();
+  }
+  
+  public void h()
+  {
+    super.h();
+    owy.a().e();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a();
+  }
+  
+  public void o()
+  {
+    super.o();
+    if (((this.jdField_a_of_type_AndroidAppActivity instanceof ReadInJoyFeedsActivity)) && (((ReadInJoyFeedsActivity)this.jdField_a_of_type_AndroidAppActivity).a() == 1)) {
+      suv.a().d(((BaseActivity)a()).app);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nxs
  * JD-Core Version:    0.7.0.1
  */

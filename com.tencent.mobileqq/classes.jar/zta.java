@@ -1,27 +1,31 @@
-import com.tencent.mobileqq.app.message.ConversationProxy;
-import com.tencent.mobileqq.persistence.NoColumnError;
-import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class zta
-  implements NoColumnErrorHandler
+class zta
+  extends MqqHandler
 {
-  public zta(ConversationProxy paramConversationProxy) {}
-  
-  public void a(NoColumnError paramNoColumnError)
+  zta(zsz paramzsz, Looper paramLooper)
   {
-    if ((paramNoColumnError != null) && (("unreadGiftCount".equals(paramNoColumnError.mColumnName)) || ("unreadMark".equals(paramNoColumnError.mColumnName))))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 100)
     {
       if (QLog.isColorLevel()) {
-        QLog.w("Q.unread.Proxy", 2, paramNoColumnError.getMessage(), paramNoColumnError);
+        QLog.i("DeviceBLE2", 2, "QFindGattManager write data timeout bleSN " + (String)paramMessage.obj);
       }
-      ConversationProxy.a(this.a, true);
+      zsz.a(this.a, paramMessage.arg1);
+      this.a.a((String)paramMessage.obj);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zta
  * JD-Core Version:    0.7.0.1
  */

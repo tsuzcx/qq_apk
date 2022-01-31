@@ -1,55 +1,52 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks.UnlimitedState;
+import android.graphics.Bitmap;
+import android.support.v4.app.NotificationCompat.Builder;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class vlf
-  implements Animator.AnimatorListener
+class vlf
+  implements URLDrawable.URLDrawableListener
 {
-  private vlf(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  vlf(vle paramvle, NotificationCompat.Builder paramBuilder, QQAppInterface paramQQAppInterface, StoryPushMsg paramStoryPushMsg, int paramInt) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (UnlimitedBladeWorks.a(this.a).a)
-    {
-      if (UnlimitedBladeWorks.a(this.a) != 2.0D) {
-        break label55;
-      }
-      UnlimitedBladeWorks.a(this.a);
-      UnlimitedBladeWorks.a(this.a, 5);
+    if (QLog.isColorLevel()) {
+      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
     }
-    for (;;)
-    {
-      UnlimitedBladeWorks.a(this.a).setImageDrawable(null);
-      return;
-      label55:
-      UnlimitedBladeWorks.b(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
-      UnlimitedBladeWorks.a(this.a).a(UnlimitedBladeWorks.a(this.a));
-      UnlimitedBladeWorks.a(this.a).a(new vlg(this));
-      UnlimitedBladeWorks.a(this.a).c();
-      UnlimitedBladeWorks.a(this.a, 1);
-    }
+    this.jdField_a_of_type_Vle.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizQqstoryNotificationStoryPushMsg, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder);
+    vle.a(this.jdField_a_of_type_Vle).remove(paramURLDrawable);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (UnlimitedBladeWorks.a(this.a))
-    {
-      UnlimitedBladeWorks.a(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadSuccessed start, mURLDrawableList.size():" + vle.a(this.jdField_a_of_type_Vle).size());
     }
-    UnlimitedBladeWorks.a(this.a).setImageBitmap(UnlimitedBladeWorks.a(this.a));
+    Bitmap localBitmap1 = bdhj.a(paramURLDrawable.getCurrDrawable(), 200, 200);
+    Bitmap localBitmap2 = ndi.b(localBitmap1, 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadSuccessed start, cutBitmap.size():" + localBitmap2.getHeight() + ", " + localBitmap2.getWidth());
+    }
+    this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setLargeIcon(localBitmap2);
+    this.jdField_a_of_type_Vle.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizQqstoryNotificationStoryPushMsg, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder);
+    localBitmap1.recycle();
+    vle.a(this.jdField_a_of_type_Vle).remove(paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadSuccessed, mURLDrawableList.size():" + vle.a(this.jdField_a_of_type_Vle).size());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vlf
  * JD-Core Version:    0.7.0.1
  */

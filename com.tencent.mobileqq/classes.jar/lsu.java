@@ -1,17 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener;
-
 public class lsu
-  implements DialogInterface.OnDismissListener
+  implements lst
 {
-  public lsu(OnTopicRecommendHeaderFollowClickListener paramOnTopicRecommendHeaderFollowClickListener) {}
+  public void a(lss paramlss) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public boolean a(lss paramlss)
+  {
+    return false;
+  }
+  
+  public boolean b(lss paramlss)
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lsu
  * JD-Core Version:    0.7.0.1
  */

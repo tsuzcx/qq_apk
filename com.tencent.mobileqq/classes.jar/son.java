@@ -1,27 +1,24 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONObject;
 
-class son
-  implements Runnable
+public class son
+  implements aznz
 {
-  son(sol paramsol) {}
+  public son(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
   
-  public void run()
+  public void a()
   {
-    Card localCard = ((FriendsManager)this.a.a.app.getManager(50)).a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
-    this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataCard = localCard;
-    if (localCard != null) {
-      this.a.a.runOnUiThread(new soo(this));
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.saveImagePermission(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, "saveImage reject Permission");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     son
  * JD-Core Version:    0.7.0.1
  */

@@ -1,170 +1,191 @@
-import android.annotation.TargetApi;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richstatus.ISameStatusListener;
-import com.tencent.mobileqq.richstatus.IStatusListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import com.tencent.mobileqq.richstatus.StatusObserver;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.4.1;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.List;
 import mqq.os.MqqHandler;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class ahpv
-  extends StatusObserver
+  extends alwx
 {
-  public ahpv(StatusManager paramStatusManager) {}
+  public ahpv(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  @TargetApi(9)
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  protected void a(String paramString)
   {
-    ThreadManager.getSubThreadHandler().post(new ahpw(this, paramBoolean, paramBundle));
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.shuo", 2, "onGetSyncShuoshuo " + paramBoolean1 + ", " + paramBoolean2);
-    }
-    label83:
-    IStatusListener localIStatusListener;
-    if (paramBoolean1)
+    if ((this.a.jdField_a_of_type_Bety != null) && (this.a.jdField_a_of_type_Bety.isShowing()))
     {
-      StatusManager.c(this.a, 0L);
-      StatusManager.a(this.a, paramBoolean2);
-      if (StatusManager.b(this.a) == null) {
-        return;
-      }
-      Iterator localIterator = StatusManager.b(this.a).iterator();
-      if (!localIterator.hasNext()) {
-        return;
-      }
-      localIStatusListener = (IStatusListener)localIterator.next();
-      if (!paramBoolean1) {
-        break label162;
-      }
-    }
-    label162:
-    for (int i = 100;; i = -1)
-    {
-      localIStatusListener.a(i, paramBoolean2);
-      break label83;
-      StatusManager.c(this.a, System.currentTimeMillis() - 180000L + 60000L);
-      paramBoolean2 = StatusManager.b(this.a).getBoolean("k_sync_ss", false);
-      break;
+      this.a.jdField_a_of_type_Bety.dismiss();
+      paramString = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131720551);
+      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 1, paramString, 0).b(this.a.a());
     }
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, byte[] paramArrayOfByte, ArrayList paramArrayList)
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.mate", 2, "onGetStatusMate " + paramBoolean1 + " " + paramBoolean2 + " " + paramInt + " " + paramArrayList.size());
-    }
-    if (paramBoolean1) {
-      StatusManager.a(this.a, paramArrayOfByte);
-    }
+    long l1 = bafj.a().b();
+    if (!TextUtils.isEmpty(paramString1)) {}
     for (;;)
     {
-      if (paramBoolean1) {
-        if (paramBoolean2)
+      long l2;
+      try
+      {
+        l2 = Long.parseLong(paramString1);
+        l1 = l2;
+        if (paramBoolean) {
+          break label169;
+        }
+        if (this.a.jdField_a_of_type_Bety != null) {
+          this.a.jdField_a_of_type_Bety.dismiss();
+        }
+        paramString1 = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719755);
+        if (TextUtils.isEmpty(paramString3)) {
+          break label590;
+        }
+        QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 1, paramString3, 0).b(this.a.a());
+        bafk.a(bafj.a().a(Long.valueOf(l1)), paramInt3, paramString2, paramString4);
+        paramString1 = bafj.a().a(Long.valueOf(l1));
+        if ((paramString1 != null) && (paramString1.msg_type.get() == 2)) {
+          this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1012);
+        }
+        return;
+      }
+      catch (Exception paramString1)
+      {
+        paramString1.printStackTrace();
+      }
+      continue;
+      label169:
+      if (this.a.jdField_a_of_type_Bety != null) {
+        this.a.jdField_a_of_type_Bety.dismiss();
+      }
+      paramString3 = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692878);
+      if (paramInt1 == 1)
+      {
+        paramString1 = bafj.a().a(Long.valueOf(l1));
+        if ((paramString1 != null) && (paramString1.msg.group_msg_type.get() == 82)) {
+          paramString1 = paramString2;
+        }
+      }
+      for (;;)
+      {
+        QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, paramString1, 0).b(this.a.a());
+        l2 = bafj.a().a();
+        bafk.a(bafj.a().a(Long.valueOf(l1)), paramInt1, paramString2, paramInt2);
+        paramString1 = bafj.a().a(Long.valueOf(l1));
+        if (paramString1 != null)
         {
-          if (StatusManager.a(this.a) != null)
+          paramInt2 = paramString1.msg.group_inviter_role.get();
+          if (((paramInt2 == 2) || (paramInt2 == 3)) && (paramInt1 == 1))
           {
-            StatusManager.a(this.a, paramArrayList);
-            return;
-            if (!paramBoolean2) {
-              continue;
-            }
-            StatusManager.a(this.a, null);
-            continue;
+            paramString2 = "" + paramString1.msg.group_code.get();
+            paramString3 = paramString1.msg.group_name.get();
+            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(paramString2, paramString3);
           }
-          if (StatusManager.b(this.a) == null) {
-            StatusManager.b(this.a, new ArrayList());
-          }
-          paramArrayOfByte = this.a.a(StatusManager.b(this.a), paramArrayList, paramInt);
         }
-      }
-    }
-    for (;;)
-    {
-      label165:
-      if ((StatusManager.a(this.a) != null) && (StatusManager.a(this.a).length > 0)) {}
-      for (boolean bool = true;; bool = false)
-      {
-        if (StatusManager.c(this.a) == null) {
-          break label264;
-        }
-        paramArrayList = StatusManager.c(this.a).iterator();
-        while (paramArrayList.hasNext()) {
-          ((ISameStatusListener)paramArrayList.next()).a(paramBoolean1, paramBoolean2, paramInt, paramArrayOfByte, bool);
-        }
-        break;
-        paramArrayOfByte = this.a.a(paramArrayList);
-        break label165;
-      }
-      label264:
-      break;
-      paramArrayOfByte = paramArrayList;
-    }
-  }
-  
-  protected void b(boolean paramBoolean, Bundle paramBundle)
-  {
-    StatusManager.a(this.a, null);
-    if (StatusManager.b(this.a) != null)
-    {
-      paramBundle = StatusManager.b(this.a).iterator();
-      if (paramBundle.hasNext())
-      {
-        IStatusListener localIStatusListener = (IStatusListener)paramBundle.next();
-        if (paramBoolean) {}
-        for (int i = 100;; i = -1)
+        if (l2 != 0L) {}
+        try
         {
-          localIStatusListener.a(i, RichStatus.getEmptyStatus(), null);
-          break;
+          if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramString1 != null)) {
+            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(alof.N, 0, l2, paramString1.toByteArray());
+          }
+        }
+        catch (Exception paramString1)
+        {
+          for (;;)
+          {
+            paramString1.printStackTrace();
+            if (QLog.isColorLevel()) {
+              QLog.i("TroopNotifyAndRecommendView", 2, "onSendSystemMsgActionFin Exception!");
+            }
+          }
+        }
+        this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1012);
+        return;
+        paramString1 = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692866);
+        continue;
+        if (paramInt1 == 2)
+        {
+          paramString1 = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692876);
+        }
+        else
+        {
+          paramString1 = paramString3;
+          if (paramInt1 == 0)
+          {
+            paramString4 = bafj.a().a(Long.valueOf(l1));
+            paramString1 = paramString3;
+            if (paramString4 != null)
+            {
+              paramString1 = paramString3;
+              if (paramString4.msg.group_msg_type.get() == 82) {
+                paramString1 = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692876);
+              }
+            }
+          }
         }
       }
+      label590:
+      paramString3 = paramString1;
     }
   }
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.shuo", 2, "onSetSyncShuoshuo " + paramBoolean1 + ", " + paramBoolean2);
+      QLog.i("TroopNotifyAndRecommendView", 2, "onGetSystemMsgFin.bengin");
     }
-    label74:
-    IStatusListener localIStatusListener;
-    if (paramBoolean1)
+    TroopNotifyAndRecommendView.c(this.a);
+    if (((Activity)this.a.jdField_a_of_type_AndroidContentContext).isFinishing()) {}
+    for (;;)
     {
-      StatusManager.a(this.a, paramBoolean2);
-      if (StatusManager.b(this.a) == null) {
-        return;
-      }
-      Iterator localIterator = StatusManager.b(this.a).iterator();
-      if (!localIterator.hasNext()) {
-        return;
-      }
-      localIStatusListener = (IStatusListener)localIterator.next();
-      if (!paramBoolean1) {
-        break label134;
+      return;
+      if (paramBoolean1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopNotifyAndRecommendView", 2, "onGetSystemMsgFin.success");
+        }
+        try
+        {
+          if ((this.a.jdField_a_of_type_JavaUtilList != null) && (paramList != null)) {
+            this.a.jdField_a_of_type_JavaUtilList = TroopNotifyAndRecommendView.a(this.a.jdField_a_of_type_JavaUtilList, paramList);
+          }
+          if ((this.a.jdField_a_of_type_Ahot != null) && (this.a.jdField_a_of_type_Ahoe != null))
+          {
+            this.a.jdField_a_of_type_Ahoe.a(new TroopNotifyAndRecommendView.4.1(this));
+            return;
+          }
+        }
+        catch (Exception paramList)
+        {
+          paramList.printStackTrace();
+        }
       }
     }
-    label134:
-    for (int i = 100;; i = -1)
-    {
-      localIStatusListener.b(i, paramBoolean2);
-      break label74;
-      paramBoolean2 = StatusManager.b(this.a).getBoolean("k_sync_ss", false);
-      break;
-    }
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
+  {
+    TroopNotifyAndRecommendView.a(this.a);
+    TroopNotifyAndRecommendView.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahpv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,17 @@
-import android.os.Bundle;
-import com.tencent.biz.qrcode.QRCodeEncodeCallback;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import java.io.File;
+import java.io.FileFilter;
 
-public final class ouz
-  implements BusinessObserver
+final class ouz
+  implements FileFilter
 {
-  public ouz(QRCodeEncodeCallback paramQRCodeEncodeCallback) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean accept(File paramFile)
   {
-    if ((paramBoolean) && (paramBundle != null)) {}
-    for (paramBundle = paramBundle.getString("result");; paramBundle = null)
-    {
-      try
-      {
-        paramBundle = new JSONObject(paramBundle);
-        if (paramBundle.getInt("r") != 0) {
-          continue;
-        }
-        paramBundle = paramBundle.getString("url");
-        if (paramBundle != null)
-        {
-          this.a.a(true, paramBundle);
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
-        {
-          paramBundle = null;
-        }
-      }
-      this.a.a(false, null);
-      return;
-    }
+    return paramFile.getName().endsWith(".json");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ouz
  * JD-Core Version:    0.7.0.1
  */

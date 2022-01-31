@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SCUpdatePB$SCUpdateReqComm
-  extends MessageMicro
+  extends MessageMicro<SCUpdateReqComm>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt64Field cookie = PBField.initInt64(0L);
@@ -30,7 +30,7 @@ public final class SCUpdatePB$SCUpdateReqComm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.scupdate.SCUpdatePB.SCUpdateReqComm
  * JD-Core Version:    0.7.0.1
  */

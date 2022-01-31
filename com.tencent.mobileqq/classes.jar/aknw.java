@@ -1,20 +1,16 @@
-import android.net.Uri;
-import com.tencent.mobileqq.webview.swift.WebViewWrapper;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.apollo.ApolloGameNormalStartHandler.3;
 
 public class aknw
-  extends aknz
+  implements View.OnClickListener
 {
-  public aknw(WebViewWrapper paramWebViewWrapper)
-  {
-    super(paramWebViewWrapper);
-  }
+  public aknw(ApolloGameNormalStartHandler.3 param3) {}
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  public void onClick(View paramView)
   {
-    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
+    aknv.a(this.a.this$0).dismiss();
+    aknv.a(this.a.this$0, true);
   }
 }
 

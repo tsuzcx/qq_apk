@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:background="@drawable/bg_texture" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/common_strip_setting_bottom" android:paddingLeft="14.0dip" android:paddingTop="19.0dip" android:paddingRight="14.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@id/head" android:background="@drawable/fr" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginRight="14.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                <com.tencent.mobileqq.troop.widget.EllipsizingTextView android:textSize="24.0dip" android:textColor="@color/skin_black_group_item" android:id="@id/k0i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="@string/q7l" android:layout_toRightOf="@id/head" android:layout_alignParentTop="true" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/head" android:layout_below="@id/k0i">
+                    <TextView android:textSize="13.0dip" android:textColor="@color/skin_black_group_item" android:layout_gravity="center_vertical" android:id="@id/k1s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="12345678" />
+                    <ImageView android:layout_gravity="center_vertical" android:id="@id/jxg" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="4.0dip" android:src="@drawable/e5d" android:scaleType="fitXY" android:layout_toRightOf="@id/k0i" android:layout_centerVertical="true" />
+                    <TextView android:textSize="11.0dip" android:textColor="@color/ahb" android:layout_gravity="center_vertical" android:id="@id/jzl" android:background="@drawable/a7f" android:paddingLeft="4.5dip" android:paddingTop="1.5dip" android:paddingRight="4.5dip" android:paddingBottom="1.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_toRightOf="@id/k1s" android:layout_centerVertical="true" />
+                    <TextView android:textSize="11.0dip" android:textColor="@color/ahb" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/k1p" android:background="@drawable/a7f" android:paddingLeft="4.5dip" android:paddingTop="1.5dip" android:paddingRight="4.5dip" android:paddingBottom="1.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" />
+                    <TextView android:textSize="11.0dip" android:textColor="@color/ahb" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/k0r" android:background="@drawable/a7g" android:paddingLeft="4.5dip" android:paddingTop="1.5dip" android:paddingRight="4.5dip" android:paddingBottom="1.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" />
+                </LinearLayout>
+            </RelativeLayout>
+            <com.tencent.mobileqq.troop.widget.ExpandableTextView android:id="@id/jyy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" app:animAlphaStart="1.0" app:animDuration="300" app:maxCollapsedLines="6">
+                <TextView android:textSize="15.0dip" android:textColor="@color/skin_gray_group_item" android:id="@id/bzm" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/skin_blue_item" android:layout_gravity="bottom|center|right" android:id="@id/bzk" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </com.tencent.mobileqq.troop.widget.ExpandableTextView>
+        </LinearLayout>
+        <com.tencent.mobileqq.troop.widget.TroopMoreDetailView android:id="@id/k0h" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

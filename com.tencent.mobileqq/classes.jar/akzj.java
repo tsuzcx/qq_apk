@@ -1,32 +1,38 @@
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mqq.MqqImageLoader;
-import com.tencent.plato.sdk.IImageLoader.Listener;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class akzj
-  implements URLDrawable.URLDrawableListener
+class akzj
+  implements aljo
 {
-  public akzj(MqqImageLoader paramMqqImageLoader, IImageLoader.Listener paramListener) {}
+  akzj(akzg paramakzg, String paramString) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentPlatoSdkIImageLoader$Listener != null)
+    try
     {
-      paramURLDrawable = paramURLDrawable.getCurrDrawable();
-      this.jdField_a_of_type_ComTencentPlatoSdkIImageLoader$Listener.onLoad((BitmapDrawable)paramURLDrawable);
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameSubRscHandler", 2, new Object[] { "[onVerifyResult], retCode:", Integer.valueOf(paramInt) });
+      }
+      ApolloCmdChannel localApolloCmdChannel = akwd.a();
+      if (localApolloCmdChannel != null)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("packName", this.jdField_a_of_type_JavaLangString);
+        localJSONObject.put("result", paramInt);
+        localApolloCmdChannel.callbackFromRequest(akzg.a(this.jdField_a_of_type_Akzg), 0, "cs.file_correctness_check.local", localJSONObject.toString());
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmgame_process.CmGameSubRscHandler", 1, localThrowable, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akzj
  * JD-Core Version:    0.7.0.1
  */

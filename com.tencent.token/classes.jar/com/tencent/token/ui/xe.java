@@ -1,17 +1,30 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.db;
+import android.view.WindowManager;
 
-final class xe
+class xe
   implements View.OnClickListener
 {
-  xe(RealNameStep0VerifyMobileUpActivity paramRealNameStep0VerifyMobileUpActivity) {}
+  xe(RealNameStep1InputNameIdActivity paramRealNameStep1InputNameIdActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.sendUpSmsBySMSAPP(db.c, db.d);
+    paramView = new DisplayMetrics();
+    this.a.getWindowManager().getDefaultDisplay().getMetrics(paramView);
+    if (RealNameStep1InputNameIdActivity.access$100(this.a))
+    {
+      paramView = new Intent(this.a, DetectIDPhotoActivity.class);
+      this.a.startActivityForResult(paramView, 2);
+      return;
+    }
+    paramView = new Intent(this.a, RealNameTakeIDPhotoActivity.class);
+    paramView.putExtra("scene", 2);
+    this.a.startActivityForResult(paramView, 2);
   }
 }
 

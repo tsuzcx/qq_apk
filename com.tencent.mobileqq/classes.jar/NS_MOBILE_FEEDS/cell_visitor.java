@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class cell_visitor
   extends JceStruct
 {
-  static ArrayList cache_visitors = new ArrayList();
+  static ArrayList<s_user> cache_visitors = new ArrayList();
   public byte mod;
   public String myfriend_info = "";
   public int view_count;
   public int view_count_byfriends;
   public int visitor_count;
-  public ArrayList visitors;
+  public ArrayList<s_user> visitors;
   
   static
   {
@@ -24,7 +24,7 @@ public final class cell_visitor
   
   public cell_visitor() {}
   
-  public cell_visitor(int paramInt1, int paramInt2, ArrayList paramArrayList, byte paramByte, int paramInt3, String paramString)
+  public cell_visitor(int paramInt1, int paramInt2, ArrayList<s_user> paramArrayList, byte paramByte, int paramInt3, String paramString)
   {
     this.view_count = paramInt1;
     this.visitor_count = paramInt2;
@@ -60,7 +60,7 @@ public final class cell_visitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_visitor
  * JD-Core Version:    0.7.0.1
  */

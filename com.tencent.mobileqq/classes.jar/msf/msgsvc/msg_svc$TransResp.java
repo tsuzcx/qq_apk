@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class msg_svc$TransResp
-  extends MessageMicro
+  extends MessageMicro<TransResp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField errmsg = PBField.initString("");
@@ -25,7 +25,7 @@ public final class msg_svc$TransResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msf.msgsvc.msg_svc.TransResp
  * JD-Core Version:    0.7.0.1
  */

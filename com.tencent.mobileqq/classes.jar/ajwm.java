@@ -1,24 +1,14 @@
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
+import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ajwm
-  implements Runnable
 {
-  public ajwm(TroopInteractGiftAnimationController paramTroopInteractGiftAnimationController) {}
+  public AtomicBoolean a;
+  public boolean a;
   
-  public void run()
+  private ajwm(CameraFilterGLView paramCameraFilterGLView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.d.removeView(this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton != null) {
-      this.a.jdField_a_of_type_AndroidViewViewGroup.removeView(this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView = null;
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton = null;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
 }
 

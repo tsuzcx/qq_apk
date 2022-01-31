@@ -1,22 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.HistorySearchEntryModel;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class ahqw
-  implements View.OnClickListener
+  extends asim
 {
-  public ahqw(HistorySearchEntryModel paramHistorySearchEntryModel) {}
+  public ahqw(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt, ArrayList<ahpo> paramArrayList)
   {
-    int i = ((Integer)paramView.getTag(-1)).intValue();
-    HistorySearchEntryModel.a(this.a).a(this.a.a, paramView, i, 0L);
+    if (TroopWithCommonFriendsFragment.a(this.a) != null) {
+      TroopWithCommonFriendsFragment.a(this.a).dismiss();
+    }
+    if (!paramBoolean)
+    {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1014);
+      return;
+    }
+    ahqz.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, paramArrayList);
+    ahqz.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, paramInt);
+    this.a.b = paramInt;
+    this.a.jdField_a_of_type_JavaUtilList = ahqz.a(paramArrayList, TroopWithCommonFriendsFragment.a(this.a));
+    TroopWithCommonFriendsFragment.a(this.a).a();
+    TroopWithCommonFriendsFragment.a(this.a).a(this.a.jdField_a_of_type_JavaUtilList);
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1012);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahqw
  * JD-Core Version:    0.7.0.1
  */

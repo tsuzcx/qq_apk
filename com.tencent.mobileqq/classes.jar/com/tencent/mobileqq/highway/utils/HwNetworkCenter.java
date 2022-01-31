@@ -11,14 +11,7 @@ public class HwNetworkCenter
 {
   public static final String Tag = "NetworkCenter";
   public static HwNetworkCenter sNC;
-  private Runnable checkRun = new Runnable()
-  {
-    public void run()
-    {
-      HwNetworkCenter.this.onNetChange(HwNetworkCenter.this.mContext);
-      HwNetworkCenter.this.mHandler.postDelayed(this, 120000L);
-    }
-  };
+  private Runnable checkRun = new HwNetworkCenter.1(this);
   private String mApnType = "";
   private Context mContext;
   private Handler mHandler;
@@ -112,7 +105,7 @@ public class HwNetworkCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.utils.HwNetworkCenter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,54 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.IPSiteModel.Game;
-import com.tencent.mobileqq.emoticonview.BigEmotionDownloadedAdapter;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.AddRequestActivity.8.1;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class acdv
-  implements View.OnClickListener
+  extends altm
 {
-  public acdv(BigEmotionDownloadedAdapter paramBigEmotionDownloadedAdapter, IPSiteModel.Game paramGame, String paramString1, String paramString2) {}
+  public acdv(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Game.jumpUrl, -1L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_gameclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
+    if (AddRequestActivity.a(this.a))
+    {
+      if (!paramBoolean) {
+        this.a.a(2130839392, this.a.getString(2131719755));
+      }
+    }
+    else {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("base_uin", paramString);
+    String str = this.a.b;
+    if (TextUtils.isEmpty(this.a.b)) {
+      str = this.a.a;
+    }
+    localBundle.putString("base_nick", str);
+    localBundle.putInt("verfy_type", AddRequestActivity.b(this.a));
+    localBundle.putString("verfy_msg", AddRequestActivity.a(this.a));
+    if (AddRequestActivity.a(this.a) != null) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      localBundle.putBoolean("isFromWzry", paramBoolean);
+      AutoRemarkActivity.a(this.a, 0, paramString, 0L, localBundle);
+      return;
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.a.a != null) && (this.a.a.equals(paramString))) {
+      ThreadManager.post(new AddRequestActivity.8.1(this), 5, null, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acdv
  * JD-Core Version:    0.7.0.1
  */

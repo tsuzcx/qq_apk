@@ -1,37 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.widget.BubblePopupWindow;
+import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class almc
-  implements View.OnLongClickListener
+  implements OnCompositionLoadedListener
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new almd(this);
-  public BubblePopupWindow a;
-  public String a;
+  public almc(ApolloLottieAnim paramApolloLottieAnim, DiniFlyAnimationView paramDiniFlyAnimationView, boolean paramBoolean) {}
   
-  public almc(QidianProfileCardActivity paramQidianProfileCardActivity)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    int i = paramView.getId();
-    this.jdField_a_of_type_JavaLangString = String.valueOf(paramView.getTag());
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(i, "复制");
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, localQQCustomMenu, this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new alme(this));
-    return true;
+    if (paramLottieComposition == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloLottieAnim", 2, "composition is null ,return");
+      }
+    }
+    do
+    {
+      return;
+      if (!ApolloLottieAnim.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloLottieAnim", 2, "anim is destroy ,return");
+    return;
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setComposition(paramLottieComposition);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetDelegate(new almd(this));
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
+    }
+    ApolloLottieAnim.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     almc
  * JD-Core Version:    0.7.0.1
  */

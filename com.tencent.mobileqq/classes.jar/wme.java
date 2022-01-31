@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
+import java.util.List;
 
-class wme
-  implements Runnable
+public abstract interface wme
 {
-  wme(wmd paramwmd) {}
+  public abstract void a(String paramString, List<wnd> paramList);
   
-  public void run()
-  {
-    this.a.a.notifyDataSetChanged();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wme
  * JD-Core Version:    0.7.0.1
  */

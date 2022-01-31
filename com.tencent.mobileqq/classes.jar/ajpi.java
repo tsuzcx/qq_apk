@@ -1,25 +1,53 @@
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.Map;
-import java.util.UUID;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 
 public class ajpi
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public ajpi(TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID, TroopFileInfo paramTroopFileInfo, int paramInt1, int paramInt2) {}
+  public ajpi(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.c();
-    TroopFileTransferManager.Item localItem2 = (TroopFileTransferManager.Item)this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.b.get(this.jdField_a_of_type_JavaUtilUUID);
-    TroopFileTransferManager.Item localItem1 = localItem2;
-    if (localItem2 == null)
-    {
-      localItem1 = new TroopFileTransferManager.Item(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo);
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.b.put(this.jdField_a_of_type_JavaUtilUUID, localItem1);
+    int i = paramMotionEvent.getAction();
+    paramMotionEvent.getX();
+    float f = paramMotionEvent.getY();
+    if (i == 0) {
+      this.a.jdField_b_of_type_AndroidWidgetButton.setText(null);
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.b(localItem1, this.jdField_a_of_type_Int, this.b);
+    do
+    {
+      return false;
+      if (i == 2)
+      {
+        if (f < this.a.jdField_b_of_type_Int * -1)
+        {
+          this.a.a(false, false);
+          return true;
+        }
+        this.a.a(true, false);
+        return true;
+      }
+      if (i == 3)
+      {
+        this.a.a(false, true);
+        return false;
+      }
+    } while (i != 1);
+    if (f < this.a.jdField_b_of_type_Int * -1)
+    {
+      this.a.k = false;
+      this.a.a(false, true);
+    }
+    for (;;)
+    {
+      this.a.jdField_b_of_type_AndroidWidgetButton.setText(2131692716);
+      return false;
+      this.a.k = true;
+      this.a.a(true, true);
+    }
   }
 }
 

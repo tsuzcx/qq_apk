@@ -1,39 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.biz.ui.CustomMenuBar;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.statistics.ReportController;
-
-public class vxq
-  implements View.OnClickListener
+class vxq
+  implements vym
 {
-  public vxq(PublicAccountChatPie paramPublicAccountChatPie) {}
+  vxq(vxn paramvxn, vwe paramvwe) {}
   
-  public void onClick(View paramView)
+  public boolean a_(vyi paramvyi, int paramInt1, int paramInt2)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
-    if (this.a.b != null) {
-      this.a.b.setVisibility(0);
+    int i;
+    if (paramInt1 == 3) {
+      i = 1;
     }
-    if (this.a.j != null) {
-      this.a.j.setVisibility(0);
-    }
-    if (this.a.k != null) {
-      this.a.k.setVisibility(0);
-    }
-    this.a.ap();
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.b(this.a.a()) != 0) {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC5", "0X8005EC5", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+    for (;;)
+    {
+      return this.jdField_a_of_type_Vwe.a(this.jdField_a_of_type_Vxn, i, Integer.valueOf(paramInt2));
+      if (paramInt1 == 701)
+      {
+        i = 2;
+      }
+      else
+      {
+        i = paramInt1;
+        if (paramInt1 == 702) {
+          i = 3;
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vxq
  * JD-Core Version:    0.7.0.1
  */

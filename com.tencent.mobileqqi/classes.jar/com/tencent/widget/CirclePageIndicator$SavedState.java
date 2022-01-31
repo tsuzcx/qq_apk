@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.View.BaseSavedState;
-import ian;
+import hvt;
 
 public class CirclePageIndicator$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator CREATOR = new ian();
+  public static final Parcelable.Creator CREATOR = new hvt();
   int a;
   
   private CirclePageIndicator$SavedState(Parcel paramParcel)

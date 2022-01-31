@@ -1,35 +1,21 @@
-import android.database.DataSetObserver;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
-import com.tencent.biz.qqstory.view.EmptySupportViewPager;
-import com.tencent.biz.qqstory.view.PagerIndicator;
-import com.tencent.biz.qqstory.view.PagerIndicator.IndicatorAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class oqb
-  extends DataSetObserver
-  implements ViewPager.OnPageChangeListener
+class oqb
+  implements ViewBase.OnClickListener
 {
-  private oqb(PagerIndicator paramPagerIndicator) {}
+  oqb(opz paramopz) {}
   
-  public void onChanged()
+  public void onClick(ViewBase paramViewBase)
   {
-    Log.d("PagerIndicator", "onChanged");
-    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
-  }
-  
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
-  {
-    Log.d("PagerIndicator", "onPageSelected : " + paramInt);
-    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
+    if (this.a.a != null) {
+      opy.a(this.a.a, paramViewBase);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oqb
  * JD-Core Version:    0.7.0.1
  */

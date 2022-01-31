@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ThemeAuth$DiyThemeDetail
-  extends MessageMicro
+  extends MessageMicro<DiyThemeDetail>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50 }, new String[] { "uin32_id", "str_name", "uin32_feetype", "str_bg_url", "str_bg_thumbnail_url", "str_bg_preview_url" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(0), "", "", "" }, DiyThemeDetail.class);
   public final PBStringField str_bg_preview_url = PBField.initString("");
@@ -19,7 +19,7 @@ public final class ThemeAuth$DiyThemeDetail
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.theme.ThemeAuth.DiyThemeDetail
  * JD-Core Version:    0.7.0.1
  */

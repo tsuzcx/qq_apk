@@ -1,86 +1,76 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import android.util.SparseIntArray;
-import android.view.View;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter.FilterPagerAdapter;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.EditVideoPlayerExport;
-import com.tencent.biz.qqstory.takevideo.filter.FilterData;
-import com.tencent.biz.qqstory.takevideo.filter.FilterData.FilterPageItem;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.biz.pubaccount.readinjoy.ad.utils.ReadInJoyTelePhoneUtils.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.app.AppActivity;
+import org.json.JSONObject;
 
 public class oem
-  implements ViewPager.OnPageChangeListener
 {
-  private oem(EditVideoFilter paramEditVideoFilter) {}
-  
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public static JSONObject a(int paramInt1, int paramInt2, String paramString, AdvertisementInfo paramAdvertisementInfo)
   {
-    paramInt2 = 0;
-    int i = paramInt1 % this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a();
-    Object localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(i);
-    if (localObject != null) {}
-    for (paramInt1 = ((FilterData)localObject).jdField_a_of_type_Int;; paramInt1 = 0)
+    try
     {
-      localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a((i + 1) % this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a());
-      if (localObject != null) {
-        paramInt2 = ((FilterData)localObject).jdField_a_of_type_Int;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("perstatus", paramInt1);
+      localJSONObject.put("callact", paramInt2);
+      localJSONObject.put("callnum", paramString);
+      if (paramAdvertisementInfo != null) {
+        localJSONObject.put("phone_cmpt_id", String.valueOf(paramAdvertisementInfo.mPhoneComponetId));
       }
-      localObject = (EditVideoPlayerExport)this.a.a(EditVideoPlayerExport.class);
-      if (localObject != null) {
-        ((EditVideoPlayerExport)localObject).a(paramInt1, paramInt2, paramFloat);
-      }
-      return;
+      paramString = new JSONObject();
+      paramString.put("comp_stat_src", "");
+      paramString.put("phone_component_info", localJSONObject.toString());
+      return paramString;
     }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
   
-  public void onPageSelected(int paramInt)
+  public static void a(Context paramContext, AdvertisementInfo paramAdvertisementInfo)
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt);
-    if (localObject != null) {}
-    for (int i = ((FilterData)localObject).jdField_a_of_type_Int;; i = 0)
-    {
-      this.a.jdField_a_of_type_AndroidUtilSparseArray.put(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(), localObject);
-      if ((i == 2) || (i == 1) || (i == 3))
-      {
-        localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt);
-        if ((localObject != null) && (TextUtils.isEmpty(((FilterData.FilterPageItem)localObject).jdField_a_of_type_ComTencentBizQqstoryTakevideoFilterFilterData.b))) {
-          EditVideoFilter.a((FilterData.FilterPageItem)localObject);
-        }
-      }
-      localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt - 1);
-      FilterData.FilterPageItem localFilterPageItem = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt + 1);
-      if (localObject != null) {
-        ((FilterData.FilterPageItem)localObject).jdField_a_of_type_AndroidViewView.clearAnimation();
-      }
-      if (localFilterPageItem != null) {
-        localFilterPageItem.jdField_a_of_type_AndroidViewView.clearAnimation();
-      }
-      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.a.jdField_a_of_type_Int = i;
-      EditVideoFilter.a(this.a).put(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(), paramInt);
-      localObject = (EditVideoPlayerExport)this.a.a(EditVideoPlayerExport.class);
-      if (localObject != null) {
-        ((EditVideoPlayerExport)localObject).b(i);
-      }
-      if (i != 0)
-      {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a("608", "9", "0", true);
-        VideoEditReport.a("0X80076DE");
-      }
-      SLog.a("Q.qqstory.publish.edit.EditVideoFilter", "LastSelectVideoFilterTime : %s , LastSelectVideoPlayMode : %s .", Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(this.a.jdField_a_of_type_Int));
+    if ((paramAdvertisementInfo == null) || (paramAdvertisementInfo.mAdRl == null)) {
       return;
     }
+    ThreadManager.excute(new ReadInJoyTelePhoneUtils.1(paramAdvertisementInfo, paramContext), 128, null, true);
+  }
+  
+  public static void a(Context paramContext, String paramString, AdvertisementInfo paramAdvertisementInfo)
+  {
+    if (!(paramContext instanceof AppActivity)) {
+      return;
+    }
+    b(paramContext, paramString, paramAdvertisementInfo);
+  }
+  
+  public static boolean a(AdvertisementInfo paramAdvertisementInfo)
+  {
+    return (paramAdvertisementInfo != null) && (paramAdvertisementInfo.mPhoneComponetId != 0) && (oed.e(paramAdvertisementInfo));
+  }
+  
+  public static boolean a(AdData paramAdData)
+  {
+    return (paramAdData != null) && (paramAdData.m != 0) && (oed.e(paramAdData));
+  }
+  
+  public static void b(Context paramContext, String paramString, AdvertisementInfo paramAdvertisementInfo)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    paramContext.startActivity(new Intent("android.intent.action.DIAL", Uri.parse("tel:" + paramString)));
+    noy.a(new obk().a(paramContext).a(noy.w).b(noy.af).a(paramAdvertisementInfo).e(a(2, 1, paramString, paramAdvertisementInfo)).a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,75 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendAccountInfo;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendAdapter;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendAdapter.RecommendItem;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendAdapter.RecommendPublicAccountObserver;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
+import android.os.SystemClock;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
 public class mth
-  implements View.OnClickListener
 {
-  public mth(SubscriptRecommendAdapter.RecommendItem paramRecommendItem, SubscriptRecommendAdapter paramSubscriptRecommendAdapter) {}
+  private static final Map<String, Long> a = new HashMap(5);
+  private static final Map<String, Long> b = new HashMap(5);
   
-  public void onClick(View paramView)
+  public static void a(String paramString1, String paramString2, int paramInt, Object... paramVarArgs)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005732", "0X8005732", 0, 0, "", "", "", "");
-    ReportController.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800642F", "0X800642F", 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAccountInfo.jdField_a_of_type_Long), "", "", "");
-    if (this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAccountInfo != null)
+    int j = 0;
+    if (QLog.isColorLevel())
     {
-      paramView = String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAccountInfo.jdField_a_of_type_Long);
-      if (!TextUtils.isEmpty(paramView)) {}
-    }
-    else
-    {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAccountInfo.jdField_a_of_type_Int == 0)
-    {
-      if (!NetworkUtil.d(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity.getApplicationContext()))
+      long l2 = SystemClock.elapsedRealtime();
+      Object localObject1 = (Long)b.get(paramString1);
+      long l1;
+      if ((paramInt == 1) || (localObject1 == null))
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity, 2131434811, 0).b(((BaseActivity)this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight());
-        return;
+        a.put(paramString1, Long.valueOf(l2));
+        b.put(paramString1, Long.valueOf(l2));
+        l1 = 0L;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.a(2);
-      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAccountInfo.jdField_a_of_type_Int = 2;
-      MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
-      if ((localMqqHandler != null) && (this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity instanceof SubscriptFeedsActivity))) {
-        localMqqHandler.sendEmptyMessage(1007);
+      for (;;)
+      {
+        Object localObject2 = "[]";
+        localObject1 = localObject2;
+        if (paramVarArgs == null) {
+          break label210;
+        }
+        localObject1 = localObject2;
+        if (paramVarArgs.length <= 0) {
+          break label210;
+        }
+        localObject1 = new StringBuilder(100);
+        ((StringBuilder)localObject1).append("[");
+        int k = paramVarArgs.length;
+        int i = 0;
+        while (i < k)
+        {
+          localObject2 = paramVarArgs[i];
+          if (j > 0) {
+            ((StringBuilder)localObject1).append(",");
+          }
+          ((StringBuilder)localObject1).append(localObject2);
+          j += 1;
+          i += 1;
+        }
+        l1 = l2 - ((Long)localObject1).longValue();
+        b.put(paramString1, Long.valueOf(l2));
       }
-      PublicAccountUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity, paramView, new SubscriptRecommendAdapter.RecommendPublicAccountObserver(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem));
-      return;
+      ((StringBuilder)localObject1).append("]");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      label210:
+      QLog.i("AVTraceUtil", 2, paramString1 + "--" + paramString2 + "--" + (String)localObject1 + "--" + l1);
+      if (paramInt == 2)
+      {
+        paramVarArgs = (Long)a.get(paramString1);
+        paramString2 = paramVarArgs;
+        if (paramVarArgs == null) {
+          paramString2 = Long.valueOf(l2);
+        }
+        l1 = paramString2.longValue();
+        QLog.i("AVTraceUtil", 2, paramString1 + ": " + (l2 - l1));
+      }
     }
-    SubscriptRecommendAdapter.RecommendItem.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mth
  * JD-Core Version:    0.7.0.1
  */

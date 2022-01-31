@@ -1,22 +1,17 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.eqq.CrmUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.data.EqqDetail;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class vrm
-  implements Runnable
+public abstract interface vrm
 {
-  vrm(vrl paramvrl, EqqDetail paramEqqDetail) {}
+  public abstract void a();
   
-  public void run()
-  {
-    CrmUtils.b(this.jdField_a_of_type_Vrl.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-    this.jdField_a_of_type_Vrl.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new vrn(this));
-  }
+  public abstract void a(@NonNull wiq paramwiq, ErrorMessage paramErrorMessage, boolean paramBoolean);
+  
+  public abstract void a(@NonNull wiq paramwiq, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vrm
  * JD-Core Version:    0.7.0.1
  */

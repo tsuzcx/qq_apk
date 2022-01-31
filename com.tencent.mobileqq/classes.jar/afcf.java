@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
+import com.tencent.qphone.base.util.QLog;
 
-public class afcf
-  implements Runnable
+final class afcf
+  implements alrb
 {
-  public afcf(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
-  
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if ((this.a.a.a != null) && (this.a.a.a.equals(this.a.app.getCurrentAccountUin()))) {
-      ((LocalRedTouchManager)this.a.app.getManager(159)).a(false);
+    if (paramBoolean) {
+      afce.a(true);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AIODrawerDpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afcf
  * JD-Core Version:    0.7.0.1
  */

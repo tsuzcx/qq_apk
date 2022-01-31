@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/n9" style="@style/lx"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/a4v" android:paddingTop="14.0dip" android:paddingBottom="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center|left" android:orientation="vertical" android:id="@id/k6" android:paddingLeft="@dimen/lr" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/n9" android:layout_weight="1.0">
+            <TextView android:textColor="@drawable/de" android:id="@android:id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/lg" />
+            <TextView android:textSize="13.0dip" android:textColor="@drawable/de" android:id="@android:id/summary" android:paddingRight="@dimen/lr" android:layout_marginTop="4.0dip" android:singleLine="true" style="@style/lj" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center|right" android:orientation="vertical" android:id="@android:id/widget_frame" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <View android:background="#ffd8d8d8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/a4v" android:layout_alignParentBottom="true" />
+</RelativeLayout>

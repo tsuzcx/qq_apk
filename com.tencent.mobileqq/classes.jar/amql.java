@@ -1,44 +1,56 @@
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
-import cooperation.qqpim.QQPimBridgeActivity;
-import cooperation.qqpim.QQPimDefineList;
-import cooperation.qqpim.QQPimPluginLoadRunnable.IPluginLoadListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
 
-public class amql
-  implements QQPimPluginLoadRunnable.IPluginLoadListener
+public final class amql
+  implements Parcelable.Creator<UpgradeTIMWrapper>
 {
-  public amql(QQPimBridgeActivity paramQQPimBridgeActivity) {}
-  
-  public void a()
+  public UpgradeTIMWrapper a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.a, 2, "QQPimBridgeActivity.hasInstalled()");
+    Object localObject = null;
+    String str2 = paramParcel.readString();
+    String str3 = paramParcel.readString();
+    String str4 = paramParcel.readString();
+    String str5 = paramParcel.readString();
+    String str6 = paramParcel.readString();
+    int j = 0;
+    for (;;)
+    {
+      try
+      {
+        int i = paramParcel.readInt();
+        j = i;
+        String str1 = paramParcel.readString();
+        paramParcel.printStackTrace();
+      }
+      catch (Exception paramParcel)
+      {
+        try
+        {
+          paramParcel = paramParcel.readString();
+          return new UpgradeTIMWrapper(str2, str3, str4, str5, str6, i, str1, paramParcel);
+        }
+        catch (Exception paramParcel)
+        {
+          break label81;
+        }
+        paramParcel = paramParcel;
+        str1 = null;
+        i = j;
+      }
+      label81:
+      paramParcel = localObject;
     }
-    QQPimBridgeActivity.a(this.a).sendEmptyMessage(1);
   }
   
-  public void a(float paramFloat) {}
-  
-  public void a(int paramInt)
+  public UpgradeTIMWrapper[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.a, 2, "QQPimBridgeActivity.downloadError()");
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 2;
-    localMessage.arg1 = paramInt;
-    QQPimBridgeActivity.a(this.a).sendMessage(localMessage);
-  }
-  
-  public void b()
-  {
-    QQPimBridgeActivity.a(this.a).sendEmptyMessage(0);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amql
  * JD-Core Version:    0.7.0.1
  */

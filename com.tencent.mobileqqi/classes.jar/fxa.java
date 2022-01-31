@@ -1,16 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
+import com.tencent.mobileqq.filemanager.data.WeiYunClassificationType;
+import com.tencent.qphone.base.util.QLog;
+import com.weiyun.sdk.IWyFileSystem.IWyCallback;
+import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
+import com.weiyun.sdk.data.WyCategoryInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class fxa
-  implements View.OnClickListener
+  implements IWyFileSystem.IWyCallback
 {
-  public fxa(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public fxa(WeiYunLogicCenter paramWeiYunLogicCenter) {}
   
-  public void onClick(View paramView)
+  public void a(List paramList)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "queryWeiyunTypeList onSucceed, num[" + paramList.size() + "]");
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      WyCategoryInfo localWyCategoryInfo = (WyCategoryInfo)paramList.next();
+      WeiYunClassificationType localWeiYunClassificationType = new WeiYunClassificationType();
+      localWeiYunClassificationType.jdField_a_of_type_JavaLangString = localWyCategoryInfo.categoryId;
+      localWeiYunClassificationType.b = localWyCategoryInfo.name;
+      localWeiYunClassificationType.jdField_a_of_type_Long = localWyCategoryInfo.timestamp;
+      localWeiYunClassificationType.jdField_a_of_type_Int = localWyCategoryInfo.totalNum;
+      this.a.b.add(localWeiYunClassificationType);
+    }
+    this.a.a.a().a(true, 30, this.a.b);
+  }
+  
+  public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryWeiyunTypeList onFailed: errcode[" + paramWyErrorStatus.errorCode + "], errmsg[" + paramWyErrorStatus.errorMsg + "]");
+    }
+    this.a.a.a().a(false, 30, new Object[] { Integer.valueOf(paramWyErrorStatus.errorCode), paramWyErrorStatus.errorMsg });
   }
 }
 

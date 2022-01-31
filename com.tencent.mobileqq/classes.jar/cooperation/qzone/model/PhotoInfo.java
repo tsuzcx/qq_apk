@@ -1,23 +1,24 @@
 package cooperation.qzone.model;
 
-import amus;
+import NS_FASHION_FEEDS_TAG_PROTO.TagInfo;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.common.galleryactivity.GalleryImage;
-import cooperation.qzone.util.PanoramaUtil;
+import bjla;
+import bjum;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.util.WeakReference;
+import zjd;
 
 public class PhotoInfo
-  extends GalleryImage
+  extends zjd
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amus();
+  public static final Parcelable.Creator<PhotoInfo> CREATOR = new bjla();
   public static int l;
   public static int m;
   public static int n;
@@ -28,24 +29,27 @@ public class PhotoInfo
   public VideoInfo a;
   public Boolean a;
   public String a;
-  public ArrayList a;
-  public Map a;
-  private WeakReference a;
+  public ArrayList<String> a;
+  public Map<Integer, String> a;
+  private WeakReference<Drawable> a;
   public boolean a;
+  public float b;
   public int b;
   public long b;
   public Boolean b;
   public String b;
-  public ArrayList b;
-  public Map b;
-  private WeakReference b;
+  public ArrayList<TagInfo> b;
+  public Map<Integer, String> b;
+  private WeakReference<Drawable> b;
   public boolean b;
   public long c;
+  public Boolean c;
   public String c;
-  public ArrayList c;
+  public ArrayList<ImageTagInfo> c;
   public int d;
   public long d;
   public String d;
+  public ArrayList<FaceData> d;
   public boolean d;
   public int e;
   public long e;
@@ -74,7 +78,6 @@ public class PhotoInfo
   public String m;
   public boolean m;
   public String n;
-  public boolean n;
   public int o;
   public String o;
   public int p;
@@ -177,7 +180,7 @@ public class PhotoInfo
   
   public boolean b()
   {
-    if (!PanoramaUtil.a().b()) {}
+    if (!bjum.a().b()) {}
     while ((this.jdField_i_of_type_Int != 32) && (this.jdField_i_of_type_Int != 16)) {
       return false;
     }
@@ -237,16 +240,16 @@ public class PhotoInfo
       paramParcel.writeInt(this.jdField_h_of_type_Int);
       paramParcel.writeParcelable(this.jdField_a_of_type_CooperationQzoneModelGpsInfo4LocalImage, paramInt);
       if (!this.jdField_b_of_type_Boolean) {
-        break label540;
+        break label556;
       }
       i1 = 1;
       label179:
       paramParcel.writeInt(i1);
       paramParcel.writeLong(this.jdField_a_of_type_Long);
       paramParcel.writeLong(this.jdField_b_of_type_Long);
-      paramParcel.writeTypedList(this.jdField_b_of_type_JavaUtilArrayList);
-      if (!this.jdField_i_of_type_Boolean) {
-        break label545;
+      paramParcel.writeTypedList(this.jdField_c_of_type_JavaUtilArrayList);
+      if (!this.jdField_h_of_type_Boolean) {
+        break label561;
       }
       i1 = 1;
       label217:
@@ -270,8 +273,8 @@ public class PhotoInfo
       paramParcel.writeString(this.jdField_o_of_type_JavaLangString);
       paramParcel.writeString(this.jdField_p_of_type_JavaLangString);
       paramParcel.writeMap(this.jdField_b_of_type_JavaUtilMap);
-      if (!this.jdField_j_of_type_Boolean) {
-        break label550;
+      if (!this.jdField_i_of_type_Boolean) {
+        break label566;
       }
       paramInt = 1;
       label384:
@@ -283,42 +286,44 @@ public class PhotoInfo
       paramParcel.writeString(this.jdField_u_of_type_JavaLangString);
       paramParcel.writeInt(this.jdField_v_of_type_Int);
       paramParcel.writeInt(this.jdField_w_of_type_Int);
-      if (!this.jdField_k_of_type_Boolean) {
-        break label555;
+      if (!this.jdField_j_of_type_Boolean) {
+        break label571;
       }
       paramInt = 1;
       label454:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeSerializable(this.jdField_c_of_type_JavaUtilArrayList);
-      if (!this.jdField_l_of_type_Boolean) {
-        break label560;
+      paramParcel.writeSerializable(this.jdField_d_of_type_JavaUtilArrayList);
+      if (!this.jdField_k_of_type_Boolean) {
+        break label576;
       }
       paramInt = 1;
       label476:
       paramParcel.writeInt(paramInt);
       paramParcel.writeLong(this.jdField_d_of_type_Long);
-      if (!this.jdField_m_of_type_Boolean) {
-        break label565;
+      if (!this.jdField_l_of_type_Boolean) {
+        break label581;
       }
       paramInt = 1;
       label498:
       paramParcel.writeInt(paramInt);
       paramParcel.writeString(this.jdField_v_of_type_JavaLangString);
       paramParcel.writeString(this.jdField_w_of_type_JavaLangString);
-      if (!this.jdField_n_of_type_Boolean) {
-        break label570;
+      if (!this.jdField_m_of_type_Boolean) {
+        break label586;
       }
     }
-    label540:
-    label545:
-    label550:
-    label555:
-    label560:
-    label565:
-    label570:
+    label556:
+    label561:
+    label566:
+    label571:
+    label576:
+    label581:
+    label586:
     for (paramInt = i2;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
+      paramParcel.writeList(this.jdField_b_of_type_JavaUtilArrayList);
+      paramParcel.writeFloat(this.jdField_b_of_type_Float);
       return;
       i1 = 0;
       break;
@@ -339,7 +344,7 @@ public class PhotoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.PhotoInfo
  * JD-Core Version:    0.7.0.1
  */

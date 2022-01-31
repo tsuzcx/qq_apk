@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1554" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c03ab" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <View android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="fill_parent" android:layout_height="5.0dip" />
-    <GridView android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1555" android:background="@android:color/white" android:paddingLeft="15.0dip" android:paddingTop="22.0dip" android:paddingRight="15.0dip" android:paddingBottom="22.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:horizontalSpacing="11.0dip" android:verticalSpacing="15.0dip" android:stretchMode="columnWidth" android:numColumns="4" />
-</FrameLayout>

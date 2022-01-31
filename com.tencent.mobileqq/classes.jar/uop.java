@@ -1,29 +1,26 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
-import com.tencent.mobileqq.surfaceviewaction.action.Action;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.action.MoveToAction;
-import com.tencent.mobileqq.surfaceviewaction.action.SequenceAction;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
-import com.tencent.mobileqq.util.DisplayUtil;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class uop
-  implements Action.OnActionEndListener
+final class uop
+  extends SimpleJob<Void>
 {
-  public uop(FriendShipWaveView paramFriendShipWaveView) {}
-  
-  public void a()
+  uop(String paramString1, String paramString2)
   {
-    int i = (int)(this.a.b - DisplayUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 165.0F) - this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.b / 2.0F);
-    int j = (int)(this.a.b - DisplayUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.b / 2.0F);
-    int k = (int)(this.a.b - DisplayUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.b / 2.0F);
-    SequenceAction localSequenceAction = new SequenceAction(new Action[] { new MoveToAction(450, this.a.jdField_a_of_type_Int / 2, (int)(-this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.b / 2.0F), this.a.jdField_a_of_type_Int / 2, i), new MoveToAction(450, this.a.jdField_a_of_type_Int / 2, i, this.a.jdField_a_of_type_Int / 2, j), new MoveToAction(450, this.a.jdField_a_of_type_Int / 2, j, this.a.jdField_a_of_type_Int / 2, k) });
-    localSequenceAction.a(new uoq(this));
-    this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(new Action[] { localSequenceAction });
+    super(paramString1);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    int i = uom.a();
+    wxe.d("Q.qqstory.publish.upload:StoryVideoUploadManager", this.a + " : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(i) });
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uop
  * JD-Core Version:    0.7.0.1
  */

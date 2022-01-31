@@ -1,15 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.voip.VoipDialInterface;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class evj
   implements View.OnClickListener
 {
-  public evj(SelectMemberActivity paramSelectMemberActivity) {}
+  public evj(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.i();
+    this.a.a.a("6");
+    VoipDialInterfaceActivity.a(this.a, '6');
+    if (VoipDialInterfaceActivity.b(this.a)) {
+      new Thread(new evk(this)).start();
+    }
   }
 }
 

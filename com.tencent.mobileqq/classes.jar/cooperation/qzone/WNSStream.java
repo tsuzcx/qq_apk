@@ -58,7 +58,7 @@ public class WNSStream
     }
   }
   
-  public static JceStruct decodeWup(Class paramClass, byte[] paramArrayOfByte)
+  public static <T extends JceStruct> T decodeWup(Class<T> paramClass, byte[] paramArrayOfByte)
   {
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {}
     try
@@ -94,20 +94,20 @@ public class WNSStream
     //   9: iconst_0
     //   10: newarray byte
     //   12: astore_3
-    //   13: new 96	java/util/zip/Inflater
+    //   13: new 98	java/util/zip/Inflater
     //   16: dup
-    //   17: invokespecial 97	java/util/zip/Inflater:<init>	()V
+    //   17: invokespecial 99	java/util/zip/Inflater:<init>	()V
     //   20: astore 5
     //   22: aload 5
-    //   24: invokevirtual 100	java/util/zip/Inflater:reset	()V
+    //   24: invokevirtual 102	java/util/zip/Inflater:reset	()V
     //   27: aload 5
     //   29: aload_0
-    //   30: invokevirtual 103	java/util/zip/Inflater:setInput	([B)V
-    //   33: new 105	java/io/ByteArrayOutputStream
+    //   30: invokevirtual 105	java/util/zip/Inflater:setInput	([B)V
+    //   33: new 107	java/io/ByteArrayOutputStream
     //   36: dup
     //   37: aload_0
     //   38: arraylength
-    //   39: invokespecial 108	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   39: invokespecial 110	java/io/ByteArrayOutputStream:<init>	(I)V
     //   42: astore_2
     //   43: aload_2
     //   44: astore_1
@@ -117,7 +117,7 @@ public class WNSStream
     //   52: aload_2
     //   53: astore_1
     //   54: aload 5
-    //   56: invokevirtual 112	java/util/zip/Inflater:finished	()Z
+    //   56: invokevirtual 114	java/util/zip/Inflater:finished	()Z
     //   59: ifne +46 -> 105
     //   62: aload_2
     //   63: astore_1
@@ -126,28 +126,28 @@ public class WNSStream
     //   67: iconst_0
     //   68: aload 5
     //   70: aload 4
-    //   72: invokevirtual 116	java/util/zip/Inflater:inflate	([B)I
-    //   75: invokevirtual 120	java/io/ByteArrayOutputStream:write	([BII)V
+    //   72: invokevirtual 118	java/util/zip/Inflater:inflate	([B)I
+    //   75: invokevirtual 122	java/io/ByteArrayOutputStream:write	([BII)V
     //   78: goto -26 -> 52
     //   81: astore_1
     //   82: aload_1
-    //   83: invokevirtual 121	java/lang/Exception:printStackTrace	()V
+    //   83: invokevirtual 123	java/lang/Exception:printStackTrace	()V
     //   86: aload_0
     //   87: astore_1
     //   88: aload_2
     //   89: ifnull +9 -> 98
     //   92: aload_2
-    //   93: invokevirtual 124	java/io/ByteArrayOutputStream:close	()V
+    //   93: invokevirtual 126	java/io/ByteArrayOutputStream:close	()V
     //   96: aload_0
     //   97: astore_1
     //   98: aload 5
-    //   100: invokevirtual 127	java/util/zip/Inflater:end	()V
+    //   100: invokevirtual 129	java/util/zip/Inflater:end	()V
     //   103: aload_1
     //   104: areturn
     //   105: aload_2
     //   106: astore_1
     //   107: aload_2
-    //   108: invokevirtual 131	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   108: invokevirtual 133	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   111: astore 4
     //   113: aload 4
     //   115: astore_0
@@ -156,19 +156,19 @@ public class WNSStream
     //   118: aload_2
     //   119: ifnull -21 -> 98
     //   122: aload_2
-    //   123: invokevirtual 124	java/io/ByteArrayOutputStream:close	()V
+    //   123: invokevirtual 126	java/io/ByteArrayOutputStream:close	()V
     //   126: aload_0
     //   127: astore_1
     //   128: goto -30 -> 98
     //   131: astore_1
     //   132: aload_1
-    //   133: invokevirtual 132	java/io/IOException:printStackTrace	()V
+    //   133: invokevirtual 134	java/io/IOException:printStackTrace	()V
     //   136: aload_0
     //   137: astore_1
     //   138: goto -40 -> 98
     //   141: astore_1
     //   142: aload_1
-    //   143: invokevirtual 132	java/io/IOException:printStackTrace	()V
+    //   143: invokevirtual 134	java/io/IOException:printStackTrace	()V
     //   146: aload_0
     //   147: astore_1
     //   148: goto -50 -> 98
@@ -178,17 +178,17 @@ public class WNSStream
     //   154: aload_2
     //   155: astore_1
     //   156: aload_0
-    //   157: invokevirtual 133	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   157: invokevirtual 135	java/lang/OutOfMemoryError:printStackTrace	()V
     //   160: aload_2
     //   161: ifnull +7 -> 168
     //   164: aload_2
-    //   165: invokevirtual 124	java/io/ByteArrayOutputStream:close	()V
+    //   165: invokevirtual 126	java/io/ByteArrayOutputStream:close	()V
     //   168: aload_3
     //   169: astore_1
     //   170: goto -72 -> 98
     //   173: astore_0
     //   174: aload_0
-    //   175: invokevirtual 132	java/io/IOException:printStackTrace	()V
+    //   175: invokevirtual 134	java/io/IOException:printStackTrace	()V
     //   178: aload_3
     //   179: astore_1
     //   180: goto -82 -> 98
@@ -198,12 +198,12 @@ public class WNSStream
     //   186: aload_1
     //   187: ifnull +7 -> 194
     //   190: aload_1
-    //   191: invokevirtual 124	java/io/ByteArrayOutputStream:close	()V
+    //   191: invokevirtual 126	java/io/ByteArrayOutputStream:close	()V
     //   194: aload_0
     //   195: athrow
     //   196: astore_1
     //   197: aload_1
-    //   198: invokevirtual 132	java/io/IOException:printStackTrace	()V
+    //   198: invokevirtual 134	java/io/IOException:printStackTrace	()V
     //   201: goto -7 -> 194
     //   204: astore_0
     //   205: goto -19 -> 186
@@ -413,7 +413,7 @@ public class WNSStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.WNSStream
  * JD-Core Version:    0.7.0.1
  */

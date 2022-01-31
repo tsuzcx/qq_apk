@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class nearbybanner$SearchBanner
-  extends MessageMicro
+  extends MessageMicro<SearchBanner>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_search_keyword = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,7 +20,7 @@ public final class nearbybanner$SearchBanner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.group.nearbybanner.nearbybanner.SearchBanner
  * JD-Core Version:    0.7.0.1
  */

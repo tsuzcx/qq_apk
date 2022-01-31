@@ -1,58 +1,36 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgTranslator;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgTranslator.TranslatorListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-import java.io.OutputStream;
-import msg.aio_doodle.DoodleMsgProto.DoodleData;
-import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
+import android.text.TextUtils;
 
 public class usb
-  implements DoodleMsgTranslator.TranslatorListener
 {
-  public usb(DoodlePanel paramDoodlePanel, OutputStream paramOutputStream) {}
+  public int a;
+  public final long a;
+  public final String a;
+  public final String b;
   
-  public boolean a(DoodleMsgProto.DoodleData paramDoodleData)
+  public boolean equals(Object paramObject)
   {
-    if (paramDoodleData == null) {
-      return false;
+    if ((paramObject instanceof usb)) {
+      return TextUtils.equals(((usb)paramObject).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
     }
-    paramDoodleData = paramDoodleData.toByteArray();
-    byte[] arrayOfByte = DoodleMsgTranslator.a(paramDoodleData.length);
-    try
-    {
-      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
-      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleData);
-      label33:
-      return true;
-    }
-    catch (Exception paramDoodleData)
-    {
-      break label33;
-    }
+    return false;
   }
   
-  public boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader)
+  public String toString()
   {
-    if (paramDoodleHeader == null) {
-      return false;
-    }
-    paramDoodleHeader = paramDoodleHeader.toByteArray();
-    byte[] arrayOfByte = DoodleMsgTranslator.a(paramDoodleHeader.length);
-    try
-    {
-      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
-      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleHeader);
-      label33:
-      return true;
-    }
-    catch (Exception paramDoodleHeader)
-    {
-      break label33;
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.valueOf(this.jdField_a_of_type_JavaLangString));
+    localStringBuilder.append("\n");
+    localStringBuilder.append("-t ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("  -dt ");
+    localStringBuilder.append(String.valueOf(this.jdField_a_of_type_Long));
+    localStringBuilder.append("\n");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     usb
  * JD-Core Version:    0.7.0.1
  */

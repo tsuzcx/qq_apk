@@ -1,85 +1,173 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.jsp.QQApiPlugin;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebShareReportInterface;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebUiMethodInterface;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import java.util.List;
 
-class adwq
-  implements WXShareHelper.WXShareListener
+public class adwq
+  extends BaseAdapter
 {
-  adwq(adwp paramadwp) {}
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(BaseResp paramBaseResp)
+  public adwq(SelectedAndSearchBar paramSelectedAndSearchBar)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c.equals(paramBaseResp.transaction))) {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = SelectedAndSearchBar.a(paramSelectedAndSearchBar).getResources().getDrawable(2130844552);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = bdhj.a();
+  }
+  
+  private int a(int paramInt)
+  {
+    int i = 4;
+    if (paramInt == 4) {
+      i = 11;
+    }
+    while (paramInt == 1) {
+      return i;
+    }
+    if (paramInt == 3000) {
+      return 101;
+    }
+    return 1;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if ((SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar) != null) && (SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).size() > 0))
+      {
+        ResultRecord localResultRecord = (ResultRecord)SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).get(SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).size() - 1);
+        if (SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar) != null) {
+          SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).a(localResultRecord);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar.a(false);
+        this.jdField_a_of_type_Boolean = false;
+      }
       return;
     }
-    boolean bool;
-    switch (paramBaseResp.errCode)
+    this.jdField_a_of_type_Boolean = true;
+    super.notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    String str = null;
+    ResultRecord localResultRecord = (ResultRecord)getItem(paramInt);
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = LayoutInflater.from(SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar)).inflate(2131559201, null);
+    }
+    paramViewGroup.setTag(localResultRecord);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131365912);
+    label99:
+    int i;
+    if (paramInt == getCount() - 1)
     {
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131435303);
-      bool = false;
+      paramView = str;
+      if (this.jdField_a_of_type_Boolean) {
+        paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      }
+      localImageView.setImageDrawable(paramView);
+      if (localResultRecord.jdField_b_of_type_Int != -1) {
+        break label166;
+      }
+      paramInt = localResultRecord.jdField_a_of_type_Int;
+      if (localResultRecord.jdField_a_of_type_Int != -1) {
+        break label179;
+      }
+      i = paramInt;
+      label111:
+      localResultRecord.jdField_a_of_type_Int = i;
+      if (!alof.z.equals(localResultRecord.jdField_a_of_type_JavaLangString)) {
+        break label189;
+      }
+      localImageView.setBackgroundResource(2130843834);
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_JavaLangString))
+      if (AppSetting.c) {
+        localImageView.setContentDescription(localResultRecord.jdField_b_of_type_JavaLangString);
+      }
+      return paramViewGroup;
+      localImageView.setImageDrawable(null);
+      break;
+      label166:
+      paramInt = a(localResultRecord.jdField_b_of_type_Int);
+      break label99;
+      label179:
+      i = localResultRecord.jdField_a_of_type_Int;
+      break label111;
+      label189:
+      if (alof.A.equals(localResultRecord.jdField_a_of_type_JavaLangString))
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.callJs(this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(bool) });
-        return;
-        QRUtils.a(2, 2131435302);
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebShareReportInterface != null) && (this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebUiMethodInterface != null))
-        {
-          int i;
-          label171:
-          String str1;
-          String str2;
-          String str3;
-          if ("2".equals(this.a.jdField_a_of_type_JavaLangString))
-          {
-            i = 1009;
-            paramBaseResp = this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebShareReportInterface.f();
-            str1 = this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebShareReportInterface.g();
-            str2 = this.a.b;
-            str3 = AccountDetailActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebUiMethodInterface.b());
-            String str4 = this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebShareReportInterface.h();
-            if ((str4 == null) || ("".equals(str4))) {
-              break label314;
-            }
-            PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, paramBaseResp, this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebUiMethodInterface.b(), str3, false);
-          }
-          for (;;)
-          {
-            bool = true;
-            break;
-            i = 1004;
-            break label171;
-            label314:
-            if ("2".equals(this.a.jdField_a_of_type_JavaLangString)) {
-              i = 1003;
-            }
-            PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str1, paramBaseResp, str2, str3, false);
-          }
-          bool = false;
-        }
+        localImageView.setBackgroundResource(2130843832);
+      }
+      else if (alof.B.equals(localResultRecord.jdField_a_of_type_JavaLangString))
+      {
+        localImageView.setBackgroundResource(2130843837);
+      }
+      else if (alof.y.equals(localResultRecord.jdField_a_of_type_JavaLangString))
+      {
+        localImageView.setBackgroundResource(2130839385);
       }
       else
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.callJs4OpenApiIfNeeded("shareMsg", 0, String.valueOf(bool));
-        return;
+        if (localResultRecord.jdField_a_of_type_Int != 5) {
+          break label280;
+        }
+        localImageView.setImageResource(2130841744);
       }
-      bool = true;
     }
+    label280:
+    str = localResultRecord.jdField_a_of_type_JavaLangString;
+    paramView = SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).a(paramInt, str);
+    if (paramView == null)
+    {
+      SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).a(str, paramInt, true);
+      paramView = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    }
+    for (;;)
+    {
+      localImageView.setBackgroundDrawable(new BitmapDrawable(SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).getResources(), paramView));
+      break;
+    }
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    super.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adwq
  * JD-Core Version:    0.7.0.1
  */

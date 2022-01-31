@@ -1,57 +1,40 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.util.WeakReferenceHandler;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideo;
+import com.tencent.viola.adapter.VComponentAdapter.OnVideoViewMethodListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class spz
-  implements Runnable
+  implements VComponentAdapter.OnVideoViewMethodListener
 {
-  public spz(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public spz(VVideo paramVVideo) {}
   
-  public void run()
+  public void OnMethodError(String paramString, JSONObject paramJSONObject)
   {
-    int j = 0;
-    Object localObject = (FriendsManager)this.a.app.getManager(50);
-    if (localObject == null)
+    try
     {
-      localObject = null;
-      if (localObject != null) {
-        break label164;
-      }
-      localObject = new Card();
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("code", paramString);
+      localJSONObject.put("extra", paramJSONObject);
+      this.a.videoFireEvent("error", localJSONObject);
+      return;
     }
-    label164:
-    for (int i = 1;; i = 0)
+    catch (JSONException paramString)
     {
-      ((Card)localObject).feedPreviewTime = System.currentTimeMillis();
-      ((Card)localObject).strQzoneFeedsDesc = "";
-      Message localMessage = Message.obtain();
-      localMessage.obj = localObject;
-      if (i != 0) {}
-      for (localMessage.what = 6;; localMessage.what = 5)
-      {
-        if (this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null) {
-          this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(localMessage);
-        }
-        i = j;
-        if (this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a != null) {
-          i = this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.h;
-        }
-        this.a.e(i);
-        return;
-        localObject = ((FriendsManager)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
-        break;
-      }
+      paramString.printStackTrace();
+    }
+  }
+  
+  public void OnMethodSuccess(String paramString, Object paramObject)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      VVideo.access$000(this.a, paramString, paramObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     spz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,47 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.utils.DBUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.Random;
 
 public class rhd
-  implements Runnable
+  extends ayyb
 {
-  public rhd(AccountManageActivity paramAccountManageActivity) {}
+  VideoFeedsAppInterface jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
+  Random jdField_a_of_type_JavaUtilRandom = new Random();
   
-  public void run()
+  public rhd(VideoFeedsAppInterface paramVideoFeedsAppInterface)
   {
-    int i;
-    if (this.a.app.a().a().b(AppConstants.w, 7000) != null)
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface = paramVideoFeedsAppInterface;
+    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
+  }
+  
+  public AppInterface a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
+  }
+  
+  protected void a()
+  {
+    try
     {
-      i = DBUtils.a().a(this.a.app.getCurrentAccountUin());
-      if (i >= 3) {
-        if (QLog.isColorLevel()) {
-          QLog.d("AccountManageActivity", 2, "refreshSubAccount() set stick2top fail." + this.a.app.getCurrentAccountUin() + " count=" + i + " >=max_stick2top_count , return.");
-        }
-      }
+      super.a();
+      return;
     }
-    do
+    finally
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountManageActivity", 2, "refreshSubAccount() RecentList has default subAccount RU. go 2 stick2Top, current count=" + i);
-      }
-      SubAccountControll.a(this.a.app, AppConstants.w, true);
-      DBUtils.a().a(this.a.app.getCurrentAccountUin(), i);
-      return;
-      DBUtils.a().a(this.a.app.getCurrentAccountUin(), 3);
-    } while (!QLog.isColorLevel());
-    QLog.d("SUB_ACCOUNT", 2, "recent list does not exist ruDefault.");
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    super.b(paramToServiceMsg, null, rhe.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rhd
  * JD-Core Version:    0.7.0.1
  */

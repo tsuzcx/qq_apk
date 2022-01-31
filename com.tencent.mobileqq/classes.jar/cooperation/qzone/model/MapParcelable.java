@@ -1,23 +1,23 @@
 package cooperation.qzone.model;
 
-import amur;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bjkz;
 import java.util.Map;
 
 public class MapParcelable
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amur();
-  private Map a;
+  public static final Parcelable.Creator<MapParcelable> CREATOR = new bjkz();
+  private Map<Integer, String> a;
   
-  public MapParcelable(Map paramMap)
+  public MapParcelable(Map<Integer, String> paramMap)
   {
     this.a = paramMap;
   }
   
-  public Map a()
+  public Map<Integer, String> a()
   {
     return this.a;
   }
@@ -34,7 +34,7 @@ public class MapParcelable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.MapParcelable
  * JD-Core Version:    0.7.0.1
  */

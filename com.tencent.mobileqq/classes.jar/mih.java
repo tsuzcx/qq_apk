@@ -1,34 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySocialMsgTips;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 
 class mih
-  implements Runnable
+  implements View.OnClickListener
 {
-  mih(mig parammig, KandianOx210MsgInfo paramKandianOx210MsgInfo) {}
+  mih(mie parammie) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((ReadInJoyListViewGroup.a(this.jdField_a_of_type_Mig.a) != null) && (ReadInJoyListViewGroup.a(this.jdField_a_of_type_Mig.a).a())) {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.a <= 0)
-      {
-        ReadInJoyListViewGroup.a(this.jdField_a_of_type_Mig.a).b();
-        ReadInJoyListViewGroup.a(this.jdField_a_of_type_Mig.a).removeHeaderView(ReadInJoyListViewGroup.a(this.jdField_a_of_type_Mig.a).a());
-      }
+    if (this.a.a.a != null) {
+      this.a.a.a.j();
     }
-    while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.a <= 0)
-    {
-      return;
-      ReadInJoyListViewGroup.a(this.jdField_a_of_type_Mig.a).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo);
-      return;
-    }
-    this.jdField_a_of_type_Mig.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo);
+    azqs.b(null, "CliOper", "", "", "0X8005DF3", "0X8005DF3", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mih
  * JD-Core Version:    0.7.0.1
  */

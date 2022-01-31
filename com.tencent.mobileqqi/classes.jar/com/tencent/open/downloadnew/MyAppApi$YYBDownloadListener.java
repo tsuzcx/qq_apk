@@ -4,7 +4,7 @@ import android.os.Handler;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.base.LogUtility;
 import com.tencent.tmassistantsdk.openSDK.BaseQQDownloaderOpenSDK;
-import hsn;
+import hoj;
 import java.util.Iterator;
 import java.util.List;
 
@@ -97,7 +97,7 @@ public class MyAppApi$YYBDownloadListener
       if ((this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog != null) && (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.isShowing()) && (this.a.c)) {
         this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.a(100, 4);
       }
-      ThreadManager.b().postDelayed(new hsn(this, paramDownloadInfo), 500L);
+      ThreadManager.b().postDelayed(new hoj(this, paramDownloadInfo), 500L);
       if (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams != null)
       {
         this.a.jdField_a_of_type_Boolean = true;

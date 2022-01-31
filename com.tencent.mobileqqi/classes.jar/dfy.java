@@ -1,29 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.service.profile.ProfileUtil;
+import com.tencent.widget.TimePickerView.TimePickerListener;
 
-class dfy
-  implements Runnable
+public class dfy
+  implements TimePickerView.TimePickerListener
 {
-  dfy(dfx paramdfx) {}
+  public dfy(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((ProfileCardMoreActivity.b(this.a.a) != null) && (ProfileCardMoreActivity.b(this.a.a).equals("我的好友"))) {
-      ProfileCardMoreActivity.a(this.a.a, this.a.a.getString(2131559856));
+    paramInt1 = ProfileUtil.a(paramInt1, paramInt2, paramInt3);
+    if (RegisterPhoneNumActivity.a(this.a) != null) {
+      RegisterPhoneNumActivity.a(this.a).setText(ProfileUtil.a(paramInt1));
     }
-    FormSimpleItem localFormSimpleItem = this.a.a.c;
-    if (TextUtils.isEmpty(ProfileCardMoreActivity.b(this.a.a))) {}
-    for (String str = "";; str = ProfileCardMoreActivity.b(this.a.a))
-    {
-      localFormSimpleItem.setRightText(str);
-      return;
-    }
+    this.a.g = paramInt1;
+    RegisterPhoneNumActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dfy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,32 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.leba.view.LebaFeedsArkView;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import java.util.List;
 
 public class aebf
-  implements ArkViewImplement.LoadCallback
+  implements PopupWindow.OnDismissListener
 {
-  public aebf(LebaFeedsArkView paramLebaFeedsArkView) {}
+  public aebf(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public void onLoadFinish(int paramInt)
+  public void onDismiss()
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.i("LebaFeedsArkView", 2, "onLoadFinish" + paramInt);
-    }
-    StatisticCollector localStatisticCollector;
-    if ((paramInt == 1) || (paramInt == -1))
+    this.a.b = null;
+    Object localObject;
+    if ((TextPreviewTranslateActivity.a(this.a) != null) && (TextPreviewTranslateActivity.a(this.a).size() > 1))
     {
-      localStatisticCollector = StatisticCollector.a(BaseApplication.getContext());
-      if (paramInt != 1) {
-        break label70;
+      localObject = this.a.getResources();
+      if (!TextPreviewTranslateActivity.a(this.a)) {
+        break label76;
       }
     }
-    for (;;)
+    label76:
+    for (int i = 2130845229;; i = 2130845740)
     {
-      localStatisticCollector.a("", "newleba_feeds_ark_load", bool, 0L, 0L, null, "");
+      localObject = ((Resources)localObject).getDrawable(i);
+      TextPreviewTranslateActivity.a(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, (Drawable)localObject);
       return;
-      label70:
-      bool = false;
     }
   }
 }

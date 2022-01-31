@@ -1,18 +1,22 @@
 package com.tencent.token.ui;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.token.ui.base.FaceImageView;
+import com.tencent.token.cy;
+import com.tencent.token.global.RqdApplication;
 
-final class gn
+class gn
   implements DialogInterface.OnClickListener
 {
-  gn(fz paramfz) {}
+  gn(FaceRecognitionCameraActivity paramFaceRecognitionCameraActivity, Context paramContext) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FaceRecognitionCameraActivityOld.access$1000(this.a.a).b(FaceRecognitionCameraActivityOld.access$400(this.a.a));
-    FaceRecognitionCameraActivityOld.access$300(this.a.a).a(0);
+    cy.a().a(this.a);
+    RqdApplication.i();
+    this.b.setResult(35);
+    this.b.finish();
   }
 }
 

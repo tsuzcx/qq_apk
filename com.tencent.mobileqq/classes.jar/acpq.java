@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
-class acpq
-  implements Runnable
+public class acpq
+  implements DialogInterface.OnClickListener
 {
-  acpq(acpp paramacpp) {}
+  public acpq(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.d();
+    ChatSettingForTroop.i(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpq
  * JD-Core Version:    0.7.0.1
  */

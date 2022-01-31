@@ -1,53 +1,32 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.os.Message;
-import android.support.v4.content.LocalBroadcastManager;
-import com.tencent.token.core.bean.EvalAccountResult;
-import com.tencent.token.core.bean.EvalAccountResult.RecommendItem;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
-final class qn
-  extends bo
+class qn
+  implements View.OnClickListener
 {
-  qn(MyProtecSubPageActivity paramMyProtecSubPageActivity)
-  {
-    super(paramMyProtecSubPageActivity);
-  }
+  qn(NetActiveVryMobileNoSmsActivity paramNetActiveVryMobileNoSmsActivity) {}
   
-  public final void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
+    if (NetActiveVryMobileNoSmsActivity.access$800(this.a)) {
       return;
-      this.a.dismissDialog();
-      e.c("K_MSG_GETEVALACCOUNTRESULT");
-      if (paramMessage.arg1 != 0)
-      {
-        d locald = (d)paramMessage.obj;
-        MyProtecSubPageActivity.access$000(this.a, locald, paramMessage);
-        return;
-      }
-      if (paramMessage.arg1 == 0)
-      {
-        MyProtecSubPageActivity.access$102(this.a, (EvalAccountResult)paramMessage.obj);
-        LocalBroadcastManager.getInstance(this.a).sendBroadcast(new Intent("com.tencent.token.refresh_menu"));
-        int i = 0;
-        while (i < MyProtecSubPageActivity.access$100(this.a).mRecommends.size())
-        {
-          paramMessage = (EvalAccountResult.RecommendItem)MyProtecSubPageActivity.access$100(this.a).mRecommends.get(i);
-          if (paramMessage.mRecommendId == 3) {
-            MyProtecSubPageActivity.access$200(this.a, paramMessage.mDetails);
-          }
-          i += 1;
-        }
-      }
     }
+    NetActiveVryMobileNoSmsActivity.access$900(this.a);
+    paramView = (EditText)this.a.findViewById(2131559080);
+    String str = paramView.getText().toString();
+    if (paramView != null) {
+      paramView.clearFocus();
+    }
+    if ((str != null) && (str.length() > 0))
+    {
+      NetActiveVryMobileNoSmsActivity.access$1000(this.a, str);
+      this.a.showProDialog(this.a, 2131230843, 2131231298, null);
+      return;
+    }
+    this.a.showToast(2131230959);
   }
 }
 

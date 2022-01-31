@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.SearchTroopListActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
-public class dmw
-  implements DialogInterface.OnDismissListener
+class dmw
+  implements Runnable
 {
-  public dmw(SearchTroopListActivity paramSearchTroopListActivity) {}
+  dmw(dmu paramdmu) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.a = null;
+    SubLoginActivity.a(this.a.a).setText("");
   }
 }
 

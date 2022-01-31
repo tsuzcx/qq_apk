@@ -1,40 +1,72 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.child.TroopStoryPlayModeBase;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class nlv
-  implements Runnable
 {
-  public nlv(TroopStoryPlayModeBase paramTroopStoryPlayModeBase, StoryVideoItem paramStoryVideoItem1, StoryVideoItem paramStoryVideoItem2, VideoListFeedItem paramVideoListFeedItem, boolean paramBoolean) {}
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static nlv jdField_a_of_type_Nlv;
+  private URLDrawable.DownloadListener jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener = new nlw(this);
+  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<String> b = new ArrayList();
   
-  public void run()
+  public static nlv a()
   {
-    PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.b.mStoryType, String.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildTroopStoryPlayModeBase.hashCode()));
-    int i = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildTroopStoryPlayModeBase.a();
-    String str2 = PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildTroopStoryPlayModeBase.a, this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildTroopStoryPlayModeBase.b);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem == null)
+    if (jdField_a_of_type_Nlv == null) {
+      jdField_a_of_type_Nlv = new nlv();
+    }
+    return jdField_a_of_type_Nlv;
+  }
+  
+  private void a()
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      str1 = "";
-      StoryReportor.a("story_grp", "clk_one", i, 0, new String[] { "3", str2, "", str1 });
-      if (!this.jdField_a_of_type_Boolean) {
-        break label130;
+      if ((this.jdField_a_of_type_ComTencentImageURLDrawable == null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      {
+        String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+        this.jdField_a_of_type_ComTencentImageURLDrawable = bayu.a(str);
+        this.jdField_a_of_type_ComTencentImageURLDrawable.setDownloadListener(this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener);
+        this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
+        if (QLog.isColorLevel()) {
+          QLog.d("AdvertisementCoverPreloadManager", 2, "startImageDownload url:" + str);
+        }
+      }
+      return;
+    }
+  }
+  
+  public void a(ArrayList<String> paramArrayList)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramArrayList == null) || (paramArrayList.size() <= 0)) {
+        break label118;
+      }
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        String str = (String)paramArrayList.next();
+        if ((!TextUtils.isEmpty(str)) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(str)))
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.add(str);
+          if (QLog.isColorLevel()) {
+            QLog.d("AdvertisementCoverPreloadManager", 2, "addImagesToPreload url:" + str);
+          }
+        }
       }
     }
-    label130:
-    for (String str1 = "2";; str1 = "1")
-    {
-      StoryReportor.a("play_video", "clk_download", 0, 0, new String[] { str1 });
-      return;
-      str1 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.feedId;
-      break;
-    }
+    a();
+    label118:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nlv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,128 @@
-import android.os.Build;
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.Ad;
+import com.tencent.ad.tangram.canvas.report.AdRefreshCallback;
+import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
+import com.tencent.ad.tangram.util.AdHexUtil;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.startup.step.UpdateArkSo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.security.MessageDigest;
+import java.util.concurrent.ConcurrentHashMap;
 
-public final class aatr
-  implements Runnable
+public class aatr
+  implements AdRefreshCallback
 {
-  public void run()
+  private static volatile aatr jdField_a_of_type_Aatr;
+  private bfoj jdField_a_of_type_Bfoj = new aats(this);
+  private AdAppBtnData jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasComponentsAppbuttonAdAppBtnData;
+  private GdtAd jdField_a_of_type_ComTencentGdtadAditemGdtAd;
+  private final String jdField_a_of_type_JavaLangString = "GdtDownloadReportManager";
+  private ConcurrentHashMap<String, GdtAd> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, GdtAd> b = new ConcurrentHashMap();
+  
+  private aatr()
   {
-    if ((!ArkAppCenter.b) && (ArkAppCenter.c))
+    a();
+  }
+  
+  public static aatr a()
+  {
+    if (jdField_a_of_type_Aatr == null) {}
+    try
     {
-      long l1 = System.currentTimeMillis();
-      UpdateArkSo.a(BaseApplicationImpl.getContext(), "png-armeabi-v7a");
-      ArkAppCenter.b = UpdateArkSo.b(BaseApplicationImpl.getContext(), "ark-armeabi-v7a");
-      long l2 = System.currentTimeMillis();
-      QLog.d("ArkApp", 1, "load libark.so for ARMv7!, loaded=" + Boolean.toString(ArkAppCenter.b) + ", time=" + (l2 - l1));
+      if (jdField_a_of_type_Aatr == null) {
+        jdField_a_of_type_Aatr = new aatr();
+      }
+      return jdField_a_of_type_Aatr;
     }
-    if (ArkAppCenter.d()) {
+    finally {}
+  }
+  
+  private String a(String paramString)
+  {
+    Object localObject1 = null;
+    try
+    {
+      paramString = BaseApplicationImpl.getApplication().getApplicationContext().getPackageManager().getPackageInfo(paramString, 64).signatures;
+      Object localObject2 = MessageDigest.getInstance("MD5");
+      ((MessageDigest)localObject2).update(paramString[0].toByteArray());
+      localObject2 = AdHexUtil.bytes2HexString(((MessageDigest)localObject2).digest());
+      paramString = localObject1;
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        paramString = ((String)localObject2).toUpperCase();
+      }
+      return paramString;
+    }
+    catch (Exception paramString) {}
+    return null;
+  }
+  
+  private void a()
+  {
+    aase.a("GdtDownloadReportManager", "registerDownloadListener: ");
+    bfkr.a().a(this.jdField_a_of_type_Bfoj);
+  }
+  
+  private void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    this.b.remove(paramString);
+  }
+  
+  private boolean a(DownloadInfo paramDownloadInfo, GdtAd paramGdtAd)
+  {
+    if ((paramDownloadInfo == null) || (paramGdtAd == null) || (TextUtils.isEmpty(paramDownloadInfo.e)) || (TextUtils.isEmpty(paramGdtAd.getAppPackageName())) || (TextUtils.isEmpty(paramDownloadInfo.c)) || (TextUtils.isEmpty(paramGdtAd.getAppId()))) {}
+    while ((!paramDownloadInfo.e.equals(paramGdtAd.getAppPackageName())) || (!paramDownloadInfo.c.equals(paramGdtAd.getAppId()))) {
+      return false;
+    }
+    return true;
+  }
+  
+  public void a(GdtAd paramGdtAd, int paramInt, boolean paramBoolean)
+  {
+    if (paramInt == 0)
+    {
+      if (!paramBoolean) {
+        break label23;
+      }
+      aass.a(paramGdtAd, 269);
+    }
+    for (;;)
+    {
+      aass.a(paramGdtAd, 272);
+      return;
+      label23:
+      aass.a(paramGdtAd, 268);
+    }
+  }
+  
+  public void a(String paramString, GdtAd paramGdtAd, AdAppBtnData paramAdAppBtnData)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      aase.d("GdtDownloadReportManager", "appId isEmpty");
       return;
     }
-    ArkAppCenter.a(true);
-    if (ArkAppCenter.b)
-    {
-      ReportController.b(null, "CliOper", "", "", "0X8006365", "ark.lib.load.success", 0, 0, "0", "0", Build.CPU_ABI, Build.CPU_ABI2);
-      return;
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramGdtAd);
     }
-    ReportController.b(null, "CliOper", "", "", "0X8006365", "ark.lib.load.fail", 1, 1, "1", "1", Build.CPU_ABI, Build.CPU_ABI2);
+    this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasComponentsAppbuttonAdAppBtnData = paramAdAppBtnData;
+  }
+  
+  public void onAdRefresh(Ad paramAd)
+  {
+    if ((paramAd instanceof GdtAd)) {
+      this.jdField_a_of_type_ComTencentGdtadAditemGdtAd = ((GdtAd)paramAd);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aatr
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class AudioTransCommon$MemberInfo
-  extends MessageMicro
+  extends MessageMicro<MemberInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40 }, new String[] { "str_uin", "uint32_client_ver", "enum_term", "enum_net_type", "uint32_client_port" }, new Object[] { "", Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(1), Integer.valueOf(0) }, MemberInfo.class);
   public final PBEnumField enum_net_type = PBField.initEnum(1);
@@ -19,7 +19,7 @@ public final class AudioTransCommon$MemberInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.audiotrans.AudioTransCommon.MemberInfo
  * JD-Core Version:    0.7.0.1
  */

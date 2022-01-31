@@ -1,44 +1,39 @@
 package c.t.m.g;
 
-import android.os.SystemClock;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ThreadPoolExecutor;
+import android.text.TextUtils;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
 public final class am
-  extends ar
+  implements HostnameVerifier
 {
-  public final boolean a(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean, Object paramObject, ar.a parama)
+  private String a;
+  
+  public am(String paramString)
   {
-    long l = SystemClock.elapsedRealtime();
-    this.b = parama;
-    this.a = paramObject;
-    parama = new HashMap();
-    parama.put("B-Length", paramInt);
-    if (paramBoolean) {}
-    for (paramObject = "realtime_speed";; paramObject = "hllog")
+    this.a = paramString;
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if ((TextUtils.isEmpty(this.a)) || (!(paramObject instanceof am))) {}
+    do
     {
-      parama.put("HLReportCmd", paramObject);
-      paramArrayOfByte = ag.a("https://up-hl.3g.qq.com/upreport", parama, paramArrayOfByte, 20000, ch.d(), null);
-      paramArrayOfByte.o = false;
-      paramArrayOfByte.a("event");
-      paramArrayOfByte = new an(this, paramArrayOfByte, l);
-      try
-      {
-        x.a.a().a.execute(paramArrayOfByte);
-        return true;
-      }
-      catch (Throwable paramArrayOfByte)
-      {
-        this.b.a(false, this.a);
-      }
-    }
-    return false;
+      return false;
+      paramObject = ((am)paramObject).a;
+    } while (TextUtils.isEmpty(paramObject));
+    return this.a.equals(paramObject);
+  }
+  
+  public final boolean verify(String paramString, SSLSession paramSSLSession)
+  {
+    return HttpsURLConnection.getDefaultHostnameVerifier().verify(this.a, paramSSLSession);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.am
  * JD-Core Version:    0.7.0.1
  */

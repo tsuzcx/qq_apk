@@ -1,20 +1,23 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
-
-public class svg
-  implements Runnable
+class svg
 {
-  public svg(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  int a;
+  int b;
+  int c;
+  int d;
   
-  public void run()
+  public svg() {}
+  
+  public svg(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    HongbaoShowerActivity.a(this.a).setVisibility(0);
-    HongbaoShowerActivity.a(this.a).startAnimation(HongbaoShowerActivity.a(this.a));
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     svg
  * JD-Core Version:    0.7.0.1
  */

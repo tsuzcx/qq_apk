@@ -9,9 +9,11 @@ public final class TrafficResultInfo
 {
   static PopupImgInfo cache_popInfo = new PopupImgInfo();
   static ToastImgInfo cache_toasInfo = new ToastImgInfo();
+  public int bUpdate;
   public int iDrawerEnable;
   public int iGuideEnable;
   public int iImsiInterval;
+  public int iReportInterval;
   public int iWkOrderState1;
   public int iWkOrderState2;
   public PopupImgInfo popInfo;
@@ -22,7 +24,7 @@ public final class TrafficResultInfo
   
   public TrafficResultInfo() {}
   
-  public TrafficResultInfo(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2, String paramString3, int paramInt5, ToastImgInfo paramToastImgInfo, PopupImgInfo paramPopupImgInfo)
+  public TrafficResultInfo(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2, String paramString3, int paramInt5, ToastImgInfo paramToastImgInfo, PopupImgInfo paramPopupImgInfo, int paramInt6, int paramInt7)
   {
     this.iWkOrderState1 = paramInt1;
     this.iWkOrderState2 = paramInt2;
@@ -34,6 +36,8 @@ public final class TrafficResultInfo
     this.iImsiInterval = paramInt5;
     this.toasInfo = paramToastImgInfo;
     this.popInfo = paramPopupImgInfo;
+    this.iReportInterval = paramInt6;
+    this.bUpdate = paramInt7;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -48,6 +52,8 @@ public final class TrafficResultInfo
     this.iImsiInterval = paramJceInputStream.read(this.iImsiInterval, 7, false);
     this.toasInfo = ((ToastImgInfo)paramJceInputStream.read(cache_toasInfo, 8, false));
     this.popInfo = ((PopupImgInfo)paramJceInputStream.read(cache_popInfo, 9, false));
+    this.iReportInterval = paramJceInputStream.read(this.iReportInterval, 10, false);
+    this.bUpdate = paramJceInputStream.read(this.bUpdate, 11, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -72,6 +78,8 @@ public final class TrafficResultInfo
     if (this.popInfo != null) {
       paramJceOutputStream.write(this.popInfo, 9);
     }
+    paramJceOutputStream.write(this.iReportInterval, 10);
+    paramJceOutputStream.write(this.bUpdate, 11);
   }
 }
 

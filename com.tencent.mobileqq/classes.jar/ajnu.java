@@ -1,33 +1,14 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
-import com.tencent.mobileqq.troop.utils.RollangleImageView.ImageCache;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ajnu
-  extends Handler
+class ajnu
+  implements DialogInterface.OnClickListener
 {
-  public ajnu(RollangleImageView.ImageCache paramImageCache, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  ajnu(ajns paramajns) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.handleMessage(paramMessage);
-    if (this.a.a) {}
-    Object localObject;
-    String str;
-    do
-    {
-      return;
-      localObject = (Object[])paramMessage.obj;
-      paramMessage = (RollangleImageView)localObject[0];
-      str = (String)localObject[1];
-      localObject = (Bitmap)localObject[2];
-    } while ((paramMessage == null) || (str == null) || (localObject == null) || (!str.equals(paramMessage.b)));
-    paramMessage.setImageBitmap((Bitmap)localObject);
+    paramDialogInterface.dismiss();
   }
 }
 

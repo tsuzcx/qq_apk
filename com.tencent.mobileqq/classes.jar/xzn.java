@@ -1,20 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qrcode.activity.QRJumpActivity;
 
 public class xzn
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  public xzn(PhoneContactSelectActivity paramPhoneContactSelectActivity) {}
+  public xzn(QRJumpActivity paramQRJumpActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xzn
  * JD-Core Version:    0.7.0.1
  */

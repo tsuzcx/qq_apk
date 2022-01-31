@@ -1,22 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
-import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public final class oos
-  implements DialogInterface.OnClickListener
+class oos
+  implements ViewBase.OnClickListener
 {
-  public oos(DownloadInfo paramDownloadInfo) {}
+  oos(oor paramoor) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(ViewBase paramViewBase)
   {
-    paramDialogInterface.dismiss();
-    WeishiGuideUtils.a(this.a);
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    {
+    default: 
+      return;
+    case 1093: 
+      ors.a(oop.a(this.a.a), oop.a(this.a.a), otd.a(oop.a(this.a.a).innerUniqueID));
+      this.a.a.a(2);
+      this.a.a.dismiss();
+      paramViewBase = new orz();
+      paramViewBase.i().b("wording", "" + otd.a());
+      olt.a("0X8009FE8", oop.a(this.a.a), paramViewBase);
+      return;
+    }
+    this.a.a.a(1);
+    this.a.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oos
  * JD-Core Version:    0.7.0.1
  */

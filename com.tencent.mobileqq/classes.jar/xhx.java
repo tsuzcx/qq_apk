@@ -1,56 +1,97 @@
-import Wallet.C2CVoiceInfo;
-import Wallet.GroupVoiceInfo;
-import Wallet.VoiceMatchStatus;
-import Wallet.VoiceRedPackMatchReq;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.qwallet.QWalletCommonServlet;
-import com.tencent.mobileqq.activity.qwallet.voice.VoiceRecognizer;
-import com.tencent.mobileqq.activity.qwallet.voice.VoiceRedPacketHelper;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
-import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
-import com.tencent.mobileqq.transfile.BaseUploadProcessor;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class xhx
-  implements xib
+  extends xhr
 {
-  public xhx(VoiceRedPacketHelper paramVoiceRedPacketHelper, QQAppInterface paramQQAppInterface, MessageForQQWalletMsg paramMessageForQQWalletMsg, int paramInt, long paramLong, byte[] paramArrayOfByte, String paramString, MessageForPtt paramMessageForPtt, BaseUploadProcessor paramBaseUploadProcessor, MessageObserver paramMessageObserver) {}
+  public int a;
+  public final List<String> a;
+  public boolean a;
+  public int b;
+  public String e;
+  public String f;
   
-  public void a(String paramString)
+  public xhx(@NonNull String paramString)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.b("skey is null");
-      return;
+    super(paramString);
+    this.jdField_a_of_type_Int = 100;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String a()
+  {
+    return "NormalFacePackage";
+  }
+  
+  public String a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    long l1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin();
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId;
-    String str2 = VoiceRedPacketHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title);
-    long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin);
-    long l3 = AppSetting.jdField_a_of_type_Int;
-    int j = this.jdField_a_of_type_Int;
-    GroupVoiceInfo localGroupVoiceInfo = new GroupVoiceInfo(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin), this.jdField_a_of_type_Long, this.jdField_a_of_type_ArrayOfByte);
-    C2CVoiceInfo localC2CVoiceInfo = new C2CVoiceInfo(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.jdField_c_of_type_Boolean) {}
-    for (int i = 1;; i = 0)
+    return null;
+  }
+  
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.f)) {}
+    do
     {
-      QWalletCommonServlet.a(new VoiceRedPackMatchReq(l1, str1, str2, l2, paramString, l3, j, localGroupVoiceInfo, 0, localC2CVoiceInfo, "7.6.3", new VoiceMatchStatus(i, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.b, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.jdField_c_of_type_Int, VoiceRecognizer.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))), new xhy(this, System.currentTimeMillis()));
-      if (!QLog.isColorLevel()) {
-        break;
+      Object localObject1;
+      do
+      {
+        return false;
+        localObject1 = new File(this.f);
+      } while (!((File)localObject1).exists());
+      this.jdField_a_of_type_JavaUtilList.clear();
+      if (((File)localObject1).isDirectory())
+      {
+        localObject1 = ((File)localObject1).listFiles(new xhy(this));
+        if (localObject1 != null)
+        {
+          int j = localObject1.length;
+          int i = 0;
+          while (i < j)
+          {
+            Object localObject2 = localObject1[i];
+            this.jdField_a_of_type_JavaUtilList.add(localObject2.toURI().toString());
+            i += 1;
+          }
+          Collections.sort(this.jdField_a_of_type_JavaUtilList);
+        }
       }
-      QLog.d("VoiceRedPacketHelper", 2, "checkAndSendMessage() sendRequest");
-      return;
-    }
+    } while (this.jdField_a_of_type_JavaUtilList.isEmpty());
+    return true;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("NormalFacePackage{");
+    localStringBuffer.append("id='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append("logoUrl='").append(this.c).append('\'');
+    localStringBuffer.append("logoDrawable='").append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).append('\'');
+    localStringBuffer.append(", zipDownloadUrl='").append(this.e).append('\'');
+    localStringBuffer.append(", facePkgPath='").append(this.f).append('\'');
+    localStringBuffer.append(", faceUriList=").append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuffer.append(", isDownloading=").append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append(", maxProgress=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", currentProgress=").append(this.b);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xhx
  * JD-Core Version:    0.7.0.1
  */

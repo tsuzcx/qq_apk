@@ -1,20 +1,12 @@
-import com.tencent.biz.qqstory.newshare.callback.StoryShareCallback;
-
-class nhs
-  implements Runnable
+public class nhs
 {
-  nhs(nhr paramnhr) {}
-  
-  public void run()
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback.a(this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData);
-    }
-  }
+  public int a;
+  public String a;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nhs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,48 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.StrangerInfo;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.VoiceResStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class aerp
-  implements Runnable
+  implements aerd
 {
-  public aerp(NearbyVisitorListActivity paramNearbyVisitorListActivity) {}
+  public aixs a;
+  public PreloadManager a;
+  private QQAppInterface a;
   
-  public void run()
+  public aerp(QQAppInterface paramQQAppInterface)
   {
-    if ((this.a.isFinishing()) || (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface == null) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin()))) {
-      return;
-    }
-    Object localObject = (ArrayList)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getEntityManagerFactory().createEntityManager().a(StrangerInfo.class);
-    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
+    this.jdField_a_of_type_Aixs = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.a.jdField_a_of_type_JavaUtilList.clear();
-      this.a.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
+      this.jdField_a_of_type_Aixs = ((aixs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245));
     }
-    localObject = NearbySPUtil.a("nearby_visitor_file", this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getAccount(), 0);
-    this.a.b = ((SharedPreferences)localObject).getLong("sp_nearby_total_visitor", 0L);
-    this.a.c = ((SharedPreferences)localObject).getLong("sp_nearby_new_visitor", 0L);
-    this.a.d = ((SharedPreferences)localObject).getLong("sp_nearby_his_visitor", 0L);
-    this.a.runOnUiThread(new aerq(this));
+  }
+  
+  public void a() {}
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    ThreadManager.post(new CustomizeStrategyFactory.VoiceResStrategy.1(this, paramRedPacketInfo), 5, null, true);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, agmy paramagmy)
+  {
+    if ((paramRedPacketInfo != null) && ((paramagmy instanceof agnf)))
+    {
+      paramagmy = (agnf)paramagmy;
+      paramRedPacketInfo.icon = paramagmy.a;
+      paramRedPacketInfo.resPath = paramagmy.b;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerp
  * JD-Core Version:    0.7.0.1
  */

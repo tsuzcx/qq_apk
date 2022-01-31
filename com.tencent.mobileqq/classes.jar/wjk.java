@@ -1,53 +1,38 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.widget.XListView;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class wjk
-  extends Handler
+class wjk
 {
-  public WeakReference a;
+  public int a;
+  public CommentEntry a;
+  private int b = -1;
   
-  public wjk(TroopView paramTroopView)
+  wjk(wjf paramwjf)
   {
-    this.a = new WeakReference(paramTroopView);
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public void handleMessage(Message paramMessage)
+  private void a()
   {
-    TroopView localTroopView = (TroopView)this.a.get();
-    if (localTroopView == null) {}
-    do
-    {
-      return;
-      super.handleMessage(paramMessage);
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 0: 
-        TroopView.a(localTroopView).springBackOverScrollHeaderView();
-        return;
-      case 1: 
-        TroopView.a(localTroopView).springBackOverScrollHeaderView();
-        TroopView.a(localTroopView, 1, 2131434349);
-        return;
-      }
-    } while ((!TroopView.a(localTroopView)) || (TroopView.b(localTroopView)));
-    TroopView.f(localTroopView, true);
-    TroopView.a(localTroopView, false);
-    return;
-    TroopView.a(localTroopView, true);
-    return;
-    TroopView.b(localTroopView);
-    return;
-    TroopView.c(localTroopView);
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = null;
+    this.jdField_a_of_type_Int = -1;
+    this.b = -1;
+  }
+  
+  public void a(CommentEntry paramCommentEntry, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
+    this.b = paramCommentEntry.commentId;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a(CommentEntry paramCommentEntry)
+  {
+    return paramCommentEntry.commentId != this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wjk
  * JD-Core Version:    0.7.0.1
  */

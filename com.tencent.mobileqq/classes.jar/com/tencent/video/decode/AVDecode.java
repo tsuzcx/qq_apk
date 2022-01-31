@@ -126,53 +126,53 @@ public class AVDecode
   
   public static AVDecode newInstanceUncatched(AVDecodeOption paramAVDecodeOption)
   {
-    Object localObject = null;
     try
     {
       AbstractAVDecode.checkSoLoaded();
       initDecodeGlobalEnv();
       AVDecode localAVDecode = new AVDecode(paramAVDecodeOption);
-      localObject = localAVDecode;
+      if (localAVDecode != null) {
+        localAVDecode.setWantedFps((int)paramAVDecodeOption.wantedFps, paramAVDecodeOption.fixDuration);
+      }
+      return localAVDecode;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
       for (;;)
       {
         AVDecodeError.throwException(-200);
+        Object localObject = null;
       }
     }
-    if (localObject != null) {
-      localObject.setWantedFps((int)paramAVDecodeOption.wantedFps, paramAVDecodeOption.fixDuration);
-    }
-    return localObject;
   }
   
   private Object seekToNextAudioFrame()
-    throws AVideoException
   {
-    Object localObject1 = null;
+    localObject1 = null;
     AbstractAVDecode.checkSoLoaded();
     try
     {
-      Object localObject2 = nativeSeekToNextAudioFrame(this.nativeptr, this.mAudioMetaData);
+      localObject2 = nativeSeekToNextAudioFrame(this.nativeptr, this.mAudioMetaData);
       localObject1 = localObject2;
       i = this.mAudioMetaData[0];
-      localObject1 = localObject2;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
+      Object localObject3;
       for (;;)
       {
+        Object localObject2;
         int i = -200;
+        localObject3 = localObject1;
       }
       convertToAVParam(1096108367);
+      return localObject3;
     }
     if (i != 0)
     {
       AVDecodeError.throwException(i);
-      return localObject1;
+      return localObject2;
     }
-    return localObject1;
   }
   
   private void setWantedFps(int paramInt, boolean paramBoolean)
@@ -222,7 +222,6 @@ public class AVDecode
   }
   
   public byte[] seekToNextAudioByteFrame()
-    throws AVideoException
   {
     if (this.audioFormat != 65280) {
       AVDecodeError.throwException(-201);
@@ -231,7 +230,6 @@ public class AVDecode
   }
   
   public float[] seekToNextAudioFloatFrame()
-    throws AVideoException
   {
     if (this.audioFormat != 65282) {
       AVDecodeError.throwException(-201);
@@ -240,7 +238,6 @@ public class AVDecode
   }
   
   public short[] seekToNextAudioShortFrame()
-    throws AVideoException
   {
     if (this.audioFormat != 65281) {
       AVDecodeError.throwException(-201);
@@ -249,7 +246,6 @@ public class AVDecode
   }
   
   public void seekToNextFrame(Bitmap paramBitmap)
-    throws AVideoException
   {
     
     try
@@ -273,7 +269,7 @@ public class AVDecode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.video.decode.AVDecode
  * JD-Core Version:    0.7.0.1
  */

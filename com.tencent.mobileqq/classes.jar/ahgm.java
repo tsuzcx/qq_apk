@@ -1,132 +1,102 @@
-import android.os.Bundle;
-import android.os.Messenger;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.IPresendPicMgr.Stub;
-import com.tencent.mobileqq.pic.PresendPicMgr;
-import com.tencent.mobileqq.pic.compress.CompressOperator;
-import com.tencent.mobileqq.richmedia.ICallBack.Stub;
-import com.tencent.mobileqq.richmedia.LOG;
-import com.tencent.mobileqq.richmedia.RichmediaClient;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.BinderWarpper;
-import java.util.Arrays;
+import android.content.Intent;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import java.util.Iterator;
+import java.util.List;
 
 public class ahgm
-  extends ICallBack.Stub
+  implements ruy
 {
-  public ahgm(RichmediaClient paramRichmediaClient) {}
+  public ahgm(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public Bundle a(int paramInt, Bundle paramBundle)
+  public void a(String paramString)
   {
-    Bundle localBundle = new Bundle();
-    PresendPicMgr localPresendPicMgr;
-    if (paramInt == 16)
+    SearchProtocol.WordItem localWordItem;
+    if (paramString != null)
     {
-      LOG.a("PTV.RichmediaClient", "ICallBack.Stub() getData start. ICALLBACK_CMD_GET_PRESEND_MGR_HANDLER");
-      localPresendPicMgr = PresendPicMgr.a();
-      Object localObject = null;
-      if ((localPresendPicMgr != null) && (localPresendPicMgr.jdField_a_of_type_Boolean)) {
-        break label113;
-      }
-      paramBundle = localObject;
-      if (QLog.isColorLevel())
+      Iterator localIterator = this.a.b.iterator();
+      do
       {
-        QLog.d("PTV.RichmediaClient", 2, "ICALLBACK_CMD_GET_PRESEND_MGR_HANDLER failed, presendMgr is null or disable preCompress,presendMgr = " + localPresendPicMgr);
-        paramBundle = localObject;
-      }
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localWordItem = (SearchProtocol.WordItem)localIterator.next();
+      } while (!paramString.equals(localWordItem.word));
     }
     for (;;)
     {
-      if (paramBundle != null)
+      if ((localWordItem != null) && (localWordItem.type == 2))
       {
-        localBundle.putParcelable("key_presend_mgr_handler", new BinderWarpper(paramBundle));
-        localBundle.putInt("PhotoConst.PHOTO_COUNT", localPresendPicMgr.a());
-      }
-      return localBundle;
-      label113:
-      paramBundle = new Messenger(localPresendPicMgr.jdField_a_of_type_Aglk).getBinder();
-      LOG.a("PTV.RichmediaClient", "ICallBack.Stub() getData. ICALLBACK_CMD_GET_PRESEND_MGR_HANDLER , b = " + paramBundle);
-    }
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    LOG.a("PTV.RichmediaClient", "sendRequest. cmd = " + paramInt + ",data = " + paramBundle);
-    if (paramBundle != null)
-    {
-      paramBundle.setClassLoader(getClass().getClassLoader());
-      switch (paramInt)
-      {
-      }
-    }
-    do
-    {
-      do
-      {
-        do
+        paramString = new Intent(this.a, QQBrowserActivity.class);
+        paramString.putExtra("hide_operation_bar", true);
+        paramString.putExtra("url", localWordItem.jumpUrl);
+        paramString.putExtra("articalChannelId", 14);
+        this.a.startActivity(paramString);
+        if (localWordItem != null)
         {
-          Object localObject;
-          do
-          {
-            do
-            {
-              return;
-              paramBundle = (BinderWarpper)paramBundle.getParcelable("binder_presendService");
-              if (paramBundle != null)
-              {
-                localObject = PresendPicMgr.a();
-                if (localObject != null) {
-                  ((PresendPicMgr)localObject).b();
-                }
-                paramBundle = PresendPicMgr.b(IPresendPicMgr.Stub.a(paramBundle.a));
-                LOG.a("PTV.RichmediaClient", "ICALLBACK_CMD_INIT_PRESEND_PIC_MGR  presendMgr = " + paramBundle);
-                return;
-              }
-              LOG.a("PTV.RichmediaClient", "ICALLBACK_CMD_INIT_PRESEND_PIC_MGR  failed, bw is null ! ");
-              return;
-              localObject = paramBundle.getString("key_presend_path");
-              paramInt = paramBundle.getInt("entrance", 0);
-              paramBundle = PresendPicMgr.a();
-            } while ((localObject == null) || (paramBundle == null));
-            paramBundle.a((String)localObject, 1007, paramInt);
-            return;
-            localObject = paramBundle.getString("key_presend_path");
-            paramInt = paramBundle.getInt("key_presend_cancel_type");
-            paramBundle = PresendPicMgr.a();
-          } while ((localObject == null) || (paramBundle == null));
-          paramBundle.b((String)localObject, paramInt);
-          return;
-          paramInt = paramBundle.getInt("key_presend_cancel_type");
-          paramBundle = PresendPicMgr.a();
-        } while (paramBundle == null);
-        paramBundle.a(paramInt);
-        paramBundle.b();
+          paramString = "";
+          if (this.a.f != ClassificationSearchActivity.jdField_a_of_type_Int) {
+            break label333;
+          }
+          paramString = "kan";
+        }
+      }
+      for (;;)
+      {
+        if (localWordItem.type != 2) {
+          break label352;
+        }
+        nrt.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006818", "0X8006818", 0, 0, localWordItem.word, localWordItem.jumpUrl, paramString, "");
         return;
-        paramBundle = paramBundle.getIntArray("key_compress_config");
-      } while ((paramBundle == null) || (paramBundle.length < 9));
-      com.tencent.mobileqq.pic.compress.PicType.e = paramBundle[0];
-      com.tencent.mobileqq.pic.compress.PicType.f = paramBundle[1];
-      com.tencent.mobileqq.pic.compress.PicType.g = paramBundle[2];
-      com.tencent.mobileqq.pic.compress.PicType.h = paramBundle[3];
-      com.tencent.mobileqq.pic.compress.PicType.i = paramBundle[4];
-      com.tencent.mobileqq.pic.compress.PicType.j = paramBundle[5];
-      com.tencent.mobileqq.pic.compress.PicType.a = paramBundle[6];
-      com.tencent.mobileqq.pic.compress.PicType.b = paramBundle[7];
-      com.tencent.mobileqq.pic.compress.PicType.c = paramBundle[8];
-    } while (!QLog.isColorLevel());
-    QLog.d("PTV.RichmediaClient", 2, "ICALLBACK_CMD_INIT_COMPRESS_CONFIG, compressConfig = " + Arrays.toString(paramBundle));
-  }
-  
-  public void a(CompressInfo paramCompressInfo)
-  {
-    LOG.a("PTV.RichmediaClient", "ICallBack.Stub() compress start. info.src = " + paramCompressInfo.c + ",uuid = " + paramCompressInfo.a);
-    CompressOperator.a(paramCompressInfo);
-    LOG.a("PTV.RichmediaClient", "ICallBack.Stub() compress finish. info = " + paramCompressInfo);
+        if (this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int)
+        {
+          this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
+          if (!TextUtils.isEmpty(paramString.trim()))
+          {
+            this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+            ClassificationSearchActivity.a(this.a, paramString);
+          }
+        }
+        for (;;)
+        {
+          if ((this.a.f == ClassificationSearchActivity.d) || (TextUtils.isEmpty(paramString.trim()))) {
+            break label331;
+          }
+          this.a.a(paramString);
+          break;
+          if (this.a.f == ClassificationSearchActivity.d)
+          {
+            this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
+            this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramString.length());
+            ClassificationSearchActivity.a(this.a, paramString);
+          }
+          else
+          {
+            this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramString, false);
+          }
+        }
+        label331:
+        break;
+        label333:
+        if (this.a.f == ClassificationSearchActivity.d) {
+          paramString = "quan";
+        }
+      }
+      label352:
+      nrt.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006818", "0X8006818", 0, 0, localWordItem.word, "0", paramString, "");
+      return;
+      localWordItem = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahgm
  * JD-Core Version:    0.7.0.1
  */

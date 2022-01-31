@@ -1,17 +1,10 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import android.widget.TextView;
 
 public class akjc
-  implements Runnable
 {
-  public akjc(HealthBusinessPlugin paramHealthBusinessPlugin) {}
-  
-  public void run()
-  {
-    TVK_SDKMgr.installPlugin(this.a.mRuntime.a().getApplication(), new akjd(this));
-  }
+  public int a;
+  public TextView a;
+  public TextView b;
 }
 
 

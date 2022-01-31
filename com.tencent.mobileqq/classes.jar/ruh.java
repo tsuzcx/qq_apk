@@ -1,155 +1,145 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Activity;
+import android.content.Context;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.ResponseHandler;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ruh
-  extends FMObserver
+  extends rqj
 {
-  private ruh(BaseChatPie paramBaseChatPie) {}
+  private static ppz jdField_a_of_type_Ppz = new ppz();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SparseArray<pdc> jdField_a_of_type_AndroidUtilSparseArray;
+  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new put();
+  private Activity b;
   
-  protected void a()
+  public ruh(Activity paramActivity, LayoutInflater paramLayoutInflater, int paramInt, ListView paramListView, SparseArray<pdc> paramSparseArray, Context paramContext)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
+    super(paramActivity, paramLayoutInflater, paramInt, paramListView, paramSparseArray);
+    this.jdField_b_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidUtilSparseArray = paramSparseArray;
+    a(this.jdField_a_of_type_AndroidUtilSparseArray);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramActivity);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(paramActivity);
+    opy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "default_feeds");
+    jdField_a_of_type_Ppz.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext);
   }
   
-  protected void a(int paramInt, long paramLong, String paramString)
+  private void a(SparseArray<pdc> paramSparseArray)
   {
-    FileManagerUtil.a(paramLong, paramInt, paramString);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-  }
-  
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
-  {
-    if ((paramString2 != null) && (paramString2.length() > 0))
+    this.jdField_a_of_type_AndroidUtilSparseArray = paramSparseArray;
+    int i = 0;
+    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
     {
-      FileManagerUtil.a(paramString2);
-      return;
-    }
-    FileManagerUtil.a(paramLong);
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt, String paramString)
-  {
-    if ((paramString != null) && (paramString.length() > 0)) {
-      FileManagerUtil.a(paramString);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-  }
-  
-  protected void a(ThumbnailInfo paramThumbnailInfo)
-  {
-    if (paramThumbnailInfo == null) {}
-    do
-    {
-      FileManagerEntity localFileManagerEntity;
-      do
-      {
-        do
-        {
-          return;
-        } while (!(paramThumbnailInfo.a instanceof FileManagerEntity));
-        localFileManagerEntity = (FileManagerEntity)paramThumbnailInfo.a;
-      } while ((paramThumbnailInfo.b == null) || (paramThumbnailInfo.b.length() <= 0));
-      localFileManagerEntity.strThumbPath = paramThumbnailInfo.b;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localFileManagerEntity);
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-  }
-  
-  protected void a(Integer paramInteger, long paramLong, String paramString)
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-    }
-    FileManagerUtil.a(paramLong, paramInteger.intValue(), paramString);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
-    }
-    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);
-    if ((paramString1 != null) && (paramString1.nOpType == 6)) {
-      if (ResponseHandler.a(paramInt2))
-      {
-        if (!paramBoolean) {
-          break label153;
-        }
-        QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2, 2131429825, 1).b(this.a.a());
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-      return;
-      label153:
-      if (ResponseHandler.b())
-      {
-        ResponseHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      else if (!TextUtils.isEmpty(paramString2))
-      {
-        QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramString2, 1).b(this.a.a());
-      }
-      else
-      {
-        QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131428197, 1).b(this.a.a());
-        continue;
-        if ((!paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString1.peerUin)) && (paramString1.peerUin.equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))) {
-          FileManagerUtil.a(paramLong2, paramInt2, paramString2);
-        }
-      }
+      ((pdc)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).a(this);
+      i += 1;
     }
   }
   
-  protected void b()
+  public int a(int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
+    return rqj.c((ArticleInfo)getItem(paramInt));
   }
   
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  public Activity a()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
+    return this.jdField_b_of_type_AndroidAppActivity;
   }
   
-  protected void c()
+  public BaseArticleInfo a(int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
+    return null;
   }
   
-  protected void d()
+  public BaseArticleInfo a(int paramInt, long paramLong)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
+    return null;
+  }
+  
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, ArrayList<DislikeInfo> paramArrayList) {}
+  
+  public void a(int paramInt, ArrayList<BaseArticleInfo> paramArrayList, ArrayList<DislikeInfo> paramArrayList1) {}
+  
+  public void a(List<BaseArticleInfo> paramList)
+  {
+    if ((this.jdField_b_of_type_JavaUtilList != null) && (paramList != null)) {
+      this.jdField_b_of_type_JavaUtilList.addAll(paramList);
     }
+    pdh.a(this.jdField_a_of_type_AndroidUtilSparseArray, new rui(this, "onSetData", paramList));
+    notifyDataSetChanged();
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(int paramInt, long paramLong)
+  {
+    return false;
+  }
+  
+  public boolean b(int paramInt, long paramLong)
+  {
+    return false;
+  }
+  
+  public void c(List<View> paramList)
+  {
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_b_of_type_JavaUtilList != null) {
+      return this.jdField_b_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_b_of_type_JavaUtilList != null) && (paramInt < this.jdField_b_of_type_JavaUtilList.size())) {
+      return (BaseArticleInfo)this.jdField_b_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return a(paramInt);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if ((this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.size() == 0)) {
+      return null;
+    }
+    paramView = b(paramInt);
+    int i = getItemViewType(paramInt);
+    QLog.d("ReadInJoyProteusFamilyAdapter", 2, "getView | position : " + paramInt + " type : " + i + " article_title = " + paramView.mTitle);
+    return (View)pdh.a(this.jdField_a_of_type_AndroidUtilSparseArray, new ruj(this, "onAdapterGetView", i, paramView, paramInt, paramViewGroup));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ruh
  * JD-Core Version:    0.7.0.1
  */

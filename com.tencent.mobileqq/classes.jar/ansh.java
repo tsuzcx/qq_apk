@@ -1,15 +1,19 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity;
+import android.view.animation.Animation;
+import android.widget.ImageView;
 
-public class ansh
-  implements Runnable
+class ansh
+  extends bhry
 {
-  public ansh(EditVideoActivity paramEditVideoActivity) {}
+  ansh(ansg paramansg) {}
   
-  public void run() {}
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a.setVisibility(0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ansh
  * JD-Core Version:    0.7.0.1
  */

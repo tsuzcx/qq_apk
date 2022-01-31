@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_common$Signature
-  extends MessageMicro
+  extends MessageMicro<Signature>
 {
   public static final int KEY_TYPE_FIELD_NUMBER = 1;
   public static final int SESSION_APP_ID_FIELD_NUMBER = 2;

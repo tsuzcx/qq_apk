@@ -1,18 +1,17 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class afi
+class afi
   implements View.OnClickListener
 {
-  afi(UtilsModSetMobileStep1Activity paramUtilsModSetMobileStep1Activity) {}
+  afi(VryMobileForStrategyActivity paramVryMobileForStrategyActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, SelectCountryCodeActivity.class);
-    this.a.startActivityForResult(paramView, 0);
+    VryMobileForStrategyActivity.access$000(this.a);
+    VryMobileForStrategyActivity.access$100(this.a);
   }
 }
 

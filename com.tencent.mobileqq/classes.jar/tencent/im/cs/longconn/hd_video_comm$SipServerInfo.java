@@ -9,13 +9,13 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class hd_video_comm$SipServerInfo
-  extends MessageMicro
+  extends MessageMicro<SipServerInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_domain = PBField.initBytes(ByteStringMicro.EMPTY);
   public hd_video_comm.PstnMobileInfo msg_caller_phone = new hd_video_comm.PstnMobileInfo();
   public hd_video_comm.NetAddr msg_sip_addr = new hd_video_comm.NetAddr();
-  public final PBRepeatField rpt_uint32_dtmf_mode = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
+  public final PBRepeatField<Integer> rpt_uint32_dtmf_mode = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   public final PBUInt32Field uint32_encode_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_provider_id = PBField.initUInt32(0);
   public final PBUInt32Field uint32_srtp_flag = PBField.initUInt32(0);
@@ -29,7 +29,7 @@ public final class hd_video_comm$SipServerInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.longconn.hd_video_comm.SipServerInfo
  * JD-Core Version:    0.7.0.1
  */

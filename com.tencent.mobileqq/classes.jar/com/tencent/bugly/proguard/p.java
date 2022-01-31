@@ -35,8 +35,8 @@ public final class p
     //   9: astore 9
     //   11: aconst_null
     //   12: astore 8
-    //   14: getstatic 18	com/tencent/bugly/proguard/p:c	Lcom/tencent/bugly/proguard/q;
-    //   17: invokevirtual 41	com/tencent/bugly/proguard/q:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   14: getstatic 16	com/tencent/bugly/proguard/p:c	Lcom/tencent/bugly/proguard/q;
+    //   17: invokevirtual 39	com/tencent/bugly/proguard/q:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   20: astore 10
     //   22: aload 10
     //   24: ifnull +21 -> 45
@@ -48,20 +48,20 @@ public final class p
     //   37: aload_1
     //   38: aload_2
     //   39: aload_3
-    //   40: invokevirtual 47	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   40: invokevirtual 45	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
     //   43: istore 5
     //   45: aload 4
     //   47: ifnull +3 -> 50
     //   50: iload 5
     //   52: istore 6
-    //   54: getstatic 20	com/tencent/bugly/proguard/p:a	Z
+    //   54: getstatic 18	com/tencent/bugly/proguard/p:a	Z
     //   57: ifeq +21 -> 78
     //   60: iload 5
     //   62: istore 6
     //   64: aload 10
     //   66: ifnull +12 -> 78
     //   69: aload 10
-    //   71: invokevirtual 50	android/database/sqlite/SQLiteDatabase:close	()V
+    //   71: invokevirtual 48	android/database/sqlite/SQLiteDatabase:close	()V
     //   74: iload 5
     //   76: istore 6
     //   78: aload_0
@@ -72,24 +72,24 @@ public final class p
     //   84: aload 8
     //   86: astore 9
     //   88: aload_1
-    //   89: invokestatic 55	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   89: invokestatic 53	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   92: ifne +11 -> 103
     //   95: aload 8
     //   97: astore 9
     //   99: aload_1
-    //   100: invokevirtual 58	java/lang/Throwable:printStackTrace	()V
+    //   100: invokevirtual 56	java/lang/Throwable:printStackTrace	()V
     //   103: aload 4
     //   105: ifnull +3 -> 108
     //   108: iload 7
     //   110: istore 6
-    //   112: getstatic 20	com/tencent/bugly/proguard/p:a	Z
+    //   112: getstatic 18	com/tencent/bugly/proguard/p:a	Z
     //   115: ifeq -37 -> 78
     //   118: iload 7
     //   120: istore 6
     //   122: aload 8
     //   124: ifnull -46 -> 78
     //   127: aload 8
-    //   129: invokevirtual 50	android/database/sqlite/SQLiteDatabase:close	()V
+    //   129: invokevirtual 48	android/database/sqlite/SQLiteDatabase:close	()V
     //   132: iload 7
     //   134: istore 6
     //   136: goto -58 -> 78
@@ -101,12 +101,12 @@ public final class p
     //   144: astore_1
     //   145: aload 4
     //   147: ifnull +3 -> 150
-    //   150: getstatic 20	com/tencent/bugly/proguard/p:a	Z
+    //   150: getstatic 18	com/tencent/bugly/proguard/p:a	Z
     //   153: ifeq +13 -> 166
     //   156: aload 9
     //   158: ifnull +8 -> 166
     //   161: aload 9
-    //   163: invokevirtual 50	android/database/sqlite/SQLiteDatabase:close	()V
+    //   163: invokevirtual 48	android/database/sqlite/SQLiteDatabase:close	()V
     //   166: aload_1
     //   167: athrow
     // Local variable table:
@@ -317,42 +317,42 @@ public final class p
     // Byte code:
     //   0: aload_0
     //   1: iload_1
-    //   2: invokespecial 148	com/tencent/bugly/proguard/p:c	(I)Ljava/util/List;
+    //   2: invokespecial 146	com/tencent/bugly/proguard/p:c	(I)Ljava/util/List;
     //   5: astore 4
     //   7: aload 4
     //   9: ifnull +115 -> 124
-    //   12: new 150	java/util/HashMap
+    //   12: new 148	java/util/HashMap
     //   15: dup
-    //   16: invokespecial 151	java/util/HashMap:<init>	()V
+    //   16: invokespecial 149	java/util/HashMap:<init>	()V
     //   19: astore_3
     //   20: aload 4
-    //   22: invokeinterface 157 1 0
+    //   22: invokeinterface 155 1 0
     //   27: astore 4
     //   29: aload 4
-    //   31: invokeinterface 163 1 0
+    //   31: invokeinterface 161 1 0
     //   36: ifeq +69 -> 105
     //   39: aload 4
-    //   41: invokeinterface 167 1 0
-    //   46: checkcast 93	com/tencent/bugly/proguard/r
+    //   41: invokeinterface 165 1 0
+    //   46: checkcast 91	com/tencent/bugly/proguard/r
     //   49: astore 5
     //   51: aload 5
-    //   53: getfield 144	com/tencent/bugly/proguard/r:g	[B
+    //   53: getfield 142	com/tencent/bugly/proguard/r:g	[B
     //   56: astore 6
     //   58: aload 6
     //   60: ifnull -31 -> 29
     //   63: aload_3
     //   64: aload 5
-    //   66: getfield 170	com/tencent/bugly/proguard/r:f	Ljava/lang/String;
+    //   66: getfield 168	com/tencent/bugly/proguard/r:f	Ljava/lang/String;
     //   69: aload 6
-    //   71: invokeinterface 176 3 0
+    //   71: invokeinterface 174 3 0
     //   76: pop
     //   77: goto -48 -> 29
     //   80: astore 4
     //   82: aload 4
-    //   84: invokestatic 55	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   84: invokestatic 53	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   87: ifne +8 -> 95
     //   90: aload 4
-    //   92: invokevirtual 58	java/lang/Throwable:printStackTrace	()V
+    //   92: invokevirtual 56	java/lang/Throwable:printStackTrace	()V
     //   95: aload_3
     //   96: astore 4
     //   98: aload_2
@@ -671,107 +671,107 @@ public final class p
     //   1: astore 4
     //   3: aload_0
     //   4: monitorenter
-    //   5: getstatic 18	com/tencent/bugly/proguard/p:c	Lcom/tencent/bugly/proguard/q;
-    //   8: invokevirtual 41	com/tencent/bugly/proguard/q:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   5: getstatic 16	com/tencent/bugly/proguard/p:c	Lcom/tencent/bugly/proguard/q;
+    //   8: invokevirtual 39	com/tencent/bugly/proguard/q:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   11: astore_2
     //   12: aload_2
     //   13: ifnull +349 -> 362
-    //   16: new 188	java/lang/StringBuilder
+    //   16: new 186	java/lang/StringBuilder
     //   19: dup
-    //   20: ldc 190
-    //   22: invokespecial 193	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   20: ldc 188
+    //   22: invokespecial 191	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   25: iload_1
-    //   26: invokevirtual 197	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   29: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   26: invokevirtual 195	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   29: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   32: astore 5
     //   34: aload_2
-    //   35: ldc 203
+    //   35: ldc 201
     //   37: aconst_null
     //   38: aload 5
     //   40: aconst_null
     //   41: aconst_null
     //   42: aconst_null
     //   43: aconst_null
-    //   44: invokevirtual 262	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   44: invokevirtual 260	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   47: astore_3
     //   48: aload_3
     //   49: ifnonnull +33 -> 82
     //   52: aload_3
     //   53: ifnull +9 -> 62
     //   56: aload_3
-    //   57: invokeinterface 263 1 0
-    //   62: getstatic 20	com/tencent/bugly/proguard/p:a	Z
+    //   57: invokeinterface 261 1 0
+    //   62: getstatic 18	com/tencent/bugly/proguard/p:a	Z
     //   65: ifeq +11 -> 76
     //   68: aload_2
     //   69: ifnull +7 -> 76
     //   72: aload_2
-    //   73: invokevirtual 50	android/database/sqlite/SQLiteDatabase:close	()V
+    //   73: invokevirtual 48	android/database/sqlite/SQLiteDatabase:close	()V
     //   76: aconst_null
     //   77: astore_2
     //   78: aload_0
     //   79: monitorexit
     //   80: aload_2
     //   81: areturn
-    //   82: new 188	java/lang/StringBuilder
+    //   82: new 186	java/lang/StringBuilder
     //   85: dup
-    //   86: invokespecial 264	java/lang/StringBuilder:<init>	()V
+    //   86: invokespecial 262	java/lang/StringBuilder:<init>	()V
     //   89: astore 6
-    //   91: new 266	java/util/ArrayList
+    //   91: new 264	java/util/ArrayList
     //   94: dup
-    //   95: invokespecial 267	java/util/ArrayList:<init>	()V
+    //   95: invokespecial 265	java/util/ArrayList:<init>	()V
     //   98: astore 4
     //   100: aload_3
-    //   101: invokeinterface 270 1 0
+    //   101: invokeinterface 268 1 0
     //   106: ifeq +167 -> 273
     //   109: aload_3
-    //   110: invokestatic 272	com/tencent/bugly/proguard/p:b	(Landroid/database/Cursor;)Lcom/tencent/bugly/proguard/r;
+    //   110: invokestatic 270	com/tencent/bugly/proguard/p:b	(Landroid/database/Cursor;)Lcom/tencent/bugly/proguard/r;
     //   113: astore 7
     //   115: aload 7
     //   117: ifnull +60 -> 177
     //   120: aload 4
     //   122: aload 7
-    //   124: invokeinterface 276 2 0
+    //   124: invokeinterface 274 2 0
     //   129: pop
     //   130: goto -30 -> 100
     //   133: astore 4
     //   135: aload 4
-    //   137: invokestatic 55	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   137: invokestatic 53	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   140: ifne +8 -> 148
     //   143: aload 4
-    //   145: invokevirtual 58	java/lang/Throwable:printStackTrace	()V
+    //   145: invokevirtual 56	java/lang/Throwable:printStackTrace	()V
     //   148: aload_3
     //   149: ifnull +9 -> 158
     //   152: aload_3
-    //   153: invokeinterface 263 1 0
-    //   158: getstatic 20	com/tencent/bugly/proguard/p:a	Z
+    //   153: invokeinterface 261 1 0
+    //   158: getstatic 18	com/tencent/bugly/proguard/p:a	Z
     //   161: ifeq +11 -> 172
     //   164: aload_2
     //   165: ifnull +7 -> 172
     //   168: aload_2
-    //   169: invokevirtual 50	android/database/sqlite/SQLiteDatabase:close	()V
+    //   169: invokevirtual 48	android/database/sqlite/SQLiteDatabase:close	()V
     //   172: aconst_null
     //   173: astore_2
     //   174: goto -96 -> 78
     //   177: aload_3
     //   178: aload_3
-    //   179: ldc 109
-    //   181: invokeinterface 100 2 0
-    //   186: invokeinterface 122 2 0
+    //   179: ldc 107
+    //   181: invokeinterface 98 2 0
+    //   186: invokeinterface 120 2 0
     //   191: astore 7
     //   193: aload 6
-    //   195: ldc_w 278
-    //   198: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   201: ldc_w 280
-    //   204: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   195: ldc_w 276
+    //   198: invokevirtual 214	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   201: ldc_w 278
+    //   204: invokevirtual 214	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   207: aload 7
-    //   209: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   209: invokevirtual 214	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   212: pop
     //   213: goto -113 -> 100
     //   216: astore 7
-    //   218: ldc_w 282
+    //   218: ldc_w 280
     //   221: iconst_0
     //   222: anewarray 4	java/lang/Object
-    //   225: invokestatic 78	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   225: invokestatic 76	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   228: pop
     //   229: goto -129 -> 100
     //   232: astore 5
@@ -782,13 +782,13 @@ public final class p
     //   240: aload_3
     //   241: ifnull +9 -> 250
     //   244: aload_3
-    //   245: invokeinterface 263 1 0
-    //   250: getstatic 20	com/tencent/bugly/proguard/p:a	Z
+    //   245: invokeinterface 261 1 0
+    //   250: getstatic 18	com/tencent/bugly/proguard/p:a	Z
     //   253: ifeq +13 -> 266
     //   256: aload 4
     //   258: ifnull +8 -> 266
     //   261: aload 4
-    //   263: invokevirtual 50	android/database/sqlite/SQLiteDatabase:close	()V
+    //   263: invokevirtual 48	android/database/sqlite/SQLiteDatabase:close	()V
     //   266: aload_2
     //   267: athrow
     //   268: astore_2
@@ -797,53 +797,53 @@ public final class p
     //   271: aload_2
     //   272: athrow
     //   273: aload 6
-    //   275: invokevirtual 286	java/lang/StringBuilder:length	()I
+    //   275: invokevirtual 284	java/lang/StringBuilder:length	()I
     //   278: ifle +57 -> 335
     //   281: aload 6
-    //   283: ldc_w 288
-    //   286: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   289: ldc_w 280
-    //   292: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   283: ldc_w 286
+    //   286: invokevirtual 214	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   289: ldc_w 278
+    //   292: invokevirtual 214	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   295: iload_1
-    //   296: invokevirtual 197	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   296: invokevirtual 195	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   299: pop
-    //   300: ldc_w 290
+    //   300: ldc_w 288
     //   303: iconst_2
     //   304: anewarray 4	java/lang/Object
     //   307: dup
     //   308: iconst_0
-    //   309: ldc 203
+    //   309: ldc 201
     //   311: aastore
     //   312: dup
     //   313: iconst_1
     //   314: aload_2
-    //   315: ldc 203
+    //   315: ldc 201
     //   317: aload 5
     //   319: iconst_4
-    //   320: invokevirtual 295	java/lang/String:substring	(I)Ljava/lang/String;
+    //   320: invokevirtual 293	java/lang/String:substring	(I)Ljava/lang/String;
     //   323: aconst_null
-    //   324: invokevirtual 47	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
-    //   327: invokestatic 211	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   324: invokevirtual 45	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   327: invokestatic 209	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   330: aastore
-    //   331: invokestatic 78	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   331: invokestatic 76	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   334: pop
     //   335: aload_3
     //   336: ifnull +9 -> 345
     //   339: aload_3
-    //   340: invokeinterface 263 1 0
-    //   345: getstatic 20	com/tencent/bugly/proguard/p:a	Z
+    //   340: invokeinterface 261 1 0
+    //   345: getstatic 18	com/tencent/bugly/proguard/p:a	Z
     //   348: ifeq +77 -> 425
     //   351: aload_2
     //   352: ifnull +73 -> 425
     //   355: aload_2
-    //   356: invokevirtual 50	android/database/sqlite/SQLiteDatabase:close	()V
+    //   356: invokevirtual 48	android/database/sqlite/SQLiteDatabase:close	()V
     //   359: goto +66 -> 425
-    //   362: getstatic 20	com/tencent/bugly/proguard/p:a	Z
+    //   362: getstatic 18	com/tencent/bugly/proguard/p:a	Z
     //   365: ifeq -193 -> 172
     //   368: aload_2
     //   369: ifnull -197 -> 172
     //   372: aload_2
-    //   373: invokevirtual 50	android/database/sqlite/SQLiteDatabase:close	()V
+    //   373: invokevirtual 48	android/database/sqlite/SQLiteDatabase:close	()V
     //   376: goto -204 -> 172
     //   379: astore_2
     //   380: aconst_null
@@ -988,43 +988,43 @@ public final class p
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: getstatic 18	com/tencent/bugly/proguard/p:c	Lcom/tencent/bugly/proguard/q;
-    //   5: invokevirtual 41	com/tencent/bugly/proguard/q:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   2: getstatic 16	com/tencent/bugly/proguard/p:c	Lcom/tencent/bugly/proguard/q;
+    //   5: invokevirtual 39	com/tencent/bugly/proguard/q:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   8: astore 7
     //   10: aload 7
     //   12: ifnull +214 -> 226
     //   15: iload_1
     //   16: iflt +80 -> 96
-    //   19: new 188	java/lang/StringBuilder
+    //   19: new 186	java/lang/StringBuilder
     //   22: dup
-    //   23: ldc_w 301
-    //   26: invokespecial 193	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   23: ldc_w 299
+    //   26: invokespecial 191	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   29: iload_1
-    //   30: invokevirtual 197	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   33: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   30: invokevirtual 195	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   33: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   36: astore 4
     //   38: aload 7
-    //   40: ldc_w 303
+    //   40: ldc_w 301
     //   43: aconst_null
     //   44: aload 4
     //   46: aconst_null
     //   47: aconst_null
     //   48: aconst_null
     //   49: aconst_null
-    //   50: invokevirtual 262	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   50: invokevirtual 260	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   53: astore 5
     //   55: aload 5
     //   57: ifnonnull +45 -> 102
     //   60: aload 5
     //   62: ifnull +10 -> 72
     //   65: aload 5
-    //   67: invokeinterface 263 1 0
-    //   72: getstatic 20	com/tencent/bugly/proguard/p:a	Z
+    //   67: invokeinterface 261 1 0
+    //   72: getstatic 18	com/tencent/bugly/proguard/p:a	Z
     //   75: ifeq +13 -> 88
     //   78: aload 7
     //   80: ifnull +8 -> 88
     //   83: aload 7
-    //   85: invokevirtual 50	android/database/sqlite/SQLiteDatabase:close	()V
+    //   85: invokevirtual 48	android/database/sqlite/SQLiteDatabase:close	()V
     //   88: aconst_null
     //   89: astore 4
     //   91: aload_0
@@ -1036,25 +1036,25 @@ public final class p
     //   99: goto -61 -> 38
     //   102: aload 5
     //   104: astore 4
-    //   106: new 188	java/lang/StringBuilder
+    //   106: new 186	java/lang/StringBuilder
     //   109: dup
-    //   110: invokespecial 264	java/lang/StringBuilder:<init>	()V
+    //   110: invokespecial 262	java/lang/StringBuilder:<init>	()V
     //   113: astore 8
     //   115: aload 5
     //   117: astore 4
-    //   119: new 266	java/util/ArrayList
+    //   119: new 264	java/util/ArrayList
     //   122: dup
-    //   123: invokespecial 267	java/util/ArrayList:<init>	()V
+    //   123: invokespecial 265	java/util/ArrayList:<init>	()V
     //   126: astore 6
     //   128: aload 5
     //   130: astore 4
     //   132: aload 5
-    //   134: invokeinterface 270 1 0
+    //   134: invokeinterface 268 1 0
     //   139: ifeq +208 -> 347
     //   142: aload 5
     //   144: astore 4
     //   146: aload 5
-    //   148: invokestatic 305	com/tencent/bugly/proguard/p:a	(Landroid/database/Cursor;)Lcom/tencent/bugly/proguard/r;
+    //   148: invokestatic 303	com/tencent/bugly/proguard/p:a	(Landroid/database/Cursor;)Lcom/tencent/bugly/proguard/r;
     //   151: astore 9
     //   153: aload 9
     //   155: ifnull +77 -> 232
@@ -1062,29 +1062,29 @@ public final class p
     //   160: astore 4
     //   162: aload 6
     //   164: aload 9
-    //   166: invokeinterface 276 2 0
+    //   166: invokeinterface 274 2 0
     //   171: pop
     //   172: goto -44 -> 128
     //   175: astore 6
     //   177: aload 5
     //   179: astore 4
     //   181: aload 6
-    //   183: invokestatic 55	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   183: invokestatic 53	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   186: ifne +12 -> 198
     //   189: aload 5
     //   191: astore 4
     //   193: aload 6
-    //   195: invokevirtual 58	java/lang/Throwable:printStackTrace	()V
+    //   195: invokevirtual 56	java/lang/Throwable:printStackTrace	()V
     //   198: aload 5
     //   200: ifnull +10 -> 210
     //   203: aload 5
-    //   205: invokeinterface 263 1 0
-    //   210: getstatic 20	com/tencent/bugly/proguard/p:a	Z
+    //   205: invokeinterface 261 1 0
+    //   210: getstatic 18	com/tencent/bugly/proguard/p:a	Z
     //   213: ifeq +13 -> 226
     //   216: aload 7
     //   218: ifnull +8 -> 226
     //   221: aload 7
-    //   223: invokevirtual 50	android/database/sqlite/SQLiteDatabase:close	()V
+    //   223: invokevirtual 48	android/database/sqlite/SQLiteDatabase:close	()V
     //   226: aconst_null
     //   227: astore 4
     //   229: goto -138 -> 91
@@ -1092,28 +1092,28 @@ public final class p
     //   234: astore 4
     //   236: aload 5
     //   238: aload 5
-    //   240: ldc 64
-    //   242: invokeinterface 100 2 0
-    //   247: invokeinterface 104 2 0
+    //   240: ldc 62
+    //   242: invokeinterface 98 2 0
+    //   247: invokeinterface 102 2 0
     //   252: lstore_2
     //   253: aload 5
     //   255: astore 4
     //   257: aload 8
-    //   259: ldc_w 307
-    //   262: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   265: ldc_w 280
-    //   268: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   259: ldc_w 305
+    //   262: invokevirtual 214	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   265: ldc_w 278
+    //   268: invokevirtual 214	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   271: lload_2
-    //   272: invokevirtual 310	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   272: invokevirtual 308	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   275: pop
     //   276: goto -148 -> 128
     //   279: astore 4
     //   281: aload 5
     //   283: astore 4
-    //   285: ldc_w 282
+    //   285: ldc_w 280
     //   288: iconst_0
     //   289: anewarray 4	java/lang/Object
-    //   292: invokestatic 78	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   292: invokestatic 76	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   295: pop
     //   296: goto -168 -> 128
     //   299: astore 6
@@ -1124,13 +1124,13 @@ public final class p
     //   309: aload 5
     //   311: ifnull +10 -> 321
     //   314: aload 5
-    //   316: invokeinterface 263 1 0
-    //   321: getstatic 20	com/tencent/bugly/proguard/p:a	Z
+    //   316: invokeinterface 261 1 0
+    //   321: getstatic 18	com/tencent/bugly/proguard/p:a	Z
     //   324: ifeq +13 -> 337
     //   327: aload 7
     //   329: ifnull +8 -> 337
     //   332: aload 7
-    //   334: invokevirtual 50	android/database/sqlite/SQLiteDatabase:close	()V
+    //   334: invokevirtual 48	android/database/sqlite/SQLiteDatabase:close	()V
     //   337: aload 4
     //   339: athrow
     //   340: astore 4
@@ -1141,45 +1141,45 @@ public final class p
     //   347: aload 5
     //   349: astore 4
     //   351: aload 8
-    //   353: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   353: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   356: astore 8
     //   358: aload 5
     //   360: astore 4
     //   362: aload 8
-    //   364: invokevirtual 311	java/lang/String:length	()I
+    //   364: invokevirtual 309	java/lang/String:length	()I
     //   367: ifle +45 -> 412
     //   370: aload 5
     //   372: astore 4
-    //   374: ldc_w 313
+    //   374: ldc_w 311
     //   377: iconst_2
     //   378: anewarray 4	java/lang/Object
     //   381: dup
     //   382: iconst_0
-    //   383: ldc_w 303
+    //   383: ldc_w 301
     //   386: aastore
     //   387: dup
     //   388: iconst_1
     //   389: aload 7
-    //   391: ldc_w 303
+    //   391: ldc_w 301
     //   394: aload 8
     //   396: iconst_4
-    //   397: invokevirtual 295	java/lang/String:substring	(I)Ljava/lang/String;
+    //   397: invokevirtual 293	java/lang/String:substring	(I)Ljava/lang/String;
     //   400: aconst_null
-    //   401: invokevirtual 47	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
-    //   404: invokestatic 211	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   401: invokevirtual 45	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   404: invokestatic 209	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   407: aastore
-    //   408: invokestatic 78	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   408: invokestatic 76	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   411: pop
     //   412: aload 5
     //   414: ifnull +10 -> 424
     //   417: aload 5
-    //   419: invokeinterface 263 1 0
-    //   424: getstatic 20	com/tencent/bugly/proguard/p:a	Z
+    //   419: invokeinterface 261 1 0
+    //   424: getstatic 18	com/tencent/bugly/proguard/p:a	Z
     //   427: ifeq +13 -> 440
     //   430: aload 7
     //   432: ifnull +8 -> 440
     //   435: aload 7
-    //   437: invokevirtual 50	android/database/sqlite/SQLiteDatabase:close	()V
+    //   437: invokevirtual 48	android/database/sqlite/SQLiteDatabase:close	()V
     //   440: aload 6
     //   442: astore 4
     //   444: goto -353 -> 91
@@ -1331,7 +1331,7 @@ public final class p
   {
     if (!paramBoolean)
     {
-      paramo = new a(4, null);
+      paramo = new p.a(this, 4, null);
       paramo.a(paramInt, paramString, paramArrayOfByte);
       w.a().a(paramo);
       return true;
@@ -1440,60 +1440,60 @@ public final class p
     //   1: astore_2
     //   2: aload_0
     //   3: monitorenter
-    //   4: getstatic 18	com/tencent/bugly/proguard/p:c	Lcom/tencent/bugly/proguard/q;
-    //   7: invokevirtual 41	com/tencent/bugly/proguard/q:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   4: getstatic 16	com/tencent/bugly/proguard/p:c	Lcom/tencent/bugly/proguard/q;
+    //   7: invokevirtual 39	com/tencent/bugly/proguard/q:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   10: astore_3
     //   11: aload_3
     //   12: ifnull +70 -> 82
     //   15: iload_1
     //   16: iflt +21 -> 37
-    //   19: new 188	java/lang/StringBuilder
+    //   19: new 186	java/lang/StringBuilder
     //   22: dup
-    //   23: ldc_w 301
-    //   26: invokespecial 193	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   23: ldc_w 299
+    //   26: invokespecial 191	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   29: iload_1
-    //   30: invokevirtual 197	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   33: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   30: invokevirtual 195	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   33: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   36: astore_2
-    //   37: ldc 205
+    //   37: ldc 203
     //   39: iconst_2
     //   40: anewarray 4	java/lang/Object
     //   43: dup
     //   44: iconst_0
-    //   45: ldc_w 303
+    //   45: ldc_w 301
     //   48: aastore
     //   49: dup
     //   50: iconst_1
     //   51: aload_3
-    //   52: ldc_w 303
+    //   52: ldc_w 301
     //   55: aload_2
     //   56: aconst_null
-    //   57: invokevirtual 47	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
-    //   60: invokestatic 211	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   57: invokevirtual 45	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   60: invokestatic 209	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   63: aastore
-    //   64: invokestatic 73	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   64: invokestatic 71	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   67: pop
-    //   68: getstatic 20	com/tencent/bugly/proguard/p:a	Z
+    //   68: getstatic 18	com/tencent/bugly/proguard/p:a	Z
     //   71: ifeq +11 -> 82
     //   74: aload_3
     //   75: ifnull +7 -> 82
     //   78: aload_3
-    //   79: invokevirtual 50	android/database/sqlite/SQLiteDatabase:close	()V
+    //   79: invokevirtual 48	android/database/sqlite/SQLiteDatabase:close	()V
     //   82: aload_0
     //   83: monitorexit
     //   84: return
     //   85: astore_2
     //   86: aload_2
-    //   87: invokestatic 55	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   87: invokestatic 53	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   90: ifne +7 -> 97
     //   93: aload_2
-    //   94: invokevirtual 58	java/lang/Throwable:printStackTrace	()V
-    //   97: getstatic 20	com/tencent/bugly/proguard/p:a	Z
+    //   94: invokevirtual 56	java/lang/Throwable:printStackTrace	()V
+    //   97: getstatic 18	com/tencent/bugly/proguard/p:a	Z
     //   100: ifeq -18 -> 82
     //   103: aload_3
     //   104: ifnull -22 -> 82
     //   107: aload_3
-    //   108: invokevirtual 50	android/database/sqlite/SQLiteDatabase:close	()V
+    //   108: invokevirtual 48	android/database/sqlite/SQLiteDatabase:close	()V
     //   111: goto -29 -> 82
     //   114: astore_2
     //   115: aload_0
@@ -1501,12 +1501,12 @@ public final class p
     //   117: aload_2
     //   118: athrow
     //   119: astore_2
-    //   120: getstatic 20	com/tencent/bugly/proguard/p:a	Z
+    //   120: getstatic 18	com/tencent/bugly/proguard/p:a	Z
     //   123: ifeq +11 -> 134
     //   126: aload_3
     //   127: ifnull +7 -> 134
     //   130: aload_3
-    //   131: invokevirtual 50	android/database/sqlite/SQLiteDatabase:close	()V
+    //   131: invokevirtual 48	android/database/sqlite/SQLiteDatabase:close	()V
     //   134: aload_2
     //   135: athrow
     // Local variable table:
@@ -1533,79 +1533,6 @@ public final class p
     //   19	37	119	finally
     //   37	68	119	finally
     //   86	97	119	finally
-  }
-  
-  final class a
-    extends Thread
-  {
-    private int a;
-    private o b;
-    private String c;
-    private ContentValues d;
-    private boolean e;
-    private String[] f;
-    private String g;
-    private String[] h;
-    private String i;
-    private String j;
-    private String k;
-    private String l;
-    private String m;
-    private String[] n;
-    private int o;
-    private String p;
-    private byte[] q;
-    
-    public a(int paramInt, o paramo)
-    {
-      this.a = paramInt;
-      this.b = paramo;
-    }
-    
-    public final void a(int paramInt, String paramString, byte[] paramArrayOfByte)
-    {
-      this.o = paramInt;
-      this.p = paramString;
-      this.q = paramArrayOfByte;
-    }
-    
-    public final void a(boolean paramBoolean, String paramString1, String[] paramArrayOfString1, String paramString2, String[] paramArrayOfString2, String paramString3, String paramString4, String paramString5, String paramString6)
-    {
-      this.e = paramBoolean;
-      this.c = paramString1;
-      this.f = paramArrayOfString1;
-      this.g = paramString2;
-      this.h = paramArrayOfString2;
-      this.i = paramString3;
-      this.j = paramString4;
-      this.k = paramString5;
-      this.l = paramString6;
-    }
-    
-    public final void run()
-    {
-      switch (this.a)
-      {
-      default: 
-        return;
-      case 1: 
-        p.a(p.this, this.c, this.d, this.b);
-        return;
-      case 2: 
-        p.a(p.this, this.c, this.m, this.n, this.b);
-        return;
-      case 3: 
-        p.a(p.this, this.e, this.c, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.b);
-        return;
-      case 4: 
-        p.a(p.this, this.o, this.p, this.q, this.b);
-        return;
-      case 5: 
-        p.a(p.this, this.o, this.b);
-        return;
-      }
-      p.a(p.this, this.o, this.p, this.b);
-    }
   }
 }
 

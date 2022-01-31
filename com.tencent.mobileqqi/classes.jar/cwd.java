@@ -1,15 +1,14 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import android.content.DialogInterface.OnClickListener;
 
-public class cwd
-  implements DialogInterface.OnDismissListener
+class cwd
+  implements DialogInterface.OnClickListener
 {
-  public cwd(GroupManagerActivity paramGroupManagerActivity) {}
+  cwd(cwc paramcwc) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GroupManagerActivity.a(this.a, null);
+    paramDialogInterface.dismiss();
   }
 }
 

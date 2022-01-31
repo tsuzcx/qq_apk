@@ -1,56 +1,78 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.MobileQQ;
+import android.text.Editable;
+import android.text.SpannableStringBuilder;
+import android.text.TextWatcher;
+import com.tencent.biz.subscribe.comment.CommentEditText;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class tdl
-  implements DialogInterface.OnClickListener
+class tdl
+  implements TextWatcher
 {
-  public tdl(NotificationActivity paramNotificationActivity) {}
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  tdl(tdf paramtdf) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.finish();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("password", null);
-    if (!PhoneNumLoginImpl.a().a(this.a.app, this.a.app.getCurrentAccountUin()))
-    {
-      this.a.app.updateSubAccountLogin(this.a.app.getCurrentAccountUin(), false);
-      this.a.app.getApplication().refreAccountList();
+    if (paramEditable == null) {
+      return;
     }
-    paramDialogInterface = (SubAccountManager)this.a.app.getManager(60);
-    if (paramDialogInterface != null) {}
-    for (paramDialogInterface = paramDialogInterface.a();; paramDialogInterface = null)
+    tdf.a(this.jdField_a_of_type_Tdf).removeTextChangedListener(this);
+    if (paramEditable.length() > tdf.b(this.jdField_a_of_type_Tdf))
     {
-      if ((paramDialogInterface != null) && (paramDialogInterface.size() > 0))
+      QQToast.a(this.jdField_a_of_type_Tdf.getContext(), alud.a(2131702567) + tdf.b(this.jdField_a_of_type_Tdf) + alud.a(2131702568), 0).a();
+      paramEditable.delete(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.b);
+      tdf.a(this.jdField_a_of_type_Tdf).addTextChangedListener(this);
+      return;
+    }
+    Object localObject1 = paramEditable.toString().substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.b);
+    int i = ((String)localObject1).indexOf('/');
+    if ((i >= 0) && (i < ((String)localObject1).length() - 1))
+    {
+      localObject1 = new SpannableStringBuilder(paramEditable.toString());
+      yhf.a(tdf.a(this.jdField_a_of_type_Tdf).getContext(), (SpannableStringBuilder)localObject1);
+    }
+    for (;;)
+    {
+      for (;;)
       {
-        paramDialogInterface = paramDialogInterface.iterator();
-        while (paramDialogInterface.hasNext())
+        if (localObject1 != null) {
+          i = tdf.a(this.jdField_a_of_type_Tdf).getSelectionEnd();
+        }
+        try
         {
-          String str = (String)paramDialogInterface.next();
-          if (!PhoneNumLoginImpl.a().a(this.a.app, str))
+          tdf.a(this.jdField_a_of_type_Tdf).setText((CharSequence)localObject1);
+          tdf.a(this.jdField_a_of_type_Tdf).setSelection(i);
+          this.b = 0;
+          this.jdField_a_of_type_Int = 0;
+        }
+        catch (ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException)
+        {
+          for (;;)
           {
-            this.a.app.updateSubAccountLogin(str, false);
-            this.a.app.getApplication().refreAccountList();
+            tdf.a(this.jdField_a_of_type_Tdf).setText(paramEditable.toString());
+            i = paramEditable.toString().length();
           }
         }
       }
-      this.a.startActivity(new Intent(this.a, LoginActivity.class).putExtras(localBundle).addFlags(67108864));
+      Object localObject2 = null;
+    }
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramCharSequence == null) {
       return;
     }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tdl
  * JD-Core Version:    0.7.0.1
  */

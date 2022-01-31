@@ -7,13 +7,7 @@ import java.util.List;
 
 public class ByteArrayPool
 {
-  protected static final Comparator<byte[]> BUF_COMPARATOR = new Comparator()
-  {
-    public int compare(byte[] paramAnonymousArrayOfByte1, byte[] paramAnonymousArrayOfByte2)
-    {
-      return paramAnonymousArrayOfByte1.length - paramAnonymousArrayOfByte2.length;
-    }
-  };
+  protected static final Comparator<byte[]> BUF_COMPARATOR = new ByteArrayPool.1();
   private static ByteArrayPool genericInstance = new ByteArrayPool(102400);
   private static ByteArrayPool maxBufPoolInstance;
   private List<byte[]> mBuffersByLastUse = new LinkedList();

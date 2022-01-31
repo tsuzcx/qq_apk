@@ -1,66 +1,40 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.contact.RecommendTroopListWrapper.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 import java.util.ArrayList;
-import java.util.Iterator;
-import tencent.im.oidb.cmd0x986.oidb_0x986.RspBody;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class ahez
-  extends ahfj
+  extends ameq
 {
-  public ahez(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment)
+  ahez(ahex paramahex) {}
+  
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    super(paramReceiptMessageReadMemberListContainerFragment);
+    if (1 == paramInt1) {
+      ThreadManager.getUIHandler().post(new RecommendTroopListWrapper.2.1(this, paramString));
+    }
   }
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageReadMemberListContainerFragment", 4, "mTroopFetchReadMemberListCallback onRes: " + paramInt);
-    }
-    if ((paramInt == 0) && (paramArrayOfByte != null))
-    {
-      for (;;)
-      {
-        try
-        {
-          paramBundle = new oidb_0x986.RspBody();
-          paramBundle.mergeFrom(paramArrayOfByte);
-          paramArrayOfByte = paramBundle.rpt_msg_uin_info.get();
-          paramArrayOfByte = ReceiptMessageReadMemberListContainerFragment.b((ReceiptMessageReadMemberListContainerFragment)this.a, paramArrayOfByte).iterator();
-          if (!paramArrayOfByte.hasNext()) {
-            break;
-          }
-          ReceiptMessageReadMemberListFragment.MemberInfo localMemberInfo = (ReceiptMessageReadMemberListFragment.MemberInfo)paramArrayOfByte.next();
-          if (!Long.toString(ReceiptMessageReadMemberListContainerFragment.d((ReceiptMessageReadMemberListContainerFragment)this.a)).equals(localMemberInfo.jdField_a_of_type_JavaLangString)) {
-            if (localMemberInfo.jdField_a_of_type_Long > 0L) {
-              ReceiptMessageReadMemberListContainerFragment.b((ReceiptMessageReadMemberListContainerFragment)this.a).add(localMemberInfo);
-            } else {
-              ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).add(localMemberInfo);
-            }
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "fetch read member fail on invalid data");
-          ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
-          return;
-        }
-      }
-      if (paramBundle.uint64_next_uin.get() == 0L)
-      {
-        ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(2);
-        return;
-      }
-      paramArrayOfByte = ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).obtainMessage(3, Long.valueOf(paramBundle.uint64_next_uin.get()));
-      ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendMessage(paramArrayOfByte);
-      return;
-    }
-    ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
+    this.a.a(paramBoolean1, paramInt1, paramInt2, paramBoolean2, paramArrayList, paramBoolean3);
+  }
+  
+  protected void a(boolean paramBoolean1, int paramInt1, String paramString, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3)
+  {
+    this.a.a(paramBoolean1, paramInt1, paramString, paramInt2, paramBoolean2, paramArrayList, paramBoolean3);
+  }
+  
+  protected void a(boolean paramBoolean1, long paramLong, int paramInt, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList)
+  {
+    this.a.a(paramBoolean1, paramLong, paramInt, paramBoolean2, paramArrayList);
+  }
+  
+  protected void b(boolean paramBoolean, List<RecommendTroopItem> paramList)
+  {
+    this.a.b(paramBoolean);
   }
 }
 

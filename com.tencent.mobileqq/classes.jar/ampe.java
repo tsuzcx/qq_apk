@@ -1,141 +1,218 @@
-import android.content.ContentResolver;
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.net.Uri;
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_BASE.sweet_rsp_comm;
+import SWEET_NEW_ICON.lighting_sweet_key_rsp;
+import SWEET_NEW_ICON.sweet_upgrade_key_notify_rsp;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.utils.SecurityUtile;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qqfav.QfavHelper.AsyncFavoritesProvider;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 public class ampe
-  implements Runnable
+  implements BusinessObserver
 {
-  public ampe(QfavHelper.AsyncFavoritesProvider paramAsyncFavoritesProvider) {}
+  private static volatile ampe jdField_a_of_type_Ampe;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private volatile boolean jdField_a_of_type_Boolean;
+  private volatile boolean b;
   
-  public void run()
+  public static ampe a()
   {
-    boolean bool2 = true;
-    boolean bool5 = false;
-    boolean bool4 = false;
-    boolean bool1 = false;
-    if (this.a.a == null)
+    if (jdField_a_of_type_Ampe == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      this.a.a(false, this.a.a);
-      return;
+      if (jdField_a_of_type_Ampe == null) {
+        jdField_a_of_type_Ampe = new ampe();
+      }
+      return jdField_a_of_type_Ampe;
     }
-    long l1 = this.a.a.getLong("req_opt_type", -1L);
-    long l2 = this.a.a.getLong("req_biz_type", -1L);
-    Object localObject1 = this.a.a.getString("req_biz_key");
-    Object localObject3 = this.a.a.getString("req_fav_uin");
-    if ((-1L == l1) || (-1L == l2) || (TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject3)))
+  }
+  
+  private void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    paramBundle = (sweet_upgrade_key_notify_rsp)paramBundle.getSerializable("rsp_data");
+    if ((paramBundle == null) || (!paramBoolean) || (paramBundle.req_comm == null))
     {
-      this.a.a(false, this.a.a);
-      return;
+      QLog.i("QzoneLoverService", 1, "onGetLoverCheckData succed(false)");
+      c();
     }
-    Object localObject2 = BaseApplication.getContext().getContentResolver();
-    if (localObject2 == null)
+    Object localObject;
+    long l;
+    do
     {
-      this.a.a(false, this.a.a);
-      return;
-    }
-    Bundle localBundle = new Bundle(this.a.a);
-    boolean bool3;
-    if (1L == l1) {
-      bool3 = bool4;
-    }
-    for (;;)
-    {
-      try
+      do
       {
-        localObject3 = Uri.parse("content://qq.favorites/biz_related/" + (String)localObject3);
-        bool3 = bool4;
-        str = "" + l2;
-        bool3 = bool4;
-        localObject1 = ((ContentResolver)localObject2).query((Uri)localObject3, new String[] { "mUuid" }, "mBizType=? and mBizKey=?", new String[] { str, localObject1 }, null);
-        bool2 = bool1;
-        if (localObject1 != null)
+        return;
+        if ((paramBundle.rsp_comm == null) || (paramBundle.rsp_comm.retcode != 0))
         {
-          bool2 = bool1;
-          bool3 = bool4;
-          if (((Cursor)localObject1).moveToFirst())
+          localObject = new StringBuilder().append("onGetLoverCheckData succed(false), ret code: ");
+          if (paramBundle.rsp_comm == null) {}
+          for (paramBundle = "null";; paramBundle = String.valueOf(paramBundle.rsp_comm.retcode))
           {
-            bool3 = bool4;
-            localObject2 = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("mUuid"));
-            bool2 = bool1;
-            if (localObject2 == null) {}
+            QLog.i("QzoneLoverService", 1, paramBundle);
+            c();
+            return;
           }
         }
-      }
-      catch (Exception localException1)
-      {
-        String str;
-        ContentValues localContentValues;
-        bool1 = bool3;
-        localException1.printStackTrace();
-        continue;
-      }
-      try
-      {
-        localBundle.putString("rsp_fav_id", SecurityUtile.b((String)localObject2));
-        bool2 = true;
-        bool1 = bool2;
-        if (localObject1 != null)
+        if (paramBundle.req_comm.uin != BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin())
         {
-          bool3 = bool2;
-          ((Cursor)localObject1).close();
-          bool1 = bool2;
+          QLog.i("QzoneLoverService", 1, "onGetLoverCheckData succed(" + paramBoolean + "), uin: " + paramBundle.req_comm.uin + ", loginUin: " + BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+          return;
         }
-        this.a.a(bool1, localBundle);
+        b();
+        l = paramBundle.req_comm.loveuin;
+      } while (l <= 10000L);
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+    } while (!(localObject instanceof QQAppInterface));
+    ((FriendListHandler)((QQAppInterface)localObject).a(1)).a(String.valueOf(l));
+    QLog.i("QzoneLoverService", 1, "onGetLoverCheckData succed(" + paramBoolean + "), uin:" + paramBundle.req_comm.uin);
+  }
+  
+  private void b()
+  {
+    BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0).edit().putBoolean("checkQzoneLoverSend2", true).apply();
+  }
+  
+  private void b(boolean paramBoolean, Bundle paramBundle)
+  {
+    this.b = false;
+    paramBundle = (lighting_sweet_key_rsp)paramBundle.getSerializable("rsp_data");
+    if ((paramBundle == null) || (!paramBoolean))
+    {
+      QLog.i("QzoneLoverService", 1, "onGetLoverLightingData succed(false)");
+      e();
+      return;
+    }
+    if ((paramBundle.rsp_comm == null) || (paramBundle.rsp_comm.retcode != 0))
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("onGetLoverLightingData succed(false), ret code: ");
+      if (paramBundle.rsp_comm == null) {}
+      for (paramBundle = "null";; paramBundle = String.valueOf(paramBundle.rsp_comm.retcode))
+      {
+        QLog.i("QzoneLoverService", 1, paramBundle);
+        e();
         return;
       }
-      catch (Exception localException2)
-      {
-        bool1 = true;
-        continue;
-      }
-      if (2L == l1)
-      {
-        bool3 = bool4;
-        if (((ContentResolver)localObject2).delete(Uri.parse("content://qq.favorites/biz_related/" + (String)localObject3), "mBizType=? and mBizKey=?", new String[] { "" + l2, localObject1 }) <= 0) {
-          break label632;
-        }
-        bool1 = true;
-        break label629;
-      }
-      bool1 = bool5;
-      if (3L == l1)
-      {
-        bool3 = bool4;
-        str = this.a.a.getString("req_fav_id");
-        bool1 = bool5;
-        bool3 = bool4;
-        if (!TextUtils.isEmpty(str))
-        {
-          bool3 = bool4;
-          localContentValues = new ContentValues();
-          bool3 = bool4;
-          localContentValues.put("mBizType", Long.valueOf(l2));
-          bool3 = bool4;
-          localContentValues.put("mBizKey", (String)localObject1);
-          bool3 = bool4;
-          localContentValues.put("mUuid", str);
-          bool3 = bool4;
-          localObject1 = ((ContentResolver)localObject2).insert(Uri.parse("content://qq.favorites/biz_related/" + (String)localObject3), localContentValues);
-          if (localObject1 != null) {}
-          for (bool1 = bool2;; bool1 = false) {
-            break;
-          }
-        }
-      }
+    }
+    d();
+    QLog.i("QzoneLoverService", 1, "onGetLoverLightingData succed(" + paramBoolean + ")");
+  }
+  
+  private boolean b()
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
+    if (System.currentTimeMillis() / 1000L / 3600L / 24L != localSharedPreferences.getLong("lightingQzoneLoverLastFailTime", 0L)) {}
+    while (localSharedPreferences.getInt("lightingQzoneLoverFailCount", 0) < QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneLoverMaxFailCount", 10)) {
+      return false;
+    }
+    return true;
+  }
+  
+  private void c()
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
+    long l = System.currentTimeMillis() / 1000L / 3600L / 24L;
+    if (l != localSharedPreferences.getLong("checkQzoneLoverLastFailTime", 0L)) {
+      localSharedPreferences.edit().putInt("checkQzoneLoverFailCount", 1);
     }
     for (;;)
     {
-      label629:
-      break;
-      label632:
-      bool1 = false;
+      localSharedPreferences.edit().putLong("checkQzoneLoverLastFailTime", l);
+      localSharedPreferences.edit().apply();
+      return;
+      int i = localSharedPreferences.getInt("checkQzoneLoverFailCount", 0);
+      localSharedPreferences.edit().putInt("checkQzoneLoverFailCount", i + 1);
     }
+  }
+  
+  private void d()
+  {
+    long l = System.currentTimeMillis() / 1000L / 3600L / 24L;
+    BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0).edit().putLong("lightingQzoneLoverTime", l).apply();
+  }
+  
+  private void e()
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
+    long l = System.currentTimeMillis() / 1000L / 3600L / 24L;
+    if (l != localSharedPreferences.getLong("lightingQzoneLoverLastFailTime", 0L)) {
+      localSharedPreferences.edit().putInt("lightingQzoneLoverFailCount", 1);
+    }
+    for (;;)
+    {
+      localSharedPreferences.edit().putLong("lightingQzoneLoverLastFailTime", l);
+      localSharedPreferences.edit().apply();
+      return;
+      int i = localSharedPreferences.getInt("lightingQzoneLoverFailCount", 0);
+      localSharedPreferences.edit().putInt("lightingQzoneLoverFailCount", i + 1);
+    }
+  }
+  
+  public void a()
+  {
+    if (this.b) {
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneLoverService", 1, "startQzoneLoverLightingRequest sending...");
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (a()) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("QzoneLoverService", 1, "startQzoneLoverLightingRequest false");
+      return;
+      if (!b()) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("QzoneLoverService", 1, "startQzoneLoverLightingRequest fail count hit max count!!!");
+    return;
+    this.b = true;
+    QLog.i("QzoneLoverService", 1, "startQzoneLoverLightingRequest true");
+    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getContext(), ampd.class);
+    ampd.a(localNewIntent, BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      BaseApplicationImpl.getApplication().getRuntime().registObserver(this);
+      this.jdField_a_of_type_Boolean = true;
+    }
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(localNewIntent);
+  }
+  
+  public boolean a()
+  {
+    boolean bool = false;
+    long l1 = BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0).getLong("lightingQzoneLoverTime", 0L);
+    long l2 = System.currentTimeMillis() / 1000L / 3600L / 24L;
+    if (QLog.isColorLevel()) {
+      QLog.i("QzoneLoverService", 2, "startQzoneLoverLightingRequest curDay(" + l2 + "), lastDay(" + l1 + ")");
+    }
+    if (l2 != l1) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramInt == 1) {
+      a(paramBoolean, paramBundle);
+    }
+    while (paramInt != 291) {
+      return;
+    }
+    b(paramBoolean, paramBundle);
   }
 }
 

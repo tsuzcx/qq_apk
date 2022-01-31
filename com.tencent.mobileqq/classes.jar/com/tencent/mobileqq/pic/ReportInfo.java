@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.pic;
 
-import aglo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import awkc;
 
 public class ReportInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aglo();
+  public static final Parcelable.Creator<ReportInfo> CREATOR = new awkc();
   public int a;
   public long a;
   public int b;
@@ -65,7 +65,7 @@ public class ReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.pic.ReportInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,18 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
-import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
+import android.view.View;
 
-public class xyt
-  extends TroopMemberListActivity.ViewHolder
+class xyt
+  implements bhvm
 {
-  public CheckBox a;
+  xyt(xys paramxys, View paramView) {}
   
-  private xyt(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xyt
  * JD-Core Version:    0.7.0.1
  */

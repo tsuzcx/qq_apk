@@ -1,6 +1,9 @@
 package com.tencent.av;
 
+import lgn;
+
 public class VideoConstants
+  extends lgn
 {
   public static int a;
   public static String a;

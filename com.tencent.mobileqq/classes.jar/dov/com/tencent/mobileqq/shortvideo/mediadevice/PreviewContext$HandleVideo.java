@@ -1,8 +1,8 @@
 package dov.com.tencent.mobileqq.shortvideo.mediadevice;
 
+import azho;
+import azhu;
 import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.CameraPreviewObservable;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -15,10 +15,10 @@ public class PreviewContext$HandleVideo
   
   public void run()
   {
-    if ((SVHwEncoder)this.a.mEncodeRef.get() != null) {
-      if (PreviewContext.access$000(this.a))
+    if ((SVHwEncoder)this.this$0.mEncodeRef.get() != null) {
+      if (PreviewContext.access$000(this.this$0))
       {
-        this.a.mAVCodec.handleQQVideoFrameWithCallback();
+        this.this$0.mAVCodec.handleQQVideoFrameWithCallback();
         if (QLog.isColorLevel()) {
           QLog.d("PreviewContext", 2, "[@] HandleVideo: handleQQVideoFrameWithCallback");
         }
@@ -26,16 +26,16 @@ public class PreviewContext$HandleVideo
     }
     for (;;)
     {
-      this.a.mCamera.a.a(7, new Object[] { Integer.valueOf(0) });
-      this.a.mVideoFrameProcess.incrementAndGet();
+      this.this$0.mCamera.a.a(7, new Object[] { Integer.valueOf(0) });
+      this.this$0.mVideoFrameProcess.incrementAndGet();
       return;
-      this.a.mAVCodec.handleQQVideoOneFrame();
+      this.this$0.mAVCodec.handleQQVideoOneFrame();
       if (QLog.isColorLevel()) {
         QLog.d("PreviewContext", 2, "[@] HandleVideo: handleQQVideoOneFrame");
       }
-      this.a.encodeOneFrameNotify();
+      this.this$0.encodeOneFrameNotify();
       continue;
-      this.a.mAVCodec.handleQQVideo();
+      this.this$0.mAVCodec.handleQQVideo();
       if (QLog.isColorLevel()) {
         QLog.d("PreviewContext", 2, "[@] HandleVideo: encode=null");
       }
@@ -44,7 +44,7 @@ public class PreviewContext$HandleVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext.HandleVideo
  * JD-Core Version:    0.7.0.1
  */

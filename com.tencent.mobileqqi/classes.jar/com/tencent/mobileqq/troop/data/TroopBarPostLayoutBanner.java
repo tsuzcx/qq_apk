@@ -23,16 +23,16 @@ import com.tencent.mobileqq.data.TroopBarLevelEntity;
 import com.tencent.mobileqq.data.TroopBarPageEntity;
 import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
 import com.tencent.mobileqq.troop.utils.TroopBarUtils;
-import gzq;
-import gzr;
-import gzs;
+import gvj;
+import gvk;
+import gvl;
 import mqq.util.WeakReference;
 
 public class TroopBarPostLayoutBanner
   extends TroopBarPostAbsLayout
   implements View.OnClickListener
 {
-  protected static final int a = 2130903401;
+  protected static final int a = 2130903403;
   protected static final int b = -14275539;
   public HttpWebCgiAsyncTask.Callback a;
   public WeakReference a;
@@ -41,7 +41,7 @@ public class TroopBarPostLayoutBanner
   public TroopBarPostLayoutBanner()
   {
     this.jdField_a_of_type_MqqUtilWeakReference = null;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new gzs(this);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new gvl(this);
   }
   
   public View a(Activity paramActivity, LayoutInflater paramLayoutInflater, View paramView, TroopBarAbsDataEntity paramTroopBarAbsDataEntity)
@@ -49,7 +49,7 @@ public class TroopBarPostLayoutBanner
     TroopBarPostLayoutBanner.BannerItemViewHolder localBannerItemViewHolder;
     if (paramView == null)
     {
-      paramView = paramLayoutInflater.inflate(2130903401, null);
+      paramView = paramLayoutInflater.inflate(2130903403, null);
       localBannerItemViewHolder = (TroopBarPostLayoutBanner.BannerItemViewHolder)a(paramView);
       paramView.setTag(localBannerItemViewHolder);
     }
@@ -57,7 +57,7 @@ public class TroopBarPostLayoutBanner
     {
       this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramActivity);
       if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null) {
-        this.b = ((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getResources().getDrawable(2130838417);
+        this.b = ((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getResources().getDrawable(2130838419);
       }
       paramTroopBarAbsDataEntity = (TroopBarPageEntity)paramTroopBarAbsDataEntity;
       Object localObject = new ColorDrawable(-14275539);
@@ -67,7 +67,7 @@ public class TroopBarPostLayoutBanner
         localBannerItemViewHolder.jdField_c_of_type_AndroidViewView.setBackgroundDrawable(URLDrawable.getDrawable(paramTroopBarAbsDataEntity.cover, (Drawable)localObject, (Drawable)localObject));
         label121:
         paramActivity = paramActivity.getResources();
-        localObject = paramActivity.getDrawable(2130838416);
+        localObject = paramActivity.getDrawable(2130838418);
         if (!TextUtils.isEmpty(paramTroopBarAbsDataEntity.pic)) {}
         try
         {
@@ -170,12 +170,12 @@ public class TroopBarPostLayoutBanner
       localObject = new Intent("refresh_page");
       ((Intent)localObject).putExtra("sub_action", "show_loading");
       paramView.getContext().sendBroadcast((Intent)localObject);
-      ThreadManager.a(new gzq(this, paramView));
+      ThreadManager.a(new gvj(this, paramView));
       return;
       localObject = new Intent("refresh_page");
       ((Intent)localObject).putExtra("sub_action", "show_loading");
       paramView.getContext().sendBroadcast((Intent)localObject);
-      ThreadManager.a(new gzr(this, paramView));
+      ThreadManager.a(new gvk(this, paramView));
       return;
       localObject = paramView.getContext();
       paramView = paramView.getTag(2131230860);

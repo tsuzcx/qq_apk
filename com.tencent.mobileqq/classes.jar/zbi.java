@@ -1,25 +1,29 @@
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import java.util.Comparator;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView.1.1;
 
 public class zbi
-  implements Comparator
+  implements zbg
 {
-  public zbi(ConditionSearchManager paramConditionSearchManager) {}
+  public zbi(SingleLyricView paramSingleLyricView) {}
   
-  public int a(BaseAddress paramBaseAddress1, BaseAddress paramBaseAddress2)
+  public void a()
   {
-    int j = paramBaseAddress1.pinyinFirst.compareTo(paramBaseAddress2.pinyinFirst);
-    int i = j;
-    if (j == 0) {
-      i = paramBaseAddress1.pinyinAll.compareTo(paramBaseAddress2.pinyinAll);
-    }
-    return i;
+    SingleLyricView.a(this.a).b();
+  }
+  
+  public void a(long paramLong)
+  {
+    this.a.post(new SingleLyricView.1.1(this, paramLong));
+  }
+  
+  public void b()
+  {
+    SingleLyricView.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zbi
  * JD-Core Version:    0.7.0.1
  */

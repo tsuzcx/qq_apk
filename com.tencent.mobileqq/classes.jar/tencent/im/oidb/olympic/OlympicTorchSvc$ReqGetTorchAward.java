@@ -10,12 +10,12 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class OlympicTorchSvc$ReqGetTorchAward
-  extends MessageMicro
+  extends MessageMicro<ReqGetTorchAward>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_pack_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_sig = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField rpt_city_pic_id_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> rpt_city_pic_id_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt32Field uint32_business = PBField.initUInt32(0);
   
   static
@@ -27,7 +27,7 @@ public final class OlympicTorchSvc$ReqGetTorchAward
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.olympic.OlympicTorchSvc.ReqGetTorchAward
  * JD-Core Version:    0.7.0.1
  */

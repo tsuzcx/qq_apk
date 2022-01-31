@@ -1,34 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class mfi
-  implements Runnable
+  implements View.OnClickListener
 {
-  private boolean jdField_a_of_type_Boolean;
+  public mfi(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public mfi(VideoPreDownloadMgr paramVideoPreDownloadMgr, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr) != null) {
-        VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr).add(VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr));
-      }
-      if (VideoPreDownloadMgr.a() != null) {
-        VideoPreDownloadMgr.a().add(VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr));
-      }
+    QLog.d(this.a.d, 1, "quit double screen from reset clicker");
+    if ((this.a.a != null) && (this.a.a.get() != null) && ((this.a.a.get() instanceof AVActivity))) {
+      ((AVActivity)this.a.a.get()).BtnOnClick(paramView);
     }
-    VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr, null);
-    VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfi
  * JD-Core Version:    0.7.0.1
  */

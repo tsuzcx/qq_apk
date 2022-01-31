@@ -1,70 +1,69 @@
-import com.tencent.mobileqq.app.LBSObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.filemanager.activity.fileviewer.troopfile.TroopFileViewerActivity;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class ftr
-  extends LBSObserver
+  extends FMObserver
 {
-  public ftr(EnterpriseQQManager paramEnterpriseQQManager) {}
+  public ftr(TroopFileViewerActivity paramTroopFileViewerActivity) {}
   
-  protected void a(boolean paramBoolean, byte[] arg2, String paramString1, String paramString2, String paramString3)
+  protected void a()
   {
-    if (paramBoolean)
-    {
-      double d1 = Double.valueOf(paramString1).doubleValue();
-      double d2 = Double.valueOf(paramString2).doubleValue();
-      EnterpriseQQManager.a(this.a, d1);
-      EnterpriseQQManager.b(this.a, d2);
-      EnterpriseQQManager.a(this.a, System.currentTimeMillis());
-      synchronized (EnterpriseQQManager.a())
-      {
-        if ((EnterpriseQQManager.a(this.a) == null) || (EnterpriseQQManager.a(this.a).size() <= 0)) {
-          break label173;
-        }
-        paramString1 = EnterpriseQQManager.a(this.a).iterator();
-        while (paramString1.hasNext())
-        {
-          paramString2 = (fts)paramString1.next();
-          if (paramString2 != null) {
-            this.a.a(EnterpriseQQManager.a(this.a), EnterpriseQQManager.a(this.a), paramString2.a, paramString2.b, true, d1, d2);
-          }
-        }
-      }
-      EnterpriseQQManager.a(this.a).clear();
+    this.a.f();
+  }
+  
+  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    paramString = this.a.b.a().a(paramLong1, paramString, paramInt, paramLong2);
+    if (paramString == null) {}
+    while (paramLong2 != paramString.nSessionId) {
+      return;
     }
-    label173:
-    label338:
+    QLog.i("<FileAssistant>TroopFileViewerActivity", 1, "<FileAssistant>TroopFileViewerActivity OnFileTransferStart: mEntity[" + FileManagerUtil.a(this.a.a) + "]");
+    this.a.f();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    if ((paramLong2 != this.a.a.nSessionId) && (paramLong2 != this.a.a.nRelatedSessionId)) {
+      return;
+    }
+    this.a.f();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    QLog.d("<FileAssistant>TroopFileViewerActivity", 1, "<FileAssistant>TroopFileViewerActivityOnFileTransferEnd, isSuccess[" + paramBoolean + "] uniseq[" + paramLong1 + "] nSessionId[" + paramLong2 + "] errCode[" + paramInt2 + "] retMsg[" + paramString2 + "] mEntify:" + FileManagerUtil.a(this.a.a));
+    if (this.a.b.a().a(paramLong2) == null) {
+      QLog.e("<FileAssistant>TroopFileViewerActivity", 1, "queryEntity is null,nSessionId[" + paramLong2 + "]");
+    }
     for (;;)
     {
-      if (EnterpriseQQManager.a(this.a) != null) {
-        EnterpriseQQManager.a(this.a).c(this.a.a);
-      }
-      EnterpriseQQManager.a(this.a, null);
-      EnterpriseQQManager.a(this.a, null);
       return;
-      synchronized (EnterpriseQQManager.a())
-      {
-        if ((EnterpriseQQManager.a(this.a) == null) || (EnterpriseQQManager.a(this.a).size() <= 0)) {
-          break label338;
-        }
-        paramString1 = EnterpriseQQManager.a(this.a).iterator();
-        while (paramString1.hasNext())
-        {
-          paramString2 = (fts)paramString1.next();
-          if (paramString2 != null) {
-            this.a.a(EnterpriseQQManager.a(this.a), EnterpriseQQManager.a(this.a), paramString2.a, paramString2.b, false, 0.0D, 0.0D);
-          }
-        }
+      if (paramBoolean) {
+        FileManagerUtil.a(paramLong2);
       }
-      EnterpriseQQManager.a(this.a).clear();
+      while (paramLong2 == this.a.a.nSessionId)
+      {
+        this.a.f();
+        return;
+        FileManagerUtil.a(paramLong2, paramInt2, paramString2);
+      }
     }
+  }
+  
+  protected void b()
+  {
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ftr
  * JD-Core Version:    0.7.0.1
  */

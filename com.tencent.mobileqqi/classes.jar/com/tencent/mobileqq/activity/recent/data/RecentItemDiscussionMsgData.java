@@ -45,7 +45,7 @@ public class RecentItemDiscussionMsgData
         if (localObject != null)
         {
           this.jdField_c_of_type_JavaLangCharSequence = ((TroopAtMeMsg)localObject).jdField_a_of_type_JavaLangString;
-          i = 2131362110;
+          i = 2131362120;
         }
       }
       while ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangCharSequence)) && (i > 0))
@@ -63,7 +63,7 @@ public class RecentItemDiscussionMsgData
           {
             this.jdField_c_of_type_JavaLangCharSequence = ((TroopAtAllMsg)localObject).jdField_a_of_type_JavaLangString;
             this.jdField_c_of_type_JavaLangString = String.format("与%s群的会话，有全体消息", new Object[] { this.jdField_a_of_type_JavaLangString });
-            i = 2131362110;
+            i = 2131362120;
           }
           else
           {

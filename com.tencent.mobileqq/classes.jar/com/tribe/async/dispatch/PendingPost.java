@@ -1,12 +1,9 @@
 package com.tribe.async.dispatch;
 
-import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tribe.async.objectpool.ObjectPool;
-import com.tribe.async.objectpool.ObjectPool.BasicAllocator;
 import com.tribe.async.objectpool.ObjectPoolBuilder;
 import com.tribe.async.utils.AssertUtils;
-import com.tribe.async.utils.MonotonicClock;
 
 final class PendingPost
 {
@@ -18,20 +15,8 @@ final class PendingPost
   
   static
   {
-    ObjectPoolBuilder localObjectPoolBuilder = new ObjectPoolBuilder(PendingPost.class, new MonotonicClock()
-    {
-      public long now()
-      {
-        return SystemClock.uptimeMillis();
-      }
-    });
-    localObjectPoolBuilder.setAllocator(new ObjectPool.BasicAllocator(PendingPost.class)
-    {
-      public PendingPost create()
-      {
-        return new PendingPost(null);
-      }
-    });
+    ObjectPoolBuilder localObjectPoolBuilder = new ObjectPoolBuilder(PendingPost.class, new PendingPost.1());
+    localObjectPoolBuilder.setAllocator(new PendingPost.2(PendingPost.class));
     PENDING_POST_POOL = localObjectPoolBuilder.build();
   }
   
@@ -79,7 +64,7 @@ final class PendingPost
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tribe.async.dispatch.PendingPost
  * JD-Core Version:    0.7.0.1
  */

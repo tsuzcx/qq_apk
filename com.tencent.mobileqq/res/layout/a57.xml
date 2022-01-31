@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="95.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <TextView android:textSize="@dimen/ati" android:textColor="@android:color/black" android:ellipsize="end" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ash" android:layout_marginTop="9.0dip" android:includeFontPadding="false" android:lineSpacingExtra="1.5dip" />
+        <include android:gravity="bottom" android:id="@id/hwz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ash" android:layout_marginBottom="11.0dip" layout="@layout/a54" />
+    </LinearLayout>
+    <com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView android:id="@id/image" android:layout_width="124.0dip" android:layout_height="95.0dip" android:layout_marginLeft="23.0dip" android:scaleType="centerCrop" />
+</LinearLayout>

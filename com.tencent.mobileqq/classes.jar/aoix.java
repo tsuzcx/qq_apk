@@ -1,20 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.confess.ConfessMsgListFragment;
 
 public class aoix
-  implements DialogInterface.OnClickListener
+  extends aoiz
 {
-  public aoix(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public aoix(ConfessMsgListFragment paramConfessMsgListFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(aoiq paramaoiq)
   {
-    this.a.s();
+    ConfessMsgListFragment.a(this.a);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject)
+  {
+    if (this.a.isResumed()) {
+      this.a.b();
+    }
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    if (this.a.isResumed()) {
+      this.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoix
  * JD-Core Version:    0.7.0.1
  */

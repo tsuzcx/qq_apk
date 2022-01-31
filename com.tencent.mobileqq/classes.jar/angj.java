@@ -1,21 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.wadl.ipc.WadlParams;
-
-public final class angj
-  implements Parcelable.Creator
+public abstract interface angj
 {
-  public WadlParams a(Parcel paramParcel)
-  {
-    WadlParams localWadlParams = new WadlParams("");
-    localWadlParams.a(paramParcel);
-    return localWadlParams;
-  }
-  
-  public WadlParams[] a(int paramInt)
-  {
-    return new WadlParams[paramInt];
-  }
+  public abstract void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat, boolean paramBoolean);
 }
 
 

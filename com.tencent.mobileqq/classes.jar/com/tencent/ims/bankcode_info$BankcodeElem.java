@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class bankcode_info$BankcodeElem
-  extends MessageMicro
+  extends MessageMicro<BankcodeElem>
 {
   public static final int BANKCODE_ATTR_FIELD_NUMBER = 3;
   public static final int BANKCODE_HIDDEN_POS_FIELD_NUMBER = 5;
@@ -23,7 +23,7 @@ public final class bankcode_info$BankcodeElem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.bankcode_info.BankcodeElem
  * JD-Core Version:    0.7.0.1
  */

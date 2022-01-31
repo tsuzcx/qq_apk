@@ -1,72 +1,55 @@
-import android.os.Handler;
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.shortvideo.common.GloableValue;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.app.Dialog;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.view.AnimationPoint;
 
-class xux
-  implements Runnable
+public class xux
+  extends Dialog
 {
-  xux(xuw paramxuw) {}
+  protected TextView a;
+  protected AnimationPoint a;
   
-  public void run()
+  public xux(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoInitState", 2, "[@] delayInit,run start");
-    }
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (!localRMVideoStateMgr.f())
-    {
-      RMVideoStateMgr.b(null);
-      if (localRMVideoStateMgr.f()) {}
-    }
-    for (;;)
-    {
-      return;
-      File localFile = new File(GloableValue.b + File.separator + ".nomedia");
-      if (!localFile.exists()) {}
-      try
-      {
-        localFile.createNewFile();
-        label84:
-        if (QLog.isColorLevel()) {
-          QLog.d("RMVideoInitState", 2, "[@] delayInit, post timeout runnable");
-        }
-        localRMVideoStateMgr.a.postDelayed(this.a.a, 10000L);
-        localRMVideoStateMgr.l();
-        localRMVideoStateMgr.m();
-        localRMVideoStateMgr.k();
-        try
-        {
-          AVCodec.get().init();
-          this.a.c = true;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("RMVideoInitState", 2, "[@] delayInit,run finish");
-          return;
-        }
-        catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-        {
-          for (;;)
-          {
-            localUnsatisfiedLinkError.printStackTrace();
-            this.a.c = false;
-          }
-        }
-      }
-      catch (IOException localIOException)
-      {
-        break label84;
-      }
-    }
+    super(paramContext, 2131755015);
+    View localView = LayoutInflater.from(paramContext).inflate(2131561516, null);
+    localView.setOnTouchListener(new xuy(this));
+    super.setContentView(localView);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint = ((AnimationPoint)super.findViewById(2131362574));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367422));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setRadius(xsm.a(paramContext, 25.0F));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setLoopTime(2000L);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setDuration(4000L);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setOnAnimationListener(new xuz(this, paramContext));
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setIsVertical(paramBoolean);
+  }
+  
+  public void dismiss()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.b();
+    super.dismiss();
+  }
+  
+  public void show()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.a();
+    super.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xux
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="13.0sp" android:textColor="#ff777777" android:id="@id/i83" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="16.0dip" android:text="@string/dn" />
+    <EditText android:scrollbarStyle="outsideOverlay" android:textColorHint="@color/skin_hint_input" android:gravity="top" android:id="@id/i82" android:background="@drawable/skin_setting_strip_bg_unpressed" android:paddingLeft="15.0dip" android:paddingTop="15.0dip" android:paddingRight="15.0dip" android:paddingBottom="15.0dip" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="77.0dip" android:layout_marginTop="5.0dip" android:hint="@string/dm" android:includeFontPadding="false" android:imeOptions="actionDone" style="@style/am" />
+</LinearLayout>

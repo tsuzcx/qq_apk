@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class stDCReportReq
   extends JceStruct
 {
-  static ArrayList cache_data = new ArrayList();
-  public ArrayList data;
+  static ArrayList<stMetaReportDataItem> cache_data = new ArrayList();
+  public ArrayList<stMetaReportDataItem> data;
   public String dcid = "";
   
   static
@@ -20,7 +20,7 @@ public final class stDCReportReq
   
   public stDCReportReq() {}
   
-  public stDCReportReq(String paramString, ArrayList paramArrayList)
+  public stDCReportReq(String paramString, ArrayList<stMetaReportDataItem> paramArrayList)
   {
     this.dcid = paramString;
     this.data = paramArrayList;
@@ -40,7 +40,7 @@ public final class stDCReportReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_VIDEO.stDCReportReq
  * JD-Core Version:    0.7.0.1
  */

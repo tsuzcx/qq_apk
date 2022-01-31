@@ -1,25 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class rie
-  implements DialogInterface.OnClickListener
+class rie
+  implements View.OnClickListener
 {
-  public rie(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  rie(ric paramric) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (AddFriendLogicActivity.d(this.a) == 1)
-    {
-      this.a.finish();
-      return;
-    }
-    AddFriendLogicActivity.a(this.a);
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rie
  * JD-Core Version:    0.7.0.1
  */

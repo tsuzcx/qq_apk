@@ -1,20 +1,25 @@
-import cooperation.plugin.PluginInstaller;
-import java.io.File;
-import java.io.FilenameFilter;
-
 public class ammh
-  implements FilenameFilter
 {
-  public ammh(PluginInstaller paramPluginInstaller, String paramString) {}
-  
-  public boolean accept(File paramFile, String paramString)
+  public static String a(long paramLong)
   {
-    return paramString.endsWith(this.jdField_a_of_type_JavaLangString);
+    if (paramLong <= 0L) {
+      return "";
+    }
+    if (paramLong < 1024L) {
+      return paramLong + "B";
+    }
+    if (paramLong < 1048576L) {
+      return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F) }) + "K";
+    }
+    if (paramLong < 1073741824L) {
+      return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F) }) + "M";
+    }
+    return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F / 1024.0F) }) + "G";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ammh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,11 @@
 package com.tencent.qphone.base.util;
 
 import android.content.Context;
+import android.os.Build.VERSION;
+import android.os.Environment;
 import android.util.Log;
 import com.tencent.mobileqq.msf.sdk.n;
+import java.io.File;
 
 public class QLog
 {
@@ -10,8 +13,10 @@ public class QLog
   public static final int DEV = 4;
   public static final String ERR_KEY = "qq_error|";
   public static final int LOG_ITEM_MAX_CACHE_SIZE = 50;
+  private static final String[] PERMS = { "android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_PHONE_STATE" };
   public static final int USR = 1;
   public static String sBuildNumber = "";
+  private static boolean sHasStoragePermission;
   
   public static void d(String paramString1, int paramInt, String paramString2)
   {
@@ -45,6 +50,18 @@ public class QLog
     n.a(paramArrayOfString, paramInt, paramBoolean, paramString);
   }
   
+  public static String getLogExternalPath(Context paramContext)
+  {
+    if (paramContext == null) {
+      return Environment.getExternalStorageDirectory().getPath();
+    }
+    File localFile = paramContext.getExternalFilesDir(null);
+    if ((localFile != null) && (!isHasStoragePermission(paramContext))) {
+      return localFile.getPath();
+    }
+    return Environment.getExternalStorageDirectory().getPath();
+  }
+  
   public static String getStackTraceString(Throwable paramThrowable)
   {
     return Log.getStackTraceString(paramThrowable);
@@ -73,6 +90,32 @@ public class QLog
   public static boolean isDevelopLevel()
   {
     return n.g();
+  }
+  
+  public static boolean isHasStoragePermission(Context paramContext)
+  {
+    boolean bool2 = sHasStoragePermission;
+    boolean bool1 = bool2;
+    if (!bool2)
+    {
+      if (Build.VERSION.SDK_INT < 23) {
+        break label48;
+      }
+      bool1 = bool2;
+      if (paramContext != null)
+      {
+        bool1 = bool2;
+        if (paramContext.checkSelfPermission(PERMS[0]) == 0)
+        {
+          sHasStoragePermission = true;
+          bool1 = sHasStoragePermission;
+        }
+      }
+    }
+    return bool1;
+    label48:
+    sHasStoragePermission = true;
+    return sHasStoragePermission;
   }
   
   public static void p(String paramString1, String paramString2)

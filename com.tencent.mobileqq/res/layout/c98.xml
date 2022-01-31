@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="#ffe5e3e4" android:layout_width="fill_parent" android:layout_height="@dimen/b6i" />
+    <Button android:textColor="@color/am4" android:id="@id/action_sheet_btnCancel" android:background="@drawable/hco" android:layout_width="fill_parent" android:layout_height="@dimen/b6h" android:layout_marginTop="@dimen/b6i" style="@style/xp" />
+</RelativeLayout>

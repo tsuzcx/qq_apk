@@ -16,9 +16,9 @@ public class EIPCResult
   public static final int CODE_NO_CONNECT = -1;
   public static final int CODE_NO_ERR = 0;
   public static final int CODE_UNKOWN = -100;
-  public static final Parcelable.Creator CREATOR = new EIPCResult.1();
+  public static final Parcelable.Creator<EIPCResult> CREATOR = new EIPCResult.1();
+  static final String KEY_CODE = "code";
   public static EIPCResult UNKNOW_RESULT = new EIPCResult();
-  static final String a = "code";
   public int code;
   public Bundle data;
   public Throwable e;

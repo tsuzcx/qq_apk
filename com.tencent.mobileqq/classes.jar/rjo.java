@@ -1,23 +1,42 @@
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
 
-public class rjo
-  implements Runnable
+public abstract class rjo
 {
-  public rjo(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString) {}
+  public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo) {}
   
-  public void run()
+  public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo, rjn paramrjn)
   {
-    String str = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app.getManager(50)).a(AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity));
-    ThreadManager.getUIHandler().post(new rjp(this, str));
+    a(paramTVK_NetVideoInfo);
   }
+  
+  public void a(rjn paramrjn) {}
+  
+  public abstract void a(rjn paramrjn, Object paramObject);
+  
+  public void a(rjn paramrjn, String paramString) {}
+  
+  public void a(rjn paramrjn, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap) {}
+  
+  public boolean a(rjn paramrjn, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  {
+    return false;
+  }
+  
+  public boolean a(rjn paramrjn, int paramInt, Object paramObject)
+  {
+    return false;
+  }
+  
+  public void b(rjn paramrjn) {}
+  
+  public void b(rjn paramrjn, String paramString) {}
+  
+  public void d(rjn paramrjn) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rjo
  * JD-Core Version:    0.7.0.1
  */

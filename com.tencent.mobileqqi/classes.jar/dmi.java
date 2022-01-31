@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import com.tencent.mobileqq.activity.SubAccountSettingActivity;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 
 public class dmi
-  implements DialogInterface.OnClickListener
+  extends MessageObserver
 {
-  public dmi(RegisterSendUpSms paramRegisterSendUpSms) {}
+  public dmi(SubAccountSettingActivity paramSubAccountSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    RegisterSendUpSms.c(this.a);
+    paramString = this.a.getString(2131562520);
+    if (paramSubAccountBackProtocData.p == 0) {}
+    for (int i = 2131563288;; i = 2131563291)
+    {
+      paramSubAccountBackProtocData = this.a.getString(i);
+      this.a.a(paramString, paramSubAccountBackProtocData, this.a.getString(2131562543), new dmj(this));
+      return;
+    }
   }
 }
 

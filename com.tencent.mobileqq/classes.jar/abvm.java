@@ -1,21 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import android.view.Choreographer.FrameCallback;
 
-public class abvm
-  implements View.OnClickListener
+class abvm
+  implements Choreographer.FrameCallback
 {
-  public abvm(DBFixConfigActivity paramDBFixConfigActivity) {}
+  abvm(abvl paramabvl) {}
   
-  public void onClick(View paramView)
+  public void doFrame(long paramLong)
   {
-    ThreadManager.post(this.a.a, 8, null, true);
+    this.a.a(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abvm
  * JD-Core Version:    0.7.0.1
  */

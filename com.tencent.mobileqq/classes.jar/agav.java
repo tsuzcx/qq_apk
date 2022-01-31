@@ -1,54 +1,28 @@
-import android.content.Intent;
-import com.tencent.mobileqq.ocr.OCRHandler;
-import com.tencent.mobileqq.transfile.FMTSrvAddrProvider;
-import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.image.VideoDrawable.OnAudioPlayOnceListener;
+import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class agav
-  implements Runnable
+  implements VideoDrawable.OnAudioPlayOnceListener
 {
-  agav(agau paramagau, NetResp paramNetResp) {}
+  agav(agat paramagat) {}
   
-  public void run()
+  public void onFinish()
   {
-    int i = 0;
-    OCRHandler localOCRHandler;
-    Intent localIntent;
-    if ((this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp == null) || (this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_a_of_type_Int != 0))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.ocr.OCRHandler", 2, "BaseOCRReqBigListener.onResp(), resp is null");
-        }
-        FMTSrvAddrProvider.a().a(6, agau.a(this.jdField_a_of_type_Agau));
-        i = -10;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.e("ShortVideoPTVItemBuilder", 2, "VideoDrawable.OnAudioPlayOnceListener.onFinish");
     }
-    else
+    if ((agat.a() != null) && (agat.a().get() != null))
     {
-      localOCRHandler = this.jdField_a_of_type_Agau.a;
-      localIntent = agau.a(this.jdField_a_of_type_Agau);
-      if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp == null) {
-        break label191;
-      }
-    }
-    label191:
-    for (byte[] arrayOfByte = this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_a_of_type_ArrayOfByte;; arrayOfByte = null)
-    {
-      OCRHandler.a(localOCRHandler, i, localIntent, arrayOfByte, agau.a(this.jdField_a_of_type_Agau));
-      return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("Q.ocr.OCRHandler", 2, "BaseOCRReqBigListener.onResp(), mResult=" + this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_a_of_type_Int + ",mErrCode=" + this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.b + ",mHttpCode=" + this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.c + ",mErrDesc=" + this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.jdField_a_of_type_JavaLangString);
-      break;
+      agat.a(agat.a(this.a), (ChatMessage)agat.a().get());
+      agat.a(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agav
  * JD-Core Version:    0.7.0.1
  */

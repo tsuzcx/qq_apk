@@ -1,23 +1,27 @@
-import java.io.File;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
-public final class adrn
-  implements Comparator
+public class adrn
+  implements View.OnClickListener
 {
-  private int a(long paramLong1, long paramLong2)
-  {
-    if (paramLong1 < paramLong2) {
-      return -1;
-    }
-    if (paramLong1 == paramLong2) {
-      return 0;
-    }
-    return 1;
-  }
+  public adrn(QQMapActivity paramQQMapActivity) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void onClick(View paramView)
   {
-    return a(paramFile1.lastModified(), paramFile2.lastModified());
+    if (this.a.l)
+    {
+      this.a.w();
+      return;
+    }
+    if ("group_activity".equals(this.a.o))
+    {
+      this.a.k();
+      return;
+    }
+    this.a.setResult(-1, this.a.a());
+    this.a.finish();
+    this.a.d();
   }
 }
 

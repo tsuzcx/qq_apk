@@ -1,34 +1,84 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
-import com.tencent.mobileqq.adapter.PeopleAroundAdapter.ViewHolder;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.widget.XListView;
+import QQService.SvcDevLoginInfo;
+import QQService.SvcRspGetDevLoginInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class den
-  implements IIconListener
+  extends FriendListObserver
 {
-  public den(PeopleAroundBaseActivity paramPeopleAroundBaseActivity) {}
+  public den(RecentLoginDevActivity paramRecentLoginDevActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  protected void c(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
   {
-    if ((paramBitmap != null) && (paramInt2 == 200))
+    RecentLoginDevActivity.b(this.a);
+    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
     {
-      int i = this.a.a.getChildCount();
-      paramInt2 = 0;
-      while (paramInt2 < i)
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult success");
+      }
+      RecentLoginDevActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecHistoryLoginDevInfo);
+      if (QLog.isColorLevel())
       {
-        paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
-        if ((paramBitmap != null) && ((paramBitmap instanceof PeopleAroundAdapter.ViewHolder)))
+        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "------------------------------------------------------------------------------");
+        paramSvcRspGetDevLoginInfo = RecentLoginDevActivity.a(this.a).iterator();
+        while (paramSvcRspGetDevLoginInfo.hasNext())
         {
-          paramBitmap = (PeopleAroundAdapter.ViewHolder)paramBitmap;
-          if ((paramBitmap.a == paramInt1) && (paramBitmap.c != null)) {
-            PeopleAroundBaseActivity.a(this.a, paramBitmap.c, paramInt1);
+          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
+          if (localSvcDevLoginInfo != null) {
+            QLog.d("Q.devlock.RecentLoginDevActivity", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
           }
         }
-        paramInt2 += 1;
+        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "------------------------------------------------------------------------------");
       }
+      RecentLoginDevActivity.a(this.a, RecentLoginDevActivity.a(this.a));
+      return;
     }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed isSuccess=" + paramBoolean);
+      if (paramSvcRspGetDevLoginInfo != null) {
+        break label288;
+      }
+      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed data is null");
+    }
+    for (;;)
+    {
+      QQToast.a(this.a.a(), 1, this.a.getString(2131562570), 0).b(this.a.d());
+      return;
+      label288:
+      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
+    }
+  }
+  
+  protected void c(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onDelHistoryDevResult isSuccess=" + paramBoolean + " errorMsg=" + paramString + " index=" + paramInt);
+    }
+    RecentLoginDevActivity.b(this.a);
+    if (paramBoolean)
+    {
+      ReportController.b(this.a.b, "CliOper", "", "", "My_eq", "Delete_eq", 0, 0, "", "", "", "");
+      if ((paramInt > -1) && (paramInt < RecentLoginDevActivity.a(this.a).size()))
+      {
+        RecentLoginDevActivity.a(this.a).remove(paramInt);
+        RecentLoginDevActivity.a(this.a, RecentLoginDevActivity.a(this.a));
+      }
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131561930), 0).b(this.a.d());
+      return;
+    }
+    if (TextUtils.isEmpty(paramString))
+    {
+      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131561764), 0).b(this.a.d());
+      return;
+    }
+    QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(this.a.d());
   }
 }
 

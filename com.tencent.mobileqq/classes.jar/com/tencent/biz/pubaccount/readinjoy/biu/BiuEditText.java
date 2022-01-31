@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.util.AttributeSet;
 import android.widget.EditText;
+import sgy;
+import sgz;
 
 public class BiuEditText
   extends EditText
@@ -12,11 +14,18 @@ public class BiuEditText
   public BiuEditText(Context paramContext)
   {
     super(paramContext);
+    a();
   }
   
   public BiuEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    a();
+  }
+  
+  private void a()
+  {
+    addTextChangedListener(new sgz());
   }
   
   public boolean onPrivateIMECommand(String paramString, Bundle paramBundle)
@@ -35,16 +44,16 @@ public class BiuEditText
     {
       return;
       Editable localEditable = getEditableText();
-      BiuNicknameSpan[] arrayOfBiuNicknameSpan = (BiuNicknameSpan[])localEditable.getSpans(paramInt1, paramInt2, BiuNicknameSpan.class);
-      if ((arrayOfBiuNicknameSpan != null) && (arrayOfBiuNicknameSpan.length > 0))
+      sgy[] arrayOfsgy = (sgy[])localEditable.getSpans(paramInt1, paramInt2, sgy.class);
+      if ((arrayOfsgy != null) && (arrayOfsgy.length > 0))
       {
-        int i = arrayOfBiuNicknameSpan.length;
+        int i = arrayOfsgy.length;
         paramInt2 = 0;
         while (paramInt2 < i)
         {
-          BiuNicknameSpan localBiuNicknameSpan = arrayOfBiuNicknameSpan[paramInt2];
-          int j = localEditable.getSpanStart(localBiuNicknameSpan);
-          int k = localEditable.getSpanEnd(localBiuNicknameSpan);
+          sgy localsgy = arrayOfsgy[paramInt2];
+          int j = localEditable.getSpanStart(localsgy);
+          int k = localEditable.getSpanEnd(localsgy);
           if ((j >= 0) && (k >= j) && (paramInt1 > j) && (paramInt1 < k))
           {
             setSelection(k);
@@ -58,7 +67,7 @@ public class BiuEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText
  * JD-Core Version:    0.7.0.1
  */

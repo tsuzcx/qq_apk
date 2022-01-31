@@ -1,54 +1,70 @@
-import android.os.Bundle;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Map;
 
-public class rkm
-  extends FriendListObserver
+class rkm
+  extends qzg
 {
-  public rkm(AddRequestActivity paramAddRequestActivity) {}
+  rkm(rkd paramrkd) {}
   
-  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
+  public ShareActionSheetBuilder.ActionSheetItem a(Integer paramInteger)
   {
-    if (AddRequestActivity.a(this.a))
+    if (24 == paramInteger.intValue())
     {
-      if (!paramBoolean) {
-        this.a.a(2130838739, this.a.getString(2131434464));
+      syw localsyw = new syw();
+      localsyw.label = rdm.a(rkd.a(this.jdField_a_of_type_Rkd).getSubscribeName());
+      localsyw.iconNeedBg = false;
+      localsyw.action = 24;
+      localsyw.argus = "";
+      Drawable localDrawable = bdhj.b();
+      if ((ors.w(rkd.a(this.jdField_a_of_type_Rkd))) || (rkd.a(this.jdField_a_of_type_Rkd).busiType == 1)) {}
+      for (paramInteger = bdbk.a(rkd.a(this.jdField_a_of_type_Rkd), 1, rkd.a(this.jdField_a_of_type_Rkd).getSubscribeUin(), 3, localDrawable, localDrawable);; paramInteger = localDrawable)
+      {
+        for (;;)
+        {
+          localsyw.iconDrawable = paramInteger;
+          return localsyw;
+          URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+          localURLDrawableOptions.mLoadingDrawable = localDrawable;
+          localURLDrawableOptions.mFailedDrawable = localDrawable;
+          try
+          {
+            if (TextUtils.isEmpty(rkd.a(this.jdField_a_of_type_Rkd).thirdIcon)) {}
+            for (paramInteger = new URL("http://pub.idqqimg.com/pc/misc/files/20191114/1014c7cfd33e4333b818ceecc0885938.png");; paramInteger = new URL(rkd.a(this.jdField_a_of_type_Rkd).thirdIcon))
+            {
+              paramInteger = URLDrawable.getDrawable(paramInteger, localURLDrawableOptions);
+              paramInteger.setDecodeHandler(bcyz.a);
+              break;
+            }
+            if (!QLog.isColorLevel()) {}
+          }
+          catch (MalformedURLException localMalformedURLException)
+          {
+            paramInteger = localDrawable;
+          }
+        }
+        QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "configVideoItemUI() ERROR e = " + localMalformedURLException.getMessage());
       }
     }
-    else {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("base_uin", paramString);
-    String str = this.a.b;
-    if (TextUtils.isEmpty(this.a.b)) {
-      str = this.a.a;
-    }
-    localBundle.putString("base_nick", str);
-    localBundle.putInt("verfy_type", AddRequestActivity.b(this.a));
-    localBundle.putString("verfy_msg", AddRequestActivity.a(this.a));
-    if (AddRequestActivity.a(this.a) != null) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localBundle.putBoolean("isFromWzry", paramBoolean);
-      AutoRemarkActivity.a(this.a, 0, paramString, 0L, localBundle);
-      return;
-    }
+    return super.a(paramInteger);
   }
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  protected void a()
   {
-    if ((paramBoolean) && (this.a.a != null) && (this.a.a.equals(paramString))) {
-      ThreadManager.post(new rkn(this), 5, null, true);
-    }
+    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(24), Integer.valueOf(24));
+    super.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rkm
  * JD-Core Version:    0.7.0.1
  */

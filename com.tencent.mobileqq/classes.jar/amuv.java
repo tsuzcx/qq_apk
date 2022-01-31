@@ -1,18 +1,39 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.PublishEventTag;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
+import com.tencent.qphone.base.util.QLog;
 
-public final class amuv
-  implements Parcelable.Creator
+class amuv
+  implements View.OnTouchListener
 {
-  public PublishEventTag a(Parcel paramParcel)
-  {
-    return new PublishEventTag(paramParcel);
-  }
+  amuv(amuu paramamuu) {}
   
-  public PublishEventTag[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new PublishEventTag[paramInt];
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    do
+    {
+      do
+      {
+        return true;
+        amuu.a(this.a).setAlpha(0.5F);
+        return true;
+        amuu.a(this.a).setAlpha(1.0F);
+        if (!amuu.a(this.a))
+        {
+          amul.a(true);
+          amuu.a(this.a, true);
+        }
+        amuu.a(this.a).setVisibility(8);
+        amuu.a(this.a).clearAnimation();
+      } while (amuu.a(this.a) == null);
+      amuu.a(this.a).g();
+    } while (!QLog.isColorLevel());
+    QLog.i("ARVideoRecordViewProxy", 2, "onMonitorUserOperation");
+    return true;
   }
 }
 

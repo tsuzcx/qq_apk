@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0dip" android:layout_gravity="center" android:id="@id/loading" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h05" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <com.tencent.widget.XListView android:id="@id/ebs" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:dividerHeight="0.0dip" android:overScrollMode="never" />
+            <ViewStub android:id="@id/bx4" android:layout="@layout/ayx" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/ac1" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_weight="0.0">
+            <Button android:textSize="@dimen/i9" android:layout_gravity="center_vertical" android:id="@id/ir0" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="@dimen/i1" android:layout_marginRight="10.0dip" android:text="@string/qyt" android:layout_weight="1.0" style="@style/e2" />
+            <Button android:textSize="@dimen/i9" android:layout_gravity="center_vertical" android:id="@id/hl" android:layout_width="0.0dip" android:layout_height="@dimen/i1" android:text="@string/qys" android:layout_weight="1.0" style="@style/e0" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

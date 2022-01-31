@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
 
 public class ahdv
-  implements Runnable
+  implements aiem
 {
-  public ahdv(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
+  public ahdv(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment) {}
   
-  public void run()
+  public void a(MotionEvent paramMotionEvent)
   {
-    ReceiptMessageDetailFragment.a(this.a);
+    this.a.a.a(paramMotionEvent);
   }
 }
 

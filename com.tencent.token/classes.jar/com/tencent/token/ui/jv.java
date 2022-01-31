@@ -2,15 +2,19 @@ package com.tencent.token.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.token.do;
 
-final class jv
+class jv
   implements DialogInterface.OnClickListener
 {
-  jv(jl paramjl) {}
+  jv(jt paramjt) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FaceStartVryCameraActivity.access$1300(this.a.a);
+    if (do.a().e() == null) {
+      return;
+    }
+    FreezeStatusActivity.access$300(this.a.a);
   }
 }
 

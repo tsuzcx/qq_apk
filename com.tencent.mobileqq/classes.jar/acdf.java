@@ -1,57 +1,61 @@
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.app.Dialog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
-public final class acdf
-  implements Runnable
+public class acdf
+  implements View.OnClickListener
 {
-  public void run()
+  public acdf(AddFriendVerifyActivity paramAddFriendVerifyActivity, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EmojiStickerManager", 2, "extractStickerMaterial, start");
-    }
-    String str = EmojiStickerManager.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("EmojiStickerManager", 2, "extractStickerMaterial, rootPath = " + str);
-    }
-    Object localObject = new File(str);
-    if (((File)localObject).exists())
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidViewInputmethodInputMethodManager != null)
     {
-      localObject = ((File)localObject).list();
-      if ((localObject == null) || (localObject.length <= 1)) {
-        break label113;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("EmojiStickerManager", 2, "extractStickerMaterial, list.length =  " + localObject.length);
-      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getWindow().setSoftInputMode(2);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
     }
-    return;
-    label113:
-    if (QLog.isColorLevel()) {
-      QLog.i("EmojiStickerManager", 2, "extractStickerMaterial, need to extract  ");
-    }
-    localObject = str + "emojiStickerGuideZip_v2" + ".zip";
-    try
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString().length() > 30)
     {
-      FileUtils.a((String)localObject, str, false);
+      paramView = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 2131755801);
+      paramView.setContentView(2131562577);
+      ((TextView)paramView.findViewById(2131365233)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131691149));
+      ((ProgressBar)paramView.findViewById(2131366695)).setVisibility(8);
+      ((ImageView)paramView.findViewById(2131379354)).setImageResource(2130839407);
+      paramView.show();
+    }
+    for (;;)
+    {
       return;
-    }
-    catch (IOException localIOException)
-    {
-      QLog.e("EmojiStickerManager", 1, "extractStickerMaterial uncompressZip error = " + localIOException);
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      QLog.e("EmojiStickerManager", 1, "extractStickerMaterial uncompressZip error = " + localOutOfMemoryError);
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(paramView, false);
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131692134).equals(paramView)) && (!AddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))) {
+        AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
+      if (this.jdField_a_of_type_Int == 0) {
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X800796F", "0X800796F", 0, 0, "", "", "", "");
+      }
+      while (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.c))
+      {
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
+        return;
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X8007976", "0X8007976", 0, 0, "", "", "", "");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acdf
  * JD-Core Version:    0.7.0.1
  */

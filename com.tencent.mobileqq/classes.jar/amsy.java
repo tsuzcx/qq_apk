@@ -1,68 +1,33 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.pluginsdk.PluginTab;
-import com.tencent.mobileqq.widget.QzoneProgressDialog;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.PluginParams;
-import cooperation.qzone.util.QZoneExceptionReport;
+import java.util.HashSet;
 
 class amsy
-  implements Runnable
+  implements SoundPool.OnLoadCompleteListener
 {
-  amsy(amsx paramamsx, String paramString, boolean paramBoolean1, boolean paramBoolean2, IPluginManager.PluginParams paramPluginParams) {}
+  amsy(amsu paramamsu) {}
   
-  public void run()
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    boolean bool = true;
-    Object localObject1 = this.jdField_a_of_type_Amsx.jdField_a_of_type_AndroidAppActivity;
-    Object localObject2;
-    if ((this.jdField_a_of_type_Amsx.jdField_a_of_type_AndroidAppActivity instanceof BasePluginActivity))
+    if (paramInt2 != 0) {}
+    try
     {
-      localObject2 = ((BasePluginActivity)this.jdField_a_of_type_Amsx.jdField_a_of_type_AndroidAppActivity).getOutActivity();
-      QLog.w("QzonePluginProxyActivity", 1, "参数错误，尝试进行兼容" + this.jdField_a_of_type_JavaLangString + ",context:" + this.jdField_a_of_type_Amsx.jdField_a_of_type_AndroidAppActivity);
-      localObject1 = localObject2;
-      if (localObject2 != null)
-      {
-        localObject1 = localObject2;
-        if ((localObject2 instanceof PluginTab)) {
-          localObject1 = ((PluginTab)localObject2).getOutActivity();
-        }
-      }
+      QLog.e("ARMusicController", 2, "load fire music failed. id=" + paramInt1);
+      return;
     }
-    for (;;)
+    catch (Exception paramSoundPool)
     {
-      if ((localObject1 == null) || ((localObject1 instanceof BasePluginActivity)))
-      {
-        QLog.e("QzonePluginProxyActivity", 1, "activity 参数错误，尝试进行兼容失败");
-        QZoneExceptionReport.a(new IllegalArgumentException("跳转参数传递错误 activityName：" + this.jdField_a_of_type_JavaLangString + ",context:" + this.jdField_a_of_type_Amsx.jdField_a_of_type_AndroidAppActivity), "跳转错误");
-        return;
-      }
-      Intent localIntent = null;
-      localObject2 = localIntent;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        localObject2 = localIntent;
-        if (!this.b)
-        {
-          localObject2 = new QzoneProgressDialog((Context)localObject1, this.jdField_a_of_type_Amsx.jdField_a_of_type_AndroidContentIntent);
-          ((QzoneProgressDialog)localObject2).a("  正在加载...");
-          ((QzoneProgressDialog)localObject2).setOnDismissListener(new amsz(this));
-        }
-      }
-      localIntent = this.jdField_a_of_type_Amsx.jdField_a_of_type_AndroidContentIntent;
-      if (localObject2 != null) {}
-      for (;;)
-      {
-        localIntent.putExtra("QZoneExtra.Plugin.isloading", bool);
-        this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a = ((Dialog)localObject2);
-        IPluginManager.a((Activity)localObject1, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
-        return;
-        bool = false;
-      }
+      paramSoundPool.printStackTrace();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMusicController", 2, "load fire music success. id=" + paramInt1);
+    }
+    amsu.a(this.a).add(Integer.valueOf(paramInt1));
+    if (amsu.b(this.a).contains(Integer.valueOf(paramInt1)))
+    {
+      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
+      return;
     }
   }
 }

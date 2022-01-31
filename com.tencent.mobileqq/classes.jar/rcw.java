@@ -1,20 +1,34 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
+import android.annotation.SuppressLint;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class rcw
-  implements Runnable
+@SuppressLint({"HandlerLeak"})
+class rcw
+  extends Handler
 {
-  public rcw(LiteTransferWrapper paramLiteTransferWrapper, String paramString) {}
+  private rcw(rcp paramrcp) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) != 0L) {
-      this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetThumbPathToJNI(LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_JavaLangString);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsFloatWindowManager", 2, "floating window msg time out: " + paramMessage.what);
+      }
+      return;
+      rcp.b(this.a);
+      continue;
+      this.a.h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rcw
  * JD-Core Version:    0.7.0.1
  */

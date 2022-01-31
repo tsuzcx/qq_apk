@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class QQProtectCommon$QQProtectQueryHead
-  extends MessageMicro
+  extends MessageMicro<QQProtectQueryHead>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field app_id = PBField.initUInt32(0);
@@ -35,7 +35,7 @@ public final class QQProtectCommon$QQProtectQueryHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.QQProtectCommon.QQProtectQueryHead
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoWifi;
 
-public class ampy
-  implements DialogInterface.OnDismissListener
+public final class ampy
+  implements Parcelable.Creator<SosoInterface.SosoWifi>
 {
-  public ampy(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public SosoInterface.SosoWifi a(Parcel paramParcel)
   {
-    if (this.a.a) {
-      QQIndividualityBridgeActivity.b(this.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQIndividuality", 2, "dialog dismiss: " + this.a.a);
-    }
+    return new SosoInterface.SosoWifi(paramParcel);
+  }
+  
+  public SosoInterface.SosoWifi[] a(int paramInt)
+  {
+    return new SosoInterface.SosoWifi[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampy
  * JD-Core Version:    0.7.0.1
  */

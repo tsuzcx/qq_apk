@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c03f4" />
-    <item android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c03f5" />
-</selector>

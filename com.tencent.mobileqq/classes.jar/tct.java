@@ -1,33 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class tct
-  implements DialogInterface.OnClickListener
+class tct
+  implements View.OnClickListener
 {
-  public tct(NotificationActivity paramNotificationActivity) {}
+  tct(tcs paramtcs, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    try
-    {
-      ReportController.b(null, "P_CliOper", "Safe_StartAppCheck", "", "DIALOG_PACKAGE_INVALID", "LeftButton", 0, 0, "", "", "", "");
-      this.a.finish();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
+    if (tcs.a(this.jdField_a_of_type_Tcs) != null) {
+      tcs.a(this.jdField_a_of_type_Tcs).a(paramView, 12, this.jdField_a_of_type_Int, tcs.a(this.jdField_a_of_type_Tcs));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tct
  * JD-Core Version:    0.7.0.1
  */

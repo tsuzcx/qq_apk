@@ -1,31 +1,77 @@
 import android.content.Context;
-import android.view.View;
-import com.tencent.biz.qqstory.shareGroup.addvideo.AddVideoController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
-public class nrk
-  implements ActionSheet.OnButtonClickListener
+class nrk
+  implements BusinessObserver
 {
-  public nrk(AddVideoController paramAddVideoController, ActionSheet paramActionSheet, Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3) {}
+  nrk(nrc paramnrc, NewIntent paramNewIntent, Context paramContext, String paramString, BusinessObserver paramBusinessObserver, QQAppInterface paramQQAppInterface) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupAddvideoAddVideoController.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, true, this.jdField_b_of_type_Int, this.c);
+    Object localObject1 = null;
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    if (!paramBoolean) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupAddvideoAddVideoController.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.c);
+    for (;;)
+    {
+      try
+      {
+        localObject2 = paramBundle.getByteArray("data");
+        paramBundle = new mobileqq_mp.SendMenuEventResponse();
+      }
+      catch (Exception paramBundle)
+      {
+        try
+        {
+          paramBundle.mergeFrom((byte[])localObject2);
+          Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("menuEventSharePre", 0);
+          localObject1 = paramBundle;
+          if (((SharedPreferences)localObject2).contains(this.jdField_a_of_type_JavaLangString))
+          {
+            localObject1 = paramBundle;
+            if (paramBundle.seqno.has())
+            {
+              localObject1 = paramBundle;
+              if (paramBundle.seqno.get() != ((SharedPreferences)localObject2).getInt(this.jdField_a_of_type_JavaLangString, 0))
+              {
+                if (this.jdField_a_of_type_MqqObserverBusinessObserver != null) {
+                  this.jdField_a_of_type_Nrc.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverBusinessObserver, true);
+                }
+                localObject1 = ((SharedPreferences)localObject2).edit();
+                ((SharedPreferences.Editor)localObject1).putInt(this.jdField_a_of_type_JavaLangString, paramBundle.seqno.get());
+                ((SharedPreferences.Editor)localObject1).commit();
+                localObject1 = paramBundle;
+              }
+            }
+          }
+          if (localObject1 != null) {
+            break;
+          }
+          return;
+        }
+        catch (Exception localException)
+        {
+          break label187;
+        }
+        paramBundle = paramBundle;
+        paramBundle = (Bundle)localObject1;
+      }
+      label187:
+      localObject1 = paramBundle;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nrk
  * JD-Core Version:    0.7.0.1
  */

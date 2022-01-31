@@ -1,17 +1,8 @@
-import com.tencent.mobileqq.troop.activity.TroopAdminList;
-import com.tencent.mobileqq.troop.activity.TroopAdminList.AdminListAdapter;
-
-class aivb
-  implements Runnable
+public abstract interface aivb
 {
-  aivb(aiva paramaiva) {}
+  public abstract void a();
   
-  public void run()
-  {
-    if (this.a.a.a != null) {
-      this.a.a.a.notifyDataSetChanged();
-    }
-  }
+  public abstract void a(Object paramObject);
 }
 
 

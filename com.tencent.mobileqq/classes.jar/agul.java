@@ -1,39 +1,142 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.qcall.LightalkSwitchHanlder;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class agul
-  implements DialogInterface.OnClickListener
+  implements BusinessObserver
 {
-  agul(aguk paramaguk, QQCustomDialog paramQQCustomDialog, long paramLong) {}
+  agul(agti paramagti) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    boolean bool = true;
-    if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "success:" + String.valueOf(paramBoolean));
     }
-    while (paramInt != 1) {
-      return;
+    int k = 1;
+    paramInt = 1;
+    int j;
+    if (!paramBoolean)
+    {
+      this.a.B(2131695729);
+      j = paramInt;
     }
-    paramDialogInterface = QCallDetailActivity.a(this.jdField_a_of_type_Aguk.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
-    long l = this.jdField_a_of_type_Long;
-    if (!this.jdField_a_of_type_Aguk.jdField_a_of_type_Boolean) {}
     for (;;)
     {
-      paramDialogInterface.a(l, bool);
-      QCallDetailActivity.a(this.jdField_a_of_type_Aguk.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).a((byte)0);
+      if (j != 0) {
+        this.a.bs();
+      }
       return;
-      bool = false;
+      j = paramInt;
+      if (!paramBoolean) {
+        continue;
+      }
+      int i = k;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        j = paramInt;
+        if (paramBundle == null) {
+          continue;
+        }
+        i = k;
+        mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+        i = k;
+        localFollowResponse.mergeFrom(paramBundle);
+        i = k;
+        j = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        if (j == 0)
+        {
+          i = k;
+          nrt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0x8005750", "0x8005750", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "", false);
+          i = k;
+          paramBundle = (alzl)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
+          if (paramBundle != null)
+          {
+            i = k;
+            paramBundle = paramBundle.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+            if (paramBundle != null)
+            {
+              i = k;
+              if (this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler == null)
+              {
+                i = k;
+                this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler = ((PublicAccountHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11));
+              }
+              i = k;
+              this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.a(paramBundle);
+              paramInt = 1;
+              break label488;
+            }
+          }
+        }
+        label488:
+        for (;;)
+        {
+          i = paramInt;
+          this.a.T = true;
+          i = paramInt;
+          this.a.Y = true;
+          i = paramInt;
+          this.a.bt();
+          j = paramInt;
+          i = paramInt;
+          if (!this.a.an) {
+            break;
+          }
+          j = paramInt;
+          i = paramInt;
+          if (agti.a(this.a) == null) {
+            break;
+          }
+          i = paramInt;
+          agti.b(this.a).d();
+          j = paramInt;
+          break;
+          i = k;
+          this.a.E();
+          paramInt = 0;
+          break label488;
+          i = k;
+          this.a.E();
+          paramInt = 0;
+          continue;
+          if (j == 58)
+          {
+            i = k;
+            this.a.B(2131695726);
+            j = paramInt;
+            break;
+          }
+          if (j == 65)
+          {
+            i = k;
+            this.a.B(2131695699);
+            j = paramInt;
+            break;
+          }
+          i = k;
+          this.a.B(2131695729);
+          j = paramInt;
+          break;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        j = i;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agul
  * JD-Core Version:    0.7.0.1
  */

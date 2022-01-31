@@ -1,18 +1,20 @@
-import dov.com.qq.im.capture.data.CaptureSet;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.1.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class anll
-  implements Runnable
+  implements anlq
 {
-  public anll(CaptureSet paramCaptureSet) {}
+  anll(anlk paramanlk) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    this.a.c();
+    ArkAppCenter.a().post(this.a.a, new ArkAppYYBDownloadModule.1.1(this, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anll
  * JD-Core Version:    0.7.0.1
  */

@@ -1,95 +1,38 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.Surface;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUVideoFrameRender;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.tracker.SimpleStickerTrackerOrigin;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.tracker.TrackingDecoderListener;
 
 public class aonn
-  implements TrackingDecoderListener
 {
-  public aonn(SimpleStickerTrackerOrigin paramSimpleStickerTrackerOrigin) {}
+  public String a = "";
   
-  public Surface a()
+  public static aonn a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleStickerTrackerOrigin", 2, "getSurface TrackingDecoderListener , thread id=" + Thread.currentThread().getId());
-    }
-    if (SimpleStickerTrackerOrigin.a(this.a) != null)
+    if (paramString == null) {}
+    do
     {
-      SimpleStickerTrackerOrigin.a(this.a).a(SimpleStickerTrackerOrigin.a(this.a), SimpleStickerTrackerOrigin.b(this.a));
-      return SimpleStickerTrackerOrigin.a(this.a).a();
-    }
+      return null;
+      try
+      {
+        aonn localaonn = new aonn();
+        localaonn.a = paramString;
+        QLog.d("ConfBean", 2, "confBean = " + localaonn.toString());
+        return localaonn;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
     return null;
   }
   
-  public void a()
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleStickerTrackerOrigin", 2, "HWDecodeListener onDecodeStart");
-    }
-    SimpleStickerTrackerOrigin.a(this.a, 0);
-    SimpleStickerTrackerOrigin.a(this.a, System.currentTimeMillis());
-    if (SimpleStickerTrackerOrigin.a(this.a) != null)
-    {
-      Message localMessage = SimpleStickerTrackerOrigin.a(this.a).obtainMessage(2);
-      SimpleStickerTrackerOrigin.a(this.a).sendMessage(localMessage);
-    }
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("configContent:").append(this.a);
+    return localStringBuilder.toString();
   }
-  
-  public void a(int paramInt, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleStickerTrackerOrigin", 2, "HWDecodeListener onDecodeError");
-    }
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (SimpleStickerTrackerOrigin.a(this.a) != null)
-    {
-      SimpleStickerTrackerOrigin.a(this.a).a(paramLong2);
-      SimpleStickerTrackerOrigin.a(this.a).b(true);
-      if (SimpleStickerTrackerOrigin.a(this.a) != null) {
-        this.a.a(paramLong2);
-      }
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleStickerTrackerOrigin", 2, "HWDecodeListener onDecodeRenderData timestampNanos = " + paramLong + ", data =" + paramArrayOfByte + ", thread id=" + Thread.currentThread().getId());
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleStickerTrackerOrigin", 2, "HWDecodeListener onDecodeFinish");
-    }
-    if (SimpleStickerTrackerOrigin.a(this.a) != null)
-    {
-      Message localMessage = SimpleStickerTrackerOrigin.a(this.a).obtainMessage(4);
-      SimpleStickerTrackerOrigin.a(this.a).sendMessage(localMessage);
-    }
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleStickerTrackerOrigin", 2, "HWDecodeListener onDecodeCancel");
-    }
-  }
-  
-  public void d() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aonn
  * JD-Core Version:    0.7.0.1
  */

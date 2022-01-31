@@ -1,35 +1,27 @@
-import com.tencent.mobileqq.activity.DevlockPushActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
 
 public class sjh
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public sjh(DevlockPushActivity paramDevlockPushActivity) {}
+  public sjh(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    try
-    {
-      if ((this.a.a != null) && (this.a.a.isShowing()))
-      {
-        this.a.a.dismiss();
-        this.a.a.cancel();
-      }
-      this.a.a = null;
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.a, false);
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.a);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.a, true);
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sjh
  * JD-Core Version:    0.7.0.1
  */

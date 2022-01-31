@@ -9,8 +9,8 @@ import java.util.Map;
 public final class QzmallFeedDecoGetRsp
   extends JceStruct
 {
-  static Map cache_mapRsp = new HashMap();
-  public Map mapRsp;
+  static Map<Long, byte[]> cache_mapRsp = new HashMap();
+  public Map<Long, byte[]> mapRsp;
   
   static
   {
@@ -21,7 +21,7 @@ public final class QzmallFeedDecoGetRsp
   
   public QzmallFeedDecoGetRsp() {}
   
-  public QzmallFeedDecoGetRsp(Map paramMap)
+  public QzmallFeedDecoGetRsp(Map<Long, byte[]> paramMap)
   {
     this.mapRsp = paramMap;
   }

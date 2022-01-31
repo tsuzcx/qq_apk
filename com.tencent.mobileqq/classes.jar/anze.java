@@ -1,18 +1,21 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
 public class anze
-  implements Runnable
+  implements View.OnClickListener
 {
-  public anze(DoodleLayout paramDoodleLayout) {}
+  public anze(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    DoodleLayout.a(this.a);
+    paramView = (anzj)paramView.getTag();
+    this.a.a(paramView.jdField_a_of_type_JavaLangString, paramView.b, paramView.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anze
  * JD-Core Version:    0.7.0.1
  */

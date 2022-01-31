@@ -1,24 +1,32 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import com.tencent.mobileqq.vas.PendantInfo;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
 
-class srz
-  implements Runnable
+public class srz
+  implements TextWatcher
 {
-  srz(sry paramsry, ExtensionInfo paramExtensionInfo) {}
+  public srz(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_Sry.a.b.setVisibility(0);
-    ((AvatarPendantManager)this.jdField_a_of_type_Sry.a.app.getManager(45)).a(this.jdField_a_of_type_Sry.a.a).a(this.jdField_a_of_type_Sry.a.b, 1, PendantInfo.d, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.uin, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
+    if (TextUtils.isEmpty(ReadInJoyNewSearchActivity.a(this.a).getText().toString()))
+    {
+      ReadInJoyNewSearchActivity.a(this.a).setVisibility(8);
+      return;
+    }
+    ReadInJoyNewSearchActivity.a(this.a).setVisibility(0);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     srz
  * JD-Core Version:    0.7.0.1
  */

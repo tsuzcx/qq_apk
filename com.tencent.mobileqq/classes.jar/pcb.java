@@ -1,35 +1,50 @@
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import com.tencent.biz.pubaccount.util.OfflineUpdateStatus;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
-public class pcb
-  implements Runnable
+class pcb
+  implements TVK_SDKMgr.OnLogListener
 {
-  public pcb(OfflinePlugin paramOfflinePlugin) {}
-  
-  public void run()
+  public int d(String paramString1, String paramString2)
   {
-    if (OfflinePlugin.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      OfflineUpdateStatus localOfflineUpdateStatus = (OfflineUpdateStatus)OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.get(OfflinePlugin.a(this.a));
-      if ((localOfflineUpdateStatus != null) && (localOfflineUpdateStatus.b() == 1))
-      {
-        if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-          this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        }
-        if (this.a.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-          this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        }
-        localOfflineUpdateStatus.b(2);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
     }
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2);
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pcb
  * JD-Core Version:    0.7.0.1
  */

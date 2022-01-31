@@ -9,8 +9,8 @@ public final class ProxyIpChannel
   extends JceStruct
 {
   static ArrayList cache_vProxy_iplists;
-  public int iReconnect;
-  public ArrayList vProxy_iplists;
+  public int iReconnect = 0;
+  public ArrayList vProxy_iplists = null;
   
   public ProxyIpChannel() {}
   

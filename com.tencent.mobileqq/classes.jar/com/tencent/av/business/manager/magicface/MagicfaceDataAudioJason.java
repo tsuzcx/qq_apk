@@ -3,9 +3,9 @@ package com.tencent.av.business.manager.magicface;
 public class MagicfaceDataAudioJason
 {
   private static final String TAG = "MagicfaceDataAudioJason";
-  int frame_index = 0;
-  boolean is_repeat = false;
-  String src;
+  public int frame_index = 0;
+  public boolean is_repeat = false;
+  public String src;
 }
 
 

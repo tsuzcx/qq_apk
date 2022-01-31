@@ -1,60 +1,134 @@
-import com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.data.MessageForStructing;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Build;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public final class llg
-  implements Runnable
+public class llg
+  extends lld
 {
-  public llg(MessageForStructing paramMessageForStructing, RecentBaseData paramRecentBaseData, String paramString) {}
+  private static int jdField_c_of_type_Int = -1;
+  static long d = 30000L;
+  long jdField_c_of_type_Long = 0L;
   
-  public void run()
+  public llg(VideoAppInterface paramVideoAppInterface)
   {
-    JSONObject localJSONObject = new JSONObject();
-    boolean bool = WeishiReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing);
+    super(paramVideoAppInterface);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface)
+  {
+    return ((llc)paramVideoAppInterface.a(5)).a(2, "ptu_so");
+  }
+  
+  public static boolean b()
+  {
+    return jdField_c_of_type_Int == 1;
+  }
+  
+  private boolean c()
+  {
+    if (d()) {}
+    do
+    {
+      return true;
+      if (this.jdField_a_of_type_Int < 17)
+      {
+        lek.c("SupportPendant", "isUserEffectFace error  OSversion:" + this.jdField_a_of_type_Int);
+        return false;
+      }
+      if (this.jdField_b_of_type_Int < 4)
+      {
+        lek.c("SupportPendant", "isUserEffectFace error cpucount:" + this.jdField_b_of_type_Int);
+        return false;
+      }
+      if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_Long < 1400000L))
+      {
+        lek.c("SupportPendant", "isUserEffectFace error cpuFrequency:" + this.jdField_a_of_type_Long);
+        return false;
+      }
+    } while (this.jdField_b_of_type_Long >= 1073741824L);
+    lek.c("SupportPendant", "isUserEffectFace error  memory:" + this.jdField_b_of_type_Long);
+    return false;
+  }
+  
+  private static boolean d()
+  {
+    String str = Build.MODEL;
+    if (TextUtils.isEmpty(str)) {
+      return false;
+    }
+    return str.equals("MI 5");
+  }
+  
+  public int a(String paramString)
+  {
+    return 0;
+  }
+  
+  public boolean a()
+  {
+    if (jdField_c_of_type_Int != 1)
+    {
+      if (azkt.a(BaseApplicationImpl.getContext())) {
+        break label138;
+      }
+      long l1 = System.currentTimeMillis();
+      if (l1 <= this.jdField_c_of_type_Long) {
+        break label121;
+      }
+      long l2 = AudioHelper.c();
+      if (!this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.g()) {
+        break label114;
+      }
+      jdField_c_of_type_Int = 1;
+      long l3 = AudioHelper.c();
+      QLog.w("SupportPendant", 1, "isDownloadedPTUSO, isFilterSoDownLoadSuc[" + jdField_c_of_type_Int + "], cost[" + (l3 - l2) + "]");
+      this.jdField_c_of_type_Long = (l1 + d);
+    }
+    label138:
     for (;;)
     {
-      try
-      {
-        localJSONObject.put("folder_status", WeishiReportUtil.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing));
-        if ((bool) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData != null))
-        {
-          str1 = "";
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.b != 1) {
-            continue;
-          }
-          str1 = "1";
-          localJSONObject.put("reddot_style", str1);
-          localJSONObject.put("algorithm_id", WeishiReportUtil.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing));
-        }
-        localJSONObject.put("EnterType", this.jdField_a_of_type_JavaLangString);
+      if (jdField_c_of_type_Int != 1) {
+        break label145;
       }
-      catch (JSONException localJSONException)
+      return true;
+      label114:
+      jdField_c_of_type_Int = 0;
+      break;
+      label121:
+      if (QLog.isDevelopLevel())
       {
-        String str1;
-        String str2;
-        localJSONException.printStackTrace();
+        QLog.w("SupportPendant", 1, "isDownloadedPTUSO, 频繁调用");
         continue;
-      }
-      str2 = "0";
-      str1 = "0";
-      if (bool)
-      {
-        str2 = WeishiReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing);
-        str1 = WeishiReportUtil.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing);
-      }
-      WeishiReportUtil.a(str2, str1, "0X8009291", localJSONObject.toString());
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.b == 2) {
-        str1 = "0";
+        jdField_c_of_type_Int = 1;
       }
     }
+    label145:
+    return false;
   }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if ("ptu_so".equalsIgnoreCase(paramString)) {
+      return a();
+    }
+    return c();
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     llg
  * JD-Core Version:    0.7.0.1
  */

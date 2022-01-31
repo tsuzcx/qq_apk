@@ -1,195 +1,65 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.ExtraInfo;
-import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.RspBody;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
+import java.util.List;
 
-public class sdo
-  extends TroopObserver
+class sdo
 {
-  public sdo(ChatSettingForTroop paramChatSettingForTroop) {}
+  public long a;
+  public List<Pair<Long, Long>> a;
+  private boolean a;
+  public long b;
+  public List<Pair<Long, Long>> b;
+  public long c;
+  public long d;
+  public long e;
   
-  protected void a(int paramInt1, int paramInt2)
+  public sdo(long paramLong)
   {
-    boolean bool = false;
-    if (QLog.isColorLevel())
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData != null) {
-        bool = true;
-      }
-      QLog.d("Q.chatopttroop", 2, new Object[] { "onTroopManagerFailed. reqType=", Integer.valueOf(paramInt1), ", result=", Integer.valueOf(paramInt2), ", hasTroopInfoData=", Boolean.valueOf(bool) });
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Long = paramLong;
+    if (this.jdField_a_of_type_Long <= 0L) {
+      this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {}
+  }
+  
+  public void a(long paramLong, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaUtilList.size() >= 30) {
+      return;
+    }
+    this.d = NetConnInfoCenter.getServerTimeMillis();
+    if (this.jdField_b_of_type_Long == 0L) {
+      this.jdField_b_of_type_Long = this.d;
+    }
+    this.e = paramLong;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(long paramLong, boolean paramBoolean)
+  {
+    this.c = NetConnInfoCenter.getServerTimeMillis();
+    if (this.jdField_a_of_type_JavaUtilList.size() >= 30) {}
     do
     {
       return;
-      if ((1 == paramInt1) && ((this.a.isResume()) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.cGroupOption == 1)))
-      {
-        this.a.s();
-        TroopUtils.a(this.a, paramInt2);
-        this.a.b = null;
-        return;
-      }
-    } while ((!this.a.isResume()) || ((paramInt1 != 2) && (paramInt1 != 9)));
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this.a);
+      l3 = (this.c - this.d) / 100L;
+    } while (l3 == 0L);
+    long l1 = paramLong - this.e;
+    long l2 = (this.c - this.jdField_a_of_type_Long) / 100L;
+    long l3 = Utils.px2dp((float)(l1 / l3));
+    this.jdField_a_of_type_JavaUtilList.add(new Pair(Long.valueOf(l3), Long.valueOf(l2)));
+    if ((this.jdField_a_of_type_Boolean) || (paramBoolean)) {
+      this.jdField_b_of_type_JavaUtilList.add(new Pair(Long.valueOf(this.c - this.d), Long.valueOf(l1)));
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131435287, 1500);
-    this.a.finish();
-  }
-  
-  protected void a(int paramInt1, int paramInt2, String paramString)
-  {
-    Object localObject;
-    boolean bool;
-    if (QLog.isColorLevel())
-    {
-      if (TextUtils.isEmpty(paramString))
-      {
-        localObject = "";
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {
-          break label107;
-        }
-        bool = true;
-        label30:
-        QLog.d("Q.chatopttroop", 2, new Object[] { "onTroopManagerSuccess. reqType=", Integer.valueOf(paramInt1), ", result=", Integer.valueOf(paramInt2), ", troopUin=", localObject, ", hasTroopInfoData=", Boolean.valueOf(bool) });
-      }
-    }
-    else {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData != null) {
-        break label113;
-      }
-    }
-    label107:
-    label113:
-    do
-    {
-      for (;;)
-      {
-        return;
-        localObject = paramString;
-        break;
-        bool = false;
-        break label30;
-        if ((1 == paramInt1) && ((this.a.isResume()) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.cGroupOption == 1)))
-        {
-          this.a.s();
-          if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
-            this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this.a);
-          }
-          switch (paramInt2)
-          {
-          default: 
-            this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131434466, 1500);
-          }
-          for (;;)
-          {
-            this.a.b = null;
-            return;
-            this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131434465, 1500);
-            this.a.finish();
-            ChatSettingForTroop.g(this.a);
-            localObject = (TroopManager)this.a.app.getManager(51);
-            if (localObject != null)
-            {
-              ((TroopManager)localObject).d(((TroopManager)localObject).a(paramString));
-              continue;
-              this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131434431, 1500);
-            }
-          }
-        }
-        if (this.a.isResume())
-        {
-          if (paramInt1 != 3) {
-            break label483;
-          }
-          if (paramInt2 == 0)
-          {
-            paramString = (TroopManager)this.a.app.getManager(51);
-            if (paramString == null) {}
-            for (paramString = null;; paramString = paramString.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin))
-            {
-              if ((paramString == null) || (paramString.wMemberNum == this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.wMemberNum)) {
-                break label481;
-              }
-              this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.updateTroopAdmMemberNum(paramString.Administrator, paramString.wMemberNum, this.a.app.getCurrentAccountUin(), this.a.getResources());
-              if (this.a.c == null) {
-                break;
-              }
-              this.a.c.setText("共" + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.wMemberNum + "人");
-              return;
-            }
-          }
-        }
-      }
-    } while ((paramInt1 != 2) && (paramInt1 != 9));
-    label481:
-    label483:
-    if (paramInt2 == 0)
-    {
-      QQToast.a(this.a, 2, "操作成功", 0).a();
-      paramString = new Intent();
-      paramString.putExtra("isNeedFinish", true);
-      this.a.setResult(-1, paramString);
-      this.a.finish();
-      return;
-    }
-    QQToast.a(this.a, 1, "操作失败", 0).a();
-  }
-  
-  protected void a(oidb_0xaf4.RspBody paramRspBody, int paramInt)
-  {
-    if (paramRspBody.group_id.has())
-    {
-      localObject = String.valueOf(paramRspBody.group_id.get());
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData != null) && (!TextUtils.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, (CharSequence)localObject))) {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.chatopttroop", 2, "onGetNewTroopAppList troopUin not match. rsp uin=" + (String)localObject + ", current uin=" + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-        }
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      Object localObject;
-      do
-      {
-        do
-        {
-          return;
-        } while (paramInt != 3);
-        if (QLog.isColorLevel()) {
-          QLog.d("raymondguo", 2, "game feed service type 3 refresh");
-        }
-        localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[29];
-      } while (localObject == null);
-      if (paramRspBody.extra_info.tab_infos.size() > 0)
-      {
-        ((View)localObject).setVisibility(0);
-        this.a.b(paramRspBody.extra_info.tab_infos.get());
-        return;
-      }
-      ((View)localObject).setVisibility(8);
-      return;
-    }
-    QLog.e("Q.chatopttroop", 2, "onGetNewTroopAppList service 3 group_id lost. current uin=" + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+    this.e = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sdo
  * JD-Core Version:    0.7.0.1
  */

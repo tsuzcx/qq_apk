@@ -1,22 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
 
-class mhh
-  implements Runnable
+public class mhh
+  implements DialogInterface.OnDismissListener
 {
-  mhh(mhf parammhf) {}
+  public mhh(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.notifyDataSetChanged();
-    if ((!this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a()) && (!this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.c())) {
-      ReadInJoyBaseAdapter.a(this.a.a, this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView, 0);
-    }
+    this.a.b("onDismiss");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mhh
  * JD-Core Version:    0.7.0.1
  */

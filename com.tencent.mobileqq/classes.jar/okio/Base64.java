@@ -9,130 +9,116 @@ final class Base64
   
   public static byte[] decode(String paramString)
   {
-    int i1 = paramString.length();
+    int n = paramString.length();
+    int i;
     byte[] arrayOfByte;
+    int i1;
     int m;
     int k;
-    int i2;
-    int i;
-    for (;;)
-    {
-      if (i1 <= 0) {}
-      do
-      {
-        arrayOfByte = new byte[(int)(i1 * 6L / 8L)];
-        m = 0;
-        k = 0;
-        i2 = 0;
-        i = 0;
-        if (i2 < i1) {
-          break;
-        }
-        m %= 4;
-        if (m != 1) {
-          break label353;
-        }
-        paramString = null;
-        return paramString;
-        i = paramString.charAt(i1 - 1);
-      } while ((i != 61) && (i != 10) && (i != 13) && (i != 32) && (i != 9));
-      i1 -= 1;
-    }
-    int i3 = paramString.charAt(i2);
+    label76:
     int j;
-    label136:
-    int n;
-    if ((i3 >= 65) && (i3 <= 90))
+    if (n > 0)
     {
-      j = i3 - 65;
-      k = k << 6 | (byte)j;
-      m += 1;
-      n = m;
-      j = k;
-      if (m % 4 != 0) {
-        break label449;
+      i = paramString.charAt(n - 1);
+      if ((i == 61) || (i == 10) || (i == 13) || (i == 32) || (i == 9)) {}
+    }
+    else
+    {
+      arrayOfByte = new byte[(int)(n * 6L / 8L)];
+      i1 = 0;
+      m = 0;
+      k = 0;
+      i = 0;
+      if (i1 >= n) {
+        break label296;
       }
-      j = i + 1;
-      arrayOfByte[i] = ((byte)(k >> 16));
-      n = j + 1;
-      arrayOfByte[j] = ((byte)(k >> 8));
-      i = n + 1;
-      arrayOfByte[n] = ((byte)k);
-      j = k;
+      j = paramString.charAt(i1);
+      if ((j < 65) || (j > 90)) {
+        break label189;
+      }
+      j -= 65;
+      label107:
+      j = (byte)j | m << 6;
+      k += 1;
+      if (k % 4 != 0) {
+        break label399;
+      }
+      m = i + 1;
+      arrayOfByte[i] = ((byte)(j >> 16));
+      int i2 = m + 1;
+      arrayOfByte[m] = ((byte)(j >> 8));
+      i = i2 + 1;
+      arrayOfByte[i2] = ((byte)j);
     }
     for (;;)
     {
-      i2 += 1;
-      k = j;
+      i1 += 1;
+      m = j;
+      break label76;
+      n -= 1;
       break;
-      if ((i3 >= 97) && (i3 <= 122))
+      label189:
+      if ((j >= 97) && (j <= 122))
       {
-        j = i3 - 71;
-        break label136;
+        j -= 71;
+        break label107;
       }
-      if ((i3 >= 48) && (i3 <= 57))
+      if ((j >= 48) && (j <= 57))
       {
-        j = i3 + 4;
-        break label136;
+        j += 4;
+        break label107;
       }
-      if ((i3 == 43) || (i3 == 45))
+      if ((j == 43) || (j == 45))
       {
         j = 62;
-        break label136;
+        break label107;
       }
-      if ((i3 == 47) || (i3 == 95))
+      if ((j == 47) || (j == 95))
       {
         j = 63;
-        break label136;
+        break label107;
       }
-      n = m;
-      j = k;
-      if (i3 != 10)
+      if ((j != 10) && (j != 13) && (j != 32))
       {
-        n = m;
-        j = k;
-        if (i3 != 13)
+        if (j == 9)
         {
-          n = m;
-          j = k;
-          if (i3 != 32)
-          {
-            if (i3 == 9)
-            {
-              j = k;
-              continue;
-            }
+          j = m;
+        }
+        else
+        {
+          return null;
+          label296:
+          k %= 4;
+          if (k == 1) {
             return null;
-            label353:
-            if (m == 2)
+          }
+          if (k == 2)
+          {
+            arrayOfByte[i] = ((byte)(m << 12 >> 16));
+            j = i + 1;
+          }
+          while (j == arrayOfByte.length)
+          {
+            return arrayOfByte;
+            j = i;
+            if (k == 3)
             {
-              j = i + 1;
-              arrayOfByte[i] = ((byte)(k << 12 >> 16));
-            }
-            for (i = j;; i = j)
-            {
-              paramString = arrayOfByte;
-              if (i == arrayOfByte.length) {
-                break;
-              }
-              paramString = new byte[i];
-              System.arraycopy(arrayOfByte, 0, paramString, 0, i);
-              return paramString;
-              j = i;
-              if (m == 3)
-              {
-                k <<= 6;
-                m = i + 1;
-                arrayOfByte[i] = ((byte)(k >> 16));
-                j = m + 1;
-                arrayOfByte[m] = ((byte)(k >> 8));
-              }
+              k = m << 6;
+              m = i + 1;
+              arrayOfByte[i] = ((byte)(k >> 16));
+              j = m + 1;
+              arrayOfByte[m] = ((byte)(k >> 8));
             }
           }
+          paramString = new byte[j];
+          System.arraycopy(arrayOfByte, 0, paramString, 0, j);
+          return paramString;
         }
       }
-      label449:
-      m = n;
+      else {
+        label399:
+        j = m;
+      }
     }
   }
   
@@ -143,54 +129,51 @@ final class Base64
   
   private static String encode(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    byte[] arrayOfByte = new byte[(paramArrayOfByte1.length + 2) * 4 / 3];
+    int i = 0;
+    byte[] arrayOfByte = new byte[(paramArrayOfByte1.length + 2) / 3 * 4];
     int k = paramArrayOfByte1.length - paramArrayOfByte1.length % 3;
     int j = 0;
-    int i = 0;
-    if (j >= k) {
-      switch (paramArrayOfByte1.length % 3)
-      {
-      }
+    while (i < k)
+    {
+      int m = j + 1;
+      arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[i] & 0xFF) >> 2)];
+      j = m + 1;
+      arrayOfByte[m] = paramArrayOfByte2[((paramArrayOfByte1[i] & 0x3) << 4 | (paramArrayOfByte1[(i + 1)] & 0xFF) >> 4)];
+      m = j + 1;
+      arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[(i + 1)] & 0xF) << 2 | (paramArrayOfByte1[(i + 2)] & 0xFF) >> 6)];
+      j = m + 1;
+      arrayOfByte[m] = paramArrayOfByte2[(paramArrayOfByte1[(i + 2)] & 0x3F)];
+      i += 3;
+    }
+    switch (paramArrayOfByte1.length % 3)
+    {
     }
     for (;;)
     {
       try
       {
-        paramArrayOfByte1 = new String(arrayOfByte, 0, i, "US-ASCII");
+        paramArrayOfByte1 = new String(arrayOfByte, "US-ASCII");
         return paramArrayOfByte1;
       }
       catch (UnsupportedEncodingException paramArrayOfByte1)
       {
-        int m;
         throw new AssertionError(paramArrayOfByte1);
       }
-      m = i + 1;
-      arrayOfByte[i] = paramArrayOfByte2[((paramArrayOfByte1[j] & 0xFF) >> 2)];
-      i = m + 1;
-      arrayOfByte[m] = paramArrayOfByte2[((paramArrayOfByte1[j] & 0x3) << 4 | (paramArrayOfByte1[(j + 1)] & 0xFF) >> 4)];
-      m = i + 1;
-      arrayOfByte[i] = paramArrayOfByte2[((paramArrayOfByte1[(j + 1)] & 0xF) << 2 | (paramArrayOfByte1[(j + 2)] & 0xFF) >> 6)];
-      i = m + 1;
-      arrayOfByte[m] = paramArrayOfByte2[(paramArrayOfByte1[(j + 2)] & 0x3F)];
-      j += 3;
-      break;
-      j = i + 1;
-      arrayOfByte[i] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0xFF) >> 2)];
       i = j + 1;
-      arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0x3) << 4)];
+      arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0xFF) >> 2)];
       j = i + 1;
+      arrayOfByte[i] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0x3) << 4)];
+      i = j + 1;
+      arrayOfByte[j] = 61;
       arrayOfByte[i] = 61;
-      arrayOfByte[j] = 61;
-      i = j + 1;
       continue;
-      j = i + 1;
-      arrayOfByte[i] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0xFF) >> 2)];
       i = j + 1;
-      arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0x3) << 4 | (paramArrayOfByte1[(k + 1)] & 0xFF) >> 4)];
+      arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0xFF) >> 2)];
       j = i + 1;
-      arrayOfByte[i] = paramArrayOfByte2[((paramArrayOfByte1[(k + 1)] & 0xF) << 2)];
+      arrayOfByte[i] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0x3) << 4 | (paramArrayOfByte1[(k + 1)] & 0xFF) >> 4)];
       i = j + 1;
-      arrayOfByte[j] = 61;
+      arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[(k + 1)] & 0xF) << 2)];
+      arrayOfByte[i] = 61;
     }
   }
   
@@ -201,7 +184,7 @@ final class Base64
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okio.Base64
  * JD-Core Version:    0.7.0.1
  */

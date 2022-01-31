@@ -8,13 +8,13 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class Qworkflow$ContentElement
-  extends MessageMicro
+  extends MessageMicro<ContentElement>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_userdef = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_file_list = PBField.initRepeatMessage(Qworkflow.OrdinaryFile.class);
-  public final PBRepeatMessageField rpt_picture_list = PBField.initRepeatMessage(Qworkflow.Picture.class);
-  public final PBRepeatMessageField rpt_text_list = PBField.initRepeatMessage(Qworkflow.Text.class);
+  public final PBRepeatMessageField<Qworkflow.OrdinaryFile> rpt_file_list = PBField.initRepeatMessage(Qworkflow.OrdinaryFile.class);
+  public final PBRepeatMessageField<Qworkflow.Picture> rpt_picture_list = PBField.initRepeatMessage(Qworkflow.Picture.class);
+  public final PBRepeatMessageField<Qworkflow.Text> rpt_text_list = PBField.initRepeatMessage(Qworkflow.Text.class);
   
   static
   {
@@ -24,7 +24,7 @@ public final class Qworkflow$ContentElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.trunk.Qworkflow.Qworkflow.ContentElement
  * JD-Core Version:    0.7.0.1
  */

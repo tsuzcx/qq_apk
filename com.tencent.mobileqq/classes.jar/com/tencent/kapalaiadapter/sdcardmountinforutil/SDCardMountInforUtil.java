@@ -3,7 +3,6 @@ package com.tencent.kapalaiadapter.sdcardmountinforutil;
 import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build.VERSION;
 import android.os.Environment;
@@ -31,16 +30,7 @@ public class SDCardMountInforUtil
   private ArrayList<String> allPath = new ArrayList();
   private ArrayList<String> cache = new ArrayList();
   private Context mContext;
-  private final BroadcastReceiver sdcardListener = new BroadcastReceiver()
-  {
-    public void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
-    {
-      paramAnonymousContext = paramAnonymousIntent.getAction();
-      if (("android.intent.action.MEDIA_MOUNTED".equals(paramAnonymousContext)) || ("android.intent.action.MEDIA_SCANNER_STARTED".equals(paramAnonymousContext)) || ("android.intent.action.MEDIA_SCANNER_FINISHED".equals(paramAnonymousContext)) || ("android.intent.action.MEDIA_REMOVED".equals(paramAnonymousContext)) || ("android.intent.action.MEDIA_UNMOUNTED".equals(paramAnonymousContext)) || ("android.intent.action.MEDIA_BAD_REMOVAL".equals(paramAnonymousContext))) {
-        SDCardMountInforUtil.this.initVoldFstabORVoldConfToCache(SDCardMountInforUtil.this.sdk_level);
-      }
-    }
-  };
+  private final BroadcastReceiver sdcardListener = new SDCardMountInforUtil.1(this);
   private int sdk_level = 0;
   
   private SDCardMountInforUtil(Context paramContext)
@@ -271,7 +261,7 @@ public class SDCardMountInforUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.kapalaiadapter.sdcardmountinforutil.SDCardMountInforUtil
  * JD-Core Version:    0.7.0.1
  */

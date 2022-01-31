@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/content" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="15.0sp" android:textColor="@color/i_" android:gravity="center" android:id="@id/d6n" android:background="@android:color/white" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginTop="1.0dip" android:text="@string/lla" />
+    <TextView android:textSize="15.0sp" android:textColor="@color/i_" android:gravity="center" android:id="@id/cju" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="48.0dip" android:text="@string/ll_" />
+    <TextView android:textSize="15.0sp" android:textColor="@color/i_" android:gravity="center_vertical" android:id="@id/isl" android:background="@android:color/white" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginTop="1.0dip" android:text="@string/llc" />
+    <TextView android:textSize="15.0sp" android:textColor="@color/i_" android:gravity="center" android:id="@id/bk0" android:background="@android:color/white" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginTop="1.0dip" android:text="@string/lld" />
+    <TextView android:textSize="15.0sp" android:textColor="@color/i_" android:gravity="center" android:id="@id/bjk" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginTop="1.0dip" android:text="" />
+    <TextView android:textSize="15.0sp" android:textColor="@color/i_" android:gravity="center" android:id="@id/bjv" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginTop="1.0dip" android:text="@string/llb" />
+</LinearLayout>

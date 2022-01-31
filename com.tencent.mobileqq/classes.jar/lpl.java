@@ -1,23 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import java.util.Vector;
 
 public class lpl
-  implements Runnable
 {
-  public lpl(ArticleInfoModule paramArticleInfoModule) {}
+  public long a;
+  public Vector<lpo> a;
   
-  public void run()
+  public lpl(AVNotifyCenter paramAVNotifyCenter)
   {
-    SosoInterface.a(ArticleInfoModule.a(), "PublicAccountManager");
-    if (QLog.isColorLevel()) {
-      QLog.d("ArticleInfoModule", 2, "0x68b lbs info start location");
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaUtilVector = null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("roomNum[").append(this.jdField_a_of_type_Long).append("], list[");
+    if (this.jdField_a_of_type_JavaUtilVector == null) {}
+    for (Object localObject = "null";; localObject = Integer.valueOf(this.jdField_a_of_type_JavaUtilVector.size())) {
+      return localObject + "]";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lpl
  * JD-Core Version:    0.7.0.1
  */

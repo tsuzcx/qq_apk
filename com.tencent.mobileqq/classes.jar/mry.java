@@ -1,20 +1,12 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-
-public class mry
-  implements Runnable
+public abstract interface mry
 {
-  public mry(ServiceAccountFolderManager paramServiceAccountFolderManager, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
+  public abstract void a(boolean paramBoolean);
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin);
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mry
  * JD-Core Version:    0.7.0.1
  */

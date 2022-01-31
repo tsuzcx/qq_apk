@@ -1,19 +1,21 @@
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
-class anzh
-  implements Runnable
+public class anzh
+  implements View.OnClickListener
 {
-  anzh(anzg paramanzg) {}
+  public anzh(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ((QIMInformationPasterManager)QIMManager.a().c(12)).c();
+    paramView = (anzj)paramView.getTag();
+    this.a.a(paramView.jdField_a_of_type_JavaLangString, paramView.b, paramView.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anzh
  * JD-Core Version:    0.7.0.1
  */

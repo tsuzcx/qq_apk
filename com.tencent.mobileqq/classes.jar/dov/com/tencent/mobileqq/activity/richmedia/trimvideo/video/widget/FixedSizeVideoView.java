@@ -2,55 +2,37 @@ package dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
 import android.content.Context;
 import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.VideoView;
-import aohw;
-import aohx;
+import bnhy;
+import bnhz;
+import bnia;
 
 public class FixedSizeVideoView
   extends VideoView
-  implements Handler.Callback
 {
   private int jdField_a_of_type_Int = -1;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  public FixedSizeVideoView.OnTrimVDPlayCompelteListener a;
+  public bnia a;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new FixedSizeVideoView.1(this);
   private int b;
   private int c;
   
   public FixedSizeVideoView(Context paramContext)
   {
     super(paramContext);
-    super.setOnCompletionListener(new aohw(this));
+    super.setOnCompletionListener(new bnhy(this));
   }
   
   public FixedSizeVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    super.setOnCompletionListener(new aohx(this));
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFixedSizeVideoView$OnTrimVDPlayCompelteListener != null) {
-        this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFixedSizeVideoView$OnTrimVDPlayCompelteListener.a(this, this.c, this.jdField_a_of_type_Int);
-      }
-    }
+    super.setOnCompletionListener(new bnhz(this));
   }
   
   public void pause()
   {
     super.pause();
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+    removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
   
   public void setOnCompletionListener(MediaPlayer.OnCompletionListener paramOnCompletionListener)
@@ -58,10 +40,10 @@ public class FixedSizeVideoView
     throw new RuntimeException("Stub!");
   }
   
-  public void setOnFixVDPlayCompelteListener(FixedSizeVideoView.OnTrimVDPlayCompelteListener paramOnTrimVDPlayCompelteListener)
+  public void setOnFixVDPlayCompelteListener(bnia parambnia)
   {
-    if (paramOnTrimVDPlayCompelteListener != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFixedSizeVideoView$OnTrimVDPlayCompelteListener = paramOnTrimVDPlayCompelteListener;
+    if (parambnia != null) {
+      this.jdField_a_of_type_Bnia = parambnia;
     }
   }
   
@@ -98,14 +80,14 @@ public class FixedSizeVideoView
     if (i >= 0)
     {
       super.start();
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, i);
+      removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      postDelayed(this.jdField_a_of_type_JavaLangRunnable, i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView
  * JD-Core Version:    0.7.0.1
  */

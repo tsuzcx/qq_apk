@@ -1,27 +1,40 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
-public class suh
-  extends FriendListObserver
+class suh
+  implements View.OnTouchListener
 {
-  public suh(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  suh(sue paramsue, sud paramsud, boolean paramBoolean) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.getCurrentAccountUin()))) {}
-    while (this.a.a == null) {
-      return;
+    switch (paramMotionEvent.getAction())
+    {
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      this.jdField_a_of_type_Sue.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.a.getResources().getColor(2131166018));
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Sue.c.setBackgroundResource(2130842822);
+        return false;
+      }
+      this.jdField_a_of_type_Sue.c.setBackgroundResource(2130842823);
+      return false;
     }
-    paramString = this.a.app.a(this.a.app.getCurrentAccountUin(), (byte)3, false);
-    this.a.a.setImageBitmap(paramString);
+    this.jdField_a_of_type_Sue.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Sue.jdField_a_of_type_Sud.a.getResources().getColor(2131166017));
+    this.jdField_a_of_type_Sue.c.setBackgroundResource(2130842831);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     suh
  * JD-Core Version:    0.7.0.1
  */

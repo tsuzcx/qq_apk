@@ -1,63 +1,40 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.TroopFeedItem;
-import com.tencent.mobileqq.troop.widget.TroopFeedViewFactory;
-import com.tencent.mobileqq.troop.widget.TroopFeedViewFactory.ViewProvider;
-import com.tencent.mobileqq.utils.StringUtil;
+import android.content.Context;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.effect.base.P2VGlobalConfig;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class ajtj
-  extends TroopFeedViewFactory.ViewProvider
 {
-  public ajtj(TroopFeedViewFactory paramTroopFeedViewFactory)
+  public static void a(Context paramContext)
   {
-    super(paramTroopFeedViewFactory);
-  }
-  
-  protected View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
-  {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = LayoutInflater.from(this.a.a).inflate(2130969858, null);
-    }
-    paramView = (ajtk)localView.getTag();
-    Object localObject = paramView;
-    if (paramView == null)
+    P2VGlobalConfig.P2V_VIDEO_ROOT = paramContext.getFilesDir().getAbsolutePath() + File.separator + "qzone_dynamic_video" + File.separator;
+    P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT = paramContext.getFilesDir().getAbsolutePath() + File.separator + "tencent" + File.separator + "dynamic_video_cache" + File.separator;
+    P2VGlobalConfig.NO_AUDIO_MP4 = P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + "no_audio.mp4";
+    P2VGlobalConfig.CONCAT_FINAL_M4A = P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + "concat_final.m4a";
+    P2VGlobalConfig.CONCAT_FINAL_MP3 = P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + "concat_final.mp3";
+    P2VGlobalConfig.P2V_MATERIAL_ROOT = P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + "p2v_material" + File.separator;
+    P2VGlobalConfig.P2V_MATERIAL_WATER_MARKER_PNG_NAME = P2VGlobalConfig.P2V_MATERIAL_ROOT + "qzone_p2v_watermark.png";
+    P2VGlobalConfig.P2V_MATERIAL_DUMMY_VIDEO_NAME = P2VGlobalConfig.P2V_MATERIAL_ROOT + "resizeddummy.mp4";
+    try
     {
-      localObject = new ajtk(this);
-      ((ajtk)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366640));
-      ((ajtk)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363378));
-      ((ajtk)localObject).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131368297));
-      ((ajtk)localObject).b = ((TextView)localView.findViewById(2131368296));
-      ((ajtk)localObject).c = ((TextView)localView.findViewById(2131368299));
-      localView.setOnClickListener(this.a);
-      localView.setTag(localObject);
-    }
-    ((ajtk)localObject).jdField_a_of_type_Int = paramInt;
-    ((ajtk)localObject).jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem = paramTroopFeedItem;
-    paramView = "[" + paramTroopFeedItem.tag + "] " + paramTroopFeedItem.title;
-    ((ajtk)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
-    ((ajtk)localObject).b.setText(paramTroopFeedItem.content);
-    ((ajtk)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    paramView = "点击打开 " + paramTroopFeedItem.tag + " " + paramTroopFeedItem.title + " " + paramTroopFeedItem.content;
-    if (!StringUtil.a(paramTroopFeedItem.ex_1))
-    {
-      ((ajtk)localObject).c.setText(paramTroopFeedItem.ex_1);
-      paramView = paramView + " " + paramTroopFeedItem.ex_1;
-    }
-    for (;;)
-    {
-      ((ajtk)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841238);
-      paramTroopFeedItem = paramView;
-      if (!paramBoolean) {
-        paramTroopFeedItem = paramView + " 两指向左横向滑动查看下一条通知";
+      paramContext = new File(P2VGlobalConfig.P2V_VIDEO_ROOT);
+      if (!paramContext.exists()) {
+        paramContext.mkdirs();
       }
-      localView.setContentDescription(paramTroopFeedItem);
-      return localView;
-      ((ajtk)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      paramContext = new File(P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT);
+      if (!paramContext.exists()) {
+        paramContext.mkdirs();
+      }
     }
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        QLog.d("P2VEffectLoader", 2, "initP2VCacheRootSpace exception", paramContext);
+      }
+    }
+    bdhb.c(P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + ".nomedia");
+    bdhb.c(P2VGlobalConfig.P2V_MATERIAL_ROOT + ".nomedia");
   }
 }
 

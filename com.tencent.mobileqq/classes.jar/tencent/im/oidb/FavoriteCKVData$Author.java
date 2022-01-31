@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class FavoriteCKVData$Author
-  extends MessageMicro
+  extends MessageMicro<Author>
 {
   public static final int Email = 4;
   public static final int Group = 2;
@@ -32,7 +32,7 @@ public final class FavoriteCKVData$Author
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.FavoriteCKVData.Author
  * JD-Core Version:    0.7.0.1
  */

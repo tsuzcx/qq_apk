@@ -1,8 +1,16 @@
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SetTroopAdminsActivity;
 
 public class dhv
+  implements View.OnClickListener
 {
-  TextView a;
+  public dhv(SetTroopAdminsActivity paramSetTroopAdminsActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.finish();
+  }
 }
 
 

@@ -1,20 +1,26 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.PublicAccountManager.InitDoneObserver;
-import com.tencent.mobileqq.activity.PublicAccountChatActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
 
-public class dgq
-  implements PublicAccountManager.InitDoneObserver
+class dgq
+  implements DialogInterface.OnKeyListener
 {
-  public dgq(PublicAccountChatActivity paramPublicAccountChatActivity) {}
+  dgq(dgp paramdgp) {}
   
-  public void a()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    PublicAccountChatActivity.a(this.a).sendEmptyMessage(1);
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
+    {
+      RegisterSendUpSms.b(this.a.a);
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dgq
  * JD-Core Version:    0.7.0.1
  */

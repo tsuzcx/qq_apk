@@ -100,7 +100,7 @@ class ViewCompatBase
       if ((localViewParent instanceof View))
       {
         paramInt = Math.abs(paramInt);
-        ((View)localViewParent).invalidate(i - paramInt, paramView.getTop(), paramView.getWidth() + i + paramInt, paramView.getBottom());
+        ((View)localViewParent).invalidate(i - paramInt, paramView.getTop(), i + paramView.getWidth() + paramInt, paramView.getBottom());
       }
     }
     else
@@ -120,7 +120,7 @@ class ViewCompatBase
       if ((localViewParent instanceof View))
       {
         paramInt = Math.abs(paramInt);
-        ((View)localViewParent).invalidate(paramView.getLeft(), i - paramInt, paramView.getRight(), paramView.getHeight() + i + paramInt);
+        ((View)localViewParent).invalidate(paramView.getLeft(), i - paramInt, paramView.getRight(), i + paramView.getHeight() + paramInt);
       }
     }
     else

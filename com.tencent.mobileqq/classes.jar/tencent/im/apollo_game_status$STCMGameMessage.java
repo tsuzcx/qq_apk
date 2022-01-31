@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class apollo_game_status$STCMGameMessage
-  extends MessageMicro
+  extends MessageMicro<STCMGameMessage>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66 }, new String[] { "uint32_msg_cmd", "msg_comm", "msg_0x01", "msg_0x02", "msg_0x03", "msg_0x04", "msg_0x05", "msg_0x06" }, new Object[] { Integer.valueOf(0), null, null, null, null, null, null, null }, STCMGameMessage.class);
   public apollo_game_status.STCMGameMessage.STGameJoinRoom msg_0x01 = new apollo_game_status.STCMGameMessage.STGameJoinRoom();
@@ -20,7 +20,7 @@ public final class apollo_game_status$STCMGameMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.apollo_game_status.STCMGameMessage
  * JD-Core Version:    0.7.0.1
  */

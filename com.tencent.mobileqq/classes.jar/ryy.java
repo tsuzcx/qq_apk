@@ -1,24 +1,33 @@
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.33;
+import com.tencent.common.app.BaseApplicationImpl;
 
 class ryy
-  implements Runnable
+  implements View.OnClickListener
 {
   ryy(ryx paramryx) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    MessageRecord localMessageRecord = new MessageRecord();
-    localMessageRecord.shmsgseq = this.a.a.jdField_a_of_type_Long;
-    int i = this.a.a.app.a().a(this.a.a.b, this.a.a.jdField_a_of_type_Int, localMessageRecord);
-    this.a.a.runOnUiThread(new ryz(this, i));
+    RIJRedPacketManager.a().a(this.a.a.this$0, 5, FastWebActivity.c(this.a.a.this$0), FastWebActivity.a(this.a.a.this$0).innerUniqueID, new ryz(this), false, null);
+    paramView = new orz();
+    orz localorz = paramView.a("rowkey", FastWebActivity.a(this.a.a.this$0).innerUniqueID).a("content_type", Integer.valueOf(2));
+    if (bdin.h(BaseApplicationImpl.getContext())) {}
+    for (int i = 2;; i = 1)
+    {
+      localorz.a("network_type", Integer.valueOf(i)).a("os", Integer.valueOf(1)).a("imei", ors.f());
+      nrt.a("0X800ABBA", paramView.a());
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ryy
  * JD-Core Version:    0.7.0.1
  */

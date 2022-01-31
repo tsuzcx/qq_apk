@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.filemanager.core.DiscPicThumbDownloader;
-import com.tencent.mobileqq.filemanager.core.DiscPicThumbDownloader.PicSession;
-import com.tencent.mobileqq.filemanager.util.FilePicURLDrawlableHelper;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class acur
-  implements Runnable
+  extends altm
 {
-  public acur(DiscPicThumbDownloader paramDiscPicThumbDownloader, DiscPicThumbDownloader.PicSession paramPicSession) {}
+  public acur(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void run()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    FilePicURLDrawlableHelper.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreDiscPicThumbDownloader$PicSession.a);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acur
  * JD-Core Version:    0.7.0.1
  */

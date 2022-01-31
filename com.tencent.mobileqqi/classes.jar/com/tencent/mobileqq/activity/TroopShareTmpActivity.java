@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import dyn;
+import dsw;
 
 public class TroopShareTmpActivity
   extends BaseActivity
@@ -26,7 +26,7 @@ public class TroopShareTmpActivity
   public static final String d = "user_input";
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dyn(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dsw(this);
   private String e;
   
   protected boolean a()
@@ -63,17 +63,17 @@ public class TroopShareTmpActivity
     super.onCreate(paramBundle);
     requestWindowFeature(1);
     getWindow().setSoftInputMode(2);
-    setContentView(2130904039);
+    setContentView(2130904041);
     Object localObject = getIntent();
     this.e = ((Intent)localObject).getExtras().getString("troop_uin");
     paramBundle = ((Intent)localObject).getExtras().getString("troop_name");
     localObject = ((Intent)localObject).getExtras().getString("troop_intro");
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131230940));
     TextView localTextView1 = (TextView)findViewById(2131231090);
-    TextView localTextView2 = (TextView)findViewById(2131234632);
+    TextView localTextView2 = (TextView)findViewById(2131234634);
     this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131231206));
-    TextView localTextView3 = (TextView)findViewById(2131231618);
-    TextView localTextView4 = (TextView)findViewById(2131234633);
+    TextView localTextView3 = (TextView)findViewById(2131231619);
+    TextView localTextView4 = (TextView)findViewById(2131234635);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.b.a(this.e));
     localTextView1.setText(paramBundle);
     localTextView2.setText((CharSequence)localObject);

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/fxm" android:paddingLeft="1.0dip" android:paddingTop="4.5dip" android:paddingRight="1.0dip" android:paddingBottom="4.5dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-2.5dip">
+        <RelativeLayout android:id="@id/kpj" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.qzone.component.banner.BannerAutoVideoViewWrapper android:id="@id/kpi" android:layout_width="105.0dip" android:layout_height="105.0dip">
+                <RelativeLayout android:id="@id/kph" android:layout_width="fill_parent" android:layout_height="105.0dip" />
+                <ImageView android:id="@id/htt" android:layout_width="30.5dip" android:layout_height="13.5dip" android:src="@drawable/fxn" />
+                <RelativeLayout android:gravity="bottom" android:background="@drawable/ark" android:layout_width="fill_parent" android:layout_height="34.0dip" android:layout_alignParentBottom="true">
+                    <ImageView android:id="@id/kpd" android:layout_width="20.0dip" android:layout_height="29.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/buo" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                </RelativeLayout>
+            </com.qzone.component.banner.BannerAutoVideoViewWrapper>
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/kpf" android:layout_width="wrap_content" android:layout_height="105.0dip" android:layout_marginLeft="12.0dip" android:layout_toRightOf="@id/kpi">
+                <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="16.0sp" android:textColor="#ff000000" android:ellipsize="end" android:gravity="center|left" android:layout_gravity="center_vertical" android:id="@id/kpg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="170.0dip" android:maxLines="2" android:singleLine="false" />
+                <LinearLayout android:gravity="left" android:layout_gravity="center_vertical" android:id="@id/kpm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.5dip">
+                    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/kpo" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <ImageView android:layout_gravity="center_vertical" android:id="@id/kpn" android:background="@drawable/fxp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                        <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="14.5sp" android:textColor="#ff777777" android:ellipsize="end" android:gravity="center|left" android:layout_gravity="center_vertical" android:id="@id/kpl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:maxLines="1" />
+                    </LinearLayout>
+                    <TextView android:textSize="14.5sp" android:textColor="#ff777777" android:ellipsize="end" android:gravity="center|left" android:id="@id/kpk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:text="0" android:maxLines="1" android:drawableLeft="@drawable/fxo" android:drawablePadding="4.0dip" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/kpe" android:layout_width="37.0dip" android:layout_height="37.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+            <ImageView android:layout_width="17.0dip" android:layout_height="17.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/b0b" android:layout_alignParentRight="true" android:contentDescription="close" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

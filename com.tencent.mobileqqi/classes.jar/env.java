@@ -1,27 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.service.profile.ProfileUtil;
-import com.tencent.widget.TimePickerView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qquserguide.UserguideVideoFragment;
+import com.tencent.mobileqq.widget.QQVideoView;
 
-public class env
-  implements View.OnClickListener
+class env
+  implements Runnable
 {
-  public env(MainAssistObserver paramMainAssistObserver, TextView paramTextView, Button paramButton) {}
+  env(enu paramenu) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    int i = ProfileUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.b);
-    int j = ProfileUtil.c(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.b);
-    int k = ProfileUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.b);
-    new TimePickerView(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a, i, j, k, new enw(this)).b();
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.isPlaying())
+    {
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      return;
+    }
+    this.a.a.jdField_a_of_type_AndroidWidgetImageView.postDelayed(this, 200L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     env
  * JD-Core Version:    0.7.0.1
  */

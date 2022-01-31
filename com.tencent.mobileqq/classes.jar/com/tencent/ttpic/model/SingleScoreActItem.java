@@ -1,9 +1,10 @@
 package com.tencent.ttpic.model;
 
+import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.filter.BaseFilter;
-import com.tencent.filter.Frame;
+import com.tencent.ttpic.baseutils.fps.BenchUtil;
+import com.tencent.ttpic.openapi.model.Rect;
 import com.tencent.ttpic.util.AlgoUtils;
-import com.tencent.ttpic.util.BenchUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,11 +39,11 @@ public class SingleScoreActItem
   {
     float f = paramCanvasItem.itemRect.height * 1.0F / this.bitSize.height;
     int i = (int)(this.bitSize.width * f);
-    int j = (int)(this.bitSize.height * f);
+    int j = (int)(f * this.bitSize.height);
     int k = (paramCanvasItem.itemRect.width - paramInt2 * i) / 2;
     paramInt2 = paramCanvasItem.itemRect.y + j;
     paramInt1 = paramCanvasItem.itemRect.x + i * paramInt1 + k;
-    paramBaseFilter.setPositions(AlgoUtils.calPositions(paramInt1, paramInt2, paramInt1 + i, paramInt2 - j, paramInt3, paramInt4));
+    paramBaseFilter.setPositions(AlgoUtils.calPositions(paramInt1, paramInt2, i + paramInt1, paramInt2 - j, paramInt3, paramInt4));
   }
   
   public void clear() {}
@@ -99,7 +100,7 @@ public class SingleScoreActItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.model.SingleScoreActItem
  * JD-Core Version:    0.7.0.1
  */

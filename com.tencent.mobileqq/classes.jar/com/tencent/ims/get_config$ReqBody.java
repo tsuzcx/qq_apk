@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class get_config$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int STR_CONFIG_NAME_FIELD_NUMBER = 5;
   public static final int U32_APPID_FIELD_NUMBER = 3;
@@ -26,7 +26,7 @@ public final class get_config$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.get_config.ReqBody
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,75 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.store.ApolloResDownloader.OnAudioDownloadListener;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class acbn
-  implements ApolloResDownloader.OnAudioDownloadListener
+public class acbn
+  implements bhuk
 {
-  acbn(acbg paramacbg, int paramInt1, int paramInt2, int paramInt3, String paramString1, int paramInt4, boolean paramBoolean, String paramString2, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
+  int jdField_a_of_type_Int = -1;
   
-  public void a(boolean paramBoolean, int paramInt)
+  public acbn(AccountManageActivity paramAccountManageActivity) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    if (paramBoolean)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.isFinishing()) {}
+    for (;;)
     {
-      localBundle.putInt("apollo_apolloVipFlag", this.jdField_a_of_type_Int);
-      localBundle.putInt("apollo_apolloVipLevel", this.jdField_b_of_type_Int);
-      localBundle.putInt("apollo_result", 0);
-      localBundle.putInt("apollo_partnerRoleId", this.jdField_c_of_type_Int);
-      localBundle.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
-      localBundle.putInt("apollo_previewAction", this.jdField_d_of_type_Int);
-      localBundle.putBoolean("apollo_previewOnFrame", this.jdField_a_of_type_Boolean);
-      localBundle.putString("apollo_id", this.jdField_b_of_type_JavaLangString);
-      localBundle.putString("title", this.jdField_c_of_type_JavaLangString);
-      localBundle.putString("subTitle", this.jdField_d_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
       return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Bhuf != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Bhuf.dismiss();
+      }
+      switch (paramInt)
+      {
+      default: 
+      case 0: 
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
+          if (this.jdField_a_of_type_Int < 0) {
+            continue;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, false);
+          return;
+        }
+        catch (Throwable paramView)
+        {
+          for (;;)
+          {
+            paramView.printStackTrace();
+            QLog.i("AccountManageActivity", 1, "MyOnButtonClickListener 0 error" + paramView.getMessage());
+          }
+        }
+      case 1: 
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
+          if (this.jdField_a_of_type_Int < 0) {
+            continue;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, true);
+          return;
+        }
+        catch (Throwable paramView)
+        {
+          for (;;)
+          {
+            paramView.printStackTrace();
+            QLog.i("AccountManageActivity", 1, "MyOnButtonClickListener 1 error" + paramView.getMessage());
+          }
+        }
+      }
     }
-    localBundle.putInt("apollo_result", 1);
-    localBundle.putInt("apollo_audioId", paramInt);
-    localBundle.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acbn
  * JD-Core Version:    0.7.0.1
  */

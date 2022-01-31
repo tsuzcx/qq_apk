@@ -1,79 +1,37 @@
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.settings.QQStoryShieldActivity;
-import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.Switch;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class nrg
-  extends QQStoryObserver
+class nrg
+  extends BroadcastReceiver
 {
-  public nrg(QQStoryShieldActivity paramQQStoryShieldActivity) {}
+  nrg(nrc paramnrc) {}
   
-  public void a(boolean paramBoolean, QQStoryUserInfo paramQQStoryUserInfo)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool = true;
-    QQStoryShieldActivity.a(this.a);
-    Switch localSwitch;
-    if ((paramBoolean) && (paramQQStoryUserInfo != null))
+    if (this.a.a == 2)
     {
-      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-      this.a.b.setOnCheckedChangeListener(null);
-      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
-      if (paramQQStoryUserInfo.isAllowed != 1) {
-        break label119;
-      }
-      paramBoolean = true;
-      localSwitch.setChecked(paramBoolean);
-      localSwitch = this.a.b;
-      if (paramQQStoryUserInfo.isInterested != 1) {
-        break label124;
-      }
+      int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.picResultData", -1);
+      paramIntent = paramIntent.getStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s");
+      this.a.a(null, 0, 14, i, paramIntent);
     }
-    label119:
-    label124:
-    for (paramBoolean = bool;; paramBoolean = false)
+    try
     {
-      localSwitch.setChecked(paramBoolean);
-      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
-      this.a.b.setOnCheckedChangeListener(this.a);
-      return;
-      paramBoolean = false;
-      break;
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    boolean bool = true;
-    paramBoolean2 = true;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a();
-    if (paramBoolean1) {
+      paramContext.unregisterReceiver(this.a.b);
+      label50:
+      this.a.b = null;
+      this.a.a = 0;
       return;
     }
-    QQToast.a(this.a, 2131437531, 0).b(this.a.getTitleBarHeight());
-    if (paramBoolean3)
+    catch (Exception paramContext)
     {
-      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
-      if (!this.a.jdField_a_of_type_ComTencentWidgetSwitch.isChecked()) {}
-      for (paramBoolean1 = paramBoolean2;; paramBoolean1 = false)
-      {
-        localSwitch.setChecked(paramBoolean1);
-        return;
-      }
-    }
-    Switch localSwitch = this.a.b;
-    if (!this.a.b.isChecked()) {}
-    for (paramBoolean1 = bool;; paramBoolean1 = false)
-    {
-      localSwitch.setChecked(paramBoolean1);
-      return;
+      break label50;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nrg
  * JD-Core Version:    0.7.0.1
  */

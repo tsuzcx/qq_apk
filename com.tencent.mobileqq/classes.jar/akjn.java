@@ -1,17 +1,26 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.vashealth.HealthStepCounterPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import com.tencent.widget.Switch;
 
-public class akjn
-  implements Runnable
+class akjn
+  extends View.AccessibilityDelegate
 {
-  public akjn(HealthStepCounterPlugin paramHealthStepCounterPlugin) {}
+  akjn(akjk paramakjk) {}
   
-  public void run()
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    QQToast localQQToast = new QQToast(this.a.mRuntime.a().getContext());
-    QQToast.a(this.a.mRuntime.a().getContext(), "抱歉，你未安装微信客户端，无法进行微信分享", 0).b((int)(localQQToast.b() * 2.5D));
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
+    if (paramView != null)
+    {
+      paramView = (Switch)paramView.findViewById(2131363728);
+      if ((paramView != null) && (paramView.getVisibility() != 8))
+      {
+        paramAccessibilityNodeInfo.setCheckable(true);
+        paramAccessibilityNodeInfo.setChecked(paramView.isChecked());
+        paramAccessibilityNodeInfo.setClassName(Switch.class.getName());
+      }
+    }
   }
 }
 

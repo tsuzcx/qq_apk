@@ -1,46 +1,20 @@
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.views.freeflip.GdtFreeFlipContentViewWithRoundTrip;
-import com.tencent.gdtad.views.image.GdtDrawableLoader.Listener;
-import com.tencent.image.URLDrawable;
-import java.net.URL;
-import java.util.Map;
-
 public class qmo
-  implements GdtDrawableLoader.Listener
 {
-  public qmo(GdtFreeFlipContentViewWithRoundTrip paramGdtFreeFlipContentViewWithRoundTrip) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
+  private String d;
   
-  public void a(URLDrawable paramURLDrawable)
+  public qmo(String paramString)
   {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
-    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
-    {
-      int i = GdtFreeFlipContentViewWithRoundTrip.a(this.a, paramURLDrawable);
-      if (!GdtFreeFlipContentViewWithRoundTrip.a(this.a).containsKey(Integer.valueOf(i))) {
-        break;
-      }
-      GdtLog.b("GdtFreeFlipContentViewWithRoundTrip", "onLoadSuccessful " + paramURLDrawable);
-      ((qmp)GdtFreeFlipContentViewWithRoundTrip.a(this.a).get(Integer.valueOf(i))).a = true;
-      GdtFreeFlipContentViewWithRoundTrip.a(this.a);
-      GdtFreeFlipContentViewWithRoundTrip.b(this.a);
-      return;
-    }
-    GdtLog.d("GdtFreeFlipContentViewWithRoundTrip", "onLoadSuccessful error " + paramURLDrawable);
-  }
-  
-  public void b(URLDrawable paramURLDrawable)
-  {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
-    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
-    {
-      GdtLog.b("GdtFreeFlipContentViewWithRoundTrip", "onLoadFailed " + paramURLDrawable);
-      return;
-    }
+    this.d = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qmo
  * JD-Core Version:    0.7.0.1
  */

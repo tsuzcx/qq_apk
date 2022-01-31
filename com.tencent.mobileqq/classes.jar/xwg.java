@@ -1,22 +1,62 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.RDBaseDataManager;
-import com.tencent.mobileqq.activity.richmedia.subtitles.RDConfigServletProxy.RDConfigServletProxyListener;
+import android.view.View;
+import com.tencent.widget.ListView;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class xwg
-  implements RDConfigServletProxy.RDConfigServletProxyListener
+  implements bhzf
 {
-  public xwg(RDBaseDataManager paramRDBaseDataManager) {}
+  private CopyOnWriteArraySet<bhzf> a = new CopyOnWriteArraySet();
   
-  public boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
+  public xwg(bhzf parambhzf)
   {
-    if ((paramInt1 != this.a.a) && (this.a.a != 0)) {
-      return false;
+    if (parambhzf != null) {
+      this.a.add(parambhzf);
     }
-    return RDBaseDataManager.a(this.a, paramInt1, paramInt2, paramString, paramInt3, paramInt4);
+  }
+  
+  public void a(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bhzf)localIterator.next()).a(paramInt, paramView, paramListView);
+    }
+  }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.iterator();
+    boolean bool = false;
+    if (localIterator.hasNext())
+    {
+      bhzf localbhzf = (bhzf)localIterator.next();
+      if ((bool) || (localbhzf.a(paramInt, paramView, paramListView))) {}
+      for (bool = true;; bool = false) {
+        break;
+      }
+    }
+    return bool;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bhzf)localIterator.next()).b(paramInt, paramView, paramListView);
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bhzf)localIterator.next()).c(paramInt, paramView, paramListView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xwg
  * JD-Core Version:    0.7.0.1
  */

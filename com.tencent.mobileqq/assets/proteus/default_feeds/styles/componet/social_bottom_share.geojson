@@ -1,0 +1,127 @@
+{
+  "view_type": "container",
+  "direction": "vertical",
+  "height": {
+    "type": "wrap_content"
+  },
+  "width": {
+    "type": "relative",
+    "value": "375"
+  },
+  "subviews": [
+    {
+      "view_type": "UIView",
+      "view_id": "id_social_bottom",
+      "event_type": "cmd_social_bottom_click",
+      "direction": "horizontal",
+      "margin_top": "-10",
+      "height": {
+        "type": "absolutely",
+        "value": "44"
+      },
+      "width": {
+        "type": "relative",
+        "value": "375"
+      },
+      "margin_left": "1.5",
+      "subviews": [
+        {
+          "view_type": "UIButton",
+          "event_type": "cmd_comment_click",
+          "view_id": "id_comment_button",
+          "height": {
+                   "type": "absolutely",
+                   "value": "44"
+          },
+          "width": {
+            "type": "relative",
+            "value": "125"
+          },
+          "attributes": {
+		  	"setTitle:": "-1",
+            "setFrameString:": "-1",
+			"setTitleColors:forStates:":[["#262626"],["0"]],
+            "setImages:forStates:": [
+              [
+                "comment"
+              ],
+              [
+                "0"
+              ]
+            ],
+            "setInnerMargin:": "8",
+            "setFontSizeString:": "14"
+          }
+        },
+        {
+            "view_type": "ReadInJoyLikeButton",
+            "view_id": "id_like_button",
+            "event_type": "cmd_like_click",
+            "height": {
+                "type": "absolutely",
+                "value": "44"
+            },
+            "width": {
+                "type": "relative",
+                "value": "125"
+            },
+            "attributes": {
+                "setInnerMargin:": "8",
+                "setTitle:": "-1",
+                "setSelectedString:": "-1",
+                "setImages:colors:direction:forStates:": [
+                    [
+                        "like_normal",
+                        "like_active"
+                    ],
+                    [
+                        "#262626",
+                        "#262626"
+                    ],
+                    [
+                        "0",
+                        "0"
+                    ],
+                    [
+                        "0",
+                        "4"
+                    ]
+                ],
+                "setFontSizeString:": "14"
+            }
+        },
+
+        {
+          "view_type": "UIButton",
+          "event_type": "cmd_share_click",
+          "view_id": "id_share_button",
+          "height": {
+                   "type": "absolutely",
+                   "value": "44"
+          },
+          "width": {
+            "type": "relative",
+            "value": "125"
+          },
+          "attributes": {
+            "setFrameString:": "-1",
+            "setTitle:": "-1",
+            "setImages:forStates:": [
+              [
+                "share_icon"
+              ],
+              [
+                "0"
+              ]
+            ],
+			"setTitleColors:forStates:":[["#262626"],["0"]],
+            "setInnerMargin:": "8",
+            "setFontSizeString:": "14",
+            "setAlphaString:":"-1",
+            "setEnableString:":"-1"
+          }
+        }
+      ]
+    }
+  ]
+}

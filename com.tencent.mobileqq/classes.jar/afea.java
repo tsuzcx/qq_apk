@@ -1,27 +1,23 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.mobileqq.nearby.widget.NearbyFacePowerDialog;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.AdapterView;
 
-public class afea
-  implements View.OnClickListener
+class afea
+  implements bhuw
 {
-  public afea(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel, String paramString, NearbyFacePowerDialog paramNearbyFacePowerDialog) {}
+  afea(afdy paramafdy) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.a, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.a.startActivity(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetNearbyFacePowerDialog.dismiss();
+    paramAdapterView = (aihj)afdy.a(this.a).a.getItem(paramInt - 1);
+    afdy.a(this.a, paramAdapterView);
+    afdy.a(this.a).dismiss();
+    azqs.b(afdy.a(this.a).a, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afea
  * JD-Core Version:    0.7.0.1
  */

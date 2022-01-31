@@ -1,92 +1,72 @@
-import android.support.v4.view.ViewPager;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.widget.Button;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.SendHbLogic;
-import com.tencent.mobileqq.activity.qwallet.fragment.SendHbLogic.QwTextAdapter;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
+import java.io.File;
+import java.util.Locale;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class xct
-  extends SendHbLogic.QwTextAdapter
 {
-  public xct(CommonHbFragment paramCommonHbFragment) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void afterTextChanged(Editable paramEditable)
+  public xct(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    paramEditable = CommonHbFragment.a(this.a).getText().toString();
-    Object localObject1;
-    Object localObject2;
-    SendHbLogic localSendHbLogic;
-    if ((CommonHbFragment.a(this.a)) && (CommonHbFragment.b(this.a)) && ((CommonHbFragment.a(this.a).getCurrentItem() != 2) || (!TextUtils.isEmpty(paramEditable))) && (((!"1".equals(CommonHbFragment.a(this.a))) && (!"7".equals(CommonHbFragment.a(this.a)))) || (CommonHbFragment.a(this.a).getCurrentItem() != 1) || (!TextUtils.isEmpty(paramEditable))))
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+  }
+  
+  public String a()
+  {
+    return this.c + File.separator + this.jdField_a_of_type_Int + ".zip";
+  }
+  
+  public JSONObject a()
+  {
+    try
     {
-      if (!CommonHbFragment.a(this.a).isEnabled())
-      {
-        CommonHbFragment.a(this.a).setEnabled(true);
-        CommonHbFragment.a(this.a).setClickable(true);
-        CommonHbFragment.a(this.a, "hongbao.wrap.enable", "");
-      }
-      paramEditable = new StringBuffer();
-      paramEditable.append(this.a.getString(2131431267));
-      if ("2".equals(CommonHbFragment.b(this.a)))
-      {
-        localObject1 = CommonHbFragment.b(this.a).getText().toString();
-        localObject2 = this.a;
-        localSendHbLogic = this.a.a;
-        CommonHbFragment.a((CommonHbFragment)localObject2, SendHbLogic.a((String)localObject1, "1"));
-        paramEditable.append(CommonHbFragment.d(this.a));
-        paramEditable.append("元");
-        CommonHbFragment.a(this.a).setText(paramEditable.toString());
-        label261:
-        if (!TextUtils.isEmpty(CommonHbFragment.b(this.a).getText().toString())) {
-          break label524;
-        }
-        CommonHbFragment.b(this.a).setGravity(19);
-      }
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("id", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("thumbPath", ArtFilterManager.jdField_b_of_type_JavaLangString + b() + c());
+      localJSONObject.put("priority", this.jdField_b_of_type_Int);
+      localJSONObject.put("name", this.c);
+      localJSONObject.put("pron", this.e);
+      return localJSONObject;
     }
-    for (;;)
+    catch (JSONException localJSONException)
     {
-      if (CommonHbFragment.c(this.a) != null)
-      {
-        if (!TextUtils.isEmpty(CommonHbFragment.c(this.a).getText().toString())) {
-          break label539;
-        }
-        CommonHbFragment.c(this.a).setGravity(19);
-      }
-      return;
-      if (CommonHbFragment.c(this.a) == null)
-      {
-        localObject1 = CommonHbFragment.b(this.a).getText().toString();
-        localObject2 = this.a;
-        localSendHbLogic = this.a.a;
-        CommonHbFragment.a((CommonHbFragment)localObject2, SendHbLogic.a((String)localObject1, "1"));
-        break;
-      }
-      localObject1 = this.a;
-      localObject2 = this.a.a;
-      CommonHbFragment.a((CommonHbFragment)localObject1, SendHbLogic.a(CommonHbFragment.c(this.a), "1"));
-      break;
-      if (CommonHbFragment.a(this.a).isEnabled())
-      {
-        CommonHbFragment.a(this.a).setClickable(false);
-        CommonHbFragment.a(this.a).setEnabled(false);
-        CommonHbFragment.a(this.a, "hongbao.wrap.disable", "");
-      }
-      if ((CommonHbFragment.b(this.a) != null) && (CommonHbFragment.b(this.a).getText() != null)) {
-        CommonHbFragment.a(this.a, CommonHbFragment.b(this.a).getText().toString());
-      }
-      CommonHbFragment.a(this.a).setText(2131431267);
-      break label261;
-      label524:
-      CommonHbFragment.b(this.a).setGravity(21);
+      localJSONException.printStackTrace();
     }
-    label539:
-    CommonHbFragment.c(this.a).setGravity(21);
+    return null;
+  }
+  
+  public String b()
+  {
+    return this.c + File.separator + this.jdField_a_of_type_Int + File.separator;
+  }
+  
+  public String c()
+  {
+    return this.c + "_thumb" + ".png";
+  }
+  
+  public String toString()
+  {
+    return String.format(Locale.CHINA, "ArtFilter: id=%s, version=%d, priority=%d, url=%s, name=%s, md5=%s, pron=%s", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), this.jdField_b_of_type_JavaLangString, this.c, this.d, this.e });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xct
  * JD-Core Version:    0.7.0.1
  */

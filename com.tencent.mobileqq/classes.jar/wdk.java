@@ -1,42 +1,45 @@
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import com.tencent.mobileqq.activity.aio.tips.TroopAssistTipsBar;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-
 public class wdk
-  implements Runnable
 {
-  public wdk(TroopAssistTipsBar paramTroopAssistTipsBar) {}
-  
-  public void run()
+  public static void a(String paramString1, String paramString2)
   {
-    if ((TroopAssistTipsBar.a(this.a).b(TroopAssistTipsBar.a(this.a).a) != 2) && (TroopAssistTipsBar.a(this.a).b(TroopAssistTipsBar.a(this.a).a) != 3)) {}
-    do
-    {
-      do
-      {
-        return;
-        if (TroopAssistantManager.a().c(TroopAssistTipsBar.a(this.a), TroopAssistTipsBar.a(this.a).a)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("TroopAssistTipsBar", 2, "getTroopAssistTipInRange false, return ");
-      return;
-      if (this.a.a != null) {
-        this.a.a.cancel();
-      }
-    } while (!TroopAssistTipsBar.a(this.a).a(this.a, new Object[0]));
-    TroopAssistantManager.a().c(TroopAssistTipsBar.a(this.a), TroopAssistTipsBar.a(this.a).a);
-    ReportController.b(TroopAssistTipsBar.a(this.a), "CliOper", "", "", "Grp_helper", "Aio_grp_banner", 0, 0, "", "", "", "");
+    wxe.b(paramString1, paramString2);
+  }
+  
+  public static void a(String paramString1, String paramString2, Object paramObject)
+  {
+    wxe.a(paramString1, paramString2, paramObject);
+  }
+  
+  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2) {}
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    wxe.d(paramString1, paramString2);
+  }
+  
+  public static void b(String paramString1, String paramString2, Object paramObject)
+  {
+    wxe.a(paramString1, paramString2, paramObject);
+  }
+  
+  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
+  {
+    wxe.a(paramString1, paramString2, paramObject1, paramObject2);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    wxe.e(paramString1, paramString2);
+  }
+  
+  public static void c(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
+  {
+    wxe.a(paramString1, paramString2, paramObject1, paramObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wdk
  * JD-Core Version:    0.7.0.1
  */

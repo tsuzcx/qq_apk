@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.AnyScaleTypeImageView android:id="@id/bwg" android:layout_width="fill_parent" android:layout_height="300.0dip" android:layout_marginTop="100.0dip" android:scaleType="fitCenter" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/skin_black_theme_version2" android:id="@id/lgd" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</LinearLayout>

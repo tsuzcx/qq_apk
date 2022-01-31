@@ -1,24 +1,28 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.FileTransferManager;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher.Event;
 
 public class uli
-  extends TransProcessorHandler
+  implements Dispatcher.Event
 {
-  public uli(FileTransferManager paramFileTransferManager, Looper paramLooper)
+  public ErrorMessage a = new ErrorMessage();
+  
+  public String a()
   {
-    super(paramLooper);
+    return this.a.getErrorMessage();
   }
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    this.a.a(paramMessage);
+    StringBuilder localStringBuilder = new StringBuilder().append("{\"_class\":\"SimpleBaseEvent\", \"errorInfo\":");
+    if (this.a == null) {}
+    for (String str = "null";; str = "\"" + this.a + "\"") {
+      return str + "}";
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uli
  * JD-Core Version:    0.7.0.1
  */

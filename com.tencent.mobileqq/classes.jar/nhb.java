@@ -1,24 +1,19 @@
-import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareQQData;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class nhb
-  extends EncryptUrlJob
+class nhb
+  implements View.OnClickListener
 {
-  public nhb(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareQQData paramShareQQData)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  nhb(ngw paramngw) {}
   
-  public boolean b()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQQData.h = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    this.a.d(this.a.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nhb
  * JD-Core Version:    0.7.0.1
  */

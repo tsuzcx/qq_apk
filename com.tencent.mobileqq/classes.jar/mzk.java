@@ -1,26 +1,33 @@
-import android.support.v4.util.LruCache;
-import com.tencent.biz.qqstory.base.Copyable;
-import com.tencent.biz.qqstory.base.OneObjectCacheList;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import java.util.List;
 
 public class mzk
-  extends LruCache
+  implements bhuw
 {
-  public mzk(OneObjectCacheList paramOneObjectCacheList, int paramInt)
-  {
-    super(paramInt);
-  }
+  public mzk(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
   
-  protected void a(boolean paramBoolean, Object paramObject, Copyable paramCopyable1, Copyable paramCopyable2)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a.put(paramObject, new WeakReference(paramCopyable1));
-    this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("PoiMapActivity", 2, "setOnItemClickListener" + paramInt);
+    }
+    paramAdapterView = (mzm)this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.get(paramInt);
+    if (paramAdapterView != null)
+    {
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.h = true;
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(paramAdapterView);
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_result", "", "", "", "");
+    }
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mzk
  * JD-Core Version:    0.7.0.1
  */

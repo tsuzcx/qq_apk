@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.nearby.now.model;
 
-import aetp;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import avcv;
 
 public class LocalMediaInfo
-  implements Parcelable, Comparable
+  implements Parcelable, Comparable<LocalMediaInfo>
 {
-  public static final Parcelable.Creator CREATOR = new aetp();
+  public static final Parcelable.Creator<LocalMediaInfo> CREATOR = new avcv();
   public int a;
   public long a;
   public Integer a;
   public String a;
-  public boolean a;
   public int b;
   public long b;
   public String b;
@@ -91,7 +90,7 @@ public class LocalMediaInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.LocalMediaInfo
  * JD-Core Version:    0.7.0.1
  */

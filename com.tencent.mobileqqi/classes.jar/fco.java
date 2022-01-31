@@ -1,14 +1,14 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.app.FriendsManager;
 
-public class fco
+class fco
+  implements Runnable
 {
-  public ImageView a;
-  public TextView a;
-  public DiscussionInfo a;
-  public String a;
-  public TextView b;
+  fco(fcn paramfcn, String paramString1, String paramString2) {}
+  
+  public void run()
+  {
+    this.jdField_a_of_type_Fcn.a.a(this.jdField_a_of_type_JavaLangString, this.b);
+  }
 }
 
 

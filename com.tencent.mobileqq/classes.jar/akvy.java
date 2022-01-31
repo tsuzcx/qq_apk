@@ -1,39 +1,69 @@
-import android.os.Looper;
-import android.view.View;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
-import com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.process.CmGameServerQIPCModule.5;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
+import com.tencent.mobileqq.apollo.sdk.IPCSpriteContext;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import java.util.List;
 
 public class akvy
-  implements Runnable
+  implements alee
 {
-  public akvy(ProfileCardMoreInfoView paramProfileCardMoreInfoView, Card paramCard) {}
+  public akvy(CmGameServerQIPCModule.5 param5) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString, List<alec> paramList)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a == null)) {}
-    Object localObject;
-    do
+    int i = 1;
+    if (paramBoolean)
     {
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.g = 6;
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.jdField_a_of_type_Boolean = true;
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentMobileqqApolloSdkIPCSpriteContext.b;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.jdField_e_of_type_Int >= 1) {
+        this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.b = this.a.jdField_a_of_type_ComTencentMobileqqApolloSdkIPCSpriteContext.jdField_a_of_type_JavaLangString;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.jdField_a_of_type_Int = this.a.b;
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.l = this.a.jdField_a_of_type_ComTencentMobileqqApolloSdkCmShowRenderView$PlayActionConfig.c;
+      paramString = alcm.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam, this.a.jdField_a_of_type_ComTencentMobileqqApolloSdkIPCSpriteContext, this.a.jdField_a_of_type_ComTencentMobileqqApolloSdkCmShowRenderView$PlayActionConfig);
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.jdField_e_of_type_JavaLangString = paramString;
+      paramString = this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqApolloSdkCmShowRenderView$PlayActionConfig.jdField_a_of_type_Boolean)
+      {
+        paramString.m = i;
+        paramString = new Bundle();
+        paramString.putParcelable("IPCSpriteContext", this.a.jdField_a_of_type_ComTencentMobileqqApolloSdkIPCSpriteContext);
+        paramString.putParcelable("SpriteTaskParam", this.a.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam);
+        paramString = EIPCResult.createSuccessResult(paramString);
+        this.a.this$0.callbackResult(this.a.c, paramString);
+      }
+    }
+    for (;;)
+    {
+      QLog.i("cmgame_process.CmGameServerQIPCModule", 2, "onDownLoadFinish onDownLoadFinish sucess:" + paramBoolean);
       return;
-      localObject = ProfileShoppingPhotoInfo.getPhotoInfo(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
-    } while (localObject == null);
-    if ((!ProfileActivity.AllInOne.f(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a)) || (this.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId == ProfileCardTemplate.h) || ("0".equals(((ProfileShoppingPhotoInfo)localObject).bindShoppingNo)))
+      i = 0;
+      break;
+      paramString = EIPCResult.createResult(-1, null);
+      this.a.this$0.callbackResult(this.a.c, paramString);
+    }
+  }
+  
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  {
+    if (paramBoolean) {}
+    for (paramInt1 = 0;; paramInt1 = -1)
     {
-      localObject = (View)this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_JavaUtilHashMap.remove("map_key_shopping_photo");
+      paramString = EIPCResult.createResult(paramInt1, null);
+      this.a.this$0.callbackResult(this.a.c, paramString);
+      QLog.i("cmgame_process.CmGameServerQIPCModule", 2, "onDownLoadFinish onDownLoadFinish sucess:" + paramBoolean);
       return;
     }
-    new MqqHandler(Looper.getMainLooper()).post(new akvz(this, (ProfileShoppingPhotoInfo)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akvy
  * JD-Core Version:    0.7.0.1
  */

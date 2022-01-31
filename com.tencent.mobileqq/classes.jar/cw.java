@@ -1,41 +1,42 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.dataline.mpfile.MpfileTaskInfo;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.dataline.activities.PrinterSubOptionActivity;
+import java.util.List;
 
-public final class cw
-  implements Parcelable.Creator
+class cw
+  implements View.OnClickListener
 {
-  public MpfileTaskInfo a(Parcel paramParcel)
-  {
-    MpfileTaskInfo localMpfileTaskInfo = new MpfileTaskInfo();
-    localMpfileTaskInfo.jdField_f_of_type_Int = paramParcel.readInt();
-    localMpfileTaskInfo.jdField_g_of_type_Int = paramParcel.readInt();
-    localMpfileTaskInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.jdField_g_of_type_JavaLangString = paramParcel.readString();
-    localMpfileTaskInfo.h = paramParcel.readString();
-    localMpfileTaskInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_c_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_d_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_e_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_f_of_type_Long = paramParcel.readLong();
-    localMpfileTaskInfo.jdField_g_of_type_Long = paramParcel.readLong();
-    return localMpfileTaskInfo;
-  }
+  cw(cv paramcv) {}
   
-  public MpfileTaskInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new MpfileTaskInfo[paramInt];
+    paramView = (TextView)paramView.findViewById(2131364023);
+    cu localcu;
+    if (paramView != null)
+    {
+      localcu = (cu)this.a.a.b.get(((Integer)paramView.getTag()).intValue());
+      if (localcu.jdField_a_of_type_Long == 0L) {
+        break label143;
+      }
+    }
+    label143:
+    for (paramView = this.a.a.a.a.a(localcu.jdField_a_of_type_Long);; paramView = this.a.a.a.a.b(localcu.jdField_a_of_type_JavaLangString))
+    {
+      this.a.a.a.a.a = paramView;
+      paramView = new Intent();
+      paramView.putExtra("sPrinterName", localcu.jdField_a_of_type_JavaLangString);
+      paramView.putExtra("sPrintDin", localcu.jdField_a_of_type_Long);
+      this.a.a.setResult(-1, paramView);
+      this.a.a.finish();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cw
  * JD-Core Version:    0.7.0.1
  */

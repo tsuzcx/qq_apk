@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.Size;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
 
-public class xqa
-  implements Comparator
+public abstract interface xqa
 {
-  public xqa(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public abstract void a();
   
-  public int a(Size paramSize1, Size paramSize2)
-  {
-    if ((paramSize1.a < paramSize2.a) || ((paramSize1.a == paramSize2.a) && (paramSize1.b < paramSize2.b))) {
-      return -1;
-    }
-    if ((paramSize1.a != paramSize2.a) || (paramSize1.b != paramSize2.b)) {
-      return 1;
-    }
-    return 0;
-  }
+  public abstract void a(int paramInt, View paramView);
+  
+  public abstract void a(View paramView, int paramInt1, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt2);
+  
+  public abstract void a(View paramView, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt);
+  
+  public abstract boolean a(View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xqa
  * JD-Core Version:    0.7.0.1
  */

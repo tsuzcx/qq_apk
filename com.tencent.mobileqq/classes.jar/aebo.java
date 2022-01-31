@@ -1,19 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.leba.view.LebaTopBarView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
 
 public class aebo
-  implements ValueAnimator.AnimatorUpdateListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aebo(LebaTopBarView paramLebaTopBarView, View paramView) {}
+  public aebo(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramValueAnimator.height = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+    switch (paramCompoundButton.getId())
+    {
+    default: 
+      return;
+    }
+    auam.a().a(this.a.app, paramBoolean);
   }
 }
 

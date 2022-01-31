@@ -1,33 +1,30 @@
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.portal.ShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
 public class agna
-  implements WXShareHelper.WXShareListener
+  extends agmy
 {
-  public agna(ShareHelper paramShareHelper, String paramString) {}
+  public Bitmap a;
+  public String b;
   
-  public void a(BaseResp paramBaseResp)
+  public agna(String paramString)
   {
-    if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
     {
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131435303);
+      this.a = paramRedPacketInfo.icon;
+      this.b = paramRedPacketInfo.resPath;
     }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      QRUtils.a(2, 2131435302);
-    }
+  }
+  
+  public boolean a()
+  {
+    return (this.a != null) && (!TextUtils.isEmpty(this.b));
   }
 }
 

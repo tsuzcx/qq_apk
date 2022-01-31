@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity.IProgressCallback;
-import com.tencent.mobileqq.widget.CircleProgressBar;
+import UserGrowth.stRedDotReq;
+import UserGrowth.stRedDotRsp;
 
-class tko
-  implements QQSettingCleanActivity.IProgressCallback
+public class tko
+  extends thb<stRedDotRsp>
 {
-  tko(tkn paramtkn) {}
-  
-  public void a(int paramInt)
+  public tko()
   {
-    this.a.a.a.setPercent(paramInt);
+    super("RedDot");
+    this.a = new stRedDotReq(111, 1, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tko
  * JD-Core Version:    0.7.0.1
  */

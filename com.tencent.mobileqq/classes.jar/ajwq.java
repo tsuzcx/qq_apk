@@ -1,29 +1,22 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-import com.tencent.mobileqq.troop.data.TroopAioTips;
-import com.tencent.mobileqq.trooponline.TroopOnlineMemberBar;
-
-public class ajwq
-  implements ValueAnimator.AnimatorUpdateListener
+public final class ajwq
+  implements ajwt
 {
-  public ajwq(TroopOnlineMemberBar paramTroopOnlineMemberBar) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    ((RelativeLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getLayoutParams()).topMargin = paramValueAnimator.intValue();
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.requestLayout();
-    if (paramValueAnimator.intValue() <= -TroopOnlineMemberBar.jdField_a_of_type_Int + this.a.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448))
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips.a(false);
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setVisibility(8);
+    paramInt1 = paramInt2 - paramInt1;
+    if (paramInt1 >= 0) {
+      return paramInt1;
     }
+    return -paramInt1;
+  }
+  
+  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    paramInt1 = paramInt2 - paramInt1;
+    if (paramInt1 >= 0) {
+      return paramInt1;
+    }
+    return -paramInt1;
   }
 }
 

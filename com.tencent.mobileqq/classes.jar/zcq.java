@@ -1,40 +1,33 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.PrinterHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.DatalineMessageManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.qphone.base.util.QLog;
 
-public class zcq
-  extends MessageObserver
+class zcq
+  extends bead
 {
-  public zcq(DataLineHandler paramDataLineHandler) {}
+  zcq(zcn paramzcn, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void onDone(beae parambeae)
   {
-    if ((paramInt1 == 1) && (this.a.a()))
-    {
-      this.a.a(true);
-      DataLineHandler.a(this.a, MessageCache.a());
-      this.a.b.a().a(0).b();
+    if (QLog.isColorLevel()) {
+      QLog.d("ViewPluginLoader", 2, "downloadUpdate loaded json = " + parambeae.c + " code = " + parambeae.jdField_a_of_type_Int);
     }
-    this.a.a.a(this.a);
+    boolean bool = this.jdField_a_of_type_Zcn.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b);
+    if (QLog.isColorLevel()) {
+      QLog.d("ViewPluginLoader", 2, "downloadUpdate unCompressOffline" + bool);
+    }
+    this.jdField_a_of_type_Zcn.a();
   }
   
-  protected void c(int paramInt1, int paramInt2)
+  public void onProgress(beae parambeae)
   {
-    if ((paramInt1 == 1) && (this.a.b()))
-    {
-      this.a.b(true);
-      DataLineHandler.b(this.a, MessageCache.a());
-      this.a.b.a().a(1).b();
+    int i = (int)(parambeae.jdField_a_of_type_Float * 100.0F);
+    if (((i % 10 == 0) || (i > 90)) && (QLog.isColorLevel())) {
+      QLog.d("ViewPluginLoader", 2, "downding progress = " + i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zcq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,17 @@
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class wgb
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public wgb(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment) {}
+  public wgb(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public void run()
-  {
-    List localList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_JavaLangString, 1, 9223372036854775807L, 20);
-    if (localList != null) {
-      ThreadManager.getUIHandler().post(new wgc(this, localList));
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wgb
  * JD-Core Version:    0.7.0.1
  */

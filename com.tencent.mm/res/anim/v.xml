@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set android:fillAfter="true" android:fillEnabled="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate android:interpolator="@android:interpolator/accelerate_decelerate" android:duration="50" android:fromXDelta="0.0" android:toXDelta="-20.0" />
+    <translate android:interpolator="@android:interpolator/accelerate_decelerate" android:duration="50" android:startOffset="50" android:fromXDelta="-20.0" android:toXDelta="0.0" />
+    <translate android:interpolator="@android:interpolator/accelerate_decelerate" android:duration="50" android:startOffset="100" android:fromXDelta="0.0" android:toXDelta="20.0" />
+    <translate android:interpolator="@android:interpolator/accelerate_decelerate" android:duration="50" android:startOffset="150" android:fromXDelta="20.0" android:toXDelta="0.0" />
+</set>

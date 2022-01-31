@@ -1,24 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
-public final class nmw
-  implements DialogInterface.OnClickListener
+public class nmw
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public nmw(StoryVideoItem paramStoryVideoItem, String paramString) {}
+  public nmw(VideoCoverView paramVideoCoverView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    SLog.d("Q.qqstory.player.PlayModeUtils", "onClick delete =%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem });
-    StoryVideoUploadManager.a(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface.dismiss();
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.setRotation(90.0F * f1);
+    float f2 = VideoCoverView.c(this.a) * 1.0F / VideoCoverView.d(this.a);
+    this.a.setScaleX((f2 - 1.0F) * f1 + 1.0F);
+    this.a.setScaleY(f1 * 0.7774618F + 1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nmw
  * JD-Core Version:    0.7.0.1
  */

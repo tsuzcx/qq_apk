@@ -1,53 +1,72 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aone
+public class aone
+  extends aokh<aond>
 {
-  private final Drawable a;
-  private final Drawable b;
-  
-  aone(Context paramContext)
+  public static aond a()
   {
-    paramContext = paramContext.getResources();
-    this.a = paramContext.getDrawable(2130837525);
-    this.b = paramContext.getDrawable(2130837527);
+    return (aond)aoks.a().a(452);
   }
   
-  private Drawable a(Drawable paramDrawable)
+  public int a()
   {
-    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
+    return 452;
   }
   
-  private Drawable b(Drawable paramDrawable)
+  @NonNull
+  public aond a(int paramInt)
   {
-    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
-    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
-    return paramDrawable;
+    return new aond().b("0");
   }
   
-  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  @Nullable
+  public aond a(aoko[] paramArrayOfaoko)
   {
-    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
-    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
-    return paramDrawable;
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
+    {
+      aond localaond = aond.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CLovePushGrayProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
+      }
+      return localaond;
+    }
+    return null;
   }
   
-  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
+  public Class<aond> a()
   {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
-    localStateListDrawable.addState(new int[0], paramDrawable1);
-    return localStateListDrawable;
+    return aond.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("C2CLovePushGrayProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(aond paramaond) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aone
  * JD-Core Version:    0.7.0.1
  */

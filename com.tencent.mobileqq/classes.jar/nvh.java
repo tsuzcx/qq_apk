@@ -1,20 +1,24 @@
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreSimpleListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopNewPageFragment;
 
 public class nvh
-  extends LoadingMoreHelper.OnLoadMoreSimpleListener
+  extends BroadcastReceiver
 {
-  public nvh(StoryDetailFragment paramStoryDetailFragment) {}
+  public nvh(EcshopNewPageFragment paramEcshopNewPageFragment) {}
   
-  public boolean a(boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.d();
-    return true;
+    if ((paramIntent != null) && ("com.tencent.biz.pubaccount.ecshop.tabpage.finish".equals(paramIntent.getAction())) && (this.a.getActivity() != null)) {
+      this.a.getActivity().finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvh
  * JD-Core Version:    0.7.0.1
  */

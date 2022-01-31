@@ -1,31 +1,23 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.utils.DBUtils;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
 
 class ubr
-  implements Runnable
+  implements zac<FeedCloudRead.StGetMainPageRsp>
 {
-  ubr(ubp paramubp, String paramString) {}
+  ubr(ubq paramubq, QCircleGetMainPageRequest paramQCircleGetMainPageRequest, boolean paramBoolean) {}
   
-  public void run()
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    Object localObject = (FriendsManager)this.jdField_a_of_type_Ubp.a.app.getManager(50);
-    TroopMemberInfo localTroopMemberInfo = DBUtils.a().a(this.jdField_a_of_type_Ubp.a.app, this.jdField_a_of_type_Ubp.a.b, this.jdField_a_of_type_JavaLangString);
-    if ((localTroopMemberInfo != null) && (localObject != null))
-    {
-      localObject = this.jdField_a_of_type_Ubp.a.a(localTroopMemberInfo, (FriendsManager)localObject);
-      ThreadManager.getUIHandler().post(new ubs(this, (TroopMemberListActivity.ATroopMember)localObject));
-    }
+    boolean bool = VSNetworkHelper.a(paramString);
+    QLog.d("QCirclePersonalDetailViewModel", 1, "requestData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + bool);
+    this.jdField_a_of_type_Ubq.a(paramBoolean, paramLong, paramString, paramStGetMainPageRsp, Boolean.valueOf(this.jdField_a_of_type_Boolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ubr
  * JD-Core Version:    0.7.0.1
  */

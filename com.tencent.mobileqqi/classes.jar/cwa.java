@@ -1,13 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
 
 public class cwa
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public cwa(GroupManagerActivity paramGroupManagerActivity) {}
+  public cwa(ModifyFriendInfoActivity paramModifyFriendInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    Toast.makeText(this.a, 2131561611, 0).show();
+  }
 }
 
 

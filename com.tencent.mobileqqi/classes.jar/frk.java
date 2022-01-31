@@ -1,75 +1,65 @@
-import com.tencent.mobileqq.config.struct.PicAndAdConf;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import android.content.Intent;
+import android.os.Parcelable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
+import com.tencent.mobileqq.filemanager.activity.fileviewer.qfile.QfileFileViewerActivity;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.data.FMDataCache;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.data.RecentFileAdapter.ItemHolder;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 
 public class frk
+  implements View.OnClickListener
 {
-  public static final int a = 1;
-  public static final int b = 2;
-  public static final int c = 3;
-  public static final int d = 4;
-  public static final int e = 5;
-  public static final int f = 6;
-  public byte a;
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public byte[] a;
-  public String b = null;
-  public String c = null;
-  public String d = null;
-  public String e = "";
+  public frk(FMRecentFileActivity paramFMRecentFileActivity) {}
   
-  public frk(PicAndAdConf paramPicAndAdConf)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_a_of_type_Byte = 3;
-    this.jdField_a_of_type_Short = 0;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a(DataInputStream paramDataInputStream)
-  {
-    this.jdField_a_of_type_Long = paramDataInputStream.readLong();
-    this.jdField_a_of_type_JavaLangString = paramDataInputStream.readUTF();
-    this.b = paramDataInputStream.readUTF();
-    this.d = paramDataInputStream.readUTF();
-    this.jdField_a_of_type_Byte = paramDataInputStream.readByte();
-    this.c = paramDataInputStream.readUTF();
-    this.e = paramDataInputStream.readUTF();
-    this.jdField_a_of_type_Short = paramDataInputStream.readShort();
-  }
-  
-  public void a(DataOutputStream paramDataOutputStream)
-  {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_JavaLangString = "";
+    paramView = (RecentFileAdapter.ItemHolder)paramView.getTag();
+    FileManagerEntity localFileManagerEntity = paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    this.a.b.a().b();
+    FMRecentFileActivity.a(this.a);
+    if (this.a.g())
+    {
+      if (FMDataCache.a(localFileManagerEntity)) {
+        FMDataCache.b(localFileManagerEntity);
+      }
+      for (;;)
+      {
+        this.a.f();
+        FMRecentFileActivity.a(this.a);
+        return;
+        FMDataCache.a(localFileManagerEntity);
+      }
     }
-    if (this.b == null) {
-      this.b = "";
-    }
-    if (this.d == null) {
-      this.d = "";
-    }
-    if (this.c == null) {
-      this.c = "";
-    }
-    paramDataOutputStream.writeLong(this.jdField_a_of_type_Long);
-    paramDataOutputStream.writeUTF(this.jdField_a_of_type_JavaLangString);
-    paramDataOutputStream.writeUTF(this.b);
-    paramDataOutputStream.writeUTF(this.d);
-    paramDataOutputStream.writeByte(this.jdField_a_of_type_Byte);
-    paramDataOutputStream.writeUTF(this.c);
-    paramDataOutputStream.writeUTF(this.e);
-    paramDataOutputStream.writeShort(this.jdField_a_of_type_Short);
+    Object localObject = new FileManagerReporter.fileAssistantReportData();
+    ((FileManagerReporter.fileAssistantReportData)localObject).jdField_a_of_type_JavaLangString = "file_viewer_in";
+    ((FileManagerReporter.fileAssistantReportData)localObject).jdField_a_of_type_Int = 73;
+    ((FileManagerReporter.fileAssistantReportData)localObject).b = FileUtil.a(localFileManagerEntity.fileName);
+    ((FileManagerReporter.fileAssistantReportData)localObject).jdField_a_of_type_Long = localFileManagerEntity.fileSize;
+    FileManagerReporter.a(this.a.b.a(), (FileManagerReporter.fileAssistantReportData)localObject);
+    localObject = new ForwardFileInfo();
+    ((ForwardFileInfo)localObject).c(localFileManagerEntity.cloudType);
+    ((ForwardFileInfo)localObject).a(10001);
+    ((ForwardFileInfo)localObject).b(paramView.b);
+    ((ForwardFileInfo)localObject).c(paramView.jdField_a_of_type_Long);
+    ((ForwardFileInfo)localObject).d(localFileManagerEntity.fileName);
+    ((ForwardFileInfo)localObject).d(localFileManagerEntity.fileSize);
+    ((ForwardFileInfo)localObject).b(localFileManagerEntity.Uuid);
+    paramView = new Intent(this.a.getApplicationContext(), QfileFileViewerActivity.class);
+    paramView.putExtra("fileinfo", (Parcelable)localObject);
+    this.a.startActivityForResult(paramView, 102);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     frk
  * JD-Core Version:    0.7.0.1
  */

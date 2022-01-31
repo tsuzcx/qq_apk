@@ -6,12 +6,12 @@ import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONObject;
 
@@ -264,8 +264,8 @@ public class SonicServer
       if ((paramString != null) && (paramString.size() != 0))
       {
         localObject = new StringBuilder((String)paramString.get(0));
-        int i = 1;
         int j = paramString.size();
+        int i = 1;
         while (i < j)
         {
           ((StringBuilder)localObject).append(',');
@@ -282,7 +282,7 @@ public class SonicServer
   {
     if (this.cachedResponseHeaders == null)
     {
-      this.cachedResponseHeaders = new HashMap();
+      this.cachedResponseHeaders = new ConcurrentHashMap();
       Object localObject3;
       Object localObject2;
       if ((this.session.config.customResponseHeaders != null) && (this.session.config.customResponseHeaders.size() > 0))
@@ -315,8 +315,6 @@ public class SonicServer
           localObject3 = (String)((Map.Entry)localObject2).getKey();
           if (!TextUtils.isEmpty((CharSequence)localObject3)) {
             this.cachedResponseHeaders.put(((String)localObject3).toLowerCase(), ((Map.Entry)localObject2).getValue());
-          } else {
-            this.cachedResponseHeaders.put(localObject3, ((Map.Entry)localObject2).getValue());
           }
         }
       }
@@ -423,66 +421,66 @@ public class SonicServer
   
   protected void separateTemplateAndData()
   {
-    Object localObject1;
-    Object localObject2;
-    String str1;
-    String str3;
+    String str1 = null;
+    Object localObject3;
     if (!TextUtils.isEmpty(this.serverRsp))
     {
       localObject1 = new StringBuilder();
-      localObject2 = new StringBuilder();
-      str1 = null;
-      if (SonicUtils.separateTemplateAndData(this.session.id, this.serverRsp, (StringBuilder)localObject1, (StringBuilder)localObject2))
-      {
-        this.templateString = ((StringBuilder)localObject1).toString();
-        str1 = ((StringBuilder)localObject2).toString();
+      localObject3 = new StringBuilder();
+      if (!SonicUtils.separateTemplateAndData(this.session.id, this.serverRsp, (StringBuilder)localObject1, (StringBuilder)localObject3)) {
+        break label337;
       }
+      this.templateString = ((StringBuilder)localObject1).toString();
+    }
+    label337:
+    Object localObject2;
+    for (Object localObject1 = ((StringBuilder)localObject3).toString();; localObject2 = null)
+    {
       String str2 = getResponseHeaderField("eTag");
-      str3 = getResponseHeaderField("template-tag");
-      localObject1 = null;
-      localObject2 = str2;
+      String str3 = getResponseHeaderField("template-tag");
+      localObject3 = str2;
       if (TextUtils.isEmpty(str2))
       {
-        localObject2 = SonicUtils.getSHA1(this.serverRsp);
-        localObject1 = localObject2;
-        addResponseHeaderFields("eTag", new String[] { localObject2 });
-        addResponseHeaderFields("sonic-html-sha1", new String[] { localObject1 });
+        str1 = SonicUtils.getSHA1(this.serverRsp);
+        addResponseHeaderFields("eTag", new String[] { str1 });
+        addResponseHeaderFields("sonic-html-sha1", new String[] { str1 });
+        localObject3 = str1;
       }
-      if (!TextUtils.isEmpty(this.templateString)) {
-        break label256;
-      }
-      this.templateString = this.serverRsp;
-      addResponseHeaderFields("template-tag", new String[] { localObject2 });
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(str1)) {}
-      try
+      if (TextUtils.isEmpty(this.templateString))
       {
-        localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("data", new JSONObject(str1));
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          addResponseHeaderFields("sonic-html-sha1", new String[] { SonicUtils.getSHA1(this.serverRsp) });
+        this.templateString = this.serverRsp;
+        addResponseHeaderFields("template-tag", new String[] { localObject3 });
+      }
+      for (;;)
+      {
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
+        try
+        {
+          localObject3 = new JSONObject();
+          ((JSONObject)localObject3).put("data", new JSONObject((String)localObject1));
+          if (TextUtils.isEmpty(str1)) {
+            addResponseHeaderFields("sonic-html-sha1", new String[] { SonicUtils.getSHA1(this.serverRsp) });
+          }
+          ((JSONObject)localObject3).put("html-sha1", getResponseHeaderField("sonic-html-sha1"));
+          ((JSONObject)localObject3).put("template-tag", getResponseHeaderField("template-tag"));
+          this.dataString = ((JSONObject)localObject3).toString();
+          return;
         }
-        ((JSONObject)localObject2).put("html-sha1", getResponseHeaderField("sonic-html-sha1"));
-        ((JSONObject)localObject2).put("template-tag", getResponseHeaderField("template-tag"));
-        this.dataString = ((JSONObject)localObject2).toString();
-        return;
-      }
-      catch (Exception localException)
-      {
-        label256:
-        SonicUtils.log("SonicSdk_SonicServer", 6, "session(" + this.session.sId + ") parse server response data error:" + localException.getMessage() + ".");
-      }
-      if (TextUtils.isEmpty(str3)) {
-        addResponseHeaderFields("template-tag", new String[] { SonicUtils.getSHA1(this.templateString) });
+        catch (Exception localException)
+        {
+          SonicUtils.log("SonicSdk_SonicServer", 6, "session(" + this.session.sId + ") parse server response data error:" + localException.getMessage() + ".");
+          return;
+        }
+        if (TextUtils.isEmpty(str3)) {
+          addResponseHeaderFields("template-tag", new String[] { SonicUtils.getSHA1(this.templateString) });
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicServer
  * JD-Core Version:    0.7.0.1
  */

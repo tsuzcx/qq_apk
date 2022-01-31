@@ -11,13 +11,14 @@ import android.os.RemoteException;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
+import com.tencent.tmassistant.common.PackageInstallReceiver;
 import com.tencent.tmassistantbase.network.NetworkMonitorReceiver;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.f;
-import com.tencent.tmassistantbase.util.g;
-import com.tencent.tmassistantbase.util.h;
+import com.tencent.tmassistantbase.util.aa;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.k;
 import com.tencent.tmassistantbase.util.m;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.s;
 import com.tencent.tmdownloader.internal.downloadclient.MobileQQCloseServiceReceiver;
 import com.tencent.tmdownloader.internal.downloadservice.ApkDownloadManager;
 import com.tencent.tmdownloader.internal.notification.NotifyParam;
@@ -30,12 +31,12 @@ public class TMAssistantDownloadService
 {
   private static final int MSG_HANDSHAKE_YYB = 1;
   private static final int MSG_INIT_YYBMG = 0;
-  protected static final String TAG = "TMAssistantDownloadSDKService";
-  protected final x downloadSDKServiceImpl = new x(this);
+  protected static final String TAG = "TMADownloadSDKService";
+  protected final y downloadSDKServiceImpl = new y(this);
   protected final HashMap<com.tencent.tmassistant.aidl.a, String> mCallbackHashMap = new HashMap();
   protected final RemoteCallbackList<com.tencent.tmassistant.aidl.a> mCallbacks = new RemoteCallbackList();
-  private Handler mHandler = new w(this);
-  private h mLogListener = null;
+  private Handler mHandler = new x(this);
+  private m mLogListener = null;
   com.tencent.tmdownloader.internal.notification.a mNotificationManager = null;
   com.tencent.tmdownloader.internal.downloadservice.a.c mServiceDownloadTaskManager = null;
   private com.tencent.tmdownloader.internal.downloadclient.c yybManager = null;
@@ -56,7 +57,7 @@ public class TMAssistantDownloadService
       if (paramNotifyParam != null)
       {
         com.tencent.tmdownloader.internal.downloadservice.a.a(d.a(paramNotifyParam.j));
-        com.tencent.tmdownloader.internal.notification.a.a().b(String.valueOf(paramNotifyParam.r));
+        com.tencent.tmdownloader.internal.notification.a.a().b(String.valueOf(paramNotifyParam.q));
         continue;
         ApkDownloadManager.getInstance().restartDownload(paramNotifyParam.url);
       }
@@ -89,7 +90,7 @@ public class TMAssistantDownloadService
           {
             for (;;)
             {
-              r.c("TMAssistantDownloadSDKService", "exception: ", localRemoteException);
+              ab.c("TMADownloadSDKService", "exception: ", localRemoteException);
             }
           }
           i += 1;
@@ -98,8 +99,8 @@ public class TMAssistantDownloadService
       }
       catch (Throwable paramString1)
       {
-        Log.e("TMAssistantDownloadSDKService", "exception: ", paramString1);
-        r.c("TMAssistantDownloadSDKService", "<OnDownloadProgressChanged>exit");
+        Log.e("TMADownloadSDKService", "exception: ", paramString1);
+        ab.c("TMADownloadSDKService", "<OnDownloadProgressChanged>exit");
         return;
       }
     }
@@ -131,7 +132,7 @@ public class TMAssistantDownloadService
           {
             for (;;)
             {
-              Log.e("TMAssistantDownloadSDKService", "exception: ", localRemoteException);
+              Log.e("TMADownloadSDKService", "exception: ", localRemoteException);
             }
           }
           i += 1;
@@ -140,8 +141,8 @@ public class TMAssistantDownloadService
       }
       catch (Throwable paramString1)
       {
-        r.c("TMAssistantDownloadSDKService", "exception: ", paramString1);
-        r.c("TMAssistantDownloadSDKService", "<OnDownloadStateChanged>exit");
+        ab.c("TMADownloadSDKService", "exception: ", paramString1);
+        ab.c("TMADownloadSDKService", "<OnDownloadStateChanged>exit");
         return;
       }
     }
@@ -149,37 +150,39 @@ public class TMAssistantDownloadService
   
   public IBinder onBind(Intent paramIntent)
   {
-    r.c("TMAssistantDownloadSDKService", "<onBind>enter");
-    r.c("TMAssistantDownloadSDKService", "<onBind>intent:" + paramIntent);
-    r.c("TMAssistantDownloadSDKService", "<onBind>returnValue: " + this.downloadSDKServiceImpl);
-    r.c("TMAssistantDownloadSDKService", "<onBind>exit");
+    ab.c("TMADownloadSDKService", "<onBind>enter");
+    ab.c("TMADownloadSDKService", "<onBind>intent:" + paramIntent);
+    ab.c("TMADownloadSDKService", "<onBind>returnValue: " + this.downloadSDKServiceImpl);
+    ab.c("TMADownloadSDKService", "<onBind>exit");
     return this.downloadSDKServiceImpl;
   }
   
   public void onCreate()
   {
-    r.c("TMAssistantDownloadSDKService", "<onCreate>enter");
+    long l = System.currentTimeMillis();
+    ab.c("TMADownloadSDKService", "<onCreate>enter");
     super.onCreate();
     GlobalUtil.getInstance().setContext(this);
-    NetworkMonitorReceiver.a().b();
-    m.d();
+    NetworkMonitorReceiver.getInstance().registerReceiver();
+    s.d();
     try
     {
       MobileQQCloseServiceReceiver.a().a(this);
-      label34:
-      f.a(g.b).post(new u(this));
-      new Thread(new v(this)).start();
+      label38:
+      k.a().post(new v(this));
+      new Thread(new w(this)).start();
+      aa.a("TMAssistantDownloadService.onCreate end, timeCost = " + (System.currentTimeMillis() - l));
       return;
     }
     catch (Throwable localThrowable)
     {
-      break label34;
+      break label38;
     }
   }
   
   public void onDestroy()
   {
-    r.c("TMAssistantDownloadSDKService", "<onDestroy>enter");
+    ab.c("TMADownloadSDKService", "<onDestroy>enter");
     super.onDestroy();
     ApkDownloadManager.getInstance().uninit();
     if (this.mServiceDownloadTaskManager != null)
@@ -193,17 +196,27 @@ public class TMAssistantDownloadService
       this.mNotificationManager.c();
       this.mNotificationManager = null;
     }
-    NetworkMonitorReceiver.a().c();
+    NetworkMonitorReceiver.getInstance().unregisterReceiver();
     GlobalUtil.getInstance().destroy();
     MobileQQCloseServiceReceiver.a().b(this);
-    SystemClock.sleep(300L);
-    r.c("TMAssistantDownloadSDKService", "<onDestroy>exit");
-    Process.killProcess(Process.myPid());
+    try
+    {
+      PackageInstallReceiver.a().b(this);
+      label90:
+      SystemClock.sleep(300L);
+      ab.c("TMADownloadSDKService", "<onDestroy>exit");
+      Process.killProcess(Process.myPid());
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label90;
+    }
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    r.c("TMAssistantDownloadSDKService", "onStartCommand......");
+    ab.c("TMADownloadSDKService", "onStartCommand......");
     if (paramIntent != null) {}
     for (;;)
     {
@@ -228,7 +241,7 @@ public class TMAssistantDownloadService
           }
           else
           {
-            r.c("TMAssistantDownloadSDKService", "onStartCommand......clientKey : " + paramIntent);
+            ab.c("TMADownloadSDKService", "onStartCommand......clientKey : " + paramIntent);
             localObject1 = new Message();
             ((Message)localObject1).what = 0;
             ((Message)localObject1).obj = paramIntent;
@@ -253,17 +266,17 @@ public class TMAssistantDownloadService
   
   public boolean onUnbind(Intent paramIntent)
   {
-    r.c("TMAssistantDownloadSDKService", "<onUnbind>enter");
-    r.c("TMAssistantDownloadSDKService", "<onUnbind>intent:" + paramIntent);
+    ab.c("TMADownloadSDKService", "<onUnbind>enter");
+    ab.c("TMADownloadSDKService", "<onUnbind>intent:" + paramIntent);
     boolean bool = super.onUnbind(paramIntent);
-    r.c("TMAssistantDownloadSDKService", "<onUnbind>returnValue: " + bool);
-    r.c("TMAssistantDownloadSDKService", "<onUnbind>exit");
+    ab.c("TMADownloadSDKService", "<onUnbind>returnValue: " + bool);
+    ab.c("TMADownloadSDKService", "<onUnbind>exit");
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmdownloader.TMAssistantDownloadService
  * JD-Core Version:    0.7.0.1
  */

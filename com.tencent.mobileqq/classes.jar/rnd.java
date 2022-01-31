@@ -1,33 +1,39 @@
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.util.FaceDrawable;
+import android.widget.FrameLayout.LayoutParams;
 
-class rnd
-  implements Runnable
+public abstract interface rnd
 {
-  rnd(rnc paramrnc, String paramString, View paramView) {}
+  public abstract long a();
   
-  public void run()
-  {
-    try
-    {
-      FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_Rnc.a.app, this.jdField_a_of_type_JavaLangString, (byte)3);
-      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362719);
-      if (localImageView != null) {
-        localImageView.setImageDrawable(localFaceDrawable);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
+  public abstract rne a(int paramInt);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(View paramView, int paramInt, FrameLayout.LayoutParams paramLayoutParams);
+  
+  public abstract void a(rnb<rne> paramrnb);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rnd
  * JD-Core Version:    0.7.0.1
  */

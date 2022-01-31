@@ -1,5 +1,38 @@
 package com.tencent.mobileqq.persistence;
 
+import awfs;
+import awft;
+import awfu;
+import awfv;
+import awfw;
+import awfz;
+import awga;
+import awgb;
+import awgc;
+import awgd;
+import awgi;
+import awgj;
+import awgk;
+import awgl;
+import awgm;
+import awgo;
+import awgq;
+import awgt;
+import awgu;
+import awgv;
+import awgw;
+import awgx;
+import awgy;
+import awgz;
+import awha;
+import awhb;
+import awhc;
+import awhd;
+import awhe;
+import awhh;
+import awhi;
+import awhj;
+import awhk;
 import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
 import com.tencent.mobileqq.data.Ability;
 import com.tencent.mobileqq.data.Card;
@@ -20,7 +53,6 @@ import com.tencent.mobileqq.data.NearbyPeopleCard;
 import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.mobileqq.data.QZoneCover;
-import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.data.ResourcePluginInfo;
 import com.tencent.mobileqq.data.RoamSetting;
 import com.tencent.mobileqq.data.SearchHistory;
@@ -37,50 +69,49 @@ import java.util.HashMap;
 
 public class EntityDaoRegister
 {
-  private static HashMap a = new HashMap(33);
-  private static HashMap b = new HashMap(33);
+  private static HashMap<Class, awgq> a = new HashMap(32);
+  private static HashMap<Class, Class> b = new HashMap(32);
   
   static
   {
     System.nanoTime();
-    b.put(SubAccountInfo.class, SubAccountInfoDao.class);
-    b.put(QZoneCover.class, QZoneCoverDao.class);
-    b.put(PhoneContact.class, PhoneContactDao.class);
-    b.put(Friends.class, FriendsDao.class);
-    b.put(DiscussionMemberInfo.class, DiscussionMemberInfoDao.class);
-    b.put(Ability.class, AbilityDao.class);
-    b.put(Stranger.class, StrangerDao.class);
-    b.put(ContactCard.class, ContactCardDao.class);
-    b.put(EmoticonPackage.class, EmoticonPackageDao.class);
-    b.put(NearbyPeopleCard.class, NearbyPeopleCardDao.class);
-    b.put(Emoticon.class, EmoticonDao.class);
-    b.put(CommonlyUsedTroop.class, CommonlyUsedTroopDao.class);
-    b.put(TroopMemberInfo.class, TroopMemberInfoDao.class);
-    b.put(ExtensionInfo.class, ExtensionInfoDao.class);
-    b.put(EmoticonTab.class, EmoticonTabDao.class);
-    b.put(TroopInfo.class, TroopInfoDao.class);
-    b.put(TroopAssistantData.class, TroopAssistantDataDao.class);
-    b.put(Card.class, CardDao.class);
-    b.put(ExpiredPushBanner.class, ExpiredPushBannerDao.class);
-    b.put(ShieldListInfo.class, ShieldListInfoDao.class);
-    b.put(DiscussionInfo.class, DiscussionInfoDao.class);
-    b.put(ResourcePluginInfo.class, ResourcePluginInfoDao.class);
-    b.put(ConversationInfo.class, ConversationInfoDao.class);
-    b.put(Setting.class, SettingDao.class);
-    b.put(TroopRemindSettingData.class, TroopRemindSettingDataDao.class);
-    b.put(SearchHistory.class, SearchHistoryDao.class);
-    b.put(HotChatInfo.class, HotChatInfoDao.class);
-    b.put(RecentUser.class, RecentUserDao.class);
-    b.put(Groups.class, GroupsDao.class);
-    b.put(RoamSetting.class, RoamSettingDao.class);
-    b.put(QQOperationViopTipTask.class, QQOperationViopTipTaskDao.class);
-    b.put(Reporting.class, ReportingDao.class);
-    b.put(PublicAccountInfo.class, PublicAccountInfoDao.class);
+    b.put(TroopAssistantData.class, awhh.class);
+    b.put(HotChatInfo.class, awgm.class);
+    b.put(SearchHistory.class, awha.class);
+    b.put(NearbyPeopleCard.class, awgo.class);
+    b.put(EmoticonTab.class, awgd.class);
+    b.put(TroopRemindSettingData.class, awhk.class);
+    b.put(ExtensionInfo.class, awgj.class);
+    b.put(DiscussionMemberInfo.class, awga.class);
+    b.put(Card.class, awft.class);
+    b.put(CommonlyUsedTroop.class, awfu.class);
+    b.put(TroopMemberInfo.class, awhj.class);
+    b.put(DiscussionInfo.class, awfz.class);
+    b.put(Emoticon.class, awgb.class);
+    b.put(PhoneContact.class, awgt.class);
+    b.put(ExpiredPushBanner.class, awgi.class);
+    b.put(ResourcePluginInfo.class, awgy.class);
+    b.put(QZoneCover.class, awgw.class);
+    b.put(Setting.class, awhb.class);
+    b.put(Stranger.class, awhd.class);
+    b.put(ConversationInfo.class, awfw.class);
+    b.put(Ability.class, awfs.class);
+    b.put(SubAccountInfo.class, awhe.class);
+    b.put(Friends.class, awgk.class);
+    b.put(TroopInfo.class, awhi.class);
+    b.put(Groups.class, awgl.class);
+    b.put(EmoticonPackage.class, awgc.class);
+    b.put(ContactCard.class, awfv.class);
+    b.put(RoamSetting.class, awgz.class);
+    b.put(ShieldListInfo.class, awhc.class);
+    b.put(QQOperationViopTipTask.class, awgv.class);
+    b.put(Reporting.class, awgx.class);
+    b.put(PublicAccountInfo.class, awgu.class);
   }
   
-  public static OGAbstractDao a(Class paramClass)
+  public static awgq a(Class paramClass)
   {
-    localObject1 = (OGAbstractDao)a.get(paramClass);
+    localObject1 = (awgq)a.get(paramClass);
     if (localObject1 != null) {}
     Object localObject3;
     do
@@ -90,7 +121,7 @@ public class EntityDaoRegister
     } while (localObject3 == null);
     synchronized (a)
     {
-      localObject2 = (OGAbstractDao)a.get(paramClass);
+      localObject2 = (awgq)a.get(paramClass);
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = localObject2;

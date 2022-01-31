@@ -1,60 +1,58 @@
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
+import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ShowReactiveActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
 
 public class vtf
-  implements View.OnTouchListener
+  extends vua
+  implements View.OnClickListener
 {
-  public vtf(FriendChatPie paramFriendChatPie) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public vtf(@NonNull ViewGroup paramViewGroup)
   {
-    switch (paramMotionEvent.getAction())
+    super(paramViewGroup);
+    this.a.findViewById(2131368020).setOnClickListener(this);
+    this.a.findViewById(2131377769).setOnClickListener(this);
+  }
+  
+  protected View a(ViewGroup paramViewGroup)
+  {
+    return paramViewGroup;
+  }
+  
+  public void a(int paramInt1, int paramInt2, @NonNull vtt paramvtt, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
+  {
+    super.a(paramInt1, paramInt2, paramvtt, paramStoryPlayerGroupHolder);
+    if (bnle.a)
     {
+      paramStoryPlayerGroupHolder = (RelativeLayout.LayoutParams)this.a.findViewById(2131368020).getLayoutParams();
+      paramStoryPlayerGroupHolder.topMargin = (xsm.a(this.a.getContext(), 5.0F) + 114);
+      this.a.findViewById(2131368020).setLayoutParams(paramStoryPlayerGroupHolder);
     }
-    for (;;)
-    {
-      return true;
-      if (Build.VERSION.SDK_INT >= 16)
-      {
-        this.a.e.setImageAlpha(127);
-      }
-      else
-      {
-        this.a.e.setAlpha(127);
-        continue;
-        if (Build.VERSION.SDK_INT >= 16) {
-          this.a.e.setImageAlpha(255);
-        }
-        for (;;)
-        {
-          ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007602", "0X8007602", 0, 0, "", "", "", "");
-          paramView = new Intent(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, ShowReactiveActivity.class);
-          paramView.putExtra("friendUin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-          this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramView);
-          break;
-          this.a.e.setAlpha(255);
-        }
-        if (Build.VERSION.SDK_INT >= 16) {
-          this.a.e.setImageAlpha(255);
-        } else {
-          this.a.e.setAlpha(255);
-        }
-      }
-    }
+    a().a(this, paramInt1, paramInt2, paramvtt);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    a().a(this, paramBoolean);
+  }
+  
+  protected void b()
+  {
+    super.b();
+    a().a(this);
+  }
+  
+  public void onClick(View paramView)
+  {
+    a().a(this, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vtf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,34 @@
-import com.tencent.biz.qqstory.network.handler.VidToSimpleInfoHandler.GetSimpleInfoListEvent;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager.GetFeedVidListObserver;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 
 public class nsa
-  extends ShareGroupManager.GetFeedVidListObserver
+  extends nrz
 {
-  public nsa(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
-  
-  public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean)
+  protected byte[] a(FromServiceMsg paramFromServiceMsg)
   {
-    VidToSimpleInfoHandler.GetSimpleInfoListEvent localGetSimpleInfoListEvent = new VidToSimpleInfoHandler.GetSimpleInfoListEvent();
-    localGetSimpleInfoListEvent.jdField_a_of_type_JavaLangString = paramVideoCollectionItem.collectionId;
-    localGetSimpleInfoListEvent.jdField_a_of_type_JavaUtilList = paramVideoCollectionItem.collectionVideoUIItemList;
-    Dispatchers.get().dispatch(localGetSimpleInfoListEvent);
+    paramFromServiceMsg = super.a(paramFromServiceMsg);
+    if (paramFromServiceMsg != null)
+    {
+      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+      try
+      {
+        localStQWebRsp.mergeFrom(paramFromServiceMsg);
+        paramFromServiceMsg = localStQWebRsp.busiBuff.get().toByteArray();
+        return paramFromServiceMsg;
+      }
+      catch (Throwable paramFromServiceMsg)
+      {
+        paramFromServiceMsg.printStackTrace();
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nsa
  * JD-Core Version:    0.7.0.1
  */

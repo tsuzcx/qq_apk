@@ -1,28 +1,21 @@
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.biz.qqstory.playmode.util.NewDiscoverBannerDataProvider;
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
 public class nmr
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+  extends AnimatorListenerAdapter
 {
-  public nmr(NewDiscoverBannerDataProvider paramNewDiscoverBannerDataProvider, BatchGetVideoInfo paramBatchGetVideoInfo) {}
+  public nmr(VideoCoverView paramVideoCoverView) {}
   
-  public void a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilNewDiscoverBannerDataProvider.a(false, null);
-  }
-  
-  public void a(ArrayList paramArrayList)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilNewDiscoverBannerDataProvider.a(true, paramArrayList);
+    super.onAnimationEnd(paramAnimator);
+    VideoCoverView.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nmr
  * JD-Core Version:    0.7.0.1
  */

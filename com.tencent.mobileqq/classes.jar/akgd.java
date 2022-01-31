@@ -1,53 +1,49 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.StateListDrawable;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class akgd
+  extends bant
 {
-  private final Drawable a;
-  private final Drawable b;
+  akgd(akga paramakga, String paramString) {}
   
-  akgd(Context paramContext)
+  public void onComplete(String paramString, int paramInt)
   {
-    paramContext = paramContext.getResources();
-    this.a = paramContext.getDrawable(2130837525);
-    this.b = paramContext.getDrawable(2130837527);
+    QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: " + paramString + "," + paramInt);
+    try
+    {
+      paramString = new JSONObject();
+      paramString.put("code", 2);
+      paramString.put("errorCode", paramInt);
+      this.jdField_a_of_type_Akga.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: ", paramString);
+    }
   }
   
-  private Drawable a(Drawable paramDrawable)
+  public void onProgress(String paramString, long paramLong1, long paramLong2)
   {
-    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
-  }
-  
-  private Drawable b(Drawable paramDrawable)
-  {
-    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
-    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
-    return paramDrawable;
-  }
-  
-  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
-  {
-    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
-    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
-    return paramDrawable;
-  }
-  
-  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
-    localStateListDrawable.addState(new int[0], paramDrawable1);
-    return localStateListDrawable;
+    int i = (int)(100.0F * (float)paramLong1 / (float)paramLong2);
+    try
+    {
+      paramString = new JSONObject();
+      paramString.put("code", 1);
+      paramString.put("progress", i);
+      this.jdField_a_of_type_Akga.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: ", paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akgd
  * JD-Core Version:    0.7.0.1
  */

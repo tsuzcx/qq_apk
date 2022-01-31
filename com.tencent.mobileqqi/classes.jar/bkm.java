@@ -1,44 +1,35 @@
-import android.content.Context;
-import android.view.View;
-import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.MultiVideoMembersHolderUI;
-import com.tencent.av.utils.MultiVideoMembersClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.assistant.PubAccountAssistantActivity;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import java.util.List;
 
 public class bkm
-  implements AdapterView.OnItemClickListener
+  implements Runnable
 {
-  public bkm(MultiVideoMembersHolderUI paramMultiVideoMembersHolderUI) {}
+  public bkm(PubAccountAssistantActivity paramPubAccountAssistantActivity, List paramList) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("MultiVideoMembersHolderUI", 2, "onItemClick INGridView POSITION=" + paramInt + "ID=" + paramLong);
+    if (!this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantActivity.b) {
+      PubAccountAssistantActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantActivity).setVisibility(0);
     }
-    paramInt = (int)paramLong;
-    bkp localbkp = (bkp)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    boolean bool = this.a.a(localbkp, paramInt);
-    if ((!bool) && (!localbkp.c) && (!localbkp.b)) {}
-    for (paramInt = 0;; paramInt = this.a.jdField_a_of_type_ComTencentAvVideoController.a().c)
+    RecentAdapter localRecentAdapter;
+    if (PubAccountAssistantActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantActivity) != null)
     {
-      if (this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener != null) {
-        this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener.a(localbkp.a, paramInt, bool);
+      localRecentAdapter = PubAccountAssistantActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantActivity);
+      if (!this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantActivity.b) {
+        break label89;
       }
-      if ((localbkp.c) || (localbkp.b)) {
-        break;
-      }
-      paramView.startAnimation(AnimationUtils.loadAnimation((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 2130968635));
-      ReportController.b(null, "CliOper", "", "", "0X800442D", "0X800442D", 0, 0, "", "", "", "");
+    }
+    label89:
+    for (int i = 8;; i = 9)
+    {
+      localRecentAdapter.a(i);
+      PubAccountAssistantActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantActivity).a(this.jdField_a_of_type_JavaUtilList);
+      PubAccountAssistantActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantActivity).notifyDataSetChanged();
+      this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantActivity.a();
       return;
     }
-    ((bko)paramAdapterView.getAdapter()).notifyDataSetChanged();
   }
 }
 

@@ -1,24 +1,60 @@
-import android.content.Intent;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import java.io.File;
+import java.util.HashMap;
 
-public class ysz
-  implements Runnable
+public abstract class ysz
 {
-  public ysz(ApolloGameActivity paramApolloGameActivity, int paramInt1, int paramInt2, Intent paramIntent) {}
+  ysz jdField_a_of_type_Ysz;
+  yta jdField_a_of_type_Yta;
+  String c;
+  String d;
   
-  public void run()
+  public ysz(ysb paramysb, yta paramyta, String paramString)
   {
-    if (ApolloGameActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity).a().getRender() != null) {
-      ApolloRender.selectPhotoFromSystem(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
+    this.jdField_a_of_type_Yta = paramyta;
+    this.c = paramString;
+  }
+  
+  public File a()
+  {
+    int i = this.c.indexOf("_");
+    Object localObject = this.c.substring(i + 1, this.c.length());
+    localObject = new File(ysb.jdField_a_of_type_JavaLangString + File.separator + (String)localObject);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
+    }
+    return localObject;
+  }
+  
+  public ysl a()
+  {
+    synchronized (this.b.jdField_a_of_type_JavaLangObject)
+    {
+      ysl localysl = (ysl)this.b.jdField_a_of_type_JavaUtilHashMap.get(this.c);
+      return localysl;
+    }
+  }
+  
+  public abstract void a();
+  
+  public File b()
+  {
+    File localFile = new File(ysb.jdField_a_of_type_JavaLangString + File.separator + "cache");
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return localFile;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Ysz != null) {
+      this.jdField_a_of_type_Ysz.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ysz
  * JD-Core Version:    0.7.0.1
  */

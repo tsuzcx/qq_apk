@@ -1,29 +1,26 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-
-public class uxe
-  implements Runnable
+public abstract interface uxe
 {
-  public uxe(FileVideoItemBuilder paramFileVideoItemBuilder, FileManagerEntity paramFileManagerEntity) {}
+  public abstract String getName();
   
-  public void run()
-  {
-    FileManagerUtil.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    if (FileUtil.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.a.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.b.post(new uxf(this));
-    }
-  }
+  public abstract int getRelationType();
+  
+  public abstract String getUnionId();
+  
+  public abstract boolean isFriend();
+  
+  public abstract boolean isMe();
+  
+  public abstract boolean isSubscribe();
+  
+  public abstract boolean isSubscribeButNoFriend();
+  
+  public abstract boolean isVip();
+  
+  public abstract boolean isVipButNoFriend();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uxe
  * JD-Core Version:    0.7.0.1
  */

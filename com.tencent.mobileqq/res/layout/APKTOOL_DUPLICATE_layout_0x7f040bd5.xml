@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03cc"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0043" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c01bc" android:id="@id/title" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03c6" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerInParent="true" />
-</RelativeLayout>

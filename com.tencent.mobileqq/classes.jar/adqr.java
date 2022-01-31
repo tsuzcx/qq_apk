@@ -1,15 +1,21 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Comparator;
 
-class adqr
-  implements Runnable
+public class adqr
+  implements Comparator<ChatMessage>
 {
-  adqr(adqq paramadqq, RecyclerView.ViewHolder paramViewHolder) {}
+  public adqr(QQLSActivity paramQQLSActivity) {}
   
-  public void run()
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.findViewById(2131363007).setVisibility(0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.findViewById(2131363006).setVisibility(8);
+    if (paramChatMessage1.time == paramChatMessage2.time) {
+      return 0;
+    }
+    if (paramChatMessage1.time > paramChatMessage2.time) {
+      return 1;
+    }
+    return -1;
   }
 }
 

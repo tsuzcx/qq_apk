@@ -1,41 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper.GoldMsgFriendSet;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.io.File;
-import java.util.ArrayList;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 
-public final class xep
-  implements Runnable
+public class xep
 {
-  public void run()
+  public final Drawable a;
+  public final String a;
+  public final String b;
+  
+  public xep(@NonNull String paramString1, @NonNull String paramString2, Drawable paramDrawable)
   {
-    try
-    {
-      String str = BaseApplicationImpl.getApplication().getFilesDir() + "/QWallet/.tmp/goldmsg_friends";
-      Object localObject = new File(str);
-      if (((File)localObject).exists()) {
-        ((File)localObject).delete();
-      }
-      if (GoldMsgChatHelper.GoldMsgFriendSet.a().size() <= 0) {
-        return;
-      }
-      localObject = GoldMsgChatHelper.GoldMsgFriendSet.a();
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        FileUtils.a(((String)localObject).getBytes("utf-8"), str);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+  }
+  
+  public String toString()
+  {
+    return "SelectedItem{category='" + this.jdField_a_of_type_JavaLangString + '\'' + ", name='" + this.b + '\'' + ", drawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xep
  * JD-Core Version:    0.7.0.1
  */

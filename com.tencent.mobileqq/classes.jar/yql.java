@@ -1,22 +1,27 @@
-import com.tencent.TMG.sdk.AVContext;
-import com.tencent.TMG.sdk.AVVideoCtrl;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVManager;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
 public class yql
-  implements Runnable
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public yql(CmGameAvHandler paramCmGameAvHandler, float paramFloat) {}
+  public yql(TribeVideoPlugin paramTribeVideoPlugin, yqt paramyqt) {}
   
-  public void run()
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    AVManager.a(BaseApplicationImpl.getContext()).a().getVideoCtrl().inputBeautyParam(this.jdField_a_of_type_Float);
+    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
+    {
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(6, yqt.a(this.jdField_a_of_type_Yqt));
+      paramTVK_IMediaPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
+      paramTVK_IMediaPlayer.obj = yqt.a(this.jdField_a_of_type_Yqt);
+      paramTVK_IMediaPlayer.what = 6;
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramTVK_IMediaPlayer);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yql
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mqp.app.sec.MQPSensitiveMsgUtil;
+import java.util.Comparator;
 
-public final class akza
-  extends BroadcastReceiver
+class akza
+  implements Comparator<akzb>
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  akza(akyz paramakyz) {}
+  
+  public int a(akzb paramakzb1, akzb paramakzb2)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    while ((!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramIntent.getIntExtra("type", 0) == 0)) {
-      return;
+    if (paramakzb1.a == paramakzb2.a) {
+      return 0;
     }
-    MQPSensitiveMsgUtil.a(paramIntent.getStringExtra("account"));
-    MQPSensitiveMsgUtil.b(MQPSensitiveMsgUtil.a());
+    if (paramakzb1.a > paramakzb2.a) {
+      return -1;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akza
  * JD-Core Version:    0.7.0.1
  */

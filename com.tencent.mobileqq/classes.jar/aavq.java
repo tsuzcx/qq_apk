@@ -1,26 +1,41 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.util.WeakReferenceHandler;
-import java.lang.ref.WeakReference;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.support.v4.view.ViewPager.PageTransformer;
+import android.view.View;
 
 public class aavq
-  implements Runnable
+  implements ViewPager.PageTransformer
 {
-  public aavq(ArkLocalAppMgr paramArkLocalAppMgr, aavu paramaavu, aawb paramaawb) {}
-  
-  public void run()
+  @TargetApi(11)
+  public void transformPage(View paramView, float paramFloat)
   {
-    this.jdField_a_of_type_Aavu.a = NetworkUtil.g(BaseApplication.getContext());
-    ArkLocalAppMgr localArkLocalAppMgr = (ArkLocalAppMgr)ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr).get();
-    if (localArkLocalAppMgr != null) {
-      ArkLocalAppMgr.a(localArkLocalAppMgr).post(new aavr(this));
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      if (paramFloat < -1.0F) {
+        paramView.setAlpha(0.0F);
+      }
     }
+    else {
+      return;
+    }
+    if (paramFloat <= 1.0F)
+    {
+      paramView.setAlpha(1.0F);
+      paramView.setTranslationX(paramView.getWidth() * -paramFloat);
+      if (paramFloat > 0.0F) {}
+      for (int i = 1;; i = -1)
+      {
+        paramFloat = (float)(Math.cos((Math.abs(paramFloat) + 1.0F) * 3.141592653589793D) / 2.0D);
+        paramView.setTranslationY(i * (paramFloat + 0.5F) * paramView.getHeight());
+        return;
+      }
+    }
+    paramView.setAlpha(0.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aavq
  * JD-Core Version:    0.7.0.1
  */

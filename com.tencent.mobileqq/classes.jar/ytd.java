@@ -1,35 +1,31 @@
-import android.view.View;
-import android.view.Window;
-import com.tencent.mobileqq.apollo.game.ApolloGameView;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 class ytd
-  implements Runnable
+  extends Handler
 {
-  ytd(ytc paramytc) {}
+  ytd(ytb paramytb) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (ApolloGameActivity.a(this.a.a) != null)
+    switch (paramMessage.what)
     {
-      ApolloGameActivity.a(this.a.a).a = true;
-      ApolloGameActivity.a(this.a.a).a(this.a.a.getWindow().getDecorView());
-      this.a.a.getWindow().addFlags(2048);
-      this.a.a.getWindow().clearFlags(1024);
-      this.a.a.getWindow().clearFlags(67108864);
-      this.a.a.getWindow().clearFlags(134217728);
-      this.a.a.getWindow().setFlags(256, 65536);
-      this.a.a.getWindow().clearFlags(256);
-      this.a.a.getWindow().clearFlags(512);
-      this.a.a.getWindow().addFlags(256);
-      this.a.a.findViewById(2131362828).setVisibility(8);
-      this.a.a.getWindow().getDecorView().setSystemUiVisibility(0);
+    default: 
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopTipsPopWindow", 2, "MSG_SHOW_WINDOW mTroopNotify = " + this.a.jdField_a_of_type_Bbry + ", mTroopNotifyAd = " + this.a.jdField_a_of_type_Bbrz);
+    }
+    if (this.a.jdField_a_of_type_Bbrz != null) {
+      this.a.a(this.a.jdField_a_of_type_Bbrz);
+    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ytd
  * JD-Core Version:    0.7.0.1
  */

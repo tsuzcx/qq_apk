@@ -1,49 +1,55 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import com.tencent.biz.troop.TroopMemberApiPlugin;
+import SummaryCard.RespSearch;
+import SummaryCard.SearchInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AddFriendActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.international.ServerPushStringMap;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class btm
-  extends BroadcastReceiver
+  extends FriendListObserver
 {
-  public btm(TroopMemberApiPlugin paramTroopMemberApiPlugin) {}
+  public btm(AddFriendActivity paramAddFriendActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(boolean paramBoolean, Object paramObject, int paramInt, String paramString)
   {
-    if ((paramIntent != null) && ("com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())))
+    this.a.b(this.a.jdField_b_of_type_ComTencentMobileqqAppFriendListObserver);
+    AddFriendActivity.b(this.a);
+    if ((!paramBoolean) || (paramInt != 0))
     {
-      paramContext = paramIntent.getStringArrayListExtra("uinList");
-      paramIntent = paramIntent.getStringArrayListExtra("headPathList");
-      if ((paramContext != null) && (paramIntent != null))
+      if (!TextUtils.isEmpty(paramString))
       {
-        int i = 0;
-        while (i < paramContext.size())
+        paramObject = (Integer)ServerPushStringMap.getInstance().get(paramString);
+        if (paramObject != null)
         {
-          String str = (String)paramContext.get(i);
-          if (this.a.a.contains(str))
-          {
-            this.a.a.remove(str);
-            Bitmap localBitmap = BitmapFactory.decodeFile((String)paramIntent.get(i));
-            this.a.b.put(str, localBitmap);
-          }
-          if (this.a.a.size() == 0)
-          {
-            this.a.callJs(this.a.l, new String[] { TroopMemberApiPlugin.a(this.a, this.a.b) });
-            this.a.b.clear();
-          }
-          i += 1;
+          paramObject = this.a.getString(paramObject.intValue());
+          this.a.a(paramObject);
+          return;
         }
+        this.a.a(paramString);
+        return;
       }
+      this.a.a(2131562510);
+      return;
     }
+    paramObject = (RespSearch)paramObject;
+    if ((paramObject.vRecords == null) || (paramObject.vRecords.isEmpty()))
+    {
+      this.a.a(2131563023);
+      return;
+    }
+    if (paramObject.vRecords.size() == 1)
+    {
+      AddFriendActivity.a(this.a, (SearchInfo)paramObject.vRecords.get(0), this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), paramObject.vSecureSig);
+      return;
+    }
+    this.a.a(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     btm
  * JD-Core Version:    0.7.0.1
  */

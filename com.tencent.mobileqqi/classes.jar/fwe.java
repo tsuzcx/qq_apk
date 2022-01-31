@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.filemanager.activity.FileAssistantActivity;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
-class fwe
-  implements Runnable
+public class fwe
+  extends fvj
 {
-  fwe(fwd paramfwd) {}
-  
-  public void run()
+  public fwe(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    FileAssistantActivity.e(this.a.a);
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateUploadoneWhenChangeToOff";
   }
 }
 

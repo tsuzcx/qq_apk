@@ -1,42 +1,132 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.comment.lego.LegoResponseCallBack;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
+import android.content.MutableContextWrapper;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopWebview;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopWebviewPool.1;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class nvk
-  implements LegoResponseCallBack
 {
-  public nvk(StoryDetailPresenter paramStoryDetailPresenter, CommentEntry paramCommentEntry, boolean paramBoolean) {}
+  private static volatile nvk jdField_a_of_type_Nvk;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private HashMap<String, EcshopWebview> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   
-  public void a(int paramInt, Bundle paramBundle)
+  public static nvk a()
   {
-    a(-1, "网络错误");
+    if (jdField_a_of_type_Nvk == null) {}
+    try
+    {
+      if (jdField_a_of_type_Nvk == null) {
+        jdField_a_of_type_Nvk = new nvk();
+      }
+      return jdField_a_of_type_Nvk;
+    }
+    finally {}
   }
   
-  public void a(int paramInt, String paramString)
+  private boolean a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
-    QQToast.a(BaseApplication.getContext(), 1, "删除失败", 0).a();
-    SLog.e("Q.qqstory.detail.StoryDetailPresenter", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
-  }
-  
-  public void a(MessageMicro paramMessageMicro)
-  {
-    if (!StoryDetailPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter).get()) {
-      StoryDetailPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
+    if (BaseApplicationImpl.sProcessId == 7) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.i("parsons111", 2, "[checkToolProcess] isToolProcess: " + bool);
+      return bool;
     }
   }
   
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
+  private void b(String paramString, boolean paramBoolean)
+  {
+    if ((!a()) || (!paramBoolean)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new EcshopWebviewPool.1(this, paramString));
+  }
+  
+  public EcshopWebview a(Context paramContext, String paramString)
+  {
+    for (;;)
+    {
+      try
+      {
+        synchronized (this.jdField_a_of_type_ArrayOfByte)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("parsons111", 2, "【getWebView】= " + this.jdField_a_of_type_JavaUtilHashMap.size() + " preLoadUrl: " + paramString);
+          }
+          if (this.jdField_a_of_type_JavaUtilHashMap.size() > 0)
+          {
+            localObject = (EcshopWebview)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+            if (localObject != null)
+            {
+              paramString = (ViewGroup)((EcshopWebview)localObject).getParent();
+              if (paramString != null) {
+                paramString.removeView((View)localObject);
+              }
+              ((MutableContextWrapper)((EcshopWebview)localObject).getContext()).setBaseContext(paramContext);
+              return localObject;
+            }
+          }
+          else
+          {
+            EcshopWebview localEcshopWebview = EcshopWebview.a(paramContext);
+            localObject = localEcshopWebview;
+            if (bdnn.a(paramString)) {
+              continue;
+            }
+            this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localEcshopWebview);
+            localObject = localEcshopWebview;
+          }
+        }
+        Object localObject = EcshopWebview.a(paramContext);
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("parsons111", 1, QLog.getStackTraceString(paramString));
+        return EcshopWebview.a(paramContext);
+      }
+    }
+  }
+  
+  public void a(TouchWebView paramTouchWebView, String paramString)
+  {
+    QLog.i("parsons111", 2, "ecshop recycleWebView  ");
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    try
+    {
+      beec.b(-1);
+      if (a()) {
+        b(paramString, paramBoolean);
+      }
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("parsons111", 1, paramString, new Object[0]);
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (!bdnn.a(paramString)) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvk
  * JD-Core Version:    0.7.0.1
  */

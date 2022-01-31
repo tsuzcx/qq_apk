@@ -1,55 +1,102 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import java.util.List;
 
-class ahjq
-  extends AnimatorListenerAdapter
+public class ahjq
+  implements alpg
 {
-  ahjq(ahjp paramahjp, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
+  public void a(String paramString1, String paramString2, List<ahjx> paramList) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    EffectsCameraCaptureFragment.a(this.jdField_a_of_type_Ahjp.a).setAlpha(1.0F);
-  }
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2) {}
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(boolean paramBoolean1, String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, int paramInt3, int paramInt4, boolean paramBoolean2) {}
+  
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, List<String> paramList) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    EffectsCameraCaptureFragment.a(this.jdField_a_of_type_Ahjp.a).setVisibility(0);
-    if (EffectsCameraCaptureFragment.a(this.jdField_a_of_type_Ahjp.a) != null)
+    switch (paramInt)
     {
-      paramAnimator = URLDrawable.URLDrawableOptions.obtain();
-      int i = UIUtils.a(this.jdField_a_of_type_Ahjp.a.getActivity(), 21.0F);
-      GradientDrawable localGradientDrawable = new GradientDrawable();
-      localGradientDrawable.setColor(Color.parseColor("#EE1E23"));
-      localGradientDrawable.setShape(1);
-      localGradientDrawable.setSize(i, i);
-      paramAnimator.mRequestWidth = i;
-      paramAnimator.mRequestHeight = i;
-      paramAnimator.mFailedDrawable = localGradientDrawable;
-      paramAnimator.mLoadingDrawable = localGradientDrawable;
-      paramAnimator = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.advertiseIconUrl, paramAnimator);
-      paramAnimator.setTag(URLDrawableDecodeHandler.a(i, i));
-      paramAnimator.setDecodeHandler(URLDrawableDecodeHandler.a);
-      EffectsCameraCaptureFragment.a(this.jdField_a_of_type_Ahjp.a).setImageDrawable(paramAnimator);
+    default: 
+    case 1: 
+      do
+      {
+        return;
+        if ((!paramBoolean) || (paramObject == null) || (!(paramObject instanceof Object[]))) {
+          break;
+        }
+        paramObject = (Object[])paramObject;
+      } while (paramObject.length < 8);
+      a(true, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Integer)paramObject[3]).intValue(), (String)paramObject[4], ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), ((Boolean)paramObject[7]).booleanValue());
+      return;
+      if ((paramObject != null) && ((paramObject instanceof Object[])))
+      {
+        Object[] arrayOfObject = (Object[])paramObject;
+        if (arrayOfObject.length >= 2)
+        {
+          paramObject = (String)arrayOfObject[0];
+          paramBoolean = ((Boolean)arrayOfObject[1]).booleanValue();
+        }
+      }
+      break;
     }
-    if (EffectsCameraCaptureFragment.f(this.jdField_a_of_type_Ahjp.a) != null) {
-      EffectsCameraCaptureFragment.f(this.jdField_a_of_type_Ahjp.a).setText(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.advertiseStr);
+    for (;;)
+    {
+      a(false, paramObject, 0, null, 0, null, 60, 1200, paramBoolean);
+      return;
+      if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Object[])))
+      {
+        paramObject = (Object[])paramObject;
+        if (paramObject.length < 3) {
+          break;
+        }
+        a(true, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+        return;
+      }
+      if ((paramObject != null) && ((paramObject instanceof Object[])))
+      {
+        paramObject = (Object[])paramObject;
+        if (paramObject.length <= 0) {}
+      }
+      for (paramObject = (String)paramObject[0];; paramObject = null)
+      {
+        a(false, paramObject, 0, null);
+        return;
+        if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Object[])))
+        {
+          paramObject = (Object[])paramObject;
+          if (paramObject.length < 4) {
+            break;
+          }
+          a(true, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], (List)paramObject[3]);
+          return;
+        }
+        if ((paramObject != null) && ((paramObject instanceof Object[])))
+        {
+          paramObject = (Object[])paramObject;
+          if (paramObject.length <= 0) {}
+        }
+        for (paramObject = (String)paramObject[0];; paramObject = null)
+        {
+          a(false, paramObject, 0, null, null);
+          return;
+          if ((!paramBoolean) || (paramObject == null)) {
+            break;
+          }
+          paramObject = (Object[])paramObject;
+          if (paramObject.length < 3) {
+            break;
+          }
+          a((String)paramObject[0], (String)paramObject[1], (List)paramObject[2]);
+          return;
+        }
+      }
+      paramBoolean = false;
+      paramObject = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahjq
  * JD-Core Version:    0.7.0.1
  */

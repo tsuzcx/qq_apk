@@ -1,22 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
-import com.tencent.mobileqq.data.MessageForText;
+import android.graphics.Bitmap;
 
-public class vip
-  implements DialogInterface.OnClickListener
+class vip
+  implements wec
 {
-  public vip(TextItemBuilder paramTextItemBuilder, MessageForText paramMessageForText) {}
+  vip(vio paramvio, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.uniseq);
+    if (vio.a(this.jdField_a_of_type_Vio))
+    {
+      paramString = bdhj.c(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
+      if (paramString == null)
+      {
+        vio.a(this.jdField_a_of_type_Vio, false);
+        return;
+      }
+      bool = xqw.a(paramString, vio.a(this.jdField_a_of_type_Vio));
+      paramString.recycle();
+      vio.b(this.jdField_a_of_type_Vio, bool);
+      return;
+    }
+    boolean bool = xqw.a(paramBitmap, vio.a(this.jdField_a_of_type_Vio));
+    vio.c(this.jdField_a_of_type_Vio, bool);
+  }
+  
+  public void a(String paramString, Throwable paramThrowable)
+  {
+    wxe.e("DownloadPic2FileJob", "Download url failed url=%s", new Object[] { this.jdField_a_of_type_JavaLangString });
+    vio.d(this.jdField_a_of_type_Vio, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vip
  * JD-Core Version:    0.7.0.1
  */

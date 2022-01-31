@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@drawable/hr" android:layout_width="fill_parent" android:layout_height="94.0dip" android:minHeight="94.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.card.widget.MemberCardTopCropImageView android:id="@id/alq" android:background="#ffdc6f49" android:layout_width="fill_parent" android:layout_height="94.0dip" android:scaleType="centerCrop" android:minHeight="94.0dip" />
+    <ImageView android:id="@id/alr" android:background="@drawable/b1_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="94.0dip" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="94.0dip">
+        <com.tencent.mm.plugin.card.ui.v2.CardCdnImageView android:id="@id/als" android:layout_width="@dimen/w3" android:layout_height="@dimen/w3" android:layout_marginLeft="@dimen/vw" android:src="@drawable/bet" android:scaleType="fitCenter" />
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/vx" android:layout_marginRight="@dimen/dl">
+            <TextView android:textSize="@dimen/ko" android:textColor="#ff555555" android:ellipsize="end" android:id="@id/alt" android:layout_marginBottom="5.0dip" android:singleLine="true" style="@style/fo" />
+            <TextView android:textSize="21.0dip" android:textColor="#ff555555" android:ellipsize="end" android:id="@id/alu" android:singleLine="true" style="@style/fo" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/alv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:layout_marginRight="@dimen/ll" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <ImageView android:background="@drawable/hu" android:layout_width="fill_parent" android:layout_height="94.0dip" />
+</RelativeLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:orientation="vertical" android:id="@id/csa" android:focusable="false" android:focusableInTouchMode="false" android:scrollbars="none" android:descendantFocusability="afterDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/of" android:layout_marginRight="@dimen/of" android:overScrollMode="never" />
+    <RelativeLayout android:id="@id/csb" android:background="#fff7f7fa" android:paddingLeft="@dimen/la" android:paddingRight="@dimen/la" android:layout_width="fill_parent" android:layout_height="54.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/o5" android:textColor="@color/dj" android:id="@id/csc" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cod" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/o5" android:textColor="@color/h6" android:id="@id/csd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/coe" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/cse" android:background="#ffe64340" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="36.0dip" android:text="" android:layout_alignParentTop="true" />
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/b1e" />
+</RelativeLayout>

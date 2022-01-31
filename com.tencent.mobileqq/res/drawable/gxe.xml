@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@id/lp6">
+        <shape android:dither="true" android:shape="rectangle">
+            <solid android:color="#68000000" />
+        </shape>
+    </item>
+    <item android:id="@id/lp7" android:left="-30.0dip" android:top="-30.0dip" android:right="-30.0dip">
+        <shape android:dither="true" android:shape="rectangle">
+            <stroke android:width="25.0dip" android:color="@color/skin_aio_at_white" />
+        </shape>
+    </item>
+</layer-list>

@@ -1,42 +1,43 @@
-import android.content.IntentFilter;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.QNotificationManager;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class ttj
-  implements Runnable
+class ttj
+  extends BroadcastReceiver
 {
-  public ttj(SplashActivity paramSplashActivity) {}
+  private ttj(ttg paramttg) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    try
+    int i;
+    int j;
+    if ("action_update_native_auth_info".equals(paramIntent.getAction()))
     {
-      QNotificationManager localQNotificationManager = new QNotificationManager(this.a);
-      localQNotificationManager.cancel("SplashActivity", 120);
-      QZoneManagerImp localQZoneManagerImp = (QZoneManagerImp)this.a.app.getManager(9);
-      if (localQZoneManagerImp != null) {
-        localQZoneManagerImp.a(1, 0);
+      i = paramIntent.getIntExtra("type", 1);
+      j = paramIntent.getIntExtra("status", 0);
+      paramContext = paramIntent.getStringExtra("tagName");
+      if (i != 2) {
+        break label59;
       }
-      localQNotificationManager.cancel("SplashActivity", 121);
-      localQNotificationManager.cancel("SplashActivity", 122);
-      localQNotificationManager.cancel("SplashActivity", 123);
-      localQNotificationManager.cancel("SplashActivity", 129);
-      localQNotificationManager.cancel("SplashActivity", 144);
-      localQNotificationManager.cancel("SplashActivity", 193);
-      localQNotificationManager.cancel("SplashActivity", 194);
-      localQNotificationManager.cancel("SplashActivity", 211);
-      SplashActivity.a(this.a, new ttk(this));
-      this.a.registerReceiver(SplashActivity.a(this.a), new IntentFilter("before_account_change"));
-      return;
+      i = tra.a(j);
+      tra.a(tqg.a(), i, paramContext);
     }
-    catch (Exception localException) {}
+    for (;;)
+    {
+      tqg.c();
+      return;
+      label59:
+      if (i == 3)
+      {
+        i = tra.a(j);
+        tra.a(tqg.b(), i, paramContext);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ttj
  * JD-Core Version:    0.7.0.1
  */

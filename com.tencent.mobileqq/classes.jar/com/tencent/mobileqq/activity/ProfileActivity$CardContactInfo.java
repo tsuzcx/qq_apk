@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity;
 
+import adny;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import tgl;
 
 public class ProfileActivity$CardContactInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new tgl();
+  public static final Parcelable.Creator<CardContactInfo> CREATOR = new adny();
   public String a;
   public String b;
   public String c;
@@ -36,7 +36,7 @@ public class ProfileActivity$CardContactInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,31 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.now.NowPlugin;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
-import com.tencent.txproxy.HostInterface;
-import mqq.app.AppRuntime;
+import android.os.Message;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import mqq.os.MqqHandler;
 
 public class advb
-  implements HostInterface
+  extends MqqHandler
 {
-  public advb(NowPlugin paramNowPlugin) {}
+  public advb(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
   
-  public boolean isMobileNet()
+  public void handleMessage(Message paramMessage)
   {
-    return AppNetConnInfo.isMobileConn();
-  }
-  
-  public void reportBadIp(String paramString1, String paramString2)
-  {
-    InnerDns.a().a(paramString1, paramString2, 1017);
-  }
-  
-  public String reqDns(String paramString)
-  {
-    return InnerDns.a().a(paramString, 1017);
-  }
-  
-  public boolean useIpDirectConnect()
-  {
-    QQAppInterface localQQAppInterface = NowPlugin.a(this.a);
-    Object localObject = localQQAppInterface;
-    if (localQQAppInterface == null) {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
+    switch (paramMessage.what)
+    {
+    case 107: 
+    default: 
+      return;
+    case 106: 
+      this.a.finish();
+      return;
     }
-    if (localObject != null) {
-      return ((Integer)NearbySPUtil.a(((AppRuntime)localObject).getAccount(), "now_ip_conn_switch", Integer.valueOf(0))).intValue() == 1;
+    int i = 0;
+    while (i < 6)
+    {
+      RegisterVerifyCodeActivity.a(this.a)[i].setText("");
+      i += 1;
     }
-    return false;
+    RegisterVerifyCodeActivity.a(this.a)[0].requestFocus();
   }
 }
 

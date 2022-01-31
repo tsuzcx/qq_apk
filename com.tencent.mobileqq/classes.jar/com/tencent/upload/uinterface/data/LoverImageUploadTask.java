@@ -3,13 +3,13 @@ package com.tencent.upload.uinterface.data;
 import SLICE_UPLOAD.UploadTouchuanReq;
 import SWU.SWUploadPicReq;
 import SWU.SWUploadPicRsp;
-import com.tencent.upload.a.a;
-import com.tencent.upload.common.Const.UploadRetCode;
-import com.tencent.upload.common.FileUtils;
-import com.tencent.upload.e.b;
-import com.tencent.upload.e.e;
+import com.tencent.upload.network.session.cache.CacheUtil;
 import com.tencent.upload.uinterface.AbstractUploadTask;
 import com.tencent.upload.uinterface.TaskTypeConfig;
+import com.tencent.upload.utils.Const.UploadRetCode;
+import com.tencent.upload.utils.FileUtils;
+import com.tencent.upload.utils.JceEncoder;
+import com.tencent.upload.utils.ProtocolUtil;
 
 public class LoverImageUploadTask
   extends AbstractUploadTask
@@ -76,7 +76,7 @@ public class LoverImageUploadTask
     ((SWUploadPicReq)localObject).emojitype = "0";
     try
     {
-      localObject = e.a(localObject.getClass().getSimpleName(), localObject);
+      localObject = ProtocolUtil.pack(localObject.getClass().getSimpleName(), localObject);
       return localObject;
     }
     catch (Exception localException)
@@ -91,7 +91,7 @@ public class LoverImageUploadTask
     UploadTouchuanReq localUploadTouchuanReq = new UploadTouchuanReq();
     localUploadTouchuanReq.iUploadType = getUploadTaskType().uploadType;
     localUploadTouchuanReq.vReqData = getSWUploadPicReq();
-    return b.a(localUploadTouchuanReq);
+    return JceEncoder.encode(localUploadTouchuanReq);
   }
   
   public TaskTypeConfig getUploadTaskType()
@@ -99,15 +99,15 @@ public class LoverImageUploadTask
     return TaskTypeConfig.LoverImageUploadTaskType;
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     if (!this.mKeepFileAfterUpload) {
       FileUtils.deleteTempFile(this.mFilePath);
     }
-    a.b(this, this.mSessionId);
+    CacheUtil.deleteSessionId(this, this.mSessionId);
   }
   
-  protected void processFileUploadFinishRsp(byte[] paramArrayOfByte)
+  public void processFileUploadFinishRsp(byte[] paramArrayOfByte)
   {
     SWUploadPicRsp localSWUploadPicRsp = new SWUploadPicRsp();
     localSWUploadPicRsp.iCode = this.iRetCode;
@@ -134,7 +134,7 @@ public class LoverImageUploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.LoverImageUploadTask
  * JD-Core Version:    0.7.0.1
  */

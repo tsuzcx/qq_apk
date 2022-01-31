@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class devlock_verify_scheme$SchemePkg
-  extends MessageMicro
+  extends MessageMicro<SchemePkg>
 {
   public static final int STR_BUTTON1_CAPTION_FIELD_NUMBER = 7;
   public static final int STR_BUTTON2_CAPTION_FIELD_NUMBER = 10;
@@ -35,7 +35,7 @@ public final class devlock_verify_scheme$SchemePkg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.devlock_verify_scheme.SchemePkg
  * JD-Core Version:    0.7.0.1
  */

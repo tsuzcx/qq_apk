@@ -1,0 +1,62 @@
+
+{
+    "ReadInJoy_comment_operation_cell": {
+        "view_type": "container",
+        "layout_type":"layout_relative",
+        "direction":"vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews":
+        [
+            {
+                "$includeComponet": "componet/readinjoy_comment_header.geojson"
+            },
+            {
+                "view_type": "ReadInjoyAsynImageView",
+                "view_id": "id_operation_image_view",
+                "event_type": "cmd_operation_click",
+                "align_parent_top": "YES",
+                "default_visible":"YES",
+                "margin_left": "65",
+                "margin_top": "38.5",
+                "attributes": {
+                    "setImageWithURLString:lineup:": [
+                        "$operation_img_url",
+                        "-1"
+                    ]
+                },
+                "height": {
+                    "type": "relative",
+                    "value": "141"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "294"
+                }
+            },
+            {
+                "view_type": "UIView",
+                "view_id": "id_comment_tail_blank",
+                "default_visible":"YES",
+                "below_of_view": "id_operation_image_view",
+                "align_parent_right": "YES",
+                "margin_right":"0",
+                "margin_top":"0",
+                "height": {
+                    "type": "relative",
+                    "value": "12"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                }
+            }
+            
+        ]
+    }
+}

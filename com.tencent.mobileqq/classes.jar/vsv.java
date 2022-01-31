@@ -1,28 +1,44 @@
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
 
-class vsv
-  implements Runnable
+public class vsv
+  extends vsi
 {
-  vsv(vsu paramvsu, MessageRecord paramMessageRecord) {}
+  public ImageView a;
+  private vsx jdField_a_of_type_Vsx;
+  private xqs jdField_a_of_type_Xqs;
   
-  public void run()
+  public vsv(@NonNull ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.sendFailCode == 41)
-    {
-      QQToast.a(this.jdField_a_of_type_Vsu.a.a.getApp(), 2131436086, 0).a();
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_Vsu.a.a.getApp(), 2131438846, 0).a();
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Vsu.a.a.c(), "Stick", "Send", "1", 0, 6, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    super(paramViewGroup);
+  }
+  
+  protected View a(ViewGroup paramViewGroup)
+  {
+    return paramViewGroup;
+  }
+  
+  public void a(int paramInt)
+  {
+    wxe.b(this.jdField_a_of_type_JavaLangString, "setVisibility ignore");
+  }
+  
+  protected void b()
+  {
+    super.b();
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379779));
+    ((StoryPlayerGroupHolder)a()).a.setOnTouchListener(new vsy(this, null));
+    this.jdField_a_of_type_Vsx = new vsx(this, null);
+    this.jdField_a_of_type_Xqs = new xqs(a(), this.jdField_a_of_type_Vsx);
+    this.jdField_a_of_type_Xqs.a(50);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vsv
  * JD-Core Version:    0.7.0.1
  */

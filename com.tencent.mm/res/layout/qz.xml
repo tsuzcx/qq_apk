@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.ui.widget.MMCollapsibleTextView android:textSize="@dimen/m2" android:textColor="@color/o" android:textColorLink="#ff4f729c" android:id="@id/b4a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="105.0dip" android:maxLines="3" android:lineSpacingExtra="5.0dip" app:noCollapseCenter="true" app:collapseButtonPosition="gz"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />

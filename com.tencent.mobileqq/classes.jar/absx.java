@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-import dov.com.qq.im.capture.util.ConfigSimplifier.ConfigDownloadCallback;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class absx
-  implements ConfigSimplifier.ConfigDownloadCallback
+class absx
+  implements Comparator<MessageRecord>
 {
-  public absx(ConfigServlet paramConfigServlet, QIMMusicConfigManager paramQIMMusicConfigManager) {}
+  absx(absu paramabsu) {}
   
-  public void a(String paramString)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(paramString);
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     absx
  * JD-Core Version:    0.7.0.1
  */

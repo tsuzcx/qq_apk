@@ -1,33 +1,15 @@
 package android.support.v4.view;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 
 class ViewPropertyAnimatorCompatJB
 {
-  public static void setListener(final View paramView, ViewPropertyAnimatorListener paramViewPropertyAnimatorListener)
+  public static void setListener(View paramView, ViewPropertyAnimatorListener paramViewPropertyAnimatorListener)
   {
     if (paramViewPropertyAnimatorListener != null)
     {
-      paramView.animate().setListener(new AnimatorListenerAdapter()
-      {
-        public void onAnimationCancel(Animator paramAnonymousAnimator)
-        {
-          this.val$listener.onAnimationCancel(paramView);
-        }
-        
-        public void onAnimationEnd(Animator paramAnonymousAnimator)
-        {
-          this.val$listener.onAnimationEnd(paramView);
-        }
-        
-        public void onAnimationStart(Animator paramAnonymousAnimator)
-        {
-          this.val$listener.onAnimationStart(paramView);
-        }
-      });
+      paramView.animate().setListener(new ViewPropertyAnimatorCompatJB.1(paramViewPropertyAnimatorListener, paramView));
       return;
     }
     paramView.animate().setListener(null);

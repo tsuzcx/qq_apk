@@ -1,46 +1,58 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Environment;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.HomeFeedPlayInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class vpf
-  implements DialogInterface.OnClickListener
+  extends vpa<HomeFeedPlayInfo>
 {
-  public vpf(PhotoListPanel paramPhotoListPanel, BaseActivity paramBaseActivity) {}
+  private int a;
+  public wou b = new wou();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public vpf(HomeFeedPlayInfo paramHomeFeedPlayInfo)
   {
-    if (Environment.getExternalStorageState().equals("mounted"))
+    super(paramHomeFeedPlayInfo);
+    paramHomeFeedPlayInfo = (woy)uwa.a(11);
+    if (paramHomeFeedPlayInfo.b != null) {
+      this.b = paramHomeFeedPlayInfo.b;
+    }
+  }
+  
+  public woq a(String paramString)
+  {
+    Iterator localIterator = this.b.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1) {
-        break label85;
+      woq localwoq = (woq)localIterator.next();
+      if (localwoq.a.equals(paramString)) {
+        return localwoq;
       }
-      PlusPanelUtils.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
     }
-    for (;;)
+    return null;
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, vps paramvps)
+  {
+    Object localObject1 = this.b.jdField_a_of_type_JavaUtilList;
+    if ((paramBoolean) && (((List)localObject1).size() > 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setCanLock(false);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80061FC", "0X80061FC", 0, 0, "1", "", "", "");
+      localObject2 = b((List)localObject1);
+      paramvps.a(new ErrorMessage(), (List)localObject2, this.b.jdField_a_of_type_Boolean);
+      wxe.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject1).size()));
       return;
-      label85:
-      paramDialogInterface = new FileManagerReporter.fileAssistantReportData();
-      paramDialogInterface.b = "send_file";
-      paramDialogInterface.a = 1;
-      FileManagerReporter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramDialogInterface);
-      PlusPanelUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
     }
+    localObject1 = (woy)uwa.a(11);
+    Object localObject2 = new vga();
+    ((vga)localObject2).a = ((woy)localObject1).a;
+    ((vga)localObject2).b = this.b.a();
+    wxe.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "start request next feed id list with cookie %s", ((vga)localObject2).b);
+    this.a = 0;
+    urp.a().a((urt)localObject2, new vpg(this, paramvps));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vpf
  * JD-Core Version:    0.7.0.1
  */

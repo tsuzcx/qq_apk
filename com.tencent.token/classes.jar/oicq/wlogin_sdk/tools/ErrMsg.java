@@ -7,7 +7,7 @@ import android.os.Parcelable.Creator;
 public class ErrMsg
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<ErrMsg> CREATOR = new ErrMsg.1();
+  public static final Parcelable.Creator CREATOR = new ErrMsg.1();
   private String message;
   private String otherinfo;
   private String title;

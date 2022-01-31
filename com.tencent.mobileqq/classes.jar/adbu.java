@@ -1,30 +1,46 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTbsViewManager;
-import com.tencent.smtt.sdk.TbsReaderView;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.qphone.base.util.QLog;
 
 class adbu
-  implements DialogInterface.OnClickListener
+  extends altm
 {
-  adbu(adbs paramadbs, String paramString1, String paramString2) {}
+  adbu(adbt paramadbt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    LocalTbsViewManager.a(this.jdField_a_of_type_Adbs.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewLocalTbsViewManager).userStatistics(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putString("_filename_from_dlg", this.jdField_a_of_type_Adbs.jdField_a_of_type_AndroidAppActivity.getString(2131435108));
-    Intent localIntent = new Intent("com.tencent.mobileqq.qfile_unifromdownload");
-    localIntent.putExtra("param", paramDialogInterface);
-    localIntent.putExtra("url", this.b);
-    this.jdField_a_of_type_Adbs.jdField_a_of_type_AndroidAppActivity.sendBroadcast(localIntent);
+    if ((paramSetting == null) || (!this.a.b.equals(paramSetting.uin))) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.Avatar", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
+      }
+    } while ((!this.a.jdField_a_of_type_Boolean) || (paramSetting.url == null) || (paramSetting.url.length() <= 0));
+    this.a.a(paramSetting.uin, paramSetting.bFaceFlags, paramSetting.url);
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (!this.a.b.equals(paramString)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.Avatar", 2, "onUpdateCustomHead: uin=" + paramString);
+    }
+    this.a.b(this.a.jdField_a_of_type_Adbx);
+    if (paramBoolean)
+    {
+      this.a.a(this.a.jdField_a_of_type_Adbx, false);
+      this.a.c(this.a.jdField_a_of_type_Adbx);
+      return;
+    }
+    this.a.jdField_a_of_type_Adbx.a = 2;
+    this.a.c(this.a.jdField_a_of_type_Adbx);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adbu
  * JD-Core Version:    0.7.0.1
  */

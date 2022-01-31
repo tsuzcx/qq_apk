@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/a67"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/l8" android:paddingLeft="@dimen/a68" android:paddingRight="@dimen/a68" android:layout_width="fill_parent" android:layout_height="@dimen/lf">
+        <TextView android:gravity="center|left" android:id="@id/rc" android:paddingRight="5.0dip" android:focusable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="80.0dip" android:singleLine="true" style="@style/po" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff999999" android:gravity="center|right" android:id="@id/dtu" android:layout_width="0.0dip" android:layout_height="fill_parent" android:minHeight="@dimen/a67" android:layout_weight="1.0" />
+        <ImageView android:id="@id/dtv" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:src="@drawable/w1" android:scaleType="center" />
+    </LinearLayout>
+    <com.tencent.mm.plugin.product.ui.HtmlTextView android:id="@id/dtw" android:visibility="gone" android:scrollbars="none" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

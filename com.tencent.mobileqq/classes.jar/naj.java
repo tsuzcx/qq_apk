@@ -1,32 +1,24 @@
-import com.tencent.biz.qqstory.base.preload.cachecleaner.CapacityCleanStep;
-import java.io.File;
+import com.tencent.qphone.base.util.QLog;
 
-public class naj
-  implements Comparable
+class naj
+  extends alwx
 {
-  public final long a;
-  public final File a;
+  naj(nag paramnag) {}
   
-  public naj(CapacityCleanStep paramCapacityCleanStep, File paramFile)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_Long = paramFile.lastModified();
-  }
-  
-  public int a(naj paramnaj)
-  {
-    if (this.jdField_a_of_type_Long < paramnaj.jdField_a_of_type_Long) {
-      return -1;
+    if (105 == paramInt)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("storyRedDotDebug", 2, "mGetRedPointPushObserver");
+      }
+      this.a.notifyUI(105, true, paramObject);
     }
-    if (this.jdField_a_of_type_Long == paramnaj.jdField_a_of_type_Long) {
-      return 0;
-    }
-    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     naj
  * JD-Core Version:    0.7.0.1
  */

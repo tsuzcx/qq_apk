@@ -1,37 +1,27 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
 
 public class yai
-  implements View.OnTouchListener
+  implements Handler.Callback
 {
-  float jdField_a_of_type_Float = 0.0F;
-  float b = 0.0F;
+  public yai(ScannerActivity paramScannerActivity) {}
   
-  public yai(SelectMemberActivity paramSelectMemberActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean handleMessage(Message paramMessage)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.b = paramMotionEvent.getRawY();
     }
     for (;;)
     {
-      return false;
-      if ((i == 2) && ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float > 10.0F) || (paramMotionEvent.getRawY() - this.b > 10.0F))) {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a.clearFocus();
-      }
+      return true;
+      this.a.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yai
  * JD-Core Version:    0.7.0.1
  */

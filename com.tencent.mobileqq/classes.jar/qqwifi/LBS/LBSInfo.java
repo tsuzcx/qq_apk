@@ -10,20 +10,20 @@ public final class LBSInfo
 {
   static Attr cache_stAttr;
   static GPS cache_stGps;
-  static ArrayList cache_vCells;
-  static ArrayList cache_vWifis;
+  static ArrayList<Cell> cache_vCells;
+  static ArrayList<Wifi> cache_vWifis;
   public Attr stAttr;
   public GPS stGps;
-  public ArrayList vCells;
-  public ArrayList vWifis;
+  public ArrayList<Cell> vCells;
+  public ArrayList<Wifi> vWifis;
   
   public LBSInfo() {}
   
-  public LBSInfo(GPS paramGPS, ArrayList paramArrayList1, ArrayList paramArrayList2, Attr paramAttr)
+  public LBSInfo(GPS paramGPS, ArrayList<Wifi> paramArrayList, ArrayList<Cell> paramArrayList1, Attr paramAttr)
   {
     this.stGps = paramGPS;
-    this.vWifis = paramArrayList1;
-    this.vCells = paramArrayList2;
+    this.vWifis = paramArrayList;
+    this.vCells = paramArrayList1;
     this.stAttr = paramAttr;
   }
   
@@ -72,7 +72,7 @@ public final class LBSInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qqwifi.LBS.LBSInfo
  * JD-Core Version:    0.7.0.1
  */

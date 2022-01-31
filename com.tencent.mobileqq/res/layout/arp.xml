@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/igg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <RelativeLayout android:id="@id/ige" android:background="@drawable/eo4" android:layout_width="320.0dip" android:layout_height="420.0dip" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/igi" android:layout_width="164.0dip" android:layout_height="209.0dip" android:layout_marginBottom="24.0dip" android:src="@drawable/eob" android:scaleType="fitXY" android:layout_above="@id/igf" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="20.0dip" android:textColor="#fffbd49d" android:id="@id/igf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:text="获得皇室战争收集卡1张" android:layout_above="@id/igj" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="16.0dip" android:textColor="#fffbd49d" android:gravity="center_horizontal" android:id="@id/igj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="24.0dip" android:text="集齐卡片可兑换Q币" android:layout_above="@id/igh" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="18.0dip" android:textColor="#ffcf3a50" android:gravity="center" android:id="@id/igh" android:background="@drawable/ab7" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="16.0dip" android:text="@string/qmh" android:layout_alignParentLeft="true" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <ImageView android:id="@id/igd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:src="@drawable/fcl" android:layout_below="@id/ige" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

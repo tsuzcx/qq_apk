@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.profile.like.PraiseManager;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class agqh
-  implements Runnable
+class agqh
+  implements View.OnClickListener
 {
-  public agqh(PraiseManager paramPraiseManager, int paramInt, boolean paramBoolean, String paramString) {}
+  agqh(agps paramagps) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
+    if (!awfa.a().a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) {
+      bdsr.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, "aio");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqh
  * JD-Core Version:    0.7.0.1
  */

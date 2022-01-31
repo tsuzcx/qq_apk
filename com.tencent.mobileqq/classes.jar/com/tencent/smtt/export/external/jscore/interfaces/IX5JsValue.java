@@ -47,19 +47,10 @@ public abstract interface IX5JsValue
   public abstract <T> T toObject(Class<T> paramClass);
   
   public abstract String toString();
-  
-  public static abstract interface JsValueFactory
-  {
-    public abstract String getJsValueClassName();
-    
-    public abstract IX5JsValue unwrap(Object paramObject);
-    
-    public abstract Object wrap(IX5JsValue paramIX5JsValue);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.export.external.jscore.interfaces.IX5JsValue
  * JD-Core Version:    0.7.0.1
  */

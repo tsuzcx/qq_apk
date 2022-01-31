@@ -1,76 +1,64 @@
 import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13.ViewHolder;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.data.MessageForPokeEmo;
+import com.tencent.mobileqq.data.MessageForScribble;
 
 public class aiiv
-  implements View.OnClickListener
+  extends agda
 {
-  public aiiv(StructMsgItemLayout13 paramStructMsgItemLayout13) {}
-  
-  public void onClick(View paramView)
+  public aiiv(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    Object localObject = paramView.getTag(2131362172);
-    if ((localObject instanceof Integer)) {}
-    Intent localIntent;
-    switch (((Integer)localObject).intValue())
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+  }
+  
+  public void a(ChatMessage paramChatMessage, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, aeqi paramaeqi, int paramInt1, int paramInt2)
+  {
+    super.a(paramChatMessage, paramContext, paramBaseChatItemLayout, paramaeqi, paramInt1, paramInt2);
+    paramContext = (agdh)paramaeqi;
+    if (paramContext.d != null)
     {
-    default: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return;
-        } while ((this.a.a == null) || (!(this.a.a instanceof StructMsgForGeneralShare)));
-        localObject = ((StructMsgForGeneralShare)this.a.a).author;
-      } while ((localObject == null) || (this.a.a.message == null));
-      localIntent = new Intent(paramView.getContext(), FriendProfileCardActivity.class);
-      localIntent.putExtra("troopUin", this.a.a.message.frienduin);
-      localIntent.putExtra("memberUin", (String)localObject);
-      localIntent.putExtra("fromFlag", 0);
-      paramView.getContext().startActivity(localIntent);
-      if (QLog.isColorLevel()) {
-        QLog.d(".troop.troop_topic", 2, "StructMsgItemLayout13 onClick TAG_AVATAR_VIEW. troopUin:" + this.a.a.message.frienduin + " memberUin:" + (String)localObject);
+      if ((!(paramChatMessage instanceof MessageForPoke)) && (!(paramChatMessage instanceof MessageForPokeEmo))) {
+        break label109;
       }
-      ReportController.b(StructMsgItemLayout13.a(this.a), "dc00899", "Grp_talk", "", "obj", "obj_head", 0, 0, this.a.a.message.frienduin + "", "", "", "");
+      if (!TextUtils.isEmpty(paramChatMessage.msg)) {
+        break label95;
+      }
+      paramContext.d.setText(alud.a(2131707230));
+    }
+    for (;;)
+    {
+      if (paramContext.b != null) {
+        paramContext.b.setVisibility(8);
+      }
+      if (paramContext.c != null) {
+        paramContext.c.setVisibility(8);
+      }
       return;
-    }
-    localObject = paramView.getTag(2131362173);
-    if ((localObject instanceof StructMsgItemLayout13.ViewHolder))
-    {
-      localObject = (StructMsgItemLayout13.ViewHolder)localObject;
-      if (!TextUtils.isEmpty(((StructMsgItemLayout13.ViewHolder)localObject).a))
-      {
-        localIntent = new Intent(BaseApplicationImpl.getContext(), QQBrowserActivity.class);
-        localIntent.putExtra("url", ((StructMsgItemLayout13.ViewHolder)localObject).a);
-        paramView.getContext().startActivity(localIntent);
-        if (QLog.isColorLevel()) {
-          QLog.d(".troop.troop_topic", 2, "StructMsgItemLayout13 onClick TAG_ACTION_VIEW. parentMsg.pid:" + ((StructMsgForGeneralShare)this.a.a).pid + " url:" + ((StructMsgItemLayout13.ViewHolder)localObject).a);
-        }
+      label95:
+      paramContext.d.setText(paramChatMessage.msg);
+      continue;
+      label109:
+      if ((paramChatMessage instanceof MessageForScribble)) {
+        paramContext.d.setText(alud.a(2131707229));
+      } else {
+        paramContext.d.setText(alud.a(2131707231));
       }
     }
-    localObject = "";
-    paramView = (View)localObject;
-    if (this.a.a != null)
-    {
-      paramView = (View)localObject;
-      if (this.a.a.message != null) {
-        paramView = this.a.a.message.frienduin;
-      }
-    }
-    ReportController.b(StructMsgItemLayout13.a(this.a), "dc00899", "Grp_talk", "", "obj", "Clk_origin", 0, 0, paramView, "", "", "");
+  }
+  
+  public void b(View paramView)
+  {
+    super.b(paramView);
   }
 }
 

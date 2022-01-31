@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x90$OccupyMicrophoneNotifyMsgBody
-  extends MessageMicro
+  extends MessageMicro<OccupyMicrophoneNotifyMsgBody>
 {
   public static final int UINT32_UIN_FIELD_NUMBER = 1;
   public static final int UINT64_DIN_FIELD_NUMBER = 2;

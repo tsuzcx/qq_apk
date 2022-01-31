@@ -1,32 +1,27 @@
-import android.view.View;
-import com.tencent.device.file.DeviceAVFileMsgObserver;
-import com.tencent.device.file.DeviceAVFileMsgObserver.DevMsgViewCallback;
-import java.lang.ref.WeakReference;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class pxp
+class pxp
+  implements PopupWindow.OnDismissListener
 {
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  public WeakReference b;
+  pxp(pxl parampxl, bhyd parambhyd) {}
   
-  public pxp(DeviceAVFileMsgObserver paramDeviceAVFileMsgObserver, View paramView, DeviceAVFileMsgObserver.DevMsgViewCallback paramDevMsgViewCallback)
+  public void onDismiss()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramDevMsgViewCallback);
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  public DeviceAVFileMsgObserver.DevMsgViewCallback a()
-  {
-    return (DeviceAVFileMsgObserver.DevMsgViewCallback)this.b.get();
+    this.jdField_a_of_type_Bhyd.a(1.0F);
+    if (this.jdField_a_of_type_Pxl.a.b)
+    {
+      rjg localrjg = this.jdField_a_of_type_Pxl.a.a();
+      if (localrjg != null)
+      {
+        localrjg.c();
+        this.jdField_a_of_type_Pxl.a.b = false;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pxp
  * JD-Core Version:    0.7.0.1
  */

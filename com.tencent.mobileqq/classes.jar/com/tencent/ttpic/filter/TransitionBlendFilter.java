@@ -1,17 +1,16 @@
 package com.tencent.ttpic.filter;
 
 import android.graphics.Bitmap;
-import android.util.Log;
+import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.aekit.openrender.UniformParam.IntParam;
+import com.tencent.aekit.openrender.UniformParam.TextureBitmapParam;
+import com.tencent.aekit.openrender.UniformParam.TextureParam;
+import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.filter.BaseFilter;
-import com.tencent.filter.Param.IntParam;
-import com.tencent.filter.Param.TextureBitmapParam2;
-import com.tencent.filter.Param.TextureParam;
-import com.tencent.ttpic.cache.ImageMemoryManager;
-import com.tencent.ttpic.config.MediaConfig;
-import com.tencent.ttpic.model.StickerItem;
-import com.tencent.ttpic.util.VideoBitmapUtil;
-import com.tencent.ttpic.util.VideoFilterUtil;
-import com.tencent.ttpic.util.VideoGlobalContext;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
+import com.tencent.ttpic.openapi.config.MediaConfig;
+import com.tencent.ttpic.openapi.model.StickerItem;
 import java.io.File;
 
 public class TransitionBlendFilter
@@ -22,7 +21,7 @@ public class TransitionBlendFilter
   private String dataPath;
   private int easeCurve;
   private StickerItem item;
-  private Param.TextureBitmapParam2 mMaskParam = new Param.TextureBitmapParam2("inputImageTexture3", null, 33987);
+  private UniformParam.TextureBitmapParam mMaskParam = new UniformParam.TextureBitmapParam("inputImageTexture3", null, 33987, false);
   private long transitionDuration;
   private long transitionStartTime = -1L;
   
@@ -38,72 +37,63 @@ public class TransitionBlendFilter
     switch (this.easeCurve)
     {
     default: 
-      return (paramDouble2 - paramDouble1) * paramDouble3 + paramDouble1;
+      return paramDouble3 * (paramDouble2 - paramDouble1) + paramDouble1;
     case 1: 
-      return -(paramDouble2 - paramDouble1) * Math.cos(1.570796326794897D * paramDouble3) + paramDouble2;
+      paramDouble1 = -(paramDouble2 - paramDouble1);
+      return Math.cos(paramDouble3 * 1.570796326794897D) * paramDouble1 + paramDouble2;
     case 2: 
-      return (paramDouble2 - paramDouble1) * Math.sin(1.570796326794897D * paramDouble3) + paramDouble1;
+      return Math.sin(paramDouble3 * 1.570796326794897D) * (paramDouble2 - paramDouble1) + paramDouble1;
     }
-    return -(paramDouble2 - paramDouble1) / 2.0D * (Math.cos(3.141592653589793D * paramDouble3) - 1.0D) + paramDouble1;
+    paramDouble2 = -(paramDouble2 - paramDouble1) / 2.0D;
+    return (Math.cos(paramDouble3 * 3.141592653589793D) - 1.0D) * paramDouble2 + paramDouble1;
   }
   
   private Bitmap getNextFrame(int paramInt)
   {
-    Bitmap localBitmap = ImageMemoryManager.getInstance().loadImage(this.item.id, paramInt);
+    Bitmap localBitmap = VideoMemoryManager.getInstance().loadImage(this.item.id, paramInt);
     Object localObject = localBitmap;
     if (localBitmap == null)
     {
       localObject = this.dataPath + File.separator + this.item.subFolder + File.separator + this.item.id + "_" + paramInt + ".png";
-      localObject = VideoBitmapUtil.decodeSampleBitmap(VideoGlobalContext.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
+      localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
     }
     return localObject;
   }
   
   private void initParams()
   {
-    addParam(new Param.TextureParam("inputImageTexture2", 0, 33986));
+    addParam(new UniformParam.TextureParam("inputImageTexture2", 0, 33986));
     addParam(this.mMaskParam);
-    addParam(new Param.IntParam("maskType", 0));
+    addParam(new UniformParam.IntParam("maskType", 0));
   }
   
   private void updateTextureParam(long paramLong)
   {
-    long l = getDuration(this.transitionStartTime, this.transitionStartTime + this.transitionDuration, paramLong) - this.transitionStartTime;
-    Log.w("joeyxia", "transition update texture with timeStamp : " + paramLong);
-    Log.w("joeyxia", "transition update texture with frameDuration : " + l);
-    Log.w("joeyxia", "transition update texture with startTime : " + this.transitionStartTime);
-    Log.w("joeyxia", "transition update texture with endTime : " + (this.transitionStartTime + this.transitionDuration));
-    int i = (int)(l / Math.max(this.item.frameDuration, 1.0D));
-    if (i >= this.item.frames)
+    if ((this.item.frames <= 0) || (this.item.frameDuration <= 0.0D))
     {
       clearTextureParam();
       return;
     }
-    if (i > 0) {}
-    Bitmap localBitmap = getNextFrame(i);
-    if (!VideoBitmapUtil.isLegal(localBitmap))
+    Bitmap localBitmap = getNextFrame((int)((getDuration(this.transitionStartTime, this.transitionStartTime + this.transitionDuration, paramLong) - this.transitionStartTime) / Math.max(this.item.frameDuration, 1.0D)) % this.item.frames);
+    if (!BitmapUtils.isLegal(localBitmap))
     {
       clearTextureParam();
       return;
     }
-    Log.w("joeyxia", "transition update texture with count : " + i);
     this.mMaskParam.swapTextureBitmap(localBitmap);
+    VideoMemoryManager.getInstance().recycleBitmap(this.item.id, localBitmap);
   }
   
   protected void clearTextureParam()
   {
-    Log.w("joeyxia", "transition clearTexture ");
-    setPositions(VideoFilterUtil.EMPTY_POSITIONS);
+    setPositions(GlUtil.EMPTY_POSITIONS);
     this.transitionStartTime = -1L;
   }
   
   public void reset()
   {
-    if (this.transitionStartTime > 0L)
-    {
-      this.transitionStartTime = -1L;
-      setPositions(VideoFilterUtil.ORIGIN_POSITION_COORDS);
-    }
+    this.transitionStartTime = -1L;
+    setPositions(GlUtil.ORIGIN_POSITION_COORDS);
   }
   
   public void setDataPath(String paramString)
@@ -128,20 +118,17 @@ public class TransitionBlendFilter
   
   public void setLastTex(int paramInt)
   {
-    addParam(new Param.TextureParam("inputImageTexture2", paramInt, 33986));
+    addParam(new UniformParam.TextureParam("inputImageTexture2", paramInt, 33986));
   }
   
   public void setMaskType(int paramInt)
   {
-    addParam(new Param.IntParam("maskType", paramInt));
+    addParam(new UniformParam.IntParam("maskType", paramInt));
   }
   
   public void updatePreview(long paramLong)
   {
-    Log.w("joeyxia", "transition updatePreview with time: " + paramLong);
-    if (this.transitionStartTime < 0L)
-    {
-      Log.w("joeyxia", "transition update startTime: " + paramLong);
+    if (this.transitionStartTime < 0L) {
       this.transitionStartTime = paramLong;
     }
     updateTextureParam(paramLong);
@@ -149,7 +136,7 @@ public class TransitionBlendFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.filter.TransitionBlendFilter
  * JD-Core Version:    0.7.0.1
  */

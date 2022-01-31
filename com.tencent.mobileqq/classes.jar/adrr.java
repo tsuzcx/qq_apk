@@ -1,16 +1,13 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class adrr
   implements DialogInterface.OnClickListener
 {
-  public adrr(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
+  public adrr(QQMapActivity paramQQMapActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.k();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

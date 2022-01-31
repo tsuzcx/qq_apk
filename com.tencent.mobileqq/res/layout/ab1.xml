@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/czq" android:background="#b3000000" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/cz_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/czi" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginBottom="10.0dip" android:scaleType="centerInside" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/czr" android:layout_width="wrap_content" android:layout_height="25.0dip" />
+        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+            <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/czu" android:background="@drawable/a1y" android:paddingLeft="12.0dip" android:paddingBottom="1.0dip" android:layout_width="97.0dip" android:layout_height="30.0dip" android:maxWidth="106.0dip" android:text="@string/ptv" android:singleLine="true" android:drawableLeft="@drawable/ds_" android:drawablePadding="6.0dip" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/czg" android:background="@drawable/a1x" android:paddingLeft="12.0dip" android:paddingBottom="1.0dip" android:layout_width="97.0dip" android:layout_height="30.0dip" android:layout_marginLeft="10.0dip" android:maxWidth="106.0dip" android:singleLine="true" android:drawableLeft="@drawable/ds7" android:drawablePadding="6.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.widget;
 
-import aktn;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
@@ -15,60 +14,50 @@ import android.widget.HorizontalScrollView;
 public class CustomHorizontalScrollView
   extends HorizontalScrollView
 {
-  float a;
-  public int a;
-  public Handler a;
-  public Runnable a;
-  float b;
-  public int b;
-  float c;
-  public int c;
-  public int d;
-  public int e = getResources().getDisplayMetrics().widthPixels;
+  float jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
+  int jdField_a_of_type_Int = -1;
+  Handler jdField_a_of_type_AndroidOsHandler = new Handler();
+  Runnable jdField_a_of_type_JavaLangRunnable = new CustomHorizontalScrollView.1(this);
+  float jdField_b_of_type_Float;
+  int jdField_b_of_type_Int = (int)(this.jdField_a_of_type_Float * 70.0F + 0.5D);
+  float jdField_c_of_type_Float;
+  int jdField_c_of_type_Int = (int)(this.jdField_a_of_type_Float + 0.5D);
+  int d;
+  int e = getResources().getDisplayMetrics().widthPixels;
   int f = 3;
   
   public CustomHorizontalScrollView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangRunnable = new aktn(this);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Float * 70.0F + 0.5D));
-    this.jdField_c_of_type_Int = ((int)(this.jdField_a_of_type_Float + 0.5D));
   }
   
   public CustomHorizontalScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangRunnable = new aktn(this);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Float * 70.0F + 0.5D));
-    this.jdField_c_of_type_Int = ((int)(this.jdField_a_of_type_Float + 0.5D));
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
     switch (paramMotionEvent.getAction())
     {
-    }
-    for (;;)
-    {
-      return super.dispatchTouchEvent(paramMotionEvent);
+    default: 
+      return bool;
+    case 0: 
       getParent().requestDisallowInterceptTouchEvent(true);
       this.jdField_b_of_type_Float = f1;
       this.jdField_c_of_type_Float = f2;
-      continue;
-      if (((this.f * Math.abs(f1 - this.jdField_b_of_type_Float) > Math.abs(f2 - this.jdField_c_of_type_Float)) || ((f1 == this.jdField_b_of_type_Float) && (f2 == this.jdField_c_of_type_Float))) && (getScrollX() != 0)) {
-        getParent().requestDisallowInterceptTouchEvent(true);
-      } else {
-        getParent().requestDisallowInterceptTouchEvent(false);
-      }
+      return bool;
     }
+    if (((this.f * Math.abs(f1 - this.jdField_b_of_type_Float) > Math.abs(f2 - this.jdField_c_of_type_Float)) || ((f1 == this.jdField_b_of_type_Float) && (f2 == this.jdField_c_of_type_Float))) && (getScrollX() != 0))
+    {
+      getParent().requestDisallowInterceptTouchEvent(true);
+      return bool;
+    }
+    getParent().requestDisallowInterceptTouchEvent(false);
+    return bool;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -93,7 +82,7 @@ public class CustomHorizontalScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CustomHorizontalScrollView
  * JD-Core Version:    0.7.0.1
  */

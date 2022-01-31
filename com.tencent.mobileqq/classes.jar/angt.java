@@ -1,40 +1,22 @@
-import com.tencent.open.wadl.WLog;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
-import cooperation.wadl.ipc.WadlProxyServiceMonitor;
 
 public class angt
-  extends Thread
+  implements MessageQueue.IdleHandler
 {
-  public volatile boolean a;
+  public angt(ARScanEntryView paramARScanEntryView) {}
   
-  private angt(WadlProxyServiceMonitor paramWadlProxyServiceMonitor)
+  public boolean queueIdle()
   {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void run()
-  {
-    try
-    {
-      while (this.jdField_a_of_type_Boolean)
-      {
-        Thread.sleep(WadlProxyServiceMonitor.a(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor));
-        long l = System.currentTimeMillis();
-        if ((WadlProxyServiceMonitor.b(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor) != 0L) && (l - WadlProxyServiceMonitor.b(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor) > 30000L) && (WadlProxyServiceMonitor.a(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor)) && (WadlProxyServiceMonitor.a(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor) != null))
-        {
-          if (QLog.isColorLevel()) {
-            WLog.b(WadlProxyServiceMonitor.a(), "##@<<<MonitorWorkingThread: check ipc service status...");
-          }
-          WadlProxyServiceMonitor.a(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor).a();
-        }
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "queueIdle called ");
     }
-    catch (InterruptedException localInterruptedException)
-    {
-      localInterruptedException.printStackTrace();
+    if ((ARScanEntryView.a(this.a) != null) && (this.a.m)) {
+      ARScanEntryView.a(this.a).c();
     }
+    return false;
   }
 }
 

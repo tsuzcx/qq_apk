@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="k4">52.0dip</dimen>
+    <dimen name="k5">38.0dip</dimen>
+    <dimen name="k6">10.0dip</dimen>
+    <dimen name="k7">0.0dip</dimen>
+    <dimen name="k8">53.0dip</dimen>
+    <dimen name="k9">100.0dip</dimen>
+    <dimen name="a1c">170.0dip</dimen>
+    <dimen name="aj9">140.0dip</dimen>
+    <dimen name="aj_">170.0dip</dimen>
+    <dimen name="aja">85.0dip</dimen>
+    <dimen name="b4e">105.0dip</dimen>
+</resources>

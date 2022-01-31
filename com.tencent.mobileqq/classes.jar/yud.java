@@ -1,33 +1,64 @@
-import android.app.Activity;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.store.ApolloImageShareLayout;
-import com.tencent.mobileqq.apollo.store.ApolloViewController;
-import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.cs.group_file_common.group_file_common.FileInfo;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileInfoRspBody;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
 
-public class yud
-  implements Runnable
+public abstract class yud
+  extends nac
 {
-  public yud(ApolloViewController paramApolloViewController, Activity paramActivity, AppInterface paramAppInterface, String paramString1, String paramString2) {}
-  
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController) == null) || (ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController) == null)) {
-      return;
+    if (paramInt != 0) {
+      a(false, paramInt, null);
     }
-    if (ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController) == null)
+    label103:
+    do
     {
-      ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController, new ApolloImageShareLayout(this.jdField_a_of_type_AndroidAppActivity));
-      ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController).a(ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController).getWidth(), ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController).getHeight(), this.jdField_a_of_type_ComTencentCommonAppAppInterface, ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController).roleId, ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController).dressIds, this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController.a);
-      ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController).addView(ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController), new FrameLayout.LayoutParams(-1, -1));
-    }
-    ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController).a(ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController).roleId, ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController).dressIds, this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController.a, this.jdField_a_of_type_JavaLangString, this.b);
+      for (;;)
+      {
+        return;
+        paramBundle = new oidb_0x6d8.RspBody();
+        try
+        {
+          paramBundle.mergeFrom(paramArrayOfByte);
+          paramArrayOfByte = (oidb_0x6d8.GetFileInfoRspBody)paramBundle.file_info_rsp.get();
+          if (!paramArrayOfByte.int32_ret_code.has()) {
+            break label103;
+          }
+          if (paramArrayOfByte.int32_ret_code.get() == 0)
+          {
+            paramArrayOfByte = (group_file_common.FileInfo)paramArrayOfByte.file_info.get();
+            if (paramArrayOfByte == null) {
+              continue;
+            }
+            a(true, 0, paramArrayOfByte);
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          a(false, -1, null);
+          return;
+        }
+      }
+      a(false, paramArrayOfByte.int32_ret_code.get(), null);
+      return;
+      if (!paramArrayOfByte.file_info.has()) {
+        break;
+      }
+      paramArrayOfByte = (group_file_common.FileInfo)paramArrayOfByte.file_info.get();
+    } while (paramArrayOfByte == null);
+    a(true, 0, paramArrayOfByte);
+    return;
+    a(false, -1, null);
   }
+  
+  protected abstract void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yud
  * JD-Core Version:    0.7.0.1
  */

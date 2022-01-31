@@ -1,41 +1,31 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.channel.CmdTaskManger;
-import com.tencent.biz.qqstory.channel.NetworkRequest;
-import com.tencent.biz.qqstory.network.request.GetTroopAssistantFeedIdListRequest;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.FeedIdListCache;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.GetFeedIdListResult;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import java.util.ArrayList;
 
-public class onw
-  extends JobSegment
+class onw
+  extends oob
 {
-  private FeedListPageLoaderBase.FeedIdListCache a;
-  
-  public onw(@NonNull FeedListPageLoaderBase.FeedIdListCache paramFeedIdListCache)
+  onw(omz paramomz, int paramInt)
   {
-    this.a = paramFeedIdListCache;
+    super(paramomz, null);
   }
   
-  protected void a(JobContext paramJobContext, Integer paramInteger)
+  void a(ooe paramooe)
   {
-    Object localObject = this.a.a(paramInteger.intValue(), 5);
-    if ((((FeedListPageLoaderBase.GetFeedIdListResult)localObject).a.size() > 0) || (((FeedListPageLoaderBase.GetFeedIdListResult)localObject).b))
+    if (paramooe == null) {}
+    do
     {
-      SLog.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
-      notifyResult(localObject);
       return;
-    }
-    localObject = new GetTroopAssistantFeedIdListRequest();
-    ((GetTroopAssistantFeedIdListRequest)localObject).a = this.a.a();
-    CmdTaskManger.a().a((NetworkRequest)localObject, new onx(this, paramJobContext, paramInteger));
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        paramooe.onCommentListLoad(1, false, new ArrayList(), false, 2, 2);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 2);
+    paramooe.onCommentLoadMore(1, false, new ArrayList(), false, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     onw
  * JD-Core Version:    0.7.0.1
  */

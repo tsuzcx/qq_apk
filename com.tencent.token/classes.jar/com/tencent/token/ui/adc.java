@@ -1,18 +1,17 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.support.v4.content.LocalBroadcastManager;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class adc
-  implements View.OnClickListener
+class adc
+  implements DialogInterface.OnClickListener
 {
-  adc(UtilsActivity paramUtilsActivity) {}
+  adc(acz paramacz) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LocalBroadcastManager.getInstance(this.a).sendBroadcast(new Intent("com.tencent.token.open_menu"));
+    UtilsMailProtectActivity.access$1200(this.a.a);
+    this.a.a.dismissDialog();
   }
 }
 

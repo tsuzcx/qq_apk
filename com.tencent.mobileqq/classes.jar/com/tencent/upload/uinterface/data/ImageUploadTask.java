@@ -12,16 +12,22 @@ import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.Log;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.upload.a.c;
-import com.tencent.upload.common.Const.UploadRetCode;
-import com.tencent.upload.common.Const.b;
-import com.tencent.upload.common.FileUtils;
 import com.tencent.upload.common.UploadConfiguration;
-import com.tencent.upload.e.f;
+import com.tencent.upload.common.UploadGlobalConfig;
 import com.tencent.upload.image.ImageProcessUtil;
+import com.tencent.upload.impl.ImageCompressor;
+import com.tencent.upload.network.session.SessionPool;
+import com.tencent.upload.report.ReportManager;
 import com.tencent.upload.uinterface.AbstractUploadTask;
 import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
 import com.tencent.upload.uinterface.TaskTypeConfig;
+import com.tencent.upload.utils.BitmapUtils;
+import com.tencent.upload.utils.Const.FileType;
+import com.tencent.upload.utils.Const.UploadRetCode;
+import com.tencent.upload.utils.FileUtils;
+import com.tencent.upload.utils.JceEncoder;
+import com.tencent.upload.utils.StringUtils;
+import com.tencent.upload.utils.UploadLog;
 import java.io.File;
 import java.lang.ref.SoftReference;
 import java.util.HashMap;
@@ -100,14 +106,14 @@ public class ImageUploadTask
     {
       long l = paramFile.length();
       i = UploadConfiguration.getCurrentNetworkCategory();
-      if (((i == 1) && (l < 5242880L)) || ((i == 3) && (l < 819200L)) || ((i == 2) && (l < 2097152L)) || ((i == 6) && (l < 2097152L))) {}
+      if (((i == 1) && (l < 5242880L)) || ((i == 3) && (l < 819200L)) || ((i == 2) && (l < 2097152L)) || ((i == 6) && (l < 2097152L)) || ((i == 7) && (l < 2097152L))) {}
       for (i = 1;; i = 0)
       {
         if (i == 0)
         {
-          paramFile = com.tencent.upload.e.a.a();
+          paramFile = BitmapUtils.getOptions();
           localObject = ImageProcessUtil.decodeFileWithRetry(this.mFilePath, paramFile);
-          String str = FileUtils.getTempFilePath(com.tencent.upload.common.a.a(), this.mFilePath, this.md5, this.flowId);
+          String str = FileUtils.getTempFilePath(UploadGlobalConfig.getContext(), this.mFilePath, this.md5, this.flowId);
           paramFile = (File)localObject;
           if (localObject != null)
           {
@@ -126,7 +132,7 @@ public class ImageUploadTask
             paramFile.recycle();
           }
         }
-        com.tencent.upload.b.b.b(this);
+        ImageCompressor.copyTaskFile(this);
         return true;
       }
     }
@@ -141,7 +147,7 @@ public class ImageUploadTask
       if ((paramFile.width == 0) && (paramFile.height == 0)) {
         return false;
       }
-      com.tencent.upload.common.a.b();
+      UploadGlobalConfig.getConfig();
       if (0 != 0) {
         throw new NullPointerException();
       }
@@ -150,7 +156,7 @@ public class ImageUploadTask
         i = paramFile.width;
         throw new NullPointerException();
       }
-      com.tencent.upload.b.b.b(this);
+      ImageCompressor.copyTaskFile(this);
       return true;
     }
   }
@@ -169,12 +175,12 @@ public class ImageUploadTask
     Object localObject = createUploadPicInfoReq();
     try
     {
-      localObject = com.tencent.upload.e.b.a((JceStruct)localObject);
+      localObject = JceEncoder.encode((JceStruct)localObject);
       return localObject;
     }
     catch (Exception localException)
     {
-      com.tencent.upload.common.b.e("ImageUploadTask", localException.toString());
+      UploadLog.e("ImageUploadTask", localException.toString());
     }
     return null;
   }
@@ -182,10 +188,10 @@ public class ImageUploadTask
   public UploadPicInfoReq createUploadPicInfoReq()
   {
     UploadPicInfoReq localUploadPicInfoReq = new UploadPicInfoReq();
-    localUploadPicInfoReq.sPicTitle = f.a(this.sPicTitle);
-    localUploadPicInfoReq.sPicDesc = f.a(this.sPicDesc);
-    localUploadPicInfoReq.sAlbumID = f.a(this.sAlbumID);
-    localUploadPicInfoReq.sAlbumName = f.a(this.sAlbumName);
+    localUploadPicInfoReq.sPicTitle = StringUtils.getEmptyString(this.sPicTitle);
+    localUploadPicInfoReq.sPicDesc = StringUtils.getEmptyString(this.sPicDesc);
+    localUploadPicInfoReq.sAlbumID = StringUtils.getEmptyString(this.sAlbumID);
+    localUploadPicInfoReq.sAlbumName = StringUtils.getEmptyString(this.sAlbumName);
     localUploadPicInfoReq.iAlbumTypeID = this.iAlbumTypeID;
     localUploadPicInfoReq.iBitmap = this.iBitmap;
     localUploadPicInfoReq.iUploadType = this.iUploadType;
@@ -288,7 +294,7 @@ public class ImageUploadTask
           if (localObject1 == null)
           {
             localObject1 = new HashMap();
-            ((HashMap)localObject1).put("mobile_fakefeeds_clientkey", f.a(this.clientFakeKey));
+            ((HashMap)localObject1).put("mobile_fakefeeds_clientkey", StringUtils.getEmptyString(this.clientFakeKey));
             if ((localUploadPicInfoReq.stExtendInfo != null) && (localUploadPicInfoReq.stExtendInfo.mapParams == null)) {
               localUploadPicInfoReq.stExtendInfo.mapParams = new HashMap();
             }
@@ -383,9 +389,9 @@ public class ImageUploadTask
     return this.compressEndTime - this.compressStartTime;
   }
   
-  public Const.b getFileType()
+  public Const.FileType getFileType()
   {
-    return Const.b.b;
+    return Const.FileType.Photo;
   }
   
   public final String getOriginalUploadFilePath()
@@ -401,22 +407,22 @@ public class ImageUploadTask
     return TaskTypeConfig.ImageUploadTaskType;
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     if (!this.mKeepFileAfterUpload)
     {
-      com.tencent.upload.common.b.b("ImageUploadTask", "onDestroy taskId=" + getTaskId() + ", delete tmpFile=" + this.mTmpUploadPath);
+      UploadLog.d("ImageUploadTask", "onDestroy taskId=" + getTaskId() + ", delete tmpFile=" + this.mTmpUploadPath);
       FileUtils.deleteTempFile(this.mTmpUploadPath);
     }
-    com.tencent.upload.a.a.b(this, this.mSessionId);
+    super.onDestroy();
   }
   
-  protected void processFileUploadFinishRsp(byte[] paramArrayOfByte)
+  public void processFileUploadFinishRsp(byte[] paramArrayOfByte)
   {
     Object localObject2 = null;
     Object localObject3 = null;
-    com.tencent.upload.common.b.b("ImageUploadTask", "ImageUploadTask put <" + this.mOriginFilePath + "," + this.mSessionId + ">");
-    c.a.put(this.mOriginFilePath, this.mSessionId);
+    UploadLog.d("ImageUploadTask", "ImageUploadTask put <" + this.mOriginFilePath + "," + this.mSessionId + ">");
+    SessionPool.recordSessionId(this.mOriginFilePath, this.mSessionId);
     Object localObject1 = localObject2;
     if (!this.isHead)
     {
@@ -428,7 +434,7 @@ public class ImageUploadTask
         {
           try
           {
-            localObject1 = (UploadPicInfoRsp)com.tencent.upload.e.b.a(UploadPicInfoRsp.class, paramArrayOfByte);
+            localObject1 = (UploadPicInfoRsp)JceEncoder.decode(UploadPicInfoRsp.class, paramArrayOfByte);
             localObject3 = localObject1;
             localObject2 = null;
           }
@@ -437,7 +443,7 @@ public class ImageUploadTask
             for (;;)
             {
               localObject2 = Log.getStackTraceString(localException);
-              com.tencent.upload.common.b.b("ImageUploadTask", "get rsp ", localException);
+              UploadLog.w("ImageUploadTask", "get rsp ", localException);
             }
           }
           localObject1 = localObject3;
@@ -459,25 +465,25 @@ public class ImageUploadTask
     }
     ImageUploadResult localImageUploadResult = new ImageUploadResult(this.iUin, this.flowId, this.iBatchID, (UploadPicInfoRsp)localObject2);
     localImageUploadResult.sessionId = this.mSessionId;
-    com.tencent.upload.common.b.b("ImageUploadTask", "onUploadSucceed flowid = " + this.flowId + " filepath = " + this.mFilePath);
+    UploadLog.d("ImageUploadTask", "onUploadSucceed flowid = " + this.flowId + " filepath = " + this.mFilePath);
     onUploadSucceed(localImageUploadResult);
     super.processFileUploadFinishRsp(paramArrayOfByte);
     onDestroy();
   }
   
-  protected void report(int paramInt, String paramString)
+  public void report(int paramInt, String paramString)
   {
     super.report(paramInt, paramString);
     if (!this.mReported)
     {
-      com.tencent.upload.report.b.a().a(this);
+      ReportManager.getInstance().report(this);
       this.mReported = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.ImageUploadTask
  * JD-Core Version:    0.7.0.1
  */

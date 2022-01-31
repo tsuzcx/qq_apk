@@ -1,15 +1,8 @@
-import com.tencent.mobileqq.activity.MyPublishedHornActivity;
-import com.tencent.mobileqq.app.NearHornHandler;
+import android.widget.TextView;
 
-class dce
-  implements Runnable
+public class dce
 {
-  dce(dcd paramdcd) {}
-  
-  public void run()
-  {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.c(this.a.a.jdField_a_of_type_JavaUtilList);
-  }
+  TextView a;
 }
 
 

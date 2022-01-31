@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class SdkAuthorize$PassData
-  extends MessageMicro
+  extends MessageMicro<PassData>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "key", "value" }, new Object[] { "", "" }, PassData.class);
   public final PBStringField key = PBField.initString("");
@@ -14,7 +14,7 @@ public final class SdkAuthorize$PassData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.protofile.sdkauthorize.SdkAuthorize.PassData
  * JD-Core Version:    0.7.0.1
  */

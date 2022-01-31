@@ -1,79 +1,92 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsAdapter.VideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class mog
-  extends Handler
 {
-  public mog(FastWebVideoFeedsAdapter paramFastWebVideoFeedsAdapter, Looper paramLooper)
+  public static String a;
+  private static mog jdField_a_of_type_Mog;
+  private final int jdField_a_of_type_Int = 40;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private boolean jdField_a_of_type_Boolean;
+  private moh[] jdField_a_of_type_ArrayOfMoh;
+  
+  static
   {
-    super(paramLooper);
+    jdField_a_of_type_JavaLangString = "VoiceChangeData";
   }
   
-  public void handleMessage(Message paramMessage)
+  public static mog a()
   {
-    switch (paramMessage.what)
+    if (jdField_a_of_type_Mog == null) {}
+    try
     {
-    default: 
-      super.handleMessage(paramMessage);
-    case 0: 
-    case 1: 
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              FastWebVideoFeedsAdapter.a(this.a).sendEmptyMessageDelayed(0, 5000L);
-            } while (FastWebVideoFeedsAdapter.a(this.a) == null);
-            if (FastWebVideoFeedsAdapter.a(this.a).a() > FastWebVideoFeedsAdapter.a(this.a).b()) {}
-            for (long l = FastWebVideoFeedsAdapter.a(this.a).a();; l = FastWebVideoFeedsAdapter.a(this.a).b())
-            {
-              l = 5000L - (System.currentTimeMillis() - l);
-              if (l <= 0L) {
-                break;
-              }
-              FastWebVideoFeedsAdapter.a(this.a).removeMessages(0);
-              FastWebVideoFeedsAdapter.a(this.a).sendEmptyMessageDelayed(0, l);
-              return;
-            }
-          } while ((FastWebVideoFeedsAdapter.a(this.a) == null) || (!FastWebVideoFeedsAdapter.a(this.a).c()));
-          if (FastWebVideoFeedsAdapter.a(this.a).g.getVisibility() == 0) {
-            VideoFeedsHelper.b(FastWebVideoFeedsAdapter.a(this.a).g, 8);
-          }
-        } while (FastWebVideoFeedsAdapter.a(this.a).f.getVisibility() != 0);
-        VideoFeedsHelper.b(FastWebVideoFeedsAdapter.a(this.a).f, 8);
-        return;
-        FastWebVideoFeedsAdapter.a(this.a).a(FastWebVideoFeedsAdapter.a(this.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager$VideoPlayParam, false);
-      } while ((FastWebVideoFeedsAdapter.a(this.a) == null) || (FastWebVideoFeedsAdapter.a(this.a).size() <= 1));
-      FastWebVideoFeedsAdapter.a(this.a).a(FastWebVideoFeedsAdapter.a(this.a).jdField_a_of_type_Int, FastWebVideoFeedsAdapter.a(this.a));
-      return;
-    case 2: 
-      if (FastWebVideoFeedsAdapter.b(this.a))
-      {
-        FastWebVideoFeedsAdapter.a(this.a).sendEmptyMessage(3);
-        FastWebVideoFeedsAdapter.a(this.a).sendEmptyMessageDelayed(2, 50L);
+      if (jdField_a_of_type_Mog == null) {
+        jdField_a_of_type_Mog = new mog();
       }
-      FastWebVideoFeedsAdapter.a(this.a).a();
+      return jdField_a_of_type_Mog;
+    }
+    finally {}
+  }
+  
+  protected void a(String paramString)
+  {
+    if (paramString == null) {
       return;
     }
-    FastWebVideoFeedsAdapter.a(this.a).c();
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_ArrayOfMoh = null;
+      try
+      {
+        Object localObject2 = new JSONObject(paramString);
+        if (((JSONObject)localObject2).has("voices"))
+        {
+          localObject2 = ((JSONObject)localObject2).getJSONArray("voices");
+          lek.d(jdField_a_of_type_JavaLangString, "parseConfig|voices size= " + ((JSONArray)localObject2).length());
+          this.jdField_a_of_type_ArrayOfMoh = new moh[((JSONArray)localObject2).length()];
+          int i = 0;
+          while (i < ((JSONArray)localObject2).length())
+          {
+            JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(i);
+            moh localmoh = new moh();
+            localmoh.jdField_a_of_type_JavaLangString = localJSONObject.getString("name");
+            localmoh.jdField_b_of_type_JavaLangString = localJSONObject.getString("icon1");
+            localmoh.c = localJSONObject.getString("icon2");
+            localmoh.jdField_a_of_type_Int = Integer.parseInt(localJSONObject.getString("type"));
+            localmoh.jdField_b_of_type_Int = Integer.parseInt(localJSONObject.getString("vip_level"));
+            this.jdField_a_of_type_ArrayOfMoh[i] = localmoh;
+            i += 1;
+          }
+        }
+        paramString = finally;
+      }
+      catch (JSONException localJSONException)
+      {
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "parseConfig, JSONException, \ncontent[" + paramString + "]", localJSONException);
+        this.jdField_a_of_type_ArrayOfMoh = null;
+        return;
+      }
+    }
+  }
+  
+  public moh[] a()
+  {
+    if (this.jdField_a_of_type_ArrayOfMoh == null) {
+      a(lex.b(172).jdField_a_of_type_JavaLangString);
+    }
+    if ((this.jdField_a_of_type_ArrayOfMoh == null) && (!this.jdField_a_of_type_Boolean))
+    {
+      moi.a("0X8007EFD", "");
+      this.jdField_a_of_type_Boolean = true;
+    }
+    return this.jdField_a_of_type_ArrayOfMoh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mog
  * JD-Core Version:    0.7.0.1
  */

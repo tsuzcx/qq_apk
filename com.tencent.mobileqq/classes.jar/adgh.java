@@ -1,22 +1,25 @@
-import com.tencent.mobileqq.filemanager.settings.FMSettingInterface.MoveFileCallback;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import java.io.File;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public class adgh
-  implements Runnable
+  extends alpq
 {
-  public adgh(FMSettings paramFMSettings, String paramString, File paramFile, int paramInt, FMSettingInterface.MoveFileCallback paramMoveFileCallback) {}
+  public adgh(Leba paramLeba) {}
   
-  public void run()
+  protected void onGetWholePeopleVoteLebaSwitch(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    File localFile = new File(this.jdField_a_of_type_JavaLangString);
-    FMSettings.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings, localFile, this.jdField_a_of_type_JavaIoFile, new adgi(this));
-    localFile.delete();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.leba", 2, String.format(Locale.getDefault(), "onGetWholePeopleVoteLebaSwitch isSuc: %b cur: %b pre: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
+    }
+    if ((paramBoolean1) && (paramBoolean2 != paramBoolean3)) {
+      this.a.a.sendEmptyMessage(11340002);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adgh
  * JD-Core Version:    0.7.0.1
  */

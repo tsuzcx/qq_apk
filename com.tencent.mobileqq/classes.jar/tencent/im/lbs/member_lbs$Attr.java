@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class member_lbs$Attr
-  extends MessageMicro
+  extends MessageMicro<Attr>
 {
   public static final int STR_IMEI_FIELD_NUMBER = 1;
   public static final int STR_IMSI_FIELD_NUMBER = 2;
@@ -27,7 +27,7 @@ public final class member_lbs$Attr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.lbs.member_lbs.Attr
  * JD-Core Version:    0.7.0.1
  */

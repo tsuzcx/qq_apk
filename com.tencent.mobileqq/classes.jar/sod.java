@@ -1,29 +1,36 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class sod
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public sod(ForwardRecentActivity paramForwardRecentActivity) {}
+  public sod(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = this.a.getIntent().getExtras();
-    paramView.putString("uin", AppConstants.ay);
-    paramView.putInt("uintype", -1);
-    paramView.putString("uinname", "QQ空间");
-    this.a.a.a(ForwardAbility.ForwardAbilityType.e.intValue(), paramView);
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new JSONObject();
+    try
+    {
+      paramDialogInterface.put("button", 1);
+      paramDialogInterface.put("buttonText", this.jdField_a_of_type_OrgJsonJSONObject.optString("okBtnText", ""));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
+      return;
+    }
+    catch (JSONException paramDialogInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(BridgeModule.TAG, 2, "showDialog error" + paramDialogInterface.getMessage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sod
  * JD-Core Version:    0.7.0.1
  */

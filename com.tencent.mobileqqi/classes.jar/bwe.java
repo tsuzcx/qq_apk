@@ -1,15 +1,33 @@
-import com.tencent.common.galleryactivity.GalleryManager;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class bwe
   implements Runnable
 {
-  public bwe(GalleryManager paramGalleryManager) {}
+  public bwe(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractAnimationManager.c = false;
-    GalleryManager.a(this.a, this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene);
-    GalleryManager.a(this.a, true);
+    try
+    {
+      if ((AuthDevVerifyCodeActivity.a(this.a) == null) && (!this.a.isFinishing()))
+      {
+        AuthDevVerifyCodeActivity.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
+        AuthDevVerifyCodeActivity.a(this.a).b(2131562645);
+        AuthDevVerifyCodeActivity.a(this.a).c(true);
+      }
+      if ((AuthDevVerifyCodeActivity.a(this.a) != null) && (!AuthDevVerifyCodeActivity.a(this.a).isShowing())) {
+        AuthDevVerifyCodeActivity.a(this.a).show();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

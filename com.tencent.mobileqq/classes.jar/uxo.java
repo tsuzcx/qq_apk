@@ -1,30 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-
 public class uxo
-  implements ActionSheet.OnButtonClickListener
 {
-  public uxo(FlashPicItemBuilder paramFlashPicItemBuilder, MessageForPic paramMessageForPic, ActionSheet paramActionSheet) {}
+  @xrk(a="pkIconUrl")
+  public String a;
+  @xrk(a="pkWording")
+  public String b;
+  @xrk(a="pkAction")
+  public String c;
+  @xrk(a="pkIconUrlSelf")
+  public String d;
+  @xrk(a="pkWordingSelf")
+  public String e;
+  @xrk(a="pkActionSelf")
+  public String f;
   
-  public void OnClick(View paramView, int paramInt)
+  public String toString()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      FlashPicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
-    }
+    return "VideoLinkGameInfo {, pkBody='" + this.b + '\'' + ", pkIconUrl='" + this.a + '\'' + ", pkAction='" + this.c + '\'' + ", pkBodySelf='" + this.e + '\'' + ", pkIconUrlSelf='" + this.d + '\'' + ", pkActionSelf='" + this.f + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uxo
  * JD-Core Version:    0.7.0.1
  */

@@ -8,13 +8,13 @@ public final class d
   extends JceStruct
 {
   public String a = "";
-  public long b;
-  public short c;
-  public short d;
-  public byte e;
-  public long f;
-  public byte g;
-  public byte h;
+  public long b = 0L;
+  public short c = 0;
+  public short d = 0;
+  public byte e = 0;
+  public long f = 0L;
+  public byte g = 0;
+  public byte h = 0;
   public int i = 64;
   
   public d() {}

@@ -1,28 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoySlideAnimLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
 
-public final class rxs
-  implements DialogInterface.OnClickListener
+public class rxs
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public rxs(QQAppInterface paramQQAppInterface, int paramInt) {}
+  public rxs(SlideActiveAnimController paramSlideActiveAnimController, float paramFloat) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_a_of_type_Int == 5) {}
-    for (paramInt = 2;; paramInt = 3)
-    {
-      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X80063FC", "0X80063FC", paramInt, 0, "", "", "", "");
-      return;
-    }
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoySlideAnimLayout.a.setTranslationY(this.jdField_a_of_type_Float - paramValueAnimator.floatValue());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setTranslationY(-paramValueAnimator.floatValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rxs
  * JD-Core Version:    0.7.0.1
  */

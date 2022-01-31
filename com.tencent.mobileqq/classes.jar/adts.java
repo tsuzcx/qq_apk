@@ -1,22 +1,15 @@
-import com.tencent.av.utils.GVideoGrayConfig;
-import com.tencent.av.utils.GVideoGrayConfig.GVideoPreDownloadListener;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
 
 public class adts
-  implements GVideoGrayConfig.GVideoPreDownloadListener
+  implements View.OnClickListener
 {
-  public adts(GroupVideoManager paramGroupVideoManager) {}
+  public adts(RecommendFriendActivity paramRecommendFriendActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoManager", 2, "start slientDownloadPlugin onResult:" + paramInt);
-    }
-    GVideoGrayConfig.a().a();
-    if (paramInt == 1) {
-      GroupVideoManager.a("group_video", new adtt(this));
-    }
+    this.a.finish();
   }
 }
 

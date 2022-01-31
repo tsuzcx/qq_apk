@@ -1,222 +1,212 @@
-import android.annotation.SuppressLint;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.util.Pair;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.MemoryConfigs;
-import com.tencent.mobileqq.app.MemoryManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.util.SortUtils;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class zgi
-  implements Runnable
+  extends VasWebviewJsPlugin
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public zgi(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt)
+  public zgi()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    if (MemoryManager.a() == null)
-    {
-      MemoryManager.a(new ArrayList());
-      MemoryManager.a().add("com.android.browser");
-      MemoryManager.a().add("com.android.email");
-      MemoryManager.a().add("com.sec.android.app.readershub");
-    }
-    if (MemoryManager.b() == null)
-    {
-      MemoryManager.b(new ArrayList());
-      paramQQAppInterface = Pattern.compile("^com.*.android.*");
-      MemoryManager.b().add(paramQQAppInterface);
-    }
-    if (MemoryManager.c() == null)
-    {
-      MemoryManager.c(new ArrayList());
-      MemoryManager.c().add("system");
-      MemoryManager.c().add("com.android.");
-      MemoryManager.c().add("com.google.process.");
-      MemoryManager.c().add("android.process.");
-    }
+    this.mPluginNameSpace = "robotsummary";
   }
   
-  private boolean a(String paramString)
+  private boolean a(String... paramVarArgs)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (paramString.startsWith("com.tencent.mobileqq"))
-    {
-      bool1 = true;
-      return bool1;
+    if ((paramVarArgs == null) || (paramVarArgs.length < 1)) {
+      return false;
     }
-    int i = 0;
-    for (;;)
+    paramVarArgs = paramVarArgs[0];
+    try
     {
-      if (i >= MemoryManager.a().size()) {
-        break label56;
-      }
-      bool1 = bool2;
-      if (paramString.equals(MemoryManager.a().get(i))) {
-        break;
-      }
-      i += 1;
+      Object localObject = new JSONObject(paramVarArgs);
+      paramVarArgs = ((JSONObject)localObject).optString("gc");
+      String str1 = ((JSONObject)localObject).optString("robotUin");
+      String str2 = ((JSONObject)localObject).optString("robotName");
+      localObject = ((JSONObject)localObject).optString("callback");
+      Bundle localBundle = new Bundle();
+      localBundle.putString("robotuin", str1);
+      localBundle.putString("troopuin", paramVarArgs);
+      localBundle.putString("robotname", str2);
+      paramVarArgs = apml.a("ipc_cmd_share_robot_card", (String)localObject, this.mOnRemoteResp.key, localBundle);
+      aprh.a().a(paramVarArgs);
+      return true;
     }
-    label56:
-    i = 0;
-    while (i < MemoryManager.b().size())
-    {
-      if (((Pattern)MemoryManager.b().get(i)).matcher(paramString).find()) {
-        return true;
-      }
-      i += 1;
-    }
-    i = 0;
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i >= MemoryManager.c().size()) {
-        break;
-      }
-      if (paramString.startsWith((String)MemoryManager.c().get(i))) {
-        return true;
-      }
-      i += 1;
-    }
+    catch (JSONException paramVarArgs) {}
+    return false;
   }
   
-  @SuppressLint({"NewApi"})
-  public void run()
+  private boolean b(String... paramVarArgs)
   {
+    if ((paramVarArgs == null) || (paramVarArgs.length < 1)) {
+      return false;
+    }
+    paramVarArgs = paramVarArgs[0];
     for (;;)
     {
-      long l3;
       try
       {
-        boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.l;
-        if (bool) {
-          return;
-        }
-        int i = this.jdField_a_of_type_Int;
-        switch (i)
+        Object localObject = new JSONObject(paramVarArgs);
+        if (localObject != null)
         {
-        default: 
-          return;
+          str6 = ((JSONObject)localObject).optString("oninfoUrl");
+          str5 = ((JSONObject)localObject).optString("oninfoTitle");
+          str4 = ((JSONObject)localObject).optString("offinfoUrl");
+          str3 = ((JSONObject)localObject).optString("offinfoTitle");
+          str1 = ((JSONObject)localObject).optString("gc");
+          str2 = ((JSONObject)localObject).optString("robotUin");
+          paramVarArgs = ((JSONObject)localObject).optString("robotName");
+          i = ((JSONObject)localObject).optInt("isRobotBuddy");
+          localObject = ((JSONObject)localObject).optString("callback");
+          Bundle localBundle = new Bundle();
+          localBundle.putString("onurl", str6);
+          localBundle.putString("ontitle", str5);
+          localBundle.putString("offtitle", str3);
+          localBundle.putString("offurl", str4);
+          localBundle.putString("robotuin", str2);
+          localBundle.putString("troopuin", str1);
+          localBundle.putString("robotname", paramVarArgs);
+          localBundle.putInt("isrobotbuddy", i);
+          paramVarArgs = apml.a("ipc_cmd_invoke_robot_function", (String)localObject, this.mOnRemoteResp.key, localBundle);
+          aprh.a().a(paramVarArgs);
+          return true;
         }
       }
-      catch (Throwable localThrowable)
+      catch (JSONException paramVarArgs)
       {
-        Intent localIntent;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("Q.Memory.MemoryManager", 2, "AlertMemoryRunner exception, actionType=" + this.jdField_a_of_type_Int, localThrowable);
-        localThrowable.printStackTrace();
-        return;
-        l1 = DeviceInfoUtil.f();
-        l2 = DeviceInfoUtil.e();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.Memory.MemoryManager", 2, "clear memory, availMemSize=" + l1 / 1048576L + "M, totalMemSize=" + l2 / 1048576L + "M");
-        l3 = MemoryConfigs.a().jdField_a_of_type_Int * l2 / 100L;
-        if (l1 < l3) {
-          continue;
-        }
-        return;
-        Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("MemoryManagerMemoryStat", 0);
-        l4 = ((SharedPreferences)localObject1).getLong("lastClearTime", 0L);
-        long l5 = System.currentTimeMillis();
-        if (l5 >= l4) {
-          continue;
-        }
-        localObject1 = ((SharedPreferences)localObject1).edit();
-        ((SharedPreferences.Editor)localObject1).putLong("lastClearTime", l5);
-        ((SharedPreferences.Editor)localObject1).commit();
-        return;
-        MemoryManager.a().a(l3, l1);
-        l4 = l5 - l4;
-        l5 = MemoryConfigs.a().jdField_a_of_type_Long;
-        if (l4 >= l5) {
-          continue;
-        }
-        return;
-        MemoryManager.a().b(l3, l1);
-        localObject4 = new ArrayList();
-        Iterator localIterator = ((ActivityManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("activity")).getRunningAppProcesses().iterator();
-        if (!localIterator.hasNext()) {
-          break label637;
-        }
-        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localIterator.next();
-        String str = localRunningAppProcessInfo.processName;
-        if ((localRunningAppProcessInfo.importance == 100) || ((localRunningAppProcessInfo.importance == 200) && ((localRunningAppProcessInfo.importance != 200) || (localRunningAppProcessInfo.importanceReasonCode == 0))) || (a(str))) {
-          continue;
-        }
-        ((ArrayList)localObject4).add(Pair.create(str, Long.valueOf(DeviceInfoUtil.a(localRunningAppProcessInfo.pid))));
-        continue;
+        return false;
       }
-      finally
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-        this.jdField_a_of_type_AndroidContentContext = null;
-      }
-      long l1 = DeviceInfoUtil.f();
-      long l2 = DeviceInfoUtil.e();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.Memory.MemoryManager", 2, "check memory, availMemSize=" + l1 / 1048576L + "M, totalMemSize=" + l2 / 1048576L + "M");
-      }
-      l2 = l2 * MemoryConfigs.a().jdField_a_of_type_Int / 100L;
-      if (l1 >= l2)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-        this.jdField_a_of_type_AndroidContentContext = null;
-        return;
-      }
-      localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, NotificationActivity.class);
-      localIntent.putExtra("type", 10);
-      localIntent.setFlags(872415232);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      continue;
-      long l4;
-      label637:
-      SortUtils.a((ArrayList)localObject4);
-      Object localObject4 = (ActivityManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("activity");
-      Object localObject3 = localObject2.edit();
-      ((SharedPreferences.Editor)localObject3).putLong("lastClearTime", System.currentTimeMillis());
-      ((SharedPreferences.Editor)localObject3).commit();
-      localObject3 = StatisticCollector.a(BaseApplication.getContext());
-      localObject4 = new HashMap();
-      ((HashMap)localObject4).put("osVersion", Build.VERSION.RELEASE);
-      ((HashMap)localObject4).put("deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
-      ((HashMap)localObject4).put("remainMemSize", String.valueOf(l1));
-      ((HashMap)localObject4).put("totalMemSize", String.valueOf(l2));
-      ((HashMap)localObject4).put("warningMemSize", String.valueOf(l3));
-      ((HashMap)localObject4).put("time", String.valueOf(l4 / 60000L));
-      ((StatisticCollector)localObject3).a("", "MemoryClear", true, 0L, 0L, (HashMap)localObject4, "");
+      String str6 = "";
+      String str5 = "";
+      String str4 = "";
+      String str3 = "";
+      String str2 = "";
+      String str1 = "";
+      paramVarArgs = "";
+      int i = 1;
     }
+  }
+  
+  private boolean c(String... paramVarArgs)
+  {
+    if ((paramVarArgs == null) || (paramVarArgs.length < 1)) {
+      return false;
+    }
+    paramVarArgs = paramVarArgs[0];
+    try
+    {
+      Object localObject = new JSONObject(paramVarArgs);
+      paramVarArgs = ((JSONObject)localObject).optString("gc");
+      String str1 = ((JSONObject)localObject).optString("robotUin");
+      String str2 = ((JSONObject)localObject).optString("robotName");
+      boolean bool = ((JSONObject)localObject).optBoolean("isAdd");
+      localObject = ((JSONObject)localObject).optString("callback");
+      Bundle localBundle = new Bundle();
+      localBundle.putString("robotuin", str1);
+      localBundle.putString("troopuin", paramVarArgs);
+      localBundle.putString("robotname", str2);
+      localBundle.putBoolean("isadd", Boolean.valueOf(bool).booleanValue());
+      paramVarArgs = apml.a("ipc_cmd_robot_member_change_function", (String)localObject, this.mOnRemoteResp.key, localBundle);
+      aprh.a().a(paramVarArgs);
+      return true;
+    }
+    catch (JSONException paramVarArgs)
+    {
+      QLog.e("TroopRobotPlugin", 2, "handleJsRequest exception notifyRobotMmeberChange" + paramVarArgs.getMessage());
+    }
+    return false;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!"robotsummary".equals(paramString2)) {}
+    do
+    {
+      return false;
+      if ("sharecard".equals(paramString3)) {
+        return a(paramVarArgs);
+      }
+      if ("executecommand".equals(paramString3)) {
+        return b(paramVarArgs);
+      }
+    } while (!"memberchange".equals(paramString3));
+    return c(paramVarArgs);
+  }
+  
+  public void onResponse(Bundle paramBundle)
+  {
+    super.onResponse(paramBundle);
+    if (paramBundle == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopRobotPlugin", 2, "robot plugin onResponse is null");
+      }
+    }
+    Object localObject1;
+    int i;
+    Activity localActivity;
+    Object localObject2;
+    String str1;
+    String str2;
+    String str3;
+    String str4;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (paramBundle.getInt("respkey") == this.mOnRemoteResp.key) {
+              break;
+            }
+          } while (!QLog.isColorLevel());
+          QLog.d("TroopRobotPlugin", 2, "robot plugin onResponse key not match");
+          return;
+          localObject1 = paramBundle.getString("cmd");
+          if (!"ipc_cmd_share_robot_card".equals(localObject1)) {
+            break;
+          }
+          i = paramBundle.getBundle("response").getInt("result");
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopRobotPlugin", 2, "robot plugin is robot:" + i);
+          }
+        } while (i != 1);
+        localObject1 = this.mRuntime.a();
+        paramBundle = paramBundle.getBundle("request");
+        bclg.a(null, (Activity)localObject1, null, paramBundle.getString("robotuin"), paramBundle.getString("robotname"), 21);
+        return;
+      } while (!"ipc_cmd_invoke_robot_function".equals(localObject1));
+      localObject1 = paramBundle.getBundle("response").getString("result");
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopRobotPlugin", 2, "strResult:" + (String)localObject1);
+      }
+      localActivity = this.mRuntime.a();
+      localObject2 = paramBundle.getBundle("request");
+      i = ((Bundle)localObject2).getInt("isrobotbuddy");
+      paramBundle = ((Bundle)localObject2).getString("onurl");
+      str1 = ((Bundle)localObject2).getString("ontitle");
+      str2 = ((Bundle)localObject2).getString("offtitle");
+      str3 = ((Bundle)localObject2).getString("offurl");
+      str4 = ((Bundle)localObject2).getString("robotuin");
+      String str5 = ((Bundle)localObject2).getString("troopuin");
+      localObject2 = ((Bundle)localObject2).getString("robotname");
+      if (i == 1)
+      {
+        bclg.a(localActivity, str5, (String)localObject1, str4, (String)localObject2, paramBundle, str1, str3, str2, i);
+        return;
+      }
+    } while (i != 0);
+    bclg.a(localActivity, (String)localObject1, null, str4, (String)localObject2, paramBundle, str1, str3, str2, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zgi
  * JD-Core Version:    0.7.0.1
  */

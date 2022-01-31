@@ -12,15 +12,9 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.text.ClipboardManager;
 import android.util.DisplayMetrics;
-import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.view.View.OnLayoutChangeListener;
-import android.view.View.OnLongClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewParent;
-import android.view.inputmethod.BaseInputConnection;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
@@ -45,27 +39,27 @@ public class ArkViewImplement
   static final Paint sPaintPath = new Paint(1);
   public boolean mAlignLeft = false;
   protected View mArkView;
-  protected ArkViewModel mArkViewModel;
+  private ArkViewModel mArkViewModel;
   public int mBorderType = 1;
   public float mClipRadius = 6.0F;
   public float mClipRadiusTop = 6.0F;
   protected int mHolderHeight = 0;
   protected int mHolderWidth = 0;
   protected InputMethodManager mImm = null;
-  protected InputCallback mInputCallback = null;
+  protected ArkViewImplement.InputCallback mInputCallback = null;
   protected boolean mInputFocus = false;
   protected boolean mInputReadOnly = false;
   protected Rect mInputRect = new Rect();
   protected int mInputType = 0;
   protected boolean mIpnutNeedHide = false;
-  LoadCallback mLoadCallback = null;
+  ArkViewImplement.LoadCallback mLoadCallback = null;
   protected int mLoadState = 0;
   private boolean mLongClickTriggered = false;
   public boolean mOpaque = false;
   public Rect mRectView = new Rect();
   public boolean mRound = false;
   public float mScale = 1.0F;
-  protected ArkViewInterface mViewInterface;
+  protected ArkViewImplement.ArkViewInterface mViewInterface;
   
   static
   {
@@ -76,39 +70,12 @@ public class ArkViewImplement
     sPaintPath.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
   }
   
-  ArkViewImplement(View paramView, ArkViewInterface paramArkViewInterface)
+  ArkViewImplement(View paramView, ArkViewImplement.ArkViewInterface paramArkViewInterface)
   {
     this.mArkView = paramView;
     this.mViewInterface = paramArkViewInterface;
-    this.mArkView.setOnFocusChangeListener(new View.OnFocusChangeListener()
-    {
-      public void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
-      {
-        if ((ArkViewImplement.this.mArkView == paramAnonymousView) && (ArkViewImplement.this.mImm != null) && (!paramAnonymousBoolean)) {}
-      }
-    });
-    this.mArkView.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
-    {
-      public void onLayoutChange(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
-      {
-        if ((paramAnonymousView != ArkViewImplement.this.mArkView) || ((paramAnonymousInt1 == paramAnonymousInt5) && (paramAnonymousInt3 == paramAnonymousInt7) && (paramAnonymousInt2 == paramAnonymousInt6) && (paramAnonymousInt4 == paramAnonymousInt8))) {
-          return;
-        }
-        if (ArkViewImplement.this.mInputCallback != null)
-        {
-          ArkViewImplement.this.mInputCallback.onHideMenu(ArkViewImplement.this.mArkView);
-          ArkViewImplement.this.mInputCallback.onSelectChanged(0, 0, 0, 0);
-        }
-        ArkViewImplement.this.mIpnutNeedHide = true;
-        ArkDispatchTask.getInstance().postToMainThreadDelayed(new Runnable()
-        {
-          public void run()
-          {
-            ArkViewImplement.this.mIpnutNeedHide = false;
-          }
-        }, 800L);
-      }
-    });
+    this.mArkView.setOnFocusChangeListener(new ArkViewImplement.1(this));
+    this.mArkView.addOnLayoutChangeListener(new ArkViewImplement.2(this));
   }
   
   private static int dp2px(float paramFloat, Resources paramResources)
@@ -116,15 +83,17 @@ public class ArkViewImplement
     return (int)(paramResources.getDisplayMetrics().density * paramFloat + 0.5F);
   }
   
+  public void checkSurfaceAvailable()
+  {
+    this.mViewInterface.checkSurfaceAvailable();
+  }
+  
   protected void deleteInputText()
   {
-    ArkDispatchTask.getInstance().post(new Runnable()
-    {
-      public void run()
-      {
-        ArkViewImplement.this.mArkViewModel.InputDeleteBackward();
-      }
-    });
+    if (this.mArkViewModel == null) {
+      return;
+    }
+    this.mArkViewModel.SafeAsyncRun(new ArkViewImplement.6(this));
   }
   
   void destroyBitmapBuffer()
@@ -136,13 +105,15 @@ public class ArkViewImplement
   
   void doDetach(ArkViewModelBase paramArkViewModelBase)
   {
+    ENV.logI("ArkApp.ArkViewImplement", String.format("doDetach.this.%h.model.%h", new Object[] { this, paramArkViewModelBase }));
+    this.mViewInterface.releaseViewContext();
     if (paramArkViewModelBase == this.mArkViewModel) {
       this.mArkViewModel = null;
     }
     resetInputState();
   }
   
-  public void doInputCommand(final int paramInt)
+  public void doInputCommand(int paramInt)
   {
     if (paramInt == 3)
     {
@@ -151,45 +122,10 @@ public class ArkViewImplement
     }
     for (Object localObject = ((ClipboardManager)localObject).getText().toString();; localObject = "")
     {
-      ArkDispatchTask.getInstance().post(new Runnable()
-      {
-        public void run()
-        {
-          switch (paramInt)
-          {
-          default: 
-            return;
-          case 1: 
-            ArkViewImplement.this.mArkViewModel.InputSelect();
-            return;
-          case 2: 
-            ArkViewImplement.this.mArkViewModel.InputSelectAll();
-            return;
-          case 3: 
-            ArkViewImplement.this.mArkViewModel.InputInsertText(this.val$arkPasteData);
-            return;
-          case 4: 
-            str = ArkViewImplement.this.mArkViewModel.InputGetSelectText();
-            ArkDispatchTask.getInstance().postToMainThread(new Runnable()
-            {
-              public void run()
-              {
-                ((ClipboardManager)ArkViewImplement.this.mArkView.getContext().getSystemService("clipboard")).setText(str);
-              }
-            });
-            return;
-          }
-          final String str = ArkViewImplement.this.mArkViewModel.InputGetSelectText();
-          ArkDispatchTask.getInstance().postToMainThread(new Runnable()
-          {
-            public void run()
-            {
-              ((ClipboardManager)ArkViewImplement.this.mArkView.getContext().getSystemService("clipboard")).setText(str);
-            }
-          });
-          ArkViewImplement.this.mArkViewModel.InputDeleteBackward();
-        }
-      });
+      if (this.mArkViewModel == null) {
+        return;
+      }
+      this.mArkViewModel.SafeAsyncRun(new ArkViewImplement.7(this, paramInt, (String)localObject));
       return;
     }
   }
@@ -229,6 +165,16 @@ public class ArkViewImplement
     return this.mArkViewModel.onTouch(paramView, paramMotionEvent);
   }
   
+  boolean doOnViewEvent(String paramString1, String paramString2)
+  {
+    if (this.mArkViewModel == null)
+    {
+      ENV.logE("ArkApp.ArkViewImplement", "doOnViewEvent mArkViewModel is null");
+      return false;
+    }
+    return this.mArkViewModel.onViewEvent(paramString1, paramString2);
+  }
+  
   Bitmap getBitmapBuffer()
   {
     if (this.mViewInterface == null) {
@@ -247,7 +193,7 @@ public class ArkViewImplement
   
   public View getView()
   {
-    return this.mArkView;
+    return this.mViewInterface.getView();
   }
   
   public ArkViewModel getViewModel()
@@ -257,7 +203,14 @@ public class ArkViewImplement
   
   void initArkView(ArkViewModel paramArkViewModel)
   {
-    if (paramArkViewModel == null) {}
+    initArkView(paramArkViewModel, true);
+  }
+  
+  void initArkView(ArkViewModel paramArkViewModel, boolean paramBoolean)
+  {
+    if (paramArkViewModel == null) {
+      ENV.logE("ArkApp.ArkViewImplement", String.format("initArkView,viewModel this=%h", new Object[] { this }));
+    }
     do
     {
       return;
@@ -269,12 +222,14 @@ public class ArkViewImplement
         paramArkViewModel.activateView(true);
         paramArkViewModel.postInvalid();
         if (this.mLoadCallback != null) {
-          this.mLoadCallback.onLoadFinish(this.mLoadState);
+          this.mLoadCallback.onLoadState(this.mLoadState);
         }
         ENV.logI("ArkApp.ArkViewImplement", String.format("initArkView.1.same wrapper: %s, wrapper: %h view: %h", new Object[] { this.mRectView.toString(), paramArkViewModel, this }));
         return;
       }
-      this.mArkView.setVisibility(4);
+      if ((paramBoolean) && (this.mArkView.getVisibility() != 8)) {
+        this.mArkView.setVisibility(4);
+      }
       if (this.mArkViewModel != null) {
         this.mArkViewModel.detachView();
       }
@@ -425,7 +380,7 @@ public class ArkViewImplement
     for (;;)
     {
       paramEditorInfo.imeOptions = 1;
-      return new ArkInputConnection(this.mArkView, this, true);
+      return new ArkViewImplement.ArkInputConnection(this, this.mArkView, this, true);
       if (this.mInputType == 1) {
         paramEditorInfo.inputType = 128;
       } else if (this.mInputType == 2) {
@@ -450,6 +405,11 @@ public class ArkViewImplement
     }
   }
   
+  public void onFirstPaint()
+  {
+    this.mViewInterface.onFirstPaint();
+  }
+  
   void onInputFocusChanged(boolean paramBoolean1, boolean paramBoolean2, int paramInt, Rect paramRect)
   {
     this.mInputFocus = paramBoolean1;
@@ -471,7 +431,7 @@ public class ArkViewImplement
     for (;;)
     {
       if (this.mInputCallback != null) {
-        this.mInputCallback.onFocusChanged(paramBoolean1);
+        this.mInputCallback.onFocusChanged(this.mArkView, paramBoolean1);
       }
       return;
       this.mImm.hideSoftInputFromWindow(this.mArkView.getWindowToken(), 0);
@@ -503,7 +463,7 @@ public class ArkViewImplement
     if ((this.mInputCallback == null) || (this.mIpnutNeedHide)) {
       return;
     }
-    this.mInputCallback.onSelectChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.mInputCallback.onSelectChanged(this.mArkView, paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   boolean onInvalidate(Rect paramRect)
@@ -519,21 +479,26 @@ public class ArkViewImplement
   
   public void onLoadFailed(String paramString, int paramInt, boolean paramBoolean)
   {
+    ENV.logI("ArkApp.ArkViewImplement", String.format("onLoadFailed, this=%h,mLoadCallback=%h", new Object[] { this, this.mLoadCallback }));
     this.mViewInterface.onLoadFailed(paramString, paramInt, paramBoolean);
     this.mLoadState = -1;
     if (this.mLoadCallback != null) {
-      this.mLoadCallback.onLoadFinish(this.mLoadState);
+      this.mLoadCallback.onLoadFailed(this.mLoadState, paramInt, paramString, paramBoolean);
     }
   }
   
   public void onLoadSuccess()
   {
     this.mViewInterface.onLoadSuccess();
-    this.mArkView.setVisibility(0);
+    ENV.logI("ArkApp.ArkViewImplement", String.format("onLoadSuccess, this=%h,mLoadCallback=%h", new Object[] { this, this.mLoadCallback }));
+    if (this.mArkView.getVisibility() != 0) {
+      this.mArkView.setVisibility(0);
+    }
+    this.mViewInterface.checkSurfaceAvailable();
     this.mArkView.requestLayout();
     this.mLoadState = 1;
     if (this.mLoadCallback != null) {
-      this.mLoadCallback.onLoadFinish(this.mLoadState);
+      this.mLoadCallback.onLoadState(this.mLoadState);
     }
   }
   
@@ -542,7 +507,7 @@ public class ArkViewImplement
     this.mViewInterface.onLoading();
     this.mLoadState = 0;
     if (this.mLoadCallback != null) {
-      this.mLoadCallback.onLoadFinish(this.mLoadState);
+      this.mLoadCallback.onLoadState(this.mLoadState);
     }
   }
   
@@ -559,7 +524,9 @@ public class ArkViewImplement
   
   void onSyncRect(Rect paramRect)
   {
-    if (this.mArkViewModel == null) {
+    if (this.mArkViewModel == null)
+    {
+      ENV.logE("ArkApp.ArkViewImplement", String.format("onSyncRect.return.mArkViewModel: null uiview: %h", new Object[] { this }));
       return;
     }
     paramRect = this.mArkViewModel.scaleRect(paramRect);
@@ -616,185 +583,71 @@ public class ArkViewImplement
     if (this.mInputCallback != null)
     {
       this.mInputCallback.onHideMenu(this.mArkView);
-      this.mInputCallback.onSelectChanged(0, 0, 0, 0);
+      this.mInputCallback.onSelectChanged(this.mArkView, 0, 0, 0, 0);
     }
   }
   
-  public void setInputSetCaretHolderSize(final int paramInt1, final int paramInt2)
+  public void setFixSize(int paramInt1, int paramInt2)
+  {
+    if (this.mArkViewModel != null) {
+      this.mArkViewModel.setFixSize(paramInt1, paramInt2);
+    }
+  }
+  
+  public void setInputSetCaretHolderSize(int paramInt1, int paramInt2)
   {
     if (this.mArkViewModel == null) {
       return;
     }
-    ArkDispatchTask.getInstance().post(new Runnable()
-    {
-      public void run()
-      {
-        ArkViewImplement.this.mArkViewModel.InputSetCaretHolderSize(paramInt1, paramInt2);
-      }
-    });
+    this.mArkViewModel.SafeAsyncRun(new ArkViewImplement.4(this, paramInt1, paramInt2));
   }
   
-  public void setInputSetSelectHolderSize(final int paramInt1, final int paramInt2)
+  public void setInputSetSelectHolderSize(int paramInt1, int paramInt2)
   {
     this.mHolderWidth = paramInt1;
     this.mHolderHeight = paramInt2;
     if (this.mArkViewModel == null) {
       return;
     }
-    ArkDispatchTask.getInstance().post(new Runnable()
-    {
-      public void run()
-      {
-        ArkViewImplement.this.mArkViewModel.InputSetSelectHolderSize(paramInt1, paramInt2);
-      }
-    });
+    this.mArkViewModel.SafeAsyncRun(new ArkViewImplement.3(this, paramInt1, paramInt2));
   }
   
-  protected void setInputText(final CharSequence paramCharSequence)
+  protected void setInputText(CharSequence paramCharSequence)
   {
+    if (this.mArkViewModel == null) {
+      return;
+    }
     paramCharSequence = paramCharSequence.toString();
-    ArkDispatchTask.getInstance().post(new Runnable()
-    {
-      public void run()
-      {
-        ArkViewImplement.this.mArkViewModel.InputInsertText(paramCharSequence);
-      }
-    });
+    this.mArkViewModel.SafeAsyncRun(new ArkViewImplement.5(this, paramCharSequence));
   }
   
-  class ArkInputConnection
-    extends BaseInputConnection
+  public void setMaxSize(int paramInt1, int paramInt2)
   {
-    ArkViewImplement mHolder;
-    
-    public ArkInputConnection(View paramView, ArkViewImplement paramArkViewImplement, boolean paramBoolean)
-    {
-      super(paramBoolean);
-      this.mHolder = paramArkViewImplement;
-    }
-    
-    public boolean commitText(CharSequence paramCharSequence, int paramInt)
-    {
-      this.mHolder.setInputText(paramCharSequence);
-      return true;
-    }
-    
-    public boolean deleteSurroundingText(int paramInt1, int paramInt2)
-    {
-      int i = paramInt1;
-      if (paramInt2 == 0) {
-        for (;;)
-        {
-          int j = paramInt1 - 1;
-          i = j;
-          if (paramInt1 <= 0) {
-            break;
-          }
-          this.mHolder.deleteInputText();
-          paramInt1 = j;
-        }
-      }
-      return super.deleteSurroundingText(i, paramInt2);
-    }
-    
-    public boolean sendKeyEvent(KeyEvent paramKeyEvent)
-    {
-      int i;
-      if (paramKeyEvent.getAction() == 0)
-      {
-        i = paramKeyEvent.getKeyCode();
-        if (i != 67) {
-          break label31;
-        }
-        this.mHolder.deleteInputText();
-      }
-      for (;;)
-      {
-        return super.sendKeyEvent(paramKeyEvent);
-        label31:
-        if (i == 66)
-        {
-          this.mHolder.setInputText("\n");
-        }
-        else if (((i >= 7) && (i <= 18)) || ((i >= 55) && (i <= 56)))
-        {
-          char c = (char)paramKeyEvent.getUnicodeChar();
-          this.mHolder.setInputText(Character.toString(c));
-        }
-      }
+    if (this.mArkViewModel != null) {
+      this.mArkViewModel.setMaxSize(paramInt1, paramInt2);
     }
   }
   
-  public static abstract interface ArkViewInterface
+  public void setMinSize(int paramInt1, int paramInt2)
   {
-    public abstract void destroyBitmapBuffer();
-    
-    public abstract void doDetach(ArkViewModel paramArkViewModel);
-    
-    public abstract void doInputCommand(int paramInt);
-    
-    public abstract Bitmap getBitmapBuffer();
-    
-    public abstract Rect getInputRect();
-    
-    public abstract void initArkView(ArkViewModel paramArkViewModel);
-    
-    public abstract boolean onInvalidate(Rect paramRect);
-    
-    public abstract void onLoadFailed(String paramString, int paramInt, boolean paramBoolean);
-    
-    public abstract void onLoadSuccess();
-    
-    public abstract void onLoading();
-    
-    public abstract boolean onLongClick(View paramView);
-    
-    public abstract boolean onTouch(View paramView, MotionEvent paramMotionEvent);
-    
-    public abstract Bitmap recreateBitmapBuffer(Rect paramRect);
-    
-    public abstract void setAlignLeft(boolean paramBoolean);
-    
-    public abstract void setBorderType(int paramInt);
-    
-    public abstract void setClipRadius(float paramFloat);
-    
-    public abstract void setClipRadiusTop(float paramFloat);
-    
-    public abstract void setContentDescription(CharSequence paramCharSequence);
-    
-    public abstract void setInputCallback(ArkViewImplement.InputCallback paramInputCallback);
-    
-    public abstract void setInputSetCaretHolderSize(int paramInt1, int paramInt2);
-    
-    public abstract void setInputSetSelectHolderSize(int paramInt1, int paramInt2);
-    
-    public abstract void setLoadCallback(ArkViewImplement.LoadCallback paramLoadCallback);
-    
-    public abstract void setOnLongClickListener(View.OnLongClickListener paramOnLongClickListener);
-    
-    public abstract void setOnTouchListener(View.OnTouchListener paramOnTouchListener);
+    if (this.mArkViewModel != null) {
+      this.mArkViewModel.setMinSize(paramInt1, paramInt2);
+    }
   }
   
-  public static abstract interface InputCallback
+  public void setViewRect(int paramInt1, int paramInt2)
   {
-    public abstract void onFocusChanged(boolean paramBoolean);
-    
-    public abstract void onHideMenu(View paramView);
-    
-    public abstract void onSelectChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-    
-    public abstract void onShowMenu(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  }
-  
-  public static abstract interface LoadCallback
-  {
-    public abstract void onLoadFinish(int paramInt);
+    if (this.mArkViewModel != null)
+    {
+      float f = this.mArkViewModel.getScale();
+      Rect localRect = new Rect(0, 0, (int)(paramInt1 / f), (int)(paramInt2 / f));
+      this.mArkViewModel.setViewRect(localRect);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.ark.ArkViewImplement
  * JD-Core Version:    0.7.0.1
  */

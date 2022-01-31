@@ -1,28 +1,51 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.GetCurrentPositionCallback;
+import android.os.Bundle;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialAd.IPCHandlerForClose.1;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialFragment;
+import java.lang.ref.WeakReference;
 
-class aaop
-  implements ArkAppEventObserverManager.GetCurrentPositionCallback
+public final class aaop
+  implements aaqv
 {
-  aaop(aanw paramaanw, long paramLong) {}
-  
-  public void a(long paramLong)
+  public aaqx a(aaqw paramaaqw)
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aanw.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
+    String str2 = null;
+    aaqx localaaqx = new aaqx();
+    if (paramaaqw == null) {
+      if (paramaaqw == null) {
+        break label179;
+      }
     }
-  }
-  
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    ArkAppDeviceModule.a(this.jdField_a_of_type_Aanw.a, this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+    label179:
+    for (String str1 = paramaaqw.a();; str1 = null)
+    {
+      if (paramaaqw != null) {
+        str2 = paramaaqw.b();
+      }
+      aase.b("GdtInterstitialAd", String.format("IPCHandlerForClose.handle action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(localaaqx.a) }));
+      return localaaqx;
+      if ((!paramaaqw.a()) || (paramaaqw.a == null)) {
+        break;
+      }
+      str1 = paramaaqw.a.getString("TRACE_ID");
+      if (paramaaqw.a == null) {
+        break;
+      }
+      WeakReference localWeakReference = aaoq.a().a(str1);
+      if ((localWeakReference == null) || (localWeakReference.get() == null)) {
+        break;
+      }
+      aaor.c(BaseApplicationImpl.getContext(), ((GdtInterstitialFragment)localWeakReference.get()).a(), ((GdtInterstitialFragment)localWeakReference.get()).a());
+      localaaqx.a = true;
+      AdThreadManager.INSTANCE.postDelayed(new GdtInterstitialAd.IPCHandlerForClose.1(this, str1), 0, 2000L);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaop
  * JD-Core Version:    0.7.0.1
  */

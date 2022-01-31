@@ -1,37 +1,28 @@
-import android.os.Handler;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import dov.com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.remind.widget.WheelView;
+import com.tencent.widget.VerticalGallery;
 
 public class aoij
-  implements INetInfoHandler
+  implements bicf
 {
-  public aoij(LbsFilterStatusManager paramLbsFilterStatusManager) {}
+  private int jdField_a_of_type_Int;
   
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString)
+  public aoij(IphonePickerView paramIphonePickerView, int paramInt)
   {
-    long l = Thread.currentThread().getId();
-    if (LbsFilterStatusManager.a(this.a) == l) {
-      LbsFilterStatusManager.a(this.a);
-    }
-    while (LbsFilterStatusManager.a(this.a) == null) {
-      return;
-    }
-    LbsFilterStatusManager.a(this.a).post(new aoik(this));
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None() {}
+  public void a(VerticalGallery paramVerticalGallery)
+  {
+    int i = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView)[this.jdField_a_of_type_Int].getSelectedItemPosition();
+    if (IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView) != null) {
+      IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.jdField_a_of_type_Int, i);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoij
  * JD-Core Version:    0.7.0.1
  */

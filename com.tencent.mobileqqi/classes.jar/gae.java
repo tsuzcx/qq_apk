@@ -1,35 +1,26 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.DialogUtil;
+import java.util.Timer;
 
-public class gae
-  extends fzn
+class gae
+  implements View.OnClickListener
 {
-  public gae(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  gae(gad paramgad, Dialog paramDialog) {}
   
-  protected String a()
+  public void onClick(View paramView)
   {
-    return "StateRefuseByPCWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.a == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "]. recvOnLineFile entity is null");
-      return;
-    }
-    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 6);
-    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 6);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "] state change :(" + this.jdField_a_of_type_Fzn.a() + "->StateRefuseByPC)");
-    this.jdField_a_of_type_Fzn = new gad(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+    paramView = DialogUtil.a(this.jdField_a_of_type_Gad.a, 2131562645);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    paramView.show();
+    new Timer().schedule(new gaf(this, paramView), 100L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gae
  * JD-Core Version:    0.7.0.1
  */

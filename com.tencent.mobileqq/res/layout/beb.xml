@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:orientation="vertical" android:id="@id/h2w" android:layout_width="108.0dip" android:layout_height="126.0dip" android:layout_centerInParent="true">
+        <com.tencent.mobileqq.vas.avatar.AvatarLayout android:id="@id/dk3" android:layout_width="90.0dip" android:layout_height="90.0dip" android:layout_marginLeft="9.0dip" android:layout_marginTop="28.0dip">
+            <com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView android:id="@id/a6e" android:layout_width="90.0dip" android:layout_height="90.0dip" android:src="@drawable/com" android:scaleType="fitCenter" />
+        </com.tencent.mobileqq.vas.avatar.AvatarLayout>
+        <ImageView android:id="@id/dk7" android:background="@drawable/agi" android:layout_width="91.0dip" android:layout_height="91.0dip" android:layout_marginLeft="8.0dip" android:layout_marginTop="27.0dip" android:scaleType="fitCenter" />
+        <ImageView android:id="@id/dfv" android:layout_width="108.0dip" android:layout_height="126.0dip" android:scaleType="fitXY" />
+    </FrameLayout>
+</RelativeLayout>

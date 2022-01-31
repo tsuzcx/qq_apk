@@ -1,21 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.widget.XListView;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.troop.utils.RollangleImageView;
 
 public class gxi
-  extends Handler
+  extends AsyncTask
 {
-  public gxi(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
+  private RollangleImageView b;
   
-  public void handleMessage(Message paramMessage)
+  public gxi(RollangleImageView paramRollangleImageView) {}
+  
+  protected Bitmap a(Boolean... paramVarArgs)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    return RollangleImageView.a(this.a, paramVarArgs[0].booleanValue());
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    if (paramBitmap != null) {
+      this.a.setImageBitmap(paramBitmap);
     }
-    this.a.a.B();
   }
 }
 

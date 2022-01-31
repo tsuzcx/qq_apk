@@ -1,15 +1,17 @@
-import com.tencent.av.core.VcControllerImpl;
+import com.tencent.biz.common.util.LoadedBack;
+import com.tencent.qphone.base.util.QLog;
 
-public class bhj
+public final class bhj
+  implements LoadedBack
 {
-  public long a;
-  public byte[] a;
-  public long b;
-  public byte[] b;
-  public long c;
-  public long d;
+  public void a(int paramInt)
+  {
+    if ((paramInt == 0) && (QLog.isColorLevel())) {
+      QLog.i("HtmlCheckUpdate", 2, "CODE_SUCCESS");
+    }
+  }
   
-  public bhj(VcControllerImpl paramVcControllerImpl) {}
+  public void b(int paramInt) {}
 }
 
 

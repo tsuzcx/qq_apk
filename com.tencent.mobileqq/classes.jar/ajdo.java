@@ -1,102 +1,32 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic.TroopCreateCallback;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic.TroopCreateInfo;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic.TroopCreateResult;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment.SwapViews;
 
-public class ajdo
-  extends BizTroopObserver
+public final class ajdo
+  implements Animation.AnimationListener
 {
-  public ajdo(TroopCreateLogic paramTroopCreateLogic) {}
+  private final View jdField_a_of_type_AndroidViewView;
+  private final boolean jdField_a_of_type_Boolean;
+  private final View b;
   
-  protected void i(boolean paramBoolean, Object paramObject)
+  private ajdo(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment, boolean paramBoolean, View paramView1, View paramView2)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    for (Activity localActivity = null;; localActivity = (Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get())
-    {
-      this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback != null) {
-        break;
-      }
-      TroopCreateLogic.a(this.a);
-      return;
-    }
-    int i = -1;
-    if (paramObject == null)
-    {
-      TroopCreateLogic.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback.a(-1, "");
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback = null;
-      return;
-    }
-    if (!paramBoolean) {}
-    try
-    {
-      int j = ((TroopCreateLogic.TroopCreateResult)paramObject).jdField_a_of_type_Int;
-      i = j;
-    }
-    catch (Exception paramObject)
-    {
-      label127:
-      String str;
-      break label127;
-    }
-    TroopCreateLogic.a(this.a);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback.a(i, "");
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback = null;
-    return;
-    paramObject = (TroopInfo)paramObject;
-    str = paramObject.troopuin;
-    if (TextUtils.isEmpty(str))
-    {
-      TroopCreateLogic.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback.a(-1, "");
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback = null;
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.f = str;
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_create", "", "new_create", "number", 0, 0, str, Integer.toString(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.jdField_a_of_type_Int), "", "");
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.jdField_a_of_type_JavaUtilArrayList == null)
-    {
-      i = 1;
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_create_new", "", "suc_create", "person_create", 0, 0, str, "" + this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.d, "" + i, "");
-      ThreadManager.post(new ajdp(this, str, paramObject, i), 8, null, true);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.b)
-      {
-        paramObject = localActivity;
-        if (localActivity == null) {
-          paramObject = BaseApplicationImpl.getContext();
-        }
-        this.a.a(paramObject, str);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback.a(0, str);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
-        break label508;
-      }
-      ((TroopHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).b(str, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.jdField_a_of_type_JavaUtilArrayList, "");
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
-    }
-    for (;;)
-    {
-      TroopCreateLogic.a(this.a);
-      return;
-      i = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.jdField_a_of_type_JavaUtilArrayList.size();
-      break;
-      label508:
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback = null;
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidViewView = paramView1;
+    this.b = paramView2;
   }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).post(new DrawRedpacketPannelPreviewFragment.SwapViews(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidViewView, this.b));
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.wearable.view.ObservableScrollView android:id="@id/ab" android:scrollbars="none" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/ac" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:id="@id/ad" android:paddingLeft="@dimen/x" android:paddingTop="@dimen/z" android:paddingRight="@dimen/x" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/b1" />
+        <TextView android:id="@android:id/message" android:paddingLeft="@dimen/x" android:paddingRight="@dimen/x" android:paddingBottom="@dimen/w" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/b0" />
+        <LinearLayout android:orientation="vertical" android:id="@id/ae" android:background="@color/x" android:paddingLeft="@dimen/x" android:paddingRight="@dimen/x" android:paddingBottom="@dimen/t" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:id="@android:id/button1" style="@style/ay" />
+            <Button android:id="@android:id/button3" style="@style/ay" />
+            <Button android:id="@android:id/button2" style="@style/ay" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.wearable.view.ObservableScrollView>

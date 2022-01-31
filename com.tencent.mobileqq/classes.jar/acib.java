@@ -1,25 +1,25 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.extras.PullToRefreshRecyclerView;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
+import mqq.os.MqqHandler;
 
 public class acib
-  implements Runnable
+  implements apwj
 {
-  public acib(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
+  public acib(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (NetworkUtil.g(ExtendFriendGroupFragment.a(this.a)))
+    switch (paramInt)
     {
-      if (ExtendFriendGroupFragment.a(this.a) != null)
-      {
-        ExtendFriendGroupFragment.a(this.a).setRefreshing();
-        ExtendFriendGroupFragment.a(this.a).a(0, true);
-      }
+    case 2: 
+    default: 
+      return;
+    case 0: 
+      this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(67);
+      azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "slide", 0, 0, "", "", "", this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
       return;
     }
-    ExtendFriendGroupFragment.a(this.a, this.a.getString(2131437530), 1);
-    ExtendFriendGroupFragment.a(this.a).a(true);
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(67, 6000L);
   }
 }
 

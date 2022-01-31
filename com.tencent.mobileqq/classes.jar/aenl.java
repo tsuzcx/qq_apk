@@ -1,72 +1,71 @@
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import mqq.util.WeakReference;
 
 public class aenl
-  extends BaseAdapter
+  implements View.OnClickListener
 {
-  protected int a;
+  public aenl(BirthdayActivatePage paramBirthdayActivatePage) {}
   
-  public aenl(GameQuickWordsPanel paramGameQuickWordsPanel)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    Object localObject;
+    long[] arrayOfLong;
+    if ((BirthdayActivatePage.a(this.a) != null) && (BirthdayActivatePage.a(this.a).get() != null))
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.getContext()).inflate(2130968639, null);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, AIOUtils.a(46.0F, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.getResources())));
-      paramViewGroup = new aenm(this);
-      paramViewGroup.a = ((TextView)paramView.findViewById(2131362988));
-      paramView.setTag(paramViewGroup);
+      localObject = QzoneConfig.getInstance().getConfig("H5Url", "SendBirthdayGift", "https://h5.qzone.qq.com/giftv2/detail?_wv=131075&_fv=0&_wwv=128&uin={uin}&clicktime={clicktime}&friends={uin_uin}&_proxy=1");
+      arrayOfLong = this.a.a.a();
+      String[] arrayOfString = this.a.a.a();
+      if (arrayOfLong.length <= 0) {
+        break label358;
+      }
+      paramView = "";
+      int i = 0;
+      while (i < arrayOfLong.length)
+      {
+        paramView = paramView + arrayOfLong[i];
+        paramView = paramView + "_";
+        String str = paramView + arrayOfString[i];
+        int j = i + 1;
+        i = j;
+        paramView = str;
+        if (j < arrayOfLong.length)
+        {
+          paramView = str + "|";
+          i = j;
+        }
+      }
+      paramView = ((String)localObject).replace("{uin_uin}", Uri.encode(paramView)).replace("{clicktime}", String.valueOf(System.currentTimeMillis()));
+      localObject = new Intent(BaseApplication.getContext(), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", paramView);
+      ((Intent)localObject).putExtra("injectrecommend", true);
+      ((Intent)localObject).setData(Uri.parse(paramView));
+      ((ActivateFriendActivity)BirthdayActivatePage.a(this.a).get()).startActivityForResult((Intent)localObject, 1000);
+      azqs.b(((ActivateFriendActivity)BirthdayActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E08", "0X8004E08", 0, 0, String.valueOf(arrayOfLong.length), "", "", "");
     }
     for (;;)
     {
-      String str = (String)getItem(paramInt);
-      paramViewGroup.a.setText(str);
-      paramViewGroup.a.setTextColor(this.jdField_a_of_type_Int);
-      return paramView;
-      paramViewGroup = (aenm)paramView.getTag();
+      if (QLog.isColorLevel()) {
+        QLog.d("BirthdayActivatePage", 2, "friends length=" + arrayOfLong.length + " url = " + paramView);
+      }
+      return;
+      label358:
+      paramView = (View)localObject;
     }
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    HashMap localHashMap = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a();
-    if (localHashMap.containsKey("quickWordColor")) {
-      this.jdField_a_of_type_Int = ((Integer)localHashMap.get("quickWordColor")).intValue();
-    }
-    super.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aenl
  * JD-Core Version:    0.7.0.1
  */

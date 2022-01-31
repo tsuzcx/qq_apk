@@ -1,31 +1,24 @@
-import com.tencent.biz.qqstory.model.QQStoryActivityManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-
 public class nry
-  implements Runnable
 {
-  public nry(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void run()
+  public nry(nru paramnru, String paramString1, String paramString2, boolean paramBoolean)
   {
-    QQStoryActivityManager localQQStoryActivityManager = (QQStoryActivityManager)SuperManager.a(18);
-    ArrayList localArrayList = localQQStoryActivityManager.a(this.a);
-    int i = localArrayList.size();
-    if (i >= 4)
-    {
-      localQQStoryActivityManager.a(((Integer)localArrayList.get(0)).intValue() + 1, ((Integer)localArrayList.get(i - 1)).intValue());
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "QQStoryShareGroupProfileActivity activity stack full, size = " + i + ", start clear!");
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public String toString()
+  {
+    return "PublicAccountSearchRecommendItem->uin:" + this.jdField_a_of_type_JavaLangString + ", name:" + this.b + ", isPublicAccount:" + this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nry
  * JD-Core Version:    0.7.0.1
  */

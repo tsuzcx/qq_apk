@@ -1,33 +1,23 @@
 package com.tencent.token.ui;
 
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.global.d;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.ui.base.TitleOptionMenu;
 
-final class abr
-  extends Handler
+class abr
+  implements View.OnClickListener
 {
-  abr(StartPwdGestureIndexActivity paramStartPwdGestureIndexActivity) {}
+  abr(UtilsActivity paramUtilsActivity) {}
   
-  public final void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    switch (paramMessage.what)
+    if (UtilsActivity.access$300(this.a).getVisibility() == 0)
     {
-    default: 
+      UtilsActivity.access$300(this.a).b();
       return;
     }
-    if (paramMessage.arg1 == 0)
-    {
-      StartPwdGestureIndexActivity.access$000(this.a);
-      return;
-    }
-    this.a.dismissDialog();
-    paramMessage = (d)paramMessage.obj;
-    d.a(this.a.getResources(), paramMessage);
-    this.a.showUserDialog(2131362290, paramMessage.c, 2131361800, null);
+    UtilsActivity.access$300(this.a).setOnItemClickedListener(new abs(this));
+    UtilsActivity.access$300(this.a).a();
   }
 }
 

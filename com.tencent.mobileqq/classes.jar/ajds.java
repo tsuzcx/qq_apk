@@ -1,18 +1,8 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic;
+import android.graphics.Bitmap;
 
-public class ajds
-  implements Comparable
+public abstract interface ajds
 {
-  public String a;
-  public String b;
-  
-  public ajds(TroopCreateLogic paramTroopCreateLogic) {}
-  
-  public int a(@NonNull ajds paramajds)
-  {
-    return this.b.compareTo(paramajds.b);
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap);
 }
 
 

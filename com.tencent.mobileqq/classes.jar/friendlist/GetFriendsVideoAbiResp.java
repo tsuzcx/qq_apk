@@ -8,16 +8,16 @@ import java.util.ArrayList;
 public final class GetFriendsVideoAbiResp
   extends JceStruct
 {
-  static ArrayList cache_finfo;
+  static ArrayList<UserVideoAbi> cache_finfo;
   static int cache_result;
   public short errorCode;
-  public ArrayList finfo;
+  public ArrayList<UserVideoAbi> finfo;
   public int result;
   public long uin;
   
   public GetFriendsVideoAbiResp() {}
   
-  public GetFriendsVideoAbiResp(long paramLong, ArrayList paramArrayList, int paramInt, short paramShort)
+  public GetFriendsVideoAbiResp(long paramLong, ArrayList<UserVideoAbi> paramArrayList, int paramInt, short paramShort)
   {
     this.uin = paramLong;
     this.finfo = paramArrayList;
@@ -49,7 +49,7 @@ public final class GetFriendsVideoAbiResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     friendlist.GetFriendsVideoAbiResp
  * JD-Core Version:    0.7.0.1
  */

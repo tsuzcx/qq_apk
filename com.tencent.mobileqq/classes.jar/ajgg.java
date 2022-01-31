@@ -1,17 +1,23 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajgg
+class ajgg
   implements View.OnClickListener
 {
-  public ajgg(HomeworkGuideFragment paramHomeworkGuideFragment) {}
+  ajgg(ajgb paramajgb) {}
   
   public void onClick(View paramView)
   {
-    this.a.getActivity().setResult(1000);
-    this.a.getActivity().finish();
+    try
+    {
+      bdgm.a(ajgb.a(this.a), 0, null, alud.a(2131701299), 2131690648, 2131694953, new ajgh(this), new ajgi(this)).show();
+      return;
+    }
+    catch (Throwable paramView)
+    {
+      QLog.e("Q.recent.banner", 1, "show dialog err, errInfo->" + paramView.getMessage());
+    }
   }
 }
 

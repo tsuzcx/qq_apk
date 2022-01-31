@@ -1,28 +1,46 @@
-import com.tencent.image.URLImageView;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.QidianProfileCardActivity.PaGroupStruct;
-import com.tencent.qidian.QidianProfileCardActivity.QidianCompoundProfileItem;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
 
 public class allz
-  implements Runnable
 {
-  public allz(QidianProfileCardActivity paramQidianProfileCardActivity, QidianProfileCardActivity.QidianCompoundProfileItem paramQidianCompoundProfileItem, URLImageView paramURLImageView) {}
+  public float a;
+  public int a;
+  public ApolloActionData a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
   
-  public void run()
+  public Drawable a(Context paramContext, float paramFloat)
   {
-    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_Int == 1) {}
-    for (String str = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.d;; str = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_JavaLangString)
+    return banh.a(paramContext.getResources(), this.h);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo) {}
+  
+  public String toString()
+  {
+    if (this.a != null)
     {
-      this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a.put(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_JavaLangString, new QidianProfileCardActivity.PaGroupStruct(this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_Int, str));
-      this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentImageURLImageView, str, false);
-      return;
+      StringBuilder localStringBuilder = new StringBuilder("[");
+      localStringBuilder.append("id: ").append(this.a.actionId).append(", name: ").append(this.a.actionName).append(", peerUin: ").append(this.a.peerUin).append(", peopleNum: ").append(this.a.personNum).append(", feeType: ").append(this.a.feeType).append(", inputText: ").append(this.a.inputText).append(",actionText: ").append(this.b).append(",textType: ").append(this.d).append("]");
+      return localStringBuilder.toString();
     }
+    return "ApolloActionData is null";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     allz
  * JD-Core Version:    0.7.0.1
  */

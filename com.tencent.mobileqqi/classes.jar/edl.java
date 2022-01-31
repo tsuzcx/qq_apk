@@ -1,21 +1,24 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.EnterTroopChatItemBuilder;
-import java.util.List;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 
 public class edl
-  extends AbstractChatItemBuilder.ViewHolder
+  implements View.OnTouchListener
 {
-  public LinearLayout a;
-  public List a;
-  public TextView b;
+  public edl(SearchResultDialog paramSearchResultDialog, Context paramContext) {}
   
-  public edl(EnterTroopChatItemBuilder paramEnterTroopChatItemBuilder) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    ((InputMethodManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     edl
  * JD-Core Version:    0.7.0.1
  */

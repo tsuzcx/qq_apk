@@ -4,7 +4,6 @@ import android.content.Context;
 import com.tencent.stat.StatConfig;
 import com.tencent.stat.StatSpecifyReportedInfo;
 import com.tencent.stat.common.Util;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class e
@@ -28,7 +27,6 @@ public class e
   }
   
   public boolean a(JSONObject paramJSONObject)
-    throws JSONException
   {
     Util.jsonPut(paramJSONObject, "actky", StatConfig.getAppKey(this.n));
     return true;

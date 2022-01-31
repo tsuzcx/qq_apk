@@ -1,36 +1,23 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormError;
-import com.tencent.gdtad.views.canvas.components.form.textbox.GdtCanvasFormItemTextBoxData;
-import com.tencent.gdtad.views.canvas.components.form.textbox.GdtCanvasFormItemTextBoxView;
-import com.tencent.gdtad.views.canvas.framework.GdtCanvasTextData;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.SimpleChannelInfo;
 
-public class qly
-  implements View.OnFocusChangeListener
+public final class qly
+  implements Parcelable.Creator<SimpleChannelInfo>
 {
-  public qly(GdtCanvasFormItemTextBoxView paramGdtCanvasFormItemTextBoxView) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public SimpleChannelInfo a(Parcel paramParcel)
   {
-    if ((this.a.a() == null) || (!this.a.a().isValid()))
-    {
-      GdtLog.b("GdtCanvasFormItemTextBoxView", "onFocusChange error");
-      return;
-    }
-    if (paramBoolean)
-    {
-      paramView = new GdtCanvasFormError(2, -1, this.a.a().title.text);
-      paramView.b = GdtCanvasFormItemTextBoxView.a(this.a);
-      GdtCanvasFormItemTextBoxView.a(this.a, paramView);
-      return;
-    }
-    GdtCanvasFormItemTextBoxView.a(this.a);
+    return new SimpleChannelInfo(paramParcel);
+  }
+  
+  public SimpleChannelInfo[] a(int paramInt)
+  {
+    return new SimpleChannelInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qly
  * JD-Core Version:    0.7.0.1
  */

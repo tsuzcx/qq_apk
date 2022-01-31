@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="95.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <com.tencent.biz.widgets.KandianTextView android:textSize="17.0dip" android:textColor="#ff000000" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/kbs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="12.0dip" android:text="啊哈哈哈哈哈哈哈哈哈哈哈哈哈asshskhdkasdkjhaksdhskhdksdksjhd哈" android:maxLines="2" android:includeFontPadding="false" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="17.0dip">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/dtu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:src="@drawable/dme" />
+            <com.tencent.biz.widgets.KandianTextView android:textSize="12.0dip" android:textColor="#ff9d9d9d" android:id="@id/k71" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+            <com.tencent.biz.widgets.KandianTextView android:textSize="12.0dip" android:textColor="#ff9d9d9d" android:id="@id/k51" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxLines="1" />
+        </LinearLayout>
+        <LinearLayout android:gravity="bottom" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <View android:id="@id/e_1" android:background="#ffe6e6e6" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        </LinearLayout>
+    </LinearLayout>
+    <FrameLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <com.tencent.image.URLImageView android:id="@id/drs" android:layout_width="124.0dip" android:layout_height="fill_parent" android:layout_marginTop="1.5dip" android:layout_marginBottom="1.5dip" android:scaleType="centerCrop" />
+        <LinearLayout android:layout_gravity="bottom|center|right" android:orientation="horizontal" android:background="@drawable/a1o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:layout_marginBottom="4.0dip">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/dyt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dt2" />
+            <com.tencent.biz.widgets.KandianTextView android:textSize="11.0sp" android:textColor="#ffffffff" android:layout_gravity="center_vertical" android:id="@id/kc_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="02:20" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

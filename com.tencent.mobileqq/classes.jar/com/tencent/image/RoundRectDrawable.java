@@ -2,26 +2,20 @@ package com.tencent.image;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
-import android.graphics.Matrix;
-import android.graphics.Matrix.ScaleToFit;
 import android.graphics.Paint;
-import android.graphics.Paint.Style;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.Shader.TileMode;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
-import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 
 public class RoundRectDrawable
   extends Drawable
 {
   public static final String TAG = "RoundRectDrawable";
-  private RoundRectDrawableState mBitmapState;
+  private RoundRectDrawable.RoundRectDrawableState mBitmapState;
   private float mBorderWidth;
   final RectF mBounds = new RectF();
   private float mCornerRadius;
@@ -32,7 +26,7 @@ public class RoundRectDrawable
   
   public RoundRectDrawable(Resources paramResources, RoundRectBitmap paramRoundRectBitmap)
   {
-    this.mBitmapState = new RoundRectDrawableState(paramRoundRectBitmap);
+    this.mBitmapState = new RoundRectDrawable.RoundRectDrawableState(paramRoundRectBitmap);
     if (paramResources != null)
     {
       this.mTargetDensity = paramResources.getDisplayMetrics().densityDpi;
@@ -41,7 +35,7 @@ public class RoundRectDrawable
     computeBitmapSize();
   }
   
-  private RoundRectDrawable(RoundRectDrawableState paramRoundRectDrawableState, Resources paramResources)
+  private RoundRectDrawable(RoundRectDrawable.RoundRectDrawableState paramRoundRectDrawableState, Resources paramResources)
   {
     this.mBitmapState = paramRoundRectDrawableState;
     if (paramResources != null) {}
@@ -66,31 +60,21 @@ public class RoundRectDrawable
     RectF localRectF2 = this.mBitmapState.mBorderRect;
     Paint localPaint1 = this.mBitmapState.mBorderPaint;
     Paint localPaint2 = this.mBitmapState.mBitmapPaint;
-    float f2;
-    float f1;
-    int i;
-    if (this.reBuildCornerRadius)
+    float f2 = 1.0F;
+    float f4 = localRectF1.width();
+    float f3 = localRectF1.height();
+    int i = paramCanvas.getWidth();
+    int j = paramCanvas.getHeight();
+    float f1 = f2;
+    if (i != this.mBitmapState.mRoundRectBitmap.mDisplayWidth)
     {
-      f2 = 1.0F;
       f1 = f2;
-      if (Build.VERSION.SDK_INT >= 11)
+      if (j != this.mBitmapState.mRoundRectBitmap.mDisplayHeight)
       {
-        float f4 = localRectF1.width();
-        float f3 = localRectF1.height();
-        i = paramCanvas.getWidth();
-        int j = paramCanvas.getHeight();
-        f1 = f2;
-        if (i != this.mBitmapState.mRoundRectBitmap.mDisplayWidth)
-        {
-          f1 = f2;
-          if (j != this.mBitmapState.mRoundRectBitmap.mDisplayHeight)
-          {
-            f1 = i / f4;
-            f2 = j / f3;
-            if (f1 >= f2) {
-              break label223;
-            }
-          }
+        f1 = i / f4;
+        f2 = j / f3;
+        if (f1 >= f2) {
+          break label201;
         }
       }
     }
@@ -98,9 +82,8 @@ public class RoundRectDrawable
     {
       i = this.mBitmapState.mRoundRectBitmap.mBitmap.getDensity();
       this.mCornerRadius = ((this.mBitmapState.mRoundRectBitmap.mCornerRadius * this.mTargetDensity + (i >> 1)) / i / f1);
-      this.reBuildCornerRadius = false;
       if (!this.mBitmapState.mOval) {
-        break label237;
+        break label215;
       }
       if (this.mBorderWidth <= 0.0F) {
         break;
@@ -108,12 +91,12 @@ public class RoundRectDrawable
       paramCanvas.drawOval(localRectF1, localPaint2);
       paramCanvas.drawOval(localRectF2, localPaint1);
       return;
-      label223:
+      label201:
       f1 = f2;
     }
     paramCanvas.drawOval(localRectF1, localPaint2);
     return;
-    label237:
+    label215:
     if (this.mBorderWidth > 0.0F)
     {
       paramCanvas.drawRoundRect(localRectF1, Math.max(this.mCornerRadius, 0.0F), Math.max(this.mCornerRadius, 0.0F), localPaint2);
@@ -151,7 +134,7 @@ public class RoundRectDrawable
   
   public Drawable mutate()
   {
-    this.mBitmapState = new RoundRectDrawableState(this.mBitmapState.mRoundRectBitmap);
+    this.mBitmapState = new RoundRectDrawable.RoundRectDrawableState(this.mBitmapState.mRoundRectBitmap);
     return this;
   }
   
@@ -205,69 +188,6 @@ public class RoundRectDrawable
       this.mTargetDensity = i;
       computeBitmapSize();
       invalidateSelf();
-    }
-  }
-  
-  static final class RoundRectDrawableState
-    extends Drawable.ConstantState
-  {
-    final int mBitmapHeight;
-    final Paint mBitmapPaint;
-    final RectF mBitmapRect = new RectF();
-    final BitmapShader mBitmapShader;
-    final int mBitmapWidth;
-    final Paint mBorderPaint;
-    final RectF mBorderRect = new RectF();
-    int mChangingConfigurations;
-    final RectF mDrawableRect = new RectF();
-    boolean mOval = false;
-    final RoundRectBitmap mRoundRectBitmap;
-    final Matrix mShaderMatrix = new Matrix();
-    int mTargetDensity = 160;
-    
-    RoundRectDrawableState(RoundRectBitmap paramRoundRectBitmap)
-    {
-      this.mRoundRectBitmap = paramRoundRectBitmap;
-      this.mBitmapWidth = this.mRoundRectBitmap.mBitmap.getWidth();
-      this.mBitmapHeight = this.mRoundRectBitmap.mBitmap.getHeight();
-      this.mBitmapRect.set(0.0F, 0.0F, this.mBitmapWidth, this.mBitmapHeight);
-      this.mBitmapShader = new BitmapShader(this.mRoundRectBitmap.mBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-      this.mBitmapShader.setLocalMatrix(this.mShaderMatrix);
-      this.mBitmapPaint = new Paint();
-      this.mBitmapPaint.setStyle(Paint.Style.FILL);
-      this.mBitmapPaint.setAntiAlias(true);
-      this.mBitmapPaint.setShader(this.mBitmapShader);
-      this.mBorderPaint = new Paint();
-      this.mBorderPaint.setStyle(Paint.Style.STROKE);
-      this.mBorderPaint.setAntiAlias(true);
-      this.mBorderPaint.setColor(this.mRoundRectBitmap.mBoardColor);
-      this.mBorderPaint.setStrokeWidth(this.mRoundRectBitmap.mBorderWidth);
-    }
-    
-    public int getChangingConfigurations()
-    {
-      return this.mChangingConfigurations;
-    }
-    
-    public Drawable newDrawable()
-    {
-      return new RoundRectDrawable(this, null, null);
-    }
-    
-    public Drawable newDrawable(Resources paramResources)
-    {
-      return new RoundRectDrawable(this, paramResources, null);
-    }
-    
-    void updateShaderMatrix(RectF paramRectF)
-    {
-      this.mBorderRect.set(this.mBitmapRect);
-      this.mShaderMatrix.setRectToRect(this.mBitmapRect, paramRectF, Matrix.ScaleToFit.CENTER);
-      this.mShaderMatrix.mapRect(this.mBorderRect);
-      this.mBorderRect.inset(this.mRoundRectBitmap.mBorderWidth / 2.0F, this.mRoundRectBitmap.mBorderWidth / 2.0F);
-      this.mShaderMatrix.setRectToRect(this.mBitmapRect, this.mBorderRect, Matrix.ScaleToFit.FILL);
-      this.mDrawableRect.set(this.mBorderRect);
-      this.mBitmapShader.setLocalMatrix(this.mShaderMatrix);
     }
   }
 }

@@ -1,18 +1,13 @@
-import android.os.Process;
-import com.tencent.av.thread.PriorityThreadFactory;
+import com.tencent.biz.eqq.EnterpriseDetailActivity;
 
 public class biq
-  extends Thread
+  implements Runnable
 {
-  public biq(PriorityThreadFactory paramPriorityThreadFactory, Runnable paramRunnable, String paramString)
-  {
-    super(paramRunnable, paramString);
-  }
+  public biq(EnterpriseDetailActivity paramEnterpriseDetailActivity) {}
   
   public void run()
   {
-    Process.setThreadPriority(PriorityThreadFactory.a(this.a));
-    super.run();
+    this.a.f = false;
   }
 }
 

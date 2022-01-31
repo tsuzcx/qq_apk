@@ -6,11 +6,8 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class popclassifc$PopItem
-  extends MessageMicro
+  extends MessageMicro<PopItem>
 {
-  public static final int STR_DESC_FIELD_NUMBER = 1;
-  public static final int STR_ICON_URL_FIELD_NUMBER = 2;
-  public static final int STR_TRANSFER_URL_FIELD_NUMBER = 3;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26 }, new String[] { "str_desc", "str_icon_url", "str_transfer_url" }, new Object[] { "", "", "" }, PopItem.class);
   public final PBStringField str_desc = PBField.initString("");
   public final PBStringField str_icon_url = PBField.initString("");
@@ -18,7 +15,7 @@ public final class popclassifc$PopItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.troop_search_popclassifc.popclassifc.PopItem
  * JD-Core Version:    0.7.0.1
  */

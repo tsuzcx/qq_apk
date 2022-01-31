@@ -1,23 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-public final class akfr
-  implements Parcelable.Creator
+public class akfr
+  implements Animation.AnimationListener
 {
-  public QQRecorder.RecorderParam a(Parcel paramParcel)
+  public akfr(SpecailCareListActivity paramSpecailCareListActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new QQRecorder.RecorderParam(paramParcel);
+    this.a.a.clearAnimation();
+    this.a.a.setVisibility(8);
   }
   
-  public QQRecorder.RecorderParam[] a(int paramInt)
-  {
-    return new QQRecorder.RecorderParam[paramInt];
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akfr
  * JD-Core Version:    0.7.0.1
  */

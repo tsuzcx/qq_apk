@@ -1,29 +1,33 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.task.OnAddOrDeleGameListener;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
 
-class acbx
-  implements OnAddOrDeleGameListener
+public class acbx
+  implements TextWatcher
 {
-  acbx(acbw paramacbw) {}
+  public acbx(AddAccountActivity paramAddAccountActivity) {}
   
-  public void a(long paramLong, String paramString)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    Bundle localBundle = new Bundle();
-    if (paramLong == 0L) {}
-    for (int i = 0;; i = 1)
-    {
-      localBundle.putInt("result", i);
-      localBundle.putString("message", paramString);
-      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+    if (paramCharSequence.length() > 0) {
+      if (this.a.a != null) {
+        this.a.a.setVisibility(0);
+      }
+    }
+    while ((this.a.a == null) || (!this.a.a.isShown())) {
       return;
     }
+    this.a.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acbx
  * JD-Core Version:    0.7.0.1
  */

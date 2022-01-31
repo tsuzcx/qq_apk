@@ -4,6 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
+import awci;
+import awni;
+import bdgk;
+import bdin;
+import bdpd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.DeviceInfo;
@@ -16,7 +21,6 @@ import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.RespG
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.RespReportConfig;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Screen;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.olympic.utils.OlympicUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
@@ -28,10 +32,6 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.portal.PortalUtils;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
@@ -70,7 +70,7 @@ public class OlympicServlet
   {
     if (paramAppRuntime == null)
     {
-      OlympicUtil.b("OlympicServlet", new Object[] { "reportConfig, runtime is null" });
+      awci.b("OlympicServlet", new Object[] { "reportConfig, runtime is null" });
       return;
     }
     if (QLog.isColorLevel()) {
@@ -93,7 +93,7 @@ public class OlympicServlet
     }
   }
   
-  public static void a(AppRuntime paramAppRuntime, long paramLong, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3, ArrayList paramArrayList4, ArrayList paramArrayList5)
+  public static void a(AppRuntime paramAppRuntime, long paramLong, ArrayList<OlympicServlet.ReportRecord> paramArrayList1, ArrayList<OlympicServlet.ReportRecord> paramArrayList2, ArrayList<OlympicServlet.ReportRecord> paramArrayList3, ArrayList<OlympicServlet.ReportRecord> paramArrayList4, ArrayList<OlympicServlet.ReportRecord> paramArrayList5)
   {
     if (QLog.isColorLevel()) {
       QLog.d("OlympicServlet", 2, "reportShuayishua, promotion_id=" + paramLong + ",normalList=" + paramArrayList1 + ",activeList=" + paramArrayList2 + ",emptyList=" + paramArrayList3 + ",gainList=" + paramArrayList4 + ",comboList=" + paramArrayList5);
@@ -151,7 +151,7 @@ public class OlympicServlet
     int m;
     if (bool)
     {
-      Object localObject1 = WupUtil.b(paramFromServiceMsg.getWupBuffer());
+      Object localObject1 = bdpd.b(paramFromServiceMsg.getWupBuffer());
       switch (j)
       {
       default: 
@@ -228,7 +228,7 @@ public class OlympicServlet
             }
             bool = true;
             break label466;
-            localOlympicManager = (OlympicManager)((QQAppInterface)getAppRuntime()).getManager(166);
+            localOlympicManager = (OlympicManager)((QQAppInterface)getAppRuntime()).getManager(167);
             localRespGetConfigByPage = new ConfigurationService.RespGetConfigByPage();
             localRespGetConfigByPage.mergeFrom((byte[])localObject1);
             i = localRespGetConfigByPage.result.get();
@@ -291,7 +291,7 @@ public class OlympicServlet
       if (i == -1)
       {
         localObject2 = localPageRespInfo.md5.get();
-        localObject4 = PortalUtils.a((byte[])localObject3);
+        localObject4 = awni.a((byte[])localObject3);
         i = localPageRespInfo.total_size.get();
         if (QLog.isColorLevel()) {
           QLog.i("OlympicServlet", 2, "onReceive,respSize=" + i + ",md5=" + (String)localObject2 + ",md5Cal=" + (String)localObject4);
@@ -417,7 +417,7 @@ public class OlympicServlet
         localObject1 = new Unisso.UniSsoServerReq();
         localObject2 = new PackServer.PkgReq();
         ((PackServer.PkgReq)localObject2).cmdtype.set(1);
-        ((PackServer.PkgReq)localObject2).net_type.set(NetworkUtil.a(BaseApplicationImpl.sApplication));
+        ((PackServer.PkgReq)localObject2).net_type.set(bdin.a(BaseApplicationImpl.sApplication));
         localObject3 = paramIntent.getStringExtra("k_uin");
         ((PackServer.PkgReq)localObject2).uin.set(Long.parseLong((String)localObject3));
         ((PackServer.PkgReq)localObject2).from_id.set(1);
@@ -430,7 +430,7 @@ public class OlympicServlet
         paramIntent.signature.set(ByteStringMicro.copyFrom(((String)localObject3 + k + j).getBytes()));
         ((PackServer.PkgReq)localObject2).get_new_pack.set(paramIntent);
         ((Unisso.UniSsoServerReq)localObject1).reqdata.set(ByteStringMicro.copyFrom(((PackServer.PkgReq)localObject2).toByteArray()));
-        paramIntent = WupUtil.a(((Unisso.UniSsoServerReq)localObject1).toByteArray());
+        paramIntent = bdpd.a(((Unisso.UniSsoServerReq)localObject1).toByteArray());
         localObject1 = "NY2015.get_new_pack";
         break;
         j = paramIntent.getIntExtra("k_taskid", 0);
@@ -450,15 +450,15 @@ public class OlympicServlet
         localObject2 = new ConfigurationService.Screen();
         ((ConfigurationService.Screen)localObject2).setHasFlag(true);
         ((ConfigurationService.Screen)localObject2).model.set("");
-        ((ConfigurationService.Screen)localObject2).width.set((int)DeviceInfoUtil.h());
-        ((ConfigurationService.Screen)localObject2).height.set((int)DeviceInfoUtil.i());
-        ((ConfigurationService.Screen)localObject2).dpi.set(DeviceInfoUtil.d());
-        ((ConfigurationService.Screen)localObject2).multi_touch.set(DeviceInfoUtil.c());
+        ((ConfigurationService.Screen)localObject2).width.set((int)bdgk.g());
+        ((ConfigurationService.Screen)localObject2).height.set((int)bdgk.h());
+        ((ConfigurationService.Screen)localObject2).dpi.set(bdgk.d());
+        ((ConfigurationService.Screen)localObject2).multi_touch.set(bdgk.c());
         ((ConfigurationService.DeviceInfo)localObject1).setHasFlag(true);
         ((ConfigurationService.DeviceInfo)localObject1).screen = ((ConfigurationService.Screen)localObject2);
         paramIntent.device_info.set((MessageMicro)localObject1);
         paramIntent.type.set(1003);
-        paramIntent = WupUtil.a(paramIntent.toByteArray());
+        paramIntent = bdpd.a(paramIntent.toByteArray());
         localObject1 = "ConfigurationService.ReqGetConfigByPage";
         break;
         localObject2 = new ConfigurationService.ReqReportConfig();
@@ -470,7 +470,7 @@ public class OlympicServlet
         ((ConfigurationService.ReportConfig)localObject1).result.set(paramIntent.getIntExtra("k_code", -1));
         ((ConfigurationService.ReqReportConfig)localObject2).config_list.add((MessageMicro)localObject1);
         localObject1 = "ConfigurationService.ReqReportConfig";
-        paramIntent = WupUtil.a(((ConfigurationService.ReqReportConfig)localObject2).toByteArray());
+        paramIntent = bdpd.a(((ConfigurationService.ReqReportConfig)localObject2).toByteArray());
         break;
         localObject1 = new Unisso.UniSsoServerReq();
         localObject2 = new PackReport.PkgReq();
@@ -565,14 +565,14 @@ public class OlympicServlet
       }
       ((PackReport.PkgReq)localObject2).report.set(paramIntent);
       ((Unisso.UniSsoServerReq)localObject1).reqdata.set(ByteStringMicro.copyFrom(((PackReport.PkgReq)localObject2).toByteArray()));
-      paramIntent = WupUtil.a(((Unisso.UniSsoServerReq)localObject1).toByteArray());
+      paramIntent = bdpd.a(((Unisso.UniSsoServerReq)localObject1).toByteArray());
       localObject1 = "NewYearReport.pack_report";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.OlympicServlet
  * JD-Core Version:    0.7.0.1
  */

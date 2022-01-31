@@ -1,86 +1,98 @@
-import android.os.Bundle;
-import android.widget.Button;
-import com.tencent.biz.troop.file.MoveFileActivity;
-import com.tencent.biz.troop.file.TroopFileProtocol.GetFileListObserver;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import android.support.annotation.NonNull;
+import android.support.annotation.UiThread;
+import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
 
-public class oyf
-  extends TroopFileProtocol.GetFileListObserver
+public abstract class oyf
 {
-  public oyf(MoveFileActivity paramMoveFileActivity) {}
+  @NotNull
+  private String jdField_a_of_type_JavaLangString = getClass().getSimpleName();
+  @NotNull
+  private oyg jdField_a_of_type_Oyg;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, ByteStringMicro paramByteStringMicro, List paramList, Bundle paramBundle)
+  public oyf(@NotNull oyg paramoyg, @NotNull String paramString)
   {
-    this.a.a(true);
-    if ((!paramBoolean1) || (paramList == null)) {
-      return;
+    this.jdField_a_of_type_Oyg = paramoyg;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onCreate");
     }
-    MoveFileActivity.a(this.a, paramInt3);
-    MoveFileActivity.a(this.a, paramBoolean2);
-    paramBoolean1 = paramBundle.getBoolean("isFirstPage");
-    paramByteStringMicro = paramList.iterator();
-    while (paramByteStringMicro.hasNext())
-    {
-      paramBundle = (TroopFileInfo)paramByteStringMicro.next();
-      if (MoveFileActivity.a(this.a).c.get(paramBundle.b) == null)
-      {
-        paramBundle.a = UUID.randomUUID();
-        MoveFileActivity.a(this.a).c.put(paramBundle.b, paramBundle);
-      }
+  }
+  
+  @UiThread
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Oyg.a(this, paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onDestroy");
     }
-    if (paramBoolean1)
-    {
-      MoveFileActivity.a(this.a).clear();
-      if (!MoveFileActivity.c(this.a).equals("/"))
-      {
-        paramByteStringMicro = new TroopFileInfo();
-        paramByteStringMicro.c = "移出文件夹";
-        paramByteStringMicro.b = "/";
-        paramByteStringMicro.d = true;
-        paramByteStringMicro.f = -1;
-        MoveFileActivity.a(this.a).add(paramByteStringMicro);
-      }
+  }
+  
+  public boolean b()
+  {
+    return this.b;
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onResume");
     }
-    MoveFileActivity.b(this.a, paramInt1);
-    if (!MoveFileActivity.c(this.a).equals("/"))
-    {
-      paramInt1 = paramList.size() - 1;
-      if (paramInt1 >= 0)
-      {
-        if (!((TroopFileInfo)paramList.get(paramInt1)).b.equals(MoveFileActivity.c(this.a))) {
-          break label386;
-        }
-        if (MoveFileActivity.a(this.a) == -1)
-        {
-          MoveFileActivity.c(this.a, paramInt1 + MoveFileActivity.a(this.a).size() - 1);
-          MoveFileActivity.a(this.a).setEnabled(true);
-          MoveFileActivity.a(this.a).setBackgroundResource(2130838508);
-          MoveFileActivity.a(this.a).setTextAppearance(this.a.getActivity(), 2131624424);
-        }
-      }
-      MoveFileActivity.a(this.a).addAll(MoveFileActivity.a(this.a).size() - 1, paramList);
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onPause");
     }
-    for (;;)
-    {
-      MoveFileActivity.a(this.a).notifyDataSetChanged();
-      return;
-      label386:
-      paramInt1 -= 1;
-      break;
-      MoveFileActivity.a(this.a).addAll(paramList);
+  }
+  
+  public void e()
+  {
+    this.b = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onShowSelf");
     }
+  }
+  
+  public void f()
+  {
+    this.b = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onHideSelf");
+    }
+  }
+  
+  protected abstract void g();
+  
+  protected abstract void h();
+  
+  @NonNull
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oyf
  * JD-Core Version:    0.7.0.1
  */

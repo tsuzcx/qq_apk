@@ -1,19 +1,22 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.leba.view.LebaFeedsDislikeMaskView;
+import android.view.MotionEvent;
+import java.lang.ref.WeakReference;
 
-public class aebi
-  implements ValueAnimator.AnimatorUpdateListener
+public final class aebi
+  implements aieo
 {
-  public aebi(LebaFeedsDislikeMaskView paramLebaFeedsDislikeMaskView) {}
+  private WeakReference<ajyl> a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public aebi(ajyl paramajyl)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    LebaFeedsDislikeMaskView.a(this.a, LebaFeedsDislikeMaskView.a(this.a) - (int)(LebaFeedsDislikeMaskView.a(this.a) * f));
-    LebaFeedsDislikeMaskView.a(this.a).setAlpha(1.0F - f);
-    this.a.invalidate();
+    this.a = new WeakReference(paramajyl);
+  }
+  
+  public void a(MotionEvent paramMotionEvent)
+  {
+    ajyl localajyl = (ajyl)this.a.get();
+    if (localajyl != null) {
+      localajyl.a(paramMotionEvent);
+    }
   }
 }
 

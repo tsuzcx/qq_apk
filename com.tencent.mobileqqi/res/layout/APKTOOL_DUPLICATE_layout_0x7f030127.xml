@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqqi">
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080580" android:background="@drawable/top_button_right_selector" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" android:maxWidth="100.0dip" android:minWidth="52.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" tencent:skintype="title_right_view">
-        <com.tencent.widget.FadeIconImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080581" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </FrameLayout>
-</RelativeLayout>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08057e" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02011c" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="5.0dip" android:checked="true" android:adjustViewBounds="false" />
+    <TextView android:textSize="12.0sp" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08057f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="允许发布分享" />
+</LinearLayout>

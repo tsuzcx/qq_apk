@@ -1,14 +1,14 @@
 package cooperation.qzone.model;
 
-import amun;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bjku;
 
 public class DynamicPhotoData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amun();
+  public static final Parcelable.Creator<DynamicPhotoData> CREATOR = new bjku();
   public String a = "";
   public String b = "";
   public String c = "";
@@ -56,7 +56,7 @@ public class DynamicPhotoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.DynamicPhotoData
  * JD-Core Version:    0.7.0.1
  */

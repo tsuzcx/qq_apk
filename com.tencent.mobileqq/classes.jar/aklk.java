@@ -1,14 +1,13 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.mobileqq.vipgift.VipGiftManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class aklk
-  implements AsyncBack
 {
-  public aklk(VipGiftManager paramVipGiftManager) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt) {}
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
 }
 
 

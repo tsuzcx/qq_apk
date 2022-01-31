@@ -3,85 +3,68 @@ package android.support.v4.content;
 import android.content.Context;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.RestrictTo;
 import android.support.v4.util.TimeUtils;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
-import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executor;
 
-public abstract class AsyncTaskLoader<D>
-  extends Loader<D>
+public abstract class AsyncTaskLoader
+  extends Loader
 {
   static final boolean DEBUG = false;
   static final String TAG = "AsyncTaskLoader";
-  volatile AsyncTaskLoader<D>.LoadTask mCancellingTask;
+  volatile AsyncTaskLoader.LoadTask mCancellingTask;
+  private final Executor mExecutor;
   Handler mHandler;
   long mLastLoadCompleteTime = -10000L;
-  volatile AsyncTaskLoader<D>.LoadTask mTask;
+  volatile AsyncTaskLoader.LoadTask mTask;
   long mUpdateThrottle;
   
-  public AsyncTaskLoader(Context paramContext)
+  public AsyncTaskLoader(@NonNull Context paramContext)
+  {
+    this(paramContext, ModernAsyncTask.THREAD_POOL_EXECUTOR);
+  }
+  
+  private AsyncTaskLoader(@NonNull Context paramContext, @NonNull Executor paramExecutor)
   {
     super(paramContext);
+    this.mExecutor = paramExecutor;
   }
   
-  public boolean cancelLoad()
-  {
-    if (this.mTask != null)
-    {
-      if (this.mCancellingTask != null)
-      {
-        if (this.mTask.waiting)
-        {
-          this.mTask.waiting = false;
-          this.mHandler.removeCallbacks(this.mTask);
-        }
-        this.mTask = null;
-      }
-    }
-    else {
-      return false;
-    }
-    if (this.mTask.waiting)
-    {
-      this.mTask.waiting = false;
-      this.mHandler.removeCallbacks(this.mTask);
-      this.mTask = null;
-      return false;
-    }
-    boolean bool = this.mTask.cancel(false);
-    if (bool) {
-      this.mCancellingTask = this.mTask;
-    }
-    this.mTask = null;
-    return bool;
-  }
+  public void cancelLoadInBackground() {}
   
-  void dispatchOnCancelled(AsyncTaskLoader<D>.LoadTask paramAsyncTaskLoader, D paramD)
+  void dispatchOnCancelled(AsyncTaskLoader.LoadTask paramLoadTask, Object paramObject)
   {
-    onCanceled(paramD);
-    if (this.mCancellingTask == paramAsyncTaskLoader)
+    onCanceled(paramObject);
+    if (this.mCancellingTask == paramLoadTask)
     {
+      rollbackContentChanged();
       this.mLastLoadCompleteTime = SystemClock.uptimeMillis();
       this.mCancellingTask = null;
+      deliverCancellation();
       executePendingTask();
     }
   }
   
-  void dispatchOnLoadComplete(AsyncTaskLoader<D>.LoadTask paramAsyncTaskLoader, D paramD)
+  void dispatchOnLoadComplete(AsyncTaskLoader.LoadTask paramLoadTask, Object paramObject)
   {
-    if (this.mTask != paramAsyncTaskLoader)
+    if (this.mTask != paramLoadTask)
     {
-      dispatchOnCancelled(paramAsyncTaskLoader, paramD);
+      dispatchOnCancelled(paramLoadTask, paramObject);
       return;
     }
     if (isAbandoned())
     {
-      onCanceled(paramD);
+      onCanceled(paramObject);
       return;
     }
+    commitContentChanged();
     this.mLastLoadCompleteTime = SystemClock.uptimeMillis();
     this.mTask = null;
-    deliverResult(paramD);
+    deliverResult(paramObject);
   }
   
   public void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
@@ -133,22 +116,67 @@ public abstract class AsyncTaskLoader<D>
     {
       return;
     }
-    this.mTask.executeOnExecutor(ModernAsyncTask.THREAD_POOL_EXECUTOR, (Void[])null);
+    this.mTask.executeOnExecutor(this.mExecutor, (Void[])null);
   }
   
-  public abstract D loadInBackground();
+  public boolean isLoadInBackgroundCanceled()
+  {
+    return this.mCancellingTask != null;
+  }
   
-  public void onCanceled(D paramD) {}
+  @Nullable
+  public abstract Object loadInBackground();
+  
+  protected boolean onCancelLoad()
+  {
+    if (this.mTask != null)
+    {
+      if (!this.mStarted) {
+        this.mContentChanged = true;
+      }
+      if (this.mCancellingTask != null)
+      {
+        if (this.mTask.waiting)
+        {
+          this.mTask.waiting = false;
+          this.mHandler.removeCallbacks(this.mTask);
+        }
+        this.mTask = null;
+      }
+    }
+    else
+    {
+      return false;
+    }
+    if (this.mTask.waiting)
+    {
+      this.mTask.waiting = false;
+      this.mHandler.removeCallbacks(this.mTask);
+      this.mTask = null;
+      return false;
+    }
+    boolean bool = this.mTask.cancel(false);
+    if (bool)
+    {
+      this.mCancellingTask = this.mTask;
+      cancelLoadInBackground();
+    }
+    this.mTask = null;
+    return bool;
+  }
+  
+  public void onCanceled(@Nullable Object paramObject) {}
   
   protected void onForceLoad()
   {
     super.onForceLoad();
     cancelLoad();
-    this.mTask = new LoadTask();
+    this.mTask = new AsyncTaskLoader.LoadTask(this);
     executePendingTask();
   }
   
-  protected D onLoadInBackground()
+  @Nullable
+  protected Object onLoadInBackground()
   {
     return loadInBackground();
   }
@@ -161,64 +189,12 @@ public abstract class AsyncTaskLoader<D>
     }
   }
   
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public void waitForLoader()
   {
-    LoadTask localLoadTask = this.mTask;
-    if (localLoadTask != null) {}
-    try
-    {
-      localLoadTask.done.await();
-      return;
-    }
-    catch (InterruptedException localInterruptedException) {}
-  }
-  
-  final class LoadTask
-    extends ModernAsyncTask<Void, Void, D>
-    implements Runnable
-  {
-    private CountDownLatch done = new CountDownLatch(1);
-    D result;
-    boolean waiting;
-    
-    LoadTask() {}
-    
-    protected D doInBackground(Void... paramVarArgs)
-    {
-      this.result = AsyncTaskLoader.this.onLoadInBackground();
-      return this.result;
-    }
-    
-    protected void onCancelled()
-    {
-      try
-      {
-        AsyncTaskLoader.this.dispatchOnCancelled(this, this.result);
-        return;
-      }
-      finally
-      {
-        this.done.countDown();
-      }
-    }
-    
-    protected void onPostExecute(D paramD)
-    {
-      try
-      {
-        AsyncTaskLoader.this.dispatchOnLoadComplete(this, paramD);
-        return;
-      }
-      finally
-      {
-        this.done.countDown();
-      }
-    }
-    
-    public void run()
-    {
-      this.waiting = false;
-      AsyncTaskLoader.this.executePendingTask();
+    AsyncTaskLoader.LoadTask localLoadTask = this.mTask;
+    if (localLoadTask != null) {
+      localLoadTask.waitForLoader();
     }
   }
 }

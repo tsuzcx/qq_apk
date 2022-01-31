@@ -9,15 +9,15 @@ import java.util.Map;
 public final class Video
   extends JceStruct
 {
-  static Map cache_cover;
-  static Map cache_map_urls = new HashMap();
+  static Map<Integer, String> cache_cover;
+  static Map<Integer, String> cache_map_urls = new HashMap();
   public int appid;
-  public Map cover;
+  public Map<Integer, String> cover;
   public String desc = "";
   public int file_size;
   public int height;
   public String lloc = "";
-  public Map map_urls;
+  public Map<Integer, String> map_urls;
   public long play_time;
   public int play_type;
   public int rights;
@@ -41,7 +41,7 @@ public final class Video
   
   public Video() {}
   
-  public Video(long paramLong1, String paramString1, long paramLong2, long paramLong3, Map paramMap1, int paramInt1, Map paramMap2, int paramInt2, long paramLong4, String paramString2, String paramString3, String paramString4, int paramInt3, String paramString5, int paramInt4, int paramInt5, int paramInt6, int paramInt7, String paramString6, String paramString7)
+  public Video(long paramLong1, String paramString1, long paramLong2, long paramLong3, Map<Integer, String> paramMap1, int paramInt1, Map<Integer, String> paramMap2, int paramInt2, long paramLong4, String paramString2, String paramString3, String paramString4, int paramInt3, String paramString5, int paramInt4, int paramInt5, int paramInt6, int paramInt7, String paramString6, String paramString7)
   {
     this.uin = paramLong1;
     this.vid = paramString1;
@@ -133,7 +133,7 @@ public final class Video
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_VIDEO.Video
  * JD-Core Version:    0.7.0.1
  */

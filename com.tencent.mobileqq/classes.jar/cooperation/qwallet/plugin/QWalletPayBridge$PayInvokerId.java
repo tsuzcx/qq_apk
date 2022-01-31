@@ -15,17 +15,17 @@ public abstract class QWalletPayBridge$PayInvokerId
   public static final int PAY_INVOKER_OPEN_SVIP = 11;
   public static final int PAY_INVOKER_OPEN_TENPAY_VIEW = 5;
   public static final int PAY_INVOKER_PAY = 9;
+  public static final int PAY_INVOKER_PAY_DATA = 22;
   public static final int PAY_INVOKER_PREGET_QRCODE = 23;
+  public static final int PAY_INVOKER_PRE_CONNECT = 21;
   public static final int PAY_INVOKER_RECHARGE_GAME_CURRENCY = 6;
   public static final int PAY_INVOKER_RECHARGE_QB = 8;
   public static final int PAY_INVOKER_SUBSCRIBE_MONTH_CARD = 14;
   public static final int PAY_INVOKER_WEBANK_CHECK = 12;
-  public static final int PAY_INVOKER＿PAY_DATA = 22;
-  public static final int PAY_INVOKER＿PRE_CONNECT = 21;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletPayBridge.PayInvokerId
  * JD-Core Version:    0.7.0.1
  */

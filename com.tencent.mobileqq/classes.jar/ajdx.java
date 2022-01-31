@@ -1,19 +1,6 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.data.TroopEntranceBar;
-import java.util.List;
-
-public class ajdx
-  extends FriendListObserver
+public abstract interface ajdx
 {
-  public ajdx(TroopEntranceBar paramTroopEntranceBar) {}
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (paramString != null) && (this.a.a != null) && (this.a.a.size() > 0) && (paramString.equals(((TroopInfo)this.a.a.get(0)).troopuin))) {
-      this.a.c();
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -16,7 +16,7 @@ import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import egn;
+import ebl;
 
 public class TroopUnreadTipsChatItemBuilder
   extends AbstractChatItemBuilder
@@ -28,7 +28,7 @@ public class TroopUnreadTipsChatItemBuilder
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramMessageRecord = (egn)paramViewHolder;
+    paramMessageRecord = (ebl)paramViewHolder;
     paramMessageRecord = paramView;
     if (paramView == null)
     {
@@ -42,8 +42,8 @@ public class TroopUnreadTipsChatItemBuilder
       {
         paramMessageRecord = (TextView)paramViewHolder.findViewById(2131231368);
         paramView = (TextView)paramViewHolder.findViewById(2131231369);
-        paramMessageRecord.setBackgroundColor(2130838453);
-        paramView.setBackgroundColor(2130838453);
+        paramMessageRecord.setBackgroundColor(2130838455);
+        paramView.setBackgroundColor(2130838455);
         paramMessageRecord = paramViewHolder;
       }
     }
@@ -52,7 +52,7 @@ public class TroopUnreadTipsChatItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new egn(this);
+    return new ebl(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

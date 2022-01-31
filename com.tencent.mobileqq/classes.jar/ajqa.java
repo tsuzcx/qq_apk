@@ -1,21 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.troop.utils.TroopLinkManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.richmedia.FlowActivity;
 
-public class ajqa
-  implements Runnable
+public abstract class ajqa
 {
-  public ajqa(TroopLinkManager paramTroopLinkManager, String paramString1, String paramString2) {}
+  FlowActivity a;
   
-  public void run()
+  public ajqa(FlowActivity paramFlowActivity)
   {
-    if (!FileUtils.a(this.jdField_a_of_type_JavaLangString, this.b)) {
-      BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt("troop_link_config_version", 0).commit();
-    }
+    this.a = paramFlowActivity;
   }
+  
+  public Context a()
+  {
+    return this.a;
+  }
+  
+  public abstract void a(ViewGroup paramViewGroup);
 }
 
 

@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.os.MqqHandler;
 
-public class ajgt
-  implements DialogInterface.OnClickListener
+class ajgt
+  implements View.OnClickListener
 {
-  public ajgt(PublishHomeWorkFragment paramPublishHomeWorkFragment, FormSwitchItem paramFormSwitchItem, CompoundButton paramCompoundButton) {}
+  ajgt(ajgb paramajgb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(false);
-    PublishHomeWorkFragment.c(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment, false);
-    PublishHomeWorkFragment.d(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment, false);
-    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(false);
+    paramView = new Intent(ajgb.a(this.a), TroopAssisSettingActivity.class);
+    ajgb.a(this.a).startActivityForResult(paramView, 9001);
+    ajgb.a(this.a).sendEmptyMessageDelayed(1, 1000L);
+    azqs.b(ajgb.a(this.a).app, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_setmsg", 0, 0, "", "", "", "");
+    azqs.a(ajgb.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 17, 0, "", "", "", "");
   }
 }
 

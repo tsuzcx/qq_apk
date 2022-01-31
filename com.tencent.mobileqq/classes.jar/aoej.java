@@ -1,32 +1,31 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.MarkDrawable;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
 
 public class aoej
-  extends Property
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aoej(MarkDrawable paramMarkDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public aoej(ColorNoteSettingFragment paramColorNoteSettingFragment, QQAppInterface paramQQAppInterface) {}
   
-  public Integer a(MarkDrawable paramMarkDrawable)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramMarkDrawable != null) {
-      return Integer.valueOf(MarkDrawable.b(paramMarkDrawable));
+    aobw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
+    if (!paramBoolean) {
+      new aobx().c(null);
     }
-    return Integer.valueOf(255);
-  }
-  
-  public void a(MarkDrawable paramMarkDrawable, Integer paramInteger)
-  {
-    if (paramMarkDrawable != null) {
-      MarkDrawable.b(paramMarkDrawable, paramInteger.intValue());
+    ((aocm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(168)).a(paramBoolean);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
+    {
+      azqs.b(null, "dc00898", "", "", "0X800A8B0", "0X800A8B0", i, 0, "", "", "", "");
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoej
  * JD-Core Version:    0.7.0.1
  */

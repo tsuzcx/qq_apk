@@ -1,24 +1,12 @@
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
-public final class xfg
-  implements Runnable
+public abstract interface xfg
 {
-  public xfg(MessageRecord paramMessageRecord) {}
-  
-  public void run()
-  {
-    QQAppInterface localQQAppInterface = QWalletTools.a();
-    if ((localQQAppInterface != null) && (this.a != null)) {
-      localQQAppInterface.a().a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
-    }
-  }
+  public abstract void a(int paramInt, List<uxf> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xfg
  * JD-Core Version:    0.7.0.1
  */

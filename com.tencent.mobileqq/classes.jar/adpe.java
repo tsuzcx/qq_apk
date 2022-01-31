@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.hiboom.HiBoomManager;
-import com.tencent.mobileqq.hiboom.HiBoomPanelView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class adpe
-  implements Runnable
+  implements View.OnClickListener
 {
-  public adpe(HiBoomPanelView paramHiBoomPanelView, HiBoomManager paramHiBoomManager) {}
+  public adpe(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomManager.a(true);
+    this.a.a.setText("");
   }
 }
 

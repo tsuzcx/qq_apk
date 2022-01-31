@@ -1,21 +1,39 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.SubScribeSwipeRefreshLayout;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
 
-public final class ycv
-  implements DialogInterface.OnClickListener
+public class ycv
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public ycv(Context paramContext) {}
+  public ycv(SubScribeSwipeRefreshLayout paramSubScribeSwipeRefreshLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
+  
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    ((Activity)this.a).finish();
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    int i;
+    int j;
+    do
+    {
+      do
+      {
+        return true;
+        i = (int)(paramMotionEvent.getX() + 0.5F);
+        j = (int)(paramMotionEvent.getY() + 0.5F);
+      } while (SubScribeSwipeRefreshLayout.a(this.a) == null);
+      SubScribeSwipeRefreshLayout.a(this.a).getLocalVisibleRect(SubScribeSwipeRefreshLayout.a(this.a));
+    } while (!SubScribeSwipeRefreshLayout.a(this.a).contains(i, j));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ycv
  * JD-Core Version:    0.7.0.1
  */

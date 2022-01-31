@@ -1,63 +1,60 @@
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.jsbridge.GdtAdWebPlugin;
-import com.tencent.gdtad.jsbridge.GdtJsCallHandler;
-import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.views.video.GdtVideoData;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingData;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.articlesummary.articlesummary.HotWordItem;
 
 public class qkz
-  implements GdtJsCallHandler
 {
-  public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  
+  public static qkz a(articlesummary.HotWordItem paramHotWordItem)
   {
-    if ((paramGdtAdWebPlugin == null) || (paramGdtAdWebPlugin.mRuntime == null))
-    {
-      GdtLog.d("GdtVideoCeilingJsCall", "handleJsCallRequest error");
-      return true;
+    qkz localqkz = new qkz();
+    if (paramHotWordItem.hot_word.has()) {
+      localqkz.a = paramHotWordItem.hot_word.get().toStringUtf8();
     }
-    try
-    {
-      Object localObject2 = new JSONObject(paramVarArgs[0]);
-      GdtLog.b("GdtVideoCeilingJsCall", ((JSONObject)localObject2).toString());
-      paramVarArgs = ((JSONObject)localObject2).optString("videoUrl");
-      paramString = ((JSONObject)localObject2).optString("webUrl");
-      Object localObject1 = ((JSONObject)localObject2).optString("urlForImpression");
-      String str = ((JSONObject)localObject2).optString("urlForClick");
-      localObject2 = new qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo();
-      ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject2).exposure_url.set((String)localObject1);
-      ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject2).click_url.set(str);
-      localObject1 = new qq_ad_get.QQAdGetRsp.AdInfo();
-      ((qq_ad_get.QQAdGetRsp.AdInfo)localObject1).report_info.set((MessageMicro)localObject2);
-      localObject1 = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1);
-      localObject2 = new GdtVideoData();
-      ((GdtVideoData)localObject2).setUrl(paramVarArgs);
-      ((GdtVideoData)localObject2).setStartPositionMillis(0L);
-      ((GdtVideoData)localObject2).setLoop(true);
-      paramVarArgs = new GdtVideoCeilingData();
-      paramVarArgs.setAd((GdtAd)localObject1);
-      paramVarArgs.setWebUrl(paramString);
-      paramVarArgs.setVideoData((GdtVideoData)localObject2);
-      GdtVideoCeilingFragmentForJS.a(paramGdtAdWebPlugin.mRuntime.a(), GdtVideoCeilingFragmentForJS.class, paramVarArgs);
-      return true;
+    if (paramHotWordItem.jump_url.has()) {
+      localqkz.b = paramHotWordItem.jump_url.get().toStringUtf8();
     }
-    catch (JSONException paramGdtAdWebPlugin)
-    {
-      GdtLog.d("GdtVideoCeilingJsCall", "handleJsCallRequest error", paramGdtAdWebPlugin);
+    if (paramHotWordItem.index_word_color.has()) {
+      localqkz.c = paramHotWordItem.index_word_color.get().toStringUtf8();
     }
-    return true;
+    if (paramHotWordItem.index_bg_color.has()) {
+      localqkz.d = paramHotWordItem.index_bg_color.get().toStringUtf8();
+    }
+    return localqkz;
+  }
+  
+  public articlesummary.HotWordItem a()
+  {
+    articlesummary.HotWordItem localHotWordItem = new articlesummary.HotWordItem();
+    if (!TextUtils.isEmpty(this.a)) {
+      localHotWordItem.hot_word.set(ByteStringMicro.copyFromUtf8(this.a));
+    }
+    if (!TextUtils.isEmpty(this.d)) {
+      localHotWordItem.index_bg_color.set(ByteStringMicro.copyFromUtf8(this.d));
+    }
+    if (!TextUtils.isEmpty(this.c)) {
+      localHotWordItem.index_word_color.set(ByteStringMicro.copyFromUtf8(this.c));
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      localHotWordItem.jump_url.set(ByteStringMicro.copyFromUtf8(this.b));
+    }
+    return localHotWordItem;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return ((paramObject instanceof qkz)) && (!TextUtils.isEmpty(this.a)) && (this.a.equals(((qkz)paramObject).a)) && (!TextUtils.isEmpty(this.b)) && (this.b.equals(((qkz)paramObject).b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qkz
  * JD-Core Version:    0.7.0.1
  */

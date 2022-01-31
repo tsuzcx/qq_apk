@@ -1,34 +1,34 @@
-import android.os.Handler.Callback;
 import android.os.Message;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import mqq.os.MqqHandler;
 
 public class ahol
-  implements Handler.Callback
+  extends MqqHandler
 {
-  public ahol(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
+  public ahol(NotificationView paramNotificationView) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void handleMessage(Message paramMessage)
   {
     switch (paramMessage.what)
     {
+    case 1013: 
     default: 
-      return false;
+    case 1012: 
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_Ahoi == null);
+      this.a.i();
+      this.a.jdField_a_of_type_Ahoi.a = bafj.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.a.jdField_a_of_type_Ahoi.notifyDataSetChanged();
+      return;
     }
-    if (!NeoVideoFilterPlayView.a(this.a))
-    {
-      this.a.requestRender();
-      return true;
-    }
-    NeoVideoFilterPlayView.a(this.a).set(true);
-    SLog.b("FlowEdit_NeoVideoFilterPlayView", "skip request render because of pause play");
-    return true;
+    this.a.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahol
  * JD-Core Version:    0.7.0.1
  */

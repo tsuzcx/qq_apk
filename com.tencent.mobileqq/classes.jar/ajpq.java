@@ -1,20 +1,18 @@
 import android.content.Context;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 
 public class ajpq
-  implements Runnable
+  extends OrientationEventListener
 {
-  public ajpq(TroopGagMgr paramTroopGagMgr, boolean paramBoolean, Context paramContext, String paramString, int paramInt) {}
-  
-  public void run()
+  public ajpq(FlowCameraActivity2 paramFlowCameraActivity2, Context paramContext)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2130838752, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
+    super(paramContext);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    this.a.k = paramInt;
   }
 }
 

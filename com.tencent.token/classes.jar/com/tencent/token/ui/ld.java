@@ -1,16 +1,50 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.core.bean.UpgradeDeterminResult;
+import com.tencent.token.do;
+import com.tencent.token.global.f;
+import com.tencent.token.global.h;
 
-final class ld
-  implements DialogInterface.OnClickListener
+class ld
+  implements Handler.Callback
 {
-  ld(lc paramlc) {}
+  ld(IndexActivity paramIndexActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.a.dismissDialog();
+    try
+    {
+      h.a("Callback=" + paramMessage.arg1);
+      if (paramMessage.arg1 == 270)
+      {
+        this.a.dismissDialog();
+        paramMessage = (UpgradeDeterminResult)((f)paramMessage.obj).d;
+        if (paramMessage == null) {
+          return false;
+        }
+        h.a("mSmsPrefix=" + paramMessage.mSmsPrefix);
+        h.a("mMobileMask=" + paramMessage.mMobileMask);
+        QQUser localQQUser = do.a().e();
+        h.a("currentUser=" + localQQUser);
+        Intent localIntent = new Intent(this.a, VryMobileForStrategyActivity.class);
+        localIntent.setFlags(536870912);
+        localIntent.putExtra("intent.qquser", localQQUser);
+        localIntent.putExtra("page_id", 13);
+        localIntent.putExtra("intent.upgradedetermin", paramMessage);
+        this.a.startActivity(localIntent);
+        return true;
+      }
+      return false;
+    }
+    catch (Exception paramMessage)
+    {
+      paramMessage.printStackTrace();
+    }
+    return false;
   }
 }
 

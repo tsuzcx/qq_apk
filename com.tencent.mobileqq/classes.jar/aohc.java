@@ -1,30 +1,24 @@
-import android.widget.Toast;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.IBaseActionListener.Stub;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.HashMap;
 
-class aohc
-  implements Runnable
+@Deprecated
+public abstract class aohc
+  extends IBaseActionListener.Stub
 {
-  aohc(aohb paramaohb) {}
+  public abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg);
   
-  public void run()
+  public void onActionResult(FromServiceMsg paramFromServiceMsg) {}
+  
+  public void onRecvFromMsg(FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[runOnUIThread][stopWatching-delete-quit]");
-    }
-    Toast.makeText(VideoEnvironment.a(), "视频缓存被恶意篡改了", 1).show();
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    localRMVideoStateMgr.a("RMFileEventNotify");
-    if (localRMVideoStateMgr.a != null) {
-      localRMVideoStateMgr.a.A();
-    }
+    a((ToServiceMsg)paramFromServiceMsg.attributes.get(FromServiceMsg.class.getSimpleName()), paramFromServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aohc
  * JD-Core Version:    0.7.0.1
  */

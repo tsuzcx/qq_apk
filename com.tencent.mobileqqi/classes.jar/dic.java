@@ -1,19 +1,22 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.SetTroopAdminsActivity;
+import com.tencent.mobileqq.activity.SetTroopAdminsActivity.TroopAdmin;
+import com.tencent.widget.ActionSheet;
 
-public class dic
+class dic
   implements View.OnClickListener
 {
-  public dic(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
+  dic(dib paramdib, SetTroopAdminsActivity.TroopAdmin paramTroopAdmin) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.runOnUiThread(new did(this));
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
+    paramView = ActionSheet.a(this.jdField_a_of_type_Dib.a);
+    paramView.a(String.format(this.jdField_a_of_type_Dib.a.getString(2131561531), new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivitySetTroopAdminsActivity$TroopAdmin.b }));
+    paramView.a(2131561758, 3);
+    paramView.d(2131561746);
+    paramView.a(new did(this, paramView));
+    paramView.show();
   }
 }
 

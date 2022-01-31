@@ -1,33 +1,22 @@
-import com.tencent.mobileqq.app.ShakeListener;
-import com.tencent.mobileqq.magicface.magicfaceaction.Action;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.qphone.base.util.QLog;
 
 public class gez
-  extends ShakeListener
+  extends Handler
 {
-  public gez(MagicfaceActionManager paramMagicfaceActionManager) {}
+  public gez(ProfileHeaderView paramProfileHeaderView, ProfileCardInfo paramProfileCardInfo) {}
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    int j = 0;
-    paramInt = MagicfaceActionManager.a().length - 1;
-    for (;;)
+    if (ProfileHeaderView.b == paramMessage.what)
     {
-      int i = j;
-      if (paramInt >= 0)
-      {
-        if ((Math.abs(paramFloat1 / 9.81F) > MagicfaceActionManager.a()[paramInt]) || (Math.abs(paramFloat2 / 9.81F) > MagicfaceActionManager.a()[paramInt]) || (Math.abs(paramFloat3 / 9.81F) > MagicfaceActionManager.a()[paramInt])) {
-          i = MagicfaceActionManager.a()[paramInt];
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "ProfileHeaderView handleMessage msg what is check tips time=" + this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Int);
       }
-      else
-      {
-        if (MagicfaceActionManager.a(this.a) != null) {
-          MagicfaceActionManager.a(this.a).a(i, MagicfaceActionManager.a(this.a));
-        }
-        return;
-      }
-      paramInt -= 1;
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.j(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
     }
   }
 }

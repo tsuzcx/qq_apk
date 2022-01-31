@@ -1,23 +1,17 @@
-import com.tencent.litetransfersdk.LiteTransferListenerCallback;
-import com.tencent.litetransfersdk.LiteTransferOperatorCallback;
-import com.tencent.litetransfersdk.LiteTransferWrapper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 public class bxd
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public bxd(LiteTransferWrapper paramLiteTransferWrapper) {}
+  public bxd(ChatActivity paramChatActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (LiteTransferWrapper.access$300(this.a) == 0L)
-    {
-      this.a.initGlobalFuncCallback();
-      LiteTransferWrapper.access$402(this.a, new LiteTransferOperatorCallback(LiteTransferWrapper.access$500(this.a)));
-      LiteTransferWrapper.access$602(this.a, new LiteTransferListenerCallback(LiteTransferWrapper.access$500(this.a)));
-      LiteTransferWrapper.access$302(this.a, this.a.createOperator(LiteTransferWrapper.access$400(this.a), LiteTransferWrapper.access$600(this.a)));
-      this.a.checkPathExist();
-      this.a.SetProxyToJni();
-    }
+    ChatActivity.a(this.a, this.a.a.a);
+    paramDialogInterface.dismiss();
   }
 }
 

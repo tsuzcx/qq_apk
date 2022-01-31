@@ -1,41 +1,83 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeTopicMulti;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo.TopicRecommendFeedsTitle;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.ViewConfiguration;
 
 public class lut
-  implements View.OnClickListener
 {
-  public lut(FeedItemCellTypeTopicMulti paramFeedItemCellTypeTopicMulti, ArticleInfo paramArticleInfo, TopicRecommendFeedsInfo paramTopicRecommendFeedsInfo) {}
+  private int jdField_a_of_type_Int;
+  private luq jdField_a_of_type_Luq;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public lut(Context paramContext)
   {
-    ReadInJoyUtils.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCellTypeTopicMulti.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo.b.b);
-    try
+    this.jdField_a_of_type_Luq = new luq(paramContext);
+    this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledOverflingDistance();
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Luq.a();
+  }
+  
+  public int a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    int j = this.jdField_a_of_type_Luq.a();
+    if (this.jdField_a_of_type_Luq.a()) {}
+    for (int i = j;; i = this.jdField_a_of_type_Luq.b())
     {
-      paramView = new JSONObject();
-      paramView.put("folder_status", ReadInJoyUtils.d);
-      paramView.put("kandian_mode", "" + ReadInJoyUtils.e());
-      paramView.put("tab_source", "" + ReadInJoyUtils.d());
-      PublicAccountReportUtils.a(null, "", "0X8008277", "0X8008277", 0, 0, "", "", "", paramView.toString(), false);
+      paramInt2 = lux.a(i + paramInt1, paramInt2, paramInt3);
+      if (paramInt2 != j) {
+        this.jdField_a_of_type_Luq.a(j, 0, paramInt2 - j, 0, 0);
+      }
+      return i + paramInt1 - paramInt2;
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Luq.a(true);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = Math.max(paramInt, this.jdField_a_of_type_Int);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    int j = a();
+    luq localluq = this.jdField_a_of_type_Luq;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.jdField_a_of_type_Int;; i = 0)
+    {
+      localluq.a(j, 0, paramInt1, 0, paramInt2, paramInt3, 0, 0, i, 0);
       return;
     }
-    catch (JSONException paramView)
-    {
-      paramView.printStackTrace();
-    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Luq.a();
+  }
+  
+  public boolean a(long paramLong)
+  {
+    return this.jdField_a_of_type_Luq.b();
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_Luq.a(paramInt, 0, 0, 0, 0);
+    this.jdField_a_of_type_Luq.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lut
  * JD-Core Version:    0.7.0.1
  */

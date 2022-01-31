@@ -1,43 +1,21 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
 
-public class zjh
-  extends ContentObserver
+class zjh
+  implements Animation.AnimationListener
 {
-  WeakReference a;
+  zjh(zjf paramzjf) {}
   
-  public zjh(Handler paramHandler)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramHandler);
+    this.a.a.clearAnimation();
+    this.a.a.setVisibility(4);
   }
   
-  public void a(PhoneContactManagerImp paramPhoneContactManagerImp)
-  {
-    if (this.a != null) {
-      this.a.clear();
-    }
-    if (paramPhoneContactManagerImp != null) {
-      this.a = new WeakReference(paramPhoneContactManagerImp);
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onChange(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, "Contact changed.");
-    }
-    if (this.a == null) {}
-    for (PhoneContactManagerImp localPhoneContactManagerImp = null;; localPhoneContactManagerImp = (PhoneContactManagerImp)this.a.get())
-    {
-      if (localPhoneContactManagerImp != null) {
-        localPhoneContactManagerImp.h = true;
-      }
-      return;
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

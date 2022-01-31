@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.service.HttpNotify;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 
 public class ffq
-  implements HttpNotify
+  implements Runnable
 {
-  public ffq(DataLineHandler paramDataLineHandler) {}
+  public ffq(QQAppInterface paramQQAppInterface) {}
   
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(long paramLong1, long paramLong2, long paramLong3) {}
-  
-  public void a(long paramLong1, boolean paramBoolean, long paramLong2) {}
+  public void run()
+  {
+    if (!this.a.m()) {
+      return;
+    }
+    QQAppInterface.a(this.a).a(QQAppInterface.a(this.a));
+  }
 }
 
 

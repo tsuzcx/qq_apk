@@ -1,90 +1,22 @@
-import android.os.SystemClock;
-import com.tencent.common.app.ThreadTracker;
-import com.tencent.widget.TraceUtils;
-import java.lang.ref.Reference;
-import java.util.Iterator;
-import java.util.Vector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AuthDevActivity;
 
-class bvt
-  implements Iterator
+public class bvt
+  implements DialogInterface.OnDismissListener
 {
-  private Thread jdField_a_of_type_JavaLangThread;
-  private final Iterator jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_Bvs.jdField_a_of_type_JavaLangIterable.iterator();
-  private boolean jdField_a_of_type_Boolean;
-  private Thread b;
+  public bvt(AuthDevActivity paramAuthDevActivity) {}
   
-  bvt(bvs parambvs) {}
-  
-  private void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Boolean = false;
-    while ((this.jdField_a_of_type_JavaLangThread == null) && (this.jdField_a_of_type_JavaUtilIterator.hasNext()))
-    {
-      this.jdField_a_of_type_JavaLangThread = ((Thread)((Reference)this.jdField_a_of_type_JavaUtilIterator.next()).get());
-      if ((this.jdField_a_of_type_Bvs.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangThread == null)) {
-        this.jdField_a_of_type_JavaUtilIterator.remove();
-      }
-    }
-  }
-  
-  public Thread a()
-  {
-    if (!hasNext()) {
-      throw new IllegalStateException();
-    }
-    Thread localThread = this.jdField_a_of_type_JavaLangThread;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangThread = null;
-    this.b = localThread;
-    return localThread;
-  }
-  
-  public boolean hasNext()
-  {
-    a();
-    return this.jdField_a_of_type_JavaLangThread != null;
-  }
-  
-  public void remove()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new IllegalStateException();
-    }
-    this.jdField_a_of_type_JavaUtilIterator.remove();
-    bvu localbvu;
-    if (this.b != null)
-    {
-      if (!this.b.getName().startsWith("SharedPreferencesImpl")) {
-        TraceUtils.a("Thread." + this.b.getName() + "." + this.b.getId());
-      }
-      if (ThreadTracker.a())
-      {
-        localbvu = ThreadTracker.a(this.b.getId(), ThreadTracker.a);
-        if (localbvu == null) {
-          break label161;
-        }
-        bvu.a(localbvu, this.b.getName());
-        bvu.a(localbvu, SystemClock.uptimeMillis() - ThreadTracker.a());
-      }
-    }
-    for (;;)
-    {
-      if (!this.b.getName().startsWith("SharedPreferencesImpl")) {
-        TraceUtils.a();
-      }
-      this.b = null;
-      return;
-      label161:
-      localbvu = new bvu(this.b.getId(), this.b.getName(), 0L, null);
-      bvu.a(localbvu, this.b.getName());
-      bvu.a(localbvu, SystemClock.uptimeMillis() - ThreadTracker.a());
-      ThreadTracker.a.add(localbvu);
+    if (paramDialogInterface == AuthDevActivity.a(this.a)) {
+      AuthDevActivity.a(this.a, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bvt
  * JD-Core Version:    0.7.0.1
  */

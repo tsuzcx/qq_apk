@@ -1,52 +1,112 @@
-import android.graphics.BitmapFactory.Options;
-import android.os.Bundle;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.receipt.ReceiptMsgManager;
-import com.tencent.mobileqq.transfile.RichMediaUtil;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.contact.addcontact.BubbleLayout;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 
 public class ahfh
-  implements Runnable
+  extends RecyclerView.Adapter<ahfk>
 {
-  public ahfh(ReceiptMsgManager paramReceiptMsgManager, ArrayList paramArrayList, Bundle paramBundle, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  ahfc jdField_a_of_type_Ahfc;
+  ahfl jdField_a_of_type_Ahfl;
+  Context jdField_a_of_type_AndroidContentContext;
+  List<ahfc> jdField_a_of_type_JavaUtilList;
   
-  public void run()
+  public ahfh(Context paramContext, List<ahfc> paramList, ahfl paramahfl)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Ahfl = paramahfl;
+  }
+  
+  private void a(ahfk paramahfk, ahfc paramahfc)
+  {
+    paramahfk.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+    Object localObject = URLDrawable.getDrawable(paramahfc.c, null);
+    if ((localObject != null) && (1 != ((URLDrawable)localObject).getStatus()))
     {
-      ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-      if (((localChatMessage instanceof MessageForPic)) && (new File(((MessageForPic)localChatMessage).path).exists()))
+      ((URLDrawable)localObject).setAutoDownload(true);
+      ((URLDrawable)localObject).startDownload(true);
+    }
+    URLDrawable localURLDrawable = URLDrawable.getDrawable(paramahfc.b, null);
+    if ((localURLDrawable != null) && (1 != localURLDrawable.getStatus()))
+    {
+      localURLDrawable.setAutoDownload(true);
+      localURLDrawable.startDownload(true);
+    }
+    String str = "#F5F6FA";
+    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167059);
+    int j = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166910);
+    if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
+      str = "#282828";
+    }
+    if (paramahfc.jdField_a_of_type_Boolean) {
+      paramahfk.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
+    }
+    for (;;)
+    {
+      paramahfk.jdField_a_of_type_AndroidWidgetTextView.setText(paramahfc.jdField_a_of_type_JavaLangString);
+      paramahfk.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      paramahfk.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactBubbleLayout.setUnselectedColor(str);
+      paramahfk.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactBubbleLayout.setSelectedColor(paramahfc.e);
+      paramahfk.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactBubbleLayout.setSelected(paramahfc.jdField_a_of_type_Boolean);
+      azqs.b(null, "dc00899", "Grp_find_new", "", "grptab", "main_tag_exp", 0, 0, "", paramahfc.jdField_a_of_type_JavaLangString, "", "");
+      return;
+      paramahfk.jdField_a_of_type_AndroidWidgetTextView.setTextColor(j);
+      localObject = localURLDrawable;
+    }
+  }
+  
+  public ahfk a(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new ahfk(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559705, null));
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ac_ft.AddContactTroopClassifyAdapter", 2, "bubbleLayout  clicked  position = " + paramInt);
+    }
+    ahfc localahfc = (ahfc)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    localahfc.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Ahfc == null) {
+      this.jdField_a_of_type_Ahfc = localahfc;
+    }
+    for (;;)
+    {
+      notifyDataSetChanged();
+      azqs.b(null, "dc00899", "Grp_find_new", "", "grptab", "main_tag_clk", 0, 0, "", localahfc.jdField_a_of_type_JavaLangString, "", "");
+      return;
+      if (this.jdField_a_of_type_Ahfc != localahfc)
       {
-        MessageForPic localMessageForPic = (MessageForPic)localChatMessage;
-        int i = this.jdField_a_of_type_AndroidOsBundle.getInt("ReceiptMsgManager.EXTRA_KEY_PHOTO_SIZE_SPEC", 0);
-        ReceiptMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager, localMessageForPic, i);
-        localMessageForPic.md5 = ReceiptMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager, localMessageForPic.path);
-        BitmapFactory.Options localOptions = new BitmapFactory.Options();
-        localOptions.inJustDecodeBounds = true;
-        localOptions.inSampleSize = 1;
-        SafeBitmapFactory.decodeFile(localMessageForPic.path, localOptions);
-        localMessageForPic.width = localOptions.outWidth;
-        localMessageForPic.height = localOptions.outHeight;
-        ReceiptMsgManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localChatMessage, Integer.toString(i));
-        if (RichMediaUtil.a(localMessageForPic.path))
-        {
-          localMessageForPic.width = localOptions.outHeight;
-          localMessageForPic.height = localOptions.outWidth;
-          if (QLog.isColorLevel()) {
-            QLog.d("ReceiptMsgManager", 2, new Object[] { "packMsg", " pic is Landscape,swap w,h; options.outWidth = " + localOptions.outWidth + ",options.outHeight = " + localOptions.outHeight + ",mr.width = " + localMessageForPic.width + ",mr.height = " + localMessageForPic.height });
-          }
-        }
+        this.jdField_a_of_type_Ahfc.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Ahfc = localahfc;
       }
     }
-    ReceiptMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, ReceiptMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager, 2), false, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_AndroidOsBundle);
+  }
+  
+  public void a(ahfk paramahfk, int paramInt)
+  {
+    a(paramahfk, (ahfc)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    paramahfk.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactBubbleLayout.setOnClickListener(new ahfi(this, paramInt));
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
   }
 }
 

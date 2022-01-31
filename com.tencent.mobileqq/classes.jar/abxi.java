@@ -1,31 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.mobileqq.dating.MsgBoxProtocol.ReqNowStateObserver;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class abxi
-  extends MsgBoxProtocol.ReqNowStateObserver
+class abxi
+  implements DialogInterface.OnCancelListener
 {
-  public abxi(MsgBoxListActivity paramMsgBoxListActivity, List paramList) {}
+  abxi(abxe paramabxe, abxd paramabxd, abwv paramabwv, JSONObject paramJSONObject, abwu paramabwu) {}
   
-  public void a(boolean paramBoolean, List paramList, Bundle paramBundle)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (paramBoolean)
-    {
-      paramBundle = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramBundle.hasNext())
-      {
-        RecentItemNearbyLiveTipData localRecentItemNearbyLiveTipData = (RecentItemNearbyLiveTipData)paramBundle.next();
-        this.jdField_a_of_type_ComTencentMobileqqDatingMsgBoxListActivity.a(localRecentItemNearbyLiveTipData, paramList);
-      }
-    }
+    this.jdField_a_of_type_Abxe.d();
+    QLog.i("DoraemonOpenAPI.apiMgr", 1, "cancel " + this.jdField_a_of_type_Abxd.a);
+    abxe.c(this.jdField_a_of_type_Abxe, 4, this.jdField_a_of_type_Abwv, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Abwu);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxi
  * JD-Core Version:    0.7.0.1
  */

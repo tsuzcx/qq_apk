@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.view;
 
-import com.tencent.util.WeakReferenceHandler;
+import bhtd;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -11,18 +11,18 @@ public class MusicFragmentProviderView$MusicPlayTask
   
   public void run()
   {
-    if (MusicFragmentProviderView.a(this.a) != null)
+    if (MusicFragmentProviderView.a(this.this$0) != null)
     {
-      MusicFragmentProviderView.a(this.a).incrementAndGet();
-      if (this.a.a != null) {
-        this.a.a.sendEmptyMessage(0);
+      MusicFragmentProviderView.a(this.this$0).incrementAndGet();
+      if (this.this$0.a != null) {
+        this.this$0.a.sendEmptyMessage(0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.view.MusicFragmentProviderView.MusicPlayTask
  * JD-Core Version:    0.7.0.1
  */

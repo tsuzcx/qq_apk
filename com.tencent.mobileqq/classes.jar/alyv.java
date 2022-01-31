@@ -1,24 +1,41 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
-import com.tencent.sharp.jni.TraeMediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
 
-class alyv
-  implements TraeMediaPlayer.OnCompletionListener
+public class alyv
+  extends aluc
 {
-  alyv(alyu paramalyu) {}
-  
-  public void a()
+  protected void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("TRAE", 2, "_ringPlayer onCompletion _activeMode:" + this.a.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a + " _preRingMode:" + this.a.jdField_b_of_type_Int);
+    super.a();
+    if (this.d >= alua.a().a / 12000L)
+    {
+      CoreService.stopTempService();
+      this.a.c();
+      this.d = 0L;
     }
-    TraeAudioManager.a("TraeMediaPlayer_OnCompletionListener", null, -1L, true);
-    this.a.h();
+  }
+  
+  protected void a(String paramString)
+  {
+    GuardManager localGuardManager = this.a;
+    if ("com.tencent.mobileqq".equals(paramString)) {}
+    for (int i = 2;; i = 3)
+    {
+      localGuardManager.a(i, paramString);
+      return;
+    }
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    this.a.b();
+    CoreService.startTempService();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alyv
  * JD-Core Version:    0.7.0.1
  */

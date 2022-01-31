@@ -1,115 +1,141 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public final class fa
-  extends bm
+abstract class fa
+  extends fb
 {
-  private long c;
-  private long d;
-  private String e;
-  private String f = "";
+  static final byte[] c = new byte[''];
+  final byte[] a;
+  long b;
+  private final String d;
+  private final int e;
+  private final int f;
   private int g;
   
-  protected final String a()
+  static
   {
-    Object localObject1 = null;
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
+    c[0] = -128;
+  }
+  
+  fa(fa paramfa)
+  {
+    this.d = paramfa.d;
+    this.e = paramfa.e;
+    this.f = paramfa.f;
+    if (paramfa.a == null) {
+      this.a = null;
     }
-    for (String str = ax.c; str == null; str = null)
+    for (;;)
     {
-      this.a.a(104, null, null);
-      return null;
+      this.g = paramfa.g;
+      this.b = paramfa.b;
+      return;
+      this.a = new byte[paramfa.a.length];
+      System.arraycopy(paramfa.a, 0, this.a, 0, this.a.length);
     }
+  }
+  
+  fa(String paramString, int paramInt1, int paramInt2)
+  {
+    this.d = paramString;
+    this.e = paramInt1;
+    this.f = paramInt2;
+    this.a = new byte[paramInt2];
+  }
+  
+  protected final void a()
+  {
+    if (this.b == 0L) {
+      return;
+    }
+    c();
+    this.g = 0;
+    this.b = 0L;
+  }
+  
+  abstract void a(byte[] paramArrayOfByte, int paramInt);
+  
+  protected final void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 0) {}
+    int i;
+    int j;
+    do
+    {
+      return;
+      if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt1 > paramArrayOfByte.length - paramInt2)) {
+        throw new ArrayIndexOutOfBoundsException();
+      }
+      if (this.b < 0L) {
+        a();
+      }
+      this.b += paramInt2;
+      i = paramInt1;
+      j = paramInt2;
+      if (this.g != 0)
+      {
+        i = Math.min(paramInt2, this.f - this.g);
+        System.arraycopy(paramArrayOfByte, paramInt1, this.a, this.g, i);
+        this.g += i;
+        paramInt1 += i;
+        paramInt2 -= i;
+        i = paramInt1;
+        j = paramInt2;
+        if (this.g >= this.f)
+        {
+          a(this.a, 0);
+          this.g = 0;
+          j = paramInt2;
+          i = paramInt1;
+        }
+      }
+      while (j >= this.f)
+      {
+        a(paramArrayOfByte, i);
+        j -= this.f;
+        i += this.f;
+      }
+    } while (j <= 0);
+    System.arraycopy(paramArrayOfByte, i, this.a, 0, j);
+    this.g = j;
+  }
+  
+  public byte[] a(byte[] paramArrayOfByte)
+  {
+    a(paramArrayOfByte, 0, paramArrayOfByte.length);
+    return b();
+  }
+  
+  protected final int b(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (paramInt2 < this.e) {
+      throw new Exception("Length must be at least " + this.e + " for " + this.d + "digests");
+    }
+    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt1 > paramArrayOfByte.length - paramInt2)) {
+      throw new Exception("Buffer too short to store digest");
+    }
+    if (this.b < 0L) {
+      a();
+    }
+    b(paramArrayOfByte, paramInt1);
+    this.b = -1L;
+    return this.e;
+  }
+  
+  abstract void b(byte[] paramArrayOfByte, int paramInt);
+  
+  protected final byte[] b()
+  {
+    byte[] arrayOfByte = new byte[this.e];
     try
     {
-      Object localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("uin", this.c);
-      int i = af.a + 1;
-      af.a = i;
-      this.g = i;
-      ((JSONObject)localObject2).put("seq_id", this.g);
-      ((JSONObject)localObject2).put("op_time", ag.c().r() / 1000L);
-      ((JSONObject)localObject2).put("scenario_id", this.d);
-      ((JSONObject)localObject2).put("captcha", this.e);
-      localObject2 = ((JSONObject)localObject2).toString();
-      e.a("plain:" + (String)localObject2);
-      localObject2 = s.b(((String)localObject2).getBytes());
-      localObject1 = localObject2;
+      b(arrayOfByte, 0, arrayOfByte.length);
+      return arrayOfByte;
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        e.c("JSONException:" + localJSONException.getMessage());
-      }
-    }
-    str = "?aq_base_sid=" + str + "&data=" + localObject1;
-    e.c("params: " + str);
-    return b.c() + "/cn/mbtoken3/mbtoken3_verify_captcha_v2" + str;
+    catch (Exception localException) {}
+    return null;
   }
   
-  protected final void a(fs paramfs)
-  {
-    this.c = ((Long)paramfs.c.get("param.realuin")).longValue();
-    this.d = ((Integer)paramfs.c.get("param.scene.id")).intValue();
-    this.e = ((String)paramfs.c.get("param.captcha"));
-  }
-  
-  protected final void a(JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
-    {
-      a(i, paramJSONObject.getString("info"));
-      return;
-    }
-    paramJSONObject = s.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
-    {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      i = paramJSONObject.getInt("seq_id");
-      if (i != this.g)
-      {
-        this.a.a(10030, null, null);
-        paramJSONObject = new StringBuilder().append("parseJSON error seq is wrong seq=").append(i).append(",right = ");
-        af.a();
-        e.c(af.b());
-        return;
-      }
-      if (this.d == 5L) {
-        this.f = paramJSONObject.getString("captcha_sig");
-      }
-      this.a.a = 0;
-      return;
-    }
-    e.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.i().getString(2131361799));
-  }
-  
-  protected final void b()
-  {
-    if (!this.b.e)
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.f;
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
-  }
+  abstract void c();
 }
 
 

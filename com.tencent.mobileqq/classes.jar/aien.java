@@ -1,21 +1,12 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadOptimizer;
-import com.tencent.mobileqq.startup.director.StartupDirector;
+import android.view.MotionEvent;
 
-public class aien
-  implements Runnable
+public abstract interface aien
 {
-  public aien(StartupDirector paramStartupDirector) {}
-  
-  public void run()
-  {
-    ThreadManager.initDPC();
-    ThreadOptimizer.a().a();
-  }
+  public abstract void a(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aien
  * JD-Core Version:    0.7.0.1
  */

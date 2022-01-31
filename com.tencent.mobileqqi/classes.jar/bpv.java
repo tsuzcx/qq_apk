@@ -1,18 +1,90 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.os.SystemClock;
+import com.tencent.common.app.ThreadTracker;
+import com.tencent.widget.TraceUtils;
+import java.lang.ref.Reference;
+import java.util.Iterator;
+import java.util.Vector;
 
-public class bpv
-  implements Runnable
+class bpv
+  implements Iterator
 {
-  public bpv(AccountDetailActivity paramAccountDetailActivity) {}
+  private Thread jdField_a_of_type_JavaLangThread;
+  private final Iterator jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_Bpu.jdField_a_of_type_JavaLangIterable.iterator();
+  private boolean jdField_a_of_type_Boolean;
+  private Thread b;
   
-  public void run()
+  bpv(bpu parambpu) {}
+  
+  private void a()
   {
-    this.a.f = false;
+    this.jdField_a_of_type_Boolean = false;
+    while ((this.jdField_a_of_type_JavaLangThread == null) && (this.jdField_a_of_type_JavaUtilIterator.hasNext()))
+    {
+      this.jdField_a_of_type_JavaLangThread = ((Thread)((Reference)this.jdField_a_of_type_JavaUtilIterator.next()).get());
+      if ((this.jdField_a_of_type_Bpu.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangThread == null)) {
+        this.jdField_a_of_type_JavaUtilIterator.remove();
+      }
+    }
+  }
+  
+  public Thread a()
+  {
+    if (!hasNext()) {
+      throw new IllegalStateException();
+    }
+    Thread localThread = this.jdField_a_of_type_JavaLangThread;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangThread = null;
+    this.b = localThread;
+    return localThread;
+  }
+  
+  public boolean hasNext()
+  {
+    a();
+    return this.jdField_a_of_type_JavaLangThread != null;
+  }
+  
+  public void remove()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new IllegalStateException();
+    }
+    this.jdField_a_of_type_JavaUtilIterator.remove();
+    bpw localbpw;
+    if (this.b != null)
+    {
+      if (!this.b.getName().startsWith("SharedPreferencesImpl")) {
+        TraceUtils.a("Thread." + this.b.getName() + "." + this.b.getId());
+      }
+      if (ThreadTracker.a())
+      {
+        localbpw = ThreadTracker.a(this.b.getId(), ThreadTracker.a);
+        if (localbpw == null) {
+          break label161;
+        }
+        bpw.a(localbpw, this.b.getName());
+        bpw.a(localbpw, SystemClock.uptimeMillis() - ThreadTracker.a());
+      }
+    }
+    for (;;)
+    {
+      if (!this.b.getName().startsWith("SharedPreferencesImpl")) {
+        TraceUtils.a();
+      }
+      this.b = null;
+      return;
+      label161:
+      localbpw = new bpw(this.b.getId(), this.b.getName(), 0L, null);
+      bpw.a(localbpw, this.b.getName());
+      bpw.a(localbpw, SystemClock.uptimeMillis() - ThreadTracker.a());
+      ThreadTracker.a.add(localbpw);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bpv
  * JD-Core Version:    0.7.0.1
  */

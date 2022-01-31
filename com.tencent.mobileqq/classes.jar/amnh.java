@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qlink.QQProxyForQlink;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class amnh
-  implements DialogInterface.OnDismissListener
+class amnh
+  implements View.OnClickListener
 {
-  public amnh(QQProxyForQlink paramQQProxyForQlink) {}
+  amnh(amne paramamne) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    QQProxyForQlink.a(this.a, null);
+    azqs.b(null, "dc00898", "", "", "0X8009ACD", "0X8009ACD", 0, 0, "", "", "", "");
+    this.a.dismiss();
   }
 }
 

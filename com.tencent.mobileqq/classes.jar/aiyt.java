@@ -1,14 +1,22 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.MyAnimationListener;
 
-class aiyt
-  implements Runnable
+public class aiyt
+  implements AnimationView.MyAnimationListener
 {
-  aiyt(aiyr paramaiyr) {}
+  public aiyt(ThemeHbFragment paramThemeHbFragment) {}
   
-  public void run()
+  public void onAnimationEnd(AnimationView paramAnimationView) {}
+  
+  public void onAnimationRepeat(AnimationView paramAnimationView) {}
+  
+  public void onAnimationStart(AnimationView paramAnimationView)
   {
-    this.a.a.a.sendEmptyMessage(1006);
+    if (ThemeHbFragment.a(this.a).getChildCount() > 0) {
+      ThemeHbFragment.a(this.a).removeViewAt(0);
+    }
   }
 }
 

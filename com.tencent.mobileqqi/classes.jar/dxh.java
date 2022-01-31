@@ -1,28 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
 
 public class dxh
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public dxh(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public dxh(ComboAnimation3 paramComboAnimation3) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramView = new ProfileActivity.AllInOne(this.a.b.a(), 0);
-    paramView.g = ContactUtils.g(this.a.b, this.a.b.a());
-    paramView.e = 3;
-    paramView.f = 4;
-    ProfileActivity.a(this.a, paramView);
+    this.a.d();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dxh
  * JD-Core Version:    0.7.0.1
  */

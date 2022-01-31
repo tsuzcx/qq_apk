@@ -1,29 +1,18 @@
-import com.tencent.image.URLImageView;
-import cooperation.qzone.widget.FastAnimationDrawable;
-import dov.com.tencent.biz.qqstory.takevideo.EditGifImage;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.os.HandlerThread;
+import com.tencent.ark.ArkEnvironmentManager.ThreadCreater;
+import com.tencent.mobileqq.app.ThreadManager;
 
-public class anqz
-  implements Runnable
+final class anqz
+  implements ArkEnvironmentManager.ThreadCreater
 {
-  public anqz(EditGifImage paramEditGifImage) {}
-  
-  public void run()
+  public HandlerThread createHanderThread(String paramString)
   {
-    FastAnimationDrawable localFastAnimationDrawable = this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable;
-    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.stop();
-    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable = this.a.b;
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable);
-    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
-    this.a.b = localFastAnimationDrawable;
-    this.a.d = true;
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a(true, true);
+    return ThreadManager.newFreeHandlerThread(paramString, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anqz
  * JD-Core Version:    0.7.0.1
  */

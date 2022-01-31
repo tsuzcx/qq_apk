@@ -1,38 +1,22 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.tribe.TribePostTitlePrefixPanelController;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiyd
-  extends ClickableSpan
+  implements View.OnClickListener
 {
-  public aiyd(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public aiyd(LingHbFragment paramLingHbFragment) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.a != null)
+    QLog.i("LingHbFragment", 2, "change others...");
+    if (this.a.channel == 65536) {}
+    for (paramView = "yyhongbao.word.change";; paramView = "klhongbao.word.change")
     {
-      if (!this.a.a.a()) {
-        break label42;
-      }
-      this.a.a.b();
-    }
-    for (;;)
-    {
-      this.a.e(true);
+      this.a.addUploadData(paramView, "");
       return;
-      label42:
-      this.a.a.a();
-      ReportController.b(null, "dc00899", "Grp_tribe", "", "pub_page", "clk_prefixchoose", 0, 0, this.a.r, "", "", "");
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-16777216);
-    paramTextPaint.setUnderlineText(false);
   }
 }
 

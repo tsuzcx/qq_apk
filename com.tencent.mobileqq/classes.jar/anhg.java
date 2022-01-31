@@ -1,33 +1,38 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.weiyun.WeiyunAIOUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.qphone.base.util.QLog;
 
-public final class anhg
-  implements FMDialogUtil.FMDialogInterface
+public class anhg
+  implements angb
 {
-  public anhg(ArrayList paramArrayList1, QQAppInterface paramQQAppInterface, ArrayList paramArrayList2, ArrayList paramArrayList3, ArrayList paramArrayList4, MqqHandler paramMqqHandler, int paramInt) {}
+  public anhg(ARScanEntryView paramARScanEntryView) {}
   
   public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      MessageForFile localMessageForFile = (MessageForFile)localIterator.next();
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForFile, BaseActivity.sTopActivity, true);
+    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResDownloadComplete ;" + this.a.m);
+    if (!this.a.m) {
+      return;
     }
-    if (WeiyunAIOUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, this.c, this.d, this.jdField_a_of_type_MqqOsMqqHandler)) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131428195, 0).b(this.jdField_a_of_type_Int);
-    }
+    ARScanEntryView.a(this.a, 100);
+    ARScanEntryView.a(this.a).removeMessages(324);
+    ARScanEntryView.a(this.a).sendEmptyMessage(324);
+    this.a.k();
   }
   
-  public void b() {}
+  public void a(int paramInt)
+  {
+    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResUpdateProgress " + paramInt + ";" + this.a.m);
+    if (!this.a.m) {
+      return;
+    }
+    ARScanEntryView.a(this.a, paramInt);
+    ARScanEntryView.a(this.a);
+  }
+  
+  public void b()
+  {
+    this.a.k();
+  }
 }
 
 

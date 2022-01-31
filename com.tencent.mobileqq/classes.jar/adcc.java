@@ -1,71 +1,61 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserManager.IModelCreater;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewerParamParser;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DatalineFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DeviceFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity.16.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class adcc
-  implements FileBrowserManager.IModelCreater
+  extends BroadcastReceiver
 {
-  public adcc(FileViewerParamParser paramFileViewerParamParser, BaseActivity paramBaseActivity) {}
+  public adcc(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public FileBrowserModelBase a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject3 = null;
-    int i = 0;
-    Object localObject1;
-    switch (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewerParamParser.a())
+    paramContext = paramIntent.getAction();
+    String str1 = paramIntent.getStringExtra("event");
+    if ((TroopInfo.isHomeworkTroop(this.a.app, this.a.a)) && ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) && ("onHomeworkTroopIdentityChanged".equals(str1)))
     {
-    default: 
-      localObject1 = null;
+      paramContext = paramIntent.getStringExtra("data");
+      if (!TextUtils.isEmpty(paramContext)) {
+        break label67;
+      }
     }
-    int k;
     for (;;)
     {
-      Object localObject2 = localObject3;
-      if (localObject1 != null)
+      return;
+      try
       {
-        localObject2 = localObject3;
-        if (((List)localObject1).size() > 0)
+        label67:
+        paramContext = new JSONObject(paramContext);
+        paramIntent = paramContext.optString("groupCode");
+        if (TextUtils.equals(this.a.a, paramIntent))
         {
-          localObject2 = (IFileViewerAdapter)((List)localObject1).get(i);
-          int j = ((IFileViewerAdapter)localObject2).c();
-          k = ((IFileViewerAdapter)localObject2).b();
-          if (j != 7) {
-            break;
+          paramContext.optString("content");
+          paramIntent = paramContext.optString("source");
+          int i = paramContext.optInt("rankId", 333);
+          str1 = paramContext.optString("nickName");
+          String str2 = paramContext.optString("uin");
+          String str3 = paramContext.optString("course");
+          paramContext = paramContext.optString("name");
+          if ("qqProfile".equals(paramIntent))
+          {
+            ThreadManager.post(new FriendProfileMoreInfoActivity.16.1(this, str2, str1, i, str3, paramContext), 8, null, false);
+            return;
           }
-          localObject2 = new MPcFileModel(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
         }
       }
-      return localObject2;
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewerParamParser.a();
-      i = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewerParamParser.b();
-      continue;
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewerParamParser.a();
-      i = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewerParamParser.b();
-      continue;
-      localObject1 = new ArrayList(1);
-      ((List)localObject1).add(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewerParamParser.a());
+      catch (JSONException paramContext) {}
     }
-    switch (k)
-    {
-    default: 
-      return new C2CFileModel(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-    case 6000: 
-      return new DatalineFileModel(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-    }
-    return new DeviceFileModel(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adcc
  * JD-Core Version:    0.7.0.1
  */

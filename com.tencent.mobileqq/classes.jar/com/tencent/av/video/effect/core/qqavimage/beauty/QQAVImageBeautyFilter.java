@@ -142,7 +142,7 @@ public class QQAVImageBeautyFilter
       i = 1;
       super.onOutputSizeChanged(paramInt1, paramInt2);
       if (i == 0) {
-        return;
+        break label356;
       }
       if (this.mFrameBuffers != null)
       {
@@ -156,43 +156,59 @@ public class QQAVImageBeautyFilter
       if (this.mSkinColorFilter != null) {
         this.mSkinColorFilter.onOutputSizeChanged(paramInt1, paramInt2);
       }
-      f = 2.0F;
       if (paramInt1 <= 720) {
-        break label307;
+        break label305;
       }
       f = 5.0F;
     }
     for (;;)
     {
+      label125:
       this.mHighPassFilter.setRadiusInPixels(f);
       int j = this.mFrameBufferTextures.length;
       i = 0;
-      while (i < j)
+      for (;;)
       {
-        GLES20.glGenFramebuffers(1, this.mFrameBuffers, i);
-        GLES20.glGenTextures(1, this.mFrameBufferTextures, i);
-        GLES20.glBindTexture(3553, this.mFrameBufferTextures[i]);
-        GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
-        GLES20.glTexParameterf(3553, 10240, 9729.0F);
-        GLES20.glTexParameterf(3553, 10241, 9729.0F);
-        GLES20.glTexParameterf(3553, 10242, 33071.0F);
-        GLES20.glTexParameterf(3553, 10243, 33071.0F);
-        GLES20.glBindFramebuffer(36160, this.mFrameBuffers[i]);
-        GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.mFrameBufferTextures[i], 0);
-        GLES20.glBindTexture(3553, 0);
-        GLES20.glBindFramebuffer(36160, 0);
-        i += 1;
+        if (i < j)
+        {
+          GLES20.glGenFramebuffers(1, this.mFrameBuffers, i);
+          GLES20.glGenTextures(1, this.mFrameBufferTextures, i);
+          GLES20.glBindTexture(3553, this.mFrameBufferTextures[i]);
+          GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
+          GLES20.glTexParameterf(3553, 10240, 9729.0F);
+          GLES20.glTexParameterf(3553, 10241, 9729.0F);
+          GLES20.glTexParameterf(3553, 10242, 33071.0F);
+          GLES20.glTexParameterf(3553, 10243, 33071.0F);
+          GLES20.glBindFramebuffer(36160, this.mFrameBuffers[i]);
+          GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.mFrameBufferTextures[i], 0);
+          GLES20.glBindTexture(3553, 0);
+          GLES20.glBindFramebuffer(36160, 0);
+          i += 1;
+          continue;
+          i = 0;
+          break;
+          label305:
+          if ((paramInt1 >= 540) && (paramInt1 <= 720))
+          {
+            f = 3.0F;
+            break label125;
+          }
+          if ((paramInt1 >= 480) && (paramInt1 < 540))
+          {
+            f = 2.0F;
+            break label125;
+          }
+          if (paramInt1 >= 480) {
+            break label357;
+          }
+          f = 1.0F;
+          break label125;
+        }
       }
-      i = 0;
-      break;
-      label307:
-      if ((paramInt1 >= 540) && (paramInt1 <= 720)) {
-        f = 3.0F;
-      } else if ((paramInt1 >= 480) && (paramInt1 < 540)) {
-        f = 2.0F;
-      } else if (paramInt1 < 480) {
-        f = 1.0F;
-      }
+      label356:
+      return;
+      label357:
+      f = 2.0F;
     }
   }
   
@@ -285,7 +301,7 @@ public class QQAVImageBeautyFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.beauty.QQAVImageBeautyFilter
  * JD-Core Version:    0.7.0.1
  */

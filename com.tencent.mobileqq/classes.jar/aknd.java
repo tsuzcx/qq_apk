@@ -1,28 +1,18 @@
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
-import com.tencent.mobileqq.webview.swift.SwitchFragmentTitleBarUI;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import com.tencent.mobileqq.webview.ui.WebViewTopTabView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aknd
-  implements RadioGroup.OnCheckedChangeListener
+class aknd
+  implements DialogInterface.OnClickListener
 {
-  public aknd(SwitchFragmentTitleBarUI paramSwitchFragmentTitleBarUI) {}
+  aknd(aknb paramaknb) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramInt = this.a.a(paramRadioGroup);
-    if (((QQBrowserActivity)this.a.a.a).b != paramInt)
-    {
-      paramRadioGroup = QQBrowserActivity.a(paramInt, (QQBrowserActivity)this.a.a.a);
-      ((QQBrowserActivity)this.a.a.a).b = paramInt;
-      if ((paramRadioGroup.a != null) && (paramRadioGroup.a.a != null)) {
-        paramRadioGroup.a.a.setSelectedTab(paramInt);
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.d(aknb.a(this.a), 4, "right button is clicked! ");
     }
+    aknb.a(this.a, 0);
   }
 }
 

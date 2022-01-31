@@ -11,17 +11,17 @@ public final class get_photo_list_ex_rsp
   extends JceStruct
 {
   static Album cache_albuminfo = new Album();
-  static Map cache_features;
-  static ArrayList cache_photolist = new ArrayList();
+  static Map<Integer, byte[]> cache_features;
+  static ArrayList<Photo> cache_photolist = new ArrayList();
   public Album albuminfo;
   public int appid;
-  public Map features;
+  public Map<Integer, byte[]> features;
   public int imaxfetch;
   public int index;
   public int indexInVec;
   public long left_finish;
   public int lossy_service;
-  public ArrayList photolist;
+  public ArrayList<Photo> photolist;
   public long right_finish;
   
   static
@@ -36,7 +36,7 @@ public final class get_photo_list_ex_rsp
   
   public get_photo_list_ex_rsp() {}
   
-  public get_photo_list_ex_rsp(int paramInt1, Album paramAlbum, long paramLong1, long paramLong2, ArrayList paramArrayList, int paramInt2, int paramInt3, int paramInt4, int paramInt5, Map paramMap)
+  public get_photo_list_ex_rsp(int paramInt1, Album paramAlbum, long paramLong1, long paramLong2, ArrayList<Photo> paramArrayList, int paramInt2, int paramInt3, int paramInt4, int paramInt5, Map<Integer, byte[]> paramMap)
   {
     this.index = paramInt1;
     this.albuminfo = paramAlbum;

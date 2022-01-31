@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.fragment.NowLiveFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
 
-class adny
-  implements Runnable
+public final class adny
+  implements Parcelable.Creator<ProfileActivity.CardContactInfo>
 {
-  adny(adnv paramadnv) {}
-  
-  public void run()
+  public ProfileActivity.CardContactInfo a(Parcel paramParcel)
   {
-    this.a.a.e();
+    ProfileActivity.CardContactInfo localCardContactInfo = new ProfileActivity.CardContactInfo(null);
+    localCardContactInfo.a = paramParcel.readString();
+    localCardContactInfo.c = paramParcel.readString();
+    localCardContactInfo.b = paramParcel.readString();
+    return localCardContactInfo;
+  }
+  
+  public ProfileActivity.CardContactInfo[] a(int paramInt)
+  {
+    return new ProfileActivity.CardContactInfo[paramInt];
   }
 }
 

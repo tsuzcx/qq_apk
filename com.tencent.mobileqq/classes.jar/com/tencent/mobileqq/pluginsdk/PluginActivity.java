@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.pluginsdk;
 
+@Deprecated
 public class PluginActivity
   extends BasePluginActivity
 {}

@@ -1,13 +1,10 @@
-import java.io.File;
-import java.io.FileFilter;
-
-public final class amyc
-  implements FileFilter
+public abstract interface amyc
 {
-  public boolean accept(File paramFile)
-  {
-    return paramFile.getName().endsWith(".cfg");
-  }
+  public abstract void b(int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

@@ -1,33 +1,71 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.handler.VidToSimpleInfoHandler.GetSimpleInfoListEvent;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.ReportInfoRsp;
 
-public class nsf
-  extends QQUIEventReceiver
+class nsf
+  implements BusinessObserver
 {
-  public nsf(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  private NewIntent a;
+  
+  nsf(NewIntent paramNewIntent)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    this.a = paramNewIntent;
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull VidToSimpleInfoHandler.GetSimpleInfoListEvent paramGetSimpleInfoListEvent)
+  private void a()
   {
-    if (paramGetSimpleInfoListEvent.a.isSuccess()) {
-      paramQQStoryShareGroupProfileActivity.a.a(paramGetSimpleInfoListEvent);
+    if (QLog.isColorLevel()) {
+      QLog.d("QualityReporter", 2, "onSuccess: ");
     }
   }
   
-  public Class acceptEventClass()
+  private void a(int paramInt, String paramString)
   {
-    return VidToSimpleInfoHandler.GetSimpleInfoListEvent.class;
+    if (QLog.isColorLevel()) {
+      QLog.d("QualityReporter", 2, "onError: code=" + paramInt + ", msg=" + paramString);
+    }
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    this.a.setObserver(null);
+    if (paramBoolean)
+    {
+      cc_sso_report_svr.ReportInfoRsp localReportInfoRsp;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null)
+        {
+          a(-123, "data null");
+          return;
+        }
+        localReportInfoRsp = new cc_sso_report_svr.ReportInfoRsp();
+        localReportInfoRsp.mergeFrom(paramBundle);
+        if ((localReportInfoRsp.ret_code.has()) && (localReportInfoRsp.ret_code.get() == 0))
+        {
+          a();
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return;
+      }
+      a(localReportInfoRsp.ret_code.get(), localReportInfoRsp.ret_msg.get());
+      return;
+    }
+    a(-123, "success=false");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nsf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="40.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:layout_marginBottom="9.0dip">
+        <TextView android:textSize="@dimen/ob" android:textColor="@color/dh" android:ellipsize="end" android:id="@id/a1c" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="{username}" android:maxLength="15" android:layout_weight="0.8" />
+        <TextView android:textSize="@dimen/ob" android:textColor="@color/dh" android:gravity="right" android:id="@id/csf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{amount}" />
+        <TextView android:textSize="@dimen/ob" android:textColor="@color/dh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/lb" android:text="@string/c_" />
+    </LinearLayout>
+    <View android:id="@id/pm" android:background="@drawable/sb" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+</LinearLayout>

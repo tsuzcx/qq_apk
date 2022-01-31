@@ -10,17 +10,17 @@ import java.util.Map;
 public final class GetLastPicRsp
   extends JceStruct
 {
-  static Map cache_exend;
-  static ArrayList cache_vec_picurl;
+  static Map<String, String> cache_exend;
+  static ArrayList<String> cache_vec_picurl;
   public int cnt;
-  public Map exend;
+  public Map<String, String> exend;
   public boolean is_new = true;
   public long nexttime;
-  public ArrayList vec_picurl;
+  public ArrayList<String> vec_picurl;
   
   public GetLastPicRsp() {}
   
-  public GetLastPicRsp(ArrayList paramArrayList, boolean paramBoolean, int paramInt, long paramLong, Map paramMap)
+  public GetLastPicRsp(ArrayList<String> paramArrayList, boolean paramBoolean, int paramInt, long paramLong, Map<String, String> paramMap)
   {
     this.vec_picurl = paramArrayList;
     this.is_new = paramBoolean;
@@ -61,7 +61,7 @@ public final class GetLastPicRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qz_groupphoto.GetLastPicRsp
  * JD-Core Version:    0.7.0.1
  */

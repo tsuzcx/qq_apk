@@ -1,23 +1,37 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPromoteTaskList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class vgt
-  implements ValueAnimator.AnimatorUpdateListener
+  extends vez<qqstory_service.ReqGetPromoteTaskList>
 {
-  public vgt(SixCombolEffectView paramSixCombolEffectView, vhg paramvhg) {}
+  public static final String b = uqn.a("StorySvc.get_promote_tasklist");
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public vgt(String paramString)
   {
-    this.jdField_a_of_type_Vhg.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if ((!this.jdField_a_of_type_Vhg.b) && (this.jdField_a_of_type_Vhg.a < 0.52F)) {
-      this.jdField_a_of_type_Vhg.b = true;
-    }
+    super(b, new qqstory_service.ReqGetPromoteTaskList(), null);
+    ((qqstory_service.ReqGetPromoteTaskList)this.a).bytes_cookie.set(ByteStringMicro.copyFromUtf8(paramString));
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    return new vgu(paramArrayOfByte);
+  }
+  
+  protected byte[] a()
+  {
+    wxe.a("GetPromoteTaskRequest", "encode: %s", this);
+    return super.a();
+  }
+  
+  public String toString()
+  {
+    return xrq.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vgt
  * JD-Core Version:    0.7.0.1
  */

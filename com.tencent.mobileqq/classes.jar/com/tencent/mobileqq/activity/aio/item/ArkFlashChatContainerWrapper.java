@@ -1,9 +1,13 @@
 package com.tencent.mobileqq.activity.aio.item;
 
+import afii;
+import afjv;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
+import arwe;
+import com.tencent.ark.ArkDispatchTask;
 import com.tencent.ark.ArkViewImplement;
 import com.tencent.ark.ArkViewModelBase.AppInfo;
 import com.tencent.ark.ArkViewModelBase.ErrorInfo;
@@ -11,9 +15,7 @@ import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ArkFlashChatMessage;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
-import com.tencent.mobileqq.data.RecommendCommonMessage;
 import com.tencent.mobileqq.flashchat.FlashChatManager;
-import com.tencent.mobileqq.flashchat.FlashChatObserver;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -21,33 +23,53 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import uvb;
 
 public class ArkFlashChatContainerWrapper
-  extends ArkAppContainer
+  extends afii
 {
-  private static final List jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  private FlashChatObserver jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatObserver = new uvb(this);
-  public WeakReference a;
-  private WeakReference b;
+  private static final List<WeakReference<ArkFlashChatContainerWrapper>> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+  private static final List<WeakReference<ArkFlashChatContainerWrapper>> jdField_b_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+  private arwe jdField_a_of_type_Arwe = new afjv(this);
+  public WeakReference<QQAppInterface> a;
+  public boolean a;
+  private WeakReference<MessageForArkFlashChat> jdField_b_of_type_JavaLangRefWeakReference;
   public int c;
-  private WeakReference e;
   
   public ArkFlashChatContainerWrapper()
   {
-    jdField_a_of_type_JavaUtilList.add(new WeakReference(this));
+    this(true);
+  }
+  
+  public ArkFlashChatContainerWrapper(boolean paramBoolean)
+  {
+    super(false);
+    if (paramBoolean) {
+      jdField_a_of_type_JavaUtilList.add(new WeakReference(this));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      return;
+      jdField_b_of_type_JavaUtilList.add(new WeakReference(this));
+    }
   }
   
   public static void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ArkApp.ArkAioContainerWrapper", 4, String.format(Locale.CHINA, "doArkAppEvent type:%d", new Object[] { Integer.valueOf(paramInt) }));
+      QLog.d("ArkApp.ArkAioContainerWrapper", 4, String.format(Locale.CHINA, "doArkAppEventAIO type:%d", new Object[] { Integer.valueOf(paramInt) }));
     }
+    a(paramInt, jdField_a_of_type_JavaUtilList);
+  }
+  
+  public static void a(int paramInt, List<WeakReference<ArkFlashChatContainerWrapper>> paramList)
+  {
     for (;;)
     {
-      synchronized (jdField_a_of_type_JavaUtilList)
+      Object localObject2;
+      try
       {
-        Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
+        Iterator localIterator = paramList.iterator();
         if (!localIterator.hasNext()) {
           break;
         }
@@ -58,33 +80,31 @@ public class ArkFlashChatContainerWrapper
             QLog.d("ArkApp.ArkAioContainerWrapper", 4, "doArkAppEvent.(item == null || item.get() == null)");
           }
           localIterator.remove();
+          continue;
         }
+        localObject2 = (ArkFlashChatContainerWrapper)((WeakReference)localObject2).get();
       }
-      Object localObject2 = (ArkFlashChatContainerWrapper)((WeakReference)localObject2).get();
+      finally {}
       ((ArkFlashChatContainerWrapper)localObject2).doOnEvent(paramInt);
       if (paramInt == 2)
       {
-        WeakReference localWeakReference = ((ArkFlashChatContainerWrapper)localObject2).b;
-        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-          ((MessageForArkFlashChat)localWeakReference.get()).arkContainer = null;
-        }
-        localObject2 = ((ArkFlashChatContainerWrapper)localObject2).e;
+        localObject2 = ((ArkFlashChatContainerWrapper)localObject2).jdField_b_of_type_JavaLangRefWeakReference;
         if ((localObject2 != null) && (((WeakReference)localObject2).get() != null)) {
-          ((RecommendCommonMessage)((WeakReference)localObject2).get()).mOldAppInfo.mArkContainer = null;
+          ((MessageForArkFlashChat)((WeakReference)localObject2).get()).arkContainer = null;
         }
       }
     }
     if (paramInt == 2) {
-      jdField_a_of_type_JavaUtilList.clear();
+      paramList.clear();
     }
   }
   
   public String a()
   {
-    if (this.b == null) {
+    if (this.jdField_b_of_type_JavaLangRefWeakReference == null) {
       return "";
     }
-    MessageForArkFlashChat localMessageForArkFlashChat = (MessageForArkFlashChat)this.b.get();
+    MessageForArkFlashChat localMessageForArkFlashChat = (MessageForArkFlashChat)this.jdField_b_of_type_JavaLangRefWeakReference.get();
     if (localMessageForArkFlashChat == null) {
       return "";
     }
@@ -108,8 +128,8 @@ public class ArkFlashChatContainerWrapper
           {
             return str;
             str = paramString;
-          } while (this.b == null);
-          localMessageForArkFlashChat = (MessageForArkFlashChat)this.b.get();
+          } while (this.jdField_b_of_type_JavaLangRefWeakReference == null);
+          localMessageForArkFlashChat = (MessageForArkFlashChat)this.jdField_b_of_type_JavaLangRefWeakReference.get();
           str = paramString;
         } while (localMessageForArkFlashChat == null);
         str = paramString;
@@ -127,12 +147,23 @@ public class ArkFlashChatContainerWrapper
     return paramString.replace("%PROMPT%", localMessageForArkFlashChat.ark_app_message.promptText).replace("$PROMPT$", localMessageForArkFlashChat.ark_app_message.promptText);
   }
   
+  public void a()
+  {
+    this.mInit = false;
+    this.mLoadFailed = false;
+  }
+  
+  public boolean a()
+  {
+    return this.mLoadFailed;
+  }
+  
   public boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, float paramFloat1, SessionInfo paramSessionInfo, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, MessageForArkFlashChat paramMessageForArkFlashChat)
   {
     this.c = paramInt;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
     if (paramMessageForArkFlashChat != null) {
-      this.b = new WeakReference(paramMessageForArkFlashChat);
+      this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramMessageForArkFlashChat);
     }
     if (!super.a(paramString1, paramString2, paramString3, paramString4, paramFloat1, paramSessionInfo))
     {
@@ -148,10 +179,10 @@ public class ArkFlashChatContainerWrapper
   
   public String getViewId()
   {
-    if (this.b == null) {
+    if (this.jdField_b_of_type_JavaLangRefWeakReference == null) {
       return null;
     }
-    MessageForArkFlashChat localMessageForArkFlashChat = (MessageForArkFlashChat)this.b.get();
+    MessageForArkFlashChat localMessageForArkFlashChat = (MessageForArkFlashChat)this.jdField_b_of_type_JavaLangRefWeakReference.get();
     if (localMessageForArkFlashChat == null) {
       return null;
     }
@@ -174,58 +205,39 @@ public class ArkFlashChatContainerWrapper
       }
       return true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$TimeRecord.jdField_a_of_type_Long = System.currentTimeMillis();
-    FlashChatManager localFlashChatManager = (FlashChatManager)paramAppInfo.getManager(216);
+    this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.beginOfGetApp = System.currentTimeMillis();
+    FlashChatManager localFlashChatManager = (FlashChatManager)paramAppInfo.getManager(217);
     String str = localFlashChatManager.a(this.c, this.mAppInfo.name, this.mAppInfo.appMinVersion);
     if (str != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$TimeRecord.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$TimeRecord.b = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.i("FlashChat", 2, String.format("getAppPathByNameFromLocal.in.wrapper: %h", new Object[] { this }));
-      }
-      if (this.mViewImpl != null) {
-        this.mViewImpl.onLoading();
-      }
-      a(str, 0, null);
+      ArkDispatchTask.getInstance().post(this.mAppInfo.name, new ArkFlashChatContainerWrapper.1(this, str));
       return true;
     }
     if (this.mViewImpl != null) {
       this.mViewImpl.onLoading();
     }
-    paramAppInfo.registObserver(this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatObserver);
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkApp", 2, String.format("request from url", new Object[] { this }));
+    }
+    paramAppInfo.registObserver(this.jdField_a_of_type_Arwe);
     localFlashChatManager.a(this.c);
     return false;
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.mContainer == null) {
+    if (!this.jdField_a_of_type_Boolean) {}
+    while ((this.mContainer == null) || (this.mContainer == null)) {
       return false;
     }
-    int i = paramMotionEvent.getActionMasked();
-    if ((i == 1) || (i == 3))
-    {
-      Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject != null)
-      {
-        localObject = (FlashChatManager)((QQAppInterface)localObject).getManager(216);
-        ((FlashChatManager)localObject).a(null);
-        if (this.b != null)
-        {
-          MessageForArkFlashChat localMessageForArkFlashChat = (MessageForArkFlashChat)this.b.get();
-          if (localMessageForArkFlashChat != null) {
-            ((FlashChatManager)localObject).b(localMessageForArkFlashChat);
-          }
-        }
-      }
-    }
-    return super.onTouch(paramView, paramMotionEvent);
+    float f = this.mAppInfo.scale;
+    ArkDispatchTask.getInstance().post(this.mAppInfo.name, new ArkFlashChatContainerWrapper.TouchRunnable(this, paramMotionEvent, this.mContainer, f));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper
  * JD-Core Version:    0.7.0.1
  */

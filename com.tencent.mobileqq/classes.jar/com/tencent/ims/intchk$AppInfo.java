@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class intchk$AppInfo
-  extends MessageMicro
+  extends MessageMicro<AppInfo>
 {
   public static final int BYTES_APP_VERSION_FIELD_NUMBER = 3;
   public static final int BYTES_PACKAGE_NAME_FIELD_NUMBER = 2;
@@ -31,7 +31,7 @@ public final class intchk$AppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.intchk.AppInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -10,25 +10,30 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.DisplayMetrics;
+import azri;
+import bayu;
+import bazg;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
+import com.tencent.image.SafeBitmapFactory.SafeDecodeOption;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
+import java.util.HashMap;
 
 public class ThumbDecoder
-  implements BitmapDecoder
+  implements bazg
 {
-  private float jdField_a_of_type_Float;
-  private LocalMediaInfo jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+  private static final String TAG = "ThumbDecoder";
+  private float mDensity;
+  private LocalMediaInfo mInfo;
   
   public ThumbDecoder(Context paramContext, LocalMediaInfo paramLocalMediaInfo)
   {
-    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
+    this.mDensity = paramContext.getResources().getDisplayMetrics().density;
+    this.mInfo = paramLocalMediaInfo;
   }
   
-  static int a(int paramInt1, int paramInt2, int paramInt3)
+  public static int calSampleSize(int paramInt1, int paramInt2, int paramInt3)
   {
     int j = 1;
     int i;
@@ -42,10 +47,10 @@ public class ThumbDecoder
       continue;
       i = paramInt1;
     }
-    return a(paramInt1, paramInt2, paramInt3, j);
+    return checkSquareLarge(paramInt1, paramInt2, paramInt3, j);
   }
   
-  private static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private static int checkSquareLarge(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt3 = paramInt3 * paramInt3 * paramInt4 * paramInt4;
     while (paramInt1 * paramInt2 > paramInt3 * 4)
@@ -56,77 +61,106 @@ public class ThumbDecoder
     return paramInt4;
   }
   
-  public Bitmap a(URL paramURL)
+  public Bitmap getBitmap(URL paramURL)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
-    if (localObject != null)
+    LocalMediaInfo localLocalMediaInfo = this.mInfo;
+    if (localLocalMediaInfo != null)
     {
       paramURL = new BitmapFactory.Options();
       paramURL.inJustDecodeBounds = true;
-      SafeBitmapFactory.decodeFile(((LocalMediaInfo)localObject).path, paramURL);
-      paramURL.inSampleSize = a(paramURL.outWidth, paramURL.outHeight, ((LocalMediaInfo)localObject).thumbWidth);
+      SafeBitmapFactory.decodeFile(localLocalMediaInfo.path, paramURL);
+      paramURL.inSampleSize = calSampleSize(paramURL.outWidth, paramURL.outHeight, localLocalMediaInfo.thumbWidth);
       paramURL.inJustDecodeBounds = false;
-      int i;
-      int k;
-      Rect localRect;
-      RectF localRectF;
-      try
-      {
-        paramURL = SafeBitmapFactory.decodeFile(((LocalMediaInfo)localObject).path, paramURL);
-        if (paramURL == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("ThumbDecoder", 2, "decode bitmap return null,maybe oom");
-          }
-          return paramURL;
-        }
-      }
-      catch (OutOfMemoryError paramURL)
-      {
-        for (;;)
-        {
-          paramURL.printStackTrace();
-          paramURL = null;
-        }
-        i = URLDrawableHelper.a(((LocalMediaInfo)localObject).path);
-        if ((i == 0) && (paramURL.getWidth() == ((LocalMediaInfo)localObject).thumbWidth) && (paramURL.getHeight() == ((LocalMediaInfo)localObject).thumbWidth) && (paramURL.getConfig() == Bitmap.Config.RGB_565)) {
-          return paramURL;
-        }
-        j = paramURL.getWidth();
-        k = paramURL.getHeight();
-        localRect = new Rect();
-        localRectF = new RectF(0.0F, 0.0F, ((LocalMediaInfo)localObject).thumbWidth, ((LocalMediaInfo)localObject).thumbWidth);
-        if (j <= k) {
-          break label286;
-        }
-      }
-      int j = (j - k) / 2;
-      localRect.set(j, 0, j + k, k + 0);
+      Object localObject1 = null;
+      label243:
       for (;;)
       {
-        localObject = Bitmap.createBitmap(((LocalMediaInfo)localObject).thumbWidth, ((LocalMediaInfo)localObject).thumbWidth, Bitmap.Config.RGB_565);
-        if (localObject == null) {
-          break label312;
+        try
+        {
+          SafeBitmapFactory.SafeDecodeOption localSafeDecodeOption = new SafeBitmapFactory.SafeDecodeOption();
+          localSafeDecodeOption.inOptions = paramURL;
+          localSafeDecodeOption.inNeedFlashBackTest = true;
+          paramURL = SafeBitmapFactory.safeDecode(localLocalMediaInfo.path, localSafeDecodeOption);
+          boolean bool;
+          long l;
+          ((OutOfMemoryError)localObject1).printStackTrace();
         }
-        new Canvas((Bitmap)localObject).drawBitmap(paramURL, localRect, localRectF, new Paint(6));
+        catch (OutOfMemoryError localOutOfMemoryError2)
+        {
+          try
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ThumbDecoder", 2, "ThumbDecoder regionDecodeInfo:" + localSafeDecodeOption.toString());
+            }
+            if ((!localSafeDecodeOption.isInJustDecodeBounds) && (localSafeDecodeOption.needRegionDecode))
+            {
+              localObject1 = localSafeDecodeOption.getInfo();
+              ((HashMap)localObject1).put("from", "ThumbDecoder");
+              localObject2 = azri.a(BaseApplicationImpl.getApplication());
+              bool = localSafeDecodeOption.isGetBitmap;
+              l = localSafeDecodeOption.runTime;
+              i = localSafeDecodeOption.rawHeight;
+              ((azri)localObject2).a(null, "safeDecode", bool, l, localSafeDecodeOption.rawWidth * i, (HashMap)localObject1, "");
+            }
+            if (paramURL != null) {
+              break;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.e("ThumbDecoder", 2, "decode bitmap return null,maybe oom");
+            }
+            return paramURL;
+          }
+          catch (OutOfMemoryError localOutOfMemoryError1)
+          {
+            Object localObject2;
+            int i;
+            int j;
+            int k;
+            Rect localRect;
+            break label243;
+          }
+          localOutOfMemoryError2 = localOutOfMemoryError2;
+          paramURL = (URL)localObject1;
+          localObject1 = localOutOfMemoryError2;
+        }
+      }
+      i = bayu.a(localLocalMediaInfo.path);
+      if ((i == 0) && (paramURL.getWidth() == localLocalMediaInfo.thumbWidth) && (paramURL.getHeight() == localLocalMediaInfo.thumbWidth) && (paramURL.getConfig() == Bitmap.Config.RGB_565)) {
+        return paramURL;
+      }
+      j = paramURL.getWidth();
+      k = paramURL.getHeight();
+      localRect = new Rect();
+      localObject2 = new RectF(0.0F, 0.0F, localLocalMediaInfo.thumbWidth, localLocalMediaInfo.thumbWidth);
+      if (j > k)
+      {
+        j = (j - k) / 2;
+        localRect.set(j, 0, j + k, k + 0);
+      }
+      for (;;)
+      {
+        localObject1 = Bitmap.createBitmap(localLocalMediaInfo.thumbWidth, localLocalMediaInfo.thumbWidth, Bitmap.Config.RGB_565);
+        if (localObject1 == null) {
+          break label464;
+        }
+        new Canvas((Bitmap)localObject1).drawBitmap(paramURL, localRect, (RectF)localObject2, new Paint(6));
         paramURL.recycle();
-        paramURL = (URL)localObject;
+        paramURL = (URL)localObject1;
         if (i == 0) {
           break;
         }
-        return FlowThumbDecoder.a((Bitmap)localObject, i);
-        label286:
+        return FlowThumbDecoder.rotate((Bitmap)localObject1, i);
         k = (k - j) / 2;
         localRect.set(0, k, 0 + j, j + k);
       }
     }
-    label312:
+    label464:
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.ThumbDecoder
  * JD-Core Version:    0.7.0.1
  */

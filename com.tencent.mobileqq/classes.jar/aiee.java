@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer;
-import com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer.IMPlayerEndListener;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
+import java.util.List;
 
-public class aiee
-  implements Runnable
+public abstract interface aiee
 {
-  public aiee(ImageViewVideoPlayer paramImageViewVideoPlayer) {}
+  public abstract void a(boolean paramBoolean, @NonNull List<TroopLinkElement> paramList);
   
-  public void run()
-  {
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-    this.a.setVisibility(8);
-  }
+  public abstract void q();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiee
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.DBUtils;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebVideoItemUtils.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public class sdb
-  implements Runnable
+public final class sdb
+  implements ory
 {
-  public sdb(ChatSettingForTroop paramChatSettingForTroop, String paramString) {}
-  
-  public void run()
+  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    DBUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.getCurrentAccountUin(), "troop_game_feed", this.jdField_a_of_type_JavaLangString, 0);
-    DBUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.getCurrentAccountUin(), "troop_game_last_visit_time", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.m);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(paramString1, paramString1))) {
+      ThreadManager.getUIHandler().post(new FastWebVideoItemUtils.1.1(this, paramString2, paramInt1, paramInt2));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sdb
  * JD-Core Version:    0.7.0.1
  */

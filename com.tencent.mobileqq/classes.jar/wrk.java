@@ -1,24 +1,27 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class wrk
-  implements View.OnTouchListener
 {
-  public wrk(C2CMessageSearchDialog paramC2CMessageSearchDialog) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static void a(String paramString, Object... paramVarArgs)
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    wxe.e(paramString, wrm.a(paramVarArgs));
+  }
+  
+  public static void b(String paramString, Object... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString, 2, wrm.a(paramVarArgs));
+    }
+  }
+  
+  public static void c(String paramString, Object... paramVarArgs)
+  {
+    wxe.d(paramString, wrm.a(paramVarArgs));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wrk
  * JD-Core Version:    0.7.0.1
  */

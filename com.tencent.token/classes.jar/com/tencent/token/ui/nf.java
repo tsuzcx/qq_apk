@@ -1,17 +1,16 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.utils.s;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class nf
-  implements View.OnClickListener
+class nf
+  implements DialogInterface.OnClickListener
 {
-  nf(JLFindItems paramJLFindItems) {}
+  nf(ne paramne) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    s.b(this.a, "http://daohao.qq.com/detail.shtml?gid=bns");
+    LoginMsgActivity.access$100(this.a.a);
   }
 }
 

@@ -1,21 +1,20 @@
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import android.support.annotation.NonNull;
 
 public class wpf
-  implements Runnable
+  extends uli
 {
-  public wpf(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  public int a;
+  public String a;
   
-  public void run()
+  public wpf(@NonNull String paramString, int paramInt)
   {
-    EmoticonGroupStoreFragment.a(this.a).setVisibility(8);
-    EmoticonGroupStoreFragment.c(this.a).setVisibility(0);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpf
  * JD-Core Version:    0.7.0.1
  */

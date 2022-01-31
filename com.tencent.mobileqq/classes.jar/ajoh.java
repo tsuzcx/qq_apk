@@ -1,15 +1,13 @@
-import android.text.Spanned;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew.1;
 
-public final class ajoh
-  implements Comparator
+public class ajoh
+  implements DialogInterface.OnClickListener
 {
-  public ajoh(Spanned paramSpanned) {}
+  public ajoh(CameraPreviewNew.1 param1) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
-  {
-    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

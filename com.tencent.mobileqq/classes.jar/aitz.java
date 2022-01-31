@@ -1,54 +1,42 @@
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
-import com.tencent.mobileqq.troop.data.AudioInfo;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
 
 public class aitz
-  extends Handler
+  extends airj
 {
-  public aitz(AudioRecordFragment paramAudioRecordFragment) {}
-  
-  public void handleMessage(Message paramMessage)
+  aitz(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    if ((this.a.getActivity() == null) || (this.a.isDetached())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOAudioPanel", 2, "handleMessage,fragment is in a invalid state, return");
-      }
-    }
-    do
+    super(paramNewPhotoPreviewActivity);
+  }
+  
+  protected void c()
+  {
+    Object localObject = ((NewPhotoPreviewActivity)this.mActivity).getSubmitPhotoList();
+    Intent localIntent = ((NewPhotoPreviewActivity)this.mActivity).getIntent();
+    if (localObject != null)
     {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("AIOAudioPanel", 2, "RECORD_TO_START =============");
+      aips.a(((ArrayList)localObject).size(), this.a.totalPicCount);
+      aips.a(localIntent, ((ArrayList)localObject).size(), this.mPhotoCommonData.currentQualityType);
+    }
+    localObject = (NewPhotoPreviewActivity)this.mActivity;
+    if ((localObject == null) || (((NewPhotoPreviewActivity)localObject).isFinishing())) {
       return;
-      paramMessage = paramMessage.obj.toString();
-      File localFile = new File(paramMessage);
-      if (localFile.exists()) {}
-      for (long l = localFile.length();; l = 0L)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = new AudioInfo(paramMessage, (int)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
-        paramMessage = new Intent();
-        paramMessage.putExtra("audio_info", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo);
-        this.a.getActivity().setResult(-1, paramMessage);
-        this.a.getActivity().finish();
-        return;
-      }
-    } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals("publish")) || (this.a.b == null));
-    TroopBarUtils.a("pub_page", "preview_record", this.a.b, this.a.c, "", "");
+    }
+    ((NewPhotoPreviewActivity)localObject).setResult(-1, new Intent());
+    ((NewPhotoPreviewActivity)localObject).finish();
+  }
+  
+  public void onGalleryItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    super.onGalleryItemSelected(paramAdapterView, paramView, paramInt, paramLong);
+    paramAdapterView = (NewPhotoPreviewActivity)this.mActivity;
+    if ((paramAdapterView != null) && (!paramAdapterView.isFinishing())) {
+      paramAdapterView.titleView.setText(alud.a(2131708535));
+    }
   }
 }
 

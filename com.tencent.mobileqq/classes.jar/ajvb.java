@@ -1,15 +1,14 @@
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ajvb
-  implements FrameSprite.OnFrameEndListener
+final class ajvb
+  implements ajvc
 {
-  public ajvb(TroopGiftAnimationController paramTroopGiftAnimationController) {}
+  ajvb(QQAppInterface paramQQAppInterface, int paramInt, String paramString) {}
   
-  public void a()
+  public boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
   {
-    this.a.a.post(new ajvc(this));
+    ajva.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, paramString);
+    return true;
   }
 }
 

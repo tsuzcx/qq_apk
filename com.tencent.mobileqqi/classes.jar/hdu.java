@@ -1,41 +1,16 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
-import com.tencent.mobileqq.troop.widget.VideoViewX;
-import com.tencent.mobileqq.troop.widget.VideoViewX.OnPlayListener;
+import java.util.Comparator;
 
-public class hdu
-  implements Runnable
+public final class hdu
+  implements Comparator
 {
-  public hdu(VideoViewX paramVideoViewX) {}
-  
-  public void run()
+  public int a(hdv paramhdv1, hdv paramhdv2)
   {
-    if (VideoViewX.a(this.a) != null)
-    {
-      if (VideoViewX.a(this.a).getCurrentPosition() > 0)
-      {
-        if (this.a.a)
-        {
-          this.a.a = false;
-          if (VideoViewX.a(this.a) != null) {
-            VideoViewX.a(this.a).b();
-          }
-        }
-        if (VideoViewX.a(this.a) != null) {
-          VideoViewX.a(this.a).a(VideoViewX.a(this.a));
-        }
-        VideoViewX.c(this.a, false);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.postDelayed(VideoViewX.a(this.a), 300L);
+    return (paramhdv1.c - paramhdv2.c) * 100 + (paramhdv1.e - paramhdv2.e) * 10 + (paramhdv1.d - paramhdv2.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hdu
  * JD-Core Version:    0.7.0.1
  */

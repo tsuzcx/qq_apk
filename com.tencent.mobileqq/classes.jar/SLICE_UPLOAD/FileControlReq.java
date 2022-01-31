@@ -3,12 +3,15 @@ package SLICE_UPLOAD;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class FileControlReq
   extends JceStruct
 {
   static byte[] cache_biz_req;
   static int cache_check_type;
+  static Map<Integer, DumpBussinessReq> cache_dumpReq;
   static stEnvironment cache_env;
   static int cache_model;
   static AuthToken cache_token = new AuthToken();
@@ -17,6 +20,7 @@ public final class FileControlReq
   public byte[] biz_req = null;
   public int check_type = 0;
   public String checksum = "";
+  public Map<Integer, DumpBussinessReq> dumpReq = null;
   public stEnvironment env = null;
   public long file_len = 0L;
   public int model = 0;
@@ -32,11 +36,14 @@ public final class FileControlReq
     cache_model = 0;
     cache_biz_req = (byte[])new byte[1];
     ((byte[])cache_biz_req)[0] = 0;
+    cache_dumpReq = new HashMap();
+    DumpBussinessReq localDumpBussinessReq = new DumpBussinessReq();
+    cache_dumpReq.put(Integer.valueOf(0), localDumpBussinessReq);
   }
   
   public FileControlReq() {}
   
-  public FileControlReq(String paramString1, AuthToken paramAuthToken, String paramString2, String paramString3, int paramInt1, long paramLong, stEnvironment paramstEnvironment, int paramInt2, byte[] paramArrayOfByte, String paramString4, boolean paramBoolean, int paramInt3)
+  public FileControlReq(String paramString1, AuthToken paramAuthToken, String paramString2, String paramString3, int paramInt1, long paramLong, stEnvironment paramstEnvironment, int paramInt2, byte[] paramArrayOfByte, String paramString4, boolean paramBoolean, int paramInt3, Map<Integer, DumpBussinessReq> paramMap)
   {
     this.uin = paramString1;
     this.token = paramAuthToken;
@@ -50,6 +57,7 @@ public final class FileControlReq
     this.session = paramString4;
     this.need_ip_redirect = paramBoolean;
     this.asy_upload = paramInt3;
+    this.dumpReq = paramMap;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -66,6 +74,7 @@ public final class FileControlReq
     this.session = paramJceInputStream.readString(9, false);
     this.need_ip_redirect = paramJceInputStream.read(this.need_ip_redirect, 10, false);
     this.asy_upload = paramJceInputStream.read(this.asy_upload, 11, false);
+    this.dumpReq = ((Map)paramJceInputStream.read(cache_dumpReq, 12, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -88,11 +97,14 @@ public final class FileControlReq
     }
     paramJceOutputStream.write(this.need_ip_redirect, 10);
     paramJceOutputStream.write(this.asy_upload, 11);
+    if (this.dumpReq != null) {
+      paramJceOutputStream.write(this.dumpReq, 12);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     SLICE_UPLOAD.FileControlReq
  * JD-Core Version:    0.7.0.1
  */

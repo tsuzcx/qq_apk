@@ -1,32 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.3;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
 public class ryu
-  extends Handler
+  implements InvocationHandler
 {
-  public ryu(ChatHistory paramChatHistory) {}
+  public ryu(FastWebActivity.3 param3) {}
   
-  public void handleMessage(Message paramMessage)
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    if (paramMessage.what == 1)
-    {
-      if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
-        this.a.a.dismiss();
-      }
-      this.a.a = new QQProgressDialog(this.a, this.a.getTitleBarHeight());
-      this.a.a.setCancelable(false);
-      this.a.a.c(2131434483);
-      if (!this.a.isFinishing()) {
-        this.a.a.show();
-      }
-    }
+    this.a.this$0.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    FastWebActivity.a(this.a.this$0).setMaskBackGroundDrawable(new ColorDrawable(0));
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ryu
  * JD-Core Version:    0.7.0.1
  */

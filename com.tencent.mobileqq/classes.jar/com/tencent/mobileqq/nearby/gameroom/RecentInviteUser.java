@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhs;
 
 public class RecentInviteUser
-  extends Entity
-  implements Comparable
+  extends awge
+  implements Comparable<RecentInviteUser>
 {
   public String lastInviteId;
   public long lastInviteTime;
   public String uin;
   public int uinType;
-  @unique
+  @awhs
   public String uniKey;
   
   public static String getKey(int paramInt, String paramString)
@@ -21,12 +21,20 @@ public class RecentInviteUser
   
   public int compareTo(RecentInviteUser paramRecentInviteUser)
   {
-    return (int)(paramRecentInviteUser.lastInviteTime - this.lastInviteTime);
+    if (paramRecentInviteUser == null) {}
+    do
+    {
+      return -1;
+      if (paramRecentInviteUser.lastInviteTime > this.lastInviteTime) {
+        return 1;
+      }
+    } while (paramRecentInviteUser.lastInviteTime < this.lastInviteTime);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.RecentInviteUser
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,56 @@
-import com.tencent.mobileqq.activity.aio.AIOOpenWebMonitor;
-import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
-import com.tencent.qphone.base.util.QLog;
-
-public final class ujn
-  implements WebProcessManager.WebProcessStartListener
+public class ujn
 {
+  private long jdField_a_of_type_Long = -1L;
+  public String a;
+  private boolean jdField_a_of_type_Boolean;
+  private long b;
+  public String b;
+  
+  public ujn()
+  {
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
   public void a(boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebAccelerator", 2, "preStart QWeb Process");
-      }
-      AIOOpenWebMonitor.a();
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public long b()
+  {
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+  }
+  
+  public String toString()
+  {
+    return "ScanInfo{lastAlbum=" + this.jdField_a_of_type_Long + ", lastPic=" + this.jdField_b_of_type_Long + ", isIncScan=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ujn
  * JD-Core Version:    0.7.0.1
  */

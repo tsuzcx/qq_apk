@@ -8,7 +8,7 @@ import com.tencent.mobileqq.webviewplugin.WebViewPlugin;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import gkh;
+import gfy;
 
 public class RemindJavascriptInterface
   extends WebViewPlugin
@@ -60,7 +60,7 @@ public class RemindJavascriptInterface
   public void a(String paramString, JsBridgeListener paramJsBridgeListener)
   {
     long l = RemindHelper.a(RemindHelper.a(paramString, "currentDate")).longValue();
-    RemindHelper.a(this.a, l * 1000L, new gkh(this), paramJsBridgeListener);
+    RemindHelper.a(this.a, l * 1000L, new gfy(this), paramJsBridgeListener);
   }
   
   public void b(String paramString)

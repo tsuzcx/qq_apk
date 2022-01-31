@@ -1,35 +1,40 @@
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.Vector;
 
-public class wpj
-  implements View.OnClickListener
+class wpj
+  implements urr<vex, vey>
 {
-  public wpj(ImgPreviewAdapter paramImgPreviewAdapter) {}
+  wpj(wpi paramwpi, JobContext paramJobContext, wov paramwov) {}
   
-  public void onClick(View paramView)
+  public void a(@NonNull vex paramvex, @Nullable vey arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    EmoticonFromGroupEntity localEmoticonFromGroupEntity = this.a.a(ImgPreviewAdapter.a(this.a).getCurrentItem());
-    if (localEmoticonFromGroupEntity != null)
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      if (localEmoticonFromGroupEntity.msg != null)
-      {
-        ImgPreviewAdapter.a(this.a).a(ImgPreviewAdapter.a(this.a), localEmoticonFromGroupEntity.msg, paramView);
-        return;
-      }
-      QLog.e("ImgPreviewAdapter.msgnull", 1, "img click msg is null.");
+      wxe.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed basic info pull segment cancel on net respond");
       return;
     }
-    QLog.e("ImgPreviewAdapter.emonull", 1, "img click emo is null.");
+    vey localvey = ???;
+    if (??? == null) {
+      localvey = new vey(paramErrorMessage);
+    }
+    if (paramErrorMessage.isFail()) {
+      wxe.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for feed info request");
+    }
+    synchronized (this.jdField_a_of_type_Wpi)
+    {
+      wpi.a(this.jdField_a_of_type_Wpi, localvey);
+      wpi.a(this.jdField_a_of_type_Wpi).remove(paramvex);
+      wpi.a(this.jdField_a_of_type_Wpi, this.jdField_a_of_type_Wov);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,25 @@
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class ulv
-  implements Runnable
+class ulv
+  extends SimpleJob<Object>
 {
-  public ulv(MediaPlayerManager paramMediaPlayerManager) {}
-  
-  public void run()
+  ulv(ulu paramulu, String paramString, boolean paramBoolean)
   {
-    MediaPlayerManager.a(this.a).unregisterListener(MediaPlayerManager.a(this.a));
-    MediaPlayerManager.a(this.a).unregisterListener(this.a);
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    this.jdField_a_of_type_Ulu.b(this.jdField_a_of_type_Boolean);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ulv
  * JD-Core Version:    0.7.0.1
  */

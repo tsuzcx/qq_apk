@@ -1,16 +1,22 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.token.cw;
 
-final class lh
-  implements DialogInterface.OnClickListener
+class lh
+  implements Runnable
 {
-  lh(lc paramlc) {}
+  lh(IndexActivity paramIndexActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a.finish();
+    int i = this.a.getWindowManager().getDefaultDisplay().getWidth();
+    int j = this.a.getWindowManager().getDefaultDisplay().getHeight();
+    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+    this.a.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
+    cw.a().a(i, j, localDisplayMetrics.densityDpi, IndexActivity.access$100(this.a));
   }
 }
 

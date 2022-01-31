@@ -1,23 +1,20 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.voip.VoipDialInterface;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
-class evp
-  implements Runnable
+public class evp
+  implements View.OnClickListener
 {
-  evp(evo paramevo) {}
+  public evp(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if (!this.a.a.isFinishing())
-      {
-        this.a.a.a.dismiss();
-        this.a.a.finish();
-      }
-      return;
+    this.a.a.a("8");
+    VoipDialInterfaceActivity.a(this.a, '8');
+    if (VoipDialInterfaceActivity.b(this.a)) {
+      new Thread(new evq(this)).start();
     }
-    catch (Exception localException) {}
   }
 }
 

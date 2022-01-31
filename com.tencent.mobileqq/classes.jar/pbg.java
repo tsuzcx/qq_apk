@@ -1,50 +1,54 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.biz.webviewplugin.HotchatPlugin;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment.3.1;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment.3.2;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class pbg
-  implements TroopMemberApiClient.Callback
+  implements srk
 {
-  public pbg(HotchatPlugin paramHotchatPlugin, String paramString) {}
+  public pbg(ReadInJoyViolaChannelFragment paramReadInJoyViolaChannelFragment) {}
   
-  public void a(Bundle paramBundle)
+  public void a()
   {
-    Object localObject = null;
-    String str;
-    if (paramBundle != null)
-    {
-      str = paramBundle.getString("content");
-      paramBundle = paramBundle.getString("url");
+    if (this.a.getActivity() != null) {
+      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadInJoyViolaChannelFragment.3.2(this), 200L);
     }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("content", str);
-      localJSONObject.put("url", paramBundle);
-      paramBundle = localJSONObject.toString();
-      this.jdField_a_of_type_ComTencentBizWebviewpluginHotchatPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyViolaChannelFragment", 2, "reloadPage success!");
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        paramBundle = localObject;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("HotchatPlugin", 2, localJSONException.getMessage());
-          paramBundle = localObject;
-        }
-      }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.a.getActivity() != null) {
+      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadInJoyViolaChannelFragment.3.1(this), 1000L);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("ReadInJoyViolaChannelFragment", 2, "reloadPage error,error code=" + paramInt);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
+  
+  public void a(String paramString, int paramInt)
+  {
+    if ((1 == paramInt) && (otb.a())) {
+      oxb.a().m();
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyViolaChannelFragment", 2, "reloadPage process,process code=" + paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pbg
  * JD-Core Version:    0.7.0.1
  */

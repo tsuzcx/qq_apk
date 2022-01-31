@@ -1,27 +1,21 @@
-import android.os.Bundle;
-import com.tencent.gdtad.net.GdtAdObserver;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.util.JSONUtils;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class acav
-  extends GdtAdObserver
+  implements DialogInterface.OnClickListener
 {
-  public acav(MessengerService paramMessengerService) {}
+  public acav(AccountManageActivity paramAccountManageActivity) {}
   
-  public void a(Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null)
-    {
-      this.a.a.putString("data", JSONUtils.a(paramObject).toString());
-      this.a.a(this.a.a);
-      this.a.a = null;
-    }
+    azqs.b(this.a.app, "CliOper", "", "", "0X80040A7", "0X80040A7", 0, 0, "", "", "", "");
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acav
  * JD-Core Version:    0.7.0.1
  */

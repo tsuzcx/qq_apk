@@ -10,7 +10,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.util.StateSet;
 import android.util.Xml;
-import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -34,30 +33,11 @@ public class SkinnableColorStateList
   private boolean k;
   private boolean l;
   private long m;
-  public l skinData;
+  public j skinData;
   
   static
   {
-    CREATOR = new Parcelable.Creator()
-    {
-      public ColorStateList a(Parcel paramAnonymousParcel)
-      {
-        int j = paramAnonymousParcel.readInt();
-        int[][] arrayOfInt = new int[j][];
-        int i = 0;
-        while (i < j)
-        {
-          arrayOfInt[i] = paramAnonymousParcel.createIntArray();
-          i += 1;
-        }
-        return new ColorStateList(arrayOfInt, paramAnonymousParcel.createIntArray());
-      }
-      
-      public ColorStateList[] a(int paramAnonymousInt)
-      {
-        return new ColorStateList[paramAnonymousInt];
-      }
-    };
+    CREATOR = new SkinnableColorStateList.1();
     if (SkinEngine.a) {}
     try
     {
@@ -101,7 +81,6 @@ public class SkinnableColorStateList
   }
   
   private static SkinnableColorStateList a(SkinEngine paramSkinEngine, Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, boolean paramBoolean)
-    throws XmlPullParserException, IOException
   {
     Object localObject = paramXmlPullParser.getName();
     if (((String)localObject).equals("selector"))
@@ -129,7 +108,6 @@ public class SkinnableColorStateList
   }
   
   private void b(SkinEngine paramSkinEngine, Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, boolean paramBoolean)
-    throws XmlPullParserException, IOException
   {
     int i8 = paramXmlPullParser.getDepth() + 1;
     int i5 = 20;
@@ -150,11 +128,11 @@ public class SkinnableColorStateList
     {
       n = paramXmlPullParser.next();
       if (n == 1) {
-        break label1037;
+        break label1035;
       }
       i1 = paramXmlPullParser.getDepth();
       if ((i1 < i8) && (n == 3)) {
-        break label1037;
+        break label1035;
       }
       if ((n == 2) && (i1 <= i8) && (paramXmlPullParser.getName().equals("item")))
       {
@@ -177,7 +155,7 @@ public class SkinnableColorStateList
         }
         int[] arrayOfInt = StateSet.trimStateSet((int[])localObject2, n);
         if (i3 == 0) {
-          break label999;
+          break label997;
         }
         i1 = paramSkinEngine.getColor(i3);
         if ((i4 == 0) || (arrayOfInt.length == 0)) {
@@ -208,7 +186,7 @@ public class SkinnableColorStateList
     {
       i3 = paramAttributeSet.getAttributeResourceValue(i6, 0);
       if (i3 != 0) {
-        break label1080;
+        break label1078;
       }
       i2 = paramAttributeSet.getAttributeIntValue(i6, i1);
       i1 = 1;
@@ -350,18 +328,18 @@ public class SkinnableColorStateList
         n += 1;
         break;
       }
-      label999:
+      label997:
       if (i2 != 0) {
         break label172;
       }
       throw new XmlPullParserException(paramXmlPullParser.getPositionDescription() + ": <item> tag requires a 'android:color' attribute.");
-      label1037:
+      label1035:
       this.e = new int[i4];
       this.d = new int[i4][];
       System.arraycopy(localObject1, 0, this.e, 0, i4);
       System.arraycopy(paramResources, 0, this.d, 0, i4);
       return;
-      label1080:
+      label1078:
       i7 = i1;
       i1 = i2;
       i2 = i7;
@@ -369,7 +347,6 @@ public class SkinnableColorStateList
   }
   
   public static SkinnableColorStateList createFromXml(SkinEngine paramSkinEngine, Resources paramResources, XmlPullParser paramXmlPullParser, boolean paramBoolean)
-    throws XmlPullParserException, IOException
   {
     AttributeSet localAttributeSet;
     try
@@ -442,15 +419,17 @@ public class SkinnableColorStateList
       int i1 = paramInt;
       if (n < i2)
       {
-        if ((StateSet.stateSetMatches(arrayOfInt[n], paramArrayOfInt)) && (i3 > n))
-        {
-          this.l = true;
+        if ((!StateSet.stateSetMatches(arrayOfInt[n], paramArrayOfInt)) || (i3 <= n)) {
+          break label109;
+        }
+        this.l = true;
+        i1 = paramInt;
+        if (n < this.e.length) {
           i1 = this.e[n];
         }
       }
-      else {
-        return i1;
-      }
+      return i1;
+      label109:
       if (i3 <= n)
       {
         this.k = true;
@@ -460,9 +439,19 @@ public class SkinnableColorStateList
     }
   }
   
+  public int[] getColors()
+  {
+    return this.e;
+  }
+  
   public int getDefaultColor()
   {
     return this.f;
+  }
+  
+  public int[][] getStateSpecs()
+  {
+    return this.d;
   }
   
   public boolean isStateful()

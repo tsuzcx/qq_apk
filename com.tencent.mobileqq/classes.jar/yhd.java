@@ -1,30 +1,40 @@
-import com.tencent.mobileqq.adapter.DiscussionListAdapter2;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
-import java.util.HashMap;
+import android.text.Editable;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import com.tencent.biz.subscribe.comment.EmoView;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class yhd
-  implements Comparator
+  implements yhe
 {
-  public yhd(DiscussionListAdapter2 paramDiscussionListAdapter2, HashMap paramHashMap) {}
+  public yhd(EmoView paramEmoView) {}
   
-  public int a(Entity paramEntity1, Entity paramEntity2)
+  public boolean a()
   {
-    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity1).uin)).longValue();
-    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity2).uin)).longValue();
-    if (l1 < l2) {
-      return -1;
+    if (EmoView.a(this.a) == null) {
+      return false;
     }
-    if (l1 > l2) {
-      return 1;
+    EmoView.a(this.a).dispatchKeyEvent(new KeyEvent(0L, 0L, 0, 67, 0, 0));
+    return true;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (EmoView.a(this.a) == null) {
+      return false;
     }
-    return 0;
+    if ((EmoView.b(this.a) > 0) && (EmoView.a(this.a).getText().length() + paramString.length() > EmoView.b(this.a)))
+    {
+      QQToast.a(this.a.getContext(), 0, alud.a(2131704516), 0);
+      return false;
+    }
+    EmoView.a(EmoView.a(this.a), paramString);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yhd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,47 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import android.widget.HorizontalScrollView;
-import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.AppUtil;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.common.DownloadDBHelper;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class hne
-  extends Handler
+  implements Runnable
 {
-  public hne(FriendChooser paramFriendChooser) {}
+  public hne(DownloadManager paramDownloadManager) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = ((ConcurrentHashMap)DownloadDBHelper.a().a());
+    try
     {
+      DownloadInfo localDownloadInfo = this.a.b("com.tencent.mobileqqi");
+      if ((localDownloadInfo != null) && (localDownloadInfo.jdField_h_of_type_Int == 0))
+      {
+        TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo;
+        if (localDownloadInfo.f == 0) {
+          localTMAssistantDownloadTaskInfo = this.a.a(localDownloadInfo.c);
+        }
+        for (String str = localTMAssistantDownloadTaskInfo.mSavePath; localTMAssistantDownloadTaskInfo == null; str = localDownloadInfo.k)
+        {
+          this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
+          DownloadDBHelper.a().a(localDownloadInfo.b);
+          return;
+          localTMAssistantDownloadTaskInfo = this.a.a(localDownloadInfo.jdField_h_of_type_JavaLangString);
+        }
+        if ((localTMAssistantDownloadTaskInfo.mState == 4) && (AppUtil.b(str) <= CommonDataAdapter.a().a()))
+        {
+          this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
+          DownloadDBHelper.a().a(localDownloadInfo.b);
+          return;
+        }
+      }
     }
-    for (;;)
+    catch (Exception localException)
     {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
+      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "speical clear>>>", localException);
     }
   }
 }

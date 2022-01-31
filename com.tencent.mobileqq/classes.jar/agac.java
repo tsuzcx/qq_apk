@@ -1,31 +1,16 @@
-import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.now.enter.ConversationNowController;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class agac
-  implements Animator.AnimatorListener
+  extends aeqi
 {
-  public agac(ConversationNowController paramConversationNowController, View paramView) {}
+  public RelativeLayout a;
+  public DoodleMsgLayout a;
+  public MessageProgressView a;
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqNowEnterConversationNowController.g();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqNowEnterConversationNowController.g();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqNowEnterConversationNowController.d) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-  }
+  public agac(ScribbleItemBuilder paramScribbleItemBuilder) {}
 }
 
 

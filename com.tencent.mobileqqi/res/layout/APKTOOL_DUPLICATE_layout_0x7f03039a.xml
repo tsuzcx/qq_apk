@@ -1,10 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0131" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08034d" android:background="@drawable/skin_group_list_sub_entry" android:paddingLeft="15.0dip" android:paddingTop="3.0dip" android:paddingBottom="3.0dip" android:focusable="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f08034e" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020158" android:layout_width="fill_parent" android:layout_height="52.0dip">
-        <CheckBox android:id="@id/APKTOOL_DUPLICATE_id_0x7f0800df" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201f4" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginLeft="15.0dip" android:checked="false" android:button="@null" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <ImageView android:gravity="center_vertical" android:id="@id/icon" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="6.0dip" android:scaleType="fitXY" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0800df" />
-        <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0116" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080118" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="35.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/icon" android:layout_centerVertical="true" />
-    </RelativeLayout>
-</FrameLayout>
+<com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

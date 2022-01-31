@@ -1,27 +1,51 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
 import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-class ailu
-  implements MediaPlayer.OnSeekCompleteListener
+public class ailu
+  extends awhw
 {
-  ailu(ailt paramailt) {}
+  public ailu(BindVerifyActivity paramBindVerifyActivity) {}
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  protected void c(boolean paramBoolean, int paramInt)
   {
-    try
-    {
-      this.a.a.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-      this.a.a.g = true;
-      this.a.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.a, 33L);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("BindVerifyActivity", 2, "onVerifyBindSms [" + paramBoolean + ", " + paramInt + "]");
     }
-    catch (Exception paramMediaPlayer)
+    BindVerifyActivity.a(this.a, false);
+    BindVerifyActivity.a(this.a).removeMessages(4);
+    this.a.b();
+    if (!paramBoolean)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("VideoSprite", 2, "playVideo: " + QLog.getStackTraceString(paramMediaPlayer));
+      this.a.a("dc00898", "0X8009F19", 0);
+      this.a.a(1, this.a.getString(2131719233));
+    }
+    for (;;)
+    {
+      this.a.app.unRegistObserver(BindVerifyActivity.b(this.a));
+      BindVerifyActivity.b(this.a, null);
+      return;
+      if ((paramInt == 0) || (paramInt == 106))
+      {
+        this.a.a();
+      }
+      else if (paramInt == 213)
+      {
+        this.a.a("dc00898", "0X8009F19", 0);
+        this.a.a(1, alud.a(2131701528));
+        BindVerifyActivity.a(this.a).setEnabled(true);
+      }
+      else
+      {
+        this.a.a("dc00898", "0X8009F19", 0);
+        String str = alud.a(2131701523);
+        if (paramInt == 107) {
+          str = alud.a(2131701525);
+        }
+        this.a.a(alud.a(2131701529), str);
+      }
     }
   }
 }

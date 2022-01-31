@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
-import android.os.RemoteException;
 import android.util.SparseArray;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
@@ -16,22 +15,22 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.util.WeakReference;
 
-abstract class EIPCModuleManager
+public abstract class EIPCModuleManager
 {
   public static final int INTERVAL = 1000000;
+  static final String MODULE_EVENT = "__event_module";
   public static final int MSG_CALL_MODULE_AYSNC = 1;
-  static final String g = "__event_module";
-  static Handler l;
+  static Handler sHandler;
+  int callbackIdStart;
   public EIPCChannel channel;
-  int h;
-  HashSet i = new HashSet();
   public EIPCModuleFactory ipcModuleFactory;
-  SparseArray j = new SparseArray();
-  ConcurrentHashMap k = new ConcurrentHashMap();
   public final AtomicInteger mCallbackId = new AtomicInteger(1000);
-  public SparseArray mCallbackMap = new SparseArray();
+  public SparseArray<EIPCResultCallback> mCallbackMap = new SparseArray();
+  SparseArray<ArrayList<WeakReference<EIPCModule>>> mCareMessageModule = new SparseArray();
   public Context mContext;
-  public SparseArray mProcMap = new SparseArray();
+  HashSet<EIPCOnGetConnectionListener> mListeners = new HashSet();
+  ConcurrentHashMap<String, EIPCModule> mModuleMap = new ConcurrentHashMap();
+  public SparseArray<EIPCChannel> mProcMap = new SparseArray();
   
   public EIPCModuleManager(Context paramContext)
   {
@@ -39,82 +38,70 @@ abstract class EIPCModuleManager
     this.channel = new EIPCModuleManager.1(this);
   }
   
-  static Handler a()
-  {
-    try
-    {
-      if (l == null)
-      {
-        localObject1 = new HandlerThread("ipc", 10);
-        ((HandlerThread)localObject1).start();
-        l = new Handler(((HandlerThread)localObject1).getLooper());
-      }
-      Object localObject1 = l;
-      return localObject1;
-    }
-    finally {}
-  }
-  
-  private void a(Runnable paramRunnable)
+  public static void excuteOnAsyncThread(Runnable paramRunnable)
   {
     if (QIPCClientHelper.sThreadEngine != null)
     {
       QIPCClientHelper.sThreadEngine.excute(paramRunnable);
       return;
     }
-    a().post(paramRunnable);
+    getAsyncHandler().post(paramRunnable);
   }
   
-  int a(EIPCResultCallback paramEIPCResultCallback)
+  public static Handler getAsyncHandler()
   {
-    int m = this.mCallbackId.addAndGet(1);
-    SparseArray localSparseArray = this.mCallbackMap;
-    if (paramEIPCResultCallback != null) {}
     try
     {
-      this.mCallbackMap.put(m, paramEIPCResultCallback);
-      return m;
+      if (sHandler == null)
+      {
+        localObject1 = new HandlerThread("ipc", 10);
+        ((HandlerThread)localObject1).start();
+        sHandler = new Handler(((HandlerThread)localObject1).getLooper());
+      }
+      Object localObject1 = sHandler;
+      return localObject1;
     }
     finally {}
   }
   
-  void a(int paramInt, Bundle paramBundle)
-  {
-    for (;;)
-    {
-      int m;
-      synchronized (this.j)
-      {
-        ArrayList localArrayList = (ArrayList)this.j.get(paramInt);
-        if (localArrayList == null) {
-          return;
-        }
-        m = localArrayList.size() - 1;
-        if (m >= 0)
-        {
-          EIPCModule localEIPCModule = (EIPCModule)((WeakReference)localArrayList.get(m)).get();
-          if (localEIPCModule != null) {
-            localEIPCModule.onReceiveMsg(paramInt, paramBundle);
-          } else {
-            localArrayList.remove(m);
-          }
-        }
-      }
-      return;
-      m -= 1;
-    }
-  }
-  
+  @Deprecated
   public void addListener(EIPCOnGetConnectionListener paramEIPCOnGetConnectionListener)
   {
-    this.i.add(paramEIPCOnGetConnectionListener);
+    this.mListeners.add(paramEIPCOnGetConnectionListener);
   }
   
   public abstract void callbackResult(int paramInt, EIPCResult paramEIPCResult);
   
   public void destroy()
   {
-    this.k.clear();
+    this.mModuleMap.clear();
+  }
+  
+  void dispatchMsgToModule(int paramInt, Bundle paramBundle)
+  {
+    for (;;)
+    {
+      int i;
+      synchronized (this.mCareMessageModule)
+      {
+        ArrayList localArrayList = (ArrayList)this.mCareMessageModule.get(paramInt);
+        if (localArrayList == null) {
+          return;
+        }
+        i = localArrayList.size() - 1;
+        if (i >= 0)
+        {
+          EIPCModule localEIPCModule = (EIPCModule)((WeakReference)localArrayList.get(i)).get();
+          if (localEIPCModule != null) {
+            localEIPCModule.onReceiveMsg(paramInt, paramBundle);
+          } else {
+            localArrayList.remove(i);
+          }
+        }
+      }
+      return;
+      i -= 1;
+    }
   }
   
   public void notifyBind(EIPCConnection paramEIPCConnection)
@@ -122,7 +109,7 @@ abstract class EIPCModuleManager
     if (QLog.isColorLevel()) {
       QLog.i("EIPCConst", 2, "connection b, " + paramEIPCConnection);
     }
-    Iterator localIterator = ((HashSet)this.i.clone()).iterator();
+    Iterator localIterator = ((HashSet)this.mListeners.clone()).iterator();
     while (localIterator.hasNext()) {
       ((EIPCOnGetConnectionListener)localIterator.next()).onConnectBind(paramEIPCConnection);
     }
@@ -133,7 +120,7 @@ abstract class EIPCModuleManager
     if (QLog.isColorLevel()) {
       QLog.i("EIPCConst", 2, "connection unbind, " + paramEIPCConnection);
     }
-    Iterator localIterator = ((HashSet)this.i.clone()).iterator();
+    Iterator localIterator = ((HashSet)this.mListeners.clone()).iterator();
     while (localIterator.hasNext()) {
       ((EIPCOnGetConnectionListener)localIterator.next()).onConnectUnbind(paramEIPCConnection);
     }
@@ -144,33 +131,46 @@ abstract class EIPCModuleManager
     return null;
   }
   
+  int registerCallback(EIPCResultCallback paramEIPCResultCallback)
+  {
+    int i = this.mCallbackId.addAndGet(1);
+    SparseArray localSparseArray = this.mCallbackMap;
+    if (paramEIPCResultCallback != null) {}
+    try
+    {
+      this.mCallbackMap.put(i, paramEIPCResultCallback);
+      return i;
+    }
+    finally {}
+  }
+  
   public void registerModule(EIPCModule paramEIPCModule)
   {
     if (QLog.isColorLevel()) {
       QLog.d("EIPCConst", 2, "registerModule ," + paramEIPCModule);
     }
-    paramEIPCModule.a = this;
-    synchronized (this.k)
+    paramEIPCModule.mgr = this;
+    synchronized (this.mModuleMap)
     {
-      if (!this.k.containsKey(paramEIPCModule.name))
+      if (!this.mModuleMap.containsKey(paramEIPCModule.name))
       {
-        int[] arrayOfInt = paramEIPCModule.b;
-        int n = arrayOfInt.length;
-        int m = 0;
-        while (m < n)
+        int[] arrayOfInt = paramEIPCModule.listenMessages;
+        int j = arrayOfInt.length;
+        int i = 0;
+        while (i < j)
         {
-          int i1 = arrayOfInt[m];
-          ArrayList localArrayList2 = (ArrayList)this.j.get(i1);
+          int k = arrayOfInt[i];
+          ArrayList localArrayList2 = (ArrayList)this.mCareMessageModule.get(k);
           ArrayList localArrayList1 = localArrayList2;
           if (localArrayList2 == null)
           {
             localArrayList1 = new ArrayList();
-            this.j.put(i1, localArrayList1);
+            this.mCareMessageModule.put(k, localArrayList1);
           }
           localArrayList1.add(new WeakReference(paramEIPCModule));
-          m += 1;
+          i += 1;
         }
-        this.k.put(paramEIPCModule.name, paramEIPCModule);
+        this.mModuleMap.put(paramEIPCModule.name, paramEIPCModule);
         return;
       }
       throw new RuntimeException("Module duplicated, " + paramEIPCModule.name);
@@ -181,36 +181,36 @@ abstract class EIPCModuleManager
   {
     for (;;)
     {
-      int m;
+      int i;
       synchronized (this.mCallbackMap)
       {
-        m = this.mCallbackMap.size() - 1;
-        if (m >= 0)
+        i = this.mCallbackMap.size() - 1;
+        if (i >= 0)
         {
-          if ((EIPCResultCallback)this.mCallbackMap.valueAt(m) == paramEIPCResultCallback) {
-            this.mCallbackMap.removeAt(m);
+          if ((EIPCResultCallback)this.mCallbackMap.valueAt(i) == paramEIPCResultCallback) {
+            this.mCallbackMap.removeAt(i);
           }
         }
         else {
           return;
         }
       }
-      m -= 1;
+      i -= 1;
     }
   }
   
+  @Deprecated
   public void removeListener(EIPCOnGetConnectionListener paramEIPCOnGetConnectionListener)
   {
-    this.i.remove(paramEIPCOnGetConnectionListener);
+    this.mListeners.remove(paramEIPCOnGetConnectionListener);
   }
   
   public void sendMsgToLocalModule(int paramInt, Bundle paramBundle)
   {
-    a(paramInt, paramBundle);
+    dispatchMsgToModule(paramInt, paramBundle);
   }
   
   public int setClient(String paramString, int paramInt1, EIPCChannel paramEIPCChannel, int paramInt2)
-    throws RemoteException
   {
     return 1;
   }
@@ -228,9 +228,9 @@ abstract class EIPCModuleManager
     if (QLog.isColorLevel()) {
       QLog.d("EIPCConst", 2, "unRegisterModule ," + paramEIPCModule);
     }
-    synchronized (this.k)
+    synchronized (this.mModuleMap)
     {
-      this.k.remove(paramEIPCModule.name);
+      this.mModuleMap.remove(paramEIPCModule.name);
       return;
     }
   }

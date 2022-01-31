@@ -1,32 +1,17 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
 
 public class wtk
-  extends ContactBindObserver
+  implements DialogInterface.OnDismissListener
 {
-  public wtk(BindNumberActivity paramBindNumberActivity) {}
+  public wtk(StoryListPresenter.4.1 param1) {}
   
-  protected void b(boolean paramBoolean)
-  {
-    super.b(paramBoolean);
-    if (paramBoolean) {
-      BindNumberActivity.a(this.a).sendEmptyMessage(3);
-    }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(BindNumberActivity.a(this.a));
-      BindNumberActivity.a(this.a, null);
-      return;
-      this.a.b();
-      this.a.b(2131434455);
-    }
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wtk
  * JD-Core Version:    0.7.0.1
  */

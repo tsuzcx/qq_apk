@@ -12,11 +12,11 @@ public final class RspGetNearbyGroup
   static RspActivity cache_stRspAct;
   static RspHotGrp cache_stRspHotGrp;
   static RspTopic cache_stRspTopic;
-  static ArrayList cache_vActivity;
+  static ArrayList<Activity> cache_vActivity;
   static byte[] cache_vContext;
-  static ArrayList cache_vGroupArea;
-  static ArrayList cache_vGroupInfo;
-  static ArrayList cache_vXiaoQuInfo;
+  static ArrayList<GroupArea> cache_vGroupArea;
+  static ArrayList<GroupInfo> cache_vGroupInfo;
+  static ArrayList<XiaoQuInfo> cache_vXiaoQuInfo;
   public short dwFlag;
   public int eReplyCode;
   public int iCompletedFlag;
@@ -29,24 +29,24 @@ public final class RspGetNearbyGroup
   public RspTopic stRspTopic;
   public String strCity = "";
   public String strCityCode = "";
-  public ArrayList vActivity;
+  public ArrayList<Activity> vActivity;
   public byte[] vContext;
-  public ArrayList vGroupArea;
-  public ArrayList vGroupInfo;
-  public ArrayList vXiaoQuInfo;
+  public ArrayList<GroupArea> vGroupArea;
+  public ArrayList<GroupInfo> vGroupInfo;
+  public ArrayList<XiaoQuInfo> vXiaoQuInfo;
   
   public RspGetNearbyGroup() {}
   
-  public RspGetNearbyGroup(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3, ArrayList paramArrayList4, short paramShort1, int paramInt4, int paramInt5, RspHotGrp paramRspHotGrp, RspActivity paramRspActivity, RspTopic paramRspTopic, String paramString1, String paramString2, short paramShort2)
+  public RspGetNearbyGroup(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, ArrayList<GroupInfo> paramArrayList, ArrayList<XiaoQuInfo> paramArrayList1, ArrayList<Activity> paramArrayList2, ArrayList<GroupArea> paramArrayList3, short paramShort1, int paramInt4, int paramInt5, RspHotGrp paramRspHotGrp, RspActivity paramRspActivity, RspTopic paramRspTopic, String paramString1, String paramString2, short paramShort2)
   {
     this.eReplyCode = paramInt1;
     this.vContext = paramArrayOfByte;
     this.iCompletedFlag = paramInt2;
     this.iRadius = paramInt3;
-    this.vGroupInfo = paramArrayList1;
-    this.vXiaoQuInfo = paramArrayList2;
-    this.vActivity = paramArrayList3;
-    this.vGroupArea = paramArrayList4;
+    this.vGroupInfo = paramArrayList;
+    this.vXiaoQuInfo = paramArrayList1;
+    this.vActivity = paramArrayList2;
+    this.vGroupArea = paramArrayList3;
     this.shSortType = paramShort1;
     this.iLat = paramInt4;
     this.iLon = paramInt5;
@@ -161,7 +161,7 @@ public final class RspGetNearbyGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NearbyGroup.RspGetNearbyGroup
  * JD-Core Version:    0.7.0.1
  */

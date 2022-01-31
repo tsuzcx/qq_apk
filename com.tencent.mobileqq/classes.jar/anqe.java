@@ -1,23 +1,21 @@
-import dov.com.qq.im.capture.view.StaticStickerProviderView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.FacePagerAdapter;
+import android.view.View;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
-public class anqe
-  implements Runnable
+class anqe
+  implements bhuk
 {
-  public anqe(StaticStickerProviderView paramStaticStickerProviderView, int paramInt, String paramString) {}
+  anqe(anqc paramanqc, bhuf parambhuf) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    FaceListPage localFaceListPage = this.jdField_a_of_type_DovComQqImCaptureViewStaticStickerProviderView.a.a(this.jdField_a_of_type_Int);
-    if (localFaceListPage != null) {
-      localFaceListPage.a(this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_Anqc.a.e();
+    this.jdField_a_of_type_Anqc.a.b(alud.a(2131701076));
+    this.jdField_a_of_type_Bhuf.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anqe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/d8w" android:background="@drawable/v7" android:padding="@dimen/n_" android:visibility="visible" android:layout_height="100.0dip" android:layout_margin="0.0dip" style="@style/pv"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/d9b" android:background="@raw/mall_order_detail_frame" android:layout_width="53.299988dip" android:layout_height="53.299988dip" android:src="@raw/mall_order_trade_state_icon" />
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:layout_weight="1.0">
+        <TextView android:textSize="@dimen/m2" android:textColor="@color/uw" android:ellipsize="end" android:id="@id/d9c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" />
+        <TextView android:textSize="@dimen/ko" android:textColor="@color/uu" android:ellipsize="end" android:id="@id/d9d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:maxLines="1" />
+    </LinearLayout>
+    <Button android:textSize="@dimen/ko" android:textColor="@color/a6q" android:id="@id/d9e" android:background="@drawable/gr" android:visibility="gone" android:layout_width="69.0dip" android:layout_height="33.299988dip" android:layout_marginLeft="10.0dip" android:text="@string/czn" />
+</LinearLayout>

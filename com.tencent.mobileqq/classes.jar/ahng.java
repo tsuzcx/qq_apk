@@ -1,47 +1,77 @@
-import com.tencent.mobileqq.richmedia.conn.LiteTcpConnection;
-import com.tencent.mobileqq.richmedia.conn.SubTitleProtocoDataCodec;
-import com.tencent.qphone.base.util.MsfSocketInputBuffer;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.app.FriendListHandler.AddBatchPhoneFriendResult;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.ArrayList;
 
 public class ahng
-  implements Runnable
+  extends altm
 {
-  public ahng(LiteTcpConnection paramLiteTcpConnection) {}
+  public ahng(SystemMsgListView paramSystemMsgListView) {}
   
-  public void run()
+  public void onAddBatchPhoneFriend(boolean paramBoolean, ArrayList<FriendListHandler.AddBatchPhoneFriendResult> paramArrayList)
   {
-    while (LiteTcpConnection.a(this.a).get()) {
-      try
-      {
-        MsfSocketInputBuffer localMsfSocketInputBuffer = LiteTcpConnection.a(this.a);
-        if (localMsfSocketInputBuffer == null) {
-          return;
-        }
-        while (!localMsfSocketInputBuffer.isDataAvailable(10000)) {
-          if (!LiteTcpConnection.a(this.a).get()) {
-            return;
-          }
-        }
-        if (!LiteTcpConnection.a(this.a).get()) {
-          break;
-        }
-        LiteTcpConnection.a(this.a).a(localMsfSocketInputBuffer);
-        localMsfSocketInputBuffer.reset();
+    if (paramBoolean) {
+      SystemMsgListView.a(this.a).c();
+    }
+  }
+  
+  public void onGetConnectionsPerson(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.newfriendSystemMsgListView", 2, "onGetConnectionsPerson " + paramBoolean + " " + paramInt1 + " " + paramInt2);
+    }
+    if (paramBoolean)
+    {
+      localahod = SystemMsgListView.a(this.a).a();
+      if ((localahod != null) && (localahod.a()) && (localahod.a == paramInt2) && (!SystemMsgListView.a(this.a, paramInt2, paramInt3))) {
+        SystemMsgListView.a(this.a).a(0L);
       }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PeakAudioTransHandler LiteTcpConnection", 2, "read exception " + localException.getMessage() + ";");
-        }
-        LiteTcpConnection.a(this.a, 1);
+    }
+    while (paramInt1 != 1205)
+    {
+      ahod localahod;
+      return;
+    }
+    SystemMsgListView.a(this.a).a(0L);
+  }
+  
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.newfriendSystemMsgListView", 2, "onGetMayKnowRecommend " + paramBoolean);
+    }
+    if (paramBoolean) {
+      SystemMsgListView.a(this.a).c();
+    }
+  }
+  
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  {
+    if (paramBoolean) {
+      SystemMsgListView.a(this.a).c();
+    }
+  }
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  {
+    if (paramBoolean1)
+    {
+      paramString = paramBundle.getString("uin");
+      int i = paramBundle.getInt("source_id");
+      paramBundle = paramBundle.getString("extra");
+      if (((i == 3006) || (i == 3075)) && ("ContactMatchBuilder".equals(paramBundle))) {
+        this.a.a(paramString);
+      }
+      if (bntp.a(i)) {
+        SystemMsgListView.a(this.a).c();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahng
  * JD-Core Version:    0.7.0.1
  */

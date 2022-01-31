@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.leba.QZoneEntryController;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordItem;
+import com.tencent.mobileqq.widget.ContainerView;
 
 public class aeaw
-  implements Runnable
+  implements anyo
 {
-  public aeaw(QZoneEntryController paramQZoneEntryController) {}
+  public aeaw(TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void run()
+  public void a(int paramInt, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem)
   {
-    this.a.j();
-    QZoneEntryController.b(this.a, true);
+    anyj.a(this.a.app, this.a.e, paramArrayOfHotWordItem);
+    paramArrayOfHotWordItem = bdrv.a(this.a.e, this.a.f, 30, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 13);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a(this.a))
+    {
+      this.a.jdField_a_of_type_JavaLangCharSequence = paramArrayOfHotWordItem;
+      return;
+    }
+    this.a.jdField_a_of_type_JavaLangCharSequence = null;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(paramArrayOfHotWordItem);
+    this.a.i = 0;
   }
 }
 

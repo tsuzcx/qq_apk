@@ -29,8 +29,8 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import fji;
-import fjj;
+import fex;
+import fey;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.NewIntent;
@@ -126,7 +126,7 @@ public class PublicAccountHandler
   
   private void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
   {
-    fjj localfjj = new fjj();
+    fey localfey = new fey();
     int n = 1;
     boolean bool2 = false;
     long l1;
@@ -137,7 +137,7 @@ public class PublicAccountHandler
     boolean bool1;
     if ((paramIntent != null) && (paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramArrayOfByte != null))
     {
-      localfjj.jdField_a_of_type_Int = 0;
+      localfey.jdField_a_of_type_Int = 0;
       l1 = paramIntent.getLongExtra("time_stamp", 0L);
       l2 = paramIntent.getLongExtra("get_user_follow_list_begin", 0L);
       l3 = paramIntent.getLongExtra("get_user_follow_list_follow_seq", 0L);
@@ -156,11 +156,11 @@ public class PublicAccountHandler
             continue;
           }
           m = ((mobileqq_mp.RetInfo)paramIntent.ret_info.get()).ret_code.get();
-          localfjj.jdField_a_of_type_Int = m;
+          localfey.jdField_a_of_type_Int = m;
           if (m == 0) {
             continue;
           }
-          localfjj.jdField_a_of_type_Boolean = true;
+          localfey.jdField_a_of_type_Boolean = true;
           bool1 = false;
           m = 1;
         }
@@ -170,8 +170,8 @@ public class PublicAccountHandler
           label300:
           long l5;
           label367:
-          localfjj.jdField_a_of_type_Int = -1;
-          localfjj.jdField_a_of_type_Boolean = true;
+          localfey.jdField_a_of_type_Int = -1;
+          localfey.jdField_a_of_type_Boolean = true;
           bool1 = false;
           m = 1;
           continue;
@@ -179,7 +179,7 @@ public class PublicAccountHandler
           continue;
         }
         if (m != 0) {
-          a(100, bool1, localfjj);
+          a(100, bool1, localfey);
         }
         return;
         m = 0;
@@ -208,7 +208,7 @@ public class PublicAccountHandler
           m = paramIntent.total_count.get();
           l3 = Utils.a(m);
           paramFromServiceMsg = PublicAccountInfo.createPublicAccountInfoList(paramIntent.info.get(), l1);
-          localfjj.jdField_a_of_type_JavaUtilList = paramFromServiceMsg;
+          localfey.jdField_a_of_type_JavaUtilList = paramFromServiceMsg;
           if (!paramIntent.has_next.has()) {
             break label658;
           }
@@ -221,14 +221,14 @@ public class PublicAccountHandler
     }
     for (;;)
     {
-      localfjj.jdField_a_of_type_Boolean = bool1;
-      localfjj.jdField_a_of_type_Long = l3;
+      localfey.jdField_a_of_type_Boolean = bool1;
+      localfey.jdField_a_of_type_Long = l3;
       paramIntent = (PublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-      a(paramFromServiceMsg, l1, bool2, localfjj.jdField_a_of_type_Boolean);
-      if (localfjj.jdField_a_of_type_Boolean) {
+      a(paramFromServiceMsg, l1, bool2, localfey.jdField_a_of_type_Boolean);
+      if (localfey.jdField_a_of_type_Boolean) {
         PubAccountAssistantManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramIntent.a());
       }
-      if (!localfjj.jdField_a_of_type_Boolean)
+      if (!localfey.jdField_a_of_type_Boolean)
       {
         if (bool2) {
           a(l4, l5, 0L, 20L, l1, true);
@@ -242,14 +242,14 @@ public class PublicAccountHandler
           a(l4, l5, l2 + 20L, 20L, l1, false);
         }
       }
-      localfjj.jdField_a_of_type_Int = -1;
-      localfjj.jdField_a_of_type_Boolean = true;
+      localfey.jdField_a_of_type_Int = -1;
+      localfey.jdField_a_of_type_Boolean = true;
       bool1 = bool2;
       m = n;
       if (!QLog.isColorLevel()) {
         break;
       }
-      QLog.d(jdField_b_of_type_JavaLangString, 2, "<<---handleGetUserFollowList " + localfjj.jdField_a_of_type_Int);
+      QLog.d(jdField_b_of_type_JavaLangString, 2, "<<---handleGetUserFollowList " + localfey.jdField_a_of_type_Int);
       bool1 = bool2;
       m = n;
       break;
@@ -524,21 +524,21 @@ public class PublicAccountHandler
   
   public void a(Object paramObject)
   {
-    fji localfji = new fji();
-    localfji.jdField_a_of_type_Int = 0;
+    fex localfex = new fex();
+    localfex.jdField_a_of_type_Int = 0;
     long l = SystemClock.uptimeMillis();
     if ((paramObject instanceof AccountDetail)) {
-      localfji.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount((AccountDetail)paramObject, l);
+      localfex.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount((AccountDetail)paramObject, l);
     }
     for (;;)
     {
       paramObject = (PublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-      paramObject.a(localfji.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+      paramObject.a(localfex.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
       PubAccountAssistantManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject.a());
-      a(101, true, localfji);
+      a(101, true, localfex);
       return;
       if ((paramObject instanceof EqqDetail)) {
-        localfji.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount((EqqDetail)paramObject, l);
+        localfex.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount((EqqDetail)paramObject, l);
       }
     }
   }
@@ -550,21 +550,21 @@ public class PublicAccountHandler
   
   public void b(Object paramObject)
   {
-    fji localfji = new fji();
-    localfji.jdField_a_of_type_Int = 0;
+    fex localfex = new fex();
+    localfex.jdField_a_of_type_Int = 0;
     long l = SystemClock.uptimeMillis();
     if ((paramObject instanceof AccountDetail)) {
-      localfji.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount((AccountDetail)paramObject, l);
+      localfex.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount((AccountDetail)paramObject, l);
     }
     for (;;)
     {
       paramObject = (PublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-      paramObject.b(localfji.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+      paramObject.b(localfex.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
       PubAccountAssistantManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject.a());
-      a(102, true, localfji);
+      a(102, true, localfex);
       return;
       if ((paramObject instanceof EqqDetail)) {
-        localfji.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount((EqqDetail)paramObject, l);
+        localfex.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount((EqqDetail)paramObject, l);
       }
     }
   }

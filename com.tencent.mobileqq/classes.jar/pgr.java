@@ -1,17 +1,14 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 
-public final class pgr
-  implements FilenameFilter
+public abstract interface pgr
 {
-  public boolean accept(File paramFile, String paramString)
-  {
-    return !"imagelru.usetime".equals(paramString);
-  }
+  public abstract void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo);
+  
+  public abstract void a(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pgr
  * JD-Core Version:    0.7.0.1
  */

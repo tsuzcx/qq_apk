@@ -1,17 +1,19 @@
 package cooperation.qwallet.plugin.ipc;
 
+import alrk;
+import alto;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.ProtoServlet;
+import awfq;
+import bdbb;
+import bdgc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
@@ -20,21 +22,19 @@ import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.mobileqq.openapi.OpenApiManager;
-import com.tencent.mobileqq.openapi.sdk.QQResult.QQStringResult;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.QWalletHelper;
 import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.app.NewIntent;
 import mqq.os.MqqHandler;
+import mzx;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -66,7 +66,7 @@ public class CorpReq
   public int faceType;
   public String groupId;
   public String memUin;
-  public ArrayList memUinArrayList;
+  public ArrayList<String> memUinArrayList;
   public int subType;
   public String troopUin;
   public String uin;
@@ -88,8 +88,8 @@ public class CorpReq
       Object localObject2;
       if (!TextUtils.isEmpty(this.memUin))
       {
-        localObject2 = ContactUtils.h((QQAppInterface)localObject1, this.troopUin, this.memUin);
-        if (ContactUtils.a((String)localObject2, this.memUin))
+        localObject2 = bdgc.i((QQAppInterface)localObject1, this.troopUin, this.memUin);
+        if (bdgc.a((String)localObject2, this.memUin))
         {
           localCorpResp.memUin = this.memUin;
           localCorpResp.memNick = ((String)localObject2);
@@ -140,9 +140,9 @@ public class CorpReq
               if (j < k)
               {
                 localObject3 = (String)this.memUinArrayList.get(j);
-                str = ContactUtils.h((QQAppInterface)localObject1, this.troopUin, (String)localObject3);
+                str = bdgc.i((QQAppInterface)localObject1, this.troopUin, (String)localObject3);
                 JSONObject localJSONObject;
-                if (ContactUtils.a(str, (String)localObject3)) {
+                if (bdgc.a(str, (String)localObject3)) {
                   localJSONObject = new JSONObject();
                 }
                 for (;;)
@@ -182,7 +182,7 @@ public class CorpReq
         ((oidb_sso.OIDBSSOPkg)localObject3).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x787.ReqBody)localObject2).toByteArray()));
         if ((localObject1 != null) && (((QQAppInterface)localObject1).getApp() != null))
         {
-          localObject2 = new NewIntent(((QQAppInterface)localObject1).getApp(), ProtoServlet.class);
+          localObject2 = new NewIntent(((QQAppInterface)localObject1).getApp(), mzx.class);
           ((NewIntent)localObject2).putExtra("cmd", "OidbSvc.0x787_1");
           ((NewIntent)localObject2).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject3).toByteArray());
           ((NewIntent)localObject2).setObserver(new CorpReq.2(this, localCorpResp, (QQAppInterface)localObject1, localArrayList));
@@ -251,116 +251,116 @@ public class CorpReq
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 333	cooperation/qwallet/plugin/ipc/CorpReq:data	Landroid/os/Bundle;
+    //   1: getfield 334	cooperation/qwallet/plugin/ipc/CorpReq:data	Landroid/os/Bundle;
     //   4: ifnonnull +4 -> 8
     //   7: return
-    //   8: new 64	cooperation/qwallet/plugin/ipc/CorpResp
+    //   8: new 65	cooperation/qwallet/plugin/ipc/CorpResp
     //   11: dup
-    //   12: invokespecial 65	cooperation/qwallet/plugin/ipc/CorpResp:<init>	()V
+    //   12: invokespecial 66	cooperation/qwallet/plugin/ipc/CorpResp:<init>	()V
     //   15: astore 4
     //   17: aload 4
-    //   19: getstatic 67	cooperation/qwallet/plugin/ipc/CorpReq:corpReqType	I
-    //   22: putfield 68	cooperation/qwallet/plugin/ipc/CorpResp:corpReqType	I
+    //   19: getstatic 68	cooperation/qwallet/plugin/ipc/CorpReq:corpReqType	I
+    //   22: putfield 69	cooperation/qwallet/plugin/ipc/CorpResp:corpReqType	I
     //   25: aload 4
-    //   27: getstatic 335	cooperation/qwallet/plugin/ipc/CorpReq:encryptionData	Landroid/os/Bundle;
-    //   30: putfield 336	cooperation/qwallet/plugin/ipc/CorpResp:encryptionData	Landroid/os/Bundle;
+    //   27: getstatic 336	cooperation/qwallet/plugin/ipc/CorpReq:encryptionData	Landroid/os/Bundle;
+    //   30: putfield 337	cooperation/qwallet/plugin/ipc/CorpResp:encryptionData	Landroid/os/Bundle;
     //   33: aload_0
-    //   34: getfield 340	cooperation/qwallet/plugin/ipc/CorpReq:fromReceiver	Landroid/os/ResultReceiver;
+    //   34: getfield 341	cooperation/qwallet/plugin/ipc/CorpReq:fromReceiver	Landroid/os/ResultReceiver;
     //   37: ifnonnull +30 -> 67
     //   40: aload 4
     //   42: iconst_m1
-    //   43: putfield 343	cooperation/qwallet/plugin/ipc/CorpResp:callForwardRet	I
-    //   46: new 321	android/os/Bundle
+    //   43: putfield 344	cooperation/qwallet/plugin/ipc/CorpResp:callForwardRet	I
+    //   46: new 322	android/os/Bundle
     //   49: dup
-    //   50: invokespecial 322	android/os/Bundle:<init>	()V
+    //   50: invokespecial 323	android/os/Bundle:<init>	()V
     //   53: astore_1
     //   54: aload 4
     //   56: aload_1
-    //   57: invokevirtual 326	cooperation/qwallet/plugin/ipc/CorpResp:toBundle	(Landroid/os/Bundle;)V
+    //   57: invokevirtual 327	cooperation/qwallet/plugin/ipc/CorpResp:toBundle	(Landroid/os/Bundle;)V
     //   60: aload_0
     //   61: aload_1
-    //   62: invokevirtual 330	cooperation/qwallet/plugin/ipc/CorpReq:doCallback	(Landroid/os/Bundle;)Z
+    //   62: invokevirtual 331	cooperation/qwallet/plugin/ipc/CorpReq:doCallback	(Landroid/os/Bundle;)Z
     //   65: pop
     //   66: return
-    //   67: getstatic 363	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   67: getstatic 364	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
     //   70: astore_1
     //   71: aload_1
     //   72: ifnonnull +166 -> 238
-    //   75: getstatic 369	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   75: getstatic 370	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
     //   78: astore_1
     //   79: aload_1
     //   80: ifnull -34 -> 46
-    //   83: ldc_w 345
+    //   83: ldc_w 346
     //   86: astore_3
-    //   87: ldc_w 345
+    //   87: ldc_w 346
     //   90: astore_2
     //   91: aload_0
-    //   92: getfield 333	cooperation/qwallet/plugin/ipc/CorpReq:data	Landroid/os/Bundle;
+    //   92: getfield 334	cooperation/qwallet/plugin/ipc/CorpReq:data	Landroid/os/Bundle;
     //   95: ifnull +25 -> 120
     //   98: aload_0
-    //   99: getfield 333	cooperation/qwallet/plugin/ipc/CorpReq:data	Landroid/os/Bundle;
-    //   102: ldc_w 401
-    //   105: invokevirtual 357	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   99: getfield 334	cooperation/qwallet/plugin/ipc/CorpReq:data	Landroid/os/Bundle;
+    //   102: ldc_w 402
+    //   105: invokevirtual 358	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   108: astore_3
     //   109: aload_0
-    //   110: getfield 333	cooperation/qwallet/plugin/ipc/CorpReq:data	Landroid/os/Bundle;
-    //   113: ldc_w 403
-    //   116: invokevirtual 357	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   110: getfield 334	cooperation/qwallet/plugin/ipc/CorpReq:data	Landroid/os/Bundle;
+    //   113: ldc_w 404
+    //   116: invokevirtual 358	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   119: astore_2
-    //   120: new 371	android/content/Intent
+    //   120: new 372	android/content/Intent
     //   123: dup
     //   124: aload_1
-    //   125: ldc_w 405
-    //   128: invokespecial 374	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   125: ldc_w 406
+    //   128: invokespecial 375	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
     //   131: astore 5
-    //   133: new 208	org/json/JSONObject
+    //   133: new 209	org/json/JSONObject
     //   136: dup
-    //   137: invokespecial 209	org/json/JSONObject:<init>	()V
+    //   137: invokespecial 210	org/json/JSONObject:<init>	()V
     //   140: astore 6
     //   142: aload 6
-    //   144: ldc_w 401
+    //   144: ldc_w 402
     //   147: aload_3
-    //   148: invokevirtual 214	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   148: invokevirtual 215	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   151: pop
     //   152: aload 6
-    //   154: ldc_w 403
+    //   154: ldc_w 404
     //   157: aload_2
-    //   158: invokevirtual 214	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   158: invokevirtual 215	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   161: pop
     //   162: aload 5
-    //   164: ldc_w 407
+    //   164: ldc_w 408
     //   167: aload 6
-    //   169: invokevirtual 408	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   172: invokevirtual 377	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   169: invokevirtual 409	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   172: invokevirtual 378	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   175: pop
     //   176: aload 5
-    //   178: ldc_w 410
+    //   178: ldc_w 411
     //   181: iconst_2
-    //   182: invokevirtual 380	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   182: invokevirtual 381	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   185: pop
     //   186: aload 5
-    //   188: ldc_w 412
-    //   191: ldc_w 414
-    //   194: invokevirtual 377	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   188: ldc_w 413
+    //   191: ldc_w 415
+    //   194: invokevirtual 378	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   197: pop
     //   198: aload 5
-    //   200: ldc_w 415
-    //   203: invokevirtual 390	android/content/Intent:addFlags	(I)Landroid/content/Intent;
+    //   200: ldc_w 416
+    //   203: invokevirtual 391	android/content/Intent:addFlags	(I)Landroid/content/Intent;
     //   206: pop
     //   207: aload_1
     //   208: aload 5
-    //   210: invokevirtual 396	android/content/Context:startActivity	(Landroid/content/Intent;)V
+    //   210: invokevirtual 397	android/content/Context:startActivity	(Landroid/content/Intent;)V
     //   213: aload 4
     //   215: iconst_0
-    //   216: putfield 343	cooperation/qwallet/plugin/ipc/CorpResp:callForwardRet	I
+    //   216: putfield 344	cooperation/qwallet/plugin/ipc/CorpResp:callForwardRet	I
     //   219: goto -173 -> 46
     //   222: astore_1
     //   223: aload_1
-    //   224: invokevirtual 399	java/lang/Exception:printStackTrace	()V
+    //   224: invokevirtual 400	java/lang/Exception:printStackTrace	()V
     //   227: goto -181 -> 46
     //   230: astore_2
     //   231: aload_2
-    //   232: invokevirtual 399	java/lang/Exception:printStackTrace	()V
+    //   232: invokevirtual 400	java/lang/Exception:printStackTrace	()V
     //   235: goto -73 -> 162
     //   238: goto -159 -> 79
     // Local variable table:
@@ -433,9 +433,9 @@ public class CorpReq
         }
         if ((localObject1 != null) && (!TextUtils.isEmpty(str)) && (localQQAppInterface != null))
         {
-          localObject1 = new FaceDecoder((Context)localObject1, localQQAppInterface);
-          ((FaceDecoder)localObject1).a(new CorpReq.3(this, localQQAppInterface, str, localCorpResp));
-          if (((FaceDecoder)localObject1).a(i, str) == null) {
+          localObject1 = new bdbb((Context)localObject1, localQQAppInterface);
+          ((bdbb)localObject1).a(new CorpReq.3(this, localQQAppInterface, str, localCorpResp));
+          if (((bdbb)localObject1).a(i, str) == null) {
             break label170;
           }
           localObject1 = localQQAppInterface.a(i, str, 0);
@@ -448,7 +448,7 @@ public class CorpReq
     }
     return;
     label170:
-    ((FaceDecoder)localObject1).a(str, i, false);
+    ((bdbb)localObject1).a(str, i, false);
   }
   
   public void getGroupNickname()
@@ -477,7 +477,7 @@ public class CorpReq
     }
     try
     {
-      localCorpResp.userNick = new TroopManager(localQQAppInterface).b(str).troopname;
+      localCorpResp.userNick = new TroopManager(localQQAppInterface).c(str).troopname;
       for (;;)
       {
         localCorpResp.toBundle(localBundle);
@@ -485,7 +485,7 @@ public class CorpReq
         return;
         label128:
         if (i == 1) {
-          localCorpResp.userNick = new DiscussionManager(localQQAppInterface).a(str).discussionName;
+          localCorpResp.userNick = new alrk(localQQAppInterface).a(str).discussionName;
         }
       }
     }
@@ -514,8 +514,10 @@ public class CorpReq
     CorpResp localCorpResp = new CorpResp();
     localCorpResp.corpReqType = corpReqType;
     Object localObject = QWalletHelper.getAppInterface();
-    if (localObject != null) {
+    if (localObject != null)
+    {
       localCorpResp.faceFilePath = ((QQAppInterface)localObject).a(this.faceType, this.uin, this.subType);
+      localCorpResp.memUin = this.uin;
     }
     localObject = new Bundle();
     localCorpResp.toBundle((Bundle)localObject);
@@ -533,7 +535,7 @@ public class CorpReq
       }
     }
     label62:
-    for (localCorpResp.isFriend = false;; localCorpResp.isFriend = ((FriendsManager)((QQAppInterface)localObject).getManager(50)).b(this.uin))
+    for (localCorpResp.isFriend = false;; localCorpResp.isFriend = ((alto)((QQAppInterface)localObject).getManager(51)).b(this.uin))
     {
       localObject = new Bundle();
       localCorpResp.toBundle((Bundle)localObject);
@@ -592,8 +594,8 @@ public class CorpReq
     if (this.data == null) {
       return;
     }
-    QQResult.QQStringResult localQQStringResult = new QQResult.QQStringResult(this.data.getInt("businessType"), 0, this.data.getString("retData"));
-    OpenApiManager.getInstance().onPayMsgRsp(localQQStringResult);
+    awfq localawfq = new awfq(this.data.getInt("businessType"), 0, this.data.getString("retData"));
+    OpenApiManager.getInstance().onPayMsgRsp(localawfq);
   }
   
   public void onUserNcik()
@@ -610,15 +612,15 @@ public class CorpReq
     Object localObject1;
     if (localObject2 != null)
     {
-      localObject3 = (FriendsManager)((QQAppInterface)localObject2).getManager(50);
-      if (((this.channel == 5) || ((this.channel & 0x10) != 0)) && ((!((FriendsManager)localObject3).b(this.uin)) || (((QQAppInterface)localObject2).getCurrentAccountUin().equals(this.uin)))) {
+      localObject3 = (alto)((QQAppInterface)localObject2).getManager(51);
+      if (((this.channel == 5) || ((this.channel & 0x10) != 0)) && ((!((alto)localObject3).b(this.uin)) || (((QQAppInterface)localObject2).getCurrentAccountUin().equals(this.uin)))) {
         break label357;
       }
       if (TextUtils.isEmpty(this.groupId)) {
         break label320;
       }
-      localObject1 = (TroopManager)((QQAppInterface)localObject2).getManager(51);
-      localObject3 = ((FriendsManager)localObject3).c(this.uin);
+      localObject1 = (TroopManager)((QQAppInterface)localObject2).getManager(52);
+      localObject3 = ((alto)localObject3).e(this.uin);
       localObject1 = ((TroopManager)localObject1).b(this.groupId, this.uin);
       if ((localObject3 == null) || (TextUtils.isEmpty(((Friends)localObject3).remark))) {
         break label224;
@@ -631,7 +633,7 @@ public class CorpReq
       {
         ((QQAppInterface)localObject2).addObserver(CorpReq.TenpayFriendListObserver.getInstance());
         CorpReq.TenpayFriendListObserver.getInstance().add(this.uin, this.fromReceiver);
-        localCorpResp.userNick = ContactUtils.b((QQAppInterface)localObject2, this.uin, true);
+        localCorpResp.userNick = bdgc.b((QQAppInterface)localObject2, this.uin, true);
       }
       for (;;)
       {
@@ -670,10 +672,10 @@ public class CorpReq
         label320:
         ((QQAppInterface)localObject2).addObserver(CorpReq.TenpayFriendListObserver.getInstance());
         CorpReq.TenpayFriendListObserver.getInstance().add(this.uin, this.fromReceiver);
-        localCorpResp.userNick = ContactUtils.b((QQAppInterface)localObject2, this.uin, true);
+        localCorpResp.userNick = bdgc.b((QQAppInterface)localObject2, this.uin, true);
         continue;
         label357:
-        localObject2 = ContactUtils.q((QQAppInterface)localObject2, this.uin);
+        localObject2 = bdgc.q((QQAppInterface)localObject2, this.uin);
         localObject1 = localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           localObject1 = this.uin;
@@ -743,7 +745,7 @@ public class CorpReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qwallet.plugin.ipc.CorpReq
  * JD-Core Version:    0.7.0.1
  */

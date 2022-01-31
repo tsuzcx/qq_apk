@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.Doraemon.APICallback;
+import android.view.animation.Interpolator;
 
-public final class rfl
-  implements Runnable
+public class rfl
+  implements Interpolator
 {
-  public rfl(APICallback paramAPICallback, int paramInt) {}
-  
-  public void run()
+  private float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback.a(this.jdField_a_of_type_Int);
+    return -paramFloat3 * (float)Math.cos(paramFloat1 / paramFloat4 * 1.570796326794897D) + paramFloat3 + paramFloat2;
+  }
+  
+  public float getInterpolation(float paramFloat)
+  {
+    return a(paramFloat, 0.0F, 1.0F, 1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rfl
  * JD-Core Version:    0.7.0.1
  */

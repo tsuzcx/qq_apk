@@ -1,43 +1,27 @@
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
-import com.tencent.mobileqq.filemanager.data.FMConfig;
-import com.tencent.mobileqq.troop.data.TroopFilePreviewController;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.PreviewInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
+import java.util.Comparator;
 
-public class ajev
-  extends BizTroopObserver
+final class ajev
+  implements Comparator<File>
 {
-  public ajev(TroopFilePreviewController paramTroopFilePreviewController) {}
-  
-  protected void c(Object paramObject)
+  private int a(String paramString)
   {
-    TroopFileTransferManager.PreviewInfo localPreviewInfo = (TroopFileTransferManager.PreviewInfo)paramObject;
-    String str1 = localPreviewInfo.c;
-    if (!NetworkUtil.g(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) {
-      str1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131428327);
-    }
-    String str2;
-    if (str1 != null)
+    try
     {
-      str2 = str1;
-      if (str1.length() >= 1) {}
+      int i = paramString.lastIndexOf('.');
+      if (i == -1) {
+        return Integer.parseInt(paramString);
+      }
+      i = Integer.parseInt(paramString.substring(0, i));
+      return i;
     }
-    else
-    {
-      str2 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435101);
-    }
-    if (FMConfig.jdField_a_of_type_Boolean)
-    {
-      localPreviewInfo.jdField_a_of_type_JavaLangString = "183.61.37.13";
-      localPreviewInfo.b = "443";
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback.a(localPreviewInfo.jdField_a_of_type_Boolean, localPreviewInfo.jdField_a_of_type_JavaLangString, localPreviewInfo.b, localPreviewInfo.jdField_a_of_type_Int, str2, localPreviewInfo.d, null, localPreviewInfo.e);
-    }
-    super.c(paramObject);
+    catch (Exception paramString) {}
+    return 0;
+  }
+  
+  public int a(File paramFile1, File paramFile2)
+  {
+    return a(paramFile1.getName()) - a(paramFile2.getName());
   }
 }
 

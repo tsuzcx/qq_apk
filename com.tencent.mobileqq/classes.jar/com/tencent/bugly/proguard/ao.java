@@ -1,22 +1,28 @@
 package com.tencent.bugly.proguard;
 
+import java.util.ArrayList;
+
 public final class ao
   extends k
   implements Cloneable
 {
-  public String a = "";
-  private String b = "";
+  private static ArrayList<an> b;
+  public ArrayList<an> a = null;
   
   public final void a(i parami)
   {
-    this.a = parami.b(0, true);
-    this.b = parami.b(1, true);
+    if (b == null)
+    {
+      b = new ArrayList();
+      an localan = new an();
+      b.add(localan);
+    }
+    this.a = ((ArrayList)parami.a(b, 0, true));
   }
   
   public final void a(j paramj)
   {
     paramj.a(this.a, 0);
-    paramj.a(this.b, 1);
   }
   
   public final void a(StringBuilder paramStringBuilder, int paramInt) {}

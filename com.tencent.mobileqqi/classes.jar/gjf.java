@@ -1,24 +1,29 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.view.ProfileBusinessView;
-import java.util.HashMap;
+import com.tencent.mobileqq.servlet.QZoneNotifyServlet;
+import com.tencent.qphone.base.util.QLog;
+import java.util.TimerTask;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
-class gjf
-  implements Runnable
+public class gjf
+  extends TimerTask
 {
-  gjf(gje paramgje, Bitmap paramBitmap) {}
+  public gjf(QZoneNotifyServlet paramQZoneNotifyServlet) {}
   
   public void run()
   {
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_Gje.a.a.get("map_key_face");
-    if (localImageView != null) {
-      localImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.lebatab.QZoneNotifyServlet", 2, "QZONE GET UNREAD.QZoneFeedTimeTask run.");
     }
+    AppRuntime localAppRuntime = this.a.getAppRuntime();
+    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), QZoneNotifyServlet.class);
+    localNewIntent.setAction("Qzone_Get_NewAndUnread_Count");
+    localNewIntent.putExtra("bNotWorkInBackGround", true);
+    localAppRuntime.startServlet(localNewIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gjf
  * JD-Core Version:    0.7.0.1
  */

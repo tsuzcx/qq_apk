@@ -1,10 +1,8 @@
 package com.tencent.hydevteam.common.progress;
 
 import com.tencent.hydevteam.common.annotation.API;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 @API
 public class ProgressFutureImpl<T>
@@ -25,13 +23,11 @@ public class ProgressFutureImpl<T>
   }
   
   public T get()
-    throws InterruptedException, ExecutionException
   {
     return this.a.get();
   }
   
   public T get(long paramLong, TimeUnit paramTimeUnit)
-    throws InterruptedException, ExecutionException, TimeoutException
   {
     return this.a.get(paramLong, paramTimeUnit);
   }
@@ -56,7 +52,7 @@ public class ProgressFutureImpl<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.hydevteam.common.progress.ProgressFutureImpl
  * JD-Core Version:    0.7.0.1
  */

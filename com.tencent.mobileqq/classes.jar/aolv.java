@@ -1,23 +1,22 @@
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment;
-
 public class aolv
-  implements Runnable
+  extends aolr
 {
-  public aolv(CaptureQmcfSoDownloadFragment paramCaptureQmcfSoDownloadFragment, String paramString) {}
+  private aomp a;
   
-  public void run()
+  public aolv(String paramString, aomp paramaomp)
   {
-    CaptureQmcfSoDownloadFragment.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragment).setText(this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureQmcfSoDownloadFragment", 2, "setTipsTextData: textData=" + this.jdField_a_of_type_JavaLangString);
-    }
+    super(paramString);
+    this.a = paramaomp;
+  }
+  
+  public aomp a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aolv
  * JD-Core Version:    0.7.0.1
  */

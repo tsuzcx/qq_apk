@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class adsk
-  implements TVK_IMediaPlayer.OnSeekCompleteListener
+  extends avva
 {
-  public adsk(VideoBaseItem paramVideoBaseItem) {}
+  public adsk(QQSettingMe paramQQSettingMe) {}
   
-  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a.start();
-    this.a.c = 2;
+    if (this.a.c) {
+      this.a.i();
+    }
   }
 }
 

@@ -1,20 +1,10 @@
-import com.tencent.mobileqq.activity.PreloadWebService;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
-
-public class tgi
-  extends WebViewClient
+class tgi
 {
-  public tgi(PreloadWebService paramPreloadWebService) {}
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    return true;
-  }
+  private static final tgg a = new tgg();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tgi
  * JD-Core Version:    0.7.0.1
  */

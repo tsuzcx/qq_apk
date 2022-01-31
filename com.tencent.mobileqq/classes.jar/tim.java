@@ -1,24 +1,46 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 
-public class tim
-  extends MessageObserver
+class tim
+  implements tmc
 {
-  public tim(QQLSActivity paramQQLSActivity) {}
+  tim(tij paramtij, Context paramContext, int paramInt) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void a(String paramString, int paramInt)
   {
-    super.a(paramBoolean, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSActivity", 2, "PC has read onPushReadedNotify finish" + Thread.currentThread().getId());
+    tlq.a(this.jdField_a_of_type_AndroidContentContext, "biz_src_jc_gzh_weishi", paramString, 1, tij.a(this.jdField_a_of_type_Tij), this.jdField_a_of_type_Int);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      tch.a(this.jdField_a_of_type_AndroidContentContext, paramString);
     }
-    QQLSActivity.a(this.a);
+  }
+  
+  public void c(String paramString, int paramInt)
+  {
+    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
+    localWSDownloadParams.mScene = 1;
+    localWSDownloadParams.mLinkStrategyType = tij.a(this.jdField_a_of_type_Tij);
+    localWSDownloadParams.mEventId = 401;
+    localWSDownloadParams.mTestId = tju.b();
+    localWSDownloadParams.mScheme = paramString;
+    tfa.a((Activity)this.jdField_a_of_type_AndroidContentContext, localWSDownloadParams, false);
+  }
+  
+  public void d(String paramString, int paramInt)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      tij.a(this.jdField_a_of_type_Tij, this.jdField_a_of_type_AndroidContentContext, paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tim
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,35 @@
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.Mp4FlowReEncoder;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class ahok
-  implements Runnable
 {
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public ahok(Mp4FlowReEncoder paramMp4FlowReEncoder, List paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public void run()
-  {
-    Mp4FlowReEncoder.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowMp4FlowReEncoder, this.jdField_a_of_type_JavaUtilList);
-  }
+  public int a;
+  public long a;
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public ShaderAnimLayout a;
+  public String a;
+  public structmsg.StructMsg a;
+  public int b;
+  public long b;
+  public ImageView b;
+  public LinearLayout b;
+  public TextView b;
+  public String b;
+  public long c;
+  public TextView c;
+  public String c = "";
+  public TextView d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahok
  * JD-Core Version:    0.7.0.1
  */

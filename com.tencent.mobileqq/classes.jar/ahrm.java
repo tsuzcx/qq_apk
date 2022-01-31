@@ -1,32 +1,21 @@
-import com.tencent.mobileqq.search.ISearchable;
-import java.util.Comparator;
+import android.view.View;
+import android.widget.TextView;
 
-public final class ahrm
-  implements Comparator
+class ahrm
+  extends akit
 {
-  public int a(ISearchable paramISearchable1, ISearchable paramISearchable2)
+  public int a;
+  public TextView a;
+  
+  public ahrm(View paramView)
   {
-    long l1 = paramISearchable1.c();
-    long l2 = paramISearchable2.c();
-    if (l1 < l2) {}
-    do
-    {
-      return 1;
-      if (l1 > l2) {
-        return -1;
-      }
-      l1 = paramISearchable1.b();
-      l2 = paramISearchable2.b();
-    } while (l1 < l2);
-    if (l1 > l2) {
-      return -1;
-    }
-    return 0;
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378845));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahrm
  * JD-Core Version:    0.7.0.1
  */

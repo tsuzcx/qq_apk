@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-
 class vjs
-  implements Runnable
+  extends vio
 {
-  vjs(vjr paramvjr) {}
+  vjs(vji paramvji, vkq paramvkq) {}
   
-  public void run()
+  public boolean b()
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_Vkq.d);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vjs
  * JD-Core Version:    0.7.0.1
  */

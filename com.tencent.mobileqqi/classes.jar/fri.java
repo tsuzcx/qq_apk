@@ -1,26 +1,32 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import java.io.File;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.RecentFileAdapter.ItemHolder;
+import com.tencent.mobileqq.utils.BubbleContextMenu;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 
 public class fri
-  extends Thread
+  implements View.OnLongClickListener
 {
-  public fri(ConfigServlet paramConfigServlet, String paramString1, int paramInt, String paramString2, String paramString3) {}
+  public fri(FMRecentFileActivity paramFMRecentFileActivity) {}
   
-  public void run()
+  public boolean onLongClick(View paramView)
   {
-    if (HttpDownloadUtil.a((AppInterface)this.jdField_a_of_type_ComTencentMobileqqConfigSplashlogoConfigServlet.getAppRuntime(), this.jdField_a_of_type_JavaLangString, new File(this.jdField_a_of_type_ComTencentMobileqqConfigSplashlogoConfigServlet.getAppRuntime().getApplication().getFilesDir().getAbsolutePath() + "/" + "flashlogo.png"))) {
-      SharedPreUtils.a(this.jdField_a_of_type_ComTencentMobileqqConfigSplashlogoConfigServlet.getAppRuntime().getApplication(), this.jdField_a_of_type_Int, this.b, this.c);
+    if (paramView == null) {
+      return false;
     }
+    FileManagerEntity localFileManagerEntity = ((RecentFileAdapter.ItemHolder)paramView.getTag()).a;
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localQQCustomMenu.a(2131230986, paramView.getContext().getString(2131561917));
+    FMRecentFileActivity.a(this.a, BubbleContextMenu.a(paramView, localQQCustomMenu, new frj(this, paramView), localFileManagerEntity.fileName));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fri
  * JD-Core Version:    0.7.0.1
  */

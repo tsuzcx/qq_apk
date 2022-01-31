@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
 
 public class ahjn
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahjn(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public ahjn(Face2FaceAddContactFragment paramFace2FaceAddContactFragment, Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    EffectsCameraCaptureFragment.a(this.a);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahjn
  * JD-Core Version:    0.7.0.1
  */

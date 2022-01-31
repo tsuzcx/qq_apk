@@ -1,15 +1,25 @@
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import android.os.Parcel;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 
-public class ajms
-  implements Runnable
+public abstract class ajms
 {
-  public ajms(AIOAnimationControlManager paramAIOAnimationControlManager) {}
+  public abstract void a(Object paramObject, Parcel paramParcel, ArrayList<Field> paramArrayList);
   
-  public void run()
+  abstract void a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
+  
+  public boolean a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
   {
-    AIOAnimationControlManager.a(this.a);
-    this.a.a();
+    a(paramObject, paramArrayList, paramParcel);
+    if (b(paramObject, paramArrayList, paramParcel)) {
+      b(paramObject, paramArrayList, paramParcel);
+    }
+    return false;
   }
+  
+  abstract void b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
+  
+  abstract boolean b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
 }
 
 

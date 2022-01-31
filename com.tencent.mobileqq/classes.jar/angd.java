@@ -1,25 +1,8 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import cooperation.troop_homework.TroopHomeworkHelper;
-import cooperation.troop_homework.jsp.TroopHWVoiceController;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 
-public class angd
-  implements Runnable
+public abstract interface angd
 {
-  public angd(TroopHWVoiceController paramTroopHWVoiceController) {}
-  
-  public void run()
-  {
-    String str = TroopHomeworkHelper.a(TroopHWVoiceController.a(this.a));
-    if (!TextUtils.isEmpty(str))
-    {
-      Message localMessage = TroopHWVoiceController.a(this.a).obtainMessage();
-      localMessage.what = 0;
-      localMessage.obj = str;
-      localMessage.sendToTarget();
-    }
-  }
+  public abstract void a(ARCommonConfigInfo paramARCommonConfigInfo);
 }
 
 

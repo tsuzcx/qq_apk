@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class mobileqq_mp$GetUserEqqListRequest
-  extends MessageMicro
+  extends MessageMicro<GetUserEqqListRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "begin", "limit", "seqno", "version" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, GetUserEqqListRequest.class);
   public final PBUInt32Field begin = PBField.initUInt32(0);
@@ -16,7 +16,7 @@ public final class mobileqq_mp$GetUserEqqListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mp.mobileqq_mp.GetUserEqqListRequest
  * JD-Core Version:    0.7.0.1
  */

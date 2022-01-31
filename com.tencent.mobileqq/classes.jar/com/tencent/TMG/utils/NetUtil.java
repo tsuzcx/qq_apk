@@ -2,7 +2,6 @@ package com.tencent.TMG.utils;
 
 import android.util.Log;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 
 public class NetUtil
@@ -15,7 +14,6 @@ public class NetUtil
   }
   
   private static String getStringFromInputStream(InputStream paramInputStream)
-    throws IOException
   {
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     byte[] arrayOfByte = new byte[1024];
@@ -41,61 +39,61 @@ public class NetUtil
     //   1: astore_3
     //   2: aconst_null
     //   3: astore_2
-    //   4: new 52	java/net/URL
+    //   4: new 49	java/net/URL
     //   7: dup
     //   8: aload_0
-    //   9: invokespecial 55	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   12: invokevirtual 59	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   15: checkcast 61	java/net/HttpURLConnection
+    //   9: invokespecial 52	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   12: invokevirtual 56	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   15: checkcast 58	java/net/HttpURLConnection
     //   18: astore_0
     //   19: aload_0
-    //   20: ldc 63
-    //   22: invokevirtual 66	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   20: ldc 60
+    //   22: invokevirtual 63	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   25: aload_0
     //   26: sipush 5000
-    //   29: invokevirtual 70	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   29: invokevirtual 67	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   32: aload_0
     //   33: sipush 10000
-    //   36: invokevirtual 73	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   36: invokevirtual 70	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   39: aload_0
     //   40: iconst_1
-    //   41: invokevirtual 77	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   41: invokevirtual 74	java/net/HttpURLConnection:setDoOutput	(Z)V
     //   44: aload_0
-    //   45: invokevirtual 81	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   45: invokevirtual 78	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
     //   48: astore_3
     //   49: aload_3
     //   50: aload_1
-    //   51: invokevirtual 87	java/lang/String:getBytes	()[B
-    //   54: invokevirtual 92	java/io/OutputStream:write	([B)V
+    //   51: invokevirtual 84	java/lang/String:getBytes	()[B
+    //   54: invokevirtual 89	java/io/OutputStream:write	([B)V
     //   57: aload_3
-    //   58: invokevirtual 95	java/io/OutputStream:flush	()V
+    //   58: invokevirtual 92	java/io/OutputStream:flush	()V
     //   61: aload_3
-    //   62: invokevirtual 96	java/io/OutputStream:close	()V
+    //   62: invokevirtual 93	java/io/OutputStream:close	()V
     //   65: aload_2
     //   66: astore_1
     //   67: aload_0
-    //   68: invokevirtual 100	java/net/HttpURLConnection:getResponseCode	()I
+    //   68: invokevirtual 97	java/net/HttpURLConnection:getResponseCode	()I
     //   71: sipush 200
     //   74: if_icmpne +11 -> 85
     //   77: aload_0
-    //   78: invokevirtual 104	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   81: invokestatic 106	com/tencent/TMG/utils/NetUtil:getStringFromInputStream	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   78: invokevirtual 101	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   81: invokestatic 103	com/tencent/TMG/utils/NetUtil:getStringFromInputStream	(Ljava/io/InputStream;)Ljava/lang/String;
     //   84: astore_1
     //   85: aload_0
     //   86: ifnull +61 -> 147
     //   89: aload_0
-    //   90: invokevirtual 109	java/net/HttpURLConnection:disconnect	()V
+    //   90: invokevirtual 106	java/net/HttpURLConnection:disconnect	()V
     //   93: aload_1
     //   94: areturn
     //   95: astore_1
     //   96: aconst_null
     //   97: astore_0
     //   98: aload_1
-    //   99: invokevirtual 112	java/lang/Exception:printStackTrace	()V
+    //   99: invokevirtual 109	java/lang/Exception:printStackTrace	()V
     //   102: aload_0
     //   103: ifnull +42 -> 145
     //   106: aload_0
-    //   107: invokevirtual 109	java/net/HttpURLConnection:disconnect	()V
+    //   107: invokevirtual 106	java/net/HttpURLConnection:disconnect	()V
     //   110: aconst_null
     //   111: areturn
     //   112: astore_0
@@ -104,7 +102,7 @@ public class NetUtil
     //   115: aload_1
     //   116: ifnull +7 -> 123
     //   119: aload_1
-    //   120: invokevirtual 109	java/net/HttpURLConnection:disconnect	()V
+    //   120: invokevirtual 106	java/net/HttpURLConnection:disconnect	()V
     //   123: aload_0
     //   124: athrow
     //   125: astore_2
@@ -146,7 +144,7 @@ public class NetUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.TMG.utils.NetUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,12 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
-
-public class xvf
-  implements Runnable
+public abstract interface xvf
 {
-  public xvf(RMVideoRecordState paramRMVideoRecordState) {}
+  public abstract void a(xve paramxve);
   
-  public void run()
-  {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (!localRMVideoStateMgr.b())
-    {
-      SLog.c("RMRecordState", "run record finish, but state is not right");
-      return;
-    }
-    this.a.b();
-    localRMVideoStateMgr.a.z();
-  }
+  public abstract void a(xve paramxve, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xvf
  * JD-Core Version:    0.7.0.1
  */

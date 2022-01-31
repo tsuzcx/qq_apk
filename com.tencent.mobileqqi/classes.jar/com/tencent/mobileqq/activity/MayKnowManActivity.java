@@ -29,12 +29,12 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.XListView;
-import dbh;
-import dbi;
-import dbj;
-import dbm;
-import dbn;
-import dbp;
+import cvq;
+import cvr;
+import cvs;
+import cvv;
+import cvw;
+import cvy;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,9 +50,9 @@ public class MayKnowManActivity
   public View a;
   public LinearLayout a;
   public TextView a;
-  private LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new dbj(this);
+  private LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new cvs(this);
   public XListView a;
-  public dbp a;
+  public cvy a;
   public List a;
   public boolean a;
   public TextView b;
@@ -329,15 +329,15 @@ public class MayKnowManActivity
     int i = (int)DisplayUtils.a(this, 8.0F);
     ((RelativeLayout.LayoutParams)this.l.getLayoutParams()).setMargins(i, 0, i, 0);
     setTitle(2131562734);
-    View localView = findViewById(2131231917);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131231919));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131231920));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localView.findViewById(2131231918));
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2130903281, null);
+    View localView = findViewById(2131231920);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131231922));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131231923));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localView.findViewById(2131231921));
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2130903283, null);
     this.jdField_a_of_type_ComTencentWidgetXListView.b(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231867));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231869));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(2131562926);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new dbi(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new cvr(this));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
   }
   
@@ -347,15 +347,15 @@ public class MayKnowManActivity
     QQProgressDialog localQQProgressDialog = new QQProgressDialog(this, this.d);
     localQQProgressDialog.a(getString(2131562643));
     this.jdField_a_of_type_AndroidAppDialog = localQQProgressDialog;
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new dbm(this));
-    this.jdField_a_of_type_AndroidAppDialog.setOnCancelListener(new dbn(this));
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new cvv(this));
+    this.jdField_a_of_type_AndroidAppDialog.setOnCancelListener(new cvw(this));
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
   
   void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Dbp != null) {
-      this.jdField_a_of_type_Dbp.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Cvy != null) {
+      this.jdField_a_of_type_Cvy.notifyDataSetChanged();
     }
   }
   
@@ -400,7 +400,7 @@ public class MayKnowManActivity
       this.jdField_a_of_type_AndroidWidgetTextView.setText(2131562411);
       this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
       ProgressBar localProgressBar = (ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131231066);
-      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231866);
+      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231868);
       localProgressBar.setVisibility(0);
       localImageView.setVisibility(8);
     }
@@ -421,12 +421,12 @@ public class MayKnowManActivity
   {
     super.onCreate(paramBundle);
     this.d = getResources().getDimensionPixelSize(2131427376);
-    setContentView(2130903275);
+    setContentView(2130903277);
     j(2130837729);
     e();
     a(this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    runOnUiThread(new dbh(this));
+    runOnUiThread(new cvq(this));
   }
   
   protected Dialog onCreateDialog(int paramInt)
@@ -441,8 +441,8 @@ public class MayKnowManActivity
   protected void onDestroy()
   {
     b(this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver);
-    if (this.jdField_a_of_type_Dbp != null) {
-      this.jdField_a_of_type_Dbp.b();
+    if (this.jdField_a_of_type_Cvy != null) {
+      this.jdField_a_of_type_Cvy.b();
     }
     super.onDestroy();
   }

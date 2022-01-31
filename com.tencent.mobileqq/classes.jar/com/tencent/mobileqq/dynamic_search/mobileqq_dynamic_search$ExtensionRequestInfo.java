@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBFloatField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class mobileqq_dynamic_search$ExtensionRequestInfo
-  extends MessageMicro
+  extends MessageMicro<ExtensionRequestInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField action = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -29,7 +29,7 @@ public final class mobileqq_dynamic_search$ExtensionRequestInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.ExtensionRequestInfo
  * JD-Core Version:    0.7.0.1
  */

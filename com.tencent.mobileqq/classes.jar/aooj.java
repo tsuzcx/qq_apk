@@ -1,72 +1,64 @@
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.QQVideoMaterial;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.TemplateParser;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfoLoadObserver;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Arrays;
+import java.util.List;
+import org.json.JSONArray;
 
 public class aooj
-  implements Runnable
 {
-  public aooj(PtvTemplateManager paramPtvTemplateManager, File paramFile, boolean paramBoolean, PtvTemplateManager.DoodleInfoLoadObserver paramDoodleInfoLoadObserver, AppInterface paramAppInterface) {}
+  private List<String> a = new ArrayList(Arrays.asList(new String[] { "requestPayment", "updateHTMLWebView", "insertHTMLWebView", "removeHTMLWebView", "insertMap", "wnsRequest", "getQua", "openUrl", "notifyNative", "launchApplication", "getUserInfoExtra", "updateShareMenu", "showShareMenu", "hideShareMenu", "getShareInfo", "shareAppMessage" }));
   
-  public void run()
+  public static aooj a(aoko[] paramArrayOfaoko)
   {
-    Object localObject1 = PtvTemplateManager.a(this.jdField_a_of_type_JavaIoFile);
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-    do
+    aooj localaooj = new aooj();
+    int i = 0;
+    Object localObject;
+    for (;;)
     {
-      return;
-      localObject1 = PtvTemplateManager.a((String)localObject1);
-    } while ((localObject1 == null) || (((PtvTemplateManager.PtvTemplateInfo)localObject1).doodleInfos == null) || (((PtvTemplateManager.PtvTemplateInfo)localObject1).doodleInfos.isEmpty()));
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.jdField_d_of_type_JavaUtilArrayList.clear();
-    ??? = ((PtvTemplateManager.PtvTemplateInfo)localObject1).doodleInfos.iterator();
-    while (((Iterator)???).hasNext())
-    {
-      Object localObject4 = (PtvTemplateManager.DoodleInfo)((Iterator)???).next();
-      if (localObject4 != null)
+      localObject = localaooj;
+      try
       {
-        ((PtvTemplateManager.DoodleInfo)localObject4).doodleUsable = this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.a((PtvTemplateManager.DoodleInfo)localObject4, true);
-        if ((((PtvTemplateManager.DoodleInfo)localObject4).doodleUsable) && (this.jdField_a_of_type_Boolean))
+        if (i < paramArrayOfaoko.length)
         {
-          localObject4 = PtvTemplateManager.c + ((PtvTemplateManager.DoodleInfo)localObject4).doodleName;
-          QQVideoMaterial localQQVideoMaterial = TemplateParser.a((String)localObject4, "params");
-          if (localQQVideoMaterial != null)
+          localaooj.a.clear();
+          localObject = paramArrayOfaoko[i].a;
+          if (!TextUtils.isEmpty((CharSequence)localObject))
           {
-            localQQVideoMaterial.setDataPath((String)localObject4);
-            this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.jdField_d_of_type_JavaUtilArrayList.add(localQQVideoMaterial);
-            if (QLog.isDevelopLevel()) {
-              QLog.d("Doodle_Strokes_PtvTemplateManager", 4, new Object[] { "initLocalDoodleInfo add DoodleMaterial:", localQQVideoMaterial.getId() });
+            localObject = new JSONArray((String)localObject);
+            int j = 0;
+            while (j < ((JSONArray)localObject).length())
+            {
+              localaooj.a.add(((JSONArray)localObject).getString(j));
+              j += 1;
             }
           }
+          i += 1;
         }
       }
-    }
-    synchronized (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.jdField_d_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.a = ((PtvTemplateManager.PtvTemplateInfo)localObject1);
-      if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfoLoadObserver != null) {
-        this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfoLoadObserver.a();
+      catch (Throwable paramArrayOfaoko)
+      {
+        QLog.d("MiniAppApiReportProcessor", 2, "parse, failed!", paramArrayOfaoko);
+        localObject = null;
       }
-      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) && (PtvFilterSoLoad.b())) {
-        this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-      }
-      PtvTemplateManager.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager);
-      return;
     }
+    return localObject;
+  }
+  
+  public List<String> a()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    new StringBuilder().append("getApiReportList:").append(TextUtils.join(",", a()));
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aooj
  * JD-Core Version:    0.7.0.1
  */

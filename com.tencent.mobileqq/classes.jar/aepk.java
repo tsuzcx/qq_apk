@@ -1,22 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
+import com.tencent.qphone.base.util.QLog;
 
-public class aepk
-  implements View.OnClickListener
+final class aepk
+  implements beei
 {
-  public aepk(RecentUserInvitePanel paramRecentUserInvitePanel, aepr paramaepr) {}
-  
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a.a(paramView, this.jdField_a_of_type_Aepr);
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebAccelerator", 2, "preStart QWeb Process");
+      }
+      aeoy.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aepk
  * JD-Core Version:    0.7.0.1
  */

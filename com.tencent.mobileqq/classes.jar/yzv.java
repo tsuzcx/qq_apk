@@ -1,49 +1,80 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.BabyQFriendStatusWebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 
 public class yzv
-  extends BroadcastReceiver
 {
-  public yzv(BabyQFriendStatusWebViewPlugin paramBabyQFriendStatusWebViewPlugin) {}
+  public String a;
+  private boolean jdField_a_of_type_Boolean;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public yzv(yzr paramyzr, String paramString1, String paramString2)
   {
-    if (!TextUtils.isEmpty(BabyQFriendStatusWebViewPlugin.a(this.a)))
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
+  
+  public void a(String paramString)
+  {
+    Object localObject = new File(paramString);
+    if (((File)localObject).exists())
     {
-      int i = paramIntent.getIntExtra("result", -1);
-      paramContext = "{ \"ret\": " + i + " }";
-      if (QLog.isColorLevel()) {
-        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb js req method = setFriendStatus, return = " + paramContext);
-      }
-      if (i != 0) {
-        break label176;
-      }
-      if (BabyQFriendStatusWebViewPlugin.a(this.a) != null)
+      this.jdField_a_of_type_Boolean = true;
+      localObject = Arrays.asList(((File)localObject).list());
+      String str;
+      if (((List)localObject).contains("bg@2x.png"))
       {
-        paramContext = new Intent(BabyQFriendStatusWebViewPlugin.a(this.a), ChatActivity.class);
-        paramContext.putExtra("uin", AppConstants.au);
-        paramContext.putExtra("uintype", 0);
-        paramContext.putExtra("uinname", "babyQ");
-        paramContext.putExtra("selfSet_leftViewText", BabyQFriendStatusWebViewPlugin.a(this.a).getString(2131433698));
-        BabyQFriendStatusWebViewPlugin.a(this.a).startActivity(paramContext);
-        BabyQFriendStatusWebViewPlugin.a(this.a).finish();
+        str = paramString + "/" + "bg@2x.png";
+        if (!new File(str).exists()) {
+          break label195;
+        }
+        this.c = str;
+      }
+      if (((List)localObject).contains("camera@2x.png"))
+      {
+        str = paramString + "/" + "camera@2x.png";
+        if (!new File(str).exists()) {
+          break label203;
+        }
+        this.d = str;
       }
     }
-    return;
-    label176:
-    this.a.callJs(BabyQFriendStatusWebViewPlugin.a(this.a) + "(" + paramContext + ");");
+    for (;;)
+    {
+      if (((List)localObject).contains("point@2x.png"))
+      {
+        paramString = paramString + "/" + "point@2x.png";
+        if (!new File(paramString).exists()) {
+          break label211;
+        }
+        this.e = paramString;
+      }
+      return;
+      label195:
+      this.jdField_a_of_type_Boolean = false;
+      break;
+      label203:
+      this.jdField_a_of_type_Boolean = false;
+    }
+    label211:
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public boolean a()
+  {
+    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "isResourceReady:" + this.jdField_a_of_type_Boolean);
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yzv
  * JD-Core Version:    0.7.0.1
  */

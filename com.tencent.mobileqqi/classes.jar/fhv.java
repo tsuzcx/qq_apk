@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.MQPIntChkHandler;
+import com.tencent.mobileqq.app.AutomatorObserver;
+import com.tencent.mobileqq.app.automator.step.GetCheckUpdate;
 
 public class fhv
-  implements DialogInterface.OnClickListener
+  extends AutomatorObserver
 {
-  public fhv(MQPIntChkHandler paramMQPIntChkHandler, int paramInt) {}
+  private fhv(GetCheckUpdate paramGetCheckUpdate) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    MQPIntChkHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMQPIntChkHandler, paramDialogInterface, paramInt, this.jdField_a_of_type_Int);
+    this.a.a(7);
   }
 }
 

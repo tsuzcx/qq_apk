@@ -1,35 +1,14 @@
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.ClubContentUpdateHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-
-public class zbg
-  implements Runnable
+public abstract interface zbg
 {
-  public zbg(ClubContentUpdateHandler paramClubContentUpdateHandler, int paramInt, String paramString) {}
+  public abstract void a();
   
-  public void run()
-  {
-    try
-    {
-      ApolloManager localApolloManager = (ApolloManager)this.jdField_a_of_type_ComTencentMobileqqAppClubContentUpdateHandler.a.getManager(152);
-      int i = ApolloUtil.a(2);
-      if (i != this.jdField_a_of_type_Int) {
-        localApolloManager.a(2);
-      }
-      QLog.i("ClubContentUpdateHandler", 1, "handleApolloGameRealTimeUpdate name: " + this.jdField_a_of_type_JavaLangString + ", ver: " + this.jdField_a_of_type_Int + ", locver: " + i);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ClubContentUpdateHandler", 1, "handleApolloGameRealTimeUpdate failed, errInfo" + localException);
-    }
-  }
+  public abstract void a(long paramLong);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zbg
  * JD-Core Version:    0.7.0.1
  */

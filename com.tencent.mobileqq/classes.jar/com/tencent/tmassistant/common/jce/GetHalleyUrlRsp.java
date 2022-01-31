@@ -10,7 +10,7 @@ import java.util.Map;
 public final class GetHalleyUrlRsp
   extends JceStruct
 {
-  static Map<String, ArrayList<String>> a = new HashMap();
+  static Map<String, ArrayList<String>> cache_resultMap = new HashMap();
   public Map<String, ArrayList<String>> resultMap = null;
   public int ret = 0;
   
@@ -18,7 +18,7 @@ public final class GetHalleyUrlRsp
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add("");
-    a.put("", localArrayList);
+    cache_resultMap.put("", localArrayList);
   }
   
   public GetHalleyUrlRsp() {}
@@ -32,7 +32,7 @@ public final class GetHalleyUrlRsp
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.ret = paramJceInputStream.read(this.ret, 0, true);
-    this.resultMap = ((Map)paramJceInputStream.read(a, 1, true));
+    this.resultMap = ((Map)paramJceInputStream.read(cache_resultMap, 1, true));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -43,7 +43,7 @@ public final class GetHalleyUrlRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.GetHalleyUrlRsp
  * JD-Core Version:    0.7.0.1
  */

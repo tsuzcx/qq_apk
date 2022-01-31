@@ -1,21 +1,43 @@
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnErrorListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel.9.1;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel.9.2;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class aeyu
-  implements Runnable
+public class aeyu
+  implements INetInfoHandler
 {
-  aeyu(aeyt paramaeyt, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject) {}
+  public aeyu(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  public void run()
+  public void onNetMobile2None()
   {
-    if (this.jdField_a_of_type_Aeyt.a.a != null) {
-      this.jdField_a_of_type_Aeyt.a.a.a(this.jdField_a_of_type_Aeyt.a, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceTextEditPanel", 2, "onNetMobile2None isSttNetFinish=" + VoiceTextEditPanel.a(this.a).get());
     }
+    VoiceTextEditPanel.a(this.a).post(new VoiceTextEditPanel.9.1(this));
+  }
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceTextEditPanel", 2, "onNetWifi2None isSttNetFinish=" + VoiceTextEditPanel.a(this.a).get());
+    }
+    VoiceTextEditPanel.a(this.a).post(new VoiceTextEditPanel.9.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeyu
  * JD-Core Version:    0.7.0.1
  */

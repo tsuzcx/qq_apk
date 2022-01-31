@@ -1,17 +1,19 @@
 package cooperation.qzone;
 
-import amsi;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
+import android.view.MotionEvent;
+import bjfc;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 
 public class QZoneTopGestureLayout
   extends TopGestureLayout
 {
   private static boolean a = true;
+  private static boolean b = true;
   
   public QZoneTopGestureLayout(Context paramContext)
   {
@@ -23,20 +25,34 @@ public class QZoneTopGestureLayout
     super(paramContext, paramAttributeSet);
   }
   
+  public static void a(boolean paramBoolean)
+  {
+    b = paramBoolean;
+  }
+  
   public static void setBackEnabled(boolean paramBoolean)
   {
     a = paramBoolean;
   }
   
-  protected void a(Context paramContext)
+  public void a(Context paramContext)
   {
     a = true;
-    this.mTopGestureDetector = new GestureDetector(paramContext, new amsi(this, paramContext), new Handler(Looper.getMainLooper()));
+    b = true;
+    this.mTopGestureDetector = new GestureDetector(paramContext, new bjfc(this, paramContext), new Handler(Looper.getMainLooper()));
+  }
+  
+  public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if (!b) {
+      return false;
+    }
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.QZoneTopGestureLayout
  * JD-Core Version:    0.7.0.1
  */

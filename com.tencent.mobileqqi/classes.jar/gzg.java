@@ -1,14 +1,25 @@
-import com.tencent.mobileqq.troop.data.TroopAioMsgNavigateBar;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity.UIHandler;
+import com.tencent.mobileqq.troop.widget.NearbyTroopsMapView;
 
 public class gzg
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public gzg(TroopAioMsgNavigateBar paramTroopAioMsgNavigateBar) {}
+  public gzg(NearbyTroopsMapView paramNearbyTroopsMapView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    TroopAioMsgNavigateBar.a(this.a);
+    if (this.a.a != null)
+    {
+      this.a.a.sendEmptyMessage(5);
+      this.a.a.sendEmptyMessage(7);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

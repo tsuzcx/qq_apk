@@ -1,27 +1,26 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.biz.troop.TroopMemberApiService;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
 
-public final class yrj
-  implements EIPCResultCallback
+public class yrj
+  extends amfv
 {
-  public yrj(long paramLong) {}
+  public yrj(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle)
   {
-    paramEIPCResult = paramEIPCResult.data.getString("resData");
-    CmGameUtil.a().callbackFromRequest(this.a, 0, "sc.script_notify_action_ready.local", paramEIPCResult);
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GET_ACTION_DATA onCallback resJson:" + paramEIPCResult);
+    if (paramBoolean) {
+      this.a.a(147, paramBundle);
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("TroopMemberApiService", 2, new Object[] { "onWebPushResp isSuc:", Boolean.valueOf(paramBoolean), " type:", Integer.valueOf(paramInt) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yrj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkChangeReceiver.1;
+import org.jetbrains.annotations.NotNull;
 
-public class rlw
-  implements View.OnClickListener
+public final class rlw
+  extends BroadcastReceiver
 {
-  public rlw(AssistantSettingActivity paramAssistantSettingActivity) {}
+  private rlw(rlt paramrlt) {}
   
-  public void onClick(View paramView)
+  public void onReceive(@NotNull Context paramContext, @NotNull Intent paramIntent)
   {
-    paramView = QZoneHelper.UserInfo.a();
-    paramView.a = this.a.app.getCurrentAccountUin();
-    paramView.b = this.a.app.getCurrentNickname();
-    QZoneHelper.a(this.a, paramView);
+    rlt.a(this.a).post(new BandwidthPredictor.NetworkChangeReceiver.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rlw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package tmsdk.common.d.a.b;
 
 import a.a.e;
+import a.e.c;
 import android.content.Context;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -9,6 +10,11 @@ import android.os.Message;
 import android.util.Pair;
 import android.util.SparseArray;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.token.fn;
+import com.tencent.token.fo;
+import com.tencent.token.fp;
+import com.tencent.token.fq;
+import com.tencent.token.g;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -24,7 +30,7 @@ public class z
   private static Object B;
   private static z C;
   private Handler A = null;
-  c.b.a.b a = null;
+  g a = null;
   boolean b = false;
   HandlerThread c = null;
   Handler d = null;
@@ -42,9 +48,9 @@ public class z
   private int r = 0;
   private AtomicInteger s = new AtomicInteger(0);
   private d t;
-  private d.b.b u;
-  private d.b.a v = new A(this);
-  private d.b.a w = new B(this);
+  private fo u;
+  private fn v = new A(this);
+  private fn w = new B(this);
   private tmsdk.common.d.a.c.n x = new tmsdk.common.d.a.c.n(new C(this));
   private Handler y = new D(this, Looper.getMainLooper());
   private J z = null;
@@ -79,7 +85,7 @@ public class z
     }
   }
   
-  private a.e.d a(a.e.c paramc)
+  private a.e.d a(c paramc)
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramc);
@@ -120,11 +126,11 @@ public class z
     }
   }
   
-  private WeakReference a(o paramo, int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct1, JceStruct paramJceStruct2, d.b.a parama, long paramLong)
+  private WeakReference a(o paramo, int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct1, JceStruct paramJceStruct2, fn paramfn, long paramLong)
   {
     if (tmsdk.common.c.a.f.a())
     {
-      parama.a(0, 0, -7, 0, paramJceStruct2);
+      paramfn.a(0, 0, -7, 0, paramJceStruct2);
       return null;
     }
     if (paramo != null) {
@@ -132,14 +138,14 @@ public class z
     }
     if (this.h == null)
     {
-      parama.a(0, 0, -9, 0, paramJceStruct2);
+      paramfn.a(0, 0, -9, 0, paramJceStruct2);
       return null;
     }
     if (!q()) {
       r();
     }
     byte[] arrayOfByte = b.a(this.n, null, paramJceStruct1);
-    paramJceStruct1 = new a.e.c();
+    paramJceStruct1 = new c();
     paramJceStruct1.a = paramInt1;
     paramJceStruct1.b = paramo.c().a();
     paramJceStruct1.c = paramInt3;
@@ -148,10 +154,10 @@ public class z
     if (paramInt1 == 999) {
       bool = true;
     }
-    if (parama != null) {
-      a(paramInt2, paramJceStruct1.b, paramJceStruct2, parama);
+    if (paramfn != null) {
+      a(paramInt2, paramJceStruct1.b, paramJceStruct2, paramfn);
     }
-    paramo = new d.b.d();
+    paramo = new fq();
     paramo.a(0);
     paramJceStruct2 = new j(paramJceStruct1, paramInt2, bool, paramo);
     paramJceStruct2.a = paramInt4;
@@ -200,10 +206,10 @@ public class z
         {
           new StringBuilder().append("这个超时了 refSeqNo : ").append(paramInt3).append(" retCode : ").append(paramInt1).toString();
           paramArrayOfByte = new m(paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfByte, locala);
-          switch (d.b.c.a(locala.c))
+          switch (fp.a(locala.c))
           {
           default: 
-            c.b.a.a.a().b(new H(this, paramArrayOfByte), "tcp run callback on thread");
+            com.tencent.token.f.a().b(new H(this, paramArrayOfByte), "tcp run callback on thread");
             return;
           }
         }
@@ -218,12 +224,12 @@ public class z
     a(paramArrayOfByte);
   }
   
-  private void a(int paramInt1, int paramInt2, JceStruct arg3, d.b.a parama)
+  private void a(int paramInt1, int paramInt2, JceStruct arg3, fn paramfn)
   {
-    parama = new a(paramInt1, parama, ???);
+    paramfn = new a(paramInt1, paramfn, ???);
     synchronized (this.j)
     {
-      this.f.append(paramInt2, parama);
+      this.f.append(paramInt2, paramfn);
       return;
     }
   }
@@ -285,10 +291,10 @@ public class z
         }
         localObject3 = (i)((Iterator)???).next();
         localObject2 = new n(paramInt3, paramInt4, paramArrayOfByte, paramInt1, paramInt2, (i)localObject3);
-        switch (d.b.c.a(((i)localObject3).c))
+        switch (fp.a(((i)localObject3).c))
         {
         default: 
-          c.b.a.a.a().b(new I(this, (n)localObject2), "tcp run push on thread");
+          com.tencent.token.f.a().b(new I(this, (n)localObject2), "tcp run push on thread");
         }
       }
       Object localObject3 = Message.obtain();
@@ -347,7 +353,7 @@ public class z
     this.d = null;
   }
   
-  d.b.b a(int paramInt, d.b.b paramb)
+  fo a(int paramInt, fo paramfo)
   {
     ArrayList localArrayList;
     synchronized (this.i)
@@ -356,19 +362,19 @@ public class z
       if ((localArrayList == null) || (localArrayList.size() == 0)) {
         return null;
       }
-      if (paramb == null)
+      if (paramfo == null)
       {
         this.e.remove(paramInt);
-        paramb = ((i)localArrayList.get(0)).a;
-        return paramb;
+        paramfo = ((i)localArrayList.get(0)).a;
+        return paramfo;
       }
     }
     int i1 = 0;
     label78:
     if (i1 < localArrayList.size()) {
-      if (((i)localArrayList.get(i1)).a != paramb) {}
+      if (((i)localArrayList.get(i1)).a != paramfo) {}
     }
-    for (paramb = ((i)localArrayList.remove(i1)).a;; paramb = null)
+    for (paramfo = ((i)localArrayList.remove(i1)).a;; paramfo = null)
     {
       if (localArrayList.size() <= 0) {
         this.e.remove(paramInt);
@@ -379,14 +385,14 @@ public class z
     }
   }
   
-  WeakReference a(o paramo, int paramInt1, int paramInt2, JceStruct paramJceStruct1, JceStruct paramJceStruct2, d.b.a parama, long paramLong)
+  WeakReference a(o paramo, int paramInt1, int paramInt2, JceStruct paramJceStruct1, JceStruct paramJceStruct2, fn paramfn, long paramLong)
   {
-    return a(paramo, paramInt1, paramInt2, 0, 0, paramJceStruct1, paramJceStruct2, parama, paramLong);
+    return a(paramo, paramInt1, paramInt2, 0, 0, paramJceStruct1, paramJceStruct2, paramfn, paramLong);
   }
   
-  WeakReference a(o paramo, int paramInt, JceStruct paramJceStruct1, JceStruct paramJceStruct2, d.b.a parama, long paramLong)
+  WeakReference a(o paramo, int paramInt, JceStruct paramJceStruct1, JceStruct paramJceStruct2, fn paramfn, long paramLong)
   {
-    return a(paramo, paramInt, 0, 0, 0, paramJceStruct1, paramJceStruct2, parama, paramLong);
+    return a(paramo, paramInt, 0, 0, 0, paramJceStruct1, paramJceStruct2, paramfn, paramLong);
   }
   
   public void a(int paramInt1, int paramInt2, a.e.f paramf)
@@ -404,14 +410,14 @@ public class z
     a(paramf.d, paramf.e, paramf.c, paramInt2, (byte[])localObject);
   }
   
-  void a(int paramInt1, int paramInt2, JceStruct paramJceStruct, d.b.b paramb)
+  void a(int paramInt1, int paramInt2, JceStruct paramJceStruct, fo paramfo)
   {
-    i locali = new i(paramInt1, paramb, paramJceStruct);
+    i locali = new i(paramInt1, paramfo, paramJceStruct);
     synchronized (this.i)
     {
-      paramb = (ArrayList)this.e.get(paramInt2);
-      paramJceStruct = paramb;
-      if (paramb == null)
+      paramfo = (ArrayList)this.e.get(paramInt2);
+      paramJceStruct = paramfo;
+      if (paramfo == null)
       {
         paramJceStruct = new ArrayList();
         this.e.append(paramInt2, paramJceStruct);

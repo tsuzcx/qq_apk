@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SubMsgType0x27$ProfileInfo
-  extends MessageMicro
+  extends MessageMicro<ProfileInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_value = PBField.initBytes(ByteStringMicro.EMPTY);

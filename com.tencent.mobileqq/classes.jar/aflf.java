@@ -1,22 +1,25 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.ReportCallback;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.ReportCallback;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
-public class aflf
-  implements NearbyMomentProtocol.ReportCallback
+class aflf
+  extends aeqi
 {
-  public aflf(NearbyMomentManager paramNearbyMomentManager, NearbyMomentManager.ReportCallback paramReportCallback) {}
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public TextView b;
+  public TextView c;
   
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$ReportCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$ReportCallback.a(paramBoolean);
-    }
-  }
+  aflf(aflc paramaflc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aflf
  * JD-Core Version:    0.7.0.1
  */

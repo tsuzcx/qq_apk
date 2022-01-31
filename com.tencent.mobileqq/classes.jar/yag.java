@@ -1,38 +1,45 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.GridViewAdapter;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class yag
-  implements View.OnKeyListener
+  implements yas
 {
-  public yag(SelectMemberActivity paramSelectMemberActivity) {}
+  public yag(ScannerActivity paramScannerActivity) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public JSONObject a()
   {
-    if (paramInt == 67)
+    try
     {
-      if (paramKeyEvent.getAction() != 0) {
-        break label35;
-      }
-      this.a.r = TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText());
+      JSONObject localJSONObject = ScannerActivity.a(this.a);
+      return localJSONObject;
     }
-    for (;;)
+    catch (Throwable localThrowable)
     {
-      return false;
-      label35:
-      if ((paramKeyEvent.getAction() == 1) && (this.a.r)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity$GridViewAdapter.a();
-      }
+      QLog.i("ScannerActivity", 1, "getQRReportParams error: " + localThrowable.getMessage());
     }
+    return null;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScannerActivity", 2, "restartDecodeFrame");
+    }
+    this.a.finish();
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScannerActivity", 2, "cameraOn");
+    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yag
  * JD-Core Version:    0.7.0.1
  */

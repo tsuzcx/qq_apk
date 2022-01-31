@@ -1,89 +1,90 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.personalize.QZonePersonalizePlugin;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class andx
-  extends BroadcastReceiver
+class andx
+  implements andu
 {
-  public andx(QZonePersonalizePlugin paramQZonePersonalizePlugin) {}
+  andx(andw paramandw, andz paramandz, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(long paramLong1, long paramLong2)
   {
-    Object localObject;
-    if (QLog.isDevelopLevel())
-    {
-      localObject = new StringBuilder().append("intent is: ");
-      if (paramIntent == null)
-      {
-        paramContext = "null";
-        QLog.d("QZonePersonalizePlugin", 4, paramContext);
-      }
+    if (this.jdField_a_of_type_Andz != null) {
+      this.jdField_a_of_type_Andz.a(andw.a(this.jdField_a_of_type_Andw, paramLong1, 0));
     }
-    else
-    {
-      if ((paramIntent == null) || (!"QZoneCardPreDownload".equals(paramIntent.getAction()))) {
-        break label239;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QZoneCardLogic.QZonePersonalizePlugin", 4, "QZoneCardPreDownload js receive setting action" + paramIntent.getAction());
-      }
-      localObject = paramIntent.getExtras();
-      paramIntent = "";
-      paramContext = "";
-      if (localObject != null)
-      {
-        paramIntent = ((Bundle)localObject).getString("result");
-        paramContext = ((Bundle)localObject).getString("cardurl");
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QZoneCardLogic.QZonePersonalizePlugin", 4, "QZoneCardPreDownload js receive cardurl:" + paramContext + "\n dowonload result:" + paramIntent);
-      }
-      if (this.a.mRuntime != null) {
-        break label182;
-      }
+  }
+  
+  public void a(boolean paramBoolean, andv paramandv)
+  {
+    QLog.i("AREngine_ARResourceManagerTools", 1, "onARResourceDownloadComplete result" + paramBoolean);
+    if (this.jdField_a_of_type_Andz != null) {
+      this.jdField_a_of_type_Andz.a(paramandv.jdField_a_of_type_Int, paramBoolean);
     }
-    label182:
-    label239:
-    int i;
-    do
+    if (paramBoolean)
     {
-      do
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      for (;;)
       {
-        do
+        if (localIterator.hasNext())
         {
-          do
+          localandv = (andv)localIterator.next();
+          if (!localandv.jdField_a_of_type_JavaLangString.equals(paramandv.jdField_a_of_type_JavaLangString)) {
+            continue;
+          }
+          if (paramandv.jdField_a_of_type_Boolean) {}
+          try
           {
-            do
+            System.currentTimeMillis();
+            if (paramandv.jdField_a_of_type_Int == 6)
             {
-              return;
-              paramContext = "not null";
+              new File(paramandv.c);
+              anea.a(paramandv.c, andq.b());
+            }
+            for (;;)
+            {
+              QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerModelDownloadComplete  ");
+              this.b.remove(localandv);
+              QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerModelDownloadComplete  remove " + localandv.jdField_a_of_type_JavaLangString);
               break;
-            } while (this.a.mRuntime.a() == null);
-            paramIntent = this.a.mRuntime.a();
-          } while (paramIntent == null);
-          paramIntent.c("window.QzFeedDressJSInterface.onReceive({type:\"cardurl\",data:\"" + paramContext + "\"});window.QzFeedDressJSInterface.onReceive({type:\"result\",data:\"success\"});");
-          return;
-        } while ((paramIntent == null) || (!"action_facade_qzone2js".equals(paramIntent.getAction())));
-        paramIntent = paramIntent.getExtras();
-      } while (paramIntent == null);
-      i = paramIntent.getInt("ret");
-      paramContext = paramIntent.getString("imgDir");
-      paramIntent = paramIntent.getString("imgNameList");
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QZonePersonalizePlugin", 4, "receive ret:" + i + "|imgDir:" + paramContext + "|imgNameList:" + paramIntent);
+              if (paramandv.jdField_a_of_type_Int != 7) {
+                break label268;
+              }
+              anea.a(paramandv.c, andq.a(paramandv.b));
+            }
+            return;
+          }
+          catch (Exception localException)
+          {
+            new File(paramandv.c).delete();
+            QLog.i("AREngine_ARResourceManagerTools", 1, "Download end. uncompressZip error. url = ");
+            if (this.jdField_a_of_type_Andz != null) {
+              this.jdField_a_of_type_Andz.a(false);
+            }
+            this.jdField_a_of_type_Andw.a();
+            QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerAllDownloadComplete  ");
+          }
+        }
       }
-    } while ((this.a.mRuntime == null) || (this.a.mRuntime.a() == null));
-    if (i == 0)
-    {
-      this.a.callJs("window.QzAvatarDressJSInterface.onReceive({type:\"result\",data:\"success\",imgDir:\"" + paramContext + "\",imgNameList:\"" + paramIntent + "\"});");
+      label268:
+      while (this.b.size() != 0) {
+        for (;;)
+        {
+          andv localandv;
+          File localFile = new File(paramandv.c);
+          anea.a(paramandv.c, localFile.getParentFile().getAbsolutePath() + File.separator + paramandv.b + File.separator);
+        }
+      }
+      if (this.jdField_a_of_type_Andz != null) {
+        this.jdField_a_of_type_Andz.a(true);
+      }
+      this.jdField_a_of_type_Andw.a();
       return;
     }
-    this.a.callJs("window.QzAvatarDressJSInterface.onReceive({type:\"result\",data:\"fail\"});");
+    if (this.jdField_a_of_type_Andz != null) {
+      this.jdField_a_of_type_Andz.a(false);
+    }
+    this.jdField_a_of_type_Andw.a();
   }
 }
 

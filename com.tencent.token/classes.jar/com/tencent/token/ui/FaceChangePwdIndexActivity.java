@@ -5,23 +5,23 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.view.View;
-import com.tencent.token.af;
-import com.tencent.token.ah;
-import com.tencent.token.ax;
 import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cp;
+import com.tencent.token.cw;
+import com.tencent.token.cy;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.e;
+import com.tencent.token.global.h;
 import com.tencent.token.ui.base.SwitchButton;
-import com.tencent.token.utils.s;
-import com.tencent.token.x;
+import com.tencent.token.utils.w;
 
 public class FaceChangePwdIndexActivity
   extends BaseActivity
 {
   private String A2;
-  private Handler.Callback callback = new dw(this);
+  private Handler.Callback callback = new ez(this);
   private View changepsw;
-  private Handler handler = new dx(this);
+  private Handler handler = new fa(this);
   private View mDivider;
   private View mDivider2;
   private boolean mIsChecked = false;
@@ -30,14 +30,23 @@ public class FaceChangePwdIndexActivity
   private int scene_id;
   private boolean verify_psw;
   
+  private void gotoQuickLoginWb()
+  {
+    QQUser localQQUser = do.a().e();
+    if ((localQQUser == null) || (localQQUser.mRealUin <= 0L)) {
+      return;
+    }
+    cp.a(getApplicationContext()).a(this, 523005419L, this.handler, "" + localQQUser.b());
+  }
+  
   private void initView()
   {
-    this.mDivider = findViewById(2131296550);
-    this.mDivider2 = findViewById(2131296555);
-    this.mSwitchVerifySet = ((SwitchButton)findViewById(2131296548));
-    this.changepsw = findViewById(2131296551);
-    this.changepsw.setOnClickListener(new dr(this));
-    e.a("mIsChecked" + this.mIsChecked);
+    this.mDivider = findViewById(2131558836);
+    this.mDivider2 = findViewById(2131558841);
+    this.mSwitchVerifySet = ((SwitchButton)findViewById(2131558834));
+    this.changepsw = findViewById(2131558837);
+    this.changepsw.setOnClickListener(new eu(this));
+    h.a("mIsChecked" + this.mIsChecked);
     SwitchButton localSwitchButton = this.mSwitchVerifySet;
     boolean bool;
     if (!this.mIsChecked)
@@ -45,7 +54,7 @@ public class FaceChangePwdIndexActivity
       bool = true;
       localSwitchButton.a(bool, false);
       this.mSwitchVerifySet.postInvalidate();
-      this.mSwitchVerifySet.setOnCheckedChangeListener(new ds(this));
+      this.mSwitchVerifySet.setOnCheckedChangeListener(new ev(this));
       if (!this.mIsChecked) {
         break label189;
       }
@@ -57,7 +66,7 @@ public class FaceChangePwdIndexActivity
     {
       if (this.verify_psw)
       {
-        showProDialog(this, 2131361808, 2131362485, null);
+        showProDialog(this, 2131230843, 2131231030, null);
         this.scene_id = 2;
         setOnOf(false);
       }
@@ -71,9 +80,11 @@ public class FaceChangePwdIndexActivity
     }
   }
   
+  private void judgeNextStep() {}
+  
   private void setOnOf(boolean paramBoolean)
   {
-    QQUser localQQUser = ax.a().e();
+    QQUser localQQUser = do.a().e();
     if (localQQUser == null) {}
     do
     {
@@ -82,41 +93,47 @@ public class FaceChangePwdIndexActivity
       this.mUin = localQQUser.mRealUin;
       if ((this.A2 != null) && (this.A2.length() > 0))
       {
-        af.a().a(0L, this.scene_id, paramBoolean, this.A2, this.handler);
+        cw.a().a(0L, this.scene_id, paramBoolean, this.A2, this.handler);
         return;
       }
     } while (localQQUser == null);
-    byte[] arrayOfByte = x.a(RqdApplication.i()).a(localQQUser.mRealUin);
+    byte[] arrayOfByte = cp.a(RqdApplication.l()).b(localQQUser.mRealUin);
     if (arrayOfByte != null)
     {
-      this.A2 = s.a(arrayOfByte);
-      af.a().a(0L, this.scene_id, paramBoolean, this.A2, this.handler);
+      this.A2 = w.a(arrayOfByte);
+      cw.a().a(0L, this.scene_id, paramBoolean, this.A2, this.handler);
       return;
     }
-    x.a(RqdApplication.i()).a(this, "" + localQQUser.mRealUin, this.fHandler, true);
+    cp.a(RqdApplication.l()).a("" + localQQUser.mRealUin, this.handler, 523005419L, 64);
   }
   
   private void showGesturePwdDialog()
   {
-    if (!ah.a().c()) {
-      showUserDialog(2131362130, getString(2131362131), 2131362132, 2131362133, new dy(this), null);
+    if (!cy.a().c()) {
+      showUserDialog(2131230994, getString(2131230991), 2131230993, 2131230992, new fc(this), null);
     }
   }
   
   public void getA2Succ()
   {
-    this.A2 = s.a(this.mAqSig);
+    this.A2 = w.a(this.mAqSig);
     setOnOf(this.on);
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if ((paramInt1 == 0) && (paramInt2 == -1))
-    {
-      showProDialog(this, 2131361808, 2131362485, null);
-      this.scene_id = 1;
-      setOnOf(false);
+    if (paramInt1 == 0) {
+      if (paramInt2 == -1)
+      {
+        showProDialog(this, 2131230843, 2131231030, null);
+        this.scene_id = 1;
+        setOnOf(false);
+      }
     }
+    while ((paramInt1 != 1201) && (paramInt1 != 1202)) {
+      return;
+    }
+    cp.a(getApplicationContext()).a(paramIntent);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -124,7 +141,7 @@ public class FaceChangePwdIndexActivity
     super.onCreate(paramBundle);
     this.mIsChecked = getIntent().getBooleanExtra("open_switch", false);
     this.verify_psw = getIntent().getBooleanExtra("verify_psw", false);
-    setContentView(2130903080);
+    setContentView(2130968646);
     initView();
   }
 }

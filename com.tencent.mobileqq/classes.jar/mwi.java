@@ -1,121 +1,48 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.View;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
-public final class mwi
-  implements BusinessObserver
+public class mwi
 {
-  public mwi(PublicAccountObserver paramPublicAccountObserver, String paramString, boolean paramBoolean, Context paramContext, AppInterface paramAppInterface, int paramInt) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static int a(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
+    paramView = paramView.getTag(paramInt);
+    if (paramView == null) {
+      return 2147483647;
     }
-    if (!paramBoolean)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430033);
-      }
+    if ((paramView instanceof Integer)) {
+      return ((Integer)paramView).intValue();
     }
-    label366:
-    do
+    a("getInt", paramInt, paramView);
+    return 2147483647;
+  }
+  
+  public static String a(View paramView, int paramInt)
+  {
+    paramView = paramView.getTag(paramInt);
+    if (paramView == null) {
+      return null;
+    }
+    if ((paramView instanceof String)) {
+      return (String)paramView;
+    }
+    a("getStr", paramInt, paramView);
+    return null;
+  }
+  
+  static void a(String paramString, int paramInt, Object paramObject)
+  {
+    if (AudioHelper.d())
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                if (!paramBoolean) {
-                  break label404;
-                }
-                try
-                {
-                  paramBundle = paramBundle.getByteArray("data");
-                  if (paramBundle == null) {
-                    break label366;
-                  }
-                  mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
-                  localFollowResponse.mergeFrom(paramBundle);
-                  paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-                  if (QLog.isColorLevel()) {
-                    QLog.d("PublicAccountUtil", 2, "followUin, retCode=" + paramInt);
-                  }
-                  if (paramInt != 0) {
-                    break;
-                  }
-                  if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-                    this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
-                  }
-                  PublicAccountUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-                  return;
-                }
-                catch (Exception paramBundle)
-                {
-                  if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-                    this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-                  }
-                }
-              } while (!this.jdField_a_of_type_Boolean);
-              PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430033);
-              return;
-              if (paramInt != 58) {
-                break;
-              }
-              if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-                this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-              }
-            } while (!this.jdField_a_of_type_Boolean);
-            PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430041);
-            return;
-            if (paramInt != 65) {
-              break;
-            }
-            if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-              this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-            }
-          } while (!this.jdField_a_of_type_Boolean);
-          PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430042);
-          return;
-          if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-            this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-          }
-        } while (!this.jdField_a_of_type_Boolean);
-        PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430033);
-        return;
-        if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-          this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-        }
-      } while (!this.jdField_a_of_type_Boolean);
-      PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430033);
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-      }
-    } while (!this.jdField_a_of_type_Boolean);
-    label404:
-    PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430033);
+      paramString = paramString + alud.a(2131715120) + paramInt + "], object[" + paramObject.getClass().getSimpleName() + "]";
+      QLog.w("TagIndex", 1, paramString, new Throwable("打印调用栈"));
+      throw new ClassCastException(paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mwi
  * JD-Core Version:    0.7.0.1
  */

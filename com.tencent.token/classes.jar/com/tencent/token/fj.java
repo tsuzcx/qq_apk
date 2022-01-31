@@ -1,14 +1,14 @@
 package com.tencent.token;
 
-import java.io.Serializable;
+import android.content.Context;
+import android.os.Debug.MemoryInfo;
 
-public abstract interface fj
+public class fj
 {
-  public abstract ft a(Serializable paramSerializable);
-  
-  public abstract Serializable a(ft paramft);
-  
-  public abstract String d();
+  public static int a(Context paramContext)
+  {
+    return ((android.app.ActivityManager)paramContext.getSystemService("activity")).getProcessMemoryInfo(new int[] { android.os.Process.myPid() })[0].getTotalPrivateDirty();
+  }
 }
 
 

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_del_message$ReqDelOneMessage
-  extends MessageMicro
+  extends MessageMicro<ReqDelOneMessage>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public qqstory_del_message.StoryCommentSimpleInfo comment_info = new qqstory_del_message.StoryCommentSimpleInfo();
@@ -26,7 +26,7 @@ public final class qqstory_del_message$ReqDelOneMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_del_message.ReqDelOneMessage
  * JD-Core Version:    0.7.0.1
  */

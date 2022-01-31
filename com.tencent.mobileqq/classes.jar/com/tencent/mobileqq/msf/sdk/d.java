@@ -10,7 +10,6 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.HandlerThread;
 import com.tencent.mobileqq.msf.sdk.a.a;
-import com.tencent.mobileqq.msf.sdk.a.a.d;
 import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -25,7 +24,7 @@ public class d
   implements INetEventHandler, INetInfoHandler
 {
   public static final String a = "com.tencent.mobileqq.msf.bd.netchange";
-  public static long b;
+  public static long b = 0L;
   private static String c = "MSF.D.AppNetInfoNewImpl";
   private a d = new a();
   private Handler e;
@@ -40,7 +39,7 @@ public class d
   {
     this.d.a(this);
     this.d.a(this);
-    this.d.a(new a(null));
+    this.d.a(new d.a(this, null));
     this.f = new HandlerThread("AppNetHandlerThread");
     this.f.start();
     this.e = new Handler(this.f.getLooper());
@@ -413,28 +412,6 @@ public class d
       INetInfoHandler localINetInfoHandler = (INetInfoHandler)localIterator.next();
       if (localINetInfoHandler != null) {
         localINetInfoHandler.onNetWifi2None();
-      }
-    }
-  }
-  
-  private class a
-    extends a.d
-  {
-    private a() {}
-    
-    public void b()
-    {
-      d.a(d.this).set(true);
-      if (QLog.isColorLevel()) {
-        QLog.d(d.l(), 2, "startRefresh ");
-      }
-    }
-    
-    public void c()
-    {
-      d.a(d.this).set(false);
-      if (QLog.isColorLevel()) {
-        QLog.d(d.l(), 2, "refreshFinished ");
       }
     }
   }

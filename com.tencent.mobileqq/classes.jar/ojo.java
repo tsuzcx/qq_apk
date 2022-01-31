@@ -1,20 +1,19 @@
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class ojo
-  implements Runnable
+class ojo
+  implements ViewBase.OnClickListener
 {
-  public ojo(DoodleLayout paramDoodleLayout) {}
+  ojo(ojn paramojn) {}
   
-  public void run()
+  public void onClick(ViewBase paramViewBase)
   {
-    this.a.a(true);
-    this.a.b(new View[] { this.a.a });
+    this.a.jdField_a_of_type_Omg.b(this.a.jdField_a_of_type_Omt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ojo
  * JD-Core Version:    0.7.0.1
  */

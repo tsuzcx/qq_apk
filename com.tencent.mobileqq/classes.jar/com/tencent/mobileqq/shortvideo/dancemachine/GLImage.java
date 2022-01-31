@@ -8,40 +8,40 @@ import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 
 public class GLImage
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int c = 0;
+  private int height;
+  private boolean mIsBoyFilterTexture = false;
+  private boolean mTemporaryRelease = false;
+  private int texture = 0;
+  private int width;
   
   public GLImage()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
+    this.mTemporaryRelease = false;
+    this.mIsBoyFilterTexture = false;
   }
   
   public GLImage(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_b_of_type_Boolean = false;
+    this.mTemporaryRelease = paramBoolean;
+    this.mIsBoyFilterTexture = false;
   }
   
   public GLImage(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.mTemporaryRelease = paramBoolean1;
+    this.mIsBoyFilterTexture = paramBoolean2;
   }
   
-  private boolean a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  private boolean reuseTextureMemory(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (paramInt1 == this.jdField_a_of_type_Int)
+    if (paramInt1 == this.width)
     {
       bool1 = bool2;
-      if (paramInt2 == this.jdField_b_of_type_Int)
+      if (paramInt2 == this.height)
       {
-        GLES20.glBindTexture(3553, this.c);
+        GLES20.glBindTexture(3553, this.texture);
         if (paramBitmap != null) {
           GLUtils.texImage2D(3553, 0, paramBitmap, 0);
         }
@@ -51,35 +51,44 @@ public class GLImage
     return bool1;
   }
   
-  public int a()
+  public int getHeight()
   {
-    return this.c;
+    return this.height;
   }
   
-  public void a()
+  public int getTexture()
   {
-    if (this.c != 0)
-    {
-      GLES20.glDeleteTextures(1, new int[] { this.c }, 0);
-      this.c = 0;
-    }
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
+    return this.texture;
   }
   
-  public void a(Bitmap paramBitmap)
+  public int getWidth()
   {
-    a(paramBitmap, true);
+    return this.width;
   }
   
-  public void a(Bitmap paramBitmap, boolean paramBoolean)
+  public boolean isBoyFilterTexture()
+  {
+    return this.mIsBoyFilterTexture;
+  }
+  
+  public boolean isEnableTemporaryRelease()
+  {
+    return this.mTemporaryRelease;
+  }
+  
+  public void loadTextureSync(Bitmap paramBitmap)
+  {
+    loadTextureSync(paramBitmap, true);
+  }
+  
+  public void loadTextureSync(Bitmap paramBitmap, boolean paramBoolean)
   {
     if (paramBitmap != null)
     {
-      if (this.c == 0) {
+      if (this.texture == 0) {
         break label40;
       }
-      if (!a(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap)) {
+      if (!reuseTextureMemory(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap)) {
         break label36;
       }
       if (paramBoolean) {
@@ -91,42 +100,33 @@ public class GLImage
     do
     {
       return;
-      a();
-      this.jdField_a_of_type_Int = paramBitmap.getWidth();
-      this.jdField_b_of_type_Int = paramBitmap.getHeight();
-      this.c = GlUtil.a(3553, paramBitmap);
+      release();
+      this.width = paramBitmap.getWidth();
+      this.height = paramBitmap.getHeight();
+      this.texture = GlUtil.createTexture(3553, paramBitmap);
     } while (!paramBoolean);
     paramBitmap.recycle();
   }
   
-  public void a(String paramString)
+  public void loadTextureSync(String paramString)
   {
-    a(FileUtils.a(paramString, false));
+    loadTextureSync(FileUtils.loadBitmapFromNative(paramString, false));
   }
   
-  public boolean a()
+  public void release()
   {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int c()
-  {
-    return this.jdField_b_of_type_Int;
+    if (this.texture != 0)
+    {
+      GLES20.glDeleteTextures(1, new int[] { this.texture }, 0);
+      this.texture = 0;
+    }
+    this.width = 0;
+    this.height = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLImage
  * JD-Core Version:    0.7.0.1
  */

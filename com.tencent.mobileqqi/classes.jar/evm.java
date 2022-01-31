@@ -1,30 +1,20 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.voip.VoipDialInterface;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class evm
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  float jdField_a_of_type_Float = 0.0F;
-  float b = 0.0F;
+  public evm(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public evm(SelectMemberActivity paramSelectMemberActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
-    {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.b = paramMotionEvent.getRawY();
+    this.a.a.a("7");
+    VoipDialInterfaceActivity.a(this.a, '7');
+    if (VoipDialInterfaceActivity.b(this.a)) {
+      new Thread(new evn(this)).start();
     }
-    while ((i != 2) || ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float <= 10.0F) && (paramMotionEvent.getRawY() - this.b <= 10.0F))) {
-      return false;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
   }
 }
 

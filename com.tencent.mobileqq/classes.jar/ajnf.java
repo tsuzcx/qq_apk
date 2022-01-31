@@ -1,14 +1,35 @@
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
-class ajnf
-  implements Runnable
+public class ajnf
+  implements beof
 {
-  ajnf(ajne paramajne) {}
+  public ajnf(LoginView paramLoginView, ImageView paramImageView, int paramInt) {}
   
-  public void run()
+  public int a()
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a = 1;
-    this.a.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.a.a.jdField_a_of_type_Boolean);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      localImageView.setVisibility(i);
+      return;
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.5F);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
   }
 }
 

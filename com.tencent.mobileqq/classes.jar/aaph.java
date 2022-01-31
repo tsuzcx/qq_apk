@@ -1,28 +1,23 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.LocationCallback;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import android.app.Activity;
+import android.app.Application;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class aaph
-  implements ArkAppLocationManager.LocationCallback
+class aaph
+  implements DialogInterface.OnDismissListener
 {
-  public aaph(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong) {}
+  aaph(aape paramaape) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ.a(this.jdField_a_of_type_Long);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
-  }
-  
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ.a(this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+    aape.a(this.a).setIntent(aape.a(this.a));
+    aape.a(this.a).getApplication().unregisterActivityLifecycleCallbacks(aape.a(this.a));
+    aape.a(this.a).i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaph
  * JD-Core Version:    0.7.0.1
  */

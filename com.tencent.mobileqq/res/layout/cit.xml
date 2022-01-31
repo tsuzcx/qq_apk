@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:id="@id/b4v" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:id="@id/aav" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <RelativeLayout android:background="@color/al3" android:paddingLeft="16.0dip" android:paddingTop="9.5dip" android:paddingRight="16.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageButton android:id="@id/ah5" android:background="@android:color/transparent" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/e_l" android:scaleType="fitCenter" android:layout_centerVertical="true" android:contentDescription="@string/a78" />
+            <ImageButton android:id="@id/ai3" android:background="@android:color/transparent" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/qzone_skin_toolbar_btn_keyboard_click" android:scaleType="fitCenter" android:layout_centerVertical="true" android:contentDescription="@string/a78" />
+            <ImageButton android:id="@id/jsk" android:background="@color/ajr" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/e_u" android:scaleType="fitCenter" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="12.0dip" android:textColor="#ff878b99" android:id="@id/mtq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:text="@string/wfv" android:layout_toLeftOf="@id/jsk" android:layout_centerVertical="true" />
+            <ImageButton android:id="@id/k68" android:background="@color/ajr" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/bjr" android:scaleType="fitCenter" android:layout_toLeftOf="@id/mtq" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <RelativeLayout android:background="@color/al3" android:paddingLeft="11.0dip" android:paddingRight="17.0dip" android:paddingBottom="7.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:gravity="center" android:id="@id/aiz" android:background="@drawable/bjf" android:layout_width="58.0dip" android:layout_height="33.0dip" android:scaleType="fitCenter" android:layout_alignParentRight="true" android:imeOptions="actionSend" />
+            <com.tencent.biz.subscribe.comment.CommentEditText android:textSize="14.0dip" android:textColor="#ff02081b" android:textColorHint="#ffb2b8ba" android:gravity="center_vertical" android:id="@id/jha" android:background="@drawable/e_v" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="33.0dip" android:layout_marginRight="10.0dip" android:hint="@string/wfu" android:maxLines="5" android:maxLength="143" android:layout_weight="1.0" android:layout_toLeftOf="@id/aiz" android:inputType="textMultiLine" android:imeOptions="actionDone" android:fadeScrollbars="false" android:textCursorDrawable="@null" />
+        </RelativeLayout>
+        <include android:id="@id/bul" layout="@layout/n0" />
+    </LinearLayout>
+</ScrollView>

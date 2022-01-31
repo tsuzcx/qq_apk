@@ -7,11 +7,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import aqax;
+import aqaz;
+import aqbd;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.equipmentlock.DevlockPhoneStatus;
-import com.tencent.mobileqq.equipmentlock.EquipLockWebEntrance;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
 import com.tencent.qphone.base.util.QLog;
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
 
@@ -34,21 +34,21 @@ public class AuthDevConfirmPhoneNoActivity
   
   private void a()
   {
-    super.setContentView(2130970319);
-    setTitle(2131436552);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370049));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370052));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370053));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370054));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131370055));
+    super.setContentView(2131560924);
+    setTitle(2131692213);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377678));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377677));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377720));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363549));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363627));
     if ((QLog.isColorLevel()) && ((this.jdField_a_of_type_AndroidWidgetTextView == null) || (this.jdField_b_of_type_AndroidWidgetTextView == null) || (this.jdField_c_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_AndroidWidgetButton == null) || (this.jdField_b_of_type_AndroidWidgetButton == null)))
     {
       QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "one or more controls is null! ");
       return;
     }
     onCreateRightView();
-    setRightButton(2131436604, this);
-    Object localObject = (TextView)findViewById(2131363245);
+    setRightButton(2131692184, this);
+    Object localObject = (TextView)findViewById(2131368624);
     if (localObject != null) {
       ((TextView)localObject).setVisibility(8);
     }
@@ -61,8 +61,8 @@ public class AuthDevConfirmPhoneNoActivity
     if (this.jdField_c_of_type_JavaLangString != null) {
       this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_c_of_type_JavaLangString);
     }
-    localObject = getString(2131436608);
-    String str = getString(2131436609);
+    localObject = getString(2131692181);
+    String str = getString(2131692215);
     this.jdField_a_of_type_AndroidWidgetButton.setText((CharSequence)localObject);
     this.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
@@ -71,13 +71,13 @@ public class AuthDevConfirmPhoneNoActivity
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     try
     {
-      EquipmentLockImpl.a().a(null, this.app.getCurrentAccountUin(), 6);
+      aqbd.a().a(null, this.app.getCurrentAccountUin(), 6);
       return;
     }
     catch (Exception localException) {}
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     switch (paramInt1)
@@ -116,7 +116,7 @@ public class AuthDevConfirmPhoneNoActivity
       localObject = ((Bundle)localObject).getString("resultMobileMask");
     } while (paramInt2 == 1);
     if (paramInt2 == 2) {
-      DevlockPhoneStatus.a().a(DevlockPhoneStatus.d);
+      aqax.a().a(aqax.d);
     }
     for (;;)
     {
@@ -128,16 +128,16 @@ public class AuthDevConfirmPhoneNoActivity
       return;
       if (paramInt2 == 3)
       {
-        DevlockPhoneStatus.a().a(DevlockPhoneStatus.c);
-        DevlockPhoneStatus.a().a(0L);
+        aqax.a().a(aqax.c);
+        aqax.a().a(0L);
       }
     }
   }
   
-  protected boolean onBackEvent()
+  public boolean onBackEvent()
   {
     finish();
-    overridePendingTransition(0, 2131034135);
+    overridePendingTransition(0, 2130772001);
     return false;
   }
   
@@ -147,7 +147,7 @@ public class AuthDevConfirmPhoneNoActivity
     {
     default: 
       return;
-    case 2131370054: 
+    case 2131363549: 
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "click confirm mobile phone button! ");
       }
@@ -155,7 +155,7 @@ public class AuthDevConfirmPhoneNoActivity
     }
     try
     {
-      EquipmentLockImpl.a().a(null, this.app.getCurrentAccountUin(), 7);
+      aqbd.a().a(null, this.app.getCurrentAccountUin(), 7);
       label71:
       paramView = new Intent(this, AuthDevVerifyCodeActivity.class);
       paramView.putExtra("phone_num", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile);
@@ -168,7 +168,7 @@ public class AuthDevConfirmPhoneNoActivity
       }
       try
       {
-        EquipmentLockImpl.a().a(null, this.app.getCurrentAccountUin(), 8);
+        aqbd.a().a(null, this.app.getCurrentAccountUin(), 8);
         label157:
         if (this.app != null) {
           this.app.sendWirelessMeibaoReq(1);
@@ -181,7 +181,7 @@ public class AuthDevConfirmPhoneNoActivity
           if ((TextUtils.isEmpty(this.d)) && (QLog.isColorLevel())) {
             QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "mUin is empty.");
           }
-          EquipLockWebEntrance.a(this, this.f, this.d, EquipLockWebEntrance.c, 1002, null);
+          aqaz.a(this, this.f, this.d, aqaz.c, 1002, null);
           return;
         }
         if (QLog.isColorLevel()) {
@@ -190,13 +190,13 @@ public class AuthDevConfirmPhoneNoActivity
         if ((TextUtils.isEmpty(this.d)) && (QLog.isColorLevel())) {
           QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "mUin is empty.");
         }
-        EquipLockWebEntrance.a(this, this.d, this.d, EquipLockWebEntrance.c, 1002, null);
+        aqaz.a(this, this.d, this.d, aqaz.c, 1002, null);
         return;
         if (QLog.isColorLevel()) {
           QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "onClick right cancel button! ");
         }
         finish();
-        overridePendingTransition(0, 2131034135);
+        overridePendingTransition(0, 2130772001);
         return;
       }
       catch (Exception paramView)
@@ -210,7 +210,7 @@ public class AuthDevConfirmPhoneNoActivity
     }
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     Object localObject = getIntent();
     if (localObject == null)
@@ -244,7 +244,7 @@ public class AuthDevConfirmPhoneNoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevConfirmPhoneNoActivity
  * JD-Core Version:    0.7.0.1
  */

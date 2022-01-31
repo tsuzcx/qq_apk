@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForTroopStory;
 
-public class agfr
-  implements Runnable
+class agfr
+  implements bhuk
 {
-  public agfr(ScanTorchActivity paramScanTorchActivity) {}
+  agfr(agfq paramagfq, MessageForTroopStory paramMessageForTroopStory, bhuf parambhuf) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    ScanTorchActivity.c(this.a, true);
-    ScanTorchActivity.l(this.a);
-    ScanTorchActivity.d(this.a, true);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      xpr.a(this.jdField_a_of_type_Agfq.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory).f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agfr
  * JD-Core Version:    0.7.0.1
  */

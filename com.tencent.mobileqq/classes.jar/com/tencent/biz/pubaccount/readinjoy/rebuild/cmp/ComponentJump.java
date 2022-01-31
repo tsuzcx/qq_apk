@@ -8,27 +8,28 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.ComponentView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBStringField;
 import java.util.Iterator;
 import java.util.List;
-import lwf;
-import lwg;
-import lwh;
-import lwi;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.PackJumpInfo;
+import pgd;
+import pja;
+import pxk;
+import pxt;
+import qbs;
+import qeq;
+import qer;
+import qes;
+import qet;
+import tencent.im.oidb.articlesummary.articlesummary.PackJumpInfo;
 
 public class ComponentJump
   extends RelativeLayout
-  implements ComponentView
+  implements pxk
 {
   public View a;
-  CmpCtxt a;
+  qbs a;
   public View[] a;
   public TextView[] a;
   
@@ -70,7 +71,7 @@ public class ComponentJump
       for (;;)
       {
         if ((localList != null) && (localList.size() == 1)) {
-          a(paramInt, paramArticleInfo, (oidb_cmd0x68b.PackJumpInfo)localList.get(0));
+          a(paramInt, paramArticleInfo, (articlesummary.PackJumpInfo)localList.get(0));
         }
         if ((localList == null) || (localList.size() <= 1)) {
           break label209;
@@ -79,27 +80,27 @@ public class ComponentJump
         i = 0;
         while (i < localList.size())
         {
-          if (((oidb_cmd0x68b.PackJumpInfo)localList.get(i)).enum_style.get() != 2) {
+          if (((articlesummary.PackJumpInfo)localList.get(i)).enum_style.get() != 2) {
             j = 0;
           }
           i += 1;
         }
-        localList = ReadInJoyFooterPresenter.a(paramArticleInfo);
+        localList = pja.a(paramArticleInfo);
         continue;
-        localList = ReadInJoyFooterPresenter.b(paramArticleInfo);
+        localList = pja.b(paramArticleInfo);
       }
       a(paramInt, paramArticleInfo, null);
     }
     if (j != 0)
     {
-      a(paramInt, paramArticleInfo, (oidb_cmd0x68b.PackJumpInfo)localList.get(0));
+      a(paramInt, paramArticleInfo, (articlesummary.PackJumpInfo)localList.get(0));
       label209:
       return;
     }
     a(paramInt, paramArticleInfo, localList);
   }
   
-  private void a(int paramInt, ArticleInfo paramArticleInfo, List paramList)
+  private void a(int paramInt, ArticleInfo paramArticleInfo, List<articlesummary.PackJumpInfo> paramList)
   {
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
     paramInt = 0;
@@ -117,9 +118,9 @@ public class ComponentJump
     int i;
     for (paramInt = 0; paramArticleInfo.hasNext(); paramInt = i)
     {
-      localObject1 = (oidb_cmd0x68b.PackJumpInfo)paramArticleInfo.next();
+      localObject1 = (articlesummary.PackJumpInfo)paramArticleInfo.next();
       i = paramInt;
-      if (((oidb_cmd0x68b.PackJumpInfo)localObject1).enum_style.get() == 2)
+      if (((articlesummary.PackJumpInfo)localObject1).enum_style.get() == 2)
       {
         i = paramInt;
         if (paramInt == 0)
@@ -129,10 +130,10 @@ public class ComponentJump
           ((RelativeLayout.LayoutParams)localObject2).addRule(9, 0);
           this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setLayoutParams((ViewGroup.LayoutParams)localObject2);
           this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setVisibility(0);
-          this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setText(((oidb_cmd0x68b.PackJumpInfo)localObject1).str_wording.get());
-          localObject2 = ((oidb_cmd0x68b.PackJumpInfo)localObject1).str_url.get();
-          localObject1 = ((oidb_cmd0x68b.PackJumpInfo)localObject1).str_wording.get();
-          this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setOnClickListener(new lwh(this, (String)localObject1, (String)localObject2));
+          this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setText(((articlesummary.PackJumpInfo)localObject1).str_wording.get());
+          localObject2 = ((articlesummary.PackJumpInfo)localObject1).str_url.get();
+          localObject1 = ((articlesummary.PackJumpInfo)localObject1).str_wording.get();
+          this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setOnClickListener(new qes(this, (String)localObject1, (String)localObject2));
           i = 1;
         }
         paramArticleInfo.remove();
@@ -142,10 +143,10 @@ public class ComponentJump
     while (paramInt < Math.min(3, paramList.size()))
     {
       this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[paramInt].setVisibility(0);
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[paramInt].setText(((oidb_cmd0x68b.PackJumpInfo)paramList.get(paramInt)).str_wording.get());
-      paramArticleInfo = ((oidb_cmd0x68b.PackJumpInfo)paramList.get(paramInt)).str_url.get();
-      localObject1 = ((oidb_cmd0x68b.PackJumpInfo)paramList.get(paramInt)).str_wording.get();
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[paramInt].setOnClickListener(new lwi(this, (String)localObject1, paramArticleInfo));
+      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[paramInt].setText(((articlesummary.PackJumpInfo)paramList.get(paramInt)).str_wording.get());
+      paramArticleInfo = ((articlesummary.PackJumpInfo)paramList.get(paramInt)).str_url.get();
+      localObject1 = ((articlesummary.PackJumpInfo)paramList.get(paramInt)).str_wording.get();
+      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[paramInt].setOnClickListener(new qet(this, (String)localObject1, paramArticleInfo));
       if ((paramInt - 1 >= 0) && (paramInt - 1 <= 1)) {
         this.jdField_a_of_type_ArrayOfAndroidViewView[(paramInt - 1)].setVisibility(0);
       }
@@ -153,7 +154,7 @@ public class ComponentJump
     }
   }
   
-  private void a(int paramInt, ArticleInfo paramArticleInfo, oidb_cmd0x68b.PackJumpInfo paramPackJumpInfo)
+  private void a(int paramInt, ArticleInfo paramArticleInfo, articlesummary.PackJumpInfo paramPackJumpInfo)
   {
     int i = 0;
     while (i < 3)
@@ -171,7 +172,7 @@ public class ComponentJump
       return;
     case 2: 
     case 3: 
-      paramArticleInfo = new lwf(this, paramPackJumpInfo);
+      paramArticleInfo = new qeq(this, paramPackJumpInfo);
       if (paramPackJumpInfo.enum_style.get() == 2)
       {
         localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].getLayoutParams();
@@ -190,7 +191,7 @@ public class ComponentJump
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(paramArticleInfo);
       return;
     }
-    paramPackJumpInfo = new lwg(this, paramArticleInfo);
+    paramPackJumpInfo = new qer(this, paramArticleInfo);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].getLayoutParams();
     localLayoutParams.addRule(11, 0);
     localLayoutParams.addRule(9, -1);
@@ -203,7 +204,7 @@ public class ComponentJump
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt = new CmpCtxt();
+    this.jdField_a_of_type_Qbs = new qbs();
     this.jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[4];
     this.jdField_a_of_type_ArrayOfAndroidViewView = new View[2];
     a(paramContext);
@@ -214,27 +215,22 @@ public class ComponentJump
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2130969535, this, true);
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366868));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366870));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366872));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366873));
-    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = this.jdField_a_of_type_AndroidViewView.findViewById(2131366869);
-    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = this.jdField_a_of_type_AndroidViewView.findViewById(2131366871);
-  }
-  
-  public void a(FeedItemCell.CellListener paramCellListener)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a(paramCellListener);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559900, this, true);
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369007));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369009));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369011));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369012));
+    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = this.jdField_a_of_type_AndroidViewView.findViewById(2131369008);
+    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = this.jdField_a_of_type_AndroidViewView.findViewById(2131369010);
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof IReadInJoyModel))
+    if ((paramObject instanceof pgd))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a((IReadInJoyModel)paramObject);
+      this.jdField_a_of_type_Qbs.a((pgd)paramObject);
       b();
-      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.b()) {
+      if (!this.jdField_a_of_type_Qbs.a.b()) {
         break label88;
       }
     }
@@ -242,18 +238,23 @@ public class ComponentJump
     for (int i = 0;; i = 8)
     {
       setVisibility(i);
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.b()) {
-        a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.d(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a());
+      if (this.jdField_a_of_type_Qbs.a.b()) {
+        a(this.jdField_a_of_type_Qbs.a.d(), this.jdField_a_of_type_Qbs.a.a());
       }
       return;
     }
+  }
+  
+  public void a(pxt parampxt)
+  {
+    this.jdField_a_of_type_Qbs.a(parampxt);
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump
  * JD-Core Version:    0.7.0.1
  */

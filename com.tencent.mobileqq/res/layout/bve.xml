@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/jm0" android:background="@drawable/b48" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.CommonLine android:id="@id/e_1" android:background="@drawable/b4i" android:layout_width="@dimen/mm" android:layout_height="fill_parent" android:layout_marginLeft="32.0dip" />
+    <com.qzone.widget.QZonePullToRefreshListView android:scrollbarThumbVertical="@drawable/axv" android:gravity="center" android:id="@id/jm1" android:background="@color/ajr" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="40.0dip" android:listSelector="@color/ajr" android:scrollingCache="true" android:cacheColorHint="@color/ajr" android:divider="@null" />
+</RelativeLayout>

@@ -1,25 +1,19 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.troop.activity.TroopTagViewActivity;
+import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import com.tencent.mobileqq.troop.widget.MediaControllerX.MediaPlayerControlX;
 
 public class gyy
   implements View.OnClickListener
 {
-  public gyy(TroopTagViewActivity paramTroopTagViewActivity) {}
+  public gyy(MediaControllerX paramMediaControllerX) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, TroopTagViewActivity.class);
-    paramView.putExtra("troopuin", TroopTagViewActivity.a(this.a));
-    paramView.putExtra("tags", TroopTagViewActivity.b(this.a));
-    paramView.putExtra("act_type", 2);
-    paramView.putExtra("modifyToSrv", this.a.d);
-    if ((this.a.getAppRuntime() instanceof BrowserAppInterface)) {
-      paramView.putExtra("uin", ((BrowserAppInterface)this.a.getAppRuntime()).a());
-    }
-    this.a.startActivity(paramView);
+    int i = MediaControllerX.a(this.a).b();
+    MediaControllerX.a(this.a).a(i - 5000);
+    MediaControllerX.a(this.a);
+    this.a.a(5000);
   }
 }
 

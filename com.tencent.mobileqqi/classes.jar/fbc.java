@@ -1,29 +1,20 @@
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mobileqq.activity.voip.VoipHistoryActivity;
-import com.tencent.mobileqq.activity.voip.VoipHistoryAllType;
-import com.tencent.mobileqq.activity.voip.VoipHistoryInterface;
-import com.tencent.mobileqq.data.voip.VoipHistoryData;
-import com.tencent.widget.AdapterView.AdapterContextMenuInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.service.HttpNotify;
 
 public class fbc
-  implements MenuItem.OnMenuItemClickListener
+  implements HttpNotify
 {
-  public fbc(VoipHistoryActivity paramVoipHistoryActivity) {}
+  public fbc(DataLineHandler paramDataLineHandler) {}
   
-  public boolean onMenuItemClick(MenuItem paramMenuItem)
-  {
-    paramMenuItem = (AdapterView.AdapterContextMenuInfo)paramMenuItem.getMenuInfo();
-    paramMenuItem = (VoipHistoryAllType)VoipHistoryActivity.a(this.a).get(paramMenuItem.a);
-    VoipHistoryActivity.a(this.a).a((VoipHistoryData)paramMenuItem.obj);
-    this.a.doOnResume();
-    return true;
-  }
+  public void a(long paramLong1, long paramLong2) {}
+  
+  public void a(long paramLong1, long paramLong2, long paramLong3) {}
+  
+  public void a(long paramLong1, boolean paramBoolean, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     fbc
  * JD-Core Version:    0.7.0.1
  */

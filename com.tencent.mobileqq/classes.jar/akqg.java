@@ -1,31 +1,88 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
-import com.tencent.open.downloadnew.DownloadApi;
-import com.tencent.open.downloadnew.DownloadConstants;
+import com.tencent.open.base.BspatchUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class akqg
-  implements Runnable
+class akqg
+  extends bead
 {
-  public akqg(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler, String paramString1, String paramString2) {}
+  akqg(akqf paramakqf, File paramFile, akqi paramakqi) {}
   
-  public void run()
+  public void onDone(beae parambeae)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.a(MsfSdkUtils.insertMtype("Web", this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.jdField_a_of_type_JavaLangString), 0);
-    Bundle localBundle = new Bundle();
-    localBundle.putString(DownloadConstants.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-    localBundle.putString(DownloadConstants.i, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.jdField_a_of_type_JavaLangString);
-    localBundle.putInt(DownloadConstants.j, 2);
-    localBundle.putString(DownloadConstants.k, this.b);
-    localBundle.putBoolean(DownloadConstants.q, false);
-    localBundle.putBoolean(DownloadConstants.w, false);
-    localBundle.putString(DownloadConstants.l, "_" + this.jdField_a_of_type_JavaLangString);
-    DownloadApi.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, localBundle, 0, null, 0);
+    super.onDone(parambeae);
+    if (QLog.isColorLevel()) {
+      QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch task.getStatus:" + parambeae.a());
+    }
+    if (3 == parambeae.a())
+    {
+      if (this.jdField_a_of_type_JavaIoFile.exists())
+      {
+        String str = this.jdField_a_of_type_Akqi.e();
+        parambeae = this.jdField_a_of_type_Akqi.c();
+        if (BspatchUtil.a(str, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), parambeae))
+        {
+          try
+          {
+            str = bflr.a(parambeae);
+            if (QLog.isColorLevel()) {
+              QLog.d("rscContent_CmShowRscUpdateHandler", 2, " downloadZipAndPatch onDone dstMd5:" + str + " result.mMd5:" + this.jdField_a_of_type_Akqi.d);
+            }
+            if (akqf.a(this.jdField_a_of_type_Akqi, str))
+            {
+              if (akqf.a(this.jdField_a_of_type_Akqi))
+              {
+                ndr.a(new File(parambeae), this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
+                if (QLog.isColorLevel()) {
+                  QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch unZipFile ok file path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " dstpath:" + parambeae);
+                }
+              }
+              for (;;)
+              {
+                akqf.a(this.jdField_a_of_type_Akqf, this.jdField_a_of_type_Akqi.jdField_e_of_type_Int, this.jdField_a_of_type_Akqi);
+                return;
+                boolean bool = bdhb.d(parambeae, this.jdField_a_of_type_Akqi.b() + this.jdField_a_of_type_Akqi.jdField_e_of_type_JavaLangString);
+                QLog.i("rscContent_CmShowRscUpdateHandler", 1, "downloadZipAndPatch no need unzip copy:" + bool);
+              }
+            }
+            QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambeae.getMessage());
+          }
+          catch (Exception parambeae)
+          {
+            this.jdField_a_of_type_JavaIoFile.delete();
+            QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambeae.getMessage());
+            return;
+            QLog.e("rscContent_CmShowRscUpdateHandler", 1, "dstMd5 != result.mMd5");
+            akqf.a(this.jdField_a_of_type_Akqf, this.jdField_a_of_type_Akqi);
+            return;
+          }
+          catch (OutOfMemoryError parambeae)
+          {
+            this.jdField_a_of_type_JavaIoFile.delete();
+            if (!QLog.isColorLevel()) {
+              return;
+            }
+          }
+        }
+        else
+        {
+          QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadZipAndPatch patchFile error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+          akqf.a(this.jdField_a_of_type_Akqf, this.jdField_a_of_type_Akqi);
+        }
+      }
+      else
+      {
+        akqf.a(this.jdField_a_of_type_Akqf, this.jdField_a_of_type_Akqi);
+        QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadZipAndPatch patchFile no exist path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " task.getStatus()->" + parambeae.a());
+      }
+    }
+    else {
+      QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadZipAndPatch  file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " task.getStatus()->" + parambeae.a());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akqg
  * JD-Core Version:    0.7.0.1
  */

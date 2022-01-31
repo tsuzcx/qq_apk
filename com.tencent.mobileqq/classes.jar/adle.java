@@ -1,38 +1,25 @@
-import android.app.Activity;
-import com.tencent.biz.widgets.ShareResultDialog.IShareResultCallback;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class adle
-  implements ShareResultDialog.IShareResultCallback
+  extends alpq
 {
-  public adle(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
+  public adle(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
   
-  public void a(boolean paramBoolean)
+  protected void onSetPCActiveState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
-    if (ForwardRecentActivity.class.isInstance(this.a.a)) {
-      if (!this.a.a.isFinishing())
-      {
-        if (!paramBoolean) {
-          break label75;
-        }
-        this.a.a(0, "", "");
-      }
-    }
-    for (;;)
+    if (paramBoolean1)
     {
-      if (this.a.i) {
-        ForwardSdkBaseOption.a(this.a.a, true, "shareToQQ", this.a.b);
-      }
-      return;
-      label75:
-      this.a.a(-1, "未知错误!", "未知错误!");
+      SettingCloneUtil.writeValue(this.a.app.getApp(), paramString2, null, "qqsetting_pcactive_key", true);
+      QLog.i("CardObserver_onSetPCActiveState", 1, "Set the PC Active State " + paramBoolean1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adle
  * JD-Core Version:    0.7.0.1
  */

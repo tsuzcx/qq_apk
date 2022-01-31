@@ -1,35 +1,60 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState.WebSo3;
 
-public class zgo
-  implements Runnable
+class zgo
 {
-  public zgo(MessageHandler paramMessageHandler, long paramLong1, String paramString1, String paramString2, byte paramByte, String paramString3, long paramLong2, long paramLong3) {}
+  private WebSoService.WebSoState.WebSo3 jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void run()
+  private void a(zgm paramzgm, String paramString, WebSoService.WebSoState.WebSo3 paramWebSo3)
   {
-    long l1 = 480000L;
-    long l2 = 3L - this.jdField_a_of_type_Long;
-    if (this.jdField_a_of_type_Long == 0L) {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b.a().a(this.jdField_a_of_type_JavaLangString, 1001).hasReply) {
-        break label105;
+    if ((paramWebSo3 != null) && (!TextUtils.isEmpty(paramString))) {
+      belc.a("callJs");
+    }
+    try
+    {
+      paramzgm.callJs(paramString, new String[] { this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.a() });
+      this.jdField_a_of_type_JavaLangString = null;
+      return;
+    }
+    catch (Exception paramzgm)
+    {
+      for (;;)
+      {
+        paramzgm.printStackTrace();
       }
     }
-    label105:
-    for (boolean bool = true;; bool = false)
-    {
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Byte, bool, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Long, this.jdField_c_of_type_Long, l1);
-      return;
-      l1 = l2 * 480000L / 3L - l2 * 2000L;
-      break;
-    }
+  }
+  
+  public WebSoService.WebSoState.WebSo3 a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3;
+  }
+  
+  public void a()
+  {
+    belc.a("clearJsCallback");
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3 = null;
+  }
+  
+  public void a(zgm paramzgm, WebSoService.WebSoState.WebSo3 paramWebSo3)
+  {
+    belc.a("setUpWebso3");
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3 = paramWebSo3;
+    a(paramzgm, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3);
+  }
+  
+  public void a(zgm paramzgm, String paramString)
+  {
+    belc.a("registerGetData");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    a(paramzgm, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zgo
  * JD-Core Version:    0.7.0.1
  */

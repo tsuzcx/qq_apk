@@ -1,61 +1,128 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.map.geolocation.TencentLocation;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.List;
 
 public class whw
-  implements TextView.OnEditorActionListener
+  extends vcf
+  implements urr<vfh, vfi>
 {
-  public whw(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  private final String jdField_a_of_type_JavaLangString;
+  private final why jdField_a_of_type_Why;
+  private final wop jdField_a_of_type_Wop;
+  private boolean c;
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public whw(wop paramwop, @NonNull String paramString)
   {
-    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    this.jdField_a_of_type_Wop = paramwop;
+    this.jdField_a_of_type_Why = null;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public whw(wop paramwop, @NonNull why paramwhy)
+  {
+    this.jdField_a_of_type_Wop = paramwop;
+    this.jdField_a_of_type_Why = paramwhy;
+    this.jdField_a_of_type_JavaLangString = null;
+  }
+  
+  private void a(whz paramwhz)
+  {
+    if (this.jdField_a_of_type_Why == null)
     {
-      paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-      if (!TextUtils.isEmpty(paramTextView)) {
-        if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) && (!TextUtils.isEmpty(paramTextView.trim())))
-        {
-          this.a.a(paramTextView);
-          PublicAccountReportUtils.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", paramTextView, "", true);
-          ClassificationSearchActivity.a(this.a, paramTextView);
-        }
-      }
-      for (;;)
-      {
-        return true;
-        if (this.a.f == ClassificationSearchActivity.d)
-        {
-          PublicAccountReportUtils.a(null, "", "0X800742D", "0X800742D", 0, 0, paramTextView, "", "", "");
-          ClassificationSearchActivity.a(this.a, paramTextView);
-        }
-        else
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramTextView, false);
-          continue;
-          if (this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int)
-          {
-            paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getHint().toString();
-            if ((!TextUtils.isEmpty(paramTextView.trim())) && (!TextUtils.equals(paramTextView, "搜索相关文章")) && (!TextUtils.equals(paramTextView, "搜索")))
-            {
-              this.a.a(paramTextView);
-              PublicAccountReportUtils.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", paramTextView, "", true);
-              ClassificationSearchActivity.a(this.a, paramTextView);
-            }
-          }
-        }
-      }
+      umc.a().dispatch(this.jdField_a_of_type_JavaLangString, paramwhz);
+      return;
     }
-    return false;
+    this.jdField_a_of_type_Why.a(paramwhz);
+  }
+  
+  private void e()
+  {
+    vfh localvfh = new vfh();
+    localvfh.jdField_a_of_type_Wop = this.jdField_a_of_type_Wop;
+    urp.a().a(localvfh, this);
+  }
+  
+  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
+  {
+    super.a(paramTencentLocation, paramInt);
+    if (this.c) {
+      return;
+    }
+    this.jdField_a_of_type_Wop.jdField_b_of_type_JavaLangString = "";
+    e();
+  }
+  
+  public void a(@NonNull vfh paramvfh, @Nullable vfi paramvfi, @NonNull ErrorMessage paramErrorMessage)
+  {
+    wxe.a("Q.qqstory.detail:CommentListPageLoader", "get comment list return:%s", paramErrorMessage.toString());
+    if (this.c)
+    {
+      wxe.c("Q.qqstory.detail:CommentListPageLoader", "don't nothing after terminate");
+      return;
+    }
+    whz localwhz = new whz(paramErrorMessage, this.jdField_a_of_type_Wop.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Wop.jdField_a_of_type_Int);
+    localwhz.d = this.jdField_a_of_type_Boolean;
+    localwhz.jdField_a_of_type_Int = this.jdField_a_of_type_Wop.jdField_b_of_type_Int;
+    if ((paramvfi == null) || (paramErrorMessage.isFail()))
+    {
+      a(localwhz);
+      return;
+    }
+    wxe.a("Q.qqstory.detail:CommentListPageLoader", "comment respond from cookie:%s to %s", paramvfh.jdField_a_of_type_Wop.jdField_b_of_type_JavaLangString, paramvfi.jdField_a_of_type_JavaLangString);
+    boolean bool = TextUtils.isEmpty(paramvfh.jdField_a_of_type_Wop.jdField_b_of_type_JavaLangString);
+    this.jdField_a_of_type_Wop.jdField_b_of_type_JavaLangString = paramvfi.jdField_a_of_type_JavaLangString;
+    localwhz.jdField_a_of_type_JavaUtilList = paramvfi.jdField_a_of_type_JavaUtilList;
+    localwhz.jdField_b_of_type_Int = paramvfi.jdField_b_of_type_Int;
+    localwhz.c = bool;
+    localwhz.jdField_a_of_type_Boolean = paramvfi.jdField_a_of_type_Boolean;
+    localwhz.jdField_b_of_type_JavaLangString = paramvfi.jdField_a_of_type_JavaLangString;
+    if ((!paramvfi.jdField_a_of_type_Boolean) && (paramvfi.jdField_a_of_type_JavaUtilList.size() == 0))
+    {
+      localwhz.jdField_a_of_type_Boolean = true;
+      wxe.d("Q.qqstory.detail:CommentListPageLoader", "comment pull should be end!!!!!!!!!!!!");
+    }
+    try
+    {
+      this.b = true;
+      a(localwhz);
+      wxe.a("Q.qqstory.detail:CommentListPageLoader", "dispatch comment list return from network: %s", localwhz);
+      paramvfh = new whx(this, "Q.qqstory.detail:CommentListPageLoader", localwhz, bool);
+      Bosses.get().postJob(paramvfh);
+      return;
+    }
+    finally {}
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_Wop.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (this.c)
+    {
+      xqq.a("don't call this method after terminate", new Object[0]);
+      return;
+    }
+    e();
+  }
+  
+  public void d()
+  {
+    this.c = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     whw
  * JD-Core Version:    0.7.0.1
  */

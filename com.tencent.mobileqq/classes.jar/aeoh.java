@@ -1,21 +1,32 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import java.util.List;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import com.tencent.widget.XPanelContainer;
+import mqq.os.MqqHandler;
 
-class aeoh
-  implements aepq
+public class aeoh
+  extends amgd
 {
-  aeoh(aeog paramaeog) {}
+  public aeoh(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
   
-  public void a(List paramList, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    this.a.a.b = paramList;
-    this.a.a.g = paramBoolean;
-    this.a.a.runOnUiThread(new aeoi(this, paramList, paramBoolean));
+    this.a.e();
+    SendBirthdayWishesActivity.a(this.a, paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.a);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 0) {
+      this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
+    }
+    if (paramInt != 2)
+    {
+      SendBirthdayWishesActivity.a(this.a).removeCallbacks(SendBirthdayWishesActivity.a(this.a));
+      SendBirthdayWishesActivity.a(this.a).postDelayed(SendBirthdayWishesActivity.a(this.a), 600L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeoh
  * JD-Core Version:    0.7.0.1
  */

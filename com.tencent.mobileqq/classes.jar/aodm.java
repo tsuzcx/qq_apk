@@ -1,30 +1,28 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.biz.qqstory.takevideo.rmw.RMWServiceProxy;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
 
-public class aodm
-  extends Handler
+class aodm
+  implements View.OnClickListener
 {
-  private RMWServiceProxy a;
+  aodm(aodl paramaodl) {}
   
-  public aodm(RMWServiceProxy paramRMWServiceProxy)
+  public void onClick(View paramView)
   {
-    super(Looper.getMainLooper());
-    this.a = paramRMWServiceProxy;
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    RMWServiceProxy localRMWServiceProxy = this.a;
-    if (localRMWServiceProxy != null) {
-      localRMWServiceProxy.a(Message.obtain(paramMessage));
+    if ((aodl.a(this.a) != null) && (aodl.a(this.a).getVisibility() == 0) && (aodl.a(this.a).hasFocus())) {
+      return;
     }
+    aodl.a(this.a);
+    paramView = new Bundle();
+    paramView.putInt("start_from", 1);
+    ColorNoteSettingFragment.a(aodl.a(this.a), ColorNoteSettingFragment.class, paramView);
+    azqs.b(null, "dc00898", "", "", "0X800A8AF", "0X800A8AF", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aodm
  * JD-Core Version:    0.7.0.1
  */

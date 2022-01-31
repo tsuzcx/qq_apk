@@ -1,21 +1,33 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgEntryDialog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class xee
-  implements Runnable
+class xee
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public xee(GoldMsgAioState paramGoldMsgAioState, GoldMsgEntryDialog paramGoldMsgEntryDialog, BaseChatPie paramBaseChatPie, boolean paramBoolean1, boolean paramBoolean2, String paramString) {}
+  xee(xed paramxed) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgEntryDialog.cancel();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgAioState.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
+    if (xeb.a(this.a.a) == null) {
+      return;
+    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.l = (this.a.d + this.a.f * f);
+    this.a.m = (this.a.e + this.a.g * f);
+    this.a.j = (this.a.b + this.a.h * f);
+    this.a.k = (this.a.c + this.a.i * f);
+    if (this.a.a.a != null) {
+      this.a.a.a.a(f);
+    }
+    if (f == 1.0F) {
+      xeb.a(this.a.a, null);
+    }
+    xeb.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xee
  * JD-Core Version:    0.7.0.1
  */

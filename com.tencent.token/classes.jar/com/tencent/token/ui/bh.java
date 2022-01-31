@@ -3,14 +3,14 @@ package com.tencent.token.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class bh
+class bh
   implements View.OnClickListener
 {
   bh(BaseActivity paramBaseActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    this.a.dismissDialog();
   }
 }
 

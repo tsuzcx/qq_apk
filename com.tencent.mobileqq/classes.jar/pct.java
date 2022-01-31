@@ -1,18 +1,21 @@
-import com.tencent.biz.webviewplugin.QzoneWebViewOfflinePlugin;
-
 public class pct
-  implements Runnable
+  implements pcq
 {
-  public pct(QzoneWebViewOfflinePlugin paramQzoneWebViewOfflinePlugin, String paramString, long paramLong) {}
+  private static pct a = new pct();
   
-  public void run()
+  public static pct a()
   {
-    QzoneWebViewOfflinePlugin.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentBizWebviewpluginQzoneWebViewOfflinePlugin.mRuntime);
+    return a;
+  }
+  
+  public void a(String paramString, pcr parampcr)
+  {
+    osf.a().a(paramString, "PubAccountArticleCenter.GetUrlByVid", new pcu(this, parampcr));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pct
  * JD-Core Version:    0.7.0.1
  */

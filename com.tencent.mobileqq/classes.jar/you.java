@@ -1,65 +1,80 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.aioChannel.IRenderRunner;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
-import com.tencent.mobileqq.apollo.utils.ApolloGameMusicPlayer;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StVideo;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.ImageView.ScaleType;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
 public class you
-  implements Runnable
 {
-  private final int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
-  private final String jdField_a_of_type_JavaLangString;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private final int jdField_b_of_type_Int;
-  private WeakReference jdField_b_of_type_JavaLangRefWeakReference;
-  private int jdField_c_of_type_Int;
-  private WeakReference jdField_c_of_type_JavaLangRefWeakReference;
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private RoundCornerImageView jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView;
   
-  public you(int paramInt1, AppInterface paramAppInterface, IRenderRunner paramIRenderRunner, ApolloGameMusicPlayer paramApolloGameMusicPlayer, long paramLong, int paramInt2, int paramInt3, String paramString)
+  public you(BlankRecommendItemView paramBlankRecommendItemView, View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramIRenderRunner);
-    this.jdField_c_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloGameMusicPlayer);
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt3;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_c_of_type_Int = paramInt1;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368778));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378784));
   }
   
-  public void run()
+  public void a()
   {
-    AppInterface localAppInterface = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    IRenderRunner localIRenderRunner = (IRenderRunner)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    Object localObject = (ApolloGameMusicPlayer)this.jdField_c_of_type_JavaLangRefWeakReference.get();
-    if ((localAppInterface == null) || (localObject == null) || (localIRenderRunner == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {}
-    for (;;)
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setBackgroundColor(Color.parseColor("#252525"));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.invalidate();
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-5723992);
+  }
+  
+  public void a(CertifiedAccountMeta.StFeed paramStFeed)
+  {
+    if (paramStFeed != null)
     {
-      return;
-      int i = ((ApolloGameMusicPlayer)localObject).a(this.jdField_c_of_type_Int, localAppInterface, localIRenderRunner, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
-      localObject = null;
-      if ((localAppInterface instanceof QQAppInterface)) {
-        localObject = ApolloCmdChannel.getChannel((QQAppInterface)localAppInterface);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      int i = paramStFeed.cover.width.get();
+      if (paramStFeed.cover.height.get() > i) {
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
       }
-      while (localObject != null)
+      try
       {
-        ApolloCmdChannel.access$300((ApolloCmdChannel)localObject, localIRenderRunner, i, this.jdField_a_of_type_Long);
-        return;
-        if ((localAppInterface instanceof CmGameAppInterface)) {
-          localObject = CmGameUtil.a();
+        for (;;)
+        {
+          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageURL(paramStFeed.cover.url.get());
+          if (paramStFeed.video.duration.get() <= 0L) {
+            break;
+          }
+          i = paramStFeed.video.duration.get() / 1000 / 60;
+          int j = paramStFeed.video.duration.get() / 1000;
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format("%02d:%02d", new Object[] { Integer.valueOf(i), Integer.valueOf(j % 60) }));
+          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+          this.jdField_a_of_type_AndroidViewView.setOnClickListener(new yov(this, paramStFeed));
+          return;
+          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          QLog.e("BlankRecommendItemView", 2, "setData() set image url error! url: " + paramStFeed.cover.url.get(), localThrowable);
+          continue;
+          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
         }
       }
     }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     you
  * JD-Core Version:    0.7.0.1
  */

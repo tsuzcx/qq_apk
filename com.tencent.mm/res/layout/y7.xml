@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/bow" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <com.tencent.mm.plugin.facedetectlight.ui.PreviewFrameLayout android:gravity="center" android:id="@id/bou" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
+        <com.tencent.mm.ui.base.MMTextureView android:id="@id/bov" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    </com.tencent.mm.plugin.facedetectlight.ui.PreviewFrameLayout>
+    <com.tencent.mm.plugin.facedetectlight.ui.FaceReflectMask android:id="@id/boy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/bpj" android:visibility="invisible" android:layout_width="320.0dip" android:layout_height="320.0dip" android:layout_marginTop="135.0dip" android:src="@drawable/b5x" android:layout_centerHorizontal="true" />
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/bpk" android:visibility="invisible" android:layout_width="278.0dip" android:layout_height="278.0dip" android:layout_marginTop="145.0dip" android:src="@drawable/b5b" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="24.0dip" android:textColor="@color/a6q" android:id="@id/boz" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/bnd" android:layout_below="@id/bpj" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/a2_" android:textColor="@color/a6q" android:id="@id/bpc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a29" android:layout_centerHorizontal="true" android:fontFamily="sans-serif-thin" />
+</merge>

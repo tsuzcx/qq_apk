@@ -1,22 +1,45 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.StructingMsgViewHolder;
+import android.app.Activity;
 
-public class vie
-  implements Runnable
+class vie
+  implements vig
 {
-  public vie(StructingMsgItemBuilder paramStructingMsgItemBuilder, StructingMsgItemBuilder.StructingMsgViewHolder paramStructingMsgViewHolder, Animation paramAnimation) {}
+  vie(vic paramvic) {}
   
-  public void run()
+  public void a(vkn paramvkn)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.a.setVisibility(4);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.a.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    vic.a(this.a).c();
+    Activity localActivity = vic.a(this.a).a();
+    if (localActivity == null)
+    {
+      c(paramvkn);
+      return;
+    }
+    vkz.a(localActivity, paramvkn, vic.a(this.a));
+  }
+  
+  public void b(vkn paramvkn)
+  {
+    vic.a(this.a).c();
+    if (vic.a(this.a) != null)
+    {
+      vic.a(this.a).c(paramvkn.a);
+      vic.a(this.a).a();
+    }
+  }
+  
+  public void c(vkn paramvkn)
+  {
+    vic.a(this.a).c();
+    if (vic.a(this.a) != null)
+    {
+      vic.a(this.a).d(paramvkn.a);
+      vic.a(this.a).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vie
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,30 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.RspStoryMessageList;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.emosm.Client;
 
-class nxx
-  implements Runnable
+public class nxx
+  implements MessageQueue.IdleHandler
 {
-  nxx(nxw paramnxw, ArrayList paramArrayList, qqstory_710_message.RspStoryMessageList paramRspStoryMessageList) {}
+  public nxx(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
   
-  public void run()
+  public boolean queueIdle()
   {
-    boolean bool2 = false;
-    StoryMessageListActivity localStoryMessageListActivity = this.jdField_a_of_type_Nxw.a;
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if ((!this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_710_message$RspStoryMessageList.is_end.has()) || (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_710_message$RspStoryMessageList.is_end.get() != 0)) {}
-    for (boolean bool1 = true;; bool1 = false)
+    if (!aprh.a().a())
     {
-      if ((!this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_710_message$RspStoryMessageList.has_read_msg.has()) || (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_710_message$RspStoryMessageList.has_read_msg.get() != 0)) {
-        bool2 = true;
-      }
-      localStoryMessageListActivity.a(localArrayList, bool1, bool2);
-      return;
+      aprh.a().a().doBindService(BaseApplicationImpl.getApplication());
+      aprh.a().a(new nxy(this));
+      return false;
     }
+    Bundle localBundle = apml.a("ipc_kandian_hb_close_guid", "onPageStarted", 0, new Bundle());
+    aprh.a().a(localBundle);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nxx
  * JD-Core Version:    0.7.0.1
  */

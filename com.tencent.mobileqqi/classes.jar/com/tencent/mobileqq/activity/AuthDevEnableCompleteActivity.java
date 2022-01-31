@@ -50,7 +50,7 @@ public class AuthDevEnableCompleteActivity
       }
       return false;
     }
-    View localView1 = View.inflate(this, 2130903571, null);
+    View localView1 = View.inflate(this, 2130903573, null);
     if ((localView1 == null) || (this.jdField_a_of_type_AndroidWidgetLinearLayout == null))
     {
       if (QLog.isColorLevel()) {
@@ -59,9 +59,9 @@ public class AuthDevEnableCompleteActivity
       return false;
     }
     CheckBox localCheckBox = (CheckBox)localView1.findViewById(2131231475);
-    View localView2 = localView1.findViewById(2131232953);
-    TextView localTextView1 = (TextView)localView1.findViewById(2131232954);
-    TextView localTextView2 = (TextView)localView1.findViewById(2131232955);
+    View localView2 = localView1.findViewById(2131232956);
+    TextView localTextView1 = (TextView)localView1.findViewById(2131232957);
+    TextView localTextView2 = (TextView)localView1.findViewById(2131232958);
     if ((localCheckBox == null) || (localView2 == null) || (localTextView1 == null) || (localTextView2 == null))
     {
       if (QLog.isColorLevel()) {
@@ -82,10 +82,10 @@ public class AuthDevEnableCompleteActivity
   
   private void d()
   {
-    setContentView(2130903566);
+    setContentView(2130903568);
     setTitle(2131561941);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232942));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131232941));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232945));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131232944));
     if ((this.jdField_a_of_type_AndroidWidgetButton == null) || (this.jdField_a_of_type_AndroidWidgetLinearLayout == null))
     {
       if (QLog.isColorLevel()) {
@@ -178,7 +178,7 @@ public class AuthDevEnableCompleteActivity
     {
     default: 
       return;
-    case 2131232942: 
+    case 2131232945: 
       if (QLog.isColorLevel()) {
         QLog.d("devlock.AuthDevEnableCompleteActivity", 2, "click confirm mobile phone button! ");
       }

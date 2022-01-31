@@ -1,48 +1,32 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import com.weiyun.sdk.IWyFileSystem.IWyCallback;
-import com.weiyun.sdk.IWyFileSystem.Thumbnail;
-import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
+import android.view.View;
+import com.tencent.mobileqq.maproam.activity.RoamingActivity;
+import com.tencent.mobileqq.maproam.data.LocationDetail;
+import com.tencent.mobileqq.maproam.widget.RoamLocalSearchBar;
+import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
+import com.tencent.mobileqq.maproam.widget.RoamSearchDialog.OnSearchResultItemClick;
+import com.tencent.widget.AdapterView;
 
 public class gbu
-  implements IWyFileSystem.IWyCallback
+  implements RoamSearchDialog.OnSearchResultItemClick
 {
-  public gbu(WeiYunLogicCenter paramWeiYunLogicCenter) {}
+  public gbu(RoamingActivity paramRoamingActivity) {}
   
-  public void a(IWyFileSystem.Thumbnail paramThumbnail)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, LocationDetail paramLocationDetail)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "getOfflinePicThumb onSucceed.");
-    }
-    this.a.a.a().a(true, 39, new Object[] { paramThumbnail });
-    FileManagerEntity localFileManagerEntity;
-    if ((paramThumbnail.context instanceof FileManagerEntity))
+    if (paramLocationDetail != null)
     {
-      localFileManagerEntity = (FileManagerEntity)paramThumbnail.context;
-      if ((paramThumbnail.filePath != null) && (paramThumbnail.filePath.length() >= 1)) {}
-    }
-    else
-    {
-      return;
-    }
-    localFileManagerEntity.strThumbPath = paramThumbnail.filePath;
-    this.a.a.a().c(localFileManagerEntity);
-  }
-  
-  public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getOfflinePicThumb onFailed: errcode[" + paramWyErrorStatus.errorCode + "], errmsg[" + paramWyErrorStatus.errorMsg + "]");
+      if ((this.a.a != null) && (this.a.a.a != null)) {
+        this.a.a.a.dismiss();
+      }
+      double d1 = paramLocationDetail.a;
+      double d2 = paramLocationDetail.b;
+      RoamingActivity.a(this.a, d1, d2, paramLocationDetail.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gbu
  * JD-Core Version:    0.7.0.1
  */

@@ -63,7 +63,7 @@ public class DLBaseFileViewActivity
   public static final int e = 1004;
   public static final int f = 1005;
   public static final int g = 1006;
-  protected int a;
+  public int a;
   protected ViewGroup a;
   protected Button a;
   protected ProgressBar a;
@@ -85,7 +85,7 @@ public class DLBaseFileViewActivity
   protected TextView c;
   boolean c;
   protected TextView d;
-  protected boolean d;
+  public boolean d;
   protected TextView e;
   protected TextView f;
   protected TextView g;
@@ -106,12 +106,12 @@ public class DLBaseFileViewActivity
     this.jdField_d_of_type_Boolean = false;
   }
   
-  protected float a()
+  public float a()
   {
     return 1.0F;
   }
   
-  protected int a(List paramList)
+  public int a(List paramList)
   {
     return 0;
   }
@@ -121,34 +121,34 @@ public class DLBaseFileViewActivity
     return 0L;
   }
   
-  protected void a(int paramInt)
+  public void a(int paramInt)
   {
     if (paramInt == 0)
     {
-      i(2130903484);
+      i(2130903486);
       x();
       this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131231448));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232359));
-      this.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)findViewById(2131232360));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232361));
-      this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131231775));
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232372));
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131231519));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232374));
-      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131362070));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232375));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232373));
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232363));
-      this.jdField_b_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131231505));
-      this.f = ((TextView)findViewById(2131232364));
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232365));
-      this.g = ((TextView)findViewById(2131232710));
-      this.h = ((TextView)findViewById(2131232709));
-      this.i = ((TextView)findViewById(2131232711));
-      this.j = ((TextView)findViewById(2131232362));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232712));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232362));
+      this.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)findViewById(2131232363));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232364));
+      this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131231777));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232375));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131231520));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232377));
+      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131362080));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232378));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232376));
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232366));
+      this.jdField_b_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131231506));
+      this.f = ((TextView)findViewById(2131232367));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232368));
+      this.g = ((TextView)findViewById(2131232713));
+      this.h = ((TextView)findViewById(2131232712));
+      this.i = ((TextView)findViewById(2131232714));
+      this.j = ((TextView)findViewById(2131232365));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232715));
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.e = ((TextView)findViewById(2131232713));
+      this.e = ((TextView)findViewById(2131232716));
       this.e.setOnClickListener(this);
       this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new c(this));
       this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new d(this));
@@ -171,10 +171,10 @@ public class DLBaseFileViewActivity
       this.m.setVisibility(4);
       this.p.setVisibility(4);
       this.p.setContentDescription(getString(2131558526));
-      this.p.setImageResource(2130838009);
+      this.p.setImageResource(2130838011);
       this.p.setOnClickListener(new e(this));
       return;
-      setContentView(2130903484);
+      setContentView(2130903486);
       break;
       label479:
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
@@ -185,7 +185,7 @@ public class DLBaseFileViewActivity
   
   public void a(long paramLong) {}
   
-  protected void a(DLFileInfo paramDLFileInfo)
+  public void a(DLFileInfo paramDLFileInfo)
   {
     this.jdField_a_of_type_ComDatalineUtilFileDLFileInfo = paramDLFileInfo;
   }
@@ -200,7 +200,7 @@ public class DLBaseFileViewActivity
     return this.jdField_a_of_type_Int == 0;
   }
   
-  protected void a_()
+  public void a_()
   {
     if (this.jdField_a_of_type_Int == 0) {
       return;
@@ -225,7 +225,7 @@ public class DLBaseFileViewActivity
     this.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
     this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataPreviewImageAdapter);
     this.jdField_a_of_type_ComTencentWidgetGallery.setSelection(k);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131427408));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131427411));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataPreviewImageAdapter.notifyDataSetChanged();
   }
   
@@ -474,7 +474,7 @@ public class DLBaseFileViewActivity
   
   public void h() {}
   
-  protected void i() {}
+  public void i() {}
   
   public void j()
   {
@@ -656,7 +656,7 @@ public class DLBaseFileViewActivity
     {
     default: 
       return;
-    case 2131232710: 
+    case 2131232713: 
       switch (k.a[this.jdField_a_of_type_ComDatalineUtilFileDLFileInfo.jdField_a_of_type_ComDatalineActivitiesDLBaseFileViewActivity$DLFileState.ordinal()])
       {
       default: 
@@ -669,17 +669,17 @@ public class DLBaseFileViewActivity
       }
       m();
       return;
-    case 2131232709: 
+    case 2131232712: 
       FileViewerFacade.a(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComDatalineUtilFileDLFileInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComDatalineUtilFileDLFileInfo.jdField_b_of_type_JavaLangString);
       return;
-    case 2131232365: 
-    case 2131232375: 
+    case 2131232368: 
+    case 2131232378: 
       i();
       return;
-    case 2131231775: 
+    case 2131231777: 
       j();
       return;
-    case 2131232712: 
+    case 2131232715: 
       k();
       return;
     }

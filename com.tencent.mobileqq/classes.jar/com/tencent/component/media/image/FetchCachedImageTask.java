@@ -1,66 +1,65 @@
 package com.tencent.component.media.image;
 
 import android.graphics.drawable.Drawable;
-import phh;
 
 public class FetchCachedImageTask
-  extends phh
+  extends ImageTask
 {
-  private static int jdField_a_of_type_Int;
-  private static FetchCachedImageTask jdField_a_of_type_ComTencentComponentMediaImageFetchCachedImageTask = null;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private FetchCachedImageTask b = null;
+  private static int mObjectPoolSize;
+  private static FetchCachedImageTask sPool = null;
+  private static final Object sPoolSync = new Object();
+  private FetchCachedImageTask next = null;
   
   static
   {
-    jdField_a_of_type_Int = 0;
+    mObjectPoolSize = 0;
     clearAndInitSize();
   }
   
-  private FetchCachedImageTask(phh paramphh)
+  private FetchCachedImageTask(ImageTask paramImageTask)
   {
-    super(paramphh);
+    super(paramImageTask);
   }
   
   public static void clearAndInitSize()
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      jdField_a_of_type_ComTencentComponentMediaImageFetchCachedImageTask = null;
+      sPool = null;
       int i = 0;
       while (i < mInitAllocatedSize)
       {
         FetchCachedImageTask localFetchCachedImageTask = new FetchCachedImageTask(null);
-        localFetchCachedImageTask.b = jdField_a_of_type_ComTencentComponentMediaImageFetchCachedImageTask;
-        jdField_a_of_type_ComTencentComponentMediaImageFetchCachedImageTask = localFetchCachedImageTask;
-        jdField_a_of_type_Int += 1;
+        localFetchCachedImageTask.next = sPool;
+        sPool = localFetchCachedImageTask;
+        mObjectPoolSize += 1;
         i += 1;
       }
       return;
     }
   }
   
-  public static FetchCachedImageTask obtain(phh paramphh)
+  public static FetchCachedImageTask obtain(ImageTask paramImageTask)
   {
     if (needRecycle) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      if (jdField_a_of_type_ComTencentComponentMediaImageFetchCachedImageTask != null)
+      if (sPool != null)
       {
-        FetchCachedImageTask localFetchCachedImageTask = jdField_a_of_type_ComTencentComponentMediaImageFetchCachedImageTask;
-        jdField_a_of_type_ComTencentComponentMediaImageFetchCachedImageTask = jdField_a_of_type_ComTencentComponentMediaImageFetchCachedImageTask.b;
-        localFetchCachedImageTask.b = null;
-        jdField_a_of_type_Int -= 1;
-        localFetchCachedImageTask.setImageTask(paramphh);
+        FetchCachedImageTask localFetchCachedImageTask = sPool;
+        sPool = sPool.next;
+        localFetchCachedImageTask.next = null;
+        mObjectPoolSize -= 1;
+        localFetchCachedImageTask.setImageTask(paramImageTask);
         return localFetchCachedImageTask;
       }
-      return new FetchCachedImageTask(paramphh);
+      return new FetchCachedImageTask(paramImageTask);
     }
   }
   
   public void excuteTask()
   {
-    Drawable localDrawable = ImageManager.getInstance().a(this.mImageKey);
+    Drawable localDrawable = ImageManager.getInstance().getDrawbleFromCache(this.mImageKey);
     if (localDrawable != null)
     {
       setResult(6, new Object[] { localDrawable, null });
@@ -108,13 +107,13 @@ public class FetchCachedImageTask
       return;
     }
     reset();
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      if (jdField_a_of_type_Int < 50)
+      if (mObjectPoolSize < 50)
       {
-        this.b = jdField_a_of_type_ComTencentComponentMediaImageFetchCachedImageTask;
-        jdField_a_of_type_ComTencentComponentMediaImageFetchCachedImageTask = this;
-        jdField_a_of_type_Int += 1;
+        this.next = sPool;
+        sPool = this;
+        mObjectPoolSize += 1;
       }
       return;
     }
@@ -122,7 +121,7 @@ public class FetchCachedImageTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.FetchCachedImageTask
  * JD-Core Version:    0.7.0.1
  */

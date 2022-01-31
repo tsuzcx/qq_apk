@@ -1,21 +1,24 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
 
 public class acyp
-  extends acxu
+  implements View.OnClickListener
 {
-  public acyp(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  public acyp(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  protected String a()
+  public void onClick(View paramView)
   {
-    return "StateUploadoneWhenChangeToOff";
+    if (!this.a.getActivity().isFinishing()) {
+      ForwardTroopListFragment.a(this.a).dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acyp
  * JD-Core Version:    0.7.0.1
  */

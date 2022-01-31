@@ -1,20 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class ofm
-  implements DialogInterface.OnClickListener
+class ofm
+  implements Animator.AnimatorListener
 {
-  public ofm(EditVideoPartManager paramEditVideoPartManager) {}
+  ofm(ofi paramofi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.c();
+    ofi.b(this.a);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ofm
  * JD-Core Version:    0.7.0.1
  */

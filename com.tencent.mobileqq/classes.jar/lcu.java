@@ -1,77 +1,38 @@
-import android.os.Build.VERSION;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class lcu
-  implements Runnable
+final class lcu
+  extends lcn
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  lcu(lcl paramlcl) {}
   
-  public lcu(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity1, ReadInJoyFeedsActivity paramReadInJoyFeedsActivity2)
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReadInJoyFeedsActivity2);
+    super.a(paramInt, paramArrayOfHeader, paramJSONObject);
+    try
+    {
+      paramJSONObject = paramJSONObject.getString("id");
+      this.a.a(paramInt, paramArrayOfHeader, paramJSONObject);
+      return;
+    }
+    catch (JSONException paramArrayOfHeader)
+    {
+      paramArrayOfHeader.printStackTrace();
+    }
   }
   
-  public void run()
+  public void a(Throwable paramThrowable, JSONObject paramJSONObject)
   {
-    if (WebProcessManager.c()) {}
-    for (;;)
-    {
-      return;
-      WebProcessManager localWebProcessManager;
-      int i;
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
-      {
-        localWebProcessManager = (WebProcessManager)((ReadInJoyFeedsActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).app.getManager(12);
-        if (localWebProcessManager != null)
-        {
-          i = ReadInJoyUtils.f();
-          if (!ReadInJoyUtils.f()) {}
-        }
-      }
-      try
-      {
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
-        localHashMap.put("param_totalMem", String.valueOf(DeviceInfoUtil.e()));
-        localHashMap.put("param_availableMem", String.valueOf(DeviceInfoUtil.f()));
-        localHashMap.put("param_cpuNum", String.valueOf(DeviceInfoUtil.b()));
-        localHashMap.put("param_cpuFreq", String.valueOf(DeviceInfoUtil.a()));
-        localHashMap.put("param_preloadLevel", String.valueOf(i));
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyBaseActivity", 2, "preloadToolProcessReport:" + localHashMap.toString());
-        }
-        StatisticCollector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyFeedsActivity).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyFeedsActivity.app.getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
-      }
-      catch (Exception localException)
-      {
-        label206:
-        break label206;
-      }
-      if (i == 1) {
-        localWebProcessManager.a(200);
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d("ReadInJoyBaseActivity", 2, "enter folder preload web process");
-        return;
-        if (i == 2) {
-          localWebProcessManager.a(201);
-        }
-      }
+    super.a(paramThrowable, paramJSONObject);
+    if ((paramThrowable != null) && (paramThrowable.getMessage() != null)) {
+      this.a.a(paramThrowable, paramThrowable.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lcu
  * JD-Core Version:    0.7.0.1
  */

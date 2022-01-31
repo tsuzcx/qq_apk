@@ -1,35 +1,21 @@
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.mobileqq.troop.logic.TroopAvatarWallEditCtrl.IGridItemStatusCallBack;
-import com.tencent.mobileqq.troop.widget.TroopAvatarWallGalleryAdapter;
-import com.tencent.widget.Gallery;
-import java.util.List;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
 
 public class aivq
-  implements TroopAvatarWallEditCtrl.IGridItemStatusCallBack
+  extends bayv
 {
-  public aivq(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
+  public aivq(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
   
-  public void a(int paramInt)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (this.a.jdField_a_of_type_ComTencentWidgetGallery.getSelectedItemPosition() != paramInt) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setSelection(paramInt);
-    }
-    TroopAvatarWallEditActivity.a(this.a, paramInt);
+    super.onLoadFialed(paramURLDrawable, paramThrowable);
+    this.a.b();
   }
   
-  public void a(String paramString)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.jdField_a_of_type_JavaUtilList.add(paramString);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarWallGalleryAdapter.notifyDataSetChanged();
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.a.jdField_a_of_type_JavaUtilList.size() > paramInt)
-    {
-      this.a.jdField_a_of_type_JavaUtilList.remove(paramInt);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarWallGalleryAdapter.notifyDataSetChanged();
-    }
+    super.onLoadSuccessed(paramURLDrawable);
+    this.a.d();
   }
 }
 

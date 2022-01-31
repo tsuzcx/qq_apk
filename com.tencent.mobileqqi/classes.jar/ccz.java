@@ -1,20 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class ccz
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public ccz(ChatActivity paramChatActivity) {}
+  public ccz(ChatSettingActivity paramChatSettingActivity, StringBuilder paramStringBuilder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    Message localMessage = null;
+    Object localObject = localMessage;
+    if (this.jdField_a_of_type_JavaLangStringBuilder != null)
+    {
+      localObject = localMessage;
+      if (this.jdField_a_of_type_JavaLangStringBuilder.length() > 0) {
+        localObject = this.jdField_a_of_type_JavaLangStringBuilder.toString();
+      }
+    }
+    if (ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), this.jdField_a_of_type_JavaLangStringBuilder) > 0)
+    {
+      localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.a.obtainMessage();
+      localMessage.what = 18;
+      localMessage.obj = localObject;
+      localMessage.sendToTarget();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ccz
  * JD-Core Version:    0.7.0.1
  */

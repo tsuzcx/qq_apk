@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/vw" android:paddingTop="@dimen/n_" android:paddingBottom="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.FoursquareRelativeLayout android:layout_width="@dimen/a2z" android:layout_height="@dimen/a2z" android:layout_marginRight="@dimen/m1">
+        <ImageView android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/bgv" android:scaleType="center" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/eav" android:background="@drawable/bj_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/bgv" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/cm1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/asb" android:layout_centerInParent="true" />
+    </com.tencent.mm.ui.widget.FoursquareRelativeLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:ellipsize="end" android:id="@id/eaw" android:paddingRight="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/sg" android:maxLines="2" />
+        <TextView android:textSize="@dimen/nh" android:textColor="@color/s4" android:ellipsize="end" android:id="@id/eax" android:paddingRight="@dimen/dl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dl" android:text="@string/sg" android:singleLine="true" />
+    </LinearLayout>
+    <ImageView android:id="@id/eay" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/l2" android:src="@raw/radio_on" />
+</LinearLayout>

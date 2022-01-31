@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.hotchat.ui;
 
-import adpo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -11,28 +10,30 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.DisplayMetrics;
+import astg;
+import astm;
+import astp;
+import bdhj;
+import beae;
+import beag;
+import beaj;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hotchat.anim.HeartAnimator;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.mobileqq.vip.DownloaderInterface;
 import java.io.File;
 
 public class PayLikeFloatViewBuilder
-  extends BaseFloatViewBuilder
+  extends astm
 {
   private static boolean jdField_a_of_type_Boolean;
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
   
-  public PayLikeFloatViewBuilder(Context paramContext, int paramInt, HeartAnimator paramHeartAnimator)
+  public PayLikeFloatViewBuilder(Context paramContext, int paramInt, astg paramastg)
   {
-    super(paramContext, paramInt, paramHeartAnimator);
+    super(paramContext, paramInt, paramastg);
   }
   
   private static Bitmap a(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    DownloadTask localDownloadTask = null;
+    beae localbeae = null;
     String str = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MobileQQ/.nearby/nearby_pay_zan_anim.png";
     if (new File(str).exists())
     {
@@ -44,7 +45,7 @@ public class PayLikeFloatViewBuilder
     {
       try
       {
-        paramContext = ImageUtil.a(str, paramQQAppInterface);
+        paramContext = bdhj.a(str, paramQQAppInterface);
         return paramContext;
       }
       catch (OutOfMemoryError paramContext)
@@ -54,13 +55,13 @@ public class PayLikeFloatViewBuilder
           paramContext = null;
         }
       }
-      paramContext = localDownloadTask;
+      paramContext = localbeae;
     } while (jdField_a_of_type_Boolean);
     jdField_a_of_type_Boolean = true;
     paramContext = new Bundle();
-    localDownloadTask = new DownloadTask("http://pub.idqqimg.com/pc/misc/nearby_pay_zan_anim.png", new File(str + ".tmp"));
-    localDownloadTask.b = 2;
-    ((DownloaderFactory)paramQQAppInterface.getManager(46)).a(1).a(localDownloadTask, new adpo(str), paramContext);
+    localbeae = new beae("http://pub.idqqimg.com/pc/misc/nearby_pay_zan_anim.png", new File(str + ".tmp"));
+    localbeae.b = 2;
+    ((beag)paramQQAppInterface.getManager(47)).a(1).a(localbeae, new astp(str), paramContext);
     return null;
   }
   
@@ -101,7 +102,7 @@ public class PayLikeFloatViewBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder
  * JD-Core Version:    0.7.0.1
  */

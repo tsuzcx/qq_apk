@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app.automator.step;
 
 import android.os.Build.VERSION;
+import bjey;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.automator.AsyncStep;
-import cooperation.qzone.QZoneStartupMonitor;
 
 public class CheckQZoneOatFile
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
     if ((BaseApplicationImpl.sProcessId == 1) && (19 < Build.VERSION.SDK_INT)) {
-      QZoneStartupMonitor.a().c();
+      bjey.a().b();
     }
     return super.a();
   }

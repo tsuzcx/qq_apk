@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 class deu
   implements Runnable
 {
-  deu(det paramdet, boolean paramBoolean) {}
+  deu(det paramdet) {}
   
   public void run()
   {
-    PermisionPrivacyActivity.a(this.jdField_a_of_type_Det.a, this.jdField_a_of_type_Det.a.b.a(), this.jdField_a_of_type_Boolean);
+    RegisterActivity.d(this.a.a);
+    RegisterActivity.a(this.a.a, this.a.a.getString(2131559105));
   }
 }
 

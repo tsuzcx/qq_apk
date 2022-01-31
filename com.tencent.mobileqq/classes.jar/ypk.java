@@ -1,30 +1,81 @@
-import android.os.Process;
-import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
-import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine.HardwareInfo;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class ypk
-  implements Runnable
+class ypk
+  implements View.OnClickListener
 {
-  public ypk(ApolloGameStateMachine paramApolloGameStateMachine) {}
+  ypk(ypj paramypj, ssj paramssj, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ApolloGameStateMachine.HardwareInfo localHardwareInfo2 = ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo;
-    ApolloGameStateMachine.HardwareInfo localHardwareInfo1 = localHardwareInfo2;
-    if (localHardwareInfo2 == null) {
-      localHardwareInfo1 = new ApolloGameStateMachine.HardwareInfo();
+    QQAppInterface localQQAppInterface = ((BaseActivity)paramView.getContext()).app;
+    Object localObject = new Intent(paramView.getContext(), ChatActivity.class);
+    ((Intent)localObject).putExtra("uintype", 1008);
+    ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_Ssj.jdField_a_of_type_JavaLangString);
+    ((Intent)localObject).putExtra("uinname", this.jdField_a_of_type_Ssj.c);
+    ((Intent)localObject).putExtra("start_time", System.currentTimeMillis());
+    ((Intent)localObject).putExtra("red_hot_count", this.jdField_a_of_type_Ssj.b);
+    ((Intent)localObject).putExtra("INTENT_KEY_FROM", 2);
+    paramView.getContext().startActivity((Intent)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.d(ServiceFolderFollowPBHeadView.a(), 2, "onClickFeedItem->uin:" + this.jdField_a_of_type_Ssj.jdField_a_of_type_JavaLangString + ", name:" + this.jdField_a_of_type_Ssj.c);
     }
-    localHardwareInfo1.b = DeviceInfoUtil.a(Process.myPid());
-    localHardwareInfo1.c = DeviceInfoUtil.g();
-    ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo = localHardwareInfo1;
-    ApolloGameStateMachine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    paramView = "0X80067F1";
+    int i = this.jdField_a_of_type_Ssj.jdField_a_of_type_Int;
+    String str;
+    int j;
+    if (i == 1)
+    {
+      paramView = "0X80067EF";
+      long l = ssp.a().a(this.jdField_a_of_type_Ssj);
+      azqs.b(localQQAppInterface, "dc01160", "Pb_account_lifeservice", "" + this.jdField_a_of_type_Ssj.jdField_a_of_type_JavaLangString, paramView, paramView, 0, 0, "" + i, "" + l, "" + (this.jdField_a_of_type_Int + 1), "" + this.jdField_a_of_type_Ssj.b);
+      ajkm.a(localQQAppInterface, this.jdField_a_of_type_Ssj.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ssj.jdField_a_of_type_Int, this.jdField_a_of_type_Ssj.b, 2, this.jdField_a_of_type_Ssj.c);
+      localObject = "";
+      paramView = (View)localObject;
+      if (this.jdField_a_of_type_Ssj.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
+      {
+        paramView = (View)localObject;
+        if (this.jdField_a_of_type_Ssj.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.mExJsonObject != null) {
+          paramView = this.jdField_a_of_type_Ssj.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.mExJsonObject.optString("report_key_bytes_oac_msg_extend", "");
+        }
+      }
+      str = this.jdField_a_of_type_Ssj.jdField_a_of_type_JavaLangString;
+      i = this.jdField_a_of_type_Ssj.jdField_a_of_type_Int;
+      j = this.jdField_a_of_type_Ssj.b;
+      if (this.jdField_a_of_type_Ssj.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) {
+        break label569;
+      }
+    }
+    label569:
+    for (localObject = "";; localObject = this.jdField_a_of_type_Ssj.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msg)
+    {
+      amrz.b(localQQAppInterface, str, i, j, (String)localObject, paramView);
+      if (afwq.a(this.jdField_a_of_type_Ssj.jdField_a_of_type_JavaLangString)) {
+        azqs.b(localQQAppInterface, "P_CliOper", "weather_public_account", "", "weather_public_account", "brief_weather_click", 0, 0, "", "", "8.3.5", "");
+      }
+      zaj.a(this.jdField_a_of_type_Ssj.jdField_a_of_type_JavaLangString, "auth_follow", "new_s_clk", 0, 0, new String[] { "", "", this.jdField_a_of_type_Ssj.c, this.jdField_a_of_type_Ssj.jdField_a_of_type_JavaLangCharSequence.toString() });
+      syp.a(null, "SUBSCRIPT_AIO_COST");
+      return;
+      if (i != 2) {
+        break;
+      }
+      paramView = "0X80067F0";
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ypk
  * JD-Core Version:    0.7.0.1
  */

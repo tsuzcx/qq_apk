@@ -28,7 +28,7 @@ import com.tencent.mobileqq.troop.widget.NearbyTroopsExpandableListView;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.ExpandableListView;
-import gzf;
+import guy;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -282,7 +282,7 @@ public class NearbyTroopsExpandableListViewAdapter
         }
       }
       localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-      this.jdField_a_of_type_JavaUtilArrayList.add(new gzf(1, this.jdField_a_of_type_AndroidContentContext.getString(2131560291), 2130838358, j + this.jdField_a_of_type_AndroidContentContext.getString(2131560292), localStringBuilder.toString()));
+      this.jdField_a_of_type_JavaUtilArrayList.add(new guy(1, this.jdField_a_of_type_AndroidContentContext.getString(2131560291), 2130838360, j + this.jdField_a_of_type_AndroidContentContext.getString(2131560292), localStringBuilder.toString()));
     }
   }
   
@@ -336,7 +336,7 @@ public class NearbyTroopsExpandableListViewAdapter
   
   public void d(int paramInt)
   {
-    switch (((gzf)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a())
+    switch (((guy)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a())
     {
     default: 
       return;
@@ -429,7 +429,7 @@ public class NearbyTroopsExpandableListViewAdapter
         if (i == 1)
         {
           paramViewGroup = NearbyTroops.d(this.jdField_a_of_type_AndroidContentContext, paramViewGroup);
-          NearbyTroops.a(paramViewGroup, (gzf)this.jdField_a_of_type_JavaUtilArrayList.get(b(i, paramInt2)));
+          NearbyTroops.a(paramViewGroup, (guy)this.jdField_a_of_type_JavaUtilArrayList.get(b(i, paramInt2)));
           paramView = paramViewGroup;
         }
         Object localObject;

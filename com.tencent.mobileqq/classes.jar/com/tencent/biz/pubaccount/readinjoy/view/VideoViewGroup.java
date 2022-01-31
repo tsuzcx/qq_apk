@@ -34,8 +34,8 @@ public class VideoViewGroup
   private void a(AttributeSet paramAttributeSet)
   {
     paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.VideoViewGroup);
-    this.jdField_a_of_type_Float = paramAttributeSet.getFloat(0, 0.0F);
-    this.b = paramAttributeSet.getFloat(1, 0.0F);
+    this.jdField_a_of_type_Float = paramAttributeSet.getFloat(1, 0.0F);
+    this.b = paramAttributeSet.getFloat(0, 0.0F);
     paramAttributeSet.recycle();
   }
   
@@ -94,7 +94,7 @@ public class VideoViewGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.VideoViewGroup
  * JD-Core Version:    0.7.0.1
  */

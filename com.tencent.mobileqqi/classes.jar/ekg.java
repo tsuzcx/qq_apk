@@ -1,24 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.phone.BindNumberBusinessActivity;
 
 public class ekg
-  extends Handler
+  implements Runnable
 {
-  public ekg(SystemMsgListView paramSystemMsgListView) {}
+  public ekg(BindNumberBusinessActivity paramBindNumberBusinessActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    if (!this.a.isFinishing())
     {
+      long l = SystemClock.uptimeMillis();
+      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 0, 0.0F, 0.0F, 0);
+      this.a.a.dispatchTouchEvent(localMotionEvent);
+      localMotionEvent.recycle();
+      localMotionEvent = MotionEvent.obtain(l, l, 1, 0.0F, 0.0F, 0);
+      this.a.a.dispatchTouchEvent(localMotionEvent);
+      localMotionEvent.recycle();
+      this.a.a.setSelection(this.a.a.getText().toString().length());
     }
-    do
-    {
-      return;
-    } while (SystemMsgListView.a(this.a) == null);
-    this.a.j();
-    SystemMsgListView.a(this.a).notifyDataSetChanged();
   }
 }
 

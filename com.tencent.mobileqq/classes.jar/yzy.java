@@ -1,21 +1,32 @@
-import com.tencent.mobileqq.app.BabyQHandler;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
 
 public class yzy
 {
-  public int a;
-  public String a;
-  public String b;
+  private static final String jdField_a_of_type_JavaLangString = yzy.class.getName();
+  private static yzw jdField_a_of_type_Yzw;
+  private static String b;
+  private static String c;
   
-  public yzy(BabyQHandler paramBabyQHandler, int paramInt, String paramString1, String paramString2)
+  public static yzw a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    if (b == null) {
+      b = BaseApplicationImpl.getApplication().getPackageName();
+    }
+    if (c == null) {
+      c = BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath();
+    }
+    if (jdField_a_of_type_Yzw == null)
+    {
+      jdField_a_of_type_Yzw = new yzz(b, c);
+      wxe.b(jdField_a_of_type_JavaLangString, "init FileCache");
+    }
+    return jdField_a_of_type_Yzw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yzy
  * JD-Core Version:    0.7.0.1
  */

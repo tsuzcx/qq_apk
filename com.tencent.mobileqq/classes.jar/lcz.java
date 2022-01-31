@@ -1,19 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
+import android.content.Context;
+import android.util.Pair;
 import java.util.List;
+import org.apache.http.Header;
 
-public class lcz
-  implements Runnable
+abstract class lcz
+  extends lcw
 {
-  public lcz(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity, List paramList) {}
-  
-  public void run()
+  public static void a(Context paramContext, Header[] paramArrayOfHeader, List<Pair<String, String>> paramList, lcl paramlcl)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyMessagesActivity.a(this.jdField_a_of_type_JavaUtilList);
+    a().a(paramContext, "https://www.googleapis.com/language/translate/v2", paramArrayOfHeader, paramList, paramlcl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lcz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,35 @@
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
+import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicLikePopWindow;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudWrite.StDoLikeRsp;
+import qqcircle.QQCircleFeedBase.StPolyLike;
 
 public class ueo
-  implements Runnable
+  implements zac<FeedCloudWrite.StDoLikeRsp>
 {
-  public ueo(TroopTransferActivity paramTroopTransferActivity) {}
+  public ueo(QCirclePolymorphicLikePopWindow paramQCirclePolymorphicLikePopWindow, FeedCloudMeta.StFeed paramStFeed, int paramInt, QQCircleFeedBase.StPolyLike paramStPolyLike1, QQCircleFeedBase.StPolyLike paramStPolyLike2) {}
   
-  public void run()
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoLikeRsp paramStDoLikeRsp)
   {
-    try
+    QCirclePolymorphicLikePopWindow.b(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow, true);
+    if ((paramBoolean) && (paramLong == 0L))
     {
-      if (this.a.a != null) {
-        this.a.a.notifyDataSetChanged();
+      if (!QCirclePolymorphicLikePopWindow.c(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow)) {
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow.a(false, true, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Int, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike, this.b);
       }
-      return;
+      QLog.d("QCirclePolylick", 4, " success");
     }
-    catch (Throwable localThrowable) {}
+    for (;;)
+    {
+      QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow, true);
+      return;
+      QLog.d("QCirclePolylick", 4, " failed：" + paramLong);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ueo
  * JD-Core Version:    0.7.0.1
  */

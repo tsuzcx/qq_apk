@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnInfoListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class tsm
-  implements DialogInterface.OnDismissListener
+class tsm
+  implements MediaPlayer.OnInfoListener
 {
-  public tsm(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  tsm(tsl paramtsl) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    this.a.finish();
+    if (paramInt1 == 3) {
+      QLog.d("QCircleFolderSplashPart", 1, "videoView render start");
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tsm
  * JD-Core Version:    0.7.0.1
  */

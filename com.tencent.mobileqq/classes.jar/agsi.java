@@ -1,24 +1,21 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agsi
+class agsi
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public Point a;
-  public int b;
-  public Point b;
-  public int c;
-  public Point c;
-  public int d;
-  public Point d;
-  public Point e;
-  public Point f;
+  agsi(agse paramagse) {}
   
-  public agsi(SingleTouchLayout paramSingleTouchLayout) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    aepi.n = true;
+    aetu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, null);
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800ADC9", "0X800ADC9", 0, 0, "", "", "", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agsi
  * JD-Core Version:    0.7.0.1
  */

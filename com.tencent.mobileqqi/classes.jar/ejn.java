@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import com.tencent.mobileqq.newfriend.NewFriendMessage;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
 
 public class ejn
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ejn(NewFriendActivity paramNewFriendActivity, Object paramObject) {}
+  public ejn(MessageSearchDialog paramMessageSearchDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendManager", 2, "init red dot from NewFriendManager push");
-    }
-    if (NewFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendActivity) != this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendActivity.a(((NewFriendMessage)this.jdField_a_of_type_JavaLangObject).b())) {
-      NewFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendActivity);
-    }
+    this.a.a.setText("");
   }
 }
 

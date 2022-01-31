@@ -53,7 +53,7 @@ public final class ExceptionTracker
     }
     catch (Exception paramString2)
     {
-      new Handler(Looper.getMainLooper()).post(new a(paramString1, paramString2));
+      new Handler(Looper.getMainLooper()).post(new ExceptionTracker.1(paramString1, paramString2));
       throw new IllegalArgumentException(paramString2);
     }
   }

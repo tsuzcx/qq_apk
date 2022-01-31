@@ -4,13 +4,13 @@ import android.os.Build.VERSION;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import dfp;
+import czy;
 import java.util.ArrayList;
 
 public class ProfileActivity$AllInOne
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new dfp();
+  public static final Parcelable.Creator CREATOR = new czy();
   public byte a;
   public int a;
   public String a;

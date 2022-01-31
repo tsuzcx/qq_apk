@@ -1,37 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.ad.tangram.net.AdHttp.Params;
 
-public final class aaud
-  extends BroadcastReceiver
-  implements Runnable
+class aaud
+  extends AdHttp.Params
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("android.intent.action.PROXY_CHANGE".equals(paramIntent.getAction()))
-    {
-      ArkAppCenter.b("ArkApp", "receive broadcast proxy change.");
-      ThreadManager.executeOnSubThread(this);
-    }
-  }
+  public int a = -2147483648;
   
-  public void run()
+  public boolean isSuccess()
   {
-    if (AppNetConnInfo.isWifiConn())
-    {
-      ArkAppContainer.setArkHttpProxy();
-      return;
-    }
-    ArkAppContainer.clearArkHttpProxy();
+    return (super.isSuccess()) && (this.responseData != null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaud
  * JD-Core Version:    0.7.0.1
  */

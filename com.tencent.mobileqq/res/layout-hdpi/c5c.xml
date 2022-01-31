@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView android:id="@id/gwd" android:paddingLeft="@dimen/amm" android:paddingRight="@dimen/amn" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="252.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

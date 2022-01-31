@@ -1,30 +1,38 @@
-import com.tencent.open.base.http.HttpCgiAsyncTask;
-import com.tencent.open.base.http.HttpCgiAsyncTask.Callback;
-import java.util.HashMap;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.List;
 
-public class alfo
-  implements Runnable
+class alfo
+  implements akqe
 {
-  public alfo(HttpCgiAsyncTask paramHttpCgiAsyncTask, HashMap paramHashMap) {}
+  alfo(alfe paramalfe, String paramString, File paramFile, int paramInt) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString1, List<akqb> paramList, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.a != null)
+    QLog.i("ApolloPluginRscLoader", 1, "downloadApolloRes onDownLoadFinish success:" + paramBoolean);
+    paramString1 = alfe.a(this.jdField_a_of_type_JavaLangString);
+    if (TextUtils.isEmpty(paramString1))
     {
-      if (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get("ResultType")).intValue() == 1) {
-        this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.a.a((JSONObject)this.jdField_a_of_type_JavaUtilHashMap.get("ResultValue"));
-      }
-    }
-    else {
+      QLog.e("ApolloPluginRscLoader", 1, "getApolloRsc error callbackId is null resourceUrl:" + this.jdField_a_of_type_JavaLangString);
       return;
     }
-    this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.a.a((Exception)this.jdField_a_of_type_JavaUtilHashMap.get("ResultValue"));
+    if (paramBoolean)
+    {
+      if (this.jdField_a_of_type_JavaIoFile.exists())
+      {
+        this.jdField_a_of_type_Alfe.a(paramString1, 0, this.jdField_a_of_type_Int + alud.a(2131700878));
+        return;
+      }
+      this.jdField_a_of_type_Alfe.a(paramString1, 2, this.jdField_a_of_type_Int + alud.a(2131700877));
+      return;
+    }
+    this.jdField_a_of_type_Alfe.a(paramString1, 2, this.jdField_a_of_type_Int + alud.a(2131700872));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alfo
  * JD-Core Version:    0.7.0.1
  */

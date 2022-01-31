@@ -1,28 +1,50 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
 public class xql
-  implements Runnable
+  extends wos<wpn>
 {
-  public xql(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void run()
+  public xql(@Nullable wow paramwow)
   {
-    Bitmap localBitmap = null;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) {
-      localBitmap = this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.a(false);
-    }
-    if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new xse(localBitmap, this.a.e));
-    }
+    super(paramwow);
+  }
+  
+  protected JobSegment<wov, wpn> a()
+  {
+    return new wpi();
+  }
+  
+  protected JobSegment<Integer, wov> a(wou paramwou)
+  {
+    return new xqm(paramwou);
+  }
+  
+  protected wpn a()
+  {
+    woy localwoy = (woy)uwa.a(11);
+    List localList = localwoy.b();
+    wpn localwpn = new wpn(new ErrorMessage());
+    localwpn.jdField_b_of_type_JavaUtilList = localwoy.b(localList);
+    localwpn.jdField_b_of_type_Boolean = true;
+    localwpn.a = localwpn.jdField_b_of_type_JavaUtilList.isEmpty();
+    return localwpn;
+  }
+  
+  protected wpn a(ErrorMessage paramErrorMessage)
+  {
+    return new wpn(paramErrorMessage);
+  }
+  
+  protected void a(List<String> paramList, boolean paramBoolean)
+  {
+    ((woy)uwa.a(11)).b(paramList, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xql
  * JD-Core Version:    0.7.0.1
  */

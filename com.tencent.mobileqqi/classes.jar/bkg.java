@@ -1,19 +1,15 @@
-import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.PublicAccountManager.InitDoneObserver;
+import mqq.observer.BusinessObserver;
 
-public class bkg
-  implements Runnable
+class bkg
+  implements BusinessObserver
 {
-  public bkg(MultiVideoCtrlLayerUI paramMultiVideoCtrlLayerUI) {}
+  bkg(bkf parambkf) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = this.a.jdField_a_of_type_AndroidViewViewGroup.getWidth();
-    int j = this.a.b.getWidth();
-    int k = this.a.jdField_a_of_type_AndroidWidgetImageButton.getWidth();
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(i - j - k);
+    this.a.a.a();
   }
 }
 

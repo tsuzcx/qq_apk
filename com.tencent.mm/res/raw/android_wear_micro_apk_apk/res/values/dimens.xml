@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="a">2.0dip</dimen>
+    <dimen name="b">8.0dip</dimen>
+    <dimen name="c">10.0dip</dimen>
+    <item type="dimen" name="d">@dimen/b</item>
+    <item type="dimen" name="e">0.25</item>
+    <item type="dimen" name="f">0.1</item>
+    <item type="dimen" name="g">0.5</item>
+    <item type="dimen" name="h">0.5</item>
+    <item type="dimen" name="i">0.5</item>
+    <item type="dimen" name="j">0.25</item>
+    <dimen name="k">4.0dip</dimen>
+    <dimen name="l">1.0dip</dimen>
+    <dimen name="m">6.0dip</dimen>
+    <dimen name="n">104.0dip</dimen>
+    <dimen name="o">4.0dip</dimen>
+    <dimen name="p">6.0dip</dimen>
+    <dimen name="q">8.0dip</dimen>
+    <dimen name="r">4.0dip</dimen>
+    <dimen name="s">2.0dip</dimen>
+    <dimen name="t">10.0dip</dimen>
+    <dimen name="u">32.0dip</dimen>
+    <dimen name="v">22.0dip</dimen>
+    <dimen name="w">10.0dip</dimen>
+    <dimen name="x">16.0dip</dimen>
+    <dimen name="y">36.0dip</dimen>
+    <dimen name="z">10.0dip</dimen>
+    <dimen name="a0">30.0dip</dimen>
+    <dimen name="a1">16.0dip</dimen>
+    <dimen name="a2">90.0dip</dimen>
+    <dimen name="a3">108.0dip</dimen>
+    <dimen name="a4">16.0dip</dimen>
+    <dimen name="a5">1.0dip</dimen>
+    <dimen name="a6">2.0dip</dimen>
+    <dimen name="a7">3.0dip</dimen>
+    <dimen name="a8">4.0dip</dimen>
+    <dimen name="a9">5.0dip</dimen>
+    <dimen name="a_">20.0dip</dimen>
+    <dimen name="aa">32.0dip</dimen>
+    <dimen name="ab">13.0sp</dimen>
+    <dimen name="ac">12.0dip</dimen>
+    <dimen name="ad">64.0dip</dimen>
+    <dimen name="ae">64.0dip</dimen>
+    <dimen name="af">16.0dip</dimen>
+    <dimen name="ag">3.0dip</dimen>
+    <dimen name="ah">24.0dip</dimen>
+    <dimen name="ai">13.0sp</dimen>
+    <dimen name="aj">10.0dip</dimen>
+    <dimen name="ak">5.0dip</dimen>
+</resources>

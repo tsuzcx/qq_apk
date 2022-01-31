@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.msf.core.quic;
 
+import android.text.TextUtils;
 import com.tencent.mobileqq.monitor.MsfMonitorCallback;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.qphone.base.util.QLog;
@@ -27,7 +28,7 @@ public class a
   public static final int s = -103;
   public static final int t = -104;
   public static final int u = -105;
-  private static boolean x;
+  private static boolean x = false;
   private long v;
   private b w;
   
@@ -131,11 +132,12 @@ public class a
       return false;
     }
     long l1 = System.currentTimeMillis();
-    if ((MsfCore.sCore != null) && (MsfCore.sCore.mMsfMonitorCallback != null)) {
+    String str = Thread.currentThread().getName();
+    if ((MsfCore.sCore != null) && (MsfCore.sCore.mMsfMonitorCallback != null) && (!TextUtils.isEmpty(str)) && (str.contains("LightSender"))) {
       MsfCore.sCore.mMsfMonitorCallback.handleEnd(3);
     }
     paramInt2 = QuicWrapper.connect(paramLong, paramString, paramInt1, paramInt2);
-    if ((MsfCore.sCore != null) && (MsfCore.sCore.mMsfMonitorCallback != null)) {
+    if ((MsfCore.sCore != null) && (MsfCore.sCore.mMsfMonitorCallback != null) && (!TextUtils.isEmpty(str)) && (str.contains("LightSender"))) {
       MsfCore.sCore.mMsfMonitorCallback.handleStart(3);
     }
     if (QLog.isColorLevel()) {

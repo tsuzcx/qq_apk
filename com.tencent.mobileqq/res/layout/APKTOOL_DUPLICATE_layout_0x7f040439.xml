@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a08cd" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c02da" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04050a" />
-        <com.tencent.widget.SwipListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15b3" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c02da" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:cacheColorHint="@android:color/transparent" android:divider="@color/APKTOOL_DUPLICATE_color_0x7f0c0170" android:dividerHeight="0.5dip" android:headerDividersEnabled="false" />
-    </RelativeLayout>
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15b4" android:background="#77000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>

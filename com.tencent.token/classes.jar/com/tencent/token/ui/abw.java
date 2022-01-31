@@ -1,25 +1,28 @@
 package com.tencent.token.ui;
 
-import android.content.res.Resources;
-import com.tencent.token.ax;
-import com.tencent.token.ui.base.bz;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.QQUser;
 
-final class abw
-  implements bz
+class abw
+  implements View.OnClickListener
 {
-  abw(StartPwdGestureModifyActivity paramStartPwdGestureModifyActivity) {}
+  abw(abv paramabv, QQUser paramQQUser) {}
   
-  public final void a() {}
-  
-  public final void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.a.showUserDialog(2131361808, this.a.getResources().getString(2131362152), 2131361800, new aby(this));
-  }
-  
-  public final void b()
-  {
-    ax.a().a(StartPwdGestureModifyActivity.access$200(this.a));
-    this.a.showProDialog(this.a, 2131362146, new abx(this));
+    this.b.a.dismissDialog();
+    if (this.a == null)
+    {
+      paramView = new Intent(this.b.a, WtLoginAccountInput.class);
+      paramView.putExtra("page_id", 4);
+      this.b.a.startActivity(paramView);
+    }
+    while (this.a.mIsBinded) {
+      return;
+    }
+    this.b.a.gotoVerify(this.b.a);
   }
 }
 

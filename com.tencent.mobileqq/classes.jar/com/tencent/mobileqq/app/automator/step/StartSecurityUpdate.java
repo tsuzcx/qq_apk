@@ -8,7 +8,7 @@ import java.util.Timer;
 public class StartSecurityUpdate
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
     ThreadManager.getTimer().schedule(new QPSingleUpdTimerTask(), 60000L, 28800000L);
     return 7;

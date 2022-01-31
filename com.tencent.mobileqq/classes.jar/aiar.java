@@ -1,24 +1,20 @@
-import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLProgressBar;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLProgressBar.ProgressBarListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
 public class aiar
-  implements GLProgressBar.ProgressBarListener
+  implements DialogInterface.OnClickListener
 {
-  public aiar(DanceReadyFilter paramDanceReadyFilter) {}
+  public aiar(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment, acnt paramacnt) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DanceReadyFilter.a(this.a).a(DanceReadyFilter.a(this.a));
-    DanceReadyFilter.a(this.a).h_(false);
-    DanceReadyFilter.b(this.a).h_(false);
-    DanceReadyFilter.c(this.a).h_(false);
+    this.jdField_a_of_type_Acnt.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiar
  * JD-Core Version:    0.7.0.1
  */

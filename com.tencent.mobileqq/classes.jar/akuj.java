@@ -1,22 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.GridListView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
 
 public class akuj
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public akuj(GridListView paramGridListView) {}
+  public akuj(ApolloWebGameActivity paramApolloWebGameActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = ((Integer)paramView.getTag(2131369178)).intValue();
-    this.a.a.a(this.a, paramView, i, 0L);
+    ApolloWebGameActivity.a(this.a).dismiss();
+    ApolloWebGameActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akuj
  * JD-Core Version:    0.7.0.1
  */

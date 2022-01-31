@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class mobileqq_mp$ABTestControlMsgRequest
-  extends MessageMicro
+  extends MessageMicro<ABTestControlMsgRequest>
 {
   public static final int ABTEST_GUANLIZHONGXIN = 2;
   public static final int ABTEST_SUBSCRIBE = 1;
@@ -17,7 +17,7 @@ public final class mobileqq_mp$ABTestControlMsgRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mp.mobileqq_mp.ABTestControlMsgRequest
  * JD-Core Version:    0.7.0.1
  */

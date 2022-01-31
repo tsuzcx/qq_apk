@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="300" android:drawable="@drawable/bgj" />
+    <item android:duration="300" android:drawable="@drawable/bgk" />
+    <item android:duration="300" android:drawable="@drawable/bgl" />
+    <item android:duration="300" android:drawable="@drawable/bgm" />
+</animation-list>

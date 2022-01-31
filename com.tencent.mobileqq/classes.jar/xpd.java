@@ -1,34 +1,32 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.richmedia.CompoundProcessor;
-import com.tencent.mobileqq.richmedia.RichmediaClient;
-import com.tencent.mobileqq.richmedia.VideoCompoundController;
+import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
+import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
 
 public class xpd
-  implements Runnable
+  implements bhxs
 {
-  public xpd(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public xpd(ScrollFrameSelectBar paramScrollFrameSelectBar) {}
   
-  public void run()
+  public void onScrollStateChanged(int paramInt)
   {
-    Object localObject = RichmediaClient.a().a().a(this.a.a);
-    if (localObject != null) {
-      ((CompoundProcessor)localObject).a(103);
-    }
-    for (;;)
+    wxe.a("Q.qqstory.frameWidget.ScrollFrameSelectBar", "onScrollStateChanged:%s", Integer.valueOf(paramInt));
+    switch (paramInt)
     {
-      localObject = this.a.getIntent();
-      ((Intent)localObject).putExtra("flow_back", 0);
-      this.a.setResult(1001, (Intent)localObject);
-      this.a.finish();
+    default: 
+    case 4098: 
+    case 4099: 
+      do
+      {
+        return;
+      } while (!ScrollFrameSelectBar.a(this.a).isPlaying());
+      ScrollFrameSelectBar.a(this.a).c();
       return;
-      this.a.c();
     }
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xpd
  * JD-Core Version:    0.7.0.1
  */

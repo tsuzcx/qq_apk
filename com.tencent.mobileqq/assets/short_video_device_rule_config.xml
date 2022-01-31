@@ -52,5 +52,9 @@
 		,"Xiaomi;HM 1S","OPPO;R7c","vivo;vivo Y28L","BBK;vivo X5L","OPPO;R6007","vivo;vivo Y23L","OPPO;R7007","OPPO;R2017","Xiaomi;HM NOTE 1S","vivo;vivo Y27"
 		,"OPPO;R8007","vivo;vivo Y29L","Xiaomi;HM NOTE 1TD","Xiaomi;2014501","HUAWEI;HUAWEI G750-T01","samsung;SM-J3110","HUAWEI;CAM-TL00","HUAWEI;CHM-TL00","OPPO;R2017"
 		,"HUAWEI;ALE-TL00","HUAWEI;ALE-UL00","OPPO;R7005","samsung;SM-J3110","BOWAY;BOWAY_V95","samsung;SM-A7009","samsung;SM-G7200"
+	],
+
+	"qijianList":[
+		"HUAWEI;VTR-AL00"
 	]
 }

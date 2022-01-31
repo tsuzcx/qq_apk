@@ -1,26 +1,34 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.gdtad.net.GdtHttp;
-import com.tencent.gdtad.net.GdtHttp.Params;
-import java.lang.ref.WeakReference;
+import java.net.URL;
 
-public final class qla
-  implements Runnable
+public abstract interface qla
 {
-  public qla(GdtHttp.Params paramParams, WeakReference paramWeakReference) {}
+  public abstract int getCommentCount();
   
-  public void run()
-  {
-    GdtHttp.a(this.jdField_a_of_type_ComTencentGdtadNetGdtHttp$Params);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      return;
-    }
-    new Handler(Looper.getMainLooper()).post(new qlb(this));
-  }
+  public abstract String getInnerUniqueID();
+  
+  public abstract String getShareUrl();
+  
+  public abstract String getSubscribeName();
+  
+  public abstract String getSubscribeUin();
+  
+  public abstract URL getVideoCoverURL();
+  
+  public abstract URL getVideoCoverUrlWithSmartCut(boolean paramBoolean);
+  
+  public abstract URL getVideoCoverWithSmartCut(int paramInt1, int paramInt2);
+  
+  public abstract int getVideoDuration();
+  
+  public abstract int getVideoHeight();
+  
+  public abstract String getVideoVid();
+  
+  public abstract int getVideoWidth();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qla
  * JD-Core Version:    0.7.0.1
  */

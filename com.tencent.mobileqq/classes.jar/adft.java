@@ -1,20 +1,46 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.MusicFileViewer;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class adft
-  implements Runnable
+  implements Handler.Callback
 {
-  public adft(MusicFileViewer paramMusicFileViewer, String paramString) {}
+  public adft(Leba paramLeba) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    MusicFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer).setText(FileManagerUtil.a(this.jdField_a_of_type_JavaLangString, false, MusicFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer).getMeasuredWidth(), MusicFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer).getPaint(), 2));
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.lebatab.leba", 4, "callback handleMessage,what = " + paramMessage.what);
+    }
+    if ((this.a.a != null) && ("0".equals(this.a.a.getCurrentAccountUin()))) {
+      return false;
+    }
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.lebatab.leba", 2, "handler refresh leba config");
+      }
+      this.a.l();
+      continue;
+      Leba.c(this.a);
+      continue;
+      this.a.a(paramMessage);
+      continue;
+      this.a.s();
+      continue;
+      Leba.d(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adft
  * JD-Core Version:    0.7.0.1
  */

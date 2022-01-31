@@ -1,19 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
-import cooperation.weiyun.WeiyunAIOUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class aejc
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  public aejc(AIOShareActionSheet paramAIOShareActionSheet) {}
+  public aejc(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (WeiyunAIOUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, AIOShareActionSheet.a(this.a), AIOShareActionSheet.a(this.a).a(), this.a.jdField_a_of_type_MqqOsMqqHandler)) {
-      AIOShareActionSheet.a(this.a).a(false, null, false);
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.b();
     }
+    return true;
   }
 }
 

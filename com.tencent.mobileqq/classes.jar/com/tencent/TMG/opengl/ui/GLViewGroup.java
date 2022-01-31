@@ -15,15 +15,9 @@ public class GLViewGroup
   protected final Rect mBounds = new Rect();
   private ArrayList<GLView> mChildren;
   private GLView mMotionTarget;
-  private GLView.OnZOrderChangedListener mOnZOrderChangedListener = new GLView.OnZOrderChangedListener()
-  {
-    public void OnZOrderChanged(GLView paramAnonymousGLView, int paramAnonymousInt1, int paramAnonymousInt2)
-    {
-      Collections.sort(GLViewGroup.this.mChildren, GLViewGroup.this.mSortComparator);
-    }
-  };
+  private GLView.OnZOrderChangedListener mOnZOrderChangedListener = new GLViewGroup.1(this);
   protected final Rect mPaddings = new Rect();
-  private Comparator<GLView> mSortComparator = new SortComparator();
+  private Comparator<GLView> mSortComparator = new GLViewGroup.SortComparator(this);
   
   public void addView(GLView paramGLView)
   {
@@ -111,7 +105,6 @@ public class GLViewGroup
   }
   
   public GLView getChild(int paramInt)
-    throws ArrayIndexOutOfBoundsException
   {
     if ((this.mChildren == null) || (paramInt < 0) || (paramInt >= this.mChildren.size())) {
       throw new ArrayIndexOutOfBoundsException(paramInt);
@@ -281,24 +274,10 @@ public class GLViewGroup
     paramGLView.render(paramGLCanvas);
     paramGLCanvas.translate(-i, -j);
   }
-  
-  class SortComparator
-    implements Comparator<GLView>
-  {
-    SortComparator() {}
-    
-    public int compare(GLView paramGLView1, GLView paramGLView2)
-    {
-      if (paramGLView1.getZOrder() >= paramGLView2.getZOrder()) {
-        return 1;
-      }
-      return -1;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.TMG.opengl.ui.GLViewGroup
  * JD-Core Version:    0.7.0.1
  */

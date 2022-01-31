@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a285d" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020875" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="3.0dip" android:contentDescription="返回" />
-</merge>

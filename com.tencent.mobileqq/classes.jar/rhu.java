@@ -1,33 +1,18 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
-public class rhu
-  implements TextWatcher
+class rhu
+  implements bhun
 {
-  public rhu(AddAccountActivity paramAddAccountActivity) {}
+  rhu(rht paramrht) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void ap_()
   {
-    if (paramCharSequence.length() > 0) {
-      if (this.a.a != null) {
-        this.a.a.setVisibility(0);
-      }
-    }
-    while ((this.a.a == null) || (!this.a.a.isShown())) {
-      return;
-    }
-    this.a.a.setVisibility(8);
+    rhf.a(this.a.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rhu
  * JD-Core Version:    0.7.0.1
  */

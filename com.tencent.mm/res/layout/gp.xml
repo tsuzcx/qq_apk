@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/q1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:scrollbars="none" style="@style/ni">
+        <LinearLayout style="@style/l0">
+            <TextView android:gravity="center_horizontal" android:id="@id/a75" android:layout_marginBottom="@dimen/m1" android:text="@string/a89" style="@style/l1" />
+            <TextView android:gravity="center_horizontal" android:id="@id/a76" android:visibility="gone" android:layout_marginBottom="@dimen/m1" style="@style/mm" />
+            <LinearLayout android:gravity="bottom" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <EditText android:id="@id/a77" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/n_" android:layout_weight="1.0" android:inputType="phone" style="@style/ml" />
+                <Button android:id="@id/a78" android:layout_width="80.0dip" android:text="@string/a7j" style="@style/ns" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
+                <Button android:id="@id/a68" android:visibility="gone" android:layout_marginTop="10.0dip" android:text="@string/a8k" style="@style/ny" />
+                <Button android:layout_gravity="center" android:id="@id/a79" android:visibility="gone" android:text="@string/e0e" style="@style/qz" />
+            </LinearLayout>
+            <TextView android:gravity="center_horizontal" android:id="@id/a7_" android:visibility="gone" style="@style/l1" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

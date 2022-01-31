@@ -1,171 +1,312 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.device.datadef.DeviceInfo;
-import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
-import com.tencent.device.utils.SmartDeviceReport;
-import com.tencent.device.utils.SmartDeviceUtil;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.DeviceSingleStructBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.base.MD5Utils;
-import cooperation.smartdevice.SmartDevicePluginLoader;
-import cooperation.smartdevice.SmartDevicePluginProxyActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.PromoteTaskEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.PromoteTask;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPromoteTaskList;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class uvy
-  implements View.OnClickListener
+  implements uvi
 {
-  public uvy(DeviceSingleStructBuilder paramDeviceSingleStructBuilder) {}
+  public long a;
+  protected awgf a;
+  protected String a;
+  protected ConcurrentHashMap<Long, Long> a;
+  protected boolean a;
+  public String b;
+  protected ConcurrentHashMap<Long, PromoteTaskEntry> b;
   
-  public void onClick(View paramView)
+  public uvy()
   {
-    localMessageForDeviceSingleStruct = (MessageForDeviceSingleStruct)AIOUtils.a(paramView);
-    if (localMessageForDeviceSingleStruct == null) {}
-    do
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_b_of_type_JavaLangString = "";
+  }
+  
+  static <T> String a(T[] paramArrayOfT)
+  {
+    if ((paramArrayOfT == null) || (paramArrayOfT.length == 0)) {
+      return "()";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append('(');
+    int j = paramArrayOfT.length - 1;
+    int i = 0;
+    while (i < j)
     {
-      return;
-      if ((TextUtils.isEmpty(localMessageForDeviceSingleStruct.strMediaFileName)) && (localMessageForDeviceSingleStruct.nMediaChannelType == 2) && (!TextUtils.isEmpty(localMessageForDeviceSingleStruct.strMediaKey))) {
-        localMessageForDeviceSingleStruct.strMediaFileName = (MD5Utils.d(localMessageForDeviceSingleStruct.strMediaKey) + localMessageForDeviceSingleStruct.strMediaKey.substring(localMessageForDeviceSingleStruct.strMediaKey.lastIndexOf(".")));
+      localStringBuilder.append(paramArrayOfT[i]);
+      localStringBuilder.append(", ");
+      i += 1;
+    }
+    localStringBuilder.append(paramArrayOfT[j]);
+    return ')';
+  }
+  
+  public List<PromoteTaskEntry> a(String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      wxe.a("StoryPromoteTaskManager", "findPromoteTaskListByFeedIdInner(%s, %d) return null", paramString, Integer.valueOf(paramInt));
+      return Collections.emptyList();
+    }
+    List localList = this.jdField_a_of_type_Awgf.a(PromoteTaskEntry.class, PromoteTaskEntry.class.getSimpleName(), false, "feedId = ? AND limitPromoteCount > promoteCount AND (type&?) > 0", new String[] { paramString, String.valueOf(paramInt) }, null, null, "taskId", null);
+    if ((localList != null) && (localList.size() > 0))
+    {
+      paramString = (PromoteTaskEntry)localList.get(0);
+      a(localList, "findPromoteTaskListByFeedIdInner() returns");
+      return localList;
+    }
+    wxe.a("StoryPromoteTaskManager", "findPromoteTaskListByFeedIdInner(%s, %d) return null", paramString, Integer.valueOf(paramInt));
+    return Collections.emptyList();
+  }
+  
+  public List<PromoteTaskEntry> a(@NonNull List<String> paramList, int paramInt)
+  {
+    wxe.a("StoryPromoteTaskManager", "findPromoteTaskListByFeedIds(%s, %d)", paramList, Integer.valueOf(paramInt));
+    a();
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramList.size())
+    {
+      localArrayList.addAll(a((String)paramList.get(i), paramInt));
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    int j = 0;
+    this.jdField_a_of_type_Awgf = QQStoryContext.a().a().createEntityManager();
+    long l = NetConnInfoCenter.getServerTime();
+    Object localObject2 = new ArrayList();
+    this.jdField_b_of_type_JavaLangString = ((String)((uvt)uwa.a(10)).b("key_story_player_promote_url", this.jdField_b_of_type_JavaLangString));
+    wxe.a("StoryPromoteTaskManager", "onInit() mUrl = %s", this.jdField_b_of_type_JavaLangString);
+    Object localObject1 = this.jdField_a_of_type_Awgf.a(PromoteTaskEntry.class);
+    int i;
+    if (localObject1 != null)
+    {
+      i = 0;
+      while (i < ((List)localObject1).size())
+      {
+        PromoteTaskEntry localPromoteTaskEntry = (PromoteTaskEntry)((List)localObject1).get(i);
+        if (l > localPromoteTaskEntry.expireTime) {
+          ((List)localObject2).add(Long.valueOf(localPromoteTaskEntry.taskId));
+        }
+        i += 1;
       }
-      localDeviceInfo = ((SmartDeviceProxyMgr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(Long.parseLong(localMessageForDeviceSingleStruct.senderuin));
-    } while (localDeviceInfo == null);
-    if (localDeviceInfo.isAdmin == 1) {
-      i = 1;
+      a((List)localObject1, "onInit() before delete expired local entries");
+      if (!((List)localObject2).isEmpty())
+      {
+        a((List)localObject2);
+        localObject1 = this.jdField_a_of_type_Awgf.a(PromoteTaskEntry.class);
+      }
     }
     for (;;)
     {
-      try
+      a((List)localObject1, "onInit() local entries");
+      if (localObject1 != null)
       {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("title", localMessageForDeviceSingleStruct.strTitle);
-        ((JSONObject)localObject).put("digest", localMessageForDeviceSingleStruct.strDigest);
-        if (localMessageForDeviceSingleStruct.nMediaFileStatus != 5) {
-          continue;
+        i = j;
+        while (i < ((List)localObject1).size())
+        {
+          localObject2 = (PromoteTaskEntry)((List)localObject1).get(i);
+          this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(((PromoteTaskEntry)localObject2).taskId), localObject2);
+          i += 1;
         }
-        paramView = localMessageForDeviceSingleStruct.strMediaPath;
-        ((JSONObject)localObject).put("file_path_url", paramView);
-        ((JSONObject)localObject).put("thumb_path_url", localMessageForDeviceSingleStruct.strCoverPath);
-        ((JSONObject)localObject).put("guide_words", localMessageForDeviceSingleStruct.strGuideWords);
-        ((JSONObject)localObject).put("appear_time", localMessageForDeviceSingleStruct.nAppearTime);
-        ((JSONObject)localObject).put("data_type", localMessageForDeviceSingleStruct.nDataType);
-        ((JSONObject)localObject).put("face", localMessageForDeviceSingleStruct.faceRect);
-        ((JSONObject)localObject).put("cover_session_id", localMessageForDeviceSingleStruct.nCoverSessionID);
-        ((JSONObject)localObject).put("media_session_id", localMessageForDeviceSingleStruct.nMediaSessionID);
-        if (localMessageForDeviceSingleStruct.nCoverChannelType != 1) {
-          continue;
-        }
-        ((JSONObject)localObject).put("cover_key", localMessageForDeviceSingleStruct.strCoverKey);
       }
-      catch (JSONException paramView)
+      if ((a()) && (localObject1 != null))
       {
-        long l;
-        int j;
-        paramView.printStackTrace();
-        paramView = null;
-        continue;
-        ((JSONObject)localObject).put("cover_url", localMessageForDeviceSingleStruct.strCoverKey);
-        continue;
-        if (localMessageForDeviceSingleStruct.nMediaChannelType != 3) {
-          continue;
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (PromoteTaskEntry)((Iterator)localObject1).next();
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(((PromoteTaskEntry)localObject2).taskId), Long.valueOf(((PromoteTaskEntry)localObject2).promoteCount));
         }
-        ((JSONObject)localObject).put("media_mini", localMessageForDeviceSingleStruct.strMediaKey);
-        ((JSONObject)localObject).put("fkey2", localMessageForDeviceSingleStruct.strCoverKey2);
-        continue;
-        ((JSONObject)localObject).put("media_url", localMessageForDeviceSingleStruct.strMediaKey);
-        continue;
-        Object localObject = JumpParser.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, localMessageForDeviceSingleStruct.url);
-        if ((localObject == null) || (!"openLightApp".equals(((JumpAction)localObject).b)) || (!"url".equals(((JumpAction)localObject).c))) {
-          continue;
-        }
-        Bundle localBundle = new Bundle();
-        localBundle.putString("param_meta_data", paramView);
-        SmartDeviceUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, localDeviceInfo, ((JumpAction)localObject).a("url_prefix"), localBundle);
-        continue;
-        if ((i == 0) || (TextUtils.isEmpty(localMessageForDeviceSingleStruct.faceRect)) || (!DeviceSingleStructBuilder.a(this.a, localMessageForDeviceSingleStruct.faceRect)) || (TextUtils.isEmpty(localMessageForDeviceSingleStruct.strCoverPath))) {
-          continue;
-        }
-        localObject = new Intent();
-        ((Intent)localObject).putExtra("device_id", localDeviceInfo.din + "");
-        if (localMessageForDeviceSingleStruct.nMediaFileStatus != 5) {
-          continue;
-        }
-        paramView = localMessageForDeviceSingleStruct.strMediaPath;
-        ((Intent)localObject).putExtra("filepath", paramView);
-        ((Intent)localObject).putExtra("rect", localMessageForDeviceSingleStruct.faceRect);
-        ((Intent)localObject).putExtra("from", 0);
-        SmartDevicePluginLoader.a().a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (Intent)localObject, "com.tencent.device.face.FaceRegisterActivity", -1, null, SmartDevicePluginProxyActivity.class);
-        continue;
-        paramView = localMessageForDeviceSingleStruct.strCoverPath;
-        continue;
-        if ((FileUtils.b(localMessageForDeviceSingleStruct.strMediaPath)) || (!NetworkUtil.b(CommonDataAdapter.a().a()))) {
-          continue;
-        }
-        paramView = this.a.jdField_a_of_type_AndroidContentContext.getString(2131428241);
-        localObject = this.a.jdField_a_of_type_AndroidContentContext.getString(2131428239);
-        FMDialogUtil.a(this.a.jdField_a_of_type_AndroidContentContext, paramView, (CharSequence)localObject, new uvz(this, localMessageForDeviceSingleStruct));
-        continue;
-        DeviceSingleStructBuilder.a(this.a, localMessageForDeviceSingleStruct);
-        continue;
-        i = 3;
-        continue;
+        wxe.a("StoryPromoteTaskManager", "onInit() update memory count from DB; %s", this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
       }
-      if (localMessageForDeviceSingleStruct.nMediaChannelType != 1) {
-        continue;
-      }
-      ((JSONObject)localObject).put("media_key", localMessageForDeviceSingleStruct.strMediaKey);
-      ((JSONObject)localObject).put("jump_url", localMessageForDeviceSingleStruct.url);
-      ((JSONObject)localObject).put("msg_time", localMessageForDeviceSingleStruct.time);
-      ((JSONObject)localObject).put("ext", localMessageForDeviceSingleStruct.ext);
-      paramView = new JSONObject();
-      paramView.put("struct_msg", localObject);
-      paramView = paramView.toString();
-      if (TextUtils.isEmpty(localMessageForDeviceSingleStruct.url)) {
-        continue;
-      }
-      if ((!localMessageForDeviceSingleStruct.url.startsWith("http://")) && (!localMessageForDeviceSingleStruct.url.startsWith("https://"))) {
-        continue;
-      }
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("url", localMessageForDeviceSingleStruct.url);
-      ((Intent)localObject).putExtra("device_info", localDeviceInfo);
-      ((Intent)localObject).putExtra("param_meta_data", paramView);
-      SmartDevicePluginLoader.a().a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (Intent)localObject, "com.tencent.device.lightapp.DeviceWebViewActivity", -1, null, SmartDevicePluginProxyActivity.class);
-      if (localMessageForDeviceSingleStruct.nDataType != 2) {
-        continue;
-      }
-      i = 4;
-      l = Long.parseLong(localMessageForDeviceSingleStruct.senderuin);
-      j = localDeviceInfo.productId;
-      SmartDeviceReport.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l, "Usr_AIO_ReceiveMsg_Click", i, 0, j);
       return;
-      i = 0;
-      continue;
-      paramView = localMessageForDeviceSingleStruct.strCoverPath;
-      continue;
-      if (localMessageForDeviceSingleStruct.nCoverChannelType != 3) {
-        continue;
-      }
-      ((JSONObject)localObject).put("cover_mini", localMessageForDeviceSingleStruct.strCoverKey);
-      ((JSONObject)localObject).put("ckey2", localMessageForDeviceSingleStruct.strCoverKey2);
     }
+  }
+  
+  void a(String paramString) {}
+  
+  void a(List<PromoteTaskEntry> paramList, String paramString) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    long l = NetConnInfoCenter.getServerTime();
+    if (this.jdField_a_of_type_Long > l)
+    {
+      wxe.a("StoryPromoteTaskManager", "refreshPromoteTask, time not expire now: %s(%d), expire: %s(%d), won't request!", xqz.a(l), Long.valueOf(l), xqz.a(this.jdField_a_of_type_Long), Long.valueOf(this.jdField_a_of_type_Long));
+      return;
+    }
+    wxe.a("StoryPromoteTaskManager", "refreshPromoteTask(clear=%b), time expire, will request new list, now: %d, expire: %d", Boolean.valueOf(paramBoolean), Long.valueOf(l), Long.valueOf(this.jdField_a_of_type_Long));
+    if (paramBoolean) {
+      this.jdField_a_of_type_JavaLangString = "";
+    }
+    vgt localvgt = new vgt(this.jdField_a_of_type_JavaLangString);
+    urp.a().a(localvgt, new uvz(this));
+  }
+  
+  public boolean a()
+  {
+    Object localObject = (uvt)uwa.a(10);
+    String str = xqz.a();
+    if (TextUtils.equals((String)((uvt)localObject).b("key_story_promote_task_date", ""), str))
+    {
+      wxe.a("StoryPromoteTaskManager", "ensureCountValidate() date is %s, keep last promoteCount", str);
+      return true;
+    }
+    wxe.a("StoryPromoteTaskManager", "ensureCountValidate() date is %s new date, so mTaskIdCounts should be empty, taskIdCounts=%s", str, this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+    ((uvt)localObject).b("key_story_promote_task_date", str);
+    localObject = "update " + PromoteTaskEntry.class.getSimpleName() + " set promoteCount = 0";
+    this.jdField_a_of_type_Awgf.b((String)localObject);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    wxe.a("StoryPromoteTaskManager", "ensureCountValidate() exec sql: taskEntry updated sql=%s", localObject);
+    a("ensureCountValidate() after execSQL()");
+    return false;
+  }
+  
+  public boolean a(long paramLong)
+  {
+    wxe.a("StoryPromoteTaskManager", "markTaskIdPromoted(%s)", Long.valueOf(paramLong));
+    return b((PromoteTaskEntry)this.jdField_a_of_type_Awgf.a(PromoteTaskEntry.class, "taskId = ?", new String[] { String.valueOf(paramLong) }));
+  }
+  
+  public boolean a(PromoteTaskEntry paramPromoteTaskEntry)
+  {
+    boolean bool = true;
+    if (paramPromoteTaskEntry.getStatus() == 1000)
+    {
+      this.jdField_a_of_type_Awgf.b(paramPromoteTaskEntry);
+      if (paramPromoteTaskEntry.getStatus() != 1001) {}
+    }
+    for (;;)
+    {
+      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramPromoteTaskEntry.taskId), paramPromoteTaskEntry);
+      wxe.a("StoryPromoteTaskManager", "updateEntry %s, return %b", paramPromoteTaskEntry, Boolean.valueOf(bool));
+      return bool;
+      bool = false;
+      continue;
+      if ((paramPromoteTaskEntry.getStatus() == 1001) || (paramPromoteTaskEntry.getStatus() == 1002))
+      {
+        bool = this.jdField_a_of_type_Awgf.a(paramPromoteTaskEntry);
+      }
+      else
+      {
+        wxe.e("StoryPromoteTaskManager", "updateEntry error: entry status unknown: %d", new Object[] { Integer.valueOf(paramPromoteTaskEntry.getStatus()) });
+        bool = false;
+      }
+    }
+  }
+  
+  public boolean a(qqstory_service.RspGetPromoteTaskList paramRspGetPromoteTaskList)
+  {
+    ArrayList localArrayList = new ArrayList(this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.keySet());
+    paramRspGetPromoteTaskList = paramRspGetPromoteTaskList.promote_tasks.get();
+    int i = 0;
+    if (i < paramRspGetPromoteTaskList.size())
+    {
+      Object localObject = uxg.a((qqstory_service.PromoteTask)paramRspGetPromoteTaskList.get(i));
+      Long localLong = (Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(((uxg)localObject).jdField_a_of_type_Long));
+      if (localLong != null) {}
+      for (((uxg)localObject).e = localLong.longValue();; ((uxg)localObject).e = 0L)
+      {
+        localArrayList.remove(Long.valueOf(((uxg)localObject).jdField_a_of_type_Long));
+        localObject = ((uxg)localObject).a();
+        a((PromoteTaskEntry)localObject);
+        wxe.a("StoryPromoteTaskManager", "overwriteEntries() [%d] taskEntry updated %s", Integer.valueOf(i), localObject);
+        i += 1;
+        break;
+      }
+    }
+    if (!localArrayList.isEmpty())
+    {
+      wxe.b("StoryPromoteTaskManager", "overwriteEntries() taskIds not empty, will delete it");
+      a(localArrayList);
+    }
+    return true;
+  }
+  
+  public boolean a(List<Long> paramList)
+  {
+    wxe.a("StoryPromoteTaskManager", "deleteListOfTasks(%s)", paramList);
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      Object localObject = paramList.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        long l = ((Long)((Iterator)localObject).next()).longValue();
+        this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(l));
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(l));
+      }
+      localObject = new Long[paramList.size()];
+      paramList.toArray((Object[])localObject);
+      paramList = a((Object[])localObject);
+      paramList = "delete from " + PromoteTaskEntry.class.getSimpleName() + " where taskId in " + paramList;
+      wxe.a("StoryPromoteTaskManager", "deleteListOfTasks() exec sql: taskEntry updated %s", paramList);
+      return this.jdField_a_of_type_Awgf.b(paramList);
+    }
+    return false;
+  }
+  
+  public List<PromoteTaskEntry> b(String paramString, int paramInt)
+  {
+    wxe.a("StoryPromoteTaskManager", "findPromoteTaskByUnionId(%s, %d)", paramString, Integer.valueOf(paramInt));
+    a();
+    List localList = this.jdField_a_of_type_Awgf.a(PromoteTaskEntry.class, PromoteTaskEntry.class.getSimpleName(), false, "unionId = ? AND limitPromoteCount > promoteCount AND (type&?) > 0", new String[] { paramString, String.valueOf(paramInt) }, null, null, "taskId", null);
+    if ((localList != null) && (localList.size() > 0))
+    {
+      paramString = (PromoteTaskEntry)localList.get(0);
+      a(localList, "findPromoteTaskListByUnionId() returns");
+      return localList;
+    }
+    wxe.a("StoryPromoteTaskManager", "findPromoteTaskListByUnionId(%s, %d) return null", paramString, Integer.valueOf(paramInt));
+    return Collections.emptyList();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Awgf.a();
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public boolean b(PromoteTaskEntry paramPromoteTaskEntry)
+  {
+    wxe.a("StoryPromoteTaskManager", "markEntryPromoted(%s)", paramPromoteTaskEntry);
+    if (paramPromoteTaskEntry == null)
+    {
+      wxe.b("StoryPromoteTaskManager", "markEntryPromoted entry is null!");
+      return false;
+    }
+    if (paramPromoteTaskEntry.promoteCount >= paramPromoteTaskEntry.limitPromoteCount)
+    {
+      wxe.e("StoryPromoteTaskManager", "Error: entry.promoteCount >= entry.limitPromoteCount");
+      return false;
+    }
+    paramPromoteTaskEntry.promoteCount += 1L;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramPromoteTaskEntry.taskId), Long.valueOf(paramPromoteTaskEntry.promoteCount));
+    a(paramPromoteTaskEntry);
+    return true;
+  }
+  
+  public void c()
+  {
+    ((uvt)uwa.a(10)).b("key_story_promote_task_date", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uvy
  * JD-Core Version:    0.7.0.1
  */

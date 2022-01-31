@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ilive_user_basic_info$MedalInfo
-  extends MessageMicro
+  extends MessageMicro<MedalInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field create_time = PBField.initUInt64(0L);
@@ -45,7 +45,7 @@ public final class ilive_user_basic_info$MedalInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ilive_user_basic_info.ilive_user_basic_info.MedalInfo
  * JD-Core Version:    0.7.0.1
  */

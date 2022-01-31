@@ -1,40 +1,29 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.AnimConfig;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.album.view.AlbumImageView;
 
-public class ukq
-  implements Runnable
+class ukq
+  implements Animation.AnimationListener
 {
-  public ukq(CustomizeStrategyFactory paramCustomizeStrategyFactory, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  ukq(ukp paramukp) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    try
+    if (ukl.a(this.a.a) == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = QWalletTools.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$AnimConfig.a);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.c = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "preProcessAnim-preProcess finished");
-      }
-      CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("CustomizeStrategyFactory", 2, "preProcessAnim-throw:" + localThrowable);
-        }
-      }
+      this.a.a.b.setVisibility(8);
+      ukl.a(this.a.a).sendEmptyMessage(1);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ukq
  * JD-Core Version:    0.7.0.1
  */

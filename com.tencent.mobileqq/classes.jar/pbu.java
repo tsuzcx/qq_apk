@@ -1,182 +1,50 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.common.util.Util;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.pubaccount.util.OfflineUpdateStatus;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.QQBrowserBaseActivityInterface;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.gif.GifView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class pbu
-  extends Handler
+  implements URLDrawable.DownloadListener
 {
-  public pbu(OfflinePlugin paramOfflinePlugin, Looper paramLooper)
+  public pbu(GifView paramGifView, AtomicLong paramAtomicLong1, AtomicLong paramAtomicLong2, long paramLong, AtomicLong paramAtomicLong3, AtomicLong paramAtomicLong4, URLDrawable paramURLDrawable) {}
+  
+  public void onFileDownloadFailed(int paramInt)
   {
-    super(paramLooper);
+    if (GifView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView))
+    {
+      if (!GifView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView)) {
+        break label104;
+      }
+      GifView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView);
+    }
+    for (;;)
+    {
+      QLog.d("gifvideo.GifView", 1, "onLoadFialed! mIsBigImg=" + GifView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView) + " w=" + GifView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView) + " h=" + GifView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView));
+      GifView localGifView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView;
+      localGifView.a += 1;
+      return;
+      label104:
+      this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onFileDownloadStarted()
   {
-    if (this.a.jdField_a_of_type_Boolean) {}
-    label32:
-    Object localObject2;
-    label468:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            Object localObject1;
-            do
-            {
-              return;
-              switch (paramMessage.what)
-              {
-              default: 
-                if (paramMessage.arg1 != 1) {
-                  break label468;
-                }
-                this.a.b = paramMessage.arg2;
-                localObject1 = (String)paramMessage.obj;
-                localObject2 = this.a.mRuntime.a();
-              }
-            } while (localObject2 == null);
-            if (this.a.jdField_a_of_type_Long == -1L) {
-              this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-            }
-            ((CustomWebView)localObject2).a((String)localObject1);
-            ((CustomWebView)localObject2).requestFocus();
-            if (QLog.isColorLevel()) {
-              QLog.i("OfflinePluginQQ", 2, "mCheckupHandler loadUrl start \n" + (String)localObject1);
-            }
-            this.a.a((String)localObject1);
-            for (;;)
-            {
-              for (;;)
-              {
-                localObject1 = this.a.mRuntime.a();
-                localObject2 = this.a.mRuntime.a(this.a.mRuntime.a());
-                if ((localObject2 == null) || (!(localObject2 instanceof WebUiUtils.QQBrowserBaseActivityInterface))) {
-                  break;
-                }
-                if (paramMessage.arg1 != 4) {
-                  break label535;
-                }
-                if ((OfflinePlugin.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(OfflinePlugin.a(this.a)))) {
-                  break;
-                }
-                localObject1 = (OfflineUpdateStatus)OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.get(OfflinePlugin.a(this.a));
-                if (this.a.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-                  this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramMessage.arg2);
-                }
-                if (this.a.jdField_a_of_type_AndroidWidgetTextView == null) {
-                  break;
-                }
-                this.a.jdField_a_of_type_AndroidWidgetTextView.setText(((OfflineUpdateStatus)localObject1).e + paramMessage.arg2 + "%");
-                return;
-                try
-                {
-                  localObject1 = (String)((Object[])(Object[])paramMessage.obj)[1];
-                  localObject2 = new JSONObject();
-                  ((JSONObject)localObject2).put("retcode", 0);
-                  ((JSONObject)localObject2).put("data", Util.a((String)localObject1));
-                  this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject2).toString() });
-                }
-                catch (Exception localException1)
-                {
-                  try
-                  {
-                    JSONObject localJSONObject1 = new JSONObject();
-                    localJSONObject1.put("retcode", -1);
-                    localJSONObject1.put("msg", "error");
-                    this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { localJSONObject1.toString() });
-                  }
-                  catch (JSONException localJSONException) {}
-                }
-              }
-              if (!QLog.isColorLevel()) {
-                break label32;
-              }
-              QLog.d("OfflinePluginQQ", 2, "OfflinePlugin, batchCheckUpdate, JSONException :" + localJSONException);
-              break label32;
-              if (paramMessage.arg1 == 2)
-              {
-                if (QLog.isDevelopLevel()) {
-                  QLog.i("OfflinePluginQQ", 4, "checkOfflineUpBack refresh current url");
-                }
-                this.a.c();
-              }
-              else if (paramMessage.arg1 == 3)
-              {
-                try
-                {
-                  JSONObject localJSONObject2 = (JSONObject)paramMessage.obj;
-                  this.a.a(localJSONObject2);
-                }
-                catch (Exception localException2)
-                {
-                  localException2.printStackTrace();
-                }
-              }
-            }
-          } while ((paramMessage.arg1 != 5) || (OfflinePlugin.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(OfflinePlugin.a(this.a))));
-          localObject2 = (OfflineUpdateStatus)OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.get(OfflinePlugin.a(this.a));
-        } while (localObject2 == null);
-        if (paramMessage.arg2 != 0) {
-          break;
-        }
-        ((OfflineUpdateStatus)localObject2).b(3);
-      } while (localException2 == null);
-      paramMessage = localException2.getResources().getDrawable(2130838572);
-      paramMessage.setBounds(0, 0, 40, 40);
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramMessage, null, null, null);
-      }
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(((OfflineUpdateStatus)localObject2).d);
-      }
-      if (this.a.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      }
-    } while (this.a.jdField_a_of_type_AndroidWidgetLinearLayout == null);
-    label535:
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    return;
-    if ((paramMessage.arg2 == 5) || (paramMessage.arg2 == 7))
-    {
-      if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      }
-      ((OfflineUpdateStatus)localObject2).b(4);
-      return;
-    }
-    QRUtils.a(1, 2131430202);
-    if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    }
-    ((OfflineUpdateStatus)localObject2).b(4);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(System.currentTimeMillis());
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    this.b.set(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    this.c.set(System.currentTimeMillis() - this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get());
+    this.d.set(paramLong);
+    QLog.d("gifvideo.GifView", 1, "gif download success");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pbu
  * JD-Core Version:    0.7.0.1
  */

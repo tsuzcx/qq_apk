@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class BnrReport$ExtInfo
-  extends MessageMicro
+  extends MessageMicro<ExtInfo>
 {
   public static final int APP_VER_FIELD_NUMBER = 1;
   public static final int SYS_VER_FIELD_NUMBER = 2;
@@ -16,7 +16,7 @@ public final class BnrReport$ExtInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.bnr.BnrReport.ExtInfo
  * JD-Core Version:    0.7.0.1
  */

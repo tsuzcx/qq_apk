@@ -1,25 +1,15 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
 public class adne
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  public adne(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public adne(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramView = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, QQBrowserActivity.class);
-    paramView.putExtra("url", "http://nearby.qq.com/nearby-index/mine.html?_bid=3027&_wv=16777218");
-    this.a.getActivity().startActivity(paramView);
-    NearbyUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "my_click", 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a().a(42);
+    this.a.finish();
   }
 }
 

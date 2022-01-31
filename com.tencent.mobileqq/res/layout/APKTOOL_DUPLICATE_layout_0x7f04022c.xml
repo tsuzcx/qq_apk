@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dba" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="加载失败，点击重试" android:drawableTop="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02177c" android:drawablePadding="15.0dip" />
-    <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03a8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="该动态已被删除" android:drawableTop="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02170c" android:drawablePadding="15.0dip" />
-</FrameLayout>

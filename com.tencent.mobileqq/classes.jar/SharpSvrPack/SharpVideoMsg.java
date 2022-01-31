@@ -11,7 +11,7 @@ public final class SharpVideoMsg
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList cache_to_uin;
+  static ArrayList<Long> cache_to_uin;
   static byte[] cache_video_buff;
   public short call_type;
   public int client_state;
@@ -20,7 +20,7 @@ public final class SharpVideoMsg
   public long msg_time;
   public long msg_type;
   public long msg_uid;
-  public ArrayList to_uin;
+  public ArrayList<Long> to_uin;
   public byte type;
   public byte ver;
   public byte[] video_buff;
@@ -37,7 +37,7 @@ public final class SharpVideoMsg
   
   public SharpVideoMsg() {}
   
-  public SharpVideoMsg(byte paramByte1, byte paramByte2, long paramLong1, ArrayList paramArrayList, byte[] paramArrayOfByte, long paramLong2, long paramLong3, long paramLong4, long paramLong5, short paramShort, int paramInt)
+  public SharpVideoMsg(byte paramByte1, byte paramByte2, long paramLong1, ArrayList<Long> paramArrayList, byte[] paramArrayOfByte, long paramLong2, long paramLong3, long paramLong4, long paramLong5, short paramShort, int paramInt)
   {
     this.ver = paramByte1;
     this.type = paramByte2;
@@ -156,7 +156,7 @@ public final class SharpVideoMsg
     return this.msg_uid;
   }
   
-  public ArrayList getTo_uin()
+  public ArrayList<Long> getTo_uin()
   {
     return this.to_uin;
   }
@@ -249,7 +249,7 @@ public final class SharpVideoMsg
     this.msg_uid = paramLong;
   }
   
-  public void setTo_uin(ArrayList paramArrayList)
+  public void setTo_uin(ArrayList<Long> paramArrayList)
   {
     this.to_uin = paramArrayList;
   }

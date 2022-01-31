@@ -1,125 +1,125 @@
 package com.tencent.mobileqq.shortvideo.dancemachine.tempDir;
 
 import android.opengl.GLES20;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
 import com.tencent.mobileqq.shortvideo.dancemachine.utils.PoseDataConvert;
 import com.tencent.mobileqq.shortvideo.dancemachine.utils.Vec3f;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HumanPoseFilter
 {
-  public static boolean a;
-  private float jdField_a_of_type_Float;
-  private DebugModeLine jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineTempDirDebugModeLine = null;
-  private List jdField_a_of_type_JavaUtilList = new ArrayList(18);
-  private float jdField_b_of_type_Float;
-  private List jdField_b_of_type_JavaUtilList = new ArrayList(18);
-  
-  static
-  {
-    jdField_a_of_type_Boolean = true;
-  }
+  public static boolean ENABLE_DEBUG_MODE = true;
+  private List<Vec3f> cachePoints = new ArrayList(18);
+  private DebugModeLine debugMode = null;
+  private List<Vec3f> facePoints = new ArrayList(18);
+  private float poseHeight;
+  private float poseWidth;
   
   public HumanPoseFilter(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
+    this.poseWidth = paramFloat1;
+    this.poseHeight = paramFloat2;
   }
   
-  public void a()
+  public void drawFrame(RenderBuffer paramRenderBuffer)
   {
-    if (jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineTempDirDebugModeLine = new DebugModeLine();
-    }
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-  }
-  
-  public void a(RenderBuffer paramRenderBuffer)
-  {
-    int i = paramRenderBuffer.b();
-    int j = paramRenderBuffer.c();
-    if (jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineTempDirDebugModeLine.a(i, j);
-    }
-  }
-  
-  public void a(RenderBuffer paramRenderBuffer, float[] paramArrayOfFloat)
-  {
-    float[] arrayOfFloat = PoseDataConvert.a(paramArrayOfFloat, paramRenderBuffer.b(), paramRenderBuffer.c(), this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
-    int j = arrayOfFloat.length / 3;
-    if (this.jdField_a_of_type_JavaUtilList.size() < j)
+    paramRenderBuffer.bind();
+    GLES20.glEnable(2884);
+    GLES20.glFrontFace(2305);
+    GLES20.glCullFace(1029);
+    GLES20.glEnable(3042);
+    GLES20.glBlendFunc(770, 771);
+    if (ENABLE_DEBUG_MODE)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      GLES20.glFinish();
+      this.debugMode.draw();
+    }
+    GLES20.glDisable(3042);
+    GLES20.glDisable(2884);
+    paramRenderBuffer.unbind();
+  }
+  
+  public List<Vec3f> getPosePoints()
+  {
+    return this.cachePoints;
+  }
+  
+  public void initHumanFilter()
+  {
+    if (ENABLE_DEBUG_MODE) {
+      this.debugMode = new DebugModeLine();
+    }
+  }
+  
+  public void updateFboSize(RenderBuffer paramRenderBuffer)
+  {
+    int i = paramRenderBuffer.getWidth();
+    int j = paramRenderBuffer.getHeight();
+    if (ENABLE_DEBUG_MODE) {
+      this.debugMode.updateFboSize(i, j);
+    }
+  }
+  
+  public void updateParams(RenderBuffer paramRenderBuffer, float[] paramArrayOfFloat)
+  {
+    float[] arrayOfFloat = PoseDataConvert.convertPointsToFrameCoordinate(paramArrayOfFloat, paramRenderBuffer.getWidth(), paramRenderBuffer.getHeight(), this.poseWidth, this.poseHeight);
+    int j = arrayOfFloat.length / 3;
+    if (this.facePoints.size() < j)
+    {
+      this.facePoints.clear();
       i = 0;
       while (i < j)
       {
-        this.jdField_a_of_type_JavaUtilList.add(new Vec3f());
+        this.facePoints.add(new Vec3f());
         i += 1;
       }
     }
-    if (this.jdField_b_of_type_JavaUtilList.size() < j)
+    if (this.cachePoints.size() < j)
     {
-      this.jdField_b_of_type_JavaUtilList.clear();
+      this.cachePoints.clear();
       i = 0;
       while (i < j)
       {
-        this.jdField_b_of_type_JavaUtilList.add(new Vec3f());
+        this.cachePoints.add(new Vec3f());
         i += 1;
       }
     }
     int i = 0;
     while (i < j)
     {
-      paramArrayOfFloat = (Vec3f)this.jdField_a_of_type_JavaUtilList.get(i);
+      paramArrayOfFloat = (Vec3f)this.facePoints.get(i);
       paramRenderBuffer = paramArrayOfFloat;
       if (paramArrayOfFloat == null)
       {
         paramRenderBuffer = new Vec3f();
-        this.jdField_a_of_type_JavaUtilList.set(i, paramRenderBuffer);
+        this.facePoints.set(i, paramRenderBuffer);
       }
-      paramRenderBuffer.a(arrayOfFloat[(i * 3)], arrayOfFloat[(i * 3 + 1)], arrayOfFloat[(i * 3 + 2)]);
-      paramArrayOfFloat = (Vec3f)this.jdField_b_of_type_JavaUtilList.get(i);
+      paramRenderBuffer.set(arrayOfFloat[(i * 3)], arrayOfFloat[(i * 3 + 1)], arrayOfFloat[(i * 3 + 2)]);
+      paramArrayOfFloat = (Vec3f)this.cachePoints.get(i);
       paramRenderBuffer = paramArrayOfFloat;
       if (paramArrayOfFloat == null)
       {
         paramRenderBuffer = new Vec3f();
-        this.jdField_b_of_type_JavaUtilList.set(i, paramRenderBuffer);
+        this.cachePoints.set(i, paramRenderBuffer);
       }
-      paramRenderBuffer.a(arrayOfFloat[(i * 3)], arrayOfFloat[(i * 3 + 1)], arrayOfFloat[(i * 3 + 2)]);
+      paramRenderBuffer.set(arrayOfFloat[(i * 3)], arrayOfFloat[(i * 3 + 1)], arrayOfFloat[(i * 3 + 2)]);
       i += 1;
     }
-    if (((((Vec3f)this.jdField_a_of_type_JavaUtilList.get(0)).c > 0.0F) || (((Vec3f)this.jdField_a_of_type_JavaUtilList.get(14)).c <= 0.0F) || (((Vec3f)this.jdField_a_of_type_JavaUtilList.get(15)).c > 0.0F)) || (jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineTempDirDebugModeLine.a(this.jdField_b_of_type_JavaUtilList);
+    if (((((Vec3f)this.facePoints.get(0)).z > 0.0F) || (((Vec3f)this.facePoints.get(14)).z <= 0.0F) || (((Vec3f)this.facePoints.get(15)).z > 0.0F)) || (ENABLE_DEBUG_MODE)) {
+      this.debugMode.updateParams(this.cachePoints);
     }
   }
   
-  public void b(RenderBuffer paramRenderBuffer)
+  public void updatePoseSize(float paramFloat1, float paramFloat2)
   {
-    paramRenderBuffer.b();
-    GLES20.glEnable(2884);
-    GLES20.glFrontFace(2305);
-    GLES20.glCullFace(1029);
-    GLES20.glEnable(3042);
-    GLES20.glBlendFunc(770, 771);
-    if (jdField_a_of_type_Boolean)
-    {
-      GLES20.glFinish();
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineTempDirDebugModeLine.a();
-    }
-    GLES20.glDisable(3042);
-    GLES20.glDisable(2884);
-    paramRenderBuffer.c();
+    this.poseWidth = paramFloat1;
+    this.poseHeight = paramFloat2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.tempDir.HumanPoseFilter
  * JD-Core Version:    0.7.0.1
  */

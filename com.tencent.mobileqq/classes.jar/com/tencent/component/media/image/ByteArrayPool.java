@@ -1,10 +1,9 @@
 package com.tencent.component.media.image;
 
 import java.util.LinkedList;
-import pge;
 
 public class ByteArrayPool
-  extends BucketPool
+  extends BucketPool<byte[]>
 {
   public ByteArrayPool(PoolParams paramPoolParams)
   {
@@ -16,14 +15,14 @@ public class ByteArrayPool
     return new byte[paramInt];
   }
   
-  protected pge getBuck(PoolParams.BucketParams paramBucketParams)
+  protected BucketPool.Bucket getBuck(PoolParams.BucketParams paramBucketParams)
   {
-    pge localpge = new pge(this);
-    localpge.jdField_a_of_type_Int = paramBucketParams.arraysSize;
-    localpge.b = paramBucketParams.bucketMinSize;
-    localpge.c = localpge.jdField_a_of_type_Int;
-    localpge.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-    return localpge;
+    BucketPool.Bucket localBucket = new BucketPool.Bucket(this);
+    localBucket.itemSize = paramBucketParams.arraysSize;
+    localBucket.minSize = paramBucketParams.bucketMinSize;
+    localBucket.allocCount = localBucket.itemSize;
+    localBucket.dataList = new LinkedList();
+    return localBucket;
   }
   
   protected int getSizeForData(byte[] paramArrayOfByte)
@@ -34,16 +33,16 @@ public class ByteArrayPool
     return 0;
   }
   
-  protected int handleBucketListEmpty(pge parampge)
+  protected int handleBucketListEmpty(BucketPool<byte[]>.Bucket<byte[]> paramBucketPool)
   {
-    return parampge.b;
+    return paramBucketPool.minSize;
   }
   
-  protected boolean handleRecyleData(pge parampge, byte[] paramArrayOfByte)
+  protected boolean handleRecyleData(BucketPool<byte[]>.Bucket<byte[]> paramBucketPool, byte[] paramArrayOfByte)
   {
-    if (parampge.jdField_a_of_type_JavaUtilLinkedList.size() < parampge.jdField_a_of_type_Int)
+    if (paramBucketPool.dataList.size() < paramBucketPool.itemSize)
     {
-      parampge.jdField_a_of_type_JavaUtilLinkedList.add(paramArrayOfByte);
+      paramBucketPool.dataList.add(paramArrayOfByte);
       return false;
     }
     return true;
@@ -53,7 +52,7 @@ public class ByteArrayPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.ByteArrayPool
  * JD-Core Version:    0.7.0.1
  */

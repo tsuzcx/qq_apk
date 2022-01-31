@@ -1,15 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class adkc
   implements DialogInterface.OnClickListener
 {
-  public adkc(ForwardBaseOption paramForwardBaseOption) {}
+  public adkc(NotificationActivity paramNotificationActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.n();
+    azqs.a(this.a.app, "dc00898", "", NotificationActivity.d(this.a), "0X800AA32", "0X800AA32", 0, 0, "", "", "", NotificationActivity.a(this.a));
+    this.a.finish();
   }
 }
 

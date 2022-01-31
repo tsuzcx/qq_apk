@@ -1,22 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView;
 
 public class acui
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public acui(FileTransferHandler paramFileTransferHandler, long paramLong, boolean paramBoolean, String paramString) {}
+  public acui(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Long + "]  handle query onlinefile upload progress resp. sucess =" + this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    if ((paramMotionEvent != null) && (this.a.a != null))
+    {
+      paramView = this.a.a;
+      if (paramMotionEvent.getAction() != 0) {
+        break label39;
+      }
+    }
+    label39:
+    for (float f = 0.5F;; f = 1.0F)
+    {
+      paramView.setAlpha(f);
+      return false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acui
  * JD-Core Version:    0.7.0.1
  */

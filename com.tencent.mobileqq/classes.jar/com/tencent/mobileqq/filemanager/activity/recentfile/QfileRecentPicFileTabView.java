@@ -1,61 +1,173 @@
 package com.tencent.mobileqq.filemanager.activity.recentfile;
 
-import actn;
-import acto;
-import actp;
-import actq;
-import actr;
+import alud;
 import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import aqnh;
+import aqni;
+import aqnr;
+import aqrb;
+import aqrc;
+import aqrd;
+import aqre;
+import aqrf;
+import aqru;
+import aqsb;
+import aqwl;
+import aqwn;
+import arbs;
+import arlq;
+import arls;
+import arlv;
+import arri;
+import arrp;
+import arrq;
+import arrr;
+import arso;
+import arsq;
+import arsu;
+import arth;
+import arvg;
+import azqs;
+import bdgm;
+import bdgx;
+import bdin;
+import bdjz;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileRecentImageExpandableListAdapter;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
-import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
 import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
-import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView.OnSelectListener;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
+import zjc;
 
 public class QfileRecentPicFileTabView
   extends QfileBaseRecentFileTabView
 {
-  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver;
-  private IClickListener_Ver51 jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51;
-  QfilePinnedHeaderExpandableListView.OnSelectListener jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener = new actq(this);
+  private aqru jdField_a_of_type_Aqru;
+  private arsq jdField_a_of_type_Arsq;
+  arvg jdField_a_of_type_Arvg = new aqrd(this);
+  private View.OnClickListener d = new aqre(this);
+  private View.OnClickListener e = new aqrf(this);
   
   public QfileRecentPicFileTabView(Context paramContext)
   {
     super(paramContext);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver == null) {
-      h();
+    if (this.jdField_a_of_type_Aqru == null) {
+      l();
     }
-    d();
+    f();
     setEditbarButton(true, true, true, true, true);
   }
   
   public QfileRecentPicFileTabView(Context paramContext, String paramString)
   {
     super(paramContext, paramString);
-    d();
+    f();
     setEditbarButton(false, true, true, true, true);
+  }
+  
+  private void a(View paramView, boolean paramBoolean)
+  {
+    Object localObject1 = (aqnh)paramView.getTag();
+    paramView = (FileManagerEntity)((aqnh)localObject1).jdField_a_of_type_JavaLangObject;
+    localObject1 = ((aqnh)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
+    if (paramView == null) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b();
+      if (paramBoolean)
+      {
+        if (arbs.a(paramView)) {
+          arbs.b(paramView);
+        }
+        for (;;)
+        {
+          if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.d) && (paramView.cloudType == 3) && (!arso.b(paramView.strFilePath)))
+          {
+            arri.a(arrr.d(paramView.fileName) + alud.a(2131710091));
+            arbs.b(paramView);
+          }
+          t();
+          g();
+          return;
+          arbs.a(paramView);
+          if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.i()) && (!arbs.a(arbs.jdField_a_of_type_Int)) && (!arbs.b(paramView)))
+          {
+            localObject1 = bdgm.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, 2131698506);
+            ((bdjz)localObject1).setPositiveButton(2131720972, new bdgx());
+            ((bdjz)localObject1).show();
+            arbs.b(arbs.jdField_a_of_type_Int);
+            arrp.a("0X800942D");
+          }
+        }
+      }
+      if (f()) {
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
+      }
+      if (b()) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i(jdField_a_of_type_JavaLangString, 2, "click too fast , wait a minute.");
+    return;
+    r();
+    Object localObject2 = new arrq();
+    ((arrq)localObject2).jdField_b_of_type_JavaLangString = "file_viewer_in";
+    ((arrq)localObject2).jdField_a_of_type_Int = 73;
+    ((arrq)localObject2).c = arso.a(paramView.fileName);
+    ((arrq)localObject2).jdField_a_of_type_Long = paramView.fileSize;
+    arrp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (arrq)localObject2);
+    arrp.a("0X8004AE4");
+    localObject2 = new arlq(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, paramView, 10001);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("from_qlink_enter_recent", this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.g());
+    if ((this.jdField_b_of_type_JavaLangString != null) && (this.jdField_b_of_type_JavaLangString.trim().length() != 0)) {
+      localBundle.putString("c2c_discussion_recentfile", this.jdField_b_of_type_JavaLangString);
+    }
+    ((arlq)localObject2).a(localBundle);
+    localObject2 = new arls(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, (arlv)localObject2);
+    ((arls)localObject2).a(7);
+    if (((paramView.nFileType == 0) || (paramView.nFileType == 2)) && (localObject1 != null) && ((((View)localObject1).getId() == 2131366301) || (((View)localObject1).getId() == 2131367921)))
+    {
+      ((arls)localObject2).a(zjc.a((View)localObject1));
+      ((arls)localObject2).a(true);
+    }
+    if (paramView.nFileType == 2)
+    {
+      if (arso.b(paramView.getFilePath()))
+      {
+        ((arls)localObject2).a();
+        return;
+      }
+      if ((paramView.isSend()) && (!arso.b(paramView.getFilePath())) && (paramView.status != 1) && (paramView.status != -1))
+      {
+        arri.a(alud.a(2131710088));
+        return;
+      }
+      if (!bdin.d(BaseApplication.getContext()))
+      {
+        arri.a(2131692747);
+        return;
+      }
+      ((arls)localObject2).a();
+      return;
+    }
+    ((arls)localObject2).a();
   }
   
   private boolean a(FileManagerEntity paramFileManagerEntity, boolean paramBoolean)
   {
     if (paramFileManagerEntity == null) {}
-    while ((paramFileManagerEntity.nFileType != 0) || ((f()) && (((FMDataCache.a(paramFileManagerEntity)) && (paramBoolean)) || ((!FMDataCache.a(paramFileManagerEntity)) && (!paramBoolean))))) {
+    while ((paramFileManagerEntity.nFileType != 0) || ((f()) && (((arbs.a(paramFileManagerEntity)) && (paramBoolean)) || ((!arbs.a(paramFileManagerEntity)) && (!paramBoolean))))) {
       return false;
     }
     if (f())
@@ -63,39 +175,39 @@ public class QfileRecentPicFileTabView
       if (!paramBoolean) {
         break label59;
       }
-      FMDataCache.a(paramFileManagerEntity);
+      arbs.a(paramFileManagerEntity);
     }
     for (;;)
     {
       return true;
       label59:
-      FMDataCache.b(paramFileManagerEntity);
+      arbs.b(paramFileManagerEntity);
     }
   }
   
-  private void h()
+  private void l()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new actn(this);
+    this.jdField_a_of_type_Aqru = new aqrb(this);
   }
   
-  private void k()
+  private void o()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.c()) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a().L();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.c()) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().L();
     }
-    while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 != null)
+    while (this.jdField_a_of_type_Arsq != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Arsq);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a().Q();
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().Q();
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = new acto(this);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51);
+    this.jdField_a_of_type_Arsq = new aqrc(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Arsq);
   }
   
-  protected QfileBaseExpandableListAdapter a()
+  protected aqni a()
   {
-    return new QfileRecentImageExpandableListAdapter(a(), this.jdField_a_of_type_JavaUtilLinkedHashMap, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.c);
+    return new aqnr(a(), this.jdField_a_of_type_JavaUtilLinkedHashMap, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.d, this.e, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.c);
   }
   
   protected void a()
@@ -113,22 +225,22 @@ public class QfileRecentPicFileTabView
       FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
       if ((!localFileManagerEntity.bDelInFM) && (localFileManagerEntity.nFileType == 0))
       {
-        if ((!FileUtil.b(localFileManagerEntity.getFilePath())) && (!FileUtil.b(localFileManagerEntity.strThumbPath)))
+        if ((!arso.b(localFileManagerEntity.getFilePath())) && (!arso.b(localFileManagerEntity.strThumbPath)))
         {
           if (localFileManagerEntity.getCloudType() != 1) {
-            break label192;
+            break label194;
           }
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
         }
         for (;;)
         {
-          String str = QfileTimeUtils.b(localFileManagerEntity.srvTime);
+          String str = arth.a(localFileManagerEntity.srvTime);
           if (!this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
             this.jdField_a_of_type_JavaUtilLinkedHashMap.put(str, new ArrayList());
           }
           ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str)).add(localFileManagerEntity);
           break;
-          label192:
+          label194:
           if (localFileManagerEntity.getCloudType() == 2) {
             this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.WeiYunFileId, localFileManagerEntity.strLargeThumPath, 3, localFileManagerEntity);
           }
@@ -155,12 +267,12 @@ public class QfileRecentPicFileTabView
       this.jdField_a_of_type_JavaUtilList.add(paramFileManagerEntity);
       Collections.sort(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilComparator);
     }
-    a(new actp(this, paramFileManagerEntity));
+    a(new QfileRecentPicFileTabView.3(this, paramFileManagerEntity));
   }
   
   protected boolean b(FileManagerEntity paramFileManagerEntity)
   {
-    Object localObject = QfileTimeUtils.b(paramFileManagerEntity.srvTime);
+    Object localObject = arth.a(paramFileManagerEntity.srvTime);
     if (!this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(localObject))
     {
       QLog.e(jdField_a_of_type_JavaLangString, 1, "delRecentFileRecords, fileEntities find, but recentRecords not find!");
@@ -179,7 +291,7 @@ public class QfileRecentPicFileTabView
     }
   }
   
-  public void c(ArrayList paramArrayList)
+  public void c(ArrayList<FileManagerEntity> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0)) {}
     for (;;)
@@ -192,28 +304,28 @@ public class QfileRecentPicFileTabView
     }
   }
   
-  public void g()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.runOnUiThread(new actr(this));
-  }
-  
   public void j()
   {
     super.j();
     setEditbarButton(true, true, true, true, true);
-    k();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnIndexChangedListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener);
+    o();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnIndexChangedListener(this.jdField_a_of_type_Arvg);
+  }
+  
+  public void k()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.runOnUiThread(new QfileRecentPicFileTabView.5(this));
   }
   
   public void m()
   {
     super.m();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Aqru);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,72 +1,144 @@
-import com.tencent.av.VideoController;
-import com.tencent.biz.eqq.CrmUtils;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity.25.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qidian.controller.QidianBusinessObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.ArrayList;
+import java.util.List;
 
 public class acaw
-  extends QidianBusinessObserver
+  extends altm
 {
-  public acaw(MessengerService paramMessengerService) {}
+  public acaw(AccountManageActivity paramAccountManageActivity) {}
   
-  protected void g(boolean paramBoolean, HashMap paramHashMap)
+  void a(String paramString, int paramInt)
   {
-    try
+    this.a.runOnUiThread(new AccountManageActivity.25.1(this, paramString, paramInt));
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    int j = 0;
+    if ((!paramBoolean) || (paramString == null)) {}
+    for (;;)
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)MessengerService.j(this.a);
-      if (localQQAppInterface != null)
+      return;
+      int i;
+      if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+        i = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+      }
+      while (j < this.a.jdField_a_of_type_JavaUtilList.size())
       {
-        localQQAppInterface.removeObserver(this);
-        if ((paramBoolean) && (paramHashMap != null) && (!paramHashMap.isEmpty()) && (paramHashMap.containsKey("sigmsg")) && (paramHashMap.containsKey("request_type")) && (paramHashMap.containsKey("uin")))
+        if ((i > j) && (this.a.jdField_a_of_type_JavaUtilList.get(j) != null) && (paramString.equals(((SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(j)).getUin())))
         {
-          Object localObject = (byte[])paramHashMap.get("sigmsg");
-          String str1 = String.valueOf(paramHashMap.get("request_type"));
-          String str2 = String.valueOf(paramHashMap.get("uin"));
-          if (localObject != null) {
-            localQQAppInterface.a().c(str2, (byte[])localObject);
-          }
-          int j = CrmUtils.b(localQQAppInterface, str2);
-          localObject = "";
-          if (j == 0) {
-            localObject = ContactUtils.k(localQQAppInterface, str2);
-          }
-          for (;;)
-          {
-            int i = j;
-            if (j != 1024)
-            {
-              i = j;
-              if (j != 1025) {
-                i = VideoController.a(j, false, 1);
-              }
-            }
-            paramBoolean = str1.equals("audio");
-            ChatActivityUtils.a(localQQAppInterface, localQQAppInterface.getApp(), i, str2, (String)localObject, "", paramBoolean, null, true, true, null, "from_internal", null);
-            return;
-            if (paramHashMap.containsKey("nickname")) {
-              localObject = String.valueOf(paramHashMap.get("nickname"));
-            }
+          a(paramString, j);
+          return;
+        }
+        j += 1;
+        continue;
+        i = 0;
+      }
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    int j = 0;
+    if ((!paramBoolean) || (paramString == null)) {
+      return;
+    }
+    Object localObject3 = (badd)this.a.app.getManager(61);
+    Object localObject1 = "";
+    int i = ((badd)localObject3).a();
+    label67:
+    label124:
+    Object localObject2;
+    if (i == 0)
+    {
+      AccountManageActivity.a(this.a).setVisibility(8);
+      AccountManageActivity.b(this.a).setVisibility(8);
+      if (AppSetting.c) {
+        AccountManageActivity.a(this.a).setContentDescription("关联QQ号" + (String)localObject1);
+      }
+      if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout == null) {
+        break label566;
+      }
+      i = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+      if (j >= this.a.jdField_a_of_type_JavaUtilList.size()) {
+        break label569;
+      }
+      if ((i > j) && (this.a.jdField_a_of_type_JavaUtilList.get(j) != null) && (paramString.equals(((SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(j)).getUin())))
+      {
+        localObject1 = (TextView)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).findViewById(2131370977);
+        localObject2 = (TextView)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).findViewById(2131361822);
+        ((TextView)localObject1).setText(bdgc.h(this.a.app, paramString));
+        ((TextView)localObject2).setText(paramString);
+        a(paramString, j);
+      }
+    }
+    else if (i == 1)
+    {
+      localObject3 = ((badd)localObject3).a("sub.uin.default");
+      if (localObject3 == null) {
+        break label571;
+      }
+      localObject2 = bdgc.c(this.a.app, ((SubAccountInfo)localObject3).subuin, false);
+      localObject1 = localObject2;
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        if (!TextUtils.isEmpty(((SubAccountInfo)localObject3).subname))
+        {
+          localObject1 = localObject2;
+          if (((String)localObject2).equals(((SubAccountInfo)localObject3).subname)) {}
+        }
+        else
+        {
+          ((SubAccountInfo)localObject3).subname = ((String)localObject2);
+          this.a.a(AccountManageActivity.b(this.a), ((SubAccountInfo)localObject3).subuin);
+          AccountManageActivity.b(this.a).setVisibility(0);
+          AccountManageActivity.a(this.a).setVisibility(8);
+          localObject1 = localObject2;
+          if (AppSetting.c) {
+            AccountManageActivity.a(this.a).setContentDescription("关联QQ号" + (String)localObject2);
           }
         }
       }
-      return;
     }
-    catch (Exception paramHashMap)
+    label566:
+    label569:
+    label571:
+    for (localObject1 = localObject2;; localObject1 = "")
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MessengerService", 2, "onGetSigmsg ", paramHashMap);
+      break label67;
+      localObject2 = i + alud.a(2131700132);
+      localObject3 = ((badd)localObject3).a();
+      localObject1 = localObject2;
+      if (((ArrayList)localObject3).size() != 2) {
+        break label67;
       }
+      this.a.a(AccountManageActivity.b(this.a), (String)((ArrayList)localObject3).get(0));
+      AccountManageActivity.b(this.a).setVisibility(0);
+      this.a.a(AccountManageActivity.b(this.a), (String)((ArrayList)localObject3).get(1));
+      AccountManageActivity.a(this.a).setVisibility(0);
+      localObject1 = localObject2;
+      break label67;
+      j += 1;
+      break label124;
+      i = 0;
+      break label124;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acaw
  * JD-Core Version:    0.7.0.1
  */

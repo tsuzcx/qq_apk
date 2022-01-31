@@ -1,5 +1,6 @@
 package cooperation.qlink;
 
+import alud;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -7,12 +8,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import bety;
+import biqn;
+import biqw;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.mobileqq.pluginsdk.PluginStatic;
-import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.PluginParams;
+import cooperation.plugin.PluginInfo;
 import java.util.Iterator;
 import java.util.List;
 
@@ -34,21 +36,21 @@ public class QlinkPluginProxyActivity
     return paramIntent.getStringExtra("qlink_plugin_activity_name");
   }
   
-  public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt, QQProgressDialog paramQQProgressDialog)
+  public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt, bety parambety)
   {
-    paramIntent.putExtra("userQqResources", 1);
-    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.jdField_b_of_type_JavaLangString = "qlink_plugin.apk";
-    localPluginParams.d = "近场传输";
-    localPluginParams.jdField_a_of_type_JavaLangString = paramString;
-    localPluginParams.e = a(paramIntent);
-    localPluginParams.jdField_a_of_type_JavaLangClass = QlinkPluginProxyActivity.class;
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localPluginParams.jdField_b_of_type_Int = paramInt;
-    localPluginParams.jdField_a_of_type_AndroidAppDialog = paramQQProgressDialog;
-    localPluginParams.c = 10000;
-    localPluginParams.f = null;
-    IPluginManager.a(paramActivity, localPluginParams);
+    paramIntent.putExtra("userQqResources", 2);
+    biqw localbiqw = new biqw(0);
+    localbiqw.jdField_b_of_type_JavaLangString = "qlink_plugin.apk";
+    localbiqw.d = PluginInfo.c;
+    localbiqw.jdField_a_of_type_JavaLangString = paramString;
+    localbiqw.e = a(paramIntent);
+    localbiqw.jdField_a_of_type_JavaLangClass = QlinkPluginProxyActivity.class;
+    localbiqw.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localbiqw.jdField_b_of_type_Int = paramInt;
+    localbiqw.jdField_a_of_type_AndroidAppDialog = parambety;
+    localbiqw.c = 10000;
+    localbiqw.f = null;
+    biqn.a(paramActivity, localbiqw);
   }
   
   public static void a(Intent paramIntent, String paramString)
@@ -79,29 +81,29 @@ public class QlinkPluginProxyActivity
     return "qlink_plugin.apk";
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     if (!TextUtils.isEmpty(this.mCreateErrorInfo)) {
       if (paramBundle == null) {
-        break label65;
+        break label68;
       }
     }
     for (;;)
     {
       paramBundle = paramBundle.getString("pluginsdk_launchActivity");
-      StringBuffer localStringBuffer = new StringBuffer("[插件启动失败] ");
+      StringBuffer localStringBuffer = new StringBuffer(alud.a(2131710279));
       localStringBuffer.append(paramBundle).append(" ").append(this.mCreateErrorInfo);
       QLog.e("QLinkLog", 1, localStringBuffer.toString());
       return;
-      label65:
+      label68:
       paramBundle = getIntent().getExtras();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qlink.QlinkPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

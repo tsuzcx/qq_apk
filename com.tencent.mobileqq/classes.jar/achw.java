@@ -1,53 +1,31 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.extendfriend.ExtendFriendObserver;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class achw
-  extends ExtendFriendObserver
+  implements bmff
 {
-  public achw(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  public achw(BaseChatPie paramBaseChatPie) {}
   
-  protected void a(boolean paramBoolean)
+  public Activity a()
   {
-    super.a(paramBoolean);
-    if (paramBoolean)
-    {
-      ExtendFriendEditFragment.a(this.a).dismiss();
-      ExtendFriendEditFragment.a(this.a).setResult(8193);
-      if (ExtendFriendEditFragment.a(this.a) != null) {
-        ExtendFriendEditFragment.a(this.a).finish();
-      }
-      return;
-    }
-    ExtendFriendEditFragment.a(this.a).dismiss();
+    return this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
   }
   
-  protected void a(boolean paramBoolean, Card paramCard)
+  public SessionInfo a()
   {
-    super.a(paramBoolean, paramCard);
-    if (paramBoolean)
-    {
-      paramCard = new ExtendFriendProfileEditFragment.ExtendFriendInfo(paramCard);
-      if ((TextUtils.isEmpty(paramCard.a)) && (TextUtils.isEmpty(paramCard.b)))
-      {
-        ExtendFriendEditFragment.a(this.a, true);
-        this.a.a.a(paramCard);
-      }
-    }
-    for (;;)
-    {
-      ExtendFriendEditFragment.a(this.a).dismiss();
-      return;
-      ExtendFriendEditFragment.a(this.a, false);
-      break;
-      QQToast.a(ExtendFriendEditFragment.a(this.a), "获取扩列信息失败", 0).a();
-    }
+    return this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  }
+  
+  public boolean a()
+  {
+    return this.a.c();
   }
 }
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Engedélyezés</string>
+    <string name="b">"A(z) %1$s alkalmazás csak akkor működik, ha  engedélyezi a Google Play-szolgáltatásokat."</string>
+    <string name="c">Google Play-szolgáltatások engedélyezése</string>
+    <string name="d">Telepítés</string>
+    <string name="e">A(z) %1$s alkalmazás nem fut a Google Play-szolgáltatások nélkül, amelyek hiányoznak az eszközről.</string>
+    <string name="f">A Google Play-szolgáltatások beszerzése</string>
+    <string name="g">Google Play-szolgáltatások – hiba</string>
+    <string name="h">A(z) %1$s alkalmazás problémába ütközött a Google Play-szolgáltatások használata során. Próbálkozzon újra.</string>
+    <string name="i">A(z) %1$s alkalmazás nem fut a Google Play-szolgáltatások nélkül, amelyeket eszköze nem támogat.</string>
+    <string name="j">Frissítés</string>
+    <string name="k">A(z) %1$s alkalmazás csak akkor fog működni, ha frissíti a Google Play-szolgáltatásokat.</string>
+    <string name="l">A Google Play-szolgáltatások frissítése</string>
+    <string name="m">A(z) %1$s alkalmazás nem fut a Google Play-szolgáltatások nélkül, amelyek frissítése folyamatban van.</string>
+    <string name="n">A Google Play-szolgáltatások új verziójára van szükség. A szolgáltatás hamarosan frissíti önmagát.</string>
+    <string name="o">Megnyitás a telefonon</string>
+    <string name="p">Bejelentkezés</string>
+    <string name="q">Bejelentkezés Google-fiókkal</string>
+    <string name="r">999+</string>
+</resources>

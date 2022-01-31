@@ -52,8 +52,8 @@ public class RouterHandler$NotifyReceiver
         RouterHandler.b(this.a, i, paramIntent, arrayOfByte, bool);
         return;
       }
-    } while ((!paramContext.equals("com.tencent.mobileqq.intent.logout")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) && (!paramContext.equals("mqq.intent.action.EXIT_" + this.a.c.getApp().getPackageName())) && (!paramContext.equals("mqq.intent.action.LOGOUT")));
-    this.a.b();
+    } while ((!paramContext.equals("com.tencent.mobileqq.intent.logout")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) && (!paramContext.equals("mqq.intent.action.EXIT_" + this.a.b.getApp().getPackageName())) && (!paramContext.equals("mqq.intent.action.LOGOUT")));
+    this.a.a();
   }
 }
 

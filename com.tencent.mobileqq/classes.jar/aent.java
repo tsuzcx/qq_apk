@@ -1,40 +1,48 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import Wallet.AcsGetMsgRsp;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.1.1;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.1.2;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class aent
-  implements WerewolvesHandler.Callback
+  implements BusinessObserver
 {
-  public aent(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public aent(QQNotifySettingBaseFragment paramQQNotifySettingBaseFragment) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramInt == 0)
+    if ((QQNotifySettingBaseFragment.a(this.a).isShowing()) && (QQNotifySettingBaseFragment.a(this.a) != null)) {
+      QQNotifySettingBaseFragment.a(this.a).dismiss();
+    }
+    if (paramInt == 2005)
     {
-      GameRoomInviteActivity localGameRoomInviteActivity = this.a;
-      String str = paramRspBody.string_invite_id.get().toStringUtf8();
-      localGameRoomInviteActivity.jdField_b_of_type_JavaLangString = str;
-      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = str;
-      this.a.jdField_b_of_type_Long = paramRspBody.uint64_leader_uin.get();
-      this.a.e();
-      SharedPreUtils.a(this.a, this.a.app.getCurrentAccountUin(), true, System.currentTimeMillis());
-      if ((this.a.jdField_a_of_type_Long > 0L) && (this.a.jdField_b_of_type_Boolean)) {
-        GameRoomInviteActivity.a(this.a, "" + this.a.jdField_a_of_type_Long, 1);
+      if (QLog.isColorLevel()) {
+        QLog.d(QQNotifySettingBaseFragment.a(), 2, "acs msg succ");
       }
+      if (!paramBoolean) {
+        break label114;
+      }
+      paramBundle = (AcsGetMsgRsp)paramBundle.getSerializable("rsp");
+      if (paramBundle != null) {
+        QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.1(this, paramBundle));
+      }
+    }
+    else
+    {
       return;
     }
-    this.a.a(paramInt, paramRspBody, (String)GameRoomInviteActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+    QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.2(this));
+    return;
+    label114:
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aent
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/abz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/title_container" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/jp7" android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <View android:gravity="center" android:id="@id/jok" android:background="@drawable/b09" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="10.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="18.0sp" android:textColor="#ffffffff" android:id="@id/kdn" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </FrameLayout>
+    <FrameLayout android:id="@id/b9w" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/title_container" />
+    <com.tencent.mobileqq.nearby.anim.NearbyZanAnimLayout android:id="@id/d53" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/title_container" />
+    <View android:id="@id/f_1" android:background="#3f000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

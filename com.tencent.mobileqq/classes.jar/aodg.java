@@ -1,59 +1,58 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.POIListRequestCallback;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.POIListRequestSession;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import dov.com.tencent.biz.qqstory.takevideo.poilist.PoiListAdapter;
-import dov.com.tencent.biz.qqstory.takevideo.poilist.SearchPoiListLayout;
-import java.util.ArrayList;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 import java.util.List;
 
 public class aodg
-  implements LbsManager.POIListRequestCallback
+  extends RecyclerView.Adapter<aodk>
 {
-  public aodg(SearchPoiListLayout paramSearchPoiListLayout, String paramString) {}
+  private aodj jdField_a_of_type_Aodj;
+  private aodw jdField_a_of_type_Aodw;
+  private List<ColorNote> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(int paramInt, LbsManager.POIListRequestSession paramPOIListRequestSession, List paramList)
+  public aodk a(ViewGroup paramViewGroup, int paramInt)
   {
-    SearchPoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout, paramPOIListRequestSession);
-    if (paramInt == 0) {
-      if (paramPOIListRequestSession.a()) {
-        break label201;
-      }
+    return new aodk(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558841, paramViewGroup, false));
+  }
+  
+  public void a(aodj paramaodj)
+  {
+    this.jdField_a_of_type_Aodj = paramaodj;
+  }
+  
+  public void a(aodk paramaodk, int paramInt)
+  {
+    aobw.a((ColorNote)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(paramaodk, paramInt, this.jdField_a_of_type_Boolean);
+  }
+  
+  public void a(aodw paramaodw)
+  {
+    this.jdField_a_of_type_Aodw = paramaodw;
+  }
+  
+  void a(List<ColorNote> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    label201:
-    for (boolean bool = true;; bool = false)
-    {
-      SearchPoiListLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout).setVisibility(0);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout.a(bool);
-      if (SearchPoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout) == null) {
-        SearchPoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout, new ArrayList());
-      }
-      if (SearchPoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout).b()) {
-        SearchPoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout).clear();
-      }
-      SearchPoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout).addAll(paramList);
-      if (SearchPoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout) != null)
-      {
-        SearchPoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout).a(SearchPoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout), null);
-        SearchPoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout).notifyDataSetChanged();
-        if (SearchPoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout).isEmpty())
-        {
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout.a(this.jdField_a_of_type_JavaLangString);
-          SearchPoiListLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout).setVisibility(4);
-        }
-      }
-      int i = paramInt;
-      if (paramInt == 0) {
-        i = 0;
-      }
-      StoryReportor.b("edit_video", "poi_list_success", 0, i, new String[0]);
-      return;
-    }
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aodg
  * JD-Core Version:    0.7.0.1
  */

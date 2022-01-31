@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.lebasearch.widget.NeverScrollHorizontalScrollView android:layout_gravity="center_vertical" android:id="@id/j_u" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="40.0dip">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/j_i" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_centerVertical="true" />
+        <View android:id="@id/cdb" android:background="#ff12b7f5" android:visibility="invisible" android:layout_width="28.0dip" android:layout_height="3.0dip" android:layout_marginLeft="15.0dip" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</com.tencent.biz.lebasearch.widget.NeverScrollHorizontalScrollView>

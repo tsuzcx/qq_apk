@@ -1,25 +1,46 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class sdu
-  implements Runnable
+public abstract class sdu
 {
-  public sdu(ChatSettingForTroop paramChatSettingForTroop) {}
+  protected abstract void a();
   
-  public void run()
+  public abstract void a(ListView paramListView);
+  
+  protected void a(String paramString, JSONObject paramJSONObject)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {
+    try
+    {
+      paramJSONObject.put("folder_status", ors.d);
+      paramJSONObject.put("kandian_mode", ors.e());
+      paramJSONObject = paramJSONObject.toString();
+      nrt.a(null, "", paramString, paramString, 0, 0, "", "", "", paramJSONObject, false);
+      QLog.d("HeaderViewController", 2, "report: T - " + paramString + " r5 - " + paramJSONObject);
       return;
     }
-    ArrayList localArrayList = TroopInfoActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new sdv(this, localArrayList));
+    catch (JSONException paramString)
+    {
+      QLog.d("HeaderViewController", 2, "report failed due to JSONException: " + paramString.getMessage());
+      throw new IllegalArgumentException("fail to construct r5 json");
+    }
   }
+  
+  public abstract void b();
+  
+  public void c()
+  {
+    a();
+  }
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sdu
  * JD-Core Version:    0.7.0.1
  */

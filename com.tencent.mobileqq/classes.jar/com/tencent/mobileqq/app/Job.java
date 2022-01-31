@@ -1,124 +1,190 @@
 package com.tencent.mobileqq.app;
 
 import android.os.SystemClock;
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
-import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Job
-  extends WeakReference
-  implements Comparable, Runnable
+  extends WeakReference<Object>
+  implements Comparable<Job>, Runnable
 {
-  public static ConcurrentLinkedQueue a;
-  public static ConcurrentLinkedQueue b;
-  public static ConcurrentLinkedQueue c;
-  public int a;
-  public long a;
-  public ThreadExcutor.IThreadListener a;
-  public Runnable a;
-  public String a;
-  private boolean a;
-  public int b;
-  public long b;
-  private boolean b;
-  private int c;
-  public long c;
-  public long d = -1L;
-  public long e = -1L;
-  public long f = -1L;
+  private static int RUNNING_TIME_OUT = 9990000;
+  private static final String TAG = "Job";
+  public static ConcurrentLinkedQueue<String> runningJmapInAync;
+  public static ConcurrentLinkedQueue<String> runningJmapInDB;
+  public static ConcurrentLinkedQueue<String> runningJmapInDownload;
+  public static ConcurrentLinkedQueue<String> runningJmapInFile;
+  public static ConcurrentLinkedQueue<String> runningJmapInHeavy = new ConcurrentLinkedQueue();
+  public static ConcurrentLinkedQueue<String> runningJmapInLight = new ConcurrentLinkedQueue();
+  public static ConcurrentLinkedQueue<String> runningJmapInNet;
+  public static ConcurrentLinkedQueue<String> runningJmapInNormal;
+  public static ConcurrentLinkedQueue<String> runningJmapInOther;
+  public long addPoint = 0L;
+  public long blcokingCost = -1L;
+  private boolean canAutoRetrieve;
+  public long cost = -1L;
+  private boolean hasKey = false;
+  public long mId = 0L;
+  public Runnable mJob;
+  public ThreadExcutor.IThreadListener mListener;
+  public String mName;
+  public int mType = 0;
+  public int poolNum = -1;
+  public long postCost = -1L;
+  public long wait = -1L;
   
   static
   {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    jdField_b_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    jdField_c_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+    runningJmapInDownload = new ConcurrentLinkedQueue();
+    runningJmapInNormal = new ConcurrentLinkedQueue();
+    runningJmapInDB = new ConcurrentLinkedQueue();
+    runningJmapInFile = new ConcurrentLinkedQueue();
+    runningJmapInNet = new ConcurrentLinkedQueue();
+    runningJmapInAync = new ConcurrentLinkedQueue();
+    runningJmapInOther = new ConcurrentLinkedQueue();
   }
   
   public Job(Object paramObject, Runnable paramRunnable, boolean paramBoolean)
   {
     super(paramObject);
-    this.jdField_c_of_type_Long = -1L;
-    this.jdField_b_of_type_Int = -1;
     if (paramObject != null) {
-      this.jdField_b_of_type_Boolean = true;
+      this.hasKey = true;
     }
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.mJob = paramRunnable;
+    this.canAutoRetrieve = paramBoolean;
   }
   
   Job(Object paramObject, String paramString, int paramInt, Runnable paramRunnable, ThreadExcutor.IThreadListener paramIThreadListener, boolean paramBoolean)
   {
     super(paramObject);
-    this.jdField_c_of_type_Long = -1L;
-    this.jdField_b_of_type_Int = -1;
     if (paramObject != null) {
-      this.jdField_b_of_type_Boolean = true;
+      this.hasKey = true;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
-    this.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener = paramIThreadListener;
-    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.mName = paramRunnable.toString();
+    this.mType = paramInt;
+    this.mJob = paramRunnable;
+    this.mListener = paramIThreadListener;
+    if (this.mListener != null) {
+      this.mListener.onAdded();
+    }
+    this.addPoint = SystemClock.uptimeMillis();
+    this.canAutoRetrieve = paramBoolean;
   }
   
-  private void a()
+  private void afterRun()
   {
-    this.d = (SystemClock.uptimeMillis() - this.jdField_b_of_type_Long);
-    JobReporter.reportJobTime(this.d);
-    if (this.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener.a();
+    this.cost = (SystemClock.uptimeMillis() - (this.wait + this.addPoint));
+    if (this.mListener != null) {
+      this.mListener.onPostRun();
     }
-  }
-  
-  private void b()
-  {
-    this.jdField_c_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_b_of_type_Long);
-    if (this.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener.b();
+    reportRunningTooLong();
+    if (ThreadSetting.logcatBgTaskMonitor) {
+      ThreadLog.printQLog("ThreadManager", "tsp execute-" + toString());
     }
-    if (this.jdField_c_of_type_Long >= 30000L) {
-      c();
-    }
-  }
-  
-  private boolean b()
-  {
-    return (ThreadExcutor.jdField_b_of_type_Boolean) && (UnifiedMonitor.a().whetherReportThisTime(6));
-  }
-  
-  private void c()
-  {
-    if ((b()) || (ThreadManager.logcatBgTaskMonitor))
+    if (ThreadLog.needRecordJob()) {}
+    switch (this.poolNum)
     {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("priority", "" + this.jdField_a_of_type_Int);
-      UnifiedMonitor.a().addEvent(6, this.jdField_a_of_type_JavaLangString, (int)this.jdField_c_of_type_Long, this.jdField_c_of_type_Int, localHashMap);
-      this.jdField_c_of_type_Int = 0;
+    case 3: 
+    case 4: 
+    default: 
+      return;
+    case 1: 
+      runningJmapInLight.remove(this.mName);
+      return;
+    case 2: 
+      runningJmapInHeavy.remove(this.mName);
+      return;
+    case 5: 
+      runningJmapInDownload.remove(this.mName);
+      return;
+    case 6: 
+      runningJmapInNormal.remove(this.mName);
+      return;
+    case 7: 
+      runningJmapInDB.remove(this.mName);
+      return;
+    case 8: 
+      runningJmapInFile.remove(this.mName);
+      return;
+    case 9: 
+      runningJmapInNet.remove(this.mName);
+      return;
+    case 10: 
+      runningJmapInAync.remove(this.mName);
       return;
     }
-    this.jdField_c_of_type_Int += 1;
+    runningJmapInOther.remove(this.mName);
   }
   
-  public int a(Job paramJob)
+  private void beforeRun()
   {
-    if (this.jdField_a_of_type_Int == paramJob.jdField_a_of_type_Int) {
-      return 0;
+    this.wait = (SystemClock.uptimeMillis() - this.addPoint);
+    JobReporter.reportJobTime(this.wait);
+    if (this.mListener != null) {
+      this.mListener.onPreRun();
     }
-    if (this.jdField_a_of_type_Int > paramJob.jdField_a_of_type_Int) {
-      return -1;
+    if (ThreadSetting.logcatBgTaskMonitor) {
+      ThreadLog.printQLog("ThreadManager", "tsp execute|" + toString());
     }
-    return 1;
+    if (ThreadLog.needRecordJob()) {}
+    switch (this.poolNum)
+    {
+    case 3: 
+    case 4: 
+    default: 
+      return;
+    case 1: 
+      runningJmapInLight.add(this.mName);
+      return;
+    case 2: 
+      runningJmapInHeavy.add(this.mName);
+      return;
+    case 5: 
+      runningJmapInDownload.add(this.mName);
+      return;
+    case 6: 
+      runningJmapInNormal.add(this.mName);
+      return;
+    case 7: 
+      runningJmapInDB.add(this.mName);
+      return;
+    case 8: 
+      runningJmapInFile.add(this.mName);
+      return;
+    case 9: 
+      runningJmapInNet.add(this.mName);
+      return;
+    case 10: 
+      runningJmapInAync.add(this.mName);
+      return;
+    }
+    runningJmapInOther.add(this.mName);
   }
   
-  public boolean a()
+  private static long get_RUNNING_TIME_OUT()
+  {
+    if (!ThreadSetting.isPublicVersion) {
+      RUNNING_TIME_OUT = 60000;
+    }
+    return RUNNING_TIME_OUT;
+  }
+  
+  private void reportRunningTooLong()
+  {
+    if ((ThreadLog.needReportRunOrBlocking()) && (this.cost >= get_RUNNING_TIME_OUT()) && (ThreadManagerV2.OPEN_RDM_REPORT) && (ThreadManagerV2.sThreadWrapContext != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("process_" + ThreadSetting.sProcessId).append(" mjobName_" + this.mName).append(" mType_" + this.mType).append(" cost_" + this.cost);
+      ThreadLog.printQLog("Job", localStringBuilder.toString());
+      ThreadManagerV2.sThreadWrapContext.reportRDMException(new TSPRunTooLongCatchedException("max_reportJobRunningTooLong"), "max_reportJobRunningTooLong", localStringBuilder.toString());
+    }
+  }
+  
+  public boolean checkShouldRun()
   {
     Object localObject;
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
+    if ((this.canAutoRetrieve) && (this.hasKey))
     {
       localObject = get();
       if (localObject == null) {}
@@ -127,37 +193,40 @@ public class Job
     {
       try
       {
-        Field localField = this.jdField_a_of_type_JavaLangRunnable.getClass().getDeclaredField("this$0");
+        Field localField = this.mJob.getClass().getDeclaredField("this$0");
         localField.setAccessible(true);
-        localField.set(this.jdField_a_of_type_JavaLangRunnable, localObject);
+        localField.set(this.mJob, localObject);
         return true;
       }
       catch (NoSuchFieldException localNoSuchFieldException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Job", 2, this.jdField_a_of_type_JavaLangString + localNoSuchFieldException + "shouldRun is false");
-        }
+        ThreadLog.printQLog("Job", this.mName, localNoSuchFieldException);
         return false;
       }
       catch (IllegalArgumentException localIllegalArgumentException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Job", 2, this.jdField_a_of_type_JavaLangString + localIllegalArgumentException + "shouldRun is false");
-        }
+        ThreadLog.printQLog("Job", this.mName, localIllegalArgumentException);
         return false;
       }
       catch (IllegalAccessException localIllegalAccessException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Job", 2, this.jdField_a_of_type_JavaLangString + localIllegalAccessException + "shouldRun is false");
-        }
+        ThreadLog.printQLog("Job", this.mName, localIllegalAccessException);
         return false;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Job", 2, this.jdField_a_of_type_JavaLangString + " never run, becuse outer object is retrieve already");
-    }
+    ThreadLog.printQLog("Job", this.mName + " never run, becuse outer object is retrieve already");
     return false;
+  }
+  
+  public int compareTo(Job paramJob)
+  {
+    if (this.mType == paramJob.mType) {
+      return 0;
+    }
+    if (this.mType > paramJob.mType) {
+      return -1;
+    }
+    return 1;
   }
   
   public boolean equals(Object paramObject)
@@ -175,41 +244,39 @@ public class Job
           return false;
         }
         paramObject = (Job)paramObject;
-        if (this.jdField_a_of_type_JavaLangRunnable != null) {
+        if (this.mJob != null) {
           break;
         }
-      } while (paramObject.jdField_a_of_type_JavaLangRunnable == null);
+      } while (paramObject.mJob == null);
       return false;
-    } while (this.jdField_a_of_type_JavaLangRunnable.equals(paramObject.jdField_a_of_type_JavaLangRunnable));
+    } while (this.mJob.equals(paramObject.mJob));
     return false;
   }
   
   public int hashCode()
   {
-    if (this.jdField_a_of_type_JavaLangRunnable == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaLangRunnable.hashCode()) {
+    if (this.mJob == null) {}
+    for (int i = 0;; i = this.mJob.hashCode()) {
       return i + 31;
     }
   }
   
   public void run()
   {
-    if (a())
+    if (checkShouldRun())
     {
-      a();
-      this.jdField_a_of_type_JavaLangRunnable.run();
-      b();
-    }
-    while (!QLog.isColorLevel()) {
+      beforeRun();
+      this.mJob.run();
+      afterRun();
       return;
     }
-    QLog.d("Job", 2, this.jdField_a_of_type_JavaLangString + " is recycled");
+    ThreadLog.printQLog("Job", this.mName + " is recycled");
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(64);
-    localStringBuilder.append(" cost=").append(this.jdField_c_of_type_Long).append(", ").append(this.jdField_a_of_type_JavaLangString).append("|pool-").append(this.jdField_b_of_type_Int).append("|t-id=").append(this.jdField_a_of_type_Long).append("|priority=").append(this.jdField_a_of_type_Int).append("|wait=").append(this.d).append("|postCost=").append(this.f);
+    localStringBuilder.append(" cost=").append(this.cost).append(", ").append(this.mName).append("|pool-").append(this.poolNum).append("|t-id=").append(this.mId).append("|mType=").append(this.mType).append("|wait=").append(this.wait).append("|postCost=").append(this.postCost).append("|bCost=").append(this.blcokingCost);
     return localStringBuilder.toString();
   }
 }

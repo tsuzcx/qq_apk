@@ -5,8 +5,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
+import bhzg;
 import com.tencent.widget.HorizontalListView;
-import com.tencent.widget.OverScroller;
 
 public class ImgsHorizontalListView
   extends HorizontalListView
@@ -23,9 +23,9 @@ public class ImgsHorizontalListView
     super(paramContext, paramAttributeSet);
   }
   
-  protected boolean a()
+  public boolean checkScrollToChild()
   {
-    if (!this.c) {}
+    if (!this.mStayDisplayOffsetZero) {}
     int i;
     do
     {
@@ -33,44 +33,44 @@ public class ImgsHorizontalListView
       do
       {
         return false;
-        if (!this.d) {
-          if (Math.abs(this.g - this.i) < this.o) {
+        if (!this.isFromRightToLeft) {
+          if (Math.abs(this.mCurrentX - this.mMaxX) < this.mTouchSlop) {
             i = 1;
           }
         }
         while (i != 0)
         {
-          this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-          i = this.i;
-          this.g = i;
-          this.h = i;
+          this.a.setVisibility(8);
+          i = this.mMaxX;
+          this.mCurrentX = i;
+          this.mNextX = i;
           invalidate();
           return false;
           i = 0;
           continue;
-          if (Math.abs(this.g - this.j) < this.o) {
+          if (Math.abs(this.mCurrentX - this.mMinX) < this.mTouchSlop) {
             i = 1;
           } else {
             i = 0;
           }
         }
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        if (this.o + this.e >= 0)
+        this.a.setVisibility(0);
+        if (this.mTouchSlop + this.mDisplayOffset >= 0)
         {
-          this.h += this.e;
+          this.mNextX += this.mDisplayOffset;
           invalidate();
           return false;
         }
         localView = getChildAt(0);
       } while (localView == null);
-      i = this.h;
-      int j = this.e + i;
+      i = this.mNextX;
+      int j = this.mDisplayOffset + i;
       int k = localView.getMeasuredWidth();
       i = j;
-      if (this.e <= -(k / 2 + 0.5D)) {
+      if (this.mDisplayOffset <= -(k / 2 + 0.5D)) {
         i = j + k;
       }
-    } while (!this.jdField_a_of_type_ComTencentWidgetOverScroller.a(this.h + getScrollX(), 0, i, i, 0, 0));
+    } while (!this.mScroller.a(this.mNextX + getScrollX(), 0, i, i, 0, 0));
     invalidate();
     return true;
   }
@@ -83,12 +83,12 @@ public class ImgsHorizontalListView
   
   public void setArrow(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.a = paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.ImgsHorizontalListView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,37 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class achc
-  implements Runnable
+class achc
+  extends WtloginObserver
 {
-  public achc(EnterpriseQQManager paramEnterpriseQQManager) {}
+  achc(achb paramachb) {}
   
-  public void run()
+  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    if ((EnterpriseQQManager.a(this.a) != null) && (EnterpriseQQManager.a(this.a) != null))
+    if (QLog.isColorLevel())
     {
-      SosoInterface.a(this.a.a);
+      QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      }
+    }
+    if (paramInt2 == 0) {}
+    do
+    {
       return;
-    }
-    synchronized (EnterpriseQQManager.a())
-    {
-      if ((EnterpriseQQManager.a(this.a) == null) || (EnterpriseQQManager.a(this.a).size() <= 0)) {
-        break label144;
-      }
-      Iterator localIterator = EnterpriseQQManager.a(this.a).iterator();
-      while (localIterator.hasNext())
-      {
-        ache localache = (ache)localIterator.next();
-        if (localache != null) {
-          this.a.a(EnterpriseQQManager.a(this.a), EnterpriseQQManager.a(this.a), localache.a, localache.b, false, 0.0D, 0.0D);
-        }
-      }
-    }
-    EnterpriseQQManager.a(this.a).clear();
-    label144:
-    EnterpriseQQManager.a(this.a, null);
-    EnterpriseQQManager.a(this.a, null);
+      achb.a(this.a);
+    } while (achb.a(this.a) == null);
+    paramString = new Intent(achb.a(this.a), LoginActivity.class);
+    paramString.putExtra("uin", achb.a(this.a));
+    paramString.putExtra("tab_index", MainFragment.b);
+    paramString.addFlags(131072);
+    achb.a(this.a).startActivity(paramString);
+    achb.a(this.a).finish();
   }
 }
 

@@ -1,39 +1,20 @@
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
-public final class adhe
-  implements Runnable
+public class adhe
+  extends avva
 {
-  public adhe(FileManagerEntity paramFileManagerEntity) {}
+  public adhe(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (FileUtil.a(this.a.getFilePath())) {}
-    PackageInfo localPackageInfo;
-    do
-    {
-      Iterator localIterator;
-      do
-      {
-        return;
-        while ((this.a.strApkPackageName == null) || (this.a.strApkPackageName.length() == 0)) {}
-        localIterator = FileCategoryUtil.a(BaseApplicationImpl.getContext()).iterator();
-      } while (!localIterator.hasNext());
-      localPackageInfo = (PackageInfo)localIterator.next();
-    } while (!this.a.strApkPackageName.equalsIgnoreCase(localPackageInfo.packageName));
-    this.a.setFilePath(localPackageInfo.applicationInfo.publicSourceDir);
-    this.a.fileName = FileCategoryUtil.a(this.a.getFilePath());
+    LoginInfoActivity.a(this.a);
+    LoginInfoActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adhe
  * JD-Core Version:    0.7.0.1
  */

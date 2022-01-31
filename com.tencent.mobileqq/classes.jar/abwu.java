@@ -1,25 +1,20 @@
-import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
-import com.tencent.mobileqq.utils.DESUtil;
-import java.util.concurrent.atomic.AtomicBoolean;
+import org.json.JSONObject;
 
-public class abwu
-  implements Runnable
+public abstract interface abwu
 {
-  public abwu(HotChatFlashPicActivity paramHotChatFlashPicActivity, String paramString) {}
+  public abstract void onComplete();
   
-  public void run()
-  {
-    DESUtil.b(this.jdField_a_of_type_JavaLangString, HotChatFlashPicActivity.c(this.jdField_a_of_type_ComTencentMobileqqDatingHotChatFlashPicActivity));
-    HotChatFlashPicActivity.b(this.jdField_a_of_type_ComTencentMobileqqDatingHotChatFlashPicActivity, true);
-    if (!HotChatFlashPicActivity.a(this.jdField_a_of_type_ComTencentMobileqqDatingHotChatFlashPicActivity).get()) {
-      HotChatFlashPicActivity.b(this.jdField_a_of_type_ComTencentMobileqqDatingHotChatFlashPicActivity, this.jdField_a_of_type_JavaLangString);
-    }
-    HotChatFlashPicActivity.a(this.jdField_a_of_type_ComTencentMobileqqDatingHotChatFlashPicActivity, this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void onFailure(int paramInt, String paramString);
+  
+  public abstract void onPermission(int paramInt);
+  
+  public abstract void onSuccess(JSONObject paramJSONObject);
+  
+  public abstract void onTrigger(JSONObject paramJSONObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwu
  * JD-Core Version:    0.7.0.1
  */

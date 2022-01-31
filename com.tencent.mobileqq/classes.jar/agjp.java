@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
-public class agjp
-  implements Runnable
+class agjp
+  implements View.OnClickListener
 {
-  public agjp(ScanTorchActivity paramScanTorchActivity) {}
+  agjp(agji paramagji) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQToast localQQToast = QQToast.a(this.a, "本机型无法支持穿越，请换其它手机穿越。", 1);
-    localQQToast.a();
-    localQQToast.a();
-    this.a.finish();
+    this.a.a(((TextView)paramView).getText().toString());
+    this.a.w();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agjp
  * JD-Core Version:    0.7.0.1
  */

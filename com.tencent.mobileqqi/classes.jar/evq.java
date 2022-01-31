@@ -1,21 +1,14 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.media.SoundPool;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 class evq
   implements Runnable
 {
-  evq(evo paramevo) {}
+  evq(evp paramevp) {}
   
   public void run()
   {
-    try
-    {
-      if (!this.a.a.isFinishing()) {
-        this.a.a.a.dismiss();
-      }
-      return;
-    }
-    catch (Exception localException) {}
+    VoipDialInterfaceActivity.a(this.a.a).play(VoipDialInterfaceActivity.h(this.a.a), 1.0F, 1.0F, 0, 0, 1.0F);
   }
 }
 

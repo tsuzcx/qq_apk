@@ -1,40 +1,52 @@
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
-import com.tencent.mobileqq.adapter.PeopleAroundAdapter;
-import com.tencent.widget.XListView;
-import java.lang.ref.WeakReference;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class des
   extends Handler
 {
-  private WeakReference a;
-  
-  public des(PeopleAroundBaseActivity paramPeopleAroundBaseActivity)
-  {
-    this.a = new WeakReference(paramPeopleAroundBaseActivity);
-  }
+  public des(RegisterActivity paramRegisterActivity) {}
   
   public void handleMessage(Message paramMessage)
   {
-    PeopleAroundBaseActivity localPeopleAroundBaseActivity = (PeopleAroundBaseActivity)this.a.get();
-    if (localPeopleAroundBaseActivity == null) {}
-    do
+    this.a.e();
+    switch (paramMessage.what)
     {
-      return;
-      switch (paramMessage.what)
+    case -1: 
+    case 0: 
+    case 2: 
+    default: 
+    case 1: 
+    case 3: 
+    case 4: 
+    case 5: 
+      do
       {
-      default: 
         return;
-      }
-      PeopleAroundBaseActivity.a(localPeopleAroundBaseActivity);
-      localPeopleAroundBaseActivity.jdField_a_of_type_ComTencentWidgetXListView.B();
-      if (paramMessage.arg1 == 1) {
-        localPeopleAroundBaseActivity.a(1, 2131562097);
-      }
-    } while (!localPeopleAroundBaseActivity.jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter.b);
-    localPeopleAroundBaseActivity.jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter.b = false;
-    localPeopleAroundBaseActivity.jdField_a_of_type_ComTencentMobileqqAdapterPeopleAroundAdapter.notifyDataSetChanged();
+        paramMessage = this.a;
+        paramMessage.jdField_a_of_type_Byte = ((byte)(paramMessage.jdField_a_of_type_Byte + 1));
+        this.a.c();
+        return;
+        this.a.f();
+        return;
+        this.a.d();
+        return;
+      } while (this.a.jdField_a_of_type_JavaLangString == null);
+      Toast.makeText(this.a, this.a.jdField_a_of_type_JavaLangString, 1).show();
+      this.a.jdField_a_of_type_JavaLangString = null;
+      return;
+    case 6: 
+      paramMessage = paramMessage.getData().getString("url");
+      this.a.a(paramMessage);
+      return;
+    case 7: 
+      this.a.a(paramMessage.getData().getString("telNum"), paramMessage.getData().getString("msg"));
+      return;
+    }
+    this.a.jdField_a_of_type_Byte = 3;
+    this.a.c();
   }
 }
 

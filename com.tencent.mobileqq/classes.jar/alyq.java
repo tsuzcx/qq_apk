@@ -1,80 +1,47 @@
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothProfile;
-import android.text.TextUtils;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
-import com.tencent.sharp.jni.TraeAudioManager.DeviceConfigManager;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
-class alyq
-  implements Runnable
+public class alyq
+  extends ContentObserver
 {
-  alyq(alyp paramalyp) {}
+  WeakReference<PhoneContactManagerImp> a;
   
-  public void run()
+  public alyq(Handler paramHandler)
   {
-    if (this.a.jdField_a_of_type_AndroidBluetoothBluetoothProfile != null) {}
-    for (;;)
-    {
-      try
-      {
-        List localList = this.a.jdField_a_of_type_AndroidBluetoothBluetoothProfile.getConnectedDevices();
-        if (localList == null) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.w("TRAE", 2, "TRAEBluetoohProxy: HEADSET Connected devs:" + localList.size() + " _profile:" + this.a.jdField_a_of_type_AndroidBluetoothBluetoothProfile);
-        }
-        int i = 0;
-        if (i >= localList.size()) {
-          break;
-        }
-        BluetoothDevice localBluetoothDevice = (BluetoothDevice)localList.get(i);
-        int j = this.a.jdField_a_of_type_AndroidBluetoothBluetoothProfile.getConnectionState(localBluetoothDevice);
-        if (j == 2) {
-          this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a(localBluetoothDevice.getName());
-        }
-        if (QLog.isColorLevel()) {
-          QLog.w("TRAE", 2, "   " + i + " " + localBluetoothDevice.getName() + " ConnectionState:" + j);
-        }
-        i += 1;
-        continue;
-        str = null;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TraeAudioManager", 2, "onServiceConnected.run e = " + localException);
-        }
-      }
+    super(paramHandler);
+  }
+  
+  public void a(PhoneContactManagerImp paramPhoneContactManagerImp)
+  {
+    if (this.a != null) {
+      this.a.clear();
     }
-    if (this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager != null) {
-      if (this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager == null) {
-        break label346;
-      }
+    if (paramPhoneContactManagerImp != null) {
+      this.a = new WeakReference(paramPhoneContactManagerImp);
     }
-    label346:
-    for (String str = this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a();; str = null)
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContact.Manager", 2, "Contact changed.");
+    }
+    if (this.a == null) {}
+    for (PhoneContactManagerImp localPhoneContactManagerImp = null;; localPhoneContactManagerImp = (PhoneContactManagerImp)this.a.get())
     {
-      if (TextUtils.isEmpty(str))
-      {
-        this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a("DEVICE_BLUETOOTHHEADSET", false);
-        return;
+      if (localPhoneContactManagerImp != null) {
+        localPhoneContactManagerImp.g = true;
       }
-      if (this.a.a())
-      {
-        this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a("DEVICE_BLUETOOTHHEADSET", true);
-        this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a("DEVICE_BLUETOOTHHEADSET", true);
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a("DEVICE_BLUETOOTHHEADSET", false);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alyq
  * JD-Core Version:    0.7.0.1
  */

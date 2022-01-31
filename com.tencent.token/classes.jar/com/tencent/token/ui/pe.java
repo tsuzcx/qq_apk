@@ -2,17 +2,17 @@ package com.tencent.token.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import com.tencent.token.cw;
 
-final class pe
+class pe
   implements DialogInterface.OnClickListener
 {
-  pe(LogoActivity paramLogoActivity) {}
+  pe(ModifyQQPwdActivity paramModifyQQPwdActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new Intent(this.a, StartPwdGestureModifyActivity.class);
-    this.a.startActivityForResult(paramDialogInterface, 260);
+    cw.a().d(0L, this.a.mPwdText, 1, this.a.mHandler);
+    this.a.showProDialog(this.a, 2131230843, 2131230942, new pf(this));
   }
 }
 

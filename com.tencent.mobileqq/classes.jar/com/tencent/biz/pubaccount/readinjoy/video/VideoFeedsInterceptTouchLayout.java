@@ -3,10 +3,10 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.widget.RelativeLayout;
+import android.widget.FrameLayout;
 
 public class VideoFeedsInterceptTouchLayout
-  extends RelativeLayout
+  extends FrameLayout
 {
   public VideoFeedsInterceptTouchLayout(Context paramContext)
   {
@@ -42,7 +42,7 @@ public class VideoFeedsInterceptTouchLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsInterceptTouchLayout
  * JD-Core Version:    0.7.0.1
  */

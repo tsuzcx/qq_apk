@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class QFind$RespHeader
-  extends MessageMicro
+  extends MessageMicro<RespHeader>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "result", "desc" }, new Object[] { Integer.valueOf(0), "" }, RespHeader.class);
   public final PBStringField desc = PBField.initString("");
@@ -15,7 +15,7 @@ public final class QFind$RespHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.qfind.QFind.RespHeader
  * JD-Core Version:    0.7.0.1
  */

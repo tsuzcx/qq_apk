@@ -1,50 +1,26 @@
-import android.graphics.SurfaceTexture;
-import android.opengl.Matrix;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.TextureRender;
-import com.tencent.mobileqq.worldcup.ARWorldCupMediaPlayerWrapper;
-import com.tencent.mobileqq.worldcup.ARWorldCupMediaPlayerWrapper.OnPlayMediaStatusListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class akxy
-  implements Runnable
+final class akxy
+  implements EIPCResultCallback
 {
-  public akxy(ARWorldCupMediaPlayerWrapper paramARWorldCupMediaPlayerWrapper) {}
+  akxy(long paramLong, String paramString) {}
   
-  public void run()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    try
-    {
-      if (ARWorldCupMediaPlayerWrapper.a(this.a)) {
-        return;
-      }
-      if (ARWorldCupMediaPlayerWrapper.a(this.a) != null)
-      {
-        ARWorldCupMediaPlayerWrapper.a(this.a).updateTexImage();
-        ARWorldCupMediaPlayerWrapper.a(this.a).getTransformMatrix(ARWorldCupMediaPlayerWrapper.a(this.a));
-        ARWorldCupMediaPlayerWrapper.a(this.a);
-        ARWorldCupMediaPlayerWrapper.a(this.a);
-        Matrix.setIdentityM(ARWorldCupMediaPlayerWrapper.b(this.a), 0);
-        ARWorldCupMediaPlayerWrapper.a(this.a).b();
-        ARWorldCupMediaPlayerWrapper.a(this.a).a(36197, ARWorldCupMediaPlayerWrapper.a(this.a), ARWorldCupMediaPlayerWrapper.a(this.a), ARWorldCupMediaPlayerWrapper.b(this.a));
-        ARWorldCupMediaPlayerWrapper.a(this.a).c();
-        if ((ARWorldCupMediaPlayerWrapper.b(this.a) == 2L) && (ARWorldCupMediaPlayerWrapper.a(this.a) != null))
-        {
-          ARWorldCupMediaPlayerWrapper.a(this.a).a(ARWorldCupMediaPlayerWrapper.b(this.a), 0, ARWorldCupMediaPlayerWrapper.a(this.a).a());
-          QLog.d("ARWorldCupMediaPlayerWrapper", 2, "ARWorldCupMediaPlayerWrapper.drawFrame hardWare");
-          return;
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ARWorldCupMediaPlayerWrapper", 1, "mUpdateHardTextureRunnable fail.", localException);
+    paramEIPCResult = paramEIPCResult.data.getString("resData");
+    akwd.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, this.jdField_a_of_type_JavaLangString, paramEIPCResult);
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GET_DRESS_PATH onCallback resJson:" + paramEIPCResult);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akxy
  * JD-Core Version:    0.7.0.1
  */

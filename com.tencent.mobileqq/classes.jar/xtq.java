@@ -1,22 +1,39 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
-import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
 
-class xtq
-  implements Runnable
+final class xtq
+  extends xtb
 {
-  xtq(xtp paramxtp, long paramLong1, long paramLong2) {}
+  xtq(xtb paramxtb, PublishVideoEntry paramPublishVideoEntry) {}
   
-  public void run()
+  public void onFailure(String paramString)
   {
-    QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_Xtp.a).setProgress((int)(this.jdField_a_of_type_Long * 100L / this.b));
-    QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_Xtp.a).setText(QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_Long));
-    QzDynamicVideoPreviewActivity.b(this.jdField_a_of_type_Xtp.a).setText(QzDynamicVideoPreviewActivity.a(this.b));
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
+    }
+    this.jdField_a_of_type_Xtb.onFailure(paramString);
+    if ((this.jdField_a_of_type_Xtb instanceof upi)) {
+      ((upi)this.jdField_a_of_type_Xtb).a(941005);
+    }
+    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio failed message：" + paramString);
+  }
+  
+  public void onStart()
+  {
+    super.onStart();
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio start");
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = this.b;
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio success cost：" + String.valueOf(l1 - l2) + "ms\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xtq
  * JD-Core Version:    0.7.0.1
  */

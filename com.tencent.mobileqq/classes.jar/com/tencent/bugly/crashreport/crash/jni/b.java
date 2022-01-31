@@ -1,6 +1,7 @@
 package com.tencent.bugly.crashreport.crash.jni;
 
 import android.content.Context;
+import android.text.TextUtils;
 import com.tencent.bugly.crashreport.common.info.a;
 import com.tencent.bugly.crashreport.crash.CrashDetailBean;
 import com.tencent.bugly.proguard.x;
@@ -245,19 +246,19 @@ public final class b
       x.e("no intStateStr", new Object[0]);
       return null;
     }
-    Map localMap = c(paramContext);
+    Map localMap = d(paramContext);
     if (localMap == null)
     {
       x.e("parse intSateMap fail", new Object[] { Integer.valueOf(paramMap.size()) });
       return null;
     }
-    label1078:
-    label1081:
-    label1088:
-    label1091:
-    label1094:
-    label1097:
-    label1100:
+    label1082:
+    label1085:
+    label1092:
+    label1095:
+    label1098:
+    label1101:
+    label1104:
     for (;;)
     {
       int i;
@@ -266,35 +267,35 @@ public final class b
         ((Integer)localMap.get("sino")).intValue();
         ((Integer)localMap.get("sud")).intValue();
         String str3 = (String)paramMap.get("soVersion");
-        if (str3 == null)
+        if (TextUtils.isEmpty(str3))
         {
           x.e("error format at version", new Object[0]);
           return null;
         }
         String str1 = (String)paramMap.get("errorAddr");
         if (str1 != null) {
-          break label1088;
+          break label1092;
         }
         str1 = "unknown";
         paramContext = (String)paramMap.get("codeMsg");
         if (paramContext != null) {
-          break label1091;
+          break label1095;
         }
         paramContext = "unknown";
         String str2 = (String)paramMap.get("tombPath");
         if (str2 != null) {
-          break label1094;
+          break label1098;
         }
         str2 = "unknown";
         Object localObject1 = (String)paramMap.get("signalName");
         if (localObject1 != null) {
-          break label1097;
+          break label1101;
         }
         localObject1 = "unknown";
         paramMap.get("errnoMsg");
         Object localObject2 = (String)paramMap.get("stack");
         if (localObject2 != null) {
-          break label1100;
+          break label1104;
         }
         localObject2 = "unknown";
         Object localObject4 = (String)paramMap.get("jstack");
@@ -327,7 +328,7 @@ public final class b
         }
         paramContext = (String)paramMap.get("sendingProcess");
         if (paramContext != null) {
-          break label1078;
+          break label1082;
         }
         paramContext = "unknown";
         Object localObject6 = (Integer)localMap.get("spd");
@@ -366,10 +367,10 @@ public final class b
               {
                 paramContext = localObject9[i].split("=");
                 if (paramContext.length != 2) {
-                  break label1081;
+                  break label1085;
                 }
                 ((Map)localObject8).put(paramContext[0], paramContext[1]);
-                break label1081;
+                break label1085;
               }
             }
             long l = ((Integer)localMap.get("ets")).intValue();
@@ -440,22 +441,21 @@ public final class b
   
   /* Error */
   private static String a(java.io.BufferedInputStream paramBufferedInputStream)
-    throws java.io.IOException
   {
     // Byte code:
     //   0: aload_0
     //   1: ifnonnull +5 -> 6
     //   4: aconst_null
     //   5: areturn
-    //   6: new 300	java/io/ByteArrayOutputStream
+    //   6: new 306	java/io/ByteArrayOutputStream
     //   9: dup
     //   10: sipush 1024
-    //   13: invokespecial 303	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   13: invokespecial 309	java/io/ByteArrayOutputStream:<init>	(I)V
     //   16: astore_3
     //   17: aload_3
     //   18: astore_2
     //   19: aload_0
-    //   20: invokevirtual 306	java/io/BufferedInputStream:read	()I
+    //   20: invokevirtual 312	java/io/BufferedInputStream:read	()I
     //   23: istore_1
     //   24: iload_1
     //   25: iconst_m1
@@ -467,19 +467,19 @@ public final class b
     //   35: new 59	java/lang/String
     //   38: dup
     //   39: aload_3
-    //   40: invokevirtual 310	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   43: ldc_w 312
-    //   46: invokespecial 315	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   40: invokevirtual 316	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   43: ldc_w 318
+    //   46: invokespecial 321	java/lang/String:<init>	([BLjava/lang/String;)V
     //   49: astore_0
     //   50: aload_3
-    //   51: invokevirtual 316	java/io/ByteArrayOutputStream:close	()V
+    //   51: invokevirtual 322	java/io/ByteArrayOutputStream:close	()V
     //   54: aload_0
     //   55: areturn
     //   56: aload_3
     //   57: astore_2
     //   58: aload_3
     //   59: iload_1
-    //   60: invokevirtual 319	java/io/ByteArrayOutputStream:write	(I)V
+    //   60: invokevirtual 325	java/io/ByteArrayOutputStream:write	(I)V
     //   63: goto -46 -> 17
     //   66: astore_2
     //   67: aload_3
@@ -489,16 +489,16 @@ public final class b
     //   71: aload_0
     //   72: astore_2
     //   73: aload_3
-    //   74: invokestatic 292	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   74: invokestatic 298	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   77: pop
     //   78: aload_0
     //   79: ifnull -75 -> 4
     //   82: aload_0
-    //   83: invokevirtual 316	java/io/ByteArrayOutputStream:close	()V
+    //   83: invokevirtual 322	java/io/ByteArrayOutputStream:close	()V
     //   86: aconst_null
     //   87: areturn
     //   88: aload_3
-    //   89: invokevirtual 316	java/io/ByteArrayOutputStream:close	()V
+    //   89: invokevirtual 322	java/io/ByteArrayOutputStream:close	()V
     //   92: aconst_null
     //   93: areturn
     //   94: astore_0
@@ -507,7 +507,7 @@ public final class b
     //   97: aload_2
     //   98: ifnull +7 -> 105
     //   101: aload_2
-    //   102: invokevirtual 316	java/io/ByteArrayOutputStream:close	()V
+    //   102: invokevirtual 322	java/io/ByteArrayOutputStream:close	()V
     //   105: aload_0
     //   106: athrow
     //   107: astore_0
@@ -588,7 +588,7 @@ public final class b
     //   22: new 30	java/io/File
     //   25: dup
     //   26: aload_0
-    //   27: invokespecial 334	java/io/File:<init>	(Ljava/lang/String;)V
+    //   27: invokespecial 338	java/io/File:<init>	(Ljava/lang/String;)V
     //   30: astore 6
     //   32: aload 5
     //   34: astore 4
@@ -600,93 +600,93 @@ public final class b
     //   48: aload 6
     //   50: invokevirtual 42	java/io/File:canRead	()Z
     //   53: ifeq -34 -> 19
-    //   56: ldc_w 336
+    //   56: ldc_w 340
     //   59: iconst_2
     //   60: anewarray 4	java/lang/Object
     //   63: dup
     //   64: iconst_0
     //   65: aload 6
-    //   67: invokevirtual 339	java/io/File:length	()J
-    //   70: invokestatic 342	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   67: invokevirtual 343	java/io/File:length	()J
+    //   70: invokestatic 346	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   73: aastore
     //   74: dup
     //   75: iconst_1
     //   76: aload 6
-    //   78: invokevirtual 345	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   78: invokevirtual 349	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   81: aastore
-    //   82: invokestatic 347	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   82: invokestatic 351	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   85: pop
     //   86: getstatic 16	com/tencent/bugly/crashreport/crash/jni/b:a	Ljava/util/List;
     //   89: aload 6
-    //   91: invokeinterface 352 2 0
+    //   91: invokeinterface 356 2 0
     //   96: pop
-    //   97: ldc_w 354
+    //   97: ldc_w 358
     //   100: iconst_0
     //   101: anewarray 4	java/lang/Object
-    //   104: invokestatic 236	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   104: invokestatic 242	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   107: pop
     //   108: aload_2
     //   109: ifnonnull +17 -> 126
     //   112: new 30	java/io/File
     //   115: dup
     //   116: aload_0
-    //   117: invokespecial 334	java/io/File:<init>	(Ljava/lang/String;)V
+    //   117: invokespecial 338	java/io/File:<init>	(Ljava/lang/String;)V
     //   120: iload_1
     //   121: iload_3
-    //   122: invokestatic 357	com/tencent/bugly/proguard/z:a	(Ljava/io/File;IZ)Ljava/lang/String;
+    //   122: invokestatic 361	com/tencent/bugly/proguard/z:a	(Ljava/io/File;IZ)Ljava/lang/String;
     //   125: areturn
-    //   126: new 156	java/lang/StringBuilder
+    //   126: new 162	java/lang/StringBuilder
     //   129: dup
-    //   130: invokespecial 157	java/lang/StringBuilder:<init>	()V
+    //   130: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   133: astore 5
-    //   135: new 359	java/io/BufferedReader
+    //   135: new 363	java/io/BufferedReader
     //   138: dup
-    //   139: new 361	java/io/InputStreamReader
+    //   139: new 365	java/io/InputStreamReader
     //   142: dup
     //   143: new 46	java/io/FileInputStream
     //   146: dup
     //   147: aload 6
     //   149: invokespecial 49	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   152: ldc_w 363
-    //   155: invokespecial 366	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
-    //   158: invokespecial 369	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   152: ldc_w 367
+    //   155: invokespecial 370	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   158: invokespecial 373	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   161: astore 4
     //   163: aload 4
     //   165: astore_0
     //   166: aload 4
-    //   168: invokevirtual 372	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   168: invokevirtual 376	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   171: astore 6
     //   173: aload 6
     //   175: ifnull +91 -> 266
     //   178: aload 4
     //   180: astore_0
-    //   181: new 156	java/lang/StringBuilder
+    //   181: new 162	java/lang/StringBuilder
     //   184: dup
-    //   185: invokespecial 157	java/lang/StringBuilder:<init>	()V
+    //   185: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   188: aload_2
-    //   189: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   192: ldc_w 374
-    //   195: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   198: invokevirtual 166	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   201: invokestatic 380	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
+    //   189: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   192: ldc_w 378
+    //   195: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   198: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   201: invokestatic 384	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
     //   204: aload 6
-    //   206: invokevirtual 384	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
-    //   209: invokevirtual 389	java/util/regex/Matcher:find	()Z
+    //   206: invokevirtual 388	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+    //   209: invokevirtual 393	java/util/regex/Matcher:find	()Z
     //   212: ifeq +19 -> 231
     //   215: aload 4
     //   217: astore_0
     //   218: aload 5
     //   220: aload 6
-    //   222: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   225: ldc 205
-    //   227: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   222: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   225: ldc 210
+    //   227: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   230: pop
     //   231: iload_1
     //   232: ifle -69 -> 163
     //   235: aload 4
     //   237: astore_0
     //   238: aload 5
-    //   240: invokevirtual 390	java/lang/StringBuilder:length	()I
+    //   240: invokevirtual 394	java/lang/StringBuilder:length	()I
     //   243: iload_1
     //   244: if_icmple -81 -> 163
     //   247: iload_3
@@ -696,21 +696,21 @@ public final class b
     //   254: aload 5
     //   256: iload_1
     //   257: aload 5
-    //   259: invokevirtual 390	java/lang/StringBuilder:length	()I
-    //   262: invokevirtual 394	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
+    //   259: invokevirtual 394	java/lang/StringBuilder:length	()I
+    //   262: invokevirtual 398	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
     //   265: pop
     //   266: aload 4
     //   268: astore_0
     //   269: aload 5
-    //   271: invokevirtual 166	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   271: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   274: astore_2
     //   275: aload 4
-    //   277: invokevirtual 395	java/io/BufferedReader:close	()V
+    //   277: invokevirtual 399	java/io/BufferedReader:close	()V
     //   280: aload_2
     //   281: areturn
     //   282: astore_0
     //   283: aload_0
-    //   284: invokestatic 292	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   284: invokestatic 298	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   287: pop
     //   288: aload_2
     //   289: areturn
@@ -719,10 +719,10 @@ public final class b
     //   293: aload 5
     //   295: iconst_0
     //   296: aload 5
-    //   298: invokevirtual 390	java/lang/StringBuilder:length	()I
+    //   298: invokevirtual 394	java/lang/StringBuilder:length	()I
     //   301: iload_1
     //   302: isub
-    //   303: invokevirtual 394	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
+    //   303: invokevirtual 398	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
     //   306: pop
     //   307: goto -144 -> 163
     //   310: astore_0
@@ -733,23 +733,23 @@ public final class b
     //   317: aload_2
     //   318: astore_0
     //   319: aload 4
-    //   321: invokestatic 292	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   321: invokestatic 298	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   324: pop
     //   325: aload_2
     //   326: astore_0
     //   327: aload 5
-    //   329: new 156	java/lang/StringBuilder
+    //   329: new 162	java/lang/StringBuilder
     //   332: dup
-    //   333: ldc_w 397
-    //   336: invokespecial 398	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   333: ldc_w 401
+    //   336: invokespecial 402	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   339: aload 4
-    //   341: invokevirtual 399	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   344: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   347: ldc_w 401
-    //   350: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   353: invokevirtual 166	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   356: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   359: invokevirtual 166	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   341: invokevirtual 403	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   344: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   347: ldc_w 405
+    //   350: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   353: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   356: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   359: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   362: astore 4
     //   364: aload 4
     //   366: astore_0
@@ -758,12 +758,12 @@ public final class b
     //   370: aload_2
     //   371: ifnull -352 -> 19
     //   374: aload_2
-    //   375: invokevirtual 395	java/io/BufferedReader:close	()V
+    //   375: invokevirtual 399	java/io/BufferedReader:close	()V
     //   378: aload_0
     //   379: areturn
     //   380: astore_2
     //   381: aload_2
-    //   382: invokestatic 292	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   382: invokestatic 298	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   385: pop
     //   386: aload_0
     //   387: areturn
@@ -773,12 +773,12 @@ public final class b
     //   391: aload_0
     //   392: ifnull +7 -> 399
     //   395: aload_0
-    //   396: invokevirtual 395	java/io/BufferedReader:close	()V
+    //   396: invokevirtual 399	java/io/BufferedReader:close	()V
     //   399: aload_2
     //   400: athrow
     //   401: astore_0
     //   402: aload_0
-    //   403: invokestatic 292	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   403: invokestatic 298	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   406: pop
     //   407: goto -8 -> 399
     //   410: astore_2
@@ -848,7 +848,6 @@ public final class b
   
   public static void a(boolean paramBoolean, String paramString)
   {
-    Object localObject;
     if (paramString != null)
     {
       a.add(new File(paramString, "rqd_record.eup"));
@@ -856,46 +855,19 @@ public final class b
       a.add(new File(paramString, "map_record.txt"));
       a.add(new File(paramString, "backup_record.txt"));
       if (paramBoolean) {
-        try
-        {
-          paramString = new File(paramString);
-          if ((paramString.canRead()) && (paramString.isDirectory()))
-          {
-            paramString = paramString.listFiles();
-            if (paramString != null)
-            {
-              int j = paramString.length;
-              int i = 0;
-              while (i < j)
-              {
-                localObject = paramString[i];
-                if ((((File)localObject).canRead()) && (((File)localObject).canWrite()) && (((File)localObject).length() == 0L)) {
-                  a.add(localObject);
-                }
-                i += 1;
-              }
-            }
-          }
-          if (a == null) {
-            return;
-          }
-        }
-        catch (Throwable paramString)
-        {
-          x.a(paramString);
-        }
+        c(paramString);
       }
     }
-    if (a.size() > 0)
+    if ((a != null) && (a.size() > 0))
     {
       paramString = a.iterator();
       while (paramString.hasNext())
       {
-        localObject = (File)paramString.next();
-        if ((((File)localObject).exists()) && (((File)localObject).canWrite()))
+        File localFile = (File)paramString.next();
+        if ((localFile.exists()) && (localFile.canWrite()))
         {
-          ((File)localObject).delete();
-          x.c("Delete record file %s", new Object[] { ((File)localObject).getAbsoluteFile() });
+          localFile.delete();
+          x.c("Delete record file %s", new Object[] { localFile.getAbsoluteFile() });
         }
       }
     }
@@ -1124,7 +1096,44 @@ public final class b
     }
   }
   
-  private static Map<String, Integer> c(String paramString)
+  public static void c(String paramString)
+  {
+    int i = 0;
+    if (paramString == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramString = new File(paramString);
+        if ((!paramString.canRead()) || (!paramString.isDirectory())) {
+          continue;
+        }
+        paramString = paramString.listFiles();
+        if (paramString == null) {
+          continue;
+        }
+        int j = paramString.length;
+        while (i < j)
+        {
+          Object localObject = paramString[i];
+          if ((localObject.canRead()) && (localObject.canWrite()) && (localObject.length() == 0L))
+          {
+            localObject.delete();
+            x.c("Delete empty record file %s", new Object[] { localObject.getAbsoluteFile() });
+          }
+          i += 1;
+        }
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        x.a(paramString);
+      }
+    }
+  }
+  
+  private static Map<String, Integer> d(String paramString)
   {
     if (paramString == null) {
       return null;

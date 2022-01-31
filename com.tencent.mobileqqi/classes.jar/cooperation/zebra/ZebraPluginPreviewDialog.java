@@ -9,8 +9,8 @@ public class ZebraPluginPreviewDialog
   public ZebraPluginPreviewDialog(Context paramContext, int paramInt)
   {
     super(paramContext, 2131624477);
-    setContentView(2130904075);
-    paramContext = findViewById(2131234859);
+    setContentView(2130904077);
+    paramContext = findViewById(2131234861);
     if (paramContext != null) {
       paramContext.getLayoutParams().height = a(getContext());
     }

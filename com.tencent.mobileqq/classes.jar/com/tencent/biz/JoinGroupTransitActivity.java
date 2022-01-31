@@ -3,20 +3,21 @@ package com.tencent.biz;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import bdhk;
+import bdib;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
-import kiw;
-import kix;
+import myo;
+import mys;
+import myt;
 
 public class JoinGroupTransitActivity
   extends BaseActivity
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private JoinGroupHandler jdField_a_of_type_ComTencentBizJoinGroupHandler;
   private String jdField_a_of_type_JavaLangString;
-  private kix jdField_a_of_type_Kix;
+  private myo jdField_a_of_type_Myo;
+  private myt jdField_a_of_type_Myt;
   private String b = "";
   
   private void a()
@@ -27,11 +28,11 @@ public class JoinGroupTransitActivity
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         finish();
       }
-      this.jdField_a_of_type_Kix = new kix(this);
-      JumpAction localJumpAction = JumpParser.a(this.app, this, this.jdField_a_of_type_JavaLangString);
-      this.b = localJumpAction.a("activity_titile_name");
-      this.jdField_a_of_type_Long = Long.valueOf(localJumpAction.a("group_code")).longValue();
-      this.jdField_a_of_type_Int = Integer.valueOf(localJumpAction.a("subsource_id")).intValue();
+      this.jdField_a_of_type_Myt = new myt(this);
+      bdhk localbdhk = bdib.a(this.app, this, this.jdField_a_of_type_JavaLangString);
+      this.b = localbdhk.b("activity_titile_name");
+      this.jdField_a_of_type_Long = Long.valueOf(localbdhk.b("group_code")).longValue();
+      this.jdField_a_of_type_Int = Integer.valueOf(localbdhk.b("subsource_id")).intValue();
       return;
     }
     catch (Exception localException)
@@ -41,20 +42,20 @@ public class JoinGroupTransitActivity
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     a();
-    this.jdField_a_of_type_ComTencentBizJoinGroupHandler = new JoinGroupHandler(this, this.app, this.jdField_a_of_type_Int, this.b, new kiw(this));
-    this.jdField_a_of_type_ComTencentBizJoinGroupHandler.a();
-    this.jdField_a_of_type_Kix.sendEmptyMessage(0);
+    this.jdField_a_of_type_Myo = new myo(this, this.app, this.jdField_a_of_type_Int, this.b, new mys(this));
+    this.jdField_a_of_type_Myo.a();
+    this.jdField_a_of_type_Myt.sendEmptyMessage(0);
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_ComTencentBizJoinGroupHandler.b();
+    this.jdField_a_of_type_Myo.b();
   }
 }
 

@@ -1,23 +1,15 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
-import dov.com.qq.im.cropvideo.RenderFilter;
+import android.content.DialogInterface.OnClickListener;
 
 public class anqn
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
 {
-  public anqn(CropVideoActivity paramCropVideoActivity) {}
-  
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    float f = paramScaleGestureDetector.getScaleFactor();
-    CropVideoActivity.a(this.a).b(f, f, 1.0F);
-    return true;
-  }
+  public DialogInterface.OnClickListener a;
+  public String a;
+  public String b;
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anqn
  * JD-Core Version:    0.7.0.1
  */

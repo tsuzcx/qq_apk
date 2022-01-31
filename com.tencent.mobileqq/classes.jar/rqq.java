@@ -1,25 +1,33 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.ProfileCardUtil;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class rqq
-  implements View.OnClickListener
+class rqq
+  implements bhyg
 {
-  public rqq(BaseChatPie paramBaseChatPie) {}
+  rqq(rqj paramrqj, BaseArticleInfo paramBaseArticleInfo) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.dismissDialog(230);
-    ProfileCardUtil.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, null, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 1101, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseAdapter", 2, "onAdComplain");
+    }
+    if ((this.jdField_a_of_type_Rqj.a instanceof Activity))
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_from_type", 1);
+      localIntent.putExtra("key_ad_info", (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+      PublicFragmentActivity.a(this.jdField_a_of_type_Rqj.a, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rqq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.Doraemon.APICallback;
-import com.tencent.mobileqq.Doraemon.APIParam;
-import com.tencent.mobileqq.Doraemon.DoraemonAPIManager;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class reb
-  implements Runnable
+final class reb
+  implements Animation.AnimationListener
 {
-  public reb(DoraemonAPIManager paramDoraemonAPIManager, String paramString, APIParam paramAPIParam, APICallback paramAPICallback) {}
+  reb(View paramView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    DoraemonAPIManager.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDoraemonAPIParam, this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback);
+    this.a.setTag(-1, null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     reb
  * JD-Core Version:    0.7.0.1
  */

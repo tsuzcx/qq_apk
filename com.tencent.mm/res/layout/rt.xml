@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/m1" android:paddingRight="@dimen/m1" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/q1"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.base.MMTagPanelScrollView android:id="@id/b70" android:background="@drawable/abl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fadeScrollbars="true">
+        <com.tencent.mm.plugin.label.ui.widget.MMLabelPanel android:id="@id/b71" android:paddingTop="@dimen/n_" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/n_" flowlayout:verticalSpacing="@dimen/dl" />
+    </com.tencent.mm.ui.base.MMTagPanelScrollView>
+    <TextView android:textSize="@dimen/ko" android:textColor="@color/y5" android:gravity="center" android:id="@id/b72" android:padding="@dimen/dl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/cny" />
+    <ScrollView android:id="@id/b73" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/b74" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:id="@id/b75" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <include android:id="@id/b76" layout="@layout/rn" />
+                <com.tencent.mm.plugin.label.ui.widget.MMLabelPanel android:id="@id/b77" android:paddingTop="@dimen/n_" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/n_" flowlayout:verticalSpacing="@dimen/dl" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <ListView android:id="@id/b78" android:background="@color/a6q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/mn" />
+</LinearLayout>

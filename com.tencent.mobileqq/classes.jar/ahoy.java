@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUBaseFilter;
-import com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class ahoy
-  implements Runnable
+class ahoy
+  implements BusinessObserver
 {
-  public ahoy(VideoFilterPlayView paramVideoFilterPlayView) {}
+  ahoy(ahox paramahox) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    VideoFilterPlayView.a(this.a).a();
-    VideoFilterPlayView.a(this.a).a(this.a.b, this.a.c);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("RecommendTroopAdapter", 4, "delRecommendTroop");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahoy
  * JD-Core Version:    0.7.0.1
  */

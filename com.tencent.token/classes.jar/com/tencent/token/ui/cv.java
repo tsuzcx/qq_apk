@@ -1,17 +1,20 @@
 package com.tencent.token.ui;
 
-import android.os.Handler;
-import android.os.Message;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class cv
-  implements Runnable
+class cv
+  implements View.OnClickListener
 {
-  cv(DetectIDPhotoActivity paramDetectIDPhotoActivity) {}
+  cv(CopyFaceToOtherUinActivity paramCopyFaceToOtherUinActivity) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    Message localMessage = DetectIDPhotoActivity.access$000(this.a).obtainMessage(5);
-    DetectIDPhotoActivity.access$000(this.a).sendMessage(localMessage);
+    paramView = new Intent(this.a, FaceRecognitionDefaultActivity.class);
+    paramView.addFlags(67108864);
+    this.a.startActivity(paramView);
+    this.a.finish();
   }
 }
 

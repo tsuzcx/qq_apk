@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
 
 public class yqx
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public yqx(CmGameAvHandler paramCmGameAvHandler) {}
+  public yqx(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    CmGameAvHandler.a(this.a, true);
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yqx
  * JD-Core Version:    0.7.0.1
  */

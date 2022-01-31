@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class abtj
-  implements Runnable
+final class abtj
+  implements Comparator<MessageRecord>
 {
-  public abtj(ContactSyncManager paramContactSyncManager) {}
-  
-  public void run()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    this.a.b();
+    if (paramMessageRecord1.longMsgIndex > paramMessageRecord2.longMsgIndex) {
+      return 1;
+    }
+    return -1;
   }
 }
 

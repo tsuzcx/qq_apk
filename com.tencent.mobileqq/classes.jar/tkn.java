@@ -1,37 +1,33 @@
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity.IProgressCallback;
-import com.tencent.mobileqq.statistics.storage.StorageReport;
-import com.tencent.mobileqq.utils.SdCardUtil;
-import com.tencent.mobileqq.widget.CircleProgressBar;
-import com.tencent.qphone.base.util.QLog;
+import UserGrowth.stSimpleGetFeedListReq;
+import UserGrowth.stSimpleGetFeedListRsp;
+import java.util.ArrayList;
 
 public class tkn
-  implements Runnable
+  extends thb<stSimpleGetFeedListRsp>
 {
-  public tkn(QQSettingCleanActivity paramQQSettingCleanActivity) {}
-  
-  public void run()
+  public tkn(String paramString1, byte paramByte1, byte paramByte2, ArrayList<String> paramArrayList, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    long l1 = SdCardUtil.a();
-    long l2 = SdCardUtil.a(this.a);
-    long l3 = SdCardUtil.b();
-    long l4 = SdCardUtil.b(this.a);
-    this.a.b = (l1 + l2);
-    this.a.e = (l3 + l4);
-    tko localtko = new tko(this);
-    this.a.c = StorageReport.a().a(localtko, 0, 98);
-    this.a.d = StorageReport.a().a(QQSettingCleanActivity.jdField_a_of_type_JavaUtilArrayList);
-    this.a.c -= this.a.d;
-    localtko.a(100);
-    QLog.d("QQCleanActivity", 1, "SpaceInfo total: " + this.a.b + " ava: " + this.a.e + " qq: " + this.a.c + " file: " + this.a.d);
-    QLog.d("QQCleanActivity", 1, "SpaceInfo totalIner: " + l1 + " totalExter: " + l2 + " avaInter: " + l3 + " avaExter: " + l4);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressBar.setFinish(this.a.c, this.a.d, this.a.b - this.a.c - this.a.d - this.a.e, this.a.e, 3.0F);
-    this.a.runOnUiThread(new tkp(this.a, 5));
+    super("SimpleGetFeedList");
+    stSimpleGetFeedListReq localstSimpleGetFeedListReq = new stSimpleGetFeedListReq();
+    localstSimpleGetFeedListReq.attach_info = paramString1;
+    localstSimpleGetFeedListReq.isrefresh = paramByte1;
+    localstSimpleGetFeedListReq.isfirst = paramByte2;
+    localstSimpleGetFeedListReq.channel_info = "from_android_qq";
+    localstSimpleGetFeedListReq.context_feedids = paramArrayList;
+    localstSimpleGetFeedListReq.scene = paramInt;
+    localstSimpleGetFeedListReq.gdt_args = paramString2;
+    localstSimpleGetFeedListReq.rowkey = paramString3;
+    localstSimpleGetFeedListReq.session = paramString4;
+    localstSimpleGetFeedListReq.push_info = paramString5;
+    localstSimpleGetFeedListReq.linkStragetyArgs = tlp.a();
+    localstSimpleGetFeedListReq.qqNum = tlv.a();
+    this.a = localstSimpleGetFeedListReq;
+    tlo.d("RecommendRequest", "stSimpleGetFeedListReq  = " + localstSimpleGetFeedListReq.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tkn
  * JD-Core Version:    0.7.0.1
  */

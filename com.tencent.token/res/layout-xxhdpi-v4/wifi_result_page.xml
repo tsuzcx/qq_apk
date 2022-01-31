@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:orientation="vertical" android:background="#ffffffff" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/wifi_result_content" android:background="@color/font_color_blue" android:layout_width="fill_parent" android:layout_height="260.0dip">
+            <ImageView android:id="@id/wifi_result_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="67.0dip" android:src="@drawable/wifi_result_safe" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/text_size_20" android:textColor="@color/utils_upper_dcode_background" android:id="@id/wifi_result_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="150.0dip" android:text="@string/wifi_result_safe" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/text_size_14" android:textColor="@color/utils_upper_dcode_background" android:id="@id/wifi_result_detail" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="182.0dip" android:text="@string/wifi_result_safedetail" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:id="@id/wifi_item_arp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="26.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="20.0dip">
+                <ImageView android:id="@id/wifi_item_arp_1" android:layout_width="17.0dip" android:layout_height="17.0dip" android:src="@drawable/account_detail_ok" android:layout_centerVertical="true" />
+                <TextView android:textSize="@dimen/text_size_16" android:textColor="@color/token_code_color" android:id="@id/wifi_item_arp_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/wifi_item_arp" android:layout_toRightOf="@id/wifi_item_arp_1" android:layout_centerVertical="true" />
+                <TextView android:textSize="@dimen/text_size_16" android:textColor="@color/text_gray" android:id="@id/wifi_item_arp_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wifi_safe" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <RelativeLayout android:id="@id/wifi_item_dns" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="26.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="20.0dip">
+                <ImageView android:id="@id/wifi_item_dns_1" android:layout_width="17.0dip" android:layout_height="17.0dip" android:src="@drawable/account_detail_ok" android:layout_centerVertical="true" />
+                <TextView android:textSize="@dimen/text_size_16" android:textColor="@color/token_code_color" android:id="@id/wifi_item_dns_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/wifi_item_dns" android:layout_toRightOf="@id/wifi_item_dns_1" android:layout_centerVertical="true" />
+                <TextView android:textSize="@dimen/text_size_16" android:textColor="@color/text_gray" android:id="@id/wifi_item_dns_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wifi_safe" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <RelativeLayout android:id="@id/wifi_item_fake" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="26.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="20.0dip">
+                <ImageView android:id="@id/wifi_item_fake_1" android:layout_width="17.0dip" android:layout_height="17.0dip" android:src="@drawable/account_detail_ok" android:layout_centerVertical="true" />
+                <TextView android:textSize="@dimen/text_size_16" android:textColor="@color/token_code_color" android:id="@id/wifi_item_fake_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/wifi_item_fake" android:layout_toRightOf="@id/wifi_item_fake_1" android:layout_centerVertical="true" />
+                <TextView android:textSize="@dimen/text_size_16" android:textColor="@color/text_gray" android:id="@id/wifi_item_fake_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wifi_safe" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <RelativeLayout android:id="@id/wifi_item_diaoyu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="26.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="20.0dip">
+                <ImageView android:id="@id/wifi_item_diaoyu_1" android:layout_width="17.0dip" android:layout_height="17.0dip" android:src="@drawable/account_detail_ok" android:layout_centerVertical="true" />
+                <TextView android:textSize="@dimen/text_size_16" android:textColor="@color/token_code_color" android:id="@id/wifi_item_diaoyu_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/wifi_item_diaoyu" android:layout_toRightOf="@id/wifi_item_diaoyu_1" android:layout_centerVertical="true" />
+                <TextView android:textSize="@dimen/text_size_16" android:textColor="@color/text_gray" android:id="@id/wifi_item_diaoyu_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wifi_safe" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <RelativeLayout android:id="@id/wifi_item_pwd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="26.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="20.0dip">
+                <ImageView android:id="@id/wifi_item_pwd_1" android:layout_width="17.0dip" android:layout_height="17.0dip" android:src="@drawable/account_detail_ok" android:layout_centerVertical="true" />
+                <TextView android:textSize="@dimen/text_size_16" android:textColor="@color/token_code_color" android:id="@id/wifi_item_pwd_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/wifi_item_pwd" android:layout_toRightOf="@id/wifi_item_pwd_1" android:layout_centerVertical="true" />
+                <TextView android:textSize="@dimen/text_size_16" android:textColor="@color/text_gray" android:id="@id/wifi_item_pwd_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wifi_safe" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+        </LinearLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="35.0dip">
+            <Button android:textSize="@dimen/text_size_17" android:textColor="@color/utils_upper_dcode_background" android:id="@id/wifi_result_btn" android:background="@drawable/wifi_blue_btn" android:layout_width="260.0dip" android:layout_height="47.0dip" android:text="@string/wifi_result_btn_safe" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

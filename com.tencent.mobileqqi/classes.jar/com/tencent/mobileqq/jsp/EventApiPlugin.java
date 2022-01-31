@@ -13,7 +13,7 @@ import com.tencent.mobileqq.webviewplugin.WebViewPlugin;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import gee;
+import fzs;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,7 +28,7 @@ public class EventApiPlugin
   
   public EventApiPlugin()
   {
-    this.a = new gee(this);
+    this.a = new fzs(this);
   }
   
   protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)

@@ -1,40 +1,18 @@
 package com.tencent.token.ui;
 
-import android.os.Message;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.EditText;
 
-final class aew
-  extends bo
+class aew
+  implements DialogInterface.OnClickListener
 {
-  aew(UtilsMbInfoActivity paramUtilsMbInfoActivity)
-  {
-    super(paramUtilsMbInfoActivity);
-  }
+  aew(aeu paramaeu) {}
   
-  public final void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.dismissDialog();
-    e.c("utils mbinfo: " + paramMessage.what);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.mIsIniting = false;
-    if (paramMessage.arg1 == 0)
-    {
-      this.a.hideTip();
-      return;
-    }
-    paramMessage = (d)paramMessage.obj;
-    if ((paramMessage.c == null) || (paramMessage.c.length() == 0)) {
-      d.a(this.a.getResources(), paramMessage);
-    }
-    this.a.showTip(paramMessage.a, paramMessage.c, null, false);
+    this.a.a.dismissDialog();
+    VerifyMobilePhoneActivity.access$000(this.a.a).setText("");
   }
 }
 

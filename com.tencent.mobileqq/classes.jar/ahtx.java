@@ -1,38 +1,33 @@
-import com.tencent.mobileqq.data.fts.FTSMessage;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
-import com.tencent.mobileqq.utils.fts.FTSMessageCodec.TextMsgExts;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
+import java.util.Map;
 
 public class ahtx
-  implements Comparator
+  extends altm
 {
-  public ahtx(FTSMessageSearchEngine paramFTSMessageSearchEngine) {}
+  public ahtx(TroopFragment paramTroopFragment) {}
   
-  public int a(FTSEntity paramFTSEntity1, FTSEntity paramFTSEntity2)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramFTSEntity1 = (FTSMessageCodec.TextMsgExts)((FTSMessage)paramFTSEntity1).msgExts;
-    paramFTSEntity2 = (FTSMessageCodec.TextMsgExts)((FTSMessage)paramFTSEntity2).msgExts;
-    long l1;
-    if (paramFTSEntity1 != null)
-    {
-      l1 = paramFTSEntity1.time;
-      if (paramFTSEntity2 == null) {
-        break label54;
-      }
+    if (paramBoolean1) {
+      this.a.h();
     }
-    label54:
-    for (long l2 = paramFTSEntity2.time;; l2 = 0L)
-    {
-      return Long.signum(l2 - l1);
-      l1 = 0L;
-      break;
+  }
+  
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  {
+    this.a.h();
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahtx
  * JD-Core Version:    0.7.0.1
  */

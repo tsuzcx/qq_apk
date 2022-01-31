@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:orientation="vertical" android:background="@color/background" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="110.0dip" android:src="@drawable/face_icon" />
+        <TextView android:id="@id/copy_face_tip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="17.0dip" android:layout_marginTop="23.0dip" android:layout_marginRight="17.0dip" style="@style/text_view_middle_18" />
+        <Button android:gravity="center" android:id="@id/button_confirm_copy" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="17.0dip" android:layout_marginTop="28.0dip" android:layout_marginRight="17.0dip" android:text="@string/face_copy_to_other_uin" style="@style/text_view_white" />
+        <Button android:textSize="@dimen/text_size_18" android:textColor="@color/facevry_common" android:gravity="center" android:id="@id/button_cancel_copy" android:background="@drawable/white_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="17.0dip" android:layout_marginTop="28.0dip" android:layout_marginRight="17.0dip" android:layout_marginBottom="10.0dip" android:text="@string/face_cancel_to_other_uin" />
+    </LinearLayout>
+</ScrollView>

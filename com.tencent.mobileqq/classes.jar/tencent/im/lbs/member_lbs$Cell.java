@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class member_lbs$Cell
-  extends MessageMicro
+  extends MessageMicro<Cell>
 {
   public static final int INT32_CELL_ID_FIELD_NUMBER = 4;
   public static final int INT32_LOCATION_AREA_CODE_FIELD_NUMBER = 3;
@@ -22,7 +22,7 @@ public final class member_lbs$Cell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.lbs.member_lbs.Cell
  * JD-Core Version:    0.7.0.1
  */

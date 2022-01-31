@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.highway.netprobe.WeakNetCallback;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.QQUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
 
 public final class aiop
-  implements WeakNetCallback
+  implements Parcelable.Creator<PhotoSendParams>
 {
-  private StatisticCollector a = StatisticCollector.a(BaseApplication.getContext());
-  
-  public void onResultOverflow(HashMap paramHashMap)
+  public PhotoSendParams a(Parcel paramParcel)
   {
-    this.a.a(QQUtils.a(), "actWeaknetProbe", true, 0L, paramHashMap.size(), paramHashMap, "");
+    return new PhotoSendParams(paramParcel);
+  }
+  
+  public PhotoSendParams[] a(int paramInt)
+  {
+    return new PhotoSendParams[paramInt];
   }
 }
 

@@ -1,5 +1,9 @@
 package com.tencent.mobileqq.activity.aio;
 
+import aepp;
+import aepq;
+import aepr;
+import aeps;
 import android.annotation.TargetApi;
 import android.app.Application;
 import android.bluetooth.BluetoothAdapter;
@@ -10,43 +14,49 @@ import android.media.AudioManager;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.SystemClock;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ptt.player.IPttPlayer;
-import com.tencent.mobileqq.ptt.player.IPttPlayerListener;
+import atlp;
+import awyc;
+import awyd;
+import azri;
+import bdfh;
+import bdfi;
+import com.tencent.mobileqq.ptt.player.AmrPlayer;
+import com.tencent.mobileqq.ptt.player.SilkPlayer;
 import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.AudioHelper.AudioPlayerParameter;
-import com.tencent.mobileqq.utils.AudioUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import ujr;
-import ujs;
-import ujt;
+import java.util.Timer;
 
 public class AudioPlayer
-  implements IPttPlayerListener, Runnable
+  implements awyd, Runnable
 {
   public static int a;
-  private static final List jdField_a_of_type_JavaUtilList = Arrays.asList(new Integer[] { Integer.valueOf(1796) });
+  private static final List<Integer> jdField_a_of_type_JavaUtilList = Arrays.asList(new Integer[] { Integer.valueOf(1796) });
   public static boolean a;
   public static boolean b;
   private static int jdField_d_of_type_Int;
   private static boolean f;
+  private float jdField_a_of_type_Float = MediaPlayerManager.jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long = -1L;
+  private aepr jdField_a_of_type_Aepr;
   private Application jdField_a_of_type_AndroidAppApplication;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  private Handler jdField_a_of_type_AndroidOsHandler = new ujr(this);
-  private AudioPlayer.AudioPlayerListener jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener;
-  private IPttPlayer jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer;
-  private volatile AudioHelper.AudioPlayerParameter jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter;
+  private Handler jdField_a_of_type_AndroidOsHandler = new aepp(this);
+  private awyc jdField_a_of_type_Awyc;
+  private volatile bdfh jdField_a_of_type_Bdfh;
   private String jdField_a_of_type_JavaLangString;
-  AudioHelper.AudioPlayerParameter[] jdField_a_of_type_ArrayOfComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter;
+  private Timer jdField_a_of_type_JavaUtilTimer;
+  bdfh[] jdField_a_of_type_ArrayOfBdfh;
   private volatile int b;
   private volatile int jdField_c_of_type_Int;
   private boolean jdField_c_of_type_Boolean;
   private boolean jdField_d_of_type_Boolean;
   private boolean e = true;
+  private boolean g;
   
   static
   {
@@ -55,33 +65,43 @@ public class AudioPlayer
     jdField_d_of_type_Int = -1;
   }
   
-  public AudioPlayer(Context paramContext, AudioPlayer.AudioPlayerListener paramAudioPlayerListener)
+  public AudioPlayer(Context paramContext, aepr paramaepr)
   {
     this.jdField_b_of_type_Int = jdField_a_of_type_Int;
     this.jdField_a_of_type_AndroidAppApplication = ((Application)paramContext.getApplicationContext());
     this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)this.jdField_a_of_type_AndroidAppApplication.getSystemService("audio"));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener = paramAudioPlayerListener;
+    this.jdField_a_of_type_Aepr = paramaepr;
   }
   
-  private AudioHelper.AudioPlayerParameter a()
+  private bdfh a()
   {
-    if (this.jdField_a_of_type_ArrayOfComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter == null) {
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter = AudioHelper.a();
+    if (this.jdField_a_of_type_ArrayOfBdfh == null) {
+      this.jdField_a_of_type_ArrayOfBdfh = AudioHelper.a();
     }
     if ((this.jdField_a_of_type_AndroidMediaAudioManager.isBluetoothScoOn()) && (jdField_a_of_type_Boolean)) {
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter[4];
+      return this.jdField_a_of_type_ArrayOfBdfh[4];
     }
     if (this.jdField_c_of_type_Boolean) {
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter[2];
+      return this.jdField_a_of_type_ArrayOfBdfh[2];
     }
     if (this.jdField_d_of_type_Boolean) {
-      return this.jdField_a_of_type_ArrayOfComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter[3];
+      return this.jdField_a_of_type_ArrayOfBdfh[3];
     }
-    AudioHelper.AudioPlayerParameter[] arrayOfAudioPlayerParameter = this.jdField_a_of_type_ArrayOfComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter;
+    bdfh[] arrayOfbdfh = this.jdField_a_of_type_ArrayOfBdfh;
     if (this.e) {}
     for (int i = 0;; i = 1) {
-      return arrayOfAudioPlayerParameter[i];
+      return arrayOfbdfh[i];
     }
+  }
+  
+  private void a(int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("issilk", String.valueOf(paramInt2));
+    localHashMap.put("isSuccess", String.valueOf(paramInt1));
+    localHashMap.put("errorCode", String.valueOf(paramInt3));
+    localHashMap.put("errormsg", paramString);
+    azri.a(BaseApplication.getContext()).a(null, "pttplaysuc", true, 0L, 0L, localHashMap, "");
   }
   
   private void a(AudioManager paramAudioManager)
@@ -105,10 +125,24 @@ public class AudioPlayer
     return true;
   }
   
-  private void b(int paramInt)
+  public static void b(float paramFloat)
   {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      b(this.jdField_a_of_type_JavaLangString, paramInt);
+    HashMap localHashMap = new HashMap();
+    if ((paramFloat >= 0.0F) && (paramFloat < 24.0F)) {
+      localHashMap.put("errorCode", String.valueOf(0));
+    }
+    for (;;)
+    {
+      localHashMap.put("hour", String.valueOf(paramFloat));
+      azri.a(BaseApplication.getContext()).a(null, "pttPlayFileNotFind", true, 0L, 0L, localHashMap, "");
+      return;
+      if ((paramFloat >= 24.0F) && (paramFloat < 168.0F)) {
+        localHashMap.put("errorCode", String.valueOf(1));
+      } else if ((paramFloat >= 168.0F) && (paramFloat < 360.0F)) {
+        localHashMap.put("errorCode", String.valueOf(2));
+      } else if (paramFloat > 360.0F) {
+        localHashMap.put("errorCode", String.valueOf(3));
+      }
     }
   }
   
@@ -117,8 +151,8 @@ public class AudioPlayer
     if (QLog.isColorLevel()) {
       QLog.d("AudioPlayer", 2, "tryStartBlueToothSco " + paramString);
     }
-    f();
-    paramString = new ujt(this, paramString, paramInt);
+    g();
+    paramString = new aeps(this, paramString, paramInt);
     this.jdField_a_of_type_AndroidAppApplication.registerReceiver(paramString, new IntentFilter("android.media.ACTION_SCO_AUDIO_STATE_UPDATED"));
     this.jdField_a_of_type_AndroidContentBroadcastReceiver = paramString;
     this.jdField_a_of_type_AndroidMediaAudioManager.startBluetoothSco();
@@ -128,323 +162,403 @@ public class AudioPlayer
   private boolean b(String paramString, int paramInt)
   {
     // Byte code:
-    //   0: iconst_1
-    //   1: istore 8
-    //   3: iconst_m1
-    //   4: istore_3
-    //   5: aload_0
-    //   6: monitorenter
-    //   7: iload_2
-    //   8: istore 6
+    //   0: iconst_m1
+    //   1: istore_3
+    //   2: iconst_1
+    //   3: istore 7
+    //   5: iconst_1
+    //   6: istore 9
+    //   8: aload_0
+    //   9: monitorenter
     //   10: iload_2
-    //   11: ifge +6 -> 17
-    //   14: iconst_0
-    //   15: istore 6
-    //   17: invokestatic 224	java/lang/System:currentTimeMillis	()J
-    //   20: lstore 9
-    //   22: aload_0
-    //   23: aload_1
-    //   24: putfield 169	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   27: aload_0
-    //   28: invokestatic 230	com/tencent/mobileqq/app/ThreadManager:remove	(Ljava/lang/Runnable;)Z
-    //   31: pop
-    //   32: getstatic 34	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_d_of_type_Int	I
-    //   35: iconst_m1
-    //   36: if_icmpne +19 -> 55
-    //   39: aload_0
-    //   40: aload_1
-    //   41: iload 6
-    //   43: invokevirtual 232	com/tencent/mobileqq/activity/aio/AudioPlayer:a	(Ljava/lang/String;I)V
-    //   46: iload 8
-    //   48: istore 7
-    //   50: aload_0
-    //   51: monitorexit
-    //   52: iload 7
-    //   54: ireturn
-    //   55: aload_0
-    //   56: getfield 84	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_AndroidMediaAudioManager	Landroid/media/AudioManager;
-    //   59: invokestatic 234	com/tencent/mobileqq/activity/aio/AudioPlayer:a	(Landroid/media/AudioManager;)Z
-    //   62: ifeq +22 -> 84
-    //   65: aload_0
-    //   66: aload_1
-    //   67: iload 6
-    //   69: invokespecial 236	com/tencent/mobileqq/activity/aio/AudioPlayer:b	(Ljava/lang/String;I)V
-    //   72: iload 8
-    //   74: istore 7
-    //   76: goto -26 -> 50
-    //   79: astore_1
-    //   80: aload_0
-    //   81: monitorexit
-    //   82: aload_1
-    //   83: athrow
-    //   84: aload_1
-    //   85: invokestatic 241	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/lang/String;)Z
-    //   88: ifne +62 -> 150
-    //   91: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   94: ifeq +28 -> 122
-    //   97: ldc 177
-    //   99: iconst_2
-    //   100: new 179	java/lang/StringBuilder
-    //   103: dup
-    //   104: invokespecial 180	java/lang/StringBuilder:<init>	()V
-    //   107: ldc 243
-    //   109: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   112: aload_1
-    //   113: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   116: invokevirtual 190	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   119: invokestatic 193	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   122: aload_0
-    //   123: invokevirtual 245	com/tencent/mobileqq/activity/aio/AudioPlayer:c	()V
+    //   11: istore 6
+    //   13: iload_2
+    //   14: ifge +6 -> 20
+    //   17: iconst_0
+    //   18: istore 6
+    //   20: invokestatic 286	java/lang/System:currentTimeMillis	()J
+    //   23: lstore 10
+    //   25: aload_0
+    //   26: aload_1
+    //   27: putfield 288	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   30: aload_0
+    //   31: invokestatic 294	com/tencent/mobileqq/app/ThreadManager:remove	(Ljava/lang/Runnable;)Z
+    //   34: pop
+    //   35: getstatic 39	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_d_of_type_Int	I
+    //   38: iconst_m1
+    //   39: if_icmpne +19 -> 58
+    //   42: aload_0
+    //   43: aload_1
+    //   44: iload 6
+    //   46: invokevirtual 296	com/tencent/mobileqq/activity/aio/AudioPlayer:a	(Ljava/lang/String;I)V
+    //   49: iload 9
+    //   51: istore 8
+    //   53: aload_0
+    //   54: monitorexit
+    //   55: iload 8
+    //   57: ireturn
+    //   58: aload_0
+    //   59: getfield 98	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_AndroidMediaAudioManager	Landroid/media/AudioManager;
+    //   62: invokestatic 298	com/tencent/mobileqq/activity/aio/AudioPlayer:a	(Landroid/media/AudioManager;)Z
+    //   65: ifeq +22 -> 87
+    //   68: aload_0
+    //   69: aload_1
+    //   70: iload 6
+    //   72: invokespecial 300	com/tencent/mobileqq/activity/aio/AudioPlayer:b	(Ljava/lang/String;I)V
+    //   75: iload 9
+    //   77: istore 8
+    //   79: goto -26 -> 53
+    //   82: astore_1
+    //   83: aload_0
+    //   84: monitorexit
+    //   85: aload_1
+    //   86: athrow
+    //   87: aload_1
+    //   88: invokestatic 305	bdhb:b	(Ljava/lang/String;)Z
+    //   91: ifne +98 -> 189
+    //   94: invokestatic 237	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   97: ifeq +29 -> 126
+    //   100: ldc 239
+    //   102: iconst_2
+    //   103: new 241	java/lang/StringBuilder
+    //   106: dup
+    //   107: invokespecial 242	java/lang/StringBuilder:<init>	()V
+    //   110: ldc_w 307
+    //   113: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   116: aload_1
+    //   117: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   120: invokevirtual 252	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   123: invokestatic 255	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   126: aload_0
-    //   127: getfield 86	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener	Lcom/tencent/mobileqq/activity/aio/AudioPlayer$AudioPlayerListener;
-    //   130: ifnull +14 -> 144
-    //   133: aload_0
-    //   134: getfield 86	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener	Lcom/tencent/mobileqq/activity/aio/AudioPlayer$AudioPlayerListener;
+    //   127: invokevirtual 309	com/tencent/mobileqq/activity/aio/AudioPlayer:c	()V
+    //   130: aload_0
+    //   131: getfield 100	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Aepr	Laepr;
+    //   134: ifnull +49 -> 183
     //   137: aload_0
-    //   138: iconst_m1
-    //   139: invokeinterface 249 3 0
-    //   144: iconst_0
-    //   145: istore 7
-    //   147: goto -97 -> 50
-    //   150: aload_0
-    //   151: invokespecial 251	com/tencent/mobileqq/activity/aio/AudioPlayer:e	()V
-    //   154: new 253	java/io/FileInputStream
-    //   157: dup
-    //   158: aload_1
-    //   159: invokespecial 254	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   162: astore 12
-    //   164: aload 12
-    //   166: astore 11
-    //   168: aload 12
-    //   170: invokestatic 259	com/tencent/mobileqq/utils/RecordParams:a	(Ljava/io/InputStream;)B
-    //   173: istore 4
-    //   175: aload 12
-    //   177: astore 11
-    //   179: iload 4
-    //   181: istore_3
-    //   182: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   185: ifeq +47 -> 232
-    //   188: aload 12
-    //   190: astore 11
-    //   192: iload 4
-    //   194: istore_3
-    //   195: ldc 177
-    //   197: iconst_2
-    //   198: new 179	java/lang/StringBuilder
-    //   201: dup
-    //   202: invokespecial 180	java/lang/StringBuilder:<init>	()V
-    //   205: ldc_w 261
-    //   208: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   211: aload_1
-    //   212: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   215: ldc_w 263
-    //   218: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   221: iload 4
-    //   223: invokevirtual 266	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   226: invokevirtual 190	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   229: invokestatic 193	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   232: iload 4
-    //   234: istore 5
-    //   236: aload 12
-    //   238: ifnull +12 -> 250
-    //   241: aload 12
-    //   243: invokevirtual 271	java/io/InputStream:close	()V
-    //   246: iload 4
-    //   248: istore 5
-    //   250: iload 5
-    //   252: iflt +240 -> 492
-    //   255: aload_0
-    //   256: new 273	com/tencent/mobileqq/ptt/player/SilkPlayer
-    //   259: dup
-    //   260: invokespecial 274	com/tencent/mobileqq/ptt/player/SilkPlayer:<init>	()V
-    //   263: putfield 97	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer	Lcom/tencent/mobileqq/ptt/player/IPttPlayer;
-    //   266: aload_0
-    //   267: getfield 97	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer	Lcom/tencent/mobileqq/ptt/player/IPttPlayer;
-    //   270: aload_1
-    //   271: invokeinterface 278 2 0
-    //   276: aload_0
-    //   277: getfield 97	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer	Lcom/tencent/mobileqq/ptt/player/IPttPlayer;
-    //   280: iload 6
-    //   282: invokeinterface 279 2 0
-    //   287: aload_0
-    //   288: getfield 97	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer	Lcom/tencent/mobileqq/ptt/player/IPttPlayer;
-    //   291: iconst_m1
-    //   292: iload 5
-    //   294: invokeinterface 282 3 0
-    //   299: aload_0
-    //   300: getfield 97	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer	Lcom/tencent/mobileqq/ptt/player/IPttPlayer;
-    //   303: aload_0
-    //   304: invokeinterface 285 2 0
-    //   309: aload_0
-    //   310: getfield 97	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer	Lcom/tencent/mobileqq/ptt/player/IPttPlayer;
-    //   313: invokeinterface 287 1 0
-    //   318: iload 8
-    //   320: istore 7
-    //   322: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   325: ifeq -275 -> 50
-    //   328: ldc_w 289
-    //   331: iconst_2
-    //   332: new 179	java/lang/StringBuilder
-    //   335: dup
-    //   336: invokespecial 180	java/lang/StringBuilder:<init>	()V
-    //   339: ldc_w 291
-    //   342: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   345: invokestatic 224	java/lang/System:currentTimeMillis	()J
-    //   348: lload 9
-    //   350: lsub
-    //   351: invokevirtual 294	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   354: invokevirtual 190	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   357: invokestatic 193	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   360: iload 8
-    //   362: istore 7
-    //   364: goto -314 -> 50
-    //   367: astore 13
-    //   369: aconst_null
-    //   370: astore 12
-    //   372: aload 12
-    //   374: astore 11
-    //   376: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   379: ifeq +37 -> 416
-    //   382: aload 12
-    //   384: astore 11
-    //   386: ldc 177
-    //   388: iconst_2
-    //   389: new 179	java/lang/StringBuilder
-    //   392: dup
-    //   393: invokespecial 180	java/lang/StringBuilder:<init>	()V
-    //   396: ldc_w 296
-    //   399: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   402: aload 13
-    //   404: invokevirtual 299	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   407: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   410: invokevirtual 190	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   413: invokestatic 193	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   416: iload_3
-    //   417: istore 5
-    //   419: aload 12
-    //   421: ifnull -171 -> 250
-    //   424: aload 12
-    //   426: invokevirtual 271	java/io/InputStream:close	()V
-    //   429: iload_3
-    //   430: istore 5
-    //   432: goto -182 -> 250
-    //   435: astore 11
-    //   437: iload_3
-    //   438: istore 5
-    //   440: goto -190 -> 250
-    //   443: astore_1
-    //   444: aconst_null
-    //   445: astore 11
-    //   447: aload 11
-    //   449: ifnull +8 -> 457
-    //   452: aload 11
-    //   454: invokevirtual 271	java/io/InputStream:close	()V
-    //   457: aload_1
-    //   458: athrow
-    //   459: astore_1
-    //   460: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   463: ifeq +13 -> 476
-    //   466: ldc 177
-    //   468: iconst_2
-    //   469: ldc_w 301
-    //   472: aload_1
-    //   473: invokestatic 304	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   476: aload_0
-    //   477: aload_0
-    //   478: getfield 97	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer	Lcom/tencent/mobileqq/ptt/player/IPttPlayer;
-    //   481: iconst_0
-    //   482: iconst_0
-    //   483: invokevirtual 307	com/tencent/mobileqq/activity/aio/AudioPlayer:a	(Lcom/tencent/mobileqq/ptt/player/IPttPlayer;II)V
-    //   486: iconst_0
-    //   487: istore 7
-    //   489: goto -439 -> 50
-    //   492: aload_0
-    //   493: new 309	com/tencent/mobileqq/ptt/player/AmrPlayer
-    //   496: dup
-    //   497: invokespecial 310	com/tencent/mobileqq/ptt/player/AmrPlayer:<init>	()V
-    //   500: putfield 97	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer	Lcom/tencent/mobileqq/ptt/player/IPttPlayer;
-    //   503: goto -237 -> 266
-    //   506: astore 11
-    //   508: iload 4
-    //   510: istore 5
-    //   512: goto -262 -> 250
-    //   515: astore 11
-    //   517: goto -60 -> 457
-    //   520: astore_1
-    //   521: goto -74 -> 447
-    //   524: astore 13
-    //   526: goto -154 -> 372
+    //   138: getfield 100	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Aepr	Laepr;
+    //   141: aload_0
+    //   142: iconst_m1
+    //   143: invokeinterface 313 3 0
+    //   148: aload_0
+    //   149: iconst_0
+    //   150: iconst_1
+    //   151: iconst_1
+    //   152: ldc_w 315
+    //   155: invokespecial 317	com/tencent/mobileqq/activity/aio/AudioPlayer:a	(IIILjava/lang/String;)V
+    //   158: aload_0
+    //   159: getfield 71	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Long	J
+    //   162: lconst_0
+    //   163: lcmp
+    //   164: ifle +19 -> 183
+    //   167: invokestatic 322	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTime	()J
+    //   170: aload_0
+    //   171: getfield 71	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Long	J
+    //   174: lsub
+    //   175: l2f
+    //   176: ldc_w 323
+    //   179: fdiv
+    //   180: invokestatic 325	com/tencent/mobileqq/activity/aio/AudioPlayer:b	(F)V
+    //   183: iconst_0
+    //   184: istore 8
+    //   186: goto -133 -> 53
+    //   189: aload_0
+    //   190: invokespecial 327	com/tencent/mobileqq/activity/aio/AudioPlayer:f	()V
+    //   193: new 329	java/io/FileInputStream
+    //   196: dup
+    //   197: aload_1
+    //   198: invokespecial 330	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   201: astore 13
+    //   203: aload 13
+    //   205: astore 12
+    //   207: aload 13
+    //   209: invokestatic 335	bdml:a	(Ljava/io/InputStream;)B
+    //   212: istore 4
+    //   214: aload 13
+    //   216: astore 12
+    //   218: iload 4
+    //   220: istore_3
+    //   221: invokestatic 237	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   224: ifeq +47 -> 271
+    //   227: aload 13
+    //   229: astore 12
+    //   231: iload 4
+    //   233: istore_3
+    //   234: ldc 239
+    //   236: iconst_2
+    //   237: new 241	java/lang/StringBuilder
+    //   240: dup
+    //   241: invokespecial 242	java/lang/StringBuilder:<init>	()V
+    //   244: ldc_w 337
+    //   247: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   250: aload_1
+    //   251: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   254: ldc_w 339
+    //   257: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   260: iload 4
+    //   262: invokevirtual 342	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   265: invokevirtual 252	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   268: invokestatic 255	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   271: iload 4
+    //   273: istore 5
+    //   275: aload 13
+    //   277: ifnull +12 -> 289
+    //   280: aload 13
+    //   282: invokevirtual 347	java/io/InputStream:close	()V
+    //   285: iload 4
+    //   287: istore 5
+    //   289: iload 5
+    //   291: iflt +283 -> 574
+    //   294: aload_0
+    //   295: new 349	com/tencent/mobileqq/ptt/player/SilkPlayer
+    //   298: dup
+    //   299: invokespecial 350	com/tencent/mobileqq/ptt/player/SilkPlayer:<init>	()V
+    //   302: putfield 111	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Awyc	Lawyc;
+    //   305: iconst_1
+    //   306: istore_2
+    //   307: iload_2
+    //   308: invokestatic 354	bdjf:a	(I)V
+    //   311: aload_0
+    //   312: getfield 111	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Awyc	Lawyc;
+    //   315: aload_1
+    //   316: invokeinterface 358 2 0
+    //   321: aload_0
+    //   322: getfield 111	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Awyc	Lawyc;
+    //   325: iload 6
+    //   327: invokeinterface 360 2 0
+    //   332: aload_0
+    //   333: getfield 111	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Awyc	Lawyc;
+    //   336: iconst_m1
+    //   337: iload 5
+    //   339: invokeinterface 363 3 0
+    //   344: aload_0
+    //   345: getfield 111	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Awyc	Lawyc;
+    //   348: aload_0
+    //   349: invokeinterface 366 2 0
+    //   354: aload_0
+    //   355: getfield 111	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Awyc	Lawyc;
+    //   358: aload_0
+    //   359: getfield 67	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Float	F
+    //   362: invokeinterface 368 2 0
+    //   367: aload_0
+    //   368: getfield 111	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Awyc	Lawyc;
+    //   371: invokeinterface 370 1 0
+    //   376: iload 9
+    //   378: istore 8
+    //   380: invokestatic 237	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   383: ifeq -330 -> 53
+    //   386: ldc_w 372
+    //   389: iconst_2
+    //   390: new 241	java/lang/StringBuilder
+    //   393: dup
+    //   394: invokespecial 242	java/lang/StringBuilder:<init>	()V
+    //   397: ldc_w 374
+    //   400: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   403: invokestatic 286	java/lang/System:currentTimeMillis	()J
+    //   406: lload 10
+    //   408: lsub
+    //   409: invokevirtual 377	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   412: invokevirtual 252	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   415: invokestatic 255	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   418: iload 9
+    //   420: istore 8
+    //   422: goto -369 -> 53
+    //   425: astore 14
+    //   427: aconst_null
+    //   428: astore 13
+    //   430: aload 13
+    //   432: astore 12
+    //   434: invokestatic 237	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   437: ifeq +37 -> 474
+    //   440: aload 13
+    //   442: astore 12
+    //   444: ldc 239
+    //   446: iconst_2
+    //   447: new 241	java/lang/StringBuilder
+    //   450: dup
+    //   451: invokespecial 242	java/lang/StringBuilder:<init>	()V
+    //   454: ldc_w 379
+    //   457: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   460: aload 14
+    //   462: invokevirtual 382	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   465: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   468: invokevirtual 252	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   471: invokestatic 255	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   474: iload_3
+    //   475: istore 5
+    //   477: aload 13
+    //   479: ifnull -190 -> 289
+    //   482: aload 13
+    //   484: invokevirtual 347	java/io/InputStream:close	()V
+    //   487: iload_3
+    //   488: istore 5
+    //   490: goto -201 -> 289
+    //   493: astore 12
+    //   495: iload_3
+    //   496: istore 5
+    //   498: goto -209 -> 289
+    //   501: astore_1
+    //   502: aconst_null
+    //   503: astore 12
+    //   505: aload 12
+    //   507: ifnull +8 -> 515
+    //   510: aload 12
+    //   512: invokevirtual 347	java/io/InputStream:close	()V
+    //   515: aload_1
+    //   516: athrow
+    //   517: astore_1
+    //   518: invokestatic 237	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   521: ifeq +13 -> 534
+    //   524: ldc 239
+    //   526: iconst_2
+    //   527: ldc_w 384
+    //   530: aload_1
+    //   531: invokestatic 387	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   534: aload_0
+    //   535: getfield 111	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Awyc	Lawyc;
+    //   538: instanceof 349
+    //   541: ifeq +82 -> 623
+    //   544: iload 7
+    //   546: istore_2
+    //   547: aload_0
+    //   548: iconst_0
+    //   549: iload_2
+    //   550: iconst_2
+    //   551: aload_1
+    //   552: invokevirtual 388	java/lang/Exception:toString	()Ljava/lang/String;
+    //   555: invokespecial 317	com/tencent/mobileqq/activity/aio/AudioPlayer:a	(IIILjava/lang/String;)V
+    //   558: aload_0
+    //   559: aload_0
+    //   560: getfield 111	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Awyc	Lawyc;
+    //   563: iconst_0
+    //   564: iconst_0
+    //   565: invokevirtual 391	com/tencent/mobileqq/activity/aio/AudioPlayer:a	(Lawyc;II)V
+    //   568: iconst_0
+    //   569: istore 8
+    //   571: goto -518 -> 53
+    //   574: aload_0
+    //   575: new 393	com/tencent/mobileqq/ptt/player/AmrPlayer
+    //   578: dup
+    //   579: invokespecial 394	com/tencent/mobileqq/ptt/player/AmrPlayer:<init>	()V
+    //   582: putfield 111	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Awyc	Lawyc;
+    //   585: ldc 239
+    //   587: iconst_1
+    //   588: new 241	java/lang/StringBuilder
+    //   591: dup
+    //   592: invokespecial 242	java/lang/StringBuilder:<init>	()V
+    //   595: ldc_w 396
+    //   598: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   601: iload 5
+    //   603: invokevirtual 342	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   606: ldc_w 398
+    //   609: invokevirtual 248	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   612: invokevirtual 252	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   615: invokestatic 400	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   618: iconst_2
+    //   619: istore_2
+    //   620: goto -313 -> 307
+    //   623: iconst_0
+    //   624: istore_2
+    //   625: goto -78 -> 547
+    //   628: astore 12
+    //   630: iload 4
+    //   632: istore 5
+    //   634: goto -345 -> 289
+    //   637: astore 12
+    //   639: goto -124 -> 515
+    //   642: astore_1
+    //   643: goto -138 -> 505
+    //   646: astore 14
+    //   648: goto -218 -> 430
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	529	0	this	AudioPlayer
-    //   0	529	1	paramString	String
-    //   0	529	2	paramInt	int
-    //   4	434	3	b1	byte
-    //   173	336	4	b2	byte
-    //   234	277	5	b3	byte
-    //   8	273	6	i	int
-    //   48	440	7	bool1	boolean
-    //   1	360	8	bool2	boolean
-    //   20	329	9	l	long
-    //   166	219	11	localFileInputStream1	java.io.FileInputStream
-    //   435	1	11	localException1	Exception
-    //   445	8	11	localObject	Object
-    //   506	1	11	localException2	Exception
-    //   515	1	11	localException3	Exception
-    //   162	263	12	localFileInputStream2	java.io.FileInputStream
-    //   367	36	13	localException4	Exception
-    //   524	1	13	localException5	Exception
+    //   0	651	0	this	AudioPlayer
+    //   0	651	1	paramString	String
+    //   0	651	2	paramInt	int
+    //   1	495	3	b1	byte
+    //   212	419	4	b2	byte
+    //   273	360	5	b3	byte
+    //   11	315	6	i	int
+    //   3	542	7	j	int
+    //   51	519	8	bool1	boolean
+    //   6	413	9	bool2	boolean
+    //   23	384	10	l	long
+    //   205	238	12	localFileInputStream1	java.io.FileInputStream
+    //   493	1	12	localException1	Exception
+    //   503	8	12	localObject	Object
+    //   628	1	12	localException2	Exception
+    //   637	1	12	localException3	Exception
+    //   201	282	13	localFileInputStream2	java.io.FileInputStream
+    //   425	36	14	localException4	Exception
+    //   646	1	14	localException5	Exception
     // Exception table:
     //   from	to	target	type
-    //   17	46	79	finally
-    //   55	72	79	finally
-    //   84	122	79	finally
-    //   122	144	79	finally
-    //   150	154	79	finally
-    //   241	246	79	finally
-    //   255	266	79	finally
-    //   266	318	79	finally
-    //   322	360	79	finally
-    //   424	429	79	finally
-    //   452	457	79	finally
-    //   457	459	79	finally
-    //   460	476	79	finally
-    //   476	486	79	finally
-    //   492	503	79	finally
-    //   154	164	367	java/lang/Exception
-    //   424	429	435	java/lang/Exception
-    //   154	164	443	finally
-    //   150	154	459	java/lang/Exception
-    //   255	266	459	java/lang/Exception
-    //   266	318	459	java/lang/Exception
-    //   457	459	459	java/lang/Exception
-    //   492	503	459	java/lang/Exception
-    //   241	246	506	java/lang/Exception
-    //   452	457	515	java/lang/Exception
-    //   168	175	520	finally
-    //   182	188	520	finally
-    //   195	232	520	finally
-    //   376	382	520	finally
-    //   386	416	520	finally
-    //   168	175	524	java/lang/Exception
-    //   182	188	524	java/lang/Exception
-    //   195	232	524	java/lang/Exception
+    //   20	49	82	finally
+    //   58	75	82	finally
+    //   87	126	82	finally
+    //   126	183	82	finally
+    //   189	193	82	finally
+    //   280	285	82	finally
+    //   294	305	82	finally
+    //   307	376	82	finally
+    //   380	418	82	finally
+    //   482	487	82	finally
+    //   510	515	82	finally
+    //   515	517	82	finally
+    //   518	534	82	finally
+    //   534	544	82	finally
+    //   547	568	82	finally
+    //   574	618	82	finally
+    //   193	203	425	java/lang/Exception
+    //   482	487	493	java/lang/Exception
+    //   193	203	501	finally
+    //   189	193	517	java/lang/Exception
+    //   294	305	517	java/lang/Exception
+    //   307	376	517	java/lang/Exception
+    //   515	517	517	java/lang/Exception
+    //   574	618	517	java/lang/Exception
+    //   280	285	628	java/lang/Exception
+    //   510	515	637	java/lang/Exception
+    //   207	214	642	finally
+    //   221	227	642	finally
+    //   234	271	642	finally
+    //   434	440	642	finally
+    //   444	474	642	finally
+    //   207	214	646	java/lang/Exception
+    //   221	227	646	java/lang/Exception
+    //   234	271	646	java/lang/Exception
+  }
+  
+  private void c(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      b(this.jdField_a_of_type_JavaLangString, paramInt);
+    }
   }
   
   private void e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer != null)
+    if ((this.jdField_a_of_type_Awyc instanceof AmrPlayer))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer.a()) {
-        this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer.c();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer.d();
-      this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer.e();
-      this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer = null;
+      h();
+      this.jdField_a_of_type_JavaUtilTimer = new Timer();
+      this.jdField_a_of_type_JavaUtilTimer.schedule(new AudioPlayer.2(this), 0L, 100L);
     }
   }
   
   private void f()
+  {
+    if (this.jdField_a_of_type_Awyc != null)
+    {
+      if (this.jdField_a_of_type_Awyc.a()) {
+        this.jdField_a_of_type_Awyc.c();
+      }
+      this.jdField_a_of_type_Awyc.d();
+      this.jdField_a_of_type_Awyc.e();
+      this.jdField_a_of_type_Awyc = null;
+    }
+  }
+  
+  private void g()
   {
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {
       if (QLog.isColorLevel()) {
@@ -464,39 +578,74 @@ public class AudioPlayer
     }
   }
   
-  public int a()
+  private void h()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer == null) {
-      return 0;
+    if (this.jdField_a_of_type_JavaUtilTimer != null) {
+      this.jdField_a_of_type_JavaUtilTimer.cancel();
     }
-    return this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer.a();
   }
   
-  public IPttPlayer a()
+  public int a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer;
+    if (this.jdField_a_of_type_Awyc == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_Awyc.b();
+  }
+  
+  public awyc a()
+  {
+    return this.jdField_a_of_type_Awyc;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public void a()
   {
-    f();
+    g();
     c();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener.a(this);
+    if (this.jdField_a_of_type_Aepr != null) {
+      this.jdField_a_of_type_Aepr.a(this);
+    }
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+    if (QLog.isColorLevel()) {
+      QLog.i("AudioPlayer", 2, "setPlaySpeed: " + paramFloat);
     }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Aepr != null) {}
+    try
+    {
+      this.jdField_a_of_type_Aepr.d(this, b());
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("AudioPlayer", 2, "startProgressTimer e= " + localException);
+    }
   }
   
-  public void a(IPttPlayer paramIPttPlayer, int paramInt1, int paramInt2)
+  public void a(long paramLong)
   {
-    f();
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(awyc paramawyc, int paramInt1, int paramInt2)
+  {
+    g();
     c();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener.a(this, -2);
+    if (this.jdField_a_of_type_Aepr != null) {
+      this.jdField_a_of_type_Aepr.a(this, -2);
     }
   }
   
@@ -528,7 +677,7 @@ public class AudioPlayer
       b(paramString, paramInt);
       return;
     }
-    paramString = new ujs(this, paramString, paramInt, localBluetoothAdapter);
+    paramString = new aepq(this, paramString, paramInt, localBluetoothAdapter);
     localBluetoothAdapter.getProfileProxy(BaseApplication.getContext(), paramString, 1);
   }
   
@@ -536,13 +685,13 @@ public class AudioPlayer
   {
     this.jdField_c_of_type_Boolean = paramBoolean;
     if (a()) {
-      b(this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer.a() - MediaPlayerManager.jdField_a_of_type_Int);
+      c(this.jdField_a_of_type_Awyc.a() - MediaPlayerManager.jdField_a_of_type_Int);
     }
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer != null) && (this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer.a());
+    return (this.jdField_a_of_type_Awyc != null) && (this.jdField_a_of_type_Awyc.a());
   }
   
   public boolean a(String paramString)
@@ -565,78 +714,174 @@ public class AudioPlayer
     if ((!this.jdField_c_of_type_Boolean) && (!this.jdField_d_of_type_Boolean) && ((paramBoolean1 != this.e) || (paramBoolean2)))
     {
       this.e = paramBoolean1;
+      atlp.a().a(paramBoolean1);
       if (a()) {
-        b(paramInt);
+        c(paramInt);
       }
       return true;
     }
     return false;
   }
   
+  public int b()
+  {
+    if (this.jdField_a_of_type_Awyc == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_Awyc.a();
+  }
+  
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter = a();
-    this.jdField_a_of_type_AndroidMediaAudioManager.setMode(this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter.jdField_a_of_type_Int);
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_AndroidMediaAudioManager.setSpeakerphoneOn(this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter.jdField_a_of_type_Boolean);
-        if (this.jdField_b_of_type_Int != jdField_a_of_type_Int) {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener.b(this, this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter.jdField_b_of_type_Int);
-        }
-        AudioUtil.a(this.jdField_a_of_type_AndroidAppApplication, true);
-        this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter.jdField_b_of_type_Int);
-        this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer.g();
-        int i = this.jdField_a_of_type_AndroidMediaAudioManager.getStreamVolume(this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter.jdField_b_of_type_Int);
-        int j = this.jdField_a_of_type_AndroidMediaAudioManager.getStreamMaxVolume(this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter.jdField_b_of_type_Int);
-        if (i / j < 0.1F)
-        {
-          this.jdField_c_of_type_Int = 0;
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 200L);
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener != null) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener.c(this, this.jdField_c_of_type_Int);
-          }
-          return;
-        }
-      }
-      finally {}
-      this.jdField_c_of_type_Int = 1;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
+    i = 1;
+    this.g = this.jdField_a_of_type_AndroidMediaAudioManager.isSpeakerphoneOn();
+    this.jdField_a_of_type_Bdfh = a();
+    this.jdField_a_of_type_AndroidMediaAudioManager.setMode(this.jdField_a_of_type_Bdfh.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidMediaAudioManager.setSpeakerphoneOn(this.jdField_a_of_type_Bdfh.jdField_a_of_type_Boolean);
+    if (this.jdField_b_of_type_Int != jdField_a_of_type_Int) {
+      this.jdField_a_of_type_Bdfh.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
     }
+    if (this.jdField_a_of_type_Aepr != null) {
+      this.jdField_a_of_type_Aepr.b(this, this.jdField_a_of_type_Bdfh.jdField_b_of_type_Int);
+    }
+    bdfi.a(this.jdField_a_of_type_AndroidAppApplication, true);
+    if (this.jdField_a_of_type_Awyc != null) {
+      this.jdField_a_of_type_Awyc.a(this.jdField_a_of_type_Bdfh.jdField_b_of_type_Int);
+    }
+    try
+    {
+      this.jdField_a_of_type_Awyc.g();
+      i = this.jdField_a_of_type_AndroidMediaAudioManager.getStreamVolume(this.jdField_a_of_type_Bdfh.jdField_b_of_type_Int);
+      int j = this.jdField_a_of_type_AndroidMediaAudioManager.getStreamMaxVolume(this.jdField_a_of_type_Bdfh.jdField_b_of_type_Int);
+      if (QLog.isColorLevel()) {
+        QLog.d("AudioPlayer", 2, "currentVolume=" + i + " maxVolume=" + j);
+      }
+      if (i / j >= 0.18F) {
+        break label317;
+      }
+      this.jdField_c_of_type_Int = 0;
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 200L);
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+        if ((this.jdField_a_of_type_Awyc instanceof SilkPlayer)) {}
+        for (;;)
+        {
+          a(0, i, 3, localThrowable.toString());
+          return;
+          i = 0;
+        }
+        this.jdField_c_of_type_Int = 1;
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
+        continue;
+        i = 0;
+      }
+    }
+    if (this.jdField_a_of_type_Aepr != null) {
+      this.jdField_a_of_type_Aepr.c(this, this.jdField_c_of_type_Int);
+    }
+    if ((this.jdField_a_of_type_Awyc instanceof SilkPlayer))
+    {
+      i = 1;
+      a(1, i, 0, "");
+      e();
+      return;
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
   }
   
   public void b(boolean paramBoolean)
   {
     this.jdField_d_of_type_Boolean = paramBoolean;
     if (a()) {
-      b(this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer.a() - MediaPlayerManager.jdField_a_of_type_Int);
+      c(this.jdField_a_of_type_Awyc.a() - MediaPlayerManager.jdField_a_of_type_Int);
     }
   }
   
+  /* Error */
   public void c()
   {
-    try
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
-      if (this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer != null)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer.a()) {
-          this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer.c();
-        }
-        this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer.d();
-        this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer.e();
-        this.jdField_a_of_type_JavaLangString = null;
-        this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer = null;
-        this.jdField_b_of_type_Int = jdField_a_of_type_Int;
-        ThreadManager.post(this, 8, null, false);
-      }
-      return;
-    }
-    finally {}
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 78	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   6: sipush 1000
+    //   9: invokevirtual 543	android/os/Handler:removeMessages	(I)V
+    //   12: aload_0
+    //   13: invokespecial 404	com/tencent/mobileqq/activity/aio/AudioPlayer:h	()V
+    //   16: aload_0
+    //   17: getfield 111	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Awyc	Lawyc;
+    //   20: ifnull +84 -> 104
+    //   23: aload_0
+    //   24: getfield 111	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Awyc	Lawyc;
+    //   27: invokeinterface 420 1 0
+    //   32: ifeq +12 -> 44
+    //   35: aload_0
+    //   36: getfield 111	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Awyc	Lawyc;
+    //   39: invokeinterface 421 1 0
+    //   44: aload_0
+    //   45: getfield 111	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Awyc	Lawyc;
+    //   48: invokeinterface 423 1 0
+    //   53: aload_0
+    //   54: getfield 111	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Awyc	Lawyc;
+    //   57: invokeinterface 425 1 0
+    //   62: aload_0
+    //   63: getstatic 66	com/tencent/mobileqq/activity/aio/MediaPlayerManager:jdField_a_of_type_Float	F
+    //   66: putfield 67	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Float	F
+    //   69: aload_0
+    //   70: ldc2_w 68
+    //   73: putfield 71	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Long	J
+    //   76: aload_0
+    //   77: aconst_null
+    //   78: putfield 288	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   81: aload_0
+    //   82: aconst_null
+    //   83: putfield 111	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Awyc	Lawyc;
+    //   86: aload_0
+    //   87: getstatic 37	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Int	I
+    //   90: putfield 62	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_b_of_type_Int	I
+    //   93: aload_0
+    //   94: bipush 8
+    //   96: aconst_null
+    //   97: iconst_0
+    //   98: invokestatic 547	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   101: aload_0
+    //   102: monitorexit
+    //   103: return
+    //   104: invokestatic 483	atlp:a	()Latlp;
+    //   107: invokevirtual 548	atlp:a	()Z
+    //   110: ifeq -9 -> 101
+    //   113: aload_0
+    //   114: getstatic 37	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_Int	I
+    //   117: putfield 62	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_b_of_type_Int	I
+    //   120: aload_0
+    //   121: bipush 8
+    //   123: aconst_null
+    //   124: iconst_0
+    //   125: invokestatic 547	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   128: goto -27 -> 101
+    //   131: astore_1
+    //   132: aload_0
+    //   133: monitorexit
+    //   134: aload_1
+    //   135: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	136	0	this	AudioPlayer
+    //   131	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	44	131	finally
+    //   44	101	131	finally
+    //   104	128	131	finally
   }
   
   public void c(boolean paramBoolean)
@@ -673,14 +918,23 @@ public class AudioPlayer
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidMediaAudioManager.setMode(0);
-    this.jdField_a_of_type_AndroidMediaAudioManager.setSpeakerphoneOn(false);
-    AudioUtil.a(this.jdField_a_of_type_AndroidAppApplication, false);
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaAudioManager.setMode(0);
+      this.jdField_a_of_type_AndroidMediaAudioManager.setSpeakerphoneOn(this.g);
+      bdfi.a(this.jdField_a_of_type_AndroidAppApplication, false);
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("AudioPlayer", 2, localException, new Object[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AudioPlayer
  * JD-Core Version:    0.7.0.1
  */

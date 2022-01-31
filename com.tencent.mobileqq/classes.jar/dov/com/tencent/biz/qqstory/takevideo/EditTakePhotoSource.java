@@ -4,16 +4,18 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import ansf;
+import bmkl;
 import java.io.File;
 
 public class EditTakePhotoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator CREATOR = new ansf();
+  public static final Parcelable.Creator<EditTakePhotoSource> CREATOR = new bmkl();
+  public final double a;
   public final int a;
   @NonNull
   public final String a;
+  public final double b;
   public final int b;
   public final int c;
   
@@ -21,16 +23,25 @@ public class EditTakePhotoSource
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.b = paramParcel.readInt();
+    this.jdField_b_of_type_Int = paramParcel.readInt();
     this.c = paramParcel.readInt();
+    this.jdField_a_of_type_Double = paramParcel.readDouble();
+    this.jdField_b_of_type_Double = paramParcel.readDouble();
   }
   
   public EditTakePhotoSource(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
+    this(paramString, paramInt1, paramInt2, paramInt3, 4.9E-324D, 4.9E-324D);
+  }
+  
+  public EditTakePhotoSource(@NonNull String paramString, int paramInt1, int paramInt2, int paramInt3, double paramDouble1, double paramDouble2)
+  {
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.jdField_b_of_type_Int = paramInt2;
     this.c = paramInt3;
+    this.jdField_a_of_type_Double = paramDouble1;
+    this.jdField_b_of_type_Double = paramDouble2;
     paramString = b();
     if (paramString != null) {
       throw new IllegalArgumentException(paramString);
@@ -39,7 +50,7 @@ public class EditTakePhotoSource
   
   public int a()
   {
-    return this.b;
+    return this.jdField_b_of_type_Int;
   }
   
   @NonNull
@@ -73,13 +84,15 @@ public class EditTakePhotoSource
   {
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
     paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.b);
+    paramParcel.writeInt(this.jdField_b_of_type_Int);
     paramParcel.writeInt(this.c);
+    paramParcel.writeDouble(this.jdField_a_of_type_Double);
+    paramParcel.writeDouble(this.jdField_b_of_type_Double);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditTakePhotoSource
  * JD-Core Version:    0.7.0.1
  */

@@ -1,69 +1,84 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
-import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyOperationManager;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinHandler;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshRes;
-import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.qphone.base.util.QLog;
 
-public class mke
-  implements Runnable
+class mke
+  implements Animation.AnimationListener
 {
-  public mke(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  mke(mkb parammkb) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object localObject = (ReadInJoyRefreshManager)this.a.a.getManager(269);
-    RefreshData localRefreshData = ((ReadInJoyRefreshManager)localObject).a(this.a.a());
-    int i = (int)(System.currentTimeMillis() / 1000L);
-    ReadInJoySkinManager localReadInJoySkinManager;
-    SkinData localSkinData;
-    if ((localRefreshData != null) && (i >= localRefreshData.beginTime) && (i <= localRefreshData.endTime)) {
-      if (RefreshRes.a(localRefreshData.id)) {
-        if (localRefreshData.isShown)
-        {
-          ((ReadInJoyRefreshManager)localObject).a(1, localRefreshData.id);
-          ((ReadInJoyRefreshManager)localObject).a(true);
-          localObject = (GuideData)((ReadInJoyOperationManager)this.a.a.getManager(270)).a("operation_guide");
-          localReadInJoySkinManager = (ReadInJoySkinManager)this.a.a.getManager(260);
-          localSkinData = localReadInJoySkinManager.a(this.a.a());
-          if ((localSkinData == null) || (i < localSkinData.beginTime) || (i > localSkinData.endTime)) {
-            break label270;
-          }
-          if (!CommonSkinRes.a(localSkinData.id)) {
-            break label251;
-          }
-          localReadInJoySkinManager.a(1, localSkinData.id);
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QavInOutAnimation", 2, "OutAnimation onAnimationEnd");
     }
-    for (;;)
+    try
     {
-      ((ReadInJoySkinHandler)this.a.a.a(121)).a(localSkinData, null, localRefreshData, (GuideData)localObject);
+      if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null))
+      {
+        this.a.jdField_a_of_type_ComTencentAvVideoController.a().ar = false;
+        this.a.jdField_a_of_type_ComTencentAvVideoController.a().as = false;
+      }
+      if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel != null) {
+        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setVisibility(4);
+      }
+      if (this.a.jdField_a_of_type_AndroidViewView != null) {
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      }
+      if (this.a.b != null) {
+        this.a.b.setVisibility(4);
+      }
+      if (this.a.c != null) {
+        this.a.c.setVisibility(4);
+      }
+      if (this.a.d != null) {
+        this.a.d.setVisibility(4);
+      }
+      if (this.a.e != null) {
+        this.a.e.setVisibility(4);
+      }
+      if (this.a.g != null) {
+        this.a.g.setVisibility(4);
+      }
+      if (this.a.jdField_a_of_type_Mkg != null) {
+        this.a.jdField_a_of_type_Mkg.b();
+      }
       return;
-      ((ReadInJoyRefreshManager)localObject).a(0, "");
-      break;
-      ((ReadInJoyRefreshManager)localObject).a(0, "");
-      ((ReadInJoyRefreshManager)localObject).a(localRefreshData);
-      break;
-      ((ReadInJoyRefreshManager)localObject).a(0, "");
-      break;
-      label251:
-      localReadInJoySkinManager.a(0, "");
-      localReadInJoySkinManager.a(localSkinData);
-      continue;
-      label270:
-      localReadInJoySkinManager.a(0, "");
+    }
+    catch (Exception paramAnimation)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QavInOutAnimation", 2, "QavOutAnimationListener onAnimationEnd Exception :" + paramAnimation);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavInOutAnimation", 2, "OutAnimation onAnimationStart");
+    }
+    try
+    {
+      if (this.a.jdField_a_of_type_Mkg != null) {
+        this.a.jdField_a_of_type_Mkg.a();
+      }
+      return;
+    }
+    catch (Exception paramAnimation)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QavInOutAnimation", 2, "QavOutAnimationListener onAnimationStart Exception :" + paramAnimation);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mke
  * JD-Core Version:    0.7.0.1
  */

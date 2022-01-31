@@ -7,7 +7,6 @@ import java.util.Arrays;
 public class ShareReflectUtil
 {
   public static Field findField(Object paramObject, String paramString)
-    throws NoSuchFieldException
   {
     Class localClass = paramObject.getClass();
     while (localClass != null) {
@@ -28,7 +27,6 @@ public class ShareReflectUtil
   }
   
   public static Method findMethod(Object paramObject, String paramString, Class... paramVarArgs)
-    throws NoSuchMethodException
   {
     Class localClass = paramObject.getClass();
     while (localClass != null) {

@@ -2,16 +2,18 @@ package com.tencent.token.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.token.cw;
 
-final class ox
+class ox
   implements DialogInterface.OnClickListener
 {
   ox(ot paramot) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ot.a(this.a).f.d = false;
-    or.a(this.a.a, ot.a(this.a));
+    this.a.a.dismissDialog();
+    cw.a().b(this.a.a.mHandler);
+    this.a.a.showProDialog(this.a.a, 2131230843, 2131231298, null);
   }
 }
 

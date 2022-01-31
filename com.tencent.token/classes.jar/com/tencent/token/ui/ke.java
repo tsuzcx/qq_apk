@@ -1,18 +1,31 @@
 package com.tencent.token.ui;
 
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.global.e;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.token.core.bean.h;
+import com.tencent.token.dr;
 
-final class ke
-  implements View.OnClickListener
+class ke
+  implements CompoundButton.OnCheckedChangeListener
 {
-  ke(FaceStartVryCameraActivity paramFaceStartVryCameraActivity) {}
+  ke(kb paramkb) {}
   
-  public final void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    e.c("onBackPressed");
-    this.a.finish();
+    paramCompoundButton = (kf)paramCompoundButton.getTag();
+    if (paramCompoundButton == null) {}
+    h localh;
+    View localView;
+    do
+    {
+      return;
+      localh = paramCompoundButton.a();
+      localView = paramCompoundButton.f();
+    } while ((localh == null) || (localView == null) || (!dr.a().p()) || (paramBoolean != localh.c) || (localh.e));
+    localh.e = true;
+    this.a.a(paramCompoundButton, false);
+    this.a.a(paramCompoundButton);
   }
 }
 

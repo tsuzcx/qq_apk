@@ -1,33 +1,46 @@
-import QQService.SvcDevLoginInfo;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class dad
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public dad(LoginInfoActivity paramLoginInfoActivity, Button paramButton, int paramInt) {}
+  public dad(ProfileCardMoreActivity paramProfileCardMoreActivity, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity))
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.b, "CliOper", "", "", "P_prof", "Pp_more_delete", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.f), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
+    if (NetworkUtil.e(BaseApplication.getContext()))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getString(2131562452), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.d());
+      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.b.a(1)).c(this.jdField_a_of_type_JavaLangString, (byte)2);
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.b.a(ChatActivity.class);
+      if (paramDialogInterface != null) {
+        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
+      }
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.b.a(ChatSettingActivity.class);
+      if (paramDialogInterface != null) {
+        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent = new Intent();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent.putExtra("finchat", true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.setResult(-1, this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent);
+      this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.finish();
       return;
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.b, "CliOper", "", "", "My_eq", "Kick_off_PC", 0, 0, "", "", "", "");
-    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetButton.getTag();
-    if (paramView != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.b.getSubAccountKey(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.b.getAccount(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.b.getAccount(), new dae(this, paramView));
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getString(2131561765), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.d());
+    this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.a(2131561432, 1);
   }
 }
 

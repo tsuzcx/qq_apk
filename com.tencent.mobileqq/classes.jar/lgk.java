@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-
-public class lgk
-  implements View.OnClickListener
+class lgk
 {
-  public lgk(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  public int a;
+  public int b = 0;
   
-  public void onClick(View paramView)
+  public lgk(lgh paramlgh)
   {
-    this.a.a();
+    this.jdField_a_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lgk
  * JD-Core Version:    0.7.0.1
  */

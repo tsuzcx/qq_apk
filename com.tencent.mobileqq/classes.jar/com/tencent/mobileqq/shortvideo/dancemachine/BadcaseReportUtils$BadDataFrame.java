@@ -5,36 +5,26 @@ import java.util.ArrayList;
 
 public class BadcaseReportUtils$BadDataFrame
 {
-  public int a;
-  public long a;
-  public String a;
-  public ByteBuffer a;
-  ArrayList a;
-  public boolean a;
-  public int b;
-  public String b;
-  ArrayList b;
-  public boolean b;
-  public int c;
-  public String c;
-  ArrayList c;
-  public boolean c;
-  public String d;
-  public String e;
-  
-  public BadcaseReportUtils$BadDataFrame()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-  }
+  public String convertedPath;
+  ArrayList<BadcaseReportUtils.BadDataItem> currentMatchCache = new ArrayList();
+  ArrayList<BadcaseReportUtils.BadDataItem> currentModelCache = new ArrayList();
+  ArrayList<BadcaseReportUtils.BadDataItem> currentUserCache = new ArrayList();
+  public String detectPointData;
+  public String encPath;
+  public int height;
+  public boolean mDataSuccess = false;
+  public boolean mEncSuccess = false;
+  public boolean mZipSuccess = false;
+  public ByteBuffer pictureBuffer;
+  public String picturePath;
+  public int problemType;
+  public long timeCost;
+  public int width;
+  public String zipPath;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils.BadDataFrame
  * JD-Core Version:    0.7.0.1
  */

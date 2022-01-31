@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class SubMsgType0x43$UpdateTips
-  extends MessageMicro
+  extends MessageMicro<UpdateTips>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_desc = PBField.initBytes(ByteStringMicro.EMPTY);

@@ -1,34 +1,23 @@
-import com.tencent.biz.qqstory.newshare.callback.OnSimpleShareListener;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedItem;
-import com.tencent.biz.qqstory.storyHome.detail.view.segment.DetailInteractSegment;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
 
-public class nvr
-  extends OnSimpleShareListener
+class nvr
+  implements View.OnClickListener
 {
-  public nvr(DetailInteractSegment paramDetailInteractSegment) {}
+  nvr(nvp paramnvp, String paramString) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    super.a();
-    DetailInteractSegment.a(this.a, null);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    StoryReportor.a("home_page", "suc_share", 2, paramInt, new String[] { StoryReportor.b(DetailInteractSegment.a(this.a).a) + "", StoryReportor.a(DetailInteractSegment.a(this.a).a) + "", DetailInteractSegment.a(this.a).a.feedId });
-  }
-  
-  public void b(int paramInt)
-  {
-    StoryReportor.a("home_page", "share_chanel", 2, paramInt, new String[] { StoryReportor.b(DetailInteractSegment.a(this.a).a) + "", StoryReportor.a(DetailInteractSegment.a(this.a).a) + "", DetailInteractSegment.a(this.a).a.feedId });
+    if ((nvp.a(this.jdField_a_of_type_Nvp) != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      ors.a(nvp.a(this.jdField_a_of_type_Nvp).getContext(), this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvr
  * JD-Core Version:    0.7.0.1
  */

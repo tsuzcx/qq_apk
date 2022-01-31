@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
-import java.util.Comparator;
+import com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView;
 
 public class ufc
-  implements Comparator
+  implements anye
 {
-  private ufc(TroopTransferActivity paramTroopTransferActivity) {}
+  public ufc(QCircleRecommendImageView paramQCircleRecommendImageView) {}
   
-  public int a(TroopTransferActivity.TroopMemberItem paramTroopMemberItem1, TroopTransferActivity.TroopMemberItem paramTroopMemberItem2)
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void b()
   {
-    return paramTroopMemberItem1.f.compareToIgnoreCase(paramTroopMemberItem2.f);
+    QCircleRecommendImageView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ufc
  * JD-Core Version:    0.7.0.1
  */

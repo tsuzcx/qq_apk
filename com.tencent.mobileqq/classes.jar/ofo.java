@@ -1,24 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ofo
-  extends SimpleJob
+class ofo
+  implements View.OnClickListener
 {
-  public ofo(EditVideoPartManager paramEditVideoPartManager, String paramString, int paramInt1, int paramInt2, String[] paramArrayOfString) {}
+  ofo(ofn paramofn) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    StoryReportor.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
-    return null;
+    oee.a(ofn.a(this.a), 1000, null);
+    szl.a((Activity)ofn.a(this.a), ofn.a(this.a), ofn.a(this.a).a(), ofn.a(this.a).e(), false, oed.b(ofn.a(this.a)), new obg());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ofo
  * JD-Core Version:    0.7.0.1
  */

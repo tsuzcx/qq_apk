@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.DrawerFrame;
+import com.tencent.mobileqq.activity.voip.VoipAddressBookView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
-public class etc
-  implements View.OnClickListener
+class etc
+  implements Runnable
 {
-  public etc(DrawerFrame paramDrawerFrame) {}
+  etc(etb parametb) {}
   
-  public void onClick(View paramView) {}
+  public void run()
+  {
+    VoipAddressBookView.f(this.a.a).e();
+    this.a.a.a.sendEmptyMessage(3);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     etc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,21 @@
-import com.dataline.mpfile.MpfileTaskProxy;
-import com.dataline.mpfile.MpfileTaskRecord;
-import com.dataline.util.WaitEvent;
-import com.tencent.mobileqq.app.proxy.ProxyListener;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.persistence.Entity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.dataline.mpfile.LiteMpFileUploadActivity;
+import com.dataline.mpfile.MpFileConstant;
 
 public class dz
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public dz(MpfileTaskProxy paramMpfileTaskProxy, Entity paramEntity, ProxyListener paramProxyListener, WaitEvent paramWaitEvent) {}
+  public dz(LiteMpFileUploadActivity paramLiteMpFileUploadActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    MpfileTaskRecord localMpfileTaskRecord = ((MpfileTaskRecord)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity).clone();
-    MpfileTaskProxy.a(this.jdField_a_of_type_ComDatalineMpfileMpfileTaskProxy).a(String.valueOf(0), 0, MpfileTaskRecord.tableName(), localMpfileTaskRecord, 0, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
-    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getAction();
+      if ((paramContext == null) || (!paramContext.equals(MpFileConstant.d))) {}
+    }
   }
 }
 

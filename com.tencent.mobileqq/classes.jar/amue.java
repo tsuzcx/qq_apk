@@ -1,27 +1,74 @@
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import android.content.IntentFilter;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.font.FontManager;
-import java.io.File;
 
 public class amue
-  implements Runnable
+  extends amtv
 {
-  public amue(FontManager paramFontManager, String paramString, int paramInt) {}
+  static PromotionConfigInfo b;
+  final String c = "SubProcessPromotionMgr_" + AudioHelper.b();
   
-  public void run()
+  public amue(AppInterface paramAppInterface)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("FontManager", 4, "begin to download font file from network, url =" + this.jdField_a_of_type_JavaLangString);
-    }
-    if (HttpDownloadUtil.a(null, this.jdField_a_of_type_JavaLangString, new File(FontManager.a(this.jdField_a_of_type_CooperationQzoneFontFontManager, this.jdField_a_of_type_Int)))) {
-      FontManager.a(this.jdField_a_of_type_CooperationQzoneFontFontManager, this.jdField_a_of_type_Int);
-    }
-    for (;;)
-    {
-      FontManager.a(this.jdField_a_of_type_CooperationQzoneFontFontManager, this.jdField_a_of_type_Int);
+    super(paramAppInterface);
+    a(paramAppInterface);
+    QLog.w(this.c, 1, "SubProcessPromotionMgr, sProcessId[" + BaseApplicationImpl.sProcessId + "], processName[" + BaseApplicationImpl.processName + "]");
+  }
+  
+  public void a(AppInterface paramAppInterface, amtx paramamtx)
+  {
+    if (a("snycGetConfig", paramAppInterface, paramamtx)) {
       return;
-      QLog.e("FontManager", 1, "Font Download Failed, font url = " + this.jdField_a_of_type_JavaLangString);
     }
+    paramamtx.a(a());
+  }
+  
+  public void a(AppInterface paramAppInterface, String paramString)
+  {
+    BusinessCommonConfig.notifyQQDownload(2, paramString, 0);
+  }
+  
+  void a(PromotionConfigInfo paramPromotionConfigInfo)
+  {
+    super.a(paramPromotionConfigInfo);
+    try
+    {
+      jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = paramPromotionConfigInfo;
+      return;
+    }
+    finally {}
+  }
+  
+  boolean a(AppInterface paramAppInterface)
+  {
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("tencent.businessnotify.qq.to.subprocess");
+    return paramAppInterface.getApp().registerReceiver(new amuf(this), localIntentFilter) != null;
+  }
+  
+  void b(AppInterface paramAppInterface) {}
+  
+  void b(String paramString)
+  {
+    try
+    {
+      paramString = bdpg.a(this.jdField_b_of_type_JavaLangString, paramString);
+      a(paramString);
+      QLog.w(this.c, 1, "reloadConfigInfo, Uin[" + this.jdField_b_of_type_JavaLangString + "] configInfo[" + paramString + "]");
+      return;
+    }
+    finally {}
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
   }
 }
 

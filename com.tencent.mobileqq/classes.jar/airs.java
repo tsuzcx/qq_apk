@@ -1,27 +1,10 @@
-import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 
-public class airs
-  implements Runnable
+public abstract interface airs
 {
-  public volatile boolean a;
+  public abstract void a_(SlideItemInfo paramSlideItemInfo);
   
-  public airs(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
-  
-  public void run()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG> PreUpload timeout");
-        }
-        ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, 2);
-        ShortVideoUploadProcessor.c(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, 2);
-        return;
-      }
-    }
-  }
+  public abstract void av_();
 }
 
 

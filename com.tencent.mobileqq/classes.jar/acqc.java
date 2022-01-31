@@ -1,21 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class acqc
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   acqc(acqb paramacqb) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QfileCloudFileTabView.a(this.a.a, false);
-    this.a.a.h();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqc
  * JD-Core Version:    0.7.0.1
  */

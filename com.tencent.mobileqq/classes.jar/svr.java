@@ -1,32 +1,36 @@
-import android.text.format.DateFormat;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.utils.StringUtil;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
-public class svr
-  implements Runnable
+class svr
+  implements rse
 {
-  public svr(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  svr(svp paramsvp) {}
   
-  public void run()
+  public boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    String str1 = StringUtil.a(this.a.c, 0, 32);
-    String str2 = StringUtil.a(this.a.e, 0, 32);
-    if (this.a.jdField_a_of_type_JavaUtilList != null) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + String.format("(%d人)", new Object[] { Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()) }));
-    }
-    for (;;)
+    if (!bdin.g(svl.a(this.a.a)))
     {
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(str2 + " 创建于 " + DateFormat.format("yy-M-d", this.a.jdField_b_of_type_Long));
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
+      QQToast.a(svl.a(this.a.a), 1, svl.a(this.a.a).getString(2131718736), 0).a();
+      return false;
     }
+    paramView = ors.a();
+    owy.a().a(Long.valueOf(paramView).longValue(), this.a.a.a(paramArrayList));
+    QQToast.a(svl.a(this.a.a), -1, svl.a(this.a.a).getString(2131700054), 0).b(svl.a(this.a.a).getResources().getDimensionPixelSize(2131298914));
+    svl.a(this.a.a).dismiss();
+    if (svl.a(this.a.a) != null) {
+      svl.a(this.a.a).a(svl.a(this.a.a), svl.e(this.a.a), svl.a(this.a.a), paramArrayList);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     svr
  * JD-Core Version:    0.7.0.1
  */

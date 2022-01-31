@@ -1,34 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.activity.FriendProfileImageModel;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
 
 public class srw
-  implements View.OnClickListener
+  implements TextView.OnEditorActionListener
 {
-  public srw(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public srw(LimitWordCountEditText paramLimitWordCountEditText, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramView.getId() == 2131362740)
-    {
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a();
-      if ((!this.a.b) && (this.a.jdField_a_of_type_Boolean) && (paramView != null))
-      {
-        ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.a, null);
-        localActionSheet.a(2131435885, 3);
-        localActionSheet.c(2131433015);
-        localActionSheet.a(new srx(this, paramView, localActionSheet));
-        localActionSheet.show();
-      }
-    }
+    return (this.jdField_a_of_type_Boolean) && (paramKeyEvent.getKeyCode() == 66);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     srw
  * JD-Core Version:    0.7.0.1
  */

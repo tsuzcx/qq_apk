@@ -1,24 +1,29 @@
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.util.DrawerCoverUtil;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
 
 class zdl
-  implements Runnable
+  implements View.OnClickListener
 {
-  zdl(zdk paramzdk, Card paramCard) {}
+  zdl(zdj paramzdj, String paramString, Activity paramActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (FrameHelperActivity.a(this.jdField_a_of_type_Zdk.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity) >= 0)
+    this.jdField_a_of_type_Zdj.a(this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
     {
-      DrawerCoverUtil.a(this.jdField_a_of_type_Zdk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataCard);
-      FrameHelperActivity.b(this.jdField_a_of_type_Zdk.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity);
+      paramView = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface();
+      if ((paramView instanceof NearbyAppInterface)) {
+        ((NearbyAppInterface)paramView).reportClickEvent("dc00899", "grp_lbs", "", "hot_create", "clk_create", 0, 0, "", "", "", "");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zdl
  * JD-Core Version:    0.7.0.1
  */

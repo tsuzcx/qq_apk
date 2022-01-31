@@ -1,35 +1,25 @@
-import android.app.Activity;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.util.WeakReferenceHandler;
+import java.util.List;
 
 public class edt
-  extends ClickableSpan
+  implements Runnable
 {
-  public edt(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
+  public edt(SearchResultDialog paramSearchResultDialog) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((GrayTipsItemBuilder.t(this.a) instanceof Activity))
-    {
-      ChatActivityUtils.a(GrayTipsItemBuilder.p(this.a), (Activity)GrayTipsItemBuilder.u(this.a), GrayTipsItemBuilder.D(this.a).a, true, true, null);
-      ReportController.b(GrayTipsItemBuilder.q(this.a), "CliOper", "", "", "Multi_call", "Clk_discuss_tips", 0, 0, "", "", "", "");
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    List localList = this.a.a(this.a.getContext(), SearchResultDialog.a(this.a), SearchResultDialog.a(this.a));
+    Message localMessage = SearchResultDialog.a(this.a).obtainMessage();
+    localMessage.what = 1;
+    localMessage.obj = localList;
+    SearchResultDialog.a(this.a).sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     edt
  * JD-Core Version:    0.7.0.1
  */

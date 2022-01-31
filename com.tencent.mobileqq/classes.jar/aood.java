@@ -1,151 +1,95 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransferRequest;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoForwardInfo;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoResult;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class aood
-  implements Runnable
+  extends aokh<aooe>
 {
-  int jdField_a_of_type_Int = 0;
-  ArrayList jdField_a_of_type_JavaUtilArrayList;
-  ArrayList b;
-  
-  public aood(BaseShortVideoOprerator paramBaseShortVideoOprerator, ArrayList paramArrayList)
+  public static boolean e()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-  }
-  
-  private int a()
-  {
-    ArrayList localArrayList = this.b;
-    int i = 0;
-    for (;;)
-    {
-      try
-      {
-        Iterator localIterator = this.b.iterator();
-        if (localIterator.hasNext())
-        {
-          if (((ShortVideoResult)localIterator.next()).jdField_a_of_type_Int == -2) {
-            i += 1;
-          }
-        }
-        else {
-          return i;
-        }
-      }
-      finally {}
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-      return;
-    }
-    int i;
-    int j;
-    label105:
-    ShortVideoForwardInfo localShortVideoForwardInfo;
-    if (this.jdField_a_of_type_Int + BaseShortVideoOprerator.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      i = this.jdField_a_of_type_Int + BaseShortVideoOprerator.jdField_a_of_type_Int;
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseShortVideoOprerator", 2, "mInfoList:" + this.jdField_a_of_type_JavaUtilArrayList.size() + " ,uploadStartIndex:" + this.jdField_a_of_type_Int + " ,finishIndex:" + i);
-      }
-      j = this.jdField_a_of_type_Int;
-      if (j >= i) {
-        break label515;
-      }
-      localShortVideoForwardInfo = (ShortVideoForwardInfo)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-      if (localShortVideoForwardInfo.jdField_a_of_type_JavaLangObject == null) {
-        break label178;
-      }
-    }
-    label178:
-    for (Object localObject = (MessageForShortVideo)localShortVideoForwardInfo.jdField_a_of_type_JavaLangObject;; localObject = this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator.a(localShortVideoForwardInfo))
-    {
-      if (localObject != null) {
-        break label192;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseShortVideoOprerator", 2, "mr is null");
-      }
-      j += 1;
-      break label105;
-      i = this.jdField_a_of_type_JavaUtilArrayList.size();
-      break;
-    }
-    label192:
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject);
-    long l = System.currentTimeMillis();
-    TransferRequest localTransferRequest = new TransferRequest();
-    localTransferRequest.jdField_b_of_type_JavaLangString = ((MessageRecord)localObject).selfuin;
-    localTransferRequest.c = ((MessageRecord)localObject).frienduin;
-    localTransferRequest.jdField_a_of_type_Int = ((MessageRecord)localObject).istroop;
-    if ((((MessageRecord)localObject).istroop == 0) || (((MessageRecord)localObject).istroop == 1008)) {
-      localTransferRequest.jdField_b_of_type_Int = 6;
-    }
-    for (;;)
-    {
-      localTransferRequest.jdField_a_of_type_JavaLangObject = localShortVideoForwardInfo;
-      localTransferRequest.jdField_a_of_type_Long = ((MessageRecord)localObject).uniseq;
-      localTransferRequest.jdField_a_of_type_Boolean = true;
-      localTransferRequest.e = 1010;
-      localTransferRequest.f = localShortVideoForwardInfo.e;
-      localTransferRequest.i = (localShortVideoForwardInfo.h + "QQ_&_MoblieQQ_&_QQ" + localShortVideoForwardInfo.i + "QQ_&_MoblieQQ_&_QQ" + localShortVideoForwardInfo.j + "QQ_&_MoblieQQ_&_QQ" + localShortVideoForwardInfo.g);
-      localTransferRequest.jdField_a_of_type_ComTencentMobileqqPicUpCallBack = new aooe(this, j);
-      localTransferRequest.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localTransferRequest);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("BaseShortVideoOprerator", 2, "MultiForwardShortVideo req" + j + ": " + localTransferRequest.toString() + " ,cost:" + (System.currentTimeMillis() - l));
-      break;
-      if (((MessageRecord)localObject).istroop == 3000) {
-        localTransferRequest.jdField_b_of_type_Int = 17;
-      } else if (((MessageRecord)localObject).istroop == 1) {
-        localTransferRequest.jdField_b_of_type_Int = 9;
-      }
-    }
-    label515:
-    this.jdField_a_of_type_Int += BaseShortVideoOprerator.jdField_a_of_type_Int;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null)
+    if ((Build.VERSION.SDK_INT >= 26) && (Build.MODEL.toLowerCase().contains("vivo")))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("BaseShortVideoOprerator", 2, "mInfoList is null");
+        QLog.d("LocaleConfProcessor", 2, "hide entrance for vivo");
       }
-      return;
+      return false;
     }
-    if (this.b == null) {
-      this.b = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList.size());
+    aooe localaooe = (aooe)aoks.a().a(552);
+    if ((localaooe != null) && (!TextUtils.isEmpty(localaooe.a))) {
+      alvw.a = "1".equals(localaooe.a);
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    if (QLog.isColorLevel()) {
+      QLog.e("LocaleConfProcessor", 2, new Object[] { "isLocaleEntranceEnable: ", Boolean.valueOf(alvw.a) });
+    }
+    if (!alvw.a()) {
+      return true;
+    }
+    return alvw.a;
+  }
+  
+  public int a()
+  {
+    return 552;
+  }
+  
+  @NonNull
+  public aooe a(int paramInt)
+  {
+    return new aooe();
+  }
+  
+  @Nullable
+  public aooe a(aoko[] paramArrayOfaoko)
+  {
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0))
     {
-      Object localObject = (ShortVideoForwardInfo)localIterator.next();
-      localObject = new ShortVideoResult();
-      ((ShortVideoResult)localObject).jdField_a_of_type_Int = -2;
-      ((ShortVideoResult)localObject).jdField_a_of_type_DovComTencentMobileqqShortvideoShortVideoReq = this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator.jdField_a_of_type_DovComTencentMobileqqShortvideoShortVideoReq;
-      this.b.add(localObject);
+      aooe localaooe = aooe.a(paramArrayOfaoko[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("LocaleConfProcessor", 2, "onParsed " + paramArrayOfaoko[0].a);
+      }
+      return localaooe;
     }
-    a();
+    return new aooe();
+  }
+  
+  public Class<aooe> a()
+  {
+    return aooe.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aooe paramaooe)
+  {
+    if ((paramaooe != null) && (!TextUtils.isEmpty(paramaooe.a))) {
+      alvw.a = "1".equals(paramaooe.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("LocaleConfProcessor", 2, "onUpdate, isConfShowEntrance: " + alvw.a);
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aood
  * JD-Core Version:    0.7.0.1
  */

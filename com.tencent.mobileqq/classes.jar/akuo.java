@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.widget.ImageViewTouchBase;
-import com.tencent.mobileqq.widget.RotateBitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.game.WebGameFakeView;
 
 public class akuo
-  implements Runnable
+  implements View.OnClickListener
 {
-  public akuo(ImageViewTouchBase paramImageViewTouchBase, RotateBitmap paramRotateBitmap, boolean paramBoolean) {}
+  public akuo(WebGameFakeView paramWebGameFakeView, ImageView paramImageView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageViewTouchBase.setImageRotateBitmapResetBase(this.jdField_a_of_type_ComTencentMobileqqWidgetRotateBitmap, this.jdField_a_of_type_Boolean);
+    aktr.a().a(null);
+    if (aktr.a().a() <= 1) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akuo
  * JD-Core Version:    0.7.0.1
  */

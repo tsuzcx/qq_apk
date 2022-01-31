@@ -1,45 +1,82 @@
-import android.os.IBinder;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.PluginPreloadReportUtils;
-import cooperation.comic.PluginPreloadStrategy;
-import cooperation.comic.PluginPreloader.ExtraResult;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
-public final class amjf
-  implements OnPluginInstallListener
+public class amjf
 {
-  public amjf(AppRuntime paramAppRuntime, PluginPreloadStrategy paramPluginPreloadStrategy, PluginPreloader.ExtraResult paramExtraResult, int paramInt) {}
+  public static int a;
+  public static long a;
+  public static Integer[] a;
+  public static int b;
+  public static Integer[] b;
+  public static int c;
   
-  public IBinder asBinder()
+  static
   {
-    return null;
+    jdField_a_of_type_Int = 9999;
+    jdField_b_of_type_Int = 2147483647;
+    c = 3000;
+    jdField_a_of_type_Long = 863913600L;
+    jdField_a_of_type_ArrayOfJavaLangInteger = new Integer[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(3000) };
+    jdField_b_of_type_ArrayOfJavaLangInteger = new Integer[] { Integer.valueOf(1), Integer.valueOf(4), Integer.valueOf(2), Integer.valueOf(3) };
   }
   
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  public static boolean a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginPreloader", 2, "pluginType:" + this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.b + " preload:fail:installerror");
+    boolean bool2 = false;
+    Integer[] arrayOfInteger = jdField_a_of_type_ArrayOfJavaLangInteger;
+    int j = arrayOfInteger.length;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if (arrayOfInteger[i].intValue() == paramInt) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
     }
-    PluginPreloadReportUtils.a(this.jdField_a_of_type_MqqAppAppRuntime, 1, this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.b, this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.c, 3, "preload:fail:installerror", this.jdField_a_of_type_Int, new String[] { String.valueOf(this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.d) });
   }
   
-  public void onInstallFinish(String paramString)
+  public static boolean a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginPreloader", 2, "plugin install success, do preload.");
+    if (NetConnInfoCenter.getServerTime() - paramRecentUser.lastmsgtime >= jdField_a_of_type_Long) {}
+    while ((!a(paramRecentUser.getType())) || ((paramRecentUser.getType() == 1) && (!b(paramQQAppInterface.b(paramRecentUser.uin))))) {
+      return false;
     }
-    PluginPreloadReportUtils.a(this.jdField_a_of_type_MqqAppAppRuntime, 0, this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.b, this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.c, this.jdField_a_of_type_CooperationComicPluginPreloader$ExtraResult.jdField_a_of_type_Int, this.jdField_a_of_type_CooperationComicPluginPreloader$ExtraResult.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, new String[] { String.valueOf(this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.d) });
-    this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.a();
+    return true;
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    boolean bool2 = false;
+    Integer[] arrayOfInteger = jdField_b_of_type_ArrayOfJavaLangInteger;
+    int j = arrayOfInteger.length;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if (arrayOfInteger[i].intValue() == paramInt) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjf
  * JD-Core Version:    0.7.0.1
  */

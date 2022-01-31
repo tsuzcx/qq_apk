@@ -1,24 +1,32 @@
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class war
-  implements Runnable
+public class war
+  extends QQUIEventReceiver<wah, vdl>
 {
-  war(waq paramwaq, String paramString) {}
-  
-  public void run()
+  public war(@NonNull wah paramwah)
   {
-    TroopChatPie.c(this.jdField_a_of_type_Waq.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-    TroopChatPie.d(this.jdField_a_of_type_Waq.a).setText(this.jdField_a_of_type_Waq.a.a.getResources().getString(2131430452) + this.jdField_a_of_type_JavaLangString);
-    TroopChatPie.a(this.jdField_a_of_type_Waq.a).setOnClickListener(null);
+    super(paramwah);
+  }
+  
+  public void a(@NonNull wah paramwah, @NonNull vdl paramvdl)
+  {
+    if (paramvdl.a.isSuccess())
+    {
+      wxe.a(paramwah.b, "receive user info event. %s.", paramvdl.toString());
+      paramwah.i();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vdl.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     war
  * JD-Core Version:    0.7.0.1
  */

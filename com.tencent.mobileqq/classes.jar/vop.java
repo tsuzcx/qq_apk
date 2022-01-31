@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIOPhotoListAdapter;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
+import android.support.annotation.NonNull;
 
-public class vop
-  implements Runnable
+public abstract interface vop
 {
-  public vop(AIOPhotoListAdapter paramAIOPhotoListAdapter, AIOImageData paramAIOImageData) {}
+  public abstract void a(@NonNull voo paramvoo);
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.g, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.f, 1);
-  }
+  public abstract void a(@NonNull voo paramvoo, @NonNull Throwable paramThrowable);
+  
+  public abstract void b(@NonNull voo paramvoo);
+  
+  public abstract void c(@NonNull voo paramvoo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vop
  * JD-Core Version:    0.7.0.1
  */

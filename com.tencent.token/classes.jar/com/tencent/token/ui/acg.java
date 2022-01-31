@@ -1,18 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ListView;
 
-final class acg
-  implements View.OnClickListener
+class acg
+  implements Runnable
 {
-  acg(StartPwdUpdateInfoActivity paramStartPwdUpdateInfoActivity) {}
+  acg(acf paramacf, int paramInt) {}
   
-  public final void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(this.a, StartPwdGestureModifyActivity.class);
-    this.a.startActivityForResult(paramView, 258);
+    UtilsGameLockActivity.access$300(this.b.a).requestFocusFromTouch();
+    UtilsGameLockActivity.access$300(this.b.a).setSelection(this.a);
+    UtilsGameLockActivity.access$300(this.b.a).requestFocus();
+    UtilsGameLockActivity.access$202(this.b.a, 0);
   }
 }
 

@@ -1,48 +1,47 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import android.media.MediaCodec;
+import android.media.MediaFormat;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.AudioPlayback;
 
 public class vxv
-  implements BusinessObserver
+  extends vxw
 {
-  public vxv(PublicAccountChatPie paramPublicAccountChatPie) {}
+  private AudioPlayback a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public vxv(vya paramvya, boolean paramBoolean, int paramInt, vxy paramvxy, AudioPlayback paramAudioPlayback)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "success:" + String.valueOf(paramBoolean));
+    super(paramvya, paramBoolean, paramInt, paramvxy);
+    this.a = paramAudioPlayback;
+    a();
+  }
+  
+  protected void a(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
+  {
+    super.a(paramMediaCodec, paramMediaFormat);
+    this.a.a(paramMediaFormat);
+  }
+  
+  protected void a(MediaFormat paramMediaFormat)
+  {
+    this.a.a(paramMediaFormat);
+  }
+  
+  public void a(vxx paramvxx, long paramLong)
+  {
+    this.a.a(paramvxx.jdField_a_of_type_JavaNioByteBuffer, paramvxx.jdField_a_of_type_Long);
+    b(paramvxx);
+  }
+  
+  protected boolean a()
+  {
+    if (!c()) {
+      return this.a.a() < 200000L;
     }
-    if (!paramBoolean) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-          localGetPublicAccountDetailInfoResponse.mergeFrom(paramBundle);
-          if ((localGetPublicAccountDetailInfoResponse.ret_info.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0))
-          {
-            ThreadManager.getSubThreadHandler().postDelayed(new vxw(this, localGetPublicAccountDetailInfoResponse), 10L);
-            return;
-          }
-        }
-      }
-      catch (Exception paramBundle) {}
-    }
+    return super.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vxv
  * JD-Core Version:    0.7.0.1
  */

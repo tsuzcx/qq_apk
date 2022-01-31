@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.wadl.ipc.WadlResult;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
-public final class angu
-  implements Parcelable.Creator
+public class angu
+  implements View.OnTouchListener
 {
-  public WadlResult a(Parcel paramParcel)
-  {
-    return new WadlResult(paramParcel);
-  }
+  public angu(ARScanEntryView paramARScanEntryView) {}
   
-  public WadlResult[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new WadlResult[paramInt];
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

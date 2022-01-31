@@ -1,18 +1,19 @@
 package com.tencent.mobileqq.activity.aio.item;
 
+import afjj;
+import afjk;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ViewParent;
 import android.widget.RelativeLayout;
-import uuv;
 
 public class ArkAppRootLayout
   extends RelativeLayout
 {
+  private afjk jdField_a_of_type_Afjk;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private ArkAppRootLayout.ArkSearchReportCallback jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout$ArkSearchReportCallback;
   private boolean jdField_a_of_type_Boolean;
   
   public ArkAppRootLayout(Context paramContext)
@@ -35,7 +36,7 @@ public class ArkAppRootLayout
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new uuv(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new afjj(this));
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -67,9 +68,9 @@ public class ArkAppRootLayout
     }
   }
   
-  public void setCallback(ArkAppRootLayout.ArkSearchReportCallback paramArkSearchReportCallback)
+  public void setCallback(afjk paramafjk)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout$ArkSearchReportCallback = paramArkSearchReportCallback;
+    this.jdField_a_of_type_Afjk = paramafjk;
   }
   
   public void setDisableParentReturn(boolean paramBoolean)
@@ -79,7 +80,7 @@ public class ArkAppRootLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.view;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class RingAvatarView
   extends RelativeLayout
@@ -27,25 +25,17 @@ public class RingAvatarView
   
   public void a()
   {
-    setBackgroundDrawable(getContext().getResources().getDrawable(2130845420));
-    ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
-    localLayoutParams.width = AIOUtils.a(43.0F, getContext().getResources());
-    localLayoutParams.height = AIOUtils.a(43.0F, getContext().getResources());
-    setLayoutParams(localLayoutParams);
+    setBackgroundDrawable(getContext().getResources().getDrawable(2130848971));
   }
   
   public void b()
   {
     setBackgroundDrawable(null);
-    ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
-    localLayoutParams.width = AIOUtils.a(43.0F, getContext().getResources());
-    localLayoutParams.height = AIOUtils.a(43.0F, getContext().getResources());
-    setLayoutParams(localLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.RingAvatarView
  * JD-Core Version:    0.7.0.1
  */

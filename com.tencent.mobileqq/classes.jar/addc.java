@@ -1,25 +1,28 @@
-import com.tencent.mobileqq.filemanager.fileviewer.model.DeviceFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
-class addc
-  implements FMDialogUtil.FMDialogInterface
+public class addc
+  implements CompoundButton.OnCheckedChangeListener
 {
-  addc(addb paramaddb) {}
+  public addc(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    DeviceFileModel.a(this.a.a);
-    if (this.a.a.a != null) {
-      this.a.a.a.d();
+    paramCompoundButton = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      azqs.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Enter_sendmsg", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131695437), "qqsetting_enter_sendmsg_key", paramBoolean);
+      return;
     }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     addc
  * JD-Core Version:    0.7.0.1
  */

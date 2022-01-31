@@ -1,30 +1,38 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
+import aepi;
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import bdin;
+import beaa;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.vip.CUKingCardHelper;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.KanDianRoundCornerTextView;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
+import orc;
+import ors;
+import pgd;
+import qlj;
+import rdm;
+import rqj;
 
 public class ComponentContentBigImageVideo
   extends ComponentContentBig
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ImageView a;
   private TextView b;
+  private TextView c;
   
   public ComponentContentBigImageVideo(Context paramContext)
   {
@@ -43,70 +51,115 @@ public class ComponentContentBigImageVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969567, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559945, this, true);
   }
   
-  public URL a(IReadInJoyModel paramIReadInJoyModel)
+  public URL a(pgd parampgd)
   {
-    ArticleInfo localArticleInfo = paramIReadInJoyModel.a();
-    if (paramIReadInJoyModel.a() == 51)
+    Object localObject1 = parampgd.a();
+    Object localObject2;
+    if (parampgd.a() == 51)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ComponentContentBigImageVideo", 2, "PolymericArticle use first page url");
       }
-      return localArticleInfo.mSinglePicture;
+      if ((ors.s((BaseArticleInfo)localObject1)) && (((ArticleInfo)localObject1).mSinglePicture != null) && (((ArticleInfo)localObject1).mNewPolymericInfo != null) && (!((ArticleInfo)localObject1).mNewPolymericInfo.b))
+      {
+        parampgd = ((ArticleInfo)localObject1).mSinglePicture.getFile();
+        localObject2 = orc.f();
+        parampgd = ors.a(parampgd, ((Integer)((Pair)localObject2).first).intValue(), ((Integer)((Pair)localObject2).second).intValue());
+        ((ArticleInfo)localObject1).mSinglePicture = ors.a(parampgd);
+        ((ArticleInfo)localObject1).mNewPolymericInfo.b = true;
+        if (QLog.isColorLevel()) {
+          QLog.e("ComponentContentBigImageVideo", 2, " handled url = " + parampgd);
+        }
+      }
+      parampgd = ((ArticleInfo)localObject1).mSinglePicture;
+      return parampgd;
     }
-    if ((localArticleInfo != null) && (localArticleInfo.getVideoCoverURL() != null)) {
-      return localArticleInfo.getVideoCoverURL();
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams() != null))
+    {
+      localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams();
+      int i = ((ViewGroup.LayoutParams)localObject2).width;
+      int j = ((ViewGroup.LayoutParams)localObject2).height;
+      if (i == j) {
+        localObject1 = ((ArticleInfo)localObject1).getVideoCoverWithSmartCut(i, j);
+      }
+      for (;;)
+      {
+        if (localObject1 == null) {
+          break label306;
+        }
+        parampgd = (pgd)localObject1;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("ComponentContentBigImageVideo", 2, "cut url : " + localObject1 + " width:" + i + "    height:" + j);
+        return localObject1;
+        if (i > j) {
+          localObject1 = ((ArticleInfo)localObject1).getVideoCoverUrlWithSmartCut(false);
+        } else {
+          localObject1 = ((ArticleInfo)localObject1).getVideoCoverUrlWithSmartCut(true);
+        }
+      }
     }
-    return super.a(paramIReadInJoyModel);
+    label306:
+    return super.a(parampgd);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364195));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367011));
-    this.b = ((TextView)paramView.findViewById(2131367012));
+    this.b = ((TextView)paramView.findViewById(2131365506));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372085));
+    this.c = ((TextView)paramView.findViewById(2131380349));
   }
   
   public void a(Object paramObject)
   {
     super.a(paramObject);
-    if ((paramObject instanceof IReadInJoyModel))
+    if ((paramObject instanceof pgd))
     {
-      paramObject = ((IReadInJoyModel)paramObject).a();
+      paramObject = ((pgd)paramObject).a();
       if (paramObject != null) {
-        if (((!ReadInJoyBaseAdapter.f(paramObject)) && (!ReadInJoyBaseAdapter.g(paramObject)) && (!ReadInJoyBaseAdapter.h(paramObject)) && (!ReadInJoyBaseAdapter.i(paramObject))) || (ReadInJoyBaseAdapter.o(paramObject))) {
-          break label88;
+        if (((rqj.b(paramObject)) || (rqj.i(paramObject)) || (rqj.j(paramObject)) || (rqj.k(paramObject))) && ((rqj.q(paramObject)) && (!rqj.a(paramObject)) && (!rqj.d(paramObject)))) {
+          break label102;
         }
       }
     }
-    while (NetworkUtil.h(getContext()))
+    while (bdin.h(getContext()))
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.b.setVisibility(4);
+      this.c.setVisibility(4);
       return;
-      label88:
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(ReadInJoyDisplayUtils.a(paramObject.mVideoDuration));
+      label102:
+      if (ors.s(paramObject))
+      {
+        this.b.setVisibility(8);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setVisibility(8);
+      }
+      else
+      {
+        this.b.setText(orc.a(paramObject.mVideoDuration));
+      }
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.b.setVisibility(0);
-    Drawable localDrawable = getContext().getResources().getDrawable(2130840876);
-    this.b.setCompoundDrawablesWithIntrinsicBounds(localDrawable, null, null, null);
-    this.b.setCompoundDrawablePadding(AIOUtils.a(6.0F, getContext().getResources()));
-    this.b.setVisibility(0);
-    if (CUKingCardHelper.a() == 1)
+    this.c.setVisibility(0);
+    Drawable localDrawable = getContext().getResources().getDrawable(2130842770);
+    this.c.setCompoundDrawablesWithIntrinsicBounds(localDrawable, null, null, null);
+    this.c.setCompoundDrawablePadding(aepi.a(6.0F, getContext().getResources()));
+    this.c.setVisibility(0);
+    if (beaa.a() == 1)
     {
-      this.b.setText("免流量播放");
+      this.c.setText(alud.a(2131702646));
       return;
     }
     if (paramObject.mXGFileSize > 0L)
     {
-      this.b.setText(VideoFeedsHelper.b(paramObject.mXGFileSize) + "流量");
+      this.c.setText(rdm.b(paramObject.mXGFileSize) + alud.a(2131702699));
       return;
     }
-    this.b.setText("流量播放");
+    this.c.setText(alud.a(2131702731));
   }
   
   public void b()
@@ -116,7 +169,7 @@ public class ComponentContentBigImageVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo
  * JD-Core Version:    0.7.0.1
  */

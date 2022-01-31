@@ -2,10 +2,16 @@ package com.tencent.mobileqq.data;
 
 public class DraftSummaryInfo
 {
+  private String atInfoStr;
   private String summary;
   private long time;
   private int type;
   private String uin;
+  
+  public String getAtInfoStr()
+  {
+    return this.atInfoStr;
+  }
   
   public String getSummary()
   {
@@ -15,6 +21,11 @@ public class DraftSummaryInfo
   public long getTime()
   {
     return this.time / 1000L;
+  }
+  
+  public void setAtInfoStr(String paramString)
+  {
+    this.atInfoStr = paramString;
   }
   
   public void setSummary(String paramString)
@@ -39,7 +50,7 @@ public class DraftSummaryInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.DraftSummaryInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.token.p;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.cx;
+import com.tencent.token.dh;
+import com.tencent.token.dj;
 
-final class db
-  implements DialogInterface.OnClickListener
+class db
+  implements View.OnClickListener
 {
-  db(DetectIDPhotoActivity paramDetectIDPhotoActivity) {}
+  db(CorrectTokenActivity paramCorrectTokenActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.dismissDialog();
-    p.a().a(System.currentTimeMillis(), 134);
-    paramDialogInterface = new Intent(this.a, RealNameTakeIDPhotoActivity.class);
-    if ((DetectIDPhotoActivity.access$800(this.a) != null) && (DetectIDPhotoActivity.access$800(this.a).length() > 0)) {
-      paramDialogInterface.putExtra("frontdata", DetectIDPhotoActivity.access$800(this.a));
+    if (CorrectTokenActivity.access$500(this.a) == true)
+    {
+      cx.c().a.b.a(86630087L);
+      CorrectTokenActivity.access$502(this.a, false);
+      this.a.startTimeTask();
     }
-    paramDialogInterface.putExtra("scene", 2);
-    this.a.startActivityForResult(paramDialogInterface, 2);
+    this.a.showUserDialog(6);
   }
 }
 

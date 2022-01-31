@@ -1,29 +1,36 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.nearby.now.send.capturepart.QQNowVideoFlowCallback;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class wxq
-  implements MediaScanner.OnMediaInfoScannerListener
+public class wxq
+  implements DialogInterface.OnKeyListener
 {
-  wxq(wxk paramwxk, Intent paramIntent, ArrayList paramArrayList) {}
+  public wxq(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
   
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_Wxk.a.d();
-    if (QQNowVideoFlowCallback.a(this.jdField_a_of_type_Wxk.a, paramLocalMediaInfo))
-    {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-      PhotoUtils.a(this.jdField_a_of_type_Wxk.a, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
+    if (paramInt == 84) {
+      return true;
     }
+    if (paramInt == 4)
+    {
+      this.a.a();
+      this.a.a();
+      paramDialogInterface = this.a.a;
+      paramKeyEvent = this.a.a;
+      paramDialogInterface.setResult(0);
+      this.a.a.finish();
+      DanceMachineUploadVideoFragment.a(this.a, false);
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wxq
  * JD-Core Version:    0.7.0.1
  */

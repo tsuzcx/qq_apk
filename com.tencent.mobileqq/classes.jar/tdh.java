@@ -1,42 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.open.downloadnew.MyAppApi;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class tdh
-  implements DialogInterface.OnClickListener
+class tdh
+  implements View.OnClickListener
 {
-  public tdh(NotificationActivity paramNotificationActivity, String paramString) {}
+  tdh(tdf paramtdf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    try
-    {
-      paramDialogInterface = new JSONObject();
-      paramDialogInterface.put("appid", "100686848");
-      paramDialogInterface.put("apkId", "6633");
-      paramDialogInterface.put("versionCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.getPackageManager().getPackageInfo(this.jdField_a_of_type_JavaLangString, 16384).versionCode));
-      paramDialogInterface.put("via", "ANDROIDQQ.NEICE.OTHER");
-      paramDialogInterface.put("appPackageName", this.jdField_a_of_type_JavaLangString);
-      paramDialogInterface.put("channel", "000316053134377c30");
-      paramDialogInterface.put("appAuthorizedStr", NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
-      paramDialogInterface = paramDialogInterface.toString();
-      MyAppApi.a().a(paramDialogInterface, new tdi(this), this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
-      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, true);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      paramDialogInterface.printStackTrace();
-    }
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tdh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aefn
-  implements DialogInterface.OnDismissListener
+  implements View.OnTouchListener
 {
-  public aefn(MedalGuideView paramMedalGuideView) {}
+  public aefn(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    MedalGuideView.a(this.a);
+    if (paramMotionEvent.getAction() == 1)
+    {
+      this.a.j();
+      paramView = this.a.n;
+      this.a.a("Clk_find", paramView, "");
+    }
+    return true;
   }
 }
 

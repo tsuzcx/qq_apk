@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.media.SoundPool;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
-public class evt
-  implements View.OnClickListener
+class evt
+  implements Runnable
 {
-  public evt(SelectMemberActivity paramSelectMemberActivity) {}
+  evt(evs paramevs) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.f();
+    VoipDialInterfaceActivity.a(this.a.a).play(VoipDialInterfaceActivity.i(this.a.a), 1.0F, 1.0F, 0, 0, 1.0F);
   }
 }
 

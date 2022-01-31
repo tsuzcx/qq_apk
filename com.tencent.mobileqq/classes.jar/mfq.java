@@ -1,33 +1,27 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogView.OnUninterestConfirmListener;
-import com.tencent.widget.ActionSheet;
-import java.util.ArrayList;
-import org.json.JSONObject;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.TextView;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class mfq
-  implements ReadInJoyDisLikeDialogView.OnUninterestConfirmListener
+class mfq
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public mfq(VideoShareHelper paramVideoShareHelper, BaseArticleInfo paramBaseArticleInfo, JSONObject paramJSONObject) {}
+  mfq(mfp parammfp, TextView paramTextView) {}
   
-  public void a(View paramView, ArrayList paramArrayList, Object paramObject)
+  public boolean onPreDraw()
   {
-    VideoShareHelper.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper, true);
-    ReadInJoyUtils.a();
-    VideoShareHelper.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper).dismiss();
-    ((Animation)VideoShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper).getTag(2131362291)).setAnimationListener(new mfr(this, paramArrayList));
-    VideoShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper).startAnimation((Animation)VideoShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper).getTag(2131362291));
-    PublicAccountReportUtils.b(null, null, "0X800913C", "0X800913C", 0, 0, null, null, null, VideoReporter.a(null, null, null, null, this.jdField_a_of_type_OrgJsonJSONObject), false);
+    this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeOnPreDrawListener(this);
+    this.jdField_a_of_type_Mfp.a.a().a().au = true;
+    mww.a(this.jdField_a_of_type_Mfp.a);
+    QLog.d("qav_face_guide", 1, "onPreDraw");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfq
  * JD-Core Version:    0.7.0.1
  */

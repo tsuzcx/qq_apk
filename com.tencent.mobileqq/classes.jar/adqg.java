@@ -1,22 +1,41 @@
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
-import com.tencent.mobileqq.hotpic.HotVideoData;
-import com.tencent.mobileqq.widget.QQToastNotifier;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQIdentiferLegacy;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class adqg
-  implements Runnable
+public class adqg
+  extends BroadcastReceiver
 {
-  adqg(adqf paramadqf) {}
+  public adqg(QQIdentiferLegacy paramQQIdentiferLegacy) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    HotVideoData localHotVideoData = this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a();
-    if ((localHotVideoData == null) || (this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.jdField_a_of_type_Int != 1) || (localHotVideoData.picIndex != this.a.a.jdField_a_of_type_Int))
+    paramContext = paramIntent.getAction();
+    if (("tencent.av.v2q.StartVideoChat".equals(paramContext)) || ("tencent.av.v2q.AvSwitch".equals(paramContext)))
     {
-      new QQToastNotifier(this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a).a("视频插件安装成功", 100, 0, 2);
+      i = paramIntent.getIntExtra("sessionType", 0);
+      QLog.d("QQIdentiferLegacy", 1, "received video chat broadcast: " + i);
+      if ((i == 2) || (i == 4))
+      {
+        paramContext = new Intent();
+        paramIntent = new Bundle();
+        paramIntent.putInt("ret", 204);
+        paramIntent.putString("errMsg", atho.a);
+        paramContext.putExtra("data", paramIntent);
+        QQIdentiferLegacy.a(this.a).setResult(2, paramContext);
+        QQIdentiferLegacy.a(this.a).finish();
+      }
+    }
+    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext))
+    {
+      int i;
       return;
     }
-    this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.c(this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder, this.a.a.jdField_a_of_type_Int);
+    QLog.d("QQIdentiferLegacy", 1, "received account kicked broadcast");
+    QQIdentiferLegacy.a(this.a).finish();
   }
 }
 

@@ -1,27 +1,20 @@
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.SyncListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 
 public class smv
-  extends SyncListener
+  implements snn
 {
-  public smv(FavEmosmManageActivity paramFavEmosmManageActivity) {}
+  public smv(ViolaFragment paramViolaFragment) {}
   
   public void a(int paramInt)
   {
-    this.a.c();
-  }
-  
-  public void a(CustomEmotionData paramCustomEmotionData, int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 <= 28) || (paramInt2 % 28 == 0)) {
-      this.a.c();
+    if (ViolaFragment.a(this.a) != null) {
+      ViolaFragment.a(this.a).a(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     smv
  * JD-Core Version:    0.7.0.1
  */

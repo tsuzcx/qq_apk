@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/bhv" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="API开发开关(跳过后台权限检查)" />
+        <Button android:id="@id/d55" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="hello" />
+        <Button android:id="@id/dmi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="修改appid和type" />
+        <Button android:id="@id/login" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="login" />
+        <Button android:id="@id/egx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="loginSilent" />
+        <Button android:id="@id/egv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="loginDialog" />
+        <Button android:id="@id/cu9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getSkey" />
+        <Button android:id="@id/cu_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getUserInfo" />
+        <Button android:id="@id/cu6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getAppFriends" />
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+            <TextView android:textColor="@android:color/holo_red_light" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lpu" />
+            <RadioGroup android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/i_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip">
+                <RadioButton android:textColor="@android:color/background_dark" android:id="@id/bcr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="@string/lpv" />
+                <RadioButton android:textColor="@android:color/background_dark" android:id="@id/enx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lpy" />
+                <RadioButton android:textColor="@android:color/background_dark" android:id="@id/ew2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lpt" />
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textColor="@android:color/holo_red_light" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lpw" />
+            <RadioGroup android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/i9z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip">
+                <RadioButton android:textColor="@android:color/background_dark" android:id="@id/i9n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="@string/lpq" />
+                <RadioButton android:textColor="@android:color/background_dark" android:id="@id/fxk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lps" />
+            </RadioGroup>
+        </LinearLayout>
+        <Button android:textColor="@android:color/holo_red_light" android:id="@id/cu8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getRankingList" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+            <Button android:id="@id/i80" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="reportScore" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lpx" />
+        </LinearLayout>
+        <Button android:id="@id/cu7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getLocation" />
+        <Button android:id="@id/axn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getCity" />
+        <EditText android:id="@id/fg8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="200.0dip" android:minHeight="100.0dip" />
+    </LinearLayout>
+</ScrollView>

@@ -1,41 +1,21 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.IndividuationUrlHelper;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class tew
-  implements View.OnClickListener
+final class tew
+  implements DialogInterface.OnClickListener
 {
-  public tew(PermisionPrivacyActivity paramPermisionPrivacyActivity, boolean paramBoolean1, SharedPreferences paramSharedPreferences, boolean paramBoolean2) {}
+  tew(int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      paramView = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      paramView.putBoolean("plate_of_king_red_dot_" + this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.c(), true);
-      paramView.apply();
-      if (this.b) {
-        PermisionPrivacyActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity).setRightIcon(null);
-      }
-    }
-    paramView = IndividuationUrlHelper.a("gameIconSetupH5Url");
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.getApp(), QQBrowserActivity.class);
-    localIntent.setFlags(268435456);
-    localIntent.putExtra("vasUsePreWebview", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.getApp(), paramView, -1L, localIntent, false, -1);
+    paramDialogInterface.dismiss();
+    tju.b(112, 2, 0);
+    tjr.a(117, this.a, this.b, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tew
  * JD-Core Version:    0.7.0.1
  */

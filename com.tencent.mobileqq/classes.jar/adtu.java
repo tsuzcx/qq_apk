@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class adtu
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public adtu(GroupVideoManager paramGroupVideoManager, boolean paramBoolean) {}
+  public adtu(RegisterActivity paramRegisterActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGroupVideoManager.a(this.jdField_a_of_type_Boolean);
+    this.a.a = 0;
+    this.a.finish();
   }
 }
 

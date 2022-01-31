@@ -1,97 +1,95 @@
 package com.tencent.mobileqq.msf.service;
 
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Process;
-import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.j;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.msf.sdk.MsfMessagePair;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-final class h
-  extends Thread
+public class h
 {
-  public void run()
+  private static final String a = "MSF.S.IPCTransportUtil";
+  private static final int[] b = { 716800, 655360, 409600, 204800, 102400 };
+  private static int c = b[0];
+  private static boolean d = false;
+  
+  static int a()
   {
-    boolean bool = false;
+    b();
+    return c;
+  }
+  
+  static void b()
+  {
+    int i = 0;
+    if (d) {}
+    label180:
     for (;;)
     {
-      int i;
-      try
+      return;
+      c localc = c();
+      if (localc == null)
       {
-        Thread.sleep(3000L);
-        HashMap localHashMap = new HashMap();
-        Object localObject1 = ((ActivityManager)BaseApplication.getContext().getSystemService("activity")).getRunningAppProcesses();
-        int j = Process.myPid();
-        localObject1 = ((List)localObject1).iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break label417;
-        }
-        Object localObject2 = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next();
         if (QLog.isColorLevel()) {
-          QLog.d("MSF.S.MsfService", 1, "process info: " + ((ActivityManager.RunningAppProcessInfo)localObject2).processName + " " + ((ActivityManager.RunningAppProcessInfo)localObject2).pid + " " + ((ActivityManager.RunningAppProcessInfo)localObject2).uid);
+          QLog.d("MSF.S.IPCTransportUtil", 2, "adjustTransPackageLenIfNeed, but appProcessInfo = null");
         }
-        if (!((ActivityManager.RunningAppProcessInfo)localObject2).processName.equals("com.tencent.mobileqq")) {
-          continue;
-        }
-        i = ((ActivityManager.RunningAppProcessInfo)localObject2).pid;
-        localHashMap.clear();
-        localHashMap.put("DEVICE", Build.DEVICE);
-        localHashMap.put("PRODUCT", Build.PRODUCT);
-        localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-        localHashMap.put("MODEL", Build.MODEL);
-        localHashMap.put("RELEASE", Build.VERSION.RELEASE);
-        localHashMap.put("FROM", MsfService.access$000());
-        if (j < i)
+      }
+      else
+      {
+        d = true;
+        FromServiceMsg localFromServiceMsg = new FromServiceMsg();
+        localFromServiceMsg.setServiceCmd("test_ipc_package_length");
+        localFromServiceMsg.setBusinessFail(-2);
+        localFromServiceMsg.setRequestSsoSeq(-1);
+        MsfMessagePair localMsfMessagePair = new MsfMessagePair(null, localFromServiceMsg);
+        for (;;)
         {
-          localHashMap.put("WAY", "Daemon");
-          if (MsfService.core.statReporter == null) {
-            break label389;
+          for (;;)
+          {
+            if (i >= b.length) {
+              break label180;
+            }
+            int j = b[i];
+            localFromServiceMsg.putWupBuffer(new byte[j]);
+            try
+            {
+              b.a(localMsfMessagePair, 0, j, j, localc.c());
+              c = j;
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("MSF.S.IPCTransportUtil", 2, "adjustTransPackageLenIfNeed suc, len = " + c);
+              return;
+            }
+            catch (Throwable localThrowable)
+            {
+              if (i == b.length - 1) {
+                c = j;
+              }
+              if (QLog.isColorLevel()) {
+                QLog.d("MSF.S.IPCTransportUtil", 2, "adjustTransPackageLenIfNeed throw e: ", localThrowable);
+              }
+              i += 1;
+            }
           }
-          localObject1 = MsfService.core.statReporter;
-          if (j < i) {
-            bool = true;
-          }
-          ((j)localObject1).a("msfstartway", bool, 0L, 0L, localHashMap, false, false);
-          if (!QLog.isColorLevel()) {
-            break label406;
-          }
-          localObject1 = localHashMap.keySet().iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            break label406;
-          }
-          localObject2 = (String)((Iterator)localObject1).next();
-          QLog.d("MSF.S.MsfService", 1, "upload map: " + (String)localObject2 + ":" + (String)localHashMap.get(localObject2));
-          continue;
         }
-        localThrowable.put("WAY", "QQ");
-      }
-      catch (Throwable localThrowable)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.S.MsfService", 1, "upload start way fail : InterruptedException!");
-        }
-        return;
-      }
-      continue;
-      label389:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("MSF.S.MsfService", 1, "upload start way fail: RDM NULL!");
-        continue;
-        label406:
-        e.a(MsfService.core.statReporter, false);
-        return;
-        label417:
-        i = 2147483647;
       }
     }
+  }
+  
+  private static c c()
+  {
+    Iterator localIterator = e.c.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (c)e.c.get(localObject);
+      if ((localObject != null) && (((c)localObject).c() != null)) {
+        return localObject;
+      }
+    }
+    return null;
   }
 }
 

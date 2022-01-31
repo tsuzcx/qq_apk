@@ -1,6 +1,9 @@
 package NS_MOBILE_MATERIAL.cnst;
 
-public abstract interface MATERIAL_CATE_NORMALKEY_PREFIX {}
+public abstract interface MATERIAL_CATE_NORMALKEY_PREFIX
+{
+  public static final String value = "MaterialCate_Normal_";
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

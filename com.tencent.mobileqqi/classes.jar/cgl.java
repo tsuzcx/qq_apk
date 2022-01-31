@@ -1,23 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler.Callback;
+import com.tencent.mobileqq.activity.DevlockPushActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-public final class cgl
-  implements DialogInterface.OnClickListener
+public class cgl
+  implements Runnable
 {
-  public cgl(Handler.Callback paramCallback) {}
+  public cgl(DevlockPushActivity paramDevlockPushActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (this.a != null) {
-      this.a.handleMessage(null);
+    try
+    {
+      if ((DevlockPushActivity.a(this.a) == null) && (!this.a.isFinishing()))
+      {
+        DevlockPushActivity.a(this.a, new QQProgressDialog(this.a, this.a.d()));
+        DevlockPushActivity.a(this.a).b(2131562645);
+      }
+      if ((DevlockPushActivity.a(this.a) != null) && (!DevlockPushActivity.a(this.a).isShowing())) {
+        DevlockPushActivity.a(this.a).show();
+      }
+      return;
     }
-    paramDialogInterface.dismiss();
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cgl
  * JD-Core Version:    0.7.0.1
  */

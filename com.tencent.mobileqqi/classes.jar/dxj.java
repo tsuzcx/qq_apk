@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
 public class dxj
-  implements DialogInterface.OnClickListener
+  extends AnimateUtils.AnimationAdapter
 {
-  public dxj(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public dxj(ComboAnimation3 paramComboAnimation3) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if ((ComboAnimation3.a(this.a) != null) && (ComboAnimation3.a(this.a).isShown())) {
+      this.a.a.post(new dxk(this));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dxj
  * JD-Core Version:    0.7.0.1
  */

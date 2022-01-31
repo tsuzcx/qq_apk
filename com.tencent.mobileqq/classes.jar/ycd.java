@@ -1,29 +1,20 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.mobileqq.activity.selectmember.TroopListAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
 
 public class ycd
-  extends ProtoUtils.TroopProtocolObserver
+  implements View.OnClickListener
 {
-  public ycd(TroopListAdapter paramTroopListAdapter) {}
+  public ycd(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
-    if ((paramInt != 0) || (paramArrayOfByte == null) || (localQQAppInterface == null)) {
-      return;
-    }
-    ThreadManager.post(new yce(this, localQQAppInterface, paramArrayOfByte, paramBundle, new Handler(Looper.getMainLooper())), 8, null, true);
+    FollowedRecommendBannerView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ycd
  * JD-Core Version:    0.7.0.1
  */

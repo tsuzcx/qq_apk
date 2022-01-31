@@ -1,21 +1,36 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertUinAndUnionId;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class vgy
-  implements ValueAnimator.AnimatorUpdateListener
+  extends uro
 {
-  public vgy(SixCombolEffectView paramSixCombolEffectView) {}
+  public List<QQUserUIItem> a = new ArrayList();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public vgy(qqstory_service.RspConvertUinAndUnionId paramRspConvertUinAndUnionId)
   {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    super(paramRspConvertUinAndUnionId.result);
+    paramRspConvertUinAndUnionId = paramRspConvertUinAndUnionId.user_list.get();
+    if (paramRspConvertUinAndUnionId != null)
+    {
+      paramRspConvertUinAndUnionId = paramRspConvertUinAndUnionId.iterator();
+      while (paramRspConvertUinAndUnionId.hasNext())
+      {
+        qqstory_struct.UserInfo localUserInfo = (qqstory_struct.UserInfo)paramRspConvertUinAndUnionId.next();
+        QQUserUIItem localQQUserUIItem = new QQUserUIItem();
+        localQQUserUIItem.convertFrom(localUserInfo);
+        this.a.add(localQQUserUIItem);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vgy
  * JD-Core Version:    0.7.0.1
  */

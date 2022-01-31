@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
 
 public class vru
-  implements View.OnClickListener
+  extends xwf
 {
-  public vru(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  public vru(StoryPlayerCommentListView paramStoryPlayerCommentListView) {}
   
-  public void onClick(View paramView)
+  public boolean a(boolean paramBoolean)
   {
-    paramView.setVisibility(8);
+    StoryPlayerCommentListView.a(this.a).a(StoryPlayerCommentListView.a(this.a).a());
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vru
  * JD-Core Version:    0.7.0.1
  */

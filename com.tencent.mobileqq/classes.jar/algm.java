@@ -1,18 +1,43 @@
-import com.tencent.open.downloadnew.DownloadManager;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.apollo.task.ApolloAudioPlayer;
+import com.tencent.qphone.base.util.QLog;
 
-public final class algm
-  implements Runnable
+public class algm
+  implements MediaPlayer.OnCompletionListener
 {
-  public algm(String paramString1, String paramString2, boolean paramBoolean) {}
+  public algm(ApolloAudioPlayer paramApolloAudioPlayer, int paramInt, String paramString) {}
   
-  public void run()
+  public void onCompletion(MediaPlayer arg1)
   {
-    DownloadManager.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloAudioPlayer", 2, "[onCompletion]");
+    }
+    int i = this.jdField_a_of_type_Int - 1;
+    if (i == 0) {}
+    do
+    {
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer.jdField_a_of_type_JavaLangObject)
+      {
+        ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer, null);
+        if (ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer) != null) {
+          ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer).a();
+        }
+        return;
+      }
+      if (!this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer.jdField_a_of_type_Boolean)
+      {
+        QLog.d("ApolloAudioPlayer", 2, "[repeat play]");
+        ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer, this.jdField_a_of_type_JavaLangString, i);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloAudioPlayer", 2, "Paused. NOT play");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     algm
  * JD-Core Version:    0.7.0.1
  */

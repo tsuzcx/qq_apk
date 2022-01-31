@@ -7,16 +7,16 @@ import com.qq.taf.jce.JceStruct;
 public final class j
   extends JceStruct
 {
-  public int a;
-  public byte b;
-  public int c;
-  public int d;
+  public int a = 0;
+  public byte b = 0;
+  public int c = 0;
+  public int d = 0;
   public String e = "";
   public String f = "";
   public String g = "";
-  public int h;
+  public int h = 0;
   public byte i = 1;
-  public int j;
+  public int j = 0;
   public String k = "";
   
   public j() {}

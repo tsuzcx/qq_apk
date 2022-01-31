@@ -1,78 +1,41 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade.ISearchListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResult;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class wit
-  implements ContactSearchFacade.ISearchListener
+class wit
+  implements urr<wiv, wiw>
 {
-  public wit(SearchBaseFragment paramSearchBaseFragment) {}
+  wit(wis paramwis, boolean paramBoolean) {}
   
-  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
+  public void a(@NonNull wiv paramwiv, @Nullable wiw arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    int i = 3;
-    this.a.i();
-    if (paramBoolean)
+    paramwiv = new wiu(paramErrorMessage, wis.a(this.jdField_a_of_type_Wis));
+    paramwiv.jdField_b_of_type_Boolean = false;
+    paramwiv.jdField_a_of_type_Boolean = wis.a(this.jdField_a_of_type_Wis);
+    paramwiv.jdField_a_of_type_Int = wis.a(this.jdField_a_of_type_Wis);
+    if ((??? == null) || (paramErrorMessage.isFail()))
     {
-      if ((paramObject != null) && ((paramObject instanceof ArrayList)))
-      {
-        paramObject = (ArrayList)paramObject;
-        if (paramObject.size() != 0) {
-          break label94;
-        }
-        if (this.a.a != null)
-        {
-          paramObject = this.a.a;
-          if (!this.a.b) {
-            break label89;
-          }
-          paramInt1 = 3;
-          paramObject.sendEmptyMessage(paramInt1);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(SearchBaseFragment.a(), 2, "error! SearchResult is null!");
-        }
-      }
-      for (;;)
-      {
-        return;
-        label89:
-        paramInt1 = 2;
-        break;
-        label94:
-        if (paramObject.size() > 0) {}
-        try
-        {
-          paramString = (SearchResult)paramObject.get(0);
-          if ((this.a.a(paramObject)) && (this.a.a != null))
-          {
-            this.a.a.sendEmptyMessage(0);
-            return;
-          }
-        }
-        catch (Exception paramObject)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(SearchBaseFragment.a(), 2, "", paramObject);
-          }
-          paramObject = this.a.a;
-          if (!this.a.b) {}
-        }
-      }
-      for (paramInt1 = i;; paramInt1 = 2)
-      {
-        paramObject.sendEmptyMessage(paramInt1);
-        return;
-      }
+      umc.a().dispatch(paramwiv);
+      return;
     }
-    this.a.a(paramInt1, paramObject, paramInt2, paramString);
+    paramwiv.jdField_c_of_type_Int = ???.jdField_c_of_type_Int;
+    paramwiv.jdField_b_of_type_Int = ???.jdField_b_of_type_Int;
+    paramwiv.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
+    paramwiv.jdField_c_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    ((uvm)uwa.a(15)).a(paramwiv.jdField_a_of_type_JavaUtilList, wis.a(this.jdField_a_of_type_Wis), wis.c(this.jdField_a_of_type_Wis), true);
+    synchronized (this.jdField_a_of_type_Wis)
+    {
+      wis.a(this.jdField_a_of_type_Wis, true);
+      umc.a().dispatch(paramwiv);
+      wxe.a("Q.qqstory.detail:DetailLikeListLoader", "dispatch like list return from network: %s", paramwiv);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wit
  * JD-Core Version:    0.7.0.1
  */

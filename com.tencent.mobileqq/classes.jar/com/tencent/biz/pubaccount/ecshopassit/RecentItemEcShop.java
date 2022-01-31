@@ -6,13 +6,14 @@ import com.tencent.mobileqq.data.PubAccountAssistantData;
 public class RecentItemEcShop
   extends RecentPubAccountAssistantItem
 {
-  public String a;
+  public long bindUin;
+  public String imgInfos;
   
   public RecentItemEcShop(EcShopData paramEcShopData)
   {
     super(a(paramEcShopData));
-    this.b = 1;
-    this.a = paramEcShopData.mImgInfo;
+    this.mUnreadFlag = 1;
+    this.imgInfos = paramEcShopData.mImgInfo;
   }
   
   protected static PubAccountAssistantData a(EcShopData paramEcShopData)
@@ -32,7 +33,7 @@ public class RecentItemEcShop
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.RecentItemEcShop
  * JD-Core Version:    0.7.0.1
  */

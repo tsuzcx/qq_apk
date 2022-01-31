@@ -1,23 +1,24 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
+import android.database.DataSetObserver;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
-class vvu
-  implements Runnable
+public class vvu
+  extends DataSetObserver
 {
-  vvu(vvs paramvvs, MultiForwardChatPie paramMultiForwardChatPie) {}
+  private vvu(XViewPager paramXViewPager) {}
   
-  public void run()
+  public void onChanged()
   {
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(0);
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setText(2131433421);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.d.setText(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.g);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.y();
+    this.a.b();
+  }
+  
+  public void onInvalidated()
+  {
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vvu
  * JD-Core Version:    0.7.0.1
  */

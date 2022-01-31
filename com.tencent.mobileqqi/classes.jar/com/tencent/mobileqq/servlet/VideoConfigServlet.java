@@ -1,20 +1,15 @@
 package com.tencent.mobileqq.servlet;
 
-import SharpSvrPack.MultiVideoMsg;
 import VideoSvrPack.VideoCallMsg;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.av.config.ConfigSystemImpl;
-import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.AudioHelper.AudioPlayerParameter;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
 import mqq.app.AppRuntime;
 import mqq.app.MSFServlet;
-import mqq.app.MobileQQ;
 import mqq.app.Packet;
 
 public class VideoConfigServlet
@@ -47,69 +42,63 @@ public class VideoConfigServlet
     int j;
     if ((paramVideoCallMsg != null) && (paramVideoCallMsg.vMsg != null) && (paramVideoCallMsg.vMsg.length > 39))
     {
-      ByteBuffer localByteBuffer = ByteBuffer.wrap(paramVideoCallMsg.vMsg);
-      localByteBuffer.position(39);
-      while (localByteBuffer.hasRemaining())
+      paramVideoCallMsg = ByteBuffer.wrap(paramVideoCallMsg.vMsg);
+      paramVideoCallMsg.position(39);
+      while (paramVideoCallMsg.hasRemaining())
       {
-        i = localByteBuffer.getShort();
-        j = localByteBuffer.getShort();
+        i = paramVideoCallMsg.getShort();
+        j = paramVideoCallMsg.getShort();
         if (i != 12)
         {
-          localByteBuffer.position(localByteBuffer.position() + j);
+          paramVideoCallMsg.position(paramVideoCallMsg.position() + j);
         }
         else if (j == 15)
         {
-          i = localByteBuffer.get();
-          j = localByteBuffer.get();
-          if (localByteBuffer.get() != 1) {
-            break label305;
+          i = paramVideoCallMsg.get();
+          j = paramVideoCallMsg.get();
+          if (paramVideoCallMsg.get() != 1) {
+            break label228;
           }
           bool1 = true;
           AudioHelper.a(0, new AudioHelper.AudioPlayerParameter(i, j, bool1));
-          i = localByteBuffer.get();
-          j = localByteBuffer.get();
-          if (localByteBuffer.get() != 1) {
-            break label311;
+          i = paramVideoCallMsg.get();
+          j = paramVideoCallMsg.get();
+          if (paramVideoCallMsg.get() != 1) {
+            break label234;
           }
           bool1 = true;
-          label152:
+          label139:
           AudioHelper.a(1, new AudioHelper.AudioPlayerParameter(i, j, bool1));
-          i = localByteBuffer.get();
-          j = localByteBuffer.get();
-          if (localByteBuffer.get() != 1) {
-            break label317;
+          i = paramVideoCallMsg.get();
+          j = paramVideoCallMsg.get();
+          if (paramVideoCallMsg.get() != 1) {
+            break label240;
           }
           bool1 = true;
-          label191:
+          label175:
           AudioHelper.a(2, new AudioHelper.AudioPlayerParameter(i, j, bool1));
-          i = localByteBuffer.get();
-          j = localByteBuffer.get();
-          if (localByteBuffer.get() != 1) {
-            break label323;
+          i = paramVideoCallMsg.get();
+          j = paramVideoCallMsg.get();
+          if (paramVideoCallMsg.get() != 1) {
+            break label246;
           }
         }
       }
     }
-    label305:
-    label311:
-    label317:
-    label323:
+    label228:
+    label234:
+    label240:
+    label246:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       AudioHelper.a(3, new AudioHelper.AudioPlayerParameter(i, j, bool1));
-      if (ConfigSystemImpl.a(String.valueOf(AppSetting.a), getAppRuntime().getApplication(), paramVideoCallMsg.vMsg))
-      {
-        paramVideoCallMsg = new Intent("tencent.video.q2v.UpdateConfig");
-        paramVideoCallMsg.putExtra("uin", getAppRuntime().getAccount());
-        getAppRuntime().getApplication().sendBroadcast(paramVideoCallMsg);
-      }
       return;
       bool1 = false;
       break;
       bool1 = false;
-      break label152;
+      break label139;
       bool1 = false;
-      break label191;
+      break label175;
     }
   }
   
@@ -142,28 +131,7 @@ public class VideoConfigServlet
     if (paramIntent == null) {
       return;
     }
-    if (paramIntent.getInt("reqType", 0) == 8)
-    {
-      paramPacket.setServantName("MultiVideo");
-      paramPacket.setFuncName("MultiVideoMsg");
-      paramPacket.setSSOCommand("MultiVideo.c2s");
-      paramPacket.addAttribute("remind_slown_network", Boolean.valueOf(true));
-      MultiVideoMsg localMultiVideoMsg = new MultiVideoMsg();
-      localMultiVideoMsg.ver = paramIntent.getByte("ver");
-      localMultiVideoMsg.type = paramIntent.getByte("type");
-      localMultiVideoMsg.csCmd = paramIntent.getShort("cscmd");
-      localMultiVideoMsg.from_uin = a(String.valueOf(paramIntent.getLong("from_uin")));
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(paramIntent.getLong("toUin")));
-      localMultiVideoMsg.to_uin = localArrayList;
-      localMultiVideoMsg.msg_time = paramIntent.getLong("msg_time");
-      localMultiVideoMsg.msg_type = paramIntent.getLong("msg_type");
-      localMultiVideoMsg.msg_seq = paramIntent.getLong("msg_seq");
-      localMultiVideoMsg.msg_uid = paramIntent.getLong("msg_uid");
-      localMultiVideoMsg.video_buff = paramIntent.getByteArray("vMsg");
-      paramPacket.addRequestPacket("MultiVideoMsg", localMultiVideoMsg);
-      return;
-    }
+    paramIntent.getInt("reqType", 0);
     paramPacket.setServantName("VideoSvc");
     paramPacket.setFuncName("SendVideoMsg");
     paramPacket.setSSOCommand("VideoCCSvc.PutInfo");
@@ -176,7 +144,6 @@ public class VideoConfigServlet
     paramIntent.cVerifyType = 0;
     paramIntent.uSeqId = 0;
     paramIntent.uSessionId = 0;
-    paramIntent.vMsg = ConfigSystemImpl.a(String.valueOf(AppSetting.a), getAppRuntime().getApplication());
     paramPacket.addRequestPacket("VideoCallMsg", paramIntent);
   }
 }

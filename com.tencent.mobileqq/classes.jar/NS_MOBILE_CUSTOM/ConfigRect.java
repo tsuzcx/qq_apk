@@ -11,7 +11,7 @@ public final class ConfigRect
 {
   static int cache_iContentStyle;
   static int cache_iType;
-  static Map cache_mapExtInfo;
+  static Map<String, String> cache_mapExtInfo;
   static CustomColor cache_stTextColor;
   static CustomColor cache_stTextColorClick;
   public int iCanEdit;
@@ -23,7 +23,7 @@ public final class ConfigRect
   public int iWp;
   public int iXp;
   public int iYp;
-  public Map mapExtInfo;
+  public Map<String, String> mapExtInfo;
   public CustomColor stTextColor;
   public CustomColor stTextColorClick;
   public String strImageUrl = "";
@@ -33,7 +33,7 @@ public final class ConfigRect
   
   public ConfigRect() {}
   
-  public ConfigRect(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, String paramString1, String paramString2, CustomColor paramCustomColor1, CustomColor paramCustomColor2, int paramInt8, String paramString3, String paramString4, int paramInt9, Map paramMap)
+  public ConfigRect(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, String paramString1, String paramString2, CustomColor paramCustomColor1, CustomColor paramCustomColor2, int paramInt8, String paramString3, String paramString4, int paramInt9, Map<String, String> paramMap)
   {
     this.iIndexId = paramInt1;
     this.iType = paramInt2;

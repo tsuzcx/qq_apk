@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet;
 
+import ajeu;
+import alud;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -7,16 +9,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import azri;
+import bdao;
+import bdgc;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.util.CommonUtil;
-import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qwallet.plugin.QWalletPayProgressDialog;
 import java.net.URLDecoder;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,7 +26,6 @@ public class TenpayJumpActivity
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private QWalletPayProgressDialog jdField_a_of_type_CooperationQwalletPluginQWalletPayProgressDialog;
   private String jdField_a_of_type_JavaLangString;
   private String b;
   private String c;
@@ -67,7 +66,7 @@ public class TenpayJumpActivity
   {
     try
     {
-      int j = paramContext.getResources().getDimensionPixelSize(2131558448);
+      int j = paramContext.getResources().getDimensionPixelSize(2131298914);
       float f1 = paramContext.getResources().getDisplayMetrics().density;
       return j - (int)(f1 * 5.0F);
     }
@@ -96,8 +95,6 @@ public class TenpayJumpActivity
   
   protected void a()
   {
-    this.jdField_a_of_type_CooperationQwalletPluginQWalletPayProgressDialog = new QWalletPayProgressDialog(this);
-    this.jdField_a_of_type_CooperationQwalletPluginQWalletPayProgressDialog.show();
     JSONObject localJSONObject = new JSONObject();
     try
     {
@@ -111,13 +108,13 @@ public class TenpayJumpActivity
       {
         if (this.jdField_a_of_type_JavaLangString.equals(str2))
         {
-          a("不能给自己转账！");
+          a(alud.a(2131715235));
           finish();
           return;
         }
         if (!this.jdField_a_of_type_JavaLangString.equals(str1))
         {
-          a("无效的二维码！");
+          a(alud.a(2131715236));
           finish();
           return;
         }
@@ -131,7 +128,7 @@ public class TenpayJumpActivity
         ((Bundle)localObject1).putString("json", localJSONObject.toString());
         ((Bundle)localObject1).putString("callbackSn", "0");
         PayBridgeActivity.a(this, 9, (Bundle)localObject1);
-        QWalletTools.a(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.e, 1L, 0, "scanTransferLimmitQR", "", "");
+        ajeu.a(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.e, 1L, 0, "scanTransferLimmitQR", "", "");
         return;
       }
       a("verifyqrcode", localJSONObject.toString());
@@ -183,7 +180,7 @@ public class TenpayJumpActivity
     paramString5.append("|0|1|0|android.");
     paramString5.append(6);
     paramString5.append("|");
-    paramString5.append(CommonUtil.a());
+    paramString5.append(bdao.a());
     paramString5.append("|");
     if ((!TextUtils.isEmpty(paramString3)) || (!TextUtils.isEmpty(paramString4)))
     {
@@ -198,10 +195,10 @@ public class TenpayJumpActivity
       paramString5.append(this.e.replace("|", ","));
     }
     paramString5.append("|");
-    StatisticCollector.a(BaseApplication.getContext()).b(this.app, paramString5.toString());
+    azri.a(BaseApplication.getContext()).b(this.app, paramString5.toString());
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     setProgressBarIndeterminateVisibility(false);
@@ -237,7 +234,7 @@ public class TenpayJumpActivity
           continue;
         }
         this.i = "1";
-        paramBundle = ContactUtils.n(this.app, this.g);
+        paramBundle = bdgc.m(this.app, this.g);
         if ((!TextUtils.isEmpty(paramBundle)) && (!paramBundle.equals(this.g))) {
           this.h = paramBundle;
         }
@@ -257,42 +254,42 @@ public class TenpayJumpActivity
   }
   
   /* Error */
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     // Byte code:
     //   0: iload_1
-    //   1: ldc_w 382
+    //   1: ldc_w 373
     //   4: if_icmpne +63 -> 67
-    //   7: new 216	android/content/Intent
+    //   7: new 208	android/content/Intent
     //   10: dup
-    //   11: invokespecial 217	android/content/Intent:<init>	()V
-    //   14: astore 4
-    //   16: aload 4
-    //   18: ldc 194
+    //   11: invokespecial 209	android/content/Intent:<init>	()V
+    //   14: astore 5
+    //   16: aload 5
+    //   18: ldc 186
     //   20: aload_0
-    //   21: getfield 219	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:d	Ljava/lang/String;
-    //   24: invokevirtual 223	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   21: getfield 211	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:d	Ljava/lang/String;
+    //   24: invokevirtual 215	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   27: pop
-    //   28: aload 4
-    //   30: ldc 225
+    //   28: aload 5
+    //   30: ldc 217
     //   32: iconst_5
-    //   33: invokevirtual 228	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   33: invokevirtual 220	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   36: pop
     //   37: aload_3
     //   38: ifnull +17 -> 55
-    //   41: aload 4
-    //   43: ldc 230
+    //   41: aload 5
+    //   43: ldc 222
     //   45: aload_3
-    //   46: ldc 230
-    //   48: invokevirtual 334	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   51: invokevirtual 223	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   46: ldc 222
+    //   48: invokevirtual 326	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   51: invokevirtual 215	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   54: pop
     //   55: aload_0
     //   56: iconst_m1
-    //   57: aload 4
-    //   59: invokevirtual 234	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:setResult	(ILandroid/content/Intent;)V
+    //   57: aload 5
+    //   59: invokevirtual 226	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:setResult	(ILandroid/content/Intent;)V
     //   62: aload_0
-    //   63: invokevirtual 174	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:finish	()V
+    //   63: invokevirtual 167	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:finish	()V
     //   66: return
     //   67: aload_3
     //   68: ifnull -2 -> 66
@@ -300,280 +297,264 @@ public class TenpayJumpActivity
     //   72: iconst_m1
     //   73: if_icmpne -7 -> 66
     //   76: aload_3
-    //   77: ldc 230
-    //   79: invokevirtual 334	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   77: ldc 222
+    //   79: invokevirtual 326	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   82: astore_3
     //   83: aload_3
-    //   84: ifnull +151 -> 235
+    //   84: ifnull +154 -> 238
     //   87: aload_3
-    //   88: invokevirtual 116	java/lang/String:length	()I
-    //   91: ifle +144 -> 235
-    //   94: new 29	org/json/JSONObject
+    //   88: invokevirtual 115	java/lang/String:length	()I
+    //   91: ifle +147 -> 238
+    //   94: new 28	org/json/JSONObject
     //   97: dup
     //   98: aload_3
-    //   99: invokespecial 339	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   99: invokespecial 331	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   102: astore_3
     //   103: aload_3
-    //   104: ifnull +482 -> 586
+    //   104: ifnull +147 -> 251
     //   107: aload_3
-    //   108: ldc_w 384
-    //   111: invokevirtual 344	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   114: astore 4
-    //   116: aload_3
-    //   117: ldc 214
-    //   119: iconst_m1
-    //   120: invokevirtual 387	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   123: istore_2
+    //   108: ldc_w 375
+    //   111: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   114: pop
+    //   115: aload_3
+    //   116: ldc 206
+    //   118: iconst_m1
+    //   119: invokevirtual 378	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   122: istore 4
     //   124: aload_3
-    //   125: ldc_w 389
-    //   128: invokevirtual 344	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   125: ldc_w 380
+    //   128: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   131: astore_3
-    //   132: aload_3
-    //   133: ifnull +112 -> 245
-    //   136: aload_3
-    //   137: invokevirtual 116	java/lang/String:length	()I
-    //   140: ifle +105 -> 245
-    //   143: new 29	org/json/JSONObject
-    //   146: dup
-    //   147: aload_3
-    //   148: invokespecial 339	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   151: astore_3
-    //   152: aload_0
-    //   153: getfield 130	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:jdField_a_of_type_CooperationQwalletPluginQWalletPayProgressDialog	Lcooperation/qwallet/plugin/QWalletPayProgressDialog;
-    //   156: invokevirtual 392	cooperation/qwallet/plugin/QWalletPayProgressDialog:dismiss	()V
-    //   159: iload_2
-    //   160: ifne +375 -> 535
-    //   163: aload_3
-    //   164: ifnull +371 -> 535
-    //   167: iload_1
-    //   168: tableswitch	default:+20 -> 188, 5:+21->189
+    //   132: iload 4
+    //   134: istore_2
+    //   135: aload_3
+    //   136: ifnull +115 -> 251
+    //   139: iload 4
+    //   141: istore_2
+    //   142: aload_3
+    //   143: invokevirtual 115	java/lang/String:length	()I
+    //   146: ifle +105 -> 251
+    //   149: new 28	org/json/JSONObject
+    //   152: dup
+    //   153: aload_3
+    //   154: invokespecial 331	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   157: astore_3
+    //   158: iload 4
+    //   160: istore_2
+    //   161: iload_2
+    //   162: ifne +379 -> 541
+    //   165: aload_3
+    //   166: ifnull +375 -> 541
+    //   169: iload_1
+    //   170: tableswitch	default:+18 -> 188, 5:+19->189
     //   189: aload_3
-    //   190: ldc_w 394
-    //   193: invokevirtual 396	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   190: ldc_w 382
+    //   193: invokevirtual 384	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   196: pop
     //   197: aload_3
-    //   198: ldc_w 398
-    //   201: invokevirtual 344	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   204: astore 5
+    //   198: ldc_w 386
+    //   201: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   204: astore 6
     //   206: aload_0
-    //   207: getfield 348	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:g	Ljava/lang/String;
-    //   210: aload 5
-    //   212: invokevirtual 166	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   215: ifne +35 -> 250
+    //   207: getfield 340	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:g	Ljava/lang/String;
+    //   210: aload 6
+    //   212: invokevirtual 155	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   215: ifne +41 -> 256
     //   218: aload_0
-    //   219: ldc_w 400
-    //   222: invokevirtual 171	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:a	(Ljava/lang/CharSequence;)V
-    //   225: aload_0
-    //   226: invokevirtual 174	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:finish	()V
-    //   229: return
-    //   230: astore_3
-    //   231: aload_3
-    //   232: invokevirtual 72	java/lang/Exception:printStackTrace	()V
-    //   235: aconst_null
-    //   236: astore_3
-    //   237: goto -134 -> 103
-    //   240: astore_3
-    //   241: aload_3
-    //   242: invokevirtual 72	java/lang/Exception:printStackTrace	()V
-    //   245: aconst_null
-    //   246: astore_3
-    //   247: goto -95 -> 152
-    //   250: aload_3
-    //   251: ldc_w 402
-    //   254: invokevirtual 344	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   257: astore 6
-    //   259: aload_3
-    //   260: ldc_w 404
-    //   263: invokevirtual 344	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   266: pop
-    //   267: aload_0
-    //   268: aload_3
-    //   269: ldc_w 406
-    //   272: invokevirtual 344	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   275: ldc_w 408
-    //   278: ldc_w 410
-    //   281: invokevirtual 412	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   284: astore 7
-    //   286: aload_3
-    //   287: ldc_w 414
-    //   290: invokevirtual 344	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   293: astore_3
-    //   294: aload_0
-    //   295: getfield 201	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   298: aload_0
-    //   299: getfield 348	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:g	Ljava/lang/String;
-    //   302: invokestatic 369	com/tencent/mobileqq/utils/ContactUtils:n	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
-    //   305: astore 4
-    //   307: aload 4
-    //   309: invokestatic 104	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   312: ifne +271 -> 583
-    //   315: aload 4
-    //   317: aload_0
-    //   318: getfield 348	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:g	Ljava/lang/String;
-    //   321: invokevirtual 166	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   324: ifne +259 -> 583
-    //   327: aload 4
-    //   329: astore_3
-    //   330: aload_3
-    //   331: invokestatic 104	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   334: ifne +17 -> 351
-    //   337: aload_3
-    //   338: astore 4
-    //   340: aload_3
-    //   341: aload_0
-    //   342: getfield 348	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:g	Ljava/lang/String;
-    //   345: invokevirtual 166	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   348: ifeq +9 -> 357
-    //   351: aload_0
-    //   352: getfield 352	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:h	Ljava/lang/String;
-    //   355: astore 4
-    //   357: new 216	android/content/Intent
-    //   360: dup
-    //   361: invokespecial 217	android/content/Intent:<init>	()V
-    //   364: astore_3
-    //   365: aload_3
-    //   366: ldc_w 328
-    //   369: aload_0
-    //   370: getfield 44	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:jdField_a_of_type_Int	I
-    //   373: invokevirtual 228	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
-    //   376: pop
-    //   377: new 29	org/json/JSONObject
-    //   380: dup
-    //   381: invokespecial 30	org/json/JSONObject:<init>	()V
-    //   384: astore 8
-    //   386: aload 8
-    //   388: ldc_w 416
-    //   391: aload 5
-    //   393: invokevirtual 38	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   396: pop
-    //   397: aload 8
-    //   399: ldc_w 418
-    //   402: aload 4
-    //   404: invokevirtual 38	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   407: pop
-    //   408: aload 8
-    //   410: ldc_w 402
-    //   413: aload 6
-    //   415: invokevirtual 38	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   418: pop
-    //   419: aload 8
-    //   421: ldc_w 420
-    //   424: ldc 106
-    //   426: invokevirtual 38	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   429: pop
-    //   430: aload 8
-    //   432: ldc_w 422
-    //   435: aload_0
-    //   436: getfield 363	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:i	Ljava/lang/String;
-    //   439: invokevirtual 38	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   442: pop
-    //   443: aload 8
-    //   445: ldc_w 424
-    //   448: aload 7
-    //   450: ldc_w 426
-    //   453: invokestatic 429	java/net/URLDecoder:decode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   456: invokevirtual 38	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   459: pop
-    //   460: aload_3
-    //   461: ldc 53
-    //   463: aload 8
-    //   465: invokevirtual 57	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   468: invokevirtual 223	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   471: pop
-    //   472: aload_3
-    //   473: ldc_w 336
-    //   476: aload_0
-    //   477: getfield 51	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:e	Ljava/lang/String;
-    //   480: invokevirtual 223	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   483: pop
-    //   484: aload_3
-    //   485: ldc 194
-    //   487: aload_0
-    //   488: getfield 219	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:d	Ljava/lang/String;
-    //   491: invokevirtual 223	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   494: pop
-    //   495: aload_3
-    //   496: ldc_w 431
-    //   499: iconst_1
-    //   500: invokevirtual 434	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
-    //   503: pop
-    //   504: aload_3
-    //   505: aload_0
-    //   506: getfield 245	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   509: ldc_w 436
-    //   512: invokevirtual 440	android/content/Intent:setClass	(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
-    //   515: pop
-    //   516: aload_0
-    //   517: aload_3
-    //   518: ldc_w 382
-    //   521: invokevirtual 444	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:startActivityForResult	(Landroid/content/Intent;I)V
-    //   524: return
-    //   525: astore 4
-    //   527: aload 4
-    //   529: invokevirtual 445	java/io/UnsupportedEncodingException:printStackTrace	()V
-    //   532: goto -72 -> 460
-    //   535: aload_0
-    //   536: ldc_w 446
-    //   539: invokevirtual 449	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:getString	(I)Ljava/lang/String;
-    //   542: astore_3
-    //   543: aload 4
-    //   545: ifnull +20 -> 565
-    //   548: aload_0
-    //   549: aload 4
-    //   551: invokevirtual 171	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:a	(Ljava/lang/CharSequence;)V
-    //   554: aload_0
-    //   555: iconst_m1
-    //   556: aconst_null
-    //   557: invokevirtual 68	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:a	(ILandroid/os/Bundle;)V
-    //   560: aload_0
-    //   561: invokevirtual 174	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:finish	()V
-    //   564: return
-    //   565: aload_0
-    //   566: aload_3
-    //   567: invokevirtual 171	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:a	(Ljava/lang/CharSequence;)V
-    //   570: goto -16 -> 554
-    //   573: astore 4
-    //   575: goto -115 -> 460
-    //   578: astore 5
-    //   580: goto -421 -> 159
-    //   583: goto -253 -> 330
-    //   586: aconst_null
-    //   587: astore_3
-    //   588: aconst_null
-    //   589: astore 4
-    //   591: goto -439 -> 152
+    //   219: ldc_w 387
+    //   222: invokestatic 161	alud:a	(I)Ljava/lang/String;
+    //   225: invokevirtual 164	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:a	(Ljava/lang/CharSequence;)V
+    //   228: aload_0
+    //   229: invokevirtual 167	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:finish	()V
+    //   232: return
+    //   233: astore_3
+    //   234: aload_3
+    //   235: invokevirtual 71	java/lang/Exception:printStackTrace	()V
+    //   238: aconst_null
+    //   239: astore_3
+    //   240: goto -137 -> 103
+    //   243: astore_3
+    //   244: aload_3
+    //   245: invokevirtual 71	java/lang/Exception:printStackTrace	()V
+    //   248: iload 4
+    //   250: istore_2
+    //   251: aconst_null
+    //   252: astore_3
+    //   253: goto -92 -> 161
+    //   256: aload_3
+    //   257: ldc_w 389
+    //   260: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   263: astore 7
+    //   265: aload_3
+    //   266: ldc_w 391
+    //   269: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   272: pop
+    //   273: aload_0
+    //   274: aload_3
+    //   275: ldc_w 393
+    //   278: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   281: ldc_w 395
+    //   284: ldc_w 397
+    //   287: invokevirtual 399	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   290: astore 8
+    //   292: aload_3
+    //   293: ldc_w 401
+    //   296: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   299: astore_3
+    //   300: aload_0
+    //   301: getfield 193	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   304: aload_0
+    //   305: getfield 340	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:g	Ljava/lang/String;
+    //   308: invokestatic 360	bdgc:m	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
+    //   311: astore 5
+    //   313: aload 5
+    //   315: invokestatic 103	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   318: ifne +239 -> 557
+    //   321: aload 5
+    //   323: aload_0
+    //   324: getfield 340	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:g	Ljava/lang/String;
+    //   327: invokevirtual 155	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   330: ifne +227 -> 557
+    //   333: aload 5
+    //   335: astore_3
+    //   336: aload_3
+    //   337: invokestatic 103	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   340: ifne +17 -> 357
+    //   343: aload_3
+    //   344: astore 5
+    //   346: aload_3
+    //   347: aload_0
+    //   348: getfield 340	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:g	Ljava/lang/String;
+    //   351: invokevirtual 155	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   354: ifeq +9 -> 363
+    //   357: aload_0
+    //   358: getfield 344	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:h	Ljava/lang/String;
+    //   361: astore 5
+    //   363: new 208	android/content/Intent
+    //   366: dup
+    //   367: invokespecial 209	android/content/Intent:<init>	()V
+    //   370: astore_3
+    //   371: aload_3
+    //   372: ldc_w 320
+    //   375: aload_0
+    //   376: getfield 43	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:jdField_a_of_type_Int	I
+    //   379: invokevirtual 220	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   382: pop
+    //   383: new 28	org/json/JSONObject
+    //   386: dup
+    //   387: invokespecial 29	org/json/JSONObject:<init>	()V
+    //   390: astore 9
+    //   392: aload 9
+    //   394: ldc_w 403
+    //   397: aload 6
+    //   399: invokevirtual 37	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   402: pop
+    //   403: aload 9
+    //   405: ldc_w 405
+    //   408: aload 5
+    //   410: invokevirtual 37	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   413: pop
+    //   414: aload 9
+    //   416: ldc_w 389
+    //   419: aload 7
+    //   421: invokevirtual 37	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   424: pop
+    //   425: aload 9
+    //   427: ldc_w 407
+    //   430: ldc 105
+    //   432: invokevirtual 37	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   435: pop
+    //   436: aload 9
+    //   438: ldc_w 409
+    //   441: aload_0
+    //   442: getfield 354	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:i	Ljava/lang/String;
+    //   445: invokevirtual 37	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   448: pop
+    //   449: aload 9
+    //   451: ldc_w 411
+    //   454: aload 8
+    //   456: ldc_w 413
+    //   459: invokestatic 416	java/net/URLDecoder:decode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   462: invokevirtual 37	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   465: pop
+    //   466: aload_3
+    //   467: ldc 52
+    //   469: aload 9
+    //   471: invokevirtual 56	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   474: invokevirtual 215	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   477: pop
+    //   478: aload_3
+    //   479: ldc_w 328
+    //   482: aload_0
+    //   483: getfield 50	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:e	Ljava/lang/String;
+    //   486: invokevirtual 215	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   489: pop
+    //   490: aload_3
+    //   491: ldc 186
+    //   493: aload_0
+    //   494: getfield 211	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:d	Ljava/lang/String;
+    //   497: invokevirtual 215	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   500: pop
+    //   501: aload_3
+    //   502: ldc_w 418
+    //   505: iconst_1
+    //   506: invokevirtual 421	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   509: pop
+    //   510: aload_3
+    //   511: aload_0
+    //   512: getfield 237	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   515: ldc_w 423
+    //   518: invokevirtual 427	android/content/Intent:setClass	(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
+    //   521: pop
+    //   522: aload_0
+    //   523: aload_3
+    //   524: ldc_w 373
+    //   527: invokevirtual 431	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:startActivityForResult	(Landroid/content/Intent;I)V
+    //   530: return
+    //   531: astore 5
+    //   533: aload 5
+    //   535: invokevirtual 432	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   538: goto -72 -> 466
+    //   541: aload_0
+    //   542: iconst_m1
+    //   543: aconst_null
+    //   544: invokevirtual 67	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:a	(ILandroid/os/Bundle;)V
+    //   547: aload_0
+    //   548: invokevirtual 167	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:finish	()V
+    //   551: return
+    //   552: astore 5
+    //   554: goto -88 -> 466
+    //   557: goto -221 -> 336
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	594	0	this	TenpayJumpActivity
-    //   0	594	1	paramInt1	int
-    //   0	594	2	paramInt2	int
-    //   0	594	3	paramIntent	Intent
-    //   14	389	4	localObject1	Object
-    //   525	25	4	localUnsupportedEncodingException	java.io.UnsupportedEncodingException
-    //   573	1	4	localJSONException	JSONException
-    //   589	1	4	localObject2	Object
-    //   204	188	5	str1	String
-    //   578	1	5	localException	Exception
-    //   257	157	6	str2	String
-    //   284	165	7	str3	String
-    //   384	80	8	localJSONObject	JSONObject
+    //   0	560	0	this	TenpayJumpActivity
+    //   0	560	1	paramInt1	int
+    //   0	560	2	paramInt2	int
+    //   0	560	3	paramIntent	Intent
+    //   122	127	4	j	int
+    //   14	395	5	localObject	Object
+    //   531	3	5	localUnsupportedEncodingException	java.io.UnsupportedEncodingException
+    //   552	1	5	localJSONException	JSONException
+    //   204	194	6	str1	String
+    //   263	157	7	str2	String
+    //   290	165	8	str3	String
+    //   390	80	9	localJSONObject	JSONObject
     // Exception table:
     //   from	to	target	type
-    //   94	103	230	java/lang/Exception
-    //   143	152	240	java/lang/Exception
-    //   386	460	525	java/io/UnsupportedEncodingException
-    //   386	460	573	org/json/JSONException
-    //   152	159	578	java/lang/Exception
+    //   94	103	233	java/lang/Exception
+    //   149	158	243	java/lang/Exception
+    //   392	466	531	java/io/UnsupportedEncodingException
+    //   392	466	552	org/json/JSONException
   }
   
-  protected void requestWindowFeature(Intent paramIntent)
+  public void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.TenpayJumpActivity
  * JD-Core Version:    0.7.0.1
  */

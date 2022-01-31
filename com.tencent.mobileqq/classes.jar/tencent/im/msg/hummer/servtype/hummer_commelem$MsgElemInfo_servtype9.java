@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class hummer_commelem$MsgElemInfo_servtype9
-  extends MessageMicro
+  extends MessageMicro<MsgElemInfo_servtype9>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_anchor_head_url = PBField.initBytes(ByteStringMicro.EMPTY);

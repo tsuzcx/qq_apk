@@ -16,158 +16,113 @@ import android.os.IBinder;
 import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat.Builder;
 import android.support.v4.content.LocalBroadcastManager;
-import android.telephony.SmsMessage;
-import com.tencent.token.af;
-import com.tencent.token.av;
+import com.tencent.token.cw;
+import com.tencent.token.dm;
 import com.tencent.token.global.RqdApplication;
+import com.tencent.token.global.h;
 import com.tencent.token.ui.BaseActivity;
 import com.tencent.token.ui.LoginMsgActivity;
 import com.tencent.token.ui.OpreateMsgActivity;
 import com.tencent.token.ui.PushTransitionActivity;
-import com.tencent.token.utils.UserTask;
-import com.tencent.token.utils.s;
-import com.tencent.token.utils.t;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.token.utils.w;
+import com.tencent.token.utils.x;
 
 public class PushService
   extends Service
 {
-  public Handler a = new f(this);
+  public Handler a = new k(this);
   private AlarmManager b;
   private PendingIntent c;
   private Intent d;
   private Intent e;
   private Intent f;
-  private ConcurrentLinkedQueue g = new ConcurrentLinkedQueue();
-  private boolean h = false;
-  private UserTask i;
-  private String j = "QQ安全中心";
-  private final int k = 3000;
-  private Intent l;
-  private Intent m;
-  private int n;
-  private final int o = 300000;
-  private long p = 0L;
-  private BroadcastReceiver q = new e(this);
+  private final int g = 4000;
+  private Intent h;
+  private Intent i;
+  private int j;
+  private final int k = 300000;
+  private long l = 0L;
+  private BroadcastReceiver m = new j(this);
   
   private void a()
   {
-    if ((this.p != 0L) && (SystemClock.elapsedRealtime() - this.p >= 300000L))
+    try
     {
-      this.p = 0L;
-      ((NotificationManager)getSystemService("notification")).cancel(2);
-    }
-    j localj = a.a().c();
-    long l1;
-    if ((localj != null) && ((localj.d == 1) || (localj.d == 2)))
-    {
-      if ((localj.d != 2) || (localj.e != 1)) {
-        break label210;
-      }
-      com.tencent.token.global.e.c("recevie auto sms push = " + Long.parseLong(new String(localj.b)));
-      l1 = Long.parseLong(new String(localj.b));
-      if (!this.h)
+      if ((this.l != 0L) && (SystemClock.elapsedRealtime() - this.l >= 300000L))
       {
-        this.h = true;
-        this.i = new g(this, l1);
-        this.i.a(new String[] { "" });
+        this.l = 0L;
+        ((NotificationManager)getSystemService("notification")).cancel(2);
       }
-      af.a().c(this.a);
-    }
-    for (;;)
-    {
-      l1 = System.currentTimeMillis();
-      this.b.set(1, l1 + 3000L, this.c);
+      b.a().a(this.a);
+      long l1 = System.currentTimeMillis();
+      this.b.set(1, l1 + 4000L, this.c);
       return;
-      label210:
-      if ((BaseActivity.getIsAppForeground()) && (localj.d == 2))
-      {
-        af.a().a(av.d, this.a);
-        com.tencent.token.global.e.c("dualmsg::pushservice: query=true");
-      }
-      else
-      {
-        NotificationManager localNotificationManager = (NotificationManager)getSystemService("notification");
-        this.d.removeExtra("com.tencent.input_param");
-        this.e.removeExtra("com.tencent.input_param");
-        if (!s.b()) {
-          RqdApplication.b();
-        }
-        Object localObject;
-        if (localj.d == 1)
-        {
-          if (localj.e == 32)
-          {
-            localObject = new Bundle();
-            ((Bundle)localObject).putLong("uin", Long.parseLong(new String(localj.b)));
-            this.f.putExtra("com.tencent.input_param", (Bundle)localObject);
-            localObject = PendingIntent.getActivity(this, 0, this.f, 134217728);
-            localNotificationManager.notify(1, new NotificationCompat.Builder(this).setDefaults(1).setAutoCancel(true).setContentTitle(getResources().getString(2131361792)).setSmallIcon(2130837686).setContentIntent((PendingIntent)localObject).setContentText(new String(localj.h)).build());
-            if (BaseActivity.getIsAppForeground())
-            {
-              this.l.putExtra("uin", new String(localj.b));
-              LocalBroadcastManager.getInstance(this).sendBroadcast(this.l);
-            }
-            else
-            {
-              com.tencent.token.ui.AccountPageActivity.mNeedShowIpcMsg = true;
-              s.a(new String(localj.b), true);
-              com.tencent.token.ui.IndexActivity.isShowAccountTip = true;
-            }
-          }
-          else if ((BaseActivity.getIsAppForeground()) && ("com.tencent.token.ui.IndexActivity".equals(t.a(RqdApplication.i()))))
-          {
-            LocalBroadcastManager.getInstance(this).sendBroadcast(this.m);
-          }
-          else
-          {
-            s.a(new String(localj.b), true);
-            com.tencent.token.ui.IndexActivity.isShowAccountTip = true;
-            localObject = new Bundle();
-            ((Bundle)localObject).putLong("uin", Long.parseLong(new String(localj.b)));
-            this.d.putExtra("com.tencent.input_param", (Bundle)localObject);
-            localObject = PendingIntent.getActivity(this, 0, this.d, 134217728);
-            localNotificationManager.notify(1, new NotificationCompat.Builder(this).setDefaults(1).setAutoCancel(true).setContentTitle(getResources().getString(2131361792)).setSmallIcon(2130837686).setContentIntent((PendingIntent)localObject).setContentText(new String(localj.h)).build());
-          }
-        }
-        else
-        {
-          com.tencent.token.global.e.c("push time=" + localj.f);
-          if (av.a().c() < localj.f)
-          {
-            localObject = PendingIntent.getActivity(this, 0, this.e, 134217728);
-            localNotificationManager.notify(2, new NotificationCompat.Builder(this).setDefaults(1).setAutoCancel(true).setContentTitle(getResources().getString(2131361792)).setSmallIcon(2130837686).setContentIntent((PendingIntent)localObject).setContentText(new String(localj.h)).build());
-            this.p = SystemClock.elapsedRealtime();
-          }
-        }
-      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
   
-  private static SmsMessage[] a(Intent paramIntent)
+  private void a(m paramm)
   {
-    Object[] arrayOfObject = (Object[])paramIntent.getSerializableExtra("pdus");
-    if (arrayOfObject == null) {
-      return null;
-    }
-    int i2 = arrayOfObject.length;
-    paramIntent = new SmsMessage[i2];
-    int i1 = 0;
-    for (;;)
+    if ((paramm != null) && ((paramm.d == 1) || (paramm.d == 2)))
     {
-      if (i1 < i2) {
-        try
-        {
-          paramIntent[i1] = SmsMessage.createFromPdu((byte[])arrayOfObject[i1]);
-          i1 += 1;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          localOutOfMemoryError.printStackTrace();
-        }
+      if ((!BaseActivity.getIsAppForeground()) || (paramm.d != 2)) {
+        break label55;
       }
+      cw.a().a(0L, dm.e, this.a);
+      h.c("dualmsg::pushservice: query=true");
     }
-    return paramIntent;
+    label55:
+    do
+    {
+      return;
+      localObject = (NotificationManager)getSystemService("notification");
+      this.d.removeExtra("com.tencent.input_param");
+      this.e.removeExtra("com.tencent.input_param");
+      if (!w.b()) {
+        RqdApplication.e();
+      }
+      if (paramm.d == 1)
+      {
+        if (paramm.e == 32)
+        {
+          localObject = new Bundle();
+          ((Bundle)localObject).putLong("uin", Long.parseLong(new String(paramm.b)));
+          this.f.putExtra("com.tencent.input_param", (Bundle)localObject);
+          localObject = PendingIntent.getActivity(this, 0, this.f, 134217728);
+          new a(this).a(1, getResources().getString(2131230844), new String(paramm.h), (PendingIntent)localObject);
+          if (BaseActivity.getIsAppForeground())
+          {
+            this.h.putExtra("uin", new String(paramm.b));
+            LocalBroadcastManager.getInstance(this).sendBroadcast(this.h);
+            return;
+          }
+          com.tencent.token.ui.AccountPageActivity.mNeedShowIpcMsg = true;
+          w.a(new String(paramm.b), true);
+          com.tencent.token.ui.IndexActivity.isShowAccountTip = true;
+          return;
+        }
+        if ((BaseActivity.getIsAppForeground()) && ("com.tencent.token.ui.IndexActivity".equals(x.a(RqdApplication.l()))))
+        {
+          LocalBroadcastManager.getInstance(this).sendBroadcast(this.i);
+          return;
+        }
+        w.a(new String(paramm.b), true);
+        com.tencent.token.ui.IndexActivity.isShowAccountTip = true;
+        localObject = new Bundle();
+        ((Bundle)localObject).putLong("uin", Long.parseLong(new String(paramm.b)));
+        this.d.putExtra("com.tencent.input_param", (Bundle)localObject);
+        localObject = PendingIntent.getActivity(this, 0, this.d, 134217728);
+        new a(this).a(1, getResources().getString(2131230844), new String(paramm.h), (PendingIntent)localObject);
+        return;
+      }
+      h.c("push time=" + paramm.f);
+    } while (dm.a().d() >= paramm.f);
+    Object localObject = PendingIntent.getActivity(this, 0, this.e, 134217728);
+    new a(this).a(2, getResources().getString(2131230844), new String(paramm.h), (PendingIntent)localObject);
+    this.l = SystemClock.elapsedRealtime();
   }
   
   public IBinder onBind(Intent paramIntent)
@@ -177,37 +132,43 @@ public class PushService
   
   public void onCreate()
   {
-    super.onCreate();
-    this.l = new Intent("com.tencent.token.push_ipc_msg");
-    this.m = new Intent("com.tencent.token.push_opr_msg");
-    Object localObject = new Intent(this, PushService.class);
-    this.b = ((AlarmManager)getSystemService("alarm"));
-    this.c = PendingIntent.getService(this, 0, (Intent)localObject, 0);
-    this.d = new Intent(this, OpreateMsgActivity.class);
-    this.e = new Intent(this, PushTransitionActivity.class);
-    this.f = new Intent(this, LoginMsgActivity.class);
-    localObject = new IntentFilter();
-    ((IntentFilter)localObject).addAction("android.net.conn.CONNECTIVITY_CHANGE");
-    ((IntentFilter)localObject).addAction("android.provider.Telephony.SMS_RECEIVED");
-    ((IntentFilter)localObject).addAction("com.tencent.token.action.dualsms");
     try
     {
-      registerReceiver(this.q, (IntentFilter)localObject);
-      if (Build.VERSION.SDK_INT < 18)
+      super.onCreate();
+      this.h = new Intent("com.tencent.token.push_ipc_msg");
+      this.i = new Intent("com.tencent.token.push_opr_msg");
+      Object localObject = new Intent(this, PushService.class);
+      this.b = ((AlarmManager)getSystemService("alarm"));
+      this.c = PendingIntent.getService(this, 0, (Intent)localObject, 0);
+      this.d = new Intent(this, OpreateMsgActivity.class);
+      this.e = new Intent(this, PushTransitionActivity.class);
+      this.f = new Intent(this, LoginMsgActivity.class);
+      localObject = new IntentFilter();
+      ((IntentFilter)localObject).addAction("android.net.conn.CONNECTIVITY_CHANGE");
+      try
       {
-        this.n = ((int)System.currentTimeMillis());
-        localObject = PendingIntent.getActivity(this, 0, this.e, 134217728);
-        localObject = new NotificationCompat.Builder(this).setContentIntent((PendingIntent)localObject).setAutoCancel(true).build();
-        startForeground(this.n, (Notification)localObject);
+        registerReceiver(this.m, (IntentFilter)localObject);
+        if (Build.VERSION.SDK_INT < 18)
+        {
+          this.j = ((int)System.currentTimeMillis());
+          localObject = PendingIntent.getActivity(this, 0, this.e, 134217728);
+          localObject = new NotificationCompat.Builder(this).setContentIntent((PendingIntent)localObject).setAutoCancel(true).build();
+          startForeground(this.j, (Notification)localObject);
+          return;
+        }
+      }
+      catch (SecurityException localSecurityException)
+      {
+        for (;;)
+        {
+          localSecurityException.printStackTrace();
+        }
       }
       return;
     }
-    catch (SecurityException localSecurityException)
+    catch (Exception localException)
     {
-      for (;;)
-      {
-        localSecurityException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
   }
   
@@ -217,10 +178,10 @@ public class PushService
     this.b.cancel(this.c);
     try
     {
-      unregisterReceiver(this.q);
-      a.a().d();
+      unregisterReceiver(this.m);
+      b.a().d();
       if (Build.VERSION.SDK_INT < 18) {
-        ((NotificationManager)getSystemService("notification")).cancel(this.n);
+        ((NotificationManager)getSystemService("notification")).cancel(this.j);
       }
       return;
     }
@@ -247,7 +208,7 @@ public class PushService
     {
       for (;;)
       {
-        com.tencent.token.global.e.c(localException.getMessage());
+        h.c(localException.getMessage());
       }
     }
     return 3;

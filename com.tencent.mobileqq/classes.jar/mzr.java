@@ -1,35 +1,29 @@
-import android.app.Activity;
 import android.view.View;
-import com.tencent.biz.qqstory.base.StoryHaloManager;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.widget.AdapterView;
 
-public class mzr
-  implements Runnable
+class mzr
+  implements bhuw
 {
-  public mzr(StoryHaloManager paramStoryHaloManager, RecentItemChatMsgData paramRecentItemChatMsgData, View paramView) {}
+  mzr(mzq parammzq, PoiMapActivity paramPoiMapActivity) {}
   
-  public void run()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.a()) == null) {}
-    Activity localActivity;
-    do
+    this.jdField_a_of_type_Mzq.a(paramInt, true);
+    int i = this.jdField_a_of_type_Mzq.jdField_a_of_type_ComTencentBizPoiMapActivity.a.length;
+    paramInt = 0;
+    while (paramInt < i)
     {
-      return;
-      localActivity = (Activity)this.jdField_a_of_type_AndroidViewView.getContext();
-    } while (localActivity == null);
-    localActivity.runOnUiThread(new mzs(this, localActivity));
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.o == -1) {}
-    for (int i = 1;; i = 0)
-    {
-      StoryReportor.a("msg_tab", "circle_clk", 0, i, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.a() });
-      return;
+      if (this.jdField_a_of_type_Mzq.e != paramInt) {
+        this.jdField_a_of_type_Mzq.jdField_a_of_type_ComTencentBizPoiMapActivity.a[paramInt].a(-1, false);
+      }
+      paramInt += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mzr
  * JD-Core Version:    0.7.0.1
  */

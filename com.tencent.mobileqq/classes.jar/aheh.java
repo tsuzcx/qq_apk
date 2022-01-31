@@ -1,18 +1,8 @@
-import android.view.View;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 
-class aheh
-  implements ActionSheet.OnButtonClickListener
+public abstract interface aheh
 {
-  aheh(aheg paramaheg, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    ReceiptMessageDetailFragment.g(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-  }
+  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
 }
 
 

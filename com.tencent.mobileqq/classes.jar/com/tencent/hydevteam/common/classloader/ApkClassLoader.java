@@ -20,7 +20,6 @@ public class ApkClassLoader
   }
   
   public final <T> T a(Class<T> paramClass, String paramString)
-    throws Exception
   {
     try
     {
@@ -47,7 +46,6 @@ public class ApkClassLoader
   }
   
   public final <T> T a(Class<T> paramClass, String paramString, Class<?>[] paramArrayOfClass, Object[] paramArrayOfObject)
-    throws Exception
   {
     try
     {
@@ -74,79 +72,75 @@ public class ApkClassLoader
   }
   
   protected Class<?> loadClass(String paramString, boolean paramBoolean)
-    throws ClassNotFoundException
   {
-    int i = 0;
-    int j = paramString.lastIndexOf('.');
+    int i = paramString.lastIndexOf('.');
     Object localObject1;
     Object localObject2;
-    if (j != -1)
+    if (i != -1)
     {
-      localObject1 = paramString.substring(0, j);
-      int k = 0;
+      localObject1 = paramString.substring(0, i);
       localObject2 = this.b;
-      int m = localObject2.length;
-      label39:
-      j = k;
-      if (i < m)
-      {
-        if (!((String)localObject1).equals(localObject2[i])) {
-          break label87;
-        }
-        j = 1;
+      int j = localObject2.length;
+      i = 0;
+      label33:
+      if (i >= j) {
+        break label154;
       }
-      if (j == 0) {
-        break label94;
+      if (!((String)localObject1).equals(localObject2[i])) {
+        break label75;
       }
-      localObject1 = super.loadClass(paramString, paramBoolean);
     }
-    label87:
-    label94:
-    do
+    label154:
+    for (i = 1;; i = 0)
     {
+      if (i != 0) {
+        localObject1 = super.loadClass(paramString, paramBoolean);
+      }
+      label75:
+      Throwable localThrowable;
+      label112:
       do
       {
-        return localObject1;
-        localObject1 = "";
-        break;
-        i += 1;
-        break label39;
-        localObject2 = findLoadedClass(paramString);
+        do
+        {
+          return localObject1;
+          localObject1 = "";
+          break;
+          i += 1;
+          break label33;
+          localObject2 = findLoadedClass(paramString);
+          localObject1 = localObject2;
+        } while (localObject2 != null);
+        localThrowable = null;
+        try
+        {
+          localObject1 = findClass(paramString);
+          localObject2 = localObject1;
+        }
+        catch (ClassNotFoundException localClassNotFoundException)
+        {
+          break label112;
+        }
         localObject1 = localObject2;
       } while (localObject2 != null);
-      Object localObject3 = null;
       try
       {
-        localObject1 = findClass(paramString);
-        localObject2 = localObject1;
+        paramString = this.a.loadClass(paramString);
+        return paramString;
       }
-      catch (ClassNotFoundException localClassNotFoundException)
+      catch (ClassNotFoundException paramString)
       {
-        for (;;)
-        {
-          try
-          {
-            paramString = this.a.loadClass(paramString);
-            return paramString;
-          }
-          catch (ClassNotFoundException paramString)
-          {
-            if (Build.VERSION.SDK_INT < 19) {
-              continue;
-            }
-            paramString.addSuppressed(localClassNotFoundException);
-            throw paramString;
-          }
-          localClassNotFoundException = localClassNotFoundException;
+        if (Build.VERSION.SDK_INT >= 19) {
+          paramString.addSuppressed(localThrowable);
         }
+        throw paramString;
       }
-      localObject1 = localObject2;
-    } while (localObject2 != null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.hydevteam.common.classloader.ApkClassLoader
  * JD-Core Version:    0.7.0.1
  */

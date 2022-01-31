@@ -1,18 +1,25 @@
 package com.tencent.token.ui;
 
-import com.tencent.token.af;
-import com.tencent.token.global.e;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-final class vs
-  implements Runnable
+class vs
+  implements View.OnClickListener
 {
   vs(RealNameSmsContentTipActivity paramRealNameSmsContentTipActivity) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    e.a("realname vrysms thread run, sceneid=" + RealNameSmsContentTipActivity.access$000(this.a));
-    af.a().a(0L, RealNameSmsContentTipActivity.access$100(this.a), RealNameSmsContentTipActivity.access$000(this.a), this.a.mHandler);
-    RealNameSmsContentTipActivity.access$208(this.a);
+    RealNameSmsContentTipActivity.access$1200(this.a).setVisibility(0);
+    RealNameSmsContentTipActivity.access$1400(this.a).setText(this.a.getResources().getString(2131231129));
+    RealNameSmsContentTipActivity.access$1000(this.a).setVisibility(4);
+    RealNameSmsContentTipActivity.access$202(this.a, 0);
+    RealNameSmsContentTipActivity.access$1300(this.a).setClickable(false);
+    this.a.mHandler.sendEmptyMessage(3);
   }
 }
 

@@ -1,22 +1,19 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.photo.PhotoCropAction;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class erd
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnTouchListener
 {
-  public erd(PhotoCropAction paramPhotoCropAction, ActionSheet paramActionSheet) {}
+  public erd(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramInt != this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction.jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction.a(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.d();
+    if (paramMotionEvent.getAction() == 0) {
+      this.a.g();
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    return false;
   }
 }
 

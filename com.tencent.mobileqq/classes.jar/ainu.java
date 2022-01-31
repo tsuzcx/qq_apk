@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.text.QzoneTextBuilder;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 
 public class ainu
-  implements Comparator
+  implements DialogInterface.OnDismissListener
 {
-  public ainu(QzoneTextBuilder paramQzoneTextBuilder) {}
+  public ainu(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    int i = this.a.getSpanStart(paramObject1);
-    int j = this.a.getSpanStart(paramObject2);
-    if (i == j) {
-      return 0;
-    }
-    if (i > j) {
-      return 1;
-    }
-    return -1;
+    this.a.a = null;
   }
 }
 

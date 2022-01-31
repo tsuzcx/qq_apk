@@ -1,5 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
+import aepi;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -9,18 +10,17 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.Adapter;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import bhuv;
 import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.AdapterDataSetObserver;
-import mid;
+import rsp;
 
 public class ReadInJoyFlowLayout
   extends AdapterView
 {
   private float jdField_a_of_type_Float;
-  private final int jdField_a_of_type_Int = AIOUtils.a(8.0F, getResources());
+  private final int jdField_a_of_type_Int = aepi.a(8.0F, getResources());
   private Adapter jdField_a_of_type_AndroidWidgetAdapter;
-  private AdapterView.AdapterDataSetObserver jdField_a_of_type_ComTencentWidgetAdapterView$AdapterDataSetObserver = new mid(this);
+  private bhuv jdField_a_of_type_Bhuv = new rsp(this);
   private float b;
   
   public ReadInJoyFlowLayout(Context paramContext)
@@ -95,7 +95,7 @@ public class ReadInJoyFlowLayout
     return null;
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i = getPaddingLeft();
     int i7 = getPaddingRight();
@@ -363,14 +363,14 @@ public class ReadInJoyFlowLayout
   
   public void setAdapter(Adapter paramAdapter)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetAdapter != null) && (this.jdField_a_of_type_ComTencentWidgetAdapterView$AdapterDataSetObserver != null)) {
-      this.jdField_a_of_type_AndroidWidgetAdapter.unregisterDataSetObserver(this.jdField_a_of_type_ComTencentWidgetAdapterView$AdapterDataSetObserver);
+    if ((this.jdField_a_of_type_AndroidWidgetAdapter != null) && (this.jdField_a_of_type_Bhuv != null)) {
+      this.jdField_a_of_type_AndroidWidgetAdapter.unregisterDataSetObserver(this.jdField_a_of_type_Bhuv);
     }
     this.jdField_a_of_type_AndroidWidgetAdapter = paramAdapter;
     if (this.jdField_a_of_type_AndroidWidgetAdapter != null)
     {
       this.mItemCount = this.jdField_a_of_type_AndroidWidgetAdapter.getCount();
-      this.jdField_a_of_type_AndroidWidgetAdapter.registerDataSetObserver(this.jdField_a_of_type_ComTencentWidgetAdapterView$AdapterDataSetObserver);
+      this.jdField_a_of_type_AndroidWidgetAdapter.registerDataSetObserver(this.jdField_a_of_type_Bhuv);
       a();
     }
   }
@@ -398,7 +398,7 @@ public class ReadInJoyFlowLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFlowLayout
  * JD-Core Version:    0.7.0.1
  */

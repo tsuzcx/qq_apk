@@ -1,36 +1,35 @@
 package com.tencent.mobileqq.activity;
 
+import alof;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.AppConstants;
+import bdia;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.qphone.base.util.QLog;
-import wza;
-import wzb;
 
 public class qfileJumpActivity
   extends BaseActivity
 {
   protected int a;
-  public String a;
+  protected String a;
   
   private int a()
   {
     if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 1)) {}
-    while ((!AppConstants.y.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) && (!AppConstants.z.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {
+    while ((!alof.z.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) && (!alof.A.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {
       return -1;
     }
     if (this.jdField_a_of_type_Int == 0)
     {
-      if (!AppConstants.y.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
+      if (!alof.z.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
         return -2;
       }
     }
-    else if (!AppConstants.z.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
+    else if (!alof.A.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
       return -2;
     }
     return 0;
@@ -70,15 +69,15 @@ public class qfileJumpActivity
   
   protected void b()
   {
-    new Handler().postDelayed(new wza(this), 10L);
+    new Handler().postDelayed(new qfileJumpActivity.1(this), 10L);
   }
   
   protected void c()
   {
-    new Handler().postDelayed(new wzb(this), 10L);
+    new Handler().postDelayed(new qfileJumpActivity.2(this), 10L);
   }
   
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramInt2 == -1)
@@ -99,13 +98,17 @@ public class qfileJumpActivity
     finish();
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
-    Intent localIntent;
     try
     {
       super.doOnCreate(paramBundle);
-      this.jdField_a_of_type_JavaLangString = AppConstants.y;
+      if (!bdia.a(this, true))
+      {
+        super.finish();
+        return false;
+      }
+      this.jdField_a_of_type_JavaLangString = alof.z;
       paramBundle = getIntent();
       if (paramBundle != null)
       {
@@ -116,7 +119,7 @@ public class qfileJumpActivity
         {
           QLog.w("qfileJump", 1, "targetparam no match, modify it " + i);
           this.jdField_a_of_type_Int = 0;
-          this.jdField_a_of_type_JavaLangString = AppConstants.y;
+          this.jdField_a_of_type_JavaLangString = alof.z;
           paramBundle.putExtra("device_type", this.jdField_a_of_type_Int);
           paramBundle.putExtra("targetUin", this.jdField_a_of_type_JavaLangString);
         }
@@ -127,15 +130,22 @@ public class qfileJumpActivity
         }
         if (paramBundle.getBooleanExtra("jump_shortcut_dataline", false))
         {
-          if (this.app.isLogin()) {
-            break label223;
+          Intent localIntent;
+          if (!this.app.isLogin())
+          {
+            localIntent = new Intent();
+            localIntent.setClass(this, LoginActivity.class);
+            localIntent.addFlags(67371008);
+            localIntent.putExtras(paramBundle.getExtras());
+            startActivityForResult(localIntent, 9);
           }
-          localIntent = new Intent();
-          localIntent.setClass(this, LoginActivity.class);
-          localIntent.addFlags(67371008);
-          localIntent.putExtras(paramBundle.getExtras());
-          startActivityForResult(localIntent, 9);
-          return true;
+          else if ((GesturePWDUtils.getJumpLock(this, this.app.getCurrentAccountUin())) && (!GesturePWDUtils.getAppForground(this)))
+          {
+            localIntent = new Intent(getActivity(), GesturePWDUnlockActivity.class);
+            localIntent.putExtra("key_gesture_from_jumpactivity", true);
+            localIntent.putExtras(paramBundle.getExtras());
+            startActivityForResult(localIntent, 9);
+          }
         }
       }
     }
@@ -145,22 +155,26 @@ public class qfileJumpActivity
       finish();
       return false;
     }
-    label223:
-    if ((GesturePWDUtils.getJumpLock(this, this.app.getCurrentAccountUin())) && (!GesturePWDUtils.getAppForground(this)))
-    {
-      localIntent = new Intent(getActivity(), GesturePWDUnlockActivity.class);
-      localIntent.putExtra("key_gesture_from_jumpactivity", true);
-      localIntent.putExtras(paramBundle.getExtras());
-      startActivityForResult(localIntent, 9);
-      return true;
-    }
     c();
     return true;
   }
   
-  protected void requestWindowFeature(Intent paramIntent)
+  public void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
+  }
+  
+  public boolean showPreview()
+  {
+    try
+    {
+      boolean bool = bdia.a(this);
+      if (bool) {
+        return true;
+      }
+    }
+    catch (Throwable localThrowable) {}
+    return super.showPreview();
   }
 }
 

@@ -1,64 +1,56 @@
-import android.os.SystemClock;
-import android.widget.AutoCompleteTextView;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.app.PrivacyDeclareHelper;
-import com.tencent.mobileqq.app.PrivacyDeclareHelper.Callback;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mqsafeedit.libsafeedit;
-import com.tencent.mobileqq.utils.AlbumUtil;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.util.List;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.LBSObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class cze
-  implements PrivacyDeclareHelper.Callback
+  extends LBSObserver
 {
-  public cze(LoginActivity paramLoginActivity, String paramString, byte[] paramArrayOfByte) {}
+  public cze(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void a()
+  protected void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    PrivacyDeclareHelper.a(LoginActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity));
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateGetSwitch| isSuc = " + paramBoolean1 + ", userType = " + paramInt + ", curSwitch = " + paramBoolean2);
+    }
+    if (paramBoolean1)
+    {
+      if (paramInt != 1) {
+        break label67;
+      }
+      this.a.a(paramBoolean2);
+    }
+    label67:
+    while (paramInt != 64) {
+      return;
+    }
+    this.a.b(paramBoolean2);
   }
   
-  public void b() {}
-  
-  public void c()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount == null) && (libsafeedit.checkPassLegal("!@#ewaGbhkc$!!=")))
-    {
-      String str = this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString();
-      int i = 0;
-      if (i < this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.size())
-      {
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.get(i) == null) || (((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.get(i)).getUin() == null)) {}
-        while (!((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.get(i)).getUin().equals(str))
-        {
-          i += 1;
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.get(i));
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateSetPeopleVisible| isSuc = " + paramBoolean1 + ", isVisible = " + paramBoolean2);
     }
-    com.tencent.common.app.BaseApplicationImpl.jdField_c_of_type_Long = SystemClock.uptimeMillis() - LoginActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null)
-    {
-      com.tencent.common.app.BaseApplicationImpl.jdField_c_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.showDialog(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.b.login(this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount);
+    if (!paramBoolean1) {
+      this.a.a(2131562080, 1);
     }
-    for (;;)
-    {
-      AlbumUtil.b();
-      return;
-      com.tencent.common.app.BaseApplicationImpl.jdField_c_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.showDialog(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.getAppRuntime().login(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte, LoginActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity));
+    this.a.a(paramBoolean2);
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateSetShareStatus| isSuc = " + paramBoolean1 + ", beShare = " + paramBoolean2);
     }
+    if (!paramBoolean1) {
+      this.a.a(2131562080, 1);
+    }
+    this.a.b(paramBoolean2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cze
  * JD-Core Version:    0.7.0.1
  */

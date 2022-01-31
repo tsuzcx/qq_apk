@@ -1,37 +1,178 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.DeleteCommentObserver;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.av.business.manager.Checker.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-class ljk
-  implements ArticleCommentModule.DeleteCommentObserver
+public class ljk
+  implements Handler.Callback
 {
-  ljk(ljj paramljj) {}
+  private bhtd jdField_a_of_type_Bhtd = new bhtd(Looper.getMainLooper(), this);
+  private final ConcurrentHashMap<String, ljl> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(5);
+  private final ConcurrentLinkedQueue<String> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   
-  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString1, String paramString2)
+  private void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommentListAdapter", 2, "delete first comment success");
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() > 0) && (!this.jdField_a_of_type_Bhtd.hasMessages(1))) {
+      this.jdField_a_of_type_Bhtd.sendEmptyMessage(1);
     }
-    QQToast.a(BaseApplication.getContext(), 0, "删除成功", 0).a();
-    this.a.a.notifyDataSetChanged();
-    paramArticleInfo = this.a.a;
-    paramArticleInfo.a -= 1;
   }
   
-  public void a(ArticleInfo paramArticleInfo, String paramString1, String paramString2, int paramInt, String paramString3)
+  private void b(String paramString, ljl paramljl)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommentListAdapter", 2, "delete first comment failed ,comment id = " + paramString1 + "sub comment id = " + paramString2 + "err code =" + paramInt + "err Msg = " + paramString3);
+    if (paramljl == null)
+    {
+      a();
+      return;
     }
-    QQToast.a(BaseApplication.getContext(), 1, "删除失败", 0).a();
+    if (paramljl.a())
+    {
+      a();
+      return;
+    }
+    if (paramljl.jdField_a_of_type_Ljo == null)
+    {
+      paramljl.jdField_a_of_type_Int += 1;
+      a();
+      return;
+    }
+    paramljl.jdField_a_of_type_Int += 1;
+    ThreadManager.excute(new Checker.1(this, paramljl, paramString), 16, null, false);
+  }
+  
+  public void a(String paramString, ljl paramljl)
+  {
+    boolean bool = paramljl.jdField_a_of_type_Ljo.isUsable();
+    int j;
+    if ((bool) && (!bdhb.a(paramljl.jdField_b_of_type_JavaLangString))) {
+      j = 1;
+    }
+    for (;;)
+    {
+      if (j != 0) {}
+      try
+      {
+        bdhb.a(paramljl.jdField_a_of_type_JavaLangString, paramljl.jdField_b_of_type_JavaLangString, false);
+        paramljl.jdField_b_of_type_Boolean = true;
+        if ((!paramljl.jdField_b_of_type_Boolean) && (paramljl.a()) && (paramljl.jdField_a_of_type_Boolean))
+        {
+          bdhb.d(paramljl.jdField_a_of_type_JavaLangString);
+          if (QLog.isColorLevel()) {
+            QLog.i("Checker", 2, "realCheck, del zip id[" + paramString + "], path[" + paramljl.jdField_a_of_type_JavaLangString + "]");
+          }
+        }
+        return;
+        if ((bool) && (paramljl.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+        {
+          i = 0;
+          label144:
+          if (i < paramljl.jdField_a_of_type_JavaUtilArrayList.size())
+          {
+            String str = (String)paramljl.jdField_a_of_type_JavaUtilArrayList.get(i);
+            if (TextUtils.isEmpty(str)) {}
+            label327:
+            for (;;)
+            {
+              i += 1;
+              break label144;
+              if (paramljl.jdField_b_of_type_JavaLangString.endsWith(File.separator)) {}
+              for (str = paramljl.jdField_b_of_type_JavaLangString + str;; str = paramljl.jdField_b_of_type_JavaLangString + File.separator + str)
+              {
+                if (bdhb.a(str)) {
+                  break label327;
+                }
+                if (!QLog.isColorLevel()) {
+                  break label371;
+                }
+                QLog.i("Checker", 2, "realCheck, id[" + paramString + "], unExistFile[" + str + "]");
+                i = 1;
+                j = i;
+                if (i == 0) {
+                  break;
+                }
+                bdhb.a(paramljl.jdField_b_of_type_JavaLangString);
+                j = i;
+                break;
+              }
+            }
+          }
+        }
+      }
+      catch (IOException localIOException)
+      {
+        for (;;)
+        {
+          paramljl.jdField_b_of_type_Boolean = false;
+          QLog.i("Checker", 2, "realCheck, uncompressZip fail, record[" + paramljl + "]", localIOException);
+          continue;
+          label371:
+          int i = 1;
+          continue;
+          i = 0;
+        }
+        j = 0;
+      }
+    }
+  }
+  
+  public void a(ljo paramljo, String paramString1, String paramString2, ArrayList<String> paramArrayList, boolean paramBoolean)
+  {
+    Object localObject;
+    if (paramljo == null)
+    {
+      localObject = null;
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(localObject))) {
+        break label51;
+      }
+    }
+    label51:
+    ljl localljl1;
+    do
+    {
+      return;
+      localObject = paramljo.getId();
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.i("Checker", 2, "addToCheck, item[" + paramljo + "]");
+      }
+      ljl localljl2 = (ljl)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      localljl1 = localljl2;
+      if (localljl2 == null)
+      {
+        localljl1 = new ljl(paramljo, paramArrayList, paramBoolean);
+        localljl1.jdField_a_of_type_JavaLangString = paramString1;
+        localljl1.jdField_b_of_type_JavaLangString = paramString2;
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject, localljl1);
+      }
+    } while (localljl1.a());
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(localObject);
+    a();
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1)
+    {
+      String str = (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+      paramMessage = null;
+      if (!TextUtils.isEmpty(str)) {
+        paramMessage = (ljl)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+      }
+      b(str, paramMessage);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ljk
  * JD-Core Version:    0.7.0.1
  */

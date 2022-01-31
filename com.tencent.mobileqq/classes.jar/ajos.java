@@ -1,17 +1,15 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
-class ajos
-  implements FilenameFilter
+public class ajos
+  implements DialogInterface.OnClickListener
 {
-  ajos(ajor paramajor) {}
+  public ajos(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramString == null) {
-      return false;
-    }
-    return paramString.startsWith("[Thumb]");
+    this.a.finish();
   }
 }
 

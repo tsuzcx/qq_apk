@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class voip_ivr$Head
-  extends MessageMicro
+  extends MessageMicro<Head>
 {
   public static final int COMMAND_FIELD_NUMBER = 1;
   public static final int RET_CODE_FIELD_NUMBER = 2;
@@ -30,7 +30,7 @@ public final class voip_ivr$Head
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.voip.ivr.voip_ivr.Head
  * JD-Core Version:    0.7.0.1
  */

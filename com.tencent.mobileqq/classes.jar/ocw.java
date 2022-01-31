@@ -1,20 +1,29 @@
-import com.tencent.biz.qqstory.takevideo.EditJumpToPtu;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.biz.pubaccount.readinjoy.ad.materialdownload.MaterialData;
+import java.util.List;
 
 public class ocw
-  implements Runnable
+  implements alpg
 {
-  public ocw(EditJumpToPtu paramEditJumpToPtu, String paramString) {}
+  public void a(boolean paramBoolean, String paramString) {}
   
-  public void run()
+  public void a(boolean paramBoolean, List<MaterialData> paramList) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditJumpToPtu.a(this.jdField_a_of_type_JavaLangString);
-    FileUtils.d(this.jdField_a_of_type_JavaLangString);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, (String)paramObject);
+      return;
+    }
+    a(paramBoolean, (List)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ocw
  * JD-Core Version:    0.7.0.1
  */

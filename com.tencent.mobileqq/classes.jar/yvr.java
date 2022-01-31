@@ -1,27 +1,24 @@
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.app.utils.ApolloContentUpdateHandler;
-import com.tencent.mobileqq.data.ApolloGameRoamData;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class yvr
-  implements Runnable
+  implements ywo
 {
-  public yvr(ApolloDaoManager paramApolloDaoManager, ApolloGameRoamData paramApolloGameRoamData) {}
+  public yvr(TroopGiftPanel paramTroopGiftPanel, long paramLong1, long paramLong2) {}
   
-  public void run()
+  public void a(int paramInt) {}
+  
+  public void a(List<bcon> paramList)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloDaoManager.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloDaoManager", 2, new Object[] { "[saveUserPlayedGameRoamData] game ", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameRoamData.gameId), " not in local, try update json" });
-      }
-      ApolloContentUpdateHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloDaoManager.a, 2);
-    }
+    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.a(paramList);
+    long l = System.currentTimeMillis();
+    QLog.d("TroopGiftPanel.time", 1, "setGiftData, reqTime=" + (l - this.jdField_a_of_type_Long) + ", total=" + (l - this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yvr
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class Qworkflow$Text
-  extends MessageMicro
+  extends MessageMicro<Text>
 {
   public static final int CONTENT_SUMMARY = 3;
   public static final int CONTENT_TYPE_LINK = 1;
@@ -28,7 +28,7 @@ public final class Qworkflow$Text
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.trunk.Qworkflow.Qworkflow.Text
  * JD-Core Version:    0.7.0.1
  */

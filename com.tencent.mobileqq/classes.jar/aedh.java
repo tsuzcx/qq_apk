@@ -1,19 +1,16 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.RandomDrawableParam;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class aedh
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public aedh(PngFrameManager paramPngFrameManager, PngFrameManager.RandomDrawableParam paramRandomDrawableParam) {}
+  public aedh(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.a.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() != 0) && (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.a.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.a.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new aedi(this));
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
   }
 }

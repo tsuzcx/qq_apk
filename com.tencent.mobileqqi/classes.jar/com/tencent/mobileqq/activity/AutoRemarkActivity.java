@@ -16,8 +16,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import ccc;
-import ccd;
+import bwh;
+import bwi;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.MessageHandler;
@@ -70,9 +70,9 @@ public class AutoRemarkActivity
   private ImageView jdField_a_of_type_AndroidWidgetImageView = null;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
   public TextView a;
-  private ccd jdField_a_of_type_Ccd = new ccd(this, null);
+  private bwi jdField_a_of_type_Bwi = new bwi(this, null);
   public FriendListHandler a;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new ccc(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new bwh(this);
   public QQProgressDialog a;
   private Switch jdField_a_of_type_ComTencentWidgetSwitch;
   boolean jdField_a_of_type_Boolean;
@@ -434,7 +434,7 @@ public class AutoRemarkActivity
     this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = ((FriendListHandler)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(1));
     e();
     d();
-    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Ccd);
+    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Bwi);
     this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, d());
     if (((paramBundle == null) || (this.e == 1)) && (NetworkUtil.e(this)) && (c()))
@@ -448,7 +448,7 @@ public class AutoRemarkActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_Ccd);
+    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_Bwi);
     this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
   }
   

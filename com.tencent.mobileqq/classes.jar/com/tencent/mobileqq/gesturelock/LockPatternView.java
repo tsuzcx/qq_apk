@@ -17,6 +17,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewParent;
+import aspn;
+import aspo;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Array;
@@ -34,9 +36,9 @@ public class LockPatternView
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private final Path jdField_a_of_type_AndroidGraphicsPath = new Path();
   private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private aspo jdField_a_of_type_Aspo;
   private LockPatternView.DisplayMode jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$DisplayMode = LockPatternView.DisplayMode.Correct;
-  private LockPatternView.OnPatternListener jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList(9);
+  private ArrayList<aspn> jdField_a_of_type_JavaUtilArrayList = new ArrayList(9);
   private boolean jdField_a_of_type_Boolean = true;
   private boolean[][] jdField_a_of_type_Array2dOfBoolean = (boolean[][])Array.newInstance(Boolean.TYPE, new int[] { 3, 3 });
   private float jdField_b_of_type_Float = -1.0F;
@@ -124,13 +126,13 @@ public class LockPatternView
       setClickable(true);
       localContext = paramContext;
       localObject = paramContext;
-      this.n = getResources().getColor(2131493028);
+      this.n = getResources().getColor(2131165641);
       localContext = paramContext;
       localObject = paramContext;
-      this.o = getResources().getColor(2131493029);
+      this.o = getResources().getColor(2131165642);
       localContext = paramContext;
       localObject = paramContext;
-      this.p = getResources().getDimensionPixelSize(2131558641);
+      this.p = getResources().getDimensionPixelSize(2131297049);
       localContext = paramContext;
       localObject = paramContext;
       this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
@@ -163,34 +165,34 @@ public class LockPatternView
       this.jdField_c_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_b_of_type_Int = getResources().getColor(2131493033);
+      this.jdField_b_of_type_Int = getResources().getColor(2131165635);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_c_of_type_Int = getResources().getColor(2131493034);
+      this.jdField_c_of_type_Int = getResources().getColor(2131165636);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_d_of_type_Int = getResources().getColor(2131493035);
+      this.jdField_d_of_type_Int = getResources().getColor(2131165637);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_e_of_type_Int = getResources().getColor(2131493036);
+      this.jdField_e_of_type_Int = getResources().getColor(2131165638);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_f_of_type_Int = getResources().getColor(2131493037);
+      this.jdField_f_of_type_Int = getResources().getColor(2131165639);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_g_of_type_Int = getResources().getColor(2131493038);
+      this.jdField_g_of_type_Int = getResources().getColor(2131165640);
       localContext = paramContext;
       localObject = paramContext;
-      this.h = getResources().getColor(2131493039);
+      this.h = getResources().getColor(2131165632);
       localContext = paramContext;
       localObject = paramContext;
-      this.i = getResources().getColor(2131493040);
+      this.i = getResources().getColor(2131165633);
       localContext = paramContext;
       localObject = paramContext;
-      this.j = getResources().getColor(2131493041);
+      this.j = getResources().getColor(2131165634);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_g_of_type_Float = getResources().getDimensionPixelSize(2131558642);
+      this.jdField_g_of_type_Float = getResources().getDimensionPixelSize(2131297050);
       localContext = paramContext;
       localObject = paramContext;
       this.k = (getWidth() / 4);
@@ -254,32 +256,32 @@ public class LockPatternView
     return Math.min(i2, paramInt2);
   }
   
-  private LockPatternView.Cell a(float paramFloat1, float paramFloat2)
+  private aspn a(float paramFloat1, float paramFloat2)
   {
     Object localObject1 = null;
     Object localObject2 = null;
     int i2 = -1;
-    LockPatternView.Cell localCell = b(paramFloat1, paramFloat2);
+    aspn localaspn = b(paramFloat1, paramFloat2);
     int i3;
     int i1;
-    if (localCell != null)
+    if (localaspn != null)
     {
       ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
       localObject1 = localObject2;
       if (!localArrayList.isEmpty())
       {
-        localObject1 = (LockPatternView.Cell)localArrayList.get(localArrayList.size() - 1);
-        int i6 = localCell.jdField_a_of_type_Int - ((LockPatternView.Cell)localObject1).jdField_a_of_type_Int;
-        int i5 = localCell.jdField_b_of_type_Int - ((LockPatternView.Cell)localObject1).jdField_b_of_type_Int;
-        int i4 = ((LockPatternView.Cell)localObject1).jdField_a_of_type_Int;
-        i3 = ((LockPatternView.Cell)localObject1).jdField_b_of_type_Int;
+        localObject1 = (aspn)localArrayList.get(localArrayList.size() - 1);
+        int i6 = localaspn.jdField_a_of_type_Int - ((aspn)localObject1).jdField_a_of_type_Int;
+        int i5 = localaspn.jdField_b_of_type_Int - ((aspn)localObject1).jdField_b_of_type_Int;
+        int i4 = ((aspn)localObject1).jdField_a_of_type_Int;
+        i3 = ((aspn)localObject1).jdField_b_of_type_Int;
         i1 = i4;
         if (Math.abs(i6) == 2)
         {
           i1 = i4;
           if (Math.abs(i5) != 1)
           {
-            i4 = ((LockPatternView.Cell)localObject1).jdField_a_of_type_Int;
+            i4 = ((aspn)localObject1).jdField_a_of_type_Int;
             if (i6 <= 0) {
               break label252;
             }
@@ -290,7 +292,7 @@ public class LockPatternView
         if ((Math.abs(i5) != 2) || (Math.abs(i6) == 1)) {
           break label257;
         }
-        i3 = ((LockPatternView.Cell)localObject1).jdField_b_of_type_Int;
+        i3 = ((aspn)localObject1).jdField_b_of_type_Int;
         if (i5 > 0) {
           i2 = 1;
         }
@@ -299,15 +301,15 @@ public class LockPatternView
     label257:
     for (i2 = i3 + i2;; i2 = i3)
     {
-      localObject1 = LockPatternView.Cell.a(i1, i2);
+      localObject1 = aspn.a(i1, i2);
       if ((this.jdField_e_of_type_Boolean) && (localObject1 != null) && (this.jdField_a_of_type_Array2dOfBoolean[localObject1.jdField_a_of_type_Int][localObject1.jdField_b_of_type_Int] == 0)) {
-        b((LockPatternView.Cell)localObject1);
+        b((aspn)localObject1);
       }
-      b(localCell);
+      b(localaspn);
       if (this.jdField_c_of_type_Boolean) {
         performHapticFeedback(1, 3);
       }
-      localObject1 = localCell;
+      localObject1 = localaspn;
       return localObject1;
       label252:
       i1 = -1;
@@ -411,9 +413,9 @@ public class LockPatternView
         }
         f3 = paramMotionEvent.getHistoricalY(i1);
         int i3 = this.jdField_a_of_type_JavaUtilArrayList.size();
-        LockPatternView.Cell localCell = a(f4, f3);
+        aspn localaspn = a(f4, f3);
         int i4 = this.jdField_a_of_type_JavaUtilArrayList.size();
-        if ((localCell != null) && (i4 == 1))
+        if ((localaspn != null) && (i4 == 1))
         {
           this.jdField_d_of_type_Boolean = true;
           b();
@@ -429,9 +431,9 @@ public class LockPatternView
           }
           ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
           float f9 = this.jdField_e_of_type_Float * this.jdField_c_of_type_Float * 0.5F;
-          Object localObject = (LockPatternView.Cell)localArrayList.get(i4 - 1);
-          f2 = a(((LockPatternView.Cell)localObject).jdField_b_of_type_Int);
-          f1 = b(((LockPatternView.Cell)localObject).jdField_a_of_type_Int);
+          Object localObject = (aspn)localArrayList.get(i4 - 1);
+          f2 = a(((aspn)localObject).jdField_b_of_type_Int);
+          f1 = b(((aspn)localObject).jdField_a_of_type_Int);
           localObject = this.jdField_a_of_type_AndroidGraphicsRect;
           if (f2 >= f4) {
             break label550;
@@ -457,16 +459,16 @@ public class LockPatternView
             f6 = f5;
           }
           ((Rect)localObject).union((int)(f3 - f9), (int)(f4 - f9), (int)(f2 + f9), (int)(f6 + f9));
-          if (localCell != null)
+          if (localaspn != null)
           {
-            f2 = a(localCell.jdField_b_of_type_Int);
-            f1 = b(localCell.jdField_a_of_type_Int);
+            f2 = a(localaspn.jdField_b_of_type_Int);
+            f1 = b(localaspn.jdField_a_of_type_Int);
             if (i4 < 2) {
               break label595;
             }
-            localCell = (LockPatternView.Cell)localArrayList.get(i4 - 1 - (i4 - i3));
-            f6 = a(localCell.jdField_b_of_type_Int);
-            f5 = b(localCell.jdField_a_of_type_Int);
+            localaspn = (aspn)localArrayList.get(i4 - 1 - (i4 - i3));
+            f6 = a(localaspn.jdField_b_of_type_Int);
+            f5 = b(localaspn.jdField_a_of_type_Int);
             f3 = f2;
             f4 = f6;
             if (f2 < f6)
@@ -533,17 +535,17 @@ public class LockPatternView
     }
   }
   
-  private void a(LockPatternView.Cell paramCell)
+  private void a(aspn paramaspn)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener.b(this.jdField_a_of_type_JavaUtilArrayList);
+    if (this.jdField_a_of_type_Aspo != null) {
+      this.jdField_a_of_type_Aspo.b(this.jdField_a_of_type_JavaUtilArrayList);
     }
-    if (paramCell != null)
+    if (paramaspn != null)
     {
-      a(String.format("%d", new Object[] { Integer.valueOf(paramCell.a() * 3 + paramCell.b() + 1) }));
+      a(String.format("%d", new Object[] { Integer.valueOf(paramaspn.a() * 3 + paramaspn.b() + 1) }));
       return;
     }
-    a(2131436064);
+    a(2131694139);
   }
   
   private void a(String paramString)
@@ -576,7 +578,7 @@ public class LockPatternView
     return -1;
   }
   
-  private LockPatternView.Cell b(float paramFloat1, float paramFloat2)
+  private aspn b(float paramFloat1, float paramFloat2)
   {
     int i1 = a(paramFloat2);
     if (i1 < 0) {}
@@ -586,13 +588,13 @@ public class LockPatternView
       return null;
       i2 = b(paramFloat1);
     } while ((i2 < 0) || (this.jdField_a_of_type_Array2dOfBoolean[i1][i2] != 0));
-    return LockPatternView.Cell.a(i1, i2);
+    return aspn.a(i1, i2);
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener.a();
+    if (this.jdField_a_of_type_Aspo != null) {
+      this.jdField_a_of_type_Aspo.a();
     }
   }
   
@@ -606,19 +608,19 @@ public class LockPatternView
     }
   }
   
-  private void b(LockPatternView.Cell paramCell)
+  private void b(aspn paramaspn)
   {
-    this.jdField_a_of_type_Array2dOfBoolean[paramCell.a()][paramCell.b()] = 1;
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramCell);
-    a(paramCell);
+    this.jdField_a_of_type_Array2dOfBoolean[paramaspn.a()][paramaspn.b()] = 1;
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramaspn);
+    a(paramaspn);
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener.a(this.jdField_a_of_type_JavaUtilArrayList);
+    if (this.jdField_a_of_type_Aspo != null) {
+      this.jdField_a_of_type_Aspo.a(this.jdField_a_of_type_JavaUtilArrayList);
     }
-    a(2131436065);
+    a(2131694141);
   }
   
   private void c(MotionEvent paramMotionEvent)
@@ -653,10 +655,10 @@ public class LockPatternView
   
   private void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener.b();
+    if (this.jdField_a_of_type_Aspo != null) {
+      this.jdField_a_of_type_Aspo.b();
     }
-    a(2131436063);
+    a(2131694140);
   }
   
   private void e()
@@ -722,7 +724,7 @@ public class LockPatternView
       i1 = 0;
       while (i1 < i3)
       {
-        localObject = (LockPatternView.Cell)localArrayList.get(i1);
+        localObject = (aspn)localArrayList.get(i1);
         arrayOfBoolean[localObject.a()][localObject.b()] = 1;
         i1 += 1;
       }
@@ -732,12 +734,12 @@ public class LockPatternView
         if (i1 != 0)
         {
           f1 = i2 % 700 / 700.0F;
-          localObject = (LockPatternView.Cell)localArrayList.get(i3 - 1);
-          f2 = a(((LockPatternView.Cell)localObject).jdField_b_of_type_Int);
-          f3 = b(((LockPatternView.Cell)localObject).jdField_a_of_type_Int);
-          localObject = (LockPatternView.Cell)localArrayList.get(i3);
-          f4 = a(((LockPatternView.Cell)localObject).jdField_b_of_type_Int);
-          float f5 = b(((LockPatternView.Cell)localObject).jdField_a_of_type_Int);
+          localObject = (aspn)localArrayList.get(i3 - 1);
+          f2 = a(((aspn)localObject).jdField_b_of_type_Int);
+          f3 = b(((aspn)localObject).jdField_a_of_type_Int);
+          localObject = (aspn)localArrayList.get(i3);
+          f4 = a(((aspn)localObject).jdField_b_of_type_Int);
+          float f5 = b(((aspn)localObject).jdField_a_of_type_Int);
           this.jdField_a_of_type_Float = (f2 + (f4 - f2) * f1);
           this.jdField_b_of_type_Float = ((f5 - f3) * f1 + f3);
         }
@@ -799,15 +801,15 @@ public class LockPatternView
       }
       this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.n);
     }
-    LockPatternView.Cell localCell;
+    aspn localaspn;
     for (;;)
     {
       i2 = 0;
       i1 = 0;
       if (i1 < i4)
       {
-        localCell = (LockPatternView.Cell)localArrayList.get(i1);
-        if (arrayOfBoolean[localCell.jdField_a_of_type_Int][localCell.jdField_b_of_type_Int] != 0) {
+        localaspn = (aspn)localArrayList.get(i1);
+        if (arrayOfBoolean[localaspn.jdField_a_of_type_Int][localaspn.jdField_b_of_type_Int] != 0) {
           break;
         }
       }
@@ -821,8 +823,8 @@ public class LockPatternView
       this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.o);
     }
     int i2 = 1;
-    float f1 = a(localCell.jdField_b_of_type_Int);
-    float f2 = b(localCell.jdField_a_of_type_Int);
+    float f1 = a(localaspn.jdField_b_of_type_Int);
+    float f2 = b(localaspn.jdField_a_of_type_Int);
     if (i1 == 0) {
       ((Path)localObject).moveTo(f1, f2);
     }
@@ -900,7 +902,7 @@ public class LockPatternView
         throw new IllegalStateException("you must have a pattern to animate if you want to set the display mode to animate");
       }
       this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-      paramDisplayMode = (LockPatternView.Cell)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      paramDisplayMode = (aspn)this.jdField_a_of_type_JavaUtilArrayList.get(0);
       this.jdField_a_of_type_Float = a(paramDisplayMode.b());
       this.jdField_b_of_type_Float = b(paramDisplayMode.a());
       f();
@@ -918,12 +920,12 @@ public class LockPatternView
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnPatternListener(LockPatternView.OnPatternListener paramOnPatternListener)
+  public void setOnPatternListener(aspo paramaspo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener = paramOnPatternListener;
+    this.jdField_a_of_type_Aspo = paramaspo;
   }
   
-  public void setPattern(LockPatternView.DisplayMode paramDisplayMode, List paramList)
+  public void setPattern(LockPatternView.DisplayMode paramDisplayMode, List<aspn> paramList)
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
@@ -931,8 +933,8 @@ public class LockPatternView
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      LockPatternView.Cell localCell = (LockPatternView.Cell)paramList.next();
-      this.jdField_a_of_type_Array2dOfBoolean[localCell.a()][localCell.b()] = 1;
+      aspn localaspn = (aspn)paramList.next();
+      this.jdField_a_of_type_Array2dOfBoolean[localaspn.a()][localaspn.b()] = 1;
     }
     setDisplayMode(paramDisplayMode);
   }
@@ -944,7 +946,7 @@ public class LockPatternView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gesturelock.LockPatternView
  * JD-Core Version:    0.7.0.1
  */

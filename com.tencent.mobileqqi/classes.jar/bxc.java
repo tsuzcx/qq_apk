@@ -1,13 +1,38 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.common.util.Util;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.qphone.base.util.QLog;
 
 public class bxc
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public bxc(LiteTransferWrapper paramLiteTransferWrapper, long paramLong1, long paramLong2, long paramLong3, String paramString, long paramLong4, byte[] paramArrayOfByte1, long paramLong5, long paramLong6, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong7, long paramLong8, long paramLong9, boolean paramBoolean) {}
+  public bxc(ChatActivity paramChatActivity, AbsShareMsg paramAbsShareMsg, Context paramContext) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_c_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_d_of_type_Long, this.jdField_a_of_type_ArrayOfByte, this.e, this.f, this.jdField_b_of_type_ArrayOfByte, this.jdField_c_of_type_ArrayOfByte, this.jdField_d_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.g, this.h, this.i, this.jdField_a_of_type_Boolean);
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("ChatActivity", 2, "qbShowShareResultDialog back");
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
+      {
+        Util.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.b, "", "choose", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAppid, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID, "back");
+        ForwardOperations.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity, true, "shareToQQ", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAppid);
+      }
+      Util.a(this.jdField_a_of_type_AndroidContentContext, 0, "", "");
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.finish();
+      return;
+    } while (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg == null);
+    Util.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.b, "", "choose", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAppid, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID, "stay");
   }
 }
 

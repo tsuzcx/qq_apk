@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.troop.homework.arithmetic.ui;
 
-import ajgf;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -9,7 +8,8 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.qqstory.utils.UIUtils;
+import bbyz;
+import xsm;
 
 public class DotStyleNavBar
   extends LinearLayout
@@ -31,14 +31,14 @@ public class DotStyleNavBar
   
   private void a()
   {
-    int j = UIUtils.a(getContext(), 8.0F);
-    int k = UIUtils.a(getContext(), 3.0F);
+    int j = xsm.a(getContext(), 8.0F);
+    int k = xsm.a(getContext(), 3.0F);
     int i = 0;
     if (i < this.jdField_a_of_type_Int)
     {
       ImageView localImageView = new ImageView(getContext());
       if (i == this.b) {
-        localImageView.setImageResource(2130844685);
+        localImageView.setImageResource(2130848493);
       }
       for (;;)
       {
@@ -48,7 +48,7 @@ public class DotStyleNavBar
         addView(localImageView, localLayoutParams);
         i += 1;
         break;
-        localImageView.setImageResource(2130844686);
+        localImageView.setImageResource(2130848494);
       }
     }
   }
@@ -67,13 +67,13 @@ public class DotStyleNavBar
     {
       ImageView localImageView = (ImageView)getChildAt(i);
       if (i == this.b) {
-        localImageView.setImageResource(2130844685);
+        localImageView.setImageResource(2130848493);
       }
       for (;;)
       {
         i += 1;
         break;
-        localImageView.setImageResource(2130844686);
+        localImageView.setImageResource(2130848494);
       }
     }
     postInvalidate();
@@ -105,12 +105,12 @@ public class DotStyleNavBar
   {
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
     a(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter().getCount());
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new ajgf(this));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new bbyz(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.arithmetic.ui.DotStyleNavBar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,18 @@
-import com.tencent.mobileqq.app.MessageRoamConstants;
-import com.tencent.mobileqq.app.MessageRoamManager;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class zhf
-  extends DownloadListener
+class zhf
+  implements View.OnClickListener
 {
-  public zhf(MessageRoamManager paramMessageRoamManager) {}
+  zhf(zhe paramzhe, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onClick(View paramView)
   {
-    super.onDone(paramDownloadTask);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.roammsg.MessageRoamManager", 2, "onDone status: " + paramDownloadTask.e + ", url: " + paramDownloadTask.a);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Zhe, 0);
     }
-    int i = paramDownloadTask.a.indexOf("?");
-    String str;
-    if (i == -1)
-    {
-      str = paramDownloadTask.a;
-      if (!MessageRoamConstants.a.contains(str)) {
-        break label105;
-      }
-      this.a.a(paramDownloadTask);
-    }
-    label105:
-    do
-    {
-      return;
-      str = paramDownloadTask.a.substring(0, i - 1);
-      break;
-      if ("http://imgcache.qq.com/club/mobile/messageroam/xiaoximanyou2.json".equals(str))
-      {
-        this.a.b(paramDownloadTask);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.roammsg.MessageRoamManager", 2, "onDone unkonw url: " + paramDownloadTask.a);
+    this.jdField_a_of_type_Zhe.dismiss();
   }
 }
 

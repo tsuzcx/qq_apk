@@ -1,24 +1,26 @@
-import android.app.Activity;
-import com.tencent.open.downloadnew.MyAppApi;
-
 public class alih
-  implements Runnable
 {
-  public alih(MyAppApi paramMyAppApi, Activity paramActivity) {}
+  public long a;
+  public String a;
+  public long b;
   
-  public void run()
+  public alih(String paramString, long paramLong1, long paramLong2)
   {
-    if ((this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.e) && (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a != null))
-    {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.d(this.jdField_a_of_type_AndroidAppActivity);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b(this.jdField_a_of_type_AndroidAppActivity);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alih
  * JD-Core Version:    0.7.0.1
  */

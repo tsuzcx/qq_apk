@@ -4,9 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import bfrh;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.open.settings.OpensdkPreference;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class EncryTokenActivity
@@ -16,11 +15,11 @@ public class EncryTokenActivity
   {
     BaseApplicationImpl.getApplication().addOtherTypeActivity(this);
     super.onCreate(paramBundle);
-    str1 = "";
+    str = "";
     try
     {
       localObject = super.getIntent();
-      paramBundle = str1;
+      paramBundle = str;
       if (localObject != null) {
         paramBundle = ((Intent)localObject).getStringExtra("key_action");
       }
@@ -30,35 +29,31 @@ public class EncryTokenActivity
       for (;;)
       {
         Object localObject;
-        String str2;
-        JSONObject localJSONObject;
-        paramBundle = str1;
+        paramBundle = str;
       }
     }
     if ("action_check_token".equals(paramBundle))
     {
-      localObject = OpensdkPreference.a(this, "openid_encrytoken");
-      paramBundle = super.getIntent().getStringExtra("openid") + "";
-      str1 = super.getIntent().getStringExtra("access_token");
-      str2 = ((SharedPreferences)localObject).getString(paramBundle, "");
-      localObject = new Intent();
-      localJSONObject = new JSONObject();
+      localObject = bfrh.a(this, "openid_encrytoken");
       try
       {
+        paramBundle = super.getIntent().getStringExtra("openid") + "";
+        str = super.getIntent().getStringExtra("access_token");
+        localObject = ((SharedPreferences)localObject).getString(paramBundle, "");
+        Intent localIntent = new Intent();
+        JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("openid", paramBundle);
-        localJSONObject.put("access_token", str1);
-        localJSONObject.put("encry_token", str2);
-        ((Intent)localObject).putExtra("key_response", localJSONObject.toString());
-        super.setResult(-1, (Intent)localObject);
+        localJSONObject.put("access_token", str);
+        localJSONObject.put("encry_token", localObject);
+        localIntent.putExtra("key_response", localJSONObject.toString());
+        super.setResult(-1, localIntent);
         super.finish();
         return;
       }
-      catch (JSONException paramBundle)
+      catch (Exception paramBundle)
       {
-        for (;;)
-        {
-          paramBundle.printStackTrace();
-        }
+        paramBundle.printStackTrace();
+        return;
       }
     }
     paramBundle = new Intent();

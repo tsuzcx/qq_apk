@@ -1,17 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.LocationItemBuilder;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vam
-  implements DialogInterface.OnClickListener
+  extends QQUIEventReceiver<vai, uvf>
 {
-  public vam(LocationItemBuilder paramLocationItemBuilder) {}
+  public vam(@NonNull vai paramvai)
+  {
+    super(paramvai);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(@NonNull vai paramvai, @NonNull uvf paramuvf)
+  {
+    paramvai.a.b(paramuvf);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uvf.class;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vam
  * JD-Core Version:    0.7.0.1
  */

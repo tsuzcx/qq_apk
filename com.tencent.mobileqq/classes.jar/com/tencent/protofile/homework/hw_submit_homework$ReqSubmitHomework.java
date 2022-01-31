@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class hw_submit_homework$ReqSubmitHomework
-  extends MessageMicro
+  extends MessageMicro<ReqSubmitHomework>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50 }, new String[] { "hw_id", "gid", "status", "comment_info", "examination", "openId" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), null, null, "" }, ReqSubmitHomework.class);
   public hw_submit_homework.HwCommentInfo comment_info = new hw_submit_homework.HwCommentInfo();
@@ -20,7 +20,7 @@ public final class hw_submit_homework$ReqSubmitHomework
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.protofile.homework.hw_submit_homework.ReqSubmitHomework
  * JD-Core Version:    0.7.0.1
  */

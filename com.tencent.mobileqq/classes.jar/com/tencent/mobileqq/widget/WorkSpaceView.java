@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.widget;
 
-import akxj;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -13,6 +12,8 @@ import android.view.ViewConfiguration;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
+import bewm;
+import bewn;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class WorkSpaceView
@@ -20,10 +21,10 @@ public class WorkSpaceView
 {
   private float jdField_a_of_type_Float;
   public int a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new akxj(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new bewm(this);
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext(), new AccelerateDecelerateInterpolator());
-  private WorkSpaceView.OnScreenChangeListener jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView$OnScreenChangeListener;
+  private bewn jdField_a_of_type_Bewn;
   boolean jdField_a_of_type_Boolean = true;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -86,8 +87,8 @@ public class WorkSpaceView
       paramInt = getWidth();
       i = getScrollX();
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, paramInt * j - i, 0, 400);
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView$OnScreenChangeListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView$OnScreenChangeListener.b(j);
+      if (this.jdField_a_of_type_Bewn != null) {
+        this.jdField_a_of_type_Bewn.a(j);
       }
       invalidate();
       return;
@@ -111,17 +112,12 @@ public class WorkSpaceView
       paramInt = getWidth();
       int j = getScrollX();
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, paramInt * i - j, 0, 400);
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView$OnScreenChangeListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView$OnScreenChangeListener.b(i);
+      if (this.jdField_a_of_type_Bewn != null) {
+        this.jdField_a_of_type_Bewn.a(i);
       }
       invalidate();
       return;
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
   }
   
   public void computeScroll()
@@ -255,7 +251,7 @@ public class WorkSpaceView
     {
     default: 
       if (k == 0) {
-        FrameHelperActivity.b(false);
+        FrameHelperActivity.c(false);
       }
       break;
     }
@@ -303,7 +299,7 @@ public class WorkSpaceView
       this.d = 0;
       break;
       if ((k == 1) || (k == 3)) {
-        FrameHelperActivity.b(true);
+        FrameHelperActivity.c(true);
       }
     }
     label236:
@@ -360,7 +356,7 @@ public class WorkSpaceView
     case 2: 
       while (j == 0)
       {
-        FrameHelperActivity.b(false);
+        FrameHelperActivity.c(false);
         return true;
         if (!this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) {
           this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
@@ -429,7 +425,7 @@ public class WorkSpaceView
       if ((j != 1) && (j != 3)) {
         break label85;
       }
-      FrameHelperActivity.b(true);
+      FrameHelperActivity.c(true);
       break label85;
     }
   }
@@ -458,14 +454,14 @@ public class WorkSpaceView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnScreenChangeListener(WorkSpaceView.OnScreenChangeListener paramOnScreenChangeListener)
+  public void setOnScreenChangeListener(bewn parambewn)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView$OnScreenChangeListener = paramOnScreenChangeListener;
+    this.jdField_a_of_type_Bewn = parambewn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.WorkSpaceView
  * JD-Core Version:    0.7.0.1
  */

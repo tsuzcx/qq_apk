@@ -1,32 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberFromFriendGroup;
-import java.util.List;
-
 class ybr
-  implements View.OnClickListener
+  implements ymm
 {
-  ybr(ybq paramybq) {}
+  ybr(ybq paramybq, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    paramView = (ybs)paramView.getTag();
-    if (this.a.a.a.contains(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups))
+    if (!paramBoolean2)
     {
-      this.a.a.a.remove(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-      this.a.a.a(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups, false);
+      this.jdField_a_of_type_Ybq.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0}" });
+      if (ybq.a(this.jdField_a_of_type_Ybq) == null)
+      {
+        ybq.a(this.jdField_a_of_type_Ybq, yqz.a());
+        ybq.a(this.jdField_a_of_type_Ybq).a();
+      }
+      ybq.a(this.jdField_a_of_type_Ybq).i(paramString, this.b);
+      zaj.a(paramString, "auth_follow", "clk_unfollow", 0, 0, new String[] { "", "", this.b });
       return;
     }
-    this.a.a.a.add(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups);
-    paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-    this.a.a.a(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups, true);
+    zaj.a(paramString, "auth_follow", "clk_cancel", 0, 0, new String[] { "", "", this.b });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ybr
  * JD-Core Version:    0.7.0.1
  */

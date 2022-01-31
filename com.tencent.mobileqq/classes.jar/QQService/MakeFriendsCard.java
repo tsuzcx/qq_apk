@@ -12,7 +12,7 @@ public final class MakeFriendsCard
   static Intro cache_stIntro;
   static byte[] cache_vBackground;
   static byte[] cache_vQQFaceID;
-  static ArrayList cache_vTags;
+  static ArrayList<TagInfo> cache_vTags;
   public byte bSingle;
   public int eUserIdentityType = UserIdentityType.UserIdentityType_Nomal.value();
   public int iFaceNum;
@@ -29,11 +29,11 @@ public final class MakeFriendsCard
   public int uFaceTimeStamp;
   public byte[] vBackground;
   public byte[] vQQFaceID;
-  public ArrayList vTags;
+  public ArrayList<TagInfo> vTags;
   
   public MakeFriendsCard() {}
   
-  public MakeFriendsCard(String paramString1, short paramShort1, short paramShort2, int paramInt1, String paramString2, Intro paramIntro, int paramInt2, byte[] paramArrayOfByte1, byte paramByte, long paramLong1, long paramLong2, ArrayList paramArrayList, int paramInt3, byte[] paramArrayOfByte2, int paramInt4, long paramLong3, int paramInt5)
+  public MakeFriendsCard(String paramString1, short paramShort1, short paramShort2, int paramInt1, String paramString2, Intro paramIntro, int paramInt2, byte[] paramArrayOfByte1, byte paramByte, long paramLong1, long paramLong2, ArrayList<TagInfo> paramArrayList, int paramInt3, byte[] paramArrayOfByte2, int paramInt4, long paramLong3, int paramInt5)
   {
     this.strNick = paramString1;
     this.shGender = paramShort1;

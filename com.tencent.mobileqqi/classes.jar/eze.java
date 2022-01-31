@@ -1,20 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class eze
-  implements View.OnClickListener
+  implements Runnable
 {
-  public eze(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  public eze(BaseActivity paramBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.r();
+    BaseActivity.s = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("qqBaseActivity", 2, "startUnlockActivity.mShowGesture set false");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eze
  * JD-Core Version:    0.7.0.1
  */

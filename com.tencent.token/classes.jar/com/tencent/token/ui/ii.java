@@ -1,26 +1,22 @@
 package com.tencent.token.ui;
 
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.i;
 
-final class ii
-  implements CompoundButton.OnCheckedChangeListener
+class ii
+  implements View.OnClickListener
 {
-  ii(FaceRecognitionCreateActivity paramFaceRecognitionCreateActivity) {}
+  ii(FaceRegConfirmActivity paramFaceRegConfirmActivity) {}
   
-  public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      FaceRecognitionCreateActivity.access$000(this.a).setTextAppearance(this.a, 2131427381);
-      FaceRecognitionCreateActivity.access$000(this.a).setBackgroundResource(2130837549);
-      FaceRecognitionCreateActivity.access$000(this.a).setEnabled(true);
-      return;
-    }
-    FaceRecognitionCreateActivity.access$000(this.a).setTextAppearance(this.a, 2131427335);
-    FaceRecognitionCreateActivity.access$000(this.a).setBackgroundResource(2130837636);
-    FaceRecognitionCreateActivity.access$000(this.a).setEnabled(false);
+    h.c("onBackPressed");
+    i.b(FaceRegConfirmActivity.access$000(this.a));
+    i.b(FaceRegConfirmActivity.access$100(this.a));
+    this.a.setResult(10);
+    this.a.finish();
   }
 }
 

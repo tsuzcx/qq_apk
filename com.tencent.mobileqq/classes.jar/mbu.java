@@ -1,48 +1,33 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils.FirstCommentEvent;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCommentManager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class mbu
-  implements ReadInJoyCommentUtils.FirstCommentEvent
+final class mbu
+  implements Animation.AnimationListener
 {
-  public mbu(VideoFeedsCommentManager paramVideoFeedsCommentManager) {}
+  mbu(View paramView, boolean paramBoolean) {}
   
-  public void a(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    VideoFeedsCommentManager.a(this.a).e += paramInt;
-    VideoFeedsCommentManager.a(this.a).b(VideoFeedsCommentManager.a(this.a).g);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.a(paramBoolean, false);
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
+    paramAnimation = this.jdField_a_of_type_AndroidViewView;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 0;; i = 8)
     {
-    default: 
+      paramAnimation.setVisibility(i);
       return;
     }
-    if (VideoFeedsCommentManager.a(this.a) != null)
-    {
-      if (VideoFeedsCommentManager.a(this.a).a(VideoFeedsCommentManager.a(this.a)))
-      {
-        this.a.a(false, true);
-        return;
-      }
-      this.a.a(false, false);
-      return;
-    }
-    this.a.a(false, false);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mbu
  * JD-Core Version:    0.7.0.1
  */

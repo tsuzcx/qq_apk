@@ -1,56 +1,75 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileImageAvatar;
+import QQService.SvcDevLoginInfo;
+import QQService.SvcRspGetDevLoginInfo;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class cuq
-  extends Handler
+  extends FriendListObserver
 {
-  public cuq(FriendProfileImageAvatar paramFriendProfileImageAvatar) {}
+  public cuq(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
   {
-    switch (paramMessage.what)
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.devlock.LoginInfoActivity", 2, "onKickOutDevFResult isSuccess=" + paramBoolean + " appid=" + paramLong + " result=" + paramInt1 + " index=" + paramInt2);
+    }
+    LoginInfoActivity.a(this.a);
+    if (paramBoolean)
     {
-    default: 
-    case 1: 
-    case 2: 
-    case 3: 
-      do
+      if ((paramInt1 == 0) && (paramInt2 >= 1) && (paramInt2 < LoginInfoActivity.a(this.a).size()))
       {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.profilecard.Avatar", 2, "refresh progress : " + paramMessage.arg1);
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.i = paramMessage.arg1;
-        this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.profilecard.Avatar", 2, "start progress : " + paramMessage.arg1);
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.i = 0;
-        this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.profilecard.Avatar", 2, "end result : " + paramMessage.arg1);
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.i = 100;
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.a = false;
-        this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-        if (paramMessage.arg1 == 1)
-        {
-          this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-          return;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.h = 5;
-        this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-      } while (this.a.f >= 3);
-      paramMessage = this.a;
-      paramMessage.f += 1;
-      this.a.jdField_a_of_type_JavaLangString = null;
+        LoginInfoActivity.a(this.a).remove(paramInt2);
+        LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+      }
       return;
     }
-    this.a.a(this.a.b);
+    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131561765), 0).b(this.a.d());
+  }
+  
+  protected void b(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  {
+    LoginInfoActivity.a(this.a);
+    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.LoginInfoActivity", 2, "onGetLoginDevResult success");
+      }
+      LoginInfoActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo);
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Q.devlock.LoginInfoActivity", 2, "------------------------------------------------------------------------------");
+        paramSvcRspGetDevLoginInfo = LoginInfoActivity.a(this.a).iterator();
+        while (paramSvcRspGetDevLoginInfo.hasNext())
+        {
+          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
+          if (localSvcDevLoginInfo != null) {
+            QLog.d("Q.devlock.LoginInfoActivity", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
+          }
+        }
+        QLog.d("Q.devlock.LoginInfoActivity", 2, "------------------------------------------------------------------------------");
+      }
+      LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.LoginInfoActivity", 2, "onGetLoginDevResult fail isSuccess=" + paramBoolean);
+      if (paramSvcRspGetDevLoginInfo != null) {
+        break label288;
+      }
+      QLog.d("Q.devlock.LoginInfoActivity", 2, "onGetLoginDevResult data is null");
+    }
+    for (;;)
+    {
+      QQToast.a(this.a.a(), 1, this.a.getString(2131562570), 0).b(this.a.d());
+      return;
+      label288:
+      QLog.d("Q.devlock.LoginInfoActivity", 2, "onGetLoginDevResult data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
+    }
   }
 }
 

@@ -3,11 +3,12 @@ package com.tencent.upload.uinterface.data;
 import FileUpload.HeadDesc;
 import FileUpload.UploadPicInfoRsp;
 import SLICE_UPLOAD.UploadTouchuanReq;
-import com.tencent.upload.a.c;
-import com.tencent.upload.e.e;
+import com.tencent.upload.network.session.SessionPool;
 import com.tencent.upload.uinterface.AbstractUploadTask;
 import com.tencent.upload.uinterface.TaskTypeConfig;
-import java.util.Map;
+import com.tencent.upload.utils.JceEncoder;
+import com.tencent.upload.utils.ProtocolUtil;
+import com.tencent.upload.utils.UploadLog;
 
 public class HeadUploadTask
   extends AbstractUploadTask
@@ -19,14 +20,14 @@ public class HeadUploadTask
     this.iSync = 0;
   }
   
-  private byte[] a()
+  private byte[] getHeadDesc()
   {
     Object localObject = new HeadDesc();
     ((HeadDesc)localObject).portrait_type = 0L;
     ((HeadDesc)localObject).uc_platform_qzone_subid = 0L;
     try
     {
-      localObject = e.a(localObject.getClass().getSimpleName(), localObject);
+      localObject = ProtocolUtil.pack(localObject.getClass().getSimpleName(), localObject);
       return localObject;
     }
     catch (Exception localException)
@@ -40,8 +41,8 @@ public class HeadUploadTask
   {
     UploadTouchuanReq localUploadTouchuanReq = new UploadTouchuanReq();
     localUploadTouchuanReq.iUploadType = getUploadTaskType().uploadType;
-    localUploadTouchuanReq.vReqData = a();
-    return com.tencent.upload.e.b.a(localUploadTouchuanReq);
+    localUploadTouchuanReq.vReqData = getHeadDesc();
+    return JceEncoder.encode(localUploadTouchuanReq);
   }
   
   public TaskTypeConfig getUploadTaskType()
@@ -49,14 +50,14 @@ public class HeadUploadTask
     return TaskTypeConfig.HeadUploadTaskType;
   }
   
-  protected void processFileUploadFinishRsp(byte[] paramArrayOfByte)
+  public void processFileUploadFinishRsp(byte[] paramArrayOfByte)
   {
-    com.tencent.upload.common.b.b("AbstractUploadTask", "ImageUploadTask put <" + this.mOriginFilePath + "," + this.mSessionId + ">");
-    c.a.put(this.mOriginFilePath, this.mSessionId);
+    UploadLog.d("AbstractUploadTask", "ImageUploadTask put <" + this.mOriginFilePath + "," + this.mSessionId + ">");
+    SessionPool.recordSessionId(this.mOriginFilePath, this.mSessionId);
     Object localObject = new UploadPicInfoRsp();
     localObject = new ImageUploadResult(this.iUin, this.flowId, getBatchId(), (UploadPicInfoRsp)localObject);
     ((ImageUploadResult)localObject).sessionId = this.mSessionId;
-    com.tencent.upload.common.b.b("AbstractUploadTask", "onUploadSucceed flowid = " + this.flowId + " filepath = " + this.mFilePath);
+    UploadLog.d("AbstractUploadTask", "onUploadSucceed flowid = " + this.flowId + " filepath = " + this.mFilePath);
     onUploadSucceed(localObject);
     super.processFileUploadFinishRsp(paramArrayOfByte);
     onDestroy();
@@ -64,7 +65,7 @@ public class HeadUploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.HeadUploadTask
  * JD-Core Version:    0.7.0.1
  */

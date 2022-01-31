@@ -1,21 +1,20 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
 
-public class cet
+class cet
   implements Runnable
 {
-  public cet(ChatActivity paramChatActivity, FrameLayout paramFrameLayout) {}
+  cet(cer paramcer, boolean paramBoolean) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.delmsg", 2, "hor anim onAnimationEnd() is called,time is:" + System.currentTimeMillis());
-    }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.a.setVisibility(0);
+    Conversation.a(this.jdField_a_of_type_Cer.a, 800L);
+    PullRefreshHeader localPullRefreshHeader = Conversation.a(this.jdField_a_of_type_Cer.a);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 0;; i = 2)
+    {
+      localPullRefreshHeader.a(i);
+      return;
     }
   }
 }

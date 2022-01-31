@@ -1,19 +1,12 @@
-import com.tencent.biz.qqstory.comment.FeedCommentEventHandler;
-import com.tencent.biz.qqstory.comment.FeedCommentEventHandler.OnActionSheetButtonClickListener;
-
-public class nbs
-  implements Runnable
+public abstract interface nbs
 {
-  public nbs(FeedCommentEventHandler.OnActionSheetButtonClickListener paramOnActionSheetButtonClickListener) {}
+  public abstract void loaded(String paramString, int paramInt);
   
-  public void run()
-  {
-    FeedCommentEventHandler.a(this.a.a, FeedCommentEventHandler.OnActionSheetButtonClickListener.a(this.a), FeedCommentEventHandler.OnActionSheetButtonClickListener.a(this.a));
-  }
+  public abstract void progress(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nbs
  * JD-Core Version:    0.7.0.1
  */

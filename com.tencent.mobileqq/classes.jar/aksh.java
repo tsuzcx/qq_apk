@@ -1,106 +1,82 @@
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyCardManager;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class aksh
-  implements BusinessObserver
+  extends MSFServlet
 {
-  public aksh(WerewolvesHostInterface paramWerewolvesHostInterface, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    try
-    {
-      ((NearbyCardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(105)).d.put(this.jdField_a_of_type_JavaLangString, Integer.valueOf(1));
-      if (!paramBoolean) {
-        break label348;
-      }
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle == null) {
-        break label348;
-      }
-      localObject = new WebSsoBody.WebSsoResponseBody();
-      ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-      paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-      localObject = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-      if (paramInt != 0)
-      {
-        paramBundle = ((JSONObject)localObject).optString("msg");
-        if ((TextUtils.isEmpty(paramBundle)) || (!QLog.isColorLevel())) {
-          break label348;
-        }
-        QLog.d("Q.werewolf.WerewolvesHostInterfaceQ.nearby.follow", 2, "sendOperateFollowUser,targetUin:" + this.jdField_a_of_type_JavaLangString + ", op:" + this.b + ", errMsg:" + paramBundle);
-        QQToast.a(BaseApplicationImpl.getContext(), 1, paramBundle, 0).a();
-        return;
-      }
-      paramBundle = ((JSONObject)localObject).getJSONObject("result");
-      if (((JSONObject)localObject).optInt("retcode") != 0) {
-        break label348;
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.manager.a().a(5, new Object[] { Boolean.valueOf(true), Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-      }
-      localObject = BaseApplicationImpl.getContext();
-      localBaseApplication = BaseApplicationImpl.getContext();
-      if (!this.b.equals("1")) {
-        break label477;
-      }
-      paramInt = 2131438487;
-    }
-    catch (Exception paramBundle)
-    {
-      Object localObject;
-      BaseApplication localBaseApplication;
-      if (!QLog.isColorLevel()) {
-        break label348;
-      }
-      QLog.d("Q.werewolf.WerewolvesHostInterface", 2, "sendOperateFollowUser, Exception");
-      label348:
-      paramBundle = BaseApplicationImpl.getContext();
-      if (!this.b.equals("1")) {
-        break label483;
-      }
-      label477:
-      label483:
-      for (paramInt = 2131438488;; paramInt = 2131438490)
-      {
-        paramBundle = paramBundle.getString(paramInt);
-        QQToast.a(BaseApplicationImpl.getContext(), 1, paramBundle, 0).a();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.werewolf.WerewolvesHostInterfaceQ.nearby.follow", 2, "sendOperateFollowUser,targetUin:" + this.jdField_a_of_type_JavaLangString + ", op:" + this.b + ", re:" + paramBundle);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.manager.a().a(5, new Object[] { Boolean.valueOf(false), Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-        return;
-        paramInt = 2131438489;
-        break;
-      }
-    }
-    QQToast.a((Context)localObject, 2, localBaseApplication.getString(paramInt), 0).a();
+    long l = 0L;
     if (QLog.isColorLevel())
     {
-      QLog.d("Q.werewolf.WerewolvesHostInterfaceQ.nearby.follow", 2, "sendOperateFollowUser,targetUin:" + this.jdField_a_of_type_JavaLangString + ", op:" + this.b + ", result:" + paramBundle.toString());
+      l = System.currentTimeMillis();
+      QLog.d("apollo_cmGame_CmGameServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess() + ", retCode=" + paramFromServiceMsg.getResultCode());
+    }
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      bdqa.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    for (;;)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
+      localBundle.putString("cmd", paramIntent.getStringExtra("cmd"));
+      localBundle.putSerializable("serializable", paramIntent.getSerializableExtra("serializable"));
+      localBundle.putString("key1", paramIntent.getStringExtra("key1"));
+      localBundle.putString("key2", paramIntent.getStringExtra("key2"));
+      localBundle.putString("key3", paramIntent.getStringExtra("key3"));
+      localBundle.putString("key4", paramIntent.getStringExtra("key4"));
+      localBundle.putByteArray("data", arrayOfByte);
+      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_cmGame_CmGameServlet", 2, "onReceive exit|cost: " + (System.currentTimeMillis() - l));
+      }
       return;
+      arrayOfByte = null;
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    String str = paramIntent.getStringExtra("cmd");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    long l = paramIntent.getLongExtra("timeout", 30000L);
+    if (!TextUtils.isEmpty(str))
+    {
+      paramPacket.setSSOCommand(str);
+      paramPacket.setTimeout(l);
+      if (arrayOfByte == null) {
+        break label117;
+      }
+      paramIntent = new byte[arrayOfByte.length + 4];
+      bdqa.a(paramIntent, 0, arrayOfByte.length + 4);
+      bdqa.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      paramPacket.putSendData(paramIntent);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_cmGame_CmGameServlet", 2, "onSend exit cmd=" + str);
+      }
+      return;
+      label117:
+      paramIntent = new byte[4];
+      bdqa.a(paramIntent, 0, 4L);
+      paramPacket.putSendData(paramIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aksh
  * JD-Core Version:    0.7.0.1
  */

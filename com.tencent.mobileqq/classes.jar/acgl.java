@@ -1,102 +1,130 @@
-import android.content.Context;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.TextUtils;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.magicface.drawable.PngFrameUtil;
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
-import com.tencent.mobileqq.model.QueryCallback;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import mqq.manager.AccountManager;
+import mqq.manager.WtloginManager;
+import mqq.observer.WtloginObserver;
 import mqq.os.MqqHandler;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public final class acgl
-  implements QueryCallback
+public class acgl
+  extends WtloginObserver
 {
-  public acgl(Context paramContext, QQAppInterface paramQQAppInterface, Emoticon paramEmoticon, EmojiManager paramEmojiManager, SessionInfo paramSessionInfo, EmojiStickerManager.StickerInfo paramStickerInfo) {}
+  public acgl(AuthDevActivity paramAuthDevActivity) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    boolean bool;
-    if ((paramEmoticonPackage != null) && ((2 != paramEmoticonPackage.status) || (!paramEmoticonPackage.valid))) {
-      if (paramEmoticonPackage.jobType == 4)
-      {
-        bool = true;
-        EmojiHomeUiPlugin.openEmojiDetailPage(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, false, bool);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005C13", 0, 0, "", "", "", "");
-      }
-    }
+    if (this.a.isFinishing()) {}
     do
     {
       return;
-      bool = false;
-      break;
-      if (!this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.c()) {
-        break label474;
+      AuthDevActivity.a(this.a, true);
+      AuthDevActivity.c(this.a);
+      QLog.d("Q.devlock.AuthDevActivity", 1, new Object[] { "OnCheckDevLockSms result : ret is ", Integer.valueOf(paramInt) });
+      if (paramInt != 0) {
+        break;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, Boolean.valueOf(false))) {
-        break label170;
+      paramWUserSigInfo = (AccountManager)this.a.app.getManager(0);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.refreshDA2(this.a.app.getCurrentAccountUin(), null);
       }
-      ChatActivityUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131436307, 0);
-      paramEmoticonPackage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-    } while (paramEmoticonPackage == null);
-    paramEmoticonPackage.obtainMessage(10).sendToTarget();
-    paramEmoticonPackage.obtainMessage(21).sendToTarget();
+      AuthDevActivity.b(this.a).setOnCheckedChangeListener(null);
+      AuthDevActivity.b(this.a).setChecked(true);
+      AuthDevActivity.b(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+      paramWUserSigInfo = (amci)this.a.app.a(34);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.a();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCheckDevLockSms.success");
+      }
+      AuthDevActivity.b(this.a, true);
+      aqbd.a().a(this.a.app, this.a, this.a.app.getCurrentAccountUin(), true);
+      AuthDevActivity.c(this.a, true);
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131692161), 0).b(this.a.getTitleBarHeight());
+      AuthDevActivity.d(this.a);
+      paramWUserSigInfo = this.a.app.getHandler(LoginInfoActivity.class);
+    } while (paramWUserSigInfo == null);
+    paramWUserSigInfo.obtainMessage(20140331, 1, 0).sendToTarget();
     return;
-    label170:
-    ActionGlobalData localActionGlobalData = MagicfaceActionManager.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, 0);
-    if ((localActionGlobalData != null) && (localActionGlobalData.a))
+    if (QLog.isColorLevel())
     {
-      if (MagicfaceViewController.a())
-      {
-        ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, 0, null, false);
-        ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-        return;
+      QLog.d("Q.devlock.AuthDevActivity", 2, "OnCheckDevLockSms.fail ret=" + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCheckDevLockSms.fail errMsg=" + paramErrMsg.getMessage());
       }
-      this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue = "value=1";
-      PicEmoticonInfo.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerInfo);
+    }
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
       return;
     }
-    int j = PngFrameUtil.a(MagicfaceActionManager.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, 0));
-    int i = 0;
-    if (paramEmoticonPackage != null) {
-      i = paramEmoticonPackage.rscType;
-    }
-    paramEmoticonPackage = "rscType?" + i + ";value=" + j;
-    this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue = paramEmoticonPackage;
-    if (QLog.isColorLevel()) {
-      QLog.d("PicEmoticonInfo", 2, "before play,magicvalue:" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue);
-    }
-    if ((localActionGlobalData != null) && (!localActionGlobalData.c))
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131692217), 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void OnCloseDevLock(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  {
+    if (this.a.isFinishing()) {}
+    do
     {
-      ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X800579D", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
+      return;
+      AuthDevActivity.a(this.a, true);
+      AuthDevActivity.c(this.a);
+      QLog.d("Q.devlock.AuthDevActivity", 1, new Object[] { "OnCloseDevLock response , ret is ", Integer.valueOf(paramInt) });
+      if (paramInt != 0) {
+        break;
+      }
+      paramWUserSigInfo = (WtloginManager)this.a.app.getManager(1);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.RefreshMemorySig();
+      }
+      AuthDevActivity.b(this.a).setOnCheckedChangeListener(null);
+      AuthDevActivity.b(this.a).setChecked(false);
+      AuthDevActivity.b(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+      AuthDevActivity.a(this.a).setVisibility(8);
+      AuthDevActivity.b(this.a).setVisibility(8);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCloseDevLock.success");
+      }
+      AuthDevActivity.b(this.a, false);
+      AuthDevActivity.a(this.a).setVisibility(8);
+      aqbd.a().a(this.a.app, this.a, this.a.app.getCurrentAccountUin(), false);
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131692179), 0).b(this.a.getTitleBarHeight());
+      paramWUserSigInfo = this.a.app.getHandler(LoginInfoActivity.class);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.obtainMessage(20140331, 0, 0).sendToTarget();
+      }
+      AuthDevActivity.b(this.a, null);
+      AuthDevActivity.a(this.a, AuthDevActivity.b(this.a));
+    } while (!AuthDevActivity.b(this.a));
+    AuthDevActivity.e(this.a);
+    return;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.AuthDevActivity", 2, "OnCloseDevLock.fail ret=" + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCloseDevLock.fail errMsg=" + paramErrMsg.getMessage());
+      }
+    }
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
       return;
     }
-    ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, new acgm(this, paramEmoticonPackage));
-    return;
-    label474:
-    ChatActivityUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131436306);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005C16", 0, 0, "", "", "", "");
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131692178), 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acgl
  * JD-Core Version:    0.7.0.1
  */

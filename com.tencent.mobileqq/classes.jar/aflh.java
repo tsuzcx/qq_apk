@@ -1,23 +1,27 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.send.PublishManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.DeleteFeedCallback;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
-public class aflh
-  implements Runnable
+class aflh
+  implements bhuk
 {
-  public aflh(NearbyMomentManager paramNearbyMomentManager, String paramString, NearbyMomentManager.DeleteFeedCallback paramDeleteFeedCallback) {}
+  aflh(aflg paramaflg, MessageForDeviceFile paramMessageForDeviceFile, bhuf parambhuf) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool = PublishManager.a(this.jdField_a_of_type_JavaLangString);
-    ThreadManager.getUIHandler().post(new afli(this, bool));
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      this.jdField_a_of_type_Aflg.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aflh
  * JD-Core Version:    0.7.0.1
  */

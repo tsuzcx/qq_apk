@@ -1,66 +1,56 @@
+import UserGrowth.stSimpleMetaFeed;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.PhoneUnityPhoneLoginActivity;
-import com.tencent.mobileqq.app.SecSvcObserver;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class tgb
-  extends SecSvcObserver
+  extends tfj
 {
-  public tgb(PhoneUnityPhoneLoginActivity paramPhoneUnityPhoneLoginActivity) {}
+  private TextView a;
   
-  public void a(int paramInt, String paramString)
+  private tgb(ViewGroup paramViewGroup, tby paramtby)
   {
-    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
-    {
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
-      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(true);
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
-      return;
-    }
-    if (paramInt == 39)
-    {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8005BFD", "0X8005BFD", 0, 0, "", "", "", "");
-      DialogUtil.a(this.a, 230, this.a.getString(2131436856), this.a.getString(2131436857), null, this.a.getString(2131436628), new tgc(this), null).show();
-      return;
-    }
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = this.a.getString(2131436851);
-    }
-    QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
+    super(paramViewGroup, paramtby, 2131560226);
   }
   
-  public void b(int paramInt, String paramString)
+  public static tgb a(ViewGroup paramViewGroup, tby paramtby)
   {
-    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
-    {
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
-      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(false);
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
+    return new tgb(paramViewGroup, paramtby);
+  }
+  
+  protected void a()
+  {
+    this.a = ((TextView)a(2).findViewById(2131379847));
+  }
+  
+  protected void a(int paramInt)
+  {
+    super.a(paramInt);
+    this.a.setVisibility(paramInt);
+  }
+  
+  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    super.a(paramstSimpleMetaFeed);
+    if (paramstSimpleMetaFeed == null) {
       return;
     }
-    String str;
-    if (paramInt == 36) {
-      str = this.a.getString(2131436853);
-    }
-    for (;;)
+    TextView localTextView = this.a;
+    if (TextUtils.isEmpty(paramstSimpleMetaFeed.feed_desc)) {}
+    for (int i = 8;; i = 0)
     {
-      QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
+      localTextView.setVisibility(i);
+      this.a.setText(paramstSimpleMetaFeed.feed_desc);
+      a(1, paramstSimpleMetaFeed);
+      a(2, 2, paramstSimpleMetaFeed);
       return;
-      str = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        str = this.a.getString(2131436852);
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tgb
  * JD-Core Version:    0.7.0.1
  */

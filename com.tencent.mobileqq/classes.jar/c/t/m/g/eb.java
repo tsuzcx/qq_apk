@@ -1,47 +1,101 @@
 package c.t.m.g;
 
-import android.location.Location;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.util.Pair;
 
 public final class eb
-  extends ed
 {
-  public final Location a;
-  public final long b;
-  public final int c;
-  private int d;
-  private int e;
+  private long A = 30000L;
+  private String B = "6.0.5.4";
+  private String C = "200210";
+  private String D = this.B;
+  public int a;
+  String b;
+  String c;
+  public String d;
+  String e;
+  public String f;
+  public String g;
+  public String h;
+  int i;
+  public String j;
+  public long k;
+  boolean l = true;
+  boolean m = true;
+  boolean n = true;
+  public int o = -2;
+  public Pair<String, String> p;
+  private final ea q;
+  private String r;
+  private int s = 0;
+  private int t = 0;
+  private int u = 0;
+  private boolean v = false;
+  private boolean w = false;
+  private boolean x = false;
+  private boolean y = false;
+  private long z = 20000L;
   
-  public eb(Location paramLocation, long paramLong, int paramInt1, int paramInt2, int paramInt3)
+  eb(ea paramea)
   {
-    this.a = paramLocation;
-    this.b = paramLong;
-    this.d = paramInt1;
-    this.c = paramInt2;
-    this.e = paramInt3;
+    this.q = paramea;
   }
   
-  public eb(eb parameb)
+  public final String a()
   {
-    if (parameb.a == null) {}
-    for (Location localLocation = null;; localLocation = new Location(parameb.a))
-    {
-      this.a = localLocation;
-      this.b = parameb.b;
-      this.d = parameb.d;
-      this.c = parameb.c;
-      this.e = parameb.e;
-      return;
+    if (TextUtils.isEmpty(this.b)) {
+      return "0123456789ABCDEF";
     }
+    return this.b;
   }
   
-  public final String toString()
+  public final String b()
   {
-    return "TxGpsInfo [location=" + this.a + ", gpsTime=" + this.b + ", visbleSatelliteNum=" + this.d + ", usedSatelliteNum=" + this.c + ", gpsStatus=" + this.e + "]";
+    if (TextUtils.isEmpty(this.c)) {
+      return "0123456789ABCDEF";
+    }
+    return this.c;
+  }
+  
+  public final String c()
+  {
+    if ((TextUtils.isEmpty(this.e)) || (this.e.contains("0000")) || (Build.VERSION.SDK_INT >= 29)) {
+      return "0123456789ABCDEF";
+    }
+    return this.e;
+  }
+  
+  public final String d()
+  {
+    if (this.B == null) {
+      return "None";
+    }
+    return this.B;
+  }
+  
+  public final String e()
+  {
+    if (this.C == null) {
+      return "None";
+    }
+    return this.C;
+  }
+  
+  public final String f()
+  {
+    if (this.r == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder(100);
+      localStringBuilder.append(a()).append("_").append(b()).append("_").append(c()).append("_QQGeoLocation");
+      this.r = co.d(localStringBuilder.toString());
+    }
+    return this.r;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.eb
  * JD-Core Version:    0.7.0.1
  */

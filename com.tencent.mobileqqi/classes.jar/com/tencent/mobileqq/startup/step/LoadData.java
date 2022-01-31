@@ -15,7 +15,7 @@ public class LoadData
     if (localAppActivity != null)
     {
       AppRuntime localAppRuntime = BaseApplicationImpl.a.waitAppRuntime(null);
-      if (this.w == 16) {}
+      if (this.x == 17) {}
       for (boolean bool = true; (localAppActivity.preloadData(localAppRuntime, bool)) && (System.currentTimeMillis() - l < 550L); bool = false) {
         return true;
       }

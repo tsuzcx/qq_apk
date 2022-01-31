@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.troop.activity.TroopAdminList;
-import com.tencent.mobileqq.troop.activity.TroopAdminList.AdminListAdapter;
-import com.tencent.widget.XListView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import java.util.List;
+import java.util.Map;
 
 class aiuz
-  implements Runnable
+  implements ajal
 {
-  aiuz(aiuy paramaiuy) {}
+  aiuz(aiux paramaiux, AppInterface paramAppInterface) {}
   
-  public void run()
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList$AdminListAdapter = new TroopAdminList.AdminListAdapter(this.a.a, this.a.a);
-    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList$AdminListAdapter);
+    List localList = (List)aiux.a(this.jdField_a_of_type_Aiux).get(paramPathResult.url);
+    if (paramPathResult.url.endsWith(".zip")) {
+      aiux.a(this.jdField_a_of_type_Aiux, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, paramPathResult.folderPath, localList);
+    }
+    while (!paramPathResult.url.endsWith(".png")) {
+      return;
+    }
+    aiux.a(this.jdField_a_of_type_Aiux, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, localList);
   }
 }
 

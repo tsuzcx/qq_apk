@@ -1,31 +1,38 @@
-import android.os.Handler;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
+import qqcircle.QQCircleFeedBase.StBusiInfoData;
 
-public class tqi
-  implements Runnable
+final class tqi
+  implements zac<FeedCloudRead.StGetBusiInfoRsp>
 {
-  public tqi(RegisterSendUpSms paramRegisterSendUpSms) {}
-  
-  public void run()
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetBusiInfoRsp paramStGetBusiInfoRsp)
   {
-    if (RegisterSendUpSms.a(this.a) == 1)
+    QLog.i("QCircleGlobalInfo", 1, "updateCircleInfo onReceive: isSuccess=" + paramBoolean + " retCode=" + paramLong);
+    if ((paramBoolean) && (paramLong == 0L))
     {
-      RegisterSendUpSms.a(this.a).setText("重新发送");
-      RegisterSendUpSms.a(this.a).setEnabled(true);
-      RegisterSendUpSms.a(this.a).setClickable(true);
-      RegisterSendUpSms.a(this.a, 0);
-      RegisterSendUpSms.b(this.a, 10);
+      paramString = paramStGetBusiInfoRsp.busiRspData.get();
+      if (paramString != null) {
+        paramStGetBusiInfoRsp = new QQCircleFeedBase.StBusiInfoData();
+      }
+    }
+    try
+    {
+      paramStGetBusiInfoRsp.mergeFrom(paramString.toByteArray());
+      tqg.a(paramStGetBusiInfoRsp.schoolInfos.get(), paramStGetBusiInfoRsp.companyInfos.get());
       return;
     }
-    RegisterSendUpSms.b(this.a);
-    RegisterSendUpSms.a(this.a).setText("正在验证(" + RegisterSendUpSms.a(this.a) + "s)");
-    this.a.a.postDelayed(this, 1000L);
+    catch (Exception paramString)
+    {
+      QLog.e("QCircleGlobalInfo", 1, "updateCircleInfo error", paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tqi
  * JD-Core Version:    0.7.0.1
  */

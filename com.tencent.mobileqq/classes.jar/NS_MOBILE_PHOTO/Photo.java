@@ -15,38 +15,41 @@ import photo_share_struct.pic_host;
 public final class Photo
   extends JceStruct
 {
-  static Map cache_busi_param = new HashMap();
+  static Map<String, byte[]> cache_binaryExtInfo;
+  static Map<Integer, String> cache_busi_param = new HashMap();
   static stFaceInfo cache_face_info;
-  static ArrayList cache_facelist;
+  static ArrayList<stFaceItem> cache_facelist;
   static stLabelInfo cache_label_info;
-  static Map cache_mapExifInfo;
-  static Map cache_mapExtern;
-  static Map cache_mapOcrInfo;
-  static ArrayList cache_photoTag;
+  static Map<Integer, String> cache_mapExifInfo;
+  static Map<String, String> cache_mapExtern;
+  static Map<Integer, String> cache_mapOcrInfo;
+  static ArrayList<stPhotoTag> cache_photoTag;
   static pic_host cache_pic_host_nick;
-  static Map cache_pics_enlargerate;
+  static Map<Integer, Integer> cache_pics_enlargerate;
   static s_outshare cache_share_info;
   static stPoi cache_shoot_place_info;
+  static Map<Integer, String> cache_shouzhang_extend_map;
   static cell_video cache_videodata;
   public String albumid = "";
   public String bigurl = "";
-  public Map busi_param;
+  public Map<String, byte[]> binaryExtInfo;
+  public Map<Integer, String> busi_param;
   public String client_key = "";
   public int cmtnum;
   public String curkey = "";
   public String currenturl = "";
   public String desc = "";
   public stFaceInfo face_info;
-  public ArrayList facelist;
+  public ArrayList<stFaceItem> facelist;
   public int flag;
   public int height;
   public int isIndependentUgc;
   public stLabelInfo label_info;
   public int likenum;
   public String lloc = "";
-  public Map mapExifInfo;
-  public Map mapExtern;
-  public Map mapOcrInfo;
+  public Map<Integer, String> mapExifInfo;
+  public Map<String, String> mapExtern;
+  public Map<Integer, String> mapOcrInfo;
   public String midurl = "";
   public int modifytime;
   public byte mylike;
@@ -54,10 +57,10 @@ public final class Photo
   public byte opmask = 7;
   public int opsynflag;
   public long origin_size;
-  public ArrayList photoTag;
+  public ArrayList<stPhotoTag> photoTag;
   public String photo_visitor_ugc_key = "";
   public pic_host pic_host_nick;
-  public Map pics_enlargerate;
+  public Map<Integer, Integer> pics_enlargerate;
   public int quanflag;
   public long raw;
   public long raw_height;
@@ -65,6 +68,7 @@ public final class Photo
   public s_outshare share_info;
   public stPoi shoot_place_info;
   public int shoottime;
+  public Map<Integer, String> shouzhang_extend_map;
   public String sloc = "";
   public String smallurl = "";
   public String thumburl = "";
@@ -102,11 +106,17 @@ public final class Photo
     cache_mapOcrInfo.put(Integer.valueOf(0), "");
     cache_mapExtern = new HashMap();
     cache_mapExtern.put("", "");
+    cache_binaryExtInfo = new HashMap();
+    localObject = (byte[])new byte[1];
+    ((byte[])localObject)[0] = 0;
+    cache_binaryExtInfo.put("", localObject);
+    cache_shouzhang_extend_map = new HashMap();
+    cache_shouzhang_extend_map.put(Integer.valueOf(0), "");
   }
   
   public Photo() {}
   
-  public Photo(long paramLong1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString5, String paramString6, String paramString7, int paramInt5, int paramInt6, byte paramByte1, int paramInt7, String paramString8, String paramString9, String paramString10, String paramString11, Map paramMap1, int paramInt8, int paramInt9, int paramInt10, int paramInt11, long paramLong2, String paramString12, Map paramMap2, ArrayList paramArrayList1, byte paramByte2, int paramInt12, int paramInt13, String paramString13, int paramInt14, cell_video paramcell_video, pic_host parampic_host, s_outshare params_outshare, long paramLong3, String paramString14, String paramString15, stPoi paramstPoi, stFaceInfo paramstFaceInfo, stLabelInfo paramstLabelInfo, ArrayList paramArrayList2, long paramLong4, Map paramMap3, Map paramMap4, Map paramMap5, long paramLong5, long paramLong6)
+  public Photo(long paramLong1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString5, String paramString6, String paramString7, int paramInt5, int paramInt6, byte paramByte1, int paramInt7, String paramString8, String paramString9, String paramString10, String paramString11, Map<Integer, String> paramMap1, int paramInt8, int paramInt9, int paramInt10, int paramInt11, long paramLong2, String paramString12, Map<Integer, Integer> paramMap, ArrayList<stPhotoTag> paramArrayList, byte paramByte2, int paramInt12, int paramInt13, String paramString13, int paramInt14, cell_video paramcell_video, pic_host parampic_host, s_outshare params_outshare, long paramLong3, String paramString14, String paramString15, stPoi paramstPoi, stFaceInfo paramstFaceInfo, stLabelInfo paramstLabelInfo, ArrayList<stFaceItem> paramArrayList1, long paramLong4, Map<Integer, String> paramMap2, Map<Integer, String> paramMap3, Map<String, String> paramMap4, long paramLong5, long paramLong6, Map<String, byte[]> paramMap5, Map<Integer, String> paramMap6)
   {
     this.uin = paramLong1;
     this.lloc = paramString1;
@@ -135,8 +145,8 @@ public final class Photo
     this.quanflag = paramInt11;
     this.raw = paramLong2;
     this.currenturl = paramString12;
-    this.pics_enlargerate = paramMap2;
-    this.photoTag = paramArrayList1;
+    this.pics_enlargerate = paramMap;
+    this.photoTag = paramArrayList;
     this.opmask = paramByte2;
     this.shoottime = paramInt12;
     this.flag = paramInt13;
@@ -151,13 +161,15 @@ public final class Photo
     this.shoot_place_info = paramstPoi;
     this.face_info = paramstFaceInfo;
     this.label_info = paramstLabelInfo;
-    this.facelist = paramArrayList2;
+    this.facelist = paramArrayList1;
     this.origin_size = paramLong4;
-    this.mapExifInfo = paramMap3;
-    this.mapOcrInfo = paramMap4;
-    this.mapExtern = paramMap5;
+    this.mapExifInfo = paramMap2;
+    this.mapOcrInfo = paramMap3;
+    this.mapExtern = paramMap4;
     this.raw_width = paramLong5;
     this.raw_height = paramLong6;
+    this.binaryExtInfo = paramMap5;
+    this.shouzhang_extend_map = paramMap6;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -212,6 +224,8 @@ public final class Photo
     this.mapExtern = ((Map)paramJceInputStream.read(cache_mapExtern, 47, false));
     this.raw_width = paramJceInputStream.read(this.raw_width, 48, false);
     this.raw_height = paramJceInputStream.read(this.raw_height, 49, false);
+    this.binaryExtInfo = ((Map)paramJceInputStream.read(cache_binaryExtInfo, 50, false));
+    this.shouzhang_extend_map = ((Map)paramJceInputStream.read(cache_shouzhang_extend_map, 51, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -308,6 +322,12 @@ public final class Photo
     }
     paramJceOutputStream.write(this.raw_width, 48);
     paramJceOutputStream.write(this.raw_height, 49);
+    if (this.binaryExtInfo != null) {
+      paramJceOutputStream.write(this.binaryExtInfo, 50);
+    }
+    if (this.shouzhang_extend_map != null) {
+      paramJceOutputStream.write(this.shouzhang_extend_map, 51);
+    }
   }
 }
 

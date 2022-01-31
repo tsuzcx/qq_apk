@@ -1,23 +1,32 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class acmk
-  implements Runnable
+public class acmk
+  implements bhuk
 {
-  acmk(acmj paramacmj, int paramInt1, int paramInt2) {}
+  public acmk(ChatHistory paramChatHistory, MessageRecord paramMessageRecord, bhuf parambhuf) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (!this.jdField_a_of_type_Acmj.a.a()) {
-      return;
+    switch (paramInt)
+    {
     }
-    String str = String.valueOf(this.jdField_a_of_type_Int) + "/" + String.valueOf(this.b);
-    this.jdField_a_of_type_Acmj.a.a.setText(str);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhuf.dismiss();
+      return;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.obtainMessage(1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.sendMessageDelayed(paramView, 800L);
+      Utils.executeAsyncTaskOnThreadPool(new acml(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acmk
  * JD-Core Version:    0.7.0.1
  */

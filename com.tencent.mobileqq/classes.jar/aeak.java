@@ -1,37 +1,60 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.leba.LebaTitleBar;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import mqq.os.MqqHandler;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
 
 public class aeak
-  extends MqqHandler
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aeak(LebaWithFeeds paramLebaWithFeeds) {}
+  public aeak(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onGlobalLayout()
   {
-    if ((this.a.a != null) && ("0".equals(this.a.a.getCurrentAccountUin()))) {}
-    do
+    Object localObject = new Rect();
+    this.a.jdField_a_of_type_Bejh.d.getWindowVisibleDisplayFrame((Rect)localObject);
+    int i = this.a.jdField_a_of_type_Bejh.d.getRootView().getHeight();
+    int j = i - ((Rect)localObject).bottom;
+    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.e != j))
     {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 1134006: 
-      case 11340005: 
-        LebaWithFeeds.a(this.a).e();
-        return;
-      case 11340002: 
-        LebaWithFeeds.a(this.a);
-        LebaWithFeeds.a(this.a, true, 3);
-        return;
+      localObject = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, 0, j);
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.a.e = j;
+    }
+    if (j > i / 3)
+    {
+      if (this.a.c) {
+        this.a.c(false);
       }
-    } while (!LebaWithFeeds.a(this.a));
-    LebaWithFeeds.a(this.a, true, 5);
-    return;
-    LebaWithFeeds.a(this.a, true, 4);
+      for (;;)
+      {
+        if (this.a.jdField_a_of_type_Int == 2) {
+          this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+        }
+        i = (int)mww.b(BaseApplicationImpl.getApplication(), this.a.b + j);
+        return;
+        this.a.c(true);
+      }
+    }
+    this.a.c(false);
+    if (this.a.jdField_a_of_type_Int == 2) {
+      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    }
+    if (this.a.jdField_a_of_type_Int == 2) {
+      i = (int)mww.b(BaseApplicationImpl.getApplication(), this.a.b);
+    }
+    for (;;)
+    {
+      this.a.d = false;
+      return;
+      if (this.a.jdField_a_of_type_Int != 1) {}
+    }
   }
 }
 

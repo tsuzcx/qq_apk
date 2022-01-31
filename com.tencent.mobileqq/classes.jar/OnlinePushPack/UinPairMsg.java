@@ -8,15 +8,15 @@ import java.util.ArrayList;
 public final class UinPairMsg
   extends JceStruct
 {
-  static ArrayList cache_vMsgInfos;
+  static ArrayList<MsgInfo> cache_vMsgInfos;
   public long lPeerUin;
   public long uLastReadTime;
   public long uMsgCompleted;
-  public ArrayList vMsgInfos;
+  public ArrayList<MsgInfo> vMsgInfos;
   
   public UinPairMsg() {}
   
-  public UinPairMsg(long paramLong1, long paramLong2, long paramLong3, ArrayList paramArrayList)
+  public UinPairMsg(long paramLong1, long paramLong2, long paramLong3, ArrayList<MsgInfo> paramArrayList)
   {
     this.uLastReadTime = paramLong1;
     this.lPeerUin = paramLong2;
@@ -50,7 +50,7 @@ public final class UinPairMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     OnlinePushPack.UinPairMsg
  * JD-Core Version:    0.7.0.1
  */

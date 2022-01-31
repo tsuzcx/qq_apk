@@ -1,18 +1,18 @@
 package cooperation.qwallet.plugin.ipc;
 
+import altm;
 import android.os.Bundle;
 import android.os.ResultReceiver;
-import com.tencent.mobileqq.app.FriendListObserver;
+import bdgc;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
 import cooperation.qwallet.plugin.QWalletHelper;
 import java.util.HashMap;
 
 class CorpReq$TenpayFriendListObserver
-  extends FriendListObserver
+  extends altm
 {
   private static TenpayFriendListObserver _self;
-  private HashMap mRecieverMap = new HashMap();
+  private HashMap<String, ResultReceiver> mRecieverMap = new HashMap();
   
   public static TenpayFriendListObserver getInstance()
   {
@@ -33,17 +33,16 @@ class CorpReq$TenpayFriendListObserver
     this.mRecieverMap.clear();
   }
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if ((!paramBoolean) || (paramString == null)) {}
-    Object localObject;
+    Object localObject = QWalletHelper.getAppInterface();
+    if ((!paramBoolean) || (paramString == null) || (localObject == null)) {}
     do
     {
       return;
-      localObject = QWalletHelper.getAppInterface();
       CorpResp localCorpResp = new CorpResp();
       localCorpResp.corpReqType = CorpReq.corpReqType;
-      localCorpResp.userNick = ContactUtils.c((QQAppInterface)localObject, paramString, false);
+      localCorpResp.userNick = bdgc.c((QQAppInterface)localObject, paramString, false);
       localObject = new Bundle();
       localCorpResp.toBundle((Bundle)localObject);
       paramString = (ResultReceiver)this.mRecieverMap.remove(paramString);
@@ -53,7 +52,7 @@ class CorpReq$TenpayFriendListObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qwallet.plugin.ipc.CorpReq.TenpayFriendListObserver
  * JD-Core Version:    0.7.0.1
  */

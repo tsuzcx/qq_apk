@@ -1,46 +1,56 @@
-import android.os.Bundle;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.share.QZoneShareActivity;
-import mqq.observer.BusinessObserver;
+import android.os.IInterface;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-public class amzg
-  implements BusinessObserver
+public abstract interface amzg
+  extends IInterface
 {
-  public amzg(QZoneShareActivity paramQZoneShareActivity) {}
+  public abstract ARCommonConfigInfo a();
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    synchronized (QZoneShareActivity.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.h = false;
-      if (paramBoolean) {}
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
-          localGetAppinfoResponse.mergeFrom(paramBundle);
-          this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse = localGetAppinfoResponse;
-          if (QLog.isColorLevel()) {
-            QLog.d("QZoneShare", 2, "get appinfo time = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
-          }
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QZoneShare", 2, paramBundle.getMessage());
-          }
-        }
-      }
-      QZoneShareActivity.jdField_a_of_type_JavaLangObject.notify();
-      return;
-    }
-  }
+  public abstract ArConfigInfo a();
+  
+  public abstract ArEffectConfig a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(amzj paramamzj);
+  
+  public abstract void a(amzp paramamzp);
+  
+  public abstract void a(amzs paramamzs);
+  
+  public abstract void a(amzv paramamzv);
+  
+  public abstract void a(ArConfigInfo paramArConfigInfo);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(amzj paramamzj);
+  
+  public abstract void b(amzp paramamzp);
+  
+  public abstract void b(amzs paramamzs);
+  
+  public abstract void b(amzv paramamzv);
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract boolean c();
+  
+  public abstract void d();
+  
+  public abstract boolean d();
 }
 
 

@@ -3,7 +3,6 @@ package com.tencent.weiyun.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.telephony.TelephonyManager;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
@@ -28,44 +27,6 @@ public final class Utils
     return localStringBuilder.toString();
   }
   
-  public static String getDeviceId(Context paramContext)
-  {
-    String str2 = getSpString(paramContext, "device_id", null);
-    String str1 = str2;
-    if (str2 == null)
-    {
-      str2 = getSpString(paramContext, "device_mac", null);
-      str1 = str2;
-      if (str2 == null)
-      {
-        str2 = NetworkUtils.getWifiMacAddress(paramContext);
-        str1 = str2;
-        if (str2 != null)
-        {
-          saveSpString(paramContext, "device_mac", str2);
-          str1 = str2;
-        }
-      }
-      if (str1 != null)
-      {
-        str1 = makeStringWithLength(str1, 17);
-        saveSpString(paramContext, "device_id", str1);
-      }
-    }
-    else
-    {
-      return str1;
-    }
-    str1 = ((TelephonyManager)paramContext.getSystemService("phone")).getDeviceId();
-    if (str1 != null)
-    {
-      str1 = makeStringWithLength(str1, 17);
-      saveSpString(paramContext, "device_id", str1);
-      return str1;
-    }
-    return makeStringWithLength("", 17);
-  }
-  
   private static String getSpString(Context paramContext, String paramString1, String paramString2)
   {
     if (paramContext == null) {
@@ -76,19 +37,19 @@ public final class Utils
   
   public static byte[] hexStr2Bytes(String paramString)
   {
+    int j = 0;
     int k = paramString.length();
     if ((k & 0x1) != 0) {
       throw new RuntimeException("Odd number of characters.");
     }
     byte[] arrayOfByte = new byte[k >> 1];
     int i = 0;
-    int j = 0;
     while (j < k)
     {
       int m = j + 1;
       int n = Character.digit(paramString.charAt(j), 16);
       j = m + 1;
-      arrayOfByte[i] = ((byte)((n << 4 | Character.digit(paramString.charAt(m), 16)) & 0xFF));
+      arrayOfByte[i] = ((byte)((Character.digit(paramString.charAt(m), 16) | n << 4) & 0xFF));
       i += 1;
     }
     return arrayOfByte;
@@ -132,7 +93,7 @@ public final class Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.weiyun.utils.Utils
  * JD-Core Version:    0.7.0.1
  */

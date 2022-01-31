@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class AudioTransClientTransInfo$InfoHead
-  extends MessageMicro
+  extends MessageMicro<InfoHead>
 {
   public static final int INFO_C2S_CREATE_SESSION_REQ = 1;
   public static final int INFO_C2S_CREATE_SESSION_RSP = 2;
@@ -21,7 +21,7 @@ public final class AudioTransClientTransInfo$InfoHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.audiotrans.AudioTransClientTransInfo.InfoHead
  * JD-Core Version:    0.7.0.1
  */

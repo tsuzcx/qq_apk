@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.SpaceGateActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
-class djj
-  implements Runnable
+public class djj
+  extends FriendListObserver
 {
-  djj(dji paramdji) {}
+  public djj(SpaceGateActivity paramSpaceGateActivity) {}
   
-  public void run()
+  protected void a(String paramString, boolean paramBoolean)
   {
-    if (this.a.a.b) {
-      this.a.a.k();
+    if (paramBoolean) {
+      this.a.a(0);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.a(0);
     }
   }
 }

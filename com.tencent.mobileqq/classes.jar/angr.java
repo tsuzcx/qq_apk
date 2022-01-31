@@ -1,15 +1,40 @@
-import android.os.Bundle;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
+import android.content.Context;
+import android.opengl.GLES20;
+import com.tencent.qphone.base.util.QLog;
 
-class angr
-  implements Runnable
+public class angr
 {
-  angr(angp paramangp, Bundle paramBundle) {}
-  
-  public void run()
+  public static int a(String paramString1, Context paramContext, int paramInt, String paramString2)
   {
-    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
-    this.jdField_a_of_type_Angp.a.a(localBundle);
+    int i = 0;
+    paramInt = GLES20.glCreateShader(paramInt);
+    GLES20.glShaderSource(paramInt, paramString2);
+    GLES20.glCompileShader(paramInt);
+    paramContext = new int[1];
+    GLES20.glGetShaderiv(paramInt, 35713, paramContext, 0);
+    if (paramContext[0] == 0)
+    {
+      QLog.e(paramString1, 1, "Error compiling shader: " + GLES20.glGetShaderInfoLog(paramInt));
+      GLES20.glDeleteShader(paramInt);
+      paramInt = i;
+    }
+    for (;;)
+    {
+      if (paramInt == 0) {}
+      return paramInt;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    for (;;)
+    {
+      int i = GLES20.glGetError();
+      if (i == 0) {
+        break;
+      }
+      QLog.e(paramString1, 1, paramString2 + ": glError " + i);
+    }
   }
 }
 

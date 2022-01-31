@@ -1,49 +1,82 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
+import android.app.Activity;
+import android.content.Context;
+import android.os.SystemClock;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class scp
-  implements DialogInterface.OnClickListener
 {
-  public scp(ChatSettingForTroop paramChatSettingForTroop, QQCustomDialog paramQQCustomDialog) {}
+  public static long a;
+  public static GdtHandler.Params a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
-    }
-    paramDialogInterface = (TroopHandler)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.a(20);
-    if ((NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.getApp().getApplicationContext())) && (paramDialogInterface != null))
+    jdField_a_of_type_Long = -2147483648L;
+  }
+  
+  public static void a(Context paramContext, BaseData paramBaseData, boolean paramBoolean, int paramInt)
+  {
+    a(paramContext, paramBaseData, false, paramBoolean, paramInt);
+  }
+  
+  public static void a(Context paramContext, BaseData paramBaseData, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    if ((paramBaseData == null) || (paramContext == null) || (!(paramContext instanceof Activity))) {}
+    AdvertisementInfo localAdvertisementInfo;
+    Object localObject;
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, 2131435283, 0);
-      paramDialogInterface.i(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-    }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+      do
+      {
+        return;
+        szl.a(paramContext);
+        localAdvertisementInfo = oef.a((AdData)paramBaseData);
+      } while (szl.a(paramContext, (AdData)paramBaseData, localAdvertisementInfo));
+      localAdvertisementInfo.setClickPos(paramInt);
+      if ((oee.h(localAdvertisementInfo)) && ((paramInt == 4) || (paramInt == 3)) && ((paramContext instanceof Activity)))
+      {
+        oee.a((Activity)paramContext, 1);
+        szl.a((Activity)paramContext, localAdvertisementInfo);
+        noy.a(new obk().a(BaseApplication.getContext()).a(noy.a).b(noy.ai).a(localAdvertisementInfo).d(noy.a((AdData)paramBaseData)).a());
+        return;
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
+      localObject = new obg();
+      if (paramInt == 8) {
+        ((obg)localObject).c = true;
+      }
+      localObject = szl.a((Activity)paramContext, localAdvertisementInfo, null, 5, paramBoolean2, false, paramBoolean1, (obg)localObject);
+    } while (localObject == null);
+    ((GdtHandler.Params)localObject).f = oed.b((AdData)paramBaseData);
+    szl.a((GdtHandler.Params)localObject, paramContext, localAdvertisementInfo);
+    jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = (GdtHandler.Params)localObject;
+    if (jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params != null) {}
+    for (long l = SystemClock.elapsedRealtime();; l = -2147483648L)
+    {
+      jdField_a_of_type_Long = l;
+      oef.a((AdData)paramBaseData, paramInt);
       return;
-      if (paramDialogInterface != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131434613, 1500);
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131435287, 1500);
-      }
     }
+  }
+  
+  public void a()
+  {
+    szl.a(2, jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params, jdField_a_of_type_Long);
+    jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = null;
+    jdField_a_of_type_Long = -2147483648L;
+  }
+  
+  public void b()
+  {
+    jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = null;
+    jdField_a_of_type_Long = -2147483648L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     scp
  * JD-Core Version:    0.7.0.1
  */

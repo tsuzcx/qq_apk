@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBDoubleField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class im_msg_body$LocationInfo
-  extends MessageMicro
+  extends MessageMicro<LocationInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_desc = PBField.initBytes(ByteStringMicro.EMPTY);

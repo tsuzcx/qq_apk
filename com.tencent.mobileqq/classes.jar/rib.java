@@ -1,90 +1,71 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.AddFriendActivity;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import java.util.List;
-import tencent.im.kqq.searchgroup.SearchGroup.GroupInfo;
+import android.util.SparseIntArray;
+import com.tencent.biz.pubaccount.VideoInfo.ECommerceEntranceInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsShuntBarConfigure.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
 
 public class rib
-  extends Handler
 {
-  public rib(AddFriendActivity paramAddFriendActivity) {}
+  private static final String jdField_a_of_type_JavaLangString = rib.class.getSimpleName();
+  private SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private SparseIntArray jdField_b_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
+  private String jdField_b_of_type_JavaLangString;
   
-  public void handleMessage(Message paramMessage)
+  public rib(QQAppInterface paramQQAppInterface)
   {
-    if (paramMessage.what == 1) {
-      this.a.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_b_of_type_JavaLangString = ors.a();
+  }
+  
+  public void a()
+  {
+    ThreadManagerV2.executeOnSubThread(new VideoFeedsShuntBarConfigure.1(this));
+  }
+  
+  public boolean a(VideoInfo.ECommerceEntranceInfo paramECommerceEntranceInfo)
+  {
+    if (paramECommerceEntranceInfo == null) {
+      return false;
     }
-    do
+    try
     {
-      do
+      boolean bool = bkbq.w(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (!bool) {
+        bkbq.a(this.jdField_b_of_type_JavaLangString + paramECommerceEntranceInfo.g, Integer.valueOf(0));
+      }
+      if (bool) {}
+      for (int i = ((Integer)bkbq.a(this.jdField_b_of_type_JavaLangString + paramECommerceEntranceInfo.g, Integer.valueOf(0))).intValue();; i = 0)
       {
-        return;
-        if (paramMessage.what == 3)
-        {
-          AddFriendActivity.a(this.a);
-          localObject1 = (TroopInfo)paramMessage.obj;
-          localObject2 = ((TroopInfo)localObject1).troopuin;
-          str1 = ((TroopInfo)localObject1).troopcode;
-          String str2 = ((TroopInfo)localObject1).troopname;
-          String str3 = ((TroopInfo)localObject1).troopowneruin;
-          String str4 = ((TroopInfo)localObject1).Administrator;
-          b = (byte)((TroopInfo)localObject1).cGroupOption;
-          l = ((TroopInfo)localObject1).dwGroupClassExt;
-          s = ((TroopInfo)localObject1).troopface;
-          String str5 = ((TroopInfo)localObject1).fingertroopmemo;
-          String str6 = ((TroopInfo)localObject1).strLocation;
-          if (paramMessage.arg1 == 1) {}
-          for (boolean bool = true;; bool = false)
-          {
-            paramMessage = TroopInfoActivity.a(2, (String)localObject2, str1, str2, str3, str4, b, l, s, str5, str6, bool, this.a.getIntent().getStringExtra("param_return_addr"), ((TroopInfo)localObject1).dwGroupFlagExt, ((TroopInfo)localObject1).dwAuthGroupType, 0);
-            ChatSettingForTroop.a(this.a, paramMessage, 2);
-            this.a.finish();
-            return;
-          }
+        int k = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramECommerceEntranceInfo.g);
+        int j = this.jdField_b_of_type_AndroidUtilSparseIntArray.get(paramECommerceEntranceInfo.g);
+        if ((i + j >= paramECommerceEntranceInfo.f) || (k >= paramECommerceEntranceInfo.e)) {
+          break;
         }
-      } while (paramMessage.what != 4);
-      AddFriendActivity.a(this.a);
-      i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      paramMessage = (List)paramMessage.obj;
-    } while ((i != 1) || (paramMessage == null) || (paramMessage.size() <= 0));
-    Object localObject2 = (SearchGroup.GroupInfo)paramMessage.get(0);
-    int i = ((SearchGroup.GroupInfo)localObject2).dwGroupCode.get();
-    String str1 = ((SearchGroup.GroupInfo)localObject2).sGroupName.get();
-    int j = ((SearchGroup.GroupInfo)localObject2).dwGroupOwnerId.get();
-    byte b = (byte)TroopUtils.a((SearchGroup.GroupInfo)localObject2);
-    long l = ((SearchGroup.GroupInfo)localObject2).dwGroupClass.get();
-    short s = (short)((SearchGroup.GroupInfo)localObject2).dwGroupFaceId.get();
-    if (((SearchGroup.GroupInfo)localObject2).sGroupFingerMem.has())
+        k += 1;
+        j += 1;
+        this.jdField_a_of_type_AndroidUtilSparseIntArray.put(paramECommerceEntranceInfo.g, k);
+        this.jdField_b_of_type_AndroidUtilSparseIntArray.put(paramECommerceEntranceInfo.g, j);
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "video_source_id: " + paramECommerceEntranceInfo.g + ", one_day_display_counts: " + paramECommerceEntranceInfo.f + ", session_display_counts: " + paramECommerceEntranceInfo.e + ", session_has_display_counts: " + k + ", one_day_has_display_counts: " + (i + j));
+        }
+        return true;
+      }
+      return false;
+    }
+    catch (Exception paramECommerceEntranceInfo)
     {
-      paramMessage = ((SearchGroup.GroupInfo)localObject2).sGroupFingerMem.get();
-      if (!((SearchGroup.GroupInfo)localObject2).sGroupLocation.has()) {
-        break label438;
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "解析引流条出现的条件出错: " + paramECommerceEntranceInfo.getMessage());
       }
     }
-    label438:
-    for (Object localObject1 = ((SearchGroup.GroupInfo)localObject2).sGroupLocation.get();; localObject1 = "")
-    {
-      paramMessage = TroopInfoActivity.a(6, String.valueOf(i), "", str1, String.valueOf(j), "", b, l, s, paramMessage, (String)localObject1, ((SearchGroup.GroupInfo)localObject2).bGroupIn.get(), null, ((SearchGroup.GroupInfo)localObject2).dwGroupFlagExt.get(), ((SearchGroup.GroupInfo)localObject2).dwAuthGroupType.get(), 0);
-      ChatSettingForTroop.a(this.a, paramMessage, 2);
-      this.a.finish();
-      return;
-      paramMessage = "";
-      break;
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rib
  * JD-Core Version:    0.7.0.1
  */

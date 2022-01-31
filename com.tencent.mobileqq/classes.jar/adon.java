@@ -1,32 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gameparty.GamePartyManager;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
 
 public class adon
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public adon(GamePartyManager paramGamePartyManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public adon(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)GamePartyManager.a(this.a).get();
-    if (localQQAppInterface == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    paramMessage = "http://openmobile.qq.com/gameteam/get_team_context?uin=" + localQQAppInterface.getCurrentAccountUin();
-    this.a.a(paramMessage, null);
-    this.a.b();
+    ProfileLabelEditorActivity.a(this.a);
   }
 }
 

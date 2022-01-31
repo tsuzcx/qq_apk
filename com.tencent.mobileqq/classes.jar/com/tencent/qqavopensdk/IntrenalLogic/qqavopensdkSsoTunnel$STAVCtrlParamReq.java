@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqavopensdkSsoTunnel$STAVCtrlParamReq
-  extends MessageMicro
+  extends MessageMicro<STAVCtrlParamReq>
 {
   public static final int LOCALVER_FIELD_NUMBER = 2;
   public static final int SDKAPPID_FIELD_NUMBER = 1;
@@ -16,7 +16,7 @@ public final class qqavopensdkSsoTunnel$STAVCtrlParamReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqavopensdk.IntrenalLogic.qqavopensdkSsoTunnel.STAVCtrlParamReq
  * JD-Core Version:    0.7.0.1
  */

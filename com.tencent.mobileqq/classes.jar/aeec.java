@@ -1,17 +1,82 @@
-import com.tencent.mobileqq.magicface.magicfaceaction.Action;
-import com.tencent.mobileqq.magicface.model.RecordVolume.RecordVolumeListener;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.RspBody;
 
 public class aeec
-  implements RecordVolume.RecordVolumeListener
+  extends ameq
 {
-  public aeec(MagicfaceActionManager paramMagicfaceActionManager) {}
+  public aeec(TroopLowCreditLevelNotifyActivity paramTroopLowCreditLevelNotifyActivity) {}
   
-  public void a(int paramInt)
+  protected void a(oidb_0xaf4.RspBody paramRspBody, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction.a(paramInt, this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceSensorOperation);
+    if (paramRspBody.group_id.has())
+    {
+      paramRspBody = String.valueOf(paramRspBody.group_id.get());
+      if (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramRspBody)) {
+        break label119;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "onGetNewTroopAppList troopUin not match. rsp uin=" + paramRspBody + ", current uin=" + this.a.jdField_a_of_type_JavaLangString);
+      }
     }
+    label119:
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "onGetNewTroopAppList group_id lost. current uin=" + this.a.jdField_a_of_type_JavaLangString);
+      }
+      this.a.d();
+      paramRspBody = this.a.a(1101236949L);
+    } while (paramRspBody == null);
+    this.a.a(paramRspBody);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("troop.credit.act", 2, "onGetTroopCreditLevelInfo:" + this.a.jdField_a_of_type_JavaLangString + "," + paramBoolean);
+    }
+    if (!this.a.jdField_a_of_type_JavaLangString.equals(paramLong + "")) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            this.a.d();
+          } while (!paramBoolean);
+          localObject = (TroopManager)this.a.app.getManager(52);
+        } while (localObject == null);
+        localObject = ((TroopManager)localObject).b(this.a.jdField_a_of_type_JavaLangString);
+      } while (localObject == null);
+      paramLong = ((TroopInfo)localObject).troopCreditLevel;
+      if (QLog.isColorLevel()) {
+        QLog.i("troop.credit.act", 2, "onGetTroopCreditLevelInfo:" + this.a.jdField_a_of_type_JavaLangString + "," + paramLong);
+      }
+    } while (paramLong == 2L);
+    if (paramLong == 1L)
+    {
+      localObject = bdgm.a(this.a.jdField_a_of_type_AndroidContentContext, 230).setTitle(this.a.getString(2131720808)).setMessage(alud.a(2131715872));
+      ((bdjz)localObject).setPositiveButton(2131697988, new aeed(this));
+      ((bdjz)localObject).setNegativeButton("", null);
+      ((bdjz)localObject).setCancelable(false);
+      ((bdjz)localObject).show();
+      return;
+    }
+    Object localObject = bdgm.a(this.a.jdField_a_of_type_AndroidContentContext, 230).setTitle(this.a.getString(2131720808)).setMessage(alud.a(2131715873));
+    ((bdjz)localObject).setPositiveButton(2131697988, new aeee(this));
+    ((bdjz)localObject).setNegativeButton("", null);
+    ((bdjz)localObject).setCancelable(false);
+    ((bdjz)localObject).show();
   }
 }
 

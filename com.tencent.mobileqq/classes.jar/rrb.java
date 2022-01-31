@@ -1,24 +1,40 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class rrb
-  implements Runnable
+class rrb
+  extends svj
 {
-  public rrb(BaseChatPie paramBaseChatPie, long paramLong1, int paramInt1, long paramLong2, int paramInt2, Runnable paramRunnable) {}
+  rrb(rqj paramrqj) {}
   
-  public void run()
+  public void a(svk paramsvk)
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().runOnUiThread(new rrc(this, localMessageRecord));
+    if (paramsvk != null)
+    {
+      int j = this.a.a.getHeaderViewsCount();
+      new ArrayList();
+      int i = paramsvk.jdField_a_of_type_Int;
+      while (i <= paramsvk.b)
+      {
+        int k = i - j;
+        if (k >= 0)
+        {
+          BaseArticleInfo localBaseArticleInfo = this.a.b(k);
+          if (localBaseArticleInfo != null)
+          {
+            QLog.d("FeedExposureHelper", 2, "onExposure : " + localBaseArticleInfo + " proteusItemsData : " + localBaseArticleInfo.proteusItemsData);
+            szp.a(localBaseArticleInfo, paramsvk.jdField_a_of_type_Long);
+          }
+        }
+        i += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rrb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
+import android.support.annotation.NonNull;
+import android.util.SparseArray;
+import java.util.LinkedList;
 
 public class vts
-  implements DialogInterface.OnClickListener
 {
-  public vts(GameRoomChatPie paramGameRoomChatPie, boolean paramBoolean, WerewolvesPluginInterface paramWerewolvesPluginInterface) {}
+  private final SparseArray<LinkedList<Object>> a = new SparseArray();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public <CLASS> CLASS a(@NonNull Class<CLASS> paramClass)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.W = true;
-    GameRoomChatPie.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie, this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.V = true;
-    if ((this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface.a()) && (!this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface.b())) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
+    paramClass = (LinkedList)this.a.get(paramClass.hashCode());
+    if (paramClass != null)
+    {
+      paramClass = paramClass.poll();
+      if (paramClass != null) {}
+      return paramClass;
     }
+    return null;
+  }
+  
+  public void a(@NonNull Object paramObject)
+  {
+    int i = paramObject.getClass().hashCode();
+    LinkedList localLinkedList2 = (LinkedList)this.a.get(i);
+    LinkedList localLinkedList1 = localLinkedList2;
+    if (localLinkedList2 == null)
+    {
+      localLinkedList1 = new LinkedList();
+      this.a.put(i, localLinkedList1);
+    }
+    localLinkedList1.offer(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vts
  * JD-Core Version:    0.7.0.1
  */

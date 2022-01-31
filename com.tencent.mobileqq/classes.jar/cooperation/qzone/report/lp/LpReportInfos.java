@@ -14,9 +14,9 @@ import java.util.concurrent.ConcurrentHashMap;
 public class LpReportInfos
 {
   private static final String TAG = "LpReport.LpReportInfos";
-  private Map infos = new ConcurrentHashMap();
+  private Map<Integer, REPORT_INFO> infos = new ConcurrentHashMap();
   
-  private void checkParams(int paramInt, Map paramMap, LpReportInfo paramLpReportInfo)
+  private void checkParams(int paramInt, Map<String, String> paramMap, LpReportInfo paramLpReportInfo)
   {
     paramMap = paramMap.entrySet().iterator();
     while (paramMap.hasNext())
@@ -59,7 +59,7 @@ public class LpReportInfos
     this.infos.clear();
   }
   
-  public ArrayList getInfos()
+  public ArrayList<REPORT_INFO> getInfos()
   {
     return new ArrayList(this.infos.values());
   }
@@ -91,7 +91,7 @@ public class LpReportInfos
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfos
  * JD-Core Version:    0.7.0.1
  */

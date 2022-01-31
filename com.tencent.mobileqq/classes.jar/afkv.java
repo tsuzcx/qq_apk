@@ -1,19 +1,21 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.confess.ConfessNewsBgView;
 
-public class afkv
-  implements Runnable
+class afkv
+  extends aepm
 {
-  public afkv(NearbyMomentFragment paramNearbyMomentFragment, URLDrawable paramURLDrawable) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
-  }
+  public long a;
+  ConfessNewsBgView a;
+  public String a;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afkv
  * JD-Core Version:    0.7.0.1
  */

@@ -5,8 +5,8 @@ import android.os.Looper;
 import com.tencent.mobileqq.jsbridge.JsBridge.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import hpd;
-import hpe;
+import hkz;
+import hla;
 import java.lang.ref.WeakReference;
 
 public class OpenJsBridge$OpenJsBridgeListener
@@ -38,7 +38,7 @@ public class OpenJsBridge$OpenJsBridgeListener
     }
     for (;;)
     {
-      new Handler(Looper.getMainLooper()).post(new hpd(this, paramString, str, localWebView));
+      new Handler(Looper.getMainLooper()).post(new hkz(this, paramString, str, localWebView));
       return;
       if (((paramObject instanceof Number)) || ((paramObject instanceof Long)) || ((paramObject instanceof Integer)) || ((paramObject instanceof Double)) || ((paramObject instanceof Float))) {
         str = paramObject.toString();
@@ -57,7 +57,7 @@ public class OpenJsBridge$OpenJsBridgeListener
     if (localWebView == null) {
       return;
     }
-    new Handler(Looper.getMainLooper()).post(new hpe(this, paramString, localWebView));
+    new Handler(Looper.getMainLooper()).post(new hla(this, paramString, localWebView));
   }
 }
 

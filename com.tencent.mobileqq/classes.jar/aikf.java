@@ -1,10 +1,35 @@
-import java.nio.ByteBuffer;
+import com.tencent.mobileqq.utils.SendMessageHandler;
 
-public class aikf
+class aikf
+  extends alwx
 {
-  public long a;
-  public ByteBuffer a;
-  public long b;
+  aikf(aike paramaike) {}
+  
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  {
+    if (aike.a(this.a) != null) {
+      aike.a(this.a).a(paramString1);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    a(paramBoolean, paramString, paramLong, null);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong, alwu paramalwu)
+  {
+    if (aike.a(this.a) != null) {
+      aike.a(this.a).a(paramString);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (aike.a(this.a) != null) {
+      aike.a(this.a).a(paramString);
+    }
+  }
 }
 
 

@@ -1,23 +1,21 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aaqc
-  implements ArkAppCenter.OnGetAppIcon
+  implements DialogInterface.OnClickListener
 {
-  aaqc(aaqb paramaaqb, QQCustomDialog paramQQCustomDialog) {}
+  aaqc(aaqa paramaaqa) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBitmap != null) {
-      ((ImageView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131364041)).setImageBitmap(paramBitmap);
-    }
+    aase.b("GdtMvViewController", " DialogInterface onClick confirm");
+    aaqa.a(this.a, false);
+    aaqa.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaqc
  * JD-Core Version:    0.7.0.1
  */

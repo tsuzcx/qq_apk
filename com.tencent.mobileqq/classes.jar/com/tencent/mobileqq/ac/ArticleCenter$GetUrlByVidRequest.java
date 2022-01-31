@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBFloatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ArticleCenter$GetUrlByVidRequest
-  extends MessageMicro
+  extends MessageMicro<GetUrlByVidRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBFloatField latitude = PBField.initFloat(0.0F);
@@ -33,7 +33,7 @@ public final class ArticleCenter$GetUrlByVidRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ac.ArticleCenter.GetUrlByVidRequest
  * JD-Core Version:    0.7.0.1
  */

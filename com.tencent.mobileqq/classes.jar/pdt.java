@@ -1,23 +1,24 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.widgets.InputDialog;
+import android.os.Handler;
+import android.os.Message;
 
-public class pdt
-  implements View.OnClickListener
+class pdt
+  extends Handler
 {
-  public pdt(InputDialog paramInputDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  private pdt(pdj parampdj) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizWidgetsInputDialog, 1);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
+    pdr.a((pdr)paramMessage.obj, paramMessage.arg1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pdt
  * JD-Core Version:    0.7.0.1
  */

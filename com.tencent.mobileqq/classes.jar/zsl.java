@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.app.message.BaseMessageManagerForTroopAndDisc;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.device.bind.DevicePluginDownloadActivity;
 
-class zsl
-  implements Runnable
+public class zsl
+  implements DialogInterface.OnClickListener
 {
-  zsl(zsk paramzsk) {}
+  public zsl(DevicePluginDownloadActivity paramDevicePluginDownloadActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.b.containsKey(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.b.remove(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
-    }
+    paramDialogInterface.dismiss();
+    bkce.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zsl
  * JD-Core Version:    0.7.0.1
  */

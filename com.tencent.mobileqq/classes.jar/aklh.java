@@ -1,16 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
+import com.tencent.mobileqq.data.ShowExternalTroop;
 
 public class aklh
-  implements View.OnTouchListener
 {
-  public aklh(VipFunCallPreviewActivity paramVipFunCallPreviewActivity) {}
+  public int a;
+  public ShowExternalTroop a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aklh(int paramInt, ShowExternalTroop paramShowExternalTroop)
   {
-    return true;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqDataShowExternalTroop = paramShowExternalTroop;
   }
 }
 

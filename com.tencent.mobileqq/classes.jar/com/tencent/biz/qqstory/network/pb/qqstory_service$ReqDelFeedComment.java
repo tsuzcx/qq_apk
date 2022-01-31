@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_service$ReqDelFeedComment
-  extends MessageMicro
+  extends MessageMicro<ReqDelFeedComment>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field comment_id = PBField.initUInt32(0);
@@ -22,7 +22,7 @@ public final class qqstory_service$ReqDelFeedComment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDelFeedComment
  * JD-Core Version:    0.7.0.1
  */

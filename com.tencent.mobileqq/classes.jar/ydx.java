@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
 
-public class ydx
-  implements Runnable
+class ydx
+  implements View.OnClickListener
 {
-  public ydx(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  ydx(ydw paramydw) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.p();
+    if ((this.a.getParentFragment() instanceof SubscribeBaseFragment)) {
+      ((SubscribeBaseFragment)this.a.getParentFragment()).a(this.a.a(2));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ydx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
 
-public final class aerb
-  implements Parcelable.Creator
+public class aerb
+  extends QQLruCache<String, agmy>
 {
-  public InterestTagInfo a(Parcel paramParcel)
+  public aerb(CustomizeStrategyFactory paramCustomizeStrategyFactory, int paramInt1, int paramInt2, int paramInt3)
   {
-    return new InterestTagInfo(paramParcel);
+    super(paramInt1, paramInt2, paramInt3);
   }
   
-  public InterestTagInfo[] a(int paramInt)
+  protected void a(boolean paramBoolean, String paramString, agmy paramagmy1, agmy paramagmy2)
   {
-    return new InterestTagInfo[paramInt];
+    super.entryRemoved(paramBoolean, paramString, paramagmy1, paramagmy2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerb
  * JD-Core Version:    0.7.0.1
  */

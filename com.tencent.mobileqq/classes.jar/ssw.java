@@ -1,37 +1,47 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.campuscircle.CampusCircleHelper;
-import com.tencent.mobileqq.data.Card;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StMessageStatus;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFollowFeedsRsp;
+import NS_COMM.COMM.StCommonExt;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ssw
-  implements sto
+  implements zac<CertifiedAccountRead.StGetFollowFeedsRsp>
 {
-  public ssw(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public ssw(FolderFollowTabFragment paramFolderFollowTabFragment, yei paramyei) {}
   
-  public void a(int paramInt, String paramString)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFollowFeedsRsp paramStGetFollowFeedsRsp)
   {
-    switch (paramInt)
+    boolean bool = true;
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStGetFollowFeedsRsp == null))
     {
-    }
-    String str;
-    do
-    {
-      return;
-      str = FriendProfileMoreInfoActivity.a(this.a).getText().toString();
-    } while ((paramString == null) || (paramString.equals(str)));
-    this.a.j = true;
-    this.a.d(paramString);
-    if (CampusCircleHelper.b(this.a.a.lCampusSchoolID) == 4)
-    {
-      this.a.a("0X80081E9", 0);
+      if (!TextUtils.isEmpty(paramString)) {
+        QQToast.a(FolderFollowTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment), 1, paramString, 0).a();
+      }
       return;
     }
-    this.a.a("0X80081EB", 1);
+    if (paramStGetFollowFeedsRsp.messStatus.get() != null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment.a(paramStGetFollowFeedsRsp.messStatus.noticeCount.get());
+      FolderFollowTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderFollowTabFragment, paramStGetFollowFeedsRsp.messStatus.jumpURL.get());
+    }
+    paramString = paramStGetFollowFeedsRsp.feeds.get();
+    yei localyei = this.jdField_a_of_type_Yei;
+    COMM.StCommonExt localStCommonExt = paramStGetFollowFeedsRsp.extInfo;
+    if (paramStGetFollowFeedsRsp.isFinish.get() == 1) {}
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      localyei.b(paramString, localStCommonExt, paramBoolean);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ssw
  * JD-Core Version:    0.7.0.1
  */

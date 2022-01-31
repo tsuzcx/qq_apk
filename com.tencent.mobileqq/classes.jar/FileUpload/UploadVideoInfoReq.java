@@ -12,6 +12,7 @@ public final class UploadVideoInfoReq
   static Map<String, String> cache_extend_info;
   static byte[] cache_vBusiNessData = (byte[])new byte[1];
   public Map<String, String> extend_info = null;
+  public int height = 0;
   public int iBusiNessType = 0;
   public int iFlag = 0;
   public int iIsFormatF20 = 0;
@@ -23,6 +24,7 @@ public final class UploadVideoInfoReq
   public String sDesc = "";
   public String sTitle = "";
   public byte[] vBusiNessData = null;
+  public int width = 0;
   
   static
   {
@@ -33,7 +35,7 @@ public final class UploadVideoInfoReq
   
   public UploadVideoInfoReq() {}
   
-  public UploadVideoInfoReq(String paramString1, String paramString2, int paramInt1, long paramLong, int paramInt2, byte[] paramArrayOfByte, int paramInt3, String paramString3, int paramInt4, int paramInt5, int paramInt6, Map<String, String> paramMap)
+  public UploadVideoInfoReq(String paramString1, String paramString2, int paramInt1, long paramLong, int paramInt2, byte[] paramArrayOfByte, int paramInt3, String paramString3, int paramInt4, int paramInt5, int paramInt6, Map<String, String> paramMap, int paramInt7, int paramInt8)
   {
     this.sTitle = paramString1;
     this.sDesc = paramString2;
@@ -47,6 +49,8 @@ public final class UploadVideoInfoReq
     this.iIsOriginalVideo = paramInt5;
     this.iIsFormatF20 = paramInt6;
     this.extend_info = paramMap;
+    this.height = paramInt7;
+    this.width = paramInt8;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -63,6 +67,8 @@ public final class UploadVideoInfoReq
     this.iIsOriginalVideo = paramJceInputStream.read(this.iIsOriginalVideo, 9, false);
     this.iIsFormatF20 = paramJceInputStream.read(this.iIsFormatF20, 10, false);
     this.extend_info = ((Map)paramJceInputStream.read(cache_extend_info, 11, false));
+    this.height = paramJceInputStream.read(this.height, 12, false);
+    this.width = paramJceInputStream.read(this.width, 13, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -89,11 +95,13 @@ public final class UploadVideoInfoReq
     if (this.extend_info != null) {
       paramJceOutputStream.write(this.extend_info, 11);
     }
+    paramJceOutputStream.write(this.height, 12);
+    paramJceOutputStream.write(this.width, 13);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     FileUpload.UploadVideoInfoReq
  * JD-Core Version:    0.7.0.1
  */

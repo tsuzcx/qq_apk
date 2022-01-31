@@ -1,23 +1,29 @@
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
-import com.tencent.mobileqq.troop.utils.TroopAppMgr;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.widget.Filter;
+import android.widget.Filter.FilterResults;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import java.util.List;
 
-public class ajoe
-  implements Runnable
+class ajoe
+  extends Filter
 {
-  public ajoe(TroopAppMgr paramTroopAppMgr, ArrayList paramArrayList, EntityManager paramEntityManager) {}
+  ajoe(ajod paramajod) {}
   
-  public void run()
+  protected Filter.FilterResults performFiltering(CharSequence paramCharSequence)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    paramCharSequence = new Filter.FilterResults();
+    paramCharSequence.values = this.a.a.a;
+    paramCharSequence.count = this.a.a.a.size();
+    return paramCharSequence;
+  }
+  
+  protected void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
+  {
+    if (paramFilterResults.count > 0)
     {
-      TroopAIOAppInfo localTroopAIOAppInfo = (TroopAIOAppInfo)localIterator.next();
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, localTroopAIOAppInfo);
+      this.a.notifyDataSetChanged();
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a();
+    this.a.notifyDataSetInvalidated();
   }
 }
 

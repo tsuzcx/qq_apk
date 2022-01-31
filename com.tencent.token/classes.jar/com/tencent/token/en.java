@@ -1,63 +1,226 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import java.net.URLEncoder;
-import java.util.HashMap;
+import com.tencent.token.core.bean.NewConfigureCacheItem;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.global.j;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class en
-  extends bm
+public class en
 {
-  public String c;
-  private int d;
-  private String e;
+  List a = Collections.synchronizedList(new ArrayList());
+  NewConfigureCacheItem b;
+  String c;
+  long d;
+  public boolean e;
+  public boolean f = false;
   
-  protected final String a()
+  public com.tencent.token.core.bean.h a(int paramInt)
   {
-    ae.a();
-    if (ax.a().p()) {
-      ax.a();
-    }
-    for (String str = ax.c; str == null; str = null)
+    if ((paramInt < 0) || (paramInt >= c())) {}
+    List localList;
+    do
     {
-      this.a.a(104, null, null);
       return null;
-    }
-    str = "?sess_id=" + str + "&url=" + URLEncoder.encode(this.c);
-    return b.c() + "/cn/mbtoken3/mbtoken3_query_malicious_url" + str;
+      localList = a();
+    } while (localList == null);
+    return (com.tencent.token.core.bean.h)localList.get(paramInt);
   }
   
-  protected final void a(fs paramfs)
+  public List a()
   {
-    this.c = ((String)paramfs.c.get("param.barcode.url"));
+    return this.a;
   }
   
-  protected final void a(JSONObject paramJSONObject)
+  public void a(String paramString)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    j.a("game_lock", paramString);
+  }
+  
+  public void a(List paramList)
+  {
+    try
     {
-      a(i, paramJSONObject.getString("info"));
-      return;
+      if (this.b == null) {
+        this.b = dr.a().h.a("game_lock");
+      }
+      if ((this.b.mClientVersion > this.b.mClickVersion) && (this.b.mClickVersion == -1) && (this.b.mConfIDs != null))
+      {
+        Iterator localIterator1 = this.b.mConfIDs.iterator();
+        while (localIterator1.hasNext())
+        {
+          int i = ((Integer)localIterator1.next()).intValue();
+          Iterator localIterator2 = paramList.iterator();
+          while (localIterator2.hasNext())
+          {
+            com.tencent.token.core.bean.h localh = (com.tencent.token.core.bean.h)localIterator2.next();
+            if (i == localh.a) {
+              localh.f = true;
+            }
+          }
+        }
+      }
+      this.a.clear();
     }
-    this.d = paramJSONObject.getInt("malicious_id");
-    this.e = paramJSONObject.getString("malicious_desc");
-    this.a.a = 0;
+    finally {}
+    this.a.addAll(paramList);
+    this.c = do.c;
+    if (do.a().e() != null) {
+      this.d = do.a().e().mUin;
+    }
   }
   
-  protected final void b()
+  public boolean a(JSONArray paramJSONArray)
   {
-    if (!this.b.e)
+    boolean bool;
+    ArrayList localArrayList1;
+    ArrayList localArrayList2;
+    if (paramJSONArray != null)
     {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.arg2 = this.d;
-      localMessage.obj = this.e;
-      localMessage.sendToTarget();
-      this.b.e = true;
+      bool = true;
+      com.tencent.token.global.h.a(bool);
+      localArrayList1 = new ArrayList();
+      localArrayList2 = new ArrayList();
+      if (paramJSONArray == null) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        if (paramJSONArray.length() > 0)
+        {
+          i = 0;
+          if (i >= paramJSONArray.length()) {
+            break label234;
+          }
+          JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
+          if (localJSONObject == null) {
+            break label229;
+          }
+          bool = true;
+          com.tencent.token.global.h.a(bool);
+          com.tencent.token.core.bean.h localh = new com.tencent.token.core.bean.h();
+          if (!localh.c(localJSONObject)) {
+            com.tencent.token.global.h.c("object item parse failed: " + i);
+          }
+          localArrayList1.add(localh);
+          i += 1;
+          continue;
+          if (i >= localArrayList1.size()) {
+            break label246;
+          }
+          paramJSONArray = (com.tencent.token.core.bean.h)localArrayList1.get(i);
+          if (paramJSONArray.g) {
+            break label239;
+          }
+          localArrayList2.add(paramJSONArray);
+          break label239;
+          if (i < localArrayList1.size())
+          {
+            paramJSONArray = (com.tencent.token.core.bean.h)localArrayList1.get(i);
+            if (paramJSONArray.g) {
+              localArrayList2.add(paramJSONArray);
+            }
+            i += 1;
+            continue;
+          }
+        }
+        a(localArrayList2);
+        return true;
+      }
+      catch (JSONException paramJSONArray)
+      {
+        return false;
+      }
+      bool = false;
+      break;
+      label229:
+      bool = false;
+      continue;
+      label234:
+      int i = 0;
+      continue;
+      label239:
+      i += 1;
+      continue;
+      label246:
+      i = 0;
+    }
+  }
+  
+  public int b(int paramInt)
+  {
+    Iterator localIterator = this.a.iterator();
+    int i = 0;
+    while (localIterator.hasNext())
+    {
+      com.tencent.token.core.bean.h localh = (com.tencent.token.core.bean.h)localIterator.next();
+      int j = i + 1;
+      i = j;
+      if (localh.a == paramInt) {
+        return j;
+      }
+    }
+    return -1;
+  }
+  
+  public boolean b()
+  {
+    QQUser localQQUser = do.a().e();
+    if ((this.c == null) || (localQQUser == null)) {}
+    while ((!this.c.equals(do.c)) || (this.d != do.a().e().mUin) || (!this.e)) {
+      return false;
+    }
+    return true;
+  }
+  
+  public int c()
+  {
+    List localList = a();
+    if (localList == null) {
+      return 0;
+    }
+    return localList.size();
+  }
+  
+  public int d()
+  {
+    int i = 0;
+    int k = 0;
+    try
+    {
+      List localList = a();
+      if (localList == null) {}
+      int j;
+      do
+      {
+        return k;
+        j = 0;
+        k = i;
+      } while (j >= localList.size());
+      boolean bool = ((com.tencent.token.core.bean.h)localList.get(j)).g;
+      if (!bool) {
+        i += 1;
+      }
+      for (;;)
+      {
+        j += 1;
+        break;
+      }
+    }
+    finally {}
+  }
+  
+  public void e()
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((com.tencent.token.core.bean.h)localIterator.next()).f = false;
     }
   }
 }

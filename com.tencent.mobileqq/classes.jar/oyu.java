@@ -1,35 +1,20 @@
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.GradientDrawable;
-import android.widget.LinearLayout;
-import com.tencent.biz.troopgift.GridListAdapter;
-import com.tencent.biz.troopgift.GridListAdapter.Holder;
-import com.tencent.mobileqq.util.DisplayUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
 
 public class oyu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public oyu(GridListAdapter paramGridListAdapter, GridListAdapter.Holder paramHolder) {}
+  public oyu(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = DisplayUtil.a(this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter.a, 5.0F);
-    new Paint().setTextSize(DisplayUtil.a(this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter.a, 11.0F));
-    int j = this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter$Holder.a.getWidth();
-    int k = this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter$Holder.a.getHeight();
-    if ((j == 0) || (k == 0)) {
-      return;
-    }
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setCornerRadii(new float[] { i, i, i, i, i, i, i, i });
-    localGradientDrawable.setColor(Color.argb(35, 0, 0, 0));
-    this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter$Holder.a.setBackgroundDrawable(localGradientDrawable);
+    this.a.onBackEvent();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oyu
  * JD-Core Version:    0.7.0.1
  */

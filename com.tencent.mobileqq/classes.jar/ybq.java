@@ -1,98 +1,262 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberFromFriendGroup;
-import com.tencent.mobileqq.data.Groups;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.subscribe.SubscribeJsPlugin.2;
+import com.tencent.biz.subscribe.SubscribeJsPlugin.3;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ybq
-  extends BaseAdapter
+  extends WebViewPlugin
+  implements ansr
 {
-  public ybq(SelectMemberFromFriendGroup paramSelectMemberFromFriendGroup) {}
+  private ansn jdField_a_of_type_Ansn;
+  private yqz jdField_a_of_type_Yqz;
   
-  public int getCount()
+  private void a(String paramString)
   {
-    return SelectMemberFromFriendGroup.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return SelectMemberFromFriendGroup.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    paramString = new ybs(this, paramString);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("code", paramString.optString("code"));
+    localBundle.putString("location", paramString.optString("location"));
+    if (this.jdField_a_of_type_Yqz == null)
     {
-      paramView = LayoutInflater.from(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity).inflate(2130969722, null);
-      paramViewGroup = new ybs(this);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131363939));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367590));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131367591));
-      paramView.setTag(paramViewGroup);
-      paramView.setOnClickListener(new ybr(this));
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataGroups = ((Groups)getItem(paramInt));
-      int i = paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataGroups.group_friend_count;
-      paramViewGroup.b.setText("" + i);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataGroups.group_name);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setTag(paramViewGroup);
-      if (!this.a.a(paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataGroups)) {
-        break label224;
+      this.jdField_a_of_type_Yqz = yqz.a();
+      this.jdField_a_of_type_Yqz.a();
+    }
+    this.jdField_a_of_type_Yqz.c(localBundle);
+  }
+  
+  private void a(String paramString, Bitmap paramBitmap)
+  {
+    ThreadManager.post(new SubscribeJsPlugin.3(this, paramBitmap, paramString), 8, null, false);
+  }
+  
+  private void a(String paramString, String[] paramArrayOfString)
+  {
+    if ("opendetail".equals(paramString)) {
+      if (a(paramArrayOfString)) {}
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          return;
+                          paramString = new ybs(this, paramArrayOfString[0]);
+                          QLog.d(this.TAG, 2, paramString.toString());
+                          if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof SubscribeHybirdFragment)))
+                          {
+                            ((SubscribeHybirdFragment)this.mRuntime.a()).a(ybt.a(paramString.getString("feedid"), paramString.getString("uin"), paramString.getInt("type"), paramString.getInt("width"), paramString.getInt("height"), Long.valueOf(paramString.getString("createtime")).longValue()));
+                            return;
+                          }
+                        } while ((this.mRuntime == null) || (this.mRuntime.a() == null));
+                        ybt.a(null, ybt.a(paramString.getString("feedid"), paramString.getString("uin"), paramString.getInt("type"), paramString.getInt("width"), paramString.getInt("height"), Long.valueOf(paramString.getString("createtime")).longValue()));
+                        return;
+                        if (!"sharepersonalpage".equals(paramString)) {
+                          break;
+                        }
+                      } while (!a(paramArrayOfString));
+                      paramString = new ybs(this, paramArrayOfString[0]);
+                    } while ((this.mRuntime == null) || (!(this.mRuntime.a() instanceof SubscribeHybirdFragment)));
+                    QLog.d(this.TAG, 2, paramString.toString());
+                    ((SubscribeHybirdFragment)this.mRuntime.a()).a(paramString.getString("uin"), paramString.getString("nickname"), paramString.getString("icon"), paramString.getString("desc"), paramString.getString("usertype"));
+                    return;
+                    if (!"reloadmainpage".equals(paramString)) {
+                      break;
+                    }
+                  } while ((this.mRuntime == null) || (!(this.mRuntime.a() instanceof SubscribeHybirdFragment)));
+                  ((SubscribeHybirdFragment)this.mRuntime.a()).af_();
+                  return;
+                  if (!"openpublishpage".equals(paramString)) {
+                    break;
+                  }
+                } while ((!a(paramArrayOfString)) || (this.mRuntime == null) || (this.mRuntime.a() == null));
+                paramString = new ybs(this, paramArrayOfString[0]).optString("puin");
+                new Intent().putExtra("postUin", paramString);
+                bjdt.a(this.mRuntime.a().getActivity(), null, 0);
+                return;
+                if (!"attachGoods".equals(paramString)) {
+                  break;
+                }
+              } while (!a(paramArrayOfString));
+              b(paramArrayOfString[0]);
+              return;
+              if (!"cancelfollow".equals(paramString)) {
+                break;
+              }
+            } while (!a(paramArrayOfString));
+            c(paramArrayOfString[0]);
+            return;
+            if (!"getavatar".equals(paramString)) {
+              break;
+            }
+          } while (!a(paramArrayOfString));
+          d(paramArrayOfString[0]);
+          return;
+          if (!"refreshreturnpage".equals(paramString)) {
+            break;
+          }
+        } while ((this.mRuntime == null) || (!(this.mRuntime.a() instanceof SubscribeHybirdFragment)));
+        ((SubscribeHybirdFragment)this.mRuntime.a()).i();
+        return;
+        if (!"getlbslocation".equals(paramString)) {
+          break;
+        }
+      } while (!a(paramArrayOfString));
+      a(paramArrayOfString[0]);
+      return;
+    } while ((!"openhomepage".equals(paramString)) || (!a(paramArrayOfString)));
+    ybt.a(null, new ybs(this, paramArrayOfString[0]).optString("uid"));
+  }
+  
+  private boolean a(String[] paramArrayOfString)
+  {
+    boolean bool = true;
+    if ((paramArrayOfString == null) || (paramArrayOfString.length < 1))
+    {
+      QLog.e(this.TAG, 2, "args is null");
+      bool = false;
+    }
+    return bool;
+  }
+  
+  private void b(String paramString)
+  {
+    paramString = new ybs(this, paramString).getJSONArray("goods");
+    if (paramString != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < paramString.length())
+      {
+        JSONObject localJSONObject = paramString.getJSONObject(i);
+        if (localJSONObject != null) {
+          localArrayList.add(new CommodityBean(localJSONObject));
+        }
+        i += 1;
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+      if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof SubscribeHybirdFragment))) {
+        ((SubscribeHybirdFragment)this.mRuntime.a()).a(localArrayList);
+      }
+    }
+  }
+  
+  private void c(String paramString)
+  {
+    if ((this.mRuntime == null) || (this.mRuntime.a() == null) || (this.mRuntime.a().getActivity() == null)) {
+      return;
+    }
+    Object localObject = new ybs(this, paramString);
+    paramString = ((ybs)localObject).optString("uin");
+    String str = ((ybs)localObject).optString("nick");
+    localObject = ((ybs)localObject).optString("callback");
+    ymg.a(this.mRuntime.a().getActivity(), paramString, str, new ybr(this, (String)localObject, str));
+  }
+  
+  private void d(String paramString)
+  {
+    if ((this.mRuntime == null) || (this.mRuntime.a() == null) || (this.mRuntime.a().getActivity() == null)) {
+      return;
+    }
+    paramString = new ybs(this, paramString);
+    JSONArray localJSONArray = paramString.optJSONArray("accountList");
+    int i;
+    if ("1".equals(paramString.getString("avatarType")))
+    {
+      i = 4;
+      if (this.jdField_a_of_type_Ansn != null) {
+        break label130;
+      }
+      this.jdField_a_of_type_Ansn = new ansn(this.mRuntime.a(), i);
+      this.jdField_a_of_type_Ansn.a();
+      this.jdField_a_of_type_Ansn.a(this);
     }
     for (;;)
     {
-      if (SelectMemberFromFriendGroup.a(this.a).size() != 1) {
-        break label258;
-      }
-      paramView.setBackgroundResource(2130838630);
-      return paramView;
-      paramViewGroup = (ybs)paramView.getTag();
+      ThreadManagerV2.excute(new SubscribeJsPlugin.2(this, localJSONArray), 16, null, false);
+      return;
+      i = 1;
       break;
-      label224:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.a.jdField_a_of_type_JavaUtilList.contains(paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataGroups));
+      label130:
+      this.jdField_a_of_type_Ansn.a(i);
     }
-    label258:
-    if (SelectMemberFromFriendGroup.a(this.a).size() == 2)
+  }
+  
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  {
+    a(paramString1, paramBitmap);
+    if (QLog.isColorLevel()) {
+      QLog.i(this.TAG, 4, "handleGetAvatar onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ("qsubscribe".equals(paramString2))
     {
-      if (paramInt == 0)
+      QLog.i(this.TAG, 2, "handleJsRequest:" + paramString1);
+      try
       {
-        paramView.setBackgroundResource(2130838635);
-        return paramView;
+        a(paramString3, paramVarArgs);
+        return true;
       }
-      paramView.setBackgroundResource(2130838630);
-      return paramView;
+      catch (JSONException paramJsBridgeListener)
+      {
+        for (;;)
+        {
+          QLog.d(this.TAG, 2, paramJsBridgeListener, new Object[0]);
+        }
+      }
     }
-    if (paramInt == 0)
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_Yqz != null)
     {
-      paramView.setBackgroundResource(2130838635);
-      return paramView;
+      this.jdField_a_of_type_Yqz.b();
+      this.jdField_a_of_type_Yqz = null;
     }
-    if (paramInt == SelectMemberFromFriendGroup.a(this.a).size() - 1)
+    if (this.jdField_a_of_type_Ansn != null)
     {
-      paramView.setBackgroundResource(2130838630);
-      return paramView;
+      this.jdField_a_of_type_Ansn.b();
+      this.jdField_a_of_type_Ansn = null;
     }
-    paramView.setBackgroundResource(2130838633);
-    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ybq
  * JD-Core Version:    0.7.0.1
  */

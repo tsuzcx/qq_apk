@@ -1,14 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.dataline.activities.LiteActivity;
-import java.util.Observable;
 
 public class bb
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public bb(LiteActivity paramLiteActivity, Observable paramObservable, Object paramObject) {}
+  public bb(LiteActivity paramLiteActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(this.jdField_a_of_type_JavaUtilObservable, this.jdField_a_of_type_JavaLangObject);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0xee$UGCPushInfo
-  extends MessageMicro
+  extends MessageMicro<UGCPushInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField string_ugc_reason = PBField.initBytes(ByteStringMicro.EMPTY);

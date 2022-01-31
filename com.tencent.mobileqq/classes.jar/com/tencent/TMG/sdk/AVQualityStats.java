@@ -13,7 +13,7 @@ public class AVQualityStats
   public int audioCaptureChannelCount;
   public int audioCaptureSampleRate;
   public int audioCategory;
-  public ArrayList<AudioDecodeParam> audioDecodeInfo = new ArrayList();
+  public ArrayList<AVQualityStats.AudioDecodeParam> audioDecodeInfo = new ArrayList();
   public int audioDecodeNum;
   public int audioEncodeBR;
   public int audioEncodeType;
@@ -106,9 +106,9 @@ public class AVQualityStats
   public long tickCountBegin;
   public long tickCountEnd;
   public int unsendUdt;
-  public ArrayList<VideoDecodeParam> videoDecodeInfo = new ArrayList();
+  public ArrayList<AVQualityStats.VideoDecodeParam> videoDecodeInfo = new ArrayList();
   public int videoDecodeNum;
-  public ArrayList<VideoEncodeParam> videoEncodeInfo = new ArrayList();
+  public ArrayList<AVQualityStats.VideoEncodeParam> videoEncodeInfo = new ArrayList();
   public int videoSendIFec;
   public int videoSendLossRate;
   public int videoSendPkt;
@@ -165,16 +165,16 @@ public class AVQualityStats
       int i = 0;
       while (localIterator.hasNext())
       {
-        localObject2 = (VideoEncodeParam)localIterator.next();
+        localObject2 = (AVQualityStats.VideoEncodeParam)localIterator.next();
         localJSONObject3 = new JSONObject();
-        localJSONObject3.put("video_encode_view_type", ((VideoEncodeParam)localObject2).encVideoStrType);
-        localJSONObject3.put("video_encode_view_witdh", ((VideoEncodeParam)localObject2).encWidth);
-        localJSONObject3.put("video_encode_view_height", ((VideoEncodeParam)localObject2).encHeight);
-        localJSONObject3.put("video_encode_fps", ((VideoEncodeParam)localObject2).encFPS);
-        localJSONObject3.put("video_encode_br", ((VideoEncodeParam)localObject2).encBR);
-        localJSONObject3.put("video_encode_angle", ((VideoEncodeParam)localObject2).angle);
-        localJSONObject3.put("video_encode_type", ((VideoEncodeParam)localObject2).encType);
-        localJSONObject3.put("video_encode_hw", ((VideoEncodeParam)localObject2).hw);
+        localJSONObject3.put("video_encode_view_type", ((AVQualityStats.VideoEncodeParam)localObject2).encVideoStrType);
+        localJSONObject3.put("video_encode_view_witdh", ((AVQualityStats.VideoEncodeParam)localObject2).encWidth);
+        localJSONObject3.put("video_encode_view_height", ((AVQualityStats.VideoEncodeParam)localObject2).encHeight);
+        localJSONObject3.put("video_encode_fps", ((AVQualityStats.VideoEncodeParam)localObject2).encFPS);
+        localJSONObject3.put("video_encode_br", ((AVQualityStats.VideoEncodeParam)localObject2).encBR);
+        localJSONObject3.put("video_encode_angle", ((AVQualityStats.VideoEncodeParam)localObject2).angle);
+        localJSONObject3.put("video_encode_type", ((AVQualityStats.VideoEncodeParam)localObject2).encType);
+        localJSONObject3.put("video_encode_hw", ((AVQualityStats.VideoEncodeParam)localObject2).hw);
         ((JSONArray)localObject1).put(localJSONObject3);
         i += 1;
       }
@@ -194,23 +194,23 @@ public class AVQualityStats
       localIterator = this.videoDecodeInfo.iterator();
       while (localIterator.hasNext())
       {
-        localObject2 = (VideoDecodeParam)localIterator.next();
+        localObject2 = (AVQualityStats.VideoDecodeParam)localIterator.next();
         localJSONObject3 = new JSONObject();
-        localJSONObject3.put("video_decode_tiny_id", ((VideoDecodeParam)localObject2).senderUin);
-        localJSONObject3.put("video_decode_view_type", ((VideoDecodeParam)localObject2).decVideoStrType);
-        localJSONObject3.put("video_decode_view_witdh", ((VideoDecodeParam)localObject2).decWidth);
-        localJSONObject3.put("video_decode_view_height", ((VideoDecodeParam)localObject2).decHeight);
-        localJSONObject3.put("video_decode_fps", ((VideoDecodeParam)localObject2).decFPS);
-        localJSONObject3.put("video_decode_br", ((VideoDecodeParam)localObject2).decBR);
-        localJSONObject3.put("video_decode_type", ((VideoDecodeParam)localObject2).decType);
-        localJSONObject3.put("video_decode_hw", ((VideoDecodeParam)localObject2).hw);
-        localJSONObject3.put("video_recv_loss_rate", ((VideoDecodeParam)localObject2).recvLossRate);
-        localJSONObject3.put("video_recv_loss_jitter", ((VideoDecodeParam)localObject2).recvJitter);
-        localJSONObject3.put("video_recv_br", ((VideoDecodeParam)localObject2).recvBR);
+        localJSONObject3.put("video_decode_tiny_id", ((AVQualityStats.VideoDecodeParam)localObject2).senderUin);
+        localJSONObject3.put("video_decode_view_type", ((AVQualityStats.VideoDecodeParam)localObject2).decVideoStrType);
+        localJSONObject3.put("video_decode_view_witdh", ((AVQualityStats.VideoDecodeParam)localObject2).decWidth);
+        localJSONObject3.put("video_decode_view_height", ((AVQualityStats.VideoDecodeParam)localObject2).decHeight);
+        localJSONObject3.put("video_decode_fps", ((AVQualityStats.VideoDecodeParam)localObject2).decFPS);
+        localJSONObject3.put("video_decode_br", ((AVQualityStats.VideoDecodeParam)localObject2).decBR);
+        localJSONObject3.put("video_decode_type", ((AVQualityStats.VideoDecodeParam)localObject2).decType);
+        localJSONObject3.put("video_decode_hw", ((AVQualityStats.VideoDecodeParam)localObject2).hw);
+        localJSONObject3.put("video_recv_loss_rate", ((AVQualityStats.VideoDecodeParam)localObject2).recvLossRate);
+        localJSONObject3.put("video_recv_loss_jitter", ((AVQualityStats.VideoDecodeParam)localObject2).recvJitter);
+        localJSONObject3.put("video_recv_br", ((AVQualityStats.VideoDecodeParam)localObject2).recvBR);
         ((JSONArray)localObject1).put(localJSONObject3);
       }
       if (this.videoDecodeNum <= 0) {
-        break label872;
+        break label871;
       }
     }
     catch (JSONException localJSONException)
@@ -220,7 +220,7 @@ public class AVQualityStats
     }
     localJSONObject2.put("video_decode_count", this.videoDecodeNum);
     localJSONObject2.put("video_decode_params", localObject1);
-    label872:
+    label871:
     if (this.majorVidWidth > 0)
     {
       localObject1 = new JSONObject();
@@ -320,12 +320,12 @@ public class AVQualityStats
       localIterator = this.audioDecodeInfo.iterator();
       while (localIterator.hasNext())
       {
-        localObject2 = (AudioDecodeParam)localIterator.next();
+        localObject2 = (AVQualityStats.AudioDecodeParam)localIterator.next();
         localJSONObject3 = new JSONObject();
-        localJSONObject3.put("audio_decode_tiny_id", ((AudioDecodeParam)localObject2).tinyId);
-        localJSONObject3.put("audio_decode_type", ((AudioDecodeParam)localObject2).decodeType);
-        localJSONObject3.put("audio_decode_sample_rate", ((AudioDecodeParam)localObject2).sampleRate);
-        localJSONObject3.put("audio_decode_channel_count", ((AudioDecodeParam)localObject2).channelCount);
+        localJSONObject3.put("audio_decode_tiny_id", ((AVQualityStats.AudioDecodeParam)localObject2).tinyId);
+        localJSONObject3.put("audio_decode_type", ((AVQualityStats.AudioDecodeParam)localObject2).decodeType);
+        localJSONObject3.put("audio_decode_sample_rate", ((AVQualityStats.AudioDecodeParam)localObject2).sampleRate);
+        localJSONObject3.put("audio_decode_channel_count", ((AVQualityStats.AudioDecodeParam)localObject2).channelCount);
         ((JSONArray)localObject1).put(localJSONObject3);
       }
       localJSONObject2.put("audio_decode_param", localObject1);
@@ -340,46 +340,10 @@ public class AVQualityStats
     }
     return localJSONException.toString();
   }
-  
-  public static class AudioDecodeParam
-  {
-    public int channelCount;
-    public int decodeType;
-    public int sampleRate;
-    public int tinyId;
-  }
-  
-  public static class VideoDecodeParam
-  {
-    public int decBR;
-    public int decFPS;
-    public int decHeight;
-    public int decType;
-    public int decVideoStrType;
-    public int decWidth;
-    public int hw;
-    public int hwDecDelay;
-    public int recvBR;
-    public int recvJitter;
-    public int recvLossRate;
-    public int senderUin;
-  }
-  
-  public static class VideoEncodeParam
-  {
-    public int angle;
-    public int encBR;
-    public int encFPS;
-    public int encHeight;
-    public int encType;
-    public int encVideoStrType;
-    public int encWidth;
-    public int hw;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.TMG.sdk.AVQualityStats
  * JD-Core Version:    0.7.0.1
  */

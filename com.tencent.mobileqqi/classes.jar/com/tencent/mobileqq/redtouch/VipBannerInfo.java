@@ -10,7 +10,7 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import gke;
+import gfv;
 
 public class VipBannerInfo
 {
@@ -50,7 +50,7 @@ public class VipBannerInfo
       } while (localObject == null);
       localRedTouchManager = (RedTouchManager)paramConversation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34);
     } while (localRedTouchManager == null);
-    ThreadManager.a().post(new gke(localRedTouchManager, paramConversation, (Handler)localObject));
+    ThreadManager.a().post(new gfv(localRedTouchManager, paramConversation, (Handler)localObject));
   }
   
   public static void b(Conversation paramConversation)

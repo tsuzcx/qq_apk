@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
-import com.tencent.mobileqq.utils.LogTag;
-
-public class wvx
-  implements Runnable
+class wvx
+  implements xsr<wsl>
 {
-  public wvx(AlbumListAdapter paramAlbumListAdapter) {}
+  wvx(wvq paramwvq) {}
   
-  public void run()
+  public wsl a()
   {
-    LogTag.a();
-    this.a.a();
-    LogTag.a("PEAK", "queryAllAlbumList");
+    return new wsl(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wvx
  * JD-Core Version:    0.7.0.1
  */

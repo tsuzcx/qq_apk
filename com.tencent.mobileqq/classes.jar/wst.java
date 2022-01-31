@@ -1,43 +1,45 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
-import com.tencent.qphone.base.util.QLog;
-
-class wst
-  implements Runnable
+public class wst<T>
+  extends wss
 {
-  wst(wss paramwss, Bitmap paramBitmap) {}
+  public T a;
+  public String a;
+  public wsv<T> a;
   
-  public void run()
+  public wst(wsv<T> paramwsv)
   {
-    boolean bool = true;
-    StringBuilder localStringBuilder;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      this.jdField_a_of_type_Wss.a.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("AvatarPendantActivity decode Avatar, bitmap is null:");
-        if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-          break label116;
-        }
-      }
-    }
-    for (;;)
-    {
-      QLog.d("Q.dynamicAvatar", 2, bool);
-      return;
-      this.jdField_a_of_type_Wss.a.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setFaceDrawable(this.jdField_a_of_type_Wss.a.app, 1, this.jdField_a_of_type_Wss.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, 640, true, true, true, false, 7);
-      break;
-      label116:
-      bool = false;
+    this.jdField_a_of_type_JavaLangString = "GetResultSimpleStep";
+    this.jdField_a_of_type_Wsv = paramwsv;
+  }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Wsv != null) {
+      this.jdField_a_of_type_Wsv.a(this.jdField_a_of_type_JavaLangObject);
     }
   }
+  
+  public void a(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wst
  * JD-Core Version:    0.7.0.1
  */

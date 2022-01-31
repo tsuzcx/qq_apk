@@ -2,10 +2,10 @@ package com.tencent.mobileqq.transfile.predownload.schedule;
 
 import java.util.HashMap;
 
-final class PreDownloadConstants$3
-  extends HashMap
+public final class PreDownloadConstants$3
+  extends HashMap<Integer, Integer>
 {
-  PreDownloadConstants$3()
+  public PreDownloadConstants$3()
   {
     put(Integer.valueOf(10001), Integer.valueOf(3));
     put(Integer.valueOf(10002), Integer.valueOf(3));
@@ -69,23 +69,41 @@ final class PreDownloadConstants$3
     put(Integer.valueOf(10058), Integer.valueOf(1));
     put(Integer.valueOf(10061), Integer.valueOf(0));
     put(Integer.valueOf(10005), Integer.valueOf(0));
-    put(Integer.valueOf(10062), Integer.valueOf(0));
     put(Integer.valueOf(10063), Integer.valueOf(2));
     put(Integer.valueOf(10064), Integer.valueOf(1));
     put(Integer.valueOf(10065), Integer.valueOf(4));
+    put(Integer.valueOf(10074), Integer.valueOf(4));
     put(Integer.valueOf(10066), Integer.valueOf(3));
     put(Integer.valueOf(10067), Integer.valueOf(1));
     put(Integer.valueOf(10068), Integer.valueOf(0));
     put(Integer.valueOf(10069), Integer.valueOf(0));
     put(Integer.valueOf(10070), Integer.valueOf(1));
-    put(Integer.valueOf(10074), Integer.valueOf(1));
     put(Integer.valueOf(10071), Integer.valueOf(0));
     put(Integer.valueOf(10073), Integer.valueOf(1));
+    put(Integer.valueOf(10075), Integer.valueOf(1));
+    put(Integer.valueOf(10076), Integer.valueOf(3));
+    put(Integer.valueOf(10077), Integer.valueOf(3));
+    put(Integer.valueOf(10079), Integer.valueOf(0));
+    put(Integer.valueOf(10080), Integer.valueOf(2));
+    put(Integer.valueOf(10081), Integer.valueOf(3));
+    put(Integer.valueOf(10082), Integer.valueOf(3));
+    put(Integer.valueOf(10083), Integer.valueOf(4));
+    put(Integer.valueOf(10084), Integer.valueOf(2));
+    put(Integer.valueOf(10085), Integer.valueOf(2));
+    put(Integer.valueOf(10086), Integer.valueOf(3));
+    put(Integer.valueOf(10087), Integer.valueOf(3));
+    put(Integer.valueOf(10088), Integer.valueOf(2));
+    put(Integer.valueOf(10089), Integer.valueOf(1));
+    put(Integer.valueOf(10090), Integer.valueOf(1));
+    put(Integer.valueOf(10091), Integer.valueOf(3));
+    put(Integer.valueOf(10092), Integer.valueOf(0));
+    put(Integer.valueOf(10093), Integer.valueOf(0));
+    put(Integer.valueOf(10094), Integer.valueOf(2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadConstants.3
  * JD-Core Version:    0.7.0.1
  */

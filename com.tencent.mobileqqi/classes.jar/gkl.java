@@ -1,20 +1,36 @@
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.widget.VerticalGallery;
-import com.tencent.widget.VerticalGallery.OnEndFlingListener;
+import com.tencent.feedback.eup.CrashHandleListener;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 
 public class gkl
-  implements VerticalGallery.OnEndFlingListener
+  implements CrashHandleListener
 {
-  public gkl(IosTimepicker paramIosTimepicker) {}
+  public gkl(StatisticCollector paramStatisticCollector) {}
   
-  public void a(VerticalGallery paramVerticalGallery)
+  public byte[] getCrashExtraData(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong)
   {
-    IosTimepicker.a(this.a);
+    return null;
+  }
+  
+  public String getCrashExtraMessage(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong)
+  {
+    return null;
+  }
+  
+  public boolean onCrashHandleEnd(boolean paramBoolean)
+  {
+    return true;
+  }
+  
+  public void onCrashHandleStart(boolean paramBoolean) {}
+  
+  public boolean onCrashSaving(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong, String paramString4, String paramString5, String paramString6, String paramString7)
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gkl
  * JD-Core Version:    0.7.0.1
  */

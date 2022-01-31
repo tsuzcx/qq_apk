@@ -1,66 +1,28 @@
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.IInformationPasterResDownloaderCallback;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.InformationPasterResDownloader;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class annd
-  implements INetEngine.INetEngineListener
+class annd
+  implements alpg
 {
-  public annd(QIMInformationPasterManager.InformationPasterResDownloader paramInformationPasterResDownloader) {}
-  
-  public void a(NetReq arg1, long paramLong1, long paramLong2)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    String str = ((InfomationFacePackage.Item)???.a()).d;
-    float f = (float)(100L * paramLong1 / paramLong2);
-    synchronized (QIMInformationPasterManager.InformationPasterResDownloader.a(this.a))
+    if (!paramBoolean)
     {
-      Iterator localIterator = ((ArrayList)QIMInformationPasterManager.InformationPasterResDownloader.a(this.a).get(str)).iterator();
-      while (localIterator.hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if (localWeakReference.get() != null) {
-          ((QIMInformationPasterManager.IInformationPasterResDownloaderCallback)localWeakReference.get()).a(f, str, 0);
-        }
-      }
+      ArkAppCenter.c("ArkApp.ArkAppCGI", "ArkTemp.queryAppInfoByAppNameBatch, sso request failed");
+      paramObject = null;
     }
-  }
-  
-  public void a(NetResp paramNetResp)
-  {
-    InfomationFacePackage.Item localItem = (InfomationFacePackage.Item)paramNetResp.a.a();
-    String str = localItem.d;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMInformationPasterManager", 2, "onResp ,url is :" + str + " http status:" + paramNetResp.c);
-    }
-    if ((paramNetResp.c == 200) && (QIMInformationPasterManager.InformationPasterResDownloader.a(this.a).b(localItem))) {}
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMInformationPasterManager", 2, "onResp ,isSucess:" + bool);
+      paramObject = annc.a(this.jdField_a_of_type_Annc, (String)paramObject);
+      if (this.jdField_a_of_type_Annk != null) {
+        this.jdField_a_of_type_Annk.a(paramObject, this.jdField_a_of_type_JavaLangObject);
       }
-      paramNetResp = ((ArrayList)QIMInformationPasterManager.InformationPasterResDownloader.a(this.a).get(str)).iterator();
-      while (paramNetResp.hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)paramNetResp.next();
-        if (localWeakReference.get() != null) {
-          ((QIMInformationPasterManager.IInformationPasterResDownloaderCallback)localWeakReference.get()).a(bool, str, localItem);
-        }
-      }
+      return;
     }
-    QIMInformationPasterManager.InformationPasterResDownloader.a(this.a).remove(str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     annd
  * JD-Core Version:    0.7.0.1
  */

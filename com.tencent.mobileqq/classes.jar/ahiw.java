@@ -1,42 +1,37 @@
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.contacts.view.HeaderScrollView;
 import com.tencent.qphone.base.util.QLog;
 
 public class ahiw
-  implements Animation.AnimationListener
+  implements ahsy
 {
-  public ahiw(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public ahiw(TroopView paramTroopView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureFragment", 2, "clearAnimation end!");
+      QLog.i("addContacts.TroopView", 2, "onRefreshResult. position:" + paramInt + " success:" + paramBoolean);
     }
-    if (EffectsCameraCaptureFragment.d(this.a) == null) {
+    paramObject = TroopView.a(this.a);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      paramObject = paramObject.obtainMessage(14, paramInt, i);
+      TroopView.a(this.a).sendMessage(paramObject);
       return;
     }
-    this.a.h = true;
-    EffectsCameraCaptureFragment.d(this.a).setText(2131439102);
-    EffectsCameraCaptureFragment.d(this.a).startAnimation(this.a.b);
-    this.a.a.setStartOffset(3000L);
-    this.a.a.setAnimationListener(EffectsCameraCaptureFragment.b(this.a));
-    EffectsCameraCaptureFragment.d(this.a).setAnimation(this.a.a);
-    this.a.a.startNow();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void ar_()
   {
-    this.a.h = true;
+    if ((TroopView.a(this.a) != null) && (!TroopView.a(this.a).a())) {
+      TroopView.a(this.a).scrollTo(0, TroopView.a(this.a).a());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahiw
  * JD-Core Version:    0.7.0.1
  */

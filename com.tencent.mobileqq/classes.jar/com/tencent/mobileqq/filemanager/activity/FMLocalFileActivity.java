@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import acmb;
-import acmc;
+import alof;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter;
-import com.tencent.mobileqq.filemanager.data.FileCategoryEntity;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
+import aqli;
+import aqlj;
+import arbu;
+import arbw;
+import arri;
+import arrr;
+import arsu;
 import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
@@ -24,21 +23,22 @@ import java.util.Map;
 public class FMLocalFileActivity
   extends BaseFileAssistantActivity
 {
-  public static String e = "FileAssistantActivity<FileAssistant>";
+  public static String g = "FileAssistantActivity<FileAssistant>";
   private AsyncTask jdField_a_of_type_AndroidOsAsyncTask;
   public View.OnClickListener a;
-  public FileCategoryAdapter a;
+  public arbu a;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
-  public List a;
+  public List<arbw> a;
+  boolean j;
   
   public FMLocalFileActivity()
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter = null;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new acmc(this);
+    this.jdField_a_of_type_Arbu = null;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aqlj(this);
   }
   
-  private void b(int paramInt)
+  private void c(int paramInt)
   {
     Intent localIntent = null;
     switch (paramInt)
@@ -62,11 +62,11 @@ public class FMLocalFileActivity
         localIntent = new Intent(getApplicationContext(), LocalFileBrowserActivity.class);
         break;
       }
-      FMToastUtil.a(2131428201);
+      arri.a(2131720891);
       break;
       a().ag();
       finish();
-      overridePendingTransition(2131034309, 2131034310);
+      overridePendingTransition(2130772216, 2130772217);
       return;
       a().ak();
       continue;
@@ -94,8 +94,10 @@ public class FMLocalFileActivity
       if (localObject != null) {
         localIntent.putExtra("STRING_Show_Within_Suffixs", (String[])localObject);
       }
+      localIntent.putExtra("select_file_only_docs_file", this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.a());
+      localIntent.putExtra("qrlogin_appid", this.jdField_b_of_type_Long);
       startActivityForResult(localIntent, 100);
-      overridePendingTransition(2131034309, 2131034310);
+      overridePendingTransition(2130772216, 2130772217);
       return;
     }
     catch (Exception localException)
@@ -104,113 +106,80 @@ public class FMLocalFileActivity
     }
   }
   
-  private void m()
-  {
-    this.b = getString(2131428086);
-    setTitle(this.b);
-  }
-  
   private void n()
   {
+    this.jdField_b_of_type_JavaLangString = getString(2131692571);
+    setTitle(this.jdField_b_of_type_JavaLangString);
+  }
+  
+  private void o()
+  {
     this.jdField_a_of_type_JavaUtilList.clear();
-    String str1 = getString(2131428120);
-    String str2 = getString(2131428111);
-    String str3 = getString(2131428112);
-    String str4 = getString(2131428113);
-    String str5 = getString(2131428102);
-    String str6 = getString(2131428116);
-    String str7 = getString(2131428117);
-    String str8 = getString(2131428118);
-    String str9 = getString(2131428093);
+    getString(2131692515);
+    getString(2131692504);
+    getString(2131692572);
+    getString(2131692475);
+    getString(2131692518);
+    String str1 = getString(2131692503);
+    String str2 = getString(2131692530);
+    String str3 = getString(2131692529);
+    String str4 = getString(2131692505);
     Intent localIntent = getIntent();
-    boolean bool8;
-    boolean bool7;
-    boolean bool6;
     boolean bool2;
-    boolean bool3;
-    boolean bool4;
     boolean bool1;
-    boolean bool5;
+    boolean bool3;
     if (localIntent != null)
     {
-      bool8 = localIntent.getBooleanExtra("STRING_Show_Music_Category", true);
-      bool7 = localIntent.getBooleanExtra("STRING_Show_Video_Category", true);
-      bool6 = localIntent.getBooleanExtra("STRING_Show_Apk_Category", true);
-      bool2 = localIntent.getBooleanExtra("STRING_Show_Pic_Category", true);
-      bool3 = localIntent.getBooleanExtra("STRING_Show_Download_Category", true);
-      bool4 = localIntent.getBooleanExtra("STRING_Show_Driver_Category", true);
+      bool2 = localIntent.getBooleanExtra("STRING_Show_Driver_Category", true);
       bool1 = localIntent.getBooleanExtra("STRING_Show_MyFile_Category", false);
-      boolean bool9 = localIntent.getBooleanExtra("STRING_Show_First_Space", true);
-      bool5 = bool3;
-      bool3 = bool1;
-      bool1 = bool9;
+      bool3 = localIntent.getBooleanExtra("STRING_Show_First_Space", true);
     }
     for (;;)
     {
-      if (bool4) {
-        a(2130970014, 2130842666, 2, null, 0, false, 0, 1);
-      }
       if (bool2) {
-        a(2130970012, 2130841634, 0, str1, FileCategoryUtil.a(this), true, 10, 2);
-      }
-      if (bool8) {
-        a(2130970012, 2130841632, 0, str2, FileCategoryUtil.b(this), true, 1, 3);
-      }
-      if (bool7) {
-        a(2130970012, 2130841638, 0, str3, FileCategoryUtil.c(this), true, 2, 3);
-      }
-      if (bool6) {
-        a(2130970012, 2130841627, 0, str4, 0, true, 4, 4);
-      }
-      if (bool3) {
-        a(2130970012, 2130841630, 0, str9, 0, false, 20, 2);
+        a(2131560647, 2130844929, 2, null, 0, false, 0, 1);
       }
       if (bool1) {
-        a(2130970005, 2130842666, 1, null, 0, false, 0, 1);
+        a(2131560645, 2130843899, 0, str4, 0, false, 20, 2);
       }
-      if (bool5) {
-        a(2130970012, 2130841629, 0, str5, 0, false, 6, 2);
+      if (bool3) {
+        a(2131560638, 2130844929, 1, null, 0, false, 0, 1);
       }
-      a(2130970012, 2130841635, 0, str6, 0, false, 7, 3);
-      if (FileManagerUtil.a(this).containsKey("externalSdCard"))
+      a(2131560645, 2130843900, 0, str1, 0, false, 7, 3);
+      if (arrr.a(this).containsKey("externalSdCard"))
       {
-        a(2130970012, 2130841636, 0, str7, 0, false, 8, 3);
-        a(2130970012, 2130841636, 0, str8, 0, false, 11, 4);
+        a(2131560645, 2130843901, 0, str2, 0, false, 8, 3);
+        a(2131560645, 2130843901, 0, str3, 0, false, 11, 4);
       }
-      while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter == null)
+      while (this.jdField_a_of_type_Arbu == null)
       {
         return;
-        a(2130970012, 2130841636, 0, str7, 0, false, 8, 4);
+        a(2131560645, 2130843901, 0, str2, 0, false, 8, 4);
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter.notifyDataSetChanged();
-      l();
+      this.jdField_a_of_type_Arbu.notifyDataSetChanged();
+      m();
       return;
-      bool1 = true;
-      bool3 = false;
-      bool5 = true;
+      bool3 = true;
+      bool1 = false;
       bool2 = true;
-      bool6 = true;
-      bool7 = true;
-      bool8 = true;
-      bool4 = true;
     }
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, String paramString, int paramInt4, boolean paramBoolean, int paramInt5, int paramInt6)
   {
-    FileCategoryEntity localFileCategoryEntity = new FileCategoryEntity();
-    localFileCategoryEntity.b = paramInt1;
-    localFileCategoryEntity.c = paramInt2;
-    localFileCategoryEntity.jdField_a_of_type_Int = paramInt3;
-    localFileCategoryEntity.jdField_a_of_type_JavaLangString = paramString;
-    localFileCategoryEntity.d = paramInt4;
-    localFileCategoryEntity.jdField_a_of_type_Boolean = paramBoolean;
-    localFileCategoryEntity.e = paramInt5;
-    localFileCategoryEntity.f = paramInt6;
-    this.jdField_a_of_type_JavaUtilList.add(localFileCategoryEntity);
+    arbw localarbw = new arbw();
+    localarbw.b = paramInt1;
+    localarbw.c = paramInt2;
+    localarbw.jdField_a_of_type_Int = paramInt3;
+    localarbw.jdField_a_of_type_JavaLangString = paramString;
+    localarbw.d = paramInt4;
+    localarbw.jdField_a_of_type_Boolean = paramBoolean;
+    localarbw.e = paramInt5;
+    localarbw.f = paramInt6;
+    this.jdField_a_of_type_JavaUtilList.add(localarbw);
   }
   
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt2 == 4) || (paramInt2 == 5))
@@ -220,45 +189,50 @@ public class FMLocalFileActivity
       }
       return;
     }
-    n();
+    o();
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130970016);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131368790));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter = new FileCategoryAdapter(this, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter);
-    m();
+    setContentView(2131560649);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131369800));
+    this.jdField_a_of_type_Arbu = new arbu(this, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Arbu);
     n();
+    o();
     Intent localIntent;
     switch (getIntent().getIntExtra("localSdCardfile", -1))
     {
     default: 
       localIntent = getIntent();
+      this.j = localIntent.getBooleanExtra("select_file_only_docs_file", false);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setDocsCheck(this.j);
+      if (this.j) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setOnlyDocsChecked();
+      }
       String str = localIntent.getStringExtra("targetUin");
-      if ((paramBundle == null) || (!AppConstants.y.equals(str))) {
+      if ((paramBundle == null) || (!alof.z.equals(str))) {
         break;
       }
     }
     for (;;)
     {
-      k();
+      l();
       return true;
       d();
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setEditBtnVisible(false);
-      setTitle(2131428086);
+      setTitle(2131692571);
       return true;
       this.leftView.setVisibility(8);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setEditBtnVisible(false);
-      setTitle(2131428086);
+      setTitle(2131692571);
       break;
-      b(localIntent.getIntExtra("category", 0));
+      c(localIntent.getIntExtra("category", 0));
     }
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     if (this.jdField_a_of_type_AndroidOsAsyncTask != null) {
       this.jdField_a_of_type_AndroidOsAsyncTask.cancel(true);
@@ -267,17 +241,17 @@ public class FMLocalFileActivity
     super.doOnDestroy();
   }
   
-  public void l()
+  public void m()
   {
     if (this.jdField_a_of_type_AndroidOsAsyncTask != null) {
       this.jdField_a_of_type_AndroidOsAsyncTask.cancel(true);
     }
-    this.jdField_a_of_type_AndroidOsAsyncTask = new acmb(this).execute(new Void[0]);
+    this.jdField_a_of_type_AndroidOsAsyncTask = new aqli(this).execute(new Void[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity
  * JD-Core Version:    0.7.0.1
  */

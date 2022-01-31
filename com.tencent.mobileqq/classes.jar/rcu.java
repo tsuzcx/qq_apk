@@ -1,21 +1,29 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
-import com.tencent.litetransfersdk.MsgCSBody;
+import android.os.Bundle;
 
-public class rcu
-  implements Runnable
+class rcu
+  extends ntc
 {
-  public rcu(LiteTransferWrapper paramLiteTransferWrapper, MsgCSBody paramMsgCSBody) {}
+  private rcu(rcp paramrcp) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) != 0L) {
-      this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.PbMsgReciveToJNI(LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_ComTencentLitetransfersdkMsgCSBody);
+    rcp.b(this.a);
+    if (paramBoolean)
+    {
+      rcp.a(this.a, paramBundle.getString("VALUE_COOKIE", null));
+      paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
+      rcp.a(this.a, paramBundle);
+      if (rcp.a(this.a))
+      {
+        rcp.a(this.a);
+        rcp.a(this.a, false);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rcu
  * JD-Core Version:    0.7.0.1
  */

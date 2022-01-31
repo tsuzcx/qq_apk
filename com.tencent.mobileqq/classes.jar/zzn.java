@@ -1,21 +1,41 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameTouchView;
+import java.util.List;
 
-class zzn
-  implements Runnable
+public class zzn
 {
-  zzn(zzl paramzzl, boolean paramBoolean) {}
+  private static int d;
+  public int a;
+  public long a;
+  public String a;
+  public List<String> a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public boolean c;
   
-  public void run()
+  public zzn()
   {
-    ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_Zzl.a).setIsShowExtend(this.jdField_a_of_type_Boolean);
-    ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_Zzl.a).setClickable(true);
-    ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_Zzl.a).setVisibility(0);
+    d += 1;
+    this.jdField_a_of_type_Int = d;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 0L;
+    this.c = 0;
+  }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString.replaceAll(":", "") + "0000";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zzn
  * JD-Core Version:    0.7.0.1
  */

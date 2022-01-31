@@ -1,21 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.AuthorityActivity.AccountInfo;
-import com.tencent.open.agent.CardContainer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class alam
-  implements Runnable
+class alam
+  implements DialogInterface.OnClickListener
 {
-  public alam(AuthorityActivity paramAuthorityActivity, Bitmap paramBitmap) {}
+  alam(alaj paramalaj) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a, "", this.jdField_a_of_type_AndroidGraphicsBitmap, false);
+    alaj.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alam
  * JD-Core Version:    0.7.0.1
  */

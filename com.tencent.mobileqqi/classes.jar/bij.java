@@ -1,81 +1,23 @@
-import android.os.IBinder;
-import android.os.Parcel;
-import com.tencent.av.service.IAVServiceCallback;
-import com.tencent.av.service.IAVServiceForQQ;
+import android.widget.ImageView;
+import com.tencent.biz.eqq.EnterpriseDetailActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 public class bij
-  implements IAVServiceForQQ
+  implements URLDrawable.URLDrawableListener
 {
-  private IBinder a;
+  public bij(EnterpriseDetailActivity paramEnterpriseDetailActivity, ImageView paramImageView) {}
   
-  public bij(IBinder paramIBinder)
-  {
-    this.a = paramIBinder;
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public String a()
-  {
-    return "com.tencent.av.service.IAVServiceForQQ";
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public void a(IAVServiceCallback paramIAVServiceCallback)
-  {
-    IBinder localIBinder = null;
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      if (paramIAVServiceCallback != null) {
-        localIBinder = paramIAVServiceCallback.asBinder();
-      }
-      localParcel.writeStrongBinder(localIBinder);
-      this.a.transact(1, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void a(byte[] paramArrayOfByte)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      localParcel.writeByteArray(paramArrayOfByte);
-      this.a.transact(2, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b(byte[] paramArrayOfByte)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      localParcel1.writeByteArray(paramArrayOfByte);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
   }
 }
 

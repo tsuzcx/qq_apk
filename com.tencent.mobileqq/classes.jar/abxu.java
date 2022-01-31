@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.dating.SayHelloMsgListActivity;
-import com.tencent.mobileqq.nearby.NearbyRelevantHandler;
-import java.util.List;
+import android.app.Activity;
 
 public class abxu
-  implements Runnable
+  extends abxe
 {
-  public abxu(SayHelloMsgListActivity paramSayHelloMsgListActivity, List paramList) {}
-  
-  public void run()
+  public abxu(Activity paramActivity, int paramInt, String paramString)
   {
-    ((NearbyRelevantHandler)this.jdField_a_of_type_ComTencentMobileqqDatingSayHelloMsgListActivity.app.a(66)).a(this.jdField_a_of_type_JavaUtilList);
+    super(paramActivity, paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxu
  * JD-Core Version:    0.7.0.1
  */

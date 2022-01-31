@@ -1,23 +1,13 @@
-import com.tencent.open.appcommon.js.BaseInterface;
-import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.WebView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.widget.PermissionView.PermissionAdapter;
 
 public class hou
-  implements Runnable
+  implements View.OnClickListener
 {
-  public hou(BaseInterface paramBaseInterface, long paramLong, String paramString, WebView paramWebView) {}
+  public hou(PermissionView.PermissionAdapter paramPermissionAdapter) {}
   
-  public void run()
-  {
-    String str = "javascript:QzoneApp.fire('batchCallback',{guid:" + this.jdField_a_of_type_Long + ",'r':-2,'data':['" + this.jdField_a_of_type_JavaLangString + "']});";
-    LogUtility.e("Response<callBatch>", str);
-    try
-    {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(str);
-      return;
-    }
-    catch (Exception localException) {}
-  }
+  public void onClick(View paramView) {}
 }
 
 

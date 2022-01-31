@@ -1,28 +1,37 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.widget.GridListView;
-import com.tencent.mobileqq.widget.GridListView.GridListAdapter;
-import com.tencent.mobileqq.widget.GridListView.WraperAdapter;
+import android.os.Bundle;
+import com.tencent.open.appcommon.AppViewBaseActivity;
+import com.tencent.open.appcommon.js.BaseJsCallBack;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class hku
-  extends DataSetObserver
+  implements Runnable
 {
-  public hku(GridListView paramGridListView) {}
+  public hku(BaseJsCallBack paramBaseJsCallBack, String paramString) {}
   
-  public void onChanged()
+  public void run()
   {
-    GridListView.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetChanged();
-  }
-  
-  public void onInvalidated()
-  {
-    GridListView.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetInvalidated();
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      Bundle localBundle = new Bundle();
+      localBundle.putString("iconType", localJSONObject.optString("iconType"));
+      localBundle.putString("visible", localJSONObject.optString("visible"));
+      localBundle.putString("callBackKey", localJSONObject.optString("callBackKey"));
+      if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack.activity instanceof AppViewBaseActivity)) {
+        ((AppViewBaseActivity)this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack.activity).b(localBundle);
+      }
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hku
  * JD-Core Version:    0.7.0.1
  */

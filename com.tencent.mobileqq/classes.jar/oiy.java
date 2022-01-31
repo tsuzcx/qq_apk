@@ -1,21 +1,14 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-public class oiy
-  implements View.OnFocusChangeListener
+public abstract interface oiy
 {
-  public oiy(EditTextDialog paramEditTextDialog) {}
+  public abstract void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString);
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
-  {
-    SLog.b("EditTextDialog", "onFocusChange:" + paramBoolean);
-  }
+  public abstract void a(PublishVideoEntry paramPublishVideoEntry, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oiy
  * JD-Core Version:    0.7.0.1
  */

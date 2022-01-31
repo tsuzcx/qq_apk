@@ -1,33 +1,88 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.Paint.Style;
+import android.graphics.Typeface;
+import android.text.TextPaint;
 
 public class llu
-  implements Runnable
+  extends lll
 {
-  public llu(KandianMergeManager paramKandianMergeManager, QQMessageFacade paramQQMessageFacade, String paramString1, String paramString2, int paramInt, boolean paramBoolean) {}
+  TextPaint a;
   
-  public void run()
+  public llu(ljf paramljf, boolean paramBoolean)
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b(AppConstants.as, 7220);
-    if (localMessageRecord != null) {}
-    for (localMessageRecord = KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager, localMessageRecord, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);; localMessageRecord = KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int))
-    {
-      if (localMessageRecord != null)
-      {
-        ReadInJoyUtils.a(localMessageRecord);
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(localMessageRecord, KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager).c());
-      }
-      return;
+    super(paramljf, paramBoolean);
+    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+    this.jdField_a_of_type_AndroidTextTextPaint.setStrokeWidth(4.0F);
+    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int * 16;
+  }
+  
+  protected void a(Canvas paramCanvas, int paramInt1, int paramInt2)
+  {
+    int k = this.jdField_a_of_type_Int - 8;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(k);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setFlags(1);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(k);
+    this.jdField_a_of_type_AndroidTextTextPaint.setFlags(1);
+    lek.c("ARZimuTask_SpitZimuItemTask", "onDraw width = " + paramInt1);
+    float f = -this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics().ascent;
+    String str2 = this.jdField_a_of_type_Ljf.a.toString();
+    String str1 = str2;
+    if (str2.length() > 10) {
+      str1 = str2.substring(str2.length() - 10);
     }
+    str2 = llr.a(str1);
+    int j = str1.length();
+    str1 = str1 + str2;
+    lek.c("ARZimuTask_SpitZimuItemTask", "onDraw showText = " + str1);
+    paramInt2 = str1.length();
+    paramInt1 = paramInt2;
+    if (paramInt2 > 13) {
+      paramInt1 = 13;
+    }
+    int i = 2;
+    k -= 6;
+    paramInt2 = 0;
+    while (paramInt2 < paramInt1)
+    {
+      if (paramInt2 >= j)
+      {
+        this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(k);
+        this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(k);
+      }
+      str2 = str1.substring(paramInt2, paramInt2 + 1);
+      llr.a(this.jdField_a_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_AndroidTextTextPaint);
+      paramCanvas.drawText(str2, i, f, this.jdField_a_of_type_AndroidTextTextPaint);
+      paramCanvas.drawText(str2, i, f, this.jdField_a_of_type_AndroidGraphicsPaint);
+      i += this.jdField_a_of_type_Int;
+      paramInt2 += 1;
+    }
+    lek.c("ARZimuTask_SpitZimuItemTask", "onDraw offsetX = " + i);
+  }
+  
+  public void a(Typeface paramTypeface, int paramInt, mqq parammqq)
+  {
+    super.a(paramTypeface, paramInt, parammqq);
+    if (paramTypeface != null) {
+      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+    }
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     llu
  * JD-Core Version:    0.7.0.1
  */

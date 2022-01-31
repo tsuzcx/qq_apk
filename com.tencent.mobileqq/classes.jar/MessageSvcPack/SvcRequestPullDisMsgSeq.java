@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class SvcRequestPullDisMsgSeq
   extends JceStruct
 {
-  static ArrayList cache_vDisInfo;
+  static ArrayList<PullDisSeqParam> cache_vDisInfo;
   public byte cVerifyType;
-  public ArrayList vDisInfo;
+  public ArrayList<PullDisSeqParam> vDisInfo;
   
   public SvcRequestPullDisMsgSeq() {}
   
-  public SvcRequestPullDisMsgSeq(ArrayList paramArrayList, byte paramByte)
+  public SvcRequestPullDisMsgSeq(ArrayList<PullDisSeqParam> paramArrayList, byte paramByte)
   {
     this.vDisInfo = paramArrayList;
     this.cVerifyType = paramByte;

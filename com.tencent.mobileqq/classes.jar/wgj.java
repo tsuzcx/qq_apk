@@ -1,34 +1,22 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListAdapter;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
 
-public class wgj
-  implements ActionSheet.OnButtonClickListener
+class wgj
+  implements View.OnClickListener
 {
-  public wgj(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment, ChatMessage paramChatMessage, ActionSheet paramActionSheet) {}
+  wgj(wgi paramwgi) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      ThreadManager.post(new wgk(this), 5, null, false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.a.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.a.notifyDataSetChanged();
+    int i = ((Integer)paramView.getTag()).intValue();
+    if (this.a.a.a != null) {
+      this.a.a.a.a(paramView, this.a.a.a(i));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wgj
  * JD-Core Version:    0.7.0.1
  */

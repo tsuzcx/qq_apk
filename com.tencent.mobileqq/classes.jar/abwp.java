@@ -1,34 +1,43 @@
-import com.tencent.mobileqq.dating.CarrierHelper;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
 public class abwp
-  implements Runnable
+  extends RecyclablePool.Recyclable
 {
-  public abwp(CarrierHelper paramCarrierHelper, LinkedList paramLinkedList) {}
+  public int a;
+  public long a;
+  public String a;
+  public int[] a;
+  public int b;
+  public long b;
+  public int[] b;
+  public int c;
+  public long c;
+  public int d;
+  public long d;
+  public int e;
+  long e;
+  public int f;
+  public long f;
+  public int g;
+  public long g;
+  int h = 0;
+  int i = 0;
   
-  public void run()
+  public abwp()
   {
-    if ((CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper)) || (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())) {
-      return;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      if (5 == localInteger.intValue()) {
-        ReportController.b(CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper), "CliOper", "", "", "0X80052A4", "0X80052A4", CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper), 0, "", "", "", "");
-      } else if ((CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper) == 2) || (CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper) == 1)) {
-        ReportController.b(CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper), "CliOper", "", "", "0X80050D0", "0X80050D0", CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper), 0, String.valueOf(localInteger), "", "", "");
-      }
-    }
-    CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper, true);
+    this.jdField_e_of_type_Long = 0L;
+    this.jdField_a_of_type_ArrayOfInt = new int[abwo.a().length];
+    this.jdField_b_of_type_ArrayOfInt = new int[abwo.b().length];
+  }
+  
+  public String a(long paramLong)
+  {
+    return String.format("h:%x[%d,%d,%d][%d,%d][%d,%d,%d][%d,%d,%d][%s]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.jdField_c_of_type_Long - paramLong), Long.valueOf(this.jdField_b_of_type_Long - paramLong), Long.valueOf(this.jdField_d_of_type_Long - paramLong), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.f), Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.g), Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(this.jdField_d_of_type_Int), Integer.valueOf(this.jdField_e_of_type_Int), this.jdField_a_of_type_JavaLangString });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwp
  * JD-Core Version:    0.7.0.1
  */

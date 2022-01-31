@@ -1,19 +1,11 @@
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.OnErrorListener;
-
-public class anju
-  implements GuideVideoView.OnErrorListener
+public abstract interface anju
+  extends anjv
 {
-  public anju(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void a(String paramString)
-  {
-    QIMEffectCameraCaptureUnit.e(this.a);
-  }
+  public abstract void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anju
  * JD-Core Version:    0.7.0.1
  */

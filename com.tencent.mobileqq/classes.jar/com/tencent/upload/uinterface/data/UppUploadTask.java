@@ -3,11 +3,12 @@ package com.tencent.upload.uinterface.data;
 import FileUpload.UploadUppInfoReq;
 import FileUpload.UploadUppInfoRsp;
 import android.util.Log;
-import com.tencent.upload.a.a;
-import com.tencent.upload.common.Const.UploadRetCode;
-import com.tencent.upload.common.FileUtils;
 import com.tencent.upload.uinterface.AbstractUploadTask;
 import com.tencent.upload.uinterface.TaskTypeConfig;
+import com.tencent.upload.utils.Const.UploadRetCode;
+import com.tencent.upload.utils.FileUtils;
+import com.tencent.upload.utils.JceEncoder;
+import com.tencent.upload.utils.UploadLog;
 
 public class UppUploadTask
   extends AbstractUploadTask
@@ -31,7 +32,7 @@ public class UppUploadTask
   {
     UploadUppInfoReq localUploadUppInfoReq = new UploadUppInfoReq();
     localUploadUppInfoReq.appid = "diy";
-    return com.tencent.upload.e.b.a(localUploadUppInfoReq);
+    return JceEncoder.encode(localUploadUppInfoReq);
   }
   
   public TaskTypeConfig getUploadTaskType()
@@ -39,20 +40,20 @@ public class UppUploadTask
     return TaskTypeConfig.UppUploadTaskType;
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     if (!this.mKeepFileAfterUpload) {
       FileUtils.deleteTempFile(this.uploadFilePath);
     }
-    a.b(this, this.mSessionId);
+    super.onDestroy();
   }
   
-  protected void processFileUploadFinishRsp(byte[] paramArrayOfByte)
+  public void processFileUploadFinishRsp(byte[] paramArrayOfByte)
   {
     Object localObject2 = null;
     try
     {
-      localObject1 = (UploadUppInfoRsp)com.tencent.upload.e.b.a(UploadUppInfoRsp.class, paramArrayOfByte);
+      localObject1 = (UploadUppInfoRsp)JceEncoder.decode(UploadUppInfoRsp.class, paramArrayOfByte);
       localObject2 = localObject1;
       localObject1 = null;
     }
@@ -61,7 +62,7 @@ public class UppUploadTask
       for (;;)
       {
         localObject1 = Log.getStackTraceString(localException);
-        com.tencent.upload.common.b.b("UppUploadTask", "get rsp ", localException);
+        UploadLog.w("UppUploadTask", "get rsp ", localException);
       }
       Object localObject1 = new UppUploadResult();
       ((UppUploadResult)localObject1).flowId = this.flowId;
@@ -83,7 +84,7 @@ public class UppUploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.UppUploadTask
  * JD-Core Version:    0.7.0.1
  */

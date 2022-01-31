@@ -1,31 +1,57 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.mobileqq.pb.PBStringField;
 
-public class yob
-  implements Runnable
+class yob
+  extends syt
 {
-  public yob(HotChatCenterFragment paramHotChatCenterFragment) {}
+  yob(ynx paramynx) {}
   
-  public void run()
+  protected boolean a(Integer paramInteger)
   {
-    try
-    {
-      HotChatCenterFragment.a(this.a);
-      if (this.a.isAdded()) {
-        this.a.getActivity().runOnUiThread(new yoc(this));
-      }
-      return;
+    if ((ynx.a(this.a) == null) || (ynx.a(this.a) == null)) {
+      return false;
     }
-    catch (Throwable localThrowable)
+    switch (paramInteger.intValue())
     {
-      QLog.e("HotchatActivity", 1, localThrowable, new Object[] { "[update] failed" });
+    }
+    for (;;)
+    {
+      return super.a(paramInteger);
+      ynx.a(this.a);
+      if ((ynx.a(this.a) != null) && (ynx.a(this.a).a() != null))
+      {
+        zaj.a(ynx.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_friends", 0, 0, new String[] { null, null, ynx.a(this.a).f(), ynx.a(this.a).c() });
+        continue;
+        ynx.b(this.a);
+        if ((ynx.a(this.a) != null) && (ynx.a(this.a).a() != null))
+        {
+          zaj.a(ynx.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_qzone", 0, 0, new String[] { null, null, ynx.a(this.a).f(), ynx.a(this.a).c() });
+          continue;
+          ynx.a(this.a, 0);
+          if ((ynx.a(this.a) != null) && (ynx.a(this.a).a() != null))
+          {
+            zaj.a(ynx.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_wechat", 0, 0, new String[] { null, null, ynx.a(this.a).f(), ynx.a(this.a).c() });
+            continue;
+            ynx.a(this.a, 1);
+            if ((ynx.a(this.a) != null) && (ynx.a(this.a).a() != null))
+            {
+              zaj.a(ynx.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_moments", 0, 0, new String[] { null, null, ynx.a(this.a).f(), ynx.a(this.a).c() });
+              continue;
+              ynx.c(this.a);
+              if ((ynx.a(this.a) != null) && (ynx.a(this.a).a() != null)) {
+                zaj.a(ynx.a(this.a).a().poster.id.get(), "auth_pic_share", "clk_save_local", 0, 0, new String[] { null, null, ynx.a(this.a).f(), ynx.a(this.a).c() });
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yob
  * JD-Core Version:    0.7.0.1
  */

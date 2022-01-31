@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.activity.SecurityProtectActivity;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.activity.SubaccountUgActivity;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
 
-public class dnd
-  implements Runnable
+class dnd
+  implements DialogInterface.OnClickListener
 {
-  public dnd(SecurityProtectActivity paramSecurityProtectActivity) {}
+  dnd(dnc paramdnc) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    HttpDownloadUtil.a(this.a.b, this.a.a, this.a);
+    SubAccountAssistantForward.b(this.a.a.b);
+    SubAccountAssistantForward.a(this.a.a.b);
+    this.a.a.a().setTitle("");
+    paramDialogInterface = new Intent(this.a.a.a(), SubaccountUgActivity.class);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

@@ -25,6 +25,7 @@ class KeyframeSet
   
   public static KeyframeSet ofFloat(float... paramVarArgs)
   {
+    int i = 1;
     int j = paramVarArgs.length;
     Keyframe.FloatKeyframe[] arrayOfFloatKeyframe = new Keyframe.FloatKeyframe[Math.max(j, 2)];
     if (j == 1)
@@ -36,7 +37,6 @@ class KeyframeSet
     {
       return new FloatKeyframeSet(arrayOfFloatKeyframe);
       arrayOfFloatKeyframe[0] = ((Keyframe.FloatKeyframe)Keyframe.ofFloat(0.0F, paramVarArgs[0]));
-      int i = 1;
       while (i < j)
       {
         arrayOfFloatKeyframe[i] = ((Keyframe.FloatKeyframe)Keyframe.ofFloat(i / (j - 1), paramVarArgs[i]));
@@ -47,6 +47,7 @@ class KeyframeSet
   
   public static KeyframeSet ofInt(int... paramVarArgs)
   {
+    int i = 1;
     int j = paramVarArgs.length;
     Keyframe.IntKeyframe[] arrayOfIntKeyframe = new Keyframe.IntKeyframe[Math.max(j, 2)];
     if (j == 1)
@@ -58,7 +59,6 @@ class KeyframeSet
     {
       return new IntKeyframeSet(arrayOfIntKeyframe);
       arrayOfIntKeyframe[0] = ((Keyframe.IntKeyframe)Keyframe.ofInt(0.0F, paramVarArgs[0]));
-      int i = 1;
       while (i < j)
       {
         arrayOfIntKeyframe[i] = ((Keyframe.IntKeyframe)Keyframe.ofInt(i / (j - 1), paramVarArgs[i]));
@@ -69,28 +69,29 @@ class KeyframeSet
   
   public static KeyframeSet ofKeyframe(Keyframe... paramVarArgs)
   {
-    int n = paramVarArgs.length;
+    int n = 0;
+    int i1 = paramVarArgs.length;
+    int i = 0;
     int m = 0;
     int k = 0;
     int j = 0;
-    int i = 0;
     Object localObject;
-    if (i >= n)
+    if (i >= i1)
     {
-      if ((m != 0) && (k == 0) && (j == 0))
+      if ((j != 0) && (k == 0) && (m == 0))
       {
-        localObject = new Keyframe.FloatKeyframe[n];
-        i = 0;
+        localObject = new Keyframe.FloatKeyframe[i1];
+        i = n;
       }
     }
     else {
       for (;;)
       {
-        if (i >= n)
+        if (i >= i1)
         {
           return new FloatKeyframeSet((Keyframe.FloatKeyframe[])localObject);
           if ((paramVarArgs[i] instanceof Keyframe.FloatKeyframe)) {
-            m = 1;
+            j = 1;
           }
           for (;;)
           {
@@ -99,7 +100,7 @@ class KeyframeSet
             if ((paramVarArgs[i] instanceof Keyframe.IntKeyframe)) {
               k = 1;
             } else {
-              j = 1;
+              m = 1;
             }
           }
         }
@@ -107,13 +108,13 @@ class KeyframeSet
         i += 1;
       }
     }
-    if ((k != 0) && (m == 0) && (j == 0))
+    if ((k != 0) && (j == 0) && (m == 0))
     {
-      localObject = new Keyframe.IntKeyframe[n];
+      localObject = new Keyframe.IntKeyframe[i1];
       i = 0;
       for (;;)
       {
-        if (i >= n) {
+        if (i >= i1) {
           return new IntKeyframeSet((Keyframe.IntKeyframe[])localObject);
         }
         localObject[i] = ((Keyframe.IntKeyframe)paramVarArgs[i]);
@@ -125,6 +126,7 @@ class KeyframeSet
   
   public static KeyframeSet ofObject(Object... paramVarArgs)
   {
+    int i = 1;
     int j = paramVarArgs.length;
     Keyframe.ObjectKeyframe[] arrayOfObjectKeyframe = new Keyframe.ObjectKeyframe[Math.max(j, 2)];
     if (j == 1)
@@ -136,7 +138,6 @@ class KeyframeSet
     {
       return new KeyframeSet(arrayOfObjectKeyframe);
       arrayOfObjectKeyframe[0] = ((Keyframe.ObjectKeyframe)Keyframe.ofObject(0.0F, paramVarArgs[0]));
-      int i = 1;
       while (i < j)
       {
         arrayOfObjectKeyframe[i] = ((Keyframe.ObjectKeyframe)Keyframe.ofObject(i / (j - 1), paramVarArgs[i]));
@@ -216,8 +217,8 @@ class KeyframeSet
         paramFloat = (f - paramFloat) / (((Keyframe)localObject2).getFraction() - paramFloat);
         return this.mEvaluator.evaluate(paramFloat, ((Keyframe)localObject1).getValue(), ((Keyframe)localObject2).getValue());
       }
-      localObject1 = localObject2;
       i += 1;
+      localObject1 = localObject2;
     }
   }
   
@@ -242,7 +243,7 @@ class KeyframeSet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.nineoldandroids.animation.KeyframeSet
  * JD-Core Version:    0.7.0.1
  */

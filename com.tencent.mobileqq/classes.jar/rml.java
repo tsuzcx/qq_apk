@@ -1,26 +1,13 @@
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.HorizontalRefreshLayout;
 
-public class rml
-  implements Runnable
+public abstract interface rml
 {
-  public rml(AssociatedAccountActivity paramAssociatedAccountActivity) {}
-  
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountActivity", 2, "refreshAllData isFinishing() = " + this.a.isFinishing());
-    }
-    if (this.a.isFinishing()) {
-      return;
-    }
-    AssociatedAccountActivity.a(this.a);
-    AssociatedAccountActivity.b(this.a);
-  }
+  public abstract void a(float paramFloat, View paramView, HorizontalRefreshLayout paramHorizontalRefreshLayout);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rml
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class ComicIPSite$Gxzb
-  extends MessageMicro
+  extends MessageMicro<Gxzb>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50 }, new String[] { "appId", "appName", "cover", "feeType", "id", "name" }, new Object[] { Integer.valueOf(0), "", "", Integer.valueOf(0), "", "" }, Gxzb.class);
   public final PBInt32Field appId = PBField.initInt32(0);
@@ -19,7 +19,7 @@ public final class ComicIPSite$Gxzb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.emosm.ComicIPSite.Gxzb
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBFloatField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class ImageRetrievalComm$OD_BBox
-  extends MessageMicro
+  extends MessageMicro<OD_BBox>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 45, 48 }, new String[] { "xmin", "ymin", "xmax", "ymax", "fScore", "iLabelID" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Float.valueOf(0.0F), Integer.valueOf(0) }, OD_BBox.class);
   public final PBFloatField fScore = PBField.initFloat(0.0F);
@@ -19,7 +19,7 @@ public final class ImageRetrievalComm$OD_BBox
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.ImageRetrievalComm.OD_BBox
  * JD-Core Version:    0.7.0.1
  */

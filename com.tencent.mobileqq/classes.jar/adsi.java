@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
-import com.tencent.mobileqq.hotpic.VideoBaseItem.OnInnerStateChangeListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class adsi
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements aybr
 {
-  public adsi(VideoBaseItem paramVideoBaseItem) {}
+  public adsi(QQSettingMe paramQQSettingMe) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.a.c = 7;
-    if (VideoBaseItem.a(this.a) != null) {
-      VideoBaseItem.a(this.a).a(this.a.b, paramTVK_IMediaPlayer, paramInt1, paramInt2, paramInt3, paramString, paramObject);
+    if ((this.a.c) && (paramBitmap != null) && (QQSettingMe.a(this.a).a().actionId == paramInt1) && (paramInt2 == 200)) {
+      this.a.z();
     }
-    return false;
   }
 }
 

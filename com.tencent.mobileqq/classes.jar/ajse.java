@@ -1,4 +1,7 @@
-public class ajse {}
+public abstract interface ajse
+{
+  public abstract void a(int paramInt);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

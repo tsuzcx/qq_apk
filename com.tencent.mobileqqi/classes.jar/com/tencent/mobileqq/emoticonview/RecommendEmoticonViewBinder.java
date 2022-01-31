@@ -23,7 +23,7 @@ import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.pb.emosm.EmosmPb.STRecommendTabInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import fto;
+import fpc;
 import java.io.File;
 import java.net.URL;
 import java.util.List;
@@ -62,8 +62,8 @@ public class RecommendEmoticonViewBinder
   
   public Drawable a(Context paramContext)
   {
-    Drawable localDrawable = paramContext.getResources().getDrawable(2130839161);
-    paramContext = paramContext.getResources().getDrawable(2130839162);
+    Drawable localDrawable = paramContext.getResources().getDrawable(2130839163);
+    paramContext = paramContext.getResources().getDrawable(2130839164);
     StateListDrawable localStateListDrawable = new StateListDrawable();
     localStateListDrawable.addState(new int[] { 16842913 }, paramContext);
     localStateListDrawable.addState(new int[0], localDrawable);
@@ -114,14 +114,14 @@ public class RecommendEmoticonViewBinder
         this.jdField_a_of_type_JavaUtilList = EmoticonUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
       EmosmPb.STRecommendTabInfo localSTRecommendTabInfo = (EmosmPb.STRecommendTabInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      URLImageView localURLImageView = (URLImageView)paramView.findViewById(2131233323);
-      Button localButton = (Button)paramView.findViewById(2131233322);
-      paramView = (TextView)paramView.findViewById(2131233321);
+      URLImageView localURLImageView = (URLImageView)paramView.findViewById(2131233325);
+      Button localButton = (Button)paramView.findViewById(2131233324);
+      paramView = (TextView)paramView.findViewById(2131233323);
       if (jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839139);
+        jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839141);
       }
       if (jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) {
-        jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839138);
+        jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839140);
       }
       paramInt = localSTRecommendTabInfo.u32_tab_id.get();
       paramView.setText(StringUtil.a(localSTRecommendTabInfo.str_tab_name.get(), o));
@@ -134,7 +134,7 @@ public class RecommendEmoticonViewBinder
       }
       for (;;)
       {
-        localButton.setOnClickListener(new fto(this));
+        localButton.setOnClickListener(new fpc(this));
         return;
         localURLImageView.setImageDrawable(jdField_b_of_type_AndroidGraphicsDrawableDrawable);
       }
@@ -142,14 +142,14 @@ public class RecommendEmoticonViewBinder
     if (this.jdField_b_of_type_JavaLangString == null) {
       this.jdField_b_of_type_JavaLangString = EmoticonUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
-    ((Button)paramView.findViewById(2131231610)).setOnClickListener(this);
+    ((Button)paramView.findViewById(2131231611)).setOnClickListener(this);
     if (c == null) {
-      c = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839125);
+      c = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839127);
     }
     if (d == null) {
-      d = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839124);
+      d = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839126);
     }
-    paramView = (URLImageView)paramView.findViewById(2131233323);
+    paramView = (URLImageView)paramView.findViewById(2131233325);
     paramView.setImageDrawable(URLDrawable.getDrawable(this.jdField_b_of_type_JavaLangString, c, d));
     paramView.setURLDrawableDownListener(this);
   }

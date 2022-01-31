@@ -1,24 +1,27 @@
-import com.tencent.biz.pubaccount.util.SwipeBackLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 public class mwx
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public mwx(SwipeBackLayout paramSwipeBackLayout) {}
-  
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_SwipeBackLayout", 2, "isFling:" + SwipeBackLayout.b(this.a));
+    switch (paramMotionEvent.getAction())
+    {
     }
-    if (!SwipeBackLayout.b(this.a)) {
-      SwipeBackLayout.a(this.a);
+    for (;;)
+    {
+      return false;
+      mww.a(paramView, 0.5F);
+      continue;
+      mww.a(paramView, 1.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mwx
  * JD-Core Version:    0.7.0.1
  */

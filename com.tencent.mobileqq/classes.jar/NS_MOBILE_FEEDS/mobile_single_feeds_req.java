@@ -10,11 +10,11 @@ import java.util.Map;
 public final class mobile_single_feeds_req
   extends JceStruct
 {
-  static ArrayList cache_req_feeds_info = new ArrayList();
-  static Map cache_stMapExtendinfo;
+  static ArrayList<single_feeds_req_info> cache_req_feeds_info = new ArrayList();
+  static Map<String, String> cache_stMapExtendinfo;
   public int get_type;
-  public ArrayList req_feeds_info;
-  public Map stMapExtendinfo;
+  public ArrayList<single_feeds_req_info> req_feeds_info;
+  public Map<String, String> stMapExtendinfo;
   
   static
   {
@@ -26,7 +26,7 @@ public final class mobile_single_feeds_req
   
   public mobile_single_feeds_req() {}
   
-  public mobile_single_feeds_req(int paramInt, ArrayList paramArrayList, Map paramMap)
+  public mobile_single_feeds_req(int paramInt, ArrayList<single_feeds_req_info> paramArrayList, Map<String, String> paramMap)
   {
     this.get_type = paramInt;
     this.req_feeds_info = paramArrayList;
@@ -53,7 +53,7 @@ public final class mobile_single_feeds_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_single_feeds_req
  * JD-Core Version:    0.7.0.1
  */

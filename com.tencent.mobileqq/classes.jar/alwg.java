@@ -1,36 +1,30 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.mobileqq.app.MayknowRecommendManager.3.1;
+import com.tencent.mobileqq.app.MayknowRecommendManager.3.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class alwg
-  implements TextWatcher
+  extends altm
 {
-  public alwg(Login paramLogin) {}
+  alwg(alwd paramalwd) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  protected void onAddFriend(String paramString)
   {
-    if (paramInt3 < 2)
-    {
-      this.a.jdField_b_of_type_Boolean = false;
-      if (paramCharSequence.length() == 0) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("MayknowRecommendManager", 2, "onAddFriend " + paramString);
     }
-    else
-    {
-      return;
-    }
-    this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    ThreadManager.getSubThreadHandler().post(new MayknowRecommendManager.3.1(this, paramString));
+  }
+  
+  protected void onAddReqStatesChanged(boolean paramBoolean, String paramString)
+  {
+    ThreadManager.getSubThreadHandler().post(new MayknowRecommendManager.3.2(this, paramBoolean, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alwg
  * JD-Core Version:    0.7.0.1
  */

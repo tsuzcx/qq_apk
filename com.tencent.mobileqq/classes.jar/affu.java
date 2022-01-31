@@ -1,57 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.nearby.profilecard.ProfileQiqiLiveController;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.ProgressButton;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
-public class affu
-  implements DialogInterface.OnClickListener
+class affu
+  implements View.OnClickListener
 {
-  public affu(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  affu(afft paramafft, String paramString1, String paramString2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
+    try
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.a(2);
-      }
-      if (NearbyProfileDisplayTribePanel.a(this.a) != null)
+      if (!this.jdField_a_of_type_JavaLangString.equals("0"))
       {
-        if (!this.a.n) {
-          break label88;
-        }
-        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_trigger", 0, 0, NearbyProfileDisplayTribePanel.a(this.a).uin, "", "yes", "android");
+        afft.a(this.jdField_a_of_type_Afft).a.getText().clear();
+        afft.a(this.jdField_a_of_type_Afft).c(afft.a(this.jdField_a_of_type_Afft));
       }
+      int i = afft.a(this.jdField_a_of_type_Afft).a.getSelectionStart();
+      paramView = afft.a(this.jdField_a_of_type_Afft).a.getText();
+      this.jdField_a_of_type_Afft.a = true;
+      paramView.insert(i, this.b);
+      this.jdField_a_of_type_Afft.a = false;
+      afft.a(this.jdField_a_of_type_Afft).a.setSelection(paramView.length());
+      this.jdField_a_of_type_Afft.a();
+      return;
     }
-    label88:
-    do
+    catch (Throwable paramView)
     {
-      do
-      {
-        return;
-        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_goon", 0, 0, NearbyProfileDisplayTribePanel.a(this.a).uin, "", "yes", "android");
-        return;
-      } while (paramInt != 0);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.a(10);
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131438093);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(0);
-      }
-      this.a.jdField_a_of_type_Int = 2;
-    } while (NearbyProfileDisplayTribePanel.a(this.a) == null);
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_cancel", 0, 0, NearbyProfileDisplayTribePanel.a(this.a).uin, "", "yes", "android");
+      QLog.e("QWalletAIOLifeCycleHelper", 1, "onclick  PasswdRedBagTips throw an exception: " + paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     affu
  * JD-Core Version:    0.7.0.1
  */

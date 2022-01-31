@@ -1,20 +1,32 @@
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCarePersonActivity;
-import com.tencent.mobileqq.app.ContactSorter;
-import java.util.Comparator;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.voip.VoipQCallTimeOutActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ewz
-  implements Comparator
+  implements View.OnClickListener
 {
-  public ewz(QvipSpecialCarePersonActivity paramQvipSpecialCarePersonActivity) {}
+  public ewz(VoipQCallTimeOutActivity paramVoipQCallTimeOutActivity, Intent paramIntent, String paramString) {}
   
-  private String a(String paramString)
+  public void onClick(View paramView)
   {
-    return QvipSpecialCarePersonActivity.a(this.a, paramString) + paramString;
-  }
-  
-  public int a(String paramString1, String paramString2)
-  {
-    return ContactSorter.a(a(paramString1), a(paramString2));
+    boolean bool1 = false;
+    paramView = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("senderUin");
+    String str1 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("friendUin");
+    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("uinType", 0);
+    boolean bool2 = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("isVideoMsg", false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipQCallTimeOutActivity.b.e();
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipQCallTimeOutActivity.b;
+    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipQCallTimeOutActivity.a();
+    String str2 = this.jdField_a_of_type_JavaLangString;
+    if (!bool2) {
+      bool1 = true;
+    }
+    ChatActivityUtils.a(localQQAppInterface, localActivity, i, str1, str2, null, bool1, paramView, true, true, null, "");
+    this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipQCallTimeOutActivity.finish();
   }
 }
 

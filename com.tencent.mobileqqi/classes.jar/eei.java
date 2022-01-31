@@ -1,17 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.LocationItemBuilder;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class eei
-  implements DialogInterface.OnClickListener
+class eei
+  implements Runnable
 {
-  public eei(LocationItemBuilder paramLocationItemBuilder) {}
+  eei(eeg parameeg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    if (NewFriendActivity.a(this.a.a) != null) {
+      NewFriendActivity.a(this.a.a).k();
+    }
+    for (;;)
+    {
+      ReportController.b(this.a.a.b, "CliOper", "", "", "frd_recommend", "clean_apply", 0, 0, "", "", "", "");
+      return;
+      SystemMsgListView.a(this.a.a.b);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     eei
  * JD-Core Version:    0.7.0.1
  */

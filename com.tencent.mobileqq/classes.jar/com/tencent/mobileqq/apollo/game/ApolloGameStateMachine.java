@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.apollo.game;
 
+import akuc;
+import akud;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -11,23 +13,18 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
-import ypk;
-import ypl;
-import ypm;
-import ypn;
-import ypo;
 
 public class ApolloGameStateMachine
   extends Observable
 {
-  public static ApolloGameStateMachine.HardwareInfo a;
+  public static akud a;
   private static ApolloGameStateMachine jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine;
-  public static final HashMap a;
+  public static final HashMap<Integer, List<Integer>> a;
   public static AtomicBoolean a;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ypk(this);
-  private Observer jdField_a_of_type_JavaUtilObserver = new ypl(this);
-  private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private Runnable jdField_a_of_type_JavaLangRunnable = new ApolloGameStateMachine.1(this);
+  private Observer jdField_a_of_type_JavaUtilObserver = new akuc(this);
+  private ConcurrentHashMap<Integer, ApolloGameStateMachine.StateTask> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   private AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong();
   private final Object b = new Object();
@@ -41,19 +38,27 @@ public class ApolloGameStateMachine
   public static ApolloGameStateMachine a()
   {
     if (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine == null) {}
-    try
+    for (;;)
     {
-      if (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine == null)
+      try {}catch (Throwable localThrowable)
       {
-        jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine = new ApolloGameStateMachine();
-        jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.b();
-        if (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.jdField_a_of_type_JavaUtilObserver != null) {
-          jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.addObserver(jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.jdField_a_of_type_JavaUtilObserver);
-        }
+        QLog.e("ApolloGameStateMachine", 1, localThrowable, new Object[0]);
+        continue;
       }
-      return jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine;
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine == null)
+        {
+          jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine = new ApolloGameStateMachine();
+          jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.b();
+          if ((jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine != null) && (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.jdField_a_of_type_JavaUtilObserver != null)) {
+            jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.addObserver(jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.jdField_a_of_type_JavaUtilObserver);
+          }
+        }
+        return jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine;
+      }
+      finally {}
     }
-    finally {}
   }
   
   public static void d()
@@ -151,9 +156,9 @@ public class ApolloGameStateMachine
   
   protected void b()
   {
-    a(1, new ypm(this));
-    a(5, new ypn(this));
-    a(6, new ypo(this));
+    a(1, new ApolloGameStateMachine.4(this));
+    a(5, new ApolloGameStateMachine.5(this));
+    a(6, new ApolloGameStateMachine.6(this));
   }
   
   public void c()
@@ -162,7 +167,7 @@ public class ApolloGameStateMachine
     {
       if (this.jdField_a_of_type_JavaLangRunnable != null)
       {
-        ThreadManager.remove(this.jdField_a_of_type_JavaLangRunnable);
+        ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_JavaLangRunnable, 16);
         this.jdField_a_of_type_JavaLangRunnable = null;
       }
       if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
@@ -179,7 +184,7 @@ public class ApolloGameStateMachine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGameStateMachine
  * JD-Core Version:    0.7.0.1
  */

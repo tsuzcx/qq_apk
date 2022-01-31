@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.service.friendlist.remote;
 
-import ahxf;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import ayyw;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FriendListInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ahxf();
+  public static final Parcelable.Creator<FriendListInfo> CREATOR = new ayyw();
   public int a;
-  public List a;
+  public List<FriendSingleInfo> a;
   
   public FriendListInfo()
   {
@@ -62,7 +62,7 @@ public class FriendListInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.friendlist.remote.FriendListInfo
  * JD-Core Version:    0.7.0.1
  */

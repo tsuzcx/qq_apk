@@ -1,35 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.chatroom.VideoChatRoomContainer;
 
-public class mpf
-  extends Handler
+class mpf
+  implements Animation.AnimationListener
 {
-  public mpf(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager, Looper paramLooper)
+  mpf(mpe parammpe) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramLooper);
+    if (mpe.a(this.a) != null) {
+      mpe.a(this.a).setVisibility(8);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "mUiHandler.postDelayed() innerChangePlayButton(SHOW_LOADING_BTN) mIsNeedShowLoading = " + FastWebVideoFeedsPlayManager.b(this.a));
-      }
-    } while (!FastWebVideoFeedsPlayManager.b(this.a));
-    this.a.a(1);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mpf
  * JD-Core Version:    0.7.0.1
  */

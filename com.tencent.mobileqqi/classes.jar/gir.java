@@ -1,49 +1,23 @@
-import android.content.SharedPreferences;
-import android.os.Handler;
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.service.MobileQQService;
 
 public class gir
-  implements Runnable
+  extends FriendListObserver
 {
-  public gir(ProfileCardBrowserActivity paramProfileCardBrowserActivity) {}
+  public gir(MobileQQService paramMobileQQService) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.ProfileCardBrowserActivity", 2, "mReloadTask, start.");
-    }
-    int i = 0;
-    for (;;)
-    {
-      if (i < 25) {}
-      try
-      {
-        Thread.sleep(200L);
-        this.a.c = this.a.b.getPreferences().getBoolean("is_template_list_loaded", false);
-        boolean bool = this.a.c;
-        if (bool)
-        {
-          this.a.c = this.a.b.getPreferences().getBoolean("is_template_list_loaded", false);
-          if (this.a.c) {
-            this.a.d();
-          }
-          this.a.a.sendEmptyMessage(18);
-          return;
-        }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-        i += 1;
-      }
+    String str = MobileQQService.a(this.a).a();
+    if ((paramBoolean) && (str != null) && (str.equals(paramString))) {
+      MobileQQService.a(this.a).a(MobileQQService.a(this.a).a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gir
  * JD-Core Version:    0.7.0.1
  */

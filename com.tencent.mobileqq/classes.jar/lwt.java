@@ -1,32 +1,137 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.CmpCtxt;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemSingle;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo.TopicRecommendInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Rect;
 
-public class lwt
-  implements View.OnClickListener
+public abstract class lwt
 {
-  public lwt(ComponentTopicItemSingle paramComponentTopicItemSingle, TopicRecommendFeedsInfo.TopicRecommendInfo paramTopicRecommendInfo) {}
+  public float a;
+  public int a;
+  public long a;
+  public Matrix a;
+  public Rect a;
+  public lxt a;
+  public float b;
+  public float c;
+  public float d = 1.0F;
   
-  public void onClick(View paramView)
+  public lwt()
   {
-    paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle.a.a.a();
-    ReadInJoyUtils.a = paramView;
-    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.b);
-    String str = ReadInJoyUtils.a(paramView.mAlgorithmID, ReadInJoyUtils.a(paramView), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle.a.a.e(), 0, 0, NetworkUtil.h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle.getContext()), paramView.mSubscribeID, null, paramView.innerUniqueID, null, paramView);
-    PublicAccountReportUtils.a(null, paramView.mSubscribeID, "0X8007625", "0X8007625", 0, 0, paramView.mFeedId + "", String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.a), String.valueOf(paramView.mAlgorithmID), str, false);
-    ReadInJoyUtils.a(paramView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle.a.a.e());
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
   }
+  
+  public float a()
+  {
+    return this.d;
+  }
+  
+  protected float a(int paramInt1, int paramInt2)
+  {
+    return (paramInt1 + paramInt2) / 2;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Rect a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsRect;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
+    this.jdField_a_of_type_AndroidGraphicsMatrix.preRotate(this.c, this.jdField_a_of_type_Float, this.b);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.preScale(this.d, this.d, this.jdField_a_of_type_Float, this.b);
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (this.c != paramFloat)
+    {
+      this.c = paramFloat;
+      a();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    int i = 1;
+    this.jdField_a_of_type_AndroidGraphicsRect.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    float f1 = a(paramInt1, paramInt3);
+    float f2 = b(paramInt2, paramInt4);
+    paramInt1 = 0;
+    if (this.jdField_a_of_type_Float != f1)
+    {
+      this.jdField_a_of_type_Float = f1;
+      paramInt1 = 1;
+    }
+    if (this.b != f2)
+    {
+      this.b = f2;
+      paramInt1 = i;
+    }
+    for (;;)
+    {
+      if (paramInt1 != 0) {
+        a();
+      }
+      return;
+    }
+  }
+  
+  public abstract void a(long paramLong);
+  
+  public void a(Canvas paramCanvas, Paint paramPaint)
+  {
+    if (this.jdField_a_of_type_Lxt != null)
+    {
+      paramCanvas.save();
+      paramCanvas.concat(this.jdField_a_of_type_AndroidGraphicsMatrix);
+      paramPaint.setAlpha(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Lxt.a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect, paramPaint);
+      paramCanvas.restore();
+    }
+  }
+  
+  protected float b(int paramInt1, int paramInt2)
+  {
+    return (paramInt1 + paramInt2) / 2;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Lxt != null)
+    {
+      this.jdField_a_of_type_Lxt.a();
+      this.jdField_a_of_type_Lxt = null;
+    }
+    this.jdField_a_of_type_AndroidGraphicsMatrix = null;
+    this.jdField_a_of_type_AndroidGraphicsRect = null;
+  }
+  
+  public void b(float paramFloat)
+  {
+    if (this.d != paramFloat)
+    {
+      this.d = paramFloat;
+      a();
+    }
+  }
+  
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lwt
  * JD-Core Version:    0.7.0.1
  */

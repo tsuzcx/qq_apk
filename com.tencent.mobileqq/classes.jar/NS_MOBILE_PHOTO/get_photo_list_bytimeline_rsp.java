@@ -12,21 +12,21 @@ public final class get_photo_list_bytimeline_rsp
   extends JceStruct
 {
   static Album cache_albuminfo = new Album();
-  static Map cache_busi_param;
-  static ArrayList cache_photolist = new ArrayList();
+  static Map<Integer, String> cache_busi_param;
+  static ArrayList<s_picdata> cache_photolist = new ArrayList();
   static stPhotoPoiAreaList cache_pos;
   static s_outshare cache_shareinfo;
-  static ArrayList cache_timeevent;
-  static ArrayList cache_timeline;
+  static ArrayList<TimeEvent> cache_timeevent;
+  static ArrayList<TimeLine> cache_timeline;
   public Album albuminfo;
   public int appid;
   public String attach_info = "";
-  public Map busi_param;
-  public ArrayList photolist;
+  public Map<Integer, String> busi_param;
+  public ArrayList<s_picdata> photolist;
   public stPhotoPoiAreaList pos;
   public s_outshare shareinfo;
-  public ArrayList timeevent;
-  public ArrayList timeline;
+  public ArrayList<TimeEvent> timeevent;
+  public ArrayList<TimeLine> timeline;
   
   static
   {
@@ -46,17 +46,17 @@ public final class get_photo_list_bytimeline_rsp
   
   public get_photo_list_bytimeline_rsp() {}
   
-  public get_photo_list_bytimeline_rsp(Album paramAlbum, ArrayList paramArrayList1, String paramString, ArrayList paramArrayList2, stPhotoPoiAreaList paramstPhotoPoiAreaList, Map paramMap, int paramInt, s_outshare params_outshare, ArrayList paramArrayList3)
+  public get_photo_list_bytimeline_rsp(Album paramAlbum, ArrayList<s_picdata> paramArrayList, String paramString, ArrayList<TimeLine> paramArrayList1, stPhotoPoiAreaList paramstPhotoPoiAreaList, Map<Integer, String> paramMap, int paramInt, s_outshare params_outshare, ArrayList<TimeEvent> paramArrayList2)
   {
     this.albuminfo = paramAlbum;
-    this.photolist = paramArrayList1;
+    this.photolist = paramArrayList;
     this.attach_info = paramString;
-    this.timeline = paramArrayList2;
+    this.timeline = paramArrayList1;
     this.pos = paramstPhotoPoiAreaList;
     this.busi_param = paramMap;
     this.appid = paramInt;
     this.shareinfo = params_outshare;
-    this.timeevent = paramArrayList3;
+    this.timeevent = paramArrayList2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

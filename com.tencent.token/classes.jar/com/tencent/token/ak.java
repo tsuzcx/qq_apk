@@ -1,50 +1,67 @@
 package com.tencent.token;
 
-import android.media.SoundPool;
-import android.os.AsyncTask;
-import com.tencent.token.global.e;
-import java.util.HashMap;
+import com.tencent.halley.downloader.d.a.a;
+import com.tencent.halley.downloader.d.a.b;
+import com.tencent.halley.downloader.d.a.d;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.TimeUnit;
 
-final class ak
-  extends AsyncTask
+public final class ak
+  implements an
 {
-  private int c = 0;
+  private static ak e = null;
+  private b a;
+  private b b;
+  private com.tencent.halley.downloader.d.a.h c;
+  private com.tencent.halley.downloader.d.a.h d;
   
-  ak(ai paramai, int[] paramArrayOfInt) {}
+  private ak()
+  {
+    Object localObject = new a(64);
+    this.a = new b(h.a(), h.a(), 60L, TimeUnit.MILLISECONDS, (BlockingQueue)localObject, new al("HallyDownload-MassTaskPool"));
+    ((a)localObject).a(this.a);
+    localObject = new a(64);
+    this.b = new b(1, h.b(), 60L, TimeUnit.MILLISECONDS, (BlockingQueue)localObject, new al("HallyDownload-EaseTaskPool"));
+    ((a)localObject).a(this.b);
+    localObject = new d(16);
+    this.c = new com.tencent.halley.downloader.d.a.h(1, h.a() + h.b() + 1, 60L, TimeUnit.MILLISECONDS, (BlockingQueue)localObject, new al("HallyDownload-DirectPool"));
+    ((d)localObject).a(this.c);
+    localObject = new d(16);
+    this.d = new com.tencent.halley.downloader.d.a.h(1, (h.a() << 1) + 1, 60L, TimeUnit.MILLISECONDS, (BlockingQueue)localObject, new al("HallyDownload-SchedulePool"));
+    ((d)localObject).a(this.d);
+  }
   
-  private String a(String... paramVarArgs)
+  public static ak a()
   {
     try
     {
-      if (paramVarArgs.length > 0) {
-        this.c = Integer.parseInt(paramVarArgs[0]);
+      if (e == null) {
+        e = new ak();
       }
-      e.a("start play token3");
-      int i = 0;
-      while (i < this.a.length)
-      {
-        paramVarArgs = (Integer)ai.a(this.b).get(Integer.valueOf(this.a[i] + 1));
-        if (paramVarArgs == null)
-        {
-          e.c("token number index=" + i + ",value=" + this.a[i] + " get sound error");
-          return "";
-        }
-        int j = this.b.a(paramVarArgs.intValue());
-        Thread.sleep(600L);
-        ai.b(this.b).stop(j);
-        i += 1;
-      }
-      ai.c(this.b);
+      ak localak = e;
+      return localak;
     }
-    catch (Exception paramVarArgs)
-    {
-      for (;;)
-      {
-        paramVarArgs.printStackTrace();
-        e.c("run exception msg=" + paramVarArgs.getMessage());
-      }
-    }
-    return "";
+    finally {}
+  }
+  
+  public final am a(Runnable paramRunnable)
+  {
+    return new am(this.a.submit(paramRunnable));
+  }
+  
+  public final am b(Runnable paramRunnable)
+  {
+    return new am(this.b.submit(paramRunnable));
+  }
+  
+  public final am c(Runnable paramRunnable)
+  {
+    return new am(this.c.submit(paramRunnable));
+  }
+  
+  public final am d(Runnable paramRunnable)
+  {
+    return new am(this.d.submit(paramRunnable));
   }
 }
 

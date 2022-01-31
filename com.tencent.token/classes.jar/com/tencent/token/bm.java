@@ -1,188 +1,60 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.t;
-import java.io.Serializable;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import com.tencent.halley.common.c;
+import com.tencent.halley.common.h;
 
-public abstract class bm
-  implements fj
+public final class bm
 {
-  protected d a = new d((byte)0);
-  protected fs b;
+  private static bm d;
+  public bo a;
+  public bp b = new bp();
+  public bn c;
   
-  private void e()
+  private bm()
   {
-    e.c("------------------------------\nhandler:" + this.b.d + "    \nError=" + this.a.a + "    \nstrdebug:" + this.a.b + "    \nstruser:" + this.a.c);
+    this.b.a();
+    this.a = new bo();
+    this.a.a();
+    this.c = new bn();
+    bn localbn = this.c;
+    SharedPreferences localSharedPreferences = h.a().getSharedPreferences("Access_Preferences", 0);
+    localbn.a = localSharedPreferences.getString("detectTaskCode", "200001010101011234");
+    localbn.b = localSharedPreferences.getString("ipInfo", "DEFAULT");
   }
   
-  public ft a(Serializable paramSerializable)
+  public static bm a()
   {
-    return null;
-  }
-  
-  public Serializable a(ft paramft)
-  {
-    return null;
-  }
-  
-  protected abstract String a();
-  
-  protected final void a(int paramInt, String paramString)
-  {
-    if (paramString != null) {
-      this.a.a(paramInt, paramString, paramString);
-    }
-    for (;;)
+    try
     {
-      e();
+      if (d == null) {
+        d = new bm();
+      }
+      bm localbm = d;
+      return localbm;
+    }
+    finally {}
+  }
+  
+  public final void a(bp parambp)
+  {
+    if (parambp == null) {
       return;
-      this.a.a(paramInt, null, null);
     }
-  }
-  
-  protected abstract void a(fs paramfs);
-  
-  protected abstract void a(JSONObject paramJSONObject);
-  
-  public fs b(fs paramfs)
-  {
-    return paramfs;
-  }
-  
-  protected void b()
-  {
-    e.b("------------------------------\nhandler:" + this.b.d);
-  }
-  
-  public ft c()
-  {
-    return null;
-  }
-  
-  public final d c(fs paramfs)
-  {
-    Object localObject2 = null;
-    int i = 1;
-    this.b = paramfs;
-    a(paramfs);
-    String str = a();
-    if (str == null)
+    c.b("AccessSchedulerConfiguration", "updateSdkCfInfo...SdkCfgInfo:" + parambp);
+    if ((parambp.a < 2000) || (parambp.a > 60000))
     {
-      e();
-      return this.a;
+      c.c("AccessSchedulerConfiguration", "updateSdkCfInfo...connectTimeout:" + parambp.a + " is checked to 20s");
+      parambp.a = 20000;
     }
-    Object localObject3 = new gv();
-    e.c("cmd:" + paramfs.a);
-    if (paramfs.m == 0) {
-      paramfs = ((gv)localObject3).a(str);
-    }
-    for (;;)
+    if ((parambp.b < 2000) || (parambp.b > 60000))
     {
-      Object localObject1;
-      if (paramfs == null)
-      {
-        paramfs = this.a;
-        localObject1 = ((gv)localObject3).a();
-        paramfs.a(((d)localObject1).a, ((d)localObject1).b, ((d)localObject1).c);
-        e();
-        return this.a;
-        if (paramfs.m == 1)
-        {
-          if (paramfs.n != null)
-          {
-            localObject1 = paramfs;
-            if (paramfs.k) {
-              localObject1 = b(paramfs);
-            }
-            paramfs = ((gv)localObject3).a(str, ((fs)localObject1).n);
-          }
-        }
-        else if (paramfs.m == 2)
-        {
-          if ((paramfs.o != null) && (!TextUtils.isEmpty(paramfs.p))) {
-            paramfs = ((gv)localObject3).a(str, paramfs.o, paramfs.n, paramfs.p);
-          }
-        }
-        else if ((paramfs.m == 3) && (paramfs.q != null) && (!TextUtils.isEmpty(paramfs.p))) {
-          paramfs = ((gv)localObject3).a(str, paramfs.q, paramfs.n, paramfs.p);
-        }
-      }
-      else
-      {
-        for (;;)
-        {
-          try
-          {
-            if (!this.b.a.equals("token.getstartupimg")) {
-              continue;
-            }
-            e.a(this + "device config" + paramfs);
-            localObject3 = new JSONObject();
-            ((JSONObject)localObject3).put("startup_img", t.a(paramfs));
-            localObject1 = localObject2;
-            paramfs = (fs)localObject3;
-          }
-          catch (JSONException paramfs)
-          {
-            e.c(this + "\nPARSE JSON FAILED: \n" + paramfs.toString());
-            this.a.a(10020, "JSONException:" + paramfs.toString(), b.e().getString(2131361951));
-            e();
-            continue;
-            localObject1 = new String(paramfs);
-            paramfs = new JSONObject((String)localObject1);
-            continue;
-          }
-          catch (Exception paramfs)
-          {
-            paramfs.printStackTrace();
-            e.c(this + "\nE X C E P T I O N: \n" + paramfs.toString());
-            this.a.a(10000, "Exception:" + paramfs.toString(), b.e().getString(2131361951));
-            e();
-            continue;
-            i = 0;
-            continue;
-            if (localObject1 == null) {
-              continue;
-            }
-            e.a(this + "\nR E S P O N S E: \n" + (String)localObject1);
-            b();
-            continue;
-          }
-          a(paramfs);
-          if (this.a.a != 0) {
-            continue;
-          }
-          if (i != 0) {
-            continue;
-          }
-          if (localObject1 != null) {
-            e.c(this + "\nR E S P O N S E: \n" + (String)localObject1);
-          }
-          e();
-          return this.a;
-          if (!this.b.a.equals("token.getcommonimg")) {
-            continue;
-          }
-          e.a(this + "device config" + paramfs);
-          localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("img", t.a(paramfs));
-          paramfs = (fs)localObject1;
-          localObject1 = localObject2;
-        }
-      }
-      paramfs = null;
+      c.c("AccessSchedulerConfiguration", "updateSdkCfInfo...readTimeout:" + parambp.b + " is checked to 20s");
+      parambp.b = 20000;
     }
-  }
-  
-  public String d()
-  {
-    return null;
+    this.b = parambp;
+    this.b.b();
   }
 }
 

@@ -44,7 +44,7 @@ public class TouchableLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TouchableLinearLayout
  * JD-Core Version:    0.7.0.1
  */

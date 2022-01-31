@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class mobileqq_mp$PAInfoElem
-  extends MessageMicro
+  extends MessageMicro<PAInfoElem>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58 }, new String[] { "puin", "account_type", "index", "uin_seq", "time", "unread_num", "pa_msg_id" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), "" }, PAInfoElem.class);
   public final PBUInt32Field account_type = PBField.initUInt32(0);
@@ -21,7 +21,7 @@ public final class mobileqq_mp$PAInfoElem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mp.mobileqq_mp.PAInfoElem
  * JD-Core Version:    0.7.0.1
  */

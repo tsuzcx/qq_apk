@@ -1,40 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageDownListener;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.tencent.av.app.VideoAppInterface;
 
-class mxh
-  implements PublicAccountImageDownListener
+public class mxh
+  extends mxi
 {
-  mxh(mxc parammxc, boolean paramBoolean, long paramLong, ImageProgressCircle paramImageProgressCircle) {}
-  
-  public void a(URL paramURL, CloseableBitmap paramCloseableBitmap)
+  public mxh(VideoAppInterface paramVideoAppInterface, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadSuccessed");
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      PublicAccountImageCollectionPreloadManager.a().b(true, this.jdField_a_of_type_Long);
-    }
-    mxc.a(this.jdField_a_of_type_Mxc, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+    super(paramVideoAppInterface, 64, paramLong);
   }
   
-  public void a(URL paramURL, Throwable paramThrowable)
+  public void a(String paramString, mxk parammxk)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadFailed");
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      PublicAccountImageCollectionPreloadManager.a().b(false, this.jdField_a_of_type_Long);
-    }
-    mxc.a(this.jdField_a_of_type_Mxc, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+    super.a(paramString, parammxk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mxh
  * JD-Core Version:    0.7.0.1
  */

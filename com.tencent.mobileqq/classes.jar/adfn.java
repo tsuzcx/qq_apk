@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.KPLProfileCardActivity;
 
 public class adfn
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public adfn(VideoFilePresenter paramVideoFilePresenter) {}
+  public adfn(KPLProfileCardActivity paramKPLProfileCardActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a.d(VideoFilePresenter.a(this.a));
-    VideoFilePresenter.c(this.a);
+    if (!this.a.a)
+    {
+      azqs.b(this.a.app, "dc00898", "", "", "0X8008438", "0X8008438", 0, 0, "", "", "", "");
+      this.a.a = true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adfn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,22 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
 public class aoig
+  implements View.OnClickListener
 {
-  public int a;
+  public aoig(IphonePickerView paramIphonePickerView) {}
   
-  private aoig(GLVideoClipUtil paramGLVideoClipUtil) {}
+  public void onClick(View paramView)
+  {
+    if (IphonePickerView.a(this.a) != null) {
+      IphonePickerView.a(this.a).a();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoig
  * JD-Core Version:    0.7.0.1
  */

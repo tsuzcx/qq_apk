@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class mobileqq_dynamic_search$MoreWordInfo
-  extends MessageMicro
+  extends MessageMicro<MoreWordInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField jmp_url = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class mobileqq_dynamic_search$MoreWordInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.MoreWordInfo
  * JD-Core Version:    0.7.0.1
  */

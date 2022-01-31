@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class MiniFileProto$MiniFile
-  extends MessageMicro
+  extends MessageMicro<MiniFile>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field length = PBField.initUInt64(0L);
@@ -24,7 +24,7 @@ public final class MiniFileProto$MiniFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.device.MiniFileProto.MiniFile
  * JD-Core Version:    0.7.0.1
  */

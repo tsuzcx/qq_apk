@@ -1,31 +1,25 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleResHelper;
+import android.content.SharedPreferences;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
 public class url
-  implements Runnable
 {
-  public url(DoodleMsgLayout paramDoodleMsgLayout) {}
-  
-  public void run()
+  public static String a(QQUserUIItem paramQQUserUIItem)
   {
-    Drawable localDrawable1 = DoodleResHelper.a().a(1, DoodleMsgLayout.a(this.a), true);
-    if (localDrawable1 != null) {
-      ((URLDrawable)localDrawable1).setIndividualPause(true);
-    }
-    Drawable localDrawable2 = DoodleResHelper.a().a(2, DoodleMsgLayout.a(this.a), false);
-    if (localDrawable2 != null) {
-      ((URLDrawable)localDrawable2).startDownload();
-    }
-    new Handler(Looper.getMainLooper()).post(new urm(this, localDrawable1, localDrawable2));
+    paramQQUserUIItem = vls.a();
+    return paramQQUserUIItem.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQUserUIItem.getCurrentAccountUin(), 0).getString("key_story_qim_online_icon_url", null);
+  }
+  
+  public static String b(QQUserUIItem paramQQUserUIItem)
+  {
+    paramQQUserUIItem = vls.a();
+    return paramQQUserUIItem.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQUserUIItem.getCurrentAccountUin(), 0).getString("profile_card_qim_online_url", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     url
  * JD-Core Version:    0.7.0.1
  */

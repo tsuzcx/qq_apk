@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 public class InjectBitmap
   extends Step
 {
-  protected boolean a()
+  protected boolean doStep()
   {
     try
     {
@@ -22,7 +22,7 @@ public class InjectBitmap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InjectBitmap
  * JD-Core Version:    0.7.0.1
  */

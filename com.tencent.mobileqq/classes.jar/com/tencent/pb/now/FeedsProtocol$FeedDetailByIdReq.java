@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class FeedsProtocol$FeedDetailByIdReq
-  extends MessageMicro
+  extends MessageMicro<FeedDetailByIdReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField feed_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -25,7 +25,7 @@ public final class FeedsProtocol$FeedDetailByIdReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.FeedsProtocol.FeedDetailByIdReq
  * JD-Core Version:    0.7.0.1
  */

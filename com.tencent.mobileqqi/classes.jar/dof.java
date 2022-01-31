@@ -1,23 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.SnapScreenActivity;
-import com.tencent.mobileqq.app.ScreenShotDisableListener;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.adapter.TroopMessageSettingAdapter;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.Map;
 
 public class dof
-  implements View.OnClickListener
+  extends FriendListObserver
 {
-  public dof(SnapScreenActivity paramSnapScreenActivity) {}
+  public dof(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, Map paramMap)
   {
-    this.a.a();
-    if ((this.a.a instanceof ScreenShotDisableListener)) {
-      ((ScreenShotDisableListener)this.a.a).a();
+    if (paramBoolean) {}
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_JavaUtilMap = TroopAssistantManager.a().a(this.a.b, this.a.jdField_a_of_type_JavaUtilList);
+    } while (this.a.jdField_a_of_type_JavaUtilMap == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.a(this.a.jdField_a_of_type_JavaUtilMap);
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.notifyDataSetChanged();
+    this.a.e();
+    QQToast.a(this.a.a(), 2131562192, 0).b(this.a.d());
+  }
+  
+  protected void c(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      this.a.jdField_a_of_type_JavaUtilMap = TroopAssistantManager.a().a(this.a.b, this.a.jdField_a_of_type_JavaUtilList);
+      if (this.a.jdField_a_of_type_JavaUtilMap != null) {}
     }
-    SettingCloneUtil.writeValue(this.a.a, null, this.a.getString(2131563409), "qqsetting_screenshot_key", false);
-    Toast.makeText(this.a.a, 2131562818, 1).show();
+    else
+    {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.a(this.a.jdField_a_of_type_JavaUtilMap);
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.notifyDataSetChanged();
+    this.a.e();
   }
 }
 

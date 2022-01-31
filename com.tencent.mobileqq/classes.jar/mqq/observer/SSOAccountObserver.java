@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 import mqq.app.Constants.Action;
 
 public class SSOAccountObserver
-  implements BusinessObserver, Constants.Action
+  implements Constants.Action, BusinessObserver
 {
   public static final String TAG = "SSOAccountObserver";
   
@@ -25,7 +25,6 @@ public class SSOAccountObserver
     int m = paramBundle.getInt("ret");
     byte[] arrayOfByte = paramBundle.getByteArray("wtTicket");
     Object localObject;
-    int i;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder().append("account:").append(str).append(" action:").append(paramInt).append(" code:").append(j).append(" isSuccess:").append(paramBoolean).append(" ret:").append(m).append(" wtTicketArr:");
@@ -37,36 +36,54 @@ public class SSOAccountObserver
     }
     else
     {
-      i = 0;
-      if (m == 0) {
-        i = 1;
+      if (m != 0) {
+        break label330;
       }
     }
-    switch (paramInt)
+    label330:
+    for (int i = 1;; i = 0)
     {
-    default: 
-    case 1100: 
-    case 1101: 
-      do
+      switch (paramInt)
       {
-        return;
-        localObject = Integer.valueOf(arrayOfByte.length);
-        break;
-        if ((arrayOfByte == null) || (arrayOfByte.length == 0)) {
-          i = 0;
-        }
-        if (i == 0) {
-          break label245;
-        }
-        if (paramInt == 1100)
+      default: 
+      case 1100: 
+      case 1101: 
+        do
         {
-          onLoginSuccess(str, arrayOfByte, k, paramBundle);
+          return;
+          localObject = Integer.valueOf(arrayOfByte.length);
+          break;
+          if ((arrayOfByte == null) || (arrayOfByte.length == 0)) {
+            i = 0;
+          }
+          if (i == 0) {
+            break label241;
+          }
+          if (paramInt == 1100)
+          {
+            onLoginSuccess(str, arrayOfByte, k, paramBundle);
+            return;
+          }
+        } while (paramInt != 1101);
+        onGetTicketNoPasswd(str, arrayOfByte, k, paramBundle);
+        return;
+        label241:
+        if (j == 2006)
+        {
+          onUserCancel(str, paramInt, paramBundle);
           return;
         }
-      } while (paramInt != 1101);
-      onGetTicketNoPasswd(str, arrayOfByte, k, paramBundle);
-      return;
-      label245:
+        onFailed(str, paramInt, m, paramBundle);
+        return;
+      }
+      if ((arrayOfByte == null) || (arrayOfByte.length == 0)) {
+        i = 0;
+      }
+      if (i != 0)
+      {
+        onGetA1WithA1(str, m, arrayOfByte, k, paramBundle);
+        return;
+      }
       if (j == 2006)
       {
         onUserCancel(str, paramInt, paramBundle);
@@ -75,20 +92,6 @@ public class SSOAccountObserver
       onFailed(str, paramInt, m, paramBundle);
       return;
     }
-    if ((arrayOfByte == null) || (arrayOfByte.length == 0)) {
-      i = 0;
-    }
-    if (i != 0)
-    {
-      onGetA1WithA1(str, m, arrayOfByte, k, paramBundle);
-      return;
-    }
-    if (j == 2006)
-    {
-      onUserCancel(str, paramInt, paramBundle);
-      return;
-    }
-    onFailed(str, paramInt, m, paramBundle);
   }
   
   public void onUserCancel(String paramString, int paramInt, Bundle paramBundle) {}

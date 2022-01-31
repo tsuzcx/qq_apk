@@ -9,10 +9,10 @@ public final class f
 {
   static byte[] e;
   static byte[] f;
-  public byte a;
-  public byte[] b;
+  public byte a = 0;
+  public byte[] b = null;
   public String c = "";
-  public byte[] d;
+  public byte[] d = null;
   
   public f() {}
   

@@ -26,7 +26,7 @@ public final class e_ad_report_cookie
   public static final int _AD_FEED_VIEWID = 1;
   public static final int _AD_VID = 13;
   public static final int _AD_VIDEO_SOURCE = 5;
-  private static e_ad_report_cookie[] a;
+  private static e_ad_report_cookie[] __values;
   private String __T = new String();
   private int __value;
   
@@ -36,7 +36,7 @@ public final class e_ad_report_cookie
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      a = new e_ad_report_cookie[5];
+      __values = new e_ad_report_cookie[5];
       AD_FEED_TYPE = new e_ad_report_cookie(0, 0, "AD_FEED_TYPE");
       AD_FEED_VIEWID = new e_ad_report_cookie(1, 1, "AD_FEED_VIEWID");
       AD_FEED_QUERYSTRING = new e_ad_report_cookie(2, 2, "AD_FEED_QUERYSTRING");
@@ -50,16 +50,16 @@ public final class e_ad_report_cookie
   {
     this.__T = paramString;
     this.__value = paramInt2;
-    a[paramInt1] = this;
+    __values[paramInt1] = this;
   }
   
   public static e_ad_report_cookie convert(int paramInt)
   {
     int i = 0;
-    while (i < a.length)
+    while (i < __values.length)
     {
-      if (a[i].value() == paramInt) {
-        return a[i];
+      if (__values[i].value() == paramInt) {
+        return __values[i];
       }
       i += 1;
     }
@@ -72,10 +72,10 @@ public final class e_ad_report_cookie
   public static e_ad_report_cookie convert(String paramString)
   {
     int i = 0;
-    while (i < a.length)
+    while (i < __values.length)
     {
-      if (a[i].toString().equals(paramString)) {
-        return a[i];
+      if (__values[i].toString().equals(paramString)) {
+        return __values[i];
       }
       i += 1;
     }
@@ -97,7 +97,7 @@ public final class e_ad_report_cookie
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.e_ad_report_cookie
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,42 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-public class akng
-  implements View.OnTouchListener
+class akng
+  extends Handler
 {
-  public akng(WebViewFragment paramWebViewFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  akng(aknf paramaknf, Looper paramLooper)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    switch (paramMotionEvent.getAction())
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == aknf.a(this.a))
     {
-    default: 
-      bool1 = false;
+      QLog.d(aknf.a(this.a), 4, "Receive Message!");
+      this.a.a();
     }
-    do
+    for (;;)
     {
-      return bool1;
-      bool1 = bool2;
-    } while (paramView != this.a.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "vg onTouch");
+      try
+      {
+        azqs.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 1, "", "", "", "");
+        return;
+      }
+      catch (Exception paramMessage) {}
+      if (paramMessage.what == aknf.b(this.a))
+      {
+        QLog.d(aknf.a(this.a), 4, "Receive Message!");
+        try
+        {
+          azqs.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 0, "", "", "", "");
+          return;
+        }
+        catch (Exception paramMessage) {}
+      }
     }
-    paramView = new HashMap(2);
-    paramView.put("X", Integer.valueOf((int)paramMotionEvent.getX()));
-    paramView.put("Y", Integer.valueOf((int)paramMotionEvent.getY()));
-    this.a.a(8589934606L, paramView);
-    return true;
   }
 }
 

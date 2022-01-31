@@ -1,23 +1,12 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-
-class ska
-  implements DialogInterface.OnClickListener
+public class ska
 {
-  ska(sjz paramsjz) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if ((this.a.a.a != null) && (this.a.a.a.isShowing()) && (this.a.a.a.getWindow() != null)) {
-      this.a.a.a.dismiss();
-    }
-  }
+  public int a;
+  public String a;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ska
  * JD-Core Version:    0.7.0.1
  */

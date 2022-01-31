@@ -1,19 +1,21 @@
 package com.tencent.token.ui;
 
-import android.os.Handler;
-import android.os.Message;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class rj
-  implements Runnable
+class rj
+  implements View.OnClickListener
 {
-  rj(NetActiveVryMobileNoSmsActivity paramNetActiveVryMobileNoSmsActivity, String paramString) {}
+  rj(NetActiveVryQuesActivity paramNetActiveVryQuesActivity) {}
   
-  public final void run()
+  public void onClick(View paramView)
   {
-    Message localMessage = new Message();
-    localMessage.what = 100;
-    this.b.mHandler.sendMessage(localMessage);
-    NetActiveVryMobileNoSmsActivity.access$1300(this.b, this.a);
+    paramView = new Intent(this.a, NetActiveVryOtherListActivity.class);
+    paramView.putExtra("intent.qquser", NetActiveVryQuesActivity.access$500(this.a));
+    paramView.putExtra("intent.determin_factors_result", NetActiveVryQuesActivity.access$200(this.a));
+    paramView.putExtra("intent.determin_verify_type", NetActiveVryQuesActivity.access$100(this.a));
+    this.a.startActivity(paramView);
   }
 }
 

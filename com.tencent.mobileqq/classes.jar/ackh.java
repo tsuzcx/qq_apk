@@ -1,21 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-class ackh
+public final class ackh
   implements DialogInterface.OnClickListener
 {
-  ackh(ackf paramackf) {}
+  public ackh(acln paramacln) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a = false;
-    this.a.a.doOnBackPressed();
+    if (this.a != null) {
+      this.a.a();
+    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ackh
  * JD-Core Version:    0.7.0.1
  */

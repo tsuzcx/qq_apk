@@ -1,32 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatFragment;
+import android.database.DataSetObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class ryf
-  implements Animation.AnimationListener
+class ryf
+  extends DataSetObserver
 {
-  public ryf(ChatFragment paramChatFragment) {}
+  ryf(rye paramrye) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onChanged()
   {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationEnd");
-    this.a.b(1);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationRepeat");
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationStart");
+    QLog.d(FastWebActivity.a(this.a.a), 2, "DataSetObserver ");
+    FastWebActivity.a(this.a.a, 100L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ryf
  * JD-Core Version:    0.7.0.1
  */

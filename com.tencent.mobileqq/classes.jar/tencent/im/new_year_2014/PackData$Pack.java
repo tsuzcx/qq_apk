@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class PackData$Pack
-  extends MessageMicro
+  extends MessageMicro<Pack>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field appid = PBField.initUInt32(0);
@@ -50,7 +50,7 @@ public final class PackData$Pack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.new_year_2014.PackData.Pack
  * JD-Core Version:    0.7.0.1
  */

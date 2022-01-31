@@ -1,26 +1,20 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class tvq
-  implements CompoundButton.OnCheckedChangeListener
+class tvq
+  implements DialogInterface.OnClickListener
 {
-  public tvq(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  tvq(tvl paramtvl, int paramInt) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramCompoundButton.getId())
-    {
-    default: 
-      return;
-    }
-    TroopAssistantManager.a().a(this.a.app, paramBoolean);
+    this.jdField_a_of_type_Tvl.jdField_a_of_type_Tvj.a.a().a(tuz.a(this.jdField_a_of_type_Tvl.jdField_a_of_type_Tvj.a), this.jdField_a_of_type_Tvl.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Int);
+    tuz.b(this.jdField_a_of_type_Tvl.jdField_a_of_type_Tvj.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tvq
  * JD-Core Version:    0.7.0.1
  */

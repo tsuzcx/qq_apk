@@ -14,6 +14,7 @@ public final class FileUploadReq
   public String checksum = "";
   public byte[] data = null;
   public long offset = 0L;
+  public long send_time = 0L;
   public String session = "";
   public String uin = "";
   
@@ -24,15 +25,16 @@ public final class FileUploadReq
   
   public FileUploadReq() {}
   
-  public FileUploadReq(String paramString1, String paramString2, String paramString3, long paramLong, byte[] paramArrayOfByte, String paramString4, int paramInt)
+  public FileUploadReq(String paramString1, String paramString2, String paramString3, long paramLong1, byte[] paramArrayOfByte, String paramString4, int paramInt, long paramLong2)
   {
     this.uin = paramString1;
     this.appid = paramString2;
     this.session = paramString3;
-    this.offset = paramLong;
+    this.offset = paramLong1;
     this.data = paramArrayOfByte;
     this.checksum = paramString4;
     this.check_type = paramInt;
+    this.send_time = paramLong2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -44,6 +46,7 @@ public final class FileUploadReq
     this.data = ((byte[])paramJceInputStream.read(cache_data, 4, true));
     this.checksum = paramJceInputStream.readString(5, false);
     this.check_type = paramJceInputStream.read(this.check_type, 6, false);
+    this.send_time = paramJceInputStream.read(this.send_time, 7, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -57,11 +60,12 @@ public final class FileUploadReq
       paramJceOutputStream.write(this.checksum, 5);
     }
     paramJceOutputStream.write(this.check_type, 6);
+    paramJceOutputStream.write(this.send_time, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     SLICE_UPLOAD.FileUploadReq
  * JD-Core Version:    0.7.0.1
  */

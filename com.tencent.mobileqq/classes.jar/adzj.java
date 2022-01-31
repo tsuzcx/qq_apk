@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.leba.LebaTitleBar;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
 
-class adzj
-  implements Runnable
+public class adzj
+  implements DialogInterface.OnClickListener
 {
-  adzj(adzi paramadzi) {}
+  public adzj(SplashActivity paramSplashActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel != null) && (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqLebaLebaTitleBar.a(this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a);
-    }
+    Intent localIntent = new Intent(this.a, GesturePWDSettingActivity.class);
+    localIntent.putExtra("key_reset", true);
+    this.a.startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adzj
  * JD-Core Version:    0.7.0.1
  */

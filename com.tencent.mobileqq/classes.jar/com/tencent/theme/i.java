@@ -1,143 +1,61 @@
 package com.tencent.theme;
 
-import android.content.res.Resources;
-import android.os.AsyncTask;
-import android.os.AsyncTask.Status;
-import android.os.Process;
-import android.os.SystemClock;
-import android.util.TypedValue;
-import java.io.File;
-import java.util.HashMap;
+import android.util.Log;
 
 public class i
 {
-  Resources a = null;
-  SkinEngine b;
-  a c = null;
-  int d = 0;
-  HashMap<String, Integer> e = new HashMap();
+  public static ISkinEngineLog a;
+  public static final int b = 4;
+  public static final int c = 2;
+  public static final int d = 1;
   
-  public i(SkinEngine paramSkinEngine, Resources paramResources)
+  public static void a(String paramString1, int paramInt, String paramString2)
   {
-    this.a = paramResources;
-    this.d = 0;
-    this.b = paramSkinEngine;
-    this.c = new a(null);
+    d(paramString1, paramInt, paramString2, null);
   }
   
-  public Integer a(String paramString)
+  public static void a(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
   {
-    return (Integer)this.e.get(paramString);
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.c != null)
-    {
-      bool1 = bool2;
-      if (this.c.getStatus() == AsyncTask.Status.RUNNING) {
-        bool1 = true;
-      }
+    if (a != null) {
+      a.trace(6, paramString1, paramInt, paramString2, paramThrowable);
     }
-    return bool1;
-  }
-  
-  public void b()
-  {
-    if (this.c != null)
-    {
-      if (this.c.getStatus() == AsyncTask.Status.PENDING)
-      {
-        d();
-        this.c.execute(new Void[0]);
-      }
-      do
-      {
-        return;
-        if (this.c.getStatus() == AsyncTask.Status.RUNNING)
-        {
-          this.c.cancel(true);
-          d();
-          this.c = new a(null);
-          this.c.execute(new Void[0]);
-          return;
-        }
-      } while (this.c.getStatus() != AsyncTask.Status.FINISHED);
-      this.c = new a(null);
-      d();
-      this.c.execute(new Void[0]);
+    while ((!SkinEngine.DEBUG) && (!SkinEngine.SWITCH_DEBUG)) {
       return;
     }
-    this.c = new a(null);
-    d();
-    this.c.execute(new Void[0]);
+    Log.e(paramString1, paramString2, paramThrowable);
   }
   
-  public void c()
+  public static void b(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
   {
-    new TypedValue();
-    long l1 = SystemClock.uptimeMillis();
-    k.d("SkinEngine", 2, "[record]start,  pid:" + Process.myPid(), null);
-    this.d = 0;
-    File localFile = this.b.getThemeDirFile();
-    if ((localFile != null) && (localFile.exists()))
-    {
-      String[] arrayOfString = localFile.list();
-      if ((arrayOfString != null) && (arrayOfString.length != 0))
-      {
-        int k = arrayOfString.length;
-        int i = 0;
-        while (i < k)
-        {
-          String str1 = arrayOfString[i];
-          Object localObject = new File(localFile, str1 + "/");
-          if (((File)localObject).exists())
-          {
-            localObject = ((File)localObject).list();
-            if (localObject != null)
-            {
-              int m = localObject.length;
-              int j = 0;
-              while (j < m)
-              {
-                String str2 = localObject[j];
-                str2 = str2.substring(str2.lastIndexOf("/") + 1);
-                int n = this.b.getDrawableDpi(str1 + "/");
-                if (-1 != n)
-                {
-                  this.e.put(str2, Integer.valueOf(n));
-                  this.d += 1;
-                }
-                j += 1;
-              }
-            }
-          }
-          i += 1;
-        }
-      }
+    if (a != null) {
+      a.trace(5, paramString1, paramInt, paramString2, paramThrowable);
     }
-    long l2 = SystemClock.uptimeMillis();
-    k.d("SkinEngine", 2, "[record]end, mCacheEntry:" + this.d + " pid:" + Process.myPid() + " touchCacheDuration:" + (l2 - l1), null);
-  }
-  
-  protected void d()
-  {
-    this.e.clear();
-    this.d = 0;
-  }
-  
-  private class a
-    extends AsyncTask<Void, Void, Void>
-  {
-    private a() {}
-    
-    protected Void a(Void... paramVarArgs)
-    {
-      i.this.c();
-      return null;
+    while ((!SkinEngine.DEBUG) && (!SkinEngine.SWITCH_DEBUG)) {
+      return;
     }
+    Log.w(paramString1, paramString2, paramThrowable);
+  }
+  
+  public static void c(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    if (a != null) {
+      a.trace(4, paramString1, paramInt, paramString2, paramThrowable);
+    }
+    while ((!SkinEngine.DEBUG) && (!SkinEngine.SWITCH_DEBUG)) {
+      return;
+    }
+    Log.i(paramString1, paramString2, paramThrowable);
+  }
+  
+  public static void d(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    if (a != null) {
+      a.trace(3, paramString1, paramInt, paramString2, paramThrowable);
+    }
+    while ((!SkinEngine.DEBUG) && (!SkinEngine.SWITCH_DEBUG)) {
+      return;
+    }
+    Log.d(paramString1, paramString2, paramThrowable);
   }
 }
 

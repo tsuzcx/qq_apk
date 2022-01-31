@@ -1,16 +1,15 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoLayerUI;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
 
 public class bls
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public bls(VideoLayerUI paramVideoLayerUI) {}
+  public bls(QRCardActivity paramQRCardActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.a().removeCallbacks(this.a.f);
-    this.a.g(false);
+    this.a.c = false;
   }
 }
 

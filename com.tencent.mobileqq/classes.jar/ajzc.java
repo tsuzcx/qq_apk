@@ -1,14 +1,12 @@
-import android.view.View;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
 
-public final class ajzc
-  implements Runnable
+public class ajzc
+  extends aehc
 {
-  public ajzc(View paramView) {}
+  public CheckBox a;
   
-  public void run()
-  {
-    this.a.sendAccessibilityEvent(8);
-  }
+  private ajzc(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
 }
 
 

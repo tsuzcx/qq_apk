@@ -1,26 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 
 public class dzt
-  implements DialogInterface.OnKeyListener
+  extends BaseBubbleBuilder.ViewHolder
 {
-  public dzt(UpgradeActivity paramUpgradeActivity) {}
+  public FrameLayout a;
+  public ImageView a;
+  public ProgressBar a;
+  public PicEmoticonInfo a;
+  public boolean a;
+  public ImageView b;
+  public ImageView c;
+  public ImageView d;
+  public ImageView e;
+  public ImageView f;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4)
-    {
-      this.a.finish();
-      this.a.e();
-    }
-    return false;
-  }
+  public dzt(MarketFaceItemBuilder paramMarketFaceItemBuilder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dzt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.MobileQQ;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.pubaccount.weishi_new.comment.WsCommentInputPopupWindow.1.1;
 
 public class tdg
-  implements DialogInterface.OnClickListener
+  implements ygb
 {
-  public tdg(NotificationActivity paramNotificationActivity) {}
+  tdg(tdf paramtdf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView)
   {
-    this.a.app.logout(true);
-    SharedPreUtils.a(this.a.app.getApp(), this.a.app.getCurrentAccountUin(), false);
-    paramDialogInterface = (SubAccountManager)this.a.app.getManager(60);
-    if (paramDialogInterface != null) {}
-    for (paramDialogInterface = paramDialogInterface.a();; paramDialogInterface = null)
-    {
-      if ((paramDialogInterface != null) && (paramDialogInterface.size() > 0))
-      {
-        paramDialogInterface = paramDialogInterface.iterator();
-        while (paramDialogInterface.hasNext())
-        {
-          String str = (String)paramDialogInterface.next();
-          if (!PhoneNumLoginImpl.a().a(this.a.app, str))
-          {
-            this.a.app.updateSubAccountLogin(str, false);
-            this.a.app.getApplication().refreAccountList();
-          }
-        }
-      }
-      this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
-      this.a.finish();
-      return;
+    if (this.a.isShowing()) {
+      tdf.a(this.a).runOnUiThread(new WsCommentInputPopupWindow.1.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tdg
  * JD-Core Version:    0.7.0.1
  */

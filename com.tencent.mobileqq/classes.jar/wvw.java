@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
-import com.tencent.mobileqq.data.QQAlbumInfo;
-
-public class wvw
-  implements Runnable
+class wvw
+  implements xsr<wrz>
 {
-  public wvw(AlbumListAdapter paramAlbumListAdapter, QQAlbumInfo paramQQAlbumInfo) {}
+  wvw(wvq paramwvq) {}
   
-  public void run()
+  public wrz a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListAdapter.c(this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo);
+    return new wrz();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wvw
  * JD-Core Version:    0.7.0.1
  */

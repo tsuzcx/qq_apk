@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 
-public class aitu
-  implements Runnable
+class aitu
+  implements View.OnClickListener
 {
-  public aitu(AbsPublishActivity paramAbsPublishActivity) {}
+  aitu(aitt paramaitt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.c(true);
+    if (aitt.a(this.a) == null)
+    {
+      aitt.a(this.a, bdgm.a(this.a.mActivity, 0, ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131718849), null, ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131718847), ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131718848), new aitv(this), new aitw(this)));
+      aitt.a(this.a).setCanceledOnTouchOutside(false);
+    }
+    aitt.a(this.a).show();
   }
 }
 

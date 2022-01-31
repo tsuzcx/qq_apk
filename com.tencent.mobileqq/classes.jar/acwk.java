@@ -1,57 +1,47 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerCallback;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
 public class acwk
-  implements FileVideoManager.FileVideoManagerCallback
+  implements appo
 {
-  public acwk(FileVideoManager.VideoControl paramVideoControl, FileManagerEntity paramFileManagerEntity, boolean paramBoolean) {}
+  public acwk(EmosmActivity paramEmosmActivity) {}
   
-  public void a(int paramInt, String paramString)
+  public void a(int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]on Error[" + paramInt + "]msg[" + paramString + "]");
+    paramInt -= this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getHeaderViewsCount();
+    if (paramInt < 0) {
+      return;
     }
-    Object localObject;
-    if ((paramInt == -25081) || (paramInt == -6101) || (paramInt == -7003))
+    Object localObject = (EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if (!bdin.d(this.a))
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
-      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      ((QQAppInterface)localObject).a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      FMToastUtil.a(2131428190);
-      ((QQAppInterface)localObject).a().a(true, 3, null);
+      localObject = new QQToast(this.a);
+      ((QQToast)localObject).a(2130839367);
+      ((QQToast)localObject).d(1500);
+      ((QQToast)localObject).a(alud.a(2131704427));
+      ((QQToast)localObject).b(0);
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_JavaLangRefWeakReference != null)
+    this.a.jdField_a_of_type_Bety.a(this.a.getString(2131692105));
+    this.a.jdField_a_of_type_Bety.show();
+    ((alrp)this.a.app.a(12)).a(Integer.parseInt(((EmoticonPackage)localObject).epId));
+    URLDrawable.clearMemoryCache();
+    if (this.a.b == 1)
     {
-      localObject = (FileVideoManager.FileVideoManagerCallback)this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject != null) {
-        ((FileVideoManager.FileVideoManagerCallback)localObject).a(paramInt, paramString);
-      }
+      azqs.b(this.a.app, "dc00898", "", "", "0X800AB12", "0X800AB12", 1, 0, "", "", "", "");
+      return;
     }
+    azqs.b(this.a.app, "dc00898", "", "", "0X800AB15", "0X800AB15", 0, 0, "", "", "", "");
   }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]onGetUrlCookies");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_Boolean);
-  }
-  
-  public void ae_() {}
-  
-  public void af_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acwk
  * JD-Core Version:    0.7.0.1
  */

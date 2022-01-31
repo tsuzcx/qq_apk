@@ -15,21 +15,21 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.CameraUtil;
 import com.tencent.qphone.base.util.QLog;
-import hjv;
-import hjw;
-import hjx;
-import hjy;
+import hfo;
+import hfp;
+import hft;
+import hfu;
 
 public class CameraFrameLayoutProxy
 {
   public static final String a = "CameraFrameLayoutProxy";
   private int jdField_a_of_type_Int = 2131231211;
   private Context jdField_a_of_type_AndroidContentContext;
-  private SharedPreferences.OnSharedPreferenceChangeListener jdField_a_of_type_AndroidContentSharedPreferences$OnSharedPreferenceChangeListener = new hjv(this);
+  private SharedPreferences.OnSharedPreferenceChangeListener jdField_a_of_type_AndroidContentSharedPreferences$OnSharedPreferenceChangeListener = new hfo(this);
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_ComTencentMobileqqWidgetCameraFrameLayoutProxy$OnDoubleClick);
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private CameraFrameLayout jdField_a_of_type_ComTencentMobileqqWidgetCameraFrameLayout;
-  private CameraFrameLayoutProxy.OnDoubleClick jdField_a_of_type_ComTencentMobileqqWidgetCameraFrameLayoutProxy$OnDoubleClick = new hjw(this);
+  private CameraFrameLayoutProxy.OnDoubleClick jdField_a_of_type_ComTencentMobileqqWidgetCameraFrameLayoutProxy$OnDoubleClick = new hfp(this);
   public boolean a;
   private int b;
   public boolean b;
@@ -90,7 +90,7 @@ public class CameraFrameLayoutProxy
   public void a()
   {
     if (CameraUtil.a((QQAppInterface)((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getAppRuntime())) {
-      new Handler().postDelayed(new hjx(this), 1000L);
+      new Handler().postDelayed(new hft(this), 1000L);
     }
   }
   
@@ -129,7 +129,7 @@ public class CameraFrameLayoutProxy
     this.jdField_a_of_type_Boolean = true;
     QQAppInterface localQQAppInterface = (QQAppInterface)((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getAppRuntime();
     if ((CameraUtil.a(localQQAppInterface, this.jdField_a_of_type_AndroidContentContext)) && (CameraUtil.a(localQQAppInterface)) && (CameraUtil.b(localQQAppInterface))) {
-      new Handler().postDelayed(new hjy(this), 1500L);
+      new Handler().postDelayed(new hfu(this), 1500L);
     }
   }
   

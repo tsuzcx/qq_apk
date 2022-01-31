@@ -12,12 +12,7 @@ public abstract class AbsThirdDataSourceAdapter
   
   public abstract String getURL();
   
-  public abstract void requestPrepare(String paramString, OnPreparedCallback paramOnPreparedCallback);
-  
-  public static abstract interface OnPreparedCallback
-  {
-    public abstract void onPrepared();
-  }
+  public abstract void requestPrepare(String paramString, AbsThirdDataSourceAdapter.OnPreparedCallback paramOnPreparedCallback);
 }
 
 

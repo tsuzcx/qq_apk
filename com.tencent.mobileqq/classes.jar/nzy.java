@@ -1,22 +1,18 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class nzy
-  implements Runnable
+  implements bhum
 {
-  public nzy(MystoryListView paramMystoryListView) {}
+  public nzy(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void run()
+  public void onDismiss()
   {
-    if (this.a.a != null)
-    {
-      this.a.postDelayed(this.a.a, 100L);
-      this.a.a = null;
-    }
+    ReadInJoySettingActivity.b(this.a).cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nzy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,22 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.LocalVideoPreviewCallback;
-import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
-import com.tencent.mobileqq.apollo.AVCameraCaptureModel;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
 
-class yjl
-  extends AVVideoCtrl.LocalVideoPreviewCallback
+public class yjl
+  implements View.OnClickListener
 {
-  yjl(yjk paramyjk) {}
+  public yjl(SubscribeMultiPicFragment paramSubscribeMultiPicFragment) {}
   
-  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
+  public void onClick(View paramView)
   {
-    Object localObject = CmGameUtil.a(AVCameraCaptureModel.a(this.a.a));
-    if (localObject == null) {}
-    do
-    {
-      return;
-      localObject = ((CmGameLauncher)localObject).a();
-    } while (localObject == null);
-    ((ApolloSurfaceView)localObject).queueEvent(new yjm(this, (ApolloSurfaceView)localObject, paramVideoFrame));
+    if (SubscribeMultiPicFragment.a(this.a) != null) {
+      this.a.a(SubscribeMultiPicFragment.a(this.a).a(1));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yjl
  * JD-Core Version:    0.7.0.1
  */

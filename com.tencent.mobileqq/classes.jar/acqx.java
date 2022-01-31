@@ -1,23 +1,25 @@
 import android.app.Activity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 
-public final class acqx
-  implements FMDialogUtil.FMDialogInterface
+public class acqx
+  extends FlingGestureHandler
 {
-  public acqx(Activity paramActivity, FileManagerEntity paramFileManagerEntity) {}
-  
-  public void a()
+  public acqx(ContactBindedActivity paramContactBindedActivity, Activity paramActivity)
   {
-    FileManagerUtil.c(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
+    super(paramActivity);
   }
   
-  public void b() {}
+  public void flingLToR()
+  {
+    if (!this.a.a) {
+      super.flingLToR();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqx
  * JD-Core Version:    0.7.0.1
  */

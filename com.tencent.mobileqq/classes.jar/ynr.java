@@ -1,51 +1,37 @@
-import android.util.Log;
-import java.io.Writer;
+import android.widget.ImageView;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2.1.1;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2.1.2;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class ynr
-  extends Writer
+  implements baug
 {
-  private StringBuilder a = new StringBuilder();
+  public ynr(AbsSubscribeShareCardView.2 param2) {}
   
-  private void a()
+  public void onResp(bavf parambavf)
   {
-    if (this.a.length() > 0)
+    if (parambavf.jdField_a_of_type_Int == 0)
     {
-      Log.v("GLTextureView", this.a.toString());
-      this.a.delete(0, this.a.length());
-    }
-  }
-  
-  public void close()
-  {
-    a();
-  }
-  
-  public void flush()
-  {
-    a();
-  }
-  
-  public void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    if (i < paramInt2)
-    {
-      char c = paramArrayOfChar[(paramInt1 + i)];
-      if (c == '\n') {
-        a();
+      ((ImageView)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.jdField_a_of_type_Int)).setImageBitmap(SafeBitmapFactory.decodeFile(this.a.jdField_a_of_type_JavaLangString));
+      AbsSubscribeShareCardView.a(this.a.this$0);
+      if (AbsSubscribeShareCardView.b(this.a.this$0) == this.a.b.size()) {
+        ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.1(this));
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        this.a.append(c);
-      }
+      return;
     }
+    ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.2(this));
   }
+  
+  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ynr
  * JD-Core Version:    0.7.0.1
  */

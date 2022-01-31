@@ -1,8 +1,11 @@
 package android.support.v4.app;
 
 import android.os.Bundle;
+import android.support.annotation.IdRes;
+import android.support.annotation.RestrictTo;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
+import java.util.List;
 
 public abstract class FragmentManager
 {
@@ -13,7 +16,7 @@ public abstract class FragmentManager
     FragmentManagerImpl.DEBUG = paramBoolean;
   }
   
-  public abstract void addOnBackStackChangedListener(OnBackStackChangedListener paramOnBackStackChangedListener);
+  public abstract void addOnBackStackChangedListener(FragmentManager.OnBackStackChangedListener paramOnBackStackChangedListener);
   
   public abstract FragmentTransaction beginTransaction();
   
@@ -21,17 +24,26 @@ public abstract class FragmentManager
   
   public abstract boolean executePendingTransactions();
   
-  public abstract Fragment findFragmentById(int paramInt);
+  public abstract Fragment findFragmentById(@IdRes int paramInt);
   
   public abstract Fragment findFragmentByTag(String paramString);
   
-  public abstract BackStackEntry getBackStackEntryAt(int paramInt);
+  public abstract FragmentManager.BackStackEntry getBackStackEntryAt(int paramInt);
   
   public abstract int getBackStackEntryCount();
   
   public abstract Fragment getFragment(Bundle paramBundle, String paramString);
   
+  public abstract List getFragments();
+  
+  public abstract Fragment getPrimaryNavigationFragment();
+  
+  public abstract boolean isDestroyed();
+  
+  public abstract boolean isStateSaved();
+  
   @Deprecated
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public FragmentTransaction openTransaction()
   {
     return beginTransaction();
@@ -51,29 +63,13 @@ public abstract class FragmentManager
   
   public abstract void putFragment(Bundle paramBundle, String paramString, Fragment paramFragment);
   
-  public abstract void removeOnBackStackChangedListener(OnBackStackChangedListener paramOnBackStackChangedListener);
+  public abstract void registerFragmentLifecycleCallbacks(FragmentManager.FragmentLifecycleCallbacks paramFragmentLifecycleCallbacks, boolean paramBoolean);
+  
+  public abstract void removeOnBackStackChangedListener(FragmentManager.OnBackStackChangedListener paramOnBackStackChangedListener);
   
   public abstract Fragment.SavedState saveFragmentInstanceState(Fragment paramFragment);
   
-  public static abstract interface BackStackEntry
-  {
-    public abstract CharSequence getBreadCrumbShortTitle();
-    
-    public abstract int getBreadCrumbShortTitleRes();
-    
-    public abstract CharSequence getBreadCrumbTitle();
-    
-    public abstract int getBreadCrumbTitleRes();
-    
-    public abstract int getId();
-    
-    public abstract String getName();
-  }
-  
-  public static abstract interface OnBackStackChangedListener
-  {
-    public abstract void onBackStackChanged();
-  }
+  public abstract void unregisterFragmentLifecycleCallbacks(FragmentManager.FragmentLifecycleCallbacks paramFragmentLifecycleCallbacks);
 }
 
 

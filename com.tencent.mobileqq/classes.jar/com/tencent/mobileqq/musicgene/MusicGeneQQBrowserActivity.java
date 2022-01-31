@@ -1,19 +1,20 @@
 package com.tencent.mobileqq.musicgene;
 
-import aekh;
+import alud;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+import aryv;
+import aurl;
+import azup;
+import azut;
+import azvc;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsShareMsg.Builder;
-import com.tencent.mobileqq.structmsg.AbsStructMsgItem;
-import com.tencent.mobileqq.structmsg.StructMsgElementFactory;
 import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -25,7 +26,7 @@ public class MusicGeneQQBrowserActivity
   
   public MusicGeneQQBrowserActivity()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aekh(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aurl(this);
     this.jdField_a_of_type_JavaLangClass = MusicGeneQQBrowserActivity.MusicGeneQQBrowserFragment.class;
   }
   
@@ -47,7 +48,7 @@ public class MusicGeneQQBrowserActivity
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong)
   {
-    paramString6 = new AbsShareMsg.Builder(StructMsgForAudioShare.class).b(2).a("最近在听 的分享").a();
+    paramString6 = new azup(StructMsgForAudioShare.class).c(2).a(alud.a(2131707417)).a();
     paramString6.mContentSrc = paramString3;
     paramString6.mContentTitle = paramString5;
     paramString6.mContentCover = paramString1;
@@ -56,7 +57,7 @@ public class MusicGeneQQBrowserActivity
     paramString6.mSourceName = "QQ音乐";
     paramString6.mSourceAction = "app";
     paramString6.mSourceAppid = paramLong;
-    paramString2 = StructMsgElementFactory.a(2);
+    paramString2 = azvc.a(2);
     paramString2.a(paramString1, paramString5, paramString4);
     paramString6.addItem(paramString2);
     paramString1 = new Bundle();
@@ -66,7 +67,7 @@ public class MusicGeneQQBrowserActivity
     }
     for (;;)
     {
-      paramString1.putString("app_name", "最近在听");
+      paramString1.putString("app_name", alud.a(2131707416));
       paramString1.putString("detail_url", paramString6.mMsgUrl);
       paramString1.putString("audio_url", paramString6.mContentSrc);
       paramString1.putString("image_url_remote", paramString6.mContentCover);
@@ -84,7 +85,7 @@ public class MusicGeneQQBrowserActivity
       paramString2 = new Intent();
       paramString2.putExtra("refuse_show_share_result_dialog", true);
       paramString2.putExtras(paramString1);
-      ForwardBaseOption.a(this, paramString2);
+      aryv.a(this, paramString2);
       return;
       paramString1.putInt("req_type", 1);
     }
@@ -100,7 +101,7 @@ public class MusicGeneQQBrowserActivity
     return super.doOnKeyDown(paramInt, paramKeyEvent);
   }
   
-  protected void doOnStart()
+  public void doOnStart()
   {
     try
     {
@@ -118,7 +119,7 @@ public class MusicGeneQQBrowserActivity
     }
   }
   
-  protected void doOnStop()
+  public void doOnStop()
   {
     try
     {
@@ -139,7 +140,7 @@ public class MusicGeneQQBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

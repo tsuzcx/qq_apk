@@ -1,46 +1,51 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.app.CircleManager;
+import com.tencent.mobileqq.app.CircleServlet;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
 
 public class ezz
-  implements View.OnTouchListener
+  implements INetEngine.INetEngineListener
 {
-  public ezz(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private byte[] jdField_a_of_type_ArrayOfByte;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ezz(CircleServlet paramCircleServlet, Intent paramIntent, byte[] paramArrayOfByte)
   {
-    if (paramMotionEvent.getAction() == 0)
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+  }
+  
+  public void a(NetReq paramNetReq, int paramInt1, int paramInt2) {}
+  
+  public void a(NetResp paramNetResp)
+  {
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("CircleManager", 2, "CircleHttpCommnunicatorListener$onResp");
+    }
+    if ((paramNetResp == null) || (paramNetResp.d != 0))
     {
-      paramView = new int[2];
-      VoipDialInterfaceActivity.f(this.a).getLocationInWindow(paramView);
-      paramMotionEvent = new int[2];
-      VoipDialInterfaceActivity.f(this.a).getLocationOnScreen(paramMotionEvent);
-      paramMotionEvent = new int[2];
-      VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
-      VoipDialInterfaceActivity.i(this.a).offsetTopAndBottom(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.f(this.a).getHeight() / 2 - VoipDialInterfaceActivity.i(this.a).getHeight() / 2);
-      VoipDialInterfaceActivity.i(this.a).offsetLeftAndRight(paramView[0] + VoipDialInterfaceActivity.f(this.a).getWidth() / 2 - VoipDialInterfaceActivity.i(this.a).getWidth() / 2);
-      VoipDialInterfaceActivity.i(this.a).setVisibility(0);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder().append("CircleHttpCommnunicatorListener$onResp | resp = ").append(paramNetResp).append(" | mResult=");
+        if (paramNetResp != null) {
+          i = paramNetResp.d;
+        }
+        QLog.d("CircleManager", 2, i);
+      }
+      CircleServlet.a(this.jdField_a_of_type_ComTencentMobileqqAppCircleServlet, this.jdField_a_of_type_AndroidContentIntent, -10, null, new byte[1]);
+      CircleServlet.a(this.jdField_a_of_type_ComTencentMobileqqAppCircleServlet).a();
+      return;
     }
-    while (paramMotionEvent.getAction() != 1) {
-      return false;
-    }
-    paramView = new int[2];
-    VoipDialInterfaceActivity.f(this.a).getLocationInWindow(paramView);
-    paramMotionEvent = new int[2];
-    VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
-    VoipDialInterfaceActivity.i(this.a).offsetTopAndBottom(-(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.f(this.a).getHeight() / 2 - VoipDialInterfaceActivity.i(this.a).getHeight() / 2));
-    VoipDialInterfaceActivity.i(this.a).offsetLeftAndRight(-(paramView[0] + VoipDialInterfaceActivity.f(this.a).getWidth() / 2 - VoipDialInterfaceActivity.i(this.a).getWidth() / 2));
-    VoipDialInterfaceActivity.i(this.a).setVisibility(4);
-    VoipDialInterfaceActivity.c(this.a).invalidate();
-    return false;
+    CircleServlet.a(this.jdField_a_of_type_ComTencentMobileqqAppCircleServlet, this.jdField_a_of_type_AndroidContentIntent, 0, paramNetResp.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ezz
  * JD-Core Version:    0.7.0.1
  */

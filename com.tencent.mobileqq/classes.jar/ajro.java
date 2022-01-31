@@ -1,22 +1,18 @@
-import android.util.SparseArray;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajro
-  implements Runnable
+  implements azht
 {
-  public ajro(AvatarWallAdapter paramAvatarWallAdapter, int paramInt) {}
+  public ajro(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    ProgressBar localProgressBar = (ProgressBar)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a.get(this.jdField_a_of_type_Int);
-    if (localProgressBar != null)
-    {
-      AvatarWallAdapter localAvatarWallAdapter = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter;
-      int i = localAvatarWallAdapter.h + 1;
-      localAvatarWallAdapter.h = i;
-      localProgressBar.setProgress(100 - i);
+    if (QLog.isColorLevel()) {
+      QLog.d(".photo", 2, "shot photo with custom camera focus " + paramBoolean1);
     }
+    ajrw.a(paramBoolean1);
+    NewFlowCameraActivity.b(this.a);
   }
 }
 

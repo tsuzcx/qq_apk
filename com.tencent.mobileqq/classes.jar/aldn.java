@@ -1,50 +1,27 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.appcommon.js.AppInterface;
-import com.tencent.open.business.base.StaticAnalyz;
-import com.tencent.open.downloadnew.MyAppDialog;
+import com.tencent.qphone.base.util.QLog;
 
-public class aldn
-  implements DialogInterface.OnClickListener
+class aldn
+  implements aled
 {
-  public aldn(AppInterface paramAppInterface, String paramString) {}
+  aldn(aldl paramaldl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    paramDialogInterface = "";
-    if (paramInt == 2131428542)
+    if (paramBoolean)
     {
-      StaticAnalyz.a("200", "ANDROIDQQ.STORE.UPDATECHECKBOX", "");
-      paramDialogInterface = CommonDataAdapter.a().a().getSharedPreferences("package_scan", 0).edit();
-      paramDialogInterface.putBoolean("qqsetting_package_scan_flag", false);
-      paramDialogInterface.commit();
-      if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog != null) && (this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog.dismiss();
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGuestsPresenter", 2, "res download sucess roleId=" + paramInt1 + "dressIds=" + paramArrayOfInt);
       }
-      paramDialogInterface = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.gSetPackageScanSetting',{'guid':'" + this.jdField_a_of_type_JavaLangString + "','r':'0','data':'0'});}void(0);";
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.mHandler.post(new aldo(this, paramDialogInterface));
-      return;
-      if (paramInt == 2131428541)
-      {
-        if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog != null) && (this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog.isShowing())) {
-          this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog.dismiss();
-        }
-        paramDialogInterface = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.gSetPackageScanSetting',{'guid':'" + this.jdField_a_of_type_JavaLangString + "','r':'0','data':'1'});}void(0);";
+      if (aldl.a(this.a) != null) {
+        aldl.a(this.a).e();
       }
+      this.a.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aldn
  * JD-Core Version:    0.7.0.1
  */

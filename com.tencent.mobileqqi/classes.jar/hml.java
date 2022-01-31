@@ -1,24 +1,55 @@
-import android.content.Context;
-import com.tencent.open.adapter.OpenAppClient;
 import com.tencent.open.base.LogUtility;
-import java.util.HashMap;
+import com.tencent.open.downloadnew.DownloadApi;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.DownloadQueryListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class hml
   implements Runnable
 {
-  public hml(Context paramContext, HashMap paramHashMap) {}
+  public hml(List paramList, DownloadQueryListener paramDownloadQueryListener) {}
   
   public void run()
   {
-    try
+    LogUtility.a(DownloadApi.a, "getQueryDownloadAction enter");
+    DownloadManager.a().a();
+    for (;;)
     {
-      OpenAppClient.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
-      return;
-    }
-    catch (Exception localException)
-    {
-      String str = "onPushMsg exception: " + this.jdField_a_of_type_JavaUtilHashMap;
-      LogUtility.c(OpenAppClient.a, str, localException);
+      int i;
+      try
+      {
+        ArrayList localArrayList = new ArrayList();
+        int j = this.jdField_a_of_type_JavaUtilList.size();
+        i = 0;
+        if (i < j)
+        {
+          DownloadInfo localDownloadInfo = (DownloadInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+          if (DownloadManager.a().a(localDownloadInfo))
+          {
+            LogUtility.a(DownloadApi.a, "refreshDownloadInfo true " + localDownloadInfo);
+            localArrayList.add(localDownloadInfo);
+          }
+        }
+        else
+        {
+          if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener != null) {
+            this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.b(localArrayList);
+          }
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        LogUtility.c(DownloadApi.a, "Exception>>>", localException);
+        if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener == null) {
+          continue;
+        }
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(-1, localException.getMessage());
+        return;
+      }
+      i += 1;
     }
   }
 }

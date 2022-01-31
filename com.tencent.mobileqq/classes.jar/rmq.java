@@ -1,37 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class rmq
-  implements DialogInterface.OnClickListener
+public abstract interface rmq
 {
-  public rmq(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  public abstract void a(rmr paramrmr);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountActivity", 2, "switchFail -> to LoginActivity which=" + paramInt);
-    }
-    paramDialogInterface = new Intent();
-    paramDialogInterface.setPackage(this.a.getPackageName());
-    paramDialogInterface.setClass(this.a, LoginActivity.class);
-    paramDialogInterface.putExtra("is_change_account", true);
-    paramDialogInterface.putExtra("fromsubaccount", true);
-    if (this.a.a != null) {
-      paramDialogInterface.putExtra("uin", this.a.a);
-    }
-    paramDialogInterface.putExtra("befault_uin", this.a.app.getCurrentAccountUin());
-    this.a.startActivityForResult(paramDialogInterface, 1011);
-    this.a.a = null;
-  }
+  public abstract void a(rmr paramrmr, VideoInfo paramVideoInfo, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rmq
  * JD-Core Version:    0.7.0.1
  */

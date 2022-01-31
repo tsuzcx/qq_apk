@@ -1,40 +1,45 @@
 import android.os.Handler;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.DrawerFrame;
-import com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout;
-import com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout.OnDragModeChangedListener;
-import java.util.List;
+import com.tencent.biz.common.util.OpenIdObserver;
+import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.qphone.base.util.QLog;
 
 public class cmj
-  implements DragRelativeLayout.OnDragModeChangedListener
+  extends OpenIdObserver
 {
-  private int jdField_a_of_type_Int = -2147483648;
-  private List jdField_a_of_type_JavaUtilList;
+  public cmj(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  private cmj(Conversation paramConversation) {}
-  
-  public void a(int paramInt, List paramList) {}
-  
-  public void a(boolean paramBoolean, int paramInt, DragRelativeLayout paramDragRelativeLayout)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    if (paramDragRelativeLayout.a() == -1)
+    if ((this.a.isFinishing()) || (this.a.c)) {}
+    do
     {
-      if ((this.jdField_a_of_type_Int == -2147483648) || (Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation) != null)) {
-        Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation).sendEmptyMessage(10);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.setDrawerEnabled(true);
-      }
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a == null) {
       return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.setDrawerEnabled(false);
+      ForwardRecentActivity.a(this.a).e();
+      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      }
+      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardRecentActivity", 2, "openIdObserver success");
+        }
+        if (!paramOpenID.openID.equals(this.a.v)) {
+          this.a.a();
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("ForwardRecentActivity", 2, "openIdObserver fail");
+      }
+    } while ((!this.a.jdField_a_of_type_Boolean) || (this.a.f != 11));
+    ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131560461));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cmj
  * JD-Core Version:    0.7.0.1
  */

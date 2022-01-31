@@ -1,26 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
-public class ctq
-  implements View.OnClickListener
+class ctq
+  implements Runnable
 {
-  public ctq(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  ctq(ctp paramctp) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.finish();
-    if ((this.a.a.a != null) && (this.a.a.a.a) && (this.a.b != null) && (!"0".equals(this.a.b.a()))) {
-      this.a.b.a(this.a);
+    String str = this.a.a.a.getText().toString();
+    if ((str != null) && (str.equals("!@#ewaGbhkc$!!="))) {
+      this.a.a.a.setText("");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ctq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.search.OperationSearchEntryModel;
-import com.tencent.mobileqq.search.model.OperationSearchEntryDataModel;
-import com.tencent.util.UiThreadUtil;
-
 public class ahrh
-  implements Runnable
 {
-  public ahrh(OperationSearchEntryModel paramOperationSearchEntryModel, OperationSearchEntryDataModel paramOperationSearchEntryDataModel) {}
+  public int c;
+  public int d;
+  public String f;
   
-  public void run()
+  public ahrh() {}
+  
+  public ahrh(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelOperationSearchEntryDataModel.a();
-    UiThreadUtil.a(new ahri(this));
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.f = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahrh
  * JD-Core Version:    0.7.0.1
  */

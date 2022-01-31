@@ -1,28 +1,21 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.biz.widgets.QQMapRoutingHelper.1.1;
+import org.json.JSONObject;
 
 public class zgw
-  implements Runnable
+  implements bckx
 {
-  public zgw(MessageHandler paramMessageHandler, MessageRecord paramMessageRecord) {}
+  zgw(zgv paramzgv) {}
   
-  public void run()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MsgSend", 4, "delay notify: " + MessageHandler.d);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(8022, true, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin });
-    }
+    this.a.a.post(new QQMapRoutingHelper.1.1(this, paramJSONObject, paramBundle));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zgw
  * JD-Core Version:    0.7.0.1
  */

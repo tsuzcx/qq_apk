@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
+import apmh;
 import com.tencent.qphone.base.util.QLog;
 
 class EmojiUiPlugin$1
-  extends Client.onRemoteRespObserver
+  extends apmh
 {
   EmojiUiPlugin$1(EmojiUiPlugin paramEmojiUiPlugin) {}
   
@@ -52,7 +52,7 @@ class EmojiUiPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiUiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,11 +9,11 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0x435$PKItem
-  extends MessageMicro
+  extends MessageMicro<PKItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_pk_description = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_msg_vote = PBField.initRepeatMessage(oidb_0x435.VoteItem.class);
+  public final PBRepeatMessageField<oidb_0x435.VoteItem> rpt_msg_vote = PBField.initRepeatMessage(oidb_0x435.VoteItem.class);
   public final PBUInt32Field uint32_end_time = PBField.initUInt32(0);
   public final PBUInt32Field uint32_interval_time = PBField.initUInt32(0);
   public final PBUInt32Field uint32_pk_is_over = PBField.initUInt32(0);
@@ -29,7 +29,7 @@ public final class oidb_0x435$PKItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x435.oidb_0x435.PKItem
  * JD-Core Version:    0.7.0.1
  */

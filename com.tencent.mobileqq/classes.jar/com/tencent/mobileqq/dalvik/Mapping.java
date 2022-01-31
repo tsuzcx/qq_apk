@@ -2,21 +2,21 @@ package com.tencent.mobileqq.dalvik;
 
 public class Mapping
 {
-  public final long a;
-  public final String a;
-  public final boolean a;
-  public final long b;
-  public final boolean b;
-  public final boolean c;
+  public final long beginAddr;
+  public final long endAddr;
+  public final String pathName;
+  public final boolean readable;
+  public final boolean useless;
+  public final boolean writable;
   
   public Mapping(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.c = paramBoolean3;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.beginAddr = paramLong1;
+    this.endAddr = paramLong2;
+    this.readable = paramBoolean1;
+    this.writable = paramBoolean2;
+    this.useless = paramBoolean3;
+    this.pathName = paramString;
   }
 }
 

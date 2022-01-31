@@ -1,321 +1,191 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
-import com.tencent.token.utils.s;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.halley.common.h;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public final class av
-  extends au
 {
-  public static byte a = 1;
-  public static byte d = 2;
-  public static byte e = 3;
-  public static byte f = 4;
-  static av g;
-  private final String h = "/cn/mbtoken3/mbtoken3_get_dual_msg_list_v2";
-  private int i;
+  public static boolean a = true;
+  private static final Lock b = new ReentrantLock();
+  private static ap c = null;
   
-  private av()
+  public static ap a()
   {
-    super(1);
-  }
-  
-  public static av a()
-  {
-    if (g == null) {
-      g = new av();
+    if (c != null) {
+      return c;
     }
-    return g;
-  }
-  
-  private d b(byte paramByte, long paramLong)
-  {
-    int m = 1;
-    int j = 1;
-    int k = 0;
-    this.b.clear();
-    Object localObject1 = new d((byte)0);
-    Object localObject4 = ax.a();
-    Object localObject2;
-    if (!((ax)localObject4).o())
-    {
-      if (!((ax)localObject4).p())
-      {
-        localObject2 = ((ax)localObject4).q();
-        if (((d)localObject2).a == 0) {}
-        for (;;)
-        {
-          localObject1 = localObject2;
-          if (j != 0) {
-            break;
-          }
-          return localObject2;
-          j = 0;
-        }
-      }
-      localObject2 = ((ax)localObject4).t();
-      if (((d)localObject2).a == 0) {}
-      for (j = m;; j = 0)
-      {
-        localObject1 = localObject2;
-        if (j != 0) {
-          break;
-        }
-        return localObject2;
-      }
-    }
-    for (;;)
-    {
-      if (paramLong > 0L)
-      {
-        j = k;
-        while (j < ((ax)localObject4).d())
-        {
-          localObject2 = ((ax)localObject4).a(j);
-          e.c("other app: hash=" + paramLong + ", uin=" + ((QQUser)localObject2).mUin + ", real=" + ((QQUser)localObject2).mRealUin + ", bind=" + ((QQUser)localObject2).mIsBinded);
-          if ((((QQUser)localObject2).mIsBinded) && (((QQUser)localObject2).mUin == paramLong)) {
-            break;
-          }
-          if ((!((QQUser)localObject2).mIsBinded) && (s.f(((QQUser)localObject2).mRealUin) == paramLong))
-          {
-            ((d)localObject1).a(10029, null, null);
-            return localObject1;
-          }
-          j += 1;
-        }
-        if (j == ((ax)localObject4).d())
-        {
-          ((d)localObject1).a(110, null, null);
-          return localObject1;
-        }
-      }
-      long l = ((ax)localObject4).f();
-      if ((((ax)localObject4).e() == null) || (l == 0L))
-      {
-        ((d)localObject1).a(110, null, null);
-        return localObject1;
-      }
-      if (((ax)localObject4).e().mIsBinded) {
-        l = ((ax)localObject4).e().mUin;
-      }
-      localObject4 = new gv();
-      try
-      {
-        localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("uin", l);
-        j = af.a + 1;
-        af.a = j;
-        this.i = j;
-        ((JSONObject)localObject2).put("seq_id", this.i);
-        ((JSONObject)localObject2).put("op_time", ag.c().r() / 1000L);
-        ((JSONObject)localObject2).put("tkn_seq", ag.c().j().replaceAll("-", ""));
-        ((JSONObject)localObject2).put("source", paramByte);
-        localObject2 = ((JSONObject)localObject2).toString();
-        e.a("plain:" + (String)localObject2);
-        localObject2 = s.b(((String)localObject2).getBytes());
-        localObject2 = "?aq_base_sid=" + ax.g() + "&data=" + (String)localObject2;
-        localObject2 = com.tencent.token.global.b.c() + "/cn/mbtoken3/mbtoken3_get_dual_msg_list_v2" + (String)localObject2;
-        arrayOfByte = ((gv)localObject4).a((String)localObject2);
-        if (arrayOfByte == null)
-        {
-          localObject4 = ((gv)localObject4).a();
-          ((d)localObject1).a(((d)localObject4).a, ((d)localObject4).b, ((d)localObject4).c);
-          e.c("client request url: " + (String)localObject2 + " failed, reason: " + ((d)localObject1).a + ":" + ((d)localObject1).b);
-          return localObject1;
-        }
-      }
-      catch (JSONException localJSONException1)
-      {
-        byte[] arrayOfByte;
-        Object localObject3;
-        for (;;)
-        {
-          e.c("JSONException:" + localJSONException1.getMessage());
-          localObject3 = null;
-        }
-        try
-        {
-          localObject3 = new JSONObject(new String(arrayOfByte));
-          paramByte = ((JSONObject)localObject3).getInt("err");
-          if (paramByte != 0)
-          {
-            localObject3 = ((JSONObject)localObject3).getString("info");
-            ((d)localObject1).a(paramByte, (String)localObject3, (String)localObject3);
-          }
-          else
-          {
-            localObject3 = s.d(((JSONObject)localObject3).getString("data"));
-            if (localObject3 != null)
-            {
-              localObject3 = new JSONObject(new String((byte[])localObject3));
-              paramByte = ((JSONObject)localObject3).getInt("seq_id");
-              if (paramByte != this.i)
-              {
-                ((d)localObject1).a(10030, null, null);
-                localObject3 = new StringBuilder().append("parseJSON error seq is wrong seq=").append(paramByte).append(",right = ");
-                af.a();
-                e.c(af.b());
-                return localObject1;
-              }
-              localObject3 = ((JSONObject)localObject3).getJSONArray("msgs");
-              if (!a((JSONArray)localObject3, paramLong)) {
-                ((d)localObject1).a(10000, "update conf list failed:" + ((JSONArray)localObject3).toString(), null);
-              }
-            }
-          }
-        }
-        catch (JSONException localJSONException2)
-        {
-          e.c("parse json failed: " + localJSONException2.toString());
-          ((d)localObject1).a(10020, "JSONException:" + localJSONException2.toString(), null);
-          break;
-          ax.a().m();
-          ((d)localObject1).a = 0;
-        }
-        catch (Exception localException)
-        {
-          e.c("unknown err: " + localException.toString());
-          ((d)localObject1).a(10021, "JSONException:" + localException.toString(), null);
-        }
-        e.c("parseJSON error decodeData=" + localException);
-        ((d)localObject1).a(10022, RqdApplication.i().getString(2131361799), null);
-      }
-    }
-    return localObject1;
-  }
-  
-  private static long d()
-  {
-    Context localContext = RqdApplication.i();
     try
     {
-      l = localContext.getSharedPreferences("dualmsgtime", 0).getLong("time", 0L);
-      e.c("SharedPreferences msg " + localException1.getMessage());
-    }
-    catch (Exception localException1)
-    {
-      try
-      {
-        e.c("load mLastItemTime=" + l);
-        return l;
+      if (h.a() != null) {
+        c = a(h.a(), h.b(), h.g(), h.e());
       }
-      catch (Exception localException2)
-      {
-        long l;
-        break label50;
-      }
-      localException1 = localException1;
-      l = 0L;
+      label34:
+      return c;
     }
-    label50:
-    return l;
-  }
-  
-  public final d a(byte paramByte, long paramLong)
-  {
-    d locald = b(paramByte, paramLong);
-    int j;
-    if (locald.a == 0)
+    catch (Exception localException)
     {
-      j = 1;
-      if (j == 0) {
-        break label33;
-      }
-    }
-    label33:
-    while (locald.a != 104)
-    {
-      return locald;
-      j = 0;
-      break;
-    }
-    ax.a().n();
-    return b(paramByte, paramLong);
-  }
-  
-  public final boolean a(JSONArray paramJSONArray, long paramLong)
-  {
-    this.b.clear();
-    if (paramJSONArray != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      e.a(bool);
-      if (paramJSONArray != null) {}
-      for (;;)
-      {
-        int j;
-        com.tencent.token.core.bean.b localb;
-        try
-        {
-          if (paramJSONArray.length() <= 0) {
-            break label331;
-          }
-          j = 0;
-          if (j >= paramJSONArray.length()) {
-            break label331;
-          }
-          Object localObject = paramJSONArray.getJSONObject(j);
-          localb = new com.tencent.token.core.bean.b();
-          if (!localb.a((JSONObject)localObject)) {
-            e.c("object item parse failed: " + j);
-          }
-          e.c("server item time=" + localb.e());
-          if (this.c < localb.e())
-          {
-            this.c = localb.e();
-            e.c("get mLastItemTime=" + this.c);
-            localObject = RqdApplication.i();
-          }
-          try
-          {
-            localObject = ((Context)localObject).getSharedPreferences("dualmsgtime", 0).edit();
-            ((SharedPreferences.Editor)localObject).putLong("time", this.c);
-            ((SharedPreferences.Editor)localObject).commit();
-            e.c("save mLastItemTime=" + this.c);
-            if (paramLong == 0L) {
-              this.b.add(localb);
-            }
-          }
-          catch (Exception localException)
-          {
-            e.c("SharedPreferences msg " + localException.getMessage());
-            continue;
-          }
-          if (paramLong <= 0L) {
-            break label333;
-          }
-        }
-        catch (JSONException paramJSONArray)
-        {
-          paramJSONArray.printStackTrace();
-          return false;
-        }
-        if (paramLong == localb.c())
-        {
-          this.b.add(localb);
-          break label333;
-          label331:
-          return true;
-        }
-        label333:
-        j += 1;
-      }
+      break label34;
     }
   }
   
-  public final long c()
+  /* Error */
+  public static ap a(android.content.Context paramContext, java.lang.String paramString1, java.lang.String paramString2, java.lang.String paramString3)
   {
-    this.c = d();
-    return this.c;
+    // Byte code:
+    //   0: ldc 46
+    //   2: new 48	java/lang/StringBuilder
+    //   5: dup
+    //   6: ldc 50
+    //   8: invokespecial 53	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   11: aload_0
+    //   12: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   15: ldc 59
+    //   17: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   20: aload_1
+    //   21: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: ldc 64
+    //   26: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: aload_2
+    //   30: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: ldc 66
+    //   35: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: aload_3
+    //   39: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   45: invokestatic 74	com/tencent/halley/common/c:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   48: aload_0
+    //   49: ifnull +10 -> 59
+    //   52: aload_1
+    //   53: invokestatic 79	com/tencent/token/cc:a	(Ljava/lang/String;)Z
+    //   56: ifeq +41 -> 97
+    //   59: new 81	com/tencent/halley/common/HalleyInitException
+    //   62: dup
+    //   63: new 48	java/lang/StringBuilder
+    //   66: dup
+    //   67: ldc 83
+    //   69: invokespecial 53	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   72: aload_1
+    //   73: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   76: ldc 85
+    //   78: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: aload_0
+    //   82: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   85: ldc 87
+    //   87: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   93: invokespecial 88	com/tencent/halley/common/HalleyInitException:<init>	(Ljava/lang/String;)V
+    //   96: athrow
+    //   97: getstatic 21	com/tencent/token/av:b	Ljava/util/concurrent/locks/Lock;
+    //   100: invokeinterface 93 1 0
+    //   105: getstatic 23	com/tencent/token/av:c	Lcom/tencent/token/ap;
+    //   108: ifnonnull +173 -> 281
+    //   111: aload_3
+    //   112: invokestatic 79	com/tencent/token/cc:a	(Ljava/lang/String;)Z
+    //   115: ifne +18 -> 133
+    //   118: aload_3
+    //   119: astore 4
+    //   121: aload_3
+    //   122: invokevirtual 98	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   125: ldc 100
+    //   127: invokevirtual 104	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   130: ifeq +95 -> 225
+    //   133: aload_0
+    //   134: ldc 106
+    //   136: iconst_0
+    //   137: invokevirtual 112	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   140: astore 5
+    //   142: aload_3
+    //   143: astore 4
+    //   145: aload 5
+    //   147: ifnull +78 -> 225
+    //   150: aload 5
+    //   152: ldc 114
+    //   154: ldc 116
+    //   156: invokeinterface 122 3 0
+    //   161: astore_3
+    //   162: aload_3
+    //   163: astore 4
+    //   165: aload_3
+    //   166: invokestatic 79	com/tencent/token/cc:a	(Ljava/lang/String;)Z
+    //   169: ifeq +56 -> 225
+    //   172: new 48	java/lang/StringBuilder
+    //   175: dup
+    //   176: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   179: aload_0
+    //   180: invokestatic 126	com/tencent/token/cc:a	(Landroid/content/Context;)Ljava/lang/String;
+    //   183: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   186: ldc 128
+    //   188: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   191: aload_0
+    //   192: invokestatic 130	com/tencent/token/cc:b	(Landroid/content/Context;)Ljava/lang/String;
+    //   195: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   198: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   201: astore 4
+    //   203: aload 5
+    //   205: invokeinterface 134 1 0
+    //   210: ldc 114
+    //   212: aload 4
+    //   214: invokeinterface 140 3 0
+    //   219: invokeinterface 144 1 0
+    //   224: pop
+    //   225: aload_2
+    //   226: astore_3
+    //   227: aload_2
+    //   228: invokestatic 79	com/tencent/token/cc:a	(Ljava/lang/String;)Z
+    //   231: ifeq +6 -> 237
+    //   234: ldc 146
+    //   236: astore_3
+    //   237: aload_0
+    //   238: aload_1
+    //   239: aload_3
+    //   240: aload 4
+    //   242: invokestatic 149	com/tencent/halley/common/h:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   245: aload_0
+    //   246: invokestatic 154	com/tencent/token/cb:a	(Landroid/content/Context;)V
+    //   249: new 156	com/tencent/token/as
+    //   252: dup
+    //   253: aload_1
+    //   254: aload_3
+    //   255: aload 4
+    //   257: invokespecial 159	com/tencent/token/as:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   260: putstatic 23	com/tencent/token/av:c	Lcom/tencent/token/ap;
+    //   263: new 161	java/lang/Thread
+    //   266: dup
+    //   267: getstatic 23	com/tencent/token/av:c	Lcom/tencent/token/ap;
+    //   270: checkcast 163	java/lang/Runnable
+    //   273: ldc 165
+    //   275: invokespecial 168	java/lang/Thread:<init>	(Ljava/lang/Runnable;Ljava/lang/String;)V
+    //   278: invokevirtual 171	java/lang/Thread:start	()V
+    //   281: getstatic 21	com/tencent/token/av:b	Ljava/util/concurrent/locks/Lock;
+    //   284: invokeinterface 174 1 0
+    //   289: getstatic 23	com/tencent/token/av:c	Lcom/tencent/token/ap;
+    //   292: areturn
+    //   293: astore_0
+    //   294: getstatic 21	com/tencent/token/av:b	Ljava/util/concurrent/locks/Lock;
+    //   297: invokeinterface 174 1 0
+    //   302: aload_0
+    //   303: athrow
+    //   304: astore_0
+    //   305: goto -24 -> 281
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	308	0	paramContext	android.content.Context
+    //   0	308	1	paramString1	java.lang.String
+    //   0	308	2	paramString2	java.lang.String
+    //   0	308	3	paramString3	java.lang.String
+    //   119	137	4	str	java.lang.String
+    //   140	64	5	localSharedPreferences	android.content.SharedPreferences
+    // Exception table:
+    //   from	to	target	type
+    //   105	118	293	finally
+    //   121	133	293	finally
+    //   133	142	293	finally
+    //   150	162	293	finally
+    //   165	225	293	finally
+    //   227	234	293	finally
+    //   237	281	293	finally
+    //   237	281	304	java/lang/Exception
   }
 }
 

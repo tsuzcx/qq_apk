@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import com.tencent.biz.AuthorizeConfig;
 import com.tencent.mobileqq.app.automator.AsyncStep;
+import myl;
 
 public class GetWebViewAuthorize
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
-    AuthorizeConfig.a();
+    myl.a();
     return 7;
   }
 }

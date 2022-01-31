@@ -1,31 +1,62 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader;
-import com.tencent.qphone.base.util.QLog;
+import EncounterSvc.RespEncounterInfo;
+import EncounterSvc.RespGetEncounterV2;
+import com.tencent.mobileqq.app.LBSObserver;
+import com.tencent.mobileqq.maproam.RoamMapController;
+import com.tencent.mobileqq.maproam.data.PersonalInfo;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class gbh
+  extends LBSObserver
 {
-  public final int a;
-  final long jdField_a_of_type_Long;
-  final Bundle jdField_a_of_type_AndroidOsBundle;
-  public UniformDownloader a;
-  public final String a;
-  public final int b;
+  public gbh(RoamMapController paramRoamMapController, int paramInt, ArrayList paramArrayList) {}
   
-  public gbh(UniformDownloadMgr paramUniformDownloadMgr, Bundle paramBundle, int paramInt1, UniformDownloader paramUniformDownloader, long paramLong, int paramInt2)
+  protected void a(boolean paramBoolean1, String arg2, int paramInt1, RespGetEncounterV2 paramRespGetEncounterV2, boolean paramBoolean2, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader = paramUniformDownloader;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramUniformDownloader.a();
-    this.b = paramInt2;
-    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] new DownloadInst.[ mUDID:[" + this.jdField_a_of_type_Long + "] url:" + this.jdField_a_of_type_JavaLangString + " ]");
+    if (paramBoolean1) {
+      if (paramRespGetEncounterV2 == null) {
+        break label198;
+      }
+    }
+    label198:
+    for (paramRespGetEncounterV2 = paramRespGetEncounterV2.vEncounterInfos;; paramRespGetEncounterV2 = null)
+    {
+      if ((paramRespGetEncounterV2 != null) && (!paramRespGetEncounterV2.isEmpty()))
+      {
+        paramInt3 = paramRespGetEncounterV2.size();
+        paramInt1 = Math.min(this.jdField_a_of_type_Int, paramInt3);
+        paramInt2 = 0;
+        if ((paramInt2 < paramInt1) && (paramInt2 < paramInt3))
+        {
+          RespEncounterInfo localRespEncounterInfo = (RespEncounterInfo)paramRespGetEncounterV2.get(paramInt2);
+          String str = String.valueOf(localRespEncounterInfo.lEctID);
+          if (???.equals(str)) {
+            paramInt1 += 1;
+          }
+          for (;;)
+          {
+            paramInt2 += 1;
+            break;
+            PersonalInfo localPersonalInfo = new PersonalInfo();
+            localPersonalInfo.lEctID = str;
+            localPersonalInfo.uid = localRespEncounterInfo.uid;
+            localPersonalInfo.enc_id = localRespEncounterInfo.enc_id;
+            localPersonalInfo.seg = Arrays.toString(localRespEncounterInfo.sig);
+            this.jdField_a_of_type_JavaUtilArrayList.add(localPersonalInfo);
+          }
+        }
+      }
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqMaproamRoamMapController.a)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqMaproamRoamMapController.a.notifyAll();
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gbh
  * JD-Core Version:    0.7.0.1
  */

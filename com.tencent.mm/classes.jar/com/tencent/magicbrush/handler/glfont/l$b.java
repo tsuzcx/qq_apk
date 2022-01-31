@@ -1,0 +1,14 @@
+package com.tencent.magicbrush.handler.glfont;
+
+final class l$b
+{
+  int bKP;
+  int bKQ;
+  int bKR;
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+ * Qualified Name:     com.tencent.magicbrush.handler.glfont.l.b
+ * JD-Core Version:    0.7.0.1
+ */

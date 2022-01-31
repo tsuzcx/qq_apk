@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhs;
 
 public class RoamSetting
-  extends Entity
+  extends awge
 {
   public static final String SETTING_REVISION = "setting_revision";
-  @unique
+  @awhs
   public String path;
   public String value;
   
@@ -39,7 +39,7 @@ public class RoamSetting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.RoamSetting
  * JD-Core Version:    0.7.0.1
  */

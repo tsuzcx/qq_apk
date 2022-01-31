@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView android:id="@id/v9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.biz.ui.TouchWebView android:id="@id/v_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/v9" />
+    <RelativeLayout android:id="@id/v5" android:background="#ffffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/v9">
+        <RelativeLayout android:background="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+            <ImageView android:id="@id/v4" android:padding="10.0dip" android:layout_width="133.0dip" android:layout_height="133.0dip" android:src="@drawable/dqj" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="21.0dip" android:paddingTop="30.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pu4" android:singleLine="true" android:layout_below="@id/v4" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </RelativeLayout>> </RelativeLayout>

@@ -497,12 +497,12 @@ public class QZoneAppWebViewActivity
     this.jdField_a_of_type_ComTencentSmttSdkWebView = new WebView(this);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.requestFocus();
     this.jdField_a_of_type_ComTencentSmttSdkWebView.requestFocusFromTouch();
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebViewClient(this.jdField_a_of_type_Hol);
+    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebViewClient(this.jdField_a_of_type_Hkh);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setScrollBarStyle(0);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setHorizontalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setVerticalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setFocusableInTouchMode(true);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebChromeClient(this.jdField_a_of_type_Hok);
+    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebChromeClient(this.jdField_a_of_type_Hkg);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setOnCreateContextMenuListener(null);
     Object localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView.getSettings();
     ((WebSettings)localObject).setJavaScriptEnabled(true);
@@ -537,10 +537,13 @@ public class QZoneAppWebViewActivity
     ((List)localObject).add(localAppInterface);
     InterfaceRegisterUtils.a((List)localObject, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge);
     this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge.a(new AppShareJavaScript(this), "QQApi");
-    if (Build.VERSION.SDK_INT >= 11) {
+    if (Build.VERSION.SDK_INT >= 11)
+    {
       this.jdField_a_of_type_ComTencentSmttSdkWebView.removeJavascriptInterface("searchBoxJavaBridge_");
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.removeJavascriptInterface("accessibility");
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.removeJavascriptInterface("accessibilityTraversal");
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131232111));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131232114));
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentSmttSdkWebView);
   }
   
@@ -555,17 +558,17 @@ public class QZoneAppWebViewActivity
     if (!this.jdField_a_of_type_Boolean)
     {
       requestWindowFeature(1);
-      getWindow().setContentView(2130903330);
+      getWindow().setContentView(2130903332);
       return;
     }
-    setContentView(2130903330);
+    setContentView(2130903332);
     x();
     e();
     this.jdField_a_of_type_AndroidWidgetTextView.setText(2131560958);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131232129);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131232128);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131232132);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131232131);
     this.jdField_b_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131232113);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131232116);
     n();
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);

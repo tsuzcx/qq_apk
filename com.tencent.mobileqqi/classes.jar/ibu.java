@@ -1,13 +1,36 @@
-import com.tencent.widget.VerticalGallery;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsData.QzoneGpsInfo;
+import cooperation.qzone.LbsData.QzonePoiInfo;
 
-public class ibu
-  implements Runnable
+public final class ibu
+  implements Parcelable.Creator
 {
-  public ibu(VerticalGallery paramVerticalGallery) {}
-  
-  public void run()
+  public LbsData.QzonePoiInfo a(Parcel paramParcel)
   {
-    this.a.g();
+    LbsData.QzonePoiInfo localQzonePoiInfo = new LbsData.QzonePoiInfo();
+    localQzonePoiInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localQzonePoiInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localQzonePoiInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localQzonePoiInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localQzonePoiInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localQzonePoiInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    localQzonePoiInfo.jdField_b_of_type_Int = paramParcel.readInt();
+    localQzonePoiInfo.jdField_c_of_type_Int = paramParcel.readInt();
+    localQzonePoiInfo.jdField_d_of_type_Int = paramParcel.readInt();
+    localQzonePoiInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
+    localQzonePoiInfo.jdField_e_of_type_Int = paramParcel.readInt();
+    localQzonePoiInfo.jdField_f_of_type_Int = paramParcel.readInt();
+    localQzonePoiInfo.g = paramParcel.readString();
+    if (paramParcel.readInt() == 1) {
+      localQzonePoiInfo.jdField_a_of_type_CooperationQzoneLbsData$QzoneGpsInfo = ((LbsData.QzoneGpsInfo)paramParcel.readParcelable(LbsData.QzoneGpsInfo.class.getClassLoader()));
+    }
+    return localQzonePoiInfo;
+  }
+  
+  public LbsData.QzonePoiInfo[] a(int paramInt)
+  {
+    return null;
   }
 }
 

@@ -1,23 +1,45 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
-public class zil
-  implements Runnable
+public abstract class zil
+  implements zja
 {
-  public zil(PhoneContactManagerImp paramPhoneContactManagerImp, boolean paramBoolean, int paramInt) {}
+  protected long a;
+  protected ArrayList<zja> a;
+  protected boolean a;
+  public boolean b = true;
+  public boolean c;
   
-  public void run()
+  public zil()
   {
-    synchronized (PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp))
-    {
-      Iterator localIterator = PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).iterator();
-      if (localIterator.hasNext()) {
-        ((PhoneContactManager.IPhoneContactListener)localIterator.next()).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
-      }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Long = 350L;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = 350L;
+  }
+  
+  public void a(zja paramzja)
+  {
+    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramzja)) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramzja);
     }
   }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 

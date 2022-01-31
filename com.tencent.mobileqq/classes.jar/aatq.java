@@ -1,30 +1,21 @@
-import com.tencent.ark.ark.Application;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppCenter.ApplicationInformation;
-import java.util.Map;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
+import android.graphics.Shader.TileMode;
+import android.graphics.drawable.ShapeDrawable.ShaderFactory;
 
-public final class aatq
-  implements Runnable
+final class aatq
+  extends ShapeDrawable.ShaderFactory
 {
-  public aatq(String paramString) {}
+  aatq(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int[] paramArrayOfInt) {}
   
-  public void run()
+  public Shader resize(int paramInt1, int paramInt2)
   {
-    ArkAppCenter.ApplicationInformation localApplicationInformation = new ArkAppCenter.ApplicationInformation();
-    ark.Application localApplication = ark.Application.Create(this.jdField_a_of_type_JavaLangString);
-    localApplicationInformation.jdField_a_of_type_JavaLangString = localApplication.GetActionSet();
-    localApplicationInformation.b = localApplication.GetDescription();
-    localApplicationInformation.c = localApplication.GetVersion();
-    localApplicationInformation.jdField_a_of_type_Int = localApplication.CheckVersion();
-    localApplicationInformation.d = localApplication.GetPermissions();
-    localApplicationInformation.e = localApplication.GetLauncher();
-    localApplication.Release();
-    ArkAppCenter.a.put(this.jdField_a_of_type_JavaLangString, localApplicationInformation);
+    return new LinearGradient(paramInt1 * this.jdField_a_of_type_Float, paramInt2 * this.b, paramInt1 * this.c, paramInt2 * this.d, this.jdField_a_of_type_ArrayOfInt, null, Shader.TileMode.CLAMP);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aatq
  * JD-Core Version:    0.7.0.1
  */

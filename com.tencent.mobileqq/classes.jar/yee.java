@@ -1,23 +1,21 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.app.Activity;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.7.1;
 
 public class yee
-  implements View.OnClickListener
+  implements ymp
 {
-  public yee(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  yee(ydw paramydw) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    paramView = new Intent(this.a, QQBrowserActivity.class).putExtra("url", ShortVideoPlayActivity.a(this.a));
-    this.a.startActivity(paramView);
+    if (ydw.q(this.a) != null) {
+      ydw.r(this.a).runOnUiThread(new DetailBaseAdapter.7.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yee
  * JD-Core Version:    0.7.0.1
  */

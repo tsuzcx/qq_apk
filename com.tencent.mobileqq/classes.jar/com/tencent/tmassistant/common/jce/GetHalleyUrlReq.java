@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class GetHalleyUrlReq
   extends JceStruct
 {
-  static ArrayList<String> a = new ArrayList();
+  static ArrayList<String> cache_origins = new ArrayList();
   public ArrayList<String> origins = null;
   
   static
   {
-    a.add("");
+    cache_origins.add("");
   }
   
   public GetHalleyUrlReq() {}
@@ -25,7 +25,7 @@ public final class GetHalleyUrlReq
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    this.origins = ((ArrayList)paramJceInputStream.read(a, 0, true));
+    this.origins = ((ArrayList)paramJceInputStream.read(cache_origins, 0, true));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -35,7 +35,7 @@ public final class GetHalleyUrlReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.GetHalleyUrlReq
  * JD-Core Version:    0.7.0.1
  */

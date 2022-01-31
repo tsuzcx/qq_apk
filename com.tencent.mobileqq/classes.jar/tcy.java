@@ -1,45 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.ProtoUtils;
-import com.tencent.common.config.AppSetting;
-import com.tencent.ims.AlertReport.ButtonAction;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qqprotect.common.QPMiscUtils;
+import NS_KING_INTERFACE.stDeleteFeedCommentRsp;
+import NS_KING_SOCIALIZE_META.stMetaComment;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class tcy
-  implements DialogInterface.OnClickListener
+class tcy
+  implements tgt
 {
-  public tcy(NotificationActivity paramNotificationActivity, int paramInt, String paramString) {}
+  tcy(tcu paramtcu, stMetaComment paramstMetaComment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(the paramthe)
   {
-    try
+    if ((paramthe.jdField_a_of_type_JavaLangObject instanceof stDeleteFeedCommentRsp))
     {
-      paramDialogInterface = new AlertReport.ButtonAction();
-      paramDialogInterface.uint32_cmd.set(1);
-      paramDialogInterface.uint32_button_id.set(this.jdField_a_of_type_Int);
-      paramDialogInterface.str_package_name.set(QPMiscUtils.c());
-      paramDialogInterface.uint32_app_id.set(AppSetting.jdField_a_of_type_Int);
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, paramDialogInterface.toByteArray(), 34, "SecuritySvc.AlertReport");
-      ReportController.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007535", "0X8007535", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+      stDeleteFeedCommentRsp localstDeleteFeedCommentRsp = (stDeleteFeedCommentRsp)paramthe.jdField_a_of_type_JavaLangObject;
+      paramthe = this.jdField_a_of_type_Tcu.a(new Object[] { Integer.valueOf(5), Integer.valueOf(paramthe.b), paramthe.jdField_a_of_type_JavaLangString, localstDeleteFeedCommentRsp, this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaComment.id, Integer.valueOf(this.jdField_a_of_type_Tcu.hashCode()) });
+      umc.a().dispatch(paramthe);
       return;
     }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
-    }
+    tlo.d(tcu.a(), "删除评论失败new！");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tcy
  * JD-Core Version:    0.7.0.1
  */

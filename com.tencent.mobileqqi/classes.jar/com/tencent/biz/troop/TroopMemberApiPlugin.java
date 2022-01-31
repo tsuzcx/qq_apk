@@ -12,14 +12,14 @@ import android.graphics.Matrix;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import btm;
-import btn;
-import bto;
-import btp;
-import btq;
-import bts;
-import btt;
-import btu;
+import bnl;
+import bnm;
+import bnn;
+import bno;
+import bnp;
+import bnr;
+import bns;
+import bnt;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.TroopMemberCardActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -74,10 +74,10 @@ public class TroopMemberApiPlugin
   public static String q;
   static final String r = "com.tencent.qqhead.getheadreq";
   static final String s = "com.tencent.qqhead.getheadresp";
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new btm(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bnl(this);
   public Handler a;
   public TroopMemberApiClient a;
-  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new btp(this);
+  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new bno(this);
   public QQProgressNotifier a;
   public ArrayList a;
   HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap(jdField_j_of_type_Int);
@@ -127,7 +127,7 @@ public class TroopMemberApiPlugin
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
-    this.jdField_a_of_type_AndroidOsHandler = new btq(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bnp(this);
   }
   
   private TroopMemberInfo a(String paramString1, String paramString2)
@@ -370,7 +370,7 @@ public class TroopMemberApiPlugin
           localObject1 = ((EntityManager)localObject2).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { paramString2 }, null, null, null, null);
           ((EntityManager)localObject2).a();
         }
-        localObject2 = "6.0.0";
+        localObject2 = "6.0.2";
         if (localObject1 == null) {
           break;
         }
@@ -395,9 +395,9 @@ public class TroopMemberApiPlugin
             break label371;
           }
           paramString2 = ((List)localObject1).subList(0, 1000);
-          this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramString2, new bts(this, i1, (List)localObject1, bool, paramString1));
+          this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramString2, new bnr(this, i1, (List)localObject1, bool, paramString1));
           if (bool) {
-            this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(((List)localObject1).subList(1000, i2), new btt(this, i2, (List)localObject1, paramString1));
+            this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(((List)localObject1).subList(1000, i2), new bns(this, i2, (List)localObject1, paramString1));
           }
           return;
         }
@@ -424,7 +424,7 @@ public class TroopMemberApiPlugin
     {
       ArrayList localArrayList = new ArrayList(1);
       localArrayList.add(localTroopMemberInfo);
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(localArrayList, new btu(this, localTroopMemberInfo, paramString1, paramString2, paramString3));
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(localArrayList, new bnt(this, localTroopMemberInfo, paramString1, paramString2, paramString3));
       return;
     }
     callJs(paramString1, new String[] { paramString2, paramString3, "null" });
@@ -472,7 +472,7 @@ public class TroopMemberApiPlugin
         this.jdField_j_of_type_JavaLangString = paramJsBridgeListener.optString("faceCallback");
         this.jdField_k_of_type_JavaLangString = paramJsBridgeListener.optString("progressCallback");
         if ((!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))) {
-          this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(this.jdField_e_of_type_JavaLangString, new btn(this));
+          this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(this.jdField_e_of_type_JavaLangString, new bnm(this));
         }
         return true;
       }
@@ -680,7 +680,7 @@ public class TroopMemberApiPlugin
               paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
               this.jdField_e_of_type_JavaLangString = paramJsBridgeListener.optString("troopUin");
               bool = paramJsBridgeListener.optBoolean("isOwnerOrAdmin");
-              ThreadManager.a(new bto(this, paramString1, bool));
+              ThreadManager.a(new bnn(this, paramString1, bool));
             }
             catch (JSONException paramJsBridgeListener)
             {

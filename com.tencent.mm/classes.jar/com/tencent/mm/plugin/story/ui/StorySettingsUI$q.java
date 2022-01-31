@@ -1,0 +1,26 @@
+package com.tencent.mm.plugin.story.ui;
+
+import a.l;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.story.model.h;
+
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$2", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
+public final class StorySettingsUI$q
+  implements View.OnClickListener
+{
+  public final void onClick(View paramView)
+  {
+    AppMethodBeat.i(110064);
+    new h();
+    h.cAo();
+    AppMethodBeat.o(110064);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+ * Qualified Name:     com.tencent.mm.plugin.story.ui.StorySettingsUI.q
+ * JD-Core Version:    0.7.0.1
+ */

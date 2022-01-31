@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aifi
+class aifi
+  extends avvb
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  aifi(aiez paramaiez) {}
   
-  private aifi(MigrateSubscribeDB paramMigrateSubscribeDB) {}
-  
-  public String toString()
+  protected void a(Object paramObject)
   {
-    return "mSubscribeID: " + this.jdField_a_of_type_JavaLangString + " | mSubscribeName: " + this.jdField_b_of_type_JavaLangString + " | mLastMsg: " + this.jdField_c_of_type_JavaLangString + " | mLastMsgTime: " + this.jdField_a_of_type_Long + " | mLastMsgID: " + this.jdField_b_of_type_Long + " | mLastReorderTime: " + this.jdField_c_of_type_Long + " | mDraft: " + this.d + " | mDraftTime: " + this.e + " | mSubscribeHeadUrl: " + this.f + " | mUnreadCount: " + this.jdField_a_of_type_Int;
+    this.a.g();
+    if ((this.a.a != null) && (this.a.a.app != null) && (this.a.a.app.a() != null)) {
+      this.a.a.app.a().e();
+    }
   }
 }
 

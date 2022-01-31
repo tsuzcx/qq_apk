@@ -1,13 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-public final class lkr
-  implements Runnable
+public class lkr
 {
-  public void run() {}
+  public PendantItem a;
+  public VideoMaterial a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lkr
  * JD-Core Version:    0.7.0.1
  */

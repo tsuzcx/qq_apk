@@ -1,27 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import android.content.Context;
 
-public class oru
-  implements Animator.AnimatorListener
+final class oru
+  implements sms
 {
-  public oru(RotateCircleImageView paramRotateCircleImageView) {}
+  oru(Context paramContext, String paramString) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    RotateCircleImageView.a(this.a).start();
+    ors.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oru
  * JD-Core Version:    0.7.0.1
  */

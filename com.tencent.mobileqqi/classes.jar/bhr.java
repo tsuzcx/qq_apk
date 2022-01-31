@@ -1,39 +1,27 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.gaudio.GaInviteActivity;
-import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.security.cert.X509Certificate;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocket;
+import org.apache.http.conn.ssl.X509HostnameVerifier;
 
-public class bhr
-  implements Runnable
+public final class bhr
+  implements X509HostnameVerifier
 {
-  public bhr(GaInviteActivity paramGaInviteActivity) {}
+  public void verify(String paramString, X509Certificate paramX509Certificate) {}
   
-  public void run()
+  public void verify(String paramString, SSLSocket paramSSLSocket)
   {
-    long l = this.a.b;
-    String str1 = Long.toString(this.a.jdField_a_of_type_Long);
-    if (QLog.isColorLevel()) {
-      QLog.e(GaInviteActivity.jdField_a_of_type_JavaLangString, 2, "GetDiscussFaceRunnable");
-    }
-    Bitmap localBitmap = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3000, String.valueOf(l), null, true, false);
-    String str2 = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1004, str1, String.valueOf(this.a.b));
-    if ((localBitmap != null) && (!str2.equals(str1)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(GaInviteActivity.jdField_a_of_type_JavaLangString, 2, "GetDiscussFaceRunnable bitmap OK");
-      }
-      if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
-      }
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(str2);
-      }
+    if (paramString.startsWith("macqq.translator.qq.com")) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1500L);
+    throw new IOException("Mismatched host :" + paramString);
+  }
+  
+  public void verify(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2) {}
+  
+  public boolean verify(String paramString, SSLSession paramSSLSession)
+  {
+    return paramString.startsWith("https://macqq.translator.qq.com");
   }
 }
 

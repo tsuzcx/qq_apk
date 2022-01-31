@@ -1,56 +1,29 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemPAAudio;
-import com.tencent.mobileqq.transfile.PAAudioPttDownloadProcessor;
-import java.io.File;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
 
-public class aijm
-  implements View.OnClickListener
+class aijm
+  implements Animation.AnimationListener
 {
-  public aijm(StructMsgItemPAAudio paramStructMsgItemPAAudio) {}
+  aijm(aijl paramaijl, Activity paramActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (TextUtils.isEmpty(this.a.y)) {
-      return;
-    }
-    for (;;)
+    if ((this.jdField_a_of_type_Aijl.a.a.getCount() == 1) && (!MiniMsgTabFragment.b(this.jdField_a_of_type_Aijl.a)))
     {
-      String str;
-      try
-      {
-        str = PAAudioPttDownloadProcessor.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.x);
-        if (TextUtils.isEmpty(str))
-        {
-          this.a.a();
-          this.a.a(this.a.y, paramView);
-          ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005C9B", "0X8005C9B", 0, 1, 0, this.a.y, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.w, this.a.x);
-          return;
-        }
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-        return;
-      }
-      if (new File(str).exists())
-      {
-        if (this.a.jdField_a_of_type_Boolean) {
-          this.a.d();
-        } else {
-          this.a.c();
-        }
-      }
-      else
-      {
-        this.a.a();
-        this.a.a(this.a.y, paramView);
-      }
+      paramAnimation = MiniMsgTabFragment.a(this.jdField_a_of_type_Aijl.a);
+      paramAnimation.putExtra("miniAppID", MiniMsgTabFragment.a(this.jdField_a_of_type_Aijl.a));
+      paramAnimation.putExtra("clickID", -1);
+      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, paramAnimation);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

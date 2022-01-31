@@ -1,24 +1,15 @@
-import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqavopensdk.AVEngineEventHandler;
+import android.view.View;
+import android.widget.TextView;
 
 public class yvi
-  extends AVAudioCtrl.EnableSpeakerCompleteCallback
 {
-  public yvi(AVEngineWalper paramAVEngineWalper) {}
-  
-  protected void onComplete(boolean paramBoolean, int paramInt)
-  {
-    QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
-    if (this.a.a != null) {
-      this.a.a.b(paramBoolean, paramInt);
-    }
-  }
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yvi
  * JD-Core Version:    0.7.0.1
  */

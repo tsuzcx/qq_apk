@@ -21,8 +21,8 @@ public class ThemeDIYData
   public int position;
   public int themeBgID;
   public String themeShot;
-  ResData tryOnBgBigOrgRD;
-  ResData tryOnBgBigRD;
+  public ResData tryOnBgBigOrgRD;
+  public ResData tryOnBgBigRD;
   ResSuitData tryOnBgRSD;
   ResSuitData usedBgRSD;
   
@@ -38,7 +38,7 @@ public class ThemeDIYData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ThemeDIYData
  * JD-Core Version:    0.7.0.1
  */

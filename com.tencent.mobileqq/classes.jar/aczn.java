@@ -1,35 +1,26 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aczn
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aczn(UniformDownloadMgr paramUniformDownloadMgr) {}
+  public aczn(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if (UniformDownloadMgr.a(this.a) != null)
-      {
-        BaseApplicationImpl.getApplication().unregisterReceiver(UniformDownloadMgr.a(this.a));
-        UniformDownloadMgr.a(this.a, null);
-        QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr unRegister UNIDOWNLOAD_BORDCAST");
-        return;
-      }
-      QLog.w("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr unRegister UNIDOWNLOAD_BORDCAST, had unRegister");
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    this.a.F();
+    this.a.finish();
+    if ((this.a.a.a != null) && (this.a.a.a.a) && (this.a.app != null) && (!"0".equals(this.a.app.getCurrentAccountUin()))) {
+      this.a.app.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aczn
  * JD-Core Version:    0.7.0.1
  */

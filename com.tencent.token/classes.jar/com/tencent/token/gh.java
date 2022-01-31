@@ -1,29 +1,73 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.kingkong.database.SQLiteDatabase;
-import com.tencent.kingkong.database.SQLiteOpenHelper;
+import java.util.Vector;
 
-public final class gh
-  extends SQLiteOpenHelper
+class gh
+  extends Thread
 {
-  Context a;
+  int a = -1;
+  volatile boolean b = false;
   
-  gh(Context paramContext, String paramString, int paramInt) {}
+  gh(gg paramgg) {}
   
-  protected final void finalize()
+  public void run()
   {
-    try
+    for (;;)
     {
-      close();
-      return;
+      if (gg.a(this.c))
+      {
+        synchronized (gg.b(this.c))
+        {
+          label20:
+          int i = gg.c(this.c).size();
+          if (i != 0) {}
+        }
+        try
+        {
+          gg.b(this.c).wait();
+          label45:
+          if (gg.a(this.c)) {
+            break label20;
+          }
+          return;
+          gi localgi = (gi)gg.c(this.c).firstElement();
+          if ((gg.d(this.c)) || (localgi.d() == 1))
+          {
+            gg.c(this.c).removeElement(localgi);
+            this.a = localgi.d();
+          }
+          try
+          {
+            for (;;)
+            {
+              Thread.sleep(100L);
+              label118:
+              this.b = false;
+              gg.a(this.c, localgi, this, false);
+              this.a = -1;
+              break;
+              try
+              {
+                gg.b(this.c).wait();
+              }
+              catch (InterruptedException localInterruptedException2) {}
+            }
+            break label45;
+            localObject = finally;
+            throw localObject;
+          }
+          catch (InterruptedException localInterruptedException1)
+          {
+            break label118;
+          }
+        }
+        catch (InterruptedException localInterruptedException3)
+        {
+          break label45;
+        }
+      }
     }
-    catch (Exception localException) {}
   }
-  
-  public final void onCreate(SQLiteDatabase paramSQLiteDatabase) {}
-  
-  public final void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
 }
 
 

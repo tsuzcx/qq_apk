@@ -1,54 +1,64 @@
 import android.content.Context;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.ViewConfiguration;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.support.annotation.NonNull;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.LayoutInflater.Factory;
+import android.view.LayoutInflater.Factory2;
+import android.view.View;
 
 public class xph
-  extends GestureDetector.SimpleOnGestureListener
+  implements LayoutInflater.Factory2
 {
-  float jdField_a_of_type_Float;
+  private final LayoutInflater.Factory2 jdField_a_of_type_AndroidViewLayoutInflater$Factory2;
+  private final LayoutInflater.Factory jdField_a_of_type_AndroidViewLayoutInflater$Factory;
+  private final LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   
-  public xph(FlowCameraActivity2 paramFlowCameraActivity2, Context paramContext)
+  public xph(@NonNull LayoutInflater paramLayoutInflater)
   {
-    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
+    this.jdField_a_of_type_AndroidViewLayoutInflater$Factory = paramLayoutInflater.getFactory();
+    this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2 = paramLayoutInflater.getFactory2();
   }
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  protected View a(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    return super.onDown(paramMotionEvent);
+    xpi.a("LayoutModifier", "onCreateViewPrivate " + paramString);
+    return null;
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public View onCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.i) || (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.j)) {
-      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    float f = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    if (Math.abs(f) > this.jdField_a_of_type_Float)
+    View localView2 = a(paramView, paramString, paramContext, paramAttributeSet);
+    View localView1 = localView2;
+    if (localView2 == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.a(f);
-      return true;
+      localView1 = localView2;
+      if (this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2 != null) {
+        localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
+      }
     }
-    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    xpi.a("LayoutModifier", "onCreateView " + localView1);
+    return localView1;
   }
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    return super.onSingleTapUp(paramMotionEvent);
+    View localView2 = a(null, paramString, paramContext, paramAttributeSet);
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = localView2;
+      if (this.jdField_a_of_type_AndroidViewLayoutInflater$Factory != null) {
+        localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater$Factory.onCreateView(paramString, paramContext, paramAttributeSet);
+      }
+    }
+    xpi.a("LayoutModifier", "onCreateView " + localView1);
+    return localView1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xph
  * JD-Core Version:    0.7.0.1
  */

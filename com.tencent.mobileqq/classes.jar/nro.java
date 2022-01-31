@@ -1,53 +1,44 @@
-import android.support.annotation.NonNull;
-import java.lang.ref.WeakReference;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import mqq.os.MqqHandler;
 
 class nro
-  implements nrn
+  extends BroadcastReceiver
 {
-  private final int jdField_a_of_type_Int;
-  @NonNull
-  private final WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  nro(nrc paramnrc, boolean paramBoolean, MqqHandler paramMqqHandler) {}
   
-  public nro(@NonNull nrn paramnrn)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Int = System.identityHashCode(paramnrn);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramnrn);
-  }
-  
-  private boolean a()
-  {
-    return this.jdField_a_of_type_JavaLangRefWeakReference.get() != null;
-  }
-  
-  public void a(@NonNull nrl paramnrl)
-  {
-    nrn localnrn = (nrn)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localnrn != null) {
-      localnrn.a(paramnrl);
+    String str = paramIntent.getStringExtra("com.tencent.biz.pubaccount.scanResultData");
+    int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.scanResultType", 0);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Nrc.a(str, i, 12, -1, null);
+      if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(19);
+      }
     }
-  }
-  
-  public void b(@NonNull nrl paramnrl)
-  {
-    nrn localnrn = (nrn)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localnrn != null) {
-      localnrn.b(paramnrl);
+    try
+    {
+      for (;;)
+      {
+        paramContext.unregisterReceiver(this.jdField_a_of_type_Nrc.a);
+        label65:
+        this.jdField_a_of_type_Nrc.a = null;
+        return;
+        this.jdField_a_of_type_Nrc.a(str, i, 11, -1, null);
+      }
     }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    return ((paramObject instanceof nro)) && (((nro)paramObject).jdField_a_of_type_Int == this.jdField_a_of_type_Int);
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int;
+    catch (Exception paramContext)
+    {
+      break label65;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nro
  * JD-Core Version:    0.7.0.1
  */

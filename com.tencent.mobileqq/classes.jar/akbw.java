@@ -1,21 +1,24 @@
-import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
-import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
 
-public final class akbw
-  implements WebProcessManager.WebProcessStartListener
+public class akbw
+  extends akit
 {
-  public akbw(PreloadProcHitSession paramPreloadProcHitSession) {}
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public DiscussionInfo a;
+  public TroopInfo a;
+  public ImageView b;
+  public TextView b;
   
-  public void a(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.a != null)) {
-      this.a.a();
-    }
-  }
+  public akbw(akbr paramakbr) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbw
  * JD-Core Version:    0.7.0.1
  */

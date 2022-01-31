@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qrcode.activity.QRJumpActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 
 public class bsr
-  implements DialogInterface.OnCancelListener
+  extends MessageObserver
 {
-  public bsr(QRJumpActivity paramQRJumpActivity) {}
+  public bsr(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    this.a.finish();
+    if (paramBoolean) {
+      AccountManageActivity.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bsr
  * JD-Core Version:    0.7.0.1
  */

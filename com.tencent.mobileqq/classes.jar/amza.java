@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.share.QZoneShareActivity;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceActInfo;
 
-public class amza
-  implements Runnable
+public final class amza
+  implements Parcelable.Creator<ARScanStarFaceActInfo>
 {
-  public amza(QZoneShareActivity paramQZoneShareActivity) {}
-  
-  public void run()
+  public ARScanStarFaceActInfo a(Parcel paramParcel)
   {
-    int i = this.a.b();
-    int j = this.a.a();
-    ThreadManager.getUIHandler().post(new amzb(this, i - j));
+    return new ARScanStarFaceActInfo(paramParcel);
+  }
+  
+  public ARScanStarFaceActInfo[] a(int paramInt)
+  {
+    return new ARScanStarFaceActInfo[paramInt];
   }
 }
 

@@ -1,18 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.av.ui.QavListItemBase;
 
-public class mkh
-  implements Runnable
+public abstract interface mkh
 {
-  public mkh(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
-  
-  public void run()
-  {
-    ReadinjoyTabFrame.a(this.a);
-  }
+  public abstract void a(long paramLong, int paramInt, QavListItemBase paramQavListItemBase);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mkh
  * JD-Core Version:    0.7.0.1
  */

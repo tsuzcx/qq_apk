@@ -1,22 +1,29 @@
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.PATextItemBuilder;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class vci
-  extends AbstractChatItemBuilder.ViewHolder
+class vci
+  extends SimpleJob<Object>
 {
-  public Object a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
+  vci(vcg paramvcg, String paramString)
+  {
+    super(paramString);
+  }
   
-  public vci(PATextItemBuilder paramPATextItemBuilder) {}
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    if (this.a.jdField_a_of_type_Vcj == null) {
+      this.a.jdField_a_of_type_Vcj = new vcj(this.a, this.a.d);
+    }
+    this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Vcj.jdField_a_of_type_JavaLangString;
+    vcg.a(this.a);
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vci
  * JD-Core Version:    0.7.0.1
  */

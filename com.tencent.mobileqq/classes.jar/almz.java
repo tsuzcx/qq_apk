@@ -1,28 +1,35 @@
-import com.tencent.image.URLImageView;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.QidianProfileCardActivity.PaGroupStruct;
-import com.tencent.qidian.data.PublicAccountItem;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class almz
-  implements Runnable
+public class almz
+  implements alni
 {
-  almz(almx paramalmx, PublicAccountItem paramPublicAccountItem, URLImageView paramURLImageView) {}
+  public almz(ApolloPanel paramApolloPanel) {}
   
-  public void run()
+  public void a(ApolloPanelGuideView paramApolloPanelGuideView)
   {
-    if (this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_Int == 1) {}
-    for (String str = this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.c;; str = this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_JavaLangString)
+    ApolloPanel.e(this.a);
+    if (!ApolloPanel.a(this.a, "sp_key_apollo_show_guide_tip"))
     {
-      this.jdField_a_of_type_Almx.a.a.put(this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_JavaLangString, new QidianProfileCardActivity.PaGroupStruct(this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_Int, str));
-      this.jdField_a_of_type_Almx.a.a(this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentImageURLImageView, str, false);
-      return;
+      ApolloPanel.a(this.a, "sp_key_apollo_show_guide_tip");
+      ApolloPanel.a(this.a, ApolloPanel.a(this.a), 49, this.a.getResources().getString(2131690163), 5);
     }
+  }
+  
+  public void b(ApolloPanelGuideView paramApolloPanelGuideView)
+  {
+    ApolloPanel.e(this.a);
+    paramApolloPanelGuideView = (bdug)this.a.a.a.a(71);
+    paramApolloPanelGuideView.a(new alna(this, paramApolloPanelGuideView));
+    paramApolloPanelGuideView.c("guide_page", 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     almz
  * JD-Core Version:    0.7.0.1
  */

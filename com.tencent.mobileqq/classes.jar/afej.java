@@ -1,42 +1,63 @@
+import android.content.Context;
 import android.content.res.Resources;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.util.Pair;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class afej
-  implements Animation.AnimationListener
+class afej
+  implements URLDrawable.URLDrawableListener
 {
-  public afej(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  afej(afee paramafee) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (paramAnimation == NearbyProfileDisplayPanel.b(this.a))
+    if ((paramURLDrawable.getCurrDrawable() instanceof RegionDrawable))
     {
-      NearbyProfileDisplayPanel.a(this.a).setVisibility(8);
-      NearbyProfileDisplayPanel.a(this.a).clearAnimation();
-      NearbyProfileDisplayPanel.a(this.a).setBackgroundResource(2130845274);
-      NearbyProfileDisplayPanel.a(this.a).setTextColor(this.a.a.getResources().getColor(2131494188));
+      paramThrowable = this.a.a.iterator();
+      while (paramThrowable.hasNext())
+      {
+        Pair localPair = (Pair)paramThrowable.next();
+        if ((((URLDrawable)localPair.first).getURL().equals(paramURLDrawable.getURL())) && (localPair.second != null) && (afee.a(this.a) != null)) {
+          ((URLImageView)localPair.second).setImageDrawable(afee.a(this.a).a.getResources().getDrawable(2130843303));
+        }
+      }
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (paramAnimation == NearbyProfileDisplayPanel.a(this.a))
+    Drawable localDrawable = paramURLDrawable.getCurrDrawable();
+    if ((localDrawable instanceof RegionDrawable))
     {
-      NearbyProfileDisplayPanel.a(this.a).setVisibility(0);
-      NearbyProfileDisplayPanel.a(this.a).setBackgroundResource(2130846264);
-      NearbyProfileDisplayPanel.a(this.a).setTextColor(this.a.a.getResources().getColor(2131494210));
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext())
+      {
+        Pair localPair = (Pair)localIterator.next();
+        if ((((URLDrawable)localPair.first).getURL().equals(paramURLDrawable.getURL())) && (localPair.second != null))
+        {
+          Bitmap localBitmap = ((RegionDrawable)localDrawable).getBitmap();
+          ((URLImageView)localPair.second).setImageBitmap(localBitmap);
+          ((URLImageView)localPair.second).setVisibility(0);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afej
  * JD-Core Version:    0.7.0.1
  */

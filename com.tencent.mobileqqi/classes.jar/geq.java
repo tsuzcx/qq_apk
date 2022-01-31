@@ -1,26 +1,23 @@
-import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.DialogUtil;
-import java.util.Timer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.profile.ProfileCardBrowserActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class geq
-  implements View.OnClickListener
+public class geq
+  implements DialogInterface.OnClickListener
 {
-  geq(gep paramgep, Dialog paramDialog) {}
+  public geq(ProfileCardBrowserActivity paramProfileCardBrowserActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = DialogUtil.a(this.jdField_a_of_type_Gep.a, 2131562645);
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    paramView.show();
-    new Timer().schedule(new ger(this, paramView), 100L);
+    this.a.g();
+    this.a.h();
+    ReportController.b(this.a.b, "P_CliOper", "Vip_SummaryCard", "", "SummaryCard", "CLICK_VIPOPENSERVICE", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     geq
  * JD-Core Version:    0.7.0.1
  */

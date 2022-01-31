@@ -1,20 +1,34 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.SendHbLogic.QwTextAdapter;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class xdq
-  extends SendHbLogic.QwTextAdapter
+class xdq
+  implements Animator.AnimatorListener
 {
-  public xdq(QzoneHbFragment paramQzoneHbFragment) {}
+  xdq(xdo paramxdo) {}
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    QzoneHbFragment.a(this.a).setEnabled(QzoneHbFragment.a(this.a));
+    this.a.a = false;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a = false;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    this.a.a = true;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xdq
  * JD-Core Version:    0.7.0.1
  */

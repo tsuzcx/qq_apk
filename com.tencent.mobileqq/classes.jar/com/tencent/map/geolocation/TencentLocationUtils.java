@@ -1,8 +1,8 @@
 package com.tencent.map.geolocation;
 
 import android.content.Context;
-import c.t.m.g.eq;
-import c.t.m.g.f.a;
+import c.t.m.g.fm;
+import c.t.m.g.fp;
 
 public class TencentLocationUtils
 {
@@ -21,7 +21,7 @@ public class TencentLocationUtils
   
   public static double distanceBetween(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
   {
-    return f.a.a(paramDouble1, paramDouble2, paramDouble3, paramDouble4);
+    return fp.a(paramDouble1, paramDouble2, paramDouble3, paramDouble4);
   }
   
   public static double distanceBetween(TencentLocation paramTencentLocation1, TencentLocation paramTencentLocation2)
@@ -29,7 +29,7 @@ public class TencentLocationUtils
     if ((paramTencentLocation1 == null) || (paramTencentLocation2 == null)) {
       throw new NullPointerException();
     }
-    return f.a.a(paramTencentLocation1.getLatitude(), paramTencentLocation1.getLongitude(), paramTencentLocation2.getLatitude(), paramTencentLocation2.getLongitude());
+    return fp.a(paramTencentLocation1.getLatitude(), paramTencentLocation1.getLongitude(), paramTencentLocation2.getLatitude(), paramTencentLocation2.getLongitude());
   }
   
   public static boolean isFromGps(TencentLocation paramTencentLocation)
@@ -53,13 +53,13 @@ public class TencentLocationUtils
     if (paramContext == null) {
       throw new NullPointerException();
     }
-    eq.a();
-    return (eq.a(paramContext) & 0x10) == 0;
+    fm.a();
+    return (fm.a(paramContext) & 0x10) == 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.geolocation.TencentLocationUtils
  * JD-Core Version:    0.7.0.1
  */

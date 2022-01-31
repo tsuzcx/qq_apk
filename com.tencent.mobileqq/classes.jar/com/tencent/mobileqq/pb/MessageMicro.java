@@ -2,15 +2,14 @@ package com.tencent.mobileqq.pb;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.util.Arrays;
 
 public abstract class MessageMicro<T extends MessageMicro<T>>
   extends PBPrimitiveField<T>
 {
-  private FieldMap _fields = null;
+  private MessageMicro.FieldMap _fields = null;
   private int cachedSize = -1;
   
-  private final FieldMap getFieldMap()
+  private final MessageMicro.FieldMap getFieldMap()
   {
     Object localObject;
     if (this._fields == null) {
@@ -20,7 +19,7 @@ public abstract class MessageMicro<T extends MessageMicro<T>>
     {
       localObject = ((Class)localObject).getDeclaredField("__fieldMap__");
       ((Field)localObject).setAccessible(true);
-      this._fields = ((FieldMap)((Field)localObject).get(this));
+      this._fields = ((MessageMicro.FieldMap)((Field)localObject).get(this));
       return this._fields;
     }
     catch (NoSuchFieldException localNoSuchFieldException)
@@ -53,17 +52,14 @@ public abstract class MessageMicro<T extends MessageMicro<T>>
     }
   }
   
-  protected static FieldMap initFieldMap(int[] paramArrayOfInt, String[] paramArrayOfString, Object[] paramArrayOfObject, Class<?> paramClass)
+  public static MessageMicro.FieldMap initFieldMap(int[] paramArrayOfInt, String[] paramArrayOfString, Object[] paramArrayOfObject, Class<?> paramClass)
   {
-    return new FieldMap(paramArrayOfInt, paramArrayOfString, paramArrayOfObject, paramClass);
+    return new MessageMicro.FieldMap(paramArrayOfInt, paramArrayOfString, paramArrayOfObject, paramClass);
   }
   
-  public static void main(String[] paramArrayOfString)
-    throws Exception
-  {}
+  public static void main(String[] paramArrayOfString) {}
   
   public static final <T extends MessageMicro<T>> T mergeFrom(T paramT, byte[] paramArrayOfByte)
-    throws InvalidProtocolBufferMicroException
   {
     return paramT.mergeFrom(paramArrayOfByte);
   }
@@ -167,9 +163,8 @@ public abstract class MessageMicro<T extends MessageMicro<T>>
   }
   
   public final T mergeFrom(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException
   {
-    FieldMap localFieldMap = getFieldMap();
+    MessageMicro.FieldMap localFieldMap = getFieldMap();
     setHasFlag(true);
     for (;;)
     {
@@ -203,13 +198,11 @@ public abstract class MessageMicro<T extends MessageMicro<T>>
   }
   
   public final T mergeFrom(byte[] paramArrayOfByte)
-    throws InvalidProtocolBufferMicroException
   {
     return mergeFrom(paramArrayOfByte, 0, paramArrayOfByte.length);
   }
   
   public final T mergeFrom(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-    throws InvalidProtocolBufferMicroException
   {
     try
     {
@@ -229,19 +222,16 @@ public abstract class MessageMicro<T extends MessageMicro<T>>
   }
   
   protected boolean parseUnknownField(CodedInputStreamMicro paramCodedInputStreamMicro, int paramInt)
-    throws IOException
   {
     return paramCodedInputStreamMicro.skipField(paramInt);
   }
   
   public void readFrom(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException
   {
     paramCodedInputStreamMicro.readMessage(this);
   }
   
   protected T readFromDirectly(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException
   {
     try
     {
@@ -298,7 +288,6 @@ public abstract class MessageMicro<T extends MessageMicro<T>>
   }
   
   public final void writeTo(CodedOutputStreamMicro paramCodedOutputStreamMicro)
-    throws IOException
   {
     try
     {
@@ -317,7 +306,6 @@ public abstract class MessageMicro<T extends MessageMicro<T>>
   }
   
   public void writeTo(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt)
-    throws IOException
   {
     if (has()) {
       paramCodedOutputStreamMicro.writeMessage(paramInt, this);
@@ -325,122 +313,8 @@ public abstract class MessageMicro<T extends MessageMicro<T>>
   }
   
   protected void writeToDirectly(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt, T paramT)
-    throws IOException
   {
     paramCodedOutputStreamMicro.writeMessage(paramInt, paramT);
-  }
-  
-  public static final class FieldMap
-  {
-    private Object[] defaultValues;
-    private Field[] fields;
-    private int[] tags;
-    
-    FieldMap(int[] paramArrayOfInt, String[] paramArrayOfString, Object[] paramArrayOfObject, Class<?> paramClass)
-    {
-      this.tags = paramArrayOfInt;
-      this.defaultValues = paramArrayOfObject;
-      this.fields = new Field[paramArrayOfInt.length];
-      int i = 0;
-      for (;;)
-      {
-        if (i >= paramArrayOfInt.length) {
-          return;
-        }
-        try
-        {
-          this.fields[i] = paramClass.getField(paramArrayOfString[i]);
-          i += 1;
-        }
-        catch (Exception paramArrayOfObject)
-        {
-          for (;;)
-          {
-            paramArrayOfObject.printStackTrace();
-          }
-        }
-      }
-    }
-    
-    void clear(MessageMicro<?> paramMessageMicro)
-      throws IllegalArgumentException, IllegalAccessException
-    {
-      int i = 0;
-      for (;;)
-      {
-        if (i >= this.tags.length) {
-          return;
-        }
-        ((PBField)this.fields[i].get(paramMessageMicro)).clear(this.defaultValues[i]);
-        i += 1;
-      }
-    }
-    
-    <U extends MessageMicro<U>> void copyFields(U paramU1, U paramU2)
-      throws IllegalArgumentException, IllegalAccessException
-    {
-      int i = 0;
-      for (;;)
-      {
-        if (i >= this.tags.length) {
-          return;
-        }
-        Field localField = this.fields[i];
-        ((PBField)localField.get(paramU1)).copyFrom((PBField)localField.get(paramU2));
-        i += 1;
-      }
-    }
-    
-    Field get(int paramInt)
-    {
-      paramInt = Arrays.binarySearch(this.tags, paramInt);
-      if (paramInt < 0) {
-        return null;
-      }
-      return this.fields[paramInt];
-    }
-    
-    int getSerializedSize(MessageMicro<?> paramMessageMicro)
-      throws IllegalArgumentException, IllegalAccessException
-    {
-      int i = 0;
-      int j = 0;
-      for (;;)
-      {
-        if (i >= this.tags.length) {
-          return j;
-        }
-        int k = WireFormatMicro.getTagFieldNumber(this.tags[i]);
-        j += ((PBField)this.fields[i].get(paramMessageMicro)).computeSize(k);
-        i += 1;
-      }
-    }
-    
-    public boolean readFieldFrom(CodedInputStreamMicro paramCodedInputStreamMicro, int paramInt, MessageMicro<?> paramMessageMicro)
-      throws IOException, IllegalArgumentException, IllegalAccessException, InstantiationException
-    {
-      paramInt = Arrays.binarySearch(this.tags, paramInt);
-      if (paramInt < 0) {
-        return false;
-      }
-      ((PBField)this.fields[paramInt].get(paramMessageMicro)).readFrom(paramCodedInputStreamMicro);
-      return true;
-    }
-    
-    void writeTo(CodedOutputStreamMicro paramCodedOutputStreamMicro, MessageMicro<?> paramMessageMicro)
-      throws IllegalArgumentException, IllegalAccessException, IOException
-    {
-      int i = 0;
-      for (;;)
-      {
-        if (i >= this.tags.length) {
-          return;
-        }
-        int j = WireFormatMicro.getTagFieldNumber(this.tags[i]);
-        ((PBField)this.fields[i].get(paramMessageMicro)).writeTo(paramCodedOutputStreamMicro, j);
-        i += 1;
-      }
-    }
   }
 }
 

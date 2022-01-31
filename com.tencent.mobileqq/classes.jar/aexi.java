@@ -1,29 +1,27 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.widget.ListView;
-import com.tencent.av.utils.UITools;
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import java.util.List;
+import android.widget.ImageView;
 
-public class aexi
-  implements Runnable
+class aexi
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aexi(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  aexi(aexh paramaexh) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int i = UITools.b(this.a.getContext());
-    if (ShortVideoCommentsView.a() * this.a.a.a.size() + ShortVideoCommentsView.b(this.a).getMeasuredHeight() >= i)
-    {
-      ShortVideoCommentsView.a(this.a).setSelectionFromTop(1, ShortVideoCommentsView.a() + ShortVideoCommentsView.b(this.a).getMeasuredHeight());
-      return;
+    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
+    if (aexh.a(this.a) != null) {
+      aexh.a(this.a).setAlpha((float)d);
     }
-    ShortVideoCommentsView.a(this.a).setSelection(this.a.a.a.size() + 1);
+    if (aexh.a(this.a) != null) {
+      aexh.a(this.a).setAlpha((float)d * 2.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aexi
  * JD-Core Version:    0.7.0.1
  */

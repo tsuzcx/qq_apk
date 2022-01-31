@@ -1,15 +1,27 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class andl
-  implements Runnable
+final class andl
+  implements bauf
 {
-  public andl(QzoneVideoTabJsPlugin paramQzoneVideoTabJsPlugin) {}
-  
-  public void run()
+  public void a(bave parambave, bavf parambavf)
   {
-    RemoteHandleManager.a().a().n();
+    if ((parambave == null) || (parambavf == null)) {}
+    while (!(parambave instanceof baub)) {
+      return;
+    }
+    baub localbaub = (baub)parambave;
+    localbaub.jdField_a_of_type_Long += parambavf.c;
+    parambavf.c = 0L;
+    parambavf = "bytes=" + localbaub.jdField_a_of_type_Long + "-";
+    localbaub.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
+    parambavf = localbaub.jdField_a_of_type_JavaLangString;
+    if (parambavf.contains("range="))
+    {
+      parambavf = parambavf.substring(0, parambavf.lastIndexOf("range="));
+      localbaub.jdField_a_of_type_JavaLangString = (parambavf + "range=" + localbaub.jdField_a_of_type_Long);
+    }
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, "IBreakDownFix. url = " + ((baub)parambave).jdField_a_of_type_JavaLangString + ", offset=" + localbaub.jdField_a_of_type_Long);
   }
 }
 

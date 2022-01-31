@@ -1,64 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForTroopTopic;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgFactory;
-import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
-import com.tencent.mobileqq.troop.data.TroopTopicDetailInfoManager;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
-import com.tencent.mobileqq.troop.utils.TroopTopicObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ajqt
-  implements Runnable
+  implements ajru
 {
-  public ajqt(TroopTopicMgr paramTroopTopicMgr, TroopTopicDetailInfo paramTroopTopicDetailInfo, MessageForTroopTopic paramMessageForTroopTopic) {}
+  public ajqt(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
   {
-    TroopTopicDetailInfo localTroopTopicDetailInfo = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopTopicDetailInfo;
-    Object localObject = localTroopTopicDetailInfo;
-    if (localTroopTopicDetailInfo == null)
+    if (this.a.r == 10011)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "getTroopTopicDetailInfo check db");
-      }
-      localTroopTopicDetailInfo = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.a.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopTopic.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopTopic.shmsgseq, true);
-      localObject = localTroopTopicDetailInfo;
-      if (localTroopTopicDetailInfo != null)
-      {
-        localObject = localTroopTopicDetailInfo;
-        if (localTroopTopicDetailInfo.detailInfoData != null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "getTroopTopicDetailInfo has db rec");
-          }
-          localTroopTopicDetailInfo.detailStructMsg = StructMsgFactory.a(localTroopTopicDetailInfo.detailInfoData, 0);
-          if (localTroopTopicDetailInfo.detailStructMsg != null)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.b(localTroopTopicDetailInfo);
-            localObject = new Bundle();
-            ((Bundle)localObject).putParcelable("detailInfo", localTroopTopicDetailInfo);
-            ((Bundle)localObject).putInt("ret", 0);
-            if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopTopicDetailInfo.detailStructMsg.message == null) {
-              this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopTopicDetailInfo.detailStructMsg.message = this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopTopic;
-            }
-            TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr).notifyObservers(TroopTopicObserver.class, 2, true, (Bundle)localObject);
-            return;
-          }
-          localObject = localTroopTopicDetailInfo;
-          if (QLog.isColorLevel())
-          {
-            QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "getTroopTopicDetailInfo parse xml error");
-            localObject = localTroopTopicDetailInfo;
-          }
-        }
-      }
+      NewFlowCameraActivity.a(this.a, paramString1);
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "getTroopTopicDetailInfo fetch net");
+    if (paramBoolean)
+    {
+      NewFlowCameraActivity.b(this.a, paramString1);
+      return;
     }
-    TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopTopic, (TroopTopicDetailInfo)localObject);
+    this.a.i(true);
+    QQToast.a(this.a, alud.a(2131707872), 0).a();
   }
 }
 

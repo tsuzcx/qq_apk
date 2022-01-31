@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SubMsgType0x27$GroupSort
-  extends MessageMicro
+  extends MessageMicro<GroupSort>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uint32_groupid", "uint32_sortid" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, GroupSort.class);
   public final PBUInt32Field uint32_groupid = PBField.initUInt32(0);

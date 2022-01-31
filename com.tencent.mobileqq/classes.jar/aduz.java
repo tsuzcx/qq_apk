@@ -1,28 +1,20 @@
-import android.graphics.Color;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.ui.RoundProgressBar;
-import com.tencent.mobileqq.intervideo.now.NowLoadingActivity;
-import com.tencent.mobileqq.utils.ViewUtils;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import mqq.os.MqqHandler;
 
 public class aduz
-  implements Runnable
+  extends MqqHandler
 {
-  public aduz(NowLoadingActivity paramNowLoadingActivity, int paramInt) {}
+  public aduz(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setCircleColor(-12829636);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setRoundWidth(ViewUtils.b(10.0F));
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setTextSize(ViewUtils.b(43.0F));
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setTextColor(-1);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setPercentMarkTextSize(ViewUtils.b(43.0F));
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setCircleProgressColor(Color.parseColor("#50ffcd"));
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setProgress(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setNeedShowProgreeText(false);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.b.setText(this.jdField_a_of_type_Int + "%");
-    NowLoadingActivity.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity, this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.getString(2131430832), true);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.finish();
   }
 }
 

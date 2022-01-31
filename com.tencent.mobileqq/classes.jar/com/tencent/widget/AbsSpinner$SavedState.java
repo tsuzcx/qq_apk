@@ -1,15 +1,15 @@
 package com.tencent.widget;
 
-import amaf;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.View.BaseSavedState;
+import bhud;
 
 public class AbsSpinner$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator CREATOR = new amaf();
+  public static final Parcelable.Creator<SavedState> CREATOR = new bhud();
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
   
@@ -39,7 +39,7 @@ public class AbsSpinner$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.AbsSpinner.SavedState
  * JD-Core Version:    0.7.0.1
  */

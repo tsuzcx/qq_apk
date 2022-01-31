@@ -1,34 +1,35 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.data.AppShareID;
+import mqq.os.MqqHandler;
 
 public class acrt
-  implements Runnable
+  extends alqh
 {
-  public acrt(QfileLocalFileDocTabView paramQfileLocalFileDocTabView, FileInfo paramFileInfo) {}
+  public acrt(Conversation paramConversation) {}
   
-  public void run()
+  protected void a(Boolean paramBoolean1, Boolean paramBoolean2, String paramString1, String paramString2, String paramString3)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.d());
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(localObject)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject, new ArrayList());
-    }
-    localObject = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
-    if (((List)localObject).contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo) == true) {}
-    do
+    if ((!paramBoolean1.booleanValue()) && (paramBoolean2.booleanValue()) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
     {
-      return;
-      ((List)localObject).add(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.i();
-    } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.jdField_a_of_type_JavaUtilArrayList.size() != 1);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.setSelect(0);
+      azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008272", "0X8008272", 0, 0, "", "", "", "");
+      if (!this.a.h) {
+        this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1134068, new String[] { paramString1, paramString2, paramString3 }).sendToTarget();
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
+  {
+    if (paramBoolean) {
+      this.a.a(0L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acrt
  * JD-Core Version:    0.7.0.1
  */

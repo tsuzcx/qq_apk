@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class devlock_mobile_phone$status
-  extends MessageMicro
+  extends MessageMicro<status>
 {
   public static final int STR_BAK_COUNTRY_CODE_FIELD_NUMBER = 5;
   public static final int STR_BAK_MOBILE_FIELD_NUMBER = 4;
@@ -23,7 +23,7 @@ public final class devlock_mobile_phone$status
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.devlock_mobile_phone.status
  * JD-Core Version:    0.7.0.1
  */

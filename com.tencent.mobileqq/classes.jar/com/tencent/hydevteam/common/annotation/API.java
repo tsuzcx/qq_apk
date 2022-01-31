@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 public @interface API {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.hydevteam.common.annotation.API
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,27 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryManager;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
 
-public final class nfk
-  implements Runnable
+public class nfk
+  extends Handler
 {
-  public nfk(MsgTabNodeInfo paramMsgTabNodeInfo) {}
+  public nfk(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    MsgTabStoryManager.c(this.a);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    paramMessage = (Bundle)paramMessage.obj;
+    this.a.jdField_a_of_type_Yqz.a(17, paramMessage, this.a.jdField_a_of_type_Alpg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nfk
  * JD-Core Version:    0.7.0.1
  */

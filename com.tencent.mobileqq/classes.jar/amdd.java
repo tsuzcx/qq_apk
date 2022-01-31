@@ -1,49 +1,44 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.widget.ProgressPieView;
+import com.tencent.mobileqq.data.Stranger;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.List;
+import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
 
 public class amdd
-  extends Handler
+  implements alpg
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
+  public void a(List<String> paramList) {}
   
-  public amdd(ProgressPieView paramProgressPieView) {}
+  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, List<Stranger> paramList) {}
+  
+  public void b(boolean paramBoolean, List<Stranger> paramList) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetProgressPieView.b > this.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.b - 1);
-      sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentWidgetProgressPieView.e);
+    if (paramInt == 4) {
+      a(paramBoolean, (PBRepeatMessageField)paramObject);
     }
     do
     {
       return;
-      if (this.jdField_a_of_type_ComTencentWidgetProgressPieView.b < this.jdField_a_of_type_Int)
+      if (paramInt == 2)
       {
-        int i = this.jdField_a_of_type_ComTencentWidgetProgressPieView.b + this.jdField_a_of_type_ComTencentWidgetProgressPieView.jdField_f_of_type_Int;
-        if (i <= this.jdField_a_of_type_Int) {
-          this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
-        }
-        for (;;)
-        {
-          sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentWidgetProgressPieView.e);
-          return;
-          this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_Int);
-        }
+        a(paramBoolean, (List)paramObject);
+        return;
       }
-      removeMessages(0);
-    } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setShowImage(false);
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.jdField_f_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = false;
+      if (paramInt == 3)
+      {
+        b(paramBoolean, (List)paramObject);
+        return;
+      }
+    } while (paramInt != 5);
+    a((List)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amdd
  * JD-Core Version:    0.7.0.1
  */

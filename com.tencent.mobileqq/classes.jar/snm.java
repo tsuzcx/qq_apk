@@ -1,30 +1,56 @@
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v4.app.FragmentActivity;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 
-public class snm
-  implements View.OnClickListener
+class snm
+  implements smj
 {
-  public snm(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  snm(snl paramsnl, FrameLayout paramFrameLayout) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    if (this.a.app != null)
-    {
-      paramView = new Intent();
-      paramView.putExtras(this.a.getIntent().getExtras());
-      paramView.putExtra("extra_choose_friend_uin", this.a.app.getAccount());
-      paramView.putExtra("extra_choose_friend_name", this.a.app.getCurrentNickname());
-      this.a.setResult(-1, paramView);
-      this.a.finish();
+    if (snl.a(this.jdField_a_of_type_Snl) != null) {
+      snl.a(this.jdField_a_of_type_Snl).a(paramInt);
     }
   }
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 5)
+    {
+      Intent localIntent = new Intent();
+      localIntent.setAction("float_layer_finsh_action");
+      snl.a(this.jdField_a_of_type_Snl).getActivity().sendBroadcast(localIntent);
+    }
+    snl.a(this.jdField_a_of_type_Snl).getActivity().doOnBackPressed();
+    snl.a(this.jdField_a_of_type_Snl).getActivity().overridePendingTransition(0, 0);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() != 0) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if ((paramInt == 2) && (snl.a(this.jdField_a_of_type_Snl).b()) && (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() != 8)) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    }
+  }
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     snm
  * JD-Core Version:    0.7.0.1
  */

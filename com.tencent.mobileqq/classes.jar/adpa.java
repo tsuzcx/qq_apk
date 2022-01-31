@@ -1,33 +1,35 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.hiboom.HiBoomFontDrawer;
-import java.util.List;
-import java.util.Vector;
+import android.app.Dialog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class adpa
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public adpa(HiBoomFontDrawer paramHiBoomFontDrawer, List paramList) {}
+  public adpa(PublicAccountListActivity paramPublicAccountListActivity, TranslateAnimation paramTranslateAnimation1, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilList.size())
+    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
     {
-      Bitmap localBitmap = HiBoomFontDrawer.a((String)this.jdField_a_of_type_JavaUtilList.get(i));
-      if (localBitmap != null) {
-        BaseApplicationImpl.sImageCache.put(this.jdField_a_of_type_JavaUtilList.get(i), localBitmap);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.a.add(this.jdField_a_of_type_JavaUtilList.get(i));
-      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidAppDialog.show();
+      this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    HiBoomFontDrawer.a(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer);
+    while (paramAnimation != this.b) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.requestLayout();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qidian.QidianManager;
-import com.tencent.qidian.data.BmqqAccountType;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class allp
-  implements Runnable
+class allp
+  implements DialogInterface.OnClickListener
 {
-  public allp(QidianManager paramQidianManager, QQAppInterface paramQQAppInterface, BmqqAccountType paramBmqqAccountType) {}
+  allp(alln paramalln) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentQidianQidianManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), this.jdField_a_of_type_ComTencentQidianDataBmqqAccountType);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     allp
  * JD-Core Version:    0.7.0.1
  */

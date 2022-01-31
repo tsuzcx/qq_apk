@@ -1,30 +1,33 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.maproam.activity.RoamingActivity;
-import com.tencent.mobileqq.maproam.activity.RoamingActivity.GetAddressTaskListener;
-import com.tencent.mobileqq.maproam.widget.RoamLocalSearchBar;
-import com.tencent.mobileqq.maproam.widget.RoamingMapView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.remind.RemindHelper;
+import com.tencent.mobileqq.remind.TimeHelper;
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.mobileqq.webviewplugin.JsBridgeListener;
+import com.tencent.qphone.base.util.QLog;
 
-class gfx
-  implements RoamingActivity.GetAddressTaskListener
+public final class gfx
+  implements DialogInterface.OnDismissListener
 {
-  gfx(gfw paramgfw) {}
+  public gfx(IosTimepicker paramIosTimepicker, JsBridgeListener paramJsBridgeListener) {}
   
-  public void a(String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (1 == this.a.a.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView.a())
+    if ((this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewpluginJsBridgeListener != null))
     {
-      if (this.a.a.b.getVisibility() != 0) {
-        this.a.a.i();
+      long l = this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker.a() / 1000L;
+      if (QLog.isColorLevel()) {
+        QLog.d(RemindHelper.a(), 2, "onDismiss Time :" + TimeHelper.a(l * 1000L));
       }
-      if ((paramString != null) && (paramString.length() > 0)) {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamLocalSearchBar.a(paramString);
-      }
+      this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker.setOnTimePickerSelectListener(null);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewpluginJsBridgeListener.a(Long.valueOf(l));
+      RemindHelper.a = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gfx
  * JD-Core Version:    0.7.0.1
  */

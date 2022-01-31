@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporter.OnFrequenceDataUpdateListener;
-import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterMain;
-import java.util.HashMap;
+import android.widget.Toast;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
 
 public class rff
-  implements Runnable
+  implements qfu
 {
-  public rff(DoraemonAPIReporterMain paramDoraemonAPIReporterMain, DoraemonAPIReporter.OnFrequenceDataUpdateListener paramOnFrequenceDataUpdateListener, String paramString, HashMap paramHashMap) {}
+  public rff(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonAPIReporter$OnFrequenceDataUpdateListener.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilHashMap);
+    srt.a(this.a, paramString, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rff
  * JD-Core Version:    0.7.0.1
  */

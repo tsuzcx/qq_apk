@@ -1,16 +1,22 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.fragment.TroopMoreDetailFragment;
-import com.tencent.mobileqq.troop.widget.ExpandableTextView.OnExpandStateListener;
+import android.os.Message;
+import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class ajfw
-  implements ExpandableTextView.OnExpandStateListener
+class ajfw
+  extends amrv
 {
-  public ajfw(TroopMoreDetailFragment paramTroopMoreDetailFragment) {}
+  ajfw(ajfv paramajfv) {}
   
-  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
+  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
   {
-    paramView.setVisibility(8);
+    if ((paramBoolean) && (paramList != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
+      }
+      ajfv.a(this.a).obtainMessage(2, 0, 0, paramList).sendToTarget();
+    }
   }
 }
 

@@ -1,19 +1,43 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserSelfInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserSelfInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
-class wsm
-  implements Runnable
+public class wsm
+  extends urt<wsn>
 {
-  wsm(wsl paramwsl) {}
+  public static final String a = uqn.a("StorySvc.get_user_base_info");
   
-  public void run()
+  public String a()
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.a(this.a.a.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+    return a;
+  }
+  
+  public wsn a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetUserSelfInfo localRspGetUserSelfInfo = new qqstory_service.RspGetUserSelfInfo();
+    try
+    {
+      localRspGetUserSelfInfo.mergeFrom(paramArrayOfByte);
+      return new wsn(localRspGetUserSelfInfo);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+        wxe.c("Q.qqstory.home.GetUserSelfInfoStep", "decodeResponse error=%s", paramArrayOfByte);
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetUserSelfInfo().toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wsm
  * JD-Core Version:    0.7.0.1
  */

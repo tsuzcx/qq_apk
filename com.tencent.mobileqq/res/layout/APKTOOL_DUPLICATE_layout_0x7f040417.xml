@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="20.0sp" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_marginTop="25.0dip" android:text="热门话题" android:lines="1" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a152e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_below="@id/title" />
-    <TextView android:textColor="#ff777777" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a039b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="更多话题" android:lines="1" android:drawableRight="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02046f" android:drawablePadding="4.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a152e" android:layout_alignParentRight="true" />
-</RelativeLayout>

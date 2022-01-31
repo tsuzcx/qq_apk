@@ -22,7 +22,7 @@ public class InnerFrameManager
   public Activity a;
   private Bundle jdField_a_of_type_AndroidOsBundle;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Set jdField_a_of_type_JavaUtilSet = new HashSet();
+  private Set<InnerFrame> jdField_a_of_type_JavaUtilSet = new HashSet();
   private boolean jdField_a_of_type_Boolean;
   
   public InnerFrameManager(Context paramContext)
@@ -86,8 +86,8 @@ public class InnerFrameManager
         if (getDisplayedChild() >= paramInt) {
           break label135;
         }
-        setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2131034175);
-        setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2131034176);
+        setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772047);
+        setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772048);
       }
     }
     for (;;)
@@ -100,11 +100,11 @@ public class InnerFrameManager
       ((InnerFrame)getChildAt(paramInt)).a();
       return;
       label135:
-      setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2131034171);
-      setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2131034172);
+      setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772043);
+      setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772044);
       continue;
-      setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2131034210);
-      setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2131034210);
+      setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772097);
+      setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772097);
     }
   }
   

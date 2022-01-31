@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class PttShortVideo$PttShortVideoDownloadResp
-  extends MessageMicro
+  extends MessageMicro<PttShortVideoDownloadResp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_downloadkey = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -18,10 +18,10 @@ public final class PttShortVideo$PttShortVideoDownloadResp
   public final PBBytesField bytes_file_md5 = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBInt32Field int32_ret_code = PBField.initInt32(0);
   public PttShortVideo.PttShortVideoAddr msg_download_addr = new PttShortVideo.PttShortVideoAddr();
-  public final PBRepeatMessageField rpt_diff_area_inner_addr = PBField.initRepeatMessage(PttShortVideo.PttShortVideoIpList.class);
-  public final PBRepeatMessageField rpt_diff_area_out_addr = PBField.initRepeatMessage(PttShortVideo.PttShortVideoIpList.class);
-  public final PBRepeatMessageField rpt_same_area_inner_addr = PBField.initRepeatMessage(PttShortVideo.PttShortVideoIpList.class);
-  public final PBRepeatMessageField rpt_same_area_out_addr = PBField.initRepeatMessage(PttShortVideo.PttShortVideoIpList.class);
+  public final PBRepeatMessageField<PttShortVideo.PttShortVideoIpList> rpt_diff_area_inner_addr = PBField.initRepeatMessage(PttShortVideo.PttShortVideoIpList.class);
+  public final PBRepeatMessageField<PttShortVideo.PttShortVideoIpList> rpt_diff_area_out_addr = PBField.initRepeatMessage(PttShortVideo.PttShortVideoIpList.class);
+  public final PBRepeatMessageField<PttShortVideo.PttShortVideoIpList> rpt_same_area_inner_addr = PBField.initRepeatMessage(PttShortVideo.PttShortVideoIpList.class);
+  public final PBRepeatMessageField<PttShortVideo.PttShortVideoIpList> rpt_same_area_out_addr = PBField.initRepeatMessage(PttShortVideo.PttShortVideoIpList.class);
   public final PBStringField str_ret_msg = PBField.initString("");
   
   static
@@ -34,7 +34,7 @@ public final class PttShortVideo$PttShortVideoDownloadResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pttcenterservice.PttShortVideo.PttShortVideoDownloadResp
  * JD-Core Version:    0.7.0.1
  */

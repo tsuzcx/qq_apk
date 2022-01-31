@@ -3,149 +3,146 @@ package com.tencent.token.ui;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Message;
-import com.tencent.token.af;
-import com.tencent.token.ax;
-import com.tencent.token.bb;
-import com.tencent.token.bd;
-import com.tencent.token.ea;
-import com.tencent.token.fo;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
+import android.view.View;
+import com.tencent.token.core.bean.LoginProtectResult;
+import com.tencent.token.core.bean.MbInfoResult;
+import com.tencent.token.core.bean.MbInfoResult.MbInfoItem;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cp;
+import com.tencent.token.cw;
+import com.tencent.token.do;
+import com.tencent.token.eq;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.global.f;
+import com.tencent.token.global.h;
+import com.tencent.token.utils.w;
+import java.util.ArrayList;
 
-final class acq
-  extends bo
+class acq
+  extends cb
 {
-  acq(UnbindUinActivity paramUnbindUinActivity)
+  acq(UtilsLoginProtectActivity paramUtilsLoginProtectActivity)
   {
-    super(paramUnbindUinActivity);
+    super(paramUtilsLoginProtectActivity);
   }
   
-  public final void handleMessage(Message paramMessage)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.a == null) || ((this.a != null) && (this.a.isFinishing()))) {}
+    if (this.a.isFinishing()) {}
     do
     {
-      do
+      return;
+      h.c("account page: what=" + paramMessage.what + ", arg1=" + paramMessage.arg1);
+      switch (paramMessage.what)
       {
-        do
-        {
-          do
-          {
-            return;
-            e.a("msg.what=" + paramMessage.what + ", timetask=" + UnbindUinActivity.access$000(this.a));
-            switch (paramMessage.what)
-            {
-            default: 
-              return;
-            }
-          } while (!UnbindUinActivity.access$000(this.a));
-          this.a.mUnBindRetryTimes = 0;
-          postDelayed(this.a.mUnBindRunnable, 10000L);
-          return;
-        } while (!UnbindUinActivity.access$000(this.a));
-        if (paramMessage.arg1 == 0)
-        {
-          UnbindUinActivity.access$302(this.a, ea.c);
-          if ((UnbindUinActivity.access$300(this.a) == null) || (UnbindUinActivity.access$300(this.a).length() <= 0))
-          {
-            this.a.showUserDialog(2131361808, this.a.getResources().getString(2131362223), 2131361800, null);
-            return;
-          }
-          if ((ea.d == null) || (ea.d.length() <= 0))
-          {
-            this.a.showUserDialog(2131361808, this.a.getResources().getString(2131362224), 2131361800, null);
-            return;
-          }
-          e.c("sms channel: " + UnbindUinActivity.access$300(this.a));
-          this.a.sendUnBindUinSmsBySMSAPP(UnbindUinActivity.access$300(this.a), ea.d);
-          this.a.showProgressDialog();
-          return;
-        }
-        paramMessage = (d)paramMessage.obj;
-        if ((paramMessage.c == null) || (paramMessage.c.length() == 0)) {
-          d.a(this.a.getResources(), paramMessage);
-        }
-        this.a.showUserDialog(2131361808, paramMessage.c, 2131361800, null);
+      default: 
         return;
-      } while (!UnbindUinActivity.access$000(this.a));
-      UnbindUinActivity.access$402(this.a, this.a.getString(2131361834));
-      this.a.removeTimeTask();
-      this.a.sendUnBindUinSmsBySMSAPP(UnbindUinActivity.access$300(this.a), ea.d);
-      return;
-      UnbindUinActivity.access$502(this.a, true);
-      this.a.dismissDialog();
-      this.a.removeTimeTask();
-      ax.a().b(UnbindUinActivity.access$600(this.a));
-      ax.a().n();
-      ax.a();
-      ax.b();
-      bd.a().f.a(UnbindUinActivity.access$100(this.a));
-      bb.a().f.a(UnbindUinActivity.access$100(this.a));
-      AccountPageActivity.mNeedRefreshEval = true;
-      SettingPageActivity.mNeedRefreshMbInfo = true;
-      this.a.showUserDialog(2131361904, this.a.getString(2131361841) + Long.toString(UnbindUinActivity.access$200(this.a)) + this.a.getString(2131361906), 2131361800, UnbindUinActivity.access$700(this.a), UnbindUinActivity.access$800(this.a));
-      return;
-    } while (!UnbindUinActivity.access$000(this.a));
-    paramMessage = paramMessage.getData();
-    int i = paramMessage.getInt("errCode");
-    paramMessage = paramMessage.getString("error");
-    if ((1 == i) && (this.a.mUnBindRetryTimes < 4))
+      case 3010: 
+        if (paramMessage.arg1 != 0) {
+          break label878;
+        }
+        paramMessage = eq.a().c();
+      }
+    } while ((paramMessage == null) || (paramMessage.mMbInfoItems == null));
+    int i = 0;
+    while (i < paramMessage.mMbInfoItems.size())
     {
-      postDelayed(this.a.mUnBindRunnable, 10000L);
-      return;
+      Object localObject = (MbInfoResult.MbInfoItem)paramMessage.mMbInfoItems.get(i);
+      if (((MbInfoResult.MbInfoItem)localObject).mId == 51)
+      {
+        int j = ((MbInfoResult.MbInfoItem)localObject).mValue;
+        paramMessage = ((MbInfoResult.MbInfoItem)localObject).mName;
+        UtilsLoginProtectActivity.access$302(this.a, true);
+        if (j == 1)
+        {
+          this.a.queryLoginProtect();
+          return;
+          if (paramMessage.arg1 == 0)
+          {
+            UtilsLoginProtectActivity.mNeedRefreshLoginProtect = false;
+            this.a.mLoginProtectResult = ((LoginProtectResult)paramMessage.obj);
+            this.a.hideTip();
+            UtilsLoginProtectActivity.access$000(this.a).notifyDataSetChanged();
+            return;
+          }
+          paramMessage = (f)paramMessage.obj;
+          f.a(this.a.getResources(), paramMessage);
+          h.c("game protect load failed:" + paramMessage.a + "-" + paramMessage.b);
+          if (paramMessage.a == 185)
+          {
+            if (do.a().e() == null) {
+              break;
+            }
+            paramMessage = do.a().e();
+            cp.a(RqdApplication.l()).a("" + paramMessage.mRealUin, this.a.mHandler, 523005419L, 64);
+            return;
+          }
+          this.a.showTip(paramMessage.a);
+          this.a.showUserDialog(paramMessage.c);
+          return;
+          localObject = null;
+          if (paramMessage.arg1 == 0)
+          {
+            localObject = new f(0);
+            int[] arrayOfInt = (int[])paramMessage.obj;
+            paramMessage = (Message)localObject;
+            localObject = arrayOfInt;
+          }
+          for (;;)
+          {
+            UtilsLoginProtectActivity.access$000(this.a).a(paramMessage, (int[])localObject);
+            return;
+            paramMessage = (f)paramMessage.obj;
+          }
+          localObject = (byte[])paramMessage.obj;
+          if ((paramMessage.arg1 == 0) && (localObject != null) && (localObject.length > 0))
+          {
+            this.a.mA2 = w.a((byte[])localObject);
+            h.b("login protect a2=" + this.a.mA2 + ", length=" + this.a.mA2.length());
+            cw.a().c(0L, this.a.mA2, this.a.mHandler);
+            return;
+          }
+          if (paramMessage.arg1 == -1000)
+          {
+            this.a.dismissDialog();
+            this.a.showUserDialog(this.a.getResources().getString(2131230960));
+            this.a.showTip(10001);
+            return;
+          }
+          if (paramMessage.arg1 == 8192)
+          {
+            this.a.dismissDialog();
+            this.a.showUserDialog(this.a.getResources().getString(2131231407));
+            this.a.showTip(10002);
+            return;
+          }
+          this.a.dismissDialog();
+          this.a.showUserDialog(2131231654, this.a.getResources().getString(2131231653), 2131230897, new acr(this));
+          this.a.showTip(paramMessage.arg1);
+          return;
+          this.a.dismissDialog();
+          if ((paramMessage.getData() != null) && (paramMessage.getData().getString("exception") != null))
+          {
+            this.a.showUserDialog(this.a.getResources().getString(2131231411) + ":" + paramMessage.getData().getString("exception"));
+            return;
+          }
+          this.a.showUserDialog(this.a.getResources().getString(2131231411));
+          return;
+          UtilsLoginProtectActivity.access$200(this.a);
+          return;
+        }
+        this.a.setContentView(2130968800);
+        this.a.findViewById(2131559392).setOnClickListener(new acs(this, paramMessage, i));
+        return;
+      }
+      i += 1;
     }
-    UnbindUinActivity.access$402(this.a, paramMessage);
-    this.a.dismissDialog();
-    this.a.removeTimeTask();
-    UnbindUinActivity.access$900(this.a, UnbindUinActivity.access$400(this.a));
-    return;
-    this.a.dismissDialog();
-    this.a.removeTimeTask();
-    UnbindUinActivity.access$402(this.a, this.a.getString(2131361952));
-    UnbindUinActivity.access$900(this.a, UnbindUinActivity.access$400(this.a));
-    return;
-    this.a.dismissDialog();
-    if (paramMessage.arg1 == 0)
-    {
-      UnbindUinActivity.access$1000(this.a);
-      return;
-    }
-    paramMessage = (d)paramMessage.obj;
-    this.a.showToast(paramMessage.c);
-    return;
-    if (paramMessage.arg1 == 0)
-    {
-      af.a().a(UnbindUinActivity.access$100(this.a), UnbindUinActivity.access$200(this.a), this.a.handler);
-      return;
-    }
-    paramMessage = (d)paramMessage.obj;
-    d.a(this.a.getResources(), paramMessage);
-    if ((paramMessage.a == 146) && (this.a.mUnBindRetryTimes < 4))
-    {
-      postDelayed(this.a.mUnBindRunnable, 10000L);
-      return;
-    }
-    this.a.showUserDialog(2131361808, paramMessage.c, 2131361800, null);
-    return;
-    if (paramMessage.arg1 == 0)
-    {
-      UnbindUinActivity.access$502(this.a, true);
-      this.a.dismissDialog();
-      this.a.removeTimeTask();
-      ax.a().b(UnbindUinActivity.access$600(this.a));
-      ax.a().n();
-      bd.a().f.a(UnbindUinActivity.access$100(this.a));
-      bb.a().f.a(UnbindUinActivity.access$100(this.a));
-      AccountPageActivity.mNeedRefreshEval = true;
-      SettingPageActivity.mNeedRefreshMbInfo = true;
-      this.a.showUserDialog(2131361904, this.a.getString(2131361841) + Long.toString(UnbindUinActivity.access$200(this.a)) + this.a.getString(2131361906), 2131361800, UnbindUinActivity.access$700(this.a), UnbindUinActivity.access$800(this.a));
-      return;
-    }
-    paramMessage = (d)paramMessage.obj;
-    d.a(this.a.getResources(), paramMessage);
-    this.a.dismissDialog();
-    this.a.removeTimeTask();
-    UnbindUinActivity.access$900(this.a, paramMessage.c);
+    label878:
+    paramMessage = (f)paramMessage.obj;
+    f.a(this.a.getResources(), paramMessage);
+    h.c("game protect load failed:" + paramMessage.a + "-" + paramMessage.b);
+    this.a.showTip(paramMessage.a);
+    this.a.showUserDialog(paramMessage.c);
   }
 }
 

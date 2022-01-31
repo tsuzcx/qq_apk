@@ -7,7 +7,7 @@ import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.remote.IActionListener;
 import cooperation.qzone.remote.RemoteServiceProxy;
 import cooperation.qzone.remote.SendMsg;
-import ihs;
+import icy;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -17,7 +17,7 @@ public class RemoteMusicManager
   static final String TAG = "RemoteMusicManager";
   private static Object lock = new Object();
   private static RemoteMusicManager mInstance;
-  IActionListener mActionListener = new ihs(this);
+  IActionListener mActionListener = new icy(this);
   private Handler mMainHandler = new Handler(Looper.getMainLooper());
   private ArrayList mMusicEventListeners = new ArrayList();
   private AtomicInteger mReqestId = new AtomicInteger(1);

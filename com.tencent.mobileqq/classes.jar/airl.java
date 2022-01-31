@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class airl
-  implements Runnable
+  implements View.OnClickListener
 {
-  airl(airj paramairj, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  airl(airj paramairj) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Airj.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
+    this.a.onMagicStickClick(paramView, -1, new Bundle(), 2, null);
   }
 }
 

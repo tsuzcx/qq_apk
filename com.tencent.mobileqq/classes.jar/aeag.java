@@ -1,68 +1,18 @@
-import com.tencent.mobileqq.leba.LebaFeedsAdapter;
-import com.tencent.mobileqq.leba.LebaFeedsObserver;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class aeag
-  extends LebaFeedsObserver
+  extends BroadcastReceiver
 {
-  public aeag(LebaWithFeeds paramLebaWithFeeds) {}
+  public aeag(SubLoginActivity paramSubLoginActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba_with_feeds", 2, "onLoadLocalData" + paramBoolean);
-    }
-    if (LebaWithFeeds.a(this.a) == null)
-    {
-      QLog.e("Q.lebatab.leba_with_feeds", 1, "onLoadLocalData, mFeedsAdapter is null");
-      return;
-    }
-    LebaWithFeeds.a(this.a).a(false);
-    LebaWithFeeds.a(this.a, true, 1);
-  }
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba_with_feeds", 2, "onGetDynamicFeeds isSuccess=" + paramBoolean + ", eventType=" + paramInt1 + ", dataState=" + paramInt2);
-    }
-    if (LebaWithFeeds.a(this.a) == null)
-    {
-      QLog.e("Q.lebatab.leba_with_feeds", 1, "onGetDynamicFeeds, mFeedsAdapter is null");
-      return;
-    }
-    if (paramInt1 == 1)
-    {
-      LebaWithFeeds.b(this.a, false);
-      if (!paramBoolean) {
-        break label150;
-      }
-      LebaWithFeeds.a(this.a).e();
-      if (paramInt2 != 1) {
-        break label145;
-      }
-    }
-    label145:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      LebaWithFeeds.a(this.a).a(paramBoolean);
-      LebaWithFeeds.a(this.a, false, 2);
-      return;
-      if (paramInt1 != 2) {
-        break;
-      }
-      LebaWithFeeds.c(this.a, false);
-      break;
-    }
-    label150:
-    if (paramInt1 == 2)
-    {
-      LebaWithFeeds.a(this.a).d();
-      return;
-    }
-    LebaWithFeeds.a(this.a).e();
+    QLog.d("Q.subaccount.SubLoginActivity", 1, "AutoLoginReceiver onReceive");
+    SubLoginActivity.a(this.a, true);
   }
 }
 

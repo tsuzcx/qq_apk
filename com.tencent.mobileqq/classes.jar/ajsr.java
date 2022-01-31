@@ -1,38 +1,10 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
-import java.util.Queue;
-
-public class ajsr
-  implements Animator.AnimatorListener
+public abstract interface ajsr
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean = false;
+  public abstract void b(int paramInt);
   
-  public ajsr(MessageSubtitleView paramMessageSubtitleView, boolean paramBoolean, int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract void c(String paramString);
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (this.jdField_a_of_type_Int == MessageSubtitleView.c) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView.b();
-      }
-      if (!this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView.a.isEmpty()) {
-        MessageSubtitleView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView);
-      }
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void i();
 }
 
 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/vu" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/adk" />
+    <LinearLayout android:orientation="vertical" android:id="@id/jdj" android:paddingBottom="9.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+            <LinearLayout android:orientation="vertical" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:id="@id/jed" android:paddingLeft="15.0dip" android:paddingTop="35.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/eco" style="@style/t4" />
+                <LinearLayout android:orientation="horizontal" android:background="@drawable/dw1" android:paddingLeft="1.0dip" android:paddingTop="1.0dip" android:paddingRight="1.0dip" android:paddingBottom="1.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <com.tenpay.sdk.view.SixPasswdDialogEditText android:textSize="16.0sp" android:textColor="@color/wq" android:textColorHint="@color/wr" android:id="@id/jeb" android:background="@null" android:paddingLeft="0.0dip" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="42.0dip" android:singleLine="true" android:maxLength="6" android:inputType="number" />
+                </LinearLayout>
+                <TextView android:textSize="13.0sp" android:textColor="@color/vh" android:paddingLeft="15.0dip" android:paddingTop="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ecp" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/jdi" android:paddingBottom="9.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+            <LinearLayout android:orientation="vertical" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:paddingLeft="15.0dip" android:paddingTop="35.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ecj" style="@style/t4" />
+                <LinearLayout android:orientation="horizontal" android:background="@drawable/dw1" android:paddingLeft="1.0dip" android:paddingTop="1.0dip" android:paddingRight="1.0dip" android:paddingBottom="1.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <com.tenpay.sdk.view.SixPasswdDialogEditText android:textSize="16.0sp" android:textColor="@color/wq" android:textColorHint="@color/wr" android:id="@id/jec" android:background="@null" android:paddingLeft="0.0dip" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="42.0dip" android:singleLine="true" android:maxLength="6" android:inputType="number" />
+                </LinearLayout>
+                <Button android:enabled="false" android:id="@id/jdq" android:clickable="false" android:layout_marginLeft="15.0dip" android:layout_marginTop="35.0dip" android:layout_marginRight="15.0dip" android:text="@string/e2k" style="@style/sv" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/jf3" android:paddingBottom="9.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+            <LinearLayout android:orientation="vertical" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="center_vertical" android:paddingTop="35.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:paddingLeft="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/edo" style="@style/t4" />
+                    <TextView android:id="@id/jf1" android:paddingLeft="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="\ 1861313132" style="@style/t4" />
+                    <TextView android:paddingLeft="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="。" style="@style/t4" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:background="@drawable/dw1" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <com.tenpay.sdk.view.ClearableEditText android:textSize="16.0sp" android:id="@id/jf0" android:paddingLeft="15.0dip" android:layout_width="0.0dip" android:hint="@string/e9y" android:singleLine="true" android:maxLength="6" android:layout_weight="1.0" android:inputType="number" style="@style/to" />
+                    <View style="@style/tq" />
+                    <Button android:textSize="14.0sp" android:id="@id/jf2" android:clickable="false" android:layout_width="95.0dip" android:layout_height="44.0dip" android:text="@string/ede" style="@style/tb" />
+                </LinearLayout>
+                <Button android:enabled="false" android:id="@id/jez" android:clickable="false" android:layout_marginLeft="15.0dip" android:layout_marginTop="35.0dip" android:layout_marginRight="15.0dip" android:text="@string/e4i" style="@style/sv" />
+                <com.tenpay.sdk.view.SMSAlertButton android:layout_gravity="right" android:id="@id/jes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <com.tenpay.api.MyKeyboardWindow android:id="@id/je9" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

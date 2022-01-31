@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.base.MultiTouchImageView android:layout_gravity="center" android:id="@id/bl" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/cm1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bll" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <TextView android:textSize="@dimen/ko" android:textColor="@color/a6q" android:id="@id/cm2" android:background="@drawable/a6_" android:padding="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="60.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/m2" android:textColor="@color/a6s" android:id="@id/cm3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/a6p" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

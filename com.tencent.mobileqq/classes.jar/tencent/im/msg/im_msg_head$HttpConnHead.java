@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class im_msg_head$HttpConnHead
-  extends MessageMicro
+  extends MessageMicro<HttpConnHead>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_key = PBField.initBytes(ByteStringMicro.EMPTY);

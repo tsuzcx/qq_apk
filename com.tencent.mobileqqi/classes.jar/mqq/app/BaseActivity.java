@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarImplJB;
 import android.view.KeyEvent;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
+import mqq.app.permission.PermissionManager;
 
 public class BaseActivity
   extends ActionBarActivity
@@ -16,6 +17,7 @@ public class BaseActivity
   private boolean isResume;
   protected boolean mIsShadow;
   private MobileQQ mqq;
+  public PermissionManager permissionManager = PermissionManager.init(this);
   
   protected void finalize()
     throws Throwable
@@ -138,6 +140,12 @@ public class BaseActivity
       this.app.isBackground_Pause = true;
     }
     this.isResume = false;
+  }
+  
+  public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    this.permissionManager.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
   }
   
   protected void onResume()

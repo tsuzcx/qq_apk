@@ -1,30 +1,32 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoFragment;
-
-public class antq
-  implements ValueAnimator.AnimatorUpdateListener
+class antq
 {
-  public antq(EditVideoFragment paramEditVideoFragment, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView) {}
+  static final float[] a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  static
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int i = (int)((this.jdField_a_of_type_Int - this.b) * f);
-    int j = this.b;
-    int k = (int)(f * (this.c - this.d));
-    int m = this.d;
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramValueAnimator.leftMargin = (i + j);
-    paramValueAnimator.bottomMargin = (m + k);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+    int k = 0;
+    a = new float[8192];
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (i >= 8192) {
+        break;
+      }
+      a[i] = ((float)Math.sin((i + 0.5F) / 8192.0F * 6.283186F));
+      i += 1;
+    }
+    while (j < 360)
+    {
+      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.sin(j * 0.01745329F));
+      j += 90;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     antq
  * JD-Core Version:    0.7.0.1
  */

@@ -5,76 +5,77 @@ import android.graphics.RectF;
 public class GLScoreBoard
   extends GLFrameImage
 {
-  private int jdField_a_of_type_Int;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private int[] jdField_a_of_type_ArrayOfInt = new int[5];
-  private float jdField_b_of_type_Float = 0.25F;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
-  private float c;
-  private float jdField_d_of_type_Float = 0.0F;
-  private RectF jdField_d_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
-  private float jdField_e_of_type_Float = 0.0F;
-  private RectF jdField_e_of_type_AndroidGraphicsRectF = new RectF();
-  private float f;
-  private float g;
+  public static final int MAX_SCORE = 99999;
+  private float heightBoard;
+  private boolean mHasComputeWidth = false;
+  private int mInterval;
+  private float mNumberImageSlope = 0.25F;
+  private RectF mNumberRegion = new RectF();
+  private float mNumberWidthSize;
+  private RectF mParentSize = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
+  private int mScore;
+  private RectF mScoreBoardSize = new RectF();
+  private int[] number = new int[5];
+  private float widthBoard;
+  private float xOffsetFromParent = 0.0F;
+  private float yOffsetFromParent = 0.0F;
   
   public GLScoreBoard(GLViewContext paramGLViewContext, String paramString)
   {
     super(paramGLViewContext, paramString);
-    a(false);
+    setTemporaryRelease(false);
   }
   
-  private void i()
+  private void computeNumberWidthSize()
   {
-    this.jdField_d_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsRectF.left - this.jdField_d_of_type_AndroidGraphicsRectF.left);
-    this.jdField_e_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsRectF.top - this.jdField_d_of_type_AndroidGraphicsRectF.top);
-  }
-  
-  private void j()
-  {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.mHasComputeWidth)
     {
-      GLImage localGLImage = a(0);
-      this.c = (1.0F * localGLImage.b() / localGLImage.c() * this.jdField_a_of_type_AndroidGraphicsRectF.height());
-      this.jdField_b_of_type_Boolean = true;
+      GLImage localGLImage = getImageByIndex(0);
+      this.mNumberWidthSize = (1.0F * localGLImage.getWidth() / localGLImage.getHeight() * this.mScoreBoardSize.height());
+      this.mHasComputeWidth = true;
     }
   }
   
-  private void s()
+  private void computeOffsetFromParen()
+  {
+    this.xOffsetFromParent = (this.mScoreBoardSize.left - this.mParentSize.left);
+    this.yOffsetFromParent = (this.mScoreBoardSize.top - this.mParentSize.top);
+  }
+  
+  private void computeScoreNumberAndDraw()
   {
     int i = 1;
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = (this.jdField_d_of_type_AndroidGraphicsRectF.left + this.jdField_d_of_type_Float);
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = (this.jdField_d_of_type_AndroidGraphicsRectF.top + this.jdField_e_of_type_Float);
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = (this.jdField_a_of_type_AndroidGraphicsRectF.left + this.f);
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (this.jdField_a_of_type_AndroidGraphicsRectF.top + this.g);
-    this.jdField_a_of_type_ArrayOfInt[4] = (this.jdField_a_of_type_Int / 10000);
-    int j = this.jdField_a_of_type_Int % 10000;
-    this.jdField_a_of_type_ArrayOfInt[3] = (j / 1000);
+    this.mScoreBoardSize.left = (this.mParentSize.left + this.xOffsetFromParent);
+    this.mScoreBoardSize.top = (this.mParentSize.top + this.yOffsetFromParent);
+    this.mScoreBoardSize.right = (this.mScoreBoardSize.left + this.widthBoard);
+    this.mScoreBoardSize.bottom = (this.mScoreBoardSize.top + this.heightBoard);
+    this.number[4] = (this.mScore / 10000);
+    int j = this.mScore % 10000;
+    this.number[3] = (j / 1000);
     j %= 1000;
-    this.jdField_a_of_type_ArrayOfInt[2] = (j / 100);
+    this.number[2] = (j / 100);
     j %= 100;
-    this.jdField_a_of_type_ArrayOfInt[1] = (j / 10);
-    this.jdField_a_of_type_ArrayOfInt[0] = (j % 10);
-    if (this.jdField_a_of_type_ArrayOfInt[4] == 0) {
-      if (this.jdField_a_of_type_ArrayOfInt[3] == 0) {
-        if (this.jdField_a_of_type_ArrayOfInt[2] == 0) {
-          if (this.jdField_a_of_type_ArrayOfInt[1] != 0) {}
+    this.number[1] = (j / 10);
+    this.number[0] = (j % 10);
+    if (this.number[4] == 0) {
+      if (this.number[3] == 0) {
+        if (this.number[2] == 0) {
+          if (this.number[1] != 0) {}
         }
       }
     }
     for (;;)
     {
-      float f1 = i * this.c + (i - 1) * this.jdField_b_of_type_Int;
+      float f1 = i * this.mNumberWidthSize + (i - 1) * this.mInterval;
       float f2;
       float f4;
       float f3;
-      if (this.jdField_a_of_type_AndroidGraphicsRectF.width() >= f1)
+      if (this.mScoreBoardSize.width() >= f1)
       {
-        f2 = this.c;
-        f4 = this.jdField_a_of_type_AndroidGraphicsRectF.top;
-        f3 = this.jdField_a_of_type_AndroidGraphicsRectF.bottom;
-        f1 = (this.jdField_a_of_type_AndroidGraphicsRectF.width() - f1) / 2.0F + this.jdField_a_of_type_AndroidGraphicsRectF.left - this.jdField_b_of_type_Float * f2;
+        f2 = this.mNumberWidthSize;
+        f4 = this.mScoreBoardSize.top;
+        f3 = this.mScoreBoardSize.bottom;
+        f1 = (this.mScoreBoardSize.width() - f1) / 2.0F + this.mScoreBoardSize.left - this.mNumberImageSlope * f2;
         j = i;
         label284:
         if (j <= 0) {
@@ -85,36 +86,36 @@ public class GLScoreBoard
         }
       }
       label513:
-      for (int k = 0;; k = this.jdField_b_of_type_Int)
+      for (int k = 0;; k = this.mInterval)
       {
-        int m = this.jdField_a_of_type_ArrayOfInt[(j - 1)];
+        int m = this.number[(j - 1)];
         f1 = k + f1;
-        this.jdField_e_of_type_AndroidGraphicsRectF.set(f1, f4, f1 + f2, f3);
-        super.d(this.jdField_e_of_type_AndroidGraphicsRectF);
-        super.b(this.jdField_e_of_type_AndroidGraphicsRectF);
-        super.c(m);
-        super.a();
-        f1 = this.jdField_e_of_type_AndroidGraphicsRectF.right;
+        this.mNumberRegion.set(f1, f4, f1 + f2, f3);
+        super.setImageClipDrawRegion(this.mNumberRegion);
+        super.setImageRegion(this.mNumberRegion);
+        super.setCurrentImage(m);
+        super.draw();
+        f1 = this.mNumberRegion.right;
         j -= 1;
         break label284;
-        f1 = (i - 1) * this.jdField_b_of_type_Int;
-        float f5 = (this.jdField_a_of_type_AndroidGraphicsRectF.width() - f1) / i;
-        GLImage localGLImage = a(0);
-        f1 = 1.0F * localGLImage.c() / localGLImage.b() * f5;
-        if (f1 >= this.jdField_a_of_type_AndroidGraphicsRectF.height()) {
-          f1 = this.jdField_a_of_type_AndroidGraphicsRectF.top;
+        f1 = (i - 1) * this.mInterval;
+        float f5 = (this.mScoreBoardSize.width() - f1) / i;
+        GLImage localGLImage = getImageByIndex(0);
+        f1 = 1.0F * localGLImage.getHeight() / localGLImage.getWidth() * f5;
+        if (f1 >= this.mScoreBoardSize.height()) {
+          f1 = this.mScoreBoardSize.top;
         }
-        for (f2 = this.jdField_a_of_type_AndroidGraphicsRectF.bottom;; f2 = this.jdField_a_of_type_AndroidGraphicsRectF.bottom - f2)
+        for (f2 = this.mScoreBoardSize.bottom;; f2 = this.mScoreBoardSize.bottom - f2)
         {
-          f4 = this.jdField_a_of_type_AndroidGraphicsRectF.left;
+          f4 = this.mScoreBoardSize.left;
           f3 = f2;
           f2 = f4;
           f4 = f1;
           f1 = f2;
           f2 = f5;
           break;
-          f2 = (this.jdField_a_of_type_AndroidGraphicsRectF.height() - f1) / 2.0F;
-          f1 = this.jdField_a_of_type_AndroidGraphicsRectF.top + f2;
+          f2 = (this.mScoreBoardSize.height() - f1) / 2.0F;
+          f1 = this.mScoreBoardSize.top + f2;
         }
       }
       label522:
@@ -129,60 +130,60 @@ public class GLScoreBoard
     }
   }
   
-  public void a()
+  public void changeParentSize(RectF paramRectF)
   {
-    j();
-    s();
+    this.mParentSize.set(paramRectF);
   }
   
-  public void a(RectF paramRectF)
+  public void draw()
   {
-    if (!this.jdField_a_of_type_AndroidGraphicsRectF.equals(paramRectF))
+    computeNumberWidthSize();
+    computeScoreNumberAndDraw();
+  }
+  
+  public int getScore()
+  {
+    return this.mScore;
+  }
+  
+  public void setNumberImageSlope(float paramFloat)
+  {
+    this.mNumberImageSlope = paramFloat;
+  }
+  
+  public void setNumberInterval(int paramInt)
+  {
+    this.mInterval = paramInt;
+  }
+  
+  public void setScore(int paramInt)
+  {
+    this.mScore = paramInt;
+    if (this.mScore > 99999) {
+      this.mScore = 99999;
+    }
+  }
+  
+  public void setScoreBoardSize(RectF paramRectF)
+  {
+    if (!this.mScoreBoardSize.equals(paramRectF))
     {
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(paramRectF);
-      this.f = this.jdField_a_of_type_AndroidGraphicsRectF.width();
-      this.g = this.jdField_a_of_type_AndroidGraphicsRectF.height();
+      this.mScoreBoardSize.set(paramRectF);
+      this.widthBoard = this.mScoreBoardSize.width();
+      this.heightBoard = this.mScoreBoardSize.height();
     }
-    i();
+    computeOffsetFromParen();
   }
   
-  public void a(RectF paramRectF1, RectF paramRectF2)
+  public void setScoreBoardSize(RectF paramRectF1, RectF paramRectF2)
   {
-    this.jdField_d_of_type_AndroidGraphicsRectF.set(paramRectF2);
-    a(paramRectF1);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void b(float paramFloat)
-  {
-    this.jdField_b_of_type_Float = paramFloat;
-  }
-  
-  public void d(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Int > 99999) {
-      this.jdField_a_of_type_Int = 99999;
-    }
-  }
-  
-  public void e(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void e(RectF paramRectF)
-  {
-    this.jdField_d_of_type_AndroidGraphicsRectF.set(paramRectF);
+    this.mParentSize.set(paramRectF2);
+    setScoreBoardSize(paramRectF1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLScoreBoard
  * JD-Core Version:    0.7.0.1
  */

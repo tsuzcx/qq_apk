@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import java.util.List;
 
 class vpd
-  implements Runnable
+  implements wjd
 {
-  vpd(vpb paramvpb) {}
+  vpd(vpc paramvpc, List paramList) {}
   
-  public void run()
+  public void a(wje paramwje)
   {
-    PhotoListPanel.b(this.a.a);
+    vpc.a(this.jdField_a_of_type_Vpc, this.jdField_a_of_type_JavaUtilList, paramwje);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vpd
  * JD-Core Version:    0.7.0.1
  */

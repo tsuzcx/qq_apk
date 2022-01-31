@@ -1,42 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import com.tencent.ims.signature.SignatureKickData;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.pb.PBStringField;
+import NS_KING_INTERFACE.stPostCommentDingRsp;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class tdd
-  implements DialogInterface.OnClickListener
+class tdd
+  implements tgt
 {
-  public tdd(NotificationActivity paramNotificationActivity, signature.SignatureKickData paramSignatureKickData) {}
+  tdd(tcu paramtcu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(the paramthe)
   {
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putString("password", null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity(new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, LoginActivity.class).putExtras(paramDialogInterface).addFlags(67108864));
-    try
+    if ((paramthe.jdField_a_of_type_JavaLangObject instanceof stPostCommentDingRsp))
     {
-      paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_ComTencentImsSignature$SignatureKickData.str_url.get()));
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity(paramDialogInterface);
-      label75:
-      paramDialogInterface = new Intent("qqplayer_exit_action");
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.sendBroadcast(paramDialogInterface);
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+      stPostCommentDingRsp localstPostCommentDingRsp = (stPostCommentDingRsp)paramthe.jdField_a_of_type_JavaLangObject;
+      tlo.d(tcu.a(), "回复点赞/取消成功,nothing is " + localstPostCommentDingRsp.nothing);
+      umc.a().dispatch(this.a.a(new Object[] { Integer.valueOf(7), Integer.valueOf(paramthe.b), paramthe.jdField_a_of_type_JavaLangString, localstPostCommentDingRsp }));
       return;
     }
-    catch (Exception paramDialogInterface)
-    {
-      break label75;
-    }
+    tlo.d(tcu.a(), "回复点赞失败new！");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tdd
  * JD-Core Version:    0.7.0.1
  */

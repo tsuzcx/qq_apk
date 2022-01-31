@@ -1,11 +1,15 @@
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import android.media.SoundPool;
+import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
-public class etw
+class etw
   implements Runnable
 {
-  public etw(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  etw(etv parametv) {}
   
-  public void run() {}
+  public void run()
+  {
+    VoipDialInterfaceActivity.a(this.a.a).play(VoipDialInterfaceActivity.m(this.a.a), 1.0F, 1.0F, 0, 0, 1.0F);
+  }
 }
 
 

@@ -1,106 +1,27 @@
 package c.t.m.g;
 
-import java.io.Serializable;
-import java.util.Map;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public final class av
-  implements Serializable
+final class av
+  implements Runnable
 {
-  private long a;
-  private String b;
-  private Map<String, String> c;
-  private String d;
-  private String e;
+  av(aq paramaq) {}
   
-  public final String a()
+  public final void run()
   {
-    return this.e;
-  }
-  
-  public final void a(long paramLong)
-  {
-    this.a = paramLong;
-  }
-  
-  public final void a(String paramString)
-  {
-    this.e = paramString;
-  }
-  
-  public final void a(Map<String, String> paramMap)
-  {
-    try
+    if (aq.e(this.a).size() == 0)
     {
-      this.c = paramMap;
+      aq.f(this.a).incrementAndGet();
+      aq.b(this.a, true);
       return;
     }
-    finally
-    {
-      paramMap = finally;
-      throw paramMap;
-    }
-  }
-  
-  public final String b()
-  {
-    return this.d;
-  }
-  
-  public final void b(String paramString)
-  {
-    this.d = paramString;
-  }
-  
-  public final long c()
-  {
-    return this.a;
-  }
-  
-  public final void c(String paramString)
-  {
-    try
-    {
-      this.b = paramString;
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public final String d()
-  {
-    try
-    {
-      String str = this.b;
-      return str;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final Map<String, String> e()
-  {
-    try
-    {
-      Map localMap = this.c;
-      return localMap;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    aq.a(this.a, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.av
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,24 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.meta.ImageFileObject;
-import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject;
-import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject.UploadFinishListener;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoTaskInfo;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import mqq.app.AppRuntime;
 
 public class nbh
-  implements UploadObject.UploadFinishListener
 {
-  public nbh(StoryVideoUploadTask paramStoryVideoUploadTask) {}
+  TroopMemberApiService a;
   
-  public void a(UploadObject paramUploadObject)
+  public nbh(TroopMemberApiService paramTroopMemberApiService)
   {
-    ((StoryVideoTaskInfo)this.a.a).j = ((ImageFileObject)paramUploadObject).b;
-    SLog.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "make video thumbnail finish:%s", ((StoryVideoTaskInfo)this.a.a).j);
-    this.a.a(1, new ErrorMessage());
+    this.a = paramTroopMemberApiService;
+  }
+  
+  public void a(AppRuntime paramAppRuntime, Bundle paramBundle)
+  {
+    if (paramBundle == null) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nbh
  * JD-Core Version:    0.7.0.1
  */

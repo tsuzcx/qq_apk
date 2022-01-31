@@ -1,21 +1,49 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.OldBigDataChannelManager;
-import mqq.observer.AccountObserver;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
+import com.tencent.mobileqq.data.ActivateFriendItem;
+import java.util.ArrayList;
 
 public class aeni
-  extends AccountObserver
+  extends altm
 {
-  public aeni(OldBigDataChannelManager paramOldBigDataChannelManager) {}
+  public aeni(ActivateFriendView paramActivateFriendView) {}
   
-  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    ThreadManager.getFileThreadHandler().post(new aenj(this));
+    int i = 0;
+    for (;;)
+    {
+      if (i < ActivateFriendView.a(this.a).size())
+      {
+        String str = String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin);
+        if (paramString.equals(str))
+        {
+          paramString = bdgc.b(ActivateFriendView.a(this.a), str, false);
+          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(paramString);
+        }
+      }
+      else
+      {
+        return;
+      }
+      i += 1;
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int i = 0;
+    while (i < ActivateFriendView.a(this.a).size())
+    {
+      String str = bdgc.j(ActivateFriendView.a(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin));
+      ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(str);
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeni
  * JD-Core Version:    0.7.0.1
  */

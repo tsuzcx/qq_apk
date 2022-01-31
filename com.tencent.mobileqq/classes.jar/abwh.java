@@ -1,37 +1,42 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
 
 public class abwh
-  implements Runnable
 {
-  public abwh(DBFixManager paramDBFixManager) {}
+  public double a;
+  public long a;
+  public abwl a;
+  public String a;
   
-  public void run()
+  public abwh()
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    if (((SharedPreferences)localObject).getBoolean(str + DBFixManager.d, false))
+    this.jdField_a_of_type_Double = -1.0D;
+  }
+  
+  public void a(abwg paramabwg)
+  {
+    this.jdField_a_of_type_Double = Math.max(this.jdField_a_of_type_Double, paramabwg.jdField_a_of_type_Double);
+    this.jdField_a_of_type_Long = Math.max(this.jdField_a_of_type_Long, paramabwg.b);
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_Long > 0L)
     {
-      this.a.a();
-      if ((((SharedPreferences)localObject).getInt(str + DBFixManager.e, 0) < DBFixManager.jdField_a_of_type_Int) && (DBFixManager.jdField_a_of_type_Boolean)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new abwi(this));
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Long < 9223372036854775807L)
+      {
+        bool1 = bool2;
+        if (this.jdField_a_of_type_Double >= 0.0D) {
+          bool1 = true;
+        }
       }
     }
-    else
-    {
-      return;
+    if ((!bool1) && (QLog.isColorLevel())) {
+      QLog.i("reportToDenta", 2, "failed" + this.jdField_a_of_type_Long + " " + this.jdField_a_of_type_Double);
     }
-    QLog.d(DBFixManager.a(), 1, "DBFixDialogUI 1, max count, delete db");
-    this.a.b(false);
-    this.a.b();
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).remove(str + DBFixManager.d);
-    ((SharedPreferences.Editor)localObject).remove(str + DBFixManager.e);
-    ((SharedPreferences.Editor)localObject).apply();
+    return bool1;
   }
 }
 

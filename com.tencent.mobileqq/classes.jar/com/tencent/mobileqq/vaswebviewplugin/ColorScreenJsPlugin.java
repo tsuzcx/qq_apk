@@ -2,8 +2,8 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.emosm.DataFactory;
+import apmh;
+import apml;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
@@ -16,7 +16,7 @@ public class ColorScreenJsPlugin
   public static final String BUSINESS_NAME = "colorScreen";
   public static final String TAG = "ColorScreenJsPlugin";
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     boolean bool2 = true;
     if (QLog.isColorLevel()) {
@@ -135,7 +135,7 @@ public class ColorScreenJsPlugin
     if (QLog.isColorLevel()) {
       QLog.i("ColorScreenJsPlugin", 2, "queryLocal " + paramJSONObject.toString());
     }
-    paramString = DataFactory.a("colorScreen_queryLocal", paramString, this.mOnRemoteResp.key, new Bundle());
+    paramString = apml.a("colorScreen_queryLocal", paramString, this.mOnRemoteResp.key, new Bundle());
     if (paramJSONObject != null) {}
     try
     {
@@ -165,12 +165,12 @@ public class ColorScreenJsPlugin
     paramJSONObject = new Bundle();
     paramJSONObject.clear();
     paramJSONObject.putInt("id", i);
-    super.sendRemoteReq(DataFactory.a("colorScreen_setup", paramString, this.mOnRemoteResp.key, paramJSONObject), false, true);
+    super.sendRemoteReq(apml.a("colorScreen_setup", paramString, this.mOnRemoteResp.key, paramJSONObject), false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ColorScreenJsPlugin
  * JD-Core Version:    0.7.0.1
  */

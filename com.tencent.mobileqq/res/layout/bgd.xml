@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@android:color/black" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.qzone.album.ui.widget.CameraPreview android:id="@id/aod" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+    <ImageView android:layout_width="fill_parent" android:layout_height="200.0dip" android:src="@drawable/ar1" />
+    <ImageView android:layout_width="fill_parent" android:layout_height="200.0dip" android:src="@drawable/ar0" android:layout_alignParentBottom="true" />
+    <com.qzone.album.ui.widget.anim.FaceFocusAnimateSurfaceView android:id="@id/iqj" android:layout_width="fill_parent" android:layout_height="fill_parent" app:mediaOverlay="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_marginTop="@dimen/b01" android:layout_marginRight="12.0dip">
+        <FrameLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_weight="1.0">
+            <TextView android:id="@id/ivTitleBtnLeft" android:background="@drawable/b5b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@null" android:singleLine="true" android:includeFontPadding="false" style="@style/TitleBtn" />
+        </FrameLayout>
+        <Button android:id="@id/aoh" android:background="@drawable/ful" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <ImageView android:id="@id/ilx" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:src="@drawable/fwb" />
+    </LinearLayout>
+    <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:id="@id/adj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="46.0dip" android:text="@string/rlk" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <TextView android:textColor="#ffffffff" android:id="@id/k9b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_above="@id/adj" android:layout_centerHorizontal="true" />
+</RelativeLayout>

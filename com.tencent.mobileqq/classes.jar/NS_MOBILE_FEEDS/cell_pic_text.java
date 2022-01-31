@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class cell_pic_text
   extends JceStruct
 {
-  static ArrayList cache_data_list = new ArrayList();
-  public ArrayList data_list;
+  static ArrayList<st_pic_text> cache_data_list = new ArrayList();
+  public ArrayList<st_pic_text> data_list;
   public int data_num;
   
   static
@@ -20,7 +20,7 @@ public final class cell_pic_text
   
   public cell_pic_text() {}
   
-  public cell_pic_text(int paramInt, ArrayList paramArrayList)
+  public cell_pic_text(int paramInt, ArrayList<st_pic_text> paramArrayList)
   {
     this.data_num = paramInt;
     this.data_list = paramArrayList;
@@ -42,7 +42,7 @@ public final class cell_pic_text
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_pic_text
  * JD-Core Version:    0.7.0.1
  */

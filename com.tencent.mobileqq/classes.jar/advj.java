@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.intervideo.od.LoadingUI;
-import com.tencent.mobileqq.intervideo.od.LoadingUI.Event;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
 public class advj
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public advj(LoadingUI paramLoadingUI) {}
+  public advj(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (LoadingUI.a(this.a) != null) {
-      LoadingUI.a(this.a).a();
-    }
+    this.a.a(this.a.b);
   }
 }
 

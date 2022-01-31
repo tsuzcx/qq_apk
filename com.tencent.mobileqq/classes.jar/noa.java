@@ -1,20 +1,29 @@
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
+import java.net.URL;
 
-class noa
-  implements Runnable
+public class noa
+  implements tpv
 {
-  noa(nnz paramnnz) {}
+  public noa(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void run()
+  public void a(URL paramURL, int paramInt) {}
+  
+  public void a(URL paramURL, Throwable paramThrowable)
   {
-    QQToast.a(this.a.a, 1, "网络异常，请稍后重试", 0).a();
-    this.a.a.a(2);
+    ReadInJoyNativeAdFragment.b(this.a, 3);
+  }
+  
+  public void a(URL paramURL, sfc paramsfc)
+  {
+    ReadInJoyNativeAdFragment.b(this.a, 2);
+    ReadInJoyNativeAdFragment.a(this.a).setPublicAccountImageDownListener(null);
+    ReadInJoyNativeAdFragment.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     noa
  * JD-Core Version:    0.7.0.1
  */

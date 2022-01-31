@@ -10,22 +10,22 @@ import java.util.Iterator;
 
 public class ActivityLifecycle
 {
-  private static ReferenceQueue a = new ReferenceQueue();
-  private static ArrayList b = new ArrayList();
+  private static ReferenceQueue<ActivityLifecycle.ActivityLifecycleCallback> mCallbackReferenceQueue = new ReferenceQueue();
+  private static ArrayList<WeakReference<ActivityLifecycle.ActivityLifecycleCallback>> mWeakCallbackArrayList = new ArrayList();
   
   public static void onNewIntent(Activity paramActivity, Intent paramIntent)
   {
     if (DebugHelper.sDebug) {
       DebugHelper.log("ActivityLifecycle onNewIntent");
     }
-    synchronized (b)
+    synchronized (mWeakCallbackArrayList)
     {
       try
       {
-        Iterator localIterator = b.iterator();
+        Iterator localIterator = mWeakCallbackArrayList.iterator();
         while (localIterator.hasNext())
         {
-          ActivityLifecycleCallback localActivityLifecycleCallback = (ActivityLifecycleCallback)((WeakReference)localIterator.next()).get();
+          ActivityLifecycle.ActivityLifecycleCallback localActivityLifecycleCallback = (ActivityLifecycle.ActivityLifecycleCallback)((WeakReference)localIterator.next()).get();
           if (localActivityLifecycleCallback != null) {
             try
             {
@@ -52,14 +52,14 @@ public class ActivityLifecycle
     if (DebugHelper.sDebug) {
       DebugHelper.log("ActivityLifecycle onPause");
     }
-    synchronized (b)
+    synchronized (mWeakCallbackArrayList)
     {
       try
       {
-        Iterator localIterator = b.iterator();
+        Iterator localIterator = mWeakCallbackArrayList.iterator();
         while (localIterator.hasNext())
         {
-          ActivityLifecycleCallback localActivityLifecycleCallback = (ActivityLifecycleCallback)((WeakReference)localIterator.next()).get();
+          ActivityLifecycle.ActivityLifecycleCallback localActivityLifecycleCallback = (ActivityLifecycle.ActivityLifecycleCallback)((WeakReference)localIterator.next()).get();
           if (localActivityLifecycleCallback != null) {
             try
             {
@@ -86,14 +86,14 @@ public class ActivityLifecycle
     if (DebugHelper.sDebug) {
       DebugHelper.log("ActivityLifecycle onResume");
     }
-    synchronized (b)
+    synchronized (mWeakCallbackArrayList)
     {
       try
       {
-        Iterator localIterator = b.iterator();
+        Iterator localIterator = mWeakCallbackArrayList.iterator();
         while (localIterator.hasNext())
         {
-          ActivityLifecycleCallback localActivityLifecycleCallback = (ActivityLifecycleCallback)((WeakReference)localIterator.next()).get();
+          ActivityLifecycle.ActivityLifecycleCallback localActivityLifecycleCallback = (ActivityLifecycle.ActivityLifecycleCallback)((WeakReference)localIterator.next()).get();
           if (localActivityLifecycleCallback != null) {
             try
             {
@@ -115,7 +115,7 @@ public class ActivityLifecycle
     }
   }
   
-  public static void registerNFCEventCallback(ActivityLifecycleCallback paramActivityLifecycleCallback)
+  public static void registerNFCEventCallback(ActivityLifecycle.ActivityLifecycleCallback paramActivityLifecycleCallback)
   {
     if (paramActivityLifecycleCallback == null) {
       return;
@@ -124,19 +124,19 @@ public class ActivityLifecycle
       DebugHelper.log("ActivityLifecycle registerNFCEventCallback;callback=" + paramActivityLifecycleCallback.getClass().getName());
     }
     Object localObject;
-    synchronized (b)
+    synchronized (mWeakCallbackArrayList)
     {
-      localObject = a.poll();
+      localObject = mCallbackReferenceQueue.poll();
       if (localObject != null) {
-        b.remove(localObject);
+        mWeakCallbackArrayList.remove(localObject);
       }
     }
     try
     {
-      localObject = b.iterator();
+      localObject = mWeakCallbackArrayList.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        ActivityLifecycleCallback localActivityLifecycleCallback = (ActivityLifecycleCallback)((WeakReference)((Iterator)localObject).next()).get();
+        ActivityLifecycle.ActivityLifecycleCallback localActivityLifecycleCallback = (ActivityLifecycle.ActivityLifecycleCallback)((WeakReference)((Iterator)localObject).next()).get();
         if (localActivityLifecycleCallback == paramActivityLifecycleCallback) {
           return;
         }
@@ -147,26 +147,26 @@ public class ActivityLifecycle
       label112:
       break label112;
     }
-    paramActivityLifecycleCallback = new WeakReference(paramActivityLifecycleCallback, a);
-    b.add(paramActivityLifecycleCallback);
+    paramActivityLifecycleCallback = new WeakReference(paramActivityLifecycleCallback, mCallbackReferenceQueue);
+    mWeakCallbackArrayList.add(paramActivityLifecycleCallback);
   }
   
-  public void unregister(ActivityLifecycleCallback paramActivityLifecycleCallback)
+  public void unregister(ActivityLifecycle.ActivityLifecycleCallback paramActivityLifecycleCallback)
   {
     if (paramActivityLifecycleCallback == null) {
       return;
     }
     try
     {
-      synchronized (b)
+      synchronized (mWeakCallbackArrayList)
       {
-        Iterator localIterator = b.iterator();
+        Iterator localIterator = mWeakCallbackArrayList.iterator();
         while (localIterator.hasNext())
         {
           WeakReference localWeakReference = (WeakReference)localIterator.next();
-          if ((ActivityLifecycleCallback)localWeakReference.get() == paramActivityLifecycleCallback)
+          if ((ActivityLifecycle.ActivityLifecycleCallback)localWeakReference.get() == paramActivityLifecycleCallback)
           {
-            b.remove(localWeakReference);
+            mWeakCallbackArrayList.remove(localWeakReference);
             return;
           }
         }
@@ -174,15 +174,6 @@ public class ActivityLifecycle
       return;
     }
     catch (ConcurrentModificationException paramActivityLifecycleCallback) {}
-  }
-  
-  public static abstract interface ActivityLifecycleCallback
-  {
-    public abstract void onNewIntent(Activity paramActivity, Intent paramIntent);
-    
-    public abstract void onPause(Activity paramActivity);
-    
-    public abstract void onResume(Activity paramActivity);
   }
 }
 

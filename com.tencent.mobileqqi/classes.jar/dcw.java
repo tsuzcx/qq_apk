@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.activity.NearPeopleActivity;
-import com.tencent.mobileqq.app.NearHornHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class dcw
-  implements Runnable
+  implements View.OnClickListener
 {
-  public dcw(NearPeopleActivity paramNearPeopleActivity) {}
+  public dcw(QQMapActivity paramQQMapActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (NearPeopleActivity.a(this.a) != null) {
-      NearPeopleActivity.a(this.a).a("", Long.valueOf(0L), "1", NearPeopleActivity.c(this.a), Boolean.valueOf(false));
-    }
+    this.a.r();
   }
 }
 

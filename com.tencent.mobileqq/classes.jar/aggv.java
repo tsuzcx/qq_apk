@@ -1,117 +1,142 @@
+import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArAwardInfo;
-import com.tencent.mobileqq.armap.ArMapObserver;
-import com.tencent.mobileqq.armap.ArMapUtil;
-import com.tencent.mobileqq.armap.ItemInfo;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.navigate.TroopAppShortcutNavBar.1;
+import com.tencent.mobileqq.activity.aio.navigate.TroopAppShortcutNavBar.2;
+import com.tencent.mobileqq.activity.aio.navigate.TroopAppShortcutNavBar.3;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class aggv
-  extends ArMapObserver
+  extends aggp
+  implements Animation.AnimationListener
 {
-  public aggv(ScanTorchActivity paramScanTorchActivity) {}
+  private long jdField_a_of_type_Long;
+  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public void onGetARRedDotInfo(boolean paramBoolean, int paramInt, long paramLong)
+  public aggv(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
   {
-    SharedPreferences localSharedPreferences = ArMapUtil.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    long l = localSharedPreferences.getLong("key_ar_act_id", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, "onGetARRedDotInfo redSwitch = " + paramInt + ",actID = " + paramLong + ",isSuccess = " + paramBoolean + ",savedActID = " + l);
-    }
-    localSharedPreferences.edit().putLong("key_ar_act_id", paramLong).commit();
-    if (paramInt == 1) {}
-    for (paramInt = 1; paramInt != 0; paramInt = 0)
+    super(paramBaseChatPie, paramQQAppInterface, paramContext, paramSessionInfo, paramInt1, paramInt2);
+    paramBaseChatPie = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+    if (paramBaseChatPie != null)
     {
-      if (paramLong > l)
-      {
-        this.a.runOnUiThread(new aggy(this));
-        localSharedPreferences.edit().putBoolean("key_show_reddot", true).commit();
-        this.a.n = true;
+      paramBaseChatPie = paramBaseChatPie.c(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
+      if (paramBaseChatPie != null) {
+        this.jdField_a_of_type_Long = paramBaseChatPie.dwGroupClassExt;
       }
-      if (paramLong < l)
-      {
-        this.a.n = false;
-        this.a.runOnUiThread(new aggz(this));
-        localSharedPreferences.edit().putBoolean("key_show_reddot", false).commit();
-      }
-      return;
     }
-    this.a.n = false;
-    this.a.runOnUiThread(new agha(this));
   }
   
-  public void onOpenPOI(boolean paramBoolean1, int paramInt1, ItemInfo paramItemInfo, boolean paramBoolean2, int paramInt2, int paramInt3, boolean paramBoolean3)
+  public static String a(QQAppInterface paramQQAppInterface)
   {
-    if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(300)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(300);
-    }
-    if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(297))
+    Object localObject = paramQQAppInterface;
+    if (paramQQAppInterface == null)
     {
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(297);
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface)) {
+        paramQQAppInterface = (QQAppInterface)localObject;
+      }
+      localObject = paramQQAppInterface;
+      if (paramQQAppInterface == null) {
+        return "troopapp_shortcut_guide_counts";
+      }
+    }
+    return "troopapp_shortcut_guide_counts" + ((QQAppInterface)localObject).getCurrentAccountUin();
+  }
+  
+  public static void e()
+  {
+    ThreadManager.postImmediately(new TroopAppShortcutNavBar.3(), null, false);
+  }
+  
+  public long a()
+  {
+    return 15000L;
+  }
+  
+  public View a()
+  {
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560830, null);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362830));
+    return localView;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Afcg != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Afcg.a();
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Afcg.b(true);
+      azqs.b(null, "dc00898", "", "", "0X800AD07", "0X800AD07", 0, 0, "", this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, Long.toString(this.jdField_a_of_type_Long), "");
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool1 = true;
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Afcg == null)) {
+      QLog.d("NavigateBarManager.TroopAppShortcutNavBar", 1, "mChatPie == null || mChatPie.mChatDrawer == null");
+    }
+    boolean bool2;
+    do
+    {
+      return false;
+      bool2 = auou.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
       if (QLog.isColorLevel()) {
-        QLog.i("ScanTorchActivity", 2, "onOpenPoi isSuccess: " + paramBoolean1 + ", resultCode: " + paramInt1 + ", holder: " + paramBoolean2 + ", bussiType: " + paramInt2 + ", mode: " + paramInt3 + ", itemInfo: " + paramItemInfo + ", isServerSuccess:" + paramBoolean3);
+        QLog.d("NavigateBarManager.TroopAppShortcutNavBar", 2, String.format("canShowTroopAppShortcut: %s", new Object[] { Boolean.valueOf(bool2) }));
       }
-      if ((paramBoolean1) && (paramInt1 == 0)) {
-        break label403;
-      }
-      switch (paramInt1)
-      {
-      default: 
-        paramItemInfo = "领奖失败，请稍候再试。";
-        paramInt1 = 299;
-        l = 2000L;
-        this.a.jdField_a_of_type_AndroidOsHandler.post(new aggw(this, paramItemInfo));
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(paramInt1, ScanTorchActivity.a(this.a)), l);
-        ScanTorchActivity.a(this.a, ScanTorchActivity.a(this.a), false);
-      }
+    } while (!bool2);
+    int i = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).getInt(a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("NavigateBarManager.TroopAppShortcutNavBar", 2, String.format("needShow guide count: %s", new Object[] { Integer.valueOf(i) }));
     }
-    label403:
-    while ((paramItemInfo == null) || (paramItemInfo.e <= 0)) {
-      for (;;)
-      {
-        return;
-        ScanTorchActivity.o(this.a);
-        break;
-        paramItemInfo = "领奖失败，请稍候再试。";
-        paramInt1 = 298;
-        long l = 30000L;
-        continue;
-        paramItemInfo = "你已经领过这里的奖品了。";
-        paramInt1 = 299;
-        l = 2000L;
-        continue;
-        paramItemInfo = "请到达指定地点后再扫描领奖。";
-        paramInt1 = 299;
-        l = 2000L;
-        continue;
-        paramItemInfo = "今天领奖次数已达到上限。";
-        paramInt1 = 299;
-        l = 2000L;
-        continue;
-        paramItemInfo = "来晚了一步，奖品已经发完了。";
-        paramInt1 = 299;
-        l = 2000L;
-        continue;
-        paramItemInfo = "领奖失败，请稍候再试。";
-        paramInt1 = 298;
-        l = 30000L;
-      }
+    if (i < 3) {}
+    for (;;)
+    {
+      return bool1;
+      bool1 = false;
     }
-    paramItemInfo.h = ScanTorchActivity.a(this.a).a.c;
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new aggx(this, paramItemInfo));
-    this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.b(true);
-    ScanTorchActivity.a(this.a).remove(ScanTorchActivity.a(this.a));
-    ScanTorchActivity.a(this.a, ScanTorchActivity.a(this.a), true);
   }
+  
+  public void b()
+  {
+    azqs.b(null, "dc00898", "", "", "0X800AD06", "0X800AD06", 0, 0, "", this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, Long.toString(this.jdField_a_of_type_Long), "");
+    this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new TroopAppShortcutNavBar.1(this), 500L);
+    ThreadManager.postImmediately(new TroopAppShortcutNavBar.2(this), null, false);
+  }
+  
+  public void c() {}
+  
+  public void d()
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aggv
  * JD-Core Version:    0.7.0.1
  */

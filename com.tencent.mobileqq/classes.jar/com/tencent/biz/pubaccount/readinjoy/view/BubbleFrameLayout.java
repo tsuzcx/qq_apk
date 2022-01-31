@@ -61,16 +61,16 @@ public class BubbleFrameLayout
     paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.BubbleFrameLayout, 0, 0);
     try
     {
-      this.jdField_a_of_type_Float = paramContext.getFloat(1, 0.6F);
-      this.jdField_f_of_type_Int = paramContext.getDimensionPixelSize(2, 24);
-      this.jdField_b_of_type_Int = paramContext.getDimensionPixelSize(3, 6);
+      this.jdField_a_of_type_Float = paramContext.getFloat(8, 0.6F);
+      this.jdField_f_of_type_Int = paramContext.getDimensionPixelSize(9, 24);
+      this.jdField_b_of_type_Int = paramContext.getDimensionPixelSize(2, 6);
       this.h = paramContext.getDimensionPixelSize(5, 0);
       this.jdField_g_of_type_Int = paramContext.getDimensionPixelSize(6, 4);
-      this.jdField_e_of_type_Int = paramContext.getDimensionPixelSize(4, 24);
-      this.j = paramContext.getColor(7, jdField_a_of_type_Int);
+      this.jdField_e_of_type_Int = paramContext.getDimensionPixelSize(7, 24);
+      this.j = paramContext.getColor(4, jdField_a_of_type_Int);
       this.i = paramContext.getColor(0, -1);
-      this.jdField_c_of_type_Int = paramContext.getColor(8, -1644826);
-      this.jdField_d_of_type_Int = paramContext.getDimensionPixelSize(9, 1);
+      this.jdField_c_of_type_Int = paramContext.getColor(1, -1644826);
+      this.jdField_d_of_type_Int = paramContext.getDimensionPixelSize(3, 1);
       paramContext.recycle();
       this.jdField_a_of_type_AndroidGraphicsPath.setFillType(Path.FillType.WINDING);
       this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(this.jdField_e_of_type_Int, this.h, this.jdField_g_of_type_Int, this.j);
@@ -135,7 +135,7 @@ public class BubbleFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.BubbleFrameLayout
  * JD-Core Version:    0.7.0.1
  */

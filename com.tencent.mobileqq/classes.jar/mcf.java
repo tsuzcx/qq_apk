@@ -1,22 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-
-public final class mcf
-  extends AnimatorListenerAdapter
+public abstract interface mcf
 {
-  public mcf(View paramView) {}
+  public abstract void a(int paramInt);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.setAlpha(1.0F);
-    this.a.setLayerType(0, null);
-    this.a.setVisibility(8);
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mcf
  * JD-Core Version:    0.7.0.1
  */

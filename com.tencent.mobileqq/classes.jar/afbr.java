@@ -1,33 +1,34 @@
-import android.view.View;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryScene;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.io.File;
-
 public class afbr
-  implements ActionSheet.OnButtonClickListener
+  extends afbz
 {
-  public afbr(PicBrowserGalleryScene paramPicBrowserGalleryScene, ActionSheet paramActionSheet, File paramFile, String paramString) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void OnClick(View paramView, int paramInt)
+  public afbr(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (paramInt)
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
     {
-    default: 
-      return;
-    case 0: 
-      AIOGalleryUtils.a(PicBrowserGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryScene), this.jdField_a_of_type_JavaIoFile, Utils.Crc64String(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()));
-      return;
-    }
-    PicBrowserGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryScene, this.jdField_a_of_type_JavaLangString);
+      do
+      {
+        return false;
+      } while (!(paramObject instanceof afbr));
+      paramObject = (afbr)paramObject;
+    } while ((this.a != paramObject.a) || (this.c != paramObject.c) || (this.b != paramObject.b));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afbr
  * JD-Core Version:    0.7.0.1
  */

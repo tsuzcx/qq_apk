@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/ez0" android:background="@drawable/dq" android:layout_width="fill_parent" android:layout_height="520.0dip" android:layout_alignParentBottom="true">
+        <RelativeLayout android:orientation="horizontal" android:id="@id/ez1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp" android:layout_marginStart="@dimen/l2" android:layout_marginEnd="@dimen/l2">
+            <TextView android:textSize="@dimen/dq" android:textColor="@color/d6" android:id="@id/ez2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pa" android:layout_centerVertical="true" android:layout_alignParentStart="true" />
+            <TextView android:textSize="@dimen/dq" android:textColor="@color/d6" android:id="@id/ez3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ey1" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+            <Button android:id="@id/ez4" android:background="@drawable/dr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rc" android:layout_centerVertical="true" android:paddingStart="12.0dip" android:paddingEnd="12.0dip" android:layout_alignParentEnd="true" style="@style/ns" />
+        </RelativeLayout>
+        <RelativeLayout android:orientation="horizontal" android:id="@id/ez5" android:background="@drawable/dt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="28.0dip" android:layout_marginStart="@dimen/l2" android:layout_marginEnd="@dimen/l2">
+            <ImageView android:id="@id/ez6" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_centerVertical="true" android:layout_marginStart="8.0dip" android:layout_alignParentStart="true" />
+            <ImageView android:id="@id/ez7" android:visibility="gone" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@drawable/a0p" android:layout_centerVertical="true" android:layout_marginEnd="8.0dip" android:layout_alignParentEnd="true" />
+            <EditText android:textSize="@dimen/dq" android:textColor="@color/d6" android:textColorHint="@color/a27" android:id="@id/ez8" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="8.0dip" android:hint="@string/exz" android:singleLine="true" android:layout_centerVertical="true" android:imeOptions="actionSearch" android:textCursorDrawable="@drawable/a3t" android:layout_marginStart="8.0dip" android:layout_marginEnd="8.0dip" android:layout_toStartOf="@id/ez7" android:layout_toEndOf="@id/ez6" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/ez9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <RelativeLayout android:orientation="horizontal" android:id="@id/ez_" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/dq" android:textColor="@color/a6q" android:id="@id/eza" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="46.0dip" android:text="@string/ey0" android:layout_centerHorizontal="true" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/ezb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="46.0dip" android:layout_centerHorizontal="true">
+                <ProgressBar android:id="@id/ezc" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" android:layout_marginEnd="@dimen/lb" style="@style/a02" />
+                <TextView android:textSize="@dimen/dq" android:textColor="@color/a6q" android:id="@id/ezd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ey2" />
+            </LinearLayout>
+            <android.support.v7.widget.RecyclerView android:id="@id/eze" android:paddingTop="@dimen/l2" android:paddingBottom="@dimen/l2" android:visibility="gone" android:fadingEdge="vertical" android:fadingEdgeLength="50.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:requiresFadingEdge="vertical" android:layout_marginStart="@dimen/l2" android:layout_marginEnd="@dimen/l2" />
+        </RelativeLayout>
+    </LinearLayout>
+    <View android:id="@id/ezf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/ez0" />
+</merge>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/g8t" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/g8w" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:id="@id/g7c" android:background="#3f000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/a86" android:layout_alignParentBottom="true" />
+        <View android:id="@id/ful" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+        <RelativeLayout android:id="@id/a1x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="44.0dip" android:layout_marginBottom="20.0dip" android:layout_toLeftOf="@id/ful" android:layout_alignParentBottom="true">
+            <Button android:textSize="12.0dip" android:textColor="@color/s4" android:id="@id/ga5" android:background="@color/ajr" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/dba" android:drawableTop="@drawable/uy" android:drawablePadding="5.0dip" android:layout_centerHorizontal="true" android:onClick="BtnOnClick" android:contentDescription="@string/bhe" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/a24" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="44.0dip" android:layout_marginBottom="20.0dip" android:layout_toRightOf="@id/ful" android:layout_alignParentBottom="true">
+            <Button android:textSize="12.0dip" android:textColor="@color/s4" android:id="@id/a28" android:background="@color/ajr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/bh8" android:drawableTop="@drawable/ur" android:drawablePadding="5.0dip" android:layout_centerHorizontal="true" android:onClick="BtnOnClick" android:contentDescription="@string/bh9" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/g8u" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <Button android:textSize="12.0sp" android:textColor="@color/q4" android:gravity="center_horizontal" android:id="@id/ga4" android:background="@null" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="70.0dip" android:layout_marginBottom="25.0dip" android:text="@string/de7" android:drawableTop="@drawable/dcb" android:drawablePadding="6.7199707dip" android:layout_above="@id/ga0" android:layout_centerHorizontal="true" android:onClick="BtnOnClick" android:contentDescription="@string/de7" />
+        <RelativeLayout android:id="@id/ga0" android:layout_width="270.0dip" android:layout_height="wrap_content" android:layout_marginBottom="33.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/g7e" android:background="@drawable/dah" android:layout_width="fill_parent" android:layout_height="wrap_content" android:contentDescription="@null" />
+            <ImageView android:id="@id/ga1" android:background="@drawable/d_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:contentDescription="@string/de5" />
+            <com.tencent.av.widget.shimmer.ShimmerTextView android:textSize="14.0sp" android:textColor="@color/q4" android:id="@id/ga3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="@string/de5" android:layout_toRightOf="@id/ga1" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/ga2" android:background="@drawable/dcg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,21 +1,51 @@
-import android.app.Dialog;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.widget.Switch;
 
-public class niy
-  implements Runnable
+class niy
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public niy(VideoPlayModeBase paramVideoPlayModeBase) {}
+  niy(nin paramnin, npo paramnpo, Switch paramSwitch) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.a.a != null) {
-      this.a.a.dismiss();
+    if (!this.jdField_a_of_type_Nin.c)
+    {
+      this.jdField_a_of_type_Nin.c = true;
+      return;
+    }
+    if (this.jdField_a_of_type_Npo.f == 1) {
+      this.jdField_a_of_type_Nin.a(this.jdField_a_of_type_Npo, paramBoolean);
+    }
+    for (;;)
+    {
+      nin.a(this.jdField_a_of_type_Nin, this.jdField_a_of_type_Npo.a);
+      return;
+      if (this.jdField_a_of_type_Npo.f == 2)
+      {
+        if (paramBoolean) {
+          this.jdField_a_of_type_Nin.a(this.jdField_a_of_type_Npo, this.jdField_a_of_type_ComTencentWidgetSwitch, paramBoolean);
+        } else {
+          this.jdField_a_of_type_Nin.a(this.jdField_a_of_type_Npo, paramBoolean);
+        }
+      }
+      else if (this.jdField_a_of_type_Npo.f == 3)
+      {
+        if (!paramBoolean) {
+          this.jdField_a_of_type_Nin.a(this.jdField_a_of_type_Npo, this.jdField_a_of_type_ComTencentWidgetSwitch, paramBoolean);
+        } else {
+          this.jdField_a_of_type_Nin.a(this.jdField_a_of_type_Npo, paramBoolean);
+        }
+      }
+      else {
+        this.jdField_a_of_type_Nin.a(this.jdField_a_of_type_Npo, paramBoolean);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     niy
  * JD-Core Version:    0.7.0.1
  */

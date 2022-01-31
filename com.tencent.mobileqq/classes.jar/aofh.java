@@ -1,21 +1,23 @@
-import dov.com.tencent.mfsdk.collector.DropFrameMonitor;
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
 public class aofh
-  implements AbstractUnifiedMonitor.ThreadMonitorCallback
+  extends OrientationEventListener
 {
-  public aofh(DropFrameMonitor paramDropFrameMonitor) {}
-  
-  public void onThreadMonitorEnd(int paramInt)
+  public aofh(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, Context paramContext, int paramInt)
   {
-    if (paramInt == 10) {
-      this.a.a();
-    }
+    super(paramContext, paramInt);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aofh
  * JD-Core Version:    0.7.0.1
  */

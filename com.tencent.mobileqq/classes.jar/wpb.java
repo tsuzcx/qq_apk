@@ -1,48 +1,58 @@
-import android.graphics.Color;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class wpb
-  extends RecyclerView.OnScrollListener
+public final class wpb
+  extends QQUIEventReceiver<woy, uvf>
 {
-  public wpb(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public wpb(@NonNull woy paramwoy)
   {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
-    paramInt1 = paramRecyclerView.findFirstVisibleItemPosition();
-    String str = EmoticonGroupStoreFragment.a(this.a).a(paramInt1);
-    if ((str != null) && (paramInt2 != 0))
+    super(paramwoy);
+  }
+  
+  public void a(@NonNull woy paramwoy, @NonNull uvf paramuvf)
+  {
+    Iterator localIterator = paramwoy.a.iterator();
+    int j;
+    for (int i = 0; localIterator.hasNext(); i = j)
     {
-      EmoticonGroupStoreFragment.a(this.a).setTextSize(16.0F);
-      EmoticonGroupStoreFragment.a(this.a).setTextColor(Color.parseColor("#FF000000"));
-      EmoticonGroupStoreFragment.a(this.a).setText(str);
-    }
-    if (paramInt2 < 0)
-    {
-      paramRecyclerView = paramRecyclerView.findViewByPosition(paramInt1);
-      if (paramRecyclerView != null)
+      Object localObject = (wqn)localIterator.next();
+      j = i;
+      if ((localObject instanceof wpg))
       {
-        float f = paramRecyclerView.getY();
-        if ((paramInt1 == 0) && (0.0F == f))
+        j = i;
+        if (((wpg)localObject).b())
         {
-          EmoticonGroupStoreFragment.a(this.a).setTextSize(14.0F);
-          EmoticonGroupStoreFragment.a(this.a).setTextColor(Color.parseColor("#FF777777"));
-          EmoticonGroupStoreFragment.a(this.a).setText(EmoticonGroupStoreFragment.a(this.a));
+          localObject = ((wpg)localObject).a().iterator();
+          for (;;)
+          {
+            j = i;
+            if (!((Iterator)localObject).hasNext()) {
+              break;
+            }
+            if (((StoryVideoItem)((Iterator)localObject).next()).mVid.equals(paramuvf.a)) {
+              i = 1;
+            }
+          }
         }
       }
     }
+    if (i != 0) {
+      paramwoy.a.clear();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uvf.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.specialcare;
 
-import exk;
+import esw;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -47,7 +47,7 @@ public class QvipSpecialSoundConfig
           if (i >= j) {
             break;
           }
-          paramJSONObject = exk.a(localJSONArray.getJSONObject(i));
+          paramJSONObject = esw.a(localJSONArray.getJSONObject(i));
           localQvipSpecialSoundConfig.jdField_a_of_type_JavaUtilList.add(paramJSONObject);
           i += 1;
         }

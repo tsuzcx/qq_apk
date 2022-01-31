@@ -1,34 +1,18 @@
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.av.ui.QavPanel;
 
 public class mkp
-  implements Runnable
+  implements mky
 {
-  public mkp(ReadinjoyTabFrame paramReadinjoyTabFrame, GuideData paramGuideData, String paramString, int paramInt) {}
+  public mkp(QavPanel paramQavPanel, Runnable paramRunnable) {}
   
-  public void run()
+  public void a()
   {
-    if (ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame) == null)
-    {
-      FrameLayout localFrameLayout = (FrameLayout)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a().findViewById(2131364934);
-      ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame, new ReadInJoySkinGuideView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.id, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, new mkq(this, localFrameLayout), new mkr(this, localFrameLayout)));
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a() == 0) {
-        localFrameLayout.addView(ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame), -1, -1);
-      }
-    }
-    else
-    {
-      return;
-    }
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData);
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mkp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemMulti;
+import com.tencent.qphone.base.util.QLog;
 
-public class lws
-  implements View.OnClickListener
+class lws
+  implements lxa
 {
-  public lws(ComponentTopicItemMulti paramComponentTopicItemMulti) {}
+  lws(lwr paramlwr) {}
   
-  public void onClick(View paramView) {}
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RedPacketGameEmojiAnimation", 2, "onShow called, needDetectFace set true");
+    }
+    if (this.a.a != null) {
+      this.a.a.c = true;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lws
  * JD-Core Version:    0.7.0.1
  */

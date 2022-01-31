@@ -6,98 +6,102 @@ import android.content.SharedPreferences.Editor;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import java.util.Map;
 import java.util.Set;
-import ply;
 
 public class SharedPreferencesWrapper
   implements SharedPreferences
 {
-  private final SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private final ply jdField_a_of_type_Ply;
+  private final KeyGenerator mKeyGenerator;
+  private final SharedPreferences mWrappedPreferences;
   
-  public SharedPreferencesWrapper(SharedPreferences paramSharedPreferences, ply paramply)
+  public SharedPreferencesWrapper(SharedPreferences paramSharedPreferences)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences = paramSharedPreferences;
-    this.jdField_a_of_type_Ply = paramply;
+    this(paramSharedPreferences, null);
   }
   
-  private String a(String paramString)
+  public SharedPreferencesWrapper(SharedPreferences paramSharedPreferences, KeyGenerator paramKeyGenerator)
+  {
+    this.mWrappedPreferences = paramSharedPreferences;
+    this.mKeyGenerator = paramKeyGenerator;
+  }
+  
+  private String generateKey(String paramString)
   {
     String str = paramString;
-    if (this.jdField_a_of_type_Ply != null) {
-      str = this.jdField_a_of_type_Ply.a(paramString);
+    if (this.mKeyGenerator != null) {
+      str = this.mKeyGenerator.generate(paramString);
     }
     return str;
   }
   
-  public final SharedPreferences a()
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences;
-  }
-  
-  public final ply a()
-  {
-    return this.jdField_a_of_type_Ply;
-  }
-  
   public boolean contains(String paramString)
   {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.contains(a(paramString));
+    return this.mWrappedPreferences.contains(generateKey(paramString));
   }
   
   public SharedPreferences.Editor edit()
   {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    return this.mWrappedPreferences.edit();
   }
   
-  public Map getAll()
+  public Map<String, ?> getAll()
   {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getAll();
+    return this.mWrappedPreferences.getAll();
   }
   
   public boolean getBoolean(String paramString, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(a(paramString), paramBoolean);
+    return this.mWrappedPreferences.getBoolean(generateKey(paramString), paramBoolean);
   }
   
   public float getFloat(String paramString, float paramFloat)
   {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getFloat(a(paramString), paramFloat);
+    return this.mWrappedPreferences.getFloat(generateKey(paramString), paramFloat);
   }
   
   public int getInt(String paramString, int paramInt)
   {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(a(paramString), paramInt);
+    return this.mWrappedPreferences.getInt(generateKey(paramString), paramInt);
+  }
+  
+  public final KeyGenerator getKeyGenerator()
+  {
+    return this.mKeyGenerator;
   }
   
   public long getLong(String paramString, long paramLong)
   {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(a(paramString), paramLong);
+    return this.mWrappedPreferences.getLong(generateKey(paramString), paramLong);
   }
   
   public String getString(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString(a(paramString1), paramString2);
+    return this.mWrappedPreferences.getString(generateKey(paramString1), paramString2);
   }
   
   @SuppressLint({"NewApi"})
-  public Set getStringSet(String paramString, Set paramSet)
+  public Set<String> getStringSet(String paramString, Set<String> paramSet)
   {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getStringSet(a(paramString), paramSet);
+    return this.mWrappedPreferences.getStringSet(generateKey(paramString), paramSet);
+  }
+  
+  public final SharedPreferences getWrappedSharedPreferences()
+  {
+    return this.mWrappedPreferences;
   }
   
   public void registerOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.registerOnSharedPreferenceChangeListener(paramOnSharedPreferenceChangeListener);
+    this.mWrappedPreferences.registerOnSharedPreferenceChangeListener(paramOnSharedPreferenceChangeListener);
   }
   
   public void unregisterOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.unregisterOnSharedPreferenceChangeListener(paramOnSharedPreferenceChangeListener);
+    this.mWrappedPreferences.unregisterOnSharedPreferenceChangeListener(paramOnSharedPreferenceChangeListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.component.utils.preference.SharedPreferencesWrapper
  * JD-Core Version:    0.7.0.1
  */

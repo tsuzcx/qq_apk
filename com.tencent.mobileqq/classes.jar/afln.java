@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.GetLocalUnPiblishListCallback;
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class afln
-  implements Runnable
+  extends aepm
 {
-  afln(aflm paramaflm, List paramList) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
+  TextView e;
   
-  public void run()
-  {
-    if (this.jdField_a_of_type_Aflm.a != null) {
-      this.jdField_a_of_type_Aflm.a.a(this.jdField_a_of_type_JavaUtilList);
-    }
-  }
+  afln(aflk paramaflk) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afln
  * JD-Core Version:    0.7.0.1
  */

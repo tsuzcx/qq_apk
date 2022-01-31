@@ -1,33 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StReply;
 
 class uba
-  implements View.OnClickListener
+  implements ucn
 {
-  uba(uax paramuax) {}
+  uba(uax paramuax, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.a.jdField_d_of_type_Boolean = false;
-    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.a.findViewById(2131363245));
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_b_of_type_AndroidViewView$OnClickListener);
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter != null) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a();
+    if (uax.a(this.jdField_a_of_type_Uax) != null)
+    {
+      uax.a(this.jdField_a_of_type_Uax).b("");
+      uax.a().a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, uax.a(this.jdField_a_of_type_Uax).a());
+      uax.a(this.jdField_a_of_type_Uax).a("");
     }
+    uax.a(this.jdField_a_of_type_Uax, null);
+    uax.a(this.jdField_a_of_type_Uax, null);
+    uax.a(this.jdField_a_of_type_Uax).b(this.jdField_a_of_type_Uax.a(null, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uba
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,50 @@
-import android.view.View;
-import android.view.animation.AnimationSet;
-import com.tencent.mobileqq.widget.ScrollerRunnable;
+import com.tencent.open.base.http.HttpBaseUtil;
+import com.tencent.open.base.http.HttpBaseUtil.MyX509TrustManager;
+import com.tencent.qphone.base.util.QLog;
+import java.net.Socket;
+import java.security.KeyStore;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
 
 public class hlt
-  implements Runnable
+  extends org.apache.http.conn.ssl.SSLSocketFactory
 {
-  public hlt(ScrollerRunnable paramScrollerRunnable, View paramView) {}
+  SSLContext a = SSLContext.getInstance("TLS");
   
-  public void run()
+  public hlt(KeyStore paramKeyStore)
   {
-    hlv localhlv1 = new hlv(this.jdField_a_of_type_AndroidViewView, 1.0F, 0.0F);
-    localhlv1.setFillEnabled(true);
-    localhlv1.setDuration(700L);
-    hlv localhlv2 = new hlv(this.jdField_a_of_type_AndroidViewView, 0.0F, 1.0F);
-    localhlv2.setFillEnabled(true);
-    localhlv2.setStartTime(700L);
-    localhlv2.setDuration(700L);
-    AnimationSet localAnimationSet = new AnimationSet(true);
-    localAnimationSet.addAnimation(localhlv1);
-    localAnimationSet.addAnimation(localhlv2);
-    localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new hlu(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimationSet);
+    super(paramKeyStore);
+    try
+    {
+      paramKeyStore = new HttpBaseUtil.MyX509TrustManager();
+      this.a.init(null, new TrustManager[] { paramKeyStore }, null);
+      return;
+    }
+    catch (Exception paramKeyStore)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(HttpBaseUtil.a, 2, paramKeyStore.getMessage());
+        }
+        paramKeyStore = null;
+      }
+    }
+  }
+  
+  public Socket createSocket()
+  {
+    return this.a.getSocketFactory().createSocket();
+  }
+  
+  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
+  {
+    return this.a.getSocketFactory().createSocket(paramSocket, paramString, paramInt, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hlt
  * JD-Core Version:    0.7.0.1
  */

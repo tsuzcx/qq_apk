@@ -1,104 +1,168 @@
-import android.os.Process;
-import com.tencent.mobileqq.app.FaceDownloader;
-import com.tencent.mobileqq.app.FaceDownloader.FaceDownloadThreadInfo;
-import com.tencent.mobileqq.util.FaceInfo;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+import android.os.Build;
+import android.text.TextUtils;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class zdb
-  implements Runnable
+  extends WebViewPlugin
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = true;
+  private static String jdField_a_of_type_JavaLangString = "";
+  private static zdb jdField_a_of_type_Zdb;
+  private static boolean jdField_a_of_type_Boolean;
+  private static boolean b;
+  protected final byte a;
+  protected SensorManager a;
+  protected zdc a;
+  private float[] jdField_a_of_type_ArrayOfFloat = new float[4];
   
-  public zdb(FaceDownloader paramFaceDownloader, int paramInt)
+  public zdb()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Byte = 3;
+    if (QLog.isColorLevel()) {
+      QLog.d("ARTransparentWebviewPlugin", 2, "init");
+    }
+    jdField_a_of_type_Zdb = this;
+  }
+  
+  public static final void b()
+  {
+    b = true;
+    QLog.d("ARTransparentWebviewPlugin", 1, "WebViewTime startRender. isStartRender = " + b);
+    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
+      jdField_a_of_type_Zdb.callJs(jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true) });
+    }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ARTransparentWebviewPlugin", 1, "stop motion");
+    }
+    if ((this.jdField_a_of_type_AndroidHardwareSensorManager != null) && (this.jdField_a_of_type_Zdc != null))
+    {
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Zdc);
+      this.jdField_a_of_type_Zdc = null;
+    }
+    jdField_a_of_type_Boolean = false;
+    b = false;
   }
   
-  public void run()
+  public void a(String paramString)
   {
-    Thread.currentThread().setName("FaceDownloadThread" + this.jdField_a_of_type_Int);
-    if (FaceDownloader.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader).b != -2147483648) {
-      Process.setThreadPriority(FaceDownloader.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader).b);
+    jdField_a_of_type_JavaLangString = paramString;
+    QLog.d("ARTransparentWebviewPlugin", 1, "WebViewTime notifyRenderReady. callbackStartRender = " + jdField_a_of_type_JavaLangString);
+    paramString = this.mRuntime.a();
+    if ((paramString != null) && ((paramString instanceof ScanTorchActivity))) {
+      ((ScanTorchActivity)paramString).i();
     }
-    int j = 0;
+  }
+  
+  public final boolean a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARTransparentWebviewPlugin", 1, "start motion");
+    }
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
+      this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)BaseApplication.getContext().getSystemService("sensor"));
+    }
+    Object localObject = this.jdField_a_of_type_AndroidHardwareSensorManager;
+    int i;
+    if (amwk.a())
+    {
+      i = 15;
+      localObject = ((SensorManager)localObject).getSensorList(i);
+      Sensor localSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(4);
+      if ((((List)localObject).size() <= 0) || (localSensor == null)) {
+        break label211;
+      }
+      localObject = (Sensor)((List)localObject).get(0);
+      if (this.jdField_a_of_type_Zdc != null) {
+        a();
+      }
+      this.jdField_a_of_type_Zdc = new zdc(this, (byte)3, paramString);
+      if (!Build.MODEL.equalsIgnoreCase("Nexus 5X")) {
+        break label194;
+      }
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Zdc, (Sensor)localObject, 3);
+      label141:
+      if (QLog.isColorLevel()) {
+        QLog.d("ARTransparentWebviewPlugin", 2, "support gyroscope");
+      }
+    }
     for (;;)
     {
-      int i;
-      Object localObject1;
-      if (((j < FaceDownloader.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader)) || (this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader.jdField_a_of_type_JavaUtilArrayList.size() > 0)) && (this.jdField_a_of_type_Boolean)) {
-        synchronized (this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader.jdField_a_of_type_JavaUtilArrayList)
-        {
-          i = this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader.jdField_a_of_type_JavaUtilArrayList.size();
-          if (i == 0)
-          {
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader;
-            ((FaceDownloader)localObject1).b += 1;
-          }
-        }
-      }
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader.jdField_a_of_type_JavaUtilArrayList.wait(30000L);
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader;
-        ((FaceDownloader)localObject1).b -= 1;
-        i = j + 1;
-        localObject1 = null;
-        j = i;
-        if (localObject1 == null) {
-          continue;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader.b((FaceInfo)localObject1);
-        synchronized (this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader.jdField_a_of_type_JavaUtilHashSet)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader.jdField_a_of_type_JavaUtilHashSet.remove(((FaceInfo)localObject1).c());
-          Thread.yield();
-          j = i;
-          continue;
-          if (i > FaceDownloader.b(this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader))
-          {
-            localObject1 = (FaceInfo)this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader.jdField_a_of_type_JavaUtilArrayList.remove(i - 1);
-            break label398;
-          }
-          localObject1 = (FaceInfo)this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader.jdField_a_of_type_JavaUtilArrayList.remove(0);
-          break label398;
-          localObject2 = finally;
-          throw localObject2;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqhead.FaceDownloader", 2, "FaceDownloadThread thread exit. isRunning=" + this.jdField_a_of_type_Boolean + ", id=" + this.jdField_a_of_type_Int);
-        }
-        if ((FaceDownloader.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader) != null) && (this.jdField_a_of_type_Int < FaceDownloader.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader).length))
-        {
-          FaceDownloader.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader)[this.jdField_a_of_type_Int] = null;
-          FaceDownloader.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader)[this.jdField_a_of_type_Int] = null;
-        }
-        FaceDownloader localFaceDownloader = this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader;
-        localFaceDownloader.c -= 1;
-        return;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          continue;
-          label398:
-          i = 0;
-        }
+      jdField_a_of_type_Boolean = true;
+      QLog.d("ARTransparentWebviewPlugin", 1, "WebViewTime startMotion. isRenderReady = " + jdField_a_of_type_Boolean);
+      return true;
+      i = 11;
+      break;
+      label194:
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Zdc, (Sensor)localObject, 1);
+      break label141;
+      label211:
+      callJs(paramString, new String[] { "false" });
+      if (QLog.isColorLevel()) {
+        QLog.d("ARTransparentWebviewPlugin", 2, "not support gyroscope");
       }
     }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARTransparentWebviewPlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
+    }
+    if ("sensor".equals(paramString2))
+    {
+      if ("startMotion".equals(paramString3)) {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+          QLog.d("ARTransparentWebviewPlugin", 2, "handleJsRequest jsonobject is " + paramJsBridgeListener.toString());
+          return a(paramJsBridgeListener.optString("callback"));
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+          return false;
+        }
+      }
+      if ("stopMotion".equals(paramString3))
+      {
+        a();
+        return true;
+      }
+      if ("notifyRenderReady".equals(paramString3)) {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+          QLog.d("ARTransparentWebviewPlugin", 2, "handleJsRequest jsonobject is " + paramJsBridgeListener.toString());
+          a(paramJsBridgeListener.optString("callback"));
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+          return false;
+        }
+      }
+      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+    }
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zdb
  * JD-Core Version:    0.7.0.1
  */

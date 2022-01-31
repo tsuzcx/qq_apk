@@ -1,43 +1,113 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.concurrent.Executor;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import com.tencent.mobileqq.widget.PinnedDividerListView.DividerAdapter;
+import java.util.List;
 
 public class flp
-  implements Executor
+  extends PinnedDividerListView.DividerAdapter
 {
-  Runnable jdField_a_of_type_JavaLangRunnable;
-  final Queue jdField_a_of_type_JavaUtilQueue = new LinkedList();
+  private static final int jdField_a_of_type_Int = 0;
+  private static final int b = 1;
+  private static final int c = 2;
   
-  protected void a()
+  private flp(CountrySelectActivity paramCountrySelectActivity) {}
+  
+  public int a()
   {
-    try
-    {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
-      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
-      if (localRunnable != null) {
-        ThreadManager.a.execute(this.jdField_a_of_type_JavaLangRunnable);
-      }
-      return;
-    }
-    finally {}
+    return 2130903307;
   }
   
-  public void execute(Runnable paramRunnable)
+  public void a(View paramView, int paramInt)
   {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilQueue.offer(new flq(this, paramRunnable));
-      if (this.jdField_a_of_type_JavaLangRunnable == null) {
-        a();
-      }
+    paramView = (TextView)paramView;
+    Object localObject = getItem(paramInt);
+    if ((localObject instanceof flq)) {
+      paramView.setText(((flq)localObject).jdField_a_of_type_JavaLangString);
+    }
+    while (!(localObject instanceof BaseAddress)) {
       return;
     }
-    finally
-    {
-      paramRunnable = finally;
-      throw paramRunnable;
+    paramView.setText(((BaseAddress)localObject).d);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return getItemViewType(paramInt) == 0;
+  }
+  
+  public int getCount()
+  {
+    return this.a.a.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.a.a.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if ((this.a.a.get(paramInt) instanceof flq)) {
+      return 0;
     }
+    return 1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (getItemViewType(paramInt) == 0)
+    {
+      if (paramView != null) {
+        break label246;
+      }
+      paramView = this.a.getLayoutInflater().inflate(a(), null);
+    }
+    label246:
+    for (;;)
+    {
+      ((TextView)paramView).setText(((flq)getItem(paramInt)).jdField_a_of_type_JavaLangString);
+      return paramView;
+      paramViewGroup = paramView;
+      if (paramView == null)
+      {
+        paramViewGroup = this.a.getLayoutInflater().inflate(2130903308, null);
+        paramView = new flr(null);
+        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131232037));
+        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131232038));
+        paramViewGroup.findViewById(2131232016).setVisibility(8);
+        paramViewGroup.setTag(paramView);
+        paramViewGroup.setOnClickListener(this.a);
+      }
+      paramView = (flr)paramViewGroup.getTag();
+      BaseAddress localBaseAddress = (BaseAddress)getItem(paramInt);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localBaseAddress.jdField_a_of_type_JavaLangString);
+      if ((!TextUtils.isEmpty(this.a.c)) && (this.a.c.equals(localBaseAddress.b))) {
+        paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      }
+      for (;;)
+      {
+        paramView.jdField_a_of_type_JavaLangString = localBaseAddress.b;
+        paramViewGroup.setContentDescription(localBaseAddress.jdField_a_of_type_JavaLangString + "，触摸两次选中");
+        return paramViewGroup;
+        paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      }
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 2;
   }
 }
 

@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2;
+import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2.1;
+import com.tencent.image.URLDrawable;
 
 public class yny
-  extends MessageObserver
+  extends yns
 {
-  public yny(HotChatCenterFragment paramHotChatCenterFragment) {}
+  public yny(SubscribeQRCodeShareHelper.2.1 param1) {}
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.c();
+    ynx.a(this.a.a.this$0, ynx.b(this.a.a.this$0));
   }
-  
-  protected void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yny
  * JD-Core Version:    0.7.0.1
  */

@@ -8,14 +8,14 @@ import java.util.ArrayList;
 public final class GetConfigResponse
   extends JceStruct
 {
-  static ArrayList<ConfigItem> a = new ArrayList();
+  static ArrayList<ConfigItem> cache_settingList = new ArrayList();
   public int ret = 0;
   public ArrayList<ConfigItem> settingList = null;
   
   static
   {
     ConfigItem localConfigItem = new ConfigItem();
-    a.add(localConfigItem);
+    cache_settingList.add(localConfigItem);
   }
   
   public GetConfigResponse() {}
@@ -29,7 +29,7 @@ public final class GetConfigResponse
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.ret = paramJceInputStream.read(this.ret, 0, true);
-    this.settingList = ((ArrayList)paramJceInputStream.read(a, 1, true));
+    this.settingList = ((ArrayList)paramJceInputStream.read(cache_settingList, 1, true));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -40,7 +40,7 @@ public final class GetConfigResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.GetConfigResponse
  * JD-Core Version:    0.7.0.1
  */

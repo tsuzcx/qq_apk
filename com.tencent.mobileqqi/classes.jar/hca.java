@@ -1,30 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.JumpAction;
 
-public final class hca
-  implements DialogInterface.OnClickListener
+public class hca
+  implements Handler.Callback
 {
-  public hca(long paramLong) {}
+  public hca(JumpAction paramJumpAction) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      TroopFileTransferManager.g();
-      continue;
-      TroopFileTransferManager.a(this.a);
-    }
+    ((BaseActivity)JumpAction.a(this.a)).finish();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hca
  * JD-Core Version:    0.7.0.1
  */

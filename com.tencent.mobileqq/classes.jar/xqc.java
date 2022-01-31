@@ -1,20 +1,22 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
-public class xqc
-  implements CompoundButton.OnCheckedChangeListener
+class xqc
+  implements View.OnClickListener
 {
-  public xqc(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  xqc(xqb paramxqb) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    NewFlowCameraActivity.a(this.a, paramBoolean);
+    if (this.a.a.a != null) {
+      this.a.a.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xqc
  * JD-Core Version:    0.7.0.1
  */

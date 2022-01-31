@@ -9,11 +9,11 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x383$ApplyFileSearchRspBody$Item
-  extends MessageMicro
+  extends MessageMicro<Item>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_group_name = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField bytes_match_word = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> bytes_match_word = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBBytesField bytes_uploader_nick_name = PBField.initBytes(ByteStringMicro.EMPTY);
   public cmd0x383.ApplyGetFileListRspBody.FileInfo file_info = new cmd0x383.ApplyGetFileListRspBody.FileInfo();
   public final PBUInt64Field uint64_group_code = PBField.initUInt64(0L);
@@ -30,7 +30,7 @@ public final class cmd0x383$ApplyFileSearchRspBody$Item
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody.Item
  * JD-Core Version:    0.7.0.1
  */

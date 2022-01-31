@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/a0e" android:background="@color/a6q" style="@style/q1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/lp" android:background="@drawable/b9e" android:paddingLeft="@dimen/dv" android:paddingTop="@dimen/n_" android:paddingRight="@dimen/dv" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip">
+        <ImageView android:id="@id/bb3" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/searchbar_icon" />
+        <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/m2" android:textColor="@color/w_" android:textColorHint="@color/s3" android:gravity="center_vertical" android:id="@id/bb4" android:background="@null" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/dl" android:minHeight="@dimen/kv" android:hint="@string/u3" android:singleLine="true" android:layout_weight="1.0" />
+    </LinearLayout>
+    <GridView android:id="@id/eco" android:background="@color/vy" android:paddingLeft="@dimen/la" android:paddingTop="@dimen/ll" android:paddingRight="@dimen/la" android:paddingBottom="@dimen/ll" android:scrollbars="vertical" android:numColumns="5" style="@style/mn" />
+</LinearLayout>

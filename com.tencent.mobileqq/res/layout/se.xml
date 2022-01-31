@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/d4l" android:background="@drawable/qv" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginLeft="6.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="5.0dip">
+        <com.tencent.widget.SingleLineTextView android:textSize="@dimen/j9" android:gravity="center" android:id="@id/js6" android:paddingLeft="20.0dip" android:paddingTop="5.0dip" android:paddingRight="20.0dip" android:paddingBottom="5.0dip" android:visibility="visible" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c_t" android:includeFontPadding="true" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</RelativeLayout>

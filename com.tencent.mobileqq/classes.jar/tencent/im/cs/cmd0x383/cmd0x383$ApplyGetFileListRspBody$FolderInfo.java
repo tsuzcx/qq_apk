@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x383$ApplyGetFileListRspBody$FolderInfo
-  extends MessageMicro
+  extends MessageMicro<FolderInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "str_folder_path", "str_folder_name", "uint32_create_time", "uint64_create_uin" }, new Object[] { "", "", Integer.valueOf(0), Long.valueOf(0L) }, FolderInfo.class);
   public final PBStringField str_folder_name = PBField.initString("");
@@ -18,7 +18,7 @@ public final class cmd0x383$ApplyGetFileListRspBody$FolderInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x383.cmd0x383.ApplyGetFileListRspBody.FolderInfo
  * JD-Core Version:    0.7.0.1
  */

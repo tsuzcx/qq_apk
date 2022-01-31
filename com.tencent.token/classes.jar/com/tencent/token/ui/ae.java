@@ -1,17 +1,17 @@
 package com.tencent.token.ui;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.token.af;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.token.cw;
 
-final class ae
-  implements DialogInterface.OnCancelListener
+class ae
+  implements DialogInterface.OnClickListener
 {
-  ae(aa paramaa) {}
+  ae(ad paramad) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    af.a().b(this.a.a.mHandler);
+    cw.a().a(this.a.a.mHandler);
   }
 }
 

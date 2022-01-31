@@ -1,31 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class wbf
-  implements Runnable
+class wbf
+  implements DialogInterface.OnClickListener
 {
-  public wbf(TroopChatPie paramTroopChatPie) {}
+  wbf(wax paramwax, VideoViewVideoHolder paramVideoViewVideoHolder, StoryVideoItem paramStoryVideoItem) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TroopHandler localTroopHandler = (TroopHandler)this.a.a.a(20);
-    String str = this.a.a().a;
-    if (!TextUtils.isEmpty(str)) {
-      localTroopHandler.q(str);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
     }
-    while (!QLog.isColorLevel()) {
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
       return;
     }
-    QLog.i("Q.aio.TroopChatPie", 2, "mGetOnlineMemberTipsRunnable, getSessionInfo().curFriendUin == null");
+    uom.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+    wxj.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wbf
  * JD-Core Version:    0.7.0.1
  */

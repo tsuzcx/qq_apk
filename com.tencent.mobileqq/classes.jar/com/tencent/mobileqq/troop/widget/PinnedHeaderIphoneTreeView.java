@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajss;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -14,6 +13,7 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import bcrh;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.PinnedHeaderExpandableListView;
@@ -38,7 +38,7 @@ public class PinnedHeaderIphoneTreeView
     super(paramContext);
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new ajss(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bcrh(this);
     a();
   }
   
@@ -47,7 +47,7 @@ public class PinnedHeaderIphoneTreeView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new ajss(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bcrh(this);
     a();
   }
   
@@ -56,7 +56,7 @@ public class PinnedHeaderIphoneTreeView
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new ajss(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bcrh(this);
     a();
   }
   
@@ -103,7 +103,7 @@ public class PinnedHeaderIphoneTreeView
     }
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public void dispatchDraw(Canvas paramCanvas)
   {
     if (a() == null) {}
     for (;;)
@@ -310,7 +310,7 @@ public class PinnedHeaderIphoneTreeView
     return true;
   }
   
-  protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
+  public boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
     boolean bool = true;
     if (paramView != this.jdField_b_of_type_AndroidViewView) {
@@ -335,7 +335,7 @@ public class PinnedHeaderIphoneTreeView
     return localView;
   }
   
-  protected boolean isInFilterMode()
+  public boolean isInFilterMode()
   {
     return true;
   }
@@ -357,7 +357,7 @@ public class PinnedHeaderIphoneTreeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.PinnedHeaderIphoneTreeView
  * JD-Core Version:    0.7.0.1
  */

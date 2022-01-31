@@ -1,19 +1,27 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.transfile.DataLineDownloader;
-import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
-import java.net.URL;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
 
-public class aipd
-  implements BitmapDecoder
+class aipd
+  extends nac
 {
-  public aipc a;
+  aipd(aipa paramaipa) {}
   
-  public aipd(DataLineDownloader paramDataLineDownloader) {}
-  
-  public Bitmap a(URL paramURL)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Aipc = this.jdField_a_of_type_ComTencentMobileqqTransfileDataLineDownloader.a(paramURL);
-    return DataLineDownloader.a(this.jdField_a_of_type_ComTencentMobileqqTransfileDataLineDownloader, this.jdField_a_of_type_Aipc);
+    if ((aipa.a(this.a).isFinishing()) || (this.a.a)) {
+      return;
+    }
+    this.a.d();
+    if (aipa.a(this.a) != null) {
+      aipa.a(this.a).removeCallbacks(aipa.b(this.a));
+    }
+    if (paramInt == 16)
+    {
+      this.a.e();
+      return;
+    }
+    aipa.a(this.a, aipa.a(this.a));
   }
 }
 

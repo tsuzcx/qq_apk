@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.pluginsdk;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.ComponentName;
@@ -11,13 +13,17 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.content.res.Resources.Theme;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.util.SparseArray;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -31,73 +37,46 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.skin.util.SkinEngineInitBridge;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinEngine;
 import com.tencent.theme.SkinnableActivityProcesser;
 import com.tencent.theme.SkinnableActivityProcesser.Callback;
 import com.tencent.theme.SkinnableBitmapDrawable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import mqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
+import mqq.app.QQPermissionHelper;
 
 public class BasePluginActivity
   extends BaseActivity
   implements IPluginActivity, PluginInterfaceHelper.OnPluginInterfaceLoadedListener, SkinnableActivityProcesser.Callback
 {
-  private static Boolean d;
-  private static boolean e;
   public static int i_support_immersive = -1;
-  boolean a = false;
-  View b;
-  SkinnableActivityProcesser c;
-  private Activity f;
-  private ClassLoader g;
-  private PluginConfig h = new PluginConfig();
-  private ImmersiveConfig i = new ImmersiveConfig();
+  private static Boolean sIsLiquid;
+  private static boolean sSkilEngineInit;
+  private Dialog jumpDialog;
+  private Activity mActivity;
   protected String mApkFilePath = "";
+  private BasePluginActivity.PluginConfig mConfig = new BasePluginActivity.PluginConfig();
   public View mContentView;
   public Context mContext;
+  private ClassLoader mDexClassLoader;
+  boolean mFinished = false;
+  private BasePluginActivity.ImmersiveConfig mImmerConfit = new BasePluginActivity.ImmersiveConfig(this);
   protected boolean mIsRunInPlugin;
   protected boolean mIsTab;
-  protected Activity mOutActivity;
+  public Activity mOutActivity;
   protected PackageInfo mPackageInfo;
+  private SparseArray<List> mPermissionCallerMap = new SparseArray();
   protected String mPluginID;
   protected int mPluginResourcesType;
   protected boolean mUseSkinEngine;
-  
-  private void a(boolean paramBoolean)
-  {
-    int j = 0;
-    if (this.b != null)
-    {
-      localObject = this.b;
-      if (paramBoolean) {
-        ((View)localObject).setVisibility(j);
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        j = 8;
-        break;
-      } while (paramBoolean != true);
-      localObject = new ImageView(this);
-      ((ImageView)localObject).setImageDrawable(new ColorDrawable(Color.parseColor("#77000000")));
-      ((ImageView)localObject).setPadding(0, this.h.titleHeight, 0, 0);
-      ((ImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
-      ((ImageView)localObject).setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-      this.b = ((View)localObject);
-    } while (this.b == null);
-    Object localObject = getWindow().getDecorView();
-    if ((localObject instanceof ViewGroup))
-    {
-      ((ViewGroup)localObject).addView(this.b, this.b.getLayoutParams());
-      return;
-    }
-    getWindow().addContentView(this.b, this.b.getLayoutParams());
-  }
+  View mViewShadow;
+  SkinnableActivityProcesser processer;
   
   public static final Bitmap getDrawableBitmap(Drawable paramDrawable)
   {
@@ -149,8 +128,41 @@ public class BasePluginActivity
     catch (Exception paramObject) {}
   }
   
+  private void setNightMaskVisible(boolean paramBoolean)
+  {
+    int i = 0;
+    if (this.mViewShadow != null)
+    {
+      localObject = this.mViewShadow;
+      if (paramBoolean) {
+        ((View)localObject).setVisibility(i);
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        i = 8;
+        break;
+      } while (paramBoolean != true);
+      localObject = new ImageView(this);
+      ((ImageView)localObject).setImageDrawable(new ColorDrawable(Color.parseColor("#77000000")));
+      ((ImageView)localObject).setPadding(0, this.mConfig.titleHeight, 0, 0);
+      ((ImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
+      ((ImageView)localObject).setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+      this.mViewShadow = ((View)localObject);
+    } while (this.mViewShadow == null);
+    Object localObject = getWindow().getDecorView();
+    if ((localObject instanceof ViewGroup))
+    {
+      ((ViewGroup)localObject).addView(this.mViewShadow, this.mViewShadow.getLayoutParams());
+      return;
+    }
+    getWindow().addContentView(this.mViewShadow, this.mViewShadow.getLayoutParams());
+  }
+  
   public static void setProperty(Object paramObject1, Class paramClass, String paramString, Object paramObject2)
-    throws Exception
   {
     paramClass = paramClass.getDeclaredField(paramString);
     paramClass.setAccessible(true);
@@ -188,7 +200,7 @@ public class BasePluginActivity
     if (this.mContext != null) {
       return this.mContext.getResources();
     }
-    return this.f.getResources();
+    return this.mActivity.getResources();
   }
   
   public void IInit(String paramString1, String paramString2, Activity paramActivity, ClassLoader paramClassLoader, PackageInfo paramPackageInfo, boolean paramBoolean, int paramInt)
@@ -197,22 +209,22 @@ public class BasePluginActivity
       DebugHelper.log("plugin_tag", "BasePluginActivity.Init:" + paramString1 + ", " + paramBoolean + ", " + this.mPluginResourcesType);
     }
     this.mIsRunInPlugin = true;
-    this.g = paramClassLoader;
+    this.mDexClassLoader = paramClassLoader;
     this.mOutActivity = paramActivity;
     this.mPluginID = paramString1;
     this.mApkFilePath = paramString2;
     this.mPackageInfo = paramPackageInfo;
     this.mPluginResourcesType = paramInt;
     if (this.mContext == null) {
-      this.mContext = new c(paramActivity, 0, this.mApkFilePath, this.g, paramActivity.getResources(), this.mPluginResourcesType);
+      this.mContext = new PluginContext(paramActivity, 0, this.mApkFilePath, this.mDexClassLoader, paramActivity.getResources(), this.mPluginResourcesType);
     }
     attachBaseContext(this.mContext);
     this.mUseSkinEngine = paramBoolean;
-    if ((e) || (!paramBoolean) || ((this.mPluginResourcesType != 1) && (this.mPluginResourcesType != 2))) {
+    if ((sSkilEngineInit) || (!paramBoolean) || ((this.mPluginResourcesType != 1) && (this.mPluginResourcesType != 2))) {
       try
       {
         SkinEngineInitBridge.init(this);
-        e = true;
+        sSkilEngineInit = true;
         return;
       }
       catch (Exception paramString1)
@@ -239,6 +251,7 @@ public class BasePluginActivity
     onAttachFragment(paramFragment);
   }
   
+  @TargetApi(5)
   public boolean IOnBackPressed()
   {
     try
@@ -378,95 +391,17 @@ public class BasePluginActivity
     catch (Exception paramBasePluginActivity) {}
   }
   
-  public ImmersiveConfig IgetImmersiveConfig()
+  public BasePluginActivity.ImmersiveConfig IgetImmersiveConfig()
   {
-    return this.i;
+    return this.mImmerConfit;
   }
   
-  boolean a(Intent paramIntent)
+  public int checkSelfPermission(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.mIsRunInPlugin)
-    {
-      bool1 = bool2;
-      if (paramIntent != null)
-      {
-        if (!paramIntent.hasExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY")) {
-          break label38;
-        }
-        bool1 = paramIntent.getBooleanExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
-      }
+    if (Build.VERSION.SDK_INT >= 23) {
+      return super.checkSelfPermission(paramString);
     }
-    label38:
-    ComponentName localComponentName;
-    label101:
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-          localComponentName = paramIntent.getComponent();
-          bool1 = bool2;
-        } while (localComponentName == null);
-        if (!this.mOutActivity.getPackageName().equals(localComponentName.getPackageName())) {
-          break label101;
-        }
-        paramIntent = this.f.getPackageManager().queryIntentActivities(paramIntent, 65536);
-        if (paramIntent == null) {
-          break;
-        }
-        bool1 = bool2;
-      } while (paramIntent.size() != 0);
-      return true;
-      bool1 = bool2;
-    } while (!getPackageName().equals(localComponentName.getPackageName()));
-    return true;
-  }
-  
-  boolean b(Intent paramIntent)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.mIsRunInPlugin)
-    {
-      bool1 = bool2;
-      if (paramIntent != null)
-      {
-        if (!paramIntent.hasExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY")) {
-          break label38;
-        }
-        bool1 = paramIntent.getBooleanExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
-      }
-    }
-    label38:
-    do
-    {
-      do
-      {
-        return bool1;
-        paramIntent = paramIntent.getComponent();
-        bool1 = bool2;
-      } while (paramIntent == null);
-      if (this.mOutActivity.getPackageName().equals(paramIntent.getPackageName()))
-      {
-        paramIntent = paramIntent.getClassName();
-        try
-        {
-          bool1 = BasePluginActivity.class.isAssignableFrom(Class.forName(paramIntent, false, this.mContext.getClassLoader()));
-          return bool1;
-        }
-        catch (ClassNotFoundException paramIntent)
-        {
-          DebugHelper.log("plugin_tag", "isSamePackage2", paramIntent);
-          return false;
-        }
-      }
-      bool1 = bool2;
-    } while (!getPackageName().equals(paramIntent.getPackageName()));
-    return true;
+    return 0;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -508,32 +443,32 @@ public class BasePluginActivity
   
   public void finish()
   {
-    int k;
     int j;
+    int i;
     if (this.mIsRunInPlugin)
     {
-      k = 0;
-      j = k;
+      j = 0;
+      i = j;
     }
     for (;;)
     {
       try
       {
         Object localObject1 = Activity.class.getDeclaredField("mResultCode");
-        j = k;
+        i = j;
         ((Field)localObject1).setAccessible(true);
-        j = k;
-        k = ((Integer)((Field)localObject1).get(this)).intValue();
-        j = k;
+        i = j;
+        j = ((Integer)((Field)localObject1).get(this)).intValue();
+        i = j;
         localObject1 = Activity.class.getDeclaredField("mResultData");
-        j = k;
+        i = j;
         ((Field)localObject1).setAccessible(true);
-        j = k;
+        i = j;
         localObject1 = (Intent)((Field)localObject1).get(this);
-        j = k;
-        this.mOutActivity.setResult(j, (Intent)localObject1);
+        i = j;
+        this.mOutActivity.setResult(i, (Intent)localObject1);
         this.mOutActivity.finish();
-        this.a = true;
+        this.mFinished = true;
         return;
       }
       catch (Exception localException)
@@ -593,10 +528,10 @@ public class BasePluginActivity
     if (this.mContext != null) {
       return LayoutInflater.from(this.mContext);
     }
-    return LayoutInflater.from(this.f);
+    return LayoutInflater.from(this.mActivity);
   }
   
-  protected String getModuleId()
+  public String getModuleId()
   {
     return this.mPluginID;
   }
@@ -611,7 +546,7 @@ public class BasePluginActivity
     if (this.mIsRunInPlugin == true) {
       return this.mOutActivity.getResources();
     }
-    return this.f.getResources();
+    return this.mActivity.getResources();
   }
   
   public PackageInfo getPackageInfo()
@@ -664,9 +599,95 @@ public class BasePluginActivity
   public boolean isFinishing()
   {
     if (this.mIsRunInPlugin) {
-      return this.a;
+      return this.mFinished;
     }
     return super.isFinishing();
+  }
+  
+  boolean isSamePackage(Intent paramIntent)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.mIsRunInPlugin)
+    {
+      bool1 = bool2;
+      if (paramIntent != null)
+      {
+        if (!paramIntent.hasExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY")) {
+          break label38;
+        }
+        bool1 = paramIntent.getBooleanExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
+      }
+    }
+    label38:
+    ComponentName localComponentName;
+    label101:
+    do
+    {
+      do
+      {
+        do
+        {
+          return bool1;
+          localComponentName = paramIntent.getComponent();
+          bool1 = bool2;
+        } while (localComponentName == null);
+        if (!this.mOutActivity.getPackageName().equals(localComponentName.getPackageName())) {
+          break label101;
+        }
+        paramIntent = this.mActivity.getPackageManager().queryIntentActivities(paramIntent, 65536);
+        if (paramIntent == null) {
+          break;
+        }
+        bool1 = bool2;
+      } while (paramIntent.size() != 0);
+      return true;
+      bool1 = bool2;
+    } while (!getPackageName().equals(localComponentName.getPackageName()));
+    return true;
+  }
+  
+  boolean isSamePackage2(Intent paramIntent)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.mIsRunInPlugin)
+    {
+      bool1 = bool2;
+      if (paramIntent != null)
+      {
+        if (!paramIntent.hasExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY")) {
+          break label38;
+        }
+        bool1 = paramIntent.getBooleanExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
+      }
+    }
+    label38:
+    do
+    {
+      do
+      {
+        return bool1;
+        paramIntent = paramIntent.getComponent();
+        bool1 = bool2;
+      } while (paramIntent == null);
+      if (this.mOutActivity.getPackageName().equals(paramIntent.getPackageName()))
+      {
+        paramIntent = paramIntent.getClassName();
+        try
+        {
+          bool1 = BasePluginActivity.class.isAssignableFrom(Class.forName(paramIntent, false, this.mContext.getClassLoader()));
+          return bool1;
+        }
+        catch (ClassNotFoundException paramIntent)
+        {
+          DebugHelper.log("plugin_tag", "isSamePackage2", paramIntent);
+          return false;
+        }
+      }
+      bool1 = bool2;
+    } while (!getPackageName().equals(paramIntent.getPackageName()));
+    return true;
   }
   
   public boolean isShadow()
@@ -697,75 +718,85 @@ public class BasePluginActivity
     finish();
   }
   
-  protected void onConfig(PluginConfig paramPluginConfig) {}
+  protected void onConfig(BasePluginActivity.PluginConfig paramPluginConfig) {}
+  
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    try
+    {
+      super.onConfigurationChanged(paramConfiguration);
+      return;
+    }
+    catch (Exception paramConfiguration) {}
+  }
   
   /* Error */
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 258	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mIsRunInPlugin	Z
+    //   1: getfield 266	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mIsRunInPlugin	Z
     //   4: ifeq +112 -> 116
     //   7: aload_0
     //   8: aload_0
-    //   9: getfield 262	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mOutActivity	Landroid/app/Activity;
-    //   12: putfield 217	com/tencent/mobileqq/pluginsdk/BasePluginActivity:f	Landroid/app/Activity;
+    //   9: getfield 270	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mOutActivity	Landroid/app/Activity;
+    //   12: putfield 225	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mActivity	Landroid/app/Activity;
     //   15: aload_0
-    //   16: getfield 217	com/tencent/mobileqq/pluginsdk/BasePluginActivity:f	Landroid/app/Activity;
-    //   19: invokevirtual 587	android/app/Activity:getWindow	()Landroid/view/Window;
+    //   16: getfield 225	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mActivity	Landroid/app/Activity;
+    //   19: invokevirtual 552	android/app/Activity:getWindow	()Landroid/view/Window;
     //   22: astore_2
-    //   23: getstatic 616	android/os/Build$VERSION:SDK_INT	I
+    //   23: getstatic 441	android/os/Build$VERSION:SDK_INT	I
     //   26: bipush 26
     //   28: if_icmplt +13 -> 41
     //   31: aload_0
-    //   32: ldc 219
-    //   34: ldc_w 494
+    //   32: ldc 227
+    //   34: ldc_w 445
     //   37: aload_2
-    //   38: invokestatic 618	com/tencent/mobileqq/pluginsdk/BasePluginActivity:setProperty	(Ljava/lang/Object;Ljava/lang/Class;Ljava/lang/String;Ljava/lang/Object;)V
+    //   38: invokestatic 635	com/tencent/mobileqq/pluginsdk/BasePluginActivity:setProperty	(Ljava/lang/Object;Ljava/lang/Class;Ljava/lang/String;Ljava/lang/Object;)V
     //   41: aload_0
     //   42: aload_0
-    //   43: getfield 65	com/tencent/mobileqq/pluginsdk/BasePluginActivity:h	Lcom/tencent/mobileqq/pluginsdk/BasePluginActivity$PluginConfig;
-    //   46: invokevirtual 620	com/tencent/mobileqq/pluginsdk/BasePluginActivity:onConfig	(Lcom/tencent/mobileqq/pluginsdk/BasePluginActivity$PluginConfig;)V
+    //   43: getfield 66	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mConfig	Lcom/tencent/mobileqq/pluginsdk/BasePluginActivity$PluginConfig;
+    //   46: invokevirtual 637	com/tencent/mobileqq/pluginsdk/BasePluginActivity:onConfig	(Lcom/tencent/mobileqq/pluginsdk/BasePluginActivity$PluginConfig;)V
     //   49: aload_0
-    //   50: getfield 622	com/tencent/mobileqq/pluginsdk/BasePluginActivity:c	Lcom/tencent/theme/SkinnableActivityProcesser;
+    //   50: getfield 639	com/tencent/mobileqq/pluginsdk/BasePluginActivity:processer	Lcom/tencent/theme/SkinnableActivityProcesser;
     //   53: ifnonnull +16 -> 69
     //   56: aload_0
-    //   57: new 624	com/tencent/theme/SkinnableActivityProcesser
+    //   57: new 641	com/tencent/theme/SkinnableActivityProcesser
     //   60: dup
     //   61: aload_0
     //   62: aload_0
-    //   63: invokespecial 627	com/tencent/theme/SkinnableActivityProcesser:<init>	(Landroid/app/Activity;Lcom/tencent/theme/SkinnableActivityProcesser$Callback;)V
-    //   66: putfield 622	com/tencent/mobileqq/pluginsdk/BasePluginActivity:c	Lcom/tencent/theme/SkinnableActivityProcesser;
+    //   63: invokespecial 644	com/tencent/theme/SkinnableActivityProcesser:<init>	(Landroid/app/Activity;Lcom/tencent/theme/SkinnableActivityProcesser$Callback;)V
+    //   66: putfield 639	com/tencent/mobileqq/pluginsdk/BasePluginActivity:processer	Lcom/tencent/theme/SkinnableActivityProcesser;
     //   69: aload_0
-    //   70: invokestatic 632	com/tencent/mobileqq/pluginsdk/PluginStatic:a	(Lcom/tencent/mobileqq/pluginsdk/IPluginActivity;)V
+    //   70: invokestatic 650	com/tencent/mobileqq/pluginsdk/PluginStatic:add	(Lcom/tencent/mobileqq/pluginsdk/IPluginActivity;)V
     //   73: aload_0
     //   74: aload_1
-    //   75: invokespecial 633	mqq/app/BaseActivity:onCreate	(Landroid/os/Bundle;)V
+    //   75: invokespecial 651	mqq/app/BaseActivity:onCreate	(Landroid/os/Bundle;)V
     //   78: aload_0
-    //   79: invokevirtual 637	com/tencent/mobileqq/pluginsdk/BasePluginActivity:getIntent	()Landroid/content/Intent;
-    //   82: ldc_w 639
+    //   79: invokevirtual 655	com/tencent/mobileqq/pluginsdk/BasePluginActivity:getIntent	()Landroid/content/Intent;
+    //   82: ldc_w 657
     //   85: iconst_0
-    //   86: invokevirtual 436	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   86: invokevirtual 573	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
     //   89: ifeq +12 -> 101
     //   92: aload_0
     //   93: aload_0
-    //   94: getfield 262	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mOutActivity	Landroid/app/Activity;
+    //   94: getfield 270	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mOutActivity	Landroid/app/Activity;
     //   97: aload_0
-    //   98: invokevirtual 643	com/tencent/mobileqq/pluginsdk/BasePluginActivity:readyPluginInterface	(Landroid/content/Context;Lcom/tencent/mobileqq/pluginsdk/PluginInterfaceHelper$OnPluginInterfaceLoadedListener;)V
+    //   98: invokevirtual 661	com/tencent/mobileqq/pluginsdk/BasePluginActivity:readyPluginInterface	(Landroid/content/Context;Lcom/tencent/mobileqq/pluginsdk/PluginInterfaceHelper$OnPluginInterfaceLoadedListener;)V
     //   101: return
     //   102: astore_2
-    //   103: ldc 229
+    //   103: ldc 237
     //   105: iconst_1
-    //   106: ldc_w 645
+    //   106: ldc_w 663
     //   109: aload_2
-    //   110: invokestatic 650	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   110: invokestatic 669	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   113: goto -72 -> 41
     //   116: aload_0
     //   117: aload_1
-    //   118: invokespecial 633	mqq/app/BaseActivity:onCreate	(Landroid/os/Bundle;)V
+    //   118: invokespecial 651	mqq/app/BaseActivity:onCreate	(Landroid/os/Bundle;)V
     //   121: aload_0
     //   122: aload_0
-    //   123: putfield 217	com/tencent/mobileqq/pluginsdk/BasePluginActivity:f	Landroid/app/Activity;
+    //   123: putfield 225	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mActivity	Landroid/app/Activity;
     //   126: return
     //   127: astore_2
     //   128: goto -59 -> 69
@@ -782,21 +813,34 @@ public class BasePluginActivity
     //   56	69	127	java/lang/Exception
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    if (this.mIsRunInPlugin)
+    try
     {
-      if (this.c != null)
-      {
-        this.c.destory();
-        this.c = null;
+      if ((this.jumpDialog != null) && (this.jumpDialog.isShowing())) {
+        this.jumpDialog.dismiss();
       }
-      this.g = null;
-      PluginStatic.b(this);
-      super.onDestroy();
-      return;
+      if (this.mIsRunInPlugin)
+      {
+        if (this.processer != null)
+        {
+          this.processer.destory();
+          this.processer = null;
+        }
+        this.mDexClassLoader = null;
+        PluginStatic.remove(this);
+        super.onDestroy();
+        return;
+      }
     }
-    super.onDestroy();
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("BasePluginActivity", 1, localThrowable, new Object[0]);
+      }
+      super.onDestroy();
+    }
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -823,7 +867,7 @@ public class BasePluginActivity
     return super.onKeyUp(paramInt, paramKeyEvent);
   }
   
-  protected void onPause()
+  public void onPause()
   {
     if (this.mIsRunInPlugin)
     {
@@ -844,6 +888,51 @@ public class BasePluginActivity
   
   public void onPreThemeChanged() {}
   
+  public void onRequestPermissionsResult(int paramInt, @NonNull String[] paramArrayOfString, @NonNull int[] paramArrayOfInt)
+  {
+    super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    if (paramArrayOfInt.length == 0) {}
+    List localList;
+    do
+    {
+      return;
+      localList = (List)this.mPermissionCallerMap.get(paramInt);
+      if ((localList != null) && (localList.size() > 0))
+      {
+        Iterator localIterator = localList.iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject = localIterator.next();
+          if (localObject != null) {
+            if ((localObject instanceof QQPermissionCallback))
+            {
+              localObject = (QQPermissionCallback)localObject;
+              ArrayList localArrayList = new ArrayList();
+              int i = 0;
+              while (i < paramArrayOfInt.length)
+              {
+                if (paramArrayOfInt[i] != 0) {
+                  localArrayList.add(paramArrayOfString[i]);
+                }
+                i += 1;
+              }
+              if (localArrayList.size() > 0) {
+                ((QQPermissionCallback)localObject).deny(paramInt, paramArrayOfString, paramArrayOfInt);
+              } else {
+                ((QQPermissionCallback)localObject).grant(paramInt, paramArrayOfString, paramArrayOfInt);
+              }
+            }
+            else
+            {
+              QQPermissionHelper.requestResult(localObject, paramInt, paramArrayOfString, paramArrayOfInt);
+            }
+          }
+        }
+      }
+    } while (localList == null);
+    this.mPermissionCallerMap.remove(paramInt);
+  }
+  
   protected void onRestart()
   {
     if (this.mIsRunInPlugin)
@@ -854,23 +943,23 @@ public class BasePluginActivity
     super.onRestart();
   }
   
-  protected void onResume()
+  public void onResume()
   {
     if (this.mIsRunInPlugin)
     {
       super.onResume();
-      if ((IPluginAdapterProxy.getProxy().isNightMode()) && (this.h.enableNight))
+      if ((IPluginAdapterProxy.getProxy().isNightMode()) && (this.mConfig.enableNight))
       {
-        a(true);
+        setNightMaskVisible(true);
         return;
       }
-      a(false);
+      setNightMaskVisible(false);
       return;
     }
     super.onResume();
   }
   
-  protected void onStart()
+  public void onStart()
   {
     if (this.mIsRunInPlugin)
     {
@@ -880,7 +969,7 @@ public class BasePluginActivity
     super.onStart();
   }
   
-  protected void onStop()
+  public void onStop()
   {
     if (this.mIsRunInPlugin)
     {
@@ -920,7 +1009,7 @@ public class BasePluginActivity
   {
     if (this.mIsRunInPlugin)
     {
-      this.f.overridePendingTransition(paramInt1, paramInt2);
+      this.mActivity.overridePendingTransition(paramInt1, paramInt2);
       return;
     }
     super.overridePendingTransition(paramInt1, paramInt2);
@@ -931,13 +1020,78 @@ public class BasePluginActivity
     PluginInterfaceHelper.getPluginInterface(paramContext, paramOnPluginInterfaceLoadedListener);
   }
   
+  @TargetApi(24)
+  public void requestPermissions(Object paramObject, int paramInt, String... paramVarArgs)
+  {
+    int k = 0;
+    ArrayList localArrayList = new ArrayList();
+    int j = paramVarArgs.length;
+    int i = 0;
+    Object localObject;
+    while (i < j)
+    {
+      localObject = paramVarArgs[i];
+      if ((Build.VERSION.SDK_INT >= 23) && (checkSelfPermission((String)localObject) != 0)) {
+        localArrayList.add(localObject);
+      }
+      i += 1;
+    }
+    if ((localArrayList != null) && (localArrayList.size() > 0))
+    {
+      localObject = (List)this.mPermissionCallerMap.get(paramInt);
+      paramVarArgs = (String[])localObject;
+      if (localObject == null) {
+        paramVarArgs = new ArrayList();
+      }
+      int m = paramVarArgs.size();
+      i = 0;
+      j = k;
+      if (i < m)
+      {
+        localObject = paramVarArgs.get(i);
+        if ((localObject != null) && (localObject == paramObject)) {
+          j = 1;
+        }
+      }
+      else
+      {
+        if (j == 0)
+        {
+          paramVarArgs.add(paramObject);
+          this.mPermissionCallerMap.put(paramInt, paramVarArgs);
+        }
+        if ((!isShadow()) || (this.mOutActivity == null)) {
+          break label232;
+        }
+        this.mOutActivity.requestPermissions((String[])localArrayList.toArray(new String[localArrayList.size()]), paramInt);
+      }
+    }
+    label232:
+    do
+    {
+      return;
+      i += 1;
+      break;
+      requestPermissions((String[])localArrayList.toArray(new String[localArrayList.size()]), paramInt);
+      return;
+      if (!(paramObject instanceof QQPermissionCallback)) {
+        break label292;
+      }
+      paramObject = (QQPermissionCallback)paramObject;
+    } while (getApplicationInfo().targetSdkVersion >= 23);
+    paramObject.grant(paramInt, paramVarArgs, null);
+    return;
+    label292:
+    QQPermissionHelper.doExecuteSuccess(paramObject, paramInt);
+  }
+  
   public void setContentView(int paramInt)
   {
     if (this.mIsRunInPlugin)
     {
       this.mContentView = LayoutInflater.from(this.mContext).inflate(paramInt, null);
       if (!this.mIsTab) {
-        this.f.setContentView(this.mContentView);
+        this.mActivity.setContentView(this.mContentView);
       }
       return;
     }
@@ -950,16 +1104,21 @@ public class BasePluginActivity
     {
       this.mContentView = paramView;
       if (!this.mIsTab) {
-        this.f.setContentView(this.mContentView);
+        this.mActivity.setContentView(this.mContentView);
       }
       return;
     }
     super.setContentView(paramView);
   }
   
-  public void setImmersiveConfig(ImmersiveConfig paramImmersiveConfig)
+  public void setImmersiveConfig(BasePluginActivity.ImmersiveConfig paramImmersiveConfig)
   {
-    this.i = paramImmersiveConfig;
+    this.mImmerConfit = paramImmersiveConfig;
+  }
+  
+  public void setJumpDialog(Dialog paramDialog)
+  {
+    this.jumpDialog = paramDialog;
   }
   
   public void setRequestedOrientation(int paramInt)
@@ -972,7 +1131,21 @@ public class BasePluginActivity
     if (this.mIsRunInPlugin)
     {
       this.mOutActivity.setTheme(paramInt);
-      return;
+      try
+      {
+        if ((this.mContext != null) && (this.mContext.getTheme() != null)) {
+          this.mContext.getTheme().setTo(this.mOutActivity.getTheme());
+        }
+        if (getTheme() != null) {
+          getTheme().setTo(this.mOutActivity.getTheme());
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("plugin_tag", 1, "setTheme Exception:", localException);
+        return;
+      }
     }
     super.setTheme(paramInt);
   }
@@ -981,7 +1154,7 @@ public class BasePluginActivity
   {
     if (this.mIsRunInPlugin)
     {
-      this.f.setTitle(paramInt);
+      this.mActivity.setTitle(paramInt);
       return;
     }
     super.setTitle(paramInt);
@@ -991,7 +1164,7 @@ public class BasePluginActivity
   {
     if (this.mIsRunInPlugin)
     {
-      this.f.setTitle(paramCharSequence);
+      this.mActivity.setTitle(paramCharSequence);
       return;
     }
     super.setTitle(paramCharSequence);
@@ -1025,10 +1198,10 @@ public class BasePluginActivity
       }
       for (;;)
       {
-        if (!(this.f instanceof PluginProxyActivity)) {
+        if (!(this.mActivity instanceof PluginProxyActivity)) {
           break label162;
         }
-        ((PluginProxyActivity)this.f).startActivityForResult(paramIntent, paramInt);
+        ((PluginProxyActivity)this.mActivity).startActivityForResult(paramIntent, paramInt);
         return;
         Object localObject = paramIntent.getComponent();
         bool1 = bool2;
@@ -1037,7 +1210,7 @@ public class BasePluginActivity
         }
         if (this.mOutActivity.getPackageName().equals(((ComponentName)localObject).getPackageName()))
         {
-          localObject = this.f.getPackageManager().queryIntentActivities(paramIntent, 65536);
+          localObject = this.mActivity.getPackageManager().queryIntentActivities(paramIntent, 65536);
           if (localObject != null)
           {
             bool1 = bool2;
@@ -1058,26 +1231,10 @@ public class BasePluginActivity
         paramIntent.putExtra("pluginsdk_IsPluginActivity", true);
       }
       label162:
-      this.f.startActivityForResult(paramIntent, paramInt);
+      this.mActivity.startActivityForResult(paramIntent, paramInt);
       return;
     }
     super.startActivityForResult(paramIntent, paramInt);
-  }
-  
-  public class ImmersiveConfig
-  {
-    public boolean isNeedColor;
-    public boolean isTranslate;
-    public int mStatusColor = 0;
-    public Drawable mStatusDrawable;
-    
-    public ImmersiveConfig() {}
-  }
-  
-  public static class PluginConfig
-  {
-    public boolean enableNight = true;
-    public int titleHeight;
   }
 }
 

@@ -1,34 +1,20 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
-import com.tencent.biz.qqstory.playmode.child.CommentPlayMode;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.widget.Switch;
 
-public class njh
-  extends QQUIEventReceiver
+class njh
+  implements DialogInterface.OnCancelListener
 {
-  public njh(@NonNull CommentPlayMode paramCommentPlayMode)
-  {
-    super(paramCommentPlayMode);
-  }
+  njh(nin paramnin, npo paramnpo, Switch paramSwitch) {}
   
-  public void a(@NonNull CommentPlayMode paramCommentPlayMode, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)) {
-      CommentPlayMode.a(paramCommentPlayMode, paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
-    }
-    SLog.b(this.TAG, "UpdateUserInfoEventReceiver. ", paramUpdateUserInfoEvent);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return GetUserInfoHandler.UpdateUserInfoEvent.class;
+    this.jdField_a_of_type_Nin.a(this.jdField_a_of_type_Npo, this.jdField_a_of_type_ComTencentWidgetSwitch);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     njh
  * JD-Core Version:    0.7.0.1
  */

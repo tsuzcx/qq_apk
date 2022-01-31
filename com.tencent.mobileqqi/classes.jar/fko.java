@@ -1,21 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.RoamInfoListWrapper;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
-public final class fko
-  implements Parcelable.Creator
+public class fko
+  implements Comparator
 {
-  public RoamInfoListWrapper a(Parcel paramParcel)
-  {
-    RoamInfoListWrapper localRoamInfoListWrapper = new RoamInfoListWrapper();
-    localRoamInfoListWrapper.a = paramParcel.readArrayList(ArrayList.class.getClassLoader());
-    return localRoamInfoListWrapper;
-  }
+  public fko(RecentUserProxy paramRecentUserProxy) {}
   
-  public RoamInfoListWrapper[] a(int paramInt)
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
   {
-    return new RoamInfoListWrapper[paramInt];
+    long l1 = Math.max(paramRecentUser1.lastmsgtime, paramRecentUser1.lastmsgdrafttime);
+    long l2 = Math.max(paramRecentUser2.lastmsgtime, paramRecentUser2.lastmsgdrafttime);
+    if (l1 < l2) {
+      return 1;
+    }
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
   }
 }
 

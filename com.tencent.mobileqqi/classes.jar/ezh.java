@@ -1,25 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.voip.VoipDialInterface;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.app.BaseActivity2;
 
 public class ezh
-  implements View.OnClickListener
+  extends Thread
 {
-  public ezh(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  public ezh(BaseActivity2 paramBaseActivity2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.a("1");
-    VoipDialInterfaceActivity.a(this.a, '1');
-    if (VoipDialInterfaceActivity.b(this.a)) {
-      new Thread(new ezi(this)).start();
-    }
+    ezi localezi = new ezi(null);
+    SensorManager localSensorManager = (SensorManager)this.a.getSystemService("sensor");
+    localSensorManager.registerListener(localezi, localSensorManager.getDefaultSensor(1), 0);
+    BaseActivity2.a(localezi);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ezh
  * JD-Core Version:    0.7.0.1
  */

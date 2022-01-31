@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public final class ResponeQueryQQMobileContactsNotBind
   extends JceStruct
 {
-  static ArrayList cache_BindFriendContacts;
-  static ArrayList cache_BindNotFriendContacts;
+  static ArrayList<NotBindContactFriendInfo> cache_BindFriendContacts;
+  static ArrayList<NotBindContactNotFriendInfo> cache_BindNotFriendContacts;
   static byte[] cache_sessionSid = (byte[])new byte[1];
-  public ArrayList BindFriendContacts;
-  public ArrayList BindNotFriendContacts;
+  public ArrayList<NotBindContactFriendInfo> BindFriendContacts;
+  public ArrayList<NotBindContactNotFriendInfo> BindNotFriendContacts;
   public String MobileUniqueNo = "";
   public boolean isChangeDev;
   public long lastUsedFlag = 1L;
@@ -33,12 +33,12 @@ public final class ResponeQueryQQMobileContactsNotBind
   
   public ResponeQueryQQMobileContactsNotBind() {}
   
-  public ResponeQueryQQMobileContactsNotBind(long paramLong1, byte[] paramArrayOfByte, ArrayList paramArrayList1, ArrayList paramArrayList2, String paramString, long paramLong2, long paramLong3, boolean paramBoolean)
+  public ResponeQueryQQMobileContactsNotBind(long paramLong1, byte[] paramArrayOfByte, ArrayList<NotBindContactNotFriendInfo> paramArrayList, ArrayList<NotBindContactFriendInfo> paramArrayList1, String paramString, long paramLong2, long paramLong3, boolean paramBoolean)
   {
     this.nextFlag = paramLong1;
     this.sessionSid = paramArrayOfByte;
-    this.BindNotFriendContacts = paramArrayList1;
-    this.BindFriendContacts = paramArrayList2;
+    this.BindNotFriendContacts = paramArrayList;
+    this.BindFriendContacts = paramArrayList1;
     this.MobileUniqueNo = paramString;
     this.lastUsedFlag = paramLong2;
     this.timeStamp = paramLong3;

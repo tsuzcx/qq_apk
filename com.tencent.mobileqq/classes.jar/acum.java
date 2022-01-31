@@ -1,26 +1,38 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.app.UniformDownload;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.GetFileInfoCallBack;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
 public class acum
-  implements UniformDownloadUtil.GetFileInfoCallBack
+  implements beoy
 {
-  public acum(UniformDownload paramUniformDownload, Bundle paramBundle, String paramString, long paramLong1, long paramLong2) {}
+  public acum(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void a(String paramString, long paramLong)
+  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
   {
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = "nofilename.x";
+    this.a.app.a().a(DiscussionInfoCardActivity.a(this.a), 3000);
+    this.a.app.a().e(DiscussionInfoCardActivity.a(this.a), 3000);
+    alaz.a(this.a.app, "chat_history_confirm_del_msg");
+    paramDialog = this.a.app.getHandler(Conversation.class);
+    paramView = paramDialog.obtainMessage(1017);
+    paramView.obj = DiscussionInfoCardActivity.a(this.a);
+    paramView.arg1 = 3000;
+    paramDialog.sendMessage(paramView);
+    QQToast.a(this.a, 2, this.a.getString(2131690872), 0).a();
+    if (this.a.a != null) {
+      ((TextView)this.a.a.findViewById(2131377938)).setTextColor(Color.parseColor("#cccccc"));
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppUniformDownload.a.runOnUiThread(new acun(this, str, paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acum
  * JD-Core Version:    0.7.0.1
  */

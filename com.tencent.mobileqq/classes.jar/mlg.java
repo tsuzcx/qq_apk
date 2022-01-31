@@ -1,18 +1,37 @@
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class mlg
-  implements Runnable
+class mlg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public mlg(AppInPushNotification paramAppInPushNotification, boolean paramBoolean) {}
+  mlg(mlf parammlf) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    AppInPushNotification.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushAppInPushNotification, this.jdField_a_of_type_Boolean);
+    paramValueAnimator.getAnimatedFraction();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    float f;
+    if (i <= 220)
+    {
+      f = i / 220.0F;
+      mlf.a(this.a).setAlpha(f);
+    }
+    if (i <= 160)
+    {
+      f = i / 100.0F;
+      mlf.a(this.a).setAlpha(f);
+    }
+    if (mlf.a(this.a) != null) {
+      mlf.a(this.a).requestLayout();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mlg
  * JD-Core Version:    0.7.0.1
  */

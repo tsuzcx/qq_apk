@@ -1,45 +1,25 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ObjectAnimator;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
 
-public class agnp
-  implements Animator.AnimatorListener
+class agnp
+  implements yxg
 {
-  public agnp(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ObjectAnimator paramObjectAnimator) {}
+  agnp(agnn paramagnn) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    paramAnimator = (ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget();
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b) {}
-    for (int i = 2130842951;; i = 2130842943)
-    {
-      paramAnimator.setImageResource(i);
-      ((ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget()).setRotation(0.0F);
-      return;
-    }
+    aepi.n = true;
+    this.a.p.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 10000L);
+    StructMsg.ButtonInfo localButtonInfo = this.a.a(paramInt1);
+    aqau.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramString, this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), localButtonInfo);
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Bqq_Crm", "", "Aio_menu", "Clk_menu", 0, 0, this.a.a(), paramInt1 + "", "", "");
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    paramAnimator = (ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget();
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b) {}
-    for (int i = 2130842951;; i = 2130842943)
-    {
-      paramAnimator.setImageResource(i);
-      ((ImageView)this.jdField_a_of_type_AndroidAnimationObjectAnimator.getTarget()).setRotation(0.0F);
-      return;
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agnp
  * JD-Core Version:    0.7.0.1
  */

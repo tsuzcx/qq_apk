@@ -1,26 +1,14 @@
-import com.tencent.mobileqq.util.FaceDrawableImpl;
-import com.tencent.mobileqq.util.FaceDrawableImpl.NewTroopFaceObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.RecentMemberInnerFrame;
 
 public class ajzv
-  implements FaceDrawableImpl.NewTroopFaceObserver
+  extends akit
 {
-  private ajzv(FaceDrawableImpl paramFaceDrawableImpl) {}
+  public CheckBox a;
+  public TextView a;
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if (paramBoolean2) {
-      this.a.a(paramBoolean1, 101, paramString, this.a.a);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.FaceDrawableImpl", 2, "====faceDrawableImpl onUpdateGroupFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + paramString + ",type: " + 101);
-      }
-      return;
-      this.a.a(paramBoolean1, 101, paramString, null);
-    }
-  }
+  private ajzv(RecentMemberInnerFrame paramRecentMemberInnerFrame) {}
 }
 
 

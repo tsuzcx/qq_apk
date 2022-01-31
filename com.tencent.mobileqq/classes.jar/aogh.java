@@ -1,48 +1,14 @@
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowSendTask;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.comment.DanmuItemBean;
+import java.util.ArrayList;
+import java.util.List;
 
-public class aogh
-  implements Runnable
+public abstract interface aogh
 {
-  public aogh(FlowSendTask paramFlowSendTask) {}
-  
-  public void run()
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.j, 2, "FlowSendTask(): isPTV:" + this.a.d + ", mVideoCacheDir:" + this.a.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
-      }
-      RecordManager.a().a().recordSubmit();
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        localUnsatisfiedLinkError.printStackTrace();
-        this.a.k = -6;
-        synchronized (this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a)
-        {
-          this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.set(true);
-          this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.notifyAll();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d(this.a.j, 2, "FlowSendTask(): isPTV:" + this.a.d + ", mVideoCacheDir:" + this.a.jdField_a_of_type_JavaLangString + ", call AVideoCodec.recordSubmit() fail, error = " + localUnsatisfiedLinkError.getMessage());
-          return;
-        }
-      }
-    }
-  }
+  public abstract void a(aogb paramaogb, boolean paramBoolean1, boolean paramBoolean2, int paramInt, ArrayList<DanmuItemBean> paramArrayList, List<Long> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aogh
  * JD-Core Version:    0.7.0.1
  */

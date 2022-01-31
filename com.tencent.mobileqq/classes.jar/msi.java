@@ -1,68 +1,25 @@
-import android.os.Bundle;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
 
-public class msi
-  extends MqqHandler
+class msi
+  extends meu
 {
-  public msi(SubscriptFeedsActivity paramSubscriptFeedsActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  msi(mse parammse) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void b(mey parammey)
   {
-    if (this.a.isFinishing()) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          switch (paramMessage.what)
-          {
-          default: 
-            return;
-          case 1002: 
-            try
-            {
-              paramMessage = TroopBarAssistantManager.a().b(this.a.app);
-              this.a.runOnUiThread(new msj(this, paramMessage));
-              return;
-            }
-            catch (Exception paramMessage) {}
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("SubscriptFeedsActivity", 2, paramMessage.toString());
-        return;
-        this.a.runOnUiThread(new msk(this));
-        return;
-        paramMessage = paramMessage.getData();
-      } while ((paramMessage == null) || (!ReadInJoyHelper.a()));
-      paramMessage = paramMessage.getSerializable("ReadInJoyArticleList");
-    } while ((paramMessage == null) || (!(paramMessage instanceof ArrayList)));
-    if ((!SubscriptFeedsActivity.a(this.a, (ArrayList)paramMessage)) && (QLog.isColorLevel())) {
-      QLog.d("SubscriptFeedsActivity", 2, "onGetRecommendReadInJoyArticleList data save to sp fail");
+    if (parammey.jdField_b_of_type_Boolean) {
+      return;
     }
-    this.a.runOnUiThread(new msl(this, paramMessage));
-    return;
-    this.a.runOnUiThread(new msm(this));
-    return;
-    this.a.runOnUiThread(new msn(this));
-    return;
-    this.a.runOnUiThread(new mso(this));
+    parammey.jdField_b_of_type_Boolean = this.a.a(false, 2);
+    if (parammey.jdField_b_of_type_Boolean) {
+      parammey.jdField_b_of_type_JavaLangString = "AVRegbagResultUI";
+    }
+    QLog.w(this.a.i, 1, "onAVActivityPreBackPressed, BlockSystemBack[" + parammey.jdField_b_of_type_Boolean + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msi
  * JD-Core Version:    0.7.0.1
  */

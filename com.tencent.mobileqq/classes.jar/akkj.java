@@ -1,56 +1,96 @@
-import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.vashealth.SSOHttpUtils;
-import com.tencent.mobileqq.vashealth.SportManager;
-import com.tencent.mobileqq.vashealth.StepAlarmReceiver;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.FriendListHandler.AddBatchPhoneFriendResult;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Iterator;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-public class akkj
-  implements Runnable
+class akkj
+  extends altm
 {
-  public akkj(StepAlarmReceiver paramStepAlarmReceiver) {}
+  akkj(akkd paramakkd) {}
   
-  public void run()
+  public void onAddBatchPhoneFriend(boolean paramBoolean, ArrayList<FriendListHandler.AddBatchPhoneFriendResult> paramArrayList)
   {
-    String str = String.valueOf(SSOHttpUtils.a());
-    if ((!TextUtils.isEmpty(StepAlarmReceiver.jdField_a_of_type_JavaLangString)) && (!str.equals(StepAlarmReceiver.jdField_a_of_type_JavaLangString))) {
-      SSOHttpUtils.jdField_a_of_type_Float = 0.0F;
+    if (paramBoolean) {
+      akkd.c(this.a);
     }
-    Object localObject = SportManager.a();
-    if (((SharedPreferences)localObject).getBoolean("config_ready", false))
+  }
+  
+  protected void onAddFriend(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    ArrayList localArrayList;
+    do
     {
-      this.a.jdField_a_of_type_Long = ((SharedPreferences)localObject).getInt("max_interval", 0);
-      this.a.jdField_a_of_type_Int = ((SharedPreferences)localObject).getInt("max_increment", 0);
-    }
-    StepAlarmReceiver.jdField_a_of_type_JavaLangString = str;
-    try
+      return;
+      localArrayList = (ArrayList)akkd.a(this.a).clone();
+    } while (localArrayList.isEmpty());
+    Iterator localIterator = localArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      localObject = SSOHttpUtils.a();
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        return;
-      }
-      localObject = new JSONObject((String)localObject);
-      int i = ((JSONObject)localObject).getInt(str + "_total");
-      int j = ((JSONObject)localObject).getInt(str + "_init");
-      float f1 = ((JSONObject)localObject).getInt(str + "_offset") + (i - j);
-      float f2 = SSOHttpUtils.jdField_a_of_type_Float;
-      long l1 = NetConnInfoCenter.getServerTimeMillis();
-      long l2 = SSOHttpUtils.jdField_a_of_type_Long;
-      str = ((JSONObject)localObject).toString();
-      QLog.i("StepAlarmReceiver", 1, "receiver long time report max report steps:" + this.a.jdField_a_of_type_Int + ",report interval:" + this.a.jdField_a_of_type_Long);
-      if ((f1 - f2 > this.a.jdField_a_of_type_Int) || (l1 - l2 > this.a.jdField_a_of_type_Long))
+      Object localObject = (avun)localIterator.next();
+      if ((localObject instanceof avui))
       {
-        SSOHttpUtils.a(str);
-        return;
+        localObject = (avui)localObject;
+        int i = ((avui)localObject).a.structMsg.msg.sub_type.get();
+        localObject = ((avui)localObject).a.senderuin;
+        if ((i == 13) && (paramString.equals(localObject))) {
+          localIterator.remove();
+        }
       }
     }
-    catch (Exception localException)
+    akkd.a(this.a, localArrayList);
+    this.a.notifyDataSetChanged();
+  }
+  
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  {
+    if (paramBoolean) {
+      this.a.notifyDataSetChanged();
+    }
+  }
+  
+  public void onSuspiciousGetUnreadNum(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NewFriendMoreSysMsgAdapter", 2, "onSuspiciousGetUnreadNum " + paramBoolean + " " + paramInt1 + " " + paramInt2);
+    }
+    if ((akkd.a(this.a) != null) && (akkd.a(this.a).getVisibility() == 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("health_manager", 2, "long time report Exception:" + localException);
+      if ((paramBoolean) && (paramInt2 > 0)) {
+        akkd.a(this.a).setText(paramInt2 + "");
       }
+    }
+    else {
+      return;
+    }
+    akkd.a(this.a).setText("");
+  }
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  {
+    if ((paramBoolean1) && (bntp.a(paramBundle.getInt("source_id")))) {
+      akkd.c(this.a);
+    }
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.notifyDataSetChanged();
     }
   }
 }

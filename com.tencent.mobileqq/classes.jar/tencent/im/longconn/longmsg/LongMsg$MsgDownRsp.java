@@ -8,11 +8,8 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class LongMsg$MsgDownRsp
-  extends MessageMicro
+  extends MessageMicro<MsgDownRsp>
 {
-  public static final int BYTES_MSG_CONTENT_FIELD_NUMBER = 3;
-  public static final int BYTES_MSG_RESID_FIELD_NUMBER = 2;
-  public static final int UINT32_RESULT_FIELD_NUMBER = 1;
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_msg_content = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_msg_resid = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -27,7 +24,7 @@ public final class LongMsg$MsgDownRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.longconn.longmsg.LongMsg.MsgDownRsp
  * JD-Core Version:    0.7.0.1
  */

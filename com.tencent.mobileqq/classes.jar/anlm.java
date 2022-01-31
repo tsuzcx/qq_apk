@@ -1,49 +1,88 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import dov.com.qq.im.capture.data.ComboLockManager;
-import dov.com.qq.im.capture.data.LockedCategory;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class anlm
-  implements DialogInterface.OnClickListener
+class anlm
+  implements bfoj
 {
-  public anlm(ComboLockManager paramComboLockManager, Context paramContext) {}
+  anlm(anlk paramanlk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager.b(this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager.a.a);
-    this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager.a = null;
-    if (paramInt == 1)
+    if (anlk.a(this.a) != null) {
+      anlk.a(this.a).a(this.a.a(paramString1, 6, paramString2).toString());
+    }
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (anlk.a(this.a) != null)) {
+      anlk.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    }
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    if ((paramDownloadInfo != null) && (anlk.a(this.a) != null)) {
+      anlk.a(this.a).a(this.a.a(paramDownloadInfo.k, paramDownloadInfo.a(), paramDownloadInfo.f, paramDownloadInfo.e, paramString, paramInt1, paramDownloadInfo.j).toString());
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (anlk.a(this.a) != null)) {
+      anlk.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (anlk.a(this.a) != null)) {
+      anlk.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    if ((paramList != null) && (anlk.a(this.a) != null))
     {
-      this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager.c = true;
-      if ((BaseActivity.sTopActivity instanceof SplashActivity))
+      JSONArray localJSONArray = new JSONArray();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        paramDialogInterface = (SplashActivity)BaseActivity.sTopActivity;
-        Intent localIntent = new Intent();
-        localIntent.putExtra("main_tab_id", 8);
-        localIntent.putExtra("fragment_id", 1);
-        localIntent.putExtra("switch_anim", true);
-        paramDialogInterface.b(localIntent);
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+        localJSONArray.put(this.a.a(localDownloadInfo));
       }
+      anlk.a(this.a).a(localJSONArray.toString());
     }
-    else
-    {
-      return;
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (anlk.a(this.a) != null)) {
+      anlk.a(this.a).a(this.a.a(paramDownloadInfo).toString());
     }
-    paramDialogInterface = new Intent(BaseActivity.sTopActivity, SplashActivity.class);
-    paramDialogInterface.putExtra("tab_index", MainFragment.a);
-    paramDialogInterface.putExtra("fragment_id", 1);
-    paramDialogInterface.setFlags(67108864);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    if (anlk.a(this.a) != null) {
+      anlk.a(this.a).a(this.a.a(paramString1, 13, paramString2).toString());
+    }
+  }
+  
+  public void uninstallSucceed(String paramString1, String paramString2)
+  {
+    if (anlk.a(this.a) != null) {
+      anlk.a(this.a).a(this.a.a(paramString1, 9, paramString2).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlm
  * JD-Core Version:    0.7.0.1
  */

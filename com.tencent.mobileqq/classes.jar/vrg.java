@@ -1,73 +1,52 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.eqq.CrmUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
 public class vrg
-  implements BusinessObserver
+  extends umf<vrd, utf>
 {
-  public vrg(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public vrg(vrd paramvrd)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
-    if (paramBoolean)
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
-        paramInt = ((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get();
-        if (paramInt == 0)
-        {
-          paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
-          CrmUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle);
-          this.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount(paramBundle, 0L);
-          this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
-          BusinessCmrTmpChatPie.a(this.a, paramBundle);
-          this.a.b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
-          return;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("BusinessChatPie", 2, "showEqqLbsEnableDialog() get eqq detail ret code error: " + paramInt);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle) {}
-      if (QLog.isColorLevel())
-      {
-        QLog.d("BusinessChatPie", 2, "showEqqLbsEnableDialog() get eqq detail data is null");
-        return;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("BusinessChatPie", 2, "showEqqLbsEnableDialog() get eqq detail isSuccess is null");
-          return;
-        }
-      }
-    }
+    super(paramvrd);
   }
+  
+  public void a(@NonNull vrd paramvrd, @NonNull utf paramutf)
+  {
+    if ((paramutf.jdField_a_of_type_Int == 2) || (!paramutf.jdField_a_of_type_JavaLangString.equals(vrd.a(paramvrd))) || (vrd.a(paramvrd) == null) || (vrd.a(paramvrd).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null)) {
+      wxe.b(this.TAG, "ignore this feed info change event. %s.", paramutf.toString());
+    }
+    vrm localvrm;
+    do
+    {
+      return;
+      wxe.a(this.TAG, "receive feed info change event. %s.", paramutf.toString());
+      localvrm = paramvrd.a();
+      switch (paramutf.b)
+      {
+      default: 
+        return;
+      }
+      if (paramutf.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
+      {
+        vrd.a(paramvrd).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount = paramutf.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
+        vrd.a(paramvrd).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount = paramutf.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount;
+        vrd.a(paramvrd).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount = paramutf.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount;
+      }
+      vrd.a(paramvrd).a(paramutf.c);
+    } while (localvrm == null);
+    localvrm.a(vrd.a(paramvrd), paramutf.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+  }
+  
+  public Class acceptEventClass()
+  {
+    return utf.class;
+  }
+  
+  public void b(@NonNull vrd paramvrd, @NonNull utf paramutf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vrg
  * JD-Core Version:    0.7.0.1
  */

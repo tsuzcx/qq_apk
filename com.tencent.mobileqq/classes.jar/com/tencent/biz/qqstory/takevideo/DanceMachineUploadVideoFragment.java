@@ -1,5 +1,7 @@
 package com.tencent.biz.qqstory.takevideo;
 
+import alud;
+import alwx;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -13,31 +15,29 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.TextView;
+import bayf;
+import bdpz;
+import bhsl;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
-import oco;
-import ocp;
-import ocq;
+import wxp;
+import wxq;
 
 public class DanceMachineUploadVideoFragment
   extends PublicBaseFragment
   implements Handler.Callback
 {
-  private static MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
+  private static bhsl jdField_a_of_type_Bhsl;
   private int jdField_a_of_type_Int = -1;
   private long jdField_a_of_type_Long = -1L;
+  private alwx jdField_a_of_type_Alwx = new wxp(this);
   protected Dialog a;
   public BaseActivity a;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new oco(this);
   public QQAppInterface a;
   private MessageForShortVideo jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
   private String jdField_a_of_type_JavaLangString;
@@ -55,7 +55,7 @@ public class DanceMachineUploadVideoFragment
     //   11: invokevirtual 60	com/tencent/mobileqq/app/QQAppInterface:getHwEngine	()Lcom/tencent/mobileqq/highway/HwEngine;
     //   14: invokevirtual 65	com/tencent/mobileqq/highway/HwEngine:preConnect	()V
     //   17: aload_1
-    //   18: invokestatic 71	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/lang/String;)Z
+    //   18: invokestatic 71	bdhb:b	(Ljava/lang/String;)Z
     //   21: ifne +21 -> 42
     //   24: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   27: ifeq +11 -> 38
@@ -149,10 +149,10 @@ public class DanceMachineUploadVideoFragment
     //   211: aload 8
     //   213: bipush 9
     //   215: invokevirtual 148	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
-    //   218: astore 9
-    //   220: aload 9
+    //   218: astore 11
+    //   220: aload 11
     //   222: ifnull +12 -> 234
-    //   225: aload 9
+    //   225: aload 11
     //   227: invokestatic 154	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
     //   230: invokevirtual 157	java/lang/Long:longValue	()J
     //   233: lstore_2
@@ -171,7 +171,7 @@ public class DanceMachineUploadVideoFragment
     //   259: invokespecial 122	java/lang/StringBuilder:<init>	()V
     //   262: ldc 161
     //   264: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   267: aload 9
+    //   267: aload 11
     //   269: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   272: ldc 163
     //   274: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -255,7 +255,7 @@ public class DanceMachineUploadVideoFragment
     //   441: invokevirtual 178	android/media/MediaMetadataRetriever:release	()V
     //   444: iconst_m1
     //   445: ireturn
-    //   446: astore 11
+    //   446: astore 9
     //   448: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   451: ifeq +31 -> 482
     //   454: ldc 79
@@ -265,10 +265,10 @@ public class DanceMachineUploadVideoFragment
     //   461: invokespecial 122	java/lang/StringBuilder:<init>	()V
     //   464: ldc 186
     //   466: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   469: aload 9
+    //   469: aload 11
     //   471: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   474: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   477: aload 11
+    //   477: aload 9
     //   479: invokestatic 189	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   482: lconst_0
     //   483: lstore_2
@@ -296,15 +296,15 @@ public class DanceMachineUploadVideoFragment
     //   528: athrow
     //   529: iconst_2
     //   530: iconst_2
-    //   531: invokestatic 195	com/tencent/biz/qqstory/takevideo/publish/PublishFileManager:a	(I)Ljava/lang/String;
+    //   531: invokestatic 195	xlr:a	(I)Ljava/lang/String;
     //   534: ldc 197
-    //   536: invokestatic 200	com/tencent/biz/qqstory/takevideo/publish/PublishFileManager:a	(ILjava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   536: invokestatic 200	xlr:a	(ILjava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   539: astore 13
     //   541: aload 11
     //   543: getstatic 206	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   546: bipush 100
     //   548: aload 13
-    //   550: invokestatic 211	com/tencent/biz/qqstory/utils/BitmapUtils:a	(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap$CompressFormat;ILjava/lang/String;)Z
+    //   550: invokestatic 211	xqw:a	(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap$CompressFormat;ILjava/lang/String;)Z
     //   553: istore 6
     //   555: aload 11
     //   557: invokevirtual 216	android/graphics/Bitmap:recycle	()V
@@ -401,7 +401,7 @@ public class DanceMachineUploadVideoFragment
     //   764: astore 9
     //   766: iconst_0
     //   767: iconst_2
-    //   768: invokestatic 239	com/tencent/mobileqq/shortvideo/ShortVideoBusiManager:a	(II)Lcom/tencent/mobileqq/shortvideo/ShortVideoReq;
+    //   768: invokestatic 239	azdd:a	(II)Lazdx;
     //   771: astore 7
     //   773: new 241	android/content/Intent
     //   776: dup
@@ -461,35 +461,35 @@ public class DanceMachineUploadVideoFragment
     //   892: pop
     //   893: aload 8
     //   895: aload 7
-    //   897: invokestatic 284	com/tencent/mobileqq/shortvideo/ShortVideoBusiManager:a	(Ljava/lang/Object;Lcom/tencent/mobileqq/shortvideo/ShortVideoReq;)Lcom/tencent/mobileqq/shortvideo/ShortVideoUploadInfo;
+    //   897: invokestatic 284	azdd:a	(Ljava/lang/Object;Lazdx;)Lazen;
     //   900: astore_1
     //   901: aload_1
     //   902: iconst_0
-    //   903: putfield 287	com/tencent/mobileqq/shortvideo/ShortVideoUploadInfo:jdField_a_of_type_Boolean	Z
+    //   903: putfield 287	azen:jdField_a_of_type_Boolean	Z
     //   906: aload_1
     //   907: iconst_1
-    //   908: putfield 290	com/tencent/mobileqq/shortvideo/ShortVideoUploadInfo:f	Z
+    //   908: putfield 290	azen:f	Z
     //   911: aload_0
-    //   912: new 292	com/tencent/mobileqq/shortvideo/AioShortVideoOperator
+    //   912: new 292	azcn
     //   915: dup
     //   916: aload_0
     //   917: getfield 54	com/tencent/biz/qqstory/takevideo/DanceMachineUploadVideoFragment:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   920: invokespecial 295	com/tencent/mobileqq/shortvideo/AioShortVideoOperator:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   920: invokespecial 295	azcn:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
     //   923: aload_1
-    //   924: invokevirtual 298	com/tencent/mobileqq/shortvideo/AioShortVideoOperator:a	(Lcom/tencent/mobileqq/shortvideo/ShortVideoUploadInfo;)Lcom/tencent/mobileqq/data/MessageRecord;
+    //   924: invokevirtual 298	azcn:a	(Lazen;)Lcom/tencent/mobileqq/data/MessageRecord;
     //   927: checkcast 300	com/tencent/mobileqq/data/MessageForShortVideo
     //   930: putfield 302	com/tencent/biz/qqstory/takevideo/DanceMachineUploadVideoFragment:jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo	Lcom/tencent/mobileqq/data/MessageForShortVideo;
     //   933: aload_1
     //   934: aload_0
     //   935: getfield 302	com/tencent/biz/qqstory/takevideo/DanceMachineUploadVideoFragment:jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo	Lcom/tencent/mobileqq/data/MessageForShortVideo;
-    //   938: putfield 305	com/tencent/mobileqq/shortvideo/ShortVideoUploadInfo:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   938: putfield 305	azen:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   941: aload 7
     //   943: aload_1
-    //   944: invokevirtual 310	com/tencent/mobileqq/shortvideo/ShortVideoReq:a	(Lcom/tencent/mobileqq/shortvideo/ShortVideoUploadInfo;)V
+    //   944: invokevirtual 310	azdx:a	(Lazen;)V
     //   947: aload 7
     //   949: aload_0
     //   950: getfield 54	com/tencent/biz/qqstory/takevideo/DanceMachineUploadVideoFragment:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   953: invokestatic 313	com/tencent/mobileqq/shortvideo/ShortVideoBusiManager:a	(Lcom/tencent/mobileqq/shortvideo/ShortVideoReq;Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   953: invokestatic 313	azdd:a	(Lazdx;Lcom/tencent/mobileqq/app/QQAppInterface;)V
     //   956: iconst_0
     //   957: ireturn
     //   958: astore 8
@@ -586,7 +586,8 @@ public class DanceMachineUploadVideoFragment
     //   979	1	8	localObject7	Object
     //   1006	3	8	localIOException6	java.io.IOException
     //   1023	82	8	localObject8	Object
-    //   106	364	9	str1	String
+    //   106	267	9	str1	String
+    //   446	32	9	localNumberFormatException	java.lang.NumberFormatException
     //   492	14	9	localOutOfMemoryError	java.lang.OutOfMemoryError
     //   750	218	9	localObject9	Object
     //   972	14	9	localIOException7	java.io.IOException
@@ -599,10 +600,8 @@ public class DanceMachineUploadVideoFragment
     //   351	477	10	localObject12	Object
     //   1080	1	10	localFileNotFoundException2	java.io.FileNotFoundException
     //   1096	1	10	localFileNotFoundException3	java.io.FileNotFoundException
-    //   297	8	11	localBitmap1	android.graphics.Bitmap
-    //   446	32	11	localNumberFormatException	java.lang.NumberFormatException
-    //   516	337	11	localBitmap2	android.graphics.Bitmap
-    //   975	7	12	localObject13	Object
+    //   218	635	11	localObject13	Object
+    //   975	7	12	localObject14	Object
     //   539	328	13	str3	String
     // Exception table:
     //   from	to	target	type
@@ -635,39 +634,7 @@ public class DanceMachineUploadVideoFragment
     //   108	148	1096	java/io/FileNotFoundException
   }
   
-  protected void a(String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidAppDialog == null)
-    {
-      this.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131624516);
-      this.jdField_a_of_type_AndroidAppDialog.setContentView(2130968870);
-      this.jdField_a_of_type_AndroidAppDialog.setOnKeyListener(new ocq(this));
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindowManager().getDefaultDisplay();
-      WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppDialog.getWindow().getAttributes();
-      localLayoutParams.width = ((Display)localObject).getWidth();
-      localLayoutParams.height = ((Display)localObject).getHeight();
-      this.jdField_a_of_type_AndroidAppDialog.getWindow().setAttributes(localLayoutParams);
-      this.jdField_a_of_type_AndroidAppDialog.show();
-    }
-    Object localObject = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363399);
-    if (TextUtils.isEmpty(paramString)) {
-      ((TextView)localObject).setText(2131434576);
-    }
-    for (;;)
-    {
-      if (!this.jdField_a_of_type_AndroidAppDialog.isShowing())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("UploadDanceMachineVideo", 2, "showProgressDialog");
-        }
-        this.jdField_a_of_type_AndroidAppDialog.show();
-      }
-      return;
-      ((TextView)localObject).setText(paramString);
-    }
-  }
-  
-  public void b()
+  public void a()
   {
     try
     {
@@ -687,12 +654,39 @@ public class DanceMachineUploadVideoFragment
     }
   }
   
-  public boolean b()
+  protected void a(String paramString)
   {
-    return false;
+    if (this.jdField_a_of_type_AndroidAppDialog == null)
+    {
+      this.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131755801);
+      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131558965);
+      this.jdField_a_of_type_AndroidAppDialog.setOnKeyListener(new wxq(this));
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindowManager().getDefaultDisplay();
+      WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppDialog.getWindow().getAttributes();
+      localLayoutParams.width = ((Display)localObject).getWidth();
+      localLayoutParams.height = ((Display)localObject).getHeight();
+      this.jdField_a_of_type_AndroidAppDialog.getWindow().setAttributes(localLayoutParams);
+      this.jdField_a_of_type_AndroidAppDialog.show();
+    }
+    Object localObject = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371894);
+    if (TextUtils.isEmpty(paramString)) {
+      ((TextView)localObject).setText(2131719784);
+    }
+    for (;;)
+    {
+      if (!this.jdField_a_of_type_AndroidAppDialog.isShowing())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("UploadDanceMachineVideo", 2, "showProgressDialog");
+        }
+        this.jdField_a_of_type_AndroidAppDialog.show();
+      }
+      return;
+      ((TextView)localObject).setText(paramString);
+    }
   }
   
-  public boolean e()
+  public boolean a()
   {
     boolean bool1;
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) {
@@ -707,15 +701,15 @@ public class DanceMachineUploadVideoFragment
         do
         {
           return bool1;
-          IHttpCommunicatorListener localIHttpCommunicatorListener = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-          if ((localIHttpCommunicatorListener == null) || (!(localIHttpCommunicatorListener instanceof ShortVideoUploadProcessor))) {
+          bdpz localbdpz = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+          if ((localbdpz == null) || (!(localbdpz instanceof ShortVideoUploadProcessor))) {
             return false;
           }
-          bool2 = ((ShortVideoUploadProcessor)localIHttpCommunicatorListener).b();
+          bool2 = ((ShortVideoUploadProcessor)localbdpz).d();
           i = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus;
           bool1 = true;
         } while ((!bool2) && (i != 1002) && (i != 1001));
-        bool2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+        bool2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
         bool1 = bool2;
       } while (bool2);
       bool1 = bool2;
@@ -731,32 +725,37 @@ public class DanceMachineUploadVideoFragment
     default: 
       return false;
     case -2: 
-      a("正在上传");
+      a(alud.a(2131703107));
       return false;
     }
     if (QLog.isColorLevel()) {
       QLog.d("UploadDanceMachineVideo", 2, "upload time out");
     }
     this.jdField_a_of_type_Long = -1L;
-    b();
-    e();
+    a();
+    a();
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(2);
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
     this.jdField_a_of_type_Boolean = false;
     return false;
   }
   
+  public boolean needImmersive()
+  {
+    return false;
+  }
+  
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(this);
+    jdField_a_of_type_Bhsl = new bhsl(this);
     paramBundle = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
     this.jdField_a_of_type_JavaLangString = paramBundle.getExtras().getString("upload_video_path");
     this.jdField_a_of_type_Int = paramBundle.getExtras().getInt("share_method", -1);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.addObserver(this.jdField_a_of_type_Alwx);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      ThreadManager.executeOnSubThread(new ocp(this));
+      ThreadManager.executeOnSubThread(new DanceMachineUploadVideoFragment.2(this));
       return;
     }
     if (QLog.isColorLevel()) {
@@ -782,15 +781,15 @@ public class DanceMachineUploadVideoFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
-    if (jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler != null) {
-      jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.removeObserver(this.jdField_a_of_type_Alwx);
+    if (jdField_a_of_type_Bhsl != null) {
+      jdField_a_of_type_Bhsl.removeCallbacksAndMessages(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,15 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import com.tencent.biz.eqq.EnterpriseDetailActivity;
 
 public class bia
-  implements GLSurfaceView.EGLContextFactory
+  implements Runnable
 {
-  private static int a = 12440;
+  public bia(EnterpriseDetailActivity paramEnterpriseDetailActivity, int paramInt) {}
   
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public void run()
   {
-    try
-    {
-      int i = a;
-      paramEGL10 = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
-      return paramEGL10;
+    if (this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity.jdField_a_of_type_Int > 0) {
+      EnterpriseDetailActivity.a(this.jdField_a_of_type_ComTencentBizEqqEnterpriseDetailActivity, this.jdField_a_of_type_Int);
     }
-    catch (Exception paramEGL10) {}
-    return null;
-  }
-  
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-  {
-    paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext);
   }
 }
 

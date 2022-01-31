@@ -1,19 +1,22 @@
-import java.util.HashSet;
-
-class aigz
+public class aigz
 {
   public String a;
-  public HashSet a;
-  public String b;
   
-  private aigz(aigy paramaigy)
+  public aigz(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    this.a = paramString;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("keyword = ").append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aigz
  * JD-Core Version:    0.7.0.1
  */

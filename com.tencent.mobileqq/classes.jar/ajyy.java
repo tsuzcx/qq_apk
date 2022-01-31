@@ -1,15 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
 
-public final class ajyy
-  implements DownloadParams.DecodeHandler
+public class ajyy
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    return URLDrawableDecodeHandler.a(paramBitmap);
-  }
+  public ImageView a;
+  public TextView a;
+  public String a;
+  boolean jdField_a_of_type_Boolean;
+  
+  ajyy(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
 }
 
 

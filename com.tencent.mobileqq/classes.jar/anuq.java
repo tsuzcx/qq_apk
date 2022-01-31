@@ -1,18 +1,28 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class anuq
-  implements Runnable
+public class anuq
+  implements azhn
 {
-  anuq(anup paramanup) {}
+  public anuq(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public void run()
+  public void a(Exception paramException)
   {
-    this.a.a.av_();
+    if (QLog.isColorLevel()) {
+      QLog.i("DynamicAvatarRecordActivity", 2, "[onCameraException]", paramException);
+    }
+  }
+  
+  public void a(RuntimeException paramRuntimeException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("DynamicAvatarRecordActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anuq
  * JD-Core Version:    0.7.0.1
  */

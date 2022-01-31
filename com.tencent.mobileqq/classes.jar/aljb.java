@@ -1,30 +1,25 @@
-import com.tencent.open.appcommon.CallBackEvent;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.WebViewDownloadListener;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-public class aljb
-  implements Runnable
+class aljb
+  implements Comparator<ApolloActionData>
 {
-  public aljb(WebViewDownloadListener paramWebViewDownloadListener, WebView paramWebView, String paramString) {}
+  aljb(aliw paramaliw) {}
   
-  public void run()
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (this.jdField_a_of_type_JavaLangString != null) && (CallBackEvent.a().a())) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
-      return;
+    if (paramApolloActionData2.version == paramApolloActionData1.version) {
+      return 0;
     }
-    catch (Exception localException)
-    {
-      LogUtility.a(WebViewDownloadListener.jdField_a_of_type_JavaLangString, "doJsCallBack >>> ", localException);
+    if (paramApolloActionData2.version > paramApolloActionData1.version) {
+      return 1;
     }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aljb
  * JD-Core Version:    0.7.0.1
  */

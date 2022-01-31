@@ -1,29 +1,53 @@
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabStoryVideoPreloader.OnPreloaderListener;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-public class nex
-  implements MsgTabStoryVideoPreloader.OnPreloaderListener
+class nex
+  implements BusinessObserver
 {
-  private long jdField_a_of_type_Long;
+  nex(nev paramnev) {}
   
-  public nex(MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate) {}
-  
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Long != 0L) {
-      StoryReportor.b("msgtab", "preload_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
+    if (this.a.a) {
+      return;
     }
+    if ((!paramBoolean) || (paramBundle == null))
+    {
+      nev.a(this.a);
+      return;
+    }
+    do
+    {
+      oidb_sso.OIDBSSOPkg localOIDBSSOPkg;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+        localOIDBSSOPkg.mergeFrom(paramBundle);
+        if ((localOIDBSSOPkg == null) || (!localOIDBSSOPkg.uint32_result.has()) || (localOIDBSSOPkg.uint32_result.get() != 0) || (!localOIDBSSOPkg.bytes_bodybuffer.has()) || (localOIDBSSOPkg.bytes_bodybuffer.get() == null))
+        {
+          nev.a(this.a);
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+        nev.a(this.a);
+        return;
+      }
+      paramBundle = nev.b(this.a, localOIDBSSOPkg);
+    } while ((paramBundle == null) || (paramBundle.size() <= 0));
+    nev.a(this.a, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nex
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ import java.util.Map;
 public final class cell_lbs
   extends JceStruct
 {
-  static Map cache_extendinfo;
+  static Map<String, String> cache_extendinfo;
   static s_gps cache_gps = new s_gps();
-  public Map extendinfo;
+  public Map<String, String> extendinfo;
   public s_gps gps;
   public String location = "";
   
@@ -23,7 +23,7 @@ public final class cell_lbs
   
   public cell_lbs() {}
   
-  public cell_lbs(s_gps params_gps, String paramString, Map paramMap)
+  public cell_lbs(s_gps params_gps, String paramString, Map<String, String> paramMap)
   {
     this.gps = params_gps;
     this.location = paramString;
@@ -52,7 +52,7 @@ public final class cell_lbs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_lbs
  * JD-Core Version:    0.7.0.1
  */

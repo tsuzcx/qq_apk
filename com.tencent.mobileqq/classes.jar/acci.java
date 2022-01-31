@@ -1,43 +1,55 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.utils.QQUtils;
-import java.util.HashMap;
-import java.util.Map;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
 
-class acci
-  implements Runnable
+public class acci
+  implements View.OnClickListener
 {
-  acci(acbg paramacbg, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public acci(AddFriendVerifyActivity paramAddFriendVerifyActivity, StringBuffer paramStringBuffer, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Bitmap localBitmap = QQUtils.a(this.jdField_a_of_type_JavaLangString, this.b, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-    Bundle localBundle = new Bundle();
-    if (localBitmap != null)
+    paramView = this.jdField_a_of_type_JavaLangStringBuffer.toString();
+    int i = 0;
+    String str;
+    if (i < AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).size())
     {
-      Object localObject = new HashMap();
-      ((Map)localObject).put("starHomeUrl", this.c);
-      ((Map)localObject).put("nickname", this.d);
-      ((Map)localObject).put("starId", this.b);
-      localObject = QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sid", (Map)localObject);
-      QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Intent)localObject, this.d, localBitmap);
-      localBundle.putInt("ret", 0);
+      str = ((EditText)AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).get(i)).getText().toString().trim();
+      if (!"".equals(str)) {}
     }
-    for (;;)
+    for (i = 1;; i = 0)
     {
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      localBundle.putInt("ret", -4);
+      if (i != 0) {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131690106), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getTitleBarHeight());
+      }
+      for (;;)
+      {
+        azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X80077B4", "0X80077B4", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), "", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("AddFriendVerifyActivity", 2, "reportClickEvent action: 0X80077B4  sourceId = " + this.jdField_a_of_type_Int + " subSourceId = " + this.b);
+        }
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.c)) {
+          azqs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(this.jdField_a_of_type_Int, this.c);
+        return;
+        paramView = paramView.replaceFirst("\\$\\{answer\\}", Matcher.quoteReplacement(str));
+        i += 1;
+        break;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(paramView, null, "");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acci
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity.8.1.1;
 
 public class aceg
-  extends EmoticonPackageDownloadListener
+  implements DialogInterface.OnClickListener
 {
-  public aceg(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public aceg(ArkFullScreenAppActivity.8.1.1 param1) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramEmoticonPackage == null) || (TextUtils.isEmpty(paramEmoticonPackage.epId))) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonMainPanel", 2, "onPackageEnd resultCode = " + paramInt + ",ep = " + paramEmoticonPackage);
-      }
-    } while (this.a.m);
-    ThreadManager.getUIHandler().post(new aceh(this, paramEmoticonPackage, paramInt));
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aceg
  * JD-Core Version:    0.7.0.1
  */

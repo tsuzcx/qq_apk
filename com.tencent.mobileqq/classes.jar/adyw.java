@@ -1,27 +1,24 @@
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController;
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayer;
+import android.content.Context;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class adyw
-  implements Runnable
+  implements View.OnClickListener
 {
-  public adyw(LebaFeedsVideoPlayController paramLebaFeedsVideoPlayController, int paramInt) {}
+  public adyw(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController) != null) {
-      LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).setVisibility(8);
-    }
-    if ((LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController) != null) && (LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController) != null)) {
-      LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController, LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).c());
-    }
-    if ((LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController) != null) && (this.jdField_a_of_type_Int != 3))
+    this.a.b(1);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230721);
+    if (this.a.a().booleanValue())
     {
-      LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).setVisibility(0);
-      LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).removeMessages(11);
-      LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).sendEmptyMessageDelayed(11, 3000L);
+      this.a.b();
+      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
     }
   }
 }

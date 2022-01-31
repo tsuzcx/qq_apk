@@ -1,30 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BaseActivity;
-import cooperation.qqdataline.QQProxyForDataline;
-import cooperation.qqdataline.ipc.DatalineRemoteManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
 
-public class amom
-  implements Runnable
+class amom
+  implements View.OnClickListener
 {
-  public amom(DatalineRemoteManager paramDatalineRemoteManager) {}
+  amom(amol paramamol, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (BaseActivity.sTopActivity == null) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("string_from", true);
-    localBundle.putBoolean("string_uin", false);
-    localBundle.putLong("device_din", 0L);
-    localBundle.putInt("sTitleID", 0);
-    QQProxyForDataline.a(BaseActivity.sTopActivity, localBundle, "com.qqdataline.activity.LiteWifiphotoActivity");
-    BaseActivity.sTopActivity.overridePendingTransition(2131034134, 0);
+    paramView = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString), 120);
+    paramView.a();
+    vod.a(this.jdField_a_of_type_Amol.a, paramView.a(), null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amom
  * JD-Core Version:    0.7.0.1
  */

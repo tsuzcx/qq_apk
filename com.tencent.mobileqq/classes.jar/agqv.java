@@ -1,47 +1,24 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.profile.view.PhotoViewForShopping;
-import com.tencent.mobileqq.profile.view.VipScaledViewPager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agqv
-  implements ViewPager.OnPageChangeListener
+class agqv
+  implements DialogInterface.OnClickListener
 {
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  agqv(agqq paramagqq, boolean paramBoolean, bemp parambemp) {}
   
-  public agqv(PhotoViewForShopping paramPhotoViewForShopping) {}
-  
-  public void onPageScrollStateChanged(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.b();
-      this.jdField_a_of_type_Boolean = true;
-    }
-    if (paramInt == 2) {
-      this.b = true;
-    }
-    if (paramInt == 0)
-    {
-      if (this.b)
-      {
-        this.b = false;
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
-        this.jdField_a_of_type_Boolean = false;
-      }
+    this.jdField_a_of_type_Agqq.ab = true;
+    agqq.d(this.jdField_a_of_type_Agqq, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Agqq.aa = true;
+    if ((this.jdField_a_of_type_Bemp.a()) && (!this.jdField_a_of_type_Bemp.b())) {
+      azqs.b(this.jdField_a_of_type_Agqq.a, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
     }
   }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqv
  * JD-Core Version:    0.7.0.1
  */

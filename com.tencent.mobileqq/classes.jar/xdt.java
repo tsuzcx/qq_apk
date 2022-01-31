@@ -1,27 +1,33 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.OnSingleDownloadCallback;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class xdt
-  implements PreloadImgManager.OnSingleDownloadCallback
+class xdt
+  extends AnimatorListenerAdapter
 {
-  public xdt(QzoneHbFragment paramQzoneHbFragment) {}
+  xdt(xdr paramxdr) {}
   
-  public void a() {}
-  
-  public void a(Object paramObject)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if ((paramObject instanceof Bitmap))
-    {
-      paramObject = QzoneHbFragment.a(this.a).obtainMessage();
-      paramObject.what = 102;
-      QzoneHbFragment.a(this.a).sendMessage(paramObject);
-    }
+    wxe.b("FaceLayer", "scaleAnimator cancel!");
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    wxe.b("FaceLayer", "scaleAnimator end!");
+    this.a.p = 1.0F;
+    this.a.c = false;
+    this.a.b.g();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    wxe.b("FaceLayer", "scaleAnimator start!");
+    this.a.c = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xdt
  * JD-Core Version:    0.7.0.1
  */

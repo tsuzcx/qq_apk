@@ -1,79 +1,69 @@
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.statistics.GdtImpressionReporter;
-import com.tencent.gdtad.views.video.GdtVideoData;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerItem;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.ContentBannerItem;
 
 public class qnh
+  extends qnf
 {
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long = -1L;
+  public String f;
   
   public qnh(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramInt);
   }
   
-  private void c(GdtVideoData paramGdtVideoData, long paramLong)
+  public static qnf b(oidb_cmd0xbc9.BannerItem paramBannerItem)
   {
-    if (paramGdtVideoData == null)
-    {
-      GdtLog.d("GdtVideoStatistics", "return data == null error");
-      return;
+    if (!paramBannerItem.msg_article_content_item.has()) {
+      return null;
     }
-    if ((this.jdField_a_of_type_Long == -1L) || (paramLong == 0L))
+    oidb_cmd0xbc9.ContentBannerItem localContentBannerItem = paramBannerItem.msg_article_content_item;
+    if (paramBannerItem.uint32_banner_type.has()) {}
+    for (qnh localqnh = new qnh(paramBannerItem.uint32_banner_type.get());; localqnh = new qnh(4))
     {
-      GdtLog.d("GdtVideoStatistics", "return startPositionMillis =-1");
-      return;
-    }
-    if (this.jdField_a_of_type_Long > paramLong)
-    {
-      GdtLog.d("GdtVideoStatistics", "startPositionMillis > currentPositionMillis reset startPositionMillis = 0");
-      this.jdField_a_of_type_Long = 0L;
-    }
-    long l = this.jdField_a_of_type_Long;
-    if (paramLong == paramGdtVideoData.getDurationMillis()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      String str = GdtImpressionReporter.a(l, paramLong, bool, this.jdField_a_of_type_Int);
-      GdtLog.b("GdtVideoStatistics", "report start:" + this.jdField_a_of_type_Long + " end:" + paramLong);
-      GdtImpressionReporter.a(paramGdtVideoData.getAd(), str);
-      this.jdField_a_of_type_Long = -1L;
-      return;
+      if (localContentBannerItem.bytes_image_url.has()) {
+        localqnh.c = localContentBannerItem.bytes_image_url.get().toStringUtf8();
+      }
+      if (localContentBannerItem.bytes_link_url.has()) {
+        localqnh.f = localContentBannerItem.bytes_link_url.get().toStringUtf8();
+      }
+      if (localContentBannerItem.bytes_rowkey.has()) {
+        localqnh.e = localContentBannerItem.bytes_rowkey.get().toStringUtf8();
+      }
+      a(localqnh, paramBannerItem);
+      a(paramBannerItem, localqnh);
+      return localqnh;
     }
   }
   
-  public void a(GdtVideoData paramGdtVideoData)
+  public oidb_cmd0xbc9.BannerItem a()
   {
-    GdtLog.b("GdtVideoStatistics", "onError");
-    c(paramGdtVideoData, -1L);
+    oidb_cmd0xbc9.BannerItem localBannerItem = super.a();
+    oidb_cmd0xbc9.ContentBannerItem localContentBannerItem = new oidb_cmd0xbc9.ContentBannerItem();
+    if (!TextUtils.isEmpty(this.c)) {
+      localContentBannerItem.bytes_image_url.set(ByteStringMicro.copyFromUtf8(this.c));
+    }
+    if (!TextUtils.isEmpty(this.f)) {
+      localContentBannerItem.bytes_link_url.set(ByteStringMicro.copyFromUtf8(this.f));
+    }
+    if (!TextUtils.isEmpty(this.e)) {
+      localContentBannerItem.bytes_rowkey.set(ByteStringMicro.copyFromUtf8(this.e));
+    }
+    localBannerItem.msg_article_content_item.set(localContentBannerItem);
+    return localBannerItem;
   }
   
-  public void a(GdtVideoData paramGdtVideoData, long paramLong)
+  public String toString()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    GdtLog.b("GdtVideoStatistics", "onStarted start:" + this.jdField_a_of_type_Long);
-  }
-  
-  public void b(GdtVideoData paramGdtVideoData)
-  {
-    GdtLog.b("GdtVideoStatistics", "onCompleted start:" + this.jdField_a_of_type_Long);
-    if (paramGdtVideoData == null) {}
-    do
-    {
-      return;
-      c(paramGdtVideoData, paramGdtVideoData.getDurationMillis());
-    } while (!paramGdtVideoData.isLoop());
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  public void b(GdtVideoData paramGdtVideoData, long paramLong)
-  {
-    GdtLog.b("GdtVideoStatistics", "onStopped start:" + this.jdField_a_of_type_Long + " end:" + paramLong);
-    c(paramGdtVideoData, paramLong);
+    return " jump: " + this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qnh
  * JD-Core Version:    0.7.0.1
  */

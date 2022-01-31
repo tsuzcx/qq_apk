@@ -2,7 +2,6 @@ package com.tencent.component.network.module.report;
 
 import android.text.TextUtils;
 import android.util.Log;
-import com.squareup.okhttp.Response;
 import com.tencent.component.network.downloader.DownloadReport;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.DownloadResult.Content;
@@ -23,6 +22,7 @@ import java.util.Iterator;
 import java.util.List;
 import javax.net.ssl.SSLHandshakeException;
 import javax.net.ssl.SSLPeerUnverifiedException;
+import okhttp3.Response;
 import org.apache.http.Header;
 import org.apache.http.HeaderIterator;
 import org.apache.http.HttpEntity;
@@ -157,7 +157,7 @@ public class ImageDownloadReporter
         }
         catch (NumberFormatException paramResponse)
         {
-          QDLog.c("ImageDownload", "getRetCodeFrom", paramResponse);
+          QDLog.w("ImageDownload", "getRetCodeFrom", paramResponse);
         }
         paramHttpResponse = paramHttpResponse.headerIterator("Retcode");
         break;
@@ -183,7 +183,7 @@ public class ImageDownloadReporter
         }
         catch (NumberFormatException paramResponse)
         {
-          QDLog.c("ImageDownload", "getRetCodeFrom", paramResponse);
+          QDLog.w("ImageDownload", "getRetCodeFrom", paramResponse);
         }
       }
     }
@@ -194,159 +194,157 @@ public class ImageDownloadReporter
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 12
+    //   1: astore 11
     //   3: aconst_null
-    //   4: astore 11
-    //   6: aconst_null
-    //   7: astore 10
-    //   9: aload 10
-    //   11: astore 9
-    //   13: aload_0
-    //   14: ifnull +25 -> 39
-    //   17: aload 10
-    //   19: astore 9
-    //   21: aload_0
-    //   22: invokevirtual 168	java/io/File:exists	()Z
-    //   25: ifeq +14 -> 39
-    //   28: aload_0
-    //   29: invokevirtual 171	java/io/File:isFile	()Z
-    //   32: ifne +10 -> 42
-    //   35: aload 10
-    //   37: astore 9
-    //   39: aload 9
-    //   41: areturn
-    //   42: aload_0
-    //   43: invokevirtual 175	java/io/File:length	()J
-    //   46: lstore 6
+    //   4: astore 10
+    //   6: aload 10
+    //   8: astore 9
+    //   10: aload_0
+    //   11: ifnull +25 -> 36
+    //   14: aload 10
+    //   16: astore 9
+    //   18: aload_0
+    //   19: invokevirtual 168	java/io/File:exists	()Z
+    //   22: ifeq +14 -> 36
+    //   25: aload_0
+    //   26: invokevirtual 171	java/io/File:isFile	()Z
+    //   29: ifne +10 -> 39
+    //   32: aload 10
+    //   34: astore 9
+    //   36: aload 9
+    //   38: areturn
+    //   39: aload_0
+    //   40: invokevirtual 175	java/io/File:length	()J
+    //   43: lstore 6
+    //   45: lload_1
+    //   46: lstore 4
     //   48: lload_1
-    //   49: lstore 4
-    //   51: lload_1
-    //   52: lconst_0
-    //   53: lcmp
-    //   54: ifge +6 -> 60
-    //   57: lconst_0
-    //   58: lstore 4
-    //   60: aload 10
-    //   62: astore 9
-    //   64: lload 4
-    //   66: lload 6
-    //   68: lcmp
-    //   69: ifge -30 -> 39
-    //   72: aload 10
-    //   74: astore 9
-    //   76: iload_3
-    //   77: ifle -38 -> 39
-    //   80: iload_3
-    //   81: lload 6
-    //   83: lload 4
-    //   85: lsub
-    //   86: l2i
-    //   87: invokestatic 181	java/lang/Math:min	(II)I
-    //   90: istore_3
-    //   91: iload_3
-    //   92: newarray byte
-    //   94: astore 9
-    //   96: new 183	java/io/RandomAccessFile
-    //   99: dup
-    //   100: aload_0
-    //   101: ldc 185
-    //   103: invokespecial 188	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   106: astore 8
-    //   108: aload 8
-    //   110: lload 4
-    //   112: invokevirtual 192	java/io/RandomAccessFile:seek	(J)V
-    //   115: aload 8
-    //   117: aload 9
-    //   119: invokevirtual 196	java/io/RandomAccessFile:read	([B)I
-    //   122: istore_3
-    //   123: iload_3
-    //   124: ifgt +28 -> 152
-    //   127: aload 12
-    //   129: astore_0
-    //   130: aload_0
-    //   131: astore 9
-    //   133: aload 8
-    //   135: ifnull -96 -> 39
-    //   138: aload_0
-    //   139: astore 9
-    //   141: aload 8
-    //   143: invokevirtual 199	java/io/RandomAccessFile:close	()V
-    //   146: aload_0
-    //   147: areturn
-    //   148: astore_0
-    //   149: aload 9
-    //   151: areturn
-    //   152: iload_3
-    //   153: aload 9
-    //   155: arraylength
-    //   156: if_icmpge +72 -> 228
-    //   159: iload_3
-    //   160: newarray byte
-    //   162: astore_0
-    //   163: aload 9
-    //   165: iconst_0
-    //   166: aload_0
-    //   167: iconst_0
-    //   168: iload_3
-    //   169: invokestatic 205	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   172: goto -42 -> 130
-    //   175: astore_0
-    //   176: aconst_null
-    //   177: astore 8
-    //   179: aload 8
-    //   181: ifnull +8 -> 189
-    //   184: aload 8
-    //   186: invokevirtual 199	java/io/RandomAccessFile:close	()V
-    //   189: aload_0
-    //   190: athrow
-    //   191: astore_0
-    //   192: aconst_null
-    //   193: astore_0
-    //   194: aload 10
-    //   196: astore 9
-    //   198: aload_0
-    //   199: ifnull -160 -> 39
-    //   202: aload 11
-    //   204: astore 9
-    //   206: aload_0
-    //   207: invokevirtual 199	java/io/RandomAccessFile:close	()V
-    //   210: aconst_null
-    //   211: areturn
-    //   212: astore 8
-    //   214: goto -25 -> 189
+    //   49: lconst_0
+    //   50: lcmp
+    //   51: ifge +6 -> 57
+    //   54: lconst_0
+    //   55: lstore 4
+    //   57: aload 10
+    //   59: astore 9
+    //   61: lload 4
+    //   63: lload 6
+    //   65: lcmp
+    //   66: ifge -30 -> 36
+    //   69: aload 10
+    //   71: astore 9
+    //   73: iload_3
+    //   74: ifle -38 -> 36
+    //   77: iload_3
+    //   78: lload 6
+    //   80: lload 4
+    //   82: lsub
+    //   83: l2i
+    //   84: invokestatic 181	java/lang/Math:min	(II)I
+    //   87: istore_3
+    //   88: iload_3
+    //   89: newarray byte
+    //   91: astore 9
+    //   93: new 183	java/io/RandomAccessFile
+    //   96: dup
+    //   97: aload_0
+    //   98: ldc 185
+    //   100: invokespecial 188	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   103: astore 8
+    //   105: aload 8
+    //   107: lload 4
+    //   109: invokevirtual 192	java/io/RandomAccessFile:seek	(J)V
+    //   112: aload 8
+    //   114: aload 9
+    //   116: invokevirtual 196	java/io/RandomAccessFile:read	([B)I
+    //   119: istore_3
+    //   120: iload_3
+    //   121: ifgt +25 -> 146
+    //   124: aload 11
+    //   126: astore_0
+    //   127: aload_0
+    //   128: astore 9
+    //   130: aload 8
+    //   132: ifnull -96 -> 36
+    //   135: aload 8
+    //   137: invokevirtual 199	java/io/RandomAccessFile:close	()V
+    //   140: aload_0
+    //   141: areturn
+    //   142: astore 8
+    //   144: aload_0
+    //   145: areturn
+    //   146: iload_3
+    //   147: aload 9
+    //   149: arraylength
+    //   150: if_icmpge +71 -> 221
+    //   153: iload_3
+    //   154: newarray byte
+    //   156: astore_0
+    //   157: aload 9
+    //   159: iconst_0
+    //   160: aload_0
+    //   161: iconst_0
+    //   162: iload_3
+    //   163: invokestatic 205	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   166: goto -39 -> 127
+    //   169: astore_0
+    //   170: aconst_null
+    //   171: astore_0
+    //   172: aload 10
+    //   174: astore 9
+    //   176: aload_0
+    //   177: ifnull -141 -> 36
+    //   180: aload_0
+    //   181: invokevirtual 199	java/io/RandomAccessFile:close	()V
+    //   184: aconst_null
+    //   185: areturn
+    //   186: astore_0
+    //   187: aconst_null
+    //   188: areturn
+    //   189: astore_0
+    //   190: aconst_null
+    //   191: astore 8
+    //   193: aload 8
+    //   195: ifnull +8 -> 203
+    //   198: aload 8
+    //   200: invokevirtual 199	java/io/RandomAccessFile:close	()V
+    //   203: aload_0
+    //   204: athrow
+    //   205: astore 8
+    //   207: goto -4 -> 203
+    //   210: astore_0
+    //   211: goto -18 -> 193
+    //   214: astore_0
+    //   215: aload 8
     //   217: astore_0
-    //   218: goto -39 -> 179
-    //   221: astore_0
-    //   222: aload 8
-    //   224: astore_0
-    //   225: goto -31 -> 194
-    //   228: aload 9
-    //   230: astore_0
-    //   231: goto -101 -> 130
+    //   218: goto -46 -> 172
+    //   221: aload 9
+    //   223: astore_0
+    //   224: goto -97 -> 127
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	234	0	paramFile	File
-    //   0	234	1	paramLong	long
-    //   0	234	3	paramInt	int
-    //   49	62	4	l1	long
-    //   46	36	6	l2	long
-    //   106	79	8	localRandomAccessFile	java.io.RandomAccessFile
-    //   212	11	8	localIOException	IOException
-    //   11	218	9	localObject1	Object
-    //   7	188	10	localObject2	Object
-    //   4	199	11	localObject3	Object
-    //   1	127	12	localObject4	Object
+    //   0	227	0	paramFile	File
+    //   0	227	1	paramLong	long
+    //   0	227	3	paramInt	int
+    //   46	62	4	l1	long
+    //   43	36	6	l2	long
+    //   103	33	8	localRandomAccessFile	java.io.RandomAccessFile
+    //   142	1	8	localIOException1	IOException
+    //   191	8	8	localObject1	Object
+    //   205	11	8	localIOException2	IOException
+    //   8	214	9	localObject2	Object
+    //   4	169	10	localObject3	Object
+    //   1	124	11	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   141	146	148	java/io/IOException
-    //   206	210	148	java/io/IOException
-    //   91	108	175	finally
-    //   91	108	191	java/lang/Throwable
-    //   184	189	212	java/io/IOException
-    //   108	123	217	finally
-    //   152	172	217	finally
-    //   108	123	221	java/lang/Throwable
-    //   152	172	221	java/lang/Throwable
+    //   135	140	142	java/io/IOException
+    //   88	105	169	java/lang/Throwable
+    //   180	184	186	java/io/IOException
+    //   88	105	189	finally
+    //   198	203	205	java/io/IOException
+    //   105	120	210	finally
+    //   146	166	210	finally
+    //   105	120	214	java/lang/Throwable
+    //   146	166	214	java/lang/Throwable
   }
   
   public boolean handleContentType(DownloadResult paramDownloadResult, HttpResponse paramHttpResponse)
@@ -357,7 +355,7 @@ public class ImageDownloadReporter
     for (;;)
     {
       return false;
-      if (StringUtil.a((String)localObject1, "text/html"))
+      if (StringUtil.startsWithIgnoreCase((String)localObject1, "text/html"))
       {
         localObject2 = null;
         localObject1 = null;
@@ -387,26 +385,26 @@ public class ImageDownloadReporter
             }
             catch (IOException paramDownloadResult)
             {
-              QDLog.c("ImageDownloader", "", paramDownloadResult);
+              QDLog.w("ImageDownloader", "", paramDownloadResult);
               return false;
             }
           }
         }
         catch (IOException paramDownloadResult)
         {
-          for (;;)
-          {
-            localObject2 = localObject1;
-            QDLog.c("ImageDownloadReporter", "handleContentType", paramDownloadResult);
-            if (localObject1 == null) {
-              break;
-            }
+          localObject2 = localObject1;
+          QDLog.w("ImageDownloadReporter", "handleContentType", paramDownloadResult);
+          if (localObject1 != null) {
             try
             {
               ((InputStream)localObject1).close();
               return false;
             }
-            catch (IOException paramDownloadResult) {}
+            catch (IOException paramDownloadResult)
+            {
+              QDLog.w("ImageDownloader", "", paramDownloadResult);
+              return false;
+            }
           }
         }
         finally
@@ -424,7 +422,7 @@ public class ImageDownloadReporter
     {
       for (;;)
       {
-        QDLog.c("ImageDownloader", "", paramHttpResponse);
+        QDLog.w("ImageDownloader", "", paramHttpResponse);
       }
     }
   }
@@ -525,12 +523,12 @@ public class ImageDownloadReporter
     if (paramDownloadReportObject == null) {
       return;
     }
-    BusinessReport.a(paramDownloadReportObject, paramDownloadReportObject.appIdType, 1);
+    BusinessReport.uploadReport(paramDownloadReportObject, paramDownloadReportObject.appIdType, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.module.report.ImageDownloadReporter
  * JD-Core Version:    0.7.0.1
  */

@@ -9,13 +9,13 @@ public final class cell_lbs_event
   extends JceStruct
 {
   static s_gps cache_gpsinfo = new s_gps();
-  static ArrayList cache_usersinfo = new ArrayList();
+  static ArrayList<s_user> cache_usersinfo = new ArrayList();
   public int actiontype;
   public String actionurl = "";
   public String desc = "";
   public long event_id;
   public s_gps gpsinfo;
-  public ArrayList usersinfo;
+  public ArrayList<s_user> usersinfo;
   
   static
   {
@@ -25,7 +25,7 @@ public final class cell_lbs_event
   
   public cell_lbs_event() {}
   
-  public cell_lbs_event(int paramInt, String paramString1, ArrayList paramArrayList, s_gps params_gps, long paramLong, String paramString2)
+  public cell_lbs_event(int paramInt, String paramString1, ArrayList<s_user> paramArrayList, s_gps params_gps, long paramLong, String paramString2)
   {
     this.actiontype = paramInt;
     this.actionurl = paramString1;
@@ -65,7 +65,7 @@ public final class cell_lbs_event
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_lbs_event
  * JD-Core Version:    0.7.0.1
  */

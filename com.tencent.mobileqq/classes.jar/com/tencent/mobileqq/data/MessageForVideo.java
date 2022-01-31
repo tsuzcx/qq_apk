@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.util.Utils;
+import alud;
+import bdeu;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageForVideo
@@ -13,16 +14,17 @@ public class MessageForVideo
   
   protected void doParse()
   {
+    boolean bool2 = false;
     String[] arrayOfString;
     if (this.msg != null)
     {
       arrayOfString = this.msg.split("\\|");
       if ((arrayOfString == null) || (arrayOfString.length <= 0)) {
-        break label90;
+        break label92;
       }
       this.text = arrayOfString[0].trim();
       if ((arrayOfString == null) || (arrayOfString.length <= 1)) {
-        break label227;
+        break label230;
       }
     }
     for (;;)
@@ -31,19 +33,19 @@ public class MessageForVideo
       {
         this.type = Integer.parseInt(arrayOfString[1]);
         if ((arrayOfString == null) || (arrayOfString.length <= 3)) {
-          break label248;
+          break label286;
         }
         if (arrayOfString.length != 4) {
-          break label235;
+          break label238;
         }
         this.isVideo = "1".equals(arrayOfString[3]);
         return;
         arrayOfString = null;
         break;
-        label90:
+        label92:
         this.text = "";
       }
-      catch (Exception localException)
+      catch (Exception localException1)
       {
         if ((this.msg != null) && (this.msg.length() > 0) && (this.msg.charAt(0) == '\026')) {
           throw new RuntimeException("java.lang.NumberFormatException: Invalid int: " + arrayOfString[1] + " msg is " + this.msg);
@@ -52,22 +54,46 @@ public class MessageForVideo
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d("MessageForVideo", 2, "java.lang.NumberFormatException: Invalid int: " + arrayOfString[1] + " msg byte " + Utils.a(this.msg));
+        QLog.d("MessageForVideo", 2, "java.lang.NumberFormatException: Invalid int: " + arrayOfString[1] + " msg byte " + bdeu.a(this.msg));
         continue;
       }
-      label227:
+      label230:
       this.type = 5;
     }
-    label235:
-    this.isVideo = arrayOfString[0].contains("视频");
-    return;
-    label248:
-    this.isVideo = true;
+    label238:
+    if (arrayOfString.length > 5) {}
+    for (;;)
+    {
+      try
+      {
+        bool1 = Boolean.parseBoolean(arrayOfString[5]);
+        if (!bool1)
+        {
+          bool1 = bool2;
+          if (!arrayOfString[0].contains(alud.a(2131706995))) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+        this.isVideo = bool1;
+        return;
+      }
+      catch (Exception localException2)
+      {
+        bool1 = false;
+        continue;
+      }
+      label286:
+      this.isVideo = true;
+      return;
+      boolean bool1 = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForVideo
  * JD-Core Version:    0.7.0.1
  */

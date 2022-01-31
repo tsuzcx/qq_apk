@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class C2CType0x211_SubC2CType0x8$ReqGetList
-  extends MessageMicro
+  extends MessageMicro<ReqGetList>
 {
   public static final int BYTES_COOKIE_FIELD_NUMBER = 4;
   public static final int MSG_HEAD_FIELD_NUMBER = 1;

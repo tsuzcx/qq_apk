@@ -1,30 +1,27 @@
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.subscribe.comment.EmoView;
 
 class tdj
-  implements Runnable
+  implements View.OnFocusChangeListener
 {
-  tdj(tdi paramtdi) {}
+  tdj(tdf paramtdf) {}
   
-  public void run()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    try
+    if (paramBoolean)
     {
-      Thread.sleep(1500L);
-      this.a.a.a.a();
+      if (tdf.a(this.a) != null) {
+        tdf.a(this.a).setVisibility(8);
+      }
       return;
     }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
-    }
+    this.a.b(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tdj
  * JD-Core Version:    0.7.0.1
  */

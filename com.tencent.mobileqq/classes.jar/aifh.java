@@ -1,19 +1,12 @@
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class aifh
-  extends SQLiteOpenHelper
+class aifh
+  implements DialogInterface.OnDismissListener
 {
-  public aifh(MigrateSubscribeDB paramMigrateSubscribeDB, Context paramContext, String paramString, int paramInt)
-  {
-    super(paramContext, paramString, null, paramInt);
-  }
+  aifh(aife paramaife) {}
   
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase) {}
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

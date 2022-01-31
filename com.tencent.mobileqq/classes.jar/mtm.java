@@ -1,29 +1,19 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class mtm
-  extends PublicAccountObserver
+class mtm
+  implements View.OnClickListener
 {
-  public mtm(SubscriptRecommendController paramSubscriptRecommendController) {}
+  mtm(mtk parammtk) {}
   
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0) {
-      this.a.h();
-    }
-  }
-  
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.h();
-    }
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mtm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,16 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-
-public class tai
-  extends ClickableSpan
+class tai
+  implements qob<String, String>
 {
-  private tai(LoginInfoActivity paramLoginInfoActivity) {}
+  tai(tah paramtah) {}
   
-  public void onClick(View paramView) {}
-  
-  public void updateDrawState(TextPaint paramTextPaint)
+  public String a(String paramString)
   {
-    paramTextPaint.setColor(paramTextPaint.linkColor);
-    paramTextPaint.setUnderlineText(false);
+    return tah.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tai
  * JD-Core Version:    0.7.0.1
  */

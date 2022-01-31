@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class submsgtype0x96$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16 }, new String[] { "string_push_msg", "uint32_push_type" }, new Object[] { "", Integer.valueOf(0) }, MsgBody.class);
   public final PBStringField string_push_msg = PBField.initString("");

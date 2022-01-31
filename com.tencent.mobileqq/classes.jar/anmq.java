@@ -1,35 +1,25 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.open.base.ToastUtil;
-import com.tencent.util.WeakReferenceHandler;
-import dov.com.qq.im.capture.music.MusicDownloadListener;
-import dov.com.qq.im.capture.music.humrecognition.view.BgmRecognitionProviderView;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class anmq
-  extends MusicDownloadListener
+class anmq
+  implements anmy
 {
-  public anmq(BgmRecognitionProviderView paramBgmRecognitionProviderView) {}
+  anmq(anmm paramanmm, anmw paramanmw, anmy paramanmy, String paramString) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean)
+  public void a(boolean paramBoolean)
   {
-    ToastUtil.a().a("正在下载: " + this.a.a);
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    if ((paramBoolean) && (this.a.a.a().equals(paramString))) {
-      BgmRecognitionProviderView.a(this.a).sendEmptyMessage(1003);
+    if (paramBoolean)
+    {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update success, name=%s", new Object[] { this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_Anmy.a(true);
+      return;
     }
+    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, try full update, name=%s", new Object[] { this.jdField_a_of_type_Anmw.jdField_a_of_type_JavaLangString }));
+    anmm.a(this.jdField_a_of_type_Anmm, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anmw, new anmr(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmq
  * JD-Core Version:    0.7.0.1
  */

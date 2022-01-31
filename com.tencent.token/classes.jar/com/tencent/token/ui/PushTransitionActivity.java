@@ -8,14 +8,22 @@ public class PushTransitionActivity
 {
   public void onCreate(Bundle paramBundle)
   {
-    super.onCreate(paramBundle);
-    IndexActivity.setFromWhere(19);
-    if (BaseActivity.isAppOpen()) {}
-    for (paramBundle = new Intent(this, IndexActivity.class);; paramBundle = new Intent(this, LogoActivity.class))
+    try
     {
-      startActivity(paramBundle);
-      finish();
+      super.onCreate(paramBundle);
+      IndexActivity.setFromWhere(19);
+      if (BaseActivity.isAppOpen()) {}
+      for (paramBundle = new Intent(this, IndexActivity.class);; paramBundle = new Intent(this, LogoActivity.class))
+      {
+        startActivity(paramBundle);
+        finish();
+        return;
+      }
       return;
+    }
+    catch (Exception paramBundle)
+    {
+      paramBundle.printStackTrace();
     }
   }
   

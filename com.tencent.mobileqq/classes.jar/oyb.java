@@ -1,33 +1,54 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.TroopNotify;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.TroopNotifyAd;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class oyb
-  implements View.OnClickListener
 {
-  public oyb(TroopNewGuidePopWindow paramTroopNewGuidePopWindow, TroopFeedsDataManager.TroopNotifyAd paramTroopNotifyAd) {}
+  public static long a;
+  public static List<oyc> a;
+  public static long b;
+  public static long c;
   
-  public void onClick(View paramView)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopTipsPopWindow", 2, "mTroopNotifyAdImage onClick--------");
+    jdField_a_of_type_Long = -1L;
+    b = -1L;
+    jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public static void a()
+  {
+    jdField_a_of_type_JavaUtilList.clear();
+    c = 0L;
+  }
+  
+  public static void a(oyc paramoyc)
+  {
+    if (!jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      oyc localoyc = (oyc)jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_JavaUtilList.size() - 1);
+      if (paramoyc.b - localoyc.b > jdField_a_of_type_Long) {
+        a();
+      }
     }
-    paramView = new Intent(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd.b);
-    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramView);
-    ReportController.b(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_bulletin", "", "bulletin_popUp", "clk_ad", 0, 0, this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.b, String.valueOf(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.a), "8020205751015455", "");
+    jdField_a_of_type_JavaUtilList.add(paramoyc);
+    c += paramoyc.jdField_a_of_type_Long;
+    if (a())
+    {
+      paramoyc = new ArrayList();
+      paramoyc.addAll(jdField_a_of_type_JavaUtilList);
+      jdField_a_of_type_JavaUtilList.clear();
+      oxp.a(paramoyc);
+    }
+  }
+  
+  public static boolean a()
+  {
+    return c > b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oyb
  * JD-Core Version:    0.7.0.1
  */

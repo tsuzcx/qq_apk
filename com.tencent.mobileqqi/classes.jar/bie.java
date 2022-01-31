@@ -1,16 +1,25 @@
-import com.tencent.av.opengl.QQGLGestureView;
-import com.tencent.av.opengl.gesture.GlViewTouchListener;
-import com.tencent.av.opengl.gesture.MoveAnimationListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.eqq.EnterpriseDetailActivity;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.EqqDetail;
 
 public class bie
-  implements MoveAnimationListener
+  implements View.OnClickListener
 {
-  public bie(GlViewTouchListener paramGlViewTouchListener, QQGLGestureView paramQQGLGestureView) {}
+  public bie(EnterpriseDetailActivity paramEnterpriseDetailActivity) {}
   
-  public void a(float paramFloat1, float paramFloat2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentAvOpenglQQGLGestureView.setPosition(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_ComTencentAvOpenglQQGLGestureView.b();
+    paramView = new Intent(this.a, ChatHistory.class);
+    paramView.putExtra("uin", this.a.b);
+    int i = 0;
+    if (this.a.a.followType != 1) {
+      i = 1024;
+    }
+    paramView.putExtra("uintype", i);
+    this.a.startActivity(paramView);
   }
 }
 

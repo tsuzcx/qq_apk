@@ -1,0 +1,33 @@
+package com.tencent.mm.plugin.story.ui.view.gallery;
+
+import a.f.a.a;
+import a.l;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+final class GalleryVerticalControlView$3
+  implements View.OnClickListener
+{
+  GalleryVerticalControlView$3(GalleryVerticalControlView paramGalleryVerticalControlView) {}
+  
+  public final void onClick(View paramView)
+  {
+    AppMethodBeat.i(138936);
+    paramView = this.sSW.getOnAllFav();
+    if (paramView != null)
+    {
+      paramView.invoke();
+      AppMethodBeat.o(138936);
+      return;
+    }
+    AppMethodBeat.o(138936);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+ * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.GalleryVerticalControlView.3
+ * JD-Core Version:    0.7.0.1
+ */

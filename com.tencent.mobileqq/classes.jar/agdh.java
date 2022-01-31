@@ -1,29 +1,19 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
-import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
-import com.tencent.mobileqq.ocr.ui.SearchResultViewPagerAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class agdh
-  implements ViewPager.OnPageChangeListener
+  extends aeqi
 {
-  public agdh(SearchResultFragment paramSearchResultFragment) {}
-  
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
-  {
-    this.a.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setCurrentTab(paramInt);
-    if (this.a.jdField_a_of_type_Int != paramInt) {
-      this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter.a(paramInt);
-    }
-    this.a.jdField_a_of_type_Int = paramInt;
-  }
+  long jdField_a_of_type_Long;
+  aetk jdField_a_of_type_Aetk;
+  public ajxp a;
+  public ImageView b;
+  public ImageView c;
+  public TextView d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agdh
  * JD-Core Version:    0.7.0.1
  */

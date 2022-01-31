@@ -1,39 +1,31 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import com.tencent.mobileqq.hotpic.RecyclerFooterWrapperAdapter;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class adse
-  extends RecyclerView.AdapterDataObserver
+  implements View.OnTouchListener
 {
-  public adse(RecyclerFooterWrapperAdapter paramRecyclerFooterWrapperAdapter) {}
+  public adse(QQSettingMe paramQQSettingMe, ImageView paramImageView, TextView paramTextView, View paramView) {}
   
-  public void onChanged()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super.onChanged();
-    this.a.notifyDataSetChanged();
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
-  {
-    super.onItemRangeChanged(paramInt1, paramInt2);
-    this.a.notifyItemRangeChanged(paramInt1, paramInt2);
-  }
-  
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
-  {
-    super.onItemRangeInserted(paramInt1, paramInt2);
-    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    super.onItemRangeMoved(paramInt1, paramInt2, paramInt3);
-    this.a.notifyItemRangeChanged(paramInt1, paramInt2 + paramInt3);
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    super.onItemRangeRemoved(paramInt1, paramInt2);
-    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      mww.a(this.jdField_a_of_type_AndroidWidgetImageView, 0.5F);
+      mww.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.5F);
+      mww.a(this.jdField_a_of_type_AndroidViewView, 0.5F);
+      continue;
+      mww.a(this.jdField_a_of_type_AndroidWidgetImageView, 1.0F);
+      mww.a(this.jdField_a_of_type_AndroidWidgetTextView, 1.0F);
+      mww.a(this.jdField_a_of_type_AndroidViewView, 1.0F);
+    }
   }
 }
 

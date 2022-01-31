@@ -1,22 +1,22 @@
 package cooperation.qzone.report.lp;
 
-import amyt;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import android.util.Base64;
+import azqh;
+import azri;
+import bhsz;
+import biln;
+import bjml;
+import bjmm;
+import bjrd;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.MTAReportController;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.URLUtil;
-import common.config.service.QzoneAlphaConfig;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.QzoneModuleConfigManager;
-import cooperation.qzone.networkedmodule.QzoneModuleConfigManager.QzoneModuleRecord;
 import cooperation.qzone.networkedmodule.QzoneModuleManager;
 import cooperation.qzone.util.NetworkState;
 import java.lang.reflect.Method;
@@ -83,14 +83,14 @@ public class MachineLearingSmartReport
   private String selection;
   private LpReportInfos storedClicks = new LpReportInfos();
   
-  private boolean BeaconReport(ArrayList paramArrayList)
+  private boolean BeaconReport(ArrayList<HashMap<String, String>> paramArrayList)
   {
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
       HashMap localHashMap = (HashMap)paramArrayList.next();
       if (localHashMap != null) {
-        StatisticCollector.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), this.report_cmd, true, 0L, 0L, localHashMap, null, true);
+        azri.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), this.report_cmd, true, 0L, 0L, localHashMap, null, true);
       }
     }
     return true;
@@ -115,7 +115,7 @@ public class MachineLearingSmartReport
     }
   }
   
-  private boolean LPReport(ArrayList paramArrayList)
+  private boolean LPReport(ArrayList<HashMap<String, String>> paramArrayList)
   {
     int i = 0;
     while (i < paramArrayList.size())
@@ -137,7 +137,7 @@ public class MachineLearingSmartReport
     return true;
   }
   
-  private boolean MTAReport(ArrayList paramArrayList)
+  private boolean MTAReport(ArrayList<HashMap<String, String>> paramArrayList)
   {
     Properties localProperties = new Properties();
     paramArrayList = paramArrayList.iterator();
@@ -148,13 +148,13 @@ public class MachineLearingSmartReport
       {
         localProperties.clear();
         localProperties.putAll(localHashMap);
-        MTAReportController.a(BaseApplicationImpl.getContext()).reportKVEvent(this.report_cmd, localProperties);
+        azqh.a(BaseApplicationImpl.getContext()).reportKVEvent(this.report_cmd, localProperties);
       }
     }
     return true;
   }
   
-  private boolean checkAbsoluteTime(Map paramMap)
+  private boolean checkAbsoluteTime(Map<String, String> paramMap)
   {
     paramMap = (String)paramMap.get("expiredAbsolutetime");
     if (!TextUtils.isEmpty(paramMap)) {
@@ -175,7 +175,7 @@ public class MachineLearingSmartReport
     return false;
   }
   
-  private boolean checkBatchId(Map paramMap)
+  private boolean checkBatchId(Map<String, String> paramMap)
   {
     if (paramMap.containsKey("batchid")) {
       try
@@ -193,7 +193,7 @@ public class MachineLearingSmartReport
     return false;
   }
   
-  private boolean checkChannel(Map paramMap)
+  private boolean checkChannel(Map<String, String> paramMap)
   {
     if (paramMap.containsKey("channel")) {}
     label89:
@@ -242,7 +242,7 @@ public class MachineLearingSmartReport
     return false;
   }
   
-  private boolean checkFrequency(Map paramMap)
+  private boolean checkFrequency(Map<String, String> paramMap)
   {
     if (paramMap.containsKey("frequency")) {}
     long l1;
@@ -277,7 +277,7 @@ public class MachineLearingSmartReport
     return false;
   }
   
-  private boolean checkNetworkEnabled(Map paramMap)
+  private boolean checkNetworkEnabled(Map<String, String> paramMap)
   {
     if (paramMap.containsKey("networkmask"))
     {
@@ -298,7 +298,7 @@ public class MachineLearingSmartReport
     return true;
   }
   
-  private boolean checkQUA(Map paramMap)
+  private boolean checkQUA(Map<String, String> paramMap)
   {
     int m;
     int i;
@@ -356,7 +356,7 @@ public class MachineLearingSmartReport
     return true;
   }
   
-  private boolean checkQueryTimes(Map paramMap)
+  private boolean checkQueryTimes(Map<String, String> paramMap)
   {
     if (paramMap.containsKey("querytimes")) {
       try
@@ -382,7 +382,7 @@ public class MachineLearingSmartReport
     return false;
   }
   
-  private boolean checkRelativeTime(Map paramMap)
+  private boolean checkRelativeTime(Map<String, String> paramMap)
   {
     paramMap = (String)paramMap.get("expiredrelativetime");
     if (!TextUtils.isEmpty(paramMap))
@@ -414,7 +414,7 @@ public class MachineLearingSmartReport
     return true;
   }
   
-  private boolean checkSQLValid(Map paramMap)
+  private boolean checkSQLValid(Map<String, String> paramMap)
   {
     if (paramMap.containsKey("selection"))
     {
@@ -491,14 +491,14 @@ public class MachineLearingSmartReport
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_FailCode", String.valueOf(paramInt));
       localHashMap.put("param_FailMsg", paramString);
-      StatisticCollector.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "qzonesmartreport", true, 0L, 0L, localHashMap, null, true);
+      azri.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "qzonesmartreport", true, 0L, 0L, localHashMap, null, true);
       if ((!TextUtils.isEmpty(paramString)) && (QLog.isColorLevel())) {
         QLog.w("MachineLearingSmartReport", 2, paramString);
       }
     }
   }
   
-  private Map getArguments(String paramString)
+  private Map<String, String> getArguments(String paramString)
   {
     localHashMap = new HashMap();
     if (!TextUtils.isEmpty(paramString)) {
@@ -659,7 +659,7 @@ public class MachineLearingSmartReport
   
   public void downloadDataAcquisitionModule()
   {
-    String str1 = QzoneAlphaConfig.a().a("ClientReport", "SmartReportDataAcquisitionConfig", "");
+    String str1 = biln.a().a("ClientReport", "SmartReportDataAcquisitionConfig", "");
     Object localObject1;
     String str2;
     Object localObject2;
@@ -667,7 +667,7 @@ public class MachineLearingSmartReport
     {
       try
       {
-        localObject1 = URLUtil.b(str1);
+        localObject1 = bhsz.b(str1);
         if (!checkAbsoluteTime((Map)localObject1))
         {
           exceptionReport(2, "downloadDataAcquisitionModule is out of date");
@@ -702,13 +702,13 @@ public class MachineLearingSmartReport
         exceptionReport(12, "downloadDataAcquisitionModule moudlemethod is null");
         return;
       }
-      localObject2 = QzoneModuleConfigManager.a().a(str2);
+      localObject2 = bjml.a().a(str2);
       if (localObject2 == null)
       {
         exceptionReport(9, "downloadDataAcquisitionModule modulerecord is null");
         return;
       }
-      localObject2 = ((QzoneModuleConfigManager.QzoneModuleRecord)localObject2).f;
+      localObject2 = ((bjmm)localObject2).f;
       if (TextUtils.isEmpty((CharSequence)localObject2))
       {
         exceptionReport(11, (String)localObject2 + " not set");
@@ -738,7 +738,7 @@ public class MachineLearingSmartReport
       }
       if (BaseApplicationImpl.sProcessId == 2)
       {
-        QzoneModuleManager.getInstance().downloadModule(str2, new amyt(this, str2, (String)localObject2, (String)localObject1));
+        QzoneModuleManager.getInstance().downloadModule(str2, new bjrd(this, str2, (String)localObject2, (String)localObject1));
         return;
       }
       if (QLog.isColorLevel()) {
@@ -773,7 +773,7 @@ public class MachineLearingSmartReport
   public boolean isNeedReport()
   {
     boolean bool2 = false;
-    Object localObject = QzoneAlphaConfig.a().a("ClientReport", "MachinelearningSmartReportConfig", "");
+    Object localObject = biln.a().a("ClientReport", "MachinelearningSmartReportConfig", "");
     if (QLog.isColorLevel()) {
       QLog.i("MachineLearingSmartReport", 2, "reportconfig:" + (String)localObject);
     }
@@ -856,7 +856,7 @@ public class MachineLearingSmartReport
     return bool;
   }
   
-  public boolean smartReport(ArrayList paramArrayList)
+  public boolean smartReport(ArrayList<HashMap<String, String>> paramArrayList)
   {
     if (paramArrayList == null) {
       return false;
@@ -888,7 +888,7 @@ public class MachineLearingSmartReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.MachineLearingSmartReport
  * JD-Core Version:    0.7.0.1
  */

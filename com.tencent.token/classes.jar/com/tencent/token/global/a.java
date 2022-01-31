@@ -1,6 +1,6 @@
 package com.tencent.token.global;
 
-public final class a
+public class a
 {
   public static final byte[] a = { 114, 101, 97, 108 };
 }

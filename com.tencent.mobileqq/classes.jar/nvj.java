@@ -1,41 +1,39 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.comment.FeedCommentEventHandler.PostCommentCallback;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.CommentManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopTabFragment;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopWebview;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.smtt.sdk.WebView;
 
 public class nvj
-  extends FeedCommentEventHandler.PostCommentCallback
+  extends nvi
 {
-  public nvj(StoryDetailPresenter paramStoryDetailPresenter) {}
-  
-  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
+  public nvj(EcshopTabFragment paramEcshopTabFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView, String paramString)
   {
-    SLog.a("Q.qqstory.detail.StoryDetailPresenter", "post comment result is %s.", Boolean.valueOf(paramBoolean));
-    if (!StoryDetailPresenter.a(this.a).get()) {
-      StoryDetailPresenter.a(this.a).c();
-    }
+    super(paramContext, paramActivity, paramAppInterface, paramTouchWebView, paramString);
   }
   
-  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    CommentManager localCommentManager = (CommentManager)SuperManager.a(17);
-    localCommentManager.b(paramCommentEntry);
-    paramCommentEntry.commentId = paramRspAddFeedComment.comment_id.get();
-    paramCommentEntry.status = 0;
-    localCommentManager.a(paramCommentEntry);
-    return true;
+    super.onPageFinished(paramWebView, paramString);
+    EcshopTabFragment.a(this.a).setVisibility(0);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return super.shouldOverrideUrlLoading(paramWebView, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvj
  * JD-Core Version:    0.7.0.1
  */

@@ -18,16 +18,17 @@ public abstract class AppInterface
   extends AppRuntime
 {
   private Handler a;
-  protected BaseApplicationImpl a;
+  public BaseApplicationImpl a;
+  protected String a;
   protected final Map a;
-  protected String c = "";
   
   public AppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
+    this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = paramBaseApplicationImpl;
-    this.c = paramString;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
   public static void a(PluginRuntime paramPluginRuntime, String paramString, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong)

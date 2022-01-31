@@ -1,79 +1,114 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
 
 public class sfc
-  implements Runnable
 {
-  WeakReference a;
+  sfj<Bitmap> a;
   
-  public sfc(ChatSettingForTroop paramChatSettingForTroop)
+  public sfc(Bitmap paramBitmap, sfk<Bitmap> paramsfk)
   {
-    this.a = new WeakReference(paramChatSettingForTroop);
+    this.a = new sfj(paramBitmap, paramsfk);
+    if (QLog.isColorLevel()) {
+      sfm.a(toString(), "onCreate", true);
+    }
   }
   
-  public void run()
+  public sfc(sfj<Bitmap> paramsfj)
   {
-    ChatSettingForTroop localChatSettingForTroop = (ChatSettingForTroop)this.a.get();
-    if (localChatSettingForTroop == null) {}
-    while (localChatSettingForTroop.c) {
-      return;
+    paramsfj.a();
+    this.a = paramsfj;
+    if (QLog.isColorLevel()) {
+      sfm.a(toString(), "createFromClone", true);
     }
-    Object localObject1 = localChatSettingForTroop.app;
-    String str = localChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin;
-    Object localObject2 = new StringBuilder();
-    int i = ChatSettingForTroop.a((QQAppInterface)localObject1, str, 1, (StringBuilder)localObject2);
-    List localList = ((QQAppInterface)localObject1).a().b(str, 1);
-    if ((localList != null) && (!localList.isEmpty())) {}
-    for (long l1 = ((MessageRecord)localList.get(localList.size() - 1)).shmsgseq;; l1 = 0L)
+  }
+  
+  public Bitmap a()
+  {
+    if (this.a != null) {
+      return (Bitmap)this.a.a();
+    }
+    azqs.b(null, "dc01160", "", "", "0X80098F1", "0X80098F1", 0, 1, null, null, "", "");
+    return null;
+  }
+  
+  public sfc a()
+  {
+    try
     {
-      if (i > 0) {}
-      for (;;)
-      {
-        try
-        {
-          long l2 = Long.parseLong(((StringBuilder)localObject2).toString());
-          l1 = Math.max(l2, l1);
-          if (l1 > 0L) {
-            ((QQAppInterface)localObject1).a().a(str, 1, l1);
-          }
-          ((QQAppInterface)localObject1).a().a(str, 1);
-          ((QQAppInterface)localObject1).a().e(str, 1);
-          SpriteCommFunc.a((QQAppInterface)localObject1, "chat_history_confirm_del_msg");
-          localObject1 = ((QQAppInterface)localObject1).getHandler(Conversation.class);
-          localObject2 = ((MqqHandler)localObject1).obtainMessage(1017);
-          ((Message)localObject2).obj = str;
-          ((Message)localObject2).arg1 = 1;
-          ((MqqHandler)localObject1).sendMessage((Message)localObject2);
-          localChatSettingForTroop.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(19);
-          return;
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.chatopttroop", 2, "msg history already clear!");
-        }
+      if (QLog.isColorLevel()) {
+        sfm.a(toString(), "clone", true);
       }
+      sfc localsfc = new sfc(this.a);
+      return localsfc;
+    }
+    finally {}
+  }
+  
+  /* Error */
+  public void a()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 19	sfc:a	Lsfj;
+    //   6: ifnull +34 -> 40
+    //   9: invokestatic 25	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   12: ifeq +13 -> 25
+    //   15: aload_0
+    //   16: invokevirtual 29	sfc:toString	()Ljava/lang/String;
+    //   19: ldc 70
+    //   21: iconst_1
+    //   22: invokestatic 36	sfm:a	(Ljava/lang/String;Ljava/lang/String;Z)V
+    //   25: aload_0
+    //   26: getfield 19	sfc:a	Lsfj;
+    //   29: invokevirtual 72	sfj:b	()V
+    //   32: aload_0
+    //   33: aconst_null
+    //   34: putfield 19	sfc:a	Lsfj;
+    //   37: aload_0
+    //   38: monitorexit
+    //   39: return
+    //   40: aload_0
+    //   41: invokevirtual 29	sfc:toString	()Ljava/lang/String;
+    //   44: ldc 74
+    //   46: invokestatic 77	sfm:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   49: goto -12 -> 37
+    //   52: astore_1
+    //   53: aload_0
+    //   54: monitorexit
+    //   55: aload_1
+    //   56: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	57	0	this	sfc
+    //   52	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	25	52	finally
+    //   25	37	52	finally
+    //   37	39	52	finally
+    //   40	49	52	finally
+    //   53	55	52	finally
+  }
+  
+  public boolean a()
+  {
+    return this.a != null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("zimage.closeable@").append(hashCode()).append("_bitmap@");
+    if ((this.a != null) && (this.a.a() != null)) {}
+    for (Integer localInteger = Integer.valueOf(((Bitmap)this.a.a()).hashCode());; localInteger = null) {
+      return localInteger;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     sfc
  * JD-Core Version:    0.7.0.1
  */

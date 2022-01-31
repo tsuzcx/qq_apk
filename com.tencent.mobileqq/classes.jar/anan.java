@@ -1,35 +1,28 @@
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import cooperation.qzone.util.AlbumLibDownloaderUtil;
-import cooperation.qzone.util.FileUtils;
-import java.io.File;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class anan
-  implements ModuleDownloadListener
+class anan
+  implements anac
 {
-  public anan(AlbumLibDownloaderUtil paramAlbumLibDownloaderUtil) {}
+  anan(anam paramanam) {}
   
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString) {}
-  
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
+  public void a(anau paramanau)
   {
-    if (!paramString.equals("pictureMarkerSo.so")) {
+    anam.f(this.a, false);
+    if (anam.a(this.a)) {
       return;
     }
-    String str = AlbumLibDownloaderUtil.a.getPath();
-    paramString = new File(QzoneModuleManager.getInstance().getModuleFilePath(paramString));
-    if (paramString.exists()) {
-      paramString.renameTo(new File(AlbumLibDownloaderUtil.a.getPath() + "/photoQulatitySo.zip"));
+    if (anam.a(this.a) != null) {
+      anam.a(this.a).removeMessages(2);
     }
-    paramString = new File(str);
-    if (!paramString.exists()) {
-      paramString.mkdirs();
+    QLog.i("AREngine_ARCloudControl", 1, "onARCloudLBSLocationCheckComplete. retCode = " + paramanau.jdField_a_of_type_Int + ", imageId = " + paramanau.jdField_a_of_type_JavaLangString);
+    if (anam.a(this.a) != null)
+    {
+      anbm.a(this.a.a.recognitions, anam.a(this.a), paramanau);
+      anam.a(this.a).a(0, anam.a(this.a));
     }
-    FileUtils.b(new File(AlbumLibDownloaderUtil.a.getPath() + "/photoQulatitySo.zip"), paramString);
+    anam.a(this.a, null);
   }
 }
 

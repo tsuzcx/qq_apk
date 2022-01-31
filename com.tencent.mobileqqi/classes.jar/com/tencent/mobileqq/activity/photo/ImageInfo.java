@@ -5,13 +5,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.data.MessageForPic;
-import erc;
+import emo;
 
 public class ImageInfo
   extends BaseImageInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new erc();
+  public static final Parcelable.Creator CREATOR = new emo();
   public long a;
   public Uri a;
   public MessageForPic a;

@@ -1,33 +1,21 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import java.io.File;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
+import com.tribe.async.dispatch.Dispatcher.Event;
 
 public class vno
-  implements Runnable
+  implements Dispatcher.Event
 {
-  public vno(AIOGalleryScene paramAIOGalleryScene, File paramFile, ActionSheet paramActionSheet) {}
+  public final AnimationParam a;
+  public final String a;
   
-  public void run()
+  public vno(AnimationParam paramAnimationParam, String paramString)
   {
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.h != null) && (this.jdField_a_of_type_JavaIoFile != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.h.equals(this.jdField_a_of_type_JavaIoFile.getPath())) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a(this.jdField_a_of_type_JavaIoFile).booleanValue()) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
-        ThreadManager.getUIHandler().post(new vnp(this));
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.i("AIOGalleryScene", 1, "add qr action sheet error: " + localException.getMessage());
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam = paramAnimationParam;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vno
  * JD-Core Version:    0.7.0.1
  */

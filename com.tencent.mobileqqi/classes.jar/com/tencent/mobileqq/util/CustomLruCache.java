@@ -22,7 +22,7 @@ public class CustomLruCache
     super.entryRemoved(paramBoolean, paramObject1, paramObject2, paramObject3);
   }
   
-  protected int sizeOf(Object paramObject1, Object paramObject2)
+  public int sizeOf(Object paramObject1, Object paramObject2)
   {
     return super.sizeOf(paramObject1, paramObject2);
   }

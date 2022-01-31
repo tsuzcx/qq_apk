@@ -1,19 +1,25 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomSingleButtonDialog;
+import com.tencent.mobileqq.widget.QZoneCoverView;
+import com.tencent.mobileqq.widget.QZoneCoverView.PhotoInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class hhl
-  implements View.OnClickListener
+  extends Thread
 {
-  public hhl(QQCustomSingleButtonDialog paramQQCustomSingleButtonDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  public hhl(QZoneCoverView paramQZoneCoverView, QZoneCoverView.PhotoInfo paramPhotoInfo) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog, 1);
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQZoneCoverView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQZoneCoverView$PhotoInfo);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQZoneCoverView.f();
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.dismiss();
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("Q.qzonecover.", 2, localException.toString());
+    }
   }
 }
 

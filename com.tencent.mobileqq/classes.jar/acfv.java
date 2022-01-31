@@ -1,40 +1,32 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.BaseEmotionAdapter;
-import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder;
-import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
-import com.tencent.widget.ListView;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.qphone.base.remote.SimpleAccount;
 
 public class acfv
-  implements Runnable
+  implements View.OnClickListener
 {
-  public acfv(EmotionPanelViewPagerAdapter paramEmotionPanelViewPagerAdapter, int paramInt, EmotionPanelInfo paramEmotionPanelInfo, BaseEmotionAdapter paramBaseEmotionAdapter, ListView paramListView) {}
+  public acfv(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = EmotionPanelDataBuilder.a();
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    int j = this.jdField_a_of_type_Int;
-    EmoticonPackage localEmoticonPackage = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelInfo.a;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {}
-    for (int i = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().jdField_a_of_type_Int;; i = -1)
+    if (paramView.getParent() == null) {}
+    do
     {
-      localObject = ((EmotionPanelDataBuilder)localObject).a(localQQAppInterface, j, localEmoticonPackage, i, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.jdField_a_of_type_Boolean);
-      EmotionPanelViewPagerAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelInfo.a, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBaseEmotionAdapter, (List)localObject);
-      ThreadManager.getUIHandler().post(new acfw(this, (List)localObject));
-      return;
-    }
+      do
+      {
+        return;
+        paramView = (View)paramView.getParent().getParent();
+      } while ((paramView == null) || (paramView.getTag() == null));
+      azqs.b(this.a.app, "CliOper", "", "", "0X8007147", "0X8007147", 0, 0, "", "", "", "");
+    } while (!(paramView.getTag() instanceof SimpleAccount));
+    this.a.a((SimpleAccount)paramView.getTag());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acfv
  * JD-Core Version:    0.7.0.1
  */

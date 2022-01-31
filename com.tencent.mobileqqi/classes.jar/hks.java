@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.widget.DropdownView;
+import android.os.Bundle;
+import com.tencent.open.appcommon.js.BaseJsCallBack;
+import com.tencent.open.downloadnew.MyAppApi;
 
 public class hks
   implements Runnable
 {
-  public hks(DropdownView paramDropdownView) {}
+  public hks(BaseJsCallBack paramBaseJsCallBack, Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    this.a.a = false;
+    MyAppApi.a().a(this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack.activity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hks
  * JD-Core Version:    0.7.0.1
  */

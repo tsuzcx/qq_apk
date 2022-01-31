@@ -12,11 +12,12 @@ import java.util.Set;
 
 public class BitmapReference
 {
-  static int jdField_a_of_type_Int = 0;
-  private static Releaser jdField_a_of_type_ComTencentComponentMediaImageReleaser;
-  private static Set jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private static final String TAG = "BitmapReference";
+  static int releaseCount = 0;
+  private static Set<Bitmap> sBitmapMemSet = Collections.synchronizedSet(new HashSet());
+  private static Releaser<Bitmap> sReleaser;
+  private volatile boolean isReleased = false;
+  private Bitmap mBitmap;
   
   @TargetApi(19)
   public static BitmapReference getBitmapReference(Bitmap paramBitmap)
@@ -32,18 +33,18 @@ public class BitmapReference
       {
         return localObject;
         localBitmapReference = new BitmapReference();
-        localBitmapReference.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+        localBitmapReference.mBitmap = paramBitmap;
         localObject = localBitmapReference;
       } while (ImageManager.sCloseNativeAndCache);
       localObject = localBitmapReference;
     } while (!paramBitmap.isMutable());
-    jdField_a_of_type_JavaUtilSet.add(paramBitmap);
+    sBitmapMemSet.add(paramBitmap);
     return localBitmapReference;
   }
   
-  public static void setGlobalReleaser(Releaser paramReleaser)
+  public static void setGlobalReleaser(Releaser<Bitmap> paramReleaser)
   {
-    jdField_a_of_type_ComTencentComponentMediaImageReleaser = paramReleaser;
+    sReleaser = paramReleaser;
   }
   
   protected void finalize()
@@ -66,72 +67,72 @@ public class BitmapReference
   
   public final int getAllocSize()
   {
-    return BitmapUtils.getBitmapAllocSize(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    return BitmapUtils.getBitmapAllocSize(this.mBitmap);
   }
   
   public Bitmap getBitmap()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) {
+    if (this.mBitmap.isRecycled()) {
       return null;
     }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    return this.mBitmap;
   }
   
   public final Bitmap.Config getConfig()
   {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getConfig();
+    return this.mBitmap.getConfig();
   }
   
   public final int getHeight()
   {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    return this.mBitmap.getHeight();
   }
   
   public final int getRowBytes()
   {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getRowBytes();
+    return this.mBitmap.getRowBytes();
   }
   
   public final int getWidth()
   {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    return this.mBitmap.getWidth();
   }
   
   public final boolean hasAlpha()
   {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.hasAlpha();
+    return this.mBitmap.hasAlpha();
   }
   
   public final boolean isMutable()
   {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.isMutable();
+    return this.mBitmap.isMutable();
   }
   
   public final boolean isRecycled()
   {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled();
+    return this.mBitmap.isRecycled();
   }
   
   @TargetApi(19)
   public void release()
   {
-    if ((this.jdField_a_of_type_Boolean) || (ImageManager.sCloseNativeAndCache)) {}
+    if ((this.isReleased) || (ImageManager.sCloseNativeAndCache)) {}
     do
     {
       return;
-      this.jdField_a_of_type_Boolean = true;
-    } while ((!jdField_a_of_type_JavaUtilSet.remove(this.jdField_a_of_type_AndroidGraphicsBitmap)) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) || (!this.jdField_a_of_type_AndroidGraphicsBitmap.isMutable()));
-    if (jdField_a_of_type_ComTencentComponentMediaImageReleaser != null)
+      this.isReleased = true;
+    } while ((!sBitmapMemSet.remove(this.mBitmap)) || (this.mBitmap.isRecycled()) || (!this.mBitmap.isMutable()));
+    if (sReleaser != null)
     {
-      jdField_a_of_type_ComTencentComponentMediaImageReleaser.release(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      sReleaser.release(this.mBitmap);
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    this.mBitmap.recycle();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.BitmapReference
  * JD-Core Version:    0.7.0.1
  */

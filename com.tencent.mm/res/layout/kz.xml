@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/acu" layout="@layout/l6" />
+    <View android:id="@id/acv" android:background="@drawable/m2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/dv" android:layout_marginRight="@dimen/dv" android:layout_marginBottom="0.0dip" android:layout_alignBottom="@id/acu" android:layerType="software" />
+</RelativeLayout>

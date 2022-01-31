@@ -1,25 +1,23 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.widget.GridListView;
+import com.tencent.mobileqq.widget.GridListView.GridListAdapter;
+import com.tencent.mobileqq.widget.GridListView.WraperAdapter;
 
 public class hgq
-  implements View.OnClickListener
+  extends DataSetObserver
 {
-  int jdField_a_of_type_Int;
+  public hgq(GridListView paramGridListView) {}
   
-  public hgq(QQCustomDialog paramQQCustomDialog, int paramInt)
+  public void onChanged()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    GridListView.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetChanged();
   }
   
-  public void onClick(View paramView)
+  public void onInvalidated()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.onArrayItemClick != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.onArrayItemClick.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.customWhichToCallBack(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    }
+    GridListView.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetInvalidated();
   }
 }
 

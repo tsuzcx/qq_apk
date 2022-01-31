@@ -1,17 +1,57 @@
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Process;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.QQMapActivity.MapRuntime;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-class adrv
-  implements Runnable
+public class adrv
+  extends BroadcastReceiver
 {
-  adrv(adru paramadru) {}
+  public adrv(QQMapActivity.MapRuntime paramMapRuntime) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    PresenceInterfaceImpl.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-    PresenceInterfaceImpl.a(this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl, true);
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a(0, this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a);
-    QLog.d("PresenceInterfaceImpl", 2, "saveUserPermission true");
+    int j = 1;
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    for (;;)
+    {
+      return;
+      int i;
+      if (paramContext.equals("com.tencent.process.exit"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQMapActivity", 2, "receive kill map process broadcast");
+        }
+        paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
+        if ((!QQMapActivity.a(paramIntent.getExtras().getString("verify"), paramContext)) || (!bdao.a(paramContext, MobileQQ.getContext()))) {
+          break label144;
+        }
+        i = j;
+      }
+      while (i != 0)
+      {
+        Process.killProcess(Process.myPid());
+        return;
+        i = j;
+        if (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))
+        {
+          i = j;
+          if (!paramContext.equals("mqq.intent.action.LOGOUT"))
+          {
+            i = j;
+            if (!paramContext.equals("mqq.intent.action.EXIT_" + MobileQQ.getMobileQQ().getPackageName())) {
+              label144:
+              i = 0;
+            }
+          }
+        }
+      }
+    }
   }
 }
 

@@ -7,15 +7,15 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_service$ReqGetFriendStoryNoExpireList
-  extends MessageMicro
+  extends MessageMicro<ReqGetFriendStoryNoExpireList>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16 }, new String[] { "uin_list", "ret_user_info" }, new Object[] { null, Integer.valueOf(0) }, ReqGetFriendStoryNoExpireList.class);
   public final PBUInt32Field ret_user_info = PBField.initUInt32(0);
-  public final PBRepeatMessageField uin_list = PBField.initRepeatMessage(qqstory_struct.UserSeqInfo.class);
+  public final PBRepeatMessageField<qqstory_struct.UserSeqInfo> uin_list = PBField.initRepeatMessage(qqstory_struct.UserSeqInfo.class);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetFriendStoryNoExpireList
  * JD-Core Version:    0.7.0.1
  */

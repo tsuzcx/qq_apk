@@ -1,47 +1,27 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.media.ThumbnailUtils;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.transfile.DeviceMsgThumbDownloader;
-import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aipe
-  implements BitmapDecoder
+class aipe
+  implements DialogInterface.OnClickListener
 {
-  public aipe(DeviceMsgThumbDownloader paramDeviceMsgThumbDownloader) {}
+  aipe(aipa paramaipa, QQAppInterface paramQQAppInterface) {}
   
-  public Bitmap a(URL paramURL)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LocalMediaInfo localLocalMediaInfo = this.a.a(paramURL);
-    if (localLocalMediaInfo == null) {}
+    switch (paramInt)
+    {
+    }
     for (;;)
     {
-      return null;
-      paramURL = new BitmapFactory.Options();
-      paramURL.inDensity = 160;
-      paramURL.inTargetDensity = 160;
-      paramURL.inScreenDensity = 160;
-      try
-      {
-        paramURL = BitmapFactory.decodeFile(localLocalMediaInfo.path, paramURL);
-        if (paramURL == null) {
-          continue;
-        }
-        return ThumbnailUtils.extractThumbnail(paramURL, localLocalMediaInfo.thumbWidth, localLocalMediaInfo.thumbHeight, 2);
-      }
-      catch (OutOfMemoryError paramURL)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("VIdeoThumbDownloader", 2, "DeviceImgBitmapDecoder getBitmap", paramURL);
-          }
-          paramURL = null;
-        }
-      }
+      this.jdField_a_of_type_Aipa.a.dismiss();
+      return;
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6C", "0X8009B6C", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Aipa.b();
+      aipa.a(this.jdField_a_of_type_Aipa, aipa.a(this.jdField_a_of_type_Aipa), true, Long.valueOf(aipa.b(this.jdField_a_of_type_Aipa)).longValue(), false);
+      continue;
+      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6D", "0X8009B6D", 0, 0, "", "", "", "");
+      aipa.a(this.jdField_a_of_type_Aipa, aipa.a(this.jdField_a_of_type_Aipa), true, Long.valueOf(aipa.b(this.jdField_a_of_type_Aipa)).longValue(), true);
     }
   }
 }

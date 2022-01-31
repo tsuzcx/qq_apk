@@ -1,58 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel.IRequestHandler;
-import com.tencent.mobileqq.apollo.aioChannel.HandleResult;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-public class yov
-  implements Runnable
+class yov
+  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private String b;
+  yov(you paramyou, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public yov(ApolloCmdChannel paramApolloCmdChannel, long paramLong, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloCmdChannel);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    ApolloCmdChannel localApolloCmdChannel;
-    do
-    {
-      return;
-      localApolloCmdChannel = (ApolloCmdChannel)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localApolloCmdChannel == null) || (this.jdField_a_of_type_Long == -1L) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b)));
-    synchronized (ApolloCmdChannel.access$000(localApolloCmdChannel))
-    {
-      Iterator localIterator = ApolloCmdChannel.access$000(localApolloCmdChannel).iterator();
-      while (localIterator.hasNext())
-      {
-        HandleResult localHandleResult = ((ApolloCmdChannel.IRequestHandler)localIterator.next()).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
-        if (localHandleResult != null)
-        {
-          if (localHandleResult.jdField_a_of_type_Boolean) {
-            localIterator.remove();
-          }
-          if (localHandleResult.b) {
-            localApolloCmdChannel.callbackFromRequest(this.jdField_a_of_type_Long, 0, this.jdField_a_of_type_JavaLangString, localHandleResult.jdField_a_of_type_JavaLangString);
-          }
-        }
-      }
-    }
+    ybt.a(this.jdField_a_of_type_You.a.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, 0, ykt.a(you.a(this.jdField_a_of_type_You), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.width.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.height.get()));
+    zaj.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "blank_content_clk", 0, 0, new String[] { "", you.a(this.jdField_a_of_type_You) + "", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yov
  * JD-Core Version:    0.7.0.1
  */

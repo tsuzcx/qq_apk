@@ -1,23 +1,24 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.widget.ContainerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
 public class akte
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends RecyclerView.ViewHolder
 {
-  public akte(ContainerView paramContainerView) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onGlobalLayout()
+  public akte(aktd paramaktd, View paramView)
   {
-    if (!ContainerView.a(this.a))
-    {
-      ContainerView.a(this.a, ContainerView.a);
-      ContainerView.a(this.a, true);
+    super(paramView);
+    if (paramView == aktd.a(paramaktd)) {
+      return;
     }
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364383));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akte
  * JD-Core Version:    0.7.0.1
  */

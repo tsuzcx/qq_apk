@@ -15,18 +15,18 @@ public class SecureRandom
     setSeed(System.currentTimeMillis());
   }
   
-  private SecureRandom(e parame)
+  protected SecureRandom(e parame)
   {
     super(0L);
     this.generator = parame;
   }
   
-  public final void a(byte[] paramArrayOfByte)
+  public void a(byte[] paramArrayOfByte)
   {
     this.generator.a(paramArrayOfByte);
   }
   
-  public final byte[] a(int paramInt)
+  public byte[] a(int paramInt)
   {
     byte[] arrayOfByte = new byte[paramInt];
     nextBytes(arrayOfByte);

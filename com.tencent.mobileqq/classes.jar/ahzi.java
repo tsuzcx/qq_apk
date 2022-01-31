@@ -1,24 +1,28 @@
-import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader;
-import com.tencent.mobileqq.shortvideo.ShortVideoResult;
-import com.tencent.mobileqq.shortvideo.UiCallBack;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
 
 public class ahzi
-  implements UiCallBack
+  extends aqru
 {
-  public ahzi(ShortVideoPreDownloader paramShortVideoPreDownloader) {}
+  public ahzi(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
   
-  public void a(int paramInt) {}
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
+  }
   
-  public void a(int paramInt, ShortVideoResult paramShortVideoResult) {}
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
+  }
   
-  public void a(int paramInt, ArrayList paramArrayList) {}
-  
-  public void b(int paramInt, ShortVideoResult paramShortVideoResult) {}
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahzi
  * JD-Core Version:    0.7.0.1
  */

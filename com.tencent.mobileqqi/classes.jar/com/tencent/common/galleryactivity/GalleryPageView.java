@@ -8,9 +8,9 @@ import android.view.animation.AlphaAnimation;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bwf;
-import bwg;
-import bwh;
+import bqh;
+import bqi;
+import bqj;
 import com.tencent.widget.AdapterView;
 
 public class GalleryPageView
@@ -20,7 +20,7 @@ public class GalleryPageView
   AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
   public TextView a;
   public AbstractGalleryScene a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new bwh(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new bqj(this);
   private boolean jdField_a_of_type_Boolean = true;
   public AlphaAnimation b = new AlphaAnimation(1.0F, 0.0F);
   
@@ -50,8 +50,8 @@ public class GalleryPageView
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(300L);
     this.b.setDuration(300L);
     this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene = paramAbstractGalleryScene;
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new bwf(this));
-    this.b.setAnimationListener(new bwg(this));
+    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new bqh(this));
+    this.b.setAnimationListener(new bqi(this));
   }
   
   public void a(AdapterView paramAdapterView, int paramInt)

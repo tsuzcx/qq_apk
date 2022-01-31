@@ -1,15 +1,23 @@
 package com.tencent.token;
 
-public final class az
+import android.content.Intent;
+import android.net.NetworkInfo;
+
+final class az
+  implements Runnable
 {
-  public String a;
-  public String b;
-  public boolean c;
-  public boolean d;
-  public int e;
-  public String f;
+  private Intent a;
   
-  public az(ax paramax) {}
+  az(ax paramax, Intent paramIntent)
+  {
+    this.a = paramIntent;
+  }
+  
+  public final void run()
+  {
+    NetworkInfo localNetworkInfo = (NetworkInfo)this.a.getParcelableExtra("networkInfo");
+    this.b.a(localNetworkInfo);
+  }
 }
 
 

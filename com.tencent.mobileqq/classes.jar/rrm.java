@@ -1,27 +1,13 @@
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-public class rrm
-  implements Runnable
+public abstract interface rrm
 {
-  public rrm(BaseChatPie paramBaseChatPie) {}
-  
-  public void run()
-  {
-    if (this.a.g != null)
-    {
-      this.a.g.getVisibility();
-      this.a.g.setVisibility(8);
-    }
-    if (BaseChatPie.a(this.a) != null) {
-      BaseChatPie.a(this.a).setVisibility(8);
-    }
-  }
+  public abstract void a(BaseArticleInfo paramBaseArticleInfo, View paramView, int paramInt, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rrm
  * JD-Core Version:    0.7.0.1
  */

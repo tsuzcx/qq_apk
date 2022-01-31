@@ -1,15 +1,41 @@
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.ChangeNewPath;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditActivity;
 
-class acvf
-  implements FileManagerRSWorker.ChangeNewPath
+public class acvf
+  implements View.OnClickListener
 {
-  acvf(acve paramacve, boolean paramBoolean, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, String paramString3, short paramShort, String paramString4, List paramList, int paramInt, String paramString5, long paramLong2) {}
+  public acvf(EditActivity paramEditActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    paramView = this.a;
+    if (!EditActivity.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      EditActivity.a(paramView, bool);
+      if (!EditActivity.a(this.a)) {
+        break;
+      }
+      this.a.e();
+      EditActivity.a(this.a).setImageResource(2130837979);
+      if (EditActivity.a(this.a) != null) {
+        EditActivity.a(this.a).setVisibility(0);
+      }
+      return;
+    }
+    if (EditActivity.a(this.a) != null) {
+      EditActivity.a(this.a).setVisibility(4);
+    }
+    EditActivity.a(this.a).setImageResource(2130847428);
+    this.a.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acvf
  * JD-Core Version:    0.7.0.1
  */

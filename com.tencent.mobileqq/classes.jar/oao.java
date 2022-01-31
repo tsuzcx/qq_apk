@@ -1,33 +1,29 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
 
 public class oao
-  extends SimpleJob
+  implements qft
 {
-  public oao(FeedSegment paramFeedSegment, List paramList) {}
+  public oao(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(boolean paramBoolean)
   {
-    TVKPreloader.a();
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.toArray();
-    int j = paramJobContext.length;
-    int i = 0;
-    while (i < j)
+    if (paramBoolean)
     {
-      TVKPreloader.a(paramJobContext[i].toString());
-      i += 1;
+      ReadInJoyVideoSubChannelActivity.a(this.a).setVisibility(0);
+      if (ReadInJoyVideoSubChannelActivity.a(this.a).a() != null) {}
+      for (String str = ReadInJoyVideoSubChannelActivity.a(this.a).a().a();; str = null)
+      {
+        ReadInJoyVideoSubChannelActivity.a(this.a).a(4, ReadInJoyVideoSubChannelActivity.a(this.a).a(), str);
+        return;
+      }
     }
-    return null;
+    ReadInJoyVideoSubChannelActivity.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oao
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,15 @@
-import dov.com.qq.im.capture.poi.FacePoiUI;
+import com.tencent.ark.open.ArkAppInfo.AppDownloadInfo;
 
-class annn
-  implements Runnable
+public class annn
 {
-  annn(annl paramannl) {}
-  
-  public void run()
-  {
-    FacePoiUI.a(this.a.a, 1);
-  }
+  public int a;
+  public ArkAppInfo.AppDownloadInfo a;
+  public String a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     annn
  * JD-Core Version:    0.7.0.1
  */

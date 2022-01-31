@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data.fts;
 
 import android.text.TextUtils;
+import bdeu;
 import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.fts.FTSMessageCodec;
 import com.tencent.mobileqq.utils.fts.FTSMessageCodec.MsgExts;
 import com.tencent.qphone.base.util.QLog;
@@ -17,6 +17,7 @@ public class FTSMessage
   public int istroop;
   public CharSequence matchSecondTitle;
   public CharSequence matchTitle;
+  public long msgCounter;
   public FTSMessageCodec.MsgExts msgExts;
   public int msgtype;
   public int searchStrategy = -1;
@@ -93,7 +94,7 @@ public class FTSMessage
   
   public String createInsertSQL()
   {
-    return String.format("FTSMessage Info [oId = %d, selfUin&istroop = %s, msgType = %s, senderUin = %s, msg|size = %s]", new Object[] { Long.valueOf(this.mOId), this.mExt1, this.mExt3, this.mExt2, Utils.a(this.mContent) });
+    return String.format("FTSMessage Info [oId = %d, selfUin&istroop = %s, msgType = %s, senderUin = %s, msg|size = %s]", new Object[] { Long.valueOf(this.mOId), this.mExt1, this.mExt3, this.mExt2, bdeu.a(this.mContent) });
   }
   
   public String createUpdateSQL()
@@ -101,52 +102,71 @@ public class FTSMessage
     return createDeleteSQL();
   }
   
-  protected void doDeserialize()
+  public void doDeserialize()
   {
     int i = this.mExt1.indexOf("ZzZ");
-    if (i == -1)
-    {
+    if (i == -1) {
       if (QLog.isColorLevel()) {
         QLog.e("Q.fts.FTSMessage", 2, "doDeserialize: failure, ext1 not valid");
       }
+    }
+    for (;;)
+    {
       return;
-    }
-    try
-    {
-      this.uin = Long.parseLong(this.mExt1.substring(0, i));
-      this.istroop = Integer.parseInt(this.mExt1.substring(i + 3));
-      this.senderuin = this.mExt2;
-      this.msgtype = Integer.parseInt(this.mExt3);
-      if ((this.mExts != null) && (this.mExts.length > 0))
+      try
       {
-        this.msgExts = ((FTSMessageCodec.MsgExts)FTSMessageCodec.a(this.mExts, 1));
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.fts.FTSMessage", 2, "doDeserialize: failure", localException);
+        this.uin = Long.parseLong(this.mExt1.substring(0, i));
+        this.istroop = Integer.parseInt(this.mExt1.substring(i + 3));
+        try
+        {
+          this.senderuin = this.mExt2;
+          this.msgtype = Integer.parseInt(this.mExt3);
+          if ((this.mExts != null) && (this.mExts.length > 0))
+          {
+            this.msgExts = ((FTSMessageCodec.MsgExts)FTSMessageCodec.a(this.mExts, 1));
+            if (TextUtils.isEmpty(this.mExt4)) {
+              continue;
+            }
+            this.msgCounter = Long.parseLong(this.mExt4);
+            return;
+          }
+        }
+        catch (Exception localException1)
+        {
+          QLog.e("Q.fts.FTSMessage", 1, new Object[] { "FTSMessage doDeserialize e:", localException1.toString() });
+          return;
         }
       }
-      this.msgExts = null;
+      catch (Exception localException2)
+      {
+        for (;;)
+        {
+          localException2.printStackTrace();
+          if (QLog.isColorLevel())
+          {
+            QLog.e("Q.fts.FTSMessage", 2, "doDeserialize: failure", localException2);
+            continue;
+            this.msgExts = null;
+          }
+        }
+      }
     }
   }
   
-  protected void doSerialize()
+  public void doSerialize()
   {
     this.mExt1 = getExt1(this.uin, this.istroop);
     this.mExt2 = this.senderuin;
     this.mExt3 = String.valueOf(this.msgtype);
-    if (this.msgExts != null)
-    {
+    if (this.msgExts != null) {
       this.mExts = FTSMessageCodec.a(this.msgExts, 1);
-      return;
     }
-    this.msgExts = null;
+    for (;;)
+    {
+      this.mExt4 = String.valueOf(this.msgCounter);
+      return;
+      this.msgExts = null;
+    }
   }
   
   public String getTableName()
@@ -166,7 +186,7 @@ public class FTSMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.fts.FTSMessage
  * JD-Core Version:    0.7.0.1
  */

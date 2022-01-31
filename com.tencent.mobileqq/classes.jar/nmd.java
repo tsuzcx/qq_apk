@@ -1,34 +1,27 @@
-import com.tencent.biz.qqstory.playmode.IPlayVideoStatusChangeListener;
-import com.tencent.biz.qqstory.playmode.child.VidListPlayMode;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.2;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class nmd
-  extends IPlayVideoStatusChangeListener
+  implements TVK_SDKMgr.InstallListener
 {
-  public nmd(VidListPlayMode paramVidListPlayMode) {}
+  public nmd(AdvertisementVideoPreloadManager.2 param2) {}
   
-  public void c(int paramInt)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    if (paramInt < this.a.a.a.size() - 1) {
-      StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { VidListPlayMode.a(this.a), "", "", "" });
-    }
+    nmb.c("installSDK onInstalledFailed arg0=" + paramInt);
   }
   
-  public void d(int paramInt)
+  public void onInstalledSuccessed()
   {
-    StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { VidListPlayMode.a(this.a), "", "", "" });
-  }
-  
-  public void e(int paramInt)
-  {
-    StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { VidListPlayMode.a(this.a), "", "", "" });
+    nmb.c("installSDK onInstalledSuccessed");
+    nmb.a(this.a.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nmd
  * JD-Core Version:    0.7.0.1
  */

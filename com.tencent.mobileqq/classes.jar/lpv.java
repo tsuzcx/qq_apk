@@ -1,20 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import java.util.List;
+import android.annotation.SuppressLint;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.gaudio.BaseGaInvite;
 
-class lpv
-  implements Runnable
+@SuppressLint({"HandlerLeak"})
+public class lpv
+  extends Handler
 {
-  lpv(lpu paramlpu, List paramList1, List paramList2) {}
+  public lpv(BaseGaInvite paramBaseGaInvite) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    ReadInJoyLogicEngineEventDispatcher.a().c(0, this.jdField_a_of_type_JavaUtilList);
-    ReadInJoyLogicEngineEventDispatcher.a().c(70, this.b);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.b();
+      return;
+    }
+    this.a.a("Msg");
+    super.sendEmptyMessageDelayed(1, 2000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lpv
  * JD-Core Version:    0.7.0.1
  */

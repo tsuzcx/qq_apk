@@ -24,7 +24,7 @@ public class RedTouchItem
   public String configVersion;
   public int count;
   public long curSeq;
-  public List extMsgs = new ArrayList();
+  public List<RedTouchItemExtMsg> extMsgs = new ArrayList();
   public long fromId;
   public String icon;
   public boolean isClosed;
@@ -197,7 +197,7 @@ public class RedTouchItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.redtouch.RedTouchItem
  * JD-Core Version:    0.7.0.1
  */

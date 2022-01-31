@@ -1,40 +1,31 @@
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.BookShareAdviceEditActivity;
-import com.tencent.mobileqq.activity.book.BookEditText;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
+import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 
 public class cco
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  public cco(BookShareAdviceEditActivity paramBookShareAdviceEditActivity) {}
+  public cco(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, PicEmoticonInfo paramPicEmoticonInfo) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    paramEditable = this.a.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.getText().toString();
-    if ((paramEditable != null) && ("".equals(paramEditable))) {
-      BookShareAdviceEditActivity.a(this.a).setEnabled(false);
-    }
-    for (;;)
+    if ((paramView != null) && ((paramView instanceof ImageView)))
     {
-      int i = this.a.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.a(paramEditable);
-      this.a.c = (40 - (i + 2) / 3);
-      if (this.a.c < 0) {
-        break;
+      View localView = (View)paramView.getParent();
+      paramView = paramView.getTag();
+      String str = EmosmUtils.getEmoticonSoundPath(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.eId);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a = new ChatHistory.PlayingPttHistoryInfo(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a);
       }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#9A9A9A"));
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.a.c));
-      return;
-      BookShareAdviceEditActivity.b(this.a).setEnabled(true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a.a(1, localView, paramView, str);
     }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-65536);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.a.c));
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

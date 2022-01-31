@@ -1,10 +1,11 @@
 package cooperation.qzone.webviewwrapper;
 
 import android.os.Bundle;
+import awgg;
+import bkao;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -13,7 +14,7 @@ import mqq.manager.Manager;
 public class QzoneWebViewRuntime
   extends AppInterface
 {
-  private EntityManagerFactory a;
+  private awgg a;
   
   public QzoneWebViewRuntime(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
@@ -49,7 +50,7 @@ public class QzoneWebViewRuntime
     return null;
   }
   
-  public EntityManagerFactory getEntityManagerFactory(String paramString)
+  public awgg getEntityManagerFactory(String paramString)
   {
     paramString = getAccount();
     if (paramString == null) {
@@ -89,12 +90,12 @@ public class QzoneWebViewRuntime
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    QzoneWebViewPluginManager.a().a(this);
+    bkao.a().a(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.webviewwrapper.QzoneWebViewRuntime
  * JD-Core Version:    0.7.0.1
  */

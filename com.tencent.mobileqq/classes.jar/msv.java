@@ -1,22 +1,20 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class msv
-  implements Runnable
+class msv
+  implements View.OnTouchListener
 {
-  public msv(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  msv(msr parammsr) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ((PublicAccountDataManager)this.a.app.getManager(55)).a();
-    TroopBarAssistantManager.a().c(this.a.app);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msv
  * JD-Core Version:    0.7.0.1
  */

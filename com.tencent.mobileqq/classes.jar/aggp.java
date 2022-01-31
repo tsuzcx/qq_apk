@@ -1,37 +1,53 @@
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.QQBroadcastReceiver;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aggp
-  extends QQBroadcastReceiver
+public abstract class aggp
 {
-  public aggp(ScanTorchActivity paramScanTorchActivity) {}
+  public int a;
+  public Context a;
+  protected BaseChatPie a;
+  protected SessionInfo a;
+  public QQAppInterface a;
+  public int b;
   
-  public void onReceive(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent)
+  public aggp(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
   {
-    if (paramIntent == null) {}
-    do
-    {
-      return;
-      paramAppRuntime = paramIntent.getAction();
-      if (QLog.isColorLevel()) {
-        QLog.d("ScanTorchActivity", 2, new Object[] { "onReceive, action=", paramAppRuntime });
-      }
-      if ("com.tencent.mobileqq__alive".equals(paramAppRuntime))
-      {
-        ScanTorchActivity.a(this.a);
-        return;
-      }
-    } while (!"tencent.ar.worldcup.finishScanTorch".equals(paramAppRuntime));
-    this.a.finish();
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public long a()
+  {
+    return 0L;
+  }
+  
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public String toString()
+  {
+    return "NavigateBar{id=" + this.jdField_a_of_type_Int + ", priority=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aggp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,45 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloPushManager;
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
-import com.tencent.mobileqq.apollo.task.ApolloActionHelper;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionPush;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
+import android.util.Property;
+import android.widget.ImageView;
 
-public class ykx
-  implements Runnable
+final class ykx
+  extends Property<ImageView, Matrix>
 {
-  public ykx(ApolloPushManager paramApolloPushManager, ApolloActionPush paramApolloActionPush, SpriteTaskParam paramSpriteTaskParam) {}
-  
-  public void run()
+  ykx(Class paramClass, String paramString)
   {
-    QQAppInterface localQQAppInterface;
-    SpriteTaskParam localSpriteTaskParam;
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam != null))
-    {
-      localQQAppInterface = ApolloPushManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloPushManager);
-      localSpriteTaskParam = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush.mContent)) {
-        break label99;
-      }
-    }
-    label99:
-    for (boolean bool = true;; bool = false)
-    {
-      ApolloActionHelper.a(localQQAppInterface, localSpriteTaskParam, bool, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.b);
-      if ((ApolloPushManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloPushManager) != null) && (this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush != null)) {
-        ((ApolloDaoManager)ApolloPushManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloPushManager).getManager(154)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush.mId);
-      }
+    super(paramClass, paramString);
+  }
+  
+  public Matrix a(ImageView paramImageView)
+  {
+    return null;
+  }
+  
+  public void a(ImageView paramImageView, Matrix paramMatrix)
+  {
+    Drawable localDrawable = paramImageView.getDrawable();
+    if (localDrawable == null) {
       return;
+    }
+    if (paramMatrix == null) {
+      localDrawable.setBounds(0, 0, paramImageView.getWidth(), paramImageView.getHeight());
+    }
+    for (;;)
+    {
+      paramImageView.invalidate();
+      return;
+      localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+      if (paramImageView.getImageMatrix() == null) {
+        paramImageView.setImageMatrix(new Matrix());
+      }
+      paramImageView.setImageMatrix(paramMatrix);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ykx
  * JD-Core Version:    0.7.0.1
  */

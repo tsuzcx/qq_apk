@@ -1,0 +1,39 @@
+package tencent.im.oidb.articlesummary;
+
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+
+public final class feeds_info$TopicRecommendFeedsInfo
+  extends MessageMicro<TopicRecommendFeedsInfo>
+{
+  static final MessageMicro.FieldMap __fieldMap__;
+  public final PBBytesField bytes_comments = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_subscribe_id = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_subscribe_name = PBField.initBytes(ByteStringMicro.EMPTY);
+  public feeds_info.TopicRecommendFeedsTitle msg_left_title = new feeds_info.TopicRecommendFeedsTitle();
+  public feeds_info.TopicRecommendFeedsTitle msg_right_title = new feeds_info.TopicRecommendFeedsTitle();
+  public final PBRepeatMessageField<feeds_info.TopicRecommendInfo> msg_topic_recommend_info = PBField.initRepeatMessage(feeds_info.TopicRecommendInfo.class);
+  public final PBUInt32Field uint32_feeds_style = PBField.initUInt32(0);
+  public final PBUInt64Field uint64_feeds_id = PBField.initUInt64(0L);
+  public final PBUInt64Field uint64_uin = PBField.initUInt64(0L);
+  
+  static
+  {
+    ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 90, 98, 106, 114 }, new String[] { "uint64_feeds_id", "uint32_feeds_style", "uint64_uin", "bytes_subscribe_id", "bytes_subscribe_name", "msg_topic_recommend_info", "msg_left_title", "msg_right_title", "bytes_comments" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, null, null, null, localByteStringMicro3 }, TopicRecommendFeedsInfo.class);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     tencent.im.oidb.articlesummary.feeds_info.TopicRecommendFeedsInfo
+ * JD-Core Version:    0.7.0.1
+ */

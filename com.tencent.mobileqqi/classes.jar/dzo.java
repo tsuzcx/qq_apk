@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
 
-public class dzo
-  implements DialogInterface.OnClickListener
+class dzo
+  implements Runnable
 {
-  public dzo(UpgradeActivity paramUpgradeActivity) {}
+  dzo(dzm paramdzm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.finish();
+    ((ChatActivity)this.a.a.b).p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dzo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/ej5" android:key="shake_item_default_bgimg" android:layout="@layout/afi" />
+    <Preference android:title="@string/ej4" android:key="shake_item_change_bgimg" android:layout="@layout/afi" />
+    <CheckBoxPreference android:persistent="false" android:title="@string/eje" android:key="shake_item_sound" android:layout="@layout/afi" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/e12" android:key="say_hi_list_shake_title" android:layout="@layout/afi" />
+    <Preference android:title="@string/ej6" android:key="shake_item_histoty_list" android:layout="@layout/afi" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/eks" android:key="shake_msg_list" android:layout="@layout/afi" />
+</PreferenceScreen>

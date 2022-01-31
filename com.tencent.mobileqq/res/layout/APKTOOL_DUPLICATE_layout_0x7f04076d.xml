@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a14d9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2354" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:scaleType="fitXY" />
-</LinearLayout>

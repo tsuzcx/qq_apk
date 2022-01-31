@@ -1,23 +1,23 @@
-import com.tencent.widget.ListView;
-
 public class amco
-  implements Runnable
+  implements alpg
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public void a(boolean paramBoolean, int paramInt) {}
   
-  private amco(ListView paramListView) {}
-  
-  public amco a(int paramInt1, int paramInt2)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    return this;
-  }
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentWidgetListView.setSelectionFromTop(this.jdField_a_of_type_Int, this.b);
+    if ((paramObject != null) && ((paramObject instanceof Object[]))) {}
+    for (paramObject = (Object[])paramObject;; paramObject = null)
+    {
+      switch (paramInt)
+      {
+      }
+      do
+      {
+        return;
+      } while (paramObject == null);
+      a(paramBoolean, ((Integer)paramObject[0]).intValue());
+      return;
+    }
   }
 }
 

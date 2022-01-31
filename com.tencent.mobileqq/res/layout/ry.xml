@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/ltm" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/ckr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/loading_layout" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+        <RelativeLayout android:id="@id/b9i" android:layout_width="80.0dip" android:layout_height="30.0dip" android:layout_marginRight="12.5dip" android:layout_alignParentRight="true">
+            <ImageView android:id="@id/aig" android:layout_width="40.0dip" android:layout_height="fill_parent" android:src="@drawable/r1" android:scaleType="centerInside" />
+            <ImageView android:id="@id/aga" android:layout_width="40.0dip" android:layout_height="fill_parent" android:src="@drawable/qz" android:scaleType="centerInside" android:layout_toRightOf="@id/aig" />
+            <View android:id="@id/e_r" android:background="#1a000000" android:visibility="visible" android:layout_width="0.5dip" android:layout_height="18.0dip" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <ProgressBar android:id="@id/e21" android:layout_width="50.0dip" android:layout_height="12.0dip" android:layout_marginTop="10.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/av0" android:indeterminateBehavior="repeat" android:layout_below="@id/cr_" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="55.5dip" android:layout_height="34.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.ColorSelectView android:id="@id/b25" android:layout_width="34.0dip" android:layout_height="34.0dip" />
+    <ImageView android:id="@id/b23" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginLeft="2.0dip" android:layout_centerVertical="true" />
+</RelativeLayout>

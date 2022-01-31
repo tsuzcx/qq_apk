@@ -1,47 +1,27 @@
-import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment.ContentViewHolder;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.Conversation;
+import mqq.os.MqqHandler;
 
-public class ajgh
-  extends PagerAdapter
+class ajgh
+  implements DialogInterface.OnClickListener
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  ajgh(ajgg paramajgg) {}
   
-  public ajgh(HomeworkGuideFragment paramHomeworkGuideFragment, Context paramContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    paramViewGroup.removeView((View)paramObject);
-  }
-  
-  public int getCount()
-  {
-    return HomeworkGuideFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment).size();
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969909, paramViewGroup, false);
-    HomeworkGuideFragment.ContentViewHolder localContentViewHolder = new HomeworkGuideFragment.ContentViewHolder(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment);
-    localContentViewHolder.a(paramInt, localView);
-    localView.setTag(localContentViewHolder);
-    HomeworkGuideFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment).add(localContentViewHolder);
-    paramViewGroup.addView(localView, 0);
-    return localView;
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    if (akyn.a() != null) {
+      akwd.a();
+    }
+    paramDialogInterface = akwd.a();
+    if (paramDialogInterface != null)
+    {
+      paramDialogInterface = paramDialogInterface.getHandler(Conversation.class);
+      if (paramDialogInterface != null) {
+        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(1134052));
+      }
+    }
   }
 }
 

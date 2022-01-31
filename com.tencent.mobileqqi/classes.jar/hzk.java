@@ -1,28 +1,67 @@
-import com.tencent.util.DumpMemInfoHandler;
-import java.util.Comparator;
-import java.util.Map.Entry;
+import common.qzone.component.cache.common.SoftHashMap;
+import java.util.AbstractSet;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 public class hzk
-  implements Comparator
+  extends AbstractSet
 {
-  public hzk(DumpMemInfoHandler paramDumpMemInfoHandler) {}
+  public hzk(SoftHashMap paramSoftHashMap) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public void clear()
   {
-    int i = ((Integer)((Map.Entry)paramObject1).getValue()).intValue();
-    int j = ((Integer)((Map.Entry)paramObject2).getValue()).intValue();
-    if (i == j) {
-      return 0;
+    this.a.clear();
+  }
+  
+  public boolean contains(Object paramObject)
+  {
+    return this.a.containsKey(paramObject);
+  }
+  
+  public Iterator iterator()
+  {
+    return new hzj(this.a);
+  }
+  
+  public boolean remove(Object paramObject)
+  {
+    if (this.a.containsKey(paramObject))
+    {
+      this.a.remove(paramObject);
+      return true;
     }
-    if (i < j) {
-      return 2;
+    return false;
+  }
+  
+  public int size()
+  {
+    return this.a.size();
+  }
+  
+  public Object[] toArray()
+  {
+    ArrayList localArrayList = new ArrayList(size());
+    Iterator localIterator = iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(localIterator.next());
     }
-    return -1;
+    return localArrayList.toArray();
+  }
+  
+  public Object[] toArray(Object[] paramArrayOfObject)
+  {
+    ArrayList localArrayList = new ArrayList(size());
+    Iterator localIterator = iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(localIterator.next());
+    }
+    return localArrayList.toArray(paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hzk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.webviewplugin.QzoneWanbaJsPlugin;
-
 public class andn
-  extends BroadcastReceiver
 {
-  public andn(QzoneWanbaJsPlugin paramQzoneWanbaJsPlugin) {}
+  public int a;
+  public long a;
+  public baub a;
+  public String a;
+  public boolean a;
+  public String b = "";
+  public String c = "";
+  public String d;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public andn()
   {
-    try
-    {
-      paramContext = paramIntent.getStringExtra("callback");
-      int i = paramIntent.getIntExtra("ret", 1);
-      QZLog.i("QzoneWanbaJsPlugin", "收到广播消息 callback=" + paramContext + ",ret=" + i);
-      this.a.a.callJs(paramContext, new String[] { "{'ret':" + i + "}" });
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      QZLog.e("QzoneWanbaJsPlugin", "callback error", paramContext);
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
+    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", md5='").append(this.b).append('\'');
+    localStringBuffer.append(", fileName='").append(this.c).append('\'');
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

@@ -1,18 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ListView;
-import com.tencent.mobileqq.tribe.TribePostTitlePrefixPanelController;
-import com.tencent.mobileqq.util.DisplayUtil;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
-public class aisk
-  implements ValueAnimator.AnimatorUpdateListener
+class aisk
+  extends aira
 {
-  public aisk(TribePostTitlePrefixPanelController paramTribePostTitlePrefixPanelController) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected aisk(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    TribePostTitlePrefixPanelController.a(this.a).setPadding(DisplayUtil.a(TribePostTitlePrefixPanelController.a(this.a).getContext(), 8.0F), i, 0, 0);
+    super(paramNewPhotoListActivity);
+  }
+  
+  public String getExceedMaxSelectNumStr(LocalMediaInfo paramLocalMediaInfo)
+  {
+    int i = this.mPhotoCommonData.maxSelectNum;
+    return ((NewPhotoListActivity)this.mActivity).getString(2131695253, new Object[] { Integer.valueOf(i) });
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
   }
 }
 

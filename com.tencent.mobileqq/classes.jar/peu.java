@@ -1,24 +1,19 @@
-import android.content.ComponentCallbacks2;
-import android.content.res.Configuration;
-import com.tencent.common.app.ToolRuntimeBase;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.Comparator;
 
-public class peu
-  implements ComponentCallbacks2
+class peu
+  implements Comparator<AdvertisementInfo>
 {
-  public peu(ToolRuntimeBase paramToolRuntimeBase) {}
+  peu(pes parampes) {}
   
-  public void onConfigurationChanged(Configuration paramConfiguration) {}
-  
-  public void onLowMemory() {}
-  
-  public void onTrimMemory(int paramInt)
+  public int a(AdvertisementInfo paramAdvertisementInfo1, AdvertisementInfo paramAdvertisementInfo2)
   {
-    this.a.onTrimMemory(paramInt);
+    return paramAdvertisementInfo1.mAdKdPos - paramAdvertisementInfo2.mAdKdPos;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     peu
  * JD-Core Version:    0.7.0.1
  */

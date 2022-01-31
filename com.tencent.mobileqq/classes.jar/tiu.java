@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.ptt.TouchProxyRelativeLayout;
+import UserGrowth.stPublisherRsp;
+import UserGrowth.stRedDotRsp;
 
-class tiu
-  implements Runnable
+public abstract interface tiu
+  extends tat
 {
-  tiu(tit paramtit) {}
+  public abstract void a();
   
-  public void run()
-  {
-    QQLSActivity.a(this.a.a).removeView(QQLSActivity.a(this.a.a));
-    QQLSActivity.a(this.a.a, null);
-  }
+  public abstract void a(stPublisherRsp paramstPublisherRsp);
+  
+  public abstract void a(stRedDotRsp paramstRedDotRsp);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tiu
  * JD-Core Version:    0.7.0.1
  */

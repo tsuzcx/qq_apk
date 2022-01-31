@@ -1,27 +1,39 @@
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.app.MessageRoamManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-class sav
-  implements Runnable
+public class sav
+  implements sai
 {
-  sav(sau paramsau) {}
+  public static final String a;
+  private static String b = "WebFastLikeDislikeCreator";
+  private saw a;
   
-  public void run()
+  static
   {
-    if (this.a.a.b)
-    {
-      this.a.a.b = false;
-      MessageRoamManager localMessageRoamManager = (MessageRoamManager)this.a.a.app.getManager(91);
-      if (localMessageRoamManager != null) {
-        localMessageRoamManager.d();
-      }
-    }
+    jdField_a_of_type_JavaLangString = alud.a(2131717276);
+  }
+  
+  public int a(BaseData paramBaseData)
+  {
+    return 19;
+  }
+  
+  public sah a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_Saw = new saw(this, paramContext, LayoutInflater.from(paramContext).inflate(2131560014, null), paramBaseData);
+    return this.jdField_a_of_type_Saw;
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return paramBaseData.s == 21;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sav
  * JD-Core Version:    0.7.0.1
  */

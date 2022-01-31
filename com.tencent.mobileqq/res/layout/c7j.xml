@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/li3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:keepScreenOn="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/dys" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <LinearLayout android:gravity="center" android:layout_gravity="left" android:orientation="vertical" android:id="@id/eed" android:layout_width="100.0dip" android:layout_height="fill_parent" android:alpha="0.0">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/cc8" android:rotation="180.0" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="快退10s" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="right" android:orientation="vertical" android:id="@id/eee" android:layout_width="100.0dip" android:layout_height="fill_parent" android:alpha="0.0">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/cc8" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="快进10s" />
+    </LinearLayout>
+    <include android:id="@id/m6w" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/es" />
+    <FrameLayout android:orientation="vertical" android:id="@id/cc5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="67.0dip" android:layout_marginRight="25.0dip">
+        <com.tencent.mobileqq.widget.SquareImageView android:id="@id/dwu" android:layout_width="56.0dip" android:layout_height="56.0dip" android:src="@drawable/com" android:scaleType="fitXY" app:round_radius="30.0dip" />
+        <com.tencent.biz.subscribe.widget.textview.FollowTextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="bottom|center" android:id="@id/mcp" android:background="@drawable/h1" android:layout_width="56.0dip" android:layout_height="25.0dip" android:text="关注" />
+    </FrameLayout>
+    <include android:id="@id/lhz" android:visibility="gone" layout="@layout/c7i" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/l3r" android:background="@color/c1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
+        <TextView android:textSize="13.0dip" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="当前网络非Wi-Fi" />
+        <TextView android:textSize="13.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/k8s" android:background="@drawable/gv" android:layout_width="85.0dip" android:layout_height="34.0dip" android:layout_marginTop="10.0dip" android:text="继续播放" />
+    </LinearLayout>
+</FrameLayout>

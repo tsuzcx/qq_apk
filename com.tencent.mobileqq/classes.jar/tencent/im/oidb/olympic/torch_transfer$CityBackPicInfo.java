@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class torch_transfer$CityBackPicInfo
-  extends MessageMicro
+  extends MessageMicro<CityBackPicInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50, 58 }, new String[] { "uint32_city_id", "str_city_name", "uint64_city_pic_id", "str_city_pic_url", "str_city_pic_md5", "str_cons_pic_url", "str_cons_pic_md5" }, new Object[] { Integer.valueOf(0), "", Long.valueOf(0L), "", "", "", "" }, CityBackPicInfo.class);
   public final PBStringField str_city_name = PBField.initString("");
@@ -21,7 +21,7 @@ public final class torch_transfer$CityBackPicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.olympic.torch_transfer.CityBackPicInfo
  * JD-Core Version:    0.7.0.1
  */

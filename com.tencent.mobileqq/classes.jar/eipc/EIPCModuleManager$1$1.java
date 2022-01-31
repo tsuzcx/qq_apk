@@ -9,7 +9,7 @@ class EIPCModuleManager$1$1
   
   public void run()
   {
-    this.a.onCall(this.b, this.c, this.d);
+    this.val$finalModule.onCall(this.val$action, this.val$params, this.val$encodeCallbackId);
   }
 }
 

@@ -9,13 +9,13 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class MqqLbsPack$RspGetLBSRPList
-  extends MessageMicro
+  extends MessageMicro<RspGetLBSRPList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_page_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public MqqLbsPack.RspHead msg_head = new MqqLbsPack.RspHead();
-  public final PBRepeatMessageField rpt_poi_info_list = PBField.initRepeatMessage(MqqLbsPack.POIRPInfo.class);
+  public final PBRepeatMessageField<MqqLbsPack.POIRPInfo> rpt_poi_info_list = PBField.initRepeatMessage(MqqLbsPack.POIRPInfo.class);
   public final PBUInt32Field uint32_flush_dist = PBField.initUInt32(0);
   public final PBUInt32Field uint32_flush_time = PBField.initUInt32(0);
   public final PBUInt32Field uint32_get_award_range = PBField.initUInt32(0);
@@ -32,7 +32,7 @@ public final class MqqLbsPack$RspGetLBSRPList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.lbspack.MqqLbsPack.RspGetLBSRPList
  * JD-Core Version:    0.7.0.1
  */

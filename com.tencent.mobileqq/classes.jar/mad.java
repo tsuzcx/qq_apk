@@ -1,31 +1,47 @@
-import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.os.Bundle;
+import android.os.RemoteCallbackList;
+import android.os.RemoteException;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.qphone.base.util.QLog;
 
-public class mad
-  implements URLDrawable.URLDrawableListener
+class mad
+  extends nac
 {
-  public mad(TopicShareHelper paramTopicShareHelper) {}
+  mad(mac parammac, String paramString, int paramInt) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle arg3)
   {
-    if ((TopicShareHelper.a(this.a) != null) && (TopicShareHelper.a(this.a).getStatus() == 1) && ((TopicShareHelper.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "sendNearbyVideoChatPbReq, cmd " + this.jdField_a_of_type_JavaLangString + "==>onResult, errorCode:" + paramInt);
+    }
+    synchronized (this.jdField_a_of_type_Mac.a.a)
     {
-      paramURLDrawable = (RegionDrawable)TopicShareHelper.a(this.a).getCurrDrawable();
-      TopicShareHelper.a(this.a, paramURLDrawable.getBitmap());
+      int j = this.jdField_a_of_type_Mac.a.a.beginBroadcast();
+      int i = 0;
+      for (;;)
+      {
+        if (i < j) {
+          try
+          {
+            ((lzd)this.jdField_a_of_type_Mac.a.a.getBroadcastItem(i)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt, paramArrayOfByte);
+            i += 1;
+          }
+          catch (RemoteException paramArrayOfByte)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "callBack RemoteException", paramArrayOfByte);
+            }
+          }
+        }
+      }
+      this.jdField_a_of_type_Mac.a.a.finishBroadcast();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mad
  * JD-Core Version:    0.7.0.1
  */

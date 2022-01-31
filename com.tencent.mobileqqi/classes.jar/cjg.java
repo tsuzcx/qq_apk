@@ -1,30 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class cjg
-  implements Runnable
+  implements View.OnClickListener
 {
-  public cjg(ChatSettingActivity paramChatSettingActivity, StringBuilder paramStringBuilder) {}
+  public cjg(EditActivity paramEditActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Message localMessage = null;
-    Object localObject = localMessage;
-    if (this.jdField_a_of_type_JavaLangStringBuilder != null)
-    {
-      localObject = localMessage;
-      if (this.jdField_a_of_type_JavaLangStringBuilder.length() > 0) {
-        localObject = this.jdField_a_of_type_JavaLangStringBuilder.toString();
-      }
-    }
-    if (ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), this.jdField_a_of_type_JavaLangStringBuilder) > 0)
-    {
-      localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.a.obtainMessage();
-      localMessage.what = 18;
-      localMessage.obj = localObject;
-      localMessage.sendToTarget();
-    }
+    this.a.f();
+    paramView = this.a.a.getText().toString();
+    Intent localIntent = this.a.getIntent();
+    localIntent.putExtra("result", paramView);
+    this.a.setResult(-1, localIntent);
+    this.a.finish();
   }
 }
 

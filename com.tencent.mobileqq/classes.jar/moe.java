@@ -1,76 +1,103 @@
 import android.content.Context;
-import android.graphics.Bitmap;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import cooperation.readinjoy.ReadInJoyHelper;
-import java.util.Map;
-import mqq.app.MobileQQ;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.av.ui.VoiceChangeItemView1;
 
 public class moe
-  implements Runnable
+  extends BaseAdapter
 {
-  public moe(FastWebShareUtils paramFastWebShareUtils, Map paramMap, String paramString1, String paramString2, String paramString3, String paramString4, AppInterface paramAppInterface, String paramString5, ArticleInfo paramArticleInfo) {}
+  public static String a;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private VoiceChangeItemView1 jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1;
+  moj jdField_a_of_type_Moj;
+  private moh[] jdField_a_of_type_ArrayOfMoh;
+  private int jdField_b_of_type_Int;
+  private VoiceChangeItemView1 jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1;
+  private int c;
+  private int d;
   
-  public void run()
+  static
   {
-    int j = 0;
-    int i = 0;
-    if (FastWebShareUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebShareUtils).isShowing()) {
-      FastWebShareUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebShareUtils).dismiss();
+    jdField_a_of_type_JavaLangString = "VoiceChangeAdapter";
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    notifyDataSetChanged();
+  }
+  
+  public void a(moh[] paramArrayOfmoh)
+  {
+    this.jdField_a_of_type_ArrayOfMoh = paramArrayOfmoh;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_ArrayOfMoh == null) {
+      return 0;
     }
-    FastWebShareUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebShareUtils, String.valueOf(System.currentTimeMillis()));
-    Object localObject1 = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
-    Object localObject2;
-    String str1;
-    String str2;
-    String str3;
-    String str4;
-    if (ReadInJoyHelper.u(ReadInJoyUtils.a()) == 1)
+    return this.jdField_a_of_type_ArrayOfMoh.length;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (this.jdField_a_of_type_ArrayOfMoh == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_ArrayOfMoh[paramInt];
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    boolean bool = true;
+    lek.a(jdField_a_of_type_JavaLangString, "getView|position=" + paramInt + ", view=" + paramView);
+    if (paramView == null) {
+      paramView = new VoiceChangeItemView1(this.jdField_a_of_type_AndroidContentContext);
+    }
+    for (;;)
     {
-      localObject2 = WXShareHelper.a();
-      str1 = FastWebShareUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebShareUtils);
-      str2 = this.jdField_a_of_type_JavaLangString;
-      str3 = this.b;
-      str4 = this.c;
-      if ("2".equals(this.d))
+      paramViewGroup = (moh)getItem(paramInt);
+      VoiceChangeItemView1 localVoiceChangeItemView1;
+      if (paramViewGroup != null)
       {
-        ((WXShareHelper)localObject2).b(str1, str2, (Bitmap)localObject1, str3, str4, i);
-        localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getApplicationContext();
-        localObject2 = this.e;
-        if (!"2".equals(this.d)) {
-          break label242;
+        if ((this.d == 0) && (paramInt == 1) && (this.jdField_b_of_type_Int == 0)) {
+          this.jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1 = this.jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1;
+        }
+        localVoiceChangeItemView1 = (VoiceChangeItemView1)paramView;
+        if (this.c != paramViewGroup.jdField_a_of_type_Int) {
+          break label168;
         }
       }
-    }
-    label242:
-    for (i = 4;; i = 5)
-    {
-      FastWebShareUtils.a((Context)localObject1, (String)localObject2, i, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      return;
-      i = 1;
-      break;
-      localObject2 = WxShareHelperFromReadInjoy.a();
-      str1 = FastWebShareUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebShareUtils);
-      str2 = this.jdField_a_of_type_JavaLangString;
-      str3 = this.b;
-      str4 = this.c;
-      if ("2".equals(this.d)) {}
-      for (i = j;; i = 1)
+      for (;;)
       {
-        ((WxShareHelperFromReadInjoy)localObject2).a(str1, str2, (Bitmap)localObject1, str3, str4, i);
-        break;
+        localVoiceChangeItemView1.a(paramInt, paramViewGroup, bool, this.jdField_a_of_type_Int, this.jdField_a_of_type_Moj);
+        if (this.c == paramViewGroup.jdField_a_of_type_Int)
+        {
+          if (paramInt != 0) {
+            this.jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1 = localVoiceChangeItemView1;
+          }
+          this.d = paramInt;
+        }
+        this.jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1 = ((VoiceChangeItemView1)paramView);
+        this.jdField_b_of_type_Int = paramInt;
+        return paramView;
+        label168:
+        bool = false;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     moe
  * JD-Core Version:    0.7.0.1
  */

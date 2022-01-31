@@ -14,9 +14,10 @@ public abstract class ImageProcessor
   public static final int TYPE_OVAL = 3;
   public static final int TYPE_ROUND_CORNER = 2;
   public static final int TYPE_SpecifiedSizeCropByPivot = 4;
-  public ImageProcessor mPreProcessor;
+  protected ImageKey mImageKey;
+  protected ImageProcessor mPreProcessor;
   
-  public final Drawable doProcess(Drawable paramDrawable)
+  final Drawable doProcess(Drawable paramDrawable)
   {
     if (paramDrawable == null) {
       paramDrawable = null;
@@ -41,6 +42,11 @@ public abstract class ImageProcessor
   @Public
   public abstract Drawable process(Drawable paramDrawable);
   
+  public void setImageKey(ImageKey paramImageKey)
+  {
+    this.mImageKey = paramImageKey;
+  }
+  
   public void setPreProcessor(ImageProcessor paramImageProcessor)
   {
     this.mPreProcessor = paramImageProcessor;
@@ -48,7 +54,7 @@ public abstract class ImageProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.ImageProcessor
  * JD-Core Version:    0.7.0.1
  */

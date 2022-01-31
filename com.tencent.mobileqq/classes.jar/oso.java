@@ -1,18 +1,23 @@
-import com.tencent.biz.qrcode.activity.LoginManagerActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.config.AladdinConfigServlet.ConfigResult;
 
-class oso
-  implements Runnable
+public final class oso
+  implements Parcelable.Creator<AladdinConfigServlet.ConfigResult>
 {
-  oso(osn paramosn) {}
-  
-  public void run()
+  public AladdinConfigServlet.ConfigResult a(Parcel paramParcel)
   {
-    LoginManagerActivity.a(this.a.a);
+    return new AladdinConfigServlet.ConfigResult(paramParcel);
+  }
+  
+  public AladdinConfigServlet.ConfigResult[] a(int paramInt)
+  {
+    return new AladdinConfigServlet.ConfigResult[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oso
  * JD-Core Version:    0.7.0.1
  */

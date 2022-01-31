@@ -1,22 +1,29 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
 
 public class aetb
-  implements View.OnFocusChangeListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aetb(SelectLocationFragment paramSelectLocationFragment) {}
+  public aetb(IntimateTitleSwitchView paramIntimateTitleSwitchView) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!paramBoolean) {
-      SelectLocationFragment.a(this.a);
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(this.a.f - i);
+      this.a.b.setTranslationX(-i);
+      return;
     }
+    this.a.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(-i);
+    this.a.b.setTranslationX(this.a.f - i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aetb
  * JD-Core Version:    0.7.0.1
  */

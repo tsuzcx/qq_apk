@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class smart_device_proxy$CommonHead
-  extends MessageMicro
+  extends MessageMicro<CommonHead>
 {
   public static final int BYTES_SN_FIELD_NUMBER = 5;
   public static final int BYTES_TINYIDA2_FIELD_NUMBER = 7;
@@ -44,7 +44,7 @@ public final class smart_device_proxy$CommonHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.smart_device_proxy.smart_device_proxy.CommonHead
  * JD-Core Version:    0.7.0.1
  */

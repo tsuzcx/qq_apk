@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView android:paddingLeft="22.0dip" android:scrollbars="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/kaa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/kvv" android:layout_width="@dimen/b_t" android:layout_height="@dimen/b_t" android:layout_marginRight="@dimen/b_u" android:scaleType="center" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/kuj" android:layout_width="@dimen/b_t" android:layout_height="@dimen/b_t" android:layout_marginRight="@dimen/b_u" android:scaleType="center" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/kuk" android:layout_width="@dimen/b_t" android:layout_height="@dimen/b_t" android:layout_marginRight="@dimen/b_u" android:scaleType="center" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/kwd" android:layout_width="@dimen/b_t" android:layout_height="@dimen/b_t" android:layout_marginRight="@dimen/b_u" android:scaleType="center" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/kuq" android:layout_width="@dimen/b_t" android:layout_height="@dimen/b_t" android:layout_marginRight="@dimen/b_u" android:scaleType="center" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/kun" android:layout_width="@dimen/b_t" android:layout_height="@dimen/b_t" android:layout_marginRight="@dimen/b_u" android:scaleType="center" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/kui" android:layout_width="@dimen/b_t" android:layout_height="@dimen/b_t" android:layout_marginRight="@dimen/b_u" android:scaleType="center" />
+    </LinearLayout>
+</HorizontalScrollView>

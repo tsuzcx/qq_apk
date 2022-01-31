@@ -1,27 +1,54 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
-import aduf;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
+import atav;
+import atay;
+import ataz;
+import atbb;
+import atbd;
+import atbh;
+import atbi;
+import bjuq;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
-import com.tencent.hydevteam.pluginframework.pluginloader.DynamicPluginContainerLoader;
-import com.tencent.hydevteam.pluginframework.pluginloader.exceptions.PluginContainerLoadException;
+import com.tencent.hydevteam.pluginframework.installedplugin.UseDynamicPluginLoaderInstalledPlugin;
 import com.tencent.mobileqq.intervideo.IVPluginInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.core.common.InstalledApk;
+import com.tencent.shadow.dynamic.host.DynamicRuntime;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class HuayangLoadbackgroudActivity
   extends Activity
 {
-  private long jdField_a_of_type_Long;
+  public static long a;
+  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private static Map<String, InstalledApk> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private atbb jdField_a_of_type_Atbb;
+  private atbd jdField_a_of_type_Atbd = new ataz(this);
   private IVPluginInfo jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo;
-  private HuayangPluginLauncher.HuayangPluginLauncherListener jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher$HuayangPluginLauncherListener = new aduf(this);
-  private HuayangPluginLauncher jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher;
   private String jdField_a_of_type_JavaLangString;
+  private long b;
+  
+  static
+  {
+    jdField_a_of_type_AndroidContentBroadcastReceiver = new atay();
+    if (TextUtils.equals(bjuq.a(BaseApplicationImpl.sApplication), BaseApplicationImpl.sApplication.getPackageName() + ":troophomework"))
+    {
+      IntentFilter localIntentFilter = new IntentFilter("action_iv_plugin_update");
+      BaseApplicationImpl.sApplication.registerReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    }
+  }
   
   private void a()
   {
@@ -36,7 +63,7 @@ public class HuayangLoadbackgroudActivity
     localWindow.setAttributes(localLayoutParams);
   }
   
-  public static void a(Context paramContext, String paramString1, IVPluginInfo paramIVPluginInfo, InstalledPlugin paramInstalledPlugin, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4)
+  public static void a(Context paramContext, String paramString1, IVPluginInfo paramIVPluginInfo, InstalledPlugin paramInstalledPlugin, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4, long paramLong)
   {
     Intent localIntent = new Intent(paramContext, HuayangLoadbackgroudActivity.class);
     localIntent.setFlags(268435456);
@@ -48,21 +75,22 @@ public class HuayangLoadbackgroudActivity
     localIntent.putExtra("ivpluginInfo", paramIVPluginInfo);
     localIntent.putExtra("launchpkgname", paramString1);
     localIntent.putExtra("appName", paramString4);
+    localIntent.putExtra("key_start_flag", paramLong);
     paramContext.startActivity(localIntent);
   }
   
   public void onBackPressed()
   {
-    if (HuayangJsPlugin.a(this.jdField_a_of_type_JavaLangString)) {
-      Monitor.a("2691706");
+    if (atav.a(this.jdField_a_of_type_JavaLangString)) {
+      atbh.a("2691706");
     }
     for (;;)
     {
       finish();
-      sendBroadcast(new Intent(HuayangJsPlugin.b(this.jdField_a_of_type_JavaLangString)));
+      sendBroadcast(new Intent(atav.b(this.jdField_a_of_type_JavaLangString)));
       return;
-      if (HuayangJsPlugin.b(this.jdField_a_of_type_JavaLangString)) {
-        Monitor.a("2597724");
+      if (atav.b(this.jdField_a_of_type_JavaLangString)) {
+        atbh.a("2597724");
       }
     }
   }
@@ -70,74 +98,81 @@ public class HuayangLoadbackgroudActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    if (getIntent().getBooleanExtra("isPreload", false))
-    {
+    boolean bool1 = getIntent().getBooleanExtra("isPreload", false);
+    if ((paramBundle != null) || (bool1)) {
       finish();
-      return;
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("HuayangPluginNewDownloader", 2, "LoadingActivity onCreate：" + this.jdField_a_of_type_Long);
-    }
-    a();
-    boolean bool1 = getIntent().getBooleanExtra("isMainPlugin", false);
-    this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("launchpkgname");
-    paramBundle = (InstalledPlugin)getIntent().getSerializableExtra("plugin");
-    Object localObject = new DynamicPluginContainerLoader();
-    String str1;
-    String str2;
-    String str3;
-    boolean bool2;
-    for (;;)
+    long l;
+    do
     {
-      try
-      {
-        ((DynamicPluginContainerLoader)localObject).load(paramBundle);
-        localObject = getIntent().getExtras();
-        ((Bundle)localObject).setClassLoader(getClass().getClassLoader());
-        str1 = ((Bundle)localObject).getString("pageUri");
-        str2 = ((Bundle)localObject).getString("uin");
-        str3 = ((Bundle)localObject).getString("appName");
-        this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo = ((IVPluginInfo)((Bundle)localObject).getParcelable("ivpluginInfo"));
-        bool2 = ((Bundle)localObject).getBoolean("needStart", false);
-        Monitor.a = TextUtils.equals(str3, "hy_sixgod");
-        this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.c = this.jdField_a_of_type_JavaLangString;
-        if (!bool1) {
-          break;
-        }
-        if (HuayangJsPlugin.a(this.jdField_a_of_type_JavaLangString))
-        {
-          Monitor.a("2691705");
-          this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher = HuayangPluginLauncher.a(this, paramBundle);
-          this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher$HuayangPluginLauncherListener);
-          this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher.a(str1, bool2, true, this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo, str2, str3);
-          return;
-        }
+      return;
+      this.b = System.currentTimeMillis();
+      a();
+      bool1 = getIntent().getBooleanExtra("isMainPlugin", false);
+      l = getIntent().getLongExtra("key_start_flag", 0L);
+      if (QLog.isColorLevel()) {
+        QLog.d("HuayangPluginNewDownloader", 2, "LoadingActivity onCreate：" + this.b + " isMainPlugin:" + bool1);
       }
-      catch (PluginContainerLoadException paramBundle)
+      if (!bool1) {
+        break label151;
+      }
+      if ((jdField_a_of_type_Long == 0L) || (jdField_a_of_type_Long != l)) {
+        break;
+      }
+      finish();
+    } while (!QLog.isColorLevel());
+    QLog.d("HuayangPluginLauncher", 2, "不启动下载的新插件");
+    return;
+    jdField_a_of_type_Long = l;
+    label151:
+    this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("launchpkgname");
+    paramBundle = getIntent().getStringExtra("appName");
+    UseDynamicPluginLoaderInstalledPlugin localUseDynamicPluginLoaderInstalledPlugin = (UseDynamicPluginLoaderInstalledPlugin)getIntent().getSerializableExtra("plugin");
+    if ((InstalledApk)jdField_a_of_type_JavaUtilMap.get(paramBundle) == null)
+    {
+      localObject1 = localUseDynamicPluginLoaderInstalledPlugin.dynamicPluginContainerFile;
+      localObject2 = localUseDynamicPluginLoaderInstalledPlugin.dynamicPluginLoaderVersion;
+      localObject2 = new File(((File)localObject1).getParentFile(), "plugin_container_odex_" + (String)localObject2);
+      ((File)localObject2).mkdirs();
+      localObject1 = new InstalledApk(((File)localObject1).getAbsolutePath(), ((File)localObject2).getAbsolutePath(), null);
+      DynamicRuntime.loadRuntime((InstalledApk)localObject1);
+      DynamicRuntime.saveLastRuntimeInfo(this, (InstalledApk)localObject1);
+      jdField_a_of_type_JavaUtilMap.put(paramBundle, localObject1);
+    }
+    Object localObject1 = getIntent().getExtras();
+    ((Bundle)localObject1).setClassLoader(getClass().getClassLoader());
+    Object localObject2 = ((Bundle)localObject1).getString("pageUri");
+    String str = ((Bundle)localObject1).getString("uin");
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo = ((IVPluginInfo)((Bundle)localObject1).getParcelable("ivpluginInfo"));
+    boolean bool2 = ((Bundle)localObject1).getBoolean("needStart", false);
+    atbh.a = TextUtils.equals(paramBundle, "hy_sixgod");
+    atbi.a(this, paramBundle);
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.c = this.jdField_a_of_type_JavaLangString;
+    if (bool1)
+    {
+      if (atav.a(this.jdField_a_of_type_JavaLangString)) {
+        atbh.a("2691705");
+      }
+      for (;;)
       {
-        Monitor.a("2490058");
-        paramBundle = new Intent(HuayangJsPlugin.a(this.jdField_a_of_type_JavaLangString));
-        paramBundle.putExtra("key_state", 7);
-        sendBroadcast(paramBundle);
-        finish();
+        this.jdField_a_of_type_Atbb = atbb.a(this, localUseDynamicPluginLoaderInstalledPlugin);
+        this.jdField_a_of_type_Atbb.a(this.jdField_a_of_type_Atbd);
+        this.jdField_a_of_type_Atbb.a((String)localObject2, bool2, true, this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo, str, paramBundle);
         return;
-      }
-      if (HuayangJsPlugin.b(this.jdField_a_of_type_JavaLangString)) {
-        Monitor.a("2597722");
-      } else {
-        MonitorConfig.a();
+        if (atav.b(this.jdField_a_of_type_JavaLangString)) {
+          atbh.a("2597722");
+        }
       }
     }
-    HuayangPluginLauncher.a(this, paramBundle).a(str1, bool2, false, this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo, str2, str3);
+    atbb.a(this, localUseDynamicPluginLoaderInstalledPlugin).a((String)localObject2, bool2, false, this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo, str, paramBundle);
     finish();
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher != null) {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher$HuayangPluginLauncherListener);
+    if (this.jdField_a_of_type_Atbb != null) {
+      this.jdField_a_of_type_Atbb.b(this.jdField_a_of_type_Atbd);
     }
   }
   
@@ -145,7 +180,7 @@ public class HuayangLoadbackgroudActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity
  * JD-Core Version:    0.7.0.1
  */

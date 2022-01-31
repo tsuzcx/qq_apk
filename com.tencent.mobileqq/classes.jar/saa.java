@@ -1,17 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-public class saa
-  implements DialogInterface.OnClickListener
+public final class saa
+  implements Parcelable.Creator<BaseData>
 {
-  public saa(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
+  public BaseData a(Parcel paramParcel)
+  {
+    return new BaseData(paramParcel);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public BaseData[] a(int paramInt)
+  {
+    return new BaseData[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     saa
  * JD-Core Version:    0.7.0.1
  */

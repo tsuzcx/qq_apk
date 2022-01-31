@@ -1,40 +1,44 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.QZoneCover;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.topicvideo.VTopicVideo;
+import com.tencent.viola.core.dispatch.ComponentAppearEvent;
+import com.tencent.viola.core.dispatch.IEvent;
+import com.tencent.viola.core.dispatch.IObserver;
 
 public class sqn
-  implements Runnable
+  implements IObserver
 {
-  public sqn(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public sqn(VTopicVideo paramVTopicVideo) {}
   
-  public void run()
+  public String getRef()
   {
-    Object localObject = ((FriendsManager)this.a.app.getManager(50)).a(this.a.app.getCurrentAccountUin());
-    if (localObject == null) {
-      this.a.j = "-1";
-    }
-    for (;;)
+    return this.a.getRef();
+  }
+  
+  public void onReceive(IEvent paramIEvent)
+  {
+    if ((paramIEvent.getRef().equals(this.a.getRef())) && (this.a.getVideoLifeCycleChangeListener() != null))
     {
-      this.a.j = "-1";
-      return;
-      if (((Card)localObject).lCurrentStyleId == ProfileCardTemplate.a)
-      {
-        localObject = (QZoneCover)this.a.app.getEntityManagerFactory().createEntityManager().a(QZoneCover.class, this.a.app.getCurrentAccountUin());
-        if (localObject != null) {
-          this.a.j = ((QZoneCover)localObject).type;
-        }
+      paramIEvent = (ComponentAppearEvent)paramIEvent;
+      if (!paramIEvent.event.equals("didDisappear")) {
+        break label59;
       }
+      this.a.getVideoLifeCycleChangeListener().O_();
     }
+    label59:
+    do
+    {
+      return;
+      if (paramIEvent.event.equals("willAppear"))
+      {
+        this.a.getVideoLifeCycleChangeListener().M_();
+        return;
+      }
+    } while (!paramIEvent.event.equals("didAppear"));
+    this.a.getVideoLifeCycleChangeListener().N_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sqn
  * JD-Core Version:    0.7.0.1
  */

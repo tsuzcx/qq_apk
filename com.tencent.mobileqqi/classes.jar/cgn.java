@@ -1,27 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler.Callback;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
-public final class cgn
-  implements DialogInterface.OnClickListener
+public class cgn
+  extends Handler
 {
-  public cgn(boolean paramBoolean, Handler.Callback paramCallback) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler$Callback != null) {
-      this.jdField_a_of_type_AndroidOsHandler$Callback.handleMessage(null);
-    }
-    paramDialogInterface.dismiss();
-  }
+  public cgn(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cgn
  * JD-Core Version:    0.7.0.1
  */

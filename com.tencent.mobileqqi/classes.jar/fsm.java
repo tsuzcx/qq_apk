@@ -1,27 +1,40 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.emoticonview.BigEmoticonViewBinder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class fsm
-  implements Runnable
+  implements View.OnClickListener
 {
-  public fsm(BigEmoticonViewBinder paramBigEmoticonViewBinder, ImageView paramImageView) {}
+  public fsm(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Bitmap localBitmap = EmosmUtils.getCoverBitmap(2, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmoticonViewBinder.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
-    if (localBitmap != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmoticonViewBinder.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
+    if (NetworkUtil.e(this.a.a()))
+    {
+      UniformDownloadActivity.a(this.a).setVisibility(8);
+      if (FileManagerUtil.a())
+      {
+        FMDialogUtil.a(this.a.a(), 2131558759, 2131558780, new fsn(this));
+        return;
+      }
+      UniformDownloadActivity.a(this.a);
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+      return;
     }
+    FMToastUtil.a(2131562488);
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     fsm
  * JD-Core Version:    0.7.0.1
  */

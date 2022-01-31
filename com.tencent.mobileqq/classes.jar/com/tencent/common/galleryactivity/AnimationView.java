@@ -10,7 +10,8 @@ import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import com.tencent.util.ViscousFluidInterpolator;
+import bhtc;
+import zja;
 
 public class AnimationView
   extends View
@@ -23,8 +24,8 @@ public class AnimationView
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   AccelerateDecelerateInterpolator jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator = new AccelerateDecelerateInterpolator();
-  private AnimationLister jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister;
-  ViscousFluidInterpolator jdField_a_of_type_ComTencentUtilViscousFluidInterpolator = new ViscousFluidInterpolator();
+  bhtc jdField_a_of_type_Bhtc = new bhtc();
+  private zja jdField_a_of_type_Zja;
   public boolean a;
   float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = 3;
@@ -73,14 +74,15 @@ public class AnimationView
       {
         this.jdField_a_of_type_Int = 3;
         this.jdField_e_of_type_Boolean = false;
-        if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister != null) {
-          this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.b();
+        if (this.jdField_a_of_type_Zja != null) {
+          this.jdField_a_of_type_Zja.b();
         }
         super.onDraw(paramCanvas);
         return;
       }
       this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
       this.jdField_a_of_type_Int = 2;
+      paramCanvas.save();
     case 2: 
       float f1 = (float)(SystemClock.uptimeMillis() - this.jdField_b_of_type_Long) / (float)this.jdField_c_of_type_Long;
       if (f1 >= 1.0F) {
@@ -143,9 +145,10 @@ public class AnimationView
       }
     }
     this.jdField_e_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister != null) {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.b();
+    if (this.jdField_a_of_type_Zja != null) {
+      this.jdField_a_of_type_Zja.b();
     }
+    paramCanvas.save();
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_b_of_type_AndroidGraphicsRect);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
     paramCanvas.restore();
@@ -167,8 +170,8 @@ public class AnimationView
         this.jdField_b_of_type_Int = 3;
         this.jdField_f_of_type_Boolean = false;
         super.onDraw(paramCanvas);
-      } while (this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister == null);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.e();
+      } while (this.jdField_a_of_type_Zja == null);
+      this.jdField_a_of_type_Zja.e();
       return;
       this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
       this.jdField_b_of_type_Int = 2;
@@ -178,7 +181,7 @@ public class AnimationView
         this.jdField_b_of_type_Int = 3;
       }
       f1 = Math.min(f1, 1.0F);
-      f1 = this.jdField_a_of_type_ComTencentUtilViscousFluidInterpolator.getInterpolation(f1);
+      f1 = this.jdField_a_of_type_Bhtc.getInterpolation(f1);
       Rect localRect1 = this.jdField_a_of_type_AndroidGraphicsRect;
       Rect localRect2 = this.jdField_b_of_type_AndroidGraphicsRect;
       int[] arrayOfInt = new int[2];
@@ -233,11 +236,10 @@ public class AnimationView
         }
       }
     }
-    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister != null) {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.e();
+    if (this.jdField_a_of_type_Zja != null) {
+      this.jdField_a_of_type_Zja.e();
     }
     this.jdField_f_of_type_Boolean = false;
-    paramCanvas.restore();
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_c_of_type_AndroidGraphicsRect);
   }
   
@@ -284,15 +286,15 @@ public class AnimationView
       paramCanvas.restore();
       return;
       label468:
-      this.jdField_e_of_type_Float = this.jdField_a_of_type_ComTencentUtilViscousFluidInterpolator.getInterpolation(this.jdField_e_of_type_Float);
+      this.jdField_e_of_type_Float = this.jdField_a_of_type_Bhtc.getInterpolation(this.jdField_e_of_type_Float);
       break;
       label486:
       this.jdField_b_of_type_Boolean = false;
-      if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister != null) {
+      if (this.jdField_a_of_type_Zja != null) {
         if (this.jdField_d_of_type_Boolean) {
-          this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.b();
+          this.jdField_a_of_type_Zja.b();
         } else {
-          this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.e();
+          this.jdField_a_of_type_Zja.e();
         }
       }
     }
@@ -310,8 +312,8 @@ public class AnimationView
     this.jdField_d_of_type_Int = paramInt2;
     this.jdField_e_of_type_Int = paramInt3;
     this.jdField_c_of_type_Long = paramLong;
-    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister != null) {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.d();
+    if (this.jdField_a_of_type_Zja != null) {
+      this.jdField_a_of_type_Zja.d();
     }
     invalidate();
   }
@@ -326,8 +328,8 @@ public class AnimationView
     this.jdField_b_of_type_AndroidGraphicsRect = paramRect2;
     this.jdField_c_of_type_Int = paramInt;
     this.jdField_c_of_type_Long = paramLong;
-    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister != null) {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.c();
+    if (this.jdField_a_of_type_Zja != null) {
+      this.jdField_a_of_type_Zja.c();
     }
     invalidate();
   }
@@ -347,8 +349,8 @@ public class AnimationView
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
     this.jdField_c_of_type_Long = paramLong;
     a();
-    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister != null) {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.c();
+    if (this.jdField_a_of_type_Zja != null) {
+      this.jdField_a_of_type_Zja.c();
     }
   }
   
@@ -367,8 +369,8 @@ public class AnimationView
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
     this.jdField_c_of_type_Long = paramLong;
     a();
-    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister != null) {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.d();
+    if (this.jdField_a_of_type_Zja != null) {
+      this.jdField_a_of_type_Zja.d();
     }
   }
   
@@ -392,9 +394,9 @@ public class AnimationView
     super.onDraw(paramCanvas);
   }
   
-  public void setAnimationListener(AnimationLister paramAnimationLister)
+  public void setAnimationListener(zja paramzja)
   {
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister = paramAnimationLister;
+    this.jdField_a_of_type_Zja = paramzja;
   }
 }
 

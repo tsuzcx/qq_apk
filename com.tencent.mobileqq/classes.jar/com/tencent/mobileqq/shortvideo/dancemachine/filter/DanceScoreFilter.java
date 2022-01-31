@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.shortvideo.dancemachine.filter;
 
-import aiba;
-import aibb;
-import aibc;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.SystemClock;
@@ -23,6 +20,7 @@ import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
 import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.GameNumberResource;
 import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.ShareResource;
 import com.tencent.mobileqq.shortvideo.dancemachine.utils.DanceLog;
+import com.tencent.mobileqq.shortvideo.filter.FilterBusinessOperation;
 import com.tencent.mobileqq.shortvideo.filter.QQDanceEventHandler;
 import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
 import java.util.List;
@@ -31,128 +29,70 @@ import java.util.Random;
 public class DanceScoreFilter
   extends DanceBaseFilter
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private long jdField_a_of_type_Long;
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private GLImageView jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView;
-  private GLScoreBoard jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard;
-  private GLTextView jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView;
-  private ResourceManager jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager = ResourceManager.a();
-  private String jdField_a_of_type_JavaLangString = "";
-  private Random jdField_a_of_type_JavaUtilRandom = new Random();
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float = 0.0F;
-  private long jdField_b_of_type_Long = 0L;
-  private Animation jdField_b_of_type_AndroidViewAnimationAnimation;
-  private GLImageView jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = false;
-  private Animation jdField_c_of_type_AndroidViewAnimationAnimation;
-  private GLImageView jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView;
-  private boolean jdField_c_of_type_Boolean = false;
-  private boolean d = false;
-  private int e;
-  private int f;
-  private final int g = 4000;
+  private final int GAME_END_DELAY_TIME = 4000;
+  private Animation bgAnim;
+  private GLImageView bgView;
+  private boolean mGamePlayEnd = false;
+  private long mGamePlayEndTimestamp = 0L;
+  private boolean mHaveCalledHandler = false;
+  private Random mRandom = new Random();
+  private ResourceManager mResourceManager = ResourceManager.getInstance();
+  private boolean numAnimEnd = false;
+  private long numAnimTime;
+  private String overPercent = "";
+  private GLTextView rankSys;
+  private float rankSysBottom = 0.0F;
+  private float rankSysTop = 0.0F;
+  private Animation rateAnim;
+  private GLImageView rateView;
+  private Animation scoreAnim;
+  private GLScoreBoard scoreBoardView;
+  private String scoreRate;
+  private GLImageView scoreView;
+  private int shareHeight;
+  private int shareY;
+  private boolean startNumAnim = false;
   
   public DanceScoreFilter(int paramInt, QQFilterRenderManager paramQQFilterRenderManager)
   {
     super(paramInt, paramQQFilterRenderManager);
   }
   
-  private Animation a()
-  {
-    AnimationSet localAnimationSet = new AnimationSet(false);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
-    localScaleAnimation.setDuration(300L);
-    localAnimationSet.addAnimation(localScaleAnimation);
-    localAnimationSet.setAnimationListener(new aiba(this));
-    return localAnimationSet;
-  }
-  
-  private Animation a(int paramInt1, int paramInt2)
-  {
-    float f1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a().a();
-    AnimationSet localAnimationSet = new AnimationSet(false);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(DisplayUtils.a(50.0F) * f1, DisplayUtils.a(50.0F) * f1, -paramInt1 * f1, f1 * paramInt2);
-    localTranslateAnimation.setDuration(1000L);
-    localTranslateAnimation.setInterpolator(new BounceInterpolator());
-    localAnimationSet.addAnimation(localTranslateAnimation);
-    localAnimationSet.setAnimationListener(new aibb(this));
-    localAnimationSet.setStartOffset(300L);
-    return localAnimationSet;
-  }
-  
-  private void a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a().b();
-    int i = ((Rect)localObject).width();
-    int j = ((Rect)localObject).height();
-    localObject = new RectF(0.0F, 0.0F, i, j);
-    float f2 = (i - this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.a()) / 2.0F;
-    float f1 = this.jdField_a_of_type_Float;
-    float f3 = this.jdField_b_of_type_Float - this.jdField_a_of_type_Float;
-    if (f3 <= this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.a()) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.a((int)f3);
-    }
-    for (;;)
-    {
-      ((RectF)localObject).set(f2, f1, i - f2, this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.a() + f1);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.b((RectF)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.d((RectF)localObject);
-      return;
-      f1 += (f3 - this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.a()) / 2.0F;
-    }
-  }
-  
-  private Animation b()
-  {
-    AnimationSet localAnimationSet = new AnimationSet(false);
-    Object localObject = new ScaleAnimation(1.8F, 1.0F, 1.8F, 1.0F, 1, 0.5F, 1, 0.5F);
-    ((Animation)localObject).setDuration(600L);
-    localAnimationSet.addAnimation((Animation)localObject);
-    localObject = new AlphaAnimation(0.0F, 1.0F);
-    ((Animation)localObject).setDuration(600L);
-    localAnimationSet.addAnimation((Animation)localObject);
-    localAnimationSet.setAnimationListener(new aibc(this));
-    return localAnimationSet;
-  }
-  
-  private void c(int paramInt1, int paramInt2)
+  private void drawNumAnim(int paramInt1, int paramInt2)
   {
     float f2 = 99.599998F;
     float f3 = 0.0F;
     long l = SystemClock.elapsedRealtime();
     float f1;
-    if ((this.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_Long < l) && (paramInt1 > 0))
+    if ((this.numAnimTime > 0L) && (this.numAnimTime < l) && (paramInt1 > 0))
     {
-      l -= this.jdField_a_of_type_Long;
+      l -= this.numAnimTime;
       if (l <= paramInt1) {
-        break label323;
+        break label321;
       }
-      if (!this.jdField_b_of_type_Boolean)
+      if (!this.numAnimEnd)
       {
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(true);
-        this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a(this.jdField_c_of_type_AndroidViewAnimationAnimation);
-        paramInt1 = ResourceManager.a().a().size();
+        this.numAnimEnd = true;
+        this.rateView.setVisibility(true);
+        this.rateView.startAnimation(this.rateAnim);
+        paramInt1 = ResourceManager.getInstance().getDancePostures().size();
         float f5 = paramInt2 * 1.0F / (paramInt1 * 50);
-        this.jdField_a_of_type_JavaUtilRandom.setSeed(System.nanoTime());
-        float f4 = this.jdField_a_of_type_JavaUtilRandom.nextInt(10) + 100.0F * f5 * 2.0F;
+        this.mRandom.setSeed(System.nanoTime());
+        float f4 = this.mRandom.nextInt(10) + 100.0F * f5 * 2.0F;
         f1 = f4;
         if (f4 > 97.0F)
         {
-          this.jdField_a_of_type_JavaUtilRandom.setSeed(System.nanoTime());
-          f1 = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() - 0.14F) * 3.0F + 97.0F;
+          this.mRandom.setSeed(System.nanoTime());
+          f1 = (this.mRandom.nextFloat() - 0.14F) * 3.0F + 97.0F;
         }
         if (f5 != 0.0F) {
-          break label348;
+          break label346;
         }
         f1 = f3;
       }
     }
-    label323:
-    label348:
+    label321:
+    label346:
     for (;;)
     {
       f1 = (int)(f1 * 10.0F) / 10.0F;
@@ -161,64 +101,150 @@ public class DanceScoreFilter
       }
       for (;;)
       {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.f();
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.a("你的分数超过了", 7, -1);
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.a("" + f1 + "%", 4, -18322);
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.a("的用户", 3, -1);
-        a();
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.h_(true);
-        this.jdField_a_of_type_JavaLangString = (f1 + "");
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.d(paramInt2);
+        this.rankSys.clearTextCache();
+        this.rankSys.setText("你的分数超过了", 7, -1);
+        this.rankSys.setText("" + f1 + "%", 4, -18322);
+        this.rankSys.setText("的用户", 3, -1);
+        rankSystemComputeRegion();
+        this.rankSys.setVisibility(true);
+        this.overPercent = (f1 + "");
+        this.scoreBoardView.setScore(paramInt2);
         for (;;)
         {
-          this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.a();
+          this.scoreBoardView.draw();
           return;
           paramInt1 = (int)(paramInt2 * ((float)l / paramInt1));
-          this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.d(paramInt1);
+          this.scoreBoardView.setScore(paramInt1);
         }
       }
     }
   }
   
-  private void i()
+  private void rankSystemComputeRegion()
   {
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a().a(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$GameNumberResource.jdField_a_of_type_JavaLangString);
+    Object localObject = this.mDanceManager.getContext().getSurfaceViewSize();
+    int i = ((Rect)localObject).width();
+    int j = ((Rect)localObject).height();
+    localObject = new RectF(0.0F, 0.0F, i, j);
+    float f2 = (i - this.rankSys.getTextWidth()) / 2.0F;
+    float f1 = this.rankSysTop;
+    float f3 = this.rankSysBottom - this.rankSysTop;
+    if (f3 <= this.rankSys.getTextHeight()) {
+      this.rankSys.setTextSize((int)f3);
+    }
+    for (;;)
+    {
+      ((RectF)localObject).set(f2, f1, i - f2, this.rankSys.getTextHeight() + f1);
+      this.rankSys.setImageRegion((RectF)localObject);
+      this.rankSys.setImageClipDrawRegion((RectF)localObject);
+      return;
+      f1 += (f3 - this.rankSys.getTextHeight()) / 2.0F;
+    }
   }
   
-  public void b() {}
-  
-  public void b(int paramInt1, int paramInt2)
+  private Animation setupBgAnim()
   {
-    super.b(paramInt1, paramInt2);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a().b();
+    AnimationSet localAnimationSet = new AnimationSet(false);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
+    localScaleAnimation.setDuration(300L);
+    localAnimationSet.addAnimation(localScaleAnimation);
+    localAnimationSet.setAnimationListener(new DanceScoreFilter.1(this));
+    return localAnimationSet;
+  }
+  
+  private Animation setupRateAnim()
+  {
+    AnimationSet localAnimationSet = new AnimationSet(false);
+    Object localObject = new ScaleAnimation(1.8F, 1.0F, 1.8F, 1.0F, 1, 0.5F, 1, 0.5F);
+    ((Animation)localObject).setDuration(600L);
+    localAnimationSet.addAnimation((Animation)localObject);
+    localObject = new AlphaAnimation(0.0F, 1.0F);
+    ((Animation)localObject).setDuration(600L);
+    localAnimationSet.addAnimation((Animation)localObject);
+    localAnimationSet.setAnimationListener(new DanceScoreFilter.3(this));
+    return localAnimationSet;
+  }
+  
+  private Animation setupScoreAnim(int paramInt1, int paramInt2)
+  {
+    float f = this.mDanceManager.getContext().getViewPortRatio();
+    AnimationSet localAnimationSet = new AnimationSet(false);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(DisplayUtils.pixelToRealPixel(50.0F) * f, DisplayUtils.pixelToRealPixel(50.0F) * f, -paramInt1 * f, f * paramInt2);
+    localTranslateAnimation.setDuration(1000L);
+    localTranslateAnimation.setInterpolator(new BounceInterpolator());
+    localAnimationSet.addAnimation(localTranslateAnimation);
+    localAnimationSet.setAnimationListener(new DanceScoreFilter.2(this));
+    localAnimationSet.setStartOffset(300L);
+    return localAnimationSet;
+  }
+  
+  private void startShowNumber()
+  {
+    this.numAnimTime = SystemClock.elapsedRealtime();
+    this.startNumAnim = true;
+    this.mDanceManager.getContext().playSound(this.mResourceManager.mGameNumberResource.scoreSound);
+  }
+  
+  public void onCloseClicked() {}
+  
+  public void onDrawFrame()
+  {
+    super.onDrawFrame();
+    this.bgView.draw();
+    this.scoreView.draw();
+    this.rateView.draw();
+    if (this.startNumAnim) {
+      drawNumAnim(1500, this.mDanceManager.mGamePlayOutData.mScore);
+    }
+    this.rankSys.draw();
+    if (this.mGamePlayEnd)
+    {
+      long l1 = SystemClock.elapsedRealtime();
+      long l2 = this.numAnimTime;
+      long l3 = this.mGamePlayEndTimestamp;
+      if ((1050L - (l1 - l2) <= 0L) && (l1 - l3 >= 4000L) && (!this.mHaveCalledHandler))
+      {
+        QQDanceEventHandler localQQDanceEventHandler = getQQFilterRenderManager().getBusinessOperation().getDanceEventHandler();
+        if (localQQDanceEventHandler != null) {
+          localQQDanceEventHandler.scoreSceneEnd(this.mDanceManager.mGamePlayOutData.mScore, this.scoreRate, this.overPercent);
+        }
+        GLFrameImage.temporaryReleaseTextureCache();
+        DanceLog.printFrameQueue("GLFrameImage", "DanceScoreFilter[onDrawFrame]:temporaryReleaseTextureCache");
+        this.mHaveCalledHandler = true;
+      }
+    }
+  }
+  
+  public void onSurfaceChange(int paramInt1, int paramInt2)
+  {
+    super.onSurfaceChange(paramInt1, paramInt2);
+    Object localObject = this.mDanceManager.getContext().getSurfaceViewSize();
     paramInt1 = ((Rect)localObject).width();
     paramInt2 = ((Rect)localObject).height();
     localObject = new RectF(0.0F, 0.0F, paramInt1, paramInt2);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$ShareResource.f);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.b((RectF)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.d((RectF)localObject);
-    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$ShareResource.g);
-    int i = this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.b().c();
-    int j = this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.b().b();
-    double d1 = i / j;
-    if (!Double.isNaN(d1))
+    this.bgView.setImageRes(this.mResourceManager.mShareResource.shareBg);
+    this.bgView.setImageRegion((RectF)localObject);
+    this.bgView.setImageClipDrawRegion((RectF)localObject);
+    this.scoreView.setImageRes(this.mResourceManager.mShareResource.shareScoreBg);
+    int i = this.scoreView.getCurrentBackGround().getHeight();
+    int j = this.scoreView.getCurrentBackGround().getWidth();
+    double d = i / j;
+    if (!Double.isNaN(d))
     {
-      i = paramInt1 - DisplayUtils.a(50.0F) * 2;
-      j = (int)(d1 * i);
+      i = paramInt1 - DisplayUtils.pixelToRealPixel(50.0F) * 2;
+      j = (int)(d * i);
       paramInt2 = (paramInt2 - j) / 2;
-      localObject = new RectF(DisplayUtils.a(50.0F), paramInt2, paramInt1 - DisplayUtils.a(50.0F), paramInt2 + j);
-      this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.b((RectF)localObject);
-      this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.d((RectF)localObject);
-      this.e = j;
-      this.f = paramInt2;
+      localObject = new RectF(DisplayUtils.pixelToRealPixel(50.0F), paramInt2, paramInt1 - DisplayUtils.pixelToRealPixel(50.0F), paramInt2 + j);
+      this.scoreView.setImageRegion((RectF)localObject);
+      this.scoreView.setImageClipDrawRegion((RectF)localObject);
+      this.shareHeight = j;
+      this.shareY = paramInt2;
       RectF localRectF = new RectF(((RectF)localObject).left + i * 0.06F, ((RectF)localObject).top + j * 0.45F, ((RectF)localObject).right - i * 0.06F, ((RectF)localObject).top + j * 0.74F);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.e(DisplayUtils.a(0.0F));
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.a(localRectF);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.b(0.0F);
-      this.jdField_a_of_type_Float = (((RectF)localObject).top + j * 0.74F);
-      this.jdField_b_of_type_Float = (((RectF)localObject).top + j * 0.84F);
+      this.scoreBoardView.setNumberInterval(DisplayUtils.pixelToRealPixel(0.0F));
+      this.scoreBoardView.setScoreBoardSize(localRectF);
+      this.scoreBoardView.setNumberImageSlope(0.0F);
+      this.rankSysTop = (((RectF)localObject).top + j * 0.74F);
+      this.rankSysBottom = (((RectF)localObject).top + j * 0.84F);
       paramInt1 = (int)(i * 0.18F);
       float f1 = ((RectF)localObject).left;
       float f2 = i;
@@ -230,86 +256,58 @@ public class DanceScoreFilter
       float f8 = ((RectF)localObject).top;
       float f9 = j;
       localObject = new RectF(f1 + f2 * 0.41F, f3 + f4 * 0.16F, f6 * 0.41F + f5 + f7, paramInt1 + (f9 * 0.16F + f8));
-      this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.d((RectF)localObject);
-      this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.b((RectF)localObject);
+      this.rateView.setImageClipDrawRegion((RectF)localObject);
+      this.rateView.setImageRegion((RectF)localObject);
     }
-    a();
+    rankSystemComputeRegion();
   }
   
-  public void c()
+  public void onSurfaceCreate()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.e();
-    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.e();
-    this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.e();
-    this.jdField_a_of_type_AndroidViewAnimationAnimation = a();
-    this.jdField_c_of_type_AndroidViewAnimationAnimation = b();
-    this.jdField_b_of_type_AndroidViewAnimationAnimation = a(this.e, this.f);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(true);
-    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(false);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.h_(true);
-    this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(false);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.h_(false);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = 0L;
-    this.d = false;
+    super.onSurfaceCreate();
+    this.bgView = new GLImageView(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+    this.scoreView = new GLImageView(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+    this.scoreBoardView = new GLScoreBoard(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+    this.rateView = new GLImageView(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+    ResourceManager.GameNumberResource localGameNumberResource = ResourceManager.getInstance().mGameNumberResource;
+    this.scoreBoardView.setAnimationFrames(localGameNumberResource.gameNums);
+    this.scoreBoardView.setLoadTextureMode(0);
+    this.scoreBoardView.initAnimationFrame();
+    this.rankSys = new GLTextView(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+    this.rankSys.setTextSize(DisplayUtils.pixelToRealPixel(32.0F));
   }
   
-  public void d()
+  public void onSurfaceDestroy()
   {
-    super.d();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView = new GLImageView(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView = new GLImageView(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard = new GLScoreBoard(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-    this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView = new GLImageView(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-    ResourceManager.GameNumberResource localGameNumberResource = ResourceManager.a().jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$GameNumberResource;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.a(localGameNumberResource.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.a(0);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.b();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView = new GLTextView(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.a(DisplayUtils.a(32.0F));
+    super.onSurfaceDestroy();
   }
   
-  public void e()
+  public void rollbackStatusCallOnInitFilter()
   {
-    super.e();
-  }
-  
-  public void h()
-  {
-    super.h();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a();
-    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a();
-    this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a();
-    if (this.jdField_a_of_type_Boolean) {
-      c(1500, this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a.a);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.a();
-    if (this.jdField_c_of_type_Boolean)
-    {
-      long l1 = SystemClock.elapsedRealtime();
-      long l2 = this.jdField_a_of_type_Long;
-      long l3 = this.jdField_b_of_type_Long;
-      if ((1050L - (l1 - l2) <= 0L) && (l1 - l3 >= 4000L) && (!this.d))
-      {
-        QQDanceEventHandler localQQDanceEventHandler = a().a();
-        if (localQQDanceEventHandler != null) {
-          localQQDanceEventHandler.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a.a, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-        }
-        GLFrameImage.f();
-        DanceLog.b("GLFrameImage", "DanceScoreFilter[onDrawFrame]:temporaryReleaseTextureCache");
-        this.d = true;
-      }
-    }
+    this.startNumAnim = false;
+    this.numAnimEnd = false;
+    this.numAnimTime = 0L;
+    this.bgView.clearAnimation();
+    this.scoreView.clearAnimation();
+    this.rateView.clearAnimation();
+    this.bgAnim = setupBgAnim();
+    this.rateAnim = setupRateAnim();
+    this.scoreAnim = setupScoreAnim(this.shareHeight, this.shareY);
+    this.bgView.setVisibility(true);
+    this.scoreView.setVisibility(false);
+    this.scoreBoardView.setVisibility(true);
+    this.rateView.setVisibility(false);
+    this.rankSys.setVisibility(false);
+    this.bgView.startAnimation(this.bgAnim);
+    this.scoreRate = "";
+    this.mGamePlayEnd = false;
+    this.mGamePlayEndTimestamp = 0L;
+    this.mHaveCalledHandler = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceScoreFilter
  * JD-Core Version:    0.7.0.1
  */

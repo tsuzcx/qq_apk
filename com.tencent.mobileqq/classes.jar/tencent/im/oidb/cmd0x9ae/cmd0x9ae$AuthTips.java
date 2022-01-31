@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class cmd0x9ae$AuthTips
-  extends MessageMicro
+  extends MessageMicro<AuthTips>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34 }, new String[] { "string_tips_title", "string_tips_context", "string_tips_action", "string_tips_action_url" }, new Object[] { "", "", "", "" }, AuthTips.class);
   public final PBStringField string_tips_action = PBField.initString("");
@@ -16,7 +16,7 @@ public final class cmd0x9ae$AuthTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x9ae.cmd0x9ae.AuthTips
  * JD-Core Version:    0.7.0.1
  */

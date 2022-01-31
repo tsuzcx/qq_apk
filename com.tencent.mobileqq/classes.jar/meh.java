@@ -1,39 +1,24 @@
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadinjoyAdVideoReportData;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import android.graphics.Bitmap;
 
-public class meh
-  implements Runnable
+class meh
+  implements lpu
 {
-  public meh(VideoFeedsPlayManager paramVideoFeedsPlayManager) {}
+  meh(meg parammeg) {}
   
-  public void run()
+  public boolean a(Bitmap paramBitmap, String paramString)
   {
-    if ((VideoFeedsPlayManager.a(this.a) != null) && ((VideoFeedsPlayManager.a(this.a).c() == 5) || (VideoFeedsPlayManager.a(this.a).c() == 2)))
+    boolean bool = false;
+    if (this.a.a != null)
     {
-      VideoFeedsPlayManager.a(this.a).e();
-      VideoFeedsPlayManager.a(this.a, 8);
-      if ((VideoFeedsPlayManager.a(this.a) == null) || (VideoFeedsPlayManager.a(this.a).c.getVisibility() != 0)) {
-        break label118;
-      }
-      this.a.b(3);
+      this.a.a.a(paramBitmap);
+      bool = true;
     }
-    for (;;)
-    {
-      if (VideoFeedsPlayManager.f(this.a)) {
-        VideoFeedsPlayManager.a(this.a).a.f = ReadinjoyAdVideoReportData.b;
-      }
-      return;
-      label118:
-      this.a.b(4);
-    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     meh
  * JD-Core Version:    0.7.0.1
  */

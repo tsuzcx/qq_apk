@@ -1,27 +1,25 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloadBPTransEntity;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadBPTransProxy;
+import android.os.Message;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
+import mqq.os.MqqHandler;
 
 public class adia
-  implements Runnable
+  extends MqqHandler
 {
-  public adia(UniformDownloadBPTransProxy paramUniformDownloadBPTransProxy, UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity) {}
+  public adia(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    try
+    switch (paramMessage.what)
     {
-      UniformDownloadBPTransProxy.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloadBPTransProxy, this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloadBPTransEntity, null);
+    default: 
       return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adia
  * JD-Core Version:    0.7.0.1
  */

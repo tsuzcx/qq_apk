@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/bmf" android:background="@color/nf" android:layout_width="fill_parent" android:layout_height="@dimen/gd"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/bmg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:baselineAligned="false" android:weightSum="1.0">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <ImageView android:id="@id/bmh" android:layout_marginLeft="@dimen/h3" style="@style/hr" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="wrap_content" android:layout_marginRight="@dimen/h1" style="@style/i0">
+            <RelativeLayout android:paddingLeft="@dimen/h3" android:layout_width="wrap_content" android:layout_height="55.0dip" android:layout_toLeftOf="@id/bmi" android:layout_centerVertical="true">
+                <View android:id="@id/bmj" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentBottom="true" />
+                <TextView android:id="@id/bmk" android:layout_toLeftOf="@id/bml" android:layout_alignLeft="@id/bmj" android:layout_centerInParent="true" style="@style/i1" />
+                <TextView android:id="@id/bml" android:text="" android:layout_above="@id/bmj" android:layout_alignRight="@id/bmj" style="@style/i5" />
+            </RelativeLayout>
+            <ImageView android:id="@id/bmi" android:layout_marginLeft="5.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/hs" />
+        </RelativeLayout>
+    </LinearLayout>
+    <View android:id="@id/bmm" android:background="@color/ng" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+</RelativeLayout>

@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class send_diy_gift_item
   extends JceStruct
 {
-  static ArrayList cache_info;
+  static ArrayList<send_gift_info> cache_info;
   public int arch;
   public String audioUrl = "";
   public String backId = "";
   public String content = "";
   public long id;
-  public ArrayList info;
+  public ArrayList<send_gift_info> info;
   public boolean isBack = true;
   public boolean isPrivate = true;
   public String picUrl = "";
@@ -22,7 +22,7 @@ public final class send_diy_gift_item
   
   public send_diy_gift_item() {}
   
-  public send_diy_gift_item(ArrayList paramArrayList, long paramLong, boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2)
+  public send_diy_gift_item(ArrayList<send_gift_info> paramArrayList, long paramLong, boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2)
   {
     this.info = paramArrayList;
     this.id = paramLong;
@@ -74,7 +74,7 @@ public final class send_diy_gift_item
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_TEMPLATE_GIFT.send_diy_gift_item
  * JD-Core Version:    0.7.0.1
  */

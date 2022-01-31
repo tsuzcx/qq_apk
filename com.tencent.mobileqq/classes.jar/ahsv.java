@@ -1,25 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.contacts.fragment.AlphabetFriendFragment;
 
 public class ahsv
-  implements View.OnTouchListener
+  implements aybr
 {
-  public ahsv(BaseSearchFragment paramBaseSearchFragment) {}
+  private ahsv(AlphabetFriendFragment paramAlphabetFriendFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if ((AlphabetFriendFragment.b(this.a)) && (paramBitmap != null) && (paramInt2 == 200)) {
+      AlphabetFriendFragment.a(this.a, 1400L, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahsv
  * JD-Core Version:    0.7.0.1
  */

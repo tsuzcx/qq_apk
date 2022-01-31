@@ -249,10 +249,10 @@ public class SimpleArrayMap<K, V>
   {
     int[] arrayOfInt = this.mHashes;
     Object[] arrayOfObject = this.mArray;
-    int k = 0;
-    int j = 0;
-    int i = 1;
     int n = this.mSize;
+    int i = 1;
+    int j = 0;
+    int k = 0;
     if (j < n)
     {
       Object localObject = arrayOfObject[i];
@@ -271,8 +271,9 @@ public class SimpleArrayMap<K, V>
   
   int indexOf(Object paramObject, int paramInt)
   {
-    int k = this.mSize;
-    if (k == 0) {
+    int m = this.mSize;
+    int i;
+    if (m == 0) {
       i = -1;
     }
     int j;
@@ -281,28 +282,33 @@ public class SimpleArrayMap<K, V>
       do
       {
         return i;
-        j = ContainerHelpers.binarySearch(this.mHashes, k, paramInt);
+        j = ContainerHelpers.binarySearch(this.mHashes, m, paramInt);
         i = j;
       } while (j < 0);
       i = j;
     } while (paramObject.equals(this.mArray[(j << 1)]));
-    int i = j + 1;
-    while ((i < k) && (this.mHashes[i] == paramInt))
+    int k = j + 1;
+    while ((k < m) && (this.mHashes[k] == paramInt))
     {
-      if (paramObject.equals(this.mArray[(i << 1)])) {
-        return i;
+      if (paramObject.equals(this.mArray[(k << 1)])) {
+        return k;
       }
-      i += 1;
+      k += 1;
     }
     j -= 1;
-    while ((j >= 0) && (this.mHashes[j] == paramInt))
+    for (;;)
     {
+      if ((j < 0) || (this.mHashes[j] != paramInt)) {
+        break label156;
+      }
+      i = j;
       if (paramObject.equals(this.mArray[(j << 1)])) {
-        return j;
+        break;
       }
       j -= 1;
     }
-    return i ^ 0xFFFFFFFF;
+    label156:
+    return k ^ 0xFFFFFFFF;
   }
   
   public int indexOfKey(Object paramObject)
@@ -315,8 +321,9 @@ public class SimpleArrayMap<K, V>
   
   int indexOfNull()
   {
-    int k = this.mSize;
-    if (k == 0) {
+    int m = this.mSize;
+    int i;
+    if (m == 0) {
       i = -1;
     }
     int j;
@@ -325,38 +332,45 @@ public class SimpleArrayMap<K, V>
       do
       {
         return i;
-        j = ContainerHelpers.binarySearch(this.mHashes, k, 0);
+        j = ContainerHelpers.binarySearch(this.mHashes, m, 0);
         i = j;
       } while (j < 0);
       i = j;
     } while (this.mArray[(j << 1)] == null);
-    int i = j + 1;
-    while ((i < k) && (this.mHashes[i] == 0))
+    int k = j + 1;
+    while ((k < m) && (this.mHashes[k] == 0))
     {
-      if (this.mArray[(i << 1)] == null) {
-        return i;
+      if (this.mArray[(k << 1)] == null) {
+        return k;
       }
-      i += 1;
+      k += 1;
     }
     j -= 1;
-    while ((j >= 0) && (this.mHashes[j] == 0))
+    for (;;)
     {
+      if ((j < 0) || (this.mHashes[j] != 0)) {
+        break label121;
+      }
+      i = j;
       if (this.mArray[(j << 1)] == null) {
-        return j;
+        break;
       }
       j -= 1;
     }
-    return i ^ 0xFFFFFFFF;
+    label121:
+    return k ^ 0xFFFFFFFF;
   }
   
   int indexOfValue(Object paramObject)
   {
-    int j = this.mSize * 2;
+    int i = 1;
+    int j = 1;
+    int k = this.mSize * 2;
     Object[] arrayOfObject = this.mArray;
     if (paramObject == null)
     {
-      i = 1;
-      while (i < j)
+      i = j;
+      while (i < k)
       {
         if (arrayOfObject[i] == null) {
           return i >> 1;
@@ -364,14 +378,14 @@ public class SimpleArrayMap<K, V>
         i += 2;
       }
     }
-    int i = 1;
-    while (i < j)
+    do
     {
-      if (paramObject.equals(arrayOfObject[i])) {
-        return i >> 1;
-      }
       i += 2;
-    }
+      if (i >= k) {
+        break;
+      }
+    } while (!paramObject.equals(arrayOfObject[i]));
+    return i >> 1;
     return -1;
   }
   
@@ -388,17 +402,21 @@ public class SimpleArrayMap<K, V>
   public V put(K paramK, V paramV)
   {
     int k = 8;
+    int i;
     int j;
-    if (paramK == null) {
+    if (paramK == null)
+    {
+      i = indexOfNull();
       j = 0;
     }
-    for (int i = indexOfNull(); i >= 0; i = indexOf(paramK, j))
+    while (i >= 0)
     {
       i = (i << 1) + 1;
       paramK = this.mArray[i];
       this.mArray[i] = paramV;
       return paramK;
       j = paramK.hashCode();
+      i = indexOf(paramK, j);
     }
     int m = i ^ 0xFFFFFFFF;
     if (this.mSize >= this.mHashes.length)
@@ -439,6 +457,7 @@ public class SimpleArrayMap<K, V>
   
   public void putAll(SimpleArrayMap<? extends K, ? extends V> paramSimpleArrayMap)
   {
+    int i = 0;
     int j = paramSimpleArrayMap.mSize;
     ensureCapacity(this.mSize + j);
     if (this.mSize == 0) {
@@ -452,7 +471,6 @@ public class SimpleArrayMap<K, V>
     for (;;)
     {
       return;
-      int i = 0;
       while (i < j)
       {
         put(paramSimpleArrayMap.keyAt(i), paramSimpleArrayMap.valueAt(i));

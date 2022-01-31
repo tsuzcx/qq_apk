@@ -1,9 +1,18 @@
-import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import com.tencent.mobileqq.ar.view.ViewfinderView;
 
-public final class anie
-  implements IHttpCommunicatorFlowCount
+public class anie
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  public anie(ViewfinderView paramViewfinderView, Rect paramRect) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    ViewfinderView.a(this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView.postInvalidate(this.jdField_a_of_type_AndroidGraphicsRect.left - 6, this.jdField_a_of_type_AndroidGraphicsRect.top - 6, this.jdField_a_of_type_AndroidGraphicsRect.right + 6, this.jdField_a_of_type_AndroidGraphicsRect.bottom + 6);
+  }
 }
 
 

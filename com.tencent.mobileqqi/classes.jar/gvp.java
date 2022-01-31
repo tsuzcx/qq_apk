@@ -1,27 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.troop.activity.TroopAdminList;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.troop.data.TroopBarPostAbsLayout.AbsItemViewHolder;
+import com.tencent.mobileqq.troop.data.TroopBarPostLayoutTop;
 import java.util.ArrayList;
 
 public class gvp
-  extends FriendListObserver
+  extends TroopBarPostAbsLayout.AbsItemViewHolder
 {
-  public gvp(TroopAdminList paramTroopAdminList) {}
+  public LinearLayout a;
+  ArrayList jdField_a_of_type_JavaUtilArrayList;
+  public LinearLayout b;
   
-  protected void a(ArrayList paramArrayList, boolean paramBoolean)
+  public gvp(TroopBarPostLayoutTop paramTroopBarPostLayoutTop, View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopAdminList", 2, "onUpdateFriendInfoFinished ");
-    }
-    this.a.f();
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
-      this.a.f();
-    }
+    super(paramView);
+    this.b = ((LinearLayout)paramView.findViewById(2131232628));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232627));
   }
 }
 

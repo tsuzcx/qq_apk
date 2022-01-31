@@ -1,29 +1,23 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFollowActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFollowActivity.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class nze
-  extends ContentObserver
+  implements View.OnClickListener
 {
-  public nze(LocalVideoPusher paramLocalVideoPusher, Handler paramHandler)
-  {
-    super(paramHandler);
-  }
+  public nze(ReadInJoyFollowActivity paramReadInJoyFollowActivity) {}
   
-  public void onChange(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    super.onChange(paramBoolean);
-    if (!this.a.a)
-    {
-      this.a.b();
-      return;
-    }
-    this.a.b = true;
+    this.a.a.a(true);
+    ThreadManager.executeOnSubThread(new ReadInJoyFollowActivity.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nze
  * JD-Core Version:    0.7.0.1
  */

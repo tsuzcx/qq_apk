@@ -1,23 +1,23 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 class vzn
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  vzn(vzm paramvzm) {}
+  vzn(vzl paramvzl, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Intent localIntent = this.a.a.a().getIntent();
-    localIntent.putExtra("uinname", this.a.a.a.d);
-    this.a.a.b(localIntent);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    }
+    vzl.a(this.jdField_a_of_type_Vzl).a = vzl.a(this.jdField_a_of_type_Vzl).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vzn
  * JD-Core Version:    0.7.0.1
  */

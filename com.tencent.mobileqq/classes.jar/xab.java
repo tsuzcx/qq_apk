@@ -1,21 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
 
 public class xab
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public xab(PayCodeEntryActivity paramPayCodeEntryActivity) {}
+  public xab(EditVideoGuide paramEditVideoGuide) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a("payCodeEntry.back", "actQQWlxclick", "0005");
-    PayCodeEntryActivity.a(this.a);
+    this.a.jdField_a_of_type_Int = 2;
+    this.a.b = 2;
+    this.a.jdField_a_of_type_Xan.a(5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xab
  * JD-Core Version:    0.7.0.1
  */

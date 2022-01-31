@@ -1,35 +1,40 @@
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
-import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class oxh
-  implements VideoCombineHelper.Callback
+public class oxh
+  implements ThreadFactory
 {
-  oxh(oxg paramoxg, long paramLong) {}
+  private final String jdField_a_of_type_JavaLangString;
+  private final ThreadGroup jdField_a_of_type_JavaLangThreadGroup;
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public oxh()
   {
-    if (QLog.isColorLevel())
+    Object localObject = System.getSecurityManager();
+    if (localObject != null) {}
+    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
     {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
-      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    File localFile = new File(paramString1);
-    if ((paramBoolean) && (localFile.exists()))
-    {
-      this.jdField_a_of_type_Oxg.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.e = paramString1;
-      this.jdField_a_of_type_Oxg.a.jdField_a_of_type_Oxe.a.b(this.jdField_a_of_type_Oxg.a.jdField_a_of_type_Oxe);
-      this.jdField_a_of_type_Oxg.a.jdField_a_of_type_Oxe.b();
+      this.jdField_a_of_type_JavaLangThreadGroup = ((ThreadGroup)localObject);
+      this.jdField_a_of_type_JavaLangString = "readinjoy-common-";
       return;
     }
-    this.jdField_a_of_type_Oxg.a.jdField_a_of_type_Oxe.d = paramString2;
-    this.jdField_a_of_type_Oxg.a.jdField_a_of_type_Oxe.a.a(this.jdField_a_of_type_Oxg.a.jdField_a_of_type_Oxe);
+  }
+  
+  public Thread newThread(Runnable paramRunnable)
+  {
+    paramRunnable = new Thread(this.jdField_a_of_type_JavaLangThreadGroup, paramRunnable, this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement(), 0L);
+    if (paramRunnable.isDaemon()) {
+      paramRunnable.setDaemon(false);
+    }
+    if (paramRunnable.getPriority() != 5) {
+      paramRunnable.setPriority(5);
+    }
+    return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oxh
  * JD-Core Version:    0.7.0.1
  */

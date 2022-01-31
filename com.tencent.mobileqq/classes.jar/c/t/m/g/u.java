@@ -1,26 +1,22 @@
 package c.t.m.g;
 
-import android.content.Context;
-import android.content.IntentFilter;
+import java.util.HashMap;
+import java.util.Map;
 
-final class u
-  implements Runnable
+public final class u
 {
-  public final void run()
+  public String a;
+  public Map<String, v> b;
+  
+  public u(String paramString)
   {
-    try
-    {
-      o.e();
-      IntentFilter localIntentFilter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
-      l.a().registerReceiver(o.m(), localIntentFilter);
-      return;
-    }
-    catch (Throwable localThrowable) {}
+    this.a = paramString;
+    this.b = new HashMap();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.u
  * JD-Core Version:    0.7.0.1
  */

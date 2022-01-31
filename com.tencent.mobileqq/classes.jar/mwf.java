@@ -1,93 +1,444 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.net.DhcpInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.telephony.SignalStrength;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.manager.TicketManager;
+import com.tencent.av.business.manager.EffectConfigBase;
+import com.tencent.av.utils.SignalStrengthReport.1;
+import com.tencent.av.utils.SignalStrengthReport.2;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import java.lang.ref.WeakReference;
+import java.lang.reflect.Method;
+import org.json.JSONObject;
 
-public final class mwf
-  implements Runnable
+public class mwf
 {
-  public mwf(String paramString1, String paramString2, int paramInt1, int paramInt2) {}
+  static volatile mwf jdField_a_of_type_Mwf;
+  public int a;
+  WifiManager jdField_a_of_type_AndroidNetWifiWifiManager;
+  public Handler a;
+  HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  TelephonyManager jdField_a_of_type_AndroidTelephonyTelephonyManager;
+  Runnable jdField_a_of_type_JavaLangRunnable = new SignalStrengthReport.1(this);
+  public String a;
+  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  mwh jdField_a_of_type_Mwh;
+  public int b;
+  Runnable b;
+  int c = 0;
+  int d = -1;
   
-  public void run()
+  private mwf(Context paramContext)
   {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangRunnable = new SignalStrengthReport.2(this);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    if (Looper.myLooper() != null) {
+      this.jdField_a_of_type_Mwh = new mwh(this);
+    }
+    if (paramContext != null)
+    {
+      this.jdField_a_of_type_AndroidNetWifiWifiManager = ((WifiManager)paramContext.getSystemService("wifi"));
+      this.jdField_a_of_type_AndroidTelephonyTelephonyManager = ((TelephonyManager)paramContext.getSystemService("phone"));
+    }
+  }
+  
+  private String a(long paramLong)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(String.valueOf((int)(paramLong & 0xFF)));
+    localStringBuffer.append('.');
+    localStringBuffer.append(String.valueOf((int)(paramLong >> 8 & 0xFF)));
+    localStringBuffer.append('.');
+    localStringBuffer.append(String.valueOf((int)(paramLong >> 16 & 0xFF)));
+    localStringBuffer.append('.');
+    localStringBuffer.append(String.valueOf((int)(paramLong >> 24 & 0xFF)));
+    return localStringBuffer.toString();
+  }
+  
+  public static mwf a(Context paramContext)
+  {
+    if (jdField_a_of_type_Mwf == null) {}
     try
     {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        return;
+      if (jdField_a_of_type_Mwf == null) {
+        jdField_a_of_type_Mwf = new mwf(paramContext);
       }
-      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        return;
+      return jdField_a_of_type_Mwf;
+    }
+    finally {}
+  }
+  
+  private String b()
+  {
+    String str2 = "";
+    String str1 = str2;
+    try
+    {
+      if (this.jdField_a_of_type_AndroidNetWifiWifiManager != null)
+      {
+        DhcpInfo localDhcpInfo = this.jdField_a_of_type_AndroidNetWifiWifiManager.getDhcpInfo();
+        str1 = str2;
+        if (localDhcpInfo != null) {
+          str1 = a(localDhcpInfo.gateway);
+        }
       }
-      localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject1 == null) || (!(localObject1 instanceof QQAppInterface))) {
-        break label374;
-      }
-      localObject1 = (QQAppInterface)localObject1;
+      return str1;
     }
     catch (Exception localException)
     {
-      Object localObject1;
-      Object localObject3;
-      Object localObject4;
-      String str;
-      if (!QLog.isColorLevel()) {
-        return;
-      }
-      QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:request Exception " + localException);
-      return;
+      lek.c("SignalStrengthReport", "getGateway e:" + localException);
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      while (QLog.isColorLevel())
-      {
-        QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:request OutOfMemoryError " + localOutOfMemoryError);
-        return;
-        label374:
-        Object localObject2 = null;
-      }
+    return "";
+  }
+  
+  private static int f()
+  {
+    int i = 0;
+    if (AppNetConnInfo.isWifiConn()) {
+      i = 1;
     }
-    if (localObject1 != null)
+    while (!AppNetConnInfo.isMobileConn()) {
+      return i;
+    }
+    switch (AppNetConnInfo.getMobileInfo())
     {
-      localObject3 = ((AppInterface)localObject1).getCurrentAccountUin();
-      if (!TextUtils.isEmpty((CharSequence)localObject3))
+    default: 
+      return 0;
+    case 1: 
+      return 2;
+    case 2: 
+      return 3;
+    case 3: 
+      return 4;
+    }
+    return 5;
+  }
+  
+  private int g()
+  {
+    int j = -1;
+    int i = j;
+    try
+    {
+      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
       {
-        localObject1 = (TicketManager)((AppInterface)localObject1).getManager(2);
-        if (localObject1 != null)
+        i = j;
+        if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
         {
-          localObject4 = ((TicketManager)localObject1).getSkey((String)localObject3);
-          if (!TextUtils.isEmpty((CharSequence)localObject4))
+          Object localObject = EffectConfigBase.b(218, EffectConfigBase.c);
+          i = j;
+          if (!TextUtils.isEmpty((CharSequence)localObject))
           {
-            localObject1 = new Bundle();
-            str = String.format("http://c.mp.qq.com/post/pageview/report?ftype=5&ctype=1&aid=%s&vid=%s&rtype=%d&rowkey=%s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_b_of_type_JavaLangString });
-            ((Bundle)localObject1).putString("Cookie", "uin=" + (String)localObject3 + "; skey=" + (String)localObject4);
-            localObject3 = new HashMap();
-            ((HashMap)localObject3).put("BUNDLE", localObject1);
-            ((HashMap)localObject3).put("CONTEXT", BaseApplicationImpl.getApplication());
-            localObject4 = new mwg(this);
-            localObject1 = str;
-            if (this.jdField_a_of_type_Int == 1) {
-              localObject1 = str + "&rcode=" + Integer.toString(this.jdField_b_of_type_Int);
+            lek.c("SignalStrengthReport", "getPingInterval config:" + (String)localObject);
+            localObject = new JSONObject((String)localObject);
+            i = j;
+            if (((JSONObject)localObject).has("pingInterval"))
+            {
+              i = ((JSONObject)localObject).getInt("pingInterval");
+              j = i;
+              i = j;
+              if (j >= 0)
+              {
+                i = j;
+                if (j < 2000) {
+                  return 2000;
+                }
+              }
             }
-            if (QLog.isColorLevel()) {
-              QLog.i("PublicAccountUtil", 2, "doVideoPlayRealtimeReport cgiUrl=" + (String)localObject1);
-            }
-            new HttpWebCgiAsyncTask2((String)localObject1, "GET", (HttpWebCgiAsyncTask.Callback)localObject4, 0, null).execute(new HashMap[] { localObject3 });
-            return;
           }
         }
       }
     }
+    catch (Exception localException)
+    {
+      lek.c("SignalStrengthReport", "getPingInterval e:" + localException);
+      i = j;
+    }
+    return i;
+  }
+  
+  public int a()
+  {
+    return this.d;
+  }
+  
+  int a(SignalStrength paramSignalStrength)
+  {
+    int j = 100;
+    int k = 0;
+    int i = 0;
+    if (paramSignalStrength != null) {
+      i = k;
+    }
+    for (;;)
+    {
+      try
+      {
+        if (Build.VERSION.SDK_INT >= 23)
+        {
+          i = Integer.parseInt(Class.forName(SignalStrength.class.getName()).getDeclaredMethod("getLevel", new Class[0]).invoke(paramSignalStrength, new Object[0]).toString());
+          k = i * 25;
+          i = k;
+          if (k > 100)
+          {
+            i = j;
+            return i;
+          }
+        }
+      }
+      catch (Exception paramSignalStrength)
+      {
+        lek.c("SignalStrengthReport", "getLevelPercentBySignalStrength reflect getLevel e:" + paramSignalStrength);
+        return 0;
+      }
+    }
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_AndroidOsHandlerThread != null) && (this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {}
+    do
+    {
+      return;
+      lek.c("SignalStrengthReport", "report start");
+      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("SignalStrengthReportThread" + (int)(Math.random() * 100.0D));
+      this.jdField_a_of_type_AndroidOsHandlerThread.start();
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+      this.jdField_a_of_type_Int = g();
+      this.jdField_a_of_type_JavaLangString = "";
+      if (this.jdField_a_of_type_JavaLangRunnable != null) {
+        this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
+      }
+      if (this.jdField_b_of_type_JavaLangRunnable != null) {
+        this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_b_of_type_JavaLangRunnable);
+      }
+    } while ((this.jdField_a_of_type_Mwh == null) || (this.jdField_a_of_type_AndroidTelephonyTelephonyManager == null));
+    this.jdField_a_of_type_AndroidTelephonyTelephonyManager.listen(this.jdField_a_of_type_Mwh, 256);
+  }
+  
+  public int b()
+  {
+    return this.c;
+  }
+  
+  /* Error */
+  int b(SignalStrength paramSignalStrength)
+  {
+    // Byte code:
+    //   0: iconst_m1
+    //   1: istore 4
+    //   3: iload 4
+    //   5: istore_2
+    //   6: aload_1
+    //   7: ifnull +78 -> 85
+    //   10: ldc 210
+    //   12: invokevirtual 215	java/lang/Class:getName	()Ljava/lang/String;
+    //   15: invokestatic 219	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   18: ldc_w 287
+    //   21: iconst_0
+    //   22: anewarray 212	java/lang/Class
+    //   25: invokevirtual 225	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   28: aload_1
+    //   29: iconst_0
+    //   30: anewarray 4	java/lang/Object
+    //   33: invokevirtual 231	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   36: invokevirtual 232	java/lang/Object:toString	()Ljava/lang/String;
+    //   39: invokestatic 237	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   42: istore_2
+    //   43: iload_2
+    //   44: iconst_m1
+    //   45: if_icmpne +143 -> 188
+    //   48: aload_1
+    //   49: invokevirtual 290	android/telephony/SignalStrength:isGsm	()Z
+    //   52: ifeq +68 -> 120
+    //   55: aload_1
+    //   56: invokevirtual 293	android/telephony/SignalStrength:getGsmSignalStrength	()I
+    //   59: istore_2
+    //   60: iload_2
+    //   61: istore_3
+    //   62: iload_2
+    //   63: bipush 99
+    //   65: if_icmpne +5 -> 70
+    //   68: iconst_m1
+    //   69: istore_3
+    //   70: iload 4
+    //   72: istore_2
+    //   73: iload_3
+    //   74: iconst_m1
+    //   75: if_icmpeq +10 -> 85
+    //   78: iload_3
+    //   79: iconst_2
+    //   80: imul
+    //   81: bipush 113
+    //   83: isub
+    //   84: istore_2
+    //   85: iload_2
+    //   86: ireturn
+    //   87: astore 5
+    //   89: ldc 131
+    //   91: new 133	java/lang/StringBuilder
+    //   94: dup
+    //   95: invokespecial 134	java/lang/StringBuilder:<init>	()V
+    //   98: ldc_w 295
+    //   101: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: aload 5
+    //   106: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   109: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   112: invokestatic 148	lek:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   115: iconst_m1
+    //   116: istore_2
+    //   117: goto -74 -> 43
+    //   120: aload_1
+    //   121: invokevirtual 298	android/telephony/SignalStrength:getCdmaDbm	()I
+    //   124: istore 4
+    //   126: aload_1
+    //   127: invokevirtual 301	android/telephony/SignalStrength:getEvdoDbm	()I
+    //   130: istore_3
+    //   131: iload_3
+    //   132: bipush 136
+    //   134: if_icmpne +6 -> 140
+    //   137: iload 4
+    //   139: ireturn
+    //   140: iload_3
+    //   141: istore_2
+    //   142: iload 4
+    //   144: bipush 136
+    //   146: if_icmpeq -61 -> 85
+    //   149: iload_3
+    //   150: istore_2
+    //   151: iload 4
+    //   153: iload_3
+    //   154: if_icmpge -69 -> 85
+    //   157: iload 4
+    //   159: ireturn
+    //   160: astore_1
+    //   161: ldc 131
+    //   163: new 133	java/lang/StringBuilder
+    //   166: dup
+    //   167: invokespecial 134	java/lang/StringBuilder:<init>	()V
+    //   170: ldc_w 303
+    //   173: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   176: aload_1
+    //   177: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   180: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   183: invokestatic 148	lek:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   186: iconst_m1
+    //   187: ireturn
+    //   188: iload_2
+    //   189: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	190	0	this	mwf
+    //   0	190	1	paramSignalStrength	SignalStrength
+    //   5	184	2	i	int
+    //   61	94	3	j	int
+    //   1	157	4	k	int
+    //   87	18	5	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   10	43	87	java/lang/Exception
+    //   48	60	160	java/lang/Exception
+    //   120	131	160	java/lang/Exception
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      if (this.jdField_a_of_type_JavaLangRunnable != null) {
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      }
+      if (this.jdField_b_of_type_JavaLangRunnable != null) {
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+      }
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+    this.jdField_a_of_type_Int = -1;
+    if ((this.jdField_a_of_type_Mwh != null) && (this.jdField_a_of_type_AndroidTelephonyTelephonyManager != null)) {
+      this.jdField_a_of_type_AndroidTelephonyTelephonyManager.listen(this.jdField_a_of_type_Mwh, 0);
+    }
+    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+    }
+    this.jdField_a_of_type_JavaLangString = "";
+    lek.c("SignalStrengthReport", "report stop");
+  }
+  
+  public int c()
+  {
+    int j = 0;
+    int i = j;
+    try
+    {
+      if (this.jdField_a_of_type_AndroidNetWifiWifiManager != null)
+      {
+        WifiInfo localWifiInfo = this.jdField_a_of_type_AndroidNetWifiWifiManager.getConnectionInfo();
+        i = j;
+        if (localWifiInfo.getBSSID() != null)
+        {
+          i = WifiManager.calculateSignalLevel(localWifiInfo.getRssi(), 5);
+          j = i * 25;
+          i = j;
+          if (j > 100) {
+            return 100;
+          }
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      lek.c("SignalStrengthReport", "getWifiLevelPercent e:" + localException);
+      i = j;
+    }
+    return i;
+  }
+  
+  public int d()
+  {
+    int j = -1;
+    int i = j;
+    try
+    {
+      if (this.jdField_a_of_type_AndroidNetWifiWifiManager != null)
+      {
+        WifiInfo localWifiInfo = this.jdField_a_of_type_AndroidNetWifiWifiManager.getConnectionInfo();
+        i = j;
+        if (localWifiInfo != null)
+        {
+          i = j;
+          if (localWifiInfo.getBSSID() != null) {
+            i = localWifiInfo.getRssi();
+          }
+        }
+      }
+      return i;
+    }
+    catch (Exception localException)
+    {
+      lek.c("SignalStrengthReport", "getWifiDbm e:" + localException);
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mwf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,31 @@
-import android.text.TextUtils.TruncateAt;
-import android.widget.Button;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.widget.CharJumpAnimView;
 
-public final class hfw
+public class hfw
   implements Runnable
 {
-  public hfw(Button paramButton) {}
+  public hfw(CharJumpAnimView paramCharJumpAnimView) {}
   
   public void run()
   {
-    this.a.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-    this.a.setMarqueeRepeatLimit(1);
+    if (CharJumpAnimView.a(this.a) == 0L)
+    {
+      if (CharJumpAnimView.a(this.a) != null) {
+        CharJumpAnimView.a(this.a).onAnimationStart(null);
+      }
+      CharJumpAnimView.a(this.a, System.currentTimeMillis());
+    }
+    this.a.a(CharJumpAnimView.a(this.a), 3500L);
+    this.a.invalidate();
+    if (this.a.a())
+    {
+      this.a.postDelayed(this, 20L);
+      return;
+    }
+    if (CharJumpAnimView.a(this.a) != null) {
+      CharJumpAnimView.a(this.a).onAnimationEnd(null);
+    }
+    CharJumpAnimView.a(this.a, null);
   }
 }
 

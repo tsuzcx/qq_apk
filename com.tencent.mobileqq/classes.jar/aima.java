@@ -1,20 +1,30 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.ContactListView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.XListView;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import cooperation.qqpim.QQPimTipsInfo;
 
 public class aima
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aima(GroupSystemMsgController paramGroupSystemMsgController, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
+  public aima(ContactListView paramContactListView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putBoolean("group_system_msg_nomore_msg", this.jdField_a_of_type_Boolean).commit();
-    }
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006710", "0X8006710", 0, 0, "", "", "", "");
+    ContactListView.a(this.a).removeHeaderView(ContactListView.a(this.a));
+    ContactListView.a(this.a, null);
+    biyr.a(this.a.getContext(), QQPimGetTipsInfoIPC.a().a);
+    QQPimGetTipsInfoIPC.a().c();
+    paramView = ContactListView.a(this.a).getAccount();
+    Bundle localBundle = new Bundle();
+    localBundle.putString(biyg.o, biyg.j);
+    localBundle.putInt(biyg.p, QQPimGetTipsInfoIPC.a().a.b);
+    localBundle.putString(biyg.l, paramView);
+    new biym().a(ContactListView.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localBundle);
   }
 }
 

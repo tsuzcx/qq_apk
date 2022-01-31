@@ -22,8 +22,8 @@ import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
 import com.tencent.mobileqq.utils.AlbumConstants;
 import com.tencent.mobileqq.utils.AlbumUtil;
-import cp;
-import cq;
+import cx;
+import cy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -46,7 +46,7 @@ public class LiteMpFileActionListActivity
   public static final int i = 7;
   public static final int j = 8;
   public static final int k = 101;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cp(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cx(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ListView jdField_a_of_type_AndroidWidgetListView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -566,14 +566,14 @@ public class LiteMpFileActionListActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903515);
+    setContentView(2130903517);
     setTitle(getString(2131559621));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232790));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232791));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232793));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232794));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.d = ((Button)findViewById(2131232792));
-    this.c = ((Button)findViewById(2131232793));
+    this.d = ((Button)findViewById(2131232795));
+    this.c = ((Button)findViewById(2131232796));
     this.d.setOnClickListener(this);
     this.c.setOnClickListener(this);
   }
@@ -592,7 +592,7 @@ public class LiteMpFileActionListActivity
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    runOnUiThread(new cq(this));
+    runOnUiThread(new cy(this));
   }
 }
 

@@ -1,51 +1,26 @@
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.emosm.view.DragSortListView.RemoveListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.net.URL;
 
 public class suu
-  implements DragSortListView.RemoveListener
 {
-  public suu(GroupManagerActivity paramGroupManagerActivity) {}
+  public int a;
+  public String a;
+  public URL a;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
   
-  public void a(int paramInt)
+  public suu()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "RemoveListener which = " + paramInt);
-    }
-    paramInt -= 1;
-    byte b;
-    if ((paramInt >= 0) && (paramInt < this.a.a.size()))
-    {
-      Object localObject = (Groups)this.a.a.get(paramInt);
-      b = (byte)((Groups)localObject).group_id;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("GroupManagerActivity", 2, "RemoveListener remove groupId :" + b);
-        QLog.d("GroupManagerActivity", 2, "RemoveListener remove friend_count :" + ((Groups)localObject).group_friend_count);
-      }
-      if (b == 0)
-      {
-        localObject = new QQToast(this.a);
-        ((QQToast)localObject).d(2000);
-        ((QQToast)localObject).c(2131436516);
-        ((QQToast)localObject).a();
-      }
-    }
-    else
-    {
-      return;
-    }
-    GroupManagerActivity.a(this.a, b);
-    ReportController.b(this.a.app, "CliOper", "", "", "category", "Delete_category", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     suu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,65 @@
-import android.graphics.Paint;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMonitorValue;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class wxh
-  implements Runnable
+  extends urt
 {
-  public wxh(PhotoListActivity paramPhotoListActivity, String paramString) {}
+  public String a;
+  private int c;
+  private int d;
   
-  public void run()
+  public String a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_c_of_type_AndroidWidgetTextView.getPaint();
-    int i = ViewUtils.a((Paint)localObject, "《");
-    int j = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_c_of_type_AndroidViewView.getLeft();
-    int k = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.d.getRight();
-    localObject = ViewUtils.a((Paint)localObject, this.jdField_a_of_type_JavaLangString, j - k - i * 2);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_c_of_type_AndroidWidgetTextView.setText("《" + (String)localObject + "》");
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_JavaLangString);
+    return uqn.a("StoryMonitorSvc.client_monitor_report");
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspMonitorValue localRspMonitorValue = new qqstory_service.RspMonitorValue();
+    try
+    {
+      localRspMonitorValue.mergeFrom(paramArrayOfByte);
+      return new wxi(localRspMonitorValue);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.c = paramInt1;
+    this.d = paramInt2;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqMonitorValue localReqMonitorValue = new qqstory_service.ReqMonitorValue();
+    localReqMonitorValue.ID.set(this.c);
+    if (this.d > 0) {
+      localReqMonitorValue.Value.set(this.d);
+    }
+    for (;;)
+    {
+      if (this.a != null) {
+        localReqMonitorValue.errmsg.set(ByteStringMicro.copyFromUtf8(this.a));
+      }
+      return localReqMonitorValue.toByteArray();
+      localReqMonitorValue.Value.set(1);
+    }
+  }
+  
+  public String toString()
+  {
+    return "MonitorValueRequest{ID=" + this.c + ", value=" + this.d + ", msg=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wxh
  * JD-Core Version:    0.7.0.1
  */

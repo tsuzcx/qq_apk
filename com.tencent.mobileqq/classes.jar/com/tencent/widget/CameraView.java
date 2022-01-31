@@ -16,6 +16,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.List<Landroid.hardware.Camera.Size;>;
 
 public class CameraView
   extends ViewGroup
@@ -25,7 +26,7 @@ public class CameraView
   protected Camera a;
   SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
   private SurfaceView jdField_a_of_type_AndroidViewSurfaceView;
-  protected List a;
+  protected List<Camera.Size> a;
   
   public CameraView(Context paramContext)
   {
@@ -45,7 +46,7 @@ public class CameraView
     a(paramContext);
   }
   
-  private Camera.Size a(List paramList, int paramInt1, int paramInt2)
+  private Camera.Size a(List<Camera.Size> paramList, int paramInt1, int paramInt2)
   {
     double d2 = paramInt1 / paramInt2;
     Object localObject2;
@@ -92,7 +93,7 @@ public class CameraView
       {
         localObject1 = paramList;
         break;
-        paramList = (List)localObject1;
+        paramList = (List<Camera.Size>)localObject1;
       }
     }
   }
@@ -199,7 +200,7 @@ public class CameraView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.CameraView
  * JD-Core Version:    0.7.0.1
  */

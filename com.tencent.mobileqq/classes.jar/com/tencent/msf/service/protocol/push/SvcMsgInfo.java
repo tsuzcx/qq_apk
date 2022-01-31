@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcMsgInfo
   extends JceStruct
 {
-  public int iMsgType;
-  public long lFromUin;
+  public int iMsgType = 0;
+  public long lFromUin = 0L;
   public String strOther = "";
-  public int tTimeStamp;
+  public int tTimeStamp = 0;
   
   public SvcMsgInfo() {}
   

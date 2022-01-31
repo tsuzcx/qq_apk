@@ -1,27 +1,28 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework.IGoingUpHandler;
-import com.tencent.qqprotect.qsec.RptImpl;
 
 public class alyc
-  implements QSecFramework.IGoingUpHandler
+  extends BroadcastReceiver
 {
-  public alyc(RptImpl paramRptImpl) {}
+  public alyc(PeakAppInterface paramPeakAppInterface) {}
   
-  public int a(int paramInt1, int paramInt2, int paramInt3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramObject1 != null) && ((paramObject1 instanceof String)))
+    if ((paramIntent != null) && ("tencent.peak.q2v.AudioTransPush".equals(paramIntent.getAction())))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.Rpt", 2, String.format("Op: %d, Rid: %d, val: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), (String)paramObject1 }));
-      }
-      this.a.a(paramInt1, paramInt2, (String)paramObject1);
+      int i = paramIntent.getIntExtra("rsptype", 0);
+      paramContext = paramIntent.getByteArrayExtra("rspbody");
+      QLog.d("PeakAppInterface", 2, "ACTION_AUDIO_TRANS_PUSH rsptype=" + i + "|" + paramContext.length);
+      ((axxr)this.a.a(0)).a(i, paramContext);
     }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alyc
  * JD-Core Version:    0.7.0.1
  */

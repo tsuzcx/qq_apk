@@ -1,38 +1,31 @@
-import QQService.SvcDevLoginInfo;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class cbj
   implements View.OnClickListener
 {
-  public cbj(AuthDevActivity paramAuthDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
+  public cbj(ChatHistory paramChatHistory) {}
   
   public void onClick(View paramView)
   {
-    boolean bool2 = true;
-    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramView.stDeviceItemDes);
-    if (Arrays.equals(NetConnInfoCenter.GUID, paramView.vecGuid)) {}
-    for (boolean bool1 = true;; bool1 = false)
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = this.a.a(this.a.b, this.a.a, localStringBuilder);
+    Object localObject = null;
+    paramView = localObject;
+    if (localStringBuilder != null)
     {
-      AuthDevActivity localAuthDevActivity = this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity;
-      String str1 = paramView.strDeviceName;
-      String str2 = AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity);
-      int i = this.jdField_a_of_type_Int;
-      if (paramView.iLoginPlatform == 3L) {}
-      for (;;)
-      {
-        AuthDevActivity.a(localAuthDevActivity, str1, localArrayList, str2, i, bool2, bool1, paramView.iAppId);
-        return;
-        bool2 = false;
+      paramView = localObject;
+      if (localStringBuilder.length() > 0) {
+        paramView = localStringBuilder.toString();
       }
     }
+    if (i > 0)
+    {
+      this.a.a(paramView);
+      return;
+    }
+    this.a.b(this.a.getString(2131561800));
   }
 }
 

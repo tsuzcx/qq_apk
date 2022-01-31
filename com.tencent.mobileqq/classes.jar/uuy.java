@@ -1,180 +1,137 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewPropertyAnimator;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.ark.ArkViewImplement.ArkViewInterface;
-import com.tencent.ark.ArkViewImplement.InputCallback;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.widget.BubblePopupWindow;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class uuy
-  implements ArkViewImplement.InputCallback
+  implements uvi
 {
-  public uuy(ArkAppView paramArkAppView) {}
+  protected SharedPreferences a;
+  protected AtomicBoolean a;
   
-  private void a(View paramView)
+  public uuy()
   {
-    if (paramView != null)
-    {
-      paramView.clearAnimation();
-      paramView.setVisibility(8);
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
   
-  private void a(View paramView, int paramInt1, int paramInt2)
+  private void a(@Nullable String paramString1, @Nullable Object paramObject, @Nullable String paramString2)
   {
-    if (paramView != null)
+    paramString2 = new StringBuilder().append("key=").append(paramString1).append(" expected ").append(paramString2).append(" but value was ");
+    if (paramObject == null) {}
+    for (paramString1 = "null";; paramString1 = paramObject.getClass().getName())
     {
-      paramView.setVisibility(0);
-      paramView.animate().x(paramInt1).y(paramInt2).setDuration(0L).start();
-    }
-  }
-  
-  public void onFocusChanged(boolean paramBoolean)
-  {
-    ViewGroup localViewGroup = (ViewGroup)this.a.getParent();
-    if (ArkAppView.a(this.a) != null) {
-      localViewGroup = ArkAppView.a(this.a);
-    }
-    if (localViewGroup == null) {
+      wxe.d("ConfigManager", paramString1);
       return;
     }
-    if (paramBoolean)
-    {
-      Object localObject2 = this.a.getResources().getDrawable(2130838192);
-      Object localObject1 = this.a.getResources().getDrawable(2130838191);
-      int i = ((Drawable)localObject2).getIntrinsicWidth();
-      int j = ((Drawable)localObject2).getIntrinsicHeight();
-      this.a.setInputSetSelectHolderSize(i, j);
-      this.a.setInputSetCaretHolderSize(((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
-      if (ArkAppView.a(this.a) == null)
-      {
-        ArkAppView.a(this.a, new ImageView(this.a.getContext()));
-        ArkAppView.a(this.a).setBackgroundDrawable((Drawable)localObject2);
-        ArkAppView.a(this.a).setScaleX(-1.0F);
-        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-        localViewGroup.addView(ArkAppView.a(this.a), localLayoutParams);
-        ArkAppView.a(this.a).setVisibility(8);
-        ArkAppView.a(this.a).setOnTouchListener(this.a);
-      }
-      if (ArkAppView.b(this.a) == null)
-      {
-        ArkAppView.b(this.a, new ImageView(this.a.getContext()));
-        ArkAppView.b(this.a).setBackgroundDrawable((Drawable)localObject2);
-        localObject2 = new RelativeLayout.LayoutParams(-2, -2);
-        localViewGroup.addView(ArkAppView.b(this.a), (ViewGroup.LayoutParams)localObject2);
-        ArkAppView.b(this.a).setVisibility(8);
-        ArkAppView.a(this.a).setOnTouchListener(this.a);
-      }
-      if (ArkAppView.c(this.a) == null)
-      {
-        ArkAppView.c(this.a, new ImageView(this.a.getContext()));
-        ArkAppView.c(this.a).setBackgroundDrawable((Drawable)localObject1);
-        localObject1 = new RelativeLayout.LayoutParams(-2, -2);
-        localViewGroup.addView(ArkAppView.c(this.a), (ViewGroup.LayoutParams)localObject1);
-        ArkAppView.c(this.a).setVisibility(8);
-        ArkAppView.c(this.a).setOnTouchListener(this.a);
-      }
-    }
-    a(ArkAppView.a(this.a));
-    a(ArkAppView.b(this.a));
-    a(ArkAppView.c(this.a));
   }
   
-  public void onHideMenu(View paramView)
+  private void c()
   {
-    if (ArkAppView.a(this.a) != null)
-    {
-      ArkAppView.a(this.a).a();
-      ArkAppView.a(this.a, null);
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      throw new IllegalStateException("have not attachContext");
     }
   }
   
-  public void onSelectChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public <V> V a(@NonNull String paramString, @NonNull V paramV)
   {
-    ViewGroup localViewGroup = (ViewGroup)this.a.getParent();
-    if (ArkAppView.a(this.a) != null) {
-      localViewGroup = ArkAppView.a(this.a);
-    }
-    if (localViewGroup == null) {
-      return;
-    }
-    if ((paramInt1 > 0) && (paramInt2 > 0) && ((paramInt1 < paramInt3) || (paramInt2 < paramInt4)))
-    {
-      int j = ArkAppView.a(this.a).getWidth();
-      int i = j;
-      if (j <= 0) {
-        i = this.a.getResources().getDrawable(2130838192).getIntrinsicWidth();
-      }
-      a(ArkAppView.a(this.a), this.a.getLeft() + paramInt1 - i, this.a.getTop() + paramInt2);
-      if ((paramInt3 <= 0) || (paramInt4 <= 0) || ((paramInt1 >= paramInt3) && (paramInt2 >= paramInt4))) {
-        break label277;
-      }
-      a(ArkAppView.b(this.a), this.a.getLeft() + paramInt3, this.a.getTop() + paramInt4);
+    c();
+    Object localObject;
+    if (paramV.getClass() == Integer.class) {
+      localObject = Integer.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(paramString, ((Integer)paramV).intValue()));
     }
     for (;;)
     {
-      if ((paramInt1 <= 0) || (paramInt2 <= 0) || (paramInt1 != paramInt3) || (paramInt2 != paramInt4)) {
-        break label291;
+      wxe.b("ConfigManager", "get value : K : %s, V : %s", paramString, localObject);
+      if ((localObject == null) || (localObject.getClass() != paramV.getClass())) {
+        break label183;
       }
-      paramInt2 = ArkAppView.c(this.a).getWidth();
-      paramInt1 = paramInt2;
-      if (paramInt2 <= 0) {
-        paramInt1 = this.a.getResources().getDrawable(2130838191).getIntrinsicWidth();
-      }
-      a(ArkAppView.c(this.a), this.a.getLeft() + paramInt3 - paramInt1 / 2, this.a.getTop() + paramInt4);
-      return;
-      a(ArkAppView.a(this.a));
-      break;
-      label277:
-      a(ArkAppView.b(this.a));
-    }
-    label291:
-    a(ArkAppView.c(this.a));
-  }
-  
-  public void onShowMenu(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (ArkAppView.a(this.a) != null)
-    {
-      ArkAppView.a(this.a).a();
-      ArkAppView.a(this.a, null);
-    }
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    if (paramInt4 == 2)
-    {
-      localQQCustomMenu.a(0, "剪切");
-      localQQCustomMenu.a(1, "复制");
-      localQQCustomMenu.a(2, "粘贴");
-    }
-    for (;;)
-    {
-      int i = this.a.getResources().getDrawable(2130838191).getIntrinsicHeight();
-      ArkViewImplement.ArkViewInterface localArkViewInterface = (ArkViewImplement.ArkViewInterface)paramView;
-      ArkAppView.a(this.a, BubbleContextMenu.a(paramView, paramInt1, paramInt2, paramInt3 + i, localQQCustomMenu, new uuz(this, paramInt4, localArkViewInterface)));
-      return;
-      if (paramInt4 == 1)
+      return localObject;
+      if (paramV.getClass() == Long.class)
       {
-        localQQCustomMenu.a(0, "选择");
-        localQQCustomMenu.a(1, "全选");
-        localQQCustomMenu.a(2, "粘贴");
+        localObject = Long.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(paramString, ((Long)paramV).longValue()));
+      }
+      else if (paramV.getClass() == String.class)
+      {
+        localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(paramString, (String)paramV);
       }
       else
       {
-        localQQCustomMenu.a(0, "粘贴");
+        if (paramV.getClass() != Boolean.class) {
+          break;
+        }
+        localObject = Boolean.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(paramString, ((Boolean)paramV).booleanValue()));
       }
     }
+    throw new IllegalArgumentException("defValue class is not support : " + paramV.getClass());
+    label183:
+    a(paramString, localObject, paramV.getClass().getName());
+    return paramV;
+  }
+  
+  public void a()
+  {
+    wxe.b("ConfigManager", "onInit");
+  }
+  
+  public void a(Context paramContext)
+  {
+    if (paramContext == null) {
+      throw new IllegalArgumentException("Context should not be null");
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+    {
+      wxe.b("ConfigManager", "attachContext, " + paramContext);
+      this.jdField_a_of_type_AndroidContentSharedPreferences = paramContext.getSharedPreferences("qqstory_config", 4);
+      return;
+    }
+    wxe.d("ConfigManager", "attachContext duplicate");
+  }
+  
+  public void a(String paramString)
+  {
+    c();
+    if (!this.jdField_a_of_type_AndroidContentSharedPreferences.edit().remove(paramString).commit())
+    {
+      wxe.e("ConfigManager", "remove value error : K:%s.", new Object[] { paramString });
+      return;
+    }
+    wxe.b("ConfigManager", "remove value success :  K:%s.", paramString);
+  }
+  
+  public <V> void a(String paramString, V paramV)
+  {
+    c();
+    boolean bool;
+    if (paramV.getClass() == Integer.class) {
+      bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramString, ((Integer)paramV).intValue()).commit();
+    }
+    while (!bool)
+    {
+      wxe.e("ConfigManager", "set value error : K:%s, V:%s .", new Object[] { paramString, paramV });
+      return;
+      if (paramV.getClass() == Long.class) {
+        bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong(paramString, ((Long)paramV).longValue()).commit();
+      } else if (paramV.getClass() == String.class) {
+        bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(paramString, (String)paramV).commit();
+      } else if (paramV.getClass() == Boolean.class) {
+        bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(paramString, ((Boolean)paramV).booleanValue()).commit();
+      } else {
+        throw new IllegalArgumentException("value class is not support : " + paramV.getClass());
+      }
+    }
+    wxe.b("ConfigManager", "set value success :  K:%s, V:%s .", paramString, paramV);
+  }
+  
+  public void b()
+  {
+    wxe.b("ConfigManager", "onDestroy");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uuy
  * JD-Core Version:    0.7.0.1
  */

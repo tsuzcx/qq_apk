@@ -1,20 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
 public class tbn
-  implements DialogInterface.OnDismissListener
+  implements tnv
 {
-  public tbn(MainFragment paramMainFragment) {}
+  public tbn(WSHomeFragment paramWSHomeFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    this.a.e();
+    WSPublicAccReport.getInstance().reportMessageBubblePopupClick();
+    WSHomeFragment.b(this.a);
+    ((tij)this.a.b()).a(this.a.getActivity(), 601);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tbn
  * JD-Core Version:    0.7.0.1
  */

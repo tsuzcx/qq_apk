@@ -1,58 +1,51 @@
-import android.annotation.TargetApi;
-import android.view.DragEvent;
-import android.view.View;
-import android.view.View.OnDragListener;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-@TargetApi(11)
 public class afiv
-  implements View.OnDragListener
+  extends aeqi
 {
-  private int jdField_a_of_type_Int;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public ArkAppLoadLayout a;
+  public ArkAppView a;
+  public TextView b;
+  public String b;
   
-  public afiv(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel, int paramInt)
+  public void a(afiv paramafiv, anlx paramanlx)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean onDrag(View paramView, DragEvent paramDragEvent)
-  {
-    switch (paramDragEvent.getAction())
+    Object localObject2 = paramanlx.getArkAppNameAndPath();
+    String str = localObject2[0];
+    Object localObject1 = localObject2[1];
+    localObject2 = localObject2[2];
+    paramanlx.clickTail(null, paramafiv, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getContext());
+    if (localObject1 != null)
     {
-    }
-    for (;;)
-    {
-      return true;
-      QLog.d("onDrag", 4, "ACTION_DRAG_STARTED");
-      continue;
-      RelativeLayout localRelativeLayout = NearbyProfileEditTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel);
-      int i = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.a.indexOfChild(paramView);
-      int j = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.a.indexOfChild(localRelativeLayout);
-      if ((i != -1) && (j != -1) && (((i > j) && (paramDragEvent.getX() > this.jdField_a_of_type_Int / 2)) || ((i < j) && (paramDragEvent.getX() < this.jdField_a_of_type_Int / 2))))
+      ArkAppCacheMgr.getAppIcon(str, new afiw(this, paramafiv));
+      paramanlx = ArkAppCacheMgr.getApplicationDesc(str);
+      if (paramanlx != null)
       {
-        try
-        {
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.a.removeView(localRelativeLayout);
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.a.addView(localRelativeLayout, i);
-          NearbyProfileEditTribePanel.d(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel);
-        }
-        catch (Exception paramView) {}
-        if (QLog.isColorLevel())
-        {
-          QLog.d("Q.nearby_people_card.", 2, "drag between small pics exception" + paramView.getMessage());
-          continue;
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.a.post(new afiw(this));
-        }
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        paramafiv.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        paramafiv.jdField_a_of_type_AndroidWidgetTextView.setText(paramanlx);
       }
     }
+    while ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime() == null) {
+      return;
+    }
+    ArkAppMgr.getInstance().getAppPathByName(str, (String)localObject2, "0.0.0.1", null, new afix(this, str, paramafiv));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afiv
  * JD-Core Version:    0.7.0.1
  */

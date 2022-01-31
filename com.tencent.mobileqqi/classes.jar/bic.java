@@ -1,17 +1,23 @@
-import android.graphics.PointF;
-import com.tencent.av.opengl.gesture.FlingAnimationListener;
-import com.tencent.av.opengl.gesture.GlViewTouchListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.eqq.EnterpriseDetailActivity;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class bic
-  implements FlingAnimationListener
+  implements View.OnClickListener
 {
-  public bic(GlViewTouchListener paramGlViewTouchListener) {}
+  public bic(EnterpriseDetailActivity paramEnterpriseDetailActivity) {}
   
-  public void a() {}
-  
-  public void a(float paramFloat1, float paramFloat2)
+  public void onClick(View paramView)
   {
-    this.a.a(this.a.a.x + paramFloat1, this.a.a.y + paramFloat2);
+    paramView = new Intent(this.a, QQMapActivity.class);
+    paramView.putExtra("lat", this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.latitude);
+    paramView.putExtra("lon", this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.longitude);
+    this.a.startActivity(paramView);
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Biz_card", "Biz_card_map", 0, 0, this.a.b, "", "", "");
   }
 }
 

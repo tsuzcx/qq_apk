@@ -1,22 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-
-public class antb
-  implements View.OnTouchListener
+public abstract interface antb
 {
-  public antb(EditVideoDoodle paramEditVideoDoodle) {}
+  public abstract void onRotationUpdateOriginal(float[] paramArrayOfFloat);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return this.a.a.a(paramMotionEvent);
-  }
+  public abstract void onRotationUpdateQuaternion(float[] paramArrayOfFloat);
+  
+  public abstract void onSensorSupport(int paramInt, boolean paramBoolean);
+  
+  public abstract void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
+  
+  public abstract void updateAzimuth(float paramFloat);
+  
+  public abstract void updateGyroscope(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
+  
+  public abstract void updatePitch(float paramFloat);
+  
+  public abstract void updateRoll(float paramFloat);
+  
+  public abstract void updateRotation(float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  public abstract void updateSensor(float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     antb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,50 @@
-import com.tencent.mobileqq.surfaceviewaction.action.Action;
-import com.tencent.mobileqq.surfaceviewaction.action.DelayAction;
-import com.tencent.mobileqq.surfaceviewaction.gl.Label;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView.Options;
+import android.media.MediaMetadataRetriever;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.maxvideo.trim.TrimNative;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajvp
-  implements Runnable
 {
-  public ajvp(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView, String paramString, int paramInt1, int paramInt2) {}
-  
-  public void run()
+  public static int a(String paramString)
   {
-    TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView, new Label(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b));
-    TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView).a(TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView).jdField_a_of_type_Int / 2, TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView).b * TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView).f / 100);
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView.a(TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView));
-    TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView).b = 0;
-    DelayAction localDelayAction = new DelayAction(500);
-    localDelayAction.a(new ajvq(this));
-    TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView).a(new Action[] { localDelayAction });
+    MediaMetadataRetriever localMediaMetadataRetriever;
+    if (Build.VERSION.SDK_INT >= 14)
+    {
+      localMediaMetadataRetriever = new MediaMetadataRetriever();
+      try
+      {
+        localMediaMetadataRetriever.setDataSource(paramString);
+        paramString = localMediaMetadataRetriever.extractMetadata(12);
+        QLog.i("FormatDetector", 1, "detectFormatSupport: mimeType=" + paramString);
+        if ((TextUtils.isEmpty(paramString)) || (!paramString.startsWith("video/")))
+        {
+          QLog.e("FormatDetector", 1, "detectFormatSupport: wrong mimeType=" + paramString);
+          return -1;
+        }
+        paramString = localMediaMetadataRetriever.extractMetadata(17);
+        QLog.i("FormatDetector", 1, "detectFormatSupport: hasVideo=" + paramString);
+        if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase("yes")))
+        {
+          QLog.e("FormatDetector", 1, "detectFormatSupport: no video content!");
+          return -1;
+        }
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          QLog.e("FormatDetector", 1, "detectFormatSupport:", paramString);
+          localMediaMetadataRetriever.release();
+        }
+      }
+      finally
+      {
+        localMediaMetadataRetriever.release();
+      }
+      return 0;
+    }
+    return TrimNative.detect(paramString);
   }
 }
 

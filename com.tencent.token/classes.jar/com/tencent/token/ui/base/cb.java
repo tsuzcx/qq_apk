@@ -1,16 +1,17 @@
 package com.tencent.token.ui.base;
 
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface cb
+class cb
+  implements View.OnClickListener
 {
-  public abstract void a();
+  cb(ProDialogWithShutDown paramProDialogWithShutDown) {}
   
-  public abstract void a(List paramList);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+  }
 }
 
 

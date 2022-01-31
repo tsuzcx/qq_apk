@@ -1,41 +1,42 @@
-import android.content.Intent;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.agent.OpenSdkFriendService;
-import com.tencent.open.agent.SocialFriendChooser;
-import com.tencent.open.base.http.HttpCgiAsyncTask;
-import com.tencent.open.settings.ServerSetting;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.StaticAnalyz;
+import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.open.downloadnew.MyAppApi.CopyAndInstallTask;
+import com.tencent.open.downloadnew.MyAppApi.InstallParams;
 
 public class hnt
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public hnt(SocialFriendChooser paramSocialFriendChooser) {}
+  public hnt(MyAppApi paramMyAppApi, Bundle paramBundle, boolean paramBoolean, Activity paramActivity, String paramString1, String paramString2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
+    LogUtility.c("MyAppApi", "---onConfirm--onClick");
+    if (!this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b())
     {
-    default: 
-      return;
-    case 10001: 
-      paramMessage = new Bundle(this.a.jdField_a_of_type_AndroidOsBundle);
-      paramMessage.putString("agentversion", CommonDataAdapter.a().d());
-      paramMessage.putString("facetype", "mqqface");
-      String str = ServerSetting.a().a("http://fusion.qq.com/cgi-bin/appstage/get_image_update");
-      OpenSdkFriendService.a().a(str, paramMessage, new hnu(this));
-      return;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a = new MyAppApi.InstallParams(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi);
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.b = true;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_AndroidOsBundle;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_Int = 2;
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+      }
     }
-    if ((this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask != null) && (!this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.isCancelled())) {
-      this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.cancel(true);
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.c = true;
+      StaticAnalyz.a("201", StaticAnalyz.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
+      return;
+      new MyAppApi.CopyAndInstallTask(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a).execute(new Void[0]);
+      continue;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.d(this.jdField_a_of_type_AndroidAppActivity);
     }
-    this.a.p();
-    paramMessage = new Intent();
-    paramMessage.putExtra("key_error_code", -7);
-    paramMessage.putExtra("key_error_msg", "网络连接超时!");
-    this.a.setResult(-1, paramMessage);
-    this.a.finish();
   }
 }
 

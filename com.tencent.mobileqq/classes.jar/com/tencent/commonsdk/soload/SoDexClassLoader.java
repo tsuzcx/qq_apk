@@ -63,13 +63,11 @@ public final class SoDexClassLoader
   }
   
   public static Object getDexElements(Object paramObject)
-    throws IllegalArgumentException, NoSuchFieldException, IllegalAccessException
   {
     return getField(paramObject, paramObject.getClass(), "dexElements");
   }
   
   public static Object getField(Object paramObject, Class<?> paramClass, String paramString)
-    throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException
   {
     paramClass = paramClass.getDeclaredField(paramString);
     paramClass.setAccessible(true);
@@ -77,13 +75,11 @@ public final class SoDexClassLoader
   }
   
   public static Object getPathList(Object paramObject)
-    throws IllegalArgumentException, NoSuchFieldException, IllegalAccessException, ClassNotFoundException
   {
     return getField(paramObject, Class.forName("dalvik.system.BaseDexClassLoader"), "pathList");
   }
   
   public static void setField(Object paramObject1, Class<?> paramClass, String paramString, Object paramObject2)
-    throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException
   {
     paramClass = paramClass.getDeclaredField(paramString);
     paramClass.setAccessible(true);

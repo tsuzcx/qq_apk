@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class SvcRspBindUin
   extends JceStruct
 {
-  static ArrayList cache_vecResult;
-  public ArrayList vecResult;
+  static ArrayList<BindUinResult> cache_vecResult;
+  public ArrayList<BindUinResult> vecResult;
   
   public SvcRspBindUin() {}
   
-  public SvcRspBindUin(ArrayList paramArrayList)
+  public SvcRspBindUin(ArrayList<BindUinResult> paramArrayList)
   {
     this.vecResult = paramArrayList;
   }

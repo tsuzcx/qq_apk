@@ -1,36 +1,26 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneVipInfoManager;
-import mqq.app.AppRuntime;
 
-public class amsn
-  implements SharedPreferences.OnSharedPreferenceChangeListener
+class amsn
+  implements ServiceConnection
 {
-  public amsn(QZoneVipInfoManager paramQZoneVipInfoManager) {}
+  amsn(amsm paramamsm) {}
   
-  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    paramSharedPreferences = BaseApplicationImpl.getApplication().getRuntime();
-    if (paramSharedPreferences != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneVipInfoManager", 2, "onSharedPreferenceChanged key = " + paramString);
-      }
-      if ((!QZoneVipInfoManager.a(this.a)) && (QZoneVipInfoManager.a(this.a) != null))
-      {
-        if (QZoneVipInfoManager.a(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
-          QZoneVipInfoManager.a(this.a, QZoneVipInfoManager.a(this.a).getInt(paramString, 0));
-        }
-        if (QZoneVipInfoManager.b(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
-          QZoneVipInfoManager.c(this.a, QZoneVipInfoManager.a(this.a).getString(paramString, null));
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QZoneVipInfoManager", 2, "onSharedPreferenceChanged value = " + QZoneVipInfoManager.a(this.a) + " personlizedYellowVipUrl = " + QZoneVipInfoManager.a(this.a));
-        }
-      }
-      QZoneVipInfoManager.a(this.a, false);
+    amsm.a(this.a, amzn.a(paramIBinder));
+    if (QLog.isColorLevel()) {
+      QLog.d("ARGlobalRemoteManager", 2, "onServiceConnected ARGlobalRemoteManager=" + amsm.a(this.a));
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    amsm.a(this.a, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("ARGlobalRemoteManager", 2, "onServiceDisconnected ARGlobalRemoteManager=" + amsm.a(this.a));
     }
   }
 }

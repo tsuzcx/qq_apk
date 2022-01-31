@@ -1,50 +1,36 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Message;
-import android.widget.EditText;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qqconnect.wtlogin.Login;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class alwh
-  extends MqqHandler
+class alwh
+  implements aufw
 {
-  public alwh(Login paramLogin) {}
+  alwh(alwd paramalwd) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    Bundle localBundle = paramMessage.getData();
-    this.a.d();
-    switch (paramMessage.what)
-    {
+    boolean bool1 = alwd.b(this.a);
+    alwd.a(this.a, false);
+    boolean bool2 = this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("MayknowRecommendManager", 2, "onBindStateChanged last:" + bool1 + "  now:" + bool2);
     }
-    do
-    {
-      return;
-      this.a.a(String.format(this.a.getResources().getString(2131435609), new Object[] { this.a.getResources().getString(2131435603), Integer.valueOf(3100) }));
-      paramMessage = new HashMap();
-      paramMessage.put("error", "3100");
-      StatisticCollector.a(this.a).a("0", "connect_sso_authfail", false, 0L, 0L, paramMessage, "");
-      return;
-      localBundle.getInt("ret");
-      int i = localBundle.getInt("code");
-      paramMessage = localBundle.getString("OTHER_ERROR");
-      if (localBundle.getBoolean("pwdblank", false)) {
-        this.a.b.setText("");
-      }
-      this.a.a(String.format(this.a.getResources().getString(2131435609), new Object[] { paramMessage, Integer.valueOf(i) }));
-      paramMessage = new HashMap();
-      paramMessage.put("error", "3101");
-      StatisticCollector.a(this.a).a("0", "connect_sso_authfail", false, 0L, 0L, paramMessage, "");
-      return;
-    } while (this.a.isFinishing());
-    this.a.d();
+    if (bool1 != bool2) {
+      ((FriendListHandler)alwd.a(this.a).a(1)).notifyUI(92, true, null);
+    }
   }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alwh
  * JD-Core Version:    0.7.0.1
  */

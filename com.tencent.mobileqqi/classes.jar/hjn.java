@@ -1,28 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.CameraFrameLayout;
+import android.text.Editable;
+import com.tencent.open.agent.SendStoryActivity;
+import com.tencent.open.agent.datamodel.Friend;
+import java.util.Comparator;
 
 public class hjn
-  extends Handler
+  implements Comparator
 {
-  public hjn(CameraFrameLayout paramCameraFrameLayout) {}
+  public hjn(SendStoryActivity paramSendStoryActivity, Editable paramEditable) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(Friend paramFriend1, Friend paramFriend2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      CameraFrameLayout.a(this.a, paramMessage.arg1);
-      return;
-    }
-    CameraFrameLayout.a(this.a);
+    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hjn
  * JD-Core Version:    0.7.0.1
  */

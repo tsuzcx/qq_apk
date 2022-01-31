@@ -1,14 +1,11 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import android.content.Context;
 
 public class ajml
-  implements Runnable
+  extends ajlx
 {
-  public ajml(BulkSendMessageFragment paramBulkSendMessageFragment) {}
-  
-  public void run()
+  public ajml(Context paramContext)
   {
-    this.a.b.setVisibility(0);
+    this.a = paramContext.getString(2131698122);
   }
 }
 

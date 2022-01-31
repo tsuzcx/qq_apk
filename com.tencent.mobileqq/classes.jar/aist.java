@@ -1,25 +1,19 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tencent.mobileqq.tribe.fragment.TribeTakeVideoHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
-public final class aist
-  implements aisv
+class aist
+  implements arrh
 {
-  public aist(Activity paramActivity, Intent paramIntent, PublishParam paramPublishParam, String paramString) {}
+  aist(aisq paramaisq) {}
   
   public void a()
   {
-    QLog.d("tribe_publish_TakeVideoHelper", 4, "generate manifest file success.start publishing.");
-    TribeTakeVideoHelper.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam, this.jdField_a_of_type_JavaLangString);
+    this.a.b();
   }
   
   public void b()
   {
-    QLog.d("tribe_publish_TakeVideoHelper", 4, "generate manifest file error. let's exit.");
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
+    ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
   }
 }
 

@@ -1,23 +1,21 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.NearbyActivity;
 
-class adjh
+public class adjh
   implements DialogInterface.OnClickListener
 {
-  adjh(adjf paramadjf) {}
+  public adjh(NearbyActivity paramNearbyActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.a.isShowing()) {
-      this.a.a.a.dismiss();
-    }
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adjh
  * JD-Core Version:    0.7.0.1
  */

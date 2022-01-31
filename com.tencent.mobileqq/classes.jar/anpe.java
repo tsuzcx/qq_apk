@@ -1,32 +1,30 @@
-import com.tencent.mobileqq.widget.QQViewPager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GridView;
-import dov.com.qq.im.capture.adapter.MusicProviderPagerAdapter;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Iterator;
+import java.util.List;
 
-public class anpe
-  implements Runnable
+class anpe
+  extends alwx
 {
-  public anpe(MusicProviderView paramMusicProviderView, int paramInt) {}
+  anpe(anpd paramanpd) {}
   
-  public void run()
+  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
   {
-    GridView localGridView = this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_DovComQqImCaptureAdapterMusicProviderPagerAdapter.a(this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem());
-    if (QLog.isColorLevel()) {
-      QLog.d("MusicProviderView", 2, "position= " + this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem());
+    if ((anpd.a(this.a) != null) && (paramList != null))
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+        if ((localMessageRecord != null) && (localMessageRecord.uniseq == anpd.a(this.a).b)) {
+          this.a.a(localMessageRecord.uniseq);
+        }
+      }
     }
-    if (localGridView != null) {
-      localGridView.setSelection(this.jdField_a_of_type_Int);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("MusicProviderView", 2, "gridView is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpe
  * JD-Core Version:    0.7.0.1
  */

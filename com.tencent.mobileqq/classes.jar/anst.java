@@ -1,27 +1,60 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import com.tencent.common.app.AppInterface;
 
 public class anst
-  extends AnimatorListenerAdapter
 {
-  public anst(EditVideoButton paramEditVideoButton) {}
+  public static final String a;
+  public ansv[] a;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  static
   {
-    EditVideoButton.a(this.a).setVisibility(8);
-    EditVideoButton.a(this.a).setVisibility(8);
-    EditVideoButton.a(this.a, EditVideoButton.b(this.a));
-    if (this.a.a != null) {
-      this.a.a(2131363408);
+    jdField_a_of_type_JavaLangString = answ.class.getSimpleName() + "." + anst.class.getSimpleName();
+  }
+  
+  public anst()
+  {
+    this.jdField_a_of_type_ArrayOfAnsv = new ansv[6];
+  }
+  
+  public ansv a(AppInterface paramAppInterface, int paramInt)
+  {
+    int i;
+    if (paramInt >= 0)
+    {
+      i = paramInt;
+      if (paramInt <= 6) {}
+    }
+    else
+    {
+      i = 0;
+    }
+    Object localObject = this.jdField_a_of_type_ArrayOfAnsv[i];
+    paramAppInterface = (AppInterface)localObject;
+    if (localObject == null)
+    {
+      paramAppInterface = (AppInterface)localObject;
+      switch (i)
+      {
+      default: 
+        paramAppInterface = (AppInterface)localObject;
+      }
+    }
+    for (;;)
+    {
+      localObject = paramAppInterface;
+      if (paramAppInterface == null) {
+        localObject = new ansu();
+      }
+      this.jdField_a_of_type_ArrayOfAnsv[i] = localObject;
+      return localObject;
+      paramAppInterface = new lwq();
+      continue;
+      paramAppInterface = new amto();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anst
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,15 @@
-import java.util.ArrayList;
+import android.os.Handler;
 
-public class agtt
+class agtt
+  implements nrr
 {
-  public int a;
-  public final ArrayList a = new ArrayList(100);
-  public final int b = 99;
+  agtt(agts paramagts) {}
+  
+  public void a()
+  {
+    agti.b(this.a.a, false);
+    this.a.a.a.sendEmptyMessage(1);
+  }
 }
 
 

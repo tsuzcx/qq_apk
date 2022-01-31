@@ -41,7 +41,7 @@ public class PermissionView
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903329, this, true);
+    this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903331, this, true);
     a();
   }
   
@@ -75,12 +75,12 @@ public class PermissionView
   protected void a()
   {
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131232106));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131232109));
     this.jdField_a_of_type_AndroidWidgetListView.setDivider(null);
     this.jdField_a_of_type_ComTencentOpenWidgetPermissionView$PermissionAdapter = new PermissionView.PermissionAdapter(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232109));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232110));
-    this.b = ((RelativeLayout)findViewById(2131232107));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232112));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232113));
+    this.b = ((RelativeLayout)findViewById(2131232110));
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentOpenWidgetPermissionView$PermissionAdapter);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetListView.getLayoutParams());
   }
@@ -91,7 +91,7 @@ public class PermissionView
     paramTag.jdField_a_of_type_AndroidWidgetTextView.setText("● " + localPermission.jdField_a_of_type_JavaLangString);
     paramTag.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_ArrayOfComTencentOpenWidgetPermissionView$Permission[paramTag.jdField_a_of_type_Int].jdField_a_of_type_Int = 1;
-    paramTag.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130837788);
+    paramTag.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130837789);
   }
   
   public boolean a(List paramList)

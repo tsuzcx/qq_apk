@@ -1,30 +1,22 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
 
 public class vmz
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public vmz(AIOGalleryScene paramAIOGalleryScene) {}
+  public vmz(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.o) {
-      return;
-    }
-    AIOGalleryScene localAIOGalleryScene = this.a;
-    localAIOGalleryScene.h += this.a.i;
-    if (this.a.h > 99)
-    {
-      this.a.h = 99;
-      this.a.d(this.a.h);
-      return;
-    }
-    this.a.d(this.a.h);
-    this.a.v();
+    return this.a.a.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmz
  * JD-Core Version:    0.7.0.1
  */

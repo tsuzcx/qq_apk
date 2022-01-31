@@ -1,29 +1,40 @@
+import android.app.Dialog;
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendAdapter;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendAdapter.RecommendItem;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
-import com.tencent.biz.pubaccount.util.PublicAccountConfigUtil;
-import com.tencent.mobileqq.activity.PublicAccountSearchActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.Window;
+import android.widget.FrameLayout;
 
 public class mtk
-  implements View.OnClickListener
+  extends Dialog
 {
-  public mtk(SubscriptRecommendAdapter.RecommendItem paramRecommendItem, SubscriptRecommendAdapter paramSubscriptRecommendAdapter) {}
+  public mtk(Context paramContext, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  void a()
   {
-    PublicAccountReportUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B6F", "0X8005B6F", 0, 0, "", "", "", "", false);
-    ReportController.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800642D", "0X800642D", 0, 0, "", "", "", "");
-    PublicAccountSearchActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity, PublicAccountConfigUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity), null, null);
-    SubscriptRecommendController.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+    super.getWindow().setGravity(17);
+    super.setContentView(2131559645);
+  }
+  
+  public void a(View paramView, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      b();
+    }
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131372913);
+    localFrameLayout.setOnClickListener(new mtl(this));
+    if (paramView != null) {
+      localFrameLayout.addView(paramView);
+    }
+  }
+  
+  void b()
+  {
+    findViewById(2131372912).setOnClickListener(new mtm(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mtk
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_service$ReqGetUnreadLiker
-  extends MessageMicro
+  extends MessageMicro<ReqGetUnreadLiker>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field count = PBField.initUInt32(0);
@@ -24,7 +24,7 @@ public final class qqstory_service$ReqGetUnreadLiker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUnreadLiker
  * JD-Core Version:    0.7.0.1
  */

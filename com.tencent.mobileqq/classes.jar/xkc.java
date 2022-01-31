@@ -1,41 +1,29 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.activity.recent.HotChatCenterItemBuilder;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
 
 public class xkc
-  implements Runnable
+  implements xkb
 {
-  public xkc(HotChatCenterItemBuilder paramHotChatCenterItemBuilder, int paramInt) {}
+  public xkc(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public void run()
+  public void a()
   {
-    ??? = ((QQAppInterface)HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder).get()).getEntityManagerFactory().createEntityManager();
-    HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder, ApolloGameUtil.a((EntityManager)???));
-    if ((HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder) != null) && (HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder).size() > 0))
-    {
-      SparseArray localSparseArray = (SparseArray)HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder).get(this.jdField_a_of_type_Int);
-      if ((localSparseArray != null) && (localSparseArray.size() > 0))
-      {
-        if ((HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder) != null) && (HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder).get() != null)) {
-          ApolloGameUtil.a((EntityManager)???, ApolloUtil.a(localSparseArray));
-        }
-        synchronized (HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder))
-        {
-          localSparseArray.remove(1000);
-          return;
-        }
-      }
-    }
+    this.a.a.c(true);
+  }
+  
+  public void a(xkl paramxkl)
+  {
+    this.a.b(paramxkl);
+  }
+  
+  public void b()
+  {
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xkc
  * JD-Core Version:    0.7.0.1
  */

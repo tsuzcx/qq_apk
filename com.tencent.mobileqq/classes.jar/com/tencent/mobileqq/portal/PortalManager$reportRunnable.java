@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.util.SparseArrayCompat;
+import bhsk;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.LongSparseArray;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
@@ -16,21 +16,22 @@ public class PortalManager$reportRunnable
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private SparseArrayCompat jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat;
+  private SparseArrayCompat<ArrayList<Long>> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
   private int d;
   
-  public PortalManager$reportRunnable(PortalManager paramPortalManager, SparseArrayCompat paramSparseArrayCompat, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong, boolean paramBoolean)
+  public PortalManager$reportRunnable(SparseArrayCompat<ArrayList<Long>> paramSparseArrayCompat, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = paramSparseArrayCompat;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt3;
+    this.c = paramInt4;
+    this.d = paramLong;
+    this.jdField_a_of_type_Long = ???;
+    boolean bool1;
+    this.jdField_a_of_type_Boolean = bool1;
   }
   
   public void run()
@@ -48,7 +49,7 @@ public class PortalManager$reportRunnable
     if (i < this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size())
     {
       localObject1 = new ArrayList(100);
-      localObject2 = new LongSparseArray(60);
+      localObject2 = new bhsk(60);
       int m = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.keyAt(i);
       Object localObject3 = ((ArrayList)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(m)).iterator();
       while (((Iterator)localObject3).hasNext())
@@ -58,27 +59,27 @@ public class PortalManager$reportRunnable
         for (j = 1000;; j = 60000)
         {
           l = localLong.longValue() / j * j;
-          if (((LongSparseArray)localObject2).a(l) == null) {
+          if (((bhsk)localObject2).a(l) == null) {
             break label171;
           }
-          ((LongSparseArray)localObject2).a(l, Integer.valueOf(((Integer)((LongSparseArray)localObject2).a(l)).intValue() + 1));
+          ((bhsk)localObject2).a(l, Integer.valueOf(((Integer)((bhsk)localObject2).a(l)).intValue() + 1));
           break;
         }
-        ((LongSparseArray)localObject2).a(l, Integer.valueOf(1));
+        ((bhsk)localObject2).a(l, Integer.valueOf(1));
       }
       k = 0;
       j = 0;
-      while (k < ((LongSparseArray)localObject2).a())
+      while (k < ((bhsk)localObject2).a())
       {
         localObject3 = new RedPacketServlet.BrashReportItem();
-        l = ((LongSparseArray)localObject2).a(k);
+        l = ((bhsk)localObject2).a(k);
         ((RedPacketServlet.BrashReportItem)localObject3).time = l;
-        ((RedPacketServlet.BrashReportItem)localObject3).count = ((int)((Integer)((LongSparseArray)localObject2).a(l)).intValue());
+        ((RedPacketServlet.BrashReportItem)localObject3).count = ((int)((Integer)((bhsk)localObject2).a(l)).intValue());
         ((ArrayList)localObject1).add(localObject3);
         j += ((RedPacketServlet.BrashReportItem)localObject3).count;
         k += 1;
       }
-      localObject2 = PortalManager.a(this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager);
+      localObject2 = PortalManager.a(this.this$0);
       if (this.jdField_a_of_type_Int != 1) {
         break label510;
       }
@@ -106,7 +107,7 @@ public class PortalManager$reportRunnable
       if (!this.jdField_a_of_type_Boolean) {
         break label521;
       }
-      localObject3 = PortalManager.a(this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager);
+      localObject3 = PortalManager.a(this.this$0);
       j = ((Message)localObject2).arg1;
       if (((Message)localObject2).arg2 != 1) {
         break label515;
@@ -115,7 +116,7 @@ public class PortalManager$reportRunnable
       RedPacketServlet.a((AppRuntime)localObject3, j, (ArrayList)localObject1, bool, ((Message)localObject2).getData());
     }
     label510:
-    while (PortalManager.a(this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager)) {
+    while (PortalManager.a(this.this$0)) {
       for (;;)
       {
         i += 1;
@@ -133,7 +134,7 @@ public class PortalManager$reportRunnable
       l = PortalManager.b;
       label544:
       j = (int)l;
-      localObject1 = PortalManager.a(this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager);
+      localObject1 = PortalManager.a(this.this$0);
       if (j > 0) {
         break label585;
       }
@@ -150,7 +151,7 @@ public class PortalManager$reportRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.portal.PortalManager.reportRunnable
  * JD-Core Version:    0.7.0.1
  */

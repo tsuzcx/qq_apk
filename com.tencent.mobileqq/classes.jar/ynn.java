@@ -1,35 +1,31 @@
-import android.util.Log;
-import com.tencent.mobileqq.apollo.GLTextureView.EGLWindowSurfaceFactory;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class ynn
-  implements GLTextureView.EGLWindowSurfaceFactory
+  implements View.OnClickListener
 {
-  public EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject)
-  {
-    try
-    {
-      paramEGL10 = paramEGL10.eglCreateWindowSurface(paramEGLDisplay, paramEGLConfig, paramObject, null);
-      return paramEGL10;
-    }
-    catch (Throwable paramEGL10)
-    {
-      Log.e("GLTextureView", "eglCreateWindowSurface", paramEGL10);
-    }
-    return null;
-  }
+  public ynn(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
+  public void onClick(View paramView)
   {
-    paramEGL10.eglDestroySurface(paramEGLDisplay, paramEGLSurface);
+    if (VideoPlayerView.b(this.a)) {
+      VideoPlayerView.c(this.a);
+    }
+    do
+    {
+      return;
+      VideoPlayerView.d(this.a);
+    } while (VideoPlayerView.a(this.a) == null);
+    zaj.b(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "fullscreen", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).poster.nick.get(), VideoPlayerView.a(this.a).title.get() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ynn
  * JD-Core Version:    0.7.0.1
  */

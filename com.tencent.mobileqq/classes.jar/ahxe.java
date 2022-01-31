@@ -1,23 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendGroupListInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.image.AbstractGifImage;
 
-public final class ahxe
-  implements Parcelable.Creator
+class ahxe
+  implements DialogInterface.OnDismissListener
 {
-  public FriendGroupListInfo a(Parcel paramParcel)
-  {
-    return new FriendGroupListInfo(paramParcel);
-  }
+  ahxe(ahww paramahww) {}
   
-  public FriendGroupListInfo[] a(int paramInt)
-  {
-    return new FriendGroupListInfo[paramInt];
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxe
  * JD-Core Version:    0.7.0.1
  */

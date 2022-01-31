@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0807c7" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.SlipLimitedListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0807fa" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02015c" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:transcriptMode="normal" android:divider="@null" />
+    <com.tencent.mobileqq.widget.GridListView android:gravity="fill" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0800b8" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02015c" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:scrollingCache="false" android:horizontalSpacing="2.0dip" android:verticalSpacing="2.0dip" android:stretchMode="columnWidth" android:numColumns="3" android:divider="@null" />
+</RelativeLayout>

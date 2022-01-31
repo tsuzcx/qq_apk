@@ -1,0 +1,22 @@
+import android.animation.TypeEvaluator;
+import android.graphics.Point;
+
+public class qzf
+  implements TypeEvaluator<Point>
+{
+  private Point a = new Point();
+  
+  public Point a(float paramFloat, Point paramPoint1, Point paramPoint2)
+  {
+    int i = (int)(paramPoint1.x + (paramPoint2.x - paramPoint1.x) * paramFloat);
+    int j = (int)(paramPoint1.y + (paramPoint2.y - paramPoint1.y) * paramFloat);
+    this.a.set(i, j);
+    return this.a;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     qzf
+ * JD-Core Version:    0.7.0.1
+ */

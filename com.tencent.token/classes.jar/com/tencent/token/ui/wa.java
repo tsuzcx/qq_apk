@@ -1,30 +1,17 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.global.RqdApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.token.cw;
 
-final class wa
-  implements View.OnClickListener
+class wa
+  implements DialogInterface.OnClickListener
 {
-  wa(vu paramvu) {}
+  wa(vy paramvy) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent(this.a.a, IndexActivity.class);
-    paramView.addFlags(67108864);
-    if (RealNameSmsContentTipActivity.access$400(this.a.a) == 1) {
-      paramView.putExtra("index_from", 25);
-    }
-    for (;;)
-    {
-      RqdApplication.f();
-      this.a.a.startActivity(paramView);
-      this.a.a.finish();
-      return;
-      paramView.putExtra("index_from", 16);
-    }
+    cw.a().a(RealNameStep0VerifyMobileDownActivity.access$200(this.a.a));
   }
 }
 

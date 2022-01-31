@@ -1,17 +1,22 @@
-import cooperation.qzone.report.lp.LpReport_PicInfo_dc02153;
-import cooperation.qzone.report.lp.MachinelearningReport;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
 
 public class amyu
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public amyu(MachinelearningReport paramMachinelearningReport, LpReport_PicInfo_dc02153 paramLpReport_PicInfo_dc02153) {}
+  public amyu(ScanningSurfaceView paramScanningSurfaceView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_CooperationQzoneReportLpLpReport_PicInfo_dc02153 != null)
+    switch (paramMotionEvent.getAction())
     {
-      this.jdField_a_of_type_CooperationQzoneReportLpLpReport_PicInfo_dc02153.recheckIfNeed();
-      MachinelearningReport.access$000(this.jdField_a_of_type_CooperationQzoneReportLpMachinelearningReport, 16, this.jdField_a_of_type_CooperationQzoneReportLpLpReport_PicInfo_dc02153);
+    }
+    for (;;)
+    {
+      return true;
+      ScanningSurfaceView.a(this.a, paramMotionEvent);
     }
   }
 }

@@ -1,22 +1,34 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import java.util.WeakHashMap;
 
-public class aexn
-  implements Runnable
+class aexn
+  implements OnCompositionLoadedListener
 {
-  public aexn(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  aexn(aexk paramaexk) {}
   
-  public void run()
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    ShortVideoCommentsView.c(this.a, false);
-    ShortVideoCommentsView.a(this.a);
-    ShortVideoCommentsView.a(this.a).setVisibility(8);
-    ShortVideoCommentsView.a(this.a, 2);
+    if (aexk.a(this.a) == null) {
+      return;
+    }
+    if (paramLottieComposition != null)
+    {
+      aexk.a(this.a).setComposition(paramLottieComposition);
+      aexk.a(this.a).loop(false);
+      aexk.a(this.a).setVisibility(0);
+      aexk.a(this.a).playAnimation();
+      return;
+    }
+    aexk.a(this.a).clear();
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aexn
  * JD-Core Version:    0.7.0.1
  */

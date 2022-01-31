@@ -1,35 +1,44 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable;
+import com.tencent.image.URLDrawable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
+import mqq.util.WeakReference;
 
-public class seq
-  implements View.OnTouchListener
+class seq
 {
-  public seq(ChatSettingForTroop paramChatSettingForTroop) {}
+  private static Map<AbstractGifImage, List<WeakReference<ses>>> a = new WeakHashMap();
+  private static Map<AbstractGifImage, ser> b = new WeakHashMap();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    if (paramMotionEvent != null)
+    a.clear();
+    b.clear();
+  }
+  
+  void a(ses paramses, URLDrawable paramURLDrawable)
+  {
+    if ((paramURLDrawable.getCurrDrawable() instanceof GifDrawable))
     {
-      paramView = this.a.a[15];
-      if (paramView != null) {
-        if (paramMotionEvent.getAction() != 0) {
-          break label36;
-        }
+      AbstractGifImage localAbstractGifImage = ((GifDrawable)paramURLDrawable.getCurrDrawable()).getImage();
+      paramURLDrawable = new ser(localAbstractGifImage);
+      localAbstractGifImage.setGIFPlayOnceListener(paramURLDrawable);
+      b.put(localAbstractGifImage, paramURLDrawable);
+      List localList = (List)a.get(localAbstractGifImage);
+      paramURLDrawable = localList;
+      if (localList == null) {
+        paramURLDrawable = new ArrayList();
       }
-    }
-    label36:
-    for (float f = 0.5F;; f = 1.0F)
-    {
-      paramView.setAlpha(f);
-      return false;
+      paramURLDrawable.add(new WeakReference(paramses));
+      a.put(localAbstractGifImage, paramURLDrawable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     seq
  * JD-Core Version:    0.7.0.1
  */

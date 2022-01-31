@@ -1,37 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.adapter.ImageHolder;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentFileBaseExpandableListAdapter.RecentItemHolder;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acsz
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  public acsz(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public acsz(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    Object localObject = paramView.getTag();
-    FileManagerEntity localFileManagerEntity = null;
-    if ((localObject instanceof QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)) {
-      localFileManagerEntity = (FileManagerEntity)((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)paramView.getTag()).a;
-    }
-    for (;;)
+    atzu.a().a(paramMessage.what);
+    if (paramMessage.what == 4)
     {
-      if (localFileManagerEntity != null) {
-        this.a.c(localFileManagerEntity);
-      }
-      return;
-      if ((localObject instanceof ImageHolder)) {
-        localFileManagerEntity = (FileManagerEntity)((ImageHolder)paramView.getTag()).a;
-      }
+      this.a.a(1134013, 0L, false);
+      return true;
     }
+    this.a.d(true);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acsz
  * JD-Core Version:    0.7.0.1
  */

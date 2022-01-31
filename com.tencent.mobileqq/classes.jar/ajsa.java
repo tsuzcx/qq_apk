@@ -1,34 +1,30 @@
-import android.app.Activity;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import java.util.ArrayList;
 
-public class ajsa
-  implements Runnable
+class ajsa
+  implements ajse
 {
-  public ajsa(AvatarWallViewPagerAdapter paramAvatarWallViewPagerAdapter, URLImageView paramURLImageView, String paramString) {}
+  ajsa(ajry paramajry) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    Object localObject;
-    Setting localSetting;
+    if (QLog.isColorLevel()) {
+      QLog.i("PtvTemplateManager", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
+    }
+    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size())) {}
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
     do
     {
       do
       {
         return;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-        localSetting = (Setting)((EntityManager)localObject).a(Setting.class, "troop_" + this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.jdField_a_of_type_JavaLangString);
-        ((EntityManager)localObject).a();
-      } while (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.jdField_a_of_type_MqqUtilWeakReference == null);
-      localObject = (Activity)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.jdField_a_of_type_MqqUtilWeakReference.get();
-    } while ((localObject == null) || (((Activity)localObject).isFinishing()));
-    ((Activity)localObject).runOnUiThread(new ajsb(this, localSetting));
+        localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      } while (localPtvTemplateInfo == null);
+      this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.smoothScrollToPositionFromLeftOrRight(paramInt, (int)(-this.a.jdField_a_of_type_Int * (0.75F + this.a.c - 1.0F)), 400);
+    } while (localPtvTemplateInfo.usable);
+    ajpy.b("", "0X8006A1A");
   }
 }
 

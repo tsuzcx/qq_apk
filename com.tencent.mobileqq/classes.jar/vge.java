@@ -1,29 +1,74 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetTagList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetTagList;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class vge
-  implements View.OnClickListener
+  extends urt<vhr>
 {
-  public vge(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, QQAppInterface paramQQAppInterface) {}
+  private static final String jdField_a_of_type_JavaLangString = uqn.a("StorySvc.get_label_list");
+  private final boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private final String jdField_b_of_type_JavaLangString;
+  private int c;
+  private final int d;
   
-  public void onClick(View paramView)
+  public vge(int paramInt1, long paramLong, String paramString, int paramInt2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c != 0L) && (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c <= 500L)) {
-      return;
+    this.c = paramInt1;
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.d = paramInt2;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public vge(String paramString, int paramInt)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.d = paramInt;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public uro a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetTagList localRspGetTagList = new qqstory_service.RspGetTagList();
+    try
+    {
+      localRspGetTagList.mergeFrom(paramArrayOfByte);
+      return new vhr(localRspGetTagList);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c = System.currentTimeMillis();
-    RedBagVideoManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a);
-    FlowCameraMqqAction.b("", "0X8008CEB");
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetTagList localReqGetTagList = new qqstory_service.ReqGetTagList();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localReqGetTagList.music_type.set(this.c);
+      localReqGetTagList.music_id.set(this.jdField_b_of_type_Long);
+    }
+    localReqGetTagList.start_cookie.set(this.jdField_b_of_type_JavaLangString);
+    localReqGetTagList.size.set(this.d);
+    return localReqGetTagList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vge
  * JD-Core Version:    0.7.0.1
  */

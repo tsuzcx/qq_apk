@@ -1,32 +1,41 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 
 public class nlg
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+  implements ViewPager.OnPageChangeListener
 {
-  public nlg(ShareGroupHotSortPlayMode paramShareGroupHotSortPlayMode, BatchGetVideoInfo paramBatchGetVideoInfo, Bundle paramBundle) {}
+  public nlg(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void a()
+  public void onPageScrollStateChanged(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    ThreadManager.getUIHandler().post(new nlj(this));
+    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
+    if (paramInt != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
+      return;
+    }
   }
   
-  public void a(ArrayList paramArrayList)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildShareGroupHotSortPlayMode.a.post(new nlh(this, paramArrayList));
+    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
+    if (paramInt2 != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
+      return;
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    PublicAccountAdvertisementActivity.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nlg
  * JD-Core Version:    0.7.0.1
  */

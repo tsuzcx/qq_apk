@@ -1,52 +1,86 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.HotChatShare;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ShareHotChatGrayTips;
-import java.lang.ref.WeakReference;
+import com.tencent.qapmsdk.QAPM;
+import com.tencent.qapmsdk.QAPM.ABType;
+import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
+import com.tencent.qapmsdk.base.config.PluginCombination;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class abvj
-  extends ClickableSpan
 {
-  private HotChatShare jdField_a_of_type_ComTencentMobileqqAppHotChatShare;
-  private ShareHotChatGrayTips jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference b;
+  public static Class<? extends QAPM.ABType>[] a = { abvi.class, abvk.class };
   
-  public abvj(QQAppInterface paramQQAppInterface, Context paramContext, ShareHotChatGrayTips paramShareHotChatGrayTips, String paramString)
+  public static int a(String paramString, HashMap<String, String> paramHashMap)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips = paramShareHotChatGrayTips;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqAppHotChatShare = new HotChatShare((BaseActivity)paramContext, paramQQAppInterface, null);
-  }
-  
-  public void onClick(View paramView)
-  {
-    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (((Context)this.b.get() != null) && (this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips != null))
+    if (paramString != null)
     {
-      paramView = ((HotChatManager)paramView.getManager(59)).a(this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips.mTroopUin);
-      this.jdField_a_of_type_ComTencentMobileqqAppHotChatShare.a(paramView);
+      if ("actSceneMem".equals(paramString)) {
+        return PluginCombination.leakPlugin.plugin;
+      }
+      if ("actScenePerf".equals(paramString)) {
+        return PluginCombination.resourcePlugin.plugin;
+      }
+      if (!"unifiedMonitor".equals(paramString)) {}
     }
+    switch (Integer.parseInt((String)paramHashMap.get("family")))
+    {
+    default: 
+      return -1;
+    case 9: 
+    case 10: 
+      return PluginCombination.dropFramePlugin.plugin;
+    case 0: 
+      return PluginCombination.loopStackPlugin.plugin;
+    case 20: 
+      return PluginCombination.resourcePlugin.plugin;
+    }
+    return PluginCombination.batteryPlugin.plugin;
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
   {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
-    paramTextPaint.setUnderlineText(false);
+    if (paramHashMap == null) {}
+    do
+    {
+      return;
+      paramHashMap.put("deviceLv", String.valueOf(bdgk.f()));
+      paramString = QAPM.getABFactorByQAPMPlugin(a(paramString, paramHashMap));
+    } while ((paramString == null) || (paramString.length() <= 0));
+    paramHashMap.put("abfactor", paramString);
+  }
+  
+  public static void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        if (paramJSONObject.has("newplugin"))
+        {
+          i = paramJSONObject.getInt("newplugin");
+          String str = QAPM.getABFactorByQAPMPlugin(i);
+          if ((str == null) || (str.length() <= 0)) {
+            break;
+          }
+          paramJSONObject.put("abfactor", str);
+          return;
+        }
+      }
+      catch (Exception paramJSONObject)
+      {
+        QLog.e("MagnifierSDK_QAPM.AbFactorManger", 2, "", paramJSONObject);
+        return;
+      }
+      int i = paramJSONObject.getInt("plugin");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abvj
  * JD-Core Version:    0.7.0.1
  */

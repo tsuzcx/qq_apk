@@ -1,13 +1,14 @@
-import com.tencent.av.ui.MultiVideoCtrlLayerUI;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class bjp
   implements Runnable
 {
-  public bjp(MultiVideoCtrlLayerUI paramMultiVideoCtrlLayerUI) {}
+  public bjp(AccountDetailActivity paramAccountDetailActivity) {}
   
   public void run()
   {
-    this.a.L();
+    this.a.a.setEnabled(true);
   }
 }
 

@@ -1,27 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import com.tencent.biz.qqcircle.widgets.QCirclePersonalBottomView;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 
 public class trm
-  implements DialogInterface.OnClickListener
+  extends yiu
 {
-  public trm(SendMultiPictureHelper paramSendMultiPictureHelper) {}
+  private QCirclePersonalBottomView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public trm(Bundle paramBundle)
   {
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
-      this.a.b = true;
-      SendMultiPictureHelper.a(this.a);
-      this.a.b();
-    }
+    super(paramBundle);
   }
+  
+  protected BaseWidgetView a(ViewGroup paramViewGroup, yhy paramyhy)
+  {
+    this.a = new QCirclePersonalBottomView(paramViewGroup.getContext(), paramyhy);
+    return this.a;
+  }
+  
+  public void loadData(yii paramyii) {}
+  
+  public void onPrepareParams(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trm
  * JD-Core Version:    0.7.0.1
  */

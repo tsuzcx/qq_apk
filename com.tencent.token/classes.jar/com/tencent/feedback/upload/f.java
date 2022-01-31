@@ -18,8 +18,8 @@ public final class f
   implements e
 {
   private static f a = null;
-  private List<d> b = new ArrayList(2);
-  private List<UploadHandleListener> c = new ArrayList(5);
+  private List b = new ArrayList(2);
+  private List c = new ArrayList(5);
   private c d;
   private Context e = null;
   private boolean f = true;
@@ -170,7 +170,7 @@ public final class f
     }
   }
   
-  private static void a(List<d> paramList, int paramInt, byte[] paramArrayOfByte)
+  private static void a(List paramList, int paramInt, byte[] paramArrayOfByte)
   {
     if ((paramList == null) || (paramArrayOfByte == null)) {}
     for (;;)
@@ -250,18 +250,18 @@ public final class f
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 39	com/tencent/feedback/upload/f:c	Ljava/util/List;
+    //   3: getfield 37	com/tencent/feedback/upload/f:c	Ljava/util/List;
     //   6: ifnull +36 -> 42
     //   9: aload_0
-    //   10: getfield 39	com/tencent/feedback/upload/f:c	Ljava/util/List;
-    //   13: invokeinterface 241 1 0
+    //   10: getfield 37	com/tencent/feedback/upload/f:c	Ljava/util/List;
+    //   13: invokeinterface 237 1 0
     //   18: ifle +24 -> 42
     //   21: aload_0
-    //   22: getfield 39	com/tencent/feedback/upload/f:c	Ljava/util/List;
+    //   22: getfield 37	com/tencent/feedback/upload/f:c	Ljava/util/List;
     //   25: iconst_0
-    //   26: anewarray 166	com/tencent/feedback/upload/UploadHandleListener
-    //   29: invokeinterface 245 2 0
-    //   34: checkcast 247	[Lcom/tencent/feedback/upload/UploadHandleListener;
+    //   26: anewarray 164	com/tencent/feedback/upload/UploadHandleListener
+    //   29: invokeinterface 241 2 0
+    //   34: checkcast 243	[Lcom/tencent/feedback/upload/UploadHandleListener;
     //   37: astore_1
     //   38: aload_0
     //   39: monitorexit
@@ -300,23 +300,23 @@ public final class f
   }
   
   /* Error */
-  private List<d> d()
+  private List d()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 37	com/tencent/feedback/upload/f:b	Ljava/util/List;
+    //   3: getfield 35	com/tencent/feedback/upload/f:b	Ljava/util/List;
     //   6: ifnull +31 -> 37
     //   9: aload_0
-    //   10: getfield 37	com/tencent/feedback/upload/f:b	Ljava/util/List;
-    //   13: invokeinterface 241 1 0
+    //   10: getfield 35	com/tencent/feedback/upload/f:b	Ljava/util/List;
+    //   13: invokeinterface 237 1 0
     //   18: ifle +19 -> 37
-    //   21: new 32	java/util/ArrayList
+    //   21: new 30	java/util/ArrayList
     //   24: dup
     //   25: aload_0
-    //   26: getfield 37	com/tencent/feedback/upload/f:b	Ljava/util/List;
-    //   29: invokespecial 252	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
+    //   26: getfield 35	com/tencent/feedback/upload/f:b	Ljava/util/List;
+    //   29: invokespecial 248	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
     //   32: astore_1
     //   33: aload_0
     //   34: monitorexit
@@ -356,6 +356,12 @@ public final class f
   
   public final void a(AbstractUploadDatas paramAbstractUploadDatas)
   {
+    j = -1;
+    long l3 = 0L;
+    boolean bool4 = false;
+    bool1 = false;
+    boolean bool5 = false;
+    boolean bool6 = false;
     if (!e())
     {
       if (paramAbstractUploadDatas.b != 1111)
@@ -377,19 +383,13 @@ public final class f
       return;
     }
     int m = paramAbstractUploadDatas.b();
-    long l4 = 0L;
-    long l3 = 0L;
-    boolean bool5 = false;
-    boolean bool1 = false;
-    boolean bool4 = false;
-    int k = -1;
     Object localObject1 = b();
-    int j;
+    int k;
     if (localObject1 != null)
     {
-      j = localObject1.length;
+      k = localObject1.length;
       i = 0;
-      while (i < j)
+      while (i < k)
       {
         localObject1[i].onUploadStart(m);
         i += 1;
@@ -422,221 +422,178 @@ public final class f
     localHashMap.put("pid", ((com.tencent.feedback.common.c)localObject6).b());
     localHashMap.put("bid", ((com.tencent.feedback.common.c)localObject6).b());
     localHashMap.put("pver", ((com.tencent.feedback.common.c)localObject6).B());
-    int i = k;
-    long l1 = l4;
-    long l2 = l3;
-    boolean bool2 = bool4;
-    boolean bool3 = bool5;
-    try
+    bool2 = bool4;
+    for (;;)
     {
-      localObject6 = new b();
-      i = k;
-      l1 = l4;
-      l2 = l3;
-      bool2 = bool4;
-      bool3 = bool5;
-      localObject1 = ((c)localObject5).a((String)localObject1, (byte[])localObject4, (b)localObject6, localHashMap);
-      if (localObject1 != null) {
-        break label703;
-      }
-      i = k;
-      l1 = l4;
-      l2 = l3;
-      bool2 = bool4;
-      bool3 = bool5;
-      a(a() + 1);
-      i = k;
-      l1 = l4;
-      l2 = l3;
-      bool2 = bool4;
-      bool3 = bool5;
-      l4 = ((b)localObject6).a();
-      i = k;
-      l1 = l4;
-      l2 = l3;
-      bool2 = bool4;
-      bool3 = bool5;
-      l3 = ((b)localObject6).b();
-      i = k;
-      l1 = l4;
-      l2 = l3;
-      bool2 = bool4;
-      bool3 = bool5;
-      localObject1 = a((byte[])localObject1);
-      j = k;
-      if (localObject1 == null) {
-        break label1226;
-      }
-      i = k;
-      l1 = l4;
-      l2 = l3;
-      bool2 = bool4;
-      bool3 = bool5;
-      j = ((O)localObject1).b;
-      i = j;
-      l1 = l4;
-      l2 = l3;
-      bool2 = bool4;
-      bool3 = bool5;
-      if (((O)localObject1).a != 0) {
-        break label788;
-      }
-      bool1 = true;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      try
       {
+        localObject6 = new b();
+        bool2 = bool4;
+        localObject1 = ((c)localObject5).a((String)localObject1, (byte[])localObject4, (b)localObject6, localHashMap);
+        if (localObject1 == null)
+        {
+          bool2 = bool4;
+          a(a() + 1);
+          bool2 = bool4;
+          l1 = ((b)localObject6).a();
+          bool2 = bool4;
+        }
+      }
+      catch (Throwable localThrowable1)
+      {
+        bool1 = false;
+        l2 = 0L;
+        long l1 = l3;
+        i = j;
         try
         {
-          if (!com.tencent.feedback.common.e.a(localThrowable)) {
-            localThrowable.printStackTrace();
+          if (!com.tencent.feedback.common.e.a(localThrowable1)) {
+            localThrowable1.printStackTrace();
           }
-          a(m, i, l1, l2, false, localThrowable.toString());
-          com.tencent.feedback.common.e.d("rqdp{  req error} %s", new Object[] { localThrowable.toString() });
+          a(m, i, l1, l2, false, localThrowable1.toString());
+          com.tencent.feedback.common.e.d("rqdp{  req error} %s", new Object[] { localThrowable1.toString() });
           return;
         }
         finally
         {
-          bool3 = bool2;
+          bool2 = bool1;
           continue;
         }
-        bool1 = false;
-        continue;
-        i = j;
-        l1 = l4;
-        l2 = l3;
         bool2 = bool1;
+        i = k;
         bool3 = bool1;
         localObject4 = com.tencent.feedback.common.c.a(this.e);
         if (localObject4 != null)
         {
-          i = j;
-          l1 = l4;
-          l2 = l3;
           bool2 = bool1;
+          i = k;
           bool3 = bool1;
-          ((com.tencent.feedback.common.c)localObject4).c(localThrowable.d);
-          i = j;
-          l1 = l4;
-          l2 = l3;
+          ((com.tencent.feedback.common.c)localObject4).c(localThrowable1.d);
           bool2 = bool1;
+          i = k;
           bool3 = bool1;
           localObject5 = new Date();
-          i = j;
-          l1 = l4;
-          l2 = l3;
           bool2 = bool1;
+          i = k;
           bool3 = bool1;
-          ((com.tencent.feedback.common.c)localObject4).a(localThrowable.e - ((Date)localObject5).getTime());
-          i = j;
-          l1 = l4;
-          l2 = l3;
+          ((com.tencent.feedback.common.c)localObject4).a(localThrowable1.e - ((Date)localObject5).getTime());
           bool2 = bool1;
+          i = k;
           bool3 = bool1;
           com.tencent.feedback.common.e.a("rqdp{  fix ip:}%s rqdp{  tmgap:}%d", new Object[] { ((com.tencent.feedback.common.c)localObject4).i(), Long.valueOf(((com.tencent.feedback.common.c)localObject4).j()) });
         }
-        i = j;
-        l1 = l4;
-        l2 = l3;
         bool2 = bool1;
+        i = k;
         bool3 = bool1;
-        localObject4 = localThrowable.c;
-        if (localObject4 != null) {
+        localObject4 = localThrowable1.c;
+        if (localObject4 == null)
+        {
+          bool2 = bool1;
+          i = k;
+          bool3 = bool1;
+          com.tencent.feedback.common.e.c("rqdp{  no response}", new Object[0]);
           continue;
         }
-        i = j;
-        l1 = l4;
-        l2 = l3;
         bool2 = bool1;
-        bool3 = bool1;
-        com.tencent.feedback.common.e.c("rqdp{  no response}", new Object[0]);
-      }
-    }
-    finally
-    {
-      paramAbstractUploadDatas.done(bool3);
-    }
-    i = j;
-    l1 = l4;
-    l2 = l3;
-    bool2 = bool1;
-    bool3 = bool1;
-    com.tencent.feedback.common.e.b("[req] request finish: result=%b requestCmd=%d, responseCmd=%d", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(m), Integer.valueOf(j) });
-    for (;;)
-    {
-      i = j;
-      l1 = l4;
-      l2 = l3;
-      bool2 = bool1;
-      bool3 = bool1;
-      a(m, j, l4, l3, bool1, null);
-      paramAbstractUploadDatas.done(bool1);
-      return;
-      label703:
-      i = k;
-      l1 = l4;
-      l2 = l3;
-      bool2 = bool4;
-      bool3 = bool5;
-      a(0);
-      break;
-      label788:
-      label1226:
-      do
-      {
-        i = j;
-        l1 = l4;
-        l2 = l3;
-        bool2 = bool1;
+        i = k;
         bool3 = bool1;
         localObject5 = d();
         if (localObject5 != null)
         {
-          i = j;
-          l1 = l4;
-          l2 = l3;
           bool2 = bool1;
+          i = k;
           bool3 = bool1;
           if (((List)localObject5).size() > 0) {}
         }
         else
         {
-          i = j;
-          l1 = l4;
-          l2 = l3;
           bool2 = bool1;
+          i = k;
           bool3 = bool1;
           com.tencent.feedback.common.e.b("rqdp{  no handler!}", new Object[0]);
-          break;
+          continue;
         }
+      }
+      finally
+      {
+        paramAbstractUploadDatas.done(bool2);
+      }
+      try
+      {
+        l2 = ((b)localObject6).b();
+        bool2 = bool4;
         i = j;
-        l1 = l4;
-        l2 = l3;
-        bool2 = bool1;
-        bool3 = bool1;
-        k = localObject2.b;
-        if (k == 0)
-        {
-          i = j;
-          l1 = l4;
-          l2 = l3;
-          bool2 = bool1;
-          bool3 = bool1;
-          com.tencent.feedback.common.e.a("rqdp{  response no datas}", new Object[0]);
-          break;
-        }
+        bool3 = bool5;
+      }
+      catch (Throwable localThrowable2)
+      {
+        l2 = 0L;
+        bool1 = false;
         i = j;
-        l1 = l4;
-        l2 = l3;
-        bool2 = bool1;
-        bool3 = bool1;
-        a((List)localObject5, k, (byte[])localObject4);
-        break;
+        continue;
         if (paramAbstractUploadDatas == null) {
-          break;
+          continue;
         }
-      } while (localObject3 != null);
+        if (localThrowable2 != null) {
+          continue;
+        }
+        continue;
+      }
+      try
+      {
+        localObject1 = a((byte[])localObject1);
+        k = j;
+        if (localObject1 == null) {
+          break label1029;
+        }
+        bool2 = bool4;
+        i = j;
+        bool3 = bool5;
+        k = ((O)localObject1).b;
+        bool1 = bool6;
+        bool2 = bool4;
+        i = k;
+        bool3 = bool5;
+        if (((O)localObject1).a == 0) {
+          bool1 = true;
+        }
+        bool2 = bool1;
+        i = k;
+        bool3 = bool1;
+        com.tencent.feedback.common.e.b("[req] request finish: result=%b requestCmd=%d, responseCmd=%d", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(m), Integer.valueOf(k) });
+      }
+      catch (Throwable localThrowable3)
+      {
+        bool1 = bool3;
+        continue;
+      }
+      bool2 = bool1;
+      i = k;
+      bool3 = bool1;
+      a(m, k, l1, l2, bool1, null);
+      paramAbstractUploadDatas.done(bool1);
+      return;
+      bool2 = bool4;
+      a(0);
+      continue;
+      bool2 = bool1;
+      i = k;
+      bool3 = bool1;
+      j = localObject2.b;
+      if (j == 0)
+      {
+        bool2 = bool1;
+        i = k;
+        bool3 = bool1;
+        com.tencent.feedback.common.e.a("rqdp{  response no datas}", new Object[0]);
+      }
+      else
+      {
+        bool2 = bool1;
+        i = k;
+        bool3 = bool1;
+        a((List)localObject5, j, (byte[])localObject4);
+      }
     }
   }
   

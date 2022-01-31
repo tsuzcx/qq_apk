@@ -1,28 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import android.support.annotation.Nullable;
 
-public class svd
-  implements View.OnClickListener
+public abstract class svd
 {
-  public svd(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
+  @Nullable
+  public Object a(int paramInt1, int paramInt2)
   {
-    boolean bool = HongbaoShowerActivity.a(this.a).isChecked();
-    paramView = HongbaoShowerActivity.a(this.a);
-    if (!bool) {}
-    for (bool = true;; bool = false)
-    {
-      paramView.setChecked(bool);
-      return;
-    }
+    return null;
   }
+  
+  public abstract boolean a(int paramInt1, int paramInt2);
+  
+  public abstract int b();
+  
+  public abstract boolean b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     svd
  * JD-Core Version:    0.7.0.1
  */

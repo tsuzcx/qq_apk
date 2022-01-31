@@ -1,14 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SetTroopAdminsActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SubaccountUgActivity;
 
 public class dnm
-  implements View.OnClickListener
+  extends Handler
 {
-  public dnm(SetTroopAdminsActivity paramSetTroopAdminsActivity) {}
+  public dnm(SubaccountUgActivity paramSubaccountUgActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
     this.a.finish();
   }
 }

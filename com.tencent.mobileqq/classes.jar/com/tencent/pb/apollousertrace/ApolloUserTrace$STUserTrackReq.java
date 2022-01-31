@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ApolloUserTrace$STUserTrackReq
-  extends MessageMicro
+  extends MessageMicro<STUserTrackReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42 }, new String[] { "strFrom", "gameId", "roomId", "playts", "userClick" }, new Object[] { "", Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), null }, STUserTrackReq.class);
   public final PBInt32Field gameId = PBField.initInt32(0);
@@ -19,7 +19,7 @@ public final class ApolloUserTrace$STUserTrackReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.apollousertrace.ApolloUserTrace.STUserTrackReq
  * JD-Core Version:    0.7.0.1
  */

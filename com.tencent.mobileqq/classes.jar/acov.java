@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.open.business.viareport.OpenSdkStatic;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.MyAppApi;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
-class acov
-  implements Runnable
+public class acov
+  implements DialogInterface.OnClickListener
 {
-  acov(acou paramacou) {}
+  public acov(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DownloadManager.a().a(UniformDownloadActivity.a(this.a.a));
-    MyAppApi.a().a(this.a.a, "http://a.app.qq.com/o/myapp-down?g_f=1001647", "ANDROIDQQ.WIFIDLYYB.GAME", 2, true);
-    OpenSdkStatic.a().a(UniformDownloadActivity.a(this.a.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3004", false);
+    ChatSettingActivity.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acov
  * JD-Core Version:    0.7.0.1
  */

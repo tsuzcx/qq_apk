@@ -1,14 +1,30 @@
 import android.graphics.Bitmap;
-import com.tencent.mobileqq.portal.ShareHelper;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 
-class agmz
-  implements Runnable
+public class agmz
+  extends agmy
 {
-  agmz(agmy paramagmy, Bitmap paramBitmap) {}
+  public Bitmap a;
+  public AnimationView.AnimationInfo a;
   
-  public void run()
+  public agmz(String paramString)
   {
-    ShareHelper.a(this.jdField_a_of_type_Agmy.jdField_a_of_type_ComTencentMobileqqPortalShareHelper, this.jdField_a_of_type_Agmy.jdField_a_of_type_Int, this.jdField_a_of_type_Agmy.b, this.jdField_a_of_type_Agmy.c, this.jdField_a_of_type_Agmy.d, this.jdField_a_of_type_Agmy.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.specialBackground;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramRedPacketInfo.specailBackgroundAnimInfo;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo != null) || (this.jdField_a_of_type_AndroidGraphicsBitmap != null);
   }
 }
 

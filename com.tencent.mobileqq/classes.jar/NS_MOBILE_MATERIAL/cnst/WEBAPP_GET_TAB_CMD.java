@@ -1,6 +1,9 @@
 package NS_MOBILE_MATERIAL.cnst;
 
-public abstract interface WEBAPP_GET_TAB_CMD {}
+public abstract interface WEBAPP_GET_TAB_CMD
+{
+  public static final String value = "Material.GetTab";
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

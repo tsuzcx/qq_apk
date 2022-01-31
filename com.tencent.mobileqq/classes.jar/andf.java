@@ -1,15 +1,34 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneUiJsPlugin;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-public class andf
-  implements Runnable
+class andf
+  implements andz
 {
-  public andf(QzoneUiJsPlugin paramQzoneUiJsPlugin, String paramString) {}
+  andf(andc paramandc, andg paramandg, ArCloudConfigInfo paramArCloudConfigInfo) {}
   
-  public void run()
+  public void a()
   {
-    RemoteHandleManager.a().a().i(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Andg != null) {
+      this.jdField_a_of_type_Andg.f();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Andg != null) {
+      this.jdField_a_of_type_Andg.c(paramInt);
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Andg != null) {}
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Andg != null) {
+      this.jdField_a_of_type_Andg.c(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+    }
   }
 }
 

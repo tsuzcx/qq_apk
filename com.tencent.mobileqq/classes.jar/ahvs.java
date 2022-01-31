@@ -1,26 +1,13 @@
-import com.tencent.mobileqq.search.model.GroupSearchModelPublicAcnt;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import java.util.List;
+import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
 
-public class ahvs
-  extends GroupSearchEngine.SearchEngineEntity
+public abstract class ahvs
+  implements ahvw, ahvx
 {
-  public ahvs(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
-  }
-  
-  public ISearchResultGroupModel a(List paramList, String paramString)
-  {
-    return new GroupSearchModelPublicAcnt(paramList, paramString, GroupSearchEngine.a(this.a));
-  }
+  ahvs(CommonRefreshLayout paramCommonRefreshLayout) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahvs
  * JD-Core Version:    0.7.0.1
  */

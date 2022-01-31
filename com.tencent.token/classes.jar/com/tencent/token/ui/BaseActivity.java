@@ -2,6 +2,8 @@ package com.tencent.token.ui;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -9,12 +11,18 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
+import android.os.Message;
+import android.os.SystemClock;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -28,35 +36,37 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.af;
-import com.tencent.token.ag;
+import com.tencent.token.ch;
+import com.tencent.token.cn;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.UpgradeDeterminResult;
-import com.tencent.token.core.bean.h;
-import com.tencent.token.core.push.a;
+import com.tencent.token.core.bean.j;
+import com.tencent.token.cp;
+import com.tencent.token.cw;
+import com.tencent.token.dm;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.e;
-import com.tencent.token.p;
+import com.tencent.token.global.h;
 import com.tencent.token.ui.base.ProDialog;
 import com.tencent.token.ui.base.ProDialogWithShutDown;
 import com.tencent.token.ui.base.TitleOptionMenu;
 import com.tencent.token.ui.base.WtloginCaptchaDialog;
-import com.tencent.token.utils.k;
-import com.tencent.token.utils.s;
-import com.tencent.token.utils.t;
-import com.tencent.token.v;
-import com.tencent.token.x;
+import com.tencent.token.upload.useraction.a;
+import com.tencent.token.utils.w;
+import com.tencent.token.utils.x;
+import com.tmsdk.TMSDKContext;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class BaseActivity
   extends Activity
-  implements acn
+  implements aax
 {
-  public static final int ADD_ACCOUNT_TIP_ACCOUNT = 0;
   public static final int ADD_ACCOUNT_TIP_ACCOUNT_LOCK = 11;
   public static final int ADD_ACCOUNT_TIP_FACE = 20;
   public static final int ADD_ACCOUNT_TIP_FACE_CHANGEPSW = 24;
+  public static final int ADD_ACCOUNT_TIP_FACE_FREEZE = 25;
   public static final int ADD_ACCOUNT_TIP_GAME_LOCK = 15;
   public static final int ADD_ACCOUNT_TIP_GAME_PROTECT = 14;
   public static final int ADD_ACCOUNT_TIP_GET_VERIFY_MSG = 13;
@@ -89,7 +99,6 @@ public class BaseActivity
   public static final int K_DLG_NORMAL_PROGRESS = 12;
   public static final int K_DLG_NOT_BIND_UIN = 9;
   public static final int K_DLG_NO_UPDATE = 3;
-  public static final int K_DLG_QUERY_DUAL_MSG = 10;
   public static final int K_DLG_QUERY_UPDATE = 2;
   public static final int K_DLG_REPORT_LOCATION_DOING = 7;
   public static final int K_DLG_SCANLOGINING = 11;
@@ -100,26 +109,24 @@ public class BaseActivity
   private static boolean gotobackground;
   private static boolean isForeground = false;
   private static ArrayList mActivityList = new ArrayList();
-  private static final Class[] mNoBackActivity = { AccountPageActivity.class, UtilsActivity.class, SettingPageActivity.class };
+  private static final Class[] mNoBackActivity = { AccountPageActivity.class, UtilsActivity.class };
   public static Activity sTopActivity;
   protected RelativeLayout animLayout;
   protected ImageView arcImg;
-  private Handler.Callback callback = new as(this);
-  protected final Handler fHandler = new bd(this);
+  private Handler.Callback callback = new be(this);
+  protected final Handler fHandler = new bp(this);
   protected ImageView lineImg;
-  private final long mAppid = 523005425L;
   protected byte[] mAqSig;
   protected View mBackArrow;
   protected ImageView mBackArrowImg;
-  private View.OnClickListener mCompleteButtonListener = new bg(this);
   private RelativeLayout mContent;
   private Toast mDefaultToast;
   private Dialog mDialog;
   private TitleOptionMenu mDialogMenu;
   private long mExitTime = 0L;
-  private boolean mIsActiveSuccess = false;
   private boolean mNeverShowLockVerifyView = false;
   private Toast mOrangeToast;
+  private dy mPermissonListener;
   private ProDialogWithShutDown mProDialog;
   private ProDialog mProDialogWithoutShutDown;
   private Resources mRes;
@@ -127,13 +134,14 @@ public class BaseActivity
   public ImageView mRightOptionImage;
   protected View mRightOptionLayout;
   private boolean mShowLockVerifyViewOnce = false;
+  private int mSourceScene;
   protected View mTitleBar;
   protected View mTitleDivider;
   protected TextView mTitleText;
-  private final int mType = 2;
+  private int mType = 1;
   protected long mUin;
-  private UpgradeDeterminResult mUpDetermin;
   private BaseActivity mmContext;
+  private float startY;
   
   public static void addActivitToList(Activity paramActivity)
   {
@@ -162,7 +170,7 @@ public class BaseActivity
       }
       catch (Exception localException)
       {
-        e.c("remove activity list err=" + localException.getMessage());
+        h.c("remove activity list err=" + localException.getMessage());
         return;
       }
       i += 1;
@@ -171,22 +179,18 @@ public class BaseActivity
   
   private void doLockVerify()
   {
-    if (RqdApplication.e()) {
-      if (t.l() == 0)
-      {
-        localIntent = new Intent(this, FaceRecognitionCameraActivityOld.class);
-        localIntent.putExtra("flag", 2);
-        localIntent.putExtra("istry", 0);
-        localIntent.putExtra("scene", 5);
-        startActivity(localIntent);
-      }
+    if (RqdApplication.h())
+    {
+      localIntent = new Intent(this, FaceStartVryCameraActivity.class);
+      localIntent.putExtra("flag", 2);
+      localIntent.putExtra("istry", 0);
+      localIntent.putExtra("scene", 5);
+      startActivity(localIntent);
     }
-    while (!RqdApplication.d()) {
-      for (;;)
-      {
-        return;
-        Intent localIntent = new Intent(this, FaceStartVryCameraActivity.class);
-      }
+    while (!RqdApplication.g())
+    {
+      Intent localIntent;
+      return;
     }
     showLockVerifyView();
   }
@@ -208,28 +212,33 @@ public class BaseActivity
   
   private void goToWtLoginAccountInput()
   {
-    QQUser localQQUser = com.tencent.token.ax.a().e();
-    if (localQQUser == null) {
+    if (do.a().e() == null) {
       return;
     }
-    Intent localIntent = new Intent(this, WtLoginAccountInput.class);
-    localIntent.putExtra("page_id", 7);
-    localIntent.putExtra("intent.uin", localQQUser.mRealUin);
-    startActivity(localIntent);
+    gotoQuickLoginWb();
+  }
+  
+  private void gotoQuickLoginWb()
+  {
+    QQUser localQQUser = do.a().e();
+    if ((localQQUser == null) || (localQQUser.mRealUin <= 0L)) {
+      return;
+    }
+    cp.a(getApplicationContext()).a(this.mmContext, 523005419L, this.fHandler, "" + localQQUser.b());
   }
   
   private void initControllers()
   {
-    this.mTitleBar = findViewById(2131296418);
-    this.mTitleText = ((TextView)findViewById(2131296419));
-    this.mTitleDivider = findViewById(2131296424);
+    this.mTitleBar = findViewById(2131558691);
+    this.mTitleText = ((TextView)findViewById(2131558692));
+    this.mTitleDivider = findViewById(2131558697);
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.mTitleBar.getLayoutParams();
     if (IndexActivity.S_RES_HEIGHT > 0) {
       localMarginLayoutParams.height = IndexActivity.S_TITLE_HEIGHT;
     }
-    this.mBackArrow = findViewById(2131296420);
-    this.mBackArrowImg = ((ImageView)findViewById(2131296421));
-    this.mRightOptionButton = ((Button)findViewById(2131297148));
+    this.mBackArrow = findViewById(2131558693);
+    this.mBackArrowImg = ((ImageView)findViewById(2131558694));
+    this.mRightOptionButton = ((Button)findViewById(2131559307));
     setDefaultTitle();
     setDefaultBackArrow();
   }
@@ -244,234 +253,109 @@ public class BaseActivity
     mActivityList.remove(paramActivity);
   }
   
-  private void setActiveSucc(boolean paramBoolean)
-  {
-    ag localag = ag.c();
-    localag.i();
-    localag.n();
-    this.mIsActiveSuccess = true;
-    this.mmContext.setContentView(2130903050);
-    this.mmContext.setBackArrowHide();
-    this.mmContext.setTitle(2131361842);
-    com.tencent.token.ax.a().f(this.mUin);
-    ((Button)this.mmContext.findViewById(2131296398)).setOnClickListener(this.mCompleteButtonListener);
-    ((ImageView)this.mmContext.findViewById(2131296395)).setImageDrawable(k.a(this.mUin + "", s.f(this.mUin) + " "));
-    a.a().a(8);
-  }
-  
   private void showBaseUserDialogBtn(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
     String str1 = null;
-    if (paramInt3 != 0) {
+    if (paramInt3 != 0) {}
+    try
+    {
       str1 = getResources().getString(paramInt3);
+      String str2 = null;
+      if (paramInt4 != 0) {
+        str2 = getResources().getString(paramInt4);
+      }
+      showBaseUserDialogBtn(paramInt1, paramInt2, paramString, str1, str2, paramOnClickListener1, paramOnClickListener2, paramOnCancelListener);
+      return;
     }
-    String str2 = null;
-    if (paramInt4 != 0) {
-      str2 = getResources().getString(paramInt4);
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
-    showBaseUserDialogBtn(paramInt1, paramInt2, paramString, str1, str2, paramOnClickListener1, paramOnClickListener2, paramOnCancelListener);
   }
   
   private void showBaseUserDialogBtn(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    this.mDialog = new Dialog(this, 2131427445);
-    TextView localTextView2;
-    TextView localTextView1;
-    TextView localTextView3;
-    TextView localTextView4;
-    if (paramInt1 == 1)
-    {
-      this.mDialog.setContentView(2130903073);
-      localTextView2 = (TextView)this.mDialog.findViewById(2131296514);
-      localTextView1 = null;
-      localTextView3 = (TextView)this.mDialog.findViewById(2131296404);
-      localTextView4 = (TextView)this.mDialog.findViewById(2131296512);
-      if (paramInt2 != 0) {
-        break label241;
-      }
-      localTextView3.setVisibility(8);
-      label89:
-      if (paramString1 == null) {
-        break label250;
-      }
-      localTextView4.setText(paramString1);
-      label99:
-      if (paramString2 != null) {
-        localTextView2.setText(paramString2);
-      }
-      if (paramOnClickListener1 == null) {
-        break label260;
-      }
-      localTextView2.setOnClickListener(new ax(this, paramOnClickListener1));
-      label131:
-      if (localTextView1 != null)
-      {
-        if (paramOnClickListener2 == null) {
-          break label276;
-        }
-        if (paramString3 != null) {
-          localTextView1.setText(paramString3);
-        }
-        localTextView1.setOnClickListener(new az(this, paramOnClickListener2));
-      }
-    }
     for (;;)
     {
-      if (paramOnCancelListener != null) {
-        this.mDialog.setOnCancelListener(paramOnCancelListener);
-      }
-      this.mDialog.setCanceledOnTouchOutside(true);
-      this.mDialog.show();
-      return;
-      this.mDialog.setContentView(2130903074);
-      localTextView2 = (TextView)this.mDialog.findViewById(2131296516);
-      localTextView1 = (TextView)this.mDialog.findViewById(2131296514);
-      break;
-      label241:
-      localTextView3.setText(paramInt2);
-      break label89;
-      label250:
-      localTextView4.setVisibility(8);
-      break label99;
-      label260:
-      localTextView2.setOnClickListener(new ay(this));
-      break label131;
-      label276:
-      localTextView1.setOnClickListener(new ba(this));
-    }
-  }
-  
-  private void showShensuDialog()
-  {
-    Intent localIntent = new Intent(this.mmContext, WtloginFinishNoMibaoActivity.class);
-    localIntent.putExtra("uin", com.tencent.token.ax.a().e().mRealUin);
-    this.mmContext.startActivity(localIntent);
-  }
-  
-  private void showUpgradeDeterminResult(UpgradeDeterminResult paramUpgradeDeterminResult)
-  {
-    int j = 1;
-    if (this.mmContext.isFinishing()) {}
-    QQUser localQQUser;
-    do
-    {
-      return;
-      localQQUser = com.tencent.token.ax.a().e();
-    } while (localQQUser == null);
-    Intent localIntent;
-    if (paramUpgradeDeterminResult.a() == 1)
-    {
-      if (paramUpgradeDeterminResult.mMobileAppear == 1) {}
-      for (int i = 1; i != 0; i = 0)
+      TextView localTextView3;
+      TextView localTextView4;
+      try
       {
-        localIntent = new Intent(this.mmContext, NetActiveVryMobileNoSmsActivity.class);
-        localIntent.putExtra("intent.qquser", localQQUser);
-        localIntent.putExtra("page_id", 7);
-        localIntent.putExtra("intent.upgradedetermin", paramUpgradeDeterminResult);
-        this.mmContext.startActivity(localIntent);
-        return;
-      }
-      if (paramUpgradeDeterminResult.mQqtokenAppear == 1)
-      {
-        i = 1;
-        if (i == 0)
+        if (isFinishing()) {
+          return;
+        }
+        this.mDialog = new Dialog(this, 2131362155);
+        if (paramInt1 == 1)
         {
-          if (paramUpgradeDeterminResult.mQuesAppear != 1) {
-            break label216;
+          this.mDialog.setContentView(2130968637);
+          localTextView2 = (TextView)this.mDialog.findViewById(2131558797);
+          localTextView1 = null;
+          localTextView3 = (TextView)this.mDialog.findViewById(2131558419);
+          localTextView4 = (TextView)this.mDialog.findViewById(2131558795);
+          if (paramInt2 != 0) {
+            break label255;
           }
-          i = 1;
-          label135:
-          if (i == 0) {
-            if (paramUpgradeDeterminResult.mHaveMobile != 1) {
-              break label221;
+          localTextView3.setVisibility(8);
+          if (paramString1 == null) {
+            break label264;
+          }
+          localTextView4.setText(paramString1);
+          if (paramString2 != null) {
+            localTextView2.setText(paramString2);
+          }
+          if (paramOnClickListener1 == null) {
+            break label274;
+          }
+          localTextView2.setOnClickListener(new bg(this, paramOnClickListener1));
+          if (localTextView1 != null)
+          {
+            if (paramOnClickListener2 == null) {
+              break label290;
             }
+            if (paramString3 != null) {
+              localTextView1.setText(paramString3);
+            }
+            localTextView1.setOnClickListener(new bi(this, paramOnClickListener2));
           }
+          if (paramOnCancelListener != null) {
+            this.mDialog.setOnCancelListener(paramOnCancelListener);
+          }
+          this.mDialog.setCanceledOnTouchOutside(true);
+          this.mDialog.show();
+          return;
         }
       }
-      label216:
-      label221:
-      for (i = j;; i = 0)
+      catch (Exception paramString1)
       {
-        if (i == 0) {
-          break label226;
-        }
-        localIntent = new Intent(this.mmContext, NetActiveVryOtherListActivity.class);
-        localIntent.putExtra("intent.qquser", localQQUser);
-        localIntent.putExtra("page_id", 7);
-        localIntent.putExtra("intent.upgradedetermin", paramUpgradeDeterminResult);
-        this.mmContext.startActivity(localIntent);
+        paramString1.printStackTrace();
         return;
-        i = 0;
-        break;
-        i = 0;
-        break label135;
       }
-      label226:
-      showShensuDialog();
-      return;
+      this.mDialog.setContentView(2130968638);
+      TextView localTextView2 = (TextView)this.mDialog.findViewById(2131558799);
+      TextView localTextView1 = (TextView)this.mDialog.findViewById(2131558797);
+      continue;
+      label255:
+      localTextView3.setText(paramInt2);
+      continue;
+      label264:
+      localTextView4.setVisibility(8);
+      continue;
+      label274:
+      localTextView2.setOnClickListener(new bh(this));
+      continue;
+      label290:
+      localTextView1.setOnClickListener(new bj(this));
     }
-    if ((paramUpgradeDeterminResult.a() == 2) || (paramUpgradeDeterminResult.a() == 3))
-    {
-      localIntent = new Intent(this.mmContext, NetActiveSetDirBySeqActivity.class);
-      localIntent.putExtra("intent.qquser", localQQUser);
-      localIntent.putExtra("intent.upgradedetermin", paramUpgradeDeterminResult);
-      localIntent.putExtra("bindType", paramUpgradeDeterminResult.a());
-      this.mmContext.startActivity(localIntent);
-      return;
-    }
-    if (paramUpgradeDeterminResult.a() == 4)
-    {
-      localIntent = new Intent(this.mmContext, NoCheckWithAuthActivity.class);
-      localIntent.putExtra("intent.qquser", localQQUser);
-      localIntent.putExtra("intent.upgradedetermin", paramUpgradeDeterminResult);
-      this.mmContext.startActivity(localIntent);
-      return;
-    }
-    if (paramUpgradeDeterminResult.a() == 5)
-    {
-      af.a().c(localQQUser.mRealUin, 5, "", "", this.fHandler);
-      return;
-    }
-    if (paramUpgradeDeterminResult.a() == 6)
-    {
-      localIntent = new Intent(this.mmContext, VerifyMobilePhoneActivity.class);
-      localIntent.putExtra("intent.qquser", localQQUser);
-      localIntent.putExtra("intent.upgradedetermin", paramUpgradeDeterminResult);
-      this.mmContext.startActivity(localIntent);
-      return;
-    }
-    if (paramUpgradeDeterminResult.a() == 8)
-    {
-      localIntent = new Intent(this.mmContext, RealNameStep0VerifyMobileActivity.class);
-      localIntent.putExtra("source_id", 3);
-      localIntent.putExtra("real_uin", localQQUser.mRealUin);
-      localIntent.putExtra("realname_mobile", paramUpgradeDeterminResult.mMobileMask);
-      localIntent.putExtra("scene_id", 1002);
-      this.mmContext.startActivity(localIntent);
-      return;
-    }
-    if (paramUpgradeDeterminResult.a() == 9)
-    {
-      localIntent = new Intent(this.mmContext, RealNameStep0VerifyMobileActivity.class);
-      localIntent.putExtra("source_id", 3);
-      localIntent.putExtra("ish5zzb", true);
-      localIntent.putExtra("real_uin", localQQUser.mRealUin);
-      localIntent.putExtra("realname_mobile", paramUpgradeDeterminResult.mMobileMask);
-      localIntent.putExtra("scene_id", 1002);
-      this.mmContext.startActivity(localIntent);
-      return;
-    }
-    showShensuDialog();
   }
   
   private void showUserDialogHasCancel(String paramString, int paramInt, DialogInterface.OnClickListener paramOnClickListener)
   {
-    showUserDialog(2131361808, paramString, paramInt, 2131361804, paramOnClickListener, null);
+    showUserDialog(2131230843, paramString, paramInt, 2131230886, paramOnClickListener, null);
   }
   
   private void showUserDialogNoCancel(String paramString, int paramInt, DialogInterface.OnClickListener paramOnClickListener)
   {
-    showUserDialog(2131361808, paramString, paramInt, paramOnClickListener);
+    showUserDialog(2131230843, paramString, paramInt, paramOnClickListener);
   }
   
   public void addContentView(View paramView)
@@ -515,7 +399,26 @@ public class BaseActivity
       }
       catch (Exception localException)
       {
-        e.b(localException.toString());
+        h.b(localException.toString());
+      }
+    }
+  }
+  
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    a.a().a(paramMotionEvent);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return super.dispatchTouchEvent(paramMotionEvent);
+      this.startY = paramMotionEvent.getRawY();
+      continue;
+      if (paramMotionEvent.getRawY() - this.startY > 5.0F) {
+        a.a().a(a.f);
+      } else {
+        a.a().a(a.b);
       }
     }
   }
@@ -530,52 +433,58 @@ public class BaseActivity
   
   protected void exitToken()
   {
-    if (System.currentTimeMillis() - this.mExitTime > Long.parseLong(getResources().getString(2131361965)))
+    if (System.currentTimeMillis() - this.mExitTime > Long.parseLong(getResources().getString(2131231502)))
     {
-      Toast.makeText(RqdApplication.i(), 2131361964, 0).show();
+      Toast.makeText(RqdApplication.l(), 2131231501, 0).show();
       this.mExitTime = System.currentTimeMillis();
       return;
     }
-    p.a().a(true);
-    v.a().a(true);
+    ch.a().a(true);
+    cn.a().a(true);
     exit();
   }
   
-  public void getA2Fail(int paramInt)
+  public void getA2Fail(Message paramMessage, int paramInt)
   {
     if (paramInt == 2)
     {
       if (isFinishing()) {
         return;
       }
-      new WtloginCaptchaDialog(this.mmContext, this.fHandler, Long.toString(this.mUin)).show();
+      new WtloginCaptchaDialog(this.mmContext, 2131362182, this.fHandler, Long.toString(this.mUin)).show();
       return;
     }
     if (paramInt == -1000)
     {
       this.mmContext.dismissDialog();
-      this.mmContext.showToast(2131361943);
+      this.mmContext.showToast(2131230960);
       return;
     }
     if (paramInt == 8192)
     {
       this.mmContext.dismissDialog();
-      this.mmContext.showToast(2131362089);
+      this.mmContext.showToast(2131231407);
       return;
     }
     if ((paramInt == 1) || (paramInt == 15) || (paramInt == 16))
     {
       this.mmContext.dismissDialog();
-      this.mmContext.showUserDialog(2131362364, getResources().getString(2131362365), 2131361800, new bf(this));
+      this.mmContext.showUserDialog(2131231654, getResources().getString(2131231653), 2131230897, new bn(this));
+      return;
+    }
+    if ((paramInt == 40) || (paramInt == 42) || (paramInt == 64))
+    {
+      this.mmContext.dismissDialog();
+      goToRemoveProtectH5(this.mmContext, paramMessage, paramInt);
       return;
     }
     this.mmContext.dismissDialog();
-    this.mmContext.showToast(2131362091);
+    this.mmContext.showToast(2131231411);
   }
   
   public void getA2Succ()
   {
-    af.a().a(this.mUin, this.mAqSig, this.fHandler, 2);
+    cw.a().a(this.mUin, this.mAqSig, this.fHandler, this.mType);
   }
   
   public TitleOptionMenu getDialogMenu()
@@ -588,6 +497,24 @@ public class BaseActivity
     return this.mRightOptionButton;
   }
   
+  public void goToRemoveProtectH5(Context paramContext, Message paramMessage, int paramInt)
+  {
+    if (paramMessage == null) {
+      return;
+    }
+    if ((paramMessage.getData() != null) && (paramMessage.getData().getString("loginerror") != null))
+    {
+      showUserDialog(2131230843, paramMessage.getData().getString("loginerror"), 2131230886, 2131230897, new bo(this), new br(this, paramInt, paramMessage, paramContext));
+      return;
+    }
+    showUserDialog(2131230843, getResources().getString(2131231411), 2131230897, null);
+  }
+  
+  public void goToRemoveProtectH5WithLoginTask(Context paramContext, String paramString, ErrMsg paramErrMsg, int paramInt)
+  {
+    showUserDialog(2131230843, paramString, 2131230886, 2131230897, new bs(this), new bt(this, paramInt, paramErrMsg, paramContext));
+  }
+  
   public void gotoVerify(BaseActivity paramBaseActivity)
   {
     if (paramBaseActivity == null) {}
@@ -595,18 +522,19 @@ public class BaseActivity
     {
       return;
       this.mmContext = paramBaseActivity;
-      paramBaseActivity = com.tencent.token.ax.a().e();
+      paramBaseActivity = do.a().e();
     } while (paramBaseActivity == null);
     this.mUin = paramBaseActivity.mRealUin;
     paramBaseActivity = "" + paramBaseActivity.mRealUin;
-    x localx = x.a(RqdApplication.i());
-    if (!localx.b(paramBaseActivity, 523005425L))
+    cp localcp = cp.a(RqdApplication.l());
+    if (!localcp.b(paramBaseActivity, 523005419L))
     {
-      localx.a(paramBaseActivity, this.fHandler, 523005425L);
-      showProDialog(this, 2131361808, 2131361817, null);
+      localcp.a(paramBaseActivity, this.fHandler, 523005419L);
+      showProDialog(this, 2131230843, 2131231298, null);
+      this.mType = 1;
       return;
     }
-    showUserDialog(2131362364, getResources().getString(2131362365), 2131361800, new be(this));
+    showUserDialog(2131231654, getResources().getString(2131231653), 2131230897, new bm(this));
   }
   
   public void hideLockVerifyView() {}
@@ -617,19 +545,6 @@ public class BaseActivity
       return;
     }
     this.mTitleBar.setVisibility(8);
-  }
-  
-  protected void hideToast()
-  {
-    if (isFinishing()) {}
-    do
-    {
-      return;
-      if (this.mOrangeToast != null) {
-        this.mOrangeToast.cancel();
-      }
-    } while (this.mDefaultToast == null);
-    this.mDefaultToast.cancel();
   }
   
   protected boolean isProDialogShow()
@@ -655,6 +570,7 @@ public class BaseActivity
   {
     try
     {
+      dismissDialog();
       mActivityList.remove(this);
       super.onDestroy();
       return;
@@ -663,7 +579,7 @@ public class BaseActivity
     {
       for (;;)
       {
-        e.c("remove activity list err=" + localException.getMessage());
+        h.c("remove activity list err=" + localException.getMessage());
       }
     }
   }
@@ -671,32 +587,77 @@ public class BaseActivity
   protected void onPause()
   {
     if ((this.mDialogMenu != null) && (this.mDialogMenu.getVisibility() == 0)) {
-      this.mDialogMenu.a();
+      this.mDialogMenu.b();
     }
     cancelRequest();
     super.onPause();
   }
   
+  public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    for (;;)
+    {
+      ArrayList localArrayList;
+      try
+      {
+        super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+        if (paramArrayOfInt.length > 0)
+        {
+          localArrayList = new ArrayList();
+          paramInt = 0;
+          if (paramInt >= paramArrayOfInt.length) {
+            break label58;
+          }
+          if (paramArrayOfInt[paramInt] == 0) {
+            break label104;
+          }
+          localArrayList.add(paramArrayOfString[paramInt]);
+        }
+      }
+      catch (Exception paramArrayOfString)
+      {
+        paramArrayOfString.printStackTrace();
+      }
+      label58:
+      do
+      {
+        do
+        {
+          return;
+          if (localArrayList.isEmpty()) {
+            break;
+          }
+        } while (this.mPermissonListener == null);
+        this.mPermissonListener.a(localArrayList);
+        return;
+      } while (this.mPermissonListener == null);
+      this.mPermissonListener.a();
+      return;
+      label104:
+      paramInt += 1;
+    }
+  }
+  
   protected void onResume()
   {
     sTopActivity = this;
-    e.c("dualmsg:isForegrounde" + isForeground);
+    h.c("dualmsg:isForegrounde" + isForeground);
     if ((!isForeground) && (!IndexActivity.s_FromPush) && (!IndexActivity.s_FromOtherApp))
     {
-      e.c("dualmsg:" + getClass().getName() + ":onresume: query=true");
-      if (com.tencent.token.ax.a().e() != null) {
-        af.a().a(com.tencent.token.av.a, this.fHandler);
+      h.c("dualmsg:" + getClass().getName() + ":onresume: query=true");
+      if (do.a().e() != null) {
+        cw.a().a(0L, dm.a, this.fHandler);
       }
       isForeground = true;
-      if (!s.b())
+      if (!w.b())
       {
-        e.b("resetShouldShowLockPatternVerifyView");
-        RqdApplication.b();
+        h.b("resetShouldShowLockPatternVerifyView");
+        RqdApplication.e();
       }
-      e.a("facepwd " + getClass() + ", face=" + RqdApplication.e() + ", gesture=" + RqdApplication.d());
-      e.b("facepwd " + getClass() + ", nevershow=" + this.mNeverShowLockVerifyView + ", showonce=" + this.mShowLockVerifyViewOnce);
-      if ((this.mNeverShowLockVerifyView) || (!RqdApplication.c())) {
-        break label286;
+      h.a("facepwd " + getClass() + ", face=" + RqdApplication.h() + ", gesture=" + RqdApplication.g());
+      h.b("facepwd " + getClass() + ", nevershow=" + this.mNeverShowLockVerifyView + ", showonce=" + this.mShowLockVerifyViewOnce);
+      if ((this.mNeverShowLockVerifyView) || (!RqdApplication.f())) {
+        break label287;
       }
       doLockVerify();
     }
@@ -704,10 +665,10 @@ public class BaseActivity
     {
       super.onResume();
       return;
-      e.c("dualmsg:" + getClass().getName() + ":onresume: query=false");
+      h.c("dualmsg:" + getClass().getName() + ":onresume: query=false");
       break;
-      label286:
-      if ((this.mShowLockVerifyViewOnce) && (RqdApplication.c()))
+      label287:
+      if ((this.mShowLockVerifyViewOnce) && (RqdApplication.f()))
       {
         doLockVerify();
         this.mShowLockVerifyViewOnce = false;
@@ -729,14 +690,60 @@ public class BaseActivity
   
   protected void onStop()
   {
-    if (!s.c())
+    if (!w.c())
     {
       gotobackground = true;
       isForeground = false;
-      p.a().b();
+      ch.a().b();
     }
-    e.c("onStop:isForeground" + isForeground);
+    h.c("onStop:isForeground" + isForeground);
     super.onStop();
+  }
+  
+  public void requestRuntimePermissions(String[] paramArrayOfString, dy paramdy)
+  {
+    if ((Build.VERSION.SDK_INT < 23) && (paramdy != null))
+    {
+      paramdy.a();
+      return;
+    }
+    for (;;)
+    {
+      int i;
+      try
+      {
+        this.mPermissonListener = paramdy;
+        paramdy = new ArrayList();
+        int j = paramArrayOfString.length;
+        i = 0;
+        if (i < j)
+        {
+          String str = paramArrayOfString[i];
+          if (ContextCompat.checkSelfPermission(this, str) == 0) {
+            break label126;
+          }
+          paramdy.add(str);
+          break label126;
+        }
+        if (!paramdy.isEmpty())
+        {
+          ActivityCompat.requestPermissions(this, (String[])paramdy.toArray(new String[paramdy.size()]), 1);
+          return;
+        }
+      }
+      catch (Exception paramArrayOfString)
+      {
+        paramArrayOfString.printStackTrace();
+        return;
+      }
+      if (this.mPermissonListener == null) {
+        break;
+      }
+      this.mPermissonListener.a();
+      return;
+      label126:
+      i += 1;
+    }
   }
   
   public void setBackArrowHide()
@@ -748,23 +755,47 @@ public class BaseActivity
   
   public void setContentView(int paramInt)
   {
-    super.setContentView(2130903220);
-    View localView = getLayoutInflater().inflate(paramInt, null);
-    this.mContent = ((RelativeLayout)findViewById(2131297155));
-    this.mContent.addView(localView, new RelativeLayout.LayoutParams(-1, -1));
-    getContentView().setBackgroundDrawable(localView.getBackground());
-    this.animLayout = ((RelativeLayout)findViewById(2131297158));
-    this.lineImg = ((ImageView)findViewById(2131297159));
-    this.arcImg = ((ImageView)findViewById(2131297160));
+    int i = 0;
+    super.setContentView(2130968782);
+    Object localObject1 = getLayoutInflater().inflate(paramInt, null);
+    this.mContent = ((RelativeLayout)findViewById(2131559316));
+    this.mContent.addView((View)localObject1, new RelativeLayout.LayoutParams(-1, -1));
+    getContentView().setBackgroundDrawable(((View)localObject1).getBackground());
+    this.animLayout = ((RelativeLayout)findViewById(2131559319));
+    this.lineImg = ((ImageView)findViewById(2131559320));
+    this.arcImg = ((ImageView)findViewById(2131559321));
     initControllers();
+    localObject1 = mNoBackActivity;
+    int k = localObject1.length;
+    int j = 0;
+    paramInt = i;
+    i = j;
+    while (paramInt < k)
+    {
+      Object localObject2 = localObject1[paramInt];
+      if (getClass().equals(localObject2)) {
+        i = 1;
+      }
+      paramInt += 1;
+    }
+    if (i == 0)
+    {
+      if ((getClass().toString().contains("StartPwd")) && (!getClass().toString().contains("StartPwdGestureIndex"))) {
+        x.a(this, this.mTitleBar, 2131493039);
+      }
+    }
+    else {
+      return;
+    }
+    x.a(this, this.mTitleBar, 2131492909);
   }
   
   public void setContentView(View paramView)
   {
-    super.setContentView(2130903220);
+    super.setContentView(2130968782);
     if (paramView != null)
     {
-      this.mContent = ((RelativeLayout)findViewById(2131297155));
+      this.mContent = ((RelativeLayout)findViewById(2131559316));
       this.mContent.addView(paramView, new RelativeLayout.LayoutParams(-1, -1));
       getContentView().setBackgroundDrawable(paramView.getBackground());
     }
@@ -793,7 +824,7 @@ public class BaseActivity
       if (i == 0)
       {
         this.mBackArrow.setVisibility(0);
-        this.mBackArrow.setOnClickListener(new bh(this));
+        this.mBackArrow.setOnClickListener(new bu(this));
       }
       return;
       i += 1;
@@ -818,7 +849,7 @@ public class BaseActivity
       for (;;)
       {
         localNameNotFoundException.printStackTrace();
-        e.c(localNameNotFoundException.toString());
+        h.c(localNameNotFoundException.toString());
         localObject = null;
       }
       setTitle(localObject.labelRes);
@@ -834,10 +865,10 @@ public class BaseActivity
   {
     if (this.mRightOptionImage == null)
     {
-      ((ViewStub)findViewById(2131297156)).inflate();
-      this.mDialogMenu = ((TitleOptionMenu)findViewById(2131297300));
-      this.mRightOptionLayout = findViewById(2131296422);
-      this.mRightOptionImage = ((ImageView)findViewById(2131296423));
+      ((ViewStub)findViewById(2131559317)).inflate();
+      this.mDialogMenu = ((TitleOptionMenu)findViewById(2131559461));
+      this.mRightOptionLayout = findViewById(2131558695);
+      this.mRightOptionImage = ((ImageView)findViewById(2131558696));
     }
     this.mRightOptionLayout.setVisibility(0);
     this.mRightOptionImage.setImageResource(paramInt);
@@ -851,11 +882,6 @@ public class BaseActivity
       return;
     }
     this.mRightOptionLayout.setVisibility(8);
-  }
-  
-  public void setShowLockVerifyViewOnce()
-  {
-    this.mShowLockVerifyViewOnce = true;
   }
   
   public void setTitle(int paramInt)
@@ -898,94 +924,87 @@ public class BaseActivity
   public void showNoAccountTipDialog(BaseActivity paramBaseActivity, int paramInt1, int paramInt2)
   {
     dismissDialog();
-    this.mmContext = paramBaseActivity;
-    View localView = View.inflate(paramBaseActivity, 2130903055, null);
-    Object localObject = (ImageView)localView.findViewById(2131296426);
-    TextView localTextView1 = (TextView)localView.findViewById(2131296428);
-    TextView localTextView2 = (TextView)localView.findViewById(2131296432);
-    ImageView localImageView = (ImageView)localView.findViewById(2131296431);
+    this.mSourceScene = paramInt1;
+    View localView = View.inflate(paramBaseActivity, 2130968620, null);
+    Object localObject = (ImageView)localView.findViewById(2131558716);
+    TextView localTextView1 = (TextView)localView.findViewById(2131558718);
+    TextView localTextView2 = (TextView)localView.findViewById(2131558722);
+    ImageView localImageView = (ImageView)localView.findViewById(2131558721);
     if (paramInt2 == 1)
     {
-      ((ImageView)localObject).setImageResource(2130837529);
-      localTextView1.setText(2131362698);
+      this.mmContext = paramBaseActivity;
+      ((ImageView)localObject).setImageResource(2130837606);
+      localTextView1.setText(2131231612);
       localImageView.setVisibility(8);
       localTextView2.setVisibility(0);
-    }
-    for (int i = 1;; i = 0)
-    {
-      localObject = (TextView)localView.findViewById(2131296429);
+      TMSDKContext.SaveStringData(1150088, paramInt1 + "");
+      localObject = (TextView)localView.findViewById(2131558719);
       switch (paramInt1)
       {
       case 18: 
       case 19: 
       default: 
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362675));
-      }
-      for (;;)
-      {
-        if (i != 0) {
-          ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362699));
-        }
-        ((ImageView)localView.findViewById(2131296433)).setOnClickListener(new bb(this));
-        localView.findViewById(2131296430).setOnClickListener(new bc(this, paramInt2, paramBaseActivity));
-        this.mDialog = new Dialog(this, 2131427443);
-        this.mDialog.setContentView(localView);
-        this.mDialog.setOnCancelListener(null);
-        this.mDialog.show();
-        return;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362674));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362676));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362677));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362678));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362679));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362680));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362681));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362682));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362683));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362684));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362685));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362686));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362687));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362688));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362689));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362690));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362691));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362675));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362675));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362675));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362675));
-        continue;
-        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131362673));
+        ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230812));
       }
     }
-  }
-  
-  public void showOrangeToast(int paramInt)
-  {
-    if (isFinishing()) {
+    for (;;)
+    {
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131231611));
+      ((ImageView)localView.findViewById(2131558723)).setOnClickListener(new bk(this));
+      localView.findViewById(2131558720).setOnClickListener(new bl(this, paramInt2, paramBaseActivity));
+      this.mDialog = new Dialog(this, 2131362064);
+      this.mDialog.setContentView(localView);
+      this.mDialog.setOnCancelListener(null);
+      this.mDialog.show();
       return;
+      paramBaseActivity = new Intent(paramBaseActivity, WtLoginAccountInput.class);
+      paramBaseActivity.putExtra("page_id", 4);
+      startActivity(paramBaseActivity);
+      return;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230823));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230819));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230830));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230825));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230827));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230821));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230828));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230822));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230811));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230824));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230813));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230820));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230817));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230816));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230815));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230818));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230826));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230812));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230812));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230812));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230812));
+      continue;
+      ((TextView)localObject).setText(paramBaseActivity.getResources().getString(2131230814));
     }
-    showOrangeToast(getResources().getString(paramInt), 2130837961);
   }
   
   public void showOrangeToast(int paramInt1, int paramInt2)
@@ -994,14 +1013,6 @@ public class BaseActivity
       return;
     }
     showOrangeToast(getResources().getString(paramInt1), paramInt2);
-  }
-  
-  public void showOrangeToast(String paramString)
-  {
-    if (isFinishing()) {
-      return;
-    }
-    showOrangeToast(paramString, 2130837961);
   }
   
   protected void showOrangeToast(String paramString, int paramInt)
@@ -1014,7 +1025,7 @@ public class BaseActivity
     if (this.mOrangeToast == null)
     {
       this.mOrangeToast = new Toast(this);
-      localObject1 = getLayoutInflater().inflate(2130903218, null);
+      localObject1 = getLayoutInflater().inflate(2130968780, null);
       this.mOrangeToast.setView((View)localObject1);
       this.mOrangeToast.setDuration(0);
       if (IndexActivity.S_TITLE_HEIGHT <= 0)
@@ -1027,8 +1038,8 @@ public class BaseActivity
     else
     {
       localObject2 = this.mOrangeToast.getView();
-      localObject1 = (TextView)((View)localObject2).findViewById(2131296784);
-      localObject2 = (ImageView)((View)localObject2).findViewById(2131296783);
+      localObject1 = (TextView)((View)localObject2).findViewById(2131558987);
+      localObject2 = (ImageView)((View)localObject2).findViewById(2131558986);
       if (localObject1 != null) {
         ((TextView)localObject1).setText(paramString);
       }
@@ -1058,17 +1069,7 @@ public class BaseActivity
       return;
     }
     dismissDialog();
-    this.mProDialog = new ProDialogWithShutDown(paramActivity, paramOnClickListener, getResources().getString(paramInt2));
-    this.mProDialog.show();
-  }
-  
-  public void showProDialog(Activity paramActivity, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, boolean paramBoolean)
-  {
-    if (isFinishing()) {
-      return;
-    }
-    dismissDialog();
-    this.mProDialog = new ProDialogWithShutDown(paramActivity, paramOnClickListener, getResources().getString(paramInt2), paramBoolean);
+    this.mProDialog = new ProDialogWithShutDown(paramActivity, 2131362182, paramOnClickListener, getResources().getString(paramInt2));
     this.mProDialog.show();
   }
   
@@ -1078,7 +1079,7 @@ public class BaseActivity
       return;
     }
     dismissDialog();
-    this.mProDialog = new ProDialogWithShutDown(paramActivity, paramOnClickListener, null);
+    this.mProDialog = new ProDialogWithShutDown(paramActivity, 2131362182, paramOnClickListener, null);
     this.mProDialog.show();
   }
   
@@ -1088,7 +1089,7 @@ public class BaseActivity
       return;
     }
     dismissDialog();
-    this.mProDialog = new ProDialogWithShutDown(paramActivity, paramOnClickListener, paramString);
+    this.mProDialog = new ProDialogWithShutDown(paramActivity, 2131362182, paramOnClickListener, paramString);
     this.mProDialog.show();
   }
   
@@ -1098,7 +1099,7 @@ public class BaseActivity
       return;
     }
     dismissDialog();
-    this.mProDialogWithoutShutDown = new ProDialog(paramActivity, paramString);
+    this.mProDialogWithoutShutDown = new ProDialog(paramActivity, 2131362182, paramString);
     this.mProDialogWithoutShutDown.show();
   }
   
@@ -1135,93 +1136,43 @@ public class BaseActivity
     default: 
       return;
     case 9: 
-      showUserDialog(2131361808, this.mRes.getString(2131362193), 2131362297, 2131361804, new bi(this), null);
+      showUserDialogHasCancel(this.mRes.getString(2131231535), 2131230778, new bv(this));
       return;
     case 5: 
-      showUserDialog(2131361808, this.mRes.getString(2131361971), 2131361800, new bj(this));
+      showUserDialogNoCancel(this.mRes.getString(2131231203), 2131230897, new bw(this));
       return;
     case 1: 
-      h localh = h.b();
-      if (3 == localh.a)
+      j localj = j.b();
+      if (3 == localj.a)
       {
-        showUserDialog(2131361961, localh.f, 2131361962, new bk(this));
+        showUserDialog(2131231521, localj.f, 2131231520, new bx(this));
         return;
       }
-      showUserDialog(2131361961, localh.f, 2131361962, 2131361963, new bl(this), new bm(this));
+      showUserDialog(2131231521, localj.f, 2131231520, 2131231523, new by(this), new bz(this));
       return;
     case 3: 
-      showUserDialog(2131361808, this.mRes.getString(2131361969), 2131361800, null);
+      showUserDialogNoCancel(this.mRes.getString(2131231432), 2131230897, null);
       return;
     case 4: 
-      showUserDialog(2131361808, this.mRes.getString(2131361818), 2131361800, 2131361804, new bn(this), null);
+      showUserDialogHasCancel(this.mRes.getString(2131230940), 2131230897, new ca(this));
       return;
     case 2: 
-      showProDialog(this, 2131361967, 2131361968, null);
+      showProDialog(this, 2131231429, 2131231430, null);
       return;
     case 8: 
-      showUserDialog(2131361808, this.mRes.getString(2131361943), 2131361800, new at(this));
+      showUserDialogNoCancel(this.mRes.getString(2131230960), 2131230897, new bf(this));
       return;
     case 6: 
-      showProDialog(this, 2131361896, 2131361897, null);
+      showProDialog(this, 2131230919, 2131230915, null);
       return;
     case 7: 
-      showProDialog(this, 2131361999, 2131361918, null);
+      showProDialog(this, 2131231455, 2131231392, null);
       return;
     case 11: 
-      showProDialog(this, 2131362070, 2131362069, null);
+      showProDialog(this, 2131231423, 2131231424, null);
       return;
     }
-    showProDialog(this, 2131361808, 2131361816, null);
-  }
-  
-  public void showUserDialog(int paramInt1, int paramInt2, int paramInt3, View.OnClickListener paramOnClickListener, boolean paramBoolean)
-  {
-    if (isFinishing()) {
-      return;
-    }
-    dismissDialog();
-    this.mDialog = new Dialog(this, 2131427445);
-    this.mDialog.setContentView(2130903073);
-    TextView localTextView1 = (TextView)this.mDialog.findViewById(2131296514);
-    localTextView1.setText(paramInt3);
-    TextView localTextView2 = (TextView)this.mDialog.findViewById(2131296404);
-    if (paramInt1 == 0)
-    {
-      localTextView2.setVisibility(8);
-      ((TextView)this.mDialog.findViewById(2131296512)).setText(paramInt2);
-      if (paramOnClickListener == null) {
-        break label152;
-      }
-      localTextView1.setOnClickListener(paramOnClickListener);
-    }
-    for (;;)
-    {
-      if (paramBoolean) {
-        this.mDialog.setOnCancelListener(new aw(this, localTextView1));
-      }
-      this.mDialog.show();
-      return;
-      localTextView2.setText(paramInt1);
-      break;
-      label152:
-      localTextView1.setOnClickListener(new av(this));
-    }
-  }
-  
-  public void showUserDialog(int paramInt, View.OnClickListener paramOnClickListener)
-  {
-    if (isFinishing()) {
-      return;
-    }
-    dismissDialog();
-    this.mDialog = new Dialog(this, 2131427445);
-    this.mDialog.setContentView(paramInt);
-    Button localButton = (Button)this.mDialog.findViewById(2131296514);
-    if (localButton != null) {
-      localButton.setOnClickListener(paramOnClickListener);
-    }
-    this.mDialog.setOnCancelListener(new au(this, localButton));
-    this.mDialog.show();
+    showProDialog(this, 2131230843, 2131231299, null);
   }
   
   public void showUserDialog(int paramInt1, String paramString, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
@@ -1275,40 +1226,56 @@ public class BaseActivity
       return;
     }
     dismissDialog();
-    showBaseUserDialogBtn(1, 2131361808, paramString, 2131361800, 0, null, null, null);
+    showBaseUserDialogBtn(1, 2131230843, paramString, 2131230897, 0, null, null, null);
   }
   
-  public void showUserDialogWithCancel(int paramInt, View.OnClickListener paramOnClickListener, DialogInterface.OnCancelListener paramOnCancelListener)
+  public void showUserDialogWithCancel(int paramInt, String paramString, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
     if (isFinishing()) {
       return;
     }
     dismissDialog();
-    this.mDialog = new Dialog(this, 2131427443);
+    this.mDialog = new Dialog(this, 2131362064);
     this.mDialog.setContentView(paramInt);
-    Button localButton = (Button)this.mDialog.findViewById(2131296514);
-    if (localButton != null) {
-      localButton.setOnClickListener(paramOnClickListener);
+    Button localButton = (Button)this.mDialog.findViewById(2131558797);
+    if (localButton != null)
+    {
+      localButton.setOnClickListener(paramOnClickListener1);
+      localButton.setText(paramString);
     }
+    ((TextView)this.mDialog.findViewById(2131559154)).setText(x.a(getResources().getString(2131231481), getResources().getDimension(2131296401), (int)(245.0F * IndexActivity.S_DENSITY)));
+    this.mDialog.findViewById(2131559314).setOnClickListener(paramOnClickListener2);
     this.mDialog.setOnCancelListener(paramOnCancelListener);
     this.mDialog.setCanceledOnTouchOutside(true);
     this.mDialog.show();
   }
   
-  public void showUserDialogWithCancel(View paramView, View.OnClickListener paramOnClickListener, DialogInterface.OnCancelListener paramOnCancelListener)
+  public void startActivity(Intent paramIntent)
   {
-    if (isFinishing()) {
-      return;
+    try
+    {
+      MotionEvent localMotionEvent = a.a().b();
+      if (localMotionEvent != null)
+      {
+        h.c("getRawX:" + localMotionEvent.getRawX());
+        h.c("getRawY:" + localMotionEvent.getRawY());
+        String str = "";
+        if (paramIntent.getComponent() != null) {
+          str = paramIntent.getComponent().getClassName();
+        }
+        long l = System.currentTimeMillis() - (SystemClock.uptimeMillis() - localMotionEvent.getDownTime());
+        h.c("eventStartTime:" + l);
+        a.a().a(a.e, "", "", "", "", str, (int)localMotionEvent.getRawX(), (int)localMotionEvent.getRawY(), l);
+      }
     }
-    dismissDialog();
-    this.mDialog = new Dialog(this, 2131427443);
-    this.mDialog.setContentView(paramView);
-    paramView = (Button)this.mDialog.findViewById(2131296514);
-    if (paramView != null) {
-      paramView.setOnClickListener(paramOnClickListener);
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
     }
-    this.mDialog.setOnCancelListener(paramOnCancelListener);
-    this.mDialog.show();
+    super.startActivity(paramIntent);
   }
 }
 

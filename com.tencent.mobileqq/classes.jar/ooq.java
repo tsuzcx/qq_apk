@@ -1,34 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.widget.PopupWindow.OnDismissListener;
 
-public final class ooq
-  implements DownloadParams.DecodeHandler
+class ooq
+  implements PopupWindow.OnDismissListener
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  ooq(oop paramoop) {}
+  
+  public void onDismiss()
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
+    this.a.a(1.0F);
+    if (oop.a(this.a) != null) {
+      oop.a(this.a).a(oop.a(this.a));
     }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return UIUtils.a(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ooq
  * JD-Core Version:    0.7.0.1
  */

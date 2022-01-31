@@ -1,22 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
 
-public class eiv
-  implements View.OnClickListener
+class eiv
+  implements PermissionDialogCallback
 {
-  public eiv(SearchResultDialog paramSearchResultDialog) {}
+  eiv(eiu parameiu) {}
   
-  public void onClick(View paramView)
-  {
-    int i = ((Integer)paramView.getTag(-1)).intValue();
-    SearchResultDialog.a(this.a).a(SearchResultDialog.b(this.a), paramView, i, 0L);
-  }
+  public void a() {}
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eiv
  * JD-Core Version:    0.7.0.1
  */

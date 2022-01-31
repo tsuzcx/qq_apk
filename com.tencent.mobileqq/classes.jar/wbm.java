@@ -1,22 +1,41 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-class wbm
-  implements Runnable
+public final class wbm
+  extends QQUIEventReceiver<wax, vcp>
 {
-  wbm(wbl paramwbl) {}
-  
-  public void run()
+  public wbm(@NonNull wax paramwax)
   {
-    this.a.a.jdField_a_of_type_AndroidWidgetToast = ChatActivityUtils.a(this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131433352));
-    this.a.a.jdField_a_of_type_AndroidWidgetToast.show();
+    super(paramwax);
+  }
+  
+  public void a(@NonNull wax paramwax, @NonNull vcp paramvcp)
+  {
+    if ((paramvcp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvcp.jdField_a_of_type_JavaUtilList != null) && (paramwax.a != null))
+    {
+      paramvcp = paramvcp.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramvcp.hasNext())
+      {
+        uxd localuxd = (uxd)paramvcp.next();
+        if (TextUtils.equals(paramwax.a.b, localuxd.a)) {
+          paramwax.i();
+        }
+      }
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vcp.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wbm
  * JD-Core Version:    0.7.0.1
  */

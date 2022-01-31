@@ -1,42 +1,59 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmoticonPagerAdapter;
-import com.tencent.mobileqq.emoticonview.EmoticonViewBinder;
-import com.tencent.mobileqq.emoticonview.EmoticonViewPager;
-import com.tencent.mobileqq.emoticonview.RecentAndFavPanelViewBinder;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 
-public class ftc
-  implements Runnable
+public final class ftc
+  implements DialogInterface.OnClickListener
 {
-  public ftc(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public ftc(String paramString, long paramLong, QQAppInterface paramQQAppInterface, Activity paramActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("belina", 2, "updateRecentEmoticonPanel");
-    if ((EmoticonMainPanel.b() == 1) && (EmoticonMainPanel.d() == 0) && (EmoticonMainPanel.b(this.a) != null) && (EmoticonMainPanel.b(this.a).size() > 0))
+    paramDialogInterface = new FileManagerReporter.fileAssistantReportData();
+    paramDialogInterface.jdField_a_of_type_JavaLangString = "file_local_qqmusic_download";
+    paramDialogInterface.b = this.jdField_a_of_type_JavaLangString;
+    paramDialogInterface.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    FileManagerReporter.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), paramDialogInterface);
+    long l = 0L;
+    for (;;)
     {
-      EmoticonViewBinder localEmoticonViewBinder = (EmoticonViewBinder)EmoticonMainPanel.b(this.a).get(0);
-      if ((localEmoticonViewBinder != null) && ((localEmoticonViewBinder instanceof RecentAndFavPanelViewBinder)))
+      try
       {
-        ((RecentAndFavPanelViewBinder)localEmoticonViewBinder).a(true);
-        if (EmoticonMainPanel.a(this.a) != null) {
-          EmoticonMainPanel.a(this.a).notifyDataSetChanged();
-        }
-        EmoticonMainPanel.a(this.a, EmoticonMainPanel.b(this.a));
-        if (EmoticonMainPanel.a(this.a) != null)
-        {
-          EmoticonMainPanel.a(this.a).a(EmoticonMainPanel.c(this.a));
-          EmoticonMainPanel.a(this.a).setAdapter(EmoticonMainPanel.a(this.a));
-          EmoticonMainPanel.a(this.a).setCurrentItem(0, false);
-        }
+        paramDialogInterface = new URL("http://misc.wcd.qq.com/app?packageName=com.tencent.qqmusic&channelId=10000435");
+      }
+      catch (MalformedURLException paramDialogInterface)
+      {
+        paramDialogInterface.printStackTrace();
+        continue;
+      }
+      try
+      {
+        paramInt = paramDialogInterface.openConnection().getContentLength();
+        l = paramInt;
+      }
+      catch (IOException paramDialogInterface)
+      {
+        paramDialogInterface.printStackTrace();
       }
     }
+    paramDialogInterface = new Bundle();
+    paramDialogInterface.putLong("_filesize_from_dlg", l);
+    paramDialogInterface.putString("_filename_from_dlg", this.jdField_a_of_type_AndroidAppActivity.getString(2131562688));
+    UniformDownloadMgr.a().a("http://misc.wcd.qq.com/app?packageName=com.tencent.qqmusic&channelId=10000435", paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ftc
  * JD-Core Version:    0.7.0.1
  */

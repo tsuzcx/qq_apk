@@ -1,53 +1,20 @@
-import android.net.Uri;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.ui.TouchWebView.OnOverScrollHandler;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.apollo.GLTextureView;
 
 public class akqn
-  implements TouchWebView.OnOverScrollHandler
+  implements View.OnLayoutChangeListener
 {
-  public akqn(SwiftBrowserUIStyleHandler paramSwiftBrowserUIStyleHandler, TouchWebView paramTouchWebView, RefreshView paramRefreshView) {}
+  public akqn(GLTextureView paramGLTextureView) {}
   
-  public void a()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizUiRefreshView.a();
-  }
-  
-  public void a(int paramInt)
-  {
-    Object localObject;
-    if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_Boolean = true;
-      localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
-      if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    }
-    try
-    {
-      localObject = Uri.parse((String)localObject);
-      if ((localObject != null) && (((Uri)localObject).isHierarchical())) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidWidgetTextView.setText("网页由 " + ((Uri)localObject).getHost() + " 提供");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      }
-    }
-    this.jdField_a_of_type_ComTencentBizUiRefreshView.a(paramInt);
+    this.a.surfaceChanged(this.a.getSurfaceTexture(), 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akqn
  * JD-Core Version:    0.7.0.1
  */

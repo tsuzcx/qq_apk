@@ -1,66 +1,29 @@
+import android.support.v4.app.FragmentActivity;
+
 public class aiab
+  extends aiac
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  public static final int[] a = { 2131690782, 2131690787, 2131690784, 2131690785, 2131690789, 2131690786, 2131690783 };
+  public static final int[] b = { 2131364149, 2131364154, 2131364151, 2131364152, 2131364155, 2131364153, 2131364150 };
   
-  aiab(String paramString)
+  public aiab(FragmentActivity paramFragmentActivity)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramFragmentActivity);
   }
   
-  public int a()
+  protected int[] a()
   {
-    if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString))) {
-      return -3;
-    }
-    this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_JavaLangString.split("\\_");
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_ArrayOfJavaLangString.length < 2) {
-      return -2;
-    }
-    return 0;
+    return b;
   }
   
-  public int a(char paramChar)
+  protected int[] b()
   {
-    if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString))) {
-      return -3;
-    }
-    this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_JavaLangString.split("\\" + paramChar);
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_ArrayOfJavaLangString.length < 2) {
-      return -2;
-    }
-    return 0;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[0].trim();
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[1].trim();
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[0].trim();
-  }
-  
-  public String d()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[1].trim();
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiab
  * JD-Core Version:    0.7.0.1
  */

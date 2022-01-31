@@ -1,46 +1,27 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.qphone.base.util.QLog;
 
 public class fuo
-  extends FMObserver
+  extends BroadcastReceiver
 {
-  public fuo(FMActivity paramFMActivity) {}
+  public fuo(OnlineFileSessionCenter paramOnlineFileSessionCenter) {}
   
-  protected void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.a();
-    this.a.runOnUiThread(new fus(this));
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (this.a.d) {
-      return;
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getAction();
+      if ((paramContext != null) && (paramContext.equals("com.tencent.mobileqq.intent.logout")))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("OnlineFileSessionCenter<FileAssistant>", 2, "OLfilesession[] logout.....!");
+        }
+        this.a.a();
+      }
     }
-    this.a.runOnUiThread(new fut(this, paramBoolean));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.runOnUiThread(new fup(this));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.a.runOnUiThread(new fuq(this, paramLong2));
-  }
-  
-  protected void b(int paramInt, String paramString)
-  {
-    if (!this.a.d) {
-      FMToastUtil.a(paramString);
-    }
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.runOnUiThread(new fur(this));
   }
 }
 

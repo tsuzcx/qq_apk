@@ -1,21 +1,20 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class tvo
-  implements Runnable
+class tvo
+  implements DialogInterface.OnClickListener
 {
-  public tvo(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  tvo(tvl paramtvl) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_JavaUtilMap = TroopAssistantManager.a().a(this.a.app, this.a.jdField_a_of_type_JavaUtilList);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    this.a.jdField_a_of_type_Tvj.a.a().c(tuz.a(this.a.jdField_a_of_type_Tvj.a), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
+    tuz.b(this.a.jdField_a_of_type_Tvj.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tvo
  * JD-Core Version:    0.7.0.1
  */

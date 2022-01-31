@@ -50,7 +50,7 @@ public class CirclePageIndicator
   
   public CirclePageIndicator(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130772022);
+    this(paramContext, paramAttributeSet, 2131034113);
   }
   
   public CirclePageIndicator(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -60,22 +60,22 @@ public class CirclePageIndicator
       return;
     }
     Object localObject = getResources();
-    int i = ((Resources)localObject).getColor(2131493126);
-    int j = ((Resources)localObject).getColor(2131493125);
-    int k = ((Resources)localObject).getColor(2131493127);
-    float f1 = ((Resources)localObject).getDimension(2131558810);
-    float f2 = ((Resources)localObject).getDimension(2131558809);
+    int i = ((Resources)localObject).getColor(2131165559);
+    int j = ((Resources)localObject).getColor(2131165558);
+    int k = ((Resources)localObject).getColor(2131165560);
+    float f1 = ((Resources)localObject).getDimension(2131296750);
+    float f2 = ((Resources)localObject).getDimension(2131296749);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.CirclePageIndicator, paramInt, 0);
     this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(2, true);
     this.d = paramAttributeSet.getInt(0, 0);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramAttributeSet.getColor(4, i));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramAttributeSet.getColor(5, i));
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramAttributeSet.getColor(7, k));
     this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(paramAttributeSet.getDimension(8, f1));
     this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramAttributeSet.getColor(3, j));
-    this.jdField_a_of_type_Float = paramAttributeSet.getDimension(5, f2);
+    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramAttributeSet.getColor(4, j));
+    this.jdField_a_of_type_Float = paramAttributeSet.getDimension(3, f2);
     this.jdField_b_of_type_Boolean = paramAttributeSet.getBoolean(6, false);
     localObject = paramAttributeSet.getDrawable(1);
     if (localObject != null) {
@@ -468,7 +468,7 @@ public class CirclePageIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.CirclePageIndicator
  * JD-Core Version:    0.7.0.1
  */

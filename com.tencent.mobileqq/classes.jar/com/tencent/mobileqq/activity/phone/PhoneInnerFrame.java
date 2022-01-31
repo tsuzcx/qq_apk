@@ -1,29 +1,30 @@
 package com.tencent.mobileqq.activity.phone;
 
+import ailh;
+import aind;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import aryv;
+import awhw;
 import com.tencent.common.app.InnerFrame;
 import com.tencent.common.app.InnerFrameManager;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import wvb;
 
 public class PhoneInnerFrame
   extends InnerFrame
 {
   private int jdField_a_of_type_Int = 0;
-  private BaseActivityView.IPhoneContext jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView$IPhoneContext;
+  private ailh jdField_a_of_type_Ailh;
+  private awhw jdField_a_of_type_Awhw;
   private BaseActivityView jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView;
   private ContactListView jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView;
   private PhoneLaunchView jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneLaunchView;
   private PhoneMatchView jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneMatchView;
-  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver;
   public boolean a;
   
   public PhoneInnerFrame(Context paramContext)
@@ -86,12 +87,12 @@ public class PhoneInnerFrame
     a(null, this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView);
   }
   
-  protected BaseActivityView.IPhoneContext a()
+  protected ailh a()
   {
     return null;
   }
   
-  public ForwardBaseOption a()
+  public aryv a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView != null) {
       return this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.a;
@@ -142,12 +143,12 @@ public class PhoneInnerFrame
     a().startActivityForResult(paramIntent, paramInt);
   }
   
-  public final BaseActivityView.IPhoneContext b()
+  public final ailh b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView$IPhoneContext == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView$IPhoneContext = a();
+    if (this.jdField_a_of_type_Ailh == null) {
+      this.jdField_a_of_type_Ailh = a();
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView$IPhoneContext;
+    return this.jdField_a_of_type_Ailh;
   }
   
   public void b()
@@ -169,10 +170,10 @@ public class PhoneInnerFrame
       this.jdField_a_of_type_Int = paramBundle.getInt("key_req_type");
     }
     g();
-    if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
+    if (this.jdField_a_of_type_Awhw == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wvb(this);
-      b().a().registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
+      this.jdField_a_of_type_Awhw = new aind(this);
+      b().a().registObserver(this.jdField_a_of_type_Awhw);
     }
   }
   
@@ -184,10 +185,10 @@ public class PhoneInnerFrame
       this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView = null;
       removeAllViews();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver != null)
+    if (this.jdField_a_of_type_Awhw != null)
     {
-      b().a().unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = null;
+      b().a().unRegistObserver(this.jdField_a_of_type_Awhw);
+      this.jdField_a_of_type_Awhw = null;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView != null)
     {
@@ -223,8 +224,8 @@ public class PhoneInnerFrame
   
   public void g()
   {
-    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)b().a().getManager(10);
-    switch (localPhoneContactManagerImp.c())
+    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)b().a().getManager(11);
+    switch (localPhoneContactManagerImp.d())
     {
     default: 
       h();
@@ -260,7 +261,7 @@ public class PhoneInnerFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneInnerFrame
  * JD-Core Version:    0.7.0.1
  */

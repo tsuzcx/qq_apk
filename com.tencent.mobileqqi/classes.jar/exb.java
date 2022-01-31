@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCarePersonActivity;
-import com.tencent.mobileqq.app.QvipSpecialCareObserver;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.activity.voip.VoipTencentPayActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class exb
-  extends QvipSpecialCareObserver
+  implements Runnable
 {
-  public exb(QvipSpecialCarePersonActivity paramQvipSpecialCarePersonActivity) {}
+  public exb(VoipTencentPayActivity paramVoipTencentPayActivity) {}
   
-  public void a(Object paramObject)
+  public void run()
   {
-    if (paramObject != null) {
-      QvipSpecialCarePersonActivity.b(this.a);
-    }
-    switch (((Integer)paramObject).intValue())
-    {
-    default: 
-      return;
-    }
-    QvipSpecialCarePersonActivity.a(this.a);
+    this.a.a.hide();
+    QRUtils.a(1, 2131562452);
+    this.a.finish();
   }
 }
 

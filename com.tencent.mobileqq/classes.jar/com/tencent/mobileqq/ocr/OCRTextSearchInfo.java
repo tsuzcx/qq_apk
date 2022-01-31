@@ -8,7 +8,7 @@ import tencent.im.cs.cmd0x6ff.subcmd0x533.HttpMapItem;
 
 public class OCRTextSearchInfo
 {
-  public static OCRTextSearchInfo.SougouSearchInfo a(List paramList)
+  public static OCRTextSearchInfo.SougouSearchInfo a(List<subcmd0x533.HttpMapItem> paramList)
   {
     OCRTextSearchInfo.SougouSearchInfo localSougouSearchInfo = new OCRTextSearchInfo.SougouSearchInfo();
     paramList = paramList.iterator();
@@ -53,7 +53,7 @@ public class OCRTextSearchInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRTextSearchInfo
  * JD-Core Version:    0.7.0.1
  */

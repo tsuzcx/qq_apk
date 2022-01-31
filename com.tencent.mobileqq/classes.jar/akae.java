@@ -1,20 +1,58 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.util.HeadRequest;
+import android.app.Dialog;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.16.1;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class akae
-  implements Parcelable.Creator
+public class akae
+  extends Handler
 {
-  public HeadRequest a(Parcel paramParcel)
+  public akae(SelectMemberActivity paramSelectMemberActivity, Looper paramLooper)
   {
-    HeadRequest localHeadRequest = new HeadRequest();
-    localHeadRequest.a(paramParcel);
-    return localHeadRequest;
+    super(paramLooper);
   }
   
-  public HeadRequest[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new HeadRequest[paramInt];
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.a.b == null) || (!this.a.b.isShowing()));
+      this.a.b.dismiss();
+      paramMessage = new Intent();
+      paramMessage.putExtra("select_member_add_request_ok", true);
+      this.a.setResult(-1, paramMessage);
+      if (!TextUtils.isEmpty(this.a.g))
+      {
+        paramMessage = this.a.g;
+        QQToast.a(this.a, 2, paramMessage, 1500).b(this.a.getTitleBarHeight());
+        postDelayed(new SelectMemberActivity.16.1(this), 1500L);
+        return;
+      }
+      if (this.a.c) {}
+      for (int i = 2131693785;; i = 2131693784)
+      {
+        paramMessage = this.a.getResources().getString(i);
+        break;
+      }
+    } while ((this.a.b == null) || (!this.a.b.isShowing()));
+    this.a.b.dismiss();
+    String str = (String)paramMessage.obj;
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131693783);
+    }
+    QQToast.a(this.a, 1, paramMessage, 1500).b(this.a.getTitleBarHeight());
   }
 }
 

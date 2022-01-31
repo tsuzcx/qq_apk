@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
 import android.os.Parcel;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -30,15 +31,22 @@ public class AIOImageData
   public long e;
   public String e;
   public boolean e;
-  public long f;
   public String f;
   public boolean f;
   public String g;
   public boolean g;
   public String h;
+  public boolean h;
   public String i;
+  public boolean i;
   public String j;
+  public boolean j;
   public String k;
+  public String l;
+  public String m;
+  public String n;
+  public String o;
+  public String p;
   
   public AIOImageData()
   {
@@ -47,7 +55,7 @@ public class AIOImageData
     this.jdField_c_of_type_JavaLangString = "I:N";
     this.jdField_d_of_type_JavaLangString = "I:N";
     this.jdField_e_of_type_JavaLangString = "I:N";
-    this.jdField_c_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
   }
   
   public int a(String paramString)
@@ -117,7 +125,7 @@ public class AIOImageData
         localObject2 = localObject3;
         if (!((String)localObject1).equals("I:N"))
         {
-          if (this.jdField_c_of_type_Int != 3) {
+          if (this.jdField_b_of_type_Int != 3) {
             break;
           }
           localObject1 = new File((String)localObject1);
@@ -163,53 +171,93 @@ public class AIOImageData
     this.jdField_d_of_type_Long = paramParcel.readLong();
     this.jdField_a_of_type_Long = paramParcel.readLong();
     this.jdField_b_of_type_Long = paramParcel.readLong();
-    if (paramParcel.readByte() != 0)
-    {
+    boolean bool1;
+    if (paramParcel.readByte() != 0) {
       bool1 = true;
-      this.jdField_d_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label254;
-      }
-      bool1 = true;
-      label102:
-      this.jdField_e_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label259;
-      }
-      bool1 = true;
-      label116:
-      this.jdField_f_of_type_Boolean = bool1;
-      this.jdField_a_of_type_Int = paramParcel.readInt();
-      this.jdField_c_of_type_Int = paramParcel.readInt();
-      this.jdField_a_of_type_JavaLangObject = paramParcel.readValue(null);
-      if (paramParcel.readByte() == 0) {
-        break label264;
-      }
     }
-    label259:
-    label264:
-    for (boolean bool1 = bool2;; bool1 = false)
+    for (;;)
     {
-      this.jdField_g_of_type_Boolean = bool1;
-      this.jdField_f_of_type_Long = paramParcel.readLong();
-      this.i = paramParcel.readString();
-      this.j = paramParcel.readString();
-      this.jdField_d_of_type_Int = paramParcel.readInt();
-      this.jdField_e_of_type_Int = paramParcel.readInt();
-      this.k = paramParcel.readString();
-      this.jdField_b_of_type_Int = paramParcel.readInt();
-      this.jdField_g_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_e_of_type_Long = paramParcel.readLong();
-      this.jdField_f_of_type_JavaLangString = paramParcel.readString();
-      this.h = paramParcel.readString();
-      return;
-      bool1 = false;
-      break;
-      label254:
-      bool1 = false;
-      break label102;
-      bool1 = false;
-      break label116;
+      this.jdField_d_of_type_Boolean = bool1;
+      if (paramParcel.readByte() != 0)
+      {
+        bool1 = true;
+        label102:
+        this.jdField_e_of_type_Boolean = bool1;
+        if (paramParcel.readByte() == 0) {
+          break label336;
+        }
+        bool1 = true;
+        this.jdField_f_of_type_Boolean = bool1;
+        this.jdField_a_of_type_Int = paramParcel.readInt();
+        this.jdField_b_of_type_Int = paramParcel.readInt();
+      }
+      try
+      {
+        this.jdField_a_of_type_JavaLangObject = paramParcel.readValue(null);
+        if (paramParcel.readByte() != 0)
+        {
+          bool1 = true;
+          this.jdField_g_of_type_Boolean = bool1;
+          this.jdField_e_of_type_Long = paramParcel.readLong();
+          this.jdField_g_of_type_JavaLangString = paramParcel.readString();
+          this.jdField_h_of_type_JavaLangString = paramParcel.readString();
+          this.jdField_c_of_type_Int = paramParcel.readInt();
+          this.jdField_d_of_type_Int = paramParcel.readInt();
+          this.jdField_i_of_type_JavaLangString = paramParcel.readString();
+          this.jdField_f_of_type_JavaLangString = paramParcel.readString();
+          this.jdField_j_of_type_JavaLangString = paramParcel.readString();
+          this.k = paramParcel.readString();
+          if (paramParcel.readInt() != 1) {
+            break label372;
+          }
+          bool1 = true;
+          this.jdField_h_of_type_Boolean = bool1;
+          this.jdField_e_of_type_Int = paramParcel.readInt();
+          if (paramParcel.readInt() != 1) {
+            break label377;
+          }
+          bool1 = true;
+          this.jdField_i_of_type_Boolean = bool1;
+          this.l = paramParcel.readString();
+          if (paramParcel.readInt() != 1) {
+            break label382;
+          }
+          bool1 = bool2;
+          this.jdField_j_of_type_Boolean = bool1;
+          this.m = paramParcel.readString();
+          this.n = paramParcel.readString();
+          this.o = paramParcel.readString();
+          this.p = paramParcel.readString();
+          return;
+          bool1 = false;
+          continue;
+          bool1 = false;
+          break label102;
+          label336:
+          bool1 = false;
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("AIOImageData", 2, "readValue exception");
+          }
+          this.jdField_a_of_type_JavaLangObject = new byte[0];
+          continue;
+          bool1 = false;
+          continue;
+          label372:
+          bool1 = false;
+          continue;
+          label377:
+          bool1 = false;
+          continue;
+          label382:
+          bool1 = false;
+        }
+      }
     }
   }
   
@@ -239,7 +287,7 @@ public class AIOImageData
         } while (!this.jdField_b_of_type_JavaLangString.equals("I:N"));
         return false;
         bool1 = bool2;
-      } while (this.jdField_c_of_type_Int == 3);
+      } while (this.jdField_b_of_type_Int == 3);
       bool1 = bool2;
     } while (!this.jdField_c_of_type_JavaLangString.equals("I:N"));
     return false;
@@ -252,7 +300,7 @@ public class AIOImageData
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int m = 1;
+    int i1 = 1;
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
@@ -268,41 +316,66 @@ public class AIOImageData
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
       if (!this.jdField_e_of_type_Boolean) {
-        break label258;
+        break label332;
       }
       paramInt = 1;
       label104:
       paramParcel.writeByte((byte)paramInt);
       if (!this.jdField_f_of_type_Boolean) {
-        break label263;
+        break label337;
       }
       paramInt = 1;
       label119:
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeInt(this.jdField_a_of_type_Int);
-      paramParcel.writeInt(this.jdField_c_of_type_Int);
+      paramParcel.writeInt(this.jdField_b_of_type_Int);
       paramParcel.writeValue(this.jdField_a_of_type_JavaLangObject);
       if (!this.jdField_g_of_type_Boolean) {
-        break label268;
+        break label342;
+      }
+      paramInt = 1;
+      label158:
+      paramParcel.writeByte((byte)paramInt);
+      paramParcel.writeLong(this.jdField_e_of_type_Long);
+      paramParcel.writeString(this.jdField_g_of_type_JavaLangString);
+      paramParcel.writeString(this.jdField_h_of_type_JavaLangString);
+      paramParcel.writeInt(this.jdField_c_of_type_Int);
+      paramParcel.writeInt(this.jdField_d_of_type_Int);
+      paramParcel.writeString(this.jdField_i_of_type_JavaLangString);
+      paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
+      paramParcel.writeString(this.jdField_j_of_type_JavaLangString);
+      paramParcel.writeString(this.k);
+      if (!this.jdField_h_of_type_Boolean) {
+        break label347;
+      }
+      paramInt = 1;
+      label245:
+      paramParcel.writeInt(paramInt);
+      paramParcel.writeInt(this.jdField_e_of_type_Int);
+      if (!this.jdField_i_of_type_Boolean) {
+        break label352;
+      }
+      paramInt = 1;
+      label267:
+      paramParcel.writeInt(paramInt);
+      paramParcel.writeString(this.l);
+      if (!this.jdField_j_of_type_Boolean) {
+        break label357;
       }
     }
-    label258:
-    label263:
-    label268:
-    for (paramInt = m;; paramInt = 0)
+    label332:
+    label337:
+    label342:
+    label347:
+    label352:
+    label357:
+    for (paramInt = i1;; paramInt = 0)
     {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.jdField_f_of_type_Long);
-      paramParcel.writeString(this.i);
-      paramParcel.writeString(this.j);
-      paramParcel.writeInt(this.jdField_d_of_type_Int);
-      paramParcel.writeInt(this.jdField_e_of_type_Int);
-      paramParcel.writeString(this.k);
-      paramParcel.writeInt(this.jdField_b_of_type_Int);
-      paramParcel.writeString(this.jdField_g_of_type_JavaLangString);
-      paramParcel.writeLong(this.jdField_e_of_type_Long);
-      paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
-      paramParcel.writeString(this.h);
+      paramParcel.writeInt(paramInt);
+      paramParcel.writeString(this.m);
+      paramParcel.writeString(this.n);
+      paramParcel.writeString(this.o);
+      paramParcel.writeString(this.p);
       return;
       paramInt = 0;
       break;
@@ -310,12 +383,18 @@ public class AIOImageData
       break label104;
       paramInt = 0;
       break label119;
+      paramInt = 0;
+      break label158;
+      paramInt = 0;
+      break label245;
+      paramInt = 0;
+      break label267;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageData
  * JD-Core Version:    0.7.0.1
  */

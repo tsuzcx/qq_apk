@@ -1,19 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.utils.AudioHelper;
 
 public class lpp
-  implements Runnable
 {
-  public lpp(ArticleInfoModule paramArticleInfoModule, int paramInt1, long paramLong, String paramString1, int paramInt2, String paramString2) {}
+  public int a;
+  final long jdField_a_of_type_Long = AudioHelper.b();
+  public int b;
+  public long b;
+  public int c;
+  public long c;
+  public int d;
+  public int e;
+  public int f;
   
-  public void run()
+  public lpp(AVNotifyCenter paramAVNotifyCenter) {}
+  
+  public boolean a()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
+    return (this.jdField_b_of_type_Int == 2) && (this.d == 2) && (this.e == 4) && (this.jdField_c_of_type_Int == 0);
+  }
+  
+  public String toString()
+  {
+    return "seq[" + this.jdField_a_of_type_Long + "], relationId[" + this.jdField_b_of_type_Long + "], avtype[" + this.jdField_b_of_type_Int + "], roomMode[" + this.d + "], gameId[" + this.e + "], liveExtraMode[" + this.jdField_c_of_type_Int + "], memberNum[" + this.jdField_a_of_type_Int + "], event[" + this.f + "], time[" + this.jdField_c_of_type_Long + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lpp
  * JD-Core Version:    0.7.0.1
  */

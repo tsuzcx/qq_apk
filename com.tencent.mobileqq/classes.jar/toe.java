@@ -1,53 +1,98 @@
+import android.support.annotation.NonNull;
 import android.view.View;
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.ArrayList;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.weishi_new.view.WSTabLayout;
 
 public class toe
-  implements ActionSheet.OnButtonClickListener
 {
-  public toe(RecentLoginDevActivity paramRecentLoginDevActivity, String paramString, ArrayList paramArrayList, int paramInt) {}
+  private int jdField_a_of_type_Int;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private int jdField_b_of_type_Int;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
   
-  public void OnClick(View paramView, int paramInt)
+  public toe(WSTabLayout paramWSTabLayout, @NonNull View paramView)
   {
-    switch (paramInt)
-    {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380318));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380315));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new tof(this, paramWSTabLayout));
+  }
+  
+  private String a(int paramInt)
+  {
+    if (paramInt > 99) {
+      return "99+";
     }
-    for (;;)
-    {
-      if ((RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity) != null) && (RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity).isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.isFinishing()))
-      {
-        RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity).dismiss();
-        RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity).cancel();
-        RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, null);
-      }
+    return paramInt + "";
+  }
+  
+  public int a()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, WSTabLayout.c);
+  }
+  
+  public void a(float paramFloat, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (WSTabLayout.a(paramFloat, 0.0F))) {
       return;
-      if (!NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity))
-      {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.getString(2131433009), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.getTitleBarHeight());
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.devlock.RecentLoginDevActivity", 2, "OnClick begin to delHistoryDev");
-        }
-        if (EquipmentLockImpl.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int)) {
-          RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity);
-        } else if (QLog.isColorLevel()) {
-          QLog.d("Q.devlock.RecentLoginDevActivity", 2, "showDelDevActionSheet.OnClick delHistoryDev failed");
-        }
-      }
     }
+    float f1 = WSTabLayout.d;
+    float f2 = WSTabLayout.c;
+    float f3 = WSTabLayout.d;
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, f1 + (f2 - f3) * paramFloat);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, WSTabLayout.d);
+  }
+  
+  public void b(float paramFloat, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (WSTabLayout.a(paramFloat, 0.0F))) {
+      return;
+    }
+    float f1 = WSTabLayout.d;
+    float f2 = WSTabLayout.c;
+    float f3 = WSTabLayout.d;
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, f1 + (f2 - f3) * (1.0F - paramFloat));
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    if (paramInt > 0)
+    {
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      String str = a(paramInt);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
+      return;
+    }
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     toe
  * JD-Core Version:    0.7.0.1
  */

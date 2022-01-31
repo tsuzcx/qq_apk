@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/df" android:paddingLeft="112.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/a4r" android:layout_width="fill_parent" android:layout_height="68.0dip">
+        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/a4s" android:background="@color/a3x" android:layout_width="40.0dip" android:layout_height="40.0dip" android:scaleType="centerCrop" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/w6" android:id="@id/a4t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/w6" android:id="@id/a4u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:background="#ffd8d8d8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/a4r" android:layout_alignParentBottom="true" />
+</RelativeLayout>

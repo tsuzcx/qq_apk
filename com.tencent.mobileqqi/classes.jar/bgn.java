@@ -1,27 +1,24 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.PoiMapActivity.TabView;
 import com.tencent.qphone.base.util.QLog;
 
 public class bgn
-  implements MediaPlayer.OnCompletionListener
+  implements View.OnClickListener
 {
-  public bgn(VideoController paramVideoController) {}
+  public bgn(PoiMapActivity paramPoiMapActivity) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "onCompletion onClose");
+    if ((paramView instanceof PoiMapActivity.TabView))
+    {
+      this.a.a(((PoiMapActivity.TabView)paramView).a);
+      if (QLog.isDevelopLevel()) {
+        QLog.i("PoiMapActivity", 4, "mTabClickListener" + ((PoiMapActivity.TabView)paramView).a);
+      }
+      this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), "", "", "");
     }
-    if (paramMediaPlayer != null) {
-      paramMediaPlayer.release();
-    }
-    if (!this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.g()) {
-      return;
-    }
-    this.a.a(this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_a_of_type_JavaLangString, 0);
-    this.a.c(this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.l);
   }
 }
 

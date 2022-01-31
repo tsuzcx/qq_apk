@@ -1,19 +1,28 @@
-import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder.EmotionPanelDataCallback;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.data.SubAccountInfo;
 
-class acfu
-  implements Runnable
+public class acfu
+  implements View.OnClickListener
 {
-  acfu(acft paramacft, List paramList) {}
+  public acfu(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Acft.a.a(this.jdField_a_of_type_JavaUtilList);
+    paramView = (View)paramView.getParent();
+    if ((paramView == null) || (paramView.getTag() == null)) {}
+    do
+    {
+      return;
+      azqs.b(this.a.app, "CliOper", "", "", "0X8007146", "0X8007146", 0, 0, "", "", "", "");
+    } while (!(paramView.getTag() instanceof SubAccountInfo));
+    this.a.a((SubAccountInfo)paramView.getTag());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acfu
  * JD-Core Version:    0.7.0.1
  */

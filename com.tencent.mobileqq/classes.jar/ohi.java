@@ -1,27 +1,15 @@
-import com.tencent.biz.qqstory.takevideo.EditMusicExport;
-import com.tencent.biz.qqstory.takevideo.EditSubtitleExport;
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-
 public class ohi
-  implements Runnable
 {
-  public ohi(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
-  
-  public void run()
+  public static void a(int paramInt)
   {
-    Object localObject = (EditMusicExport)this.a.a(EditMusicExport.class);
-    if (localObject != null) {
-      ((EditMusicExport)localObject).b();
-    }
-    localObject = (EditSubtitleExport)this.a.a(EditSubtitleExport.class);
-    if (localObject != null) {
-      ((EditSubtitleExport)localObject).b();
+    if ((paramInt == 41516) || (paramInt == 41522)) {
+      nrt.a(null, "", "0X8009EF4", "0X8009EF4", 0, 0, "", "", "", new ohg().a().a(paramInt).a(), false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ohi
  * JD-Core Version:    0.7.0.1
  */

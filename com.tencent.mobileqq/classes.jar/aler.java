@@ -1,102 +1,107 @@
-import com.tencent.mobileqq.intervideo.now.NowUtil;
-import com.tencent.open.appcommon.now.download.DownloadCenterImpl;
-import com.tencent.open.appcommon.now.download.IDownloadCallback;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import com.tencent.open.downloadnew.DownloadManager;
+import android.text.TextUtils;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
 public class aler
-  implements DownloadListener
 {
-  public aler(DownloadCenterImpl paramDownloadCenterImpl) {}
+  public int a;
+  public long a;
+  public String a;
+  public final HashMap<Integer, alet> a;
+  public final List<alet> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public List<ales> b;
+  public long c;
+  public String c;
+  public List<ales> c;
+  public String d;
+  public String e;
   
-  public void a(DownloadInfo paramDownloadInfo)
+  public aler()
   {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).a(paramDownloadInfo);
-    }
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void a(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  public static String a(int paramInt)
   {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).a(paramDownloadInfo, paramInt1, paramString, paramInt2);
+    if (paramInt > 999999) {
+      return String.valueOf(999999) + "+";
     }
+    return String.valueOf(paramInt);
   }
   
-  public void a(String paramString1, String paramString2)
+  public static String b(int paramInt)
   {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).a(paramString1, paramString2);
+    if (paramInt > 99999) {
+      return String.valueOf(99999) + "+";
     }
+    return String.valueOf(paramInt);
   }
   
-  public void a(List paramList)
+  public static String c(int paramInt)
   {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).a(paramList);
+    if (paramInt > 9999) {
+      return String.valueOf(9999) + "+";
     }
+    return String.valueOf(paramInt);
   }
   
-  public void b(DownloadInfo paramDownloadInfo)
+  public void a()
   {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).b(paramDownloadInfo);
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.isEmpty())) {
+      return;
     }
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).b(paramString1, paramString2);
-    }
-  }
-  
-  public void c(DownloadInfo paramDownloadInfo)
-  {
-    if (NowUtil.a(paramDownloadInfo.k, paramDownloadInfo.b, paramDownloadInfo.d))
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    label40:
+    ales localales;
+    alet localalet;
+    for (;;)
     {
-      if (!NowUtil.b().equals(paramDownloadInfo.k))
+      if (localIterator.hasNext())
       {
-        NowUtil.a(paramDownloadInfo.k);
-        paramDownloadInfo.k = NowUtil.b();
+        localales = (ales)localIterator.next();
+        if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(String.valueOf(localales.jdField_a_of_type_Long))))
+        {
+          if (localales.jdField_a_of_type_Short > 4) {
+            break label165;
+          }
+          localalet = (alet)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(3));
+          if (localalet != null)
+          {
+            localalet.c += 1;
+            this.jdField_b_of_type_Int += 1;
+          }
+        }
       }
-      DownloadManager.a().e(paramDownloadInfo);
     }
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).c(paramDownloadInfo);
-    }
-  }
-  
-  public void c(String paramString1, String paramString2)
-  {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).c(paramString1, paramString2);
-    }
-  }
-  
-  public void d(DownloadInfo paramDownloadInfo)
-  {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).d(paramDownloadInfo);
+    for (;;)
+    {
+      if (this.c == null) {
+        this.c = new ArrayList();
+      }
+      this.c.add(localales);
+      break label40;
+      break;
+      label165:
+      localalet = (alet)this.jdField_a_of_type_JavaUtilHashMap.get(Short.valueOf(localales.jdField_a_of_type_Short));
+      if (localalet != null)
+      {
+        localalet.c += localales.f;
+        this.jdField_b_of_type_Int += localales.f;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aler
  * JD-Core Version:    0.7.0.1
  */

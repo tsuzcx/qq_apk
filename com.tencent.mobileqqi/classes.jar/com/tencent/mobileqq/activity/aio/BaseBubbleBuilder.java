@@ -51,8 +51,8 @@ import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
-import ebc;
-import ebd;
+import dvl;
+import dvm;
 import java.io.UnsupportedEncodingException;
 
 public abstract class BaseBubbleBuilder
@@ -64,10 +64,10 @@ public abstract class BaseBubbleBuilder
   public static final int b = 0;
   public static final int c = 1;
   public static final int d = 2;
-  protected Context a;
-  View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener = new ebd(this);
+  public Context a;
+  View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener = new dvm(this);
   @Deprecated
-  protected BaseAdapter a;
+  public BaseAdapter a;
   public SessionInfo a;
   private AIOAnimationConatiner jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner;
   public QQAppInterface a;
@@ -143,7 +143,7 @@ public abstract class BaseBubbleBuilder
         a(paramViewHolder, paramChatMessage);
         if ((paramInt1 == paramInt2 - 1) && (paramChatMessage.mAnimFlag))
         {
-          jdField_a_of_type_AndroidOsHandler.post(new ebc(this, paramViewHolder, paramChatMessage));
+          jdField_a_of_type_AndroidOsHandler.post(new dvl(this, paramViewHolder, paramChatMessage));
           paramChatMessage.mAnimFlag = false;
         }
       }
@@ -305,7 +305,7 @@ public abstract class BaseBubbleBuilder
   
   public static void a(QQCustomMenu paramQQCustomMenu, Context paramContext)
   {
-    paramQQCustomMenu.a(2131234872, paramContext.getString(2131562749));
+    paramQQCustomMenu.a(2131234874, paramContext.getString(2131562749));
   }
   
   private void a(String paramString1, int paramInt, String paramString2)
@@ -483,20 +483,20 @@ public abstract class BaseBubbleBuilder
     }
   }
   
-  protected abstract View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener);
+  public abstract View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener);
   
-  protected abstract BaseBubbleBuilder.ViewHolder a();
+  public abstract BaseBubbleBuilder.ViewHolder a();
   
-  protected abstract String a(ChatMessage paramChatMessage);
+  public abstract String a(ChatMessage paramChatMessage);
   
-  protected void a()
+  public void a()
   {
     this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
   }
   
   public void a(View paramView) {}
   
-  protected void a(View paramView, ChatMessage paramChatMessage)
+  public void a(View paramView, ChatMessage paramChatMessage)
   {
     if (paramChatMessage.isSend())
     {
@@ -541,7 +541,7 @@ public abstract class BaseBubbleBuilder
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(0, 100, new Object[] { Integer.valueOf(2), Long.valueOf(paramChatMessage.uniseq), paramView });
   }
   
-  protected void a(View paramView, ChatMessage paramChatMessage, BubbleInfo paramBubbleInfo, int paramInt)
+  public void a(View paramView, ChatMessage paramChatMessage, BubbleInfo paramBubbleInfo, int paramInt)
   {
     paramView = paramBubbleInfo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
     if ((paramView != null) && (paramView.first != null)) {
@@ -549,9 +549,9 @@ public abstract class BaseBubbleBuilder
     }
   }
   
-  protected void a(BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, ChatMessage paramChatMessage, BubbleInfo paramBubbleInfo) {}
+  public void a(BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, ChatMessage paramChatMessage, BubbleInfo paramBubbleInfo) {}
   
-  protected void a(BaseBubbleBuilder.ViewHolder paramViewHolder, ChatMessage paramChatMessage) {}
+  public void a(BaseBubbleBuilder.ViewHolder paramViewHolder, ChatMessage paramChatMessage) {}
   
   protected void a(ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout)
   {
@@ -573,7 +573,7 @@ public abstract class BaseBubbleBuilder
     return (paramChatMessage.senderuin != null) && (paramChatMessage.senderuin.equals(paramChatMessage.selfuin));
   }
   
-  protected void b()
+  public void b()
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(0);
   }
@@ -780,7 +780,7 @@ public abstract class BaseBubbleBuilder
     paramBaseChatItemLayout.setProgressVisable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramChatMessage));
   }
   
-  protected boolean b(ChatMessage paramChatMessage)
+  public boolean b(ChatMessage paramChatMessage)
   {
     return (paramChatMessage.istroop == 0) || (paramChatMessage.istroop == 1000) || (paramChatMessage.istroop == 1001) || (paramChatMessage.istroop == 1002) || (paramChatMessage.istroop == 1003) || (paramChatMessage.istroop == 1004) || (paramChatMessage.istroop == 1005) || (paramChatMessage.istroop == 1006) || (paramChatMessage.istroop == 1008) || (paramChatMessage.istroop == 1009) || (paramChatMessage.istroop == 1020) || (paramChatMessage.istroop == 1021) || (paramChatMessage.istroop == 1022);
   }

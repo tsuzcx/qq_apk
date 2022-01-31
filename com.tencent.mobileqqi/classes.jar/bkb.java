@@ -1,26 +1,46 @@
-import com.tencent.av.ui.MultiVideoCtrlLayerUI;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bkb
-  implements Runnable
+  extends Thread
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  int b;
-  
-  public bkb(MultiVideoCtrlLayerUI paramMultiVideoCtrlLayerUI, int paramInt1, long paramLong, String paramString, boolean paramBoolean, int paramInt2)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramInt2;
-  }
+  public bkb(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, JSONObject paramJSONObject, String paramString2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      String str2 = localJSONObject.optString("callid");
+      String str1 = str2;
+      if (!TextUtils.isEmpty(str2)) {
+        str1 = str2.replace("\\", "\\\\").replace("'", "\\'");
+      }
+      this.jdField_a_of_type_OrgJsonJSONObject.put("callid", str1);
+      str1 = localJSONObject.optString("url");
+      if (!TextUtils.isEmpty(str1))
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.b, new String[] { "{ret:1, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
+        str1 = PublicAccountJavascriptInterface.a(str1);
+        if (str1 != null)
+        {
+          str1 = str1.replace("\\", "\\\\").replace("'", "\\'");
+          this.jdField_a_of_type_OrgJsonJSONObject.put("data", str1);
+          this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.b, new String[] { "{ret:0, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
+          return;
+        }
+        this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.b, new String[] { "{ret:-10, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
+        return;
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.b, new String[] { "{ret:-2, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.b, new String[] { "{ret:-4, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
   }
 }
 

@@ -22,15 +22,15 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.open.agent.util.AuthorityUtil;
 import com.tencent.qphone.base.util.QLog;
-import hyg;
-import hyh;
-import hyi;
-import hyj;
-import hyk;
-import hyl;
-import hym;
-import hyn;
-import hyo;
+import huc;
+import hud;
+import hue;
+import huf;
+import hug;
+import huh;
+import hui;
+import huj;
+import huk;
 import java.util.HashMap;
 import java.util.List;
 import mqq.manager.WtloginManager;
@@ -59,10 +59,10 @@ public class Login
   public long a;
   protected ProgressDialog a;
   public Handler a;
-  TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new hyk(this);
+  TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new hug(this);
   protected View.OnClickListener a;
-  View.OnFocusChangeListener jdField_a_of_type_AndroidViewView$OnFocusChangeListener = new hyi(this);
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new hyj(this);
+  View.OnFocusChangeListener jdField_a_of_type_AndroidViewView$OnFocusChangeListener = new hue(this);
+  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new huf(this);
   public View a;
   public Button a;
   public EditText a;
@@ -90,11 +90,11 @@ public class Login
   {
     this.jdField_b_of_type_Boolean = true;
     this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new hyg(this);
-    this.jdField_b_of_type_AndroidTextTextWatcher = new hyl(this);
-    this.jdField_a_of_type_AndroidOsHandler = new hym(this);
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new huc(this);
+    this.jdField_b_of_type_AndroidTextTextWatcher = new huh(this);
+    this.jdField_a_of_type_AndroidOsHandler = new hui(this);
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new hyn(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new huj(this);
   }
   
   public static String a(String paramString1, String paramString2)
@@ -113,7 +113,7 @@ public class Login
   public void a(String paramString)
   {
     if (!isFinishing()) {
-      DialogUtil.b(this, 230).setMessageWithUrl(paramString).setTitle(getString(2131562321)).setPositiveButton(17039370, new hyo(this)).show();
+      DialogUtil.b(this, 230).setMessageWithUrl(paramString).setTitle(getString(2131562321)).setPositiveButton(17039370, new huk(this)).show();
     }
   }
   
@@ -328,7 +328,7 @@ public class Login
     if (QLog.isColorLevel()) {
       QLog.d("Q.quicklogin.Login", 2, "oncreate mReqSrc:" + this.i);
     }
-    setContentView(2130903984);
+    setContentView(2130903986);
     if (getIntent().getBooleanExtra("is_first_login", false))
     {
       setTitle(2131562740);
@@ -337,23 +337,23 @@ public class Login
     for (;;)
     {
       this.k.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131234514);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131234515);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234517));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131234516);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131234517);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234519));
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131231001));
-      this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131231905));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232095));
+      this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131231908));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232098));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this);
-      findViewById(2131234516).requestFocus();
+      findViewById(2131234518).requestFocus();
       this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(this.jdField_a_of_type_AndroidViewView$OnFocusChangeListener);
       this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
       this.jdField_b_of_type_AndroidWidgetEditText.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
       this.jdField_b_of_type_AndroidWidgetEditText.setOnFocusChangeListener(this.jdField_a_of_type_AndroidViewView$OnFocusChangeListener);
-      this.jdField_b_of_type_AndroidWidgetEditText.setOnEditorActionListener(new hyh(this));
+      this.jdField_b_of_type_AndroidWidgetEditText.setOnEditorActionListener(new hud(this));
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
       this.jdField_b_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_b_of_type_AndroidTextTextWatcher);
       d();

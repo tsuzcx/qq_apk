@@ -1,137 +1,154 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletTips;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.lang.ref.SoftReference;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class abut
-  extends ClickableSpan
 {
-  public abut(MessageForQQWalletTips paramMessageForQQWalletTips, SoftReference paramSoftReference1, SoftReference paramSoftReference2, String paramString, int paramInt) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
   
-  public void onClick(View paramView)
+  public abut() {}
+  
+  public abut(SharedPreferences paramSharedPreferences, String paramString)
   {
-    int j = 0;
-    Context localContext = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
-    if ((localQQAppInterface == null) || (localContext == null)) {
-      return;
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.frienduin;
-    int i;
-    switch (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.istroop)
-    {
-    default: 
-      paramView = "";
-      i = 0;
-      j = -1;
-    }
-    for (;;)
-    {
-      if ((i != 0) && (localQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.reciverUin))) {
-        localObject = localQQAppInterface.getCurrentAccountUin();
-      }
-      for (;;)
-      {
-        JSONObject localJSONObject2 = new JSONObject();
-        JSONObject localJSONObject1 = new JSONObject();
-        try
-        {
-          localJSONObject2.put("listid", this.jdField_a_of_type_JavaLangString);
-          localJSONObject2.put("name", paramView);
-          localJSONObject2.put("grouptype", j + "");
-          localJSONObject2.put("groupid", localObject);
-          if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.authKey != null) {
-            localJSONObject2.put("authkey", this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.authKey);
-          }
-          localJSONObject1.put("userId", localQQAppInterface.getCurrentAccountUin());
-          localJSONObject1.put("viewTag", "redgiftDetail");
-          localJSONObject1.put("app_info", "appid#1344242394|bargainor_id#1000030201|channel#graytips");
-          localJSONObject1.put("come_from", 2);
-          localJSONObject1.put("extra_data", localJSONObject2);
-        }
-        catch (Exception paramView)
-        {
-          label317:
-          break label317;
-        }
-        paramView = new Bundle();
-        paramView.putString("json", localJSONObject1.toString());
-        paramView.putString("callbackSn", "0");
-        localObject = new Intent(localContext, PayBridgeActivity.class);
-        ((Intent)localObject).putExtras(paramView);
-        ((Intent)localObject).putExtra("pay_requestcode", 5);
-        localContext.startActivity((Intent)localObject);
-        return;
-        paramView = localQQAppInterface.getCurrentNickname();
-        i = 1;
-        break;
-        paramView = (HotChatManager)localQQAppInterface.getManager(59);
-        if ((paramView != null) && (paramView.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.frienduin)))
-        {
-          paramView = ContactUtils.q(localQQAppInterface, localQQAppInterface.getCurrentNickname());
-          if (!TextUtils.isEmpty(paramView)) {
-            break label562;
-          }
-          paramView = localQQAppInterface.getCurrentNickname();
-          i = 0;
-          j = 5;
-          break;
-        }
-        paramView = localQQAppInterface.getCurrentNickname();
-        j = 1;
-        i = 0;
-        break;
-        paramView = ContactUtils.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.memberUin);
-        i = 0;
-        j = 2;
-        break;
-        j = 3;
-        paramView = localQQAppInterface.getCurrentNickname();
-        i = 1;
-        break;
-        j = 4;
-        paramView = localQQAppInterface.getCurrentNickname();
-        i = 1;
-        break;
-        j = 6;
-        paramView = ContactUtils.q(localQQAppInterface, localQQAppInterface.getCurrentNickname());
-        if (!TextUtils.isEmpty(paramView)) {
-          break label557;
-        }
-        paramView = localQQAppInterface.getCurrentNickname();
-        i = 1;
-        break;
-      }
-      label557:
-      i = 1;
-      continue;
-      label562:
-      i = 0;
-      j = 5;
-    }
+    String str1 = a("ver", paramString);
+    String str2 = a("system", paramString);
+    String str3 = a("driver", paramString);
+    String str4 = a("url", paramString);
+    String str5 = a("type", paramString);
+    String str6 = a("status", paramString);
+    String str7 = a("previousPatch", paramString);
+    String str8 = a("enabled", paramString);
+    this.b = paramSharedPreferences.getString(str1, "");
+    this.c = paramSharedPreferences.getString(str2, "");
+    this.d = paramSharedPreferences.getString(str3, "");
+    this.e = paramSharedPreferences.getString(str4, "");
+    this.f = paramSharedPreferences.getString(str5, "");
+    this.g = paramSharedPreferences.getString(str6, "");
+    this.k = paramSharedPreferences.getString(str7, "").trim();
+    this.a = paramString;
+    this.h = paramSharedPreferences.getString(str8, "").trim();
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public static abut a(JSONObject paramJSONObject)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(this.jdField_a_of_type_Int);
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.clearShadowLayer();
+    abut localabut = new abut();
+    try
+    {
+      localabut.a = paramJSONObject.getString("name").trim();
+      localabut.b = paramJSONObject.getString("ver").trim();
+      localabut.c = paramJSONObject.getString("system").trim();
+      localabut.d = paramJSONObject.getString("driver").trim();
+      localabut.e = paramJSONObject.getString("url").trim();
+      localabut.f = paramJSONObject.getString("type").trim();
+      localabut.h = paramJSONObject.getString("enabled").trim();
+      localabut.k = paramJSONObject.optString("previousPatch", "").trim();
+      return localabut;
+    }
+    catch (Exception paramJSONObject)
+    {
+      abui.a("PatchInfo", "Parse PatchInfo from JSON exception " + paramJSONObject);
+    }
+    return null;
+  }
+  
+  private String a(String paramString1, String paramString2)
+  {
+    return paramString1 + "_" + paramString2;
+  }
+  
+  public JSONObject a()
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("name", this.a);
+      localJSONObject.put("ver", this.b);
+      localJSONObject.put("system", this.c);
+      localJSONObject.put("driver", this.d);
+      localJSONObject.put("url", this.e);
+      localJSONObject.put("type", this.f);
+      localJSONObject.put("enabled", this.h);
+      localJSONObject.put("previousPatch", this.k);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      abui.a("PatchInfo", "Get JSON String failed " + localJSONException);
+    }
+    return new JSONObject();
+  }
+  
+  public void a(SharedPreferences.Editor paramEditor)
+  {
+    String str1 = a("ver", this.a);
+    String str2 = a("system", this.a);
+    String str3 = a("driver", this.a);
+    String str4 = a("url", this.a);
+    String str5 = a("type", this.a);
+    String str6 = a("status", this.a);
+    String str7 = a("previousPatch", this.a);
+    String str8 = a("enabled", this.a);
+    paramEditor.remove(str1);
+    paramEditor.remove(str2);
+    paramEditor.remove(str3);
+    paramEditor.remove(str4);
+    paramEditor.remove(str5);
+    paramEditor.remove(str6);
+    paramEditor.remove(str7);
+    paramEditor.remove(str8);
+    paramEditor.commit();
+  }
+  
+  public boolean a()
+  {
+    return this.h.equals("true");
+  }
+  
+  public void b(SharedPreferences.Editor paramEditor)
+  {
+    String str1 = a("ver", this.a);
+    String str2 = a("system", this.a);
+    String str3 = a("driver", this.a);
+    String str4 = a("url", this.a);
+    String str5 = a("type", this.a);
+    String str6 = a("status", this.a);
+    String str7 = a("previousPatch", this.a);
+    String str8 = a("enabled", this.a);
+    paramEditor.putString(str1, this.b);
+    paramEditor.putString(str2, this.c);
+    paramEditor.putString(str3, this.d);
+    paramEditor.putString(str4, this.e);
+    paramEditor.putString(str5, this.f);
+    paramEditor.putString(str6, this.g);
+    paramEditor.putString(str7, this.k);
+    paramEditor.putString(str8, this.h);
+    paramEditor.commit();
+  }
+  
+  public boolean b()
+  {
+    return abuv.a(this.c);
+  }
+  
+  public String toString()
+  {
+    return "I'm Patch " + this.a + "," + this.h + "," + this.f + "," + this.e + "," + this.j + "," + this.k + "," + this.i + "," + this.g;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abut
  * JD-Core Version:    0.7.0.1
  */

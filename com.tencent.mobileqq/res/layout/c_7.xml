@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/al3" android:paddingLeft="6.0dip" android:paddingTop="12.0dip" android:paddingRight="6.0dip" android:paddingBottom="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView android:id="@id/lnf" android:layout_width="40.0dip" android:layout_height="40.0dip" android:scaleType="centerCrop" />
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:layout_weight="1.0">
+        <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="#ff262626" android:id="@id/mc3" android:paddingTop="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pyu" android:includeFontPadding="false" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff262626" android:id="@id/me1" android:paddingBottom="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="4.2万订阅" android:includeFontPadding="false" />
+    </LinearLayout>
+    <TextView android:textSize="11.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/me0" android:background="@drawable/heh" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="23.0dip" android:text="@string/q15" />
+</LinearLayout>

@@ -1,21 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.image.AbstractGifImage.DoAccumulativeRunnable;
 
-class svt
-  implements Runnable
+public class svt
 {
-  svt(svs paramsvs) {}
+  private static int a;
   
-  public void run()
+  public static void a()
   {
-    Bitmap localBitmap = this.a.a.a.a(this.a.a.f);
-    this.a.a.runOnUiThread(new svu(this, localBitmap));
+    a = AbstractGifImage.DoAccumulativeRunnable.DELAY;
+    AbstractGifImage.DoAccumulativeRunnable.DELAY = 0;
+  }
+  
+  public static void b()
+  {
+    AbstractGifImage.DoAccumulativeRunnable.DELAY = a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     svt
  * JD-Core Version:    0.7.0.1
  */

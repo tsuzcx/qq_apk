@@ -9,27 +9,37 @@ import java.util.Map;
 public final class get_photo_list_2_req
   extends JceStruct
 {
-  static Map cache_busi_param;
+  static Map<Integer, String> cache_busi_param = new HashMap();
+  static int cache_sort_type = 0;
+  static int cache_type;
   public String albumid = "";
-  public Map busi_param;
+  public String attach_info = "";
+  public Map<Integer, String> busi_param;
   public String ciphertext = "";
   public String curlloc = "";
   public long face_uin;
   public boolean need_pos;
   public String password = "";
-  public int password_cleartext = 1;
+  public long password_cleartext = 1L;
   public int pn;
   public int ps;
   public String req_url = "";
   public long sharer;
   public int sheight;
+  public int sort_type = 0;
   public int swidth;
-  public int type = 0;
+  public int type;
   public long uin;
+  
+  static
+  {
+    cache_busi_param.put(Integer.valueOf(0), "");
+    cache_type = 0;
+  }
   
   public get_photo_list_2_req() {}
   
-  public get_photo_list_2_req(long paramLong1, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, int paramInt3, int paramInt4, Map paramMap, String paramString4, long paramLong2, String paramString5, int paramInt5, int paramInt6, long paramLong3, boolean paramBoolean)
+  public get_photo_list_2_req(long paramLong1, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, int paramInt3, int paramInt4, Map<Integer, String> paramMap, String paramString4, long paramLong2, String paramString5, long paramLong3, int paramInt5, long paramLong4, boolean paramBoolean, int paramInt6, String paramString6)
   {
     this.uin = paramLong1;
     this.albumid = paramString1;
@@ -43,10 +53,12 @@ public final class get_photo_list_2_req
     this.req_url = paramString4;
     this.face_uin = paramLong2;
     this.ciphertext = paramString5;
-    this.password_cleartext = paramInt5;
-    this.type = paramInt6;
-    this.sharer = paramLong3;
+    this.password_cleartext = paramLong3;
+    this.type = paramInt5;
+    this.sharer = paramLong4;
     this.need_pos = paramBoolean;
+    this.sort_type = paramInt6;
+    this.attach_info = paramString6;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -59,11 +71,6 @@ public final class get_photo_list_2_req
     this.curlloc = paramJceInputStream.readString(6, false);
     this.swidth = paramJceInputStream.read(this.swidth, 7, false);
     this.sheight = paramJceInputStream.read(this.sheight, 8, false);
-    if (cache_busi_param == null)
-    {
-      cache_busi_param = new HashMap();
-      cache_busi_param.put(Integer.valueOf(0), "");
-    }
     this.busi_param = ((Map)paramJceInputStream.read(cache_busi_param, 9, false));
     this.req_url = paramJceInputStream.readString(10, false);
     this.face_uin = paramJceInputStream.read(this.face_uin, 11, false);
@@ -72,6 +79,8 @@ public final class get_photo_list_2_req
     this.type = paramJceInputStream.read(this.type, 14, false);
     this.sharer = paramJceInputStream.read(this.sharer, 15, false);
     this.need_pos = paramJceInputStream.read(this.need_pos, 16, false);
+    this.sort_type = paramJceInputStream.read(this.sort_type, 17, false);
+    this.attach_info = paramJceInputStream.readString(18, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -102,6 +111,10 @@ public final class get_photo_list_2_req
     paramJceOutputStream.write(this.type, 14);
     paramJceOutputStream.write(this.sharer, 15);
     paramJceOutputStream.write(this.need_pos, 16);
+    paramJceOutputStream.write(this.sort_type, 17);
+    if (this.attach_info != null) {
+      paramJceOutputStream.write(this.attach_info, 18);
+    }
   }
 }
 

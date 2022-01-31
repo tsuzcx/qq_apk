@@ -1,32 +1,45 @@
-import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
 public class lri
-  implements Runnable
 {
-  public lri(InterestLabelInfoModule paramInterestLabelInfoModule, List paramList) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c;
   
-  public void run()
+  public static lri a()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    lnc locallnc = lim.a(BaseApplicationImpl.getContext());
+    if (!locallnc.a())
     {
-      InterestLabelInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelInterestLabelInfoModule).clear();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        InterestLabelInfo localInterestLabelInfo = (InterestLabelInfo)localIterator.next();
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelInterestLabelInfoModule.a(localInterestLabelInfo);
-        InterestLabelInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelInterestLabelInfoModule).put(Integer.valueOf(localInterestLabelInfo.mInterestLabelID), localInterestLabelInfo);
-      }
+      lri locallri = new lri();
+      if (locallri.a(locallnc)) {}
+      return locallri;
     }
+    return null;
+  }
+  
+  public boolean a(lnc paramlnc)
+  {
+    try
+    {
+      this.jdField_a_of_type_Int = paramlnc.a("OpenGLBlowUp/IsOpen", 0);
+      this.b = paramlnc.a("OpenGLBlowUp/width", 0);
+      this.c = paramlnc.a("OpenGLBlowUp/level", 0);
+      this.jdField_a_of_type_JavaLangString = paramlnc.a("OpenGLBlowUp/versionname", "");
+      if (QLog.isColorLevel()) {
+        QLog.i("RendererConfig", 2, "OpenGLSharpenConfig isOpen: " + this.jdField_a_of_type_Int + " width: " + this.b + " level: " + this.c + " versionName: " + this.jdField_a_of_type_JavaLangString);
+      }
+      return true;
+    }
+    catch (Exception paramlnc) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lri
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.database.corrupt.DBFixDialogUI;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-
-public class abvy
-  implements DialogInterface.OnClickListener
+public final class abvy
+  implements abvw
 {
-  public abvy(DBFixDialogUI paramDBFixDialogUI) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.cancel();
-    QLog.d(DBFixDialogUI.a(), 1, "showConfirmDialog, cancel click");
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, DBFixDialogUI.d, DBFixDialogUI.d, 0, 0, "", "", "", "");
-  }
+  public void a(int paramInt) {}
 }
 
 

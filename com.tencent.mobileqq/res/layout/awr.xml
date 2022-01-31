@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/idv" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <TextView android:textSize="13.0sp" android:textColor="#ffa5a5a5" android:ellipsize="end" android:id="@id/kfs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="10.0dip" android:text="@string/qx8" android:maxLines="2" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.widget.MonitorSizeChangeHSV android:id="@id/d9m" android:visibility="gone" android:scrollbars="none" android:fadingEdge="none" android:fadingEdgeLength="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:layout_below="@id/idv">
+        <LinearLayout android:orientation="horizontal" android:id="@id/edz" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mobileqq.widget.MonitorSizeChangeHSV>
+    <RelativeLayout android:id="@id/icp" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:layout_below="@id/idv" android:layout_alignParentRight="true">
+        <EditText android:textSize="16.0dip" android:textColor="@color/skin_gray3" android:ellipsize="end" android:id="@id/byx" android:background="@null" android:paddingTop="2.0dip" android:paddingBottom="2.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/qwj" android:singleLine="true" android:drawableLeft="@drawable/det" android:drawablePadding="5.0dip" android:layout_centerVertical="true" android:imeOptions="actionSearch" />
+    </RelativeLayout>
+    <TextView android:textSize="12.0dip" android:textColor="@color/skin_gray2" android:gravity="center_vertical" android:id="@id/kfg" android:background="@drawable/skin_group_list_sub_entry" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="25.0dip" android:text="@string/qxi" android:layout_below="@id/icp" />
+    <View android:id="@id/kmw" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_above="@id/kfg" />
+    <ListView android:id="@id/ehx" android:fadingEdge="none" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" android:layout_below="@id/kfg" />
+    <View android:id="@id/kmm" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_above="@id/ehx" />
+    <RelativeLayout android:id="@id/ico" android:background="@drawable/bg_texture" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="16.0sp" android:textColor="@color/skin_gray2" android:id="@id/kf9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qx2" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/idk" android:background="@drawable/bg_texture" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/icp">
+        <TextView android:textSize="16.0dip" android:textColor="@color/skin_gray2" android:id="@id/kfh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:text="@string/qvx" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="13.0dip" android:textColor="@color/skin_gray2" android:ellipsize="end" android:gravity="center" android:id="@id/kfi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/qx5" android:singleLine="true" android:layout_below="@id/kfh" />
+    </RelativeLayout>
+</RelativeLayout>

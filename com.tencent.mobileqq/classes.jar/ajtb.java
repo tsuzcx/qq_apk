@@ -1,21 +1,34 @@
-import com.tencent.mobileqq.troop.utils.TroopRobotManager.Callback;
-import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel;
-import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel.RobotPanelItemData;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajtb
-  implements TroopRobotManager.Callback
+  implements Animation.AnimationListener
 {
-  public ajtb(TroopAIORobotPanel paramTroopAIORobotPanel, TroopAIORobotPanel.RobotPanelItemData paramRobotPanelItemData) {}
+  private int jdField_a_of_type_Int;
+  private ajtc jdField_a_of_type_Ajtc;
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public ajtb(VideoFilterViewPager paramVideoFilterViewPager, ajtc paramajtc, int paramInt)
   {
-    if (paramInt == 0) {
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotPanel.getContext(), 1, "操作失败" + "", 0).a();
+    this.jdField_a_of_type_Ajtc = paramajtc;
+    this.jdField_a_of_type_Int = paramInt;
   }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if ((this.jdField_a_of_type_Ajtc != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterViewPager.getCurrentItem() == this.jdField_a_of_type_Int))
+    {
+      this.jdField_a_of_type_Ajtc.a(1);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener animation dismiss state: 1");
+      }
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

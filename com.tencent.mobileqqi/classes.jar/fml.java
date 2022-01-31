@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.app.automator.step.GetGameCenterUnread;
-import com.tencent.mobileqq.observer.GameCenterObserver;
+import com.tencent.mobileqq.config.AboutConfig;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
 
-public class fml
-  extends GameCenterObserver
+public final class fml
+  implements Runnable
 {
-  private fml(GetGameCenterUnread paramGetGameCenterUnread) {}
+  public fml(AboutConfig paramAboutConfig, ResourcePluginInfo paramResourcePluginInfo) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void run()
   {
-    this.a.a(7);
+    this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig.a(this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo);
+    this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig.c();
   }
 }
 

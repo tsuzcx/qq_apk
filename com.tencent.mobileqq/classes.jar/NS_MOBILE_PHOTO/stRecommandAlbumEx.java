@@ -10,11 +10,11 @@ public final class stRecommandAlbumEx
   extends JceStruct
 {
   static Album cache_albuminfo = new Album();
-  static ArrayList cache_photolist = new ArrayList();
+  static ArrayList<s_picdata> cache_photolist = new ArrayList();
   public Album albuminfo;
   public int commentCnt;
   public int likeCnt;
-  public ArrayList photolist;
+  public ArrayList<s_picdata> photolist;
   public int viewCnt;
   
   static
@@ -25,7 +25,7 @@ public final class stRecommandAlbumEx
   
   public stRecommandAlbumEx() {}
   
-  public stRecommandAlbumEx(Album paramAlbum, int paramInt1, int paramInt2, ArrayList paramArrayList, int paramInt3)
+  public stRecommandAlbumEx(Album paramAlbum, int paramInt1, int paramInt2, ArrayList<s_picdata> paramArrayList, int paramInt3)
   {
     this.albuminfo = paramAlbum;
     this.commentCnt = paramInt1;

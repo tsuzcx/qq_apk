@@ -1,54 +1,31 @@
-import android.database.Cursor;
-import android.os.Parcel;
-import com.tencent.open.base.http.HttpCacheData;
-import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
-import com.tencent.open.component.cache.database.DbCacheData.Structure;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.List;
 
-public final class alfn
-  implements DbCacheData.DbCreator
+class alfn
+  implements akqe
 {
-  public int a()
-  {
-    return 1;
-  }
+  alfn(alfm paramalfm, String paramString) {}
   
-  public HttpCacheData a(Cursor paramCursor)
+  public void a(boolean paramBoolean, String paramString1, List<akqb> paramList, String paramString2)
   {
-    try
+    QLog.i("ApolloPluginRscLoader", 1, "downloadApolloRes onDownLoadFinish success:" + paramBoolean);
+    if (paramBoolean)
     {
-      String str1 = paramCursor.getString(paramCursor.getColumnIndex("urlKey"));
-      String str2 = paramCursor.getString(paramCursor.getColumnIndex("ETag"));
-      long l1 = paramCursor.getLong(paramCursor.getColumnIndex("lastModify"));
-      long l2 = paramCursor.getLong(paramCursor.getColumnIndex("cacheTime"));
-      Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("response"));
-      paramCursor = Parcel.obtain();
-      paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
-      paramCursor.setDataPosition(0);
-      localObject = paramCursor.readString();
-      paramCursor.recycle();
-      paramCursor = new HttpCacheData(str1, str2, l1, l2, (String)localObject);
-      return paramCursor;
+      if (this.jdField_a_of_type_Alfm.jdField_a_of_type_JavaIoFile.exists())
+      {
+        this.jdField_a_of_type_Alfm.jdField_a_of_type_Alfe.a(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_Alfm.jdField_a_of_type_Int + alud.a(2131700881));
+        return;
+      }
+      this.jdField_a_of_type_Alfm.jdField_a_of_type_Alfe.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Alfm.jdField_a_of_type_Int + alud.a(2131700892));
+      return;
     }
-    catch (Exception paramCursor)
-    {
-      paramCursor.printStackTrace();
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public DbCacheData.Structure[] a()
-  {
-    return new DbCacheData.Structure[] { new DbCacheData.Structure("urlKey", "TEXT"), new DbCacheData.Structure("ETag", "TEXT"), new DbCacheData.Structure("lastModify", "INTEGER"), new DbCacheData.Structure("cacheTime", "INTEGER"), new DbCacheData.Structure("response", "BLOB") };
+    this.jdField_a_of_type_Alfm.jdField_a_of_type_Alfe.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Alfm.jdField_a_of_type_Int + alud.a(2131700889));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alfn
  * JD-Core Version:    0.7.0.1
  */

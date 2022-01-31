@@ -1,29 +1,24 @@
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.view.ApolloLinearLayout.ViewHolder;
-import com.tencent.mobileqq.apollo.view.ApolloMainViewBinder;
+import com.tencent.biz.qqstory.widget.StoryCoverView;
 
-public class yxy
-  implements Runnable
+class yxy
+  extends RecyclerView.ViewHolder
 {
-  public yxy(ApolloMainViewBinder paramApolloMainViewBinder, ImageView paramImageView, RelativeLayout paramRelativeLayout1, RelativeLayout paramRelativeLayout2, ApolloLinearLayout.ViewHolder paramViewHolder) {}
+  final ImageView jdField_a_of_type_AndroidWidgetImageView;
+  final StoryCoverView jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView;
   
-  public void run()
+  yxy(View paramView)
   {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -0.5F, 1, 0.5F, 1, -0.5F, 1, 0.5F);
-    localTranslateAnimation.setDuration(400L);
-    localTranslateAnimation.setRepeatCount(1);
-    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    localTranslateAnimation.setAnimationListener(new yxz(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localTranslateAnimation);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367841));
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView = ((StoryCoverView)paramView.findViewById(2131364905));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yxy
  * JD-Core Version:    0.7.0.1
  */

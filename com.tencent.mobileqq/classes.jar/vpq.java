@@ -1,47 +1,24 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.support.annotation.NonNull;
 import java.util.List;
 
-class vpq
-  implements Runnable
+public abstract interface vpq
 {
-  vpq(vpo paramvpo, List paramList) {}
+  public abstract List<vpt> a(List<vpm> paramList);
   
-  public void run()
-  {
-    Iterator localIterator1 = this.jdField_a_of_type_Vpo.a.a.iterator();
-    label103:
-    for (;;)
-    {
-      if (localIterator1.hasNext())
-      {
-        String str = (String)localIterator1.next();
-        Iterator localIterator2 = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator2.hasNext())
-        {
-          LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)localIterator2.next();
-          if (str.equals(localLocalMediaInfo.path)) {
-            localLocalMediaInfo.mChecked = true;
-          }
-        }
-      }
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0) {
-          break label103;
-        }
-        localIterator1.remove();
-        break;
-        return;
-      }
-    }
-  }
+  @NonNull
+  public abstract vpp a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt, vps paramvps);
+  
+  public abstract boolean a(vpn paramvpn);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vpq
  * JD-Core Version:    0.7.0.1
  */

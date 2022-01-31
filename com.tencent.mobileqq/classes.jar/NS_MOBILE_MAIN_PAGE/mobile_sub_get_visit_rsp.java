@@ -10,25 +10,25 @@ import java.util.ArrayList;
 public final class mobile_sub_get_visit_rsp
   extends JceStruct
 {
-  static ArrayList cache_vecAdBanner;
-  static ArrayList cache_vecParasiticUnit;
+  static ArrayList<QueryADBannerUnit> cache_vecAdBanner;
+  static ArrayList<ParasiticUnit> cache_vecParasiticUnit;
   static s_visit cache_visit;
   public boolean end = true;
   public int nextTimeInterval;
   public String page = "";
-  public ArrayList vecAdBanner;
-  public ArrayList vecParasiticUnit;
+  public ArrayList<QueryADBannerUnit> vecAdBanner;
+  public ArrayList<ParasiticUnit> vecParasiticUnit;
   public s_visit visit;
   
   public mobile_sub_get_visit_rsp() {}
   
-  public mobile_sub_get_visit_rsp(s_visit params_visit, String paramString, boolean paramBoolean, ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt)
+  public mobile_sub_get_visit_rsp(s_visit params_visit, String paramString, boolean paramBoolean, ArrayList<QueryADBannerUnit> paramArrayList, ArrayList<ParasiticUnit> paramArrayList1, int paramInt)
   {
     this.visit = params_visit;
     this.page = paramString;
     this.end = paramBoolean;
-    this.vecAdBanner = paramArrayList1;
-    this.vecParasiticUnit = paramArrayList2;
+    this.vecAdBanner = paramArrayList;
+    this.vecParasiticUnit = paramArrayList1;
     this.nextTimeInterval = paramInt;
   }
   

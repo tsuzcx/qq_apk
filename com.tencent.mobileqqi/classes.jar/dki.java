@@ -1,22 +1,13 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
 
 public class dki
-  implements Runnable
 {
-  public dki(RegisterActivity paramRegisterActivity) {}
-  
-  public void run()
-  {
-    if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
-      this.a.a.dismiss();
-    }
-    this.a.a = null;
-  }
+  public ResourcePluginInfo a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dki
  * JD-Core Version:    0.7.0.1
  */

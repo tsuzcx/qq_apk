@@ -1,18 +1,22 @@
-import android.widget.ImageButton;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.util.InputMethodUtil;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
-public class aizb
-  implements Runnable
+public abstract class aizb
+  implements TextWatcher
 {
-  public aizb(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  protected EditText a;
   
-  public void run()
+  public aizb(EditText paramEditText)
   {
-    InputMethodUtil.a(this.a.jdField_a_of_type_AndroidWidgetEditText);
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setSelected(false);
-    this.a.c.setSelected(false);
+    this.a = paramEditText;
   }
+  
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

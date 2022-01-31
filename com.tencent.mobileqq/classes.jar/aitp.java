@@ -1,34 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import java.util.ArrayList;
 
-public class aitp
-  extends BroadcastReceiver
+class aitp
+  extends airj
 {
-  public aitp(AbsPublishActivity paramAbsPublishActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected aitp(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    paramContext = paramIntent.getAction();
-    if ("key_photo_delete_action".equals(paramContext))
-    {
-      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
-      this.a.a(i, 9);
-    }
-    do
-    {
-      return;
-      if ("key_audio_delete_action".equals(paramContext))
-      {
-        this.a.a(0);
-        this.a.a = null;
-        TroopBarUtils.a(this.a.p, this.a.q, "del_record", this.a.r, this.a.c, "", "");
-        return;
-      }
-    } while (!"key_audio_play_action".equals(paramContext));
-    TroopBarUtils.a(this.a.p, this.a.q, "preview_record", this.a.r, this.a.c, "", "");
+    super(paramNewPhotoPreviewActivity);
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    this.a.customSendBtnText = ((NewPhotoPreviewActivity)this.mActivity).getString(2131695309);
+  }
+  
+  public void initUI()
+  {
+    super.initUI();
+    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new aitq(this));
+  }
+  
+  public boolean needShowMultiPhoto()
+  {
+    return (this.mPhotoCommonData.selectedPhotoList != null) && (!this.mPhotoCommonData.selectedPhotoList.isEmpty());
   }
 }
 

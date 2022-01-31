@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.troop.utils.TroopAppMgr;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class ajoa
-  extends ThreadLocal
+  implements DialogInterface.OnClickListener
 {
-  public ajoa(TroopAppMgr paramTroopAppMgr) {}
+  public ajoa(LoginView paramLoginView) {}
   
-  protected SimpleDateFormat a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+    try
+    {
+      paramDialogInterface.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface) {}
   }
 }
 

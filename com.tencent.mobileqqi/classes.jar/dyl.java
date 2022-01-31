@@ -1,51 +1,39 @@
+import android.os.Handler;
 import android.view.View;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class dyl
   implements ActionSheet.OnButtonClickListener
 {
-  public dyl(TroopRequestActivity paramTroopRequestActivity, ActionSheet paramActionSheet) {}
+  public dyl(FileItemBuilder paramFileItemBuilder, MessageForFile paramMessageForFile, BaseChatItemLayout paramBaseChatItemLayout, dyo paramdyo, ActionSheet paramActionSheet) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
-    {
+    if (FileItemBuilder.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, FileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder).jdField_a_of_type_JavaLangString, FileItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder).jdField_a_of_type_Int, -1L) != -1) {
+      FileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder).post(new dym(this));
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
       return;
-      if (NetworkUtil.e(BaseApplication.getContext())) {}
-      try
-      {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b.a();
-        ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, "", TroopRequestActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity), paramView, false);
-        for (;;)
-        {
-          label66:
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "report", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.p, TroopRequestActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity), "", "");
-          break;
-          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 2131562449, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.d());
-        }
-      }
-      catch (Exception paramView)
-      {
-        break label66;
-      }
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status = 1002;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
+      FileManagerUtil.a(FileItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder), paramView, FileItemBuilder.f(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder), true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Dyo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dyl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acks
-  implements Animation.AnimationListener
+public final class acks
+  implements DialogInterface.OnClickListener
 {
-  public acks(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.setVisibility(4);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acks
  * JD-Core Version:    0.7.0.1
  */

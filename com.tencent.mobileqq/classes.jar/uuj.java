@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.ark.ArkAppInfo.TimeRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class uuj
-  implements Runnable
+class uuj
+  implements View.OnClickListener
 {
-  public uuj(ArkAppContainer paramArkAppContainer) {}
+  uuj(uui paramuui, uuh paramuuh) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a();
-    this.a.a.b();
+    int i = this.jdField_a_of_type_Uuh.getPosition();
+    if (i >= 0) {
+      this.jdField_a_of_type_Uui.a.a(this.jdField_a_of_type_Uuh.itemView, i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uuj
  * JD-Core Version:    0.7.0.1
  */

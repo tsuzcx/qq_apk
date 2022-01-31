@@ -1,6 +1,5 @@
 package com.tencent.feedback.proguard;
 
-import java.security.NoSuchAlgorithmException;
 import javax.crypto.Cipher;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
@@ -19,7 +18,6 @@ public final class G
   }
   
   public final byte[] a(byte[] paramArrayOfByte)
-    throws Exception
   {
     if ((this.a == null) || (paramArrayOfByte == null)) {
       return null;
@@ -31,7 +29,6 @@ public final class G
   }
   
   public final byte[] b(byte[] paramArrayOfByte)
-    throws Exception, NoSuchAlgorithmException
   {
     if ((this.a == null) || (paramArrayOfByte == null)) {
       return null;

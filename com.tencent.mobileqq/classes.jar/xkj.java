@@ -1,22 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public class xkj
-  implements DialogInterface.OnClickListener
+public abstract interface xkj
 {
-  public xkj(RecentAdapter paramRecentAdapter) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ((CardHandler)this.a.a.a(2)).j(false);
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void c(int paramInt1, int paramInt2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xkj
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ import android.net.Uri;
 import android.os.Build.VERSION;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-import bvv;
+import bpx;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -209,7 +209,7 @@ public class NetworkStateForConfig
     return 4;
   }
   
-  public bvv a()
+  public bpx a()
   {
     Object localObject3 = null;
     String str2 = "";
@@ -234,9 +234,9 @@ public class NetworkStateForConfig
         }
         else
         {
-          localObject2 = new bvv();
-          ((bvv)localObject2).b((String)localObject1);
-          ((bvv)localObject2).a(str1);
+          localObject2 = new bpx();
+          ((bpx)localObject2).b((String)localObject1);
+          ((bpx)localObject2).a(str1);
         }
       }
       return localObject2;
@@ -344,17 +344,17 @@ public class NetworkStateForConfig
       QLog.d("ConfigProvider", 2, "mCurrentAPN:WIFI");
       return "wifi";
     }
-    bvv localbvv;
+    bpx localbpx;
     if ((this.c == null) || (this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_Boolean = false;
-      localbvv = a();
-      if (localbvv == null) {
+      localbpx = a();
+      if (localbpx == null) {
         break label91;
       }
     }
     label91:
-    for (this.c = localbvv.a();; this.c = "unknown")
+    for (this.c = localbpx.a();; this.c = "unknown")
     {
       QLog.d("ConfigProvider", 2, "mCurrentAPN:" + this.c);
       return this.c;

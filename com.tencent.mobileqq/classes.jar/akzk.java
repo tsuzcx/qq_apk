@@ -1,20 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
-
 public class akzk
-  implements DialogInterface.OnClickListener
 {
-  public akzk(MSFIntChkStrike paramMSFIntChkStrike, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    MSFIntChkStrike.a(this.jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFIntChkStrike, paramDialogInterface, paramInt, this.jdField_a_of_type_Int);
-  }
+  int jdField_a_of_type_Int;
+  akzc jdField_a_of_type_Akzc;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akzk
  * JD-Core Version:    0.7.0.1
  */

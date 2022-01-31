@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.emoticonview.HorizonEmoticonTabs;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class ftn
-  implements Runnable
+class ftn
+  implements FMDialogUtil.FMDialogInterface
 {
-  public ftn(HorizonEmoticonTabs paramHorizonEmoticonTabs, int paramInt) {}
+  ftn(ftl paramftl) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs.scrollBy(this.jdField_a_of_type_Int, 0);
+    this.a.e();
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     ftn
  * JD-Core Version:    0.7.0.1
  */

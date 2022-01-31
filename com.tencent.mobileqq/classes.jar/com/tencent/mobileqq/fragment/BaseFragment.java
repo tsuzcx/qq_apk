@@ -7,9 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import ashu;
+import beub;
 import com.tencent.mobileqq.activity.NearbyActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
 import com.tencent.qphone.base.util.QLog;
 
 public class BaseFragment
@@ -17,9 +18,9 @@ public class BaseFragment
 {
   protected int a;
   protected View a;
+  public ashu a;
+  protected beub a;
   public IphoneTitleBarActivity a;
-  public TitlebarStatus a;
-  protected QQProgressNotifier a;
   protected boolean a;
   protected boolean b;
   protected boolean c;
@@ -38,7 +39,7 @@ public class BaseFragment
     return false;
   }
   
-  public void ar_()
+  public void aR_()
   {
     c();
     onHiddenChanged(false);
@@ -50,7 +51,7 @@ public class BaseFragment
   public void c()
   {
     if ((getActivity() instanceof NearbyActivity)) {
-      ((NearbyActivity)getActivity()).a(this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus);
+      ((NearbyActivity)getActivity()).a(this.jdField_a_of_type_Ashu);
     }
   }
   
@@ -76,8 +77,8 @@ public class BaseFragment
     if (QLog.isColorLevel()) {
       QLog.d("Fragment", 2, "onAttach() " + getClass().getSimpleName() + " " + hashCode());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus = new TitlebarStatus(this);
+    if (this.jdField_a_of_type_Ashu == null) {
+      this.jdField_a_of_type_Ashu = new ashu(this);
     }
     this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity = ((IphoneTitleBarActivity)getActivity());
     this.jdField_a_of_type_Boolean = true;
@@ -114,8 +115,8 @@ public class BaseFragment
     if (QLog.isColorLevel()) {
       QLog.d("Fragment", 2, "onDestroyView() " + getClass().getSimpleName() + " " + hashCode());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a();
+    if (this.jdField_a_of_type_Beub != null) {
+      this.jdField_a_of_type_Beub.b();
     }
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
@@ -185,7 +186,7 @@ public class BaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.BaseFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,41 @@
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SubAccountMessageActivity;
-import com.tencent.mobileqq.adapter.SubAccountMessageAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class drp
-  extends FriendListObserver
+  implements View.OnClickListener
 {
-  public drp(SubAccountMessageActivity paramSubAccountMessageActivity) {}
+  public drp(TroopMemberListActivity paramTroopMemberListActivity, String paramString) {}
   
-  protected void a(String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (SubAccountMessageActivity.a(this.a) != null) && (SubAccountMessageActivity.a(this.a).subuin != null) && (paramString != null) && (SubAccountMessageActivity.a(this.a).subuin.equals(paramString)))
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d)
     {
-      paramString = ContactUtils.b(this.a.b, paramString, false);
-      if ((!TextUtils.isEmpty(paramString)) && ((TextUtils.isEmpty(SubAccountMessageActivity.a(this.a).subname)) || (!paramString.equals(SubAccountMessageActivity.a(this.a).subname))))
+      if (((this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.h == 2) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.i > 0)) || (TroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity) == 2))
       {
-        SubAccountMessageActivity.a(this.a).subname = paramString;
-        if (SubAccountMessageActivity.a(this.a) != null) {
-          SubAccountMessageActivity.a(this.a).setText(paramString);
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.getIntent();
+        paramView.putExtra("member_uin", "0");
+        paramView.putExtra("member_display_name", this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.setResult(-1, paramView);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.finish();
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.h == 2) {
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, "CliOper", "", "", "0X800621D", "0X800621D", 0, 0, "", "", "", "");
         }
+        return;
       }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
-    do
-    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, "该讨论组@全体成员次数今天已达上限，请改日重试", 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.getHeight());
       return;
-      if (SubAccountMessageActivity.a(this.a) != null)
-      {
-        int i = 0;
-        while (i < SubAccountMessageActivity.a(this.a).getChildCount())
-        {
-          View localView = SubAccountMessageActivity.a(this.a).getChildAt(i);
-          SubAccountMessageActivity.a(this.a).a(paramString, localView);
-          i += 1;
-        }
-      }
-    } while ((SubAccountMessageActivity.a(this.a) == null) || (SubAccountMessageActivity.a(this.a).subuin == null) || (!SubAccountMessageActivity.a(this.a).subuin.equals(paramString)));
-    paramString = this.a.b.b(paramString);
-    SubAccountMessageActivity.a(this.a).setImageDrawable(paramString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.n))
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.n, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.getHeight());
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, "现在无法发送@All消息", 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.getHeight());
   }
 }
 

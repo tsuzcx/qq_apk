@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/q1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView style="@style/ni">
+        <RelativeLayout android:id="@id/brd" style="@style/l0">
+            <ImageView android:id="@id/bre" android:layout_width="@dimen/dm" android:layout_height="@dimen/dm" android:layout_marginRight="@dimen/l2" android:src="@drawable/aew" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:contentDescription="@string/xq" />
+            <TextView android:id="@id/brf" android:layout_toRightOf="@id/bre" style="@style/lg" />
+            <TextView android:id="@id/cmd" android:layout_toRightOf="@id/bre" android:layout_below="@id/brf" style="@style/li" />
+            <TextView android:textSize="@dimen/m2" android:textColor="#ff707070" android:gravity="center" android:id="@id/brg" android:background="@drawable/b97" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n_" android:layout_below="@id/bre" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="27.0dip" android:minHeight="@dimen/lw" android:layout_below="@id/brg">
+                <Button android:id="@id/brh" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/cgw" android:layout_weight="1.0" style="@style/nq" />
+                <View android:id="@id/cme" android:layout_width="@dimen/n_" android:layout_height="fill_parent" />
+                <Button android:id="@id/cmf" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/cgz" android:layout_weight="1.0" style="@style/nw" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

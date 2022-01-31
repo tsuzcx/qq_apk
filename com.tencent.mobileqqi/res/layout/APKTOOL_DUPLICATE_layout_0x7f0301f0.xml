@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/skin_setting_strip_bottom_unpressed" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip"
+<LinearLayout android:orientation="vertical" android:background="#ff007aff" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="1.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:scrollbarStyle="outsideOverlay" android:textColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0a0139" android:gravity="top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08084b" android:background="@null" android:paddingLeft="10.0dip" android:paddingTop="5.0dip" android:paddingRight="10.0dip" android:paddingBottom="5.0dip" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/APKTOOL_DUPLICATE_string_0x7f0d1123" android:singleLine="true" android:includeFontPadding="false" android:layout_centerVertical="true" android:imeOptions="actionDone" style="@style/APKTOOL_DUPLICATE_style_0x7f0e008d" />
-</RelativeLayout>
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:padding="0.0px" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+        <TextView android:textSize="17.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/ivTitleBtnLeft" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020482" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="96.0dip" android:minWidth="55.0dip" android:text="返回" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="17.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="96.0dip" android:layout_marginRight="96.0dip" android:text="文件近传" android:singleLine="true" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080128" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020484" android:layout_width="169.0dip" android:layout_height="201.0dip" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803a0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:maxWidth="300.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0986" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f080128" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805b4" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0987" style="@style/APKTOOL_DUPLICATE_style_0x7f0e017f" />
+    <TextView android:layout_width="fill_parent" android:layout_height="30.0dip" />
+</LinearLayout>

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class group_mgr$HwModifyGroupReq
-  extends MessageMicro
+  extends MessageMicro<HwModifyGroupReq>
 {
   public static final int GID_FIELD_NUMBER = 1;
   public static final int INFO_FIELD_NUMBER = 2;
@@ -16,7 +16,7 @@ public final class group_mgr$HwModifyGroupReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.hw.group_mgr.HwModifyGroupReq
  * JD-Core Version:    0.7.0.1
  */

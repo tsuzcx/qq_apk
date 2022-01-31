@@ -1,32 +1,26 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.mobileqq.widget.QQVideoView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
 
 class weu
-  implements Runnable
+  extends vii
 {
   weu(wet paramwet) {}
   
-  public void run()
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a.a), 2, "videoview bring to top");
-    }
-    if (BlessActivity.b(this.a.a) != null) {
-      BlessActivity.b(this.a.a).setVisibility(8);
-    }
-    if (BlessActivity.a(this.a.a) != null) {
-      BlessActivity.a(this.a.a).bringToFront();
-    }
-    this.a.a.findViewById(2131363381).bringToFront();
-    this.a.a.findViewById(2131363378).bringToFront();
+    super.a();
+    wet.a(this.a).jdField_a_of_type_Vic = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    wxj.a("share_story", "day_suc", 0, paramInt, new String[] { wet.a(this.a).jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     weu
  * JD-Core Version:    0.7.0.1
  */

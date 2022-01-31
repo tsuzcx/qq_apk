@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.nearby.smooth;
 
-import afmi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.OnTouchListener;
 import android.widget.ListAdapter;
+import avtb;
+import avtc;
+import bhtv;
+import bhuy;
 import com.tencent.mobileqq.fpsreport.FPSXListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
 public class AsyncListView
   extends FPSXListView
-  implements AsyncAbsListView
 {
-  final afmi a = new afmi(this);
+  final avtb a = new avtb(this);
   
   public AsyncListView(Context paramContext)
   {
@@ -42,24 +42,24 @@ public class AsyncListView
     this.a.b();
   }
   
-  public void setItemManager(ItemManager paramItemManager)
+  public void setItemManager(avtc paramavtc)
   {
-    this.a.a(paramItemManager);
+    this.a.a(paramavtc);
   }
   
-  public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
+  public void setOnItemSelectedListener(bhuy parambhuy)
   {
-    this.a.a(paramOnItemSelectedListener);
+    this.a.a(parambhuy);
     if (!this.a.a()) {
-      super.setOnItemSelectedListener(paramOnItemSelectedListener);
+      super.setOnItemSelectedListener(parambhuy);
     }
   }
   
-  public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
+  public void setOnScrollListener(bhtv parambhtv)
   {
-    this.a.a(paramOnScrollListener);
+    this.a.a(parambhtv);
     if (!this.a.a()) {
-      super.setOnScrollListener(paramOnScrollListener);
+      super.setOnScrollListener(parambhtv);
     }
   }
   
@@ -73,7 +73,7 @@ public class AsyncListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.AsyncListView
  * JD-Core Version:    0.7.0.1
  */

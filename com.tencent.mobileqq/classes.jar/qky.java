@@ -1,48 +1,48 @@
-import android.os.Build.VERSION;
-import android.util.Log;
-import com.tencent.gdtad.jsbridge.GdtAdWebPlugin;
-import com.tencent.gdtad.jsbridge.GdtJsCallHandler;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.articlesummary.articlesummary.HotWordInfo;
+import tencent.im.oidb.articlesummary.articlesummary.HotWordItem;
 
 public class qky
-  implements GdtJsCallHandler
 {
-  public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
+  public List<qkz> a;
+  
+  public static qky a(articlesummary.HotWordInfo paramHotWordInfo)
   {
-    if ((paramGdtAdWebPlugin == null) || (paramGdtAdWebPlugin.mRuntime == null) || (paramGdtAdWebPlugin.mRuntime.a() == null))
+    qky localqky = new qky();
+    if (paramHotWordInfo.rpt_hot_word_item.has())
     {
-      Log.e("GdtOSVersionJsCallHandler", "handleJsCallRequest error");
-      return true;
-    }
-    paramVarArgs = new JSONObject();
-    try
-    {
-      paramVarArgs.put("osVersion", Build.VERSION.RELEASE);
-      try
+      localqky.a = new ArrayList(paramHotWordInfo.rpt_hot_word_item.size());
+      paramHotWordInfo = paramHotWordInfo.rpt_hot_word_item.get().iterator();
+      while (paramHotWordInfo.hasNext())
       {
-        paramGdtAdWebPlugin.callJs(paramString, new String[] { paramVarArgs.toString() });
-        return true;
-      }
-      catch (Throwable paramGdtAdWebPlugin)
-      {
-        paramGdtAdWebPlugin.printStackTrace();
-        return true;
+        qkz localqkz = qkz.a((articlesummary.HotWordItem)paramHotWordInfo.next());
+        localqky.a.add(localqkz);
       }
     }
-    catch (JSONException localJSONException)
+    return localqky;
+  }
+  
+  public byte[] a()
+  {
+    articlesummary.HotWordInfo localHotWordInfo = new articlesummary.HotWordInfo();
+    if (this.a.size() > 0)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add(((qkz)localIterator.next()).a());
       }
+      localHotWordInfo.rpt_hot_word_item.set(localArrayList);
     }
+    return localHotWordInfo.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qky
  * JD-Core Version:    0.7.0.1
  */

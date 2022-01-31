@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadBPTransEntity;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadBPTransProxy;
 
 public class fym
   implements Runnable
 {
-  public fym(FileTransferHandler paramFileTransferHandler, long paramLong, int paramInt1, int paramInt2, String paramString) {}
+  public fym(UniformDownloadBPTransProxy paramUniformDownloadBPTransProxy, UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity) {}
   
   public void run()
   {
-    QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Long + "] Handle upload progress notify. speed=" + this.jdField_a_of_type_Int + " progress =" + this.b);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
+    UniformDownloadBPTransProxy.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloadBPTransProxy, this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloadBPTransEntity, null);
   }
 }
 

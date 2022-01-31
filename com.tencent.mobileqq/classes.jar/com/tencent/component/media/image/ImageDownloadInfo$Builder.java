@@ -2,18 +2,18 @@ package com.tencent.component.media.image;
 
 public class ImageDownloadInfo$Builder
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
+  private String client_ip;
+  private String content_type;
   public String download_detail_info;
+  private int fail_code;
   public int nocache_code;
+  private int ret_code;
+  private String server_ip;
   
   public ImageDownloadInfo$Builder(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.fail_code = paramInt1;
+    this.ret_code = paramInt2;
   }
   
   public ImageDownloadInfo build()
@@ -23,13 +23,13 @@ public class ImageDownloadInfo$Builder
   
   public Builder clientIp(String paramString)
   {
-    this.c = paramString;
+    this.client_ip = paramString;
     return this;
   }
   
   public Builder contentType(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.content_type = paramString;
     return this;
   }
   
@@ -47,13 +47,13 @@ public class ImageDownloadInfo$Builder
   
   public Builder serverIp(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.server_ip = paramString;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.media.image.ImageDownloadInfo.Builder
  * JD-Core Version:    0.7.0.1
  */

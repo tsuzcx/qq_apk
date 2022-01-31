@@ -1,5 +1,6 @@
 package com.tencent.biz.qqstory.playvideo;
 
+import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -10,7 +11,8 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.biz.qqstory.boundaries.StoryApi;
+import uqn;
+import wxe;
 
 public class QQStoryVideoPlayerErrorView
   extends RelativeLayout
@@ -35,8 +37,8 @@ public class QQStoryVideoPlayerErrorView
     if (paramInt == 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      setTipsText(StoryApi.a(2131432099));
-      setTipsIcon(2130843404);
+      setTipsText(uqn.a(2131700093));
+      setTipsIcon(2130845961);
       setTipsTextSize(16.0F);
     }
     do
@@ -45,8 +47,8 @@ public class QQStoryVideoPlayerErrorView
       if (paramInt == 1)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        setTipsText("加载失败，点击重试");
-        setTipsIcon(2130843516);
+        setTipsText(alud.a(2131711485));
+        setTipsIcon(2130846119);
         setTipsTextSize(14.0F);
         return;
       }
@@ -56,9 +58,9 @@ public class QQStoryVideoPlayerErrorView
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2130970892, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131362728));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131363215));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131561638, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131377898));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131368742));
   }
   
   public void setCloseViewVisibility(boolean paramBoolean)
@@ -84,8 +86,16 @@ public class QQStoryVideoPlayerErrorView
   
   public void setTipsIcon(int paramInt)
   {
-    Drawable localDrawable = getResources().getDrawable(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, localDrawable, null, null);
+    try
+    {
+      Drawable localDrawable = getResources().getDrawable(paramInt);
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, localDrawable, null, null);
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      wxe.d("QQStoryVideoPlayerErrorView", "oom ,set tips error");
+    }
   }
   
   public void setTipsText(String paramString)
@@ -100,7 +110,7 @@ public class QQStoryVideoPlayerErrorView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView
  * JD-Core Version:    0.7.0.1
  */

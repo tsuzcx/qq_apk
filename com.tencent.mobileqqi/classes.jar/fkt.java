@@ -1,22 +1,66 @@
-import com.tencent.mobileqq.app.SaveTrafficHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.mobileqq.app.ConfigHandler;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import protocol.KQQConfig.UpgradeInfo;
 
-public class fkt
-  implements Runnable
+public final class fkt
+  implements Parcelable.Creator
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  public boolean b = false;
-  
-  public fkt(SaveTrafficHandler paramSaveTrafficHandler, int paramInt, boolean paramBoolean)
+  public UpgradeDetailWrapper a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = false;
+    ApkUpdateDetail localApkUpdateDetail = null;
+    UpgradeInfo localUpgradeInfo;
+    if (paramParcel.readInt() == 1)
+    {
+      localUpgradeInfo = new UpgradeInfo();
+      localUpgradeInfo.iAppid = paramParcel.readInt();
+      localUpgradeInfo.bAppType = paramParcel.readByte();
+      localUpgradeInfo.iUpgradeType = paramParcel.readInt();
+      localUpgradeInfo.iUpgradeSdkId = paramParcel.readInt();
+      localUpgradeInfo.strTitle = paramParcel.readString();
+      localUpgradeInfo.strUpgradeDesc = paramParcel.readString();
+      localUpgradeInfo.strUrl = paramParcel.readString();
+      localUpgradeInfo.iActionType = paramParcel.readInt();
+      localUpgradeInfo.bNewSwitch = paramParcel.readByte();
+      localUpgradeInfo.iNewTimeStamp = paramParcel.readInt();
+      localUpgradeInfo.strUpgradePageUrl = paramParcel.readString();
+      localUpgradeInfo.iIncrementUpgrade = paramParcel.readInt();
+      localUpgradeInfo.iTipsType = paramParcel.readInt();
+      localUpgradeInfo.strBannerPicUrl = paramParcel.readString();
+      localUpgradeInfo.strNewUpgradeDescURL = paramParcel.readString();
+      localUpgradeInfo.iDisplayDay = paramParcel.readInt();
+      localUpgradeInfo.iTipsWaitDay = paramParcel.readInt();
+      localUpgradeInfo.strProgressName = paramParcel.readString();
+      localUpgradeInfo.strNewTipsDescURL = paramParcel.readString();
+      localUpgradeInfo.strNewSoftwareURL = paramParcel.readString();
+    }
+    for (;;)
+    {
+      if (paramParcel.readInt() == 1)
+      {
+        localApkUpdateDetail = new ApkUpdateDetail();
+        localApkUpdateDetail.fileMd5 = paramParcel.readString();
+        localApkUpdateDetail.newapksize = paramParcel.readInt();
+        localApkUpdateDetail.packageName = paramParcel.readString();
+        localApkUpdateDetail.patchsize = paramParcel.readInt();
+        localApkUpdateDetail.sigMd5 = paramParcel.readString();
+        localApkUpdateDetail.updatemethod = paramParcel.readInt();
+        localApkUpdateDetail.url = paramParcel.readString();
+        localApkUpdateDetail.versioncode = paramParcel.readInt();
+        localApkUpdateDetail.versionname = paramParcel.readString();
+      }
+      paramParcel = new UpgradeDetailWrapper(localUpgradeInfo, localApkUpdateDetail);
+      paramParcel.a = ConfigHandler.a(localUpgradeInfo);
+      return paramParcel;
+      localUpgradeInfo = null;
+    }
   }
   
-  public void run()
+  public UpgradeDetailWrapper[] a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppSaveTrafficHandler.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, 0);
+    return new UpgradeDetailWrapper[paramInt];
   }
 }
 

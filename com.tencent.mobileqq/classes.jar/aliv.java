@@ -1,35 +1,32 @@
 import android.text.TextUtils;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.business.base.AppUtil;
-import com.tencent.open.downloadnew.ControlPolicyUtil;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.MyAppApi.YYBDownloadListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.lang.reflect.Method;
 
 public class aliv
-  implements Runnable
 {
-  public aliv(MyAppApi.YYBDownloadListener paramYYBDownloadListener, DownloadInfo paramDownloadInfo) {}
-  
-  public void run()
+  public static void a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    LogUtility.c("MyAppApi", "rooted and start silent install...");
-    long l = System.currentTimeMillis();
-    if (ControlPolicyUtil.a(l))
+    try
     {
-      if ((AppUtil.a()) && (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k))) {
-        AppUtil.b(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k);
+      if (1 != BaseApplicationImpl.sProcessId) {
+        return;
+      }
+      ClassLoader localClassLoader = BaseApplicationImpl.sApplication.getClassLoader();
+      if ((localClassLoader != null) && (!TextUtils.isEmpty(paramString2)) && (paramString2.contains("Apollo")))
+      {
+        localClassLoader.loadClass("com.tencent.mobileqq.apollo.utils.ApolloUtil").getMethod("handleApolloNoCatchCrash", new Class[] { Boolean.TYPE, String.class, String.class }).invoke(null, new Object[] { Boolean.valueOf(paramBoolean), paramString1, paramString2 });
+        return;
       }
     }
-    else {
-      return;
+    catch (Throwable paramString1)
+    {
+      paramString1.printStackTrace();
     }
-    LogUtility.c("MyAppApi", "root confused and remember user operation time!");
-    ControlPolicyUtil.a(l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aliv
  * JD-Core Version:    0.7.0.1
  */

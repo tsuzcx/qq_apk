@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class intchk$ReportCheckResultRsp
-  extends MessageMicro
+  extends MessageMicro<ReportCheckResultRsp>
 {
   public static final int BYTES_STRIKE_CONFIG_FIELD_NUMBER = 3;
   public static final int UINT32_INTCHK_ID_FIELD_NUMBER = 2;
@@ -26,7 +26,7 @@ public final class intchk$ReportCheckResultRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.intchk.ReportCheckResultRsp
  * JD-Core Version:    0.7.0.1
  */

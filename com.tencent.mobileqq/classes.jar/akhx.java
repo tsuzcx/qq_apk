@@ -1,14 +1,24 @@
-import android.content.Context;
-import com.tencent.mobileqq.vas.URLInterceptManager;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import java.lang.ref.WeakReference;
 
-public class akhx
-  implements Runnable
+class akhx
+  implements View.OnLongClickListener
 {
-  public akhx(URLInterceptManager paramURLInterceptManager, Context paramContext) {}
+  private WeakReference<akhs> a;
   
-  public void run()
+  public akhx(akhs paramakhs)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasURLInterceptManager.a(this.jdField_a_of_type_AndroidContentContext);
+    this.a = new WeakReference(paramakhs);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    akhs localakhs = (akhs)this.a.get();
+    if (localakhs != null) {
+      return localakhs.onLongClick(paramView);
+    }
+    return false;
   }
 }
 

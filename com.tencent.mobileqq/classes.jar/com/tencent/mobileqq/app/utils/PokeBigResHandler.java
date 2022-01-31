@@ -1,23 +1,25 @@
 package com.tencent.mobileqq.app.utils;
 
+import alof;
+import alpd;
+import alpg;
+import amrl;
 import android.os.Looper;
 import android.text.TextUtils;
+import bdhb;
+import bdzf;
+import bhpp;
 import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.singleupdate.MD5FileUtil;
 import java.io.File;
-import zxa;
 
 public class PokeBigResHandler
-  extends BusinessHandler
+  extends alpd
 {
   public static final String a;
   public static boolean a;
@@ -31,13 +33,12 @@ public class PokeBigResHandler
   public static final String d;
   private static String e = "";
   private static String f = "";
-  private static final String g = AppConstants.aJ + "/bigPoke";
-  private static final String h = g + "/poke";
-  private PokeBigResHandler.NetEngine jdField_a_of_type_ComTencentMobileqqAppUtilsPokeBigResHandler$NetEngine = new PokeBigResHandler.NetEngine();
+  private static final String g = bdzf.a(alof.aX + "/bigPoke");
+  private amrl jdField_a_of_type_Amrl = new amrl();
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aJ + "/newpoke";
+    jdField_a_of_type_JavaLangString = bdzf.a(alof.bF);
     jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/poke_egg";
     c = jdField_a_of_type_JavaLangString + "/poke_normal";
     d = c + "/dazhao/dazhao_move.png";
@@ -52,23 +53,35 @@ public class PokeBigResHandler
   
   private static void a(String paramString)
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("BigResDown", 2, "start compress");
+    }
+    long l1 = System.currentTimeMillis();
     if (!new File(paramString).exists()) {}
     for (;;)
     {
       return;
       try
       {
-        if (!TextUtils.isEmpty(g))
+        if (!TextUtils.isEmpty(bdzf.a(g)))
         {
-          FileUtils.a(h, false);
-          FileUtils.a(jdField_a_of_type_JavaLangString, false);
-          FileUtils.a(paramString, jdField_a_of_type_JavaLangString, false);
-          return;
+          bdhb.a(bdzf.a(jdField_a_of_type_JavaLangString), false);
+          bdhb.a(paramString, bdzf.a(jdField_a_of_type_JavaLangString), false);
         }
+        bdhb.a(paramString, false);
+        long l2 = System.currentTimeMillis();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("BigResDown", 2, "end compress ,cost " + (l2 - l1));
+        return;
       }
-      catch (Exception paramString)
+      catch (Exception localException)
       {
-        paramString.printStackTrace();
+        for (;;)
+        {
+          localException.printStackTrace();
+        }
       }
     }
   }
@@ -172,33 +185,45 @@ public class PokeBigResHandler
     }
     label58:
     label68:
-    Object localObject;
+    String[] arrayOfString1;
     do
     {
       return false;
       if (paramInt != 4) {
-        break label156;
+        break label174;
       }
       i = paramString.length;
       paramInt = 0;
       if (paramInt >= i) {
         break;
       }
-      localObject = paramString[paramInt];
-    } while (localObject == null);
-    if (localObject.getName().contains("dazhao_move")) {}
+      arrayOfString1 = paramString[paramInt];
+    } while (arrayOfString1 == null);
+    if (arrayOfString1.getName().contains("dazhao_move")) {}
     for (;;)
     {
       paramInt += 1;
       break label68;
-      if ((!localObject.getName().contains("daozhao_motion")) || (localObject.list().length != 29)) {
-        if ((!localObject.getName().contains("dazhao2_motion")) || (localObject.list().length != 23)) {
+      if (arrayOfString1.getName().contains("daozhao_motion"))
+      {
+        String[] arrayOfString2 = arrayOfString1.list();
+        if (arrayOfString2 == null) {
           break;
         }
+        if (arrayOfString2.length == 29) {
+          continue;
+        }
+      }
+      if (!arrayOfString1.getName().contains("dazhao2_motion")) {
+        break;
+      }
+      arrayOfString1 = arrayOfString1.list();
+      if ((arrayOfString1 == null) || (arrayOfString1.length != 23)) {
+        break;
       }
     }
     return true;
-    label156:
+    label174:
     if (paramString.length == i) {}
     for (;;)
     {
@@ -207,7 +232,7 @@ public class PokeBigResHandler
     }
   }
   
-  private static boolean c(String paramString)
+  private static boolean b(String paramString)
   {
     Object localObject = null;
     String str = e;
@@ -233,7 +258,7 @@ public class PokeBigResHandler
           }
           try
           {
-            paramString = MD5FileUtil.a(localFile);
+            paramString = bhpp.a(localFile);
           }
           catch (Exception paramString)
           {
@@ -257,7 +282,7 @@ public class PokeBigResHandler
           }
           try
           {
-            paramString = MD5FileUtil.a(localFile);
+            paramString = bhpp.a(localFile);
           }
           catch (Exception paramString)
           {
@@ -275,13 +300,6 @@ public class PokeBigResHandler
     return false;
   }
   
-  protected Class a()
-  {
-    return null;
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
-  
   public void a(boolean paramBoolean)
   {
     if (!paramBoolean) {}
@@ -295,9 +313,9 @@ public class PokeBigResHandler
         }
         if (!jdField_b_of_type_Boolean)
         {
-          zxa localzxa = new zxa(this);
+          PokeBigResHandler.1 local1 = new PokeBigResHandler.1(this);
           if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-            ThreadManager.post(localzxa, 10, null, false);
+            ThreadManager.post(local1, 10, null, false);
           } else {
             localObject.run();
           }
@@ -306,6 +324,13 @@ public class PokeBigResHandler
       finally {}
     }
   }
+  
+  public Class<? extends alpg> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

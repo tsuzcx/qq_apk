@@ -1,47 +1,53 @@
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.view.MaskView;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.mp.mobileqq_mp.SubscribeRequest;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import mqq.app.NewIntent;
 
-class agcn
-  implements Runnable
+public class agcn
+  implements biab
 {
-  agcn(agch paramagch, String paramString) {}
+  public agcn(StructingMsgItemBuilder paramStructingMsgItemBuilder, ChatMessage paramChatMessage, Activity paramActivity, AbsStructMsg paramAbsStructMsg) {}
   
-  public void run()
+  public void a(biaa parambiaa)
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (new File(this.jdField_a_of_type_JavaLangString).exists()))
-    {
-      long l = System.currentTimeMillis() - ScanOcrActivity.a(this.jdField_a_of_type_Agch.a);
-      if (this.jdField_a_of_type_Agch.a.jdField_a_of_type_Int == 1)
-      {
-        Object localObject = URLDrawable.URLDrawableOptions.obtain();
-        localObject = URLDrawable.getDrawable(new File(this.jdField_a_of_type_JavaLangString), (URLDrawable.URLDrawableOptions)localObject);
-        ((URLDrawable)localObject).downloadImediatly();
-        this.jdField_a_of_type_Agch.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.setPreviewDrawable((Drawable)localObject);
-        ScanOcrActivity.a(this.jdField_a_of_type_Agch.a, this.jdField_a_of_type_JavaLangString, true);
-        return;
-      }
-      if (l > 900L)
-      {
-        ScanOcrActivity.a(this.jdField_a_of_type_Agch.a, this.jdField_a_of_type_JavaLangString, false);
-        return;
-      }
-      ScanOcrActivity.a(this.jdField_a_of_type_Agch.a).postDelayed(new agco(this), 900L - l);
+    if (StructingMsgItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {
       return;
     }
-    ScanOcrActivity.a(this.jdField_a_of_type_Agch.a, false);
-    QLog.d("Q.ocr.ScanOcrActivity", 1, "onTakePicFinish failed!");
+    String str = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("msg_template_id");
+    int i = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop;
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_AndroidAppActivity, nrz.class);
+    localNewIntent.putExtra("cmd", "PubAccountFollowSvc.subscribe");
+    mobileqq_mp.SubscribeRequest localSubscribeRequest = new mobileqq_mp.SubscribeRequest();
+    localSubscribeRequest.msg_id.set(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.msgId);
+    localSubscribeRequest.index.set(parambiaa.a);
+    long l1 = 0L;
+    try
+    {
+      long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin);
+      l1 = l2;
+    }
+    catch (Exception parambiaa)
+    {
+      label108:
+      break label108;
+    }
+    localSubscribeRequest.template_id.set(str);
+    localSubscribeRequest.puin.set(l1);
+    localNewIntent.setObserver(new agco(this, str));
+    localNewIntent.putExtra("data", localSubscribeRequest.toByteArray());
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a.startServlet(localNewIntent);
+    StructingMsgItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agcn
  * JD-Core Version:    0.7.0.1
  */

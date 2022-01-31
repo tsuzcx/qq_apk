@@ -2,127 +2,85 @@ package com.tencent.token.ui;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.af;
-import com.tencent.token.ag;
-import com.tencent.token.ax;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult.VerifyTypeItem;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.UpgradeDeterminResult;
-import com.tencent.token.core.push.a;
-import com.tencent.token.global.e;
+import com.tencent.token.cw;
+import com.tencent.token.cx;
+import com.tencent.token.global.h;
 import com.tencent.token.utils.UserTask;
-import com.tencent.token.utils.k;
-import com.tencent.token.utils.s;
 
 public class NetActiveSetDirBySeqActivity
   extends BaseActivity
 {
   private int bindType;
-  private View.OnClickListener mBindButtonListener = new ra(this);
-  private View.OnClickListener mButtonListener = new qx(this);
-  private View.OnClickListener mCompleteButtonListener = new qv(this);
+  private View.OnClickListener mButtonListener = new qh(this);
+  private View.OnClickListener mCompleteButtonListener = new qf(this);
   private String mCountryCode = "+86";
   private int mCountryIndex = -1;
-  private View.OnClickListener mCountryListener = new qw(this);
+  private View.OnClickListener mCountryListener = new qg(this);
   private TextView mCountry_name;
   private TextView mCountry_number;
   private Dialog mDialog;
   UserTask mDnaBindTask = null;
-  private Handler mHandler = new qu(this);
+  private Handler mHandler = new qe(this);
   private boolean mIsActiveSuccess = false;
   private String mMobile = "";
   private EditText mMobileText;
-  private UpgradeDeterminResult mUpDetermin;
   private QQUser mUser;
+  private int mVerifyFactorId = -1;
+  private DeterminVerifyFactorsResult mVerifyResult;
+  private DeterminVerifyFactorsResult.VerifyTypeItem mVerifyType;
   private View mcountry;
   
   private void displayBindSuccess(boolean paramBoolean)
   {
-    ag.c().i();
-    Object localObject = this.mUser.mRealUin + "";
-    this.mIsActiveSuccess = true;
-    int i;
-    if (this.mUpDetermin.mHaveMobile == 1)
+    cx.c().i();
+    String str = this.mUser.mRealUin + "";
+    Intent localIntent = new Intent(this, VerifySuccActivity.class);
+    localIntent.putExtra("mRealUin", Long.parseLong(str));
+    localIntent.putExtra("mMobile", this.mMobile);
+    if (!this.mVerifyResult.b()) {}
+    for (boolean bool = true;; bool = false)
     {
-      i = 1;
-      if (i != 0) {
-        break label251;
+      localIntent.putExtra("isHaveMobie", bool);
+      localIntent.putExtra("bindMobileSucc", paramBoolean);
+      if ((this.mVerifyResult != null) && (this.mVerifyResult.c() == 2)) {
+        localIntent.putExtra("mSourceId", 1);
       }
-      if (!paramBoolean) {
-        break label242;
-      }
-      setContentView(2130903052);
-      label64:
-      setTitle(2131361842);
-      this.mBackArrow.setVisibility(4);
-      ax.a().f(Long.parseLong((String)localObject));
-      ((Button)findViewById(2131296398)).setOnClickListener(this.mCompleteButtonListener);
-      ((ImageView)findViewById(2131296395)).setImageDrawable(k.a((String)localObject, s.f(Long.parseLong((String)localObject)) + " "));
-      if (this.mUpDetermin.mHaveMobile != 1) {
-        break label260;
-      }
-      i = 1;
-      label158:
-      if (i == 0)
-      {
-        localObject = (TextView)findViewById(2131296402);
-        if (!paramBoolean) {
-          break label265;
-        }
-        String str = getString(2131361843) + " ";
-        ((TextView)localObject).setText(str + this.mMobile);
-      }
-    }
-    for (;;)
-    {
-      a.a().a(8);
+      startActivity(localIntent);
+      finish();
       return;
-      i = 0;
-      break;
-      label242:
-      setContentView(2130903051);
-      break label64;
-      label251:
-      setContentView(2130903050);
-      break label64;
-      label260:
-      i = 0;
-      break label158;
-      label265:
-      ((Button)findViewById(2131296403)).setOnClickListener(this.mBindButtonListener);
-      ((TextView)localObject).setText(getResources().getString(2131361832));
     }
   }
   
   private void init()
   {
-    findViewById(2131296656).setOnClickListener(this.mButtonListener);
-    this.mMobileText = ((EditText)findViewById(2131296655));
+    findViewById(2131558965).setOnClickListener(this.mButtonListener);
+    this.mMobileText = ((EditText)findViewById(2131558964));
     if (this.mMobileText != null) {
       this.mMobileText.clearFocus();
     }
-    this.mcountry = findViewById(2131296651);
+    this.mcountry = findViewById(2131558960);
     this.mcountry.setOnClickListener(this.mCountryListener);
-    this.mCountry_name = ((TextView)findViewById(2131296652));
-    this.mCountry_number = ((TextView)findViewById(2131296654));
+    this.mCountry_name = ((TextView)findViewById(2131558961));
+    this.mCountry_number = ((TextView)findViewById(2131558963));
     this.mIsActiveSuccess = false;
-    if ((this.mUpDetermin.a() != 2) && (this.mUpDetermin.a() != 3)) {
+    if (this.mVerifyResult.b()) {
       finish();
     }
   }
   
   public void cancelRequest()
   {
-    af.a().a(getClass().getName());
+    cw.a().a(getClass().getName());
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -143,7 +101,7 @@ public class NetActiveSetDirBySeqActivity
       catch (Exception paramKeyEvent)
       {
         paramKeyEvent.printStackTrace();
-        e.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
+        h.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
         return true;
       }
     }
@@ -155,28 +113,38 @@ public class NetActiveSetDirBySeqActivity
     if (paramInt2 == 0) {
       return;
     }
-    if (paramInt2 == 1111) {}
-    for (paramIntent = "+1";; paramIntent = "+" + paramInt2)
-    {
-      this.mCountryCode = paramIntent;
-      this.mCountryIndex = paramInt2;
-      s.a(paramInt2, this.mCountry_name, this.mCountry_number);
-      return;
-    }
+    paramIntent = paramIntent.getStringExtra("name");
+    this.mCountryCode = ("+" + paramInt2);
+    this.mCountry_name.setText(paramIntent);
+    this.mCountry_number.setText(this.mCountryCode);
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     this.mUser = ((QQUser)getIntent().getSerializableExtra("intent.qquser"));
-    this.mUpDetermin = ((UpgradeDeterminResult)getIntent().getSerializableExtra("intent.upgradedetermin"));
     this.bindType = getIntent().getIntExtra("bindType", 2);
-    if ((this.mUser == null) || (this.mUpDetermin == null))
+    this.mVerifyResult = ((DeterminVerifyFactorsResult)getIntent().getSerializableExtra("intent.determin_factors_result"));
+    this.mVerifyType = ((DeterminVerifyFactorsResult.VerifyTypeItem)getIntent().getSerializableExtra("intent.determin_verify_type"));
+    this.mVerifyFactorId = getIntent().getIntExtra("intent.determin_verify_factor_id", -1);
+    if ((this.mUser == null) || (this.mVerifyResult == null))
     {
       finish();
       return;
     }
-    setContentView(2130903105);
+    if ((this.mVerifyResult != null) && (this.mVerifyResult.c() == 2)) {
+      setNeverShowLockVerifyView();
+    }
+    if (this.mVerifyFactorId != -1)
+    {
+      if (this.mVerifyType == null)
+      {
+        finish();
+        return;
+      }
+      this.bindType = this.mVerifyType.a();
+    }
+    setContentView(2130968676);
     init();
   }
   

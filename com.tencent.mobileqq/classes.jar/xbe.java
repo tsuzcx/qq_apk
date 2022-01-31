@@ -1,48 +1,35 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
-import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
-public class xbe
-  implements Runnable
+class xbe
+  extends uxx
 {
-  public xbe(RedPacketRecordFragment paramRedPacketRecordFragment, int paramInt, String paramString) {}
-  
-  public void run()
+  xbe(xbd paramxbd, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.e()) {
-      return;
-    }
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.getResources().getString(2131432341);
-    String str1;
-    if (this.jdField_a_of_type_Int == 2) {
-      str1 = this.jdField_a_of_type_JavaLangString;
-    }
-    for (;;)
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    super.onLocationFinish(paramInt, paramSosoLbsInfo);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.c.setText(str1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceRecordMicView.c();
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      RedPacketRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment);
-      if (RedPacketRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment) == null) {
-        break;
+      this.a.jdField_a_of_type_Xba.a = paramSosoLbsInfo.a.a;
+      this.a.jdField_a_of_type_Xba.b = paramSosoLbsInfo.a.b;
+      wxe.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() latitude=" + this.a.jdField_a_of_type_Xba.a + " longitude=" + this.a.jdField_a_of_type_Xba.b);
+      if (this.a.jdField_a_of_type_Boolean) {
+        this.a.jdField_a_of_type_Xba.f();
       }
-      RedPacketRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment).removeCallbacksAndMessages(null);
       return;
-      str1 = str2;
-      if (this.jdField_a_of_type_Int == 3)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.getActivity());
-        str1 = str2;
-      }
     }
+    this.a.jdField_a_of_type_Xba.a = 0.0D;
+    this.a.jdField_a_of_type_Xba.b = 0.0D;
+    wxe.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xbe
  * JD-Core Version:    0.7.0.1
  */

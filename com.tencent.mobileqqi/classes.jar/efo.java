@@ -1,37 +1,32 @@
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView.DisplayRuleDef;
+import android.content.Context;
+import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.mobileqq.activity.contact.troop.DiscussionView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.FriendManager;
+import java.util.ArrayList;
+import java.util.List;
 
 public class efo
-  implements AnyScaleTypeImageView.DisplayRuleDef
+  extends SearchResultDialog
 {
-  public efo(RichStatItemBuilder paramRichStatItemBuilder) {}
-  
-  public Matrix getMatrix(Drawable paramDrawable, int paramInt1, int paramInt2)
+  public efo(DiscussionView paramDiscussionView, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
   {
-    Matrix localMatrix = new Matrix();
-    if (paramDrawable == null) {
-      return localMatrix;
+    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
+  }
+  
+  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((FriendManager)paramQQAppInterface.getManager(8) == null) {
+      return localArrayList;
     }
-    int i = paramDrawable.getIntrinsicWidth();
-    int j = paramDrawable.getIntrinsicHeight();
-    float f2;
-    if (i * paramInt2 > paramInt1 * j) {
-      f2 = paramInt2 / j;
-    }
-    for (float f1 = (paramInt1 - i * f2) * 0.5F;; f1 = 0.0F)
-    {
-      localMatrix.setScale(f2, f2);
-      localMatrix.postTranslate((int)(f1 + 0.5F), (int)(0.0F + 0.5F));
-      return localMatrix;
-      f2 = paramInt1 / i;
-    }
+    return c(paramContext, paramQQAppInterface, 0L, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     efo
  * JD-Core Version:    0.7.0.1
  */

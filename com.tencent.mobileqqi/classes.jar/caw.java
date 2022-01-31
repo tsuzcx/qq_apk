@@ -1,21 +1,40 @@
-import android.content.Intent;
+import android.content.Context;
+import android.os.Environment;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import android.widget.Toast;
 import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity.PicInfo;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 
-public class caw
+class caw
   implements View.OnClickListener
 {
-  public caw(AssistantSettingActivity paramAssistantSettingActivity) {}
+  caw(cav paramcav) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, ChatBackgroundSettingActivity.class);
-    paramView.putExtra("bg_replace_entrance", 8);
-    this.a.startActivity(paramView);
-    ReportController.b(this.a.b, "CliOper", "", "", "Trends_tab", "Enter_background", 0, 0, "", "", "", "");
+    if (!Environment.getExternalStorageState().equals("mounted")) {
+      Toast.makeText(this.a.a.a, this.a.a.getBaseContext().getString(2131562496), 0).show();
+    }
+    String str;
+    do
+    {
+      return;
+      paramView = (ChatBackgroundSettingActivity.PicInfo)((View)paramView.getParent()).getTag();
+      str = AppConstants.aW + paramView.b + ".png";
+    } while (new File(str).exists());
+    if (!NetworkUtil.e(BaseApplication.getContext()))
+    {
+      Toast.makeText(this.a.a.a, this.a.a.getBaseContext().getString(2131562947), 0).show();
+      return;
+    }
+    this.a.a.b.a().a(paramView.c, str);
   }
 }
 

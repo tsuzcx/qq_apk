@@ -1,57 +1,155 @@
 package com.tencent.mobileqq.theme.diy;
 
+import alud;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.theme.ThemeDownloader;
-import com.tencent.mobileqq.theme.ThemeDownloader.ThemeDownloadListener;
+import android.os.Process;
+import azri;
+import bapb;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class ThemeDIYActivity$7
-  implements ThemeDownloader.ThemeDownloadListener
+  implements bapb
 {
   ThemeDIYActivity$7(ThemeDIYActivity paramThemeDIYActivity) {}
   
-  public void onDownloadCallback(Bundle paramBundle, int paramInt1, int paramInt2, int paramInt3, ThemeDownloader paramThemeDownloader)
+  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ThemeDIYActivity", 2, "mThemeDownloadListener onDownloadCallback stateCode:" + paramInt1);
+      QLog.d("ThemeDIYActivity", 2, "mSaveStyleCallback: operateType:" + paramInt1 + ", stateCode:" + paramInt2);
     }
-    if (paramInt1 == 4) {}
-    for (;;)
+    if (paramInt2 == 8) {}
+    try
     {
-      return;
-      if (paramInt1 == 2)
+      Object localObject = new HashMap();
+      ((HashMap)localObject).put("param_vipType", String.valueOf(this.this$0.isVip));
+      ((HashMap)localObject).put("param_opType", String.valueOf(paramInt1));
+      ((HashMap)localObject).put("param_isDiy", String.valueOf(this.this$0.isDIYThemeBefore));
+      azri.a(this.this$0.mContext).a(this.this$0.app.getAccount(), "ThemeDiyStyleLogicCallback", false, 1L, 0L, (HashMap)localObject, "", false);
+      label136:
+      if ((13 == paramInt1) && (paramBundle != null))
       {
-        paramThemeDownloader.a(this.this$0.mContext, paramBundle, this.this$0.mThemeUnzipListener);
-        return;
+        paramInt1 = paramBundle.getInt("index");
+        paramResData = this.this$0.showData[paramInt1];
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeDIYActivity", 2, "mSaveStyleCallback: callback, pageIndex:" + paramInt1);
+        }
+        if (paramInt2 == 4) {
+          this.this$0.dealBgRes(paramResData, paramResData.tryOnBgBigOrgRD, 115, true);
+        }
       }
-      if (paramInt1 >= 0)
+      for (;;)
       {
-        this.this$0.mStyleSaveStatus = 6;
-        this.this$0.mHandler.removeMessages(22);
-        this.this$0.mHandler.sendMessageDelayed(Message.obtain(this.this$0.mHandler, 22, null), 50L);
-      }
-      while (paramThemeDownloader != null)
-      {
-        paramThemeDownloader.a();
-        return;
-        this.this$0.mHandler.sendMessage(Message.obtain(this.this$0.mHandler, 25, "风格包下载失败:" + this.this$0.tryOnStyleRSD.id));
-        QLog.e("ThemeDIYActivity", 2, "mThemeDownloadListener onDownloadCallback error:" + this.this$0.tryOnStyleRSD.id);
+        if ((paramBundle != null) && (paramBundle.getInt("nextOperate") == 10))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ThemeDIYActivity", 2, "StyleCallBack next task: save.");
+          }
+          this.this$0.mHandler.removeMessages(22);
+          this.this$0.mHandler.sendMessageDelayed(Message.obtain(this.this$0.mHandler, 22, null), 50L);
+        }
+        return 1;
+        if (paramInt2 == 8)
+        {
+          this.this$0.mHandler.sendMessage(Message.obtain(this.this$0.mHandler, 25, alud.a(2131715302) + paramInt1));
+          QLog.e("ThemeDIYActivity", 1, "mSaveStyleCallback, OPERATE_KEY_DOWN_BG Error, pageIndex:" + paramInt1);
+          return 0;
+          if ((14 == paramInt1) && (paramBundle != null))
+          {
+            paramInt1 = paramBundle.getInt("index");
+            paramResData = this.this$0.showData[paramInt1];
+            if (paramInt2 == 4)
+            {
+              paramResData.mSaveStatus = 6;
+              paramResData.tryOnBgBigOrgRD.state = 5;
+              paramResData.tryOnBgBigRD.state = 5;
+              if ((this.this$0.mIsSaving.get()) && (paramBundle.getInt("nextOperate") != 10)) {
+                paramBundle.putInt("nextOperate", 10);
+              }
+              if (this.this$0.mUpdateUIPicAfterSaved)
+              {
+                paramResData = new Intent("com.tencent.qplus.THEME_INVALIDATE");
+                paramResData.putExtra("pid", Process.myPid());
+                this.this$0.mContext.sendBroadcast(paramResData, "com.tencent.msg.permission.pushnotify");
+                if (QLog.isColorLevel()) {
+                  QLog.d("ThemeDIYActivity", 2, "pic Save, isSaved = true, change pic.");
+                }
+              }
+            }
+            else if (paramInt2 == 8)
+            {
+              this.this$0.mHandler.sendMessage(Message.obtain(this.this$0.mHandler, 25, "背景压黑压白错误103"));
+              QLog.e("ThemeDIYActivity", 2, "mSaveStyleCallback, OPERATE_KEY_DEAL_BG deal error." + paramResData.position);
+              return 0;
+            }
+          }
+          else if (16 == paramInt1)
+          {
+            if (paramInt2 == 4)
+            {
+              this.this$0.mSaveToServerStatus = 6;
+            }
+            else
+            {
+              this.this$0.mHandler.sendMessage(Message.obtain(this.this$0.mHandler, 28, 1, 1, paramBundle));
+              localObject = new StringBuilder().append("StyleCallBack:SAVE_SERVER false, error ret=");
+              if (paramBundle != null) {}
+              for (paramResData = paramBundle.getInt("result_int") + "_" + paramBundle.getString("message");; paramResData = "null Param")
+              {
+                QLog.e("ThemeDIYActivity", 1, paramResData);
+                break;
+              }
+            }
+          }
+          else if (15 == paramInt1)
+          {
+            if (paramInt2 == 4)
+            {
+              this.this$0.mUpdateUIPicAfterSaved = true;
+              if (QLog.isColorLevel()) {
+                QLog.d("ThemeDIYActivity", 2, "StyleCallBack:save theme ok!!");
+              }
+            }
+            else if (paramInt2 == 8)
+            {
+              this.this$0.mHandler.sendMessage(Message.obtain(this.this$0.mHandler, 26, alud.a(2131715289)));
+              QLog.e("ThemeDIYActivity", 1, "StyleCallBack:save theme false, error type == " + paramInt2);
+            }
+          }
+          else if (18 == paramInt1)
+          {
+            if (paramInt2 == 4)
+            {
+              if ((paramBundle != null) && (paramResData != null) && (117 == paramResData.type))
+              {
+                paramInt1 = paramBundle.getInt("page_index", -1);
+                if (this.this$0.mPageView.pageIndex == paramInt1) {
+                  this.this$0.blurBg(paramResData, null, 0, true);
+                }
+              }
+            }
+            else if (paramInt2 == 8) {
+              QLog.e("ThemeDIYActivity", 1, "StyleCallBack:save theme false, error type == " + paramInt2);
+            }
+          }
+        }
       }
     }
-  }
-  
-  public void onDownloadProgress(Bundle paramBundle, int paramInt, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ThemeDIYActivity", 2, "mThemeDownloadListener onDownloadProgress readSize:" + paramLong1 + ", dwProgressMax" + paramLong2);
+    catch (Exception localException)
+    {
+      break label136;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ThemeDIYActivity.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
+import com.tencent.mobileqq.activity.TroopClassChoiceActivity.GetClassChoiceCallBack.1;
 import com.tencent.qphone.base.util.QLog;
 
 public class aeck
-  extends PublicAccountObserver
+  implements bcwg
 {
-  public aeck(LoginWelcomeManager paramLoginWelcomeManager, Bundle paramBundle) {}
+  public aeck(TroopClassChoiceActivity paramTroopClassChoiceActivity) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
-    }
-    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    if (paramBoolean)
     {
-      localBundle.putInt("result", i);
-      this.jdField_a_of_type_AndroidOsBundle.putString("uin", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginWelcomeManager.b();
+      this.a.a = bcwe.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getContext(), TroopClassChoiceActivity.a(this.a));
+      this.a.runOnUiThread(new TroopClassChoiceActivity.GetClassChoiceCallBack.1(this));
       return;
     }
+    QLog.e("IphoneTitleBarActivity", 1, "getClassChoiceFromServer failed!");
   }
 }
 

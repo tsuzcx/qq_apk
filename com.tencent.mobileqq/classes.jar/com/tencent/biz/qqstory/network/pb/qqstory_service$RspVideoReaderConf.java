@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class qqstory_service$RspVideoReaderConf
-  extends MessageMicro
+  extends MessageMicro<RspVideoReaderConf>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "result", "reader_conf" }, new Object[] { null, null }, RspVideoReaderConf.class);
   public qqstory_struct.VideoReaderConf reader_conf = new qqstory_struct.VideoReaderConf();
@@ -12,7 +12,7 @@ public final class qqstory_service$RspVideoReaderConf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspVideoReaderConf
  * JD-Core Version:    0.7.0.1
  */

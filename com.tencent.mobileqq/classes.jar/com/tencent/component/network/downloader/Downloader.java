@@ -17,37 +17,39 @@ import com.tencent.component.network.module.cache.CacheManager;
 import com.tencent.component.network.module.cache.file.FileCacheService;
 import com.tencent.component.network.utils.thread.PriorityThreadPool;
 import java.net.Proxy;
+import java.util.ArrayList;
 import java.util.UUID;
 import java.util.concurrent.Executor;
 
 public abstract class Downloader
 {
   public Context mContext = null;
-  public IPStrategy pBackupIPConfig;
-  public ContentHandler pContentHandler;
-  public IPStrategy pDirectIPConfig;
+  protected IPStrategy pBackupIPConfig;
+  protected ContentHandler pContentHandler;
+  protected IPStrategy pDirectIPConfig;
   protected Downloader.DownloadMode pDownloadMode = Downloader.DownloadMode.FastMode;
-  public ReportHandler pExternalReportHandler;
-  public PriorityThreadPool pExternalThreadPool;
-  public FileHandler pFileHandler;
-  public KeepAliveStrategy pKeepAliveStrategy;
-  public int pMaxConnection = 0;
-  public int pMaxConnectionPerRoute = 0;
+  protected ReportHandler pExternalReportHandler;
+  protected PriorityThreadPool pExternalThreadPool;
+  protected FileHandler pFileHandler;
+  protected boolean pHttpsIpDirectEnable = false;
+  protected KeepAliveStrategy pKeepAliveStrategy;
+  protected int pMaxConnection = 0;
+  protected int pMaxConnectionPerRoute = 0;
   protected Proxy pMobileProxy;
   protected String pName;
-  public Downloader.NetworkFlowStatistics pNetworkFlowStatistics;
-  public PortConfigStrategy pPortConfigStrategy;
-  public DownloadPreprocessStrategy pProcessStrategy;
-  public ReportHandler pReportHandler;
+  protected Downloader.NetworkFlowStatistics pNetworkFlowStatistics;
+  protected PortConfigStrategy pPortConfigStrategy;
+  protected DownloadPreprocessStrategy pProcessStrategy;
+  protected ReportHandler pReportHandler;
   public ResumeTransfer pResumeTransfer;
-  public FileCacheService pTmpFileCache;
+  protected FileCacheService pTmpFileCache;
   protected UrlKeyGenerator pUrlKeyGenerator;
   
   public Downloader(Context paramContext, String paramString)
   {
     this.mContext = paramContext;
     this.pName = paramString;
-    this.pTmpFileCache = CacheManager.a(this.mContext);
+    this.pTmpFileCache = CacheManager.getTmpFileCacheService(this.mContext);
   }
   
   public abstract void abort(String paramString, Downloader.DownloadListener paramDownloadListener);
@@ -95,11 +97,17 @@ public abstract class Downloader
   
   public final boolean download(String paramString, String[] paramArrayOfString, boolean paramBoolean1, boolean paramBoolean2, Downloader.DownloadListener paramDownloadListener, Downloader.DownloadMode paramDownloadMode)
   {
+    return download(paramString, paramArrayOfString, paramBoolean1, paramBoolean2, paramDownloadListener, paramDownloadMode, null);
+  }
+  
+  public final boolean download(String paramString, String[] paramArrayOfString, boolean paramBoolean1, boolean paramBoolean2, Downloader.DownloadListener paramDownloadListener, Downloader.DownloadMode paramDownloadMode, DownloadRequest.OnResponseDataListener paramOnResponseDataListener)
+  {
     if ((!Utils.checkUrl(paramString)) || (paramArrayOfString == null)) {
       return false;
     }
     paramString = new DownloadRequest(paramString, paramArrayOfString, paramBoolean1, paramDownloadListener);
     paramString.mode = paramDownloadMode;
+    paramString.onResponseDataListener = paramOnResponseDataListener;
     return download(paramString, paramBoolean2);
   }
   
@@ -116,15 +124,15 @@ public abstract class Downloader
   public void enableResumeTransfer(boolean paramBoolean1, String[] paramArrayOfString, boolean paramBoolean2)
   {
     QzoneResumeTransfer localQzoneResumeTransfer = new QzoneResumeTransfer(this.mContext, "tmp_" + Utils.getCurrentProcessName(this.mContext) + "_" + this.pName, this.pTmpFileCache, true);
-    localQzoneResumeTransfer.a = paramBoolean1;
-    localQzoneResumeTransfer.a(this.pUrlKeyGenerator);
+    localQzoneResumeTransfer.mForceEnable = paramBoolean1;
+    localQzoneResumeTransfer.setUrlKeyGenerator(this.pUrlKeyGenerator);
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0)) {
-      localQzoneResumeTransfer.a(paramArrayOfString, paramBoolean2);
+      localQzoneResumeTransfer.setSupportDomains(paramArrayOfString, paramBoolean2);
     }
     this.pResumeTransfer = localQzoneResumeTransfer;
   }
   
-  public String generateStorageName(String paramString)
+  protected String generateStorageName(String paramString)
   {
     paramString = generateUrlKey(paramString);
     if (TextUtils.isEmpty(paramString)) {
@@ -137,7 +145,7 @@ public abstract class Downloader
   {
     Object localObject = this.pUrlKeyGenerator;
     if (localObject == null) {}
-    for (localObject = paramString; TextUtils.isEmpty((CharSequence)localObject); localObject = ((UrlKeyGenerator)localObject).a(paramString)) {
+    for (localObject = paramString; TextUtils.isEmpty((CharSequence)localObject); localObject = ((UrlKeyGenerator)localObject).doGenerate(paramString)) {
       return paramString;
     }
     return localObject;
@@ -157,6 +165,8 @@ public abstract class Downloader
   {
     return this.pProcessStrategy;
   }
+  
+  public abstract void preConnectHost(ArrayList<String> paramArrayList);
   
   public void setBackupIPConfigStrategy(IPStrategy paramIPStrategy)
   {
@@ -206,6 +216,11 @@ public abstract class Downloader
     this.pMaxConnection = paramInt2;
   }
   
+  public void setHttpsIpDirectEnable(boolean paramBoolean)
+  {
+    this.pHttpsIpDirectEnable = paramBoolean;
+  }
+  
   public void setKeepAliveStrategy(KeepAliveStrategy paramKeepAliveStrategy)
   {
     this.pKeepAliveStrategy = paramKeepAliveStrategy;
@@ -242,13 +257,13 @@ public abstract class Downloader
   {
     this.pUrlKeyGenerator = paramUrlKeyGenerator;
     if (this.pResumeTransfer != null) {
-      this.pResumeTransfer.a(this.pUrlKeyGenerator);
+      this.pResumeTransfer.setUrlKeyGenerator(this.pUrlKeyGenerator);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.Downloader
  * JD-Core Version:    0.7.0.1
  */

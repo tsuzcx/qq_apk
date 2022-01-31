@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class ImageRetrievalLogic$LabelSource
-  extends MessageMicro
+  extends MessageMicro<LabelSource>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 8026, 8034 }, new String[] { "stLabelComm", "stLable1003", "stLable1004" }, new Object[] { null, null, null }, LabelSource.class);
   public ImageRetrievalLogic.LabelSourceCommon stLabelComm = new ImageRetrievalLogic.LabelSourceCommon();
@@ -13,7 +13,7 @@ public final class ImageRetrievalLogic$LabelSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.ImageRetrievalLogic.LabelSource
  * JD-Core Version:    0.7.0.1
  */

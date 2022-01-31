@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.DrawerFrame;
-
-public class xkb
-  implements View.OnClickListener
+public abstract interface xkb
 {
-  public xkb(DrawerFrame paramDrawerFrame) {}
+  public abstract void a();
   
-  public void onClick(View paramView) {}
+  public abstract void a(xkl paramxkl);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xkb
  * JD-Core Version:    0.7.0.1
  */

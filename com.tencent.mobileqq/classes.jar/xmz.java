@@ -1,38 +1,75 @@
-import android.content.Context;
-import android.view.WindowManager.BadTokenException;
-import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
 public class xmz
-  implements Runnable
+  extends bidv
 {
-  public xmz(CameraPreviewNew paramCameraPreviewNew, String paramString, int paramInt, Context paramContext) {}
+  private xmm a;
   
-  public void run()
+  public xmz(xmm paramxmm)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Int == 2002) {
-      localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131428347);
-    }
-    localObject = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage((CharSequence)localObject).setPositiveButton(this.jdField_a_of_type_AndroidContentContext.getString(2131428346), new xna(this));
-    try
+    this.a = paramxmm;
+  }
+  
+  public void clearView(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  {
+    super.clearView(paramRecyclerView, paramViewHolder);
+    if ((paramViewHolder instanceof xmv))
     {
-      ((QQCustomDialog)localObject).setCancelable(false);
-      ((QQCustomDialog)localObject).show();
-      return;
-    }
-    catch (WindowManager.BadTokenException localBadTokenException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("CameraPreviewNew", 2, "", localBadTokenException);
+      ((xmv)paramViewHolder).a = false;
+      if ((paramRecyclerView.getScrollState() == 0) && (!paramRecyclerView.isComputingLayout())) {
+        paramRecyclerView.getAdapter().notifyItemChanged(paramViewHolder.getAdapterPosition(), Integer.valueOf(0));
+      }
     }
   }
+  
+  public float getMoveThreshold(RecyclerView.ViewHolder paramViewHolder)
+  {
+    return 0.25F;
+  }
+  
+  public int getMovementFlags(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  {
+    paramRecyclerView = paramRecyclerView.getLayoutManager();
+    if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).getOrientation() == 0)) {}
+    for (int i = 15;; i = 0) {
+      return makeMovementFlags(i, 0);
+    }
+  }
+  
+  public boolean isItemViewSwipeEnabled()
+  {
+    return false;
+  }
+  
+  public boolean onMove(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2)
+  {
+    if (this.a != null) {
+      this.a.a(paramViewHolder1.getAdapterPosition(), paramViewHolder2.getAdapterPosition());
+    }
+    return false;
+  }
+  
+  public void onSelectedChanged(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    super.onSelectedChanged(paramViewHolder, paramInt);
+    if ((paramInt == 2) && ((paramViewHolder instanceof xmv)))
+    {
+      paramViewHolder = (xmv)paramViewHolder;
+      paramViewHolder.a = true;
+      if ((this.a instanceof xms)) {
+        ((xms)this.a).notifyItemChanged(paramViewHolder.getAdapterPosition(), Integer.valueOf(0));
+      }
+    }
+  }
+  
+  public void onSwiped(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xmz
  * JD-Core Version:    0.7.0.1
  */

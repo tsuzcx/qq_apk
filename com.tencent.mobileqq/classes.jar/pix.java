@@ -1,98 +1,102 @@
-import android.os.Handler;
-import com.tencent.component.media.ILog;
-import com.tencent.component.media.ImageManagerEnv;
-import com.tencent.component.media.image.BitmapReference;
-import com.tencent.component.media.image.ImageLoader.Options;
-import com.tencent.component.media.photogif.NewAnimationDrawable;
-import com.tencent.component.media.utils.LruCache;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.preload.util.FeedsPreloadExposeReport.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
 
 public class pix
-  implements Comparable, Runnable
 {
-  private pix(NewAnimationDrawable paramNewAnimationDrawable) {}
-  
-  public int a(pix parampix)
+  public static void a(List<ArticleInfo> paramList, String paramString)
   {
-    return 0;
+    QLog.d("FeedsPreloadExposeReport", 1, "reportFeedsExposeRewrite.");
+    Object localObject = (oxd)((QQAppInterface)ors.a()).getManager(163);
+    if (localObject != null)
+    {
+      localObject = ((oxd)localObject).a();
+      piu.a().a(new FeedsPreloadExposeReport.1((owy)localObject, paramList, paramString));
+      return;
+    }
+    QLog.d("FeedsPreloadExposeReport", 1, "readInJoyLogicManager is null.");
   }
   
-  public void run()
+  public static void a(boolean paramBoolean, long paramLong, int paramInt)
   {
-    long l = 0L;
-    if (!this.a.canAnimate())
+    String str = ors.a();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("retCode", String.valueOf(paramInt));
+    localHashMap.put("uin", str);
+    AppRuntime localAppRuntime = ors.a();
+    if ((localAppRuntime == null) || (paramLong < 0L) || (paramLong > 30000L))
     {
-      NewAnimationDrawable.a(this.a).removeMessages(0);
-      NewAnimationDrawable.a(this.a).sendEmptyMessageDelayed(0, NewAnimationDrawable.a(this.a));
-      ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "canAnimate:false,so don't invalidate" });
-    }
-    Object localObject2;
-    int i;
-    label286:
-    label297:
-    Object localObject4;
-    do
-    {
+      QLog.d("FeedsPreloadExposeReport", 1, "app is null or cost is not available, reportFeedsPreloadExposeMonitorData");
       return;
-      if (!NewAnimationDrawable.a(this.a))
-      {
-        ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "DecodeTask:mIsRunning=false, return" });
-        return;
-      }
-      if ((NewAnimationDrawable.a(this.a) == -1) || (NewAnimationDrawable.a(this.a) >= NewAnimationDrawable.a(this.a).photoList.size())) {
-        NewAnimationDrawable.a(this.a, 0);
-      }
-      localObject2 = (String)NewAnimationDrawable.a(this.a).photoList.get(NewAnimationDrawable.a(this.a));
-      ??? = (BitmapReference)NewAnimationDrawable.a(this.a).get(localObject2);
-      if (NewAnimationDrawable.b(this.a) == null)
-      {
-        i = 1;
-        if (??? == null) {
-          break label297;
-        }
-        NewAnimationDrawable.b(this.a, (BitmapReference)???);
-        NewAnimationDrawable.a(this.a).removeMessages(0);
-        ??? = NewAnimationDrawable.a(this.a);
-        if (i == 0) {
-          break label286;
-        }
-      }
-      for (l = 0L;; l = NewAnimationDrawable.a(this.a))
-      {
-        ((Handler)???).sendEmptyMessageDelayed(0, l);
-        ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "get from cache: index=" + NewAnimationDrawable.a(this.a) });
-        return;
-        i = 0;
-        break;
-      }
-      localObject4 = NewAnimationDrawable.a(this.a, (String)localObject2);
-    } while (localObject4 == null);
-    for (;;)
-    {
-      synchronized (NewAnimationDrawable.a(this.a))
-      {
-        NewAnimationDrawable.b(this.a, (BitmapReference)localObject4);
-        NewAnimationDrawable.a(this.a).put(localObject2, localObject4);
-        localObject4 = new piy((BitmapReference)localObject4);
-        NewAnimationDrawable.a(this.a).put(localObject2, new WeakReference(localObject4));
-        NewAnimationDrawable.a(this.a).removeMessages(0);
-        localObject2 = NewAnimationDrawable.a(this.a);
-        if (i != 0)
-        {
-          ((Handler)localObject2).sendEmptyMessageDelayed(0, l);
-          ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "get from decoder:index=" + NewAnimationDrawable.a(this.a) });
-          return;
-        }
-      }
-      l = NewAnimationDrawable.a(this.a);
     }
+    azri.a(localAppRuntime.getApplication()).a(str, "actFeedsPreloadExposeReport", paramBoolean, paramLong, 0L, localHashMap, null);
+  }
+  
+  private static List<ReportInfo> b(List<ArticleInfo> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      paramList = new ArrayList(paramList).iterator();
+      while (paramList.hasNext())
+      {
+        Object localObject1 = (ArticleInfo)paramList.next();
+        Object localObject2;
+        if ((ors.t((BaseArticleInfo)localObject1)) && (((ArticleInfo)localObject1).mNewPolymericInfo != null) && (((ArticleInfo)localObject1).mNewPolymericInfo.a != null))
+        {
+          localObject1 = ((ArticleInfo)localObject1).mNewPolymericInfo.a.iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (qlk)((Iterator)localObject1).next();
+            ReportInfo localReportInfo = new ReportInfo();
+            localReportInfo.mUin = ors.a();
+            localReportInfo.mOperation = 56;
+            localReportInfo.mSourceArticleId = ((qlk)localObject2).a;
+            localReportInfo.mInnerId = ((qlk)localObject2).g;
+            localReportInfo.mAlgorithmId = ((int)((qlk)localObject2).b);
+            localReportInfo.mGWCommonData = "";
+            localArrayList.add(localReportInfo);
+          }
+        }
+        else
+        {
+          localObject2 = new ReportInfo();
+          ((ReportInfo)localObject2).mUin = ors.a();
+          ((ReportInfo)localObject2).mOperation = 56;
+          ((ReportInfo)localObject2).mSourceArticleId = ((ArticleInfo)localObject1).mArticleID;
+          ((ReportInfo)localObject2).mInnerId = ((ArticleInfo)localObject1).innerUniqueID;
+          ((ReportInfo)localObject2).mAlgorithmId = ((int)((ArticleInfo)localObject1).mAlgorithmID);
+          ((ReportInfo)localObject2).mGWCommonData = ((ArticleInfo)localObject1).mGWCommonData;
+          localArrayList.add(localObject2);
+          if (((ArticleInfo)localObject1).hasOnlyTwoVideoFeeds())
+          {
+            localObject1 = (ArticleInfo)((ArticleInfo)localObject1).mSubArtilceList.get(0);
+            localObject2 = new ReportInfo();
+            ((ReportInfo)localObject2).mUin = ors.a();
+            ((ReportInfo)localObject2).mOperation = 56;
+            ((ReportInfo)localObject2).mSourceArticleId = ((ArticleInfo)localObject1).mArticleID;
+            ((ReportInfo)localObject2).mInnerId = ((ArticleInfo)localObject1).innerUniqueID;
+            ((ReportInfo)localObject2).mAlgorithmId = ((int)((ArticleInfo)localObject1).mAlgorithmID);
+            ((ReportInfo)localObject2).mGWCommonData = ((ArticleInfo)localObject1).mGWCommonData;
+            localArrayList.add(localObject2);
+          }
+        }
+      }
+    }
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pix
  * JD-Core Version:    0.7.0.1
  */

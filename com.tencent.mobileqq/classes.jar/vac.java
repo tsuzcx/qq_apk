@@ -1,21 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspQQStoryGuide;
 
 public class vac
-  implements View.OnTouchListener
+  extends uro
 {
-  public vac(HeartCombolEffectView paramHeartCombolEffectView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public vac(qqstory_service.RspQQStoryGuide paramRspQQStoryGuide)
   {
-    return true;
+    super(paramRspQQStoryGuide.result);
+  }
+  
+  public String toString()
+  {
+    return "QQStoryGuideResponse{}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vac
  * JD-Core Version:    0.7.0.1
  */

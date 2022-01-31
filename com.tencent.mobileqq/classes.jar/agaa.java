@@ -1,42 +1,33 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.now.enter.ConversationNowController;
-import com.tencent.qphone.base.util.QLog;
+import android.os.SystemClock;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
+import com.tencent.mobileqq.data.MessageForScribble;
 
 public class agaa
-  implements Handler.Callback
+  implements bhuk
 {
-  public agaa(ConversationNowController paramConversationNowController) {}
+  public agaa(ScribbleItemBuilder paramScribbleItemBuilder, View paramView, MessageForScribble paramMessageForScribble, bhuf parambhuf) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramMessage.what)
+    switch (paramInt)
     {
     }
     for (;;)
     {
-      return false;
-      QLog.d("ConversationNowController", 1, "preload eve packet list");
-      continue;
-      QLog.d("ConversationNowController", 1, "report pendant show data");
-      try
+      this.jdField_a_of_type_Bhuf.dismiss();
+      long l;
+      do
       {
-        this.a.c();
+        return;
+        l = SystemClock.uptimeMillis();
+      } while (l - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.c < 500L);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.c = l;
+      paramView = aery.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.a);
+      if (paramView != null) {
+        paramView.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder);
       }
-      catch (Exception paramMessage)
-      {
-        QLog.e("ConversationNowController", 1, "MSG_PENDANT_SHOW_REPORT, exception=", paramMessage);
-      }
-      continue;
-      QLog.d("ConversationNowController", 1, "report saved pendant show");
-      try
-      {
-        this.a.d();
-      }
-      catch (Exception paramMessage)
-      {
-        QLog.e("ConversationNowController", 1, "MSG_SAVED_PENDANT_SHOW_REPORT, exception=", paramMessage);
-      }
+      aygl.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
     }
   }
 }

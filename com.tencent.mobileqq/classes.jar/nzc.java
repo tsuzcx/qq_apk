@@ -1,38 +1,40 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.LruCache;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.URLImageLoader;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.URLImageLoader.Config;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.common.InfoPrinter;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Map;
 
 public class nzc
-  extends LruCache
+  extends oxe
 {
-  public nzc(URLImageLoader paramURLImageLoader, int paramInt)
+  public nzc(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity) {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    super(paramInt);
+    if (ReadInJoyFeedsActivity.a(this.a) == 1)
+    {
+      ((KandianMergeManager)this.a.app.getManager(162)).b(1);
+      return;
+    }
+    ReadInJoyFeedsActivity.b(this.a, paramInt1);
+    ((nwc)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
   }
   
-  protected int a(URLImageLoader.Config paramConfig, Drawable paramDrawable)
+  public void b(int paramInt)
   {
-    if ((paramDrawable instanceof BitmapDrawable))
-    {
-      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramDrawable != null)
-      {
-        int i = paramDrawable.getRowBytes();
-        i = paramDrawable.getHeight() * i;
-        InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramConfig, " size=", Integer.valueOf(i) });
-        return i;
-      }
+    this.a.a(paramInt);
+  }
+  
+  public void c(int paramInt)
+  {
+    ReadInJoyFeedsActivity.a(this.a, paramInt);
+    if ((paramInt > 0) && (ReadInJoyFeedsActivity.a(this.a) == 0)) {
+      ((nwc)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
     }
-    return 524288;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nzc
  * JD-Core Version:    0.7.0.1
  */

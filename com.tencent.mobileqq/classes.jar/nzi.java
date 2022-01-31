@@ -1,25 +1,20 @@
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.QQStoryNetReqUtils.RequestCallBack;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.Step.FinishCallBack;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
 
-public final class nzi
-  implements Step.FinishCallBack
+public class nzi
+  implements View.OnClickListener
 {
-  public nzi(WeakReference paramWeakReference) {}
+  public nzi(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    paramString = (QQStoryNetReqUtils.RequestCallBack)this.a.get();
-    if (paramString != null) {
-      paramString.a(Integer.valueOf(((Integer)((StoryConfigManager)SuperManager.a(10)).b("qqstory_i_am_vip", Integer.valueOf(-1))).intValue()));
-    }
+    this.a.onBackEvent();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nzi
  * JD-Core Version:    0.7.0.1
  */

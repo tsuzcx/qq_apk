@@ -1,23 +1,27 @@
-import android.content.IntentFilter;
+import android.content.Context;
+import android.view.View;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class acwy
-  implements Runnable
+  extends agda
 {
-  public acwy(OnlineFileSessionCenter paramOnlineFileSessionCenter, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public acwy(FontSettingActivity paramFontSettingActivity, QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    OnlineFileSessionCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionCenter, new acwz(this));
-    IntentFilter localIntentFilter = new IntentFilter("com.tencent.mobileqq.intent.logout");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().registerReceiver(OnlineFileSessionCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionCenter), localIntentFilter);
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
   }
+  
+  public void a(aeqi paramaeqi, ChatMessage paramChatMessage) {}
+  
+  public void b(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acwy
  * JD-Core Version:    0.7.0.1
  */

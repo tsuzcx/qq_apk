@@ -1,37 +1,21 @@
-import android.view.WindowManager.BadTokenException;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import java.io.Closeable;
 
-public class xrj
-  implements Runnable
+public final class xrj
 {
-  public xrj(NewFlowCameraActivity paramNewFlowCameraActivity, String paramString, int paramInt) {}
-  
-  public void run()
+  public static void a(Closeable paramCloseable)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Int == 2002) {
-      str = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getString(2131428347);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, 230).setMessage(str).setPositiveButton(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getString(2131428346), new xrk(this));
+    if (paramCloseable != null) {}
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.setCancelable(false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.show();
+      paramCloseable.close();
       return;
     }
-    catch (WindowManager.BadTokenException localBadTokenException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("PTV.NewFlowCameraActivity", 2, "", localBadTokenException);
-    }
+    catch (Exception paramCloseable) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xrj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,25 @@
-import android.os.Process;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
-import mqq.app.AppRuntime;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
 
 public class fdq
-  extends fhi
+  extends SendMessageHandler.SendMessageRunnable
 {
-  protected void a(String paramString)
-  {
-    this.a.a(3, paramString);
-  }
+  public fdq(MessageHandler paramMessageHandler, msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq, long paramLong1, long paramLong2) {}
   
-  protected void b()
+  public void run()
   {
-    this.a.a(4, "fake_p_msg");
-  }
-  
-  protected void b(String paramString)
-  {
-    this.a.b(false);
-    CoreService.b();
-    this.a.e();
-    this.a.a(new String[0]);
-    long l = this.a.a(Process.myPid());
-    BaseApplicationImpl.a.a().onAppGuardModeChange(false, 0, (int)l);
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a("PbMessageSvc.PbMsgReadedReport");
+    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbMsgReadedReportReq.toByteArray());
+    localToServiceMsg.extraData.putLong("timeOut", this.e);
+    localToServiceMsg.extraData.putLong("startTime", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putInt("retryIndex", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putLong("msgSeq", this.b);
+    localToServiceMsg.setEnableFastResend(true);
+    localToServiceMsg.setTimeout(this.e);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(localToServiceMsg);
   }
 }
 

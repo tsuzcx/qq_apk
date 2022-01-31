@@ -1,77 +1,98 @@
-import android.os.Bundle;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishBarSelectActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishBarSelectActivity.MyBarListAdapter;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils.MyBar;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.Window;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler;
+import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
+import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
+import com.tencent.mobileqq.troop.widget.VideoViewX;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import java.util.Iterator;
+import java.util.List;
 
 public class gxd
-  implements HttpWebCgiAsyncTask.Callback
+  extends BizTroopObserver
 {
-  public gxd(TroopBarPublishBarSelectActivity paramTroopBarPublishBarSelectActivity) {}
+  public gxd(VideoPlayLogic paramVideoPlayLogic) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  protected void a(String paramString, List paramList, int paramInt)
   {
-    switch (paramInt)
+    VideoPlayLogic.a(this.a, paramInt);
+    if (paramString.compareToIgnoreCase(VideoPlayLogic.a(this.a)) != 0) {}
+    do
     {
-    default: 
       return;
+      if ((paramString.compareToIgnoreCase(VideoPlayLogic.a(this.a)) != 0) || (paramList == null) || (paramList.size() <= 0)) {
+        break;
+      }
+      VideoPlayLogic.a(this.a).clear();
+      paramString = paramList.iterator();
+      while (paramString.hasNext())
+      {
+        paramList = (String)paramString.next();
+        if (!TextUtils.isEmpty(paramList)) {
+          VideoPlayLogic.a(this.a).add(paramList);
+        }
+      }
+      if (VideoPlayLogic.a(this.a).size() <= 0)
+      {
+        if ((VideoPlayLogic.a(this.a) != null) && (VideoPlayLogic.a(this.a).isShowing() == true)) {
+          VideoPlayLogic.a(this.a).dismiss();
+        }
+        if (VideoPlayLogic.a(this.a))
+        {
+          new StructMsgForGeneralShare.GeneralClickHandler(VideoPlayLogic.a(this.a), VideoPlayLogic.a(this.a), VideoPlayLogic.a(this.a)).a(VideoPlayLogic.a(this.a));
+          return;
+        }
+        this.a.a(VideoPlayLogic.a(this.a));
+        return;
+      }
+      VideoPlayLogic.b(this.a, 0);
+    } while ((VideoPlayLogic.a(this.a) == null) || (!VideoPlayLogic.a(this.a).isShowing()));
+    VideoPlayLogic.a(this.a).dismiss();
+    this.a.d();
+    if (VideoPlayLogic.a(this.a) == null)
+    {
+      VideoPlayLogic.a(this.a, new RelativeLayout(VideoPlayLogic.a(this.a)));
+      VideoPlayLogic.b(this.a).addView(VideoPlayLogic.a(this.a), -1, 0);
     }
-    if (paramJSONObject != null) {
-      try
-      {
-        this.a.a(true);
-        paramBundle = paramJSONObject.getJSONArray("mybars");
-        if (this.a.jdField_a_of_type_JavaUtilArrayList == null) {
-          this.a.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        }
-        for (;;)
-        {
-          this.a.b = paramBundle.length();
-          paramInt = 0;
-          while (paramInt < this.a.b)
-          {
-            this.a.jdField_a_of_type_JavaUtilArrayList.add(new TroopBarUtils.MyBar(paramBundle.getJSONObject(paramInt)));
-            paramInt += 1;
-          }
-          this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-        }
-        this.a.b(false);
-      }
-      catch (JSONException paramBundle)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopBar", 2, paramBundle.toString());
-        }
-        if (TroopBarUtils.a(paramJSONObject, "isend") != 1)
-        {
-          paramInt = TroopBarUtils.a(paramJSONObject, "retcode");
-          if (paramInt == 0) {
-            break label267;
-          }
-          QQToast.a(this.a, 1, this.a.getString(2131560704, new Object[] { Integer.valueOf(paramInt) }), 0).b(this.a.d());
-        }
-      }
+    if (VideoPlayLogic.a(this.a) == null)
+    {
+      VideoPlayLogic.a(this.a, new VideoViewX(VideoPlayLogic.a(this.a)));
+      VideoPlayLogic.a(this.a).addView(VideoPlayLogic.a(this.a), -1, -1);
+    }
+    if (VideoPlayLogic.a(this.a) == null)
+    {
+      VideoPlayLogic.a(this.a, new MessageSubtitleView(VideoPlayLogic.a(this.a)));
+      paramString = new RelativeLayout.LayoutParams(-1, -2);
+      paramString.leftMargin = VideoPlayLogic.a(this.a).getResources().getDimensionPixelSize(2131427578);
+      paramString.rightMargin = VideoPlayLogic.a(this.a).getResources().getDimensionPixelSize(2131427579);
+      paramString.topMargin = VideoPlayLogic.a(this.a).getResources().getDimensionPixelSize(2131427581);
+      paramString.addRule(10);
+      VideoPlayLogic.a(this.a).addView(VideoPlayLogic.a(this.a), paramString);
+    }
+    if (!this.a.c()) {
+      VideoPlayLogic.a(this.a).setVisibility(8);
     }
     for (;;)
     {
+      VideoPlayLogic.a(this.a, true);
       return;
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.getString(2131560721, new Object[] { Integer.valueOf(this.a.b) }));
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishBarSelectActivity$MyBarListAdapter.notifyDataSetChanged();
-      continue;
-      label267:
-      paramInt = TroopBarUtils.a(paramJSONObject, "errno");
-      QQToast.a(this.a, 1, this.a.getString(2131560704, new Object[] { Integer.valueOf(paramInt) }), 0).b(this.a.d());
-      continue;
-      QQToast.a(this.a, 1, 2131560703, 0).b(this.a.d());
+      VideoPlayLogic.a(this.a).getWindow().addFlags(1024);
     }
+    if ((VideoPlayLogic.a(this.a) != null) && (VideoPlayLogic.a(this.a).isShowing() == true)) {
+      VideoPlayLogic.a(this.a).dismiss();
+    }
+    if (VideoPlayLogic.a(this.a))
+    {
+      new StructMsgForGeneralShare.GeneralClickHandler(VideoPlayLogic.a(this.a), VideoPlayLogic.a(this.a), VideoPlayLogic.a(this.a)).a(VideoPlayLogic.a(this.a));
+      return;
+    }
+    this.a.a(VideoPlayLogic.a(this.a));
   }
 }
 

@@ -1,32 +1,27 @@
-import com.tencent.mobileqq.profile.like.PraiseInfo;
-import com.tencent.mobileqq.profile.like.PraiseManager;
-import com.tencent.mobileqq.profile.like.PraiseManager.OnPraiseLoadListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class agqi
-  implements PraiseManager.OnPraiseLoadListener
+  implements View.OnClickListener
 {
-  public int a;
-  public PraiseManager.OnPraiseLoadListener a;
-  public int b;
+  agqi(agps paramagps) {}
   
-  public agqi(PraiseManager paramPraiseManager) {}
-  
-  public void a(int paramInt1, PraiseInfo paramPraiseInfo, int paramInt2, String paramString)
+  public void onClick(View paramView)
   {
-    paramInt1 = this.jdField_a_of_type_Int + 1;
-    this.jdField_a_of_type_Int = paramInt1;
-    if (paramInt1 == this.b)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.b(this);
-      if (this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseLoadListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseLoadListener.a(0, null, 0, "");
-      }
+    if (agps.a(this.a).getVisibility() == 0) {
+      ThreadManager.post(new FriendChatPie.7.1(this), 5, null, false);
     }
+    aepi.n = true;
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
+    aetu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqi
  * JD-Core Version:    0.7.0.1
  */

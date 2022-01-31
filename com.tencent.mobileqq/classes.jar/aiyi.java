@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
 
-class aiyi
-  implements Runnable
+public class aiyi
+  implements aivb
 {
-  aiyi(aiyh paramaiyh) {}
+  public aiyi(QzoneHbFragment paramQzoneHbFragment) {}
   
-  public void run()
+  public void a() {}
+  
+  public void a(Object paramObject)
   {
-    this.a.a.a(0);
+    if ((paramObject instanceof Bitmap))
+    {
+      paramObject = QzoneHbFragment.a(this.a).obtainMessage();
+      paramObject.what = 102;
+      QzoneHbFragment.a(this.a).sendMessage(paramObject);
+    }
   }
 }
 

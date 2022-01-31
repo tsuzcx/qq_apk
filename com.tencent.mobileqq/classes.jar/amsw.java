@@ -1,13 +1,32 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import cooperation.qzone.LocalMultiProcConfig;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class amsw
-  implements CompoundButton.OnCheckedChangeListener
+class amsw
+  implements MediaPlayer.OnPreparedListener
 {
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  amsw(amsu paramamsu) {}
+  
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    LocalMultiProcConfig.putBool("qz_safe_mode_no_tip", paramBoolean);
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMusicController", 2, "load bg music success. : " + amsu.b(this.a));
+      }
+      this.a.a.seekTo(0);
+      amsu.b(this.a, true);
+      if (amsu.b(this.a))
+      {
+        this.a.a.start();
+        amsu.c(this.a, false);
+      }
+      return;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      paramMediaPlayer.printStackTrace();
+    }
   }
 }
 

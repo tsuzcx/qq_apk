@@ -1,25 +1,15 @@
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
-import com.tencent.mobileqq.hotpic.VideoBaseItem.OnInnerStateChangeListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class adsj
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements aybp
 {
-  public adsj(VideoBaseItem paramVideoBaseItem) {}
+  public adsj(QQSettingMe paramQQSettingMe) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    VideoBaseItem.a(this.a, true);
-    if (this.a.c == 3) {}
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
-      this.a.c = 2;
-    } while (VideoBaseItem.a(this.a) == null);
-    VideoBaseItem.a(this.a).j();
+    if ((this.a.c) && (paramInt1 == 102) && (paramInt2 == 300)) {
+      this.a.z();
+    }
   }
 }
 

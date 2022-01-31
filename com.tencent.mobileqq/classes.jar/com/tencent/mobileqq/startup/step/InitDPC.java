@@ -12,7 +12,7 @@ import com.tencent.smtt.sdk.QbSdk;
 public class InitDPC
   extends Step
 {
-  protected boolean a()
+  protected boolean doStep()
   {
     if (QLog.isColorLevel()) {
       QLog.i("InitDPC", 2, "InitDPC.doStep()");
@@ -41,7 +41,7 @@ public class InitDPC
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InitDPC
  * JD-Core Version:    0.7.0.1
  */

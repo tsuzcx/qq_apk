@@ -1,26 +1,18 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 public class rzi
-  implements Animation.AnimationListener
+  implements rzt
 {
-  public rzi(ChatHistory paramChatHistory, View paramView, int paramInt) {}
+  public rzi(FastWebActivity paramFastWebActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    FastWebActivity.r(this.a);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rzi
  * JD-Core Version:    0.7.0.1
  */

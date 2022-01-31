@@ -1,28 +1,56 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import java.io.OutputStream;
+import msg.aio_doodle.DoodleMsgProto.DoodleData;
+import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
 
 public class afag
-  implements View.OnTouchListener
+  implements aezx
 {
-  public afag(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public afag(DoodlePanel paramDoodlePanel, OutputStream paramOutputStream) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean a(DoodleMsgProto.DoodleData paramDoodleData)
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131370590).setAlpha(0.5F);
-    }
-    for (;;)
-    {
+    if (paramDoodleData == null) {
       return false;
-      this.a.a.findViewById(2131370590).setAlpha(1.0F);
+    }
+    paramDoodleData = paramDoodleData.toByteArray();
+    byte[] arrayOfByte = aezw.a(paramDoodleData.length);
+    try
+    {
+      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
+      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleData);
+      label33:
+      return true;
+    }
+    catch (Exception paramDoodleData)
+    {
+      break label33;
+    }
+  }
+  
+  public boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader)
+  {
+    if (paramDoodleHeader == null) {
+      return false;
+    }
+    paramDoodleHeader = paramDoodleHeader.toByteArray();
+    byte[] arrayOfByte = aezw.a(paramDoodleHeader.length);
+    try
+    {
+      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
+      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleHeader);
+      label33:
+      return true;
+    }
+    catch (Exception paramDoodleHeader)
+    {
+      break label33;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afag
  * JD-Core Version:    0.7.0.1
  */

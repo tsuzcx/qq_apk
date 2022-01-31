@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/bgx" android:background="@color/ajr" android:focusable="false" android:clickable="false" android:longClickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/bmt" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bhr" />
+    <RelativeLayout android:id="@id/iu7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bu5" android:paddingLeft="11.0dip" android:paddingRight="11.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:layout_alignLeft="@id/bu4" android:layout_alignRight="@id/bu4">
+            <TextView android:textSize="14.0dip" android:textColor="#ff777777" android:ellipsize="end" android:id="@id/iu8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:text="@string/cag" android:singleLine="true" android:layout_weight="1.0" />
+            <ImageView android:id="@id/iu6" android:background="@drawable/dfx" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="1.0dip" />
+        </LinearLayout>
+        <HorizontalScrollView android:id="@id/bu4" android:paddingLeft="12.0dip" android:paddingTop="6.0dip" android:paddingRight="10.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/bu5">
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:id="@id/bu6" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:gravity="center" android:id="@id/bu7" android:background="@drawable/g9m" android:visibility="gone" android:layout_width="@dimen/avs" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ng" android:layout_toRightOf="@id/bu6" android:layout_alignTop="@id/bu6" android:layout_alignBottom="@id/bu6" />
+            </RelativeLayout>
+        </HorizontalScrollView>
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <ImageView android:id="@id/ius" android:padding="11.0dip" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/qzone_skin_toolbar_btn_face_click" android:layout_centerVertical="true" android:contentDescription="@string/gq9" />
+        <com.qzone.widget.RedDotImageView android:id="@id/hrn" android:padding="11.0dip" android:visibility="gone" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/dg0" android:scaleType="fitXY" android:layout_toRightOf="@id/ius" android:layout_centerVertical="true" android:contentDescription="@string/gq5" />
+        <ImageView android:id="@id/hrt" android:padding="11.0dip" android:visibility="gone" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/bwu" android:layout_toRightOf="@id/hrn" android:layout_centerVertical="true" android:contentDescription="@string/gh1" />
+        <ImageView android:id="@id/hrp" android:padding="11.0dip" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/qzone_skin_toolbar_btn_at_click" android:layout_toRightOf="@id/hrt" android:layout_centerVertical="true" android:contentDescription="@string/gqa" />
+        <ImageView android:id="@id/hrq" android:padding="11.0dip" android:visibility="gone" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/qzone_skin_toolbar_btn_dongganyingji_click" android:layout_toRightOf="@id/hrp" android:layout_centerVertical="true" android:contentDescription="@string/gqh" />
+        <com.qzone.widget.RedDotImageView android:id="@id/hro" android:padding="11.0dip" android:visibility="gone" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/qzone_skin_toolbar_btn_font_click" android:layout_toRightOf="@id/hrq" android:layout_centerVertical="true" android:contentDescription="@string/gq6" />
+        <com.qzone.widget.RedDotImageView android:id="@id/hrr" android:padding="11.0dip" android:visibility="gone" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/qzone_skin_toolbar_btn_font_click" android:layout_toRightOf="@id/hro" android:layout_centerVertical="true" />
+        <com.qzone.widget.RedDotImageView android:id="@id/hrs" android:padding="11.0dip" android:visibility="gone" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/qzone_skin_toolbar_btn_font_click_guide_notice" android:layout_toRightOf="@id/hro" android:layout_centerVertical="true" />
+        <com.qzone.widget.RedDotImageView android:id="@id/huo" android:padding="11.0dip" android:visibility="gone" android:layout_width="46.0dip" android:layout_height="46.0dip" android:src="@drawable/fyo" android:layout_toRightOf="@id/hrr" android:layout_centerVertical="true" android:contentDescription="@string/gq8" />
+        <com.qzone.widget.RedDotImageView android:id="@id/heg" android:padding="11.0dip" android:visibility="visible" android:layout_width="46.0dip" android:layout_height="46.0dip" android:layout_toRightOf="@id/huo" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

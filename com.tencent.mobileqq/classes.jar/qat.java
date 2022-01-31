@@ -1,16 +1,22 @@
-import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class qat
+class qat
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
+  qat(qas paramqas) {}
   
-  private qat(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
+  public void onClick(View paramView)
+  {
+    paramView = this.a.jdField_a_of_type_Rqj.a();
+    if (paramView != null) {
+      paramView.a(null, ((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qat
  * JD-Core Version:    0.7.0.1
  */

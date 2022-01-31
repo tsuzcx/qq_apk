@@ -1,25 +1,32 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.rebuild.GetTextDraftJob;
-import com.tencent.mobileqq.data.DraftTextInfo;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 public class vum
-  implements Runnable
+  extends vut<StoryVideoItem>
 {
-  public vum(GetTextDraftJob paramGetTextDraftJob, DraftTextInfo paramDraftTextInfo) {}
-  
-  public void run()
+  public vum(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    BaseChatPie localBaseChatPie = (BaseChatPie)GetTextDraftJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGetTextDraftJob).get();
-    if (localBaseChatPie == null) {
-      return;
-    }
-    localBaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqDataDraftTextInfo);
+    super(paramVideoViewVideoHolder, null);
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem)
+  {
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    wxe.d(this.a.a, "VideoFileSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vum
  * JD-Core Version:    0.7.0.1
  */

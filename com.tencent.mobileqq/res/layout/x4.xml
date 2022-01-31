@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/g6f" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/a2f" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/zo" />
+    <RelativeLayout android:id="@id/g7p" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/m1m" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" layout="@layout/c9z" />
+    <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" layout="@layout/z_" />
+    <RelativeLayout android:id="@id/ktg" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/i3z" android:background="@drawable/brh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="65.0dip" />
+        <View android:id="@id/i3x" android:background="@drawable/brf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="180.0dip" android:layout_alignParentBottom="true" />
+        <View android:id="@id/i3y" android:background="@drawable/brg" android:visibility="gone" android:layout_width="65.0dip" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <TextView android:textSize="12.0dip" android:textColor="@color/px" android:id="@id/gcj" android:background="#99cccccc" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:visibility="gone" android:scrollbars="vertical" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="400.0dip" android:layout_centerInParent="true" android:onClick="BtnOnClick" />
+    <include android:visibility="gone" layout="@layout/x8" />
+    <RelativeLayout android:id="@id/g7i" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" />
+    <com.tencent.av.ui.funchat.record.QavRecordButtonView android:id="@id/i3q" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginLeft="15.0dip" android:layout_marginBottom="15.0dip" android:layout_alignParentBottom="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/i44" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="35.0dip" android:layout_marginLeft="10.0dip" android:layout_toRightOf="@id/i3q" android:layout_alignTop="@id/i3q">
+        <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/i43" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/di4" android:singleLine="true" android:includeFontPadding="false" />
+    </LinearLayout>
+    <Button android:id="@id/akr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="120.0dip" android:text="@string/dkt" android:onClick="TestMenuBtnOnClick" />
+    <ImageView android:id="@id/m12" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="100.0dip" android:layout_marginTop="10.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <ViewStub android:id="@id/cp4" android:layout="@layout/a69" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/m0w" android:layout="@layout/c9w" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/m0y" android:visibility="gone" android:layout="@layout/c9y" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:visibility="gone" layout="@layout/cf8" />
+    <View android:id="@id/m18" android:background="@color/aly" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

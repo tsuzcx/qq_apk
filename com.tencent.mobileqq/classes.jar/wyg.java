@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-
-public class wyg
-  implements DialogInterface.OnClickListener
+public abstract interface wyg
+  extends xam
 {
-  public wyg(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public abstract void a(xbv paramxbv);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void ae_();
+  
+  public abstract void b();
+  
+  public abstract void f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wyg
  * JD-Core Version:    0.7.0.1
  */

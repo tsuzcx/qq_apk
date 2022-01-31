@@ -1,44 +1,32 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.equipmentlock.EquipLockWebImpl;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
 
 public class achh
-  extends WtloginObserver
+  implements View.OnClickListener
 {
-  public achh(EquipLockWebImpl paramEquipLockWebImpl) {}
+  public achh(AutoRemarkActivity paramAutoRemarkActivity) {}
   
-  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebImpl", 2, "OnCheckDevLockSms ret=" + paramInt);
-    }
-    if (paramInt == 0)
+    if ((this.a.a != null) && (this.a.a.isShowing()) && (this.a.a.getWindow() != null)) {}
+    try
     {
-      EquipLockWebImpl.c(this.a, true);
-      if (EquipLockWebImpl.a(this.a) != null)
-      {
-        paramWUserSigInfo = (QQAppInterface)EquipLockWebImpl.a(this.a).get();
-        if ((paramWUserSigInfo != null) && (EquipmentLockImpl.a().a(paramWUserSigInfo))) {}
-      }
-      else
-      {
-        EquipLockWebImpl.a(this.a, false);
-        EquipLockWebImpl.b(this.a, false);
-      }
+      this.a.a.dismiss();
+      label46:
+      this.a.a = null;
       return;
     }
-    EquipLockWebImpl.a(this.a, false);
-    EquipLockWebImpl.c(this.a, false);
+    catch (Throwable paramView)
+    {
+      break label46;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     achh
  * JD-Core Version:    0.7.0.1
  */

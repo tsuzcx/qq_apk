@@ -1,94 +1,62 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
-import com.tencent.mobileqq.widget.PinnedDividerListView.DividerAdapter;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMultiRcmdDisLike;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import java.util.List;
 
-public class wuh
-  extends PinnedDividerListView.DividerAdapter
+class wuh
+  extends nac
 {
-  private wuh(CountryActivity paramCountryActivity) {}
+  wuh(wug paramwug) {}
   
-  public int a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return 2130969164;
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    paramInt = ((Integer)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(((wui)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString)).intValue();
-    ((TextView)paramView).setText(((wui)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return ((wui)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean;
-  }
-  
-  public int getCount()
-  {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (((wui)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    wui localwui = (wui)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (getItemViewType(paramInt) == 0)
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      if (paramView != null) {
-        break label107;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqstory.home:FeedSegment", 2, "ReqMultiRcmdDisLike,onResult error=" + paramInt + " data=" + paramArrayOfByte);
       }
-      paramView = this.a.getLayoutInflater().inflate(a(), paramViewGroup, false);
+      return;
     }
-    label107:
-    for (;;)
+    try
     {
-      ((TextView)paramView).setText(localwui.jdField_a_of_type_JavaLangString);
-      for (;;)
+      paramBundle = new qqstory_service.RspMultiRcmdDisLike();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramInt = ((qqstory_struct.ErrorInfo)paramBundle.result.get()).error_code.get();
+      if (paramInt != 0) {
+        break label255;
+      }
+      QLog.d("Q.qqstory.home:FeedSegment", 1, "RspMultiRcmdDisLike, dislike success");
+      paramArrayOfByte = (wqj)this.a.jdField_a_of_type_Wub.a.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId);
+      paramArrayOfByte.a(this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      if (paramArrayOfByte.a().isEmpty())
       {
-        paramView.setVisibility(0);
-        return paramView;
-        View localView = paramView;
-        if (paramView == null)
-        {
-          localView = CountryActivity.a(paramViewGroup, this.a.getLayoutInflater(), false);
-          localView.setOnClickListener(this.a);
-        }
-        CountryActivity.a(localView, localwui);
-        paramView = localView;
+        this.a.jdField_a_of_type_Wub.a.a().remove(paramArrayOfByte);
+        paramArrayOfByte = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId;
+        Bosses.get().postJob(new wui(this, "Q.qqstory.home:FeedSegment", paramArrayOfByte));
+        wub.a(this.a.jdField_a_of_type_Wub);
+        return;
       }
     }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 2;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      QLog.d("Q.qqstory.home:FeedSegment", 1, "RspMultiRcmdDisLike, error protobuf content" + paramArrayOfByte.getStackTrace());
+      return;
+    }
+    wub.a(this.a.jdField_a_of_type_Wub, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId);
+    return;
+    label255:
+    QLog.d("Q.qqstory.home:FeedSegment", 1, "RspMultiRcmdDisLike, errorcode:" + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wuh
  * JD-Core Version:    0.7.0.1
  */

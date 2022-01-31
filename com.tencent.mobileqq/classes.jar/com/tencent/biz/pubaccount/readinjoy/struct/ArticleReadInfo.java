@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import com.tencent.mobileqq.persistence.Entity;
+import awge;
 
 public class ArticleReadInfo
-  extends Entity
+  extends awge
   implements Cloneable
 {
   public static final String TABLE_NAME = ArticleReadInfo.class.getSimpleName();
@@ -27,7 +27,7 @@ public class ArticleReadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo
  * JD-Core Version:    0.7.0.1
  */

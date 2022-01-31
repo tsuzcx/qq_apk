@@ -1,51 +1,33 @@
-import android.util.Log;
-import java.io.Writer;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
 
 public class aoah
-  extends Writer
+  implements View.OnTouchListener
 {
-  private StringBuilder a = new StringBuilder();
+  public aoah(ClearEllipsisEditText paramClearEllipsisEditText) {}
   
-  private void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.length() > 0)
+    if (this.a.getCompoundDrawables()[2] == null) {}
+    for (;;)
     {
-      Log.v("GLTextureView", this.a.toString());
-      this.a.delete(0, this.a.length());
-    }
-  }
-  
-  public void close()
-  {
-    a();
-  }
-  
-  public void flush()
-  {
-    a();
-  }
-  
-  public void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    if (i < paramInt2)
-    {
-      char c = paramArrayOfChar[(paramInt1 + i)];
-      if (c == '\n') {
-        a();
-      }
-      for (;;)
+      return false;
+      if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - ClearEllipsisEditText.a(this.a).getIntrinsicWidth()) {}
+      for (int i = 1; (paramMotionEvent.getAction() == 0) && (i != 0); i = 0)
       {
-        i += 1;
-        break;
-        this.a.append(c);
+        this.a.setText("");
+        this.a.setClearButtonVisible(false);
+        return true;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoah
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,40 @@
+package com.tencent.mm.plugin.music.model.a.a;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.i;
+import com.tencent.mm.ipcinvoker.type.IPCBoolean;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.storage.z;
+
+public final class a$j
+  implements i<IPCVoid, IPCBoolean>
+{
+  private static IPCBoolean bVS()
+  {
+    AppMethodBeat.i(104953);
+    try
+    {
+      ab.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc showAudioToast");
+      IPCBoolean localIPCBoolean1 = new IPCBoolean(((Boolean)g.RL().Ru().get(ac.a.yFL, Boolean.FALSE)).booleanValue());
+      AppMethodBeat.o(104953);
+      return localIPCBoolean1;
+    }
+    catch (Exception localException)
+    {
+      ab.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", localException, "ipc showAudioToast task", new Object[0]);
+      IPCBoolean localIPCBoolean2 = new IPCBoolean(false);
+      AppMethodBeat.o(104953);
+      return localIPCBoolean2;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+ * Qualified Name:     com.tencent.mm.plugin.music.model.a.a.a.j
+ * JD-Core Version:    0.7.0.1
+ */

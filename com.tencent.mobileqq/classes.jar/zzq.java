@@ -1,21 +1,31 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameTouchView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.device.qfind.QFindBLEScanMgr;
+import com.tencent.device.qfind.QFindBLEScanMgr.ScanReceiver.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class zzq
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public zzq(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
-  
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ARWorldCupGlobalSceneRenderable.a(this.a).c();
-    ARWorldCupGlobalSceneRenderable.a(this.a).setClickable(false);
-    ARWorldCupGlobalSceneRenderable.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.i("QFindBLE", 2, "QFindBLEScanMgr alarm is coming " + paramIntent.getAction());
+    }
+    if ((this.a.a == null) || (System.currentTimeMillis() - QFindBLEScanMgr.a(this.a) < this.a.h)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QFindBLE", 2, "QFindBLEScanMgr startScan");
+    }
+    this.a.a.post(new QFindBLEScanMgr.ScanReceiver.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zzq
  * JD-Core Version:    0.7.0.1
  */

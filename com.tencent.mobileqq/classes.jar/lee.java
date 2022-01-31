@@ -1,37 +1,117 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class lee
-  implements Runnable
+  extends WebViewPlugin
+  implements lec
 {
-  public lee(ReadInJoySelfActivity paramReadInJoySelfActivity) {}
+  private befc jdField_a_of_type_Befc;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void run()
+  public lee()
   {
-    ReadInJoySelfActivity.a(this.a);
-    ReadInJoyWebDataManager localReadInJoyWebDataManager;
-    String str;
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager != null)
+    this.mPluginNameSpace = "aioShareMusic";
+  }
+  
+  public void a(String paramString, JSONObject paramJSONObject)
+  {
+    if ((this.mRuntime == null) || (this.mRuntime.a() == null)) {}
+    for (;;)
     {
-      localReadInJoyWebDataManager = ReadInJoyWebDataManager.a();
-      str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.b() > 0) {
-        break label54;
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("AioShareMusic.AioShareMusicPlugin", 2, "onEvent（） actionType =" + paramString + " data = " + paramJSONObject.toString());
+      }
+      if (this.jdField_a_of_type_Befc == null) {
+        this.jdField_a_of_type_Befc = new befc(this.mRuntime.a());
+      }
+      if ("checkAioShareMusic".equals(paramString))
+      {
+        this.jdField_a_of_type_Befc.a(paramJSONObject);
+        return;
+      }
+      if ("startListenAioShareMusic".equals(paramString))
+      {
+        this.jdField_a_of_type_Befc.b(paramJSONObject);
+        return;
+      }
+      if ("updateSongIdToAioShareMusic".equals(paramString)) {
+        try
+        {
+          paramString = paramJSONObject.getString("current_song_id");
+          this.jdField_a_of_type_Befc.a = paramString;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("AioShareMusicAioShareMusic.AioShareMusicPlugin", 2, "updateSongId() newSongId = " + paramString);
+            return;
+          }
+        }
+        catch (JSONException paramString)
+        {
+          paramString.printStackTrace();
+        }
       }
     }
-    label54:
-    for (int i = 0;; i = 1)
-    {
-      localReadInJoyWebDataManager.a(str, i);
-      return;
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    if ((this.mRuntime == null) || (this.mRuntime.a() == null) || (this.mRuntime.a() == null)) {
+      return true;
     }
+    if (this.jdField_a_of_type_Befc == null) {
+      this.jdField_a_of_type_Befc = new befc(this.mRuntime.a());
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AioShareMusicAioShareMusic.AioShareMusicPlugin", 2, "handleEvent() type = " + paramLong);
+    }
+    if (paramLong == 8589934594L)
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Befc.a(this.mRuntime.a().getIntent());
+        return true;
+      }
+    }
+    else if (paramLong == 8589934622L)
+    {
+      Object localObject = paramMap.get("intent");
+      if ((localObject != null) && ((localObject instanceof Intent)))
+      {
+        paramString = (Intent)localObject;
+        this.jdField_a_of_type_Befc.b(paramString);
+        return true;
+      }
+    }
+    return super.handleEvent(paramString, paramLong, paramMap);
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    lea.a().a(this);
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_Befc != null)
+    {
+      this.jdField_a_of_type_Befc.a();
+      this.jdField_a_of_type_Befc = null;
+    }
+    lea.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lee
  * JD-Core Version:    0.7.0.1
  */

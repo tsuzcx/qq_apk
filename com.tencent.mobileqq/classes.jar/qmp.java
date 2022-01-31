@@ -1,28 +1,17 @@
-import com.tencent.gdtad.views.image.GdtDrawableLoader;
-import com.tencent.image.URLDrawable;
-
 public class qmp
 {
-  GdtDrawableLoader a;
-  public String a;
-  public boolean a;
+  private String a;
+  private String b;
+  private String c;
   
-  private qmp()
+  public qmp(String paramString)
   {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public URLDrawable a()
-  {
-    if (this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader != null) {
-      return this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader.a();
-    }
-    return null;
+    this.a = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qmp
  * JD-Core Version:    0.7.0.1
  */

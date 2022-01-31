@@ -1,51 +1,65 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.AbsListView;
-import cooperation.readinjoy.ReadInJoyHelper;
-import java.util.Calendar;
+import android.text.TextUtils;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class mha
-  implements Runnable
+  extends lhe
 {
-  public mha(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, AbsListView paramAbsListView) {}
+  public mha(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void run()
+  protected void a(long paramLong, int paramInt)
   {
-    int i;
-    int j;
-    long l1;
-    long l2;
-    if ((ReadInJoyBaseAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter) == 0) && (ReadInJoyHelper.i(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a) > 0) && (this.jdField_a_of_type_ComTencentWidgetAbsListView.getLastVisiblePosition() >= ReadInJoyHelper.i(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a)) && (ReadInJoyHelper.h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a) > 0))
-    {
-      ReadInJoyBaseAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter, this.jdField_a_of_type_ComTencentWidgetAbsListView.getLastVisiblePosition());
-      i = ReadInJoyHelper.h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a);
-      j = ReadInJoyHelper.j(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a);
-      Calendar localCalendar = Calendar.getInstance();
-      localCalendar.set(10, 0);
-      localCalendar.set(12, 0);
-      localCalendar.set(13, 0);
-      localCalendar.set(14, 0);
-      l1 = localCalendar.getTimeInMillis();
-      l2 = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a);
-      if (l1 <= l2) {
-        break label197;
+    long l = AudioHelper.b();
+    QLog.w(this.a.jdField_b_of_type_JavaLangString, 1, "onDestroyInviteUI, groupId[" + paramLong + "], reason[" + paramInt + "], mIsDoubleVideoMeeting[" + this.a.jdField_a_of_type_Boolean + "], mPeerUin[" + this.a.c + "], mGroupId[" + this.a.jdField_a_of_type_Long + "], seq[" + l + "]");
+    if (this.a.jdField_a_of_type_Boolean) {
+      if (TextUtils.equals(this.a.c, String.valueOf(paramLong)))
+      {
+        this.a.b("onDestroyInviteUI_DoubleVideoMeeting");
+        this.a.a(l, paramInt);
       }
-      ReadInJoyHelper.j(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a, 1);
-      ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a, l1);
-      ((KandianMergeManager)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a.getManager(161)).n();
     }
-    label197:
-    while ((l1 != l2) || (j >= i)) {
+    while ((this.a.jdField_a_of_type_Long != paramLong) && (0L != paramLong)) {
       return;
     }
-    ReadInJoyHelper.j(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a, j + 1);
-    ((KandianMergeManager)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a.getManager(161)).n();
+    this.a.b("onDestroyInviteUI");
+  }
+  
+  protected void a(long paramLong, String paramString)
+  {
+    if ((this.a.jdField_a_of_type_Long == paramLong) && (this.a.e.equals(paramString))) {
+      this.a.finish();
+    }
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_b_of_type_JavaLangString + ".troopgroup_vedio.invite", 2, "groupId:" + paramLong1 + ", memUin:" + paramLong2 + ",invitedId:" + paramString + ", mInviterUin:" + this.a.jdField_b_of_type_Long + ", mGroupId:" + this.a.jdField_a_of_type_Long);
+    }
+    if ((paramLong2 == this.a.jdField_b_of_type_Long) && (paramLong1 == this.a.jdField_a_of_type_Long)) {
+      this.a.finish();
+    }
+  }
+  
+  protected void d(long paramLong)
+  {
+    this.a.b("notifyCloseAllGroupVideoInviteMsgBox");
+    this.a.finish();
+  }
+  
+  protected void e(long paramLong)
+  {
+    if (this.a.jdField_a_of_type_Long == paramLong)
+    {
+      this.a.b("notifyCloseGroupVideoInviteMsgBox");
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mha
  * JD-Core Version:    0.7.0.1
  */

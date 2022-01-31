@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhs;
 
 public class ApolloFavActionData
-  extends Entity
+  extends awge
 {
   public int acitonId;
   public int audioId;
   public float audioStartTime;
-  @unique
+  @awhs
   public long favId;
   public int playOriginalAudio;
   public String text;
@@ -50,7 +50,7 @@ public class ApolloFavActionData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.ApolloFavActionData
  * JD-Core Version:    0.7.0.1
  */

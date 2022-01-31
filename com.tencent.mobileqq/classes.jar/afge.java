@@ -1,31 +1,27 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class afge
-  implements View.OnClickListener
+class afge
+  implements apwn
 {
-  public afge(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  afge(afgd paramafgd) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity;
-    if (i >= NearbyPeopleProfileActivity.c)
-    {
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 0, this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131437403), 0).a();
+    if (paramInt == 8) {
+      afgd.a(this.a).b();
+    }
+    while ((paramInt != 0) || (afgd.a(this.a) == 0L)) {
       return;
     }
-    NearbyProfileEditPanel.b(this.a);
+    long l1 = System.currentTimeMillis();
+    long l2 = afgd.a(this.a);
+    azri.a(BaseApplication.getContext()).a(null, "StickerRecShowCost", true, l1 - l2, 0L, null, "");
+    afgd.a(this.a, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afge
  * JD-Core Version:    0.7.0.1
  */

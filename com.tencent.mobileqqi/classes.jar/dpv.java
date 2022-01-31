@@ -1,22 +1,22 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class dpv
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public dpv(SplashActivity paramSplashActivity, int paramInt) {}
+  public dpv(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((SplashActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity) != null) && (SplashActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity).getBoolean("theme_voice_setting_" + this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b.a(), true))) {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b.b(this.jdField_a_of_type_Int + 1);
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dpv
  * JD-Core Version:    0.7.0.1
  */

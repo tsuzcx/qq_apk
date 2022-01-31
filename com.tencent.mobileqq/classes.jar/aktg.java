@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.widget.ContainerView;
-import com.tencent.widget.ScrollView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment;
 
 public class aktg
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aktg(ContainerView paramContainerView, int paramInt) {}
+  public aktg(CmGameDebugToolFragment paramCmGameDebugToolFragment) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ContainerView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView).smoothScrollTo(0, this.jdField_a_of_type_Int);
+    CmGameDebugToolFragment.a(this.a).edit().putBoolean("game_whitelist_verify_switch", paramBoolean).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aktg
  * JD-Core Version:    0.7.0.1
  */

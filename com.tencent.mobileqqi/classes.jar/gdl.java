@@ -1,65 +1,67 @@
 import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.mobileqq.troop.utils.TroopFileError;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.newfriend.TroopSystemMessage;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class gdl
-  implements View.OnClickListener
+  extends MessageObserver
 {
-  public gdl(SendBottomBar paramSendBottomBar) {}
+  public gdl(TroopSystemMessage paramTroopSystemMessage) {}
   
-  private void a()
+  protected void a(String paramString)
   {
-    int i = TroopFileUtils.a(SendBottomBar.a(this.a));
-    if (i == 0)
-    {
-      TroopFileError.a(SendBottomBar.a(this.a), SendBottomBar.a(this.a).getString(2131560350));
-      this.a.b();
-      return;
-    }
-    if (1 == i)
-    {
-      gdm localgdm = new gdm(this);
-      DialogUtil.a(SendBottomBar.a(this.a), 230, SendBottomBar.a(this.a).getString(2131560332), SendBottomBar.a(this.a).getString(2131560337), 2131561746, 2131560308, localgdm, localgdm).show();
-      return;
-    }
-    this.a.b();
+    TroopSystemMessage.a(this.a).c(this.a.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+    paramString = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131562784);
+    int i = this.a.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131427376);
+    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 1, paramString, 0).b(i);
   }
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
   {
-    int j;
-    switch (SendBottomBar.a(this.a).b())
+    TroopSystemMessage.a(this.a).c(this.a.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+    if (TroopSystemMessage.a(this.a) == null) {
+      return;
+    }
+    paramString1 = TroopSystemMessage.a(this.a).structMsg;
+    TroopSystemMessage.a(this.a).structMsg.msg.group_msg_type.get();
+    if (!paramBoolean)
     {
-    default: 
-      j = SendBottomBar.a(this.a).a();
-      if (j != 1) {
-        break;
+      paramInt1 = this.a.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131427376);
+      paramString1 = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131561435);
+      if (TextUtils.isEmpty(paramString3)) {
+        break label223;
       }
     }
-    for (int i = 1; j == 5; i = 0)
+    for (;;)
     {
-      this.a.b();
+      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 1, paramString3, 0).b(paramInt1);
       return;
-      SendBottomBar.a(this.a);
+      if ((!paramBoolean) || (!this.a.b)) {
+        break;
+      }
+      paramString1 = "" + TroopSystemMessage.a(this.a).structMsg.msg.group_code.get();
+      paramString2 = TroopSystemMessage.a(this.a).structMsg.msg.group_name.get();
+      TroopSystemMessage.a(this.a).a().c(paramString1, paramString2);
+      TroopSystemMessage.a(this.a, paramString1, paramString2);
       return;
+      label223:
+      paramString3 = paramString1;
     }
-    if (i != 0)
-    {
-      a();
-      return;
-    }
-    this.a.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gdl
  * JD-Core Version:    0.7.0.1
  */

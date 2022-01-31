@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.activity.contact.newfriend.QIMFollowerAddBuilder;
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.newfriend.QIMFollowMessage;
-
-public class wjt
-  implements Runnable
+public abstract interface wjt
 {
-  public wjt(QIMFollowerAddBuilder paramQIMFollowerAddBuilder) {}
+  public abstract void b(boolean paramBoolean);
   
-  public void run()
-  {
-    ((NewFriendManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(33)).a(((QIMFollowMessage)this.a.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage).a);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new wju(this));
-  }
+  public abstract boolean b();
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wjt
  * JD-Core Version:    0.7.0.1
  */

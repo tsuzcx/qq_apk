@@ -1,39 +1,39 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder.Holder;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class vix
-  implements Animation.AnimationListener
+class vix
+  implements awkh
 {
-  public vix(TextTranslationItemBuilder paramTextTranslationItemBuilder, TextTranslationItemBuilder.Holder paramHolder, CharSequence paramCharSequence) {}
+  vix(viw paramviw) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.e.setText(this.jdField_a_of_type_JavaLangCharSequence);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.e.startAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.a);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.a.requestLayout();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.g = 0;
-    paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.a.getLayoutParams();
-    paramAnimation.width = -2;
-    paramAnimation.height = -2;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.a.setAnimation(null);
+    return null;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(awki paramawki) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void b(awki paramawki)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.g = 0;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.e.startAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.b);
+    if ((paramawki.jdField_b_of_type_Int == 0) && (!TextUtils.isEmpty(paramawki.jdField_b_of_type_JavaLangString)))
+    {
+      this.a.a("UploadImageJob_out_image_url", paramawki.jdField_b_of_type_JavaLangString);
+      viw.a(this.a, true);
+      return;
+    }
+    paramawki = new ErrorMessage(paramawki.jdField_b_of_type_Int, paramawki.a);
+    if (QLog.isColorLevel()) {
+      QLog.e(this.a.jdField_b_of_type_JavaLangString, 2, paramawki, new Object[0]);
+    }
+    viw.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vix
  * JD-Core Version:    0.7.0.1
  */

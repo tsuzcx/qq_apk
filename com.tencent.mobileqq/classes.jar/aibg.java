@@ -1,29 +1,32 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
-import com.tencent.sveffects.SLog;
-import com.tencent.ttpic.facedetect.FaceDetector;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aibg
-  implements Runnable
+  implements bhuk
 {
-  public aibg(QQFilterRenderManager paramQQFilterRenderManager, aibh paramaibh) {}
+  public aibg(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment, bhuf parambhuf) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    long l1 = SystemClock.elapsedRealtimeNanos();
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.a.doFaceDetect(this.jdField_a_of_type_Aibh.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Aibh.jdField_a_of_type_Int, this.jdField_a_of_type_Aibh.b);
-    }
-    long l2 = SystemClock.elapsedRealtimeNanos();
-    long l3 = (l2 - l1) / 1000L;
-    if (SLog.a()) {
-      SLog.d("QQFilterRenderManager", "FilterProcessRender_showPreview[doFaceDetect=" + (l2 - l1) / 1000L + "us]");
-    }
+    paramView = ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a();
+    if ((paramView == null) || (paramView.isEmpty())) {}
+    do
+    {
+      return;
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.addAll(paramView);
+      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(localArrayList, 3, new aibh(this));
+      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment.h();
+    } while (!this.jdField_a_of_type_Bhuf.isShowing());
+    this.jdField_a_of_type_Bhuf.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aibg
  * JD-Core Version:    0.7.0.1
  */

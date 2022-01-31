@@ -1,19 +1,35 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
 
-class aduo
-  implements AsyncBack
+public class aduo
+  implements TextWatcher
 {
-  aduo(adun paramadun) {}
+  public aduo(RegisterPersonalInfoActivity paramRegisterPersonalInfoActivity) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MonitorConfig", 2, "3136 offline loaded param:" + paramString + " code:" + paramInt);
+    if (paramEditable == null) {}
+    for (;;)
+    {
+      return;
+      if (TextUtils.isEmpty(paramEditable.toString())) {
+        RegisterPersonalInfoActivity.a(this.a).setEnabled(false);
+      }
+      while (RegisterPersonalInfoActivity.a(this.a) != null)
+      {
+        RegisterPersonalInfoActivity.a(this.a).b(RegisterPersonalInfoActivity.a(this.a).isEnabled());
+        return;
+        RegisterPersonalInfoActivity.a(this.a).setEnabled(true);
+      }
     }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

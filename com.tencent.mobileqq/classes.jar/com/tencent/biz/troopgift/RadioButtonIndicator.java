@@ -11,15 +11,16 @@ import android.view.View.OnClickListener;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import com.tencent.common.config.AppSetting;
-import oyx;
-import ozm;
+import yve;
+import ywr;
 
 public class RadioButtonIndicator
   extends RadioGroup
-  implements ViewPager.OnPageChangeListener, View.OnClickListener, ozm
+  implements ViewPager.OnPageChangeListener, View.OnClickListener, ywr
 {
-  public int a;
-  public ViewPager a;
+  protected int a;
+  protected ViewPager a;
+  public int b;
   
   public RadioButtonIndicator(Context paramContext)
   {
@@ -29,19 +30,19 @@ public class RadioButtonIndicator
   public RadioButtonIndicator(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2130838901;
+    this.jdField_a_of_type_Int = 2130839459;
   }
   
   public RadioButton a(int paramInt)
   {
-    oyx localoyx = new oyx(this, getContext());
-    localoyx.setButtonDrawable(this.jdField_a_of_type_Int);
-    localoyx.setPadding(10, 0, 10, 0);
-    localoyx.setClickable(true);
-    if ((AppSetting.b) && (Build.VERSION.SDK_INT > 16)) {
-      ViewCompat.setImportantForAccessibility(localoyx, 2);
+    yve localyve = new yve(this, getContext());
+    localyve.setButtonDrawable(this.jdField_a_of_type_Int);
+    localyve.setPadding(10, 0, 10, 0);
+    localyve.setClickable(true);
+    if ((AppSetting.c) && (Build.VERSION.SDK_INT > 16)) {
+      ViewCompat.setImportantForAccessibility(localyve, 2);
     }
-    return localoyx;
+    return localyve;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -89,6 +90,7 @@ public class RadioButtonIndicator
       addView(localRadioButton);
       i += 1;
     }
+    this.b = paramInt;
     ((RadioButton)getChildAt(0)).setChecked(true);
   }
   
@@ -99,7 +101,7 @@ public class RadioButtonIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.troopgift.RadioButtonIndicator
  * JD-Core Version:    0.7.0.1
  */

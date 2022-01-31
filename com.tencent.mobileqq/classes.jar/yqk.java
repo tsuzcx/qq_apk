@@ -1,15 +1,31 @@
-import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
-class yqk
-  implements AVCallback
+public class yqk
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  yqk(yqj paramyqj) {}
+  public yqk(TribeVideoPlugin paramTribeVideoPlugin, yqt paramyqt) {}
   
-  public void onComplete(int paramInt, String paramString) {}
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    if (paramTVK_IMediaPlayer.getCurrentPostion() == 0L) {
+      azqs.b(null, "dc00899", "BizTechReport", ((BaseActivity)TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin)).getCurrentAccountUin(), "tribe_video", "video_prepared_time", 0, 0, Long.toString(System.currentTimeMillis() - yqt.a(this.jdField_a_of_type_Yqt)), Integer.toString(bdin.b(TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin))), "", "");
+    }
+    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
+    {
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(5, yqt.a(this.jdField_a_of_type_Yqt));
+      paramTVK_IMediaPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
+      paramTVK_IMediaPlayer.obj = yqt.a(this.jdField_a_of_type_Yqt);
+      paramTVK_IMediaPlayer.what = 5;
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramTVK_IMediaPlayer);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yqk
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ import java.util.Map;
 public final class PhotoInfo
   extends JceStruct
 {
-  static Map cache_mapEx = new HashMap();
+  static Map<String, String> cache_mapEx = new HashMap();
   public int IsOnlySelf;
-  public Map mapEx;
+  public Map<String, String> mapEx;
   public String strPicUrl = "";
   public long uPhotoTimestamp;
   
@@ -22,7 +22,7 @@ public final class PhotoInfo
   
   public PhotoInfo() {}
   
-  public PhotoInfo(String paramString, long paramLong, int paramInt, Map paramMap)
+  public PhotoInfo(String paramString, long paramLong, int paramInt, Map<String, String> paramMap)
   {
     this.strPicUrl = paramString;
     this.uPhotoTimestamp = paramLong;

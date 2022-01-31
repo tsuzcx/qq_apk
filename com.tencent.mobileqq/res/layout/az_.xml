@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/qyz"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/cdf" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <TextView android:id="@id/cdg" android:text="@string/h2w" style="@style/fn" />
+        <TextView android:id="@id/cde" android:text="@string/h2v" style="@style/fn" />
+        <TextView android:id="@id/cfp" android:text="@string/cancel" style="@style/fn" />
+    </LinearLayout>
+    <com.tencent.widget.HorizontalListView android:id="@id/cg6" android:background="#ffffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/ra" android:layout_above="@id/cdf">
+        <requestFocus />
+    </com.tencent.widget.HorizontalListView>
+</RelativeLayout>

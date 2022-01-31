@@ -1,28 +1,21 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.GetCurrentPositionCallback;
-
 class aaoo
-  implements ArkAppEventObserverManager.GetCurrentPositionCallback
+  implements aaqs
 {
   aaoo(aaon paramaaon) {}
   
-  public void a(long paramLong)
+  public void a(aaqw paramaaqw, aaqx paramaaqx)
   {
-    ark.VariantWrapper localVariantWrapper = this.a.a.a.jdField_a_of_type_Aanw.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
+    if (paramaaqx != null) {}
+    for (boolean bool = paramaaqx.a;; bool = false)
+    {
+      aase.b("GdtInterstitialAd", String.format("close.onCallback %b", new Object[] { Boolean.valueOf(bool) }));
+      return;
     }
-  }
-  
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    ArkAppDeviceModule.a(this.a.a.a.jdField_a_of_type_Aanw.a, this.a.a.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaoo
  * JD-Core Version:    0.7.0.1
  */

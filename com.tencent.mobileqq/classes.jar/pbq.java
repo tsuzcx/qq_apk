@@ -1,67 +1,51 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import org.json.JSONObject;
+import android.support.v4.app.FragmentActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class pbq
-  implements IphonePickerView.IphonePickListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public pbq(NewerGuidePlugin paramNewerGuidePlugin, IphonePickerView paramIphonePickerView, ActionSheet paramActionSheet) {}
+  public pbq(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
   
-  public void onConfirmBtClicked()
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    int i = NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1897;
-    int j = NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1;
-    int k = NewerGuidePlugin.d(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, String.format("onDismissOperations year=%s month=%s day=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) }));
-    }
-    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
+    if (paramMotionEvent1.getY() - paramMotionEvent2.getY() > 100.0F) {}
+    for (int i = 1;; i = 0)
     {
-      localJSONObject.put("result", 1);
-      localJSONObject.put("year", i);
-      localJSONObject.put("month", j);
-      localJSONObject.put("date", k);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respDatePicker", new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      if ((i != 0) && (!ReadInjoyIMAXAdFragment.a(this.a)))
       {
-        QLog.e("NewerGuidePlugin", 1, "sendDatePickerResp fail", localException);
+        ReadInjoyIMAXAdFragment.a(this.a, true);
+        ReadInjoyIMAXAdFragment.a(this.a);
+        ReadInjoyIMAXAdFragment.a(this.a, this.a.getActivity().app, noy.q);
       }
+      return true;
     }
   }
   
-  public void onItemSelected(int paramInt1, int paramInt2)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    switch (paramInt1)
-    {
+    if (ReadInjoyIMAXAdFragment.a(this.a)) {
+      return true;
     }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
-        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-      }
-      return;
-      NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
-      continue;
-      NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
-      continue;
-      NewerGuidePlugin.d(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
+    ReadInjoyIMAXAdFragment.a(this.a, true);
+    ReadInjoyIMAXAdFragment.a(this.a);
+    if (ReadInjoyIMAXAdFragment.a(this.a) != null) {
+      ReadInjoyIMAXAdFragment.a(this.a, (int)ReadInjoyIMAXAdFragment.a(this.a).getCurrentPostion());
     }
+    ReadInjoyIMAXAdFragment.a(this.a, ReadInjoyIMAXAdFragment.a(this.a), noy.s);
+    ReadInjoyIMAXAdFragment.b(this.a, 2);
+    if (ReadInjoyIMAXAdFragment.a(this.a) != null) {
+      ReadInjoyIMAXAdFragment.c(this.a, (int)ReadInjoyIMAXAdFragment.a(this.a).getCurrentPostion());
+    }
+    ReadInjoyIMAXAdFragment.d(this.a, 0);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pbq
  * JD-Core Version:    0.7.0.1
  */

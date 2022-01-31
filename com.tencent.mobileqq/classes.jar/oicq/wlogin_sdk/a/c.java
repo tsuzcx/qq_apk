@@ -134,6 +134,7 @@ public class c
     case 3: 
     case 6: 
     case 44: 
+    case 51: 
       if (2 > localObject.length) {
         return -1009;
       }

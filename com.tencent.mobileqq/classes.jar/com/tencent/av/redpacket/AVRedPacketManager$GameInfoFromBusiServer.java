@@ -7,17 +7,17 @@ import java.util.List;
 public class AVRedPacketManager$GameInfoFromBusiServer
   implements Serializable
 {
-  String authKey;
-  int currScores;
-  List emojiIds = Collections.emptyList();
-  int gameRestTime;
-  int gameStartTime;
-  int gameStatus = -1;
-  String key;
-  int maxScore;
-  String receiveRedPacketUin;
-  String sendRedPacketUin;
-  int winMoney;
+  public String authKey;
+  public int currScores;
+  public List<Integer> emojiIds = Collections.emptyList();
+  public int gameRestTime;
+  public int gameStartTime;
+  public int gameStatus = -1;
+  public String key;
+  public int maxScore;
+  public String receiveRedPacketUin;
+  public String sendRedPacketUin;
+  public int winMoney;
   
   public String toString()
   {

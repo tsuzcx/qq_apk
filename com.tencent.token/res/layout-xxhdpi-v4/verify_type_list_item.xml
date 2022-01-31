@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/common_list_item_background" android:layout_width="fill_parent" android:layout_height="64.0dip" android:minHeight="64.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/verify_type_icon" android:background="@drawable/mb_sub_mobile" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="23.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/utils_font_color_desc" android:id="@id/verify_type_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="测试XXX" android:layout_toRightOf="@id/verify_type_icon" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/verify_type_status" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="23.0dip" android:src="@drawable/status_ok" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/app_name" />
+    <View android:id="@id/verify_type_divider_fill" android:background="@color/common_list_divider" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginTop="17.0dip" android:layout_alignParentBottom="true" />
+</RelativeLayout>

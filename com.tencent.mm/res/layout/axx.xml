@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/lp" android:background="@drawable/aqj" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/v7" android:background="@color/u" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="-90.0dip">
+            <com.tencent.mm.ui.base.MMPullDownView android:id="@id/axr" android:background="@drawable/aqj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <ListView android:id="@id/eok" android:background="@color/a0k" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/vk" android:cacheColorHint="#00000000" android:divider="@null" />
+            </com.tencent.mm.ui.base.MMPullDownView>
+        </LinearLayout>
+    </FrameLayout>
+    <ImageView android:id="@id/erf" android:background="@drawable/bkc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:id="@id/erg" android:background="@color/w4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/m2" android:id="@id/erh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a_q" android:layout_marginTop="@dimen/a_r" android:layout_marginBottom="@dimen/a_p" />
+    </RelativeLayout>
+</RelativeLayout>

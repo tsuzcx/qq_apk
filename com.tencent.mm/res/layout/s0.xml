@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/q1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:padding="10.0dip" style="@style/l0">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:text="@string/b47" style="@style/mm" />
+        <EditText android:id="@id/b8s" style="@style/ml" />
+    </LinearLayout>
+</LinearLayout>

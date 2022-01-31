@@ -1,21 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.capture.view.QIMSlidingTabView;
+import android.view.View;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
-public class anqb
-  implements ValueAnimator.AnimatorUpdateListener
+class anqb
+  implements bhuk
 {
-  public anqb(QIMSlidingTabView paramQIMSlidingTabView) {}
+  anqb(anpz paramanpz, bhuf parambhuf) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void OnClick(View paramView, int paramInt)
   {
-    QIMSlidingTabView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
+    this.jdField_a_of_type_Anpz.a.d();
+    this.jdField_a_of_type_Anpz.a.b("本地APP已删除成功");
+    this.jdField_a_of_type_Bhuf.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anqb
  * JD-Core Version:    0.7.0.1
  */

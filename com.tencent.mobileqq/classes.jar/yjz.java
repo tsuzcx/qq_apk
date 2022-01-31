@@ -1,39 +1,22 @@
-import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.data.ApolloBaseInfo;
-import java.util.HashSet;
+import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class yjz
-  extends QQLruCache
+  implements osj
 {
-  public yjz(ApolloManager paramApolloManager, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramInt1, paramInt2, paramInt3);
-  }
+  public yjz(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
   
-  public ApolloBaseInfo a(String paramString, ApolloBaseInfo paramApolloBaseInfo)
+  public void a(String paramString1, String paramString2)
   {
-    if (paramApolloBaseInfo != null) {
-      ApolloManager.a(this.a).remove(paramApolloBaseInfo.uin);
+    QLog.i("SubscribeVideoDetailFragment", 1, "sendUrlToUUIDRequest getUUID Success");
+    if (this.a.a != null) {
+      this.a.a.f(paramString2);
     }
-    return (ApolloBaseInfo)super.put(paramString, paramApolloBaseInfo);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, ApolloBaseInfo paramApolloBaseInfo1, ApolloBaseInfo paramApolloBaseInfo2)
-  {
-    super.entryRemoved(paramBoolean, paramString, paramApolloBaseInfo1, paramApolloBaseInfo2);
-    if (paramApolloBaseInfo1 != null) {}
-    try
-    {
-      ApolloManager.a(this.a).add(paramApolloBaseInfo1.uin);
-      return;
-    }
-    catch (OutOfMemoryError paramString) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yjz
  * JD-Core Version:    0.7.0.1
  */

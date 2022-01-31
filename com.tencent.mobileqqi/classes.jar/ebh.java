@@ -1,27 +1,27 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.FileTransferManager;
-import com.tencent.mobileqq.activity.aio.FileTransferManager.Callback;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import cooperation.troop.TroopProxyActivity;
 
 public class ebh
+  implements View.OnClickListener
 {
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  public WeakReference b;
+  public ebh(TroopFileItemBuilder paramTroopFileItemBuilder) {}
   
-  public ebh(FileTransferManager paramFileTransferManager, View paramView, FileTransferManager.Callback paramCallback)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramCallback);
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  public FileTransferManager.Callback a()
-  {
-    return (FileTransferManager.Callback)this.b.get();
+    ChatMessage localChatMessage = AIOUtils.a(paramView);
+    paramView = (Activity)paramView.getContext();
+    Intent localIntent = new Intent();
+    if (localIntent == null) {
+      return;
+    }
+    localIntent.putExtra(TroopProxyActivity.a, localChatMessage.frienduin);
+    TroopProxyActivity.a(paramView, localIntent);
   }
 }
 

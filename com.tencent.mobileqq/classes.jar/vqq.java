@@ -1,22 +1,27 @@
-import com.tencent.ark.ArkDebugger;
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 class vqq
-  implements Runnable
+  implements urr<vgf, vgg>
 {
-  vqq(vqp paramvqp) {}
+  vqq(vqp paramvqp, vps paramvps) {}
   
-  public void run()
+  public void a(@NonNull vgf paramvgf, @Nullable vgg paramvgg, @NonNull ErrorMessage paramErrorMessage)
   {
-    ArkDebugger.Listen("127.0.0.1", 23333L, 600000L, ArkAppCenter.f());
-    QQToast.a(this.a.a.a.a.a, "已经开启监听，可以连接调试...", 0).a();
+    if ((paramErrorMessage.isFail()) || (paramvgg == null))
+    {
+      wxe.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
+      this.jdField_a_of_type_Vps.a(paramErrorMessage, null, false);
+      return;
+    }
+    this.jdField_a_of_type_Vqp.a.a(paramvgg.jdField_a_of_type_JavaUtilList, paramvgg.jdField_a_of_type_JavaLangString, paramvgg.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Vps.a(paramErrorMessage, vpa.b(paramvgg.jdField_a_of_type_JavaUtilList), paramvgg.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vqq
  * JD-Core Version:    0.7.0.1
  */

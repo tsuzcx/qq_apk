@@ -1,75 +1,66 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.AppGuideTipsManager;
-import com.tencent.mobileqq.data.AppGuideTipsConfig;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.model.item.AddressItem;
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class ujp
-  implements Runnable
+  extends ujo<ujw>
 {
-  public ujp(AppGuideTipsManager paramAppGuideTipsManager) {}
-  
-  public void run()
+  public String a(AddressItem paramAddressItem)
   {
-    AppGuideTipsManager.a(this.a);
-    this.a.c();
-    AppGuideTipsManager.a(this.a).clear();
-    ArrayList localArrayList = (ArrayList)AppGuideTipsManager.a(this.a).a(AppGuideTipsConfig.class, AppGuideTipsConfig.class.getSimpleName(), false, null, null, null, null, null, null);
-    if ((localArrayList == null) || (localArrayList.size() <= 0)) {}
-    for (;;)
+    return "city:" + paramAddressItem.city + " district:" + paramAddressItem.district + " building:" + paramAddressItem.building;
+  }
+  
+  protected List<uiz> a(List<uja> paramList)
+  {
+    Object localObject1 = new HashMap();
+    paramList = paramList.iterator();
+    Object localObject2;
+    while (paramList.hasNext())
     {
-      return;
-      int i = 0;
-      label71:
-      AppGuideTipsConfig localAppGuideTipsConfig;
-      String[] arrayOfString;
-      int j;
-      if (i < localArrayList.size())
+      localObject2 = (uja)paramList.next();
+      Object localObject3 = ((uja)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem;
+      if (localObject3 != null)
       {
-        localAppGuideTipsConfig = (AppGuideTipsConfig)localArrayList.get(i);
-        if ((localAppGuideTipsConfig != null) && (!TextUtils.isEmpty(localAppGuideTipsConfig.tipsType))) {
-          if (!TextUtils.isEmpty(localAppGuideTipsConfig.msgTypeStr))
-          {
-            arrayOfString = localAppGuideTipsConfig.msgTypeStr.split("\\|");
-            if (arrayOfString != null)
-            {
-              j = 0;
-              label137:
-              if (j >= arrayOfString.length) {}
-            }
-          }
+        localObject3 = a((AddressItem)localObject3);
+        if (((HashMap)localObject1).containsKey(localObject3))
+        {
+          ((List)((HashMap)localObject1).get(localObject3)).add(localObject2);
+        }
+        else
+        {
+          ArrayList localArrayList = new ArrayList();
+          localArrayList.add(localObject2);
+          ((HashMap)localObject1).put(localObject3, localArrayList);
         }
       }
-      try
+      else
       {
-        int k = Integer.valueOf(arrayOfString[j]).intValue();
-        localAppGuideTipsConfig.msgTypeMap.put(Integer.valueOf(k), Boolean.valueOf(true));
-        label174:
-        j += 1;
-        break label137;
-        AppGuideTipsManager.a(this.a).put(localAppGuideTipsConfig.tipsType, localAppGuideTipsConfig);
-        i += 1;
-        break label71;
-        AppGuideTipsManager.a(this.a, true);
-        this.a.b();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d(AppGuideTipsManager.a, 2, "loadConfig, mTipsMap size=" + AppGuideTipsManager.a(this.a).size());
-        return;
-      }
-      catch (Exception localException)
-      {
-        break label174;
+        wxe.a("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "handleSplit pic poi is null picPath=%s", ((uja)localObject2).jdField_a_of_type_JavaLangString);
       }
     }
+    paramList = new ArrayList();
+    localObject1 = ((HashMap)localObject1).entrySet().iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (List)((Map.Entry)((Iterator)localObject1).next()).getValue();
+      if (((List)localObject2).size() >= a().b)
+      {
+        localObject2 = new uiz(a().a, (List)localObject2);
+        ((uiz)localObject2).a(this.a);
+        ((uiz)localObject2).a(a());
+        paramList.add(localObject2);
+      }
+    }
+    return paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ujp
  * JD-Core Version:    0.7.0.1
  */

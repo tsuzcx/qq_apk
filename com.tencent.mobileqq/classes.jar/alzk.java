@@ -1,28 +1,34 @@
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.RandomCoverView;
-import com.tencent.widget.UpSideDownDrawable;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import mqq.app.Foreground;
 
-public final class alzk
-  implements Runnable
+public class alzk
 {
-  public alzk(RandomCoverView paramRandomCoverView, UpSideDownDrawable paramUpSideDownDrawable, boolean paramBoolean) {}
-  
-  public void run()
+  public static String a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setImageDrawable(this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable);
-    if (this.jdField_a_of_type_Boolean)
+    Activity localActivity = Foreground.getTopActivity();
+    String str;
+    if (localActivity != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable.d();
-      return;
+      str = localActivity.getClass().getName();
+      if ((localActivity instanceof SplashActivity))
+      {
+        if (SplashActivity.a == 1) {
+          return str + "_" + ((SplashActivity)localActivity).a();
+        }
+        return str + "_ChatFragment";
+      }
     }
-    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable.b();
+    else
+    {
+      return "Null";
+    }
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alzk
  * JD-Core Version:    0.7.0.1
  */

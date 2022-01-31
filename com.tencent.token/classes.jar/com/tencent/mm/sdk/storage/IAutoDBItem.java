@@ -44,7 +44,7 @@ public abstract class IAutoDBItem
     return arrayOfString;
   }
   
-  private static Map<String, String> b(Field[] paramArrayOfField)
+  private static Map b(Field[] paramArrayOfField)
   {
     HashMap localHashMap = new HashMap();
     int i = 0;
@@ -258,14 +258,14 @@ public abstract class IAutoDBItem
     return paramContentValues;
   }
   
-  public static Field[] getValidFields(Class<?> paramClass)
+  public static Field[] getValidFields(Class paramClass)
   {
     return initAutoDBInfo(paramClass).fields;
   }
   
-  public static MAutoDBInfo initAutoDBInfo(Class<?> paramClass)
+  public static IAutoDBItem.MAutoDBInfo initAutoDBInfo(Class paramClass)
   {
-    MAutoDBInfo localMAutoDBInfo = new MAutoDBInfo();
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
     LinkedList localLinkedList = new LinkedList();
     Field[] arrayOfField = paramClass.getDeclaredFields();
     int j = arrayOfField.length;
@@ -320,16 +320,7 @@ public abstract class IAutoDBItem
   
   public abstract ContentValues convertTo();
   
-  protected abstract MAutoDBInfo getDBInfo();
-  
-  public static class MAutoDBInfo
-  {
-    public Map<String, String> colsMap = new HashMap();
-    public String[] columns;
-    public Field[] fields;
-    public String primaryKey;
-    public String sql;
-  }
+  protected abstract IAutoDBItem.MAutoDBInfo getDBInfo();
 }
 
 

@@ -1,16 +1,18 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import com.tencent.token.ui.base.FaceView;
 
-final class gk
-  implements DialogInterface.OnClickListener
+class gk
+  implements Runnable
 {
-  gk(fz paramfz) {}
+  gk(FaceRecognitionCameraActivity paramFaceRecognitionCameraActivity, float paramFloat) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    FaceRecognitionCameraActivityOld.access$2100(this.a.a);
+    ((ViewGroup.MarginLayoutParams)FaceRecognitionCameraActivity.access$1000(this.b).getLayoutParams()).topMargin = ((int)(FaceRecognitionCameraActivity.access$700(this.b).getCenterY() - this.a * 170.0F));
+    ((ViewGroup.MarginLayoutParams)FaceRecognitionCameraActivity.access$1100(this.b).getLayoutParams()).topMargin = ((int)(FaceRecognitionCameraActivity.access$700(this.b).getCenterY() - this.a * 170.0F));
   }
 }
 

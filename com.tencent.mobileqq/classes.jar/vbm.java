@@ -1,31 +1,25 @@
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.IMagicCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 
-class vbm
-  implements PngFrameManager.IMagicCallback
+@Deprecated
+public class vbm
+  extends vbo
 {
-  vbm(vbl paramvbl) {}
-  
-  public void a(MarketFaceItemBuilder.Holder paramHolder)
+  public vbm(ViewGroup paramViewGroup)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarketFaceItemBuilder", 2, "func downloadVideoDetails, 【callback】 try to download video details.");
-    }
-    MarketFaceItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder, paramHolder);
+    super(paramViewGroup, 2131561509);
   }
   
-  public void a(boolean paramBoolean)
+  public void a(uyg paramuyg)
   {
-    if (paramBoolean) {
-      MarketFaceItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder);
-    }
+    super.a(paramuyg);
+    this.a.setDisplayState(5);
+    this.a.setNodeName(alud.a(2131707336), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vbm
  * JD-Core Version:    0.7.0.1
  */

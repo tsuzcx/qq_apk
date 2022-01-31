@@ -1,23 +1,31 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.Interpolator;
+import com.tencent.biz.qqcircle.transition.QCircleTransitionImageView;
 
 public class uar
-  implements View.OnTouchListener
+  implements Interpolator
 {
-  public uar(TroopMemberListActivity paramTroopMemberListActivity, InputMethodManager paramInputMethodManager) {}
+  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new DecelerateInterpolator();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private uar(QCircleTransitionImageView paramQCircleTransitionImageView) {}
+  
+  public void a(Interpolator paramInterpolator)
   {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
+  }
+  
+  public float getInterpolation(float paramFloat)
+  {
+    float f = paramFloat;
+    if (this.jdField_a_of_type_AndroidViewAnimationInterpolator != null) {
+      f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(paramFloat);
+    }
+    return f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uar
  * JD-Core Version:    0.7.0.1
  */

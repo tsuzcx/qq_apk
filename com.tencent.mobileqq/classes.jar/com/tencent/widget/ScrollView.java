@@ -27,8 +27,12 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
+import bhtb;
+import bhwp;
+import bhzg;
+import biar;
+import bias;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.VersionUtils;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -50,14 +54,15 @@ public class ScrollView
   private Drawable mContentBackgroundDrawable;
   int mCurScrollState = 0;
   private boolean mEdgeEffectEnabled;
-  private EdgeEffect mEdgeGlowBottom;
-  private EdgeEffect mEdgeGlowTop;
+  private bhwp mEdgeGlowBottom;
+  private bhwp mEdgeGlowTop;
   @ViewDebug.ExportedProperty(category="layout")
   private boolean mFillViewport;
   private Object mFlingStrictSpan;
   private Drawable mForeground;
   private boolean mIsBeingDragged;
   private boolean mIsLayoutDirty = true;
+  boolean mLastIsFromCompute;
   private float mLastMotionY;
   private long mLastScroll;
   private int mMaximumVelocity;
@@ -66,11 +71,11 @@ public class ScrollView
   private int mOverScrollMode;
   protected int mOverflingDistance;
   protected int mOverscrollDistance;
-  ScrollView.OnScrollChangeListenerCompat mScrollChangeCompatListener;
+  biar mScrollChangeCompatListener;
   public int mScrollFlag = 0;
-  ScrollView.OnScrollStateChangedListener mScrollListener;
+  bias mScrollListener;
   private Object mScrollStrictSpan;
-  public OverScroller mScroller;
+  public bhzg mScroller;
   private boolean mSmoothScrollingEnabled = true;
   private final Rect mTempRect = new Rect();
   private int mTouchSlop;
@@ -170,7 +175,7 @@ public class ScrollView
     }
     try
     {
-      if (VersionUtils.c()) {
+      if (bhtb.c()) {
         localObject1 = StrictMode.class.getMethod("enterCriticalSpan", new Class[] { String.class }).invoke(null, new Object[] { paramString });
       }
       return localObject1;
@@ -343,7 +348,7 @@ public class ScrollView
   
   private void initScrollView()
   {
-    this.mScroller = new OverScroller(getContext());
+    this.mScroller = new bhzg(getContext());
     setFocusable(true);
     setDescendantFocusability(262144);
     setWillNotDraw(false);
@@ -648,7 +653,7 @@ public class ScrollView
     if (this.mFlingStrictSpan != null) {
       finishSpan(this.mFlingStrictSpan);
     }
-    updateScrollState(0);
+    updateScrollState(0, true);
   }
   
   protected int computeScrollDeltaToGetChildRectOnScreen(Rect paramRect)
@@ -719,7 +724,7 @@ public class ScrollView
     return j + (k - m);
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     Drawable localDrawable;
     int k;
@@ -926,7 +931,7 @@ public class ScrollView
     return this.mOverScrollMode;
   }
   
-  public OverScroller getOverScroller()
+  public bhzg getOverScroller()
   {
     return this.mScroller;
   }
@@ -939,7 +944,7 @@ public class ScrollView
   @TargetApi(11)
   protected void invalidateParentIfNeeded()
   {
-    if ((VersionUtils.e()) && (isHardwareAccelerated()) && ((this.mParent instanceof View))) {
+    if ((bhtb.e()) && (isHardwareAccelerated()) && ((this.mParent instanceof View))) {
       ((View)this.mParent).invalidate();
     }
   }
@@ -1066,11 +1071,24 @@ public class ScrollView
       i = this.mActivePointerId;
       if (i != -1)
       {
-        float f = paramMotionEvent.getY(paramMotionEvent.findPointerIndex(i));
-        if ((int)Math.abs(f - this.mLastMotionY) > this.mTouchSlop)
+        i = paramMotionEvent.findPointerIndex(i);
+        float f1 = 0.0F;
+        try
+        {
+          float f2 = paramMotionEvent.getY(i);
+          f1 = f2;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            localException.printStackTrace();
+          }
+        }
+        if ((int)Math.abs(f1 - this.mLastMotionY) > this.mTouchSlop)
         {
           this.mIsBeingDragged = true;
-          this.mLastMotionY = f;
+          this.mLastMotionY = f1;
           initVelocityTrackerIfNotExists();
           this.mVelocityTracker.addMovement(paramMotionEvent);
           if (this.mScrollStrictSpan == null) {
@@ -1081,15 +1099,15 @@ public class ScrollView
           {
             paramMotionEvent.requestDisallowInterceptTouchEvent(true);
             continue;
-            f = paramMotionEvent.getY();
-            if (!inChild((int)paramMotionEvent.getX(), (int)f))
+            f1 = paramMotionEvent.getY();
+            if (!inChild((int)paramMotionEvent.getX(), (int)f1))
             {
               this.mIsBeingDragged = false;
               recycleVelocityTracker();
             }
             else
             {
-              this.mLastMotionY = f;
+              this.mLastMotionY = f1;
               this.mActivePointerId = paramMotionEvent.getPointerId(0);
               initOrResetVelocityTracker();
               this.mVelocityTracker.addMovement(paramMotionEvent);
@@ -1129,7 +1147,7 @@ public class ScrollView
     scrollTo(this.mScrollX, this.mScrollY);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     if (!this.mFillViewport) {}
@@ -1156,37 +1174,40 @@ public class ScrollView
   protected boolean onRequestFocusInDescendants(int paramInt, Rect paramRect)
   {
     int i;
-    View localView;
-    if (paramInt == 2)
-    {
+    if (paramInt == 2) {
       i = 130;
-      if (paramRect != null) {
-        break label44;
-      }
-      localView = FocusFinder.getInstance().findNextFocus(this, null, i);
-      label24:
-      if (localView != null) {
-        break label58;
-      }
     }
-    label44:
-    label58:
-    while (isOffScreen(localView))
+    for (;;)
     {
+      if (paramRect == null) {}
+      try
+      {
+        localView1 = FocusFinder.getInstance().findNextFocus(this, null, i);
+      }
+      catch (Exception localException)
+      {
+        View localView1;
+        localException.printStackTrace();
+        localView2 = null;
+      }
+      localView1 = FocusFinder.getInstance().findNextFocusFromRect(this, paramRect, i);
+      View localView2;
+      while (localView2 != null)
+      {
+        if (isOffScreen(localView2)) {
+          return false;
+        }
+        return localView2.requestFocus(i, paramRect);
+      }
       return false;
       i = paramInt;
-      if (paramInt != 1) {
-        break;
+      if (paramInt == 1) {
+        i = 33;
       }
-      i = 33;
-      break;
-      localView = FocusFinder.getInstance().findNextFocusFromRect(this, paramRect, i);
-      break label24;
     }
-    return localView.requestFocus(i, paramRect);
   }
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.mScrollChangeCompatListener != null) {
@@ -1194,7 +1215,7 @@ public class ScrollView
     }
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     View localView = findFocus();
@@ -1345,7 +1366,7 @@ public class ScrollView
       }
       paramMotionEvent = this.mVelocityTracker;
       paramMotionEvent.computeCurrentVelocity(1000, this.mMaximumVelocity);
-      if (VersionUtils.b())
+      if (bhtb.b())
       {
         f = paramMotionEvent.getYVelocity(this.mActivePointerId);
         label634:
@@ -1397,7 +1418,7 @@ public class ScrollView
     }
   }
   
-  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
+  protected boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
   {
     int k = this.mOverScrollMode;
     int i;
@@ -1593,7 +1614,7 @@ public class ScrollView
       return;
     }
     this.mContentBackgroundDrawable = paramDrawable;
-    this.mOverScrollHeaderShadow = getResources().getDrawable(2130839293);
+    this.mOverScrollHeaderShadow = getResources().getDrawable(2130840340);
   }
   
   public void setEdgeEffectEnabled(boolean paramBoolean)
@@ -1607,10 +1628,10 @@ public class ScrollView
       if ((this.mOverScrollMode != 2) && (this.mEdgeGlowTop == null))
       {
         localContext = getContext();
-        this.mEdgeGlowTop = new EdgeEffect(localContext);
+        this.mEdgeGlowTop = new bhwp(localContext);
       }
     }
-    for (this.mEdgeGlowBottom = new EdgeEffect(localContext);; this.mEdgeGlowBottom = null)
+    for (this.mEdgeGlowBottom = new bhwp(localContext);; this.mEdgeGlowBottom = null)
     {
       this.mEdgeEffectEnabled = paramBoolean;
       return;
@@ -1657,14 +1678,14 @@ public class ScrollView
     }
   }
   
-  public void setOnScrollChangeListenerCompat(ScrollView.OnScrollChangeListenerCompat paramOnScrollChangeListenerCompat)
+  public void setOnScrollChangeListenerCompat(biar parambiar)
   {
-    this.mScrollChangeCompatListener = paramOnScrollChangeListenerCompat;
+    this.mScrollChangeCompatListener = parambiar;
   }
   
-  public void setOnScrollStateChangedListener(ScrollView.OnScrollStateChangedListener paramOnScrollStateChangedListener)
+  public void setOnScrollStateChangedListener(bias parambias)
   {
-    this.mScrollListener = paramOnScrollStateChangedListener;
+    this.mScrollListener = parambias;
   }
   
   public void setOverScrollMode(int paramInt)
@@ -1680,8 +1701,8 @@ public class ScrollView
     }
     try
     {
-      this.mEdgeGlowTop = new EdgeEffect(localContext);
-      this.mEdgeGlowBottom = new EdgeEffect(localContext);
+      this.mEdgeGlowTop = new bhwp(localContext);
+      this.mEdgeGlowBottom = new bhwp(localContext);
       label90:
       this.mOverflingDistance = 2147483647;
       this.mOverscrollDistance = 2147483647;
@@ -1747,18 +1768,24 @@ public class ScrollView
   
   public void updateScrollState(int paramInt)
   {
-    if (this.mCurScrollState == paramInt) {}
+    updateScrollState(paramInt, false);
+  }
+  
+  public void updateScrollState(int paramInt, boolean paramBoolean)
+  {
+    if ((this.mCurScrollState == paramInt) && (this.mLastIsFromCompute == paramBoolean)) {}
     do
     {
       return;
+      this.mLastIsFromCompute = paramBoolean;
       this.mCurScrollState = paramInt;
     } while (this.mScrollListener == null);
-    this.mScrollListener.a(this, this.mCurScrollState);
+    this.mScrollListener.a(this, this.mCurScrollState, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.ScrollView
  * JD-Core Version:    0.7.0.1
  */

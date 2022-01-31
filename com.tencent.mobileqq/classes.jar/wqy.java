@@ -1,36 +1,45 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.qcall.QCallFacade;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
+import android.widget.ImageView;
 
-class wqy
-  implements Runnable
+public class wqy
+  extends xvd<wrb>
 {
-  wqy(wqx paramwqx) {}
+  private LruCache<wrb, Drawable> a = new wqz(this, 5242880);
   
-  public void run()
+  public LruCache<wrb, Drawable> a()
   {
-    SplashActivity localSplashActivity = this.a.a.a;
-    if ((localSplashActivity == null) || (localSplashActivity.app == null)) {
+    return this.a;
+  }
+  
+  public xve a(ImageView paramImageView, wrb paramwrb)
+  {
+    return new wrc(paramImageView, paramwrb);
+  }
+  
+  public void a()
+  {
+    super.a();
+    b();
+  }
+  
+  public void b()
+  {
+    super.b();
+    try
+    {
+      this.a.evictAll();
       return;
     }
-    QQAppInterface localQQAppInterface = localSplashActivity.app;
-    int i = 0;
-    int j = QCallFacade.a(localQQAppInterface);
-    QQMessageFacade localQQMessageFacade = localQQAppInterface.a();
-    if (localQQMessageFacade != null)
+    catch (Exception localException)
     {
-      ServiceAccountFolderManager.a().a(localQQAppInterface);
-      i = localQQMessageFacade.b();
+      this.a = new wra(this, 5242880);
     }
-    localSplashActivity.runOnUiThread(new wqz(this, i + j));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wqy
  * JD-Core Version:    0.7.0.1
  */

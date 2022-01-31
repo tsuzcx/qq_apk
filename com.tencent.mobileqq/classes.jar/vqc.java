@@ -1,35 +1,57 @@
-import com.tencent.mobileqq.activity.aio.qim.QIMUserManager;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class vqc
-  implements Runnable
+class vqc
+  extends SimpleObserver<List<vlp>>
 {
-  public vqc(QIMUserManager paramQIMUserManager, String paramString1, String paramString2, boolean paramBoolean) {}
+  vqc(vqb paramvqb, vpu paramvpu) {}
   
-  public void run()
+  public void a(List<vlp> paramList)
   {
-    if (QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, this.jdField_a_of_type_JavaLangString, this.b) == 0) {
-      if (QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, this.b))
-      {
-        QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager);
-        QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, 2);
-      }
-    }
-    for (;;)
+    ArrayList localArrayList = new ArrayList();
+    vpn localvpn = new vpn(vqb.a(this.jdField_a_of_type_Vqb));
+    localvpn.jdField_a_of_type_JavaUtilList = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QIMUserManager", 2, this.jdField_a_of_type_Boolean + " startDownLoadQimTheme QimIconsState " + QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager));
-      }
-      return;
-      QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, 4);
-      continue;
-      QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, 3);
+      vlp localvlp = (vlp)localIterator.next();
+      String str = localvlp.jdField_a_of_type_JavaLangString;
+      localvpn.jdField_a_of_type_JavaUtilMap.put(localvlp.b, str);
+      localvpn.jdField_a_of_type_JavaUtilList.add(localvlp.b);
     }
+    paramList = vpz.a(paramList);
+    if ((paramList != null) && (!vqb.a(this.jdField_a_of_type_Vqb).a())) {
+      localvpn.jdField_a_of_type_JavaLangString = paramList.b;
+    }
+    localArrayList.add(localvpn);
+    paramList = this.jdField_a_of_type_Vpu;
+    if (!vqb.a(this.jdField_a_of_type_Vqb).a()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramList.a(localArrayList, bool);
+      return;
+    }
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    int i = 0;
+    if ((paramError instanceof ErrorMessage)) {
+      i = ((ErrorMessage)paramError).errorCode;
+    }
+    paramError = new ArrayList();
+    paramError.add(vqb.a(this.jdField_a_of_type_Vqb));
+    this.jdField_a_of_type_Vpu.a(new ErrorMessage(i, "fail"), paramError);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vqc
  * JD-Core Version:    0.7.0.1
  */

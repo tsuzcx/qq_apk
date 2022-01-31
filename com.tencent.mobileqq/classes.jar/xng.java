@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 
-class xng
-  implements Runnable
+public abstract interface xng
 {
-  xng(xnf paramxnf) {}
+  public abstract void a();
   
-  public void run()
-  {
-    if (EditLocalVideoActivity.a(this.a.a) != null)
-    {
-      EditLocalVideoActivity.a(this.a.a).seekTo(0);
-      EditLocalVideoActivity.a(this.a.a).start();
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(SlideItemInfo paramSlideItemInfo);
+  
+  public abstract void b(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xng
  * JD-Core Version:    0.7.0.1
  */

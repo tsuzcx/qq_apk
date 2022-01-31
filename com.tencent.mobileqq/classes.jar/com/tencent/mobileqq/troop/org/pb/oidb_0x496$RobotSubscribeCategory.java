@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0x496$RobotSubscribeCategory
-  extends MessageMicro
+  extends MessageMicro<RobotSubscribeCategory>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42 }, new String[] { "id", "name", "type", "next_wording", "next_content" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(0), "", "" }, RobotSubscribeCategory.class);
   public final PBUInt32Field id = PBField.initUInt32(0);
@@ -18,7 +18,7 @@ public final class oidb_0x496$RobotSubscribeCategory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.org.pb.oidb_0x496.RobotSubscribeCategory
  * JD-Core Version:    0.7.0.1
  */

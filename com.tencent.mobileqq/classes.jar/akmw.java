@@ -1,18 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 
-public class akmw
-  implements View.OnClickListener
+public abstract interface akmw
 {
-  public akmw(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI) {}
-  
-  public void onClick(View paramView)
-  {
-    if (SwiftIphoneTitleBarUI.a(this.a) != null) {
-      SwiftIphoneTitleBarUI.a(this.a).onClick(paramView);
-    }
-  }
+  public abstract void a(Canvas paramCanvas, Paint paramPaint);
 }
 
 

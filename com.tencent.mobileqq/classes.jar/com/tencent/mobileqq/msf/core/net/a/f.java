@@ -27,10 +27,10 @@ public class f
   public static final int s = 514;
   public static final int t = 515;
   public static final int u = 516;
-  private static e v;
-  private static boolean w;
+  private static e v = null;
+  private static boolean w = false;
   private static Context y;
-  private static a z;
+  private static a z = null;
   private MsfCore x;
   
   public f(MsfCore paramMsfCore, Context paramContext)

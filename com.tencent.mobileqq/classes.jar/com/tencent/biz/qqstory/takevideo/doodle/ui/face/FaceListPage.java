@@ -1,5 +1,6 @@
 package com.tencent.biz.qqstory.takevideo.doodle.ui.face;
 
+import aepi;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -14,17 +15,19 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.takevideo.doodle.loader.ImageLoader;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.BaseFaceListAdapter;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.LocationFaceAdapter;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.NormalFaceAdapter;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import bdin;
 import java.util.List;
-import okd;
-import oke;
+import wxe;
+import wxj;
+import xer;
+import xhq;
+import xhr;
+import xht;
+import xhu;
+import xhx;
+import xia;
+import xid;
+import xih;
 
 public class FaceListPage
   extends RelativeLayout
@@ -37,12 +40,12 @@ public class FaceListPage
   private ListView jdField_a_of_type_AndroidWidgetListView;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private FaceListPage.FacePackagePageEventListener jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener;
-  private FacePackage jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage;
-  private FacePanel.OnFaceSelectedListener jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePanel$OnFaceSelectedListener;
-  private BaseFaceListAdapter jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterBaseFaceListAdapter;
-  private LocationFaceAdapter jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterLocationFaceAdapter;
-  private NormalFaceAdapter jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterNormalFaceAdapter;
+  private xhq jdField_a_of_type_Xhq;
+  private xhr jdField_a_of_type_Xhr;
+  private xht jdField_a_of_type_Xht;
+  private xia jdField_a_of_type_Xia;
+  private xid jdField_a_of_type_Xid;
+  private xih jdField_a_of_type_Xih;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
@@ -50,11 +53,11 @@ public class FaceListPage
   private ViewGroup c;
   private ViewGroup d;
   
-  public FaceListPage(Context paramContext, FacePanel.OnFaceSelectedListener paramOnFaceSelectedListener, FaceListPage.FacePackagePageEventListener paramFacePackagePageEventListener)
+  public FaceListPage(Context paramContext, xht paramxht, xhq paramxhq)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener = paramFacePackagePageEventListener;
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePanel$OnFaceSelectedListener = paramOnFaceSelectedListener;
+    this.jdField_a_of_type_Xhq = paramxhq;
+    this.jdField_a_of_type_Xht = paramxht;
     d();
   }
   
@@ -65,17 +68,17 @@ public class FaceListPage
   
   private void b()
   {
-    SLog.b("FaceListPage", "FacePackage is LocationFacePackage");
-    LocationFacePackage localLocationFacePackage = (LocationFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage;
-    if (!localLocationFacePackage.jdField_a_of_type_JavaUtilList.isEmpty())
+    wxe.b("FaceListPage", "FacePackage is LocationFacePackage");
+    xhu localxhu = (xhu)this.jdField_a_of_type_Xhr;
+    if (!localxhu.jdField_a_of_type_JavaUtilList.isEmpty())
     {
       this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
       this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(4);
       this.jdField_a_of_type_AndroidWidgetListView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterBaseFaceListAdapter.notifyDataSetChanged();
+      this.jdField_a_of_type_Xia.notifyDataSetChanged();
       return;
     }
-    if (localLocationFacePackage.jdField_a_of_type_Boolean)
+    if (localxhu.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
       this.jdField_a_of_type_AndroidWidgetListView.setVisibility(4);
@@ -91,45 +94,45 @@ public class FaceListPage
     this.d.setVisibility(4);
   }
   
-  private void b(FacePackage paramFacePackage)
+  private void b(xhr paramxhr)
   {
-    if ((paramFacePackage instanceof NormalFacePackage))
+    if ((paramxhr instanceof xhx))
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterNormalFaceAdapter == null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterNormalFaceAdapter = new NormalFaceAdapter(super.getContext());
+      if (this.jdField_a_of_type_Xih == null) {
+        this.jdField_a_of_type_Xih = new xih(super.getContext());
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterBaseFaceListAdapter = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterNormalFaceAdapter;
+      this.jdField_a_of_type_Xia = this.jdField_a_of_type_Xih;
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterBaseFaceListAdapter != null)
+      if (this.jdField_a_of_type_Xia != null)
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterBaseFaceListAdapter.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterBaseFaceListAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePanel$OnFaceSelectedListener);
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterBaseFaceListAdapter.a(paramFacePackage);
-        this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterBaseFaceListAdapter);
+        this.jdField_a_of_type_Xia.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+        this.jdField_a_of_type_Xia.a(this.jdField_a_of_type_Xht);
+        this.jdField_a_of_type_Xia.a(paramxhr);
+        this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Xia);
       }
       return;
-      if ((paramFacePackage instanceof LocationFacePackage))
+      if ((paramxhr instanceof xhu))
       {
-        if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterLocationFaceAdapter == null) {
-          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterLocationFaceAdapter = new LocationFaceAdapter(super.getContext());
+        if (this.jdField_a_of_type_Xid == null) {
+          this.jdField_a_of_type_Xid = new xid(super.getContext());
         }
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterBaseFaceListAdapter = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterLocationFaceAdapter;
+        this.jdField_a_of_type_Xia = this.jdField_a_of_type_Xid;
       }
       else
       {
-        SLog.e("FaceListPage", "FacePackage is illegal.");
+        wxe.e("FaceListPage", "FacePackage is illegal.");
       }
     }
   }
   
   private void c()
   {
-    SLog.b("FaceListPage", "FacePackage is NormalFacePackage");
-    NormalFacePackage localNormalFacePackage = (NormalFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage;
-    if (!localNormalFacePackage.jdField_a_of_type_JavaUtilList.isEmpty()) {
-      SLog.b("FaceListPage", "FaceUriList is not empty,load bitmap directly.");
+    wxe.b("FaceListPage", "FacePackage is NormalFacePackage");
+    xhx localxhx = (xhx)this.jdField_a_of_type_Xhr;
+    if (!localxhx.jdField_a_of_type_JavaUtilList.isEmpty()) {
+      wxe.b("FaceListPage", "FaceUriList is not empty,load bitmap directly.");
     }
     for (boolean bool1 = true;; bool1 = false)
     {
@@ -137,46 +140,46 @@ public class FaceListPage
       if (!bool1)
       {
         bool2 = bool1;
-        if (!TextUtils.isEmpty(localNormalFacePackage.f))
+        if (!TextUtils.isEmpty(localxhx.f))
         {
-          SLog.b("FaceListPage", "FacePkgPath is not empty,try to load uriList from it.");
-          bool2 = localNormalFacePackage.a();
+          wxe.b("FaceListPage", "FacePkgPath is not empty,try to load uriList from it.");
+          bool2 = localxhx.a();
         }
       }
       if (bool2)
       {
-        SLog.b("FaceListPage", "FacePkg is already download.show face list.");
+        wxe.b("FaceListPage", "FacePkg is already download.show face list.");
         this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(1);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(1);
-        postDelayed(new oke(this), 50L);
+        postDelayed(new FaceListPage.2(this), 50L);
         return;
       }
       this.jdField_a_of_type_AndroidWidgetListView.setVisibility(4);
       this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(4);
       this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-      String str = (String)this.jdField_a_of_type_AndroidWidgetImageView.getTag(2131362360);
-      if ((TextUtils.isEmpty(str)) || (!str.equals(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage.d)))
+      String str = (String)this.jdField_a_of_type_AndroidWidgetImageView.getTag(2131377450);
+      if ((TextUtils.isEmpty(str)) || (!str.equals(this.jdField_a_of_type_Xhr.d)))
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setTag(2131362360, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage.d);
-        ImageLoader.a().a(super.getContext(), this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage.d, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, null);
+        this.jdField_a_of_type_AndroidWidgetImageView.setTag(2131377450, this.jdField_a_of_type_Xhr.d);
+        xer.a().a(super.getContext(), this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_Xhr.d, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, null);
       }
       TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-      if (TextUtils.isEmpty(localNormalFacePackage.jdField_b_of_type_JavaLangString)) {}
-      for (str = "";; str = localNormalFacePackage.jdField_b_of_type_JavaLangString)
+      if (TextUtils.isEmpty(localxhx.jdField_b_of_type_JavaLangString)) {}
+      for (str = "";; str = localxhx.jdField_b_of_type_JavaLangString)
       {
         localTextView.setText(str);
-        if (!localNormalFacePackage.jdField_a_of_type_Boolean) {
+        if (!localxhx.jdField_a_of_type_Boolean) {
           break;
         }
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(localNormalFacePackage.jdField_a_of_type_Int);
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(localNormalFacePackage.jdField_b_of_type_Int);
+        this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(localxhx.jdField_a_of_type_Int);
+        this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(localxhx.jdField_b_of_type_Int);
         this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundColor(0);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
         return;
       }
       this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(1);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130843452);
+      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130846038);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
       return;
     }
@@ -184,25 +187,25 @@ public class FaceListPage
   
   private void d()
   {
-    this.jdField_b_of_type_Int = AIOUtils.a(130.0F, super.getContext().getResources());
-    LayoutInflater.from(super.getContext()).inflate(2130970718, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371709));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371710));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131363005));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)super.findViewById(2131371707));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((RelativeLayout)super.findViewById(2131371708));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((RelativeLayout)super.findViewById(2131371721));
-    this.c = ((LinearLayout)super.findViewById(2131371722));
-    this.d = ((LinearLayout)super.findViewById(2131371723));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363518));
+    this.jdField_b_of_type_Int = aepi.a(130.0F, super.getContext().getResources());
+    LayoutInflater.from(super.getContext()).inflate(2131561442, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365951));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365952));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131372332));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)super.findViewById(2131365938));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((RelativeLayout)super.findViewById(2131365931));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((RelativeLayout)super.findViewById(2131369813));
+    this.c = ((LinearLayout)super.findViewById(2131369818));
+    this.d = ((LinearLayout)super.findViewById(2131369810));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365422));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.c.setOnClickListener(this);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage == null) {
-      SLog.d("FaceListPage", "onShow : FacePackage is null.");
+    if (this.jdField_a_of_type_Xhr == null) {
+      wxe.d("FaceListPage", "onShow : FacePackage is null.");
     }
     Object localObject;
     do
@@ -212,55 +215,55 @@ public class FaceListPage
         do
         {
           return;
-          if (!"LocationFacePackage".equals(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage.a())) {
+          if (!"LocationFacePackage".equals(this.jdField_a_of_type_Xhr.a())) {
             break;
           }
-          localObject = (LocationFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage;
-        } while ((!((LocationFacePackage)localObject).jdField_a_of_type_JavaUtilList.isEmpty()) || (((LocationFacePackage)localObject).jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Boolean));
-        if (NetworkUtil.g(super.getContext())) {
-          StoryReportor.a("video_shoot", "fail_poi", 0, 0, new String[] { "1" });
+          localObject = (xhu)this.jdField_a_of_type_Xhr;
+        } while ((!((xhu)localObject).jdField_a_of_type_JavaUtilList.isEmpty()) || (((xhu)localObject).jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Boolean));
+        if (bdin.g(super.getContext())) {
+          wxj.a("video_shoot", "fail_poi", 0, 0, new String[] { "1" });
         }
         for (;;)
         {
           this.jdField_a_of_type_Boolean = true;
           return;
-          StoryReportor.a("video_shoot", "fail_poi", 0, 0, new String[] { "2" });
+          wxj.a("video_shoot", "fail_poi", 0, 0, new String[] { "2" });
         }
-      } while (!"NormalFacePackage".equals(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage.a()));
-      localObject = (NormalFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage;
-    } while ((!NetworkUtil.a(getContext())) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener == null) || (((NormalFacePackage)localObject).jdField_a_of_type_Boolean) || (!((NormalFacePackage)localObject).jdField_a_of_type_JavaUtilList.isEmpty()));
-    SLog.a("FaceListPage", "network is wifi. download automatically : %s .", localObject);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener.a(((NormalFacePackage)localObject).jdField_a_of_type_JavaLangString);
-    StoryReportor.a("video_edit", "auto_down_sticker", 0, 0, new String[0]);
+      } while (!"NormalFacePackage".equals(this.jdField_a_of_type_Xhr.a()));
+      localObject = (xhx)this.jdField_a_of_type_Xhr;
+    } while ((!bdin.a(getContext())) || (this.jdField_a_of_type_Xhq == null) || (((xhx)localObject).jdField_a_of_type_Boolean) || (!((xhx)localObject).jdField_a_of_type_JavaUtilList.isEmpty()));
+    wxe.a("FaceListPage", "network is wifi. download automatically : %s .", localObject);
+    this.jdField_a_of_type_Xhq.a(((xhx)localObject).jdField_a_of_type_JavaLangString);
+    wxj.a("video_edit", "auto_down_sticker", 0, 0, new String[0]);
   }
   
-  public void a(FacePackage paramFacePackage)
+  public void a(xhr paramxhr)
   {
     if (!a()) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new okd(this, paramFacePackage));
+      this.jdField_a_of_type_AndroidOsHandler.post(new FaceListPage.1(this, paramxhr));
     }
     do
     {
       return;
-      if (paramFacePackage == null) {
+      if (paramxhr == null) {
         break;
       }
-      SLog.b("FaceListPage", "onChange,FacePkgInfo:" + paramFacePackage.toString());
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage == null) || (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage.a().equals(paramFacePackage.a()))) {
-        b(paramFacePackage);
+      wxe.b("FaceListPage", "onChange,FacePkgInfo:" + paramxhr.toString());
+      if ((this.jdField_a_of_type_Xhr == null) || (!this.jdField_a_of_type_Xhr.a().equals(paramxhr.a()))) {
+        b(paramxhr);
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage = paramFacePackage;
-      if ("NormalFacePackage".equals(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage.a()))
+      this.jdField_a_of_type_Xhr = paramxhr;
+      if ("NormalFacePackage".equals(this.jdField_a_of_type_Xhr.a()))
       {
         c();
         return;
       }
-    } while (!"LocationFacePackage".equals(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage.a()));
+    } while (!"LocationFacePackage".equals(this.jdField_a_of_type_Xhr.a()));
     b();
     return;
-    SLog.b("FaceListPage", "onChange, null.");
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage = null;
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterBaseFaceListAdapter.a(null);
+    wxe.b("FaceListPage", "onChange, null.");
+    this.jdField_a_of_type_Xhr = null;
+    this.jdField_a_of_type_Xia.a(null);
     this.jdField_a_of_type_AndroidWidgetListView.setVisibility(4);
     this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
     this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(4);
@@ -272,31 +275,31 @@ public class FaceListPage
   public void onClick(View paramView)
   {
     if (paramView == this.jdField_b_of_type_AndroidWidgetTextView) {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener != null)
+      if (this.jdField_a_of_type_Xhq != null)
       {
-        if (((NormalFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).jdField_a_of_type_Boolean) {
+        if (((xhx)this.jdField_a_of_type_Xhr).jdField_a_of_type_Boolean) {
           break label76;
         }
-        SLog.b("FaceListPage", "Download pkg:" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage.jdField_a_of_type_JavaLangString);
+        wxe.b("FaceListPage", "Download pkg:" + this.jdField_a_of_type_Xhr.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Xhq.a(this.jdField_a_of_type_Xhr.jdField_a_of_type_JavaLangString);
       }
     }
     label76:
-    while ((paramView != this.c) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener == null))
+    while ((paramView != this.c) || (this.jdField_a_of_type_Xhq == null))
     {
       return;
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Xhq.b(this.jdField_a_of_type_Xhr.jdField_a_of_type_JavaLangString);
       return;
     }
     this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(0);
     this.c.setVisibility(4);
     this.d.setVisibility(0);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener.a();
+    this.jdField_a_of_type_Xhq.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage
  * JD-Core Version:    0.7.0.1
  */

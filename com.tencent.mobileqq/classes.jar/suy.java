@@ -1,23 +1,29 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import com.tencent.biz.pubaccount.readinjoy.config.beans.AchillesParams;
+import com.tencent.biz.pubaccount.util.Achilles;
+import com.tencent.biz.pubaccount.util.Achilles.1;
+import com.tencent.mobileqq.data.RockDownloadInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class suy
-  implements SoundPool.OnLoadCompleteListener
+  extends anvt
 {
-  public suy(H5MagicPlayerActivity paramH5MagicPlayerActivity, String paramString) {}
+  public suy(Achilles.1 param1, RockDownloadInfo paramRockDownloadInfo, AchillesParams paramAchillesParams) {}
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_AndroidMediaSoundPool.play(paramInt1, 1.0F, 1.0F, 0, this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_Int - 1, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.jdField_a_of_type_JavaLangString);
-    }
+    QLog.d("Achilles", 1, "query predownload info fail: " + paramRockDownloadInfo);
+    Achilles.a(this.jdField_a_of_type_ComTencentMobileqqDataRockDownloadInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyConfigBeansAchillesParams);
+  }
+  
+  public void a(ArrayList<RockDownloadInfo> paramArrayList)
+  {
+    QLog.d("Achilles", 1, "query predownload info success: " + paramArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     suy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,7 @@
-import java.util.List;
-
-public abstract interface aoci
-{
-  public abstract void a(long paramLong);
-  
-  public abstract void a(List paramList);
-  
-  public abstract void b(long paramLong);
-}
+public class aoci {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoci
  * JD-Core Version:    0.7.0.1
  */

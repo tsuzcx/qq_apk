@@ -1,25 +1,22 @@
-import android.os.Process;
-import com.tencent.component.network.utils.thread.AsyncTask;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class pll
-  extends plt
+class pll
+  implements View.OnClickListener
 {
-  public pll(AsyncTask paramAsyncTask)
-  {
-    super(null);
-  }
+  pll(ple parample, rqj paramrqj, pgd parampgd) {}
   
-  public Object call()
+  public void onClick(View paramView)
   {
-    AsyncTask.a(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask).set(true);
-    Process.setThreadPriority(10);
-    return AsyncTask.a(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask, this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask.a(this.jdField_a_of_type_ArrayOfJavaLangObject));
+    paramView = this.jdField_a_of_type_Rqj.a();
+    if (paramView != null) {
+      paramView.a(null, this.jdField_a_of_type_Pgd.a(), 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pll
  * JD-Core Version:    0.7.0.1
  */

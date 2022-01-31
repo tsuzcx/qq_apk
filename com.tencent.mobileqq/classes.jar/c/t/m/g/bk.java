@@ -1,25 +1,47 @@
 package c.t.m.g;
 
-import org.json.JSONObject;
+import android.text.TextUtils;
 
 public abstract class bk
-  implements aw
 {
-  public void a() {}
+  private bk.a a;
   
-  public final void a(int paramInt) {}
+  public bk(String paramString)
+  {
+    m.b();
+    paramString = "halley_schedule_" + m.c() + "_" + m.i() + "_" + paramString + ".db";
+    this.a = new bk.a(this, m.a(), paramString);
+  }
   
-  public void a(bg parambg) {}
+  public final void a(String paramString, byte[] paramArrayOfByte)
+  {
+    try
+    {
+      if ((!TextUtils.isEmpty(paramString)) && (paramArrayOfByte != null)) {
+        this.a.a(paramString, paramArrayOfByte);
+      }
+      return;
+    }
+    finally {}
+  }
   
-  public void a(JSONObject paramJSONObject) {}
-  
-  public void b() {}
-  
-  public abstract String c();
+  public final byte[] a(String paramString)
+  {
+    try
+    {
+      paramString = this.a.a(paramString);
+      return paramString;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.bk
  * JD-Core Version:    0.7.0.1
  */

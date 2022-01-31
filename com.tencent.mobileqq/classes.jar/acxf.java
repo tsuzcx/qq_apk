@@ -1,26 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import java.util.TimerTask;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
-class acxf
-  extends TimerTask
+public class acxf
+  implements DialogInterface.OnClickListener
 {
-  acxf(acxe paramacxe) {}
+  public acxf(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (acxe.a(this.a) == null) {
-      return;
-    }
-    Message localMessage = new Message();
-    localMessage.what = 1;
-    this.a.a.a.sendMessage(localMessage);
+    ForwardFriendListActivity.a(this.a).dismiss();
+    ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acxf
  * JD-Core Version:    0.7.0.1
  */

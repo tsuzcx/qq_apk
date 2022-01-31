@@ -3,12 +3,12 @@ package dov.com.qq.im.poi;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anqv;
+import bmfc;
 
 public class PoiInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new anqv();
+  public static final Parcelable.Creator<PoiInfo> CREATOR = new bmfc();
   public int a;
   public long a;
   public String a;
@@ -53,7 +53,7 @@ public class PoiInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.poi.PoiInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,46 @@
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayer;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-public abstract interface adza
+public class adza
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract void a(LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer);
+  public adza(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public abstract void a(LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer, int paramInt1, int paramInt2);
-  
-  public abstract void a(LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
-  
-  public abstract void b(LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer);
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    int i = 1;
+    if (paramBoolean)
+    {
+      SoundAndVibrateActivity.b(this.a, 0);
+      SoundAndVibrateActivity.e(this.a).setBackgroundResource(2130839270);
+      if (this.a.app.b() == 0)
+      {
+        this.a.b.setChecked(false);
+        this.a.app.f(1);
+        label61:
+        paramCompoundButton = this.a.app;
+        if (!paramBoolean) {
+          break label147;
+        }
+      }
+    }
+    for (;;)
+    {
+      azqs.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_shake", 0, i, "", "", "", "");
+      return;
+      this.a.b.setChecked(true);
+      break;
+      SoundAndVibrateActivity.b(this.a, 8);
+      SoundAndVibrateActivity.e(this.a).setBackgroundResource(2130839254);
+      this.a.app.f(0);
+      break label61;
+      label147:
+      i = 0;
+    }
+  }
 }
 
 

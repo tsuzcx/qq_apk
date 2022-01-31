@@ -1,28 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.webkit.URLUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import mqq.app.AppRuntime;
 
-public final class rvw
-  implements DialogInterface.OnClickListener
+class rvw
+  extends ClickableSpan
 {
-  public rvw(QQAppInterface paramQQAppInterface, int paramInt) {}
+  rvw(rvv paramrvv, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_a_of_type_Int == 6) {}
-    for (paramInt = 1;; paramInt = 4)
+    paramView = new Intent(this.jdField_a_of_type_Rvv.getContext(), QQBrowserActivity.class);
+    String str = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_Rvv.getContext()).getString("qq_readinjoy_user_protocol_92_jump_url_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), "https://kandian.qq.com/mqq/watchspot/extrapage.html ");
+    if (!TextUtils.isEmpty(str))
     {
-      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X80063FA", "0X80063FA", paramInt, 0, "", "", "", "");
-      return;
+      paramView.putExtra("url", URLUtil.guessUrl(str));
+      this.jdField_a_of_type_Rvv.getContext().startActivity(paramView);
     }
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rvw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeGalleryBiu;
-
-public class ltw
-  implements View.OnTouchListener
+public abstract class ltw
 {
-  public ltw(FeedItemCellTypeGalleryBiu paramFeedItemCellTypeGalleryBiu, LinearLayout paramLinearLayout) {}
+  public int a;
+  protected final String a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ltw(String paramString)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
-    }
-    return false;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
+  
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ltw
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class nearby_now_anchor$AnchorStatus
-  extends MessageMicro
+  extends MessageMicro<AnchorStatus>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uint64_uin", "enum_stat" }, new Object[] { Long.valueOf(0L), Integer.valueOf(1) }, AnchorStatus.class);
   public final PBEnumField enum_stat = PBField.initEnum(1);
@@ -15,7 +15,7 @@ public final class nearby_now_anchor$AnchorStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.nearby.now.nearby_now_anchor.AnchorStatus
  * JD-Core Version:    0.7.0.1
  */

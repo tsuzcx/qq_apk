@@ -1,34 +1,59 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.FileInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.31.3.1;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class aczu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aczu(UniformDownloadMgr paramUniformDownloadMgr, Bundle paramBundle, String paramString) {}
+  aczu(aczr paramaczr) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_AndroidOsBundle.getString("_filename_from_dlg");
-    long l = this.jdField_a_of_type_AndroidOsBundle.getLong("_filesize_from_dlg");
-    if ((TextUtils.isEmpty((CharSequence)localObject)) || (0L == l))
+    if (this.a.jdField_a_of_type_Awor == null) {}
+    for (;;)
     {
-      localObject = UniformDownloadUtil.a(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidOsBundle.putLong("_filesize_from_dlg", ((UniformDownloadUtil.FileInfo)localObject).jdField_a_of_type_Long);
-      if (TextUtils.isEmpty(((UniformDownloadUtil.FileInfo)localObject).jdField_a_of_type_JavaLangString)) {
-        ((UniformDownloadUtil.FileInfo)localObject).jdField_a_of_type_JavaLangString = "nofilename.x";
+      return;
+      if ((this.a.jdField_a_of_type_Awor.a instanceof String)) {
+        paramView = (String)this.a.jdField_a_of_type_Awor.a;
       }
-      this.jdField_a_of_type_AndroidOsBundle.putString("_filename_from_dlg", ((UniformDownloadUtil.FileInfo)localObject).jdField_a_of_type_JavaLangString);
+      while (paramView != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a(paramView);
+        ThreadManager.post(new FriendProfileCardActivity.31.3.1(this), 5, null, true);
+        return;
+        if ((this.a.jdField_a_of_type_Awor.a instanceof ProfileActivity.CardContactInfo))
+        {
+          paramView = (ProfileActivity.CardContactInfo)this.a.jdField_a_of_type_Awor.a;
+          if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a.a == 33)) {
+            paramView = paramView.c;
+          } else {
+            paramView = paramView.a + " " + paramView.c;
+          }
+        }
+        else if ((this.a.jdField_a_of_type_Awor.a instanceof awoc))
+        {
+          if ((paramView instanceof TextView)) {
+            paramView = ((awoc)this.a.jdField_a_of_type_Awor.a).a(((TextView)paramView).getText().toString());
+          } else {
+            paramView = ((awoc)this.a.jdField_a_of_type_Awor.a).a;
+          }
+        }
+        else
+        {
+          paramView = null;
+        }
+      }
     }
-    UniformDownloadMgr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aczu
  * JD-Core Version:    0.7.0.1
  */

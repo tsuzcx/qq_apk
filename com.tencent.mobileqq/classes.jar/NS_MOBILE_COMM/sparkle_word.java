@@ -10,11 +10,11 @@ import java.util.Map;
 public final class sparkle_word
   extends JceStruct
 {
-  static Map cache_extend_info;
-  static ArrayList cache_sparkle_color = new ArrayList();
-  public Map extend_info;
+  static Map<String, String> cache_extend_info;
+  static ArrayList<String> cache_sparkle_color = new ArrayList();
+  public Map<String, String> extend_info;
   public long span_time;
-  public ArrayList sparkle_color;
+  public ArrayList<String> sparkle_color;
   
   static
   {
@@ -25,7 +25,7 @@ public final class sparkle_word
   
   public sparkle_word() {}
   
-  public sparkle_word(ArrayList paramArrayList, long paramLong, Map paramMap)
+  public sparkle_word(ArrayList<String> paramArrayList, long paramLong, Map<String, String> paramMap)
   {
     this.sparkle_color = paramArrayList;
     this.span_time = paramLong;
@@ -52,7 +52,7 @@ public final class sparkle_word
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_COMM.sparkle_word
  * JD-Core Version:    0.7.0.1
  */

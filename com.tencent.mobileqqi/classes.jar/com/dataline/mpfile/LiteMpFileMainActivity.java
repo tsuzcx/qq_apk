@@ -25,14 +25,14 @@ import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import di;
-import dj;
-import dk;
-import dl;
-import dm;
-import do;
-import dp;
 import dq;
+import dr;
+import ds;
+import dt;
+import du;
+import dw;
+import dx;
+import dy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -58,7 +58,7 @@ public class LiteMpFileMainActivity
   public static final int j = 8;
   public static final int k = 101;
   private long jdField_a_of_type_Long = 0L;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new dl(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new dt(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ListView jdField_a_of_type_AndroidWidgetListView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
@@ -131,7 +131,7 @@ public class LiteMpFileMainActivity
   {
     this.jdField_b_of_type_Long = System.currentTimeMillis();
     jdField_a_of_type_Int += 1;
-    MpfileFileListDownloader.a(jdField_a_of_type_Int, paramString, new dm(this));
+    MpfileFileListDownloader.a(jdField_a_of_type_Int, paramString, new du(this));
   }
   
   private void c(String paramString)
@@ -215,13 +215,13 @@ public class LiteMpFileMainActivity
       catch (JSONException paramString)
       {
         paramString.printStackTrace();
-        runOnUiThread(new dq(this));
+        runOnUiThread(new dy(this));
       }
       label393:
       ((MpfileItemInfo)localObject2).jdField_a_of_type_JavaLangString = getResources().getString(2131558581);
       continue;
       label411:
-      runOnUiThread(new do(this));
+      runOnUiThread(new dw(this));
       paramString.jdField_b_of_type_Int = i2;
       paramString.jdField_c_of_type_Int = i3;
       MpFileDataReportCenter.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
@@ -229,7 +229,7 @@ public class LiteMpFileMainActivity
       label444:
       if (i2 == 2)
       {
-        runOnUiThread(new dp(this));
+        runOnUiThread(new dx(this));
         return;
       }
       if (i2 == 7)
@@ -317,17 +317,17 @@ public class LiteMpFileMainActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130903521);
+    setContentView(2130903523);
     this.jdField_m_of_type_Int = 40;
     this.l = 0;
     setTitle(2131558592);
     h(2131558590);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232796));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232799));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231294));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232790));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232793));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232794));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232797));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
     this.jdField_a_of_type_ComDatalineMpfileMpfileMenuListAdapter = new MpfileMenuListAdapter(this);
     this.jdField_a_of_type_ComDatalineMpfileMpfileMenuListAdapter.a(this.jdField_a_of_type_JavaUtilList);
@@ -339,9 +339,9 @@ public class LiteMpFileMainActivity
     registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
     this.jdField_m_of_type_AndroidWidgetTextView.setVisibility(8);
     this.p.setVisibility(0);
-    this.p.setImageResource(2130838632);
+    this.p.setImageResource(2130838634);
     this.p.setContentDescription(getString(2131558594));
-    this.p.setOnClickListener(new di(this));
+    this.p.setOnClickListener(new dq(this));
     a(true);
     return true;
   }
@@ -370,7 +370,7 @@ public class LiteMpFileMainActivity
     {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       b();
-      this.jdField_a_of_type_AndroidWidgetButton.postDelayed(new dk(this), 3000L);
+      this.jdField_a_of_type_AndroidWidgetButton.postDelayed(new ds(this), 3000L);
       return;
       label98:
       ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800421A", "0X800421A", 0, 0, "", "", "", "");
@@ -419,7 +419,7 @@ public class LiteMpFileMainActivity
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    runOnUiThread(new dj(this));
+    runOnUiThread(new dr(this));
   }
 }
 

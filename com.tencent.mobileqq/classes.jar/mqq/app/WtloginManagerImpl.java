@@ -205,7 +205,7 @@ public class WtloginManagerImpl
     localNewIntent.putExtra("userAccount", paramString2);
     localNewIntent.putExtra("countryCode", paramString1);
     localNewIntent.putExtra("appid", paramInt);
-    if ("com.tencent.mobileqq:openSdk".equals(this.app.getApplication().getProcessName())) {
+    if ("com.tencent.mobileqq:openSdk".equals(this.app.getApplication().getQQProcessName())) {
       localNewIntent.putExtra("from_where", "ssoAccountAction");
     }
     localNewIntent.withouLogin = true;
@@ -308,12 +308,30 @@ public class WtloginManagerImpl
     return 0;
   }
   
-  public int RegGetSMSVerifyLoginAccount(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, WtloginObserver paramWtloginObserver)
+  public int RegGetSMSVerifyLoginAccount(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String paramString1, String paramString2, WtloginObserver paramWtloginObserver)
   {
     NewIntent localNewIntent = new NewIntent(this.app.getApplication(), WtloginServlet.class);
     localNewIntent.putExtra("action", 2117);
     localNewIntent.putExtra("msgchk", paramArrayOfByte1);
     localNewIntent.putExtra("nick", paramArrayOfByte2);
+    if ((paramString1 != null) && (paramString1.length() > 0)) {
+      localNewIntent.putExtra("unBindlhUin", paramString1);
+    }
+    localNewIntent.putExtra("appVersion", paramString2);
+    localNewIntent.withouLogin = true;
+    localNewIntent.setObserver(paramWtloginObserver);
+    this.app.startServlet(localNewIntent);
+    return 0;
+  }
+  
+  public int RegGetSMSVerifyLoginAccountWithLH(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String paramString1, String paramString2, WtloginObserver paramWtloginObserver)
+  {
+    NewIntent localNewIntent = new NewIntent(this.app.getApplication(), WtloginServlet.class);
+    localNewIntent.putExtra("action", 2117);
+    localNewIntent.putExtra("msgchk", paramArrayOfByte1);
+    localNewIntent.putExtra("nick", paramArrayOfByte2);
+    localNewIntent.putExtra("lhuin", paramString1);
+    localNewIntent.putExtra("appVersion", paramString2);
     localNewIntent.withouLogin = true;
     localNewIntent.setObserver(paramWtloginObserver);
     this.app.startServlet(localNewIntent);
@@ -358,12 +376,37 @@ public class WtloginManagerImpl
     return 0;
   }
   
+  public void cancelCode(String paramString, long paramLong, byte[] paramArrayOfByte)
+  {
+    NewIntent localNewIntent = new NewIntent(this.app.getApplication(), WtloginServlet.class);
+    localNewIntent.putExtra("action", 2213);
+    localNewIntent.putExtra("userAccount", paramString);
+    localNewIntent.putExtra("appid", paramLong);
+    localNewIntent.putExtra("code", paramArrayOfByte);
+    localNewIntent.withouLogin = true;
+    this.app.startServlet(localNewIntent);
+  }
+  
+  public byte[] getGUID()
+  {
+    return this.localWtloginHelper.GetGuid();
+  }
+  
   public boolean getHasPwd(String paramString)
   {
     if (QLog.isColorLevel()) {
       QLog.d("sp", 2, "getHasPwd uin= " + paramString);
     }
-    return this.localWtloginHelper.getHasPassword(Long.valueOf(paramString).longValue());
+    try
+    {
+      boolean bool = this.localWtloginHelper.getHasPassword(Long.valueOf(paramString).longValue());
+      return bool;
+    }
+    catch (NumberFormatException paramString)
+    {
+      QLog.d("sp", 1, "getHasPwd e:", paramString);
+    }
+    return false;
   }
   
   public byte[] getPkgSigFromApkName(Context paramContext, String paramString)

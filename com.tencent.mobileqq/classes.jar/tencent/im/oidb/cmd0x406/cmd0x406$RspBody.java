@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x406$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42 }, new String[] { "uint32_ret", "string_msg", "msg_group_fee_info", "msg_group_fee_list", "msg_member_list" }, new Object[] { Integer.valueOf(0), "", null, null, null }, RspBody.class);
   public cmd0x406.GroupFeeInfoResult msg_group_fee_info = new cmd0x406.GroupFeeInfoResult();
@@ -18,7 +18,7 @@ public final class cmd0x406$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x406.cmd0x406.RspBody
  * JD-Core Version:    0.7.0.1
  */

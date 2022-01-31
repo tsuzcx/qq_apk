@@ -1,29 +1,25 @@
-import com.tencent.biz.qqstory.base.QQStoryFeedManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.PoiMapActivity;
 
 public class mzm
-  implements Runnable
 {
-  public mzm(QQStoryFeedManager paramQQStoryFeedManager, String paramString) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  public void run()
-  {
-    Iterator localIterator = QQStoryFeedManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryFeedManager).a().a(this.jdField_a_of_type_JavaLangString, 0, new int[] { -2061 }).iterator();
-    while (localIterator.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      QQStoryFeedManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryFeedManager).a().a(localMessageRecord.frienduin, 0, localMessageRecord.msgtype, localMessageRecord.uniseq);
-      QQStoryFeedManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryFeedManager).a().b(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
-    }
-  }
+  public mzm(PoiMapActivity paramPoiMapActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mzm
  * JD-Core Version:    0.7.0.1
  */

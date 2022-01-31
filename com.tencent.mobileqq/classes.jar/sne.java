@@ -1,58 +1,26 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.Holder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.viola.adapter.IJSApiAdapter.OnInovkeCallback;
+import org.json.JSONObject;
 
-public class sne
-  extends BaseAdapter
+class sne
+  implements qzm
 {
-  public sne(FontSettingActivity paramFontSettingActivity) {}
+  IJSApiAdapter.OnInovkeCallback a;
   
-  public int getCount()
+  public sne(IJSApiAdapter.OnInovkeCallback paramOnInovkeCallback)
   {
-    return this.a.jdField_a_of_type_JavaUtilList.size();
+    this.a = paramOnInovkeCallback;
   }
   
-  public Object getItem(int paramInt)
+  public void a(JSONObject paramJSONObject)
   {
-    return this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = this.a.jdField_a_of_type_Snh.a(paramInt, getCount(), (ChatMessage)this.a.jdField_a_of_type_JavaUtilList.get(paramInt), paramView, paramViewGroup, null);
-    paramViewGroup = (TextItemBuilder.Holder)paramView.getTag();
-    paramViewGroup.e.setOnClickListener(null);
-    if ((paramViewGroup.e instanceof AnimationTextView)) {
-      ((AnimationTextView)paramViewGroup.e).a = null;
+    if (this.a != null) {
+      this.a.callback(paramJSONObject);
     }
-    if ((FontSettingActivity.a(this.a)) && (paramInt == this.a.jdField_a_of_type_JavaUtilList.size() - 1))
-    {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.a();
-    }
-    if ((this.a.c) && (paramInt == this.a.jdField_a_of_type_JavaUtilList.size() - 1))
-    {
-      this.a.c = false;
-      FontSettingActivity.a(this.a).postDelayed(new snf(this), 100L);
-    }
-    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sne
  * JD-Core Version:    0.7.0.1
  */

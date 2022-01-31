@@ -1,24 +1,31 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.io.FilterOutputStream;
+import java.io.OutputStream;
 
-public class swv
-  implements AdapterView.OnItemClickListener
+class swv
+  extends FilterOutputStream
 {
-  public swv(Leba paramLeba) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public swv(swu paramswu, OutputStream paramOutputStream)
   {
-    if (this.a.c()) {
-      ThreadManager.post(new sww(this, paramView, paramInt), 8, null, true);
-    }
+    super(paramOutputStream);
+  }
+  
+  public void write(int paramInt)
+  {
+    this.jdField_a_of_type_Int += 1;
+    this.out.write(paramInt);
+  }
+  
+  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int += paramInt2;
+    this.out.write(paramArrayOfByte, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     swv
  * JD-Core Version:    0.7.0.1
  */

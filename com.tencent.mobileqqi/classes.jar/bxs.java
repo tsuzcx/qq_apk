@@ -1,46 +1,24 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.ChatActivity;
 
 public class bxs
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public bxs(AccountManageActivity paramAccountManageActivity) {}
+  public bxs(ChatActivity paramChatActivity) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Switch_Account", 2, "add account");
-    }
-    if (!PhoneNumLoginImpl.a().a(this.a.b, this.a)) {
-      return;
-    }
-    AccountManageActivity.a(this.a, SubAccountAssistantManager.a().a(this.a.b));
-    paramView = new Intent();
-    paramView.setPackage(this.a.getPackageName());
-    paramView.setClass(this.a, LoginActivity.class);
-    paramView.putExtra("IS_ADD_ACCOUNT", true);
-    paramView.putExtra("login_from_account_change", true);
-    this.a.startActivityForResult(paramView, 1000);
-    if (QQPlayerService.a())
+    if ((ChatActivity.a(this.a)) && (this.a.a != null))
     {
-      paramView = new Intent();
-      paramView.setAction("qqplayer_exit_action");
-      this.a.sendBroadcast(paramView);
+      ChatActivity.a(this.a, false);
+      this.a.a.sendEmptyMessageDelayed(23, 100L);
     }
-    ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Clk_acc_add", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bxs
  * JD-Core Version:    0.7.0.1
  */

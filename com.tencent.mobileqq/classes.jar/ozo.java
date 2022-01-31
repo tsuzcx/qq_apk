@@ -1,19 +1,21 @@
-import com.tencent.biz.common.offline.AsyncCallBack;
-import com.tencent.biz.troopplugin.PluginJumpManager;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyFragmentWithSubChannel;
 
-class ozo
-  implements AsyncCallBack
+public class ozo
+  implements AdapterView.OnItemClickListener
 {
-  ozo(ozn paramozn) {}
+  public ozo(ReadInJoyFragmentWithSubChannel paramReadInJoyFragmentWithSubChannel) {}
   
-  public void a(int paramInt, String paramString)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a.loadConfigFromFile();
+    this.a.a(paramView, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ozo
  * JD-Core Version:    0.7.0.1
  */

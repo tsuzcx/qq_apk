@@ -1,22 +1,28 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.EditTagActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.HornListActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HornDetail;
 
 public class cqh
-  extends Handler
+  implements View.OnClickListener
 {
-  public cqh(EditTagActivity paramEditTagActivity) {}
+  public cqh(HornListActivity paramHornListActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    if (HornListActivity.a(this.a))
     {
-    default: 
-      return;
+      HornListActivity.a(this.a, false);
+      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("uin", this.a.b.a());
+      paramView.putExtra("isShowAd", false);
+      paramView.putExtra("url", String.format("http://imgcache.qq.com/club/horn/rel/comment.html?hornKey=%1$s&_bid=179&uin=%2$s&pvsrc=nearby&_wv=5123", new Object[] { this.a.jdField_a_of_type_ComTencentMobileqqDataHornDetail.hornKey, this.a.b.a() }));
+      paramView.putExtra("business", 2147549184L);
+      this.a.startActivity(paramView);
     }
-    this.a.setResult(-1);
-    this.a.finish();
   }
 }
 

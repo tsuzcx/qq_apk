@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelBoard;
-
-public class agnl
-  implements Runnable
+class agnl
+  extends amny
 {
-  public agnl(PersonalityLabelBoard paramPersonalityLabelBoard) {}
+  agnl(agnj paramagnj) {}
   
-  public void run()
+  public void b()
   {
-    PersonalityLabelBoard.a(this.a, this.a.a, false);
+    this.a.b(false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agnl
  * JD-Core Version:    0.7.0.1
  */

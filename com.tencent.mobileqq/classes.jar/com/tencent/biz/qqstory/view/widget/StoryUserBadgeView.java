@@ -8,28 +8,29 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import com.tencent.biz.qqstory.boundaries.StoryDepends.QimUtil;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.utils.AssertUtils;
-import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
 import com.tribe.async.dispatch.IEventReceiver;
+import umc;
+import uqs;
+import uwa;
+import uwm;
+import wxe;
+import wxj;
+import xqq;
+import xsm;
+import xwv;
 
 public class StoryUserBadgeView
   extends ImageView
   implements View.OnClickListener, IEventReceiver
 {
   private int jdField_a_of_type_Int = 10003;
-  private UserManager jdField_a_of_type_ComTencentBizQqstoryModelUserManager;
-  private StoryUserBadgeView.UserIconUpdateReceiver jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView$UserIconUpdateReceiver;
   private String jdField_a_of_type_JavaLangString;
+  private uwm jdField_a_of_type_Uwm;
+  private xwv jdField_a_of_type_Xwv;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   
@@ -53,15 +54,20 @@ public class StoryUserBadgeView
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager = ((UserManager)SuperManager.a(2));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView$UserIconUpdateReceiver = new StoryUserBadgeView.UserIconUpdateReceiver(this);
+    this.jdField_a_of_type_Uwm = ((uwm)uwa.a(2));
+    this.jdField_a_of_type_Xwv = new xwv(this);
     super.setVisibility(8);
   }
   
   private void c()
   {
-    QQUserUIItem localQQUserUIItem = this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.b(this.jdField_a_of_type_JavaLangString);
-    UIUtils.a(this);
+    if ("-1".equals(this.jdField_a_of_type_JavaLangString))
+    {
+      wxe.e("Q.qqstory.StoryUserBadge", "union id = -1, so ignore update");
+      return;
+    }
+    QQUserUIItem localQQUserUIItem = this.jdField_a_of_type_Uwm.b(this.jdField_a_of_type_JavaLangString);
+    xsm.a(this);
     if (localQQUserUIItem == null)
     {
       this.jdField_a_of_type_Int = 10003;
@@ -72,7 +78,7 @@ public class StoryUserBadgeView
     String str = localQQUserUIItem.getUserIconUrl();
     if ((!TextUtils.isEmpty(str)) || (localQQUserUIItem.isVipButNoFriend()))
     {
-      if (StoryDepends.QimUtil.a())
+      if (uqs.a())
       {
         if (localQQUserUIItem.isVipButNoFriend()) {}
         for (int i = 10000;; i = 10001)
@@ -83,21 +89,21 @@ public class StoryUserBadgeView
           if (TextUtils.isEmpty(str)) {
             break;
           }
-          UIUtils.a(this, str, 50, 50, null, null);
+          xsm.a(this, str, 50, 50, null, null);
           return;
         }
-        super.setImageResource(2130843741);
+        super.setImageResource(2130846385);
         return;
       }
       super.setVisibility(8);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.a(localQQUserUIItem.qq))
+    if (this.jdField_a_of_type_Uwm.a(localQQUserUIItem.qq))
     {
       this.jdField_a_of_type_Int = 10002;
       super.setVisibility(0);
       super.setOnClickListener(this);
-      super.setImageResource(2130843739);
+      super.setImageResource(2130846383);
       return;
     }
     this.jdField_a_of_type_Int = 10003;
@@ -112,22 +118,22 @@ public class StoryUserBadgeView
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.b(this.jdField_a_of_type_JavaLangString);
+    Object localObject = this.jdField_a_of_type_Uwm.b(this.jdField_a_of_type_JavaLangString);
     if (localObject == null)
     {
-      SLog.e("Q.qqstory.StoryUserBadge", "reportExposure the null user item");
+      wxe.e("Q.qqstory.StoryUserBadge", "reportExposure the null user item");
       return;
     }
     if (((QQUserUIItem)localObject).isMe()) {}
     for (String str = "1";; str = "2")
     {
       localObject = ((QQUserUIItem)localObject).getUserIconUrlKey();
-      StoryReportor.a("home_page", "exp_medal", this.b, 0, new String[] { str, localObject });
+      wxj.a("home_page", "exp_medal", this.b, 0, new String[] { str, localObject });
       return;
     }
   }
   
-  protected void a(@NonNull String paramString)
+  public void a(@NonNull String paramString)
   {
     setUnionID(paramString, this.b);
   }
@@ -141,22 +147,22 @@ public class StoryUserBadgeView
   {
     super.onAttachedToWindow();
     this.jdField_a_of_type_Boolean = true;
-    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView$UserIconUpdateReceiver);
+    umc.a().registerSubscriber(this.jdField_a_of_type_Xwv);
   }
   
   public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.b(this.jdField_a_of_type_JavaLangString);
+    Object localObject = this.jdField_a_of_type_Uwm.b(this.jdField_a_of_type_JavaLangString);
     if (localObject == null)
     {
-      SLog.e("Q.qqstory.StoryUserBadge", this.jdField_a_of_type_JavaLangString + ",userItem is null ! plz fix it!");
+      wxe.e("Q.qqstory.StoryUserBadge", this.jdField_a_of_type_JavaLangString + ",userItem is null ! plz fix it!");
       return;
     }
     if ((this.jdField_a_of_type_Int == 10000) || (this.jdField_a_of_type_Int == 10001))
     {
       if (TextUtils.isEmpty(((QQUserUIItem)localObject).getUserIconJumpURL()))
       {
-        SLog.e("Q.qqstory.StoryUserBadge", ((QQUserUIItem)localObject).getUnionId() + ",icon jump url is null!!");
+        wxe.e("Q.qqstory.StoryUserBadge", ((QQUserUIItem)localObject).getUnionId() + ",icon jump url is null!!");
         return;
       }
       paramView = new Intent(getContext(), QQBrowserActivity.class);
@@ -170,7 +176,7 @@ public class StoryUserBadgeView
     for (paramView = "1";; paramView = "2")
     {
       localObject = ((QQUserUIItem)localObject).getIconJumpUrlKey();
-      StoryReportor.a("home_page", "clk_medal", this.b, 0, new String[] { paramView, localObject });
+      wxj.a("home_page", "clk_medal", this.b, 0, new String[] { paramView, localObject });
       return;
       if (this.jdField_a_of_type_Int != 10002) {
         break;
@@ -185,7 +191,7 @@ public class StoryUserBadgeView
   {
     super.onDetachedFromWindow();
     this.jdField_a_of_type_Boolean = false;
-    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView$UserIconUpdateReceiver);
+    umc.a().unRegisterSubscriber(this.jdField_a_of_type_Xwv);
   }
   
   protected void onFinishInflate()
@@ -195,8 +201,10 @@ public class StoryUserBadgeView
   
   public void setUnionID(@NonNull String paramString, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      AssertUtils.a(false, "It is not allow to set the null union id!!!!!!");
+    if (TextUtils.isEmpty(paramString))
+    {
+      xqq.a(false, "It is not allow to set the null union id!!!!!!");
+      return;
     }
     this.b = paramInt;
     this.jdField_a_of_type_JavaLangString = paramString;
@@ -205,7 +213,7 @@ public class StoryUserBadgeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.StoryUserBadgeView
  * JD-Core Version:    0.7.0.1
  */

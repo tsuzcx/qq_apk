@@ -1,85 +1,95 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.List;
 
-public class tfc
-  extends FriendListObserver
+final class tfc
+  extends tez
 {
-  public tfc(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
-  
-  protected void onGetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    if (paramBoolean1) {
-      PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
+    super.installSucceed(paramString1, paramString2);
+    if (!tfa.b()) {
+      return;
+    }
+    tfa.a(paramString1, paramString2, true);
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    tlo.c("WeishiDownloadUtil", "qzone onDownloadCancel info = " + paramDownloadInfo);
+    if (tfa.a(paramDownloadInfo))
+    {
+      tfa.a();
+      int i = tfa.b();
+      WSPublicAccReport.getInstance().reportDownload(tfa.a(), i, 3, 2, 0);
     }
   }
   
-  protected void onSetSpecialCareSwitch_global(boolean paramBoolean, Object[] paramArrayOfObject)
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
   {
-    if (paramBoolean)
+    tlo.d("WeishiDownloadUtil", "qzone onDownloadError info = " + paramDownloadInfo);
+    if (tfa.a(paramDownloadInfo))
     {
-      paramArrayOfObject = ((FriendsManager)this.a.app.getManager(50)).b();
-      if ((paramArrayOfObject != null) && (paramArrayOfObject.size() != 0)) {
-        break label51;
-      }
+      tfa.a();
+      paramInt2 = tfa.b();
+      WSPublicAccReport.getInstance().reportDownload(tfa.a(), paramInt2, 3, 2, 0);
+      tlo.d("WeishiDownloadUtil", "qzone  errorCode:" + paramInt1 + ", errorMsg: " + paramString);
+      tfa.a(paramDownloadInfo, paramInt1);
     }
-    label51:
-    for (paramArrayOfObject = "暂无";; paramArrayOfObject = paramArrayOfObject.size() + "人")
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    tfa.a();
+    tlo.a("WeishiDownloadUtil", "qzone onDownloadFinish~~~");
+    int i = tfa.a();
+    int j = tfa.b();
+    if (j != 3)
     {
-      PermisionPrivacyActivity.b(this.a).setRightText(paramArrayOfObject);
+      tlo.c("WeishiDownloadUtil", "onDownloadFinish return!qzone只有主动下载");
+      return;
+    }
+    if (!tfa.b())
+    {
+      tlo.d("WeishiDownloadUtil", "这是Qzone的监听器，不响应qq onDownloadFinish eventId:" + i + ",eventType:" + j);
+      return;
+    }
+    tfa.a(paramDownloadInfo, i, j, "Qzone");
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    super.onDownloadPause(paramDownloadInfo);
+    tlo.d("WeishiDownloadUtil", "qzone onDownloadPause info = " + paramDownloadInfo);
+    if (tfa.a(paramDownloadInfo)) {
+      tfa.a();
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    super.onDownloadUpdate(paramList);
+    if (!tfa.b()) {}
+    while ((paramList == null) || (paramList.size() <= 0)) {
       return;
     }
   }
   
-  protected void onSetSpecialCareSwitchesOfAPerson(boolean paramBoolean, Object[] paramArrayOfObject)
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
   {
-    if (paramBoolean)
-    {
-      paramArrayOfObject = ((FriendsManager)this.a.app.getManager(50)).b();
-      if ((paramArrayOfObject != null) && (paramArrayOfObject.size() != 0)) {
-        break label51;
-      }
-    }
-    label51:
-    for (paramArrayOfObject = "暂无";; paramArrayOfObject = paramArrayOfObject.size() + "人")
-    {
-      PermisionPrivacyActivity.b(this.a).setRightText(paramArrayOfObject);
-      return;
-    }
+    super.onDownloadWait(paramDownloadInfo);
+    tlo.d("WeishiDownloadUtil", "qzone onDownloadWait info = " + paramDownloadInfo);
   }
   
-  protected void onSetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
+  public void packageReplaced(String paramString1, String paramString2)
   {
-    if (!paramBoolean1) {
-      this.a.a(2131436066, 1);
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
-  }
-  
-  protected void onUpdateSpecialCareList(boolean paramBoolean1, boolean paramBoolean2, List paramList)
-  {
-    if (paramBoolean1)
-    {
-      paramList = ((FriendsManager)this.a.app.getManager(50)).b();
-      if ((paramList != null) && (paramList.size() != 0)) {
-        break label51;
-      }
-    }
-    label51:
-    for (paramList = "暂无";; paramList = paramList.size() + "人")
-    {
-      PermisionPrivacyActivity.b(this.a).setRightText(paramList);
-      return;
-    }
+    super.packageReplaced(paramString1, paramString2);
+    tlo.d("WeishiDownloadUtil", "qzone packageReplaced appid = " + paramString1 + ", packageName = " + paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tfc
  * JD-Core Version:    0.7.0.1
  */

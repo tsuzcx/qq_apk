@@ -1,168 +1,70 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader.IUniformDownloaderListener;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBaby;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBaby.IUniformDownloaderAppBabyListener;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk.RParam;
-import com.tencent.mobileqq.statistics.StatisticAssist;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.mobileqq.music.IQQPlayerService;
+import com.tencent.mobileqq.music.IQQPlayerService.Stub;
+import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
+import com.tencent.mobileqq.webviewplugin.JsBridgeListener;
+import org.json.JSONObject;
 
 public class gda
-  implements UniformDownloaderAppBaby.IUniformDownloaderAppBabyListener
+  implements ServiceConnection
 {
-  public gda(UniformDownloaderAppBaby paramUniformDownloaderAppBaby) {}
+  public gda(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
   
-  public void a(int paramInt, Bundle paramBundle)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    this.a.b(paramInt);
-    if (UniformDownloaderAppBaby.a(this.a) != null)
+    MusicGeneWebViewPlugin.a(this.a, IQQPlayerService.Stub.a(paramIBinder));
+    try
     {
-      if (paramInt <= 100) {
-        break label45;
+      paramComponentName = MusicGeneWebViewPlugin.a(this.a).a(3, MusicGeneWebViewPlugin.a());
+      paramIBinder = MusicGeneWebViewPlugin.a(this.a).a();
+      if ((paramIBinder != null) && (paramIBinder.equals(paramComponentName))) {
+        MusicGeneWebViewPlugin.a(this.a).a(MusicGeneWebViewPlugin.a(this.a));
       }
-      UniformDownloaderAppBaby.a(this.a).c(this.a.h(), paramBundle);
-    }
-    label45:
-    while (paramInt - this.a.g() <= 0) {
-      return;
-    }
-    this.a.a(paramInt);
-    UniformDownloaderAppBaby.a(this.a).c(paramInt, paramBundle);
-  }
-  
-  public void a(int paramInt, String paramString, Bundle paramBundle)
-  {
-    this.a.c(5);
-    QQAppInterface localQQAppInterface = UniformDownloadMgr.a().a();
-    if (localQQAppInterface != null)
-    {
-      long l1 = -1L;
-      long l2 = -1L;
-      UniformDownloaderAppBabySdk.RParam localRParam = UniformDownloaderAppBabySdk.RParam.a(paramBundle);
-      if (localRParam != null)
+      if (MusicGeneWebViewPlugin.a(this.a) != null)
       {
-        l1 = localRParam.jdField_a_of_type_Long;
-        l2 = localRParam.b;
-      }
-      FileManagerUtil.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", this.a.jdField_a_of_type_Long, "", "", "", paramInt, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
-      FileManagerUtil.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", this.a.jdField_a_of_type_Long, "", "", "", paramInt, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
-      StatisticAssist.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.a(), "Stop_download_2-0_3-0");
-    }
-    for (;;)
-    {
-      if (UniformDownloaderAppBaby.a(this.a) != null) {
-        UniformDownloaderAppBaby.a(this.a).a(paramInt, paramString, paramBundle);
+        paramComponentName = new JSONObject();
+        paramComponentName.put("code", "0");
+        MusicGeneWebViewPlugin.a(this.a).a(paramComponentName);
+        MusicGeneWebViewPlugin.a(this.a, null);
       }
       return;
-      QLog.w(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 6");
+    }
+    catch (Exception paramComponentName)
+    {
+      paramComponentName.printStackTrace();
     }
   }
   
-  public void a(Bundle paramBundle)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    if (UniformDownloaderAppBaby.a(this.a) != null) {
-      UniformDownloaderAppBaby.a(this.a).a(this.a.h(), null);
-    }
-  }
-  
-  public void a(String paramString, Bundle paramBundle)
-  {
-    QLog.i(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "] >>>>>>Download SUCCESS. sdk download path=" + paramString);
-    this.a.c(4);
-    if (paramString == null)
+    try
     {
-      QLog.e(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. download success, but filepath = null");
-      a(40, UniformDownloader.a(40), paramBundle);
+      if (MusicGeneWebViewPlugin.a(this.a) != null) {
+        MusicGeneWebViewPlugin.a(this.a).b(MusicGeneWebViewPlugin.a(this.a));
+      }
+      if (MusicGeneWebViewPlugin.a(this.a) != null)
+      {
+        paramComponentName = new JSONObject();
+        paramComponentName.put("code", "1");
+        MusicGeneWebViewPlugin.a(this.a).a(paramComponentName);
+        MusicGeneWebViewPlugin.a(this.a, null);
+      }
     }
-    label779:
-    label817:
-    for (;;)
+    catch (Exception paramComponentName)
     {
-      return;
-      if (FileUtils.a(this.a.e)) {
-        this.a.e = UniformDownloadUtil.c(this.a.e);
-      }
-      QLog.i(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. try to rename file to path:" + this.a.e);
-      Object localObject;
-      if (!FileUtils.a(new File(paramString), new File(this.a.e)))
-      {
-        QLog.e(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].rename failed. temppath=" + paramString + " save path=" + this.a.e);
-        localObject = FileUtil.b(paramString);
-        if (!FileManagerUtil.b().equalsIgnoreCase((String)localObject))
-        {
-          String str = (String)localObject + this.a.d;
-          localObject = str;
-          if (FileUtils.a(str)) {
-            localObject = UniformDownloadUtil.c(str);
-          }
-          QLog.i(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed, try to save file to path: " + (String)localObject);
-          if (!FileUtils.a(new File(paramString), new File((String)localObject)))
-          {
-            QLog.e(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed, try failed save path: " + (String)localObject);
-            a(7, UniformDownloader.a(7), paramBundle);
-            return;
-          }
-          this.a.e = ((String)localObject);
-        }
-      }
-      else
-      {
-        QLog.i(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename file success. path:" + this.a.e);
-        paramString = UniformDownloadMgr.a().a();
-        if (paramString == null) {
-          break label779;
-        }
-        long l1 = -1L;
-        long l2 = -1L;
-        localObject = UniformDownloaderAppBabySdk.RParam.a(paramBundle);
-        if (localObject == null) {
-          break label739;
-        }
-        l1 = ((UniformDownloaderAppBabySdk.RParam)localObject).jdField_a_of_type_Long;
-        l2 = ((UniformDownloaderAppBabySdk.RParam)localObject).b;
-        FileManagerUtil.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", l1, l2, this.a.b, 0, null);
-        FileManagerUtil.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", l1, l2, this.a.b, 0, null);
-        StatisticAssist.a(paramString.getApplication().getApplicationContext(), paramString.a(), "Complete_download_2_0");
-      }
       for (;;)
       {
-        if (UniformDownloaderAppBaby.a(this.a) == null) {
-          break label817;
-        }
-        UniformDownloaderAppBaby.a(this.a).a(this.a.e, this.a.b, paramBundle);
-        return;
-        QLog.e(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed 2, try failed save path: " + paramString);
-        a(7, UniformDownloader.a(7), paramBundle);
-        return;
-        label739:
-        QLog.w(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report may failed - 0");
-        break;
-        QLog.i(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 7");
+        paramComponentName.printStackTrace();
       }
     }
+    MusicGeneWebViewPlugin.a(this.a, null);
   }
-  
-  public void b(Bundle paramBundle)
-  {
-    this.a.c(3);
-    if (UniformDownloaderAppBaby.a(this.a) != null) {
-      UniformDownloaderAppBaby.a(this.a).d(this.a.h(), null);
-    }
-  }
-  
-  public void c(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
  * Qualified Name:     gda
  * JD-Core Version:    0.7.0.1
  */

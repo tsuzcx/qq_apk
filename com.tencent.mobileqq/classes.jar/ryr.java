@@ -1,42 +1,28 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.25.2;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
-class ryr
-  implements Runnable
+public class ryr
+  implements InvocationHandler
 {
-  ryr(ryq paramryq) {}
+  public ryr(FastWebActivity.25.2 param2) {}
   
-  public void run()
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    try
-    {
-      this.a.a.b(this.a.a.b, this.a.a.a);
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("ChatHistory", 2, "onExportMessageRecord Exception", localException);
-      }
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("ChatHistory", 2, "onExportMessageRecord OOM", localOutOfMemoryError);
-      }
-      return;
-    }
-    finally
-    {
-      this.a.a.c.dismiss();
-    }
+    this.a.a.a.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    FastWebActivity.a(this.a.a.a).setVisibility(8);
+    QLog.d(FastWebActivity.a(this.a.a.a), 1, "open web page, set activity transparent");
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ryr
  * JD-Core Version:    0.7.0.1
  */

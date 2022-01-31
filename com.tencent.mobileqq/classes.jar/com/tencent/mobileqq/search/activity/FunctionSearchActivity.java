@@ -21,7 +21,7 @@ public class FunctionSearchActivity
     return FunctionSearchFragment.a();
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     this.a = true;
     super.doOnCreate(paramBundle);
@@ -30,7 +30,7 @@ public class FunctionSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.FunctionSearchActivity
  * JD-Core Version:    0.7.0.1
  */

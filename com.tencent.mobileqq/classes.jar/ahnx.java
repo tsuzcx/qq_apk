@@ -1,27 +1,19 @@
-import com.tencent.mobileqq.richmedia.dc.DataAdapter;
-import java.util.HashMap;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.Comparator;
 
-public class ahnx
-  extends DataAdapter
+class ahnx
+  implements Comparator<MayKnowRecommend>
 {
-  int jdField_a_of_type_Int = 0;
-  boolean jdField_a_of_type_Boolean = false;
+  ahnx(ahns paramahns) {}
   
-  public HashMap a(String paramString)
+  public int a(MayKnowRecommend paramMayKnowRecommend1, MayKnowRecommend paramMayKnowRecommend2)
   {
-    if ("RealShortVideo.Record".equals(paramString))
-    {
-      paramString = new HashMap();
-      paramString.put("param_cameraID", String.valueOf(this.jdField_a_of_type_Int));
-      paramString.put("param_hasMultiSegments", String.valueOf(this.jdField_a_of_type_Boolean));
-      return paramString;
-    }
-    return null;
+    return paramMayKnowRecommend2.timestamp - paramMayKnowRecommend1.timestamp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahnx
  * JD-Core Version:    0.7.0.1
  */

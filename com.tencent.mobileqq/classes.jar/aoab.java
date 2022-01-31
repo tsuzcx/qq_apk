@@ -1,65 +1,254 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.graphics.RectF;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import java.lang.ref.WeakReference;
+import java.util.WeakHashMap;
 
-public class aoab
-  extends aoaa
+public final class aoab
+  extends Animation
 {
-  protected int a;
-  protected int b;
-  private int[] jdField_b_of_type_ArrayOfInt = new int[1];
-  protected int c;
-  protected int d;
-  protected int e;
-  protected int f;
+  static final WeakHashMap<View, aoab> jdField_a_of_type_JavaUtilWeakHashMap;
+  public static final boolean a;
+  float jdField_a_of_type_Float = 1.0F;
+  final Camera jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+  final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  final WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  float jdField_b_of_type_Float;
+  final RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
+  boolean jdField_b_of_type_Boolean;
+  float c;
+  float d;
+  float e;
+  float f;
+  float g = 1.0F;
+  float h = 1.0F;
+  float i;
+  float j;
   
-  public aoab(GLTextureView paramGLTextureView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  static
   {
-    super(paramGLTextureView, new int[] { 12324, paramInt1, 12323, paramInt2, 12322, paramInt3, 12321, paramInt4, 12325, paramInt5, 12326, paramInt6, 12344 });
-    this.a = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.e = paramInt5;
-    this.f = paramInt6;
-  }
-  
-  private int a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt1, int paramInt2)
-  {
-    if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt1, this.jdField_b_of_type_ArrayOfInt)) {
-      paramInt2 = this.jdField_b_of_type_ArrayOfInt[0];
-    }
-    return paramInt2;
-  }
-  
-  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig)
-  {
-    int j = paramArrayOfEGLConfig.length;
-    int i = 0;
-    while (i < j)
+    if (Integer.valueOf(Build.VERSION.SDK_INT).intValue() < 11) {}
+    for (boolean bool = true;; bool = false)
     {
-      EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
-      int k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12325, 0);
-      int m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12326, 0);
-      if ((k >= this.e) && (m >= this.f))
-      {
-        k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12324, 0);
-        m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323, 0);
-        int n = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322, 0);
-        int i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321, 0);
-        if ((k == this.a) && (m == this.jdField_b_of_type_Int) && (n == this.c) && (i1 == this.d)) {
-          return localEGLConfig;
-        }
-      }
-      i += 1;
+      jdField_a_of_type_Boolean = bool;
+      jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
+      return;
     }
-    return null;
+  }
+  
+  private aoab(View paramView)
+  {
+    setDuration(0L);
+    setFillAfter(true);
+    paramView.setAnimation(this);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+  }
+  
+  public static aoab a(View paramView)
+  {
+    aoab localaoab2 = (aoab)jdField_a_of_type_JavaUtilWeakHashMap.get(paramView);
+    aoab localaoab1;
+    if (localaoab2 != null)
+    {
+      localaoab1 = localaoab2;
+      if (localaoab2 == paramView.getAnimation()) {}
+    }
+    else
+    {
+      localaoab1 = new aoab(paramView);
+      jdField_a_of_type_JavaUtilWeakHashMap.put(paramView, localaoab1);
+    }
+    return localaoab1;
+  }
+  
+  private void a()
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localView != null) {
+      a(this.jdField_a_of_type_AndroidGraphicsRectF, localView);
+    }
+  }
+  
+  private void a(Matrix paramMatrix, View paramView)
+  {
+    float f3 = paramView.getWidth();
+    float f4 = paramView.getHeight();
+    boolean bool = this.jdField_b_of_type_Boolean;
+    float f1;
+    if (bool)
+    {
+      f1 = this.jdField_b_of_type_Float;
+      if (!bool) {
+        break label226;
+      }
+    }
+    label226:
+    for (float f2 = this.c;; f2 = f4 / 2.0F)
+    {
+      float f5 = this.d;
+      float f6 = this.e;
+      float f7 = this.f;
+      if ((f5 != 0.0F) || (f6 != 0.0F) || (f7 != 0.0F))
+      {
+        paramView = this.jdField_a_of_type_AndroidGraphicsCamera;
+        paramView.save();
+        paramView.rotateX(f5);
+        paramView.rotateY(f6);
+        paramView.rotateZ(-f7);
+        paramView.getMatrix(paramMatrix);
+        paramView.restore();
+        paramMatrix.preTranslate(-f1, -f2);
+        paramMatrix.postTranslate(f1, f2);
+      }
+      f5 = this.g;
+      f6 = this.h;
+      if ((f5 != 1.0F) || (f6 != 1.0F))
+      {
+        paramMatrix.postScale(f5, f6);
+        paramMatrix.postTranslate(-(f1 / f3) * (f5 * f3 - f3), -(f2 / f4) * (f6 * f4 - f4));
+      }
+      paramMatrix.postTranslate(this.i, this.j);
+      return;
+      f1 = f3 / 2.0F;
+      break;
+    }
+  }
+  
+  private void b()
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localView == null) || (localView.getParent() == null)) {
+      return;
+    }
+    RectF localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+    a(localRectF, localView);
+    localRectF.union(this.jdField_a_of_type_AndroidGraphicsRectF);
+    ((View)localView.getParent()).invalidate((int)Math.floor(localRectF.left), (int)Math.floor(localRectF.top), (int)Math.ceil(localRectF.right), (int)Math.ceil(localRectF.bottom));
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (this.jdField_a_of_type_Float != paramFloat)
+    {
+      this.jdField_a_of_type_Float = paramFloat;
+      View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localView != null) {
+        localView.invalidate();
+      }
+    }
+  }
+  
+  public void a(RectF paramRectF, View paramView)
+  {
+    paramRectF.set(0.0F, 0.0F, paramView.getWidth(), paramView.getHeight());
+    Matrix localMatrix = this.jdField_a_of_type_AndroidGraphicsMatrix;
+    localMatrix.reset();
+    a(localMatrix, paramView);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(paramRectF);
+    paramRectF.offset(paramView.getLeft(), paramView.getTop());
+    float f1;
+    if (paramRectF.right < paramRectF.left)
+    {
+      f1 = paramRectF.right;
+      paramRectF.right = paramRectF.left;
+      paramRectF.left = f1;
+    }
+    if (paramRectF.bottom < paramRectF.top)
+    {
+      f1 = paramRectF.top;
+      paramRectF.top = paramRectF.bottom;
+      paramRectF.bottom = f1;
+    }
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localView != null)
+    {
+      paramTransformation.setAlpha(this.jdField_a_of_type_Float);
+      a(paramTransformation.getMatrix(), localView);
+    }
+  }
+  
+  public void b(float paramFloat)
+  {
+    if ((!this.jdField_b_of_type_Boolean) || (this.jdField_b_of_type_Float != paramFloat))
+    {
+      a();
+      this.jdField_b_of_type_Boolean = true;
+      this.jdField_b_of_type_Float = paramFloat;
+      b();
+    }
+  }
+  
+  public void c(float paramFloat)
+  {
+    if ((!this.jdField_b_of_type_Boolean) || (this.c != paramFloat))
+    {
+      a();
+      this.jdField_b_of_type_Boolean = true;
+      this.c = paramFloat;
+      b();
+    }
+  }
+  
+  public void d(float paramFloat)
+  {
+    if (this.g != paramFloat)
+    {
+      a();
+      this.g = paramFloat;
+      b();
+    }
+  }
+  
+  public void e(float paramFloat)
+  {
+    if (this.h != paramFloat)
+    {
+      a();
+      this.h = paramFloat;
+      b();
+    }
+  }
+  
+  public void f(float paramFloat)
+  {
+    if (this.i != paramFloat)
+    {
+      a();
+      this.i = paramFloat;
+      b();
+    }
+  }
+  
+  public void g(float paramFloat)
+  {
+    if (this.j != paramFloat)
+    {
+      a();
+      this.j = paramFloat;
+      b();
+    }
+  }
+  
+  public void h(float paramFloat)
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localView != null) {
+      f(paramFloat - localView.getLeft());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoab
  * JD-Core Version:    0.7.0.1
  */

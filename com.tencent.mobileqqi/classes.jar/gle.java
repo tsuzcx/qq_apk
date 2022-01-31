@@ -1,54 +1,29 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.richstatus.EditActivity;
-import java.util.ArrayList;
-import java.util.Collections;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTimer;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView.TimerCallback;
 
-class gle
-  implements Animation.AnimationListener
+public class gle
+  implements CountdownTextView.TimerCallback
 {
-  gle(gld paramgld) {}
+  public gle(StructMsgItemTimer paramStructMsgItemTimer, CountdownTextView paramCountdownTextView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    EditActivity.a(this.a.a).setVisibility(0);
-    paramAnimation = new ArrayList();
-    int i = 0;
-    while (i < 6)
-    {
-      paramAnimation.add(Integer.valueOf(i));
-      i += 1;
-    }
-    Collections.shuffle(paramAnimation);
-    i = 0;
-    if (i < 6)
-    {
-      View localView = EditActivity.a(this.a.a).getChildAt(((Integer)paramAnimation.get(i)).intValue());
-      if (localView == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        localView.postDelayed(new glf(this, (ImageView)localView.findViewById(2131232966), (TextView)localView.findViewById(2131232967)), i * 100);
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_c_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(StructMsgItemTimer.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer, 0L));
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(long paramLong)
   {
-    EditActivity.a(this.a.a).setVisibility(4);
+    paramLong /= 1000L;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(StructMsgItemTimer.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer, paramLong));
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_c_of_type_Long = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gle
  * JD-Core Version:    0.7.0.1
  */

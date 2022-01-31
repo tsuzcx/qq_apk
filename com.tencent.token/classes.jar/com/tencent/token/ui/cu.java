@@ -1,15 +1,20 @@
 package com.tencent.token.ui;
 
-import java.util.TimerTask;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 
-final class cu
-  extends TimerTask
+class cu
+  implements DialogInterface.OnClickListener
 {
   cu(ct paramct) {}
   
-  public final void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.c();
+    this.a.a.dismissDialog();
+    paramDialogInterface = new Intent(this.a.a, FaceRecognitionDefaultActivity.class);
+    paramDialogInterface.addFlags(67108864);
+    this.a.a.startActivity(paramDialogInterface);
   }
 }
 

@@ -1,17 +1,14 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.MotionEvent;
+import java.util.List;
 
 public abstract interface ood
 {
-  public abstract void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener);
+  public abstract void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<omt> paramList, boolean paramBoolean2, int paramInt2, int paramInt3);
   
-  public abstract boolean a();
-  
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public abstract void onCommentStateError(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ood
  * JD-Core Version:    0.7.0.1
  */

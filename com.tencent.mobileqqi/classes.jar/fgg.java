@@ -1,41 +1,25 @@
-import com.tencent.mobileqq.app.DiscussionIconHelper;
-import java.util.ArrayList;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SaveTrafficHandler;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class fgg
+  extends Thread
 {
-  public byte a;
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  
-  private fgg(DiscussionIconHelper paramDiscussionIconHelper)
+  public fgg(SaveTrafficHandler paramSaveTrafficHandler, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Byte = 1;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    super(paramString);
   }
   
-  public void a(byte paramByte)
+  public void run()
   {
-    if (paramByte == 3)
+    if (this.jdField_a_of_type_ComTencentMobileqqAppSaveTrafficHandler.a.a() != null)
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Byte = 1;
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangString = null;
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_b_of_type_JavaLangString = null;
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppSaveTrafficHandler.a.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppSaveTrafficHandler.a.a(), 0).edit();
+      localEditor.putInt("key_savetrafficseq", this.jdField_a_of_type_Int);
+      localEditor.commit();
     }
-    while (paramByte != 2) {
-      return;
-    }
-    this.jdField_b_of_type_Boolean = false;
   }
 }
 

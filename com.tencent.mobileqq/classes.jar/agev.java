@@ -1,34 +1,34 @@
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class agev
-  implements View.OnClickListener
+  extends agem
 {
-  public agev(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
-  
-  public void onClick(View paramView)
+  public agev(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131371246: 
-      this.a.b();
-      return;
-    case 2131371249: 
-      this.a.d();
-      return;
-    case 2131371252: 
-      this.a.e();
-      return;
-    }
-    this.a.doOnBackPressed();
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
+  }
+  
+  public aeqi a()
+  {
+    return new agex(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  public View a(BaseChatItemLayout paramBaseChatItemLayout)
+  {
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562755, paramBaseChatItemLayout, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agev
  * JD-Core Version:    0.7.0.1
  */

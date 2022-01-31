@@ -1,39 +1,53 @@
 package com.tencent.token.ui;
 
 import android.content.Intent;
-import android.os.Handler.Callback;
 import android.os.Message;
-import com.tencent.token.ax;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.UpgradeDeterminResult;
-import com.tencent.token.global.d;
-import com.tencent.token.global.e;
+import com.tencent.token.core.bean.RealNameStatusResult;
+import com.tencent.token.global.f;
 
-final class as
-  implements Handler.Callback
+class as
+  extends cb
 {
-  as(BaseActivity paramBaseActivity) {}
-  
-  public final boolean handleMessage(Message paramMessage)
+  as(AddFaceResultActivity paramAddFaceResultActivity)
   {
-    e.a("Callback=" + paramMessage.arg1);
-    if (paramMessage.arg1 == 270)
+    super(paramAddFaceResultActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
+    case 3065: 
+    case 3066: 
+    default: 
+      return;
+    case 3064: 
       this.a.dismissDialog();
-      paramMessage = (UpgradeDeterminResult)((d)paramMessage.obj).d;
-      e.a("mSmsPrefix=" + paramMessage.mSmsPrefix);
-      e.a("mMobileMask=" + paramMessage.mMobileMask);
-      QQUser localQQUser = ax.a().e();
-      e.a("currentUser=" + localQQUser);
-      Intent localIntent = new Intent(this.a, VryMobileForStrategyActivity.class);
-      localIntent.setFlags(536870912);
-      localIntent.putExtra("intent.qquser", localQQUser);
-      localIntent.putExtra("page_id", 13);
-      localIntent.putExtra("intent.upgradedetermin", paramMessage);
-      this.a.startActivity(localIntent);
-      return true;
+      if (paramMessage.arg1 == 0)
+      {
+        paramMessage = (RealNameStatusResult)paramMessage.obj;
+        Intent localIntent = new Intent(this.a, RealNameStep1InputNameIdActivity.class);
+        localIntent.putExtra("realname_result", paramMessage);
+        localIntent.putExtra("real_uin", AddFaceResultActivity.access$000(this.a).b());
+        localIntent.putExtra("from_add_face", AddFaceResultActivity.access$100(this.a));
+        this.a.startActivity(localIntent);
+        return;
+      }
+      paramMessage = (f)paramMessage.obj;
+      this.a.showUserDialog(paramMessage.c);
+      return;
     }
-    return false;
+    this.a.dismissDialog();
+    if (paramMessage.arg1 == 0)
+    {
+      paramMessage = new Intent(this.a, AddFaceRealNameApplyResultActivity.class);
+      paramMessage.addFlags(67108864);
+      this.a.startActivity(paramMessage);
+      return;
+    }
+    paramMessage = (f)paramMessage.obj;
+    this.a.showUserDialog(paramMessage.c);
   }
 }
 

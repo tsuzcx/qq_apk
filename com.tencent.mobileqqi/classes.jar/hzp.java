@@ -1,29 +1,25 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AdapterView.AdapterDataSetObserver;
-import com.tencent.widget.FastScroller;
+import android.app.Activity;
+import android.content.Context;
+import android.widget.Toast;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.OnPluginReadyListener;
+import cooperation.plugin.IPluginManager.PluginParams;
 
-public class hzp
-  extends AdapterView.AdapterDataSetObserver
+public final class hzp
+  implements IPluginManager.OnPluginReadyListener
 {
-  public hzp(AbsListView paramAbsListView)
+  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
   {
-    super(paramAbsListView);
-  }
-  
-  public void onChanged()
-  {
-    super.onChanged();
-    if (this.a.a != null) {
-      this.a.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
     }
-  }
-  
-  public void onInvalidated()
-  {
-    super.onInvalidated();
-    if (this.a.a != null) {
-      this.a.a.c();
+    if (paramBoolean)
+    {
+      IPluginManager.b((Activity)paramContext, paramPluginParams);
+      return;
     }
+    Toast.makeText(paramContext, "加载失败", 0).show();
   }
 }
 

@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.EditTagActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.HornListActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.data.HornDetail;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class cqg
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public cqg(EditTagActivity paramEditTagActivity) {}
+  public cqg(HornListActivity paramHornListActivity, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a();
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.b, "P_CliOper", "Svip", "", "Vip_nearby", "Vip_nearby_enterProfileCard", 0, 0, "", "", "", "");
+    paramView = new ProfileActivity.AllInOne(this.jdField_a_of_type_JavaLangString, 41);
+    paramView.g = this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.a.nickName;
+    paramView.a = this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.a.seg;
+    paramView.e = 4;
+    paramView.f = 5;
+    ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity, paramView);
   }
 }
 

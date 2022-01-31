@@ -1,164 +1,125 @@
 package c.t.m.g;
 
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
-import android.util.Pair;
-import com.tencent.map.geolocation.internal.TencentExtraKeys;
-import com.tencent.map.geolocation.internal.TencentLogImpl;
-import com.tencent.tencentmap.lbssdk.service.e;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.security.GeneralSecurityException;
+import java.util.LinkedList;
+import javax.net.ssl.SSLException;
 
-final class du
+public final class du
 {
-  final LinkedBlockingQueue<a> a;
-  final da b;
-  long c;
-  long d;
-  long e;
-  long f;
-  volatile boolean g;
+  public LinkedList<dy> a = null;
+  public fn b = null;
+  public fn c = null;
+  public float d = 0.0F;
+  public float e = 0.0F;
+  public long f = 0L;
+  public boolean g = true;
+  public float h = 0.0F;
+  public ef i;
+  private final float j = 1.0F;
+  private final float k = 0.6F;
   
-  du(da paramda)
+  private static String a(String paramString)
   {
-    this.b = paramda;
-    this.a = new LinkedBlockingQueue(3);
-  }
-  
-  static String a(byte[] paramArrayOfByte, int paramInt)
-  {
-    if ((!TencentLogImpl.isDebugEnabled()) && (paramArrayOfByte != null)) {}
-    try
+    String str2 = "GBK";
+    String str1 = str2;
+    int n;
+    int m;
+    if (paramString != null)
     {
-      if (e.o(paramArrayOfByte, 1) < 0) {
-        return dk.a(paramInt, 0);
-      }
-      paramArrayOfByte = dk.a(paramInt, 1);
-      return paramArrayOfByte;
+      paramString = paramString.split(";");
+      n = paramString.length;
+      m = 0;
     }
-    catch (UnsatisfiedLinkError paramArrayOfByte) {}
-    return null;
-  }
-  
-  /* Error */
-  static byte[] a(byte[] paramArrayOfByte)
-  {
-    // Byte code:
-    //   0: new 62	java/io/ByteArrayOutputStream
-    //   3: dup
-    //   4: aload_0
-    //   5: arraylength
-    //   6: invokespecial 63	java/io/ByteArrayOutputStream:<init>	(I)V
-    //   9: astore_1
-    //   10: new 65	java/util/zip/GZIPOutputStream
-    //   13: dup
-    //   14: aload_1
-    //   15: invokespecial 68	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   18: astore_2
-    //   19: aload_2
-    //   20: aload_0
-    //   21: invokevirtual 72	java/util/zip/GZIPOutputStream:write	([B)V
-    //   24: aload_2
-    //   25: invokevirtual 75	java/util/zip/GZIPOutputStream:close	()V
-    //   28: aload_1
-    //   29: invokevirtual 79	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   32: astore_0
-    //   33: aload_1
-    //   34: invokevirtual 80	java/io/ByteArrayOutputStream:close	()V
-    //   37: aload_0
-    //   38: areturn
-    //   39: astore_1
-    //   40: aconst_null
-    //   41: astore_0
-    //   42: aload_1
-    //   43: invokevirtual 83	java/lang/Exception:printStackTrace	()V
-    //   46: aload_0
-    //   47: areturn
-    //   48: astore_1
-    //   49: aconst_null
-    //   50: astore_0
-    //   51: aload_1
-    //   52: invokevirtual 84	java/lang/Error:printStackTrace	()V
-    //   55: aload_0
-    //   56: areturn
-    //   57: astore_1
-    //   58: goto -7 -> 51
-    //   61: astore_1
-    //   62: goto -20 -> 42
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	65	0	paramArrayOfByte	byte[]
-    //   9	25	1	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   39	4	1	localException1	java.lang.Exception
-    //   48	4	1	localError1	java.lang.Error
-    //   57	1	1	localError2	java.lang.Error
-    //   61	1	1	localException2	java.lang.Exception
-    //   18	7	2	localGZIPOutputStream	java.util.zip.GZIPOutputStream
-    // Exception table:
-    //   from	to	target	type
-    //   0	33	39	java/lang/Exception
-    //   0	33	48	java/lang/Error
-    //   33	37	57	java/lang/Error
-    //   33	37	61	java/lang/Exception
-  }
-  
-  final void a(a parama)
-  {
-    a.d(parama);
-    Iterator localIterator = this.a.iterator();
-    do
+    for (;;)
     {
-      if (!localIterator.hasNext()) {
+      str1 = str2;
+      if (m < n)
+      {
+        str1 = paramString[m].trim();
+        int i1 = str1.indexOf("charset=");
+        if (-1 != i1) {
+          str1 = str1.substring(i1 + 8, str1.length());
+        }
+      }
+      else
+      {
+        return str1;
+      }
+      m += 1;
+    }
+  }
+  
+  public static void a(String paramString, byte[] paramArrayOfByte, int paramInt, du.b paramb)
+  {
+    for (;;)
+    {
+      try
+      {
+        HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(paramString).openConnection();
+        localHttpURLConnection.setRequestProperty("User-Agent", "Dalvik/1.6.0 (Linux; U; Android 4.4; Nexus 5 Build/KRT16M)");
+        localHttpURLConnection.setRequestProperty("Content-Type", "application/octet-stream");
+        localHttpURLConnection.setRequestMethod("POST");
+        localHttpURLConnection.setConnectTimeout(10000);
+        localHttpURLConnection.setDoOutput(true);
+        localHttpURLConnection.setFixedLengthStreamingMode(paramArrayOfByte.length);
+        localHttpURLConnection.setRequestProperty("Connection", "close");
+        Object localObject = localHttpURLConnection.getOutputStream();
+        ((OutputStream)localObject).write(paramArrayOfByte);
+        ((OutputStream)localObject).flush();
+        ((OutputStream)localObject).close();
+        int m = localHttpURLConnection.getResponseCode();
+        switch (m)
+        {
+        case 200: 
+          paramb.b("net sdk error: ".concat(String.valueOf(m)));
+          localHttpURLConnection.disconnect();
+          return;
+          localObject = a(localHttpURLConnection.getHeaderField("content-type"));
+          paramb.a(new String(a(localHttpURLConnection.getInputStream()), (String)localObject));
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        if ((paramInt <= 0) && (((localThrowable instanceof GeneralSecurityException)) || ((localThrowable instanceof SSLException))))
+        {
+          paramString = paramString.replaceAll("https:", "http:");
+          paramInt += 1;
+        }
+        else
+        {
+          paramb.b("tryTime=" + paramInt + "," + paramString + "," + Log.getStackTraceString(localThrowable));
+          return;
+        }
+      }
+    }
+  }
+  
+  private static byte[] a(InputStream paramInputStream)
+  {
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(256);
+    byte[] arrayOfByte = dn.a().a(512);
+    for (;;)
+    {
+      int m = paramInputStream.read(arrayOfByte);
+      if (m == -1) {
         break;
       }
-    } while (a.c((a)localIterator.next()) != a.c(parama));
-    for (int i = 1;; i = 0)
-    {
-      if ((a.e(parama) > 0) && (i == 0) && (a.c(parama) != 2))
-      {
-        f.a.a("TxRequestSender", "retryIfNeed: times=" + a.e(parama));
-        this.a.offer(parama);
-      }
-      return;
+      localByteArrayOutputStream.write(arrayOfByte, 0, m);
     }
-  }
-  
-  static final class a
-  {
-    public static final a d = new a();
-    final Object a;
-    public String b;
-    public long c;
-    private final int e;
-    private final byte[] f;
-    private final String g;
-    private int h = 1;
-    
-    private a()
-    {
-      this.e = 0;
-      this.f = null;
-      this.g = null;
-      this.a = null;
-    }
-    
-    a(int paramInt, byte[] paramArrayOfByte, String paramString, Object paramObject)
-    {
-      this.e = paramInt;
-      this.f = paramArrayOfByte;
-      this.g = paramString;
-      this.a = paramObject;
-      if (3 == paramInt) {
-        this.h = 3;
-      }
-    }
+    paramInputStream.close();
+    dn.a().a(arrayOfByte);
+    return localByteArrayOutputStream.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.du
  * JD-Core Version:    0.7.0.1
  */

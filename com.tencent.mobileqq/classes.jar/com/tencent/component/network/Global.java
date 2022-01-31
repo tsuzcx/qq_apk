@@ -5,23 +5,24 @@ import com.tencent.component.network.module.common.NetworkState;
 
 public class Global
 {
-  private static Context a;
+  public static final String SDK_VERSION = "${env.NumberVersion}";
+  private static Context sContext;
   
-  public static Context a()
+  public static Context getContext()
   {
-    return a;
+    return sContext;
   }
   
-  public static void a(Context paramContext)
+  public static void init(Context paramContext)
   {
-    a = paramContext;
-    NetworkManager.init(a());
-    NetworkState.g().setContext(a());
+    sContext = paramContext;
+    NetworkManager.init(getContext());
+    NetworkState.g().setContext(getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.Global
  * JD-Core Version:    0.7.0.1
  */

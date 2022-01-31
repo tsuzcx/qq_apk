@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import mqq.os.MqqHandler;
-
-class twb
-  implements Runnable
+public class twb
 {
-  twb(tvy paramtvy) {}
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void run()
+  public twb(String paramString1, boolean paramBoolean, String paramString2)
   {
-    this.a.a.a.removeMessages(1);
-    this.a.a.a.removeMessages(1);
-    this.a.a.a.sendEmptyMessageDelayed(1, 500L);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     twb
  * JD-Core Version:    0.7.0.1
  */

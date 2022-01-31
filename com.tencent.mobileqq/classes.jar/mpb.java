@@ -1,28 +1,18 @@
-import android.app.Dialog;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
 
-public class mpb
-  implements Runnable
+public abstract interface mpb
 {
-  public mpb(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, long paramLong);
   
-  public void run()
-  {
-    if ((FastWebVideoFeedsPlayManager.a(this.a) != null) && (FastWebVideoFeedsPlayManager.a(this.a).isShowing()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "showMobileNetHint() mNetworkDialog.isShowing()=true, RETURN");
-      }
-      return;
-    }
-    FastWebVideoFeedsPlayManager.a(this.a, ReadInJoyUtils.a(FastWebVideoFeedsPlayManager.a(this.a), new mpc(this), new mpd(this)));
-  }
+  public abstract void a(int paramInt, long paramLong);
+  
+  public abstract void a(MotionEvent paramMotionEvent);
+  
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mpb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,26 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class taf
-  implements CompoundButton.OnCheckedChangeListener
+final class taf
+  implements bfah
 {
-  public taf(LoginInfoActivity paramLoginInfoActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(BaseResp paramBaseResp)
   {
-    int j = 1;
-    int i = 1;
-    if (paramCompoundButton == LoginInfoActivity.a(this.a).a())
+    switch (paramBaseResp.errCode)
     {
-      paramCompoundButton = this.a.app;
-      if (paramBoolean)
-      {
-        ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Mobile_pc_online", 0, i, "", "", "", "");
-        SettingCloneUtil.writeValue(this.a, this.a.app.getCurrentAccountUin(), "login_accounts", "qqsetting_bothonline_key", paramBoolean);
-        this.a.app.l();
-      }
-    }
-    do
-    {
-      return;
-      i = 0;
-      break;
-      if ((LoginInfoActivity.b(this.a) != null) && (paramCompoundButton == LoginInfoActivity.b(this.a).a()))
-      {
-        LoginInfoActivity.a(this.a, paramBoolean);
-        return;
-      }
-    } while (paramCompoundButton != LoginInfoActivity.c(this.a).a());
-    paramCompoundButton = this.a.app;
-    if (paramBoolean) {}
-    for (i = j;; i = 0)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Security_check", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, "security_scan_key", "qqsetting_security_scan_key", paramBoolean);
+    case -1: 
+    default: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131720031, 1).a();
+    case -2: 
       return;
     }
+    QQToast.a(BaseApplicationImpl.getContext(), 2, 2131720050, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     taf
  * JD-Core Version:    0.7.0.1
  */

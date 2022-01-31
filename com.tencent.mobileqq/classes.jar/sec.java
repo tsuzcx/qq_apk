@@ -1,35 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import tencent.im.oidb.oidb_0xc90.RspBody;
 
-class sec
-  implements Runnable
+public abstract class sec
 {
-  sec(seb paramseb, ArrayList paramArrayList) {}
+  public sec(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
   
-  public void run()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
-    View localView;
-    do
-    {
-      return;
-      localView = this.jdField_a_of_type_Seb.a.a[33];
-    } while (localView == null);
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-      localView.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Seb.a.a(33, localView, this.jdField_a_of_type_JavaUtilArrayList, true, true);
-      return;
-      localView.setVisibility(0);
-    }
-  }
+  public void a(boolean paramBoolean, int paramInt, oidb_0xc90.RspBody paramRspBody) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sec
  * JD-Core Version:    0.7.0.1
  */

@@ -9,13 +9,13 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x858$MessageRecallReminder
-  extends MessageMicro
+  extends MessageMicro<MessageRecallReminder>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_nickname = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_userdef = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField str_reminder_content = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField uint32_recalled_msg_list = PBField.initRepeatMessage(oidb_0x858.MessageRecallReminder.MessageMeta.class);
+  public final PBRepeatMessageField<oidb_0x858.MessageRecallReminder.MessageMeta> uint32_recalled_msg_list = PBField.initRepeatMessage(oidb_0x858.MessageRecallReminder.MessageMeta.class);
   public final PBUInt64Field uint64_uin = PBField.initUInt64(0L);
   
   static
@@ -28,7 +28,7 @@ public final class oidb_0x858$MessageRecallReminder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x858.oidb_0x858.MessageRecallReminder
  * JD-Core Version:    0.7.0.1
  */

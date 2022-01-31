@@ -1,34 +1,22 @@
-import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
-import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder.TribeShortVideoMsgHolder;
-import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder.TribeShortVideoView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class vjj
-  implements Runnable
+class vjj
+  extends vim
 {
-  public vjj(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder, TribeShortVideoItemBuilder.TribeShortVideoMsgHolder paramTribeShortVideoMsgHolder, long paramLong) {}
-  
-  public void run()
+  vjj(vji paramvji, StoryVideoItem paramStoryVideoItem, vko paramvko)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder$TribeShortVideoMsgHolder == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("TribeShortVideoItemBuilder", 2, "showPlayIcon");
-      }
-    }
-    Long localLong;
-    do
-    {
-      return;
-      localLong = (Long)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder$TribeShortVideoMsgHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder$TribeShortVideoView.getTag();
-    } while ((localLong == null) || (localLong.longValue() != this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder$TribeShortVideoMsgHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setDrawStatus(2);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder$TribeShortVideoMsgHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(0);
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Vko.a = ((String)a("result"));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vjj
  * JD-Core Version:    0.7.0.1
  */

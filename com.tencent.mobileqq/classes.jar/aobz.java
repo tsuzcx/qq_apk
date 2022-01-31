@@ -1,29 +1,44 @@
-import android.view.KeyEvent;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import dov.com.tencent.biz.qqstory.takevideo.label.QQStoryAddVideoLabelViewPart;
+import android.graphics.Point;
+import android.os.Bundle;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
 public class aobz
-  implements TextView.OnEditorActionListener
 {
-  public aobz(QQStoryAddVideoLabelViewPart paramQQStoryAddVideoLabelViewPart) {}
-  
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    if (paramInt == 6)
+    if (paramBundle != null)
     {
-      paramTextView = this.a.jdField_a_of_type_AndroidViewView$OnClickListener;
-      if (paramTextView != null) {
-        paramTextView.onClick(this.a.jdField_a_of_type_AndroidWidgetTextView);
+      int i = paramBundle.getInt("param_service_type");
+      String str = paramBundle.getString("param_sub_type");
+      if (paramBundle.getInt("param_extra", 1) != 2) {
+        aoct.a().a(i, str, paramBoolean);
       }
+      aoct.a().a(new Point(paramBundle.getInt("key_float_window_position_x"), paramBundle.getInt("key_float_window_position_y")));
     }
-    return false;
+  }
+  
+  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
+  {
+    aoct.a().a(paramInt, paramString, paramBoolean);
+  }
+  
+  public void onUpdateColorNote(ColorNote paramColorNote, boolean paramBoolean) {}
+  
+  public void onUpdateColorNoteState(int paramInt, String paramString, Bundle paramBundle)
+  {
+    if (paramBundle != null)
+    {
+      aoct.a().a(paramInt, paramString, paramBundle.getBoolean("extra_is_colornote_exists"));
+      aoct.a().c(paramBundle.getBoolean("extra_can_add_colornote"));
+      aoct.a().a(new Point(paramBundle.getInt("key_float_window_position_x"), paramBundle.getInt("key_float_window_position_y")));
+      boolean bool = paramBundle.getBoolean("extra_after_sync_msg");
+      aoct.a().b(bool);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aobz
  * JD-Core Version:    0.7.0.1
  */

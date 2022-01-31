@@ -1,40 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.StatisticConstants;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Handler;
+import android.text.TextUtils;
 
-public class wwb
-  implements View.OnClickListener
+class wwb
+  implements wsv<wsc>
 {
-  public wwb(CameraPreviewActivity paramCameraPreviewActivity) {}
+  wwb(wwa paramwwa, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a(wsc paramwsc)
   {
-    if (!CameraPreviewActivity.a(this.a))
+    if ((paramwsc.a != null) && (TextUtils.equals(paramwsc.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
     {
-      if (this.a.b) {
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8004D93", "0X8004D93", 0, 0, "", "", "", "");
-      }
-      if (!this.a.b) {
-        break label92;
-      }
-      StatisticConstants.d();
-    }
-    for (;;)
-    {
-      PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 0, true);
-      paramView.setClickable(false);
-      return;
-      label92:
-      StatisticConstants.b();
+      wvq.a(this.jdField_a_of_type_Wwa.a).a = paramwsc.a;
+      wvq.a(this.jdField_a_of_type_Wwa.a).sendMessage(wvq.a(this.jdField_a_of_type_Wwa.a).obtainMessage(0, wvq.a(this.jdField_a_of_type_Wwa.a)));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wwb
  * JD-Core Version:    0.7.0.1
  */

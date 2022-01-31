@@ -1,22 +1,16 @@
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agqs
-  implements ValueAnimation.AnimationUpdateListener
+class agqs
+  implements DialogInterface.OnClickListener
 {
-  public agqs(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
+  agqs(agqq paramagqq) {}
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(paramInteger.intValue());
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqs
  * JD-Core Version:    0.7.0.1
  */

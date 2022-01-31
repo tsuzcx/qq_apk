@@ -1,7 +1,7 @@
 package com.tencent.tmassistantsdk.internal.logreport;
 
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
 
 class g
   implements Runnable
@@ -10,17 +10,17 @@ class g
   
   public void run()
   {
-    r.c("LogReportManager", "run");
+    ab.c("LogReportManager", "run");
     if ((GlobalUtil.isNetworkConncted()) && (GlobalUtil.getNetStatus().equalsIgnoreCase("wifi")))
     {
-      r.c("LogReportManager", "<reportLog>");
+      ab.c("LogReportManager", "<reportLog>");
       this.a.a.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.logreport.g
  * JD-Core Version:    0.7.0.1
  */

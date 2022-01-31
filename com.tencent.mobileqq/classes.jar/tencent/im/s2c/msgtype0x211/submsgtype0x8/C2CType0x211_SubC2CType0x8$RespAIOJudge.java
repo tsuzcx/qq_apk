@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class C2CType0x211_SubC2CType0x8$RespAIOJudge
-  extends MessageMicro
+  extends MessageMicro<RespAIOJudge>
 {
   public static final int BYTES_PEER_EXTRA_FIELD_NUMBER = 7;
   public static final int INT32_PEER_IP_FIELD_NUMBER = 5;

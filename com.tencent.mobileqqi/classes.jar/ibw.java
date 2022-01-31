@@ -1,12 +1,21 @@
-public abstract interface ibw
+import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
+import cooperation.qzone.QZoneStatisticsSettingActivity;
+import cooperation.qzone.widget.RadioPreference;
+
+public class ibw
+  implements Preference.OnPreferenceClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public ibw(QZoneStatisticsSettingActivity paramQZoneStatisticsSettingActivity) {}
   
-  public abstract void a(int... paramVarArgs);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void c(int paramInt1, int paramInt2);
+  public boolean onPreferenceClick(Preference paramPreference)
+  {
+    QZoneStatisticsSettingActivity.a(this.a, 0);
+    ((RadioPreference)paramPreference).a(true);
+    paramPreference = ((RadioPreference)paramPreference).getKey();
+    QZoneStatisticsSettingActivity.a(this.a, paramPreference, 0);
+    return false;
+  }
 }
 
 

@@ -23,13 +23,13 @@ public class RecentCallViewPager
   {
     int i = paramMotionEvent.getAction();
     if (i == 0) {
-      FrameHelperActivity.b(false);
+      FrameHelperActivity.c(false);
     }
     for (;;)
     {
       return super.onInterceptTouchEvent(paramMotionEvent);
       if ((i == 1) || (i == 3)) {
-        FrameHelperActivity.b(true);
+        FrameHelperActivity.c(true);
       }
     }
   }
@@ -38,7 +38,7 @@ public class RecentCallViewPager
   {
     int i = paramMotionEvent.getAction();
     if (i == 0) {
-      FrameHelperActivity.b(false);
+      FrameHelperActivity.c(false);
     }
     for (;;)
     {
@@ -49,7 +49,7 @@ public class RecentCallViewPager
       }
       catch (Exception paramMotionEvent) {}
       if ((i == 1) || (i == 3)) {
-        FrameHelperActivity.b(true);
+        FrameHelperActivity.c(true);
       }
     }
     return false;
@@ -57,7 +57,7 @@ public class RecentCallViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentCallViewPager
  * JD-Core Version:    0.7.0.1
  */

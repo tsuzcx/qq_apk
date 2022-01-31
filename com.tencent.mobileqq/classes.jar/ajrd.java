@@ -1,64 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-public final class ajrd
-  implements BusinessObserver
+public class ajrd
+  implements DialogInterface.OnClickListener
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ajrd(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label156;
-        }
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        paramInt = localWebSsoResponseBody.ret.get();
-        if (paramInt == 0)
-        {
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "likeTopic cmd=MQUpdateSvc_com_qq_buluo.web.sbar_like ok~~~");
-          return;
-        }
-        paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
-        paramBundle = "likeTopic cmd=MQUpdateSvc_com_qq_buluo.web.sbar_like failed1, errorCode = " + paramInt + ", msg = " + paramBundle;
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.w(".troop.troop_topic.TroopTopicMgr", 2, paramBundle);
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle = "likeTopic cmd=MQUpdateSvc_com_qq_buluo.web.sbar_like failed4, msg = " + QLog.getStackTraceString(paramBundle);
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-      }
-      QLog.w(".troop.troop_topic.TroopTopicMgr", 2, paramBundle);
-      return;
-      label156:
-      if (QLog.isColorLevel()) {
-        QLog.w(".troop.troop_topic.TroopTopicMgr", 2, "likeTopic cmd=MQUpdateSvc_com_qq_buluo.web.sbar_like failed2, data is null !!!!");
-      }
-    }
-    else
-    {
-      paramBundle = "likeTopic cmd=MQUpdateSvc_com_qq_buluo.web.sbar_like failed3, isSuccess is " + paramBoolean;
-      if (QLog.isColorLevel()) {
-        QLog.w(".troop.troop_topic.TroopTopicMgr", 2, paramBundle + paramBoolean);
-      }
-    }
+    wxj.a("video_shoot", "cancel_now", 0, 0, new String[0]);
+    paramDialogInterface.dismiss();
   }
 }
 

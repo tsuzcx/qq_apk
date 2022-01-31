@@ -1,16 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troop.data.TroopAioNewMessageBar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
 public class ajda
-  extends Handler
+  implements View.OnClickListener
 {
-  public ajda(TroopAioNewMessageBar paramTroopAioNewMessageBar) {}
+  public ajda(DrawHbFragment paramDrawHbFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if ((paramMessage.what == TroopAioNewMessageBar.j) && (TroopAioNewMessageBar.e == this.a.k)) {
-      TroopAioNewMessageBar.a(this.a);
+    if ((paramView instanceof TextView))
+    {
+      DrawHbFragment.a(this.a).setText(((TextView)paramView).getText().toString());
+      DrawHbFragment.a(this.a).c("draw.wrappacket.choose");
     }
   }
 }

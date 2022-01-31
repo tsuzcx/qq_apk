@@ -1,93 +1,41 @@
 import android.text.TextUtils;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.ContactCard;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.qidian.QidianManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoInfo.ChannelInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsTopicViewGroup;
 
 public class ris
-  extends CardObserver
+  implements View.OnClickListener
 {
-  public ris(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public ris(VideoFeedsTopicViewGroup paramVideoFeedsTopicViewGroup, VideoInfo.ChannelInfo paramChannelInfo) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    Object localObject;
-    if ((paramBoolean) && (paramObject != null))
+    if (VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup).a(VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup)))
     {
-      if (!(paramObject instanceof Card)) {
-        break label163;
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.c)) {
+        break label152;
       }
-      localObject = (Card)paramObject;
-      if ((((Card)localObject).uin != null) && (((Card)localObject).uin.equals(AddFriendVerifyActivity.a(this.a))))
-      {
-        paramObject = ProfileCardUtil.a(this.a, ((Card)localObject).shGender, ((Card)localObject).age, ((Card)localObject).strCountry, ((Card)localObject).strProvince, ((Card)localObject).strCity);
-        if (this.a.a != null) {
-          paramObject = ProfileCardUtil.a(this.a, ((Card)localObject).shGender, 0, "", "", "");
-        }
-        if (!TextUtils.isEmpty(paramObject))
-        {
-          this.a.c.setVisibility(0);
-          this.a.c.setText(paramObject);
-        }
-      }
+      ors.a(VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.c);
     }
     for (;;)
     {
-      if (QidianManager.b(this.a.app, AddFriendVerifyActivity.a(this.a))) {
-        this.a.c.setVisibility(8);
+      paramView = new ron("", "", VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup).jdField_a_of_type_JavaLangString, VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup).g).t(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.jdField_a_of_type_Int).u(rdm.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo)).a(VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup).y).a().a();
+      if (!VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup)) {
+        break;
       }
+      nrt.a(null, "", "0X8009331", "0X8009331", 0, 0, "3", "", "", paramView, false);
       return;
-      label163:
-      if ((paramObject instanceof ContactCard))
-      {
-        localObject = (ContactCard)paramObject;
-        if ((((ContactCard)localObject).mobileNo != null) && (((ContactCard)localObject).mobileNo.equals(AddFriendVerifyActivity.a(this.a))))
-        {
-          paramObject = ProfileCardUtil.a(this.a, ((ContactCard)localObject).bSex, ((ContactCard)localObject).bAge, ((ContactCard)localObject).strCountry, ((ContactCard)localObject).strProvince, ((ContactCard)localObject).strCity);
-          if (this.a.a != null) {
-            paramObject = ProfileCardUtil.a(this.a, ((ContactCard)localObject).bSex, 0, "", "", "");
-          }
-          if (!TextUtils.isEmpty(paramObject))
-          {
-            this.a.c.setVisibility(0);
-            this.a.c.setText(paramObject);
-          }
-        }
-      }
+      label152:
+      nxu.b(VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.b, 8, null);
     }
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject)
-  {
-    if ((ProfileActivity.e(AddFriendVerifyActivity.b(this.a))) && (paramBoolean) && ((paramObject instanceof Card)))
-    {
-      paramObject = (Card)paramObject;
-      if ((!Utils.a(AddFriendVerifyActivity.a(this.a), paramObject.uin)) || (TextUtils.isEmpty(paramObject.strCampusName))) {
-        break label119;
-      }
-      AddFriendVerifyActivity.a(this.a, paramObject.strCampusName);
-      this.a.b.setText(AddFriendVerifyActivity.b(this.a));
-      if (!TextUtils.isEmpty(AddFriendVerifyActivity.b(this.a))) {
-        this.a.b.setSelection(AddFriendVerifyActivity.b(this.a).length());
-      }
-    }
-    label119:
-    while (!Utils.a(this.a.app.getCurrentAccountUin(), paramObject.uin)) {
-      return;
-    }
-    this.a.d(paramObject.strCampusName);
+    nrt.a(null, "", "0X80092F9", "0X80092F9", 0, 0, "3", "", "", paramView, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ris
  * JD-Core Version:    0.7.0.1
  */

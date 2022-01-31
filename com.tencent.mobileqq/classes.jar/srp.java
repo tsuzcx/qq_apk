@@ -1,20 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.biz.pubaccount.readinjoy.viola.wormhole.WormholeView;
 
-public class srp
-  implements View.OnClickListener
+public abstract interface srp
 {
-  public srp(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public abstract void a(WormholeView paramWormholeView);
   
-  public void onClick(View paramView)
-  {
-    FriendProfileImageActivity.a(this.a);
-  }
+  public abstract void b(WormholeView paramWormholeView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     srp
  * JD-Core Version:    0.7.0.1
  */

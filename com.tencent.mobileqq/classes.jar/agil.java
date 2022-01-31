@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class agil
-  implements Runnable
+class agil
+  implements betp
 {
-  public agil(ScanTorchActivity paramScanTorchActivity) {}
+  agil(aghx paramaghx) {}
   
-  public void run()
+  public void a(betn parambetn)
   {
-    ScanTorchActivity.c(this.a, true, ScanTorchActivity.c(this.a));
-    ScanTorchActivity.y(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("AIOGalleryScene", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambetn);
+    }
   }
+  
+  public void a(betn parambetn, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agil
  * JD-Core Version:    0.7.0.1
  */

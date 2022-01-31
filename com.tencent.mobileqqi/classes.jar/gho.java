@@ -1,18 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.SameStatusActivity;
 
 public class gho
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public gho(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
+  public gho(SameStatusActivity paramSameStatusActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ((paramIntent != null) && ("BROAD_CAST_CALL_PAGE_SHARE".equals(paramIntent.getAction()))) {
-      MusicGeneWebViewPlugin.a(this.a);
-    }
+    this.a.b.c(false, false);
+    this.a.finish();
   }
 }
 

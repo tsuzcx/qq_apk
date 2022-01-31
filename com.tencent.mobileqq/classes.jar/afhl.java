@@ -1,58 +1,48 @@
-import android.annotation.TargetApi;
-import android.view.DragEvent;
+import NS_QQ_STORY_META.META.StStoryFeed;
+import NS_QQ_STORY_META.META.StUser;
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnDragListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForAIOStoryVideo;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.util.StStoryFeedUtil;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-@TargetApi(11)
-public class afhl
-  implements View.OnDragListener
+class afhl
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
+  afhl(afhk paramafhk, MessageForAIOStoryVideo paramMessageForAIOStoryVideo) {}
   
-  public afhl(NearbyProfileEditPanel paramNearbyProfileEditPanel, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean onDrag(View paramView, DragEvent paramDragEvent)
-  {
-    switch (paramDragEvent.getAction())
-    {
+    long l = System.currentTimeMillis();
+    paramView = (aeqn)this.jdField_a_of_type_Afhk.a.getManager(282);
+    if (paramView != null) {
+      paramView.a(4, 7);
     }
-    for (;;)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForAIOStoryVideo.mStStoryFeed;
+    if ((localObject != null) && (((META.StStoryFeed)localObject).postUser != null))
     {
-      return true;
-      QLog.d("onDrag", 4, "ACTION_DRAG_STARTED");
-      continue;
-      RelativeLayout localRelativeLayout = NearbyProfileEditPanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel);
-      int i = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.a.indexOfChild(paramView);
-      int j = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.a.indexOfChild(localRelativeLayout);
-      if ((i != -1) && (j != -1) && (((i > j) && (paramDragEvent.getX() > this.jdField_a_of_type_Int / 2)) || ((i < j) && (paramDragEvent.getX() < this.jdField_a_of_type_Int / 2))))
-      {
-        try
-        {
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.a.removeView(localRelativeLayout);
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.a.addView(localRelativeLayout, i);
-          NearbyProfileEditPanel.d(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel);
-        }
-        catch (Exception paramView) {}
-        if (QLog.isColorLevel())
-        {
-          QLog.d("Q.nearby_people_card.", 2, "drag between small pics exception" + paramView.getMessage());
-          continue;
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.a.post(new afhm(this));
-        }
-      }
+      paramView = new Bundle();
+      paramView.putLong("key_launch_time", l);
+      paramView.putLong("key_current_feeduin", ((META.StStoryFeed)localObject).postUser.uin.get());
+      paramView.putInt("key_request_from", 3);
+      paramView.putInt("key_weishi_entrance_type", 19);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(localObject);
+      localObject = StStoryFeedUtil.getConvertDataList(localArrayList);
+      paramView.putInt("key_video_story_jump_position", 0);
+      paramView.putSerializable("key_video_story_tranparent_story_feed", (Serializable)localObject);
+      paramView.putInt("key_request_business_type", 7);
+      bdhk.a(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afhl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageDownListener;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.tencent.ttpic.openapi.model.ExpressionItem;
 
 public class lvx
-  implements PublicAccountImageDownListener
+  extends ExpressionItem
 {
-  public lvx(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
-  
-  public void a(URL paramURL, CloseableBitmap paramCloseableBitmap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ComponentHeaderTopicRecommend", 2, "topic image view download success");
-    }
-    ComponentHeaderTopicRecommend.a(this.a, paramCloseableBitmap.a());
-  }
-  
-  public void a(URL paramURL, Throwable paramThrowable) {}
+  public int[] a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lvx
  * JD-Core Version:    0.7.0.1
  */

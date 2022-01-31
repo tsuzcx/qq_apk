@@ -26,12 +26,12 @@ import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.Switch;
 import com.tencent.widget.XExpandableListView;
-import dts;
-import dtt;
-import dtu;
-import dtv;
-import dtw;
-import dtx;
+import dob;
+import doc;
+import dod;
+import doe;
+import dof;
+import dog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -43,9 +43,9 @@ public class TroopAssisSettingActivity
   extends IphoneTitleBarActivity
   implements Observer
 {
-  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new dts(this);
+  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new dob(this);
   public TroopMessageSettingAdapter a;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dtw(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dof(this);
   private XExpandableListView jdField_a_of_type_ComTencentWidgetXExpandableListView;
   public String a;
   public List a;
@@ -56,7 +56,7 @@ public class TroopAssisSettingActivity
     ArrayList localArrayList = null;
     Object localObject1 = e();
     Object localObject2 = a().getLayoutInflater().inflate(2130903134, null);
-    this.jdField_a_of_type_ComTencentWidgetXExpandableListView = ((XExpandableListView)View.inflate(this, 2130903261, null));
+    this.jdField_a_of_type_ComTencentWidgetXExpandableListView = ((XExpandableListView)View.inflate(this, 2130903263, null));
     this.jdField_a_of_type_ComTencentWidgetXExpandableListView.a((View)localObject1);
     this.jdField_a_of_type_ComTencentWidgetXExpandableListView.b((View)localObject2);
     localObject1 = (ContactFacade)this.b.getManager(49);
@@ -83,11 +83,11 @@ public class TroopAssisSettingActivity
   
   private View e()
   {
-    View localView = View.inflate(this, 2130903260, null);
-    Object localObject = (Switch)localView.findViewById(2131231863);
+    View localView = View.inflate(this, 2130903262, null);
+    Object localObject = (Switch)localView.findViewById(2131231865);
     ((Switch)localObject).setChecked(TroopAssistantManager.a().a());
     ((Switch)localObject).setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-    localObject = (TextView)localView.findViewById(2131231864);
+    localObject = (TextView)localView.findViewById(2131231866);
     if (TroopAssistantManager.a().d(this.b)) {
       TroopAssistantManager.a().g(this.b);
     }
@@ -118,8 +118,8 @@ public class TroopAssisSettingActivity
     this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setCacheColorHint(0);
     this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setGroupIndicator(null);
     this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setOnItemClickListener(null);
-    this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setOnGroupClickListener(new dtu(this));
-    this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setOnChildClickListener(new dtv(this));
+    this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setOnGroupClickListener(new dod(this));
+    this.jdField_a_of_type_ComTencentWidgetXExpandableListView.setOnChildClickListener(new doe(this));
   }
   
   public void a(TroopInfo paramTroopInfo)
@@ -165,7 +165,7 @@ public class TroopAssisSettingActivity
     {
       localActionSheet.a(2131560654, bool1);
       localActionSheet.d(getString(2131561746));
-      localActionSheet.a(new dtt(this, i, paramTroopInfo, localActionSheet));
+      localActionSheet.a(new doc(this, i, paramTroopInfo, localActionSheet));
       localActionSheet.show();
       return;
       str1 = paramTroopInfo.troopname;
@@ -268,7 +268,7 @@ public class TroopAssisSettingActivity
   public void update(Observable paramObservable, Object paramObject)
   {
     if (((paramObject instanceof MessageRecord)) && (!((MessageRecord)paramObject).isSendFromLocal())) {
-      runOnUiThread(new dtx(this));
+      runOnUiThread(new dog(this));
     }
   }
 }

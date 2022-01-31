@@ -1,35 +1,32 @@
-import android.view.animation.Interpolator;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aclj
-  implements Interpolator
+public final class aclj
+  implements DialogInterface.OnClickListener
 {
-  public aclj(Face2FaceAddFriendAnim paramFace2FaceAddFriendAnim) {}
+  public aclj(QQAppInterface paramQQAppInterface, aclo paramaclo, long paramLong, Context paramContext, acln paramacln) {}
   
-  public float getInterpolation(float paramFloat)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramFloat == 0.0F) {
-      return 0.0F;
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, this.jdField_a_of_type_Aclo.jdField_a_of_type_Int, this.jdField_a_of_type_Aclo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aclo.jdField_c_of_type_JavaLangString, true);
+    if (this.jdField_a_of_type_Aclo.jdField_a_of_type_Boolean) {
+      azqs.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
     }
-    float f = paramFloat * 2.0F;
-    if (f >= 2.0F) {
-      return 1.0F;
+    this.jdField_a_of_type_Aclo.b = false;
+    this.jdField_a_of_type_Aclo.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_Aclo.e = false;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acln, this.jdField_a_of_type_Aclo);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    paramFloat = 0.45F / 4.0F;
-    if (f < 1.0F)
-    {
-      f -= 1.0F;
-      d = Math.pow(2.0D, 10.0F * f);
-      return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (-0.5D * d));
-    }
-    f -= 1.0F;
-    double d = Math.pow(2.0D, -10.0F * f);
-    return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (0.5D * d)) + 1.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aclj
  * JD-Core Version:    0.7.0.1
  */

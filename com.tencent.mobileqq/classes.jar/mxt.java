@@ -1,23 +1,10 @@
-import java.net.URL;
-
-public class mxt
+public abstract interface mxt
 {
-  public int a;
-  public URL a;
-  public int b;
-  
-  public static mxt a(URL paramURL, int paramInt1, int paramInt2)
-  {
-    mxt localmxt = new mxt();
-    localmxt.jdField_a_of_type_JavaNetURL = paramURL;
-    localmxt.jdField_a_of_type_Int = paramInt1;
-    localmxt.b = paramInt2;
-    return localmxt;
-  }
+  public abstract void a(Object paramObject, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mxt
  * JD-Core Version:    0.7.0.1
  */

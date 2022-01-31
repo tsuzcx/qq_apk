@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ee9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageButton android:layout_gravity="center_vertical" android:id="@id/br4" android:background="#00000000" android:paddingLeft="12.0dip" android:paddingTop="11.5dip" android:paddingBottom="11.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/fx1" />
+    <TextView android:textSize="12.0sp" android:textColor="@android:color/white" android:id="@id/br5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="10.0dip" />
+    <com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/br3" android:paddingLeft="0.0dip" android:paddingTop="10.0dip" android:paddingRight="0.0dip" android:paddingBottom="10.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxHeight="2.0dip" android:progressDrawable="@drawable/aw4" android:minHeight="2.0dip" android:thumb="@drawable/gca" android:thumbOffset="0.0dip" android:layout_weight="1.0" />
+    <TextView android:textSize="12.0sp" android:textColor="@android:color/white" android:id="@id/br2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="15.0dip" />
+</LinearLayout>

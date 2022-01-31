@@ -1,40 +1,76 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.fragment.BlessEffectsCameraCaptureFragment;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class ahhy
-  extends BroadcastReceiver
+  implements ahhf
 {
-  public ahhy(BlessEffectsCameraCaptureFragment paramBlessEffectsCameraCaptureFragment) {}
+  public ahhy(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
   {
-    if ("tencent.video.q2v.startUploadPTV".equals(paramIntent.getAction())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOEffectsCameraCaptureFragment", 2, "receive ACTION_BLESS_UPLOAD_PTV.");
-      }
-    }
-    switch (paramIntent.getIntExtra("broadcastType", 1))
+    int i = 3;
+    this.a.i();
+    if (paramBoolean)
     {
-    default: 
-    case 1: 
-      do
+      if ((paramObject != null) && ((paramObject instanceof ArrayList)))
+      {
+        paramObject = (ArrayList)paramObject;
+        if (paramObject.size() != 0) {
+          break label94;
+        }
+        if (this.a.a != null)
+        {
+          paramObject = this.a.a;
+          if (!this.a.b) {
+            break label89;
+          }
+          paramInt1 = 3;
+          paramObject.sendEmptyMessage(paramInt1);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(SearchBaseFragment.a(), 2, "error! SearchResult is null!");
+        }
+      }
+      for (;;)
       {
         return;
-        paramContext = this.a.getActivity();
-      } while ((paramContext == null) || (paramContext.isFinishing()));
-      paramContext.finish();
-      return;
+        label89:
+        paramInt1 = 2;
+        break;
+        label94:
+        if (paramObject.size() > 0) {}
+        try
+        {
+          paramString = (ahip)paramObject.get(0);
+          if ((this.a.a(paramObject)) && (this.a.a != null))
+          {
+            this.a.a.sendEmptyMessage(0);
+            return;
+          }
+        }
+        catch (Exception paramObject)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(SearchBaseFragment.a(), 2, "", paramObject);
+          }
+          paramObject = this.a.a;
+          if (!this.a.b) {}
+        }
+      }
+      for (paramInt1 = i;; paramInt1 = 2)
+      {
+        paramObject.sendEmptyMessage(paramInt1);
+        return;
+      }
     }
-    BlessEffectsCameraCaptureFragment.a(this.a, true);
+    this.a.a(paramInt1, paramObject, paramInt2, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahhy
  * JD-Core Version:    0.7.0.1
  */

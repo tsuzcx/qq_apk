@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_svc$WPATmp
-  extends MessageMicro
+  extends MessageMicro<WPATmp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField sig = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class msg_svc$WPATmp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msf.msgsvc.msg_svc.WPATmp
  * JD-Core Version:    0.7.0.1
  */

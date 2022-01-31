@@ -1,83 +1,52 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.util.Util;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import android.os.Bundle;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.Ticket;
 
-public final class akof
-  implements Runnable
+class akof
+  extends bead
 {
-  public akof(AppRuntime paramAppRuntime) {}
+  akof(aknx paramaknx) {}
   
-  public void run()
+  public void onDone(beae parambeae)
   {
-    String str;
-    if ((SwiftBrowserCookieMonster.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2) && (this.a != null) && (this.a.isLogin()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("SwiftBrowserCookieMonster", 2, "get common keys: " + this.a.getAccount());
-      }
-      ??? = (TicketManager)this.a.getManager(2);
-      str = this.a.getAccount();
-      if (TextUtils.isEmpty(SwiftBrowserCookieMonster.jdField_a_of_type_JavaLangString))
-      {
-        SwiftBrowserCookieMonster.jdField_a_of_type_JavaLangString = ((TicketManager)???).getSkey(str);
-        if (TextUtils.isEmpty(SwiftBrowserCookieMonster.jdField_a_of_type_JavaLangString)) {
-          break label361;
-        }
-        QLog.i("SwiftBrowserCookieMonster", 1, Util.c("skey=" + SwiftBrowserCookieMonster.jdField_a_of_type_JavaLangString, new String[0]));
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloManager", 2, "download panel json done httpCode: " + parambeae.f + ", status: " + parambeae.a());
     }
-    for (;;)
+  }
+  
+  public void onDoneFile(beae parambeae)
+  {
+    if (parambeae == null) {}
+    Bundle localBundle;
+    do
     {
-      Ticket localTicket = ((TicketManager)???).GetLocalTicket(str, 4096);
-      if (localTicket != null) {
-        QLog.i("SwiftBrowserCookieMonster", 1, "last refresh skey time: " + localTicket._create_time);
+      return;
+      localBundle = parambeae.a();
+    } while (localBundle == null);
+    int i = localBundle.getInt(parambeae.c);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloManager", 2, "[onDoneFile], taskType:" + i + ",httpCode: " + parambeae.f + ", status: " + parambeae.a() + ",task.currUrl:" + parambeae.c);
+    }
+    if (1 == i) {}
+    try
+    {
+      super.onDone(parambeae);
+      if (parambeae.a() != 3) {
+        this.a.jdField_a_of_type_Alkm.a(Boolean.valueOf(false));
       }
-      if (TextUtils.isEmpty(SwiftBrowserCookieMonster.b)) {
-        SwiftBrowserCookieMonster.b = ((TicketManager)???).getSuperkey(str);
-      }
-      if (TextUtils.isEmpty(SwiftBrowserCookieMonster.d))
-      {
-        SwiftBrowserCookieMonster.d = ((TicketManager)???).getStweb(str);
-        if (TextUtils.isEmpty(SwiftBrowserCookieMonster.d)) {
-          break label372;
-        }
-        QLog.i("SwiftBrowserCookieMonster", 1, Util.c("sTwxWeb=" + SwiftBrowserCookieMonster.d, new String[0]));
-        label270:
-        localTicket = ((TicketManager)???).GetLocalTicket(str, 32);
-        if (localTicket != null) {
-          QLog.i("SwiftBrowserCookieMonster", 1, "last refresh sTwxWeb time: " + localTicket._create_time);
-        }
-      }
-      if (TextUtils.isEmpty(SwiftBrowserCookieMonster.e)) {
-        SwiftBrowserCookieMonster.e = ((TicketManager)???).getA2(str);
-      }
-      synchronized (SwiftBrowserCookieMonster.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger)
-      {
-        if (SwiftBrowserCookieMonster.b())
-        {
-          SwiftBrowserCookieMonster.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.compareAndSet(2, 3);
-          SwiftBrowserCookieMonster.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.notifyAll();
-          return;
-          label361:
-          QLog.e("SwiftBrowserCookieMonster", 1, "skey is null!");
-          continue;
-          label372:
-          QLog.e("SwiftBrowserCookieMonster", 1, "sTwxWeb is null!");
-          break label270;
-        }
-        SwiftBrowserCookieMonster.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.compareAndSet(2, 1);
-      }
+      this.a.b();
+      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "json_download_success", 0, 0, new String[0]);
+      return;
+    }
+    catch (Exception parambeae)
+    {
+      QLog.e("ApolloManager", 1, "read apollo panel json content fail", parambeae);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akof
  * JD-Core Version:    0.7.0.1
  */

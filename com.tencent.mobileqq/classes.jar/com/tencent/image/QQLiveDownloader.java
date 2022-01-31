@@ -6,7 +6,6 @@ public class QQLiveDownloader
   extends ProtocolDownloader.Adapter
 {
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-    throws Exception
   {
     return new QQLiveImage(paramDownloadParams.urlStr, paramDownloadParams.mExtraInfo);
   }

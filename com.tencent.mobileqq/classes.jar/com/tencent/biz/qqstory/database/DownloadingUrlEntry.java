@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.database;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhs;
 
 public class DownloadingUrlEntry
-  extends Entity
+  extends awge
 {
   public int bIsDownloadCompleted = 0;
   public int compressLevel;
   public int fileType;
-  @unique
+  @awhs
   public String key;
   public long updatedMs;
   public String url;
@@ -22,7 +22,7 @@ public class DownloadingUrlEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.DownloadingUrlEntry
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.dinifly.animation.content;
 
 import android.graphics.Canvas;
-import android.graphics.ColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Path;
 import android.graphics.RectF;
@@ -10,17 +9,21 @@ import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.animation.keyframe.BaseKeyframeAnimation;
 import com.tencent.mobileqq.dinifly.animation.keyframe.BaseKeyframeAnimation.AnimationListener;
 import com.tencent.mobileqq.dinifly.animation.keyframe.TransformKeyframeAnimation;
+import com.tencent.mobileqq.dinifly.model.KeyPath;
+import com.tencent.mobileqq.dinifly.model.KeyPathElement;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableTransform;
 import com.tencent.mobileqq.dinifly.model.content.ContentModel;
 import com.tencent.mobileqq.dinifly.model.content.ShapeGroup;
 import com.tencent.mobileqq.dinifly.model.layer.BaseLayer;
+import com.tencent.mobileqq.dinifly.value.LottieValueCallback;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ContentGroup
-  implements DrawingContent, PathContent, BaseKeyframeAnimation.AnimationListener
+  implements DrawingContent, PathContent, BaseKeyframeAnimation.AnimationListener, KeyPathElement
 {
   private final List<Content> contents;
+  private final boolean hidden;
   private final LottieDrawable lottieDrawable;
   private final Matrix matrix = new Matrix();
   private final String name;
@@ -33,13 +36,14 @@ public class ContentGroup
   
   public ContentGroup(LottieDrawable paramLottieDrawable, BaseLayer paramBaseLayer, ShapeGroup paramShapeGroup)
   {
-    this(paramLottieDrawable, paramBaseLayer, paramShapeGroup.getName(), contentsFromModels(paramLottieDrawable, paramBaseLayer, paramShapeGroup.getItems()), findTransform(paramShapeGroup.getItems()));
+    this(paramLottieDrawable, paramBaseLayer, paramShapeGroup.getName(), paramShapeGroup.isHidden(), contentsFromModels(paramLottieDrawable, paramBaseLayer, paramShapeGroup.getItems()), findTransform(paramShapeGroup.getItems()));
   }
   
-  ContentGroup(LottieDrawable paramLottieDrawable, BaseLayer paramBaseLayer, String paramString, List<Content> paramList, @Nullable AnimatableTransform paramAnimatableTransform)
+  ContentGroup(LottieDrawable paramLottieDrawable, BaseLayer paramBaseLayer, String paramString, boolean paramBoolean, List<Content> paramList, @Nullable AnimatableTransform paramAnimatableTransform)
   {
     this.name = paramString;
     this.lottieDrawable = paramLottieDrawable;
+    this.hidden = paramBoolean;
     this.contents = paramList;
     if (paramAnimatableTransform != null)
     {
@@ -95,54 +99,45 @@ public class ContentGroup
     return null;
   }
   
-  public void addColorFilter(@Nullable String paramString1, @Nullable String paramString2, @Nullable ColorFilter paramColorFilter)
+  public <T> void addValueCallback(T paramT, @Nullable LottieValueCallback<T> paramLottieValueCallback)
   {
-    int i = 0;
-    if (i < this.contents.size())
-    {
-      Content localContent = (Content)this.contents.get(i);
-      DrawingContent localDrawingContent;
-      if ((localContent instanceof DrawingContent))
-      {
-        localDrawingContent = (DrawingContent)localContent;
-        if ((paramString2 != null) && (!paramString2.equals(localContent.getName()))) {
-          break label85;
-        }
-        localDrawingContent.addColorFilter(paramString1, null, paramColorFilter);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label85:
-        localDrawingContent.addColorFilter(paramString1, paramString2, paramColorFilter);
-      }
+    if (this.transformAnimation != null) {
+      this.transformAnimation.applyValueCallback(paramT, paramLottieValueCallback);
     }
   }
   
   public void draw(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
   {
+    if (this.hidden) {
+      return;
+    }
     this.matrix.set(paramMatrix);
+    int i = paramInt;
     if (this.transformAnimation != null)
     {
       this.matrix.preConcat(this.transformAnimation.getMatrix());
-      paramInt = (int)(((Integer)this.transformAnimation.getOpacity().getValue()).intValue() / 100.0F * paramInt / 255.0F * 255.0F);
-    }
-    for (;;)
-    {
-      int i = this.contents.size() - 1;
-      while (i >= 0)
-      {
-        paramMatrix = this.contents.get(i);
-        if ((paramMatrix instanceof DrawingContent)) {
-          ((DrawingContent)paramMatrix).draw(paramCanvas, this.matrix, paramInt);
-        }
-        i -= 1;
+      if (this.transformAnimation.getOpacity() != null) {
+        break label130;
       }
+    }
+    label130:
+    for (i = 100;; i = ((Integer)this.transformAnimation.getOpacity().getValue()).intValue())
+    {
+      i = (int)(i / 100.0F * paramInt / 255.0F * 255.0F);
+      paramInt = this.contents.size() - 1;
+      while (paramInt >= 0)
+      {
+        paramMatrix = this.contents.get(paramInt);
+        if ((paramMatrix instanceof DrawingContent)) {
+          ((DrawingContent)paramMatrix).draw(paramCanvas, this.matrix, i);
+        }
+        paramInt -= 1;
+      }
+      break;
     }
   }
   
-  public void getBounds(RectF paramRectF, Matrix paramMatrix)
+  public void getBounds(RectF paramRectF, Matrix paramMatrix, boolean paramBoolean)
   {
     this.matrix.set(paramMatrix);
     if (this.transformAnimation != null) {
@@ -150,24 +145,15 @@ public class ContentGroup
     }
     this.rect.set(0.0F, 0.0F, 0.0F, 0.0F);
     int i = this.contents.size() - 1;
-    if (i >= 0)
+    while (i >= 0)
     {
       paramMatrix = (Content)this.contents.get(i);
       if ((paramMatrix instanceof DrawingContent))
       {
-        ((DrawingContent)paramMatrix).getBounds(this.rect, this.matrix);
-        if (!paramRectF.isEmpty()) {
-          break label117;
-        }
-        paramRectF.set(this.rect);
+        ((DrawingContent)paramMatrix).getBounds(this.rect, this.matrix, paramBoolean);
+        paramRectF.union(this.rect);
       }
-      for (;;)
-      {
-        i -= 1;
-        break;
-        label117:
-        paramRectF.set(Math.min(paramRectF.left, this.rect.left), Math.min(paramRectF.top, this.rect.top), Math.max(paramRectF.right, this.rect.right), Math.max(paramRectF.bottom, this.rect.bottom));
-      }
+      i -= 1;
     }
   }
   
@@ -183,6 +169,9 @@ public class ContentGroup
       this.matrix.set(this.transformAnimation.getMatrix());
     }
     this.path.reset();
+    if (this.hidden) {
+      return this.path;
+    }
     int i = this.contents.size() - 1;
     while (i >= 0)
     {
@@ -227,6 +216,39 @@ public class ContentGroup
     this.lottieDrawable.invalidateSelf();
   }
   
+  public void resolveKeyPath(KeyPath paramKeyPath1, int paramInt, List<KeyPath> paramList, KeyPath paramKeyPath2)
+  {
+    if (!paramKeyPath1.matches(getName(), paramInt)) {}
+    for (;;)
+    {
+      return;
+      KeyPath localKeyPath = paramKeyPath2;
+      if (!"__container".equals(getName()))
+      {
+        paramKeyPath2 = paramKeyPath2.addKey(getName());
+        localKeyPath = paramKeyPath2;
+        if (paramKeyPath1.fullyResolvesTo(getName(), paramInt))
+        {
+          paramList.add(paramKeyPath2.resolve(this));
+          localKeyPath = paramKeyPath2;
+        }
+      }
+      if (paramKeyPath1.propagateToChildren(getName(), paramInt))
+      {
+        int j = paramKeyPath1.incrementDepthBy(getName(), paramInt);
+        int i = 0;
+        while (i < this.contents.size())
+        {
+          paramKeyPath2 = (Content)this.contents.get(i);
+          if ((paramKeyPath2 instanceof KeyPathElement)) {
+            ((KeyPathElement)paramKeyPath2).resolveKeyPath(paramKeyPath1, paramInt + j, paramList, localKeyPath);
+          }
+          i += 1;
+        }
+      }
+    }
+  }
+  
   public void setContents(List<Content> paramList1, List<Content> paramList2)
   {
     paramList2 = new ArrayList(paramList1.size() + this.contents.size());
@@ -243,7 +265,7 @@ public class ContentGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.ContentGroup
  * JD-Core Version:    0.7.0.1
  */

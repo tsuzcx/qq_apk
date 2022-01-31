@@ -1,34 +1,56 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils.CreateCommentInterface;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class mmf
-  implements ReadInJoyCommentUtils.CreateCommentInterface
+  extends BroadcastReceiver
 {
-  public mmf(FastWebActivity paramFastWebActivity, String paramString) {}
+  public mmf(VideoControlUI paramVideoControlUI) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, 1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity.getString(2131438878), 0).a();
-  }
-  
-  public void a(String paramString, CommentInfo paramCommentInfo)
-  {
-    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, 0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity.getString(2131438877), 0).a();
-    ReadInJoyCommentUtils.a(FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity), this.jdField_a_of_type_JavaLangString);
-    paramString = FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity);
-    paramString.b += 1L;
-    ThreadManager.getUIHandler().post(new mmg(this));
+    if ((paramIntent == null) || (this.a.jdField_a_of_type_ComTencentAvVideoController == null)) {
+      return;
+    }
+    long l = mwd.a(paramIntent);
+    paramContext = paramIntent.getStringExtra("camera_id");
+    int i = paramIntent.getIntExtra("availability", 1);
+    QLog.w(this.a.d, 1, "CameraAvailabilityReceiver, cameraId[" + paramContext + "], availability[" + i + "], mCameraAvailable[" + this.a.jdField_a_of_type_ComTencentAvVideoController.a().Z + "], seq[" + l + "]");
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramContext, i);
+    if (i == 0)
+    {
+      VideoControlUI.a(this.a, l, i);
+      return;
+    }
+    paramContext = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    if ((paramContext != null) && (paramContext.size() > 0))
+    {
+      paramContext = paramContext.entrySet().iterator();
+      do
+      {
+        if (!paramContext.hasNext()) {
+          break;
+        }
+      } while (((Integer)((Map.Entry)paramContext.next()).getValue()).intValue() != 0);
+    }
+    for (i = 0;; i = -1)
+    {
+      VideoControlUI.a(this.a, l, i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mmf
  * JD-Core Version:    0.7.0.1
  */

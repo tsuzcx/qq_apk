@@ -1,25 +1,16 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
 
-class rru
-  implements Runnable
+public abstract interface rru
 {
-  rru(rrs paramrrs) {}
+  public abstract void a(ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt);
   
-  public void run()
-  {
-    if (this.a.a.h != null)
-    {
-      this.a.a.h.setText(this.a.a.a.getResources().getString(2131433404));
-      this.a.a.h.setTag(Integer.valueOf(2));
-    }
-  }
+  public abstract void b();
+  
+  public abstract void b(ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rru
  * JD-Core Version:    0.7.0.1
  */

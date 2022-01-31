@@ -9,11 +9,11 @@ import java.util.Map;
 public final class s_event_tag
   extends JceStruct
 {
-  static Map cache_extendInfo;
+  static Map<String, String> cache_extendInfo;
   static s_join_list cache_join_list = new s_join_list();
   public String backgd_picurl = "";
   public String count_desc = "";
-  public Map extendInfo;
+  public Map<String, String> extendInfo;
   public String id = "";
   public boolean is_default;
   public s_join_list join_list;
@@ -36,7 +36,7 @@ public final class s_event_tag
   
   public s_event_tag() {}
   
-  public s_event_tag(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, s_join_list params_join_list, boolean paramBoolean1, Map paramMap, long paramLong3, String paramString7, boolean paramBoolean2)
+  public s_event_tag(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, s_join_list params_join_list, boolean paramBoolean1, Map<String, String> paramMap, long paramLong3, String paramString7, boolean paramBoolean2)
   {
     this.uin = paramLong1;
     this.time = paramLong2;
@@ -116,7 +116,7 @@ public final class s_event_tag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_event_tag
  * JD-Core Version:    0.7.0.1
  */

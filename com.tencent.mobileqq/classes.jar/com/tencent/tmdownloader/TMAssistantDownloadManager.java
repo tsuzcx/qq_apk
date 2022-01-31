@@ -1,11 +1,10 @@
 package com.tencent.tmdownloader;
 
 import android.content.Context;
-import com.tencent.tmassistant.common.PackageInstallReceiver;
 import com.tencent.tmassistantbase.util.GlobalUtil;
 import com.tencent.tmassistantbase.util.a.h;
-import com.tencent.tmassistantbase.util.m;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.s;
 import com.tencent.tmdownloader.internal.downloadclient.MobileQQCloseServiceReceiver;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,17 +28,17 @@ public class TMAssistantDownloadManager
     {
       try
       {
-        r.c("TMAssistantDownloadManager", "enter");
+        ab.c("TMAssistantDownloadManager", "enter");
         if (paramContext == null)
         {
-          r.c("TMAssistantDownloadManager", "you must input an application or activity context!");
-          r.c("TMAssistantDownloadManager", "exit");
+          ab.c("TMAssistantDownloadManager", "you must input an application or activity context!");
+          ab.c("TMAssistantDownloadManager", "exit");
           return;
         }
         if (mInstance == null)
         {
-          r.c("TMAssistantDownloadManager", "manager minstance == null");
-          r.c("TMAssistantDownloadManager", "exit");
+          ab.c("TMAssistantDownloadManager", "manager minstance == null");
+          ab.c("TMAssistantDownloadManager", "exit");
           continue;
         }
         if (mSDKClientList == null) {
@@ -49,7 +48,7 @@ public class TMAssistantDownloadManager
       finally {}
       if (mSDKClientList.size() > 0)
       {
-        r.c("TMAssistantDownloadManager", "mSDKClientList != null && mSDKClientList.size() > 0");
+        ab.c("TMAssistantDownloadManager", "mSDKClientList != null && mSDKClientList.size() > 0");
         Iterator localIterator = mSDKClientList.iterator();
         while (localIterator.hasNext())
         {
@@ -68,7 +67,7 @@ public class TMAssistantDownloadManager
         mSDKSettingClient = null;
       }
       mInstance = null;
-      r.c("TMAssistantDownloadManager", "exit");
+      ab.c("TMAssistantDownloadManager", "exit");
     }
   }
   
@@ -88,7 +87,7 @@ public class TMAssistantDownloadManager
     //   20: invokestatic 84	com/tencent/tmdownloader/internal/downloadclient/MobileQQCloseServiceReceiver:a	()Lcom/tencent/tmdownloader/internal/downloadclient/MobileQQCloseServiceReceiver;
     //   23: aload_0
     //   24: invokevirtual 98	com/tencent/tmdownloader/internal/downloadclient/MobileQQCloseServiceReceiver:a	(Landroid/content/Context;)V
-    //   27: invokestatic 102	com/tencent/tmassistantbase/util/m:a	()Z
+    //   27: invokestatic 102	com/tencent/tmassistantbase/util/s:a	()Z
     //   30: ifne +23 -> 53
     //   33: invokestatic 107	com/tencent/tmassistantbase/util/GlobalUtil:getInstance	()Lcom/tencent/tmassistantbase/util/GlobalUtil;
     //   36: invokevirtual 111	com/tencent/tmassistantbase/util/GlobalUtil:getContext	()Landroid/content/Context;
@@ -114,7 +113,7 @@ public class TMAssistantDownloadManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	72	0	paramContext	Context
-    //   68	1	1	localThrowable	Throwable
+    //   68	1	1	localThrowable	java.lang.Throwable
     // Exception table:
     //   from	to	target	type
     //   3	20	62	finally
@@ -129,48 +128,47 @@ public class TMAssistantDownloadManager
   {
     for (;;)
     {
+      TMAssistantDownloadClient localTMAssistantDownloadClient;
       try
       {
-        r.c("TMAssistantDownloadManager", "<getDownloadSDKClient> clientKey = " + paramString + ",process Name:" + m.e());
-        r.c("TMAssistantDownloadManager", "enter");
+        ab.c("TMAssistantDownloadManager", "<getDownloadSDKClient> clientKey = " + paramString + ",process Name:" + s.e());
+        ab.c("TMAssistantDownloadManager", "enter");
         if ((paramString == null) || (paramString.length() <= 0))
         {
-          r.c("TMAssistantDownloadManager", "clientKey == null || clientKey.length() <= 0");
-          r.c("TMAssistantDownloadManager", "exit");
+          ab.c("TMAssistantDownloadManager", "clientKey == null || clientKey.length() <= 0");
+          ab.c("TMAssistantDownloadManager", "exit");
           paramString = null;
           return paramString;
         }
-        r.c("TMAssistantDownloadManager", "clientKey: " + paramString);
+        ab.c("TMAssistantDownloadManager", "clientKey: " + paramString);
         Iterator localIterator = mSDKClientList.iterator();
         if (localIterator.hasNext())
         {
-          TMAssistantDownloadClient localTMAssistantDownloadClient = (TMAssistantDownloadClient)localIterator.next();
+          localTMAssistantDownloadClient = (TMAssistantDownloadClient)localIterator.next();
           if (localTMAssistantDownloadClient.mClientKey.equals(paramString) != true) {
             continue;
           }
-          r.c("TMAssistantDownloadManager", "SDKClient exists");
-          r.c("TMAssistantDownloadManager", "returnValue(clientItem): " + localTMAssistantDownloadClient);
-          r.c("TMAssistantDownloadManager", "exit");
+          ab.c("TMAssistantDownloadManager", "SDKClient exists");
+          ab.c("TMAssistantDownloadManager", "returnValue(clientItem): " + localTMAssistantDownloadClient);
+          ab.c("TMAssistantDownloadManager", "exit");
           paramString = localTMAssistantDownloadClient;
           continue;
         }
-        paramString = new TMAssistantDownloadClient(this.mContext, paramString);
+        localTMAssistantDownloadClient = new TMAssistantDownloadClient(this.mContext, paramString);
       }
       finally {}
-      paramString.initTMAssistantDownloadSDK();
-      mSDKClientList.add(paramString);
-      r.c("TMAssistantDownloadManager", "add new SDKClient");
-      r.c("TMAssistantDownloadManager", "returnValue(client): " + paramString);
-      r.c("TMAssistantDownloadManager", "exit");
-      r.c("TMAssistantDownloadManager", "TMAssistantDownloadClient PackageInstallReceiver register");
-      if (this.mContext == null) {
-        this.mContext = GlobalUtil.getInstance().getContext();
-      }
-      try
+      localTMAssistantDownloadClient.initTMAssistantDownloadSDK();
+      mSDKClientList.add(localTMAssistantDownloadClient);
+      ab.c("TMAssistantDownloadManager", "add new SDKClient");
+      ab.c("TMAssistantDownloadManager", "returnValue(client): " + localTMAssistantDownloadClient);
+      ab.c("TMAssistantDownloadManager", "exit");
+      ab.c("TMAssistantDownloadManager", "TMAssistantDownloadClient PackageInstallReceiver register");
+      paramString = localTMAssistantDownloadClient;
+      if (this.mContext == null)
       {
-        PackageInstallReceiver.a().a(this.mContext);
+        this.mContext = GlobalUtil.getInstance().getContext();
+        paramString = localTMAssistantDownloadClient;
       }
-      catch (Throwable localThrowable) {}
     }
   }
   
@@ -178,16 +176,16 @@ public class TMAssistantDownloadManager
   {
     try
     {
-      r.c("TMAssistantDownloadManager", "<getDownloadSDKSettingClient>  ,process Name:" + m.e());
-      r.c("TMAssistantDownloadManager", "enter");
+      ab.c("TMAssistantDownloadManager", "<getDownloadSDKSettingClient>  ,process Name:" + s.e());
+      ab.c("TMAssistantDownloadManager", "enter");
       if (mSDKSettingClient == null)
       {
-        r.c("TMAssistantDownloadManager", "mSDKSettingClient is null create a new for TMAssistantDownloadSettingClient");
+        ab.c("TMAssistantDownloadManager", "mSDKSettingClient is null create a new for TMAssistantDownloadSettingClient");
         mSDKSettingClient = new TMAssistantDownloadSettingClient(this.mContext, "TMAssistantDownloadSDKManager");
         mSDKSettingClient.initTMAssistantDownloadSDK();
       }
-      r.c("TMAssistantDownloadManager", "returnValue(settingclient): " + mSDKSettingClient);
-      r.c("TMAssistantDownloadManager", "exit");
+      ab.c("TMAssistantDownloadManager", "returnValue(settingclient): " + mSDKSettingClient);
+      ab.c("TMAssistantDownloadManager", "exit");
       TMAssistantDownloadSettingClient localTMAssistantDownloadSettingClient = mSDKSettingClient;
       return localTMAssistantDownloadSettingClient;
     }
@@ -207,17 +205,17 @@ public class TMAssistantDownloadManager
     //   1: monitorenter
     //   2: ldc 8
     //   4: ldc 38
-    //   6: invokestatic 44	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   6: invokestatic 44	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   9: ldc 8
     //   11: new 123	java/lang/StringBuilder
     //   14: dup
     //   15: invokespecial 124	java/lang/StringBuilder:<init>	()V
-    //   18: ldc 206
+    //   18: ldc 200
     //   20: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: aload_1
     //   24: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   27: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   30: invokestatic 44	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   30: invokestatic 44	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   33: getstatic 28	com/tencent/tmdownloader/TMAssistantDownloadManager:mSDKClientList	Ljava/util/ArrayList;
     //   36: invokevirtual 60	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   39: astore_3
@@ -239,23 +237,23 @@ public class TMAssistantDownloadManager
     //   78: aload 4
     //   80: invokevirtual 75	com/tencent/tmdownloader/TMAssistantDownloadClient:unInitTMAssistantDownloadSDK	()V
     //   83: aload_3
-    //   84: invokeinterface 209 1 0
+    //   84: invokeinterface 203 1 0
     //   89: ldc 8
-    //   91: ldc 211
-    //   93: invokestatic 44	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   91: ldc 205
+    //   93: invokestatic 44	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   96: ldc 8
     //   98: new 123	java/lang/StringBuilder
     //   101: dup
     //   102: invokespecial 124	java/lang/StringBuilder:<init>	()V
-    //   105: ldc 213
+    //   105: ldc 207
     //   107: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   110: iconst_1
-    //   111: invokevirtual 216	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   111: invokevirtual 210	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   114: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   117: invokestatic 44	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   117: invokestatic 44	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   120: ldc 8
     //   122: ldc 48
-    //   124: invokestatic 44	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   124: invokestatic 44	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   127: iconst_1
     //   128: istore_2
     //   129: aload_0
@@ -265,7 +263,7 @@ public class TMAssistantDownloadManager
     //   133: getstatic 30	com/tencent/tmdownloader/TMAssistantDownloadManager:mSDKSettingClient	Lcom/tencent/tmdownloader/TMAssistantDownloadSettingClient;
     //   136: ifnull +70 -> 206
     //   139: getstatic 30	com/tencent/tmdownloader/TMAssistantDownloadManager:mSDKSettingClient	Lcom/tencent/tmdownloader/TMAssistantDownloadSettingClient;
-    //   142: getfield 217	com/tencent/tmdownloader/TMAssistantDownloadSettingClient:mClientKey	Ljava/lang/String;
+    //   142: getfield 211	com/tencent/tmdownloader/TMAssistantDownloadSettingClient:mClientKey	Ljava/lang/String;
     //   145: aload_1
     //   146: invokevirtual 155	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   149: iconst_1
@@ -275,21 +273,21 @@ public class TMAssistantDownloadManager
     //   159: aconst_null
     //   160: putstatic 30	com/tencent/tmdownloader/TMAssistantDownloadManager:mSDKSettingClient	Lcom/tencent/tmdownloader/TMAssistantDownloadSettingClient;
     //   163: ldc 8
-    //   165: ldc 219
-    //   167: invokestatic 44	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   165: ldc 213
+    //   167: invokestatic 44	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   170: ldc 8
     //   172: new 123	java/lang/StringBuilder
     //   175: dup
     //   176: invokespecial 124	java/lang/StringBuilder:<init>	()V
-    //   179: ldc 213
+    //   179: ldc 207
     //   181: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   184: iconst_1
-    //   185: invokevirtual 216	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   185: invokevirtual 210	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   188: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   191: invokestatic 44	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   191: invokestatic 44	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   194: ldc 8
     //   196: ldc 48
-    //   198: invokestatic 44	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   198: invokestatic 44	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   201: iconst_1
     //   202: istore_2
     //   203: goto -74 -> 129
@@ -297,25 +295,25 @@ public class TMAssistantDownloadManager
     //   208: new 123	java/lang/StringBuilder
     //   211: dup
     //   212: invokespecial 124	java/lang/StringBuilder:<init>	()V
-    //   215: ldc 221
+    //   215: ldc 215
     //   217: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   220: aload_1
     //   221: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   224: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   227: invokestatic 44	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   227: invokestatic 44	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   230: ldc 8
     //   232: new 123	java/lang/StringBuilder
     //   235: dup
     //   236: invokespecial 124	java/lang/StringBuilder:<init>	()V
-    //   239: ldc 213
+    //   239: ldc 207
     //   241: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   244: iconst_0
-    //   245: invokevirtual 216	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   245: invokevirtual 210	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   248: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   251: invokestatic 44	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   251: invokestatic 44	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   254: ldc 8
     //   256: ldc 48
-    //   258: invokestatic 44	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   258: invokestatic 44	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   261: iconst_0
     //   262: istore_2
     //   263: goto -134 -> 129
@@ -342,7 +340,7 @@ public class TMAssistantDownloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tmdownloader.TMAssistantDownloadManager
  * JD-Core Version:    0.7.0.1
  */

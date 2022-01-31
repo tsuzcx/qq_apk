@@ -1,27 +1,20 @@
-import com.tencent.mfsdk.MagnifierSDK;
-import com.tencent.mfsdk.collector.ResultObject;
-import com.tencent.mfsdk.persist.DBHandler;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public class rdx
-  implements Runnable
+final class rdx
+  extends AnimatorListenerAdapter
 {
-  private ResultObject a;
+  rdx(View paramView) {}
   
-  public rdx(ResultObject paramResultObject)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a = paramResultObject;
-  }
-  
-  public void run()
-  {
-    if (MagnifierSDK.a != null) {
-      MagnifierSDK.a.a(this.a);
-    }
+    this.a.setLayerType(0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rdx
  * JD-Core Version:    0.7.0.1
  */

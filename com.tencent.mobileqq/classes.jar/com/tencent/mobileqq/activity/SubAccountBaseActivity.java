@@ -4,13 +4,13 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
+import bacu;
+import bdgm;
+import bdin;
+import bdjz;
+import bety;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -18,27 +18,27 @@ public class SubAccountBaseActivity
   extends IphoneTitleBarActivity
   implements DialogInterface.OnClickListener
 {
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+  private bdjz jdField_a_of_type_Bdjz;
+  private bety jdField_a_of_type_Bety;
   public String b;
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+    if (this.jdField_a_of_type_Bety == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(true);
+      this.jdField_a_of_type_Bety = new bety(this, getTitleBarHeight());
+      this.jdField_a_of_type_Bety.c(true);
     }
     if (paramInt > 0) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(paramInt);
+      this.jdField_a_of_type_Bety.c(paramInt);
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) && (!isFinishing())) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+      if ((this.jdField_a_of_type_Bety != null) && (!this.jdField_a_of_type_Bety.isShowing()) && (!isFinishing())) {
+        this.jdField_a_of_type_Bety.show();
       }
       return;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435070);
+      this.jdField_a_of_type_Bety.c(2131695090);
     }
   }
   
@@ -48,17 +48,12 @@ public class SubAccountBaseActivity
     if (paramOnClickListener == null) {
       localObject = this;
     }
-    d();
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230).setTitle(paramString1).setMessage(paramString2);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131432417, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131433015, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-  }
-  
-  public boolean a()
-  {
-    return NetworkUtil.d(BaseApplication.getContext());
+    f();
+    this.jdField_a_of_type_Bdjz = bdgm.a(this, 230).setTitle(paramString1).setMessage(paramString2);
+    this.jdField_a_of_type_Bdjz.setPositiveButton(2131691089, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_Bdjz.setNegativeButton(2131690648, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_Bdjz.setCancelable(false);
+    this.jdField_a_of_type_Bdjz.show();
   }
   
   public void b(String paramString)
@@ -66,24 +61,22 @@ public class SubAccountBaseActivity
     QQToast.a(this, paramString, 0).b(getTitleBarHeight());
   }
   
-  public boolean b()
+  public void b(String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
   {
-    boolean bool = a();
-    if (!bool) {
-      b(getString(2131433009));
+    Object localObject = paramOnClickListener;
+    if (paramOnClickListener == null) {
+      localObject = this;
     }
-    return bool;
+    f();
+    this.jdField_a_of_type_Bdjz = bdgm.a(this, 230).setTitle(paramString1).setMessage(paramString2);
+    this.jdField_a_of_type_Bdjz.setPositiveButton(2131691089, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_Bdjz.setCancelable(false);
+    this.jdField_a_of_type_Bdjz.show();
   }
   
-  public void c()
+  public boolean b()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      return;
-    }
-    catch (Exception localException) {}
+    return bdin.d(BaseApplication.getContext());
   }
   
   public void c(String paramString)
@@ -91,14 +84,50 @@ public class SubAccountBaseActivity
     QQToast.a(this, 2, paramString, 0).b(getTitleBarHeight());
   }
   
-  public void d()
+  public boolean c()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
+    boolean bool = b();
+    if (!bool) {
+      b(getString(2131692398));
+    }
+    return bool;
+  }
+  
+  public boolean doOnCreate(Bundle paramBundle)
+  {
+    super.doOnCreate(paramBundle);
+    this.b = getIntent().getStringExtra("fromWhere");
+    return true;
+  }
+  
+  public void doOnDestroy()
+  {
+    super.doOnDestroy();
+    bacu localbacu = (bacu)this.app.getManager(62);
+    if (localbacu != null) {
+      localbacu.a(this);
+    }
+  }
+  
+  public void e()
+  {
+    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      this.jdField_a_of_type_Bety.dismiss();
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  public void f()
+  {
+    if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {}
+    try
+    {
+      this.jdField_a_of_type_Bdjz.dismiss();
       label24:
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+      this.jdField_a_of_type_Bdjz = null;
       return;
     }
     catch (Exception localException)
@@ -107,30 +136,14 @@ public class SubAccountBaseActivity
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
-  {
-    super.doOnCreate(paramBundle);
-    this.b = getIntent().getStringExtra("fromWhere");
-    return true;
-  }
-  
-  protected void doOnDestroy()
-  {
-    super.doOnDestroy();
-    SubAccountControll localSubAccountControll = (SubAccountControll)this.app.getManager(61);
-    if (localSubAccountControll != null) {
-      localSubAccountControll.a(this);
-    }
-  }
-  
-  protected void e() {}
-  
   public void finish()
   {
-    c();
-    d();
+    e();
+    f();
     super.finish();
   }
+  
+  protected void g() {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
@@ -142,12 +155,12 @@ public class SubAccountBaseActivity
       paramDialogInterface.dismiss();
       return;
     }
-    e();
+    g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountBaseActivity
  * JD-Core Version:    0.7.0.1
  */

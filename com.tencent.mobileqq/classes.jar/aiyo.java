@@ -1,25 +1,19 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.SendHbMainFragment;
+import com.tencent.mobileqq.widget.TipsBar;
 
-public final class aiyo
-  implements DialogInterface.OnClickListener
+public class aiyo
+  implements View.OnClickListener
 {
-  public aiyo(Activity paramActivity) {}
+  public aiyo(SendHbMainFragment paramSendHbMainFragment, TipsBar paramTipsBar, SharedPreferences paramSharedPreferences, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      paramDialogInterface.dismiss();
-      return;
-    }
-    TroopBarPublishUtils.b(this.a);
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("red_packet_bulletin", this.jdField_a_of_type_Int).apply();
   }
 }
 

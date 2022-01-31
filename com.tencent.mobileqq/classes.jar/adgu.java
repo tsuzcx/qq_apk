@@ -1,28 +1,32 @@
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.text.SpannableString;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-public final class adgu
-  implements Runnable
+class adgu
+  implements Animation.AnimationListener
 {
-  public adgu(CharSequence paramCharSequence, Context paramContext, String paramString, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
+  adgu(adgt paramadgt, boolean paramBoolean) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.jdField_a_of_type_JavaLangCharSequence instanceof String)) {
-      DialogUtil.b(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_JavaLangString, (String)this.jdField_a_of_type_JavaLangCharSequence, 2131428127, 2131428128, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.b).show();
+    if ((this.jdField_a_of_type_Boolean) && (adgt.a(this.jdField_a_of_type_Adgt) != null) && (adgt.a(this.jdField_a_of_type_Adgt).size() >= 2)) {
+      adgt.a(this.jdField_a_of_type_Adgt).sendEmptyMessageDelayed(1688002, 1400L);
     }
-    while (!(this.jdField_a_of_type_JavaLangCharSequence instanceof SpannableString)) {
-      return;
+    if (adgt.a(this.jdField_a_of_type_Adgt) != null)
+    {
+      adgt.a(this.jdField_a_of_type_Adgt).a();
+      adgt.a(this.jdField_a_of_type_Adgt, null);
     }
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangCharSequence, 2131428127, 2131428128, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.b).show();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adgu
  * JD-Core Version:    0.7.0.1
  */

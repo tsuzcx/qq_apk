@@ -1,40 +1,22 @@
-import android.view.View;
-import com.tencent.biz.webviewplugin.PubAccountMailJsPlugin;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
 public class pce
-  implements ActionSheet.OnButtonClickListener
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public pce(PubAccountMailJsPlugin paramPubAccountMailJsPlugin) {}
+  public pce(VideoView paramVideoView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    this.a.a.dismiss();
-    switch (paramInt)
-    {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow button %d", new Object[] { Integer.valueOf(paramInt) }));
-      }
-      return;
-    case 0: 
-      PubAccountMailJsPlugin.a(this.a);
-      return;
-    case 1: 
-      PubAccountMailJsPlugin.b(this.a);
-      return;
-    case 2: 
-      PubAccountMailJsPlugin.c(this.a);
-      return;
-    }
-    PubAccountMailJsPlugin.d(this.a);
+    QLog.e("gifvideo.VideoView", 1, "TVK_IMediaPlayer.OnErrorListener model = " + paramInt1 + " what = " + paramInt2 + " position = " + paramInt3 + " extra = " + paramString);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pce
  * JD-Core Version:    0.7.0.1
  */

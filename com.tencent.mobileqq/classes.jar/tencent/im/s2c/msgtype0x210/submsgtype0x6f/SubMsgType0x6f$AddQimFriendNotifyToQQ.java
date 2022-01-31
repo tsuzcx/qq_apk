@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x6f$AddQimFriendNotifyToQQ
-  extends MessageMicro
+  extends MessageMicro<AddQimFriendNotifyToQQ>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_longnick = PBField.initBytes(ByteStringMicro.EMPTY);

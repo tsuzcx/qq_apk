@@ -1,23 +1,17 @@
 package com.tencent.token.ui;
 
-import android.widget.ImageView;
-import android.widget.TabHost;
-import android.widget.TabHost.OnTabChangeListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.token.cw;
 
-final class lt
-  implements TabHost.OnTabChangeListener
+class lt
+  implements DialogInterface.OnCancelListener
 {
-  lt(IndexActivity paramIndexActivity) {}
+  lt(lp paramlp) {}
   
-  public final void onTabChanged(String paramString)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    int i = IndexActivity.access$1000(this.a).getCurrentTab();
-    IndexActivity.access$2100(this.a, i);
-    if (i == 2) {
-      IndexActivity.access$600(this.a).setVisibility(4);
-    }
-    IndexActivity.access$2200(this.a);
-    IndexActivity.access$2300(this.a);
+    cw.a().b(IndexActivity.access$100(this.a.a));
   }
 }
 

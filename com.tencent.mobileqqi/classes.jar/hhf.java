@@ -1,37 +1,14 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
+import android.graphics.drawable.Animatable;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class hhf
-  implements View.OnClickListener
+  implements Runnable
 {
-  public hhf(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
+  public hhf(QQProgressDialog paramQQProgressDialog) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (QQCustomDialogWtihEmoticonInput.a(this.a).getSelectionStart() == 0) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramView = QQCustomDialogWtihEmoticonInput.a(this.a).getText();
-        int i = QQCustomDialogWtihEmoticonInput.a(this.a).getSelectionStart();
-        int j = TextUtils.getOffsetBefore(QQCustomDialogWtihEmoticonInput.a(this.a).getText(), i);
-        if (i != j)
-        {
-          paramView.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-      }
-    }
+    QQProgressDialog.a(this.a).start();
   }
 }
 

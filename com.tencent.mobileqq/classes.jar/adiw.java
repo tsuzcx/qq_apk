@@ -1,33 +1,50 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class adiw
-  implements FMDialogUtil.FMDialogInterface
+  implements GestureDetector.OnDoubleTapListener
 {
-  public adiw(QfileEditBottomBar paramQfileEditBottomBar) {}
+  public adiw(MainFragment paramMainFragment) {}
   
-  public void a()
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    QfileEditBottomBar.a(this.a).a().e();
-    if (this.a.a != null) {
-      this.a.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("MainFragment", 2, "onDoubleTap() called with: e = [" + paramMotionEvent + "]");
     }
-    FMDataCache.b();
-    QfileEditBottomBar.a(this.a).h();
-    QfileEditBottomBar.a(this.a).e(false);
-    QfileEditBottomBar.a(this.a).b();
+    paramMotionEvent = (Conversation)this.a.a(Conversation.class);
+    if (paramMotionEvent != null) {}
+    for (int i = paramMotionEvent.d;; i = 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("DynimiIcon", 2, "onDoubleTap() unReadCount = " + i);
+      }
+      paramMotionEvent = this.a.b();
+      if ((paramMotionEvent instanceof Conversation)) {
+        ((Conversation)paramMotionEvent).c();
+      }
+      if (i == 0) {
+        MainFragment.d(this.a);
+      }
+      return false;
+    }
   }
   
-  public void b() {}
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adiw
  * JD-Core Version:    0.7.0.1
  */

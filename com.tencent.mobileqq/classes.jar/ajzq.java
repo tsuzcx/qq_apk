@@ -1,22 +1,45 @@
-import com.tencent.mobileqq.util.FaceDecoderImpl;
-import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.mobileqq.util.IdleUpdater;
-import java.util.concurrent.ConcurrentHashMap;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ajzq
-  extends IdleUpdater
+  extends awhw
 {
-  public ajzq(FaceDecoderImpl paramFaceDecoderImpl, FaceInfo paramFaceInfo) {}
+  public ajzq(PhoneContactTabView paramPhoneContactTabView) {}
   
-  public void a()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoderImpl.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b, false, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int, true, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Byte, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.c, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.d, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Boolean);
-    FaceDecoderImpl.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoderImpl).remove(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString);
+    this.a.a.unRegistObserver(this);
+    switch (PhoneContactTabView.a(this.a).d())
+    {
+    case 2: 
+    case 3: 
+    case 4: 
+    case 8: 
+    default: 
+      PhoneContactTabView.b(this.a);
+      return;
+    case 9: 
+      this.a.d();
+      return;
+    case 0: 
+    case 1: 
+    case 5: 
+    case 7: 
+      PhoneContactTabView.a(this.a);
+      return;
+    }
+    if (PhoneContactTabView.a(this.a).a().lastUsedFlag == 2L)
+    {
+      this.a.d();
+      return;
+    }
+    PhoneContactTabView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajzq
  * JD-Core Version:    0.7.0.1
  */

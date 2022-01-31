@@ -1,30 +1,41 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.MayknowRecommendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public class zgh
-  implements Runnable
+  extends WebViewPlugin
 {
-  public zgh(MayknowRecommendManager paramMayknowRecommendManager) {}
-  
-  public void run()
+  public zgh()
   {
-    if (Math.abs(MayknowRecommendManager.a(this.a).getLong("sp_get_mayknow_timestamp", 0L) - System.currentTimeMillis()) >= 86400000L)
-    {
-      ((FriendListHandler)MayknowRecommendManager.a(this.a).a(1)).a((short)MayknowRecommendManager.b());
-      MayknowRecommendManager.a(this.a).edit().putLong("sp_get_mayknow_timestamp", System.currentTimeMillis()).commit();
-      QLog.d("MayknowRecommendManager", 1, "getMayKnowRecommendRemote, >24hour, update timestamp");
-      return;
+    this.mPluginNameSpace = "troop_member_level_JS_API";
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!"troop_member_level_JS_API".equals(paramString2)) {
+      return false;
     }
-    QLog.d("MayknowRecommendManager", 1, "getMayKnowRecommendRemote, <24hour, return");
+    if (("setTitleBar".equals(paramString3)) && (paramVarArgs.length == 3))
+    {
+      paramString2 = (bejh)super.getBrowserComponent(2);
+      if (paramString2 != null)
+      {
+        paramString1 = paramVarArgs[0];
+        paramJsBridgeListener = paramString1;
+        if ("RETURN".equals(paramString1)) {
+          paramJsBridgeListener = this.mRuntime.a().getIntent().getStringExtra("leftViewText");
+        }
+        paramString2.a.a(paramJsBridgeListener, paramVarArgs[1], paramVarArgs[2]);
+      }
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     zgh
  * JD-Core Version:    0.7.0.1
  */

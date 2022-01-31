@@ -1,20 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.DoodleActivity;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.proxy.GroupActionResp;
+import com.tencent.qphone.base.util.QLog;
 
 public class cpp
-  implements View.OnClickListener
+  extends FriendListObserver
 {
-  public cpp(DoodleActivity paramDoodleActivity) {}
+  public cpp(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    this.a.b.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
-    this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d(GroupManagerActivity.a, 2, "onAddGroupResp isSuccess = " + paramBoolean);
+    }
+    this.a.a(paramBoolean);
+    GroupManagerActivity.c(this.a, true);
+  }
+  
+  protected void b(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(GroupManagerActivity.a, 2, "onRenameGroupResp isSuccess = " + paramBoolean);
+    }
+    this.a.a(paramBoolean);
+    GroupManagerActivity.c(this.a, true);
+  }
+  
+  protected void c(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(GroupManagerActivity.a, 2, "onDeleteGroupResp isSuccess = " + paramBoolean);
+    }
+    this.a.a(paramBoolean);
+    GroupManagerActivity.c(this.a, true);
+  }
+  
+  protected void d(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(GroupManagerActivity.a, 2, "onResortGroupResp isSuccess = " + paramBoolean);
+    }
+    this.a.a(true);
+    GroupManagerActivity.c(this.a, true);
   }
 }
 

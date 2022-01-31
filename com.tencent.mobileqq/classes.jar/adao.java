@@ -1,28 +1,25 @@
-import android.content.ContentValues;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
+import android.graphics.PointF;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.profile.view.SingleTouchLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class adao
-  implements Runnable
+  implements aelt
 {
-  public adao(FileManagerProxy paramFileManagerProxy, ContentValues paramContentValues, long paramLong) {}
+  public adao(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerProxy.a(FileManagerEntity.tableName(), this.jdField_a_of_type_AndroidContentContentValues, "nSessionId=?", new String[] { String.valueOf(this.jdField_a_of_type_Long) }, null);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    this.a.a.setActualViewSize(paramInt1, paramInt2);
+    this.a.a.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileCardActivity", 2, "updateDiyText: x=" + this.a.a.a().x + ", y=" + this.a.a.a().y + ", width=" + paramInt1 + ", height=" + paramInt2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adao
  * JD-Core Version:    0.7.0.1
  */

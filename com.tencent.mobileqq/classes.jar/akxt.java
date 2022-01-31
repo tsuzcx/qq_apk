@@ -1,34 +1,38 @@
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.worldcup.ARWorldCupBackConfirmDialog;
-import com.tencent.mobileqq.worldcup.ARWorldCupBackConfirmDialog.IBackConfirmDialogCallBack;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import org.json.JSONObject;
 
-public class akxt
-  implements ARWorldCupBackConfirmDialog.IBackConfirmDialogCallBack
+class akxt
+  implements abwu
 {
-  public akxt(ARWorldCupGameLogicManager paramARWorldCupGameLogicManager) {}
+  akxt(akxp paramakxp, String paramString, long paramLong, abwx paramabwx, CmGameInitParams paramCmGameInitParams) {}
   
-  public void a()
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    ReportController.b(null, "dc00898", "", "", "0X8009321", "0X8009321", 1, 0, "1", "", "", "");
-    ARWorldCupGameLogicManager.a(this.a);
+    akxp.a(this.jdField_a_of_type_Akxp, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramInt);
   }
   
-  public void b()
+  public void onPermission(int paramInt)
   {
-    ReportController.b(null, "dc00898", "", "", "0X8009322", "0X8009322", 1, 0, "1", "", "", "");
-    ARWorldCupGameLogicManager.a(this.a).dismiss();
+    akxp.a(this.jdField_a_of_type_Akxp, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramInt);
   }
   
-  public void c()
+  public void onSuccess(JSONObject paramJSONObject)
   {
-    ReportController.b(null, "dc00898", "", "", "0X8009323", "0X8009323", 1, 0, "1", "", "", "");
-    ARWorldCupGameLogicManager.a(this.a).dismiss();
+    String str = paramJSONObject.optString("openid");
+    paramJSONObject = paramJSONObject.optString("access_token", "");
+    akxp.a(this.jdField_a_of_type_Akxp, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Abwx);
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.openId = str;
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessToken = paramJSONObject;
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessTokenRet = 1;
   }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akxt
  * JD-Core Version:    0.7.0.1
  */

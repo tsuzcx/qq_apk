@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/lp" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:id="@id/ftz" android:background="@drawable/b03" android:paddingLeft="6.0dip" android:paddingTop="6.0dip" android:paddingRight="6.0dip" android:paddingBottom="6.0dip" style="@style/lo">
+        <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.tencent.mm.ui.widget.MMEditText android:textColor="@color/h6" android:layout_gravity="bottom" android:id="@id/fu0" android:background="@drawable/b9d" android:layout_width="0.0dip" android:layout_marginTop="8.0dip" android:maxHeight="@dimen/eh" android:minHeight="@dimen/ej" android:singleLine="false" android:layout_weight="1.0" android:inputType="textCapSentences|textMultiLine" android:textCursorDrawable="@drawable/a8e" style="@style/lb" />
+            <ImageButton android:id="@id/fu1" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/jx" android:contentDescription="@string/aka" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/fu2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginStart="6.0dip">
+            <Button android:textColor="#1a000000" android:id="@id/fu3" android:background="@drawable/a11" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:layout_width="wrap_content" android:layout_height="@dimen/em" android:layout_marginBottom="8.0dip" android:minWidth="@dimen/eo" android:text="@string/apy" />
+            <Button android:textColor="@color/a95" android:id="@id/fu4" android:background="@drawable/gr" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/em" android:layout_marginBottom="8.0dip" android:minWidth="@dimen/eo" android:text="@string/apy" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

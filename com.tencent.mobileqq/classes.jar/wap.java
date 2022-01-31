@@ -1,35 +1,32 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.TroopInfoManager;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager;
-import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class wap
-  implements Runnable
+public final class wap
+  extends QQUIEventReceiver<wah, wpd>
 {
-  public wap(TroopChatPie paramTroopChatPie) {}
-  
-  public void run()
+  public wap(@NonNull wah paramwah)
   {
-    if (TroopChatPie.e(this.a)) {
-      return;
+    super(paramwah);
+  }
+  
+  public void a(@NonNull wah paramwah, @NonNull wpd paramwpd)
+  {
+    if ((paramwpd.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwpd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramwah.a != null) && (TextUtils.equals(paramwpd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramwah.a.b))) {
+      paramwah.i();
     }
-    Object localObject = (TroopInfoManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36);
-    if (localObject != null) {
-      ((TroopInfoManager)localObject).a(Long.valueOf(Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)), true).a();
-    }
-    TroopNotificationHelper.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    localObject = TroopChatPie.k(this.a).obtainMessage(29);
-    ((Message)localObject).arg1 = 1;
-    TroopChatPie.l(this.a).sendMessage((Message)localObject);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wpd.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wap
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,5 @@
 {
-  "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+  "class": "com.tencent.ditto.widget.LinearAreaLayout",
   "shell": {
     "id":"feed_praiselist_root",
     "width": "match_parent",
@@ -9,7 +9,7 @@
   },
   "children": [
     {
-      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
       "shell": {
         "id":"feed_praiselist_RedPocketList",
         "width": "match_parent",
@@ -22,7 +22,7 @@
     },
 
     {
-      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
       "shell": {
         "id":"feed_praiselist_PraiseList",
         "width": "match_parent",
@@ -35,7 +35,7 @@
     },
 
     {
-      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
       "shell": {
         "id":"feed_praiselist_LuckyMoneyList",
         "width": "match_parent",
@@ -48,7 +48,7 @@
     },
 
     {
-      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
       "shell": {
         "id":"feed_praiselist_forward",
         "width": "match_parent",
@@ -61,7 +61,7 @@
     },
 
     {
-      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
       "shell": {
         "id":"feed_praiselist_commentcount",
         "width": "match_parent",

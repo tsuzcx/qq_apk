@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.profile.view;
 
-import agro;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.v4.view.PagerAdapter;
@@ -11,7 +10,10 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ToggleButton;
-import com.tencent.mobileqq.emoticonview.PanelRecycleBin;
+import apxu;
+import awvm;
+import awvn;
+import awvp;
 import com.tencent.mobileqq.profile.ProfileLabelInfo;
 import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
 import java.util.List;
@@ -22,17 +24,17 @@ public class ProfileLabelPanelAdapter
 {
   public float a;
   protected int a;
-  protected agro a;
   public Context a;
-  protected SparseArray a;
-  protected PanelRecycleBin a;
-  protected ProfileLabelCallBack a;
-  public ProfileLabelPanel.LabelStatusManager a;
-  protected List a;
+  protected SparseArray<awvp> a;
+  protected apxu a;
+  protected awvm a;
+  public awvn a;
+  protected awvp a;
+  protected List<ProfileLabelTypeInfo> a;
   
-  public ProfileLabelPanelAdapter(Context paramContext, List paramList)
+  public ProfileLabelPanelAdapter(Context paramContext, List<ProfileLabelTypeInfo> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin = new PanelRecycleBin();
+    this.jdField_a_of_type_Apxu = new apxu();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
@@ -54,32 +56,32 @@ public class ProfileLabelPanelAdapter
     if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
       this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     }
-    this.jdField_a_of_type_Agro = ((agro)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
-    if (this.jdField_a_of_type_Agro == null)
+    this.jdField_a_of_type_Awvp = ((awvp)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+    if (this.jdField_a_of_type_Awvp == null)
     {
-      this.jdField_a_of_type_Agro = new agro(this, null);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Agro);
+      this.jdField_a_of_type_Awvp = new awvp(this, null);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Awvp);
     }
     paramView = (GridView)paramView;
-    this.jdField_a_of_type_Agro.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
-    paramView.setAdapter(this.jdField_a_of_type_Agro);
+    this.jdField_a_of_type_Awvp.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
+    paramView.setAdapter(this.jdField_a_of_type_Awvp);
   }
   
-  public void a(ProfileLabelCallBack paramProfileLabelCallBack)
+  public void a(awvm paramawvm)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelCallBack = paramProfileLabelCallBack;
+    this.jdField_a_of_type_Awvm = paramawvm;
   }
   
-  public void a(ProfileLabelPanel.LabelStatusManager paramLabelStatusManager)
+  public void a(awvn paramawvn)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager = paramLabelStatusManager;
+    this.jdField_a_of_type_Awvn = paramawvn;
   }
   
   public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
     GridView localGridView = (GridView)paramObject;
     ((ViewGroup)paramView).removeView(localGridView);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.a((View)paramObject);
+    this.jdField_a_of_type_Apxu.a((View)paramObject);
   }
   
   public int getCount()
@@ -89,7 +91,7 @@ public class ProfileLabelPanelAdapter
   
   public Object instantiateItem(View paramView, int paramInt)
   {
-    GridView localGridView2 = (GridView)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.a();
+    GridView localGridView2 = (GridView)this.jdField_a_of_type_Apxu.a();
     GridView localGridView1 = localGridView2;
     if (localGridView2 == null) {
       localGridView1 = a();
@@ -111,10 +113,10 @@ public class ProfileLabelPanelAdapter
     ToggleButton localToggleButton = (ToggleButton)paramView;
     localToggleButton.toggle();
     paramView = (ProfileLabelInfo)paramView.getTag();
-    ProfileLabelCallBack localProfileLabelCallBack;
+    awvm localawvm;
     if (paramView != null)
     {
-      localProfileLabelCallBack = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelCallBack;
+      localawvm = this.jdField_a_of_type_Awvm;
       if (paramView.labelStatus != ProfileLabelInfo.STATUS_CHECKED) {
         break label53;
       }
@@ -122,14 +124,14 @@ public class ProfileLabelPanelAdapter
     label53:
     for (boolean bool = false;; bool = true)
     {
-      localProfileLabelCallBack.a(paramView, localToggleButton, Boolean.valueOf(bool));
+      localawvm.a(paramView, localToggleButton, Boolean.valueOf(bool));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.ProfileLabelPanelAdapter
  * JD-Core Version:    0.7.0.1
  */

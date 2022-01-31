@@ -1,0 +1,54 @@
+package com.tencent.mobileqq.mini.apkg;
+
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.mini.launch.AppBrandProxy;
+import com.tencent.mobileqq.mini.report.MiniAppStartState;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
+class BaseLibManager$2$1
+  implements MiniAppCmdInterface
+{
+  BaseLibManager$2$1(BaseLibManager.2 param2, String paramString1, String paramString2) {}
+  
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  {
+    QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng] updateBaseLib response. isSuc=" + paramBoolean + " rsp=" + paramJSONObject);
+    if ((paramBoolean) && (paramJSONObject != null))
+    {
+      ThreadManagerV2.executeOnFileThread(new BaseLibManager.2.1.1(this, paramJSONObject));
+      Object localObject = BaseLibInfo.fromJSON(paramJSONObject.optJSONObject(BaseLibInfo.getKey(1)));
+      if (BaseLibManager.access$000(this.this$1.this$0, (BaseLibInfo)localObject).booleanValue())
+      {
+        paramJSONObject = ((BaseLibInfo)localObject).baseLibVersion;
+        localObject = ((BaseLibInfo)localObject).baseLibUrl;
+        QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng] updateBaseLib end : version : " + paramJSONObject + "; url : " + (String)localObject);
+        this.this$1.this$0.doDownloadBaselib((String)localObject, paramJSONObject, this.val$baseLibUrl, this.val$baseLibVersion, null);
+        paramJSONObject = AppBrandProxy.g().getMiniAppConfig();
+        if ((paramJSONObject != null) && (paramJSONObject.config != null) && (!TextUtils.isEmpty(paramJSONObject.config.appId))) {
+          MiniAppStartState.setBaseLibDownload(paramJSONObject.config.appId, false);
+        }
+      }
+      do
+      {
+        return;
+        QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng] updateBaseLib, no update");
+        BaseLibManager.access$200(this.this$1.this$0, 1);
+        paramJSONObject = AppBrandProxy.g().getMiniAppConfig();
+      } while ((paramJSONObject == null) || (paramJSONObject.config == null) || (TextUtils.isEmpty(paramJSONObject.config.appId)));
+      MiniAppStartState.setBaseLibDownload(paramJSONObject.config.appId, true);
+      return;
+    }
+    QLog.e("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng] updateBaseLib failed!");
+    BaseLibManager.access$200(this.this$1.this$0, 1100);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.mini.apkg.BaseLibManager.2.1
+ * JD-Core Version:    0.7.0.1
+ */

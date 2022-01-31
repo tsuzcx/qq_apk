@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class im_msg_body$ArkAppElem
-  extends MessageMicro
+  extends MessageMicro<ArkAppElem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField app_name = PBField.initString("");

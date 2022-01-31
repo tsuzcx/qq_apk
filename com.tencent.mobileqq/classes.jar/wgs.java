@@ -1,39 +1,36 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import com.tribe.async.dispatch.Subscriber;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class wgs
-  implements AdapterView.OnItemClickListener
+  implements Subscriber
 {
-  public wgs(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  private WeakReference<QQStoryBaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public wgs(QQStoryBaseActivity paramQQStoryBaseActivity1, QQStoryBaseActivity paramQQStoryBaseActivity2)
   {
-    if (this.a.jdField_a_of_type_Wgy != null)
-    {
-      paramAdapterView = this.a.getActivity();
-      if (paramAdapterView != null) {
-        break label23;
-      }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQStoryBaseActivity2);
+  }
+  
+  public void accept(@NonNull List<Class<? extends Dispatcher.Dispatchable>> paramList)
+  {
+    paramList.add(xqy.class);
+  }
+  
+  public void handleDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
+  {
+    paramDispatchable = (QQStoryBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramDispatchable != null) {
+      paramDispatchable.c();
     }
-    label23:
-    do
-    {
-      return;
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_clk", 0, 0, this.a.b, "", "", "");
-      paramView = ((wgx)this.a.jdField_a_of_type_Wgy.getItem(paramInt)).a;
-      ChatHistoryBubbleListForTroopFragment.a(paramAdapterView, this.a.b, paramView, 100, 1);
-    } while (!QLog.isColorLevel());
-    QLog.i(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "onItemClick, message = " + paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wgs
  * JD-Core Version:    0.7.0.1
  */

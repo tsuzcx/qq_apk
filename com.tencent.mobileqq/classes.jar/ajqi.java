@@ -1,26 +1,10 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.webkit.URLUtil;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.mtt.MttBrowerWrapper;
+import java.util.ArrayList;
 
-public final class ajqi
-  extends ClickableSpan
+public abstract interface ajqi
 {
-  public ajqi(String paramString, MessageRecord paramMessageRecord) {}
+  public abstract void a(int paramInt, boolean paramBoolean);
   
-  public void onClick(View paramView)
-  {
-    String str = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
-    MttBrowerWrapper.a(paramView.getContext(), str, true, true, true, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(paramTextPaint.linkColor);
-    paramTextPaint.setUnderlineText(false);
-  }
+  public abstract void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList);
 }
 
 

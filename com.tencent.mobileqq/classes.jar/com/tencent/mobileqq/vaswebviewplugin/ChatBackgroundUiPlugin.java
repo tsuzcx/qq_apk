@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
+import begz;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import java.util.Map;
 
 public class ChatBackgroundUiPlugin
@@ -24,7 +24,7 @@ public class ChatBackgroundUiPlugin
     }
   }
   
-  protected boolean excuteEvent(String paramString, long paramLong, Map paramMap)
+  protected boolean excuteEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     return false;
   }
@@ -36,7 +36,7 @@ public class ChatBackgroundUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ChatBackgroundUiPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,28 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.biz.qqstory.storyHome.atvideo.model.AtVideoTextWatcher;
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
 
 public class nuw
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public nuw(DetailCommentHelper paramDetailCommentHelper) {}
+  public nuw(ShopWebViewFragment paramShopWebViewFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      if (DetailCommentHelper.a(this.a)) {
-        break label105;
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(DetailCommentHelper.a(this.a), DetailCommentHelper.a(this.a), this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, DetailCommentHelper.a(this.a).jdField_a_of_type_JavaUtilList);
-      DetailCommentHelper.a(this.a).jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
-      paramView = this.a;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
-        break label100;
-      }
+    if (this.a.jdField_a_of_type_Nun != null) {
+      this.a.jdField_a_of_type_Nun.b(this.a.getActivity(), this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
     }
-    label100:
-    for (boolean bool = true;; bool = false)
+    try
     {
-      DetailCommentHelper.a(paramView, bool);
-      return false;
+      this.a.jdField_a_of_type_Nun.a.a(134248548, null, null, null, null, 0L, false);
+      return;
     }
-    label105:
-    this.a.b();
-    return false;
+    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nuw
  * JD-Core Version:    0.7.0.1
  */

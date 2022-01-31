@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity;
 
+import alof;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.AppConstants;
 
 public class qfileJumpIpadActivity
   extends qfileJumpActivity
 {
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.a = AppConstants.z;
+    this.a = alof.A;
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qfileJumpIpadActivity
  * JD-Core Version:    0.7.0.1
  */

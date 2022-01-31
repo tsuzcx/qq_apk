@@ -1,35 +1,23 @@
-import java.util.Locale;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aefw
+  implements View.OnClickListener
 {
-  public static int a;
-  public float a;
-  public long a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  public float d;
-  public int d;
-  public float e;
-  public float f;
-  public float g;
-  public float h;
-  public float i;
-  public float j;
-  public float k;
-  public float l;
+  public aefw(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public aefw()
+  public void onClick(View paramView)
   {
-    int m = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = m + 1;
-    this.jdField_b_of_type_Int = m;
-  }
-  
-  public String toString()
-  {
-    return String.format(Locale.getDefault(), "[id:%d, start: %d, x: %f, y: %f, vx: %f, vy: %f, size: %d", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long), Float.valueOf(this.jdField_a_of_type_Float), Float.valueOf(this.jdField_b_of_type_Float), Float.valueOf(this.c), Float.valueOf(this.jdField_d_of_type_Float), Integer.valueOf(this.jdField_d_of_type_Int) });
+    paramView = new ArrayList();
+    Iterator localIterator = this.a.a.b.iterator();
+    while (localIterator.hasNext()) {
+      paramView.add(Long.valueOf(Long.parseLong((String)localIterator.next())));
+    }
+    TroopMemberListActivity.a(this.a, paramView);
   }
 }
 

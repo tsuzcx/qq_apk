@@ -1,24 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.LongMsgItemBuilder;
 
 public class dzk
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
-  public dzk(UpgradeActivity paramUpgradeActivity) {}
+  public dzk(LongMsgItemBuilder paramLongMsgItemBuilder) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4) {
-      this.a.d();
-    }
-    return false;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dzk
  * JD-Core Version:    0.7.0.1
  */

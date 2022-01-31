@@ -1,46 +1,32 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import java.util.ArrayList;
 
 public class ezm
-  implements View.OnTouchListener
+  extends Thread
 {
-  public ezm(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  public ezm(CardHandler paramCardHandler, int paramInt, ArrayList paramArrayList) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (paramMotionEvent.getAction() == 0)
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a.a();
+    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a.getManager(46);
+    Card localCard = localFriendsManager.a(str);
+    if (localCard != null)
     {
-      paramView = new int[2];
-      VoipDialInterfaceActivity.b(this.a).getLocationInWindow(paramView);
-      paramMotionEvent = new int[2];
-      VoipDialInterfaceActivity.b(this.a).getLocationOnScreen(paramMotionEvent);
-      paramMotionEvent = new int[2];
-      VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
-      VoipDialInterfaceActivity.e(this.a).offsetTopAndBottom(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.b(this.a).getHeight() / 2 - VoipDialInterfaceActivity.e(this.a).getHeight() / 2);
-      VoipDialInterfaceActivity.e(this.a).offsetLeftAndRight(paramView[0] + VoipDialInterfaceActivity.b(this.a).getWidth() / 2 - VoipDialInterfaceActivity.e(this.a).getWidth() / 2);
-      VoipDialInterfaceActivity.e(this.a).setVisibility(0);
+      localCard.iVoteIncrement = this.jdField_a_of_type_Int;
+      localFriendsManager.a(localCard);
     }
-    while (paramMotionEvent.getAction() != 1) {
-      return false;
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+      CardHandler.a(str, this.jdField_a_of_type_JavaUtilArrayList);
     }
-    paramView = new int[2];
-    VoipDialInterfaceActivity.b(this.a).getLocationInWindow(paramView);
-    paramMotionEvent = new int[2];
-    VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
-    VoipDialInterfaceActivity.e(this.a).offsetTopAndBottom(-(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.b(this.a).getHeight() / 2 - VoipDialInterfaceActivity.e(this.a).getHeight() / 2));
-    VoipDialInterfaceActivity.e(this.a).offsetLeftAndRight(-(paramView[0] + VoipDialInterfaceActivity.b(this.a).getWidth() / 2 - VoipDialInterfaceActivity.e(this.a).getWidth() / 2));
-    VoipDialInterfaceActivity.e(this.a).setVisibility(4);
-    VoipDialInterfaceActivity.c(this.a).invalidate();
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ezm
  * JD-Core Version:    0.7.0.1
  */

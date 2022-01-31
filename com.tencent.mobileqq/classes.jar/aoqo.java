@@ -1,44 +1,48 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.util.ShortVideoJsApiPlugin;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aoqo
-  extends BroadcastReceiver
 {
-  public aoqo(ShortVideoJsApiPlugin paramShortVideoJsApiPlugin) {}
+  public aoqp a = new aoqp(this);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static aoqo a(String paramString)
   {
-    paramContext = paramIntent.getStringExtra("callback");
-    String str1 = paramIntent.getStringExtra("uuid");
-    String str2 = paramIntent.getStringExtra("md5");
-    paramIntent = new JSONObject();
-    try
+    if (paramString == null) {}
+    do
     {
-      paramIntent.put("uuid", str1);
-      paramIntent.put("md5", str2);
-      if (QLog.isColorLevel()) {
-        QLog.i("ShortVideoJsApiPlugin", 2, "call webView, uuid" + str1 + ", md5:" + str2);
-      }
-      this.a.callJs(paramContext, new String[] { paramIntent.toString() });
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      return null;
+      try
       {
-        localJSONException.printStackTrace();
+        aoqo localaoqo = new aoqo();
+        paramString = new JSONObject(paramString).optJSONObject("webbundle");
+        if (paramString != null)
+        {
+          paramString = paramString.optJSONObject("qqcomic");
+          if (paramString != null)
+          {
+            localaoqo.a.jdField_a_of_type_Boolean = paramString.optBoolean("enable", false);
+            localaoqo.a.jdField_a_of_type_JavaLangString = paramString.optString("preload_url", "");
+          }
+        }
+        QLog.d("ConfBean", 2, "confBean = " + localaoqo.toString());
+        return localaoqo;
       }
-    }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("qqComicConfig:").append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoqo
  * JD-Core Version:    0.7.0.1
  */

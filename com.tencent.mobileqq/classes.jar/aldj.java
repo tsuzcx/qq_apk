@@ -1,20 +1,17 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.MyAppApi;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
-class aldj
-  implements Runnable
+public class aldj
+  implements DialogInterface.OnClickListener
 {
-  aldj(aldi paramaldi, Bundle paramBundle) {}
+  public aldj(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void run()
-  {
-    MyAppApi.a().a(this.jdField_a_of_type_Aldi.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Aldi.jdField_a_of_type_Boolean, false);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aldj
  * JD-Core Version:    0.7.0.1
  */

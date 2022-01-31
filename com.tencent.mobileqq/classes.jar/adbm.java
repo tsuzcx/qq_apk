@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qqfav.QfavBuilder;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.widget.AdapterView;
 
-class adbm
-  implements Runnable
+public class adbm
+  implements bhuw
 {
-  adbm(adbl paramadbl, QQAppInterface paramQQAppInterface) {}
+  public adbm(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void run()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    new QfavBuilder(3).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseActivity.sTopActivity, this.jdField_a_of_type_Adbl.a, null, false);
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adbm
  * JD-Core Version:    0.7.0.1
  */

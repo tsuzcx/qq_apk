@@ -1,27 +1,21 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
+import java.util.List;
 
-public class onf
-  extends MessageObserver
+class onf
+  extends oob
 {
-  public onf(TroopStoryForwardTask paramTroopStoryForwardTask) {}
-  
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  onf(omz paramomz, boolean paramBoolean1, List paramList, boolean paramBoolean2)
   {
-    paramStatictisInfo = this.a.a;
-    if (paramBoolean) {}
-    for (int i = 4;; i = 5)
-    {
-      paramStatictisInfo.sendEmptyMessage(i);
-      return;
-    }
+    super(paramomz, null);
+  }
+  
+  void a(ooe paramooe)
+  {
+    paramooe.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     onf
  * JD-Core Version:    0.7.0.1
  */

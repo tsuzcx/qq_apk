@@ -2,6 +2,6 @@
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="vertical" android:id="@id/action_sheet_actionView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
-        <LinearLayout android:orientation="vertical" android:id="@id/action_sheet_contentView" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201b7" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <LinearLayout android:orientation="vertical" android:id="@id/action_sheet_contentView" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201b9" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     </LinearLayout>
 </RelativeLayout>

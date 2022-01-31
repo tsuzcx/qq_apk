@@ -1,19 +1,44 @@
-import android.content.Context;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.OnReciteListener;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
-public class ajiz
-  implements Runnable
+class ajiz
+  implements View.OnClickListener
 {
-  public ajiz(ReciteRecordLayout paramReciteRecordLayout) {}
+  ajiz(ajit paramajit) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQToast.a(this.a.a, this.a.a.getString(2131433386), 0).a();
-    if (ReciteRecordLayout.a(this.a) != null) {
-      ReciteRecordLayout.a(this.a).c();
-    }
+    if (paramView == null) {}
+    Object localObject1;
+    RecentBaseData localRecentBaseData;
+    do
+    {
+      do
+      {
+        int i;
+        do
+        {
+          return;
+          i = paramView.getId();
+        } while ((i < 0) || (i >= this.a.getCount()));
+        localObject1 = this.a.getItem(i);
+      } while ((localObject1 == null) || (!(localObject1 instanceof RecentBaseData)));
+      localRecentBaseData = (RecentBaseData)localObject1;
+      Object localObject2 = null;
+      localObject1 = localObject2;
+      if ((paramView instanceof TextView))
+      {
+        paramView = ((TextView)paramView).getText();
+        localObject1 = localObject2;
+        if (paramView != null) {
+          localObject1 = paramView.toString();
+        }
+      }
+    } while (TextUtils.isEmpty((CharSequence)localObject1));
+    this.a.a(localRecentBaseData, (String)localObject1, "1");
   }
 }
 

@@ -1,28 +1,21 @@
-import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView.EffectListener;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgSuspiciousFragment;
 
 public class ahlz
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahlz(EffectsCameraCaptureView paramEffectsCameraCaptureView) {}
+  public ahlz(NewFriendMoreSysMsgSuspiciousFragment paramNewFriendMoreSysMsgSuspiciousFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    EffectsCameraCaptureView.a(this.a, CaptureUtil.b());
-    if (EffectsCameraCaptureView.a(this.a) != null) {
-      EffectsCameraCaptureView.a(this.a).d_(EffectsCameraCaptureView.a(this.a));
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("EffectsCameraCaptureView", 2, "onFirstFrameShownInternal soLoaded=" + EffectsCameraCaptureView.a(this.a));
-    }
-    this.a.u();
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahlz
  * JD-Core Version:    0.7.0.1
  */

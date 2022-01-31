@@ -9,11 +9,11 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import antm;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.filter.FilterData;
-import dov.com.tencent.biz.qqstory.takevideo.filter.FilterData.FilterPageItem;
-import dov.com.tencent.biz.qqstory.takevideo.filter.VideoEffectsFilterData.VideoEffectsFilterPageItem;
+import bmmf;
+import bmmg;
+import bmyl;
+import bmym;
+import bmyt;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -21,15 +21,16 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+import wxe;
 
 public class EditVideoFilter$FilterPagerAdapter
   extends PagerAdapter
 {
   private final Context jdField_a_of_type_AndroidContentContext;
-  private final SparseArray jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private EditVideoFilter.ItemViewGestureListener jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener;
-  public final List a;
-  private final Map jdField_a_of_type_JavaUtilMap = new HashMap();
+  private final SparseArray<bmym> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private bmmf jdField_a_of_type_Bmmf;
+  public final List<bmyl> a;
+  private final Map<Class<? extends bmym>, Queue<bmym>> jdField_a_of_type_JavaUtilMap = new HashMap();
   
   public EditVideoFilter$FilterPagerAdapter(@NonNull Context paramContext)
   {
@@ -51,19 +52,19 @@ public class EditVideoFilter$FilterPagerAdapter
     return 0;
   }
   
-  @Nullable
-  public FilterData.FilterPageItem a(int paramInt)
-  {
-    return (FilterData.FilterPageItem)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-  }
-  
-  public FilterData a(int paramInt)
+  public bmyl a(int paramInt)
   {
     paramInt = a(paramInt);
     if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (FilterData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return (bmyl)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
+  }
+  
+  @Nullable
+  public bmym a(int paramInt)
+  {
+    return (bmym)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
   }
   
   public void a(int paramInt, String paramString)
@@ -71,28 +72,28 @@ public class EditVideoFilter$FilterPagerAdapter
     Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      FilterData localFilterData = (FilterData)((Iterator)localObject).next();
-      if (paramInt == localFilterData.jdField_b_of_type_Int) {
-        localFilterData.jdField_b_of_type_JavaLangString = paramString;
+      bmyl localbmyl = (bmyl)((Iterator)localObject).next();
+      if (paramInt == localbmyl.jdField_b_of_type_Int) {
+        localbmyl.jdField_b_of_type_JavaLangString = paramString;
       }
     }
     int i = 0;
     while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
     {
-      localObject = (FilterData.FilterPageItem)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-      if ((localObject != null) && (((FilterData.FilterPageItem)localObject).jdField_a_of_type_DovComTencentBizQqstoryTakevideoFilterFilterData.jdField_b_of_type_Int == paramInt) && ((localObject instanceof VideoEffectsFilterData.VideoEffectsFilterPageItem)))
+      localObject = (bmym)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+      if ((localObject != null) && (((bmym)localObject).jdField_a_of_type_Bmyl.jdField_b_of_type_Int == paramInt) && ((localObject instanceof bmyt)))
       {
-        localObject = (VideoEffectsFilterData.VideoEffectsFilterPageItem)localObject;
-        ((VideoEffectsFilterData.VideoEffectsFilterPageItem)localObject).b.setText(paramString);
+        localObject = (bmyt)localObject;
+        ((bmyt)localObject).b.setText(paramString);
         if (TextUtils.isEmpty(paramString)) {
-          EditVideoFilter.a((FilterData.FilterPageItem)localObject);
+          EditVideoFilter.a((bmym)localObject);
         }
       }
       i += 1;
     }
   }
   
-  public void a(List paramList)
+  public void a(List<bmyl> paramList)
   {
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_JavaUtilList.addAll(paramList);
@@ -102,18 +103,18 @@ public class EditVideoFilter$FilterPagerAdapter
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    FilterData.FilterPageItem localFilterPageItem = (FilterData.FilterPageItem)paramObject;
-    paramViewGroup.removeView(localFilterPageItem.jdField_a_of_type_AndroidViewView);
-    localFilterPageItem.jdField_a_of_type_AndroidViewView.setOnTouchListener(null);
-    localFilterPageItem.a();
-    paramObject = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localFilterPageItem.getClass());
+    bmym localbmym = (bmym)paramObject;
+    paramViewGroup.removeView(localbmym.jdField_a_of_type_AndroidViewView);
+    localbmym.jdField_a_of_type_AndroidViewView.setOnTouchListener(null);
+    localbmym.a();
+    paramObject = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localbmym.getClass());
     paramViewGroup = paramObject;
     if (paramObject == null)
     {
       paramViewGroup = new LinkedList();
-      this.jdField_a_of_type_JavaUtilMap.put(localFilterPageItem.getClass(), paramViewGroup);
+      this.jdField_a_of_type_JavaUtilMap.put(localbmym.getClass(), paramViewGroup);
     }
-    paramViewGroup.offer(localFilterPageItem);
+    paramViewGroup.offer(localbmym);
     this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
   }
   
@@ -124,23 +125,23 @@ public class EditVideoFilter$FilterPagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    FilterData localFilterData = a(paramInt);
-    if (localFilterData == null)
+    bmyl localbmyl = a(paramInt);
+    if (localbmyl == null)
     {
-      SLog.d("Q.qqstory.publish.edit.EditVideoFilter", "instantiateItem find data is null !");
+      wxe.d("Q.qqstory.publish.edit.EditVideoFilter", "instantiateItem find data is null !");
       return null;
     }
-    Object localObject1 = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localFilterData.a());
+    Object localObject1 = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localbmyl.a());
     if (localObject1 != null) {}
-    for (localObject1 = (FilterData.FilterPageItem)((Queue)localObject1).poll();; localObject1 = null)
+    for (localObject1 = (bmym)((Queue)localObject1).poll();; localObject1 = null)
     {
       Object localObject2 = localObject1;
       if (localObject1 == null) {
-        localObject2 = localFilterData.a(this.jdField_a_of_type_AndroidContentContext, paramViewGroup);
+        localObject2 = localbmyl.a(this.jdField_a_of_type_AndroidContentContext, paramViewGroup);
       }
-      paramViewGroup.addView(((FilterData.FilterPageItem)localObject2).jdField_a_of_type_AndroidViewView);
-      ((FilterData.FilterPageItem)localObject2).jdField_a_of_type_AndroidViewView.setOnTouchListener(new antm(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener));
-      ((FilterData.FilterPageItem)localObject2).a(localFilterData, paramInt);
+      paramViewGroup.addView(((bmym)localObject2).jdField_a_of_type_AndroidViewView);
+      ((bmym)localObject2).jdField_a_of_type_AndroidViewView.setOnTouchListener(new bmmg(this.jdField_a_of_type_Bmmf));
+      ((bmym)localObject2).a(localbmyl, paramInt);
       this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
       return localObject2;
     }
@@ -148,12 +149,12 @@ public class EditVideoFilter$FilterPagerAdapter
   
   public boolean isViewFromObject(View paramView, Object paramObject)
   {
-    return ((paramObject instanceof FilterData.FilterPageItem)) && (((FilterData.FilterPageItem)paramObject).jdField_a_of_type_AndroidViewView == paramView);
+    return ((paramObject instanceof bmym)) && (((bmym)paramObject).jdField_a_of_type_AndroidViewView == paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoFilter.FilterPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

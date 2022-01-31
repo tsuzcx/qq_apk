@@ -1,73 +1,57 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.mixedmsg.MixedMsgManager;
-import com.tencent.mobileqq.pic.PicBusiManager;
-import com.tencent.mobileqq.service.message.MessageRecordFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aehf
-  implements Runnable
+  extends alwx
 {
-  public aehf(MixedMsgManager paramMixedMsgManager, SessionInfo paramSessionInfo, MessageForMixedMsg paramMessageForMixedMsg, boolean paramBoolean) {}
+  public aehf(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void run()
+  protected void a(String paramString)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager.a.getAccount();
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b;
-    localObject2 = MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager.a, str, (String)localObject2, i);
-    ((MessageForMixedMsg)localObject2).extraflag = 32772;
-    ((MessageForMixedMsg)localObject2).msgData = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgData;
-    ((MessageForMixedMsg)localObject2).msgElemList = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgElemList;
-    if (!this.jdField_a_of_type_Boolean)
+    this.a.i();
+    paramString = this.a.getString(2131720551);
+    QQToast.a(this.a, 1, paramString, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    this.a.a(2130839405, this.a.getString(2131720087));
+  }
+  
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  {
+    long l2 = bafj.a().b();
+    long l1 = l2;
+    if (!TextUtils.isEmpty(paramString1)) {}
+    try
     {
-      ((MessageForMixedMsg)localObject2).mForwardFromIsTroop = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop;
-      ((MessageForMixedMsg)localObject2).mForwardFromUin = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin;
-    }
-    for (;;)
-    {
-      localObject3 = ((MessageForMixedMsg)localObject2).msgElemList.iterator();
-      while (((Iterator)localObject3).hasNext())
+      l1 = Long.parseLong(paramString1);
+      if (!paramBoolean)
       {
-        MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject3).next();
-        if ((localMessageRecord instanceof MessageForPic)) {
-          localMessageRecord.istroop = i;
+        this.a.i();
+        if (bafk.a(bafj.a().a(Long.valueOf(l1)), paramInt3, paramString2, paramString4)) {
+          this.a.finish();
         }
+        return;
       }
-      ((MessageForMixedMsg)localObject2).mIsResend = true;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager.a.a().b((MessageRecord)localObject2, this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager.a.getAccount());
-    this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager.a.a().a(1000, true, str);
-    Object localObject3 = new ArrayList();
-    localObject1 = PicBusiManager.a(7, (MessageForMixedMsg)localObject2, i, (String)localObject1, str, this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager.a.getAccount());
-    if (localObject1 != null) {
-      ((ArrayList)localObject3).addAll((Collection)localObject1);
-    }
-    while (((ArrayList)localObject3).size() > 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MixedMsgManager", 2, "[forwardMixedMsg]Upload pictures, count is [" + ((ArrayList)localObject3).size() + "], goto requestUploadPics");
-      }
-      MixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager, this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager.a, str, i, (ArrayList)localObject3, (MessageForMixedMsg)localObject2);
+      this.a.i();
+      this.a.finish();
+      bafk.a(bafj.a().a(Long.valueOf(l1)), paramInt1, paramString2, paramInt2);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.e("MixedMsgManager", 2, "[forwardMixedMsg]createForwardPicInfos from MessageForMixedMsg failed");
+    }
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        l1 = l2;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MixedMsgManager", 2, "[forwardMixedMsg]There's not any picture messages, goto onPackAndSendMsg");
-    }
-    MixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager, this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager.a, str, i, (MessageForMixedMsg)localObject2, true);
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    this.a.a(2130839405, this.a.getString(2131720072));
   }
 }
 

@@ -7,25 +7,35 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcRespRegister
   extends JceStruct
 {
-  public byte bCrashFlag;
-  public byte bLargeSeqUpdate;
-  public byte bLogQQ;
-  public byte bNeedKik;
-  public byte bUpdateFlag;
-  public byte cReplyCode;
-  public int iClientPort;
+  static byte[] cache_bytes_0x769_rspbody = (byte[])new byte[1];
+  public byte bCrashFlag = 0;
+  public byte bLargeSeqUpdate = 0;
+  public byte bLogQQ = 0;
+  public byte bNeedKik = 0;
+  public byte bUpdateFlag = 0;
+  public byte[] bytes_0x769_rspbody = null;
+  public byte cReplyCode = 0;
+  public int iClientPort = 0;
   public int iHelloInterval = 300;
-  public long iLargeSeq;
-  public long lBid;
-  public long lServerTime;
-  public long lUin;
+  public long iLargeSeq = 0L;
+  public int iStatus = 0;
+  public long lBid = 0L;
+  public long lServerTime = 0L;
+  public long lUin = 0L;
   public String strClientIP = "";
   public String strResult = "";
-  public long timeStamp;
+  public long timeStamp = 0L;
+  public long uClientBatteryGetInterval = 86400L;
+  public long uExtOnlineStatus = 0L;
+  
+  static
+  {
+    ((byte[])cache_bytes_0x769_rspbody)[0] = 0;
+  }
   
   public SvcRespRegister() {}
   
-  public SvcRespRegister(long paramLong1, long paramLong2, byte paramByte1, String paramString1, long paramLong3, byte paramByte2, byte paramByte3, byte paramByte4, long paramLong4, byte paramByte5, String paramString2, int paramInt1, int paramInt2, long paramLong5, byte paramByte6)
+  public SvcRespRegister(long paramLong1, long paramLong2, byte paramByte1, String paramString1, long paramLong3, byte paramByte2, byte paramByte3, byte paramByte4, long paramLong4, byte paramByte5, String paramString2, int paramInt1, int paramInt2, long paramLong5, byte paramByte6, byte[] paramArrayOfByte, long paramLong6, long paramLong7)
   {
     this.lUin = paramLong1;
     this.lBid = paramLong2;
@@ -42,6 +52,10 @@ public final class SvcRespRegister
     this.iHelloInterval = paramInt2;
     this.iLargeSeq = paramLong5;
     this.bLargeSeqUpdate = paramByte6;
+    this.bytes_0x769_rspbody = paramArrayOfByte;
+    this.iStatus = this.iStatus;
+    this.uExtOnlineStatus = paramLong6;
+    this.uClientBatteryGetInterval = paramLong7;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -61,6 +75,10 @@ public final class SvcRespRegister
     this.iHelloInterval = paramJceInputStream.read(this.iHelloInterval, 12, false);
     this.iLargeSeq = paramJceInputStream.read(this.iLargeSeq, 13, false);
     this.bLargeSeqUpdate = paramJceInputStream.read(this.bLargeSeqUpdate, 14, false);
+    this.bytes_0x769_rspbody = ((byte[])paramJceInputStream.read(cache_bytes_0x769_rspbody, 15, false));
+    this.iStatus = paramJceInputStream.read(this.iStatus, 16, false);
+    this.uExtOnlineStatus = paramJceInputStream.read(this.uExtOnlineStatus, 17, false);
+    this.uClientBatteryGetInterval = paramJceInputStream.read(this.uClientBatteryGetInterval, 18, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -82,6 +100,12 @@ public final class SvcRespRegister
     paramJceOutputStream.write(this.iHelloInterval, 12);
     paramJceOutputStream.write(this.iLargeSeq, 13);
     paramJceOutputStream.write(this.bLargeSeqUpdate, 14);
+    if (this.bytes_0x769_rspbody != null) {
+      paramJceOutputStream.write(this.bytes_0x769_rspbody, 15);
+    }
+    paramJceOutputStream.write(this.iStatus, 16);
+    paramJceOutputStream.write(this.uExtOnlineStatus, 17);
+    paramJceOutputStream.write(this.uClientBatteryGetInterval, 18);
   }
 }
 

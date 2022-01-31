@@ -1,45 +1,46 @@
 package com.tencent.mobileqq.msf.core.c;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import java.util.HashMap;
+import java.util.Map;
 
-public class c
-  extends SQLiteOpenHelper
+public final class c
+  extends JceStruct
 {
-  private static final String a = "monitor.db";
-  private static int b = 6;
-  private static String c = "create table dataflow(_id INTEGER PRIMARY KEY,processName CHAR(50),uin CHAR(20) NOT NULL,ip CHAR(20) NOT NULL,refer CHAR(50),port INTEGER NOT NULL,flag INTEGER NOT NULL,buffersize LONG NOT NULL,networktype INTEGER NOT NULL,mType CHAR NOT NULL,curtime LONG NOT NULL,status Byte NOT NULL)";
-  private static String d = "create table dataflow_rdm(_id INTEGER PRIMARY KEY,uin CHAR(20) NOT NULL,flag INTEGER NOT NULL,buffersize LONG NOT NULL,networktype INTEGER NOT NULL,mType CHAR NOT NULL,data CHAR NOT NULL)";
+  static Map d;
+  public Map a = null;
+  public long b = 0L;
+  public long c = 0L;
   
-  public c(Context paramContext)
+  public c() {}
+  
+  public c(Map paramMap, long paramLong1, long paramLong2)
   {
-    super(paramContext, "monitor.db", null, b);
+    this.a = paramMap;
+    this.b = paramLong1;
+    this.c = paramLong2;
   }
   
-  public static final c a()
+  public void readFrom(JceInputStream paramJceInputStream)
   {
-    return a.a();
+    if (d == null)
+    {
+      d = new HashMap();
+      o localo = new o();
+      d.put("", localo);
+    }
+    this.a = ((Map)paramJceInputStream.read(d, 1, true));
+    this.b = paramJceInputStream.read(this.b, 2, true);
+    this.c = paramJceInputStream.read(this.c, 3, true);
   }
   
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    paramSQLiteDatabase.execSQL(c);
-    paramSQLiteDatabase.execSQL(d);
-  }
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    paramSQLiteDatabase.execSQL("drop table dataflow");
-    paramSQLiteDatabase.execSQL("drop table dataflow_rdm");
-    paramSQLiteDatabase.execSQL(c);
-    paramSQLiteDatabase.execSQL(d);
-  }
-  
-  private static class a
-  {
-    private static final c a = new c(BaseApplication.getContext());
+    paramJceOutputStream.write(this.a, 1);
+    paramJceOutputStream.write(this.b, 2);
+    paramJceOutputStream.write(this.c, 3);
   }
 }
 

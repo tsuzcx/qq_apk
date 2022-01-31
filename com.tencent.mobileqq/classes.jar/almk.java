@@ -1,56 +1,20 @@
-import com.tencent.biz.bmqq.app.BmqqBusinessObserver;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
 
 public class almk
-  extends BmqqBusinessObserver
+  implements DialogInterface.OnClickListener
 {
-  public almk(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public almk(ApolloPanel paramApolloPanel) {}
   
-  protected void a(boolean paramBoolean, BmqqUserSimpleInfo paramBmqqUserSimpleInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a();
-    if ((paramBoolean) && (paramBmqqUserSimpleInfo != null)) {
-      if (paramBmqqUserSimpleInfo.mBmqqUin.equals(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a)) {
-        if (!paramBmqqUserSimpleInfo.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo))
-        {
-          i = 1;
-          if (i == 0) {
-            break label80;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo = paramBmqqUserSimpleInfo;
-          this.a.c(0);
-        }
-      }
-    }
-    label80:
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        do
-        {
-          for (;;)
-          {
-            return;
-            int i = 0;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("QidianProfileCardActivity", 2, "BmqqBusinessObserver not change");
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("QidianProfileCardActivity", 2, "BmqqBusinessObserver not current uin");
-      return;
-    }
-    QLog.d("QidianProfileCardActivity", 2, "BmqqBusinessObserver fail");
+    this.a.n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     almk
  * JD-Core Version:    0.7.0.1
  */

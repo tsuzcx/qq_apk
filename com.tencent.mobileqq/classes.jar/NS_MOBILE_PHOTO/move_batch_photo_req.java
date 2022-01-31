@@ -10,16 +10,16 @@ import java.util.Map;
 public final class move_batch_photo_req
   extends JceStruct
 {
-  static Map cache_busi_param;
-  static ArrayList cache_src_picid_list;
-  public Map busi_param;
+  static Map<Integer, String> cache_busi_param;
+  static ArrayList<String> cache_src_picid_list;
+  public Map<Integer, String> busi_param;
   public String dst_albumid = "";
   public String src_albumid = "";
-  public ArrayList src_picid_list;
+  public ArrayList<String> src_picid_list;
   
   public move_batch_photo_req() {}
   
-  public move_batch_photo_req(String paramString1, ArrayList paramArrayList, String paramString2, Map paramMap)
+  public move_batch_photo_req(String paramString1, ArrayList<String> paramArrayList, String paramString2, Map<Integer, String> paramMap)
   {
     this.src_albumid = paramString1;
     this.src_picid_list = paramArrayList;

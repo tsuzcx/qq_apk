@@ -1,34 +1,47 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import org.json.JSONObject;
 
-public class afcp
-  implements DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback
+public final class afcp
 {
-  public afcp(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public HashMap<String, String> a = new HashMap();
   
-  public void a(String paramString, int paramInt)
+  private void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onDownloadUpdate  url:" + paramString + "   progress:" + paramInt);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ECommerceDataReportConfigProcessor", 2, "configText : " + paramString);
+      }
+      try
+      {
+        paramString = new JSONObject(paramString);
+        Iterator localIterator = paramString.keys();
+        while (localIterator.hasNext())
+        {
+          String str1 = (String)localIterator.next();
+          if (!TextUtils.isEmpty(str1))
+          {
+            String str2 = paramString.optString(str1, "");
+            if (!TextUtils.isEmpty(str2)) {
+              this.a.put(str1, str2);
+            }
+          }
+        }
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("ECommerceDataReportConfigProcessor", 1, paramString, new Object[0]);
+      }
     }
-  }
-  
-  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (!this.a.o)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
-    }
-    this.a.runOnUiThread(new afcq(this, paramString, paramBoolean1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afcp
  * JD-Core Version:    0.7.0.1
  */

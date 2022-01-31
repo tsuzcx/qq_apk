@@ -9,14 +9,14 @@ import java.util.Map;
 public final class mobile_get_config_rsp
   extends JceStruct
 {
-  static Map cache_config;
-  public Map config;
+  static Map<String, byte[]> cache_config;
+  public Map<String, byte[]> config;
   public String cookies = "";
   public int scene_flag;
   
   public mobile_get_config_rsp() {}
   
-  public mobile_get_config_rsp(Map paramMap, String paramString, int paramInt)
+  public mobile_get_config_rsp(Map<String, byte[]> paramMap, String paramString, int paramInt)
   {
     this.config = paramMap;
     this.cookies = paramString;

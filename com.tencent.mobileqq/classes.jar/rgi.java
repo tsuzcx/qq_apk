@@ -1,22 +1,34 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
 public class rgi
-  extends AccountObserver
+  extends nta
 {
-  public rgi(AccountManageActivity paramAccountManageActivity) {}
+  private rgi(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void onDeleteAccount(boolean paramBoolean)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Switch_Account", 2, "onDeleteAccount isSuccess " + paramBoolean);
-    }
+    VideoFeedsPlayActivity.a("onGetVideoPlayCount isSuccess: " + paramBoolean);
+    if ((!paramBoolean) || (paramBundle == null)) {}
+    Object localObject;
+    do
+    {
+      do
+      {
+        return;
+        localObject = paramBundle.getString("VALUE_VIDEO_VID");
+      } while (localObject == null);
+      localObject = VideoFeedsRecommendFragment.a(this.a).b((String)localObject);
+    } while (localObject == null);
+    ((VideoInfo)localObject).p = paramBundle.getInt("VALUE_VIDEO_PLAY_COUNT");
+    VideoFeedsRecommendFragment.a(this.a).b((VideoInfo)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rgi
  * JD-Core Version:    0.7.0.1
  */

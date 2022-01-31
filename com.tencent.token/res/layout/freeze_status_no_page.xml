@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="120.0dip" android:src="@drawable/freeze_no_status" />
+    <TextView android:textStyle="bold" android:gravity="center" android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:text="@string/freeze_no_txt" style="@style/text_view_middle_18" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/utils_font_color_desc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="30.0dip" android:text="@string/freeze_no_detail" />
+    <Button android:textSize="17.0dip" android:textColor="@color/font_color_blue" android:id="@id/do_freeze" android:background="@drawable/freeze_btn" android:layout_width="fill_parent" android:layout_height="46.599976dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="43.0dip" android:layout_marginRight="30.0dip" android:text="@string/freeze_no_btn" />
+</LinearLayout>

@@ -1,50 +1,34 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.troop.utils.TroopBindPubAccountProtocol.FollowPublicAccountObserver;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import java.lang.ref.WeakReference;
 
 public class wkq
-  extends TroopBindPubAccountProtocol.FollowPublicAccountObserver
+  implements wiz
 {
-  public wkq(NotificationView paramNotificationView) {}
+  private int jdField_a_of_type_Int;
+  private WeakReference<wia> jdField_a_of_type_JavaLangRefWeakReference;
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public wkq(int paramInt)
   {
-    if ((paramBoolean) && (paramBundle != null)) {}
-    while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("structMsg");
-        structmsg.StructMsg localStructMsg = new structmsg.StructMsg();
-        localStructMsg.mergeFrom(paramBundle);
-        NotificationView.a(this.a, 1, localStructMsg);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        do
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("NotificationView", 2, "structMsg merge error");
-          }
-        } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-        QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131430303), 0).b(this.a.a());
-        return;
-      }
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    wxe.a("Q.qqstory.detail.DetailCommentSegment", "on nick click. unionId = %s.", paramString);
+    if ((paramInt == 1002) || (paramInt == 1003)) {}
+    while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131430303), 0).b(this.a.a());
+    ((wia)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_Int, paramString);
+  }
+  
+  public void a(wia paramwia)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramwia);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wkq
  * JD-Core Version:    0.7.0.1
  */

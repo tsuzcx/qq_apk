@@ -1,91 +1,64 @@
-import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.device.datadef.DeviceInfo;
-import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import cooperation.smartdevice.SmartDevicePluginLoader;
-import cooperation.smartdevice.ipc.SmartDeviceIPCHost;
-import java.util.ArrayList;
-import java.util.Arrays;
+import android.content.Context;
+import android.content.Intent;
+import android.os.HandlerThread;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.pts.core.PTSThreadUtil;
+import com.tencent.pts.ui.PTSNodeFactory;
+import com.tencent.pts.utils.PTSLog;
+import com.tencent.qphone.base.util.QLog;
 
 public class pwt
-  implements Handler.Callback
 {
-  public pwt(SmartDeviceProxyMgr paramSmartDeviceProxyMgr) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public static void a()
   {
-    int i = 0;
-    boolean bool1 = false;
-    switch (paramMessage.what)
+    pxb.a.a();
+    pwu.a().a();
+  }
+  
+  private static void a(Context paramContext)
+  {
+    Intent localIntent = new Intent();
+    String str = pvw.a().a("3978");
+    localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.AppName", "daily_feeds");
+    pvy.a().getClass();
+    localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.AppPath", str);
+    QLog.i("PTSHelper", 1, "[jumpToPTSDailyPage], dailyAppPath = " + str);
+    PublicFragmentActivity.a(paramContext, localIntent, PTSFragment.class);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    if (!pxb.a.b()) {}
+    do
     {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.b();
-      return true;
-      try
+      return false;
+      int i = otf.b();
+      if (!otf.a(i))
       {
-        paramMessage = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        boolean bool2 = SmartDevicePluginLoader.a().a(paramMessage);
-        boolean bool3 = NetworkUtil.h(BaseApplicationImpl.getContext());
-        boolean bool4 = DeviceInfoUtil.e();
-        if (FileUtils.a() <= 1.048576E+008F) {
-          bool1 = true;
-        }
-        SmartDeviceProxyMgr.a(this.a, "SmartDeviceProxyMgr check plugin: isInstalled " + bool2 + " isWifiConnected " + bool3 + " lowPhone = " + bool4 + " lowMemory = " + bool1);
-        if ((bool2) || (!bool3) || (bool4) || (bool1)) {
-          continue;
-        }
-        SmartDevicePluginLoader.a().a();
-        return true;
+        QLog.i("PTSHelper", 1, "[isAbleToJumpNewPTSDailyPage], it is not normal daily channel, channelID = " + i);
+        return false;
       }
-      catch (Exception paramMessage)
-      {
-        return true;
-      }
-      try
-      {
-        if (SmartDeviceProxyMgr.a(this.a) != null)
-        {
-          paramMessage = new Bundle();
-          paramMessage.putString("notify_cmd", "getServerDeviceList");
-          paramMessage = SmartDeviceProxyMgr.a(this.a).a(paramMessage);
-          if (paramMessage != null)
-          {
-            paramMessage = paramMessage.getParcelableArray("devicelist");
-            if (paramMessage != null)
-            {
-              DeviceInfo[] arrayOfDeviceInfo = new DeviceInfo[paramMessage.length];
-              while (i < paramMessage.length)
-              {
-                arrayOfDeviceInfo[i] = ((DeviceInfo)paramMessage[i]);
-                i += 1;
-              }
-              SmartDeviceProxyMgr.a(this.a, arrayOfDeviceInfo);
-              if (arrayOfDeviceInfo != null)
-              {
-                this.a.a(1, true, new ArrayList(Arrays.asList(arrayOfDeviceInfo)));
-                return true;
-              }
-            }
-          }
-        }
-      }
-      catch (Exception paramMessage) {}
-    }
+    } while ((!pvy.a().a()) || (!pvw.a().a("daily_feeds")));
+    a(paramContext);
     return true;
   }
+  
+  public static void b()
+  {
+    PTSLog.registerLogger(new pwv());
+    PTSNodeFactory.registerNodeBuilder("img", new pws());
+    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("readinjoy-common-pts-sub", 0);
+    localHandlerThread.start();
+    PTSThreadUtil.registerSubHandlerThread(localHandlerThread);
+  }
+  
+  static void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pwt
  * JD-Core Version:    0.7.0.1
  */

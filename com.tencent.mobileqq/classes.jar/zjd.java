@@ -1,32 +1,67 @@
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 
-public class zjd
-  implements Comparator
+public abstract class zjd
 {
-  public zjd(PhoneContactManagerImp paramPhoneContactManagerImp, FriendsManager paramFriendsManager) {}
+  public Rect a;
+  public int c = 2;
+  public boolean c;
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public static int a(Rect paramRect, Drawable paramDrawable)
   {
-    boolean bool1 = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(paramPhoneContact1.unifiedCode, true);
-    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(paramPhoneContact2.unifiedCode, true);
-    if ((bool1) && (bool2)) {}
-    while (paramPhoneContact2.samFriend > paramPhoneContact1.samFriend)
+    float f1 = paramRect.width();
+    float f2 = paramRect.height();
+    float f3 = paramDrawable.getIntrinsicWidth();
+    float f4 = paramDrawable.getIntrinsicHeight();
+    if ((f1 <= 0.0F) || (f2 <= 0.0F) || (f3 <= 0.0F) || (f4 <= 0.0F)) {}
+    do
     {
-      do
-      {
+      return 0;
+      f1 = f1 * f4 / (f2 * f3);
+      if (f1 < 1.0F) {
         return 1;
-      } while (bool1);
-      if (bool2) {
-        return -1;
       }
-    }
-    if (paramPhoneContact2.samFriend < paramPhoneContact1.samFriend) {
-      return -1;
-    }
-    return PhoneContactManagerImp.a(paramPhoneContact1, paramPhoneContact2);
+    } while (f1 <= 1.0F);
+    return 2;
+  }
+  
+  public abstract int a();
+  
+  public Rect a()
+  {
+    return null;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return this.c;
+  }
+  
+  public Rect b()
+  {
+    return this.a;
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
+  
+  public abstract Drawable c();
+  
+  public int d()
+  {
+    return 0;
   }
 }
 

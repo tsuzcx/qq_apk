@@ -1,23 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStartStatistic;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.MobileQQ;
+import android.widget.LinearLayout;
 
-public class mcx
-  implements Runnable
+abstract class mcx
 {
-  public mcx(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  int jdField_a_of_type_Int = -1;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
+  int b = -552421387;
+  int c = -15550475;
+  int d = 14;
   
-  public void run()
+  void a(int paramInt)
   {
-    if (VideoFeedsPlayActivity.a(this.a) != null) {
-      VideoFeedsStartStatistic.a(VideoFeedsPlayActivity.a(this.a).getApplication().getApplicationContext());
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mcx
  * JD-Core Version:    0.7.0.1
  */

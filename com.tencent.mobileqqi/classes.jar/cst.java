@@ -1,30 +1,22 @@
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
+import java.util.List;
 
-public class cst
-  extends TroopObserver
+class cst
+  implements Runnable
 {
-  public cst(ForwardRecentActivity paramForwardRecentActivity) {}
+  cst(css paramcss, List paramList) {}
   
-  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
+  public void run()
   {
-    if (paramBoolean1) {
-      ForwardRecentActivity.b(this.a);
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, ArrayList paramArrayList, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramArrayList != null) && (paramArrayList.size() > 0) && (paramBoolean2)) {
-      ForwardRecentActivity.b(this.a);
+    if (LebaListMgrActivity.a(this.jdField_a_of_type_Css.a) != null) {
+      LebaListMgrActivity.a(this.jdField_a_of_type_Css.a).a(this.jdField_a_of_type_JavaUtilList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     cst
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,15 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.now.enter.ConversationNowController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForShakeWindow;
 
-public class agaf
-  implements ValueAnimator.AnimatorUpdateListener
+class agaf
+  implements DialogInterface.OnClickListener
 {
-  public agaf(ConversationNowController paramConversationNowController, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  agaf(agad paramagad, MessageForShakeWindow paramMessageForShakeWindow) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {}
-    float f;
-    do
-    {
-      return;
-      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-      int i = (int)(-ConversationNowController.a(this.jdField_a_of_type_ComTencentMobileqqNowEnterConversationNowController) * f);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    } while ((!this.jdField_a_of_type_ComTencentMobileqqNowEnterConversationNowController.d) || (this.b == null));
-    this.b.setAlpha(1.0F - f);
+    acjm.a(this.jdField_a_of_type_Agad.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agad.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agad.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.uniseq);
   }
 }
 

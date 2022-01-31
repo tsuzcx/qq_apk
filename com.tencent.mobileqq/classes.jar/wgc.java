@@ -1,37 +1,31 @@
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListAdapter;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
-class wgc
-  implements Runnable
+public class wgc
+  implements DialogInterface.OnClickListener
 {
-  wgc(wgb paramwgb, List paramList) {}
+  public wgc(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ChatHistoryBubbleListAdapter localChatHistoryBubbleListAdapter = this.jdField_a_of_type_Wgb.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter;
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if (this.jdField_a_of_type_JavaUtilList.size() < 20) {}
-    for (boolean bool = true;; bool = false)
+    switch (paramInt)
     {
-      localChatHistoryBubbleListAdapter.a(localList, bool);
-      if (this.jdField_a_of_type_Wgb.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() > 0)
-      {
-        this.jdField_a_of_type_Wgb.a.jdField_a_of_type_Long = ((MessageRecord)this.jdField_a_of_type_Wgb.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getItem(0)).shmsgseq;
-        this.jdField_a_of_type_Wgb.a.b = ((MessageRecord)this.jdField_a_of_type_Wgb.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getItem(this.jdField_a_of_type_Wgb.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() - 1)).shmsgseq;
-      }
-      this.jdField_a_of_type_Wgb.a.a(this.jdField_a_of_type_Wgb.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.a, this.jdField_a_of_type_Wgb.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.b);
-      this.jdField_a_of_type_Wgb.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.notifyDataSetChanged();
-      this.jdField_a_of_type_Wgb.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setSelection(this.jdField_a_of_type_Wgb.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() - 1);
+    case 0: 
+    default: 
       return;
     }
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("extra_checked_vidset", this.a.a);
+    this.a.getActivity().setResult(-1, paramDialogInterface);
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wgc
  * JD-Core Version:    0.7.0.1
  */

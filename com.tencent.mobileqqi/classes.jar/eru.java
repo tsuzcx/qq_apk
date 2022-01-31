@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoMagicStickUtils;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import java.util.ArrayList;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.mobileqq.data.TroopInfo;
 
 public class eru
-  implements View.OnClickListener
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public eru(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public int a;
+  public TextView a;
+  public TroopInfo a;
   
-  public void onClick(View paramView)
-  {
-    PhotoMagicStickUtils.a((String)PhotoPreviewActivity.a(this.a).get(0), this.a, this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.c);
-  }
+  private eru(TroopListInnerFrame paramTroopListInnerFrame) {}
 }
 
 

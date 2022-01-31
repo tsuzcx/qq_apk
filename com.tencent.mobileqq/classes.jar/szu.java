@@ -1,26 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
 public class szu
-  implements Animation.AnimationListener
 {
-  public szu(LoginInfoActivity paramLoginInfoActivity) {}
+  public final int a;
+  public long a;
+  public BaseArticleInfo a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public szu(int paramInt)
   {
-    LoginInfoActivity.a(this.a).setVisibility(4);
-    LoginInfoActivity.a(this.a).clearAnimation();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public String toString()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo + "_duration : " + this.jdField_a_of_type_Long;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     szu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class rid
-  implements Runnable
+class rid
+  implements rqc
 {
-  public rid(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  rid(ric paramric, rbt paramrbt) {}
   
-  public void run()
+  public void a(@NonNull View paramView, int paramInt)
   {
-    if (this.a.isFinishing()) {
-      return;
+    if ((paramInt == 0) && (this.jdField_a_of_type_Rbt.t.getVisibility() == 0)) {
+      ric.a(this.jdField_a_of_type_Ric).resumeAnimation();
     }
-    this.a.a = true;
-    AddFriendLogicActivity.a(this.a).hide();
-    AddFriendLogicActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rid
  * JD-Core Version:    0.7.0.1
  */

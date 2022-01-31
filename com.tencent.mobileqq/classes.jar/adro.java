@@ -1,18 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class adro
-  implements Runnable
+  implements View.OnClickListener
 {
-  public adro(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
+  public adro(QQMapActivity paramQQMapActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.b())
-    {
-      this.a.e();
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 100L);
-    }
+    this.a.u();
+    azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "sdk_locate", "click_send", 0, 0, "", "", "", "");
   }
 }
 

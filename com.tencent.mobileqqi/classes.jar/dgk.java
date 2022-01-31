@@ -1,24 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.activity.PublicAccountChatActivity;
-import com.tencent.mobileqq.data.AccountDetail;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class dgk
-  implements DialogInterface.OnClickListener
+  extends WtloginObserver
 {
-  public dgk(PublicAccountChatActivity paramPublicAccountChatActivity, AccountDetail paramAccountDetail) {}
+  public dgk(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, ErrMsg paramErrMsg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.isAgreeSyncLbs = true;
-    PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountChatActivity.b, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
-    PublicAccountChatActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountChatActivity, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
+    if (QLog.isColorLevel())
+    {
+      QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      }
+    }
+    if (paramInt2 == 0) {
+      return;
+    }
+    RegisterQQNumberActivity.a(this.a);
+    paramString = new Intent(this.a, LoginActivity.class);
+    paramString.putExtra("uin", RegisterQQNumberActivity.a(this.a));
+    paramString.putExtra("tab_index", 0);
+    paramString.addFlags(131072);
+    this.a.startActivity(paramString);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     dgk
  * JD-Core Version:    0.7.0.1
  */

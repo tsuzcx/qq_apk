@@ -1,20 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.HintDrawable;
+import com.tencent.mobileqq.colornote.settings.ColorNoteSettingBaseSection;
 
 public class aoeg
-  implements ValueAnimator.AnimatorUpdateListener
+  implements aoed
 {
-  public aoeg(HintDrawable paramHintDrawable) {}
+  public aoeg(ColorNoteSettingBaseSection paramColorNoteSettingBaseSection) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    this.a.invalidateSelf();
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoeg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,27 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import com.tencent.biz.subscribe.event.CommentListShowStateEvent;
 
 class ygl
-  extends Handler
+  implements DialogInterface.OnShowListener
 {
-  ygl(ygk paramygk, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  ygl(ygg paramygg, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (ygg.a(this.jdField_a_of_type_Ygg) != null) {
+      ygg.a(this.jdField_a_of_type_Ygg).a(paramDialogInterface);
     }
-    VipSpecialCareHandler.a(this.a.a, "-->request timeout");
-    VipSpecialCareHandler.a(this.a.a, -2);
+    paramDialogInterface = yma.a().a(ygg.a(this.jdField_a_of_type_Ygg), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply);
+    ygg.a(this.jdField_a_of_type_Ygg).a(paramDialogInterface);
+    yiw.a().a(new CommentListShowStateEvent(true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ygl
  * JD-Core Version:    0.7.0.1
  */

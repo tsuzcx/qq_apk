@@ -35,7 +35,7 @@ public class LpReport_UserInfo_dc02148
     return null;
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
     if (this.uin <= 1000L)
@@ -70,7 +70,7 @@ public class LpReport_UserInfo_dc02148
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_UserInfo_dc02148
  * JD-Core Version:    0.7.0.1
  */

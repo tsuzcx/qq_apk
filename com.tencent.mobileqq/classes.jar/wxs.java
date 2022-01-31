@@ -1,32 +1,43 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.util.QZLog;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-public class wxs
-  implements EncodeVideoTask.ResultListener
+public abstract interface wxs
+  extends xam
 {
-  public wxs(PhotoListActivity paramPhotoListActivity) {}
+  public abstract int a();
   
-  public void a(int paramInt)
-  {
-    Message localMessage = Message.obtain();
-    localMessage.what = 2;
-    localMessage.obj = Integer.valueOf(paramInt);
-    this.a.a.sendMessage(localMessage);
-  }
+  public abstract Bitmap a();
   
-  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
-  {
-    QZLog.d("PhotoListActivity", 2, new Object[] { "encode video cost time = ", Long.valueOf(System.currentTimeMillis() - this.a.g) });
-    ThreadManager.postImmediately(new wxt(this, paramString1, paramString2, paramInt3), null, true);
-  }
+  public abstract Bitmap a(int paramInt);
+  
+  @NonNull
+  public abstract DoodleLayout a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract void a(MotionEvent paramMotionEvent);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract boolean a(MotionEvent paramMotionEvent);
+  
+  public abstract byte[] a(int paramInt);
+  
+  public abstract void ad_();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract boolean d_();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wxs
  * JD-Core Version:    0.7.0.1
  */

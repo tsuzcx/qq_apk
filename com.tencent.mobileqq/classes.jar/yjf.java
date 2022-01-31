@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.antiphing.AntiphingHandler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
 
 public class yjf
+  implements aofp
 {
-  public int a;
-  public String a;
+  public yjf(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
   
-  public yjf(AntiphingHandler paramAntiphingHandler)
+  public void onColorNoteAnimFinish()
   {
-    this.jdField_a_of_type_JavaLangString = "0";
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yjf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,22 @@
-import android.graphics.Color;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
 
-class slu
-  implements Runnable
+public class slu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  slu(slt paramslt) {}
+  public slu(TickerView paramTickerView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.a.a.setText(this.a.a.c);
-    this.a.a.a.setTextColor(Color.rgb(119, 119, 119));
-    if (this.a.a.e)
-    {
-      this.a.a.rightViewText.setEnabled(true);
-      return;
-    }
-    this.a.a.rightViewText.setEnabled(false);
+    TickerView.a(this.a).a(paramValueAnimator.getAnimatedFraction());
+    TickerView.a(this.a);
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     slu
  * JD-Core Version:    0.7.0.1
  */

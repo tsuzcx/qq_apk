@@ -1,42 +1,40 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.task.ApolloMsgPlayController;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class ykr
-  implements Runnable
+public abstract class ykr
 {
-  public ykr(ApolloManager paramApolloManager, SessionInfo paramSessionInfo) {}
+  public static final AtomicInteger a = new AtomicInteger(0);
   
-  public void run()
+  public abstract byte[] a();
+  
+  public byte[] a(Intent paramIntent, int paramInt, String paramString)
   {
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a != null)) {
-        ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "C2CAIO");
-      }
-      for (;;)
-      {
-        ApolloMsgPlayController.a().a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-        return;
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a != null)) {
-          ((ApolloManager)this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a.getManager(152)).f();
-        }
-      }
-      return;
+    if (TextUtils.isEmpty(paramString)) {
+      throw new RuntimeException("req traceId is null!");
     }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ApolloManager", 2, "doAfterOpenAIO error", localException);
-      }
+    PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
+    localStQWebReq.Seq.set(paramInt);
+    localStQWebReq.qua.set(bjdm.a());
+    localStQWebReq.deviceInfo.set(bjdl.a().c());
+    localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(a()));
+    if (!TextUtils.isEmpty(paramString)) {
+      localStQWebReq.traceid.set(paramString);
     }
+    if (paramIntent != null) {
+      paramIntent.putExtra("traceid", paramString);
+    }
+    return localStQWebReq.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ykr
  * JD-Core Version:    0.7.0.1
  */

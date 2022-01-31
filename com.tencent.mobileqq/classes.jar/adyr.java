@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.leba.LebaFeedsManager;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 
 public class adyr
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adyr(LebaFeedsManager paramLebaFeedsManager) {}
+  public adyr(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    LebaFeedsManager.a(this.a);
+    SoundAndVibrateActivity.a(this.a, paramBoolean);
   }
 }
 

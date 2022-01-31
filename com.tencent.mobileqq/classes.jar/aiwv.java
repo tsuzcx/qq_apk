@@ -1,27 +1,10 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-
-class aiwv
-  implements Runnable
+public abstract interface aiwv
 {
-  aiwv(aiwu paramaiwu) {}
-  
-  public void run()
-  {
-    if (this.a.a.jdField_b_of_type_AndroidViewView == null) {}
-    do
-    {
-      return;
-      this.a.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    } while ((this.a.a.jdField_b_of_type_AndroidWidgetTextView == null) || (TextUtils.isEmpty(this.a.a.jdField_b_of_type_AndroidWidgetTextView.getText())));
-    this.a.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-  }
+  public abstract void b(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aiwv
  * JD-Core Version:    0.7.0.1
  */

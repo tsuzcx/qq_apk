@@ -1,32 +1,39 @@
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.vip.CUKingCardHelper.CUKingDialogListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo;
 
-public final class rya
-  implements CUKingCardHelper.CUKingDialogListener
+public class rya
 {
-  public rya(DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
+  private static rya a;
   
-  public void callback(int paramInt)
+  public static rya a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatActivityUtils", 2, "showDlgWithCuOpenCheck type = " + paramInt);
-    }
-    switch (paramInt)
+    try
     {
-    default: 
-      return;
-    case 1: 
-    case 2: 
-      this.a.onClick(null, 0);
-      return;
+      if (a == null) {
+        a = new rya();
+      }
+      rya localrya = a;
+      return localrya;
     }
-    this.b.onClick(null, 0);
+    finally {}
+  }
+  
+  public void a(Kandian210Msg0xeeInfo paramKandian210Msg0xeeInfo) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rya
  * JD-Core Version:    0.7.0.1
  */

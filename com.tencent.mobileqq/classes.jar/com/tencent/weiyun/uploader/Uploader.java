@@ -27,7 +27,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class Uploader
-  implements IUploader, Handler.Callback, UploadSDKContext.IUploadSDKCallback
+  implements Handler.Callback, IUploader, UploadSDKContext.IUploadSDKCallback
 {
   private static final int MSG_NATIVE_START = 2020;
   private static final int MSG_NATIVE_STOP = 2021;
@@ -54,7 +54,6 @@ public class Uploader
   
   private boolean addPendingRequest(String paramString, UploadRequest paramUploadRequest)
   {
-    boolean bool = false;
     if ((TextUtils.isEmpty(paramString)) || (paramUploadRequest == null)) {
       return false;
     }
@@ -67,13 +66,17 @@ public class Uploader
         {
           i = 1;
           this.mPendingRequests.add(paramString, paramUploadRequest);
-          if (i == 0) {
-            bool = true;
+          if (i != 0) {
+            break label86;
           }
+          bool = true;
           return bool;
         }
       }
       int i = 0;
+      continue;
+      label86:
+      boolean bool = false;
     }
   }
   
@@ -83,7 +86,7 @@ public class Uploader
     if (TextUtils.isEmpty(paramString)) {
       return localHashSet;
     }
-    MultiHashMap localMultiHashMap = this.mPendingRequests;
+    localMultiHashMap = this.mPendingRequests;
     if (paramBoolean) {}
     for (;;)
     {
@@ -189,7 +192,6 @@ public class Uploader
   
   private boolean removePendingRequest(String paramString, UploadRequest paramUploadRequest, Collection<UploadRequest> paramCollection)
   {
-    boolean bool = false;
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
@@ -198,6 +200,7 @@ public class Uploader
     for (;;)
     {
       int i;
+      boolean bool;
       try
       {
         if ((this.mPendingRequests.remove(paramString, paramUploadRequest)) && (paramCollection != null))
@@ -207,7 +210,7 @@ public class Uploader
         }
         paramString = (Collection)this.mPendingRequests.get(paramString);
         if ((paramString == null) || (paramString.size() <= 0)) {
-          break label135;
+          break label132;
         }
         i = 1;
       }
@@ -219,11 +222,14 @@ public class Uploader
         paramCollection.clear();
         paramCollection.addAll(paramUploadRequest);
         continue;
-        label135:
+        label132:
         i = 0;
-        if (i == 0) {
-          bool = true;
+        while (i != 0)
+        {
+          bool = false;
+          break;
         }
+        bool = true;
       }
     }
   }
@@ -250,98 +256,102 @@ public class Uploader
   
   public boolean handleMessage(Message arg1)
   {
-    Object localObject5;
+    String str;
     if (???.what == 2020)
     {
       ??? = ???.obj;
       if ((??? instanceof UploadRequest))
       {
         ??? = (UploadRequest)???;
-        localObject5 = ((UploadRequest)???).requestKey();
-        Collection localCollection = collectPendingRequest((String)localObject5, false);
-        if (!localCollection.isEmpty())
+        str = ???.requestKey();
+        ??? = collectPendingRequest(str, false);
+        if (!((Collection)???).isEmpty())
         {
-          ??? = (Message)???;
-          if (!localCollection.contains(???)) {
-            ??? = (UploadRequest)localCollection.iterator().next();
+          if (((Collection)???).contains(???)) {
+            break label570;
           }
-          if (??? != null) {
-            synchronized (this.mTasks)
-            {
-              boolean bool = this.mTasks.containsKey(localObject5);
-              if (!bool)
+          ??? = (UploadRequest)((Collection)???).iterator().next();
+        }
+      }
+    }
+    label570:
+    for (;;)
+    {
+      if (??? != null) {
+        synchronized (this.mTasks)
+        {
+          boolean bool = this.mTasks.containsKey(str);
+          if (!bool)
+          {
+            ??? = this.mUploadContext.xpUploader().createUploadTask(???.uin(), ???.path(), ???.size(), ???.checkKey(), ???.serverName(), ???.serverIp(), ???.serverPort(), ???.channelCount(), ???.sliceSha(), ???.statisticTimes());
+            XpLog.i("createUploadTask: path=" + ???.path() + ", size=" + ???.size() + ", sha=" + ???.sha());
+            if ((!collectPendingRequest(str, false).isEmpty()) && (!TextUtils.isEmpty((CharSequence)???))) {
+              synchronized (this.mTasks)
               {
-                ??? = this.mUploadContext.xpUploader().createUploadTask(???.uin(), ???.path(), ???.size(), ???.checkKey(), ???.serverName(), ???.serverIp(), ???.serverPort(), ???.channelCount(), ???.sliceSha(), ???.statisticTimes());
-                XpLog.i("createUploadTask: path=" + ???.path() + ", size=" + ???.size() + ", sha=" + ???.sha());
-                if ((!collectPendingRequest((String)localObject5, false).isEmpty()) && (!TextUtils.isEmpty((CharSequence)???))) {
-                  synchronized (this.mTasks)
-                  {
-                    this.mTasks.put(localObject5, ???);
-                  }
-                }
+                this.mTasks.put(str, ???);
               }
             }
           }
         }
       }
-    }
-    for (;;)
-    {
-      synchronized (this.mSpeedFilters)
+      for (;;)
       {
-        this.mSpeedFilters.put(???, new SpeedFilter());
-        this.mUploadContext.xpUploader().startTask((String)???);
-        return true;
-        ??? = finally;
-        throw ???;
-        localObject2 = finally;
-        throw localObject2;
-      }
-      if (???.what == 2021)
-      {
-        ??? = ???.obj;
-        if (!(??? instanceof UploadRequest)) {
-          continue;
+        synchronized (this.mSpeedFilters)
+        {
+          this.mSpeedFilters.put(???, new SpeedFilter());
+          this.mUploadContext.xpUploader().startTask((String)???);
+          return true;
+          ??? = finally;
+          throw ???;
+          localObject1 = finally;
+          throw localObject1;
         }
-        localObject5 = (UploadRequest)???;
-        ??? = new ArrayList();
-        if (removePendingRequest(((UploadRequest)localObject5).requestKey(), (UploadRequest)localObject5, ???)) {
-          synchronized (this.mTasks)
+        if (???.what == 2021)
+        {
+          ??? = ???.obj;
+          if ((??? instanceof UploadRequest))
           {
-            localObject5 = (String)this.mTasks.removeByKey(((UploadRequest)localObject5).requestKey());
-            if (localObject5 != null) {
-              this.mUploadContext.xpUploader().stopTask((String)localObject5);
+            ??? = (UploadRequest)???;
+            ??? = new ArrayList();
+            if (removePendingRequest(((UploadRequest)???).requestKey(), (UploadRequest)???, ???)) {
+              synchronized (this.mTasks)
+              {
+                ??? = (String)this.mTasks.removeByKey(((UploadRequest)???).requestKey());
+                if (??? != null) {
+                  this.mUploadContext.xpUploader().stopTask((String)???);
+                }
+              }
+            }
+            synchronized (this.mSpeedFilters)
+            {
+              this.mSpeedFilters.remove(???);
+              notifyCanceled(???);
+              continue;
+              ??? = finally;
+              throw ???;
             }
           }
         }
-        synchronized (this.mSpeedFilters)
+        else if (???.what == 2022)
         {
-          this.mSpeedFilters.remove(localObject5);
-          notifyCanceled(???);
-          continue;
-          ??? = finally;
-          throw ???;
+          ??? = collectPendingRequest(true);
+          synchronized (this.mTasks)
+          {
+            ??? = new ArrayList(this.mTasks.values());
+            this.mTasks.clear();
+            ??? = ((ArrayList)???).iterator();
+            if (((Iterator)???).hasNext())
+            {
+              ??? = (String)((Iterator)???).next();
+              this.mUploadContext.xpUploader().stopTask((String)???);
+            }
+          }
+          synchronized (this.mSpeedFilters)
+          {
+            this.mSpeedFilters.clear();
+            notifyCanceled(???);
+          }
         }
-      }
-      if (???.what != 2022) {
-        continue;
-      }
-      ??? = collectPendingRequest(true);
-      synchronized (this.mTasks)
-      {
-        localObject5 = new ArrayList(this.mTasks.values());
-        this.mTasks.clear();
-        ??? = ((ArrayList)localObject5).iterator();
-        if (((Iterator)???).hasNext())
-        {
-          localObject5 = (String)((Iterator)???).next();
-          this.mUploadContext.xpUploader().stopTask((String)localObject5);
-        }
-      }
-      synchronized (this.mSpeedFilters)
-      {
-        this.mSpeedFilters.clear();
-        notifyCanceled(???);
       }
     }
   }
@@ -424,12 +434,8 @@ public class Uploader
     synchronized (this.mSpeedFilters)
     {
       ??? = (SpeedFilter)this.mSpeedFilters.get(paramString);
-      if (??? == null)
-      {
-        ??? = new long[3];
-        ???[0] = paramLong3;
-        ???[1] = paramLong4;
-        ???[2] = paramLong5;
+      if (??? == null) {
+        ??? = new long[] { paramLong3, paramLong4, paramLong5 };
       }
     }
     for (;;)
@@ -465,7 +471,7 @@ public class Uploader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.weiyun.uploader.Uploader
  * JD-Core Version:    0.7.0.1
  */

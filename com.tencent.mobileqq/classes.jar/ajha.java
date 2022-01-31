@@ -1,25 +1,25 @@
+import android.content.Intent;
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import mqq.os.MqqHandler;
 
-public class ajha
+class ajha
   implements View.OnClickListener
 {
-  public ajha(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  ajha(ajgb paramajgb, String paramString) {}
   
   public void onClick(View paramView)
   {
-    if (PublishHomeWorkFragment.a(this.a).a(4) >= 6)
-    {
-      QQToast.a(this.a.getActivity(), String.format("最多布置%d个作业", new Object[] { Integer.valueOf(6) }), 0).a();
-      return;
-    }
-    SearchReciteArticleFragment.a(this.a.getActivity(), PublishHomeWorkFragment.a(this.a));
-    TroopReportor.a("Grp_edu", "Grp_recite", "Assign_Clk", 0, 0, new String[] { PublishHomeWorkFragment.a(this.a) });
+    paramView = new Intent(ajgb.a(this.jdField_a_of_type_Ajgb), QQBrowserActivity.class);
+    paramView.putExtra("individuation_url_type", 40100);
+    VasWebviewUtil.openQQBrowserWithoutAD(ajgb.a(this.jdField_a_of_type_Ajgb), bdtg.a(ajgb.a(this.jdField_a_of_type_Ajgb), "themeDetail", this.jdField_a_of_type_JavaLangString, ""), 32L, paramView, true, -1);
+    ajgb.a(this.jdField_a_of_type_Ajgb).obtainMessage(12).sendToTarget();
+    azqs.b(ajgb.a(this.jdField_a_of_type_Ajgb).app, "CliOper", "", "", "0X8005B9F", "0X8005B9F", 0, 0, "", "", "", "");
+    azqs.a(ajgb.a(this.jdField_a_of_type_Ajgb).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 16, 0, "", "", "", "");
   }
 }
 

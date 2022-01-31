@@ -6,23 +6,27 @@ public final class al
   extends k
   implements Cloneable
 {
-  private static ArrayList<ak> b;
-  public ArrayList<ak> a = null;
+  private static ArrayList<String> c;
+  private String a = "";
+  private ArrayList<String> b = null;
   
   public final void a(i parami)
   {
-    if (b == null)
+    this.a = parami.b(0, true);
+    if (c == null)
     {
-      b = new ArrayList();
-      ak localak = new ak();
-      b.add(localak);
+      c = new ArrayList();
+      c.add("");
     }
-    this.a = ((ArrayList)parami.a(b, 0, true));
+    this.b = ((ArrayList)parami.a(c, 1, false));
   }
   
   public final void a(j paramj)
   {
     paramj.a(this.a, 0);
+    if (this.b != null) {
+      paramj.a(this.b, 1);
+    }
   }
   
   public final void a(StringBuilder paramStringBuilder, int paramInt) {}

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class account_detail_dynamic_list$AccountDetailDynamicListRequest
-  extends MessageMicro
+  extends MessageMicro<AccountDetailDynamicListRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "versionInfo", "puin", "last_msg_id", "msg_cnt" }, new Object[] { "", Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0) }, AccountDetailDynamicListRequest.class);
   public final PBUInt64Field last_msg_id = PBField.initUInt64(0L);
@@ -18,7 +18,7 @@ public final class account_detail_dynamic_list$AccountDetailDynamicListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mp.account_detail_dynamic_list.AccountDetailDynamicListRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.service.friendlist.remote;
 
-import ahxg;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import ayyx;
 
 public class FriendSingleInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ahxg();
+  public static final Parcelable.Creator<FriendSingleInfo> CREATOR = new ayyx();
   public byte a;
   public int a;
   public String a;
@@ -65,7 +65,7 @@ public class FriendSingleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.friendlist.remote.FriendSingleInfo
  * JD-Core Version:    0.7.0.1
  */

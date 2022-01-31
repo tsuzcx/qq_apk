@@ -1,18 +1,22 @@
-import com.tencent.component.media.ILog;
-import com.tencent.component.media.ImageManagerEnv;
-import com.tencent.youtu.android.rapidnet.ILogCallbackInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public final class pjc
-  implements ILogCallbackInterface
+class pjc
+  implements View.OnClickListener
 {
-  public void printLog(int paramInt, String paramString1, String paramString2)
+  pjc(pja parampja, long paramLong, ArticleInfo paramArticleInfo) {}
+  
+  public void onClick(View paramView)
   {
-    ImageManagerEnv.getLogger().w("SuperResolution.RapidNetUtils", new Object[] { "prio: " + paramInt + ", tag: " + paramString1 + ", info: " + paramString2 });
+    paramView = oqu.g + bdfr.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
+    ors.a(pja.a(this.jdField_a_of_type_Pja), paramView);
+    pja.a(1, ors.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pjc
  * JD-Core Version:    0.7.0.1
  */

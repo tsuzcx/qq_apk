@@ -1,20 +1,11 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnDismissListener;
-
-public class lem
-  implements ActionSheet.OnDismissListener
+final class lem
+  implements bdpy
 {
-  public lem(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
-  
-  public void onDismiss()
-  {
-    ReadInJoySettingActivity.b(this.a).cancel();
-  }
+  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,26 @@
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.biz.qqstory.playmode.util.DiscoverVideoDataProvider;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class nmm
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+class nmm
+  extends Handler
 {
-  public nmm(DiscoverVideoDataProvider paramDiscoverVideoDataProvider, BatchGetVideoInfo paramBatchGetVideoInfo) {}
-  
-  public void a()
+  nmm(nml paramnml, Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilDiscoverVideoDataProvider.a(false, null);
+    super(paramLooper);
   }
   
-  public void a(ArrayList paramArrayList)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilDiscoverVideoDataProvider.a(true, paramArrayList);
+    if (this.a.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.a.a(this.a.jdField_a_of_type_Int, this.a.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nmm
  * JD-Core Version:    0.7.0.1
  */

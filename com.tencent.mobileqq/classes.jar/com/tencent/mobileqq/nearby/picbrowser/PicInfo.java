@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
-import afbv;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import avjq;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ import org.json.JSONObject;
 public class PicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new afbv();
+  public static final Parcelable.Creator<PicInfo> CREATOR = new avjq();
   public int a;
   public String a;
   public String b;
@@ -43,7 +43,7 @@ public class PicInfo
     this.g = paramParcel.readString();
   }
   
-  public static List a(String paramString)
+  public static List<PicInfo> a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
     ArrayList localArrayList;
@@ -153,7 +153,7 @@ public class PicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.picbrowser.PicInfo
  * JD-Core Version:    0.7.0.1
  */

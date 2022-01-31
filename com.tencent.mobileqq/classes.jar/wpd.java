@@ -1,30 +1,13 @@
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
 
-public class wpd
-  implements Runnable
+public final class wpd
+  extends uli
 {
-  public wpd(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
-  
-  public void run()
-  {
-    if (!EmoticonGroupStoreFragment.c(this.a).isEmpty())
-    {
-      ArrayList localArrayList = new ArrayList(EmoticonGroupStoreFragment.c(this.a));
-      Map localMap = EmoticonGroupStoreFragment.a(this.a).a(localArrayList);
-      if (localMap != null) {
-        EmoticonGroupStoreFragment.a(this.a).a(localMap, localArrayList);
-      }
-    }
-  }
+  public FeedItem a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,32 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxView;
 
 public class aauj
-  implements Runnable
+  implements TextView.OnEditorActionListener
 {
-  public aauj(ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, String paramString, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder) {}
+  public aauj(GdtFormItemTextBoxView paramGdtFormItemTextBoxView) {}
   
-  public void run()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    String str = ArkAppCenter.b(this.jdField_a_of_type_JavaLangString);
-    ArkAppCenter.a().postToMainThread(new aauk(this, str));
+    if (paramInt == 6)
+    {
+      aase.b("GdtFormItemTextBoxView", "onEditorActionDone " + GdtFormItemTextBoxView.b(this.a));
+      GdtFormItemTextBoxView.a(this.a).clearFocus();
+      GdtFormItemTextBoxView.a(paramTextView);
+    }
+    for (;;)
+    {
+      return false;
+      aase.b("GdtFormItemTextBoxView", "onEditorAction " + paramInt + " " + GdtFormItemTextBoxView.c(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aauj
  * JD-Core Version:    0.7.0.1
  */

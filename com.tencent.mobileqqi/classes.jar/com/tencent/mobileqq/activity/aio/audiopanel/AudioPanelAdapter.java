@@ -54,9 +54,9 @@ public class AudioPanelAdapter
     if (paramInt == 0)
     {
       FrameLayout localFrameLayout = new FrameLayout(this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity);
-      Object localObject = (PressToSpeakPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity).inflate(2130903540, null);
+      Object localObject = (PressToSpeakPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity).inflate(2130903542, null);
       ((PressToSpeakPanel)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity, localFrameLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.b, this.c);
-      ListenPanel localListenPanel = (ListenPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity).inflate(2130903539, null);
+      ListenPanel localListenPanel = (ListenPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity).inflate(2130903541, null);
       localListenPanel.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity, localFrameLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.b, 1);
       localFrameLayout.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
       localFrameLayout.addView(localListenPanel, new FrameLayout.LayoutParams(-1, -1));

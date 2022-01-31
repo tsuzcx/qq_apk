@@ -1,21 +1,24 @@
 package com.tencent.token.ui.base;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.p;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-final class br
-  implements View.OnClickListener
+class br
+  implements Animation.AnimationListener
 {
-  br(LockPatternVerifyView paramLockPatternVerifyView) {}
+  br(bp parambp, LockPatternVerifyView paramLockPatternVerifyView) {}
   
-  public final void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    p.a().a(System.currentTimeMillis(), 26);
-    if (LockPatternVerifyView.a(this.a) != null) {
-      LockPatternVerifyView.a(this.a).b();
+    this.b.a.setVisibility(8);
+    if (LockPatternVerifyView.a(this.b.a) != null) {
+      LockPatternVerifyView.a(this.b.a).a();
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

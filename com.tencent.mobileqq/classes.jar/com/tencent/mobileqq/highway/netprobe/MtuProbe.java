@@ -22,63 +22,59 @@ public class MtuProbe
     int i = 56;
     int j = 1472;
     int k = 0;
-    int m;
-    int n;
-    int i1;
     String str;
-    for (;;)
+    if (k < MTU_COMMON_VALUES.length)
     {
-      m = j;
-      n = i;
-      if (k >= MTU_COMMON_VALUES.length) {
-        break label128;
-      }
-      i1 = MTU_COMMON_VALUES[k] - 28;
+      int i1 = MTU_COMMON_VALUES[k] - 28;
       str = PingProbe.execPing(3, 10, i1, this.mPeerIp);
       if (str == null) {
         return -1;
       }
-      if (isSuccess(str)) {
-        break;
-      }
-      m = j;
-      n = i;
-      if (i1 < j)
+      int m;
+      int n;
+      if (!isSuccess(str))
       {
-        m = i1;
+        m = j;
         n = i;
+        if (i1 < j)
+        {
+          m = i1;
+          n = i;
+        }
       }
-      k += 1;
-      j = m;
-      i = n;
-    }
-    if (i1 < i) {}
-    for (;;)
-    {
-      m = j;
-      n = i;
-      break;
-      i = i1;
-    }
-    if (isSuccess(str)) {
-      n = i;
-    }
-    for (;;)
-    {
-      label128:
-      if (n >= m) {
-        break label178;
-      }
-      i = (int)((n + m) / 2.0F + 0.5D);
-      str = PingProbe.execPing(3, 10, i, this.mPeerIp);
-      if (str != null) {
+      for (;;)
+      {
+        k += 1;
+        j = m;
+        i = n;
         break;
+        m = j;
+        n = i;
+        if (i1 >= i)
+        {
+          n = i1;
+          m = j;
+        }
       }
-      return -1;
-      m = i - 1;
+      if (isSuccess(str)) {
+        i = k;
+      }
     }
-    label178:
-    return n + 28;
+    for (;;)
+    {
+      if (i < j)
+      {
+        k = (int)((i + j) / 2.0F + 0.5D);
+        str = PingProbe.execPing(3, 10, k, this.mPeerIp);
+        if (str != null) {
+          break;
+        }
+        return -1;
+        j = k - 1;
+        continue;
+      }
+      return i + 28;
+    }
   }
   
   public void doProbe()
@@ -136,7 +132,7 @@ public class MtuProbe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.netprobe.MtuProbe
  * JD-Core Version:    0.7.0.1
  */

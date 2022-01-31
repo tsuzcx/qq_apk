@@ -1,19 +1,20 @@
-import android.widget.ScrollView;
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
 
 public class byj
   implements Runnable
 {
-  public byj(AccountManageActivity paramAccountManageActivity) {}
+  public byj(ChatActivity paramChatActivity) {}
   
   public void run()
   {
-    this.a.a.fullScroll(33);
+    TroopNotificationHelper.a(this.a.b, this.a.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     byj
  * JD-Core Version:    0.7.0.1
  */

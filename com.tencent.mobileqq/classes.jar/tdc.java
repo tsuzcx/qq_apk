@@ -1,20 +1,33 @@
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import NS_KING_INTERFACE.stPostCommentDingRsp;
+import UserGrowth.stSimpleComment;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class tdc
-  implements Runnable
+class tdc
+  implements tgt
 {
-  public tdc(NotificationActivity paramNotificationActivity, SimpleAccount paramSimpleAccount) {}
+  tdc(tcu paramtcu, stSimpleComment paramstSimpleComment) {}
   
-  public void run()
+  public void a(the paramthe)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app.login(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount);
+    if ((paramthe.jdField_a_of_type_JavaLangObject instanceof stPostCommentDingRsp))
+    {
+      stPostCommentDingRsp localstPostCommentDingRsp = (stPostCommentDingRsp)paramthe.jdField_a_of_type_JavaLangObject;
+      if (this.jdField_a_of_type_UserGrowthStSimpleComment.isDing == 1) {
+        tlo.d(tcu.a(), "点赞成功,nothing is " + localstPostCommentDingRsp.nothing);
+      }
+      for (;;)
+      {
+        umc.a().dispatch(this.jdField_a_of_type_Tcu.a(new Object[] { Integer.valueOf(7), Integer.valueOf(paramthe.b), paramthe.jdField_a_of_type_JavaLangString, localstPostCommentDingRsp }));
+        return;
+        tlo.d(tcu.a(), "取消点赞成功,nothing is " + localstPostCommentDingRsp.nothing);
+      }
+    }
+    tlo.d(tcu.a(), "评论点赞失败new！");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tdc
  * JD-Core Version:    0.7.0.1
  */

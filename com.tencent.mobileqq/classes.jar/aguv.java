@@ -1,67 +1,48 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.qcall.QCallFacade;
+import android.app.Dialog;
+import android.os.Handler;
+import java.util.HashMap;
 
-public class aguv
-  implements Runnable
+class aguv
+  extends bfzo
 {
-  public aguv(QCallDetailActivity paramQCallDetailActivity) {}
+  aguv(agti paramagti) {}
   
-  public void run()
+  protected void f(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    int k = 0;
-    if (this.a.app == null) {
-      break label12;
-    }
-    label12:
-    label142:
-    label159:
-    for (;;)
+    if ((!paramBoolean) || (paramHashMap == null))
     {
+      this.a.E(2);
+      this.a.a.sendEmptyMessageDelayed(10, 3000L);
       return;
-      if (QCallDetailActivity.a(this.a, QCallDetailActivity.a(this.a)))
-      {
-        Object localObject = MsgProxyUtils.q;
-        int m = localObject.length;
-        int i = 0;
-        int j = k;
-        if (i < m)
-        {
-          j = localObject[i];
-          if (QCallDetailActivity.a(this.a) == j) {
-            j = 1;
-          }
-        }
-        else
-        {
-          if (j == 0) {
-            break;
-          }
-          localObject = (PhoneContactManager)this.a.app.getManager(10);
-          if (localObject != null) {
-            break label142;
-          }
-        }
-        for (localObject = null;; localObject = ((PhoneContactManager)localObject).c(QCallDetailActivity.a(this.a)))
-        {
-          if (localObject == null) {
-            break label159;
-          }
-          QCallDetailActivity.a(this.a).a(((PhoneContact)localObject).mobileCode, 1006, QCallDetailActivity.a(this.a), QCallDetailActivity.a(this.a));
-          return;
-          i += 1;
-          break;
-        }
-      }
     }
+    if (((Integer)paramHashMap.get("result")).intValue() == 0)
+    {
+      this.a.E(1);
+      this.a.a.sendEmptyMessageDelayed(10, 3000L);
+      return;
+    }
+    this.a.ao = true;
+    this.a.bH();
+    if ((agti.a(this.a) != null) && (agti.a(this.a).isShowing())) {
+      agti.a(this.a).dismiss();
+    }
+    this.a.bI();
+  }
+  
+  protected void g(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  {
+    if ((!paramBoolean) || (paramHashMap == null)) {
+      return;
+    }
+    this.a.ar = true;
+    this.a.aq = ((Boolean)paramHashMap.get("result")).booleanValue();
+    this.a.bH();
+    this.a.bI();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aguv
  * JD-Core Version:    0.7.0.1
  */

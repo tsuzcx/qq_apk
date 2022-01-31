@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/b8q" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.ShaderAnimLayout android:id="@id/iqk" android:visibility="gone" android:clickable="true" android:layout_width="64.0dip" android:layout_height="34.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+        <Button android:textSize="14.0sp" android:textColor="@color/al3" android:id="@id/c3a" android:background="@drawable/hb7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/ak3" android:layout_centerInParent="true" />
+    </com.tencent.mobileqq.widget.ShaderAnimLayout>
+</RelativeLayout>

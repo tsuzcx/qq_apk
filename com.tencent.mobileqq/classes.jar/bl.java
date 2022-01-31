@@ -1,24 +1,21 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.dataline.activities.LiteActivity;
 
 public class bl
-  implements TextWatcher
+  implements DialogInterface.OnClickListener
 {
   public bl(LiteActivity paramLiteActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.p();
+    LiteActivity.a(this.a, false);
+    this.a.finish();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="a8" parent="@android:style/Animation">
+        <item name="android:activityOpenEnterAnimation">@anim/c5</item>
+        <item name="android:activityOpenExitAnimation">@anim/s</item>
+        <item name="android:activityCloseEnterAnimation">@anim/s</item>
+        <item name="android:activityCloseExitAnimation">@anim/c_</item>
+    </style>
+    <style name="a9" parent="@style/o6">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <style name="a_" parent="@style/o6">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="dh">false</item>
+        <item name="di">true</item>
+    </style>
+    <style name="a1e" parent="@style/o6" />
+</resources>

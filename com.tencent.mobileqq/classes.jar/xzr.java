@@ -1,20 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
 
 public class xzr
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public xzr(PhoneContactTabView paramPhoneContactTabView) {}
+  public xzr(QRLoginAuthActivity paramQRLoginAuthActivity) {}
   
-  public void onClick(View paramView)
-  {
-    PhoneContactTabView.a(this.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xzr
  * JD-Core Version:    0.7.0.1
  */

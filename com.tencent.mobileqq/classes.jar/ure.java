@@ -1,53 +1,18 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleDrawer;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
 public class ure
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  
-  public ure(DoodleDrawer paramDoodleDrawer) {}
-  
-  public void a()
+  public static void a(Object paramObject)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null)
-    {
-      HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("DoodleDrawerThread", 0);
-      localHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
-    }
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    if ((paramRunnable == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler.getLooper().quit();
-      this.jdField_a_of_type_AndroidOsHandler = null;
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    if ((paramObject instanceof QQAppInterface)) {
+      urf.a = new WeakReference((QQAppInterface)paramObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ure
  * JD-Core Version:    0.7.0.1
  */

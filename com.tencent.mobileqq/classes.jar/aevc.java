@@ -1,32 +1,56 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo2.GetFirstMediaThumbnailFunction;
-import com.tencent.mobileqq.nearby.now.send.capturepart.StoryLocalPublishPart;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-public class aevc
-  extends SimpleJob
+class aevc
+  extends Animation
 {
-  public aevc(StoryLocalPublishPart paramStoryLocalPublishPart, View paramView) {}
+  private float jdField_a_of_type_Float;
+  private float b;
   
-  protected Bitmap a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  aevc(aeva paramaeva) {}
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    return new GetFirstMediaThumbnailFunction(this.jdField_a_of_type_AndroidViewView.getContext()).a();
+    float f2 = 1.0F;
+    float f1;
+    if (paramFloat < this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 11.0F)
+    {
+      f1 = paramFloat / (this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 11.0F);
+      if (paramFloat >= this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 6.0F) {
+        break label139;
+      }
+      f2 = 1.0F + paramFloat / (this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 6.0F) * 0.5F;
+    }
+    for (;;)
+    {
+      paramTransformation.setAlpha(f1);
+      paramTransformation.getMatrix().setScale(f2, f2, this.jdField_a_of_type_Float, this.b);
+      return;
+      if (paramFloat < this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 20.0F)
+      {
+        f1 = 1.0F;
+        break;
+      }
+      f1 = 1.0F - (paramFloat - this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 20.0F) / (4.0F * this.jdField_a_of_type_Aeva.jdField_a_of_type_Float);
+      break;
+      label139:
+      if (paramFloat < this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 11.0F) {
+        f2 = 1.5F - (paramFloat - this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 6.0F) * 0.5F / (5.0F * this.jdField_a_of_type_Aeva.jdField_a_of_type_Float);
+      }
+    }
   }
   
-  protected void a(@Nullable Bitmap paramBitmap)
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    new Handler(Looper.getMainLooper()).post(new aevd(this, paramBitmap));
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_Float = (paramInt1 * 0.5F);
+    this.b = (paramInt2 * 0.5F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aevc
  * JD-Core Version:    0.7.0.1
  */

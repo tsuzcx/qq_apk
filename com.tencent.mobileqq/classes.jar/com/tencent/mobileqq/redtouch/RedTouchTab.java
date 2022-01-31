@@ -3,6 +3,7 @@ package com.tencent.mobileqq.redtouch;
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
+import bdhj;
 
 public class RedTouchTab
   extends RedTouch
@@ -22,43 +23,58 @@ public class RedTouchTab
     TextView localTextView = new TextView(this.a);
     try
     {
-      if (Integer.parseInt(paramString) > this.p) {
-        localTextView.setText(this.p + "+");
-      }
-      for (;;)
+      if (Integer.parseInt(paramString) > this.p)
       {
+        localTextView.setText(this.p + "+");
         localTextView.setTextColor(paramInt1);
         localTextView.setGravity(17);
         localTextView.setSingleLine(true);
         if (paramInt2 == 0) {
-          break label180;
+          break label210;
         }
         localTextView.setTextSize(11.0F);
         if (!this.e) {
-          break;
+          break label185;
         }
         localTextView.setIncludeFontPadding(false);
-        localTextView.setBackgroundResource(2130846057);
-        localTextView.setLayoutParams(a());
-        if (this.b)
-        {
-          localTextView.measure(0, 0);
-          this.l += localTextView.getMeasuredWidth() / 2;
-          a();
-        }
-        return localTextView;
-        localTextView.setText(paramString);
       }
     }
     catch (NumberFormatException localNumberFormatException)
     {
       for (;;)
       {
-        localTextView.setText(paramString.trim());
+        try
+        {
+          localTextView.setBackgroundResource(2130849807);
+          localTextView.setLayoutParams(a());
+          if (this.b)
+          {
+            localTextView.measure(0, 0);
+            this.l += localTextView.getMeasuredWidth() / 2;
+            c();
+          }
+          return localTextView;
+          localTextView.setText(paramString);
+          continue;
+          localNumberFormatException = localNumberFormatException;
+          localTextView.setText(paramString.trim());
+        }
+        catch (OutOfMemoryError paramString)
+        {
+          bdhj.a(getResources(), localTextView, 2130849807);
+          continue;
+        }
+        try
+        {
+          label185:
+          localTextView.setBackgroundResource(2130849805);
+        }
+        catch (OutOfMemoryError paramString)
+        {
+          bdhj.a(getResources(), localTextView, 2130849805);
+        }
         continue;
-        localTextView.setBackgroundResource(2130846055);
-        continue;
-        label180:
+        label210:
         localTextView.setTextSize(13.0F);
       }
     }
@@ -66,7 +82,7 @@ public class RedTouchTab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchTab
  * JD-Core Version:    0.7.0.1
  */

@@ -39,9 +39,9 @@ public class QzoneFeedItemTimeLocationView
   
   private void a()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968767, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363680));
-    this.b = ((TextView)findViewById(2131363681));
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558791, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366182));
+    this.b = ((TextView)findViewById(2131366252));
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -54,7 +54,7 @@ public class QzoneFeedItemTimeLocationView
         paramInt1 = this.b.getWidth();
       }
       paramInt2 = getWidth();
-      paramInt3 = paramInt2 - (int)(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131560656) + 0.5D) - (int)(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131560657) + 0.5D) - (int)(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131560655) + 0.5D) - paramInt1 - 1;
+      paramInt3 = paramInt2 - (int)(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131296312) + 0.5D) - (int)(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131296313) + 0.5D) - (int)(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131296311) + 0.5D) - paramInt1 - 1;
       this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(paramInt3);
       if (QLog.isColorLevel()) {
         QLog.d("QzoneFeedItemTimeLocationView", 2, "onLayout change:timeWidth:" + paramInt1 + ",feedLocationTvWidth(max):" + paramInt3 + ",feedLocationLayoutWidth:" + paramInt2);
@@ -77,7 +77,7 @@ public class QzoneFeedItemTimeLocationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.widget.QzoneFeedItemTimeLocationView
  * JD-Core Version:    0.7.0.1
  */

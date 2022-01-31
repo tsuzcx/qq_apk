@@ -1,41 +1,48 @@
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mqp.app.sec.MQPSensitiveMsgUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public final class akzb
-  implements Runnable
+public class akzb
 {
-  public void run()
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  
+  public String a()
   {
-    int i = 0;
-    Object localObject = "sp_confirmed_sensmsg_" + MQPSensitiveMsgUtil.a();
-    localObject = BaseApplication.getContext().getSharedPreferences((String)localObject, 0);
-    Bundle localBundle = new Bundle();
-    if (i < 10)
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.d == 0) {
+      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.c).append("_").append(this.jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
     {
-      String str1 = Integer.toString(i);
-      if (!((SharedPreferences)localObject).contains(str1)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        String str2 = ((SharedPreferences)localObject).getString(str1, null);
-        if (!TextUtils.isEmpty(str2)) {
-          localBundle.putString(str2, str1);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameShareDataHandler", 2, new Object[] { "getCacheKey:", localStringBuilder.toString() });
       }
+      return localStringBuilder.toString();
+      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.d);
     }
-    if (localBundle.size() > 0) {
-      MQPSensitiveMsgUtil.a(localBundle.size() - 1);
-    }
-    MQPSensitiveMsgUtil.a().putBundle(MQPSensitiveMsgUtil.a(), localBundle);
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("GameShareResult{");
+    localStringBuffer.append("mGameId=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", mActivityId=").append(this.b);
+    localStringBuffer.append(", mUin='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mAIOType=").append(this.c);
+    localStringBuffer.append(", mShareTo=").append(this.d);
+    localStringBuffer.append(", mShareTS=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", mShareRet=").append(this.e);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akzb
  * JD-Core Version:    0.7.0.1
  */

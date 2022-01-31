@@ -1,38 +1,21 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.ImageLoader.Options;
-import com.tencent.component.media.photogif.QzoneAnimationDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public class pjb
-  implements ImageLoader.ImageLoadListener
+class pjb
+  implements View.OnClickListener
 {
-  private pjb(QzoneAnimationDrawable paramQzoneAnimationDrawable) {}
+  pjb(pja parampja, String paramString, ArticleInfo paramArticleInfo) {}
   
-  public void onImageCanceled(String paramString, ImageLoader.Options paramOptions)
+  public void onClick(View paramView)
   {
-    QzoneAnimationDrawable.a(this.a);
+    ors.a(pja.a(this.jdField_a_of_type_Pja), this.jdField_a_of_type_JavaLangString);
+    pja.a(1, ors.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
   }
-  
-  public void onImageFailed(String paramString, ImageLoader.Options paramOptions)
-  {
-    QzoneAnimationDrawable.a(this.a);
-  }
-  
-  public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
-  {
-    QzoneAnimationDrawable.a(this.a, paramDrawable);
-    if (QzoneAnimationDrawable.a(this.a))
-    {
-      QzoneAnimationDrawable.a(this.a, false);
-      QzoneAnimationDrawable.b(this.a);
-    }
-  }
-  
-  public void onImageProgress(String paramString, float paramFloat, ImageLoader.Options paramOptions) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pjb
  * JD-Core Version:    0.7.0.1
  */

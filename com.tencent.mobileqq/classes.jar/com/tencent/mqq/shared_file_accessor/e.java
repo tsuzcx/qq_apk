@@ -1,36 +1,59 @@
 package com.tencent.mqq.shared_file_accessor;
 
-public final class e
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.text.TextUtils;
+import java.lang.ref.WeakReference;
+
+final class e
 {
-  public int a = 0;
-  public String b = null;
+  private WeakReference a;
+  private Uri b;
   
-  private e(int paramInt, String paramString)
+  public e(WeakReference paramWeakReference, String paramString)
   {
-    this.a = paramInt;
-    this.b = paramString;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
-    {
-      return false;
-      if (!(paramObject instanceof Integer)) {
-        break;
-      }
-    } while (this.a != ((Integer)paramObject).intValue());
-    return true;
-    if ((paramObject instanceof String)) {
-      return this.b.equals(paramObject);
+    this.a = paramWeakReference;
+    StringBuilder localStringBuilder = new StringBuilder("content://com.tencent.mqq.shared_file_accessor.ContentProviderImpl/params?file=");
+    paramWeakReference = paramString;
+    if (paramString == null) {
+      paramWeakReference = "default";
     }
-    return super.equals(paramObject);
+    this.b = Uri.parse(paramWeakReference);
   }
   
-  public final String toString()
+  public final void a(String paramString)
   {
-    return this.b;
+    if (this.a == null) {}
+    for (;;)
+    {
+      return;
+      Context localContext = (Context)this.a.get();
+      if ((localContext == null) && (TextUtils.isEmpty(paramString))) {
+        continue;
+      }
+      try
+      {
+        paramString = localContext.getContentResolver().query(this.b, new String[] { "cmd", "101", "process", k.a, "log", paramString }, null, null, null);
+        if (paramString == null) {
+          continue;
+        }
+        try
+        {
+          paramString.close();
+          return;
+        }
+        catch (Throwable paramString) {}
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          paramString = null;
+        }
+      }
+    }
   }
 }
 

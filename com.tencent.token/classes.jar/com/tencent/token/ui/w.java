@@ -1,19 +1,18 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.ax;
+import android.widget.RelativeLayout;
+import com.tmsdk.TMSDKContext;
 
-final class w
-  implements View.OnClickListener
+class w
+  implements Runnable
 {
-  w(AccountPageActivity paramAccountPageActivity) {}
+  w(u paramu, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public final void onClick(View paramView)
+  public void run()
   {
-    if (ax.a().e() == null) {
-      this.a.showNoAccountTipDialog(this.a, 10, 0);
-    }
+    AccountPageActivity.access$3500(this.c.a).setVisibility(0);
+    AccountPageActivity.access$3500(this.c.a).setOnClickListener(new x(this));
+    TMSDKContext.saveActionData(1150114);
   }
 }
 

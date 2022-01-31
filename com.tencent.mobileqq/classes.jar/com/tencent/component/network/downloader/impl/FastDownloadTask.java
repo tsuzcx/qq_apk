@@ -15,6883 +15,7731 @@ import com.tencent.component.network.module.base.QDLog;
 import com.tencent.component.network.module.common.DnsService;
 import com.tencent.component.network.utils.NetworkUtils;
 import com.tencent.component.network.utils.http.HttpUtil;
-import com.tencent.component.network.utils.http.base.QZoneHttp2Client;
 import com.tencent.component.network.utils.http.base.QZoneHttpClient;
 import java.net.Proxy;
 import java.util.List;
+import okhttp3.OkHttpClient;
 
 public class FastDownloadTask
   extends DownloadTask
 {
-  private String jdField_a_of_type_JavaLangString;
-  private Proxy jdField_a_of_type_JavaNetProxy;
-  private String b;
-  private String c;
-  long jdField_d_of_type_Long = 0L;
-  private boolean jdField_d_of_type_Boolean;
-  int jdField_e_of_type_Int = 0;
-  long jdField_e_of_type_Long = 0L;
-  private boolean jdField_e_of_type_Boolean;
-  int jdField_f_of_type_Int = 0;
-  long jdField_f_of_type_Long = 0L;
-  private int jdField_g_of_type_Int = 0;
-  private final long jdField_g_of_type_Long = SystemClock.uptimeMillis();
+  int connect_retry = 0;
+  long connect_time = 0L;
+  int exe_retry = 0;
+  long exe_time = 0L;
+  private boolean mAPNProxy;
+  private boolean mAllowProxy;
+  private String mDomainWithPort;
+  private int mOrigPort = 0;
+  private String mRealUrl;
+  private String mRefer;
+  private final long mTimeStamp = SystemClock.uptimeMillis();
+  long send_req_time = 0L;
+  private Proxy triedNetworkProxy;
   
-  public FastDownloadTask(Context paramContext, QZoneHttp2Client paramQZoneHttp2Client, QZoneHttpClient paramQZoneHttpClient, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
+  public FastDownloadTask(Context paramContext, OkHttpClient paramOkHttpClient, QZoneHttpClient paramQZoneHttpClient, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    super(paramContext, paramQZoneHttp2Client, paramQZoneHttpClient, paramString1, paramString2, paramBoolean1, paramBoolean2);
+    super(paramContext, paramOkHttpClient, paramQZoneHttpClient, paramString1, paramString2, paramBoolean1, paramBoolean2);
   }
   
-  private boolean a(int paramInt)
+  private boolean setStrategy(int paramInt)
   {
     int j = 80;
-    String str2 = b();
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib == null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib = DownloadGlobalStrategy.a(this.jdField_a_of_type_AndroidContentContext).a(a(), b(), this.jdField_b_of_type_Boolean);
+    String str2 = getDomain();
+    if (this.pDownloadStrategyLib == null) {
+      this.pDownloadStrategyLib = DownloadGlobalStrategy.getInstance(this.mContext).getStrategyLib(getUrl(), getDomain(), this.mIsHttp2);
     }
-    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo = this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo;
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.a() != null) {}
-    for (int i = this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.a().size();; i = 0)
+    this.pOldStrategyInfo = this.pCurrStrategyInfo;
+    if (this.pDownloadStrategyLib.getStrategyList() != null) {}
+    for (int i = this.pDownloadStrategyLib.getStrategyList().size();; i = 0)
     {
       if (i == 0) {}
-      String str1;
-      Object localObject;
-      label686:
-      label723:
       do
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return false;
-              for (this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo = this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.a(this.jdField_d_of_type_Int % i); (this.jdField_b_of_type_Boolean) && (this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo != null) && (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo != null) && (this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int); this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo = this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.a(this.jdField_d_of_type_Int % i)) {
-                this.jdField_d_of_type_Int += 1;
-              }
-              this.jdField_d_of_type_Int += 1;
-              if ((this.jdField_b_of_type_Boolean) && (this.jdField_d_of_type_Int > i))
-              {
-                this.jdField_b_of_type_Boolean = false;
-                this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.a(80);
-              }
-              i = j;
-              if (this.jdField_b_of_type_Boolean) {
-                i = 443;
-              }
-              this.jdField_c_of_type_Int = i;
-              if (QDLog.b()) {
-                QDLog.b("downloader_strategy", "downloader strategy: " + this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.toString() + " currAttempCount:" + paramInt + " attemptStrategyCount:" + this.jdField_d_of_type_Int + " ,best:" + this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.b() + " url:" + a() + " Apn:" + NetworkManager.getApnValue() + " ISP:" + NetworkManager.getIspType() + " threadid:" + Thread.currentThread().getId());
-              }
-              this.jdField_d_of_type_Boolean = this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Boolean;
-              this.jdField_e_of_type_Boolean = this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_b_of_type_Boolean;
-              i = this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.a();
-              paramInt = i;
-              if (!Utils.isPortValid(i))
-              {
-                this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.a(this.jdField_c_of_type_Int);
-                paramInt = this.jdField_c_of_type_Int;
-              }
-              if (DownloadGlobalStrategy.d.jdField_a_of_type_Int != this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int) {
-                break label790;
-              }
-              i = paramInt;
-              if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo == null) {
-                break;
-              }
-              i = paramInt;
-              if (DownloadGlobalStrategy.d.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int) {
-                break;
-              }
-              if ((this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyPortConfigStrategy == null) || (!this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyPortConfigStrategy.a(str2))) {
-                break label686;
-              }
-              i = this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyPortConfigStrategy.a(str2, paramInt);
-              if ((i != paramInt) && (Utils.isPortValid(i))) {
-                break;
-              }
-            } while (!QDLog.b());
-            QDLog.b("downloader", "downloader strategy: Pass! port:" + paramInt + " newport:" + i + " threadId:" + Thread.currentThread().getId());
-            return false;
-            str1 = this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.c();
-            localObject = str1;
-            if (this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy != null)
-            {
-              localObject = str1;
-              if (!this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy.a(str2, str1))
-              {
-                this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.c(null);
-                localObject = this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy.a(str2);
-                if (TextUtils.isEmpty((CharSequence)localObject)) {
-                  break label723;
-                }
-                this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.c((String)localObject);
-              }
-            }
-            if ((localObject != null) && (!((String)localObject).equals(this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.a())) && (!((String)localObject).equals(this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.b()))) {
-              break label760;
-            }
-          } while (!QDLog.b());
-          QDLog.b("downloader", "downloader strategy: Pass! Domain IP 重复. threadId:" + Thread.currentThread().getId());
-          return false;
-        } while (!QDLog.b());
-        QDLog.b("downloader", "downloader strategy: Pass! Not support !80. threadId:" + Thread.currentThread().getId());
         return false;
-      } while (!QDLog.b());
-      QDLog.b("downloader", "downloader strategy: backup ip is null. Pass! threadId:" + Thread.currentThread().getId());
+        for (this.pCurrStrategyInfo = this.pDownloadStrategyLib.getStrategyInfo(this.attemptStrategyCount % i); (this.mIsHttp2) && (this.pCurrStrategyInfo != null) && (this.pOldStrategyInfo != null) && (this.pCurrStrategyInfo.id == this.pOldStrategyInfo.id); this.pCurrStrategyInfo = this.pDownloadStrategyLib.getStrategyInfo(this.attemptStrategyCount % i)) {
+          this.attemptStrategyCount += 1;
+        }
+        this.attemptStrategyCount += 1;
+        if ((this.mIsHttp2) && (this.attemptStrategyCount > i))
+        {
+          this.mIsHttp2 = false;
+          this.pDownloadStrategyLib.setPort(80);
+        }
+        i = j;
+        if (this.mIsHttp2) {
+          i = 443;
+        }
+        this.mStandardPort = i;
+        if (QDLog.isInfoEnable()) {
+          QDLog.i("downloader_strategy", "downloader strategy: " + this.pCurrStrategyInfo.toString() + " currAttempCount:" + paramInt + " attemptStrategyCount:" + this.attemptStrategyCount + " ,best:" + this.pDownloadStrategyLib.getBestId() + " url:" + getUrl() + " Apn:" + NetworkManager.getApnValue() + " ISP:" + NetworkManager.getIspType() + " threadid:" + Thread.currentThread().getId());
+        }
+        this.mAllowProxy = this.pCurrStrategyInfo.allowProxy;
+        this.mAPNProxy = this.pCurrStrategyInfo.useConfigApn;
+        i = this.pDownloadStrategyLib.getPort();
+        paramInt = i;
+        if (!Utils.isPortValid(i))
+        {
+          this.pDownloadStrategyLib.setPort(this.mStandardPort);
+          paramInt = this.mStandardPort;
+        }
+        if (DownloadGlobalStrategy.Strategy_BACKUPIP.id != this.pCurrStrategyInfo.id) {
+          break label720;
+        }
+        i = paramInt;
+        if (this.pOldStrategyInfo == null) {
+          break;
+        }
+        i = paramInt;
+        if (DownloadGlobalStrategy.Strategy_BACKUPIP.id != this.pOldStrategyInfo.id) {
+          break;
+        }
+        if ((this.pPortConfigStrategy == null) || (!this.pPortConfigStrategy.supportExtraPort(str2))) {
+          break label644;
+        }
+        i = this.pPortConfigStrategy.changePort(str2, paramInt);
+        if ((i != paramInt) && (Utils.isPortValid(i))) {
+          break;
+        }
+      } while (!QDLog.isInfoEnable());
+      QDLog.i("downloader", "downloader strategy: Pass! port:" + paramInt + " newport:" + i + " threadId:" + Thread.currentThread().getId());
       return false;
-      label760:
-      this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo = this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.a();
-      this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.a(new IPInfo((String)localObject, i));
+      String str1 = this.pDownloadStrategyLib.getBackupIP();
+      Object localObject = str1;
+      if (this.pBackupIPConfigStrategy != null)
+      {
+        localObject = str1;
+        if (!this.pBackupIPConfigStrategy.isIPValid(str2, str1))
+        {
+          this.pDownloadStrategyLib.setBackupIP(null);
+          localObject = this.pBackupIPConfigStrategy.resolveIP(str2);
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            break label682;
+          }
+          this.pDownloadStrategyLib.setBackupIP((String)localObject);
+        }
+      }
+      this.pCurrStrategyInfo = this.pCurrStrategyInfo.clone();
+      this.pCurrStrategyInfo.setIPInfo(new IPInfo((String)localObject, i));
       for (;;)
       {
         return true;
-        label790:
-        if (DownloadGlobalStrategy.e.jdField_a_of_type_Int == this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int)
+        label644:
+        if (!QDLog.isInfoEnable()) {
+          break;
+        }
+        QDLog.i("downloader", "downloader strategy: Pass! Not support !80. threadId:" + Thread.currentThread().getId());
+        return false;
+        label682:
+        if (!QDLog.isInfoEnable()) {
+          break;
+        }
+        QDLog.i("downloader", "downloader strategy: backup ip is null. Pass! threadId:" + Thread.currentThread().getId());
+        return false;
+        label720:
+        if (DownloadGlobalStrategy.Strategy_DOMAIN_FORCE.id == this.pCurrStrategyInfo.id)
         {
           i = paramInt;
-          if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo != null)
+          if (this.pOldStrategyInfo != null)
           {
             i = paramInt;
-            if (DownloadGlobalStrategy.e.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int)
+            if (DownloadGlobalStrategy.Strategy_DOMAIN_FORCE.id == this.pOldStrategyInfo.id)
             {
-              if ((this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyPortConfigStrategy == null) || (!this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyPortConfigStrategy.a(str2))) {
-                break label1020;
+              if ((this.pPortConfigStrategy == null) || (!this.pPortConfigStrategy.supportExtraPort(str2))) {
+                break label973;
               }
-              i = this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyPortConfigStrategy.a(str2, paramInt);
+              i = this.pPortConfigStrategy.changePort(str2, paramInt);
               if ((i == paramInt) || (!Utils.isPortValid(i)))
               {
-                if (!QDLog.b()) {
+                if (!QDLog.isInfoEnable()) {
                   break;
                 }
-                QDLog.b("downloader", "downloader strategy: Pass! port:" + paramInt + " newport:" + i + " threadId:" + Thread.currentThread().getId());
+                QDLog.i("downloader", "downloader strategy: Pass! port:" + paramInt + " newport:" + i + " threadId:" + Thread.currentThread().getId());
                 return false;
               }
             }
           }
-          localObject = DnsService.a().a(str2);
-          if ((localObject == null) || (((String)localObject).equals(this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.c())) || (((String)localObject).equals(this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.a())))
+          str1 = DnsService.getInstance().getDomainIP(str2);
+          localObject = str1;
+          if (TextUtils.isEmpty(str1)) {
+            localObject = DnsService.getInstance().getDomainIP(str2);
+          }
+          if ((localObject == null) || (((String)localObject).equals(this.pDownloadStrategyLib.getBackupIP())) || (((String)localObject).equals(this.pDownloadStrategyLib.getDirectIP())))
           {
-            this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.b(null);
-            if (!QDLog.b()) {
+            this.pDownloadStrategyLib.setDnsIP(null);
+            if (!QDLog.isInfoEnable()) {
               break;
             }
-            QDLog.b("downloader", "downloader strategy: Pass! Domain IP 重复. threadId:" + Thread.currentThread().getId());
+            QDLog.i("downloader", "downloader strategy: Pass! Domain IP 重复. threadId:" + Thread.currentThread().getId());
             return false;
-            label1020:
-            if (!QDLog.b()) {
+            if (!QDLog.isInfoEnable()) {
               break;
             }
-            QDLog.b("downloader", "downloader strategy: Pass! Not support !80. threadId:" + Thread.currentThread().getId());
+            QDLog.i("downloader", "downloader strategy: Pass! Not support !80. threadId:" + Thread.currentThread().getId());
             return false;
           }
-          this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.b((String)localObject);
-          this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo = this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.a();
-          this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.a(new IPInfo((String)localObject, i));
+          this.pDownloadStrategyLib.setDnsIP((String)localObject);
+          this.pCurrStrategyInfo = this.pCurrStrategyInfo.clone();
+          this.pCurrStrategyInfo.setIPInfo(new IPInfo((String)localObject, i));
           continue;
         }
-        if (DownloadGlobalStrategy.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int == this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int)
+        label973:
+        if (DownloadGlobalStrategy.Strategy_DomainDirect.id == this.pCurrStrategyInfo.id)
         {
           i = paramInt;
-          if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo != null)
+          if (this.pOldStrategyInfo != null)
           {
             i = paramInt;
-            if (DownloadGlobalStrategy.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int)
+            if (DownloadGlobalStrategy.Strategy_DomainDirect.id == this.pOldStrategyInfo.id)
             {
-              if ((this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyPortConfigStrategy == null) || (!this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyPortConfigStrategy.a(str2))) {
-                break label1387;
+              if ((this.pPortConfigStrategy == null) || (!this.pPortConfigStrategy.supportExtraPort(str2))) {
+                break label1342;
               }
-              i = this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyPortConfigStrategy.a(str2, paramInt);
+              i = this.pPortConfigStrategy.changePort(str2, paramInt);
               if ((i == paramInt) || (!Utils.isPortValid(i)))
               {
-                if (!QDLog.b()) {
+                if (!QDLog.isInfoEnable()) {
                   break;
                 }
-                QDLog.b("downloader", "downloader strategy: Pass! port:" + paramInt + " newport:" + i + " threadId:" + Thread.currentThread().getId());
+                QDLog.i("downloader", "downloader strategy: Pass! port:" + paramInt + " newport:" + i + " threadId:" + Thread.currentThread().getId());
                 return false;
               }
             }
           }
         }
-        label1387:
+        label1342:
         do
         {
-          str1 = this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.a();
+          str1 = this.pDownloadStrategyLib.getDirectIP();
           localObject = str1;
-          if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy != null)
+          if (this.pDirectIPConfigStrategy != null)
           {
             localObject = str1;
-            if (!this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy.a(str2, str1))
+            if (!this.pDirectIPConfigStrategy.isIPValid(str2, str1))
             {
-              this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.a(null);
-              localObject = this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy.a(str2);
+              this.pDownloadStrategyLib.setDirectIP(null);
+              localObject = this.pDirectIPConfigStrategy.resolveIP(str2);
               if (TextUtils.isEmpty((CharSequence)localObject)) {
-                break label1623;
+                break label1573;
               }
-              this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.a((String)localObject);
+              this.pDownloadStrategyLib.setDirectIP((String)localObject);
             }
           }
-          if ((localObject != null) && (!((String)localObject).equals(this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.c())) && (!((String)localObject).equals(this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyLib.b()))) {
-            break label1661;
+          if ((localObject != null) && (!((String)localObject).equals(this.pDownloadStrategyLib.getBackupIP())) && (!((String)localObject).equals(this.pDownloadStrategyLib.getDnsIP()))) {
+            break label1611;
           }
-          if (!QDLog.b()) {
+          if (!QDLog.isInfoEnable()) {
             break;
           }
-          QDLog.b("downloader", "downloader strategy: Pass! Domain IP 重复. threadId:" + Thread.currentThread().getId());
+          QDLog.i("downloader", "downloader strategy: Pass! Domain IP 重复. threadId:" + Thread.currentThread().getId());
           return false;
-          if (!QDLog.b()) {
+          if (!QDLog.isInfoEnable()) {
             break;
           }
-          QDLog.b("downloader", "downloader strategy: Pass! Not support !" + this.jdField_c_of_type_Int + "." + " threadId:" + Thread.currentThread().getId());
+          QDLog.i("downloader", "downloader strategy: Pass! Not support !" + this.mStandardPort + ". threadId:" + Thread.currentThread().getId());
           return false;
-          if (DownloadGlobalStrategy.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int == this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int) {
-            break label1477;
+          if (DownloadGlobalStrategy.Strategy_DomainProxy_SYS.id == this.pCurrStrategyInfo.id) {
+            break label1427;
           }
           i = paramInt;
-        } while (DownloadGlobalStrategy.c.jdField_a_of_type_Int != this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int);
-        label1477:
-        localObject = this.jdField_a_of_type_AndroidContentContext;
-        if (DownloadGlobalStrategy.c.jdField_a_of_type_Int == this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int) {}
+        } while (DownloadGlobalStrategy.Strategy_DomainProxy_CON.id != this.pCurrStrategyInfo.id);
+        label1427:
+        localObject = this.mContext;
+        if (DownloadGlobalStrategy.Strategy_DomainProxy_CON.id == this.pCurrStrategyInfo.id) {}
         for (boolean bool = true;; bool = false)
         {
           localObject = NetworkUtils.getProxy((Context)localObject, bool);
           if (localObject != null) {
-            break label1560;
+            break label1510;
           }
-          if (!QDLog.b()) {
+          if (!QDLog.isInfoEnable()) {
             break;
           }
-          QDLog.b("downloader", "downloader strategy: proxy is null. Pass! threadId:" + Thread.currentThread().getId());
+          QDLog.i("downloader", "downloader strategy: proxy is null. Pass! threadId:" + Thread.currentThread().getId());
           return false;
         }
-        label1560:
-        if (((Proxy)localObject).equals(this.jdField_a_of_type_JavaNetProxy))
+        label1510:
+        if (((Proxy)localObject).equals(this.triedNetworkProxy))
         {
-          if (!QDLog.b()) {
+          if (!QDLog.isInfoEnable()) {
             break;
           }
-          QDLog.b("downloader", "downloader strategy: proxy 重复. Pass! threadId:" + Thread.currentThread().getId());
+          QDLog.i("downloader", "downloader strategy: proxy 重复. Pass! threadId:" + Thread.currentThread().getId());
           return false;
         }
-        this.jdField_a_of_type_JavaNetProxy = ((Proxy)localObject);
-        paramInt = this.jdField_c_of_type_Int;
+        this.triedNetworkProxy = ((Proxy)localObject);
+        paramInt = this.mStandardPort;
         return true;
-        label1623:
-        if (!QDLog.b()) {
+        label1573:
+        if (!QDLog.isInfoEnable()) {
           break;
         }
-        QDLog.b("downloader", "downloader strategy: direct ip is null. Pass! threadId:" + Thread.currentThread().getId());
+        QDLog.i("downloader", "downloader strategy: direct ip is null. Pass! threadId:" + Thread.currentThread().getId());
         return false;
-        label1661:
-        this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo = this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.a();
-        this.jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.a(new IPInfo((String)localObject, i));
+        label1611:
+        this.pCurrStrategyInfo = this.pCurrStrategyInfo.clone();
+        this.pCurrStrategyInfo.setIPInfo(new IPInfo((String)localObject, i));
       }
     }
   }
   
-  protected void a()
-  {
-    super.a();
-    this.jdField_b_of_type_JavaLangString = Utils.getDominWithPort(a());
-    this.jdField_g_of_type_Int = Utils.getPort(a());
-    this.jdField_c_of_type_JavaLangString = HttpUtil.a(a());
-    if (!DownloadGlobalStrategy.a(this.jdField_a_of_type_AndroidContentContext).a())
-    {
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_c_of_type_Boolean = false;
-    }
-  }
-  
   /* Error */
-  public void a(com.tencent.component.network.utils.thread.ThreadPool.JobContext paramJobContext, com.tencent.component.network.downloader.DownloadResult paramDownloadResult)
+  public void execute(com.tencent.component.network.utils.thread.ThreadPool.JobContext paramJobContext, com.tencent.component.network.downloader.DownloadResult paramDownloadResult)
   {
     // Byte code:
     //   0: iconst_2
-    //   1: anewarray 307	java/lang/Object
+    //   1: anewarray 343	java/lang/Object
     //   4: dup
     //   5: iconst_0
     //   6: aload_0
-    //   7: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
+    //   7: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
     //   10: aastore
     //   11: dup
     //   12: iconst_1
     //   13: aload_2
     //   14: aastore
-    //   15: invokestatic 312	pjp:a	([Ljava/lang/Object;)I
-    //   18: istore 7
-    //   20: lconst_0
-    //   21: lstore 8
-    //   23: iconst_0
-    //   24: istore 4
-    //   26: aload_1
-    //   27: invokeinterface 317 1 0
-    //   32: ifeq +11 -> 43
-    //   35: aload_0
-    //   36: aload_1
-    //   37: aload_2
-    //   38: aconst_null
-    //   39: invokevirtual 320	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(Lcom/tencent/component/network/utils/thread/ThreadPool$JobContext;Lcom/tencent/component/network/downloader/DownloadResult;Lcom/tencent/component/network/downloader/DownloadReport;)V
-    //   42: return
-    //   43: aload_0
-    //   44: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   47: invokestatic 324	com/tencent/component/network/utils/NetworkUtils:isNetworkAvailable	(Landroid/content/Context;)Z
-    //   50: ifne +37 -> 87
-    //   53: iload 4
-    //   55: aload_0
-    //   56: getfield 325	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_Int	I
-    //   59: iconst_1
-    //   60: isub
-    //   61: if_icmpne +20 -> 81
-    //   64: aload_2
-    //   65: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   68: bipush 6
-    //   70: invokevirtual 336	com/tencent/component/network/downloader/DownloadResult$Status:setFailed	(I)V
-    //   73: aload_0
-    //   74: aload_1
-    //   75: aload_2
-    //   76: aconst_null
-    //   77: invokevirtual 320	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(Lcom/tencent/component/network/utils/thread/ThreadPool$JobContext;Lcom/tencent/component/network/downloader/DownloadResult;Lcom/tencent/component/network/downloader/DownloadReport;)V
-    //   80: return
-    //   81: ldc2_w 337
-    //   84: invokestatic 342	java/lang/Thread:sleep	(J)V
-    //   87: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   90: lstore 14
-    //   92: new 344	com/tencent/component/network/downloader/DownloadReport
-    //   95: dup
-    //   96: invokespecial 345	com/tencent/component/network/downloader/DownloadReport:<init>	()V
-    //   99: astore 26
-    //   101: aload 26
-    //   103: iload 7
-    //   105: putfield 348	com/tencent/component/network/downloader/DownloadReport:id	I
-    //   108: aload 26
-    //   110: aload_0
-    //   111: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   114: putfield 351	com/tencent/component/network/downloader/DownloadReport:url	Ljava/lang/String;
-    //   117: aload 26
-    //   119: aload_0
-    //   120: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   123: putfield 354	com/tencent/component/network/downloader/DownloadReport:domain	Ljava/lang/String;
-    //   126: aload 26
-    //   128: invokestatic 359	java/lang/System:currentTimeMillis	()J
-    //   131: putfield 362	com/tencent/component/network/downloader/DownloadReport:startTime	J
-    //   134: aload_0
-    //   135: aconst_null
-    //   136: putfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   139: aconst_null
-    //   140: astore 23
-    //   142: aconst_null
-    //   143: astore 21
-    //   145: aload_0
-    //   146: aconst_null
-    //   147: putfield 368	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpRequest$Builder	Lcom/squareup/okhttp/Request$Builder;
-    //   150: aconst_null
-    //   151: astore 22
-    //   153: iconst_0
-    //   154: istore 6
-    //   156: aconst_null
-    //   157: astore 19
-    //   159: invokestatic 359	java/lang/System:currentTimeMillis	()J
-    //   162: lstore 16
-    //   164: aload_0
-    //   165: aload_0
-    //   166: invokevirtual 369	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()I
-    //   169: invokespecial 371	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(I)Z
-    //   172: istore 18
-    //   174: iload 18
-    //   176: ifne +34 -> 210
-    //   179: iload 4
-    //   181: istore_3
-    //   182: aload_0
-    //   183: invokevirtual 372	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Z
-    //   186: ifeq -144 -> 42
-    //   189: iload_3
-    //   190: istore 4
-    //   192: goto -166 -> 26
-    //   195: astore 19
-    //   197: ldc 186
-    //   199: ldc_w 374
-    //   202: invokestatic 376	com/tencent/component/network/module/base/QDLog:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   205: goto -118 -> 87
-    //   208: astore 19
-    //   210: aload 19
-    //   212: ifnull +1543 -> 1755
-    //   215: lload 8
-    //   217: lstore 10
-    //   219: lload 8
-    //   221: lstore 12
-    //   223: aload 19
-    //   225: athrow
-    //   226: astore 22
-    //   228: iconst_0
-    //   229: istore_3
-    //   230: aconst_null
-    //   231: astore 20
-    //   233: aconst_null
-    //   234: astore 19
-    //   236: aconst_null
-    //   237: astore 21
-    //   239: lload 10
-    //   241: lstore 8
-    //   243: ldc 186
-    //   245: ldc_w 378
-    //   248: aload 22
-    //   250: invokestatic 381	com/tencent/component/network/module/base/QDLog:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   253: aload_2
-    //   254: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   257: aload 22
-    //   259: invokevirtual 384	com/tencent/component/network/downloader/DownloadResult$Status:setFailed	(Ljava/lang/Throwable;)V
-    //   262: iload 4
-    //   264: iconst_1
-    //   265: iadd
-    //   266: istore 5
-    //   268: aload_2
-    //   269: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   272: lload 14
-    //   274: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   277: invokevirtual 393	com/tencent/component/network/downloader/DownloadResult$Process:a	(JJ)V
+    //   15: invokestatic 349	com/tencent/component/network/downloader/impl/DownloadTask$TaskHelper:generateRandomId	([Ljava/lang/Object;)I
+    //   18: istore 9
+    //   20: invokestatic 354	com/tencent/component/network/utils/SDCardUtil:isSdCardHasEnoughCapability	()Z
+    //   23: istore 11
+    //   25: lconst_0
+    //   26: lstore 12
+    //   28: iconst_0
+    //   29: istore_3
+    //   30: aload_1
+    //   31: invokeinterface 359 1 0
+    //   36: ifeq +11 -> 47
+    //   39: aload_0
+    //   40: aload_1
+    //   41: aload_2
+    //   42: aconst_null
+    //   43: invokevirtual 363	com/tencent/component/network/downloader/impl/FastDownloadTask:handleDownloadReportForTask	(Lcom/tencent/component/network/utils/thread/ThreadPool$JobContext;Lcom/tencent/component/network/downloader/DownloadResult;Lcom/tencent/component/network/downloader/DownloadReport;)V
+    //   46: return
+    //   47: aload_0
+    //   48: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   51: invokestatic 367	com/tencent/component/network/utils/NetworkUtils:isNetworkAvailable	(Landroid/content/Context;)Z
+    //   54: ifne +29 -> 83
+    //   57: iload_3
+    //   58: aload_0
+    //   59: getfield 370	com/tencent/component/network/downloader/impl/FastDownloadTask:mAttemptTotalCount	I
+    //   62: iconst_1
+    //   63: isub
+    //   64: if_icmpne +13 -> 77
+    //   67: aload_2
+    //   68: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   71: bipush 6
+    //   73: invokevirtual 381	com/tencent/component/network/downloader/DownloadResult$Status:setFailed	(I)V
+    //   76: return
+    //   77: ldc2_w 382
+    //   80: invokestatic 387	java/lang/Thread:sleep	(J)V
+    //   83: iload 11
+    //   85: ifne +25 -> 110
+    //   88: aload_2
+    //   89: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   92: iconst_2
+    //   93: invokevirtual 381	com/tencent/component/network/downloader/DownloadResult$Status:setFailed	(I)V
+    //   96: return
+    //   97: astore 22
+    //   99: ldc 219
+    //   101: ldc_w 389
+    //   104: invokestatic 392	com/tencent/component/network/module/base/QDLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   107: goto -24 -> 83
+    //   110: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   113: lstore 18
+    //   115: new 394	com/tencent/component/network/downloader/DownloadReport
+    //   118: dup
+    //   119: invokespecial 395	com/tencent/component/network/downloader/DownloadReport:<init>	()V
+    //   122: astore 29
+    //   124: aload 29
+    //   126: iload 9
+    //   128: putfield 396	com/tencent/component/network/downloader/DownloadReport:id	I
+    //   131: aload 29
+    //   133: aload_0
+    //   134: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   137: putfield 399	com/tencent/component/network/downloader/DownloadReport:url	Ljava/lang/String;
+    //   140: aload 29
+    //   142: aload_0
+    //   143: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   146: putfield 402	com/tencent/component/network/downloader/DownloadReport:domain	Ljava/lang/String;
+    //   149: aload 29
+    //   151: invokestatic 407	java/lang/System:currentTimeMillis	()J
+    //   154: putfield 410	com/tencent/component/network/downloader/DownloadReport:startTime	J
+    //   157: aload_0
+    //   158: aconst_null
+    //   159: putfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   162: aconst_null
+    //   163: astore 26
+    //   165: aconst_null
+    //   166: astore 24
+    //   168: aload_0
+    //   169: aconst_null
+    //   170: putfield 418	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestBuilder	Lokhttp3/Request$Builder;
+    //   173: aconst_null
+    //   174: astore 25
+    //   176: iconst_0
+    //   177: istore 7
+    //   179: iconst_0
+    //   180: istore 8
+    //   182: aconst_null
+    //   183: astore 22
+    //   185: invokestatic 407	java/lang/System:currentTimeMillis	()J
+    //   188: lstore 20
+    //   190: aload_0
+    //   191: aload_0
+    //   192: invokevirtual 421	com/tencent/component/network/downloader/impl/FastDownloadTask:getCurrAttemptCount	()I
+    //   195: invokespecial 423	com/tencent/component/network/downloader/impl/FastDownloadTask:setStrategy	(I)Z
+    //   198: istore 10
+    //   200: iload 10
+    //   202: ifne +15 -> 217
+    //   205: aload_0
+    //   206: invokevirtual 426	com/tencent/component/network/downloader/impl/FastDownloadTask:canAttempt	()Z
+    //   209: ifeq -163 -> 46
+    //   212: goto -182 -> 30
+    //   215: astore 22
+    //   217: aload 22
+    //   219: ifnull +1745 -> 1964
+    //   222: lload 12
+    //   224: lstore 14
+    //   226: lload 12
+    //   228: lstore 16
+    //   230: aload 22
+    //   232: athrow
+    //   233: astore 25
+    //   235: aconst_null
+    //   236: astore 22
+    //   238: aconst_null
+    //   239: astore 24
+    //   241: aconst_null
+    //   242: astore 23
+    //   244: iload 8
+    //   246: istore 4
+    //   248: lload 14
+    //   250: lstore 12
+    //   252: ldc 219
+    //   254: ldc_w 428
+    //   257: aload 25
+    //   259: invokestatic 432	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   262: iload_3
+    //   263: istore 5
+    //   265: aload_2
+    //   266: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   269: aload 25
+    //   271: invokevirtual 435	com/tencent/component/network/downloader/DownloadResult$Status:setFailed	(Ljava/lang/Throwable;)V
+    //   274: iload_3
+    //   275: istore 6
+    //   277: iload_3
+    //   278: istore 5
     //   280: aload_0
-    //   281: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   284: invokestatic 398	com/tencent/component/network/module/common/NetworkStatus:a	(Landroid/content/Context;)Lcom/tencent/component/network/module/common/NetworkStatus;
-    //   287: invokevirtual 401	com/tencent/component/network/module/common/NetworkStatus:a	()Lcom/tencent/component/network/utils/NetworkUtils$DNS;
-    //   290: astore 25
-    //   292: aload_0
-    //   293: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   296: ifnull +8005 -> 8301
-    //   299: aload_0
-    //   300: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   303: invokevirtual 404	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:a	()Lcom/tencent/component/network/downloader/common/IPInfo;
-    //   306: ifnull +7995 -> 8301
+    //   281: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   284: ifnull +48 -> 332
+    //   287: iload_3
+    //   288: istore 6
+    //   290: iload_3
+    //   291: istore 5
+    //   293: aload_0
+    //   294: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   297: ldc_w 439
+    //   300: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   303: ifeq +29 -> 332
+    //   306: iload_3
+    //   307: istore 5
     //   309: aload_0
-    //   310: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   313: invokevirtual 404	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:a	()Lcom/tencent/component/network/downloader/common/IPInfo;
-    //   316: getfield 406	com/tencent/component/network/downloader/common/IPInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   319: astore 23
-    //   321: aload_0
-    //   322: aload_0
-    //   323: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   326: aload 19
-    //   328: aload 20
-    //   330: invokevirtual 409	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(Lorg/apache/http/HttpRequest;Lorg/apache/http/HttpResponse;Lcom/squareup/okhttp/Response;)Ljava/lang/String;
-    //   333: astore 27
-    //   335: aload 21
-    //   337: ifnull +15026 -> 15363
-    //   340: aload 21
-    //   342: ldc_w 411
-    //   345: invokeinterface 417 2 0
-    //   350: checkcast 217	java/lang/String
-    //   353: astore 21
-    //   355: aload_0
-    //   356: lconst_0
-    //   357: putfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   360: aload_0
-    //   361: iconst_0
-    //   362: putfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Int	I
-    //   365: aload_0
-    //   366: lconst_0
-    //   367: putfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Long	J
+    //   310: iconst_1
+    //   311: putfield 445	com/tencent/component/network/downloader/impl/FastDownloadTask:disableHttps	Z
+    //   314: iload_3
+    //   315: iconst_1
+    //   316: isub
+    //   317: istore 6
+    //   319: iload 6
+    //   321: istore 5
+    //   323: ldc_w 447
+    //   326: ldc_w 449
+    //   329: invokestatic 451	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   332: aload_2
+    //   333: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   336: lload 18
+    //   338: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   341: invokevirtual 461	com/tencent/component/network/downloader/DownloadResult$Process:setDuration	(JJ)V
+    //   344: aload_2
+    //   345: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   348: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   351: aload_0
+    //   352: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   355: lsub
+    //   356: putfield 464	com/tencent/component/network/downloader/DownloadResult$Process:totalDuration	J
+    //   359: aload_2
+    //   360: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   363: aload_0
+    //   364: getfield 467	com/tencent/component/network/downloader/impl/FastDownloadTask:mTaskStartTimeStamp	J
+    //   367: putfield 470	com/tencent/component/network/downloader/DownloadResult$Process:startTimestamp	J
     //   370: aload_0
-    //   371: iconst_0
-    //   372: putfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Int	I
-    //   375: aload_2
-    //   376: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   379: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   382: ifeq +12 -> 394
-    //   385: aload_1
-    //   386: invokeinterface 317 1 0
-    //   391: ifeq +31 -> 422
-    //   394: aload_0
-    //   395: getfield 423	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
-    //   398: ifnull +24 -> 422
-    //   401: aload_0
-    //   402: getfield 423	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
-    //   405: aload_0
-    //   406: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   409: aload_2
-    //   410: invokevirtual 426	com/tencent/component/network/downloader/DownloadResult:getPath	()Ljava/lang/String;
-    //   413: aload 19
-    //   415: aload 20
-    //   417: invokeinterface 431 5 0
-    //   422: aload_1
-    //   423: invokeinterface 317 1 0
-    //   428: ifne +1295 -> 1723
-    //   431: aload_0
-    //   432: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   435: invokestatic 324	com/tencent/component/network/utils/NetworkUtils:isNetworkAvailable	(Landroid/content/Context;)Z
-    //   438: istore 18
-    //   440: aload_2
-    //   441: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   444: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   447: ifne +7870 -> 8317
-    //   450: new 102	java/lang/StringBuilder
-    //   453: dup
-    //   454: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   457: ldc_w 433
-    //   460: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   463: aload_0
-    //   464: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   467: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   470: ldc_w 435
-    //   473: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   476: aload_0
-    //   477: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   480: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   483: ldc_w 440
-    //   486: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   489: astore 28
-    //   491: aload_0
-    //   492: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   495: ifeq +8438 -> 8933
-    //   498: aload 20
-    //   500: ifnull +8433 -> 8933
-    //   503: aload 20
-    //   505: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   508: ifnull +8425 -> 8933
-    //   511: aload 20
-    //   513: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   516: invokevirtual 449	com/squareup/okhttp/Protocol:toString	()Ljava/lang/String;
-    //   519: astore 24
-    //   521: aload 28
-    //   523: aload 24
-    //   525: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   528: ldc_w 451
-    //   531: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   534: aload 25
-    //   536: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   539: ldc_w 456
-    //   542: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   545: aload 23
-    //   547: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   550: ldc_w 458
-    //   553: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   556: aconst_null
-    //   557: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   560: ldc_w 460
-    //   563: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   566: invokestatic 147	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   569: invokevirtual 150	java/lang/Thread:getId	()J
-    //   572: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   575: ldc_w 462
-    //   578: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   581: invokestatic 134	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   584: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   587: ldc_w 464
-    //   590: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   593: aload_0
-    //   594: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   597: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   600: ldc_w 466
-    //   603: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   606: aload_0
-    //   607: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   610: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   613: ldc_w 468
-    //   616: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   619: astore 28
-    //   621: aload_0
-    //   622: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   625: ifeq +8316 -> 8941
-    //   628: aload_0
-    //   629: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   632: aload_0
-    //   633: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   636: invokestatic 267	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
-    //   639: astore 24
-    //   641: aload 28
-    //   643: aload 24
-    //   645: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   648: ldc_w 470
-    //   651: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   654: iload 18
-    //   656: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   659: ldc_w 472
-    //   662: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   665: aload_2
-    //   666: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   669: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   672: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   675: ldc_w 483
-    //   678: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   681: aload_2
-    //   682: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   685: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   688: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   691: ldc_w 487
-    //   694: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   697: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   700: aload_0
-    //   701: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   704: lsub
-    //   705: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   708: ldc_w 489
-    //   711: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   714: aload_2
-    //   715: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   718: getfield 492	com/tencent/component/network/downloader/DownloadResult$Content:length	J
-    //   721: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   724: ldc_w 494
-    //   727: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   730: aload_2
-    //   731: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   734: getfield 496	com/tencent/component/network/downloader/DownloadResult$Content:size	J
-    //   737: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   740: ldc_w 498
-    //   743: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   746: aload_2
-    //   747: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   750: getfield 501	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
-    //   753: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   756: ldc_w 503
-    //   759: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   762: aload_0
-    //   763: invokevirtual 369	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()I
-    //   766: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   769: ldc_w 505
-    //   772: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   775: aload_0
-    //   776: invokevirtual 507	com/tencent/component/network/downloader/impl/FastDownloadTask:c	()I
-    //   779: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   782: ldc_w 509
-    //   785: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   788: ldc_w 511
-    //   791: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   794: aload_2
-    //   795: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   798: invokevirtual 514	com/tencent/component/network/downloader/DownloadResult$Status:getFailReason	()I
-    //   801: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   804: ldc_w 516
-    //   807: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   810: iload_3
-    //   811: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   814: ldc_w 518
-    //   817: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   820: aload 27
-    //   822: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   825: ldc_w 520
-    //   828: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   831: aload 21
-    //   833: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   836: ldc_w 522
-    //   839: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   842: astore 28
-    //   844: aload_0
-    //   845: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   848: ifnull +8099 -> 8947
-    //   851: aload_0
-    //   852: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   855: iconst_0
-    //   856: bipush 30
-    //   858: invokevirtual 527	java/lang/String:substring	(II)Ljava/lang/String;
-    //   861: astore 24
-    //   863: aload 28
-    //   865: aload 24
-    //   867: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   870: ldc_w 529
-    //   873: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   876: astore 24
-    //   878: aload_0
-    //   879: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   882: ifnull +8074 -> 8956
-    //   885: aload_0
-    //   886: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   889: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   892: istore 4
-    //   894: aload 24
-    //   896: iload 4
-    //   898: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   901: ldc_w 531
-    //   904: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   907: aload_2
-    //   908: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   911: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   914: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   917: ldc_w 536
-    //   920: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   923: lload 8
-    //   925: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   928: ldc_w 538
-    //   931: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   934: aload_0
-    //   935: getfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   938: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   941: ldc_w 505
-    //   944: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   947: aload_0
-    //   948: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Int	I
-    //   951: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   954: ldc_w 509
-    //   957: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   960: ldc_w 540
-    //   963: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   966: aload_0
-    //   967: getfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Long	J
-    //   970: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   973: ldc_w 505
-    //   976: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   979: aload_0
-    //   980: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Int	I
-    //   983: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   986: ldc_w 509
-    //   989: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   992: ldc_w 542
-    //   995: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   998: aload_0
-    //   999: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   1002: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1005: ldc_w 544
-    //   1008: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1011: aload_0
-    //   1012: getfield 545	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_Long	J
-    //   1015: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1018: ldc_w 547
-    //   1021: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1024: aload_0
-    //   1025: invokevirtual 549	com/tencent/component/network/downloader/impl/FastDownloadTask:d	()I
-    //   1028: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1031: ldc_w 509
-    //   1034: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1037: ldc_w 551
-    //   1040: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1043: astore 28
-    //   1045: aload_0
-    //   1046: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   1049: ifnull +7913 -> 8962
-    //   1052: aload_0
-    //   1053: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   1056: invokeinterface 560 1 0
-    //   1061: astore 24
-    //   1063: aload 26
-    //   1065: aload 28
-    //   1067: aload 24
-    //   1069: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1072: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1075: putfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   1078: ldc_w 565
-    //   1081: aload 26
-    //   1083: getfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   1086: aload 22
-    //   1088: invokestatic 381	com/tencent/component/network/module/base/QDLog:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1091: iload 18
-    //   1093: ifne +8 -> 1101
-    //   1096: aload_0
-    //   1097: iconst_0
-    //   1098: putfield 566	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_Boolean	Z
-    //   1101: aload_2
-    //   1102: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   1105: astore 24
-    //   1107: new 102	java/lang/StringBuilder
-    //   1110: dup
-    //   1111: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   1114: aload_0
-    //   1115: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   1118: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1121: ldc_w 568
-    //   1124: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1127: aload 23
-    //   1129: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1132: ldc_w 570
-    //   1135: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1138: aload_2
-    //   1139: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   1142: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   1145: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1148: ldc_w 572
-    //   1151: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1154: astore 23
-    //   1156: aload_0
-    //   1157: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   1160: ifnull +7843 -> 9003
-    //   1163: aload_0
-    //   1164: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   1167: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   1170: istore 4
-    //   1172: aload 23
-    //   1174: iload 4
-    //   1176: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1179: ldc_w 516
-    //   1182: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1185: iload_3
-    //   1186: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1189: ldc_w 472
-    //   1192: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1195: aload_2
-    //   1196: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   1199: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   1202: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1205: ldc_w 574
-    //   1208: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1211: aload_2
-    //   1212: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   1215: getfield 492	com/tencent/component/network/downloader/DownloadResult$Content:length	J
-    //   1218: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1221: ldc_w 494
-    //   1224: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1227: aload_2
-    //   1228: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   1231: getfield 496	com/tencent/component/network/downloader/DownloadResult$Content:size	J
-    //   1234: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1237: ldc_w 483
-    //   1240: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1243: aload_2
-    //   1244: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   1247: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   1250: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1253: ldc_w 487
-    //   1256: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1259: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   1262: aload_0
-    //   1263: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   1266: lsub
-    //   1267: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1270: astore 23
-    //   1272: aload 21
-    //   1274: invokestatic 214	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1277: ifne +7732 -> 9009
-    //   1280: new 102	java/lang/StringBuilder
-    //   1283: dup
-    //   1284: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   1287: ldc_w 520
-    //   1290: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1293: aload 21
-    //   1295: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1298: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1301: astore 21
-    //   1303: aload 24
-    //   1305: aload 23
-    //   1307: aload 21
-    //   1309: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1312: ldc_w 518
-    //   1315: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1318: aload 27
-    //   1320: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1323: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1326: putfield 577	com/tencent/component/network/downloader/DownloadResult$Status:detailDownloadInfo	Ljava/lang/String;
-    //   1329: getstatic 173	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:d	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   1332: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   1335: aload_0
-    //   1336: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   1339: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   1342: if_icmpne +37 -> 1379
-    //   1345: aload_0
-    //   1346: getfield 197	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   1349: ifnull +30 -> 1379
-    //   1352: aload_0
-    //   1353: getfield 197	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   1356: aload_0
-    //   1357: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   1360: aload_0
-    //   1361: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1364: invokestatic 580	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
-    //   1367: aload_2
-    //   1368: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   1371: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   1374: invokeinterface 583 4 0
-    //   1379: getstatic 250	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   1382: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   1385: aload_0
-    //   1386: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   1389: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   1392: if_icmpne +37 -> 1429
-    //   1395: aload_0
-    //   1396: getfield 252	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   1399: ifnull +30 -> 1429
-    //   1402: aload_0
-    //   1403: getfield 252	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   1406: aload_0
-    //   1407: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   1410: aload_0
-    //   1411: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1414: invokestatic 580	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
-    //   1417: aload_2
-    //   1418: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   1421: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   1424: invokeinterface 583 4 0
-    //   1429: iload 18
-    //   1431: ifeq +64 -> 1495
-    //   1434: aload_0
-    //   1435: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   1438: invokestatic 56	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:a	(Landroid/content/Context;)Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy;
-    //   1441: astore 21
-    //   1443: aload_0
-    //   1444: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1447: astore 23
-    //   1449: aload_0
-    //   1450: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   1453: ifeq +7594 -> 9047
-    //   1456: aload_0
-    //   1457: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1460: ifnull +7587 -> 9047
-    //   1463: aload_0
-    //   1464: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1467: ldc_w 585
-    //   1470: invokevirtual 588	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   1473: ifeq +7574 -> 9047
-    //   1476: iconst_1
-    //   1477: istore 18
-    //   1479: aload 21
-    //   1481: aload 23
-    //   1483: iload 18
-    //   1485: aload_2
-    //   1486: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   1489: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   1492: invokevirtual 591	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:a	(Ljava/lang/String;ZZ)V
-    //   1495: aload 26
-    //   1497: invokestatic 359	java/lang/System:currentTimeMillis	()J
-    //   1500: putfield 594	com/tencent/component/network/downloader/DownloadReport:endTime	J
-    //   1503: aload 26
-    //   1505: aload_0
-    //   1506: invokevirtual 596	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()J
-    //   1509: putfield 599	com/tencent/component/network/downloader/DownloadReport:fileSize	J
-    //   1512: aload 26
-    //   1514: aload 19
-    //   1516: putfield 603	com/tencent/component/network/downloader/DownloadReport:response	Lorg/apache/http/HttpResponse;
-    //   1519: aload 26
-    //   1521: aload 20
-    //   1523: putfield 607	com/tencent/component/network/downloader/DownloadReport:okResponse	Lcom/squareup/okhttp/Response;
-    //   1526: aload 26
-    //   1528: iload_3
-    //   1529: putfield 610	com/tencent/component/network/downloader/DownloadReport:httpStatus	I
-    //   1532: aload 26
-    //   1534: aload 22
-    //   1536: putfield 614	com/tencent/component/network/downloader/DownloadReport:exception	Ljava/lang/Throwable;
-    //   1539: aload 25
-    //   1541: ifnonnull +7512 -> 9053
-    //   1544: aconst_null
-    //   1545: astore 19
-    //   1547: aload 26
-    //   1549: aload 19
-    //   1551: putfield 617	com/tencent/component/network/downloader/DownloadReport:dns	Ljava/lang/String;
-    //   1554: aload 26
-    //   1556: aconst_null
-    //   1557: putfield 620	com/tencent/component/network/downloader/DownloadReport:localAddress	Ljava/lang/String;
-    //   1560: aload 26
-    //   1562: aload_2
-    //   1563: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   1566: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   1569: putfield 621	com/tencent/component/network/downloader/DownloadReport:clientip	Ljava/lang/String;
-    //   1572: aload 26
-    //   1574: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   1577: aload_0
-    //   1578: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   1581: lsub
-    //   1582: putfield 624	com/tencent/component/network/downloader/DownloadReport:totaltime	J
-    //   1585: aload 26
-    //   1587: aload_2
-    //   1588: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   1591: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   1594: putfield 627	com/tencent/component/network/downloader/DownloadReport:downloadTime	J
-    //   1597: aload 26
-    //   1599: aload 26
-    //   1601: getfield 624	com/tencent/component/network/downloader/DownloadReport:totaltime	J
-    //   1604: aload_2
-    //   1605: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   1608: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   1611: lsub
-    //   1612: putfield 630	com/tencent/component/network/downloader/DownloadReport:t_wait	J
-    //   1615: aload 26
-    //   1617: lload 8
-    //   1619: putfield 633	com/tencent/component/network/downloader/DownloadReport:t_prepare	J
-    //   1622: aload 26
-    //   1624: aload_0
-    //   1625: getfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   1628: putfield 636	com/tencent/component/network/downloader/DownloadReport:t_conn	J
-    //   1631: aload 26
-    //   1633: aload_0
-    //   1634: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   1637: putfield 639	com/tencent/component/network/downloader/DownloadReport:t_recvrsp	J
-    //   1640: aload 26
-    //   1642: aload_0
-    //   1643: getfield 545	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_Long	J
-    //   1646: putfield 642	com/tencent/component/network/downloader/DownloadReport:t_recvdata	J
-    //   1649: aload 26
-    //   1651: lconst_0
-    //   1652: putfield 645	com/tencent/component/network/downloader/DownloadReport:t_process	J
-    //   1655: aload 26
-    //   1657: aload_0
-    //   1658: invokevirtual 549	com/tencent/component/network/downloader/impl/FastDownloadTask:d	()I
-    //   1661: putfield 648	com/tencent/component/network/downloader/DownloadReport:concurrent	I
-    //   1664: aload 26
-    //   1666: aload_2
-    //   1667: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   1670: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   1673: putfield 651	com/tencent/component/network/downloader/DownloadReport:content_type	Ljava/lang/String;
-    //   1676: aload 26
-    //   1678: aload_0
-    //   1679: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   1682: invokestatic 655	com/tencent/component/network/module/base/Config:b	(Ljava/lang/String;)Z
-    //   1685: putfield 658	com/tencent/component/network/downloader/DownloadReport:isFromQzoneAlbum	Z
-    //   1688: aload 26
-    //   1690: aload_0
-    //   1691: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   1694: putfield 661	com/tencent/component/network/downloader/DownloadReport:isHttp2	Z
-    //   1697: aload 26
-    //   1699: aload_2
-    //   1700: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   1703: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   1706: putfield 663	com/tencent/component/network/downloader/DownloadReport:isSucceed	Z
-    //   1709: aload_2
-    //   1710: aload 26
-    //   1712: invokevirtual 667	com/tencent/component/network/downloader/DownloadResult:setReport	(Lcom/tencent/component/network/downloader/DownloadReport;)V
-    //   1715: aload_0
-    //   1716: aload_1
-    //   1717: aload_2
-    //   1718: aload 26
-    //   1720: invokevirtual 320	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(Lcom/tencent/component/network/utils/thread/ThreadPool$JobContext;Lcom/tencent/component/network/downloader/DownloadResult;Lcom/tencent/component/network/downloader/DownloadReport;)V
-    //   1723: aload_0
-    //   1724: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   1727: ifeq +7336 -> 9063
-    //   1730: aload_0
-    //   1731: getfield 670	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpCall	Lcom/squareup/okhttp/Call;
-    //   1734: ifnull +10 -> 1744
-    //   1737: aload_0
-    //   1738: getfield 670	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpCall	Lcom/squareup/okhttp/Call;
-    //   1741: invokevirtual 675	com/squareup/okhttp/Call:cancel	()V
-    //   1744: aload_0
-    //   1745: aconst_null
-    //   1746: putfield 368	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpRequest$Builder	Lcom/squareup/okhttp/Request$Builder;
-    //   1749: iload 5
-    //   1751: istore_3
-    //   1752: goto -1570 -> 182
-    //   1755: lload 8
-    //   1757: lstore 10
-    //   1759: lload 8
-    //   1761: lstore 12
-    //   1763: getstatic 678	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangThreadLocal	Ljava/lang/ThreadLocal;
-    //   1766: invokevirtual 684	java/lang/ThreadLocal:get	()Ljava/lang/Object;
-    //   1769: checkcast 686	com/tencent/component/network/utils/http/HttpUtil$RequestOptions
-    //   1772: astore 24
-    //   1774: lload 8
-    //   1776: lstore 10
-    //   1778: lload 8
-    //   1780: lstore 12
-    //   1782: aload 24
-    //   1784: aload_0
-    //   1785: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   1788: putfield 687	com/tencent/component/network/utils/http/HttpUtil$RequestOptions:jdField_a_of_type_Boolean	Z
-    //   1791: lload 8
-    //   1793: lstore 10
-    //   1795: lload 8
-    //   1797: lstore 12
-    //   1799: aload 24
-    //   1801: aload_0
-    //   1802: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   1805: putfield 688	com/tencent/component/network/utils/http/HttpUtil$RequestOptions:jdField_b_of_type_Boolean	Z
-    //   1808: lload 8
-    //   1810: lstore 10
-    //   1812: lload 8
-    //   1814: lstore 12
-    //   1816: aload_0
-    //   1817: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   1820: ifnull +2480 -> 4300
-    //   1823: lload 8
-    //   1825: lstore 10
-    //   1827: lload 8
-    //   1829: lstore 12
-    //   1831: aload_0
-    //   1832: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   1835: invokeinterface 560 1 0
-    //   1840: astore 19
-    //   1842: lload 8
-    //   1844: lstore 10
-    //   1846: lload 8
-    //   1848: lstore 12
-    //   1850: aload 24
-    //   1852: aload 19
-    //   1854: putfield 689	com/tencent/component/network/utils/http/HttpUtil$RequestOptions:jdField_a_of_type_JavaNetProxy	Ljava/net/Proxy;
-    //   1857: lload 8
-    //   1859: lstore 10
-    //   1861: lload 8
-    //   1863: lstore 12
-    //   1865: aload 26
-    //   1867: iload 4
-    //   1869: putfield 692	com/tencent/component/network/downloader/DownloadReport:currAttempCount	I
-    //   1872: lload 8
-    //   1874: lstore 10
-    //   1876: lload 8
-    //   1878: lstore 12
-    //   1880: aload 26
-    //   1882: aload_0
-    //   1883: getfield 294	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   1886: putfield 695	com/tencent/component/network/downloader/DownloadReport:refer	Ljava/lang/String;
-    //   1889: lload 8
-    //   1891: lstore 10
-    //   1893: lload 8
-    //   1895: lstore 12
-    //   1897: aload_0
-    //   1898: aload_0
-    //   1899: aload_0
-    //   1900: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   1903: invokevirtual 696	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   1906: putfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1909: lload 8
-    //   1911: lstore 10
-    //   1913: lload 8
-    //   1915: lstore 12
-    //   1917: aload 24
-    //   1919: getfield 689	com/tencent/component/network/utils/http/HttpUtil$RequestOptions:jdField_a_of_type_JavaNetProxy	Ljava/net/Proxy;
-    //   1922: ifnonnull +424 -> 2346
-    //   1925: lload 8
-    //   1927: lstore 10
-    //   1929: lload 8
-    //   1931: lstore 12
-    //   1933: aload_0
-    //   1934: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1937: ldc_w 585
-    //   1940: invokevirtual 588	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   1943: ifeq +18 -> 1961
-    //   1946: lload 8
-    //   1948: lstore 10
-    //   1950: lload 8
-    //   1952: lstore 12
-    //   1954: aload_0
-    //   1955: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   1958: ifeq +388 -> 2346
-    //   1961: lload 8
-    //   1963: lstore 10
-    //   1965: lload 8
-    //   1967: lstore 12
-    //   1969: aload_0
-    //   1970: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   1973: ifnull +373 -> 2346
-    //   1976: lload 8
-    //   1978: lstore 10
-    //   1980: lload 8
-    //   1982: lstore 12
-    //   1984: aload_0
-    //   1985: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   1988: invokevirtual 404	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:a	()Lcom/tencent/component/network/downloader/common/IPInfo;
-    //   1991: ifnull +355 -> 2346
-    //   1994: lload 8
-    //   1996: lstore 10
-    //   1998: lload 8
-    //   2000: lstore 12
-    //   2002: aload_0
-    //   2003: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   2006: invokevirtual 404	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:a	()Lcom/tencent/component/network/downloader/common/IPInfo;
-    //   2009: getfield 406	com/tencent/component/network/downloader/common/IPInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2012: invokestatic 214	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   2015: ifne +331 -> 2346
-    //   2018: lload 8
-    //   2020: lstore 10
-    //   2022: lload 8
-    //   2024: lstore 12
-    //   2026: aload_0
-    //   2027: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   2030: invokevirtual 404	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:a	()Lcom/tencent/component/network/downloader/common/IPInfo;
-    //   2033: getfield 406	com/tencent/component/network/downloader/common/IPInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2036: astore 20
-    //   2038: lload 8
-    //   2040: lstore 10
-    //   2042: lload 8
-    //   2044: lstore 12
-    //   2046: aload 26
-    //   2048: aload 20
-    //   2050: putfield 699	com/tencent/component/network/downloader/DownloadReport:remoteAddress	Ljava/lang/String;
-    //   2053: lload 8
-    //   2055: lstore 10
-    //   2057: lload 8
-    //   2059: lstore 12
-    //   2061: aload_0
-    //   2062: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   2065: astore 19
-    //   2067: lload 8
-    //   2069: lstore 10
-    //   2071: lload 8
-    //   2073: lstore 12
-    //   2075: aload 20
-    //   2077: bipush 58
-    //   2079: invokestatic 703	com/tencent/component/network/downloader/common/Utils:count	(Ljava/lang/String;C)I
-    //   2082: iconst_2
-    //   2083: if_icmpge +155 -> 2238
-    //   2086: lload 8
-    //   2088: lstore 10
-    //   2090: lload 8
-    //   2092: lstore 12
-    //   2094: aload_0
-    //   2095: getfield 30	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Int	I
-    //   2098: istore_3
-    //   2099: iload_3
-    //   2100: ifle +2206 -> 4306
-    //   2103: lload 8
-    //   2105: lstore 10
-    //   2107: lload 8
-    //   2109: lstore 12
-    //   2111: aload_0
-    //   2112: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   2115: invokevirtual 404	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:a	()Lcom/tencent/component/network/downloader/common/IPInfo;
-    //   2118: iload_3
-    //   2119: putfield 704	com/tencent/component/network/downloader/common/IPInfo:jdField_a_of_type_Int	I
-    //   2122: lload 8
-    //   2124: lstore 10
-    //   2126: iload_3
-    //   2127: istore 5
-    //   2129: lload 8
-    //   2131: lstore 12
-    //   2133: iload_3
-    //   2134: invokestatic 171	com/tencent/component/network/downloader/common/Utils:isPortValid	(I)Z
-    //   2137: ifne +17 -> 2154
-    //   2140: lload 8
-    //   2142: lstore 10
-    //   2144: lload 8
-    //   2146: lstore 12
-    //   2148: aload_0
-    //   2149: getfield 93	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_Int	I
-    //   2152: istore 5
-    //   2154: lload 8
-    //   2156: lstore 10
-    //   2158: lload 8
-    //   2160: lstore 12
-    //   2162: new 102	java/lang/StringBuilder
-    //   2165: dup
-    //   2166: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   2169: aload 20
-    //   2171: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2174: ldc_w 706
-    //   2177: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2180: iload 5
-    //   2182: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2185: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2188: astore 20
-    //   2190: lload 8
-    //   2192: lstore 10
-    //   2194: aload 20
-    //   2196: astore 19
-    //   2198: lload 8
-    //   2200: lstore 12
-    //   2202: aload_0
-    //   2203: getfield 285	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   2206: ifnull +32 -> 2238
-    //   2209: lload 8
-    //   2211: lstore 10
-    //   2213: lload 8
-    //   2215: lstore 12
-    //   2217: aload_0
-    //   2218: aload_0
-    //   2219: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2222: aload_0
-    //   2223: getfield 285	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   2226: aload 20
-    //   2228: invokevirtual 710	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   2231: putfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2234: aload 20
-    //   2236: astore 19
-    //   2238: lload 8
-    //   2240: lstore 10
-    //   2242: lload 8
-    //   2244: lstore 12
-    //   2246: aload 26
-    //   2248: aload_0
-    //   2249: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   2252: invokevirtual 114	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:toString	()Ljava/lang/String;
-    //   2255: putfield 713	com/tencent/component/network/downloader/DownloadReport:strategyInfo	Ljava/lang/String;
-    //   2258: lload 8
-    //   2260: lstore 10
-    //   2262: lload 8
-    //   2264: lstore 12
-    //   2266: invokestatic 714	com/tencent/component/network/module/base/QDLog:a	()Z
-    //   2269: ifeq +77 -> 2346
-    //   2272: lload 8
-    //   2274: lstore 10
-    //   2276: lload 8
-    //   2278: lstore 12
-    //   2280: ldc 186
-    //   2282: new 102	java/lang/StringBuilder
-    //   2285: dup
-    //   2286: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   2289: ldc_w 716
-    //   2292: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2295: aload 26
-    //   2297: getfield 713	com/tencent/component/network/downloader/DownloadReport:strategyInfo	Ljava/lang/String;
-    //   2300: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2303: ldc_w 718
-    //   2306: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2309: aload 19
-    //   2311: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2314: ldc 127
-    //   2316: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2319: aload_0
-    //   2320: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   2323: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2326: ldc 192
-    //   2328: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2331: invokestatic 147	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   2334: invokevirtual 150	java/lang/Thread:getId	()J
-    //   2337: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2340: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2343: invokestatic 376	com/tencent/component/network/module/base/QDLog:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2346: lload 8
-    //   2348: lstore 10
-    //   2350: lload 8
-    //   2352: lstore 12
-    //   2354: aload_0
-    //   2355: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   2358: ifnull +43 -> 2401
-    //   2361: lload 8
-    //   2363: lstore 10
-    //   2365: lload 8
-    //   2367: lstore 12
-    //   2369: aload 26
-    //   2371: aload_0
-    //   2372: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   2375: invokevirtual 114	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:toString	()Ljava/lang/String;
-    //   2378: putfield 713	com/tencent/component/network/downloader/DownloadReport:strategyInfo	Ljava/lang/String;
-    //   2381: lload 8
-    //   2383: lstore 10
-    //   2385: lload 8
-    //   2387: lstore 12
-    //   2389: aload 26
-    //   2391: aload_0
-    //   2392: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   2395: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   2398: putfield 721	com/tencent/component/network/downloader/DownloadReport:strategyId	I
-    //   2401: lload 8
-    //   2403: lstore 10
-    //   2405: lload 8
-    //   2407: lstore 12
-    //   2409: aload_0
-    //   2410: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   2413: ifeq +1915 -> 4328
-    //   2416: lload 8
-    //   2418: lstore 10
-    //   2420: lload 8
-    //   2422: lstore 12
-    //   2424: aload_0
-    //   2425: aload_0
-    //   2426: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   2429: aload_0
-    //   2430: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   2433: aload_0
-    //   2434: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   2437: aload_0
-    //   2438: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2441: aload_0
-    //   2442: getfield 294	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   2445: invokestatic 724	com/tencent/component/network/utils/http/HttpUtil:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/squareup/okhttp/Request$Builder;
-    //   2448: putfield 368	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpRequest$Builder	Lcom/squareup/okhttp/Request$Builder;
-    //   2451: lload 8
-    //   2453: lstore 10
-    //   2455: lload 8
-    //   2457: lstore 12
-    //   2459: aload_0
-    //   2460: getfield 423	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
-    //   2463: ifnull +36 -> 2499
-    //   2466: lload 8
-    //   2468: lstore 10
-    //   2470: lload 8
-    //   2472: lstore 12
-    //   2474: aload_0
-    //   2475: getfield 423	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
-    //   2478: aload_0
-    //   2479: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   2482: aload_0
-    //   2483: getfield 368	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpRequest$Builder	Lcom/squareup/okhttp/Request$Builder;
-    //   2486: aload_0
-    //   2487: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   2490: aload_0
-    //   2491: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   2494: invokeinterface 727 5 0
-    //   2499: lload 8
-    //   2501: lstore 10
-    //   2503: lload 8
-    //   2505: lstore 12
-    //   2507: aload_0
-    //   2508: aload_0
-    //   2509: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   2512: aload_0
-    //   2513: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   2516: aload_0
-    //   2517: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   2520: aload_0
-    //   2521: getfield 368	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpRequest$Builder	Lcom/squareup/okhttp/Request$Builder;
-    //   2524: invokevirtual 730	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(Ljava/lang/String;Ljava/lang/String;Lorg/apache/http/HttpRequest;Lcom/squareup/okhttp/Request$Builder;)V
-    //   2527: lload 8
-    //   2529: lstore 10
-    //   2531: lload 8
-    //   2533: lstore 12
-    //   2535: aload_0
-    //   2536: aload_0
-    //   2537: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   2540: aload_0
-    //   2541: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   2544: aload_0
-    //   2545: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   2548: aload_0
-    //   2549: getfield 368	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpRequest$Builder	Lcom/squareup/okhttp/Request$Builder;
-    //   2552: aload 24
-    //   2554: invokevirtual 733	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(Ljava/lang/String;Ljava/lang/String;Lorg/apache/http/HttpRequest;Lcom/squareup/okhttp/Request$Builder;Lcom/tencent/component/network/utils/http/HttpUtil$RequestOptions;)V
-    //   2557: lload 8
-    //   2559: lstore 10
-    //   2561: lload 8
-    //   2563: lstore 12
-    //   2565: invokestatic 359	java/lang/System:currentTimeMillis	()J
-    //   2568: lload 16
-    //   2570: lsub
-    //   2571: lstore 8
-    //   2573: lload 8
-    //   2575: lstore 10
-    //   2577: lload 8
-    //   2579: lstore 12
-    //   2581: aload_0
-    //   2582: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   2585: putfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   2588: lload 8
-    //   2590: lstore 10
-    //   2592: lload 8
-    //   2594: lstore 12
-    //   2596: aload_0
-    //   2597: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   2600: ifnull +3264 -> 5864
-    //   2603: lload 8
-    //   2605: lstore 10
-    //   2607: lload 8
-    //   2609: lstore 12
-    //   2611: aload_0
-    //   2612: getfield 736	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkUtilsHttpBaseQZoneHttpClient	Lcom/tencent/component/network/utils/http/base/QZoneHttpClient;
-    //   2615: ifnonnull +18 -> 2633
-    //   2618: lload 8
-    //   2620: lstore 10
-    //   2622: lload 8
-    //   2624: lstore 12
-    //   2626: aload_0
-    //   2627: invokestatic 739	com/tencent/component/network/utils/http/HttpUtil:a	()Lcom/tencent/component/network/utils/http/base/QZoneHttpClient;
-    //   2630: putfield 736	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkUtilsHttpBaseQZoneHttpClient	Lcom/tencent/component/network/utils/http/base/QZoneHttpClient;
-    //   2633: lload 8
-    //   2635: lstore 10
-    //   2637: lload 8
-    //   2639: lstore 12
-    //   2641: invokestatic 742	com/tencent/component/network/utils/http/HttpUtil:a	()Lorg/apache/http/protocol/HttpContext;
-    //   2644: astore 19
-    //   2646: aload_0
-    //   2647: getfield 736	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkUtilsHttpBaseQZoneHttpClient	Lcom/tencent/component/network/utils/http/base/QZoneHttpClient;
-    //   2650: aload_0
-    //   2651: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   2654: aload 19
-    //   2656: invokevirtual 748	com/tencent/component/network/utils/http/base/QZoneHttpClient:execute	(Lorg/apache/http/client/methods/HttpUriRequest;Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/HttpResponse;
-    //   2659: astore 20
-    //   2661: aconst_null
-    //   2662: astore 22
-    //   2664: aload 19
-    //   2666: astore 21
-    //   2668: aload 20
-    //   2670: astore 19
-    //   2672: aload 22
-    //   2674: astore 20
-    //   2676: aload_0
-    //   2677: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   2680: aload_0
-    //   2681: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   2684: lsub
-    //   2685: putfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   2688: aload 19
-    //   2690: ifnonnull +8 -> 2698
-    //   2693: aload 20
-    //   2695: ifnull +4804 -> 7499
-    //   2698: aload 19
-    //   2700: ifnull +3233 -> 5933
-    //   2703: aload 19
-    //   2705: invokeinterface 754 1 0
-    //   2710: ifnull +3223 -> 5933
-    //   2713: aload 19
-    //   2715: invokeinterface 754 1 0
-    //   2720: invokeinterface 759 1 0
-    //   2725: istore_3
-    //   2726: aload_2
-    //   2727: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   2730: iload_3
-    //   2731: putfield 760	com/tencent/component/network/downloader/DownloadResult$Status:httpStatus	I
-    //   2734: sipush 200
-    //   2737: iload_3
-    //   2738: if_icmpeq +10 -> 2748
-    //   2741: sipush 206
-    //   2744: iload_3
-    //   2745: if_icmpne +3202 -> 5947
-    //   2748: iload_3
-    //   2749: istore 5
-    //   2751: aload_0
-    //   2752: aload 19
-    //   2754: aload 20
-    //   2756: aload_2
-    //   2757: aload_1
-    //   2758: iload_3
-    //   2759: invokevirtual 763	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(Lorg/apache/http/HttpResponse;Lcom/squareup/okhttp/Response;Lcom/tencent/component/network/downloader/DownloadResult;Lcom/tencent/component/network/utils/thread/ThreadPool$JobContext;I)Z
-    //   2762: ifeq +3235 -> 5997
-    //   2765: aload_2
-    //   2766: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   2769: invokevirtual 766	com/tencent/component/network/downloader/DownloadResult$Status:setSucceed	()V
-    //   2772: aload_2
-    //   2773: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   2776: getfield 769	com/tencent/component/network/downloader/DownloadResult$Content:noCache	Z
-    //   2779: ifeq +9364 -> 12143
-    //   2782: aload_0
-    //   2783: aload 19
-    //   2785: aload 20
-    //   2787: invokevirtual 772	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(Lorg/apache/http/HttpResponse;Lcom/squareup/okhttp/Response;)I
-    //   2790: istore 5
-    //   2792: aload_2
-    //   2793: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   2796: iload 5
-    //   2798: putfield 775	com/tencent/component/network/downloader/DownloadResult$Content:retCode	I
-    //   2801: iload 5
-    //   2803: invokestatic 776	com/tencent/component/network/module/base/Config:a	(I)Z
-    //   2806: istore 18
-    //   2808: iload 18
-    //   2810: ifeq +7067 -> 9877
-    //   2813: aload_2
-    //   2814: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   2817: lload 14
-    //   2819: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   2822: invokevirtual 393	com/tencent/component/network/downloader/DownloadResult$Process:a	(JJ)V
-    //   2825: aload_0
-    //   2826: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   2829: invokestatic 398	com/tencent/component/network/module/common/NetworkStatus:a	(Landroid/content/Context;)Lcom/tencent/component/network/module/common/NetworkStatus;
-    //   2832: invokevirtual 401	com/tencent/component/network/module/common/NetworkStatus:a	()Lcom/tencent/component/network/utils/NetworkUtils$DNS;
-    //   2835: astore 24
-    //   2837: aload_0
-    //   2838: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   2841: ifnull +6248 -> 9089
-    //   2844: aload_0
-    //   2845: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   2848: invokevirtual 404	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:a	()Lcom/tencent/component/network/downloader/common/IPInfo;
-    //   2851: ifnull +6238 -> 9089
-    //   2854: aload_0
-    //   2855: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   2858: invokevirtual 404	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:a	()Lcom/tencent/component/network/downloader/common/IPInfo;
-    //   2861: getfield 406	com/tencent/component/network/downloader/common/IPInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2864: astore 22
-    //   2866: aload_0
-    //   2867: aload_0
-    //   2868: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   2871: aload 19
-    //   2873: aload 20
-    //   2875: invokevirtual 409	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(Lorg/apache/http/HttpRequest;Lorg/apache/http/HttpResponse;Lcom/squareup/okhttp/Response;)Ljava/lang/String;
-    //   2878: astore 25
-    //   2880: aload 21
-    //   2882: ifnull +12473 -> 15355
-    //   2885: aload 21
-    //   2887: ldc_w 411
-    //   2890: invokeinterface 417 2 0
-    //   2895: checkcast 217	java/lang/String
-    //   2898: astore 21
-    //   2900: aload_0
-    //   2901: lconst_0
-    //   2902: putfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   2905: aload_0
-    //   2906: iconst_0
-    //   2907: putfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Int	I
+    //   371: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   374: invokestatic 475	com/tencent/component/network/module/common/NetworkStatus:getInstance	(Landroid/content/Context;)Lcom/tencent/component/network/module/common/NetworkStatus;
+    //   377: invokevirtual 479	com/tencent/component/network/module/common/NetworkStatus:getDNS	()Lcom/tencent/component/network/utils/NetworkUtils$DNS;
+    //   380: astore 28
+    //   382: aload_0
+    //   383: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   386: ifnull +14962 -> 15348
+    //   389: aload_0
+    //   390: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   393: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   396: ifnull +14952 -> 15348
+    //   399: aload_0
+    //   400: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   403: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   406: getfield 486	com/tencent/component/network/downloader/common/IPInfo:ip	Ljava/lang/String;
+    //   409: astore 26
+    //   411: aload_0
+    //   412: aload_0
+    //   413: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   416: aload 23
+    //   418: aload 22
+    //   420: invokevirtual 490	com/tencent/component/network/downloader/impl/FastDownloadTask:parserHttpHeaderInfo	(Lorg/apache/http/HttpRequest;Lorg/apache/http/HttpResponse;Lokhttp3/Response;)Ljava/lang/String;
+    //   423: astore 30
+    //   425: aload 24
+    //   427: ifnull +16653 -> 17080
+    //   430: aload 24
+    //   432: ldc_w 492
+    //   435: invokeinterface 498 2 0
+    //   440: checkcast 282	java/lang/String
+    //   443: astore 24
+    //   445: aload_2
+    //   446: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   449: aload 24
+    //   451: putfield 507	com/tencent/component/network/downloader/DownloadResult$Content:redirectUrl	Ljava/lang/String;
+    //   454: aload_0
+    //   455: lconst_0
+    //   456: putfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   459: aload_0
+    //   460: iconst_0
+    //   461: putfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_retry	I
+    //   464: aload_0
+    //   465: lconst_0
+    //   466: putfield 42	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_time	J
+    //   469: aload_0
+    //   470: iconst_0
+    //   471: putfield 44	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_retry	I
+    //   474: aload_2
+    //   475: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   478: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   481: ifeq +12 -> 493
+    //   484: aload_1
+    //   485: invokeinterface 359 1 0
+    //   490: ifeq +31 -> 521
+    //   493: aload_0
+    //   494: getfield 514	com/tencent/component/network/downloader/impl/FastDownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
+    //   497: ifnull +24 -> 521
+    //   500: aload_0
+    //   501: getfield 514	com/tencent/component/network/downloader/impl/FastDownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
+    //   504: aload_0
+    //   505: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   508: aload_2
+    //   509: invokevirtual 517	com/tencent/component/network/downloader/DownloadResult:getPath	()Ljava/lang/String;
+    //   512: aload 23
+    //   514: aload 22
+    //   516: invokeinterface 523 5 0
+    //   521: aload_1
+    //   522: invokeinterface 359 1 0
+    //   527: ifne +1401 -> 1928
+    //   530: aload_0
+    //   531: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   534: invokestatic 367	com/tencent/component/network/utils/NetworkUtils:isNetworkAvailable	(Landroid/content/Context;)Z
+    //   537: istore 10
+    //   539: aload_2
+    //   540: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   543: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   546: ifne +14852 -> 15398
+    //   549: new 125	java/lang/StringBuilder
+    //   552: dup
+    //   553: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   556: ldc_w 525
+    //   559: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   562: aload_0
+    //   563: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   566: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   569: ldc_w 527
+    //   572: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   575: aload_0
+    //   576: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   579: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   582: ldc_w 532
+    //   585: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   588: astore 31
+    //   590: aload_0
+    //   591: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   594: ifeq +14770 -> 15364
+    //   597: aload 22
+    //   599: ifnull +14765 -> 15364
+    //   602: aload 22
+    //   604: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   607: ifnull +14757 -> 15364
+    //   610: aload 22
+    //   612: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   615: invokevirtual 541	okhttp3/Protocol:toString	()Ljava/lang/String;
+    //   618: astore 27
+    //   620: aload 31
+    //   622: aload 27
+    //   624: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   627: ldc_w 543
+    //   630: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   633: aload 28
+    //   635: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   638: ldc_w 548
+    //   641: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   644: aload 26
+    //   646: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   649: ldc_w 550
+    //   652: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   655: aconst_null
+    //   656: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   659: ldc_w 552
+    //   662: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   665: invokestatic 171	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   668: invokevirtual 174	java/lang/Thread:getId	()J
+    //   671: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   674: ldc_w 554
+    //   677: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   680: invokestatic 158	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   683: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   686: ldc_w 556
+    //   689: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   692: aload_0
+    //   693: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   696: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   699: ldc_w 558
+    //   702: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   705: aload_0
+    //   706: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   709: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   712: ldc_w 560
+    //   715: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   718: astore 31
+    //   720: aload_0
+    //   721: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   724: ifeq +14648 -> 15372
+    //   727: aload_0
+    //   728: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   731: aload_0
+    //   732: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   735: invokestatic 322	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
+    //   738: astore 27
+    //   740: aload 31
+    //   742: aload 27
+    //   744: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   747: ldc_w 562
+    //   750: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   753: iload 10
+    //   755: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   758: ldc_w 564
+    //   761: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   764: invokestatic 569	com/tencent/component/network/module/base/Config:getNetworkStackType	()I
+    //   767: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   770: ldc_w 571
+    //   773: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   776: aload_2
+    //   777: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   780: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   783: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   786: ldc_w 576
+    //   789: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   792: aload_2
+    //   793: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   796: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   799: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   802: ldc_w 581
+    //   805: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   808: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   811: aload_0
+    //   812: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   815: lsub
+    //   816: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   819: ldc_w 583
+    //   822: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   825: aload_2
+    //   826: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   829: getfield 586	com/tencent/component/network/downloader/DownloadResult$Content:length	J
+    //   832: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   835: ldc_w 588
+    //   838: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   841: aload_2
+    //   842: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   845: getfield 590	com/tencent/component/network/downloader/DownloadResult$Content:size	J
+    //   848: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   851: ldc_w 592
+    //   854: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   857: aload_2
+    //   858: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   861: getfield 595	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
+    //   864: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   867: ldc_w 597
+    //   870: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   873: aload_0
+    //   874: invokevirtual 421	com/tencent/component/network/downloader/impl/FastDownloadTask:getCurrAttemptCount	()I
+    //   877: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   880: ldc_w 599
+    //   883: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   886: aload_0
+    //   887: invokevirtual 602	com/tencent/component/network/downloader/impl/FastDownloadTask:getTotalAttemptCount	()I
+    //   890: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   893: ldc_w 604
+    //   896: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   899: aload_2
+    //   900: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   903: invokevirtual 607	com/tencent/component/network/downloader/DownloadResult$Status:getFailReason	()I
+    //   906: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   909: ldc_w 609
+    //   912: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   915: iload 4
+    //   917: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   920: ldc_w 611
+    //   923: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   926: aload 30
+    //   928: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   931: ldc_w 613
+    //   934: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   937: aload 24
+    //   939: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   942: ldc_w 615
+    //   945: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   948: astore 31
+    //   950: aload_0
+    //   951: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   954: ifnull +14424 -> 15378
+    //   957: aload_0
+    //   958: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   961: iconst_0
+    //   962: bipush 30
+    //   964: invokevirtual 619	java/lang/String:substring	(II)Ljava/lang/String;
+    //   967: astore 27
+    //   969: aload 31
+    //   971: aload 27
+    //   973: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   976: ldc_w 621
+    //   979: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   982: astore 27
+    //   984: aload_0
+    //   985: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   988: ifnull +14399 -> 15387
+    //   991: aload_0
+    //   992: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   995: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   998: istore_3
+    //   999: aload 27
+    //   1001: iload_3
+    //   1002: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1005: ldc_w 623
+    //   1008: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1011: aload_2
+    //   1012: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   1015: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   1018: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1021: ldc_w 628
+    //   1024: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1027: lload 12
+    //   1029: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1032: ldc_w 630
+    //   1035: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1038: aload_0
+    //   1039: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   1042: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1045: ldc_w 599
+    //   1048: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1051: aload_0
+    //   1052: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_retry	I
+    //   1055: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1058: ldc_w 632
+    //   1061: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1064: aload_0
+    //   1065: getfield 42	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_time	J
+    //   1068: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1071: ldc_w 599
+    //   1074: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1077: aload_0
+    //   1078: getfield 44	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_retry	I
+    //   1081: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1084: ldc_w 634
+    //   1087: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1090: aload_0
+    //   1091: getfield 46	com/tencent/component/network/downloader/impl/FastDownloadTask:send_req_time	J
+    //   1094: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1097: ldc_w 636
+    //   1100: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1103: aload_0
+    //   1104: getfield 639	com/tencent/component/network/downloader/impl/FastDownloadTask:t_recv_data	J
+    //   1107: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1110: ldc_w 641
+    //   1113: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1116: aload_0
+    //   1117: invokevirtual 644	com/tencent/component/network/downloader/impl/FastDownloadTask:getTaskConcurrentCount	()I
+    //   1120: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1123: ldc_w 646
+    //   1126: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1129: astore 31
+    //   1131: aload_0
+    //   1132: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   1135: ifnull +14257 -> 15392
+    //   1138: aload_0
+    //   1139: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   1142: invokeinterface 656 1 0
+    //   1147: astore 27
+    //   1149: aload 29
+    //   1151: aload 31
+    //   1153: aload 27
+    //   1155: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1158: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1161: putfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   1164: ldc_w 447
+    //   1167: aload 29
+    //   1169: getfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   1172: aload 25
+    //   1174: invokestatic 432	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1177: aload_0
+    //   1178: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   1181: ifnull +24 -> 1205
+    //   1184: aload_0
+    //   1185: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   1188: ldc_w 439
+    //   1191: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   1194: ifeq +11 -> 1205
+    //   1197: aload_0
+    //   1198: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   1201: iconst_0
+    //   1202: invokestatic 665	com/tencent/component/network/utils/http/pool/CustomDnsResolve:setIPDirectEnable	(Ljava/lang/String;Z)V
+    //   1205: iload 10
+    //   1207: ifne +8 -> 1215
+    //   1210: aload_0
+    //   1211: iconst_0
+    //   1212: putfield 668	com/tencent/component/network/downloader/impl/FastDownloadTask:mShouldReport	Z
+    //   1215: aload_2
+    //   1216: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   1219: astore 27
+    //   1221: new 125	java/lang/StringBuilder
+    //   1224: dup
+    //   1225: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   1228: aload_0
+    //   1229: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   1232: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1235: ldc_w 670
+    //   1238: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1241: aload 26
+    //   1243: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1246: ldc_w 672
+    //   1249: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1252: aload_2
+    //   1253: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   1256: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   1259: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1262: ldc_w 674
+    //   1265: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1268: astore 26
+    //   1270: aload_0
+    //   1271: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   1274: ifnull +14761 -> 16035
+    //   1277: aload_0
+    //   1278: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   1281: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   1284: istore_3
+    //   1285: aload 26
+    //   1287: iload_3
+    //   1288: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1291: ldc_w 609
+    //   1294: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1297: iload 4
+    //   1299: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1302: ldc_w 571
+    //   1305: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1308: aload_2
+    //   1309: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   1312: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   1315: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1318: ldc_w 583
+    //   1321: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1324: aload_2
+    //   1325: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   1328: getfield 586	com/tencent/component/network/downloader/DownloadResult$Content:length	J
+    //   1331: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1334: ldc_w 588
+    //   1337: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1340: aload_2
+    //   1341: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   1344: getfield 590	com/tencent/component/network/downloader/DownloadResult$Content:size	J
+    //   1347: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1350: ldc_w 576
+    //   1353: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1356: aload_2
+    //   1357: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   1360: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   1363: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1366: ldc_w 581
+    //   1369: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1372: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   1375: aload_0
+    //   1376: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   1379: lsub
+    //   1380: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1383: astore 26
+    //   1385: aload 24
+    //   1387: invokestatic 252	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1390: ifne +14650 -> 16040
+    //   1393: new 125	java/lang/StringBuilder
+    //   1396: dup
+    //   1397: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   1400: ldc_w 613
+    //   1403: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1406: aload 24
+    //   1408: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1411: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1414: astore 24
+    //   1416: aload 27
+    //   1418: aload 26
+    //   1420: aload 24
+    //   1422: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1425: ldc_w 611
+    //   1428: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1431: aload 30
+    //   1433: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1436: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1439: putfield 677	com/tencent/component/network/downloader/DownloadResult$Status:detailDownloadInfo	Ljava/lang/String;
+    //   1442: aload_0
+    //   1443: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   1446: ifnull +53 -> 1499
+    //   1449: getstatic 203	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:Strategy_BACKUPIP	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   1452: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   1455: aload_0
+    //   1456: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   1459: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   1462: if_icmpne +37 -> 1499
+    //   1465: aload_0
+    //   1466: getfield 232	com/tencent/component/network/downloader/impl/FastDownloadTask:pBackupIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   1469: ifnull +30 -> 1499
+    //   1472: aload_0
+    //   1473: getfield 232	com/tencent/component/network/downloader/impl/FastDownloadTask:pBackupIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   1476: aload_0
+    //   1477: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   1480: aload_0
+    //   1481: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   1484: invokestatic 680	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
+    //   1487: aload_2
+    //   1488: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   1491: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   1494: invokeinterface 684 4 0
+    //   1499: aload_0
+    //   1500: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   1503: ifnull +53 -> 1556
+    //   1506: getstatic 297	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:Strategy_DomainDirect	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   1509: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   1512: aload_0
+    //   1513: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   1516: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   1519: if_icmpne +37 -> 1556
+    //   1522: aload_0
+    //   1523: getfield 300	com/tencent/component/network/downloader/impl/FastDownloadTask:pDirectIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   1526: ifnull +30 -> 1556
+    //   1529: aload_0
+    //   1530: getfield 300	com/tencent/component/network/downloader/impl/FastDownloadTask:pDirectIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   1533: aload_0
+    //   1534: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   1537: aload_0
+    //   1538: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   1541: invokestatic 680	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
+    //   1544: aload_2
+    //   1545: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   1548: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   1551: invokeinterface 684 4 0
+    //   1556: iload 10
+    //   1558: ifeq +64 -> 1622
+    //   1561: aload_0
+    //   1562: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   1565: invokestatic 67	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:getInstance	(Landroid/content/Context;)Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy;
+    //   1568: astore 24
+    //   1570: aload_0
+    //   1571: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   1574: astore 26
+    //   1576: aload_0
+    //   1577: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   1580: ifeq +14498 -> 16078
+    //   1583: aload_0
+    //   1584: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   1587: ifnull +14491 -> 16078
+    //   1590: aload_0
+    //   1591: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   1594: ldc_w 686
+    //   1597: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   1600: ifeq +14478 -> 16078
+    //   1603: iconst_1
+    //   1604: istore 10
+    //   1606: aload 24
+    //   1608: aload 26
+    //   1610: iload 10
+    //   1612: aload_2
+    //   1613: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   1616: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   1619: invokevirtual 690	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:reportHttps	(Ljava/lang/String;ZZ)V
+    //   1622: aload 29
+    //   1624: invokestatic 407	java/lang/System:currentTimeMillis	()J
+    //   1627: putfield 693	com/tencent/component/network/downloader/DownloadReport:endTime	J
+    //   1630: aload 29
+    //   1632: aload_0
+    //   1633: invokevirtual 696	com/tencent/component/network/downloader/impl/FastDownloadTask:getContentLength	()J
+    //   1636: putfield 699	com/tencent/component/network/downloader/DownloadReport:fileSize	J
+    //   1639: aload 29
+    //   1641: aload 23
+    //   1643: putfield 703	com/tencent/component/network/downloader/DownloadReport:response	Lorg/apache/http/HttpResponse;
+    //   1646: aload 29
+    //   1648: aload 22
+    //   1650: putfield 707	com/tencent/component/network/downloader/DownloadReport:okResponse	Lokhttp3/Response;
+    //   1653: aload 29
+    //   1655: iload 4
+    //   1657: putfield 710	com/tencent/component/network/downloader/DownloadReport:httpStatus	I
+    //   1660: aload 29
+    //   1662: aload 25
+    //   1664: putfield 714	com/tencent/component/network/downloader/DownloadReport:exception	Ljava/lang/Throwable;
+    //   1667: aload 28
+    //   1669: ifnonnull +14415 -> 16084
+    //   1672: aconst_null
+    //   1673: astore 23
+    //   1675: aload 29
+    //   1677: aload 23
+    //   1679: putfield 717	com/tencent/component/network/downloader/DownloadReport:dns	Ljava/lang/String;
+    //   1682: aload 29
+    //   1684: aconst_null
+    //   1685: putfield 720	com/tencent/component/network/downloader/DownloadReport:localAddress	Ljava/lang/String;
+    //   1688: aload 29
+    //   1690: aload_2
+    //   1691: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   1694: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   1697: putfield 721	com/tencent/component/network/downloader/DownloadReport:clientip	Ljava/lang/String;
+    //   1700: aload 29
+    //   1702: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   1705: aload_0
+    //   1706: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   1709: lsub
+    //   1710: putfield 724	com/tencent/component/network/downloader/DownloadReport:totaltime	J
+    //   1713: aload 29
+    //   1715: aload_2
+    //   1716: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   1719: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   1722: putfield 727	com/tencent/component/network/downloader/DownloadReport:downloadTime	J
+    //   1725: aload 29
+    //   1727: aload 29
+    //   1729: getfield 724	com/tencent/component/network/downloader/DownloadReport:totaltime	J
+    //   1732: aload_2
+    //   1733: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   1736: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   1739: lsub
+    //   1740: putfield 730	com/tencent/component/network/downloader/DownloadReport:t_wait	J
+    //   1743: aload 29
+    //   1745: lload 12
+    //   1747: putfield 733	com/tencent/component/network/downloader/DownloadReport:t_prepare	J
+    //   1750: aload 29
+    //   1752: aload_0
+    //   1753: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   1756: putfield 736	com/tencent/component/network/downloader/DownloadReport:t_conn	J
+    //   1759: aload 29
+    //   1761: aload_0
+    //   1762: getfield 46	com/tencent/component/network/downloader/impl/FastDownloadTask:send_req_time	J
+    //   1765: putfield 739	com/tencent/component/network/downloader/DownloadReport:t_recvrsp	J
+    //   1768: aload 29
+    //   1770: aload_0
+    //   1771: getfield 639	com/tencent/component/network/downloader/impl/FastDownloadTask:t_recv_data	J
+    //   1774: putfield 742	com/tencent/component/network/downloader/DownloadReport:t_recvdata	J
+    //   1777: aload 29
+    //   1779: lconst_0
+    //   1780: putfield 745	com/tencent/component/network/downloader/DownloadReport:t_process	J
+    //   1783: aload 29
+    //   1785: aload_0
+    //   1786: invokevirtual 644	com/tencent/component/network/downloader/impl/FastDownloadTask:getTaskConcurrentCount	()I
+    //   1789: putfield 748	com/tencent/component/network/downloader/DownloadReport:concurrent	I
+    //   1792: aload 29
+    //   1794: aload_2
+    //   1795: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   1798: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   1801: putfield 751	com/tencent/component/network/downloader/DownloadReport:content_type	Ljava/lang/String;
+    //   1804: aload 29
+    //   1806: aload_0
+    //   1807: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   1810: invokestatic 754	com/tencent/component/network/module/base/Config:isFromQzoneAlbum	(Ljava/lang/String;)Z
+    //   1813: putfield 756	com/tencent/component/network/downloader/DownloadReport:isFromQzoneAlbum	Z
+    //   1816: aload 29
+    //   1818: aload_0
+    //   1819: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   1822: putfield 759	com/tencent/component/network/downloader/DownloadReport:isHttp2	Z
+    //   1825: aload_0
+    //   1826: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   1829: ifnull +14265 -> 16094
+    //   1832: aload_0
+    //   1833: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   1836: ldc_w 686
+    //   1839: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   1842: ifeq +14252 -> 16094
+    //   1845: iconst_1
+    //   1846: istore 10
+    //   1848: aload 29
+    //   1850: iload 10
+    //   1852: putfield 762	com/tencent/component/network/downloader/DownloadReport:isHttps	Z
+    //   1855: aload 29
+    //   1857: aload_2
+    //   1858: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   1861: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   1864: putfield 764	com/tencent/component/network/downloader/DownloadReport:isSucceed	Z
+    //   1867: aload 29
+    //   1869: getstatic 770	com/tencent/component/network/downloader/Downloader$DownloadMode:FastMode	Lcom/tencent/component/network/downloader/Downloader$DownloadMode;
+    //   1872: invokevirtual 773	com/tencent/component/network/downloader/Downloader$DownloadMode:ordinal	()I
+    //   1875: putfield 776	com/tencent/component/network/downloader/DownloadReport:downloadMode	I
+    //   1878: aload 22
+    //   1880: ifnull +24 -> 1904
+    //   1883: aload 22
+    //   1885: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   1888: ifnull +16 -> 1904
+    //   1891: aload 29
+    //   1893: aload 22
+    //   1895: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   1898: invokevirtual 541	okhttp3/Protocol:toString	()Ljava/lang/String;
+    //   1901: putfield 778	com/tencent/component/network/downloader/DownloadReport:protocol	Ljava/lang/String;
+    //   1904: aload_2
+    //   1905: aload 29
+    //   1907: invokevirtual 782	com/tencent/component/network/downloader/DownloadResult:setReport	(Lcom/tencent/component/network/downloader/DownloadReport;)V
+    //   1910: aload_2
+    //   1911: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   1914: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   1917: ifeq +11 -> 1928
+    //   1920: aload_0
+    //   1921: aload_1
+    //   1922: aload_2
+    //   1923: aload 29
+    //   1925: invokevirtual 363	com/tencent/component/network/downloader/impl/FastDownloadTask:handleDownloadReportForTask	(Lcom/tencent/component/network/utils/thread/ThreadPool$JobContext;Lcom/tencent/component/network/downloader/DownloadResult;Lcom/tencent/component/network/downloader/DownloadReport;)V
+    //   1928: aload_0
+    //   1929: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   1932: ifeq +14168 -> 16100
+    //   1935: aload_0
+    //   1936: getfield 786	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestCall	Lokhttp3/Call;
+    //   1939: ifnull +12 -> 1951
+    //   1942: aload_0
+    //   1943: getfield 786	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestCall	Lokhttp3/Call;
+    //   1946: invokeinterface 791 1 0
+    //   1951: aload_0
+    //   1952: aconst_null
+    //   1953: putfield 418	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestBuilder	Lokhttp3/Request$Builder;
+    //   1956: iload 6
+    //   1958: iconst_1
+    //   1959: iadd
+    //   1960: istore_3
+    //   1961: goto -1756 -> 205
+    //   1964: lload 12
+    //   1966: lstore 14
+    //   1968: lload 12
+    //   1970: lstore 16
+    //   1972: getstatic 795	com/tencent/component/network/downloader/impl/FastDownloadTask:sRequestOptions	Ljava/lang/ThreadLocal;
+    //   1975: invokevirtual 801	java/lang/ThreadLocal:get	()Ljava/lang/Object;
+    //   1978: checkcast 803	com/tencent/component/network/utils/http/HttpUtil$RequestOptions
+    //   1981: astore 30
+    //   1983: lload 12
+    //   1985: lstore 14
+    //   1987: lload 12
+    //   1989: lstore 16
+    //   1991: aload 30
+    //   1993: aload_0
+    //   1994: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   1997: putfield 804	com/tencent/component/network/utils/http/HttpUtil$RequestOptions:allowProxy	Z
+    //   2000: lload 12
+    //   2002: lstore 14
+    //   2004: lload 12
+    //   2006: lstore 16
+    //   2008: aload 30
+    //   2010: aload_0
+    //   2011: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   2014: putfield 807	com/tencent/component/network/utils/http/HttpUtil$RequestOptions:apnProxy	Z
+    //   2017: lload 12
+    //   2019: lstore 14
+    //   2021: lload 12
+    //   2023: lstore 16
+    //   2025: aload_0
+    //   2026: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   2029: ifnull +2681 -> 4710
+    //   2032: lload 12
+    //   2034: lstore 14
+    //   2036: lload 12
+    //   2038: lstore 16
+    //   2040: aload_0
+    //   2041: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   2044: invokeinterface 656 1 0
+    //   2049: astore 22
+    //   2051: lload 12
+    //   2053: lstore 14
+    //   2055: lload 12
+    //   2057: lstore 16
+    //   2059: aload 30
+    //   2061: aload 22
+    //   2063: putfield 810	com/tencent/component/network/utils/http/HttpUtil$RequestOptions:mobileProxy	Ljava/net/Proxy;
+    //   2066: lload 12
+    //   2068: lstore 14
+    //   2070: lload 12
+    //   2072: lstore 16
+    //   2074: aload 29
+    //   2076: iload_3
+    //   2077: putfield 813	com/tencent/component/network/downloader/DownloadReport:currAttempCount	I
+    //   2080: lload 12
+    //   2082: lstore 14
+    //   2084: lload 12
+    //   2086: lstore 16
+    //   2088: aload 29
+    //   2090: aload_0
+    //   2091: getfield 815	com/tencent/component/network/downloader/impl/FastDownloadTask:mRefer	Ljava/lang/String;
+    //   2094: putfield 818	com/tencent/component/network/downloader/DownloadReport:refer	Ljava/lang/String;
+    //   2097: lload 12
+    //   2099: lstore 14
+    //   2101: lload 12
+    //   2103: lstore 16
+    //   2105: aload_0
+    //   2106: aload_0
+    //   2107: aload_0
+    //   2108: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   2111: invokevirtual 821	com/tencent/component/network/downloader/impl/FastDownloadTask:prepareUrl	(Ljava/lang/String;)Ljava/lang/String;
+    //   2114: putfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   2117: lload 12
+    //   2119: lstore 14
+    //   2121: lload 12
+    //   2123: lstore 16
+    //   2125: invokestatic 569	com/tencent/component/network/module/base/Config:getNetworkStackType	()I
+    //   2128: iconst_2
+    //   2129: if_icmpeq +15009 -> 17138
+    //   2132: lload 12
+    //   2134: lstore 14
+    //   2136: lload 12
+    //   2138: lstore 16
+    //   2140: invokestatic 569	com/tencent/component/network/module/base/Config:getNetworkStackType	()I
+    //   2143: iconst_3
+    //   2144: if_icmpne +2572 -> 4716
+    //   2147: goto +14991 -> 17138
+    //   2150: lload 12
+    //   2152: lstore 14
+    //   2154: lload 12
+    //   2156: lstore 16
+    //   2158: aload_0
+    //   2159: invokevirtual 824	com/tencent/component/network/downloader/impl/FastDownloadTask:enableIpv6Debug	()Z
+    //   2162: istore 10
+    //   2164: lload 12
+    //   2166: lstore 14
+    //   2168: lload 12
+    //   2170: lstore 16
+    //   2172: aload 30
+    //   2174: getfield 810	com/tencent/component/network/utils/http/HttpUtil$RequestOptions:mobileProxy	Ljava/net/Proxy;
+    //   2177: ifnonnull +4626 -> 6803
+    //   2180: lload 12
+    //   2182: lstore 14
+    //   2184: lload 12
+    //   2186: lstore 16
+    //   2188: aload_0
+    //   2189: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   2192: ldc_w 686
+    //   2195: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   2198: ifeq +18 -> 2216
+    //   2201: lload 12
+    //   2203: lstore 14
+    //   2205: lload 12
+    //   2207: lstore 16
+    //   2209: aload_0
+    //   2210: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   2213: ifeq +4590 -> 6803
+    //   2216: lload 12
+    //   2218: lstore 14
+    //   2220: lload 12
+    //   2222: lstore 16
+    //   2224: aload_0
+    //   2225: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   2228: ifnull +4575 -> 6803
+    //   2231: lload 12
+    //   2233: lstore 14
+    //   2235: lload 12
+    //   2237: lstore 16
+    //   2239: aload_0
+    //   2240: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   2243: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   2246: ifnull +4557 -> 6803
+    //   2249: lload 12
+    //   2251: lstore 14
+    //   2253: lload 12
+    //   2255: lstore 16
+    //   2257: aload_0
+    //   2258: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   2261: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   2264: getfield 486	com/tencent/component/network/downloader/common/IPInfo:ip	Ljava/lang/String;
+    //   2267: invokestatic 252	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   2270: ifne +4533 -> 6803
+    //   2273: lload 12
+    //   2275: lstore 14
+    //   2277: lload 12
+    //   2279: lstore 16
+    //   2281: aload_0
+    //   2282: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   2285: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   2288: getfield 486	com/tencent/component/network/downloader/common/IPInfo:ip	Ljava/lang/String;
+    //   2291: astore 28
+    //   2293: lload 12
+    //   2295: lstore 14
+    //   2297: lload 12
+    //   2299: lstore 16
+    //   2301: aload_0
+    //   2302: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   2305: astore 27
+    //   2307: lload 12
+    //   2309: lstore 14
+    //   2311: lload 12
+    //   2313: lstore 16
+    //   2315: aload 28
+    //   2317: bipush 58
+    //   2319: invokestatic 828	com/tencent/component/network/downloader/common/Utils:count	(Ljava/lang/String;C)I
+    //   2322: istore 4
+    //   2324: iload 5
+    //   2326: ifne +14818 -> 17144
+    //   2329: aload 27
+    //   2331: astore 22
+    //   2333: iload 4
+    //   2335: iconst_2
+    //   2336: if_icmpge +150 -> 2486
+    //   2339: lload 12
+    //   2341: lstore 14
+    //   2343: lload 12
+    //   2345: lstore 16
+    //   2347: aload_0
+    //   2348: getfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:mOrigPort	I
+    //   2351: istore 4
+    //   2353: iload 4
+    //   2355: ifle +2367 -> 4722
+    //   2358: lload 12
+    //   2360: lstore 14
+    //   2362: lload 12
+    //   2364: lstore 16
+    //   2366: aload_0
+    //   2367: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   2370: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   2373: iload 4
+    //   2375: putfield 831	com/tencent/component/network/downloader/common/IPInfo:port	I
+    //   2378: lload 12
+    //   2380: lstore 14
+    //   2382: iload 4
+    //   2384: istore 6
+    //   2386: lload 12
+    //   2388: lstore 16
+    //   2390: iload 4
+    //   2392: invokestatic 200	com/tencent/component/network/downloader/common/Utils:isPortValid	(I)Z
+    //   2395: ifne +7 -> 2402
+    //   2398: bipush 80
+    //   2400: istore 6
+    //   2402: lload 12
+    //   2404: lstore 14
+    //   2406: lload 12
+    //   2408: lstore 16
+    //   2410: new 125	java/lang/StringBuilder
+    //   2413: dup
+    //   2414: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   2417: aload 28
+    //   2419: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2422: ldc_w 833
+    //   2425: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2428: iload 6
+    //   2430: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2433: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2436: astore 23
+    //   2438: lload 12
+    //   2440: lstore 14
+    //   2442: aload 23
+    //   2444: astore 22
+    //   2446: lload 12
+    //   2448: lstore 16
+    //   2450: aload_0
+    //   2451: getfield 835	com/tencent/component/network/downloader/impl/FastDownloadTask:mDomainWithPort	Ljava/lang/String;
+    //   2454: ifnull +32 -> 2486
+    //   2457: lload 12
+    //   2459: lstore 14
+    //   2461: lload 12
+    //   2463: lstore 16
+    //   2465: aload_0
+    //   2466: aload_0
+    //   2467: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   2470: aload_0
+    //   2471: getfield 835	com/tencent/component/network/downloader/impl/FastDownloadTask:mDomainWithPort	Ljava/lang/String;
+    //   2474: aload 23
+    //   2476: invokevirtual 839	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   2479: putfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   2482: aload 23
+    //   2484: astore 22
+    //   2486: lload 12
+    //   2488: lstore 14
+    //   2490: lload 12
+    //   2492: lstore 16
+    //   2494: aload 29
+    //   2496: aload_0
+    //   2497: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   2500: invokevirtual 137	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:toString	()Ljava/lang/String;
+    //   2503: putfield 842	com/tencent/component/network/downloader/DownloadReport:strategyInfo	Ljava/lang/String;
+    //   2506: lload 12
+    //   2508: lstore 14
+    //   2510: lload 12
+    //   2512: lstore 16
+    //   2514: invokestatic 845	com/tencent/component/network/module/base/QDLog:isDebugEnable	()Z
+    //   2517: ifeq +77 -> 2594
+    //   2520: lload 12
+    //   2522: lstore 14
+    //   2524: lload 12
+    //   2526: lstore 16
+    //   2528: ldc 219
+    //   2530: new 125	java/lang/StringBuilder
+    //   2533: dup
+    //   2534: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   2537: ldc_w 847
+    //   2540: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2543: aload 29
+    //   2545: getfield 842	com/tencent/component/network/downloader/DownloadReport:strategyInfo	Ljava/lang/String;
+    //   2548: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2551: ldc_w 849
+    //   2554: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2557: aload 22
+    //   2559: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2562: ldc 151
+    //   2564: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2567: aload_0
+    //   2568: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   2571: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2574: ldc 225
+    //   2576: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2579: invokestatic 171	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   2582: invokevirtual 174	java/lang/Thread:getId	()J
+    //   2585: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2588: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2591: invokestatic 392	com/tencent/component/network/module/base/QDLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2594: lload 12
+    //   2596: lstore 14
+    //   2598: lload 12
+    //   2600: lstore 16
+    //   2602: aload_0
+    //   2603: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   2606: ifnull +43 -> 2649
+    //   2609: lload 12
+    //   2611: lstore 14
+    //   2613: lload 12
+    //   2615: lstore 16
+    //   2617: aload 29
+    //   2619: aload_0
+    //   2620: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   2623: invokevirtual 137	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:toString	()Ljava/lang/String;
+    //   2626: putfield 842	com/tencent/component/network/downloader/DownloadReport:strategyInfo	Ljava/lang/String;
+    //   2629: lload 12
+    //   2631: lstore 14
+    //   2633: lload 12
+    //   2635: lstore 16
+    //   2637: aload 29
+    //   2639: aload_0
+    //   2640: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   2643: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   2646: putfield 852	com/tencent/component/network/downloader/DownloadReport:strategyId	I
+    //   2649: lload 12
+    //   2651: lstore 14
+    //   2653: lload 12
+    //   2655: lstore 16
+    //   2657: aload_0
+    //   2658: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   2661: ifeq +4483 -> 7144
+    //   2664: iload 5
+    //   2666: ifne +4478 -> 7144
+    //   2669: lload 12
+    //   2671: lstore 14
+    //   2673: lload 12
+    //   2675: lstore 16
+    //   2677: aload_0
+    //   2678: aload_0
+    //   2679: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   2682: aload_0
+    //   2683: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   2686: aload_0
+    //   2687: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   2690: aload_0
+    //   2691: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   2694: aload_0
+    //   2695: getfield 815	com/tencent/component/network/downloader/impl/FastDownloadTask:mRefer	Ljava/lang/String;
+    //   2698: invokestatic 858	com/tencent/component/network/utils/http/HttpUtil:createOkHttpGet	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lokhttp3/Request$Builder;
+    //   2701: putfield 418	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestBuilder	Lokhttp3/Request$Builder;
+    //   2704: lload 12
+    //   2706: lstore 14
+    //   2708: lload 12
+    //   2710: lstore 16
+    //   2712: aload_0
+    //   2713: getfield 514	com/tencent/component/network/downloader/impl/FastDownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
+    //   2716: ifnull +36 -> 2752
+    //   2719: lload 12
+    //   2721: lstore 14
+    //   2723: lload 12
+    //   2725: lstore 16
+    //   2727: aload_0
+    //   2728: getfield 514	com/tencent/component/network/downloader/impl/FastDownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
+    //   2731: aload_0
+    //   2732: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   2735: aload_0
+    //   2736: getfield 418	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestBuilder	Lokhttp3/Request$Builder;
+    //   2739: aload_0
+    //   2740: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   2743: aload_0
+    //   2744: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   2747: invokeinterface 862 5 0
+    //   2752: lload 12
+    //   2754: lstore 14
+    //   2756: lload 12
+    //   2758: lstore 16
+    //   2760: aload_0
+    //   2761: aload_0
+    //   2762: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   2765: aload_0
+    //   2766: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   2769: aload_0
+    //   2770: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   2773: aload_0
+    //   2774: getfield 418	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestBuilder	Lokhttp3/Request$Builder;
+    //   2777: invokevirtual 865	com/tencent/component/network/downloader/impl/FastDownloadTask:prepareRequest	(Ljava/lang/String;Ljava/lang/String;Lorg/apache/http/HttpRequest;Lokhttp3/Request$Builder;)V
+    //   2780: lload 12
+    //   2782: lstore 14
+    //   2784: lload 12
+    //   2786: lstore 16
+    //   2788: aload_0
+    //   2789: aload_0
+    //   2790: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   2793: aload_0
+    //   2794: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   2797: aload_0
+    //   2798: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   2801: aload_0
+    //   2802: getfield 418	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestBuilder	Lokhttp3/Request$Builder;
+    //   2805: aload 30
+    //   2807: invokevirtual 869	com/tencent/component/network/downloader/impl/FastDownloadTask:applyKeepAliveStrategy	(Ljava/lang/String;Ljava/lang/String;Lorg/apache/http/HttpRequest;Lokhttp3/Request$Builder;Lcom/tencent/component/network/utils/http/HttpUtil$RequestOptions;)V
+    //   2810: lload 12
+    //   2812: lstore 14
+    //   2814: lload 12
+    //   2816: lstore 16
+    //   2818: invokestatic 407	java/lang/System:currentTimeMillis	()J
+    //   2821: lload 20
+    //   2823: lsub
+    //   2824: lstore 12
+    //   2826: lload 12
+    //   2828: lstore 14
+    //   2830: lload 12
+    //   2832: lstore 16
+    //   2834: aload_0
+    //   2835: lconst_0
+    //   2836: putfield 46	com/tencent/component/network/downloader/impl/FastDownloadTask:send_req_time	J
+    //   2839: lload 12
+    //   2841: lstore 14
+    //   2843: lload 12
+    //   2845: lstore 16
+    //   2847: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   2850: lstore 20
+    //   2852: lload 12
+    //   2854: lstore 14
+    //   2856: lload 12
+    //   2858: lstore 16
+    //   2860: aload_0
+    //   2861: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   2864: ifnull +4320 -> 7184
+    //   2867: lload 12
+    //   2869: lstore 14
+    //   2871: lload 12
+    //   2873: lstore 16
+    //   2875: aload_0
+    //   2876: getfield 873	com/tencent/component/network/downloader/impl/FastDownloadTask:pHttpClient	Lcom/tencent/component/network/utils/http/base/QZoneHttpClient;
+    //   2879: ifnonnull +18 -> 2897
+    //   2882: lload 12
+    //   2884: lstore 14
+    //   2886: lload 12
+    //   2888: lstore 16
+    //   2890: aload_0
+    //   2891: invokestatic 877	com/tencent/component/network/utils/http/HttpUtil:CreateDefaultHttpClient	()Lcom/tencent/component/network/utils/http/base/QZoneHttpClient;
+    //   2894: putfield 873	com/tencent/component/network/downloader/impl/FastDownloadTask:pHttpClient	Lcom/tencent/component/network/utils/http/base/QZoneHttpClient;
+    //   2897: lload 12
+    //   2899: lstore 14
+    //   2901: lload 12
+    //   2903: lstore 16
+    //   2905: invokestatic 881	com/tencent/component/network/utils/http/HttpUtil:createHttpContext	()Lorg/apache/http/protocol/HttpContext;
+    //   2908: astore 22
     //   2910: aload_0
-    //   2911: lconst_0
-    //   2912: putfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Long	J
-    //   2915: aload_0
-    //   2916: iconst_0
-    //   2917: putfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Int	I
-    //   2920: aload_2
-    //   2921: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   2924: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   2927: ifeq +12 -> 2939
-    //   2930: aload_1
-    //   2931: invokeinterface 317 1 0
-    //   2936: ifeq +31 -> 2967
-    //   2939: aload_0
-    //   2940: getfield 423	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
-    //   2943: ifnull +24 -> 2967
-    //   2946: aload_0
-    //   2947: getfield 423	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
-    //   2950: aload_0
-    //   2951: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   2954: aload_2
-    //   2955: invokevirtual 426	com/tencent/component/network/downloader/DownloadResult:getPath	()Ljava/lang/String;
-    //   2958: aload 19
-    //   2960: aload 20
-    //   2962: invokeinterface 431 5 0
-    //   2967: aload_1
-    //   2968: invokeinterface 317 1 0
-    //   2973: ifne +1293 -> 4266
-    //   2976: aload_0
-    //   2977: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   2980: invokestatic 324	com/tencent/component/network/utils/NetworkUtils:isNetworkAvailable	(Landroid/content/Context;)Z
-    //   2983: istore 18
+    //   2911: getfield 873	com/tencent/component/network/downloader/impl/FastDownloadTask:pHttpClient	Lcom/tencent/component/network/utils/http/base/QZoneHttpClient;
+    //   2914: aload_0
+    //   2915: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   2918: aload 22
+    //   2920: invokevirtual 886	com/tencent/component/network/utils/http/base/QZoneHttpClient:execute	(Lorg/apache/http/client/methods/HttpUriRequest;Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/HttpResponse;
+    //   2923: astore 23
+    //   2925: aconst_null
+    //   2926: astore 25
+    //   2928: aload 22
+    //   2930: astore 24
+    //   2932: aload 25
+    //   2934: astore 22
+    //   2936: aload_0
+    //   2937: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   2940: lload 20
+    //   2942: lsub
+    //   2943: putfield 46	com/tencent/component/network/downloader/impl/FastDownloadTask:send_req_time	J
+    //   2946: aload 23
+    //   2948: ifnonnull +8 -> 2956
+    //   2951: aload 22
+    //   2953: ifnull +11598 -> 14551
+    //   2956: aload 23
+    //   2958: ifnull +4295 -> 7253
+    //   2961: aload 23
+    //   2963: invokeinterface 892 1 0
+    //   2968: ifnull +4285 -> 7253
+    //   2971: aload 23
+    //   2973: invokeinterface 892 1 0
+    //   2978: invokeinterface 897 1 0
+    //   2983: istore 4
     //   2985: aload_2
-    //   2986: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   2989: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   2992: ifne +6113 -> 9105
-    //   2995: new 102	java/lang/StringBuilder
-    //   2998: dup
-    //   2999: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   3002: ldc_w 433
-    //   3005: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3008: aload_0
-    //   3009: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   3012: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3015: ldc_w 435
-    //   3018: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3021: aload_0
-    //   3022: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   3025: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   3028: ldc_w 440
-    //   3031: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3034: astore 27
-    //   3036: aload_0
-    //   3037: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   3040: ifeq +6681 -> 9721
-    //   3043: aload 20
-    //   3045: ifnull +6676 -> 9721
-    //   3048: aload 20
-    //   3050: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   3053: ifnull +6668 -> 9721
-    //   3056: aload 20
-    //   3058: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   3061: invokevirtual 449	com/squareup/okhttp/Protocol:toString	()Ljava/lang/String;
-    //   3064: astore 23
-    //   3066: aload 27
-    //   3068: aload 23
-    //   3070: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3073: ldc_w 451
-    //   3076: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3079: aload 24
-    //   3081: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   3084: ldc_w 456
-    //   3087: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3090: aload 22
-    //   3092: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3095: ldc_w 458
-    //   3098: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3101: aconst_null
-    //   3102: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3105: ldc_w 460
-    //   3108: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3111: invokestatic 147	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   3114: invokevirtual 150	java/lang/Thread:getId	()J
-    //   3117: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3120: ldc_w 462
-    //   3123: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3126: invokestatic 134	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   3129: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3132: ldc_w 464
-    //   3135: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3138: aload_0
-    //   3139: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   3142: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   3145: ldc_w 466
-    //   3148: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3151: aload_0
-    //   3152: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   3155: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   3158: ldc_w 468
-    //   3161: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3164: astore 27
-    //   3166: aload_0
-    //   3167: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   3170: ifeq +6559 -> 9729
-    //   3173: aload_0
-    //   3174: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   3177: aload_0
-    //   3178: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   3181: invokestatic 267	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
-    //   3184: astore 23
-    //   3186: aload 27
-    //   3188: aload 23
-    //   3190: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   3193: ldc_w 470
-    //   3196: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3199: iload 18
-    //   3201: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   3204: ldc_w 472
-    //   3207: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3210: aload_2
-    //   3211: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   3214: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   3217: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3220: ldc_w 483
-    //   3223: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3226: aload_2
-    //   3227: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   3230: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   3233: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3236: ldc_w 487
-    //   3239: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3242: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
+    //   2986: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   2989: iload 4
+    //   2991: putfield 898	com/tencent/component/network/downloader/DownloadResult$Status:httpStatus	I
+    //   2994: sipush 200
+    //   2997: iload 4
+    //   2999: if_icmpeq +11 -> 3010
+    //   3002: sipush 206
+    //   3005: iload 4
+    //   3007: if_icmpne +9842 -> 12849
+    //   3010: iload 4
+    //   3012: istore 5
+    //   3014: aload_0
+    //   3015: aload 23
+    //   3017: aload 22
+    //   3019: aload_2
+    //   3020: aload_1
+    //   3021: iload 4
+    //   3023: invokevirtual 902	com/tencent/component/network/downloader/impl/FastDownloadTask:handleResponse	(Lorg/apache/http/HttpResponse;Lokhttp3/Response;Lcom/tencent/component/network/downloader/DownloadResult;Lcom/tencent/component/network/utils/thread/ThreadPool$JobContext;I)Z
+    //   3026: ifeq +9876 -> 12902
+    //   3029: aload_2
+    //   3030: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   3033: invokevirtual 905	com/tencent/component/network/downloader/DownloadResult$Status:setSucceed	()V
+    //   3036: aload_2
+    //   3037: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   3040: getfield 908	com/tencent/component/network/downloader/DownloadResult$Content:noCache	Z
+    //   3043: ifeq +7407 -> 10450
+    //   3046: aload_0
+    //   3047: aload 23
+    //   3049: aload 22
+    //   3051: invokevirtual 912	com/tencent/component/network/downloader/impl/FastDownloadTask:getRetcode	(Lorg/apache/http/HttpResponse;Lokhttp3/Response;)I
+    //   3054: istore 5
+    //   3056: aload_2
+    //   3057: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   3060: iload 5
+    //   3062: putfield 915	com/tencent/component/network/downloader/DownloadResult$Content:retCode	I
+    //   3065: iload 5
+    //   3067: invokestatic 918	com/tencent/component/network/module/base/Config:canRetCodeRetry	(I)Z
+    //   3070: istore 10
+    //   3072: iload 10
+    //   3074: ifeq +4977 -> 8051
+    //   3077: aload_2
+    //   3078: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   3081: lload 18
+    //   3083: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   3086: invokevirtual 461	com/tencent/component/network/downloader/DownloadResult$Process:setDuration	(JJ)V
+    //   3089: aload_2
+    //   3090: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   3093: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   3096: aload_0
+    //   3097: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   3100: lsub
+    //   3101: putfield 464	com/tencent/component/network/downloader/DownloadResult$Process:totalDuration	J
+    //   3104: aload_2
+    //   3105: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   3108: aload_0
+    //   3109: getfield 467	com/tencent/component/network/downloader/impl/FastDownloadTask:mTaskStartTimeStamp	J
+    //   3112: putfield 470	com/tencent/component/network/downloader/DownloadResult$Process:startTimestamp	J
+    //   3115: aload_0
+    //   3116: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   3119: invokestatic 475	com/tencent/component/network/module/common/NetworkStatus:getInstance	(Landroid/content/Context;)Lcom/tencent/component/network/module/common/NetworkStatus;
+    //   3122: invokevirtual 479	com/tencent/component/network/module/common/NetworkStatus:getDNS	()Lcom/tencent/component/network/utils/NetworkUtils$DNS;
+    //   3125: astore 27
+    //   3127: aload_0
+    //   3128: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   3131: ifnull +4137 -> 7268
+    //   3134: aload_0
+    //   3135: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   3138: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   3141: ifnull +4127 -> 7268
+    //   3144: aload_0
+    //   3145: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   3148: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   3151: getfield 486	com/tencent/component/network/downloader/common/IPInfo:ip	Ljava/lang/String;
+    //   3154: astore 25
+    //   3156: aload_0
+    //   3157: aload_0
+    //   3158: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   3161: aload 23
+    //   3163: aload 22
+    //   3165: invokevirtual 490	com/tencent/component/network/downloader/impl/FastDownloadTask:parserHttpHeaderInfo	(Lorg/apache/http/HttpRequest;Lorg/apache/http/HttpResponse;Lokhttp3/Response;)Ljava/lang/String;
+    //   3168: astore 28
+    //   3170: aload 24
+    //   3172: ifnull +13940 -> 17112
+    //   3175: aload 24
+    //   3177: ldc_w 492
+    //   3180: invokeinterface 498 2 0
+    //   3185: checkcast 282	java/lang/String
+    //   3188: astore 24
+    //   3190: aload_2
+    //   3191: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   3194: aload 24
+    //   3196: putfield 507	com/tencent/component/network/downloader/DownloadResult$Content:redirectUrl	Ljava/lang/String;
+    //   3199: aload_0
+    //   3200: lconst_0
+    //   3201: putfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   3204: aload_0
+    //   3205: iconst_0
+    //   3206: putfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_retry	I
+    //   3209: aload_0
+    //   3210: lconst_0
+    //   3211: putfield 42	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_time	J
+    //   3214: aload_0
+    //   3215: iconst_0
+    //   3216: putfield 44	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_retry	I
+    //   3219: aload_2
+    //   3220: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   3223: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   3226: ifeq +12 -> 3238
+    //   3229: aload_1
+    //   3230: invokeinterface 359 1 0
+    //   3235: ifeq +31 -> 3266
+    //   3238: aload_0
+    //   3239: getfield 514	com/tencent/component/network/downloader/impl/FastDownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
+    //   3242: ifnull +24 -> 3266
     //   3245: aload_0
-    //   3246: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   3249: lsub
-    //   3250: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3253: ldc_w 489
-    //   3256: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3259: aload_2
-    //   3260: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   3263: getfield 492	com/tencent/component/network/downloader/DownloadResult$Content:length	J
-    //   3266: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3269: ldc_w 494
-    //   3272: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3275: aload_2
-    //   3276: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   3279: getfield 496	com/tencent/component/network/downloader/DownloadResult$Content:size	J
-    //   3282: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3285: ldc_w 498
-    //   3288: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3291: aload_2
-    //   3292: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   3295: getfield 501	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
-    //   3298: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3301: ldc_w 503
-    //   3304: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3246: getfield 514	com/tencent/component/network/downloader/impl/FastDownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
+    //   3249: aload_0
+    //   3250: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   3253: aload_2
+    //   3254: invokevirtual 517	com/tencent/component/network/downloader/DownloadResult:getPath	()Ljava/lang/String;
+    //   3257: aload 23
+    //   3259: aload 22
+    //   3261: invokeinterface 523 5 0
+    //   3266: aload_1
+    //   3267: invokeinterface 359 1 0
+    //   3272: ifne +1403 -> 4675
+    //   3275: aload_0
+    //   3276: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   3279: invokestatic 367	com/tencent/component/network/utils/NetworkUtils:isNetworkAvailable	(Landroid/content/Context;)Z
+    //   3282: istore 10
+    //   3284: aload_2
+    //   3285: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   3288: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   3291: ifne +4028 -> 7319
+    //   3294: new 125	java/lang/StringBuilder
+    //   3297: dup
+    //   3298: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   3301: ldc_w 525
+    //   3304: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3307: aload_0
-    //   3308: invokevirtual 369	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()I
-    //   3311: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3314: ldc_w 505
-    //   3317: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3308: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   3311: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3314: ldc_w 527
+    //   3317: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3320: aload_0
-    //   3321: invokevirtual 507	com/tencent/component/network/downloader/impl/FastDownloadTask:c	()I
-    //   3324: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3327: ldc_w 509
-    //   3330: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3333: ldc_w 511
-    //   3336: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3339: aload_2
-    //   3340: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   3343: invokevirtual 514	com/tencent/component/network/downloader/DownloadResult$Status:getFailReason	()I
-    //   3346: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3349: ldc_w 516
-    //   3352: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3355: iload_3
-    //   3356: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3359: ldc_w 518
-    //   3362: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3365: aload 25
-    //   3367: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3370: ldc_w 520
-    //   3373: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3376: aload 21
-    //   3378: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3381: ldc_w 522
-    //   3384: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3387: astore 27
-    //   3389: aload_0
-    //   3390: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   3393: ifnull +6342 -> 9735
-    //   3396: aload_0
-    //   3397: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   3400: iconst_0
-    //   3401: bipush 30
-    //   3403: invokevirtual 527	java/lang/String:substring	(II)Ljava/lang/String;
-    //   3406: astore 23
-    //   3408: aload 27
-    //   3410: aload 23
-    //   3412: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3415: ldc_w 529
-    //   3418: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3421: astore 23
-    //   3423: aload_0
-    //   3424: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   3427: ifnull +6317 -> 9744
-    //   3430: aload_0
-    //   3431: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   3434: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   3437: istore 5
-    //   3439: aload 23
-    //   3441: iload 5
-    //   3443: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3446: ldc_w 531
-    //   3449: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3452: aload_2
-    //   3453: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   3456: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   3459: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3462: ldc_w 536
-    //   3465: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3468: lload 8
-    //   3470: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3473: ldc_w 538
-    //   3476: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3479: aload_0
-    //   3480: getfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   3483: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3486: ldc_w 505
-    //   3489: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3492: aload_0
-    //   3493: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Int	I
-    //   3496: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3499: ldc_w 509
-    //   3502: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3505: ldc_w 540
-    //   3508: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3511: aload_0
-    //   3512: getfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Long	J
-    //   3515: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3518: ldc_w 505
-    //   3521: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3524: aload_0
-    //   3525: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Int	I
-    //   3528: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3531: ldc_w 509
-    //   3534: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3537: ldc_w 542
-    //   3540: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3543: aload_0
-    //   3544: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   3547: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3550: ldc_w 544
-    //   3553: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3321: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   3324: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   3327: ldc_w 532
+    //   3330: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3333: astore 30
+    //   3335: aload_0
+    //   3336: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   3339: ifeq +3945 -> 7284
+    //   3342: aload 22
+    //   3344: ifnull +3940 -> 7284
+    //   3347: aload 22
+    //   3349: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   3352: ifnull +3932 -> 7284
+    //   3355: aload 22
+    //   3357: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   3360: invokevirtual 541	okhttp3/Protocol:toString	()Ljava/lang/String;
+    //   3363: astore 26
+    //   3365: aload 30
+    //   3367: aload 26
+    //   3369: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3372: ldc_w 543
+    //   3375: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3378: aload 27
+    //   3380: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   3383: ldc_w 548
+    //   3386: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3389: aload 25
+    //   3391: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3394: ldc_w 550
+    //   3397: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3400: aconst_null
+    //   3401: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3404: ldc_w 552
+    //   3407: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3410: invokestatic 171	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   3413: invokevirtual 174	java/lang/Thread:getId	()J
+    //   3416: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   3419: ldc_w 554
+    //   3422: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3425: invokestatic 158	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   3428: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3431: ldc_w 556
+    //   3434: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3437: aload_0
+    //   3438: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   3441: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   3444: ldc_w 558
+    //   3447: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3450: aload_0
+    //   3451: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   3454: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   3457: ldc_w 560
+    //   3460: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3463: astore 30
+    //   3465: aload_0
+    //   3466: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   3469: ifeq +3823 -> 7292
+    //   3472: aload_0
+    //   3473: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   3476: aload_0
+    //   3477: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   3480: invokestatic 322	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
+    //   3483: astore 26
+    //   3485: aload 30
+    //   3487: aload 26
+    //   3489: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   3492: ldc_w 562
+    //   3495: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3498: iload 10
+    //   3500: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   3503: ldc_w 564
+    //   3506: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3509: invokestatic 569	com/tencent/component/network/module/base/Config:getNetworkStackType	()I
+    //   3512: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3515: ldc_w 571
+    //   3518: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3521: aload_2
+    //   3522: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   3525: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   3528: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3531: ldc_w 576
+    //   3534: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3537: aload_2
+    //   3538: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   3541: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   3544: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   3547: ldc_w 581
+    //   3550: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3553: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
     //   3556: aload_0
-    //   3557: getfield 545	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_Long	J
-    //   3560: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3563: ldc_w 547
-    //   3566: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3569: aload_0
-    //   3570: invokevirtual 549	com/tencent/component/network/downloader/impl/FastDownloadTask:d	()I
-    //   3573: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3576: ldc_w 509
-    //   3579: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3582: ldc_w 551
-    //   3585: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3588: astore 27
-    //   3590: aload_0
-    //   3591: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   3594: ifnull +6156 -> 9750
-    //   3597: aload_0
-    //   3598: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   3601: invokeinterface 560 1 0
-    //   3606: astore 23
-    //   3608: aload 26
-    //   3610: aload 27
-    //   3612: aload 23
-    //   3614: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   3617: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3620: putfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   3623: ldc_w 565
-    //   3626: aload 26
-    //   3628: getfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   3631: aconst_null
-    //   3632: invokestatic 381	com/tencent/component/network/module/base/QDLog:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   3635: iload 18
-    //   3637: ifne +8 -> 3645
-    //   3640: aload_0
-    //   3641: iconst_0
-    //   3642: putfield 566	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_Boolean	Z
-    //   3645: aload_2
-    //   3646: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   3649: astore 23
-    //   3651: new 102	java/lang/StringBuilder
-    //   3654: dup
-    //   3655: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   3658: aload_0
-    //   3659: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   3662: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3665: ldc_w 568
-    //   3668: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3671: aload 22
-    //   3673: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3676: ldc_w 570
-    //   3679: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3682: aload_2
-    //   3683: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   3686: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   3689: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3692: ldc_w 572
-    //   3695: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3698: astore 22
-    //   3700: aload_0
-    //   3701: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   3704: ifnull +6087 -> 9791
-    //   3707: aload_0
-    //   3708: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   3711: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   3714: istore 5
-    //   3716: aload 22
-    //   3718: iload 5
-    //   3720: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3723: ldc_w 516
-    //   3726: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3729: iload_3
-    //   3730: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3733: ldc_w 472
-    //   3736: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3739: aload_2
-    //   3740: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   3743: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   3746: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3749: ldc_w 574
-    //   3752: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3755: aload_2
-    //   3756: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   3759: getfield 492	com/tencent/component/network/downloader/DownloadResult$Content:length	J
-    //   3762: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3765: ldc_w 494
-    //   3768: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3771: aload_2
-    //   3772: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   3775: getfield 496	com/tencent/component/network/downloader/DownloadResult$Content:size	J
-    //   3778: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3781: ldc_w 483
-    //   3784: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3787: aload_2
-    //   3788: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   3791: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   3794: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3797: ldc_w 487
-    //   3800: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3803: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   3806: aload_0
-    //   3807: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   3810: lsub
-    //   3811: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3814: astore 22
-    //   3816: aload 21
-    //   3818: invokestatic 214	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   3821: ifne +5976 -> 9797
-    //   3824: new 102	java/lang/StringBuilder
-    //   3827: dup
-    //   3828: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   3831: ldc_w 520
-    //   3834: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3837: aload 21
-    //   3839: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3842: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3845: astore 21
-    //   3847: aload 23
-    //   3849: aload 22
-    //   3851: aload 21
-    //   3853: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3856: ldc_w 518
-    //   3859: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3862: aload 25
-    //   3864: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3867: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3870: putfield 577	com/tencent/component/network/downloader/DownloadResult$Status:detailDownloadInfo	Ljava/lang/String;
-    //   3873: getstatic 173	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:d	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   3876: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   3879: aload_0
-    //   3880: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   3883: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   3886: if_icmpne +37 -> 3923
-    //   3889: aload_0
-    //   3890: getfield 197	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   3893: ifnull +30 -> 3923
-    //   3896: aload_0
-    //   3897: getfield 197	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   3900: aload_0
-    //   3901: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   3904: aload_0
-    //   3905: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   3908: invokestatic 580	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
-    //   3911: aload_2
-    //   3912: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   3915: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   3918: invokeinterface 583 4 0
-    //   3923: getstatic 250	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   3926: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   3929: aload_0
-    //   3930: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   3933: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   3936: if_icmpne +37 -> 3973
-    //   3939: aload_0
-    //   3940: getfield 252	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   3943: ifnull +30 -> 3973
-    //   3946: aload_0
-    //   3947: getfield 252	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   3950: aload_0
-    //   3951: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   3954: aload_0
-    //   3955: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   3958: invokestatic 580	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
+    //   3557: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   3560: lsub
+    //   3561: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   3564: ldc_w 583
+    //   3567: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3570: aload_2
+    //   3571: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   3574: getfield 586	com/tencent/component/network/downloader/DownloadResult$Content:length	J
+    //   3577: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   3580: ldc_w 588
+    //   3583: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3586: aload_2
+    //   3587: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   3590: getfield 590	com/tencent/component/network/downloader/DownloadResult$Content:size	J
+    //   3593: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   3596: ldc_w 592
+    //   3599: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3602: aload_2
+    //   3603: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   3606: getfield 595	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
+    //   3609: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   3612: ldc_w 597
+    //   3615: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3618: aload_0
+    //   3619: invokevirtual 421	com/tencent/component/network/downloader/impl/FastDownloadTask:getCurrAttemptCount	()I
+    //   3622: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3625: ldc_w 599
+    //   3628: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3631: aload_0
+    //   3632: invokevirtual 602	com/tencent/component/network/downloader/impl/FastDownloadTask:getTotalAttemptCount	()I
+    //   3635: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3638: ldc_w 604
+    //   3641: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3644: aload_2
+    //   3645: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   3648: invokevirtual 607	com/tencent/component/network/downloader/DownloadResult$Status:getFailReason	()I
+    //   3651: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3654: ldc_w 609
+    //   3657: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3660: iload 4
+    //   3662: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3665: ldc_w 611
+    //   3668: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3671: aload 28
+    //   3673: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3676: ldc_w 613
+    //   3679: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3682: aload 24
+    //   3684: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3687: ldc_w 615
+    //   3690: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3693: astore 30
+    //   3695: aload_0
+    //   3696: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   3699: ifnull +3599 -> 7298
+    //   3702: aload_0
+    //   3703: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   3706: iconst_0
+    //   3707: bipush 30
+    //   3709: invokevirtual 619	java/lang/String:substring	(II)Ljava/lang/String;
+    //   3712: astore 26
+    //   3714: aload 30
+    //   3716: aload 26
+    //   3718: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3721: ldc_w 621
+    //   3724: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3727: astore 26
+    //   3729: aload_0
+    //   3730: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   3733: ifnull +3574 -> 7307
+    //   3736: aload_0
+    //   3737: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   3740: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   3743: istore 5
+    //   3745: aload 26
+    //   3747: iload 5
+    //   3749: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3752: ldc_w 623
+    //   3755: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3758: aload_2
+    //   3759: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   3762: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   3765: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3768: ldc_w 628
+    //   3771: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3774: lload 12
+    //   3776: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   3779: ldc_w 630
+    //   3782: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3785: aload_0
+    //   3786: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   3789: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   3792: ldc_w 599
+    //   3795: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3798: aload_0
+    //   3799: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_retry	I
+    //   3802: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3805: ldc_w 632
+    //   3808: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3811: aload_0
+    //   3812: getfield 42	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_time	J
+    //   3815: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   3818: ldc_w 599
+    //   3821: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3824: aload_0
+    //   3825: getfield 44	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_retry	I
+    //   3828: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3831: ldc_w 634
+    //   3834: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3837: aload_0
+    //   3838: getfield 46	com/tencent/component/network/downloader/impl/FastDownloadTask:send_req_time	J
+    //   3841: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   3844: ldc_w 636
+    //   3847: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3850: aload_0
+    //   3851: getfield 639	com/tencent/component/network/downloader/impl/FastDownloadTask:t_recv_data	J
+    //   3854: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   3857: ldc_w 641
+    //   3860: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3863: aload_0
+    //   3864: invokevirtual 644	com/tencent/component/network/downloader/impl/FastDownloadTask:getTaskConcurrentCount	()I
+    //   3867: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3870: ldc_w 646
+    //   3873: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3876: astore 30
+    //   3878: aload_0
+    //   3879: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   3882: ifnull +3431 -> 7313
+    //   3885: aload_0
+    //   3886: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   3889: invokeinterface 656 1 0
+    //   3894: astore 26
+    //   3896: aload 29
+    //   3898: aload 30
+    //   3900: aload 26
+    //   3902: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   3905: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3908: putfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   3911: ldc_w 447
+    //   3914: aload 29
+    //   3916: getfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   3919: aconst_null
+    //   3920: invokestatic 432	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3923: aload_0
+    //   3924: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   3927: ifnull +24 -> 3951
+    //   3930: aload_0
+    //   3931: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   3934: ldc_w 439
+    //   3937: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   3940: ifeq +11 -> 3951
+    //   3943: aload_0
+    //   3944: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   3947: iconst_0
+    //   3948: invokestatic 665	com/tencent/component/network/utils/http/pool/CustomDnsResolve:setIPDirectEnable	(Ljava/lang/String;Z)V
+    //   3951: iload 10
+    //   3953: ifne +8 -> 3961
+    //   3956: aload_0
+    //   3957: iconst_0
+    //   3958: putfield 668	com/tencent/component/network/downloader/impl/FastDownloadTask:mShouldReport	Z
     //   3961: aload_2
-    //   3962: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   3965: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   3968: invokeinterface 583 4 0
-    //   3973: iload 18
-    //   3975: ifeq +64 -> 4039
-    //   3978: aload_0
-    //   3979: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   3982: invokestatic 56	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:a	(Landroid/content/Context;)Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy;
-    //   3985: astore 21
-    //   3987: aload_0
-    //   3988: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   3991: astore 22
-    //   3993: aload_0
-    //   3994: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   3997: ifeq +5838 -> 9835
-    //   4000: aload_0
-    //   4001: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   4004: ifnull +5831 -> 9835
-    //   4007: aload_0
-    //   4008: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   4011: ldc_w 585
-    //   4014: invokevirtual 588	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   4017: ifeq +5818 -> 9835
-    //   4020: iconst_1
-    //   4021: istore 18
-    //   4023: aload 21
-    //   4025: aload 22
-    //   4027: iload 18
-    //   4029: aload_2
-    //   4030: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   4033: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   4036: invokevirtual 591	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:a	(Ljava/lang/String;ZZ)V
-    //   4039: aload 26
-    //   4041: invokestatic 359	java/lang/System:currentTimeMillis	()J
-    //   4044: putfield 594	com/tencent/component/network/downloader/DownloadReport:endTime	J
-    //   4047: aload 26
-    //   4049: aload_0
-    //   4050: invokevirtual 596	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()J
-    //   4053: putfield 599	com/tencent/component/network/downloader/DownloadReport:fileSize	J
-    //   4056: aload 26
-    //   4058: aload 19
-    //   4060: putfield 603	com/tencent/component/network/downloader/DownloadReport:response	Lorg/apache/http/HttpResponse;
-    //   4063: aload 26
-    //   4065: aload 20
-    //   4067: putfield 607	com/tencent/component/network/downloader/DownloadReport:okResponse	Lcom/squareup/okhttp/Response;
-    //   4070: aload 26
-    //   4072: iload_3
-    //   4073: putfield 610	com/tencent/component/network/downloader/DownloadReport:httpStatus	I
-    //   4076: aload 26
-    //   4078: aconst_null
-    //   4079: putfield 614	com/tencent/component/network/downloader/DownloadReport:exception	Ljava/lang/Throwable;
-    //   4082: aload 24
-    //   4084: ifnonnull +5757 -> 9841
-    //   4087: aconst_null
-    //   4088: astore 19
-    //   4090: aload 26
-    //   4092: aload 19
-    //   4094: putfield 617	com/tencent/component/network/downloader/DownloadReport:dns	Ljava/lang/String;
-    //   4097: aload 26
-    //   4099: aconst_null
-    //   4100: putfield 620	com/tencent/component/network/downloader/DownloadReport:localAddress	Ljava/lang/String;
-    //   4103: aload 26
-    //   4105: aload_2
-    //   4106: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   4109: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   4112: putfield 621	com/tencent/component/network/downloader/DownloadReport:clientip	Ljava/lang/String;
-    //   4115: aload 26
-    //   4117: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   4120: aload_0
-    //   4121: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   4124: lsub
-    //   4125: putfield 624	com/tencent/component/network/downloader/DownloadReport:totaltime	J
-    //   4128: aload 26
-    //   4130: aload_2
-    //   4131: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   4134: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   4137: putfield 627	com/tencent/component/network/downloader/DownloadReport:downloadTime	J
-    //   4140: aload 26
-    //   4142: aload 26
-    //   4144: getfield 624	com/tencent/component/network/downloader/DownloadReport:totaltime	J
-    //   4147: aload_2
-    //   4148: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   4151: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   4154: lsub
-    //   4155: putfield 630	com/tencent/component/network/downloader/DownloadReport:t_wait	J
-    //   4158: aload 26
-    //   4160: lload 8
-    //   4162: putfield 633	com/tencent/component/network/downloader/DownloadReport:t_prepare	J
-    //   4165: aload 26
-    //   4167: aload_0
-    //   4168: getfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   4171: putfield 636	com/tencent/component/network/downloader/DownloadReport:t_conn	J
-    //   4174: aload 26
-    //   4176: aload_0
-    //   4177: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   4180: putfield 639	com/tencent/component/network/downloader/DownloadReport:t_recvrsp	J
-    //   4183: aload 26
-    //   4185: aload_0
-    //   4186: getfield 545	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_Long	J
-    //   4189: putfield 642	com/tencent/component/network/downloader/DownloadReport:t_recvdata	J
-    //   4192: aload 26
-    //   4194: lconst_0
-    //   4195: putfield 645	com/tencent/component/network/downloader/DownloadReport:t_process	J
-    //   4198: aload 26
-    //   4200: aload_0
-    //   4201: invokevirtual 549	com/tencent/component/network/downloader/impl/FastDownloadTask:d	()I
-    //   4204: putfield 648	com/tencent/component/network/downloader/DownloadReport:concurrent	I
-    //   4207: aload 26
-    //   4209: aload_2
-    //   4210: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   4213: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   4216: putfield 651	com/tencent/component/network/downloader/DownloadReport:content_type	Ljava/lang/String;
-    //   4219: aload 26
-    //   4221: aload_0
-    //   4222: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   4225: invokestatic 655	com/tencent/component/network/module/base/Config:b	(Ljava/lang/String;)Z
-    //   4228: putfield 658	com/tencent/component/network/downloader/DownloadReport:isFromQzoneAlbum	Z
-    //   4231: aload 26
-    //   4233: aload_0
-    //   4234: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   4237: putfield 661	com/tencent/component/network/downloader/DownloadReport:isHttp2	Z
-    //   4240: aload 26
-    //   4242: aload_2
-    //   4243: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   4246: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   4249: putfield 663	com/tencent/component/network/downloader/DownloadReport:isSucceed	Z
-    //   4252: aload_2
-    //   4253: aload 26
-    //   4255: invokevirtual 667	com/tencent/component/network/downloader/DownloadResult:setReport	(Lcom/tencent/component/network/downloader/DownloadReport;)V
-    //   4258: aload_0
-    //   4259: aload_1
-    //   4260: aload_2
-    //   4261: aload 26
-    //   4263: invokevirtual 320	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(Lcom/tencent/component/network/utils/thread/ThreadPool$JobContext;Lcom/tencent/component/network/downloader/DownloadResult;Lcom/tencent/component/network/downloader/DownloadReport;)V
-    //   4266: aload_0
-    //   4267: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   4270: ifeq +5581 -> 9851
-    //   4273: aload_0
-    //   4274: getfield 670	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpCall	Lcom/squareup/okhttp/Call;
-    //   4277: ifnull +10 -> 4287
-    //   4280: aload_0
-    //   4281: getfield 670	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpCall	Lcom/squareup/okhttp/Call;
-    //   4284: invokevirtual 675	com/squareup/okhttp/Call:cancel	()V
-    //   4287: aload_0
-    //   4288: aconst_null
-    //   4289: putfield 368	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpRequest$Builder	Lcom/squareup/okhttp/Request$Builder;
-    //   4292: iload 4
-    //   4294: iconst_1
-    //   4295: iadd
-    //   4296: istore_3
-    //   4297: goto -4115 -> 182
-    //   4300: aconst_null
-    //   4301: astore 19
-    //   4303: goto -2461 -> 1842
-    //   4306: lload 8
-    //   4308: lstore 10
-    //   4310: lload 8
-    //   4312: lstore 12
-    //   4314: aload_0
-    //   4315: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   4318: invokevirtual 404	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:a	()Lcom/tencent/component/network/downloader/common/IPInfo;
-    //   4321: getfield 704	com/tencent/component/network/downloader/common/IPInfo:jdField_a_of_type_Int	I
-    //   4324: istore_3
-    //   4325: goto -2203 -> 2122
-    //   4328: lload 8
-    //   4330: lstore 10
-    //   4332: lload 8
-    //   4334: lstore 12
-    //   4336: aload_0
-    //   4337: aload_0
-    //   4338: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   4341: aload_0
-    //   4342: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   4345: aload_0
-    //   4346: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   4349: aload_0
-    //   4350: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   4353: aload_0
-    //   4354: getfield 294	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   4357: aload 24
-    //   4359: invokestatic 779	com/tencent/component/network/utils/http/HttpUtil:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/component/network/utils/http/HttpUtil$RequestOptions;)Lorg/apache/http/client/methods/HttpGet;
-    //   4362: putfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   4365: goto -1914 -> 2451
-    //   4368: astore 19
-    //   4370: aconst_null
-    //   4371: astore 20
-    //   4373: iload 6
-    //   4375: istore_3
-    //   4376: lload 12
-    //   4378: lstore 8
-    //   4380: aload_2
-    //   4381: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   4384: lload 14
-    //   4386: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   4389: invokevirtual 393	com/tencent/component/network/downloader/DownloadResult$Process:a	(JJ)V
-    //   4392: aload_0
-    //   4393: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   4396: invokestatic 398	com/tencent/component/network/module/common/NetworkStatus:a	(Landroid/content/Context;)Lcom/tencent/component/network/module/common/NetworkStatus;
-    //   4399: invokevirtual 401	com/tencent/component/network/module/common/NetworkStatus:a	()Lcom/tencent/component/network/utils/NetworkUtils$DNS;
-    //   4402: astore 27
-    //   4404: aload_0
-    //   4405: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   4408: ifnull +3105 -> 7513
-    //   4411: aload_0
-    //   4412: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   4415: invokevirtual 404	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:a	()Lcom/tencent/component/network/downloader/common/IPInfo;
-    //   4418: ifnull +3095 -> 7513
-    //   4421: aload_0
-    //   4422: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   4425: invokevirtual 404	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:a	()Lcom/tencent/component/network/downloader/common/IPInfo;
-    //   4428: getfield 406	com/tencent/component/network/downloader/common/IPInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   4431: astore 24
-    //   4433: aload_0
-    //   4434: aload_0
-    //   4435: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   4438: aload 23
-    //   4440: aload 22
-    //   4442: invokevirtual 409	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(Lorg/apache/http/HttpRequest;Lorg/apache/http/HttpResponse;Lcom/squareup/okhttp/Response;)Ljava/lang/String;
-    //   4445: astore 28
-    //   4447: aload 21
-    //   4449: ifnull +10922 -> 15371
-    //   4452: aload 21
-    //   4454: ldc_w 411
-    //   4457: invokeinterface 417 2 0
-    //   4462: checkcast 217	java/lang/String
-    //   4465: astore 21
-    //   4467: aload_0
-    //   4468: lconst_0
-    //   4469: putfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   4472: aload_0
-    //   4473: iconst_0
-    //   4474: putfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Int	I
-    //   4477: aload_0
-    //   4478: lconst_0
-    //   4479: putfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Long	J
-    //   4482: aload_0
-    //   4483: iconst_0
-    //   4484: putfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Int	I
-    //   4487: aload_2
-    //   4488: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   4491: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   4494: ifeq +12 -> 4506
-    //   4497: aload_1
-    //   4498: invokeinterface 317 1 0
-    //   4503: ifeq +31 -> 4534
-    //   4506: aload_0
-    //   4507: getfield 423	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
-    //   4510: ifnull +24 -> 4534
-    //   4513: aload_0
-    //   4514: getfield 423	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
+    //   3962: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   3965: astore 26
+    //   3967: new 125	java/lang/StringBuilder
+    //   3970: dup
+    //   3971: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   3974: aload_0
+    //   3975: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   3978: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3981: ldc_w 670
+    //   3984: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3987: aload 25
+    //   3989: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3992: ldc_w 672
+    //   3995: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3998: aload_2
+    //   3999: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   4002: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   4005: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4008: ldc_w 674
+    //   4011: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4014: astore 25
+    //   4016: aload_0
+    //   4017: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   4020: ifnull +3939 -> 7959
+    //   4023: aload_0
+    //   4024: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   4027: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   4030: istore 5
+    //   4032: aload 25
+    //   4034: iload 5
+    //   4036: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   4039: ldc_w 609
+    //   4042: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4045: iload 4
+    //   4047: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   4050: ldc_w 571
+    //   4053: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4056: aload_2
+    //   4057: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   4060: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   4063: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4066: ldc_w 583
+    //   4069: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4072: aload_2
+    //   4073: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   4076: getfield 586	com/tencent/component/network/downloader/DownloadResult$Content:length	J
+    //   4079: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   4082: ldc_w 588
+    //   4085: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4088: aload_2
+    //   4089: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   4092: getfield 590	com/tencent/component/network/downloader/DownloadResult$Content:size	J
+    //   4095: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   4098: ldc_w 576
+    //   4101: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4104: aload_2
+    //   4105: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   4108: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   4111: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   4114: ldc_w 581
+    //   4117: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4120: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   4123: aload_0
+    //   4124: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   4127: lsub
+    //   4128: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   4131: astore 25
+    //   4133: aload 24
+    //   4135: invokestatic 252	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4138: ifne +3827 -> 7965
+    //   4141: new 125	java/lang/StringBuilder
+    //   4144: dup
+    //   4145: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   4148: ldc_w 613
+    //   4151: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4154: aload 24
+    //   4156: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4159: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4162: astore 24
+    //   4164: aload 26
+    //   4166: aload 25
+    //   4168: aload 24
+    //   4170: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4173: ldc_w 611
+    //   4176: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4179: aload 28
+    //   4181: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4184: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4187: putfield 677	com/tencent/component/network/downloader/DownloadResult$Status:detailDownloadInfo	Ljava/lang/String;
+    //   4190: aload_0
+    //   4191: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   4194: ifnull +53 -> 4247
+    //   4197: getstatic 203	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:Strategy_BACKUPIP	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   4200: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   4203: aload_0
+    //   4204: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   4207: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   4210: if_icmpne +37 -> 4247
+    //   4213: aload_0
+    //   4214: getfield 232	com/tencent/component/network/downloader/impl/FastDownloadTask:pBackupIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   4217: ifnull +30 -> 4247
+    //   4220: aload_0
+    //   4221: getfield 232	com/tencent/component/network/downloader/impl/FastDownloadTask:pBackupIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   4224: aload_0
+    //   4225: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   4228: aload_0
+    //   4229: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   4232: invokestatic 680	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
+    //   4235: aload_2
+    //   4236: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   4239: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   4242: invokeinterface 684 4 0
+    //   4247: aload_0
+    //   4248: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   4251: ifnull +53 -> 4304
+    //   4254: getstatic 297	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:Strategy_DomainDirect	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   4257: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   4260: aload_0
+    //   4261: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   4264: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   4267: if_icmpne +37 -> 4304
+    //   4270: aload_0
+    //   4271: getfield 300	com/tencent/component/network/downloader/impl/FastDownloadTask:pDirectIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   4274: ifnull +30 -> 4304
+    //   4277: aload_0
+    //   4278: getfield 300	com/tencent/component/network/downloader/impl/FastDownloadTask:pDirectIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   4281: aload_0
+    //   4282: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   4285: aload_0
+    //   4286: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   4289: invokestatic 680	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
+    //   4292: aload_2
+    //   4293: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   4296: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   4299: invokeinterface 684 4 0
+    //   4304: iload 10
+    //   4306: ifeq +64 -> 4370
+    //   4309: aload_0
+    //   4310: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   4313: invokestatic 67	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:getInstance	(Landroid/content/Context;)Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy;
+    //   4316: astore 24
+    //   4318: aload_0
+    //   4319: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   4322: astore 25
+    //   4324: aload_0
+    //   4325: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   4328: ifeq +3675 -> 8003
+    //   4331: aload_0
+    //   4332: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   4335: ifnull +3668 -> 8003
+    //   4338: aload_0
+    //   4339: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   4342: ldc_w 686
+    //   4345: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   4348: ifeq +3655 -> 8003
+    //   4351: iconst_1
+    //   4352: istore 10
+    //   4354: aload 24
+    //   4356: aload 25
+    //   4358: iload 10
+    //   4360: aload_2
+    //   4361: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   4364: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   4367: invokevirtual 690	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:reportHttps	(Ljava/lang/String;ZZ)V
+    //   4370: aload 29
+    //   4372: invokestatic 407	java/lang/System:currentTimeMillis	()J
+    //   4375: putfield 693	com/tencent/component/network/downloader/DownloadReport:endTime	J
+    //   4378: aload 29
+    //   4380: aload_0
+    //   4381: invokevirtual 696	com/tencent/component/network/downloader/impl/FastDownloadTask:getContentLength	()J
+    //   4384: putfield 699	com/tencent/component/network/downloader/DownloadReport:fileSize	J
+    //   4387: aload 29
+    //   4389: aload 23
+    //   4391: putfield 703	com/tencent/component/network/downloader/DownloadReport:response	Lorg/apache/http/HttpResponse;
+    //   4394: aload 29
+    //   4396: aload 22
+    //   4398: putfield 707	com/tencent/component/network/downloader/DownloadReport:okResponse	Lokhttp3/Response;
+    //   4401: aload 29
+    //   4403: iload 4
+    //   4405: putfield 710	com/tencent/component/network/downloader/DownloadReport:httpStatus	I
+    //   4408: aload 29
+    //   4410: aconst_null
+    //   4411: putfield 714	com/tencent/component/network/downloader/DownloadReport:exception	Ljava/lang/Throwable;
+    //   4414: aload 27
+    //   4416: ifnonnull +3593 -> 8009
+    //   4419: aconst_null
+    //   4420: astore 23
+    //   4422: aload 29
+    //   4424: aload 23
+    //   4426: putfield 717	com/tencent/component/network/downloader/DownloadReport:dns	Ljava/lang/String;
+    //   4429: aload 29
+    //   4431: aconst_null
+    //   4432: putfield 720	com/tencent/component/network/downloader/DownloadReport:localAddress	Ljava/lang/String;
+    //   4435: aload 29
+    //   4437: aload_2
+    //   4438: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   4441: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   4444: putfield 721	com/tencent/component/network/downloader/DownloadReport:clientip	Ljava/lang/String;
+    //   4447: aload 29
+    //   4449: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   4452: aload_0
+    //   4453: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   4456: lsub
+    //   4457: putfield 724	com/tencent/component/network/downloader/DownloadReport:totaltime	J
+    //   4460: aload 29
+    //   4462: aload_2
+    //   4463: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   4466: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   4469: putfield 727	com/tencent/component/network/downloader/DownloadReport:downloadTime	J
+    //   4472: aload 29
+    //   4474: aload 29
+    //   4476: getfield 724	com/tencent/component/network/downloader/DownloadReport:totaltime	J
+    //   4479: aload_2
+    //   4480: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   4483: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   4486: lsub
+    //   4487: putfield 730	com/tencent/component/network/downloader/DownloadReport:t_wait	J
+    //   4490: aload 29
+    //   4492: lload 12
+    //   4494: putfield 733	com/tencent/component/network/downloader/DownloadReport:t_prepare	J
+    //   4497: aload 29
+    //   4499: aload_0
+    //   4500: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   4503: putfield 736	com/tencent/component/network/downloader/DownloadReport:t_conn	J
+    //   4506: aload 29
+    //   4508: aload_0
+    //   4509: getfield 46	com/tencent/component/network/downloader/impl/FastDownloadTask:send_req_time	J
+    //   4512: putfield 739	com/tencent/component/network/downloader/DownloadReport:t_recvrsp	J
+    //   4515: aload 29
     //   4517: aload_0
-    //   4518: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   4521: aload_2
-    //   4522: invokevirtual 426	com/tencent/component/network/downloader/DownloadResult:getPath	()Ljava/lang/String;
-    //   4525: aload 23
-    //   4527: aload 22
-    //   4529: invokeinterface 431 5 0
-    //   4534: aload_1
-    //   4535: invokeinterface 317 1 0
-    //   4540: ifne +1295 -> 5835
-    //   4543: aload_0
-    //   4544: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   4547: invokestatic 324	com/tencent/component/network/utils/NetworkUtils:isNetworkAvailable	(Landroid/content/Context;)Z
-    //   4550: istore 18
-    //   4552: aload_2
-    //   4553: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   4556: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   4559: ifne +2970 -> 7529
-    //   4562: new 102	java/lang/StringBuilder
-    //   4565: dup
-    //   4566: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   4569: ldc_w 433
-    //   4572: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4575: aload_0
-    //   4576: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   4579: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4582: ldc_w 435
-    //   4585: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4588: aload_0
-    //   4589: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   4592: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   4595: ldc_w 440
-    //   4598: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4601: astore 29
-    //   4603: aload_0
-    //   4604: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   4607: ifeq +3538 -> 8145
-    //   4610: aload 22
-    //   4612: ifnull +3533 -> 8145
-    //   4615: aload 22
-    //   4617: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   4620: ifnull +3525 -> 8145
-    //   4623: aload 22
-    //   4625: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   4628: invokevirtual 449	com/squareup/okhttp/Protocol:toString	()Ljava/lang/String;
-    //   4631: astore 25
-    //   4633: aload 29
-    //   4635: aload 25
-    //   4637: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4640: ldc_w 451
-    //   4643: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4646: aload 27
-    //   4648: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   4651: ldc_w 456
-    //   4654: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4657: aload 24
-    //   4659: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4662: ldc_w 458
-    //   4665: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4668: aconst_null
-    //   4669: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4672: ldc_w 460
-    //   4675: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4678: invokestatic 147	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   4681: invokevirtual 150	java/lang/Thread:getId	()J
-    //   4684: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   4687: ldc_w 462
-    //   4690: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4693: invokestatic 134	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   4696: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4699: ldc_w 464
-    //   4702: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4705: aload_0
-    //   4706: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   4709: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   4712: ldc_w 466
-    //   4715: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4718: aload_0
-    //   4719: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   4722: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   4725: ldc_w 468
-    //   4728: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4731: astore 29
-    //   4733: aload_0
-    //   4734: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   4737: ifeq +3416 -> 8153
-    //   4740: aload_0
-    //   4741: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   4744: aload_0
-    //   4745: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   4748: invokestatic 267	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
-    //   4751: astore 25
-    //   4753: aload 29
-    //   4755: aload 25
-    //   4757: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   4760: ldc_w 470
-    //   4763: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4766: iload 18
-    //   4768: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   4771: ldc_w 472
-    //   4774: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4777: aload_2
-    //   4778: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   4781: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   4784: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4787: ldc_w 483
-    //   4790: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4793: aload_2
-    //   4794: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   4797: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   4800: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   4803: ldc_w 487
-    //   4806: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4809: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   4812: aload_0
-    //   4813: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   4816: lsub
-    //   4817: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   4820: ldc_w 489
-    //   4823: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4826: aload_2
-    //   4827: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   4830: getfield 492	com/tencent/component/network/downloader/DownloadResult$Content:length	J
-    //   4833: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   4836: ldc_w 494
-    //   4839: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4842: aload_2
-    //   4843: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   4846: getfield 496	com/tencent/component/network/downloader/DownloadResult$Content:size	J
-    //   4849: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   4852: ldc_w 498
-    //   4855: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4858: aload_2
-    //   4859: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   4862: getfield 501	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
-    //   4865: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   4868: ldc_w 503
-    //   4871: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4874: aload_0
-    //   4875: invokevirtual 369	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()I
-    //   4878: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   4881: ldc_w 505
-    //   4884: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4887: aload_0
-    //   4888: invokevirtual 507	com/tencent/component/network/downloader/impl/FastDownloadTask:c	()I
-    //   4891: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   4894: ldc_w 509
-    //   4897: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4900: ldc_w 511
-    //   4903: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4906: aload_2
-    //   4907: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   4910: invokevirtual 514	com/tencent/component/network/downloader/DownloadResult$Status:getFailReason	()I
-    //   4913: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   4916: ldc_w 516
-    //   4919: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4922: iload_3
-    //   4923: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   4926: ldc_w 518
-    //   4929: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4932: aload 28
-    //   4934: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4937: ldc_w 520
-    //   4940: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4943: aload 21
-    //   4945: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4948: ldc_w 522
-    //   4951: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4954: astore 29
-    //   4956: aload_0
-    //   4957: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   4960: ifnull +3199 -> 8159
-    //   4963: aload_0
-    //   4964: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   4967: iconst_0
-    //   4968: bipush 30
-    //   4970: invokevirtual 527	java/lang/String:substring	(II)Ljava/lang/String;
-    //   4973: astore 25
-    //   4975: aload 29
-    //   4977: aload 25
-    //   4979: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4982: ldc_w 529
-    //   4985: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4988: astore 25
+    //   4518: getfield 639	com/tencent/component/network/downloader/impl/FastDownloadTask:t_recv_data	J
+    //   4521: putfield 742	com/tencent/component/network/downloader/DownloadReport:t_recvdata	J
+    //   4524: aload 29
+    //   4526: lconst_0
+    //   4527: putfield 745	com/tencent/component/network/downloader/DownloadReport:t_process	J
+    //   4530: aload 29
+    //   4532: aload_0
+    //   4533: invokevirtual 644	com/tencent/component/network/downloader/impl/FastDownloadTask:getTaskConcurrentCount	()I
+    //   4536: putfield 748	com/tencent/component/network/downloader/DownloadReport:concurrent	I
+    //   4539: aload 29
+    //   4541: aload_2
+    //   4542: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   4545: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   4548: putfield 751	com/tencent/component/network/downloader/DownloadReport:content_type	Ljava/lang/String;
+    //   4551: aload 29
+    //   4553: aload_0
+    //   4554: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   4557: invokestatic 754	com/tencent/component/network/module/base/Config:isFromQzoneAlbum	(Ljava/lang/String;)Z
+    //   4560: putfield 756	com/tencent/component/network/downloader/DownloadReport:isFromQzoneAlbum	Z
+    //   4563: aload 29
+    //   4565: aload_0
+    //   4566: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   4569: putfield 759	com/tencent/component/network/downloader/DownloadReport:isHttp2	Z
+    //   4572: aload_0
+    //   4573: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   4576: ifnull +3443 -> 8019
+    //   4579: aload_0
+    //   4580: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   4583: ldc_w 686
+    //   4586: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   4589: ifeq +3430 -> 8019
+    //   4592: iconst_1
+    //   4593: istore 10
+    //   4595: aload 29
+    //   4597: iload 10
+    //   4599: putfield 762	com/tencent/component/network/downloader/DownloadReport:isHttps	Z
+    //   4602: aload 29
+    //   4604: aload_2
+    //   4605: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   4608: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   4611: putfield 764	com/tencent/component/network/downloader/DownloadReport:isSucceed	Z
+    //   4614: aload 29
+    //   4616: getstatic 770	com/tencent/component/network/downloader/Downloader$DownloadMode:FastMode	Lcom/tencent/component/network/downloader/Downloader$DownloadMode;
+    //   4619: invokevirtual 773	com/tencent/component/network/downloader/Downloader$DownloadMode:ordinal	()I
+    //   4622: putfield 776	com/tencent/component/network/downloader/DownloadReport:downloadMode	I
+    //   4625: aload 22
+    //   4627: ifnull +24 -> 4651
+    //   4630: aload 22
+    //   4632: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   4635: ifnull +16 -> 4651
+    //   4638: aload 29
+    //   4640: aload 22
+    //   4642: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   4645: invokevirtual 541	okhttp3/Protocol:toString	()Ljava/lang/String;
+    //   4648: putfield 778	com/tencent/component/network/downloader/DownloadReport:protocol	Ljava/lang/String;
+    //   4651: aload_2
+    //   4652: aload 29
+    //   4654: invokevirtual 782	com/tencent/component/network/downloader/DownloadResult:setReport	(Lcom/tencent/component/network/downloader/DownloadReport;)V
+    //   4657: aload_2
+    //   4658: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   4661: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   4664: ifeq +11 -> 4675
+    //   4667: aload_0
+    //   4668: aload_1
+    //   4669: aload_2
+    //   4670: aload 29
+    //   4672: invokevirtual 363	com/tencent/component/network/downloader/impl/FastDownloadTask:handleDownloadReportForTask	(Lcom/tencent/component/network/utils/thread/ThreadPool$JobContext;Lcom/tencent/component/network/downloader/DownloadResult;Lcom/tencent/component/network/downloader/DownloadReport;)V
+    //   4675: aload_0
+    //   4676: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   4679: ifeq +3346 -> 8025
+    //   4682: aload_0
+    //   4683: getfield 786	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestCall	Lokhttp3/Call;
+    //   4686: ifnull +12 -> 4698
+    //   4689: aload_0
+    //   4690: getfield 786	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestCall	Lokhttp3/Call;
+    //   4693: invokeinterface 791 1 0
+    //   4698: aload_0
+    //   4699: aconst_null
+    //   4700: putfield 418	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestBuilder	Lokhttp3/Request$Builder;
+    //   4703: iload_3
+    //   4704: iconst_1
+    //   4705: iadd
+    //   4706: istore_3
+    //   4707: goto -4502 -> 205
+    //   4710: aconst_null
+    //   4711: astore 22
+    //   4713: goto -2662 -> 2051
+    //   4716: iconst_0
+    //   4717: istore 5
+    //   4719: goto -2569 -> 2150
+    //   4722: lload 12
+    //   4724: lstore 14
+    //   4726: lload 12
+    //   4728: lstore 16
+    //   4730: aload_0
+    //   4731: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   4734: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   4737: getfield 831	com/tencent/component/network/downloader/common/IPInfo:port	I
+    //   4740: istore 4
+    //   4742: goto -2364 -> 2378
+    //   4745: lload 12
+    //   4747: lstore 14
+    //   4749: lload 12
+    //   4751: lstore 16
+    //   4753: aload 23
+    //   4755: bipush 58
+    //   4757: invokestatic 828	com/tencent/component/network/downloader/common/Utils:count	(Ljava/lang/String;C)I
+    //   4760: iconst_2
+    //   4761: if_icmplt +1822 -> 6583
+    //   4764: lload 12
+    //   4766: lstore 14
+    //   4768: lload 12
+    //   4770: lstore 16
+    //   4772: aload_0
+    //   4773: getfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:mOrigPort	I
+    //   4776: istore 4
+    //   4778: iload 4
+    //   4780: ifle +1780 -> 6560
+    //   4783: lload 12
+    //   4785: lstore 14
+    //   4787: lload 12
+    //   4789: lstore 16
+    //   4791: aload_0
+    //   4792: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   4795: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   4798: iload 4
+    //   4800: putfield 831	com/tencent/component/network/downloader/common/IPInfo:port	I
+    //   4803: lload 12
+    //   4805: lstore 14
+    //   4807: iload 4
+    //   4809: istore 6
+    //   4811: lload 12
+    //   4813: lstore 16
+    //   4815: iload 4
+    //   4817: invokestatic 200	com/tencent/component/network/downloader/common/Utils:isPortValid	(I)Z
+    //   4820: ifne +7 -> 4827
+    //   4823: bipush 80
+    //   4825: istore 6
+    //   4827: lload 12
+    //   4829: lstore 14
+    //   4831: lload 12
+    //   4833: lstore 16
+    //   4835: new 125	java/lang/StringBuilder
+    //   4838: dup
+    //   4839: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   4842: ldc_w 920
+    //   4845: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4848: aload 23
+    //   4850: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4853: ldc_w 922
+    //   4856: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4859: iload 6
+    //   4861: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   4864: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4867: astore 23
+    //   4869: lload 12
+    //   4871: lstore 14
+    //   4873: aload 23
+    //   4875: astore 22
+    //   4877: lload 12
+    //   4879: lstore 16
+    //   4881: aload_0
+    //   4882: getfield 835	com/tencent/component/network/downloader/impl/FastDownloadTask:mDomainWithPort	Ljava/lang/String;
+    //   4885: ifnull -2399 -> 2486
+    //   4888: lload 12
+    //   4890: lstore 14
+    //   4892: lload 12
+    //   4894: lstore 16
+    //   4896: aload_0
+    //   4897: aload_0
+    //   4898: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   4901: aload_0
+    //   4902: getfield 835	com/tencent/component/network/downloader/impl/FastDownloadTask:mDomainWithPort	Ljava/lang/String;
+    //   4905: aload 23
+    //   4907: invokevirtual 839	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   4910: putfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   4913: aload 23
+    //   4915: astore 22
+    //   4917: goto -2431 -> 2486
+    //   4920: astore 22
+    //   4922: aconst_null
+    //   4923: astore 23
+    //   4925: iload 7
+    //   4927: istore 4
+    //   4929: lload 16
+    //   4931: lstore 12
+    //   4933: aload_2
+    //   4934: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   4937: lload 18
+    //   4939: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   4942: invokevirtual 461	com/tencent/component/network/downloader/DownloadResult$Process:setDuration	(JJ)V
+    //   4945: aload_2
+    //   4946: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   4949: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   4952: aload_0
+    //   4953: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   4956: lsub
+    //   4957: putfield 464	com/tencent/component/network/downloader/DownloadResult$Process:totalDuration	J
+    //   4960: aload_2
+    //   4961: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   4964: aload_0
+    //   4965: getfield 467	com/tencent/component/network/downloader/impl/FastDownloadTask:mTaskStartTimeStamp	J
+    //   4968: putfield 470	com/tencent/component/network/downloader/DownloadResult$Process:startTimestamp	J
+    //   4971: aload_0
+    //   4972: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   4975: invokestatic 475	com/tencent/component/network/module/common/NetworkStatus:getInstance	(Landroid/content/Context;)Lcom/tencent/component/network/module/common/NetworkStatus;
+    //   4978: invokevirtual 479	com/tencent/component/network/module/common/NetworkStatus:getDNS	()Lcom/tencent/component/network/utils/NetworkUtils$DNS;
+    //   4981: astore 30
+    //   4983: aload_0
+    //   4984: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   4987: ifnull +11139 -> 16126
     //   4990: aload_0
-    //   4991: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   4994: ifnull +3174 -> 8168
-    //   4997: aload_0
-    //   4998: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   5001: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   5004: istore 4
-    //   5006: aload 25
-    //   5008: iload 4
-    //   5010: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   5013: ldc_w 531
-    //   5016: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5019: aload_2
-    //   5020: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   5023: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   5026: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5029: ldc_w 536
-    //   5032: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5035: lload 8
-    //   5037: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   5040: ldc_w 538
-    //   5043: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5046: aload_0
-    //   5047: getfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   5050: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   5053: ldc_w 505
-    //   5056: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5059: aload_0
-    //   5060: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Int	I
-    //   5063: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   5066: ldc_w 509
-    //   5069: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5072: ldc_w 540
-    //   5075: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5078: aload_0
-    //   5079: getfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Long	J
-    //   5082: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   5085: ldc_w 505
-    //   5088: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5091: aload_0
-    //   5092: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Int	I
-    //   5095: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   5098: ldc_w 509
-    //   5101: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5104: ldc_w 542
-    //   5107: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5110: aload_0
-    //   5111: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   5114: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   5117: ldc_w 544
-    //   5120: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5123: aload_0
-    //   5124: getfield 545	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_Long	J
-    //   5127: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   5130: ldc_w 547
-    //   5133: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5136: aload_0
-    //   5137: invokevirtual 549	com/tencent/component/network/downloader/impl/FastDownloadTask:d	()I
-    //   5140: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   5143: ldc_w 509
-    //   5146: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5149: ldc_w 551
-    //   5152: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5155: astore 29
-    //   5157: aload_0
-    //   5158: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   5161: ifnull +3013 -> 8174
-    //   5164: aload_0
-    //   5165: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   5168: invokeinterface 560 1 0
-    //   5173: astore 25
-    //   5175: aload 26
-    //   5177: aload 29
-    //   5179: aload 25
-    //   5181: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   5184: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   5187: putfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   5190: ldc_w 565
-    //   5193: aload 26
-    //   5195: getfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   5198: aload 20
-    //   5200: invokestatic 381	com/tencent/component/network/module/base/QDLog:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   5203: iload 18
-    //   5205: ifne +8 -> 5213
-    //   5208: aload_0
-    //   5209: iconst_0
-    //   5210: putfield 566	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_Boolean	Z
-    //   5213: aload_2
-    //   5214: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   5217: astore 25
-    //   5219: new 102	java/lang/StringBuilder
-    //   5222: dup
-    //   5223: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   5226: aload_0
-    //   5227: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   5230: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5233: ldc_w 568
-    //   5236: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5239: aload 24
-    //   5241: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5244: ldc_w 570
-    //   5247: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5250: aload_2
-    //   5251: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   5254: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   5257: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5260: ldc_w 572
-    //   5263: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5266: astore 24
-    //   5268: aload_0
-    //   5269: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   5272: ifnull +2943 -> 8215
-    //   5275: aload_0
-    //   5276: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   5279: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   5282: istore 4
-    //   5284: aload 24
-    //   5286: iload 4
-    //   5288: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   5291: ldc_w 516
-    //   5294: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5297: iload_3
-    //   5298: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   5301: ldc_w 472
-    //   5304: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5307: aload_2
-    //   5308: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   5311: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   5314: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5317: ldc_w 574
-    //   5320: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5323: aload_2
-    //   5324: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   5327: getfield 492	com/tencent/component/network/downloader/DownloadResult$Content:length	J
-    //   5330: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   5333: ldc_w 494
-    //   5336: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5339: aload_2
-    //   5340: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   5343: getfield 496	com/tencent/component/network/downloader/DownloadResult$Content:size	J
-    //   5346: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   5349: ldc_w 483
-    //   5352: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5355: aload_2
-    //   5356: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   5359: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   5362: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   5365: ldc_w 487
-    //   5368: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5371: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   5374: aload_0
-    //   5375: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   5378: lsub
-    //   5379: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   5382: astore 24
-    //   5384: aload 21
-    //   5386: invokestatic 214	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   5389: ifne +2832 -> 8221
-    //   5392: new 102	java/lang/StringBuilder
-    //   5395: dup
-    //   5396: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   5399: ldc_w 520
-    //   5402: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5405: aload 21
-    //   5407: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5410: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   5413: astore 21
-    //   5415: aload 25
-    //   5417: aload 24
-    //   5419: aload 21
-    //   5421: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5424: ldc_w 518
-    //   5427: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5430: aload 28
-    //   5432: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5435: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   5438: putfield 577	com/tencent/component/network/downloader/DownloadResult$Status:detailDownloadInfo	Ljava/lang/String;
-    //   5441: getstatic 173	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:d	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   5444: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   5447: aload_0
-    //   5448: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   5451: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   5454: if_icmpne +37 -> 5491
-    //   5457: aload_0
-    //   5458: getfield 197	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   5461: ifnull +30 -> 5491
-    //   5464: aload_0
-    //   5465: getfield 197	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   5468: aload_0
-    //   5469: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   5472: aload_0
-    //   5473: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   5476: invokestatic 580	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
-    //   5479: aload_2
-    //   5480: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   5483: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   5486: invokeinterface 583 4 0
-    //   5491: getstatic 250	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   5494: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   5497: aload_0
-    //   5498: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   5501: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   5504: if_icmpne +37 -> 5541
-    //   5507: aload_0
-    //   5508: getfield 252	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   5511: ifnull +30 -> 5541
-    //   5514: aload_0
-    //   5515: getfield 252	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   5518: aload_0
-    //   5519: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   5522: aload_0
-    //   5523: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   5526: invokestatic 580	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
-    //   5529: aload_2
-    //   5530: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   5533: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   5536: invokeinterface 583 4 0
-    //   5541: iload 18
-    //   5543: ifeq +64 -> 5607
-    //   5546: aload_0
-    //   5547: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   5550: invokestatic 56	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:a	(Landroid/content/Context;)Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy;
-    //   5553: astore 21
-    //   5555: aload_0
-    //   5556: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   5559: astore 24
-    //   5561: aload_0
-    //   5562: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   5565: ifeq +2694 -> 8259
-    //   5568: aload_0
-    //   5569: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   5572: ifnull +2687 -> 8259
-    //   5575: aload_0
-    //   5576: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   5579: ldc_w 585
-    //   5582: invokevirtual 588	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   5585: ifeq +2674 -> 8259
-    //   5588: iconst_1
-    //   5589: istore 18
-    //   5591: aload 21
-    //   5593: aload 24
-    //   5595: iload 18
-    //   5597: aload_2
-    //   5598: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   5601: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   5604: invokevirtual 591	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:a	(Ljava/lang/String;ZZ)V
-    //   5607: aload 26
-    //   5609: invokestatic 359	java/lang/System:currentTimeMillis	()J
-    //   5612: putfield 594	com/tencent/component/network/downloader/DownloadReport:endTime	J
-    //   5615: aload 26
-    //   5617: aload_0
-    //   5618: invokevirtual 596	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()J
-    //   5621: putfield 599	com/tencent/component/network/downloader/DownloadReport:fileSize	J
-    //   5624: aload 26
-    //   5626: aload 23
-    //   5628: putfield 603	com/tencent/component/network/downloader/DownloadReport:response	Lorg/apache/http/HttpResponse;
-    //   5631: aload 26
-    //   5633: aload 22
-    //   5635: putfield 607	com/tencent/component/network/downloader/DownloadReport:okResponse	Lcom/squareup/okhttp/Response;
-    //   5638: aload 26
-    //   5640: iload_3
-    //   5641: putfield 610	com/tencent/component/network/downloader/DownloadReport:httpStatus	I
-    //   5644: aload 26
-    //   5646: aload 20
-    //   5648: putfield 614	com/tencent/component/network/downloader/DownloadReport:exception	Ljava/lang/Throwable;
-    //   5651: aload 27
-    //   5653: ifnonnull +2612 -> 8265
-    //   5656: aconst_null
-    //   5657: astore 20
-    //   5659: aload 26
-    //   5661: aload 20
-    //   5663: putfield 617	com/tencent/component/network/downloader/DownloadReport:dns	Ljava/lang/String;
-    //   5666: aload 26
-    //   5668: aconst_null
-    //   5669: putfield 620	com/tencent/component/network/downloader/DownloadReport:localAddress	Ljava/lang/String;
-    //   5672: aload 26
-    //   5674: aload_2
-    //   5675: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   5678: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   5681: putfield 621	com/tencent/component/network/downloader/DownloadReport:clientip	Ljava/lang/String;
-    //   5684: aload 26
-    //   5686: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   5689: aload_0
-    //   5690: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   5693: lsub
-    //   5694: putfield 624	com/tencent/component/network/downloader/DownloadReport:totaltime	J
-    //   5697: aload 26
-    //   5699: aload_2
-    //   5700: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   5703: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   5706: putfield 627	com/tencent/component/network/downloader/DownloadReport:downloadTime	J
-    //   5709: aload 26
-    //   5711: aload 26
-    //   5713: getfield 624	com/tencent/component/network/downloader/DownloadReport:totaltime	J
-    //   5716: aload_2
-    //   5717: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   5720: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   5723: lsub
-    //   5724: putfield 630	com/tencent/component/network/downloader/DownloadReport:t_wait	J
-    //   5727: aload 26
-    //   5729: lload 8
-    //   5731: putfield 633	com/tencent/component/network/downloader/DownloadReport:t_prepare	J
-    //   5734: aload 26
-    //   5736: aload_0
-    //   5737: getfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   5740: putfield 636	com/tencent/component/network/downloader/DownloadReport:t_conn	J
-    //   5743: aload 26
-    //   5745: aload_0
-    //   5746: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   5749: putfield 639	com/tencent/component/network/downloader/DownloadReport:t_recvrsp	J
-    //   5752: aload 26
-    //   5754: aload_0
-    //   5755: getfield 545	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_Long	J
-    //   5758: putfield 642	com/tencent/component/network/downloader/DownloadReport:t_recvdata	J
-    //   5761: aload 26
-    //   5763: lconst_0
-    //   5764: putfield 645	com/tencent/component/network/downloader/DownloadReport:t_process	J
-    //   5767: aload 26
-    //   5769: aload_0
-    //   5770: invokevirtual 549	com/tencent/component/network/downloader/impl/FastDownloadTask:d	()I
-    //   5773: putfield 648	com/tencent/component/network/downloader/DownloadReport:concurrent	I
-    //   5776: aload 26
-    //   5778: aload_2
-    //   5779: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   5782: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   5785: putfield 651	com/tencent/component/network/downloader/DownloadReport:content_type	Ljava/lang/String;
-    //   5788: aload 26
-    //   5790: aload_0
-    //   5791: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   5794: invokestatic 655	com/tencent/component/network/module/base/Config:b	(Ljava/lang/String;)Z
-    //   5797: putfield 658	com/tencent/component/network/downloader/DownloadReport:isFromQzoneAlbum	Z
-    //   5800: aload 26
-    //   5802: aload_0
-    //   5803: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   5806: putfield 661	com/tencent/component/network/downloader/DownloadReport:isHttp2	Z
-    //   5809: aload 26
-    //   5811: aload_2
-    //   5812: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   5815: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   5818: putfield 663	com/tencent/component/network/downloader/DownloadReport:isSucceed	Z
-    //   5821: aload_2
-    //   5822: aload 26
-    //   5824: invokevirtual 667	com/tencent/component/network/downloader/DownloadResult:setReport	(Lcom/tencent/component/network/downloader/DownloadReport;)V
-    //   5827: aload_0
-    //   5828: aload_1
-    //   5829: aload_2
-    //   5830: aload 26
-    //   5832: invokevirtual 320	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(Lcom/tencent/component/network/utils/thread/ThreadPool$JobContext;Lcom/tencent/component/network/downloader/DownloadResult;Lcom/tencent/component/network/downloader/DownloadReport;)V
-    //   5835: aload_0
-    //   5836: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   5839: ifeq +2436 -> 8275
-    //   5842: aload_0
-    //   5843: getfield 670	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpCall	Lcom/squareup/okhttp/Call;
-    //   5846: ifnull +10 -> 5856
-    //   5849: aload_0
-    //   5850: getfield 670	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpCall	Lcom/squareup/okhttp/Call;
-    //   5853: invokevirtual 675	com/squareup/okhttp/Call:cancel	()V
-    //   5856: aload_0
-    //   5857: aconst_null
-    //   5858: putfield 368	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpRequest$Builder	Lcom/squareup/okhttp/Request$Builder;
-    //   5861: aload 19
-    //   5863: athrow
-    //   5864: lload 8
-    //   5866: lstore 10
-    //   5868: lload 8
-    //   5870: lstore 12
-    //   5872: aload_0
-    //   5873: getfield 368	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpRequest$Builder	Lcom/squareup/okhttp/Request$Builder;
-    //   5876: ifnull +9508 -> 15384
-    //   5879: lload 8
-    //   5881: lstore 10
-    //   5883: lload 8
-    //   5885: lstore 12
-    //   5887: aload_0
-    //   5888: aload_0
-    //   5889: getfield 782	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkUtilsHttpBaseQZoneHttp2Client	Lcom/tencent/component/network/utils/http/base/QZoneHttp2Client;
-    //   5892: aload_0
-    //   5893: getfield 368	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpRequest$Builder	Lcom/squareup/okhttp/Request$Builder;
-    //   5896: invokevirtual 788	com/squareup/okhttp/Request$Builder:build	()Lcom/squareup/okhttp/Request;
-    //   5899: aload 24
-    //   5901: invokevirtual 793	com/tencent/component/network/utils/http/base/QZoneHttp2Client:a	(Lcom/squareup/okhttp/Request;Lcom/tencent/component/network/utils/http/HttpUtil$RequestOptions;)Lcom/squareup/okhttp/Call;
-    //   5904: putfield 670	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpCall	Lcom/squareup/okhttp/Call;
-    //   5907: lload 8
-    //   5909: lstore 10
-    //   5911: lload 8
-    //   5913: lstore 12
-    //   5915: aload_0
-    //   5916: getfield 670	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpCall	Lcom/squareup/okhttp/Call;
-    //   5919: invokevirtual 796	com/squareup/okhttp/Call:execute	()Lcom/squareup/okhttp/Response;
-    //   5922: astore 20
-    //   5924: aconst_null
-    //   5925: astore 19
-    //   5927: aconst_null
-    //   5928: astore 21
-    //   5930: goto -3254 -> 2676
-    //   5933: aload 20
-    //   5935: ifnull +9444 -> 15379
-    //   5938: aload 20
-    //   5940: invokevirtual 799	com/squareup/okhttp/Response:code	()I
-    //   5943: istore_3
-    //   5944: goto -3218 -> 2726
-    //   5947: sipush 416
-    //   5950: iload_3
-    //   5951: if_icmpne +1532 -> 7483
-    //   5954: aload_0
-    //   5955: ldc_w 801
-    //   5958: invokevirtual 802	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(Ljava/lang/String;)V
-    //   5961: aload_2
-    //   5962: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   5965: bipush 7
-    //   5967: invokevirtual 336	com/tencent/component/network/downloader/DownloadResult$Status:setFailed	(I)V
-    //   5970: iload_3
-    //   5971: istore 5
-    //   5973: aload_0
-    //   5974: getfield 423	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
-    //   5977: ifnull +20 -> 5997
-    //   5980: aload_0
-    //   5981: getfield 423	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
-    //   5984: aload_0
-    //   5985: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   5988: iconst_1
-    //   5989: invokeinterface 805 3 0
-    //   5994: iload_3
-    //   5995: istore 5
-    //   5997: aload_2
-    //   5998: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   6001: lload 14
-    //   6003: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   6006: invokevirtual 393	com/tencent/component/network/downloader/DownloadResult$Process:a	(JJ)V
-    //   6009: aload_0
-    //   6010: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   6013: invokestatic 398	com/tencent/component/network/module/common/NetworkStatus:a	(Landroid/content/Context;)Lcom/tencent/component/network/module/common/NetworkStatus;
-    //   6016: invokevirtual 401	com/tencent/component/network/module/common/NetworkStatus:a	()Lcom/tencent/component/network/utils/NetworkUtils$DNS;
-    //   6019: astore 24
-    //   6021: aload_0
-    //   6022: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   6025: ifnull +8379 -> 14404
-    //   6028: aload_0
-    //   6029: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   6032: invokevirtual 404	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:a	()Lcom/tencent/component/network/downloader/common/IPInfo;
-    //   6035: ifnull +8369 -> 14404
-    //   6038: aload_0
-    //   6039: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   6042: invokevirtual 404	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:a	()Lcom/tencent/component/network/downloader/common/IPInfo;
-    //   6045: getfield 406	com/tencent/component/network/downloader/common/IPInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   6048: astore 22
-    //   6050: aload_0
-    //   6051: aload_0
-    //   6052: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   6055: aload 19
-    //   6057: aload 20
-    //   6059: invokevirtual 409	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(Lorg/apache/http/HttpRequest;Lorg/apache/http/HttpResponse;Lcom/squareup/okhttp/Response;)Ljava/lang/String;
-    //   6062: astore 25
-    //   6064: aload 21
-    //   6066: ifnull +9265 -> 15331
-    //   6069: aload 21
-    //   6071: ldc_w 411
-    //   6074: invokeinterface 417 2 0
-    //   6079: checkcast 217	java/lang/String
-    //   6082: astore 21
-    //   6084: aload_0
-    //   6085: lconst_0
-    //   6086: putfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   6089: aload_0
-    //   6090: iconst_0
-    //   6091: putfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Int	I
-    //   6094: aload_0
-    //   6095: lconst_0
-    //   6096: putfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Long	J
-    //   6099: aload_0
-    //   6100: iconst_0
-    //   6101: putfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Int	I
-    //   6104: aload_2
-    //   6105: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   6108: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   6111: ifeq +12 -> 6123
-    //   6114: aload_1
-    //   6115: invokeinterface 317 1 0
-    //   6120: ifeq +31 -> 6151
+    //   4991: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   4994: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   4997: ifnull +11129 -> 16126
+    //   5000: aload_0
+    //   5001: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   5004: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   5007: getfield 486	com/tencent/component/network/downloader/common/IPInfo:ip	Ljava/lang/String;
+    //   5010: astore 27
+    //   5012: aload_0
+    //   5013: aload_0
+    //   5014: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   5017: aload 26
+    //   5019: aload 25
+    //   5021: invokevirtual 490	com/tencent/component/network/downloader/impl/FastDownloadTask:parserHttpHeaderInfo	(Lorg/apache/http/HttpRequest;Lorg/apache/http/HttpResponse;Lokhttp3/Response;)Ljava/lang/String;
+    //   5024: astore 31
+    //   5026: aload 24
+    //   5028: ifnull +12044 -> 17072
+    //   5031: aload 24
+    //   5033: ldc_w 492
+    //   5036: invokeinterface 498 2 0
+    //   5041: checkcast 282	java/lang/String
+    //   5044: astore 24
+    //   5046: aload_2
+    //   5047: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   5050: aload 24
+    //   5052: putfield 507	com/tencent/component/network/downloader/DownloadResult$Content:redirectUrl	Ljava/lang/String;
+    //   5055: aload_0
+    //   5056: lconst_0
+    //   5057: putfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   5060: aload_0
+    //   5061: iconst_0
+    //   5062: putfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_retry	I
+    //   5065: aload_0
+    //   5066: lconst_0
+    //   5067: putfield 42	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_time	J
+    //   5070: aload_0
+    //   5071: iconst_0
+    //   5072: putfield 44	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_retry	I
+    //   5075: aload_2
+    //   5076: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   5079: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   5082: ifeq +12 -> 5094
+    //   5085: aload_1
+    //   5086: invokeinterface 359 1 0
+    //   5091: ifeq +31 -> 5122
+    //   5094: aload_0
+    //   5095: getfield 514	com/tencent/component/network/downloader/impl/FastDownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
+    //   5098: ifnull +24 -> 5122
+    //   5101: aload_0
+    //   5102: getfield 514	com/tencent/component/network/downloader/impl/FastDownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
+    //   5105: aload_0
+    //   5106: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   5109: aload_2
+    //   5110: invokevirtual 517	com/tencent/component/network/downloader/DownloadResult:getPath	()Ljava/lang/String;
+    //   5113: aload 26
+    //   5115: aload 25
+    //   5117: invokeinterface 523 5 0
+    //   5122: aload_1
+    //   5123: invokeinterface 359 1 0
+    //   5128: ifne +1401 -> 6529
+    //   5131: aload_0
+    //   5132: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   5135: invokestatic 367	com/tencent/component/network/utils/NetworkUtils:isNetworkAvailable	(Landroid/content/Context;)Z
+    //   5138: istore 10
+    //   5140: aload_2
+    //   5141: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   5144: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   5147: ifne +11029 -> 16176
+    //   5150: new 125	java/lang/StringBuilder
+    //   5153: dup
+    //   5154: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   5157: ldc_w 525
+    //   5160: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5163: aload_0
+    //   5164: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   5167: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5170: ldc_w 527
+    //   5173: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5176: aload_0
+    //   5177: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   5180: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   5183: ldc_w 532
+    //   5186: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5189: astore 32
+    //   5191: aload_0
+    //   5192: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   5195: ifeq +10947 -> 16142
+    //   5198: aload 25
+    //   5200: ifnull +10942 -> 16142
+    //   5203: aload 25
+    //   5205: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   5208: ifnull +10934 -> 16142
+    //   5211: aload 25
+    //   5213: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   5216: invokevirtual 541	okhttp3/Protocol:toString	()Ljava/lang/String;
+    //   5219: astore 28
+    //   5221: aload 32
+    //   5223: aload 28
+    //   5225: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5228: ldc_w 543
+    //   5231: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5234: aload 30
+    //   5236: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   5239: ldc_w 548
+    //   5242: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5245: aload 27
+    //   5247: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5250: ldc_w 550
+    //   5253: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5256: aconst_null
+    //   5257: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5260: ldc_w 552
+    //   5263: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5266: invokestatic 171	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   5269: invokevirtual 174	java/lang/Thread:getId	()J
+    //   5272: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   5275: ldc_w 554
+    //   5278: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5281: invokestatic 158	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   5284: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5287: ldc_w 556
+    //   5290: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5293: aload_0
+    //   5294: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   5297: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   5300: ldc_w 558
+    //   5303: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5306: aload_0
+    //   5307: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   5310: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   5313: ldc_w 560
+    //   5316: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5319: astore 32
+    //   5321: aload_0
+    //   5322: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   5325: ifeq +10825 -> 16150
+    //   5328: aload_0
+    //   5329: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   5332: aload_0
+    //   5333: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   5336: invokestatic 322	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
+    //   5339: astore 28
+    //   5341: aload 32
+    //   5343: aload 28
+    //   5345: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   5348: ldc_w 562
+    //   5351: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5354: iload 10
+    //   5356: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   5359: ldc_w 564
+    //   5362: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5365: invokestatic 569	com/tencent/component/network/module/base/Config:getNetworkStackType	()I
+    //   5368: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   5371: ldc_w 571
+    //   5374: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5377: aload_2
+    //   5378: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   5381: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   5384: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5387: ldc_w 576
+    //   5390: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5393: aload_2
+    //   5394: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   5397: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   5400: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   5403: ldc_w 581
+    //   5406: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5409: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   5412: aload_0
+    //   5413: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   5416: lsub
+    //   5417: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   5420: ldc_w 583
+    //   5423: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5426: aload_2
+    //   5427: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   5430: getfield 586	com/tencent/component/network/downloader/DownloadResult$Content:length	J
+    //   5433: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   5436: ldc_w 588
+    //   5439: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5442: aload_2
+    //   5443: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   5446: getfield 590	com/tencent/component/network/downloader/DownloadResult$Content:size	J
+    //   5449: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   5452: ldc_w 592
+    //   5455: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5458: aload_2
+    //   5459: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   5462: getfield 595	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
+    //   5465: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   5468: ldc_w 597
+    //   5471: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5474: aload_0
+    //   5475: invokevirtual 421	com/tencent/component/network/downloader/impl/FastDownloadTask:getCurrAttemptCount	()I
+    //   5478: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   5481: ldc_w 599
+    //   5484: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5487: aload_0
+    //   5488: invokevirtual 602	com/tencent/component/network/downloader/impl/FastDownloadTask:getTotalAttemptCount	()I
+    //   5491: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   5494: ldc_w 604
+    //   5497: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5500: aload_2
+    //   5501: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   5504: invokevirtual 607	com/tencent/component/network/downloader/DownloadResult$Status:getFailReason	()I
+    //   5507: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   5510: ldc_w 609
+    //   5513: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5516: iload 4
+    //   5518: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   5521: ldc_w 611
+    //   5524: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5527: aload 31
+    //   5529: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5532: ldc_w 613
+    //   5535: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5538: aload 24
+    //   5540: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5543: ldc_w 615
+    //   5546: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5549: astore 32
+    //   5551: aload_0
+    //   5552: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   5555: ifnull +10601 -> 16156
+    //   5558: aload_0
+    //   5559: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   5562: iconst_0
+    //   5563: bipush 30
+    //   5565: invokevirtual 619	java/lang/String:substring	(II)Ljava/lang/String;
+    //   5568: astore 28
+    //   5570: aload 32
+    //   5572: aload 28
+    //   5574: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5577: ldc_w 621
+    //   5580: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5583: astore 28
+    //   5585: aload_0
+    //   5586: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   5589: ifnull +10576 -> 16165
+    //   5592: aload_0
+    //   5593: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   5596: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   5599: istore_3
+    //   5600: aload 28
+    //   5602: iload_3
+    //   5603: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   5606: ldc_w 623
+    //   5609: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5612: aload_2
+    //   5613: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   5616: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   5619: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5622: ldc_w 628
+    //   5625: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5628: lload 12
+    //   5630: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   5633: ldc_w 630
+    //   5636: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5639: aload_0
+    //   5640: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   5643: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   5646: ldc_w 599
+    //   5649: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5652: aload_0
+    //   5653: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_retry	I
+    //   5656: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   5659: ldc_w 632
+    //   5662: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5665: aload_0
+    //   5666: getfield 42	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_time	J
+    //   5669: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   5672: ldc_w 599
+    //   5675: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5678: aload_0
+    //   5679: getfield 44	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_retry	I
+    //   5682: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   5685: ldc_w 634
+    //   5688: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5691: aload_0
+    //   5692: getfield 46	com/tencent/component/network/downloader/impl/FastDownloadTask:send_req_time	J
+    //   5695: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   5698: ldc_w 636
+    //   5701: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5704: aload_0
+    //   5705: getfield 639	com/tencent/component/network/downloader/impl/FastDownloadTask:t_recv_data	J
+    //   5708: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   5711: ldc_w 641
+    //   5714: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5717: aload_0
+    //   5718: invokevirtual 644	com/tencent/component/network/downloader/impl/FastDownloadTask:getTaskConcurrentCount	()I
+    //   5721: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   5724: ldc_w 646
+    //   5727: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5730: astore 32
+    //   5732: aload_0
+    //   5733: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   5736: ifnull +10434 -> 16170
+    //   5739: aload_0
+    //   5740: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   5743: invokeinterface 656 1 0
+    //   5748: astore 28
+    //   5750: aload 29
+    //   5752: aload 32
+    //   5754: aload 28
+    //   5756: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   5759: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   5762: putfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   5765: ldc_w 447
+    //   5768: aload 29
+    //   5770: getfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   5773: aload 23
+    //   5775: invokestatic 432	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   5778: aload_0
+    //   5779: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   5782: ifnull +24 -> 5806
+    //   5785: aload_0
+    //   5786: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   5789: ldc_w 439
+    //   5792: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   5795: ifeq +11 -> 5806
+    //   5798: aload_0
+    //   5799: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   5802: iconst_0
+    //   5803: invokestatic 665	com/tencent/component/network/utils/http/pool/CustomDnsResolve:setIPDirectEnable	(Ljava/lang/String;Z)V
+    //   5806: iload 10
+    //   5808: ifne +8 -> 5816
+    //   5811: aload_0
+    //   5812: iconst_0
+    //   5813: putfield 668	com/tencent/component/network/downloader/impl/FastDownloadTask:mShouldReport	Z
+    //   5816: aload_2
+    //   5817: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   5820: astore 28
+    //   5822: new 125	java/lang/StringBuilder
+    //   5825: dup
+    //   5826: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   5829: aload_0
+    //   5830: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   5833: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5836: ldc_w 670
+    //   5839: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5842: aload 27
+    //   5844: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5847: ldc_w 672
+    //   5850: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5853: aload_2
+    //   5854: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   5857: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   5860: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5863: ldc_w 674
+    //   5866: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5869: astore 27
+    //   5871: aload_0
+    //   5872: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   5875: ifnull +10938 -> 16813
+    //   5878: aload_0
+    //   5879: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   5882: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   5885: istore_3
+    //   5886: aload 27
+    //   5888: iload_3
+    //   5889: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   5892: ldc_w 609
+    //   5895: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5898: iload 4
+    //   5900: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   5903: ldc_w 571
+    //   5906: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5909: aload_2
+    //   5910: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   5913: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   5916: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5919: ldc_w 583
+    //   5922: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5925: aload_2
+    //   5926: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   5929: getfield 586	com/tencent/component/network/downloader/DownloadResult$Content:length	J
+    //   5932: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   5935: ldc_w 588
+    //   5938: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5941: aload_2
+    //   5942: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   5945: getfield 590	com/tencent/component/network/downloader/DownloadResult$Content:size	J
+    //   5948: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   5951: ldc_w 576
+    //   5954: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5957: aload_2
+    //   5958: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   5961: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   5964: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   5967: ldc_w 581
+    //   5970: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5973: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   5976: aload_0
+    //   5977: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   5980: lsub
+    //   5981: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   5984: astore 27
+    //   5986: aload 24
+    //   5988: invokestatic 252	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   5991: ifne +10827 -> 16818
+    //   5994: new 125	java/lang/StringBuilder
+    //   5997: dup
+    //   5998: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   6001: ldc_w 613
+    //   6004: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6007: aload 24
+    //   6009: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6012: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   6015: astore 24
+    //   6017: aload 28
+    //   6019: aload 27
+    //   6021: aload 24
+    //   6023: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6026: ldc_w 611
+    //   6029: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6032: aload 31
+    //   6034: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6037: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   6040: putfield 677	com/tencent/component/network/downloader/DownloadResult$Status:detailDownloadInfo	Ljava/lang/String;
+    //   6043: aload_0
+    //   6044: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   6047: ifnull +53 -> 6100
+    //   6050: getstatic 203	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:Strategy_BACKUPIP	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   6053: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   6056: aload_0
+    //   6057: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   6060: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   6063: if_icmpne +37 -> 6100
+    //   6066: aload_0
+    //   6067: getfield 232	com/tencent/component/network/downloader/impl/FastDownloadTask:pBackupIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   6070: ifnull +30 -> 6100
+    //   6073: aload_0
+    //   6074: getfield 232	com/tencent/component/network/downloader/impl/FastDownloadTask:pBackupIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   6077: aload_0
+    //   6078: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   6081: aload_0
+    //   6082: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   6085: invokestatic 680	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
+    //   6088: aload_2
+    //   6089: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   6092: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   6095: invokeinterface 684 4 0
+    //   6100: aload_0
+    //   6101: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   6104: ifnull +53 -> 6157
+    //   6107: getstatic 297	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:Strategy_DomainDirect	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   6110: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   6113: aload_0
+    //   6114: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   6117: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   6120: if_icmpne +37 -> 6157
     //   6123: aload_0
-    //   6124: getfield 423	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
-    //   6127: ifnull +24 -> 6151
+    //   6124: getfield 300	com/tencent/component/network/downloader/impl/FastDownloadTask:pDirectIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   6127: ifnull +30 -> 6157
     //   6130: aload_0
-    //   6131: getfield 423	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
+    //   6131: getfield 300	com/tencent/component/network/downloader/impl/FastDownloadTask:pDirectIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
     //   6134: aload_0
-    //   6135: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   6138: aload_2
-    //   6139: invokevirtual 426	com/tencent/component/network/downloader/DownloadResult:getPath	()Ljava/lang/String;
-    //   6142: aload 19
-    //   6144: aload 20
-    //   6146: invokeinterface 431 5 0
-    //   6151: aload_1
-    //   6152: invokeinterface 317 1 0
-    //   6157: ifne +1292 -> 7449
-    //   6160: aload_0
-    //   6161: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   6164: invokestatic 324	com/tencent/component/network/utils/NetworkUtils:isNetworkAvailable	(Landroid/content/Context;)Z
-    //   6167: istore 18
-    //   6169: aload_2
-    //   6170: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   6173: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   6176: ifne +8244 -> 14420
-    //   6179: new 102	java/lang/StringBuilder
-    //   6182: dup
-    //   6183: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   6186: ldc_w 433
-    //   6189: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6192: aload_0
-    //   6193: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   6196: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6199: ldc_w 435
-    //   6202: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6205: aload_0
-    //   6206: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   6209: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   6212: ldc_w 440
-    //   6215: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6218: astore 27
-    //   6220: aload_0
-    //   6221: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   6224: ifeq +8811 -> 15035
-    //   6227: aload 20
-    //   6229: ifnull +8806 -> 15035
-    //   6232: aload 20
-    //   6234: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   6237: ifnull +8798 -> 15035
-    //   6240: aload 20
-    //   6242: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   6245: invokevirtual 449	com/squareup/okhttp/Protocol:toString	()Ljava/lang/String;
-    //   6248: astore 23
-    //   6250: aload 27
-    //   6252: aload 23
-    //   6254: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6257: ldc_w 451
-    //   6260: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6263: aload 24
-    //   6265: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   6268: ldc_w 456
-    //   6271: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6274: aload 22
-    //   6276: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6279: ldc_w 458
-    //   6282: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6135: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   6138: aload_0
+    //   6139: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   6142: invokestatic 680	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
+    //   6145: aload_2
+    //   6146: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   6149: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   6152: invokeinterface 684 4 0
+    //   6157: iload 10
+    //   6159: ifeq +64 -> 6223
+    //   6162: aload_0
+    //   6163: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   6166: invokestatic 67	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:getInstance	(Landroid/content/Context;)Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy;
+    //   6169: astore 24
+    //   6171: aload_0
+    //   6172: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   6175: astore 27
+    //   6177: aload_0
+    //   6178: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   6181: ifeq +10675 -> 16856
+    //   6184: aload_0
+    //   6185: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   6188: ifnull +10668 -> 16856
+    //   6191: aload_0
+    //   6192: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   6195: ldc_w 686
+    //   6198: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   6201: ifeq +10655 -> 16856
+    //   6204: iconst_1
+    //   6205: istore 10
+    //   6207: aload 24
+    //   6209: aload 27
+    //   6211: iload 10
+    //   6213: aload_2
+    //   6214: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   6217: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   6220: invokevirtual 690	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:reportHttps	(Ljava/lang/String;ZZ)V
+    //   6223: aload 29
+    //   6225: invokestatic 407	java/lang/System:currentTimeMillis	()J
+    //   6228: putfield 693	com/tencent/component/network/downloader/DownloadReport:endTime	J
+    //   6231: aload 29
+    //   6233: aload_0
+    //   6234: invokevirtual 696	com/tencent/component/network/downloader/impl/FastDownloadTask:getContentLength	()J
+    //   6237: putfield 699	com/tencent/component/network/downloader/DownloadReport:fileSize	J
+    //   6240: aload 29
+    //   6242: aload 26
+    //   6244: putfield 703	com/tencent/component/network/downloader/DownloadReport:response	Lorg/apache/http/HttpResponse;
+    //   6247: aload 29
+    //   6249: aload 25
+    //   6251: putfield 707	com/tencent/component/network/downloader/DownloadReport:okResponse	Lokhttp3/Response;
+    //   6254: aload 29
+    //   6256: iload 4
+    //   6258: putfield 710	com/tencent/component/network/downloader/DownloadReport:httpStatus	I
+    //   6261: aload 29
+    //   6263: aload 23
+    //   6265: putfield 714	com/tencent/component/network/downloader/DownloadReport:exception	Ljava/lang/Throwable;
+    //   6268: aload 30
+    //   6270: ifnonnull +10592 -> 16862
+    //   6273: aconst_null
+    //   6274: astore 23
+    //   6276: aload 29
+    //   6278: aload 23
+    //   6280: putfield 717	com/tencent/component/network/downloader/DownloadReport:dns	Ljava/lang/String;
+    //   6283: aload 29
     //   6285: aconst_null
-    //   6286: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6289: ldc_w 460
-    //   6292: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6295: invokestatic 147	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   6298: invokevirtual 150	java/lang/Thread:getId	()J
-    //   6301: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   6304: ldc_w 462
-    //   6307: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6310: invokestatic 134	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   6313: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6316: ldc_w 464
-    //   6319: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6322: aload_0
-    //   6323: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   6326: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   6329: ldc_w 466
-    //   6332: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6335: aload_0
-    //   6336: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   6339: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   6342: ldc_w 468
-    //   6345: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6348: astore 27
-    //   6350: aload_0
-    //   6351: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   6354: ifeq +8689 -> 15043
-    //   6357: aload_0
-    //   6358: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   6361: aload_0
-    //   6362: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   6365: invokestatic 267	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
-    //   6368: astore 23
-    //   6370: aload 27
-    //   6372: aload 23
-    //   6374: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   6377: ldc_w 470
-    //   6380: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6383: iload 18
-    //   6385: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   6388: ldc_w 472
-    //   6391: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6394: aload_2
-    //   6395: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   6398: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   6401: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6404: ldc_w 483
-    //   6407: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6410: aload_2
-    //   6411: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   6414: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   6417: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   6420: ldc_w 487
-    //   6423: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6426: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   6429: aload_0
-    //   6430: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   6433: lsub
-    //   6434: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   6437: ldc_w 489
-    //   6440: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6443: aload_2
-    //   6444: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   6447: getfield 492	com/tencent/component/network/downloader/DownloadResult$Content:length	J
-    //   6450: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   6453: ldc_w 494
-    //   6456: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6459: aload_2
-    //   6460: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   6463: getfield 496	com/tencent/component/network/downloader/DownloadResult$Content:size	J
-    //   6466: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   6469: ldc_w 498
-    //   6472: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6475: aload_2
-    //   6476: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   6479: getfield 501	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
-    //   6482: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   6485: ldc_w 503
-    //   6488: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6491: aload_0
-    //   6492: invokevirtual 369	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()I
-    //   6495: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   6498: ldc_w 505
-    //   6501: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6504: aload_0
-    //   6505: invokevirtual 507	com/tencent/component/network/downloader/impl/FastDownloadTask:c	()I
-    //   6508: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   6511: ldc_w 509
-    //   6514: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6517: ldc_w 511
-    //   6520: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6286: putfield 720	com/tencent/component/network/downloader/DownloadReport:localAddress	Ljava/lang/String;
+    //   6289: aload 29
+    //   6291: aload_2
+    //   6292: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   6295: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   6298: putfield 721	com/tencent/component/network/downloader/DownloadReport:clientip	Ljava/lang/String;
+    //   6301: aload 29
+    //   6303: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   6306: aload_0
+    //   6307: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   6310: lsub
+    //   6311: putfield 724	com/tencent/component/network/downloader/DownloadReport:totaltime	J
+    //   6314: aload 29
+    //   6316: aload_2
+    //   6317: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   6320: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   6323: putfield 727	com/tencent/component/network/downloader/DownloadReport:downloadTime	J
+    //   6326: aload 29
+    //   6328: aload 29
+    //   6330: getfield 724	com/tencent/component/network/downloader/DownloadReport:totaltime	J
+    //   6333: aload_2
+    //   6334: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   6337: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   6340: lsub
+    //   6341: putfield 730	com/tencent/component/network/downloader/DownloadReport:t_wait	J
+    //   6344: aload 29
+    //   6346: lload 12
+    //   6348: putfield 733	com/tencent/component/network/downloader/DownloadReport:t_prepare	J
+    //   6351: aload 29
+    //   6353: aload_0
+    //   6354: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   6357: putfield 736	com/tencent/component/network/downloader/DownloadReport:t_conn	J
+    //   6360: aload 29
+    //   6362: aload_0
+    //   6363: getfield 46	com/tencent/component/network/downloader/impl/FastDownloadTask:send_req_time	J
+    //   6366: putfield 739	com/tencent/component/network/downloader/DownloadReport:t_recvrsp	J
+    //   6369: aload 29
+    //   6371: aload_0
+    //   6372: getfield 639	com/tencent/component/network/downloader/impl/FastDownloadTask:t_recv_data	J
+    //   6375: putfield 742	com/tencent/component/network/downloader/DownloadReport:t_recvdata	J
+    //   6378: aload 29
+    //   6380: lconst_0
+    //   6381: putfield 745	com/tencent/component/network/downloader/DownloadReport:t_process	J
+    //   6384: aload 29
+    //   6386: aload_0
+    //   6387: invokevirtual 644	com/tencent/component/network/downloader/impl/FastDownloadTask:getTaskConcurrentCount	()I
+    //   6390: putfield 748	com/tencent/component/network/downloader/DownloadReport:concurrent	I
+    //   6393: aload 29
+    //   6395: aload_2
+    //   6396: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   6399: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   6402: putfield 751	com/tencent/component/network/downloader/DownloadReport:content_type	Ljava/lang/String;
+    //   6405: aload 29
+    //   6407: aload_0
+    //   6408: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   6411: invokestatic 754	com/tencent/component/network/module/base/Config:isFromQzoneAlbum	(Ljava/lang/String;)Z
+    //   6414: putfield 756	com/tencent/component/network/downloader/DownloadReport:isFromQzoneAlbum	Z
+    //   6417: aload 29
+    //   6419: aload_0
+    //   6420: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   6423: putfield 759	com/tencent/component/network/downloader/DownloadReport:isHttp2	Z
+    //   6426: aload_0
+    //   6427: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   6430: ifnull +10442 -> 16872
+    //   6433: aload_0
+    //   6434: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   6437: ldc_w 686
+    //   6440: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   6443: ifeq +10429 -> 16872
+    //   6446: iconst_1
+    //   6447: istore 10
+    //   6449: aload 29
+    //   6451: iload 10
+    //   6453: putfield 762	com/tencent/component/network/downloader/DownloadReport:isHttps	Z
+    //   6456: aload 29
+    //   6458: aload_2
+    //   6459: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   6462: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   6465: putfield 764	com/tencent/component/network/downloader/DownloadReport:isSucceed	Z
+    //   6468: aload 29
+    //   6470: getstatic 770	com/tencent/component/network/downloader/Downloader$DownloadMode:FastMode	Lcom/tencent/component/network/downloader/Downloader$DownloadMode;
+    //   6473: invokevirtual 773	com/tencent/component/network/downloader/Downloader$DownloadMode:ordinal	()I
+    //   6476: putfield 776	com/tencent/component/network/downloader/DownloadReport:downloadMode	I
+    //   6479: aload 25
+    //   6481: ifnull +24 -> 6505
+    //   6484: aload 25
+    //   6486: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   6489: ifnull +16 -> 6505
+    //   6492: aload 29
+    //   6494: aload 25
+    //   6496: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   6499: invokevirtual 541	okhttp3/Protocol:toString	()Ljava/lang/String;
+    //   6502: putfield 778	com/tencent/component/network/downloader/DownloadReport:protocol	Ljava/lang/String;
+    //   6505: aload_2
+    //   6506: aload 29
+    //   6508: invokevirtual 782	com/tencent/component/network/downloader/DownloadResult:setReport	(Lcom/tencent/component/network/downloader/DownloadReport;)V
+    //   6511: aload_2
+    //   6512: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   6515: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   6518: ifeq +11 -> 6529
+    //   6521: aload_0
+    //   6522: aload_1
     //   6523: aload_2
-    //   6524: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   6527: invokevirtual 514	com/tencent/component/network/downloader/DownloadResult$Status:getFailReason	()I
-    //   6530: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   6533: ldc_w 516
-    //   6536: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6539: iload 5
-    //   6541: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   6544: ldc_w 518
-    //   6547: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6550: aload 25
-    //   6552: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6555: ldc_w 520
-    //   6558: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6561: aload 21
-    //   6563: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6566: ldc_w 522
-    //   6569: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6572: astore 27
-    //   6574: aload_0
-    //   6575: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   6578: ifnull +8471 -> 15049
-    //   6581: aload_0
-    //   6582: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   6585: iconst_0
-    //   6586: bipush 30
-    //   6588: invokevirtual 527	java/lang/String:substring	(II)Ljava/lang/String;
-    //   6591: astore 23
-    //   6593: aload 27
-    //   6595: aload 23
-    //   6597: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6600: ldc_w 529
-    //   6603: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6606: astore 23
-    //   6608: aload_0
-    //   6609: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   6612: ifnull +8446 -> 15058
-    //   6615: aload_0
-    //   6616: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   6619: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   6622: istore_3
-    //   6623: aload 23
-    //   6625: iload_3
-    //   6626: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   6629: ldc_w 531
-    //   6632: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6635: aload_2
-    //   6636: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   6639: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   6642: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6645: ldc_w 536
-    //   6648: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6651: lload 8
-    //   6653: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   6656: ldc_w 538
-    //   6659: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6662: aload_0
-    //   6663: getfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   6666: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   6669: ldc_w 505
-    //   6672: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6675: aload_0
-    //   6676: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Int	I
-    //   6679: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   6682: ldc_w 509
-    //   6685: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6688: ldc_w 540
-    //   6691: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6694: aload_0
-    //   6695: getfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Long	J
-    //   6698: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   6701: ldc_w 505
-    //   6704: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6707: aload_0
-    //   6708: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Int	I
-    //   6711: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   6714: ldc_w 509
-    //   6717: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6720: ldc_w 542
-    //   6723: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6726: aload_0
-    //   6727: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   6730: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   6733: ldc_w 544
-    //   6736: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6739: aload_0
-    //   6740: getfield 545	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_Long	J
-    //   6743: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   6746: ldc_w 547
-    //   6749: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6752: aload_0
-    //   6753: invokevirtual 549	com/tencent/component/network/downloader/impl/FastDownloadTask:d	()I
-    //   6756: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   6759: ldc_w 509
-    //   6762: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6765: ldc_w 551
-    //   6768: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6771: astore 27
-    //   6773: aload_0
-    //   6774: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   6777: ifnull +8286 -> 15063
-    //   6780: aload_0
-    //   6781: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   6784: invokeinterface 560 1 0
-    //   6789: astore 23
-    //   6791: aload 26
-    //   6793: aload 27
-    //   6795: aload 23
-    //   6797: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   6800: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   6803: putfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   6806: ldc_w 565
-    //   6809: aload 26
-    //   6811: getfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   6814: aconst_null
-    //   6815: invokestatic 381	com/tencent/component/network/module/base/QDLog:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   6818: iload 18
-    //   6820: ifne +8 -> 6828
-    //   6823: aload_0
-    //   6824: iconst_0
-    //   6825: putfield 566	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_Boolean	Z
-    //   6828: aload_2
-    //   6829: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   6832: astore 23
-    //   6834: new 102	java/lang/StringBuilder
-    //   6837: dup
-    //   6838: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   6841: aload_0
-    //   6842: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   6845: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6848: ldc_w 568
-    //   6851: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6854: aload 22
-    //   6856: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6859: ldc_w 570
-    //   6862: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6865: aload_2
-    //   6866: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   6869: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   6872: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6875: ldc_w 572
-    //   6878: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6881: astore 22
-    //   6883: aload_0
-    //   6884: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   6887: ifnull +8216 -> 15103
-    //   6890: aload_0
-    //   6891: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   6894: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   6897: istore_3
-    //   6898: aload 22
-    //   6900: iload_3
-    //   6901: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   6904: ldc_w 516
-    //   6907: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6910: iload 5
-    //   6912: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   6915: ldc_w 472
-    //   6918: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6921: aload_2
-    //   6922: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   6925: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   6928: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6931: ldc_w 574
-    //   6934: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6937: aload_2
-    //   6938: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   6941: getfield 492	com/tencent/component/network/downloader/DownloadResult$Content:length	J
-    //   6944: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   6947: ldc_w 494
-    //   6950: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6953: aload_2
-    //   6954: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   6957: getfield 496	com/tencent/component/network/downloader/DownloadResult$Content:size	J
-    //   6960: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   6963: ldc_w 483
-    //   6966: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6969: aload_2
-    //   6970: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   6973: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   6976: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   6979: ldc_w 487
-    //   6982: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   6985: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
+    //   6524: aload 29
+    //   6526: invokevirtual 363	com/tencent/component/network/downloader/impl/FastDownloadTask:handleDownloadReportForTask	(Lcom/tencent/component/network/utils/thread/ThreadPool$JobContext;Lcom/tencent/component/network/downloader/DownloadResult;Lcom/tencent/component/network/downloader/DownloadReport;)V
+    //   6529: aload_0
+    //   6530: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   6533: ifeq +10345 -> 16878
+    //   6536: aload_0
+    //   6537: getfield 786	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestCall	Lokhttp3/Call;
+    //   6540: ifnull +12 -> 6552
+    //   6543: aload_0
+    //   6544: getfield 786	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestCall	Lokhttp3/Call;
+    //   6547: invokeinterface 791 1 0
+    //   6552: aload_0
+    //   6553: aconst_null
+    //   6554: putfield 418	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestBuilder	Lokhttp3/Request$Builder;
+    //   6557: aload 22
+    //   6559: athrow
+    //   6560: lload 12
+    //   6562: lstore 14
+    //   6564: lload 12
+    //   6566: lstore 16
+    //   6568: aload_0
+    //   6569: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   6572: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   6575: getfield 831	com/tencent/component/network/downloader/common/IPInfo:port	I
+    //   6578: istore 4
+    //   6580: goto -1777 -> 4803
+    //   6583: lload 12
+    //   6585: lstore 14
+    //   6587: aload 27
+    //   6589: astore 22
+    //   6591: lload 12
+    //   6593: lstore 16
+    //   6595: invokestatic 569	com/tencent/component/network/module/base/Config:getNetworkStackType	()I
+    //   6598: iconst_3
+    //   6599: if_icmpne -4113 -> 2486
+    //   6602: lload 12
+    //   6604: lstore 14
+    //   6606: aload 27
+    //   6608: astore 22
+    //   6610: lload 12
+    //   6612: lstore 16
+    //   6614: aload_0
+    //   6615: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   6618: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   6621: getstatic 272	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:Strategy_DOMAIN_FORCE	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   6624: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   6627: if_icmpeq -4141 -> 2486
+    //   6630: lload 12
+    //   6632: lstore 14
+    //   6634: lload 12
+    //   6636: lstore 16
+    //   6638: aload_0
+    //   6639: getfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:mOrigPort	I
+    //   6642: istore 4
+    //   6644: iload 4
+    //   6646: ifle +134 -> 6780
+    //   6649: lload 12
+    //   6651: lstore 14
+    //   6653: lload 12
+    //   6655: lstore 16
+    //   6657: aload_0
+    //   6658: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   6661: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   6664: iload 4
+    //   6666: putfield 831	com/tencent/component/network/downloader/common/IPInfo:port	I
+    //   6669: lload 12
+    //   6671: lstore 14
+    //   6673: lload 12
+    //   6675: lstore 16
+    //   6677: iload 4
+    //   6679: istore 6
+    //   6681: iload 4
+    //   6683: invokestatic 200	com/tencent/component/network/downloader/common/Utils:isPortValid	(I)Z
+    //   6686: ifne +7 -> 6693
+    //   6689: bipush 80
+    //   6691: istore 6
+    //   6693: lload 12
+    //   6695: lstore 14
+    //   6697: lload 12
+    //   6699: lstore 16
+    //   6701: new 125	java/lang/StringBuilder
+    //   6704: dup
+    //   6705: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   6708: aload 23
+    //   6710: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6713: ldc_w 833
+    //   6716: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6719: iload 6
+    //   6721: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   6724: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   6727: astore 23
+    //   6729: lload 12
+    //   6731: lstore 14
+    //   6733: aload 23
+    //   6735: astore 22
+    //   6737: lload 12
+    //   6739: lstore 16
+    //   6741: aload_0
+    //   6742: getfield 835	com/tencent/component/network/downloader/impl/FastDownloadTask:mDomainWithPort	Ljava/lang/String;
+    //   6745: ifnull -4259 -> 2486
+    //   6748: lload 12
+    //   6750: lstore 14
+    //   6752: lload 12
+    //   6754: lstore 16
+    //   6756: aload_0
+    //   6757: aload_0
+    //   6758: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   6761: aload_0
+    //   6762: getfield 835	com/tencent/component/network/downloader/impl/FastDownloadTask:mDomainWithPort	Ljava/lang/String;
+    //   6765: aload 23
+    //   6767: invokevirtual 839	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   6770: putfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   6773: aload 23
+    //   6775: astore 22
+    //   6777: goto -4291 -> 2486
+    //   6780: lload 12
+    //   6782: lstore 14
+    //   6784: lload 12
+    //   6786: lstore 16
+    //   6788: aload_0
+    //   6789: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   6792: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   6795: getfield 831	com/tencent/component/network/downloader/common/IPInfo:port	I
+    //   6798: istore 4
+    //   6800: goto -131 -> 6669
+    //   6803: lload 12
+    //   6805: lstore 14
+    //   6807: lload 12
+    //   6809: lstore 16
+    //   6811: aload_0
+    //   6812: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   6815: ifnull -4221 -> 2594
+    //   6818: lload 12
+    //   6820: lstore 14
+    //   6822: lload 12
+    //   6824: lstore 16
+    //   6826: aload_0
+    //   6827: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   6830: ldc_w 686
+    //   6833: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   6836: ifeq -4242 -> 2594
+    //   6839: iload 5
+    //   6841: ifeq -4247 -> 2594
+    //   6844: iload 10
+    //   6846: ifeq -4252 -> 2594
+    //   6849: lload 12
+    //   6851: lstore 14
+    //   6853: lload 12
+    //   6855: lstore 16
+    //   6857: aload_0
+    //   6858: aload_0
+    //   6859: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   6862: ldc_w 924
+    //   6865: ldc_w 926
+    //   6868: invokevirtual 839	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   6871: putfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   6874: lload 12
+    //   6876: lstore 14
+    //   6878: lload 12
+    //   6880: lstore 16
+    //   6882: aload_0
+    //   6883: getfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:mOrigPort	I
+    //   6886: istore 4
+    //   6888: iload 4
+    //   6890: ifle +231 -> 7121
+    //   6893: lload 12
+    //   6895: lstore 14
+    //   6897: lload 12
+    //   6899: lstore 16
+    //   6901: aload_0
+    //   6902: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   6905: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   6908: iload 4
+    //   6910: putfield 831	com/tencent/component/network/downloader/common/IPInfo:port	I
+    //   6913: lload 12
+    //   6915: lstore 14
+    //   6917: lload 12
+    //   6919: lstore 16
+    //   6921: iload 4
+    //   6923: istore 6
+    //   6925: iload 4
+    //   6927: invokestatic 200	com/tencent/component/network/downloader/common/Utils:isPortValid	(I)Z
+    //   6930: ifne +7 -> 6937
+    //   6933: bipush 80
+    //   6935: istore 6
+    //   6937: lload 12
+    //   6939: lstore 14
+    //   6941: lload 12
+    //   6943: lstore 16
+    //   6945: new 125	java/lang/StringBuilder
+    //   6948: dup
+    //   6949: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   6952: ldc_w 920
+    //   6955: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6958: ldc_w 928
+    //   6961: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6964: ldc_w 922
+    //   6967: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   6970: iload 6
+    //   6972: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   6975: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   6978: astore 22
+    //   6980: lload 12
+    //   6982: lstore 14
+    //   6984: lload 12
+    //   6986: lstore 16
     //   6988: aload_0
-    //   6989: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   6992: lsub
-    //   6993: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   6996: astore 22
-    //   6998: aload 21
-    //   7000: invokestatic 214	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   7003: ifne +8105 -> 15108
-    //   7006: new 102	java/lang/StringBuilder
-    //   7009: dup
-    //   7010: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   7013: ldc_w 520
-    //   7016: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7019: aload 21
-    //   7021: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7024: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   7027: astore 21
-    //   7029: aload 23
-    //   7031: aload 22
-    //   7033: aload 21
-    //   7035: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7038: ldc_w 518
-    //   7041: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7044: aload 25
-    //   7046: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7049: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   7052: putfield 577	com/tencent/component/network/downloader/DownloadResult$Status:detailDownloadInfo	Ljava/lang/String;
-    //   7055: getstatic 173	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:d	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   7058: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   7061: aload_0
-    //   7062: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   7065: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   7068: if_icmpne +37 -> 7105
-    //   7071: aload_0
-    //   7072: getfield 197	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   7075: ifnull +30 -> 7105
-    //   7078: aload_0
-    //   7079: getfield 197	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   7082: aload_0
-    //   7083: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   7086: aload_0
-    //   7087: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   7090: invokestatic 580	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
-    //   7093: aload_2
-    //   7094: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   7097: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   7100: invokeinterface 583 4 0
-    //   7105: getstatic 250	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   7108: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   7111: aload_0
-    //   7112: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   7115: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   7118: if_icmpne +37 -> 7155
-    //   7121: aload_0
-    //   7122: getfield 252	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   7125: ifnull +30 -> 7155
-    //   7128: aload_0
-    //   7129: getfield 252	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   7132: aload_0
-    //   7133: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   7136: aload_0
-    //   7137: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   7140: invokestatic 580	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
-    //   7143: aload_2
-    //   7144: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   7147: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   7150: invokeinterface 583 4 0
-    //   7155: iload 18
-    //   7157: ifeq +64 -> 7221
-    //   7160: aload_0
-    //   7161: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   7164: invokestatic 56	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:a	(Landroid/content/Context;)Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy;
-    //   7167: astore 21
+    //   6989: getfield 835	com/tencent/component/network/downloader/impl/FastDownloadTask:mDomainWithPort	Ljava/lang/String;
+    //   6992: ifnull +28 -> 7020
+    //   6995: lload 12
+    //   6997: lstore 14
+    //   6999: lload 12
+    //   7001: lstore 16
+    //   7003: aload_0
+    //   7004: aload_0
+    //   7005: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   7008: aload_0
+    //   7009: getfield 835	com/tencent/component/network/downloader/impl/FastDownloadTask:mDomainWithPort	Ljava/lang/String;
+    //   7012: aload 22
+    //   7014: invokevirtual 839	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   7017: putfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   7020: lload 12
+    //   7022: lstore 14
+    //   7024: lload 12
+    //   7026: lstore 16
+    //   7028: aload 29
+    //   7030: aload_0
+    //   7031: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   7034: invokevirtual 137	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:toString	()Ljava/lang/String;
+    //   7037: putfield 842	com/tencent/component/network/downloader/DownloadReport:strategyInfo	Ljava/lang/String;
+    //   7040: lload 12
+    //   7042: lstore 14
+    //   7044: lload 12
+    //   7046: lstore 16
+    //   7048: invokestatic 845	com/tencent/component/network/module/base/QDLog:isDebugEnable	()Z
+    //   7051: ifeq -4457 -> 2594
+    //   7054: lload 12
+    //   7056: lstore 14
+    //   7058: lload 12
+    //   7060: lstore 16
+    //   7062: ldc 219
+    //   7064: new 125	java/lang/StringBuilder
+    //   7067: dup
+    //   7068: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   7071: ldc_w 847
+    //   7074: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7077: aload 29
+    //   7079: getfield 842	com/tencent/component/network/downloader/DownloadReport:strategyInfo	Ljava/lang/String;
+    //   7082: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7085: ldc_w 930
+    //   7088: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7091: aload_0
+    //   7092: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   7095: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7098: ldc 225
+    //   7100: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7103: invokestatic 171	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   7106: invokevirtual 174	java/lang/Thread:getId	()J
+    //   7109: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   7112: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   7115: invokestatic 392	com/tencent/component/network/module/base/QDLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   7118: goto -4524 -> 2594
+    //   7121: lload 12
+    //   7123: lstore 14
+    //   7125: lload 12
+    //   7127: lstore 16
+    //   7129: aload_0
+    //   7130: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   7133: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   7136: getfield 831	com/tencent/component/network/downloader/common/IPInfo:port	I
+    //   7139: istore 4
+    //   7141: goto -228 -> 6913
+    //   7144: lload 12
+    //   7146: lstore 14
+    //   7148: lload 12
+    //   7150: lstore 16
+    //   7152: aload_0
+    //   7153: aload_0
+    //   7154: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   7157: aload_0
+    //   7158: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   7161: aload_0
+    //   7162: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   7165: aload_0
+    //   7166: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
     //   7169: aload_0
-    //   7170: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   7173: astore 22
-    //   7175: aload_0
-    //   7176: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   7179: ifeq +7967 -> 15146
-    //   7182: aload_0
-    //   7183: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   7186: ifnull +7960 -> 15146
-    //   7189: aload_0
-    //   7190: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   7193: ldc_w 585
-    //   7196: invokevirtual 588	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   7199: ifeq +7947 -> 15146
-    //   7202: iconst_1
-    //   7203: istore 18
-    //   7205: aload 21
-    //   7207: aload 22
-    //   7209: iload 18
-    //   7211: aload_2
-    //   7212: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   7215: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   7218: invokevirtual 591	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:a	(Ljava/lang/String;ZZ)V
-    //   7221: aload 26
-    //   7223: invokestatic 359	java/lang/System:currentTimeMillis	()J
-    //   7226: putfield 594	com/tencent/component/network/downloader/DownloadReport:endTime	J
-    //   7229: aload 26
-    //   7231: aload_0
-    //   7232: invokevirtual 596	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()J
-    //   7235: putfield 599	com/tencent/component/network/downloader/DownloadReport:fileSize	J
-    //   7238: aload 26
-    //   7240: aload 19
-    //   7242: putfield 603	com/tencent/component/network/downloader/DownloadReport:response	Lorg/apache/http/HttpResponse;
-    //   7245: aload 26
-    //   7247: aload 20
-    //   7249: putfield 607	com/tencent/component/network/downloader/DownloadReport:okResponse	Lcom/squareup/okhttp/Response;
-    //   7252: aload 26
-    //   7254: iload 5
-    //   7256: putfield 610	com/tencent/component/network/downloader/DownloadReport:httpStatus	I
-    //   7259: aload 26
-    //   7261: aconst_null
-    //   7262: putfield 614	com/tencent/component/network/downloader/DownloadReport:exception	Ljava/lang/Throwable;
-    //   7265: aload 24
-    //   7267: ifnonnull +7885 -> 15152
-    //   7270: aconst_null
-    //   7271: astore 19
-    //   7273: aload 26
-    //   7275: aload 19
-    //   7277: putfield 617	com/tencent/component/network/downloader/DownloadReport:dns	Ljava/lang/String;
-    //   7280: aload 26
-    //   7282: aconst_null
-    //   7283: putfield 620	com/tencent/component/network/downloader/DownloadReport:localAddress	Ljava/lang/String;
-    //   7286: aload 26
-    //   7288: aload_2
-    //   7289: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   7292: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   7295: putfield 621	com/tencent/component/network/downloader/DownloadReport:clientip	Ljava/lang/String;
-    //   7298: aload 26
-    //   7300: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   7303: aload_0
-    //   7304: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   7307: lsub
-    //   7308: putfield 624	com/tencent/component/network/downloader/DownloadReport:totaltime	J
-    //   7311: aload 26
-    //   7313: aload_2
-    //   7314: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   7317: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   7320: putfield 627	com/tencent/component/network/downloader/DownloadReport:downloadTime	J
-    //   7323: aload 26
-    //   7325: aload 26
-    //   7327: getfield 624	com/tencent/component/network/downloader/DownloadReport:totaltime	J
-    //   7330: aload_2
-    //   7331: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   7334: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   7337: lsub
-    //   7338: putfield 630	com/tencent/component/network/downloader/DownloadReport:t_wait	J
-    //   7341: aload 26
-    //   7343: lload 8
-    //   7345: putfield 633	com/tencent/component/network/downloader/DownloadReport:t_prepare	J
-    //   7348: aload 26
-    //   7350: aload_0
-    //   7351: getfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   7354: putfield 636	com/tencent/component/network/downloader/DownloadReport:t_conn	J
-    //   7357: aload 26
-    //   7359: aload_0
-    //   7360: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   7363: putfield 639	com/tencent/component/network/downloader/DownloadReport:t_recvrsp	J
-    //   7366: aload 26
-    //   7368: aload_0
-    //   7369: getfield 545	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_Long	J
-    //   7372: putfield 642	com/tencent/component/network/downloader/DownloadReport:t_recvdata	J
-    //   7375: aload 26
-    //   7377: lconst_0
-    //   7378: putfield 645	com/tencent/component/network/downloader/DownloadReport:t_process	J
-    //   7381: aload 26
-    //   7383: aload_0
-    //   7384: invokevirtual 549	com/tencent/component/network/downloader/impl/FastDownloadTask:d	()I
-    //   7387: putfield 648	com/tencent/component/network/downloader/DownloadReport:concurrent	I
-    //   7390: aload 26
-    //   7392: aload_2
-    //   7393: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   7396: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   7399: putfield 651	com/tencent/component/network/downloader/DownloadReport:content_type	Ljava/lang/String;
-    //   7402: aload 26
-    //   7404: aload_0
-    //   7405: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   7408: invokestatic 655	com/tencent/component/network/module/base/Config:b	(Ljava/lang/String;)Z
-    //   7411: putfield 658	com/tencent/component/network/downloader/DownloadReport:isFromQzoneAlbum	Z
-    //   7414: aload 26
-    //   7416: aload_0
-    //   7417: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   7420: putfield 661	com/tencent/component/network/downloader/DownloadReport:isHttp2	Z
-    //   7423: aload 26
-    //   7425: aload_2
-    //   7426: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   7429: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   7432: putfield 663	com/tencent/component/network/downloader/DownloadReport:isSucceed	Z
-    //   7435: aload_2
-    //   7436: aload 26
-    //   7438: invokevirtual 667	com/tencent/component/network/downloader/DownloadResult:setReport	(Lcom/tencent/component/network/downloader/DownloadReport;)V
-    //   7441: aload_0
-    //   7442: aload_1
-    //   7443: aload_2
-    //   7444: aload 26
-    //   7446: invokevirtual 320	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(Lcom/tencent/component/network/utils/thread/ThreadPool$JobContext;Lcom/tencent/component/network/downloader/DownloadResult;Lcom/tencent/component/network/downloader/DownloadReport;)V
-    //   7449: aload_0
-    //   7450: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   7453: ifeq +7709 -> 15162
-    //   7456: aload_0
-    //   7457: getfield 670	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpCall	Lcom/squareup/okhttp/Call;
-    //   7460: ifnull +10 -> 7470
-    //   7463: aload_0
-    //   7464: getfield 670	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpCall	Lcom/squareup/okhttp/Call;
-    //   7467: invokevirtual 675	com/squareup/okhttp/Call:cancel	()V
-    //   7470: aload_0
-    //   7471: aconst_null
-    //   7472: putfield 368	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpRequest$Builder	Lcom/squareup/okhttp/Request$Builder;
-    //   7475: iload 4
-    //   7477: iconst_1
-    //   7478: iadd
-    //   7479: istore_3
-    //   7480: goto -7298 -> 182
-    //   7483: aload_2
-    //   7484: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   7487: iconst_3
-    //   7488: invokevirtual 336	com/tencent/component/network/downloader/DownloadResult$Status:setFailed	(I)V
-    //   7491: goto -1521 -> 5970
-    //   7494: astore 22
-    //   7496: goto -7253 -> 243
-    //   7499: aload_2
-    //   7500: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   7503: iconst_3
-    //   7504: invokevirtual 336	com/tencent/component/network/downloader/DownloadResult$Status:setFailed	(I)V
-    //   7507: iconst_0
-    //   7508: istore 5
-    //   7510: goto -1513 -> 5997
-    //   7513: aconst_null
-    //   7514: astore 24
-    //   7516: goto -3083 -> 4433
-    //   7519: astore 21
-    //   7521: ldc_w 378
-    //   7524: astore 21
-    //   7526: goto -3059 -> 4467
-    //   7529: new 102	java/lang/StringBuilder
-    //   7532: dup
-    //   7533: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   7536: ldc_w 807
-    //   7539: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7542: aload_0
-    //   7543: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   7546: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7549: ldc_w 435
-    //   7552: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7555: aload_0
-    //   7556: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   7559: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   7562: ldc_w 440
-    //   7565: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7568: astore 29
-    //   7570: aload_0
-    //   7571: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   7574: ifeq +606 -> 8180
-    //   7577: aload 22
-    //   7579: ifnull +601 -> 8180
-    //   7582: aload 22
-    //   7584: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   7587: ifnull +593 -> 8180
-    //   7590: aload 22
-    //   7592: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   7595: invokevirtual 449	com/squareup/okhttp/Protocol:toString	()Ljava/lang/String;
-    //   7598: astore 25
-    //   7600: aload 29
-    //   7602: aload 25
-    //   7604: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7607: ldc_w 451
-    //   7610: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7613: aload 27
-    //   7615: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   7618: ldc_w 456
-    //   7621: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7624: aload 24
-    //   7626: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7629: ldc_w 458
-    //   7632: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7635: aconst_null
-    //   7636: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7639: ldc_w 460
-    //   7642: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7645: invokestatic 147	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   7648: invokevirtual 150	java/lang/Thread:getId	()J
-    //   7651: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   7654: ldc_w 462
-    //   7657: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7660: invokestatic 134	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   7663: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7666: ldc_w 464
-    //   7669: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7672: aload_0
-    //   7673: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   7676: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   7679: ldc_w 466
-    //   7682: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7685: aload_0
-    //   7686: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   7689: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   7692: ldc_w 468
-    //   7695: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7698: astore 29
+    //   7170: getfield 815	com/tencent/component/network/downloader/impl/FastDownloadTask:mRefer	Ljava/lang/String;
+    //   7173: aload 30
+    //   7175: invokestatic 934	com/tencent/component/network/utils/http/HttpUtil:createHttpGet	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/component/network/utils/http/HttpUtil$RequestOptions;)Lorg/apache/http/client/methods/HttpGet;
+    //   7178: putfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   7181: goto -4477 -> 2704
+    //   7184: lload 12
+    //   7186: lstore 14
+    //   7188: lload 12
+    //   7190: lstore 16
+    //   7192: aload_0
+    //   7193: getfield 418	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestBuilder	Lokhttp3/Request$Builder;
+    //   7196: ifnull +9930 -> 17126
+    //   7199: lload 12
+    //   7201: lstore 14
+    //   7203: lload 12
+    //   7205: lstore 16
+    //   7207: aload_0
+    //   7208: aload_0
+    //   7209: getfield 938	com/tencent/component/network/downloader/impl/FastDownloadTask:pokHttpClient	Lokhttp3/OkHttpClient;
+    //   7212: aload_0
+    //   7213: getfield 418	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestBuilder	Lokhttp3/Request$Builder;
+    //   7216: invokevirtual 944	okhttp3/Request$Builder:build	()Lokhttp3/Request;
+    //   7219: invokevirtual 950	okhttp3/OkHttpClient:newCall	(Lokhttp3/Request;)Lokhttp3/Call;
+    //   7222: putfield 786	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestCall	Lokhttp3/Call;
+    //   7225: lload 12
+    //   7227: lstore 14
+    //   7229: lload 12
+    //   7231: lstore 16
+    //   7233: aload_0
+    //   7234: getfield 786	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestCall	Lokhttp3/Call;
+    //   7237: invokeinterface 953 1 0
+    //   7242: astore 22
+    //   7244: aconst_null
+    //   7245: astore 23
+    //   7247: aconst_null
+    //   7248: astore 24
+    //   7250: goto -4314 -> 2936
+    //   7253: aload 22
+    //   7255: ifnull +9865 -> 17120
+    //   7258: aload 22
+    //   7260: invokevirtual 956	okhttp3/Response:code	()I
+    //   7263: istore 4
+    //   7265: goto -4280 -> 2985
+    //   7268: aconst_null
+    //   7269: astore 25
+    //   7271: goto -4115 -> 3156
+    //   7274: astore 24
+    //   7276: ldc_w 428
+    //   7279: astore 24
+    //   7281: goto -4091 -> 3190
+    //   7284: ldc_w 958
+    //   7287: astore 26
+    //   7289: goto -3924 -> 3365
+    //   7292: aconst_null
+    //   7293: astore 26
+    //   7295: goto -3810 -> 3485
+    //   7298: aload_0
+    //   7299: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   7302: astore 26
+    //   7304: goto -3590 -> 3714
+    //   7307: iconst_0
+    //   7308: istore 5
+    //   7310: goto -3565 -> 3745
+    //   7313: aconst_null
+    //   7314: astore 26
+    //   7316: goto -3420 -> 3896
+    //   7319: new 125	java/lang/StringBuilder
+    //   7322: dup
+    //   7323: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   7326: ldc_w 960
+    //   7329: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7332: aload_0
+    //   7333: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   7336: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7339: ldc_w 527
+    //   7342: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7345: aload_0
+    //   7346: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   7349: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   7352: ldc_w 532
+    //   7355: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7358: astore 30
+    //   7360: aload_0
+    //   7361: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   7364: ifeq +560 -> 7924
+    //   7367: aload 22
+    //   7369: ifnull +555 -> 7924
+    //   7372: aload 22
+    //   7374: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   7377: ifnull +547 -> 7924
+    //   7380: aload 22
+    //   7382: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   7385: invokevirtual 541	okhttp3/Protocol:toString	()Ljava/lang/String;
+    //   7388: astore 26
+    //   7390: aload 30
+    //   7392: aload 26
+    //   7394: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7397: ldc_w 543
+    //   7400: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7403: aload 27
+    //   7405: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   7408: ldc_w 548
+    //   7411: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7414: aload 25
+    //   7416: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7419: ldc_w 550
+    //   7422: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7425: aconst_null
+    //   7426: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7429: ldc_w 552
+    //   7432: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7435: invokestatic 171	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   7438: invokevirtual 174	java/lang/Thread:getId	()J
+    //   7441: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   7444: ldc_w 554
+    //   7447: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7450: invokestatic 158	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   7453: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7456: ldc_w 556
+    //   7459: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7462: aload_0
+    //   7463: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   7466: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   7469: ldc_w 558
+    //   7472: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7475: aload_0
+    //   7476: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   7479: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   7482: ldc_w 560
+    //   7485: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7488: astore 30
+    //   7490: aload_0
+    //   7491: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   7494: ifeq +438 -> 7932
+    //   7497: aload_0
+    //   7498: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   7501: aload_0
+    //   7502: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   7505: invokestatic 322	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
+    //   7508: astore 26
+    //   7510: aload 30
+    //   7512: aload 26
+    //   7514: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   7517: ldc_w 564
+    //   7520: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7523: invokestatic 569	com/tencent/component/network/module/base/Config:getNetworkStackType	()I
+    //   7526: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   7529: ldc_w 576
+    //   7532: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7535: aload_2
+    //   7536: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   7539: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   7542: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   7545: ldc_w 581
+    //   7548: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7551: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   7554: aload_0
+    //   7555: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   7558: lsub
+    //   7559: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   7562: ldc_w 583
+    //   7565: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7568: aload_2
+    //   7569: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   7572: getfield 586	com/tencent/component/network/downloader/DownloadResult$Content:length	J
+    //   7575: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   7578: ldc_w 588
+    //   7581: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7584: aload_2
+    //   7585: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   7588: getfield 590	com/tencent/component/network/downloader/DownloadResult$Content:size	J
+    //   7591: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   7594: ldc_w 592
+    //   7597: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7600: aload_2
+    //   7601: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   7604: getfield 595	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
+    //   7607: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   7610: ldc_w 597
+    //   7613: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7616: aload_0
+    //   7617: invokevirtual 421	com/tencent/component/network/downloader/impl/FastDownloadTask:getCurrAttemptCount	()I
+    //   7620: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   7623: ldc_w 599
+    //   7626: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7629: aload_0
+    //   7630: invokevirtual 602	com/tencent/component/network/downloader/impl/FastDownloadTask:getTotalAttemptCount	()I
+    //   7633: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   7636: ldc_w 962
+    //   7639: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7642: iload 4
+    //   7644: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   7647: ldc_w 611
+    //   7650: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7653: aload 28
+    //   7655: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7658: ldc_w 571
+    //   7661: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7664: aload_2
+    //   7665: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   7668: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   7671: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7674: ldc_w 613
+    //   7677: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7680: aload 24
+    //   7682: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7685: ldc_w 615
+    //   7688: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7691: astore 30
+    //   7693: aload_0
+    //   7694: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   7697: ifnull +241 -> 7938
     //   7700: aload_0
-    //   7701: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   7704: ifeq +484 -> 8188
-    //   7707: aload_0
-    //   7708: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   7711: aload_0
-    //   7712: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   7715: invokestatic 267	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
-    //   7718: astore 25
-    //   7720: aload 29
-    //   7722: aload 25
-    //   7724: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   7727: ldc_w 483
-    //   7730: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7733: aload_2
-    //   7734: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   7737: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   7740: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   7743: ldc_w 487
-    //   7746: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7749: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   7752: aload_0
-    //   7753: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   7756: lsub
-    //   7757: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   7760: ldc_w 489
-    //   7763: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7766: aload_2
-    //   7767: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   7770: getfield 492	com/tencent/component/network/downloader/DownloadResult$Content:length	J
-    //   7773: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   7776: ldc_w 494
-    //   7779: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7782: aload_2
-    //   7783: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   7786: getfield 496	com/tencent/component/network/downloader/DownloadResult$Content:size	J
-    //   7789: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   7792: ldc_w 498
-    //   7795: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7798: aload_2
-    //   7799: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   7802: getfield 501	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
-    //   7805: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   7808: ldc_w 503
-    //   7811: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7814: aload_0
-    //   7815: invokevirtual 369	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()I
-    //   7818: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   7821: ldc_w 505
-    //   7824: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7827: aload_0
-    //   7828: invokevirtual 507	com/tencent/component/network/downloader/impl/FastDownloadTask:c	()I
-    //   7831: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   7834: ldc_w 509
-    //   7837: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7840: ldc_w 516
-    //   7843: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7846: iload_3
-    //   7847: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   7850: ldc_w 518
-    //   7853: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7856: aload 28
-    //   7858: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7861: ldc_w 472
-    //   7864: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7867: aload_2
-    //   7868: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   7871: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   7874: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7877: ldc_w 520
-    //   7880: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7883: aload 21
-    //   7885: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7888: ldc_w 522
-    //   7891: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7894: astore 29
-    //   7896: aload_0
-    //   7897: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   7900: ifnull +294 -> 8194
-    //   7903: aload_0
-    //   7904: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   7907: iconst_0
-    //   7908: bipush 30
-    //   7910: invokevirtual 527	java/lang/String:substring	(II)Ljava/lang/String;
-    //   7913: astore 25
-    //   7915: aload 29
-    //   7917: aload 25
-    //   7919: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7922: ldc_w 529
-    //   7925: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7928: astore 25
-    //   7930: aload_0
-    //   7931: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   7934: ifnull +269 -> 8203
-    //   7937: aload_0
-    //   7938: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   7941: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   7944: istore 4
-    //   7946: aload 25
-    //   7948: iload 4
-    //   7950: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   7953: ldc_w 531
-    //   7956: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7959: aload_2
-    //   7960: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   7963: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   7966: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7969: ldc_w 536
-    //   7972: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7975: lload 8
-    //   7977: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   7980: ldc_w 538
-    //   7983: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7986: aload_0
-    //   7987: getfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   7990: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   7993: ldc_w 505
-    //   7996: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   7999: aload_0
-    //   8000: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Int	I
-    //   8003: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   8006: ldc_w 509
-    //   8009: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8012: ldc_w 540
-    //   8015: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8018: aload_0
-    //   8019: getfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Long	J
-    //   8022: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   8025: ldc_w 505
-    //   8028: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8031: aload_0
-    //   8032: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Int	I
-    //   8035: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   8038: ldc_w 509
-    //   8041: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8044: ldc_w 542
-    //   8047: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8050: aload_0
-    //   8051: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   8054: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   8057: ldc_w 544
-    //   8060: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8063: aload_0
-    //   8064: getfield 545	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_Long	J
-    //   8067: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   8070: ldc_w 547
-    //   8073: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8076: aload_0
-    //   8077: invokevirtual 549	com/tencent/component/network/downloader/impl/FastDownloadTask:d	()I
-    //   8080: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   8083: ldc_w 509
-    //   8086: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8089: ldc_w 551
-    //   8092: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8095: astore 29
-    //   8097: aload_0
-    //   8098: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   8101: ifnull +108 -> 8209
-    //   8104: aload_0
-    //   8105: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   8108: invokeinterface 560 1 0
-    //   8113: astore 25
-    //   8115: aload 26
-    //   8117: aload 29
-    //   8119: aload 25
-    //   8121: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   8124: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   8127: putfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   8130: ldc_w 565
-    //   8133: aload 26
-    //   8135: getfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   8138: aconst_null
-    //   8139: invokestatic 809	com/tencent/component/network/module/base/QDLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   8142: goto -2939 -> 5203
-    //   8145: ldc_w 811
-    //   8148: astore 25
-    //   8150: goto -3517 -> 4633
-    //   8153: aconst_null
-    //   8154: astore 25
-    //   8156: goto -3403 -> 4753
-    //   8159: aload_0
-    //   8160: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   8163: astore 25
-    //   8165: goto -3190 -> 4975
-    //   8168: iconst_0
-    //   8169: istore 4
-    //   8171: goto -3165 -> 5006
-    //   8174: aconst_null
-    //   8175: astore 25
-    //   8177: goto -3002 -> 5175
-    //   8180: ldc_w 811
-    //   8183: astore 25
-    //   8185: goto -585 -> 7600
-    //   8188: aconst_null
-    //   8189: astore 25
-    //   8191: goto -471 -> 7720
-    //   8194: aload_0
-    //   8195: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   8198: astore 25
-    //   8200: goto -285 -> 7915
-    //   8203: iconst_0
-    //   8204: istore 4
-    //   8206: goto -260 -> 7946
-    //   8209: aconst_null
-    //   8210: astore 25
-    //   8212: goto -97 -> 8115
-    //   8215: iconst_0
-    //   8216: istore 4
-    //   8218: goto -2934 -> 5284
-    //   8221: ldc_w 378
-    //   8224: astore 21
-    //   8226: goto -2811 -> 5415
-    //   8229: astore 21
-    //   8231: ldc 186
-    //   8233: ldc_w 813
-    //   8236: aload 21
-    //   8238: invokestatic 809	com/tencent/component/network/module/base/QDLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   8241: goto -2750 -> 5491
-    //   8244: astore 21
-    //   8246: ldc 186
-    //   8248: ldc_w 815
-    //   8251: aload 21
-    //   8253: invokestatic 809	com/tencent/component/network/module/base/QDLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   8256: goto -2715 -> 5541
-    //   8259: iconst_0
-    //   8260: istore 18
-    //   8262: goto -2671 -> 5591
-    //   8265: aload 27
-    //   8267: invokevirtual 818	com/tencent/component/network/utils/NetworkUtils$DNS:toString	()Ljava/lang/String;
-    //   8270: astore 20
-    //   8272: goto -2613 -> 5659
-    //   8275: aload_0
-    //   8276: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   8279: ifnull +15 -> 8294
-    //   8282: aload_0
-    //   8283: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   8286: invokevirtual 823	org/apache/http/client/methods/HttpGet:abort	()V
-    //   8289: aload_0
-    //   8290: aconst_null
-    //   8291: putfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   7701: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   7704: iconst_0
+    //   7705: bipush 30
+    //   7707: invokevirtual 619	java/lang/String:substring	(II)Ljava/lang/String;
+    //   7710: astore 26
+    //   7712: aload 30
+    //   7714: aload 26
+    //   7716: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7719: ldc_w 621
+    //   7722: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7725: astore 26
+    //   7727: aload_0
+    //   7728: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   7731: ifnull +216 -> 7947
+    //   7734: aload_0
+    //   7735: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   7738: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   7741: istore 5
+    //   7743: aload 26
+    //   7745: iload 5
+    //   7747: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   7750: ldc_w 623
+    //   7753: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7756: aload_2
+    //   7757: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   7760: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   7763: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7766: ldc_w 628
+    //   7769: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7772: lload 12
+    //   7774: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   7777: ldc_w 630
+    //   7780: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7783: aload_0
+    //   7784: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   7787: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   7790: ldc_w 599
+    //   7793: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7796: aload_0
+    //   7797: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_retry	I
+    //   7800: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   7803: ldc_w 632
+    //   7806: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7809: aload_0
+    //   7810: getfield 42	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_time	J
+    //   7813: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   7816: ldc_w 599
+    //   7819: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7822: aload_0
+    //   7823: getfield 44	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_retry	I
+    //   7826: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   7829: ldc_w 634
+    //   7832: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7835: aload_0
+    //   7836: getfield 46	com/tencent/component/network/downloader/impl/FastDownloadTask:send_req_time	J
+    //   7839: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   7842: ldc_w 636
+    //   7845: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7848: aload_0
+    //   7849: getfield 639	com/tencent/component/network/downloader/impl/FastDownloadTask:t_recv_data	J
+    //   7852: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   7855: ldc_w 641
+    //   7858: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7861: aload_0
+    //   7862: invokevirtual 644	com/tencent/component/network/downloader/impl/FastDownloadTask:getTaskConcurrentCount	()I
+    //   7865: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   7868: ldc_w 646
+    //   7871: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   7874: astore 30
+    //   7876: aload_0
+    //   7877: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   7880: ifnull +73 -> 7953
+    //   7883: aload_0
+    //   7884: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   7887: invokeinterface 656 1 0
+    //   7892: astore 26
+    //   7894: aload 29
+    //   7896: aload 30
+    //   7898: aload 26
+    //   7900: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   7903: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   7906: putfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   7909: ldc_w 447
+    //   7912: aload 29
+    //   7914: getfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   7917: aconst_null
+    //   7918: invokestatic 965	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   7921: goto -3970 -> 3951
+    //   7924: ldc_w 958
+    //   7927: astore 26
+    //   7929: goto -539 -> 7390
+    //   7932: aconst_null
+    //   7933: astore 26
+    //   7935: goto -425 -> 7510
+    //   7938: aload_0
+    //   7939: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   7942: astore 26
+    //   7944: goto -232 -> 7712
+    //   7947: iconst_0
+    //   7948: istore 5
+    //   7950: goto -207 -> 7743
+    //   7953: aconst_null
+    //   7954: astore 26
+    //   7956: goto -62 -> 7894
+    //   7959: iconst_0
+    //   7960: istore 5
+    //   7962: goto -3930 -> 4032
+    //   7965: ldc_w 428
+    //   7968: astore 24
+    //   7970: goto -3806 -> 4164
+    //   7973: astore 24
+    //   7975: ldc 219
+    //   7977: ldc_w 967
+    //   7980: aload 24
+    //   7982: invokestatic 965	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   7985: goto -3738 -> 4247
+    //   7988: astore 24
+    //   7990: ldc 219
+    //   7992: ldc_w 969
+    //   7995: aload 24
+    //   7997: invokestatic 965	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   8000: goto -3696 -> 4304
+    //   8003: iconst_0
+    //   8004: istore 10
+    //   8006: goto -3652 -> 4354
+    //   8009: aload 27
+    //   8011: invokevirtual 972	com/tencent/component/network/utils/NetworkUtils$DNS:toString	()Ljava/lang/String;
+    //   8014: astore 23
+    //   8016: goto -3594 -> 4422
+    //   8019: iconst_0
+    //   8020: istore 10
+    //   8022: goto -3427 -> 4595
+    //   8025: aload_0
+    //   8026: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   8029: ifnull +15 -> 8044
+    //   8032: aload_0
+    //   8033: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   8036: invokevirtual 977	org/apache/http/client/methods/HttpGet:abort	()V
+    //   8039: aload_0
+    //   8040: aconst_null
+    //   8041: putfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   8044: aload_0
+    //   8045: invokevirtual 980	com/tencent/component/network/downloader/impl/FastDownloadTask:cleanExpireConnection	()V
+    //   8048: goto -3345 -> 4703
+    //   8051: aload_2
+    //   8052: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   8055: lload 18
+    //   8057: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   8060: invokevirtual 461	com/tencent/component/network/downloader/DownloadResult$Process:setDuration	(JJ)V
+    //   8063: aload_2
+    //   8064: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   8067: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   8070: aload_0
+    //   8071: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   8074: lsub
+    //   8075: putfield 464	com/tencent/component/network/downloader/DownloadResult$Process:totalDuration	J
+    //   8078: aload_2
+    //   8079: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   8082: aload_0
+    //   8083: getfield 467	com/tencent/component/network/downloader/impl/FastDownloadTask:mTaskStartTimeStamp	J
+    //   8086: putfield 470	com/tencent/component/network/downloader/DownloadResult$Process:startTimestamp	J
+    //   8089: aload_0
+    //   8090: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   8093: invokestatic 475	com/tencent/component/network/module/common/NetworkStatus:getInstance	(Landroid/content/Context;)Lcom/tencent/component/network/module/common/NetworkStatus;
+    //   8096: invokevirtual 479	com/tencent/component/network/module/common/NetworkStatus:getDNS	()Lcom/tencent/component/network/utils/NetworkUtils$DNS;
+    //   8099: astore 27
+    //   8101: aload_0
+    //   8102: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   8105: ifnull +1569 -> 9674
+    //   8108: aload_0
+    //   8109: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   8112: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   8115: ifnull +1559 -> 9674
+    //   8118: aload_0
+    //   8119: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   8122: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   8125: getfield 486	com/tencent/component/network/downloader/common/IPInfo:ip	Ljava/lang/String;
+    //   8128: astore 25
+    //   8130: aload_0
+    //   8131: aload_0
+    //   8132: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   8135: aload 23
+    //   8137: aload 22
+    //   8139: invokevirtual 490	com/tencent/component/network/downloader/impl/FastDownloadTask:parserHttpHeaderInfo	(Lorg/apache/http/HttpRequest;Lorg/apache/http/HttpResponse;Lokhttp3/Response;)Ljava/lang/String;
+    //   8142: astore 28
+    //   8144: aload 24
+    //   8146: ifnull +8958 -> 17104
+    //   8149: aload 24
+    //   8151: ldc_w 492
+    //   8154: invokeinterface 498 2 0
+    //   8159: checkcast 282	java/lang/String
+    //   8162: astore 24
+    //   8164: aload_2
+    //   8165: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   8168: aload 24
+    //   8170: putfield 507	com/tencent/component/network/downloader/DownloadResult$Content:redirectUrl	Ljava/lang/String;
+    //   8173: aload_0
+    //   8174: lconst_0
+    //   8175: putfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   8178: aload_0
+    //   8179: iconst_0
+    //   8180: putfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_retry	I
+    //   8183: aload_0
+    //   8184: lconst_0
+    //   8185: putfield 42	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_time	J
+    //   8188: aload_0
+    //   8189: iconst_0
+    //   8190: putfield 44	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_retry	I
+    //   8193: aload_2
+    //   8194: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   8197: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   8200: ifeq +12 -> 8212
+    //   8203: aload_1
+    //   8204: invokeinterface 359 1 0
+    //   8209: ifeq +31 -> 8240
+    //   8212: aload_0
+    //   8213: getfield 514	com/tencent/component/network/downloader/impl/FastDownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
+    //   8216: ifnull +24 -> 8240
+    //   8219: aload_0
+    //   8220: getfield 514	com/tencent/component/network/downloader/impl/FastDownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
+    //   8223: aload_0
+    //   8224: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   8227: aload_2
+    //   8228: invokevirtual 517	com/tencent/component/network/downloader/DownloadResult:getPath	()Ljava/lang/String;
+    //   8231: aload 23
+    //   8233: aload 22
+    //   8235: invokeinterface 523 5 0
+    //   8240: aload_1
+    //   8241: invokeinterface 359 1 0
+    //   8246: ifne +1399 -> 9645
+    //   8249: aload_0
+    //   8250: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   8253: invokestatic 367	com/tencent/component/network/utils/NetworkUtils:isNetworkAvailable	(Landroid/content/Context;)Z
+    //   8256: istore 10
+    //   8258: aload_2
+    //   8259: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   8262: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   8265: ifne +1459 -> 9724
+    //   8268: new 125	java/lang/StringBuilder
+    //   8271: dup
+    //   8272: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   8275: ldc_w 525
+    //   8278: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8281: aload_0
+    //   8282: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   8285: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8288: ldc_w 527
+    //   8291: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   8294: aload_0
-    //   8295: invokevirtual 825	com/tencent/component/network/downloader/impl/FastDownloadTask:f	()V
-    //   8298: goto -2437 -> 5861
-    //   8301: aconst_null
-    //   8302: astore 23
-    //   8304: goto -7983 -> 321
-    //   8307: astore 21
-    //   8309: ldc_w 378
-    //   8312: astore 21
-    //   8314: goto -7959 -> 355
-    //   8317: new 102	java/lang/StringBuilder
-    //   8320: dup
-    //   8321: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   8324: ldc_w 807
-    //   8327: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8330: aload_0
-    //   8331: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   8334: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8337: ldc_w 435
-    //   8340: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8343: aload_0
-    //   8344: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   8347: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   8350: ldc_w 440
-    //   8353: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8356: astore 28
-    //   8358: aload_0
-    //   8359: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   8362: ifeq +606 -> 8968
-    //   8365: aload 20
-    //   8367: ifnull +601 -> 8968
-    //   8370: aload 20
-    //   8372: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   8375: ifnull +593 -> 8968
-    //   8378: aload 20
-    //   8380: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   8383: invokevirtual 449	com/squareup/okhttp/Protocol:toString	()Ljava/lang/String;
-    //   8386: astore 24
-    //   8388: aload 28
-    //   8390: aload 24
-    //   8392: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8395: ldc_w 451
-    //   8398: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8401: aload 25
-    //   8403: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   8406: ldc_w 456
-    //   8409: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8412: aload 23
-    //   8414: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8417: ldc_w 458
-    //   8420: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8423: aconst_null
-    //   8424: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8427: ldc_w 460
-    //   8430: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8433: invokestatic 147	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   8436: invokevirtual 150	java/lang/Thread:getId	()J
-    //   8439: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   8442: ldc_w 462
-    //   8445: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8448: invokestatic 134	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   8451: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8454: ldc_w 464
-    //   8457: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8460: aload_0
-    //   8461: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   8464: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   8467: ldc_w 466
-    //   8470: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8473: aload_0
-    //   8474: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   8477: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   8480: ldc_w 468
-    //   8483: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8486: astore 28
-    //   8488: aload_0
-    //   8489: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   8492: ifeq +484 -> 8976
-    //   8495: aload_0
-    //   8496: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   8499: aload_0
-    //   8500: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   8503: invokestatic 267	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
-    //   8506: astore 24
-    //   8508: aload 28
-    //   8510: aload 24
-    //   8512: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   8515: ldc_w 483
-    //   8518: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8521: aload_2
-    //   8522: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   8525: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   8528: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   8531: ldc_w 487
-    //   8534: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8537: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   8540: aload_0
-    //   8541: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   8544: lsub
-    //   8545: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   8548: ldc_w 489
-    //   8551: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8554: aload_2
-    //   8555: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   8558: getfield 492	com/tencent/component/network/downloader/DownloadResult$Content:length	J
-    //   8561: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   8564: ldc_w 494
-    //   8567: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8570: aload_2
-    //   8571: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   8574: getfield 496	com/tencent/component/network/downloader/DownloadResult$Content:size	J
-    //   8577: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   8580: ldc_w 498
-    //   8583: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8586: aload_2
-    //   8587: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   8590: getfield 501	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
-    //   8593: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   8596: ldc_w 503
-    //   8599: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8602: aload_0
-    //   8603: invokevirtual 369	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()I
-    //   8606: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   8609: ldc_w 505
-    //   8612: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8615: aload_0
-    //   8616: invokevirtual 507	com/tencent/component/network/downloader/impl/FastDownloadTask:c	()I
-    //   8619: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   8622: ldc_w 509
-    //   8625: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8628: ldc_w 516
-    //   8631: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8634: iload_3
-    //   8635: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   8638: ldc_w 518
-    //   8641: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8644: aload 27
-    //   8646: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8649: ldc_w 472
-    //   8652: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8655: aload_2
-    //   8656: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   8659: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   8662: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8665: ldc_w 520
-    //   8668: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8671: aload 21
-    //   8673: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8676: ldc_w 522
-    //   8679: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8682: astore 28
-    //   8684: aload_0
-    //   8685: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   8688: ifnull +294 -> 8982
-    //   8691: aload_0
-    //   8692: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   8695: iconst_0
-    //   8696: bipush 30
-    //   8698: invokevirtual 527	java/lang/String:substring	(II)Ljava/lang/String;
-    //   8701: astore 24
-    //   8703: aload 28
-    //   8705: aload 24
-    //   8707: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8710: ldc_w 529
-    //   8713: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8716: astore 24
-    //   8718: aload_0
-    //   8719: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   8722: ifnull +269 -> 8991
-    //   8725: aload_0
-    //   8726: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   8729: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   8732: istore 4
-    //   8734: aload 24
-    //   8736: iload 4
-    //   8738: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   8741: ldc_w 531
-    //   8744: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8747: aload_2
-    //   8748: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   8751: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   8754: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8757: ldc_w 536
-    //   8760: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8763: lload 8
-    //   8765: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   8768: ldc_w 538
-    //   8771: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8774: aload_0
-    //   8775: getfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   8778: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   8781: ldc_w 505
-    //   8784: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8787: aload_0
-    //   8788: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Int	I
-    //   8791: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   8794: ldc_w 509
-    //   8797: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8800: ldc_w 540
-    //   8803: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8806: aload_0
-    //   8807: getfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Long	J
-    //   8810: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   8813: ldc_w 505
-    //   8816: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8819: aload_0
-    //   8820: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Int	I
-    //   8823: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   8826: ldc_w 509
-    //   8829: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8832: ldc_w 542
-    //   8835: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8838: aload_0
-    //   8839: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   8842: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   8845: ldc_w 544
-    //   8848: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8851: aload_0
-    //   8852: getfield 545	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_Long	J
-    //   8855: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   8858: ldc_w 547
-    //   8861: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8864: aload_0
-    //   8865: invokevirtual 549	com/tencent/component/network/downloader/impl/FastDownloadTask:d	()I
-    //   8868: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   8871: ldc_w 509
-    //   8874: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8877: ldc_w 551
-    //   8880: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   8883: astore 28
-    //   8885: aload_0
-    //   8886: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   8889: ifnull +108 -> 8997
-    //   8892: aload_0
-    //   8893: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   8896: invokeinterface 560 1 0
-    //   8901: astore 24
-    //   8903: aload 26
-    //   8905: aload 28
-    //   8907: aload 24
-    //   8909: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   8912: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   8915: putfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   8918: ldc_w 565
-    //   8921: aload 26
-    //   8923: getfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   8926: aconst_null
-    //   8927: invokestatic 809	com/tencent/component/network/module/base/QDLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   8930: goto -7839 -> 1091
-    //   8933: ldc_w 811
-    //   8936: astore 24
-    //   8938: goto -8417 -> 521
-    //   8941: aconst_null
-    //   8942: astore 24
-    //   8944: goto -8303 -> 641
-    //   8947: aload_0
-    //   8948: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   8951: astore 24
-    //   8953: goto -8090 -> 863
-    //   8956: iconst_0
-    //   8957: istore 4
-    //   8959: goto -8065 -> 894
-    //   8962: aconst_null
-    //   8963: astore 24
-    //   8965: goto -7902 -> 1063
-    //   8968: ldc_w 811
-    //   8971: astore 24
-    //   8973: goto -585 -> 8388
-    //   8976: aconst_null
-    //   8977: astore 24
-    //   8979: goto -471 -> 8508
-    //   8982: aload_0
-    //   8983: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   8986: astore 24
-    //   8988: goto -285 -> 8703
-    //   8991: iconst_0
-    //   8992: istore 4
-    //   8994: goto -260 -> 8734
-    //   8997: aconst_null
-    //   8998: astore 24
-    //   9000: goto -97 -> 8903
-    //   9003: iconst_0
-    //   9004: istore 4
-    //   9006: goto -7834 -> 1172
-    //   9009: ldc_w 378
-    //   9012: astore 21
-    //   9014: goto -7711 -> 1303
-    //   9017: astore 21
-    //   9019: ldc 186
-    //   9021: ldc_w 813
-    //   9024: aload 21
-    //   9026: invokestatic 809	com/tencent/component/network/module/base/QDLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   9029: goto -7650 -> 1379
-    //   9032: astore 21
-    //   9034: ldc 186
-    //   9036: ldc_w 815
-    //   9039: aload 21
-    //   9041: invokestatic 809	com/tencent/component/network/module/base/QDLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   9044: goto -7615 -> 1429
-    //   9047: iconst_0
-    //   9048: istore 18
-    //   9050: goto -7571 -> 1479
-    //   9053: aload 25
-    //   9055: invokevirtual 818	com/tencent/component/network/utils/NetworkUtils$DNS:toString	()Ljava/lang/String;
-    //   9058: astore 19
-    //   9060: goto -7513 -> 1547
-    //   9063: aload_0
-    //   9064: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   9067: ifnull +15 -> 9082
-    //   9070: aload_0
-    //   9071: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   9074: invokevirtual 823	org/apache/http/client/methods/HttpGet:abort	()V
-    //   9077: aload_0
-    //   9078: aconst_null
-    //   9079: putfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   9082: aload_0
-    //   9083: invokevirtual 825	com/tencent/component/network/downloader/impl/FastDownloadTask:f	()V
-    //   9086: goto -7337 -> 1749
-    //   9089: aconst_null
-    //   9090: astore 22
-    //   9092: goto -6226 -> 2866
-    //   9095: astore 21
-    //   9097: ldc_w 378
-    //   9100: astore 21
-    //   9102: goto -6202 -> 2900
-    //   9105: new 102	java/lang/StringBuilder
-    //   9108: dup
-    //   9109: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   9112: ldc_w 807
-    //   9115: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9118: aload_0
-    //   9119: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   9122: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9125: ldc_w 435
-    //   9128: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9131: aload_0
-    //   9132: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   9135: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   9138: ldc_w 440
-    //   9141: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9144: astore 27
-    //   9146: aload_0
-    //   9147: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   9150: ifeq +606 -> 9756
-    //   9153: aload 20
-    //   9155: ifnull +601 -> 9756
-    //   9158: aload 20
-    //   9160: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   9163: ifnull +593 -> 9756
-    //   9166: aload 20
-    //   9168: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   9171: invokevirtual 449	com/squareup/okhttp/Protocol:toString	()Ljava/lang/String;
-    //   9174: astore 23
-    //   9176: aload 27
-    //   9178: aload 23
-    //   9180: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9183: ldc_w 451
-    //   9186: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9189: aload 24
-    //   9191: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   9194: ldc_w 456
-    //   9197: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9200: aload 22
-    //   9202: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9205: ldc_w 458
-    //   9208: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9211: aconst_null
-    //   9212: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9215: ldc_w 460
-    //   9218: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9221: invokestatic 147	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   9224: invokevirtual 150	java/lang/Thread:getId	()J
-    //   9227: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   9230: ldc_w 462
-    //   9233: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9236: invokestatic 134	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   9239: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9242: ldc_w 464
-    //   9245: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9248: aload_0
-    //   9249: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   9252: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   9255: ldc_w 466
-    //   9258: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9261: aload_0
-    //   9262: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   9265: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   9268: ldc_w 468
-    //   9271: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9274: astore 27
-    //   9276: aload_0
-    //   9277: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   9280: ifeq +484 -> 9764
-    //   9283: aload_0
-    //   9284: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   9287: aload_0
-    //   9288: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   9291: invokestatic 267	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
-    //   9294: astore 23
-    //   9296: aload 27
-    //   9298: aload 23
-    //   9300: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   9303: ldc_w 483
-    //   9306: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9309: aload_2
-    //   9310: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   9313: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   9316: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   9319: ldc_w 487
-    //   9322: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9325: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   9328: aload_0
-    //   9329: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   9332: lsub
-    //   9333: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   9336: ldc_w 489
-    //   9339: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9342: aload_2
-    //   9343: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   9346: getfield 492	com/tencent/component/network/downloader/DownloadResult$Content:length	J
-    //   9349: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   9352: ldc_w 494
-    //   9355: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9358: aload_2
-    //   9359: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   9362: getfield 496	com/tencent/component/network/downloader/DownloadResult$Content:size	J
-    //   9365: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   9368: ldc_w 498
-    //   9371: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9374: aload_2
-    //   9375: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   9378: getfield 501	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
-    //   9381: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   9384: ldc_w 503
-    //   9387: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9390: aload_0
-    //   9391: invokevirtual 369	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()I
-    //   9394: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   9397: ldc_w 505
-    //   9400: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9403: aload_0
-    //   9404: invokevirtual 507	com/tencent/component/network/downloader/impl/FastDownloadTask:c	()I
-    //   9407: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   9410: ldc_w 509
-    //   9413: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9416: ldc_w 516
-    //   9419: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9422: iload_3
-    //   9423: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   9426: ldc_w 518
-    //   9429: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9432: aload 25
-    //   9434: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9437: ldc_w 472
-    //   9440: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9443: aload_2
-    //   9444: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   9447: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   9450: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9453: ldc_w 520
-    //   9456: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9459: aload 21
-    //   9461: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9464: ldc_w 522
-    //   9467: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9470: astore 27
-    //   9472: aload_0
-    //   9473: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   9476: ifnull +294 -> 9770
-    //   9479: aload_0
-    //   9480: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   9483: iconst_0
-    //   9484: bipush 30
-    //   9486: invokevirtual 527	java/lang/String:substring	(II)Ljava/lang/String;
-    //   9489: astore 23
-    //   9491: aload 27
-    //   9493: aload 23
-    //   9495: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9498: ldc_w 529
-    //   9501: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9504: astore 23
-    //   9506: aload_0
-    //   9507: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   9510: ifnull +269 -> 9779
-    //   9513: aload_0
-    //   9514: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   9517: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   9520: istore 5
-    //   9522: aload 23
-    //   9524: iload 5
-    //   9526: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   9529: ldc_w 531
-    //   9532: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9535: aload_2
-    //   9536: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   9539: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   9542: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9545: ldc_w 536
-    //   9548: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9551: lload 8
-    //   9553: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   9556: ldc_w 538
-    //   9559: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9562: aload_0
-    //   9563: getfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   9566: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   9569: ldc_w 505
-    //   9572: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9575: aload_0
-    //   9576: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Int	I
-    //   9579: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   9582: ldc_w 509
-    //   9585: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9588: ldc_w 540
-    //   9591: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9594: aload_0
-    //   9595: getfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Long	J
-    //   9598: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   9601: ldc_w 505
-    //   9604: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9607: aload_0
-    //   9608: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Int	I
-    //   9611: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   9614: ldc_w 509
-    //   9617: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9620: ldc_w 542
-    //   9623: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9626: aload_0
-    //   9627: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   9630: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   9633: ldc_w 544
-    //   9636: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9639: aload_0
-    //   9640: getfield 545	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_Long	J
-    //   9643: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   9646: ldc_w 547
-    //   9649: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8295: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   8298: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   8301: ldc_w 532
+    //   8304: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8307: astore 30
+    //   8309: aload_0
+    //   8310: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   8313: ifeq +1377 -> 9690
+    //   8316: aload 22
+    //   8318: ifnull +1372 -> 9690
+    //   8321: aload 22
+    //   8323: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   8326: ifnull +1364 -> 9690
+    //   8329: aload 22
+    //   8331: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   8334: invokevirtual 541	okhttp3/Protocol:toString	()Ljava/lang/String;
+    //   8337: astore 26
+    //   8339: aload 30
+    //   8341: aload 26
+    //   8343: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8346: ldc_w 543
+    //   8349: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8352: aload 27
+    //   8354: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   8357: ldc_w 548
+    //   8360: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8363: aload 25
+    //   8365: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8368: ldc_w 550
+    //   8371: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8374: aconst_null
+    //   8375: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8378: ldc_w 552
+    //   8381: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8384: invokestatic 171	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   8387: invokevirtual 174	java/lang/Thread:getId	()J
+    //   8390: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   8393: ldc_w 554
+    //   8396: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8399: invokestatic 158	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   8402: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8405: ldc_w 556
+    //   8408: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8411: aload_0
+    //   8412: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   8415: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   8418: ldc_w 558
+    //   8421: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8424: aload_0
+    //   8425: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   8428: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   8431: ldc_w 560
+    //   8434: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8437: astore 30
+    //   8439: aload_0
+    //   8440: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   8443: ifeq +1255 -> 9698
+    //   8446: aload_0
+    //   8447: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   8450: aload_0
+    //   8451: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   8454: invokestatic 322	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
+    //   8457: astore 26
+    //   8459: aload 30
+    //   8461: aload 26
+    //   8463: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   8466: ldc_w 562
+    //   8469: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8472: iload 10
+    //   8474: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   8477: ldc_w 564
+    //   8480: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8483: invokestatic 569	com/tencent/component/network/module/base/Config:getNetworkStackType	()I
+    //   8486: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   8489: ldc_w 571
+    //   8492: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8495: aload_2
+    //   8496: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   8499: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   8502: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8505: ldc_w 576
+    //   8508: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8511: aload_2
+    //   8512: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   8515: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   8518: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   8521: ldc_w 581
+    //   8524: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8527: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   8530: aload_0
+    //   8531: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   8534: lsub
+    //   8535: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   8538: ldc_w 583
+    //   8541: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8544: aload_2
+    //   8545: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   8548: getfield 586	com/tencent/component/network/downloader/DownloadResult$Content:length	J
+    //   8551: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   8554: ldc_w 588
+    //   8557: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8560: aload_2
+    //   8561: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   8564: getfield 590	com/tencent/component/network/downloader/DownloadResult$Content:size	J
+    //   8567: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   8570: ldc_w 592
+    //   8573: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8576: aload_2
+    //   8577: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   8580: getfield 595	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
+    //   8583: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   8586: ldc_w 597
+    //   8589: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8592: aload_0
+    //   8593: invokevirtual 421	com/tencent/component/network/downloader/impl/FastDownloadTask:getCurrAttemptCount	()I
+    //   8596: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   8599: ldc_w 599
+    //   8602: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8605: aload_0
+    //   8606: invokevirtual 602	com/tencent/component/network/downloader/impl/FastDownloadTask:getTotalAttemptCount	()I
+    //   8609: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   8612: ldc_w 604
+    //   8615: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8618: aload_2
+    //   8619: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   8622: invokevirtual 607	com/tencent/component/network/downloader/DownloadResult$Status:getFailReason	()I
+    //   8625: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   8628: ldc_w 609
+    //   8631: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8634: iload 4
+    //   8636: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   8639: ldc_w 611
+    //   8642: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8645: aload 28
+    //   8647: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8650: ldc_w 613
+    //   8653: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8656: aload 24
+    //   8658: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8661: ldc_w 615
+    //   8664: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8667: astore 30
+    //   8669: aload_0
+    //   8670: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   8673: ifnull +1031 -> 9704
+    //   8676: aload_0
+    //   8677: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   8680: iconst_0
+    //   8681: bipush 30
+    //   8683: invokevirtual 619	java/lang/String:substring	(II)Ljava/lang/String;
+    //   8686: astore 26
+    //   8688: aload 30
+    //   8690: aload 26
+    //   8692: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8695: ldc_w 621
+    //   8698: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8701: astore 26
+    //   8703: aload_0
+    //   8704: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   8707: ifnull +1006 -> 9713
+    //   8710: aload_0
+    //   8711: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   8714: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   8717: istore_3
+    //   8718: aload 26
+    //   8720: iload_3
+    //   8721: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   8724: ldc_w 623
+    //   8727: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8730: aload_2
+    //   8731: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   8734: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   8737: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8740: ldc_w 628
+    //   8743: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8746: lload 12
+    //   8748: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   8751: ldc_w 630
+    //   8754: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8757: aload_0
+    //   8758: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   8761: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   8764: ldc_w 599
+    //   8767: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8770: aload_0
+    //   8771: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_retry	I
+    //   8774: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   8777: ldc_w 632
+    //   8780: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8783: aload_0
+    //   8784: getfield 42	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_time	J
+    //   8787: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   8790: ldc_w 599
+    //   8793: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8796: aload_0
+    //   8797: getfield 44	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_retry	I
+    //   8800: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   8803: ldc_w 634
+    //   8806: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8809: aload_0
+    //   8810: getfield 46	com/tencent/component/network/downloader/impl/FastDownloadTask:send_req_time	J
+    //   8813: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   8816: ldc_w 636
+    //   8819: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8822: aload_0
+    //   8823: getfield 639	com/tencent/component/network/downloader/impl/FastDownloadTask:t_recv_data	J
+    //   8826: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   8829: ldc_w 641
+    //   8832: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8835: aload_0
+    //   8836: invokevirtual 644	com/tencent/component/network/downloader/impl/FastDownloadTask:getTaskConcurrentCount	()I
+    //   8839: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   8842: ldc_w 646
+    //   8845: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8848: astore 30
+    //   8850: aload_0
+    //   8851: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   8854: ifnull +864 -> 9718
+    //   8857: aload_0
+    //   8858: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   8861: invokeinterface 656 1 0
+    //   8866: astore 26
+    //   8868: aload 29
+    //   8870: aload 30
+    //   8872: aload 26
+    //   8874: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   8877: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   8880: putfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   8883: ldc_w 447
+    //   8886: aload 29
+    //   8888: getfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   8891: aconst_null
+    //   8892: invokestatic 432	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   8895: aload_0
+    //   8896: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   8899: ifnull +24 -> 8923
+    //   8902: aload_0
+    //   8903: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   8906: ldc_w 439
+    //   8909: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   8912: ifeq +11 -> 8923
+    //   8915: aload_0
+    //   8916: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   8919: iconst_0
+    //   8920: invokestatic 665	com/tencent/component/network/utils/http/pool/CustomDnsResolve:setIPDirectEnable	(Ljava/lang/String;Z)V
+    //   8923: iload 10
+    //   8925: ifne +8 -> 8933
+    //   8928: aload_0
+    //   8929: iconst_0
+    //   8930: putfield 668	com/tencent/component/network/downloader/impl/FastDownloadTask:mShouldReport	Z
+    //   8933: aload_2
+    //   8934: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   8937: astore 26
+    //   8939: new 125	java/lang/StringBuilder
+    //   8942: dup
+    //   8943: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   8946: aload_0
+    //   8947: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   8950: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8953: ldc_w 670
+    //   8956: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8959: aload 25
+    //   8961: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8964: ldc_w 672
+    //   8967: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8970: aload_2
+    //   8971: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   8974: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   8977: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8980: ldc_w 674
+    //   8983: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   8986: astore 25
+    //   8988: aload_0
+    //   8989: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   8992: ifnull +1369 -> 10361
+    //   8995: aload_0
+    //   8996: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   8999: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   9002: istore_3
+    //   9003: aload 25
+    //   9005: iload_3
+    //   9006: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   9009: ldc_w 609
+    //   9012: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9015: iload 4
+    //   9017: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   9020: ldc_w 571
+    //   9023: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9026: aload_2
+    //   9027: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   9030: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   9033: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9036: ldc_w 583
+    //   9039: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9042: aload_2
+    //   9043: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   9046: getfield 586	com/tencent/component/network/downloader/DownloadResult$Content:length	J
+    //   9049: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   9052: ldc_w 588
+    //   9055: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9058: aload_2
+    //   9059: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   9062: getfield 590	com/tencent/component/network/downloader/DownloadResult$Content:size	J
+    //   9065: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   9068: ldc_w 576
+    //   9071: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9074: aload_2
+    //   9075: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   9078: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   9081: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   9084: ldc_w 581
+    //   9087: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9090: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   9093: aload_0
+    //   9094: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   9097: lsub
+    //   9098: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   9101: astore 25
+    //   9103: aload 24
+    //   9105: invokestatic 252	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   9108: ifne +1258 -> 10366
+    //   9111: new 125	java/lang/StringBuilder
+    //   9114: dup
+    //   9115: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   9118: ldc_w 613
+    //   9121: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9124: aload 24
+    //   9126: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9129: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   9132: astore 24
+    //   9134: aload 26
+    //   9136: aload 25
+    //   9138: aload 24
+    //   9140: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9143: ldc_w 611
+    //   9146: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9149: aload 28
+    //   9151: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9154: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   9157: putfield 677	com/tencent/component/network/downloader/DownloadResult$Status:detailDownloadInfo	Ljava/lang/String;
+    //   9160: aload_0
+    //   9161: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   9164: ifnull +53 -> 9217
+    //   9167: getstatic 203	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:Strategy_BACKUPIP	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   9170: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   9173: aload_0
+    //   9174: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   9177: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   9180: if_icmpne +37 -> 9217
+    //   9183: aload_0
+    //   9184: getfield 232	com/tencent/component/network/downloader/impl/FastDownloadTask:pBackupIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   9187: ifnull +30 -> 9217
+    //   9190: aload_0
+    //   9191: getfield 232	com/tencent/component/network/downloader/impl/FastDownloadTask:pBackupIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   9194: aload_0
+    //   9195: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   9198: aload_0
+    //   9199: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   9202: invokestatic 680	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
+    //   9205: aload_2
+    //   9206: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   9209: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   9212: invokeinterface 684 4 0
+    //   9217: aload_0
+    //   9218: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   9221: ifnull +53 -> 9274
+    //   9224: getstatic 297	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:Strategy_DomainDirect	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   9227: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   9230: aload_0
+    //   9231: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   9234: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   9237: if_icmpne +37 -> 9274
+    //   9240: aload_0
+    //   9241: getfield 300	com/tencent/component/network/downloader/impl/FastDownloadTask:pDirectIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   9244: ifnull +30 -> 9274
+    //   9247: aload_0
+    //   9248: getfield 300	com/tencent/component/network/downloader/impl/FastDownloadTask:pDirectIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   9251: aload_0
+    //   9252: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   9255: aload_0
+    //   9256: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   9259: invokestatic 680	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
+    //   9262: aload_2
+    //   9263: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   9266: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   9269: invokeinterface 684 4 0
+    //   9274: iload 10
+    //   9276: ifeq +64 -> 9340
+    //   9279: aload_0
+    //   9280: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   9283: invokestatic 67	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:getInstance	(Landroid/content/Context;)Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy;
+    //   9286: astore 24
+    //   9288: aload_0
+    //   9289: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   9292: astore 25
+    //   9294: aload_0
+    //   9295: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   9298: ifeq +1106 -> 10404
+    //   9301: aload_0
+    //   9302: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   9305: ifnull +1099 -> 10404
+    //   9308: aload_0
+    //   9309: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   9312: ldc_w 686
+    //   9315: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   9318: ifeq +1086 -> 10404
+    //   9321: iconst_1
+    //   9322: istore 10
+    //   9324: aload 24
+    //   9326: aload 25
+    //   9328: iload 10
+    //   9330: aload_2
+    //   9331: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   9334: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   9337: invokevirtual 690	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:reportHttps	(Ljava/lang/String;ZZ)V
+    //   9340: aload 29
+    //   9342: invokestatic 407	java/lang/System:currentTimeMillis	()J
+    //   9345: putfield 693	com/tencent/component/network/downloader/DownloadReport:endTime	J
+    //   9348: aload 29
+    //   9350: aload_0
+    //   9351: invokevirtual 696	com/tencent/component/network/downloader/impl/FastDownloadTask:getContentLength	()J
+    //   9354: putfield 699	com/tencent/component/network/downloader/DownloadReport:fileSize	J
+    //   9357: aload 29
+    //   9359: aload 23
+    //   9361: putfield 703	com/tencent/component/network/downloader/DownloadReport:response	Lorg/apache/http/HttpResponse;
+    //   9364: aload 29
+    //   9366: aload 22
+    //   9368: putfield 707	com/tencent/component/network/downloader/DownloadReport:okResponse	Lokhttp3/Response;
+    //   9371: aload 29
+    //   9373: iload 4
+    //   9375: putfield 710	com/tencent/component/network/downloader/DownloadReport:httpStatus	I
+    //   9378: aload 29
+    //   9380: aconst_null
+    //   9381: putfield 714	com/tencent/component/network/downloader/DownloadReport:exception	Ljava/lang/Throwable;
+    //   9384: aload 27
+    //   9386: ifnonnull +1024 -> 10410
+    //   9389: aconst_null
+    //   9390: astore 23
+    //   9392: aload 29
+    //   9394: aload 23
+    //   9396: putfield 717	com/tencent/component/network/downloader/DownloadReport:dns	Ljava/lang/String;
+    //   9399: aload 29
+    //   9401: aconst_null
+    //   9402: putfield 720	com/tencent/component/network/downloader/DownloadReport:localAddress	Ljava/lang/String;
+    //   9405: aload 29
+    //   9407: aload_2
+    //   9408: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   9411: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   9414: putfield 721	com/tencent/component/network/downloader/DownloadReport:clientip	Ljava/lang/String;
+    //   9417: aload 29
+    //   9419: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   9422: aload_0
+    //   9423: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   9426: lsub
+    //   9427: putfield 724	com/tencent/component/network/downloader/DownloadReport:totaltime	J
+    //   9430: aload 29
+    //   9432: aload_2
+    //   9433: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   9436: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   9439: putfield 727	com/tencent/component/network/downloader/DownloadReport:downloadTime	J
+    //   9442: aload 29
+    //   9444: aload 29
+    //   9446: getfield 724	com/tencent/component/network/downloader/DownloadReport:totaltime	J
+    //   9449: aload_2
+    //   9450: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   9453: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   9456: lsub
+    //   9457: putfield 730	com/tencent/component/network/downloader/DownloadReport:t_wait	J
+    //   9460: aload 29
+    //   9462: lload 12
+    //   9464: putfield 733	com/tencent/component/network/downloader/DownloadReport:t_prepare	J
+    //   9467: aload 29
+    //   9469: aload_0
+    //   9470: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   9473: putfield 736	com/tencent/component/network/downloader/DownloadReport:t_conn	J
+    //   9476: aload 29
+    //   9478: aload_0
+    //   9479: getfield 46	com/tencent/component/network/downloader/impl/FastDownloadTask:send_req_time	J
+    //   9482: putfield 739	com/tencent/component/network/downloader/DownloadReport:t_recvrsp	J
+    //   9485: aload 29
+    //   9487: aload_0
+    //   9488: getfield 639	com/tencent/component/network/downloader/impl/FastDownloadTask:t_recv_data	J
+    //   9491: putfield 742	com/tencent/component/network/downloader/DownloadReport:t_recvdata	J
+    //   9494: aload 29
+    //   9496: lconst_0
+    //   9497: putfield 745	com/tencent/component/network/downloader/DownloadReport:t_process	J
+    //   9500: aload 29
+    //   9502: aload_0
+    //   9503: invokevirtual 644	com/tencent/component/network/downloader/impl/FastDownloadTask:getTaskConcurrentCount	()I
+    //   9506: putfield 748	com/tencent/component/network/downloader/DownloadReport:concurrent	I
+    //   9509: aload 29
+    //   9511: aload_2
+    //   9512: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   9515: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   9518: putfield 751	com/tencent/component/network/downloader/DownloadReport:content_type	Ljava/lang/String;
+    //   9521: aload 29
+    //   9523: aload_0
+    //   9524: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   9527: invokestatic 754	com/tencent/component/network/module/base/Config:isFromQzoneAlbum	(Ljava/lang/String;)Z
+    //   9530: putfield 756	com/tencent/component/network/downloader/DownloadReport:isFromQzoneAlbum	Z
+    //   9533: aload 29
+    //   9535: aload_0
+    //   9536: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   9539: putfield 759	com/tencent/component/network/downloader/DownloadReport:isHttp2	Z
+    //   9542: aload_0
+    //   9543: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   9546: ifnull +874 -> 10420
+    //   9549: aload_0
+    //   9550: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   9553: ldc_w 686
+    //   9556: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   9559: ifeq +861 -> 10420
+    //   9562: iconst_1
+    //   9563: istore 10
+    //   9565: aload 29
+    //   9567: iload 10
+    //   9569: putfield 762	com/tencent/component/network/downloader/DownloadReport:isHttps	Z
+    //   9572: aload 29
+    //   9574: aload_2
+    //   9575: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   9578: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   9581: putfield 764	com/tencent/component/network/downloader/DownloadReport:isSucceed	Z
+    //   9584: aload 29
+    //   9586: getstatic 770	com/tencent/component/network/downloader/Downloader$DownloadMode:FastMode	Lcom/tencent/component/network/downloader/Downloader$DownloadMode;
+    //   9589: invokevirtual 773	com/tencent/component/network/downloader/Downloader$DownloadMode:ordinal	()I
+    //   9592: putfield 776	com/tencent/component/network/downloader/DownloadReport:downloadMode	I
+    //   9595: aload 22
+    //   9597: ifnull +24 -> 9621
+    //   9600: aload 22
+    //   9602: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   9605: ifnull +16 -> 9621
+    //   9608: aload 29
+    //   9610: aload 22
+    //   9612: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   9615: invokevirtual 541	okhttp3/Protocol:toString	()Ljava/lang/String;
+    //   9618: putfield 778	com/tencent/component/network/downloader/DownloadReport:protocol	Ljava/lang/String;
+    //   9621: aload_2
+    //   9622: aload 29
+    //   9624: invokevirtual 782	com/tencent/component/network/downloader/DownloadResult:setReport	(Lcom/tencent/component/network/downloader/DownloadReport;)V
+    //   9627: aload_2
+    //   9628: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   9631: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   9634: ifeq +11 -> 9645
+    //   9637: aload_0
+    //   9638: aload_1
+    //   9639: aload_2
+    //   9640: aload 29
+    //   9642: invokevirtual 363	com/tencent/component/network/downloader/impl/FastDownloadTask:handleDownloadReportForTask	(Lcom/tencent/component/network/utils/thread/ThreadPool$JobContext;Lcom/tencent/component/network/downloader/DownloadResult;Lcom/tencent/component/network/downloader/DownloadReport;)V
+    //   9645: aload_0
+    //   9646: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   9649: ifeq +777 -> 10426
     //   9652: aload_0
-    //   9653: invokevirtual 549	com/tencent/component/network/downloader/impl/FastDownloadTask:d	()I
-    //   9656: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   9659: ldc_w 509
-    //   9662: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9665: ldc_w 551
-    //   9668: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   9671: astore 27
-    //   9673: aload_0
-    //   9674: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   9677: ifnull +108 -> 9785
-    //   9680: aload_0
-    //   9681: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   9684: invokeinterface 560 1 0
-    //   9689: astore 23
-    //   9691: aload 26
-    //   9693: aload 27
-    //   9695: aload 23
-    //   9697: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   9700: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   9703: putfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   9706: ldc_w 565
-    //   9709: aload 26
-    //   9711: getfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   9714: aconst_null
-    //   9715: invokestatic 809	com/tencent/component/network/module/base/QDLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   9718: goto -6083 -> 3635
-    //   9721: ldc_w 811
-    //   9724: astore 23
-    //   9726: goto -6660 -> 3066
-    //   9729: aconst_null
-    //   9730: astore 23
-    //   9732: goto -6546 -> 3186
-    //   9735: aload_0
-    //   9736: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   9739: astore 23
-    //   9741: goto -6333 -> 3408
-    //   9744: iconst_0
-    //   9745: istore 5
-    //   9747: goto -6308 -> 3439
-    //   9750: aconst_null
-    //   9751: astore 23
-    //   9753: goto -6145 -> 3608
-    //   9756: ldc_w 811
-    //   9759: astore 23
-    //   9761: goto -585 -> 9176
-    //   9764: aconst_null
-    //   9765: astore 23
-    //   9767: goto -471 -> 9296
-    //   9770: aload_0
-    //   9771: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   9774: astore 23
-    //   9776: goto -285 -> 9491
-    //   9779: iconst_0
-    //   9780: istore 5
-    //   9782: goto -260 -> 9522
-    //   9785: aconst_null
-    //   9786: astore 23
-    //   9788: goto -97 -> 9691
-    //   9791: iconst_0
-    //   9792: istore 5
-    //   9794: goto -6078 -> 3716
-    //   9797: ldc_w 378
-    //   9800: astore 21
-    //   9802: goto -5955 -> 3847
-    //   9805: astore 21
-    //   9807: ldc 186
-    //   9809: ldc_w 813
-    //   9812: aload 21
-    //   9814: invokestatic 809	com/tencent/component/network/module/base/QDLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   9817: goto -5894 -> 3923
-    //   9820: astore 21
-    //   9822: ldc 186
-    //   9824: ldc_w 815
-    //   9827: aload 21
-    //   9829: invokestatic 809	com/tencent/component/network/module/base/QDLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   9832: goto -5859 -> 3973
-    //   9835: iconst_0
-    //   9836: istore 18
-    //   9838: goto -5815 -> 4023
-    //   9841: aload 24
-    //   9843: invokevirtual 818	com/tencent/component/network/utils/NetworkUtils$DNS:toString	()Ljava/lang/String;
-    //   9846: astore 19
-    //   9848: goto -5758 -> 4090
-    //   9851: aload_0
-    //   9852: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   9855: ifnull +15 -> 9870
-    //   9858: aload_0
-    //   9859: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   9862: invokevirtual 823	org/apache/http/client/methods/HttpGet:abort	()V
-    //   9865: aload_0
-    //   9866: aconst_null
-    //   9867: putfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   9870: aload_0
-    //   9871: invokevirtual 825	com/tencent/component/network/downloader/impl/FastDownloadTask:f	()V
-    //   9874: goto -5582 -> 4292
-    //   9877: aload_2
-    //   9878: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   9881: lload 14
-    //   9883: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   9886: invokevirtual 393	com/tencent/component/network/downloader/DownloadResult$Process:a	(JJ)V
-    //   9889: aload_0
-    //   9890: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   9893: invokestatic 398	com/tencent/component/network/module/common/NetworkStatus:a	(Landroid/content/Context;)Lcom/tencent/component/network/module/common/NetworkStatus;
-    //   9896: invokevirtual 401	com/tencent/component/network/module/common/NetworkStatus:a	()Lcom/tencent/component/network/utils/NetworkUtils$DNS;
-    //   9899: astore 24
-    //   9901: aload_0
-    //   9902: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   9905: ifnull +1452 -> 11357
-    //   9908: aload_0
-    //   9909: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   9912: invokevirtual 404	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:a	()Lcom/tencent/component/network/downloader/common/IPInfo;
-    //   9915: ifnull +1442 -> 11357
-    //   9918: aload_0
-    //   9919: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   9922: invokevirtual 404	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:a	()Lcom/tencent/component/network/downloader/common/IPInfo;
-    //   9925: getfield 406	com/tencent/component/network/downloader/common/IPInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   9928: astore 22
-    //   9930: aload_0
-    //   9931: aload_0
-    //   9932: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   9935: aload 19
-    //   9937: aload 20
-    //   9939: invokevirtual 409	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(Lorg/apache/http/HttpRequest;Lorg/apache/http/HttpResponse;Lcom/squareup/okhttp/Response;)Ljava/lang/String;
-    //   9942: astore 25
-    //   9944: aload 21
-    //   9946: ifnull +5401 -> 15347
-    //   9949: aload 21
-    //   9951: ldc_w 411
-    //   9954: invokeinterface 417 2 0
-    //   9959: checkcast 217	java/lang/String
-    //   9962: astore 21
-    //   9964: aload_0
-    //   9965: lconst_0
-    //   9966: putfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   9969: aload_0
-    //   9970: iconst_0
-    //   9971: putfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Int	I
-    //   9974: aload_0
-    //   9975: lconst_0
-    //   9976: putfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Long	J
-    //   9979: aload_0
-    //   9980: iconst_0
-    //   9981: putfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Int	I
-    //   9984: aload_2
-    //   9985: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   9988: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   9991: ifeq +12 -> 10003
-    //   9994: aload_1
-    //   9995: invokeinterface 317 1 0
-    //   10000: ifeq +31 -> 10031
-    //   10003: aload_0
-    //   10004: getfield 423	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
-    //   10007: ifnull +24 -> 10031
-    //   10010: aload_0
-    //   10011: getfield 423	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
-    //   10014: aload_0
-    //   10015: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   10018: aload_2
-    //   10019: invokevirtual 426	com/tencent/component/network/downloader/DownloadResult:getPath	()Ljava/lang/String;
-    //   10022: aload 19
-    //   10024: aload 20
-    //   10026: invokeinterface 431 5 0
-    //   10031: aload_1
-    //   10032: invokeinterface 317 1 0
-    //   10037: ifne +1293 -> 11330
-    //   10040: aload_0
-    //   10041: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   10044: invokestatic 324	com/tencent/component/network/utils/NetworkUtils:isNetworkAvailable	(Landroid/content/Context;)Z
-    //   10047: istore 18
-    //   10049: aload_2
-    //   10050: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   10053: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   10056: ifne +1317 -> 11373
-    //   10059: new 102	java/lang/StringBuilder
-    //   10062: dup
-    //   10063: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   10066: ldc_w 433
-    //   10069: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10072: aload_0
-    //   10073: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   10076: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10079: ldc_w 435
-    //   10082: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10085: aload_0
-    //   10086: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   10089: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   10092: ldc_w 440
-    //   10095: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10098: astore 27
-    //   10100: aload_0
-    //   10101: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   10104: ifeq +1885 -> 11989
-    //   10107: aload 20
-    //   10109: ifnull +1880 -> 11989
-    //   10112: aload 20
-    //   10114: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   10117: ifnull +1872 -> 11989
-    //   10120: aload 20
-    //   10122: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   10125: invokevirtual 449	com/squareup/okhttp/Protocol:toString	()Ljava/lang/String;
-    //   10128: astore 23
-    //   10130: aload 27
-    //   10132: aload 23
-    //   10134: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10137: ldc_w 451
-    //   10140: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10143: aload 24
-    //   10145: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   10148: ldc_w 456
-    //   10151: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10154: aload 22
-    //   10156: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10159: ldc_w 458
-    //   10162: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10165: aconst_null
-    //   10166: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10169: ldc_w 460
-    //   10172: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10175: invokestatic 147	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   10178: invokevirtual 150	java/lang/Thread:getId	()J
-    //   10181: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   10184: ldc_w 462
-    //   10187: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10190: invokestatic 134	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   10193: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10196: ldc_w 464
-    //   10199: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10202: aload_0
-    //   10203: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   10206: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   10209: ldc_w 466
-    //   10212: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10215: aload_0
-    //   10216: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   10219: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   10222: ldc_w 468
-    //   10225: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10228: astore 27
-    //   10230: aload_0
-    //   10231: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   10234: ifeq +1763 -> 11997
-    //   10237: aload_0
-    //   10238: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   10241: aload_0
-    //   10242: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   10245: invokestatic 267	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
-    //   10248: astore 23
-    //   10250: aload 27
-    //   10252: aload 23
-    //   10254: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   10257: ldc_w 470
-    //   10260: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10263: iload 18
-    //   10265: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   10268: ldc_w 472
-    //   10271: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10274: aload_2
-    //   10275: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   10278: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   10281: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10284: ldc_w 483
-    //   10287: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10290: aload_2
-    //   10291: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   10294: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   10297: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   10300: ldc_w 487
-    //   10303: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10306: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   10309: aload_0
-    //   10310: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   10313: lsub
-    //   10314: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   10317: ldc_w 489
-    //   10320: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10323: aload_2
-    //   10324: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   10327: getfield 492	com/tencent/component/network/downloader/DownloadResult$Content:length	J
-    //   10330: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   10333: ldc_w 494
-    //   10336: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10339: aload_2
-    //   10340: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   10343: getfield 496	com/tencent/component/network/downloader/DownloadResult$Content:size	J
-    //   10346: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   10349: ldc_w 498
-    //   10352: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10355: aload_2
-    //   10356: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   10359: getfield 501	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
-    //   10362: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   10365: ldc_w 503
-    //   10368: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10371: aload_0
-    //   10372: invokevirtual 369	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()I
-    //   10375: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   10378: ldc_w 505
-    //   10381: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10384: aload_0
-    //   10385: invokevirtual 507	com/tencent/component/network/downloader/impl/FastDownloadTask:c	()I
-    //   10388: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   10391: ldc_w 509
-    //   10394: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10397: ldc_w 511
-    //   10400: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10403: aload_2
-    //   10404: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   10407: invokevirtual 514	com/tencent/component/network/downloader/DownloadResult$Status:getFailReason	()I
-    //   10410: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   10413: ldc_w 516
-    //   10416: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10419: iload_3
-    //   10420: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   10423: ldc_w 518
-    //   10426: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10429: aload 25
-    //   10431: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10434: ldc_w 520
-    //   10437: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10440: aload 21
-    //   10442: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10445: ldc_w 522
-    //   10448: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10451: astore 27
-    //   10453: aload_0
-    //   10454: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   10457: ifnull +1546 -> 12003
-    //   10460: aload_0
-    //   10461: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   10464: iconst_0
-    //   10465: bipush 30
-    //   10467: invokevirtual 527	java/lang/String:substring	(II)Ljava/lang/String;
-    //   10470: astore 23
-    //   10472: aload 27
-    //   10474: aload 23
-    //   10476: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10479: ldc_w 529
-    //   10482: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10485: astore 23
-    //   10487: aload_0
-    //   10488: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   10491: ifnull +1521 -> 12012
-    //   10494: aload_0
-    //   10495: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   10498: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   10501: istore 4
-    //   10503: aload 23
-    //   10505: iload 4
-    //   10507: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   10510: ldc_w 531
-    //   10513: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10516: aload_2
-    //   10517: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   10520: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   10523: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10526: ldc_w 536
-    //   10529: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10532: lload 8
-    //   10534: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   10537: ldc_w 538
-    //   10540: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10543: aload_0
-    //   10544: getfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   10547: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   10550: ldc_w 505
-    //   10553: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10556: aload_0
-    //   10557: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Int	I
-    //   10560: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   10563: ldc_w 509
-    //   10566: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10569: ldc_w 540
-    //   10572: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10575: aload_0
-    //   10576: getfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Long	J
-    //   10579: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   10582: ldc_w 505
-    //   10585: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10588: aload_0
-    //   10589: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Int	I
-    //   10592: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   10595: ldc_w 509
-    //   10598: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10601: ldc_w 542
-    //   10604: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10607: aload_0
-    //   10608: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   10611: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   10614: ldc_w 544
-    //   10617: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10620: aload_0
-    //   10621: getfield 545	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_Long	J
-    //   10624: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   10627: ldc_w 547
-    //   10630: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10633: aload_0
-    //   10634: invokevirtual 549	com/tencent/component/network/downloader/impl/FastDownloadTask:d	()I
-    //   10637: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   10640: ldc_w 509
-    //   10643: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10646: ldc_w 551
-    //   10649: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10652: astore 27
-    //   10654: aload_0
-    //   10655: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   10658: ifnull +1360 -> 12018
-    //   10661: aload_0
-    //   10662: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   10665: invokeinterface 560 1 0
-    //   10670: astore 23
-    //   10672: aload 26
-    //   10674: aload 27
-    //   10676: aload 23
-    //   10678: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   10681: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   10684: putfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   10687: ldc_w 565
-    //   10690: aload 26
-    //   10692: getfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   10695: aconst_null
-    //   10696: invokestatic 381	com/tencent/component/network/module/base/QDLog:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   10699: iload 18
-    //   10701: ifne +8 -> 10709
-    //   10704: aload_0
-    //   10705: iconst_0
-    //   10706: putfield 566	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_Boolean	Z
-    //   10709: aload_2
-    //   10710: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   10713: astore 23
-    //   10715: new 102	java/lang/StringBuilder
-    //   10718: dup
-    //   10719: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   10722: aload_0
-    //   10723: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   10726: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10729: ldc_w 568
-    //   10732: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10735: aload 22
-    //   10737: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10740: ldc_w 570
-    //   10743: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10746: aload_2
-    //   10747: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   10750: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   10753: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10756: ldc_w 572
-    //   10759: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10762: astore 22
-    //   10764: aload_0
-    //   10765: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   10768: ifnull +1291 -> 12059
-    //   10771: aload_0
-    //   10772: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   10775: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   10778: istore 4
-    //   10780: aload 22
-    //   10782: iload 4
-    //   10784: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   10787: ldc_w 516
-    //   10790: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10793: iload_3
-    //   10794: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   10797: ldc_w 472
-    //   10800: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10803: aload_2
-    //   10804: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   10807: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   10810: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10813: ldc_w 574
-    //   10816: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10819: aload_2
-    //   10820: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   10823: getfield 492	com/tencent/component/network/downloader/DownloadResult$Content:length	J
-    //   10826: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   10829: ldc_w 494
-    //   10832: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10835: aload_2
-    //   10836: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   10839: getfield 496	com/tencent/component/network/downloader/DownloadResult$Content:size	J
-    //   10842: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   10845: ldc_w 483
-    //   10848: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10851: aload_2
-    //   10852: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   10855: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   10858: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   10861: ldc_w 487
-    //   10864: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10867: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   10870: aload_0
-    //   10871: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   10874: lsub
-    //   10875: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   10878: astore 22
-    //   10880: aload 21
-    //   10882: invokestatic 214	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   10885: ifne +1180 -> 12065
-    //   10888: new 102	java/lang/StringBuilder
-    //   10891: dup
-    //   10892: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   10895: ldc_w 520
-    //   10898: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10901: aload 21
-    //   10903: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10906: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   10909: astore 21
-    //   10911: aload 23
-    //   10913: aload 22
-    //   10915: aload 21
-    //   10917: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10920: ldc_w 518
-    //   10923: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10926: aload 25
-    //   10928: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   10931: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   10934: putfield 577	com/tencent/component/network/downloader/DownloadResult$Status:detailDownloadInfo	Ljava/lang/String;
-    //   10937: getstatic 173	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:d	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   10940: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   10943: aload_0
-    //   10944: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   10947: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   10950: if_icmpne +37 -> 10987
-    //   10953: aload_0
-    //   10954: getfield 197	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   10957: ifnull +30 -> 10987
-    //   10960: aload_0
-    //   10961: getfield 197	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   10964: aload_0
-    //   10965: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   10968: aload_0
-    //   10969: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   10972: invokestatic 580	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
+    //   9653: getfield 786	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestCall	Lokhttp3/Call;
+    //   9656: ifnull +12 -> 9668
+    //   9659: aload_0
+    //   9660: getfield 786	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestCall	Lokhttp3/Call;
+    //   9663: invokeinterface 791 1 0
+    //   9668: aload_0
+    //   9669: aconst_null
+    //   9670: putfield 418	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestBuilder	Lokhttp3/Request$Builder;
+    //   9673: return
+    //   9674: aconst_null
+    //   9675: astore 25
+    //   9677: goto -1547 -> 8130
+    //   9680: astore 24
+    //   9682: ldc_w 428
+    //   9685: astore 24
+    //   9687: goto -1523 -> 8164
+    //   9690: ldc_w 958
+    //   9693: astore 26
+    //   9695: goto -1356 -> 8339
+    //   9698: aconst_null
+    //   9699: astore 26
+    //   9701: goto -1242 -> 8459
+    //   9704: aload_0
+    //   9705: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   9708: astore 26
+    //   9710: goto -1022 -> 8688
+    //   9713: iconst_0
+    //   9714: istore_3
+    //   9715: goto -997 -> 8718
+    //   9718: aconst_null
+    //   9719: astore 26
+    //   9721: goto -853 -> 8868
+    //   9724: new 125	java/lang/StringBuilder
+    //   9727: dup
+    //   9728: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   9731: ldc_w 960
+    //   9734: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9737: aload_0
+    //   9738: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   9741: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9744: ldc_w 527
+    //   9747: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9750: aload_0
+    //   9751: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   9754: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   9757: ldc_w 532
+    //   9760: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9763: astore 30
+    //   9765: aload_0
+    //   9766: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   9769: ifeq +558 -> 10327
+    //   9772: aload 22
+    //   9774: ifnull +553 -> 10327
+    //   9777: aload 22
+    //   9779: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   9782: ifnull +545 -> 10327
+    //   9785: aload 22
+    //   9787: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   9790: invokevirtual 541	okhttp3/Protocol:toString	()Ljava/lang/String;
+    //   9793: astore 26
+    //   9795: aload 30
+    //   9797: aload 26
+    //   9799: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9802: ldc_w 543
+    //   9805: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9808: aload 27
+    //   9810: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   9813: ldc_w 548
+    //   9816: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9819: aload 25
+    //   9821: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9824: ldc_w 550
+    //   9827: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9830: aconst_null
+    //   9831: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9834: ldc_w 552
+    //   9837: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9840: invokestatic 171	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   9843: invokevirtual 174	java/lang/Thread:getId	()J
+    //   9846: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   9849: ldc_w 554
+    //   9852: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9855: invokestatic 158	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   9858: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9861: ldc_w 556
+    //   9864: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9867: aload_0
+    //   9868: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   9871: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   9874: ldc_w 558
+    //   9877: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9880: aload_0
+    //   9881: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   9884: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   9887: ldc_w 560
+    //   9890: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9893: astore 30
+    //   9895: aload_0
+    //   9896: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   9899: ifeq +436 -> 10335
+    //   9902: aload_0
+    //   9903: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   9906: aload_0
+    //   9907: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   9910: invokestatic 322	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
+    //   9913: astore 26
+    //   9915: aload 30
+    //   9917: aload 26
+    //   9919: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   9922: ldc_w 564
+    //   9925: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9928: invokestatic 569	com/tencent/component/network/module/base/Config:getNetworkStackType	()I
+    //   9931: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   9934: ldc_w 576
+    //   9937: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9940: aload_2
+    //   9941: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   9944: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   9947: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   9950: ldc_w 581
+    //   9953: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9956: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   9959: aload_0
+    //   9960: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   9963: lsub
+    //   9964: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   9967: ldc_w 583
+    //   9970: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9973: aload_2
+    //   9974: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   9977: getfield 586	com/tencent/component/network/downloader/DownloadResult$Content:length	J
+    //   9980: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   9983: ldc_w 588
+    //   9986: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9989: aload_2
+    //   9990: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   9993: getfield 590	com/tencent/component/network/downloader/DownloadResult$Content:size	J
+    //   9996: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   9999: ldc_w 592
+    //   10002: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10005: aload_2
+    //   10006: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   10009: getfield 595	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
+    //   10012: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   10015: ldc_w 597
+    //   10018: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10021: aload_0
+    //   10022: invokevirtual 421	com/tencent/component/network/downloader/impl/FastDownloadTask:getCurrAttemptCount	()I
+    //   10025: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   10028: ldc_w 599
+    //   10031: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10034: aload_0
+    //   10035: invokevirtual 602	com/tencent/component/network/downloader/impl/FastDownloadTask:getTotalAttemptCount	()I
+    //   10038: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   10041: ldc_w 962
+    //   10044: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10047: iload 4
+    //   10049: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   10052: ldc_w 611
+    //   10055: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10058: aload 28
+    //   10060: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10063: ldc_w 571
+    //   10066: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10069: aload_2
+    //   10070: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   10073: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   10076: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10079: ldc_w 613
+    //   10082: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10085: aload 24
+    //   10087: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10090: ldc_w 615
+    //   10093: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10096: astore 30
+    //   10098: aload_0
+    //   10099: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   10102: ifnull +239 -> 10341
+    //   10105: aload_0
+    //   10106: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   10109: iconst_0
+    //   10110: bipush 30
+    //   10112: invokevirtual 619	java/lang/String:substring	(II)Ljava/lang/String;
+    //   10115: astore 26
+    //   10117: aload 30
+    //   10119: aload 26
+    //   10121: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10124: ldc_w 621
+    //   10127: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10130: astore 26
+    //   10132: aload_0
+    //   10133: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   10136: ifnull +214 -> 10350
+    //   10139: aload_0
+    //   10140: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   10143: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   10146: istore_3
+    //   10147: aload 26
+    //   10149: iload_3
+    //   10150: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   10153: ldc_w 623
+    //   10156: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10159: aload_2
+    //   10160: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   10163: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   10166: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10169: ldc_w 628
+    //   10172: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10175: lload 12
+    //   10177: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   10180: ldc_w 630
+    //   10183: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10186: aload_0
+    //   10187: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   10190: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   10193: ldc_w 599
+    //   10196: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10199: aload_0
+    //   10200: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_retry	I
+    //   10203: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   10206: ldc_w 632
+    //   10209: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10212: aload_0
+    //   10213: getfield 42	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_time	J
+    //   10216: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   10219: ldc_w 599
+    //   10222: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10225: aload_0
+    //   10226: getfield 44	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_retry	I
+    //   10229: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   10232: ldc_w 634
+    //   10235: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10238: aload_0
+    //   10239: getfield 46	com/tencent/component/network/downloader/impl/FastDownloadTask:send_req_time	J
+    //   10242: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   10245: ldc_w 636
+    //   10248: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10251: aload_0
+    //   10252: getfield 639	com/tencent/component/network/downloader/impl/FastDownloadTask:t_recv_data	J
+    //   10255: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   10258: ldc_w 641
+    //   10261: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10264: aload_0
+    //   10265: invokevirtual 644	com/tencent/component/network/downloader/impl/FastDownloadTask:getTaskConcurrentCount	()I
+    //   10268: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   10271: ldc_w 646
+    //   10274: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10277: astore 30
+    //   10279: aload_0
+    //   10280: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   10283: ifnull +72 -> 10355
+    //   10286: aload_0
+    //   10287: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   10290: invokeinterface 656 1 0
+    //   10295: astore 26
+    //   10297: aload 29
+    //   10299: aload 30
+    //   10301: aload 26
+    //   10303: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   10306: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   10309: putfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   10312: ldc_w 447
+    //   10315: aload 29
+    //   10317: getfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   10320: aconst_null
+    //   10321: invokestatic 965	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   10324: goto -1401 -> 8923
+    //   10327: ldc_w 958
+    //   10330: astore 26
+    //   10332: goto -537 -> 9795
+    //   10335: aconst_null
+    //   10336: astore 26
+    //   10338: goto -423 -> 9915
+    //   10341: aload_0
+    //   10342: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   10345: astore 26
+    //   10347: goto -230 -> 10117
+    //   10350: iconst_0
+    //   10351: istore_3
+    //   10352: goto -205 -> 10147
+    //   10355: aconst_null
+    //   10356: astore 26
+    //   10358: goto -61 -> 10297
+    //   10361: iconst_0
+    //   10362: istore_3
+    //   10363: goto -1360 -> 9003
+    //   10366: ldc_w 428
+    //   10369: astore 24
+    //   10371: goto -1237 -> 9134
+    //   10374: astore 24
+    //   10376: ldc 219
+    //   10378: ldc_w 967
+    //   10381: aload 24
+    //   10383: invokestatic 965	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   10386: goto -1169 -> 9217
+    //   10389: astore 24
+    //   10391: ldc 219
+    //   10393: ldc_w 969
+    //   10396: aload 24
+    //   10398: invokestatic 965	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   10401: goto -1127 -> 9274
+    //   10404: iconst_0
+    //   10405: istore 10
+    //   10407: goto -1083 -> 9324
+    //   10410: aload 27
+    //   10412: invokevirtual 972	com/tencent/component/network/utils/NetworkUtils$DNS:toString	()Ljava/lang/String;
+    //   10415: astore 23
+    //   10417: goto -1025 -> 9392
+    //   10420: iconst_0
+    //   10421: istore 10
+    //   10423: goto -858 -> 9565
+    //   10426: aload_0
+    //   10427: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   10430: ifnull +15 -> 10445
+    //   10433: aload_0
+    //   10434: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   10437: invokevirtual 977	org/apache/http/client/methods/HttpGet:abort	()V
+    //   10440: aload_0
+    //   10441: aconst_null
+    //   10442: putfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   10445: aload_0
+    //   10446: invokevirtual 980	com/tencent/component/network/downloader/impl/FastDownloadTask:cleanExpireConnection	()V
+    //   10449: return
+    //   10450: aload_2
+    //   10451: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   10454: lload 18
+    //   10456: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   10459: invokevirtual 461	com/tencent/component/network/downloader/DownloadResult$Process:setDuration	(JJ)V
+    //   10462: aload_2
+    //   10463: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   10466: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   10469: aload_0
+    //   10470: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   10473: lsub
+    //   10474: putfield 464	com/tencent/component/network/downloader/DownloadResult$Process:totalDuration	J
+    //   10477: aload_2
+    //   10478: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   10481: aload_0
+    //   10482: getfield 467	com/tencent/component/network/downloader/impl/FastDownloadTask:mTaskStartTimeStamp	J
+    //   10485: putfield 470	com/tencent/component/network/downloader/DownloadResult$Process:startTimestamp	J
+    //   10488: aload_0
+    //   10489: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   10492: invokestatic 475	com/tencent/component/network/module/common/NetworkStatus:getInstance	(Landroid/content/Context;)Lcom/tencent/component/network/module/common/NetworkStatus;
+    //   10495: invokevirtual 479	com/tencent/component/network/module/common/NetworkStatus:getDNS	()Lcom/tencent/component/network/utils/NetworkUtils$DNS;
+    //   10498: astore 27
+    //   10500: aload_0
+    //   10501: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   10504: ifnull +1569 -> 12073
+    //   10507: aload_0
+    //   10508: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   10511: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   10514: ifnull +1559 -> 12073
+    //   10517: aload_0
+    //   10518: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   10521: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   10524: getfield 486	com/tencent/component/network/downloader/common/IPInfo:ip	Ljava/lang/String;
+    //   10527: astore 25
+    //   10529: aload_0
+    //   10530: aload_0
+    //   10531: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   10534: aload 23
+    //   10536: aload 22
+    //   10538: invokevirtual 490	com/tencent/component/network/downloader/impl/FastDownloadTask:parserHttpHeaderInfo	(Lorg/apache/http/HttpRequest;Lorg/apache/http/HttpResponse;Lokhttp3/Response;)Ljava/lang/String;
+    //   10541: astore 28
+    //   10543: aload 24
+    //   10545: ifnull +6551 -> 17096
+    //   10548: aload 24
+    //   10550: ldc_w 492
+    //   10553: invokeinterface 498 2 0
+    //   10558: checkcast 282	java/lang/String
+    //   10561: astore 24
+    //   10563: aload_2
+    //   10564: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   10567: aload 24
+    //   10569: putfield 507	com/tencent/component/network/downloader/DownloadResult$Content:redirectUrl	Ljava/lang/String;
+    //   10572: aload_0
+    //   10573: lconst_0
+    //   10574: putfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   10577: aload_0
+    //   10578: iconst_0
+    //   10579: putfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_retry	I
+    //   10582: aload_0
+    //   10583: lconst_0
+    //   10584: putfield 42	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_time	J
+    //   10587: aload_0
+    //   10588: iconst_0
+    //   10589: putfield 44	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_retry	I
+    //   10592: aload_2
+    //   10593: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   10596: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   10599: ifeq +12 -> 10611
+    //   10602: aload_1
+    //   10603: invokeinterface 359 1 0
+    //   10608: ifeq +31 -> 10639
+    //   10611: aload_0
+    //   10612: getfield 514	com/tencent/component/network/downloader/impl/FastDownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
+    //   10615: ifnull +24 -> 10639
+    //   10618: aload_0
+    //   10619: getfield 514	com/tencent/component/network/downloader/impl/FastDownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
+    //   10622: aload_0
+    //   10623: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   10626: aload_2
+    //   10627: invokevirtual 517	com/tencent/component/network/downloader/DownloadResult:getPath	()Ljava/lang/String;
+    //   10630: aload 23
+    //   10632: aload 22
+    //   10634: invokeinterface 523 5 0
+    //   10639: aload_1
+    //   10640: invokeinterface 359 1 0
+    //   10645: ifne +1399 -> 12044
+    //   10648: aload_0
+    //   10649: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   10652: invokestatic 367	com/tencent/component/network/utils/NetworkUtils:isNetworkAvailable	(Landroid/content/Context;)Z
+    //   10655: istore 10
+    //   10657: aload_2
+    //   10658: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   10661: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   10664: ifne +1459 -> 12123
+    //   10667: new 125	java/lang/StringBuilder
+    //   10670: dup
+    //   10671: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   10674: ldc_w 525
+    //   10677: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10680: aload_0
+    //   10681: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   10684: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10687: ldc_w 527
+    //   10690: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10693: aload_0
+    //   10694: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   10697: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   10700: ldc_w 532
+    //   10703: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10706: astore 30
+    //   10708: aload_0
+    //   10709: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   10712: ifeq +1377 -> 12089
+    //   10715: aload 22
+    //   10717: ifnull +1372 -> 12089
+    //   10720: aload 22
+    //   10722: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   10725: ifnull +1364 -> 12089
+    //   10728: aload 22
+    //   10730: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   10733: invokevirtual 541	okhttp3/Protocol:toString	()Ljava/lang/String;
+    //   10736: astore 26
+    //   10738: aload 30
+    //   10740: aload 26
+    //   10742: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10745: ldc_w 543
+    //   10748: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10751: aload 27
+    //   10753: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   10756: ldc_w 548
+    //   10759: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10762: aload 25
+    //   10764: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10767: ldc_w 550
+    //   10770: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10773: aconst_null
+    //   10774: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10777: ldc_w 552
+    //   10780: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10783: invokestatic 171	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   10786: invokevirtual 174	java/lang/Thread:getId	()J
+    //   10789: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   10792: ldc_w 554
+    //   10795: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10798: invokestatic 158	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   10801: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10804: ldc_w 556
+    //   10807: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10810: aload_0
+    //   10811: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   10814: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   10817: ldc_w 558
+    //   10820: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10823: aload_0
+    //   10824: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   10827: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   10830: ldc_w 560
+    //   10833: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10836: astore 30
+    //   10838: aload_0
+    //   10839: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   10842: ifeq +1255 -> 12097
+    //   10845: aload_0
+    //   10846: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   10849: aload_0
+    //   10850: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   10853: invokestatic 322	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
+    //   10856: astore 26
+    //   10858: aload 30
+    //   10860: aload 26
+    //   10862: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   10865: ldc_w 562
+    //   10868: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10871: iload 10
+    //   10873: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   10876: ldc_w 564
+    //   10879: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10882: invokestatic 569	com/tencent/component/network/module/base/Config:getNetworkStackType	()I
+    //   10885: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   10888: ldc_w 571
+    //   10891: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10894: aload_2
+    //   10895: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   10898: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   10901: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10904: ldc_w 576
+    //   10907: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10910: aload_2
+    //   10911: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   10914: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   10917: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   10920: ldc_w 581
+    //   10923: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10926: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   10929: aload_0
+    //   10930: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   10933: lsub
+    //   10934: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   10937: ldc_w 583
+    //   10940: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10943: aload_2
+    //   10944: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   10947: getfield 586	com/tencent/component/network/downloader/DownloadResult$Content:length	J
+    //   10950: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   10953: ldc_w 588
+    //   10956: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10959: aload_2
+    //   10960: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   10963: getfield 590	com/tencent/component/network/downloader/DownloadResult$Content:size	J
+    //   10966: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   10969: ldc_w 592
+    //   10972: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   10975: aload_2
-    //   10976: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   10979: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   10982: invokeinterface 583 4 0
-    //   10987: getstatic 250	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   10990: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   10993: aload_0
-    //   10994: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   10997: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   11000: if_icmpne +37 -> 11037
-    //   11003: aload_0
-    //   11004: getfield 252	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   11007: ifnull +30 -> 11037
-    //   11010: aload_0
-    //   11011: getfield 252	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   11014: aload_0
-    //   11015: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   11018: aload_0
-    //   11019: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   11022: invokestatic 580	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
-    //   11025: aload_2
-    //   11026: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   11029: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   11032: invokeinterface 583 4 0
-    //   11037: iload 18
-    //   11039: ifeq +64 -> 11103
-    //   11042: aload_0
-    //   11043: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   11046: invokestatic 56	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:a	(Landroid/content/Context;)Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy;
-    //   11049: astore 21
-    //   11051: aload_0
-    //   11052: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   11055: astore 22
-    //   11057: aload_0
-    //   11058: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   11061: ifeq +1042 -> 12103
-    //   11064: aload_0
-    //   11065: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   11068: ifnull +1035 -> 12103
-    //   11071: aload_0
-    //   11072: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   11075: ldc_w 585
-    //   11078: invokevirtual 588	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   11081: ifeq +1022 -> 12103
-    //   11084: iconst_1
-    //   11085: istore 18
-    //   11087: aload 21
-    //   11089: aload 22
-    //   11091: iload 18
-    //   11093: aload_2
-    //   11094: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   11097: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   11100: invokevirtual 591	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:a	(Ljava/lang/String;ZZ)V
-    //   11103: aload 26
-    //   11105: invokestatic 359	java/lang/System:currentTimeMillis	()J
-    //   11108: putfield 594	com/tencent/component/network/downloader/DownloadReport:endTime	J
-    //   11111: aload 26
-    //   11113: aload_0
-    //   11114: invokevirtual 596	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()J
-    //   11117: putfield 599	com/tencent/component/network/downloader/DownloadReport:fileSize	J
-    //   11120: aload 26
-    //   11122: aload 19
-    //   11124: putfield 603	com/tencent/component/network/downloader/DownloadReport:response	Lorg/apache/http/HttpResponse;
-    //   11127: aload 26
-    //   11129: aload 20
-    //   11131: putfield 607	com/tencent/component/network/downloader/DownloadReport:okResponse	Lcom/squareup/okhttp/Response;
-    //   11134: aload 26
-    //   11136: iload_3
-    //   11137: putfield 610	com/tencent/component/network/downloader/DownloadReport:httpStatus	I
-    //   11140: aload 26
-    //   11142: aconst_null
-    //   11143: putfield 614	com/tencent/component/network/downloader/DownloadReport:exception	Ljava/lang/Throwable;
-    //   11146: aload 24
-    //   11148: ifnonnull +961 -> 12109
-    //   11151: aconst_null
-    //   11152: astore 19
-    //   11154: aload 26
-    //   11156: aload 19
-    //   11158: putfield 617	com/tencent/component/network/downloader/DownloadReport:dns	Ljava/lang/String;
-    //   11161: aload 26
-    //   11163: aconst_null
-    //   11164: putfield 620	com/tencent/component/network/downloader/DownloadReport:localAddress	Ljava/lang/String;
-    //   11167: aload 26
-    //   11169: aload_2
-    //   11170: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   11173: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   11176: putfield 621	com/tencent/component/network/downloader/DownloadReport:clientip	Ljava/lang/String;
-    //   11179: aload 26
-    //   11181: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   11184: aload_0
-    //   11185: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   11188: lsub
-    //   11189: putfield 624	com/tencent/component/network/downloader/DownloadReport:totaltime	J
-    //   11192: aload 26
-    //   11194: aload_2
-    //   11195: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   11198: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   11201: putfield 627	com/tencent/component/network/downloader/DownloadReport:downloadTime	J
-    //   11204: aload 26
-    //   11206: aload 26
-    //   11208: getfield 624	com/tencent/component/network/downloader/DownloadReport:totaltime	J
-    //   11211: aload_2
-    //   11212: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   11215: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   11218: lsub
-    //   11219: putfield 630	com/tencent/component/network/downloader/DownloadReport:t_wait	J
-    //   11222: aload 26
-    //   11224: lload 8
-    //   11226: putfield 633	com/tencent/component/network/downloader/DownloadReport:t_prepare	J
-    //   11229: aload 26
-    //   11231: aload_0
-    //   11232: getfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   11235: putfield 636	com/tencent/component/network/downloader/DownloadReport:t_conn	J
-    //   11238: aload 26
-    //   11240: aload_0
-    //   11241: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   11244: putfield 639	com/tencent/component/network/downloader/DownloadReport:t_recvrsp	J
-    //   11247: aload 26
+    //   10976: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   10979: getfield 595	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
+    //   10982: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   10985: ldc_w 597
+    //   10988: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10991: aload_0
+    //   10992: invokevirtual 421	com/tencent/component/network/downloader/impl/FastDownloadTask:getCurrAttemptCount	()I
+    //   10995: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   10998: ldc_w 599
+    //   11001: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11004: aload_0
+    //   11005: invokevirtual 602	com/tencent/component/network/downloader/impl/FastDownloadTask:getTotalAttemptCount	()I
+    //   11008: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   11011: ldc_w 604
+    //   11014: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11017: aload_2
+    //   11018: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   11021: invokevirtual 607	com/tencent/component/network/downloader/DownloadResult$Status:getFailReason	()I
+    //   11024: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   11027: ldc_w 609
+    //   11030: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11033: iload 4
+    //   11035: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   11038: ldc_w 611
+    //   11041: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11044: aload 28
+    //   11046: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11049: ldc_w 613
+    //   11052: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11055: aload 24
+    //   11057: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11060: ldc_w 615
+    //   11063: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11066: astore 30
+    //   11068: aload_0
+    //   11069: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   11072: ifnull +1031 -> 12103
+    //   11075: aload_0
+    //   11076: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   11079: iconst_0
+    //   11080: bipush 30
+    //   11082: invokevirtual 619	java/lang/String:substring	(II)Ljava/lang/String;
+    //   11085: astore 26
+    //   11087: aload 30
+    //   11089: aload 26
+    //   11091: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11094: ldc_w 621
+    //   11097: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11100: astore 26
+    //   11102: aload_0
+    //   11103: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   11106: ifnull +1006 -> 12112
+    //   11109: aload_0
+    //   11110: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   11113: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   11116: istore_3
+    //   11117: aload 26
+    //   11119: iload_3
+    //   11120: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   11123: ldc_w 623
+    //   11126: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11129: aload_2
+    //   11130: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   11133: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   11136: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11139: ldc_w 628
+    //   11142: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11145: lload 12
+    //   11147: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   11150: ldc_w 630
+    //   11153: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11156: aload_0
+    //   11157: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   11160: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   11163: ldc_w 599
+    //   11166: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11169: aload_0
+    //   11170: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_retry	I
+    //   11173: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   11176: ldc_w 632
+    //   11179: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11182: aload_0
+    //   11183: getfield 42	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_time	J
+    //   11186: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   11189: ldc_w 599
+    //   11192: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11195: aload_0
+    //   11196: getfield 44	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_retry	I
+    //   11199: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   11202: ldc_w 634
+    //   11205: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11208: aload_0
+    //   11209: getfield 46	com/tencent/component/network/downloader/impl/FastDownloadTask:send_req_time	J
+    //   11212: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   11215: ldc_w 636
+    //   11218: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11221: aload_0
+    //   11222: getfield 639	com/tencent/component/network/downloader/impl/FastDownloadTask:t_recv_data	J
+    //   11225: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   11228: ldc_w 641
+    //   11231: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11234: aload_0
+    //   11235: invokevirtual 644	com/tencent/component/network/downloader/impl/FastDownloadTask:getTaskConcurrentCount	()I
+    //   11238: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   11241: ldc_w 646
+    //   11244: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11247: astore 30
     //   11249: aload_0
-    //   11250: getfield 545	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_Long	J
-    //   11253: putfield 642	com/tencent/component/network/downloader/DownloadReport:t_recvdata	J
-    //   11256: aload 26
-    //   11258: lconst_0
-    //   11259: putfield 645	com/tencent/component/network/downloader/DownloadReport:t_process	J
-    //   11262: aload 26
-    //   11264: aload_0
-    //   11265: invokevirtual 549	com/tencent/component/network/downloader/impl/FastDownloadTask:d	()I
-    //   11268: putfield 648	com/tencent/component/network/downloader/DownloadReport:concurrent	I
+    //   11250: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   11253: ifnull +864 -> 12117
+    //   11256: aload_0
+    //   11257: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   11260: invokeinterface 656 1 0
+    //   11265: astore 26
+    //   11267: aload 29
+    //   11269: aload 30
     //   11271: aload 26
-    //   11273: aload_2
-    //   11274: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   11277: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   11280: putfield 651	com/tencent/component/network/downloader/DownloadReport:content_type	Ljava/lang/String;
-    //   11283: aload 26
-    //   11285: aload_0
-    //   11286: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   11289: invokestatic 655	com/tencent/component/network/module/base/Config:b	(Ljava/lang/String;)Z
-    //   11292: putfield 658	com/tencent/component/network/downloader/DownloadReport:isFromQzoneAlbum	Z
-    //   11295: aload 26
-    //   11297: aload_0
-    //   11298: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   11301: putfield 661	com/tencent/component/network/downloader/DownloadReport:isHttp2	Z
-    //   11304: aload 26
-    //   11306: aload_2
-    //   11307: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   11310: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   11313: putfield 663	com/tencent/component/network/downloader/DownloadReport:isSucceed	Z
-    //   11316: aload_2
-    //   11317: aload 26
-    //   11319: invokevirtual 667	com/tencent/component/network/downloader/DownloadResult:setReport	(Lcom/tencent/component/network/downloader/DownloadReport;)V
-    //   11322: aload_0
-    //   11323: aload_1
-    //   11324: aload_2
-    //   11325: aload 26
-    //   11327: invokevirtual 320	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(Lcom/tencent/component/network/utils/thread/ThreadPool$JobContext;Lcom/tencent/component/network/downloader/DownloadResult;Lcom/tencent/component/network/downloader/DownloadReport;)V
-    //   11330: aload_0
-    //   11331: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   11334: ifeq +785 -> 12119
-    //   11337: aload_0
-    //   11338: getfield 670	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpCall	Lcom/squareup/okhttp/Call;
-    //   11341: ifnull +10 -> 11351
-    //   11344: aload_0
-    //   11345: getfield 670	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpCall	Lcom/squareup/okhttp/Call;
-    //   11348: invokevirtual 675	com/squareup/okhttp/Call:cancel	()V
-    //   11351: aload_0
-    //   11352: aconst_null
-    //   11353: putfield 368	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpRequest$Builder	Lcom/squareup/okhttp/Request$Builder;
-    //   11356: return
-    //   11357: aconst_null
-    //   11358: astore 22
-    //   11360: goto -1430 -> 9930
-    //   11363: astore 21
-    //   11365: ldc_w 378
-    //   11368: astore 21
-    //   11370: goto -1406 -> 9964
-    //   11373: new 102	java/lang/StringBuilder
-    //   11376: dup
-    //   11377: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   11380: ldc_w 807
-    //   11383: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11386: aload_0
-    //   11387: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   11390: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11393: ldc_w 435
-    //   11396: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11399: aload_0
-    //   11400: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   11403: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   11406: ldc_w 440
-    //   11409: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11412: astore 27
-    //   11414: aload_0
-    //   11415: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   11418: ifeq +606 -> 12024
-    //   11421: aload 20
-    //   11423: ifnull +601 -> 12024
-    //   11426: aload 20
-    //   11428: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   11431: ifnull +593 -> 12024
-    //   11434: aload 20
-    //   11436: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   11439: invokevirtual 449	com/squareup/okhttp/Protocol:toString	()Ljava/lang/String;
-    //   11442: astore 23
-    //   11444: aload 27
-    //   11446: aload 23
-    //   11448: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11451: ldc_w 451
-    //   11454: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11457: aload 24
-    //   11459: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   11462: ldc_w 456
-    //   11465: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11468: aload 22
-    //   11470: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11473: ldc_w 458
-    //   11476: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11479: aconst_null
-    //   11480: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11483: ldc_w 460
-    //   11486: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11489: invokestatic 147	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   11492: invokevirtual 150	java/lang/Thread:getId	()J
-    //   11495: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   11498: ldc_w 462
-    //   11501: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11504: invokestatic 134	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   11507: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11510: ldc_w 464
-    //   11513: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11516: aload_0
-    //   11517: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   11520: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   11523: ldc_w 466
-    //   11526: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11529: aload_0
-    //   11530: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   11533: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   11536: ldc_w 468
-    //   11539: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11542: astore 27
-    //   11544: aload_0
-    //   11545: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   11548: ifeq +484 -> 12032
-    //   11551: aload_0
-    //   11552: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   11555: aload_0
-    //   11556: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   11559: invokestatic 267	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
-    //   11562: astore 23
-    //   11564: aload 27
-    //   11566: aload 23
-    //   11568: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   11571: ldc_w 483
-    //   11574: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11577: aload_2
-    //   11578: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   11581: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   11584: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   11587: ldc_w 487
-    //   11590: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11593: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   11596: aload_0
-    //   11597: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   11600: lsub
-    //   11601: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   11604: ldc_w 489
-    //   11607: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11610: aload_2
-    //   11611: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   11614: getfield 492	com/tencent/component/network/downloader/DownloadResult$Content:length	J
-    //   11617: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   11620: ldc_w 494
-    //   11623: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11626: aload_2
-    //   11627: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   11630: getfield 496	com/tencent/component/network/downloader/DownloadResult$Content:size	J
-    //   11633: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   11636: ldc_w 498
-    //   11639: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11642: aload_2
-    //   11643: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   11646: getfield 501	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
-    //   11649: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   11652: ldc_w 503
-    //   11655: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11658: aload_0
-    //   11659: invokevirtual 369	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()I
-    //   11662: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   11665: ldc_w 505
-    //   11668: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11671: aload_0
-    //   11672: invokevirtual 507	com/tencent/component/network/downloader/impl/FastDownloadTask:c	()I
-    //   11675: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   11678: ldc_w 509
-    //   11681: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11684: ldc_w 516
-    //   11687: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11690: iload_3
-    //   11691: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   11694: ldc_w 518
-    //   11697: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11700: aload 25
-    //   11702: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11705: ldc_w 472
-    //   11708: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11711: aload_2
-    //   11712: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   11715: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   11718: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11721: ldc_w 520
-    //   11724: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11727: aload 21
-    //   11729: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11732: ldc_w 522
-    //   11735: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11738: astore 27
-    //   11740: aload_0
-    //   11741: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   11744: ifnull +294 -> 12038
-    //   11747: aload_0
-    //   11748: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   11751: iconst_0
-    //   11752: bipush 30
-    //   11754: invokevirtual 527	java/lang/String:substring	(II)Ljava/lang/String;
-    //   11757: astore 23
-    //   11759: aload 27
-    //   11761: aload 23
-    //   11763: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11766: ldc_w 529
-    //   11769: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11772: astore 23
-    //   11774: aload_0
-    //   11775: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   11778: ifnull +269 -> 12047
-    //   11781: aload_0
-    //   11782: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   11785: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   11788: istore 4
-    //   11790: aload 23
-    //   11792: iload 4
-    //   11794: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   11797: ldc_w 531
-    //   11800: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11803: aload_2
-    //   11804: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   11807: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   11810: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11813: ldc_w 536
-    //   11816: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11819: lload 8
-    //   11821: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   11824: ldc_w 538
-    //   11827: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11830: aload_0
-    //   11831: getfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   11834: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   11837: ldc_w 505
-    //   11840: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11843: aload_0
-    //   11844: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Int	I
-    //   11847: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   11850: ldc_w 509
-    //   11853: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11856: ldc_w 540
-    //   11859: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11862: aload_0
-    //   11863: getfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Long	J
-    //   11866: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   11869: ldc_w 505
-    //   11872: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11875: aload_0
-    //   11876: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Int	I
-    //   11879: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   11882: ldc_w 509
-    //   11885: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11888: ldc_w 542
-    //   11891: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11894: aload_0
-    //   11895: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   11898: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   11901: ldc_w 544
-    //   11904: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11907: aload_0
-    //   11908: getfield 545	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_Long	J
-    //   11911: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   11914: ldc_w 547
-    //   11917: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11920: aload_0
-    //   11921: invokevirtual 549	com/tencent/component/network/downloader/impl/FastDownloadTask:d	()I
-    //   11924: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   11927: ldc_w 509
-    //   11930: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11933: ldc_w 551
-    //   11936: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   11939: astore 27
+    //   11273: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   11276: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   11279: putfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   11282: ldc_w 447
+    //   11285: aload 29
+    //   11287: getfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   11290: aconst_null
+    //   11291: invokestatic 432	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   11294: aload_0
+    //   11295: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   11298: ifnull +24 -> 11322
+    //   11301: aload_0
+    //   11302: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   11305: ldc_w 439
+    //   11308: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   11311: ifeq +11 -> 11322
+    //   11314: aload_0
+    //   11315: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   11318: iconst_0
+    //   11319: invokestatic 665	com/tencent/component/network/utils/http/pool/CustomDnsResolve:setIPDirectEnable	(Ljava/lang/String;Z)V
+    //   11322: iload 10
+    //   11324: ifne +8 -> 11332
+    //   11327: aload_0
+    //   11328: iconst_0
+    //   11329: putfield 668	com/tencent/component/network/downloader/impl/FastDownloadTask:mShouldReport	Z
+    //   11332: aload_2
+    //   11333: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   11336: astore 26
+    //   11338: new 125	java/lang/StringBuilder
+    //   11341: dup
+    //   11342: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   11345: aload_0
+    //   11346: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   11349: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11352: ldc_w 670
+    //   11355: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11358: aload 25
+    //   11360: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11363: ldc_w 672
+    //   11366: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11369: aload_2
+    //   11370: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   11373: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   11376: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11379: ldc_w 674
+    //   11382: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11385: astore 25
+    //   11387: aload_0
+    //   11388: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   11391: ifnull +1369 -> 12760
+    //   11394: aload_0
+    //   11395: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   11398: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   11401: istore_3
+    //   11402: aload 25
+    //   11404: iload_3
+    //   11405: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   11408: ldc_w 609
+    //   11411: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11414: iload 4
+    //   11416: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   11419: ldc_w 571
+    //   11422: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11425: aload_2
+    //   11426: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   11429: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   11432: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11435: ldc_w 583
+    //   11438: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11441: aload_2
+    //   11442: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   11445: getfield 586	com/tencent/component/network/downloader/DownloadResult$Content:length	J
+    //   11448: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   11451: ldc_w 588
+    //   11454: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11457: aload_2
+    //   11458: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   11461: getfield 590	com/tencent/component/network/downloader/DownloadResult$Content:size	J
+    //   11464: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   11467: ldc_w 576
+    //   11470: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11473: aload_2
+    //   11474: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   11477: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   11480: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   11483: ldc_w 581
+    //   11486: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11489: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   11492: aload_0
+    //   11493: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   11496: lsub
+    //   11497: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   11500: astore 25
+    //   11502: aload 24
+    //   11504: invokestatic 252	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   11507: ifne +1258 -> 12765
+    //   11510: new 125	java/lang/StringBuilder
+    //   11513: dup
+    //   11514: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   11517: ldc_w 613
+    //   11520: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11523: aload 24
+    //   11525: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11528: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   11531: astore 24
+    //   11533: aload 26
+    //   11535: aload 25
+    //   11537: aload 24
+    //   11539: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11542: ldc_w 611
+    //   11545: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11548: aload 28
+    //   11550: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11553: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   11556: putfield 677	com/tencent/component/network/downloader/DownloadResult$Status:detailDownloadInfo	Ljava/lang/String;
+    //   11559: aload_0
+    //   11560: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   11563: ifnull +53 -> 11616
+    //   11566: getstatic 203	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:Strategy_BACKUPIP	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   11569: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   11572: aload_0
+    //   11573: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   11576: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   11579: if_icmpne +37 -> 11616
+    //   11582: aload_0
+    //   11583: getfield 232	com/tencent/component/network/downloader/impl/FastDownloadTask:pBackupIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   11586: ifnull +30 -> 11616
+    //   11589: aload_0
+    //   11590: getfield 232	com/tencent/component/network/downloader/impl/FastDownloadTask:pBackupIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   11593: aload_0
+    //   11594: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   11597: aload_0
+    //   11598: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   11601: invokestatic 680	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
+    //   11604: aload_2
+    //   11605: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   11608: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   11611: invokeinterface 684 4 0
+    //   11616: aload_0
+    //   11617: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   11620: ifnull +53 -> 11673
+    //   11623: getstatic 297	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:Strategy_DomainDirect	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   11626: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   11629: aload_0
+    //   11630: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   11633: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   11636: if_icmpne +37 -> 11673
+    //   11639: aload_0
+    //   11640: getfield 300	com/tencent/component/network/downloader/impl/FastDownloadTask:pDirectIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   11643: ifnull +30 -> 11673
+    //   11646: aload_0
+    //   11647: getfield 300	com/tencent/component/network/downloader/impl/FastDownloadTask:pDirectIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   11650: aload_0
+    //   11651: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   11654: aload_0
+    //   11655: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   11658: invokestatic 680	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
+    //   11661: aload_2
+    //   11662: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   11665: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   11668: invokeinterface 684 4 0
+    //   11673: iload 10
+    //   11675: ifeq +64 -> 11739
+    //   11678: aload_0
+    //   11679: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   11682: invokestatic 67	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:getInstance	(Landroid/content/Context;)Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy;
+    //   11685: astore 24
+    //   11687: aload_0
+    //   11688: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   11691: astore 25
+    //   11693: aload_0
+    //   11694: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   11697: ifeq +1106 -> 12803
+    //   11700: aload_0
+    //   11701: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   11704: ifnull +1099 -> 12803
+    //   11707: aload_0
+    //   11708: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   11711: ldc_w 686
+    //   11714: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   11717: ifeq +1086 -> 12803
+    //   11720: iconst_1
+    //   11721: istore 10
+    //   11723: aload 24
+    //   11725: aload 25
+    //   11727: iload 10
+    //   11729: aload_2
+    //   11730: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   11733: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   11736: invokevirtual 690	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:reportHttps	(Ljava/lang/String;ZZ)V
+    //   11739: aload 29
+    //   11741: invokestatic 407	java/lang/System:currentTimeMillis	()J
+    //   11744: putfield 693	com/tencent/component/network/downloader/DownloadReport:endTime	J
+    //   11747: aload 29
+    //   11749: aload_0
+    //   11750: invokevirtual 696	com/tencent/component/network/downloader/impl/FastDownloadTask:getContentLength	()J
+    //   11753: putfield 699	com/tencent/component/network/downloader/DownloadReport:fileSize	J
+    //   11756: aload 29
+    //   11758: aload 23
+    //   11760: putfield 703	com/tencent/component/network/downloader/DownloadReport:response	Lorg/apache/http/HttpResponse;
+    //   11763: aload 29
+    //   11765: aload 22
+    //   11767: putfield 707	com/tencent/component/network/downloader/DownloadReport:okResponse	Lokhttp3/Response;
+    //   11770: aload 29
+    //   11772: iload 4
+    //   11774: putfield 710	com/tencent/component/network/downloader/DownloadReport:httpStatus	I
+    //   11777: aload 29
+    //   11779: aconst_null
+    //   11780: putfield 714	com/tencent/component/network/downloader/DownloadReport:exception	Ljava/lang/Throwable;
+    //   11783: aload 27
+    //   11785: ifnonnull +1024 -> 12809
+    //   11788: aconst_null
+    //   11789: astore 23
+    //   11791: aload 29
+    //   11793: aload 23
+    //   11795: putfield 717	com/tencent/component/network/downloader/DownloadReport:dns	Ljava/lang/String;
+    //   11798: aload 29
+    //   11800: aconst_null
+    //   11801: putfield 720	com/tencent/component/network/downloader/DownloadReport:localAddress	Ljava/lang/String;
+    //   11804: aload 29
+    //   11806: aload_2
+    //   11807: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   11810: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   11813: putfield 721	com/tencent/component/network/downloader/DownloadReport:clientip	Ljava/lang/String;
+    //   11816: aload 29
+    //   11818: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   11821: aload_0
+    //   11822: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   11825: lsub
+    //   11826: putfield 724	com/tencent/component/network/downloader/DownloadReport:totaltime	J
+    //   11829: aload 29
+    //   11831: aload_2
+    //   11832: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   11835: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   11838: putfield 727	com/tencent/component/network/downloader/DownloadReport:downloadTime	J
+    //   11841: aload 29
+    //   11843: aload 29
+    //   11845: getfield 724	com/tencent/component/network/downloader/DownloadReport:totaltime	J
+    //   11848: aload_2
+    //   11849: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   11852: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   11855: lsub
+    //   11856: putfield 730	com/tencent/component/network/downloader/DownloadReport:t_wait	J
+    //   11859: aload 29
+    //   11861: lload 12
+    //   11863: putfield 733	com/tencent/component/network/downloader/DownloadReport:t_prepare	J
+    //   11866: aload 29
+    //   11868: aload_0
+    //   11869: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   11872: putfield 736	com/tencent/component/network/downloader/DownloadReport:t_conn	J
+    //   11875: aload 29
+    //   11877: aload_0
+    //   11878: getfield 46	com/tencent/component/network/downloader/impl/FastDownloadTask:send_req_time	J
+    //   11881: putfield 739	com/tencent/component/network/downloader/DownloadReport:t_recvrsp	J
+    //   11884: aload 29
+    //   11886: aload_0
+    //   11887: getfield 639	com/tencent/component/network/downloader/impl/FastDownloadTask:t_recv_data	J
+    //   11890: putfield 742	com/tencent/component/network/downloader/DownloadReport:t_recvdata	J
+    //   11893: aload 29
+    //   11895: lconst_0
+    //   11896: putfield 745	com/tencent/component/network/downloader/DownloadReport:t_process	J
+    //   11899: aload 29
+    //   11901: aload_0
+    //   11902: invokevirtual 644	com/tencent/component/network/downloader/impl/FastDownloadTask:getTaskConcurrentCount	()I
+    //   11905: putfield 748	com/tencent/component/network/downloader/DownloadReport:concurrent	I
+    //   11908: aload 29
+    //   11910: aload_2
+    //   11911: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   11914: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   11917: putfield 751	com/tencent/component/network/downloader/DownloadReport:content_type	Ljava/lang/String;
+    //   11920: aload 29
+    //   11922: aload_0
+    //   11923: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   11926: invokestatic 754	com/tencent/component/network/module/base/Config:isFromQzoneAlbum	(Ljava/lang/String;)Z
+    //   11929: putfield 756	com/tencent/component/network/downloader/DownloadReport:isFromQzoneAlbum	Z
+    //   11932: aload 29
+    //   11934: aload_0
+    //   11935: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   11938: putfield 759	com/tencent/component/network/downloader/DownloadReport:isHttp2	Z
     //   11941: aload_0
-    //   11942: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   11945: ifnull +108 -> 12053
+    //   11942: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   11945: ifnull +874 -> 12819
     //   11948: aload_0
-    //   11949: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   11952: invokeinterface 560 1 0
-    //   11957: astore 23
-    //   11959: aload 26
-    //   11961: aload 27
-    //   11963: aload 23
-    //   11965: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   11968: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   11971: putfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   11974: ldc_w 565
-    //   11977: aload 26
-    //   11979: getfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   11982: aconst_null
-    //   11983: invokestatic 809	com/tencent/component/network/module/base/QDLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   11986: goto -1287 -> 10699
-    //   11989: ldc_w 811
-    //   11992: astore 23
-    //   11994: goto -1864 -> 10130
-    //   11997: aconst_null
-    //   11998: astore 23
-    //   12000: goto -1750 -> 10250
-    //   12003: aload_0
-    //   12004: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   12007: astore 23
-    //   12009: goto -1537 -> 10472
-    //   12012: iconst_0
-    //   12013: istore 4
-    //   12015: goto -1512 -> 10503
-    //   12018: aconst_null
-    //   12019: astore 23
-    //   12021: goto -1349 -> 10672
-    //   12024: ldc_w 811
-    //   12027: astore 23
-    //   12029: goto -585 -> 11444
-    //   12032: aconst_null
-    //   12033: astore 23
-    //   12035: goto -471 -> 11564
-    //   12038: aload_0
-    //   12039: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   12042: astore 23
-    //   12044: goto -285 -> 11759
-    //   12047: iconst_0
-    //   12048: istore 4
-    //   12050: goto -260 -> 11790
-    //   12053: aconst_null
-    //   12054: astore 23
-    //   12056: goto -97 -> 11959
-    //   12059: iconst_0
-    //   12060: istore 4
-    //   12062: goto -1282 -> 10780
-    //   12065: ldc_w 378
-    //   12068: astore 21
-    //   12070: goto -1159 -> 10911
-    //   12073: astore 21
-    //   12075: ldc 186
-    //   12077: ldc_w 813
-    //   12080: aload 21
-    //   12082: invokestatic 809	com/tencent/component/network/module/base/QDLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   12085: goto -1098 -> 10987
-    //   12088: astore 21
-    //   12090: ldc 186
-    //   12092: ldc_w 815
-    //   12095: aload 21
-    //   12097: invokestatic 809	com/tencent/component/network/module/base/QDLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   12100: goto -1063 -> 11037
-    //   12103: iconst_0
-    //   12104: istore 18
-    //   12106: goto -1019 -> 11087
-    //   12109: aload 24
-    //   12111: invokevirtual 818	com/tencent/component/network/utils/NetworkUtils$DNS:toString	()Ljava/lang/String;
-    //   12114: astore 19
-    //   12116: goto -962 -> 11154
-    //   12119: aload_0
-    //   12120: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   12123: ifnull +15 -> 12138
-    //   12126: aload_0
-    //   12127: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   12130: invokevirtual 823	org/apache/http/client/methods/HttpGet:abort	()V
-    //   12133: aload_0
-    //   12134: aconst_null
-    //   12135: putfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   12138: aload_0
-    //   12139: invokevirtual 825	com/tencent/component/network/downloader/impl/FastDownloadTask:f	()V
-    //   12142: return
-    //   12143: aload_2
-    //   12144: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   12147: lload 14
-    //   12149: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   12152: invokevirtual 393	com/tencent/component/network/downloader/DownloadResult$Process:a	(JJ)V
-    //   12155: aload_0
-    //   12156: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   12159: invokestatic 398	com/tencent/component/network/module/common/NetworkStatus:a	(Landroid/content/Context;)Lcom/tencent/component/network/module/common/NetworkStatus;
-    //   12162: invokevirtual 401	com/tencent/component/network/module/common/NetworkStatus:a	()Lcom/tencent/component/network/utils/NetworkUtils$DNS;
-    //   12165: astore 24
-    //   12167: aload_0
-    //   12168: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   12171: ifnull +1449 -> 13620
-    //   12174: aload_0
-    //   12175: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   12178: invokevirtual 404	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:a	()Lcom/tencent/component/network/downloader/common/IPInfo;
-    //   12181: ifnull +1439 -> 13620
-    //   12184: aload_0
-    //   12185: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   12188: invokevirtual 404	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:a	()Lcom/tencent/component/network/downloader/common/IPInfo;
-    //   12191: getfield 406	com/tencent/component/network/downloader/common/IPInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   12194: astore 22
-    //   12196: aload_0
-    //   12197: aload_0
-    //   12198: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   12201: aload 19
-    //   12203: aload 20
-    //   12205: invokevirtual 409	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(Lorg/apache/http/HttpRequest;Lorg/apache/http/HttpResponse;Lcom/squareup/okhttp/Response;)Ljava/lang/String;
-    //   12208: astore 25
-    //   12210: aload 21
-    //   12212: ifnull +3127 -> 15339
-    //   12215: aload 21
-    //   12217: ldc_w 411
-    //   12220: invokeinterface 417 2 0
-    //   12225: checkcast 217	java/lang/String
-    //   12228: astore 21
-    //   12230: aload_0
-    //   12231: lconst_0
-    //   12232: putfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   12235: aload_0
-    //   12236: iconst_0
-    //   12237: putfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Int	I
-    //   12240: aload_0
-    //   12241: lconst_0
-    //   12242: putfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Long	J
-    //   12245: aload_0
-    //   12246: iconst_0
-    //   12247: putfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Int	I
-    //   12250: aload_2
-    //   12251: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   12254: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   12257: ifeq +12 -> 12269
-    //   12260: aload_1
-    //   12261: invokeinterface 317 1 0
-    //   12266: ifeq +31 -> 12297
-    //   12269: aload_0
-    //   12270: getfield 423	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
-    //   12273: ifnull +24 -> 12297
-    //   12276: aload_0
-    //   12277: getfield 423	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
-    //   12280: aload_0
-    //   12281: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   12284: aload_2
-    //   12285: invokevirtual 426	com/tencent/component/network/downloader/DownloadResult:getPath	()Ljava/lang/String;
-    //   12288: aload 19
-    //   12290: aload 20
-    //   12292: invokeinterface 431 5 0
-    //   12297: aload_1
-    //   12298: invokeinterface 317 1 0
-    //   12303: ifne +1293 -> 13596
-    //   12306: aload_0
-    //   12307: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   12310: invokestatic 324	com/tencent/component/network/utils/NetworkUtils:isNetworkAvailable	(Landroid/content/Context;)Z
-    //   12313: istore 18
-    //   12315: aload_2
-    //   12316: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   12319: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   12322: ifne +1314 -> 13636
-    //   12325: new 102	java/lang/StringBuilder
-    //   12328: dup
-    //   12329: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   12332: ldc_w 433
-    //   12335: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12338: aload_0
-    //   12339: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   12342: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12345: ldc_w 435
-    //   12348: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12351: aload_0
-    //   12352: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   12355: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   12358: ldc_w 440
-    //   12361: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12364: astore 27
-    //   12366: aload_0
-    //   12367: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   12370: ifeq +1882 -> 14252
-    //   12373: aload 20
-    //   12375: ifnull +1877 -> 14252
-    //   12378: aload 20
-    //   12380: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   12383: ifnull +1869 -> 14252
-    //   12386: aload 20
-    //   12388: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   12391: invokevirtual 449	com/squareup/okhttp/Protocol:toString	()Ljava/lang/String;
-    //   12394: astore 23
-    //   12396: aload 27
-    //   12398: aload 23
-    //   12400: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12403: ldc_w 451
-    //   12406: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12409: aload 24
-    //   12411: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   12414: ldc_w 456
-    //   12417: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12420: aload 22
-    //   12422: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12425: ldc_w 458
-    //   12428: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12431: aconst_null
-    //   12432: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12435: ldc_w 460
-    //   12438: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12441: invokestatic 147	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   12444: invokevirtual 150	java/lang/Thread:getId	()J
-    //   12447: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   12450: ldc_w 462
-    //   12453: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12456: invokestatic 134	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   12459: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12462: ldc_w 464
-    //   12465: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12468: aload_0
-    //   12469: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   12472: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   12475: ldc_w 466
-    //   12478: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12481: aload_0
-    //   12482: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   12485: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   12488: ldc_w 468
-    //   12491: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12494: astore 27
-    //   12496: aload_0
-    //   12497: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   12500: ifeq +1760 -> 14260
-    //   12503: aload_0
-    //   12504: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   12507: aload_0
-    //   12508: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   12511: invokestatic 267	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
-    //   12514: astore 23
-    //   12516: aload 27
-    //   12518: aload 23
-    //   12520: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   12523: ldc_w 470
-    //   12526: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12529: iload 18
-    //   12531: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   12534: ldc_w 472
-    //   12537: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12540: aload_2
-    //   12541: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   12544: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   12547: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12550: ldc_w 483
-    //   12553: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12556: aload_2
-    //   12557: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   12560: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   12563: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   12566: ldc_w 487
-    //   12569: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12572: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   12575: aload_0
-    //   12576: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   12579: lsub
-    //   12580: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   12583: ldc_w 489
-    //   12586: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12589: aload_2
-    //   12590: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   12593: getfield 492	com/tencent/component/network/downloader/DownloadResult$Content:length	J
-    //   12596: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   12599: ldc_w 494
-    //   12602: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12605: aload_2
-    //   12606: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   12609: getfield 496	com/tencent/component/network/downloader/DownloadResult$Content:size	J
-    //   12612: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   12615: ldc_w 498
-    //   12618: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12621: aload_2
-    //   12622: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   12625: getfield 501	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
-    //   12628: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   12631: ldc_w 503
-    //   12634: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11949: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   11952: ldc_w 686
+    //   11955: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   11958: ifeq +861 -> 12819
+    //   11961: iconst_1
+    //   11962: istore 10
+    //   11964: aload 29
+    //   11966: iload 10
+    //   11968: putfield 762	com/tencent/component/network/downloader/DownloadReport:isHttps	Z
+    //   11971: aload 29
+    //   11973: aload_2
+    //   11974: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   11977: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   11980: putfield 764	com/tencent/component/network/downloader/DownloadReport:isSucceed	Z
+    //   11983: aload 29
+    //   11985: getstatic 770	com/tencent/component/network/downloader/Downloader$DownloadMode:FastMode	Lcom/tencent/component/network/downloader/Downloader$DownloadMode;
+    //   11988: invokevirtual 773	com/tencent/component/network/downloader/Downloader$DownloadMode:ordinal	()I
+    //   11991: putfield 776	com/tencent/component/network/downloader/DownloadReport:downloadMode	I
+    //   11994: aload 22
+    //   11996: ifnull +24 -> 12020
+    //   11999: aload 22
+    //   12001: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   12004: ifnull +16 -> 12020
+    //   12007: aload 29
+    //   12009: aload 22
+    //   12011: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   12014: invokevirtual 541	okhttp3/Protocol:toString	()Ljava/lang/String;
+    //   12017: putfield 778	com/tencent/component/network/downloader/DownloadReport:protocol	Ljava/lang/String;
+    //   12020: aload_2
+    //   12021: aload 29
+    //   12023: invokevirtual 782	com/tencent/component/network/downloader/DownloadResult:setReport	(Lcom/tencent/component/network/downloader/DownloadReport;)V
+    //   12026: aload_2
+    //   12027: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   12030: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   12033: ifeq +11 -> 12044
+    //   12036: aload_0
+    //   12037: aload_1
+    //   12038: aload_2
+    //   12039: aload 29
+    //   12041: invokevirtual 363	com/tencent/component/network/downloader/impl/FastDownloadTask:handleDownloadReportForTask	(Lcom/tencent/component/network/utils/thread/ThreadPool$JobContext;Lcom/tencent/component/network/downloader/DownloadResult;Lcom/tencent/component/network/downloader/DownloadReport;)V
+    //   12044: aload_0
+    //   12045: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   12048: ifeq +777 -> 12825
+    //   12051: aload_0
+    //   12052: getfield 786	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestCall	Lokhttp3/Call;
+    //   12055: ifnull +12 -> 12067
+    //   12058: aload_0
+    //   12059: getfield 786	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestCall	Lokhttp3/Call;
+    //   12062: invokeinterface 791 1 0
+    //   12067: aload_0
+    //   12068: aconst_null
+    //   12069: putfield 418	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestBuilder	Lokhttp3/Request$Builder;
+    //   12072: return
+    //   12073: aconst_null
+    //   12074: astore 25
+    //   12076: goto -1547 -> 10529
+    //   12079: astore 24
+    //   12081: ldc_w 428
+    //   12084: astore 24
+    //   12086: goto -1523 -> 10563
+    //   12089: ldc_w 958
+    //   12092: astore 26
+    //   12094: goto -1356 -> 10738
+    //   12097: aconst_null
+    //   12098: astore 26
+    //   12100: goto -1242 -> 10858
+    //   12103: aload_0
+    //   12104: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   12107: astore 26
+    //   12109: goto -1022 -> 11087
+    //   12112: iconst_0
+    //   12113: istore_3
+    //   12114: goto -997 -> 11117
+    //   12117: aconst_null
+    //   12118: astore 26
+    //   12120: goto -853 -> 11267
+    //   12123: new 125	java/lang/StringBuilder
+    //   12126: dup
+    //   12127: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   12130: ldc_w 960
+    //   12133: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12136: aload_0
+    //   12137: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   12140: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12143: ldc_w 527
+    //   12146: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12149: aload_0
+    //   12150: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   12153: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   12156: ldc_w 532
+    //   12159: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12162: astore 30
+    //   12164: aload_0
+    //   12165: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   12168: ifeq +558 -> 12726
+    //   12171: aload 22
+    //   12173: ifnull +553 -> 12726
+    //   12176: aload 22
+    //   12178: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   12181: ifnull +545 -> 12726
+    //   12184: aload 22
+    //   12186: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   12189: invokevirtual 541	okhttp3/Protocol:toString	()Ljava/lang/String;
+    //   12192: astore 26
+    //   12194: aload 30
+    //   12196: aload 26
+    //   12198: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12201: ldc_w 543
+    //   12204: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12207: aload 27
+    //   12209: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   12212: ldc_w 548
+    //   12215: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12218: aload 25
+    //   12220: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12223: ldc_w 550
+    //   12226: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12229: aconst_null
+    //   12230: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12233: ldc_w 552
+    //   12236: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12239: invokestatic 171	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   12242: invokevirtual 174	java/lang/Thread:getId	()J
+    //   12245: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   12248: ldc_w 554
+    //   12251: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12254: invokestatic 158	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   12257: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12260: ldc_w 556
+    //   12263: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12266: aload_0
+    //   12267: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   12270: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   12273: ldc_w 558
+    //   12276: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12279: aload_0
+    //   12280: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   12283: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   12286: ldc_w 560
+    //   12289: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12292: astore 30
+    //   12294: aload_0
+    //   12295: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   12298: ifeq +436 -> 12734
+    //   12301: aload_0
+    //   12302: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   12305: aload_0
+    //   12306: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   12309: invokestatic 322	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
+    //   12312: astore 26
+    //   12314: aload 30
+    //   12316: aload 26
+    //   12318: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   12321: ldc_w 564
+    //   12324: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12327: invokestatic 569	com/tencent/component/network/module/base/Config:getNetworkStackType	()I
+    //   12330: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   12333: ldc_w 576
+    //   12336: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12339: aload_2
+    //   12340: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   12343: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   12346: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   12349: ldc_w 581
+    //   12352: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12355: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   12358: aload_0
+    //   12359: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   12362: lsub
+    //   12363: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   12366: ldc_w 583
+    //   12369: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12372: aload_2
+    //   12373: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   12376: getfield 586	com/tencent/component/network/downloader/DownloadResult$Content:length	J
+    //   12379: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   12382: ldc_w 588
+    //   12385: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12388: aload_2
+    //   12389: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   12392: getfield 590	com/tencent/component/network/downloader/DownloadResult$Content:size	J
+    //   12395: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   12398: ldc_w 592
+    //   12401: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12404: aload_2
+    //   12405: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   12408: getfield 595	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
+    //   12411: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   12414: ldc_w 597
+    //   12417: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12420: aload_0
+    //   12421: invokevirtual 421	com/tencent/component/network/downloader/impl/FastDownloadTask:getCurrAttemptCount	()I
+    //   12424: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   12427: ldc_w 599
+    //   12430: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12433: aload_0
+    //   12434: invokevirtual 602	com/tencent/component/network/downloader/impl/FastDownloadTask:getTotalAttemptCount	()I
+    //   12437: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   12440: ldc_w 962
+    //   12443: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12446: iload 4
+    //   12448: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   12451: ldc_w 611
+    //   12454: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12457: aload 28
+    //   12459: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12462: ldc_w 571
+    //   12465: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12468: aload_2
+    //   12469: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   12472: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   12475: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12478: ldc_w 613
+    //   12481: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12484: aload 24
+    //   12486: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12489: ldc_w 615
+    //   12492: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12495: astore 30
+    //   12497: aload_0
+    //   12498: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   12501: ifnull +239 -> 12740
+    //   12504: aload_0
+    //   12505: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   12508: iconst_0
+    //   12509: bipush 30
+    //   12511: invokevirtual 619	java/lang/String:substring	(II)Ljava/lang/String;
+    //   12514: astore 26
+    //   12516: aload 30
+    //   12518: aload 26
+    //   12520: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12523: ldc_w 621
+    //   12526: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12529: astore 26
+    //   12531: aload_0
+    //   12532: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   12535: ifnull +214 -> 12749
+    //   12538: aload_0
+    //   12539: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   12542: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   12545: istore_3
+    //   12546: aload 26
+    //   12548: iload_3
+    //   12549: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   12552: ldc_w 623
+    //   12555: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12558: aload_2
+    //   12559: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   12562: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   12565: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12568: ldc_w 628
+    //   12571: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12574: lload 12
+    //   12576: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   12579: ldc_w 630
+    //   12582: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12585: aload_0
+    //   12586: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   12589: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   12592: ldc_w 599
+    //   12595: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12598: aload_0
+    //   12599: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_retry	I
+    //   12602: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   12605: ldc_w 632
+    //   12608: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12611: aload_0
+    //   12612: getfield 42	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_time	J
+    //   12615: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   12618: ldc_w 599
+    //   12621: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12624: aload_0
+    //   12625: getfield 44	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_retry	I
+    //   12628: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   12631: ldc_w 634
+    //   12634: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   12637: aload_0
-    //   12638: invokevirtual 369	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()I
-    //   12641: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   12644: ldc_w 505
-    //   12647: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12638: getfield 46	com/tencent/component/network/downloader/impl/FastDownloadTask:send_req_time	J
+    //   12641: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   12644: ldc_w 636
+    //   12647: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   12650: aload_0
-    //   12651: invokevirtual 507	com/tencent/component/network/downloader/impl/FastDownloadTask:c	()I
-    //   12654: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   12657: ldc_w 509
-    //   12660: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12663: ldc_w 511
-    //   12666: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12669: aload_2
-    //   12670: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   12673: invokevirtual 514	com/tencent/component/network/downloader/DownloadResult$Status:getFailReason	()I
-    //   12676: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   12679: ldc_w 516
-    //   12682: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12685: iload_3
-    //   12686: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   12689: ldc_w 518
-    //   12692: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12695: aload 25
-    //   12697: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12700: ldc_w 520
-    //   12703: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12706: aload 21
-    //   12708: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12711: ldc_w 522
-    //   12714: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12717: astore 27
-    //   12719: aload_0
-    //   12720: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   12723: ifnull +1543 -> 14266
-    //   12726: aload_0
-    //   12727: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   12730: iconst_0
-    //   12731: bipush 30
-    //   12733: invokevirtual 527	java/lang/String:substring	(II)Ljava/lang/String;
-    //   12736: astore 23
-    //   12738: aload 27
-    //   12740: aload 23
-    //   12742: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12745: ldc_w 529
-    //   12748: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12751: astore 23
-    //   12753: aload_0
-    //   12754: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   12757: ifnull +1518 -> 14275
-    //   12760: aload_0
-    //   12761: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   12764: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   12767: istore 4
-    //   12769: aload 23
-    //   12771: iload 4
-    //   12773: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   12776: ldc_w 531
-    //   12779: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12782: aload_2
-    //   12783: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   12786: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   12789: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12792: ldc_w 536
-    //   12795: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12798: lload 8
-    //   12800: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   12803: ldc_w 538
-    //   12806: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12809: aload_0
-    //   12810: getfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   12813: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   12816: ldc_w 505
-    //   12819: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12822: aload_0
-    //   12823: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Int	I
-    //   12826: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   12829: ldc_w 509
-    //   12832: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12835: ldc_w 540
-    //   12838: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12841: aload_0
-    //   12842: getfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Long	J
-    //   12845: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   12848: ldc_w 505
-    //   12851: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12854: aload_0
-    //   12855: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Int	I
-    //   12858: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   12861: ldc_w 509
-    //   12864: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12867: ldc_w 542
-    //   12870: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12873: aload_0
-    //   12874: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   12877: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   12880: ldc_w 544
-    //   12883: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12886: aload_0
-    //   12887: getfield 545	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_Long	J
-    //   12890: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   12893: ldc_w 547
-    //   12896: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12899: aload_0
-    //   12900: invokevirtual 549	com/tencent/component/network/downloader/impl/FastDownloadTask:d	()I
-    //   12903: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   12906: ldc_w 509
-    //   12909: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12912: ldc_w 551
-    //   12915: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12918: astore 27
-    //   12920: aload_0
-    //   12921: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   12924: ifnull +1357 -> 14281
-    //   12927: aload_0
-    //   12928: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   12931: invokeinterface 560 1 0
-    //   12936: astore 23
-    //   12938: aload 26
-    //   12940: aload 27
-    //   12942: aload 23
-    //   12944: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   12947: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   12950: putfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   12953: ldc_w 565
-    //   12956: aload 26
-    //   12958: getfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   12961: aconst_null
-    //   12962: invokestatic 381	com/tencent/component/network/module/base/QDLog:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   12965: iload 18
-    //   12967: ifne +8 -> 12975
-    //   12970: aload_0
-    //   12971: iconst_0
-    //   12972: putfield 566	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_Boolean	Z
-    //   12975: aload_2
-    //   12976: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   12979: astore 23
-    //   12981: new 102	java/lang/StringBuilder
-    //   12984: dup
-    //   12985: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   12988: aload_0
-    //   12989: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   12992: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12995: ldc_w 568
-    //   12998: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13001: aload 22
-    //   13003: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13006: ldc_w 570
-    //   13009: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13012: aload_2
-    //   13013: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   13016: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   13019: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13022: ldc_w 572
-    //   13025: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13028: astore 22
-    //   13030: aload_0
-    //   13031: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   13034: ifnull +1288 -> 14322
-    //   13037: aload_0
-    //   13038: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   13041: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   13044: istore 4
-    //   13046: aload 22
-    //   13048: iload 4
-    //   13050: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   13053: ldc_w 516
-    //   13056: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13059: iload_3
-    //   13060: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   13063: ldc_w 472
-    //   13066: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13069: aload_2
-    //   13070: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   13073: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   13076: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13079: ldc_w 574
-    //   13082: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13085: aload_2
-    //   13086: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   13089: getfield 492	com/tencent/component/network/downloader/DownloadResult$Content:length	J
-    //   13092: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   13095: ldc_w 494
-    //   13098: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13101: aload_2
-    //   13102: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   13105: getfield 496	com/tencent/component/network/downloader/DownloadResult$Content:size	J
-    //   13108: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   13111: ldc_w 483
-    //   13114: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13117: aload_2
-    //   13118: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   13121: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   13124: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   13127: ldc_w 487
-    //   13130: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13133: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   13136: aload_0
-    //   13137: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   13140: lsub
-    //   13141: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   13144: astore 22
-    //   13146: aload 21
-    //   13148: invokestatic 214	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   13151: ifne +1177 -> 14328
-    //   13154: new 102	java/lang/StringBuilder
-    //   13157: dup
-    //   13158: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   13161: ldc_w 520
-    //   13164: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13167: aload 21
-    //   13169: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13172: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   13175: astore 21
-    //   13177: aload 23
-    //   13179: aload 22
-    //   13181: aload 21
-    //   13183: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13186: ldc_w 518
-    //   13189: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13192: aload 25
-    //   13194: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13197: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   13200: putfield 577	com/tencent/component/network/downloader/DownloadResult$Status:detailDownloadInfo	Ljava/lang/String;
-    //   13203: getstatic 173	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:d	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   13206: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   13209: aload_0
-    //   13210: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   13213: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   13216: if_icmpne +37 -> 13253
-    //   13219: aload_0
-    //   13220: getfield 197	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   13223: ifnull +30 -> 13253
-    //   13226: aload_0
-    //   13227: getfield 197	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   13230: aload_0
-    //   13231: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   13234: aload_0
-    //   13235: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   13238: invokestatic 580	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
-    //   13241: aload_2
-    //   13242: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   13245: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   13248: invokeinterface 583 4 0
-    //   13253: getstatic 250	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   13256: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   13259: aload_0
-    //   13260: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   13263: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   13266: if_icmpne +37 -> 13303
-    //   13269: aload_0
-    //   13270: getfield 252	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   13273: ifnull +30 -> 13303
-    //   13276: aload_0
-    //   13277: getfield 252	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyIPStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
-    //   13280: aload_0
-    //   13281: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   13284: aload_0
-    //   13285: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   13288: invokestatic 580	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
-    //   13291: aload_2
-    //   13292: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   13295: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   13298: invokeinterface 583 4 0
-    //   13303: iload 18
-    //   13305: ifeq +64 -> 13369
-    //   13308: aload_0
-    //   13309: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   13312: invokestatic 56	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:a	(Landroid/content/Context;)Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy;
-    //   13315: astore 21
-    //   13317: aload_0
-    //   13318: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   13321: astore 22
-    //   13323: aload_0
-    //   13324: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   13327: ifeq +1039 -> 14366
-    //   13330: aload_0
-    //   13331: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   13334: ifnull +1032 -> 14366
-    //   13337: aload_0
-    //   13338: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   13341: ldc_w 585
-    //   13344: invokevirtual 588	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   13347: ifeq +1019 -> 14366
-    //   13350: iconst_1
-    //   13351: istore 18
-    //   13353: aload 21
-    //   13355: aload 22
-    //   13357: iload 18
-    //   13359: aload_2
-    //   13360: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   13363: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   13366: invokevirtual 591	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:a	(Ljava/lang/String;ZZ)V
-    //   13369: aload 26
-    //   13371: invokestatic 359	java/lang/System:currentTimeMillis	()J
-    //   13374: putfield 594	com/tencent/component/network/downloader/DownloadReport:endTime	J
-    //   13377: aload 26
-    //   13379: aload_0
-    //   13380: invokevirtual 596	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()J
-    //   13383: putfield 599	com/tencent/component/network/downloader/DownloadReport:fileSize	J
-    //   13386: aload 26
-    //   13388: aload 19
-    //   13390: putfield 603	com/tencent/component/network/downloader/DownloadReport:response	Lorg/apache/http/HttpResponse;
-    //   13393: aload 26
-    //   13395: aload 20
-    //   13397: putfield 607	com/tencent/component/network/downloader/DownloadReport:okResponse	Lcom/squareup/okhttp/Response;
-    //   13400: aload 26
-    //   13402: iload_3
-    //   13403: putfield 610	com/tencent/component/network/downloader/DownloadReport:httpStatus	I
-    //   13406: aload 26
-    //   13408: aconst_null
-    //   13409: putfield 614	com/tencent/component/network/downloader/DownloadReport:exception	Ljava/lang/Throwable;
-    //   13412: aload 24
-    //   13414: ifnonnull +958 -> 14372
-    //   13417: aconst_null
-    //   13418: astore 19
-    //   13420: aload 26
-    //   13422: aload 19
-    //   13424: putfield 617	com/tencent/component/network/downloader/DownloadReport:dns	Ljava/lang/String;
-    //   13427: aload 26
-    //   13429: aconst_null
-    //   13430: putfield 620	com/tencent/component/network/downloader/DownloadReport:localAddress	Ljava/lang/String;
-    //   13433: aload 26
-    //   13435: aload_2
-    //   13436: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   13439: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   13442: putfield 621	com/tencent/component/network/downloader/DownloadReport:clientip	Ljava/lang/String;
-    //   13445: aload 26
-    //   13447: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   13450: aload_0
-    //   13451: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   13454: lsub
-    //   13455: putfield 624	com/tencent/component/network/downloader/DownloadReport:totaltime	J
-    //   13458: aload 26
-    //   13460: aload_2
-    //   13461: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   13464: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   13467: putfield 627	com/tencent/component/network/downloader/DownloadReport:downloadTime	J
-    //   13470: aload 26
-    //   13472: aload 26
-    //   13474: getfield 624	com/tencent/component/network/downloader/DownloadReport:totaltime	J
-    //   13477: aload_2
-    //   13478: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   13481: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   13484: lsub
-    //   13485: putfield 630	com/tencent/component/network/downloader/DownloadReport:t_wait	J
-    //   13488: aload 26
-    //   13490: lload 8
-    //   13492: putfield 633	com/tencent/component/network/downloader/DownloadReport:t_prepare	J
-    //   13495: aload 26
-    //   13497: aload_0
-    //   13498: getfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   13501: putfield 636	com/tencent/component/network/downloader/DownloadReport:t_conn	J
-    //   13504: aload 26
-    //   13506: aload_0
-    //   13507: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   13510: putfield 639	com/tencent/component/network/downloader/DownloadReport:t_recvrsp	J
-    //   13513: aload 26
-    //   13515: aload_0
-    //   13516: getfield 545	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_Long	J
-    //   13519: putfield 642	com/tencent/component/network/downloader/DownloadReport:t_recvdata	J
-    //   13522: aload 26
-    //   13524: lconst_0
-    //   13525: putfield 645	com/tencent/component/network/downloader/DownloadReport:t_process	J
-    //   13528: aload 26
-    //   13530: aload_0
-    //   13531: invokevirtual 549	com/tencent/component/network/downloader/impl/FastDownloadTask:d	()I
-    //   13534: putfield 648	com/tencent/component/network/downloader/DownloadReport:concurrent	I
-    //   13537: aload 26
-    //   13539: aload_2
-    //   13540: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   13543: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   13546: putfield 651	com/tencent/component/network/downloader/DownloadReport:content_type	Ljava/lang/String;
-    //   13549: aload 26
-    //   13551: aload_0
-    //   13552: invokevirtual 45	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()Ljava/lang/String;
-    //   13555: invokestatic 655	com/tencent/component/network/module/base/Config:b	(Ljava/lang/String;)Z
-    //   13558: putfield 658	com/tencent/component/network/downloader/DownloadReport:isFromQzoneAlbum	Z
-    //   13561: aload 26
-    //   13563: aload_0
-    //   13564: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   13567: putfield 661	com/tencent/component/network/downloader/DownloadReport:isHttp2	Z
+    //   12651: getfield 639	com/tencent/component/network/downloader/impl/FastDownloadTask:t_recv_data	J
+    //   12654: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   12657: ldc_w 641
+    //   12660: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12663: aload_0
+    //   12664: invokevirtual 644	com/tencent/component/network/downloader/impl/FastDownloadTask:getTaskConcurrentCount	()I
+    //   12667: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   12670: ldc_w 646
+    //   12673: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12676: astore 30
+    //   12678: aload_0
+    //   12679: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   12682: ifnull +72 -> 12754
+    //   12685: aload_0
+    //   12686: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   12689: invokeinterface 656 1 0
+    //   12694: astore 26
+    //   12696: aload 29
+    //   12698: aload 30
+    //   12700: aload 26
+    //   12702: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   12705: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   12708: putfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   12711: ldc_w 447
+    //   12714: aload 29
+    //   12716: getfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   12719: aconst_null
+    //   12720: invokestatic 965	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   12723: goto -1401 -> 11322
+    //   12726: ldc_w 958
+    //   12729: astore 26
+    //   12731: goto -537 -> 12194
+    //   12734: aconst_null
+    //   12735: astore 26
+    //   12737: goto -423 -> 12314
+    //   12740: aload_0
+    //   12741: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   12744: astore 26
+    //   12746: goto -230 -> 12516
+    //   12749: iconst_0
+    //   12750: istore_3
+    //   12751: goto -205 -> 12546
+    //   12754: aconst_null
+    //   12755: astore 26
+    //   12757: goto -61 -> 12696
+    //   12760: iconst_0
+    //   12761: istore_3
+    //   12762: goto -1360 -> 11402
+    //   12765: ldc_w 428
+    //   12768: astore 24
+    //   12770: goto -1237 -> 11533
+    //   12773: astore 24
+    //   12775: ldc 219
+    //   12777: ldc_w 967
+    //   12780: aload 24
+    //   12782: invokestatic 965	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   12785: goto -1169 -> 11616
+    //   12788: astore 24
+    //   12790: ldc 219
+    //   12792: ldc_w 969
+    //   12795: aload 24
+    //   12797: invokestatic 965	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   12800: goto -1127 -> 11673
+    //   12803: iconst_0
+    //   12804: istore 10
+    //   12806: goto -1083 -> 11723
+    //   12809: aload 27
+    //   12811: invokevirtual 972	com/tencent/component/network/utils/NetworkUtils$DNS:toString	()Ljava/lang/String;
+    //   12814: astore 23
+    //   12816: goto -1025 -> 11791
+    //   12819: iconst_0
+    //   12820: istore 10
+    //   12822: goto -858 -> 11964
+    //   12825: aload_0
+    //   12826: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   12829: ifnull +15 -> 12844
+    //   12832: aload_0
+    //   12833: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   12836: invokevirtual 977	org/apache/http/client/methods/HttpGet:abort	()V
+    //   12839: aload_0
+    //   12840: aconst_null
+    //   12841: putfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   12844: aload_0
+    //   12845: invokevirtual 980	com/tencent/component/network/downloader/impl/FastDownloadTask:cleanExpireConnection	()V
+    //   12848: return
+    //   12849: sipush 416
+    //   12852: iload 4
+    //   12854: if_icmpne +1681 -> 14535
+    //   12857: aload_0
+    //   12858: ldc_w 982
+    //   12861: invokevirtual 985	com/tencent/component/network/downloader/impl/FastDownloadTask:removeHttpParam	(Ljava/lang/String;)V
+    //   12864: aload_2
+    //   12865: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   12868: bipush 7
+    //   12870: invokevirtual 381	com/tencent/component/network/downloader/DownloadResult$Status:setFailed	(I)V
+    //   12873: iload 4
+    //   12875: istore 5
+    //   12877: aload_0
+    //   12878: getfield 514	com/tencent/component/network/downloader/impl/FastDownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
+    //   12881: ifnull +21 -> 12902
+    //   12884: aload_0
+    //   12885: getfield 514	com/tencent/component/network/downloader/impl/FastDownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
+    //   12888: aload_0
+    //   12889: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   12892: iconst_1
+    //   12893: invokeinterface 988 3 0
+    //   12898: iload 4
+    //   12900: istore 5
+    //   12902: aload_2
+    //   12903: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   12906: lload 18
+    //   12908: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   12911: invokevirtual 461	com/tencent/component/network/downloader/DownloadResult$Process:setDuration	(JJ)V
+    //   12914: aload_2
+    //   12915: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   12918: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   12921: aload_0
+    //   12922: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   12925: lsub
+    //   12926: putfield 464	com/tencent/component/network/downloader/DownloadResult$Process:totalDuration	J
+    //   12929: aload_2
+    //   12930: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   12933: aload_0
+    //   12934: getfield 467	com/tencent/component/network/downloader/impl/FastDownloadTask:mTaskStartTimeStamp	J
+    //   12937: putfield 470	com/tencent/component/network/downloader/DownloadResult$Process:startTimestamp	J
+    //   12940: aload_0
+    //   12941: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   12944: invokestatic 475	com/tencent/component/network/module/common/NetworkStatus:getInstance	(Landroid/content/Context;)Lcom/tencent/component/network/module/common/NetworkStatus;
+    //   12947: invokevirtual 479	com/tencent/component/network/module/common/NetworkStatus:getDNS	()Lcom/tencent/component/network/utils/NetworkUtils$DNS;
+    //   12950: astore 27
+    //   12952: aload_0
+    //   12953: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   12956: ifnull +1609 -> 14565
+    //   12959: aload_0
+    //   12960: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   12963: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   12966: ifnull +1599 -> 14565
+    //   12969: aload_0
+    //   12970: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   12973: invokevirtual 483	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:getIPInfo	()Lcom/tencent/component/network/downloader/common/IPInfo;
+    //   12976: getfield 486	com/tencent/component/network/downloader/common/IPInfo:ip	Ljava/lang/String;
+    //   12979: astore 25
+    //   12981: aload_0
+    //   12982: aload_0
+    //   12983: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   12986: aload 23
+    //   12988: aload 22
+    //   12990: invokevirtual 490	com/tencent/component/network/downloader/impl/FastDownloadTask:parserHttpHeaderInfo	(Lorg/apache/http/HttpRequest;Lorg/apache/http/HttpResponse;Lokhttp3/Response;)Ljava/lang/String;
+    //   12993: astore 28
+    //   12995: aload 24
+    //   12997: ifnull +4091 -> 17088
+    //   13000: aload 24
+    //   13002: ldc_w 492
+    //   13005: invokeinterface 498 2 0
+    //   13010: checkcast 282	java/lang/String
+    //   13013: astore 24
+    //   13015: aload_2
+    //   13016: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   13019: aload 24
+    //   13021: putfield 507	com/tencent/component/network/downloader/DownloadResult$Content:redirectUrl	Ljava/lang/String;
+    //   13024: aload_0
+    //   13025: lconst_0
+    //   13026: putfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   13029: aload_0
+    //   13030: iconst_0
+    //   13031: putfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_retry	I
+    //   13034: aload_0
+    //   13035: lconst_0
+    //   13036: putfield 42	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_time	J
+    //   13039: aload_0
+    //   13040: iconst_0
+    //   13041: putfield 44	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_retry	I
+    //   13044: aload_2
+    //   13045: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   13048: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   13051: ifeq +12 -> 13063
+    //   13054: aload_1
+    //   13055: invokeinterface 359 1 0
+    //   13060: ifeq +31 -> 13091
+    //   13063: aload_0
+    //   13064: getfield 514	com/tencent/component/network/downloader/impl/FastDownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
+    //   13067: ifnull +24 -> 13091
+    //   13070: aload_0
+    //   13071: getfield 514	com/tencent/component/network/downloader/impl/FastDownloadTask:pResumeTransfer	Lcom/tencent/component/network/downloader/strategy/ResumeTransfer;
+    //   13074: aload_0
+    //   13075: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   13078: aload_2
+    //   13079: invokevirtual 517	com/tencent/component/network/downloader/DownloadResult:getPath	()Ljava/lang/String;
+    //   13082: aload 23
+    //   13084: aload 22
+    //   13086: invokeinterface 523 5 0
+    //   13091: aload_1
+    //   13092: invokeinterface 359 1 0
+    //   13097: ifne +1403 -> 14500
+    //   13100: aload_0
+    //   13101: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   13104: invokestatic 367	com/tencent/component/network/utils/NetworkUtils:isNetworkAvailable	(Landroid/content/Context;)Z
+    //   13107: istore 10
+    //   13109: aload_2
+    //   13110: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   13113: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   13116: ifne +1500 -> 14616
+    //   13119: new 125	java/lang/StringBuilder
+    //   13122: dup
+    //   13123: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   13126: ldc_w 525
+    //   13129: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13132: aload_0
+    //   13133: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   13136: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13139: ldc_w 527
+    //   13142: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13145: aload_0
+    //   13146: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   13149: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   13152: ldc_w 532
+    //   13155: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13158: astore 30
+    //   13160: aload_0
+    //   13161: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   13164: ifeq +1417 -> 14581
+    //   13167: aload 22
+    //   13169: ifnull +1412 -> 14581
+    //   13172: aload 22
+    //   13174: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   13177: ifnull +1404 -> 14581
+    //   13180: aload 22
+    //   13182: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   13185: invokevirtual 541	okhttp3/Protocol:toString	()Ljava/lang/String;
+    //   13188: astore 26
+    //   13190: aload 30
+    //   13192: aload 26
+    //   13194: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13197: ldc_w 543
+    //   13200: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13203: aload 27
+    //   13205: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   13208: ldc_w 548
+    //   13211: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13214: aload 25
+    //   13216: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13219: ldc_w 550
+    //   13222: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13225: aconst_null
+    //   13226: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13229: ldc_w 552
+    //   13232: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13235: invokestatic 171	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   13238: invokevirtual 174	java/lang/Thread:getId	()J
+    //   13241: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   13244: ldc_w 554
+    //   13247: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13250: invokestatic 158	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   13253: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13256: ldc_w 556
+    //   13259: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13262: aload_0
+    //   13263: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   13266: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   13269: ldc_w 558
+    //   13272: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13275: aload_0
+    //   13276: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   13279: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   13282: ldc_w 560
+    //   13285: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13288: astore 30
+    //   13290: aload_0
+    //   13291: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   13294: ifeq +1295 -> 14589
+    //   13297: aload_0
+    //   13298: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   13301: aload_0
+    //   13302: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   13305: invokestatic 322	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
+    //   13308: astore 26
+    //   13310: aload 30
+    //   13312: aload 26
+    //   13314: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   13317: ldc_w 562
+    //   13320: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13323: iload 10
+    //   13325: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   13328: ldc_w 564
+    //   13331: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13334: invokestatic 569	com/tencent/component/network/module/base/Config:getNetworkStackType	()I
+    //   13337: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   13340: ldc_w 571
+    //   13343: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13346: aload_2
+    //   13347: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   13350: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   13353: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13356: ldc_w 576
+    //   13359: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13362: aload_2
+    //   13363: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   13366: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   13369: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   13372: ldc_w 581
+    //   13375: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13378: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   13381: aload_0
+    //   13382: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   13385: lsub
+    //   13386: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   13389: ldc_w 583
+    //   13392: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13395: aload_2
+    //   13396: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   13399: getfield 586	com/tencent/component/network/downloader/DownloadResult$Content:length	J
+    //   13402: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   13405: ldc_w 588
+    //   13408: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13411: aload_2
+    //   13412: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   13415: getfield 590	com/tencent/component/network/downloader/DownloadResult$Content:size	J
+    //   13418: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   13421: ldc_w 592
+    //   13424: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13427: aload_2
+    //   13428: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   13431: getfield 595	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
+    //   13434: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   13437: ldc_w 597
+    //   13440: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13443: aload_0
+    //   13444: invokevirtual 421	com/tencent/component/network/downloader/impl/FastDownloadTask:getCurrAttemptCount	()I
+    //   13447: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   13450: ldc_w 599
+    //   13453: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13456: aload_0
+    //   13457: invokevirtual 602	com/tencent/component/network/downloader/impl/FastDownloadTask:getTotalAttemptCount	()I
+    //   13460: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   13463: ldc_w 604
+    //   13466: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13469: aload_2
+    //   13470: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   13473: invokevirtual 607	com/tencent/component/network/downloader/DownloadResult$Status:getFailReason	()I
+    //   13476: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   13479: ldc_w 609
+    //   13482: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13485: iload 5
+    //   13487: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   13490: ldc_w 611
+    //   13493: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13496: aload 28
+    //   13498: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13501: ldc_w 613
+    //   13504: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13507: aload 24
+    //   13509: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13512: ldc_w 615
+    //   13515: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13518: astore 30
+    //   13520: aload_0
+    //   13521: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   13524: ifnull +1071 -> 14595
+    //   13527: aload_0
+    //   13528: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   13531: iconst_0
+    //   13532: bipush 30
+    //   13534: invokevirtual 619	java/lang/String:substring	(II)Ljava/lang/String;
+    //   13537: astore 26
+    //   13539: aload 30
+    //   13541: aload 26
+    //   13543: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13546: ldc_w 621
+    //   13549: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13552: astore 26
+    //   13554: aload_0
+    //   13555: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   13558: ifnull +1046 -> 14604
+    //   13561: aload_0
+    //   13562: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   13565: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   13568: istore 4
     //   13570: aload 26
-    //   13572: aload_2
-    //   13573: invokevirtual 331	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
-    //   13576: invokevirtual 420	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
-    //   13579: putfield 663	com/tencent/component/network/downloader/DownloadReport:isSucceed	Z
-    //   13582: aload_2
-    //   13583: aload 26
-    //   13585: invokevirtual 667	com/tencent/component/network/downloader/DownloadResult:setReport	(Lcom/tencent/component/network/downloader/DownloadReport;)V
-    //   13588: aload_0
-    //   13589: aload_1
-    //   13590: aload_2
-    //   13591: aload 26
-    //   13593: invokevirtual 320	com/tencent/component/network/downloader/impl/FastDownloadTask:a	(Lcom/tencent/component/network/utils/thread/ThreadPool$JobContext;Lcom/tencent/component/network/downloader/DownloadResult;Lcom/tencent/component/network/downloader/DownloadReport;)V
-    //   13596: aload_0
-    //   13597: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   13600: ifeq +782 -> 14382
-    //   13603: aload_0
-    //   13604: getfield 670	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpCall	Lcom/squareup/okhttp/Call;
-    //   13607: ifnull -2256 -> 11351
+    //   13572: iload 4
+    //   13574: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   13577: ldc_w 623
+    //   13580: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13583: aload_2
+    //   13584: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   13587: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   13590: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13593: ldc_w 628
+    //   13596: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13599: lload 12
+    //   13601: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   13604: ldc_w 630
+    //   13607: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   13610: aload_0
-    //   13611: getfield 670	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComSquareupOkhttpCall	Lcom/squareup/okhttp/Call;
-    //   13614: invokevirtual 675	com/squareup/okhttp/Call:cancel	()V
-    //   13617: goto -2266 -> 11351
-    //   13620: aconst_null
-    //   13621: astore 22
-    //   13623: goto -1427 -> 12196
-    //   13626: astore 21
-    //   13628: ldc_w 378
-    //   13631: astore 21
-    //   13633: goto -1403 -> 12230
-    //   13636: new 102	java/lang/StringBuilder
-    //   13639: dup
-    //   13640: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   13643: ldc_w 807
-    //   13646: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13611: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   13614: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   13617: ldc_w 599
+    //   13620: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13623: aload_0
+    //   13624: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_retry	I
+    //   13627: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   13630: ldc_w 632
+    //   13633: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13636: aload_0
+    //   13637: getfield 42	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_time	J
+    //   13640: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   13643: ldc_w 599
+    //   13646: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   13649: aload_0
-    //   13650: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   13653: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13656: ldc_w 435
-    //   13659: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13650: getfield 44	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_retry	I
+    //   13653: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   13656: ldc_w 634
+    //   13659: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   13662: aload_0
-    //   13663: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   13666: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   13669: ldc_w 440
-    //   13672: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13675: astore 27
-    //   13677: aload_0
-    //   13678: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   13681: ifeq +606 -> 14287
-    //   13684: aload 20
-    //   13686: ifnull +601 -> 14287
-    //   13689: aload 20
-    //   13691: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   13694: ifnull +593 -> 14287
-    //   13697: aload 20
-    //   13699: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   13702: invokevirtual 449	com/squareup/okhttp/Protocol:toString	()Ljava/lang/String;
-    //   13705: astore 23
-    //   13707: aload 27
-    //   13709: aload 23
-    //   13711: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13714: ldc_w 451
-    //   13717: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13720: aload 24
-    //   13722: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   13725: ldc_w 456
-    //   13728: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13731: aload 22
-    //   13733: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13736: ldc_w 458
-    //   13739: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13742: aconst_null
-    //   13743: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13746: ldc_w 460
-    //   13749: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13752: invokestatic 147	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   13755: invokevirtual 150	java/lang/Thread:getId	()J
-    //   13758: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   13761: ldc_w 462
-    //   13764: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13767: invokestatic 134	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   13770: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13773: ldc_w 464
-    //   13776: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13779: aload_0
-    //   13780: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   13783: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   13786: ldc_w 466
-    //   13789: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13792: aload_0
-    //   13793: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   13796: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   13799: ldc_w 468
-    //   13802: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13805: astore 27
-    //   13807: aload_0
-    //   13808: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   13811: ifeq +484 -> 14295
-    //   13814: aload_0
-    //   13815: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   13818: aload_0
-    //   13819: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   13822: invokestatic 267	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
-    //   13825: astore 23
-    //   13827: aload 27
-    //   13829: aload 23
-    //   13831: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   13834: ldc_w 483
-    //   13837: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13840: aload_2
-    //   13841: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   13844: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   13847: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   13850: ldc_w 487
-    //   13853: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13856: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   13859: aload_0
-    //   13860: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   13863: lsub
-    //   13864: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   13867: ldc_w 489
-    //   13870: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13873: aload_2
-    //   13874: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   13877: getfield 492	com/tencent/component/network/downloader/DownloadResult$Content:length	J
-    //   13880: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   13883: ldc_w 494
-    //   13886: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13889: aload_2
-    //   13890: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   13893: getfield 496	com/tencent/component/network/downloader/DownloadResult$Content:size	J
-    //   13896: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   13899: ldc_w 498
-    //   13902: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13905: aload_2
-    //   13906: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   13909: getfield 501	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
-    //   13912: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   13915: ldc_w 503
-    //   13918: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13921: aload_0
-    //   13922: invokevirtual 369	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()I
-    //   13925: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   13928: ldc_w 505
-    //   13931: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13934: aload_0
-    //   13935: invokevirtual 507	com/tencent/component/network/downloader/impl/FastDownloadTask:c	()I
-    //   13938: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   13941: ldc_w 509
-    //   13944: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13947: ldc_w 516
-    //   13950: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13953: iload_3
-    //   13954: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   13957: ldc_w 518
-    //   13960: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13963: aload 25
-    //   13965: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13968: ldc_w 472
-    //   13971: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13974: aload_2
-    //   13975: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   13978: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   13981: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13984: ldc_w 520
-    //   13987: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13990: aload 21
-    //   13992: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13995: ldc_w 522
-    //   13998: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14001: astore 27
-    //   14003: aload_0
-    //   14004: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   14007: ifnull +294 -> 14301
-    //   14010: aload_0
-    //   14011: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   14014: iconst_0
-    //   14015: bipush 30
-    //   14017: invokevirtual 527	java/lang/String:substring	(II)Ljava/lang/String;
-    //   14020: astore 23
-    //   14022: aload 27
-    //   14024: aload 23
-    //   14026: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14029: ldc_w 529
-    //   14032: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14035: astore 23
-    //   14037: aload_0
-    //   14038: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   14041: ifnull +269 -> 14310
-    //   14044: aload_0
-    //   14045: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   14048: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   14051: istore 4
-    //   14053: aload 23
-    //   14055: iload 4
-    //   14057: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   14060: ldc_w 531
-    //   14063: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14066: aload_2
-    //   14067: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   14070: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   14073: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14076: ldc_w 536
-    //   14079: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14082: lload 8
-    //   14084: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   14087: ldc_w 538
-    //   14090: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14093: aload_0
-    //   14094: getfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   14097: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   14100: ldc_w 505
-    //   14103: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13663: getfield 46	com/tencent/component/network/downloader/impl/FastDownloadTask:send_req_time	J
+    //   13666: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   13669: ldc_w 636
+    //   13672: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13675: aload_0
+    //   13676: getfield 639	com/tencent/component/network/downloader/impl/FastDownloadTask:t_recv_data	J
+    //   13679: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   13682: ldc_w 641
+    //   13685: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13688: aload_0
+    //   13689: invokevirtual 644	com/tencent/component/network/downloader/impl/FastDownloadTask:getTaskConcurrentCount	()I
+    //   13692: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   13695: ldc_w 646
+    //   13698: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13701: astore 30
+    //   13703: aload_0
+    //   13704: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   13707: ifnull +903 -> 14610
+    //   13710: aload_0
+    //   13711: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   13714: invokeinterface 656 1 0
+    //   13719: astore 26
+    //   13721: aload 29
+    //   13723: aload 30
+    //   13725: aload 26
+    //   13727: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   13730: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   13733: putfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   13736: ldc_w 447
+    //   13739: aload 29
+    //   13741: getfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   13744: aconst_null
+    //   13745: invokestatic 432	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   13748: aload_0
+    //   13749: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   13752: ifnull +24 -> 13776
+    //   13755: aload_0
+    //   13756: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   13759: ldc_w 439
+    //   13762: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   13765: ifeq +11 -> 13776
+    //   13768: aload_0
+    //   13769: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   13772: iconst_0
+    //   13773: invokestatic 665	com/tencent/component/network/utils/http/pool/CustomDnsResolve:setIPDirectEnable	(Ljava/lang/String;Z)V
+    //   13776: iload 10
+    //   13778: ifne +8 -> 13786
+    //   13781: aload_0
+    //   13782: iconst_0
+    //   13783: putfield 668	com/tencent/component/network/downloader/impl/FastDownloadTask:mShouldReport	Z
+    //   13786: aload_2
+    //   13787: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   13790: astore 26
+    //   13792: new 125	java/lang/StringBuilder
+    //   13795: dup
+    //   13796: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   13799: aload_0
+    //   13800: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   13803: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13806: ldc_w 670
+    //   13809: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13812: aload 25
+    //   13814: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13817: ldc_w 672
+    //   13820: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13823: aload_2
+    //   13824: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   13827: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   13830: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13833: ldc_w 674
+    //   13836: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13839: astore 25
+    //   13841: aload_0
+    //   13842: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   13845: ifnull +1411 -> 15256
+    //   13848: aload_0
+    //   13849: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   13852: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   13855: istore 4
+    //   13857: aload 25
+    //   13859: iload 4
+    //   13861: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   13864: ldc_w 609
+    //   13867: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13870: iload 5
+    //   13872: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   13875: ldc_w 571
+    //   13878: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13881: aload_2
+    //   13882: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   13885: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   13888: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13891: ldc_w 583
+    //   13894: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13897: aload_2
+    //   13898: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   13901: getfield 586	com/tencent/component/network/downloader/DownloadResult$Content:length	J
+    //   13904: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   13907: ldc_w 588
+    //   13910: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13913: aload_2
+    //   13914: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   13917: getfield 590	com/tencent/component/network/downloader/DownloadResult$Content:size	J
+    //   13920: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   13923: ldc_w 576
+    //   13926: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13929: aload_2
+    //   13930: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   13933: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   13936: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   13939: ldc_w 581
+    //   13942: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13945: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   13948: aload_0
+    //   13949: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   13952: lsub
+    //   13953: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   13956: astore 25
+    //   13958: aload 24
+    //   13960: invokestatic 252	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   13963: ifne +1299 -> 15262
+    //   13966: new 125	java/lang/StringBuilder
+    //   13969: dup
+    //   13970: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   13973: ldc_w 613
+    //   13976: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13979: aload 24
+    //   13981: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13984: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   13987: astore 24
+    //   13989: aload 26
+    //   13991: aload 25
+    //   13993: aload 24
+    //   13995: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13998: ldc_w 611
+    //   14001: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14004: aload 28
+    //   14006: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14009: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   14012: putfield 677	com/tencent/component/network/downloader/DownloadResult$Status:detailDownloadInfo	Ljava/lang/String;
+    //   14015: aload_0
+    //   14016: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   14019: ifnull +53 -> 14072
+    //   14022: getstatic 203	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:Strategy_BACKUPIP	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   14025: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   14028: aload_0
+    //   14029: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   14032: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   14035: if_icmpne +37 -> 14072
+    //   14038: aload_0
+    //   14039: getfield 232	com/tencent/component/network/downloader/impl/FastDownloadTask:pBackupIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   14042: ifnull +30 -> 14072
+    //   14045: aload_0
+    //   14046: getfield 232	com/tencent/component/network/downloader/impl/FastDownloadTask:pBackupIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   14049: aload_0
+    //   14050: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   14053: aload_0
+    //   14054: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   14057: invokestatic 680	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
+    //   14060: aload_2
+    //   14061: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   14064: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   14067: invokeinterface 684 4 0
+    //   14072: aload_0
+    //   14073: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   14076: ifnull +53 -> 14129
+    //   14079: getstatic 297	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:Strategy_DomainDirect	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   14082: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   14085: aload_0
+    //   14086: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   14089: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   14092: if_icmpne +37 -> 14129
+    //   14095: aload_0
+    //   14096: getfield 300	com/tencent/component/network/downloader/impl/FastDownloadTask:pDirectIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
+    //   14099: ifnull +30 -> 14129
+    //   14102: aload_0
+    //   14103: getfield 300	com/tencent/component/network/downloader/impl/FastDownloadTask:pDirectIPConfigStrategy	Lcom/tencent/component/network/downloader/strategy/IPStrategy;
     //   14106: aload_0
-    //   14107: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Int	I
-    //   14110: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   14113: ldc_w 509
-    //   14116: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14119: ldc_w 540
-    //   14122: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14125: aload_0
-    //   14126: getfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Long	J
-    //   14129: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   14132: ldc_w 505
-    //   14135: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14138: aload_0
-    //   14139: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Int	I
-    //   14142: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   14145: ldc_w 509
-    //   14148: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14151: ldc_w 542
-    //   14154: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14157: aload_0
-    //   14158: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   14161: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   14164: ldc_w 544
-    //   14167: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14170: aload_0
-    //   14171: getfield 545	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_Long	J
-    //   14174: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   14177: ldc_w 547
-    //   14180: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14183: aload_0
-    //   14184: invokevirtual 549	com/tencent/component/network/downloader/impl/FastDownloadTask:d	()I
-    //   14187: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   14190: ldc_w 509
-    //   14193: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14196: ldc_w 551
-    //   14199: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14202: astore 27
-    //   14204: aload_0
-    //   14205: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   14208: ifnull +108 -> 14316
-    //   14211: aload_0
-    //   14212: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   14215: invokeinterface 560 1 0
-    //   14220: astore 23
-    //   14222: aload 26
-    //   14224: aload 27
-    //   14226: aload 23
-    //   14228: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   14231: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   14234: putfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   14237: ldc_w 565
-    //   14240: aload 26
-    //   14242: getfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   14245: aconst_null
-    //   14246: invokestatic 809	com/tencent/component/network/module/base/QDLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   14249: goto -1284 -> 12965
-    //   14252: ldc_w 811
-    //   14255: astore 23
-    //   14257: goto -1861 -> 12396
-    //   14260: aconst_null
-    //   14261: astore 23
-    //   14263: goto -1747 -> 12516
-    //   14266: aload_0
-    //   14267: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   14270: astore 23
-    //   14272: goto -1534 -> 12738
-    //   14275: iconst_0
-    //   14276: istore 4
-    //   14278: goto -1509 -> 12769
-    //   14281: aconst_null
-    //   14282: astore 23
-    //   14284: goto -1346 -> 12938
-    //   14287: ldc_w 811
-    //   14290: astore 23
-    //   14292: goto -585 -> 13707
-    //   14295: aconst_null
-    //   14296: astore 23
-    //   14298: goto -471 -> 13827
-    //   14301: aload_0
-    //   14302: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   14305: astore 23
-    //   14307: goto -285 -> 14022
-    //   14310: iconst_0
-    //   14311: istore 4
-    //   14313: goto -260 -> 14053
-    //   14316: aconst_null
-    //   14317: astore 23
-    //   14319: goto -97 -> 14222
-    //   14322: iconst_0
-    //   14323: istore 4
-    //   14325: goto -1279 -> 13046
-    //   14328: ldc_w 378
-    //   14331: astore 21
-    //   14333: goto -1156 -> 13177
-    //   14336: astore 21
-    //   14338: ldc 186
-    //   14340: ldc_w 813
-    //   14343: aload 21
-    //   14345: invokestatic 809	com/tencent/component/network/module/base/QDLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   14348: goto -1095 -> 13253
-    //   14351: astore 21
-    //   14353: ldc 186
-    //   14355: ldc_w 815
-    //   14358: aload 21
-    //   14360: invokestatic 809	com/tencent/component/network/module/base/QDLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   14363: goto -1060 -> 13303
-    //   14366: iconst_0
-    //   14367: istore 18
-    //   14369: goto -1016 -> 13353
-    //   14372: aload 24
-    //   14374: invokevirtual 818	com/tencent/component/network/utils/NetworkUtils$DNS:toString	()Ljava/lang/String;
-    //   14377: astore 19
-    //   14379: goto -959 -> 13420
-    //   14382: aload_0
-    //   14383: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   14386: ifnull -2248 -> 12138
-    //   14389: aload_0
-    //   14390: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   14393: invokevirtual 823	org/apache/http/client/methods/HttpGet:abort	()V
-    //   14396: aload_0
-    //   14397: aconst_null
-    //   14398: putfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   14401: goto -2263 -> 12138
-    //   14404: aconst_null
-    //   14405: astore 22
-    //   14407: goto -8357 -> 6050
-    //   14410: astore 21
-    //   14412: ldc_w 378
-    //   14415: astore 21
-    //   14417: goto -8333 -> 6084
-    //   14420: new 102	java/lang/StringBuilder
-    //   14423: dup
-    //   14424: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   14427: ldc_w 807
-    //   14430: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14433: aload_0
-    //   14434: invokevirtual 58	com/tencent/component/network/downloader/impl/FastDownloadTask:a	()Ljava/lang/String;
-    //   14437: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14440: ldc_w 435
-    //   14443: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14446: aload_0
-    //   14447: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   14450: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   14453: ldc_w 440
-    //   14456: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14459: astore 27
-    //   14461: aload_0
-    //   14462: getfield 60	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_Boolean	Z
-    //   14465: ifeq +604 -> 15069
-    //   14468: aload 20
-    //   14470: ifnull +599 -> 15069
-    //   14473: aload 20
-    //   14475: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   14478: ifnull +591 -> 15069
-    //   14481: aload 20
-    //   14483: invokevirtual 446	com/squareup/okhttp/Response:protocol	()Lcom/squareup/okhttp/Protocol;
-    //   14486: invokevirtual 449	com/squareup/okhttp/Protocol:toString	()Ljava/lang/String;
-    //   14489: astore 23
-    //   14491: aload 27
-    //   14493: aload 23
-    //   14495: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14498: ldc_w 451
-    //   14501: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14504: aload 24
-    //   14506: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   14509: ldc_w 456
-    //   14512: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14515: aload 22
-    //   14517: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14520: ldc_w 458
-    //   14523: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14526: aconst_null
-    //   14527: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14530: ldc_w 460
-    //   14533: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14536: invokestatic 147	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   14539: invokevirtual 150	java/lang/Thread:getId	()J
-    //   14542: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   14545: ldc_w 462
-    //   14548: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14551: invokestatic 134	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   14554: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14557: ldc_w 464
-    //   14560: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14563: aload_0
-    //   14564: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   14567: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   14570: ldc_w 466
-    //   14573: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14576: aload_0
-    //   14577: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   14580: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   14583: ldc_w 468
-    //   14586: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14589: astore 27
-    //   14591: aload_0
-    //   14592: getfield 161	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Boolean	Z
-    //   14595: ifeq +482 -> 15077
-    //   14598: aload_0
-    //   14599: getfield 51	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   14602: aload_0
-    //   14603: getfield 164	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Boolean	Z
-    //   14606: invokestatic 267	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
-    //   14609: astore 23
-    //   14611: aload 27
-    //   14613: aload 23
-    //   14615: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   14618: ldc_w 483
-    //   14621: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14624: aload_2
-    //   14625: invokevirtual 388	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
-    //   14628: getfield 485	com/tencent/component/network/downloader/DownloadResult$Process:jdField_c_of_type_Long	J
-    //   14631: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   14634: ldc_w 487
-    //   14637: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14640: invokestatic 26	android/os/SystemClock:uptimeMillis	()J
-    //   14643: aload_0
-    //   14644: getfield 28	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_g_of_type_Long	J
-    //   14647: lsub
-    //   14648: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   14651: ldc_w 489
-    //   14654: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14657: aload_2
-    //   14658: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   14661: getfield 492	com/tencent/component/network/downloader/DownloadResult$Content:length	J
-    //   14664: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   14667: ldc_w 494
-    //   14670: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14673: aload_2
-    //   14674: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   14677: getfield 496	com/tencent/component/network/downloader/DownloadResult$Content:size	J
-    //   14680: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   14683: ldc_w 498
-    //   14686: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14689: aload_2
-    //   14690: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   14693: getfield 501	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
-    //   14696: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   14699: ldc_w 503
-    //   14702: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14705: aload_0
-    //   14706: invokevirtual 369	com/tencent/component/network/downloader/impl/FastDownloadTask:b	()I
-    //   14709: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   14712: ldc_w 505
-    //   14715: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14718: aload_0
-    //   14719: invokevirtual 507	com/tencent/component/network/downloader/impl/FastDownloadTask:c	()I
-    //   14722: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   14725: ldc_w 509
-    //   14728: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14731: ldc_w 516
-    //   14734: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14737: iload 5
-    //   14739: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   14742: ldc_w 518
-    //   14745: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14748: aload 25
-    //   14750: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14753: ldc_w 472
-    //   14756: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14759: aload_2
-    //   14760: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   14763: getfield 481	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
-    //   14766: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14769: ldc_w 520
-    //   14772: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14775: aload 21
-    //   14777: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14780: ldc_w 522
-    //   14783: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14786: astore 27
-    //   14788: aload_0
-    //   14789: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   14792: ifnull +291 -> 15083
-    //   14795: aload_0
-    //   14796: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   14799: iconst_0
-    //   14800: bipush 30
-    //   14802: invokevirtual 527	java/lang/String:substring	(II)Ljava/lang/String;
-    //   14805: astore 23
-    //   14807: aload 27
-    //   14809: aload 23
-    //   14811: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14814: ldc_w 529
-    //   14817: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14820: astore 23
-    //   14822: aload_0
-    //   14823: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   14826: ifnull +266 -> 15092
-    //   14829: aload_0
-    //   14830: getfield 66	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
-    //   14833: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:jdField_a_of_type_Int	I
-    //   14836: istore_3
-    //   14837: aload 23
-    //   14839: iload_3
-    //   14840: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   14843: ldc_w 531
-    //   14846: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14849: aload_2
-    //   14850: invokevirtual 476	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
-    //   14853: getfield 534	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
-    //   14856: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14859: ldc_w 536
-    //   14862: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14865: lload 8
-    //   14867: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   14870: ldc_w 538
-    //   14873: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14876: aload_0
-    //   14877: getfield 32	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_d_of_type_Long	J
-    //   14880: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   14883: ldc_w 505
-    //   14886: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14889: aload_0
-    //   14890: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Int	I
-    //   14893: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   14896: ldc_w 509
-    //   14899: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14902: ldc_w 540
-    //   14905: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14908: aload_0
-    //   14909: getfield 36	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_e_of_type_Long	J
-    //   14912: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   14915: ldc_w 505
-    //   14918: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14921: aload_0
-    //   14922: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Int	I
-    //   14925: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   14928: ldc_w 509
-    //   14931: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14934: ldc_w 542
-    //   14937: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14940: aload_0
-    //   14941: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_f_of_type_Long	J
-    //   14944: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   14947: ldc_w 544
-    //   14950: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14953: aload_0
-    //   14954: getfield 545	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_c_of_type_Long	J
-    //   14957: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   14960: ldc_w 547
-    //   14963: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14966: aload_0
-    //   14967: invokevirtual 549	com/tencent/component/network/downloader/impl/FastDownloadTask:d	()I
-    //   14970: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   14973: ldc_w 509
-    //   14976: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14979: ldc_w 551
-    //   14982: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14985: astore 27
-    //   14987: aload_0
-    //   14988: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   14991: ifnull +106 -> 15097
-    //   14994: aload_0
-    //   14995: getfield 554	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_ComTencentComponentNetworkDownloaderImplDownloadTask$DownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
-    //   14998: invokeinterface 560 1 0
-    //   15003: astore 23
-    //   15005: aload 26
-    //   15007: aload 27
-    //   15009: aload 23
-    //   15011: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   15014: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   15017: putfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   15020: ldc_w 565
-    //   15023: aload 26
-    //   15025: getfield 563	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
-    //   15028: aconst_null
-    //   15029: invokestatic 809	com/tencent/component/network/module/base/QDLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   15032: goto -8214 -> 6818
-    //   15035: ldc_w 811
-    //   15038: astore 23
-    //   15040: goto -8790 -> 6250
-    //   15043: aconst_null
-    //   15044: astore 23
-    //   15046: goto -8676 -> 6370
-    //   15049: aload_0
-    //   15050: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   15053: astore 23
-    //   15055: goto -8462 -> 6593
-    //   15058: iconst_0
-    //   15059: istore_3
-    //   15060: goto -8437 -> 6623
-    //   15063: aconst_null
-    //   15064: astore 23
-    //   15066: goto -8275 -> 6791
-    //   15069: ldc_w 811
-    //   15072: astore 23
-    //   15074: goto -583 -> 14491
-    //   15077: aconst_null
-    //   15078: astore 23
-    //   15080: goto -469 -> 14611
-    //   15083: aload_0
-    //   15084: getfield 523	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   15087: astore 23
-    //   15089: goto -282 -> 14807
-    //   15092: iconst_0
-    //   15093: istore_3
-    //   15094: goto -257 -> 14837
-    //   15097: aconst_null
-    //   15098: astore 23
-    //   15100: goto -95 -> 15005
-    //   15103: iconst_0
-    //   15104: istore_3
-    //   15105: goto -8207 -> 6898
-    //   15108: ldc_w 378
-    //   15111: astore 21
-    //   15113: goto -8084 -> 7029
-    //   15116: astore 21
-    //   15118: ldc 186
-    //   15120: ldc_w 813
-    //   15123: aload 21
-    //   15125: invokestatic 809	com/tencent/component/network/module/base/QDLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   15128: goto -8023 -> 7105
-    //   15131: astore 21
-    //   15133: ldc 186
-    //   15135: ldc_w 815
-    //   15138: aload 21
-    //   15140: invokestatic 809	com/tencent/component/network/module/base/QDLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   15143: goto -7988 -> 7155
-    //   15146: iconst_0
-    //   15147: istore 18
-    //   15149: goto -7944 -> 7205
-    //   15152: aload 24
-    //   15154: invokevirtual 818	com/tencent/component/network/utils/NetworkUtils$DNS:toString	()Ljava/lang/String;
-    //   15157: astore 19
-    //   15159: goto -7886 -> 7273
-    //   15162: aload_0
-    //   15163: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   15166: ifnull +15 -> 15181
-    //   15169: aload_0
-    //   15170: getfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   15173: invokevirtual 823	org/apache/http/client/methods/HttpGet:abort	()V
-    //   15176: aload_0
-    //   15177: aconst_null
-    //   15178: putfield 365	com/tencent/component/network/downloader/impl/FastDownloadTask:jdField_a_of_type_OrgApacheHttpClientMethodsHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   15181: aload_0
-    //   15182: invokevirtual 825	com/tencent/component/network/downloader/impl/FastDownloadTask:f	()V
-    //   15185: goto -7710 -> 7475
-    //   15188: astore 24
-    //   15190: aconst_null
-    //   15191: astore 20
-    //   15193: aload 19
-    //   15195: astore 21
-    //   15197: aload 24
-    //   15199: astore 19
-    //   15201: iload 6
-    //   15203: istore_3
-    //   15204: goto -10824 -> 4380
-    //   15207: astore 24
-    //   15209: aload 19
-    //   15211: astore 23
-    //   15213: aload 20
-    //   15215: astore 22
-    //   15217: aload 24
-    //   15219: astore 19
-    //   15221: aconst_null
-    //   15222: astore 20
-    //   15224: iload 6
-    //   15226: istore_3
-    //   15227: goto -10847 -> 4380
-    //   15230: astore 24
-    //   15232: aload 19
-    //   15234: astore 23
-    //   15236: aload 20
-    //   15238: astore 22
-    //   15240: aload 24
-    //   15242: astore 19
-    //   15244: aconst_null
-    //   15245: astore 20
-    //   15247: goto -10867 -> 4380
-    //   15250: astore 25
-    //   15252: aconst_null
-    //   15253: astore 24
-    //   15255: aload 20
-    //   15257: astore 22
-    //   15259: aload 19
-    //   15261: astore 23
-    //   15263: aload 25
-    //   15265: astore 19
-    //   15267: aload 24
-    //   15269: astore 20
-    //   15271: goto -10891 -> 4380
-    //   15274: astore 25
-    //   15276: aload 20
-    //   15278: astore 23
-    //   15280: aload 19
-    //   15282: astore 24
-    //   15284: aload 22
-    //   15286: astore 20
-    //   15288: aload 25
-    //   15290: astore 19
-    //   15292: aload 23
-    //   15294: astore 22
-    //   15296: aload 24
-    //   15298: astore 23
-    //   15300: goto -10920 -> 4380
-    //   15303: astore 22
-    //   15305: iconst_0
-    //   15306: istore_3
-    //   15307: aconst_null
-    //   15308: astore 20
-    //   15310: aconst_null
+    //   14107: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   14110: aload_0
+    //   14111: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   14114: invokestatic 680	com/tencent/component/network/downloader/common/Utils:getDomin	(Ljava/lang/String;)Ljava/lang/String;
+    //   14117: aload_2
+    //   14118: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   14121: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   14124: invokeinterface 684 4 0
+    //   14129: iload 10
+    //   14131: ifeq +64 -> 14195
+    //   14134: aload_0
+    //   14135: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   14138: invokestatic 67	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:getInstance	(Landroid/content/Context;)Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy;
+    //   14141: astore 24
+    //   14143: aload_0
+    //   14144: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   14147: astore 25
+    //   14149: aload_0
+    //   14150: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   14153: ifeq +1147 -> 15300
+    //   14156: aload_0
+    //   14157: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   14160: ifnull +1140 -> 15300
+    //   14163: aload_0
+    //   14164: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   14167: ldc_w 686
+    //   14170: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   14173: ifeq +1127 -> 15300
+    //   14176: iconst_1
+    //   14177: istore 10
+    //   14179: aload 24
+    //   14181: aload 25
+    //   14183: iload 10
+    //   14185: aload_2
+    //   14186: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   14189: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   14192: invokevirtual 690	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:reportHttps	(Ljava/lang/String;ZZ)V
+    //   14195: aload 29
+    //   14197: invokestatic 407	java/lang/System:currentTimeMillis	()J
+    //   14200: putfield 693	com/tencent/component/network/downloader/DownloadReport:endTime	J
+    //   14203: aload 29
+    //   14205: aload_0
+    //   14206: invokevirtual 696	com/tencent/component/network/downloader/impl/FastDownloadTask:getContentLength	()J
+    //   14209: putfield 699	com/tencent/component/network/downloader/DownloadReport:fileSize	J
+    //   14212: aload 29
+    //   14214: aload 23
+    //   14216: putfield 703	com/tencent/component/network/downloader/DownloadReport:response	Lorg/apache/http/HttpResponse;
+    //   14219: aload 29
+    //   14221: aload 22
+    //   14223: putfield 707	com/tencent/component/network/downloader/DownloadReport:okResponse	Lokhttp3/Response;
+    //   14226: aload 29
+    //   14228: iload 5
+    //   14230: putfield 710	com/tencent/component/network/downloader/DownloadReport:httpStatus	I
+    //   14233: aload 29
+    //   14235: aconst_null
+    //   14236: putfield 714	com/tencent/component/network/downloader/DownloadReport:exception	Ljava/lang/Throwable;
+    //   14239: aload 27
+    //   14241: ifnonnull +1065 -> 15306
+    //   14244: aconst_null
+    //   14245: astore 23
+    //   14247: aload 29
+    //   14249: aload 23
+    //   14251: putfield 717	com/tencent/component/network/downloader/DownloadReport:dns	Ljava/lang/String;
+    //   14254: aload 29
+    //   14256: aconst_null
+    //   14257: putfield 720	com/tencent/component/network/downloader/DownloadReport:localAddress	Ljava/lang/String;
+    //   14260: aload 29
+    //   14262: aload_2
+    //   14263: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   14266: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   14269: putfield 721	com/tencent/component/network/downloader/DownloadReport:clientip	Ljava/lang/String;
+    //   14272: aload 29
+    //   14274: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   14277: aload_0
+    //   14278: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   14281: lsub
+    //   14282: putfield 724	com/tencent/component/network/downloader/DownloadReport:totaltime	J
+    //   14285: aload 29
+    //   14287: aload_2
+    //   14288: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   14291: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   14294: putfield 727	com/tencent/component/network/downloader/DownloadReport:downloadTime	J
+    //   14297: aload 29
+    //   14299: aload 29
+    //   14301: getfield 724	com/tencent/component/network/downloader/DownloadReport:totaltime	J
+    //   14304: aload_2
+    //   14305: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   14308: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   14311: lsub
+    //   14312: putfield 730	com/tencent/component/network/downloader/DownloadReport:t_wait	J
+    //   14315: aload 29
+    //   14317: lload 12
+    //   14319: putfield 733	com/tencent/component/network/downloader/DownloadReport:t_prepare	J
+    //   14322: aload 29
+    //   14324: aload_0
+    //   14325: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   14328: putfield 736	com/tencent/component/network/downloader/DownloadReport:t_conn	J
+    //   14331: aload 29
+    //   14333: aload_0
+    //   14334: getfield 46	com/tencent/component/network/downloader/impl/FastDownloadTask:send_req_time	J
+    //   14337: putfield 739	com/tencent/component/network/downloader/DownloadReport:t_recvrsp	J
+    //   14340: aload 29
+    //   14342: aload_0
+    //   14343: getfield 639	com/tencent/component/network/downloader/impl/FastDownloadTask:t_recv_data	J
+    //   14346: putfield 742	com/tencent/component/network/downloader/DownloadReport:t_recvdata	J
+    //   14349: aload 29
+    //   14351: lconst_0
+    //   14352: putfield 745	com/tencent/component/network/downloader/DownloadReport:t_process	J
+    //   14355: aload 29
+    //   14357: aload_0
+    //   14358: invokevirtual 644	com/tencent/component/network/downloader/impl/FastDownloadTask:getTaskConcurrentCount	()I
+    //   14361: putfield 748	com/tencent/component/network/downloader/DownloadReport:concurrent	I
+    //   14364: aload 29
+    //   14366: aload_2
+    //   14367: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   14370: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   14373: putfield 751	com/tencent/component/network/downloader/DownloadReport:content_type	Ljava/lang/String;
+    //   14376: aload 29
+    //   14378: aload_0
+    //   14379: invokevirtual 53	com/tencent/component/network/downloader/impl/FastDownloadTask:getDomain	()Ljava/lang/String;
+    //   14382: invokestatic 754	com/tencent/component/network/module/base/Config:isFromQzoneAlbum	(Ljava/lang/String;)Z
+    //   14385: putfield 756	com/tencent/component/network/downloader/DownloadReport:isFromQzoneAlbum	Z
+    //   14388: aload 29
+    //   14390: aload_0
+    //   14391: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   14394: putfield 759	com/tencent/component/network/downloader/DownloadReport:isHttp2	Z
+    //   14397: aload_0
+    //   14398: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   14401: ifnull +915 -> 15316
+    //   14404: aload_0
+    //   14405: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   14408: ldc_w 686
+    //   14411: invokevirtual 442	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   14414: ifeq +902 -> 15316
+    //   14417: iconst_1
+    //   14418: istore 10
+    //   14420: aload 29
+    //   14422: iload 10
+    //   14424: putfield 762	com/tencent/component/network/downloader/DownloadReport:isHttps	Z
+    //   14427: aload 29
+    //   14429: aload_2
+    //   14430: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   14433: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   14436: putfield 764	com/tencent/component/network/downloader/DownloadReport:isSucceed	Z
+    //   14439: aload 29
+    //   14441: getstatic 770	com/tencent/component/network/downloader/Downloader$DownloadMode:FastMode	Lcom/tencent/component/network/downloader/Downloader$DownloadMode;
+    //   14444: invokevirtual 773	com/tencent/component/network/downloader/Downloader$DownloadMode:ordinal	()I
+    //   14447: putfield 776	com/tencent/component/network/downloader/DownloadReport:downloadMode	I
+    //   14450: aload 22
+    //   14452: ifnull +24 -> 14476
+    //   14455: aload 22
+    //   14457: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   14460: ifnull +16 -> 14476
+    //   14463: aload 29
+    //   14465: aload 22
+    //   14467: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   14470: invokevirtual 541	okhttp3/Protocol:toString	()Ljava/lang/String;
+    //   14473: putfield 778	com/tencent/component/network/downloader/DownloadReport:protocol	Ljava/lang/String;
+    //   14476: aload_2
+    //   14477: aload 29
+    //   14479: invokevirtual 782	com/tencent/component/network/downloader/DownloadResult:setReport	(Lcom/tencent/component/network/downloader/DownloadReport;)V
+    //   14482: aload_2
+    //   14483: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   14486: invokevirtual 510	com/tencent/component/network/downloader/DownloadResult$Status:isSucceed	()Z
+    //   14489: ifeq +11 -> 14500
+    //   14492: aload_0
+    //   14493: aload_1
+    //   14494: aload_2
+    //   14495: aload 29
+    //   14497: invokevirtual 363	com/tencent/component/network/downloader/impl/FastDownloadTask:handleDownloadReportForTask	(Lcom/tencent/component/network/utils/thread/ThreadPool$JobContext;Lcom/tencent/component/network/downloader/DownloadResult;Lcom/tencent/component/network/downloader/DownloadReport;)V
+    //   14500: aload_0
+    //   14501: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   14504: ifeq +818 -> 15322
+    //   14507: aload_0
+    //   14508: getfield 786	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestCall	Lokhttp3/Call;
+    //   14511: ifnull +12 -> 14523
+    //   14514: aload_0
+    //   14515: getfield 786	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestCall	Lokhttp3/Call;
+    //   14518: invokeinterface 791 1 0
+    //   14523: aload_0
+    //   14524: aconst_null
+    //   14525: putfield 418	com/tencent/component/network/downloader/impl/FastDownloadTask:okRequestBuilder	Lokhttp3/Request$Builder;
+    //   14528: iload_3
+    //   14529: iconst_1
+    //   14530: iadd
+    //   14531: istore_3
+    //   14532: goto -14327 -> 205
+    //   14535: aload_2
+    //   14536: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   14539: iconst_3
+    //   14540: invokevirtual 381	com/tencent/component/network/downloader/DownloadResult$Status:setFailed	(I)V
+    //   14543: goto -1670 -> 12873
+    //   14546: astore 25
+    //   14548: goto -14296 -> 252
+    //   14551: aload_2
+    //   14552: invokevirtual 376	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
+    //   14555: iconst_3
+    //   14556: invokevirtual 381	com/tencent/component/network/downloader/DownloadResult$Status:setFailed	(I)V
+    //   14559: iconst_0
+    //   14560: istore 5
+    //   14562: goto -1660 -> 12902
+    //   14565: aconst_null
+    //   14566: astore 25
+    //   14568: goto -1587 -> 12981
+    //   14571: astore 24
+    //   14573: ldc_w 428
+    //   14576: astore 24
+    //   14578: goto -1563 -> 13015
+    //   14581: ldc_w 958
+    //   14584: astore 26
+    //   14586: goto -1396 -> 13190
+    //   14589: aconst_null
+    //   14590: astore 26
+    //   14592: goto -1282 -> 13310
+    //   14595: aload_0
+    //   14596: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   14599: astore 26
+    //   14601: goto -1062 -> 13539
+    //   14604: iconst_0
+    //   14605: istore 4
+    //   14607: goto -1037 -> 13570
+    //   14610: aconst_null
+    //   14611: astore 26
+    //   14613: goto -892 -> 13721
+    //   14616: new 125	java/lang/StringBuilder
+    //   14619: dup
+    //   14620: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   14623: ldc_w 960
+    //   14626: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14629: aload_0
+    //   14630: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   14633: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14636: ldc_w 527
+    //   14639: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14642: aload_0
+    //   14643: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   14646: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   14649: ldc_w 532
+    //   14652: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14655: astore 30
+    //   14657: aload_0
+    //   14658: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   14661: ifeq +560 -> 15221
+    //   14664: aload 22
+    //   14666: ifnull +555 -> 15221
+    //   14669: aload 22
+    //   14671: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   14674: ifnull +547 -> 15221
+    //   14677: aload 22
+    //   14679: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   14682: invokevirtual 541	okhttp3/Protocol:toString	()Ljava/lang/String;
+    //   14685: astore 26
+    //   14687: aload 30
+    //   14689: aload 26
+    //   14691: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14694: ldc_w 543
+    //   14697: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14700: aload 27
+    //   14702: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   14705: ldc_w 548
+    //   14708: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14711: aload 25
+    //   14713: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14716: ldc_w 550
+    //   14719: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14722: aconst_null
+    //   14723: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14726: ldc_w 552
+    //   14729: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14732: invokestatic 171	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   14735: invokevirtual 174	java/lang/Thread:getId	()J
+    //   14738: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   14741: ldc_w 554
+    //   14744: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14747: invokestatic 158	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   14750: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14753: ldc_w 556
+    //   14756: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14759: aload_0
+    //   14760: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   14763: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   14766: ldc_w 558
+    //   14769: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14772: aload_0
+    //   14773: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   14776: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   14779: ldc_w 560
+    //   14782: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14785: astore 30
+    //   14787: aload_0
+    //   14788: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   14791: ifeq +438 -> 15229
+    //   14794: aload_0
+    //   14795: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   14798: aload_0
+    //   14799: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   14802: invokestatic 322	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
+    //   14805: astore 26
+    //   14807: aload 30
+    //   14809: aload 26
+    //   14811: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   14814: ldc_w 564
+    //   14817: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14820: invokestatic 569	com/tencent/component/network/module/base/Config:getNetworkStackType	()I
+    //   14823: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   14826: ldc_w 576
+    //   14829: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14832: aload_2
+    //   14833: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   14836: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   14839: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   14842: ldc_w 581
+    //   14845: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14848: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   14851: aload_0
+    //   14852: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   14855: lsub
+    //   14856: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   14859: ldc_w 583
+    //   14862: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14865: aload_2
+    //   14866: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   14869: getfield 586	com/tencent/component/network/downloader/DownloadResult$Content:length	J
+    //   14872: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   14875: ldc_w 588
+    //   14878: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14881: aload_2
+    //   14882: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   14885: getfield 590	com/tencent/component/network/downloader/DownloadResult$Content:size	J
+    //   14888: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   14891: ldc_w 592
+    //   14894: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14897: aload_2
+    //   14898: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   14901: getfield 595	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
+    //   14904: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   14907: ldc_w 597
+    //   14910: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14913: aload_0
+    //   14914: invokevirtual 421	com/tencent/component/network/downloader/impl/FastDownloadTask:getCurrAttemptCount	()I
+    //   14917: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   14920: ldc_w 599
+    //   14923: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14926: aload_0
+    //   14927: invokevirtual 602	com/tencent/component/network/downloader/impl/FastDownloadTask:getTotalAttemptCount	()I
+    //   14930: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   14933: ldc_w 962
+    //   14936: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14939: iload 5
+    //   14941: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   14944: ldc_w 611
+    //   14947: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14950: aload 28
+    //   14952: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14955: ldc_w 571
+    //   14958: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14961: aload_2
+    //   14962: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   14965: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   14968: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14971: ldc_w 613
+    //   14974: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14977: aload 24
+    //   14979: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14982: ldc_w 615
+    //   14985: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14988: astore 30
+    //   14990: aload_0
+    //   14991: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   14994: ifnull +241 -> 15235
+    //   14997: aload_0
+    //   14998: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   15001: iconst_0
+    //   15002: bipush 30
+    //   15004: invokevirtual 619	java/lang/String:substring	(II)Ljava/lang/String;
+    //   15007: astore 26
+    //   15009: aload 30
+    //   15011: aload 26
+    //   15013: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15016: ldc_w 621
+    //   15019: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15022: astore 26
+    //   15024: aload_0
+    //   15025: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   15028: ifnull +216 -> 15244
+    //   15031: aload_0
+    //   15032: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   15035: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   15038: istore 4
+    //   15040: aload 26
+    //   15042: iload 4
+    //   15044: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   15047: ldc_w 623
+    //   15050: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15053: aload_2
+    //   15054: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   15057: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   15060: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15063: ldc_w 628
+    //   15066: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15069: lload 12
+    //   15071: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   15074: ldc_w 630
+    //   15077: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15080: aload_0
+    //   15081: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   15084: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   15087: ldc_w 599
+    //   15090: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15093: aload_0
+    //   15094: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_retry	I
+    //   15097: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   15100: ldc_w 632
+    //   15103: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15106: aload_0
+    //   15107: getfield 42	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_time	J
+    //   15110: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   15113: ldc_w 599
+    //   15116: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15119: aload_0
+    //   15120: getfield 44	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_retry	I
+    //   15123: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   15126: ldc_w 634
+    //   15129: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15132: aload_0
+    //   15133: getfield 46	com/tencent/component/network/downloader/impl/FastDownloadTask:send_req_time	J
+    //   15136: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   15139: ldc_w 636
+    //   15142: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15145: aload_0
+    //   15146: getfield 639	com/tencent/component/network/downloader/impl/FastDownloadTask:t_recv_data	J
+    //   15149: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   15152: ldc_w 641
+    //   15155: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15158: aload_0
+    //   15159: invokevirtual 644	com/tencent/component/network/downloader/impl/FastDownloadTask:getTaskConcurrentCount	()I
+    //   15162: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   15165: ldc_w 646
+    //   15168: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15171: astore 30
+    //   15173: aload_0
+    //   15174: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   15177: ifnull +73 -> 15250
+    //   15180: aload_0
+    //   15181: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   15184: invokeinterface 656 1 0
+    //   15189: astore 26
+    //   15191: aload 29
+    //   15193: aload 30
+    //   15195: aload 26
+    //   15197: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   15200: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   15203: putfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   15206: ldc_w 447
+    //   15209: aload 29
+    //   15211: getfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   15214: aconst_null
+    //   15215: invokestatic 965	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   15218: goto -1442 -> 13776
+    //   15221: ldc_w 958
+    //   15224: astore 26
+    //   15226: goto -539 -> 14687
+    //   15229: aconst_null
+    //   15230: astore 26
+    //   15232: goto -425 -> 14807
+    //   15235: aload_0
+    //   15236: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   15239: astore 26
+    //   15241: goto -232 -> 15009
+    //   15244: iconst_0
+    //   15245: istore 4
+    //   15247: goto -207 -> 15040
+    //   15250: aconst_null
+    //   15251: astore 26
+    //   15253: goto -62 -> 15191
+    //   15256: iconst_0
+    //   15257: istore 4
+    //   15259: goto -1402 -> 13857
+    //   15262: ldc_w 428
+    //   15265: astore 24
+    //   15267: goto -1278 -> 13989
+    //   15270: astore 24
+    //   15272: ldc 219
+    //   15274: ldc_w 967
+    //   15277: aload 24
+    //   15279: invokestatic 965	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   15282: goto -1210 -> 14072
+    //   15285: astore 24
+    //   15287: ldc 219
+    //   15289: ldc_w 969
+    //   15292: aload 24
+    //   15294: invokestatic 965	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   15297: goto -1168 -> 14129
+    //   15300: iconst_0
+    //   15301: istore 10
+    //   15303: goto -1124 -> 14179
+    //   15306: aload 27
+    //   15308: invokevirtual 972	com/tencent/component/network/utils/NetworkUtils$DNS:toString	()Ljava/lang/String;
     //   15311: astore 23
-    //   15313: aload 19
-    //   15315: astore 21
-    //   15317: aload 23
-    //   15319: astore 19
-    //   15321: goto -15078 -> 243
-    //   15324: astore 22
-    //   15326: iconst_0
-    //   15327: istore_3
-    //   15328: goto -15085 -> 243
-    //   15331: ldc_w 378
-    //   15334: astore 21
-    //   15336: goto -9252 -> 6084
-    //   15339: ldc_w 378
-    //   15342: astore 21
-    //   15344: goto -3114 -> 12230
-    //   15347: ldc_w 378
-    //   15350: astore 21
-    //   15352: goto -5388 -> 9964
-    //   15355: ldc_w 378
-    //   15358: astore 21
-    //   15360: goto -12460 -> 2900
-    //   15363: ldc_w 378
-    //   15366: astore 21
-    //   15368: goto -15013 -> 355
-    //   15371: ldc_w 378
-    //   15374: astore 21
-    //   15376: goto -10909 -> 4467
-    //   15379: iconst_0
-    //   15380: istore_3
-    //   15381: goto -12655 -> 2726
-    //   15384: aconst_null
-    //   15385: astore 20
-    //   15387: aconst_null
-    //   15388: astore 19
-    //   15390: aconst_null
-    //   15391: astore 21
-    //   15393: goto -12717 -> 2676
+    //   15313: goto -1066 -> 14247
+    //   15316: iconst_0
+    //   15317: istore 10
+    //   15319: goto -899 -> 14420
+    //   15322: aload_0
+    //   15323: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   15326: ifnull +15 -> 15341
+    //   15329: aload_0
+    //   15330: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   15333: invokevirtual 977	org/apache/http/client/methods/HttpGet:abort	()V
+    //   15336: aload_0
+    //   15337: aconst_null
+    //   15338: putfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   15341: aload_0
+    //   15342: invokevirtual 980	com/tencent/component/network/downloader/impl/FastDownloadTask:cleanExpireConnection	()V
+    //   15345: goto -817 -> 14528
+    //   15348: aconst_null
+    //   15349: astore 26
+    //   15351: goto -14940 -> 411
+    //   15354: astore 24
+    //   15356: ldc_w 428
+    //   15359: astore 24
+    //   15361: goto -14916 -> 445
+    //   15364: ldc_w 958
+    //   15367: astore 27
+    //   15369: goto -14749 -> 620
+    //   15372: aconst_null
+    //   15373: astore 27
+    //   15375: goto -14635 -> 740
+    //   15378: aload_0
+    //   15379: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   15382: astore 27
+    //   15384: goto -14415 -> 969
+    //   15387: iconst_0
+    //   15388: istore_3
+    //   15389: goto -14390 -> 999
+    //   15392: aconst_null
+    //   15393: astore 27
+    //   15395: goto -14246 -> 1149
+    //   15398: new 125	java/lang/StringBuilder
+    //   15401: dup
+    //   15402: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   15405: ldc_w 960
+    //   15408: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15411: aload_0
+    //   15412: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   15415: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15418: ldc_w 527
+    //   15421: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15424: aload_0
+    //   15425: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   15428: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   15431: ldc_w 532
+    //   15434: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15437: astore 31
+    //   15439: aload_0
+    //   15440: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   15443: ifeq +558 -> 16001
+    //   15446: aload 22
+    //   15448: ifnull +553 -> 16001
+    //   15451: aload 22
+    //   15453: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   15456: ifnull +545 -> 16001
+    //   15459: aload 22
+    //   15461: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   15464: invokevirtual 541	okhttp3/Protocol:toString	()Ljava/lang/String;
+    //   15467: astore 27
+    //   15469: aload 31
+    //   15471: aload 27
+    //   15473: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15476: ldc_w 543
+    //   15479: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15482: aload 28
+    //   15484: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   15487: ldc_w 548
+    //   15490: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15493: aload 26
+    //   15495: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15498: ldc_w 550
+    //   15501: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15504: aconst_null
+    //   15505: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15508: ldc_w 552
+    //   15511: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15514: invokestatic 171	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   15517: invokevirtual 174	java/lang/Thread:getId	()J
+    //   15520: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   15523: ldc_w 554
+    //   15526: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15529: invokestatic 158	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   15532: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15535: ldc_w 556
+    //   15538: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15541: aload_0
+    //   15542: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   15545: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   15548: ldc_w 558
+    //   15551: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15554: aload_0
+    //   15555: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   15558: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   15561: ldc_w 560
+    //   15564: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15567: astore 31
+    //   15569: aload_0
+    //   15570: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   15573: ifeq +436 -> 16009
+    //   15576: aload_0
+    //   15577: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   15580: aload_0
+    //   15581: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   15584: invokestatic 322	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
+    //   15587: astore 27
+    //   15589: aload 31
+    //   15591: aload 27
+    //   15593: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   15596: ldc_w 564
+    //   15599: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15602: invokestatic 569	com/tencent/component/network/module/base/Config:getNetworkStackType	()I
+    //   15605: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   15608: ldc_w 576
+    //   15611: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15614: aload_2
+    //   15615: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   15618: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   15621: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   15624: ldc_w 581
+    //   15627: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15630: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   15633: aload_0
+    //   15634: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   15637: lsub
+    //   15638: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   15641: ldc_w 583
+    //   15644: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15647: aload_2
+    //   15648: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   15651: getfield 586	com/tencent/component/network/downloader/DownloadResult$Content:length	J
+    //   15654: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   15657: ldc_w 588
+    //   15660: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15663: aload_2
+    //   15664: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   15667: getfield 590	com/tencent/component/network/downloader/DownloadResult$Content:size	J
+    //   15670: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   15673: ldc_w 592
+    //   15676: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15679: aload_2
+    //   15680: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   15683: getfield 595	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
+    //   15686: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   15689: ldc_w 597
+    //   15692: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15695: aload_0
+    //   15696: invokevirtual 421	com/tencent/component/network/downloader/impl/FastDownloadTask:getCurrAttemptCount	()I
+    //   15699: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   15702: ldc_w 599
+    //   15705: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15708: aload_0
+    //   15709: invokevirtual 602	com/tencent/component/network/downloader/impl/FastDownloadTask:getTotalAttemptCount	()I
+    //   15712: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   15715: ldc_w 962
+    //   15718: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15721: iload 4
+    //   15723: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   15726: ldc_w 611
+    //   15729: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15732: aload 30
+    //   15734: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15737: ldc_w 571
+    //   15740: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15743: aload_2
+    //   15744: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   15747: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   15750: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15753: ldc_w 613
+    //   15756: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15759: aload 24
+    //   15761: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15764: ldc_w 615
+    //   15767: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15770: astore 31
+    //   15772: aload_0
+    //   15773: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   15776: ifnull +239 -> 16015
+    //   15779: aload_0
+    //   15780: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   15783: iconst_0
+    //   15784: bipush 30
+    //   15786: invokevirtual 619	java/lang/String:substring	(II)Ljava/lang/String;
+    //   15789: astore 27
+    //   15791: aload 31
+    //   15793: aload 27
+    //   15795: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15798: ldc_w 621
+    //   15801: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15804: astore 27
+    //   15806: aload_0
+    //   15807: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   15810: ifnull +214 -> 16024
+    //   15813: aload_0
+    //   15814: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   15817: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   15820: istore_3
+    //   15821: aload 27
+    //   15823: iload_3
+    //   15824: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   15827: ldc_w 623
+    //   15830: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15833: aload_2
+    //   15834: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   15837: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   15840: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15843: ldc_w 628
+    //   15846: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15849: lload 12
+    //   15851: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   15854: ldc_w 630
+    //   15857: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15860: aload_0
+    //   15861: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   15864: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   15867: ldc_w 599
+    //   15870: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15873: aload_0
+    //   15874: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_retry	I
+    //   15877: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   15880: ldc_w 632
+    //   15883: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15886: aload_0
+    //   15887: getfield 42	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_time	J
+    //   15890: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   15893: ldc_w 599
+    //   15896: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15899: aload_0
+    //   15900: getfield 44	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_retry	I
+    //   15903: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   15906: ldc_w 634
+    //   15909: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15912: aload_0
+    //   15913: getfield 46	com/tencent/component/network/downloader/impl/FastDownloadTask:send_req_time	J
+    //   15916: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   15919: ldc_w 636
+    //   15922: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15925: aload_0
+    //   15926: getfield 639	com/tencent/component/network/downloader/impl/FastDownloadTask:t_recv_data	J
+    //   15929: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   15932: ldc_w 641
+    //   15935: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15938: aload_0
+    //   15939: invokevirtual 644	com/tencent/component/network/downloader/impl/FastDownloadTask:getTaskConcurrentCount	()I
+    //   15942: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   15945: ldc_w 646
+    //   15948: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15951: astore 31
+    //   15953: aload_0
+    //   15954: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   15957: ifnull +72 -> 16029
+    //   15960: aload_0
+    //   15961: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   15964: invokeinterface 656 1 0
+    //   15969: astore 27
+    //   15971: aload 29
+    //   15973: aload 31
+    //   15975: aload 27
+    //   15977: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   15980: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   15983: putfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   15986: ldc_w 447
+    //   15989: aload 29
+    //   15991: getfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   15994: aconst_null
+    //   15995: invokestatic 965	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   15998: goto -14793 -> 1205
+    //   16001: ldc_w 958
+    //   16004: astore 27
+    //   16006: goto -537 -> 15469
+    //   16009: aconst_null
+    //   16010: astore 27
+    //   16012: goto -423 -> 15589
+    //   16015: aload_0
+    //   16016: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   16019: astore 27
+    //   16021: goto -230 -> 15791
+    //   16024: iconst_0
+    //   16025: istore_3
+    //   16026: goto -205 -> 15821
+    //   16029: aconst_null
+    //   16030: astore 27
+    //   16032: goto -61 -> 15971
+    //   16035: iconst_0
+    //   16036: istore_3
+    //   16037: goto -14752 -> 1285
+    //   16040: ldc_w 428
+    //   16043: astore 24
+    //   16045: goto -14629 -> 1416
+    //   16048: astore 24
+    //   16050: ldc 219
+    //   16052: ldc_w 967
+    //   16055: aload 24
+    //   16057: invokestatic 965	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   16060: goto -14561 -> 1499
+    //   16063: astore 24
+    //   16065: ldc 219
+    //   16067: ldc_w 969
+    //   16070: aload 24
+    //   16072: invokestatic 965	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   16075: goto -14519 -> 1556
+    //   16078: iconst_0
+    //   16079: istore 10
+    //   16081: goto -14475 -> 1606
+    //   16084: aload 28
+    //   16086: invokevirtual 972	com/tencent/component/network/utils/NetworkUtils$DNS:toString	()Ljava/lang/String;
+    //   16089: astore 23
+    //   16091: goto -14416 -> 1675
+    //   16094: iconst_0
+    //   16095: istore 10
+    //   16097: goto -14249 -> 1848
+    //   16100: aload_0
+    //   16101: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   16104: ifnull +15 -> 16119
+    //   16107: aload_0
+    //   16108: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   16111: invokevirtual 977	org/apache/http/client/methods/HttpGet:abort	()V
+    //   16114: aload_0
+    //   16115: aconst_null
+    //   16116: putfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   16119: aload_0
+    //   16120: invokevirtual 980	com/tencent/component/network/downloader/impl/FastDownloadTask:cleanExpireConnection	()V
+    //   16123: goto -14167 -> 1956
+    //   16126: aconst_null
+    //   16127: astore 27
+    //   16129: goto -11117 -> 5012
+    //   16132: astore 24
+    //   16134: ldc_w 428
+    //   16137: astore 24
+    //   16139: goto -11093 -> 5046
+    //   16142: ldc_w 958
+    //   16145: astore 28
+    //   16147: goto -10926 -> 5221
+    //   16150: aconst_null
+    //   16151: astore 28
+    //   16153: goto -10812 -> 5341
+    //   16156: aload_0
+    //   16157: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   16160: astore 28
+    //   16162: goto -10592 -> 5570
+    //   16165: iconst_0
+    //   16166: istore_3
+    //   16167: goto -10567 -> 5600
+    //   16170: aconst_null
+    //   16171: astore 28
+    //   16173: goto -10423 -> 5750
+    //   16176: new 125	java/lang/StringBuilder
+    //   16179: dup
+    //   16180: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   16183: ldc_w 960
+    //   16186: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16189: aload_0
+    //   16190: invokevirtual 70	com/tencent/component/network/downloader/impl/FastDownloadTask:getUrl	()Ljava/lang/String;
+    //   16193: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16196: ldc_w 527
+    //   16199: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16202: aload_0
+    //   16203: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   16206: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   16209: ldc_w 532
+    //   16212: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16215: astore 32
+    //   16217: aload_0
+    //   16218: getfield 73	com/tencent/component/network/downloader/impl/FastDownloadTask:mIsHttp2	Z
+    //   16221: ifeq +558 -> 16779
+    //   16224: aload 25
+    //   16226: ifnull +553 -> 16779
+    //   16229: aload 25
+    //   16231: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   16234: ifnull +545 -> 16779
+    //   16237: aload 25
+    //   16239: invokevirtual 538	okhttp3/Response:protocol	()Lokhttp3/Protocol;
+    //   16242: invokevirtual 541	okhttp3/Protocol:toString	()Ljava/lang/String;
+    //   16245: astore 28
+    //   16247: aload 32
+    //   16249: aload 28
+    //   16251: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16254: ldc_w 543
+    //   16257: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16260: aload 30
+    //   16262: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   16265: ldc_w 548
+    //   16268: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16271: aload 27
+    //   16273: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16276: ldc_w 550
+    //   16279: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16282: aconst_null
+    //   16283: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16286: ldc_w 552
+    //   16289: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16292: invokestatic 171	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   16295: invokevirtual 174	java/lang/Thread:getId	()J
+    //   16298: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   16301: ldc_w 554
+    //   16304: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16307: invokestatic 158	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   16310: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16313: ldc_w 556
+    //   16316: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16319: aload_0
+    //   16320: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   16323: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   16326: ldc_w 558
+    //   16329: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16332: aload_0
+    //   16333: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   16336: invokevirtual 530	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   16339: ldc_w 560
+    //   16342: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16345: astore 32
+    //   16347: aload_0
+    //   16348: getfield 187	com/tencent/component/network/downloader/impl/FastDownloadTask:mAllowProxy	Z
+    //   16351: ifeq +436 -> 16787
+    //   16354: aload_0
+    //   16355: getfield 61	com/tencent/component/network/downloader/impl/FastDownloadTask:mContext	Landroid/content/Context;
+    //   16358: aload_0
+    //   16359: getfield 192	com/tencent/component/network/downloader/impl/FastDownloadTask:mAPNProxy	Z
+    //   16362: invokestatic 322	com/tencent/component/network/utils/NetworkUtils:getProxy	(Landroid/content/Context;Z)Ljava/net/Proxy;
+    //   16365: astore 28
+    //   16367: aload 32
+    //   16369: aload 28
+    //   16371: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   16374: ldc_w 564
+    //   16377: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16380: invokestatic 569	com/tencent/component/network/module/base/Config:getNetworkStackType	()I
+    //   16383: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   16386: ldc_w 576
+    //   16389: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16392: aload_2
+    //   16393: invokevirtual 455	com/tencent/component/network/downloader/DownloadResult:getProcess	()Lcom/tencent/component/network/downloader/DownloadResult$Process;
+    //   16396: getfield 579	com/tencent/component/network/downloader/DownloadResult$Process:duration	J
+    //   16399: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   16402: ldc_w 581
+    //   16405: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16408: invokestatic 32	android/os/SystemClock:uptimeMillis	()J
+    //   16411: aload_0
+    //   16412: getfield 34	com/tencent/component/network/downloader/impl/FastDownloadTask:mTimeStamp	J
+    //   16415: lsub
+    //   16416: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   16419: ldc_w 583
+    //   16422: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16425: aload_2
+    //   16426: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   16429: getfield 586	com/tencent/component/network/downloader/DownloadResult$Content:length	J
+    //   16432: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   16435: ldc_w 588
+    //   16438: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16441: aload_2
+    //   16442: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   16445: getfield 590	com/tencent/component/network/downloader/DownloadResult$Content:size	J
+    //   16448: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   16451: ldc_w 592
+    //   16454: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16457: aload_2
+    //   16458: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   16461: getfield 595	com/tencent/component/network/downloader/DownloadResult$Content:realsize	J
+    //   16464: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   16467: ldc_w 597
+    //   16470: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16473: aload_0
+    //   16474: invokevirtual 421	com/tencent/component/network/downloader/impl/FastDownloadTask:getCurrAttemptCount	()I
+    //   16477: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   16480: ldc_w 599
+    //   16483: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16486: aload_0
+    //   16487: invokevirtual 602	com/tencent/component/network/downloader/impl/FastDownloadTask:getTotalAttemptCount	()I
+    //   16490: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   16493: ldc_w 962
+    //   16496: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16499: iload 4
+    //   16501: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   16504: ldc_w 611
+    //   16507: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16510: aload 31
+    //   16512: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16515: ldc_w 571
+    //   16518: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16521: aload_2
+    //   16522: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   16525: getfield 574	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   16528: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16531: ldc_w 613
+    //   16534: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16537: aload 24
+    //   16539: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16542: ldc_w 615
+    //   16545: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16548: astore 32
+    //   16550: aload_0
+    //   16551: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   16554: ifnull +239 -> 16793
+    //   16557: aload_0
+    //   16558: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   16561: iconst_0
+    //   16562: bipush 30
+    //   16564: invokevirtual 619	java/lang/String:substring	(II)Ljava/lang/String;
+    //   16567: astore 28
+    //   16569: aload 32
+    //   16571: aload 28
+    //   16573: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16576: ldc_w 621
+    //   16579: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16582: astore 28
+    //   16584: aload_0
+    //   16585: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   16588: ifnull +214 -> 16802
+    //   16591: aload_0
+    //   16592: getfield 81	com/tencent/component/network/downloader/impl/FastDownloadTask:pCurrStrategyInfo	Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo;
+    //   16595: getfield 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy$StrategyInfo:id	I
+    //   16598: istore_3
+    //   16599: aload 28
+    //   16601: iload_3
+    //   16602: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   16605: ldc_w 623
+    //   16608: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16611: aload_2
+    //   16612: invokevirtual 502	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   16615: getfield 626	com/tencent/component/network/downloader/DownloadResult$Content:clientip	Ljava/lang/String;
+    //   16618: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16621: ldc_w 628
+    //   16624: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16627: lload 12
+    //   16629: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   16632: ldc_w 630
+    //   16635: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16638: aload_0
+    //   16639: getfield 38	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_time	J
+    //   16642: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   16645: ldc_w 599
+    //   16648: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16651: aload_0
+    //   16652: getfield 40	com/tencent/component/network/downloader/impl/FastDownloadTask:connect_retry	I
+    //   16655: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   16658: ldc_w 632
+    //   16661: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16664: aload_0
+    //   16665: getfield 42	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_time	J
+    //   16668: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   16671: ldc_w 599
+    //   16674: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16677: aload_0
+    //   16678: getfield 44	com/tencent/component/network/downloader/impl/FastDownloadTask:exe_retry	I
+    //   16681: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   16684: ldc_w 634
+    //   16687: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16690: aload_0
+    //   16691: getfield 46	com/tencent/component/network/downloader/impl/FastDownloadTask:send_req_time	J
+    //   16694: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   16697: ldc_w 636
+    //   16700: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16703: aload_0
+    //   16704: getfield 639	com/tencent/component/network/downloader/impl/FastDownloadTask:t_recv_data	J
+    //   16707: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   16710: ldc_w 641
+    //   16713: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16716: aload_0
+    //   16717: invokevirtual 644	com/tencent/component/network/downloader/impl/FastDownloadTask:getTaskConcurrentCount	()I
+    //   16720: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   16723: ldc_w 646
+    //   16726: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16729: astore 32
+    //   16731: aload_0
+    //   16732: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   16735: ifnull +72 -> 16807
+    //   16738: aload_0
+    //   16739: getfield 650	com/tencent/component/network/downloader/impl/FastDownloadTask:mDownloadTaskHandler	Lcom/tencent/component/network/downloader/impl/DownloadTask$DownloadTaskHandler;
+    //   16742: invokeinterface 656 1 0
+    //   16747: astore 28
+    //   16749: aload 29
+    //   16751: aload 32
+    //   16753: aload 28
+    //   16755: invokevirtual 546	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   16758: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   16761: putfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   16764: ldc_w 447
+    //   16767: aload 29
+    //   16769: getfield 659	com/tencent/component/network/downloader/DownloadReport:logInfo	Ljava/lang/String;
+    //   16772: aconst_null
+    //   16773: invokestatic 965	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   16776: goto -10970 -> 5806
+    //   16779: ldc_w 958
+    //   16782: astore 28
+    //   16784: goto -537 -> 16247
+    //   16787: aconst_null
+    //   16788: astore 28
+    //   16790: goto -423 -> 16367
+    //   16793: aload_0
+    //   16794: getfield 437	com/tencent/component/network/downloader/impl/FastDownloadTask:mRealUrl	Ljava/lang/String;
+    //   16797: astore 28
+    //   16799: goto -230 -> 16569
+    //   16802: iconst_0
+    //   16803: istore_3
+    //   16804: goto -205 -> 16599
+    //   16807: aconst_null
+    //   16808: astore 28
+    //   16810: goto -61 -> 16749
+    //   16813: iconst_0
+    //   16814: istore_3
+    //   16815: goto -10929 -> 5886
+    //   16818: ldc_w 428
+    //   16821: astore 24
+    //   16823: goto -10806 -> 6017
+    //   16826: astore 24
+    //   16828: ldc 219
+    //   16830: ldc_w 967
+    //   16833: aload 24
+    //   16835: invokestatic 965	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   16838: goto -10738 -> 6100
+    //   16841: astore 24
+    //   16843: ldc 219
+    //   16845: ldc_w 969
+    //   16848: aload 24
+    //   16850: invokestatic 965	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   16853: goto -10696 -> 6157
+    //   16856: iconst_0
+    //   16857: istore 10
+    //   16859: goto -10652 -> 6207
+    //   16862: aload 30
+    //   16864: invokevirtual 972	com/tencent/component/network/utils/NetworkUtils$DNS:toString	()Ljava/lang/String;
+    //   16867: astore 23
+    //   16869: goto -10593 -> 6276
+    //   16872: iconst_0
+    //   16873: istore 10
+    //   16875: goto -10426 -> 6449
+    //   16878: aload_0
+    //   16879: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   16882: ifnull +15 -> 16897
+    //   16885: aload_0
+    //   16886: getfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   16889: invokevirtual 977	org/apache/http/client/methods/HttpGet:abort	()V
+    //   16892: aload_0
+    //   16893: aconst_null
+    //   16894: putfield 414	com/tencent/component/network/downloader/impl/FastDownloadTask:request	Lorg/apache/http/client/methods/HttpGet;
+    //   16897: aload_0
+    //   16898: invokevirtual 980	com/tencent/component/network/downloader/impl/FastDownloadTask:cleanExpireConnection	()V
+    //   16901: goto -10344 -> 6557
+    //   16904: astore 23
+    //   16906: aconst_null
+    //   16907: astore 27
+    //   16909: aload 22
+    //   16911: astore 24
+    //   16913: aload 23
+    //   16915: astore 22
+    //   16917: aload 27
+    //   16919: astore 23
+    //   16921: iload 7
+    //   16923: istore 4
+    //   16925: goto -11992 -> 4933
+    //   16928: astore 25
+    //   16930: aconst_null
+    //   16931: astore 28
+    //   16933: aload 23
+    //   16935: astore 26
+    //   16937: aload 22
+    //   16939: astore 27
+    //   16941: aload 25
+    //   16943: astore 22
+    //   16945: aload 28
+    //   16947: astore 23
+    //   16949: iload 7
+    //   16951: istore 4
+    //   16953: aload 27
+    //   16955: astore 25
+    //   16957: goto -12024 -> 4933
+    //   16960: astore 25
+    //   16962: aconst_null
+    //   16963: astore 28
+    //   16965: aload 23
+    //   16967: astore 26
+    //   16969: aload 22
+    //   16971: astore 27
+    //   16973: aload 25
+    //   16975: astore 22
+    //   16977: aload 28
+    //   16979: astore 23
+    //   16981: aload 27
+    //   16983: astore 25
+    //   16985: goto -12052 -> 4933
+    //   16988: astore 25
+    //   16990: aload 23
+    //   16992: astore 26
+    //   16994: aload 22
+    //   16996: astore 27
+    //   16998: aconst_null
+    //   16999: astore 23
+    //   17001: aload 25
+    //   17003: astore 22
+    //   17005: aload 27
+    //   17007: astore 25
+    //   17009: goto -12076 -> 4933
+    //   17012: astore 28
+    //   17014: aload 23
+    //   17016: astore 26
+    //   17018: aload 22
+    //   17020: astore 27
+    //   17022: aload 25
+    //   17024: astore 23
+    //   17026: aload 28
+    //   17028: astore 22
+    //   17030: iload 5
+    //   17032: istore_3
+    //   17033: aload 27
+    //   17035: astore 25
+    //   17037: goto -12104 -> 4933
+    //   17040: astore 25
+    //   17042: aconst_null
+    //   17043: astore 26
+    //   17045: aload 22
+    //   17047: astore 24
+    //   17049: aconst_null
+    //   17050: astore 23
+    //   17052: aload 26
+    //   17054: astore 22
+    //   17056: iload 8
+    //   17058: istore 4
+    //   17060: goto -16808 -> 252
+    //   17063: astore 25
+    //   17065: iload 8
+    //   17067: istore 4
+    //   17069: goto -16817 -> 252
+    //   17072: ldc_w 428
+    //   17075: astore 24
+    //   17077: goto -12031 -> 5046
+    //   17080: ldc_w 428
+    //   17083: astore 24
+    //   17085: goto -16640 -> 445
+    //   17088: ldc_w 428
+    //   17091: astore 24
+    //   17093: goto -4078 -> 13015
+    //   17096: ldc_w 428
+    //   17099: astore 24
+    //   17101: goto -6538 -> 10563
+    //   17104: ldc_w 428
+    //   17107: astore 24
+    //   17109: goto -8945 -> 8164
+    //   17112: ldc_w 428
+    //   17115: astore 24
+    //   17117: goto -13927 -> 3190
+    //   17120: iconst_0
+    //   17121: istore 4
+    //   17123: goto -14138 -> 2985
+    //   17126: aconst_null
+    //   17127: astore 22
+    //   17129: aconst_null
+    //   17130: astore 23
+    //   17132: aconst_null
+    //   17133: astore 24
+    //   17135: goto -14199 -> 2936
+    //   17138: iconst_1
+    //   17139: istore 5
+    //   17141: goto -14991 -> 2150
+    //   17144: aload 28
+    //   17146: astore 23
+    //   17148: iload 4
+    //   17150: iconst_2
+    //   17151: if_icmpge -12406 -> 4745
+    //   17154: aload 28
+    //   17156: astore 23
+    //   17158: iload 10
+    //   17160: ifeq -12415 -> 4745
+    //   17163: ldc_w 928
+    //   17166: astore 23
+    //   17168: goto -12423 -> 4745
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	15396	0	this	FastDownloadTask
-    //   0	15396	1	paramJobContext	com.tencent.component.network.utils.thread.ThreadPool.JobContext
-    //   0	15396	2	paramDownloadResult	com.tencent.component.network.downloader.DownloadResult
-    //   181	15200	3	i	int
-    //   24	14300	4	j	int
-    //   266	14472	5	k	int
-    //   154	15071	6	m	int
-    //   18	86	7	n	int
-    //   21	14845	8	l1	long
-    //   217	5693	10	l2	long
-    //   221	5693	12	l3	long
-    //   90	12058	14	l4	long
-    //   162	2407	16	l5	long
-    //   172	14976	18	bool	boolean
-    //   157	1	19	localObject1	Object
-    //   195	1	19	localException1	java.lang.Exception
-    //   208	16	19	localUnknownHostException	java.net.UnknownHostException
-    //   234	4068	19	localObject2	Object
-    //   4368	1494	19	localObject3	Object
-    //   5925	9464	19	localObject4	Object
-    //   231	15155	20	localObject5	Object
-    //   143	7063	21	localObject6	Object
-    //   7519	1	21	localException2	java.lang.Exception
-    //   7524	701	21	str1	String
-    //   8229	8	21	localException3	java.lang.Exception
-    //   8244	8	21	localException4	java.lang.Exception
-    //   8307	1	21	localException5	java.lang.Exception
-    //   8312	701	21	str2	String
-    //   9017	8	21	localException6	java.lang.Exception
-    //   9032	8	21	localException7	java.lang.Exception
-    //   9095	1	21	localException8	java.lang.Exception
-    //   9100	701	21	str3	String
-    //   9805	8	21	localException9	java.lang.Exception
-    //   9820	130	21	localException10	java.lang.Exception
-    //   9962	1126	21	localObject7	Object
-    //   11363	1	21	localException11	java.lang.Exception
-    //   11368	701	21	str4	String
-    //   12073	8	21	localException12	java.lang.Exception
-    //   12088	128	21	localException13	java.lang.Exception
-    //   12228	1126	21	localObject8	Object
-    //   13626	1	21	localException14	java.lang.Exception
-    //   13631	701	21	str5	String
-    //   14336	8	21	localException15	java.lang.Exception
-    //   14351	8	21	localException16	java.lang.Exception
-    //   14410	1	21	localException17	java.lang.Exception
-    //   14415	697	21	str6	String
-    //   15116	8	21	localException18	java.lang.Exception
-    //   15131	8	21	localException19	java.lang.Exception
-    //   15195	197	21	localObject9	Object
-    //   151	1	22	localObject10	Object
-    //   226	1309	22	localThrowable1	java.lang.Throwable
-    //   2662	4546	22	localObject11	Object
-    //   7494	97	22	localThrowable2	java.lang.Throwable
-    //   9090	6205	22	localObject12	Object
-    //   15303	1	22	localThrowable3	java.lang.Throwable
-    //   15324	1	22	localThrowable4	java.lang.Throwable
-    //   140	15178	23	localObject13	Object
-    //   519	14634	24	localObject14	Object
-    //   15188	10	24	localObject15	Object
-    //   15207	11	24	localObject16	Object
-    //   15230	11	24	localObject17	Object
-    //   15253	44	24	localObject18	Object
-    //   290	14459	25	localObject19	Object
-    //   15250	14	25	localObject20	Object
-    //   15274	15	25	localObject21	Object
-    //   99	14925	26	localDownloadReport	com.tencent.component.network.downloader.DownloadReport
-    //   333	14675	27	localObject22	Object
-    //   489	8417	28	localObject23	Object
-    //   4601	3517	29	localStringBuilder	java.lang.StringBuilder
+    //   0	17171	0	this	FastDownloadTask
+    //   0	17171	1	paramJobContext	com.tencent.component.network.utils.thread.ThreadPool.JobContext
+    //   0	17171	2	paramDownloadResult	com.tencent.component.network.downloader.DownloadResult
+    //   29	17004	3	i	int
+    //   246	16906	4	j	int
+    //   263	16877	5	k	int
+    //   275	6696	6	m	int
+    //   177	16773	7	n	int
+    //   180	16886	8	i1	int
+    //   18	109	9	i2	int
+    //   198	16961	10	bool1	boolean
+    //   23	61	11	bool2	boolean
+    //   26	16602	12	l1	long
+    //   224	7004	14	l2	long
+    //   228	7004	16	l3	long
+    //   113	12794	18	l4	long
+    //   188	2753	20	l5	long
+    //   97	1	22	localException1	java.lang.Exception
+    //   183	1	22	localObject1	Object
+    //   215	16	22	localUnknownHostException	java.net.UnknownHostException
+    //   236	4680	22	localObject2	Object
+    //   4920	1638	22	localObject3	Object
+    //   6589	10539	22	localObject4	Object
+    //   242	16626	23	localObject5	Object
+    //   16904	10	23	localObject6	Object
+    //   16919	248	23	localObject7	Object
+    //   166	7083	24	localObject8	Object
+    //   7274	1	24	localException2	java.lang.Exception
+    //   7279	690	24	str1	String
+    //   7973	8	24	localException3	java.lang.Exception
+    //   7988	162	24	localException4	java.lang.Exception
+    //   8162	1163	24	localObject9	Object
+    //   9680	1	24	localException5	java.lang.Exception
+    //   9685	685	24	str2	String
+    //   10374	8	24	localException6	java.lang.Exception
+    //   10389	160	24	localException7	java.lang.Exception
+    //   10561	1163	24	localObject10	Object
+    //   12079	1	24	localException8	java.lang.Exception
+    //   12084	685	24	str3	String
+    //   12773	8	24	localException9	java.lang.Exception
+    //   12788	213	24	localException10	java.lang.Exception
+    //   13013	1167	24	localObject11	Object
+    //   14571	1	24	localException11	java.lang.Exception
+    //   14576	690	24	str4	String
+    //   15270	8	24	localException12	java.lang.Exception
+    //   15285	8	24	localException13	java.lang.Exception
+    //   15354	1	24	localException14	java.lang.Exception
+    //   15359	685	24	str5	String
+    //   16048	8	24	localException15	java.lang.Exception
+    //   16063	8	24	localException16	java.lang.Exception
+    //   16132	1	24	localException17	java.lang.Exception
+    //   16137	685	24	str6	String
+    //   16826	8	24	localException18	java.lang.Exception
+    //   16841	8	24	localException19	java.lang.Exception
+    //   16911	223	24	localObject12	Object
+    //   174	1	25	localObject13	Object
+    //   233	1430	25	localThrowable1	java.lang.Throwable
+    //   2926	11256	25	localObject14	Object
+    //   14546	1	25	localThrowable2	java.lang.Throwable
+    //   14566	1672	25	str7	String
+    //   16928	14	25	localObject15	Object
+    //   16955	1	25	localObject16	Object
+    //   16960	14	25	localObject17	Object
+    //   16983	1	25	localObject18	Object
+    //   16988	14	25	localObject19	Object
+    //   17007	29	25	localObject20	Object
+    //   17040	1	25	localThrowable3	java.lang.Throwable
+    //   17063	1	25	localThrowable4	java.lang.Throwable
+    //   163	16890	26	localObject21	Object
+    //   618	16416	27	localObject22	Object
+    //   380	16598	28	localObject23	Object
+    //   17012	143	28	localObject24	Object
+    //   122	16646	29	localDownloadReport	com.tencent.component.network.downloader.DownloadReport
+    //   423	16440	30	localObject25	Object
+    //   588	15923	31	localObject26	Object
+    //   5189	11563	32	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   81	87	195	java/lang/Exception
-    //   164	174	208	java/net/UnknownHostException
-    //   223	226	226	java/lang/Throwable
-    //   1763	1774	226	java/lang/Throwable
-    //   1782	1791	226	java/lang/Throwable
-    //   1799	1808	226	java/lang/Throwable
-    //   1816	1823	226	java/lang/Throwable
-    //   1831	1842	226	java/lang/Throwable
-    //   1850	1857	226	java/lang/Throwable
-    //   1865	1872	226	java/lang/Throwable
-    //   1880	1889	226	java/lang/Throwable
-    //   1897	1909	226	java/lang/Throwable
-    //   1917	1925	226	java/lang/Throwable
-    //   1933	1946	226	java/lang/Throwable
-    //   1954	1961	226	java/lang/Throwable
-    //   1969	1976	226	java/lang/Throwable
-    //   1984	1994	226	java/lang/Throwable
-    //   2002	2018	226	java/lang/Throwable
-    //   2026	2038	226	java/lang/Throwable
-    //   2046	2053	226	java/lang/Throwable
-    //   2061	2067	226	java/lang/Throwable
-    //   2075	2086	226	java/lang/Throwable
-    //   2094	2099	226	java/lang/Throwable
-    //   2111	2122	226	java/lang/Throwable
-    //   2133	2140	226	java/lang/Throwable
-    //   2148	2154	226	java/lang/Throwable
-    //   2162	2190	226	java/lang/Throwable
-    //   2202	2209	226	java/lang/Throwable
-    //   2217	2234	226	java/lang/Throwable
-    //   2246	2258	226	java/lang/Throwable
-    //   2266	2272	226	java/lang/Throwable
-    //   2280	2346	226	java/lang/Throwable
-    //   2354	2361	226	java/lang/Throwable
-    //   2369	2381	226	java/lang/Throwable
-    //   2389	2401	226	java/lang/Throwable
-    //   2409	2416	226	java/lang/Throwable
-    //   2424	2451	226	java/lang/Throwable
-    //   2459	2466	226	java/lang/Throwable
-    //   2474	2499	226	java/lang/Throwable
-    //   2507	2527	226	java/lang/Throwable
-    //   2535	2557	226	java/lang/Throwable
-    //   2565	2573	226	java/lang/Throwable
-    //   2581	2588	226	java/lang/Throwable
-    //   2596	2603	226	java/lang/Throwable
-    //   2611	2618	226	java/lang/Throwable
-    //   2626	2633	226	java/lang/Throwable
-    //   2641	2646	226	java/lang/Throwable
-    //   4314	4325	226	java/lang/Throwable
-    //   4336	4365	226	java/lang/Throwable
-    //   5872	5879	226	java/lang/Throwable
-    //   5887	5907	226	java/lang/Throwable
-    //   5915	5924	226	java/lang/Throwable
-    //   223	226	4368	finally
-    //   1763	1774	4368	finally
-    //   1782	1791	4368	finally
-    //   1799	1808	4368	finally
-    //   1816	1823	4368	finally
-    //   1831	1842	4368	finally
-    //   1850	1857	4368	finally
-    //   1865	1872	4368	finally
-    //   1880	1889	4368	finally
-    //   1897	1909	4368	finally
-    //   1917	1925	4368	finally
-    //   1933	1946	4368	finally
-    //   1954	1961	4368	finally
-    //   1969	1976	4368	finally
-    //   1984	1994	4368	finally
-    //   2002	2018	4368	finally
-    //   2026	2038	4368	finally
-    //   2046	2053	4368	finally
-    //   2061	2067	4368	finally
-    //   2075	2086	4368	finally
-    //   2094	2099	4368	finally
-    //   2111	2122	4368	finally
-    //   2133	2140	4368	finally
-    //   2148	2154	4368	finally
-    //   2162	2190	4368	finally
-    //   2202	2209	4368	finally
-    //   2217	2234	4368	finally
-    //   2246	2258	4368	finally
-    //   2266	2272	4368	finally
-    //   2280	2346	4368	finally
-    //   2354	2361	4368	finally
-    //   2369	2381	4368	finally
-    //   2389	2401	4368	finally
-    //   2409	2416	4368	finally
-    //   2424	2451	4368	finally
-    //   2459	2466	4368	finally
-    //   2474	2499	4368	finally
-    //   2507	2527	4368	finally
-    //   2535	2557	4368	finally
-    //   2565	2573	4368	finally
-    //   2581	2588	4368	finally
-    //   2596	2603	4368	finally
-    //   2611	2618	4368	finally
-    //   2626	2633	4368	finally
-    //   2641	2646	4368	finally
-    //   4314	4325	4368	finally
-    //   4336	4365	4368	finally
-    //   5872	5879	4368	finally
-    //   5887	5907	4368	finally
-    //   5915	5924	4368	finally
-    //   2726	2734	7494	java/lang/Throwable
-    //   2751	2808	7494	java/lang/Throwable
-    //   5954	5970	7494	java/lang/Throwable
-    //   5973	5994	7494	java/lang/Throwable
-    //   7483	7491	7494	java/lang/Throwable
-    //   4452	4467	7519	java/lang/Exception
-    //   5464	5491	8229	java/lang/Exception
-    //   5514	5541	8244	java/lang/Exception
-    //   340	355	8307	java/lang/Exception
-    //   1352	1379	9017	java/lang/Exception
-    //   1402	1429	9032	java/lang/Exception
-    //   2885	2900	9095	java/lang/Exception
-    //   3896	3923	9805	java/lang/Exception
-    //   3946	3973	9820	java/lang/Exception
-    //   9949	9964	11363	java/lang/Exception
-    //   10960	10987	12073	java/lang/Exception
-    //   11010	11037	12088	java/lang/Exception
-    //   12215	12230	13626	java/lang/Exception
-    //   13226	13253	14336	java/lang/Exception
-    //   13276	13303	14351	java/lang/Exception
-    //   6069	6084	14410	java/lang/Exception
-    //   7078	7105	15116	java/lang/Exception
-    //   7128	7155	15131	java/lang/Exception
-    //   2646	2661	15188	finally
-    //   2676	2688	15207	finally
-    //   2703	2726	15207	finally
-    //   5938	5944	15207	finally
-    //   7499	7507	15207	finally
-    //   2726	2734	15230	finally
-    //   2751	2808	15230	finally
-    //   5954	5970	15230	finally
-    //   5973	5994	15230	finally
-    //   7483	7491	15230	finally
-    //   243	253	15250	finally
-    //   253	262	15274	finally
-    //   2646	2661	15303	java/lang/Throwable
-    //   2676	2688	15324	java/lang/Throwable
-    //   2703	2726	15324	java/lang/Throwable
-    //   5938	5944	15324	java/lang/Throwable
-    //   7499	7507	15324	java/lang/Throwable
+    //   77	83	97	java/lang/Exception
+    //   190	200	215	java/net/UnknownHostException
+    //   230	233	233	java/lang/Throwable
+    //   1972	1983	233	java/lang/Throwable
+    //   1991	2000	233	java/lang/Throwable
+    //   2008	2017	233	java/lang/Throwable
+    //   2025	2032	233	java/lang/Throwable
+    //   2040	2051	233	java/lang/Throwable
+    //   2059	2066	233	java/lang/Throwable
+    //   2074	2080	233	java/lang/Throwable
+    //   2088	2097	233	java/lang/Throwable
+    //   2105	2117	233	java/lang/Throwable
+    //   2125	2132	233	java/lang/Throwable
+    //   2140	2147	233	java/lang/Throwable
+    //   2158	2164	233	java/lang/Throwable
+    //   2172	2180	233	java/lang/Throwable
+    //   2188	2201	233	java/lang/Throwable
+    //   2209	2216	233	java/lang/Throwable
+    //   2224	2231	233	java/lang/Throwable
+    //   2239	2249	233	java/lang/Throwable
+    //   2257	2273	233	java/lang/Throwable
+    //   2281	2293	233	java/lang/Throwable
+    //   2301	2307	233	java/lang/Throwable
+    //   2315	2324	233	java/lang/Throwable
+    //   2347	2353	233	java/lang/Throwable
+    //   2366	2378	233	java/lang/Throwable
+    //   2390	2398	233	java/lang/Throwable
+    //   2410	2438	233	java/lang/Throwable
+    //   2450	2457	233	java/lang/Throwable
+    //   2465	2482	233	java/lang/Throwable
+    //   2494	2506	233	java/lang/Throwable
+    //   2514	2520	233	java/lang/Throwable
+    //   2528	2594	233	java/lang/Throwable
+    //   2602	2609	233	java/lang/Throwable
+    //   2617	2629	233	java/lang/Throwable
+    //   2637	2649	233	java/lang/Throwable
+    //   2657	2664	233	java/lang/Throwable
+    //   2677	2704	233	java/lang/Throwable
+    //   2712	2719	233	java/lang/Throwable
+    //   2727	2752	233	java/lang/Throwable
+    //   2760	2780	233	java/lang/Throwable
+    //   2788	2810	233	java/lang/Throwable
+    //   2818	2826	233	java/lang/Throwable
+    //   2834	2839	233	java/lang/Throwable
+    //   2847	2852	233	java/lang/Throwable
+    //   2860	2867	233	java/lang/Throwable
+    //   2875	2882	233	java/lang/Throwable
+    //   2890	2897	233	java/lang/Throwable
+    //   2905	2910	233	java/lang/Throwable
+    //   4730	4742	233	java/lang/Throwable
+    //   4753	4764	233	java/lang/Throwable
+    //   4772	4778	233	java/lang/Throwable
+    //   4791	4803	233	java/lang/Throwable
+    //   4815	4823	233	java/lang/Throwable
+    //   4835	4869	233	java/lang/Throwable
+    //   4881	4888	233	java/lang/Throwable
+    //   4896	4913	233	java/lang/Throwable
+    //   6568	6580	233	java/lang/Throwable
+    //   6595	6602	233	java/lang/Throwable
+    //   6614	6630	233	java/lang/Throwable
+    //   6638	6644	233	java/lang/Throwable
+    //   6657	6669	233	java/lang/Throwable
+    //   6681	6689	233	java/lang/Throwable
+    //   6701	6729	233	java/lang/Throwable
+    //   6741	6748	233	java/lang/Throwable
+    //   6756	6773	233	java/lang/Throwable
+    //   6788	6800	233	java/lang/Throwable
+    //   6811	6818	233	java/lang/Throwable
+    //   6826	6839	233	java/lang/Throwable
+    //   6857	6874	233	java/lang/Throwable
+    //   6882	6888	233	java/lang/Throwable
+    //   6901	6913	233	java/lang/Throwable
+    //   6925	6933	233	java/lang/Throwable
+    //   6945	6980	233	java/lang/Throwable
+    //   6988	6995	233	java/lang/Throwable
+    //   7003	7020	233	java/lang/Throwable
+    //   7028	7040	233	java/lang/Throwable
+    //   7048	7054	233	java/lang/Throwable
+    //   7062	7118	233	java/lang/Throwable
+    //   7129	7141	233	java/lang/Throwable
+    //   7152	7181	233	java/lang/Throwable
+    //   7192	7199	233	java/lang/Throwable
+    //   7207	7225	233	java/lang/Throwable
+    //   7233	7244	233	java/lang/Throwable
+    //   230	233	4920	finally
+    //   1972	1983	4920	finally
+    //   1991	2000	4920	finally
+    //   2008	2017	4920	finally
+    //   2025	2032	4920	finally
+    //   2040	2051	4920	finally
+    //   2059	2066	4920	finally
+    //   2074	2080	4920	finally
+    //   2088	2097	4920	finally
+    //   2105	2117	4920	finally
+    //   2125	2132	4920	finally
+    //   2140	2147	4920	finally
+    //   2158	2164	4920	finally
+    //   2172	2180	4920	finally
+    //   2188	2201	4920	finally
+    //   2209	2216	4920	finally
+    //   2224	2231	4920	finally
+    //   2239	2249	4920	finally
+    //   2257	2273	4920	finally
+    //   2281	2293	4920	finally
+    //   2301	2307	4920	finally
+    //   2315	2324	4920	finally
+    //   2347	2353	4920	finally
+    //   2366	2378	4920	finally
+    //   2390	2398	4920	finally
+    //   2410	2438	4920	finally
+    //   2450	2457	4920	finally
+    //   2465	2482	4920	finally
+    //   2494	2506	4920	finally
+    //   2514	2520	4920	finally
+    //   2528	2594	4920	finally
+    //   2602	2609	4920	finally
+    //   2617	2629	4920	finally
+    //   2637	2649	4920	finally
+    //   2657	2664	4920	finally
+    //   2677	2704	4920	finally
+    //   2712	2719	4920	finally
+    //   2727	2752	4920	finally
+    //   2760	2780	4920	finally
+    //   2788	2810	4920	finally
+    //   2818	2826	4920	finally
+    //   2834	2839	4920	finally
+    //   2847	2852	4920	finally
+    //   2860	2867	4920	finally
+    //   2875	2882	4920	finally
+    //   2890	2897	4920	finally
+    //   2905	2910	4920	finally
+    //   4730	4742	4920	finally
+    //   4753	4764	4920	finally
+    //   4772	4778	4920	finally
+    //   4791	4803	4920	finally
+    //   4815	4823	4920	finally
+    //   4835	4869	4920	finally
+    //   4881	4888	4920	finally
+    //   4896	4913	4920	finally
+    //   6568	6580	4920	finally
+    //   6595	6602	4920	finally
+    //   6614	6630	4920	finally
+    //   6638	6644	4920	finally
+    //   6657	6669	4920	finally
+    //   6681	6689	4920	finally
+    //   6701	6729	4920	finally
+    //   6741	6748	4920	finally
+    //   6756	6773	4920	finally
+    //   6788	6800	4920	finally
+    //   6811	6818	4920	finally
+    //   6826	6839	4920	finally
+    //   6857	6874	4920	finally
+    //   6882	6888	4920	finally
+    //   6901	6913	4920	finally
+    //   6925	6933	4920	finally
+    //   6945	6980	4920	finally
+    //   6988	6995	4920	finally
+    //   7003	7020	4920	finally
+    //   7028	7040	4920	finally
+    //   7048	7054	4920	finally
+    //   7062	7118	4920	finally
+    //   7129	7141	4920	finally
+    //   7152	7181	4920	finally
+    //   7192	7199	4920	finally
+    //   7207	7225	4920	finally
+    //   7233	7244	4920	finally
+    //   3175	3190	7274	java/lang/Exception
+    //   4220	4247	7973	java/lang/Exception
+    //   4277	4304	7988	java/lang/Exception
+    //   8149	8164	9680	java/lang/Exception
+    //   9190	9217	10374	java/lang/Exception
+    //   9247	9274	10389	java/lang/Exception
+    //   10548	10563	12079	java/lang/Exception
+    //   11589	11616	12773	java/lang/Exception
+    //   11646	11673	12788	java/lang/Exception
+    //   2985	2994	14546	java/lang/Throwable
+    //   3014	3072	14546	java/lang/Throwable
+    //   12857	12873	14546	java/lang/Throwable
+    //   12877	12898	14546	java/lang/Throwable
+    //   14535	14543	14546	java/lang/Throwable
+    //   13000	13015	14571	java/lang/Exception
+    //   14045	14072	15270	java/lang/Exception
+    //   14102	14129	15285	java/lang/Exception
+    //   430	445	15354	java/lang/Exception
+    //   1472	1499	16048	java/lang/Exception
+    //   1529	1556	16063	java/lang/Exception
+    //   5031	5046	16132	java/lang/Exception
+    //   6073	6100	16826	java/lang/Exception
+    //   6130	6157	16841	java/lang/Exception
+    //   2910	2925	16904	finally
+    //   2936	2946	16928	finally
+    //   2961	2985	16928	finally
+    //   7258	7265	16928	finally
+    //   14551	14559	16928	finally
+    //   2985	2994	16960	finally
+    //   3014	3072	16960	finally
+    //   12857	12873	16960	finally
+    //   12877	12898	16960	finally
+    //   14535	14543	16960	finally
+    //   252	262	16988	finally
+    //   265	274	17012	finally
+    //   280	287	17012	finally
+    //   293	306	17012	finally
+    //   309	314	17012	finally
+    //   323	332	17012	finally
+    //   2910	2925	17040	java/lang/Throwable
+    //   2936	2946	17063	java/lang/Throwable
+    //   2961	2985	17063	java/lang/Throwable
+    //   7258	7265	17063	java/lang/Throwable
+    //   14551	14559	17063	java/lang/Throwable
+  }
+  
+  protected void initTask()
+  {
+    super.initTask();
+    this.mDomainWithPort = Utils.getDominWithPort(getUrl());
+    this.mOrigPort = Utils.getPort(getUrl());
+    this.mRefer = HttpUtil.prepareRefer(getUrl());
+    if (!DownloadGlobalStrategy.getInstance(this.mContext).supportHttps())
+    {
+      this.mIsHttp2 = false;
+      this.mOriginalIsHttp2 = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.FastDownloadTask
  * JD-Core Version:    0.7.0.1
  */

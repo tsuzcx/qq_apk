@@ -1,23 +1,21 @@
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
-class vww
-  implements Runnable
+public class vww
+  implements vym
 {
-  vww(vwv paramvwv) {}
+  public vww(TextureVideoView paramTextureVideoView) {}
   
-  public void run()
+  public boolean a_(vyi paramvyi, int paramInt1, int paramInt2)
   {
-    if (this.a.a.o != null) {
-      this.a.a.o.clearAnimation();
+    if (this.a.a != null) {
+      this.a.a.a_(paramvyi, paramInt1, paramInt2);
     }
-    PublicAccountChatPie.b(this.a.a).removeView(this.a.a.o);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vww
  * JD-Core Version:    0.7.0.1
  */

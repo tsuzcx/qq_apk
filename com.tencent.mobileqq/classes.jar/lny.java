@@ -1,21 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubscribeFragement;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.Biu0x210Msg;
+import com.tencent.av.core.VcControllerImpl;
 
 public class lny
-  implements Runnable
 {
-  public lny(ReadInJoySubscribeFragement paramReadInJoySubscribeFragement, KandianOx210MsgInfo.Biu0x210Msg paramBiu0x210Msg) {}
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public byte[] b;
+  public long c;
+  public long d;
+  public long e;
   
-  public void run()
-  {
-    if (ReadInJoySubscribeFragement.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySubscribeFragement) != null) {
-      ReadInJoySubscribeFragement.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySubscribeFragement).a(String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo$Biu0x210Msg.b), true);
-    }
-  }
+  public lny(VcControllerImpl paramVcControllerImpl) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lny
  * JD-Core Version:    0.7.0.1
  */

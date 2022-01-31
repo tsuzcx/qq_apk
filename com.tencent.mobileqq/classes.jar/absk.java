@@ -1,43 +1,16 @@
-import com.tencent.mobileqq.confess.TagUtils;
-import com.tencent.mobileqq.confess.TagUtils.TagOriginal;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Random;
+import com.tencent.mobileqq.data.MessageForFoldMsg;
+import java.util.LinkedHashSet;
 
-public final class absk
-  implements Comparator
+class absk
 {
-  public absk(boolean paramBoolean, ArrayList paramArrayList) {}
-  
-  public int a(TagUtils.TagOriginal paramTagOriginal1, TagUtils.TagOriginal paramTagOriginal2)
-  {
-    int i = -1;
-    if (paramTagOriginal1.jdField_a_of_type_Int > paramTagOriginal2.jdField_a_of_type_Int) {}
-    do
-    {
-      return 1;
-      if (paramTagOriginal1.jdField_a_of_type_Int < paramTagOriginal2.jdField_a_of_type_Int) {
-        return -1;
-      }
-      if ((paramTagOriginal1.jdField_a_of_type_Boolean) && (!paramTagOriginal2.jdField_a_of_type_Boolean))
-      {
-        if (this.jdField_a_of_type_Boolean) {}
-        for (;;)
-        {
-          return i;
-          i = 1;
-        }
-      }
-      if ((paramTagOriginal1.jdField_a_of_type_Boolean) || (!paramTagOriginal2.jdField_a_of_type_Boolean)) {
-        break;
-      }
-    } while (this.jdField_a_of_type_Boolean);
-    return -1;
-    if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 3) && (Math.abs(paramTagOriginal1.jdField_a_of_type_Float - paramTagOriginal2.jdField_a_of_type_Float) > 3.0F)) {
-      return Float.compare(paramTagOriginal1.jdField_a_of_type_Float, paramTagOriginal2.jdField_a_of_type_Float);
-    }
-    return TagUtils.a.nextInt(3) - 2;
-  }
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 9223372036854775807L;
+  MessageForFoldMsg jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
+  LinkedHashSet<String> jdField_a_of_type_JavaUtilLinkedHashSet = new LinkedHashSet();
+  boolean jdField_a_of_type_Boolean = false;
+  long jdField_b_of_type_Long = 0L;
+  MessageForFoldMsg jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
+  boolean jdField_b_of_type_Boolean = true;
 }
 
 

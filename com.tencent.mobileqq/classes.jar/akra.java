@@ -1,30 +1,31 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
-import com.tencent.mobileqq.webview.ui.WebViewTitlerBar;
+import com.tencent.mobileqq.apollo.ApolloRenderDriver;
 
-public class akra
-  implements ValueAnimation.AnimationUpdateListener
+public abstract interface akra
+  extends akrx
 {
-  public akra(WebViewTitlerBar paramWebViewTitlerBar, int paramInt) {}
+  public abstract void bulkApolloBarrages(String paramString1, String paramString2, boolean paramBoolean);
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTitlerBar.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTitlerBar.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
-      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTitlerBar.jdField_a_of_type_Int = paramInteger.intValue();
-    } while (this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTitlerBar.jdField_a_of_type_Int != this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTitlerBar.jdField_a_of_type_Boolean = false;
-  }
+  public abstract int getHeight();
+  
+  public abstract int getInitHeight();
+  
+  public abstract long getLuaState();
+  
+  public abstract akpl getRenderImpl();
+  
+  public abstract int getWidth();
+  
+  public abstract ApolloRenderDriver getWorker();
+  
+  public abstract void removeAllApolloBarrages(boolean paramBoolean);
+  
+  public abstract void setBubbleType(int paramInt);
+  
+  public abstract void setVisibility(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akra
  * JD-Core Version:    0.7.0.1
  */

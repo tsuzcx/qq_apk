@@ -1,33 +1,27 @@
-import com.tencent.mfsdk.MagnifierSDK;
-import com.tencent.mfsdk.collector.DropResultObject;
-import com.tencent.mfsdk.persist.DBHandler;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Point;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 
-public class rdu
-  implements Runnable
+final class rdu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private long jdField_a_of_type_Long;
-  private DropResultObject jdField_a_of_type_ComTencentMfsdkCollectorDropResultObject;
-  private String jdField_a_of_type_JavaLangString;
+  rdu(ViewGroup paramViewGroup, int paramInt1, int paramInt2) {}
   
-  public rdu(long paramLong, String paramString, DropResultObject paramDropResultObject)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMfsdkCollectorDropResultObject = paramDropResultObject;
-  }
-  
-  public void run()
-  {
-    if (MagnifierSDK.a != null)
-    {
-      MagnifierSDK.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMfsdkCollectorDropResultObject);
-      this.jdField_a_of_type_ComTencentMfsdkCollectorDropResultObject.a();
-    }
+    paramValueAnimator = (Point)paramValueAnimator.getAnimatedValue();
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    localLayoutParams.width = (this.jdField_a_of_type_Int + paramValueAnimator.x);
+    int i = this.b;
+    localLayoutParams.height = (paramValueAnimator.y + i);
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rdu
  * JD-Core Version:    0.7.0.1
  */

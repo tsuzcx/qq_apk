@@ -1,54 +1,61 @@
-import android.view.View;
-import com.tencent.av.app.PstnSessionInfo;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.av.utils.VideoActionSheet;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.item.VideoItemBuilder;
-import com.tencent.mobileqq.data.MessageForVideo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class vlp
-  implements ActionSheet.OnButtonClickListener
 {
-  public vlp(VideoItemBuilder paramVideoItemBuilder, VideoActionSheet paramVideoActionSheet, MessageForVideo paramMessageForVideo, int paramInt, PstnSessionInfo paramPstnSessionInfo) {}
+  public long a;
+  public StoryVideoItem a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
   
-  public void OnClick(View paramView, int paramInt)
+  public JSONObject a()
   {
-    this.jdField_a_of_type_ComTencentAvUtilsVideoActionSheet.dismiss();
-    switch (paramInt)
+    try
     {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("feedId", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("didRead", this.jdField_a_of_type_Boolean);
+      localJSONObject.put("vid", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("videoIndex", this.jdField_a_of_type_Long);
+      localJSONObject.put("isLocal", this.jdField_b_of_type_Boolean);
+      return localJSONObject;
     }
-    do
+    catch (JSONException localJSONException)
     {
+      localJSONException.printStackTrace();
+    }
+    return null;
+  }
+  
+  public void a(@NonNull JSONObject paramJSONObject)
+  {
+    try
+    {
+      this.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("didRead");
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("feedId");
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("vid");
+      this.jdField_a_of_type_Long = paramJSONObject.optLong("videoIndex");
+      this.jdField_b_of_type_Boolean = paramJSONObject.getBoolean("isLocal");
       return;
-      VideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideo);
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideo.isVideo)
-      {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005642", "0X8005642", 0, 0, "", "", "", "");
-        return;
-      }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005243", "0X8005243", 0, 0, "", "", "", "");
-      return;
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        VideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideo);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005243", "0X8005243", 0, 0, "", "", "", "");
-        return;
-      }
-      if ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2))
-      {
-        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvAppPstnSessionInfo, 0);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006406", "0X8006406", 6, 0, "", "", "", "");
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 5);
-    PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_AndroidContentContext, 1, 3);
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+  }
+  
+  public String toString()
+  {
+    return "MsgTabVideoData{didRead=" + this.jdField_a_of_type_Boolean + ", feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", videoIndex='" + this.jdField_a_of_type_Long + '\'' + ", storyVideoItem=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", isLocal=" + this.jdField_b_of_type_Boolean + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vlp
  * JD-Core Version:    0.7.0.1
  */

@@ -7,21 +7,29 @@ import com.qq.taf.jce.JceStruct;
 public final class s_likeman
   extends JceStruct
 {
-  static s_CustomPraise cache_customPraise = new s_CustomPraise();
+  static s_PolyPraise cache_cpolyPraise = new s_PolyPraise();
+  static s_CustomPraise cache_customPraise;
   static s_user cache_user = new s_user();
+  public s_PolyPraise cpolyPraise;
   public s_CustomPraise customPraise;
   public String refer = "";
   public int superflag;
   public s_user user;
   
+  static
+  {
+    cache_customPraise = new s_CustomPraise();
+  }
+  
   public s_likeman() {}
   
-  public s_likeman(s_user params_user, String paramString, int paramInt, s_CustomPraise params_CustomPraise)
+  public s_likeman(s_user params_user, String paramString, int paramInt, s_CustomPraise params_CustomPraise, s_PolyPraise params_PolyPraise)
   {
     this.user = params_user;
     this.refer = paramString;
     this.superflag = paramInt;
     this.customPraise = params_CustomPraise;
+    this.cpolyPraise = params_PolyPraise;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -30,6 +38,7 @@ public final class s_likeman
     this.refer = paramJceInputStream.readString(1, false);
     this.superflag = paramJceInputStream.read(this.superflag, 2, false);
     this.customPraise = ((s_CustomPraise)paramJceInputStream.read(cache_customPraise, 3, false));
+    this.cpolyPraise = ((s_PolyPraise)paramJceInputStream.read(cache_cpolyPraise, 4, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -44,11 +53,14 @@ public final class s_likeman
     if (this.customPraise != null) {
       paramJceOutputStream.write(this.customPraise, 3);
     }
+    if (this.cpolyPraise != null) {
+      paramJceOutputStream.write(this.cpolyPraise, 4);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_likeman
  * JD-Core Version:    0.7.0.1
  */

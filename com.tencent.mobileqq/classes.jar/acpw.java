@@ -1,19 +1,32 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.AccountDetail;
 
 public class acpw
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends bcmk
 {
-  public acpw(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public acpw(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onGlobalLayout()
+  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
   {
-    this.a.e();
+    if (paramBoolean)
+    {
+      Message localMessage = Message.obtain();
+      localMessage.what = 16;
+      Bundle localBundle = new Bundle();
+      localBundle.putString("uinname", paramAccountDetail.name);
+      localBundle.putString("extra_type", paramAccountDetail.summary);
+      localBundle.putLong("uin", paramLong);
+      localMessage.setData(localBundle);
+      this.a.a.sendMessage(localMessage);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpw
  * JD-Core Version:    0.7.0.1
  */

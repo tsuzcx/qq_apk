@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class blessing_helper$msg
-  extends MessageMicro
+  extends MessageMicro<msg>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field number = PBField.initUInt32(0);
@@ -18,7 +18,7 @@ public final class blessing_helper$msg
   public final PBBytesField text = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt64Field time = PBField.initUInt64(0L);
   public final PBUInt32Field touin_count = PBField.initUInt32(0);
-  public final PBRepeatField touin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> touin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt64Field uin = PBField.initUInt64(0L);
   public final PBUInt32Field version = PBField.initUInt32(0);
   
@@ -30,7 +30,7 @@ public final class blessing_helper$msg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msg.blessing_helper.blessing_helper.msg
  * JD-Core Version:    0.7.0.1
  */

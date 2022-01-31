@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFailedFragment;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.MomentDataChangeObserver;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public class afkh
-  extends NearbyMomentManager.MomentDataChangeObserver
+class afkh
+  extends aepm
 {
-  public afkh(NearbyMomentFailedFragment paramNearbyMomentFailedFragment) {}
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  View d;
   
-  void a(String paramString)
-  {
-    NearbyMomentFailedFragment.a(this.a);
-  }
+  afkh(afkg paramafkg) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afkh
  * JD-Core Version:    0.7.0.1
  */

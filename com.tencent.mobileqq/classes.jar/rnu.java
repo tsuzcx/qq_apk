@@ -1,29 +1,26 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AuthDevEnableCompleteActivity;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import com.tencent.qphone.base.util.QLog;
 
-public class rnu
-  implements View.OnClickListener
+class rnu
+  extends bhry
 {
-  public rnu(AuthDevEnableCompleteActivity paramAuthDevEnableCompleteActivity) {}
+  rnu(rnr paramrnr, AlphaAnimation paramAlphaAnimation) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramView = (ImageView)paramView.findViewById(2131362767);
-    if (paramView != null)
-    {
-      int i = 0;
-      if (paramView.getVisibility() == 0) {
-        i = 4;
-      }
-      paramView.setVisibility(i);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsVideoUIDelegate", 2, "onVideoEndSoon appearAnim onAnimationEnd: ");
     }
+    this.jdField_a_of_type_Rnr.a.a.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rnu
  * JD-Core Version:    0.7.0.1
  */

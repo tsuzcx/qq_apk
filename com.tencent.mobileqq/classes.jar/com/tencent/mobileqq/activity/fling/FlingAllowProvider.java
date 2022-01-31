@@ -5,7 +5,7 @@ import java.util.List;
 
 public class FlingAllowProvider
 {
-  private static List a = new ArrayList();
+  private static List<String> a = new ArrayList();
   
   public static boolean contain(String paramString)
   {
@@ -14,7 +14,7 @@ public class FlingAllowProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.FlingAllowProvider
  * JD-Core Version:    0.7.0.1
  */

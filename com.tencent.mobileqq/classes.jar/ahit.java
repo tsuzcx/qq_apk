@@ -1,43 +1,29 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
 
 public class ahit
-  extends Handler
+  implements View.OnClickListener
 {
-  public ahit(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ahit(TroopView paramTroopView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (((paramMessage.obj instanceof Boolean)) && (((Boolean)paramMessage.obj).booleanValue()))
-      {
-        EffectsCameraCaptureFragment.f(this.a, false);
-        EffectsCameraCaptureFragment.c(this.a).setVisibility(8);
-        this.a.a.v();
-      }
-      else
-      {
-        EffectsCameraCaptureFragment.c(this.a).setVisibility(8);
-      }
-    }
+    paramView = new Intent(this.a.jdField_a_of_type_Ahhc.a(), SearchContactsActivity.class);
+    paramView.putExtra("from_key", 1);
+    paramView.putExtra("fromType", 13);
+    this.a.jdField_a_of_type_Ahhc.a().startActivity(paramView);
+    this.a.jdField_a_of_type_Ahhc.a().overridePendingTransition(0, 0);
+    ayvm.a("add_page", "search", "active_frame", 2, 0, new String[] { "" });
+    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BEC", "0X8004BEC", 2, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahit
  * JD-Core Version:    0.7.0.1
  */

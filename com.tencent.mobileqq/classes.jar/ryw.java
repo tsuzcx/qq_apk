@@ -1,25 +1,35 @@
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 public class ryw
-  implements Runnable
+  implements qfp
 {
-  public ryw(ChatHistory paramChatHistory, boolean paramBoolean) {}
+  public ryw(FastWebActivity paramFastWebActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString)
   {
-    ChatHistory localChatHistory1 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory;
-    ChatHistory localChatHistory2 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory;
-    if (this.jdField_a_of_type_Boolean == true) {}
-    for (int i = 2131433706;; i = 2131433707)
+    FastWebActivity.e(this.a, paramBoolean);
+    if (paramBoolean)
     {
-      localChatHistory1.b(localChatHistory2.getString(i));
+      FastWebActivity.a(this.a, paramString);
+      if (FastWebActivity.a(this.a).getVisibility() == 0) {
+        break label55;
+      }
+      FastWebActivity.a(this.a).setImageResource(2130848937);
+    }
+    for (;;)
+    {
+      FastWebActivity.h(this.a);
       return;
+      label55:
+      FastWebActivity.a(this.a).setImageResource(2130848991);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ryw
  * JD-Core Version:    0.7.0.1
  */

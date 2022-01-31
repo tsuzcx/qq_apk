@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class s_visit
   extends JceStruct
 {
-  static ArrayList cache_datalist;
-  public ArrayList datalist;
+  static ArrayList<s_user> cache_datalist;
+  public ArrayList<s_user> datalist;
   public long lasttime;
   public int nvnum;
   public int todaynum;
@@ -18,7 +18,7 @@ public final class s_visit
   
   public s_visit() {}
   
-  public s_visit(int paramInt1, int paramInt2, int paramInt3, ArrayList paramArrayList, long paramLong, int paramInt4)
+  public s_visit(int paramInt1, int paramInt2, int paramInt3, ArrayList<s_user> paramArrayList, long paramLong, int paramInt4)
   {
     this.nvnum = paramInt1;
     this.todaynum = paramInt2;

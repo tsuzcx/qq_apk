@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:background="#66000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/bnn" android:background="@drawable/agy" android:layout_width="@dimen/md" android:layout_height="wrap_content">
+        <TextView android:textSize="17.0sp" android:textColor="#ff555555" android:id="@id/kcx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:text="@string/c8p" android:layout_centerHorizontal="true" />
+        <com.tencent.mobileqq.widget.MicroPhoneClipImageView android:id="@id/dh8" android:background="@drawable/f45" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" android:layout_marginBottom="7.0dip" android:src="@drawable/ah1" android:layout_below="@id/kcx" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff808080" android:gravity="center" android:id="@id/kd1" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/i0w" android:singleLine="true" android:layout_alignTop="@id/dh8" android:layout_alignBottom="@id/dh8" android:layout_centerInParent="true" />
+        <TextView android:textSize="40.0sp" android:textColor="#ff808080" android:gravity="center" android:id="@id/kd0" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignTop="@id/dh8" android:layout_alignBottom="@id/dh8" android:layout_centerInParent="true" />
+        <View android:id="@id/e_6" android:background="#33000000" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="12.0dip" android:layout_below="@id/dh8" />
+        <Button android:textSize="18.5sp" android:textColor="#ff0079ff" android:id="@id/aey" android:background="@drawable/agw" android:layout_width="fill_parent" android:layout_height="44.0dip" android:text="@string/l0" android:layout_below="@id/e_6" />
+        <com.tencent.mobileqq.widget.OvalProgress android:id="@id/fg_" android:visibility="invisible" android:layout_width="92.0dip" android:layout_height="60.0dip" android:layout_marginTop="55.0dip" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/dfm" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:src="@drawable/agz" android:layout_centerVertical="true" />
+            <TextView android:textSize="20.0sp" android:textColor="@color/skin_float_btn" android:gravity="center" android:id="@id/kcw" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_toRightOf="@id/dfm" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/dfj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/common_loading5" android:layout_centerInParent="true" />
+        </com.tencent.mobileqq.widget.OvalProgress>
+        <RelativeLayout android:id="@id/ala" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_alignTop="@id/aey" android:layout_alignBottom="@id/aey">
+            <View android:id="@id/e_7" android:background="#33000000" android:layout_width="1.0px" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+            <Button android:textSize="18.5sp" android:textColor="#ff0079ff" android:id="@id/aez" android:background="@drawable/agq" android:layout_width="wrap_content" android:layout_height="44.0dip" android:text="@string/gzj" android:layout_toLeftOf="@id/e_7" android:layout_alignParentLeft="true" />
+            <Button android:textSize="18.5sp" android:textColor="#ff0079ff" android:id="@id/af0" android:background="@drawable/agt" android:layout_width="wrap_content" android:layout_height="44.0dip" android:text="@string/gzk" android:layout_toRightOf="@id/e_7" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <View android:id="@id/kme" android:background="@drawable/agx" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</RelativeLayout>

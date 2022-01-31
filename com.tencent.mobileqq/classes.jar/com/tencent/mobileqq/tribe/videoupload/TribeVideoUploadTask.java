@@ -1,32 +1,34 @@
 package com.tencent.mobileqq.tribe.videoupload;
 
-import aitd;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
+import bbeq;
+import bbes;
+import bbet;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
-import com.tencent.biz.qqstory.base.videoupload.task.BaseTaskInfo;
-import com.tencent.biz.qqstory.base.videoupload.task.OnPublishTaskListener;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.List;
+import uqd;
+import uqe;
 
 public class TribeVideoUploadTask
-  extends BasePublishTask
-  implements OnPublishTaskListener
+  extends BasePublishTask<bbes>
+  implements uqe
 {
   protected Handler a;
-  protected WeakReference a;
+  protected WeakReference<BaseActivity> a;
   
-  public TribeVideoUploadTask(BaseActivity paramBaseActivity, Handler paramHandler, TribeVideoTaskInfo paramTribeVideoTaskInfo)
+  public TribeVideoUploadTask(BaseActivity paramBaseActivity, Handler paramHandler, bbes parambbes)
   {
-    super(paramTribeVideoTaskInfo);
-    paramTribeVideoTaskInfo.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    TribeVideoFileObject localTribeVideoFileObject = new TribeVideoFileObject(paramTribeVideoTaskInfo.jdField_a_of_type_JavaLangString);
-    localTribeVideoFileObject.a(new aitd(this, paramTribeVideoTaskInfo));
-    paramTribeVideoTaskInfo.jdField_a_of_type_JavaUtilList.add(localTribeVideoFileObject);
+    super(parambbes);
+    parambbes.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    bbeq localbbeq = new bbeq(parambbes.jdField_a_of_type_JavaLangString);
+    localbbeq.a(new bbet(this, parambbes));
+    parambbes.jdField_a_of_type_JavaUtilList.add(localbbeq);
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
     a(this);
@@ -52,7 +54,7 @@ public class TribeVideoUploadTask
   public void a(BasePublishTask paramBasePublishTask, ErrorMessage paramErrorMessage)
   {
     QLog.i("tribe_publish_tribe_publish_VideoUploadTask", 1, "upload finish status:" + paramBasePublishTask.a().a);
-    paramBasePublishTask = (TribeVideoTaskInfo)paramBasePublishTask.a();
+    paramBasePublishTask = (bbes)paramBasePublishTask.a();
     if (paramBasePublishTask.b())
     {
       QLog.i("tribe_publish_tribe_publish_VideoUploadTask", 1, "uploadVideo succ " + paramBasePublishTask.c);
@@ -65,14 +67,14 @@ public class TribeVideoUploadTask
     a(1010, paramBasePublishTask);
   }
   
-  protected void c()
+  public void c()
   {
     a(5, new ErrorMessage());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.videoupload.TribeVideoUploadTask
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,19 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
-import com.tencent.litetransfersdk.Session;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.ProfileCardUtil;
 
 public class bxg
-  implements Runnable
+  implements View.OnClickListener
 {
-  public bxg(LiteTransferWrapper paramLiteTransferWrapper, Session[] paramArrayOfSession) {}
+  public bxg(ChatActivity paramChatActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SyncGroupToJNI(LiteTransferWrapper.access$300(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_ArrayOfComTencentLitetransfersdkSession);
+    this.a.dismissDialog(230);
+    ProfileCardUtil.a(this.a, "", this.a.a.a, this.a.b.getAccount(), true);
   }
 }
 

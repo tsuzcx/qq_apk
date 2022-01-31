@@ -1,58 +1,53 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.tencent.token.ch;
+import com.tencent.token.global.RqdApplication;
 
-final class xf
+class xf
   implements View.OnClickListener
 {
-  xf(RealNameStep0VerifyMobileUpActivity paramRealNameStep0VerifyMobileUpActivity) {}
+  xf(RealNameStep1InputNameIdActivity paramRealNameStep1InputNameIdActivity) {}
   
-  public final void onClick(View paramView)
+  public void onClick(View paramView)
   {
-    if (RealNameStep0VerifyMobileUpActivity.access$000(this.a) == 1001)
+    if ((RealNameStep1InputNameIdActivity.access$1800(this.a) != null) && (RealNameStep1InputNameIdActivity.access$1900(this.a) != null))
     {
-      paramView = new Intent(this.a, CheckMobileAvailableActivity.class);
-      paramView.putExtra("realname_result", RealNameStep0VerifyMobileUpActivity.access$700(this.a));
-      paramView.putExtra("real_uin", RealNameStep0VerifyMobileUpActivity.access$100(this.a));
-      paramView.putExtra("realname_mobile", RealNameStep0VerifyMobileUpActivity.access$900(this.a));
-      paramView.putExtra("scene_id", RealNameStep0VerifyMobileUpActivity.access$000(this.a));
-      paramView.putExtra("up_sms_scene_id", 5);
+      RealNameStep1InputNameIdActivity.access$1800(this.a).clearFocus();
+      RealNameStep1InputNameIdActivity.access$1900(this.a).clearFocus();
     }
-    for (;;)
+    if (RealNameStep1InputNameIdActivity.access$1000(this.a))
     {
-      this.a.startActivity(paramView);
+      if (RealNameStep1InputNameIdActivity.access$3300(this.a, RealNameStep1InputNameIdActivity.access$1900(this.a).getText().toString())) {
+        break label119;
+      }
+      RealNameStep1InputNameIdActivity.access$700(this.a).setVisibility(0);
+      RealNameStep1InputNameIdActivity.access$700(this.a).setText(this.a.getResources().getString(2131231651));
+      RealNameStep1InputNameIdActivity.access$700(this.a).setTextColor(-65536);
+    }
+    label119:
+    do
+    {
       return;
-      Intent localIntent = new Intent(this.a, RealNameSmsContentTipActivity.class);
-      localIntent.putExtra("real_uin", RealNameStep0VerifyMobileUpActivity.access$100(this.a));
-      localIntent.putExtra("realname_mobile", RealNameStep0VerifyMobileUpActivity.access$900(this.a));
-      localIntent.putExtra("scene_id", RealNameStep0VerifyMobileUpActivity.access$000(this.a));
-      localIntent.putExtra("ish5zzb", RealNameStep0VerifyMobileUpActivity.access$600(this.a));
-      if (RealNameStep0VerifyMobileUpActivity.access$000(this.a) == 1003)
+      if (!RealNameStep1InputNameIdActivity.access$3100(this.a))
       {
-        localIntent.putExtra("source_id", this.a.mSourceId);
-        localIntent.putExtra("mFrontPath", this.a.mFrontPath);
-        localIntent.putExtra("mBackPath", this.a.mBackPath);
-        localIntent.putExtra("mFaceData", this.a.mFaceData);
-        localIntent.putExtra("frontphotoinfo", this.a.frontphotoinfo);
-        localIntent.putExtra("backphotoinfo", this.a.backphotoinfo);
-        localIntent.putExtra("canchange_uin", this.a.canchange_uin);
-        localIntent.putExtra("result", RealNameStep0VerifyMobileUpActivity.access$800(this.a));
-        localIntent.putExtra("up_sms_scene_id", 2);
-        paramView = localIntent;
-      }
-      else
-      {
-        paramView = localIntent;
-        if (RealNameStep0VerifyMobileUpActivity.access$000(this.a) == 1002)
-        {
-          localIntent.putExtra("realname_result", RealNameStep0VerifyMobileUpActivity.access$700(this.a));
-          localIntent.putExtra("up_sms_scene_id", 1);
-          paramView = localIntent;
+        if (RealNameStep1InputNameIdActivity.access$1600(this.a) != AddFaceResultActivity.ADD_FACE_UPDATE_ZZB_DEFAULT_VALUE) {
+          ch.a().a(System.currentTimeMillis(), 216);
         }
+        this.a.showUserDialogComfig(2130968730, null, String.format(this.a.getResources().getString(2131231367), new Object[] { RealNameStep1InputNameIdActivity.access$1800(this.a).getText().toString(), RealNameStep1InputNameIdActivity.access$1900(this.a).getText().toString() }), 0, new xg(this), new xh(this));
+        return;
       }
-    }
+      this.a.dismiss();
+      RealNameStep1InputNameIdActivity.access$3400(this.a);
+    } while (RealNameStep1InputNameIdActivity.access$1600(this.a) == AddFaceResultActivity.ADD_FACE_UPDATE_ZZB_DEFAULT_VALUE);
+    RqdApplication.l().getSharedPreferences("sp_name_global", 0).edit().putBoolean("key_zzb_refused_firsttime", true).commit();
   }
 }
 

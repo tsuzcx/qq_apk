@@ -10,14 +10,14 @@ public final class mobile_auth_get_hb_rsp
   extends JceStruct
 {
   static callback_info cache_hb_info = new callback_info();
-  static Map cache_uin_nick = new HashMap();
+  static Map<Long, String> cache_uin_nick = new HashMap();
   public int auth_res;
   public long channel;
   public String encryp_key = "";
   public String err_msg = "";
   public callback_info hb_info;
   public int operate_type;
-  public Map uin_nick;
+  public Map<Long, String> uin_nick;
   
   static
   {
@@ -26,7 +26,7 @@ public final class mobile_auth_get_hb_rsp
   
   public mobile_auth_get_hb_rsp() {}
   
-  public mobile_auth_get_hb_rsp(int paramInt1, String paramString1, long paramLong, callback_info paramcallback_info, String paramString2, int paramInt2, Map paramMap)
+  public mobile_auth_get_hb_rsp(int paramInt1, String paramString1, long paramLong, callback_info paramcallback_info, String paramString2, int paramInt2, Map<Long, String> paramMap)
   {
     this.auth_res = paramInt1;
     this.encryp_key = paramString1;

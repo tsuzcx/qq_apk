@@ -1,49 +1,28 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import java.util.Comparator;
 
 public class wnc
-  extends MessageObserver
+  implements Comparator<VideoCollectionItem>
 {
-  public wnc(DeviceFragment paramDeviceFragment) {}
-  
-  protected void a(int paramInt1, int paramInt2)
+  public int a(VideoCollectionItem paramVideoCollectionItem1, VideoCollectionItem paramVideoCollectionItem2)
   {
-    if (this.a.a == null) {
-      return;
+    if ((paramVideoCollectionItem1.collectionType != paramVideoCollectionItem2.collectionType) && (xqz.a(paramVideoCollectionItem1.collectionTime, paramVideoCollectionItem2.collectionTime))) {
+      if (VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem1.collectionType] >= VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem2.collectionType]) {}
     }
-    DeviceFragment localDeviceFragment = this.a;
-    if (paramInt1 != 0) {}
-    for (boolean bool = true;; bool = false)
+    do
     {
-      localDeviceFragment.c = bool;
-      this.a.a.c();
-      this.a.a.notifyDataSetChanged();
-      return;
-    }
-  }
-  
-  protected void c(int paramInt1, int paramInt2)
-  {
-    if (this.a.a == null) {
-      return;
-    }
-    DeviceFragment localDeviceFragment = this.a;
-    if (paramInt1 != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localDeviceFragment.d = bool;
-      this.a.a.d();
-      this.a.a.a(this.a.d, AppConstants.z);
-      this.a.a.notifyDataSetChanged();
-      return;
-    }
+      return -1;
+      return 1;
+      if (paramVideoCollectionItem1.collectionTime < paramVideoCollectionItem2.collectionTime) {
+        return 1;
+      }
+    } while (paramVideoCollectionItem1.collectionTime > paramVideoCollectionItem2.collectionTime);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wnc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,42 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import java.io.File;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.colornote.swipeback.SwipeBackLayout;
 
 public class aofq
-  implements View.OnClickListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public aofq(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile, Button paramButton) {}
+  public aofq(SwipeBackLayout paramSwipeBackLayout) {}
   
-  public void onClick(View paramView)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (new File(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.b).exists())
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    }
+    float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
+    if ((!this.a.jdField_a_of_type_Boolean) || (paramFloat1 < 200.0F)) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    }
+    if ((f1 < 0.0F) && (f2 < 0.5F))
     {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.fromFile(this.jdField_a_of_type_JavaIoFile)));
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.l();
-      paramView = new ArrayList();
-      paramView.add(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.b);
-      FlowCameraMqqAction.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2, paramView);
-      this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.setResult(1001);
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.finish();
-      if (FlowCameraConstant.a == 1) {
-        FlowCameraMqqAction.b("", "0X8005F5C", "0");
+      if (!(this.a.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+        break label126;
       }
+      this.a.c = true;
+      this.a.d();
     }
-    else
+    for (;;)
     {
-      return;
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      label126:
+      this.a.d();
     }
-    FlowCameraMqqAction.b("", "0X8005F5C", "1");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aofq
  * JD-Core Version:    0.7.0.1
  */

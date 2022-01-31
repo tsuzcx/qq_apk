@@ -11,12 +11,12 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_svc$MultiMsgAssist
-  extends MessageMicro
+  extends MessageMicro<MultiMsgAssist>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_redbag_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBEnumField msg_use = PBField.initEnum(1);
-  public final PBRepeatMessageField repeated_routing = PBField.initRepeatMessage(msg_svc.RoutingHead.class);
+  public final PBRepeatMessageField<msg_svc.RoutingHead> repeated_routing = PBField.initRepeatMessage(msg_svc.RoutingHead.class);
   public final PBUInt32Field uint32_has_readbag = PBField.initUInt32(0);
   public final PBUInt32Field uint32_has_vedio = PBField.initUInt32(0);
   public final PBUInt64Field uint64_redbag_amount = PBField.initUInt64(0L);
@@ -31,7 +31,7 @@ public final class msg_svc$MultiMsgAssist
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     msf.msgsvc.msg_svc.MultiMsgAssist
  * JD-Core Version:    0.7.0.1
  */

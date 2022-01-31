@@ -1,25 +1,21 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloTicker;
+import com.tencent.mobileqq.apollo.EnginePreLoader.2;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
 public class akqk
-  implements View.OnClickListener
 {
-  public akqk(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler) {}
+  private ApolloEngine jdField_a_of_type_ComTencentMobileqqApolloApolloEngine;
+  private ApolloTicker jdField_a_of_type_ComTencentMobileqqApolloApolloTicker;
   
-  public void onClick(View paramView)
+  private void a()
   {
-    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(102));
+    ThreadManagerV2.executeOnSubThread(new EnginePreLoader.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akqk
  * JD-Core Version:    0.7.0.1
  */

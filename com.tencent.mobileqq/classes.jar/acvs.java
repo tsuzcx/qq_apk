@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.filemanager.core.FileUploader;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-public class acvs
-  implements Runnable
+class acvs
+  implements DialogInterface.OnClickListener
 {
-  public acvs(FileUploader paramFileUploader) {}
+  acvs(acvq paramacvq) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FileUploader.a(this.a, 0L);
-    this.a.a(0L);
+    this.a.a.a.sendEmptyMessage(259);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acvs
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_msg_body$VideoFile
-  extends MessageMicro
+  extends MessageMicro<VideoFile>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_support_progressive = PBField.initBool(false);
@@ -20,8 +20,8 @@ public final class im_msg_body$VideoFile
   public final PBBytesField bytes_pb_reserve = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_source = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_thumb_file_md5 = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField rpt_bytes_thumb_file_urls = PBField.initRepeat(PBBytesField.__repeatHelper__);
-  public final PBRepeatField rpt_bytes_video_file_urls = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> rpt_bytes_thumb_file_urls = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> rpt_bytes_video_file_urls = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBUInt32Field uint32_busi_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_file_format = PBField.initUInt32(0);
   public final PBUInt32Field uint32_file_height = PBField.initUInt32(0);

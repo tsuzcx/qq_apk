@@ -1,14 +1,23 @@
-public abstract interface acwr
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+
+public class acwr
+  extends BroadcastReceiver
 {
-  public abstract void a();
+  public acwr(FavEmosmManageActivity paramFavEmosmManageActivity) {}
   
-  public abstract void a(acwq paramacwq);
-  
-  public abstract boolean a(String paramString, long paramLong, byte[] paramArrayOfByte);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (FavEmosmManageActivity.a(this.a) != null) {
+      FavEmosmManageActivity.a(this.a).a(paramContext, paramIntent);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acwr
  * JD-Core Version:    0.7.0.1
  */

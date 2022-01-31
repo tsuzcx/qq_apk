@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.bubble;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import awge;
+import awhs;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
 public class BubbleDiyEntity
-  extends Entity
+  extends awge
 {
   public String bottomLeftId;
   public String bottomRightId;
   public String diyText = "";
   public String topLeftId;
   public String topRightId;
-  @unique
+  @awhs
   public String uinAndDiyId;
   
-  public static void parsePasterMap(BubbleDiyEntity paramBubbleDiyEntity, HashMap paramHashMap)
+  public static void parsePasterMap(BubbleDiyEntity paramBubbleDiyEntity, HashMap<String, String> paramHashMap)
   {
     if ((paramBubbleDiyEntity == null) || (paramHashMap == null)) {}
     for (;;)
@@ -41,7 +41,7 @@ public class BubbleDiyEntity
     }
   }
   
-  public HashMap convertToPasterMap()
+  public HashMap<String, String> convertToPasterMap()
   {
     HashMap localHashMap = new HashMap(4);
     if (!TextUtils.isEmpty(this.topLeftId)) {
@@ -61,7 +61,7 @@ public class BubbleDiyEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleDiyEntity
  * JD-Core Version:    0.7.0.1
  */

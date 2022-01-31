@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/common_strip_setting_middle" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0dip" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1991" android:layout_width="wrap_content" android:layout_height="22.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="12.0dip" android:layout_weight="0.0" />
-    <com.tencent.mobileqq.nearby.profilecard.LabelContainer android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21fe" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
-    <ImageView android:layout_width="9.0dip" android:layout_height="15.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/common_arrow_right_selector" android:layout_weight="0.0" />
-</LinearLayout>

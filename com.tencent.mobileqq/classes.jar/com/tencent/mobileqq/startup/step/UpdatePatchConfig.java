@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.startup.step;
 
+import abuv;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import apao;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.hotpatch.utils.PatchCommonUtil;
-import com.tencent.kingkong.Utils;
-import com.tencent.mobileqq.cooperation.ApkUtils;
+import com.tencent.mobileqq.msf.core.net.patch.PatchCommonUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -23,10 +23,8 @@ public class UpdatePatchConfig
     {
       try
       {
-        Object localObject1 = paramContext.getSharedPreferences("hotpatch_preference", 4).edit();
-        ((SharedPreferences.Editor)localObject1).clear();
-        ((SharedPreferences.Editor)localObject1).commit();
-        localObject1 = new File(PatchCommonUtil.a("dex", ""));
+        paramContext.getSharedPreferences("hotpatch_preference", 4).edit().clear().commit();
+        Object localObject1 = new File(PatchCommonUtil.getPatchPath(""));
         if (((File)localObject1).exists())
         {
           localObject1 = ((File)localObject1).listFiles();
@@ -37,17 +35,15 @@ public class UpdatePatchConfig
             {
               Object localObject2 = localObject1[i];
               if ((localObject2 == null) || (!localObject2.exists())) {
-                break label200;
+                break label184;
               }
               localObject2.delete();
-              break label200;
+              break label184;
             }
           }
         }
-        localObject1 = paramContext.getSharedPreferences("QQDetectAttack", 0).edit();
-        ((SharedPreferences.Editor)localObject1).clear();
-        ((SharedPreferences.Editor)localObject1).commit();
-        paramContext.getSharedPreferences("rqd_catcher_pref", 4).edit().clear().commit();
+        paramContext.getSharedPreferences("pref_safemode_not_exit", 4).edit().clear().commit();
+        paramContext.getSharedPreferences("QQDetectAttack", 0).edit().clear().commit();
         return;
       }
       catch (Throwable paramContext)
@@ -55,23 +51,23 @@ public class UpdatePatchConfig
         QLog.d("PatchLogTag", 1, "UpdatePatchConfig clearPatchConfig exception=" + paramContext);
         return;
       }
-      label200:
+      label184:
       i += 1;
     }
   }
   
-  protected boolean a()
+  protected boolean doStep()
   {
     Context localContext = BaseApplicationImpl.sApplication.getApplicationContext();
     SharedPreferences localSharedPreferences = localContext.getSharedPreferences("sp_update_version", 0);
     String str1 = localSharedPreferences.getString("key_cur_version", "");
-    String str2 = ApkUtils.a(localContext) + "." + ApkUtils.a(localContext);
+    String str2 = apao.a(localContext) + "." + apao.a(localContext);
     QLog.d("PatchLogTag", 1, "UpdatePatchConfig oldVersion=" + str1 + ", curVersion=" + str2);
     if (!str2.equals(str1))
     {
       a(localContext);
       localSharedPreferences.edit().putString("key_cur_version", str2).commit();
-      Utils.a(localContext);
+      abuv.a(localContext);
     }
     return true;
   }

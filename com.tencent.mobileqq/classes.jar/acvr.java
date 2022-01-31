@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.filemanager.core.FileUploader;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acvr
-  implements Runnable
+class acvr
+  implements DialogInterface.OnClickListener
 {
-  public acvr(FileUploader paramFileUploader) {}
+  acvr(acvq paramacvq) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(FileUploader.a(this.a));
+    bdun.a(this.a.a, "mvip.g.a.qnc_gc", "CJCLUBT", -1, false, true);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acvr
  * JD-Core Version:    0.7.0.1
  */

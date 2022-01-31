@@ -1,22 +1,18 @@
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.VipTagView;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
-
-public class agsq
-  implements ValueAnimation.AnimationUpdateListener
+class agsq
+  extends alpa
 {
-  public agsq(VipTagView paramVipTagView) {}
+  agsq(agso paramagso) {}
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  protected void a(Object paramObject)
   {
-    VipTagView.a(this.a, paramFloat1.floatValue());
-    this.a.invalidate();
+    if (agso.a(this.a) != null) {
+      agso.a(this.a).notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agsq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wrh
-  implements View.OnClickListener
+  extends QQUIEventReceiver<wrf, vej>
 {
-  public wrh(C2CMessageSearchDialog paramC2CMessageSearchDialog) {}
-  
-  public void onClick(View paramView)
+  public wrh(@NonNull wrf paramwrf)
   {
-    this.a.a = null;
-    this.a.dismiss();
+    super(paramwrf);
+  }
+  
+  public void a(@NonNull wrf paramwrf, @NonNull vej paramvej)
+  {
+    if ((paramvej.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramvej.jdField_a_of_type_JavaUtilList == null)) {
+      return;
+    }
+    paramwrf.b(paramvej.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vej.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wrh
  * JD-Core Version:    0.7.0.1
  */

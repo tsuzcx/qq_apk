@@ -1,37 +1,21 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.QQToast.IToastValidListener;
-import java.lang.ref.WeakReference;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class akwl
+class akwl
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  private QQToast jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  akwl(akwj paramakwj) {}
   
-  public akwl(QQToast paramQQToast, QQToast.IToastValidListener paramIToastValidListener)
+  public void onAudioFocusChange(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = paramQQToast;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramIToastValidListener);
-  }
-  
-  private boolean a()
-  {
-    QQToast.IToastValidListener localIToastValidListener = (QQToast.IToastValidListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    return (localIToastValidListener != null) && (localIToastValidListener.e());
-  }
-  
-  @Nullable
-  QQToast a()
-  {
-    if (a()) {
-      return this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
+    if (QLog.isColorLevel()) {
+      QLog.d(akwj.a, 2, new Object[] { "[onAudioFocusChange],focusChange:", Integer.valueOf(paramInt) });
     }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akwl
  * JD-Core Version:    0.7.0.1
  */

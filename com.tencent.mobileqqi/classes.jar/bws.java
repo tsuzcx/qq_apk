@@ -1,18 +1,38 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BookShareAdviceEditActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bws
-  implements Runnable
+  implements View.OnClickListener
 {
-  public bws(LiteTransferWrapper paramLiteTransferWrapper, long paramLong1, long paramLong2, int paramInt1, int paramInt2, short paramShort) {}
+  public bws(BookShareAdviceEditActivity paramBookShareAdviceEditActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    LiteTransferWrapper.access$000(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Short);
+    if (this.a.c < 0)
+    {
+      QQToast.a(this.a, 1, this.a.getString(2131561490), 0).b(this.a.d());
+      return;
+    }
+    if (!NetworkUtil.e(BaseApplication.getContext()))
+    {
+      QQToast.a(this.a, 2131562452, 0).b(this.a.d());
+      return;
+    }
+    if (this.a.a == null)
+    {
+      QQToast.a(this.a, 2131561769, 0).b(this.a.d());
+      return;
+    }
+    BookShareAdviceEditActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     bws
  * JD-Core Version:    0.7.0.1
  */

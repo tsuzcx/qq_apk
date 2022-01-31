@@ -1,49 +1,28 @@
-import com.tencent.mobileqq.apollo.script.SpriteActionScript;
-import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoManager;
-import com.tencent.mobileqq.apollo.view.ApolloDrawerInfoViewListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout.LayoutParams;
 
-public class yxb
-  implements Runnable
+class yxb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public yxb(ApolloDrawerInfoViewListener paramApolloDrawerInfoViewListener, boolean paramBoolean, Object paramObject) {}
+  yxb(ywy paramywy, View paramView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    try
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    if ((localLayoutParams instanceof LinearLayout.LayoutParams))
     {
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangObject != null))
-      {
-        if (ApolloDrawerInfoViewListener.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloDrawerInfoViewListener).get() == null) {
-          return;
-        }
-        Object localObject = (ArrayList)this.jdField_a_of_type_JavaLangObject;
-        if ((localObject != null) && (((ArrayList)localObject).size() != 0))
-        {
-          SpriteActionScript localSpriteActionScript = ((SpriteDrawerInfoManager)ApolloDrawerInfoViewListener.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloDrawerInfoViewListener).get()).a();
-          if (localSpriteActionScript != null)
-          {
-            localObject = ((ArrayList)localObject).iterator();
-            while (((Iterator)localObject).hasNext()) {
-              localSpriteActionScript.a((String)((Iterator)localObject).next(), true);
-            }
-          }
-        }
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloDrawerInfoViewListener", 1, localThrowable, new Object[0]);
+      ((LinearLayout.LayoutParams)localLayoutParams).topMargin = paramValueAnimator.intValue();
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yxb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.arcard.ArCardSelectMemberActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
 
-public class aano
-  implements DialogInterface.OnClickListener
+class aano
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aano(ArCardSelectMemberActivity paramArCardSelectMemberActivity) {}
+  aano(aanj paramaanj, ImageView paramImageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGlobalLayout()
   {
-    if (!NetworkUtil.g(this.a.getApplicationContext())) {
-      QQToast.a(this.a, 2131437530, 1).a();
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      ArCardSelectMemberActivity.a(this.a, null);
-      return;
-      this.a.u();
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    aasn.a().a(this.jdField_a_of_type_AndroidWidgetImageView);
   }
 }
 

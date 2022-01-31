@@ -5,24 +5,20 @@ import android.opengl.Matrix;
 
 public class AVGLUtils
 {
-  public static int a;
-  public static final float[] a;
-  public static float[] b;
-  public static float[] c;
-  public static float[] d;
+  public static int NOINITID = -1;
+  public static final float[] matrix = { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
+  public static float[] matrixV = { 2.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
+  public static float[] matrixVRotate270;
+  public static float[] matrixVRotate90 = { 2.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
   
   static
   {
-    jdField_a_of_type_Int = -1;
-    jdField_a_of_type_ArrayOfFloat = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
-    b = new float[] { 2.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
-    c = new float[] { 2.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
-    d = new float[] { 2.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
-    Matrix.rotateM(c, 0, 90.0F, 0.0F, 0.0F, 1.0F);
-    Matrix.rotateM(d, 0, 270.0F, 0.0F, 0.0F, 1.0F);
+    matrixVRotate270 = new float[] { 2.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
+    Matrix.rotateM(matrixVRotate90, 0, 90.0F, 0.0F, 0.0F, 1.0F);
+    Matrix.rotateM(matrixVRotate270, 0, 270.0F, 0.0F, 0.0F, 1.0F);
   }
   
-  public static int a(int paramInt1, int paramInt2, int paramInt3)
+  public static int initFrameBuffer(int paramInt1, int paramInt2, int paramInt3)
   {
     int[] arrayOfInt = new int[1];
     GLES20.glBindFramebuffer(36160, 0);
@@ -42,7 +38,7 @@ public class AVGLUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.opengl.utils.AVGLUtils
  * JD-Core Version:    0.7.0.1
  */

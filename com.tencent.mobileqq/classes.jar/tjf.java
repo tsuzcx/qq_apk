@@ -1,26 +1,78 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Comparator;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
 public class tjf
-  implements Comparator
+  extends tjd<WSRedDotPushMsg, WSPushStrategyInfo>
 {
-  public tjf(QQLSActivity paramQQLSActivity) {}
+  private int a;
   
-  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
+  public tjf(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt)
   {
-    if (paramChatMessage1.time == paramChatMessage2.time) {
-      return 0;
+    super(paramWSRedDotPushMsg);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  {
+    int i = 2;
+    boolean bool1 = true;
+    if (paramWSPushStrategyInfo == null) {
+      return false;
     }
-    if (paramChatMessage1.time > paramChatMessage2.time) {
-      return 1;
+    boolean bool2 = TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme);
+    if (!bool2)
+    {
+      tch.a(paramContext, paramWSPushStrategyInfo.mScheme);
+      paramContext = tlv.a();
+      if (paramContext != null) {
+        paramContext.a(null);
+      }
+      tlv.a();
     }
-    return -1;
+    if (this.jdField_a_of_type_Int == 2) {
+      if (bool2)
+      {
+        i = 2;
+        if (this.jdField_a_of_type_Tiw != null) {
+          break label93;
+        }
+        paramContext = "";
+        label74:
+        tju.a(i, 1, paramContext);
+        label80:
+        if (bool2) {
+          break label133;
+        }
+      }
+    }
+    for (;;)
+    {
+      return bool1;
+      i = 1;
+      break;
+      label93:
+      paramContext = ((WSRedDotPushMsg)this.jdField_a_of_type_Tiw).mFeedIds;
+      break label74;
+      if (this.jdField_a_of_type_Int != 6) {
+        break label80;
+      }
+      if (bool2) {}
+      for (;;)
+      {
+        tju.d(i);
+        break;
+        i = 1;
+      }
+      label133:
+      bool1 = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tjf
  * JD-Core Version:    0.7.0.1
  */

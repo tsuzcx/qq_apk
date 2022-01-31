@@ -1,30 +1,19 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import com.tencent.widget.ActionSheet;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
-class aekp
-  implements AdapterView.OnItemClickListener
+public class aekp
+  implements DialogInterface.OnKeyListener
 {
-  aekp(aeko paramaeko, aeky paramaeky) {}
+  public aekp(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramInt)
-    {
+    if (paramInt == 4) {
+      this.a.finish();
     }
-    for (;;)
-    {
-      aeko.a(this.jdField_a_of_type_Aeko).dismiss();
-      return;
-      MusicPlayerActivity.a(this.jdField_a_of_type_Aeko.a, this.jdField_a_of_type_Aeky.a, this.jdField_a_of_type_Aeky.b, this.jdField_a_of_type_Aeky.d, this.jdField_a_of_type_Aeky.c, this.jdField_a_of_type_Aeky.e);
-      continue;
-      MusicPlayerActivity.b(this.jdField_a_of_type_Aeko.a, this.jdField_a_of_type_Aeky.a, this.jdField_a_of_type_Aeky.b, this.jdField_a_of_type_Aeky.d, this.jdField_a_of_type_Aeky.c, this.jdField_a_of_type_Aeky.e);
-      continue;
-      ThreadManager.post(new aekq(this, paramInt), 8, null, true);
-    }
+    return false;
   }
 }
 

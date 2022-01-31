@@ -2,12 +2,13 @@ package com.tencent.mobileqq.fts;
 
 import android.os.Looper;
 import android.text.TextUtils;
+import asiv;
+import asjc;
+import asjd;
+import asjk;
+import asjl;
+import asjm;
 import com.tencent.mobileqq.fts.entity.FTSEntity;
-import com.tencent.mobileqq.fts.logger.ILogger;
-import com.tencent.mobileqq.fts.logger.Logger;
-import com.tencent.mobileqq.fts.utils.FTSUtils;
-import com.tencent.mobileqq.fts.utils.FileUtils;
-import com.tencent.mobileqq.fts.utils.SQLUtils;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,25 +17,25 @@ import java.util.Map;
 
 public class FTSDatabase
 {
-  private static ILogger jdField_a_of_type_ComTencentMobileqqFtsLoggerILogger = new Logger();
+  private static asjc jdField_a_of_type_Asjc = new asjd();
   private boolean jdField_a_of_type_Boolean;
   private boolean b = true;
   
   public FTSDatabase()
   {
     if (!this.b) {
-      log("FTSDatabase", "w", "load so failed.");
+      log("Q.fts.troop.FTSDatabase", "w", "load so failed.");
     }
   }
   
-  public static ILogger a()
+  public static asjc a()
   {
-    return jdField_a_of_type_ComTencentMobileqqFtsLoggerILogger;
+    return jdField_a_of_type_Asjc;
   }
   
-  public static void a(ILogger paramILogger)
+  public static void a(asjc paramasjc)
   {
-    jdField_a_of_type_ComTencentMobileqqFtsLoggerILogger = paramILogger;
+    jdField_a_of_type_Asjc = paramasjc;
   }
   
   private void b()
@@ -59,22 +60,24 @@ public class FTSDatabase
     a().a(paramString1, paramString2, paramString3);
   }
   
+  private synchronized native int queryIndexCount(String paramString);
+  
   private synchronized native Object queryNative(String paramString, int[] paramArrayOfInt);
   
   private synchronized native boolean updateNative(String paramString, int[] paramArrayOfInt, byte[]... paramVarArgs);
   
-  public List a(FTSQueryArgs paramFTSQueryArgs)
+  public List<FTSEntity> a(asiv paramasiv)
   {
     b();
     if (!d()) {
-      log("FTSDatabase", "w", "query failed. FTSDatabase is not available");
+      log("Q.fts.troop.FTSDatabase", "w", "query failed. FTSDatabase is not available");
     }
     Object localObject3;
     for (;;)
     {
       return null;
       Object localObject1 = new ArrayList();
-      localObject3 = SQLUtils.a(paramFTSQueryArgs, (List)localObject1);
+      localObject3 = asjm.a(paramasiv, (List)localObject1);
       int[] arrayOfInt = new int[((List)localObject1).size()];
       int i = 0;
       while (i < ((List)localObject1).size())
@@ -87,13 +90,13 @@ public class FTSDatabase
       {
         localObject1 = (List)queryNative((String)localObject3, arrayOfInt);
         long l2 = System.currentTimeMillis();
-        log("FTSDatabase", "d", "query cost time = " + (l2 - l1) + " ; sql = " + (String)localObject3);
+        log("Q.fts.troop.FTSDatabase", "d", "query cost time = " + (l2 - l1) + " ; sql = " + (String)localObject3);
         localObject3 = new ArrayList();
         if (localObject1 != null)
         {
           localObject1 = ((List)localObject1).iterator();
           while (((Iterator)localObject1).hasNext()) {
-            ((List)localObject3).add(SQLUtils.a((Map)((Iterator)localObject1).next(), paramFTSQueryArgs.a));
+            ((List)localObject3).add(asjm.a((Map)((Iterator)localObject1).next(), paramasiv.a));
           }
         }
       }
@@ -110,12 +113,12 @@ public class FTSDatabase
   }
   
   @Deprecated
-  public List a(String paramString, int[] paramArrayOfInt)
+  public List<Map> a(String paramString, int[] paramArrayOfInt)
   {
     b();
     if (!d())
     {
-      log("FTSDatabase", "w", "querySQL failed. FTSDatabase is not available");
+      log("Q.fts.troop.FTSDatabase", "w", "querySQL failed. FTSDatabase is not available");
       return null;
     }
     try
@@ -140,7 +143,7 @@ public class FTSDatabase
     }
     try
     {
-      log("FTSDatabase", "i", Thread.currentThread().getName() + " native closeNative V2");
+      log("Q.fts.troop.FTSDatabase", "i", Thread.currentThread().getName() + " native closeNative V2");
       closeNative();
       return;
     }
@@ -155,25 +158,25 @@ public class FTSDatabase
     b();
     if (this.jdField_a_of_type_Boolean)
     {
-      log("FTSDatabase", "w", "already initialized.");
+      log("Q.fts.troop.FTSDatabase", "w", "already initialized.");
       return;
     }
     if (!this.b)
     {
       this.jdField_a_of_type_Boolean = true;
-      log("FTSDatabase", "w", "init failed because so is not available.");
+      log("Q.fts.troop.FTSDatabase", "w", "init failed because so is not available.");
       return;
     }
-    FileUtils.a(new File(paramString));
+    asjl.a(new File(paramString));
     try
     {
-      log("FTSDatabase", "i", Thread.currentThread().getName() + " native initNative V2");
+      log("Q.fts.troop.FTSDatabase", "i", Thread.currentThread().getName() + " native initNative V2");
       bool = initNative(paramString, true);
       if (!bool)
       {
         this.b = false;
         this.jdField_a_of_type_Boolean = true;
-        log("FTSDatabase", "w", "init failed because initNative failed.");
+        log("Q.fts.troop.FTSDatabase", "w", "init failed because initNative failed.");
         return;
       }
     }
@@ -185,7 +188,7 @@ public class FTSDatabase
         boolean bool = false;
       }
       this.jdField_a_of_type_Boolean = true;
-      log("FTSDatabase", "d", "initNative succeed.");
+      log("Q.fts.troop.FTSDatabase", "d", "initNative succeed.");
     }
   }
   
@@ -198,7 +201,7 @@ public class FTSDatabase
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      a().a("FTSDatabase", "w", "load FTSDatabaseV2 failed.", localUnsatisfiedLinkError);
+      a().a("Q.fts.troop.FTSDatabase", "w", "load FTSDatabaseV2 failed.", localUnsatisfiedLinkError);
     }
     return false;
   }
@@ -209,14 +212,14 @@ public class FTSDatabase
     boolean bool2 = false;
     b();
     if (!d()) {
-      log("FTSDatabase", "w", "insert failed. FTSDatabase is not available");
+      log("Q.fts.troop.FTSDatabase", "w", "insert failed. FTSDatabase is not available");
     }
     do
     {
       return bool2;
       ArrayList localArrayList1 = new ArrayList();
       ArrayList localArrayList2 = new ArrayList();
-      paramFTSEntity = SQLUtils.a(paramFTSEntity, localArrayList2, localArrayList1);
+      paramFTSEntity = asjm.a(paramFTSEntity, localArrayList2, localArrayList1);
       int[] arrayOfInt = new int[localArrayList2.size()];
       int i = 0;
       while (i < localArrayList2.size())
@@ -240,7 +243,7 @@ public class FTSDatabase
     } while (bool1);
     try
     {
-      log("FTSDatabase", "w", "insert failed. error msg = " + getErrorMsg());
+      log("Q.fts.troop.FTSDatabase", "w", "insert failed. error msg = " + getErrorMsg());
       return bool1;
     }
     catch (UnsatisfiedLinkError paramFTSEntity)
@@ -250,12 +253,12 @@ public class FTSDatabase
     }
   }
   
-  public boolean a(Class paramClass)
+  public boolean a(Class<? extends FTSEntity> paramClass)
   {
     b();
     if (!d())
     {
-      log("FTSDatabase", "w", "createTable failed. FTSDatabase is not available");
+      log("Q.fts.troop.FTSDatabase", "w", "createTable failed. FTSDatabase is not available");
       return false;
     }
     boolean bool3 = true;
@@ -264,7 +267,7 @@ public class FTSDatabase
     String str2;
     for (;;)
     {
-      str2 = SQLUtils.a(paramClass, FTSUtils.a(), bool1, bool2, bool3);
+      str2 = asjm.a(paramClass, asjk.a(), bool1, bool2, bool3);
       try
       {
         bool4 = execSQLNative(str2);
@@ -279,10 +282,10 @@ public class FTSDatabase
           boolean bool4;
           String str1 = getErrorMsg();
           Object localObject = str1;
-          log("FTSDatabase", "e", "Can't create virtual table. " + (String)localObject);
-          if (!FTSUtils.a())
+          log("Q.fts.troop.FTSDatabase", "e", "Can't create virtual table. " + (String)localObject);
+          if (!asjk.a())
           {
-            log("FTSDatabase", "e", "createTable failed." + (String)localObject);
+            log("Q.fts.troop.FTSDatabase", "e", "createTable failed." + (String)localObject);
             return false;
             localUnsatisfiedLinkError1 = localUnsatisfiedLinkError1;
             localUnsatisfiedLinkError1.printStackTrace();
@@ -297,7 +300,7 @@ public class FTSDatabase
           }
           if (TextUtils.isEmpty(localUnsatisfiedLinkError1))
           {
-            log("FTSDatabase", "e", "createTable failed. No error msg.");
+            log("Q.fts.troop.FTSDatabase", "e", "createTable failed. No error msg.");
             return false;
           }
           if ((localUnsatisfiedLinkError1.contains("unrecognized parameter: notindexed")) && (bool2))
@@ -316,16 +319,16 @@ public class FTSDatabase
           {
             if (localUnsatisfiedLinkError1.contains("table " + paramClass.getSimpleName() + " already exists"))
             {
-              log("FTSDatabase", "d", "createTable succeed. " + str2);
+              log("Q.fts.troop.FTSDatabase", "d", "createTable succeed. " + str2);
               return true;
             }
-            log("FTSDatabase", "e", "createTable failed. " + localUnsatisfiedLinkError1);
+            log("Q.fts.troop.FTSDatabase", "e", "createTable failed. " + localUnsatisfiedLinkError1);
             return false;
           }
         }
       }
     }
-    log("FTSDatabase", "d", "createTable succeed. " + str2);
+    log("Q.fts.troop.FTSDatabase", "d", "createTable succeed. " + str2);
     return true;
   }
   
@@ -334,7 +337,7 @@ public class FTSDatabase
     b();
     if (!d())
     {
-      log("FTSDatabase", "w", "execSQL failed. FTSDatabase is not available");
+      log("Q.fts.troop.FTSDatabase", "w", "execSQL failed. FTSDatabase is not available");
       return false;
     }
     try
@@ -355,7 +358,7 @@ public class FTSDatabase
     boolean bool1;
     if (!d())
     {
-      log("FTSDatabase", "w", "beginTransaction failed. FTSDatabase is not available");
+      log("Q.fts.troop.FTSDatabase", "w", "beginTransaction failed. FTSDatabase is not available");
       bool1 = false;
     }
     boolean bool2;
@@ -367,10 +370,10 @@ public class FTSDatabase
         bool2 = a("BEGIN;");
         bool1 = bool2;
       } while (bool2);
-      log("FTSDatabase", "e", "beginTransaction failed.");
+      log("Q.fts.troop.FTSDatabase", "e", "beginTransaction failed.");
       bool1 = bool2;
     } while (a("ROLLBACK;"));
-    log("FTSDatabase", "e", "beginTransaction ROLLBACK failed.");
+    log("Q.fts.troop.FTSDatabase", "e", "beginTransaction ROLLBACK failed.");
     return bool2;
   }
   
@@ -380,7 +383,7 @@ public class FTSDatabase
     boolean bool1;
     if (!d())
     {
-      log("FTSDatabase", "w", "commitTransaction failed. FTSDatabase is not available");
+      log("Q.fts.troop.FTSDatabase", "w", "commitTransaction failed. FTSDatabase is not available");
       bool1 = false;
     }
     boolean bool2;
@@ -392,10 +395,10 @@ public class FTSDatabase
         bool2 = a("COMMIT;");
         bool1 = bool2;
       } while (bool2);
-      log("FTSDatabase", "e", "commitTransaction failed.");
+      log("Q.fts.troop.FTSDatabase", "e", "commitTransaction failed.");
       bool1 = bool2;
     } while (a("ROLLBACK;"));
-    log("FTSDatabase", "e", "commitTransaction ROLLBACK failed.");
+    log("Q.fts.troop.FTSDatabase", "e", "commitTransaction ROLLBACK failed.");
     return bool2;
   }
   
@@ -406,7 +409,7 @@ public class FTSDatabase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fts.FTSDatabase
  * JD-Core Version:    0.7.0.1
  */

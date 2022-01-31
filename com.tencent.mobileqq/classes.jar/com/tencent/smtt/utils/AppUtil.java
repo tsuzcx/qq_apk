@@ -1,21 +1,30 @@
 package com.tencent.smtt.utils;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build.VERSION;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
+import com.tencent.smtt.sdk.TbsDownloadConfig;
 import java.io.File;
 import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.net.NetworkInterface;
 import java.security.cert.Certificate;
+import java.util.Collections;
 import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -125,7 +134,7 @@ public class AppUtil
     //   0: aconst_null
     //   1: astore_2
     //   2: aconst_null
-    //   3: astore_0
+    //   3: astore_1
     //   4: aconst_null
     //   5: astore 4
     //   7: getstatic 23	com/tencent/smtt/utils/AppUtil:mCpu	Ljava/lang/String;
@@ -142,158 +151,177 @@ public class AppUtil
     //   31: invokevirtual 137	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
     //   34: invokevirtual 143	java/lang/Process:getInputStream	()Ljava/io/InputStream;
     //   37: invokespecial 146	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   40: astore_1
-    //   41: aload_0
+    //   40: astore_0
+    //   41: aload_1
     //   42: astore_2
-    //   43: aload_1
-    //   44: astore_0
+    //   43: aload_0
+    //   44: astore_1
     //   45: new 148	java/io/BufferedReader
     //   48: dup
-    //   49: aload_1
+    //   49: aload_0
     //   50: invokespecial 151	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   53: astore_3
     //   54: aload_3
     //   55: invokevirtual 154	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   58: ldc 156
     //   60: invokevirtual 159	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   63: ifeq +34 -> 97
+    //   63: ifeq +32 -> 95
     //   66: ldc 161
     //   68: invokestatic 165	com/tencent/smtt/utils/AppUtil:notNullString	(Ljava/lang/String;)Ljava/lang/String;
-    //   71: astore_0
+    //   71: astore_1
     //   72: aload_3
     //   73: ifnull +7 -> 80
     //   76: aload_3
     //   77: invokevirtual 168	java/io/BufferedReader:close	()V
-    //   80: aload_0
+    //   80: aload_1
     //   81: astore_2
-    //   82: aload_1
+    //   82: aload_0
     //   83: ifnull -63 -> 20
     //   86: aload_0
-    //   87: astore_2
-    //   88: aload_1
-    //   89: invokevirtual 169	java/io/InputStreamReader:close	()V
-    //   92: aload_0
-    //   93: areturn
-    //   94: astore_0
-    //   95: aload_2
-    //   96: areturn
-    //   97: ldc 171
-    //   99: invokestatic 176	java/lang/System:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   102: invokestatic 165	com/tencent/smtt/utils/AppUtil:notNullString	(Ljava/lang/String;)Ljava/lang/String;
-    //   105: astore_0
-    //   106: goto -34 -> 72
-    //   109: astore_3
-    //   110: aconst_null
-    //   111: astore_1
-    //   112: aload 4
-    //   114: astore_2
-    //   115: aload_1
-    //   116: astore_0
-    //   117: ldc 171
-    //   119: invokestatic 176	java/lang/System:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   122: invokestatic 165	com/tencent/smtt/utils/AppUtil:notNullString	(Ljava/lang/String;)Ljava/lang/String;
-    //   125: astore 5
-    //   127: aload 4
-    //   129: astore_2
-    //   130: aload_1
-    //   131: astore_0
-    //   132: aload_3
-    //   133: invokevirtual 177	java/lang/Throwable:printStackTrace	()V
-    //   136: aload 4
-    //   138: ifnull +8 -> 146
-    //   141: aload 4
-    //   143: invokevirtual 168	java/io/BufferedReader:close	()V
-    //   146: aload 5
-    //   148: astore_2
-    //   149: aload_1
-    //   150: ifnull -130 -> 20
-    //   153: aload 5
-    //   155: astore_2
-    //   156: aload_1
-    //   157: invokevirtual 169	java/io/InputStreamReader:close	()V
-    //   160: aload 5
-    //   162: areturn
-    //   163: astore_3
-    //   164: aconst_null
-    //   165: astore_0
-    //   166: aload_2
-    //   167: ifnull +7 -> 174
-    //   170: aload_2
-    //   171: invokevirtual 168	java/io/BufferedReader:close	()V
-    //   174: aload_0
-    //   175: ifnull +7 -> 182
-    //   178: aload_0
-    //   179: invokevirtual 169	java/io/InputStreamReader:close	()V
-    //   182: aload_3
-    //   183: athrow
-    //   184: astore_1
-    //   185: goto -11 -> 174
-    //   188: astore_0
-    //   189: goto -7 -> 182
-    //   192: astore_0
-    //   193: goto -47 -> 146
-    //   196: astore_2
-    //   197: goto -117 -> 80
-    //   200: astore_3
-    //   201: goto -35 -> 166
-    //   204: astore_0
-    //   205: aload_3
-    //   206: astore_2
-    //   207: aload_0
-    //   208: astore_3
-    //   209: aload_1
-    //   210: astore_0
-    //   211: goto -45 -> 166
-    //   214: astore_3
-    //   215: goto -103 -> 112
-    //   218: astore_0
-    //   219: aload_3
-    //   220: astore 4
-    //   222: aload_0
-    //   223: astore_3
-    //   224: goto -112 -> 112
+    //   87: invokevirtual 169	java/io/InputStreamReader:close	()V
+    //   90: aload_1
+    //   91: areturn
+    //   92: astore_0
+    //   93: aload_1
+    //   94: areturn
+    //   95: ldc 171
+    //   97: invokestatic 176	java/lang/System:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   100: invokestatic 165	com/tencent/smtt/utils/AppUtil:notNullString	(Ljava/lang/String;)Ljava/lang/String;
+    //   103: astore_1
+    //   104: goto -32 -> 72
+    //   107: astore_3
+    //   108: aconst_null
+    //   109: astore_0
+    //   110: aload 4
+    //   112: astore_2
+    //   113: aload_0
+    //   114: astore_1
+    //   115: ldc 171
+    //   117: invokestatic 176	java/lang/System:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   120: invokestatic 165	com/tencent/smtt/utils/AppUtil:notNullString	(Ljava/lang/String;)Ljava/lang/String;
+    //   123: astore 5
+    //   125: aload 4
+    //   127: astore_2
+    //   128: aload_0
+    //   129: astore_1
+    //   130: aload_3
+    //   131: invokevirtual 177	java/lang/Throwable:printStackTrace	()V
+    //   134: aload 4
+    //   136: ifnull +8 -> 144
+    //   139: aload 4
+    //   141: invokevirtual 168	java/io/BufferedReader:close	()V
+    //   144: aload 5
+    //   146: astore_2
+    //   147: aload_0
+    //   148: ifnull -128 -> 20
+    //   151: aload_0
+    //   152: invokevirtual 169	java/io/InputStreamReader:close	()V
+    //   155: aload 5
+    //   157: areturn
+    //   158: astore_0
+    //   159: aload 5
+    //   161: areturn
+    //   162: astore_3
+    //   163: aconst_null
+    //   164: astore_0
+    //   165: aload_2
+    //   166: ifnull +7 -> 173
+    //   169: aload_2
+    //   170: invokevirtual 168	java/io/BufferedReader:close	()V
+    //   173: aload_0
+    //   174: ifnull +7 -> 181
+    //   177: aload_0
+    //   178: invokevirtual 169	java/io/InputStreamReader:close	()V
+    //   181: aload_3
+    //   182: athrow
+    //   183: astore_2
+    //   184: goto -104 -> 80
+    //   187: astore_1
+    //   188: goto -44 -> 144
+    //   191: astore_1
+    //   192: goto -19 -> 173
+    //   195: astore_0
+    //   196: goto -15 -> 181
+    //   199: astore_3
+    //   200: aload_1
+    //   201: astore_0
+    //   202: goto -37 -> 165
+    //   205: astore_1
+    //   206: aload_3
+    //   207: astore_2
+    //   208: aload_1
+    //   209: astore_3
+    //   210: goto -45 -> 165
+    //   213: astore_3
+    //   214: goto -104 -> 110
+    //   217: astore_1
+    //   218: aload_3
+    //   219: astore 4
+    //   221: aload_1
+    //   222: astore_3
+    //   223: goto -113 -> 110
     // Local variable table:
     //   start	length	slot	name	signature
-    //   3	90	0	localObject1	Object
-    //   94	1	0	localIOException1	java.io.IOException
-    //   105	74	0	localObject2	Object
-    //   188	1	0	localIOException2	java.io.IOException
-    //   192	1	0	localIOException3	java.io.IOException
-    //   204	4	0	localObject3	Object
-    //   210	1	0	localObject4	Object
-    //   218	5	0	localThrowable1	Throwable
-    //   40	117	1	localInputStreamReader	java.io.InputStreamReader
-    //   184	26	1	localIOException4	java.io.IOException
-    //   1	170	2	localObject5	Object
-    //   196	1	2	localIOException5	java.io.IOException
-    //   206	1	2	localObject6	Object
+    //   40	47	0	localInputStreamReader	java.io.InputStreamReader
+    //   92	1	0	localIOException1	java.io.IOException
+    //   109	43	0	localObject1	Object
+    //   158	1	0	localIOException2	java.io.IOException
+    //   164	14	0	localObject2	Object
+    //   195	1	0	localIOException3	java.io.IOException
+    //   201	1	0	localIOException4	java.io.IOException
+    //   3	127	1	localObject3	Object
+    //   187	1	1	localIOException5	java.io.IOException
+    //   191	10	1	localIOException6	java.io.IOException
+    //   205	4	1	localObject4	Object
+    //   217	5	1	localThrowable1	Throwable
+    //   1	169	2	localObject5	Object
+    //   183	1	2	localIOException7	java.io.IOException
+    //   207	1	2	localObject6	Object
     //   53	24	3	localBufferedReader	java.io.BufferedReader
-    //   109	24	3	localThrowable2	Throwable
-    //   163	20	3	localObject7	Object
-    //   200	6	3	localObject8	Object
-    //   208	1	3	localObject9	Object
-    //   214	6	3	localThrowable3	Throwable
-    //   223	1	3	localThrowable4	Throwable
-    //   5	216	4	localObject10	Object
-    //   125	36	5	str	String
+    //   107	24	3	localThrowable2	Throwable
+    //   162	20	3	localObject7	Object
+    //   199	8	3	localObject8	Object
+    //   209	1	3	localObject9	Object
+    //   213	6	3	localThrowable3	Throwable
+    //   222	1	3	localThrowable4	Throwable
+    //   5	215	4	localObject10	Object
+    //   123	37	5	str	String
     // Exception table:
     //   from	to	target	type
-    //   88	92	94	java/io/IOException
-    //   156	160	94	java/io/IOException
-    //   22	41	109	java/lang/Throwable
-    //   22	41	163	finally
-    //   170	174	184	java/io/IOException
-    //   178	182	188	java/io/IOException
-    //   141	146	192	java/io/IOException
-    //   76	80	196	java/io/IOException
-    //   45	54	200	finally
-    //   117	127	200	finally
-    //   132	136	200	finally
-    //   54	72	204	finally
-    //   97	106	204	finally
-    //   45	54	214	java/lang/Throwable
-    //   54	72	218	java/lang/Throwable
-    //   97	106	218	java/lang/Throwable
+    //   86	90	92	java/io/IOException
+    //   22	41	107	java/lang/Throwable
+    //   151	155	158	java/io/IOException
+    //   22	41	162	finally
+    //   76	80	183	java/io/IOException
+    //   139	144	187	java/io/IOException
+    //   169	173	191	java/io/IOException
+    //   177	181	195	java/io/IOException
+    //   45	54	199	finally
+    //   115	125	199	finally
+    //   130	134	199	finally
+    //   54	72	205	finally
+    //   95	104	205	finally
+    //   45	54	213	java/lang/Throwable
+    //   54	72	217	java/lang/Throwable
+    //   95	104	217	java/lang/Throwable
+  }
+  
+  public static String getGuid(Context paramContext)
+  {
+    String str = "";
+    try
+    {
+      paramContext = TbsDownloadConfig.getInstance(paramContext).mPreferences.getString("tbs_guid", "");
+      Log.d("0816", "getGuid guid is " + paramContext);
+      return paramContext;
+    }
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        paramContext = str;
+      }
+    }
   }
   
   public static String getImei(Context paramContext)
@@ -332,29 +360,69 @@ public class AppUtil
   
   public static String getMacAddress(Context paramContext)
   {
-    if (!TextUtils.isEmpty(mMac)) {
-      return mMac;
-    }
-    do
+    if ((!TextUtils.isEmpty(mMac)) || (Build.VERSION.SDK_INT < 23)) {}
+    for (;;)
     {
       try
       {
         paramContext = (WifiManager)paramContext.getApplicationContext().getSystemService("wifi");
-        if (paramContext == null) {
-          paramContext = null;
-        } else {
-          paramContext = paramContext.getConnectionInfo();
+        if (paramContext != null) {
+          continue;
         }
+        paramContext = null;
       }
       catch (Exception paramContext)
       {
         paramContext.printStackTrace();
-        return "";
+        continue;
       }
+      mMac = paramContext;
+      return mMac;
+      paramContext = paramContext.getConnectionInfo();
+      break label80;
       paramContext = paramContext.getMacAddress();
-      return paramContext;
-    } while (paramContext != null);
-    return "";
+      continue;
+      mMac = getMacAddressByNetworkInterfaceName();
+      continue;
+      label80:
+      if (paramContext == null) {
+        paramContext = "";
+      }
+    }
+  }
+  
+  public static String getMacAddressByNetworkInterfaceName()
+  {
+    try
+    {
+      Object localObject1 = Collections.list(NetworkInterface.getNetworkInterfaces()).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = (NetworkInterface)((Iterator)localObject1).next();
+        if (((NetworkInterface)localObject2).getName().equalsIgnoreCase("wlan0"))
+        {
+          localObject1 = ((NetworkInterface)localObject2).getHardwareAddress();
+          if (localObject1 == null) {
+            return "";
+          }
+          localObject2 = new StringBuilder();
+          int j = localObject1.length;
+          int i = 0;
+          while (i < j)
+          {
+            ((StringBuilder)localObject2).append(String.format("%02X:", new Object[] { Byte.valueOf(localObject1[i]) }));
+            i += 1;
+          }
+          if (((StringBuilder)localObject2).length() > 0) {
+            ((StringBuilder)localObject2).deleteCharAt(((StringBuilder)localObject2).length() - 1);
+          }
+          localObject1 = ((StringBuilder)localObject2).toString();
+          return localObject1;
+        }
+      }
+    }
+    catch (Exception localException) {}
+    return "02:00:00:00:00:00";
   }
   
   private static PackageInfo getPackageArchiveInfo(String paramString, int paramInt)
@@ -372,7 +440,7 @@ public class AppUtil
         {
           localMethod1 = localObject1[i];
           if (localMethod1.getName().compareTo("android.content.pm.PackageParser$Package") != 0) {
-            break label345;
+            break label353;
           }
           Object localObject3 = ((Class)localObject2).getConstructor(new Class[] { String.class });
           Method localMethod2 = ((Class)localObject2).getDeclaredMethod("parsePackage", new Class[] { File.class, String.class, DisplayMetrics.class, Integer.TYPE });
@@ -403,76 +471,231 @@ public class AppUtil
       }
       Method localMethod1 = null;
       continue;
-      label345:
+      label353:
       i += 1;
     }
   }
   
-  public static String getSignatureFromApk(Context paramContext, File paramFile)
-  {
-    try
-    {
-      if (!paramContext.getApplicationContext().getPackageName().contains("com.jd.jrapp")) {
-        break label52;
-      }
-      TbsLog.i("AppUtil", "[AppUtil.getSignatureFromApk]  #1");
-      localObject2 = getSignatureFromApk(paramFile);
-      if (localObject2 == null) {
-        break label52;
-      }
-      TbsLog.i("AppUtil", "[AppUtil.getSignatureFromApk]  #2");
-    }
-    catch (Throwable localThrowable)
-    {
-      label52:
-      Object localObject1;
-      do
-      {
-        TbsLog.i("AppUtil", "[AppUtil.getSignatureFromApk]  #3");
-        TbsLog.i("AppUtil", "[AppUtil.getSignatureFromApk]  #4");
-        Object localObject2 = getSignatureFromApk(paramContext, paramFile, false);
-        TbsLog.i("AppUtil", "[AppUtil.getSignatureFromApk]  android api signature=" + (String)localObject2);
-        localObject1 = localObject2;
-        if (localObject2 == null)
-        {
-          localObject1 = getSignatureFromApk(paramFile);
-          TbsLog.i("AppUtil", "[AppUtil.getSignatureFromApk]  java get signature=" + (String)localObject1);
-        }
-        localObject2 = localObject1;
-      } while (localObject1 != null);
-      paramContext = getSignatureFromApk(paramContext, paramFile, true);
-      TbsLog.i("AppUtil", "[AppUtil.getSignatureFromApk]  android reflection signature=" + paramContext);
-    }
-    return localObject2;
-    return paramContext;
-  }
-  
   private static String getSignatureFromApk(Context paramContext, File paramFile, boolean paramBoolean)
   {
-    Object localObject = null;
-    if (paramBoolean)
+    if (paramBoolean) {}
+    try
     {
       paramContext = getPackageArchiveInfo(paramFile.getAbsolutePath(), 65);
-      if (paramContext == null) {
-        break label80;
-      }
-      if ((paramContext.signatures == null) || (paramContext.signatures.length <= 0)) {
-        break label72;
-      }
-    }
-    label72:
-    label80:
-    for (paramContext = paramContext.signatures[0];; paramContext = null)
-    {
-      paramFile = localObject;
       if (paramContext != null) {
-        paramFile = paramContext.toCharsString();
+        if ((paramContext.signatures == null) || (paramContext.signatures.length <= 0)) {}
       }
-      return paramFile;
-      paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramFile.getAbsolutePath(), 65);
-      break;
-      TbsLog.w("AppUtil", "[getSignatureFromApk] pkgInfo is not null BUT signatures is null!");
+      for (paramContext = paramContext.signatures[0];; paramContext = null)
+      {
+        if (paramContext == null) {
+          break label111;
+        }
+        return paramContext.toCharsString();
+        paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramFile.getAbsolutePath(), 65);
+        break;
+        TbsLog.w("AppUtil", "[getSignatureFromApk] pkgInfo is not null BUT signatures is null!");
+      }
+      return null;
     }
+    catch (Exception paramContext)
+    {
+      TbsLog.i("AppUtil", "getSign " + paramFile + "failed");
+    }
+  }
+  
+  /* Error */
+  public static String getSignatureFromApk(Context paramContext, boolean paramBoolean, File paramFile)
+  {
+    // Byte code:
+    //   0: aload_2
+    //   1: ifnull +10 -> 11
+    //   4: aload_2
+    //   5: invokevirtual 429	java/io/File:exists	()Z
+    //   8: ifne +10 -> 18
+    //   11: ldc 17
+    //   13: astore 4
+    //   15: aload 4
+    //   17: areturn
+    //   18: iload_1
+    //   19: ifeq +74 -> 93
+    //   22: iconst_2
+    //   23: newarray byte
+    //   25: astore 5
+    //   27: new 431	java/io/RandomAccessFile
+    //   30: dup
+    //   31: aload_2
+    //   32: ldc_w 433
+    //   35: invokespecial 436	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   38: astore 4
+    //   40: aload 4
+    //   42: astore_3
+    //   43: aload 4
+    //   45: aload 5
+    //   47: invokevirtual 440	java/io/RandomAccessFile:read	([B)I
+    //   50: pop
+    //   51: aload 4
+    //   53: astore_3
+    //   54: new 88	java/lang/String
+    //   57: dup
+    //   58: aload 5
+    //   60: invokespecial 443	java/lang/String:<init>	([B)V
+    //   63: ldc_w 445
+    //   66: invokevirtual 292	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   69: ifne +19 -> 88
+    //   72: aload 4
+    //   74: invokevirtual 446	java/io/RandomAccessFile:close	()V
+    //   77: ldc 17
+    //   79: areturn
+    //   80: astore_0
+    //   81: aload_0
+    //   82: invokevirtual 447	java/io/IOException:printStackTrace	()V
+    //   85: ldc 17
+    //   87: areturn
+    //   88: aload 4
+    //   90: invokevirtual 446	java/io/RandomAccessFile:close	()V
+    //   93: aload_0
+    //   94: invokevirtual 240	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   97: invokevirtual 64	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   100: ldc_w 449
+    //   103: invokevirtual 159	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   106: ifeq +39 -> 145
+    //   109: ldc 8
+    //   111: ldc_w 451
+    //   114: invokestatic 425	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   117: aload_2
+    //   118: invokestatic 454	com/tencent/smtt/utils/AppUtil:getSignatureFromApk	(Ljava/io/File;)Ljava/lang/String;
+    //   121: astore_3
+    //   122: aload_3
+    //   123: ifnull +22 -> 145
+    //   126: ldc 8
+    //   128: ldc_w 456
+    //   131: invokestatic 425	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   134: aload_3
+    //   135: areturn
+    //   136: astore_3
+    //   137: ldc 8
+    //   139: ldc_w 458
+    //   142: invokestatic 425	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   145: ldc 8
+    //   147: ldc_w 460
+    //   150: invokestatic 425	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   153: aload_0
+    //   154: aload_2
+    //   155: iconst_0
+    //   156: invokestatic 462	com/tencent/smtt/utils/AppUtil:getSignatureFromApk	(Landroid/content/Context;Ljava/io/File;Z)Ljava/lang/String;
+    //   159: astore 4
+    //   161: ldc 8
+    //   163: new 199	java/lang/StringBuilder
+    //   166: dup
+    //   167: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   170: ldc_w 464
+    //   173: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   176: aload 4
+    //   178: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   181: invokevirtual 209	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   184: invokestatic 425	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   187: aload 4
+    //   189: astore_3
+    //   190: aload 4
+    //   192: ifnonnull +33 -> 225
+    //   195: aload_2
+    //   196: invokestatic 454	com/tencent/smtt/utils/AppUtil:getSignatureFromApk	(Ljava/io/File;)Ljava/lang/String;
+    //   199: astore_3
+    //   200: ldc 8
+    //   202: new 199	java/lang/StringBuilder
+    //   205: dup
+    //   206: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   209: ldc_w 466
+    //   212: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   215: aload_3
+    //   216: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   219: invokevirtual 209	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   222: invokestatic 425	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   225: aload_3
+    //   226: astore 4
+    //   228: aload_3
+    //   229: ifnonnull -214 -> 15
+    //   232: aload_0
+    //   233: aload_2
+    //   234: iconst_1
+    //   235: invokestatic 462	com/tencent/smtt/utils/AppUtil:getSignatureFromApk	(Landroid/content/Context;Ljava/io/File;Z)Ljava/lang/String;
+    //   238: astore_0
+    //   239: ldc 8
+    //   241: new 199	java/lang/StringBuilder
+    //   244: dup
+    //   245: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   248: ldc_w 468
+    //   251: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   254: aload_0
+    //   255: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   258: invokevirtual 209	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   261: invokestatic 425	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   264: aload_0
+    //   265: areturn
+    //   266: astore_3
+    //   267: aload_3
+    //   268: invokevirtual 447	java/io/IOException:printStackTrace	()V
+    //   271: goto -178 -> 93
+    //   274: astore 5
+    //   276: aconst_null
+    //   277: astore 4
+    //   279: aload 4
+    //   281: astore_3
+    //   282: aload 5
+    //   284: invokevirtual 58	java/lang/Exception:printStackTrace	()V
+    //   287: aload 4
+    //   289: invokevirtual 446	java/io/RandomAccessFile:close	()V
+    //   292: goto -199 -> 93
+    //   295: astore_3
+    //   296: aload_3
+    //   297: invokevirtual 447	java/io/IOException:printStackTrace	()V
+    //   300: goto -207 -> 93
+    //   303: astore_0
+    //   304: aconst_null
+    //   305: astore_3
+    //   306: aload_3
+    //   307: invokevirtual 446	java/io/RandomAccessFile:close	()V
+    //   310: aload_0
+    //   311: athrow
+    //   312: astore_2
+    //   313: aload_2
+    //   314: invokevirtual 447	java/io/IOException:printStackTrace	()V
+    //   317: goto -7 -> 310
+    //   320: astore_0
+    //   321: goto -15 -> 306
+    //   324: astore 5
+    //   326: goto -47 -> 279
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	329	0	paramContext	Context
+    //   0	329	1	paramBoolean	boolean
+    //   0	329	2	paramFile	File
+    //   42	93	3	localObject1	Object
+    //   136	1	3	localThrowable	Throwable
+    //   189	40	3	localObject2	Object
+    //   266	2	3	localIOException1	java.io.IOException
+    //   281	1	3	localObject3	Object
+    //   295	2	3	localIOException2	java.io.IOException
+    //   305	2	3	localObject4	Object
+    //   13	275	4	localObject5	Object
+    //   25	34	5	arrayOfByte	byte[]
+    //   274	9	5	localException1	Exception
+    //   324	1	5	localException2	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   72	77	80	java/io/IOException
+    //   93	122	136	java/lang/Throwable
+    //   126	134	136	java/lang/Throwable
+    //   88	93	266	java/io/IOException
+    //   22	40	274	java/lang/Exception
+    //   287	292	295	java/io/IOException
+    //   22	40	303	finally
+    //   306	310	312	java/io/IOException
+    //   43	51	320	finally
+    //   54	72	320	finally
+    //   282	287	320	finally
+    //   43	51	324	java/lang/Exception
+    //   54	72	324	java/lang/Exception
   }
   
   private static String getSignatureFromApk(File paramFile)
@@ -523,8 +746,44 @@ public class AppUtil
     return str1;
   }
   
+  public static boolean is64BitImpl()
+  {
+    try
+    {
+      if (Build.VERSION.SDK_INT < 21) {
+        return false;
+      }
+      Object localObject1 = Class.forName("dalvik.system.VMRuntime");
+      if (localObject1 == null) {
+        return false;
+      }
+      Object localObject2 = ((Class)localObject1).getDeclaredMethod("getRuntime", new Class[0]);
+      if (localObject2 == null) {
+        return false;
+      }
+      localObject2 = ((Method)localObject2).invoke(null, new Object[0]);
+      if (localObject2 == null) {
+        return false;
+      }
+      localObject1 = ((Class)localObject1).getDeclaredMethod("is64Bit", new Class[0]);
+      if (localObject1 == null) {
+        return false;
+      }
+      localObject1 = ((Method)localObject1).invoke(localObject2, new Object[0]);
+      if ((localObject1 instanceof Boolean))
+      {
+        boolean bool = ((Boolean)localObject1).booleanValue();
+        return bool;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+    return false;
+  }
+  
   private static Certificate[] loadCertificates(JarFile paramJarFile, JarEntry paramJarEntry, byte[] paramArrayOfByte)
-    throws Exception
   {
     paramJarFile = paramJarFile.getInputStream(paramJarEntry);
     while (paramJarFile.read(paramArrayOfByte, 0, paramArrayOfByte.length) != -1) {}
@@ -542,6 +801,19 @@ public class AppUtil
       str = "";
     }
     return str;
+  }
+  
+  public static void saveGuid(Context paramContext, String paramString)
+  {
+    Log.d("0816", "saveGuid guid is " + paramString);
+    try
+    {
+      paramContext = TbsDownloadConfig.getInstance(paramContext);
+      paramContext.mSyncMap.put("tbs_guid", paramString);
+      paramContext.commit();
+      return;
+    }
+    catch (Exception paramContext) {}
   }
   
   private static String toCharsString(byte[] paramArrayOfByte)
@@ -580,7 +852,7 @@ public class AppUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.utils.AppUtil
  * JD-Core Version:    0.7.0.1
  */

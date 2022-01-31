@@ -1,29 +1,48 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.AsyncTask;
+import android.os.Handler;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.data.MessageRecord;
 
 class acml
-  implements Runnable
+  extends AsyncTask<MessageRecord, Object, Object>
 {
-  acml(acmj paramacmj, int paramInt1, boolean paramBoolean, int paramInt2, String paramString) {}
+  acml(acmk paramacmk) {}
   
-  public void run()
+  protected Object a(MessageRecord... paramVarArgs)
   {
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Acmj.a.a(this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
+    if (this.a.a.d) {
+      if (this.a.a.jdField_a_of_type_Awhr != null) {
+        this.a.a.jdField_a_of_type_Awhr.a(paramVarArgs[0], true);
+      }
     }
     for (;;)
     {
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "js call loadFinish  process Over");
-      return;
-      if (this.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_Acmj.a.b(this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
+      if ((paramVarArgs[0] instanceof MessageForApollo)) {
+        alaz.a(this.a.a.app, "chat_history_start_del_msg");
       }
+      return null;
+      this.a.a.app.a().a(paramVarArgs[0], true);
+    }
+  }
+  
+  protected void onPostExecute(Object paramObject)
+  {
+    super.onPostExecute(paramObject);
+    this.a.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    if ((this.a.a.jdField_a_of_type_Bety != null) && (this.a.a.jdField_a_of_type_Bety.isShowing())) {
+      this.a.a.jdField_a_of_type_Bety.dismiss();
+    }
+    if (this.a.a.d) {
+      this.a.a.a(11, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acml
  * JD-Core Version:    0.7.0.1
  */

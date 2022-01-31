@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/iew" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <SurfaceView android:id="@id/fyc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.qqstory.utils.FocusOverlay.FocusOverlay android:id="@id/cgl" android:layout_width="fill_parent" android:layout_height="500.0dip" android:layout_below="@id/jtw" />
+    <VideoView android:id="@id/kvb" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/bo4" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:id="@id/jtn" android:background="@drawable/ame" android:layout_width="fill_parent" android:layout_height="90.0dip" />
+    <LinearLayout android:id="@id/jtw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <ImageButton android:id="@id/az7" android:background="@null" android:padding="17.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/fjv" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <ImageButton android:id="@id/cct" android:background="@null" android:padding="17.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/fjw" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <ImageButton android:id="@id/j98" android:background="#00ffffff" android:padding="17.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/fjx" />
+    </LinearLayout>
+    <ProgressBar android:id="@id/jlp" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="7.0dip" android:max="1000" android:progress="0" android:progressDrawable="@drawable/ajr" style="?android:progressBarStyleHorizontal" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:id="@id/kuv" android:background="@drawable/akj" android:padding="5.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginBottom="65.0dip" android:text="@string/ra6" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/b7r" android:paddingRight="18.0dip" android:paddingBottom="19.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/fg2" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

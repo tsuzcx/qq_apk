@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
-public final class adas
-  implements Parcelable.Creator
+public class adas
+  implements DialogInterface.OnClickListener
 {
-  public OfflineFileInfo a(Parcel paramParcel)
-  {
-    return new OfflineFileInfo(paramParcel);
-  }
+  public adas(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public OfflineFileInfo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new OfflineFileInfo[paramInt];
+    this.a.C();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adas
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,11 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.dataline.mpfile.LiteMpFileUploadActivity;
-import com.dataline.mpfile.MpFileConstant;
+import com.dataline.mpfile.LiteMpFileMainActivity;
 
 public class dr
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public dr(LiteMpFileUploadActivity paramLiteMpFileUploadActivity) {}
+  public dr(LiteMpFileMainActivity paramLiteMpFileMainActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent != null)
-    {
-      paramContext = paramIntent.getAction();
-      if ((paramContext == null) || (!paramContext.equals(MpFileConstant.d))) {}
-    }
-  }
+  public void run() {}
 }
 
 

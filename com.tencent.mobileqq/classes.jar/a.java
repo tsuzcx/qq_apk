@@ -3,7 +3,7 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
 public final class a
-  implements Parcelable.Creator
+  implements Parcelable.Creator<QQHeadInfo>
 {
   public QQHeadInfo a(Parcel paramParcel)
   {

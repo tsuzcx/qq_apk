@@ -1,18 +1,19 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 public class aisx
-  implements View.OnClickListener
+  extends aira
 {
-  public aisx(TribeVideoPreviewFragment paramTribeVideoPreviewFragment, String paramString) {}
-  
-  public void onClick(View paramView)
+  aisx(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.jdField_a_of_type_JavaLangString);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().app, "dc00899", "Grp_tribe", "", "post", "save_video", 0, 0, "", "", "", "");
+    super(paramNewPhotoListActivity);
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    this.mPhotoCommonData.a = 6291456;
+    paramIntent.putExtra("PhotoConst.SHOULD_SEND_RAW_PHOTO", true);
   }
 }
 

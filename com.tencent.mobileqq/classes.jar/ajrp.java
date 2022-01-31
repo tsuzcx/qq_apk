@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajrp
-  implements Runnable
+  implements ajwh
 {
-  public ajrp(AvatarWallAdapter paramAvatarWallAdapter, TroopManager paramTroopManager, TroopInfo paramTroopInfo) {}
+  public ajrp(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void run()
+  public void a_(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "onPictureToken path " + paramString);
+    }
+    this.a.a.b();
+    NewFlowCameraActivity.a(this.a, paramString, true);
   }
 }
 

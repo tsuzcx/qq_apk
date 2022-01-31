@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_service$ReqRecordZombieRead
-  extends MessageMicro
+  extends MessageMicro<ReqRecordZombieRead>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field newest_video_ts = PBField.initUInt64(0L);
@@ -22,7 +22,7 @@ public final class qqstory_service$ReqRecordZombieRead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqRecordZombieRead
  * JD-Core Version:    0.7.0.1
  */

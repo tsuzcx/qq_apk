@@ -1,21 +1,27 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload.Listener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
+import com.tencent.mobileqq.haoliyou.JefsClass;
 
 public class anvr
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public anvr(EditWebVideoHallowenUpload paramEditWebVideoHallowenUpload) {}
+  public anvr(JumpConfirmFragment paramJumpConfirmFragment) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (EditWebVideoHallowenUpload.a(this.a) != null) {
-      EditWebVideoHallowenUpload.a(this.a).b();
+    JefsClass.getInstance().b(JumpConfirmFragment.a(this.a), JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a));
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anvr
  * JD-Core Version:    0.7.0.1
  */

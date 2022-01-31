@@ -17,9 +17,9 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cuu;
-import cuv;
-import cuw;
+import coo;
+import cop;
+import coq;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -35,7 +35,7 @@ public class FriendProfileImagePortraits
   protected static final int d = 2;
   int jdField_a_of_type_Int;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new cuv(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new cop(this);
   protected TransProcessorHandler a;
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   protected List a;
@@ -47,7 +47,7 @@ public class FriendProfileImagePortraits
   public FriendProfileImagePortraits(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new cuu(this);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new coo(this);
   }
   
   private void a()
@@ -302,7 +302,7 @@ public class FriendProfileImagePortraits
         if ((this.jdField_a_of_type_JavaUtilStack == null) || (this.jdField_a_of_type_AndroidOsHandler == null))
         {
           this.jdField_a_of_type_JavaUtilStack = new Stack();
-          this.jdField_a_of_type_AndroidOsHandler = new cuw(this);
+          this.jdField_a_of_type_AndroidOsHandler = new coq(this);
         }
         if (this.jdField_a_of_type_JavaUtilStack.size() < 2) {
           break label227;

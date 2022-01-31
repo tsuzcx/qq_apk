@@ -1,33 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoRepository;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.ttpic.openapi.config.BeautyRealConfig.TYPE;
 
 public class lrr
-  implements Runnable
 {
-  public lrr(ReadInJoyUserInfoRepository paramReadInJoyUserInfoRepository, int paramInt) {}
+  public final int a;
+  final BeautyRealConfig.TYPE a;
+  final int b;
+  final int c;
+  public int d;
   
-  public void run()
+  lrr(BeautyRealConfig.TYPE paramTYPE, int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject = ReadInJoyUserInfoRepository.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoRepository).a(ReadInJoyUserInfo.class, true, null, null, null, null, null, String.valueOf(this.jdField_a_of_type_Int));
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        ReadInJoyUserInfo localReadInJoyUserInfo = (ReadInJoyUserInfo)((Iterator)localObject).next();
-        QLog.d("ReadInJoyUserInfoRepository", 2, new Object[] { "loadReadInJoyUserInfoFromDB, userInfo = ", localReadInJoyUserInfo, Character.valueOf('\n') });
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoRepository.a("", localReadInJoyUserInfo.md5Uin, localReadInJoyUserInfo, false);
-      }
-    }
+    this.jdField_a_of_type_ComTencentTtpicOpenapiConfigBeautyRealConfig$TYPE = paramTYPE;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.d = paramInt2;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lrr
  * JD-Core Version:    0.7.0.1
  */

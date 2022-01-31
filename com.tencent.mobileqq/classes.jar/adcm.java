@@ -1,28 +1,19 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.os.Handler.Callback;
+import android.os.Message;
 
 class adcm
-  implements FMDialogUtil.FMDialogInterface
+  implements Handler.Callback
 {
   adcm(adcl paramadcl) {}
   
-  public void a()
+  public boolean handleMessage(Message paramMessage)
   {
-    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().a(this.a.a.c());
-    if (this.a.a.a != null) {
-      this.a.a.a.d();
-    }
+    return true;
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adcm
  * JD-Core Version:    0.7.0.1
  */

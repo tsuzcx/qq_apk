@@ -1,27 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.animation.Animator;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 
-public class aexu
-  implements View.OnTouchListener
+public abstract interface aexu
 {
-  public aexu(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public abstract void a(Animator paramAnimator, int paramInt);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      if (!ShortVideoCommentsView.a(this.a)) {}
-      this.a.l();
-      ShortVideoCommentsView.b(this.a);
-    }
-    return false;
-  }
+  public abstract void a(LottieDrawable paramLottieDrawable, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aexu
  * JD-Core Version:    0.7.0.1
  */

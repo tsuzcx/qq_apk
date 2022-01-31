@@ -13,11 +13,12 @@ public final class GetTroopMemberListReq
   public long NextUin;
   public long ReqType;
   public long Version;
+  public byte cRichCardNameVer;
   public long uin;
   
   public GetTroopMemberListReq() {}
   
-  public GetTroopMemberListReq(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
+  public GetTroopMemberListReq(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, byte paramByte)
   {
     this.uin = paramLong1;
     this.GroupCode = paramLong2;
@@ -26,6 +27,7 @@ public final class GetTroopMemberListReq
     this.Version = paramLong5;
     this.ReqType = paramLong6;
     this.GetListAppointTime = paramLong7;
+    this.cRichCardNameVer = paramByte;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -37,6 +39,7 @@ public final class GetTroopMemberListReq
     this.Version = paramJceInputStream.read(this.Version, 4, false);
     this.ReqType = paramJceInputStream.read(this.ReqType, 5, false);
     this.GetListAppointTime = paramJceInputStream.read(this.GetListAppointTime, 6, false);
+    this.cRichCardNameVer = paramJceInputStream.read(this.cRichCardNameVer, 7, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -48,11 +51,12 @@ public final class GetTroopMemberListReq
     paramJceOutputStream.write(this.Version, 4);
     paramJceOutputStream.write(this.ReqType, 5);
     paramJceOutputStream.write(this.GetListAppointTime, 6);
+    paramJceOutputStream.write(this.cRichCardNameVer, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     friendlist.GetTroopMemberListReq
  * JD-Core Version:    0.7.0.1
  */

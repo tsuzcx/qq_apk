@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class cell_audio
   extends JceStruct
 {
-  static ArrayList cache_audio = new ArrayList();
-  public ArrayList audio;
+  static ArrayList<s_audio> cache_audio = new ArrayList();
+  public ArrayList<s_audio> audio;
   
   static
   {
@@ -19,7 +19,7 @@ public final class cell_audio
   
   public cell_audio() {}
   
-  public cell_audio(ArrayList paramArrayList)
+  public cell_audio(ArrayList<s_audio> paramArrayList)
   {
     this.audio = paramArrayList;
   }
@@ -38,7 +38,7 @@ public final class cell_audio
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_audio
  * JD-Core Version:    0.7.0.1
  */

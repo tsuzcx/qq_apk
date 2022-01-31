@@ -1,22 +1,17 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.DropdownView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.appcommon.js.BaseJsCallBack;
 
-class hkr
-  implements Runnable
+public class hkr
+  implements DialogInterface.OnClickListener
 {
-  hkr(hkq paramhkq, View paramView) {}
+  public hkr(BaseJsCallBack paramBaseJsCallBack) {}
   
-  public void run()
-  {
-    this.jdField_a_of_type_Hkq.a.jdField_a_of_type_Hkt.showDropDown();
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_Hkq.a.b);
-    this.jdField_a_of_type_Hkq.a.jdField_a_of_type_Boolean = true;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     hkr
  * JD-Core Version:    0.7.0.1
  */

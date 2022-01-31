@@ -1,20 +1,22 @@
 package com.tencent.mobileqq.vas;
 
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashMap;
+import akuf;
+import bdug;
+import org.json.JSONArray;
 
-class VasExtensionHandler$1
-  extends HashMap
+public class VasExtensionHandler$1
+  implements Runnable
 {
-  VasExtensionHandler$1(VasExtensionHandler paramVasExtensionHandler)
+  public VasExtensionHandler$1(bdug parambdug, String paramString, JSONArray paramJSONArray) {}
+  
+  public void run()
   {
-    put("timeStamp", Long.valueOf(ApolloGameUtil.a((QQAppInterface)this.this$0.a)));
+    akuf.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasExtensionHandler.1
  * JD-Core Version:    0.7.0.1
  */

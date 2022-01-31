@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/a7h" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="top" android:orientation="horizontal" android:id="@id/hph" android:background="@drawable/bw5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_gravity="top" android:orientation="horizontal" android:id="@id/hpi" android:focusable="true" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="2.0dip" android:layout_marginTop="2.0dip">
+            <com.qzone.widget.AvatarImageView android:id="@id/hpe" android:focusable="true" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/g69" android:contentDescription="@string/rlq" />
+            <com.qzone.personalize.flashnickname.ui.FlashCellTextView android:textSize="@dimen/q1" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/hpj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="2.0dip" android:text="user" android:singleLine="true" android:layout_toRightOf="@id/hpe" android:layout_alignParentTop="true" />
+            <ImageView android:gravity="center_vertical" android:id="@id/hpg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:src="@drawable/gjz" android:layout_toRightOf="@id/hpj" android:layout_alignBottom="@id/hpj" />
+            <TextView android:textSize="@dimen/pb" android:textColor="@color/aes" android:ellipsize="none" android:gravity="center_vertical" android:id="@id/hpk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:text="2014.2.24" android:singleLine="true" android:layout_alignLeft="@id/hpj" android:layout_alignParentBottom="true" />
+            <TextView android:textSize="@dimen/pb" android:textColor="@color/aes" android:gravity="center_vertical" android:id="@id/hpf" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:text="@string/rm1" android:singleLine="true" android:layout_toRightOf="@id/hpk" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <TextView android:textSize="15.0sp" android:textColor="@color/aer" android:id="@id/hfr" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/rm2" android:includeFontPadding="false" android:layout_below="@id/hpi" android:layout_alignLeft="@id/hpi" android:lineSpacingExtra="8.0dip" />
+    </RelativeLayout>
+    <RelativeLayout android:background="@drawable/azr" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_below="@id/hph">
+        <RelativeLayout android:id="@id/hli" android:layout_width="fill_parent" android:layout_height="44.0dip">
+            <ImageView android:id="@id/l6o" android:layout_width="@dimen/arq" android:layout_height="@dimen/arp" android:layout_marginLeft="10.0dip" android:src="@drawable/gk0" android:layout_centerVertical="true" />
+            <TextView android:textSize="15.0sp" android:textColor="#ff2d2d2d" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/rme" android:layout_toRightOf="@id/l6o" android:layout_centerVertical="true" />
+            <com.tencent.widget.Switch android:id="@id/hie" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <com.qzone.widget.CommonLine android:id="@id/b5s" android:background="@color/ek" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="10.0dip" android:layout_below="@id/hli" />
+        <RelativeLayout android:id="@id/hlf" android:background="@drawable/geb" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_alignParentBottom="true">
+            <RelativeLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <ImageView android:id="@id/hle" android:layout_width="22.0dip" android:layout_height="18.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/gk0" android:layout_centerVertical="true" />
+                <TextView android:textSize="18.0sp" android:textColor="#ffa64600" android:id="@id/hlh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/i3e" android:layout_toRightOf="@id/hle" android:layout_centerVertical="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

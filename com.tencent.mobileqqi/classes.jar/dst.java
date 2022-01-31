@@ -1,21 +1,33 @@
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import android.view.View;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class dst
-  extends MessageObserver
+  implements ActionSheet.OnButtonClickListener
 {
-  public dst(SubLoginActivity paramSubLoginActivity) {}
+  public dst(TroopRequestActivity paramTroopRequestActivity, ActionSheet paramActionSheet) {}
   
-  public void a(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramString = this.a.getString(2131562520);
-    if (paramSubAccountBackProtocData.p == 0) {}
-    for (int i = 2131563288;; i = 2131563291)
+    switch (paramInt)
     {
-      paramSubAccountBackProtocData = this.a.getString(i);
-      this.a.a(paramString, paramSubAccountBackProtocData, this.a.getString(2131562543), new dsu(this));
+    default: 
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
+    }
+    if (NetworkUtil.e(BaseApplication.getContext())) {
+      TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity);
+    }
+    for (;;)
+    {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "black", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.p, TroopRequestActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity), "", "");
+      break;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 2131562449, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.d());
     }
   }
 }

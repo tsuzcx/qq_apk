@@ -1,20 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.widget.ActionSheet.WatchDismissActions;
+import android.telephony.PhoneStateListener;
+import com.tencent.av.smallscreen.BaseSmallScreenService;
 
 public class mbj
-  implements ActionSheet.WatchDismissActions
+  extends PhoneStateListener
 {
-  public mbj(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  public mbj(BaseSmallScreenService paramBaseSmallScreenService) {}
   
-  public void a()
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    VideoFeedsAdapter.a(this.a).d();
+    super.onCallStateChanged(paramInt, paramString);
+    this.a.a(paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mbj
  * JD-Core Version:    0.7.0.1
  */

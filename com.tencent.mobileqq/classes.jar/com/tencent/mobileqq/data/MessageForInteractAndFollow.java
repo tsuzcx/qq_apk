@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.dating.MsgBoxUtil;
-import com.tencent.mobileqq.text.QQText;
+import apir;
+import bamp;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
@@ -11,7 +11,8 @@ public class MessageForInteractAndFollow
   public static final String TAG = "Q.msg_box.MessageForInteractAndFollow";
   public static final int TYPE_FOLLOW = 2;
   public static final int TYPE_INTERACT = 1;
-  public QQText context;
+  public static final int TYPE_MOMENT = 3;
+  public bamp context;
   public int msgBoxUnreadCount;
   public String rawContext;
   public long timeStamp;
@@ -26,7 +27,7 @@ public class MessageForInteractAndFollow
     this.rawContext = paramObjectInput.readUTF();
     this.timeStamp = paramObjectInput.readLong();
     this.time = this.timeStamp;
-    this.context = MsgBoxUtil.a(this.rawContext, 14);
+    this.context = apir.a(this.rawContext, 14);
   }
   
   private void writeExternal(ObjectOutput paramObjectOutput)
@@ -42,33 +43,33 @@ public class MessageForInteractAndFollow
   protected void doParse()
   {
     // Byte code:
-    //   0: new 84	java/io/ObjectInputStream
+    //   0: new 86	java/io/ObjectInputStream
     //   3: dup
-    //   4: new 86	java/io/ByteArrayInputStream
+    //   4: new 88	java/io/ByteArrayInputStream
     //   7: dup
     //   8: aload_0
-    //   9: getfield 90	com/tencent/mobileqq/data/MessageForInteractAndFollow:msgData	[B
-    //   12: invokespecial 93	java/io/ByteArrayInputStream:<init>	([B)V
-    //   15: invokespecial 96	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   9: getfield 92	com/tencent/mobileqq/data/MessageForInteractAndFollow:msgData	[B
+    //   12: invokespecial 95	java/io/ByteArrayInputStream:<init>	([B)V
+    //   15: invokespecial 98	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   18: astore_2
     //   19: aload_2
     //   20: astore_1
     //   21: aload_0
     //   22: aload_2
-    //   23: invokespecial 98	com/tencent/mobileqq/data/MessageForInteractAndFollow:readExternal	(Ljava/io/ObjectInput;)V
+    //   23: invokespecial 100	com/tencent/mobileqq/data/MessageForInteractAndFollow:readExternal	(Ljava/io/ObjectInput;)V
     //   26: aload_2
     //   27: ifnull +7 -> 34
     //   30: aload_2
-    //   31: invokevirtual 101	java/io/ObjectInputStream:close	()V
+    //   31: invokevirtual 103	java/io/ObjectInputStream:close	()V
     //   34: return
     //   35: astore_1
     //   36: ldc 8
     //   38: iconst_2
     //   39: iconst_3
-    //   40: anewarray 103	java/lang/Object
+    //   40: anewarray 105	java/lang/Object
     //   43: dup
     //   44: iconst_0
-    //   45: ldc 105
+    //   45: ldc 107
     //   47: aastore
     //   48: dup
     //   49: iconst_1
@@ -78,24 +79,24 @@ public class MessageForInteractAndFollow
     //   53: iconst_2
     //   54: aload_1
     //   55: aastore
-    //   56: invokestatic 111	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   56: invokestatic 113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   59: return
     //   60: astore_3
     //   61: aconst_null
     //   62: astore_2
     //   63: aload_2
     //   64: astore_1
-    //   65: invokestatic 115	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   65: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   68: ifeq +28 -> 96
     //   71: aload_2
     //   72: astore_1
     //   73: ldc 8
     //   75: iconst_2
     //   76: iconst_3
-    //   77: anewarray 103	java/lang/Object
+    //   77: anewarray 105	java/lang/Object
     //   80: dup
     //   81: iconst_0
-    //   82: ldc 117
+    //   82: ldc 119
     //   84: aastore
     //   85: dup
     //   86: iconst_1
@@ -105,20 +106,20 @@ public class MessageForInteractAndFollow
     //   90: iconst_2
     //   91: aload_3
     //   92: aastore
-    //   93: invokestatic 111	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   93: invokestatic 113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   96: aload_2
     //   97: ifnull -63 -> 34
     //   100: aload_2
-    //   101: invokevirtual 101	java/io/ObjectInputStream:close	()V
+    //   101: invokevirtual 103	java/io/ObjectInputStream:close	()V
     //   104: return
     //   105: astore_1
     //   106: ldc 8
     //   108: iconst_2
     //   109: iconst_3
-    //   110: anewarray 103	java/lang/Object
+    //   110: anewarray 105	java/lang/Object
     //   113: dup
     //   114: iconst_0
-    //   115: ldc 105
+    //   115: ldc 107
     //   117: aastore
     //   118: dup
     //   119: iconst_1
@@ -128,7 +129,7 @@ public class MessageForInteractAndFollow
     //   123: iconst_2
     //   124: aload_1
     //   125: aastore
-    //   126: invokestatic 111	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   126: invokestatic 113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   129: return
     //   130: astore_2
     //   131: aconst_null
@@ -136,17 +137,17 @@ public class MessageForInteractAndFollow
     //   133: aload_1
     //   134: ifnull +7 -> 141
     //   137: aload_1
-    //   138: invokevirtual 101	java/io/ObjectInputStream:close	()V
+    //   138: invokevirtual 103	java/io/ObjectInputStream:close	()V
     //   141: aload_2
     //   142: athrow
     //   143: astore_1
     //   144: ldc 8
     //   146: iconst_2
     //   147: iconst_3
-    //   148: anewarray 103	java/lang/Object
+    //   148: anewarray 105	java/lang/Object
     //   151: dup
     //   152: iconst_0
-    //   153: ldc 105
+    //   153: ldc 107
     //   155: aastore
     //   156: dup
     //   157: iconst_1
@@ -156,7 +157,7 @@ public class MessageForInteractAndFollow
     //   161: iconst_2
     //   162: aload_1
     //   163: aastore
-    //   164: invokestatic 111	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   164: invokestatic 113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   167: goto -26 -> 141
     //   170: astore_2
     //   171: goto -38 -> 133
@@ -194,7 +195,7 @@ public class MessageForInteractAndFollow
     prewrite();
   }
   
-  protected void postRead()
+  public void postRead()
   {
     parse();
   }
@@ -203,47 +204,47 @@ public class MessageForInteractAndFollow
   public void prewrite()
   {
     // Byte code:
-    //   0: new 127	java/io/ByteArrayOutputStream
+    //   0: new 129	java/io/ByteArrayOutputStream
     //   3: dup
-    //   4: invokespecial 128	java/io/ByteArrayOutputStream:<init>	()V
+    //   4: invokespecial 130	java/io/ByteArrayOutputStream:<init>	()V
     //   7: astore 4
-    //   9: new 130	java/io/ObjectOutputStream
+    //   9: new 132	java/io/ObjectOutputStream
     //   12: dup
     //   13: aload 4
-    //   15: invokespecial 133	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   15: invokespecial 135	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   18: astore_2
     //   19: aload_2
     //   20: astore_1
     //   21: aload_0
     //   22: aload_2
-    //   23: invokespecial 135	com/tencent/mobileqq/data/MessageForInteractAndFollow:writeExternal	(Ljava/io/ObjectOutput;)V
+    //   23: invokespecial 137	com/tencent/mobileqq/data/MessageForInteractAndFollow:writeExternal	(Ljava/io/ObjectOutput;)V
     //   26: aload_2
     //   27: astore_1
     //   28: aload_2
-    //   29: invokevirtual 136	java/io/ObjectOutputStream:close	()V
+    //   29: invokevirtual 138	java/io/ObjectOutputStream:close	()V
     //   32: aload_2
     //   33: astore_1
     //   34: aload_0
     //   35: aload 4
-    //   37: invokevirtual 140	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   40: putfield 90	com/tencent/mobileqq/data/MessageForInteractAndFollow:msgData	[B
+    //   37: invokevirtual 142	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   40: putfield 92	com/tencent/mobileqq/data/MessageForInteractAndFollow:msgData	[B
     //   43: aload_2
     //   44: ifnull +7 -> 51
     //   47: aload_2
-    //   48: invokevirtual 136	java/io/ObjectOutputStream:close	()V
+    //   48: invokevirtual 138	java/io/ObjectOutputStream:close	()V
     //   51: aload 4
-    //   53: invokevirtual 141	java/io/ByteArrayOutputStream:close	()V
+    //   53: invokevirtual 143	java/io/ByteArrayOutputStream:close	()V
     //   56: return
     //   57: astore_1
-    //   58: invokestatic 115	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   58: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   61: ifeq -10 -> 51
     //   64: ldc 8
     //   66: iconst_2
     //   67: iconst_3
-    //   68: anewarray 103	java/lang/Object
+    //   68: anewarray 105	java/lang/Object
     //   71: dup
     //   72: iconst_0
-    //   73: ldc 143
+    //   73: ldc 145
     //   75: aastore
     //   76: dup
     //   77: iconst_1
@@ -253,18 +254,18 @@ public class MessageForInteractAndFollow
     //   81: iconst_2
     //   82: aload_1
     //   83: aastore
-    //   84: invokestatic 111	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   84: invokestatic 113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   87: goto -36 -> 51
     //   90: astore_1
-    //   91: invokestatic 115	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   91: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   94: ifeq -38 -> 56
     //   97: ldc 8
     //   99: iconst_2
     //   100: iconst_3
-    //   101: anewarray 103	java/lang/Object
+    //   101: anewarray 105	java/lang/Object
     //   104: dup
     //   105: iconst_0
-    //   106: ldc 143
+    //   106: ldc 145
     //   108: aastore
     //   109: dup
     //   110: iconst_1
@@ -274,24 +275,24 @@ public class MessageForInteractAndFollow
     //   114: iconst_2
     //   115: aload_1
     //   116: aastore
-    //   117: invokestatic 111	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   117: invokestatic 113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   120: return
     //   121: astore_3
     //   122: aconst_null
     //   123: astore_2
     //   124: aload_2
     //   125: astore_1
-    //   126: invokestatic 115	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   126: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   129: ifeq +28 -> 157
     //   132: aload_2
     //   133: astore_1
     //   134: ldc 8
     //   136: iconst_2
     //   137: iconst_3
-    //   138: anewarray 103	java/lang/Object
+    //   138: anewarray 105	java/lang/Object
     //   141: dup
     //   142: iconst_0
-    //   143: ldc 143
+    //   143: ldc 145
     //   145: aastore
     //   146: dup
     //   147: iconst_1
@@ -301,24 +302,24 @@ public class MessageForInteractAndFollow
     //   151: iconst_2
     //   152: aload_3
     //   153: aastore
-    //   154: invokestatic 111	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   154: invokestatic 113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   157: aload_2
     //   158: ifnull +7 -> 165
     //   161: aload_2
-    //   162: invokevirtual 136	java/io/ObjectOutputStream:close	()V
+    //   162: invokevirtual 138	java/io/ObjectOutputStream:close	()V
     //   165: aload 4
-    //   167: invokevirtual 141	java/io/ByteArrayOutputStream:close	()V
+    //   167: invokevirtual 143	java/io/ByteArrayOutputStream:close	()V
     //   170: return
     //   171: astore_1
-    //   172: invokestatic 115	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   172: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   175: ifeq -119 -> 56
     //   178: ldc 8
     //   180: iconst_2
     //   181: iconst_3
-    //   182: anewarray 103	java/lang/Object
+    //   182: anewarray 105	java/lang/Object
     //   185: dup
     //   186: iconst_0
-    //   187: ldc 143
+    //   187: ldc 145
     //   189: aastore
     //   190: dup
     //   191: iconst_1
@@ -328,18 +329,18 @@ public class MessageForInteractAndFollow
     //   195: iconst_2
     //   196: aload_1
     //   197: aastore
-    //   198: invokestatic 111	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   198: invokestatic 113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   201: return
     //   202: astore_1
-    //   203: invokestatic 115	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   203: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   206: ifeq -41 -> 165
     //   209: ldc 8
     //   211: iconst_2
     //   212: iconst_3
-    //   213: anewarray 103	java/lang/Object
+    //   213: anewarray 105	java/lang/Object
     //   216: dup
     //   217: iconst_0
-    //   218: ldc 143
+    //   218: ldc 145
     //   220: aastore
     //   221: dup
     //   222: iconst_1
@@ -349,7 +350,7 @@ public class MessageForInteractAndFollow
     //   226: iconst_2
     //   227: aload_1
     //   228: aastore
-    //   229: invokestatic 111	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   229: invokestatic 113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   232: goto -67 -> 165
     //   235: astore_2
     //   236: aconst_null
@@ -357,21 +358,21 @@ public class MessageForInteractAndFollow
     //   238: aload_1
     //   239: ifnull +7 -> 246
     //   242: aload_1
-    //   243: invokevirtual 136	java/io/ObjectOutputStream:close	()V
+    //   243: invokevirtual 138	java/io/ObjectOutputStream:close	()V
     //   246: aload 4
-    //   248: invokevirtual 141	java/io/ByteArrayOutputStream:close	()V
+    //   248: invokevirtual 143	java/io/ByteArrayOutputStream:close	()V
     //   251: aload_2
     //   252: athrow
     //   253: astore_1
-    //   254: invokestatic 115	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   254: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   257: ifeq -11 -> 246
     //   260: ldc 8
     //   262: iconst_2
     //   263: iconst_3
-    //   264: anewarray 103	java/lang/Object
+    //   264: anewarray 105	java/lang/Object
     //   267: dup
     //   268: iconst_0
-    //   269: ldc 143
+    //   269: ldc 145
     //   271: aastore
     //   272: dup
     //   273: iconst_1
@@ -381,18 +382,18 @@ public class MessageForInteractAndFollow
     //   277: iconst_2
     //   278: aload_1
     //   279: aastore
-    //   280: invokestatic 111	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   280: invokestatic 113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   283: goto -37 -> 246
     //   286: astore_1
-    //   287: invokestatic 115	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   287: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   290: ifeq -39 -> 251
     //   293: ldc 8
     //   295: iconst_2
     //   296: iconst_3
-    //   297: anewarray 103	java/lang/Object
+    //   297: anewarray 105	java/lang/Object
     //   300: dup
     //   301: iconst_0
-    //   302: ldc 143
+    //   302: ldc 145
     //   304: aastore
     //   305: dup
     //   306: iconst_1
@@ -402,7 +403,7 @@ public class MessageForInteractAndFollow
     //   310: iconst_2
     //   311: aload_1
     //   312: aastore
-    //   313: invokestatic 111	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   313: invokestatic 113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   316: goto -65 -> 251
     //   319: astore_2
     //   320: goto -82 -> 238
@@ -448,7 +449,7 @@ public class MessageForInteractAndFollow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForInteractAndFollow
  * JD-Core Version:    0.7.0.1
  */

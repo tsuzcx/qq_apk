@@ -1,27 +1,59 @@
-import android.app.Activity;
-import android.content.Context;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.mobileqq.ar.ArConfigService.4.1;
+import com.tencent.mobileqq.ar.ArConfigService.4.2;
+import com.tencent.mobileqq.ar.ArConfigService.4.3;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.plugin.IQZonePluginManager;
-import cooperation.qzone.plugin.IQZonePluginManager.OnPluginReadyListener;
-import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
 
-public final class amwu
-  implements IQZonePluginManager.OnPluginReadyListener
+public class amwu
+  implements apkv
 {
-  public void a(boolean paramBoolean, Context paramContext, IQZonePluginManager.PluginParams paramPluginParams)
+  public amwu(ArConfigService paramArConfigService) {}
+  
+  public void a(XmlData paramXmlData)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
+      QLog.d("ArConfig_ArConfigService", 2, "EarlyDownLoadListener");
     }
-    if (paramBoolean)
+  }
+  
+  public void a(XmlData paramXmlData, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadProgress data=%s curOffset=%s totalLen=%s", new Object[] { paramXmlData, Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+    }
+    if ("qq.android.ar.native.so_v8.3.6".equals(paramXmlData.strResName)) {
+      ArConfigService.a(this.a, (int)(100L * paramLong1 / paramLong2));
+    }
+    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
+    if (!ArConfigService.e(this.a)) {
+      ArConfigService.a(this.a).post(new ArConfigService.4.1(this, i));
+    }
+  }
+  
+  public void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadFinish data=%s result=%s", new Object[] { paramXmlData, Boolean.valueOf(paramBoolean1) }));
+    }
+    if (paramBoolean1)
     {
-      IQZonePluginManager.b((Activity)paramContext, paramPluginParams);
+      if ("qq.android.ar.native.so_v8.3.6".equals(paramXmlData.strResName)) {
+        ArConfigService.b(this.a, true);
+      }
+      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
+        ArConfigService.a(this.a).post(new ArConfigService.4.2(this));
+      }
+    }
+    while (ArConfigService.e(this.a)) {
       return;
     }
-    Toast.makeText(BaseApplicationImpl.getContext(), "加载失败", 0).show();
+    ArConfigService.a(this.a).post(new ArConfigService.4.3(this));
+    ArConfigService.a(this.a, true);
   }
+  
+  public void b(XmlData paramXmlData) {}
 }
 
 

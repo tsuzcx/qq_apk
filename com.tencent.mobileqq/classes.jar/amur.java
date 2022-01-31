@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.MapParcelable;
-
-public final class amur
-  implements Parcelable.Creator
+class amur
 {
-  public MapParcelable a(Parcel paramParcel)
-  {
-    return new MapParcelable(paramParcel.readHashMap(getClass().getClassLoader()));
-  }
-  
-  public MapParcelable[] a(int paramInt)
-  {
-    return null;
-  }
+  private static final amup a = new amup(null);
 }
 
 

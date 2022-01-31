@@ -1,19 +1,36 @@
-import com.tencent.open.business.base.StaticAnalyz;
-import com.tencent.open.downloadnew.MyAppApi;
-
 public class alij
-  implements Runnable
 {
-  public alij(MyAppApi paramMyAppApi, String paramString1, String paramString2) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
   
-  public void run()
+  public String toString()
   {
-    StaticAnalyz.a("202", StaticAnalyz.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{").append("errCode:").append(this.a).append(",cost:").append(this.b);
+    if (this.c > 0) {
+      localStringBuilder.append(",mem:").append(this.c);
+    }
+    if (this.d > 0) {
+      localStringBuilder.append(",cpu:").append(this.d);
+    }
+    if (this.f != 0) {
+      localStringBuilder.append(",javaHeap:").append(this.f);
+    }
+    if (this.g != 0) {
+      localStringBuilder.append(",nativeHeap:").append(this.g);
+    }
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alij
  * JD-Core Version:    0.7.0.1
  */

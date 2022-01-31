@@ -1,28 +1,25 @@
-import android.view.animation.Animation;
-import com.tencent.common.galleryactivity.AbstractAnimationManager;
-import com.tencent.common.galleryactivity.AbstractGalleryScene;
-import com.tencent.common.galleryactivity.GalleryManager;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.Comparator;
 
-public class pex
-  extends AnimateUtils.AnimationAdapter
+class pex
+  implements Comparator<ArticleInfo>
 {
-  public pex(AbstractGalleryScene paramAbstractGalleryScene) {}
+  pex(pew parampew) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
   {
-    this.a.a.a().e();
-    this.a.a.a().a();
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.a.a().d();
+    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
+      return 0;
+    }
+    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
+      return -1;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pex
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,16 @@
 package com.tencent.token.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.utils.s;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class io
-  implements View.OnClickListener
+class io
+  implements DialogInterface.OnClickListener
 {
-  io(FaceRecognitionDefaultActivity paramFaceRecognitionDefaultActivity) {}
+  io(ij paramij) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent(this.a, FaceChangePwdIndexActivity.class);
-    paramView.putExtra("open_switch", FaceRecognitionDefaultActivity.access$000(this.a));
-    this.a.startActivity(paramView);
-    s.h("face_changepsw_redtip");
+    FaceStartVryCameraActivity.access$1300(this.a.a);
   }
 }
 

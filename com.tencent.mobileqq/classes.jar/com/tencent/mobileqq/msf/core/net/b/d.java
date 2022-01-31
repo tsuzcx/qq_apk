@@ -6,7 +6,7 @@ import android.os.Looper;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.a.a;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.core.t;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -27,10 +27,10 @@ public class d
   private CopyOnWriteArrayList c;
   private CopyOnWriteArrayList d = new CopyOnWriteArrayList();
   private AtomicBoolean e = new AtomicBoolean(false);
-  private long h;
+  private long h = 0L;
   private String i = "";
-  private int j;
-  private long k;
+  private int j = 0;
+  private long k = 0L;
   private String l = "";
   private MsfCore m;
   private Handler n = new e(this, Looper.getMainLooper());
@@ -58,7 +58,7 @@ public class d
     {
       try
       {
-        if (!a.aw()) {
+        if (!a.ax()) {
           break;
         }
         this.b = new CopyOnWriteArrayList();
@@ -140,8 +140,8 @@ public class d
       locald.a(8080);
       this.b.add(locald);
     }
-    this.b = a.ay();
-    this.c = a.ax();
+    this.b = a.az();
+    this.c = a.ay();
   }
   
   public void a(long paramLong1, String paramString1, int paramInt, String paramString2, long paramLong2)

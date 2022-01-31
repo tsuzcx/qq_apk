@@ -1,169 +1,144 @@
-import cooperation.qzone.QzoneGiftFullScreenActionManager;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.ar.arcloud.pb.oidb_cmd0xb49.ARClassifyLBSCheckReq;
+import com.tencent.mobileqq.ar.arcloud.pb.oidb_cmd0xb49.ARClassifyLBSCheckRsp;
+import com.tencent.mobileqq.ar.arcloud.pb.oidb_cmd0xb49.LBSPoint;
+import com.tencent.mobileqq.ar.arcloud.pb.oidb_cmd0xb49.ReqBody;
+import com.tencent.mobileqq.ar.arcloud.pb.oidb_cmd0xb49.RspBody;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
 public class amso
-  implements Runnable
+  extends alpd
 {
-  public amso(QzoneGiftFullScreenActionManager paramQzoneGiftFullScreenActionManager, String paramString) {}
-  
-  /* Error */
-  public void run()
+  public amso(AppInterface paramAppInterface)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   4: getfield 28	cooperation/qzone/QzoneGiftFullScreenActionManager:c	Z
-    //   7: istore_1
-    //   8: iload_1
-    //   9: ifeq +18 -> 27
-    //   12: aload_0
-    //   13: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   16: aload_0
-    //   17: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   20: getfield 31	cooperation/qzone/QzoneGiftFullScreenActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
-    //   23: invokestatic 35	cooperation/qzone/QzoneGiftFullScreenActionManager:b	(Lcooperation/qzone/QzoneGiftFullScreenActionManager;Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;)V
-    //   26: return
-    //   27: aload_0
-    //   28: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   31: aload_0
-    //   32: getfield 15	amso:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   35: invokestatic 37	cooperation/qzone/QzoneGiftFullScreenActionManager:a	(Lcooperation/qzone/QzoneGiftFullScreenActionManager;Ljava/lang/String;)V
-    //   38: aload_0
-    //   39: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   42: getfield 40	cooperation/qzone/QzoneGiftFullScreenActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceResLoader	Lcom/tencent/mobileqq/magicface/model/MagicfaceResLoader;
-    //   45: ldc 42
-    //   47: invokevirtual 47	com/tencent/mobileqq/magicface/model/MagicfaceResLoader:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   50: astore_3
-    //   51: aload_3
-    //   52: ifnull +144 -> 196
-    //   55: aload_0
-    //   56: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   59: aload_0
-    //   60: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   63: getfield 50	cooperation/qzone/QzoneGiftFullScreenActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionMagicfaceActionDecoder	Lcom/tencent/mobileqq/magicface/magicfaceaction/MagicfaceActionDecoder;
-    //   66: aload_3
-    //   67: invokevirtual 55	com/tencent/mobileqq/magicface/magicfaceaction/MagicfaceActionDecoder:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
-    //   70: putfield 31	cooperation/qzone/QzoneGiftFullScreenActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
-    //   73: aload_0
-    //   74: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   77: aload_0
-    //   78: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   81: getfield 31	cooperation/qzone/QzoneGiftFullScreenActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
-    //   84: invokestatic 57	cooperation/qzone/QzoneGiftFullScreenActionManager:a	(Lcooperation/qzone/QzoneGiftFullScreenActionManager;Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;)V
-    //   87: aload_0
-    //   88: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   91: aload_0
-    //   92: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   95: getfield 50	cooperation/qzone/QzoneGiftFullScreenActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionMagicfaceActionDecoder	Lcom/tencent/mobileqq/magicface/magicfaceaction/MagicfaceActionDecoder;
-    //   98: aload_3
-    //   99: invokevirtual 60	com/tencent/mobileqq/magicface/magicfaceaction/MagicfaceActionDecoder:a	(Ljava/lang/String;)Ljava/util/List;
-    //   102: putfield 63	cooperation/qzone/QzoneGiftFullScreenActionManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   105: aload_0
-    //   106: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   109: invokestatic 66	cooperation/qzone/QzoneGiftFullScreenActionManager:a	(Lcooperation/qzone/QzoneGiftFullScreenActionManager;)V
-    //   112: aload_0
-    //   113: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   116: getfield 63	cooperation/qzone/QzoneGiftFullScreenActionManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   119: invokeinterface 72 1 0
-    //   124: astore_3
-    //   125: aload_3
-    //   126: invokeinterface 78 1 0
-    //   131: ifeq +65 -> 196
-    //   134: aload_3
-    //   135: invokeinterface 82 1 0
-    //   140: checkcast 84	com/tencent/mobileqq/magicface/magicfaceaction/Action
-    //   143: astore 4
-    //   145: aload_0
-    //   146: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   149: aload 4
-    //   151: putfield 87	cooperation/qzone/QzoneGiftFullScreenActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction	Lcom/tencent/mobileqq/magicface/magicfaceaction/Action;
-    //   154: aload 4
-    //   156: aload_0
-    //   157: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   160: getfield 90	cooperation/qzone/QzoneGiftFullScreenActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager	Lcom/tencent/mobileqq/magicface/service/MagicfacePlayManager;
-    //   163: putfield 91	com/tencent/mobileqq/magicface/magicfaceaction/Action:jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager	Lcom/tencent/mobileqq/magicface/service/MagicfacePlayManager;
-    //   166: aload 4
-    //   168: aload_0
-    //   169: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   172: getfield 31	cooperation/qzone/QzoneGiftFullScreenActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
-    //   175: putfield 92	com/tencent/mobileqq/magicface/magicfaceaction/Action:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
-    //   178: aload 4
-    //   180: invokevirtual 94	com/tencent/mobileqq/magicface/magicfaceaction/Action:a	()Z
-    //   183: istore_1
-    //   184: aload_0
-    //   185: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   188: getfield 96	cooperation/qzone/QzoneGiftFullScreenActionManager:b	Z
-    //   191: istore_2
-    //   192: iload_2
-    //   193: ifeq +18 -> 211
-    //   196: aload_0
-    //   197: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   200: aload_0
-    //   201: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   204: getfield 31	cooperation/qzone/QzoneGiftFullScreenActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
-    //   207: invokestatic 35	cooperation/qzone/QzoneGiftFullScreenActionManager:b	(Lcooperation/qzone/QzoneGiftFullScreenActionManager;Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;)V
-    //   210: return
-    //   211: iload_1
-    //   212: ifeq -16 -> 196
-    //   215: aload_0
-    //   216: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   219: getfield 96	cooperation/qzone/QzoneGiftFullScreenActionManager:b	Z
-    //   222: istore_1
-    //   223: iload_1
-    //   224: ifeq -99 -> 125
-    //   227: goto -31 -> 196
-    //   230: astore_3
-    //   231: invokestatic 101	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   234: ifeq +31 -> 265
-    //   237: ldc 103
-    //   239: iconst_2
-    //   240: new 105	java/lang/StringBuilder
-    //   243: dup
-    //   244: invokespecial 106	java/lang/StringBuilder:<init>	()V
-    //   247: ldc 108
-    //   249: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   252: aload_3
-    //   253: invokevirtual 116	java/lang/Exception:toString	()Ljava/lang/String;
-    //   256: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   259: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   262: invokestatic 121	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   265: aload_0
-    //   266: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   269: aload_0
-    //   270: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   273: getfield 31	cooperation/qzone/QzoneGiftFullScreenActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
-    //   276: invokestatic 35	cooperation/qzone/QzoneGiftFullScreenActionManager:b	(Lcooperation/qzone/QzoneGiftFullScreenActionManager;Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;)V
-    //   279: return
-    //   280: astore_3
-    //   281: aload_0
-    //   282: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   285: aload_0
-    //   286: getfield 13	amso:jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager	Lcooperation/qzone/QzoneGiftFullScreenActionManager;
-    //   289: getfield 31	cooperation/qzone/QzoneGiftFullScreenActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
-    //   292: invokestatic 35	cooperation/qzone/QzoneGiftFullScreenActionManager:b	(Lcooperation/qzone/QzoneGiftFullScreenActionManager;Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;)V
-    //   295: aload_3
-    //   296: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	297	0	this	amso
-    //   7	217	1	bool1	boolean
-    //   191	2	2	bool2	boolean
-    //   50	85	3	localObject1	Object
-    //   230	23	3	localException	java.lang.Exception
-    //   280	16	3	localObject2	Object
-    //   143	36	4	localAction	com.tencent.mobileqq.magicface.magicfaceaction.Action
-    // Exception table:
-    //   from	to	target	type
-    //   0	8	230	java/lang/Exception
-    //   27	51	230	java/lang/Exception
-    //   55	125	230	java/lang/Exception
-    //   125	192	230	java/lang/Exception
-    //   215	223	230	java/lang/Exception
-    //   0	8	280	finally
-    //   27	51	280	finally
-    //   55	125	280	finally
-    //   125	192	280	finally
-    //   215	223	280	finally
-    //   231	265	280	finally
+    super(paramAppInterface);
+  }
+  
+  private static anav a(oidb_cmd0xb49.LBSPoint paramLBSPoint)
+  {
+    int j = 0;
+    anav localanav = new anav();
+    int i;
+    if (paramLBSPoint.int32_lat.has())
+    {
+      i = paramLBSPoint.int32_lat.get();
+      localanav.jdField_a_of_type_Int = i;
+      if (!paramLBSPoint.int32_lon.has()) {
+        break label141;
+      }
+      i = paramLBSPoint.int32_lon.get();
+      label53:
+      localanav.jdField_b_of_type_Int = i;
+      if (!paramLBSPoint.str_name.has()) {
+        break label146;
+      }
+      str = paramLBSPoint.str_name.get();
+      label77:
+      localanav.jdField_a_of_type_JavaLangString = str;
+      if (!paramLBSPoint.str_addr.has()) {
+        break label152;
+      }
+    }
+    label141:
+    label146:
+    label152:
+    for (String str = paramLBSPoint.str_addr.get();; str = "")
+    {
+      localanav.jdField_b_of_type_JavaLangString = str;
+      i = j;
+      if (paramLBSPoint.uint32_dist.has()) {
+        i = paramLBSPoint.uint32_dist.get();
+      }
+      localanav.c = i;
+      return localanav;
+      i = 0;
+      break;
+      i = 0;
+      break label53;
+      str = "";
+      break label77;
+    }
+  }
+  
+  public boolean a(String paramString, int paramInt1, int paramInt2)
+  {
+    QLog.i("ARLBSHandler", 1, "requestToCheckLBSLocation. imageId = " + paramString + ", latitude = " + paramInt1 + ", longitude = " + paramInt2);
+    Object localObject = new oidb_cmd0xb49.ReqBody();
+    ((oidb_cmd0xb49.ReqBody)localObject).int32_lat.set(paramInt1);
+    ((oidb_cmd0xb49.ReqBody)localObject).int32_lon.set(paramInt2);
+    oidb_cmd0xb49.ARClassifyLBSCheckReq localARClassifyLBSCheckReq = new oidb_cmd0xb49.ARClassifyLBSCheckReq();
+    localARClassifyLBSCheckReq.str_id.set(paramString);
+    ((oidb_cmd0xb49.ReqBody)localObject).msg_ar_classify_req.set(localARClassifyLBSCheckReq);
+    localObject = makeOIDBPkg("OidbSvc.0xb49", 2889, 10, ((oidb_cmd0xb49.ReqBody)localObject).toByteArray());
+    ((ToServiceMsg)localObject).addAttribute("imageId", paramString);
+    sendPbReq((ToServiceMsg)localObject);
+    return true;
+  }
+  
+  protected Class<? extends alpg> observerClass()
+  {
+    return amsp.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
+    while (!"OidbSvc.0xb49".equals(paramFromServiceMsg.getServiceCmd())) {
+      return;
+    }
+    anau localanau = new anau();
+    String str = (String)paramToServiceMsg.getAttribute("imageId", "");
+    QLog.i("ARLBSHandler", 1, "req.getAttribute id imageIdSend:" + str);
+    int i;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      paramToServiceMsg = new oidb_cmd0xb49.RspBody();
+      parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
+      paramFromServiceMsg.extraData.getString("str_error_msg");
+      if (paramToServiceMsg.msg_ar_classify_rsp.has())
+      {
+        paramFromServiceMsg = (oidb_cmd0xb49.ARClassifyLBSCheckRsp)paramToServiceMsg.msg_ar_classify_rsp.get();
+        if (paramFromServiceMsg.str_id.has()) {}
+        for (paramToServiceMsg = paramFromServiceMsg.str_id.get(); !paramToServiceMsg.equalsIgnoreCase(str); paramToServiceMsg = "")
+        {
+          QLog.i("ARLBSHandler", 1, "onReceiveLBSLocation. resp is success. err: image id is not equals. req image id = " + str + ", rsp image id = " + paramToServiceMsg);
+          return;
+        }
+        if (paramFromServiceMsg.uint32_lbs_result.has())
+        {
+          i = paramFromServiceMsg.uint32_lbs_result.get();
+          localanau.jdField_a_of_type_Int = i;
+          localanau.jdField_a_of_type_JavaLangString = paramToServiceMsg;
+          if (!paramFromServiceMsg.msg_nearest_point.has()) {
+            break label291;
+          }
+          paramToServiceMsg = a(paramFromServiceMsg.msg_nearest_point);
+          label241:
+          localanau.jdField_a_of_type_Anav = paramToServiceMsg;
+        }
+      }
+      else
+      {
+        QLog.i("ARLBSHandler", 1, "onReceiveLBSLocation. resp is success. retCode = " + localanau.jdField_a_of_type_Int);
+      }
+    }
+    for (;;)
+    {
+      notifyUI(1, true, localanau);
+      return;
+      i = -1;
+      break;
+      label291:
+      paramToServiceMsg = null;
+      break label241;
+      QLog.i("ARLBSHandler", 1, "onReceiveLBSLocation. resp is failed. ");
+    }
   }
 }
 

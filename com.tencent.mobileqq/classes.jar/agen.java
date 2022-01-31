@@ -1,25 +1,27 @@
 import android.os.Handler;
 import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager.OcrClickListener;
 
-public class agen
-  implements View.OnClickListener
+class agen
+  extends Handler
 {
-  public agen(ARTipsManager paramARTipsManager, aget paramaget) {}
+  boolean jdField_a_of_type_Boolean = true;
   
-  public void onClick(View paramView)
+  agen(agem paramagem) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeMessages(101);
-    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).obtainMessage(101).sendToTarget();
-    this.jdField_a_of_type_Aget.a.b();
+    if (paramMessage.what == agem.a()) {}
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      if (paramMessage.what != agem.b()) {}
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agen
  * JD-Core Version:    0.7.0.1
  */

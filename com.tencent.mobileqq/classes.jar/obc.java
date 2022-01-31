@@ -1,31 +1,31 @@
-import android.view.View;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.boundaries.StoryApi;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.utils.UIUtils;
+import org.json.JSONObject;
 
 public class obc
-  extends ChildViewClickListener
 {
-  public obc(NewMyStorySegment paramNewMyStorySegment) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
+  public void a(JSONObject paramJSONObject)
   {
-    if (UIUtils.b()) {}
-    while (paramView.getId() != 2131371786) {
-      return;
+    if (paramJSONObject != null)
+    {
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("adDownloadApiUrl");
+      this.b = paramJSONObject.optString("pkg_name");
+      this.c = paramJSONObject.optString("appid");
+      this.d = paramJSONObject.optString("appname");
+      this.e = paramJSONObject.optString("pkgurl");
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("business_type", 0);
     }
-    StoryReportor.a("mystory", "clk_all_story", 0, 0, new String[0]);
-    paramView = QQStoryContext.a().b();
-    StoryApi.a(NewMyStorySegment.c(this.a), 1, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     obc
  * JD-Core Version:    0.7.0.1
  */

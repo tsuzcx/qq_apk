@@ -1,27 +1,12 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import com.tencent.component.media.image.drawable.AutoGifDrawable;
-import com.tencent.component.media.image.drawable.AutoGifDrawable.AutoGifCallback;
+import java.util.List;
 
-public class pht
-  implements Drawable.Callback
+public abstract interface pht<BEAN>
 {
-  public pht(AutoGifDrawable paramAutoGifDrawable) {}
-  
-  public void invalidateDrawable(Drawable paramDrawable)
-  {
-    if (this.a.a != null) {
-      this.a.a.invalidateGifView();
-    }
-  }
-  
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong) {}
-  
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable) {}
+  public abstract void a(boolean paramBoolean, List<BEAN> paramList, int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pht
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,44 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
+import com.tencent.av.app.VideoAppInterface;
 
 public class mrp
-  implements Runnable
+  extends mta
 {
-  public mrp(ServiceAccountFolderActivity paramServiceAccountFolderActivity) {}
+  public lyu a;
+  public mrs a;
   
-  public void run()
+  mrp(mrt parammrt)
   {
-    this.a.b(false);
+    super(parammrt);
+    this.jdField_a_of_type_Lyu = new mrq(this);
+  }
+  
+  void a()
+  {
+    mrr localmrr = new mrr(this);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(localmrr);
+  }
+  
+  public void a(mrs parammrs)
+  {
+    mrt localmrt = a();
+    if (localmrt == null) {
+      return;
+    }
+    localmrt.a(parammrs);
+  }
+  
+  public void b(mrs parammrs)
+  {
+    mrt localmrt = a();
+    if (localmrt == null) {
+      return;
+    }
+    localmrt.b(parammrs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mrp
  * JD-Core Version:    0.7.0.1
  */

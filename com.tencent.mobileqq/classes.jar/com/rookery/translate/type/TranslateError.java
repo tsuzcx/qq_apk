@@ -22,7 +22,7 @@ public class TranslateError
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.rookery.translate.type.TranslateError
  * JD-Core Version:    0.7.0.1
  */

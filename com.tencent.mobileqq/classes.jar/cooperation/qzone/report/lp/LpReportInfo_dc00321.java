@@ -1,10 +1,10 @@
 package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
+import bjdm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.module.common.NetworkState;
 import cooperation.qzone.LbsDataV2.GpsInfo;
-import cooperation.qzone.QUA;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -22,7 +22,7 @@ public class LpReportInfo_dc00321
   public static final int DC00321_NETWORK_TYPE_CABLE = 6;
   public static final int DC00321_NETWORK_TYPE_UNKNOWN = 9;
   public static final int DC00321_NETWORK_TYPE_WIFI = 1;
-  public static final int VIDEO_PLAY_SCENE_NEW_VERTICAL_VIDEO = 28;
+  public static final int VIDEO_PLAY_SCENE_WEISHI = 29;
   public int actiontype;
   public long author_uin;
   public long client_video_play_time;
@@ -39,7 +39,7 @@ public class LpReportInfo_dc00321
   public String h265_url;
   public int height;
   public String imei;
-  public Map infos;
+  public Map<String, String> infos;
   public int is_auto_play;
   public int is_original;
   public long is_video_seek;
@@ -100,7 +100,7 @@ public class LpReportInfo_dc00321
     }
   }
   
-  public LpReportInfo_dc00321(int paramInt1, int paramInt2, int paramInt3, Map paramMap, LbsDataV2.GpsInfo paramGpsInfo)
+  public LpReportInfo_dc00321(int paramInt1, int paramInt2, int paramInt3, Map<String, String> paramMap, LbsDataV2.GpsInfo paramGpsInfo)
   {
     this.actiontype = paramInt1;
     this.subactiontype = paramInt2;
@@ -140,13 +140,6 @@ public class LpReportInfo_dc00321
     return 4;
   }
   
-  public static void report(int paramInt1, int paramInt2, int paramInt3)
-  {
-    LpReportInfo_dc00321 localLpReportInfo_dc00321 = new LpReportInfo_dc00321(paramInt1, paramInt2, paramInt3, null, null);
-    localLpReportInfo_dc00321.video_play_scene = 28;
-    LpReportManager.getInstance().reportToDC00321(localLpReportInfo_dc00321, false, true);
-  }
-  
   public static void report(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean1, boolean paramBoolean2, LbsDataV2.GpsInfo paramGpsInfo)
   {
     paramGpsInfo = new LpReportInfo_dc00321(paramInt1, paramInt2, paramInt3, paramGpsInfo);
@@ -160,7 +153,7 @@ public class LpReportInfo_dc00321
     LpReportManager.getInstance().reportToDC00321(paramGpsInfo, false, true);
   }
   
-  public static void report(int paramInt1, int paramInt2, int paramInt3, Map paramMap, LbsDataV2.GpsInfo paramGpsInfo)
+  public static void report(int paramInt1, int paramInt2, int paramInt3, Map<String, String> paramMap, LbsDataV2.GpsInfo paramGpsInfo)
   {
     paramMap = new LpReportInfo_dc00321(paramInt1, paramInt2, paramInt3, paramMap, paramGpsInfo);
     LpReportManager.getInstance().reportToDC00321(paramMap, false, true);
@@ -172,12 +165,20 @@ public class LpReportInfo_dc00321
     LpReportManager.getInstance().reportToDC00321(paramGpsInfo, paramBoolean1, paramBoolean2);
   }
   
+  public static void weishiReport(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    LpReportInfo_dc00321 localLpReportInfo_dc00321 = new LpReportInfo_dc00321(paramInt1, paramInt2, paramInt3, null);
+    localLpReportInfo_dc00321.reserves3 = Integer.toString(paramInt4);
+    localLpReportInfo_dc00321.video_play_scene = 29;
+    LpReportManager.getInstance().reportToDC00321(localLpReportInfo_dc00321, false, true);
+  }
+  
   public String getSimpleInfo()
   {
     return "dc00321:" + this.actiontype + "," + this.subactiontype + "," + this.reserves;
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
     Object localObject1;
@@ -215,16 +216,10 @@ public class LpReportInfo_dc00321
         {
           i = Integer.parseInt((String)localHashMap.get("network_type"));
           localHashMap.put("network_type", String.valueOf(convertNetworkTypeToFitInDc00321(i)));
-          localHashMap.put("qua", QUA.a());
+          localHashMap.put("qua", bjdm.a());
           localHashMap.put("device", "2");
           localHashMap.put("p_x", this.longitude);
           localHashMap.put("p_y", this.latitude);
-          if (!localHashMap.containsKey("video_play_scene")) {
-            localHashMap.put("video_play_scene", String.valueOf(this.video_play_scene));
-          }
-          if (!localHashMap.containsKey("video_sources")) {
-            localHashMap.put("video_sources", String.valueOf(this.video_sources));
-          }
           return localHashMap;
           localJSONObject = new JSONObject();
         }
@@ -262,7 +257,7 @@ public class LpReportInfo_dc00321
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc00321
  * JD-Core Version:    0.7.0.1
  */

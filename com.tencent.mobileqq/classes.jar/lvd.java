@@ -1,24 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeUgcVideoSocial;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.random.RandomController.5;
+import com.tencent.qphone.base.util.QLog;
 
 public class lvd
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public lvd(FeedItemCellTypeUgcVideoSocial paramFeedItemCellTypeUgcVideoSocial) {}
+  public lvd(RandomController.5 param5) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReadInJoyUtils.a(this.a.jdField_a_of_type_AndroidContentContext, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 2, false, 2, false);
-    ReadInJoyBaseAdapter.a(((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).e());
+    if (QLog.isColorLevel()) {
+      QLog.d("RandomController", 2, " [random room owner] kick member fail because of network bad");
+    }
+    this.a.this$0.c = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lvd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,111 +1,38 @@
 package c.t.m.g;
 
-import android.annotation.SuppressLint;
-import android.net.wifi.ScanResult;
-import android.os.Build.VERSION;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public final class dx
 {
-  private static List<String> a;
+  public static final Pattern a;
+  public static final Pattern b;
   
   static
   {
-    ArrayList localArrayList = new ArrayList();
-    a = localArrayList;
-    localArrayList.add("mobile");
-    a.add("16wifi");
-    a.add("cmcc");
-    a.add("360wifi");
-    a.add("androidap");
-    a.add("htcphone");
-    a.add("xiaomi");
-    a.add("lenovo");
-    a.add("macbook");
+    Pattern localPattern = Pattern.compile("[0-9a-zA-Z+-]*");
+    a = localPattern;
+    b = localPattern;
+    Pattern.compile("[A-Z0-9]{12}");
   }
   
-  @SuppressLint({"NewApi"})
-  public static void a(List<ScanResult> paramList)
+  public static String a(String paramString, Pattern paramPattern)
   {
-    HashSet localHashSet = new HashSet();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
+    String str;
+    if (paramString == null) {
+      str = "";
+    }
+    do
     {
-      ScanResult localScanResult = (ScanResult)localIterator.next();
-      String str = localScanResult.BSSID;
-      if ((str == null) || (str.equals("000000000000")) || (str.equals("00-00-00-00-00-00")) || (str.equals("00:00:00:00:00:00")) || (localScanResult.level >= 0)) {
-        localIterator.remove();
-      } else if (localHashSet.contains(str)) {
-        localIterator.remove();
-      } else {
-        localHashSet.add(str);
-      }
-    }
-    f.a.a("WifiBlackList", "after step1 filter : " + paramList.size());
-    try
-    {
-      b(paramList);
-      f.a.a("WifiBlackList", "after step2 filter : " + paramList.size());
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        f.a.b("WifiBlackList", "strict filter throw exception");
-      }
-    }
-  }
-  
-  @SuppressLint({"NewApi"})
-  private static void b(List<ScanResult> paramList)
-  {
-    ArrayList localArrayList2 = null;
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    Object localObject = localArrayList2;
-    if (Build.VERSION.SDK_INT >= 21) {}
-    try
-    {
-      localObject = ((ScanResult)paramList.get(0)).getClass().getField("wifiSsid");
-      ((Field)localObject).setAccessible(true);
-      localArrayList2 = new ArrayList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        ScanResult localScanResult = (ScanResult)paramList.next();
-        if ((Build.VERSION.SDK_INT >= 21) && (localObject != null)) {
-          try
-          {
-            if (((Field)localObject).get(localScanResult) == null)
-            {
-              paramList.remove();
-              localArrayList2.add(localScanResult);
-            }
-          }
-          catch (Exception localException) {}
-        }
-      }
-      localArrayList2.size();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        ArrayList localArrayList1 = localArrayList2;
-      }
-    }
+      return str;
+      str = paramString;
+    } while (paramPattern.matcher(paramString).matches());
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.dx
  * JD-Core Version:    0.7.0.1
  */

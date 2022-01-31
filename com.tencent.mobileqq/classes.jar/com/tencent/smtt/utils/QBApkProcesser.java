@@ -7,7 +7,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import com.tencent.smtt.sdk.stat.MttLoader;
@@ -215,18 +214,18 @@ public class QBApkProcesser
     //   3: aconst_null
     //   4: astore 5
     //   6: ldc 172
-    //   8: astore_2
+    //   8: astore_3
     //   9: aload 6
     //   11: astore_1
     //   12: new 174	java/io/File
     //   15: dup
-    //   16: ldc 56
+    //   16: ldc 54
     //   18: invokespecial 177	java/io/File:<init>	(Ljava/lang/String;)V
     //   21: astore 4
     //   23: aload 4
     //   25: ifnull +17 -> 42
     //   28: aload 4
-    //   30: astore_3
+    //   30: astore_2
     //   31: aload 6
     //   33: astore_1
     //   34: aload 4
@@ -236,161 +235,160 @@ public class QBApkProcesser
     //   44: astore_1
     //   45: new 174	java/io/File
     //   48: dup
-    //   49: ldc 44
+    //   49: ldc 42
     //   51: invokespecial 177	java/io/File:<init>	(Ljava/lang/String;)V
-    //   54: astore_3
-    //   55: aload_3
+    //   54: astore_2
+    //   55: aload_2
     //   56: ifnull +16 -> 72
-    //   59: aload_3
+    //   59: aload_2
     //   60: astore 4
     //   62: aload 6
     //   64: astore_1
-    //   65: aload_3
+    //   65: aload_2
     //   66: invokevirtual 181	java/io/File:exists	()Z
     //   69: ifne +17 -> 86
     //   72: aload 6
     //   74: astore_1
     //   75: new 174	java/io/File
     //   78: dup
-    //   79: ldc 47
+    //   79: ldc 45
     //   81: invokespecial 177	java/io/File:<init>	(Ljava/lang/String;)V
     //   84: astore 4
     //   86: aload 4
-    //   88: ifnull +162 -> 250
+    //   88: ifnull +165 -> 253
     //   91: aload 6
     //   93: astore_1
     //   94: aload 4
     //   96: invokevirtual 181	java/io/File:exists	()Z
-    //   99: ifeq +151 -> 250
+    //   99: ifeq +154 -> 253
     //   102: aload 6
     //   104: astore_1
     //   105: new 280	java/io/FileInputStream
     //   108: dup
     //   109: aload 4
     //   111: invokespecial 283	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   114: astore_3
-    //   115: aload_3
+    //   114: astore_2
+    //   115: aload_2
     //   116: invokestatic 289	com/tencent/smtt/utils/FileUtil:toByteArray	(Ljava/io/InputStream;)[B
-    //   119: astore 4
-    //   121: aload_2
+    //   119: astore 5
+    //   121: aload_3
     //   122: astore_1
-    //   123: aload_3
-    //   124: astore 5
-    //   126: aload 4
+    //   123: aload_2
+    //   124: astore 4
+    //   126: aload 5
     //   128: ifnull +19 -> 147
     //   131: new 126	java/lang/String
     //   134: dup
-    //   135: aload 4
+    //   135: aload 5
     //   137: ldc_w 291
     //   140: invokespecial 294	java/lang/String:<init>	([BLjava/lang/String;)V
     //   143: astore_1
-    //   144: aload_3
-    //   145: astore 5
+    //   144: aload_2
+    //   145: astore 4
     //   147: aload_1
-    //   148: astore 4
-    //   150: aload 5
+    //   148: astore 5
+    //   150: aload 4
     //   152: ifnull +11 -> 163
-    //   155: aload 5
+    //   155: aload 4
     //   157: invokevirtual 297	java/io/FileInputStream:close	()V
     //   160: aload_1
-    //   161: astore 4
+    //   161: astore 5
     //   163: aload_0
-    //   164: aload 4
+    //   164: aload 5
     //   166: invokespecial 299	com/tencent/smtt/utils/QBApkProcesser:parseIni	(Ljava/lang/String;)Ljava/util/Map;
     //   169: areturn
-    //   170: astore 4
-    //   172: aload 5
-    //   174: astore_3
-    //   175: aload_3
-    //   176: astore_1
-    //   177: aload 4
-    //   179: invokevirtual 243	java/lang/Throwable:printStackTrace	()V
-    //   182: aload_2
-    //   183: astore 4
-    //   185: aload_3
-    //   186: ifnull -23 -> 163
-    //   189: aload_3
-    //   190: invokevirtual 297	java/io/FileInputStream:close	()V
-    //   193: aload_2
-    //   194: astore 4
-    //   196: goto -33 -> 163
-    //   199: astore_3
+    //   170: astore_2
+    //   171: aload_2
+    //   172: invokevirtual 300	java/io/IOException:printStackTrace	()V
+    //   175: aload_1
+    //   176: astore 5
+    //   178: goto -15 -> 163
+    //   181: astore 4
+    //   183: aload 5
+    //   185: astore_2
+    //   186: aload_2
+    //   187: astore_1
+    //   188: aload 4
+    //   190: invokevirtual 243	java/lang/Throwable:printStackTrace	()V
+    //   193: aload_3
+    //   194: astore 5
+    //   196: aload_2
+    //   197: ifnull -34 -> 163
     //   200: aload_2
-    //   201: astore_1
-    //   202: aload_3
-    //   203: invokevirtual 300	java/io/IOException:printStackTrace	()V
-    //   206: aload_1
-    //   207: astore 4
-    //   209: goto -46 -> 163
-    //   212: astore_3
-    //   213: aload_1
-    //   214: astore_2
+    //   201: invokevirtual 297	java/io/FileInputStream:close	()V
+    //   204: aload_3
+    //   205: astore 5
+    //   207: goto -44 -> 163
+    //   210: astore_1
+    //   211: aload_1
+    //   212: invokevirtual 300	java/io/IOException:printStackTrace	()V
     //   215: aload_3
-    //   216: astore_1
-    //   217: aload_2
-    //   218: ifnull +7 -> 225
-    //   221: aload_2
-    //   222: invokevirtual 297	java/io/FileInputStream:close	()V
-    //   225: aload_1
-    //   226: athrow
-    //   227: astore_2
-    //   228: aload_2
-    //   229: invokevirtual 300	java/io/IOException:printStackTrace	()V
-    //   232: goto -7 -> 225
-    //   235: astore_3
-    //   236: goto -34 -> 202
-    //   239: astore_1
-    //   240: aload_3
-    //   241: astore_2
-    //   242: goto -25 -> 217
-    //   245: astore 4
-    //   247: goto -72 -> 175
-    //   250: aconst_null
-    //   251: astore 5
-    //   253: aload_2
-    //   254: astore_1
-    //   255: goto -108 -> 147
+    //   216: astore 5
+    //   218: goto -55 -> 163
+    //   221: astore_3
+    //   222: aload_1
+    //   223: astore_2
+    //   224: aload_3
+    //   225: astore_1
+    //   226: aload_2
+    //   227: ifnull +7 -> 234
+    //   230: aload_2
+    //   231: invokevirtual 297	java/io/FileInputStream:close	()V
+    //   234: aload_1
+    //   235: athrow
+    //   236: astore_2
+    //   237: aload_2
+    //   238: invokevirtual 300	java/io/IOException:printStackTrace	()V
+    //   241: goto -7 -> 234
+    //   244: astore_1
+    //   245: goto -19 -> 226
+    //   248: astore 4
+    //   250: goto -64 -> 186
+    //   253: aconst_null
+    //   254: astore 4
+    //   256: aload_3
+    //   257: astore_1
+    //   258: goto -111 -> 147
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	258	0	this	QBApkProcesser
-    //   0	258	1	paramContext	Context
-    //   8	214	2	localObject1	Object
-    //   227	2	2	localIOException1	java.io.IOException
-    //   241	13	2	localObject2	Object
-    //   30	160	3	localObject3	Object
-    //   199	4	3	localIOException2	java.io.IOException
-    //   212	4	3	localObject4	Object
-    //   235	6	3	localIOException3	java.io.IOException
-    //   21	144	4	localObject5	Object
-    //   170	8	4	localThrowable1	Throwable
-    //   183	25	4	localObject6	Object
-    //   245	1	4	localThrowable2	Throwable
-    //   4	248	5	localObject7	Object
-    //   1	102	6	localObject8	Object
+    //   0	261	0	this	QBApkProcesser
+    //   0	261	1	paramContext	Context
+    //   30	115	2	localObject1	Object
+    //   170	2	2	localIOException1	java.io.IOException
+    //   185	46	2	localObject2	Object
+    //   236	2	2	localIOException2	java.io.IOException
+    //   8	208	3	str	String
+    //   221	36	3	localObject3	Object
+    //   21	135	4	localObject4	Object
+    //   181	8	4	localThrowable1	Throwable
+    //   248	1	4	localThrowable2	Throwable
+    //   254	1	4	localObject5	Object
+    //   4	213	5	localObject6	Object
+    //   1	102	6	localObject7	Object
     // Exception table:
     //   from	to	target	type
-    //   12	23	170	java/lang/Throwable
-    //   34	42	170	java/lang/Throwable
-    //   45	55	170	java/lang/Throwable
-    //   65	72	170	java/lang/Throwable
-    //   75	86	170	java/lang/Throwable
-    //   94	102	170	java/lang/Throwable
-    //   105	115	170	java/lang/Throwable
-    //   189	193	199	java/io/IOException
-    //   12	23	212	finally
-    //   34	42	212	finally
-    //   45	55	212	finally
-    //   65	72	212	finally
-    //   75	86	212	finally
-    //   94	102	212	finally
-    //   105	115	212	finally
-    //   177	182	212	finally
-    //   221	225	227	java/io/IOException
-    //   155	160	235	java/io/IOException
-    //   115	121	239	finally
-    //   131	144	239	finally
-    //   115	121	245	java/lang/Throwable
-    //   131	144	245	java/lang/Throwable
+    //   155	160	170	java/io/IOException
+    //   12	23	181	java/lang/Throwable
+    //   34	42	181	java/lang/Throwable
+    //   45	55	181	java/lang/Throwable
+    //   65	72	181	java/lang/Throwable
+    //   75	86	181	java/lang/Throwable
+    //   94	102	181	java/lang/Throwable
+    //   105	115	181	java/lang/Throwable
+    //   200	204	210	java/io/IOException
+    //   12	23	221	finally
+    //   34	42	221	finally
+    //   45	55	221	finally
+    //   65	72	221	finally
+    //   75	86	221	finally
+    //   94	102	221	finally
+    //   105	115	221	finally
+    //   188	193	221	finally
+    //   230	234	236	java/io/IOException
+    //   115	121	244	finally
+    //   131	144	244	finally
+    //   115	121	248	java/lang/Throwable
+    //   131	144	248	java/lang/Throwable
   }
   
   public PackageInfo getInstalledPKGInfo(String paramString, Context paramContext, int paramInt)
@@ -482,7 +480,7 @@ public class QBApkProcesser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.utils.QBApkProcesser
  * JD-Core Version:    0.7.0.1
  */

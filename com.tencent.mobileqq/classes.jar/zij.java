@@ -1,34 +1,15 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.net.Uri;
 
-public class zij
-  implements Runnable
+public abstract interface zij
 {
-  public zij(PhoneContactManagerImp paramPhoneContactManagerImp) {}
-  
-  public void run()
-  {
-    synchronized (PhoneContactManagerImp.a(this.a))
-    {
-      PhoneContactManagerImp.a(this.a).getPreferences();
-      try
-      {
-        Iterator localIterator = PhoneContactManagerImp.a(this.a).iterator();
-        while (localIterator.hasNext()) {
-          ((PhoneContactManager.IPhoneContactListener)localIterator.next()).a(this.a.a);
-        }
-        localObject = finally;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-    }
-  }
+  public static final Uri a = Uri.parse("content://com.tencent.common.config.provider.QZoneConfigProvider/qz_configs");
+  public static final Uri b = Uri.parse("content://com.tencent.common.config.provider.QZoneConfigProvider/qz_cookie");
+  public static final Uri c = Uri.parse("content://com.tencent.common.config.provider.QZoneConfigProvider/qz_update");
+  public static final Uri d = Uri.parse("content://com.tencent.common.config.provider.QZoneConfigProvider/qz_delete");
+  public static final Uri e = Uri.parse("content://com.tencent.common.config.provider.QZoneConfigProvider/qz_isp_config");
+  public static final Uri f = Uri.parse("content://com.tencent.common.config.provider.QZoneConfigProvider/qz_check_time");
+  public static final Uri g = Uri.parse("content://com.tencent.common.config.provider.QZoneConfigProvider/qz_navigator_bar");
+  public static final Uri h = Uri.parse("content://com.tencent.common.config.provider.QZoneConfigProvider/table_qz_unread");
 }
 
 

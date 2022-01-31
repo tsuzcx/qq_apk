@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnPreparedListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
 
 class aeyy
-  implements Runnable
+  implements View.OnTouchListener
 {
   aeyy(aeyx paramaeyx) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a(this.a.a);
-    }
+    aeyx.a(this.a).a(paramMotionEvent);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeyy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class byp
-  extends MessageObserver
+class byp
+  implements Runnable
 {
-  public byp(AccountManageActivity paramAccountManageActivity) {}
+  byp(byo parambyo, long paramLong) {}
   
-  public void a(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public void run()
   {
-    if (paramBoolean) {
-      AccountManageActivity.a(this.a);
+    if (this.jdField_a_of_type_Long == Long.parseLong(this.jdField_a_of_type_Byo.a.a.a)) {
+      ChatActivity.a(this.jdField_a_of_type_Byo.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     byp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.FilterCategory;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.7;
 
-public final class anlp
-  implements Parcelable.Creator
+public class anlp
+  implements DialogInterface.OnClickListener
 {
-  public FilterCategory a(Parcel paramParcel)
-  {
-    return new FilterCategory(paramParcel);
-  }
+  public anlp(ArkAppYYBDownloadModule.7 param7) {}
   
-  public FilterCategory[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new FilterCategory[paramInt];
+    try
+    {
+      paramDialogInterface.dismiss();
+      label6:
+      bfkr.a().a(10, this.a.a);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlp
  * JD-Core Version:    0.7.0.1
  */

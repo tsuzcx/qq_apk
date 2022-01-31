@@ -7,6 +7,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import com.tencent.mobileqq.profile.view.ProfileBaseView;
 import com.tencent.qphone.base.util.QLog;
 
 public class PullToZoomHeaderListView
@@ -15,6 +16,7 @@ public class PullToZoomHeaderListView
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private ProfileBaseView jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView;
   private int b;
   
   public PullToZoomHeaderListView(Context paramContext)
@@ -60,7 +62,7 @@ public class PullToZoomHeaderListView
       n = this.jdField_a_of_type_AndroidWidgetImageView.getRight();
       i1 = this.jdField_a_of_type_AndroidWidgetImageView.getBottom();
       if (j < 0) {
-        break label128;
+        break label143;
       }
     }
     for (;;)
@@ -71,9 +73,12 @@ public class PullToZoomHeaderListView
         if (this.jdField_a_of_type_AndroidViewView != null) {
           this.jdField_a_of_type_AndroidViewView.layout(k, i, n, i1);
         }
+        if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView != null) {
+          this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.a(i);
+        }
       }
       return;
-      label128:
+      label143:
       i = j;
     }
   }
@@ -134,10 +139,15 @@ public class PullToZoomHeaderListView
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
   }
+  
+  public void setProfileBaseView(ProfileBaseView paramProfileBaseView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView = paramProfileBaseView;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.PullToZoomHeaderListView
  * JD-Core Version:    0.7.0.1
  */

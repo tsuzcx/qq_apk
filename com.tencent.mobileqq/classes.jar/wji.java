@@ -1,36 +1,27 @@
-import android.app.Activity;
-import com.tencent.biz.addContactTroopView.AddContactTroopHandler.IGetPopClassAndSearchCB;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView.IAddContactContext;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper.3.1;
 
 public class wji
-  implements AddContactTroopHandler.IGetPopClassAndSearchCB
+  implements View.OnFocusChangeListener
 {
-  public wji(TroopView paramTroopView) {}
+  wji(wjf paramwjf) {}
   
-  public void a()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+    if (!paramBoolean) {
+      this.a.b();
+    }
+    while (wjf.a(this.a)) {
       return;
     }
-    TroopView.d(this.a, true);
-    TroopView.e(this.a, true);
-    TroopView.a(this.a).sendEmptyMessage(4);
-  }
-  
-  public void b()
-  {
-    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
-      return;
-    }
-    TroopView.d(this.a, true);
-    TroopView.e(this.a, false);
-    TroopView.a(this.a).sendEmptyMessage(5);
+    new Handler().postDelayed(new DetailCommentHelper.3.1(this), 200L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wji
  * JD-Core Version:    0.7.0.1
  */

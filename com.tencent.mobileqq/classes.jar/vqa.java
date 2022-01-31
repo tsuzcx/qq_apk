@@ -1,21 +1,45 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener;
-import com.tencent.mobileqq.pic.Logger;
-
-class vqa
-  implements Runnable
+public class vqa
+  extends vpm
 {
-  vqa(vpw paramvpw, PhotoListPanel.SwipeUpAndDragListener paramSwipeUpAndDragListener) {}
+  public int a;
+  public uyg a;
+  public boolean a;
+  public String c = "";
+  public String d = "";
   
-  public void run()
+  public vqa(String paramString)
   {
-    this.jdField_a_of_type_Vpw.b.a.a = false;
-    Logger.a("PhotoListPanel", "enableGuestrue", "mPanel.mDisableGuestrueSend = " + this.jdField_a_of_type_Vpw.b.a.a);
+    super(paramString);
+  }
+  
+  static vqa a(uyg paramuyg)
+  {
+    vqa localvqa = new vqa(paramuyg.jdField_a_of_type_JavaLangString);
+    localvqa.jdField_a_of_type_Uyg = paramuyg;
+    if (paramuyg.jdField_a_of_type_Int == 12)
+    {
+      localvqa.d = paramuyg.e;
+      localvqa.c = paramuyg.i;
+    }
+    return localvqa;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_Uyg != null) {
+      return this.jdField_a_of_type_Uyg.jdField_a_of_type_JavaLangString;
+    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Uyg != null) && (this.jdField_a_of_type_Uyg.jdField_a_of_type_Int == 12);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vqa
  * JD-Core Version:    0.7.0.1
  */

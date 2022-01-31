@@ -1,26 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
 
 public class sss
-  implements DialogInterface.OnClickListener
+  implements yia<yei>
 {
-  public sss(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public sss(FolderFollowTabFragment paramFolderFollowTabFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(yii paramyii, yei paramyei)
   {
-    paramDialogInterface.dismiss();
-    if (this.a.l)
-    {
-      this.a.a("0X80081E7", 3);
+    if (paramyii.e()) {
+      FolderFollowTabFragment.a(this.a, paramyei);
+    }
+    while ((!paramyii.d()) && (!paramyii.c())) {
       return;
     }
-    this.a.a("0X80081E4", 2);
+    FolderFollowTabFragment.b(this.a, paramyei);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sss
  * JD-Core Version:    0.7.0.1
  */

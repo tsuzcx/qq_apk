@@ -1,13 +1,16 @@
 package com.tencent.mobileqq.olympic.activity;
 
-import agev;
-import agew;
+import alud;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.text.TextUtils;
 import android.view.View.OnClickListener;
+import awbn;
+import awbo;
+import bety;
+import bhtd;
 import com.tencent.biz.qrcode.activity.ScannerActivity;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.AppInterface;
@@ -19,9 +22,7 @@ import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
 import com.tencent.mobileqq.ocr.data.OcrConfig;
 import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
 import com.tencent.mobileqq.olympic.ScannerResultReceiver;
-import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
 import mqq.app.AppRuntime;
 
 public class OlympicToolBaseActivity
@@ -30,34 +31,34 @@ public class OlympicToolBaseActivity
   public static boolean g = true;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new agew(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new agev(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new awbo(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new awbn(this);
+  private bety jdField_a_of_type_Bety;
+  private bhtd jdField_a_of_type_Bhtd;
   public QQAppInterface a;
   public ARScanAR a;
   public OcrConfig a;
   public OlympicToolAppInterface a;
   public ScannerResultReceiver a;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
   public boolean a;
   public AppInterface b;
   private boolean h;
   private boolean i;
   
-  private void a()
+  private void h()
   {
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.i = NearbyFakeActivity.a();
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(0);
+    this.jdField_a_of_type_Bhtd.removeMessages(0);
     if (this.i)
     {
-      g();
+      f();
       return;
     }
     this.jdField_a_of_type_Boolean = true;
     i();
     k();
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(0, 5000L);
+    this.jdField_a_of_type_Bhtd.sendEmptyMessageDelayed(0, 5000L);
   }
   
   private void i()
@@ -68,14 +69,14 @@ public class OlympicToolBaseActivity
       return;
       try
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+        if (this.jdField_a_of_type_Bety == null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a("正在加载...");
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(false);
+          this.jdField_a_of_type_Bety = new bety(this, getTitleBarHeight());
+          this.jdField_a_of_type_Bety.a(alud.a(2131708230));
+          this.jdField_a_of_type_Bety.c(false);
         }
         this.h = true;
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+        this.jdField_a_of_type_Bety.show();
         return;
       }
       catch (Exception localException) {}
@@ -87,8 +88,8 @@ public class OlympicToolBaseActivity
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
+        this.jdField_a_of_type_Bety.dismiss();
       }
       return;
     }
@@ -124,34 +125,41 @@ public class OlympicToolBaseActivity
   public void b()
   {
     if (this.jdField_a_of_type_Int != 2) {
-      f();
+      e();
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Int != 1) {
+      g();
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Int != 1) {
+    if (this.jdField_a_of_type_Int != 0) {
       h();
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(this.jdField_a_of_type_AndroidOsHandler$Callback);
+    this.jdField_a_of_type_Bhtd = new bhtd(this.jdField_a_of_type_AndroidOsHandler$Callback);
     this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver = new ScannerResultReceiver(null);
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    if (this.jdField_a_of_type_Bety != null) {
+      this.jdField_a_of_type_Bety.dismiss();
     }
   }
   
-  protected void doOnPause()
+  public void doOnPause()
   {
     super.doOnPause();
     if (this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver != null) {
@@ -159,7 +167,7 @@ public class OlympicToolBaseActivity
     }
   }
   
-  protected void doOnResume()
+  public void doOnResume()
   {
     super.doOnResume();
     if (this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver != null) {
@@ -168,13 +176,6 @@ public class OlympicToolBaseActivity
   }
   
   public void e()
-  {
-    if (this.jdField_a_of_type_Int != 0) {
-      a();
-    }
-  }
-  
-  public void f()
   {
     Intent localIntent = new Intent(this, ScannerActivity.class);
     localIntent.addFlags(67108864);
@@ -201,10 +202,10 @@ public class OlympicToolBaseActivity
     }
   }
   
-  public void g()
+  public void f()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(0);
+    this.jdField_a_of_type_Bhtd.removeMessages(0);
     j();
     Intent localIntent = new Intent(this, ScanTorchActivity.class);
     localIntent.addFlags(67108864);
@@ -242,28 +243,14 @@ public class OlympicToolBaseActivity
     }
   }
   
+  public void g() {}
+  
   public String getModuleId()
   {
     if ("ScanTorchActivity".equals(getClass().getSimpleName())) {
       return "module_olympic";
     }
     return super.getModuleId();
-  }
-  
-  public void h()
-  {
-    Intent localIntent = new Intent(this, ScanOcrActivity.class);
-    localIntent.addFlags(67108864);
-    if (this.jdField_a_of_type_ComTencentMobileqqArARScanAR != null) {
-      localIntent.putExtra("key_ar_config", this.jdField_a_of_type_ComTencentMobileqqArARScanAR);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig != null) {
-      localIntent.putExtra("key_ocr_config", this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig);
-    }
-    localIntent.putExtra("ocr_from_where", 0);
-    startActivity(localIntent);
-    overridePendingTransition(0, 0);
-    finish();
   }
   
   public void updateAppRuntime()
@@ -283,7 +270,7 @@ public class OlympicToolBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity
  * JD-Core Version:    0.7.0.1
  */

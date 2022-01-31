@@ -1,14 +1,14 @@
 package cooperation.qzone;
 
-import amrl;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bjde;
 
 public class LbsDataV2$WifiInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amrl();
+  public static final Parcelable.Creator<WifiInfo> CREATOR = new bjde();
   public String mac = "";
   public int rssi;
   
@@ -38,7 +38,7 @@ public class LbsDataV2$WifiInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.LbsDataV2.WifiInfo
  * JD-Core Version:    0.7.0.1
  */

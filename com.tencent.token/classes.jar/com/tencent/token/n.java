@@ -1,45 +1,19 @@
 package com.tencent.token;
 
-import com.tencent.token.global.e;
-import com.tencent.token.utils.encrypt.a;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Map;
 
-public class n
+public final class n
+  extends i
 {
-  protected static String a(byte[] paramArrayOfByte, String... paramVarArgs)
+  public n(String paramString, Map paramMap, j paramj, boolean paramBoolean, u paramu)
   {
-    if (paramVarArgs.length % 2 != 0)
-    {
-      e.c("params count % 2 should be 0");
-      return null;
+    this.d = paramu;
+    this.a = paramString;
+    this.b = paramMap;
+    this.c = paramBoolean;
+    if (paramj != null) {
+      a(paramj);
     }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      int i = 0;
-      while (i < paramVarArgs.length)
-      {
-        localJSONObject.put(paramVarArgs[i], paramVarArgs[(i + 1)]);
-        i += 2;
-      }
-      paramVarArgs = localJSONObject.toString();
-      e.a("palin: " + paramVarArgs);
-      paramVarArgs = paramVarArgs.getBytes();
-      paramArrayOfByte = new a().b(paramVarArgs, paramArrayOfByte);
-      if (paramArrayOfByte == null)
-      {
-        e.c("encrypt pwd failed");
-        return null;
-      }
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-      return null;
-    }
-    paramArrayOfByte = ap.a(paramArrayOfByte);
-    return paramArrayOfByte;
   }
 }
 

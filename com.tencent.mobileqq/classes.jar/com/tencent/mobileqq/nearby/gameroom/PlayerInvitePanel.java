@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import aepi;
-import aepj;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.util.AttributeSet;
@@ -10,17 +8,19 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import auzo;
+import auzp;
 import java.util.LinkedList;
 import java.util.List;
 
 public class PlayerInvitePanel
-  extends AdapterView
+  extends AdapterView<BaseAdapter>
 {
   private int jdField_a_of_type_Int = 5;
-  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new aepj(this);
+  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new auzp(this);
   private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener;
   private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
-  private List jdField_a_of_type_JavaUtilList = new LinkedList();
+  private List<View> jdField_a_of_type_JavaUtilList = new LinkedList();
   
   public PlayerInvitePanel(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -48,7 +48,7 @@ public class PlayerInvitePanel
     while (i < this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount())
     {
       View localView = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(i, a(), this);
-      localView.setOnClickListener(new aepi(this, i));
+      localView.setOnClickListener(new auzo(this, i));
       addViewInLayout(localView, i, new ViewGroup.LayoutParams(-2, -2));
       i += 1;
     }
@@ -129,7 +129,7 @@ public class PlayerInvitePanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel
  * JD-Core Version:    0.7.0.1
  */

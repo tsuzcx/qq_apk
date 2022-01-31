@@ -1,68 +1,84 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.shortvideo.resource.Resources;
-import com.tencent.mobileqq.shortvideo.resource.SpecialAVFilterResource;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sveffects.SdkContext;
-import dov.com.qq.im.capture.music.MusicDownloadListener;
-import java.io.File;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import java.util.ArrayList;
+import java.util.List;
 
-public class anmf
-  implements Runnable
+class anmf
+  extends BaseAdapter
 {
-  MusicDownloadListener jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<annb> jdField_a_of_type_JavaUtilList;
   
-  public anmf(String paramString1, String paramString2, MusicDownloadListener paramMusicDownloadListener)
+  public anmf(anma paramanma, Context paramContext)
   {
-    this.b = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener = paramMusicDownloadListener;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void run()
+  public annb a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MusicProviderView.Downloader", 2, "begin download " + this.jdField_a_of_type_JavaLangString + " " + this.b);
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+      return null;
     }
-    if ((Utils.a()) && (Utils.b() < 20971520L))
+    return (annb)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(List<annb> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      if (this.jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener != null) {
-        this.jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener.a(this.b, false);
-      }
-      QLog.e("MusicProviderView.Downloader", 1, "download err no space");
+      paramViewGroup = new anmh(this);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844496);
+      paramView = new ViewGroup.LayoutParams(MessageForArkApp.dp2px(50.0F), -1);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      paramView = new RelativeLayout.LayoutParams(MessageForArkApp.dp2px(28.0F), MessageForArkApp.dp2px(25.0F));
+      paramView.addRule(13);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramViewGroup.jdField_a_of_type_AndroidWidgetImageView, paramView);
+      paramView = paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      paramView.setTag(paramViewGroup);
     }
-    Object localObject;
-    long l1;
-    int i;
-    long l2;
-    do
+    for (;;)
     {
-      return;
-      localObject = new File(SdkContext.a().a().a().a());
-      if (!((File)localObject).exists()) {
-        ((File)localObject).mkdirs();
+      annb localannb = a(paramInt);
+      if ((localannb != null) && (!TextUtils.isEmpty(localannb.d))) {
+        ArkAppCacheMgr.getAppIcon(localannb.a, new anmg(this, paramViewGroup));
       }
-      localObject = new File(this.jdField_a_of_type_JavaLangString);
-      l1 = SystemClock.uptimeMillis();
-      localObject = new DownloadTask(this.b, (File)localObject);
-      ((DownloadTask)localObject).l = true;
-      ((DownloadTask)localObject).b = 2;
-      ((DownloadTask)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      ((DownloadTask)localObject).b(512);
-      ((DownloadTask)localObject).a(this.jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener);
-      i = DownloaderFactory.a((DownloadTask)localObject, null, null);
-      l2 = SystemClock.uptimeMillis();
-    } while (!QLog.isColorLevel());
-    QLog.i("MusicProviderView.Downloader", 2, "download cost " + (l2 - l1) + " result " + i + " key " + ((DownloadTask)localObject).jdField_a_of_type_JavaLangString);
+      return paramView;
+      paramViewGroup = (anmh)paramView.getTag();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmf
  * JD-Core Version:    0.7.0.1
  */

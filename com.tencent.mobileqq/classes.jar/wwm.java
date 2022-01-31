@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.activity.photo.MediaFileFilter;
-import com.tencent.mobileqq.activity.photo.MimeHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class wwm
-  extends MediaFileFilter
+class wwm
+  implements View.OnClickListener
 {
-  public boolean a()
-  {
-    return false;
-  }
+  wwm(wwk paramwwk) {}
   
-  public boolean a(String paramString)
+  public void onClick(View paramView)
   {
-    return !MimeHelper.b(paramString);
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wwm
  * JD-Core Version:    0.7.0.1
  */

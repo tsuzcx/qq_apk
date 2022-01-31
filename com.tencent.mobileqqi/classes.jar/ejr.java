@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
 
 public class ejr
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public ejr(NewFriendActivity paramNewFriendActivity) {}
+  public ejr(MessageSearchDialog paramMessageSearchDialog) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (NewFriendActivity.a(this.a) != null) {
-      NewFriendActivity.a(this.a).k();
-    }
-    for (;;)
-    {
-      ReportController.b(this.a.b, "CliOper", "", "", "frd_recommend", "clean_apply", 0, 0, "", "", "", "");
-      return;
-      SystemMsgListView.a(this.a.b);
-    }
+    ((InputMethodManager)MessageSearchDialog.a(this.a).getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

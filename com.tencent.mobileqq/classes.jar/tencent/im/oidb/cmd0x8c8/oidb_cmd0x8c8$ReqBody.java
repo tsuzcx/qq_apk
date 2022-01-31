@@ -11,12 +11,12 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_cmd0x8c8$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public oidb_cmd0x8c8.ControlParam control_req_param = new oidb_cmd0x8c8.ControlParam();
-  public final PBRepeatField rpt_bytes_rowkey = PBField.initRepeat(PBBytesField.__repeatHelper__);
-  public final PBRepeatMessageField rpt_msg_info_list = PBField.initRepeatMessage(oidb_cmd0x8c8.ReqMsgInfo.class);
+  public final PBRepeatField<ByteStringMicro> rpt_bytes_rowkey = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatMessageField<oidb_cmd0x8c8.ReqMsgInfo> rpt_msg_info_list = PBField.initRepeatMessage(oidb_cmd0x8c8.ReqMsgInfo.class);
   public final PBUInt32Field uint32_need_account_info = PBField.initUInt32(0);
   public final PBUInt32Field uint32_version = PBField.initUInt32(0);
   public final PBUInt64Field uint64_client_switch = PBField.initUInt64(0L);
@@ -30,7 +30,7 @@ public final class oidb_cmd0x8c8$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.ReqBody
  * JD-Core Version:    0.7.0.1
  */

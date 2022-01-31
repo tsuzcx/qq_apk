@@ -1,24 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData;
 
 public class aghj
-  implements DialogInterface.OnDismissListener
+  implements arsr
 {
-  public aghj(ScanTorchActivity paramScanTorchActivity) {}
+  public aghj(AIOFileVideoData paramAIOFileVideoData, aiqi paramaiqi, View paramView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    this.a.b = null;
-    this.a.a.b(false);
-    this.a.a.c(false);
-    ScanTorchActivity.c(this.a, true);
+    if (AIOFileVideoData.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData))
+    {
+      AIOFileVideoData.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData, false);
+      this.jdField_a_of_type_Aiqi.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData.a(false));
+    }
+    this.jdField_a_of_type_Aiqi.b();
+    this.jdField_a_of_type_Aiqi.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aghj
  * JD-Core Version:    0.7.0.1
  */

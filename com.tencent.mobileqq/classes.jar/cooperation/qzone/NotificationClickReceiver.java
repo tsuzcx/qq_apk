@@ -8,11 +8,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
+import azbg;
+import bjdn;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.servlet.CliNotifyPush;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.report.lp.LpReportInfo_dc00420;
+import cooperation.qzone.report.lp.QZoneLoginReportHelper;
 import java.util.List;
 
 public class NotificationClickReceiver
@@ -87,24 +89,25 @@ public class NotificationClickReceiver
       {
         if (str1.startsWith("mqzone://arouse/livevideo"))
         {
-          paramContext = new QZoneClickReport.ReportInfo();
+          paramContext = new bjdn();
           paramContext.c = String.valueOf(322);
           paramContext.d = String.valueOf(3);
           paramContext.e = String.valueOf(7);
           QZoneClickReport.report((String)localObject, paramContext, true);
-          CliNotifyPush.a.clear();
+          azbg.a.clear();
         }
         localUri = Uri.parse(str1);
         if (!TextUtils.isEmpty(localUri.getQueryParameter("from"))) {
-          break label265;
+          break label268;
         }
         paramContext = paramIntent;
         if (localUri.getPathSegments().size() <= 0) {}
       }
-      label265:
+      label268:
       for (paramContext = (String)localUri.getPathSegments().get(0);; paramContext = localUri.getQueryParameter("from"))
       {
         LpReportInfo_dc00420.report(3, 0, paramContext, str2, 1);
+        QZoneLoginReportHelper.reportLoginFromMQQPush();
         if (!QLog.isColorLevel()) {
           break;
         }
@@ -121,7 +124,7 @@ public class NotificationClickReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.NotificationClickReceiver
  * JD-Core Version:    0.7.0.1
  */

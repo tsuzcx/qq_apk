@@ -1,40 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
-import com.tencent.mobileqq.servlet.QZoneNotifyServlet;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneHelper;
-import mqq.app.NewIntent;
+import android.graphics.Matrix;
 
 public class ahya
-  implements Runnable
 {
-  public ahya(QZoneManagerImp paramQZoneManagerImp, int paramInt) {}
+  public float a;
+  private final Matrix a;
+  public boolean a;
+  public float b = 0.0F;
   
-  public void run()
+  public ahya()
   {
-    long l = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneManagerImp..UndealCount", 2, "sendGetFeedByTime.click leba.nowtime: " + l + ",QZoneNotifyServlet.lastGetFeedTime: " + QZoneNotifyServlet.c + ",config interval:" + QZoneHelper.a() + "difference: " + (l - QZoneNotifyServlet.c));
-    }
-    QQAppInterface localQQAppInterface;
-    if (l - QZoneNotifyServlet.c > QZoneHelper.a())
-    {
-      localQQAppInterface = QZoneManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqServletQZoneManagerImp);
-      if ((localQQAppInterface != null) && (localQQAppInterface.getApplication() != null)) {
-        break label103;
-      }
-    }
-    label103:
-    do
-    {
-      return;
-      NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApplication(), QZoneNotifyServlet.class);
-      localNewIntent.setAction("Qzone_Get_NewAndUnread_Count");
-      localNewIntent.putExtra("qzone_send_by_time", this.jdField_a_of_type_Int);
-      localNewIntent.putExtra("scene", 103);
-      localQQAppInterface.startServlet(localNewIntent);
-    } while (!QLog.isColorLevel());
-    QLog.d("QZoneManagerImp..UndealCount", 2, "sendGetFeedByTime.click leba.");
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Float = 0.0F;
   }
 }
 

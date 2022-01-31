@@ -14,7 +14,6 @@ public final class ByteStringMicro
   }
   
   public static ByteStringMicro copyFrom(String paramString1, String paramString2)
-    throws UnsupportedEncodingException
   {
     return new ByteStringMicro(paramString1.getBytes(paramString2));
   }
@@ -134,7 +133,6 @@ public final class ByteStringMicro
   }
   
   public String toString(String paramString)
-    throws UnsupportedEncodingException
   {
     return new String(this.bytes, paramString);
   }

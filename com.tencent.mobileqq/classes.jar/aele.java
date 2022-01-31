@@ -1,35 +1,22 @@
-import MyCarrier.Carrier;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mybusiness.MyBusinessManager;
-import com.tencent.mobileqq.mybusiness.MyBusinessObserver;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
 
 public class aele
-  extends MyBusinessObserver
+  implements View.OnClickListener
 {
-  public aele(MyBusinessManager paramMyBusinessManager) {}
+  public aele(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public void a(boolean paramBoolean, Carrier paramCarrier, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MyBusinessManager", 4, "onCarrierQuery refreshTimeSpan = " + paramInt);
+    if (!this.a.b) {
+      this.a.a();
     }
-    this.a.a = paramInt;
-    if (this.a.a > 86400) {
-      this.a.a = 86400;
-    }
-    if (!paramBoolean)
-    {
-      this.a.b = false;
-      return;
-    }
-    ThreadManager.getFileThreadHandler().post(new aelf(this, paramCarrier));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aele
  * JD-Core Version:    0.7.0.1
  */

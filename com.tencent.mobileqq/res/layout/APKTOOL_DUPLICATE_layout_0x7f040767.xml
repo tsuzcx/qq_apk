@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.immersive.ImmersiveTitleBar2 android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0633" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
-</RelativeLayout>

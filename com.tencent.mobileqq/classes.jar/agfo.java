@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.ar.ObjectSurfaceView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-
-public class agfo
-  implements Runnable
+public abstract interface agfo
 {
-  public agfo(ScanTorchActivity paramScanTorchActivity) {}
-  
-  public void run()
-  {
-    this.a.a.setVisibility(0);
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agfo
  * JD-Core Version:    0.7.0.1
  */

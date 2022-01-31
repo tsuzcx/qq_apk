@@ -1,70 +1,94 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
-import cooperation.comic.VipComicJumpActivity;
 
 public class amjn
-  extends BroadcastReceiver
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  
-  public amjn(VipComicJumpActivity paramVipComicJumpActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static SharedPreferences a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("pluginsdk_pluginLocation");
-    paramContext = paramIntent.getStringExtra("pluginsdk_launchReceiver");
-    String str = paramIntent.getAction();
-    if (((!TextUtils.isEmpty(str)) && ("com.tencent.mobileqq.PreLoadComicProcess".equals(str))) || ((paramContext != null) && (paramContext.equals("com.qqcomic.app.VipPreloadComicProcess")))) {
-      if (!this.jdField_a_of_type_CooperationComicVipComicJumpActivity.b)
+    return paramContext.getSharedPreferences("PrefHiddenChat" + paramString, 4);
+  }
+  
+  public static void a(String paramString, Context paramContext, boolean paramBoolean)
+  {
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
+    do
+    {
+      return;
+      paramContext = a(paramContext, paramString).edit();
+      paramContext.putBoolean("show_unread_msg", paramBoolean);
+      paramContext.commit();
+    } while (!QLog.isColorLevel());
+    QLog.i("HiddenChatUtil", 2, "setHiddenSession ac[" + paramString + "], open[" + paramBoolean + "]");
+  }
+  
+  public static boolean a(Context paramContext, String paramString1, String paramString2, int paramInt)
+  {
+    boolean bool2;
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString1))) {
+      bool2 = true;
+    }
+    boolean bool1;
+    do
+    {
+      return bool2;
+      paramContext = a(paramContext, paramString1);
+      bool2 = paramContext.getBoolean("show_video_msg", false);
+      bool1 = bool2;
+      if (!bool2)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQComicDebug", 2, "do handle launch activity in receiver.");
+        paramContext = paramContext.getString("KeyHiddenChatList", "");
+        String str = paramString2 + "|" + paramInt + ";";
+        if ((TextUtils.isEmpty(paramContext)) || (!paramContext.contains(str))) {
+          bool2 = true;
         }
-        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(1000);
-        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.b = true;
-        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.c = false;
-        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.c(this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_CooperationComicVipComicJumpActivity$ComicParam);
+        bool1 = bool2;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("HiddenChatUtil", 2, String.format("isShowVideoMsg ac[%s], uin[%s], type[%s], show[%s], cur[%s], list[%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool2), str, paramContext }));
+          bool1 = bool2;
+        }
       }
+      bool2 = bool1;
+    } while (!QLog.isColorLevel());
+    QLog.i("HiddenChatUtil", 2, String.format("isShowVideoMsg ac[%s], uin[%s], type[%s], show[%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool1) }));
+    return bool1;
+  }
+  
+  public static boolean a(String paramString, Context paramContext)
+  {
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
+      return true;
     }
-    while ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("comic_plugin.apk")))
+    return a(paramContext, paramString).getBoolean("show_unread_msg", true);
+  }
+  
+  public static void b(String paramString, Context paramContext, boolean paramBoolean)
+  {
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
+    do
     {
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("QQComicDebug", 2, "skip handle launch activity in receiver.");
       return;
+      paramContext = a(paramContext, paramString).edit();
+      paramContext.putBoolean("show_video_msg", paramBoolean);
+      paramContext.commit();
+    } while (!QLog.isColorLevel());
+    QLog.i("HiddenChatUtil", 2, "setVideoMsg ac[" + paramString + "], open[" + paramBoolean + "]");
+  }
+  
+  public static boolean b(String paramString, Context paramContext)
+  {
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
+      return true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("VipComicJumpActivity", 2, "LaunchCompletedObserver.onReceive: " + this.jdField_a_of_type_JavaLangString);
-    }
-    this.b = paramIntent.getStringExtra("pluginsdk_extraInfo");
-    if ((this.b != null) && ("success".equals(this.b))) {
-      this.jdField_a_of_type_CooperationComicVipComicJumpActivity.a(this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_CooperationComicVipComicJumpActivity$ComicParam, 0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_CooperationComicVipComicJumpActivity.finish();
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("QQComicDebug", 2, "launch activity finish, leave jump activity.");
-      return;
-      this.jdField_a_of_type_CooperationComicVipComicJumpActivity.a(this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_CooperationComicVipComicJumpActivity$ComicParam, -2);
-      if (QLog.isColorLevel()) {
-        QLog.d("VipComicJumpActivity", 2, "LaunchCompletedObserver.onReceive mExtraInfo: " + this.b);
-      }
-    }
+    return a(paramContext, paramString).getBoolean("show_video_msg", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjn
  * JD-Core Version:    0.7.0.1
  */

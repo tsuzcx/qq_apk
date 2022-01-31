@@ -1,28 +1,33 @@
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public class wzw
-  implements Runnable
+class wzw
+  extends AnimatorListenerAdapter
 {
-  public wzw(PasswdRedBagManager paramPasswdRedBagManager) {}
+  wzw(wzv paramwzv, View paramView) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    Iterator localIterator = PasswdRedBagManager.a(this.a).a().entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      this.a.c.put(localEntry.getKey(), localEntry.getValue());
-    }
+    wxe.b("Q.qqstory.record.EditVideoFragment", "resetAnimator cancel!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    wxe.c("Q.qqstory.record.EditVideoFragment", "resetAnimator end!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    wxe.c("Q.qqstory.record.EditVideoFragment", "resetAnimator start!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wzw
  * JD-Core Version:    0.7.0.1
  */

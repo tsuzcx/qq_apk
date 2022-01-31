@@ -5,16 +5,16 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Button;
 import android.widget.EditText;
-import com.tencent.token.af;
+import com.tencent.token.cw;
 
 public class SettingSubmitCommentActivity
   extends BaseActivity
 {
   private String comment = "";
   private EditText mCommentEdit;
-  private Handler mHandler = new zz(this);
+  private Handler mHandler = new yv(this);
   private Button mMenuBarBtn;
-  private af mTokenCore = af.a();
+  private cw mTokenCore = cw.a();
   
   public void cancelRequest()
   {
@@ -26,26 +26,26 @@ public class SettingSubmitCommentActivity
     if ((this.mCommentEdit.getText().toString() == null) || (this.mCommentEdit.getText().toString().length() == 0))
     {
       this.mMenuBarBtn.setClickable(false);
-      this.mMenuBarBtn.setTextColor(getResources().getColor(2131165214));
+      this.mMenuBarBtn.setTextColor(getResources().getColor(2131492939));
       return;
     }
     this.mMenuBarBtn.setClickable(true);
-    this.mMenuBarBtn.setTextColor(getResources().getColor(2131165223));
+    this.mMenuBarBtn.setTextColor(getResources().getColor(2131492905));
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903196);
-    this.mCommentEdit = ((EditText)findViewById(2131297088));
+    setContentView(2130968759);
+    this.mCommentEdit = ((EditText)findViewById(2131559257));
     if (this.mCommentEdit != null) {
       this.mCommentEdit.clearFocus();
     }
-    this.mMenuBarBtn = ((Button)findViewById(2131297148));
+    this.mMenuBarBtn = ((Button)findViewById(2131559307));
     this.mMenuBarBtn.setVisibility(0);
-    this.mMenuBarBtn.setText(getResources().getString(2131361807));
-    this.mMenuBarBtn.setOnClickListener(new aaa(this));
-    this.mCommentEdit.addTextChangedListener(new aab(this));
+    this.mMenuBarBtn.setText(getResources().getString(2131231426));
+    this.mMenuBarBtn.setOnClickListener(new yw(this));
+    this.mCommentEdit.addTextChangedListener(new yx(this));
     checkMenuBtnEnable();
   }
 }

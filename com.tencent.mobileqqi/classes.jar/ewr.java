@@ -1,22 +1,11 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareActivity;
+import com.tencent.mobileqq.activity.voip.VoipHistoryActivity;
+import com.tencent.mobileqq.activity.voip.VoipHistoryAllType;
 
 public class ewr
-  extends Handler
 {
-  public ewr(QvipSpecialCareActivity paramQvipSpecialCareActivity) {}
+  public VoipHistoryAllType a;
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    QvipSpecialCareActivity.b(this.a);
-    QvipSpecialCareActivity.a(this.a, this.a.getString(2131562882));
-  }
+  private ewr(VoipHistoryActivity paramVoipHistoryActivity) {}
 }
 
 

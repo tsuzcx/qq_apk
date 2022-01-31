@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class PreloadInfoCheckUpdate$ControlReqHead
-  extends MessageMicro
+  extends MessageMicro<ControlReqHead>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48, 58 }, new String[] { "protocol_ver", "client_plat_id", "client_ver", "os_ver", "uin", "mem", "ext1" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "", "", Long.valueOf(0L), Integer.valueOf(0), "" }, ControlReqHead.class);
   public final PBInt32Field client_plat_id = PBField.initInt32(0);
@@ -22,7 +22,7 @@ public final class PreloadInfoCheckUpdate$ControlReqHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.getpreload.PreloadInfoCheckUpdate.ControlReqHead
  * JD-Core Version:    0.7.0.1
  */

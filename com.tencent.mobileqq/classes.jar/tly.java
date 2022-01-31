@@ -1,27 +1,42 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.drawer.ApolloDrawerContext;
-import com.tencent.mobileqq.apollo.drawer.ApolloDrawerStatus;
-import com.tencent.mobileqq.apollo.drawer.ApolloStepInfo;
-import com.tencent.mobileqq.apollo.drawer.StepDrawerStatus;
-import com.tencent.mobileqq.vashealth.SSOHttpUtils;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-class tly
-  implements Runnable
+final class tly
+  implements URLDrawable.URLDrawableListener
 {
-  tly(tlx paramtlx) {}
+  tly(String paramString1, ImageView paramImageView, String paramString2) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    Object localObject = new ApolloStepInfo(SSOHttpUtils.a());
-    localObject = new StepDrawerStatus(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ApolloStepInfo)localObject);
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext != null) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext.a((ApolloDrawerStatus)localObject);
+    tlo.a("815", "onLoadCanceled - " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841378);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    tlo.a("815", "onLoadFialed - " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841378);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    tlo.a("815", "onLoadProgressed - " + this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    tlo.a("815", "onLoadSuccessed - " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "banner")) {
+      tfd.b(2, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tly
  * JD-Core Version:    0.7.0.1
  */

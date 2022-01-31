@@ -1,79 +1,44 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder.Holder;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.ApolloMessage;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.widget.XEditTextEx;
 
 public class utq
-  implements Runnable
+  implements TextView.OnEditorActionListener
 {
-  public utq(ApolloItemBuilder paramApolloItemBuilder, MessageForApollo paramMessageForApollo, BaseChatItemLayout paramBaseChatItemLayout, ApolloItemBuilder.Holder paramHolder) {}
+  public utq(StoryInputBarView paramStoryInputBarView) {}
   
-  public void run()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    Object localObject;
-    int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.mApolloMessage != null)
+    if (paramInt == 4)
     {
-      localObject = ((ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154)).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.mApolloMessage.id);
-      if ((localObject == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.hasPlayed) || (((ApolloActionData)localObject).feeType != 1) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1) || (ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.msgType))) {
-        break label331;
+      paramTextView = paramTextView.getText().toString();
+      if (paramTextView.length() <= 0) {
+        break label140;
       }
-      localObject = new uty(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder$Holder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo, 0);
-      ThreadManager.getUIHandler().post((Runnable)localObject);
-      localObject = new uty(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder$Holder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo, 1);
-      ThreadManager.getUIHandler().postDelayed((Runnable)localObject, 8000L);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext != null) && (((FragmentActivity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext).getChatFragment() != null))
-      {
-        localObject = ((FragmentActivity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
-        if ((localObject != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.hasPlayed) && (ApolloItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder) != this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.uniseq))
-        {
-          if (((BaseChatPie)localObject).f() != 21) {
-            break label321;
-          }
-          i = 1;
-          localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.isDoubleAction()) {
-            break label326;
-          }
-        }
+      this.a.setKeyBoardState(false);
+      if (this.a.jdField_a_of_type_Ust != null) {
+        this.a.jdField_a_of_type_Ust.a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      }
+      this.a.c();
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
+      if (StoryInputBarView.a(this.a) != null) {
+        StoryInputBarView.a(this.a).a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory:StoryInputBarView", 2, "onEditorAction vaule=" + paramTextView);
       }
     }
-    label321:
-    label326:
-    for (int j = 1;; j = 0)
-    {
-      VipUtils.a((AppInterface)localObject, "cmshow", "Apollo", "grouppluspv", i, j, new String[] { Integer.toString(this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.mApolloMessage.id) });
-      ApolloItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.uniseq);
-      return;
-      i = 0;
-      break;
-    }
-    label331:
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout != null)
-    {
-      ThreadManager.getUIHandler().post(new utr(this));
-      return;
-    }
-    QLog.i("ApolloItemBuilder", 1, "convertView is null.");
+    return false;
+    label140:
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     utq
  * JD-Core Version:    0.7.0.1
  */

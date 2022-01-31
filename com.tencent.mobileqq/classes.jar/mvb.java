@@ -1,19 +1,24 @@
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityForPtt;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PopupDialog;
 
 public class mvb
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public mvb(PublicAccountH5AbilityForPtt paramPublicAccountH5AbilityForPtt) {}
+  public mvb(PopupDialog paramPopupDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQToast.a(this.a.a, "开始录音了", 0).a();
+    if (PopupDialog.a.b != null) {
+      PopupDialog.a.b.onClick(paramDialogInterface, paramInt);
+    }
+    paramDialogInterface.dismiss();
+    PopupDialog.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mvb
  * JD-Core Version:    0.7.0.1
  */

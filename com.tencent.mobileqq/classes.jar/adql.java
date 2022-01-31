@@ -1,31 +1,151 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
-import com.tencent.mobileqq.hotpic.HotVideoData;
-import com.tencent.mobileqq.hotpic.HotVideoData.HotVideoGetUrlCallBack;
-import com.tencent.mobileqq.hotpic.HotVideoData.HotVideoGetUrlResult;
-import com.tencent.mobileqq.widget.QQToastNotifier;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.QQLSUnlockActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 public class adql
-  implements HotVideoData.HotVideoGetUrlCallBack
+  extends Handler
 {
-  public adql(HotPicPageView paramHotPicPageView, HotVideoData paramHotVideoData, HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder) {}
-  
-  public void a(HotVideoData.HotVideoGetUrlResult paramHotVideoGetUrlResult)
+  public adql(QQLSActivity paramQQLSActivity, Looper paramLooper)
   {
-    if (paramHotVideoGetUrlResult.a)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.originalUrl = paramHotVideoGetUrlResult.a();
-      if (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a == 1) {}
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a != 1)
-    {
+    default: 
+    case 5: 
+    case 6: 
+    case 4: 
+    case 3: 
+    case 1: 
+    case 2: 
+    case 16: 
+    case 7: 
+    case 8: 
+    case 9: 
+    case 10: 
+    case 11: 
+    case 12: 
+      do
+      {
+        boolean bool;
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  return;
+                } while (QQLSActivity.b(this.a));
+                if (hasMessages(5)) {
+                  removeMessages(5);
+                }
+                QQLSActivity.b(this.a);
+                if (QQLSActivity.a(this.a) != null) {
+                  ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(QQLSActivity.a(this.a).getWindowToken(), 0);
+                }
+                QQLSActivity.b(this.a).setVisibility(0);
+                paramMessage = obtainMessage(3);
+                if (hasMessages(3)) {
+                  removeMessages(3);
+                }
+                sendMessageDelayed(paramMessage, 1200L);
+                return;
+              } while (QQLSActivity.b(this.a));
+              if (hasMessages(6)) {
+                removeMessages(6);
+              }
+              QQLSActivity.b(this.a);
+              if (QQLSActivity.a(this.a) != null) {
+                ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(QQLSActivity.a(this.a).getWindowToken(), 0);
+              }
+              QQLSActivity.a(this.a).setVisibility(0);
+              paramMessage = obtainMessage(4);
+              if (hasMessages(4)) {
+                removeMessages(4);
+              }
+              sendMessageDelayed(paramMessage, 1200L);
+              return;
+              QQLSActivity.a(this.a).setVisibility(4);
+              return;
+              QQLSActivity.b(this.a).setVisibility(4);
+              return;
+              this.a.c();
+              if (QLog.isColorLevel()) {
+                QLog.d("QQLSActivity", 2, "message send finish");
+              }
+              QQLSActivity.a(this.a);
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.d("QQLSActivity", 2, "message finish activity finish");
+              }
+              this.a.finish();
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.d("QQLSActivity", 2, "message finish activity finish, enter aio");
+              }
+              this.a.finish();
+              return;
+            } while ((QQLSActivity.c(this.a)) || (!QQLSActivity.d(this.a)));
+            if (QLog.isColorLevel()) {
+              QLog.d("QQLSActivity", 2, "sensor don't callback 1000ms later");
+            }
+            QQLSActivity.c(this.a);
+            return;
+            this.a.a();
+            return;
+          } while (QQLSActivity.a(this.a));
+          azqs.b(QQLSActivity.a(this.a), "CliOper", "", "", "0X800444B", "0X800444B", 0, 0, "", "", "", "");
+          paramMessage = new Intent(this.a, QQLSUnlockActivity.class);
+          this.a.startActivity(paramMessage);
+          return;
+          paramMessage = new Intent(this.a, QQLSActivity.class);
+          paramMessage.addFlags(131072);
+          this.a.startActivity(paramMessage);
+          return;
+          bool = QQLSActivity.e(this.a);
+          if (QLog.isColorLevel()) {
+            QLog.d("QQLSActivity", 2, "LS MSG_CHECKISLOCK" + bool);
+          }
+        } while (bool);
+        this.a.finish();
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("QQLSActivity", 2, "check sensor HasCallBack ====" + QQLSActivity.c(this.a));
+        }
+        if (QQLSActivity.c(this.a))
+        {
+          QQLSActivity.d(this.a);
+          return;
+        }
+      } while (!QQLSActivity.d(this.a));
+      QQLSActivity.c(this.a);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new adqm(this));
+    case 13: 
+      QQLSActivity.e(this.a);
+      return;
+    case 14: 
+      QQLSActivity.a(this.a, false);
+      return;
+    case 15: 
+      QQLSActivity.f(this.a);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a(-11);
-    new QQToastNotifier(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_AndroidContentContext).a("网络错误，请稍后重试", 100, 0, 1);
+    this.a.a.a(QQLSActivity.a(this.a), (String)paramMessage.obj, 1008, false, -1, false);
+    this.a.b();
   }
 }
 

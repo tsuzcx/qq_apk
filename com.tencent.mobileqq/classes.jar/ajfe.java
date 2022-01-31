@@ -1,15 +1,27 @@
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectConfig;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectConfig.GrayTipsConfig;
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
+import java.util.Iterator;
+import java.util.List;
 
 public class ajfe
-  implements Comparator
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ajfe(TroopEnterEffectConfig paramTroopEnterEffectConfig) {}
+  public ajfe(RecordMicView paramRecordMicView) {}
   
-  public int a(TroopEnterEffectConfig.GrayTipsConfig paramGrayTipsConfig1, TroopEnterEffectConfig.GrayTipsConfig paramGrayTipsConfig2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return paramGrayTipsConfig2.b - paramGrayTipsConfig1.b;
+    float f = paramValueAnimator.getAnimatedFraction();
+    paramValueAnimator = RecordMicView.a(this.a).iterator();
+    while (paramValueAnimator.hasNext())
+    {
+      ajff localajff = (ajff)paramValueAnimator.next();
+      localajff.jdField_c_of_type_Float = (localajff.f + (localajff.g - localajff.f) * f);
+      localajff.d = (localajff.h + (localajff.i - localajff.h) * f);
+      localajff.e = (localajff.j + (localajff.k - localajff.j) * f);
+      localajff.a = (localajff.b + (int)((localajff.jdField_c_of_type_Int - localajff.b) * f));
+    }
+    this.a.invalidate();
   }
 }
 

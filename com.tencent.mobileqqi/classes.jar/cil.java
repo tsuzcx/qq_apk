@@ -1,20 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.DoodleActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class cil
   implements View.OnClickListener
 {
-  public cil(ChatHistory paramChatHistory) {}
+  public cil(DoodleActivity paramDoodleActivity) {}
   
   public void onClick(View paramView)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.a.a > this.a.b)
-    {
-      this.a.a = l;
-      this.a.a();
-    }
+    DialogUtil.a(this.a, 230, this.a.getString(2131561832), this.a.getString(2131561823), 2131561746, 2131561915, new cim(this), new cin(this)).show();
   }
 }
 

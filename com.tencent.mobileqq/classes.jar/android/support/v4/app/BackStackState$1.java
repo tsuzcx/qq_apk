@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
 final class BackStackState$1
-  implements Parcelable.Creator
+  implements Parcelable.Creator<BackStackState>
 {
   public BackStackState createFromParcel(Parcel paramParcel)
   {

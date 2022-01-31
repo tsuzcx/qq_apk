@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import android.view.View;
+import com.tencent.gdtad.aditem.GdtAd;
 
 class aaqg
-  implements Runnable
+  implements aaso
 {
-  aaqg(aaqf paramaaqf) {}
+  aaqg(aaqa paramaaqa) {}
   
-  public void run()
+  public void reportImpression(View paramView)
   {
-    ArkAppModuleReg.ModuleQQ.a(this.a.a.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ, this.a.a.jdField_a_of_type_Long, this.a.a.c, true, 1);
+    paramView = paramView.getTag(2131379969);
+    if ((paramView != null) && ((paramView instanceof GdtAd))) {
+      aasq.a(((GdtAd)paramView).getUrlForImpression());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaqg
  * JD-Core Version:    0.7.0.1
  */

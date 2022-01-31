@@ -1,18 +1,14 @@
-import java.nio.ByteBuffer;
-
-class nqh
+public class nqh
 {
-  protected long a;
-  protected ByteBuffer a;
-  
-  nqh(int paramInt)
-  {
-    this.a = ByteBuffer.allocate(paramInt);
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nqh
  * JD-Core Version:    0.7.0.1
  */

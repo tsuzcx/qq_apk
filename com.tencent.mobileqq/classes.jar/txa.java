@@ -1,53 +1,61 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.qqcircle.component.QCircleComponentPageView;
+import com.tencent.biz.qqcircle.fragments.QCirclePersonalDetailFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class txa
-  implements DialogInterface.OnClickListener
+  extends RecyclerView.OnScrollListener
 {
-  public txa(TroopDisbandActivity paramTroopDisbandActivity, QQCustomDialog paramQQCustomDialog) {}
+  public txa(QCirclePersonalDetailFragment paramQCirclePersonalDetailFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
-    }
-    if (NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity))
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0)
     {
-      paramDialogInterface = (TroopHandler)this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.app.a(20);
-      if (paramDialogInterface != null)
-      {
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.b & 0x1) == 0)
-        {
-          TroopDisbandActivity localTroopDisbandActivity = this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity;
-          localTroopDisbandActivity.b |= 0x1;
-          paramDialogInterface.j(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_JavaLangString);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, 2131435284, 1000);
-      }
-    }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
-      }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.app, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
+      abvl.a().a("qcircle_personal_detail_page", false);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131435287, 1500);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, 2131434613, 1500);
+    }
+    abvl.a().a("qcircle_personal_detail_page");
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    QCirclePersonalDetailFragment.a(this.a, paramInt2);
+    if ((paramRecyclerView.getLayoutManager() instanceof yiq))
+    {
+      int[] arrayOfInt = ((yiq)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPositions(null);
+      if ((arrayOfInt != null) && (arrayOfInt.length > 0))
+      {
+        paramInt2 = arrayOfInt[0];
+        if (!this.a.a().a().a().b()) {
+          break label157;
+        }
+      }
+    }
+    label157:
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      if (paramInt2 == paramInt1)
+      {
+        QLog.i("QCirclePersonalDetailFragment", 1, "onScrolled headView completeVisible");
+        QCirclePersonalDetailFragment.a(this.a);
+      }
+      paramRecyclerView = ((yiq)paramRecyclerView.getLayoutManager()).findFirstVisibleItemPositions(null);
+      if ((paramRecyclerView != null) && (paramRecyclerView.length > 0) && (this.a.a().a().a().b()) && (paramRecyclerView[0] == 0))
+      {
+        QLog.i("QCirclePersonalDetailFragment", 1, "onScrolled refreshItem visible");
+        QCirclePersonalDetailFragment.a(this.a);
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txa
  * JD-Core Version:    0.7.0.1
  */

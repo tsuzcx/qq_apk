@@ -1,36 +1,22 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 
 class acmy
-  implements Runnable
+  implements View.OnClickListener
 {
-  acmy(acmv paramacmv) {}
+  acmy(acms paramacms, MessageRecord paramMessageRecord) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    try
-    {
-      String str = (String)this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a.getText();
-      if ((str == null) || (str.length() == 0)) {
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject = null;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a.clearAnimation();
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a.setVisibility(0);
-    }
+    AIOEmotionFragment.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Acms.a.a, zjc.a(paramView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acmy
  * JD-Core Version:    0.7.0.1
  */

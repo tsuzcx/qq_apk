@@ -1,21 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoLabel;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
 
-public class ofd
-  implements View.OnClickListener
+public abstract interface ofd
 {
-  public ofd(EditVideoLabel paramEditVideoLabel) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.a(0);
-  }
+  public abstract void a(GiftServiceBean paramGiftServiceBean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ofd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,32 @@
-import android.os.Bundle;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.http.HttpBaseUtil;
-import com.tencent.open.base.http.HttpBaseUtil.Statistic;
-import com.tencent.open.business.base.OpenConfig;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class alfq
-  implements Runnable
+class alfq
+  implements aled
 {
-  public alfq(OpenConfig paramOpenConfig, Bundle paramBundle) {}
+  alfq(alfe paramalfe, int paramInt, File paramFile, String paramString) {}
   
-  public void run()
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPluginRscLoader", 2, "getApolloRsc onDownLoadFinish:" + this.jdField_a_of_type_Int + " sucess:" + paramBoolean);
+    }
+    if (paramBoolean)
     {
-      JSONObject localJSONObject = HttpBaseUtil.a(HttpBaseUtil.a("http://qappcenter.3g.qq.com/cgi-bin/mapp/mapp_policy_config", "GET", this.jdField_a_of_type_AndroidOsBundle).a);
-      LogUtility.c("nemo", localJSONObject.toString());
-      this.jdField_a_of_type_ComTencentOpenBusinessBaseOpenConfig.a(localJSONObject);
-      this.jdField_a_of_type_ComTencentOpenBusinessBaseOpenConfig.a = 0;
+      if (this.jdField_a_of_type_JavaIoFile.exists())
+      {
+        this.jdField_a_of_type_Alfe.a(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_Int + alud.a(2131700874));
+        return;
+      }
+      this.jdField_a_of_type_Alfe.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Int + alud.a(2131700873));
       return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_Alfe.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Int + alud.a(2131700895));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alfq
  * JD-Core Version:    0.7.0.1
  */

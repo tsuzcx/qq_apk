@@ -1,70 +1,73 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabVideoPreloaderDataProvider;
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabVideoPreloaderDataProvider.DataProviderListener;
-import com.tencent.biz.qqstory.playmode.util.MsgTabVideoData;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import OnlinePushPack.SvcRespPushMsg;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.biz.game.SensorAPIJavaScript.9.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class net
-  extends SimpleObserver
+  implements nej
 {
-  public net(MsgTabVideoPreloaderDataProvider paramMsgTabVideoPreloaderDataProvider, MsgTabVideoPreloaderDataProvider.DataProviderListener paramDataProviderListener, MsgTabNodeInfo paramMsgTabNodeInfo) {}
+  public net(SensorAPIJavaScript paramSensorAPIJavaScript) {}
   
-  public void a(List paramList)
+  public void a(int paramInt, SvcRespPushMsg paramSvcRespPushMsg)
   {
-    super.onNext(paramList);
-    ArrayList localArrayList;
-    int i;
-    MsgTabVideoData localMsgTabVideoData;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener != null)
+    if (this.a.jdField_a_of_type_AndroidAppActivity != null)
     {
-      localArrayList = new ArrayList();
-      if ((paramList != null) && (!paramList.isEmpty()))
+      AppInterface localAppInterface = this.a.mRuntime.a();
+      if (localAppInterface != null)
       {
-        Collections.sort(paramList, new neu(this));
-        paramList = paramList.iterator();
-        i = 0;
-        if (paramList.hasNext())
-        {
-          localMsgTabVideoData = (MsgTabVideoData)paramList.next();
-          if (i < MsgTabVideoPreloaderDataProvider.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider)) {
-            break label100;
-          }
+        ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", localAppInterface.getAccount(), "OnlinePush.RespPush");
+        localToServiceMsg.setNeedCallback(false);
+        UniPacket localUniPacket = new UniPacket(true);
+        localUniPacket.setEncodeName("utf-8");
+        int i = ayxz.a;
+        ayxz.a = i + 1;
+        localUniPacket.setRequestId(i);
+        localUniPacket.setServantName("OnlinePush");
+        localUniPacket.setFuncName("SvcRespPushMsg");
+        localUniPacket.setRequestId(paramInt);
+        localUniPacket.put("resp", paramSvcRespPushMsg);
+        localToServiceMsg.putWupBuffer(localUniPacket.encode());
+        paramSvcRespPushMsg = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), aohe.class);
+        paramSvcRespPushMsg.putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
+        localAppInterface.startServlet(paramSvcRespPushMsg);
+        if (QLog.isColorLevel()) {
+          QLog.d("SensorApi", 2, "reply push");
         }
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, localArrayList);
-    }
-    else
-    {
-      return;
-    }
-    label100:
-    if ((localMsgTabVideoData != null) && (!localMsgTabVideoData.jdField_a_of_type_Boolean) && (localMsgTabVideoData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null))
-    {
-      localArrayList.add(localMsgTabVideoData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      i += 1;
-    }
-    for (;;)
-    {
-      break;
     }
   }
   
-  public void onError(@NonNull Error paramError)
+  public void a(int paramInt, String paramString)
   {
-    super.onError(paramError);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, paramError);
+    String str = SensorAPIJavaScript.jdField_a_of_type_Neg.a(String.valueOf(paramInt));
+    if (!TextUtils.isEmpty(str))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SensorApi", 2, "send data to appId=" + paramInt);
+      }
+      if (this.a.jdField_a_of_type_AndroidOsHandler == null) {
+        this.a.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new SensorAPIJavaScript.9.1(this, str, paramString));
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("SensorApi", 2, "appId=" + paramInt + "'s callback is empty");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     net
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,25 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.Contacts.OverScrollViewTag;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
+import android.text.Editable;
+import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
+import java.util.Comparator;
 
-public class gxf
-  implements OverScrollViewListener
+public final class gxf
+  implements Comparator
 {
-  public gxf(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
+  public gxf(Editable paramEditable) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public int a(AtTroopMemberSpan paramAtTroopMemberSpan1, AtTroopMemberSpan paramAtTroopMemberSpan2)
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.c(l);
-      return;
+    int i = 0;
+    int j = this.a.getSpanStart(paramAtTroopMemberSpan1);
+    int k = this.a.getSpanStart(paramAtTroopMemberSpan2);
+    if (j < k) {
+      i = -1;
     }
+    while (j <= k) {
+      return i;
+    }
+    return 1;
   }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    paramListView = (PullRefreshHeader)paramView;
-    long l;
-    if (this.a.jdField_a_of_type_Long == 0L)
-    {
-      l = System.currentTimeMillis();
-      paramListView.a(l);
-      if (!NetworkUtil.f(this.a.a())) {
-        break label97;
-      }
-      this.a.a(0, true);
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new gxg(this), 300L);
-    }
-    for (;;)
-    {
-      ((Contacts.OverScrollViewTag)paramView.getTag()).a = true;
-      return true;
-      l = this.a.jdField_a_of_type_Long;
-      break;
-      label97:
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new gxh(this), 300L);
-    }
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.b(l);
-      return;
-    }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

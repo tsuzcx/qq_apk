@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class AudioTransInterfaceTranslate$IntTransRawDataReq
-  extends MessageMicro
+  extends MessageMicro<IntTransRawDataReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_data = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,7 +20,7 @@ public final class AudioTransInterfaceTranslate$IntTransRawDataReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.audiotrans.AudioTransInterfaceTranslate.IntTransRawDataReq
  * JD-Core Version:    0.7.0.1
  */

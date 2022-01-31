@@ -1,30 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
 
-public class ury
-  implements DialogInterface.OnClickListener
+class ury
+  extends Job<Object, Object, Object>
 {
-  public ury(DoodlePanel paramDoodlePanel) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  ury(urx paramurx, String paramString, QQStoryCmdHandler.IllegalUinException paramIllegalUinException)
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    }
-    if (DoodlePanel.a(this.a) != null) {
-      DoodlePanel.a(this.a).a(false, false);
-    }
-    DoodlePanel.a(this.a);
+    super(paramString);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  {
+    wxe.d("Q.qqstory.net:QQStoryCmdHandler", "uin convert error");
+    this.jdField_a_of_type_Urx.a.a().a(880002, this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler$IllegalUinException.getMessage(), null);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ury
  * JD-Core Version:    0.7.0.1
  */

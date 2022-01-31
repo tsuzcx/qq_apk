@@ -1,22 +1,21 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController.DoodleOpListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
 public class anzc
-  implements DoodleOpController.DoodleOpListener
+  implements View.OnClickListener
 {
-  public anzc(DoodleLayout paramDoodleLayout) {}
+  public anzc(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.n();
-    }
+    int i = ((Integer)paramView.getTag()).intValue();
+    this.a.a(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anzc
  * JD-Core Version:    0.7.0.1
  */

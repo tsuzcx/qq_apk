@@ -1,15 +1,15 @@
 package com.tencent.mfsdk.reporter;
 
+import abvp;
+import abvu;
 import android.os.HandlerThread;
 import com.tencent.mfsdk.MagnifierSDK;
-import com.tencent.mfsdk.collector.DropResultObject;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.os.MqqHandler;
-import rdu;
 
 public class DFObserver
   implements Observer
@@ -18,7 +18,7 @@ public class DFObserver
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    paramObservable = ((DFObservable)paramObservable).a;
+    paramObservable = ((abvu)paramObservable).a;
     try
     {
       paramObject = new long[6];
@@ -46,9 +46,9 @@ public class DFObserver
         j += 1;
         i += 1;
       }
-      paramObject = new DropResultObject(Long.parseLong((String)paramObservable.get("dropCount")), Long.parseLong((String)paramObservable.get("totalMs")), paramObject);
+      paramObject = new abvp(Long.parseLong((String)paramObservable.get("dropCount")), Long.parseLong((String)paramObservable.get("totalMs")), paramObject);
       paramObject.a = Integer.parseInt(MagnifierSDK.a());
-      paramObservable = new rdu(MagnifierSDK.a, (String)paramObservable.get("scene"), paramObject);
+      paramObservable = new DFObserver.InsertRunnable(MagnifierSDK.a, (String)paramObservable.get("scene"), paramObject);
       a.post(paramObservable);
       return;
     }
@@ -61,7 +61,7 @@ public class DFObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mfsdk.reporter.DFObserver
  * JD-Core Version:    0.7.0.1
  */

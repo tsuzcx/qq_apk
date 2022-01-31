@@ -1,31 +1,26 @@
-import android.view.SurfaceView;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.video.IMediaPlayer.OnPlayStateListener;
+import android.content.Context;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class wyi
-  implements IMediaPlayer.OnPlayStateListener
 {
-  public wyi(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public static String a;
   
-  public void a(int paramInt)
+  public static boolean a(long paramLong, Context paramContext)
   {
-    if (paramInt == 1) {
-      this.a.a.setVisibility(0);
+    a = alsd.a + "QQEditPic" + File.separator;
+    paramContext = new File(a);
+    boolean bool1 = paramContext.mkdirs();
+    boolean bool2 = paramContext.isDirectory();
+    if (QLog.isColorLevel()) {
+      QLog.e("initDirs", 2, "thumbFilesDirPath=" + bool1 + " isdir=" + bool2);
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPreviewActivity", 2, "changePlayState, playState => " + this.a.a(paramInt));
-      }
-      return;
-      this.a.a.setVisibility(8);
-    }
+    return (bool1) || (bool2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wyi
  * JD-Core Version:    0.7.0.1
  */

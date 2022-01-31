@@ -1,41 +1,33 @@
-import Wallet.GetSkinListRsp;
-import com.qq.taf.jce.JceInputStream;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
 public class xgs
-  implements Runnable
 {
-  public xgs(RedPacketManager paramRedPacketManager, QQAppInterface paramQQAppInterface) {}
+  public final ArrayList<xeh> a;
+  @NonNull
+  public final xdm a;
+  @NonNull
+  public final xdn a;
+  @NonNull
+  public final xdx a;
+  @NonNull
+  public final xeb a;
   
-  public void run()
+  public xgs(@NonNull xeb paramxeb, @NonNull xdx paramxdx, @NonNull xdn paramxdn, @NonNull xdm paramxdm)
   {
-    try
-    {
-      Object localObject = FileUtils.a(BaseApplicationImpl.getApplication().getFilesDir() + "skins" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      if ((localObject != null) && (localObject.length > 0))
-      {
-        localObject = new JceInputStream((byte[])localObject);
-        ((JceInputStream)localObject).setServerEncoding("utf-8");
-        GetSkinListRsp localGetSkinListRsp = new GetSkinListRsp();
-        localGetSkinListRsp.readFrom((JceInputStream)localObject);
-        if (localGetSkinListRsp != null) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new xgt(this, localGetSkinListRsp));
-        }
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Xeb = paramxeb;
+    this.jdField_a_of_type_Xdx = paramxdx;
+    this.jdField_a_of_type_Xdn = paramxdn;
+    this.jdField_a_of_type_Xdm = paramxdm;
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramxdn);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramxdx);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramxeb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgs
  * JD-Core Version:    0.7.0.1
  */

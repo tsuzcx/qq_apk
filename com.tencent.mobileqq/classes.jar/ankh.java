@@ -1,32 +1,26 @@
-import android.view.ViewGroup;
-import dov.com.qq.im.capture.QIMCaptureController;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView.DoodleEditViewListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class ankh
-  implements DoodleEditView.DoodleEditViewListener
+class ankh
+  implements afjf
 {
-  public ankh(QIMCaptureController paramQIMCaptureController) {}
+  ankh(anke paramanke, long paramLong) {}
   
   public void a()
   {
-    this.a.a.setVisibility(0);
-    QIMCaptureController.a(this.a).setVisibility(0);
-    QIMCaptureController.a(this.a).b();
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Anke.a(this.jdField_a_of_type_Long);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
   }
   
-  public void a(GestureHelper.ZoomItem paramZoomItem)
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
   {
-    this.a.a.setVisibility(8);
-    QIMCaptureController.a(this.a).setVisibility(8);
-    QIMCaptureController.a(this.a).a(103, new Object[] { paramZoomItem });
+    this.jdField_a_of_type_Anke.a(this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankh
  * JD-Core Version:    0.7.0.1
  */

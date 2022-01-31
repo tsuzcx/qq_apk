@@ -6,9 +6,9 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
-import btv;
-import btw;
-import btx;
+import bnu;
+import bnv;
+import bnw;
 import com.tencent.mobileqq.app.BizTroopHandler;
 import com.tencent.mobileqq.app.BizTroopObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -37,12 +37,12 @@ public class TroopMemberApiService
   public static final int l = 12;
   public static final int m = 13;
   public static final int n = 22;
-  final Messenger jdField_a_of_type_AndroidOsMessenger = new Messenger(new btx(this));
+  final Messenger jdField_a_of_type_AndroidOsMessenger = new Messenger(new bnw(this));
   public BizTroopHandler a;
-  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new btw(this);
+  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new bnv(this);
   public QQMapActivityProxy a;
   public TroopHandler a;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new btv(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new bnu(this);
   public Messenger b = null;
   
   public TroopMemberApiService()

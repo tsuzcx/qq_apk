@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class send_common_gift_rsp
   extends JceStruct
 {
-  static ArrayList cache_failList;
-  public ArrayList failList;
+  static ArrayList<send_gift_fail_item> cache_failList;
+  public ArrayList<send_gift_fail_item> failList;
   public String giftUrl = "";
   
   public send_common_gift_rsp() {}
   
-  public send_common_gift_rsp(ArrayList paramArrayList, String paramString)
+  public send_common_gift_rsp(ArrayList<send_gift_fail_item> paramArrayList, String paramString)
   {
     this.failList = paramArrayList;
     this.giftUrl = paramString;
@@ -44,7 +44,7 @@ public final class send_common_gift_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_TEMPLATE_GIFT.send_common_gift_rsp
  * JD-Core Version:    0.7.0.1
  */

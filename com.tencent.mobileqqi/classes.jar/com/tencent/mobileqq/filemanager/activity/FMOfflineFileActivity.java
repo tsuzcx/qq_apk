@@ -7,7 +7,7 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qphone.base.util.QLog;
-import fvh;
+import fqv;
 
 public class FMOfflineFileActivity
   extends IphoneTitleBarActivity
@@ -29,7 +29,7 @@ public class FMOfflineFileActivity
     TextView localTextView = this.m;
     localTextView.setVisibility(0);
     localTextView.setText(getString(2131558675));
-    localTextView.setOnClickListener(new fvh(this));
+    localTextView.setOnClickListener(new fqv(this));
     if (this.k.getText().toString().contains(getString(2131561807))) {
       this.jdField_a_of_type_AndroidWidgetTextView = this.k;
     }
@@ -55,7 +55,7 @@ public class FMOfflineFileActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130903493);
+    setContentView(2130903495);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(a());
     d();
   }

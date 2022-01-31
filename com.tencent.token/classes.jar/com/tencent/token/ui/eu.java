@@ -1,16 +1,25 @@
 package com.tencent.token.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.do;
 
-final class eu
-  implements DialogInterface.OnClickListener
+class eu
+  implements View.OnClickListener
 {
-  eu(es parames) {}
+  eu(FaceChangePwdIndexActivity paramFaceChangePwdIndexActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    FaceRecognitionCameraActivity.access$1900(this.a.a);
+    if (!do.a().e().mIsBinded)
+    {
+      this.a.showNoAccountTipDialog(this.a, 10, 1);
+      return;
+    }
+    paramView = new Intent(this.a, ModifyQQPwdActivity.class);
+    pg.a().a(this.a, paramView, pg.b);
   }
 }
 

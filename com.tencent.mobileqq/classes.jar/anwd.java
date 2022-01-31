@@ -1,20 +1,64 @@
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView.TrackerCallback;
-import java.util.Map;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class anwd
-  implements VideoFilterPlayView.TrackerCallback
+  extends aokh<anwe>
 {
-  public anwd(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
-  
-  public void a(Map paramMap)
+  public int a()
   {
-    this.a.a(new anwe(this, paramMap), 0L);
+    return 416;
+  }
+  
+  @NonNull
+  public anwe a(int paramInt)
+  {
+    return new anwe();
+  }
+  
+  @Nullable
+  public anwe a(aoko[] paramArrayOfaoko)
+  {
+    anwe localanwe = new anwe();
+    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0) && (paramArrayOfaoko[0] != null)) {
+      anwe.a(localanwe, paramArrayOfaoko[0].a);
+    }
+    return localanwe;
+  }
+  
+  public Class<anwe> a()
+  {
+    return anwe.class;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(anwe paramanwe) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anwd
  * JD-Core Version:    0.7.0.1
  */

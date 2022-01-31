@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class AccountSecurityInfo$AccSecInfoRequire
-  extends MessageMicro
+  extends MessageMicro<AccSecInfoRequire>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "u64_uin", "str_version", "u32_client_type" }, new Object[] { Long.valueOf(0L), "", Integer.valueOf(0) }, AccSecInfoRequire.class);
   public final PBStringField str_version = PBField.initString("");
@@ -17,7 +17,7 @@ public final class AccountSecurityInfo$AccSecInfoRequire
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ims.AccountSecurityInfo.AccSecInfoRequire
  * JD-Core Version:    0.7.0.1
  */

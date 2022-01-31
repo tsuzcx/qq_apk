@@ -1,17 +1,40 @@
-import android.support.v4.util.LruCache;
-import com.rookery.translate.model.TransMemCache;
+import com.rookery.asyncHttpClient.AsyncHttpClient;
+import org.apache.http.Header;
+import org.apache.http.HeaderElement;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpResponseInterceptor;
+import org.apache.http.protocol.HttpContext;
 
 public class bfy
-  extends LruCache
+  implements HttpResponseInterceptor
 {
-  public bfy(TransMemCache paramTransMemCache, int paramInt)
-  {
-    super(paramInt);
-  }
+  public bfy(AsyncHttpClient paramAsyncHttpClient) {}
   
-  protected int a(String paramString1, String paramString2)
+  public void process(HttpResponse paramHttpResponse, HttpContext paramHttpContext)
   {
-    return paramString2.length() + 1;
+    paramHttpContext = paramHttpResponse.getEntity();
+    if (paramHttpContext == null) {}
+    for (;;)
+    {
+      return;
+      paramHttpContext = paramHttpContext.getContentEncoding();
+      if (paramHttpContext != null)
+      {
+        paramHttpContext = paramHttpContext.getElements();
+        int j = paramHttpContext.length;
+        int i = 0;
+        while (i < j)
+        {
+          if (paramHttpContext[i].getName().equalsIgnoreCase("gzip"))
+          {
+            paramHttpResponse.setEntity(new bfz(paramHttpResponse.getEntity()));
+            return;
+          }
+          i += 1;
+        }
+      }
+    }
   }
 }
 

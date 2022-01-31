@@ -1,23 +1,35 @@
-import android.app.Dialog;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.item.ShakeItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShakeWindow;
+import com.tencent.qphone.base.util.QLog;
 
 public class eap
-  implements Runnable
+  implements View.OnClickListener
 {
-  public eap(VerifyPhoneNumActivity paramVerifyPhoneNumActivity, int paramInt) {}
+  public eap(ShakeItemBuilder paramShakeItemBuilder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.a = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity, 2131624405);
-    this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.a.setContentView(2130903073);
-    ((TextView)this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.a.findViewById(2131231029)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.getString(this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.a.show();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.shakemsg", 2, "shake msg onClick() is called");
+    }
+    paramView = (MessageForShakeWindow)AIOUtils.a(paramView);
+    if ((ShakeItemBuilder.a(this.a) instanceof ChatActivity))
+    {
+      ((ChatActivity)ShakeItemBuilder.b(this.a)).u();
+      ShakeItemBuilder.a(this.a).b(paramView.frienduin, false);
+      return;
+    }
+    ShakeItemBuilder.b(this.a).b(paramView.frienduin, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     eap
  * JD-Core Version:    0.7.0.1
  */

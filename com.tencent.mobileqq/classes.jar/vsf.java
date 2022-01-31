@@ -1,58 +1,30 @@
-import com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack.Stub;
-import com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
-import java.lang.ref.WeakReference;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Build.VERSION;
+import android.widget.ImageView;
 
-public class vsf
-  extends ICompressionCallBack.Stub
+class vsf
+  extends AnimatorListenerAdapter
 {
-  final String jdField_a_of_type_JavaLangString = DeviceMsgChatPie.class.getSimpleName();
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  vsf(vsd paramvsd) {}
   
-  public vsf(DeviceMsgChatPie paramDeviceMsgChatPie)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDeviceMsgChatPie);
-  }
-  
-  public void a(CompressInfo paramCompressInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress success, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
+    super.onAnimationEnd(paramAnimator);
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.a.a.setImageAlpha(255);
     }
-  }
-  
-  public void b(CompressInfo paramCompressInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress fail, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void c(CompressInfo paramCompressInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress complete, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
-    }
-    DeviceMsgChatPie localDeviceMsgChatPie = (DeviceMsgChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localDeviceMsgChatPie == null)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e(this.jdField_a_of_type_JavaLangString, 2, "onCompressComplete, error: activity is null");
-      }
+      this.a.a.setVisibility(8);
       return;
+      this.a.a.setImageResource(2130850072);
     }
-    if (QLog.isColorLevel()) {
-      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "onCompressComplete, new path:" + paramCompressInfo.e);
-    }
-    localDeviceMsgChatPie.e(paramCompressInfo.e);
-    DeviceMsgChatPie.a(localDeviceMsgChatPie).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vsf
  * JD-Core Version:    0.7.0.1
  */

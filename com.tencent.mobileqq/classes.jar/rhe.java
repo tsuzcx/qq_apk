@@ -1,61 +1,62 @@
-import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.DBUtils;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class rhe
-  implements View.OnClickListener
+  extends MSFServlet
 {
-  public rhe(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void onClick(View paramView)
+  public String[] getPreferSSOCommands()
   {
-    switch (paramView.getId())
+    return null;
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramIntent != null)
     {
-    case 2131362758: 
-    case 2131362759: 
-    default: 
-    case 2131362757: 
-      do
-      {
-        return;
-        localObject = null;
-        if ((paramView.getTag() instanceof String)) {
-          localObject = String.valueOf(paramView.getTag());
-        }
-        if ("0X8004001".equals(localObject))
-        {
-          ReportController.b(this.a.app, "CliOper", "", "", "0X8004002", "0X8004002", 0, 0, "", "", "", "");
-          paramView = new Intent(this.a, SubAccountUgActivity.class);
-          paramView.putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
-          this.a.startActivity(paramView);
-          return;
-        }
-      } while (!"0X8004456".equals(localObject));
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8004457", "0X8004457", 0, 0, "", "", "", "");
-      paramView = new Intent(this.a, SubAccountBindActivity.class);
-      paramView.putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
-      this.a.startActivity(paramView);
-      DBUtils.a().a(this.a.app.getCurrentAccountUin(), true);
-      return;
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
     }
-    Object localObject = new Intent();
-    ((Intent)localObject).setClass(paramView.getContext(), AssociatedAccountActivity.class);
-    ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
-    paramView.getContext().startActivity((Intent)localObject);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004039", "0X8004039", 0, 0, "", "", "", "");
+    for (;;)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("VideoFeedsServlet", 4, "onReceive: " + paramFromServiceMsg.getServiceCmd());
+      }
+      ((VideoFeedsAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent != null)
+      {
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+        if (QLog.isDevelopLevel()) {
+          QLog.i("VideoFeedsServlet", 4, "send: " + paramIntent.getServiceCmd());
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rhe
  * JD-Core Version:    0.7.0.1
  */

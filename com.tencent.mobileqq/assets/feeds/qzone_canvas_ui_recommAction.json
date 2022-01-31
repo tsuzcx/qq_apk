@@ -1,5 +1,5 @@
 {
-    "Area": "com.qzone.canvasui.widget.RelativeAreaLayout",
+    "class": "com.tencent.ditto.widget.RelativeAreaLayout",
     "shell": {
         "id": "qzone_recomm_action_root_container",
         "width": "match_parent",
@@ -8,7 +8,7 @@
     },
     "children": [
         {
-            "Area": "com.qzone.canvasui.gdtui.asynarea.CanvasRecommFriends",
+            "class": "com.qzone.canvasui.gdtui.asynarea.CanvasRecommFriends",
             "shell": {
                 "id": "friend_chain_area",
                 "margin": "6dp,0dp,0dp,0dp",
@@ -19,7 +19,7 @@
             }
         },
         {
-            "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+            "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
             "shell": {
                 "id": "text_area",
                 "toRightOf": "friend_chain_area",
@@ -32,7 +32,7 @@
             }
         },
         {
-            "Area": "com.qzone.canvasui.widget.CanvasCountDownArea",
+            "class": "com.qzone.canvasui.widget.CanvasCountDownArea",
             "shell": {
                 "id": "count_down_area",
                 "toRightOf": "text_area",
@@ -43,7 +43,7 @@
             }
         },
         {
-            "Area": "com.qzone.canvasui.gdtui.asynarea.CanvasRecommStars",
+            "class": "com.qzone.canvasui.gdtui.asynarea.CanvasRecommStars",
             "shell": {
                 "id": "stars_area",
                 "toRightOf": "text_area",
@@ -54,7 +54,7 @@
             }
         },
         {
-            "Area": "com.qzone.canvasui.gdtui.CanvasRecommActionButton",
+            "class": "com.qzone.canvasui.gdtui.CanvasRecommActionButton",
             "shell": {
                 "id": "right_button_area",
                 "width": "wrap_content",

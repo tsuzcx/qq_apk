@@ -1,17 +1,14 @@
-import com.tencent.lbsapi.QLBSService;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.OnLinePushMessageProcessor;
+import java.util.TimerTask;
 
 public class fjn
-  implements Runnable
+  extends TimerTask
 {
-  public fjn(QQAppInterface paramQQAppInterface) {}
+  private fjn(OnLinePushMessageProcessor paramOnLinePushMessageProcessor) {}
   
   public void run()
   {
-    if (!this.a.m()) {
-      return;
-    }
-    this.a.a.startLocation();
+    this.a.a.cancel();
   }
 }
 

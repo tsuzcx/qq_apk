@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import java.nio.ByteBuffer;
 
 public class vxt
-  implements Runnable
 {
-  public vxt(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public long a;
+  public ByteBuffer a;
   
-  public void run()
+  vxt(int paramInt)
   {
-    PublicAccountChatPie.b(this.a);
+    this.a = ByteBuffer.allocate(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vxt
  * JD-Core Version:    0.7.0.1
  */

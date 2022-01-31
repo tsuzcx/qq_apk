@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
-import com.tencent.mobileqq.werewolves.WereWolvesLoadingView.LoadingCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
 
-class aenx
-  implements WereWolvesLoadingView.LoadingCallback
+public class aenx
+  implements View.OnClickListener
 {
-  aenx(aenw paramaenw) {}
+  public aenx(ReminderListFragment paramReminderListFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a.a.setVisibility(8);
-    this.a.a.a(true);
+    if (ReminderListFragment.a(this.a) != null) {
+      ReminderListFragment.a(this.a).dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aenx
  * JD-Core Version:    0.7.0.1
  */

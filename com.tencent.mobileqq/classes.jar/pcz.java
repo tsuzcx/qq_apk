@@ -1,249 +1,156 @@
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.os.Bundle;
+import android.net.Uri;
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.biz.common.util.NetworkUtil;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserMiscHandler.ScreenShotCallback;
-import com.tencent.open.agent.report.ReportCenter;
-import com.tencent.open.agent.report.ReportDef.RepUtil;
+import android.util.SparseArray;
+import com.tencent.biz.pubaccount.readinjoy.guidingchannel.ReadInJoyChannelGuidingManager.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import java.io.File;
-import java.lang.ref.SoftReference;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-import mqq.app.AppRuntime;
-import mqq.manager.TicketManager;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.net.URLDecoder;
+import java.util.List;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.InnerMsg;
 
-class pcz
-  implements SwiftBrowserMiscHandler.ScreenShotCallback
+public class pcz
 {
-  pcz(pcy parampcy) {}
+  private static SparseArray<pda> a = new SparseArray();
+  private static SparseArray<String> b = new SparseArray();
   
-  public void a(String paramString)
+  private static void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("shareWebPage", 2, "WebView screenshot CALLBACK. imgUrl=" + paramString);
+    QLog.i("ReadInJoyChannelGuidingManager", 1, "[clearInsertedArticleInfo], channelID = " + paramInt);
+    a.remove(paramInt);
+  }
+  
+  public static void a(BaseArticleInfo paramBaseArticleInfo, ReadInJoyXListView paramReadInJoyXListView, rqj paramrqj)
+  {
+    if ((paramBaseArticleInfo == null) || (paramReadInJoyXListView == null) || (paramrqj == null))
+    {
+      QLog.e("ReadInJoyChannelGuidingManager", 1, "[openFirstInsertedArticle], articleInfo is null or listView is null, or adapter is null.");
+      return;
     }
-    if (!TextUtils.isEmpty(paramString)) {}
+    int i = (int)paramBaseArticleInfo.mChannelID;
+    String str = (String)b.get(i);
+    b.remove(i);
+    if (!TextUtils.equals(paramBaseArticleInfo.innerUniqueID, str))
+    {
+      QLog.i("ReadInJoyChannelGuidingManager", 1, "[openFirstInsertedArticle], rowKey not equal, do not open; channelID = " + i + ", lastRowKey = " + str + ", innerUniqueID = " + paramBaseArticleInfo.innerUniqueID);
+      return;
+    }
+    QLog.i("ReadInJoyChannelGuidingManager", 1, "[openFirstInsertedArticle], click first article.");
+    ors.b().post(new ReadInJoyChannelGuidingManager.1(paramReadInJoyXListView, paramrqj));
+  }
+  
+  public static void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return;
+      paramString = Uri.parse(paramString);
+      String str1 = paramString.getQueryParameter("channelid");
+      Object localObject = paramString.getQueryParameter("algorithmid");
+      String str2 = paramString.getQueryParameter("rowkey");
+      QLog.i("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], channelid = " + str1 + ", algorithmID = " + (String)localObject + ", rowKey = " + str2);
+      if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty((CharSequence)localObject)) || (TextUtils.isEmpty(str2))) {
+        continue;
+      }
+      localObject = new pda((String)localObject, str2);
+      try
+      {
+        int i = Integer.valueOf(str1).intValue();
+        a.put(i, localObject);
+        b.put(i, str2);
+        try
+        {
+          str1 = paramString.getQueryParameter("article_url");
+          paramString = paramString.getQueryParameter("show_floating_window");
+          str2 = URLDecoder.decode(str1, "utf-8");
+          if ((i == 0) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (TextUtils.equals("1", paramString)) && (bkbq.i()))
+          {
+            b.remove(i);
+            QLog.i("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], remove last rowKey.");
+          }
+          if ((i != 0) || (bkbq.i())) {
+            continue;
+          }
+          a.remove(i);
+          b.remove(i);
+          QLog.i("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], remove insertInfo and last rowKey.");
+          return;
+        }
+        catch (Exception paramString)
+        {
+          QLog.e("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], e = " + paramString);
+          return;
+        }
+        return;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], e = " + paramString);
+      }
+    }
+  }
+  
+  public static void a(pve parampve, List<oidb_cmd0x68b.InnerMsg> paramList)
+  {
+    if ((parampve == null) || (paramList == null)) {
+      QLog.i("ReadInJoyChannelGuidingManager", 1, "[addRequestParams], params is null or innerMsgList is null.");
+    }
+    int i;
+    do
+    {
+      return;
+      if (parampve.a != -1L)
+      {
+        QLog.i("ReadInJoyChannelGuidingManager", 1, "[addRequestParams], is not pull down refresh, do not insert.");
+        return;
+      }
+      i = parampve.b;
+    } while (!a(i));
+    parampve = (pda)a.get(i);
+    oidb_cmd0x68b.InnerMsg localInnerMsg = new oidb_cmd0x68b.InnerMsg();
+    localInnerMsg.uint32_jump_src_type.set(12);
+    localInnerMsg.bytes_inner_uniq_id.set(ByteStringMicro.copyFromUtf8(String.valueOf(parampve.b)));
+    if (i == 0) {
+      localInnerMsg.uint32_jump_src_type.set(13);
+    }
     try
     {
-      Object localObject1 = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject1).inSampleSize = 1;
-      localObject1 = BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject1);
-      this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(localObject1);
-      localObject3 = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
-      str2 = this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
-      str3 = ((TicketManager)localObject3).getSkey(str2);
-      l2 = System.currentTimeMillis();
-      localObject2 = null;
-      localObject1 = new File(paramString);
-      if (((File)localObject1).exists())
-      {
-        l1 = ((File)localObject1).length();
-        Object localObject4 = FileUtils.b(paramString);
-        localObject1 = localObject2;
-        if (l1 > 0L)
-        {
-          localObject1 = localObject2;
-          if (!TextUtils.isEmpty((CharSequence)localObject4)) {
-            localObject1 = HttpUtil.a(NetworkUtil.a(String.format(Locale.getDefault(), "http://cgi.connect.qq.com/qqconnectopen/query_share_image?key=%s&size=%d", new Object[] { localObject4, Long.valueOf(l1) }), 1007), str2, str3);
-          }
-        }
-        l1 = System.currentTimeMillis() - l2;
-        if (localObject1 != null) {
-          break label1618;
-        }
-        localObject1 = new Pair(Integer.valueOf(-1), "");
-        if (QLog.isColorLevel()) {
-          QLog.d(Share.jdField_a_of_type_JavaLangString, 2, "queryImage, ret=" + ((Pair)localObject1).first + ",cost=" + l1 + ",url=" + (String)((Pair)localObject1).second);
-        }
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putString("report_type", "102");
-        ((Bundle)localObject2).putString("act_type", "16");
-        ((Bundle)localObject2).putString("intext_1", "" + ((Pair)localObject1).first);
-        localObject4 = new StringBuilder().append("");
-        if (((Integer)((Pair)localObject1).first).intValue() != -1) {
-          break label987;
-        }
-        i = 0;
-        ((Bundle)localObject2).putString("intext_2", i);
-        ((Bundle)localObject2).putString("intext_5", "" + l1);
-        ReportCenter.a().a((Bundle)localObject2, "", str2, false);
-        m = 1;
-        if (TextUtils.isEmpty((CharSequence)((Pair)localObject1).second)) {
-          break label1002;
-        }
-        this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare.f = ((String)((Pair)localObject1).second);
-        this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_e_of_type_Boolean = false;
-        this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare.b = 0;
-        if (QLog.isColorLevel()) {
-          QLog.e("shareWebPage", 2, "Share info after WebView screenshot: title=" + this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare.d + ", summary=" + this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_e_of_type_JavaLangString + ", thumb=" + this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare.f + ", shareURL=" + this.a.a.jdField_a_of_type_JavaLangString);
-        }
-        paramString = new Bundle();
-        j = 0;
-        if (TextUtils.isEmpty(this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare.f)) {
-          j = 1;
-        }
-        i = j;
-        if (TextUtils.isEmpty(this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_e_of_type_JavaLangString)) {
-          i = j | 0x2;
-        }
-        j = i;
-        if (TextUtils.isEmpty(this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare.d)) {
-          j = i | 0x4;
-        }
-        paramString.putString("report_type", "102");
-        paramString.putString("act_type", "93");
-        localObject1 = new StringBuilder().append("");
-        if (j != 0) {
-          break label1595;
-        }
-        i = 0;
-        label752:
-        paramString.putString("intext_1", i);
-        paramString.putString("intext_3", "" + ReportDef.RepUtil.b(this.a.a.jdField_a_of_type_Int));
-        paramString.putString("intext_2", "" + j);
-        paramString.putString("stringext_1", this.a.a.jdField_a_of_type_JavaLangString);
-        ReportCenter.a().a(paramString, "", this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), false);
-        if (QLog.isColorLevel()) {
-          QLog.e("shareWebPage", 2, "WebView screenshot END. thumb=" + this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare.f);
-        }
-        Share.a(this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare, this.a.a.jdField_a_of_type_JavaLangString, this.a.a.jdField_a_of_type_Int, this.a.a.jdField_a_of_type_Boolean);
-      }
+      localInnerMsg.uint64_algorithm_id.set(Long.valueOf(parampve.a).longValue());
+      QLog.i("ReadInJoyChannelGuidingManager", 1, "[addRequestParams], insertArticle = " + parampve);
+      paramList.add(0, localInnerMsg);
+      a(i);
+      return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    catch (NumberFormatException localNumberFormatException)
     {
-      label1563:
-      label1595:
-      label1604:
-      label1618:
       for (;;)
       {
-        Object localObject3;
-        String str2;
-        String str3;
-        long l2;
-        Object localObject2;
-        long l1;
-        int i;
-        int m;
-        int j;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("shareWebPage", 2, "WebView screenshot OutOfMemoryError.");
-          continue;
-          l1 = 0L;
-          continue;
-          label987:
-          i = ((Integer)localOutOfMemoryError.first).intValue();
-          continue;
-          label1002:
-          if (QLog.isColorLevel()) {
-            QLog.e("shareWebPage", 2, "WebView screenshot UPLOAD. length=" + new File(paramString).length());
-          }
-          localObject2 = new HashMap();
-          ((Map)localObject2).put("Connection", "keep-alive");
-          ((Map)localObject2).put("Referer", "http://www.qq.com");
-          ((Map)localObject2).put("Host", "cgi.connect.qq.com");
-          String str1 = ((TicketManager)localObject3).getPskey(str2, "cgi.connect.qq.com");
-          if (!TextUtils.isEmpty(str1)) {
-            ((Map)localObject2).put("Cookie", "p_uin=" + str2 + ";p_skey=" + str1);
-          }
-          localObject3 = new HashMap();
-          ((Map)localObject3).put("share_image", paramString);
-          paramString = new Bundle();
-          paramString.putString("report_type", "102");
-          paramString.putString("act_type", "51");
-          paramString.putString("intext_3", "1");
-          paramString.putString("stringext_1", this.a.a.jdField_a_of_type_JavaLangString);
-          ReportCenter.a().a(paramString, "", str2, false);
-          l1 = System.currentTimeMillis();
-          str1 = HttpUtil.a(NetworkUtil.a("http://cgi.connect.qq.com/qqconnectopen/upload_share_image", 1007), str2, str3, null, (Map)localObject3, (Map)localObject2);
-          paramString = str1;
-          if (str1 == null) {
-            paramString = HttpUtil.a("http://cgi.connect.qq.com/qqconnectopen/upload_share_image", str2, str3, null, (Map)localObject3, (Map)localObject2);
-          }
-          if (paramString != null) {}
-          for (;;)
-          {
-            try
-            {
-              paramString = new JSONObject(paramString);
-              j = paramString.getInt("retcode");
-              if (j != 0) {
-                break label1604;
-              }
-            }
-            catch (JSONException paramString)
-            {
-              try
-              {
-                if (!paramString.has("result")) {
-                  break label1604;
-                }
-                paramString = paramString.getJSONObject("result").getString("url");
-                if (TextUtils.isEmpty(paramString)) {
-                  break label1604;
-                }
-                this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare.f = paramString;
-                this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_e_of_type_Boolean = false;
-                this.a.a.jdField_a_of_type_ComTencentBizWebviewpluginShare.b = 0;
-                i = 0;
-                k = i;
-                i = j;
-                l2 = System.currentTimeMillis();
-                paramString = new Bundle();
-                paramString.putString("report_type", "102");
-                paramString.putString("act_type", "11");
-                paramString.putString("intext_1", "" + k);
-                paramString.putString("intext_2", "" + i);
-                paramString.putString("intext_3", "1");
-                paramString.putString("intext_5", "" + (l2 - l1));
-                if (k == 1) {
-                  paramString.putString("stringext_1", this.a.a.jdField_a_of_type_JavaLangString);
-                }
-                ReportCenter.a().a(paramString, "", str2, false);
-              }
-              catch (JSONException paramString)
-              {
-                break label1563;
-              }
-              paramString = paramString;
-              j = 0;
-            }
-            i = j;
-            int k = m;
-            if (QLog.isColorLevel())
-            {
-              QLog.d(Share.jdField_a_of_type_JavaLangString, 2, paramString.getMessage());
-              i = j;
-              k = m;
-              continue;
-              i = 1;
-              break label752;
-              i = 1;
-              continue;
-              i = 0;
-              k = m;
-            }
-          }
-        }
+        QLog.e("ReadInJoyChannelGuidingManager", 1, "[addRequestParams], e = " + localNumberFormatException);
       }
     }
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    pda localpda = (pda)a.get(paramInt);
+    if (localpda != null)
+    {
+      QLog.i("ReadInJoyChannelGuidingManager", 1, "[isNeedToInsertArticle], " + localpda);
+      return localpda.a();
+    }
+    QLog.i("ReadInJoyChannelGuidingManager", 1, "[isNeedToInsertArticle], channelID = " + paramInt + ", insertArticle is null.");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pcz
  * JD-Core Version:    0.7.0.1
  */

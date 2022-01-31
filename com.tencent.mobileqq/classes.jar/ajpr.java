@@ -1,40 +1,39 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
 public class ajpr
-  extends TroopObserver
+  extends BroadcastReceiver
 {
-  public ajpr(TroopGagMgr paramTroopGagMgr) {}
+  public ajpr(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, int paramInt1, List paramList, long paramLong2, int paramInt2, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel())
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
     {
-      StringBuilder localStringBuilder = new StringBuilder(150);
-      localStringBuilder.append("onOIDB0X899_0_Ret").append("| isSuccess = ").append(paramBoolean).append("| troopuin = ").append(paramLong1).append("| nFlag = ").append(paramInt1).append("| strErorMsg = ").append(paramString);
-      QLog.i("TroopGagMgr", 2, localStringBuilder.toString());
-    }
-    if (((paramInt1 == 6) || (paramInt1 == 3)) && (paramBoolean))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        paramString = (oidb_0x899.memberlist)paramList.next();
-        if ((paramString != null) && (paramString.uint64_member_uin.has()) && (paramString.uint32_shutup_timestap.has()))
-        {
-          paramLong2 = paramString.uint32_shutup_timestap.get();
-          long l = paramString.uint64_member_uin.get();
-          ((TroopManager)this.a.a.getManager(51)).a(paramLong1 + "", l + "", paramLong2);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("FlowCameraActivity", 2, "receive ACTION_START_VIDEO_CHAT.");
       }
+      paramContext = BaseActivity2.$(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131366501);
+      if (paramContext != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(paramContext);
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.e();
+      }
+      if (this.a.e) {
+        this.a.l();
+      }
+      if ((this.a.f) && (this.a.c)) {
+        this.a.c(false);
+      }
+      this.a.b();
     }
   }
 }

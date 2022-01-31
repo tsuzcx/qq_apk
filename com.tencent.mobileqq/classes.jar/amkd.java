@@ -1,23 +1,12 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.comic.ui.QQComicTabBarView;
-import mqq.os.MqqHandler;
-
-public class amkd
-  implements Runnable
+public abstract interface amkd
 {
-  public amkd(QQComicTabBarView paramQQComicTabBarView) {}
+  public abstract void a(int paramInt, zib paramzib);
   
-  public void run()
-  {
-    Drawable localDrawable = this.a.getResources().getDrawable(2130846384);
-    ThreadManager.getUIHandler().post(new amke(this, localDrawable));
-  }
+  public abstract void a(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amkd
  * JD-Core Version:    0.7.0.1
  */

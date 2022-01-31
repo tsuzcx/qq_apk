@@ -1,49 +1,83 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.trooponline.TroopOnlineMemberBar;
-import com.tencent.mobileqq.trooponline.TroopOnlineMemberNewGuideDialog;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.util.BitmapUtil;
-
-public class ajwr
-  implements Animator.AnimatorListener
+public final class ajwr
+  implements ajwt
 {
-  public ajwr(TroopOnlineMemberBar paramTroopOnlineMemberBar) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  private boolean a(char paramChar)
   {
-    Bitmap localBitmap;
-    if ((!SharedPreUtils.t(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) && (TroopOnlineMemberBar.a(this.a) == 0))
-    {
-      SharedPreUtils.F(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      localBitmap = BitmapUtil.a((View)this.a.b.findViewById(2131363998).getParent());
-      paramAnimator = null;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildCount() <= 1) {
-        break label123;
-      }
-      paramAnimator = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildAt(1);
-    }
-    for (;;)
-    {
-      new TroopOnlineMemberNewGuideDialog(this.a.jdField_a_of_type_AndroidContentContext, localBitmap, paramAnimator).show();
-      return;
-      label123:
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildCount() > 0) {
-        paramAnimator = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildAt(0);
-      }
-    }
+    Character.UnicodeBlock localUnicodeBlock = Character.UnicodeBlock.of(paramChar);
+    return (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A) || (localUnicodeBlock == Character.UnicodeBlock.GENERAL_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    int i;
+    if (paramInt1 <= paramInt2)
+    {
+      i = paramInt1;
+      if (paramInt1 > paramInt2) {
+        break label75;
+      }
+    }
+    int j;
+    for (;;)
+    {
+      j = 0;
+      paramInt1 = i;
+      while ((paramInt1 < paramInt2) && (paramInt1 < paramCharSequence.length()))
+      {
+        int k = j;
+        if (a(paramCharSequence.charAt(paramInt1))) {
+          k = j + 1;
+        }
+        paramInt1 += 1;
+        j = k;
+      }
+      i = paramInt2;
+      break;
+      label75:
+      paramInt2 = paramInt1;
+    }
+    return j + (paramInt2 - i);
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    int m = 0;
+    int i;
+    if (paramInt1 <= paramInt2)
+    {
+      i = paramInt1;
+      if (paramInt1 > paramInt2) {
+        break label83;
+      }
+      label16:
+      paramInt1 = i;
+    }
+    int k;
+    for (int j = 0;; j = k)
+    {
+      k = m;
+      if (paramInt1 < paramCharSequence.length())
+      {
+        k = j;
+        if (a(paramCharSequence.charAt(paramInt1))) {
+          k = j + 1;
+        }
+        if (paramInt1 + k >= paramInt2) {
+          k = paramInt1 - i;
+        }
+      }
+      else
+      {
+        return k;
+        i = paramInt2;
+        break;
+        label83:
+        paramInt2 = paramInt1;
+        break label16;
+      }
+      paramInt1 += 1;
+    }
+  }
 }
 
 

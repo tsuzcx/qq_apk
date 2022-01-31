@@ -1,25 +1,19 @@
-import android.net.Uri;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.CallBack;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import java.util.Comparator;
 
 public class akrn
-  implements Runnable
+  implements Comparator<akrq>
 {
-  public akrn(WebSoService paramWebSoService, String paramString1, String paramString2, String paramString3, Uri paramUri, WebSoService.WebSoState paramWebSoState, boolean paramBoolean, WebSoService.CallBack paramCallBack) {}
+  public akrn(ApolloCmdChannel paramApolloCmdChannel) {}
   
-  public void run()
+  public int a(akrq paramakrq1, akrq paramakrq2)
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState, this.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$CallBack == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$CallBack.a(str);
+    return paramakrq1.a() - paramakrq2.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akrn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,70 +1,57 @@
 package com.tencent.imageboost;
 
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.soload.SoLoadUtilNew;
-import com.tencent.mobileqq.utils.SoLoadUtil;
+import bfwa;
 
 public class ImgProcessScan
 {
-  static
+  public static int ArrayConvert(int paramInt, byte[] paramArrayOfByte, int[] paramArrayOfInt)
   {
-    SoLoadUtil.a(BaseApplicationImpl.getContext(), "stlport_shared", 0, false);
-    SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "ImgProcessScan");
+    return bfwa.a(paramInt, paramArrayOfByte, paramArrayOfInt);
   }
   
-  public static native int FocusInit(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4);
-  
-  public static native boolean FocusPro(byte[] paramArrayOfByte, boolean paramBoolean, boolean[] paramArrayOfBoolean);
-  
-  public static native int FocusRelease();
-  
-  public static native int QIPUtilYUVCrop(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
-  
-  public static int a(byte[] paramArrayOfByte1, int[] paramArrayOfInt, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public static int CropGray2(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
-      return -1;
-    }
-    return nativeGrayRotateCropSub(paramArrayOfByte2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramArrayOfByte1, paramArrayOfInt, paramInt7, paramInt8);
+    return bfwa.a(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2, paramInt3);
   }
   
-  public static int a(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public static int TransBytes(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if ((paramArrayOfInt == null) || (paramArrayOfByte == null)) {
-      return -1;
-    }
-    return nativeTransBytes(paramArrayOfInt, paramArrayOfByte, paramInt1, paramInt2);
+    return bfwa.b(paramArrayOfInt, paramArrayOfByte, paramInt1, paramInt2);
   }
   
-  public static native int focusedEngineForBankcardInit(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean);
+  public static int TransPixels(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    return bfwa.a(paramArrayOfInt, paramArrayOfByte, paramInt1, paramInt2);
+  }
   
-  public static native int focusedEngineGetVersion();
+  public static int YUVrotate(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2)
+  {
+    return bfwa.a(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2);
+  }
   
-  public static native int focusedEngineProcess(byte[] paramArrayOfByte);
+  public static int YUVrotateLessMemCost(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    return bfwa.a(paramArrayOfByte, paramInt1, paramInt2);
+  }
   
-  public static native int focusedEngineRelease();
+  public static int YuvToCropIntArray(byte[] paramArrayOfByte, int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    return bfwa.a(paramArrayOfByte, paramArrayOfInt, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
+  }
   
-  private static native int nativeArrayConvert(int paramInt1, int paramInt2, byte[] paramArrayOfByte, int[] paramArrayOfInt);
+  public static int gray_rotate_crop_sub(byte[] paramArrayOfByte1, int[] paramArrayOfInt, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  {
+    return bfwa.a(paramArrayOfByte1, paramArrayOfInt, paramArrayOfByte2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8);
+  }
   
-  private static native int nativeCropGray2(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3);
-  
-  private static native int nativeGrayRotateCropSub(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, byte[] paramArrayOfByte2, int[] paramArrayOfInt, int paramInt7, int paramInt8);
-  
-  private static native int nativeRelease();
-  
-  private static native int nativeTransBytes(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
-  private static native int nativeTransPixels(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
-  private static native int nativeYUVrotate(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2);
-  
-  private static native int nativeYUVrotateLess(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
-  private static native int nativeYuvToCropIntArray(byte[] paramArrayOfByte, int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
+  public static int gray_rotate_sub(byte[] paramArrayOfByte1, int[] paramArrayOfInt, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    return bfwa.a(paramArrayOfByte1, paramArrayOfInt, paramArrayOfByte2, paramInt1, paramInt2, paramInt3, paramInt4);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.imageboost.ImgProcessScan
  * JD-Core Version:    0.7.0.1
  */

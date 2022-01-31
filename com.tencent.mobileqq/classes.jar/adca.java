@@ -1,23 +1,31 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService.IGetTotalTime;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
-class adca
-  implements MediaPlayer.OnPreparedListener
+public class adca
+  implements aoil
 {
-  adca(adbz paramadbz, MediaPlayer paramMediaPlayer) {}
+  public adca(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void a()
   {
-    int i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-    this.jdField_a_of_type_Adbz.a.a(i);
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 0) {}
+    for (paramInt1 = 0;; paramInt1 = 1)
+    {
+      this.a.c = true;
+      this.a.a(paramInt1, true);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adca
  * JD-Core Version:    0.7.0.1
  */

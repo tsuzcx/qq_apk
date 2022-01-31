@@ -1,27 +1,50 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.receipt.ReceiptMsgManager;
-import java.util.ArrayList;
+import java.util.HashMap;
+import org.xml.sax.Attributes;
+import org.xml.sax.Locator;
+import org.xml.sax.helpers.DefaultHandler;
 
-public class aher
-  implements Runnable
+class aher
+  extends DefaultHandler
 {
-  public aher(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  aher(aheq paramaheq) {}
   
-  public void run()
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2) {}
+  
+  public void endDocument() {}
+  
+  public void endElement(String paramString1, String paramString2, String paramString3) {}
+  
+  public void endPrefixMapping(String paramString) {}
+  
+  public void ignorableWhitespace(char[] paramArrayOfChar, int paramInt1, int paramInt2) {}
+  
+  public void processingInstruction(String paramString1, String paramString2) {}
+  
+  public void setDocumentLocator(Locator paramLocator) {}
+  
+  public void skippedEntity(String paramString) {}
+  
+  public void startDocument() {}
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
   {
-    MessageRecord localMessageRecord = ReceiptMessageReadMemberListContainerFragment.a(this.a).a().b(ReceiptMessageReadMemberListContainerFragment.a(this.a).jdField_a_of_type_JavaLangString, ReceiptMessageReadMemberListContainerFragment.a(this.a).jdField_a_of_type_Int, ReceiptMessageReadMemberListContainerFragment.c(this.a));
-    if (ReceiptMessageReadMemberListContainerFragment.a(this.a).size() == 0) {
-      ReceiptMsgManager.a(ReceiptMessageReadMemberListContainerFragment.a(this.a), localMessageRecord, "3");
+    if (paramString3.equals("config")) {
+      this.a.a.clear();
     }
-    while (ReceiptMessageReadMemberListContainerFragment.b(this.a).size() <= 0) {
+    while (!paramString3.equals("value")) {
       return;
     }
-    ReceiptMsgManager.a(ReceiptMessageReadMemberListContainerFragment.a(this.a), localMessageRecord, "4");
+    int i = Integer.parseInt(paramAttributes.getValue("termType"));
+    try
+    {
+      int j = Integer.parseInt(paramAttributes.getValue("icon"));
+      this.a.a.put(Integer.valueOf(i), Integer.valueOf(j));
+      return;
+    }
+    catch (Exception paramString1) {}
   }
+  
+  public void startPrefixMapping(String paramString1, String paramString2) {}
 }
 
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Ota käyttöön</string>
+    <string name="b">%1$s ei toimi, ellet ota Google Play Palveluita käyttöön.</string>
+    <string name="c">Ota Google Play Palvelut käyttöön</string>
+    <string name="d">Asenna</string>
+    <string name="e">%1$s ei toimi ilman Google Play Palveluita, jotka puuttuvat laitteeltasi.</string>
+    <string name="f">Asenna Google Play Palvelut</string>
+    <string name="g">Virhe Google Play -palveluissa</string>
+    <string name="h">Sovelluksella %1$s on ongelmia Google Play Palveluiden kanssa. Yritä uudelleen.</string>
+    <string name="i">%1$s ei toimi ilman Google Play Palveluita, joita laitteesi ei tue.</string>
+    <string name="j">Päivitä</string>
+    <string name="k">%1$s ei toimi, ellet päivitä Google Play Palveluita.</string>
+    <string name="l">Päivitä Google Play Palvelut</string>
+    <string name="m">%1$s ei toimi ilman Google Play Palveluita, joita päivitetään tällä hetkellä.</string>
+    <string name="n">Uusi Google Play Palveluiden versio tarvitaan. Se päivittyy pian.</string>
+    <string name="o">Avaa puhelimessa</string>
+    <string name="p">Kirjaudu sisään</string>
+    <string name="q">Kirjaudu Google-tilille</string>
+    <string name="r">999+</string>
+    <string name="t">Lopeta</string>
+</resources>

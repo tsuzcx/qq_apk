@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class QTimedMessage$PCTip
-  extends MessageMicro
+  extends MessageMicro<PCTip>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_content = PBField.initBytes(ByteStringMicro.EMPTY);

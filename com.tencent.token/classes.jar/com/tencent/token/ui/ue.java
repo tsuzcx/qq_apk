@@ -1,39 +1,37 @@
 package com.tencent.token.ui;
 
-import android.os.Message;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.token.core.bean.RealNameStatusResult;
-import com.tencent.token.global.e;
+import com.tencent.token.global.RqdApplication;
 
-final class ue
-  extends bo
+class ue
+  implements View.OnClickListener
 {
-  ue(RealNameActivity paramRealNameActivity)
-  {
-    super(paramRealNameActivity);
-  }
+  ue(RealNameActivity paramRealNameActivity, boolean paramBoolean) {}
   
-  public final void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.dismissDialog();
-    e.a("realnameactivity msg.what=" + paramMessage.what + ", msg.arg1=" + paramMessage.arg1);
-    switch (paramMessage.what)
+    if (this.a)
     {
-    default: 
-      return;
-    case -100: 
-      RealNameActivity.access$000(this.a);
-      return;
+      this.b.mRightOptionImage = null;
+      if (RealNameActivity.access$100(this.b).regVersion == 1)
+      {
+        RealNameActivity.access$500(this.b, false);
+        RqdApplication.l().getSharedPreferences("sp_name_global", 0).edit().putBoolean("key_zzb_refused_firsttime", true).commit();
+      }
     }
-    if (paramMessage.arg1 == 0)
-    {
-      RealNameActivity.access$102(this.a, (RealNameStatusResult)paramMessage.obj);
-      RealNameActivity.access$200(this.a);
-      return;
+    while (RealNameActivity.access$100(this.b).mRealStatus != 3) {
+      for (;;)
+      {
+        return;
+        RealNameActivity.access$500(this.b, true);
+      }
     }
-    this.a.finish();
+    RealNameActivity.access$600(this.b);
   }
 }
 

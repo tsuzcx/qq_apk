@@ -11,17 +11,21 @@ import java.util.Map;
 public final class get_video_float_layer_rsp
   extends JceStruct
 {
-  static ArrayList cache_all_after_paster_adv;
-  static ArrayList cache_all_videolist_data = new ArrayList();
-  static Map cache_busi_param;
-  static Map cache_extend_info;
-  static QzoneWeisiReqcommendRsp cache_qzone_weisi_rsp = new QzoneWeisiReqcommendRsp();
+  static WeishiAggregatePageRsp cache_aggregate_page_rsp;
+  static ArrayList<single_feed> cache_all_after_paster_adv;
+  static ArrayList<single_feed> cache_all_videolist_data = new ArrayList();
+  static byte[] cache_busi_binary_data;
+  static Map<Integer, String> cache_busi_param;
+  static Map<String, String> cache_extend_info;
+  static QzoneWeisiReqcommendRsp cache_qzone_weisi_rsp;
   static video_floating_layer_search_bar cache_search_bar;
-  public ArrayList all_after_paster_adv;
-  public ArrayList all_videolist_data;
+  public WeishiAggregatePageRsp aggregate_page_rsp;
+  public ArrayList<single_feed> all_after_paster_adv;
+  public ArrayList<single_feed> all_videolist_data;
   public String attach_info = "";
-  public Map busi_param;
-  public Map extend_info;
+  public byte[] busi_binary_data;
+  public Map<Integer, String> busi_param;
+  public Map<String, String> extend_info;
   public int hasmore;
   public QzoneWeisiReqcommendRsp qzone_weisi_rsp;
   public video_floating_layer_search_bar search_bar;
@@ -38,20 +42,26 @@ public final class get_video_float_layer_rsp
     cache_all_after_paster_adv = new ArrayList();
     localsingle_feed = new single_feed();
     cache_all_after_paster_adv.add(localsingle_feed);
+    cache_qzone_weisi_rsp = new QzoneWeisiReqcommendRsp();
+    cache_aggregate_page_rsp = new WeishiAggregatePageRsp();
+    cache_busi_binary_data = (byte[])new byte[1];
+    ((byte[])cache_busi_binary_data)[0] = 0;
   }
   
   public get_video_float_layer_rsp() {}
   
-  public get_video_float_layer_rsp(ArrayList paramArrayList1, Map paramMap1, Map paramMap2, int paramInt, String paramString, video_floating_layer_search_bar paramvideo_floating_layer_search_bar, ArrayList paramArrayList2, QzoneWeisiReqcommendRsp paramQzoneWeisiReqcommendRsp)
+  public get_video_float_layer_rsp(ArrayList<single_feed> paramArrayList1, Map<Integer, String> paramMap, Map<String, String> paramMap1, int paramInt, String paramString, video_floating_layer_search_bar paramvideo_floating_layer_search_bar, ArrayList<single_feed> paramArrayList2, QzoneWeisiReqcommendRsp paramQzoneWeisiReqcommendRsp, WeishiAggregatePageRsp paramWeishiAggregatePageRsp, byte[] paramArrayOfByte)
   {
     this.all_videolist_data = paramArrayList1;
-    this.busi_param = paramMap1;
-    this.extend_info = paramMap2;
+    this.busi_param = paramMap;
+    this.extend_info = paramMap1;
     this.hasmore = paramInt;
     this.attach_info = paramString;
     this.search_bar = paramvideo_floating_layer_search_bar;
     this.all_after_paster_adv = paramArrayList2;
     this.qzone_weisi_rsp = paramQzoneWeisiReqcommendRsp;
+    this.aggregate_page_rsp = paramWeishiAggregatePageRsp;
+    this.busi_binary_data = paramArrayOfByte;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -64,6 +74,8 @@ public final class get_video_float_layer_rsp
     this.search_bar = ((video_floating_layer_search_bar)paramJceInputStream.read(cache_search_bar, 5, false));
     this.all_after_paster_adv = ((ArrayList)paramJceInputStream.read(cache_all_after_paster_adv, 6, false));
     this.qzone_weisi_rsp = ((QzoneWeisiReqcommendRsp)paramJceInputStream.read(cache_qzone_weisi_rsp, 7, false));
+    this.aggregate_page_rsp = ((WeishiAggregatePageRsp)paramJceInputStream.read(cache_aggregate_page_rsp, 8, false));
+    this.busi_binary_data = ((byte[])paramJceInputStream.read(cache_busi_binary_data, 9, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -90,11 +102,17 @@ public final class get_video_float_layer_rsp
     if (this.qzone_weisi_rsp != null) {
       paramJceOutputStream.write(this.qzone_weisi_rsp, 7);
     }
+    if (this.aggregate_page_rsp != null) {
+      paramJceOutputStream.write(this.aggregate_page_rsp, 8);
+    }
+    if (this.busi_binary_data != null) {
+      paramJceOutputStream.write(this.busi_binary_data, 9);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_VIDEO.get_video_float_layer_rsp
  * JD-Core Version:    0.7.0.1
  */

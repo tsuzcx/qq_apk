@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/jt9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <ImageView android:id="@id/elv" android:background="#ffd4d4d4" android:layout_width="fill_parent" android:layout_height="140.0dip" />
+        <ImageView android:id="@id/d__" android:background="@drawable/d8b" android:layout_width="104.0dip" android:layout_height="104.0dip" android:layout_marginTop="88.0dip" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/icon" android:background="@drawable/cop" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginTop="90.0dip" android:layout_centerHorizontal="true" />
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/asu" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="72.0dip" android:layout_marginTop="165.0dip" android:src="@drawable/dlr" />
+        </RelativeLayout>
+        <TextView android:textSize="23.0sp" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/ax" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="206.0dip" android:maxWidth="300.0dip" android:singleLine="true" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff777777" android:ellipsize="end" android:id="@id/aw" android:paddingBottom="17.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" android:layout_below="@id/ax" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/bp" android:ellipsize="end" android:gravity="center" android:id="@id/az" android:paddingLeft="40.0dip" android:paddingRight="40.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:layout_below="@id/aw" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</LinearLayout>

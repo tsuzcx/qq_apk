@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/a7z" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/a80" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="300.0dip">
+        <ImageView android:id="@id/a81" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+        <ProgressBar android:layout_gravity="center" android:id="@id/a82" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a01" />
+    </FrameLayout>
+    <com.tencent.mm.plugin.brandservice.ui.timeline.video.MPWriteCommentLayout android:id="@id/a83" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/a84" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a0u" />
+        </RelativeLayout>
+    </FrameLayout>
+</FrameLayout>

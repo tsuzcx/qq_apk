@@ -50,14 +50,14 @@ public class ImageProgressCircle
   {
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130844974);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130848099);
       int i = (int)(paramContext.getResources().getDisplayMetrics().density * 12.0F);
       this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(i);
       this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(Typeface.DEFAULT_BOLD);
       this.jdField_c_of_type_Boolean = true;
-      this.jdField_c_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131558674);
+      this.jdField_c_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297075);
       this.jdField_a_of_type_Int = (this.jdField_c_of_type_Int / 2);
       this.jdField_b_of_type_Int = (this.jdField_c_of_type_Int / 2);
       return;
@@ -148,7 +148,7 @@ public class ImageProgressCircle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ImageProgressCircle
  * JD-Core Version:    0.7.0.1
  */

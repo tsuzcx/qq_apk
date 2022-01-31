@@ -1,5 +1,14 @@
 package com.tencent.mobileqq.activity;
 
+import abws;
+import adzj;
+import adzk;
+import aeow;
+import aeoz;
+import aepi;
+import ajgb;
+import ajxm;
+import alzh;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -9,6 +18,7 @@ import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Message;
+import android.os.Process;
 import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -21,7 +31,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import com.tencent.biz.now.NowLiveManager;
+import aobj;
+import aswy;
+import atzz;
+import awze;
+import awzg;
+import awzq;
+import awzr;
+import ayzs;
+import azkz;
+import aznk;
+import azqs;
+import azrd;
+import bdgm;
+import bdhk;
+import bdib;
+import bdjz;
+import bdnm;
+import bjho;
+import bkbq;
 import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -29,66 +57,55 @@ import com.tencent.common.config.AppSetting;
 import com.tencent.image.AbstractVideoImage;
 import com.tencent.image.ApngImage;
 import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.aio.AIOConfigManager;
-import com.tencent.mobileqq.activity.aio.AIOPreLoadEngine;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
 import com.tencent.mobileqq.activity.recent.DrawerFrame;
-import com.tencent.mobileqq.apollo.view.ApolloGameWrapper;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.ProcessStats;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadRegulator;
-import com.tencent.mobileqq.campuscircle.CampusNoticeManager;
 import com.tencent.mobileqq.fpsreport.FPSSwipListView;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.hotpic.VideoItemEventManager;
+import com.tencent.mobileqq.mini.report.MiniAppReportManager;
+import com.tencent.mobileqq.minigame.splash.SplashMiniGameStarter;
+import com.tencent.mobileqq.minigame.ui.GameActivity3;
 import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.service.message.MessageConstants;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.utils.StartupTracker;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import mqq.app.Constants.LogoutReason;
 import mqq.os.MqqHandler;
-import ttj;
-import ttl;
-import ttm;
-import ttn;
-import tto;
-import ttp;
-import ttq;
+import nga;
+import zhx;
 
 public class SplashActivity
   extends FragmentActivity
 {
   public static volatile int a;
-  public static volatile WeakReference a;
-  private long jdField_a_of_type_Long;
+  public static long a;
+  public static volatile WeakReference<SplashActivity> a;
+  public static volatile boolean a;
+  public static int b;
+  public static int c;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   public View a;
   private String jdField_a_of_type_JavaLangString;
   public View[] a;
+  private long jdField_b_of_type_Long;
   public View b;
-  private String b;
+  private String jdField_b_of_type_JavaLangString;
+  private long jdField_c_of_type_Long = -1L;
+  private String jdField_c_of_type_JavaLangString = "";
+  private int d = -2;
   
   static
   {
     jdField_a_of_type_Int = 1;
+    jdField_a_of_type_Boolean = true;
     if (!"Success".equals(BaseApplicationImpl.sInjectResult))
     {
       String str = "sInjectResult:" + BaseApplicationImpl.sInjectResult;
@@ -107,7 +124,7 @@ public class SplashActivity
   
   public static void a()
   {
-    ScreenUtil.a();
+    azkz.a();
     com.tencent.widget.XPanelContainer.d = 0;
   }
   
@@ -115,12 +132,84 @@ public class SplashActivity
   {
     if (paramIntent.getBooleanExtra("open_chatfragment", false))
     {
+      ajgb.a(this.app, paramIntent);
       setIntent(paramIntent);
       getIntent().putExtra("isBack2Root", true);
       a(false, 0);
       return true;
     }
     return false;
+  }
+  
+  public static boolean a(SplashActivity paramSplashActivity, AppInterface paramAppInterface)
+  {
+    QLog.d("SplashActivity", 2, "jumpMiniGameAction");
+    MiniAppReportManager.splashMiniGameClickReport(SplashMiniGameStarter.curData);
+    SplashMiniGameStarter.needJump = false;
+    SplashMiniGameStarter.setHasJumped();
+    paramAppInterface = new Intent(BaseApplicationImpl.getApplication(), GameActivity3.class);
+    paramAppInterface.addFlags(805371904);
+    paramAppInterface.putExtra("fromSplash", true);
+    paramAppInterface.putExtra("processName", "com.tencent.mobileqq:mini3");
+    paramAppInterface.putExtra("startDuration", System.currentTimeMillis());
+    paramAppInterface.putExtra("splashData", SplashMiniGameStarter.curData);
+    paramSplashActivity.startActivity(paramAppInterface);
+    paramSplashActivity.overridePendingTransition(17432576, 17432577);
+    return true;
+  }
+  
+  public static boolean a(SplashActivity paramSplashActivity, QQAppInterface paramQQAppInterface, awzr paramawzr)
+  {
+    if (paramawzr == null) {}
+    for (;;)
+    {
+      return false;
+      try
+      {
+        int i = paramawzr.jdField_b_of_type_Int;
+        awzq.jdField_a_of_type_Boolean = false;
+        switch (i)
+        {
+        case 1: 
+          if (TextUtils.isEmpty(paramawzr.f))
+          {
+            QLog.i("QSplash@QbossSplashUtil", 1, "jumpH5Url is null");
+            return false;
+          }
+          Intent localIntent = new Intent(paramSplashActivity, QQBrowserActivity.class);
+          localIntent.putExtra("url", paramawzr.f);
+          localIntent.putExtra("key_from_splash_ad", true);
+          localIntent.putExtra("big_brother_source_key", "biz_src_jc_vip");
+          paramSplashActivity.startActivity(localIntent);
+          if (paramQQAppInterface != null) {
+            awzq.a(paramawzr.j, null, 2);
+          }
+          break;
+        case 4: 
+          if (TextUtils.isEmpty(paramawzr.f))
+          {
+            QLog.i("QSplash@QbossSplashUtil", 1, "scheme is null");
+            return false;
+          }
+          bdib.a(paramQQAppInterface, paramSplashActivity, paramawzr.f).c();
+          if (paramQQAppInterface != null)
+          {
+            awzq.a(paramawzr.j, null, 2);
+            return false;
+          }
+          break;
+        case 2: 
+        case 3: 
+        default: 
+          return false;
+        }
+      }
+      catch (Exception paramSplashActivity)
+      {
+        return false;
+      }
+    }
+    return true;
   }
   
   private boolean b()
@@ -144,43 +233,56 @@ public class SplashActivity
   
   private boolean b(Intent paramIntent)
   {
-    if ((paramIntent.getBooleanExtra("open_now_tab_fragment", false)) && (this.app.a().a))
+    int i = 0;
+    if ((paramIntent.getBooleanExtra("open_kandian_tab_fragment", false)) && (bkbq.k()))
     {
       setIntent(paramIntent);
-      getIntent().putExtra("isBack2Root", true);
       Object localObject = getSupportFragmentManager();
       FragmentTransaction localFragmentTransaction = ((FragmentManager)localObject).beginTransaction();
       if (((FragmentManager)localObject).findFragmentByTag(MainFragment.class.getName()) == null)
       {
         jdField_a_of_type_Int = 1;
         localObject = MainFragment.a();
-        ((MainFragment)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
+        ((MainFragment)localObject).a = paramIntent;
         localFragmentTransaction.add(16908290, (Fragment)localObject, MainFragment.class.getName());
         localFragmentTransaction.commitAllowingStateLoss();
-        return true;
       }
-      b(paramIntent);
-      return true;
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SplashActivity", 2, "tryOpenKandianTab type : " + i);
+        }
+        return true;
+        b(paramIntent);
+        i = 1;
+      }
     }
     return false;
   }
   
   private void c(Intent paramIntent)
   {
-    switch (paramIntent.getIntExtra("forward", -1))
+    int i = paramIntent.getIntExtra("forward", -1);
+    int j = paramIntent.getIntExtra("uintype", -1);
+    if ((i > 0) && ((j == 1035) || (j == 1041) || (j == 1042)) && (this.app.a(284)))
+    {
+      ((atzz)this.app.getManager(284)).a(this, paramIntent);
+      return;
+    }
+    switch (i)
     {
     }
     for (;;)
     {
       getIntent().removeExtra("forward");
       return;
-      Object localObject = AIOUtils.a(new Intent(this, SplashActivity.class), null);
-      ((Intent)localObject).putExtra("uin", paramIntent.getStringExtra("uin"));
-      ((Intent)localObject).putExtra("uintype", paramIntent.getIntExtra("uintype", 0));
-      ((Intent)localObject).putExtra("yuyin", paramIntent.getBooleanExtra("yuyin", false));
-      ((Intent)localObject).putExtra("uinname", paramIntent.getStringExtra("uinname"));
-      ((Intent)localObject).putExtra("enterchatwin", true);
-      startActivity((Intent)localObject);
+      Intent localIntent = aepi.a(new Intent(this, SplashActivity.class), null);
+      localIntent.putExtra("uin", paramIntent.getStringExtra("uin"));
+      localIntent.putExtra("uintype", paramIntent.getIntExtra("uintype", 0));
+      localIntent.putExtra("yuyin", paramIntent.getBooleanExtra("yuyin", false));
+      localIntent.putExtra("uinname", paramIntent.getStringExtra("uinname"));
+      localIntent.putExtra("enterchatwin", true);
+      startActivity(localIntent);
       getIntent().removeExtra("fromMsgBox");
       continue;
       paramIntent = paramIntent.getParcelableExtra("AllInOne");
@@ -191,27 +293,186 @@ public class SplashActivity
         paramIntent.h = 6;
         ProfileActivity.b(this, paramIntent);
         continue;
-        localObject = paramIntent.getStringExtra("url");
-        Intent localIntent = new Intent(this, QQBrowserActivity.class);
-        if (paramIntent.hasExtra("uintype"))
+        paramIntent = paramIntent.getStringExtra("url");
+        localIntent = new Intent(this, QQBrowserActivity.class);
+        if (j != -1)
         {
-          int i = paramIntent.getIntExtra("uintype", -1);
-          localIntent.putExtra("uintype", i);
-          if ((i == 1030) && (this.app.a(239)))
+          localIntent.putExtra("uintype", j);
+          if ((j == 1030) && (this.app.a(240)))
           {
-            ((CampusNoticeManager)this.app.getManager(239)).a(null);
+            ((aobj)this.app.getManager(240)).a(null);
             if (QLog.isColorLevel()) {
               QLog.d("CampusNoticeManager", 2, "remove campus notice");
             }
           }
         }
-        localIntent.putExtra("url", (String)localObject);
+        localIntent.putExtra("url", paramIntent);
         startActivity(localIntent);
       }
     }
   }
   
+  private boolean c()
+  {
+    if ((awzq.jdField_a_of_type_Boolean) && (awzq.jdField_a_of_type_Awzr != null) && (a(this, this.app, awzq.jdField_a_of_type_Awzr)))
+    {
+      finish();
+      return false;
+    }
+    if ((SplashMiniGameStarter.needJump) && (a(this, this.app)))
+    {
+      finish();
+      return false;
+    }
+    return true;
+  }
+  
   private boolean c(Intent paramIntent)
+  {
+    int i = 0;
+    if ((paramIntent.getBooleanExtra("open_qzone_tab_fragment", false)) && (bjho.d()))
+    {
+      setIntent(paramIntent);
+      Object localObject = getSupportFragmentManager();
+      FragmentTransaction localFragmentTransaction = ((FragmentManager)localObject).beginTransaction();
+      if (((FragmentManager)localObject).findFragmentByTag(MainFragment.class.getName()) == null)
+      {
+        jdField_a_of_type_Int = 1;
+        localObject = MainFragment.a();
+        ((MainFragment)localObject).a = paramIntent;
+        localFragmentTransaction.add(16908290, (Fragment)localObject, MainFragment.class.getName());
+        localFragmentTransaction.commitAllowingStateLoss();
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SplashActivity", 2, "tryOpenQzoneTab type : " + i);
+        }
+        return true;
+        b(paramIntent);
+        i = 1;
+      }
+    }
+    return false;
+  }
+  
+  private void d()
+  {
+    String str2;
+    if (GesturePWDUtils.getGestureUnlockFailed(this, this.app.getCurrentAccountUin()))
+    {
+      str2 = getString(2131693103);
+      if (GesturePWDUtils.getGestureUnlockFailedType(this) != 1) {
+        break label73;
+      }
+    }
+    label73:
+    for (String str1 = getString(2131693106);; str1 = getString(2131693105))
+    {
+      bdgm.a(this, 230, str2, str1, 2131690648, 2131693104, new adzj(this), new adzk(this)).show();
+      return;
+    }
+  }
+  
+  private boolean d()
+  {
+    i = -1;
+    Intent localIntent = getIntent();
+    try
+    {
+      str = localIntent.getStringExtra("uin");
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        int j;
+        long l;
+        label57:
+        String str = "";
+        QLog.e("SplashActivity", 2, localException1, new Object[0]);
+        continue;
+        if (i != this.d) {
+          bool = false;
+        } else if (l - this.jdField_c_of_type_Long > 800L) {
+          bool = false;
+        } else {
+          bool = true;
+        }
+      }
+    }
+    try
+    {
+      j = localIntent.getIntExtra("uintype", -1);
+      i = j;
+      l = SystemClock.uptimeMillis();
+      if (TextUtils.isEmpty(str)) {
+        break label179;
+      }
+      if (str.equals(this.jdField_c_of_type_JavaLangString)) {
+        break label135;
+      }
+      bool = false;
+    }
+    catch (Exception localException2)
+    {
+      break label120;
+      bool = false;
+      break label57;
+    }
+    if (!bool)
+    {
+      this.jdField_c_of_type_Long = l;
+      this.jdField_c_of_type_JavaLangString = str;
+      this.d = i;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("SplashActivity", 2, "highFrequencyOpenSameAio " + bool);
+    }
+    return bool;
+  }
+  
+  private boolean d(Intent paramIntent)
+  {
+    if ((paramIntent.getBooleanExtra("open_now_tab_fragment", false)) && (this.app.a().jdField_a_of_type_Boolean))
+    {
+      setIntent(paramIntent);
+      getIntent().putExtra("isBack2Root", true);
+      Object localObject = getSupportFragmentManager();
+      FragmentTransaction localFragmentTransaction = ((FragmentManager)localObject).beginTransaction();
+      if (((FragmentManager)localObject).findFragmentByTag(MainFragment.class.getName()) == null)
+      {
+        jdField_a_of_type_Int = 1;
+        localObject = MainFragment.a();
+        ((MainFragment)localObject).a = paramIntent;
+        localFragmentTransaction.add(16908290, (Fragment)localObject, MainFragment.class.getName());
+        localFragmentTransaction.commitAllowingStateLoss();
+        return true;
+      }
+      b(paramIntent);
+      return true;
+    }
+    return false;
+  }
+  
+  private void e()
+  {
+    if (aepi.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      aepi.b = getIntent().getBooleanExtra("traceviewSwitch", false);
+      aepi.c = getIntent().getBooleanExtra("forbidChatFont", false);
+      aepi.d = getIntent().getBooleanExtra("forbidHeadPendant", false);
+      aepi.e = getIntent().getBooleanExtra("forbidChatBubble", false);
+      aepi.f = getIntent().getBooleanExtra("logDBOperation", false);
+      com.tencent.mobileqq.app.ThreadSetting.logcatBgTaskMonitor = getIntent().getBooleanExtra("logBgTaskMonitor", false);
+      aepi.jdField_a_of_type_Boolean = true;
+    } while (!QLog.isColorLevel());
+    QLog.d("SplashActivity", 2, "traceviewSwitch: " + aepi.b + " isForbidChatFontFun: " + aepi.c + " isForbidHeadPendantFun: " + aepi.d + " isForbidChatBubbleFun: " + aepi.e + " logcatDBOperation: " + aepi.f + " isEnableAutoDumpLeak: " + AppSetting.d);
+  }
+  
+  private boolean e(Intent paramIntent)
   {
     boolean bool = false;
     if (paramIntent.getBooleanExtra("jump_to_story", false))
@@ -222,41 +483,6 @@ public class SplashActivity
       bool = true;
     }
     return bool;
-  }
-  
-  private void d()
-  {
-    String str2;
-    if (GesturePWDUtils.getGestureUnlockFailed(this, this.app.getCurrentAccountUin()))
-    {
-      str2 = getString(2131436059);
-      if (GesturePWDUtils.getGestureUnlockFailedType(this) != 1) {
-        break label73;
-      }
-    }
-    label73:
-    for (String str1 = getString(2131436060);; str1 = getString(2131436061))
-    {
-      DialogUtil.b(this, 230, str2, str1, 2131433015, 2131436058, new ttp(this), new ttq(this)).show();
-      return;
-    }
-  }
-  
-  private void e()
-  {
-    if (AIOUtils.a) {}
-    do
-    {
-      return;
-      AIOUtils.b = getIntent().getBooleanExtra("traceviewSwitch", false);
-      AIOUtils.c = getIntent().getBooleanExtra("forbidChatFont", false);
-      AIOUtils.d = getIntent().getBooleanExtra("forbidHeadPendant", false);
-      AIOUtils.e = getIntent().getBooleanExtra("forbidChatBubble", false);
-      AIOUtils.f = getIntent().getBooleanExtra("logDBOperation", false);
-      ThreadManager.logcatBgTaskMonitor = getIntent().getBooleanExtra("logBgTaskMonitor", false);
-      AIOUtils.a = true;
-    } while (!QLog.isColorLevel());
-    QLog.d("SplashActivity", 2, "traceviewSwitch: " + AIOUtils.b + " isForbidChatFontFun: " + AIOUtils.c + " isForbidHeadPendantFun: " + AIOUtils.d + " isForbidChatBubbleFun: " + AIOUtils.e + " logcatDBOperation: " + AIOUtils.f + " isEnableAutoDumpLeak: " + AppSetting.c);
   }
   
   public int a()
@@ -303,7 +529,7 @@ public class SplashActivity
       if (localObject1 != null) {
         startActivity((Intent)localObject1);
       }
-      ReportController.b(this.app, "CliOper", "", "", "0X8006593", "0X8006593", 0, 0, this.app.getCurrentAccountUin(), "", "", "");
+      azqs.b(this.app, "CliOper", "", "", "0X8006593", "0X8006593", 0, 0, this.app.getCurrentAccountUin(), "", "", "");
       return;
       localObject1 = localObject2;
       if (i == 1) {
@@ -313,11 +539,11 @@ public class SplashActivity
           localObject1 = localObject2;
           break;
         case 1: 
-          new JumpAction(this.app, this).g();
+          new bdhk(this.app, this).i();
           localObject1 = localObject2;
           break;
         case 2: 
-          new JumpAction(this.app, this).h();
+          new bdhk(this.app, this).j();
           localObject1 = localObject2;
           break;
         case 3: 
@@ -338,11 +564,13 @@ public class SplashActivity
   
   public void a(boolean paramBoolean, int paramInt)
   {
-    AIOPreLoadEngine.a().b();
+    aeoz.a().b();
     ThreadRegulator.a().a(1);
-    StartupTracker.b(null, "AIO_Start_cost");
-    if (AIOUtils.a(this, this.app, paramBoolean, getIntent())) {}
-    label421:
+    jdField_b_of_type_Int = abws.a().a(0, 1, 0, 0, 2000, 301, 4L, Process.myTid(), "openAIO");
+    azrd.a().a("ChatFragment", true);
+    bdnm.b(null, "AIO_Start_cost");
+    if ((aepi.a(this, this.app, paramBoolean, getIntent())) || (d())) {}
+    label533:
     for (;;)
     {
       return;
@@ -357,8 +585,8 @@ public class SplashActivity
       if (localObject2 != null)
       {
         ((MainFragment)localObject2).j();
-        if (((MainFragment)localObject2).a() != MainFragment.jdField_a_of_type_Int) {
-          ((MainFragment)localObject2).a(MainFragment.jdField_a_of_type_Int);
+        if (((MainFragment)localObject2).a() != MainFragment.jdField_b_of_type_Int) {
+          ((MainFragment)localObject2).a(MainFragment.jdField_b_of_type_Int);
         }
       }
       if (localObject1 != null)
@@ -366,14 +594,15 @@ public class SplashActivity
         if (QLog.isColorLevel()) {
           QLog.i("SplashActivity", 2, "openAIO f != null ");
         }
-        ((ChatFragment)localObject1).c();
+        ChatFragment localChatFragment = (ChatFragment)localObject1;
+        localChatFragment.d();
         jdField_a_of_type_Int = 2;
-        if (!((Fragment)localObject1).isVisible())
+        if (localChatFragment.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout == null)
         {
-          if ((paramBoolean) && (ProcessStats.a() > 1)) {
-            localFragmentTransaction.setCustomAnimations(2131034173, 2131034178);
-          }
-          localFragmentTransaction.show((Fragment)localObject1);
+          QLog.w("SplashActivity", 1, "ChatFragment state error, trying to recreate it.");
+          localChatFragment = ChatFragment.a();
+          localFragmentTransaction.remove((Fragment)localObject1);
+          localFragmentTransaction.add(16908290, localChatFragment, ChatFragment.class.getName());
           localFragmentTransaction.hide((Fragment)localObject2);
           localFragmentTransaction.commitAllowingStateLoss();
         }
@@ -381,30 +610,40 @@ public class SplashActivity
       for (;;)
       {
         if (!getIntent().getBooleanExtra("activepull_push_flag", false)) {
-          break label421;
+          break label533;
         }
-        ReportController.b(this.app, "CliOper", "", "", "0X8006593", "0X8006593", 0, 0, this.app.getCurrentAccountUin(), "", "", "");
+        azqs.b(this.app, "CliOper", "", "", "0X8006593", "0X8006593", 0, 0, this.app.getCurrentAccountUin(), "", "", "");
         return;
-        if (Math.abs(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) < 1000L)
+        if (!((Fragment)localObject1).isVisible())
         {
-          if (!QLog.isColorLevel()) {
-            break;
+          if ((paramBoolean) && (alzh.a() > 1)) {
+            localFragmentTransaction.setCustomAnimations(2130772045, 2130772050);
           }
-          QLog.i("SplashActivity", 2, "openAIO hasOpenedAIO true, renturn ");
-          return;
-        }
-        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-        if ((paramBoolean) && (ProcessStats.a() > 1)) {
-          localFragmentTransaction.setCustomAnimations(2131034173, 2131034178);
-        }
-        localObject1 = ChatFragment.a();
-        jdField_a_of_type_Int = 2;
-        localFragmentTransaction.add(16908290, (Fragment)localObject1, ChatFragment.class.getName());
-        localFragmentTransaction.hide((Fragment)localObject2);
-        localFragmentTransaction.commitAllowingStateLoss();
-        AIOPreLoadEngine.a().b();
-        if (QLog.isColorLevel()) {
-          QLog.i("SplashActivity", 2, "openAIO f == null ");
+          localFragmentTransaction.show((Fragment)localObject1);
+          localFragmentTransaction.hide((Fragment)localObject2);
+          localFragmentTransaction.commitAllowingStateLoss();
+          continue;
+          if (Math.abs(SystemClock.uptimeMillis() - this.jdField_b_of_type_Long) < 1000L)
+          {
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.i("SplashActivity", 2, "openAIO hasOpenedAIO true, renturn ");
+            return;
+          }
+          this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+          if ((paramBoolean) && (alzh.a() > 1)) {
+            localFragmentTransaction.setCustomAnimations(2130772045, 2130772050);
+          }
+          localObject1 = ChatFragment.a();
+          jdField_a_of_type_Int = 2;
+          localFragmentTransaction.add(16908290, (Fragment)localObject1, ChatFragment.class.getName());
+          localFragmentTransaction.hide((Fragment)localObject2);
+          localFragmentTransaction.commitAllowingStateLoss();
+          aeoz.a().b();
+          if (QLog.isColorLevel()) {
+            QLog.i("SplashActivity", 2, "openAIO f == null ");
+          }
         }
       }
     }
@@ -415,26 +654,42 @@ public class SplashActivity
     if ((this.app != null) && (this.app.g)) {
       QLog.d("SplashActivity", 1, "LastExitTaskUnfinished finish");
     }
-    Object localObject;
+    Object localObject1;
     do
     {
       return true;
       if ((NotificationActivity.a != null) && (!NotificationActivity.a.isFinishing()))
       {
         QLog.d("SplashActivity", 1, "needFinish, notification activity exists");
-        localObject = NotificationActivity.a.getIntent();
+        localObject1 = NotificationActivity.a.getIntent();
         NotificationActivity.a.finish();
-        startActivity((Intent)localObject);
+        startActivity((Intent)localObject1);
         return false;
       }
-    } while (UserguideActivity.a(this));
+      if (!UserguideActivity.a(this)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("SplashActivity", 2, "showUserGuide");
+    return true;
     if ((this.app == null) || ((!this.app.isLogin()) && (this.app.getKickIntent() == null)))
     {
-      localObject = getSharedPreferences("UserGuide", 0).edit();
-      ((SharedPreferences.Editor)localObject).putString("qq_version", "3560");
-      ((SharedPreferences.Editor)localObject).commit();
+      Object localObject2 = getSharedPreferences("UserGuide", 0);
+      localObject1 = ((SharedPreferences)localObject2).getString("qq_version", "");
+      String str1 = ((SharedPreferences)localObject2).getString("qq_version_full", "");
+      String str2 = AppSetting.a();
+      localObject2 = ((SharedPreferences)localObject2).edit();
+      if (!TextUtils.equals((CharSequence)localObject1, "4555")) {
+        ((SharedPreferences.Editor)localObject2).putString("qq_version_pre", (String)localObject1);
+      }
+      if (!TextUtils.equals(str1, str2)) {
+        ((SharedPreferences.Editor)localObject2).putString("qq_version_full_pre", str1);
+      }
+      ((SharedPreferences.Editor)localObject2).putString("qq_version", "4555");
+      ((SharedPreferences.Editor)localObject2).putString("qq_version_full", str2);
+      ((SharedPreferences.Editor)localObject2).commit();
       if (QLog.isColorLevel()) {
-        QLog.e("SplashActivity", 2, "record build num : 3560");
+        QLog.e("SplashActivity", 2, String.format("update version pre[%s, %s], cur[%s, %s]", new Object[] { localObject1, str1, "4555", str2 }));
       }
       startActivity(new Intent(this, LoginActivity.class));
       return true;
@@ -447,7 +702,7 @@ public class SplashActivity
     if (QLog.isColorLevel()) {
       QLog.d("SplashActivity", 4, "clearAIO");
     }
-    AIOPreLoadEngine.a().b();
+    aeoz.a().b();
     Object localObject = getSupportFragmentManager();
     Fragment localFragment1 = ((FragmentManager)localObject).findFragmentByTag(MainFragment.class.getName());
     Fragment localFragment2 = ((FragmentManager)localObject).findFragmentByTag(ChatFragment.class.getName());
@@ -461,9 +716,21 @@ public class SplashActivity
       {
         jdField_a_of_type_Int = 1;
         ((FragmentTransaction)localObject).hide(localFragment2);
-        ((FragmentTransaction)localObject).show(localFragment1);
+        if (localFragment1 != null) {
+          break label136;
+        }
+        ((FragmentTransaction)localObject).add(16908290, MainFragment.a(), MainFragment.class.getName());
       }
+    }
+    for (;;)
+    {
       ((FragmentTransaction)localObject).remove(localFragment2).commitAllowingStateLoss();
+      if (ajxm.a().c()) {
+        ajxm.a().d();
+      }
+      return;
+      label136:
+      ((FragmentTransaction)localObject).show(localFragment1);
     }
   }
   
@@ -481,12 +748,16 @@ public class SplashActivity
       }
       return;
     }
+    FragmentTransaction localFragmentTransaction;
     if (jdField_a_of_type_Int != 1)
     {
-      FragmentTransaction localFragmentTransaction = ((FragmentManager)localObject).beginTransaction();
+      localFragmentTransaction = ((FragmentManager)localObject).beginTransaction();
       localObject = (ChatFragment)((FragmentManager)localObject).findFragmentByTag(ChatFragment.class.getName());
+    }
+    try
+    {
       if (paramIntent.getBooleanExtra("switch_anim", false)) {
-        localFragmentTransaction.setCustomAnimations(2131034177, 2131034174);
+        localFragmentTransaction.setCustomAnimations(2130772049, 2130772046);
       }
       jdField_a_of_type_Int = 1;
       localFragmentTransaction.show(localMainFragment);
@@ -494,21 +765,27 @@ public class SplashActivity
       localFragmentTransaction.commitAllowingStateLoss();
       if ((localObject != null) && (((ChatFragment)localObject).jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact != null))
       {
-        if ((!((ChatFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a) || (!((ChatFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.d) || (((ChatFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.c)) {
-          break label199;
+        if ((((ChatFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.jdField_a_of_type_Boolean) && (((ChatFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.d) && (!((ChatFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.c)) {
+          ((ChatFragment)localObject).jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setgetStatusBarVisible(false, 0);
         }
-        ((ChatFragment)localObject).jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setgetStatusBarVisible(false, 0);
+      }
+      else
+      {
+        localMainFragment.a(paramIntent);
+        return;
       }
     }
-    for (;;)
+    catch (Exception localException)
     {
-      localMainFragment.a(paramIntent);
-      return;
-      label199:
-      if ((((ChatFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.b) && (((ChatFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.e) && (!((ChatFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.c)) {
-        ((ChatFragment)localObject).jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setgetStatusBarVisible(false, 0);
-      } else {
-        ((ChatFragment)localObject).jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setgetStatusBarVisible(false, 450);
+      for (;;)
+      {
+        QLog.e("SplashActivity", 2, localException, new Object[0]);
+        continue;
+        if ((((ChatFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.b) && (((ChatFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.e) && (!((ChatFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.c)) {
+          ((ChatFragment)localObject).jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setgetStatusBarVisible(false, 0);
+        } else {
+          ((ChatFragment)localObject).jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setgetStatusBarVisible(false, 450);
+        }
       }
     }
   }
@@ -521,7 +798,7 @@ public class SplashActivity
     }
   }
   
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     Object localObject = getSupportFragmentManager();
@@ -537,112 +814,329 @@ public class SplashActivity
     ((MainFragment)localObject).a(paramInt1, paramInt2, paramIntent);
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  /* Error */
+  public boolean doOnCreate(Bundle paramBundle)
   {
-    boolean bool2 = true;
-    int j = 0;
-    int i;
-    if ((BaseApplicationImpl.sSplashActivityEscapedMsg != null) && (BaseApplicationImpl.sSplashActivityEscapedMsg.length() > 0)) {
-      i = 1;
-    }
-    for (;;)
-    {
-      Intent localIntent;
-      if (i != 0)
-      {
-        localIntent = new Intent(getIntent());
-        localIntent.addFlags(603979776);
-        super.finish();
-        super.superStartActivityForResult(localIntent, -1, null);
-      }
-      try
-      {
-        Thread.sleep(50L);
-        System.exit(-1);
-        StartupTracker.a(null, "Main_Start");
-        StartupTracker.a(null, "Main_OnCreat");
-        StartupTracker.a(null, "Main_super_create");
-        this.mActNeedImmersive = false;
-        super.doOnCreate(paramBundle);
-        StartupTracker.a("Main_super_create", null);
-        if ((a()) || (b()))
-        {
-          finish();
-          StartupTracker.a("Main_OnCreat", null);
-          StartupTracker.a("Main_Start", null);
-          bool1 = false;
-          return bool1;
-          i = 0;
-          continue;
-        }
-        jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this);
-        if (paramBundle != null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("SplashActivity", 2, "doOnCreate killedRestore: ");
-          }
-          getIntent().putExtra("open_chatfragment", false);
-        }
-        this.app.isClearTaskBySystem = false;
-        e();
-        localIntent = getIntent();
-        if (localIntent.getExtras() != null) {
-          if ((localIntent.getExtras().containsKey("forward")) || ((localIntent.getBooleanExtra("k_from_login", false)) && (paramBundle == null)))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("SplashActivity", 2, "mCanLock set false, intent from forward or login");
-            }
-            this.mCanLock = false;
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        try
-        {
-          label296:
-          do
-          {
-            do
-            {
-              this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("jump_action_from_h5");
-              this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("package_from_h5");
-              if (!a(getIntent()))
-              {
-                i = j;
-                if (!b(getIntent())) {}
-              }
-              else
-              {
-                i = 1;
-              }
-              if (i == 0)
-              {
-                paramBundle = getSupportFragmentManager();
-                jdField_a_of_type_Int = 1;
-                paramBundle.beginTransaction().add(16908290, MainFragment.a(), MainFragment.class.getName()).commitAllowingStateLoss();
-              }
-              ThreadManager.getSubThreadHandler().postDelayed(new ttj(this), 1000L);
-              c(localIntent);
-              BaseApplicationImpl.appMainActivityHasLanuch = true;
-              StartupTracker.a("Main_OnCreat", null);
-              bool1 = bool2;
-            } while (ImmersiveUtils.c);
-            boolean bool1 = bool2;
-          } while (isInMultiWindow());
-          getWindow().getDecorView().post(new ttl(this));
-          return true;
-          localException = localException;
-        }
-        catch (Exception paramBundle)
-        {
-          break label296;
-        }
-      }
-    }
+    // Byte code:
+    //   0: getstatic 71	com/tencent/common/app/BaseApplicationImpl:sSplashActivityEscapedMsg	Ljava/lang/String;
+    //   3: ifnull +586 -> 589
+    //   6: getstatic 71	com/tencent/common/app/BaseApplicationImpl:sSplashActivityEscapedMsg	Ljava/lang/String;
+    //   9: invokevirtual 850	java/lang/String:length	()I
+    //   12: ifle +577 -> 589
+    //   15: iconst_1
+    //   16: istore_2
+    //   17: iload_2
+    //   18: ifeq +44 -> 62
+    //   21: new 99	android/content/Intent
+    //   24: dup
+    //   25: aload_0
+    //   26: invokevirtual 120	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
+    //   29: invokespecial 852	android/content/Intent:<init>	(Landroid/content/Intent;)V
+    //   32: astore_3
+    //   33: aload_3
+    //   34: ldc_w 853
+    //   37: invokevirtual 171	android/content/Intent:addFlags	(I)Landroid/content/Intent;
+    //   40: pop
+    //   41: aload_0
+    //   42: invokespecial 854	android/support/v4/app/FragmentActivity:finish	()V
+    //   45: aload_0
+    //   46: aload_3
+    //   47: iconst_m1
+    //   48: aconst_null
+    //   49: invokespecial 858	android/support/v4/app/FragmentActivity:superStartActivityForResult	(Landroid/content/Intent;ILandroid/os/Bundle;)V
+    //   52: ldc2_w 859
+    //   55: invokestatic 866	java/lang/Thread:sleep	(J)V
+    //   58: iconst_m1
+    //   59: invokestatic 869	java/lang/System:exit	(I)V
+    //   62: aconst_null
+    //   63: ldc_w 871
+    //   66: invokestatic 873	bdnm:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   69: aconst_null
+    //   70: ldc_w 875
+    //   73: invokestatic 873	bdnm:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   76: aconst_null
+    //   77: ldc_w 877
+    //   80: invokestatic 873	bdnm:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   83: aload_0
+    //   84: iconst_0
+    //   85: putfield 880	com/tencent/mobileqq/activity/SplashActivity:mActNeedImmersive	Z
+    //   88: aload_0
+    //   89: aload_1
+    //   90: invokespecial 882	android/support/v4/app/FragmentActivity:doOnCreate	(Landroid/os/Bundle;)Z
+    //   93: pop
+    //   94: ldc_w 877
+    //   97: aconst_null
+    //   98: invokestatic 873	bdnm:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   101: aload_0
+    //   102: invokevirtual 884	com/tencent/mobileqq/activity/SplashActivity:a	()Z
+    //   105: ifne +10 -> 115
+    //   108: aload_0
+    //   109: invokespecial 886	com/tencent/mobileqq/activity/SplashActivity:b	()Z
+    //   112: ifeq +23 -> 135
+    //   115: aload_0
+    //   116: invokevirtual 287	com/tencent/mobileqq/activity/SplashActivity:finish	()V
+    //   119: ldc_w 875
+    //   122: aconst_null
+    //   123: invokestatic 873	bdnm:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   126: ldc_w 871
+    //   129: aconst_null
+    //   130: invokestatic 873	bdnm:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   133: iconst_0
+    //   134: ireturn
+    //   135: aload_0
+    //   136: invokespecial 887	com/tencent/mobileqq/activity/SplashActivity:c	()Z
+    //   139: ifeq +448 -> 587
+    //   142: aload_0
+    //   143: invokevirtual 120	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
+    //   146: invokevirtual 890	android/content/Intent:getAction	()Ljava/lang/String;
+    //   149: astore_3
+    //   150: aload_3
+    //   151: ifnull +33 -> 184
+    //   154: ldc_w 892
+    //   157: aload_3
+    //   158: invokevirtual 38	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   161: ifeq +23 -> 184
+    //   164: aload_0
+    //   165: invokevirtual 287	com/tencent/mobileqq/activity/SplashActivity:finish	()V
+    //   168: iconst_0
+    //   169: ireturn
+    //   170: astore_1
+    //   171: ldc 132
+    //   173: iconst_2
+    //   174: aload_1
+    //   175: iconst_0
+    //   176: anewarray 480	java/lang/Object
+    //   179: invokestatic 484	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   182: iconst_1
+    //   183: ireturn
+    //   184: new 263	java/lang/ref/WeakReference
+    //   187: dup
+    //   188: aload_0
+    //   189: invokespecial 895	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   192: putstatic 261	com/tencent/mobileqq/activity/SplashActivity:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   195: aload_1
+    //   196: ifnull +41 -> 237
+    //   199: invokestatic 334	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   202: ifeq +12 -> 214
+    //   205: ldc 132
+    //   207: iconst_2
+    //   208: ldc_w 897
+    //   211: invokestatic 139	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   214: aload_0
+    //   215: invokevirtual 120	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
+    //   218: ldc 97
+    //   220: iconst_0
+    //   221: invokevirtual 126	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   224: pop
+    //   225: aload_0
+    //   226: invokevirtual 120	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
+    //   229: ldc_w 289
+    //   232: iconst_0
+    //   233: invokevirtual 126	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   236: pop
+    //   237: aload_0
+    //   238: getfield 107	com/tencent/mobileqq/activity/SplashActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   241: iconst_0
+    //   242: putfield 900	com/tencent/mobileqq/app/QQAppInterface:isClearTaskBySystem	Z
+    //   245: aload_0
+    //   246: invokespecial 902	com/tencent/mobileqq/activity/SplashActivity:e	()V
+    //   249: aload_0
+    //   250: invokevirtual 120	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
+    //   253: astore_3
+    //   254: aload_3
+    //   255: invokevirtual 545	android/content/Intent:getExtras	()Landroid/os/Bundle;
+    //   258: ifnull +79 -> 337
+    //   261: aload_3
+    //   262: invokevirtual 545	android/content/Intent:getExtras	()Landroid/os/Bundle;
+    //   265: ldc_w 340
+    //   268: invokevirtual 908	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
+    //   271: ifne +18 -> 289
+    //   274: aload_3
+    //   275: ldc_w 910
+    //   278: iconst_0
+    //   279: invokevirtual 103	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   282: ifeq +27 -> 309
+    //   285: aload_1
+    //   286: ifnonnull +23 -> 309
+    //   289: invokestatic 334	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   292: ifeq +12 -> 304
+    //   295: ldc 132
+    //   297: iconst_2
+    //   298: ldc_w 912
+    //   301: invokestatic 139	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   304: aload_0
+    //   305: iconst_0
+    //   306: putfield 915	com/tencent/mobileqq/activity/SplashActivity:mCanLock	Z
+    //   309: aload_0
+    //   310: aload_0
+    //   311: invokevirtual 120	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
+    //   314: ldc_w 917
+    //   317: invokevirtual 374	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   320: putfield 919	com/tencent/mobileqq/activity/SplashActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   323: aload_0
+    //   324: aload_0
+    //   325: invokevirtual 120	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
+    //   328: ldc_w 921
+    //   331: invokevirtual 374	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   334: putfield 923	com/tencent/mobileqq/activity/SplashActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   337: aload_0
+    //   338: aload_0
+    //   339: invokevirtual 120	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
+    //   342: invokespecial 925	com/tencent/mobileqq/activity/SplashActivity:a	(Landroid/content/Intent;)Z
+    //   345: ifne +249 -> 594
+    //   348: aload_0
+    //   349: aload_0
+    //   350: invokevirtual 120	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
+    //   353: invokespecial 927	com/tencent/mobileqq/activity/SplashActivity:d	(Landroid/content/Intent;)Z
+    //   356: ifne +238 -> 594
+    //   359: aload_0
+    //   360: aload_0
+    //   361: invokevirtual 120	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
+    //   364: invokespecial 929	com/tencent/mobileqq/activity/SplashActivity:b	(Landroid/content/Intent;)Z
+    //   367: ifne +227 -> 594
+    //   370: aload_0
+    //   371: aload_0
+    //   372: invokevirtual 120	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
+    //   375: invokespecial 931	com/tencent/mobileqq/activity/SplashActivity:c	(Landroid/content/Intent;)Z
+    //   378: ifeq +196 -> 574
+    //   381: goto +213 -> 594
+    //   384: iload_2
+    //   385: ifne +35 -> 420
+    //   388: aload_0
+    //   389: invokevirtual 298	com/tencent/mobileqq/activity/SplashActivity:getSupportFragmentManager	()Landroid/support/v4/app/FragmentManager;
+    //   392: astore_1
+    //   393: iconst_1
+    //   394: putstatic 23	com/tencent/mobileqq/activity/SplashActivity:jdField_a_of_type_Int	I
+    //   397: aload_1
+    //   398: invokevirtual 304	android/support/v4/app/FragmentManager:beginTransaction	()Landroid/support/v4/app/FragmentTransaction;
+    //   401: ldc_w 322
+    //   404: invokestatic 318	com/tencent/mobileqq/activity/MainFragment:a	()Lcom/tencent/mobileqq/activity/MainFragment;
+    //   407: ldc_w 306
+    //   410: invokevirtual 311	java/lang/Class:getName	()Ljava/lang/String;
+    //   413: invokevirtual 328	android/support/v4/app/FragmentTransaction:add	(ILandroid/support/v4/app/Fragment;Ljava/lang/String;)Landroid/support/v4/app/FragmentTransaction;
+    //   416: invokevirtual 331	android/support/v4/app/FragmentTransaction:commitAllowingStateLoss	()I
+    //   419: pop
+    //   420: invokestatic 937	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
+    //   423: new 939	com/tencent/mobileqq/activity/SplashActivity$1
+    //   426: dup
+    //   427: aload_0
+    //   428: invokespecial 940	com/tencent/mobileqq/activity/SplashActivity$1:<init>	(Lcom/tencent/mobileqq/activity/SplashActivity;)V
+    //   431: ldc2_w 711
+    //   434: invokevirtual 946	mqq/os/MqqHandler:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   437: pop
+    //   438: aload_0
+    //   439: aload_3
+    //   440: invokespecial 948	com/tencent/mobileqq/activity/SplashActivity:e	(Landroid/content/Intent;)Z
+    //   443: pop
+    //   444: iconst_1
+    //   445: putstatic 951	com/tencent/common/app/BaseApplicationImpl:appMainActivityHasLanuch	Z
+    //   448: ldc_w 875
+    //   451: aconst_null
+    //   452: invokestatic 873	bdnm:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   455: getstatic 954	com/tencent/widget/immersive/ImmersiveUtils:c	Z
+    //   458: ifne +29 -> 487
+    //   461: aload_0
+    //   462: invokevirtual 957	com/tencent/mobileqq/activity/SplashActivity:isInMultiWindow	()Z
+    //   465: ifne +22 -> 487
+    //   468: aload_0
+    //   469: invokevirtual 961	com/tencent/mobileqq/activity/SplashActivity:getWindow	()Landroid/view/Window;
+    //   472: invokevirtual 967	android/view/Window:getDecorView	()Landroid/view/View;
+    //   475: new 969	com/tencent/mobileqq/activity/SplashActivity$2
+    //   478: dup
+    //   479: aload_0
+    //   480: invokespecial 970	com/tencent/mobileqq/activity/SplashActivity$2:<init>	(Lcom/tencent/mobileqq/activity/SplashActivity;)V
+    //   483: invokevirtual 976	android/view/View:post	(Ljava/lang/Runnable;)Z
+    //   486: pop
+    //   487: invokestatic 980	com/tencent/mobileqq/activity/SplashActivity:getActivityRoutes	()Ljava/util/ArrayList;
+    //   490: astore_1
+    //   491: getstatic 23	com/tencent/mobileqq/activity/SplashActivity:jdField_a_of_type_Int	I
+    //   494: iconst_1
+    //   495: if_icmpne +43 -> 538
+    //   498: aload_0
+    //   499: invokevirtual 981	com/tencent/mobileqq/activity/SplashActivity:a	()I
+    //   502: getstatic 661	com/tencent/mobileqq/activity/MainFragment:jdField_b_of_type_Int	I
+    //   505: if_icmpne +33 -> 538
+    //   508: aload_1
+    //   509: invokevirtual 986	java/util/ArrayList:size	()I
+    //   512: iconst_2
+    //   513: if_icmpgt +25 -> 538
+    //   516: aload_1
+    //   517: invokevirtual 986	java/util/ArrayList:size	()I
+    //   520: iconst_2
+    //   521: if_icmpne +21 -> 542
+    //   524: ldc_w 988
+    //   527: aload_1
+    //   528: iconst_0
+    //   529: invokevirtual 991	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   532: invokevirtual 38	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   535: ifne +7 -> 542
+    //   538: iconst_0
+    //   539: putstatic 25	com/tencent/mobileqq/activity/SplashActivity:jdField_a_of_type_Boolean	Z
+    //   542: getstatic 23	com/tencent/mobileqq/activity/SplashActivity:jdField_a_of_type_Int	I
+    //   545: iconst_1
+    //   546: if_icmpne -364 -> 182
+    //   549: aload_3
+    //   550: invokestatic 996	awzg:a	(Landroid/content/Intent;)Lawze;
+    //   553: astore_1
+    //   554: aload_1
+    //   555: ifnull -373 -> 182
+    //   558: aload_1
+    //   559: aload_0
+    //   560: getfield 107	com/tencent/mobileqq/activity/SplashActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   563: aload_0
+    //   564: invokevirtual 1000	com/tencent/mobileqq/activity/SplashActivity:getActivity	()Landroid/app/Activity;
+    //   567: invokevirtual 1005	awze:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Landroid/content/Context;)Z
+    //   570: pop
+    //   571: goto -389 -> 182
+    //   574: iconst_0
+    //   575: istore_2
+    //   576: goto -192 -> 384
+    //   579: astore_3
+    //   580: goto -522 -> 58
+    //   583: astore_1
+    //   584: goto -247 -> 337
+    //   587: iconst_0
+    //   588: ireturn
+    //   589: iconst_0
+    //   590: istore_2
+    //   591: goto -574 -> 17
+    //   594: iconst_1
+    //   595: istore_2
+    //   596: goto -212 -> 384
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	599	0	this	SplashActivity
+    //   0	599	1	paramBundle	Bundle
+    //   16	580	2	i	int
+    //   32	518	3	localObject	Object
+    //   579	1	3	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   0	15	170	java/lang/Exception
+    //   21	52	170	java/lang/Exception
+    //   58	62	170	java/lang/Exception
+    //   62	115	170	java/lang/Exception
+    //   115	133	170	java/lang/Exception
+    //   135	150	170	java/lang/Exception
+    //   154	168	170	java/lang/Exception
+    //   184	195	170	java/lang/Exception
+    //   199	214	170	java/lang/Exception
+    //   214	237	170	java/lang/Exception
+    //   237	285	170	java/lang/Exception
+    //   289	304	170	java/lang/Exception
+    //   304	309	170	java/lang/Exception
+    //   337	381	170	java/lang/Exception
+    //   388	420	170	java/lang/Exception
+    //   420	487	170	java/lang/Exception
+    //   487	538	170	java/lang/Exception
+    //   538	542	170	java/lang/Exception
+    //   542	554	170	java/lang/Exception
+    //   558	571	170	java/lang/Exception
+    //   52	58	579	java/lang/Exception
+    //   309	337	583	java/lang/Exception
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
     if (QLog.isColorLevel()) {
@@ -653,10 +1147,13 @@ public class SplashActivity
     {
       unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
       this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-      if (QQPlayerService.a()) {
+      if (QQPlayerService.a())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SplashActivity", 2, "QQPlayerService stopPlayMusic");
+        }
         QQPlayerService.c(getApplicationContext());
       }
-      ApolloGameWrapper.d(this);
       a();
       return;
     }
@@ -669,7 +1166,7 @@ public class SplashActivity
     }
   }
   
-  protected boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     Object localObject;
     Fragment localFragment;
@@ -705,7 +1202,7 @@ public class SplashActivity
         }
       }
     }
-    if (((paramInt == 24) || (paramInt == 25)) && (VideoItemEventManager.a(this).a()))
+    if (((paramInt == 24) || (paramInt == 25)) && (aswy.a(this).a()))
     {
       localObject = new Intent();
       ((Intent)localObject).setAction("VolumeBtnDown");
@@ -714,60 +1211,83 @@ public class SplashActivity
     return super.doOnKeyDown(paramInt, paramKeyEvent);
   }
   
-  protected void doOnNewIntent(Intent paramIntent)
+  public void doOnNewIntent(Intent paramIntent)
   {
-    super.doOnNewIntent(paramIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("SplashActivity", 2, "doOnNewIntent");
-    }
-    if (a()) {
-      finish();
-    }
-    Object localObject;
-    do
+    try
     {
-      do
+      super.doOnNewIntent(paramIntent);
+      if (QLog.isColorLevel()) {
+        QLog.d("SplashActivity", 2, "doOnNewIntent");
+      }
+      if (a())
       {
-        do
-        {
+        finish();
+        return;
+      }
+      localObject = paramIntent.getAction();
+      if ((localObject != null) && ("QQ_ACTION_MENU_QUIT".equals(localObject)))
+      {
+        finish();
+        return;
+      }
+    }
+    catch (Exception paramIntent)
+    {
+      QLog.e("SplashActivity", 2, paramIntent, new Object[0]);
+      return;
+    }
+    Object localObject = paramIntent.getExtras();
+    if (paramIntent.getIntExtra("fromCmGame", 0) == 1) {
+      overridePendingTransition(0, 0);
+    }
+    int i = getIntent().getIntExtra("uintype", -1);
+    if (i == 10005)
+    {
+      getIntent().removeExtra("uintype");
+      QLog.e("SplashActivity", 1, "wtf 10005 aio" + paramIntent);
+    }
+    if ((i != 10005) && (localObject != null))
+    {
+      if (a(paramIntent)) {
+        return;
+      }
+      if (Boolean.valueOf(((Bundle)localObject).getBoolean("EXIT", false)).booleanValue()) {
+        finish();
+      }
+      if (((Bundle)localObject).getBoolean("activepull_push_flag"))
+      {
+        setIntent(paramIntent);
+        a(paramIntent);
+        return;
+      }
+      if ((((Bundle)localObject).getInt("fragment_id") == 1) && (jdField_a_of_type_Int != 1))
+      {
+        setIntent(paramIntent);
+        b(paramIntent);
+        paramIntent = awzg.a(paramIntent);
+        if (paramIntent == null) {
           return;
-          localObject = paramIntent.getAction();
-          if ((localObject != null) && ("QQ_ACTION_MENU_QUIT".equals(localObject)))
-          {
-            finish();
-            return;
-          }
-          localObject = paramIntent.getExtras();
-          if (paramIntent.getIntExtra("fromCmGame", 0) == 1) {
-            overridePendingTransition(0, 0);
-          }
-          if (localObject == null) {
-            break;
-          }
-        } while (a(paramIntent));
-        if (Boolean.valueOf(((Bundle)localObject).getBoolean("EXIT", false)).booleanValue()) {
-          finish();
         }
-        if (((Bundle)localObject).getBoolean("activepull_push_flag"))
-        {
-          setIntent(paramIntent);
-          a(paramIntent);
-          return;
-        }
-        if ((((Bundle)localObject).getInt("fragment_id") == 1) && (jdField_a_of_type_Int != 1))
-        {
-          setIntent(paramIntent);
-          b(paramIntent);
-          return;
-        }
-      } while (jdField_a_of_type_Int != 1);
+        paramIntent.a(this.app, getActivity());
+        return;
+      }
+    }
+    if (jdField_a_of_type_Int == 1)
+    {
       localObject = (MainFragment)getSupportFragmentManager().findFragmentByTag(MainFragment.class.getName());
-    } while (localObject == null);
-    setIntent(paramIntent);
-    ((MainFragment)localObject).a(paramIntent);
+      if (localObject != null)
+      {
+        setIntent(paramIntent);
+        ((MainFragment)localObject).a(paramIntent);
+        paramIntent = awzg.a(paramIntent);
+        if (paramIntent != null) {
+          paramIntent.a(this.app, getActivity());
+        }
+      }
+    }
   }
   
-  protected void doOnPause()
+  public void doOnPause()
   {
     if (isInMultiWindow())
     {
@@ -776,7 +1296,7 @@ public class SplashActivity
       if ((localFragment != null) && (localFragment.isVisible()))
       {
         localObject = (ChatFragment)localFragment;
-        ((ChatFragment)localFragment).e();
+        ((ChatFragment)localFragment).g();
       }
       do
       {
@@ -784,176 +1304,195 @@ public class SplashActivity
         localFragment = ((FragmentManager)localObject).findFragmentByTag(MainFragment.class.getName());
       } while (localFragment == null);
       ((MainFragment)localFragment).k();
+      super.doOnPause();
       return;
     }
     super.doOnPause();
     AbstractVideoImage.pauseAll();
     ApngImage.pauseAll();
-    ApolloGameWrapper.b(this);
   }
   
-  protected void doOnResume()
+  public void doOnResume()
   {
     boolean bool2 = true;
-    super.doOnResume();
-    AbstractVideoImage.resumeAll();
-    if (QLog.isColorLevel()) {
-      QLog.d("SplashActivity", 2, "doOnResume");
-    }
-    d();
-    Object localObject1 = getWindow();
-    if ((((Window)localObject1).getAttributes().flags & 0x400) != 0) {
-      ((Window)localObject1).clearFlags(1024);
-    }
-    if (this.app.getKickIntent() != null)
+    ArrayList localArrayList;
+    Object localObject3;
+    boolean bool1;
+    try
     {
-      QLog.d("SplashActivity", 1, "doOnResume finish, kickIntent exists");
-      startActivity(this.app.getKickIntent());
-    }
-    label710:
-    do
-    {
-      Object localObject2;
-      do
+      super.doOnResume();
+      AbstractVideoImage.resumeAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("SplashActivity", 2, "doOnResume");
+      }
+      d();
+      localObject1 = getWindow();
+      if ((((Window)localObject1).getAttributes().flags & 0x400) != 0) {
+        ((Window)localObject1).clearFlags(1024);
+      }
+      if (this.app.getKickIntent() != null)
       {
+        QLog.d("SplashActivity", 1, "doOnResume finish, kickIntent exists");
+        startActivity(this.app.getKickIntent());
         return;
-        c(getIntent());
-        Object localObject7 = this.app.getDevLockIntent();
-        String str3;
-        String str4;
-        String str2;
-        String str1;
-        boolean bool1;
-        if (localObject7 != null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("SplashActivity", 2, "onResume start push");
-          }
-          localObject2 = "";
-          localObject5 = "";
-          str3 = "";
-          str4 = "";
-          localObject6 = new ArrayList();
-          str2 = str4;
-          str1 = str3;
-          localObject1 = localObject5;
-          bool1 = bool2;
-        }
-        try
-        {
-          localObject3 = ((Intent)localObject7).getStringExtra("tipMsg");
-          str2 = str4;
-          str1 = str3;
-          localObject1 = localObject5;
-          bool1 = bool2;
-          localObject2 = localObject3;
-          bool2 = ((Intent)localObject7).getBooleanExtra("canCancel", true);
-          str2 = str4;
-          str1 = str3;
-          localObject1 = localObject5;
-          bool1 = bool2;
-          localObject2 = localObject3;
-          localObject5 = ((Intent)localObject7).getStringExtra("title");
-          str2 = str4;
-          str1 = str3;
-          localObject1 = localObject5;
-          bool1 = bool2;
-          localObject2 = localObject3;
-          str3 = ((Intent)localObject7).getStringExtra("secondTitle");
-          str2 = str4;
-          str1 = str3;
-          localObject1 = localObject5;
-          bool1 = bool2;
-          localObject2 = localObject3;
-          str4 = ((Intent)localObject7).getStringExtra("thirdTitle");
-          str2 = str4;
-          str1 = str3;
-          localObject1 = localObject5;
-          bool1 = bool2;
-          localObject2 = localObject3;
-          localObject7 = ((Intent)localObject7).getStringArrayListExtra("wordsList");
-          localObject6 = localObject7;
-          localObject2 = localObject3;
-          bool1 = bool2;
-          localObject1 = localObject5;
-          str1 = str3;
-          str2 = str4;
-          localObject3 = localObject6;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            Object localObject3;
-            Fragment localFragment;
-            Object localObject4 = localObject6;
-          }
-        }
-        Object localObject5 = new Intent(this, DevlockPushActivity.class);
-        ((Intent)localObject5).putExtra("canCancel", bool1);
-        ((Intent)localObject5).putExtra("tipMsg", (String)localObject2);
-        ((Intent)localObject5).putExtra("title", (String)localObject1);
-        ((Intent)localObject5).putExtra("secondTitle", str1);
-        ((Intent)localObject5).putExtra("thirdTitle", str2);
-        ((Intent)localObject5).putStringArrayListExtra("wordsList", (ArrayList)localObject3);
-        startActivity((Intent)localObject5);
-        if ((!this.app.isLogin()) || (!this.app.getAccount().equals(BaseApplicationImpl.getApplication().getPCActiveUin()))) {
-          break;
-        }
+      }
+      c(getIntent());
+      localObject8 = this.app.getDevLockIntent();
+      if (localObject8 != null)
+      {
         if (QLog.isColorLevel()) {
           QLog.d("SplashActivity", 2, "onResume start push");
         }
-      } while (!isResume());
-      localObject1 = BaseApplicationImpl.getApplication().getPCActiveNoticeIntent();
-      if (localObject1 == null) {
-        if (QLog.isColorLevel()) {
-          QLog.i("SplashActivity", 2, "Intent is null");
-        }
+        localObject5 = "";
+        localObject7 = "";
+        str2 = "";
+        str3 = "";
+        localArrayList = new ArrayList();
+        localObject1 = str3;
+        localObject3 = str2;
+        localObject4 = localObject7;
+        bool1 = bool2;
       }
+    }
+    catch (Exception localException1)
+    {
+      Object localObject1;
+      Object localObject8;
+      Object localObject5;
+      Object localObject7;
+      String str2;
+      String str3;
+      Object localObject4;
+      String str1;
+      QLog.e("SplashActivity", 2, localException1, new Object[0]);
+      return;
+    }
+    try
+    {
+      str1 = ((Intent)localObject8).getStringExtra("tipMsg");
+      localObject1 = str3;
+      localObject3 = str2;
+      localObject4 = localObject7;
+      bool1 = bool2;
+      localObject5 = str1;
+      bool2 = ((Intent)localObject8).getBooleanExtra("canCancel", true);
+      localObject1 = str3;
+      localObject3 = str2;
+      localObject4 = localObject7;
+      bool1 = bool2;
+      localObject5 = str1;
+      localObject7 = ((Intent)localObject8).getStringExtra("title");
+      localObject1 = str3;
+      localObject3 = str2;
+      localObject4 = localObject7;
+      bool1 = bool2;
+      localObject5 = str1;
+      str2 = ((Intent)localObject8).getStringExtra("secondTitle");
+      localObject1 = str3;
+      localObject3 = str2;
+      localObject4 = localObject7;
+      bool1 = bool2;
+      localObject5 = str1;
+      str3 = ((Intent)localObject8).getStringExtra("thirdTitle");
+      localObject1 = str3;
+      localObject3 = str2;
+      localObject4 = localObject7;
+      bool1 = bool2;
+      localObject5 = str1;
+      localObject8 = ((Intent)localObject8).getStringArrayListExtra("wordsList");
+      localObject5 = str1;
+      localObject4 = localObject7;
+      str1 = str2;
+      localObject3 = str3;
+      localObject1 = localObject8;
+    }
+    catch (Exception localException2)
+    {
       for (;;)
       {
-        StartupTracker.a(null, "Main_Resume_PCActive");
-        if ((!TextUtils.isEmpty(this.app.getAccount())) && (!"0".equals(this.app.getAccount()))) {
-          ThreadManager.getSubThreadHandler().postDelayed(new ttm(this), 800L);
-        }
-        StartupTracker.a("Main_Resume_PCActive", null);
-        ThreadManager.getSubThreadHandler().postDelayed(new ttn(this), 800L);
-        ApolloGameWrapper.a(this);
-        localObject1 = getIntent();
-        if ((((Intent)localObject1).getExtras() != null) && (((Intent)localObject1).getBooleanExtra(MessageConstants.h, false)))
-        {
-          ((Intent)localObject1).removeExtra(MessageConstants.h);
-          ThreadManager.post(new tto(this), 8, null, false);
-        }
-        if (!isInMultiWindow()) {
-          break;
-        }
-        localObject2 = getSupportFragmentManager();
-        localObject1 = ((FragmentManager)localObject2).findFragmentByTag(ChatFragment.class.getName());
-        if ((localObject1 == null) || (!((Fragment)localObject1).isVisible())) {
-          break label710;
-        }
-        localObject2 = (ChatFragment)localObject1;
-        ((ChatFragment)localObject1).e();
-        return;
+        Object localObject6 = localObject3;
+        localObject3 = localException1;
+        Object localObject2 = localArrayList;
+        bool2 = bool1;
+        break;
         try
         {
           if ((NotifyPCActiveActivity.a != null) || (!(BaseActivity.sTopActivity instanceof SplashActivity))) {
-            continue;
+            break label484;
           }
-          startActivity((Intent)localObject1);
+          startActivity(localObject2);
         }
         catch (Throwable localThrowable) {}
-        if (QLog.isColorLevel()) {
-          QLog.i("SplashActivity", 2, "", localThrowable);
-        }
       }
-      localFragment = ((FragmentManager)localObject2).findFragmentByTag(MainFragment.class.getName());
-    } while (localFragment == null);
-    ((MainFragment)localFragment).k();
+      if (!QLog.isColorLevel()) {
+        break label484;
+      }
+      QLog.i("SplashActivity", 2, "", localThrowable);
+      break label484;
+      Fragment localFragment = ((FragmentManager)localObject3).findFragmentByTag(MainFragment.class.getName());
+      if (localFragment == null) {
+        break label657;
+      }
+      ((MainFragment)localFragment).k();
+      break label657;
+    }
+    localObject7 = new Intent(this, DevlockPushActivity.class);
+    ((Intent)localObject7).putExtra("canCancel", bool2);
+    ((Intent)localObject7).putExtra("tipMsg", (String)localObject5);
+    ((Intent)localObject7).putExtra("title", localObject4);
+    ((Intent)localObject7).putExtra("secondTitle", str1);
+    ((Intent)localObject7).putExtra("thirdTitle", (String)localObject3);
+    ((Intent)localObject7).putStringArrayListExtra("wordsList", (ArrayList)localObject1);
+    startActivity((Intent)localObject7);
+    if ((this.app.isLogin()) && (this.app.getAccount().equals(BaseApplicationImpl.getApplication().getPCActiveUin())))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SplashActivity", 2, "onResume start push");
+      }
+      if (!isResume()) {
+        return;
+      }
+      localObject1 = BaseApplicationImpl.getApplication().getPCActiveNoticeIntent();
+      if (localObject1 != null) {
+        break label691;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("SplashActivity", 2, "Intent is null");
+      }
+    }
+    label484:
+    bdnm.a(null, "Main_Resume_PCActive");
+    if ((!TextUtils.isEmpty(this.app.getAccount())) && (!"0".equals(this.app.getAccount()))) {
+      ThreadManager.getSubThreadHandler().postDelayed(new SplashActivity.3(this), 800L);
+    }
+    bdnm.a("Main_Resume_PCActive", null);
+    ThreadManager.getSubThreadHandler().postDelayed(new SplashActivity.4(this), 800L);
+    localObject1 = getIntent();
+    if ((((Intent)localObject1).getExtras() != null) && (((Intent)localObject1).getBooleanExtra(ayzs.h, false)))
+    {
+      ((Intent)localObject1).removeExtra(ayzs.h);
+      ThreadManager.post(new SplashActivity.5(this), 8, null, false);
+    }
+    if (isInMultiWindow())
+    {
+      localObject3 = getSupportFragmentManager();
+      localObject1 = ((FragmentManager)localObject3).findFragmentByTag(ChatFragment.class.getName());
+      if ((localObject1 != null) && (((Fragment)localObject1).isVisible()))
+      {
+        localObject3 = (ChatFragment)localObject1;
+        ((ChatFragment)localObject1).g();
+      }
+    }
+    else
+    {
+      label657:
+      zhx.d();
+      return;
+    }
+    label691:
   }
   
-  protected void doOnStart()
+  public void doOnStart()
   {
     super.doOnStart();
     if (QLog.isColorLevel()) {
@@ -961,22 +1500,21 @@ public class SplashActivity
     }
     if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0) && ("pakage_from_h5".equalsIgnoreCase(this.jdField_b_of_type_JavaLangString)))
     {
-      JumpAction localJumpAction = JumpParser.a(this.app, this, this.jdField_a_of_type_JavaLangString);
-      localJumpAction.b(this.jdField_b_of_type_JavaLangString);
-      localJumpAction.b();
+      bdhk localbdhk = bdib.a(this.app, this, this.jdField_a_of_type_JavaLangString);
+      localbdhk.b(this.jdField_b_of_type_JavaLangString);
+      localbdhk.c();
       this.jdField_a_of_type_JavaLangString = null;
       this.jdField_b_of_type_JavaLangString = null;
     }
   }
   
-  protected void doOnStop()
+  public void doOnStop()
   {
     if (isInMultiWindow())
     {
       super.doOnPause();
       AbstractVideoImage.pauseAll();
       ApngImage.pauseAll();
-      ApolloGameWrapper.c(this);
       super.doOnStop();
       return;
     }
@@ -997,7 +1535,6 @@ public class SplashActivity
       }
       localFragmentManager.beginTransaction().remove(localFragment).commitAllowingStateLoss();
     }
-    ApolloGameWrapper.d(this);
     super.finish();
     if ((jdField_a_of_type_JavaLangRefWeakReference != null) && (jdField_a_of_type_JavaLangRefWeakReference.get() == this)) {
       jdField_a_of_type_JavaLangRefWeakReference = null;
@@ -1038,7 +1575,7 @@ public class SplashActivity
     return localComponentName1;
   }
   
-  protected String getPreProcess()
+  public String getPreProcess()
   {
     return "com.tencent.mobileqq:peak";
   }
@@ -1048,12 +1585,12 @@ public class SplashActivity
     return true;
   }
   
-  protected boolean isWrapContent()
+  public boolean isWrapContent()
   {
     return false;
   }
   
-  protected void onAccountChanged()
+  public void onAccountChanged()
   {
     super.onAccountChanged();
     Object localObject = getSupportFragmentManager();
@@ -1063,12 +1600,13 @@ public class SplashActivity
     }
     localObject = ((FragmentManager)localObject).findFragmentByTag(ChatFragment.class.getName());
     if (localObject != null) {
-      ((ChatFragment)localObject).a();
+      ((ChatFragment)localObject).b();
     }
-    AIOConfigManager.a(this.app);
+    aeow.a(this.app);
+    aznk.a(BaseApplicationImpl.getContext(), this.app.getLongAccountUin());
   }
   
-  protected void onAccoutChangeFailed()
+  public void onAccoutChangeFailed()
   {
     super.onAccoutChangeFailed();
     Fragment localFragment = getSupportFragmentManager().findFragmentByTag(MainFragment.class.getName());
@@ -1098,7 +1636,7 @@ public class SplashActivity
     return null;
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     super.onDestroy();
     if ((jdField_a_of_type_JavaLangRefWeakReference != null) && (jdField_a_of_type_JavaLangRefWeakReference.get() == this)) {
@@ -1106,21 +1644,26 @@ public class SplashActivity
     }
   }
   
-  protected void onLogout(Constants.LogoutReason paramLogoutReason)
+  public void onLogout(Constants.LogoutReason paramLogoutReason)
   {
+    b();
     Fragment localFragment = getSupportFragmentManager().findFragmentByTag(MainFragment.class.getName());
     if (localFragment != null) {
       ((MainFragment)localFragment).a(paramLogoutReason);
     }
-    b();
   }
   
   public void onMultiWindowModeChanged(boolean paramBoolean)
   {
     super.onMultiWindowModeChanged(paramBoolean);
-    Fragment localFragment = getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+    Object localObject = getSupportFragmentManager();
+    Fragment localFragment = ((FragmentManager)localObject).findFragmentByTag(ChatFragment.class.getName());
     if (localFragment != null) {
       ((ChatFragment)localFragment).b(paramBoolean);
+    }
+    localObject = ((FragmentManager)localObject).findFragmentByTag(MainFragment.class.getName());
+    if (localObject != null) {
+      ((MainFragment)localObject).a(paramBoolean);
     }
   }
   
@@ -1134,7 +1677,7 @@ public class SplashActivity
     }
     localObject1 = ((FragmentManager)localObject1).findFragmentByTag(ChatFragment.class.getName());
     if (localObject1 != null) {
-      ((ChatFragment)localObject1).d();
+      ((ChatFragment)localObject1).e();
     }
     if (!"1000".equals(ThemeUtil.getCurrentThemeId()))
     {
@@ -1165,14 +1708,10 @@ public class SplashActivity
     {
       LayoutInflater localLayoutInflater = LayoutInflater.from(this);
       this.jdField_a_of_type_ArrayOfAndroidViewView = MainFragment.a(localLayoutInflater);
-      this.jdField_a_of_type_AndroidViewView = localLayoutInflater.inflate(2130968827, null);
-      FPSSwipListView localFPSSwipListView = (FPSSwipListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363972);
+      this.jdField_a_of_type_AndroidViewView = localLayoutInflater.inflate(2131558903, null);
+      FPSSwipListView localFPSSwipListView = (FPSSwipListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375391);
       if (localFPSSwipListView != null) {
-        this.jdField_b_of_type_AndroidViewView = localLayoutInflater.inflate(2130971518, localFPSSwipListView, false);
-      }
-      PokeItemHelper.b();
-      if (PokeItemHelper.b) {
-        PokeItemHelper.b(this.app, 4);
+        this.jdField_b_of_type_AndroidViewView = localLayoutInflater.inflate(2131562583, localFPSSwipListView, false);
       }
       return;
     }
@@ -1182,13 +1721,13 @@ public class SplashActivity
     }
   }
   
-  protected void requestWindowFeature(Intent paramIntent)
+  public void requestWindowFeature(Intent paramIntent)
   {
     super.requestWindowFeature(paramIntent);
     super.getWindow().setFormat(-3);
   }
   
-  protected String setLastActivityName()
+  public String setLastActivityName()
   {
     Fragment localFragment = getSupportFragmentManager().findFragmentByTag(MainFragment.class.getName());
     if (localFragment != null) {

@@ -1,19 +1,31 @@
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
-
 public class aeqr
-  implements Runnable
 {
-  public aeqr(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void run()
+  public aeqr(String paramString)
   {
-    ChooseInterestTagActivity.a(this.a).fullScroll(66);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1615" android:background="#66000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1616" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a150d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:shadowColor="#cd000000" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="12.0" />
-        <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1617" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0208b2" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginTop="17.0dip" android:text="点击重试" />
-    </LinearLayout>
-</RelativeLayout>

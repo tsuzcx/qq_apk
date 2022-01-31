@@ -1,5 +1,5 @@
 {
-  "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+  "class": "com.tencent.ditto.widget.LinearAreaLayout",
   "shell": {
     "id":"canvas_feed_content_view",
     "width": "match_parent",
@@ -8,7 +8,7 @@
   },
   "children": [
     {
-      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
       "shell": {
         "id":"feed_content_normal_title",
         "width": "match_parent",
@@ -22,7 +22,7 @@
       }
     },
     {
-      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
       "shell": {
         "id":"feed_content_normal_summary",
         "width": "match_parent",
@@ -35,7 +35,7 @@
       }
     },
     {
-      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
       "shell": {
         "id":"feed_content_bizRecom_summary",
         "width": "match_parent",
@@ -48,7 +48,7 @@
       }
     },
     {
-      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
       "shell": {
         "id":"feed_content_bizReco_title",
         "width": "match_parent",
@@ -63,7 +63,7 @@
     },
 
     {
-      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
       "shell": {
         "id":"feed_content_superlike_summary",
         "width": "match_parent",
@@ -77,7 +77,7 @@
       }
     },
     {
-      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
       "shell": {
         "id":"feed_content_picInfo_display",
         "width": "match_parent",
@@ -91,7 +91,7 @@
       }
     },
     {
-      "Area": "com.qzone.canvasui.widget.CanvasImageArea",
+      "class": "com.tencent.ditto.widget.DittoImageArea",
       "shell": {
         "id": "feed_content_no_photo_mode",
         "width": "wrap_content",
@@ -101,7 +101,7 @@
       }
     },
     {
-      "Area": "com.qzone.canvasui.widget.CanvasMultiGifArea",
+      "class": "com.qzone.canvasui.widget.CanvasMultiGifArea",
       "shell": {
         "id": "feed_content_comment_pic",
         "width": "match_parent",
@@ -113,7 +113,7 @@
     },
 
     {
-      "Area": "com.qzone.canvasui.widget.FeedDynamicAlbumCanvasArea",
+      "class": "com.qzone.canvasui.widget.FeedDynamicAlbumCanvasArea",
       "shell": {
         "id": "feed_content_dynamic_album",
         "width": "match_parent",
@@ -124,7 +124,7 @@
       }
     },
     {
-      "Area": "com.qzone.canvasui.widget.FeedSinglePicCanvasArea",
+      "class": "com.qzone.canvasui.widget.FeedSinglePicCanvasArea",
       "shell": {
         "id": "feed_content_singal_pic",
         "width": "match_parent",
@@ -135,7 +135,7 @@
       }
     },
      {
-      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
       "shell": {
         "id":"feed_content_logo_attach_text",
         "width": "wrap_content",
@@ -150,7 +150,7 @@
       }
     },
     {
-      "Area": "com.qzone.canvasui.widget.CanvasMultiGifArea",
+      "class": "com.qzone.canvasui.widget.CanvasMultiGifArea",
       "shell": {
         "id": "feed_content_multi_pic",
         "width": "match_parent",

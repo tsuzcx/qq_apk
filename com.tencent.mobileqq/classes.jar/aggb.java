@@ -1,39 +1,29 @@
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
-import com.tencent.mobileqq.ar.ARTarget;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.immersion.stickersampleapp.HapticManager;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
 public class aggb
-  implements Runnable
+  implements afkw
 {
-  public aggb(ScanTorchActivity paramScanTorchActivity, ARTarget paramARTarget) {}
+  public aggb(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void run()
+  public void a()
   {
-    ScanTorchActivity.i(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
-    ScanTorchActivity.j(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
-    ScanTorchActivity.k(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
-    ScanTorchActivity.c(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, false);
-    if (((!ARVideoRecordUIControllerImpl.a().a()) || (ARVideoRecordUIControllerImpl.a().b())) && (!this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.a()) && (!this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.c()) && (!this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.b()))
+    UnlimitedBladeWorks.a(this.a).b = true;
+    UnlimitedBladeWorks.a(this.a).a = false;
+    if (UnlimitedBladeWorks.a(this.a) != null)
     {
-      ARVideoRecordUIControllerImpl.a().c();
-      ARVideoRecordUIControllerImpl.a().e();
-      QLog.d("ScanTorchActivity", 1, "onARAnimationStateChanged, ARVideoRecordUIControllerImpl isVideoRecordRunning false");
-      return;
+      UnlimitedBladeWorks.a(this.a).a();
+      if (UnlimitedBladeWorks.b(this.a))
+      {
+        HapticManager.a().c(UnlimitedBladeWorks.a(this.a));
+        UnlimitedBladeWorks.a(this.a, 0);
+      }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.a())
-    {
-      ARVideoRecordUIControllerImpl.a().d();
-      QLog.d("ScanTorchActivity", 1, "onARAnimationStateChanged, ARVideoRecordUIControllerImpl bin hai not show");
-      return;
-    }
-    QLog.d("ScanTorchActivity", 1, "onARAnimationStateChanged, ARVideoRecordUIControllerImpl isVideoRecordRunning true");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aggb
  * JD-Core Version:    0.7.0.1
  */

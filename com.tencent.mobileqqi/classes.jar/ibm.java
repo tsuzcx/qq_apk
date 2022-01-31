@@ -1,19 +1,15 @@
-import com.tencent.widget.TCWNumberPicker.Formatter;
-import java.util.Formatter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qqfav.widget.LocationDetailActivity;
 
-public final class ibm
-  implements TCWNumberPicker.Formatter
+public class ibm
+  implements View.OnClickListener
 {
-  final StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-  final Formatter jdField_a_of_type_JavaUtilFormatter = new Formatter(this.jdField_a_of_type_JavaLangStringBuilder);
-  final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[1];
+  public ibm(LocationDetailActivity paramLocationDetailActivity) {}
   
-  public String a(int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangObject[0] = Integer.valueOf(paramInt);
-    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
-    this.jdField_a_of_type_JavaUtilFormatter.format("%02d", this.jdField_a_of_type_ArrayOfJavaLangObject);
-    return this.jdField_a_of_type_JavaUtilFormatter.toString();
+    this.a.onBackPressed();
   }
 }
 

@@ -1,36 +1,46 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import java.util.Comparator;
+import android.media.MediaPlayer;
+import android.os.Handler;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 
 public class lfk
-  implements Comparator
+  extends lfv
 {
-  public lfk(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
-  
-  public int a(lft paramlft1, lft paramlft2)
+  public lfk(VideoController paramVideoController)
   {
-    int j = 2147483647;
-    int i;
-    if (TextUtils.isEmpty(lft.a(paramlft1)))
+    super(paramVideoController);
+  }
+  
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    if (this.jdField_a_of_type_ComTencentAvVideoController.c != null)
     {
-      i = 2147483647;
-      if (!TextUtils.isEmpty(lft.a(paramlft2))) {
-        break label44;
+      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_ComTencentAvVideoController.c);
+      this.jdField_a_of_type_ComTencentAvVideoController.c = null;
+    }
+    lek.d(VideoController.jdField_a_of_type_JavaLangString, "onCompletion onCloseDoubleVideoMeeting");
+    if (this.jdField_a_of_type_ComTencentAvVideoController.a().K)
+    {
+      if (paramMediaPlayer != null) {
+        paramMediaPlayer.release();
       }
+      long l = this.jdField_a_of_type_ComTencentAvVideoController.a().g;
+      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), String.valueOf(l), Boolean.valueOf(true) });
+      this.jdField_a_of_type_ComTencentAvVideoController.a(3, l, 85);
+      this.jdField_a_of_type_ComTencentAvVideoController.a().c("OnCloseDoubleVideoMeetingListener", false);
+      this.jdField_a_of_type_ComTencentAvVideoController.a().d("OnCloseDoubleVideoMeetingListener", false);
     }
     for (;;)
     {
-      return i - j;
-      i = lft.a(paramlft1).codePointAt(0);
-      break;
-      label44:
-      j = lft.a(paramlft2).codePointAt(0);
+      this.jdField_a_of_type_Long = 0L;
+      return;
+      lek.e(VideoController.jdField_a_of_type_JavaLangString, "mOnCloseDoubleVideoMeetingListener-->Is not in doubleMeetingRoom");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lfk
  * JD-Core Version:    0.7.0.1
  */

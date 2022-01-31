@@ -1,31 +1,42 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: QQ安全中心_6.7.2.apk
+apkFileName: QQ安全中心_6.9.15.apk
 compressionType: false
 doNotCompress:
 - resources.arsc
+- META-INF/android.arch.core_runtime.version
+- META-INF/android.arch.lifecycle_livedata-core.version
+- META-INF/android.arch.lifecycle_runtime.version
+- META-INF/android.arch.lifecycle_viewmodel.version
+- META-INF/com.android.support_animated-vector-drawable.version
+- META-INF/com.android.support_appcompat-v7.version
+- META-INF/com.android.support_support-compat.version
+- META-INF/com.android.support_support-core-ui.version
+- META-INF/com.android.support_support-core-utils.version
+- META-INF/com.android.support_support-fragment.version
+- META-INF/com.android.support_support-vector-drawable.version
 - assets/KingkongPatch.apk
 - assets/channel.ini
+- assets/licence.conf
 - png
-- mp3
-- wav
 - jpg
+- wav
+- mp3
 isFrameworkApk: false
 packageInfo:
   forcedPackageId: '127'
   renameManifestPackage: null
 sdkInfo:
-  minSdkVersion: '9'
-  targetSdkVersion: '9'
+  minSdkVersion: '14'
+  targetSdkVersion: '27'
 sharedLibrary: false
 sparseResources: false
 unknownFiles:
-  com/qq/jce/wup/wup.properties: '8'
-  src/com/qq/jce/wup/wup.properties: '8'
+  okhttp3/internal/publicsuffix/publicsuffixes: '8'
 usesFramework:
   ids:
   - 1
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '70'
-  versionName: 6.7.2
+  versionCode: '99'
+  versionName: 6.9.15

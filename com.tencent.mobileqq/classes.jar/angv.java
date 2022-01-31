@@ -1,27 +1,22 @@
-import android.os.Bundle;
-import android.os.Process;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.graytip.UniteGrayTipParam;
-import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
-import com.tencent.mobileqq.service.message.MessageCache;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.ar.view.ARScanEntryView.26;
 
-public final class angv
-  implements Runnable
+public class angv
+  implements View.OnClickListener
 {
-  public angv(String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2, String paramString5, QQAppInterface paramQQAppInterface) {}
+  public angv(ARScanEntryView.26 param26) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Process.setThreadPriority(10);
-    UniteGrayTipParam localUniteGrayTipParam = new UniteGrayTipParam(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, -5023, 2424833, MessageCache.a());
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putInt("key_action", 1);
-    ((Bundle)localObject).putString("key_action_DATA", this.d);
-    localUniteGrayTipParam.a(this.jdField_b_of_type_Int, this.jdField_b_of_type_Int + this.e.length(), (Bundle)localObject);
-    localObject = new MessageForUniteGrayTip();
-    ((MessageForUniteGrayTip)localObject).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localUniteGrayTipParam);
-    UniteGrayTipUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject);
+    if (this.a.jdField_a_of_type_Amvj != null) {
+      this.a.jdField_a_of_type_Amvj.a(this.a.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo);
+    }
+    ARScanEntryView.g(this.a.this$0);
+    ARScanEntryView.d(this.a.this$0);
+    this.a.this$0.a.setOnClickListener(this.a.this$0);
   }
 }
 

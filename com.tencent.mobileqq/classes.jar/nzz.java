@@ -1,19 +1,24 @@
 import android.view.View;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class nzz
-  implements Runnable
+  implements bhuk
 {
-  public nzz(MystoryListView paramMystoryListView) {}
+  public nzz(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    MystoryListView.a(this.a).setVisibility(0);
+    ReadInJoySettingActivity.c(this.a).d(paramInt);
+    ((TextView)this.a.findViewById(2131371988)).setText(ReadInJoySettingActivity.a(this.a)[paramInt]);
+    ors.a(Integer.toString(paramInt));
+    nrt.a(null, "", "0X8007416", "0X8007416", 0, 0, Integer.toString(paramInt), "", "", "", false);
+    ReadInJoySettingActivity.c(this.a).cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nzz
  * JD-Core Version:    0.7.0.1
  */

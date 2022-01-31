@@ -1,24 +1,17 @@
-import com.tencent.mobileqq.dating.CarrierHelper;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-
 class abxf
-  implements Runnable
+  implements abxt
 {
   abxf(abxe paramabxe) {}
   
-  public void run()
+  public void a(auef paramauef, int paramInt)
   {
-    if (MsgBoxListActivity.a(this.a.a) != null)
-    {
-      MsgBoxListActivity.a(this.a.a).a(2, null);
-      MsgBoxListActivity.a(this.a.a);
-      MsgBoxListActivity.b(this.a.a);
-    }
+    this.a.a = paramauef;
+    abxe.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxf
  * JD-Core Version:    0.7.0.1
  */

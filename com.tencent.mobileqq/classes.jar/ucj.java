@@ -1,36 +1,51 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
+import com.tencent.qphone.base.util.QLog;
 
 class ucj
-  implements Runnable
+  implements yhs
 {
-  ucj(uci paramuci, Card paramCard) {}
+  ucj(uce paramuce) {}
   
-  public void run()
+  public void a()
   {
-    if (this.jdField_a_of_type_Uci.a.isFinishing()) {}
-    CardHandler localCardHandler;
-    do
+    QLog.d("QCircleBaseInputPopupWindow", 1, "onSoftKeyboardClosed");
+    if (uce.a(this.a))
     {
-      do
-      {
-        return;
-        if (this.jdField_a_of_type_ComTencentMobileqqDataCard != null) {
-          TroopRequestActivity.a(this.jdField_a_of_type_Uci.a, this.jdField_a_of_type_ComTencentMobileqqDataCard);
-        }
-      } while ((this.jdField_a_of_type_ComTencentMobileqqDataCard != null) && (this.jdField_a_of_type_ComTencentMobileqqDataCard.iQQLevel > 0));
-      localCardHandler = (CardHandler)this.jdField_a_of_type_Uci.a.app.a(2);
-    } while (localCardHandler == null);
-    byte b = (byte)SharedPreUtils.al(this.jdField_a_of_type_Uci.a.getApplication(), this.jdField_a_of_type_Uci.a.app.getCurrentAccountUin());
-    localCardHandler.a(this.jdField_a_of_type_Uci.a.app.getCurrentAccountUin(), this.jdField_a_of_type_Uci.a.b, 1, 0L, (byte)1, 0L, 0L, new byte[] { 0 }, "", 1L, 10004, new byte[] { 0 }, b);
+      uce.b(this.a, false);
+      if (uce.a(this.a) != null) {
+        uce.a(this.a).setVisibility(0);
+      }
+      if (uce.a(this.a) != null) {
+        uce.a(this.a).setVisibility(0);
+      }
+    }
+    for (;;)
+    {
+      uce.a(this.a, false);
+      return;
+      this.a.dismiss();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("QCircleBaseInputPopupWindow", 1, "onSoftKeyboardOpened");
+    if (uce.a(this.a) != paramInt)
+    {
+      uce.a(this.a, paramInt);
+      uce.a(this.a);
+      uce.a(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
+      uce.a(this.a).commit();
+    }
+    this.a.c();
+    uce.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ucj
  * JD-Core Version:    0.7.0.1
  */

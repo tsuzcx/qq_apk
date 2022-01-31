@@ -1,36 +1,64 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleView;
 
-public class ajcf
-  implements Animation.AnimationListener
+public abstract class ajcf
 {
-  public ajcf(TroopAioKeywordTipBar paramTroopAioKeywordTipBar, boolean paramBoolean) {}
+  protected Context a;
+  protected Rect a;
+  protected DoodleView a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public ajcf(DoodleView paramDoodleView)
   {
-    if (TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar) != null)
-    {
-      TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar).a.clearAnimation();
-      TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar).a.setVisibility(8);
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    if (paramDoodleView == null) {
+      throw new IllegalStateException("DoodleView can not be null.");
     }
-    TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar, false);
-    TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar, null);
-    TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar, null);
-    TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar, -1);
-    if ((!this.jdField_a_of_type_Boolean) && (!TroopAioKeywordTipBar.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar)))
-    {
-      ThreadManager.getUIHandler().post(TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar));
-      TroopAioKeywordTipBar.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar, true);
+    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView = paramDoodleView;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView.invalidate();
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public final void a(Canvas paramCanvas)
+  {
+    b(paramCanvas);
+  }
+  
+  public boolean a()
+  {
+    return b();
+  }
+  
+  public final boolean a(MotionEvent paramMotionEvent)
+  {
+    a();
+    return b(paramMotionEvent);
+  }
+  
+  protected abstract void b(Canvas paramCanvas);
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  protected abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

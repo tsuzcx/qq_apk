@@ -1,60 +1,104 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.View;
-import android.view.ViewStub;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.app.Application;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build.VERSION;
+import android.provider.Settings.Secure;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.MD5;
 
 public class abwn
-  implements Handler.Callback
 {
-  public abwn(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
+  private static int jdField_a_of_type_Int = -1;
+  private static String jdField_a_of_type_JavaLangString = "";
   
-  public boolean handleMessage(Message paramMessage)
+  public static String a(Application paramApplication)
   {
-    switch (paramMessage.what)
-    {
+    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
+      return jdField_a_of_type_JavaLangString;
     }
-    label216:
+    String str1 = "";
+    Context localContext = paramApplication.getApplicationContext();
+    Object localObject = str1;
+    if (a(paramApplication))
+    {
+      paramApplication = (TelephonyManager)localContext.getSystemService("phone");
+      String str2 = paramApplication.getDeviceId();
+      localObject = str1;
+      if (!TextUtils.isEmpty(str2)) {
+        localObject = "" + str2;
+      }
+      str1 = paramApplication.getSubscriberId();
+      if (TextUtils.isEmpty(str1)) {
+        break label170;
+      }
+      paramApplication = (String)localObject + str1;
+    }
     for (;;)
     {
-      return false;
-      if ((this.a.a()) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() != -1) || (paramMessage.obj == null)) {
-        break;
-      }
-      paramMessage = (List)paramMessage.obj;
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(paramMessage);
-      this.a.jdField_a_of_type_JavaUtilList.clear();
-      this.a.jdField_a_of_type_JavaUtilList.addAll(paramMessage);
-      this.a.b();
-      if (BaseMsgBoxActivity.a(this.a)) {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
-      for (;;)
+      localObject = paramApplication;
+      if (TextUtils.isEmpty(paramApplication))
       {
-        if (this.a.jdField_a_of_type_Boolean) {
-          break label216;
+        localObject = paramApplication;
+        if (Build.VERSION.SDK_INT >= 23) {
+          localObject = bhsp.b();
         }
-        this.a.jdField_a_of_type_AndroidViewViewStub.setVisibility(8);
-        this.a.jdField_a_of_type_Boolean = true;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("Q.msg_box", 2, "init ui cost time : " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
-        return false;
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        paramApplication = (Application)localObject;
+        if (!((String)localObject).startsWith("012345678912345")) {}
+      }
+      else
+      {
+        paramApplication = Settings.Secure.getString(localContext.getContentResolver(), "android_id");
+      }
+      jdField_a_of_type_JavaLangString = MD5.toMD5(paramApplication);
+      return jdField_a_of_type_JavaLangString;
+      label170:
+      str1 = paramApplication.getSimOperator();
+      paramApplication = (Application)localObject;
+      if (!TextUtils.isEmpty(str1)) {
+        paramApplication = (String)localObject + str1;
       }
     }
-    this.a.b = true;
+  }
+  
+  private static boolean a(Application paramApplication)
+  {
+    boolean bool = true;
+    if (jdField_a_of_type_Int == -1)
+    {
+      bool = a(paramApplication, "android.permission.READ_PHONE_STATE");
+      if (bool) {
+        jdField_a_of_type_Int = 1;
+      }
+    }
+    while (jdField_a_of_type_Int > 0) {
+      for (;;)
+      {
+        return bool;
+        jdField_a_of_type_Int = 0;
+      }
+    }
     return false;
+  }
+  
+  private static boolean a(Application paramApplication, String paramString)
+  {
+    if (paramApplication == null) {}
+    PackageManager localPackageManager;
+    do
+    {
+      return false;
+      localPackageManager = paramApplication.getPackageManager();
+    } while ((localPackageManager == null) || (localPackageManager.checkPermission(paramString, paramApplication.getPackageName()) != 0));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwn
  * JD-Core Version:    0.7.0.1
  */

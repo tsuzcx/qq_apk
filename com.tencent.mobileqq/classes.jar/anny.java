@@ -1,23 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.text.DynamicTextItem.TextMap;
+import java.util.HashMap;
 
-public final class anny
-  implements Parcelable.Creator
+public class anny
 {
-  public DynamicTextItem.TextMap a(Parcel paramParcel)
+  private static HashMap<String, annz> a = new HashMap();
+  
+  public static Object a(int paramInt, String paramString, Object paramObject1, Object paramObject2)
   {
-    return new DynamicTextItem.TextMap(paramParcel);
+    paramString = (annz)a.get(paramString);
+    if (paramString != null) {
+      paramObject2 = paramString.a(paramInt, paramObject1);
+    }
+    return paramObject2;
   }
   
-  public DynamicTextItem.TextMap[] a(int paramInt)
+  public static void a(String paramString)
   {
-    return new DynamicTextItem.TextMap[paramInt];
+    if (paramString != null) {
+      a.remove(paramString);
+    }
+  }
+  
+  public static void a(String paramString, annz paramannz)
+  {
+    if (paramString != null) {
+      a.put(paramString, paramannz);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anny
  * JD-Core Version:    0.7.0.1
  */

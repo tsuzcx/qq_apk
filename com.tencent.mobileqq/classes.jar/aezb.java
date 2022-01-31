@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnErrorListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
-
-class aezb
-  implements Runnable
+public abstract interface aezb
 {
-  aezb(aeza paramaeza) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void run()
-  {
-    if (this.a.a.a != null) {
-      this.a.a.a.a(this.a.a, 102, 201, 0, "", null);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void i();
+  
+  public abstract void j();
+  
+  public abstract void k();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aezb
  * JD-Core Version:    0.7.0.1
  */

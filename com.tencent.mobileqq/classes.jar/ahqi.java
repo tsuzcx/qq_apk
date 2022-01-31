@@ -1,83 +1,58 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.util.ZipUtils;
-import com.tencent.mobileqq.scribble.ScribbleResMgr;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.mobileim.structmsg.structmsg.GroupInfo;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-class ahqi
-  implements INetEngine.INetEngineListener
+public class ahqi
+  implements View.OnClickListener
 {
-  ahqi(ahqh paramahqh) {}
+  public ahqi(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public void onClick(View paramView)
   {
-    int j = 2;
-    QLog.i("ScribbleResMgr", 2, "DownloadResIcon onResp resp.mResult:  " + paramNetResp.jdField_a_of_type_Int);
-    int i = j;
-    Object localObject;
-    String str1;
-    String str2;
-    if (paramNetResp.jdField_a_of_type_Int == 0)
+    paramView = (ahpe)paramView.getTag();
+    if (paramView.a.msg.group_msg_type.get() == 80)
     {
-      localObject = "";
-      str1 = "";
-      if (this.a.jdField_a_of_type_Int == 3)
-      {
-        localObject = ScribbleResMgr.a(this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr);
-        str1 = ScribbleResMgr.b(this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr);
-      }
-      if (this.a.jdField_a_of_type_Int == 4)
-      {
-        localObject = ScribbleResMgr.c(this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr);
-        str1 = ScribbleResMgr.d(this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr);
-      }
-      str2 = FileUtils.b((String)localObject);
-      if ((TextUtils.isEmpty(str2)) || (!str2.equalsIgnoreCase(str1))) {
-        break label259;
-      }
-      str1 = ScribbleResMgr.a;
-      i = ZipUtils.a((String)localObject, str1);
-      if (i == 0) {
-        break label334;
-      }
-      QLog.e("ScribbleResMgr", 2, "unZipFolder  failed, filepath=" + (String)localObject + " destDir= " + str1 + " result: " + i);
+      paramView = TroopInfoActivity.a(String.valueOf(paramView.a.msg.group_code.get()), 5);
+      TroopInfoActivity.a(this.a.getActivity(), paramView);
+      return;
     }
-    label259:
-    label334:
-    for (i = 0;; i = 1)
+    if (!bdin.d(this.a.getActivity()))
     {
-      if (i != 0) {
-        i = 1;
+      QQToast.a(this.a.a, this.a.getActivity().getString(2131694766), 0).b(this.a.a());
+      return;
+    }
+    ((FriendListHandler)TroopSuspiciousFragment.a(this.a).a(1)).b(String.valueOf(paramView.a.req_uin.get()));
+    ahql.a((structmsg.StructMsg)paramView.a.get());
+    TroopSuspiciousFragment.a(this.a, (structmsg.StructMsg)paramView.a.get(), paramView.c);
+    String str1 = paramView.a.msg.group_info.msg_alert.get();
+    String str2 = paramView.a.msg.group_code.get() + "";
+    if ((str1 == null) || ("".equals(str1)))
+    {
+      TroopSuspiciousFragment.a(this.a, 1, (structmsg.StructMsg)paramView.a.get());
+      if ((paramView.a.msg.has()) && (paramView.a.msg.req_uin_nick.has())) {
+        ((TroopManager)TroopSuspiciousFragment.a(this.a).getManager(52)).b(str2, paramView.a.req_uin.get() + "", paramView.a.msg.req_uin_nick.get());
       }
-      for (;;)
-      {
-        if (paramNetResp.jdField_a_of_type_Int == 3) {
-          i = 4;
-        }
-        paramNetResp = new ScribbleResMgr.ResInfo();
-        paramNetResp.resType = this.a.jdField_a_of_type_Int;
-        paramNetResp.sourceId = 0;
-        ScribbleResMgr.a(this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr, paramNetResp, i);
-        return;
-        if (str2 == null) {}
-        for (localObject = "";; localObject = str2)
-        {
-          str2 = str1;
-          if (str1 == null) {
-            str2 = "";
-          }
-          QLog.e("ScribbleResMgr", 2, "check wrong md5 =" + (String)localObject + " desMd5 = " + str2);
-          i = j;
-          break;
-        }
-        i = 2;
-      }
+      ahql.a(paramView.a, "unnormal_join");
+    }
+    for (;;)
+    {
+      TroopSuspiciousFragment.c(this.a);
+      TroopSuspiciousFragment.a(this.a).c(2131719785);
+      TroopSuspiciousFragment.a(this.a).show();
+      return;
+      TroopSuspiciousFragment.a(this.a, 0, (structmsg.StructMsg)paramView.a.get());
     }
   }
 }

@@ -1,29 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.dataline.activities.LiteActivity;
-import java.io.IOException;
-import java.io.InputStream;
+import com.tencent.widget.XPanelContainer;
 
 public class be
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  public be(LiteActivity paramLiteActivity, InputStream paramInputStream) {}
+  public be(LiteActivity paramLiteActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
-    {
-      this.jdField_a_of_type_JavaIoInputStream.close();
-      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.finish();
-      return;
+    if (paramMotionEvent.getAction() == 0) {
+      this.a.a.a();
     }
-    catch (IOException paramDialogInterface)
-    {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
-    }
+    return false;
   }
 }
 

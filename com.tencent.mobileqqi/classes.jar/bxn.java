@@ -1,23 +1,29 @@
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.message.QQMessageFacade.RefreshMessageContext;
 
 public class bxn
-  extends ConfigObserver
+  implements Runnable
 {
-  public bxn(AboutActivity paramAboutActivity) {}
+  public bxn(ChatActivity paramChatActivity) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public void run()
   {
-    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
-    paramUpgradeDetailWrapper = this.a.b.a();
-    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
+    if (ChatActivity.a(this.a).e)
+    {
+      if (ChatActivity.a(this.a).g)
+      {
+        this.a.a(131078);
+        return;
+      }
+      this.a.a(131077);
+      return;
+    }
+    this.a.a(131075);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     bxn
  * JD-Core Version:    0.7.0.1
  */

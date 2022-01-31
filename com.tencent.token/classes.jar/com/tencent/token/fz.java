@@ -1,155 +1,217 @@
 package com.tencent.token;
 
-public final class fz
-  extends fx
+import android.content.ContentValues;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.global.a;
+import com.tencent.wcdb.Cursor;
+import com.tencent.wcdb.database.SQLiteDatabase;
+
+public class fz
+  implements gd
 {
-  private static final int[] d = { 1116352408, 1899447441, -1245643825, -373957723, 961987163, 1508970993, -1841331548, -1424204075, -670586216, 310598401, 607225278, 1426881987, 1925078388, -2132889090, -1680079193, -1046744716, -459576895, -272742522, 264347078, 604807628, 770255983, 1249150122, 1555081692, 1996064986, -1740746414, -1473132947, -1341970488, -1084653625, -958395405, -710438585, 113926993, 338241895, 666307205, 773529912, 1294757372, 1396182291, 1695183700, 1986661051, -2117940946, -1838011259, -1564481375, -1474664885, -1035236496, -949202525, -778901479, -694614492, -200395387, 275423344, 430227734, 506948616, 659060556, 883997877, 958139571, 1322822218, 1537002063, 1747873779, 1955562222, 2024104815, -2067236844, -1933114872, -1866530822, -1538233109, -1090935817, -965641998 };
-  private final int[] e;
-  private final int[] f;
+  long a;
+  long b;
+  String c;
+  String d;
+  String e;
+  boolean f;
+  byte[] g;
+  long h;
+  boolean i;
+  boolean j;
+  boolean k;
+  boolean l;
   
-  public fz()
+  public fz(fy paramfy) {}
+  
+  public long a()
   {
-    super("SHA-256");
-    this.f = new int[8];
-    this.e = new int[64];
-    a();
+    if (this.f) {}
+    for (long l2 = 1L;; l2 = 0L)
+    {
+      long l1 = l2;
+      if (this.i) {
+        l1 = l2 | 0x2;
+      }
+      l2 = l1;
+      if (!this.j) {
+        l2 = l1 | 0x4;
+      }
+      l1 = l2;
+      if (this.k) {
+        l1 = l2 | 0x8;
+      }
+      l2 = l1;
+      if (this.l) {
+        l2 = l1 | 0x10;
+      }
+      return l2;
+    }
   }
   
-  private fz(fz paramfz)
+  public gd a(Cursor paramCursor)
   {
-    super(paramfz);
-    if (paramfz.f == null) {
-      this.f = null;
+    int n = 0;
+    fz localfz = new fz(this.m);
+    localfz.a = paramCursor.getLong(paramCursor.getColumnIndex("uin"));
+    localfz.c = paramCursor.getString(paramCursor.getColumnIndex("email"));
+    localfz.d = paramCursor.getString(paramCursor.getColumnIndex("nick_name"));
+    localfz.e = paramCursor.getString(paramCursor.getColumnIndex("uin_mask"));
+    localfz.g = paramCursor.getBlob(paramCursor.getColumnIndex("head_image"));
+    localfz.h = paramCursor.getLong(paramCursor.getColumnIndex("head_image_update_time"));
+    a(localfz, paramCursor.getLong(paramCursor.getColumnIndex("flag")));
+    if (!localfz.j) {
+      localfz.a = (-localfz.a);
+    }
+    if ((localfz.g != null) && (localfz.g.length >= 64))
+    {
+      paramCursor = localfz.g;
+      if ((paramCursor[0] == a.a[0]) && (paramCursor[1] == a.a[1]) && (paramCursor[2] == a.a[2]) && (paramCursor[3] == a.a[3]))
+      {
+        byte[] arrayOfByte = new byte[60];
+        System.arraycopy(paramCursor, 4, arrayOfByte, 0, 60);
+        while ((n < 60) && (arrayOfByte[n] == 0))
+        {
+          arrayOfByte[n] = 48;
+          n += 1;
+        }
+        paramCursor = new String(arrayOfByte);
+      }
+    }
+    try
+    {
+      localfz.b = Long.parseLong(paramCursor);
+      return localfz;
+    }
+    catch (Exception paramCursor)
+    {
+      localfz.b = 0L;
+    }
+    return localfz;
+  }
+  
+  public void a(fz paramfz, long paramLong)
+  {
+    boolean bool2 = true;
+    if ((1L & paramLong) != 0L)
+    {
+      bool1 = true;
+      paramfz.f = bool1;
+      if ((0x2 & paramLong) == 0L) {
+        break label104;
+      }
+      bool1 = true;
+      label33:
+      paramfz.i = bool1;
+      if ((0x8 & paramLong) == 0L) {
+        break label110;
+      }
+      bool1 = true;
+      label52:
+      paramfz.k = bool1;
+      if ((0x4 & paramLong) != 0L) {
+        break label116;
+      }
+      bool1 = true;
+      label71:
+      paramfz.j = bool1;
+      if ((0x10 & paramLong) == 0L) {
+        break label122;
+      }
+    }
+    label104:
+    label110:
+    label116:
+    label122:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      paramfz.l = bool1;
+      return;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label33;
+      bool1 = false;
+      break label52;
+      bool1 = false;
+      break label71;
+    }
+  }
+  
+  public void a(SQLiteDatabase paramSQLiteDatabase)
+  {
+    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS table_user(uin INTEGER PRIMARY KEY,email TEXT,nick_name TEXT, uin_mask TEXT, flag INTEGER,head_image BLOB, head_image_update_time INTEGER);");
+  }
+  
+  boolean a(QQUser paramQQUser)
+  {
+    this.a = paramQQUser.mUin;
+    this.c = paramQQUser.mEmail;
+    this.d = paramQQUser.mNickName;
+    this.h = paramQQUser.mHeadImageUpdateTime;
+    this.g = null;
+    this.f = paramQQUser.mIsCurrentUser;
+    this.e = paramQQUser.mUinMask;
+    this.i = paramQQUser.mIsSupperQQ;
+    this.k = paramQQUser.mIsRegisterFacePwd;
+    this.j = paramQQUser.mIsBinded;
+    this.l = paramQQUser.mIsZzb;
+    this.b = paramQQUser.mRealUin;
+    return true;
+  }
+  
+  public long b(SQLiteDatabase paramSQLiteDatabase)
+  {
+    if (!this.j)
+    {
+      this.g = new byte[64];
+      localObject = this.b + "";
+      System.arraycopy(a.a, 0, this.g, 0, a.a.length);
+      System.arraycopy(((String)localObject).getBytes(), 0, this.g, this.g.length - ((String)localObject).length(), ((String)localObject).length());
+    }
+    long l1 = a();
+    Object localObject = new ContentValues();
+    if (this.j) {
+      ((ContentValues)localObject).put("uin", Long.valueOf(this.a));
     }
     for (;;)
     {
-      this.e = new int[64];
-      return;
-      this.f = new int[paramfz.f.length];
-      System.arraycopy(paramfz.f, 0, this.f, 0, this.f.length);
+      ((ContentValues)localObject).put("email", this.c);
+      ((ContentValues)localObject).put("nick_name", this.d);
+      ((ContentValues)localObject).put("uin_mask", this.e);
+      ((ContentValues)localObject).put("flag", Long.valueOf(l1));
+      ((ContentValues)localObject).put("head_image", this.g);
+      ((ContentValues)localObject).put("head_image_update_time", Long.valueOf(this.h));
+      return paramSQLiteDatabase.insert("table_user", null, (ContentValues)localObject);
+      ((ContentValues)localObject).put("uin", Long.valueOf(-this.a));
     }
   }
   
-  private static void a(int paramInt1, byte[] paramArrayOfByte, int paramInt2)
+  public String b()
   {
-    paramArrayOfByte[paramInt2] = ((byte)(paramInt1 >> 24));
-    paramArrayOfByte[(paramInt2 + 1)] = ((byte)(paramInt1 >> 16));
-    paramArrayOfByte[(paramInt2 + 2)] = ((byte)(paramInt1 >> 8));
-    paramArrayOfByte[(paramInt2 + 3)] = ((byte)paramInt1);
+    return "table_user";
   }
   
-  final void a()
+  public ContentValues c()
   {
-    this.f[0] = 1779033703;
-    this.f[1] = -1150833019;
-    this.f[2] = 1013904242;
-    this.f[3] = -1521486534;
-    this.f[4] = 1359893119;
-    this.f[5] = -1694144372;
-    this.f[6] = 528734635;
-    this.f[7] = 1541459225;
+    return null;
   }
   
-  final void a(byte[] paramArrayOfByte)
+  QQUser d()
   {
-    int j = 0;
-    long l = this.b << 3;
-    int i = (int)this.b & 0x3F;
-    if (i >= 56) {}
-    for (i = 120 - i;; i = 56 - i)
-    {
-      a(c, 0, i);
-      a((int)(l >>> 32), this.a, 56);
-      a((int)l, this.a, 60);
-      a(this.a, 0);
-      int[] arrayOfInt = this.f;
-      int k = 0;
-      i = j;
-      j = k;
-      while (j < 32)
-      {
-        k = arrayOfInt[i];
-        int m = j + 1;
-        paramArrayOfByte[j] = ((byte)(k >> 24));
-        j = m + 1;
-        paramArrayOfByte[m] = ((byte)(k >> 16));
-        m = j + 1;
-        paramArrayOfByte[j] = ((byte)(k >> 8));
-        j = m + 1;
-        paramArrayOfByte[m] = ((byte)k);
-        i += 1;
-      }
-    }
-  }
-  
-  final void a(byte[] paramArrayOfByte, int paramInt)
-  {
-    int[] arrayOfInt = this.e;
-    int j = 0;
-    int i = paramInt;
-    while (i < paramInt + 64)
-    {
-      arrayOfInt[j] = (paramArrayOfByte[(i + 3)] & 0xFF | (paramArrayOfByte[(i + 2)] & 0xFF) << 8 | (paramArrayOfByte[(i + 1)] & 0xFF) << 16 | paramArrayOfByte[i] << 24);
-      i += 4;
-      j += 1;
-    }
-    paramInt = 16;
-    while (paramInt < 64)
-    {
-      paramArrayOfByte = this.e;
-      i = this.e[(paramInt - 2)];
-      j = this.e[(paramInt - 7)];
-      k = this.e[(paramInt - 15)];
-      paramArrayOfByte[paramInt] = ((i >>> 10 ^ (i >>> 17 | i << 15) ^ (i >>> 19 | i << 13)) + j + (k >>> 3 ^ (k >>> 7 | k << 25) ^ (k >>> 18 | k << 14)) + this.e[(paramInt - 16)]);
-      paramInt += 1;
-    }
-    paramInt = this.f[0];
-    int n = this.f[1];
-    int m = this.f[2];
-    int i1 = this.f[3];
-    i = this.f[4];
-    j = this.f[5];
-    int k = this.f[6];
-    int i3 = this.f[7];
-    int i2 = 0;
-    while (i2 < 64)
-    {
-      int i4 = d[i2];
-      i3 = this.e[i2] + (i3 + ((i >>> 6 | i << 26) ^ (i >>> 11 | i << 21) ^ (i >>> 25 | i << 7)) + (i & j ^ (i ^ 0xFFFFFFFF) & k) + i4);
-      i2 += 1;
-      i1 += i3;
-      int i5 = n;
-      i4 = paramInt;
-      paramInt = i3 + ((paramInt & n ^ paramInt & m ^ n & m) + ((paramInt >>> 2 | paramInt << 30) ^ (paramInt >>> 13 | paramInt << 19) ^ (paramInt >>> 22 | paramInt << 10)));
-      i3 = k;
-      k = j;
-      j = i;
-      i = i1;
-      i1 = m;
-      m = i5;
-      n = i4;
-    }
-    paramArrayOfByte = this.f;
-    paramArrayOfByte[0] = (paramInt + paramArrayOfByte[0]);
-    paramArrayOfByte = this.f;
-    paramArrayOfByte[1] = (n + paramArrayOfByte[1]);
-    paramArrayOfByte = this.f;
-    paramArrayOfByte[2] = (m + paramArrayOfByte[2]);
-    paramArrayOfByte = this.f;
-    paramArrayOfByte[3] = (i1 + paramArrayOfByte[3]);
-    paramArrayOfByte = this.f;
-    paramArrayOfByte[4] = (i + paramArrayOfByte[4]);
-    paramArrayOfByte = this.f;
-    paramArrayOfByte[5] = (j + paramArrayOfByte[5]);
-    paramArrayOfByte = this.f;
-    paramArrayOfByte[6] = (k + paramArrayOfByte[6]);
-    paramArrayOfByte = this.f;
-    paramArrayOfByte[7] = (i3 + paramArrayOfByte[7]);
-  }
-  
-  public final Object clone()
-  {
-    return new fz(this);
+    QQUser localQQUser = new QQUser();
+    localQQUser.mUin = this.a;
+    localQQUser.mEmail = this.c;
+    localQQUser.mNickName = this.d;
+    localQQUser.mUinMask = this.e;
+    localQQUser.mIsCurrentUser = this.f;
+    localQQUser.mIsSupperQQ = this.i;
+    localQQUser.mIsRegisterFacePwd = this.k;
+    localQQUser.mIsBinded = this.j;
+    localQQUser.mIsZzb = this.l;
+    localQQUser.mRealUin = this.b;
+    localQQUser.mHeadImageUpdateTime = this.h;
+    return localQQUser;
   }
 }
 

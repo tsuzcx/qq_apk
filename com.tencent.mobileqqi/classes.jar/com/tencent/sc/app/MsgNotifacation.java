@@ -109,11 +109,11 @@ public class MsgNotifacation
       {
         return;
         a(paramInt, paramQQAppInterface);
-        NotificationCompat.Builder localBuilder = new NotificationCompat.Builder(BaseApplication.getContext()).setSmallIcon(2130839678).setAutoCancel(true).setOngoing(false).setWhen(System.currentTimeMillis()).setTicker(paramString);
+        NotificationCompat.Builder localBuilder = new NotificationCompat.Builder(BaseApplication.getContext()).setSmallIcon(2130839680).setAutoCancel(true).setOngoing(false).setWhen(System.currentTimeMillis()).setTicker(paramString);
         paramQQAppInterface.getApplication();
         paramInt = (int)(64.0F * MobileQQ.getContext().getResources().getDisplayMetrics().density + 0.5D);
         paramQQAppInterface.getApplication();
-        localBuilder.setLargeIcon(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(MobileQQ.getContext().getResources(), 2130839678), paramInt, paramInt, true));
+        localBuilder.setLargeIcon(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(MobileQQ.getContext().getResources(), 2130839680), paramInt, paramInt, true));
         Object localObject1 = QZoneHelper.a(paramQQAppInterface.a());
         ((Intent)localObject1).putExtra("qzone_uin", paramQQAppInterface.getAccount());
         Object localObject2 = new Bundle();
@@ -133,7 +133,7 @@ public class MsgNotifacation
         if (paramInt >= 2) {
           localBuilder.setContentInfo(String.valueOf(paramInt));
         }
-        localBuilder.setContentIntent((PendingIntent)localObject1).setContentTitle(BaseApplication.getContext().getString(2131563431)).setContentText(paramString);
+        localBuilder.setContentIntent((PendingIntent)localObject1).setContentTitle(BaseApplication.getContext().getString(2131563459)).setContentText(paramString);
         this.jdField_a_of_type_AndroidAppNotification = localBuilder.build();
         ((NotificationManager)paramQQAppInterface.a().getSystemService("notification")).notify(120, this.jdField_a_of_type_AndroidAppNotification);
       } while (paramQQAppInterface == null);

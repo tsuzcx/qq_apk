@@ -3,7 +3,7 @@ package com.tencent.jungle.weather;
 public final class WeatherReportInfo {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.jungle.weather.WeatherReportInfo
  * JD-Core Version:    0.7.0.1
  */

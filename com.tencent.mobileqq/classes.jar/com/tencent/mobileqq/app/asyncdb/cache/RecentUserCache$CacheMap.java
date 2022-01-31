@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app.asyncdb.cache;
 
-import com.tencent.mobileqq.persistence.Entity;
+import awge;
 import java.util.concurrent.ConcurrentHashMap;
 
 class RecentUserCache$CacheMap
-  extends ConcurrentHashMap
+  extends ConcurrentHashMap<String, awge>
 {
   private RecentUserCache$CacheMap(RecentUserCache paramRecentUserCache) {}
   
@@ -14,7 +14,7 @@ class RecentUserCache$CacheMap
     super.clear();
   }
   
-  public Entity put(String paramString, Entity paramEntity)
+  public awge put(String paramString, awge paramawge)
   {
     Object localObject1 = paramString.split("&");
     if (localObject1.length >= 2)
@@ -28,12 +28,12 @@ class RecentUserCache$CacheMap
         localObject1 = new ConcurrentHashMap();
         this.this$0.b.put(localObject2, localObject1);
       }
-      ((ConcurrentHashMap)localObject1).put(localObject3, paramEntity);
+      ((ConcurrentHashMap)localObject1).put(localObject3, paramawge);
     }
-    return (Entity)super.put(paramString, paramEntity);
+    return (awge)super.put(paramString, paramawge);
   }
   
-  public Entity remove(Object paramObject)
+  public awge remove(Object paramObject)
   {
     Object localObject2 = ((String)paramObject).split("&");
     if (localObject2.length >= 2)
@@ -49,7 +49,7 @@ class RecentUserCache$CacheMap
         }
       }
     }
-    return (Entity)super.remove(paramObject);
+    return (awge)super.remove(paramObject);
   }
 }
 

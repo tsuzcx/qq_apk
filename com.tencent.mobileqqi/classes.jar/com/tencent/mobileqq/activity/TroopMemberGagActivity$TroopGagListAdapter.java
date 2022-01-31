@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagItem;
-import dwi;
+import dqr;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -36,7 +36,7 @@ public class TroopMemberGagActivity$TroopGagListAdapter
       if (i == 0) {}
       for (boolean bool = true;; bool = false)
       {
-        paramGagItemListener.add(new dwi(this, paramArrayList, bool));
+        paramGagItemListener.add(new dqr(this, paramArrayList, bool));
         i += 1;
         break;
       }
@@ -63,11 +63,11 @@ public class TroopMemberGagActivity$TroopGagListAdapter
     View localView = paramView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130904026, null);
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130904028, null);
       paramView = new TroopMemberGagActivity.TroopGagListAdapter.Holder(this);
-      paramView.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131232685));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131234604));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131234605));
+      paramView.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131232688));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131234606));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131234607));
       paramView.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
       paramView.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
       paramView.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
@@ -77,14 +77,14 @@ public class TroopMemberGagActivity$TroopGagListAdapter
       localView.setTag(paramView);
     }
     paramView = (TroopMemberGagActivity.TroopGagListAdapter.Holder)localView.getTag();
-    paramViewGroup = (dwi)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramViewGroup = (dqr)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$GagItem.a);
     ImageView localImageView = paramView.jdField_a_of_type_AndroidWidgetImageView;
     if (paramViewGroup.jdField_a_of_type_Boolean) {}
     for (int i = 0;; i = 8)
     {
       localImageView.setVisibility(i);
-      paramView.jdField_a_of_type_Dwi = ((dwi)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+      paramView.jdField_a_of_type_Dqr = ((dqr)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
       localView.setSelected(true);
       localView.setContentDescription(paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$GagItem.a);
       return localView;
@@ -97,14 +97,14 @@ public class TroopMemberGagActivity$TroopGagListAdapter
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      dwi localdwi = (dwi)localIterator.next();
-      if (paramView.jdField_a_of_type_Dwi == localdwi) {
-        localdwi.jdField_a_of_type_Boolean = true;
+      dqr localdqr = (dqr)localIterator.next();
+      if (paramView.jdField_a_of_type_Dqr == localdqr) {
+        localdqr.jdField_a_of_type_Boolean = true;
       } else {
-        localdwi.jdField_a_of_type_Boolean = false;
+        localdqr.jdField_a_of_type_Boolean = false;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberGagActivity$GagItemListener.a(paramView.jdField_a_of_type_Dwi.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$GagItem);
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberGagActivity$GagItemListener.a(paramView.jdField_a_of_type_Dqr.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$GagItem);
     notifyDataSetChanged();
   }
 }

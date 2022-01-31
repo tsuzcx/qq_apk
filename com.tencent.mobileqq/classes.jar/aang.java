@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
+import android.content.Context;
+import android.view.View;
 
-class aang
-  implements Runnable
+public abstract interface aang
 {
-  aang(aanf paramaanf) {}
+  public abstract View a();
   
-  public void run()
-  {
-    ARVideoPreviewActivity.a(this.a.a.a);
-    ARVideoPreviewActivity.b(this.a.a.a);
-  }
+  public abstract void a(Context paramContext);
+  
+  public abstract void b(Context paramContext);
+  
+  public abstract void c(Context paramContext);
 }
 
 

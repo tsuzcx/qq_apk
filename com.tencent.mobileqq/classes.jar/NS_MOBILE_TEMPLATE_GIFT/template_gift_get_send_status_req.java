@@ -10,10 +10,10 @@ import java.util.Map;
 public final class template_gift_get_send_status_req
   extends JceStruct
 {
-  static ArrayList cache_birth_friend_list = new ArrayList();
-  static Map cache_mapExt;
-  public ArrayList birth_friend_list;
-  public Map mapExt;
+  static ArrayList<Long> cache_birth_friend_list = new ArrayList();
+  static Map<String, String> cache_mapExt;
+  public ArrayList<Long> birth_friend_list;
+  public Map<String, String> mapExt;
   public long uin;
   
   static
@@ -25,7 +25,7 @@ public final class template_gift_get_send_status_req
   
   public template_gift_get_send_status_req() {}
   
-  public template_gift_get_send_status_req(long paramLong, ArrayList paramArrayList, Map paramMap)
+  public template_gift_get_send_status_req(long paramLong, ArrayList<Long> paramArrayList, Map<String, String> paramMap)
   {
     this.uin = paramLong;
     this.birth_friend_list = paramArrayList;
@@ -52,7 +52,7 @@ public final class template_gift_get_send_status_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_TEMPLATE_GIFT.template_gift_get_send_status_req
  * JD-Core Version:    0.7.0.1
  */

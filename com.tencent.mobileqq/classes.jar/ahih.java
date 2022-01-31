@@ -1,38 +1,27 @@
-import android.widget.Button;
-import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 public class ahih
-  implements Runnable
+  extends ampt
 {
-  public ahih(CameraCaptureFragment paramCameraCaptureFragment, boolean paramBoolean) {}
-  
-  public void run()
+  public ahih(SearchContactsFragment paramSearchContactsFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (!CameraCaptureFragment.c(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment))
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramInt == 0)
     {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label73;
-      }
-      if (!CameraCaptureFragment.d(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.e.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.e.setSelected(true);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.a.c(this.jdField_a_of_type_Boolean);
-        CameraCaptureFragment.c(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment, false);
-      }
+      SearchContactsFragment.a(this.a, paramSosoLbsInfo.a.a);
+      SearchContactsFragment.b(this.a, paramSosoLbsInfo.a.b);
     }
-    return;
-    label73:
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.e.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.e.setSelected(false);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.a.c(this.jdField_a_of_type_Boolean);
-    CameraCaptureFragment.c(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahih
  * JD-Core Version:    0.7.0.1
  */

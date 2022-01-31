@@ -1,18 +1,23 @@
-import cooperation.qqindividuality.QQIndividualityBaseBridgeActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-public class ampw
-  implements Runnable
+public final class ampw
+  implements Parcelable.Creator<SosoInterface.SosoLbsInfo>
 {
-  public ampw(QQIndividualityBaseBridgeActivity paramQQIndividualityBaseBridgeActivity) {}
-  
-  public void run()
+  public SosoInterface.SosoLbsInfo a(Parcel paramParcel)
   {
-    this.a.a();
+    return new SosoInterface.SosoLbsInfo(paramParcel);
+  }
+  
+  public SosoInterface.SosoLbsInfo[] a(int paramInt)
+  {
+    return new SosoInterface.SosoLbsInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampw
  * JD-Core Version:    0.7.0.1
  */

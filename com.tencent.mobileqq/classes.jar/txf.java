@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
-import com.tencent.mobileqq.activity.TroopDisbandActivity.MemberGridAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.fragments.QCirclePersonalPushFragment;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StFeed;
+import java.util.List;
 
 public class txf
-  extends FriendListObserver
+  implements Observer<ubz<List<FeedCloudMeta.StFeed>>>
 {
-  public txf(TroopDisbandActivity paramTroopDisbandActivity) {}
+  public txf(QCirclePersonalPushFragment paramQCirclePersonalPushFragment) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void a(@Nullable ubz<List<FeedCloudMeta.StFeed>> paramubz)
   {
-    if ((paramBoolean) && (this.a.a != null) && (this.a.a.a(paramString))) {
-      this.a.a.notifyDataSetChanged();
-    }
+    QLog.d(QCirclePersonalPushFragment.a(), 4, "initViewData:getFeedListRequestRsp");
+    QCirclePersonalPushFragment.a(this.a, paramubz);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txf
  * JD-Core Version:    0.7.0.1
  */
